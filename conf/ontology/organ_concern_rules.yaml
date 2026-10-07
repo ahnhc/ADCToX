@@ -1,0 +1,102 @@
+# Organ-concern patterns for clinical-trial eligibility text.
+#
+# What this measures and why it is a supervision signal: a trial protocol states which
+# organ reserves a patient must have before the sponsor will enroll them. Those
+# statements are written *before* any outcome is known, by people who have read the
+# preclinical and early-phase data, so they encode an expert prior about which organ the
+# drug threatens. There is no public dataset of (ADC, comorbidity, outcome) -- this is
+# the closest thing that exists, and the corpus of trials with eligibility text is an
+# order of magnitude larger than the corpus with posted results.
+#
+# The measurement only works against a base rate. Every oncology protocol carries
+# bilirubin, creatinine and LVEF floors, so their raw frequency says nothing. Enrichment
+# over an oncology control cohort separates boilerplate (0.8-2.5x across every ADC) from
+# genuine drug-specific concern (4.4-127x). Patterns here are therefore allowed to be
+# generous: the base-rate division, not the pattern, does the discrimination.
+#
+# Two polarities are mixed deliberately. "Bilirubin < 1.5 x ULN" (an inclusion floor) and
+# "patients with interstitial lung disease are excluded" both say the sponsor is watching
+# that organ. Polarity is recorded per match so the two can be analysed apart if the
+# enrichment turns out to differ.
+
+organs:
+  hepatic:
+    patterns:
+      - {re: 'bilirubin', polarity: lab_floor}
+      - {re: '\b(ast|alt|sgot|sgpt)\b', polarity: lab_floor}
+      - {re: 'aspartate aminotrans|alanine aminotrans|transaminase', polarity: lab_floor}
+      - {re: 'child[\s-]*pugh', polarity: exclusion}
+      - {re: 'hepatic (impairment|insufficiency|failure|dysfunction)', polarity: exclusion}
+      - {re: 'cirrhosis', polarity: exclusion}
+      - {re: 'veno[\s-]*occlusive|\bvod\b|sinusoidal obstruction', polarity: exclusion}
+  renal:
+    patterns:
+      - {re: 'creatinine clearance|\bcrcl\b|\bcl\s*cr\b', polarity: lab_floor}
+      - {re: 'serum creatinine', polarity: lab_floor}
+      - {re: 'glomerular filtration|\begfr\b|\bgfr\b', polarity: lab_floor}
+      - {re: 'renal (impairment|insufficiency|failure|dysfunction)', polarity: exclusion}
+      - {re: 'dialysis', polarity: exclusion}
+  cardiovascular:
+    patterns:
+      - {re: 'ejection fraction|\blvef\b', polarity: lab_floor}
+      - {re: 'congestive heart failure|\bchf\b', polarity: exclusion}
+      - {re: 'myocardial infarction', polarity: exclusion}
+      - {re: 'qtc?\s*(interval)?\s*(prolong|>|interval of)', polarity: exclusion}
+      - {re: 'cardiomyopathy|arrhythmi|cardiac (disease|dysfunction|failure)', polarity: exclusion}
+      - {re: 'new york heart association|\bnyha\b', polarity: exclusion}
+  pulmonary:
+    patterns:
+      - {re: 'interstitial lung disease|\bild\b', polarity: exclusion}
+      - {re: 'pneumonitis', polarity: exclusion}
+      - {re: 'pulmonary fibrosis', polarity: exclusion}
+      - {re: 'oxygen saturation|\bspo2\b|room air', polarity: lab_floor}
+      - {re: '(copd|chronic obstructive)', polarity: exclusion}
+      - {re: 'pulmonary (function|disease|insufficiency)', polarity: exclusion}
+  neurologic:
+    patterns:
+      - {re: 'peripheral neuropath|\bpn\b(?!\w)', polarity: exclusion}
+      - {re: 'sensory neuropath|motor neuropath|polyneuropath', polarity: exclusion}
+      - {re: 'progressive multifocal|\bpml\b', polarity: exclusion}
+      - {re: 'demyelinating|guillain', polarity: exclusion}
+  ocular:
+    patterns:
+      - {re: 'keratopath|corneal', polarity: exclusion}
+      - {re: 'ocular (disease|condition|surface|disorder)', polarity: exclusion}
+      - {re: 'dry eye|sicca', polarity: exclusion}
+      - {re: 'ophthalmolog(ic|ical) (exam|evaluation|assessment)', polarity: monitoring}
+      - {re: 'visual acuity|intraocular pressure', polarity: lab_floor}
+  haematologic:
+    patterns:
+      - {re: '(absolute )?neutrophil count|\banc\b', polarity: lab_floor}
+      - {re: 'platelet count|platelets\s*[><\\]', polarity: lab_floor}
+      - {re: 'h(a)?emoglobin', polarity: lab_floor}
+      - {re: 'thrombocytopeni|neutropeni|myelosuppress', polarity: exclusion}
+      - {re: 'bone marrow (reserve|function|involvement)', polarity: exclusion}
+  gastrointestinal:
+    patterns:
+      - {re: 'inflammatory bowel|crohn|ulcerative colitis', polarity: exclusion}
+      - {re: 'bowel (obstruction|perforation)', polarity: exclusion}
+      - {re: 'malabsorption|gastrectomy', polarity: exclusion}
+      - {re: 'pancreatitis', polarity: exclusion}
+  dermatologic:
+    patterns:
+      - {re: 'stevens[\s-]*johnson|toxic epidermal', polarity: exclusion}
+      - {re: 'skin (disorder|condition|disease)', polarity: exclusion}
+      - {re: 'psoriasis|eczema', polarity: exclusion}
+  infectious_immune:
+    patterns:
+      - {re: 'hepatitis [bc]\b|\bhbv\b|\bhcv\b', polarity: exclusion}
+      - {re: '\bhiv\b|human immunodeficiency', polarity: exclusion}
+      - {re: 'active infection', polarity: exclusion}
+      - {re: 'autoimmune', polarity: exclusion}
+      - {re: 'immunosuppress', polarity: exclusion}
+  metabolic_endocrine:
+    patterns:
+      - {re: 'diabetes|diabetic', polarity: exclusion}
+      - {re: 'thyroid (function|disease|dysfunction)', polarity: exclusion}
+      - {re: 'hyperglyc(a)?emia', polarity: exclusion}
+
+# Normalizations applied before matching. ClinicalTrials.gov escapes comparison
+# operators in eligibility text ("creatinine \< 1.5"), which breaks naive patterns.
+preprocess:
+  unescape: ['\\<', '\\>', '\\=', '\\*', '\\-']
