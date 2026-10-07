@@ -1,6 +1,6 @@
 # Model card: forward organ-toxicity model
 
-**Status: the model does not beat a base-rate baseline on any of five evaluations. Read
+**Status: the model does not beat a base-rate baseline on any of six evaluations. Read
 this section first.**
 
 Figures below are from the re-run on the corrected model. A non-identifiability was found

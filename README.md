@@ -9,8 +9,14 @@ asserts those properties.
 
 ## Status
 
-**The forward model does not beat a base-rate baseline on any of five evaluations.** The
-cut order below has fired, so this ships as a constraint-based design enumerator that
+**The forward model does not beat a base-rate baseline on any of six evaluations.** Five
+are in the model card's results table; the sixth is the one anticipatory test -- did a
+model fit only on data public before a given date rank the organ FDA was about to warn
+about -- and at three scorable events it reaches p = 0.515. On the three within-arm splits
+the deficit excludes zero, which it did not on leave-one-agent-out until the
+cross-validation folds were corrected; fixing them made the verdict stronger, not weaker.
+
+The cut order below has fired, so this ships as a constraint-based design enumerator that
 annotates candidates with organ-toxicity estimates, not as a ranking engine. See
 `docs/MODEL_CARD.md` first and `report/findings.md` for the full account.
 
