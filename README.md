@@ -51,6 +51,23 @@ uv venv .venv && uv pip install -e .
 .venv/bin/python scripts/build_arms.py     --studies <ctgov-studies-dir> --out data/processed
 ```
 
+`make all` reproduces every figure in the report, and reads one pinned raw snapshot --
+`SNAPSHOT`, currently 2026-10-07. The pin is the point: these directories are meant to be
+immutable, and the variable used to be `date -u +%Y-%m-%d`, so from the day after the
+snapshot was taken every analysis target pointed at a directory that did not exist, and a
+fetch would have written a *new* snapshot underneath a report whose numbers came from the
+old one.
+
+```bash
+make all                        # analyse the pinned snapshot
+make fetch                      # re-fetch into today's directory (hits live services)
+make all SNAPSHOT=2026-11-01    # analyse a different snapshot, deliberately
+```
+
+Fetches are not part of `make all`. If a snapshot is missing, `make` stops with the
+directory it wanted and the command to run, rather than failing inside a script or
+returning an empty result.
+
 ## Cut order — decided up front, not renegotiated late
 
 1. Roll unjoinable arms up to drug level rather than discarding them.

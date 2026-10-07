@@ -2,7 +2,17 @@
 # appears in the report; that property is tested in week 4, not assumed.
 
 PY      := .venv/bin/python
-DATE    := $(shell date -u +%Y-%m-%d)
+# The frozen raw snapshot every analysis reads. Pinned, not `date +%F`: it used to be
+# today's date, so from the day after the snapshot was taken every target that reads raw
+# data pointed at a directory that does not exist -- and a fetch target would have
+# silently created a *new* snapshot underneath a report whose figures came from the old
+# one. The plan calls these directories immutable; a floating date is the opposite.
+# Override to analyse a different snapshot: `make forward SNAPSHOT=2026-11-01`.
+SNAPSHOT ?= 2026-10-07
+DATE    := $(SNAPSHOT)
+# Fetches write a new dated directory rather than overwriting the pinned one, so
+# refetching is additive and the pin has to be moved deliberately.
+FETCH_DATE := $(shell date -u +%Y-%m-%d)
 RAW     := /data/hyeongchanahn/adctox/raw
 STUDIES := $(RAW)/ctgov/$(DATE)/studies
 ELIG    := $(RAW)/eligibility/$(DATE)
@@ -11,7 +21,8 @@ ART     := artifacts
 
 .PHONY: all env taxonomy corpus eligibility enrichment forward propose test \
         censoring-sensitivity label-history label-changes label-change-eval \
-        dose-mod dose-mod-eval module-b hard-flags lint sync-report check-report clean
+        dose-mod dose-mod-eval module-b hard-flags lint sync-report check-report clean \
+        fetch snapshot-check
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
@@ -36,10 +47,25 @@ taxonomy:
 corpus: taxonomy
 	$(PY) scripts/build_arms.py --studies $(STUDIES) --out $(PROC)
 
-eligibility:
-	$(PY) scripts/fetch_eligibility.py --out $(ELIG)
+# Fetches hit government services, write a new dated snapshot, and are deliberately not
+# part of `all`. After fetching, move SNAPSHOT to the new date to analyse it.
+fetch: eligibility label-history dose-mod
+	@echo "fetched into $(FETCH_DATE); set SNAPSHOT=$(FETCH_DATE) to analyse it"
 
-enrichment:
+eligibility:
+	$(PY) scripts/fetch_eligibility.py --out $(RAW)/eligibility/$(FETCH_DATE)
+
+# Every target below reads the pinned snapshot, so each depends on this guard. Without it
+# a missing snapshot surfaces as a FileNotFoundError from inside a script, or worse as an
+# empty result, which this project has already been bitten by.
+snapshot-check:
+	@for d in $(ELIG) $(RAW)/dailymed/$(DATE) $(RAW)/openfda_label/$(DATE); do \
+	  test -d "$$d" || { \
+	    echo "missing raw snapshot: $$d"; \
+	    echo "run 'make fetch' and then set SNAPSHOT to the new date"; exit 1; }; \
+	done
+
+enrichment: snapshot-check
 	$(PY) scripts/exclusion_enrichment.py --eligibility $(ELIG) --out $(ART)
 	$(PY) scripts/exclusion_enrichment.py --eligibility $(ELIG) --out $(ART) --polarity exclusion
 	$(PY) scripts/exclusion_enrichment.py --eligibility $(ELIG) --out $(ART) --polarity lab_floor
@@ -70,21 +96,21 @@ censoring-sensitivity: corpus
 
 # Fetches hit DailyMed and openFDA; kept out of `all` so a rebuild does not re-pull.
 label-history:
-	$(PY) scripts/fetch_label_history.py --out $(RAW)/dailymed/$(DATE)
+	$(PY) scripts/fetch_label_history.py --out $(RAW)/dailymed/$(FETCH_DATE)
 
 dose-mod:
-	$(PY) scripts/fetch_dose_mod.py --out $(RAW)/openfda_label/$(DATE)
+	$(PY) scripts/fetch_dose_mod.py --out $(RAW)/openfda_label/$(FETCH_DATE)
 
-label-changes:
+label-changes: snapshot-check
 	$(PY) scripts/label_change_events.py --raw $(RAW)/dailymed/$(DATE) --out $(ART)
 
 label-change-eval: corpus label-changes
 	$(PY) scripts/label_change_eval.py --processed $(PROC) --out $(ART)
 
-dose-mod-eval: forward
+dose-mod-eval: forward snapshot-check
 	$(PY) scripts/dose_mod_eval.py --labels $(RAW)/openfda_label/$(DATE) --out $(ART)
 
-propose:
+propose: corpus
 	$(PY) scripts/propose_demo.py --out $(ART)
 
 test: lint
@@ -100,7 +126,7 @@ test: lint
 lint:
 	$(PY) scripts/check_unused_imports.py
 
-hard-flags:
+hard-flags: forward
 	$(PY) scripts/hard_flag_necessity.py --out $(ART)
 
 sync-report:
