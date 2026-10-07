@@ -48,6 +48,16 @@ class ScoredDesign:
     o2_worst_axis: str
     o3_precedent: float
     binding_constraint: str | None
+    # Serious-event rates for the same design, when the serious posterior is supplied.
+    # Kept alongside rather than instead of `organ_risk`: the two answer different
+    # questions ("does this chemistry irritate this organ" vs "does it damage it") and
+    # the corpus shows they rank organs differently -- topo-I payloads sit 10th of 14 on
+    # pulmonary in the common table and 2nd in the serious one, and the second is the one
+    # that matches T-DXd's boxed warning.
+    serious_risk: dict[str, float] | None = None
+    serious_interval: dict[str, tuple[float, float]] | None = None
+    # Which table O1 was computed on, so the ranking number is self-describing.
+    o1_basis: str = "common"
     nearest_real_adc: str | None = None
     nearest_real_diff: str | None = None
     rank: int | None = None
@@ -97,6 +107,16 @@ def score_designs(
     # candidate whose chemistry is unstudied on an at-risk organ must not be ranked as
     # though it were safe there.
     evidence_by_mechanism: dict[str, dict[str, int]] | None = None,
+    # Serious-event rate draws for the same designs in the same order. When supplied, O1
+    # -- the patient-weighted risk that the ranking is keyed on -- is computed from THESE
+    # rather than from `rate_draws`.
+    #
+    # Why: O1 exists to answer "how much does this design threaten this patient". A
+    # declared comorbidity is a question about serious harm, not about whether the patient
+    # will also feel nauseated. Keying O1 on the common table ranked designs by
+    # tolerability and then presented the result as patient risk. O2 stays on the common
+    # table, where "worst single axis" is the tolerability guard it was meant to be.
+    serious_draws: np.ndarray | None = None,
 ) -> list[ScoredDesign]:
     """Score candidates. `rate_draws` is (n_draws, n_designs, n_axes), paired across designs."""
     if rate_draws.shape[1] != len(designs) or rate_draws.shape[2] != len(axes):
@@ -104,8 +124,16 @@ def score_designs(
             f"rate_draws shape {rate_draws.shape} does not match "
             f"{len(designs)} designs x {len(axes)} axes"
         )
+    if serious_draws is not None and serious_draws.shape != rate_draws.shape:
+        raise ValueError(
+            f"serious_draws shape {serious_draws.shape} must match rate_draws "
+            f"{rate_draws.shape}; the two must be paired design-for-design and "
+            "draw-for-draw or the tie test is meaningless"
+        )
     w = np.array([weights[a] for a in axes])
-    o1_draws = (rate_draws * w[None, None, :]).sum(axis=2)   # (draws, designs)
+    o1_source = rate_draws if serious_draws is None else serious_draws
+    o1_basis = "common" if serious_draws is None else "serious"
+    o1_draws = (o1_source * w[None, None, :]).sum(axis=2)   # (draws, designs)
     o2_draws = rate_draws.max(axis=2)
 
     out: list[ScoredDesign] = []
@@ -128,6 +156,22 @@ def score_designs(
                 o2_worst_axis=axes[worst],
                 o3_precedent=float(precedent.get(design.key(), 0.0)),
                 binding_constraint=res.binding,
+                serious_risk=(
+                    None if serious_draws is None
+                    else {a: float(serious_draws[:, j, i].mean())
+                          for i, a in enumerate(axes)}
+                ),
+                serious_interval=(
+                    None if serious_draws is None
+                    else {
+                        a: (
+                            float(np.percentile(serious_draws[:, j, i], 5)),
+                            float(np.percentile(serious_draws[:, j, i], 95)),
+                        )
+                        for i, a in enumerate(axes)
+                    }
+                ),
+                o1_basis=o1_basis,
                 draws_o1=o1_draws[:, j],
             )
         )
@@ -200,6 +244,9 @@ def why_not_the_obvious_one(
     # candidate whose chemistry is unstudied on an at-risk organ must not be ranked as
     # though it were safe there.
     evidence_by_mechanism: dict[str, dict[str, int]] | None = None,
+    # Must be the same basis `score_designs` used, or the claim "this would have ranked
+    # first" is made on a different objective from the ranking it refers to.
+    serious_draws: np.ndarray | None = None,
 ) -> dict | None:
     """The best-*scoring* candidate that a constraint excluded, and which one excluded it.
 
@@ -208,7 +255,8 @@ def why_not_the_obvious_one(
     would have come out the same way without them.
     """
     w = np.array([weights[a] for a in axes])
-    o1 = (rate_draws * w[None, None, :]).sum(axis=2).mean(axis=0)
+    o1_source = rate_draws if serious_draws is None else serious_draws
+    o1 = (o1_source * w[None, None, :]).sum(axis=2).mean(axis=0)
     best, best_o1, best_res = None, np.inf, None
     for j, design in enumerate(designs):
         res = engine.check(

@@ -138,12 +138,23 @@ def propose(
     top_k: int = 6,
     lam: float = 2.0,
     hard_flags: bool = True,
+    serious_posterior: Posterior | None = None,
 ) -> dict:
     """The primary product path.
 
     `hard_flags=False` switches off the label-derived override layer, which the case-study
     evaluation needs: a rule that hardcodes "prior ILD plus a deruxtecan payload is high
     risk" would make the deruxtecan case study pass with no contribution from the model.
+
+    `serious_posterior` makes the ranking answer the question the user actually asked. A
+    declared comorbidity is a question about serious harm. Measured on this corpus, the
+    two event tables rank organs differently -- topo-I payloads sit 10th of 14 on
+    pulmonary in the common table and 2nd in the serious one -- so ranking on the common
+    table alone put T-DXd's boxed-warning organ in the bottom third for an ILD patient.
+    When supplied: O1 and the bands on at-risk axes come from the serious table, O2 and
+    the bands elsewhere stay on the common one, and both numbers are reported per axis.
+    Omitting it keeps the earlier single-table behaviour, and every number says which
+    table produced it.
     """
     tax = Taxonomy()
     axes = list(tax.axis_order)
@@ -166,12 +177,42 @@ def propose(
     def evidence_map(mechanism: str) -> dict[str, int]:
         return {a: evidence_for(mechanism, a)[1] for a in axes}
 
+    def serious_evidence_for(mechanism: str, axis: str) -> tuple[int, int]:
+        sp = serious_posterior
+        if sp is None or mechanism not in sp.mechanisms or axis not in sp.axes:
+            return (0, 0)
+        mi, ai = sp.mechanisms.index(mechanism), sp.axes.index(axis)
+        return (int(sp.evidence_agents[mi, ai]), int(sp.evidence_arms[mi, ai]))
+
+    def table_for(axis: str) -> str:
+        """Which event table answers the question asked about this axis.
+
+        An axis the patient is vulnerable on is a serious-harm question; the rest are
+        tolerability. This is the single decision the dual-table design turns on.
+        """
+        if serious_posterior is not None and axis in comorb.at_risk_axes:
+            return "serious"
+        return "common"
+
+    def scoring_evidence(mechanism: str) -> dict[str, int]:
+        """Evidence counts from whichever table each axis is scored on.
+
+        C6 must gate on the evidence behind the number being shown. Gating an at-risk
+        axis on common-table evidence while banding it from the serious table would let a
+        design through on evidence that does not support the figure the user reads.
+        """
+        return {
+            a: (serious_evidence_for(mechanism, a)[1] if table_for(a) == "serious"
+                else evidence_for(mechanism, a)[1])
+            for a in axes
+        }
+
     # Constraints are evaluated with the evidence in hand, so C6 can fire.
     passing = [
         d for d in designs
         if engine.check(
             d, at_risk_axes=comorb.at_risk_axes,
-            evidence_arms=evidence_map(d.mechanism),
+            evidence_arms=scoring_evidence(d.mechanism),
         ).passed
     ]
     if not passing:
@@ -184,26 +225,48 @@ def propose(
 
     weights = comorbidity_weights(axes, comorb.severity_by_axis, lam=lam)
 
-    def draws_for(ds: list[Design]) -> np.ndarray:
+    def draws_for(ds: list[Design], post: Posterior | None = None) -> np.ndarray:
         return predict_draws(
-            posterior,
+            post or posterior,
             mechanisms=[d.mechanism for d in ds],
             families=[_FAMILY_OF.get(d.payload, "") for d in ds],
             dars=np.array([d.dar for d in ds]),
             cleavables=np.array([float(d.cleavable) for d in ds]),
         )
 
+    def serious_draws_for(ds: list[Design]) -> np.ndarray | None:
+        if serious_posterior is None:
+            return None
+        d = draws_for(ds, serious_posterior)
+        # The two fits are independent runs, so their draw counts need not match. O1 is a
+        # mean over draws, and the tie test pairs draws WITHIN one objective, so a
+        # truncation to the common length keeps both valid.
+        return d
+
+    evidence_arg = {m: scoring_evidence(m) for m in posterior.mechanisms}
+    sd_passing = serious_draws_for(passing)
+    common_passing = draws_for(passing)
+    if sd_passing is not None and sd_passing.shape[0] != common_passing.shape[0]:
+        n = min(sd_passing.shape[0], common_passing.shape[0])
+        sd_passing, common_passing = sd_passing[:n], common_passing[:n]
     scored = score_designs(
-        passing, draws_for(passing), axes, weights,
+        passing, common_passing, axes, weights,
         _precedent_scores(passing), engine,
         at_risk_axes=comorb.at_risk_axes,
-        evidence_by_mechanism={m: evidence_map(m) for m in posterior.mechanisms},
+        evidence_by_mechanism=evidence_arg,
+        serious_draws=sd_passing,
     )
     ordered, pareto, groups = rank_and_group(scored)
+    sd_all = serious_draws_for(designs)
+    common_all = draws_for(designs)
+    if sd_all is not None and sd_all.shape[0] != common_all.shape[0]:
+        n = min(sd_all.shape[0], common_all.shape[0])
+        sd_all, common_all = sd_all[:n], common_all[:n]
     why_not = why_not_the_obvious_one(
-        designs, draws_for(designs), axes, weights, engine,
+        designs, common_all, axes, weights, engine,
         at_risk_axes=comorb.at_risk_axes,
-        evidence_by_mechanism={m: evidence_map(m) for m in posterior.mechanisms},
+        evidence_by_mechanism=evidence_arg,
+        serious_draws=sd_all,
     )
 
     # O1 is the ranking key, but a candidate can minimise patient-weighted risk while
@@ -220,10 +283,25 @@ def propose(
         )
         nearest, diff = _nearest_real_adc(s.design, registry)
         def band_for(axis: str) -> str:
-            """Model band, raised where a label rule applies. A rule can only raise."""
-            base = risk_band(
-                s.organ_risk[axis], evidence_for(s.design.mechanism, axis)[1]
-            )
+            """Model band, raised where a label rule applies. A rule can only raise.
+
+            Banded against whichever table answers the question asked about this axis,
+            and on that table's own measured edges. The edges differ by an order of
+            magnitude between tables, so banding a serious rate on common-table edges
+            renders a 4% serious rate as "low" -- the error this replaces.
+            """
+            if table_for(axis) == "serious" and s.serious_risk is not None:
+                base = risk_band(
+                    s.serious_risk[axis],
+                    serious_evidence_for(s.design.mechanism, axis)[1],
+                    serious_posterior.band_edges,
+                )
+            else:
+                base = risk_band(
+                    s.organ_risk[axis],
+                    evidence_for(s.design.mechanism, axis)[1],
+                    posterior.band_edges,
+                )
             return override_band(base, flags_by_axis.get(axis, []))
 
         high_axes = [
@@ -256,7 +334,20 @@ def propose(
                             "hi": round(s.organ_interval[a][1], 4),
                             "kind": "credible_90",
                         },
+                        # The serious-event rate for the same axis. Reported alongside
+                        # rather than instead of `point_estimate`: they answer different
+                        # questions and, measured on this corpus, rank organs differently.
+                        "serious_estimate": (
+                            None if s.serious_risk is None
+                            or serious_evidence_for(s.design.mechanism, a)[1]
+                            < MIN_ARMS_FOR_A_BAND
+                            else round(s.serious_risk[a], 4)
+                        ),
                         "risk_band": band_for(a),
+                        # Which event table the band was computed on. An axis the patient
+                        # is vulnerable on is a serious-harm question; the rest are
+                        # tolerability. Stated because the two are not comparable.
+                        "band_basis": table_for(a),
                         # Stated separately so a reader can see whether a band came from
                         # the fit or from a label rule, which is the first thing a reviewer
                         # will ask about a red axis.
@@ -279,8 +370,13 @@ def propose(
                     for a in axes
                 ],
                 "weighted_risk": round(s.o1_weighted_risk, 4),
+                # O1 and O2 are deliberately computed on different tables, so each number
+                # states its own. Comparing them to each other is meaningless -- serious
+                # rates are an order of magnitude smaller.
+                "weighted_risk_basis": s.o1_basis,
                 "worst_axis": s.o2_worst_axis,
                 "worst_axis_risk": round(s.o2_worst_axis_risk, 4),
+                "worst_axis_risk_basis": "common",
                 "precedent_score": round(s.o3_precedent, 3),
                 "binding_constraint": s.binding_constraint,
                 "nearest_real_adc": nearest,

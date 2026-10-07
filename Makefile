@@ -51,7 +51,15 @@ enrichment:
 forward: corpus
 	$(PY) scripts/fit_forward.py --processed $(PROC) --out $(ART) --kind other
 	$(PY) scripts/fit_forward.py --processed $(PROC) --out $(ART) --kind serious
+	$(PY) scripts/propose_demo.py --processed $(PROC) --out $(ART) --kind other --fit-only
+	$(PY) scripts/propose_demo.py --processed $(PROC) --out $(ART) --kind serious --fit-only
 	$(PY) scripts/compare_event_tables.py --out $(ART)
+
+# Both posteriors are products, not just the metrics. The serious fit is what makes a
+# comorbidity question answerable: measured on this corpus the two tables rank organs
+# differently, and an axis the patient is vulnerable on is a serious-harm question. With
+# only the common posterior present the product still answers but bands every axis on the
+# common table, which put T-DXd's boxed-warning organ 10th of 14 for an ILD patient.
 
 # Sensitivity check for the censoring treatment: refit with missing cells imputed as
 # zeros and show what that does to the threshold coefficient. The censored model is only

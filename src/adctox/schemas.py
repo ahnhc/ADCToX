@@ -166,20 +166,54 @@ class Driver(BaseModel):
 
     factor: str
     source: Literal["model", "exclusion_head", "elicited_prior", "rule"]
-    contribution: float
+    # None where the driver is not a term in the linear predictor -- a label rule and an
+    # exclusion-criteria prior both change what is shown without adding a logit. 0.0 would
+    # read as a measured contribution of nothing, which is a different and false claim.
+    contribution: float | None
     detail: str | None = None
+    odds_ratio: float | None = None
+    quote: str | None = None
+    flag_id: str | None = None
+    tier: str | None = None
+
+    # Closed so that a field added to a response without being declared here fails the
+    # contract test, rather than passing silently as it did while nothing validated these
+    # models at all.
+    model_config = ConfigDict(extra="forbid")
 
 
 class OrganRisk(BaseModel):
     organ_axis: str
     label: str
-    point_estimate: float | None  # None at novelty tier 3: no number is defensible
+    # Any-grade rate from the otherEvents table. None at novelty tier 3, and None where
+    # the corpus has too few arms to support a number.
+    point_estimate: float | None
+    # Serious-event rate for the same axis, from the seriousEvents table. Reported
+    # alongside rather than instead, because the two answer different questions and,
+    # measured on this corpus, rank organs differently: topo-I payloads sit 10th of 14 on
+    # pulmonary in the common table and 2nd in the serious one. None when the serious fit
+    # is absent or too thin on this axis.
+    serious_estimate: float | None = None
     interval: Interval
     risk_band: Literal["low", "moderate", "high", "no_evidence"]
+    # Which table the band was computed on. An axis the patient is vulnerable on is a
+    # serious-harm question and is banded on the serious table; the rest are tolerability.
+    # Bands are not comparable across bases -- each table has its own measured edges.
+    band_basis: Literal["common", "serious"] = "common"
+    # Whether the band came from the fit or was raised by a label rule. The first thing a
+    # reviewer asks about a red axis.
+    band_source: Literal["model", "rule"] = "model"
     weight_applied: float
     n_supporting_agents: int
     n_supporting_arms: int
+    at_risk_for_patient: bool = False
     drivers: list[Driver] = Field(default_factory=list)
+    # The exact additive waterfall check: the drivers' sum against the reported rate, and
+    # the Jensen gap between them. Stated rather than hidden, because the mean of a
+    # transformed draw is not the transform of the mean.
+    driver_sum: dict | None = None
+
+    model_config = ConfigDict(extra="forbid")
 
 
 class Coverage(BaseModel):

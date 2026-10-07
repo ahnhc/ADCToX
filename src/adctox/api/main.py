@@ -146,6 +146,22 @@ def _posterior() -> Posterior:
 
 
 @lru_cache(maxsize=1)
+def _serious_posterior() -> Posterior | None:
+    """The serious-event fit, if it has been built.
+
+    Optional rather than required, and the endpoints say which table each number came
+    from, so a deployment without it degrades to the common table instead of failing.
+    But it is what makes a comorbidity question answerable: measured on this corpus the
+    two tables rank organs differently, and the serious one is the table that puts
+    T-DXd's boxed-warning organ near the top instead of 10th of 14.
+    """
+    path = ARTIFACTS / "posterior_serious.npz"
+    if not path.exists():
+        return None
+    return Posterior.load(path)
+
+
+@lru_cache(maxsize=1)
 def _version_info() -> dict:
     metrics = ARTIFACTS / "forward_other_metrics.json"
     corpus = "unknown"
@@ -231,6 +247,7 @@ def propose_endpoint(req: ProposeRequest) -> JSONResponse:
             condition_ids=req.comorbidity_profile.condition_ids,
             posterior=_posterior(),
             top_k=req.top_k,
+            serious_posterior=_serious_posterior(),
         )
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
@@ -316,10 +333,34 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
     comorb = resolve_comorbidities(req.comorbidity_profile.condition_ids)
     rates = draws[:, 0, :]
     mi = post.mechanisms.index(design.mechanism)
+
+    # The serious-event view of the same design. An axis the patient is vulnerable on is
+    # a serious-harm question, so that axis is banded here rather than on the common
+    # table, where the same chemistry can sit in the bottom third.
+    spost = _serious_posterior()
+    srates = smi = None
+    if spost is not None and design.mechanism in spost.mechanisms:
+        sdraws = predict_draws(
+            spost, mechanisms=[design.mechanism], families=[family],
+            dars=np.array([design.dar]),
+            cleavables=np.array([float(design.cleavable)]),
+        )
+        srates = sdraws[:, 0, :]
+        smi = spost.mechanisms.index(design.mechanism)
+
+    def serious_cell(axis: str) -> tuple[float | None, int]:
+        if srates is None or axis not in spost.axes:
+            return (None, 0)
+        j = spost.axes.index(axis)
+        return (float(srates[:, j].mean()), int(spost.evidence_arms[smi, j]))
+
     organ_risks = []
     for i, axis in enumerate(axes):
         mean = float(rates[:, i].mean())
         n_arms = int(post.evidence_arms[mi, i])
+        s_mean, s_arms = serious_cell(axis)
+        use_serious = s_mean is not None and axis in comorb.at_risk_axes
+        band_basis = "serious" if use_serious else "common"
         n_agents = int(post.evidence_agents[mi, i])
         axis_flags = applicable_flags(
             design.mechanism, design.payload,
@@ -328,7 +369,11 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
         # A label rule can raise a band but never lower one, including over
         # `no_evidence`: a regulator's warning is evidence, and an organ named in a boxed
         # warning must not render as unstudied.
-        band = override_band(risk_band(mean, n_arms), axis_flags)
+        band = override_band(
+            risk_band(s_mean, s_arms, spost.band_edges) if use_serious
+            else risk_band(mean, n_arms, post.band_edges),
+            axis_flags,
+        )
         weight = 1.0 + 2.0 * comorb.severity_by_axis.get(axis, 0.0)
         drivers = decompose(post, design.mechanism, family, design.dar,
                             design.cleavable, axis)
@@ -361,7 +406,16 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
                     "hi": round(float(np.percentile(rates[:, i], 95)), 4),
                     "kind": "credible_90",
                 },
+                "serious_estimate": (
+                    round(s_mean, 4)
+                    if s_mean is not None and s_arms >= MIN_ARMS_FOR_A_BAND
+                    else None
+                ),
                 "risk_band": band,
+                # Which event table the band was computed on, and therefore which
+                # question it answers. Not comparable across bases: serious rates are an
+                # order of magnitude smaller, and each table has its own measured edges.
+                "band_basis": band_basis,
                 "band_source": "rule" if axis_flags else "model",
                 "n_supporting_agents": n_agents,
                 "n_supporting_arms": n_arms,

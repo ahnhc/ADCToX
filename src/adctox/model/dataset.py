@@ -82,6 +82,10 @@ class ModelData:
     thresh_mean: float
     log_n_mean: float
     cleavable_mean: float
+    # Which event table this grid was built from. Recorded rather than inferred because
+    # downstream code bands rates against the scale of the outcome, and the two tables
+    # differ by an order of magnitude.
+    kind: str = "other"
 
     @property
     def n_cells(self) -> int:
@@ -222,6 +226,7 @@ def build(
     log_n_mean = float(log_n.mean())
 
     return ModelData(
+        kind=kind,
         status=np.asarray(status_l, dtype=np.int32),
         n_affected=np.asarray(k_l, dtype=np.int32),
         n_at_risk=np.asarray(n_l, dtype=np.int32),

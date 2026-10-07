@@ -126,3 +126,67 @@ def test_fc_engineering_is_not_a_design_slot() -> None:
             target_antigen="ERBB2", payload="DXd", linker="GGFG",
             conjugation="interchain_cysteine", dar=8.0, fc_engineering="LALA",
         )
+
+
+def test_organ_risk_responses_actually_validate_against_the_declared_model():
+    """The response models are declared but no endpoint sets `response_model`, so nothing
+    enforced them and they had drifted: `Driver.contribution` was typed `float` while two
+    of the four driver sources legitimately emit None. A declared-but-unenforced contract
+    is worse than none, because it reads as a guarantee. This validates the real payload.
+    """
+    pytest.importorskip("fastapi")
+    from fastapi.testclient import TestClient
+
+    from adctox.api.main import app
+    from adctox.schemas import OrganRisk
+
+    c = TestClient(app)
+    r = c.post(
+        "/api/v1/assess",
+        json={
+            "design": {
+                "target_antigen": "ERBB2", "payload": "DXd", "linker": "GGFG",
+                "conjugation": "interchain_cysteine", "dar": 8.0,
+            },
+            "comorbidity_profile": {"conditions": ["interstitial_lung_disease"]},
+        },
+    )
+    if r.status_code == 503:
+        pytest.skip("posterior artefact absent")
+    assert r.status_code == 200, r.text
+    risks = r.json()["organ_risks"]
+    assert risks, "assess returned no organ risks"
+    for row in risks:
+        OrganRisk.model_validate(row)
+
+
+def test_propose_path_validates_against_the_same_organ_risk_model():
+    """Both product paths must satisfy one contract.
+
+    /assess and /propose build their organ-risk dicts in different modules, so they can
+    drift apart. Validating both against the same closed model is what keeps the two
+    halves of the product describing their numbers the same way.
+    """
+    from pathlib import Path
+
+    from adctox.model.predict import Posterior
+    from adctox.schemas import OrganRisk
+
+    artifacts = Path(__file__).resolve().parents[1] / "artifacts"
+    if not (artifacts / "posterior_other.npz").exists():
+        pytest.skip("no posterior built")
+    from adctox.pipeline import propose
+
+    po = Posterior.load(artifacts / "posterior_other.npz")
+    sp = (
+        Posterior.load(artifacts / "posterior_serious.npz")
+        if (artifacts / "posterior_serious.npz").exists()
+        else None
+    )
+    result = propose(
+        "ERBB2", ["interstitial_lung_disease"], po, top_k=1, serious_posterior=sp
+    )
+    rows = result["candidates"][0]["organ_risks"]
+    assert rows
+    for row in rows:
+        OrganRisk.model_validate(row)

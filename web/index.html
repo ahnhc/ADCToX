@@ -59,6 +59,7 @@
        border-radius:2px;overflow:hidden}
   .ci{position:absolute;top:0;bottom:0;opacity:.3}
   .pt{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--ink)}
+  .alt{display:block;font-size:10px;color:var(--muted);letter-spacing:.02em}
   .hatch{background:repeating-linear-gradient(45deg,var(--none) 0 3px,transparent 3px 6px)}
   .band{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
   .b-low{color:var(--low)} .b-moderate{color:var(--moderate)}
@@ -83,6 +84,8 @@
     Numbers below are relative rankings over published trial data, not probabilities of
     harm for any individual. The forward model does not beat a base-rate baseline on
     within-arm axis ranking; see the model card before reading any value as predictive.
+    Rows tagged <em>serious-event basis</em> are banded on a scale roughly ten times
+    smaller than the rest and cannot be compared with them.
   </p>
 
   <div class="grid">
@@ -150,22 +153,47 @@ async function boot() {
 }
 
 function axisRow(r) {
-  const noEvidence = r.risk_band === "no_evidence" || r.point_estimate == null;
+  // Which event table banded this axis decides what the row shows. An axis the patient is
+  // vulnerable on is a serious-harm question and is banded on the seriousEvents table;
+  // everything else is tolerability, banded on the common table. The two are an order of
+  // magnitude apart, so the bar scale has to follow the basis as well -- a 3% serious rate
+  // drawn on a 0-60% axis is an empty bar next to a red "high" badge, which reads as a bug
+  // and costs the reader exactly the trust the number needs.
+  const serious = r.band_basis === "serious" && r.serious_estimate != null;
+  const shown = serious ? r.serious_estimate : r.point_estimate;
+  const other = serious ? r.point_estimate : r.serious_estimate;
+  const noEvidence = r.risk_band === "no_evidence" || shown == null;
   const arms = r.n_supporting_arms ?? 0, agents = r.n_supporting_agents ?? 0;
   const thin = noEvidence || arms < 3;
+  const scale = serious ? 8 : 60;   // percent of risk that fills the bar
+  const pt = (shown ?? 0) * 100;
+  // Only the common table carries a stored interval, so the serious row shows a point
+  // marker and no band rather than a credible interval it does not have.
   const lo = (r.interval?.lo ?? 0) * 100, hi = (r.interval?.hi ?? 0) * 100;
-  const pt = (r.point_estimate ?? 0) * 100;
-  const scale = 60; // percent of the bar width that 60% risk occupies
   // Law 4: absence of evidence gets its own hatched grey, never a reassuring green.
   const fill = noEvidence
     ? `<span class="ci hatch" style="left:0;right:0"></span>`
-    : `<span class="ci" style="left:${lo / scale * 100}%;width:${Math.max((hi - lo) / scale * 100, 1.5)}%;
-         background:var(--${r.risk_band})"></span><span class="pt" style="left:${pt / scale * 100}%"></span>`;
+    : (serious
+      ? `<span class="pt" style="left:${Math.min(pt / scale * 100, 99)}%"></span>`
+      : `<span class="ci" style="left:${lo / scale * 100}%;width:${Math.max((hi - lo) / scale * 100, 1.5)}%;
+         background:var(--${r.risk_band})"></span><span class="pt" style="left:${pt / scale * 100}%"></span>`);
+  const basisTag = serious
+    ? `<span class="tag" title="This organ is one your stated conditions affect, so the question asked is about serious harm, not about whether an event occurs at all. Banded on the serious-event table, whose scale is roughly ten times smaller. Not comparable with the rows below it.">serious-event basis</span>`
+    : "";
+  const ruleTag = r.band_source === "rule"
+    ? `<span class="tag" title="Raised by a rule read off an approved label. A rule can raise a band, never lower one.">label rule</span>`
+    : "";
+  const secondary = (!noEvidence && other != null)
+    ? `<span class="alt">${serious ? "any-grade" : "serious"} ${pct(other)}</span>`
+    : "";
+  const interval = (!serious && !noEvidence && r.interval)
+    ? " [" + pct(r.interval.lo) + "&ndash;" + pct(r.interval.hi) + "]"
+    : "";
   return `<div class="axis ${r.at_risk_for_patient ? "at-risk" : ""}">
-      <span>${r.label}${r.at_risk_for_patient ? ` <span class="tag">weighted &times;${r.weight_applied.toFixed(1)}</span>` : ""}</span>
+      <span>${r.label}${r.at_risk_for_patient ? ` <span class="tag">weighted &times;${r.weight_applied.toFixed(1)}</span>` : ""}${basisTag}${ruleTag}</span>
       <span class="bar">${fill}</span>
       <span><span class="band b-${r.risk_band}">${r.risk_band.replace("_", " ")}</span>
-        <span class="num">${noEvidence ? "" : pct(r.point_estimate) + " [" + pct(r.interval.lo) + "&ndash;" + pct(r.interval.hi) + "]"}</span></span>
+        <span class="num">${noEvidence ? "" : pct(shown) + interval}</span>${secondary}</span>
       <span class="ev ${thin ? "thin" : ""}"
             title="${thin
               ? "Too little in the corpus on this organ for this chemistry to band a rate. Not the same as low risk."

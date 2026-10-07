@@ -148,6 +148,9 @@ def test_posterior_round_trips_every_field_load_requires() -> None:
         mechanisms=["tubulin", "topo1"],
         families=["auristatin", "camptothecin"],
         dar_mean=4.0, cleavable_mean=0.875,
+        # Passed explicitly, never defaulted: the band scale is a property of the event
+        # table, and an implicit one is what made a 4% serious rate read "low".
+        kind="other", band_edges=(0.0645, 0.2174),
         evidence_agents=np.array([[4, 4, 3], [3, 2, 3]], dtype=np.int32),
         evidence_arms=np.array([[40, 38, 31], [22, 14, 20]], dtype=np.int32),
     )

@@ -46,6 +46,42 @@ def _evidence_counts(data: ModelData) -> dict[str, np.ndarray]:
     return {"evidence_agents": agents, "evidence_arms": arms}
 
 
+# Band edges are the 15th and 60th percentiles of the NON-ZERO observed rates in the
+# event table the posterior was fitted on. Three reasons for that construction:
+#
+#   * Measured, not asserted. The edges previously were the constants 0.05 and 0.20. On
+#     the otherEvents corpus those sit at the 15th and 60th percentiles of non-zero rates
+#     (0.0645, 0.2174), so this change barely moves the common table -- the split goes
+#     from 13/45/42 to 19/43/38 -- and the constants turn out to have been a decent guess
+#     for that one table.
+#   * They are catastrophically wrong for the other table. Serious-event rates are an
+#     order of magnitude smaller: 0.05 sits at the 91st percentile and 0.20 at the 99.4th,
+#     so the constants would render 91% of serious cells as "low". A 4% serious rate --
+#     near the top of the observed range -- would read "low", which is the most dangerous
+#     direction for this error to run.
+#   * Zeros are excluded from the percentile basis but still land in "low". In the serious
+#     table 39% of cells are exact zeros and, since that table is completely reported, a
+#     zero is a genuine zero. Including them would drag the 15th percentile onto 0.0 and
+#     collapse the "low" band to nothing.
+BAND_PERCENTILES = (15.0, 60.0)
+
+
+def _band_edges(data: ModelData) -> tuple[float, float]:
+    idx = data.point_idx
+    rates = (
+        np.asarray(data.n_affected)[idx]
+        / np.maximum(np.asarray(data.n_at_risk)[idx], 1)
+    )
+    nz = rates[rates > 0]
+    if len(nz) < 50:
+        raise ValueError(
+            f"only {len(nz)} non-zero observed cells; band edges computed from this "
+            "would be noise. Check the corpus build."
+        )
+    lo, hi = np.percentile(nz, BAND_PERCENTILES)
+    return float(lo), float(hi)
+
+
 @dataclass
 class Posterior:
     """Posterior draws of the parameters needed for out-of-corpus prediction."""
@@ -70,6 +106,11 @@ class Posterior:
     # chemistry", and those must never render the same way.
     evidence_agents: np.ndarray   # (M, A)
     evidence_arms: np.ndarray     # (M, A)
+    # Which event table this was fitted on, and the band edges measured from it. Carried
+    # together and deliberately: a band is only interpretable against the scale of the
+    # outcome it bands, and the two tables differ by an order of magnitude.
+    kind: str
+    band_edges: tuple[float, float]
 
     @classmethod
     def from_samples(cls, post: dict, data: ModelData) -> "Posterior":
@@ -94,6 +135,8 @@ class Posterior:
             families=list(data.families),
             dar_mean=float(data.dar_mean),
             cleavable_mean=float(data.cleavable_mean),
+            kind=str(getattr(data, "kind", "other")),
+            band_edges=_band_edges(data),
             **_evidence_counts(data),
         )
 
@@ -109,18 +152,20 @@ class Posterior:
             cleavable_mean=np.array([self.cleavable_mean]),
             evidence_agents=self.evidence_agents,
             evidence_arms=self.evidence_arms,
+            kind=np.array([self.kind]),
+            band_edges=np.array(self.band_edges, dtype=float),
         )
 
     # Bumped whenever the saved field set changes, so a stale artefact fails with a
     # sentence rather than a KeyError from deep inside numpy.
-    FORMAT = 4
+    FORMAT = 5
 
     @classmethod
     def load(cls, path: Path) -> "Posterior":
         z = np.load(path, allow_pickle=False)
         missing = {
             "family_axis", "families", "cleavable_mean",
-            "evidence_agents", "evidence_arms",
+            "evidence_agents", "evidence_arms", "kind", "band_edges",
         } - set(z.files)
         if missing:
             raise ValueError(
@@ -139,6 +184,8 @@ class Posterior:
             cleavable_mean=float(z["cleavable_mean"][0]),
             evidence_agents=z["evidence_agents"],
             evidence_arms=z["evidence_arms"],
+            kind=str(z["kind"][0]),
+            band_edges=(float(z["band_edges"][0]), float(z["band_edges"][1])),
         )
 
     @property
@@ -321,16 +368,26 @@ def decompose_summary(terms: list[dict], reported_rate: float) -> dict:
     }
 
 
-def risk_band(point: float, n_supporting_arms: int) -> str:
+def risk_band(
+    point: float, n_supporting_arms: int, band_edges: tuple[float, float]
+) -> str:
     """Band a rate, with no-evidence kept visually distinct from low risk.
 
     An axis with no supporting arms must never render as "low": absence of evidence and
     evidence of safety look identical in a colour scale and are not the same thing.
+
+    `band_edges` is required rather than defaulted. The two event tables differ by an
+    order of magnitude, so a default would silently band serious rates on the common
+    table's scale -- the error that made a 4% serious rate read "low". Pass
+    `posterior.band_edges`, which is measured from the table that posterior was fitted on.
     """
     if n_supporting_arms < MIN_ARMS_FOR_A_BAND:
         return "no_evidence"
-    if point < 0.05:
+    lo, hi = band_edges
+    if not 0 < lo < hi:
+        raise ValueError(f"band edges must satisfy 0 < lo < hi, got {band_edges}")
+    if point < lo:
         return "low"
-    if point < 0.20:
+    if point < hi:
         return "moderate"
     return "high"

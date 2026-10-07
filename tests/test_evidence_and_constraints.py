@@ -29,6 +29,10 @@ from adctox.model.predict import (
 AXES = ["hepatic", "pulmonary", "haematologic"]
 
 
+# The measured otherEvents edges (15th/60th percentile of non-zero observed rates).
+EDGES = (0.0645, 0.2174)
+
+
 def _design(payload="DXd", linker="GGFG", mechanism="topo1", dar=8.0, cleavable=True):
     return Design(
         target="ERBB2", payload=payload, mechanism=mechanism, linker=linker,
@@ -39,15 +43,15 @@ def _design(payload="DXd", linker="GGFG", mechanism="topo1", dar=8.0, cleavable=
 
 def test_no_evidence_band_is_reachable() -> None:
     """The state has to fire below the floor and not fire above it."""
-    assert risk_band(0.01, 0) == "no_evidence"
-    assert risk_band(0.01, MIN_ARMS_FOR_A_BAND - 1) == "no_evidence"
-    assert risk_band(0.01, MIN_ARMS_FOR_A_BAND) == "low"
+    assert risk_band(0.01, 0, EDGES) == "no_evidence"
+    assert risk_band(0.01, MIN_ARMS_FOR_A_BAND - 1, EDGES) == "no_evidence"
+    assert risk_band(0.01, MIN_ARMS_FOR_A_BAND, EDGES) == "low"
 
 
 def test_no_evidence_is_not_low_risk() -> None:
     """A thin axis and a genuinely low-risk axis must not land in the same band, because
     in a colour scale they would be indistinguishable and they mean opposite things."""
-    assert risk_band(0.004, 1) != risk_band(0.004, 40)
+    assert risk_band(0.004, 1, EDGES) != risk_band(0.004, 40, EDGES)
 
 
 def test_c6_blocks_a_candidate_with_no_evidence_on_an_at_risk_axis() -> None:
@@ -95,6 +99,9 @@ def _posterior() -> Posterior:
         axes=AXES, mechanisms=["tubulin", "topo1"],
         families=["auristatin", "camptothecin"],
         dar_mean=4.0, cleavable_mean=0.875,
+        # Passed explicitly, never defaulted: the band scale is a property of the event
+        # table, and an implicit one is what made a 4% serious rate read "low".
+        kind="other", band_edges=(0.0645, 0.2174),
         evidence_agents=np.array([[4, 4, 4], [3, 3, 3]], dtype=np.int32),
         evidence_arms=np.array([[40, 38, 41], [22, 33, 20]], dtype=np.int32),
     )
