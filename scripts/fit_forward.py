@@ -452,8 +452,24 @@ def main() -> int:
         results[gate_key]["macro_auc_mech_baseline"],
         results[gate_key]["macro_auc_global_baseline"],
     )
-    delta_vs_best = gate_auc - best_baseline
-    passed = delta_vs_best > 0
+    # Two aggregations exist and both were being printed as "delta", differing by 50% on
+    # the serious table (-0.0269 against -0.0177) with nothing saying which was which:
+    #
+    #   macro difference  : macro AUC minus the better of the two MACRO baselines. One
+    #                       baseline chosen once, across all folds. No interval.
+    #   paired per-fold   : the mean over folds of (fold AUC minus THAT fold's better
+    #                       baseline), which is what the bootstrap interval is computed
+    #                       on. The baseline gets to pick its best fold by fold.
+    #
+    # They coincide on the other-events table by chance and diverge on serious, because
+    # which baseline wins varies by fold -- global on 10 of 16 for serious, mech on 11 of
+    # 16 for other. The gate is the paired figure, because it is the one with an interval,
+    # and a gate that cannot say whether it cleared zero by more than noise is the kind of
+    # unfireable gate this project already had to replace once.
+    macro_difference = gate_auc - best_baseline
+    delta_vs_best = results[gate_key]["delta_auc_mean"]
+    delta_ci = results[gate_key]["delta_auc_ci"]
+    passed = delta_ci[0] > 0
     out = {
         "kind": args.kind, "corpus": data.summary(), "parameters": acct,
         "seed_agreement": {
@@ -507,9 +523,17 @@ def main() -> int:
     path = args.out / f"forward_{args.kind}_metrics.json"
     write_json(path, out, {"processed": args.processed})
     print(f"\n-> {path}")
-    print(f"\nGATE: {gate_key} macro AUC {gate_auc:.3f} vs best baseline "
-          f"{best_baseline:.3f} -> delta {delta_vs_best:+.3f} -> "
-          f"{'PASS' if passed else 'FAIL'}")
+    print(
+        f"\nGATE: {gate_key} paired per-fold delta {delta_vs_best:+.4f} "
+        f"95% CI [{delta_ci[0]:+.4f}, {delta_ci[1]:+.4f}] -> "
+        f"{'PASS' if passed else 'FAIL'}"
+    )
+    print(
+        f"  (macro AUC {gate_auc:.4f} vs the better macro baseline {best_baseline:.4f} "
+        f"gives {macro_difference:+.4f}; it differs from the paired figure because that "
+        f"one lets the baseline pick its best per fold, and it carries no interval, so "
+        f"the gate is the paired one)"
+    )
     print(f"  (the absolute 0.65 gate reads {gate_auc:.3f} = PASS, but a constant "
           f"global-mean predictor scores {results[gate_key]['macro_auc_global_baseline']:.3f} "
           f"on the same metric, so that gate is not informative)")
