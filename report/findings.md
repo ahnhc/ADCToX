@@ -31,40 +31,48 @@ DM1 chemistry. So the data identifying a design coefficient is `agents x axes = 
 3,990. An earlier draft of this project proposed a 420-parameter design matrix, which is
 0.57 observations per parameter: fewer data points than parameters.
 
-## 3. The forward model does not beat its baseline
+## 3. Forward-model performance: withdrawn pending re-run
 
-Pre-specified metric: AUROC for "this axis is among the arm's observed top three".
+The first evaluation round found the model losing to a base-rate baseline on all three
+held-out splits. Those figures were produced before a non-identifiability was found and
+fixed, and the bug was suppressing the very effect being measured -- the mechanism scale
+recovered from 0.157 to 0.531 once it was removed. The numbers are therefore withdrawn
+rather than restated with a caveat, because a stale number with a note beside it is still
+a number a reader will quote.
 
-| split | model | mechanism-mean | **global axis mean** | delta | 95% CI |
-|---|---|---|---|---|---|
-| leave-one-agent-out (16 folds) | 0.825 | 0.839 | **0.844** | -0.014 | [-0.033, +0.004] |
-| leave-one-mechanism-out (2 folds) | 0.856 | 0.871 | **0.871** | -0.016 | [-0.025, -0.006] |
-| **leave-one-payload-family-out (4 folds)** | **0.781** | 0.851 | **0.853** | **-0.069** | **[-0.116, -0.023]** |
+### 3.1 The bug
 
-The best of the three predictors is the global axis mean, which carries no design
-information at all. The family split is the most damaging and the most informative: held
-out, maytansinoids are predicted at -0.127 against the baseline and auristatins at -0.105,
-because with one family removed the mechanism is represented entirely by the other.
+On a 153-arm corpus the model predicted the otologic axis at 0.9997 against an observed
+rate of 0.04. Two coupled degeneracies: the random intercepts were not constrained to sum
+to zero, so they could carry a common offset collinear with the axis intercept; and
+cleavability entered as a raw indicator which, being nearly constant across 16 agents,
+acted as a second per-axis intercept. In sample both are harmless. Out of sample they are
+not, because predicting a design with no trial and no agent drops the random effects and
+inherits an intercept nothing compensates for.
 
-### 3.1 The gate we set could not fire
+| | before | after |
+|---|---|---|
+| `tau_cleav` | 3.872 (eight times its prior scale) | 0.391 |
+| `tau_mech` | 0.157 | **0.531** |
+| max predicted rate | 1.0000 | 0.3930 |
 
-The protocol said "macro AUC below 0.65 triggers the cut order". The model scores 0.825
-and passes -- but a constant global-axis-mean predictor scores 0.844 on the same metric.
-**A gate that a design-blind constant clears is not a gate.** This was an error in the
-protocol, not in the fitting, and it is worth stating because the failure mode is general:
-an absolute threshold on a metric dominated by base rates cannot detect the failure it was
-written to detect.
+After the fix, predictions track the observed per-axis rates across all fourteen axes.
 
-### 3.2 Why that metric cannot separate the model from the base rate
+### 3.2 The gate was unfireable, independently of the bug
 
-The task ranks 14 axes *inside one arm*. Axis base rates are consistent enough across
-arms that a single fixed ordering is close to optimal everywhere. The model knows those
-base rates too, then perturbs them with design effects that are small relative to the
-between-axis spread. Perturbing a near-optimal ordering can only lose.
+The protocol said "macro AUC below 0.65 triggers the cut order". A constant
+global-axis-mean predictor scores about 0.84 on that metric. **A gate that a design-blind
+constant clears is not a gate**, and this holds whatever the re-run shows: it is a property
+of the metric, not of the model. The failure mode is general -- an absolute threshold on a
+base-rate-dominated metric cannot detect the failure it was written for. Replaced by the
+paired delta against the strongest baseline.
 
-The negative result is therefore real but narrow: design terms do not improve within-arm
-axis ranking. It does not establish that they carry no signal, which is a different
-comparison -- across agents, within an axis -- and is reported separately.
+### 3.3 What the within-arm metric can establish
+
+It ranks 14 axes inside one arm, and axis base rates are consistent enough across arms
+that one fixed ordering is near-optimal. A model that knows those base rates and perturbs
+them has little to gain there. So that metric alone cannot show the design terms carry no
+signal; the across-agent comparison can, and both are reported together.
 
 ## 4. Where it fails is the most informative result
 

@@ -1,6 +1,11 @@
 # Model card: forward organ-toxicity model
 
-**Status: the model does not beat its baseline. Read this section first.**
+**Status: cross-validation is being re-run. Every previously reported CV number was
+produced with an identified bug present and has been withdrawn. Read this section first.**
+
+A non-identifiability was found after the first evaluation round and is described in
+`## The bug that invalidated the first evaluation` below. Until the re-run completes, this
+card states what the corpus is and what the bug was, and quotes no performance figure.
 
 ## Intended use
 
@@ -26,61 +31,67 @@ coefficient is therefore `n_agents x n_axes`:
 
 ## Results
 
-### Pre-specified primary metric: within-arm axis ranking
+**Withdrawn pending re-run.** The first evaluation round reported the model losing to a
+base-rate baseline on three held-out splits. Those numbers were produced before the
+non-identifiability below was fixed, and that bug was demonstrably suppressing the
+mechanism effect -- its scale recovered from 0.157 to 0.531 once the degeneracy was
+removed. A result obtained from a model whose main effect was being absorbed elsewhere
+cannot be reported, in either direction.
 
-AUROC for "this axis is among the arm's observed top three", averaged over folds.
+The artefacts are retained with a `.pre-centering-bug` suffix for comparison once the
+re-run lands, not for quotation.
 
-| split | model | mechanism-mean baseline | global-axis-mean baseline | delta vs mech | 95% CI |
-|---|---|---|---|---|---|
-| leave-one-agent-out (16 folds) | 0.825 | 0.839 | **0.844** | −0.014 | [−0.033, +0.004] |
-| leave-one-mechanism-out (2 folds) | 0.856 | 0.871 | **0.871** | −0.016 | [−0.025, −0.006] |
-| **leave-one-payload-family-out (4 folds)** | **0.781** | 0.851 | **0.853** | **−0.069** | **[−0.116, −0.023]** |
+### The gate, which stands regardless
 
-**The model is worse than the baseline on all three splits, significantly so on the
-mechanism and family ones.** The family split is the clearest: maytansinoids held out
-score −0.127 against the baseline and auristatins −0.105, because removing one family
-leaves its mechanism represented entirely by the other. The best predictor of the three is the global axis mean, which
-contains no design information at all.
+The original gate -- macro AUC below 0.65 triggers the cut order -- is unfireable and has
+been replaced. A constant global-axis-mean predictor scores about 0.84 on that metric, so
+a 0.65 threshold is cleared by a predictor that knows nothing about the design. This is
+independent of the bug: it is a property of the metric, and an absolute threshold on a
+base-rate-dominated metric cannot detect the failure it was written to detect. The gate is
+now the paired delta against the strongest baseline.
 
-### Why the pre-specified gate was unfireable
+### What the within-arm metric can and cannot show
 
-The plan set the gate at "macro AUC below 0.65 triggers the cut order". The model scores
-0.825, so that gate reads PASS -- but a **constant** global-axis-mean predictor scores
-0.844 on the same metric. A gate that a design-blind constant clears is not a gate. It is
-reported for the record and not used; the gate that means something is the delta against
-the strongest baseline, and by that gate the model fails.
+The pre-specified metric ranks 14 axes *inside one arm*. Axis base rates are consistent
+enough across arms that a single fixed ordering is close to optimal everywhere, so a model
+that knows those base rates and then perturbs them with design effects has little room to
+gain and plenty to lose. Whatever the re-run shows, that metric alone cannot establish that
+the design terms carry no signal; the across-agent comparison is the one that can, and both
+are reported together.
 
-This is a mistake in the plan, not in the fitting, and it is worth stating plainly: an
-absolute threshold on a metric dominated by base rates cannot detect the failure it was
-meant to detect.
+## The bug that invalidated the first evaluation
 
-### Why the within-arm metric cannot separate the model from the base rate
+Found by reading one prediction that could not be true: on a 153-arm corpus the model put
+the otologic axis at 0.9997 where its observed rate is 0.04.
 
-The task ranks 14 axes inside one arm. Axis base rates are consistent enough across arms
-that a single fixed ordering -- constitutional, gastrointestinal and infectious near the
-top, otologic near the bottom -- is close to optimal for every arm. The model knows those
-base rates too (`mu_axis`), then perturbs them with design effects that are small relative
-to the between-axis spread. A small perturbation of a near-optimal ordering can only lose.
+Two coupled degeneracies:
 
-So the negative result above is real but narrow: it says the design terms do not improve
-*within-arm axis ranking*. It does not by itself say the design terms carry no signal.
+1. **Random intercepts were not constrained to sum to zero.** A non-centered `sigma * u`
+   with `u ~ Normal(0, 1)` lets the random effects carry a common offset, which is exactly
+   collinear with the axis intercept. The fit could place `mu_axis` far from the data and
+   pull every observed arm back with its random effect. In sample this is harmless; out of
+   sample it is ruinous, because a design with no trial and no agent drops the random
+   effects and inherits the uncompensated intercept.
+2. **Cleavability entered as a raw indicator.** Two of sixteen agents carry a non-cleavable
+   linker, so the indicator is nearly constant and behaves as a second per-axis intercept,
+   unidentified against `mu_axis`.
 
-### Secondary metric, added after seeing the above
+| | before | after |
+|---|---|---|
+| `tau_cleav` | 3.872 (eight times its prior scale) | 0.391 |
+| `tau_mech` | 0.157 | **0.531** |
+| max predicted rate | 1.0000 | 0.3930 |
 
-Across-agent, within-axis rank correlation: for one axis, can the model order the agents
-from low to high? This is the comparison the product actually makes ("is lung risk high
-for *this* design"), and the global axis mean has zero discriminative power on it by
-construction, being constant across agents.
+The `tau_mech` recovery is the consequential line: the degenerate cleavability term had
+been absorbing the mechanism effect, so the first evaluation measured a model whose main
+effect was being soaked up by an artefact.
 
-Adding a metric after seeing a negative result risks post-hoc selection, so: the reason
-for adding it is stated above and is independent of the outcome, and the pass threshold
-was fixed before running it -- mean Spearman above +0.3 with a bootstrap CI excluding
-zero. Results are in `artifacts/forward_other_metrics.json` under
-`across_agent_spearman`; both metrics are always reported together.
+## Where the model failed in the first round, and why the pattern is informative
 
-## Where the model fails, and why that is informative
+These per-fold numbers are from the pre-fix model and are listed for the *pattern*, not
+the values. Whether the pattern survives the re-run is itself a result.
 
-The worst folds are the agents whose toxicity signature differs most from the other
+The worst folds were the agents whose toxicity signature differs most from the other
 members of their mechanism group:
 
 | fold | delta vs mech baseline | signature |
