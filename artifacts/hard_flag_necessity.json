@@ -1,0 +1,77 @@
+{
+ "band_edges": [
+  0.007462686567164179,
+  0.025
+ ],
+ "dar_used": 4.0,
+ "n_flags": 5,
+ "n_load_bearing": 3,
+ "n_confirmatory": 2,
+ "flags": [
+  {
+   "flag": "dxd_prior_ild",
+   "mechanism": "topo1",
+   "payload": "DXd",
+   "axis": "pulmonary",
+   "serious_rate": 0.02930044304160355,
+   "n_arms": 67,
+   "band_model_alone": "high",
+   "band_with_rule": "high",
+   "rule_is_load_bearing": false,
+   "source_label": "ENHERTU",
+   "source_section": "BOXED WARNING"
+  },
+  {
+   "flag": "calicheamicin_prior_vod",
+   "mechanism": "dna_cleave",
+   "payload": "calicheamicin",
+   "axis": "hepatic",
+   "serious_rate": 0.016382416193246076,
+   "n_arms": 26,
+   "band_model_alone": "moderate",
+   "band_with_rule": "high",
+   "rule_is_load_bearing": true,
+   "source_label": "BESPONSA",
+   "source_section": "BOXED WARNING"
+  },
+  {
+   "flag": "vedotin_prior_sjs_ten",
+   "mechanism": "tubulin",
+   "payload": "MMAE",
+   "axis": "dermatologic",
+   "serious_rate": 0.004553263944065119,
+   "n_arms": 82,
+   "band_model_alone": "low",
+   "band_with_rule": "high",
+   "rule_is_load_bearing": true,
+   "source_label": "PADCEV",
+   "source_section": "BOXED WARNING"
+  },
+  {
+   "flag": "mmaf_prior_keratopathy",
+   "mechanism": "tubulin",
+   "payload": "MMAF",
+   "axis": "ocular",
+   "serious_rate": 0.0017455107001800318,
+   "n_arms": 62,
+   "band_model_alone": "low",
+   "band_with_rule": "high",
+   "rule_is_load_bearing": true,
+   "source_label": "BLENREP",
+   "source_section": "BOXED WARNING"
+  },
+  {
+   "flag": "dxd_moderate_renal_pulmonary",
+   "mechanism": "topo1",
+   "payload": "DXd",
+   "axis": "pulmonary",
+   "serious_rate": 0.02930044304160355,
+   "n_arms": 67,
+   "band_model_alone": "high",
+   "band_with_rule": "high",
+   "rule_is_load_bearing": false,
+   "source_label": "ENHERTU",
+   "source_section": "USE IN SPECIFIC POPULATIONS -- Renal Impairment"
+  }
+ ]
+}

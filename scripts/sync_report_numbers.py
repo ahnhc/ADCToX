@@ -31,6 +31,9 @@ END = "<!-- /generated: fitted-parameters -->"
 # its six figures were stale after one -- so it is generated too.
 CENS_BEGIN = "<!-- generated: censoring-sensitivity -->"
 CENS_END = "<!-- /generated: censoring-sensitivity -->"
+HFN_BEGIN = "<!-- generated: hard-flag-necessity -->"
+HFN_END = "<!-- /generated: hard-flag-necessity -->"
+
 LCE_BEGIN = "<!-- generated: label-change -->"
 LCE_END = "<!-- /generated: label-change -->"
 
@@ -191,6 +194,49 @@ def build_results_block(metrics: dict, dose: dict | None) -> str | None:
     return "\n".join(out)
 
 
+def build_hard_flag_block(doc: dict) -> str | None:
+    """What the label-rule layer still has to carry, and what it no longer does."""
+    rows = doc.get("flags") or []
+    if not rows:
+        return None
+    lines = [
+        HFN_BEGIN, "",
+        "| label rule | serious rate | model alone | with rule | |",
+        "|---|---|---|---|---|",
+    ]
+    for r in rows:
+        verdict = "**load-bearing**" if r["rule_is_load_bearing"] else "confirmatory"
+        lines.append(
+            f"| `{r['flag']}` ({r['source_label']}) | {r['serious_rate']:.4f} | "
+            f"{r['band_model_alone']} | {r['band_with_rule']} | {verdict} |"
+        )
+    carried = [r for r in rows if r["rule_is_load_bearing"]]
+    free = [r for r in rows if not r["rule_is_load_bearing"]]
+    lines += ["", (
+        f"The rule layer is load-bearing for **{doc['n_load_bearing']} of "
+        f"{doc['n_flags']}** flags. It is confirmatory for "
+        + ", ".join(f"`{r['flag']}`" for r in free)
+        + " -- both deruxtecan/pulmonary -- which means the model now reaches the "
+          "boxed-warning band there on its own. That matters beyond tidiness: while the "
+          "rule was raising that band, the ILD case study was deciding its own question."
+    )]
+    pay = sorted({f"{r['payload']}/{r['axis']}" for r in carried
+                  if r["mechanism"] == "tubulin"})
+    if pay:
+        lines += ["", (
+            "What the rules still carry is the informative part: "
+            + ", ".join(pay)
+            + ". Both are payload-level effects inside a single mechanism, and both are "
+            "boxed warnings the model ranks `low`. That is not a bug to fix -- it is the "
+            "same identification limit this report measures three other ways. The "
+            "mechanism level is too coarse to separate MMAE from MMAF, and the payload "
+            "family level does not converge at any corpus size reachable here, so these "
+            "two warnings cannot come from the fit and have to come from the label."
+        )]
+    lines.append(HFN_END)
+    return "\n".join(lines)
+
+
 def build_label_change_block(doc: dict) -> str | None:
     """The Module B anticipatory result.
 
@@ -275,6 +321,8 @@ def main() -> int:
                     default=Path("artifacts/dose_mod_eval.json"))
     ap.add_argument("--label-change", type=Path,
                     default=Path("artifacts/label_change_eval.json"))
+    ap.add_argument("--hard-flags", type=Path,
+                    default=Path("artifacts/hard_flag_necessity.json"))
     # Both documents quoted the same parameters and both were stale. The model card was
     # worse off: check_report.py only scanned report/, so its figures were never checked
     # at all.
@@ -295,6 +343,10 @@ def main() -> int:
         if args.dose_mod.exists() else None
     )
     res_block = build_results_block(metrics, dose)
+    hfn_block = (
+        build_hard_flag_block(json.loads(args.hard_flags.read_text(encoding="utf-8")))
+        if args.hard_flags.exists() else None
+    )
     lce_block = (
         build_label_change_block(
             json.loads(args.label_change.read_text(encoding="utf-8"))
@@ -313,6 +365,7 @@ def main() -> int:
     )
     res_pattern = re.compile(re.escape(RES_BEGIN) + r".*?" + re.escape(RES_END), re.S)
     lce_pattern = re.compile(re.escape(LCE_BEGIN) + r".*?" + re.escape(LCE_END), re.S)
+    hfn_pattern = re.compile(re.escape(HFN_BEGIN) + r".*?" + re.escape(HFN_END), re.S)
     rc = 0
     for doc in args.report:
         text = doc.read_text(encoding="utf-8")
@@ -326,6 +379,16 @@ def main() -> int:
                     text = replaced
                     doc.write_text(text, encoding="utf-8")
                     print(f"{doc}: results table regenerated")
+        if hfn_block and hfn_pattern.search(text):
+            replaced = hfn_pattern.sub(lambda _: hfn_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: hard-flag block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: hard-flag block regenerated")
         if lce_block and lce_pattern.search(text):
             replaced = lce_pattern.sub(lambda _: lce_block, text)
             if replaced != text:

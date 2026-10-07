@@ -11,12 +11,13 @@ ART     := artifacts
 
 .PHONY: all env taxonomy corpus eligibility enrichment forward propose test \
         censoring-sensitivity label-history label-changes label-change-eval \
-        dose-mod dose-mod-eval module-b sync-report check-report clean
+        dose-mod dose-mod-eval module-b hard-flags sync-report check-report clean
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
 # sensitivity analysis while the report cited both.
-all: taxonomy corpus forward censoring-sensitivity enrichment module-b propose test check-report
+all: taxonomy corpus forward censoring-sensitivity enrichment module-b propose test \
+     hard-flags check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
 # comparison. Both depend on fetched label data, so the fetches are separate targets --
@@ -94,10 +95,15 @@ test:
 # Regenerate the report's fitted-parameter block before checking it, so a refit cannot
 # leave the prose quoting last week's posterior. The report had three stale parameters and
 # quoted one number as both current and pre-fix.
+# How much of the output is the rule layer rather than the fit? Measured, because a rule
+# that raises the band the ILD case study is about would make that case study circular.
+hard-flags:
+	$(PY) scripts/hard_flag_necessity.py --out $(ART)
+
 sync-report:
 	$(PY) scripts/sync_report_numbers.py
 
-check-report: sync-report
+check-report: hard-flags sync-report
 	$(PY) scripts/check_report.py report/
 
 clean:

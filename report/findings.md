@@ -319,6 +319,26 @@ of non-zero observed rates in the table each posterior was fitted on, stored in 
 artefact — computed rather than asserted, like the C2 dose floor. `risk_band` requires the
 edges instead of defaulting them, because an implicit scale is exactly how this happened.
 
+## 5d. How much work does the label-rule layer do?
+
+The rules are label-derived overrides that can only raise a band. They are a liability if
+they are doing the model's job, so each one's marginal contribution is measured.
+
+<!-- generated: hard-flag-necessity -->
+
+| label rule | serious rate | model alone | with rule | |
+|---|---|---|---|---|
+| `dxd_prior_ild` (ENHERTU) | 0.0293 | high | high | confirmatory |
+| `calicheamicin_prior_vod` (BESPONSA) | 0.0164 | moderate | high | **load-bearing** |
+| `vedotin_prior_sjs_ten` (PADCEV) | 0.0046 | low | high | **load-bearing** |
+| `mmaf_prior_keratopathy` (BLENREP) | 0.0017 | low | high | **load-bearing** |
+| `dxd_moderate_renal_pulmonary` (ENHERTU) | 0.0293 | high | high | confirmatory |
+
+The rule layer is load-bearing for **3 of 5** flags. It is confirmatory for `dxd_prior_ild`, `dxd_moderate_renal_pulmonary` -- both deruxtecan/pulmonary -- which means the model now reaches the boxed-warning band there on its own. That matters beyond tidiness: while the rule was raising that band, the ILD case study was deciding its own question.
+
+What the rules still carry is the informative part: MMAE/dermatologic, MMAF/ocular. Both are payload-level effects inside a single mechanism, and both are boxed warnings the model ranks `low`. That is not a bug to fix -- it is the same identification limit this report measures three other ways. The mechanism level is too coarse to separate MMAE from MMAF, and the payload family level does not converge at any corpus size reachable here, so these two warnings cannot come from the fit and have to come from the label.
+<!-- /generated: hard-flag-necessity -->
+
 ## 6. The exclusion-criteria signal
 
 1,281 ADC trials against 2,481 oncology controls, all with eligibility text. Enrichment
