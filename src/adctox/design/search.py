@@ -93,6 +93,10 @@ def score_designs(
     engine: ConstraintEngine,
     at_risk_axes: set[str] | None = None,
     selectivity: dict[str, float] | None = None,
+    # Evidence per axis for each mechanism, so the engine's C6 check can fire: a
+    # candidate whose chemistry is unstudied on an at-risk organ must not be ranked as
+    # though it were safe there.
+    evidence_by_mechanism: dict[str, dict[str, int]] | None = None,
 ) -> list[ScoredDesign]:
     """Score candidates. `rate_draws` is (n_draws, n_designs, n_axes), paired across designs."""
     if rate_draws.shape[1] != len(designs) or rate_draws.shape[2] != len(axes):
@@ -110,7 +114,10 @@ def score_designs(
         lo = np.percentile(rate_draws[:, j, :], 5, axis=0)
         hi = np.percentile(rate_draws[:, j, :], 95, axis=0)
         worst = int(np.argmax(mean_rates))
-        res = engine.check(design, at_risk_axes=at_risk_axes, selectivity=selectivity)
+        res = engine.check(
+            design, at_risk_axes=at_risk_axes, selectivity=selectivity,
+            evidence_arms=(evidence_by_mechanism or {}).get(design.mechanism),
+        )
         out.append(
             ScoredDesign(
                 design=design,
@@ -189,6 +196,10 @@ def why_not_the_obvious_one(
     engine: ConstraintEngine,
     at_risk_axes: set[str] | None = None,
     selectivity: dict[str, float] | None = None,
+    # Evidence per axis for each mechanism, so the engine's C6 check can fire: a
+    # candidate whose chemistry is unstudied on an at-risk organ must not be ranked as
+    # though it were safe there.
+    evidence_by_mechanism: dict[str, dict[str, int]] | None = None,
 ) -> dict | None:
     """The best-*scoring* candidate that a constraint excluded, and which one excluded it.
 
@@ -200,7 +211,10 @@ def why_not_the_obvious_one(
     o1 = (rate_draws * w[None, None, :]).sum(axis=2).mean(axis=0)
     best, best_o1, best_res = None, np.inf, None
     for j, design in enumerate(designs):
-        res = engine.check(design, at_risk_axes=at_risk_axes, selectivity=selectivity)
+        res = engine.check(
+            design, at_risk_axes=at_risk_axes, selectivity=selectivity,
+            evidence_arms=(evidence_by_mechanism or {}).get(design.mechanism),
+        )
         if res.passed:
             continue
         if o1[j] < best_o1:
@@ -209,7 +223,8 @@ def why_not_the_obvious_one(
         return None
     passing_o1 = [
         float(o1[j]) for j, d in enumerate(designs) if engine.check(
-            d, at_risk_axes=at_risk_axes, selectivity=selectivity
+            d, at_risk_axes=at_risk_axes, selectivity=selectivity,
+            evidence_arms=(evidence_by_mechanism or {}).get(d.mechanism),
         ).passed
     ]
     return {

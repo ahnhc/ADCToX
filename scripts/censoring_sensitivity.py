@@ -52,6 +52,8 @@ def _summarize(post: dict, data) -> dict:
     out = {}
     for name in ("tau_mech", "tau_cleav", "b_thresh", "b_dar", "b_combo", "b_log_n",
                  "sigma_trial", "sigma_agent"):
+        if name not in post:
+            continue
         v = np.asarray(post[name])
         out[name] = {
             "mean": float(v.mean()),
@@ -62,7 +64,8 @@ def _summarize(post: dict, data) -> dict:
             ),
         }
     # Mechanism x axis profile, so the three variants can be compared on substance and
-    # not only on the nuisance coefficient.
+    # not only on the nuisance coefficient. Read off the mechanism term directly; the
+    # family level is disabled, so the nested family effect equals its mechanism's.
     mech = np.asarray(post["tau_mech"])[:, None, None] * np.asarray(post["mech_axis_raw"])
     out["mech_axis_mean"] = {
         m: {a: float(mech[:, i, j].mean()) for j, a in enumerate(data.axes)}
@@ -127,11 +130,24 @@ def main() -> int:
         bt = res["b_thresh"]
         print(f"  {label:18s} {bt['mean']:+.4f} [{bt['q05']:+.4f}, {bt['q95']:+.4f}]")
     print(
-        "\nReading: a threshold coefficient that stays near zero under the censored\n"
-        "likelihood but moves away from zero under zero-imputation is the expected\n"
-        "signature -- it means the correction is absorbing a reporting artefact that would\n"
-        "otherwise be attributed to the design."
+        "\nReading: a threshold coefficient that stays small under the censored likelihood\n"
+        "but grows under zero-imputation is the expected signature -- the correction is\n"
+        "absorbing a reporting artefact that would otherwise be attributed to the design.\n"
+        "What would falsify the correction: b_thresh being equally small under\n"
+        "zero-imputation, meaning it solves a problem that does not exist; or the\n"
+        "censored and completely-reported corpora disagreeing on the mechanism profiles,\n"
+        "meaning it creates signal rather than recovering it."
     )
+    if "censored" in results and "zero_imputed" in results:
+        a = results["censored"]["b_thresh"]["mean"]
+        b = results["zero_imputed"]["b_thresh"]["mean"]
+        ratio = abs(b) / max(abs(a), 1e-9)
+        print(f"\n  |b_thresh| grows {ratio:.1f}x under zero-imputation "
+              f"({a:+.4f} -> {b:+.4f})")
+        if ratio < 1.5:
+            print("  That is NOT the expected signature. Either the censoring correction "
+                  "is unnecessary here, or the imputation variant is not doing what it "
+                  "claims; investigate before relying on either.")
 
     # Substance check: do the censored and complete-reporting corpora agree on the
     # mechanism profiles? If not, the censoring model is creating signal, not recovering it.

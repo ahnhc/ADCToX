@@ -241,7 +241,13 @@ def propose_endpoint(req: ProposeRequest) -> JSONResponse:
 def assess_endpoint(req: AssessRequest) -> JSONResponse:
     """Expert mode: score one fully specified design."""
     from ..design.enumerate import Design
-    from ..model.predict import predict_draws, risk_band
+    from ..model.predict import (
+        MIN_ARMS_FOR_A_BAND,
+        decompose,
+        decompose_summary,
+        predict_draws,
+        risk_band,
+    )
     from ..pipeline import _FAMILY_OF
 
     space = DesignSpace()
@@ -296,32 +302,45 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
     )
     comorb = resolve_comorbidities(req.comorbidity_profile.condition_ids)
     rates = draws[:, 0, :]
+    mi = post.mechanisms.index(design.mechanism)
     organ_risks = []
     for i, axis in enumerate(axes):
         mean = float(rates[:, i].mean())
+        n_arms = int(post.evidence_arms[mi, i])
+        n_agents = int(post.evidence_agents[mi, i])
+        band = risk_band(mean, n_arms)
+        weight = 1.0 + 2.0 * comorb.severity_by_axis.get(axis, 0.0)
+        drivers = decompose(post, design.mechanism, family, design.dar,
+                            design.cleavable, axis)
+        if axis in comorb.at_risk_axes:
+            # Kept in the same list but marked, because a reader has to be able to see
+            # that this term is a declared weight and not a fitted effect.
+            drivers.append(
+                {
+                    "factor": f"comorbidity weighting on {axis}",
+                    "detail": "multiplies the objective, does not change the estimate",
+                    "source": "elicited_prior",
+                    "contribution": round(weight, 4),
+                }
+            )
         organ_risks.append(
             {
                 "organ_axis": axis, "label": tax.axes[axis],
-                "point_estimate": round(mean, 4),
+                # Withheld where the corpus has too little to say; see MIN_ARMS_FOR_A_BAND.
+                "point_estimate": round(mean, 4) if n_arms >= MIN_ARMS_FOR_A_BAND else None,
                 "interval": {
                     "lo": round(float(np.percentile(rates[:, i], 5)), 4),
                     "hi": round(float(np.percentile(rates[:, i], 95)), 4),
                     "kind": "credible_90",
                 },
-                "risk_band": risk_band(mean, 1),
-                "weight_applied": 1.0 + 2.0 * comorb.severity_by_axis.get(axis, 0.0),
+                "risk_band": band,
+                "n_supporting_agents": n_agents,
+                "n_supporting_arms": n_arms,
+                "weight_applied": weight,
                 "at_risk_for_patient": axis in comorb.at_risk_axes,
-                "drivers": [
-                    {"factor": f"payload_mechanism={design.mechanism}",
-                     "source": "model", "contribution": None},
-                    {"factor": f"linker_cleavable={design.cleavable}",
-                     "source": "model", "contribution": None},
-                    {"factor": f"dar={design.dar}", "source": "model", "contribution": None},
-                ]
-                + (
-                    [{"factor": f"comorbidity weighting on {axis}",
-                      "source": "elicited_prior", "contribution": None}]
-                    if axis in comorb.at_risk_axes else []
+                "drivers": drivers,
+                "driver_sum": decompose_summary(
+                    [d for d in drivers if d["source"] == "model"], mean
                 ),
             }
         )

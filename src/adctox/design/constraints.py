@@ -82,6 +82,8 @@ class ConstraintEngine:
         at_risk_axes: set[str] | None = None,
         selectivity: dict[str, float] | None = None,
         max_ic50_nm: float = 1000.0,
+        evidence_arms: dict[str, int] | None = None,
+        min_arms: int = 3,
     ) -> ConstraintResult:
         """Evaluate every constraint. `margins` are normalized slack, higher is safer."""
         failures: list[str] = []
@@ -134,5 +136,22 @@ class ConstraintEngine:
         if design.dar > self.dar_cap:
             failures.append(f"C5 DAR {design.dar} above hard cap {self.dar_cap}")
         margins["C5_dar_headroom"] = float(self.dar_cap - design.dar)
+
+        # C6: the system must be able to speak to the question it was asked. If an organ
+        # the patient cannot afford has no evidence for this chemistry, the candidate is
+        # not safer than its rivals -- it is unstudied, and ranking it as though the two
+        # were the same rewards ignorance.
+        if at_risk_axes and evidence_arms is not None:
+            thin = sorted(
+                a for a in at_risk_axes if evidence_arms.get(a, 0) < min_arms
+            )
+            worst = min((evidence_arms.get(a, 0) for a in at_risk_axes), default=min_arms)
+            margins["C6_evidence_on_at_risk_axes"] = float(worst - min_arms)
+            if thin:
+                failures.append(
+                    f"C6 no usable evidence for this chemistry on "
+                    f"{', '.join(thin)}, which this profile flags as at risk "
+                    f"(fewer than {min_arms} supporting arms)"
+                )
 
         return ConstraintResult(not failures, failures, margins)

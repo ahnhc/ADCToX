@@ -148,6 +148,8 @@ def test_posterior_round_trips_every_field_load_requires() -> None:
         mechanisms=["tubulin", "topo1"],
         families=["auristatin", "camptothecin"],
         dar_mean=4.0, cleavable_mean=0.875,
+        evidence_agents=np.array([[4, 4, 3], [3, 2, 3]], dtype=np.int32),
+        evidence_arms=np.array([[40, 38, 31], [22, 14, 20]], dtype=np.int32),
     )
     with tempfile.TemporaryDirectory() as tmp:
         path = _Path(tmp) / "p.npz"
@@ -159,3 +161,5 @@ def test_posterior_round_trips_every_field_load_requires() -> None:
     assert back.cleavable_mean == post.cleavable_mean
     assert back.dar_mean == post.dar_mean
     assert back.family_axis.shape == post.family_axis.shape
+    assert (back.evidence_arms == post.evidence_arms).all()
+    assert (back.evidence_agents == post.evidence_agents).all()

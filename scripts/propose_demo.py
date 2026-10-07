@@ -103,9 +103,14 @@ def main() -> int:
             print(f"    high-band axes NOT weighted for this patient: {', '.join(high)}")
         at_risk = [r for r in c["organ_risks"] if r["at_risk_for_patient"]]
         for r in at_risk:
-            print(f"      * {r['organ_axis']:20s} {r['point_estimate']:.3f} "
+            # A withheld point estimate is not a formatting edge case: the corpus has too
+            # little on that organ for this chemistry to band a rate at all.
+            pt = ("     n/a" if r["point_estimate"] is None
+                  else f"{r['point_estimate']:8.3f}")
+            ev = f"{r.get('n_supporting_arms', 0)} arms"
+            print(f"      * {r['organ_axis']:20s} {pt} "
                   f"[{r['interval']['lo']:.3f}, {r['interval']['hi']:.3f}] "
-                  f"{r['risk_band']}  (weight x{r['weight_applied']:.1f})")
+                  f"{r['risk_band']:12s} (weight x{r['weight_applied']:.1f}, {ev})")
 
     if result["why_not_the_obvious_one"]:
         w = result["why_not_the_obvious_one"]

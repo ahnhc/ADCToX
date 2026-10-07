@@ -24,7 +24,12 @@ from .design.search import (
     score_designs,
     why_not_the_obvious_one,
 )
-from .model.predict import Posterior, predict_draws, risk_band
+from .model.predict import (
+    MIN_ARMS_FOR_A_BAND,
+    Posterior,
+    predict_draws,
+    risk_band,
+)
 from .taxonomy import Taxonomy
 
 CONF = Path(__file__).resolve().parents[2] / "conf"
@@ -141,14 +146,36 @@ def propose(
     designs, _rejections = space.enumerate(
         target_antigen, tier=1, include_unapproved_conjugation=include_tier_1_5
     )
-    passing = [d for d in designs if engine.check(d).passed]
+    comorb = resolve_comorbidities(condition_ids)
+
+    def evidence_for(mechanism: str, axis: str) -> tuple[int, int]:
+        """Agents and arms behind a (mechanism, axis) estimate, 0 if the corpus is silent."""
+        if mechanism not in posterior.mechanisms or axis not in axes:
+            return (0, 0)
+        mi, ai = posterior.mechanisms.index(mechanism), axes.index(axis)
+        return (
+            int(posterior.evidence_agents[mi, ai]),
+            int(posterior.evidence_arms[mi, ai]),
+        )
+    def evidence_map(mechanism: str) -> dict[str, int]:
+        return {a: evidence_for(mechanism, a)[1] for a in axes}
+
+    # Constraints are evaluated with the evidence in hand, so C6 can fire.
+    passing = [
+        d for d in designs
+        if engine.check(
+            d, at_risk_axes=comorb.at_risk_axes,
+            evidence_arms=evidence_map(d.mechanism),
+        ).passed
+    ]
     if not passing:
         raise ValueError(
-            f"no chemically valid, precedented design passes the constraints for "
-            f"{target_antigen}"
+            f"no design for {target_antigen} both passes the chemistry and potency "
+            "constraints and has usable evidence on the organs this profile flags as at "
+            f"risk ({', '.join(sorted(comorb.at_risk_axes)) or 'none'}). The corpus "
+            "cannot speak to the question as asked."
         )
 
-    comorb = resolve_comorbidities(condition_ids)
     weights = comorbidity_weights(axes, comorb.severity_by_axis, lam=lam)
 
     def draws_for(ds: list[Design]) -> np.ndarray:
@@ -164,11 +191,13 @@ def propose(
         passing, draws_for(passing), axes, weights,
         _precedent_scores(passing), engine,
         at_risk_axes=comorb.at_risk_axes,
+        evidence_by_mechanism={m: evidence_map(m) for m in posterior.mechanisms},
     )
     ordered, pareto, groups = rank_and_group(scored)
     why_not = why_not_the_obvious_one(
         designs, draws_for(designs), axes, weights, engine,
         at_risk_axes=comorb.at_risk_axes,
+        evidence_by_mechanism={m: evidence_map(m) for m in posterior.mechanisms},
     )
 
     # O1 is the ranking key, but a candidate can minimise patient-weighted risk while
@@ -182,7 +211,8 @@ def propose(
         nearest, diff = _nearest_real_adc(s.design, registry)
         high_axes = [
             a for a in axes
-            if risk_band(s.organ_risk[a], 1) == "high" and a not in comorb.at_risk_axes
+            if risk_band(s.organ_risk[a], evidence_for(s.design.mechanism, a)[1]) == "high"
+            and a not in comorb.at_risk_axes
         ]
         candidates.append(
             {
@@ -197,13 +227,24 @@ def propose(
                 "organ_risks": [
                     {
                         "organ_axis": a, "label": tax.axes[a],
-                        "point_estimate": round(s.organ_risk[a], 4),
+                        # Suppressed where the corpus has too little to say: a point
+                        # estimate on an unevidenced axis is the prior wearing a number.
+                        "point_estimate": (
+                            round(s.organ_risk[a], 4)
+                            if evidence_for(s.design.mechanism, a)[1]
+                            >= MIN_ARMS_FOR_A_BAND
+                            else None
+                        ),
                         "interval": {
                             "lo": round(s.organ_interval[a][0], 4),
                             "hi": round(s.organ_interval[a][1], 4),
                             "kind": "credible_90",
                         },
-                        "risk_band": risk_band(s.organ_risk[a], 1),
+                        "risk_band": risk_band(
+                            s.organ_risk[a], evidence_for(s.design.mechanism, a)[1]
+                        ),
+                        "n_supporting_agents": evidence_for(s.design.mechanism, a)[0],
+                        "n_supporting_arms": evidence_for(s.design.mechanism, a)[1],
                         "weight_applied": weights[a],
                         "at_risk_for_patient": a in comorb.at_risk_axes,
                     }
