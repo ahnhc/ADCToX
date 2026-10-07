@@ -1,0 +1,101 @@
+# Label-derived overrides that stand regardless of what the model scores.
+#
+# Why these exist and why they are kept apart from the model: a handful of
+# chemistry-comorbidity pairs are addressed directly in approved labelling, and in those
+# cases a regulator has already answered the question the model is guessing at. The
+# arithmetic must not be able to outvote them.
+#
+# Why they are marked `source: rule` everywhere they appear: a reviewer will ask whether a
+# red pulmonary axis for a deruxtecan design is a prediction or something we wrote down.
+# If the output cannot answer that, the model's own predictions lose credibility by
+# association. So every flag carries its quotation and the section it came from, and the
+# case-study evaluation runs with the rule layer switched off.
+#
+# Quotations are verbatim from the FDA label sections named. Those documents are public
+# domain, so they are reproduced rather than paraphrased.
+
+version: 1
+curated_at: 2026-10-07
+
+flags:
+  - id: dxd_prior_ild
+    mechanisms: [topo1]
+    payloads: [DXd, exatecan]
+    comorbidities: [interstitial_lung_disease, pulmonary_fibrosis, prior_chest_radiation]
+    axis: pulmonary
+    tier: avoid
+    source_label: ENHERTU
+    source_section: BOXED WARNING
+    quote: >
+      INTERSTITIAL LUNG DISEASE and EMBRYO-FETAL TOXICITY. Interstitial lung disease
+      (ILD) and pneumonitis, including fatal cases, have been reported with ENHERTU.
+    note: >
+      Deruxtecan ILD is HER2-independent and has been reported for non-HER2 deruxtecan
+      conjugates, so the flag is keyed on the payload rather than on the target.
+
+  - id: calicheamicin_prior_vod
+    mechanisms: [dna_cleave]
+    payloads: [calicheamicin]
+    comorbidities: [hepatic_vod_history, cirrhosis, chronic_liver_disease]
+    axis: hepatic
+    tier: avoid
+    source_label: BESPONSA
+    source_section: BOXED WARNING
+    quote: >
+      HEPATOTOXICITY, INCLUDING HEPATIC VENO-OCCLUSIVE DISEASE (VOD). Hepatotoxicity,
+      including fatal and life-threatening VOD, occurred in patients with relapsed or
+      refractory acute lymphoblastic leukemia who received BESPONSA.
+    note: >
+      Both approved calicheamicin conjugates carry a hepatic boxed warning, so the flag is
+      keyed on the payload.
+
+  - id: vedotin_prior_sjs_ten
+    mechanisms: [tubulin]
+    payloads: [MMAE]
+    comorbidities: [prior_sjs_ten]
+    axis: dermatologic
+    tier: avoid
+    source_label: PADCEV
+    source_section: BOXED WARNING
+    quote: >
+      SERIOUS SKIN REACTIONS. PADCEV can cause severe and fatal cutaneous adverse
+      reactions including Stevens-Johnson syndrome (SJS) and toxic epidermal necrolysis
+      (TEN).
+    note: Added to the boxed warning in July 2021, about nineteen months after approval.
+
+  - id: mmaf_prior_keratopathy
+    mechanisms: [tubulin]
+    payloads: [MMAF]
+    comorbidities: [keratopathy_history, prior_corneal_surgery, dry_eye]
+    axis: ocular
+    tier: avoid
+    source_label: BLENREP
+    source_section: BOXED WARNING
+    quote: >
+      OCULAR TOXICITY. BLENREP caused changes in the corneal epithelium resulting in
+      changes in vision, including severe vision loss and corneal ulcer, and symptoms such
+      as blurred vision and dry eyes.
+    note: >
+      Keratopathy occurs although BCMA is absent from cornea; the mechanism is
+      macropinocytosis into corneal epithelium, so the flag is keyed on the payload and not
+      on target expression.
+
+  - id: dxd_moderate_renal_pulmonary
+    mechanisms: [topo1]
+    payloads: [DXd, exatecan]
+    comorbidities: [ckd_stage_3, ckd_stage_4_5]
+    axis: pulmonary
+    tier: monitor
+    source_label: ENHERTU
+    source_section: USE IN SPECIFIC POPULATIONS -- Renal Impairment
+    quote: >
+      A higher incidence of Grade 1 and 2 ILD/pneumonitis has been observed in patients
+      with moderate renal impairment.
+    note: >
+      The one cross-organ statement in the corpus: a renal comorbidity raising a
+      *pulmonary* risk. Worth keeping visible because it is exactly the kind of coupling
+      the model has no data to learn and the comorbidity layer is otherwise only guessing
+      at.
+
+# Tier ordering, strongest first. A flag can only raise a concern, never lower one.
+tier_order: [avoid, monitor]

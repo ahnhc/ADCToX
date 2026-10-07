@@ -1,5 +1,5 @@
 {
- "proposal_id": "prp_8758c8730589",
+ "proposal_id": "prp_a2055895b81b",
  "target_antigen": "ERBB2",
  "n_enumerated": 106,
  "n_passed_constraints": 74,
@@ -10,6 +10,7 @@
    "on_pareto_front": true,
    "unweighted_high_axes": [
     "haematologic",
+    "hepatic",
     "gastrointestinal",
     "constitutional"
    ],
@@ -17,7 +18,7 @@
    "design": {
     "target": "ERBB2",
     "payload": "calicheamicin",
-    "linker": "sulfo_SPDB",
+    "linker": "SMCC",
     "conjugation": "lysine",
     "dar": 2.0,
     "isotype": "IgG1",
@@ -28,13 +29,15 @@
     {
      "organ_axis": "haematologic",
      "label": "Haematologic",
-     "point_estimate": 0.5082,
+     "point_estimate": 0.4135,
      "interval": {
-      "lo": 0.4273,
-      "hi": 0.5996,
+      "lo": 0.3397,
+      "hi": 0.4926,
       "kind": "credible_90"
      },
      "risk_band": "high",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 36,
      "weight_applied": 1.0,
@@ -43,13 +46,15 @@
     {
      "organ_axis": "hepatic",
      "label": "Hepatic",
-     "point_estimate": 0.1873,
+     "point_estimate": 0.2482,
      "interval": {
-      "lo": 0.1415,
-      "hi": 0.2453,
+      "lo": 0.1923,
+      "hi": 0.3076,
       "kind": "credible_90"
      },
-     "risk_band": "moderate",
+     "risk_band": "high",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 31,
      "weight_applied": 1.0,
@@ -58,13 +63,15 @@
     {
      "organ_axis": "cardiovascular",
      "label": "Cardiovascular",
-     "point_estimate": 0.0682,
+     "point_estimate": 0.0591,
      "interval": {
-      "lo": 0.0499,
-      "hi": 0.0949,
+      "lo": 0.0411,
+      "hi": 0.0816,
       "kind": "credible_90"
      },
      "risk_band": "moderate",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 30,
      "weight_applied": 1.0,
@@ -73,13 +80,15 @@
     {
      "organ_axis": "pulmonary",
      "label": "Pulmonary",
-     "point_estimate": 0.0951,
+     "point_estimate": 0.1252,
      "interval": {
-      "lo": 0.0687,
-      "hi": 0.1293,
+      "lo": 0.0908,
+      "hi": 0.1637,
       "kind": "credible_90"
      },
      "risk_band": "moderate",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 33,
      "weight_applied": 3.0,
@@ -88,28 +97,32 @@
     {
      "organ_axis": "renal",
      "label": "Renal",
-     "point_estimate": 0.0422,
+     "point_estimate": 0.0338,
      "interval": {
-      "lo": 0.0296,
-      "hi": 0.0586,
+      "lo": 0.0234,
+      "hi": 0.0473,
       "kind": "credible_90"
      },
      "risk_band": "low",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 25,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
+     "weight_applied": 2.4,
+     "at_risk_for_patient": true
     },
     {
      "organ_axis": "gastrointestinal",
      "label": "Gastrointestinal",
-     "point_estimate": 0.2752,
+     "point_estimate": 0.2892,
      "interval": {
-      "lo": 0.2157,
-      "hi": 0.3537,
+      "lo": 0.2242,
+      "hi": 0.3617,
       "kind": "credible_90"
      },
      "risk_band": "high",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 36,
      "weight_applied": 1.0,
@@ -118,13 +131,15 @@
     {
      "organ_axis": "neurologic",
      "label": "Neurologic",
-     "point_estimate": 0.1015,
+     "point_estimate": 0.064,
      "interval": {
-      "lo": 0.0755,
-      "hi": 0.1391,
+      "lo": 0.0462,
+      "hi": 0.0867,
       "kind": "credible_90"
      },
      "risk_band": "moderate",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 33,
      "weight_applied": 1.0,
@@ -133,13 +148,15 @@
     {
      "organ_axis": "ocular",
      "label": "Ocular",
-     "point_estimate": 0.0149,
+     "point_estimate": 0.015,
      "interval": {
-      "lo": 0.0099,
-      "hi": 0.0224,
+      "lo": 0.0102,
+      "hi": 0.0215,
       "kind": "credible_90"
      },
      "risk_band": "low",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 20,
      "weight_applied": 1.0,
@@ -148,13 +165,15 @@
     {
      "organ_axis": "dermatologic",
      "label": "Dermatologic",
-     "point_estimate": 0.1043,
+     "point_estimate": 0.1107,
      "interval": {
-      "lo": 0.0776,
-      "hi": 0.143,
+      "lo": 0.0816,
+      "hi": 0.1476,
       "kind": "credible_90"
      },
      "risk_band": "moderate",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 32,
      "weight_applied": 1.0,
@@ -163,13 +182,15 @@
     {
      "organ_axis": "metabolic_endocrine",
      "label": "Metabolic / Endocrine",
-     "point_estimate": 0.1837,
+     "point_estimate": 0.1615,
      "interval": {
-      "lo": 0.1366,
-      "hi": 0.2463,
+      "lo": 0.1189,
+      "hi": 0.2104,
       "kind": "credible_90"
      },
      "risk_band": "moderate",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 33,
      "weight_applied": 1.0,
@@ -178,13 +199,15 @@
     {
      "organ_axis": "musculoskeletal",
      "label": "Musculoskeletal",
-     "point_estimate": 0.0501,
+     "point_estimate": 0.0658,
      "interval": {
-      "lo": 0.0352,
-      "hi": 0.07,
+      "lo": 0.0452,
+      "hi": 0.0896,
       "kind": "credible_90"
      },
      "risk_band": "moderate",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 31,
      "weight_applied": 1.0,
@@ -193,13 +216,15 @@
     {
      "organ_axis": "infectious_immune",
      "label": "Infectious / Immune",
-     "point_estimate": 0.1545,
+     "point_estimate": 0.1427,
      "interval": {
-      "lo": 0.1163,
-      "hi": 0.2068,
+      "lo": 0.1055,
+      "hi": 0.1887,
       "kind": "credible_90"
      },
      "risk_band": "moderate",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 35,
      "weight_applied": 1.0,
@@ -208,13 +233,15 @@
     {
      "organ_axis": "otologic",
      "label": "Otologic",
-     "point_estimate": 0.0056,
+     "point_estimate": 0.0058,
      "interval": {
-      "lo": 0.0027,
-      "hi": 0.0102,
+      "lo": 0.0028,
+      "hi": 0.0097,
       "kind": "credible_90"
      },
      "risk_band": "low",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 6,
      "weight_applied": 1.0,
@@ -223,268 +250,28 @@
     {
      "organ_axis": "constitutional",
      "label": "Constitutional",
-     "point_estimate": 0.2345,
+     "point_estimate": 0.2381,
      "interval": {
-      "lo": 0.1795,
-      "hi": 0.3099,
+      "lo": 0.1788,
+      "hi": 0.3018,
       "kind": "credible_90"
      },
      "risk_band": "high",
+     "band_source": "model",
+     "drivers": [],
      "n_supporting_agents": 2,
      "n_supporting_arms": 35,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     }
    ],
-   "weighted_risk": 2.2152,
+   "weighted_risk": 2.2704,
    "worst_axis": "haematologic",
-   "worst_axis_risk": 0.5082,
+   "worst_axis_risk": 0.4135,
    "precedent_score": 1.386,
    "binding_constraint": "C2_delivered_dose",
    "nearest_real_adc": "trastuzumab emtansine",
-   "nearest_real_diff": "payload DM1 -> calicheamicin; linker SMCC -> sulfo_SPDB; DAR 3.5 -> 2.0",
-   "novelty_tier": 1,
-   "has_unapproved_component": false
-  },
-  {
-   "rank": 1,
-   "tie_group": 0,
-   "on_pareto_front": false,
-   "unweighted_high_axes": [
-    "haematologic",
-    "gastrointestinal",
-    "constitutional"
-   ],
-   "distinguishable": false,
-   "design": {
-    "target": "ERBB2",
-    "payload": "calicheamicin",
-    "linker": "hydrazone_AcBut_disulfide",
-    "conjugation": "lysine",
-    "dar": 2.0,
-    "isotype": "IgG4",
-    "masking": "none"
-   },
-   "mechanism": "dna_cleave",
-   "organ_risks": [
-    {
-     "organ_axis": "haematologic",
-     "label": "Haematologic",
-     "point_estimate": 0.5094,
-     "interval": {
-      "lo": 0.4298,
-      "hi": 0.5909,
-      "kind": "credible_90"
-     },
-     "risk_band": "high",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 36,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "hepatic",
-     "label": "Hepatic",
-     "point_estimate": 0.1876,
-     "interval": {
-      "lo": 0.1441,
-      "hi": 0.2403,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 31,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "cardiovascular",
-     "label": "Cardiovascular",
-     "point_estimate": 0.0683,
-     "interval": {
-      "lo": 0.0495,
-      "hi": 0.0915,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 30,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "pulmonary",
-     "label": "Pulmonary",
-     "point_estimate": 0.0952,
-     "interval": {
-      "lo": 0.0702,
-      "hi": 0.1235,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 33,
-     "weight_applied": 3.0,
-     "at_risk_for_patient": true
-    },
-    {
-     "organ_axis": "renal",
-     "label": "Renal",
-     "point_estimate": 0.0423,
-     "interval": {
-      "lo": 0.0304,
-      "hi": 0.0574,
-      "kind": "credible_90"
-     },
-     "risk_band": "low",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 25,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "gastrointestinal",
-     "label": "Gastrointestinal",
-     "point_estimate": 0.2759,
-     "interval": {
-      "lo": 0.2171,
-      "hi": 0.3417,
-      "kind": "credible_90"
-     },
-     "risk_band": "high",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 36,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "neurologic",
-     "label": "Neurologic",
-     "point_estimate": 0.1017,
-     "interval": {
-      "lo": 0.0755,
-      "hi": 0.1318,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 33,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "ocular",
-     "label": "Ocular",
-     "point_estimate": 0.0149,
-     "interval": {
-      "lo": 0.0103,
-      "hi": 0.0213,
-      "kind": "credible_90"
-     },
-     "risk_band": "low",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 20,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "dermatologic",
-     "label": "Dermatologic",
-     "point_estimate": 0.1045,
-     "interval": {
-      "lo": 0.0765,
-      "hi": 0.1354,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 32,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "metabolic_endocrine",
-     "label": "Metabolic / Endocrine",
-     "point_estimate": 0.1841,
-     "interval": {
-      "lo": 0.1373,
-      "hi": 0.2334,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 33,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "musculoskeletal",
-     "label": "Musculoskeletal",
-     "point_estimate": 0.0501,
-     "interval": {
-      "lo": 0.036,
-      "hi": 0.0673,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 31,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "infectious_immune",
-     "label": "Infectious / Immune",
-     "point_estimate": 0.1548,
-     "interval": {
-      "lo": 0.1169,
-      "hi": 0.2025,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 35,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "otologic",
-     "label": "Otologic",
-     "point_estimate": 0.0056,
-     "interval": {
-      "lo": 0.0025,
-      "hi": 0.01,
-      "kind": "credible_90"
-     },
-     "risk_band": "low",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 6,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "constitutional",
-     "label": "Constitutional",
-     "point_estimate": 0.235,
-     "interval": {
-      "lo": 0.1831,
-      "hi": 0.2951,
-      "kind": "credible_90"
-     },
-     "risk_band": "high",
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 35,
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    }
-   ],
-   "weighted_risk": 2.22,
-   "worst_axis": "haematologic",
-   "worst_axis_risk": 0.5094,
-   "precedent_score": 1.386,
-   "binding_constraint": "C2_delivered_dose",
-   "nearest_real_adc": "gemtuzumab ozogamicin",
-   "nearest_real_diff": "DAR 2.5 -> 2.0; target CD33 -> ERBB2",
+   "nearest_real_diff": "payload DM1 -> calicheamicin; DAR 3.5 -> 2.0",
    "novelty_tier": 1,
    "has_unapproved_component": false
   }
@@ -555,7 +342,9 @@
    58,
    59,
    60,
-   61,
+   61
+  ],
+  [
    62,
    63,
    64,
@@ -575,7 +364,7 @@
   "hepatic": 1.0,
   "cardiovascular": 1.0,
   "pulmonary": 3.0,
-  "renal": 1.0,
+  "renal": 2.4,
   "gastrointestinal": 1.0,
   "neurologic": 1.0,
   "ocular": 1.0,
@@ -595,6 +384,15 @@
    ],
    "severity": 1.0,
    "severity_basis": "Explicit ILD exclusion; 6.5x enriched for DXd payloads"
+  },
+  {
+   "condition": "ckd_stage_3",
+   "label": "Chronic kidney disease stage 3",
+   "organ_axes": [
+    "renal"
+   ],
+   "severity": 0.7,
+   "severity_basis": "CrCl < 30-60 floors common"
   }
  ],
  "why_not_the_obvious_one": {
@@ -607,11 +405,12 @@
    "isotype": "IgG1",
    "masking": "none"
   },
-  "weighted_risk": 2.0839200340978388,
+  "weighted_risk": 2.1223922763726852,
   "excluded_by": [
-   "C6 no usable evidence for this chemistry on pulmonary, which this profile flags as at risk (fewer than 3 supporting arms)"
+   "C6 no usable evidence for this chemistry on pulmonary, renal, which this profile flags as at risk (fewer than 3 supporting arms)"
   ],
   "would_have_ranked_first": true,
-  "best_passing_weighted_risk": 2.2103214846457493
- }
+  "best_passing_weighted_risk": 2.2690549233641755
+ },
+ "hard_flags_enabled": true
 }

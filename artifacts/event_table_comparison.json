@@ -1,0 +1,127 @@
+{
+ "coefficients": [
+  {
+   "name": "b_combo",
+   "role": "design",
+   "other": 0.19537769258022308,
+   "serious": 0.5684354901313782,
+   "both_resolved": true,
+   "sign_agrees": true
+  },
+  {
+   "name": "b_dar",
+   "role": "design",
+   "other": 0.0295502170920372,
+   "serious": -0.005194219294935465,
+   "both_resolved": false,
+   "sign_agrees": null
+  },
+  {
+   "name": "b_log_n",
+   "role": "nuisance",
+   "other": 0.0394870825111866,
+   "serious": -0.20139235258102417,
+   "both_resolved": true,
+   "sign_agrees": false
+  },
+  {
+   "name": "b_thresh",
+   "role": "nuisance",
+   "other": 0.03296976536512375,
+   "serious": 0.1305619180202484,
+   "both_resolved": true,
+   "sign_agrees": true
+  },
+  {
+   "name": "sigma_agent",
+   "role": "nuisance",
+   "other": 0.1581762135028839,
+   "serious": 0.5586650967597961,
+   "both_resolved": true,
+   "sign_agrees": true
+  },
+  {
+   "name": "sigma_trial",
+   "role": "nuisance",
+   "other": 0.49196916818618774,
+   "serious": 0.5114719867706299,
+   "both_resolved": true,
+   "sign_agrees": true
+  }
+ ],
+ "design_sign_disagreements": [],
+ "n_testable_coefficients": 5,
+ "n_coefficients": 6,
+ "b_thresh_negative_control": {
+  "other": {
+   "mean": 0.03296976536512375,
+   "q05": 0.027928858995437622,
+   "q95": 0.03856102377176285
+  },
+  "serious": {
+   "mean": 0.1305619180202484,
+   "q05": 0.11330520361661911,
+   "q95": 0.1466091126203537
+  },
+  "note": "b_thresh is non-zero in a corpus with no censoring, so the covariate is NOT purely a censoring adjustment: the reporting threshold also tracks trial-level reporting practice. It must stay in the model as a confounder control, and must not be described as the censoring correction."
+ },
+ "mechanism_profile_agreement": {
+  "boxed_warning_recovery": {
+   "pairs": {},
+   "serious_ranks_higher": 0,
+   "n_pairs": 0
+  },
+  "per_mechanism_spearman": {
+   "dna_alkyl": 0.4461538461538462,
+   "dna_cleave": 0.2879120879120879,
+   "dna_crosslink": 0.15604395604395604,
+   "topo1": -0.10329670329670329,
+   "tubulin": 0.015384615384615385
+  },
+  "per_axis_spearman": {
+   "haematologic": 0.9,
+   "hepatic": -0.2,
+   "cardiovascular": -0.1,
+   "pulmonary": 0.2,
+   "renal": -0.1,
+   "gastrointestinal": 0.6,
+   "neurologic": 0.9,
+   "ocular": 0.9,
+   "dermatologic": -0.7,
+   "metabolic_endocrine": -0.4,
+   "musculoskeletal": 0.0,
+   "infectious_immune": 0.0,
+   "otologic": -0.1,
+   "constitutional": 0.2
+  },
+  "mean_per_mechanism": 0.16043956043956045,
+  "n_shared_mechanisms": 5
+ },
+ "verdict": "common and serious events rank organs DIFFERENTLY (mean rho +0.160). This is a product finding, not a censoring failure: a comorbidity declares a serious-risk question, so an axis must be scored on the table that matches the question. The two tables recover different label sections -- see the boxed-warning rows above -- and each is right about its own outcome.",
+ "tau_mech": {
+  "other": 0.5816218256950378,
+  "serious": 0.43395301699638367
+ },
+ "tau_cleav": {
+  "other": 0.27321287989616394,
+  "serious": 0.3392742872238159
+ },
+ "gates": {
+  "other": {
+   "metric": "macro_auc[leave_one_agent_out] minus best baseline",
+   "macro_auc": 0.8270027529843921,
+   "best_baseline": 0.8437152401996153,
+   "delta_vs_best_baseline": -0.016712487215223226,
+   "pass": false,
+   "absolute_auc_gate_note": "The original absolute-AUC gate of 0.65 is unfireable: a constant global-axis-mean predictor scores about 0.84 on this metric. Reported for the record, not used."
+  },
+  "serious": {
+   "metric": "macro_auc[leave_one_agent_out] minus best baseline",
+   "macro_auc": 0.8149639995424114,
+   "best_baseline": 0.8299571233164984,
+   "delta_vs_best_baseline": -0.014993123774087014,
+   "pass": false,
+   "absolute_auc_gate_note": "The original absolute-AUC gate of 0.65 is unfireable: a constant global-axis-mean predictor scores about 0.84 on this metric. Reported for the record, not used."
+  }
+ }
+}

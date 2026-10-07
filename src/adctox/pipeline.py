@@ -16,6 +16,9 @@ from pathlib import Path
 import numpy as np
 import yaml
 
+from .comorbidity.exclusion_prior import driver as exclusion_driver
+from .comorbidity.hard_flags import applicable as applicable_flags
+from .comorbidity.hard_flags import override_band
 from .design.constraints import ConstraintEngine
 from .design.enumerate import Design, DesignSpace
 from .design.search import (
@@ -134,8 +137,14 @@ def propose(
     posterior: Posterior,
     top_k: int = 6,
     lam: float = 2.0,
+    hard_flags: bool = True,
 ) -> dict:
-    """The primary product path."""
+    """The primary product path.
+
+    `hard_flags=False` switches off the label-derived override layer, which the case-study
+    evaluation needs: a rule that hardcodes "prior ILD plus a deruxtecan payload is high
+    risk" would make the deruxtecan case study pass with no contribution from the model.
+    """
     tax = Taxonomy()
     axes = list(tax.axis_order)
     space = DesignSpace()
@@ -203,13 +212,23 @@ def propose(
     # further signal it would mislead. So the peak is surfaced explicitly, and Pareto
     # membership (which does account for O2) is attached per candidate.
     pareto_set = set(pareto)
+    conditions = set(condition_ids)
     candidates = []
     for idx, s in enumerate(ordered[:top_k]):
+        flags_by_axis = applicable_flags(
+            s.design.mechanism, s.design.payload, conditions, enabled=hard_flags
+        )
         nearest, diff = _nearest_real_adc(s.design, registry)
+        def band_for(axis: str) -> str:
+            """Model band, raised where a label rule applies. A rule can only raise."""
+            base = risk_band(
+                s.organ_risk[axis], evidence_for(s.design.mechanism, axis)[1]
+            )
+            return override_band(base, flags_by_axis.get(axis, []))
+
         high_axes = [
             a for a in axes
-            if risk_band(s.organ_risk[a], evidence_for(s.design.mechanism, a)[1]) == "high"
-            and a not in comorb.at_risk_axes
+            if band_for(a) == "high" and a not in comorb.at_risk_axes
         ]
         candidates.append(
             {
@@ -237,8 +256,20 @@ def propose(
                             "hi": round(s.organ_interval[a][1], 4),
                             "kind": "credible_90",
                         },
-                        "risk_band": risk_band(
-                            s.organ_risk[a], evidence_for(s.design.mechanism, a)[1]
+                        "risk_band": band_for(a),
+                        # Stated separately so a reader can see whether a band came from
+                        # the fit or from a label rule, which is the first thing a reviewer
+                        # will ask about a red axis.
+                        "band_source": (
+                            "rule" if flags_by_axis.get(a) else "model"
+                        ),
+                        "drivers": (
+                            [f.as_driver() for f in flags_by_axis.get(a, [])]
+                            + [
+                                d for d in
+                                [exclusion_driver(s.design.mechanism, a)]
+                                if d is not None
+                            ]
                         ),
                         "n_supporting_agents": evidence_for(s.design.mechanism, a)[0],
                         "n_supporting_arms": evidence_for(s.design.mechanism, a)[1],
@@ -274,4 +305,5 @@ def propose(
         "weights_applied": weights,
         "comorbidity_resolution": comorb.per_condition,
         "why_not_the_obvious_one": why_not,
+        "hard_flags_enabled": hard_flags,
     }

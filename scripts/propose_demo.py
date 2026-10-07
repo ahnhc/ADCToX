@@ -18,11 +18,19 @@ from adctox.model.predict import Posterior  # noqa: E402
 from adctox.pipeline import propose  # noqa: E402
 from adctox.taxonomy import Taxonomy  # noqa: E402
 
-POSTERIOR = "posterior_other.npz"
 
 
-def _ensure_posterior(processed: Path, out: Path, warmup: int, samples: int) -> Posterior:
-    path = out / POSTERIOR
+
+def _ensure_posterior(
+    processed: Path, out: Path, warmup: int, samples: int, kind: str = "other"
+) -> Posterior:
+    """Fit-and-cache the posterior for one event table.
+
+    `kind` is parameterized because the censoring robustness check needs the serious-event
+    posterior to compare mechanism profiles against. The product itself always uses
+    "other": serious events are too sparse per axis to rank designs on.
+    """
+    path = out / f"posterior_{kind}.npz"
     if path.exists():
         return Posterior.load(path)
     print(f"{path} absent; fitting one ...", flush=True)
@@ -32,7 +40,7 @@ def _ensure_posterior(processed: Path, out: Path, warmup: int, samples: int) -> 
     from adctox.model import dataset as ds, forward
 
     tax = Taxonomy()
-    data = ds.load(processed, list(tax.axis_order), kind="other")
+    data = ds.load(processed, list(tax.axis_order), kind=kind)
     mcmc = MCMC(
         NUTS(forward.model, target_accept_prob=0.8, max_tree_depth=8),
         num_warmup=warmup, num_samples=samples, num_chains=1, progress_bar=False,
@@ -58,9 +66,19 @@ def main() -> int:
     ap.add_argument("--top-k", type=int, default=6)
     ap.add_argument("--warmup", type=int, default=400)
     ap.add_argument("--samples", type=int, default=400)
+    ap.add_argument("--kind", default="other", choices=["other", "serious"])
+    ap.add_argument(
+        "--fit-only",
+        action="store_true",
+        help="build and cache the posterior, then stop (used by the censoring check)",
+    )
     args = ap.parse_args()
 
-    posterior = _ensure_posterior(args.processed, args.out, args.warmup, args.samples)
+    posterior = _ensure_posterior(
+        args.processed, args.out, args.warmup, args.samples, kind=args.kind
+    )
+    if args.fit_only:
+        return 0
     conditions = [c.strip() for c in args.conditions.split(",") if c.strip()]
 
     result = propose(

@@ -251,6 +251,9 @@ def propose_endpoint(req: ProposeRequest) -> JSONResponse:
 def assess_endpoint(req: AssessRequest) -> JSONResponse:
     """Expert mode: score one fully specified design."""
     from ..design.enumerate import Design
+    from ..comorbidity.exclusion_prior import driver as exclusion_driver
+    from ..comorbidity.hard_flags import applicable as applicable_flags
+    from ..comorbidity.hard_flags import override_band
     from ..model.predict import (
         MIN_ARMS_FOR_A_BAND,
         decompose,
@@ -318,10 +321,25 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
         mean = float(rates[:, i].mean())
         n_arms = int(post.evidence_arms[mi, i])
         n_agents = int(post.evidence_agents[mi, i])
-        band = risk_band(mean, n_arms)
+        axis_flags = applicable_flags(
+            design.mechanism, design.payload,
+            set(req.comorbidity_profile.condition_ids),
+        ).get(axis, [])
+        # A label rule can raise a band but never lower one, including over
+        # `no_evidence`: a regulator's warning is evidence, and an organ named in a boxed
+        # warning must not render as unstudied.
+        band = override_band(risk_band(mean, n_arms), axis_flags)
         weight = 1.0 + 2.0 * comorb.severity_by_axis.get(axis, 0.0)
         drivers = decompose(post, design.mechanism, family, design.dar,
                             design.cleavable, axis)
+        for f in axis_flags:
+            drivers.append(f.as_driver())
+        # The expert-prior view of the same question, kept apart from the fitted terms
+        # because the two are negatively coupled -- excluding patients with disease in an
+        # organ suppresses the observed rate there.
+        excl = exclusion_driver(design.mechanism, axis)
+        if excl is not None:
+            drivers.append(excl)
         if axis in comorb.at_risk_axes:
             # Kept in the same list but marked, because a reader has to be able to see
             # that this term is a declared weight and not a fitted effect.
@@ -344,6 +362,7 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
                     "kind": "credible_90",
                 },
                 "risk_band": band,
+                "band_source": "rule" if axis_flags else "model",
                 "n_supporting_agents": n_agents,
                 "n_supporting_arms": n_arms,
                 "weight_applied": weight,
