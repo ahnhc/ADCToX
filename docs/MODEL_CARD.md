@@ -1,11 +1,11 @@
 # Model card: forward organ-toxicity model
 
-**Status: cross-validation is being re-run. Every previously reported CV number was
-produced with an identified bug present and has been withdrawn. Read this section first.**
+**Status: the model does not beat a base-rate baseline on any of five evaluations. Read
+this section first.**
 
-A non-identifiability was found after the first evaluation round and is described in
-`## The bug that invalidated the first evaluation` below. Until the re-run completes, this
-card states what the corpus is and what the bug was, and quotes no performance figure.
+Figures below are from the re-run on the corrected model. A non-identifiability was found
+after the first round, every number was withdrawn, and the re-run reproduced the within-arm
+results almost exactly -- see `## The bug that invalidated the first evaluation`.
 
 ## Intended use
 
@@ -31,15 +31,19 @@ coefficient is therefore `n_agents x n_axes`:
 
 ## Results
 
-**Withdrawn pending re-run.** The first evaluation round reported the model losing to a
-base-rate baseline on three held-out splits. Those numbers were produced before the
-non-identifiability below was fixed, and that bug was demonstrably suppressing the
-mechanism effect -- its scale recovered from 0.157 to 0.531 once the degeneracy was
-removed. A result obtained from a model whose main effect was being absorbed elsewhere
-cannot be reported, in either direction.
+| evaluation | model | best baseline | delta | 95% CI | |
+|---|---|---|---|---|---|
+| within-arm ranking, leave-one-agent-out (16) | 0.827 | 0.844 | −0.012 | [−0.031, +0.005] | includes 0 |
+| within-arm ranking, leave-one-mechanism-out (2) | 0.854 | 0.871 | **−0.018** | [−0.027, −0.009] | excludes 0 |
+| within-arm ranking, leave-one-family-out (4) | 0.770 | 0.853 | **−0.080** | [−0.124, −0.035] | excludes 0 |
+| across-agent per-axis Spearman | +0.054 | +0.026 | — | [−0.115, +0.218] | includes 0; threshold +0.3 |
+| dose-modification ordering | +0.188 | +0.153 | +0.035 | [−0.001, +0.069] | includes 0 |
 
-The artefacts are retained with a `.pre-centering-bug` suffix for comparison once the
-re-run lands, not for quotation.
+The best within-arm predictor is the global axis mean, which carries no design information.
+The dose-modification comparison was favourable before the bug fix (+0.039 [+0.003,
++0.073]) and is not after it, and in the same output the model is at chance on naming the
+organ each label fears most (1 of 13 against 0.93 expected), naming gastrointestinal for
+9 of 13 drugs because that is the axis base rate.
 
 ### The gate, which stands regardless
 

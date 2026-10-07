@@ -31,15 +31,70 @@ DM1 chemistry. So the data identifying a design coefficient is `agents x axes = 
 3,990. An earlier draft of this project proposed a 420-parameter design matrix, which is
 0.57 observations per parameter: fewer data points than parameters.
 
-## 3. Forward-model performance: withdrawn pending re-run
+## Results, verified after the fix
 
-The first evaluation round found the model losing to a base-rate baseline on all three
-held-out splits. Those figures were produced before a non-identifiability was found and
-fixed, and the bug was suppressing the very effect being measured -- the mechanism scale
-recovered from 0.157 to 0.531 once it was removed. The numbers are therefore withdrawn
-rather than restated with a caveat, because a stale number with a note beside it is still
-a number a reader will quote.
+All five evaluations were re-run on the corrected model. **The model does not beat a
+base-rate baseline on any of them.** Deltas are paired against the strongest baseline for
+that split, because the model's own interval excluding zero would only say the target
+ordering is not random.
 
+| evaluation | model | best baseline | delta | 95% CI | |
+|---|---|---|---|---|---|
+| within-arm ranking, leave-one-agent-out (16) | 0.827 | 0.844 | -0.012 | [-0.031, +0.005] | includes 0 |
+| within-arm ranking, leave-one-mechanism-out (2) | 0.854 | 0.871 | **-0.018** | [-0.027, -0.009] | excludes 0, negative |
+| within-arm ranking, leave-one-family-out (4) | 0.770 | 0.853 | **-0.080** | [-0.124, -0.035] | excludes 0, negative |
+| across-agent per-axis Spearman | +0.054 | +0.026 | — | [-0.115, +0.218] | includes 0; threshold was +0.3 |
+| dose-modification ordering agreement | +0.188 | +0.153 | +0.035 | [-0.001, +0.069] | includes 0 |
+
+The best within-arm predictor of the three is the global axis mean, which carries no
+design information at all.
+
+The dose-modification comparison was the one favourable result before the fix
+(+0.039 [+0.003, +0.073]) and lost its significance after it (+0.035 [-0.001, +0.069]).
+It also carries its own refutation in the same output: top-organ agreement is 1 of 13
+against 0.93 expected by chance, and the model names gastrointestinal as the most-affected
+axis for 9 of 13 drugs, which is the axis base rate rather than a per-drug judgement.
+
+### The withdrawal was precautionary, and the re-run upheld the main result
+
+A non-identifiability was found after the first round (see below) and every number was
+withdrawn rather than annotated. The re-run then reproduced the within-arm results almost
+exactly -- leave-one-mechanism-out moved from -0.016 to -0.018, leave-one-family-out from
+-0.069 to -0.080 -- because the bug's severity scaled inversely with corpus size: on the
+full 285-arm corpus `tau_cleav` was 0.299 before the fix and 0.273 after, while on a
+153-arm subset it had run to 3.872.
+
+So the withdrawal cost nothing and settled something. It also identified where the bug
+*did* matter: the label-change analysis fits on pre-date subsets, which are exactly the
+small corpora where the degeneracy was severe, and those predictions were unusable.
+
+### The gate was unfireable, independently of all of this
+
+The protocol said "macro AUC below 0.65 triggers the cut order". The model scores 0.827
+and passes -- but a constant global-axis-mean predictor scores 0.844 on the same metric.
+**A gate a design-blind constant clears is not a gate.** This is a property of the metric,
+not of the model or the bug, and the lesson generalizes: an absolute threshold on a
+base-rate-dominated metric cannot detect the failure it was written for. Replaced by the
+paired delta, which the model fails.
+
+### Why the within-arm metric cannot settle it alone
+
+That task ranks 14 axes *inside one arm*, and axis base rates are consistent enough across
+arms that one fixed ordering is near-optimal everywhere. A model that knows those base
+rates and then perturbs them with design effects has little to gain and much to lose. The
+across-agent comparison is the one that can show design signal, since a constant predictor
+has no discriminative power there by construction -- and it comes back at +0.054 with an
+interval spanning zero, against a threshold of +0.3 declared before the run.
+
+Per-axis, that mean hides the structure that matters. Neurologic (+0.61), musculoskeletal
+(+0.51) and gastrointestinal (+0.49) correlate positively; renal (-0.57), otologic (-0.37)
+and pulmonary (-0.27) anti-correlate, and they cancel. Renal and otologic are the two
+sparsest axes, so noise accounts for them. Pulmonary has 5,009 rows and does not, and the
+likely cause is ascertainment: a trial that mandates chest imaging reports far more
+pulmonary events than one recording symptoms, which dominates any across-agent comparison
+on an axis that needs active surveillance to be seen at all.
+
+### 3.1 The bug
 ### 3.1 The bug
 
 On a 153-arm corpus the model predicted the otologic axis at 0.9997 against an observed

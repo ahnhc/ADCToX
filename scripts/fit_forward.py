@@ -259,11 +259,19 @@ def main() -> int:
         f"  tau_mech  (mechanism x axis scale): "
         f"{tau.mean():.3f} [{np.percentile(tau, 5):.3f}, {np.percentile(tau, 95):.3f}]"
     )
-    tau_f = np.asarray(post.get("tau_family", np.zeros(1)))
-    print(
-        f"  tau_family(payload family x axis) : "
-        f"{tau_f.mean():.3f} [{np.percentile(tau_f, 5):.3f}, {np.percentile(tau_f, 95):.3f}]"
-    )
+    # tau_family is only sampled when the payload-family level is enabled; printing a
+    # hard zero for it otherwise reads as a fitted result rather than an absent term.
+    has_family = "tau_family" in post
+    tau_f = np.asarray(post["tau_family"]) if has_family else None
+    if has_family:
+        print(
+            f"  tau_family(payload family x axis) : "
+            f"{tau_f.mean():.3f} [{np.percentile(tau_f, 5):.3f}, "
+            f"{np.percentile(tau_f, 95):.3f}]"
+        )
+    else:
+        print("  tau_family                        : not sampled "
+              "(payload-family level disabled; see USE_PAYLOAD_FAMILY)")
     print(
         f"  tau_cleav (cleavability x axis)   : "
         f"{tau_c.mean():.3f} [{np.percentile(tau_c, 5):.3f}, {np.percentile(tau_c, 95):.3f}]"
@@ -417,9 +425,12 @@ def main() -> int:
         "kind": args.kind, "corpus": data.summary(), "parameters": acct,
         "tau_mech": {"mean": float(tau.mean()),
                      "q05": float(np.percentile(tau, 5)), "q95": float(np.percentile(tau, 95))},
-        "tau_family": {"mean": float(tau_f.mean()),
-                       "q05": float(np.percentile(tau_f, 5)),
-                       "q95": float(np.percentile(tau_f, 95))},
+        "tau_family": (
+            {"mean": float(tau_f.mean()),
+             "q05": float(np.percentile(tau_f, 5)),
+             "q95": float(np.percentile(tau_f, 95))}
+            if has_family else {"enabled": False}
+        ),
         "tau_cleav": {"mean": float(tau_c.mean())},
         "coefficients": {
             k: {"mean": float(np.asarray(post[k]).mean()),
