@@ -125,3 +125,50 @@ def test_folds_keep_most_of_the_corpus(data):
                 f"{name}/{fold.name} trains on {trained} of {n_arms - held} available "
                 f"arms, below the {floor:.0%} floor"
             )
+
+
+def test_the_sentinel_trial_slot_collides_with_no_real_trial(data):
+    """Arms from single-arm trials point at a dedicated slot past the last real trial.
+
+    They used to point at index 0, which is a real trial (NCT00085709 in this corpus).
+    The collision was harmless only because `arm_has_trial_effect` masks their
+    contribution to the linear predictor -- and it stopped being harmless the moment a
+    split masked on this index instead, which is exactly the bug above. A dedicated slot
+    costs one sampled-but-unused parameter and removes the class of bug.
+    """
+    carries = _carries(data)
+    idx = np.asarray(data.arm_trial_idx)
+    sentinel = len(data.trials)
+
+    assert (idx[~carries] == sentinel).all(), (
+        "some effect-free arm points at a real trial index"
+    )
+    assert (idx[carries] < sentinel).all(), (
+        "some effect-carrying arm points at the sentinel slot"
+    )
+    assert (idx == sentinel).sum() == (~carries).sum()
+
+
+def test_real_trial_effects_sum_to_zero_without_the_sentinel():
+    """The sum-to-zero constraint is load-bearing, so the sentinel's prior noise must not
+    enter the mean it is computed from."""
+    jax = pytest.importorskip("jax")
+    from numpyro.infer import MCMC, NUTS
+
+    from adctox.model import forward
+
+    if not (PROCESSED / "arms.parquet").exists():
+        pytest.skip("corpus not built")
+    d = ds.load(PROCESSED, list(default_taxonomy().axis_order), kind="other")
+    mcmc = MCMC(
+        NUTS(forward.model, target_accept_prob=0.8, max_tree_depth=6),
+        num_warmup=40, num_samples=40, num_chains=1, progress_bar=False,
+    )
+    mcmc.run(jax.random.PRNGKey(0), data=d)
+    u = np.asarray(mcmc.get_samples()["u_trial"])
+    assert u.shape[1] == len(d.trials) + 1
+    real_means = np.abs(u[:, : len(d.trials)].mean(axis=1))
+    assert real_means.max() < 1e-4, (
+        f"real trial effects do not sum to zero (worst |mean| {real_means.max():.2e}); "
+        "the sentinel column is probably being included in the centering"
+    )

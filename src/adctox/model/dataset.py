@@ -235,7 +235,18 @@ def build(
         arm_idx=np.asarray(arm_l, dtype=np.int32),
         arm_mech_idx=arms["mechanism"].map(mech_of).to_numpy(dtype=np.int32),
         arm_family_idx=arms["payload_family"].map(family_of).to_numpy(dtype=np.int32),
-        arm_trial_idx=arms["nct_id"].map(trial_of).fillna(0).to_numpy(dtype=np.int32),
+        # Arms from single-arm trials get a dedicated sentinel slot one past the last
+        # real trial, not 0. They used to land on 0, which is a real trial
+        # (NCT00085709), and the collision was harmless only because
+        # `arm_has_trial_effect` masks their contribution. It stopped being harmless the
+        # moment a split masked on this index: holding out any agent with a single-arm
+        # trial then matched the sentinel and discarded all 128 effect-free arms from
+        # training, halving the training set in every leave-one-agent-out fold. The
+        # sentinel slot is sampled and never used, which costs one parameter and removes
+        # the whole class of bug.
+        arm_trial_idx=(
+            arms["nct_id"].map(trial_of).fillna(len(trials)).to_numpy(dtype=np.int32)
+        ),
         arm_has_trial_effect=arms["nct_id"]
         .isin(set(trials))
         .astype(float)

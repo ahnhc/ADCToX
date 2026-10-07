@@ -185,9 +185,19 @@ def model(
     # the degeneracy.
     sigma_trial = numpyro.sample("sigma_trial", dist.HalfNormal(1.0))
     u_trial_raw = numpyro.sample(
-        "u_trial_raw", dist.Normal(0.0, 1.0).expand([len(data.trials)]).to_event(1)
+        # +1 for the sentinel slot that single-arm-trial arms point at; it is sampled and
+        # then masked out of the linear predictor, so it stays at its prior.
+        "u_trial_raw", dist.Normal(0.0, 1.0).expand([len(data.trials) + 1]).to_event(1)
     )
-    u_trial = u_trial_raw - u_trial_raw.mean()
+    # Centre over the REAL trials only. The sum-to-zero constraint is load-bearing here
+    # -- without it a common offset rides along collinear with the axis intercept, which
+    # is harmless in sample and ruinous out of it -- so the sentinel's prior noise must
+    # not enter the mean it is computed from. The sentinel keeps its raw draw and is
+    # masked out of the linear predictor below.
+    n_real_trials = len(data.trials)
+    u_trial = u_trial_raw.at[:n_real_trials].add(
+        -u_trial_raw[:n_real_trials].mean()
+    )
     sigma_agent = numpyro.sample("sigma_agent", dist.HalfNormal(1.0))
     u_agent_raw = numpyro.sample(
         "u_agent_raw", dist.Normal(0.0, 1.0).expand([len(data.agents)]).to_event(1)
