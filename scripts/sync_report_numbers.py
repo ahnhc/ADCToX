@@ -50,6 +50,11 @@ CENS_ROWS = [
 
 # parameter -> (source, sentence). `{v}` is substituted with "mean [q05, q95]".
 NOTES: dict[str, tuple[str, str]] = {
+    "tau_cleav": (
+        "tau_cleav",
+        "the cleavability x axis contrast. Appears here only once the fit that records "
+        "its quantiles has been run; earlier artefacts stored a bare mean.",
+    ),
     "tau_mech": (
         "tau_mech",
         "the mechanism x axis interaction is supported by the data rather than asserted "
@@ -94,10 +99,13 @@ def _fmt(cell: dict, signed: bool) -> str:
 def build_block(metrics: dict) -> str:
     lines = [BEGIN]
     for name, (where, note) in NOTES.items():
-        cell = metrics.get(name) if where == "tau_mech" else (
+        cell = metrics.get(name) if where.startswith("tau") else (
             metrics.get("coefficients", {}).get(name)
         )
-        if not cell or "mean" not in cell:
+        # Needs an interval, not just a mean: a scale quoted without one overstates what
+        # the fit established. An artefact predating the quantiles is skipped rather than
+        # printed bare.
+        if not cell or "mean" not in cell or "q05" not in cell:
             continue
         signed = name.startswith("b_")
         lines.append(f"`{name}` {_fmt(cell, signed)} -- {note}")

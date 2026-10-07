@@ -470,7 +470,15 @@ def main() -> int:
              "q95": float(np.percentile(tau_f, 95))}
             if has_family else {"enabled": False}
         ),
-        "tau_cleav": {"mean": float(tau_c.mean())},
+        # Quantiles, like every other scale. tau_cleav stored a bare mean while tau_mech
+        # stored an interval, so the one scale parameter the report quotes in prose could
+        # not be generated with its interval -- and the project's own rule is that a
+        # number appears with one.
+        "tau_cleav": {
+            "mean": float(tau_c.mean()),
+            "q05": float(np.percentile(tau_c, 5)),
+            "q95": float(np.percentile(tau_c, 95)),
+        },
         "coefficients": {
             k: {"mean": float(np.asarray(post[k]).mean()),
                 "q05": float(np.percentile(np.asarray(post[k]), 5)),
