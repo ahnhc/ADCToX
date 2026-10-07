@@ -162,12 +162,26 @@ def propose(
         at_risk_axes=comorb.at_risk_axes,
     )
 
+    # O1 is the ranking key, but a candidate can minimise patient-weighted risk while
+    # carrying a high peak on an axis the patient has no stated vulnerability on. That is
+    # the objective working as specified, not a bug -- yet shown as "rank 1" with no
+    # further signal it would mislead. So the peak is surfaced explicitly, and Pareto
+    # membership (which does account for O2) is attached per candidate.
+    pareto_set = set(pareto)
     candidates = []
-    for s in ordered[:top_k]:
+    for idx, s in enumerate(ordered[:top_k]):
         nearest, diff = _nearest_real_adc(s.design, registry)
+        high_axes = [
+            a for a in axes
+            if risk_band(s.organ_risk[a], 1) == "high" and a not in comorb.at_risk_axes
+        ]
         candidates.append(
             {
                 "rank": s.rank, "tie_group": s.tie_group,
+                "on_pareto_front": idx in pareto_set,
+                # Axes in the high band that the patient-weighted objective did not
+                # penalise, because no stated comorbidity touches them.
+                "unweighted_high_axes": high_axes,
                 "distinguishable": s.distinguishable,
                 "design": s.design.slots,
                 "mechanism": s.design.mechanism,

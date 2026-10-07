@@ -56,6 +56,13 @@ class ModelData:
     arm_combo: np.ndarray
     arm_thresh_c: np.ndarray  # centered
     arm_log_n_c: np.ndarray   # centered log denominator
+    # 1.0 where the arm's trial contributes two or more arms, else 0.0. A trial that
+    # contributes a single arm has a trial effect perfectly confounded with that arm's
+    # residual: it is a per-observation random effect, which is unidentified and gives
+    # the sampler a long thin posterior to crawl along. Measured here, 128 of 189 trials
+    # (68%) contribute one arm, so masking them removes two thirds of the trial
+    # parameters and the geometry problem with them.
+    arm_has_trial_effect: np.ndarray
 
     # Labels
     axes: list[str]
@@ -100,7 +107,9 @@ class ModelData:
             f"({counts['observed']:,} observed, {counts['censored']:,} censored, "
             f"{counts['zero']:,} structural zero) | "
             f"{len(self.agents)} agents, {len(self.mechanisms)} mechanisms, "
-            f"{len(self.trials)} trials"
+            f"{len(self.trials)} multi-arm trials "
+            f"({int((self.arm_has_trial_effect == 0).sum())} arms from single-arm trials "
+            f"carry no trial effect)"
         )
 
 
@@ -134,7 +143,10 @@ def build(
 
     mechanisms = sorted(arms["mechanism"].dropna().unique())
     agents = sorted(arms["agent"].unique())
-    trials = sorted(arms["nct_id"].unique())
+    # Only multi-arm trials get a trial effect; see `arm_has_trial_effect`.
+    arms_per_trial = arms["nct_id"].value_counts()
+    multi_arm_trials = sorted(arms_per_trial[arms_per_trial >= 2].index)
+    trials = multi_arm_trials
     arm_keys = arms["arm_key"].tolist()
 
     mech_of = {m: i for i, m in enumerate(mechanisms)}
@@ -209,7 +221,11 @@ def build(
         axis_idx=np.asarray(ax_l, dtype=np.int32),
         arm_idx=np.asarray(arm_l, dtype=np.int32),
         arm_mech_idx=arms["mechanism"].map(mech_of).to_numpy(dtype=np.int32),
-        arm_trial_idx=arms["nct_id"].map(trial_of).to_numpy(dtype=np.int32),
+        arm_trial_idx=arms["nct_id"].map(trial_of).fillna(0).to_numpy(dtype=np.int32),
+        arm_has_trial_effect=arms["nct_id"]
+        .isin(set(trials))
+        .astype(float)
+        .to_numpy(),
         arm_agent_idx=arms["agent"].map(agent_of).to_numpy(dtype=np.int32),
         arm_dar_c=dar - dar_mean,
         arm_cleavable=arms["linker_cleavable"].fillna(False).astype(float).to_numpy(),

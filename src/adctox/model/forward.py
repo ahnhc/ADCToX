@@ -103,7 +103,8 @@ def model(data: ModelData, hold_mech: int | None = None) -> None:
         + b_combo * data.arm_combo
         + b_thresh * data.arm_thresh_c
         + b_log_n * data.arm_log_n_c
-        + sigma_trial * u_trial[data.arm_trial_idx]
+        # Masked: a single-arm trial's effect is confounded with that arm's residual.
+        + sigma_trial * u_trial[data.arm_trial_idx] * data.arm_has_trial_effect
         + sigma_agent * u_agent[data.arm_agent_idx]
     )
 

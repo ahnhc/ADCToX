@@ -34,7 +34,6 @@ from adctox.model import dataset as ds, forward, splits  # noqa: E402
 from adctox.model.dataset import CENSORED, ModelData  # noqa: E402
 from adctox.taxonomy import Taxonomy  # noqa: E402
 
-numpyro.set_host_device_count(2)
 
 
 def _masked(data: ModelData, mask: np.ndarray) -> ModelData:
@@ -53,16 +52,21 @@ def _masked(data: ModelData, mask: np.ndarray) -> ModelData:
 
 
 def fit(data: ModelData, hold_mech: int | None, seed: int, warmup: int,
-        samples: int, chains: int = 2):
+        samples: int, chains: int = 1):
     # max_tree_depth is capped at 8 rather than left at the default 10. Measured on this
     # model: the default averages 479 gradient evaluations per iteration against 255 at
     # depth 8, for a 2.5x speedup, while the sampler stays healthy (0 divergences,
     # acceptance 0.84 against a 0.8 target). The geometry is not the problem here --
     # there is no funnel to fight, the trajectories are simply long.
     kernel = NUTS(forward.model, target_accept_prob=0.8, max_tree_depth=8)
+    # One chain per call. Measured on this machine, `num_chains=2` with
+    # chain_method="sequential" takes more than ten times as long as two separate
+    # single-chain runs, apparently recompiling per chain under a multi-device host
+    # count. Convergence is therefore checked by refitting under a second seed and
+    # comparing the posteriors, which is the same information an R-hat would carry.
     mcmc = MCMC(
         kernel, num_warmup=warmup, num_samples=samples, num_chains=chains,
-        progress_bar=False, chain_method="sequential",
+        progress_bar=False,
     )
     mcmc.run(jax.random.PRNGKey(seed), data=data, hold_mech=hold_mech)
     return mcmc.get_samples()
@@ -83,6 +87,7 @@ def predict_rates(post: dict, data: ModelData, hold_mech: int | None) -> np.ndar
         + np.asarray(post["b_log_n"])[:, None] * data.arm_log_n_c[None, :]
         + np.asarray(post["sigma_trial"])[:, None]
         * np.asarray(post["u_trial"])[:, data.arm_trial_idx]
+        * data.arm_has_trial_effect[None, :]
         + np.asarray(post["sigma_agent"])[:, None]
         * np.asarray(post["u_agent"])[:, data.arm_agent_idx]
     )
@@ -179,7 +184,22 @@ def main() -> int:
     # ---------------------------------------------------------------- full fit
     t0 = time.time()
     post = fit(data, None, args.seed, args.warmup, args.samples)
-    print(f"\nFull fit: {time.time() - t0:.1f}s", flush=True)
+    post_b = fit(data, None, args.seed + 7919, args.warmup, args.samples)
+    print(f"\nFull fit (2 seeds): {time.time() - t0:.1f}s", flush=True)
+    # Seed agreement stands in for R-hat: two independent runs whose posterior means
+    # differ by much more than a Monte Carlo standard error have not converged.
+    print("  seed agreement (|mean_a - mean_b| / pooled sd):")
+    worst = 0.0
+    for name in ("tau_mech", "tau_cleav", "b_dar", "b_combo", "b_thresh", "b_log_n",
+                 "sigma_trial", "sigma_agent"):
+        a, b = np.asarray(post[name]), np.asarray(post_b[name])
+        sd = np.sqrt(0.5 * (a.var() + b.var())) or 1.0
+        z = abs(a.mean() - b.mean()) / sd
+        worst = max(worst, float(z))
+        flag = "  <-- check" if z > 0.3 else ""
+        print(f"    {name:12s} {z:.3f}{flag}")
+    print(f"  worst standardized seed gap: {worst:.3f} "
+          f"({'acceptable' if worst <= 0.3 else 'NOT converged'})")
     tau = np.asarray(post["tau_mech"])
     tau_c = np.asarray(post["tau_cleav"])
     print(

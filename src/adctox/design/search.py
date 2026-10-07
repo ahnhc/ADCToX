@@ -207,8 +207,18 @@ def why_not_the_obvious_one(
             best, best_o1, best_res = design, float(o1[j]), res
     if best is None:
         return None
+    passing_o1 = [
+        float(o1[j]) for j, d in enumerate(designs) if engine.check(
+            d, at_risk_axes=at_risk_axes, selectivity=selectivity
+        ).passed
+    ]
     return {
         "design": best.slots,
         "weighted_risk": best_o1,
         "excluded_by": best_res.failures,
+        # Whether it would actually have placed, had the constraint not excluded it.
+        # Without this the row implies a constraint cost us the best candidate even when
+        # the excluded design scored worse than everything that passed.
+        "would_have_ranked_first": bool(passing_o1 and best_o1 < min(passing_o1)),
+        "best_passing_weighted_risk": float(min(passing_o1)) if passing_o1 else None,
     }
