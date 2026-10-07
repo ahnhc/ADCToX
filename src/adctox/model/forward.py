@@ -33,6 +33,25 @@ from jax.scipy.special import betainc
 from .dataset import CENSORED, OBSERVED, ZERO, ModelData
 
 
+def _family_term(data, mech_axis, n_axes: int, hold_family: int | None):
+    """Nested payload-family deviations around their mechanism's effect.
+
+    Retained so the finding can be reproduced, not because it is used by default; see
+    USE_PAYLOAD_FAMILY.
+    """
+    tau_family = numpyro.sample("tau_family", dist.HalfNormal(0.3))
+    family_dev_raw = numpyro.sample(
+        "family_dev_raw",
+        dist.Normal(0.0, 1.0).expand([len(data.families), n_axes]).to_event(2),
+    )
+    family_axis = mech_axis[data.family_to_mech, :] + tau_family * family_dev_raw
+    if hold_family is not None:
+        family_axis = family_axis.at[hold_family, :].set(
+            mech_axis[data.family_to_mech[hold_family], :]
+        )
+    return family_axis
+
+
 def _log_binom_cdf_below(cut: jnp.ndarray, n: jnp.ndarray, p: jnp.ndarray) -> jnp.ndarray:
     """log P(X < cut) for X ~ Binomial(n, p), i.e. log P(X <= cut-1).
 
@@ -48,10 +67,28 @@ def _log_binom_cdf_below(cut: jnp.ndarray, n: jnp.ndarray, p: jnp.ndarray) -> jn
     return jnp.log(jnp.clip(prob, 1e-30, 1.0))
 
 
+# Payload family is off by default. It is not identifiable at this corpus size, in
+# either parameterization tried, and both failures are recorded because the measurement is
+# the point:
+#
+#   mechanism only            worst standardized seed gap 0.239  converged
+#   + family, additive        worst gap 0.686, tau_mech fell 0.592 -> 0.436 as
+#                             tau_family took 0.396; LOMO delta worsened -0.016 -> -0.022
+#   + family, nested          worst gap 0.577, tau_mech 0.453 / tau_family 0.391
+#
+# The diagnosis that motivated it stands -- every large cross-validation miss is an agent
+# that is the sole representative of its payload family inside a broader mechanism class.
+# The resolution that would fix it is simply not separable from mechanism given 7 families
+# across 5 mechanisms and 16 agents. That is the project's central structural finding
+# appearing again, now at the parameterization level rather than in a parameter count.
+USE_PAYLOAD_FAMILY = False
+
+
 def model(
     data: ModelData,
     hold_mech: int | None = None,
     hold_family: int | None = None,
+    use_family: bool | None = None,
 ) -> None:
     """NumPyro model.
 
@@ -98,19 +135,18 @@ def model(
     # dna_crosslink -> pbd (1) + ign (1). Its own scale decides how much survives: the
     # first split has the agents to support an effect, the second does not and shrinks
     # back toward its mechanism, which is the correct answer rather than a limitation.
-    tau_family = numpyro.sample("tau_family", dist.HalfNormal(0.3))
-    family_dev_raw = numpyro.sample(
-        "family_dev_raw",
-        dist.Normal(0.0, 1.0).expand([len(data.families), n_axes]).to_event(2),
-    )
-    # Each family sits at its mechanism's effect plus its own deviation.
-    family_axis = mech_axis[data.family_to_mech, :] + tau_family * family_dev_raw
-    if hold_family is not None:
-        # A held-out family falls back to its mechanism, not to zero: the sibling families
-        # inside that mechanism are still informative, and that is what the fold tests.
-        family_axis = family_axis.at[hold_family, :].set(
-            mech_axis[data.family_to_mech[hold_family], :]
-        )
+    if use_family is None:
+        use_family = USE_PAYLOAD_FAMILY
+    if not use_family:
+        # Mechanism carries the chemistry on its own.
+        family_axis = mech_axis[data.family_to_mech, :]
+        if hold_family is not None:
+            family_axis = family_axis.at[hold_family, :].set(
+                mech_axis[data.family_to_mech[hold_family], :]
+            )
+    else:
+        family_axis = _family_term(data, mech_axis, n_axes, hold_family)
+
 
     # --- linker cleavability x axis. Measured direction, worth stating because an earlier
     # draft had it backwards: non-cleavable linkers associate with ocular toxicity and
@@ -195,10 +231,11 @@ def n_free_parameters(data: ModelData) -> dict[str, int]:
     """Nominal free parameters, split by whether the design matrix or the data supports them."""
     n_axes, n_mech = len(data.axes), len(data.mechanisms)
     n_fam = len(data.families)
-    # mu, mech x axis, family deviations, cleav x axis, dar + combo. Family deviations
-    # are nested rather than additive, so they are shrunk toward their mechanism and the
-    # effective count is well below the nominal one -- read with the fitted tau_family.
-    design = n_axes + n_mech * n_axes + n_fam * n_axes + n_axes + 2
+    # mu, mech x axis, cleav x axis, dar + combo. Family deviations are excluded because
+    # they are not identifiable here (see USE_PAYLOAD_FAMILY).
+    design = n_axes + n_mech * n_axes + n_axes + 2
+    if USE_PAYLOAD_FAMILY:
+        design += n_fam * n_axes
     nuisance = 2 + len(data.trials) + len(data.agents) + 5  # thresh, log_n, REs, scales
     return {
         "design": design,

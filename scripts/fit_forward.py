@@ -87,10 +87,14 @@ def predict_rates(
         mech[:, hold_mech, :] = 0.0
     # Family is nested inside mechanism: its effect is the mechanism effect plus a
     # shrunk deviation. A held-out family falls back to its mechanism rather than to zero.
-    fam = (
-        mech[:, data.family_to_mech, :]
-        + np.asarray(post["tau_family"])[:, None, None] * np.asarray(post["family_dev_raw"])
-    )
+    if "tau_family" in post:
+        fam = (
+            mech[:, data.family_to_mech, :]
+            + np.asarray(post["tau_family"])[:, None, None]
+            * np.asarray(post["family_dev_raw"])
+        )
+    else:
+        fam = mech[:, data.family_to_mech, :]
     if hold_family is not None:
         fam = fam.copy()
         fam[:, hold_family, :] = mech[:, data.family_to_mech[hold_family], :]
@@ -239,7 +243,7 @@ def main() -> int:
     # differ by much more than a Monte Carlo standard error have not converged.
     print("  seed agreement (|mean_a - mean_b| / pooled sd):")
     worst = 0.0
-    for name in ("tau_mech", "tau_family", "tau_cleav", "b_dar", "b_combo", "b_thresh",
+    for name in ("tau_mech", "tau_cleav", "b_dar", "b_combo", "b_thresh",
                  "b_log_n", "sigma_trial", "sigma_agent"):
         a, b = np.asarray(post[name]), np.asarray(post_b[name])
         sd = np.sqrt(0.5 * (a.var() + b.var())) or 1.0
@@ -255,7 +259,7 @@ def main() -> int:
         f"  tau_mech  (mechanism x axis scale): "
         f"{tau.mean():.3f} [{np.percentile(tau, 5):.3f}, {np.percentile(tau, 95):.3f}]"
     )
-    tau_f = np.asarray(post["tau_family"])
+    tau_f = np.asarray(post.get("tau_family", np.zeros(1)))
     print(
         f"  tau_family(payload family x axis) : "
         f"{tau_f.mean():.3f} [{np.percentile(tau_f, 5):.3f}, {np.percentile(tau_f, 95):.3f}]"

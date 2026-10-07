@@ -1,0 +1,38 @@
+Corpus (other): 3,990 cells over 285 arms x 14 axes (3,440 observed, 471 censored, 79 structural zero) | 16 agents, 5 mechanisms, 7 payload families, 61 multi-arm trials (128 arms from single-arm trials carry no trial effect)
+
+Parameters: design 198, nuisance 84; identifying cells 224 (ratio 1.13:1)
+
+Folds:
+  mechanism         arms  agents  fold
+  dna_alkyl            2       1  skipped (<3 agents)
+  dna_cleave          39       2  skipped (<3 agents)
+  dna_crosslink        7       2  skipped (<3 agents)
+  topo1               68       4  VIABLE
+  tubulin            169       7  VIABLE
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+
+Full fit (2 seeds): 348.3s
+  seed agreement (|mean_a - mean_b| / pooled sd):
+    tau_mech     0.564  <-- check
+    tau_family   0.359  <-- check
+    tau_cleav    0.577  <-- check
+    b_dar        0.264
+    b_combo      0.210
+    b_thresh     0.126
+    b_log_n      0.051
+    sigma_trial  0.321  <-- check
+    sigma_agent  0.019
+  worst standardized seed gap: 0.577 (NOT converged)
+  tau_mech  (mechanism x axis scale): 0.453 [0.285, 0.604]
+  tau_family(payload family x axis) : 0.391 [0.302, 0.499]
+  tau_cleav (cleavability x axis)   : 0.304 [0.218, 0.431]
+  b_dar        +0.044 [-0.000, +0.091]
+  b_combo      +0.203 [+0.174, +0.236]
+  b_thresh     +0.036 [+0.031, +0.041]
+  b_log_n      +0.030 [+0.021, +0.040]
+  sigma_trial  +0.475 [+0.419, +0.545]
+  sigma_agent  +0.132 [+0.086, +0.213]
+
+==========================================================================
+leave_one_mechanism_out  (2 folds)
+==========================================================================

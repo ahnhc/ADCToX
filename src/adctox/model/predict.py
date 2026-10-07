@@ -41,15 +41,17 @@ class Posterior:
     @classmethod
     def from_samples(cls, post: dict, data: ModelData) -> "Posterior":
         tau_m = np.asarray(post["tau_mech"])[:, None, None]
-        tau_f = np.asarray(post["tau_family"])[:, None, None]
+        tau_f = (np.asarray(post["tau_family"])[:, None, None]
+                 if "tau_family" in post else None)
         tau_c = np.asarray(post["tau_cleav"])[:, None]
         mech = tau_m * np.asarray(post["mech_axis_raw"])
+        family = mech[:, data.family_to_mech, :]
+        if "tau_family" in post:
+            family = family + tau_f * np.asarray(post["family_dev_raw"])
         return cls(
             mu_axis=np.asarray(post["mu_axis"]),
             mech_axis=mech,
-            # Nested: family = its mechanism's effect plus a shrunk deviation.
-            family_axis=mech[:, data.family_to_mech, :]
-            + tau_f * np.asarray(post["family_dev_raw"]),
+            family_axis=family,
             cleav_axis=tau_c * np.asarray(post["cleav_axis_raw"]),
             b_dar=np.asarray(post["b_dar"]),
             b_combo=np.asarray(post["b_combo"]),
