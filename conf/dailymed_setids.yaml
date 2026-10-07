@@ -1,0 +1,32 @@
+# DailyMed SPL set ids for the ADCs with a US label.
+#
+# openFDA does NOT serve label history: `drug/label.json` returns exactly one record per
+# product, carrying only the current version and effective date. DailyMed does:
+#   services/v2/spls/{setid}/history.json   -> every version with its date
+#   drugInfo.cfm?setid={setid}&version={n}  -> the full historical label text
+#
+# This is what makes a *dated* prediction target possible. Everything else in the project
+# measures consistency with warnings that already existed; a warning added to a label
+# years after approval is the only genuinely anticipatory target in the public record.
+#
+# Also note: openFDA label lookups must search `openfda.brand_name`. Searching
+# `generic_name` returns only a minority of these products.
+
+version: 1
+verified_at: 2026-10-07
+
+agents:
+  gemtuzumab_ozogamicin:    {brand: MYLOTARG,  set_id: "32fd2bb2-1cfa-4250-feb8-d7956c794e05"}
+  brentuximab_vedotin:      {brand: ADCETRIS,  set_id: "3904f8dd-1aef-3490-e48f-bd55f32ed67f"}
+  trastuzumab_emtansine:    {brand: KADCYLA,   set_id: "23f3c1f4-0fc8-4804-a9e3-04cf25dd302e"}
+  inotuzumab_ozogamicin:    {brand: BESPONSA,  set_id: "cc7014b1-c775-411d-b374-8113248b4077"}
+  polatuzumab_vedotin:      {brand: POLIVY,    set_id: "20a16ab2-f338-4abb-9dcd-254bd949a2bc"}
+  enfortumab_vedotin:       {brand: PADCEV,    set_id: "b5631d3e-4604-4363-8f20-11dfc5a4a8ed"}
+  trastuzumab_deruxtecan:   {brand: ENHERTU,   set_id: "7e67e73e-ddf4-4e4d-8b50-09d7514910b6"}
+  sacituzumab_govitecan:    {brand: TRODELVY,  set_id: "57a597d2-03f0-472e-b148-016d7169169d"}
+  loncastuximab_tesirine:   {brand: ZYNLONTA,  set_id: "af54af12-3edf-4301-8bc5-0446bc813c1d"}
+  tisotumab_vedotin:        {brand: TIVDAK,    set_id: "c9fe3f32-4219-466e-acb9-3f609b4f4df1"}
+  mirvetuximab_soravtansine: {brand: ELAHERE,   set_id: "00c424b5-6ccd-48ab-9e88-1986451120e2"}
+  datopotamab_deruxtecan:   {brand: DATROWAY,  set_id: "2950227c-6230-4ca4-a135-46e44d9424a0"}
+  telisotuzumab_vedotin:    {brand: EMRELIS,   set_id: "bc04f980-3957-4e35-ab81-8ec2ffe87215"}
+  pivekimab_sunirine:       {brand: DECNUPAZ,  set_id: "508b6ff8-601d-4901-a7a5-816141134054"}

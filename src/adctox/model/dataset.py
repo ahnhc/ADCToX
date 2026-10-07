@@ -69,6 +69,8 @@ class ModelData:
     axes: list[str]
     mechanisms: list[str]
     families: list[str]
+    # Mechanism index for each family, so the model can nest one inside the other.
+    family_to_mech: np.ndarray
     agents: list[str]
     trials: list[str]
     arm_keys: list[str]
@@ -241,6 +243,15 @@ def build(
         axes=list(axes),
         mechanisms=mechanisms,
         families=families,
+        family_to_mech=np.array(
+            [
+                mech_of[
+                    arms.loc[arms["payload_family"] == f, "mechanism"].iloc[0]
+                ]
+                for f in families
+            ],
+            dtype=np.int32,
+        ),
         agents=agents,
         trials=trials,
         arm_keys=arm_keys,

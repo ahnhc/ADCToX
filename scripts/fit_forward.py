@@ -85,10 +85,15 @@ def predict_rates(
     if hold_mech is not None:
         mech = mech.copy()
         mech[:, hold_mech, :] = 0.0
-    fam = np.asarray(post["tau_family"])[:, None, None] * np.asarray(post["family_axis_raw"])
+    # Family is nested inside mechanism: its effect is the mechanism effect plus a
+    # shrunk deviation. A held-out family falls back to its mechanism rather than to zero.
+    fam = (
+        mech[:, data.family_to_mech, :]
+        + np.asarray(post["tau_family"])[:, None, None] * np.asarray(post["family_dev_raw"])
+    )
     if hold_family is not None:
         fam = fam.copy()
-        fam[:, hold_family, :] = 0.0
+        fam[:, hold_family, :] = mech[:, data.family_to_mech[hold_family], :]
     cleav = np.asarray(post["tau_cleav"])[:, None] * np.asarray(post["cleav_axis_raw"])
     arm_lin = (
         np.asarray(post["b_dar"])[:, None] * data.arm_dar_c[None, :]
@@ -104,7 +109,6 @@ def predict_rates(
     ai, xi = data.arm_idx, data.axis_idx
     logit = (
         mu[:, xi]
-        + mech[:, data.arm_mech_idx[ai], xi]
         + fam[:, data.arm_family_idx[ai], xi]
         + cleav[:, xi] * data.arm_cleavable[ai][None, :]
         + arm_lin[:, ai]

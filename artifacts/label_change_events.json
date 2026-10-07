@@ -1,0 +1,210 @@
+{
+ "n_agents": 14,
+ "versions_parsed": {
+  "gemtuzumab_ozogamicin": 16,
+  "brentuximab_vedotin": 25,
+  "trastuzumab_emtansine": 27,
+  "inotuzumab_ozogamicin": 8,
+  "polatuzumab_vedotin": 13,
+  "enfortumab_vedotin": 17,
+  "trastuzumab_deruxtecan": 20,
+  "sacituzumab_govitecan": 15,
+  "loncastuximab_tesirine": 14,
+  "tisotumab_vedotin": 8,
+  "mirvetuximab_soravtansine": 10,
+  "datopotamab_deruxtecan": 7,
+  "telisotuzumab_vedotin": 2,
+  "pivekimab_sunirine": 1
+ },
+ "axis_additions": [
+  {
+   "agent": "brentuximab_vedotin",
+   "axis": "renal",
+   "kind": "axis_added",
+   "from_version": 7,
+   "to_version": 9,
+   "date": "Dec 08, 2014",
+   "heading": "Increased Toxicity in the Presence of Severe Renal Impairment",
+   "prior_headings": [
+    "Embryo-Fetal Toxicity",
+    "Infusion Reactions",
+    "Neutropenia",
+    "Peripheral Neuropathy",
+    "Progressive Multifocal Leukoencephalopathy",
+    "Stevens-Johnson Syndrome",
+    "Tumor Lysis Syndrome"
+   ],
+   "needs_adjudication": false,
+   "adjudication_reason": null
+  },
+  {
+   "agent": "brentuximab_vedotin",
+   "axis": "hepatic",
+   "kind": "axis_added",
+   "from_version": 7,
+   "to_version": 9,
+   "date": "Dec 08, 2014",
+   "heading": "Increased Toxicity in the Presence of Moderate or Severe Hepatic Impairment",
+   "prior_headings": [
+    "Embryo-Fetal Toxicity",
+    "Infusion Reactions",
+    "Neutropenia",
+    "Peripheral Neuropathy",
+    "Progressive Multifocal Leukoencephalopathy",
+    "Stevens-Johnson Syndrome",
+    "Tumor Lysis Syndrome"
+   ],
+   "needs_adjudication": false,
+   "adjudication_reason": null
+  },
+  {
+   "agent": "brentuximab_vedotin",
+   "axis": "pulmonary",
+   "kind": "axis_added",
+   "from_version": 9,
+   "to_version": 11,
+   "date": "Feb 24, 2015",
+   "heading": "Pulmonary toxicity",
+   "prior_headings": [
+    "Anaphylaxis and Infusion Reactions",
+    "Embryo-Fetal Toxicity",
+    "Hematologic Toxicities",
+    "Hepatotoxicity",
+    "Increased Toxicity in the Presence of Moderate or Severe Hepatic Impairment",
+    "Increased Toxicity in the Presence of Severe Renal Impairment",
+    "Peripheral Neuropathy",
+    "Progressive Multifocal Leukoencephalopathy",
+    "Serious Dermatologic Reactions",
+    "Serious Infections and Opportunistic Infections",
+    "Tumor Lysis Syndrome"
+   ],
+   "needs_adjudication": false,
+   "adjudication_reason": null
+  },
+  {
+   "agent": "brentuximab_vedotin",
+   "axis": "gastrointestinal",
+   "kind": "axis_added",
+   "from_version": 15,
+   "to_version": 17,
+   "date": "Mar 17, 2016",
+   "heading": "Gastrointestinal Complications",
+   "prior_headings": [
+    "Anaphylaxis and Infusion Reactions",
+    "Embryo-Fetal Toxicity",
+    "Hematologic Toxicities",
+    "Hepatotoxicity",
+    "Increased Toxicity in the Presence of Moderate or Severe Hepatic Impairment",
+    "Increased Toxicity in the Presence of Severe Renal Impairment",
+    "Peripheral Neuropathy",
+    "Progressive Multifocal Leukoencephalopathy",
+    "Pulmonary Toxicity",
+    "Serious Dermatologic Reactions",
+    "Serious Infections and Opportunistic Infections",
+    "Tumor Lysis Syndrome"
+   ],
+   "needs_adjudication": false,
+   "adjudication_reason": null
+  },
+  {
+   "agent": "enfortumab_vedotin",
+   "axis": "pulmonary",
+   "kind": "axis_added",
+   "from_version": 5,
+   "to_version": 6,
+   "date": "Jul 20, 2021",
+   "heading": "Pneumonitis",
+   "prior_headings": [
+    "Embryo-Fetal Toxicity",
+    "Hyperglycemia",
+    "Infusion Site Extravasation",
+    "Ocular Disorders",
+    "Peripheral Neuropathy",
+    "Skin Reactions"
+   ],
+   "needs_adjudication": false,
+   "adjudication_reason": null
+  },
+  {
+   "agent": "loncastuximab_tesirine",
+   "axis": "hepatic",
+   "kind": "axis_added",
+   "from_version": 12,
+   "to_version": 13,
+   "date": "Jan 26, 2026",
+   "heading": "Hepatotoxicity, Including Drug-Induced Liver Injury",
+   "prior_headings": [
+    "Cutaneous Reactions",
+    "Effusion and Edema",
+    "Embryo-Fetal Toxicity",
+    "Infections",
+    "Myelosuppression"
+   ],
+   "needs_adjudication": false,
+   "adjudication_reason": null
+  },
+  {
+   "agent": "tisotumab_vedotin",
+   "axis": "dermatologic",
+   "kind": "axis_added",
+   "from_version": 4,
+   "to_version": 5,
+   "date": "Aug 07, 2023",
+   "heading": "Severe Cutaneous Adverse Reactions",
+   "prior_headings": [
+    "Embryo-Fetal Toxicity",
+    "Hemorrhage",
+    "Ocular Adverse Reactions",
+    "Peripheral Neuropathy",
+    "Pneumonitis"
+   ],
+   "needs_adjudication": false,
+   "adjudication_reason": null
+  }
+ ],
+ "boxed_escalations": [
+  {
+   "agent": "brentuximab_vedotin",
+   "axis": "neurologic",
+   "kind": "escalated_to_boxed",
+   "from_version": 2,
+   "to_version": 3,
+   "date": "Jun 04, 2012",
+   "heading": "WARNING: PROGRESSIVE MULTIFOCAL LEUKOENCEPHALOPATHY (PML)",
+   "prior_headings": [],
+   "needs_adjudication": false,
+   "adjudication_reason": null
+  },
+  {
+   "agent": "enfortumab_vedotin",
+   "axis": "dermatologic",
+   "kind": "escalated_to_boxed",
+   "from_version": 5,
+   "to_version": 6,
+   "date": "Jul 20, 2021",
+   "heading": "WARNING: SERIOUS SKIN REACTIONS",
+   "prior_headings": [],
+   "needs_adjudication": false,
+   "adjudication_reason": null
+  },
+  {
+   "agent": "tisotumab_vedotin",
+   "axis": "ocular",
+   "kind": "escalated_to_boxed",
+   "from_version": 2,
+   "to_version": 4,
+   "date": "Apr 11, 2022",
+   "heading": "WARNING: OCULAR TOXICITY See full prescribing information for complete boxed warning.",
+   "prior_headings": [],
+   "needs_adjudication": false,
+   "adjudication_reason": null
+  }
+ ],
+ "additions_per_agent": {
+  "brentuximab_vedotin": 4,
+  "enfortumab_vedotin": 1,
+  "loncastuximab_tesirine": 1,
+  "tisotumab_vedotin": 1
+ },
+ "unmapped_headings": {}
+}

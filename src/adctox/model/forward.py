@@ -65,7 +65,19 @@ def model(
     # that the design terms are estimated against it rather than reproducing it.
     mu_axis = numpyro.sample("mu_axis", dist.Normal(-3.0, 2.0).expand([n_axes]).to_event(1))
 
-    # --- mechanism x axis, with a learned scale (the shrinkage that makes this fit)
+    # --- payload chemistry, nested: family inside mechanism.
+    #
+    # An earlier version added mechanism x axis and family x axis as two independent terms.
+    # That is not identified, because family determines mechanism: the two competed for the
+    # same variance, the sampler stopped converging (worst seed gap 0.686), and tau_mech
+    # fell from 0.592 to 0.436 as tau_family took 0.396 off it.
+    #
+    # Nesting fixes the identification. A family's effect is drawn around its mechanism's
+    # effect, only the family term enters the predictor, and the two scales then mean
+    # different things: tau_mech is spread between mechanisms, tau_family is spread of
+    # families within their mechanism. A family with one agent has nothing to pull it away
+    # from its mechanism and shrinks back to it, which is the right answer rather than a
+    # limitation.
     tau_mech = numpyro.sample("tau_mech", dist.HalfNormal(0.5))
     mech_axis_raw = numpyro.sample(
         "mech_axis_raw", dist.Normal(0.0, 1.0).expand([n_mech, n_axes]).to_event(2)
@@ -87,13 +99,18 @@ def model(
     # first split has the agents to support an effect, the second does not and shrinks
     # back toward its mechanism, which is the correct answer rather than a limitation.
     tau_family = numpyro.sample("tau_family", dist.HalfNormal(0.3))
-    family_axis_raw = numpyro.sample(
-        "family_axis_raw",
+    family_dev_raw = numpyro.sample(
+        "family_dev_raw",
         dist.Normal(0.0, 1.0).expand([len(data.families), n_axes]).to_event(2),
     )
-    family_axis = tau_family * family_axis_raw
+    # Each family sits at its mechanism's effect plus its own deviation.
+    family_axis = mech_axis[data.family_to_mech, :] + tau_family * family_dev_raw
     if hold_family is not None:
-        family_axis = family_axis.at[hold_family, :].set(0.0)
+        # A held-out family falls back to its mechanism, not to zero: the sibling families
+        # inside that mechanism are still informative, and that is what the fold tests.
+        family_axis = family_axis.at[hold_family, :].set(
+            mech_axis[data.family_to_mech[hold_family], :]
+        )
 
     # --- linker cleavability x axis. Measured direction, worth stating because an earlier
     # draft had it backwards: non-cleavable linkers associate with ocular toxicity and
@@ -136,7 +153,6 @@ def model(
     ai, xi = data.arm_idx, data.axis_idx
     logit = (
         mu_axis[xi]
-        + mech_axis[data.arm_mech_idx[ai], xi]
         + family_axis[data.arm_family_idx[ai], xi]
         + cleav_axis[xi] * data.arm_cleavable[ai]
         + arm_lin[ai]
@@ -179,7 +195,9 @@ def n_free_parameters(data: ModelData) -> dict[str, int]:
     """Nominal free parameters, split by whether the design matrix or the data supports them."""
     n_axes, n_mech = len(data.axes), len(data.mechanisms)
     n_fam = len(data.families)
-    # mu, mech x axis, family x axis, cleav x axis, dar + combo.
+    # mu, mech x axis, family deviations, cleav x axis, dar + combo. Family deviations
+    # are nested rather than additive, so they are shrunk toward their mechanism and the
+    # effective count is well below the nominal one -- read with the fitted tau_family.
     design = n_axes + n_mech * n_axes + n_fam * n_axes + n_axes + 2
     nuisance = 2 + len(data.trials) + len(data.agents) + 5  # thresh, log_n, REs, scales
     return {

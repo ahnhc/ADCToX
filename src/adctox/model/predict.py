@@ -43,10 +43,13 @@ class Posterior:
         tau_m = np.asarray(post["tau_mech"])[:, None, None]
         tau_f = np.asarray(post["tau_family"])[:, None, None]
         tau_c = np.asarray(post["tau_cleav"])[:, None]
+        mech = tau_m * np.asarray(post["mech_axis_raw"])
         return cls(
             mu_axis=np.asarray(post["mu_axis"]),
-            mech_axis=tau_m * np.asarray(post["mech_axis_raw"]),
-            family_axis=tau_f * np.asarray(post["family_axis_raw"]),
+            mech_axis=mech,
+            # Nested: family = its mechanism's effect plus a shrunk deviation.
+            family_axis=mech[:, data.family_to_mech, :]
+            + tau_f * np.asarray(post["family_dev_raw"]),
             cleav_axis=tau_c * np.asarray(post["cleav_axis_raw"]),
             b_dar=np.asarray(post["b_dar"]),
             b_combo=np.asarray(post["b_combo"]),
@@ -126,13 +129,13 @@ def predict_draws(
 
     logit = (
         post.mu_axis[:, None, :]                             # (S,1,A)
-        + post.mech_axis[:, mech_idx, :]                     # (S,D,A)
-        # A family absent from the corpus contributes nothing, falling back to its
-        # mechanism rather than borrowing another family's effect.
+        # Family already carries its mechanism's effect through the nesting, so only one
+        # of the two is added. A family absent from the corpus falls back to the bare
+        # mechanism effect rather than borrowing a sibling's deviation.
         + np.where(
             (fam_idx >= 0)[None, :, None],
             post.family_axis[:, np.clip(fam_idx, 0, None), :],
-            0.0,
+            post.mech_axis[:, mech_idx, :],
         )
         + post.cleav_axis[:, None, :] * cleavables[None, :, None]
         + (post.b_dar[:, None] * (dars[None, :] - post.dar_mean))[:, :, None]
