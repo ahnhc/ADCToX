@@ -10,48 +10,46 @@
   "design_ratio_vs_identifying": 2.24
  },
  "tau_mech": {
-  "mean": 0.5816218256950378,
-  "q05": 0.4926206171512604,
-  "q95": 0.6862851977348328
+  "mean": 0.5922014117240906,
+  "q05": 0.4928787350654602,
+  "q95": 0.7051823735237122
  },
  "tau_family": {
-  "mean": 0.0,
-  "q05": 0.0,
-  "q95": 0.0
+  "enabled": false
  },
  "tau_cleav": {
-  "mean": 0.27321287989616394
+  "mean": 0.28321513533592224
  },
  "coefficients": {
   "b_dar": {
-   "mean": 0.0295502170920372,
-   "q05": -0.02261880785226822,
-   "q95": 0.08273554593324661
+   "mean": 0.031191378831863403,
+   "q05": -0.020296916365623474,
+   "q95": 0.08227904140949249
   },
   "b_combo": {
-   "mean": 0.19537769258022308,
-   "q05": 0.16754409670829773,
-   "q95": 0.2215941846370697
+   "mean": 0.1957332193851471,
+   "q05": 0.16849353909492493,
+   "q95": 0.2200973629951477
   },
   "b_thresh": {
-   "mean": 0.03296976536512375,
-   "q05": 0.027928858995437622,
-   "q95": 0.03856102377176285
+   "mean": 0.032971978187561035,
+   "q05": 0.027528533712029457,
+   "q95": 0.03791843354701996
   },
   "b_log_n": {
-   "mean": 0.0394870825111866,
-   "q05": 0.030132319778203964,
-   "q95": 0.048099905252456665
+   "mean": 0.03926810622215271,
+   "q05": 0.029362713918089867,
+   "q95": 0.04960988834500313
   },
   "sigma_trial": {
-   "mean": 0.49196916818618774,
-   "q05": 0.4115869998931885,
-   "q95": 0.5871779322624207
+   "mean": 0.4729800820350647,
+   "q05": 0.4004134237766266,
+   "q95": 0.5578392744064331
   },
   "sigma_agent": {
-   "mean": 0.1581762135028839,
-   "q05": 0.10408321022987366,
-   "q95": 0.23458896577358246
+   "mean": 0.15620197355747223,
+   "q05": 0.09515576809644699,
+   "q95": 0.23684020340442657
   }
  },
  "cv": {
@@ -91,10 +89,9 @@
     -0.008951976512530102
    ],
    "across_agent_spearman": {
-    "model": {},
-    "mech_baseline": {},
-    "global_baseline": {},
-    "model_mean": null
+    "applicable": false,
+    "n_folds_contributing": 2,
+    "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
    }
   },
   "leave_one_family_out": {
@@ -157,10 +154,9 @@
     -0.034537456475289635
    ],
    "across_agent_spearman": {
-    "model": {},
-    "mech_baseline": {},
-    "global_baseline": {},
-    "model_mean": null
+    "applicable": false,
+    "n_folds_contributing": 4,
+    "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
    }
   },
   "leave_one_agent_out": {
@@ -415,7 +411,8 @@
      "otologic": 0.21764705882352942,
      "constitutional": 0.4176470588235294
     },
-    "model_mean": 0.05378151260504201
+    "model_mean": 0.05378151260504201,
+    "n_folds_contributing": 16
    }
   }
  },

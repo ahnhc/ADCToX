@@ -27,6 +27,16 @@ from pathlib import Path
 BEGIN = "<!-- generated: fitted-parameters -->"
 END = "<!-- /generated: fitted-parameters -->"
 
+# The censoring sensitivity table moves with Monte Carlo noise on every rerun -- three of
+# its six figures were stale after one -- so it is generated too.
+CENS_BEGIN = "<!-- generated: censoring-sensitivity -->"
+CENS_END = "<!-- /generated: censoring-sensitivity -->"
+CENS_ROWS = [
+    ("censored", "censored"),
+    ("zero_imputed", "zero-imputed"),
+    ("threshold_0_only", "completely-reported subset only"),
+]
+
 # parameter -> (source, sentence). `{v}` is substituted with "mean [q05, q95]".
 NOTES: dict[str, tuple[str, str]] = {
     "tau_mech": (
@@ -87,10 +97,39 @@ def build_block(metrics: dict) -> str:
     return "\n".join(lines)
 
 
+def build_censoring_block(doc: dict) -> str | None:
+    """The b_thresh sensitivity table, from artifacts/censoring_sensitivity.json."""
+    if not all(k in doc for k in (k for k, _ in CENS_ROWS)):
+        return None
+    lines = [CENS_BEGIN, "", "| treatment | `b_thresh` |", "|---|---|"]
+    for key, label in CENS_ROWS:
+        cell = doc[key].get("b_thresh")
+        if not cell:
+            return None
+        lines.append(
+            f"| {label} | {cell['mean']:+.4f} "
+            f"[{cell['q05']:+.4f}, {cell['q95']:+.4f}] |"
+        )
+    sub = doc["threshold_0_only"].get("b_thresh", {})
+    pa = doc.get("profile_agreement", {})
+    n_arms = pa.get("n_arms_in_complete_subset")
+    lines += [
+        "",
+        f"The completely-reported subset is only {n_arms} arms, so its own interval for "
+        f"this coefficient spans [{sub.get('q05', float('nan')):+.4f}, "
+        f"{sub.get('q95', float('nan')):+.4f}] -- which is why agreement between the "
+        "corpora is assessed on the mechanism profiles rather than on coefficients.",
+        CENS_END,
+    ]
+    return "\n".join(lines)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--metrics", type=Path,
                     default=Path("artifacts/forward_other_metrics.json"))
+    ap.add_argument("--censoring", type=Path,
+                    default=Path("artifacts/censoring_sensitivity.json"))
     # Both documents quoted the same parameters and both were stale. The model card was
     # worse off: check_report.py only scanned report/, so its figures were never checked
     # at all.
@@ -106,10 +145,29 @@ def main() -> int:
     metrics = json.loads(args.metrics.read_text(encoding="utf-8"))
     block = build_block(metrics)
 
+    cens_block = None
+    if args.censoring.exists():
+        cens_block = build_censoring_block(
+            json.loads(args.censoring.read_text(encoding="utf-8"))
+        )
+
     pattern = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END), re.S)
+    cens_pattern = re.compile(
+        re.escape(CENS_BEGIN) + r".*?" + re.escape(CENS_END), re.S
+    )
     rc = 0
     for doc in args.report:
         text = doc.read_text(encoding="utf-8")
+        if cens_block and cens_pattern.search(text):
+            replaced = cens_pattern.sub(lambda _: cens_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: censoring-sensitivity block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: censoring-sensitivity block regenerated")
         if not pattern.search(text):
             print(
                 f"{doc} has no generated block. Insert these two markers around the "

@@ -215,11 +215,16 @@ asserted. Three fits of the same model: the censored likelihood; the same cells 
 censored entries imputed as zeros; and the 42-arm subset of studies that report completely,
 where no censoring model is needed at all.
 
+<!-- generated: censoring-sensitivity -->
+
 | treatment | `b_thresh` |
 |---|---|
-| censored | +0.0331 [+0.0277, +0.0383] |
-| zero-imputed | +0.0183 [+0.0136, +0.0231] |
-| completely-reported subset only | +0.0417 [-0.7572, +0.8010] |
+| censored | +0.0328 [+0.0277, +0.0374] |
+| zero-imputed | +0.0185 [+0.0135, +0.0235] |
+| completely-reported subset only | +0.0073 [-0.6528, +0.7203] |
+
+The completely-reported subset is only 42 arms, so its own interval for this coefficient spans [-0.6528, +0.7203] -- which is why agreement between the corpora is assessed on the mechanism profiles rather than on coefficients.
+<!-- /generated: censoring-sensitivity -->
 
 **The direction was predicted wrongly and the measurement corrected it.** We expected
 zero-imputation to inflate the threshold coefficient, with the correction absorbing an
@@ -234,14 +239,11 @@ censored likelihood accounts for the cells that are missing; this coefficient ab
 selection on the cells that are present. A non-zero value is expected and necessary.
 
 **The check that actually decides it is the profile comparison, and it passes.** Censored
-full corpus against completely-reported subset, per mechanism: calicheamicin +0.829,
-topoisomerase-I +0.785, tubulin +0.662. The two corpora agree on which organ each payload
+full corpus against completely-reported subset, per mechanism: calicheamicin
++0.7890, topoisomerase-I +0.7846, tubulin +0.7407.
+The two corpora agree on which organ each payload
 mechanism hits, so the treatment recovers signal that survives in data that never needed
 correcting. Had they disagreed, the project would have been resting on its own correction.
-
-The completely-reported subset is small enough that its own coefficient interval spans
-[-0.76, +0.80], which is why agreement is assessed on the profiles rather than on
-coefficients.
 
 ### A free negative control, and a second correction to the same coefficient
 
