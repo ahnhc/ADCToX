@@ -27,15 +27,31 @@ ROOT = Path(__file__).resolve().parents[3]
 CONF = ROOT / "conf"
 ARTIFACTS = ROOT / "artifacts"
 
+def _verdict(delta: float | None, ci: list | None) -> str:
+    """Read the verdict off the interval, so prose cannot drift from the number."""
+    if delta is None or not ci or len(ci) != 2 or ci[0] is None:
+        return "not computed"
+    lo, hi = ci
+    if lo > 0:
+        return "model beats the baseline"
+    if hi < 0:
+        return "model loses to the baseline"
+    return "indistinguishable from the baseline; the interval includes zero"
+
+
 @lru_cache(maxsize=1)
 def _ranking_evidence() -> dict:
     """What the ordering is actually worth, measured, served with every ranking.
 
-    Three evaluations, and they do not agree, so all three travel with the output:
-    the model loses to a base-rate baseline on within-arm axis ranking, sits at chance on
-    across-agent discrimination, and wins marginally on agreement with the dose-modification
-    orderings in approved labels. A caller who sees only the ranking would read far more
-    into it than that.
+    Every evaluation travels with the output, including the ones that disagree, because a
+    caller who sees only a ranking would read far more into it than the evidence carries.
+
+    Verdicts are derived from each interval rather than written as prose. They had drifted:
+    this function told callers the model "beats the baseline" on dose-modification
+    ordering while the model card said that comparison stopped being favourable after the
+    centering-bug fix. The model card was right -- the paired delta is
+    +0.0348 [-0.0007, +0.0693], which includes zero -- and a hand-written verdict is how
+    the two came to disagree. So the wording now follows the numbers.
     """
     out: dict = {"evaluations": []}
     fw = ARTIFACTS / "forward_other_metrics.json"
@@ -53,7 +69,9 @@ def _ranking_evidence() -> dict:
                     ),
                     "delta": res.get("delta_auc_mean"),
                     "delta_ci": res.get("delta_auc_ci"),
-                    "verdict": "model loses to the baseline",
+                    "verdict": _verdict(
+                        res.get("delta_auc_mean"), res.get("delta_auc_ci")
+                    ),
                 }
             )
             aas = res.get("across_agent_spearman") or {}
@@ -93,16 +111,61 @@ def _ranking_evidence() -> dict:
                 "delta_ci": doc.get("paired_delta_ci"),
                 "top_organ_agreement": doc.get("top_organ_agreement"),
                 "verdict": (
-                    "model beats the baseline, but only marginally, and it is at chance "
-                    "on naming the organ the label fears most"
+                    _verdict(
+                        doc.get("paired_delta_vs_best_baseline"),
+                        doc.get("paired_delta_ci"),
+                    )
+                    + "; and at chance on naming the organ the label fears most "
+                    f"({doc.get('top_organ_agreement')})"
+                ),
+            }
+        )
+    lc = ARTIFACTS / "label_change_eval.json"
+    if lc.exists():
+        s = (json.loads(lc.read_text(encoding="utf-8")) or {}).get("summary") or {}
+        if s.get("n_scored"):
+            out["evaluations"].append(
+                {
+                    "name": "anticipating a dated FDA label change",
+                    "metric": (
+                        "predicted rank of the organ FDA was about to warn about, fit "
+                        "only on data public before that date"
+                    ),
+                    "model": s.get("mean_rank"),
+                    "best_baseline": s.get("null_mean_rank"),
+                    "n_events": s.get("n_scored"),
+                    "p_value": s.get("p_value"),
+                    "verdict": (
+                        f"mean rank {s['mean_rank']:.2f} of 14 beats the null of "
+                        f"{s['null_mean_rank']}, but with {s['n_scored']} scorable events "
+                        f"p = {s['p_value']:.3f}; at this sample size only "
+                        f"{s.get('min_hits_for_significance')} of {s['n_scored']} could "
+                        "have reached p<0.05. A case series, not a validation study."
+                    ),
+                }
+            )
+    hf = ARTIFACTS / "hard_flag_necessity.json"
+    if hf.exists():
+        doc = json.loads(hf.read_text(encoding="utf-8"))
+        out["evaluations"].append(
+            {
+                "name": "how much of the output is the label-rule layer, not the fit",
+                "metric": "label rules whose removal would change the band",
+                "model": doc.get("n_load_bearing"),
+                "n_flags": doc.get("n_flags"),
+                "verdict": (
+                    f"{doc.get('n_load_bearing')} of {doc.get('n_flags')} label rules are "
+                    "load-bearing, so those bands are not model results. The two that are "
+                    "confirmatory are both deruxtecan/pulmonary."
                 ),
             }
         )
     out["summary"] = (
         "Treat the ordering as weak evidence. The model loses to a base-rate baseline on "
-        "within-arm axis ranking, sits at chance on across-agent discrimination, and beats "
-        "the baseline only marginally on agreement with approved dose-modification "
-        "orderings. Candidates sharing a rank are not distinguishable at all."
+        "within-arm axis ranking, sits at chance on across-agent discrimination, and does "
+        "not separate from the baseline on agreement with approved dose-modification "
+        "orderings once the interval is taken into account. Candidates sharing a rank are "
+        "not distinguishable at all."
     )
     return out
 
