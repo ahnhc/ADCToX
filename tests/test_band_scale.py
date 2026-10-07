@@ -120,3 +120,69 @@ def test_omitting_the_serious_posterior_degrades_rather_than_fails():
     assert top["weighted_risk_basis"] == "common"
     assert all(o["band_basis"] == "common" for o in top["organ_risks"])
     assert all(o["serious_estimate"] is None for o in top["organ_risks"])
+
+
+@pytest.mark.skipif(
+    not (ARTIFACTS / "posterior_serious.npz").exists(),
+    reason="serious posterior not built",
+)
+def test_reported_evidence_follows_the_band_basis():
+    """The count shown must be the count that produced the figure shown.
+
+    These disagreed: an axis banded from the serious table reported the common table's
+    arm count -- 162 arms quoted behind a number that 157 arms produced -- while C6
+    gated on the serious count. The gate and the display were describing different
+    evidence.
+    """
+    from adctox.pipeline import propose
+
+    po = Posterior.load(ARTIFACTS / "posterior_other.npz")
+    ps = Posterior.load(ARTIFACTS / "posterior_serious.npz")
+    r = propose("ERBB2", ["interstitial_lung_disease"], po, top_k=1,
+                hard_flags=False, serious_posterior=ps)
+    axes = {o["organ_axis"]: o for o in r["candidates"][0]["organ_risks"]}
+    mech = r["candidates"][0]["mechanism"]
+
+    def arms(post, axis):
+        if mech not in post.mechanisms or axis not in post.axes:
+            return 0
+        return int(post.evidence_arms[post.mechanisms.index(mech), post.axes.index(axis)])
+
+    serious_rows = [a for a, o in axes.items() if o["band_basis"] == "serious"]
+    assert serious_rows, "no axis was banded on the serious table"
+    for axis in serious_rows:
+        assert axes[axis]["n_supporting_arms"] == arms(ps, axis), (
+            f"{axis} is banded on the serious table but reports the common table's count"
+        )
+    for axis, o in axes.items():
+        if o["band_basis"] == "common":
+            assert o["n_supporting_arms"] == arms(po, axis)
+
+
+@pytest.mark.skipif(
+    not (ARTIFACTS / "posterior_serious.npz").exists(),
+    reason="serious posterior not built",
+)
+def test_both_estimates_are_reported_so_neither_is_hidden():
+    """A row carries both tables' rates where evidence allows, not only the banded one.
+
+    Suppressing the other would make the two bases incomparable *and* invisible.
+    """
+    from adctox.pipeline import propose
+
+    po = Posterior.load(ARTIFACTS / "posterior_other.npz")
+    ps = Posterior.load(ARTIFACTS / "posterior_serious.npz")
+    r = propose("ERBB2", ["interstitial_lung_disease"], po, top_k=1,
+                hard_flags=False, serious_posterior=ps)
+    rows = r["candidates"][0]["organ_risks"]
+    both = [o for o in rows
+            if o["point_estimate"] is not None and o["serious_estimate"] is not None]
+    assert len(both) >= 8, f"only {len(both)} of {len(rows)} axes carry both rates"
+    # Serious rates must be the smaller of the two essentially everywhere; a serious event
+    # is a subset of any-grade events, so the reverse would indicate a table mix-up.
+    smaller = sum(1 for o in both if o["serious_estimate"] < o["point_estimate"])
+    assert smaller / len(both) > 0.8, (
+        f"serious rate exceeds the any-grade rate on {len(both) - smaller} of "
+        f"{len(both)} axes; a serious event is a subset of an any-grade event, so the "
+        "two tables may have been swapped"
+    )
