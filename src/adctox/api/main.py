@@ -362,6 +362,17 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
         j = spost.axes.index(axis)
         return (float(srates[:, j].mean()), int(spost.evidence_arms[smi, j]))
 
+    def serious_band(axis: str) -> dict | None:
+        """The serious rate's credible interval. Every number carries one."""
+        if srates is None or axis not in spost.axes:
+            return None
+        j = spost.axes.index(axis)
+        return {
+            "lo": round(float(np.percentile(srates[:, j], 5)), 4),
+            "hi": round(float(np.percentile(srates[:, j], 95)), 4),
+            "kind": "credible_90",
+        }
+
     organ_risks = []
     for i, axis in enumerate(axes):
         mean = float(rates[:, i].mean())
@@ -418,6 +429,11 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
                 },
                 "serious_estimate": (
                     round(s_mean, 4)
+                    if s_mean is not None and s_arms >= MIN_ARMS_FOR_A_BAND
+                    else None
+                ),
+                "serious_interval": (
+                    serious_band(axis)
                     if s_mean is not None and s_arms >= MIN_ARMS_FOR_A_BAND
                     else None
                 ),

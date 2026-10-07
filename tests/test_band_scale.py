@@ -186,3 +186,38 @@ def test_both_estimates_are_reported_so_neither_is_hidden():
         f"{len(both)} axes; a serious event is a subset of an any-grade event, so the "
         "two tables may have been swapped"
     )
+
+
+@pytest.mark.skipif(
+    not (ARTIFACTS / "posterior_serious.npz").exists(),
+    reason="serious posterior not built",
+)
+def test_every_reported_rate_carries_its_own_interval():
+    """The project's own uncertainty rules require an interval beside every number.
+
+    The serious rate was shipped as a bare point for a while: the row led with it, banded
+    on it, and showed the any-grade table's interval beside it or none at all. That is the
+    row a patient with a declared vulnerability reads first, so it is the worst place to
+    drop the uncertainty.
+    """
+    from adctox.pipeline import propose
+
+    po = Posterior.load(ARTIFACTS / "posterior_other.npz")
+    ps = Posterior.load(ARTIFACTS / "posterior_serious.npz")
+    r = propose("ERBB2", ["interstitial_lung_disease"], po, top_k=1,
+                hard_flags=False, serious_posterior=ps)
+    for o in r["candidates"][0]["organ_risks"]:
+        if o["serious_estimate"] is not None:
+            iv = o["serious_interval"]
+            assert iv is not None, f"{o['organ_axis']} reports a serious rate with no interval"
+            assert iv["lo"] <= o["serious_estimate"] <= iv["hi"], (
+                f"{o['organ_axis']}: serious estimate {o['serious_estimate']} outside its "
+                f"own interval [{iv['lo']}, {iv['hi']}]"
+            )
+            # The two intervals must be distinct objects, not the same one reused.
+            assert iv != o["interval"], (
+                f"{o['organ_axis']} reports the same interval for both tables; the "
+                "serious interval is probably the any-grade one"
+            )
+        if o["point_estimate"] is not None:
+            assert o["interval"]["lo"] <= o["point_estimate"] <= o["interval"]["hi"]

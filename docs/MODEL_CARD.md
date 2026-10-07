@@ -49,6 +49,14 @@ The dose-modification comparison was favourable before the bug fix (+0.039 [+0.0
 organ each label fears most (1 of 13 against 0.93 expected), naming gastrointestinal for
 9 of 13 drugs because that is the axis base rate.
 
+A sixth evaluation sits outside this table because it has no baseline column and is not a
+rank-correlation: the anticipatory test, which asks whether a model fit only on data
+public before a given date ranked the organ FDA was about to add a warning for. It is
+reported in `report/findings.md` section 7. Result: 3 of 7 label-change events were
+scorable, mean predicted rank 4.6667 of 14 against a null of 7.5, 1 of 3 in the top
+three, p = 0.5149. The mean rank beats the null and the test cannot establish it -- at
+three events only 3 of 3 reaches p<0.05. It is a case series with a permutation test.
+
 ### The gate, which stands regardless
 
 The original gate -- macro AUC below 0.65 triggers the cut order -- is unfireable and has

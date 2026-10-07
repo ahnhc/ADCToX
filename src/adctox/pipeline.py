@@ -334,6 +334,20 @@ def propose(
                             "hi": round(s.organ_interval[a][1], 4),
                             "kind": "credible_90",
                         },
+                        # Every number carries an interval, including the serious one.
+                        # A serious-basis row was showing a bare point while the rules
+                        # this project set for itself require an interval beside it --
+                        # and it is the row a vulnerable patient reads first.
+                        "serious_interval": (
+                            None if s.serious_interval is None
+                            or serious_evidence_for(s.design.mechanism, a)[1]
+                            < MIN_ARMS_FOR_A_BAND
+                            else {
+                                "lo": round(s.serious_interval[a][0], 4),
+                                "hi": round(s.serious_interval[a][1], 4),
+                                "kind": "credible_90",
+                            }
+                        ),
                         # The serious-event rate for the same axis. Reported alongside
                         # rather than instead of `point_estimate`: they answer different
                         # questions and, measured on this corpus, rank organs differently.

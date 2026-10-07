@@ -22,7 +22,9 @@ if (typeof axisRow !== "function") { console.error("axisRow not defined"); proce
 const base = {
   organ_axis: "pulmonary", label: "Pulmonary",
   point_estimate: 0.1402, serious_estimate: 0.0313,
-  interval: { lo: 0.09, hi: 0.19 }, risk_band: "high", band_source: "model",
+  interval: { lo: 0.09, hi: 0.19 },
+  serious_interval: { lo: 0.0092, hi: 0.0759 },
+  risk_band: "high", band_source: "model",
   weight_applied: 3.0, n_supporting_agents: 4, n_supporting_arms: 67, drivers: [],
 };
 const serious = { ...base, band_basis: "serious", at_risk_for_patient: true };
@@ -32,7 +34,8 @@ const common = {
   point_estimate: 0.5948, serious_estimate: 0.0336,
 };
 const noEv = { ...serious, risk_band: "no_evidence", n_supporting_arms: 1,
-               serious_estimate: null, point_estimate: null };
+               serious_estimate: null, point_estimate: null,
+               serious_interval: null, interval: null };
 
 const a = axisRow(serious), b = axisRow(common), c = axisRow(noEv);
 const barPos = (html) => {
@@ -45,7 +48,8 @@ const checks = [
   ["serious basis makes the serious rate primary", a.includes("3.1%")],
   ["serious basis is labelled on the row", a.includes("serious-event basis")],
   ["serious basis shows the any-grade rate as secondary", a.includes("any-grade 14%")],
-  ["serious basis omits the credible interval it does not have", !a.includes("[14%")],
+  ["serious basis shows ITS OWN interval, not the any-grade one",
+   a.includes("0.92%") && !a.includes("[9.0%")],
   ["common basis makes the any-grade rate primary", b.includes("59%")],
   ["common basis shows the serious rate as secondary", b.includes("serious 3.4%")],
   ["common basis carries no basis label", !b.includes("serious-event basis")],

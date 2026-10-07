@@ -194,6 +194,10 @@ class OrganRisk(BaseModel):
     # pulmonary in the common table and 2nd in the serious one. None when the serious fit
     # is absent or too thin on this axis.
     serious_estimate: float | None = None
+    # The serious rate's own credible interval. Required by the same rule as the
+    # any-grade one: a point estimate without an interval overstates what is known, and
+    # the serious row is the one a vulnerable patient reads first.
+    serious_interval: Interval | None = None
     interval: Interval
     risk_band: Literal["low", "moderate", "high", "no_evidence"]
     # Which table the band was computed on. An axis the patient is vulnerable on is a

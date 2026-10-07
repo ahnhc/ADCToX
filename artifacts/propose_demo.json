@@ -1,5 +1,5 @@
 {
- "proposal_id": "prp_ac7ab78bb6e2",
+ "proposal_id": "prp_2ed6376c6ca3",
  "target_antigen": "ERBB2",
  "n_enumerated": 106,
  "n_passed_constraints": 74,
@@ -34,6 +34,11 @@
       "hi": 0.282,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0107,
+      "hi": 0.0638,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0304,
      "risk_band": "high",
      "band_basis": "common",
@@ -51,6 +56,11 @@
      "interval": {
       "lo": 0.1453,
       "hi": 0.2322,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0027,
+      "hi": 0.0191,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0086,
@@ -72,6 +82,11 @@
       "hi": 0.084,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0032,
+      "hi": 0.0212,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0102,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -91,6 +106,11 @@
       "hi": 0.2337,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0056,
+      "hi": 0.0344,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0164,
      "risk_band": "moderate",
      "band_basis": "serious",
@@ -108,6 +128,11 @@
      "interval": {
       "lo": 0.0261,
       "hi": 0.0455,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0027,
+      "hi": 0.017,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0078,
@@ -137,6 +162,11 @@
       "hi": 0.4629,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0066,
+      "hi": 0.0403,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0192,
      "risk_band": "high",
      "band_basis": "common",
@@ -154,6 +184,11 @@
      "interval": {
       "lo": 0.1659,
       "hi": 0.2594,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0039,
+      "hi": 0.0254,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0117,
@@ -183,6 +218,11 @@
       "hi": 0.1238,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0008,
+      "hi": 0.0058,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0026,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -210,6 +250,11 @@
       "hi": 0.238,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0007,
+      "hi": 0.0049,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0023,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -227,6 +272,11 @@
      "interval": {
       "lo": 0.1294,
       "hi": 0.2087,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0032,
+      "hi": 0.0216,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0098,
@@ -248,6 +298,11 @@
       "hi": 0.1935,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0021,
+      "hi": 0.0139,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0063,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -265,6 +320,11 @@
      "interval": {
       "lo": 0.0817,
       "hi": 0.1375,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0132,
+      "hi": 0.0794,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0379,
@@ -286,6 +346,11 @@
       "hi": 0.0279,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0004,
+      "hi": 0.0031,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0013,
      "risk_band": "low",
      "band_basis": "common",
@@ -303,6 +368,11 @@
      "interval": {
       "lo": 0.261,
       "hi": 0.3865,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0083,
+      "hi": 0.0504,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0242,
@@ -358,6 +428,11 @@
       "hi": 0.2776,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0106,
+      "hi": 0.0717,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.031,
      "risk_band": "high",
      "band_basis": "common",
@@ -375,6 +450,11 @@
      "interval": {
       "lo": 0.1473,
       "hi": 0.2296,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0026,
+      "hi": 0.0206,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0088,
@@ -396,6 +476,11 @@
       "hi": 0.0828,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0032,
+      "hi": 0.0255,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0104,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -415,6 +500,11 @@
       "hi": 0.2324,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0051,
+      "hi": 0.0372,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0167,
      "risk_band": "moderate",
      "band_basis": "serious",
@@ -432,6 +522,11 @@
      "interval": {
       "lo": 0.0256,
       "hi": 0.0453,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0026,
+      "hi": 0.0192,
       "kind": "credible_90"
      },
      "serious_estimate": 0.008,
@@ -461,6 +556,11 @@
       "hi": 0.4553,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0063,
+      "hi": 0.0463,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0197,
      "risk_band": "high",
      "band_basis": "common",
@@ -478,6 +578,11 @@
      "interval": {
       "lo": 0.1667,
       "hi": 0.2591,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0038,
+      "hi": 0.0276,
       "kind": "credible_90"
      },
      "serious_estimate": 0.012,
@@ -507,6 +612,11 @@
       "hi": 0.1206,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0008,
+      "hi": 0.0063,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0026,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -534,6 +644,11 @@
       "hi": 0.2321,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0006,
+      "hi": 0.0056,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0024,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -551,6 +666,11 @@
      "interval": {
       "lo": 0.1282,
       "hi": 0.2086,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0032,
+      "hi": 0.0223,
       "kind": "credible_90"
      },
      "serious_estimate": 0.01,
@@ -572,6 +692,11 @@
       "hi": 0.1915,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.002,
+      "hi": 0.0153,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0064,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -589,6 +714,11 @@
      "interval": {
       "lo": 0.0825,
       "hi": 0.1345,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0129,
+      "hi": 0.0874,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0387,
@@ -610,6 +740,11 @@
       "hi": 0.0275,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0004,
+      "hi": 0.003,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0013,
      "risk_band": "low",
      "band_basis": "common",
@@ -627,6 +762,11 @@
      "interval": {
       "lo": 0.2611,
       "hi": 0.3824,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0082,
+      "hi": 0.0533,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0245,
@@ -682,6 +822,11 @@
       "hi": 0.2742,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0092,
+      "hi": 0.0691,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.031,
      "risk_band": "high",
      "band_basis": "common",
@@ -699,6 +844,11 @@
      "interval": {
       "lo": 0.1373,
       "hi": 0.2256,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0024,
+      "hi": 0.0202,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0088,
@@ -720,6 +870,11 @@
       "hi": 0.0801,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.003,
+      "hi": 0.0238,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0104,
      "risk_band": "low",
      "band_basis": "common",
@@ -739,6 +894,11 @@
       "hi": 0.2254,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0049,
+      "hi": 0.0372,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0167,
      "risk_band": "moderate",
      "band_basis": "serious",
@@ -756,6 +916,11 @@
      "interval": {
       "lo": 0.0237,
       "hi": 0.0437,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0022,
+      "hi": 0.0182,
       "kind": "credible_90"
      },
      "serious_estimate": 0.008,
@@ -785,6 +950,11 @@
       "hi": 0.4508,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.006,
+      "hi": 0.0443,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0197,
      "risk_band": "high",
      "band_basis": "common",
@@ -802,6 +972,11 @@
      "interval": {
       "lo": 0.1575,
       "hi": 0.2548,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0036,
+      "hi": 0.0267,
       "kind": "credible_90"
      },
      "serious_estimate": 0.012,
@@ -831,6 +1006,11 @@
       "hi": 0.1192,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0007,
+      "hi": 0.006,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0026,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -858,6 +1038,11 @@
       "hi": 0.2258,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0006,
+      "hi": 0.0059,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0024,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -875,6 +1060,11 @@
      "interval": {
       "lo": 0.1217,
       "hi": 0.2,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0029,
+      "hi": 0.0232,
       "kind": "credible_90"
      },
      "serious_estimate": 0.01,
@@ -896,6 +1086,11 @@
       "hi": 0.1881,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0018,
+      "hi": 0.0155,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0064,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -913,6 +1108,11 @@
      "interval": {
       "lo": 0.0767,
       "hi": 0.1332,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.011,
+      "hi": 0.086,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0388,
@@ -934,6 +1134,11 @@
       "hi": 0.0268,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0003,
+      "hi": 0.0029,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0013,
      "risk_band": "low",
      "band_basis": "common",
@@ -951,6 +1156,11 @@
      "interval": {
       "lo": 0.2479,
       "hi": 0.3749,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0072,
+      "hi": 0.0557,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0246,
@@ -1007,6 +1217,11 @@
       "hi": 0.3437,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0124,
+      "hi": 0.079,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0402,
      "risk_band": "high",
      "band_basis": "common",
@@ -1024,6 +1239,11 @@
      "interval": {
       "lo": 0.0983,
       "hi": 0.1609,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0021,
+      "hi": 0.0141,
       "kind": "credible_90"
      },
      "serious_estimate": 0.007,
@@ -1045,6 +1265,11 @@
       "hi": 0.0906,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0033,
+      "hi": 0.0232,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0113,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1064,6 +1289,11 @@
       "hi": 0.1673,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0052,
+      "hi": 0.0345,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.017,
      "risk_band": "moderate",
      "band_basis": "serious",
@@ -1081,6 +1311,11 @@
      "interval": {
       "lo": 0.0305,
       "hi": 0.0516,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.003,
+      "hi": 0.0213,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0102,
@@ -1110,6 +1345,11 @@
       "hi": 0.4236,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0065,
+      "hi": 0.0454,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0221,
      "risk_band": "high",
      "band_basis": "common",
@@ -1127,6 +1367,11 @@
      "interval": {
       "lo": 0.2345,
       "hi": 0.3468,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.003,
+      "hi": 0.0203,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0096,
@@ -1156,6 +1401,11 @@
       "hi": 0.1139,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0005,
+      "hi": 0.0035,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0017,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1183,6 +1433,11 @@
       "hi": 0.2108,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0011,
+      "hi": 0.0091,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0044,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1200,6 +1455,11 @@
      "interval": {
       "lo": 0.1397,
       "hi": 0.2205,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0035,
+      "hi": 0.0231,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0112,
@@ -1221,6 +1481,11 @@
       "hi": 0.1424,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0014,
+      "hi": 0.0101,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0046,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1238,6 +1503,11 @@
      "interval": {
       "lo": 0.0824,
       "hi": 0.1386,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0087,
+      "hi": 0.0596,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0291,
@@ -1259,6 +1529,11 @@
       "hi": 0.0256,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0002,
+      "hi": 0.0021,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0009,
      "risk_band": "low",
      "band_basis": "common",
@@ -1276,6 +1551,11 @@
      "interval": {
       "lo": 0.2399,
       "hi": 0.3563,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0069,
+      "hi": 0.0475,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0233,
@@ -1331,6 +1611,11 @@
       "hi": 0.2836,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0099,
+      "hi": 0.0662,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0317,
      "risk_band": "high",
      "band_basis": "common",
@@ -1348,6 +1633,11 @@
      "interval": {
       "lo": 0.1458,
       "hi": 0.2326,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0029,
+      "hi": 0.0185,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0089,
@@ -1369,6 +1659,11 @@
       "hi": 0.0847,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0031,
+      "hi": 0.0225,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0106,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1388,6 +1683,11 @@
       "hi": 0.2337,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0051,
+      "hi": 0.0354,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0171,
      "risk_band": "moderate",
      "band_basis": "serious",
@@ -1405,6 +1705,11 @@
      "interval": {
       "lo": 0.0257,
       "hi": 0.0454,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0026,
+      "hi": 0.0171,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0081,
@@ -1434,6 +1739,11 @@
       "hi": 0.4593,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0061,
+      "hi": 0.042,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.02,
      "risk_band": "high",
      "band_basis": "common",
@@ -1451,6 +1761,11 @@
      "interval": {
       "lo": 0.1638,
       "hi": 0.2612,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0038,
+      "hi": 0.026,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0122,
@@ -1480,6 +1795,11 @@
       "hi": 0.1238,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0007,
+      "hi": 0.0057,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0026,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1507,6 +1827,11 @@
       "hi": 0.2371,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0007,
+      "hi": 0.0052,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0024,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1524,6 +1849,11 @@
      "interval": {
       "lo": 0.1277,
       "hi": 0.2099,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0029,
+      "hi": 0.0221,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0103,
@@ -1545,6 +1875,11 @@
       "hi": 0.195,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0019,
+      "hi": 0.014,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0065,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1562,6 +1897,11 @@
      "interval": {
       "lo": 0.0813,
       "hi": 0.1358,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0126,
+      "hi": 0.0815,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0393,
@@ -1583,6 +1923,11 @@
       "hi": 0.0276,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0004,
+      "hi": 0.003,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0013,
      "risk_band": "low",
      "band_basis": "common",
@@ -1600,6 +1945,11 @@
      "interval": {
       "lo": 0.2609,
       "hi": 0.3856,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0083,
+      "hi": 0.0523,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0252,
@@ -1655,6 +2005,11 @@
       "hi": 0.2733,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0084,
+      "hi": 0.074,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0318,
      "risk_band": "high",
      "band_basis": "common",
@@ -1672,6 +2027,11 @@
      "interval": {
       "lo": 0.1327,
       "hi": 0.224,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0022,
+      "hi": 0.021,
       "kind": "credible_90"
      },
      "serious_estimate": 0.009,
@@ -1693,6 +2053,11 @@
       "hi": 0.0803,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0026,
+      "hi": 0.0251,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0107,
      "risk_band": "low",
      "band_basis": "common",
@@ -1712,6 +2077,11 @@
       "hi": 0.2262,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0047,
+      "hi": 0.0387,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0172,
      "risk_band": "moderate",
      "band_basis": "serious",
@@ -1729,6 +2099,11 @@
      "interval": {
       "lo": 0.0228,
       "hi": 0.0442,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0022,
+      "hi": 0.0198,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0082,
@@ -1758,6 +2133,11 @@
       "hi": 0.4487,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0053,
+      "hi": 0.0481,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0202,
      "risk_band": "high",
      "band_basis": "common",
@@ -1775,6 +2155,11 @@
      "interval": {
       "lo": 0.1502,
       "hi": 0.2536,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0032,
+      "hi": 0.0284,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0123,
@@ -1804,6 +2189,11 @@
       "hi": 0.1178,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0007,
+      "hi": 0.0063,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0027,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1831,6 +2221,11 @@
       "hi": 0.2283,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0006,
+      "hi": 0.0059,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0024,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1848,6 +2243,11 @@
      "interval": {
       "lo": 0.1185,
       "hi": 0.202,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0027,
+      "hi": 0.0253,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0103,
@@ -1869,6 +2269,11 @@
       "hi": 0.1881,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0016,
+      "hi": 0.0159,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0066,
      "risk_band": "moderate",
      "band_basis": "common",
@@ -1886,6 +2291,11 @@
      "interval": {
       "lo": 0.0718,
       "hi": 0.1321,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0104,
+      "hi": 0.0929,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0398,
@@ -1907,6 +2317,11 @@
       "hi": 0.0271,
       "kind": "credible_90"
      },
+     "serious_interval": {
+      "lo": 0.0003,
+      "hi": 0.0033,
+      "kind": "credible_90"
+     },
      "serious_estimate": 0.0013,
      "risk_band": "low",
      "band_basis": "common",
@@ -1924,6 +2339,11 @@
      "interval": {
       "lo": 0.2401,
       "hi": 0.3732,
+      "kind": "credible_90"
+     },
+     "serious_interval": {
+      "lo": 0.0063,
+      "hi": 0.0569,
       "kind": "credible_90"
      },
      "serious_estimate": 0.0253,

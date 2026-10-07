@@ -167,16 +167,16 @@ function axisRow(r) {
   const thin = noEvidence || arms < 3;
   const scale = serious ? 8 : 60;   // percent of risk that fills the bar
   const pt = (shown ?? 0) * 100;
-  // Only the common table carries a stored interval, so the serious row shows a point
-  // marker and no band rather than a credible interval it does not have.
-  const lo = (r.interval?.lo ?? 0) * 100, hi = (r.interval?.hi ?? 0) * 100;
+  // Both tables carry their own credible interval, and the row draws whichever belongs
+  // to the number it is leading with. A bare point estimate overstates what is known,
+  // and the serious row is the one a vulnerable patient reads first.
+  const iv = serious ? r.serious_interval : r.interval;
+  const lo = (iv?.lo ?? 0) * 100, hi = (iv?.hi ?? 0) * 100;
   // Law 4: absence of evidence gets its own hatched grey, never a reassuring green.
   const fill = noEvidence
     ? `<span class="ci hatch" style="left:0;right:0"></span>`
-    : (serious
-      ? `<span class="pt" style="left:${Math.min(pt / scale * 100, 99)}%"></span>`
-      : `<span class="ci" style="left:${lo / scale * 100}%;width:${Math.max((hi - lo) / scale * 100, 1.5)}%;
-         background:var(--${r.risk_band})"></span><span class="pt" style="left:${pt / scale * 100}%"></span>`);
+    : `<span class="ci" style="left:${Math.min(lo / scale * 100, 99)}%;width:${Math.max((hi - lo) / scale * 100, 1.5)}%;
+         background:var(--${r.risk_band})"></span><span class="pt" style="left:${Math.min(pt / scale * 100, 99)}%"></span>`;
   const basisTag = serious
     ? `<span class="tag" title="This organ is one your stated conditions affect, so the question asked is about serious harm, not about whether an event occurs at all. Banded on the serious-event table, whose scale is roughly ten times smaller. Not comparable with the rows below it.">serious-event basis</span>`
     : "";
@@ -186,8 +186,8 @@ function axisRow(r) {
   const secondary = (!noEvidence && other != null)
     ? `<span class="alt">${serious ? "any-grade" : "serious"} ${pct(other)}</span>`
     : "";
-  const interval = (!serious && !noEvidence && r.interval)
-    ? " [" + pct(r.interval.lo) + "&ndash;" + pct(r.interval.hi) + "]"
+  const interval = (!noEvidence && iv)
+    ? " [" + pct(iv.lo) + "&ndash;" + pct(iv.hi) + "]"
     : "";
   return `<div class="axis ${r.at_risk_for_patient ? "at-risk" : ""}">
       <span>${r.label}${r.at_risk_for_patient ? ` <span class="tag">weighted &times;${r.weight_applied.toFixed(1)}</span>` : ""}${basisTag}${ruleTag}</span>

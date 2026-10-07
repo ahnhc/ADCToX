@@ -143,13 +143,15 @@ def main() -> int:
             # A withheld point estimate is not a formatting edge case: the corpus has too
             # little on that organ for this chemistry to band a rate at all.
             pt = "     n/a" if shown is None else f"{shown:8.4f}"
+            iv = r["serious_interval"] if serious else r["interval"]
+            span = "" if iv is None else f" [{iv['lo']:.4f}, {iv['hi']:.4f}]"
             ev = f"{r.get('n_supporting_arms', 0)} arms"
             basis = "serious-event" if serious else "any-grade   "
             other = r["point_estimate"] if serious else r["serious_estimate"]
             alt = "" if other is None else (
                 f"; any-grade {other:.3f}" if serious else f"; serious {other:.4f}"
             )
-            print(f"      * {r['organ_axis']:20s} {pt} {basis} "
+            print(f"      * {r['organ_axis']:20s} {pt}{span} {basis} "
                   f"{r['risk_band']:12s} (weight x{r['weight_applied']:.1f}, {ev}{alt})")
 
     if result["why_not_the_obvious_one"]:
