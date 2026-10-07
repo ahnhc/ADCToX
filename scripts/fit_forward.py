@@ -134,6 +134,40 @@ def _auc_top3(pred: np.ndarray, obs: np.ndarray, axis_idx: np.ndarray, arm_idx: 
     return float(wins / (len(pos_a) * len(neg_a)))
 
 
+def _across_agent_spearman(
+    rows: list[dict], axes: list[str], min_agents: int = 6
+) -> dict:
+    """Per-axis rank correlation ACROSS agents, pooled over folds.
+
+    Added after the pre-specified within-arm metric came back negative, and the reason
+    for adding it is itself the finding: the within-arm task asks "rank the 14 axes inside
+    one arm", and a *constant* predictor -- the global axis mean, which carries no design
+    information whatsoever -- scores 0.844 on it. Axis base rates are consistent enough
+    across arms that knowing them is almost the whole task, so a model that perturbs that
+    ordering with weakly identified design effects can only add noise. A metric a
+    design-blind constant wins is not measuring design signal.
+
+    The product's claim is a different comparison: given this design, is lung risk high or
+    low *relative to other designs*. That is across-agent, within-axis, and there the
+    global mean has zero discriminative power by construction. So this metric can separate
+    the model from the base rate where the other cannot.
+
+    Threshold declared before running it: a mean Spearman above +0.3 with a bootstrap CI
+    excluding zero would support the claim; anything at or below zero refutes it.
+    """
+    by_axis: dict[str, list[tuple[float, float]]] = {a: [] for a in axes}
+    for r in rows:
+        by_axis[r["axis"]].append((r["pred"], r["obs"]))
+    out: dict[str, float] = {}
+    for axis, pairs in by_axis.items():
+        if len(pairs) < min_agents:
+            continue
+        pred = np.array([p for p, _ in pairs])
+        obs = np.array([o for _, o in pairs])
+        out[axis] = _spearman(pred, obs)
+    return out
+
+
 def _spearman(a: np.ndarray, b: np.ndarray) -> float:
     if len(a) < 3:
         return float("nan")
@@ -234,6 +268,7 @@ def main() -> int:
         return out
 
     results: dict[str, dict] = {}
+    agent_rows: list[dict] = []
     for fold_set, label in (
         (splits.leave_one_mechanism_out(data), "leave_one_mechanism_out"),
         (splits.leave_one_agent_out(data), "leave_one_agent_out"),
@@ -262,6 +297,22 @@ def main() -> int:
             mae = float(np.abs(pred - obs).mean())
             mae_b = float(np.abs(pred_mech_base - obs).mean())
 
+            # Agent-level aggregation: average over the held-out agent's arms, so each
+            # agent contributes one point per axis rather than one per arm.
+            for a_i, axis in enumerate(data.axes):
+                sel = test.axis_idx == a_i
+                if not sel.any():
+                    continue
+                agent_rows.append(
+                    {
+                        "split": label, "fold": fold.name, "axis": axis,
+                        "pred": float(pred[sel].mean()),
+                        "obs": float(obs[sel].mean()),
+                        "pred_mech_baseline": float(pred_mech_base[sel].mean()),
+                        "pred_global_baseline": float(pred_global_base[sel].mean()),
+                        "n_cells": int(sel.sum()),
+                    }
+                )
             rows.append(
                 {
                     "fold": fold.name, "n_test_cells": int(fold.test_cells.sum()),
@@ -286,15 +337,56 @@ def main() -> int:
         print(f"\n  macro AUC   model {macro:.3f} | mech-mean {macro_b:.3f} | global-mean {macro_g:.3f}")
         print(f"  delta AUC   {np.nanmean(d_auc):+.3f}  95% CI [{lo:+.3f}, {hi:+.3f}]"
               f"{'  (excludes 0)' if lo > 0 or hi < 0 else '  (INCLUDES 0)'}")
+        # Across-agent, within-axis discrimination. See _across_agent_spearman for why
+        # this is reported alongside the within-arm AUC and what the within-arm number
+        # actually measures.
+        mine = [r for r in agent_rows if r["split"] == label]
+        model_rho = _across_agent_spearman(mine, list(data.axes))
+        base_rho = _across_agent_spearman(
+            [dict(r, pred=r["pred_mech_baseline"]) for r in mine], list(data.axes)
+        )
+        glob_rho = _across_agent_spearman(
+            [dict(r, pred=r["pred_global_baseline"]) for r in mine], list(data.axes)
+        )
+        if model_rho:
+            mv = [v for v in model_rho.values() if np.isfinite(v)]
+            bv = [v for v in base_rho.values() if np.isfinite(v)]
+            gv = [v for v in glob_rho.values() if np.isfinite(v)]
+            rlo, rhi = _bootstrap_ci(mv, seed=args.seed)
+            print(f"\n  across-agent per-axis Spearman (the product's actual comparison)")
+            print(f"    {'axis':22s} {'model':>7s} {'mech':>7s} {'global':>7s}")
+            for axis in data.axes:
+                if axis in model_rho:
+                    print(f"    {axis:22s} {model_rho[axis]:+7.3f} "
+                          f"{base_rho.get(axis, float('nan')):+7.3f} "
+                          f"{glob_rho.get(axis, float('nan')):+7.3f}")
+            print(f"    {'MEAN':22s} {np.nanmean(mv):+7.3f} {np.nanmean(bv):+7.3f} "
+                  f"{np.nanmean(gv):+7.3f}")
+            print(f"    model 95% CI [{rlo:+.3f}, {rhi:+.3f}]"
+                  f"{'  (excludes 0)' if rlo > 0 or rhi < 0 else '  (INCLUDES 0)'}")
         results[label] = {
             "folds": rows, "macro_auc": macro, "macro_auc_mech_baseline": macro_b,
             "macro_auc_global_baseline": macro_g,
             "delta_auc_mean": float(np.nanmean(d_auc)), "delta_auc_ci": [lo, hi],
+            "across_agent_spearman": {
+                "model": model_rho, "mech_baseline": base_rho, "global_baseline": glob_rho,
+                "model_mean": float(np.nanmean([v for v in model_rho.values()
+                                                if np.isfinite(v)])) if model_rho else None,
+            },
         }
 
     gate_key = "leave_one_agent_out"
     gate_auc = results[gate_key]["macro_auc"]
-    passed = gate_auc >= args.gate_auc
+    # The absolute-AUC gate turned out to be unfireable and is reported but not used: the
+    # global axis mean, which carries no design information, scores ~0.84 on the same
+    # metric, so a 0.65 threshold is cleared by a design-blind constant. The gate that
+    # means something is the delta against the strongest baseline.
+    best_baseline = max(
+        results[gate_key]["macro_auc_mech_baseline"],
+        results[gate_key]["macro_auc_global_baseline"],
+    )
+    delta_vs_best = gate_auc - best_baseline
+    passed = delta_vs_best > 0
     out = {
         "kind": args.kind, "corpus": data.summary(), "parameters": acct,
         "tau_mech": {"mean": float(tau.mean()),
@@ -307,14 +399,33 @@ def main() -> int:
             for k in ("b_dar", "b_combo", "b_thresh", "b_log_n", "sigma_trial", "sigma_agent")
         },
         "cv": results,
-        "gate": {"metric": f"macro_auc[{gate_key}]", "value": gate_auc,
-                 "threshold": args.gate_auc, "pass": passed},
+        "gate": {
+            "metric": f"macro_auc[{gate_key}] minus best baseline",
+            "macro_auc": gate_auc,
+            "best_baseline": best_baseline,
+            "delta_vs_best_baseline": delta_vs_best,
+            "pass": passed,
+            "absolute_auc_gate_note": (
+                "The original absolute-AUC gate of 0.65 is unfireable: a constant "
+                "global-axis-mean predictor scores about 0.84 on this metric. Reported "
+                "for the record, not used."
+            ),
+        },
     }
+    import pandas as pd
+
+    pd.DataFrame(agent_rows).to_parquet(
+        args.out / f"forward_{args.kind}_fold_predictions.parquet", index=False
+    )
     path = args.out / f"forward_{args.kind}_metrics.json"
     path.write_text(json.dumps(out, indent=1), encoding="utf-8")
     print(f"\n-> {path}")
-    print(f"\nGATE (macro AUC, {gate_key}): {gate_auc:.3f} vs {args.gate_auc} -> "
-          f"{'PASS' if passed else 'FAIL -> cut order fires'}")
+    print(f"\nGATE: {gate_key} macro AUC {gate_auc:.3f} vs best baseline "
+          f"{best_baseline:.3f} -> delta {delta_vs_best:+.3f} -> "
+          f"{'PASS' if passed else 'FAIL'}")
+    print(f"  (the absolute 0.65 gate reads {gate_auc:.3f} = PASS, but a constant "
+          f"global-mean predictor scores {results[gate_key]['macro_auc_global_baseline']:.3f} "
+          f"on the same metric, so that gate is not informative)")
     return 0
 
 
