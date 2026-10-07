@@ -174,13 +174,13 @@
   "family_share_of_mechanism": 0.6941176470588235
  },
  "provenance": {
-  "revision": "2b6d2e205cc509a2290a0b83e67a238a7cd84266",
+  "revision": "531b2da4b9187fcddba45552a7aaa231622d9c04",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "fold_difficulty.py",
-  "written_utc": "2026-10-07T14:40:32+00:00",
+  "written_utc": "2026-10-07T15:49:19+00:00",
   "inputs": {
-   "metrics": "sha256:ded27908c25aa20df23a5a2e25037d760cd339266005ea615b776d6bf9d30cd9",
+   "metrics": "sha256:3ab0b0bc0208abf8d218c0817d78e06d521a328cb7162820ecc5cae2c39c8122",
    "registry": "sha256:9a5a2d8bb098a42caa825eab6be011a2ab5659b9185fe930279114506c4c2aa9"
   }
  }

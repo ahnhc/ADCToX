@@ -26,7 +26,6 @@ PRE_STAMP = {
     "exclusion_enrichment.json",
     "exclusion_enrichment_exclusion.json",
     "exclusion_enrichment_lab_floor.json",
-    "forward_other_metrics.json",
     "label_change_eval.json",
     "label_change_events.json",
 }

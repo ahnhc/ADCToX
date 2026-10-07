@@ -274,6 +274,8 @@ failure of both family parameterizations.
 ## 5. What the model does support
 
 <!-- generated: fitted-parameters -->
+`tau_cleav` 0.2824 [0.1976, 0.4103] -- the scale of the cleavable-versus-non-cleavable linker contrast across axes. Clear of zero, and about half the size of the mechanism scale -- so linker cleavability shifts the organ profile, and shifts it less than the payload mechanism does. This is the one design axis the corpus identifies comfortably: cleavability is binary and needs only 8 agents to estimate, against the 40 a mechanism level needs and the 80 a payload level would.
+
 `tau_mech` 0.5928 [0.4928, 0.7008] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
 
 `sigma_agent` 0.1590 [0.0980, 0.2402] -- small, so the design slots account for much of the between-agent variation.
@@ -414,11 +416,11 @@ they are doing the model's job, so each one's marginal contribution is measured.
 
 | label rule | serious rate | model alone | with rule | |
 |---|---|---|---|---|
-| `dxd_prior_ild` (ENHERTU) | 0.0293 | high | high | confirmatory |
-| `calicheamicin_prior_vod` (BESPONSA) | 0.0164 | moderate | high | **load-bearing** |
+| `dxd_prior_ild` (ENHERTU) | 0.0277 | high | high | confirmatory |
+| `calicheamicin_prior_vod` (BESPONSA) | 0.0166 | moderate | high | **load-bearing** |
 | `vedotin_prior_sjs_ten` (PADCEV) | 0.0046 | low | high | **load-bearing** |
-| `mmaf_prior_keratopathy` (BLENREP) | 0.0017 | low | high | **load-bearing** |
-| `dxd_moderate_renal_pulmonary` (ENHERTU) | 0.0293 | high | high | confirmatory |
+| `mmaf_prior_keratopathy` (BLENREP) | 0.0018 | low | high | **load-bearing** |
+| `dxd_moderate_renal_pulmonary` (ENHERTU) | 0.0277 | high | high | confirmatory |
 
 The rule layer is load-bearing for **3 of 5** flags. It is confirmatory for `dxd_prior_ild`, `dxd_moderate_renal_pulmonary` -- both deruxtecan/pulmonary -- which means the model now reaches the boxed-warning band there on its own. That matters beyond tidiness: while the rule was raising that band, the ILD case study was deciding its own question.
 

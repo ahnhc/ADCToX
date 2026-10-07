@@ -138,7 +138,7 @@
    "metric": "macro_auc[leave_one_agent_out] minus best baseline",
    "macro_auc": 0.8036228491982073,
    "best_baseline": 0.8458359638047138,
-   "delta_vs_best_baseline": -0.04221311460650656,
+   "delta_vs_best_baseline": -0.04221311460650652,
    "pass": false,
    "absolute_auc_gate_note": "The original absolute-AUC gate of 0.65 is unfireable: a constant global-axis-mean predictor scores about 0.84 on this metric. Reported for the record, not used."
   },
@@ -152,13 +152,13 @@
   }
  },
  "provenance": {
-  "revision": "d3efe92267da935c8012155bca2be5493451f726",
+  "revision": "531b2da4b9187fcddba45552a7aaa231622d9c04",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "compare_event_tables.py",
-  "written_utc": "2026-10-07T14:45:45+00:00",
+  "written_utc": "2026-10-07T15:49:25+00:00",
   "inputs": {
-   "other_metrics": "sha256:ded27908c25aa20df23a5a2e25037d760cd339266005ea615b776d6bf9d30cd9",
+   "other_metrics": "sha256:3ab0b0bc0208abf8d218c0817d78e06d521a328cb7162820ecc5cae2c39c8122",
    "serious_metrics": "sha256:5556ee0442dc129f1e7806089868f22c60fc6388152fd739aef13927ab046f2c"
   }
  }

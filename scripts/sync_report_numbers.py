@@ -55,8 +55,12 @@ CENS_ROWS = [
 NOTES: dict[str, tuple[str, str]] = {
     "tau_cleav": (
         "tau_cleav",
-        "the cleavability x axis contrast. Appears here only once the fit that records "
-        "its quantiles has been run; earlier artefacts stored a bare mean.",
+        "the scale of the cleavable-versus-non-cleavable linker contrast across axes. "
+        "Clear of zero, and about half the size of the mechanism scale -- so linker "
+        "cleavability shifts the organ profile, and shifts it less than the payload "
+        "mechanism does. This is the one design axis the corpus identifies comfortably: "
+        "cleavability is binary and needs only 8 agents to estimate, against the 40 a "
+        "mechanism level needs and the 80 a payload level would.",
     ),
     "tau_mech": (
         "tau_mech",

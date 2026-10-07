@@ -33,7 +33,9 @@
   "enabled": false
  },
  "tau_cleav": {
-  "mean": 0.28243640065193176
+  "mean": 0.28243640065193176,
+  "q05": 0.1976132094860077,
+  "q95": 0.41025277972221375
  },
  "coefficients": {
   "b_dar": {
@@ -441,8 +443,18 @@
   "metric": "macro_auc[leave_one_agent_out] minus best baseline",
   "macro_auc": 0.8036228491982073,
   "best_baseline": 0.8458359638047138,
-  "delta_vs_best_baseline": -0.04221311460650656,
+  "delta_vs_best_baseline": -0.04221311460650652,
   "pass": false,
   "absolute_auc_gate_note": "The original absolute-AUC gate of 0.65 is unfireable: a constant global-axis-mean predictor scores about 0.84 on this metric. Reported for the record, not used."
+ },
+ "provenance": {
+  "revision": "531b2da4b9187fcddba45552a7aaa231622d9c04",
+  "dirty": null,
+  "snapshot": "2026-10-07",
+  "script": "fit_forward.py",
+  "written_utc": "2026-10-07T15:47:58+00:00",
+  "inputs": {
+   "processed": "sha256:f26bbbd3db0e7f39ddd543b9fe6c8e092b767bdbdc76bc4a56c3a9b596cda62f"
+  }
  }
 }
