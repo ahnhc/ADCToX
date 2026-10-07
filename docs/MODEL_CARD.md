@@ -34,9 +34,12 @@ AUROC for "this axis is among the arm's observed top three", averaged over folds
 |---|---|---|---|---|---|
 | leave-one-agent-out (16 folds) | 0.825 | 0.839 | **0.844** | −0.014 | [−0.033, +0.004] |
 | leave-one-mechanism-out (2 folds) | 0.856 | 0.871 | **0.871** | −0.016 | [−0.025, −0.006] |
+| **leave-one-payload-family-out (4 folds)** | **0.781** | 0.851 | **0.853** | **−0.069** | **[−0.116, −0.023]** |
 
-**The model is worse than the baseline on both splits, and significantly so on
-leave-one-mechanism-out.** The best predictor of the three is the global axis mean, which
+**The model is worse than the baseline on all three splits, significantly so on the
+mechanism and family ones.** The family split is the clearest: maytansinoids held out
+score −0.127 against the baseline and auristatins −0.105, because removing one family
+leaves its mechanism represented entirely by the other. The best predictor of the three is the global axis mean, which
 contains no design information at all.
 
 ### Why the pre-specified gate was unfireable

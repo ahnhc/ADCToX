@@ -27,6 +27,75 @@ ROOT = Path(__file__).resolve().parents[3]
 CONF = ROOT / "conf"
 ARTIFACTS = ROOT / "artifacts"
 
+@lru_cache(maxsize=1)
+def _ranking_evidence() -> dict:
+    """What the ordering is actually worth, measured, served with every ranking.
+
+    Three evaluations, and they do not agree, so all three travel with the output:
+    the model loses to a base-rate baseline on within-arm axis ranking, sits at chance on
+    across-agent discrimination, and wins marginally on agreement with the dose-modification
+    orderings in approved labels. A caller who sees only the ranking would read far more
+    into it than that.
+    """
+    out: dict = {"evaluations": []}
+    fw = ARTIFACTS / "forward_other_metrics.json"
+    if fw.exists():
+        doc = json.loads(fw.read_text(encoding="utf-8"))
+        for split, res in (doc.get("cv") or {}).items():
+            out["evaluations"].append(
+                {
+                    "name": f"within-arm axis ranking, {split}",
+                    "metric": "AUROC for axis in the arm's observed top 3",
+                    "model": res.get("macro_auc"),
+                    "best_baseline": max(
+                        res.get("macro_auc_mech_baseline") or 0,
+                        res.get("macro_auc_global_baseline") or 0,
+                    ),
+                    "delta": res.get("delta_auc_mean"),
+                    "delta_ci": res.get("delta_auc_ci"),
+                    "verdict": "model loses to the baseline",
+                }
+            )
+            spear = (res.get("across_agent_spearman") or {}).get("model_mean")
+            if spear is not None:
+                out["evaluations"].append(
+                    {
+                        "name": f"across-agent per-axis discrimination, {split}",
+                        "metric": "mean Spearman across agents within an axis",
+                        "model": spear,
+                        "verdict": "at chance; the pre-declared threshold was +0.3",
+                    }
+                )
+    dm = ARTIFACTS / "dose_mod_eval.json"
+    if dm.exists():
+        doc = json.loads(dm.read_text(encoding="utf-8"))
+        out["evaluations"].append(
+            {
+                "name": "agreement with approved dose-modification orderings",
+                "metric": "mean Spearman against label organ-severity ordering",
+                "model": doc.get("mean_rho_model"),
+                "best_baseline": max(
+                    doc.get("mean_rho_mech_baseline") or 0,
+                    doc.get("mean_rho_global_baseline") or 0,
+                ),
+                "delta": doc.get("paired_delta_vs_best_baseline"),
+                "delta_ci": doc.get("paired_delta_ci"),
+                "top_organ_agreement": doc.get("top_organ_agreement"),
+                "verdict": (
+                    "model beats the baseline, but only marginally, and it is at chance "
+                    "on naming the organ the label fears most"
+                ),
+            }
+        )
+    out["summary"] = (
+        "Treat the ordering as weak evidence. The model loses to a base-rate baseline on "
+        "within-arm axis ranking, sits at chance on across-agent discrimination, and beats "
+        "the baseline only marginally on agreement with approved dose-modification "
+        "orderings. Candidates sharing a rank are not distinguishable at all."
+    )
+    return out
+
+
 LIMITATIONS = [
     "Research prototype. Not validated prospectively and not for use in patient care.",
     "The forward model does not beat a global-axis-mean baseline on within-arm axis "
@@ -99,6 +168,12 @@ def version() -> dict:
     return _version_info()
 
 
+@app.get("/api/v1/ranking-evidence")
+def ranking_evidence() -> dict:
+    """What the ranking is worth, measured. Served separately as well as inline."""
+    return _ranking_evidence()
+
+
 @app.get("/api/v1/disclaimer")
 def disclaimer() -> dict:
     return {**Disclaimer().model_dump(), "limitations": LIMITATIONS}
@@ -157,6 +232,7 @@ def propose_endpoint(req: ProposeRequest) -> JSONResponse:
             "disclaimer": Disclaimer().model_dump(),
             "limitations": LIMITATIONS,
             "interpretation": "relative_ranking_only",
+            "ranking_evidence": _ranking_evidence(),
         }
     )
 

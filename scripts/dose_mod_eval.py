@@ -139,12 +139,30 @@ def main() -> int:
     lo, hi = _bootstrap_ci(df["rho_model"].tolist())
     bm = df["rho_mech_baseline"].mean()
     bg = df["rho_global_baseline"].mean()
+    # The model's own CI excluding zero only says the label ordering is not random. What
+    # decides whether the *model* contributes is the paired difference against the
+    # strongest baseline, bootstrapped over agents -- the same logic as the delta-AUC gate.
+    best_name = "global" if bg >= bm else "mech"
+    best_col = "rho_global_baseline" if bg >= bm else "rho_mech_baseline"
+    diffs = (df["rho_model"] - df[best_col]).tolist()
+    dlo, dhi = _bootstrap_ci(diffs, seed=7)
     top_hits = int((df["top_label_axis"] == df["top_model_axis"]).sum())
     print(f"\n  mean Spearman   model {mm:+.3f}  [{lo:+.3f}, {hi:+.3f}]"
           f"{'  excludes 0' if lo > 0 or hi < 0 else '  INCLUDES 0'}")
     print(f"                  mech baseline {bm:+.3f} | global baseline {bg:+.3f}")
+    print(f"  paired delta vs the {best_name} baseline: {np.mean(diffs):+.3f} "
+          f"[{dlo:+.3f}, {dhi:+.3f}]"
+          f"{'  excludes 0' if dlo > 0 or dhi < 0 else '  INCLUDES 0'}")
+    exp = len(df) / 14
     print(f"  top-organ agreement {top_hits}/{len(df)} "
-          f"(null 1/14 = {1/14:.3f} per agent)")
+          f"(expected {exp:.2f} by chance)"
+          f"{'  -- at chance' if abs(top_hits - exp) < 1.5 else ''}")
+    # A model whose top axis is the same organ for most drugs is reporting a base rate,
+    # not a per-drug judgement, and saying so is more useful than the correlation alone.
+    modal = df["top_model_axis"].value_counts()
+    print(f"  the model names {modal.index[0]} as the top axis for "
+          f"{modal.iloc[0]}/{len(df)} drugs, which is a base-rate effect rather than a "
+          f"per-drug judgement")
 
     print(f"\n  by mechanism -- dose-modification tables are partly copied within a payload")
     print(f"  class, so same-mechanism agents are not independent observations")
@@ -156,6 +174,11 @@ def main() -> int:
         "mean_rho_model": float(mm), "rho_ci": [lo, hi],
         "mean_rho_mech_baseline": float(bm),
         "mean_rho_global_baseline": float(bg),
+        "paired_delta_vs_best_baseline": float(np.mean(diffs)),
+        "paired_delta_ci": [dlo, dhi],
+        "best_baseline": best_name,
+        "modal_model_top_axis": str(df["top_model_axis"].value_counts().index[0]),
+        "modal_model_top_axis_count": int(df["top_model_axis"].value_counts().iloc[0]),
         "top_organ_agreement": f"{top_hits}/{len(df)}",
         "per_agent": df.to_dict("records"),
     }

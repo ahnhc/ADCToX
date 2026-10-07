@@ -214,6 +214,15 @@ async function run() {
       <p class="note">${d.n_enumerated} chemically valid, individually precedented designs
         enumerated; ${d.n_passed_constraints} passed the constraints.
         ${d.ranking_caveat || ""}</p>
+      ${d.ranking_evidence ? `<div class="card"><h3>What this ordering is worth</h3>
+        <p class="note">${d.ranking_evidence.summary}</p>
+        ${d.ranking_evidence.evaluations.map(e => `<div class="axis">
+            <span>${e.name}</span>
+            <span class="num">${e.model == null ? "" : e.model.toFixed(3)}
+              ${e.best_baseline == null ? "" : "vs baseline " + e.best_baseline.toFixed(3)}
+              ${e.delta == null ? "" : "(&Delta; " + (e.delta >= 0 ? "+" : "") + e.delta.toFixed(3) + ")"}</span>
+            <span class="num">${e.verdict}</span></div>`).join("")}
+        </div>` : ""}
       ${d.candidates.map(card).join("")}
       ${wn ? `<div class="card"><h3>Why not the obvious one</h3>
         <div class="slots">${wn.design.payload} &middot; ${wn.design.linker}

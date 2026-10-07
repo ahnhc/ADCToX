@@ -39,9 +39,12 @@ Pre-specified metric: AUROC for "this axis is among the arm's observed top three
 |---|---|---|---|---|---|
 | leave-one-agent-out (16 folds) | 0.825 | 0.839 | **0.844** | -0.014 | [-0.033, +0.004] |
 | leave-one-mechanism-out (2 folds) | 0.856 | 0.871 | **0.871** | -0.016 | [-0.025, -0.006] |
+| **leave-one-payload-family-out (4 folds)** | **0.781** | 0.851 | **0.853** | **-0.069** | **[-0.116, -0.023]** |
 
 The best of the three predictors is the global axis mean, which carries no design
-information at all.
+information at all. The family split is the most damaging and the most informative: held
+out, maytansinoids are predicted at -0.127 against the baseline and auristatins at -0.105,
+because with one family removed the mechanism is represented entirely by the other.
 
 ### 3.1 The gate we set could not fire
 
@@ -89,7 +92,21 @@ compete for one variance. Nesting is the textbook correction and did not rescue 
 with 7 families across 5 mechanisms and 16 agents there is not enough information to
 separate between-mechanism from within-mechanism spread, whatever the parameterization.
 
-### 4.2 And more data would not reach it
+### 4.2 The two levels fail in opposite directions, which closes the question
+
+Put the two results together and the corpus has answered:
+
+* **Mechanism is identifiable but too coarse.** It converges (worst seed gap 0.239) and
+  its interaction is supported (tau_mech 0.592 [0.503, 0.711]), yet holding out a payload
+  family costs 0.069 AUC against the baseline, because families inside one mechanism do
+  not behave alike.
+* **Family would capture that but is not identifiable.** Both parameterizations fail to
+  converge, additive for an obvious reason and nested despite being the correct fix.
+
+There is no resolution in between. Mechanism is the finest level this data can estimate
+and it is coarser than the phenomenon.
+
+### 4.3 And more data would not reach it
 
 Measured across corpus sizes, the payload *identity* vocabulary grows as fast as the
 corpus:
