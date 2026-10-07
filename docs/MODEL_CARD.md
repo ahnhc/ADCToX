@@ -38,7 +38,7 @@ coefficient is therefore `n_agents x n_axes`:
 | within-arm ranking, leave-one-agent-out (16) | 0.8270 | 0.8437 | -0.0120 | [-0.0307, +0.0052] | includes 0 |
 | within-arm ranking, leave-one-mechanism-out (2) | 0.8537 | 0.8715 | **-0.0177** | [-0.0265, -0.0090] | excludes 0 |
 | within-arm ranking, leave-one-family-out (4) | 0.7704 | 0.8525 | **-0.0805** | [-0.1240, -0.0345] | excludes 0 |
-| across-agent per-axis Spearman | +0.0538 | +0.0263 | -- | [-0.1072, +0.2174] | includes 0, CI derived |
+| across-agent per-axis Spearman | +0.0538 | +0.0263 | -- | [-0.1149, +0.2177] | includes 0 |
 | dose-modification ordering (13) | +0.1882 | +0.1533 | +0.0348 | [-0.0007, +0.0693] | includes 0 |
 
 <!-- /generated: results-table -->
@@ -143,10 +143,10 @@ The resolution that would help recedes as fast as it is approached.
 `b_dar` +0.0312 [-0.0203, +0.0823] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
 
 `b_thresh` +0.0330 [+0.0275, +0.0379] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
+
+Convergence stands in for R-hat: the model is refit under a second seed and posterior means compared. The worst standardized gap is 0.1136 pooled standard deviations, on `b_thresh`, against a threshold of 0.3 -- acceptable.
 <!-- /generated: fitted-parameters -->
 
-Convergence is checked by refitting under a second seed; the worst standardized gap in
-posterior means was 0.239 pooled standard deviations, which is acceptable.
 
 ## What this model must not be used for
 

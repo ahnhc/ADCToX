@@ -99,6 +99,16 @@ def build_block(metrics: dict) -> str:
         signed = name.startswith("b_")
         lines.append(f"`{name}` {_fmt(cell, signed)} -- {note}")
         lines.append("")
+    sa = metrics.get("seed_agreement")
+    if sa:
+        worst = max(sa["by_parameter"], key=lambda k: sa["by_parameter"][k])
+        lines.append(
+            f"Convergence stands in for R-hat: the model is refit under a second seed and "
+            f"posterior means compared. The worst standardized gap is "
+            f"{sa['worst_standardized_gap']:.4f} pooled standard deviations, on "
+            f"`{worst}`, against a threshold of {sa['threshold']} -- "
+            + ("acceptable." if sa["converged"] else "NOT converged.")
+        )
     if lines[-1] == "":
         lines.pop()
     lines.append(END)

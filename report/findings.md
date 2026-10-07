@@ -201,6 +201,8 @@ failure of both family parameterizations.
 `b_dar` +0.0312 [-0.0203, +0.0823] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
 
 `b_thresh` +0.0330 [+0.0275, +0.0379] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
+
+Convergence stands in for R-hat: the model is refit under a second seed and posterior means compared. The worst standardized gap is 0.1136 pooled standard deviations, on `b_thresh`, against a threshold of 0.3 -- acceptable.
 <!-- /generated: fitted-parameters -->
 
 Qualitatively the corpus is sound. Baseline-centered mechanism fingerprints reproduce the

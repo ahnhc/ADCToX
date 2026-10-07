@@ -9,6 +9,21 @@
   "arm_axis_cells": 3990,
   "design_ratio_vs_identifying": 2.24
  },
+ "seed_agreement": {
+  "by_parameter": {
+   "tau_mech": 0.032301850616931915,
+   "tau_cleav": 0.0030119118746370077,
+   "b_dar": 0.023632651194930077,
+   "b_combo": 0.051852911710739136,
+   "b_thresh": 0.11356417834758759,
+   "b_log_n": 0.021165207028388977,
+   "sigma_trial": 0.014107903465628624,
+   "sigma_agent": 0.030150823295116425
+  },
+  "worst_standardized_gap": 0.11356417834758759,
+  "threshold": 0.3,
+  "converged": true
+ },
  "tau_mech": {
   "mean": 0.5922014117240906,
   "q05": 0.4928787350654602,
@@ -412,6 +427,12 @@
      "constitutional": 0.4176470588235294
     },
     "model_mean": 0.05378151260504201,
+    "model_ci": [
+     -0.11493697478991596,
+     0.2176680672268906
+    ],
+    "mech_baseline_mean": -0.1560924369747899,
+    "global_baseline_mean": 0.02626050420168067,
     "n_folds_contributing": 16
    }
   }
