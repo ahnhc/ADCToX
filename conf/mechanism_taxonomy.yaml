@@ -1,0 +1,62 @@
+# Payload mechanism taxonomy -- FROZEN 2026-10-07, before any literature extraction.
+#
+# Why this is frozen first: the corpus audit measured that payload *identity* vocabulary
+# grows as fast as the corpus does (9 -> 12 -> 20 classes as agents went 17 -> 32 -> 54),
+# so the cells:parameters ratio for a payload-class x axis model stays flat at ~2.8:1 and
+# never becomes identifiable. Mechanism count is fixed as N grows, so it is the level the
+# model can actually estimate (4.25:1 at N=17 -> 9.00:1 at N=54).
+#
+# Freezing before extraction is what stops the taxonomy inflating to fit whatever new
+# payloads the literature turns up. Any addition after this date must be recorded here
+# with its date and justification.
+
+version: 1
+frozen_at: 2026-10-07
+frozen_rationale: >
+  Prevents post-hoc taxonomy inflation. The model's headline validation is
+  leave-one-mechanism-out, so the fold definition must predate the data.
+
+mechanisms:
+  tubulin:
+    label: Tubulin polymerization inhibitor
+    payloads: [MMAE, MMAF, DM1, DM4, tubulysin, duostatin]
+    note: >
+      Auristatins (MMAE/MMAF, dolastatin-10 derivatives) and maytansinoids (DM1/DM4,
+      maytansine derivatives) both bind the vinca site and arrest mitosis. Grouped
+      because the organ fingerprint tracks the mechanism, though MMAE and DM1 differ on
+      which haematologic lineage dominates -- reported as descriptive statistics, not as
+      a model feature (the split is not identifiable at this corpus size).
+  topo1:
+    label: Topoisomerase-I inhibitor
+    payloads: [DXd, exatecan, SN-38, govitecan, rezetecan, tirumotecan]
+    note: Camptothecin-family payloads. Stabilize the Topo-I/DNA cleavage complex.
+  dna_cleave:
+    label: DNA-cleaving enediyne
+    payloads: [calicheamicin]
+    note: >
+      Only two ADCs with this payload have ever been approved anywhere, so this
+      mechanism is permanently degenerate as a held-out fold.
+  dna_crosslink:
+    label: DNA minor-groove crosslinker
+    payloads: [PBD, SG3199, tesirine, IGN, DGN549, sunirine]
+    note: Pyrrolobenzodiazepine dimers and indolinobenzodiazepine pseudodimers.
+  dna_alkyl:
+    label: DNA minor-groove alkylator
+    payloads: [duocarmycin, seco-DUBA, duocarmazine]
+  protein_synth:
+    label: Protein-synthesis inhibitor (immunotoxin)
+    payloads: [PE38, pasudotox]
+    note: >
+      Pseudomonas exotoxin A fragment; ADP-ribosylates eEF2. A recombinant fusion, not
+      a chemically conjugated ADC -- carried for completeness and flagged
+      `conventional_adc: false` in the registry.
+  photo:
+    label: Photosensitizer
+    payloads: [IR700, sarotalocan]
+    note: Requires light activation; organ toxicity is not systemic in the usual sense.
+
+# Mechanisms with fewer than 3 distinct agents cannot serve as a held-out fold: removing
+# the class removes the only agent carrying the level, so a categorical mechanism factor
+# has no coefficient left to predict with. Measured at N=17 and again at N=54: the same
+# three mechanisms are the only viable folds, and that does not improve with corpus size.
+min_agents_for_holdout: 3

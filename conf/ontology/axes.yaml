@@ -1,0 +1,81 @@
+# 14 organ-system axes, and the MedDRA System Organ Class strings that map onto them.
+#
+# Source of the SOC strings: measured from 605 ClinicalTrials.gov ADC studies
+# (2026-10-07). 50 exact strings observed; casefold + whitespace normalization
+# collapses them to 28; merging the `general disorders` pair gives 27 canonical SOCs.
+# ClinicalTrials.gov normalizes `organSystem` to MedDRA SOC names even when
+# `sourceVocabulary` is CTCAE/COSTART, so the SOC layer is vocabulary-independent.
+#
+# `investigations` is NOT dropped: it is the 5th most common SOC (4,757 events) and is
+# pure organ signal under a lab-test label. It is redistributed per-PT in
+# conf/ontology/investigations_rules.yaml.
+
+axes:
+  haematologic:
+    label: Haematologic
+    socs: ["blood and lymphatic system disorders"]
+  hepatic:
+    label: Hepatic
+    socs: ["hepatobiliary disorders"]
+  cardiovascular:
+    label: Cardiovascular
+    socs: ["cardiac disorders", "vascular disorders"]
+  pulmonary:
+    label: Pulmonary
+    socs: ["respiratory, thoracic and mediastinal disorders"]
+  renal:
+    label: Renal
+    socs: ["renal and urinary disorders"]
+  gastrointestinal:
+    label: Gastrointestinal
+    socs: ["gastrointestinal disorders"]
+  neurologic:
+    label: Neurologic
+    socs: ["nervous system disorders"]
+  ocular:
+    label: Ocular
+    socs: ["eye disorders"]
+  dermatologic:
+    label: Dermatologic
+    socs: ["skin and subcutaneous tissue disorders"]
+  metabolic_endocrine:
+    label: Metabolic / Endocrine
+    socs: ["metabolism and nutrition disorders", "endocrine disorders"]
+  musculoskeletal:
+    label: Musculoskeletal
+    socs: ["musculoskeletal and connective tissue disorders"]
+  infectious_immune:
+    label: Infectious / Immune
+    socs: ["infections and infestations", "immune system disorders"]
+  otologic:
+    label: Otologic
+    socs: ["ear and labyrinth disorders"]
+  constitutional:
+    label: Constitutional
+    socs: ["general disorders and administration site conditions"]
+
+# SOC strings that are normalized onto another SOC before axis lookup.
+# Measured: 'General disorders' (6,303 events) and
+# 'General disorders and administration site conditions' (78) are the same SOC
+# rendered two ways. ClinicalTrials.gov emits both.
+soc_aliases:
+  general disorders: general disorders and administration site conditions
+
+# Redistributed per-PT rather than assigned to one axis.
+soc_redistribute: ["investigations"]
+
+# SOCs deliberately excluded from the organ model. Each is either not an organ
+# system or is confounded by the trial's indication rather than by the drug.
+# `reproductive system and breast disorders` is excluded because in a cervical-cancer
+# ADC trial it tracks the cancer, not the toxicity (measured: tisotumab vedotin
+# showed a spurious reproductive signal).
+soc_excluded:
+  "neoplasms benign, malignant and unspecified (incl cysts and polyps)": indication_confounded
+  "injury, poisoning and procedural complications": not_organ_attributable
+  surgical and medical procedures: not_organ_attributable
+  social circumstances: not_organ_attributable
+  "pregnancy, puerperium and perinatal conditions": not_organ_attributable
+  "congenital, familial and genetic disorders": not_organ_attributable
+  product issues: not_organ_attributable
+  psychiatric disorders: not_organ_attributable
+  reproductive system and breast disorders: indication_confounded

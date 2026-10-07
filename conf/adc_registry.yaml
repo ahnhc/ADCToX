@@ -1,0 +1,387 @@
+# ADC design registry: the SOLE source of design features for the forward model.
+#
+# ClinicalTrials.gov carries none of payload / linker / DAR / isotype / target, so this
+# file is hand-curated. It is also the entity-resolution spine: `aliases` is what maps a
+# messy intervention string or event-group title onto an agent.
+#
+# DAR caveat, stated once and applying throughout: published DAR values differ between
+# the FDA label, the originating paper and review articles, because stochastic
+# conjugation yields a distribution and sources quote either the mean or the mode.
+# `dar` is the commonly cited mean and `dar_source` says where it came from.
+# `dar_confidence: low` means sources disagree by more than ~0.5.
+#
+# Curated 2026-10-07 against the 18 agents measured present in the CTGov AE corpus.
+
+version: 1
+curated_at: 2026-10-07
+
+agents:
+  brentuximab_vedotin:
+    inn: brentuximab vedotin
+    brand: ADCETRIS
+    aliases: [brentuximab vedotin, brentuximab, SGN-35, SGN35, ADCETRIS, cAC10-vcMMAE]
+    target: TNFRSF8
+    target_label: CD30
+    payload: MMAE
+    mechanism: tubulin
+    linker_type: vc_PABC
+    linker_cleavable: true
+    linker_cleavage: enzymatic_cathepsin_b
+    conjugation: interchain_cysteine
+    dar: 4.0
+    dar_source: fda_label
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2011-08-19
+    conventional_adc: true
+
+  trastuzumab_emtansine:
+    inn: trastuzumab emtansine
+    brand: KADCYLA
+    aliases: [trastuzumab emtansine, ado-trastuzumab emtansine, T-DM1, TDM1, KADCYLA, trastuzumab-DM1]
+    target: ERBB2
+    target_label: HER2
+    payload: DM1
+    mechanism: tubulin
+    linker_type: SMCC
+    linker_cleavable: false
+    linker_cleavage: none_lysosomal_catabolism
+    conjugation: lysine
+    dar: 3.5
+    dar_source: fda_label
+    isotype: IgG1
+    fc_engineering: none
+    bystander: false
+    first_us_approval: 2013-02-22
+    conventional_adc: true
+
+  belantamab_mafodotin:
+    inn: belantamab mafodotin
+    brand: BLENREP
+    aliases: [belantamab mafodotin, belantamab, GSK2857916, GSK-2857916, BLENREP]
+    target: TNFRSF17
+    target_label: BCMA
+    payload: MMAF
+    mechanism: tubulin
+    linker_type: mc
+    linker_cleavable: false
+    linker_cleavage: none_lysosomal_catabolism
+    conjugation: interchain_cysteine
+    dar: 4.0
+    dar_source: literature
+    isotype: IgG1
+    fc_engineering: afucosylated
+    bystander: false
+    first_us_approval: 2020-08-05
+    us_withdrawn: 2022-11-22
+    withdrawal_reason: efficacy_DREAMM3
+    conventional_adc: true
+
+  gemtuzumab_ozogamicin:
+    inn: gemtuzumab ozogamicin
+    brand: MYLOTARG
+    aliases: [gemtuzumab ozogamicin, gemtuzumab, GO, CMA-676, MYLOTARG]
+    target: CD33
+    target_label: CD33
+    payload: calicheamicin
+    mechanism: dna_cleave
+    linker_type: hydrazone_AcBut_disulfide
+    linker_cleavable: true
+    linker_cleavage: acid_labile_hydrazone
+    conjugation: lysine
+    dar: 2.5
+    dar_source: fda_label
+    dar_confidence: low
+    dar_note: Label states 2-3 moles calicheamicin per mole antibody.
+    isotype: IgG4
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2000-05-17
+    conventional_adc: true
+
+  inotuzumab_ozogamicin:
+    inn: inotuzumab ozogamicin
+    brand: BESPONSA
+    aliases: [inotuzumab ozogamicin, inotuzumab, InO, CMC-544, BESPONSA]
+    target: CD22
+    target_label: CD22
+    payload: calicheamicin
+    mechanism: dna_cleave
+    linker_type: hydrazone_AcBut_disulfide
+    linker_cleavable: true
+    linker_cleavage: acid_labile_hydrazone
+    conjugation: lysine
+    dar: 6.0
+    dar_source: literature
+    dar_confidence: low
+    dar_note: Sources quote 5-7.
+    isotype: IgG4
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2017-08-17
+    conventional_adc: true
+
+  trastuzumab_deruxtecan:
+    inn: trastuzumab deruxtecan
+    brand: ENHERTU
+    aliases: [trastuzumab deruxtecan, fam-trastuzumab deruxtecan, T-DXd, TDXd, DS-8201, DS-8201a, DS8201, ENHERTU]
+    target: ERBB2
+    target_label: HER2
+    payload: DXd
+    mechanism: topo1
+    linker_type: GGFG
+    linker_cleavable: true
+    linker_cleavage: enzymatic_cathepsin
+    conjugation: interchain_cysteine
+    dar: 8.0
+    dar_source: fda_label
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2019-12-20
+    conventional_adc: true
+
+  sacituzumab_govitecan:
+    inn: sacituzumab govitecan
+    brand: TRODELVY
+    aliases: [sacituzumab govitecan, sacituzumab, IMMU-132, hRS7-SN38, TRODELVY]
+    target: TACSTD2
+    target_label: TROP2
+    payload: SN-38
+    mechanism: topo1
+    linker_type: CL2A
+    linker_cleavable: true
+    linker_cleavage: ph_sensitive_carbonate
+    conjugation: interchain_cysteine
+    dar: 7.6
+    dar_source: fda_label
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2020-04-22
+    conventional_adc: true
+
+  polatuzumab_vedotin:
+    inn: polatuzumab vedotin
+    brand: POLIVY
+    aliases: [polatuzumab vedotin, polatuzumab, DCDS4501A, RG7596, POLIVY]
+    target: CD79B
+    target_label: CD79b
+    payload: MMAE
+    mechanism: tubulin
+    linker_type: vc_PABC
+    linker_cleavable: true
+    linker_cleavage: enzymatic_cathepsin_b
+    conjugation: interchain_cysteine
+    dar: 3.5
+    dar_source: fda_label
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2019-06-10
+    conventional_adc: true
+
+  mirvetuximab_soravtansine:
+    inn: mirvetuximab soravtansine
+    brand: ELAHERE
+    aliases: [mirvetuximab soravtansine, mirvetuximab, IMGN853, IMGN-853, ELAHERE]
+    target: FOLR1
+    target_label: FRalpha
+    payload: DM4
+    mechanism: tubulin
+    linker_type: sulfo_SPDB
+    linker_cleavable: true
+    linker_cleavage: reducible_disulfide
+    conjugation: lysine
+    dar: 3.5
+    dar_source: literature
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2022-11-14
+    conventional_adc: true
+
+  enfortumab_vedotin:
+    inn: enfortumab vedotin
+    brand: PADCEV
+    aliases: [enfortumab vedotin, enfortumab, ASG-22ME, ASG-22CE, AGS-22M6E, PADCEV]
+    target: NECTIN4
+    target_label: Nectin-4
+    payload: MMAE
+    mechanism: tubulin
+    linker_type: vc_PABC
+    linker_cleavable: true
+    linker_cleavage: enzymatic_cathepsin_b
+    conjugation: interchain_cysteine
+    dar: 3.8
+    dar_source: fda_label
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2019-12-18
+    conventional_adc: true
+
+  moxetumomab_pasudotox:
+    inn: moxetumomab pasudotox
+    brand: LUMOXITI
+    aliases: [moxetumomab pasudotox, moxetumomab, CAT-8015, HA22, LUMOXITI]
+    target: CD22
+    target_label: CD22
+    payload: PE38
+    mechanism: protein_synth
+    linker_type: fusion
+    linker_cleavable: false
+    linker_cleavage: not_applicable
+    conjugation: genetic_fusion
+    dar: 1.0
+    dar_source: structural
+    dar_note: Recombinant immunotoxin fusion, not chemical conjugation; DAR is 1 by construction.
+    isotype: Fab_dsFv
+    fc_engineering: no_fc
+    bystander: false
+    first_us_approval: 2018-09-13
+    us_withdrawn: 2023-07-01
+    conventional_adc: false
+
+  loncastuximab_tesirine:
+    inn: loncastuximab tesirine
+    brand: ZYNLONTA
+    aliases: [loncastuximab tesirine, loncastuximab, ADCT-402, ADCT402, ZYNLONTA]
+    target: CD19
+    target_label: CD19
+    payload: SG3199
+    mechanism: dna_crosslink
+    linker_type: val_ala_PABC_PEG8
+    linker_cleavable: true
+    linker_cleavage: enzymatic_cathepsin
+    conjugation: interchain_cysteine
+    dar: 2.3
+    dar_source: fda_label
+    isotype: IgG1
+    fc_engineering: hinge_variant
+    fc_note: Label sequence shows a CDCHCPPCP hinge variant altering conjugation stoichiometry.
+    bystander: true
+    first_us_approval: 2021-04-23
+    conventional_adc: true
+
+  tisotumab_vedotin:
+    inn: tisotumab vedotin
+    brand: TIVDAK
+    aliases: [tisotumab vedotin, tisotumab, HuMax-TF-ADC, TIVDAK]
+    target: F3
+    target_label: tissue_factor
+    payload: MMAE
+    mechanism: tubulin
+    linker_type: vc_PABC
+    linker_cleavable: true
+    linker_cleavage: enzymatic_cathepsin_b
+    conjugation: interchain_cysteine
+    dar: 4.0
+    dar_source: fda_label
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2021-09-20
+    conventional_adc: true
+
+  datopotamab_deruxtecan:
+    inn: datopotamab deruxtecan
+    brand: DATROWAY
+    aliases: [datopotamab deruxtecan, datopotamab, Dato-DXd, DS-1062, DS1062, DS-1062a, DATROWAY]
+    target: TACSTD2
+    target_label: TROP2
+    payload: DXd
+    mechanism: topo1
+    linker_type: GGFG
+    linker_cleavable: true
+    linker_cleavage: enzymatic_cathepsin
+    conjugation: interchain_cysteine
+    dar: 4.0
+    dar_source: fda_label
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2025-01-17
+    conventional_adc: true
+
+  patritumab_deruxtecan:
+    inn: patritumab deruxtecan
+    brand: null
+    aliases: [patritumab deruxtecan, patritumab, HER3-DXd, U3-1402, U31402]
+    target: ERBB3
+    target_label: HER3
+    payload: DXd
+    mechanism: topo1
+    linker_type: GGFG
+    linker_cleavable: true
+    linker_cleavage: enzymatic_cathepsin
+    conjugation: interchain_cysteine
+    dar: 8.0
+    dar_source: literature
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: null
+    conventional_adc: true
+
+  trastuzumab_duocarmazine:
+    inn: trastuzumab duocarmazine
+    brand: null
+    aliases: [trastuzumab duocarmazine, SYD985, SYD-985, vic-trastuzumab duocarmazine]
+    target: ERBB2
+    target_label: HER2
+    payload: seco-DUBA
+    mechanism: dna_alkyl
+    linker_type: val_cit_cleavable
+    linker_cleavable: true
+    linker_cleavage: enzymatic_cathepsin_b
+    conjugation: interchain_cysteine
+    dar: 2.8
+    dar_source: literature
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: null
+    conventional_adc: true
+
+  telisotuzumab_vedotin:
+    inn: telisotuzumab vedotin
+    brand: EMRELIS
+    aliases: [telisotuzumab vedotin, telisotuzumab, ABBV-399, Teliso-V, EMRELIS]
+    target: MET
+    target_label: c-Met
+    payload: MMAE
+    mechanism: tubulin
+    linker_type: vc_PABC
+    linker_cleavable: true
+    linker_cleavage: enzymatic_cathepsin_b
+    conjugation: interchain_cysteine
+    dar: 3.1
+    dar_source: literature
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2025-05-14
+    conventional_adc: true
+
+  pivekimab_sunirine:
+    inn: pivekimab sunirine
+    brand: DECNUPAZ
+    aliases: [pivekimab sunirine, pivekimab, IMGN632, IMGN-632, DECNUPAZ]
+    target: IL3RA
+    target_label: CD123
+    payload: DGN549
+    mechanism: dna_crosslink
+    linker_type: IGN_peptide
+    linker_cleavable: true
+    linker_cleavage: enzymatic_peptidase
+    conjugation: lysine
+    dar: 2.7
+    dar_source: literature
+    dar_confidence: low
+    isotype: IgG1
+    fc_engineering: none
+    bystander: true
+    first_us_approval: 2026-06-01
+    conventional_adc: true

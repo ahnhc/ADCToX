@@ -1,0 +1,119 @@
+# Redistribution of the MedDRA `Investigations` SOC onto organ axes, per preferred term.
+#
+# Why this exists: `Investigations` is the 5th most common SOC in the ADC corpus
+# (4,757 events, 617 distinct PTs) and carries no organ label, yet almost every term in
+# it is an organ readout under a lab-test name. Dropping it would delete the single
+# strongest haematologic and hepatic signals in the data ("Neutrophil count decreased",
+# "Alanine aminotransferase increased").
+#
+# Rules are ordered: the FIRST matching pattern wins. Patterns are matched against the
+# casefolded, whitespace-normalized PT. They fire ONLY on terms whose majority SOC is
+# `investigations`, so they cannot steal a term that already has a real organ SOC.
+#
+# Counts in comments are measured event counts from 605 CTGov ADC studies (2026-10-07).
+
+rules:
+  # --- hepatic: liver enzymes and biliary chemistry -------------------------------
+  # Patterns tolerate the CTCAE-era spellings and the source typos that actually occur
+  # in the corpus: "aminotranseferase" (86 events), "Gamma- glutamyltranseferase" (48),
+  # "Gamma-glutamyl transferase" (37). These are verbatim in ClinicalTrials.gov.
+  - {pattern: 'alanine aminotrans[ef]+erase',    axis: hepatic}        # 308 + 86 typo
+  - {pattern: '\bal[at]\b',                      axis: hepatic}
+  - {pattern: 'aspartate aminotrans[ef]+erase',  axis: hepatic}        # 300
+  - {pattern: '\bast\b',                         axis: hepatic}
+  - {pattern: 'transaminase',                    axis: hepatic}        # 28
+  - {pattern: 'hepatic enzyme',                  axis: hepatic}        # 23
+  - {pattern: 'liver function test',             axis: hepatic}        # 42 (CTCAE era)
+  - {pattern: 'bilirubin',                       axis: hepatic}        # 164
+  - {pattern: 'alkaline phosphatase',            axis: hepatic}        # 154 + 51
+  - {pattern: 'gamma.?\s*glutamyl\s*trans[ef]+erase', axis: hepatic}   # 107 + 48 + 37
+  - {pattern: '\bggt\b',                         axis: hepatic}        # 15
+
+  # --- haematologic: cell counts and coagulation ---------------------------------
+  # CTCAE v2/v3 reported bare cell names, not MedDRA "<cell> count decreased".
+  # Measured as unmapped before these rules existed: Platelets 841,
+  # Neutrophils/granulocytes (ANC/AGC) 740, Leukocytes (total WBC) 648, Lymphopenia 245.
+  - {pattern: '^platelets?\b',                   axis: haematologic}   # 841
+  - {pattern: '^neutrophils?\b|granulocyte|\banc\b|\bagc\b', axis: haematologic}  # 740
+  - {pattern: '^leukocytes?\b|^lymphocytes?\b', axis: haematologic}   # 648
+  - {pattern: 'neutropenia|lymphopenia|leukopenia|thrombocytopenia|anaemia|anemia', axis: haematologic}  # 245 + 69
+  - {pattern: 'platelet count',                  axis: haematologic}   # 286
+  - {pattern: 'neutrophil count',                axis: haematologic}   # 280
+  - {pattern: 'lymphocyte count',                axis: haematologic}   # 167
+  - {pattern: 'white blood cell',                axis: haematologic}   # 146 + 65
+  - {pattern: 'haemoglobin|hemoglobin',          axis: haematologic}   # 28
+  - {pattern: 'haematocrit|hematocrit',          axis: haematologic}
+  - {pattern: 'thromboplastin time',             axis: haematologic}   # 34
+  - {pattern: 'international normalised ratio|international normalized ratio', axis: haematologic}  # 28
+  - {pattern: '\binr\b',                         axis: haematologic}   # 17
+  - {pattern: 'prothrombin',                     axis: haematologic}
+  - {pattern: 'fibrinogen',                      axis: haematologic}
+  - {pattern: '(monocyte|eosinophil|basophil|blast cell|reticulocyte) count', axis: haematologic}
+  - {pattern: 'coombs',                          axis: haematologic}
+
+  # --- renal ---------------------------------------------------------------------
+  - {pattern: 'creatinine',                      axis: renal}          # 151 + 52
+  - {pattern: 'blood urea',                      axis: renal}          # 22
+  - {pattern: 'urine output',                    axis: renal}          # 14
+  - {pattern: 'glomerular filtration',           axis: renal}
+  - {pattern: 'protein urine|proteinuria|urine protein', axis: renal}
+
+  # --- cardiovascular ------------------------------------------------------------
+  - {pattern: 'ejection fraction',               axis: cardiovascular} # 49
+  - {pattern: 'electrocardiogram|\becg\b|\bekg\b', axis: cardiovascular}  # 28 + 12
+  - {pattern: '\bqtc?\b|qt interval',           axis: cardiovascular} # 59 (CTCAE era)
+  - {pattern: 'cardiac murmur',                  axis: cardiovascular} # 17
+  - {pattern: 'blood pressure',                  axis: cardiovascular} # 12
+  - {pattern: 'troponin',                        axis: cardiovascular}
+  - {pattern: 'brain natriuretic peptide|\bbnp\b', axis: cardiovascular}
+  - {pattern: 'heart rate',                      axis: cardiovascular}
+
+  # --- gastrointestinal: pancreatic enzymes --------------------------------------
+  # Lipase/amylase elevation is pancreatic injury. MedDRA files it under
+  # Investigations; clinically it belongs with the GI axis, and ADC trials report it
+  # alongside pancreatitis. Documented choice, not an oversight.
+  - {pattern: 'lipase',                          axis: gastrointestinal}  # 72
+  - {pattern: 'amylase',                         axis: gastrointestinal}  # 43 + 17
+  - {pattern: 'occult blood',                    axis: gastrointestinal}
+
+  # --- musculoskeletal -----------------------------------------------------------
+  - {pattern: 'creatine phosphokinase|creatine kinase|\bcpk\b', axis: musculoskeletal}  # 35
+
+  # --- infectious / immune -------------------------------------------------------
+  - {pattern: 'c.?reactive protein',             axis: infectious_immune}  # 30
+  - {pattern: 'sars.?cov.?2|covid',              axis: infectious_immune}  # 13
+  - {pattern: 'culture positive|test positive',  axis: infectious_immune}
+  - {pattern: 'immunoglobulin',                  axis: infectious_immune}
+
+  # --- ocular --------------------------------------------------------------------
+  - {pattern: 'intraocular pressure',            axis: ocular}         # 44
+  - {pattern: 'visual acuity|visual field',      axis: ocular}
+
+  # --- metabolic / endocrine -----------------------------------------------------
+  - {pattern: 'blood glucose|glucose (increased|decreased)', axis: metabolic_endocrine}  # 24
+  - {pattern: 'thyroid stimulating hormone|\btsh\b', axis: metabolic_endocrine}  # 16
+  - {pattern: 'blood (potassium|sodium|magnesium|calcium|phosphorus|phosphate|chloride|bicarbonate)', axis: metabolic_endocrine}
+  - {pattern: 'cholesterol|triglyceride|\bldl\b|\bhdl\b', axis: metabolic_endocrine}  # 14 + 55
+  - {pattern: 'hyper(glycemia|glycaemia|kalemia|kalaemia|natremia|calcemia|uricemia|lipidemia)', axis: metabolic_endocrine}  # 50
+  - {pattern: 'hypo(glycemia|glycaemia|kalemia|kalaemia|natremia|calcemia|albuminemia|magnesemia|phosphatemia)', axis: metabolic_endocrine}
+  - {pattern: 'blood uric acid',                 axis: metabolic_endocrine}  # 15
+  - {pattern: 'blood albumin|protein total|total protein', axis: metabolic_endocrine}  # 14 + 14
+  - {pattern: 'lactate dehydrogenase',           axis: metabolic_endocrine}  # 91
+  - {pattern: 'cortisol|testosterone|oestradiol|estradiol', axis: metabolic_endocrine}
+
+  # --- constitutional ------------------------------------------------------------
+  - {pattern: 'weight (decreased|increased|loss|gain)', axis: constitutional}  # 173+54+48+27
+  - {pattern: 'body temperature',                axis: constitutional}  # 18
+  - {pattern: 'oxygen saturation',               axis: pulmonary}
+  - {pattern: 'forced expiratory|vital capacity|pulmonary function', axis: pulmonary}
+
+# Terms matching these are aggregate or non-specific rows and are DROPPED, never
+# assigned to an axis. "Investigations - Other, specify" (15 events) is the CTCAE
+# catch-all row.
+drop_patterns:
+  - 'investigations?\s*[-–]\s*other'
+  - 'metabolic/laboratory\s*[-–]'
+  - '^other\b'
+  - '\ball (grades?|causality)\b'
+  - '^any\b'
+  - '^total\b'
