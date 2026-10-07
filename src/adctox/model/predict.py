@@ -37,6 +37,9 @@ class Posterior:
     mechanisms: list[str]
     families: list[str]
     dar_mean: float
+    # Training-corpus mean of the cleavability indicator. Prediction must centre on the
+    # same value the fit used, or the contrast silently becomes an intercept shift.
+    cleavable_mean: float
 
     @classmethod
     def from_samples(cls, post: dict, data: ModelData) -> "Posterior":
@@ -60,6 +63,7 @@ class Posterior:
             mechanisms=list(data.mechanisms),
             families=list(data.families),
             dar_mean=float(data.dar_mean),
+            cleavable_mean=float(data.cleavable_mean),
         )
 
     def save(self, path: Path) -> None:
@@ -70,16 +74,17 @@ class Posterior:
             b_dar=self.b_dar, b_combo=self.b_combo, sigma_agent=self.sigma_agent,
             axes=np.array(self.axes), mechanisms=np.array(self.mechanisms),
             dar_mean=np.array([self.dar_mean]),
+            cleavable_mean=np.array([self.cleavable_mean]),
         )
 
     # Bumped whenever the saved field set changes, so a stale artefact fails with a
     # sentence rather than a KeyError from deep inside numpy.
-    FORMAT = 2
+    FORMAT = 3
 
     @classmethod
     def load(cls, path: Path) -> "Posterior":
         z = np.load(path, allow_pickle=False)
-        missing = {"family_axis", "families"} - set(z.files)
+        missing = {"family_axis", "families", "cleavable_mean"} - set(z.files)
         if missing:
             raise ValueError(
                 f"{path} was written by an older format and is missing {sorted(missing)}. "
@@ -94,6 +99,7 @@ class Posterior:
             mechanisms=[str(s) for s in z["mechanisms"]],
             families=[str(s) for s in z["families"]],
             dar_mean=float(z["dar_mean"][0]),
+            cleavable_mean=float(z["cleavable_mean"][0]),
         )
 
     @property
@@ -150,7 +156,8 @@ def predict_draws(
             post.family_axis[:, np.clip(fam_idx, 0, None), :],
             post.mech_axis[:, mech_idx, :],
         )
-        + post.cleav_axis[:, None, :] * cleavables[None, :, None]
+        + post.cleav_axis[:, None, :]
+        * (cleavables - post.cleavable_mean)[None, :, None]
         + (post.b_dar[:, None] * (dars[None, :] - post.dar_mean))[:, :, None]
         # b_combo is intentionally not applied: a proposal is a monotherapy design, and
         # the combination covariate sits at its reference level of zero.

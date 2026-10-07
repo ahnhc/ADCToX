@@ -114,7 +114,7 @@ def predict_rates(
     logit = (
         mu[:, xi]
         + fam[:, data.arm_family_idx[ai], xi]
-        + cleav[:, xi] * data.arm_cleavable[ai][None, :]
+        + cleav[:, xi] * (data.arm_cleavable - data.cleavable_mean)[ai][None, :]
         + arm_lin[:, ai]
     )
     return 1.0 / (1.0 + np.exp(-logit.mean(axis=0)))

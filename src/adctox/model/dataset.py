@@ -81,6 +81,7 @@ class ModelData:
     dar_mean: float
     thresh_mean: float
     log_n_mean: float
+    cleavable_mean: float
 
     @property
     def n_cells(self) -> int:
@@ -258,6 +259,9 @@ def build(
         dar_mean=dar_mean,
         thresh_mean=thresh_mean,
         log_n_mean=log_n_mean,
+        cleavable_mean=float(
+            arms["linker_cleavable"].fillna(False).astype(float).mean()
+        ),
     )
 
 

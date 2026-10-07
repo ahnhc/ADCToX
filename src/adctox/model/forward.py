@@ -152,11 +152,16 @@ def model(
     # draft had it backwards: non-cleavable linkers associate with ocular toxicity and
     # cleavable ones with pulmonary and infectious events. Cleavability does *not* split
     # haematologic toxicity, which tracks the payload instead.
+    # Cleavability enters as a *centered* contrast. Only 2 of 16 agents carry a
+    # non-cleavable linker, so an uncentered indicator is nearly constant and behaves as a
+    # second per-axis intercept, unidentified against mu_axis. Centering leaves it able to
+    # express a contrast without being able to shift the overall level.
     tau_cleav = numpyro.sample("tau_cleav", dist.HalfNormal(0.5))
     cleav_axis_raw = numpyro.sample(
         "cleav_axis_raw", dist.Normal(0.0, 1.0).expand([n_axes]).to_event(1)
     )
     cleav_axis = tau_cleav * cleav_axis_raw
+    cleav_centered = data.arm_cleavable - float(data.arm_cleavable.mean())
 
     # --- scalar design and nuisance effects. All covariates arrive centered, so zero is
     # the training mean rather than a nonsensical edge (log n = 0 would be a 1-patient arm).
@@ -165,16 +170,31 @@ def model(
     b_thresh = numpyro.sample("b_thresh", dist.Normal(0.0, 0.5))
     b_log_n = numpyro.sample("b_log_n", dist.Normal(0.0, 0.5))
 
-    # --- random intercepts. Trial absorbs population and era; agent absorbs whatever is
-    # specific to a molecule beyond its design slots.
+    # --- random intercepts, centered to sum to zero.
+    #
+    # This centering is not cosmetic. A non-centered `sigma * u` with `u ~ Normal(0, 1)`
+    # lets the random effects carry a common offset, and that offset is exactly collinear
+    # with the axis intercept. The fit can then put `mu_axis` far from the data and pull
+    # every observed arm back with its random effect -- harmless in sample, and ruinous out
+    # of it, because predicting a design that has no trial and no agent drops the random
+    # effects and inherits the uncompensated intercept.
+    #
+    # Measured before this fix, on a 153-arm corpus: tau_cleav ran to 3.87 against a
+    # HalfNormal(0.5) prior, cleav_axis spanned -6.2 to +7.5, and the otologic axis -- whose
+    # observed rate is 0.04 -- was predicted at 0.9997. Enforcing the constraint removes
+    # the degeneracy.
     sigma_trial = numpyro.sample("sigma_trial", dist.HalfNormal(1.0))
-    u_trial = numpyro.sample(
-        "u_trial", dist.Normal(0.0, 1.0).expand([len(data.trials)]).to_event(1)
+    u_trial_raw = numpyro.sample(
+        "u_trial_raw", dist.Normal(0.0, 1.0).expand([len(data.trials)]).to_event(1)
     )
+    u_trial = u_trial_raw - u_trial_raw.mean()
     sigma_agent = numpyro.sample("sigma_agent", dist.HalfNormal(1.0))
-    u_agent = numpyro.sample(
-        "u_agent", dist.Normal(0.0, 1.0).expand([len(data.agents)]).to_event(1)
+    u_agent_raw = numpyro.sample(
+        "u_agent_raw", dist.Normal(0.0, 1.0).expand([len(data.agents)]).to_event(1)
     )
+    u_agent = u_agent_raw - u_agent_raw.mean()
+    numpyro.deterministic("u_trial", u_trial)
+    numpyro.deterministic("u_agent", u_agent)
 
     arm_lin = (
         b_dar * data.arm_dar_c
@@ -190,7 +210,7 @@ def model(
     logit = (
         mu_axis[xi]
         + family_axis[data.arm_family_idx[ai], xi]
-        + cleav_axis[xi] * data.arm_cleavable[ai]
+        + cleav_axis[xi] * cleav_centered[ai]
         + arm_lin[ai]
     )
     p = jax.nn.sigmoid(logit)
