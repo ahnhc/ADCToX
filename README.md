@@ -20,7 +20,7 @@ annotates candidates with organ-toxicity estimates, not as a ranking engine. See
 | 1b | Mechanism fingerprints reproduce known pharmacology | **pass** — calicheamicin tops hepatic, topo-I tops pulmonary and GI, tubulin puts neurologic in its top three |
 | 1c | Attribution loss inside ADC-bearing trials | **0 of 948** event groups |
 | 2 | Two inputs in, fourteen organ numbers out, end to end | **pass** |
-| 3 | Model beats its strongest baseline | **fail** — delta -0.012 to -0.080 across three splits |
+| 3 | Model beats its strongest baseline | **fail** — delta -0.019 to -0.078, excluding zero on all three splits |
 
 Corpus: **285 arms / 16 agents / 3,990 (arm x axis) cells**, of which **224 cells
 (16 agents x 14 axes) identify the design coefficients**, because design features are

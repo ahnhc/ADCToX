@@ -11,60 +11,60 @@
  },
  "seed_agreement": {
   "by_parameter": {
-   "tau_mech": 0.032301850616931915,
-   "tau_cleav": 0.0030119118746370077,
-   "b_dar": 0.023632651194930077,
-   "b_combo": 0.051852911710739136,
-   "b_thresh": 0.11356417834758759,
-   "b_log_n": 0.021165207028388977,
-   "sigma_trial": 0.014107903465628624,
-   "sigma_agent": 0.030150823295116425
+   "tau_mech": 0.050678592175245285,
+   "tau_cleav": 0.009512477554380894,
+   "b_dar": 0.034866366535425186,
+   "b_combo": 0.026485836133360863,
+   "b_thresh": 0.13759800791740417,
+   "b_log_n": 0.004228072240948677,
+   "sigma_trial": 0.04702238366007805,
+   "sigma_agent": 0.0593610443174839
   },
-  "worst_standardized_gap": 0.11356417834758759,
+  "worst_standardized_gap": 0.13759800791740417,
   "threshold": 0.3,
   "converged": true
  },
  "tau_mech": {
-  "mean": 0.5922014117240906,
-  "q05": 0.4928787350654602,
-  "q95": 0.7051823735237122
+  "mean": 0.5928035378456116,
+  "q05": 0.49277636408805847,
+  "q95": 0.7007713913917542
  },
  "tau_family": {
   "enabled": false
  },
  "tau_cleav": {
-  "mean": 0.28321513533592224
+  "mean": 0.28243640065193176
  },
  "coefficients": {
   "b_dar": {
-   "mean": 0.031191378831863403,
-   "q05": -0.020296916365623474,
-   "q95": 0.08227904140949249
+   "mean": 0.03188391029834747,
+   "q05": -0.017526013776659966,
+   "q95": 0.08403433114290237
   },
   "b_combo": {
-   "mean": 0.1957332193851471,
-   "q05": 0.16849353909492493,
-   "q95": 0.2200973629951477
+   "mean": 0.19496552646160126,
+   "q05": 0.16912150382995605,
+   "q95": 0.22131551802158356
   },
   "b_thresh": {
-   "mean": 0.032971978187561035,
-   "q05": 0.027528533712029457,
-   "q95": 0.03791843354701996
+   "mean": 0.03265463933348656,
+   "q05": 0.027210289612412453,
+   "q95": 0.03754806891083717
   },
   "b_log_n": {
-   "mean": 0.03926810622215271,
-   "q05": 0.029362713918089867,
-   "q95": 0.04960988834500313
+   "mean": 0.03932355344295502,
+   "q05": 0.028824610635638237,
+   "q95": 0.049064818769693375
   },
   "sigma_trial": {
-   "mean": 0.4729800820350647,
-   "q05": 0.4004134237766266,
-   "q95": 0.5578392744064331
+   "mean": 0.47063037753105164,
+   "q05": 0.3905388414859772,
+   "q95": 0.5544227361679077
   },
   "sigma_agent": {
-   "mean": 0.15620197355747223,
-   "q05": 0.09515576809644699,
-   "q95": 0.23684020340442657
+   "mean": 0.1590350866317749,
+   "q05": 0.09802724421024323,
+   "q95": 0.24021466076374054
   }
  },
  "cv": {
@@ -73,35 +73,35 @@
     {
      "fold": "topo1",
      "n_test_cells": 952,
-     "auc_model": 0.9014758309741009,
+     "auc_model": 0.9008598091643074,
      "auc_mech_baseline": 0.910427807486631,
      "auc_global_baseline": 0.910427807486631,
-     "delta_auc": -0.008951976512530102,
-     "spearman_model": 0.8088195308046986,
+     "delta_auc": -0.009567998322323579,
+     "spearman_model": 0.8099061644445863,
      "spearman_mech_baseline": 0.8222258936775527,
-     "mae_model": 0.101514791290457,
+     "mae_model": 0.10364549587118328,
      "mae_mech_baseline": 0.08486124470856515
     },
     {
      "fold": "tubulin",
      "n_test_cells": 2366,
-     "auc_model": 0.8059920658919293,
+     "auc_model": 0.8038255175260182,
      "auc_mech_baseline": 0.8325264479110633,
      "auc_global_baseline": 0.8325264479110633,
-     "delta_auc": -0.02653438201913405,
-     "spearman_model": 0.5981085856515229,
+     "delta_auc": -0.028700930385045176,
+     "spearman_model": 0.6005014278275194,
      "spearman_mech_baseline": 0.6388400415390492,
-     "mae_model": 0.1057536504336295,
+     "mae_model": 0.10572250069552754,
      "mae_mech_baseline": 0.1010365021899881
     }
    ],
-   "macro_auc": 0.8537339484330151,
+   "macro_auc": 0.8523426633451627,
    "macro_auc_mech_baseline": 0.8714771276988471,
    "macro_auc_global_baseline": 0.8714771276988471,
-   "delta_auc_mean": -0.017743179265832076,
+   "delta_auc_mean": -0.019134464353684377,
    "delta_auc_ci": [
-    -0.02653438201913405,
-    -0.008951976512530102
+    -0.028700930385045176,
+    -0.009567998322323579
    ],
    "across_agent_spearman": {
     "applicable": false,
@@ -114,59 +114,59 @@
     {
      "fold": "auristatin",
      "n_test_cells": 1554,
-     "auc_model": 0.724714886877049,
+     "auc_model": 0.7251034818602387,
      "auc_mech_baseline": 0.8307398307398307,
      "auc_global_baseline": 0.8375648375648376,
-     "delta_auc": -0.10602494386278172,
-     "spearman_model": 0.34232746962636007,
+     "delta_auc": -0.10563634887959206,
+     "spearman_model": 0.34179856542589804,
      "spearman_mech_baseline": 0.604477978820761,
-     "mae_model": 0.1325382097385916,
+     "mae_model": 0.1328319284527513,
      "mae_mech_baseline": 0.10806430027811822
     },
     {
      "fold": "camptothecin",
      "n_test_cells": 952,
-     "auc_model": 0.8997195134738387,
+     "auc_model": 0.9033435566740065,
      "auc_mech_baseline": 0.910427807486631,
      "auc_global_baseline": 0.910427807486631,
-     "delta_auc": -0.010708294012792274,
-     "spearman_model": 0.8082017981687297,
+     "delta_auc": -0.007084250812624537,
+     "spearman_model": 0.8125582909983997,
      "spearman_mech_baseline": 0.8222258936775527,
-     "mae_model": 0.10151746777518911,
+     "mae_model": 0.10380616379514128,
      "mae_mech_baseline": 0.08486124470856515
     },
     {
      "fold": "enediyne",
      "n_test_cells": 546,
-     "auc_model": 0.7760245452553145,
+     "auc_model": 0.7777777777777778,
      "auc_mech_baseline": 0.8391608391608392,
      "auc_global_baseline": 0.8391608391608392,
-     "delta_auc": -0.06313629390552467,
-     "spearman_model": 0.5435607580451013,
+     "delta_auc": -0.06138306138306138,
+     "spearman_model": 0.543000977018051,
      "spearman_mech_baseline": 0.5458079917164499,
-     "mae_model": 0.14025903810714885,
+     "mae_model": 0.13871913634232605,
      "mae_mech_baseline": 0.12637882671819337
     },
     {
      "fold": "maytansinoid",
      "n_test_cells": 812,
-     "auc_model": 0.6809534104421143,
+     "auc_model": 0.6839170540121788,
      "auc_mech_baseline": 0.822884012539185,
      "auc_global_baseline": 0.822884012539185,
-     "delta_auc": -0.14193060209707065,
-     "spearman_model": 0.39145266034305576,
+     "delta_auc": -0.13896695852700613,
+     "spearman_model": 0.39102709116417117,
      "spearman_mech_baseline": 0.6532654998729926,
-     "mae_model": 0.14007515476134344,
+     "mae_model": 0.14029824899887824,
      "mae_mech_baseline": 0.09682842135769269
     }
    ],
-   "macro_auc": 0.7703530890120791,
+   "macro_auc": 0.7725354675810504,
    "macro_auc_mech_baseline": 0.8508031224816215,
    "macro_auc_global_baseline": 0.8525093741878732,
-   "delta_auc_mean": -0.08045003346954233,
+   "delta_auc_mean": -0.07826765490057103,
    "delta_auc_ci": [
-    -0.12397777297992618,
-    -0.034537456475289635
+    -0.1223016537032991,
+    -0.03172227532936642
    ],
    "across_agent_spearman": {
     "applicable": false,
@@ -179,236 +179,236 @@
     {
      "fold": "belantamab_mafodotin",
      "n_test_cells": 252,
-     "auc_model": 0.5748222970445193,
-     "auc_mech_baseline": 0.6430976430976431,
+     "auc_model": 0.5702394313505424,
+     "auc_mech_baseline": 0.6683501683501684,
      "auc_global_baseline": 0.7087542087542088,
-     "delta_auc": -0.0682753460531238,
-     "spearman_model": 0.2038501368139338,
-     "spearman_mech_baseline": 0.35023692169023884,
-     "mae_model": 0.13194894454234227,
-     "mae_mech_baseline": 0.12759120164863977
+     "delta_auc": -0.09811073699962591,
+     "spearman_model": 0.25899413825968476,
+     "spearman_mech_baseline": 0.37711754150347604,
+     "mae_model": 0.18048450132835248,
+     "mae_mech_baseline": 0.1291897222716031
     },
     {
      "fold": "brentuximab_vedotin",
      "n_test_cells": 784,
-     "auc_model": 0.8590561224489796,
-     "auc_mech_baseline": 0.8641774891774892,
+     "auc_model": 0.8772997835497836,
+     "auc_mech_baseline": 0.8814935064935064,
      "auc_global_baseline": 0.8603896103896104,
-     "delta_auc": -0.005121366728509602,
-     "spearman_model": 0.5886978658510772,
-     "spearman_mech_baseline": 0.5762699632895109,
-     "mae_model": 0.11654790932397373,
-     "mae_mech_baseline": 0.11670559959294391
+     "delta_auc": -0.0041937229437228885,
+     "spearman_model": 0.5523715892389608,
+     "spearman_mech_baseline": 0.5896075598406871,
+     "mae_model": 0.11660797450290888,
+     "mae_mech_baseline": 0.11600841366711262
     },
     {
      "fold": "datopotamab_deruxtecan",
      "n_test_cells": 98,
-     "auc_model": 0.9474335188620903,
+     "auc_model": 0.9109461966604824,
      "auc_mech_baseline": 0.9177489177489178,
      "auc_global_baseline": 0.8744588744588745,
-     "delta_auc": 0.029684601113172504,
-     "spearman_model": 0.7718697600877277,
+     "delta_auc": -0.006802721088435382,
+     "spearman_model": 0.7471580947280505,
      "spearman_mech_baseline": 0.7637983028262851,
-     "mae_model": 0.0656487078039254,
-     "mae_mech_baseline": 0.07118351567599666
+     "mae_model": 0.1321867719012506,
+     "mae_mech_baseline": 0.07408189261297493
     },
     {
      "fold": "enfortumab_vedotin",
      "n_test_cells": 168,
-     "auc_model": 0.7859848484848485,
+     "auc_model": 0.7455808080808081,
      "auc_mech_baseline": 0.7676767676767676,
      "auc_global_baseline": 0.8055555555555556,
-     "delta_auc": 0.018308080808080884,
-     "spearman_model": 0.7583075607027703,
-     "spearman_mech_baseline": 0.7668593497704507,
-     "mae_model": 0.0822744732529671,
-     "mae_mech_baseline": 0.08440577695877823
+     "delta_auc": -0.022095959595959558,
+     "spearman_model": 0.6781044841846315,
+     "spearman_mech_baseline": 0.7590592272766387,
+     "mae_model": 0.15052497093092995,
+     "mae_mech_baseline": 0.08242217844245706
     },
     {
      "fold": "gemtuzumab_ozogamicin",
      "n_test_cells": 252,
-     "auc_model": 0.7881593714927049,
+     "auc_model": 0.7283015338570894,
      "auc_mech_baseline": 0.797979797979798,
      "auc_global_baseline": 0.7744107744107744,
-     "delta_auc": -0.009820426487093137,
-     "spearman_model": 0.44730470176512094,
-     "spearman_mech_baseline": 0.48634822651798226,
-     "mae_model": 0.14932125642734437,
-     "mae_mech_baseline": 0.1407966889936671
+     "delta_auc": -0.06967826412270861,
+     "spearman_model": 0.508040490025593,
+     "spearman_mech_baseline": 0.47980710322646924,
+     "mae_model": 0.1398874174792496,
+     "mae_mech_baseline": 0.13595742453885454
     },
     {
      "fold": "inotuzumab_ozogamicin",
      "n_test_cells": 294,
-     "auc_model": 0.8744588744588745,
-     "auc_mech_baseline": 0.8946608946608947,
+     "auc_model": 0.8850408850408851,
+     "auc_mech_baseline": 0.9163059163059163,
      "auc_global_baseline": 0.8946608946608947,
-     "delta_auc": -0.02020202020202022,
-     "spearman_model": 0.5821911711407534,
-     "spearman_mech_baseline": 0.6738542469686434,
-     "mae_model": 0.12039446783575658,
-     "mae_mech_baseline": 0.10269061251107217
+     "delta_auc": -0.03126503126503122,
+     "spearman_model": 0.6796738849412618,
+     "spearman_mech_baseline": 0.6566763038876683,
+     "mae_model": 0.1255189120108756,
+     "mae_mech_baseline": 0.09783894040409388
     },
     {
      "fold": "loncastuximab_tesirine",
      "n_test_cells": 84,
-     "auc_model": 0.9436026936026936,
+     "auc_model": 0.8998316498316499,
      "auc_mech_baseline": 0.9393939393939394,
      "auc_global_baseline": 0.9393939393939394,
-     "delta_auc": 0.004208754208754106,
-     "spearman_model": 0.8051635111876075,
+     "delta_auc": -0.039562289562289576,
+     "spearman_model": 0.6909587931558165,
      "spearman_mech_baseline": 0.7690594310013162,
-     "mae_model": 0.06336867457553602,
+     "mae_model": 0.12775206982891552,
      "mae_mech_baseline": 0.0721928493165698
     },
     {
      "fold": "mirvetuximab_soravtansine",
      "n_test_cells": 140,
-     "auc_model": 0.703030303030303,
+     "auc_model": 0.6336363636363637,
      "auc_mech_baseline": 0.7393939393939394,
      "auc_global_baseline": 0.7151515151515152,
-     "delta_auc": -0.036363636363636376,
-     "spearman_model": 0.5058537972053968,
+     "delta_auc": -0.10575757575757572,
+     "spearman_model": 0.5333187553300824,
      "spearman_mech_baseline": 0.5381120027989766,
-     "mae_model": 0.11848649357822803,
-     "mae_mech_baseline": 0.11133638364018104
+     "mae_model": 0.12378212735730236,
+     "mae_mech_baseline": 0.11202855557754121
     },
     {
      "fold": "patritumab_deruxtecan",
      "n_test_cells": 112,
-     "auc_model": 0.9071969696969697,
-     "auc_mech_baseline": 0.9053030303030303,
+     "auc_model": 0.9086174242424242,
+     "auc_mech_baseline": 0.9318181818181818,
      "auc_global_baseline": 0.9583333333333334,
-     "delta_auc": 0.0018939393939394478,
-     "spearman_model": 0.8075648341135067,
-     "spearman_mech_baseline": 0.8058222571496908,
-     "mae_model": 0.06920582327190655,
-     "mae_mech_baseline": 0.06651695099876984
+     "delta_auc": -0.02320075757575757,
+     "spearman_model": 0.8282280384050296,
+     "spearman_mech_baseline": 0.8274421703625243,
+     "mae_model": 0.121364802214409,
+     "mae_mech_baseline": 0.06501423289710449
     },
     {
      "fold": "pivekimab_sunirine",
      "n_test_cells": 14,
-     "auc_model": 1.0,
+     "auc_model": 0.9393939393939394,
      "auc_mech_baseline": 1.0,
      "auc_global_baseline": 1.0,
-     "delta_auc": 0.0,
-     "spearman_model": 0.8153846153846154,
-     "spearman_mech_baseline": 0.8065934065934066,
-     "mae_model": 0.06326107221926447,
-     "mae_mech_baseline": 0.0620803105142058
+     "delta_auc": -0.06060606060606055,
+     "spearman_model": 0.7978021978021979,
+     "spearman_mech_baseline": 0.810989010989011,
+     "mae_model": 0.062412674099264764,
+     "mae_mech_baseline": 0.06289418772743435
     },
     {
      "fold": "polatuzumab_vedotin",
      "n_test_cells": 280,
-     "auc_model": 0.9000757575757575,
-     "auc_mech_baseline": 0.9393939393939394,
+     "auc_model": 0.9177272727272727,
+     "auc_mech_baseline": 0.9363636363636364,
      "auc_global_baseline": 0.9363636363636364,
-     "delta_auc": -0.03931818181818192,
-     "spearman_model": 0.6825797705145656,
-     "spearman_mech_baseline": 0.7390026840721365,
-     "mae_model": 0.08477629245330554,
-     "mae_mech_baseline": 0.0821658771875671
+     "delta_auc": -0.018636363636363673,
+     "spearman_model": 0.6836976783596,
+     "spearman_mech_baseline": 0.7467012152122932,
+     "mae_model": 0.10643446734427786,
+     "mae_mech_baseline": 0.08055340809251142
     },
     {
      "fold": "sacituzumab_govitecan",
      "n_test_cells": 294,
-     "auc_model": 0.9207723493437779,
-     "auc_mech_baseline": 0.8658008658008658,
+     "auc_model": 0.9096406239263383,
+     "auc_mech_baseline": 0.8816738816738817,
      "auc_global_baseline": 0.8845598845598845,
-     "delta_auc": 0.05497148354291215,
-     "spearman_model": 0.7931497421089104,
-     "spearman_mech_baseline": 0.7683426144218317,
-     "mae_model": 0.08369169809281295,
-     "mae_mech_baseline": 0.08687080909908353
+     "delta_auc": 0.027966742252456545,
+     "spearman_model": 0.743321571122809,
+     "spearman_mech_baseline": 0.7752696080456826,
+     "mae_model": 0.09939224811143574,
+     "mae_mech_baseline": 0.08649268887492663
     },
     {
      "fold": "tisotumab_vedotin",
      "n_test_cells": 70,
-     "auc_model": 0.7454545454545455,
-     "auc_mech_baseline": 0.7393939393939394,
+     "auc_model": 0.696969696969697,
+     "auc_mech_baseline": 0.7151515151515152,
      "auc_global_baseline": 0.7272727272727273,
-     "delta_auc": 0.0060606060606061,
-     "spearman_model": 0.6179861779371884,
-     "spearman_mech_baseline": 0.6356224302335753,
-     "mae_model": 0.10606890989764668,
-     "mae_mech_baseline": 0.09793852960381667
+     "delta_auc": -0.018181818181818188,
+     "spearman_model": 0.6305485084419561,
+     "spearman_mech_baseline": 0.5851981453941038,
+     "mae_model": 0.1222178520307456,
+     "mae_mech_baseline": 0.10181880615962184
     },
     {
      "fold": "trastuzumab_deruxtecan",
      "n_test_cells": 448,
-     "auc_model": 0.9354580965909091,
-     "auc_mech_baseline": 0.9375,
+     "auc_model": 0.9322620738636364,
+     "auc_mech_baseline": 0.9356060606060606,
      "auc_global_baseline": 0.9232954545454546,
-     "delta_auc": -0.0020419034090909394,
-     "spearman_model": 0.8625140666272338,
-     "spearman_mech_baseline": 0.8708073710194381,
-     "mae_model": 0.07895509506608675,
-     "mae_mech_baseline": 0.07529475640476828
+     "delta_auc": -0.0033439867424241987,
+     "spearman_model": 0.8535601379009923,
+     "spearman_mech_baseline": 0.866688411661581,
+     "mae_model": 0.08191971526584695,
+     "mae_mech_baseline": 0.0740449712199964
     },
     {
      "fold": "trastuzumab_duocarmazine",
      "n_test_cells": 28,
-     "auc_model": 0.6363636363636364,
+     "auc_model": 0.6060606060606061,
      "auc_mech_baseline": 0.6515151515151515,
      "auc_global_baseline": 0.6515151515151515,
-     "delta_auc": -0.015151515151515138,
-     "spearman_model": 0.5369458128078818,
+     "delta_auc": -0.045454545454545414,
+     "spearman_model": 0.4904214559386973,
      "spearman_mech_baseline": 0.5407772304324029,
-     "mae_model": 0.10943545484432074,
+     "mae_model": 0.10006229842917962,
      "mae_mech_baseline": 0.10994789712792845
     },
     {
      "fold": "trastuzumab_emtansine",
      "n_test_cells": 672,
-     "auc_model": 0.7101746632996633,
-     "auc_mech_baseline": 0.8207070707070707,
+     "auc_model": 0.696417297979798,
+     "auc_mech_baseline": 0.8529040404040404,
      "auc_global_baseline": 0.8453282828282829,
-     "delta_auc": -0.11053240740740744,
-     "spearman_model": 0.35709366511013163,
-     "spearman_mech_baseline": 0.5994324805343488,
-     "mae_model": 0.1380011280287143,
-     "mae_mech_baseline": 0.09488788798938111
+     "delta_auc": -0.15648674242424243,
+     "spearman_model": 0.390988003787312,
+     "spearman_mech_baseline": 0.6663269226571543,
+     "mae_model": 0.1429824649133388,
+     "mae_mech_baseline": 0.09413288476957826
     }
    ],
-   "macro_auc": 0.8270027529843921,
-   "macro_auc_mech_baseline": 0.8389839616402117,
+   "macro_auc": 0.8036228491982073,
+   "macro_auc_mech_baseline": 0.8458359638047138,
    "macro_auc_global_baseline": 0.8437152401996153,
-   "delta_auc_mean": -0.011981208655819586,
+   "delta_auc_mean": -0.04221311460650652,
    "delta_auc_ci": [
-    -0.03071894752907104,
-    0.005225822661750265
+    -0.0650056651764241,
+    -0.022141234750423743
    ],
    "across_agent_spearman": {
     "model": {
-     "haematologic": 0.1,
-     "hepatic": -0.05588235294117647,
-     "cardiovascular": 0.04411764705882353,
-     "pulmonary": -0.2647058823529412,
-     "renal": -0.5735294117647058,
-     "gastrointestinal": 0.48823529411764705,
-     "neurologic": 0.6058823529411764,
-     "ocular": -0.008823529411764706,
-     "dermatologic": 0.07058823529411765,
-     "metabolic_endocrine": 0.11176470588235295,
-     "musculoskeletal": 0.5088235294117647,
-     "infectious_immune": 0.03529411764705882,
-     "otologic": -0.36764705882352944,
-     "constitutional": 0.058823529411764705
+     "haematologic": 0.12058823529411765,
+     "hepatic": 0.2323529411764706,
+     "cardiovascular": -0.17352941176470588,
+     "pulmonary": -0.3088235294117647,
+     "renal": -0.42058823529411765,
+     "gastrointestinal": 0.6323529411764706,
+     "neurologic": 0.4176470588235294,
+     "ocular": 0.14705882352941177,
+     "dermatologic": 0.34411764705882353,
+     "metabolic_endocrine": 0.5176470588235295,
+     "musculoskeletal": 0.15588235294117647,
+     "infectious_immune": -0.061764705882352944,
+     "otologic": 0.058823529411764705,
+     "constitutional": -0.3088235294117647
     },
     "mech_baseline": {
-     "haematologic": 0.08529411764705883,
-     "hepatic": -0.4117647058823529,
-     "cardiovascular": -0.5352941176470588,
-     "pulmonary": -0.15588235294117647,
-     "renal": -0.6147058823529412,
-     "gastrointestinal": 0.3764705882352941,
-     "neurologic": 0.3235294117647059,
-     "ocular": 0.14411764705882352,
-     "dermatologic": 0.11176470588235295,
-     "metabolic_endocrine": -0.008823529411764706,
-     "musculoskeletal": 0.27647058823529413,
-     "infectious_immune": -0.5794117647058824,
-     "otologic": -0.5941176470588235,
-     "constitutional": -0.6029411764705882
+     "haematologic": 0.17058823529411765,
+     "hepatic": -0.3264705882352941,
+     "cardiovascular": -0.2676470588235294,
+     "pulmonary": 0.1264705882352941,
+     "renal": -0.7029411764705882,
+     "gastrointestinal": 0.40294117647058825,
+     "neurologic": 0.3029411764705882,
+     "ocular": 0.21176470588235294,
+     "dermatologic": 0.18235294117647058,
+     "metabolic_endocrine": 0.011764705882352941,
+     "musculoskeletal": 0.29705882352941176,
+     "infectious_immune": -0.4294117647058823,
+     "otologic": -0.18823529411764706,
+     "constitutional": -0.22941176470588234
     },
     "global_baseline": {
      "haematologic": -0.38529411764705884,
@@ -426,12 +426,12 @@
      "otologic": 0.21764705882352942,
      "constitutional": 0.4176470588235294
     },
-    "model_mean": 0.05378151260504201,
+    "model_mean": 0.09663865546218486,
     "model_ci": [
-     -0.11493697478991596,
-     0.2176680672268906
+     -0.06390756302521007,
+     0.26324579831932776
     ],
-    "mech_baseline_mean": -0.1560924369747899,
+    "mech_baseline_mean": -0.03130252100840336,
     "global_baseline_mean": 0.02626050420168067,
     "n_folds_contributing": 16
    }
@@ -439,9 +439,9 @@
  },
  "gate": {
   "metric": "macro_auc[leave_one_agent_out] minus best baseline",
-  "macro_auc": 0.8270027529843921,
-  "best_baseline": 0.8437152401996153,
-  "delta_vs_best_baseline": -0.016712487215223226,
+  "macro_auc": 0.8036228491982073,
+  "best_baseline": 0.8458359638047138,
+  "delta_vs_best_baseline": -0.04221311460650656,
   "pass": false,
   "absolute_auc_gate_note": "The original absolute-AUC gate of 0.65 is unfireable: a constant global-axis-mean predictor scores about 0.84 on this metric. Reported for the record, not used."
  }

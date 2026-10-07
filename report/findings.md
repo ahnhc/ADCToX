@@ -38,16 +38,65 @@ base-rate baseline on any of them.** Deltas are paired against the strongest bas
 that split, because the model's own interval excluding zero would only say the target
 ordering is not random.
 
+<!-- generated: results-table -->
+
 | evaluation | model | best baseline | delta | 95% CI | |
 |---|---|---|---|---|---|
-| within-arm ranking, leave-one-agent-out (16) | 0.827 | 0.844 | -0.012 | [-0.031, +0.005] | includes 0 |
-| within-arm ranking, leave-one-mechanism-out (2) | 0.854 | 0.871 | **-0.018** | [-0.027, -0.009] | excludes 0, negative |
-| within-arm ranking, leave-one-family-out (4) | 0.770 | 0.853 | **-0.080** | [-0.124, -0.035] | excludes 0, negative |
-| across-agent per-axis Spearman | +0.054 | +0.026 | — | [-0.115, +0.218] | includes 0; threshold was +0.3 |
-| dose-modification ordering agreement | +0.188 | +0.153 | +0.035 | [-0.001, +0.069] | includes 0 |
+| within-arm ranking, leave-one-agent-out (16) | 0.8036 | 0.8458 | **-0.0422** | [-0.0650, -0.0221] | excludes 0 |
+| within-arm ranking, leave-one-mechanism-out (2) | 0.8523 | 0.8715 | **-0.0191** | [-0.0287, -0.0096] | excludes 0 |
+| within-arm ranking, leave-one-family-out (4) | 0.7725 | 0.8525 | **-0.0783** | [-0.1223, -0.0317] | excludes 0 |
+| across-agent per-axis Spearman | +0.0966 | +0.0263 | -- | [-0.0639, +0.2632] | includes 0 |
+| dose-modification ordering (13) | +0.1882 | +0.1533 | +0.0348 | [-0.0007, +0.0693] | includes 0 |
+
+<!-- /generated: results-table -->
 
 The best within-arm predictor of the three is the global axis mean, which carries no
 design information at all.
+
+### The folds themselves were wrong, and fixing them made the verdict stronger
+
+One line in `splits.py` carried two bugs that pulled these numbers in opposite directions,
+while the module's own docstring asserted the behaviour only one of the three splits
+implemented.
+
+*Leakage.* The family and mechanism splits dropped held-out arms but not held-out trials.
+NCT03529110 is a T-DXd vs T-DM1 head-to-head -- named in that docstring as the reason whole
+trials have to go -- and it leaked in both: holding out one agent left its comparator arm
+from the same trial in training, so the held-out arm inherited a trial-level random
+intercept fitted from its own comparator. Counting only the 157 arms that carry a trial
+effect, leave-one-agent-out leaked 0 trials and the other two leaked 2 each, all of them
+that trial.
+
+*Discarding.* Leave-one-agent-out masked on the raw trial index, and arms from single-arm
+trials were collapsed onto a shared sentinel index. So holding out any agent with a
+single-arm trial matched the sentinel and dropped all 128 of those arms -- belonging to
+unrelated agents, whose only shared property is carrying no trial effect. Folds trained on
+roughly half the arms they should have: 125 of 285 for T-DM1 against 236 after the fix,
+1,980 arm-folds discarded across the sixteen folds.
+
+What the correction did:
+
+| evaluation | before | after |
+|---|---|---|
+| leave-one-agent-out | -0.0120 [-0.0307, +0.0052], **includes 0** | -0.0422 [-0.0650, -0.0221], **excludes 0** |
+| leave-one-mechanism-out | -0.0177 [-0.0265, -0.0090] | -0.0191 [-0.0287, -0.0096] |
+| leave-one-family-out | -0.0805 [-0.1240, -0.0345] | -0.0783 [-0.1223, -0.0317] |
+| across-agent Spearman | +0.0538 [-0.1149, +0.2177] | +0.0966 [-0.0639, +0.2632] |
+
+**The headline conclusion got stronger, not weaker.** Leave-one-agent-out was the one split
+where the deficit could not be distinguished from zero, and the model card said so. With
+correct folds it excludes zero, so the model now loses to a base-rate baseline on all three
+splits rather than two. Trastuzumab emtansine -- the agent on the far side of the leaking
+head-to-head -- moves from a -0.025 fold delta to -0.156, which is the leak made visible.
+
+The across-agent rank correlation moved the other way, nearly doubling to +0.0966, still
+with an interval spanning zero. Both directions are consistent with one mechanism: the
+extra training data helps a base-rate baseline, which converges quickly, more than it helps
+a 184-parameter model, so the within-arm deficit widens; while the model's ability to order
+*agents* within an axis -- which needs agents, not cells -- improves.
+
+That last paragraph is an interpretation and is marked as one. A controlled single-fold
+comparison of the two split constructions is the measurement that would settle it.
 
 The dose-modification comparison was the one favourable result before the fix
 (+0.039 [+0.003, +0.073]) and lost its significance after it (+0.035 [-0.001, +0.069]).
@@ -83,8 +132,9 @@ That task ranks 14 axes *inside one arm*, and axis base rates are consistent eno
 arms that one fixed ordering is near-optimal everywhere. A model that knows those base
 rates and then perturbs them with design effects has little to gain and much to lose. The
 across-agent comparison is the one that can show design signal, since a constant predictor
-has no discriminative power there by construction -- and it comes back at +0.054 with an
-interval spanning zero, against a threshold of +0.3 declared before the run.
+has no discriminative power there by construction -- and it comes back at +0.0966
+[-0.0639, +0.2632], an interval spanning zero, against a threshold of +0.3 declared
+before the run.
 
 Per-axis, that mean hides the structure that matters. Neurologic (+0.61), musculoskeletal
 (+0.51) and gastrointestinal (+0.49) correlate positively; renal (-0.57), otologic (-0.37)
@@ -196,19 +246,19 @@ failure of both family parameterizations.
 ## 5. What the model does support
 
 <!-- generated: fitted-parameters -->
-`tau_mech` 0.5922 [0.4929, 0.7052] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
+`tau_mech` 0.5928 [0.4928, 0.7008] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
 
-`sigma_agent` 0.1562 [0.0952, 0.2368] -- small, so the design slots account for much of the between-agent variation.
+`sigma_agent` 0.1590 [0.0980, 0.2402] -- small, so the design slots account for much of the between-agent variation.
 
-`b_combo` +0.1957 [+0.1685, +0.2201] -- combination arms do report higher rates.
+`b_combo` +0.1950 [+0.1691, +0.2213] -- combination arms do report higher rates.
 
-`b_log_n` +0.0393 [+0.0294, +0.0496] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
+`b_log_n` +0.0393 [+0.0288, +0.0491] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
 
-`b_dar` +0.0312 [-0.0203, +0.0823] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
+`b_dar` +0.0319 [-0.0175, +0.0840] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
 
-`b_thresh` +0.0330 [+0.0275, +0.0379] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
+`b_thresh` +0.0327 [+0.0272, +0.0375] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
 
-Convergence stands in for R-hat: the model is refit under a second seed and posterior means compared. The worst standardized gap is 0.1136 pooled standard deviations, on `b_thresh`, against a threshold of 0.3 -- acceptable.
+Convergence stands in for R-hat: the model is refit under a second seed and posterior means compared. The worst standardized gap is 0.1376 pooled standard deviations, on `b_thresh`, against a threshold of 0.3 -- acceptable.
 <!-- /generated: fitted-parameters -->
 
 Qualitatively the corpus is sound. Baseline-centered mechanism fingerprints reproduce the

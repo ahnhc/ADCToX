@@ -35,10 +35,10 @@ coefficient is therefore `n_agents x n_axes`:
 
 | evaluation | model | best baseline | delta | 95% CI | |
 |---|---|---|---|---|---|
-| within-arm ranking, leave-one-agent-out (16) | 0.8270 | 0.8437 | -0.0120 | [-0.0307, +0.0052] | includes 0 |
-| within-arm ranking, leave-one-mechanism-out (2) | 0.8537 | 0.8715 | **-0.0177** | [-0.0265, -0.0090] | excludes 0 |
-| within-arm ranking, leave-one-family-out (4) | 0.7704 | 0.8525 | **-0.0805** | [-0.1240, -0.0345] | excludes 0 |
-| across-agent per-axis Spearman | +0.0538 | +0.0263 | -- | [-0.1149, +0.2177] | includes 0 |
+| within-arm ranking, leave-one-agent-out (16) | 0.8036 | 0.8458 | **-0.0422** | [-0.0650, -0.0221] | excludes 0 |
+| within-arm ranking, leave-one-mechanism-out (2) | 0.8523 | 0.8715 | **-0.0191** | [-0.0287, -0.0096] | excludes 0 |
+| within-arm ranking, leave-one-family-out (4) | 0.7725 | 0.8525 | **-0.0783** | [-0.1223, -0.0317] | excludes 0 |
+| across-agent per-axis Spearman | +0.0966 | +0.0263 | -- | [-0.0639, +0.2632] | includes 0 |
 | dose-modification ordering (13) | +0.1882 | +0.1533 | +0.0348 | [-0.0007, +0.0693] | includes 0 |
 
 <!-- /generated: results-table -->
@@ -132,19 +132,19 @@ The resolution that would help recedes as fast as it is approached.
 ## Calibration and uncertainty
 
 <!-- generated: fitted-parameters -->
-`tau_mech` 0.5922 [0.4929, 0.7052] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
+`tau_mech` 0.5928 [0.4928, 0.7008] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
 
-`sigma_agent` 0.1562 [0.0952, 0.2368] -- small, so the design slots account for much of the between-agent variation.
+`sigma_agent` 0.1590 [0.0980, 0.2402] -- small, so the design slots account for much of the between-agent variation.
 
-`b_combo` +0.1957 [+0.1685, +0.2201] -- combination arms do report higher rates.
+`b_combo` +0.1950 [+0.1691, +0.2213] -- combination arms do report higher rates.
 
-`b_log_n` +0.0393 [+0.0294, +0.0496] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
+`b_log_n` +0.0393 [+0.0288, +0.0491] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
 
-`b_dar` +0.0312 [-0.0203, +0.0823] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
+`b_dar` +0.0319 [-0.0175, +0.0840] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
 
-`b_thresh` +0.0330 [+0.0275, +0.0379] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
+`b_thresh` +0.0327 [+0.0272, +0.0375] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
 
-Convergence stands in for R-hat: the model is refit under a second seed and posterior means compared. The worst standardized gap is 0.1136 pooled standard deviations, on `b_thresh`, against a threshold of 0.3 -- acceptable.
+Convergence stands in for R-hat: the model is refit under a second seed and posterior means compared. The worst standardized gap is 0.1376 pooled standard deviations, on `b_thresh`, against a threshold of 0.3 -- acceptable.
 <!-- /generated: fitted-parameters -->
 
 

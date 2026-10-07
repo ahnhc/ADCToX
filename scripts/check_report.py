@@ -25,6 +25,14 @@ about 16%. Three-decimal figures stay weak (~64%) because the value pool is dens
 precision -- a membership test cannot fix that, so the residual rate is printed on every
 run rather than left implicit. Quote a figure to four decimals where traceability is the
 point.
+
+One thing this check cannot do, and it is worth naming rather than discovering later:
+`artifacts/superseded/` keeps results a later fix overturned, so the report can quote them
+in before/after comparisons and have them trace. That also means a *stale* figure quoted as
+current will pass, because it genuinely exists in a record. Whether a number is being
+quoted as history or as the present is a semantic judgement no membership test makes. It
+has already happened once: a sentence reading "it comes back at +0.054" kept passing after
+the live value moved to +0.0966, because the superseded record held the old one.
 """
 
 from __future__ import annotations
@@ -66,7 +74,11 @@ def artefact_values(dirs: list[Path]) -> set[str]:
                 out.add(f"{round(float(node) * 100, places):.{places}f}")
 
     for d in dirs:
-        for path in sorted(d.glob("*.json")):
+        # `artifacts/superseded/` holds results a later fix overturned. They are scanned
+        # because the report quotes them deliberately, in before/after comparisons, and a
+        # superseded number should trace to a record rather than to an allowlist entry
+        # saying a human checked it once.
+        for path in sorted([*d.glob("*.json"), *d.glob("superseded/*.json")]):
             try:
                 walk(json.loads(path.read_text(encoding="utf-8")))
             except (OSError, json.JSONDecodeError):
@@ -123,7 +135,10 @@ def main() -> int:
 
     values = artefact_values(args.artifacts)
     allow = load_allowlist(args.allowlist)
-    n_files = sum(len(list(d.glob("*.json"))) for d in args.artifacts)
+    n_files = sum(
+        len(list(d.glob("*.json"))) + len(list(d.glob("superseded/*.json")))
+        for d in args.artifacts
+    )
     print(f"{len(values):,} numeric values across {n_files} artefacts in "
           f"{', '.join(str(d) for d in args.artifacts)}; {len(allow)} allowlisted")
     rates = {d: measured_false_pass_rate(values, allow, d) for d in (2, 3, 4)}
