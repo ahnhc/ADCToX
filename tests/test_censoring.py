@@ -96,13 +96,51 @@ def test_covariates_are_centered_not_zeroed() -> None:
 
 
 def test_censored_log_probability_matches_scipy() -> None:
-    """The jax incomplete-beta implementation must agree with an independent binomial CDF."""
+    """The jax incomplete-beta implementation must agree with an independent binomial CDF.
+
+    Swept rather than spot-checked. 471 of 3,990 cells go through this term, it is the
+    project's most consequential modelling choice, and the earlier version checked four
+    combinations all in the same benign corner -- small cut, small p. The boundaries are
+    where an incomplete-beta call goes wrong: cut at 1, cut at n, cut above n, and p near
+    1 where the surviving probability underflows.
+    """
     from adctox.model.forward import _log_binom_cdf_below
 
-    for n, cut, p in [(100, 5, 0.02), (50, 3, 0.10), (200, 10, 0.03), (30, 2, 0.25)]:
-        got = float(_log_binom_cdf_below(np.float32(cut), np.float32(n), np.float32(p)))
-        want = float(np.log(binom.cdf(cut - 1, n, p)))
-        assert abs(got - want) < 1e-3, (n, cut, p, got, want)
+    floor = float(np.log(1e-30))
+    checked = 0
+    for n in (10, 50, 293, 1000):
+        for cut in (1, 2, 5, n // 2, n, n + 5):
+            for p in (0.001, 0.05, 0.5, 0.95):
+                got = float(
+                    _log_binom_cdf_below(
+                        np.float32(cut), np.float32(n), np.float32(p)
+                    )
+                )
+                clamped = min(max(cut, 1), n)
+                want = max(float(binom.logcdf(clamped - 1, n, p)), floor)
+                assert abs(got - want) < 2e-3, (n, cut, p, got, want)
+                checked += 1
+    assert checked == 96
+
+
+def test_censored_probability_is_monotone_and_finite_in_p() -> None:
+    """P(X < cut) must fall as p rises, with no NaN anywhere in between.
+
+    A non-monotone or non-finite region would not announce itself: NUTS would simply
+    wander into it and the chain would diverge or stall, and the cause would look like a
+    convergence problem rather than an arithmetic one.
+    """
+    from adctox.model.forward import _log_binom_cdf_below
+
+    for n, cut in ((293.0, 15.0), (50.0, 1.0), (1000.0, 999.0)):
+        vals = [
+            float(_log_binom_cdf_below(np.float32(cut), np.float32(n), np.float32(p)))
+            for p in np.linspace(0.001, 0.999, 60)
+        ]
+        assert all(np.isfinite(vals)), (n, cut)
+        assert all(a >= b - 1e-6 for a, b in zip(vals, vals[1:])), (
+            f"n={n} cut={cut}: log P(X < cut) is not monotone decreasing in p"
+        )
 
 
 def test_censoring_degrades_gracefully_above_denominator() -> None:
