@@ -72,9 +72,20 @@ class Posterior:
             dar_mean=np.array([self.dar_mean]),
         )
 
+    # Bumped whenever the saved field set changes, so a stale artefact fails with a
+    # sentence rather than a KeyError from deep inside numpy.
+    FORMAT = 2
+
     @classmethod
     def load(cls, path: Path) -> "Posterior":
         z = np.load(path, allow_pickle=False)
+        missing = {"family_axis", "families"} - set(z.files)
+        if missing:
+            raise ValueError(
+                f"{path} was written by an older format and is missing {sorted(missing)}. "
+                "Regenerate it with `make forward` or `python scripts/propose_demo.py`; "
+                "a posterior must not be mixed with a model it was not fitted under."
+            )
         return cls(
             mu_axis=z["mu_axis"], mech_axis=z["mech_axis"],
             family_axis=z["family_axis"], cleav_axis=z["cleav_axis"],

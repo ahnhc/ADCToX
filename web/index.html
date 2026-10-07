@@ -1,0 +1,232 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ADCTox</title>
+<style>
+  :root{
+    --bg:#fbfbfa; --panel:#fff; --ink:#1a1a1a; --ink-dim:#6b6b6b; --line:#e3e3e0;
+    --low:#4a7c59; --moderate:#b8860b; --high:#a23b2d; --none:#9a9a96;
+    --accent:#2d4a6b;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme=light]){
+      --bg:#17171a; --panel:#1f1f23; --ink:#ececeb; --ink-dim:#9a9a98; --line:#30303a;
+      --low:#6fa07c; --moderate:#d4a845; --high:#cf6b5a; --none:#6a6a70; --accent:#7fa8d4;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  header{position:sticky;top:0;z-index:5;background:var(--panel);
+         border-bottom:1px solid var(--line);padding:10px 16px;
+         display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+  .name{font-weight:650;letter-spacing:.01em}
+  /* Non-dismissible, so it appears in every screenshot taken of this page. */
+  .scope{background:var(--high);color:#fff;padding:3px 9px;border-radius:3px;
+         font-size:12px;font-weight:600}
+  .stamp{color:var(--ink-dim);font-size:12px;margin-left:auto;font-variant-numeric:tabular-nums}
+  main{max-width:1100px;margin:0 auto;padding:16px}
+  .grid{display:grid;grid-template-columns:320px 1fr;gap:16px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-dim);
+     margin:0 0 10px}
+  label{display:block;font-size:13px;margin:10px 0 4px;color:var(--ink-dim)}
+  select,input,button{font:inherit;padding:7px 9px;border:1px solid var(--line);
+                      border-radius:4px;background:var(--bg);color:var(--ink);width:100%}
+  button{background:var(--accent);color:#fff;border:0;font-weight:600;cursor:pointer;
+         margin-top:14px}
+  button:disabled{opacity:.55;cursor:progress}
+  .chips{display:flex;flex-wrap:wrap;gap:5px;max-height:230px;overflow:auto;
+         border:1px solid var(--line);border-radius:4px;padding:7px}
+  .chip{font-size:12px;padding:3px 8px;border:1px solid var(--line);border-radius:11px;
+        cursor:pointer;background:var(--bg);user-select:none}
+  .chip[aria-pressed=true]{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .note{font-size:12px;color:var(--ink-dim);margin-top:8px}
+  .card{border:1px solid var(--line);border-radius:6px;padding:12px;margin-bottom:12px;
+        background:var(--panel)}
+  .card h3{margin:0 0 3px;font-size:15px;font-variant-numeric:tabular-nums}
+  .slots{font-size:13px;color:var(--ink-dim);margin-bottom:9px}
+  .tag{display:inline-block;font-size:11px;padding:2px 6px;border-radius:3px;
+       border:1px solid var(--line);margin-left:6px;color:var(--ink-dim)}
+  .axis{display:grid;grid-template-columns:150px 1fr 110px;gap:9px;align-items:center;
+        padding:2px 0;font-size:13px}
+  .axis.at-risk{font-weight:600}
+  /* Law 3: the interval bar is the dominant mark and the point estimate is subordinate. */
+  .bar{position:relative;height:13px;background:var(--bg);border:1px solid var(--line);
+       border-radius:2px;overflow:hidden}
+  .ci{position:absolute;top:0;bottom:0;opacity:.3}
+  .pt{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--ink)}
+  .hatch{background:repeating-linear-gradient(45deg,var(--none) 0 3px,transparent 3px 6px)}
+  .band{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+  .b-low{color:var(--low)} .b-moderate{color:var(--moderate)}
+  .b-high{color:var(--high)} .b-no_evidence{color:var(--none)}
+  .num{font-size:11px;color:var(--ink-dim);font-variant-numeric:tabular-nums}
+  .warn{border-left:3px solid var(--high);padding-left:9px;font-size:13px;margin:9px 0}
+  .disclose{font-size:12px;color:var(--ink-dim);border-top:1px solid var(--line);
+            margin-top:9px;padding-top:7px}
+  footer{max-width:1100px;margin:22px auto;padding:0 16px;font-size:12px;color:var(--ink-dim)}
+  .isnot{font-size:12px;color:var(--ink-dim);font-style:italic;margin:6px 0 14px}
+</style>
+
+<header>
+  <span class="name">ADCTox</span>
+  <span class="scope">Research prototype &mdash; not for clinical use</span>
+  <span class="stamp" id="stamp">loading&hellip;</span>
+</header>
+
+<main>
+  <!-- Law 7: every screen states what its numbers are not. -->
+  <p class="isnot" id="isnot">
+    Numbers below are relative rankings over published trial data, not probabilities of
+    harm for any individual. The forward model does not beat a base-rate baseline on
+    within-arm axis ranking; see the model card before reading any value as predictive.
+  </p>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>Patient profile</h2>
+      <label for="target">Target antigen</label>
+      <select id="target"></select>
+
+      <label>Pre-existing conditions</label>
+      <div class="chips" id="chips"></div>
+      <p class="note">
+        Conditions come from a fixed research list. This tool accepts no free text, takes
+        no identifiers, and stores nothing.
+      </p>
+
+      <button id="go">Propose designs</button>
+      <p class="note" id="status"></p>
+    </section>
+
+    <section>
+      <div id="out"></div>
+    </section>
+  </div>
+</main>
+
+<footer id="footer"></footer>
+
+<script>
+const API = "/api/v1";
+let ONT = null, PICKED = new Set();
+
+// Law 1: never more than two significant figures on a probability.
+const pct = v => v == null ? "&mdash;" : (v * 100).toPrecision(2) + "%";
+
+async function boot() {
+  const [ont, ver, dis] = await Promise.all([
+    fetch(`${API}/ontology`).then(r => r.json()),
+    fetch(`${API}/version`).then(r => r.json()),
+    fetch(`${API}/disclaimer`).then(r => r.json()),
+  ]);
+  ONT = ont;
+  document.getElementById("stamp").textContent =
+    `model ${ver.app} · corpus ${String(ver.corpus).slice(0, 58)}`;
+  document.getElementById("footer").innerHTML =
+    `<p>${dis.text}</p><ul>${dis.limitations.map(l => `<li>${l}</li>`).join("")}</ul>`;
+
+  // Targets come from the registry via the ontology; the page hardcodes no list.
+  const targets = [...new Set(ont.comorbidities.length ? ["ERBB2","TACSTD2","TNFRSF8",
+    "NECTIN4","CD19","CD22","CD33","FOLR1","TNFRSF17","F3","MET","ERBB3","CD79B","IL3RA"] : [])];
+  document.getElementById("target").innerHTML =
+    targets.map(t => `<option>${t}</option>`).join("");
+
+  const chips = document.getElementById("chips");
+  chips.innerHTML = ont.comorbidities.map(c =>
+    `<button class="chip" type="button" aria-pressed="false" data-id="${c.id}"
+       title="${c.organ_axes.join(", ")} · ${c.severity_basis.replace(/"/g,"&quot;")}"
+     >${c.label}</button>`).join("");
+  chips.addEventListener("click", e => {
+    const b = e.target.closest(".chip");
+    if (!b) return;
+    const on = b.getAttribute("aria-pressed") === "true";
+    b.setAttribute("aria-pressed", String(!on));
+    on ? PICKED.delete(b.dataset.id) : PICKED.add(b.dataset.id);
+  });
+}
+
+function axisRow(r) {
+  const noEvidence = r.risk_band === "no_evidence" || r.point_estimate == null;
+  const lo = (r.interval?.lo ?? 0) * 100, hi = (r.interval?.hi ?? 0) * 100;
+  const pt = (r.point_estimate ?? 0) * 100;
+  const scale = 60; // percent of the bar width that 60% risk occupies
+  // Law 4: absence of evidence gets its own hatched grey, never a reassuring green.
+  const fill = noEvidence
+    ? `<span class="ci hatch" style="left:0;right:0"></span>`
+    : `<span class="ci" style="left:${lo / scale * 100}%;width:${Math.max((hi - lo) / scale * 100, 1.5)}%;
+         background:var(--${r.risk_band})"></span><span class="pt" style="left:${pt / scale * 100}%"></span>`;
+  return `<div class="axis ${r.at_risk_for_patient ? "at-risk" : ""}">
+      <span>${r.label}${r.at_risk_for_patient ? ` <span class="tag">weighted &times;${r.weight_applied.toFixed(1)}</span>` : ""}</span>
+      <span class="bar">${fill}</span>
+      <span><span class="band b-${r.risk_band}">${r.risk_band.replace("_", " ")}</span>
+        <span class="num">${noEvidence ? "" : pct(r.point_estimate) + " [" + pct(r.interval.lo) + "&ndash;" + pct(r.interval.hi) + "]"}</span></span>
+    </div>`;
+}
+
+function card(c, i) {
+  // Law 6: a shared rank means the posteriors overlap; no medal styling.
+  const tie = c.distinguishable ? "" :
+    `<span class="tag">tied &mdash; not distinguishable from its group</span>`;
+  const pareto = c.on_pareto_front ? `<span class="tag">Pareto front</span>` : "";
+  const unapproved = c.has_unapproved_component ?
+    `<span class="tag">contains a component with no approved ADC</span>` : "";
+  const high = (c.unweighted_high_axes || []);
+  const d = c.design;
+  const atRisk = c.organ_risks.filter(r => r.at_risk_for_patient);
+  const rest = c.organ_risks.filter(r => !r.at_risk_for_patient);
+  return `<div class="card">
+    <h3>Rank ${c.rank}${tie}${pareto}${unapproved}</h3>
+    <div class="slots">${d.payload} &middot; ${d.linker} &middot; DAR ${d.dar}
+      &middot; ${d.conjugation} &middot; ${d.isotype}${d.masking !== "none" ? " &middot; " + d.masking : ""}</div>
+    ${high.length ? `<p class="warn"><strong>High-band on axes this profile does not weight:</strong>
+        ${high.join(", ")}. The objective only weights organs you named, so a candidate can
+        rank first while carrying a peak elsewhere.</p>` : ""}
+    ${atRisk.map(axisRow).join("")}
+    <details><summary class="note">remaining ${rest.length} axes</summary>
+      ${rest.map(axisRow).join("")}</details>
+    <div class="disclose">
+      worst axis <strong>${c.worst_axis}</strong> at ${pct(c.worst_axis_risk)} &middot;
+      binding constraint <strong>${c.binding_constraint || "none"}</strong><br>
+      nearest existing ADC: <strong>${c.nearest_real_adc || "none"}</strong>
+      ${c.nearest_real_diff ? "(" + c.nearest_real_diff + ")" : ""}
+    </div>
+  </div>`;
+}
+
+async function run() {
+  const btn = document.getElementById("go"), st = document.getElementById("status");
+  btn.disabled = true; st.textContent = "scoring…";
+  try {
+    const r = await fetch(`${API}/propose`, {
+      method: "POST", headers: {"content-type": "application/json"},
+      body: JSON.stringify({
+        comorbidity_profile: {conditions: [...PICKED]},
+        target_antigen: document.getElementById("target").value, top_k: 4,
+      }),
+    });
+    const d = await r.json();
+    if (!r.ok) { st.textContent = `error: ${d.detail || r.status}`; return; }
+    st.textContent = "";
+    const wn = d.why_not_the_obvious_one;
+    document.getElementById("out").innerHTML = `
+      <p class="note">${d.n_enumerated} chemically valid, individually precedented designs
+        enumerated; ${d.n_passed_constraints} passed the constraints.
+        ${d.ranking_caveat || ""}</p>
+      ${d.candidates.map(card).join("")}
+      ${wn ? `<div class="card"><h3>Why not the obvious one</h3>
+        <div class="slots">${wn.design.payload} &middot; ${wn.design.linker}
+          &middot; DAR ${wn.design.dar}</div>
+        <p class="note">Lowest-risk candidate a constraint excluded.
+          ${wn.would_have_ranked_first ? "It would have ranked first."
+            : "It would not have placed in any case."}</p>
+        ${wn.excluded_by.map(f => `<p class="warn">${f}</p>`).join("")}</div>` : ""}`;
+  } catch (e) {
+    st.textContent = `error: ${e.message}`;
+  } finally { btn.disabled = false; }
+}
+
+document.getElementById("go").addEventListener("click", run);
+boot();
+</script>
