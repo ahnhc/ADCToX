@@ -30,6 +30,9 @@ END = "<!-- /generated: fitted-parameters -->"
 # its six figures were stale after one -- so it is generated too.
 CENS_BEGIN = "<!-- generated: censoring-sensitivity -->"
 CENS_END = "<!-- /generated: censoring-sensitivity -->"
+ENR_BEGIN = "<!-- generated: exclusion-enrichment -->"
+ENR_END = "<!-- /generated: exclusion-enrichment -->"
+
 HFN_BEGIN = "<!-- generated: hard-flag-necessity -->"
 HFN_END = "<!-- /generated: hard-flag-necessity -->"
 
@@ -203,6 +206,83 @@ def build_results_block(metrics: dict, dose: dict | None) -> str | None:
     return "\n".join(out)
 
 
+def build_enrichment_block(doc: dict) -> str | None:
+    """The exclusion-criteria enrichment table, with significance marked.
+
+    Generated because the hand-written version gave a 13.6x ratio resting on seven trials
+    the same visual weight as one resting on six hundred, and because its boilerplate
+    sentence misreported which organs are flat.
+    """
+    import sys
+    from pathlib import Path as _P
+
+    sys.path.insert(0, str(_P(__file__).resolve().parents[1] / "src"))
+    from adctox.comorbidity.exclusion_prior import _bh_critical_p
+
+    rows = doc.get("by_mechanism") or []
+    if not rows:
+        return None
+    crit = _bh_critical_p([c.get("p") for r in rows for c in r["cells"]])
+    organs = ["pulmonary", "neurologic", "ocular", "hepatic"]
+    base = doc.get("base_rate") or {}   # organ -> control rate
+
+    out = [ENR_BEGIN, "", "| payload mechanism | n | " + " | ".join(organs) + " |",
+           "|---|---|" + "---|" * len(organs)]
+    if base:
+        out.append(
+            f"| base rate (oncology) | {doc.get('n_control', 0):,} | "
+            + " | ".join(f"{100 * base[o]:.1f}%" if o in base else "--" for o in organs)
+            + " |"
+        )
+    for r in sorted(rows, key=lambda r: -r.get("n_trials", 0)):
+        cells = {c["organ"]: c for c in r["cells"]}
+        n = r.get("n_trials", 0)
+        vals = []
+        for o in organs:
+            c = cells.get(o)
+            if c is None:
+                vals.append("--")
+                continue
+            ratio = c["odds_ratio"]
+            sig = c.get("p") is not None and c["p"] <= crit
+            txt = f"{ratio:.1f}x"
+            if sig and ratio >= 2.0:
+                txt = f"**{txt}**"
+            elif not sig:
+                txt = f"{txt}&dagger;"
+            vals.append(txt)
+        out.append(f"| {r['mechanism']} | {n:,} | " + " | ".join(vals) + " |")
+    # The daggered cells split into two kinds and the footnote has to say which, because
+    # a null ratio and an underpowered large ratio are not the same failure.
+    big_insig = [
+        (r["mechanism"], c["organ"], c["odds_ratio"], r.get("n_trials", 0))
+        for r in rows for c in r["cells"]
+        if c["odds_ratio"] >= 2.0 and not (c.get("p") is not None and c["p"] <= crit)
+    ]
+    big_txt = ", ".join(
+        f"{m}/{o} at {ratio:.1f}x on {n} trials" for m, o, ratio, n in
+        sorted(big_insig, key=lambda x: -x[2])
+    )
+    out += [
+        "",
+        "Bold is enriched at least 2x **and** significant under Benjamini-Hochberg across "
+        f"all {sum(len(r['cells']) for r in rows)} (mechanism, organ) cells at q=0.05 "
+        f"(critical p = {crit:.2e}). A dagger marks a cell not distinguishable from the "
+        "base rate. For most of them the ratio is simply near 1 and there is nothing to "
+        "distinguish. "
+        + (
+            f"The ones that matter are the large ratios that still fail: {big_txt}. "
+            "Each sits on a mechanism carried by a single drug, so the figure is one "
+            "sponsor's protocol habits rather than a property of the chemistry, and the "
+            "product suppresses it rather than displaying it."
+            if big_insig else
+            "No cell above 2x fails the correction."
+        ),
+        ENR_END,
+    ]
+    return "\n".join(out)
+
+
 def build_hard_flag_block(doc: dict) -> str | None:
     """What the label-rule layer still has to carry, and what it no longer does."""
     rows = doc.get("flags") or []
@@ -332,6 +412,8 @@ def main() -> int:
                     default=Path("artifacts/label_change_eval.json"))
     ap.add_argument("--hard-flags", type=Path,
                     default=Path("artifacts/hard_flag_necessity.json"))
+    ap.add_argument("--enrichment", type=Path,
+                    default=Path("artifacts/exclusion_enrichment_exclusion.json"))
     # Both documents quoted the same parameters and both were stale. The model card was
     # worse off: check_report.py only scanned report/, so its figures were never checked
     # at all.
@@ -352,6 +434,12 @@ def main() -> int:
         if args.dose_mod.exists() else None
     )
     res_block = build_results_block(metrics, dose)
+    enr_block = (
+        build_enrichment_block(
+            json.loads(args.enrichment.read_text(encoding="utf-8"))
+        )
+        if args.enrichment.exists() else None
+    )
     hfn_block = (
         build_hard_flag_block(json.loads(args.hard_flags.read_text(encoding="utf-8")))
         if args.hard_flags.exists() else None
@@ -375,6 +463,7 @@ def main() -> int:
     res_pattern = re.compile(re.escape(RES_BEGIN) + r".*?" + re.escape(RES_END), re.S)
     lce_pattern = re.compile(re.escape(LCE_BEGIN) + r".*?" + re.escape(LCE_END), re.S)
     hfn_pattern = re.compile(re.escape(HFN_BEGIN) + r".*?" + re.escape(HFN_END), re.S)
+    enr_pattern = re.compile(re.escape(ENR_BEGIN) + r".*?" + re.escape(ENR_END), re.S)
     rc = 0
     for doc in args.report:
         text = doc.read_text(encoding="utf-8")
@@ -388,6 +477,16 @@ def main() -> int:
                     text = replaced
                     doc.write_text(text, encoding="utf-8")
                     print(f"{doc}: results table regenerated")
+        if enr_block and enr_pattern.search(text):
+            replaced = enr_pattern.sub(lambda _: enr_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: enrichment block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: enrichment block regenerated")
         if hfn_block and hfn_pattern.search(text):
             replaced = hfn_pattern.sub(lambda _: hfn_block, text)
             if replaced != text:

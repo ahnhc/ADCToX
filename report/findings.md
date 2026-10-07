@@ -346,22 +346,34 @@ What the rules still carry is the informative part: MMAE/dermatologic, MMAF/ocul
 1,281 ADC trials against 2,481 oncology controls, all with eligibility text. Enrichment
 over the control base rate, exclusion-polarity statements only:
 
+<!-- generated: exclusion-enrichment -->
+
 | payload mechanism | n | pulmonary | neurologic | ocular | hepatic |
 |---|---|---|---|---|---|
 | base rate (oncology) | 2,481 | 22.7% | 11.5% | 1.7% | 10.8% |
 | tubulin | 664 | 1.6x | **8.0x** | **17.8x** | 1.9x |
-| topo1 | 406 | **5.8x** | 1.0x | 14.3x | 0.8x |
-| enediyne (calicheamicin) | 180 | 0.4x | 0.5x | 0.2x | **3.8x** |
-| duocarmycin | 7 | 7.5x | 0.5x | 13.6x | 1.9x |
+| topo1 | 406 | **5.8x** | 1.0x&dagger; | **14.3x** | 0.8x&dagger; |
+| dna_cleave | 180 | 0.4x | 0.5x | 0.2x&dagger; | **3.8x** |
+| dna_crosslink | 39 | **2.4x** | **3.5x** | 0.7x&dagger; | **5.2x** |
+| protein_synth | 15 | 3.0x&dagger; | 0.2x&dagger; | 1.9x&dagger; | 0.3x&dagger; |
+| dna_alkyl | 7 | **7.5x** | 0.5x&dagger; | 13.6x&dagger; | 1.9x&dagger; |
+
+Bold is enriched at least 2x **and** significant under Benjamini-Hochberg across all 66 (mechanism, organ) cells at q=0.05 (critical p = 1.82e-02). A dagger marks a cell not distinguishable from the base rate. For most of them the ratio is simply near 1 and there is nothing to distinguish. The ones that matter are the large ratios that still fail: dna_alkyl/ocular at 13.6x on 7 trials, protein_synth/infectious_immune at 5.2x on 15 trials, protein_synth/pulmonary at 3.0x on 15 trials. Each sits on a mechanism carried by a single drug, so the figure is one sponsor's protocol habits rather than a property of the chemistry, and the product suppresses it rather than displaying it.
+<!-- /generated: exclusion-enrichment -->
 
 Polarity separation is essential and was not obvious. Pooling inclusion lab floors with
 explicit exclusions hides the signal: the hepatic base rate falls from 64.2% to 10.8% once
 bilirubin and transaminase floors are removed, and only then does the calicheamicin
 veno-occlusive signal appear at all.
 
-The boilerplate diagnostic names the organs that carry no information: cardiovascular and
-infectious/immune vary only 1.8x across mechanisms, because every oncology protocol has an
-LVEF floor and a hepatitis-B exclusion. Ocular varies 109x and is the most discriminative.
+The boilerplate diagnostic names the organs that carry little information. Measured spread
+across mechanisms, per organ: renal 4.0x, cardiovascular 4.8x, haematologic 4.9x,
+gastrointestinal 8.7x, metabolic 17.6x, pulmonary 19.3x, hepatic 19.6x, infectious/immune
+21.3x, neurologic 32.3x, dermatologic 84.0x, ocular 109.3x. The flat organs are renal,
+cardiovascular and haematologic -- every oncology protocol carries an LVEF floor and a
+marrow-reserve floor. An earlier version of this paragraph named cardiovascular and
+infectious/immune as the boilerplate pair at "1.8x each"; the first was roughly right and
+the second is among the most variable organs in the table.
 
 **This is consistency, not anticipation.** For almost every agent the warning this
 recovers was already in the label at approval. Conflating the two would be the easiest way
