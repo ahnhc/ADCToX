@@ -37,9 +37,19 @@ from .taxonomy import default_taxonomy
 
 CONF = Path(__file__).resolve().parents[2] / "conf"
 
-# Payload -> family, the level nested inside mechanism. Derived from the registry so the
-# two cannot drift apart.
+# Payload -> family, the level nested inside mechanism.
+#
+# Built from the design space first and the registry second. The registry lists only the 18
+# agents that exist, so a design-space payload no agent carries -- exatecan -- got no family
+# from it, and the gap was not inert: /assess reported the design as novelty tier 2, which
+# the documentation says is unsupported, while the enumerator had already admitted it under
+# a Tier-1 gate. The registry still contributes PE38, which is a real agent's payload that
+# the design space deliberately excludes.
 _FAMILY_OF: dict[str, str] = {}
+for _payload, _spec in yaml.safe_load(
+    (CONF / "design_space.yaml").read_text(encoding="utf-8")
+)["payloads"].items():
+    _FAMILY_OF[_payload] = _spec["family"]
 for _spec in yaml.safe_load(
     (CONF / "adc_registry.yaml").read_text(encoding="utf-8")
 )["agents"].values():

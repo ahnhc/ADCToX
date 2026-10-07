@@ -24,18 +24,27 @@ frozen_at: 2026-10-07
 # not a database join, and are used only as an admissibility gate and a tie-break.
 precedent_counts_source: hand_curated_landscape_review
 
+# `family` is declared here, not inferred from conf/adc_registry.yaml, because the registry
+# only lists the 18 agents that exist. A design-space payload no real agent carries -- the
+# only one today is exatecan -- then had no family at all, and the consequences were a
+# contradiction the product stated out loud: the enumerator admitted exatecan designs under
+# its Tier-1 gate while /assess called the same chemistry Tier 2, a tier the documentation
+# says is not supported, and printed a warning naming the empty string as a family.
+# Exatecan is a camptothecin; deruxtecan's payload is an exatecan derivative. The registry
+# remains the cross-check: tests assert the two agree wherever both define a family.
+
 payloads:
-  MMAE:          {mechanism: tubulin,       handle: secondary_amine, ic50_nm: 0.5,  bystander: true,  membrane_permeable: true,  approved_adcs: 5, clinical_adcs: 12}
-  MMAF:          {mechanism: tubulin,       handle: c_terminal_acid, ic50_nm: 2.0,  bystander: false, membrane_permeable: false, approved_adcs: 1, clinical_adcs: 4}
-  DM1:           {mechanism: tubulin,       handle: thiol,           ic50_nm: 0.3,  bystander: false, membrane_permeable: false, approved_adcs: 1, clinical_adcs: 6}
-  DM4:           {mechanism: tubulin,       handle: thiol,           ic50_nm: 0.2,  bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 4}
-  DXd:           {mechanism: topo1,         handle: aminoacetyl,     ic50_nm: 310,  bystander: true,  membrane_permeable: true,  approved_adcs: 2, clinical_adcs: 8}
-  exatecan:      {mechanism: topo1,         handle: aminoacetyl,     ic50_nm: 200,  bystander: true,  membrane_permeable: true,  approved_adcs: 0, clinical_adcs: 5}
-  SN-38:         {mechanism: topo1,         handle: phenol,          ic50_nm: 150,  bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 3}
-  calicheamicin: {mechanism: dna_cleave,    handle: thiol,           ic50_nm: 0.05, bystander: true,  membrane_permeable: true,  approved_adcs: 2, clinical_adcs: 3}
-  SG3199:        {mechanism: dna_crosslink, handle: aniline,         ic50_nm: 0.05, bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 5}
-  DGN549:        {mechanism: dna_crosslink, handle: thiol,           ic50_nm: 0.1,  bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 2}
-  seco-DUBA:     {mechanism: dna_alkyl,     handle: secondary_amine, ic50_nm: 1.0,  bystander: true,  membrane_permeable: true,  approved_adcs: 0, clinical_adcs: 2}
+  MMAE:          {mechanism: tubulin, family: auristatin,       handle: secondary_amine, ic50_nm: 0.5,  bystander: true,  membrane_permeable: true,  approved_adcs: 5, clinical_adcs: 12}
+  MMAF:          {mechanism: tubulin, family: auristatin,       handle: c_terminal_acid, ic50_nm: 2.0,  bystander: false, membrane_permeable: false, approved_adcs: 1, clinical_adcs: 4}
+  DM1:           {mechanism: tubulin, family: maytansinoid,       handle: thiol,           ic50_nm: 0.3,  bystander: false, membrane_permeable: false, approved_adcs: 1, clinical_adcs: 6}
+  DM4:           {mechanism: tubulin, family: maytansinoid,       handle: thiol,           ic50_nm: 0.2,  bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 4}
+  DXd:           {mechanism: topo1, family: camptothecin,         handle: aminoacetyl,     ic50_nm: 310,  bystander: true,  membrane_permeable: true,  approved_adcs: 2, clinical_adcs: 8}
+  exatecan:      {mechanism: topo1, family: camptothecin,         handle: aminoacetyl,     ic50_nm: 200,  bystander: true,  membrane_permeable: true,  approved_adcs: 0, clinical_adcs: 5}
+  SN-38:         {mechanism: topo1, family: camptothecin,         handle: phenol,          ic50_nm: 150,  bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 3}
+  calicheamicin: {mechanism: dna_cleave, family: enediyne,    handle: thiol,           ic50_nm: 0.05, bystander: true,  membrane_permeable: true,  approved_adcs: 2, clinical_adcs: 3}
+  SG3199:        {mechanism: dna_crosslink, family: pbd, handle: aniline,         ic50_nm: 0.05, bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 5}
+  DGN549:        {mechanism: dna_crosslink, family: ign, handle: thiol,           ic50_nm: 0.1,  bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 2}
+  seco-DUBA:     {mechanism: dna_alkyl, family: duocarmycin,     handle: secondary_amine, ic50_nm: 1.0,  bystander: true,  membrane_permeable: true,  approved_adcs: 0, clinical_adcs: 2}
 
 # IC50 values are order-of-magnitude free-payload cytotoxicity against a human tumour
 # line, hand-curated because ChEMBL's coverage of the *conjugates* is good while the free

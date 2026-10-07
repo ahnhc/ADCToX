@@ -27,6 +27,39 @@ ROOT = Path(__file__).resolve().parents[3]
 CONF = ROOT / "conf"
 ARTIFACTS = ROOT / "artifacts"
 
+def _coverage(design, family: str, post) -> dict:
+    """Novelty tier plus what the estimate actually rests on.
+
+    Two distinctions the earlier version collapsed. A payload family absent from the
+    corpus is a real limitation; a known family whose particular molecule has no arm is
+    a different and milder one, and both were previously reported as nothing at all or as
+    an unsupported tier.
+    """
+    refs = _reference_adcs(design.payload, family, design.mechanism)
+    in_corpus = family in post.families
+    same_payload = [r for r in refs if r["relation"] == "same payload"]
+    warnings = []
+    if not in_corpus:
+        warnings.append(
+            f"payload family {family or '(unmapped)'!r} is absent from the training "
+            "corpus; the estimate falls back to its mechanism"
+        )
+    elif not same_payload:
+        warnings.append(
+            f"no agent in the corpus carries {design.payload}; the estimate is the "
+            f"{family} / {design.mechanism} effect, shared with "
+            + ", ".join(r["agent"] for r in refs[:3])
+            + ". The payload level is not identified in this corpus, so two payloads in "
+            "one family receive the same organ profile by construction."
+        )
+    return {
+        "novelty_tier": 1 if in_corpus else 2,
+        "in_distribution": in_corpus,
+        "nearest_reference_adcs": refs,
+        "warnings": warnings,
+    }
+
+
 def _verdict(delta: float | None, ci: list | None) -> str:
     """Read the verdict off the interval, so prose cannot drift from the number."""
     if delta is None or not ci or len(ci) != 2 or ci[0] is None:
@@ -214,6 +247,43 @@ def _posterior() -> Posterior:
             ),
         )
     return Posterior.load(path)
+
+
+@lru_cache(maxsize=1)
+def _registry() -> dict:
+    import yaml
+
+    path = ROOT / "conf" / "adc_registry.yaml"
+    return yaml.safe_load(path.read_text(encoding="utf-8"))["agents"]
+
+
+def _reference_adcs(payload: str, family: str, mechanism: str) -> list[dict]:
+    """Corpus agents that speak to this design, nearest relation first.
+
+    `nearest_reference_adcs` was declared in the schema and returned empty by every code
+    path, so a caller asking what the estimate rests on got an empty list and no way to
+    tell that from "nothing is comparable". It matters most for a payload no agent
+    carries: exatecan's estimate is the camptothecin/topoisomerase-I effect, and the
+    reader should be able to see that no exatecan arm exists.
+    """
+    out = []
+    for name, spec in _registry().items():
+        if spec.get("payload") == payload:
+            rel = "same payload"
+        elif spec.get("payload_family") == family:
+            rel = "same payload family"
+        elif spec.get("mechanism") == mechanism:
+            rel = "same mechanism"
+        else:
+            continue
+        out.append({
+            "agent": name, "relation": rel,
+            "payload": spec.get("payload"), "linker": spec.get("linker"),
+            "dar": spec.get("dar"), "target": spec.get("target"),
+        })
+    order = {"same payload": 0, "same payload family": 1, "same mechanism": 2}
+    out.sort(key=lambda r: (order[r["relation"]], r["agent"]))
+    return out[:6]
 
 
 @lru_cache(maxsize=1)
@@ -529,19 +599,7 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
             "corpus_version": _version_info()["corpus"],
             "organ_risks": organ_risks,
             "comorbidity_resolution": comorb.per_condition,
-            "coverage": {
-                "novelty_tier": 1 if family in post.families else 2,
-                "in_distribution": family in post.families,
-                "nearest_reference_adcs": [],
-                "warnings": (
-                    []
-                    if family in post.families
-                    else [
-                        f"payload family {family!r} is absent from the training corpus; "
-                        "the estimate falls back to its mechanism"
-                    ]
-                ),
-            },
+            "coverage": _coverage(design, family, post),
             "disclaimer": Disclaimer().model_dump(),
             "limitations": LIMITATIONS,
             "interpretation": "relative_ranking_only",
