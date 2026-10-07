@@ -231,7 +231,6 @@ def propose_endpoint(req: ProposeRequest) -> JSONResponse:
             condition_ids=req.comorbidity_profile.condition_ids,
             posterior=_posterior(),
             top_k=req.top_k,
-            include_tier_1_5=req.include_tier_1_5,
         )
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc

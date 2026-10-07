@@ -90,10 +90,15 @@ class DesignSpace:
     ) -> tuple[list[Design], RejectionLog]:
         """All valid designs against one target.
 
-        `tier=1` keeps only components with clinical precedent. Setting
-        `include_unapproved_conjugation` opens the Tier-1.5 extension (engineered
-        cysteine, glycan remodelling, unnatural amino acids), every member of which is
-        flagged zero-approval downstream.
+        `tier=1` keeps only components with clinical precedent, meaning some ADC carrying
+        them reached at least phase 1.
+
+        `include_unapproved_conjugation` is retained for callers that want to relax the
+        conjugation gate specifically, but note that it currently changes nothing: once the
+        Tier-1 gate was corrected from *approved* to *clinical* precedent, engineered
+        cysteine, glycan remodelling and unnatural amino acids all pass it anyway.
+        Measured: both settings return the identical 106 designs for a given target. Such
+        components are flagged `has_unapproved_component` rather than excluded.
         """
         log = RejectionLog()
         out: list[Design] = []

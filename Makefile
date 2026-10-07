@@ -9,9 +9,19 @@ ELIG    := $(RAW)/eligibility/$(DATE)
 PROC    := data/processed
 ART     := artifacts
 
-.PHONY: all env taxonomy corpus eligibility enrichment forward propose test check-report clean
+.PHONY: all env taxonomy corpus eligibility enrichment forward propose test \
+        censoring-sensitivity label-history label-changes label-change-eval \
+        dose-mod dose-mod-eval module-b check-report clean
 
-all: taxonomy corpus forward enrichment propose test
+# `make all` has to produce every figure the report quotes, or the claim that the report
+# is regenerable is false. It previously omitted the whole of Module B and the censoring
+# sensitivity analysis while the report cited both.
+all: taxonomy corpus forward censoring-sensitivity enrichment module-b propose test check-report
+
+# Module B: the dated label-change case series and the dose-modification ordering
+# comparison. Both depend on fetched label data, so the fetches are separate targets --
+# they hit government services and should not re-run on every build.
+module-b: label-changes label-change-eval dose-mod-eval
 
 env:
 	uv venv .venv && uv pip install -e ".[model,api]"
@@ -33,15 +43,37 @@ enrichment:
 	$(PY) scripts/exclusion_enrichment.py --eligibility $(ELIG) --out $(ART) --polarity exclusion
 	$(PY) scripts/exclusion_enrichment.py --eligibility $(ELIG) --out $(ART) --polarity lab_floor
 
+# Two variants, and the comparison between them is the point. `other` carries far more
+# signal and needs the censoring model; `serious` is completely reported, so every missing
+# cell is a true zero and no censoring is involved. If the two disagree on the mechanism
+# profiles, the censoring treatment is doing the work rather than recovering it, and that
+# has to be reported.
 forward: corpus
 	$(PY) scripts/fit_forward.py --processed $(PROC) --out $(ART) --kind other
 	$(PY) scripts/fit_forward.py --processed $(PROC) --out $(ART) --kind serious
+	$(PY) scripts/compare_event_tables.py --out $(ART)
 
 # Sensitivity check for the censoring treatment: refit with missing cells imputed as
 # zeros and show what that does to the threshold coefficient. The censored model is only
 # credible if the naive alternative visibly misbehaves.
 censoring-sensitivity: corpus
 	$(PY) scripts/censoring_sensitivity.py --processed $(PROC) --out $(ART)
+
+# Fetches hit DailyMed and openFDA; kept out of `all` so a rebuild does not re-pull.
+label-history:
+	$(PY) scripts/fetch_label_history.py --out $(RAW)/dailymed/$(DATE)
+
+dose-mod:
+	$(PY) scripts/fetch_dose_mod.py --out $(RAW)/openfda_label/$(DATE)
+
+label-changes:
+	$(PY) scripts/label_change_events.py --raw $(RAW)/dailymed/$(DATE) --out $(ART)
+
+label-change-eval: corpus label-changes
+	$(PY) scripts/label_change_eval.py --processed $(PROC) --out $(ART)
+
+dose-mod-eval: forward
+	$(PY) scripts/dose_mod_eval.py --labels $(RAW)/openfda_label/$(DATE) --out $(ART)
 
 propose:
 	$(PY) scripts/propose_demo.py --out $(ART)

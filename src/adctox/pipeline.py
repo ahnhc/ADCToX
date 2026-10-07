@@ -133,7 +133,6 @@ def propose(
     condition_ids: list[str],
     posterior: Posterior,
     top_k: int = 6,
-    include_tier_1_5: bool = False,
     lam: float = 2.0,
 ) -> dict:
     """The primary product path."""
@@ -143,9 +142,7 @@ def propose(
     engine = ConstraintEngine()
     registry = yaml.safe_load((CONF / "adc_registry.yaml").read_text(encoding="utf-8"))["agents"]
 
-    designs, _rejections = space.enumerate(
-        target_antigen, tier=1, include_unapproved_conjugation=include_tier_1_5
-    )
+    designs, _rejections = space.enumerate(target_antigen, tier=1)
     comorb = resolve_comorbidities(condition_ids)
 
     def evidence_for(mechanism: str, axis: str) -> tuple[int, int]:
@@ -257,6 +254,10 @@ def propose(
                 "binding_constraint": s.binding_constraint,
                 "nearest_real_adc": nearest,
                 "nearest_real_diff": diff,
+                # Every enumerated design is Tier 1 by construction: the enumerator admits
+                # a component only if some ADC carrying it reached at least phase 1, and
+                # only the combination is new. Components with clinical but no *approved*
+                # precedent are flagged rather than excluded.
                 "novelty_tier": 1,
                 "has_unapproved_component": s.design.has_unapproved_component,
             }

@@ -141,7 +141,6 @@ class ProposeRequest(BaseModel):
     comorbidity_profile: ComorbidityProfile
     target_antigen: str = Field(max_length=24, pattern=r"^[A-Za-z0-9\-]+$")
     top_k: int = Field(default=6, ge=1, le=20)
-    include_tier_1_5: bool = False
 
 
 class AssessRequest(BaseModel):

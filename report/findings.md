@@ -204,6 +204,41 @@ boxed warnings unprompted: calicheamicin tops hepatic at +0.70 (veno-occlusive d
 topoisomerase-I payloads top pulmonary and gastrointestinal, tubulin payloads place
 neurologic in their top three.
 
+## 5b. Is the censoring treatment recovering signal or creating it?
+
+This is the project's most consequential modelling choice, so it is tested rather than
+asserted. Three fits of the same model: the censored likelihood; the same cells with
+censored entries imputed as zeros; and the 42-arm subset of studies that report completely,
+where no censoring model is needed at all.
+
+| treatment | `b_thresh` |
+|---|---|
+| censored | +0.0331 [+0.0277, +0.0383] |
+| zero-imputed | +0.0183 [+0.0136, +0.0231] |
+| completely-reported subset only | +0.0417 [-0.7572, +0.8010] |
+
+**The direction was predicted wrongly and the measurement corrected it.** We expected
+zero-imputation to inflate the threshold coefficient, with the correction absorbing an
+artefact. It shrinks it, and the mechanism is clear in hindsight: imputed zeros land in
+exactly the high-threshold trials, dragging their fitted rates down and the coefficient
+with them.
+
+That also overturns an earlier claim of ours. We had written that `b_thresh` including zero
+was evidence the censoring was working; it is the opposite. A trial reporting only above
+5% shows you its high-rate terms, so its *observed* cells are systematically higher. The
+censored likelihood accounts for the cells that are missing; this coefficient absorbs the
+selection on the cells that are present. A non-zero value is expected and necessary.
+
+**The check that actually decides it is the profile comparison, and it passes.** Censored
+full corpus against completely-reported subset, per mechanism: calicheamicin +0.829,
+topoisomerase-I +0.785, tubulin +0.662. The two corpora agree on which organ each payload
+mechanism hits, so the treatment recovers signal that survives in data that never needed
+correcting. Had they disagreed, the project would have been resting on its own correction.
+
+The completely-reported subset is small enough that its own coefficient interval spans
+[-0.76, +0.80], which is why agreement is assessed on the profiles rather than on
+coefficients.
+
 ## 6. The exclusion-criteria signal
 
 1,281 ADC trials against 2,481 oncology controls, all with eligibility text. Enrichment
