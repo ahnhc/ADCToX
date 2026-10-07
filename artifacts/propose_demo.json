@@ -1,5 +1,5 @@
 {
- "proposal_id": "prp_3655fb4a0d85",
+ "proposal_id": "prp_55c3b0b344cc",
  "target_antigen": "ERBB2",
  "n_enumerated": 106,
  "n_passed_constraints": 92,
@@ -87,8 +87,8 @@
       "kind": "credible_90"
      },
      "risk_band": "low",
-     "weight_applied": 2.4,
-     "at_risk_for_patient": true
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
     },
     {
      "organ_axis": "gastrointestinal",
@@ -208,227 +208,13 @@
      "at_risk_for_patient": false
     }
    ],
-   "weighted_risk": 2.1417,
+   "weighted_risk": 2.1031,
    "worst_axis": "ocular",
    "worst_axis_risk": 0.3294,
    "precedent_score": 1.099,
    "binding_constraint": "C2_delivered_dose",
    "nearest_real_adc": "trastuzumab duocarmazine",
    "nearest_real_diff": "DAR 2.8 -> 2.0",
-   "novelty_tier": 1,
-   "has_unapproved_component": true
-  },
-  {
-   "rank": 1,
-   "tie_group": 0,
-   "on_pareto_front": false,
-   "unweighted_high_axes": [
-    "gastrointestinal",
-    "ocular",
-    "constitutional"
-   ],
-   "distinguishable": false,
-   "design": {
-    "target": "ERBB2",
-    "payload": "seco-DUBA",
-    "linker": "vc_PABC",
-    "conjugation": "interchain_cysteine",
-    "dar": 2.0,
-    "isotype": "IgG1",
-    "masking": "none"
-   },
-   "mechanism": "dna_alkyl",
-   "organ_risks": [
-    {
-     "organ_axis": "haematologic",
-     "label": "Haematologic",
-     "point_estimate": 0.1361,
-     "interval": {
-      "lo": 0.0928,
-      "hi": 0.1936,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "hepatic",
-     "label": "Hepatic",
-     "point_estimate": 0.0545,
-     "interval": {
-      "lo": 0.0336,
-      "hi": 0.0809,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "cardiovascular",
-     "label": "Cardiovascular",
-     "point_estimate": 0.0322,
-     "interval": {
-      "lo": 0.014,
-      "hi": 0.0522,
-      "kind": "credible_90"
-     },
-     "risk_band": "low",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "pulmonary",
-     "label": "Pulmonary",
-     "point_estimate": 0.1314,
-     "interval": {
-      "lo": 0.0877,
-      "hi": 0.1902,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "weight_applied": 3.0,
-     "at_risk_for_patient": true
-    },
-    {
-     "organ_axis": "renal",
-     "label": "Renal",
-     "point_estimate": 0.0278,
-     "interval": {
-      "lo": 0.0097,
-      "hi": 0.0487,
-      "kind": "credible_90"
-     },
-     "risk_band": "low",
-     "weight_applied": 2.4,
-     "at_risk_for_patient": true
-    },
-    {
-     "organ_axis": "gastrointestinal",
-     "label": "Gastrointestinal",
-     "point_estimate": 0.2095,
-     "interval": {
-      "lo": 0.147,
-      "hi": 0.2906,
-      "kind": "credible_90"
-     },
-     "risk_band": "high",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "neurologic",
-     "label": "Neurologic",
-     "point_estimate": 0.1005,
-     "interval": {
-      "lo": 0.0653,
-      "hi": 0.1475,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "ocular",
-     "label": "Ocular",
-     "point_estimate": 0.3286,
-     "interval": {
-      "lo": 0.2405,
-      "hi": 0.4201,
-      "kind": "credible_90"
-     },
-     "risk_band": "high",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "dermatologic",
-     "label": "Dermatologic",
-     "point_estimate": 0.1904,
-     "interval": {
-      "lo": 0.1332,
-      "hi": 0.2618,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "metabolic_endocrine",
-     "label": "Metabolic / Endocrine",
-     "point_estimate": 0.1799,
-     "interval": {
-      "lo": 0.1257,
-      "hi": 0.2591,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "musculoskeletal",
-     "label": "Musculoskeletal",
-     "point_estimate": 0.0869,
-     "interval": {
-      "lo": 0.0546,
-      "hi": 0.1296,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "infectious_immune",
-     "label": "Infectious / Immune",
-     "point_estimate": 0.0743,
-     "interval": {
-      "lo": 0.0471,
-      "hi": 0.1118,
-      "kind": "credible_90"
-     },
-     "risk_band": "moderate",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "otologic",
-     "label": "Otologic",
-     "point_estimate": 0.0141,
-     "interval": {
-      "lo": 0.004,
-      "hi": 0.0355,
-      "kind": "credible_90"
-     },
-     "risk_band": "low",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    },
-    {
-     "organ_axis": "constitutional",
-     "label": "Constitutional",
-     "point_estimate": 0.2774,
-     "interval": {
-      "lo": 0.1995,
-      "hi": 0.3643,
-      "kind": "credible_90"
-     },
-     "risk_band": "high",
-     "weight_applied": 1.0,
-     "at_risk_for_patient": false
-    }
-   ],
-   "weighted_risk": 2.1451,
-   "worst_axis": "ocular",
-   "worst_axis_risk": 0.3297,
-   "precedent_score": 1.099,
-   "binding_constraint": "C2_delivered_dose",
-   "nearest_real_adc": "trastuzumab duocarmazine",
-   "nearest_real_diff": "linker val_cit_cleavable -> vc_PABC; DAR 2.8 -> 2.0",
    "novelty_tier": 1,
    "has_unapproved_component": true
   }
@@ -539,7 +325,7 @@
   "hepatic": 1.0,
   "cardiovascular": 1.0,
   "pulmonary": 3.0,
-  "renal": 2.4,
+  "renal": 1.0,
   "gastrointestinal": 1.0,
   "neurologic": 1.0,
   "ocular": 1.0,
@@ -559,15 +345,6 @@
    ],
    "severity": 1.0,
    "severity_basis": "Explicit ILD exclusion; 6.5x enriched for DXd payloads"
-  },
-  {
-   "condition": "ckd_stage_3",
-   "label": "Chronic kidney disease stage 3",
-   "organ_axes": [
-    "renal"
-   ],
-   "severity": 0.7,
-   "severity_basis": "CrCl < 30-60 floors common"
   }
  ],
  "why_not_the_obvious_one": {
@@ -580,11 +357,11 @@
    "isotype": "IgG1",
    "masking": "none"
   },
-  "weighted_risk": 2.669663408005344,
+  "weighted_risk": 2.613701027464306,
   "excluded_by": [
    "C2 delivered dose 0.00645 below the approved-ADC 10th percentile 0.0358"
   ],
   "would_have_ranked_first": false,
-  "best_passing_weighted_risk": 2.1223922763726852
+  "best_passing_weighted_risk": 2.0839200340978388
  }
 }
