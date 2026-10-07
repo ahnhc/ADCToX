@@ -30,7 +30,6 @@ PRE_STAMP = {
     "dose_mod_eval.json",
     "label_change_eval.json",
     "label_change_events.json",
-    "propose_demo.json",
 }
 
 
