@@ -119,16 +119,19 @@ The resolution that would help recedes as fast as it is approached.
 
 ## Calibration and uncertainty
 
-`tau_mech` 0.592 [0.503, 0.711] -- the mechanism x axis interaction is supported by the
-data rather than asserted by the parameter count.
-`sigma_agent` 0.121 [0.076, 0.189] -- small, so the design slots account for much of the
-between-agent variation. That is consistent with the mechanism effects being real while
-still being too coarse for the outliers above.
-`b_dar` +0.038 [−0.004, +0.080] -- includes zero. DAR is an agent-level constant and is
-confounded with agent identity at this corpus size. The pharmacokinetic literature
-supports a DAR effect; this corpus does not resolve one.
-`b_log_n` +0.030 [+0.020, +0.041] -- larger arms report higher rates. An ascertainment
-effect that would have been attributed to the design had it not been controlled.
+<!-- generated: fitted-parameters -->
+`tau_mech` 0.5816 [0.4926, 0.6863] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
+
+`sigma_agent` 0.1582 [0.1041, 0.2346] -- small, so the design slots account for much of the between-agent variation.
+
+`b_combo` +0.1954 [+0.1675, +0.2216] -- combination arms do report higher rates.
+
+`b_log_n` +0.0395 [+0.0301, +0.0481] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
+
+`b_dar` +0.0296 [-0.0226, +0.0827] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
+
+`b_thresh` +0.0330 [+0.0279, +0.0386] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
+<!-- /generated: fitted-parameters -->
 
 Convergence is checked by refitting under a second seed; the worst standardized gap in
 posterior means was 0.239 pooled standard deviations, which is acceptable.

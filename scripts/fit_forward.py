@@ -243,11 +243,16 @@ def main() -> int:
     # differ by much more than a Monte Carlo standard error have not converged.
     print("  seed agreement (|mean_a - mean_b| / pooled sd):")
     worst = 0.0
+    # Recorded, not only printed. The model card quoted this figure from stdout, so it
+    # traced to nothing and would have silently gone stale on the next refit -- the same
+    # gap already found in two other scripts.
+    seed_gaps: dict[str, float] = {}
     for name in ("tau_mech", "tau_cleav", "b_dar", "b_combo", "b_thresh",
                  "b_log_n", "sigma_trial", "sigma_agent"):
         a, b = np.asarray(post[name]), np.asarray(post_b[name])
         sd = np.sqrt(0.5 * (a.var() + b.var())) or 1.0
         z = abs(a.mean() - b.mean()) / sd
+        seed_gaps[name] = float(z)
         worst = max(worst, float(z))
         flag = "  <-- check" if z > 0.3 else ""
         print(f"    {name:12s} {z:.3f}{flag}")
@@ -445,6 +450,12 @@ def main() -> int:
     passed = delta_vs_best > 0
     out = {
         "kind": args.kind, "corpus": data.summary(), "parameters": acct,
+        "seed_agreement": {
+            "by_parameter": seed_gaps,
+            "worst_standardized_gap": float(worst),
+            "threshold": 0.3,
+            "converged": bool(worst <= 0.3),
+        },
         "tau_mech": {"mean": float(tau.mean()),
                      "q05": float(np.percentile(tau, 5)), "q95": float(np.percentile(tau, 95))},
         "tau_family": (

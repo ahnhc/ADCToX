@@ -37,6 +37,14 @@ from pathlib import Path
 
 # Decimals with at least two places: the shape of a measured quantity rather than a count.
 NUMBER = re.compile(r"(?<![\w.])(-?\d+\.\d{2,})(?![\w.])")
+
+# The documents are typeset with a Unicode minus (U+2212), which the pattern above cannot
+# see, so every negative figure was extracted without its sign -- checked as positive and
+# matched against whatever unrelated positive value happened to be in the pool. A second
+# silent false-pass channel alongside the precision downgrade. Normalized before matching;
+# the en dash is left alone because it separates ranges rather than negating anything.
+def _normalize_signs(text: str) -> str:
+    return text.replace("\u2212", "-")
 # Skip fenced code and inline code, which quote commands rather than results.
 FENCE = re.compile(r"```.*?```", re.S)
 INLINE = re.compile(r"`[^`]*`")
@@ -102,7 +110,10 @@ def load_allowlist(path: Path) -> dict[str, str]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("report", type=Path, nargs="?", default=Path("report"))
+    # docs/ is scanned as well. It was not, so every figure in the model card -- which
+    # quotes the same fitted parameters as the report -- went unchecked, and all of them
+    # were stale.
+    ap.add_argument("report", type=Path, nargs="*", default=[Path("report"), Path("docs")])
     # The report draws on both locations: fitted metrics live in artifacts/ and corpus
     # statistics in data/processed/. Scanning only one leaves real figures unexplained.
     ap.add_argument("--artifacts", type=Path, nargs="+",
@@ -125,8 +136,9 @@ def main() -> int:
 
     unexplained: list[tuple[str, int, str]] = []
     checked = 0
-    for doc in sorted(args.report.rglob("*.md")):
-        text = FENCE.sub(" ", doc.read_text(encoding="utf-8"))
+    docs = sorted(d for root in args.report for d in root.rglob("*.md"))
+    for doc in docs:
+        text = _normalize_signs(FENCE.sub(" ", doc.read_text(encoding="utf-8")))
         for lineno, line in enumerate(text.splitlines(), 1):
             line = INLINE.sub(" ", line)
             for m in NUMBER.finditer(line):
@@ -143,7 +155,10 @@ def main() -> int:
                     continue
                 unexplained.append((doc.name, lineno, raw))
 
-    print(f"{checked} decimal figures checked across the report")
+    print(
+        f"{checked} decimal figures checked across {len(docs)} documents in "
+        f"{', '.join(str(d) for d in args.report)}"
+    )
     if not unexplained:
         print("every figure traces to an artefact or the allowlist")
         return 0

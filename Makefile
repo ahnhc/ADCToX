@@ -11,7 +11,7 @@ ART     := artifacts
 
 .PHONY: all env taxonomy corpus eligibility enrichment forward propose test \
         censoring-sensitivity label-history label-changes label-change-eval \
-        dose-mod dose-mod-eval module-b check-report clean
+        dose-mod dose-mod-eval module-b sync-report check-report clean
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
@@ -91,7 +91,13 @@ test:
 
 # Guards against a number being typed into the report by hand and then drifting from the
 # code that produced it.
-check-report:
+# Regenerate the report's fitted-parameter block before checking it, so a refit cannot
+# leave the prose quoting last week's posterior. The report had three stale parameters and
+# quoted one number as both current and pre-fix.
+sync-report:
+	$(PY) scripts/sync_report_numbers.py
+
+check-report: sync-report
 	$(PY) scripts/check_report.py report/
 
 clean:
