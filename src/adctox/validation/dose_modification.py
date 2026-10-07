@@ -185,9 +185,13 @@ def parse_tables(agent: str, tables: list[str]) -> list[DoseModEntry]:
 def axis_severity(entries: list[DoseModEntry]) -> dict[str, int]:
     """Strongest instruction per organ axis.
 
-    Kept for reference, but it is a poor discriminator: approved labels tell you to
-    discontinue for the severe grade of nearly every reaction, so almost every axis
-    collapses to the top of the scale. Use `axis_concern` instead.
+    No call sites. Kept because its failure is why `axis_concern` exists, and that
+    failure is now measured rather than asserted: across 152 parsed entries from the
+    current label snapshot, **9 of 10 axes sit at the ceiling** and the measure resolves
+    only two distinct levels, {3, 4}. It cannot order organs, because approved labels say
+    to discontinue for the severe grade of nearly every reaction. `axis_concern` resolves
+    five levels over the same entries. See tests/test_dose_modification.py, which fails if
+    this stops being true -- at which point this becomes the better measure.
     """
     out: dict[str, int] = {}
     for e in entries:
