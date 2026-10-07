@@ -121,3 +121,41 @@ def test_non_conventional_adc_excluded_from_delivery_terms() -> None:
     arms.loc[0, "conventional_adc"] = False
     with pytest.raises(ValueError, match="no arms survive"):
         build(arms, _obs([("haematologic", "other", 30, 100)]), AXES, kind="other", min_n=1)
+
+
+def test_posterior_round_trips_every_field_load_requires() -> None:
+    """save() and load() must agree on the field set.
+
+    Regression: `save` omitted `families` while `load` required it, so every artefact was
+    unloadable. The format guard turned that into a clear message instead of a KeyError,
+    but a round-trip test is what stops it recurring -- the two methods are edited
+    separately and nothing else couples them.
+    """
+    import tempfile
+    from pathlib import Path as _Path
+
+    from adctox.model.predict import Posterior
+
+    n_draws, n_axes, n_mech, n_fam = 5, 3, 2, 2
+    post = Posterior(
+        mu_axis=np.zeros((n_draws, n_axes)),
+        mech_axis=np.zeros((n_draws, n_mech, n_axes)),
+        family_axis=np.zeros((n_draws, n_fam, n_axes)),
+        cleav_axis=np.zeros((n_draws, n_axes)),
+        b_dar=np.zeros(n_draws), b_combo=np.zeros(n_draws),
+        sigma_agent=np.zeros(n_draws),
+        axes=["hepatic", "renal", "pulmonary"],
+        mechanisms=["tubulin", "topo1"],
+        families=["auristatin", "camptothecin"],
+        dar_mean=4.0, cleavable_mean=0.875,
+    )
+    with tempfile.TemporaryDirectory() as tmp:
+        path = _Path(tmp) / "p.npz"
+        post.save(path)
+        back = Posterior.load(path)
+    assert back.families == post.families
+    assert back.mechanisms == post.mechanisms
+    assert back.axes == post.axes
+    assert back.cleavable_mean == post.cleavable_mean
+    assert back.dar_mean == post.dar_mean
+    assert back.family_axis.shape == post.family_axis.shape

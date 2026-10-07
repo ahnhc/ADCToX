@@ -73,6 +73,7 @@ class Posterior:
             family_axis=self.family_axis, cleav_axis=self.cleav_axis,
             b_dar=self.b_dar, b_combo=self.b_combo, sigma_agent=self.sigma_agent,
             axes=np.array(self.axes), mechanisms=np.array(self.mechanisms),
+            families=np.array(self.families),
             dar_mean=np.array([self.dar_mean]),
             cleavable_mean=np.array([self.cleavable_mean]),
         )
