@@ -172,6 +172,18 @@ def main() -> int:
         import numpy as np
 
         da, db = (np.load(npz[k], allow_pickle=True) for k in ("other", "serious"))
+        # Recorded here so the report's band edges trace to an artefact. They are
+        # measured (15th/60th percentile of non-zero observed rates in each table), and
+        # the gap between the two tables is the reason a band cannot be read across them.
+        band_edges = {
+            k: [float(x) for x in np.load(npz[k], allow_pickle=True)["band_edges"]]
+            for k in ("other", "serious")
+        }
+        print(
+            f"\n    band edges, measured per table: "
+            f"other {band_edges['other'][0]:.4f}/{band_edges['other'][1]:.4f}  "
+            f"serious {band_edges['serious'][0]:.4f}/{band_edges['serious'][1]:.4f}"
+        )
         ma = np.asarray(da["mech_axis"]).mean(axis=0)   # (mech, axis)
         mb = np.asarray(db["mech_axis"]).mean(axis=0)
         mech_a = [str(x) for x in da["mechanisms"]]
@@ -194,6 +206,7 @@ def main() -> int:
                 per_axis[ax] = _spearman(va, vb)
         vals = [v for v in per_mech.values() if v == v]
         prof = {
+            "band_edges": band_edges,
             "boxed_warning_recovery": prof_boxed,
             "per_mechanism_spearman": per_mech,
             "per_axis_spearman": per_axis,
@@ -234,8 +247,15 @@ def main() -> int:
                 f"    -> the serious table ranks the boxed-warning organ higher in "
                 f"{n_better}/{len(boxed_rows)} label-verified pairs"
             )
-        prof_boxed = {"pairs": boxed_rows, "serious_ranks_higher": n_better,
-                      "n_pairs": len(boxed_rows)}
+        # `prof` is assembled above this block, so it has to be updated rather than
+        # relied on to pick these up: the first version printed the table correctly and
+        # wrote the empty initializer to the artefact, which is the exact shape of bug
+        # this project keeps finding -- the screen and the saved record disagreeing.
+        prof["boxed_warning_recovery"] = {
+            "pairs": boxed_rows,
+            "serious_ranks_higher": n_better,
+            "n_pairs": len(boxed_rows),
+        }
 
     # ---- verdict ---------------------------------------------------------------------
     # The verdict rests on the design coefficients and the profile agreement, not on a

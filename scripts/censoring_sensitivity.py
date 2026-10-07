@@ -172,6 +172,7 @@ def main() -> int:
         )
         print(f"\nmechanism-profile agreement, censored vs threshold-0 ({len(shared)} shared)")
         rhos = []
+        rho_by_mech: dict[str, float] = {}
         for m in sorted(shared):
             a = np.array(list(results["censored"]["mech_axis_mean"][m].values()))
             b = np.array(list(results["threshold_0_only"]["mech_axis_mean"][m].values()))
@@ -180,6 +181,7 @@ def main() -> int:
             ra -= ra.mean(); rb -= rb.mean()
             rho = float((ra * rb).sum() / np.sqrt((ra**2).sum() * (rb**2).sum()))
             rhos.append(rho)
+            rho_by_mech[m] = rho
             print(f"  {m:16s} Spearman {rho:+.3f}")
 
         if rhos:
@@ -195,7 +197,10 @@ def main() -> int:
                 f"censored fit should not be relied on."
             )
             results["profile_agreement"] = {
-                "spearman_by_mechanism": {m: None for m in sorted(shared)},
+                # Stored, not None. These were computed, printed and then written as
+                # nulls, so the three figures the report quotes for this check existed
+                # only in stdout and traced to nothing.
+                "spearman_by_mechanism": rho_by_mech,
                 "min_spearman": float(lo),
                 "n_arms_in_complete_subset": int(complete.n_arms),
             }

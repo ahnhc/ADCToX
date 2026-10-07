@@ -239,6 +239,80 @@ The completely-reported subset is small enough that its own coefficient interval
 [-0.76, +0.80], which is why agreement is assessed on the profiles rather than on
 coefficients.
 
+### A free negative control, and a second correction to the same coefficient
+
+The `seriousEvents` table carries **no censoring at all** -- every missing cell there is a
+genuine zero, 0 of 3,990 cells are censored. So a censoring adjustment fitted on that
+table should be zero. It is not:
+
+| table | censored cells | `b_thresh` |
+|---|---|---|
+| otherEvents | 471 of 3,990 | +0.033 [+0.028, +0.039] |
+| seriousEvents | **0** of 3,990 | **+0.131 [+0.113, +0.147]** |
+
+The coefficient is four times *larger* where there is nothing to correct. So the reporting
+threshold is substantially a **trial-level descriptor** -- trials that set a high
+threshold differ in era, phase and sponsor reporting practice -- and only partly a
+truncation correction. It must stay in the model, as a confounder control, and it must not
+be described as the censoring correction. This is the second time this one coefficient's
+interpretation needed fixing; both corrections came from a measurement we had not thought
+to make.
+
+## 5c. The two event tables rank organs differently, and that is a product finding
+
+`otherEvents` and `seriousEvents` are not two views of one outcome. One asks whether this
+chemistry irritates an organ, the other whether it damages it. A grade-1 cough and fatal
+interstitial lung disease are both pulmonary and are not the same event. Across the five
+shared mechanisms the two fits agree on organ ranking at a mean Spearman of only **+0.1455**
+-- and each table turns out to recover a different part of the approved label:
+
+| label warning | rank in common table | rank in serious table |
+|---|---|---|
+| ENHERTU boxed warning: interstitial lung disease (topo-I → pulmonary) | 10 / 14 | **2 / 14** |
+| PADCEV boxed warning: SJS/TEN (tubulin → dermatologic) | 13 / 14 | **1 / 14** |
+| BESPONSA boxed warning: hepatotoxicity/VOD (calicheamicin → hepatic) | 3 / 14 | 3 / 14 |
+| ZYNLONTA: myelosuppression (PBD → haematologic) | **5 / 14** | 10 / 14 |
+
+The pattern is not noise. The **serious** table recovers the *boxed* warnings, which are
+life-threatening events by definition. The **common** table recovers the high-frequency
+sections -- and ZYNLONTA's myelosuppression, a Warning rather than a boxed warning, is
+where the common table is the better of the two. Each is right about its own outcome.
+
+**This is a finding about our product, not about the censoring.** The system ranked designs
+on the common table, so for a patient with pre-existing ILD it placed T-DXd's
+boxed-warning organ in the bottom third of fourteen -- the exact case the system exists to
+handle. We had not noticed because a label-derived hard flag was raising that axis to
+`high` by rule, which masked the underlying term and, worse, made the ILD case study
+circular: a rule encoding "prior ILD plus a deruxtecan payload is high risk" decides the
+very question the case study asks.
+
+So an axis is now banded on the table that matches the question asked about it: an axis the
+patient is vulnerable on is a serious-harm question, the rest are tolerability. The model
+now reaches `high` on pulmonary for an ILD patient **on its own**, and the ranking changes
+behaviour rather than just numbers -- the top candidate for that patient moves off a
+topoisomerase-I payload onto a tubulin one, away from the chemistry that threatens the
+declared organ.
+
+### The band thresholds were asserted, and they were unsafe off their own table
+
+Bands were cut at the constants 0.05 and 0.20. On the common table those sit at the 15th
+and 60th percentiles of non-zero observed rates, so they were a reasonable guess for the
+one table they were chosen against. On the serious table, where rates are an order of
+magnitude smaller, 0.05 sits at the **91st** percentile and 0.20 at the **99.4th**: the
+constants would render 91% of serious cells `low`. For the deruxtecan design above:
+
+| basis | rate | band |
+|---|---|---|
+| serious rate on measured serious edges (0.0075, 0.0250) | 3.1% | **high** |
+| common rate on measured common edges (0.0645, 0.2174) | 14.0% | moderate |
+| serious rate on the old asserted constants (0.05, 0.20) | 3.1% | **low** ← the bug |
+
+The error ran in the most dangerous available direction: reassuring, on the organ named in
+a boxed warning, for the patient most exposed to it. Edges are now the 15th/60th percentile
+of non-zero observed rates in the table each posterior was fitted on, stored in the
+artefact — computed rather than asserted, like the C2 dose floor. `risk_band` requires the
+edges instead of defaulting them, because an implicit scale is exactly how this happened.
+
 ## 6. The exclusion-criteria signal
 
 1,281 ADC trials against 2,481 oncology controls, all with eligibility text. Enrichment

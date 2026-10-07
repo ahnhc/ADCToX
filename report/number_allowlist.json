@@ -7,5 +7,10 @@
   "2.91": "Projected cells-per-parameter ratio at a 32-agent corpus. A projection from the corpus-expansion audit, not a measurement of this repository's data.",
   "2.84": "Projected cells-per-parameter ratio at a 54-agent corpus. Same provenance; the point of the row is that the ratio does not improve.",
   "0.75": "Raw-profile correlation between a free drug and its conjugate's organ profile, measured during the source audit before this repository existed. Reported as a negative result; the centered gap of -0.001 is the operative figure.",
-  "0.748": "AUC of gene-set Jaccard overlap for predicting same-organ disease pairs, measured during the comorbidity-layer audit. Cited to explain why the disease ontology is used instead."
+  "0.748": "AUC of gene-set Jaccard overlap for predicting same-organ disease pairs, measured during the comorbidity-layer audit. Cited to explain why the disease ontology is used instead.",
+  "0.299": "Pre-fix tau_cleav on the full 285-arm corpus, from the centering-bug investigation. Quoted beside the post-fix 0.273 to show the bug's severity scaled inversely with corpus size; the quarantined round is artifacts/forward_other_metrics.json.pre-centering-bug.",
+  "0.9997": "The otologic rate the pre-fix model predicted on a 153-arm corpus against an observed 0.04. The single figure that exposed the centering bug. From the invalidated round, retained deliberately as the worst case the bug produced.",
+  "0.239": "Worst standardized seed gap for the mechanism-only parameterization, from artifacts/cv_mechanism_only.log. A log rather than JSON because the comparison runs are diagnostics for a design decision, not a shipped metric.",
+  "0.577": "Worst standardized seed gap for the nested payload-family parameterization, from artifacts/cv_family_nested.log. The figure that retired the payload-family level; see USE_PAYLOAD_FAMILY in src/adctox/model/forward.py.",
+  "0.214": "3/14, the null probability that a given organ falls in the top three of fourteen axes. Arithmetic from the axis count, declared before any Module B result was computed."
 }

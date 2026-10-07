@@ -66,17 +66,44 @@
   "note": "b_thresh is non-zero in a corpus with no censoring, so the covariate is NOT purely a censoring adjustment: the reporting threshold also tracks trial-level reporting practice. It must stay in the model as a confounder control, and must not be described as the censoring correction."
  },
  "mechanism_profile_agreement": {
+  "band_edges": {
+   "other": [
+    0.06451612903225806,
+    0.21739130434782608
+   ],
+   "serious": [
+    0.007462686567164179,
+    0.025
+   ]
+  },
   "boxed_warning_recovery": {
-   "pairs": {},
-   "serious_ranks_higher": 0,
-   "n_pairs": 0
+   "pairs": {
+    "topo1/pulmonary": {
+     "common_rank": 10,
+     "serious_rank": 2
+    },
+    "tubulin/dermatologic": {
+     "common_rank": 13,
+     "serious_rank": 1
+    },
+    "dna_cleave/hepatic": {
+     "common_rank": 3,
+     "serious_rank": 3
+    },
+    "dna_crosslink/haematologic": {
+     "common_rank": 5,
+     "serious_rank": 10
+    }
+   },
+   "serious_ranks_higher": 2,
+   "n_pairs": 4
   },
   "per_mechanism_spearman": {
-   "dna_alkyl": 0.4461538461538462,
+   "dna_alkyl": 0.4901098901098901,
    "dna_cleave": 0.2879120879120879,
-   "dna_crosslink": 0.15604395604395604,
-   "topo1": -0.10329670329670329,
-   "tubulin": 0.015384615384615385
+   "dna_crosslink": 0.16483516483516483,
+   "topo1": -0.12967032967032968,
+   "tubulin": -0.08571428571428572
   },
   "per_axis_spearman": {
    "haematologic": 0.9,
@@ -91,13 +118,13 @@
    "metabolic_endocrine": -0.4,
    "musculoskeletal": 0.0,
    "infectious_immune": 0.0,
-   "otologic": -0.1,
+   "otologic": -0.3,
    "constitutional": 0.2
   },
-  "mean_per_mechanism": 0.16043956043956045,
+  "mean_per_mechanism": 0.14549450549450546,
   "n_shared_mechanisms": 5
  },
- "verdict": "common and serious events rank organs DIFFERENTLY (mean rho +0.160). This is a product finding, not a censoring failure: a comorbidity declares a serious-risk question, so an axis must be scored on the table that matches the question. The two tables recover different label sections -- see the boxed-warning rows above -- and each is right about its own outcome.",
+ "verdict": "common and serious events rank organs DIFFERENTLY (mean rho +0.145). This is a product finding, not a censoring failure: a comorbidity declares a serious-risk question, so an axis must be scored on the table that matches the question. The two tables recover different label sections -- see the boxed-warning rows above -- and each is right about its own outcome.",
  "tau_mech": {
   "other": 0.5816218256950378,
   "serious": 0.43395301699638367

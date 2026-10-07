@@ -11,6 +11,20 @@ number from the report, looks for it among the values in `artifacts/*.json`, and
 the ones it cannot find. False positives are expected -- a year, a count stated in prose,
 a number from the literature -- so an allowlist file carries the ones a human has
 checked, with a reason. An unexplained number is the failure.
+
+It also measures and prints its own power, because it had none and said nothing. A
+"tolerate presentation differences" clause used to retry each figure rounded down to two
+and three decimals (`f"{float(raw):.2f}"`). Against a pool of ~8,400 artefact values
+rounded to 2, 3 and 4 places, nearly every two-decimal string in [0,1) is present, so the
+retry matched almost anything: measured, the check passed **99.1%** of randomly fabricated
+four-decimal numbers. The guard underpinning "no figure in this report was typed by hand"
+was a no-op, and every previous clean run of it meant nothing.
+
+Dropping the downgrade takes the false-pass rate on fabricated four-decimal figures to
+about 16%. Three-decimal figures stay weak (~64%) because the value pool is dense at that
+precision -- a membership test cannot fix that, so the residual rate is printed on every
+run rather than left implicit. Quote a figure to four decimals where traceability is the
+point.
 """
 
 from __future__ import annotations
@@ -53,6 +67,31 @@ def artefact_values(dirs: list[Path]) -> set[str]:
     return out
 
 
+def _presentation_variants(raw: str) -> set[str]:
+    """The same number written differently -- NOT the same number written less precisely."""
+    return {raw, raw.lstrip("+-"), raw.lstrip("-"), raw.rstrip("0").rstrip(".")}
+
+
+def measured_false_pass_rate(
+    values: set[str], allow: dict[str, str], places: int, n: int = 4000
+) -> float:
+    """How often a fabricated figure of this precision slips through.
+
+    Printed on every run. A guard that cannot state its own power invites exactly the
+    false confidence this project has already been bitten by twice.
+    """
+    import random
+
+    rng = random.Random(20261007)
+    pool = values | set(allow)
+    hits = 0
+    for _ in range(n):
+        raw = f"{rng.random():.{places}f}"
+        if _presentation_variants(raw) & pool:
+            hits += 1
+    return hits / n
+
+
 def load_allowlist(path: Path) -> dict[str, str]:
     """number -> reason it is allowed to appear without an artefact behind it."""
     if not path.exists():
@@ -77,6 +116,12 @@ def main() -> int:
     n_files = sum(len(list(d.glob("*.json"))) for d in args.artifacts)
     print(f"{len(values):,} numeric values across {n_files} artefacts in "
           f"{', '.join(str(d) for d in args.artifacts)}; {len(allow)} allowlisted")
+    rates = {d: measured_false_pass_rate(values, allow, d) for d in (2, 3, 4)}
+    print(
+        "  measured false-pass rate on fabricated figures: "
+        + ", ".join(f"{d}dp {100 * r:.0f}%" for d, r in rates.items())
+        + "  <- a clean run means less at low precision"
+    )
 
     unexplained: list[tuple[str, int, str]] = []
     checked = 0
@@ -89,10 +134,12 @@ def main() -> int:
                 checked += 1
                 if raw.lstrip("-") in values or raw in values or raw in allow:
                     continue
-                # Tolerate a sign or a trailing-zero difference in presentation.
-                alt = {raw.lstrip("+-"), raw.rstrip("0").rstrip("."),
-                       f"{float(raw):.2f}", f"{float(raw):.3f}"}
-                if alt & values or alt & set(allow):
+                # Tolerate a sign or trailing-zero difference in presentation, and
+                # nothing else. Retrying at lower precision is what made this check
+                # vacuous: it turns "does this exact figure exist" into "does something
+                # roughly like it exist", and in a pool this dense the answer is always
+                # yes.
+                if _presentation_variants(raw) & (values | set(allow)):
                     continue
                 unexplained.append((doc.name, lineno, raw))
 
