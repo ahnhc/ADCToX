@@ -123,6 +123,14 @@ def main() -> int:
             results.append({**ev, "status": "family_absent", "n_arms": data.n_arms})
             continue
 
+        # Same logic as the C6 design constraint: if the corpus at that date held no
+        # usable evidence for this chemistry on the organ that was about to be added, the
+        # model cannot be asked to rank it and scoring the event would score noise. The
+        # distinction matters here because the whole analysis is about what was knowable.
+        from adctox.model.predict import MIN_ARMS_FOR_A_BAND
+
+        mech_i = data.mechanisms.index(spec["mechanism"])
+        axis_i = axes.index(axis)
         mcmc = MCMC(
             NUTS(forward.model, target_accept_prob=0.8, max_tree_depth=8),
             num_warmup=args.warmup, num_samples=args.samples, num_chains=1,
@@ -134,6 +142,19 @@ def main() -> int:
         from adctox.model.predict import Posterior, predict_draws
 
         p = Posterior.from_samples(post, data)
+        n_arms_axis = int(p.evidence_arms[mech_i, axis_i])
+        n_agents_axis = int(p.evidence_agents[mech_i, axis_i])
+        if n_arms_axis < MIN_ARMS_FOR_A_BAND:
+            print(f"\n{agent} / {axis} @ {ev['date']}")
+            print(f"  corpus before that date: {data.n_arms} arms, {len(data.agents)} agents")
+            print(f"  but only {n_arms_axis} arm(s) of {spec['mechanism']} chemistry "
+                  f"reported on the {axis} axis by then -- not scorable, because a rank "
+                  f"produced from that is noise rather than a prediction")
+            results.append(
+                {**ev, "status": "axis_unevidenced_at_date", "n_arms": int(data.n_arms),
+                 "n_arms_on_axis": n_arms_axis}
+            )
+            continue
         draws = predict_draws(
             p,
             mechanisms=[spec["mechanism"]],
@@ -148,6 +169,8 @@ def main() -> int:
 
         print(f"\n{agent} / {axis} @ {ev['date']}")
         print(f"  corpus before that date: {data.n_arms} arms, {len(data.agents)} agents")
+        print(f"  evidence for {spec['mechanism']} on {axis} by then: "
+              f"{n_arms_axis} arms / {n_agents_axis} agents")
         print(f"  predicted rank of {axis}: {rank}/{N_AXES}"
               f"{'  (top 3)' if rank <= 3 else ''}")
         top = [f"{axes[i]} {rates[i]:.3f}" for i in order[:4]]
@@ -155,6 +178,7 @@ def main() -> int:
         results.append(
             {**ev, "status": "scored", "n_arms": int(data.n_arms),
              "n_agents": len(data.agents), "rank": rank, "in_top3": rank <= 3,
+             "n_arms_on_axis": n_arms_axis, "n_agents_on_axis": n_agents_axis,
              "predicted_rate": float(rates[axes.index(axis)])}
         )
 
@@ -182,8 +206,17 @@ def main() -> int:
                 h = sum(r["in_top3"] for r in rest)
                 print(f"    leave-{drop.split('_')[0]}-out: {h}/{len(rest)} top-3, "
                       f"p = {binom_tail(h, len(rest), P_TOP3):.4f}")
+        print(f"\n  Power recomputed on the scorable subset, which is what the test "
+              f"actually runs on:")
+        for k, pv in power_table(len(scored)):
+            flag = "  <- significant at 0.05" if pv < 0.05 else ""
+            print(f"    {k}/{len(scored)} in top 3  ->  p = {pv:.4f}{flag}")
+        reachable = [k for k, pv in power_table(len(scored)) if pv < 0.05]
         print(f"\n  This is a case series with a permutation test, not a validation study:"
-              f" {len(scored)} events across {len(per_agent)} independent drugs.")
+              f" {len(scored)} events across {len(per_agent)} independent drugs."
+              + (f" Only {reachable[0]}/{len(scored)} or better can reach p<0.05, so a "
+                 f"single miss ends it." if reachable else
+                 " No outcome at this sample size reaches p<0.05."))
     else:
         print("No event was scorable. Reporting that, rather than relaxing the floors.")
 

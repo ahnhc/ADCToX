@@ -56,13 +56,24 @@ def _ranking_evidence() -> dict:
                     "verdict": "model loses to the baseline",
                 }
             )
-            spear = (res.get("across_agent_spearman") or {}).get("model_mean")
-            if spear is not None:
+            aas = res.get("across_agent_spearman") or {}
+            if aas.get("applicable") is False:
+                # Reported rather than dropped: a caller must be able to tell a split the
+                # metric does not apply to from one where it was never computed.
                 out["evaluations"].append(
                     {
                         "name": f"across-agent per-axis discrimination, {split}",
                         "metric": "mean Spearman across agents within an axis",
-                        "model": spear,
+                        "model": None,
+                        "verdict": f"not applicable -- {aas.get('reason', '')}",
+                    }
+                )
+            elif aas.get("model_mean") is not None:
+                out["evaluations"].append(
+                    {
+                        "name": f"across-agent per-axis discrimination, {split}",
+                        "metric": "mean Spearman across agents within an axis",
+                        "model": aas["model_mean"],
                         "verdict": "at chance; the pre-declared threshold was +0.3",
                     }
                 )

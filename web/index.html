@@ -49,8 +49,10 @@
   .slots{font-size:13px;color:var(--ink-dim);margin-bottom:9px}
   .tag{display:inline-block;font-size:11px;padding:2px 6px;border-radius:3px;
        border:1px solid var(--line);margin-left:6px;color:var(--ink-dim)}
-  .axis{display:grid;grid-template-columns:150px 1fr 110px;gap:9px;align-items:center;
+  .axis{display:grid;grid-template-columns:148px 1fr 108px 64px;gap:9px;align-items:center;
         padding:2px 0;font-size:13px}
+  .ev{font-size:11px;color:var(--ink-dim);font-variant-numeric:tabular-nums;text-align:right}
+  .ev.thin{color:var(--none);font-style:italic}
   .axis.at-risk{font-weight:600}
   /* Law 3: the interval bar is the dominant mark and the point estimate is subordinate. */
   .bar{position:relative;height:13px;background:var(--bg);border:1px solid var(--line);
@@ -149,6 +151,8 @@ async function boot() {
 
 function axisRow(r) {
   const noEvidence = r.risk_band === "no_evidence" || r.point_estimate == null;
+  const arms = r.n_supporting_arms ?? 0, agents = r.n_supporting_agents ?? 0;
+  const thin = noEvidence || arms < 3;
   const lo = (r.interval?.lo ?? 0) * 100, hi = (r.interval?.hi ?? 0) * 100;
   const pt = (r.point_estimate ?? 0) * 100;
   const scale = 60; // percent of the bar width that 60% risk occupies
@@ -162,6 +166,11 @@ function axisRow(r) {
       <span class="bar">${fill}</span>
       <span><span class="band b-${r.risk_band}">${r.risk_band.replace("_", " ")}</span>
         <span class="num">${noEvidence ? "" : pct(r.point_estimate) + " [" + pct(r.interval.lo) + "&ndash;" + pct(r.interval.hi) + "]"}</span></span>
+      <span class="ev ${thin ? "thin" : ""}"
+            title="${thin
+              ? "Too little in the corpus on this organ for this chemistry to band a rate. Not the same as low risk."
+              : `${arms} arms across ${agents} agents of this payload chemistry reported a count on this axis`}"
+        >${arms} arm${arms === 1 ? "" : "s"}</span>
     </div>`;
 }
 
@@ -183,6 +192,10 @@ function card(c, i) {
     ${high.length ? `<p class="warn"><strong>High-band on axes this profile does not weight:</strong>
         ${high.join(", ")}. The objective only weights organs you named, so a candidate can
         rank first while carrying a peak elsewhere.</p>` : ""}
+    <div class="axis" style="color:var(--ink-dim);font-size:11px;
+         text-transform:uppercase;letter-spacing:.05em">
+      <span>organ</span><span>90% credible interval</span><span>band / rate</span>
+      <span class="ev">evidence</span></div>
     ${atRisk.map(axisRow).join("")}
     <details><summary class="note">remaining ${rest.length} axes</summary>
       ${rest.map(axisRow).join("")}</details>

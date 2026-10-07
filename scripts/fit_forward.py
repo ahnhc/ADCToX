@@ -375,6 +375,7 @@ def main() -> int:
         # this is reported alongside the within-arm AUC and what the within-arm number
         # actually measures.
         mine = [r for r in agent_rows if r["split"] == label]
+        n_points = len({r["fold"] for r in mine})
         model_rho = _across_agent_spearman(mine, list(data.axes))
         base_rho = _across_agent_spearman(
             [dict(r, pred=r["pred_mech_baseline"]) for r in mine], list(data.axes)
@@ -382,6 +383,12 @@ def main() -> int:
         glob_rho = _across_agent_spearman(
             [dict(r, pred=r["pred_global_baseline"]) for r in mine], list(data.axes)
         )
+        if not model_rho:
+            # Say why rather than emitting a bare null.
+            print(f"\n  across-agent per-axis Spearman: not applicable to this split "
+                  f"({n_points} folds contribute a point per axis; the metric needs at "
+                  f"least 6 to be worth computing). This is a property of the split, not "
+                  f"a failed computation.")
         if model_rho:
             mv = [v for v in model_rho.values() if np.isfinite(v)]
             bv = [v for v in base_rho.values() if np.isfinite(v)]
@@ -402,11 +409,26 @@ def main() -> int:
             "folds": rows, "macro_auc": macro, "macro_auc_mech_baseline": macro_b,
             "macro_auc_global_baseline": macro_g,
             "delta_auc_mean": float(np.nanmean(d_auc)), "delta_auc_ci": [lo, hi],
-            "across_agent_spearman": {
-                "model": model_rho, "mech_baseline": base_rho, "global_baseline": glob_rho,
-                "model_mean": float(np.nanmean([v for v in model_rho.values()
-                                                if np.isfinite(v)])) if model_rho else None,
-            },
+            "across_agent_spearman": (
+                {
+                    "model": model_rho, "mech_baseline": base_rho,
+                    "global_baseline": glob_rho,
+                    "model_mean": float(
+                        np.nanmean([v for v in model_rho.values() if np.isfinite(v)])
+                    ),
+                    "n_folds_contributing": n_points,
+                }
+                if model_rho
+                else {
+                    "applicable": False,
+                    "n_folds_contributing": n_points,
+                    "reason": (
+                        "fewer than 6 folds contribute a point per axis, so an "
+                        "across-agent rank correlation is not worth computing on this "
+                        "split"
+                    ),
+                }
+            ),
         }
 
     gate_key = "leave_one_agent_out"
