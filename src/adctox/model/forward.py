@@ -266,7 +266,11 @@ def n_free_parameters(data: ModelData) -> dict[str, int]:
     design = n_axes + n_mech * n_axes + n_axes + 2
     if USE_PAYLOAD_FAMILY:
         design += n_fam * n_axes
-    nuisance = 2 + len(data.trials) + len(data.agents) + 5  # thresh, log_n, REs, scales
+    # thresh, log_n, random intercepts, scales. Counted over the REAL trials: the model
+    # samples one extra trial slot as a sentinel for arms from single-arm trials, but it
+    # is masked out of the linear predictor and sees no data, so counting it would
+    # overstate the nuisance load against the identifying cells.
+    nuisance = 2 + len(data.trials) + len(data.agents) + 5
     return {
         "design": design,
         "nuisance": nuisance,
