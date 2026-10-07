@@ -242,6 +242,10 @@ def main() -> int:
     }
     arms.to_parquet(args.out / "arms.parquet", index=False)
     obs.to_parquet(args.out / "observations.parquet", index=False)
+    # These counts are PRE-model-filter: every agent and arm that survived attribution and
+    # the denominator floor, including the immunotoxin that the design matrix cannot
+    # represent. The fitted corpus is smaller -- 16 agents and 285 arms against 17 and 288
+    # -- and the two appear side by side in the report, so the artefact says which it is.
     (args.out / "arm_funnel.json").write_text(
         json.dumps(
             {

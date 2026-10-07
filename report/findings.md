@@ -181,6 +181,12 @@ corpus:
 | + INN-named literature | 32 | 448 | **12** | 154 | 2.91 |
 | + code-named literature | 54 | 756 | **20** | 266 | **2.84** |
 
+The first row counts the 17 agents in the registry with usable arms. The fitted model uses
+**16 and 224 cells**, because one of the 17 is an immunotoxin -- an antibody-toxin fusion
+with no linker and no conjugation chemistry -- and the design matrix has no slots to
+describe it. Both numbers appear in this report and they count different populations: 17
+is what the registry holds, 16 is what the model can represent.
+
 Tripling the corpus leaves the ratio flat, because each new agent brings a new payload.
 **The resolution that would improve prediction recedes as fast as it is approached.** This
 is the project's central structural finding, and it showed up three times independently:

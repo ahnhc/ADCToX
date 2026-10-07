@@ -102,5 +102,6 @@
    "pulmonary": 0.010021028007497029,
    "renal": 0.09763432350797537
   }
- }
+ },
+ "_population": "pre-model-filter: includes agents and arms the design matrix cannot represent. The fitted corpus is 16 agents / 285 arms / 224 identifying cells; the difference is one immunotoxin, an antibody-toxin fusion with no linker or conjugation slot."
 }
