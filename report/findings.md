@@ -95,8 +95,26 @@ extra training data helps a base-rate baseline, which converges quickly, more th
 a 184-parameter model, so the within-arm deficit widens; while the model's ability to order
 *agents* within an axis -- which needs agents, not cells -- improves.
 
-That last paragraph is an interpretation and is marked as one. A controlled single-fold
-comparison of the two split constructions is the measurement that would settle it.
+That last paragraph was an interpretation, and the controlled comparison that settles it
+has since been run: patritumab deruxtecan held out, fitted twice with everything identical
+except the split construction.
+
+| | train arms | predicted mean | observed | MAE | `b_thresh` |
+|---|---|---|---|---|---|
+| old split | 150 | 0.1872 | 0.2120 | 0.0701 | **-0.1057** |
+| corrected split | 277 | 0.3191 | 0.2120 | 0.1252 | **+0.0345** |
+| full corpus (reference) | 285 | — | — | — | **+0.0327** |
+
+**The old fold estimated the threshold coefficient at the wrong sign.** On a training set
+cut to 150 arms it came out at -0.1057 where the full corpus gives +0.0327; the corrected
+fold recovers +0.0345. So the broken fold's better MAE was a badly biased nuisance
+coefficient landing near the held-out truth by coincidence, not a better model. That is
+why the correction makes the numbers worse and is still the right correction.
+
+It also exposes something the broken folds were hiding: the corrected fold *over-predicts*
+this agent, 0.3191 against an observed 0.2120. Absolute calibration on held-out agents is
+poor, and the earlier folds were too mutilated to show it. One fold, one seed, reported as
+such.
 
 The dose-modification comparison was the one favourable result before the fix
 (+0.039 [+0.003, +0.073]) and lost its significance after it (+0.035 [-0.001, +0.069]).

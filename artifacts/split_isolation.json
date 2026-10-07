@@ -1,0 +1,37 @@
+{
+ "_what": "One controlled fold: patritumab deruxtecan held out, fitted twice with everything identical except the split construction. Run to settle why correcting the folds made the model look worse, rather than leaving that as an interpretation.",
+ "_how": "scripts: /tmp/iso.py, 300 warmup / 300 samples, seed 7, kind=other",
+ "held_out_agent": "patritumab_deruxtecan",
+ "observed_mean_rate": 0.212,
+ "arms": {
+  "new_split": 277,
+  "old_split": 150
+ },
+ "new_split": {
+  "mae": 0.1252,
+  "predicted_mean_rate": 0.3191,
+  "b_log_n": 0.0349,
+  "b_thresh": 0.0345
+ },
+ "old_split": {
+  "mae": 0.0701,
+  "predicted_mean_rate": 0.1872,
+  "b_log_n": 0.089,
+  "b_thresh": -0.1057
+ },
+ "full_corpus_reference": {
+  "b_log_n": 0.03932355344295502,
+  "b_thresh": 0.03265463933348656
+ },
+ "_finding": "The old fold estimated b_thresh at the WRONG SIGN relative to the full corpus (-0.1057 against +0.033). The corrected fold recovers it (+0.0345). So the old fold's better MAE came from a badly biased nuisance coefficient on a mutilated training set landing near the held-out truth by coincidence, not from a better model. The corrected fold over-predicts this agent (0.319 against 0.212 observed), which is a calibration problem the broken folds were hiding.",
+ "provenance": {
+  "revision": "56b6c8a0394104d030970fbc45f00ef19b3736d7",
+  "dirty": true,
+  "snapshot": null,
+  "script": "-",
+  "written_utc": "2026-10-07T14:43:44+00:00",
+  "inputs": {
+   "metrics": "sha256:ded27908c25aa20df23a5a2e25037d760cd339266005ea615b776d6bf9d30cd9"
+  }
+ }
+}
