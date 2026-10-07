@@ -81,11 +81,23 @@ def main() -> int:
         return 0
     conditions = [c.strip() for c in args.conditions.split(",") if c.strip()]
 
+    # The serious-event fit, when built, is what makes an at-risk axis answer the
+    # question actually asked. The API loads both, so the demo must too, or the artefact
+    # the report cites for the end-to-end gate would not describe the shipped behaviour.
+    serious_path = args.out / "posterior_serious.npz"
+    serious = Posterior.load(serious_path) if serious_path.exists() else None
+    if serious is None:
+        print(
+            f"note: {serious_path} absent, so every axis is banded on the any-grade "
+            "table. Build it with `--kind serious --fit-only` for the shipped behaviour.",
+            flush=True,
+        )
     result = propose(
         target_antigen=args.target,
         condition_ids=conditions,
         posterior=posterior,
         top_k=args.top_k,
+        serious_posterior=serious,
     )
 
     print(f"\ntarget {args.target} | comorbidities {conditions}")
@@ -121,14 +133,24 @@ def main() -> int:
             print(f"    high-band axes NOT weighted for this patient: {', '.join(high)}")
         at_risk = [r for r in c["organ_risks"] if r["at_risk_for_patient"]]
         for r in at_risk:
+            # Print the number the band was computed from, not whichever one came first.
+            # These axes are banded on the serious table when it is available, so showing
+            # the any-grade rate beside a serious-basis band states a figure that did not
+            # produce the band next to it -- the confusion the UI avoids by labelling the
+            # basis, and the demo has to avoid it the same way.
+            serious = r.get("band_basis") == "serious"
+            shown = r["serious_estimate"] if serious else r["point_estimate"]
             # A withheld point estimate is not a formatting edge case: the corpus has too
             # little on that organ for this chemistry to band a rate at all.
-            pt = ("     n/a" if r["point_estimate"] is None
-                  else f"{r['point_estimate']:8.3f}")
+            pt = "     n/a" if shown is None else f"{shown:8.4f}"
             ev = f"{r.get('n_supporting_arms', 0)} arms"
-            print(f"      * {r['organ_axis']:20s} {pt} "
-                  f"[{r['interval']['lo']:.3f}, {r['interval']['hi']:.3f}] "
-                  f"{r['risk_band']:12s} (weight x{r['weight_applied']:.1f}, {ev})")
+            basis = "serious-event" if serious else "any-grade   "
+            other = r["point_estimate"] if serious else r["serious_estimate"]
+            alt = "" if other is None else (
+                f"; any-grade {other:.3f}" if serious else f"; serious {other:.4f}"
+            )
+            print(f"      * {r['organ_axis']:20s} {pt} {basis} "
+                  f"{r['risk_band']:12s} (weight x{r['weight_applied']:.1f}, {ev}{alt})")
 
     if result["why_not_the_obvious_one"]:
         w = result["why_not_the_obvious_one"]

@@ -362,8 +362,19 @@ def propose(
                                 if d is not None
                             ]
                         ),
-                        "n_supporting_agents": evidence_for(s.design.mechanism, a)[0],
-                        "n_supporting_arms": evidence_for(s.design.mechanism, a)[1],
+                        # Evidence from the table this axis is scored on, so the count
+                        # supports the figure shown rather than a different one. C6
+                        # already gates on this same count.
+                        "n_supporting_agents": (
+                            serious_evidence_for(s.design.mechanism, a)[0]
+                            if table_for(a) == "serious"
+                            else evidence_for(s.design.mechanism, a)[0]
+                        ),
+                        "n_supporting_arms": (
+                            serious_evidence_for(s.design.mechanism, a)[1]
+                            if table_for(a) == "serious"
+                            else evidence_for(s.design.mechanism, a)[1]
+                        ),
                         "weight_applied": weights[a],
                         "at_risk_for_patient": a in comorb.at_risk_axes,
                     }

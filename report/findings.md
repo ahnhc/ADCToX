@@ -352,11 +352,32 @@ were diffed on section-5 headings and boxed-warning headlines.
 
 **7 dated organ-axis additions across 4 agents**, plus 3 escalations into a boxed warning.
 Power was fixed before any result: with 14 axes the null P(top three) is 0.214, so 4 of 7
-gives p = 0.042. With 4 of the 7 events from brentuximab vedotin alone, the effective
-number of independent drugs is 4 and a leave-brentuximab-out sensitivity is mandatory.
+would have given p = 0.042. The concentration concern at that point was brentuximab
+vedotin, which contributed 4 of the 7 events, and a leave-brentuximab-out sensitivity was
+declared mandatory.
+
+**It turned out not to be needed, for a worse reason.** All four brentuximab events
+predate a corpus large enough to fit on -- its earliest addition is 2014, when 29 arms
+had posted results against a floor of 60 -- so they are not scorable at all. Rather than
+relaxing the floor to recover them, which would score the model on noise and on the
+drug most able to dominate the result, they are reported as unscorable. The scored set is
+therefore three events from three different drugs, which removes the concentration
+problem and most of the power along with it. The leave-one-drug-out check is still run and
+reported, now trivially: dropping any one of the three leaves two.
 **This is a case series with a permutation test, not a validation study.**
 
 <!-- generated: label-change -->
+
+**3 of 7 events were scorable**; the rest predate a corpus large enough to fit on, and are reported as not scorable rather than scored on noise.
+
+| quantity | value |
+|---|---|
+| events scored | 3 across 3 independent drugs |
+| mean predicted rank | 4.6667 of 14 (null 7.5) |
+| in top three | 1 of 3 |
+| one-sided p | 0.5149 (not significant) |
+
+The mean rank beats the null, but the test does not reach significance. And it barely could: at 3 scorable events only **3 of 3** or better reaches p<0.05, so a single miss ends it. That is the same defect as the unfireable AUC gate elsewhere in this report -- a test whose outcome was nearly determined by its own sample size. It is reported as a case series with a permutation test, which is what it is.
 <!-- /generated: label-change -->
 
 Three corrections cut an initial 12 events to 7: gemtuzumab ozogamicin's label history

@@ -1,5 +1,5 @@
 {
- "proposal_id": "prp_a2055895b81b",
+ "proposal_id": "prp_ac7ab78bb6e2",
  "target_antigen": "ERBB2",
  "n_enumerated": 106,
  "n_passed_constraints": 74,
@@ -10,274 +10,1952 @@
    "on_pareto_front": true,
    "unweighted_high_axes": [
     "haematologic",
-    "hepatic",
     "gastrointestinal",
     "constitutional"
    ],
    "distinguishable": false,
    "design": {
     "target": "ERBB2",
-    "payload": "calicheamicin",
-    "linker": "SMCC",
-    "conjugation": "lysine",
-    "dar": 2.0,
+    "payload": "MMAF",
+    "linker": "mc",
+    "conjugation": "engineered_cysteine",
+    "dar": 4.0,
     "isotype": "IgG1",
     "masking": "none"
    },
-   "mechanism": "dna_cleave",
+   "mechanism": "tubulin",
    "organ_risks": [
     {
      "organ_axis": "haematologic",
      "label": "Haematologic",
-     "point_estimate": 0.4135,
+     "point_estimate": 0.2309,
      "interval": {
-      "lo": 0.3397,
-      "hi": 0.4926,
+      "lo": 0.1812,
+      "hi": 0.282,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0304,
      "risk_band": "high",
+     "band_basis": "common",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 36,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 168,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "hepatic",
      "label": "Hepatic",
-     "point_estimate": 0.2482,
+     "point_estimate": 0.1884,
      "interval": {
-      "lo": 0.1923,
-      "hi": 0.3076,
+      "lo": 0.1453,
+      "hi": 0.2322,
       "kind": "credible_90"
      },
-     "risk_band": "high",
+     "serious_estimate": 0.0086,
+     "risk_band": "moderate",
+     "band_basis": "common",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 31,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 152,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "cardiovascular",
      "label": "Cardiovascular",
-     "point_estimate": 0.0591,
+     "point_estimate": 0.0655,
      "interval": {
-      "lo": 0.0411,
-      "hi": 0.0816,
+      "lo": 0.0489,
+      "hi": 0.084,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0102,
      "risk_band": "moderate",
+     "band_basis": "common",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 30,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 142,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "pulmonary",
      "label": "Pulmonary",
-     "point_estimate": 0.1252,
+     "point_estimate": 0.1891,
      "interval": {
-      "lo": 0.0908,
-      "hi": 0.1637,
+      "lo": 0.1472,
+      "hi": 0.2337,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0164,
      "risk_band": "moderate",
+     "band_basis": "serious",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 33,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 157,
      "weight_applied": 3.0,
      "at_risk_for_patient": true
     },
     {
      "organ_axis": "renal",
      "label": "Renal",
-     "point_estimate": 0.0338,
+     "point_estimate": 0.0351,
      "interval": {
-      "lo": 0.0234,
-      "hi": 0.0473,
+      "lo": 0.0261,
+      "hi": 0.0455,
       "kind": "credible_90"
      },
-     "risk_band": "low",
+     "serious_estimate": 0.0078,
+     "risk_band": "moderate",
+     "band_basis": "serious",
      "band_source": "model",
-     "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 25,
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 2.2x more often",
+       "detail": "across 664 tubulin trials, 15% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 2.24
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 119,
      "weight_applied": 2.4,
      "at_risk_for_patient": true
     },
     {
      "organ_axis": "gastrointestinal",
      "label": "Gastrointestinal",
-     "point_estimate": 0.2892,
+     "point_estimate": 0.3944,
      "interval": {
-      "lo": 0.2242,
-      "hi": 0.3617,
+      "lo": 0.3286,
+      "hi": 0.4629,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0192,
      "risk_band": "high",
+     "band_basis": "common",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 36,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 162,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "neurologic",
      "label": "Neurologic",
-     "point_estimate": 0.064,
+     "point_estimate": 0.213,
      "interval": {
-      "lo": 0.0462,
-      "hi": 0.0867,
+      "lo": 0.1659,
+      "hi": 0.2594,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0117,
      "risk_band": "moderate",
+     "band_basis": "common",
      "band_source": "model",
-     "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 33,
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 8.0x more often",
+       "detail": "across 664 tubulin trials, 51% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 8.02
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "ocular",
      "label": "Ocular",
-     "point_estimate": 0.015,
+     "point_estimate": 0.0978,
      "interval": {
-      "lo": 0.0102,
-      "hi": 0.0215,
+      "lo": 0.0742,
+      "hi": 0.1238,
       "kind": "credible_90"
      },
-     "risk_band": "low",
+     "serious_estimate": 0.0026,
+     "risk_band": "moderate",
+     "band_basis": "common",
      "band_source": "model",
-     "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 20,
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 17.8x more often",
+       "detail": "across 664 tubulin trials, 23% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 17.8
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 126,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "dermatologic",
      "label": "Dermatologic",
-     "point_estimate": 0.1107,
+     "point_estimate": 0.1918,
      "interval": {
-      "lo": 0.0816,
-      "hi": 0.1476,
+      "lo": 0.1484,
+      "hi": 0.238,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0023,
      "risk_band": "moderate",
+     "band_basis": "common",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 32,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "metabolic_endocrine",
      "label": "Metabolic / Endocrine",
-     "point_estimate": 0.1615,
+     "point_estimate": 0.1688,
      "interval": {
-      "lo": 0.1189,
-      "hi": 0.2104,
+      "lo": 0.1294,
+      "hi": 0.2087,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0098,
      "risk_band": "moderate",
+     "band_basis": "common",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 33,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "musculoskeletal",
      "label": "Musculoskeletal",
-     "point_estimate": 0.0658,
+     "point_estimate": 0.1557,
      "interval": {
-      "lo": 0.0452,
-      "hi": 0.0896,
+      "lo": 0.12,
+      "hi": 0.1935,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0063,
      "risk_band": "moderate",
+     "band_basis": "common",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 31,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "infectious_immune",
      "label": "Infectious / Immune",
-     "point_estimate": 0.1427,
+     "point_estimate": 0.1089,
      "interval": {
-      "lo": 0.1055,
-      "hi": 0.1887,
+      "lo": 0.0817,
+      "hi": 0.1375,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0379,
      "risk_band": "moderate",
+     "band_basis": "common",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 35,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 158,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "otologic",
      "label": "Otologic",
-     "point_estimate": 0.0058,
+     "point_estimate": 0.0209,
      "interval": {
-      "lo": 0.0028,
-      "hi": 0.0097,
+      "lo": 0.015,
+      "hi": 0.0279,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0013,
      "risk_band": "low",
+     "band_basis": "common",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 6,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 69,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     },
     {
      "organ_axis": "constitutional",
      "label": "Constitutional",
-     "point_estimate": 0.2381,
+     "point_estimate": 0.3227,
      "interval": {
-      "lo": 0.1788,
-      "hi": 0.3018,
+      "lo": 0.261,
+      "hi": 0.3865,
       "kind": "credible_90"
      },
+     "serious_estimate": 0.0242,
      "risk_band": "high",
+     "band_basis": "common",
      "band_source": "model",
      "drivers": [],
-     "n_supporting_agents": 2,
-     "n_supporting_arms": 35,
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 166,
      "weight_applied": 1.0,
      "at_risk_for_patient": false
     }
    ],
-   "weighted_risk": 2.2704,
-   "worst_axis": "haematologic",
-   "worst_axis_risk": 0.4135,
+   "weighted_risk": 0.2324,
+   "weighted_risk_basis": "serious",
+   "worst_axis": "gastrointestinal",
+   "worst_axis_risk": 0.3944,
+   "worst_axis_risk_basis": "common",
+   "precedent_score": 1.609,
+   "binding_constraint": "C2_delivered_dose",
+   "nearest_real_adc": "belantamab mafodotin",
+   "nearest_real_diff": "target BCMA -> ERBB2",
+   "novelty_tier": 1,
+   "has_unapproved_component": true
+  },
+  {
+   "rank": 1,
+   "tie_group": 0,
+   "on_pareto_front": true,
+   "unweighted_high_axes": [
+    "haematologic",
+    "gastrointestinal",
+    "constitutional"
+   ],
+   "distinguishable": false,
+   "design": {
+    "target": "ERBB2",
+    "payload": "MMAF",
+    "linker": "mc",
+    "conjugation": "interchain_cysteine",
+    "dar": 4.0,
+    "isotype": "IgG1",
+    "masking": "none"
+   },
+   "mechanism": "tubulin",
+   "organ_risks": [
+    {
+     "organ_axis": "haematologic",
+     "label": "Haematologic",
+     "point_estimate": 0.2295,
+     "interval": {
+      "lo": 0.1788,
+      "hi": 0.2776,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.031,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 168,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "hepatic",
+     "label": "Hepatic",
+     "point_estimate": 0.1872,
+     "interval": {
+      "lo": 0.1473,
+      "hi": 0.2296,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0088,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 152,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "cardiovascular",
+     "label": "Cardiovascular",
+     "point_estimate": 0.065,
+     "interval": {
+      "lo": 0.0487,
+      "hi": 0.0828,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0104,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 142,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "pulmonary",
+     "label": "Pulmonary",
+     "point_estimate": 0.1879,
+     "interval": {
+      "lo": 0.1474,
+      "hi": 0.2324,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0167,
+     "risk_band": "moderate",
+     "band_basis": "serious",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 157,
+     "weight_applied": 3.0,
+     "at_risk_for_patient": true
+    },
+    {
+     "organ_axis": "renal",
+     "label": "Renal",
+     "point_estimate": 0.0348,
+     "interval": {
+      "lo": 0.0256,
+      "hi": 0.0453,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.008,
+     "risk_band": "moderate",
+     "band_basis": "serious",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 2.2x more often",
+       "detail": "across 664 tubulin trials, 15% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 2.24
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 119,
+     "weight_applied": 2.4,
+     "at_risk_for_patient": true
+    },
+    {
+     "organ_axis": "gastrointestinal",
+     "label": "Gastrointestinal",
+     "point_estimate": 0.3925,
+     "interval": {
+      "lo": 0.3254,
+      "hi": 0.4553,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0197,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 162,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "neurologic",
+     "label": "Neurologic",
+     "point_estimate": 0.2117,
+     "interval": {
+      "lo": 0.1667,
+      "hi": 0.2591,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.012,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 8.0x more often",
+       "detail": "across 664 tubulin trials, 51% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 8.02
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "ocular",
+     "label": "Ocular",
+     "point_estimate": 0.0971,
+     "interval": {
+      "lo": 0.0732,
+      "hi": 0.1206,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0026,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 17.8x more often",
+       "detail": "across 664 tubulin trials, 23% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 17.8
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 126,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "dermatologic",
+     "label": "Dermatologic",
+     "point_estimate": 0.1905,
+     "interval": {
+      "lo": 0.1493,
+      "hi": 0.2321,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0024,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "metabolic_endocrine",
+     "label": "Metabolic / Endocrine",
+     "point_estimate": 0.1676,
+     "interval": {
+      "lo": 0.1282,
+      "hi": 0.2086,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.01,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "musculoskeletal",
+     "label": "Musculoskeletal",
+     "point_estimate": 0.1547,
+     "interval": {
+      "lo": 0.1186,
+      "hi": 0.1915,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0064,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "infectious_immune",
+     "label": "Infectious / Immune",
+     "point_estimate": 0.1081,
+     "interval": {
+      "lo": 0.0825,
+      "hi": 0.1345,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0387,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 158,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "otologic",
+     "label": "Otologic",
+     "point_estimate": 0.0208,
+     "interval": {
+      "lo": 0.0144,
+      "hi": 0.0275,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0013,
+     "risk_band": "low",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 69,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "constitutional",
+     "label": "Constitutional",
+     "point_estimate": 0.321,
+     "interval": {
+      "lo": 0.2611,
+      "hi": 0.3824,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0245,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 166,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    }
+   ],
+   "weighted_risk": 0.2372,
+   "weighted_risk_basis": "serious",
+   "worst_axis": "gastrointestinal",
+   "worst_axis_risk": 0.3925,
+   "worst_axis_risk_basis": "common",
+   "precedent_score": 1.609,
+   "binding_constraint": "C2_delivered_dose",
+   "nearest_real_adc": "belantamab mafodotin",
+   "nearest_real_diff": "target BCMA -> ERBB2",
+   "novelty_tier": 1,
+   "has_unapproved_component": false
+  },
+  {
+   "rank": 1,
+   "tie_group": 0,
+   "on_pareto_front": true,
+   "unweighted_high_axes": [
+    "haematologic",
+    "gastrointestinal",
+    "constitutional"
+   ],
+   "distinguishable": false,
+   "design": {
+    "target": "ERBB2",
+    "payload": "MMAF",
+    "linker": "mc",
+    "conjugation": "engineered_cysteine",
+    "dar": 2.0,
+    "isotype": "IgG1",
+    "masking": "none"
+   },
+   "mechanism": "tubulin",
+   "organ_risks": [
+    {
+     "organ_axis": "haematologic",
+     "label": "Haematologic",
+     "point_estimate": 0.2205,
+     "interval": {
+      "lo": 0.171,
+      "hi": 0.2742,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.031,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 168,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "hepatic",
+     "label": "Hepatic",
+     "point_estimate": 0.1794,
+     "interval": {
+      "lo": 0.1373,
+      "hi": 0.2256,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0088,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 152,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "cardiovascular",
+     "label": "Cardiovascular",
+     "point_estimate": 0.062,
+     "interval": {
+      "lo": 0.0458,
+      "hi": 0.0801,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0104,
+     "risk_band": "low",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 142,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "pulmonary",
+     "label": "Pulmonary",
+     "point_estimate": 0.1801,
+     "interval": {
+      "lo": 0.1372,
+      "hi": 0.2254,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0167,
+     "risk_band": "moderate",
+     "band_basis": "serious",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 157,
+     "weight_applied": 3.0,
+     "at_risk_for_patient": true
+    },
+    {
+     "organ_axis": "renal",
+     "label": "Renal",
+     "point_estimate": 0.0331,
+     "interval": {
+      "lo": 0.0237,
+      "hi": 0.0437,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.008,
+     "risk_band": "moderate",
+     "band_basis": "serious",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 2.2x more often",
+       "detail": "across 664 tubulin trials, 15% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 2.24
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 119,
+     "weight_applied": 2.4,
+     "at_risk_for_patient": true
+    },
+    {
+     "organ_axis": "gastrointestinal",
+     "label": "Gastrointestinal",
+     "point_estimate": 0.3801,
+     "interval": {
+      "lo": 0.3091,
+      "hi": 0.4508,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0197,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 162,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "neurologic",
+     "label": "Neurologic",
+     "point_estimate": 0.2032,
+     "interval": {
+      "lo": 0.1575,
+      "hi": 0.2548,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.012,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 8.0x more often",
+       "detail": "across 664 tubulin trials, 51% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 8.02
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "ocular",
+     "label": "Ocular",
+     "point_estimate": 0.0926,
+     "interval": {
+      "lo": 0.0691,
+      "hi": 0.1192,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0026,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 17.8x more often",
+       "detail": "across 664 tubulin trials, 23% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 17.8
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 126,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "dermatologic",
+     "label": "Dermatologic",
+     "point_estimate": 0.1827,
+     "interval": {
+      "lo": 0.1395,
+      "hi": 0.2258,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0024,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "metabolic_endocrine",
+     "label": "Metabolic / Endocrine",
+     "point_estimate": 0.1605,
+     "interval": {
+      "lo": 0.1217,
+      "hi": 0.2,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.01,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "musculoskeletal",
+     "label": "Musculoskeletal",
+     "point_estimate": 0.1481,
+     "interval": {
+      "lo": 0.1123,
+      "hi": 0.1881,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0064,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "infectious_immune",
+     "label": "Infectious / Immune",
+     "point_estimate": 0.1033,
+     "interval": {
+      "lo": 0.0767,
+      "hi": 0.1332,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0388,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 158,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "otologic",
+     "label": "Otologic",
+     "point_estimate": 0.0198,
+     "interval": {
+      "lo": 0.0137,
+      "hi": 0.0268,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0013,
+     "risk_band": "low",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 69,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "constitutional",
+     "label": "Constitutional",
+     "point_estimate": 0.3098,
+     "interval": {
+      "lo": 0.2479,
+      "hi": 0.3749,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0246,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 166,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    }
+   ],
+   "weighted_risk": 0.2372,
+   "weighted_risk_basis": "serious",
+   "worst_axis": "gastrointestinal",
+   "worst_axis_risk": 0.3801,
+   "worst_axis_risk_basis": "common",
+   "precedent_score": 1.609,
+   "binding_constraint": "C2_delivered_dose",
+   "nearest_real_adc": "belantamab mafodotin",
+   "nearest_real_diff": "DAR 4.0 -> 2.0; target BCMA -> ERBB2",
+   "novelty_tier": 1,
+   "has_unapproved_component": true
+  },
+  {
+   "rank": 1,
+   "tie_group": 0,
+   "on_pareto_front": true,
+   "unweighted_high_axes": [
+    "haematologic",
+    "gastrointestinal",
+    "neurologic",
+    "constitutional"
+   ],
+   "distinguishable": false,
+   "design": {
+    "target": "ERBB2",
+    "payload": "DM1",
+    "linker": "hydrazone_AcBut_disulfide",
+    "conjugation": "lysine",
+    "dar": 2.0,
+    "isotype": "IgG1",
+    "masking": "none"
+   },
+   "mechanism": "tubulin",
+   "organ_risks": [
+    {
+     "organ_axis": "haematologic",
+     "label": "Haematologic",
+     "point_estimate": 0.2911,
+     "interval": {
+      "lo": 0.2325,
+      "hi": 0.3437,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0402,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 168,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "hepatic",
+     "label": "Hepatic",
+     "point_estimate": 0.1304,
+     "interval": {
+      "lo": 0.0983,
+      "hi": 0.1609,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.007,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 152,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "cardiovascular",
+     "label": "Cardiovascular",
+     "point_estimate": 0.071,
+     "interval": {
+      "lo": 0.0525,
+      "hi": 0.0906,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0113,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 142,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "pulmonary",
+     "label": "Pulmonary",
+     "point_estimate": 0.1368,
+     "interval": {
+      "lo": 0.1034,
+      "hi": 0.1673,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.017,
+     "risk_band": "moderate",
+     "band_basis": "serious",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 157,
+     "weight_applied": 3.0,
+     "at_risk_for_patient": true
+    },
+    {
+     "organ_axis": "renal",
+     "label": "Renal",
+     "point_estimate": 0.0406,
+     "interval": {
+      "lo": 0.0305,
+      "hi": 0.0516,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0102,
+     "risk_band": "moderate",
+     "band_basis": "serious",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 2.2x more often",
+       "detail": "across 664 tubulin trials, 15% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 2.24
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 119,
+     "weight_applied": 2.4,
+     "at_risk_for_patient": true
+    },
+    {
+     "organ_axis": "gastrointestinal",
+     "label": "Gastrointestinal",
+     "point_estimate": 0.3606,
+     "interval": {
+      "lo": 0.2927,
+      "hi": 0.4236,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0221,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 162,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "neurologic",
+     "label": "Neurologic",
+     "point_estimate": 0.2936,
+     "interval": {
+      "lo": 0.2345,
+      "hi": 0.3468,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0096,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 8.0x more often",
+       "detail": "across 664 tubulin trials, 51% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 8.02
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "ocular",
+     "label": "Ocular",
+     "point_estimate": 0.0908,
+     "interval": {
+      "lo": 0.066,
+      "hi": 0.1139,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0017,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 17.8x more often",
+       "detail": "across 664 tubulin trials, 23% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 17.8
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 126,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "dermatologic",
+     "label": "Dermatologic",
+     "point_estimate": 0.1711,
+     "interval": {
+      "lo": 0.1316,
+      "hi": 0.2108,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0044,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "metabolic_endocrine",
+     "label": "Metabolic / Endocrine",
+     "point_estimate": 0.1809,
+     "interval": {
+      "lo": 0.1397,
+      "hi": 0.2205,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0112,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "musculoskeletal",
+     "label": "Musculoskeletal",
+     "point_estimate": 0.1139,
+     "interval": {
+      "lo": 0.085,
+      "hi": 0.1424,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0046,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "infectious_immune",
+     "label": "Infectious / Immune",
+     "point_estimate": 0.1106,
+     "interval": {
+      "lo": 0.0824,
+      "hi": 0.1386,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0291,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 158,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "otologic",
+     "label": "Otologic",
+     "point_estimate": 0.0191,
+     "interval": {
+      "lo": 0.0134,
+      "hi": 0.0256,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0009,
+     "risk_band": "low",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 69,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "constitutional",
+     "label": "Constitutional",
+     "point_estimate": 0.3027,
+     "interval": {
+      "lo": 0.2399,
+      "hi": 0.3563,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0233,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 166,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    }
+   ],
+   "weighted_risk": 0.2409,
+   "weighted_risk_basis": "serious",
+   "worst_axis": "gastrointestinal",
+   "worst_axis_risk": 0.3606,
+   "worst_axis_risk_basis": "common",
    "precedent_score": 1.386,
    "binding_constraint": "C2_delivered_dose",
    "nearest_real_adc": "trastuzumab emtansine",
-   "nearest_real_diff": "payload DM1 -> calicheamicin; DAR 3.5 -> 2.0",
+   "nearest_real_diff": "linker SMCC -> hydrazone_AcBut_disulfide; DAR 3.5 -> 2.0",
+   "novelty_tier": 1,
+   "has_unapproved_component": false
+  },
+  {
+   "rank": 1,
+   "tie_group": 0,
+   "on_pareto_front": false,
+   "unweighted_high_axes": [
+    "haematologic",
+    "gastrointestinal",
+    "constitutional"
+   ],
+   "distinguishable": false,
+   "design": {
+    "target": "ERBB2",
+    "payload": "DM4",
+    "linker": "SMCC",
+    "conjugation": "lysine",
+    "dar": 3.5,
+    "isotype": "IgG1",
+    "masking": "none"
+   },
+   "mechanism": "tubulin",
+   "organ_risks": [
+    {
+     "organ_axis": "haematologic",
+     "label": "Haematologic",
+     "point_estimate": 0.2286,
+     "interval": {
+      "lo": 0.1808,
+      "hi": 0.2836,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0317,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 168,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "hepatic",
+     "label": "Hepatic",
+     "point_estimate": 0.1864,
+     "interval": {
+      "lo": 0.1458,
+      "hi": 0.2326,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0089,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 152,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "cardiovascular",
+     "label": "Cardiovascular",
+     "point_estimate": 0.0648,
+     "interval": {
+      "lo": 0.0484,
+      "hi": 0.0847,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0106,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 142,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "pulmonary",
+     "label": "Pulmonary",
+     "point_estimate": 0.1871,
+     "interval": {
+      "lo": 0.1448,
+      "hi": 0.2337,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0171,
+     "risk_band": "moderate",
+     "band_basis": "serious",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 157,
+     "weight_applied": 3.0,
+     "at_risk_for_patient": true
+    },
+    {
+     "organ_axis": "renal",
+     "label": "Renal",
+     "point_estimate": 0.0347,
+     "interval": {
+      "lo": 0.0257,
+      "hi": 0.0454,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0081,
+     "risk_band": "moderate",
+     "band_basis": "serious",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 2.2x more often",
+       "detail": "across 664 tubulin trials, 15% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 2.24
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 119,
+     "weight_applied": 2.4,
+     "at_risk_for_patient": true
+    },
+    {
+     "organ_axis": "gastrointestinal",
+     "label": "Gastrointestinal",
+     "point_estimate": 0.3908,
+     "interval": {
+      "lo": 0.325,
+      "hi": 0.4593,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.02,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 162,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "neurologic",
+     "label": "Neurologic",
+     "point_estimate": 0.2108,
+     "interval": {
+      "lo": 0.1638,
+      "hi": 0.2612,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0122,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 8.0x more often",
+       "detail": "across 664 tubulin trials, 51% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 8.02
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "ocular",
+     "label": "Ocular",
+     "point_estimate": 0.0967,
+     "interval": {
+      "lo": 0.0734,
+      "hi": 0.1238,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0026,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 17.8x more often",
+       "detail": "across 664 tubulin trials, 23% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 17.8
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 126,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "dermatologic",
+     "label": "Dermatologic",
+     "point_estimate": 0.1898,
+     "interval": {
+      "lo": 0.1476,
+      "hi": 0.2371,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0024,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "metabolic_endocrine",
+     "label": "Metabolic / Endocrine",
+     "point_estimate": 0.167,
+     "interval": {
+      "lo": 0.1277,
+      "hi": 0.2099,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0103,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "musculoskeletal",
+     "label": "Musculoskeletal",
+     "point_estimate": 0.1541,
+     "interval": {
+      "lo": 0.1195,
+      "hi": 0.195,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0065,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "infectious_immune",
+     "label": "Infectious / Immune",
+     "point_estimate": 0.1077,
+     "interval": {
+      "lo": 0.0813,
+      "hi": 0.1358,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0393,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 158,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "otologic",
+     "label": "Otologic",
+     "point_estimate": 0.0207,
+     "interval": {
+      "lo": 0.0145,
+      "hi": 0.0276,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0013,
+     "risk_band": "low",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 69,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "constitutional",
+     "label": "Constitutional",
+     "point_estimate": 0.3196,
+     "interval": {
+      "lo": 0.2609,
+      "hi": 0.3856,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0252,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 166,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    }
+   ],
+   "weighted_risk": 0.2418,
+   "weighted_risk_basis": "serious",
+   "worst_axis": "gastrointestinal",
+   "worst_axis_risk": 0.3908,
+   "worst_axis_risk_basis": "common",
+   "precedent_score": 1.609,
+   "binding_constraint": "C2_delivered_dose",
+   "nearest_real_adc": "trastuzumab emtansine",
+   "nearest_real_diff": "payload DM1 -> DM4",
+   "novelty_tier": 1,
+   "has_unapproved_component": false
+  },
+  {
+   "rank": 1,
+   "tie_group": 0,
+   "on_pareto_front": true,
+   "unweighted_high_axes": [
+    "haematologic",
+    "gastrointestinal",
+    "constitutional"
+   ],
+   "distinguishable": false,
+   "design": {
+    "target": "ERBB2",
+    "payload": "MMAF",
+    "linker": "mc",
+    "conjugation": "interchain_cysteine",
+    "dar": 2.0,
+    "isotype": "IgG1",
+    "masking": "none"
+   },
+   "mechanism": "tubulin",
+   "organ_risks": [
+    {
+     "organ_axis": "haematologic",
+     "label": "Haematologic",
+     "point_estimate": 0.22,
+     "interval": {
+      "lo": 0.1661,
+      "hi": 0.2733,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0318,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 168,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "hepatic",
+     "label": "Hepatic",
+     "point_estimate": 0.179,
+     "interval": {
+      "lo": 0.1327,
+      "hi": 0.224,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.009,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 152,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "cardiovascular",
+     "label": "Cardiovascular",
+     "point_estimate": 0.0618,
+     "interval": {
+      "lo": 0.0435,
+      "hi": 0.0803,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0107,
+     "risk_band": "low",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 142,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "pulmonary",
+     "label": "Pulmonary",
+     "point_estimate": 0.1797,
+     "interval": {
+      "lo": 0.1321,
+      "hi": 0.2262,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0172,
+     "risk_band": "moderate",
+     "band_basis": "serious",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 157,
+     "weight_applied": 3.0,
+     "at_risk_for_patient": true
+    },
+    {
+     "organ_axis": "renal",
+     "label": "Renal",
+     "point_estimate": 0.033,
+     "interval": {
+      "lo": 0.0228,
+      "hi": 0.0442,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0082,
+     "risk_band": "moderate",
+     "band_basis": "serious",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 2.2x more often",
+       "detail": "across 664 tubulin trials, 15% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 2.24
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 119,
+     "weight_applied": 2.4,
+     "at_risk_for_patient": true
+    },
+    {
+     "organ_axis": "gastrointestinal",
+     "label": "Gastrointestinal",
+     "point_estimate": 0.3791,
+     "interval": {
+      "lo": 0.3013,
+      "hi": 0.4487,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0202,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 162,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "neurologic",
+     "label": "Neurologic",
+     "point_estimate": 0.2027,
+     "interval": {
+      "lo": 0.1502,
+      "hi": 0.2536,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0123,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 8.0x more often",
+       "detail": "across 664 tubulin trials, 51% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 8.02
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "ocular",
+     "label": "Ocular",
+     "point_estimate": 0.0924,
+     "interval": {
+      "lo": 0.066,
+      "hi": 0.1178,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0027,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [
+      {
+       "factor": "trial protocols exclude this organ 17.8x more often",
+       "detail": "across 664 tubulin trials, 23% exclude patients with disease here, against the oncology base rate. Sponsors write exclusions before outcomes are known, so this is an expert prior about which organ the chemistry threatens -- not a prediction, and not pooled with the outcome model, which it is negatively coupled with.",
+       "source": "exclusion_head",
+       "contribution": null,
+       "odds_ratio": 17.8
+      }
+     ],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 126,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "dermatologic",
+     "label": "Dermatologic",
+     "point_estimate": 0.1822,
+     "interval": {
+      "lo": 0.1346,
+      "hi": 0.2283,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0024,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "metabolic_endocrine",
+     "label": "Metabolic / Endocrine",
+     "point_estimate": 0.1601,
+     "interval": {
+      "lo": 0.1185,
+      "hi": 0.202,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0103,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 163,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "musculoskeletal",
+     "label": "Musculoskeletal",
+     "point_estimate": 0.1476,
+     "interval": {
+      "lo": 0.1085,
+      "hi": 0.1881,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0066,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 160,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "infectious_immune",
+     "label": "Infectious / Immune",
+     "point_estimate": 0.103,
+     "interval": {
+      "lo": 0.0718,
+      "hi": 0.1321,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0398,
+     "risk_band": "moderate",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 158,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "otologic",
+     "label": "Otologic",
+     "point_estimate": 0.0197,
+     "interval": {
+      "lo": 0.0131,
+      "hi": 0.0271,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0013,
+     "risk_band": "low",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 69,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    },
+    {
+     "organ_axis": "constitutional",
+     "label": "Constitutional",
+     "point_estimate": 0.309,
+     "interval": {
+      "lo": 0.2401,
+      "hi": 0.3732,
+      "kind": "credible_90"
+     },
+     "serious_estimate": 0.0253,
+     "risk_band": "high",
+     "band_basis": "common",
+     "band_source": "model",
+     "drivers": [],
+     "n_supporting_agents": 7,
+     "n_supporting_arms": 166,
+     "weight_applied": 1.0,
+     "at_risk_for_patient": false
+    }
+   ],
+   "weighted_risk": 0.2438,
+   "weighted_risk_basis": "serious",
+   "worst_axis": "gastrointestinal",
+   "worst_axis_risk": 0.3791,
+   "worst_axis_risk_basis": "common",
+   "precedent_score": 1.609,
+   "binding_constraint": "C2_delivered_dose",
+   "nearest_real_adc": "belantamab mafodotin",
+   "nearest_real_diff": "DAR 4.0 -> 2.0; target BCMA -> ERBB2",
    "novelty_tier": 1,
    "has_unapproved_component": false
   }
  ],
  "pareto_front": [
-  0
+  0,
+  1,
+  2,
+  3,
+  5
  ],
  "tie_groups": [
   [
@@ -342,9 +2020,7 @@
    58,
    59,
    60,
-   61
-  ],
-  [
+   61,
    62,
    63,
    64,
@@ -405,12 +2081,12 @@
    "isotype": "IgG1",
    "masking": "none"
   },
-  "weighted_risk": 2.1223922763726852,
+  "weighted_risk": 0.28230486414995076,
   "excluded_by": [
    "C6 no usable evidence for this chemistry on pulmonary, renal, which this profile flags as at risk (fewer than 3 supporting arms)"
   ],
-  "would_have_ranked_first": true,
-  "best_passing_weighted_risk": 2.2690549233641755
+  "would_have_ranked_first": false,
+  "best_passing_weighted_risk": 0.23678597058108475
  },
  "hard_flags_enabled": true
 }

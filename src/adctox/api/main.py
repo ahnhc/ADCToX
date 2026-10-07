@@ -369,6 +369,8 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
         s_mean, s_arms = serious_cell(axis)
         use_serious = s_mean is not None and axis in comorb.at_risk_axes
         band_basis = "serious" if use_serious else "common"
+        # Reported evidence follows the basis, so the count supports the figure banded.
+        shown_arms = s_arms if use_serious else n_arms
         n_agents = int(post.evidence_agents[mi, i])
         axis_flags = applicable_flags(
             design.mechanism, design.payload,
@@ -425,8 +427,12 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
                 # order of magnitude smaller, and each table has its own measured edges.
                 "band_basis": band_basis,
                 "band_source": "rule" if axis_flags else "model",
-                "n_supporting_agents": n_agents,
-                "n_supporting_arms": n_arms,
+                # Follows the band basis: the count has to support the figure banded.
+                "n_supporting_agents": (
+                    int(spost.evidence_agents[smi, spost.axes.index(axis)])
+                    if use_serious else n_agents
+                ),
+                "n_supporting_arms": shown_arms,
                 "weight_applied": weight,
                 "at_risk_for_patient": axis in comorb.at_risk_axes,
                 "drivers": drivers,
