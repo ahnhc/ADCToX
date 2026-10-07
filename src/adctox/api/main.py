@@ -119,6 +119,14 @@ LIMITATIONS = [
     "The comorbidity weighting is an elicited prior with zero training rows, derived "
     "from quantitative thresholds in trial exclusion criteria.",
     "Two of six payload mechanisms have enough agents to serve as a held-out fold.",
+    "Organ risks come from two event tables that rank organs differently. An axis a "
+    "declared comorbidity touches is banded on serious events, the rest on any-grade "
+    "events, and each row states its basis. Bands are not comparable across bases: the "
+    "serious scale is roughly ten times smaller, and each table's band edges are "
+    "measured from that table.",
+    "The one anticipatory evaluation -- did the model rank an organ highly before FDA "
+    "added a warning for it -- is a case series of 3 scorable events, not a validation "
+    "study, and does not reach significance.",
 ]
 
 app = FastAPI(

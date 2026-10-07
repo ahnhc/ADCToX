@@ -183,11 +183,23 @@ def main() -> int:
         )
 
     scored = [r for r in results if r.get("status") == "scored"]
+    # Everything below was printed and never saved, so the report could not cite this
+    # evaluation at all without typing its numbers by hand. Accumulated here and written
+    # with the artefact.
+    summary: dict = {"n_scored": len(scored), "n_not_scorable": len(results) - len(scored)}
     print(f"\n{'=' * 74}")
     if scored:
         ranks = [r["rank"] for r in scored]
         hits = sum(r["in_top3"] for r in scored)
         p_val = binom_tail(hits, len(scored), P_TOP3)
+        summary.update({
+            "mean_rank": float(np.mean(ranks)),
+            "null_mean_rank": (N_AXES + 1) / 2,
+            "top3_hits": int(hits),
+            "p_value": float(p_val),
+            "significant": bool(p_val < 0.05),
+            "ranks_by_agent": {},
+        })
         print(f"{len(scored)} events scored ({len(results) - len(scored)} not scorable)")
         print(f"  mean rank {np.mean(ranks):.2f} / {N_AXES}  (null mean 7.5)")
         print(f"  top-3 hits {hits}/{len(scored)}  ->  p = {p_val:.4f}"
@@ -196,6 +208,8 @@ def main() -> int:
         for r in scored:
             per_agent.setdefault(r["agent"], []).append(r["rank"])
         print(f"\n  per agent (concentration check):")
+        summary["ranks_by_agent"] = {a: list(rs) for a, rs in per_agent.items()}
+        summary["n_independent_drugs"] = len(per_agent)
         for a, rs in per_agent.items():
             print(f"    {a:26s} ranks {rs}")
         if len(per_agent) > 1:
@@ -204,14 +218,24 @@ def main() -> int:
                 if not rest:
                     continue
                 h = sum(r["in_top3"] for r in rest)
+                pv = binom_tail(h, len(rest), P_TOP3)
+                summary.setdefault("leave_one_agent_out", {})[drop] = {
+                    "top3_hits": int(h), "n": len(rest), "p_value": float(pv),
+                }
                 print(f"    leave-{drop.split('_')[0]}-out: {h}/{len(rest)} top-3, "
-                      f"p = {binom_tail(h, len(rest), P_TOP3):.4f}")
+                      f"p = {pv:.4f}")
         print(f"\n  Power recomputed on the scorable subset, which is what the test "
               f"actually runs on:")
         for k, pv in power_table(len(scored)):
             flag = "  <- significant at 0.05" if pv < 0.05 else ""
             print(f"    {k}/{len(scored)} in top 3  ->  p = {pv:.4f}{flag}")
         reachable = [k for k, pv in power_table(len(scored)) if pv < 0.05]
+        summary["power_on_scorable_subset"] = [
+            [int(k), float(pv)] for k, pv in power_table(len(scored))
+        ]
+        # The structural point: at this n the test can essentially only succeed perfectly
+        # or be inconclusive. Recorded so the limitation travels with the result.
+        summary["min_hits_for_significance"] = int(reachable[0]) if reachable else None
         print(f"\n  This is a case series with a permutation test, not a validation study:"
               f" {len(scored)} events across {len(per_agent)} independent drugs."
               + (f" Only {reachable[0]}/{len(scored)} or better can reach p<0.05, so a "
@@ -222,7 +246,8 @@ def main() -> int:
 
     path = args.out / "label_change_eval.json"
     path.write_text(json.dumps(
-        {"null_p_top3": P_TOP3, "power": power_table(len(events)), "results": results},
+        {"null_p_top3": P_TOP3, "power": power_table(len(events)),
+         "summary": summary, "results": results},
         indent=1, default=str), encoding="utf-8")
     print(f"\n-> {path}")
     return 0

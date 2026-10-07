@@ -31,6 +31,9 @@ END = "<!-- /generated: fitted-parameters -->"
 # its six figures were stale after one -- so it is generated too.
 CENS_BEGIN = "<!-- generated: censoring-sensitivity -->"
 CENS_END = "<!-- /generated: censoring-sensitivity -->"
+LCE_BEGIN = "<!-- generated: label-change -->"
+LCE_END = "<!-- /generated: label-change -->"
+
 RES_BEGIN = "<!-- generated: results-table -->"
 RES_END = "<!-- /generated: results-table -->"
 
@@ -188,6 +191,53 @@ def build_results_block(metrics: dict, dose: dict | None) -> str | None:
     return "\n".join(out)
 
 
+def build_label_change_block(doc: dict) -> str | None:
+    """The Module B anticipatory result.
+
+    Generated because the report described this evaluation's design and power and then
+    reported no outcome at all -- the artefact had been quarantined since the centering
+    bug and the summary was only ever printed to stdout.
+    """
+    s = doc.get("summary") or {}
+    if not s.get("n_scored"):
+        return None
+    hits, n = s["top3_hits"], s["n_scored"]
+    lines = [
+        LCE_BEGIN,
+        "",
+        f"**{n} of {s['n_scored'] + s['n_not_scorable']} events were scorable**; the rest "
+        f"predate a corpus large enough to fit on, and are reported as not scorable "
+        f"rather than scored on noise.",
+        "",
+        f"| quantity | value |",
+        f"|---|---|",
+        f"| events scored | {n} across {s.get('n_independent_drugs', '?')} independent "
+        f"drugs |",
+        f"| mean predicted rank | {s['mean_rank']:.4f} of 14 (null {s['null_mean_rank']}) |",
+        f"| in top three | {hits} of {n} |",
+        f"| one-sided p | {s['p_value']:.4f}"
+        f"{' (significant)' if s['significant'] else ' (not significant)'} |",
+        "",
+    ]
+    mh = s.get("min_hits_for_significance")
+    if mh is not None:
+        lines.append(
+            f"The mean rank beats the null, but the test does not reach significance. "
+            f"And it barely could: at {n} scorable events only **{mh} of {n}** or better "
+            f"reaches p<0.05, so a single miss ends it. That is the same defect as the "
+            f"unfireable AUC gate elsewhere in this report -- a test whose outcome was "
+            f"nearly determined by its own sample size. It is reported as a case series "
+            f"with a permutation test, which is what it is."
+        )
+    else:
+        lines.append(
+            f"No outcome at {n} scorable events could have reached p<0.05. The test was "
+            f"unfireable as specified, and saying so is the result."
+        )
+    lines.append(LCE_END)
+    return "\n".join(lines)
+
+
 def build_censoring_block(doc: dict) -> str | None:
     """The b_thresh sensitivity table, from artifacts/censoring_sensitivity.json."""
     if not all(k in doc for k in (k for k, _ in CENS_ROWS)):
@@ -223,6 +273,8 @@ def main() -> int:
                     default=Path("artifacts/censoring_sensitivity.json"))
     ap.add_argument("--dose-mod", type=Path,
                     default=Path("artifacts/dose_mod_eval.json"))
+    ap.add_argument("--label-change", type=Path,
+                    default=Path("artifacts/label_change_eval.json"))
     # Both documents quoted the same parameters and both were stale. The model card was
     # worse off: check_report.py only scanned report/, so its figures were never checked
     # at all.
@@ -243,6 +295,12 @@ def main() -> int:
         if args.dose_mod.exists() else None
     )
     res_block = build_results_block(metrics, dose)
+    lce_block = (
+        build_label_change_block(
+            json.loads(args.label_change.read_text(encoding="utf-8"))
+        )
+        if args.label_change.exists() else None
+    )
     cens_block = None
     if args.censoring.exists():
         cens_block = build_censoring_block(
@@ -254,6 +312,7 @@ def main() -> int:
         re.escape(CENS_BEGIN) + r".*?" + re.escape(CENS_END), re.S
     )
     res_pattern = re.compile(re.escape(RES_BEGIN) + r".*?" + re.escape(RES_END), re.S)
+    lce_pattern = re.compile(re.escape(LCE_BEGIN) + r".*?" + re.escape(LCE_END), re.S)
     rc = 0
     for doc in args.report:
         text = doc.read_text(encoding="utf-8")
@@ -267,6 +326,16 @@ def main() -> int:
                     text = replaced
                     doc.write_text(text, encoding="utf-8")
                     print(f"{doc}: results table regenerated")
+        if lce_block and lce_pattern.search(text):
+            replaced = lce_pattern.sub(lambda _: lce_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: label-change block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: label-change block regenerated")
         if cens_block and cens_pattern.search(text):
             replaced = cens_pattern.sub(lambda _: cens_block, text)
             if replaced != text:

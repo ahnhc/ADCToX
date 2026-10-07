@@ -33,6 +33,16 @@ unprompted, and trial exclusion criteria encode organ concern at 4x to 18x enric
 an oncology base rate. What it does not support is ranking one candidate design above
 another.
 
+Organ risks come from **two event tables, because they rank organs differently** (mean
+Spearman +0.15 across five mechanisms). Any-grade events recover the high-frequency label
+sections; serious events recover the boxed warnings -- topoisomerase-I payloads sit 10th
+of 14 on pulmonary in the first table and 2nd in the second, and the second is the one
+that matches ENHERTU's interstitial-lung-disease warning. A declared comorbidity is a
+question about serious harm, so axes the patient is vulnerable on are banded on the
+serious table and the rest on any-grade, each row stating its basis. Band edges are
+measured per table from its own observed rates; they differ by an order of magnitude, so
+bands are not comparable across bases.
+
 ## Quickstart
 
 ```bash

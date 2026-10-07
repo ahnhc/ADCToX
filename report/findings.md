@@ -356,6 +356,9 @@ gives p = 0.042. With 4 of the 7 events from brentuximab vedotin alone, the effe
 number of independent drugs is 4 and a leave-brentuximab-out sensitivity is mandatory.
 **This is a case series with a permutation test, not a validation study.**
 
+<!-- generated: label-change -->
+<!-- /generated: label-change -->
+
 Three corrections cut an initial 12 events to 7: gemtuzumab ozogamicin's label history
 spans a 2010 withdrawal and 2017 re-approval, so a diff across that boundary compares
 different regulatory submissions; granularity is the axis rather than the heading, so a
