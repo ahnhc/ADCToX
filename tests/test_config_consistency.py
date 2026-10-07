@@ -110,3 +110,37 @@ def test_every_linker_handle_pairing_is_reachable():
         assert spec["handle"] in payload_handles, (
             f"linker {linker} accepts handle {spec['handle']!r}, which no payload has"
         )
+
+
+def test_propose_and_assess_cannot_disagree_about_novelty_tier():
+    """`propose` hardcodes tier 1; `assess` derives it from the fitted corpus.
+
+    Both are right today, and nothing holds them together. `propose` says tier 1 because
+    the enumerator admits a component only with clinical precedent; `assess` says tier 1
+    only when the payload's family is in the fitted corpus. Add a design-space payload
+    whose family no fitted agent carries and the product would offer a ranked candidate
+    as tier 1 while calling the same chemistry tier 2 on the other endpoint -- which is
+    exactly the contradiction the exatecan gap produced, in a new place.
+
+    The fitted corpus is the posterior's family list, not the registry's: the registry has
+    an immunotoxin that the design matrix cannot represent and the model therefore drops.
+    """
+    from pathlib import Path
+
+    from adctox.model.predict import Posterior
+
+    art = Path(__file__).resolve().parents[1] / "artifacts" / "posterior_other.npz"
+    if not art.exists():
+        pytest.skip("no posterior built")
+    fitted = set(Posterior.load(art).families)
+    ds = _load("design_space.yaml")["payloads"]
+    missing = {
+        payload: spec["family"]
+        for payload, spec in ds.items()
+        if spec["family"] not in fitted
+    }
+    assert not missing, (
+        f"these design-space payloads have families absent from the fitted corpus: "
+        f"{missing}. The enumerator would rank them as tier 1 while /assess reports them "
+        f"as tier 2. Fitted families: {sorted(fitted)}"
+    )
