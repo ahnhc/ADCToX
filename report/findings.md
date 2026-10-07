@@ -1,7 +1,17 @@
 # ADCTox: what the public data supports
 
-Working draft. Every number is measured and regenerable by `make all`; none is typed by
-hand. Figures and tables are produced from `artifacts/*.json`.
+Working draft. Every number here is measured, and `make all` regenerates all of it from
+`artifacts/*.json`.
+
+Stated precisely, because the looser version of this claim was false for most of the
+project's life. The tables are generated from artefacts between markers in this file, so
+they cannot drift. Figures quoted in prose are checked by `make check-report`, which fails
+on any decimal it cannot find in an artefact; 16 are allowlisted with a stated reason
+each, and superseded figures quoted in before/after comparisons live in
+`artifacts/superseded/`. That guard was itself a no-op until recently -- it passed 99% of
+randomly fabricated four-decimal figures -- so it now measures and prints its own
+false-pass rate on every run. At three decimals it is still weak, which is why figures are
+quoted to four where traceability is the point.
 
 ## 1. What was built
 
@@ -31,12 +41,24 @@ DM1 chemistry. So the data identifying a design coefficient is `agents x axes = 
 3,990. An earlier draft of this project proposed a 420-parameter design matrix, which is
 0.57 observations per parameter: fewer data points than parameters.
 
-## Results, verified after the fix
+## 3. Results, after two rounds of correction
 
-All five evaluations were re-run on the corrected model. **The model does not beat a
-base-rate baseline on any of them.** Deltas are paired against the strongest baseline for
-that split, because the model's own interval excluding zero would only say the target
-ordering is not random.
+Two rounds of correction, in order: a centering bug in the random intercepts, which
+invalidated a first round of evaluation entirely; and two bugs in the cross-validation
+fold construction, which were leaking a trial into two splits while discarding half the
+training arms from a third. Everything below is from after both.
+
+**The model does not beat a base-rate baseline on any of these.** On the three
+within-arm splits the deficit now excludes zero, which it did not on leave-one-agent-out
+before the folds were fixed -- correcting them made the verdict stronger rather than
+weaker, and the subsection "The folds themselves were wrong" below explains why that is
+the correct direction.
+
+Deltas are paired against the strongest baseline for that split, because the model's own
+interval excluding zero would only say the target ordering is not random. Each delta is
+the mean over folds of (fold AUC minus that fold's better baseline), which is the
+quantity the interval is computed on; the other aggregation, a difference of macro
+averages, is in the artefact and differs where the winning baseline varies by fold.
 
 <!-- generated: results-table -->
 
@@ -46,7 +68,7 @@ ordering is not random.
 | within-arm ranking, leave-one-mechanism-out (2) | 0.8523 | 0.8715 | **-0.0191** | [-0.0287, -0.0096] | excludes 0 |
 | within-arm ranking, leave-one-family-out (4) | 0.7725 | 0.8525 | **-0.0783** | [-0.1223, -0.0317] | excludes 0 |
 | across-agent per-axis Spearman | +0.0966 | +0.0263 | -- | [-0.0639, +0.2632] | includes 0 |
-| dose-modification ordering (13) | +0.1882 | +0.1533 | +0.0348 | [-0.0007, +0.0693] | includes 0 |
+| dose-modification ordering (13) | +0.1797 | +0.1672 | +0.0125 | [-0.0264, +0.0511] | includes 0 |
 
 <!-- /generated: results-table -->
 
@@ -116,11 +138,18 @@ this agent, 0.3191 against an observed 0.2120. Absolute calibration on held-out 
 poor, and the earlier folds were too mutilated to show it. One fold, one seed, reported as
 such.
 
-The dose-modification comparison was the one favourable result before the fix
-(+0.039 [+0.003, +0.073]) and lost its significance after it (+0.035 [-0.001, +0.069]).
-It also carries its own refutation in the same output: top-organ agreement is 1 of 13
-against 0.93 expected by chance, and the model names gastrointestinal as the most-affected
-axis for 9 of 13 drugs, which is the axis base rate rather than a per-drug judgement.
+The dose-modification comparison was the one favourable result before the centering fix
+(+0.039 [+0.003, +0.073]), lost its significance after it (+0.035 [-0.001, +0.069]), and
+weakened again once the cross-validation folds were corrected, to
++0.0125 [-0.0264, +0.0511]. That third move is not a separate finding: this
+comparison is computed from held-out fold predictions, so fixing the folds necessarily
+moved it. The informative part is the direction -- the model fell from +0.1882 to
++0.1797 while its baseline rose from +0.1533 to +0.1672, which is the pattern the
+controlled fold experiment above accounts for.
+
+It also carries its own refutation in the same output: top-organ agreement is 1/13
+against 0.93 expected by chance, and the model names gastrointestinal as the most-affected axis for
+8 of 13 drugs, which is the axis base rate rather than a per-drug judgement.
 
 ### The withdrawal was precautionary, and the re-run upheld the main result
 
@@ -137,8 +166,9 @@ small corpora where the degeneracy was severe, and those predictions were unusab
 
 ### The gate was unfireable, independently of all of this
 
-The protocol said "macro AUC below 0.65 triggers the cut order". The model scores 0.827
-and passes -- but a constant global-axis-mean predictor scores 0.844 on the same metric.
+The protocol said "macro AUC below 0.65 triggers the cut order". The model scores
+0.8036 and passes -- but a constant global-axis-mean predictor scores 0.8437 on
+the same metric.
 **A gate a design-blind constant clears is not a gate.** This is a property of the metric,
 not of the model or the bug, and the lesson generalizes: an absolute threshold on a
 base-rate-dominated metric cannot detect the failure it was written for. Replaced by the
@@ -162,8 +192,7 @@ likely cause is ascertainment: a trial that mandates chest imaging reports far m
 pulmonary events than one recording symptoms, which dominates any across-agent comparison
 on an axis that needs active surveillance to be seen at all.
 
-### 3.1 The bug
-### 3.1 The bug
+### The centering bug, in detail
 
 On a 153-arm corpus the model predicted the otologic axis at 0.9997 against an observed
 rate of 0.04. Two coupled degeneracies: the random intercepts were not constrained to sum
@@ -181,38 +210,29 @@ inherits an intercept nothing compensates for.
 
 After the fix, predictions track the observed per-axis rates across all fourteen axes.
 
-### 3.2 The gate was unfireable, independently of the bug
-
-The protocol said "macro AUC below 0.65 triggers the cut order". A constant
-global-axis-mean predictor scores about 0.84 on that metric. **A gate that a design-blind
-constant clears is not a gate**, and this holds whatever the re-run shows: it is a property
-of the metric, not of the model. The failure mode is general -- an absolute threshold on a
-base-rate-dominated metric cannot detect the failure it was written for. Replaced by the
-paired delta against the strongest baseline.
-
-### 3.3 What the within-arm metric can establish
-
-It ranks 14 axes inside one arm, and axis base rates are consistent enough across arms
-that one fixed ordering is near-optimal. A model that knows those base rates and perturbs
-them has little to gain there. So that metric alone cannot show the design terms carry no
-signal; the across-agent comparison can, and both are reported together.
-
 ## 4. Where it fails is the most informative result
 
-| held-out agent | delta | signature | family status |
-|---|---|---|---|
-| trastuzumab emtansine | **-0.115** | thrombocytopenia, ocular, hepatic | only DM1 agent |
-| belantamab mafodotin | -0.064 | keratopathy | only MMAF agent |
-| mirvetuximab soravtansine | -0.050 | ocular | only DM4 agent |
-| polatuzumab vedotin | -0.040 | — | one of four MMAE agents |
+The four worst leave-one-agent-out folds, with the two structural features that might
+explain them:
 
-Those per-fold figures are from the pre-fix model, and the reading taken from them -- that
-every large miss is an agent which is the sole representative of its payload *family* --
-did not survive the split-corrected re-run. On corrected folds none of the four worst is
-sole-of-family, and the two worst are each other's only family sibling. What tracks fold
-difficulty is how many agents share the held-out agent's **payload**: rank correlation
-+0.771, against +0.694 for the family share of its mechanism. See `docs/MODEL_CARD.md`
-for the measured table, and `scripts/fold_difficulty.py` for the computation.
+<!-- generated: fold-difficulty -->
+
+| fold | delta vs baseline | same-payload siblings | family share of mechanism | sole of family |
+|---|---|---|---|---|
+| trastuzumab emtansine | **-0.1565** | 0 | 0.29 | no |
+| mirvetuximab soravtansine | **-0.1058** | 0 | 0.29 | no |
+| belantamab mafodotin | **-0.0981** | 0 | 0.71 | no |
+| gemtuzumab ozogamicin | **-0.0697** | 1 | 1.00 | no |
+
+Sole-of-family agents among the four worst folds: 0/4. Mean delta -0.0485 for the 3 sole-of-family agents against -0.0408 for the 13 that share one -- no separation. Rank correlation of fold delta with same-payload siblings +0.771, with family share of its mechanism +0.694.
+<!-- /generated: fold-difficulty -->
+
+An earlier version of this section led with the pre-fix figures and read them as showing
+that every large miss is an agent which is the sole representative of its payload
+*family*. That reading did not survive the split-corrected re-run, and it was
+load-bearing: it is the stated reason the project tried a payload-family level at all.
+What tracks fold difficulty is how many agents share the held-out agent's **payload**.
+`scripts/fold_difficulty.py` computes it.
 
 The mechanism behind it is unchanged and the conclusion is sharper. Held out, an agent is
 predicted from chemistry that behaves differently -- T-DM1's platelet and ocular profile
@@ -307,11 +327,13 @@ where no censoring model is needed at all.
 
 | treatment | `b_thresh` |
 |---|---|
-| censored | +0.0328 [+0.0277, +0.0374] |
-| zero-imputed | +0.0185 [+0.0135, +0.0235] |
-| completely-reported subset only | +0.0073 [-0.6528, +0.7203] |
+| censored | +0.0331 [+0.0284, +0.0381] |
+| zero-imputed | +0.0184 [+0.0130, +0.0233] |
+| completely-reported subset only | +0.0015 [-0.7075, +0.7347] |
 
-The completely-reported subset is only 42 arms, so its own interval for this coefficient spans [-0.6528, +0.7203] -- which is why agreement between the corpora is assessed on the mechanism profiles rather than on coefficients.
+Agreement on the mechanism organ profiles, censored full corpus against the completely-reported subset: calicheamicin +0.8462, topoisomerase-I +0.8198, tubulin +0.6659 (sorted, so the binding figure is the last at +0.6659). The two corpora agree on which organ each payload mechanism hits, so the censoring treatment recovers signal that survives in data which never needed correcting. Had they disagreed, the project would have been resting on its own correction.
+
+The completely-reported subset is only 42 arms, so its own interval for this coefficient spans [-0.7075, +0.7347] -- which is why agreement between the corpora is assessed on the mechanism profiles rather than on coefficients.
 <!-- /generated: censoring-sensitivity -->
 
 **The direction was predicted wrongly and the measurement corrected it.** We expected
@@ -327,11 +349,8 @@ censored likelihood accounts for the cells that are missing; this coefficient ab
 selection on the cells that are present. A non-zero value is expected and necessary.
 
 **The check that actually decides it is the profile comparison, and it passes.** Censored
-full corpus against completely-reported subset, per mechanism: calicheamicin
-+0.7890, topoisomerase-I +0.7846, tubulin +0.7407.
-The two corpora agree on which organ each payload
-mechanism hits, so the treatment recovers signal that survives in data that never needed
-correcting. Had they disagreed, the project would have been resting on its own correction.
+full corpus against completely-reported subset. The per-mechanism figures are in the
+generated block above.
 
 ### A free negative control, and a second correction to the same coefficient
 

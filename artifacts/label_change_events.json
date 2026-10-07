@@ -206,5 +206,15 @@
   "loncastuximab_tesirine": 1,
   "tisotumab_vedotin": 1
  },
- "unmapped_headings": {}
+ "unmapped_headings": {},
+ "provenance": {
+  "revision": "37276100cd29feb89fa3ffbc5d6d0e7ea2762a63",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "label_change_events.py",
+  "written_utc": "2026-10-07T15:53:11+00:00",
+  "inputs": {
+   "raw": "sha256:ec5a2b0edc9f81665c63fb7c77f191183d307332f8867e25b3c1a906b1edbc21"
+  }
+ }
 }

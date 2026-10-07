@@ -7,13 +7,8 @@
   "renal": 0.5139056831922612,
   "cardiovascular": 0.2547359935509875,
   "pulmonary": 0.037484885126964934,
-  "neurologic": 0.0,
   "ocular": 0.002015316404675534,
-  "haematologic": 0.49334945586457074,
-  "gastrointestinal": 0.0,
-  "dermatologic": 0.0,
-  "infectious_immune": 0.0,
-  "metabolic_endocrine": 0.0
+  "haematologic": 0.49334945586457074
  },
  "by_mechanism": [
   {
@@ -53,14 +48,6 @@
      "p": 0.8169299336047812
     },
     {
-     "organ": "neurologic",
-     "n_hit": 0,
-     "n": 664,
-     "rate": 0.0,
-     "odds_ratio": 3.73438675696012,
-     "p": 1.0
-    },
-    {
      "organ": "ocular",
      "n_hit": 3,
      "n": 664,
@@ -75,38 +62,6 @@
      "rate": 0.4819277108433735,
      "odds_ratio": 0.9554061045620943,
      "p": 0.6307491365741356
-    },
-    {
-     "organ": "gastrointestinal",
-     "n_hit": 0,
-     "n": 664,
-     "rate": 0.0,
-     "odds_ratio": 3.73438675696012,
-     "p": 1.0
-    },
-    {
-     "organ": "dermatologic",
-     "n_hit": 0,
-     "n": 664,
-     "rate": 0.0,
-     "odds_ratio": 3.73438675696012,
-     "p": 1.0
-    },
-    {
-     "organ": "infectious_immune",
-     "n_hit": 0,
-     "n": 664,
-     "rate": 0.0,
-     "odds_ratio": 3.73438675696012,
-     "p": 1.0
-    },
-    {
-     "organ": "metabolic_endocrine",
-     "n_hit": 0,
-     "n": 664,
-     "rate": 0.0,
-     "odds_ratio": 3.73438675696012,
-     "p": 1.0
     }
    ]
   },
@@ -147,14 +102,6 @@
      "p": 0.00012148862812201076
     },
     {
-     "organ": "neurologic",
-     "n_hit": 0,
-     "n": 406,
-     "rate": 0.0,
-     "odds_ratio": 6.104551045510455,
-     "p": 1.0
-    },
-    {
      "organ": "ocular",
      "n_hit": 1,
      "n": 406,
@@ -169,38 +116,6 @@
      "rate": 0.43103448275862066,
      "odds_ratio": 0.7785299593345721,
      "p": 0.021231610580441485
-    },
-    {
-     "organ": "gastrointestinal",
-     "n_hit": 0,
-     "n": 406,
-     "rate": 0.0,
-     "odds_ratio": 6.104551045510455,
-     "p": 1.0
-    },
-    {
-     "organ": "dermatologic",
-     "n_hit": 0,
-     "n": 406,
-     "rate": 0.0,
-     "odds_ratio": 6.104551045510455,
-     "p": 1.0
-    },
-    {
-     "organ": "infectious_immune",
-     "n_hit": 0,
-     "n": 406,
-     "rate": 0.0,
-     "odds_ratio": 6.104551045510455,
-     "p": 1.0
-    },
-    {
-     "organ": "metabolic_endocrine",
-     "n_hit": 0,
-     "n": 406,
-     "rate": 0.0,
-     "odds_ratio": 6.104551045510455,
-     "p": 1.0
     }
    ]
   },
@@ -241,14 +156,6 @@
      "p": 0.4081426451122777
     },
     {
-     "organ": "neurologic",
-     "n_hit": 0,
-     "n": 180,
-     "rate": 0.0,
-     "odds_ratio": 13.74792243767313,
-     "p": 1.0
-    },
-    {
      "organ": "ocular",
      "n_hit": 0,
      "n": 180,
@@ -263,38 +170,6 @@
      "rate": 0.07222222222222222,
      "odds_ratio": 0.08276908637701651,
      "p": 1.27132335351941e-32
-    },
-    {
-     "organ": "gastrointestinal",
-     "n_hit": 0,
-     "n": 180,
-     "rate": 0.0,
-     "odds_ratio": 13.74792243767313,
-     "p": 1.0
-    },
-    {
-     "organ": "dermatologic",
-     "n_hit": 0,
-     "n": 180,
-     "rate": 0.0,
-     "odds_ratio": 13.74792243767313,
-     "p": 1.0
-    },
-    {
-     "organ": "infectious_immune",
-     "n_hit": 0,
-     "n": 180,
-     "rate": 0.0,
-     "odds_ratio": 13.74792243767313,
-     "p": 1.0
-    },
-    {
-     "organ": "metabolic_endocrine",
-     "n_hit": 0,
-     "n": 180,
-     "rate": 0.0,
-     "odds_ratio": 13.74792243767313,
-     "p": 1.0
     }
    ]
   },
@@ -335,14 +210,6 @@
      "p": 0.6572185574086318
     },
     {
-     "organ": "neurologic",
-     "n_hit": 0,
-     "n": 39,
-     "rate": 0.0,
-     "odds_ratio": 62.82278481012658,
-     "p": 1.0
-    },
-    {
      "organ": "ocular",
      "n_hit": 0,
      "n": 39,
@@ -357,38 +224,6 @@
      "rate": 0.6923076923076923,
      "odds_ratio": 2.2592895059207843,
      "p": 0.015147822631990965
-    },
-    {
-     "organ": "gastrointestinal",
-     "n_hit": 0,
-     "n": 39,
-     "rate": 0.0,
-     "odds_ratio": 62.82278481012658,
-     "p": 1.0
-    },
-    {
-     "organ": "dermatologic",
-     "n_hit": 0,
-     "n": 39,
-     "rate": 0.0,
-     "odds_ratio": 62.82278481012658,
-     "p": 1.0
-    },
-    {
-     "organ": "infectious_immune",
-     "n_hit": 0,
-     "n": 39,
-     "rate": 0.0,
-     "odds_ratio": 62.82278481012658,
-     "p": 1.0
-    },
-    {
-     "organ": "metabolic_endocrine",
-     "n_hit": 0,
-     "n": 39,
-     "rate": 0.0,
-     "odds_ratio": 62.82278481012658,
-     "p": 1.0
     }
    ]
   },
@@ -429,14 +264,6 @@
      "p": 1.254032176156156e-05
     },
     {
-     "organ": "neurologic",
-     "n_hit": 0,
-     "n": 15,
-     "rate": 0.0,
-     "odds_ratio": 160.09677419354838,
-     "p": 1.0
-    },
-    {
      "organ": "ocular",
      "n_hit": 0,
      "n": 15,
@@ -451,38 +278,6 @@
      "rate": 0.7333333333333333,
      "odds_ratio": 2.6244272038473753,
      "p": 0.07318235355247663
-    },
-    {
-     "organ": "gastrointestinal",
-     "n_hit": 0,
-     "n": 15,
-     "rate": 0.0,
-     "odds_ratio": 160.09677419354838,
-     "p": 1.0
-    },
-    {
-     "organ": "dermatologic",
-     "n_hit": 0,
-     "n": 15,
-     "rate": 0.0,
-     "odds_ratio": 160.09677419354838,
-     "p": 1.0
-    },
-    {
-     "organ": "infectious_immune",
-     "n_hit": 0,
-     "n": 15,
-     "rate": 0.0,
-     "odds_ratio": 160.09677419354838,
-     "p": 1.0
-    },
-    {
-     "organ": "metabolic_endocrine",
-     "n_hit": 0,
-     "n": 15,
-     "rate": 0.0,
-     "odds_ratio": 160.09677419354838,
-     "p": 1.0
     }
    ]
   },
@@ -523,14 +318,6 @@
      "p": 1.0
     },
     {
-     "organ": "neurologic",
-     "n_hit": 0,
-     "n": 7,
-     "rate": 0.0,
-     "odds_ratio": 330.8666666666667,
-     "p": 1.0
-    },
-    {
      "organ": "ocular",
      "n_hit": 0,
      "n": 7,
@@ -545,40 +332,18 @@
      "rate": 0.2857142857142857,
      "odds_ratio": 0.4667953524629719,
      "p": 0.4528089089472177
-    },
-    {
-     "organ": "gastrointestinal",
-     "n_hit": 0,
-     "n": 7,
-     "rate": 0.0,
-     "odds_ratio": 330.8666666666667,
-     "p": 1.0
-    },
-    {
-     "organ": "dermatologic",
-     "n_hit": 0,
-     "n": 7,
-     "rate": 0.0,
-     "odds_ratio": 330.8666666666667,
-     "p": 1.0
-    },
-    {
-     "organ": "infectious_immune",
-     "n_hit": 0,
-     "n": 7,
-     "rate": 0.0,
-     "odds_ratio": 330.8666666666667,
-     "p": 1.0
-    },
-    {
-     "organ": "metabolic_endocrine",
-     "n_hit": 0,
-     "n": 7,
-     "rate": 0.0,
-     "odds_ratio": 330.8666666666667,
-     "p": 1.0
     }
    ]
   }
- ]
+ ],
+ "provenance": {
+  "revision": "37276100cd29feb89fa3ffbc5d6d0e7ea2762a63",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "exclusion_enrichment.py",
+  "written_utc": "2026-10-07T15:53:10+00:00",
+  "inputs": {
+   "eligibility": "sha256:b49ac53f1f93769de2a03b30e883a8bc256fc0635f73e4fccee2b073c522fb1e"
+  }
+ }
 }

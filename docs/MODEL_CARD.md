@@ -39,15 +39,20 @@ coefficient is therefore `n_agents x n_axes`:
 | within-arm ranking, leave-one-mechanism-out (2) | 0.8523 | 0.8715 | **-0.0191** | [-0.0287, -0.0096] | excludes 0 |
 | within-arm ranking, leave-one-family-out (4) | 0.7725 | 0.8525 | **-0.0783** | [-0.1223, -0.0317] | excludes 0 |
 | across-agent per-axis Spearman | +0.0966 | +0.0263 | -- | [-0.0639, +0.2632] | includes 0 |
-| dose-modification ordering (13) | +0.1882 | +0.1533 | +0.0348 | [-0.0007, +0.0693] | includes 0 |
+| dose-modification ordering (13) | +0.1797 | +0.1672 | +0.0125 | [-0.0264, +0.0511] | includes 0 |
 
 <!-- /generated: results-table -->
 
 The best within-arm predictor is the global axis mean, which carries no design information.
-The dose-modification comparison was favourable before the bug fix (+0.039 [+0.003,
-+0.073]) and is not after it, and in the same output the model is at chance on naming the
-organ each label fears most (1 of 13 against 0.93 expected), naming gastrointestinal for
-9 of 13 drugs because that is the axis base rate.
+The dose-modification comparison has now lost favourability twice. It read
++0.039 [+0.003, +0.073] before the centering fix, +0.035 [-0.001, +0.069] after it, and
++0.0125 [-0.0264, +0.0511] once the cross-validation folds were corrected --
+because it is computed from held-out fold predictions, so correcting the folds moved it.
+The model fell slightly, from +0.1882 to +0.1797, while its baseline rose from +0.1533 to
++0.1672: the same pattern the controlled fold comparison explains, where restoring the
+discarded training arms helps a base rate more than it helps the model. In the same output
+the model is at chance on naming the organ each label fears most (1/13 against 0.93
+expected), naming gastrointestinal for 8 of 13 drugs because that is the axis base rate.
 
 A sixth evaluation sits outside this table because it has no baseline column and is not a
 rank-correlation: the anticipatory test, which asks whether a model fit only on data

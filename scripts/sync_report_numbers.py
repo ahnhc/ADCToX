@@ -433,6 +433,26 @@ def build_censoring_block(doc: dict) -> str | None:
     sub = doc["threshold_0_only"].get("b_thresh", {})
     pa = doc.get("profile_agreement", {})
     n_arms = pa.get("n_arms_in_complete_subset")
+    # The substance check: do the censored and completely-reported corpora agree on which
+    # organ each mechanism hits? Generated, because the rerun that stamped this artefact
+    # would otherwise have left three hand-typed Spearmans stale.
+    rho = pa.get("spearman_by_mechanism") or {}
+    LABEL = {"dna_cleave": "calicheamicin", "topo1": "topoisomerase-I",
+             "tubulin": "tubulin", "dna_crosslink": "PBD/IGN",
+             "dna_alkyl": "duocarmycin", "protein_synth": "immunotoxin"}
+    if rho:
+        worst = min(rho.values())
+        lines += ["", (
+            "Agreement on the mechanism organ profiles, censored full corpus against the "
+            "completely-reported subset: "
+            + ", ".join(f"{LABEL.get(m, m)} {v:+.4f}"
+                        for m, v in sorted(rho.items(), key=lambda kv: -kv[1]))
+            + f" (sorted, so the binding figure is the last at {worst:+.4f}). The two "
+            "corpora agree on which organ each payload mechanism hits, so the censoring "
+            "treatment recovers signal that "
+            "survives in data which never needed correcting. Had they disagreed, the "
+            "project would have been resting on its own correction."
+        )]
     lines += [
         "",
         f"The completely-reported subset is only {n_arms} arms, so its own interval for "

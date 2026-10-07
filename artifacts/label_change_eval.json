@@ -108,7 +108,7 @@
    "in_top3": false,
    "n_arms_on_axis": 96,
    "n_agents_on_axis": 7,
-   "predicted_rate": 0.2026484891692952
+   "predicted_rate": 0.2028336183227008
   },
   {
    "agent": "brentuximab_vedotin",
@@ -204,7 +204,7 @@
    "in_top3": true,
    "n_arms_on_axis": 6,
    "n_agents_on_axis": 1,
-   "predicted_rate": 0.2625783505704727
+   "predicted_rate": 0.2645251395574767
   },
   {
    "agent": "enfortumab_vedotin",
@@ -231,7 +231,7 @@
    "in_top3": false,
    "n_arms_on_axis": 66,
    "n_agents_on_axis": 5,
-   "predicted_rate": 0.1505931137529501
+   "predicted_rate": 0.14941673988390977
   },
   {
    "agent": "brentuximab_vedotin",
@@ -260,5 +260,16 @@
    "status": "too_few_arms",
    "n_arms": 29
   }
- ]
+ ],
+ "provenance": {
+  "revision": "37276100cd29feb89fa3ffbc5d6d0e7ea2762a63",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "label_change_eval.py",
+  "written_utc": "2026-10-07T16:02:27+00:00",
+  "inputs": {
+   "events": "sha256:f7d0a2a89f38a09c12d879f9c499bb86e47fc195d7446918fd89022d9d8c021e",
+   "processed": "sha256:f26bbbd3db0e7f39ddd543b9fe6c8e092b767bdbdc76bc4a56c3a9b596cda62f"
+  }
+ }
 }

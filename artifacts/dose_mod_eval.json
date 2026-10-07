@@ -1,28 +1,58 @@
 {
  "n_agents": 13,
- "mean_rho_model": 0.18816568047337284,
+ "mean_rho_model": 0.1797125950972105,
  "rho_ci": [
-  0.12627218934911244,
-  0.250050718512257
+  0.09450549450549449,
+  0.2544378698224852
  ],
- "mean_rho_mech_baseline": 0.1533389687235841,
- "mean_rho_global_baseline": 0.1323753169907016,
- "paired_delta_vs_best_baseline": 0.03482671174978867,
+ "mean_rho_mech_baseline": 0.1672020287404903,
+ "mean_rho_global_baseline": 0.13237531699070157,
+ "paired_delta_vs_best_baseline": 0.012510566356720201,
  "paired_delta_ci": [
-  -0.0006762468300929708,
-  0.06931530008453085
+  -0.026373626373626374,
+  0.05105663567202028
  ],
  "best_baseline": "mech",
  "modal_model_top_axis": "gastrointestinal",
- "modal_model_top_axis_count": 9,
+ "modal_model_top_axis_count": 8,
  "top_organ_agreement": "1/13",
  "per_agent": [
+  {
+   "agent": "datopotamab_deruxtecan",
+   "mechanism": "topo1",
+   "n_axes_named": 5,
+   "rho_model": 0.367032967032967,
+   "rho_mech_baseline": 0.42857142857142855,
+   "rho_global_baseline": 0.367032967032967,
+   "top_label_axis": "pulmonary",
+   "top_model_axis": "gastrointestinal"
+  },
+  {
+   "agent": "brentuximab_vedotin",
+   "mechanism": "tubulin",
+   "n_axes_named": 2,
+   "rho_model": 0.3230769230769231,
+   "rho_mech_baseline": 0.22637362637362637,
+   "rho_global_baseline": 0.3230769230769231,
+   "top_label_axis": "neurologic",
+   "top_model_axis": "gastrointestinal"
+  },
+  {
+   "agent": "sacituzumab_govitecan",
+   "mechanism": "topo1",
+   "n_axes_named": 3,
+   "rho_model": 0.31868131868131866,
+   "rho_mech_baseline": 0.34945054945054943,
+   "rho_global_baseline": 0.34945054945054943,
+   "top_label_axis": "gastrointestinal",
+   "top_model_axis": "gastrointestinal"
+  },
   {
    "agent": "enfortumab_vedotin",
    "mechanism": "tubulin",
    "n_axes_named": 5,
-   "rho_model": 0.3362637362637363,
-   "rho_mech_baseline": 0.2,
+   "rho_model": 0.3098901098901099,
+   "rho_mech_baseline": 0.22197802197802197,
    "rho_global_baseline": 0.27472527472527475,
    "top_label_axis": "dermatologic",
    "top_model_axis": "gastrointestinal"
@@ -31,40 +61,10 @@
    "agent": "mirvetuximab_soravtansine",
    "mechanism": "tubulin",
    "n_axes_named": 5,
-   "rho_model": 0.3362637362637363,
+   "rho_model": 0.27912087912087913,
    "rho_mech_baseline": 0.24835164835164836,
    "rho_global_baseline": 0.2175824175824176,
    "top_label_axis": "pulmonary",
-   "top_model_axis": "gastrointestinal"
-  },
-  {
-   "agent": "datopotamab_deruxtecan",
-   "mechanism": "topo1",
-   "n_axes_named": 5,
-   "rho_model": 0.3230769230769231,
-   "rho_mech_baseline": 0.42857142857142855,
-   "rho_global_baseline": 0.367032967032967,
-   "top_label_axis": "pulmonary",
-   "top_model_axis": "gastrointestinal"
-  },
-  {
-   "agent": "sacituzumab_govitecan",
-   "mechanism": "topo1",
-   "n_axes_named": 3,
-   "rho_model": 0.2923076923076923,
-   "rho_mech_baseline": 0.2923076923076923,
-   "rho_global_baseline": 0.34945054945054943,
-   "top_label_axis": "gastrointestinal",
-   "top_model_axis": "gastrointestinal"
-  },
-  {
-   "agent": "brentuximab_vedotin",
-   "mechanism": "tubulin",
-   "n_axes_named": 2,
-   "rho_model": 0.2923076923076923,
-   "rho_mech_baseline": 0.1956043956043956,
-   "rho_global_baseline": 0.3230769230769231,
-   "top_label_axis": "neurologic",
    "top_model_axis": "gastrointestinal"
   },
   {
@@ -72,18 +72,28 @@
    "mechanism": "tubulin",
    "n_axes_named": 3,
    "rho_model": 0.2571428571428571,
-   "rho_mech_baseline": 0.16923076923076924,
+   "rho_mech_baseline": 0.15604395604395604,
    "rho_global_baseline": 0.22637362637362637,
    "top_label_axis": "infectious_immune",
    "top_model_axis": "gastrointestinal"
   },
   {
-   "agent": "pivekimab_sunirine",
-   "mechanism": "dna_crosslink",
-   "n_axes_named": 4,
+   "agent": "inotuzumab_ozogamicin",
+   "mechanism": "dna_cleave",
+   "n_axes_named": 3,
+   "rho_model": 0.2087912087912088,
+   "rho_mech_baseline": 0.2087912087912088,
+   "rho_global_baseline": 0.06813186813186813,
+   "top_label_axis": "hepatic",
+   "top_model_axis": "haematologic"
+  },
+  {
+   "agent": "gemtuzumab_ozogamicin",
+   "mechanism": "dna_cleave",
+   "n_axes_named": 3,
    "rho_model": 0.16043956043956045,
-   "rho_mech_baseline": 0.17362637362637362,
-   "rho_global_baseline": -0.07252747252747253,
+   "rho_mech_baseline": 0.16043956043956045,
+   "rho_global_baseline": 0.06813186813186813,
    "top_label_axis": "infectious_immune",
    "top_model_axis": "haematologic"
   },
@@ -92,37 +102,27 @@
    "mechanism": "tubulin",
    "n_axes_named": 3,
    "rho_model": 0.13406593406593406,
-   "rho_mech_baseline": 0.03736263736263736,
+   "rho_mech_baseline": 0.1076923076923077,
    "rho_global_baseline": 0.16483516483516483,
    "top_label_axis": "hepatic",
    "top_model_axis": "haematologic"
   },
   {
-   "agent": "gemtuzumab_ozogamicin",
-   "mechanism": "dna_cleave",
-   "n_axes_named": 3,
-   "rho_model": 0.11648351648351649,
-   "rho_mech_baseline": 0.14285714285714285,
-   "rho_global_baseline": 0.06813186813186813,
+   "agent": "pivekimab_sunirine",
+   "mechanism": "dna_crosslink",
+   "n_axes_named": 4,
+   "rho_model": 0.08131868131868132,
+   "rho_mech_baseline": 0.2,
+   "rho_global_baseline": -0.07252747252747253,
    "top_label_axis": "infectious_immune",
-   "top_model_axis": "haematologic"
-  },
-  {
-   "agent": "inotuzumab_ozogamicin",
-   "mechanism": "dna_cleave",
-   "n_axes_named": 3,
-   "rho_model": 0.07252747252747253,
-   "rho_mech_baseline": 0.06813186813186813,
-   "rho_global_baseline": 0.06813186813186813,
-   "top_label_axis": "hepatic",
    "top_model_axis": "haematologic"
   },
   {
    "agent": "trastuzumab_deruxtecan",
    "mechanism": "topo1",
    "n_axes_named": 3,
-   "rho_model": 0.06813186813186813,
-   "rho_mech_baseline": 0.06813186813186813,
+   "rho_model": 0.05934065934065934,
+   "rho_mech_baseline": 0.024175824175824177,
    "rho_global_baseline": -0.0989010989010989,
    "top_label_axis": "pulmonary",
    "top_model_axis": "gastrointestinal"
@@ -131,8 +131,8 @@
    "agent": "tisotumab_vedotin",
    "mechanism": "tubulin",
    "n_axes_named": 5,
-   "rho_model": 0.054945054945054944,
-   "rho_mech_baseline": 0.03296703296703297,
+   "rho_model": 0.01098901098901099,
+   "rho_mech_baseline": -0.0945054945054945,
    "rho_global_baseline": -0.10329670329670329,
    "top_label_axis": "neurologic",
    "top_model_axis": "gastrointestinal"
@@ -141,11 +141,21 @@
    "agent": "loncastuximab_tesirine",
    "mechanism": "dna_crosslink",
    "n_axes_named": 3,
-   "rho_model": 0.002197802197802198,
+   "rho_model": -0.17362637362637362,
    "rho_mech_baseline": -0.06373626373626373,
    "rho_global_baseline": -0.06373626373626373,
    "top_label_axis": "cardiovascular",
-   "top_model_axis": "gastrointestinal"
+   "top_model_axis": "constitutional"
   }
- ]
+ ],
+ "provenance": {
+  "revision": "37276100cd29feb89fa3ffbc5d6d0e7ea2762a63",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "dose_mod_eval.py",
+  "written_utc": "2026-10-07T15:53:13+00:00",
+  "inputs": {
+   "labels": "sha256:994685f0bed14c770628905b5de88b334abe1f6c61c12a71deaae24ca1700993"
+  }
+ }
 }

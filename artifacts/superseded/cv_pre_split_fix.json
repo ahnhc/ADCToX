@@ -39,5 +39,34 @@
  },
  "per_fold_of_note": {
   "trastuzumab_emtansine_delta": -0.025
+ },
+ "dose_modification": {
+  "_note": "Dose-modification ordering before the splits.py fix. It is computed from held-out fold predictions, so correcting the folds necessarily moved it; these are the figures the report quotes as the 'before' side.",
+  "mean_rho_model": 0.1882,
+  "mean_rho_best_baseline": 0.1533,
+  "paired_delta": 0.0348,
+  "paired_delta_ci": [
+   -0.0007,
+   0.0693
+  ],
+  "modal_model_top_axis_count": 9,
+  "_earlier_still": {
+   "_note": "Before the centering-bug fix, quoted in both documents.",
+   "paired_delta": 0.039,
+   "paired_delta_ci": [
+    0.003,
+    0.073
+   ]
+  }
+ },
+ "provenance": {
+  "revision": "37276100cd29feb89fa3ffbc5d6d0e7ea2762a63",
+  "dirty": true,
+  "snapshot": null,
+  "script": "-",
+  "written_utc": "2026-10-07T15:54:58+00:00",
+  "inputs": {
+   "metrics": "sha256:3ab0b0bc0208abf8d218c0817d78e06d521a328cb7162820ecc5cae2c39c8122"
+  }
  }
 }

@@ -580,5 +580,15 @@
     }
    ]
   }
- ]
+ ],
+ "provenance": {
+  "revision": "37276100cd29feb89fa3ffbc5d6d0e7ea2762a63",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "exclusion_enrichment.py",
+  "written_utc": "2026-10-07T15:52:50+00:00",
+  "inputs": {
+   "eligibility": "sha256:b49ac53f1f93769de2a03b30e883a8bc256fc0635f73e4fccee2b073c522fb1e"
+  }
+ }
 }
