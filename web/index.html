@@ -152,6 +152,28 @@ async function boot() {
   });
 }
 
+// One row of the evidence table. The metric direction is rendered, not assumed: these
+// rows mix AUROCs, rank correlations, a mean *rank* where lower is better, and a plain
+// count. Left to a shared "model vs baseline" column they read as one scale, and the
+// label-change row -- 4.67 against a null of 7.50 -- reads as a loss when it is the
+// model's best-looking result.
+function evalRow(e) {
+  const dir = e.direction || "higher_is_better";
+  if (dir === "count") {
+    return `<div class="axis"><span>${e.name}</span>
+      <span class="num">${e.model == null ? "" : e.model}${e.n_flags ? " of " + e.n_flags : ""}</span>
+      <span class="num">${e.verdict}</span></div>`;
+  }
+  const arrow = dir === "lower_is_better" ? "&darr; lower is better" : "&uarr; higher is better";
+  const d3 = v => (v == null ? "" : v.toFixed(3));
+  return `<div class="axis">
+      <span>${e.name}<span class="alt">${e.metric || ""} &middot; ${arrow}</span></span>
+      <span class="num">${d3(e.model)}
+        ${e.best_baseline == null ? "" : "vs " + d3(e.best_baseline)}
+        ${e.delta == null ? "" : "(&Delta; " + (e.delta >= 0 ? "+" : "") + e.delta.toFixed(3) + ")"}</span>
+      <span class="num">${e.verdict}</span></div>`;
+}
+
 function axisRow(r) {
   // Which event table banded this axis decides what the row shows. An axis the patient is
   // vulnerable on is a serious-harm question and is banded on the seriousEvents table;
@@ -257,12 +279,7 @@ async function run() {
         ${d.ranking_caveat || ""}</p>
       ${d.ranking_evidence ? `<div class="card"><h3>What this ordering is worth</h3>
         <p class="note">${d.ranking_evidence.summary}</p>
-        ${d.ranking_evidence.evaluations.map(e => `<div class="axis">
-            <span>${e.name}</span>
-            <span class="num">${e.model == null ? "" : e.model.toFixed(3)}
-              ${e.best_baseline == null ? "" : "vs baseline " + e.best_baseline.toFixed(3)}
-              ${e.delta == null ? "" : "(&Delta; " + (e.delta >= 0 ? "+" : "") + e.delta.toFixed(3) + ")"}</span>
-            <span class="num">${e.verdict}</span></div>`).join("")}
+        ${d.ranking_evidence.evaluations.map(evalRow).join("")}
         </div>` : ""}
       ${d.candidates.map(card).join("")}
       ${wn ? `<div class="card"><h3>Why not the obvious one</h3>

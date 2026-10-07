@@ -94,6 +94,7 @@ def _ranking_evidence() -> dict:
                 {
                     "name": f"within-arm axis ranking, {split}",
                     "metric": "AUROC for axis in the arm's observed top 3",
+                    "direction": "higher_is_better",
                     "model": res.get("macro_auc"),
                     "best_baseline": max(
                         res.get("macro_auc_mech_baseline") or 0,
@@ -114,6 +115,7 @@ def _ranking_evidence() -> dict:
                     {
                         "name": f"across-agent per-axis discrimination, {split}",
                         "metric": "mean Spearman across agents within an axis",
+                        "direction": "higher_is_better",
                         "model": None,
                         "verdict": f"not applicable -- {aas.get('reason', '')}",
                     }
@@ -123,6 +125,7 @@ def _ranking_evidence() -> dict:
                     {
                         "name": f"across-agent per-axis discrimination, {split}",
                         "metric": "mean Spearman across agents within an axis",
+                        "direction": "higher_is_better",
                         "model": aas["model_mean"],
                         "verdict": "at chance; the pre-declared threshold was +0.3",
                     }
@@ -134,6 +137,7 @@ def _ranking_evidence() -> dict:
             {
                 "name": "agreement with approved dose-modification orderings",
                 "metric": "mean Spearman against label organ-severity ordering",
+                "direction": "higher_is_better",
                 "model": doc.get("mean_rho_model"),
                 "best_baseline": max(
                     doc.get("mean_rho_mech_baseline") or 0,
@@ -163,6 +167,11 @@ def _ranking_evidence() -> dict:
                         "predicted rank of the organ FDA was about to warn about, fit "
                         "only on data public before that date"
                     ),
+                    # Lower is better here, alone among these rows. Left implicit it is
+                    # actively misleading: 4.67 against a null of 7.50 reads as a loss in
+                    # a column where every other entry is higher-is-better, when it is in
+                    # fact the model's best-looking result.
+                    "direction": "lower_is_better",
                     "model": s.get("mean_rank"),
                     "best_baseline": s.get("null_mean_rank"),
                     "n_events": s.get("n_scored"),
@@ -183,6 +192,9 @@ def _ranking_evidence() -> dict:
             {
                 "name": "how much of the output is the label-rule layer, not the fit",
                 "metric": "label rules whose removal would change the band",
+                # A count, not a score. Rendering it as 3.000 beside a column of AUCs
+                # invites it to be read as one.
+                "direction": "count",
                 "model": doc.get("n_load_bearing"),
                 "n_flags": doc.get("n_flags"),
                 "verdict": (

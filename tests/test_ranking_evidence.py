@@ -72,3 +72,23 @@ def test_every_measured_evaluation_is_served():
     )
     for expected in ("within-arm axis ranking", "across-agent", "dose-modification"):
         assert expected in names, f"{expected} missing from the served evidence"
+
+
+def test_every_evaluation_declares_its_metric_direction():
+    """These rows mix AUROCs, rank correlations, a mean rank where lower is better, and a
+    plain count. Rendered in one column without a direction they read as one scale, and
+    the label-change row -- mean rank 4.67 against a null of 7.50 -- reads as a loss when
+    it is the model's best-looking result."""
+    from fastapi.testclient import TestClient
+
+    from adctox.api.main import app
+
+    for ev in TestClient(app).get("/api/v1/ranking-evidence").json()["evaluations"]:
+        assert ev.get("direction") in {"higher_is_better", "lower_is_better", "count"}, (
+            f"{ev['name']} does not declare a metric direction"
+        )
+        assert ev.get("metric"), f"{ev['name']} does not name its metric"
+        if ev["direction"] == "count":
+            assert ev.get("delta") is None, (
+                f"{ev['name']} is a count but carries a delta, which implies a scale"
+            )

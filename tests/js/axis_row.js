@@ -68,4 +68,35 @@ let failed = 0;
 for (const [name, ok] of checks) {
   if (!ok) { failed++; console.error("FAIL  " + name); } else { console.log("ok    " + name); }
 }
+
+
+// --- the evidence table -----------------------------------------------------------
+// Mixed metrics in one column is how a winning result reads as a loss.
+const evalRow = ctx.evalRow;
+if (typeof evalRow !== "function") { console.error("evalRow not defined"); process.exit(1); }
+const rank = evalRow({
+  name: "anticipating a dated FDA label change", direction: "lower_is_better",
+  metric: "predicted rank of the organ", model: 4.6667, best_baseline: 7.5,
+  verdict: "beats the null but p = 0.515",
+});
+const auc = evalRow({
+  name: "within-arm axis ranking", direction: "higher_is_better",
+  metric: "AUROC", model: 0.827, best_baseline: 0.8437, delta: -0.012,
+  verdict: "includes zero",
+});
+const count = evalRow({
+  name: "label-rule layer", direction: "count",
+  metric: "rules whose removal changes the band", model: 3, n_flags: 5,
+  verdict: "3 of 5 load-bearing",
+});
+const more = [
+  ["a rank metric says lower is better", rank.includes("lower is better")],
+  ["an AUROC says higher is better", auc.includes("higher is better")],
+  ["a count is not formatted as a score", !count.includes("3.000")],
+  ["a count shows its denominator", count.includes("3 of 5")],
+  ["a count claims no direction", !count.includes("better")],
+];
+for (const [name, ok] of more) {
+  if (!ok) { failed++; console.error("FAIL  " + name); } else { console.log("ok    " + name); }
+}
 process.exit(failed ? 1 : 0);
