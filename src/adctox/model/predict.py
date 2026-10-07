@@ -14,6 +14,8 @@ would shift every prediction.
 
 from __future__ import annotations
 
+import hashlib
+
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -249,10 +251,31 @@ def predict_draws(
         # the combination covariate sits at its reference level of zero.
     )
     if include_agent_variation:
-        rng = np.random.default_rng(seed)
-        logit = logit + (
-            post.sigma_agent[:, None] * rng.standard_normal((S, n_designs))
-        )[:, :, None]
+        # One deviation per *design identity*, not per batch position.
+        #
+        # This used to draw an (S, n_designs) matrix from a single seed, so a design's
+        # deviation depended on where it sat in the batch and how large the batch was.
+        # Measured: the same design's mean rate moved by up to 0.0074 absolute between a
+        # 5-design call and a 106-design one. Two consequences, both real. A caller asking
+        # about five designs got different numbers than one asking about a hundred, for
+        # the same design. And within a single response, `score_designs` runs on the
+        # designs that pass and `why_not_the_obvious_one` on all of them, so the same
+        # candidate carried different noise in the two places the response compares.
+        #
+        # Seeding from the design's own features fixes both while keeping what the term is
+        # for: deviations stay independent across distinct molecules, and two designs with
+        # identical slots -- which are the same molecule -- correctly get the same one.
+        dev = np.empty((S, n_designs), dtype=float)
+        for j in range(n_designs):
+            key = (
+                mechanisms[j], families[j],
+                round(float(dars[j]), 6), round(float(cleavables[j]), 6),
+            )
+            # Stable across processes: hash() is salted per interpreter run.
+            h = hashlib.blake2b(repr(key).encode(), digest_size=8).digest()
+            rng = np.random.default_rng(int.from_bytes(h, "big") ^ seed)
+            dev[:, j] = rng.standard_normal(S)
+        logit = logit + (post.sigma_agent[:, None] * dev)[:, :, None]
     return 1.0 / (1.0 + np.exp(-logit))
 
 
