@@ -24,6 +24,8 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from adctox.provenance import write_json  # noqa: E402
+
 from adctox.extract.arm_resolver import Registry, resolve_study  # noqa: E402
 from adctox.taxonomy import (  # noqa: E402
     AXIS_DROPPED,
@@ -167,6 +169,48 @@ def main() -> int:
     surv = arms[attributed & big]
     print(f"    monotherapy                   : {int((surv['is_monotherapy'] == True).sum()):,}")
     print(f"    combination                   : {int((surv['is_monotherapy'] == False).sum()):,}")
+    # ---- gate 1c: attribution loss where attribution is actually owed ----------
+    # The gate was cited in the README as "4 of 948 event groups" and the pipeline did
+    # not compute it: the figure came from an ad-hoc analysis and could not be
+    # reproduced. Computed here, with the distinction the gate needs.
+    #
+    # 1,053 groups across the whole corpus carry no agent, but most of those are in
+    # trials with no ADC in them, where failing to attribute is correct. Restricting to
+    # trials where at least one group *was* attributed gives 948 groups -- the
+    # denominator the README quotes. Of those, 167 are unattributed, and every one of
+    # them is a comparator arm whose text names no ADC at all: "Arm A: Standard Arm -
+    # No GMTZ", "ATRA + Ara-C + Daunorubicin". Those are correctly unattributed, and
+    # counting them as loss would misreport the pipeline as losing a sixth of its input.
+    #
+    # The loss is a group whose own text names an ADC and which still failed to resolve.
+    # Measured: 0. Stated with its limitation -- an ADC arm titled only "Arm B" is
+    # indistinguishable here from a comparator, so this counts detectable losses.
+    adc_trials = set(arms.loc[attributed, "nct_id"])
+    inside = arms[arms["nct_id"].isin(adc_trials)]
+    unattr = inside[inside["agent"].isna()]
+    names_adc = [
+        bool(registry.find_agents(row.title, row.arm_key))
+        for row in unattr.itertuples()
+    ]
+    gate_1c = {
+        "trials_with_an_attributed_group": len(adc_trials),
+        "groups_in_those_trials": int(len(inside)),
+        "unattributed": int(len(unattr)),
+        "unattributed_naming_an_adc": int(sum(names_adc)),
+        "unattributed_naming_no_adc": int(len(names_adc) - sum(names_adc)),
+        "note": (
+            "Loss means a group whose own text names an ADC and which still failed to "
+            "resolve. Groups naming no ADC are comparator arms and are correctly "
+            "unattributed. An ADC arm titled only 'Arm B' is indistinguishable from a "
+            "comparator here, so this counts detectable losses."
+        ),
+    }
+    print(f"\n  gate 1c -- attribution loss where attribution is owed")
+    print(f"    groups in ADC-bearing trials  : {gate_1c['groups_in_those_trials']:,}")
+    print(f"    unattributed                  : {gate_1c['unattributed']:,}")
+    print(f"      naming an ADC (the loss)    : {gate_1c['unattributed_naming_an_adc']:,}")
+    print(f"      naming no ADC (comparators) : {gate_1c['unattributed_naming_no_adc']:,}")
+
     print(f"\n  resolution layers")
     for layer, n in layers.most_common():
         print(f"    {n:6,d}  {layer}")
@@ -246,23 +290,32 @@ def main() -> int:
     # the denominator floor, including the immunotoxin that the design matrix cannot
     # represent. The fitted corpus is smaller -- 16 agents and 285 arms against 17 and 288
     # -- and the two appear side by side in the report, so the artefact says which it is.
-    (args.out / "arm_funnel.json").write_text(
-        json.dumps(
-            {
-                "event_groups": len(arms),
-                "attributed": int(attributed.sum()),
-                "surviving_arms": len(surv),
-                "monotherapy": int((surv["is_monotherapy"] == True).sum()),
-                "agents": int(surv["agent"].nunique()),
-                "arm_axis_cells": int(n_cells),
-                "identifying_cells": int(surv["agent"].nunique() * 14),
-                "layers": dict(layers),
-                "gate_1b_pass": bool(ok),
-                "mechanism_fingerprints_centered": fingerprints,
-            },
-            indent=1,
-        ),
-        encoding="utf-8",
+    write_json(
+        args.out / "arm_funnel.json",
+        {
+            # Written by the script, not annotated by hand: an earlier note explaining
+            # this population was added to the file directly and the next rebuild
+            # silently discarded it.
+            "_population": (
+                "pre-model-filter: includes agents and arms the design matrix cannot "
+                "represent. The fitted corpus is smaller -- one of these agents is an "
+                "immunotoxin, an antibody-toxin fusion with no linker or conjugation "
+                "slot, so adctox.model.dataset drops it."
+            ),
+            "event_groups": len(arms),
+            "attributed": int(attributed.sum()),
+            "unattributable": int((~attributed).sum()),
+            "gate_1c": gate_1c,
+            "surviving_arms": len(surv),
+            "monotherapy": int((surv["is_monotherapy"] == True).sum()),
+            "agents": int(surv["agent"].nunique()),
+            "arm_axis_cells": int(n_cells),
+            "identifying_cells": int(surv["agent"].nunique() * 14),
+            "layers": dict(layers),
+            "gate_1b_pass": bool(ok),
+            "mechanism_fingerprints_centered": fingerprints,
+        },
+        {"studies": args.studies},
     )
     print(f"\n-> {args.out}/arms.parquet, observations.parquet, arm_funnel.json")
     print(f"\nGATE 1b {'PASS' if ok else 'FAIL'}")

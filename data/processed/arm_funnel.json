@@ -1,6 +1,16 @@
 {
+ "_population": "pre-model-filter: includes agents and arms the design matrix cannot represent. The fitted corpus is smaller -- one of these agents is an immunotoxin, an antibody-toxin fusion with no linker or conjugation slot, so adctox.model.dataset drops it.",
  "event_groups": 2201,
  "attributed": 781,
+ "unattributable": 1420,
+ "gate_1c": {
+  "trials_with_an_attributed_group": 304,
+  "groups_in_those_trials": 948,
+  "unattributed": 167,
+  "unattributed_naming_an_adc": 0,
+  "unattributed_naming_no_adc": 167,
+  "note": "Loss means a group whose own text names an ADC and which still failed to resolve. Groups naming no ADC are comparator arms and are correctly unattributed. An ADC arm titled only 'Arm B' is indistinguishable from a comparator here, so this counts detectable losses."
+ },
  "surviving_arms": 288,
  "monotherapy": 149,
  "agents": 17,
@@ -103,5 +113,14 @@
    "renal": 0.09763432350797537
   }
  },
- "_population": "pre-model-filter: includes agents and arms the design matrix cannot represent. The fitted corpus is 16 agents / 285 arms / 224 identifying cells; the difference is one immunotoxin, an antibody-toxin fusion with no linker or conjugation slot."
+ "provenance": {
+  "revision": "94fd72cee5cf45cfb0e90444619669d8b57280d5",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "build_arms.py",
+  "written_utc": "2026-10-07T14:20:52+00:00",
+  "inputs": {
+   "studies": "sha256:ba9a468f0bf001417f13e62827e6f8ab88b9fe93d9ec49f3d9d8e59bdbc97540"
+  }
+ }
 }

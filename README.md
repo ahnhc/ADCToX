@@ -18,7 +18,7 @@ annotates candidates with organ-toxicity estimates, not as a ranking engine. See
 |---|---|---|
 | 1a | >=85% of AE mass maps to a real organ axis | **99.94%** of eligible mass |
 | 1b | Mechanism fingerprints reproduce known pharmacology | **pass** — calicheamicin tops hepatic, topo-I tops pulmonary and GI, tubulin puts neurologic in its top three |
-| 1c | Attribution loss inside ADC-bearing trials | **4 of 948** event groups |
+| 1c | Attribution loss inside ADC-bearing trials | **0 of 948** event groups |
 | 2 | Two inputs in, fourteen organ numbers out, end to end | **pass** |
 | 3 | Model beats its strongest baseline | **fail** — delta -0.012 to -0.080 across three splits |
 
