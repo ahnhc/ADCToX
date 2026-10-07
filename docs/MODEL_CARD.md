@@ -102,32 +102,42 @@ The `tau_mech` recovery is the consequential line: the degenerate cleavability t
 been absorbing the mechanism effect, so the first evaluation measured a model whose main
 effect was being soaked up by an artefact.
 
-## Where the model failed in the first round, and why the pattern is informative
+## Where the model fails, and why the pattern is informative
 
-These per-fold numbers are from the pre-fix model and are listed for the *pattern*, not
-the values. Whether the pattern survives the re-run is itself a result.
+The previous version of this section claimed that every large miss is an agent that is the
+sole representative of its payload *family* inside a broader mechanism class. It said,
+correctly, that the figures came from the pre-fix model and that whether the pattern
+survived a re-run was itself a result.
 
-The worst folds were the agents whose toxicity signature differs most from the other
-members of their mechanism group:
+**It did not survive.** On the split-corrected folds, none of the four worst is the sole
+representative of its family, and the two worst are each other's only family sibling.
 
-| fold | delta vs mech baseline | signature |
-|---|---|---|
-| trastuzumab emtansine | **−0.115** | thrombocytopenia, ocular, hepatic -- the only DM1 agent |
-| belantamab mafodotin | −0.064 | keratopathy -- the only MMAF agent |
-| mirvetuximab soravtansine | −0.050 | ocular -- the only DM4 agent |
-| polatuzumab vedotin | −0.040 | one of four MMAE agents |
+<!-- generated: fold-difficulty -->
 
-Every large miss is an agent that is the sole representative of its payload *family*
-inside a broader mechanism class. Held out, it is predicted from chemistry that behaves
-differently: T-DM1's platelet and ocular profile predicted from MMAE's neuropathy.
+| fold | delta vs baseline | same-payload siblings | family share of mechanism | sole of family |
+|---|---|---|---|---|
+| trastuzumab emtansine | **-0.1565** | 0 | 0.29 | no |
+| mirvetuximab soravtansine | **-0.1058** | 0 | 0.29 | no |
+| belantamab mafodotin | **-0.0981** | 0 | 0.71 | no |
+| gemtuzumab ozogamicin | **-0.0697** | 1 | 1.00 | no |
 
-This is the structural squeeze the project set out to measure, now visible in prediction
-rather than only in parameter counting. Payload *mechanism* (6 classes, fixed as the
-corpus grows) is identifiable but too coarse to capture T-DM1. Payload *family*
-(auristatin / maytansinoid / camptothecin / ...) would capture it but is not identifiable:
-the payload vocabulary grows as fast as the corpus does, measured at 9 classes at 17
-agents and 20 at 54, leaving the cells-per-parameter ratio flat near 2.8:1 at every size.
-The resolution that would help recedes as fast as it is approached.
+Sole-of-family agents among the four worst folds: 0/4. Mean delta -0.0485 for the 3 sole-of-family agents against -0.0408 for the 13 that share one -- no separation. Rank correlation of fold delta with same-payload siblings +0.771, with family share of its mechanism +0.694.
+<!-- /generated: fold-difficulty -->
+
+What replaces it is coarser and worse for the project. Fold difficulty tracks **how many
+agents share the held-out agent's payload**, more strongly than it tracks anything about
+families. The four vedotins, each with three same-payload siblings, are all predicted
+within 0.03 of their baseline. Trastuzumab emtansine and mirvetuximab soravtansine have no
+payload sibling and belong to a two-agent family inside an eight-agent mechanism that
+auristatins dominate, and they are the two worst folds by a wide margin.
+
+The squeeze is therefore tighter than this document previously claimed. The level that
+predicts held-out performance is payload, and payload is precisely the level this corpus
+can never reach: its vocabulary grows as fast as the corpus does, 9 classes at 17 agents to
+20 at 54, so the cells-per-parameter ratio stays flat however much data arrives. Payload
+*family* at least stops growing, which is why it was worth trying -- and it does not
+converge here in either parameterization. So the diagnosis is not "we need the family
+level" but "the level that would help is the one that recedes".
 
 ## Calibration and uncertainty
 

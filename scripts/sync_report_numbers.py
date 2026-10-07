@@ -30,6 +30,9 @@ END = "<!-- /generated: fitted-parameters -->"
 # its six figures were stale after one -- so it is generated too.
 CENS_BEGIN = "<!-- generated: censoring-sensitivity -->"
 CENS_END = "<!-- /generated: censoring-sensitivity -->"
+FD_BEGIN = "<!-- generated: fold-difficulty -->"
+FD_END = "<!-- /generated: fold-difficulty -->"
+
 ENR_BEGIN = "<!-- generated: exclusion-enrichment -->"
 ENR_END = "<!-- /generated: exclusion-enrichment -->"
 
@@ -211,6 +214,35 @@ def build_results_block(metrics: dict, dose: dict | None) -> str | None:
            "|---|---|---|---|---|---|"]
     out += ["| " + " | ".join(r) + " |" for r in rows]
     out += ["", RES_END]
+    return "\n".join(out)
+
+
+def build_fold_difficulty_block(doc: dict) -> str | None:
+    """The four worst folds and what actually predicts fold difficulty."""
+    rows = doc.get("folds") or []
+    if not rows:
+        return None
+    claim = doc.get("sole_of_family_claim") or {}
+    rho = doc.get("spearman_delta_vs") or {}
+    out = [FD_BEGIN, "", "| fold | delta vs baseline | same-payload siblings | "
+           "family share of mechanism | sole of family |", "|---|---|---|---|---|"]
+    for r in rows[:4]:
+        out.append(
+            f"| {r['agent'].replace('_', ' ')} | **{r['delta_auc']:+.4f}** | "
+            f"{r['same_payload_siblings']} | "
+            f"{r['family_share_of_mechanism']:.2f} | "
+            f"{'yes' if r['sole_of_family'] else 'no'} |"
+        )
+    out += ["", (
+        f"Sole-of-family agents among the four worst folds: "
+        f"{claim.get('sole_among_worst_four')}/4. Mean delta "
+        f"{claim.get('mean_delta_sole'):+.4f} for the {claim.get('n_sole')} "
+        f"sole-of-family agents against {claim.get('mean_delta_shared'):+.4f} for the "
+        f"{claim.get('n_shared')} that share one -- no separation. Rank correlation of "
+        f"fold delta with same-payload siblings "
+        f"{rho.get('same_payload_siblings'):+.3f}, with family share of its mechanism "
+        f"{rho.get('family_share_of_mechanism'):+.3f}."
+    ), FD_END]
     return "\n".join(out)
 
 
@@ -420,6 +452,8 @@ def main() -> int:
                     default=Path("artifacts/label_change_eval.json"))
     ap.add_argument("--hard-flags", type=Path,
                     default=Path("artifacts/hard_flag_necessity.json"))
+    ap.add_argument("--fold-difficulty", type=Path,
+                    default=Path("artifacts/fold_difficulty.json"))
     ap.add_argument("--enrichment", type=Path,
                     default=Path("artifacts/exclusion_enrichment_exclusion.json"))
     # Both documents quoted the same parameters and both were stale. The model card was
@@ -442,6 +476,12 @@ def main() -> int:
         if args.dose_mod.exists() else None
     )
     res_block = build_results_block(metrics, dose)
+    fd_block = (
+        build_fold_difficulty_block(
+            json.loads(args.fold_difficulty.read_text(encoding="utf-8"))
+        )
+        if args.fold_difficulty.exists() else None
+    )
     enr_block = (
         build_enrichment_block(
             json.loads(args.enrichment.read_text(encoding="utf-8"))
@@ -472,6 +512,7 @@ def main() -> int:
     lce_pattern = re.compile(re.escape(LCE_BEGIN) + r".*?" + re.escape(LCE_END), re.S)
     hfn_pattern = re.compile(re.escape(HFN_BEGIN) + r".*?" + re.escape(HFN_END), re.S)
     enr_pattern = re.compile(re.escape(ENR_BEGIN) + r".*?" + re.escape(ENR_END), re.S)
+    fd_pattern = re.compile(re.escape(FD_BEGIN) + r".*?" + re.escape(FD_END), re.S)
     rc = 0
     for doc in args.report:
         text = doc.read_text(encoding="utf-8")
@@ -485,6 +526,16 @@ def main() -> int:
                     text = replaced
                     doc.write_text(text, encoding="utf-8")
                     print(f"{doc}: results table regenerated")
+        if fd_block and fd_pattern.search(text):
+            replaced = fd_pattern.sub(lambda _: fd_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: fold-difficulty block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: fold-difficulty block regenerated")
         if enr_block and enr_pattern.search(text):
             replaced = enr_pattern.sub(lambda _: enr_block, text)
             if replaced != text:

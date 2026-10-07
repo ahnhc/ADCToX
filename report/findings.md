@@ -188,9 +188,19 @@ signal; the across-agent comparison can, and both are reported together.
 | mirvetuximab soravtansine | -0.050 | ocular | only DM4 agent |
 | polatuzumab vedotin | -0.040 | — | one of four MMAE agents |
 
-Every large miss is an agent that is the sole representative of its payload *family*
-inside a broader mechanism class. Held out, it is predicted from chemistry that behaves
-differently: T-DM1's platelet and ocular profile from MMAE's neuropathy.
+Those per-fold figures are from the pre-fix model, and the reading taken from them -- that
+every large miss is an agent which is the sole representative of its payload *family* --
+did not survive the split-corrected re-run. On corrected folds none of the four worst is
+sole-of-family, and the two worst are each other's only family sibling. What tracks fold
+difficulty is how many agents share the held-out agent's **payload**: rank correlation
++0.771, against +0.694 for the family share of its mechanism. See `docs/MODEL_CARD.md`
+for the measured table, and `scripts/fold_difficulty.py` for the computation.
+
+The mechanism behind it is unchanged and the conclusion is sharper. Held out, an agent is
+predicted from chemistry that behaves differently -- T-DM1's platelet and ocular profile
+from MMAE's neuropathy -- and the level that would fix that is payload, which is the one
+level whose vocabulary grows as fast as the corpus. Family at least stops growing, which is
+why it was the one worth trying.
 
 ### 4.1 The obvious fix is not identifiable, in either form
 

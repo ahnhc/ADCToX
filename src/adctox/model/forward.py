@@ -76,11 +76,19 @@ def _log_binom_cdf_below(cut: jnp.ndarray, n: jnp.ndarray, p: jnp.ndarray) -> jn
 #                             tau_family took 0.396; LOMO delta worsened -0.016 -> -0.022
 #   + family, nested          worst gap 0.577, tau_mech 0.453 / tau_family 0.391
 #
-# The diagnosis that motivated it stands -- every large cross-validation miss is an agent
-# that is the sole representative of its payload family inside a broader mechanism class.
-# The resolution that would fix it is simply not separable from mechanism given 7 families
-# across 5 mechanisms and 16 agents. That is the project's central structural finding
-# appearing again, now at the parameterization level rather than in a parameter count.
+# The diagnosis that motivated trying it was wrong, and the measurement that replaced it
+# makes the case for the family level weaker rather than stronger. The old reading was
+# that every large cross-validation miss is an agent which is the sole representative of
+# its payload family; on split-corrected folds none of the four worst folds is, and the
+# two worst are each other's only family sibling (see scripts/fold_difficulty.py). What
+# actually tracks fold difficulty is how many agents share the held-out agent's PAYLOAD,
+# at a rank correlation of +0.771 against +0.694 for anything about families.
+#
+# So the level that would help is payload, not family -- and payload is the one level this
+# corpus provably cannot reach, because its vocabulary grows as fast as the corpus does.
+# Family at least stops growing, which is why it was worth trying; it is still not
+# separable from mechanism given 7 families across 5 mechanisms and 16 agents. The
+# project's central structural finding appears again, and tighter than before.
 USE_PAYLOAD_FAMILY = False
 
 

@@ -23,7 +23,8 @@ ART     := artifacts
 
 .PHONY: all env taxonomy corpus eligibility enrichment forward propose test \
         censoring-sensitivity label-history label-changes label-change-eval \
-        dose-mod dose-mod-eval module-b hard-flags lint sync-report check-report clean \
+        dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
+        check-report clean \
         fetch snapshot-check
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
@@ -128,13 +129,19 @@ test: lint
 lint:
 	$(PY) scripts/check_unused_imports.py
 
+# What makes a held-out fold hard. Refutes the model card's earlier reading and replaces
+# it with a measurement; `make check-report` depends on it so the generated block cannot
+# go stale.
+fold-difficulty: forward
+	$(PY) scripts/fold_difficulty.py --out $(ART)
+
 hard-flags: forward
 	$(PY) scripts/hard_flag_necessity.py --out $(ART)
 
 sync-report:
 	$(PY) scripts/sync_report_numbers.py
 
-check-report: hard-flags sync-report
+check-report: hard-flags fold-difficulty sync-report
 	$(PY) scripts/check_report.py report/
 
 clean:
