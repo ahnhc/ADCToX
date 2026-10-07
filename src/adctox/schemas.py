@@ -28,11 +28,52 @@ CONF = Path(__file__).resolve().parents[2] / "conf"
 
 @lru_cache(maxsize=1)
 def comorbidity_registry() -> dict[str, dict]:
+    """The closed comorbidity list, validated at load.
+
+    The axis names are checked against the ontology here, loudly, because getting one
+    wrong is silent in two contradictory directions and announces neither. Measured on a
+    deliberate typo: `comorbidity_weights` iterates the fourteen real axes and never looks
+    up the misspelled one, so the patient's declared vulnerability becomes completely
+    inert with every weight at 1.0 -- while constraint C6 iterates the at-risk set and
+    rejects every candidate design for having no evidence on an organ that does not exist.
+    One typo, and the system either ignores the comorbidity or refuses to answer, with no
+    indication which. This is the same failure shape as the axis ontology's own
+    comma-splitting bug, which silently emptied the pulmonary axis.
+    """
+    from .taxonomy import default_taxonomy
+
+    known = set(default_taxonomy().axis_order)
     rows: dict[str, dict] = {}
     with (CONF / "comorbidity_registry.csv").open(encoding="utf-8") as fh:
         for row in csv.DictReader(fh):
-            row["organ_axes"] = [a for a in row["organ_axes"].split(";") if a]
-            row["severity"] = float(row["severity"])
+            axes = [a.strip() for a in row["organ_axes"].split(";") if a.strip()]
+            if not axes:
+                raise ValueError(
+                    f"comorbidity {row['id']!r} declares no organ axis, so it can never "
+                    "weight anything. Give it an axis or remove it."
+                )
+            unknown = sorted(set(axes) - known)
+            if unknown:
+                raise ValueError(
+                    f"comorbidity {row['id']!r} references organ axes {unknown} that are "
+                    f"not in the ontology. Known axes: {sorted(known)}. Left unchecked "
+                    "this is silent: the condition stops weighting anything and C6 "
+                    "simultaneously rejects every design for lack of evidence on it."
+                )
+            if not (row.get("severity_basis") or "").strip():
+                raise ValueError(
+                    f"comorbidity {row['id']!r} has no severity_basis. The severity is an "
+                    "elicited prior with no training rows, so an unsourced number is not "
+                    "defensible."
+                )
+            severity = float(row["severity"])
+            if not 0.0 < severity <= 1.0:
+                raise ValueError(
+                    f"comorbidity {row['id']!r} has severity {severity}, outside (0, 1]. "
+                    "It scales the objective weight as 1 + lambda*severity."
+                )
+            row["organ_axes"] = axes
+            row["severity"] = severity
             rows[row["id"]] = row
     return rows
 

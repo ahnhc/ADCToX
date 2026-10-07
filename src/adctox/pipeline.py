@@ -8,7 +8,6 @@ engine, the posterior and the scorer together, so each can be tested on its own.
 
 from __future__ import annotations
 
-import csv
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
@@ -72,16 +71,17 @@ def resolve_comorbidities(condition_ids: list[str]) -> ComorbidityResolution:
     liver disease do not make the liver twice as fragile, and summing would let a long
     condition list dominate the objective purely by length.
     """
-    rows: dict[str, dict] = {}
-    with (CONF / "comorbidity_registry.csv").open(encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
-            rows[row["id"]] = row
+    # The validated loader, not a second CSV parse. Two independent readers of one file
+    # is how a validation guard ends up protecting only one of them.
+    from .schemas import comorbidity_registry
+
+    rows = comorbidity_registry()
 
     severity: dict[str, float] = {}
     per_condition: list[dict] = []
     for cid in condition_ids:
         row = rows[cid]
-        axes = [a for a in row["organ_axes"].split(";") if a]
+        axes = list(row["organ_axes"])   # already split and validated at load
         sev = float(row["severity"])
         for axis in axes:
             severity[axis] = max(severity.get(axis, 0.0), sev)

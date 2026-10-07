@@ -7,7 +7,6 @@ handles, not record locators.
 
 from __future__ import annotations
 
-import csv
 import json
 import uuid
 from functools import lru_cache
@@ -20,7 +19,7 @@ from fastapi.responses import JSONResponse
 from ..design.enumerate import DesignSpace
 from ..model.predict import Posterior
 from ..pipeline import propose, resolve_comorbidities
-from ..schemas import AssessRequest, Disclaimer, ProposeRequest
+from ..schemas import AssessRequest, Disclaimer, ProposeRequest, comorbidity_registry
 from ..taxonomy import default_taxonomy
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -353,17 +352,18 @@ def ontology() -> dict:
     # Shared read-only singleton; see default_taxonomy() on why builders do not use it.
     tax = default_taxonomy()
     space = DesignSpace()
-    rows = []
-    with (CONF / "comorbidity_registry.csv").open(encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
-            rows.append(
-                {
-                    "id": row["id"], "label": row["label"],
-                    "organ_axes": [a for a in row["organ_axes"].split(";") if a],
-                    "severity": float(row["severity"]),
-                    "severity_basis": row["severity_basis"],
-                }
-            )
+    # The validated loader. This endpoint is what a client builds its UI from, so serving
+    # it from a third independent parse of the CSV meant the axis-name validation
+    # protected two readers and not this one -- the one whose output a user sees.
+    rows = [
+        {
+            "id": row["id"], "label": row["label"],
+            "organ_axes": list(row["organ_axes"]),
+            "severity": row["severity"],
+            "severity_basis": row["severity_basis"],
+        }
+        for row in comorbidity_registry().values()
+    ]
     return {
         "organ_axes": [{"id": a, "label": tax.axes[a]} for a in tax.axis_order],
         "comorbidities": rows,
