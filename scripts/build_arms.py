@@ -234,6 +234,12 @@ def main() -> int:
             mark = " <--" if axis in want else ""
             print(f"      {axis:22s} {val:+.3f}{mark}")
 
+    # Persist the fingerprints. The report quotes these values, so printing them and
+    # dropping them would leave a figure in the prose with nothing behind it.
+    fingerprints = {
+        mech: {axis: float(val) for axis, val in row.dropna().items()}
+        for mech, row in prof.iterrows()
+    }
     arms.to_parquet(args.out / "arms.parquet", index=False)
     obs.to_parquet(args.out / "observations.parquet", index=False)
     (args.out / "arm_funnel.json").write_text(
@@ -248,6 +254,7 @@ def main() -> int:
                 "identifying_cells": int(surv["agent"].nunique() * 14),
                 "layers": dict(layers),
                 "gate_1b_pass": bool(ok),
+                "mechanism_fingerprints_centered": fingerprints,
             },
             indent=1,
         ),

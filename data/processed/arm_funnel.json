@@ -15,5 +15,92 @@
   "join_ci": 2,
   "join_exact": 3
  },
- "gate_1b_pass": true
+ "gate_1b_pass": true,
+ "mechanism_fingerprints_centered": {
+  "dna_alkyl": {
+   "cardiovascular": 0.2250176468572711,
+   "constitutional": -0.29184399672336214,
+   "gastrointestinal": -0.2322489026791139,
+   "haematologic": -0.03595403488424287,
+   "infectious_immune": 0.18589740711009828,
+   "musculoskeletal": 0.37852388800874737,
+   "pulmonary": -0.2316725528741599
+  },
+  "dna_cleave": {
+   "cardiovascular": -0.23630691592227937,
+   "constitutional": 0.1631724145262945,
+   "dermatologic": 0.07328029165702384,
+   "gastrointestinal": -0.4357717015983108,
+   "haematologic": 0.44576490562168625,
+   "hepatic": 0.7015853816779702,
+   "infectious_immune": 0.12943806842092123,
+   "metabolic_endocrine": -0.08043572285598352,
+   "musculoskeletal": -0.5445919698272946,
+   "neurologic": -0.05796274662499913,
+   "ocular": -0.3778300262401446,
+   "otologic": 0.539715317571698,
+   "pulmonary": -0.4945641936913822,
+   "renal": -0.5043043212369854
+  },
+  "dna_crosslink": {
+   "cardiovascular": 0.41053807806625775,
+   "constitutional": 0.7246244719907351,
+   "dermatologic": 0.2318980792725347,
+   "gastrointestinal": 0.07797432543403968,
+   "haematologic": 0.18002065828041852,
+   "hepatic": 0.20996846641139974,
+   "infectious_immune": 0.23637057696038946,
+   "metabolic_endocrine": 0.4341285146545045,
+   "musculoskeletal": 0.16907040060451672,
+   "neurologic": -0.12634460044695142,
+   "otologic": 0.5682886900157538,
+   "pulmonary": 0.25751645664101414,
+   "renal": 0.36123337029875857
+  },
+  "protein_synth": {
+   "cardiovascular": 1.787020592656667,
+   "constitutional": 0.9643218405804584,
+   "dermatologic": 0.5760032488307809,
+   "gastrointestinal": -0.4569660184407538,
+   "haematologic": 0.9343347570982052,
+   "infectious_immune": -0.11499772969924586,
+   "musculoskeletal": 0.6494901514043634,
+   "neurologic": 1.023148283770074,
+   "ocular": 1.3345927007513891,
+   "pulmonary": 0.5285035017355936,
+   "renal": 0.47906857869517006
+  },
+  "topo1": {
+   "cardiovascular": -0.1539141684264103,
+   "constitutional": -0.2430597631917696,
+   "dermatologic": -0.8400445491607464,
+   "gastrointestinal": 0.07764185098909601,
+   "haematologic": -0.10781039971498804,
+   "hepatic": -0.21304494484868639,
+   "infectious_immune": -0.22486819636568348,
+   "metabolic_endocrine": -0.17735230768460558,
+   "musculoskeletal": -0.12990247665412355,
+   "neurologic": -0.23033727823079034,
+   "ocular": -0.302127567673798,
+   "otologic": -0.10275969508635814,
+   "pulmonary": 0.08418875889326602,
+   "renal": -0.07734379585357738
+  },
+  "tubulin": {
+   "cardiovascular": 0.06537534242908312,
+   "constitutional": 0.008037138815237224,
+   "dermatologic": 0.42811669278552916,
+   "gastrointestinal": 0.04974845106461112,
+   "haematologic": -0.10719225569439574,
+   "hepatic": -0.015867964841822273,
+   "infectious_immune": 0.11792913122489693,
+   "metabolic_endocrine": 0.11123081801645432,
+   "musculoskeletal": 0.14238009890312683,
+   "neurologic": 0.19548219545310783,
+   "ocular": 0.14938445145390405,
+   "otologic": 0.04723310337450824,
+   "pulmonary": 0.010021028007497029,
+   "renal": 0.09763432350797537
+  }
+ }
 }
