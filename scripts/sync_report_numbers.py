@@ -31,6 +31,9 @@ END = "<!-- /generated: fitted-parameters -->"
 # its six figures were stale after one -- so it is generated too.
 CENS_BEGIN = "<!-- generated: censoring-sensitivity -->"
 CENS_END = "<!-- /generated: censoring-sensitivity -->"
+RES_BEGIN = "<!-- generated: results-table -->"
+RES_END = "<!-- /generated: results-table -->"
+
 CENS_ROWS = [
     ("censored", "censored"),
     ("zero_imputed", "zero-imputed"),
@@ -97,6 +100,94 @@ def build_block(metrics: dict) -> str:
     return "\n".join(lines)
 
 
+def _bootstrap_ci(values, n_boot: int = 2000, seed: int = 0):
+    """Same estimator fit_forward.py uses, so a derived interval matches a stored one."""
+    import numpy as np
+
+    arr = np.asarray([v for v in values if np.isfinite(v)])
+    if len(arr) < 2:
+        return (float("nan"), float("nan"))
+    rng = np.random.default_rng(seed)
+    means = [rng.choice(arr, size=len(arr), replace=True).mean() for _ in range(n_boot)]
+    return (float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5)))
+
+
+def build_results_block(metrics: dict, dose: dict | None) -> str | None:
+    """The headline evaluation table.
+
+    Generated because it is the most consequential table in the project and was typed by
+    hand at three decimals, where the number guard has little power -- its Spearman
+    interval traced to nothing and passed only by coincidence.
+    """
+    import numpy as np
+
+    cv = metrics.get("cv", {})
+    rows: list[tuple[str, str, str, str, str, str]] = []
+    labels = [
+        ("leave_one_agent_out", "leave-one-agent-out"),
+        ("leave_one_mechanism_out", "leave-one-mechanism-out"),
+        ("leave_one_family_out", "leave-one-family-out"),
+    ]
+    for key, label in labels:
+        v = cv.get(key)
+        if not v:
+            continue
+        n = len(v.get("folds", []))
+        best = max(v["macro_auc_mech_baseline"], v["macro_auc_global_baseline"])
+        lo, hi = v["delta_auc_ci"]
+        excl = "excludes 0" if (lo > 0) == (hi > 0) else "includes 0"
+        bold = "**" if excl == "excludes 0" else ""
+        rows.append((
+            f"within-arm ranking, {label} ({n})",
+            f"{v['macro_auc']:.4f}", f"{best:.4f}",
+            f"{bold}{v['delta_auc_mean']:+.4f}{bold}",
+            f"[{lo:+.4f}, {hi:+.4f}]", excl,
+        ))
+
+    sp = cv.get("leave_one_agent_out", {}).get("across_agent_spearman", {})
+    if sp.get("model"):
+        mv = [v for v in sp["model"].values() if np.isfinite(v)]
+        if "model_ci" in sp:
+            lo, hi = sp["model_ci"]
+            note = "includes 0" if (lo <= 0 <= hi) else "excludes 0"
+        else:
+            # Derived from the stored per-axis values with the same estimator the fit
+            # uses, so the figure still traces to an artefact. Runs produced before
+            # `model_ci` was persisted take this path.
+            lo, hi = _bootstrap_ci(mv)
+            note = ("includes 0" if (lo <= 0 <= hi) else "excludes 0") + ", CI derived"
+        base = sp.get("global_baseline_mean")
+        if base is None and sp.get("global_baseline"):
+            base = float(np.nanmean(list(sp["global_baseline"].values())))
+        rows.append((
+            "across-agent per-axis Spearman",
+            f"{float(np.nanmean(mv)):+.4f}",
+            f"{base:+.4f}" if base is not None else "--",
+            "--", f"[{lo:+.4f}, {hi:+.4f}]", note,
+        ))
+
+    if dose:
+        lo, hi = dose.get("paired_delta_ci", [float("nan")] * 2)
+        baseline_key = f"mean_rho_{dose.get('best_baseline')}_baseline"
+        baseline = dose.get(baseline_key)
+        rows.append((
+            f"dose-modification ordering ({dose.get('n_agents', '?')})",
+            f"{dose['mean_rho_model']:+.4f}",
+            f"{baseline:+.4f}" if baseline is not None else "--",
+            f"{dose['paired_delta_vs_best_baseline']:+.4f}",
+            f"[{lo:+.4f}, {hi:+.4f}]",
+            "includes 0" if (lo <= 0 <= hi) else "excludes 0",
+        ))
+
+    if not rows:
+        return None
+    out = [RES_BEGIN, "", "| evaluation | model | best baseline | delta | 95% CI | |",
+           "|---|---|---|---|---|---|"]
+    out += ["| " + " | ".join(r) + " |" for r in rows]
+    out += ["", RES_END]
+    return "\n".join(out)
+
+
 def build_censoring_block(doc: dict) -> str | None:
     """The b_thresh sensitivity table, from artifacts/censoring_sensitivity.json."""
     if not all(k in doc for k in (k for k, _ in CENS_ROWS)):
@@ -130,6 +221,8 @@ def main() -> int:
                     default=Path("artifacts/forward_other_metrics.json"))
     ap.add_argument("--censoring", type=Path,
                     default=Path("artifacts/censoring_sensitivity.json"))
+    ap.add_argument("--dose-mod", type=Path,
+                    default=Path("artifacts/dose_mod_eval.json"))
     # Both documents quoted the same parameters and both were stale. The model card was
     # worse off: check_report.py only scanned report/, so its figures were never checked
     # at all.
@@ -145,6 +238,11 @@ def main() -> int:
     metrics = json.loads(args.metrics.read_text(encoding="utf-8"))
     block = build_block(metrics)
 
+    dose = (
+        json.loads(args.dose_mod.read_text(encoding="utf-8"))
+        if args.dose_mod.exists() else None
+    )
+    res_block = build_results_block(metrics, dose)
     cens_block = None
     if args.censoring.exists():
         cens_block = build_censoring_block(
@@ -155,9 +253,20 @@ def main() -> int:
     cens_pattern = re.compile(
         re.escape(CENS_BEGIN) + r".*?" + re.escape(CENS_END), re.S
     )
+    res_pattern = re.compile(re.escape(RES_BEGIN) + r".*?" + re.escape(RES_END), re.S)
     rc = 0
     for doc in args.report:
         text = doc.read_text(encoding="utf-8")
+        if res_block and res_pattern.search(text):
+            replaced = res_pattern.sub(lambda _: res_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: results table is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: results table regenerated")
         if cens_block and cens_pattern.search(text):
             replaced = cens_pattern.sub(lambda _: cens_block, text)
             if replaced != text:

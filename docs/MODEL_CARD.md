@@ -31,13 +31,17 @@ coefficient is therefore `n_agents x n_axes`:
 
 ## Results
 
+<!-- generated: results-table -->
+
 | evaluation | model | best baseline | delta | 95% CI | |
 |---|---|---|---|---|---|
-| within-arm ranking, leave-one-agent-out (16) | 0.827 | 0.844 | −0.012 | [−0.031, +0.005] | includes 0 |
-| within-arm ranking, leave-one-mechanism-out (2) | 0.854 | 0.871 | **−0.018** | [−0.027, −0.009] | excludes 0 |
-| within-arm ranking, leave-one-family-out (4) | 0.770 | 0.853 | **−0.080** | [−0.124, −0.035] | excludes 0 |
-| across-agent per-axis Spearman | +0.054 | +0.026 | — | [−0.115, +0.218] | includes 0; threshold +0.3 |
-| dose-modification ordering | +0.188 | +0.153 | +0.035 | [−0.001, +0.069] | includes 0 |
+| within-arm ranking, leave-one-agent-out (16) | 0.8270 | 0.8437 | -0.0120 | [-0.0307, +0.0052] | includes 0 |
+| within-arm ranking, leave-one-mechanism-out (2) | 0.8537 | 0.8715 | **-0.0177** | [-0.0265, -0.0090] | excludes 0 |
+| within-arm ranking, leave-one-family-out (4) | 0.7704 | 0.8525 | **-0.0805** | [-0.1240, -0.0345] | excludes 0 |
+| across-agent per-axis Spearman | +0.0538 | +0.0263 | -- | [-0.1072, +0.2174] | includes 0, CI derived |
+| dose-modification ordering (13) | +0.1882 | +0.1533 | +0.0348 | [-0.0007, +0.0693] | includes 0 |
+
+<!-- /generated: results-table -->
 
 The best within-arm predictor is the global axis mean, which carries no design information.
 The dose-modification comparison was favourable before the bug fix (+0.039 [+0.003,
@@ -120,17 +124,17 @@ The resolution that would help recedes as fast as it is approached.
 ## Calibration and uncertainty
 
 <!-- generated: fitted-parameters -->
-`tau_mech` 0.5816 [0.4926, 0.6863] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
+`tau_mech` 0.5922 [0.4929, 0.7052] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
 
-`sigma_agent` 0.1582 [0.1041, 0.2346] -- small, so the design slots account for much of the between-agent variation.
+`sigma_agent` 0.1562 [0.0952, 0.2368] -- small, so the design slots account for much of the between-agent variation.
 
-`b_combo` +0.1954 [+0.1675, +0.2216] -- combination arms do report higher rates.
+`b_combo` +0.1957 [+0.1685, +0.2201] -- combination arms do report higher rates.
 
-`b_log_n` +0.0395 [+0.0301, +0.0481] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
+`b_log_n` +0.0393 [+0.0294, +0.0496] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
 
-`b_dar` +0.0296 [-0.0226, +0.0827] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
+`b_dar` +0.0312 [-0.0203, +0.0823] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
 
-`b_thresh` +0.0330 [+0.0279, +0.0386] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
+`b_thresh` +0.0330 [+0.0275, +0.0379] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
 <!-- /generated: fitted-parameters -->
 
 Convergence is checked by refitting under a second seed; the worst standardized gap in

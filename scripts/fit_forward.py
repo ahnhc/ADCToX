@@ -421,6 +421,12 @@ def main() -> int:
                     "model_mean": float(
                         np.nanmean([v for v in model_rho.values() if np.isfinite(v)])
                     ),
+                    # Saved, not only printed. The model card quoted this interval from
+                    # stdout; it traced to nothing and the number guard only let it pass
+                    # because three-decimal figures coincide often in a dense value pool.
+                    "model_ci": [float(rlo), float(rhi)],
+                    "mech_baseline_mean": float(np.nanmean(bv)),
+                    "global_baseline_mean": float(np.nanmean(gv)),
                     "n_folds_contributing": n_points,
                 }
                 if model_rho

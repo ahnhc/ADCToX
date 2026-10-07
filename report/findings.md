@@ -190,17 +190,17 @@ failure of both family parameterizations.
 ## 5. What the model does support
 
 <!-- generated: fitted-parameters -->
-`tau_mech` 0.5816 [0.4926, 0.6863] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
+`tau_mech` 0.5922 [0.4929, 0.7052] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
 
-`sigma_agent` 0.1582 [0.1041, 0.2346] -- small, so the design slots account for much of the between-agent variation.
+`sigma_agent` 0.1562 [0.0952, 0.2368] -- small, so the design slots account for much of the between-agent variation.
 
-`b_combo` +0.1954 [+0.1675, +0.2216] -- combination arms do report higher rates.
+`b_combo` +0.1957 [+0.1685, +0.2201] -- combination arms do report higher rates.
 
-`b_log_n` +0.0395 [+0.0301, +0.0481] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
+`b_log_n` +0.0393 [+0.0294, +0.0496] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
 
-`b_dar` +0.0296 [-0.0226, +0.0827] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
+`b_dar` +0.0312 [-0.0203, +0.0823] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
 
-`b_thresh` +0.0330 [+0.0279, +0.0386] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
+`b_thresh` +0.0330 [+0.0275, +0.0379] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
 <!-- /generated: fitted-parameters -->
 
 Qualitatively the corpus is sound. Baseline-centered mechanism fingerprints reproduce the

@@ -12,5 +12,6 @@
   "0.9997": "The otologic rate the pre-fix model predicted on a 153-arm corpus against an observed 0.04. The single figure that exposed the centering bug. From the invalidated round, retained deliberately as the worst case the bug produced.",
   "0.239": "Worst standardized seed gap for the mechanism-only parameterization, from artifacts/cv_mechanism_only.log. A log rather than JSON because the comparison runs are diagnostics for a design decision, not a shipped metric.",
   "0.577": "Worst standardized seed gap for the nested payload-family parameterization, from artifacts/cv_family_nested.log. The figure that retired the payload-family level; see USE_PAYLOAD_FAMILY in src/adctox/model/forward.py.",
-  "0.214": "3/14, the null probability that a given organ falls in the top three of fourteen axes. Arithmetic from the axis count, declared before any Module B result was computed."
+  "0.214": "3/14, the null probability that a given organ falls in the top three of fourteen axes. Arithmetic from the axis count, declared before any Module B result was computed.",
+  "0.686": "Worst standardized seed gap for the additive payload-family parameterization, from artifacts/cv_family_additive.log. The diagnostic runs that retired the payload-family level are logs rather than JSON because they were abandoned on non-convergence; see USE_PAYLOAD_FAMILY in src/adctox/model/forward.py."
 }
