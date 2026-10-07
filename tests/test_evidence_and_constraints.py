@@ -156,3 +156,52 @@ def test_delivered_dose_floor_is_computed_not_asserted() -> None:
     designs, _ = space.enumerate("ERBB2")
     failed = [d for d in designs if not engine.check(d).passed]
     assert failed, "a floor that excludes nothing is not a constraint"
+
+
+def test_constraint_status_is_declared_and_honest() -> None:
+    """A constraint that cannot fire must say so.
+
+    C3 is fully implemented and never evaluated: no expression data is ingested, so
+    `selectivity` is None at every call site. The parameter is threaded through three
+    layers of signature and DATA_SOURCES.md listed HPA/GTEx as an attributed source for
+    it, so nothing indicated the screen was inert. This project has already shipped four
+    things of this shape -- a dead API option, an always-empty reference list and two
+    driver sources no code path emitted -- which is why the status is now asserted.
+    """
+    from adctox.design.constraints import ConstraintEngine
+
+    status = ConstraintEngine().active_constraints()
+    assert set(status) == {
+        "C1_payload_potency", "C2_delivered_dose", "C3_selectivity",
+        "C4_tier_1_precedent", "C5_chemistry_validity", "C6_evidence_on_at_risk_axes",
+    }
+    assert "INACTIVE" in status["C3_selectivity"], (
+        "C3 is reported as active. If selectivity data is now ingested, this test should "
+        "be updated -- but check that a caller actually passes `selectivity=` first, "
+        "because threading the parameter is not the same as supplying it."
+    )
+    for name, text in status.items():
+        if name != "C3_selectivity":
+            assert text.startswith("active"), (name, text)
+
+
+def test_nothing_supplies_selectivity_so_c3_cannot_fire() -> None:
+    """Pins the reason C3 is reported inactive, rather than trusting the label.
+
+    If a caller starts passing selectivity, this fails and the status string above has to
+    be revisited -- which is the point.
+    """
+    import re
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1] / "src"
+    callers = []
+    for path in root.rglob("*.py"):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            # an argument being *passed*, not declared or forwarded as None
+            if re.search(r"selectivity\s*=\s*(?!None)(?!selectivity\b)\w", line):
+                callers.append(f"{path.name}: {line.strip()}")
+    assert not callers, (
+        "something now supplies a selectivity value, so C3 can fire:\n  "
+        + "\n  ".join(callers)
+    )

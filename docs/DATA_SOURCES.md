@@ -7,7 +7,7 @@ Every source here was verified live on 2026-10-07. Counts are measured, not esti
 | ClinicalTrials.gov API v2 | arm-level adverse events, eligibility text, the PT->SOC dictionary | US Government public domain | Derived numbers published freely |
 | openFDA drug label | design metadata, hepatic/renal impairment statements | public domain | Quoted freely |
 | DailyMed SPL history | dated label-change detection | public domain | Quoted freely |
-| Human Protein Atlas / GTEx | target organ expression for the selectivity flag | CC BY 4.0 / open | Attributed |
+| Human Protein Atlas / GTEx | **not ingested in this build** -- see note | CC BY 4.0 / open | n/a |
 | SIDER 4.1 | reference lookup only, never a training source | CC BY-SA 4.0 | Not redistributed |
 | MONDO | comorbidity organ mapping | CC BY 4.0 | Attributed |
 | AHRQ Elixhauser CMR | comorbidity severity ordering | US Government public domain | Attributed |
@@ -61,3 +61,25 @@ bulk route; the PMC website's terms prohibit systematic downloading from the sit
 | CTD | Downloads are reachable unauthenticated, but the licence obliges a backlink from every display context plus usage reporting. Reactome covers the pathway side under CC0. |
 | MIMIC-IV | Excluded on relevance, not access: it is an ICU database and ADC patients are ambulatory oncology, so exposure is essentially absent. |
 | FAERS, as an incidence source | Disproportionality has no denominator. Retained only as a qualitative consistency check. |
+
+## Sources listed in the plan but not ingested in this build
+
+Recorded here rather than left as an unmarked row, because a source listed in this table
+reads as a source the pipeline uses.
+
+**Human Protein Atlas / GTEx** -- intended to supply per-organ target expression for
+constraint C3, the selectivity index. Nothing in the repository fetches it, so C3 is
+implemented, threaded through three layers of call signature, and never evaluated: no
+candidate is screened on selectivity. `ConstraintEngine.active_constraints()` reports it
+as declared-but-inactive so the gap is stated at runtime too.
+
+The omission is deliberate as well as unfinished. GTEx reports `ERBB2` at a median 86.7
+TPM in aorta and 66.6 in tibial artery, which would have the index call HER2 an artery
+gene; HER2 cardiotoxicity is real but cardiomyocyte, not aortic smooth muscle. The plan
+already concluded that the index belongs on screen as a flag rather than in the ranking.
+What was wrong was not the decision but leaving it silent.
+
+**MONDO** is used for the hand-pinned `mondo_id` column in the comorbidity registry,
+which was curated against it; the ontology is not loaded at runtime. **SIDER** is cited
+for the negative result that chemistry-to-organ transfer cannot be learned from it, and
+is not read by any code path.

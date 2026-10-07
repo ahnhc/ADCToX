@@ -376,8 +376,14 @@ def ontology() -> dict:
         }
         for row in comorbidity_registry().values()
     ]
+    from ..design.constraints import ConstraintEngine
+
     return {
         "organ_axes": [{"id": a, "label": tax.axes[a]} for a in tax.axis_order],
+        # Which constraints this build can evaluate, and why not where not. A constraint
+        # that cannot fire is indistinguishable from one that fires and passes, and the
+        # difference decides how much the screen is worth.
+        "constraints": ConstraintEngine().active_constraints(),
         "comorbidities": rows,
         "payloads": sorted(space.payloads),
         "linkers": sorted(space.linkers),

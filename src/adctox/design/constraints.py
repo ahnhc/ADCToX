@@ -73,6 +73,32 @@ class ConstraintEngine:
         self.delivered_dose_floor = float(np.percentile(delivered, 10)) if delivered else 0.0
         self.n_reference_adcs = len(delivered)
 
+    def active_constraints(self) -> dict[str, str]:
+        """Which constraints this build can actually evaluate, and why not where not.
+
+        A constraint that cannot fire is indistinguishable from one that fires and passes,
+        and the difference matters to anyone deciding how much the screen is worth. This
+        project has shipped four such things already -- a dead API option, an always-empty
+        reference list and two driver sources no code path emitted -- so the status is
+        stated rather than implied.
+        """
+        return {
+            "C1_payload_potency": "active",
+            "C2_delivered_dose": (
+                f"active; floor {self.delivered_dose_floor:.4g} computed as the 10th "
+                f"percentile over {self.n_reference_adcs} approved ADCs"
+            ),
+            "C3_selectivity": (
+                "DECLARED BUT INACTIVE: requires per-organ target expression, which this "
+                "build does not ingest. Deliberate -- GTEx reports ERBB2 at 86.7 median "
+                "TPM in aorta, so the index would call HER2 an artery gene -- but the "
+                "consequence is that no candidate is ever screened on selectivity."
+            ),
+            "C4_tier_1_precedent": "active; enforced by the enumerator before scoring",
+            "C5_chemistry_validity": "active",
+            "C6_evidence_on_at_risk_axes": "active when a comorbidity is declared",
+        }
+
     def delivered_dose(self, design: Design) -> float:
         return design.dar / self.payloads[design.payload]["ic50_nm"]
 
@@ -113,6 +139,15 @@ class ConstraintEngine:
         # reach neighbouring tissue. Selectivity is a flag, never a ranking key: GTEx
         # reports ERBB2 at a median 86.7 TPM in aorta, which would call HER2 "an artery
         # gene" -- real HER2 cardiotoxicity is cardiomyocyte, not aortic smooth muscle.
+        #
+        # NOT EVALUATED in this build. No expression data is ingested -- there is no GTEx
+        # or HPA fetch anywhere in the repository -- so `selectivity` is None at every
+        # call site and this block never runs. That is a deliberate omission given the
+        # aorta measurement above, but it was an invisible one: the parameter is threaded
+        # through three layers of signatures, DATA_SOURCES.md listed HPA/GTEx as an
+        # attributed source for this flag, and nothing said the constraint was inert.
+        # `active_constraints()` now reports it as declared-but-inactive, so a reviewer
+        # is told rather than left to infer it from an empty margin.
         if at_risk_axes and selectivity and payload.get("membrane_permeable"):
             worst = min(
                 (selectivity[a] for a in at_risk_axes if a in selectivity), default=None
