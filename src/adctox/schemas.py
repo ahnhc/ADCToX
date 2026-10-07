@@ -276,6 +276,10 @@ class Coverage(BaseModel):
 
     novelty_tier: Literal[1, 2, 3]
     in_distribution: bool
+    # Whether any corpus agent targets this antigen. Reported for context only: the
+    # target does not enter the organ estimate, since target x axis interactions were
+    # dropped as near-collinear with payload family.
+    target_in_corpus: bool | None = None
     nearest_reference_adcs: list[dict] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
 

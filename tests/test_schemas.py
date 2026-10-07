@@ -190,3 +190,51 @@ def test_propose_path_validates_against_the_same_organ_risk_model():
     assert rows
     for row in rows:
         OrganRisk.model_validate(row)
+
+
+def test_the_target_antigen_is_declared_not_to_enter_the_estimate():
+    """/assess accepts any well-formed antigen name and returns fourteen numbers.
+
+    The target does not enter the forward model at all -- target x axis interactions were
+    dropped as near-collinear with payload family -- so the same chemistry returns the
+    same organ profile for every target. A caller who named their target would otherwise
+    reasonably assume it was used, and an unknown target returned a confident answer with
+    nothing said.
+    """
+    pytest.importorskip("fastapi")
+    from fastapi.testclient import TestClient
+
+    from adctox.api.main import app
+
+    c = TestClient(app)
+
+    def assess(target):
+        return c.post(
+            "/api/v1/assess",
+            json={
+                "design": {
+                    "target_antigen": target, "payload": "DXd", "linker": "GGFG",
+                    "conjugation": "interchain_cysteine", "dar": 8.0,
+                },
+                "comorbidity_profile": {"conditions": []},
+            },
+        )
+
+    known, unknown = assess("ERBB2"), assess("NOTAREALTARGET")
+    if known.status_code == 503:
+        pytest.skip("posterior artefact absent")
+    assert known.status_code == unknown.status_code == 200
+
+    for r in (known, unknown):
+        cov = r.json()["coverage"]
+        assert any("does not enter" in w for w in cov["warnings"]), cov["warnings"]
+    assert known.json()["coverage"]["target_in_corpus"] is True
+    assert unknown.json()["coverage"]["target_in_corpus"] is False
+
+    # And the claim had better be true: identical chemistry, identical numbers.
+    a = [o["point_estimate"] for o in known.json()["organ_risks"]]
+    b = [o["point_estimate"] for o in unknown.json()["organ_risks"]]
+    assert a == b, (
+        "the two targets returned different organ estimates, so the target does enter "
+        "the model and the warning is wrong"
+    )

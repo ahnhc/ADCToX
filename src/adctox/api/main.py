@@ -26,6 +26,14 @@ ROOT = Path(__file__).resolve().parents[3]
 CONF = ROOT / "conf"
 ARTIFACTS = ROOT / "artifacts"
 
+def _targets_in_corpus() -> set[str]:
+    return {
+        str(spec.get("target")).upper()
+        for spec in _registry().values()
+        if spec.get("target")
+    }
+
+
 def _coverage(design, family: str, post) -> dict:
     """Novelty tier plus what the estimate actually rests on.
 
@@ -38,6 +46,21 @@ def _coverage(design, family: str, post) -> dict:
     in_corpus = family in post.families
     same_payload = [r for r in refs if r["relation"] == "same payload"]
     warnings = []
+    # The target does not enter the organ estimate at all. Target x axis interactions were
+    # removed as near-collinear with payload family -- eight of the corpus's families map
+    # almost one-to-one onto a target -- so the figures below describe the chemistry and
+    # are identical for every target. Said out loud because the endpoint accepts any
+    # well-formed antigen name and returns fourteen confident numbers, and a caller who
+    # named their target would otherwise reasonably assume it was used.
+    known_target = str(design.target).upper() in _targets_in_corpus()
+    warnings.append(
+        "the target antigen does not enter these estimates: target x axis interactions "
+        "were dropped as near-collinear with payload family, so the same chemistry "
+        "returns the same organ profile for every target"
+        + ("" if known_target else
+           f". {design.target!r} is also absent from the corpus, so no agent "
+           "against it informs the comparison set below")
+    )
     if not in_corpus:
         warnings.append(
             f"payload family {family or '(unmapped)'!r} is absent from the training "
@@ -54,6 +77,7 @@ def _coverage(design, family: str, post) -> dict:
     return {
         "novelty_tier": 1 if in_corpus else 2,
         "in_distribution": in_corpus,
+        "target_in_corpus": known_target,
         "nearest_reference_adcs": refs,
         "warnings": warnings,
     }
