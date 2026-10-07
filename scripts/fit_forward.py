@@ -52,7 +52,8 @@ def _masked(data: ModelData, mask: np.ndarray) -> ModelData:
     )
 
 
-def fit(data: ModelData, hold_mech: int | None, seed: int, warmup: int, samples: int):
+def fit(data: ModelData, hold_mech: int | None, seed: int, warmup: int,
+        samples: int, chains: int = 2):
     # max_tree_depth is capped at 8 rather than left at the default 10. Measured on this
     # model: the default averages 479 gradient evaluations per iteration against 255 at
     # depth 8, for a 2.5x speedup, while the sampler stays healthy (0 divergences,
@@ -60,7 +61,7 @@ def fit(data: ModelData, hold_mech: int | None, seed: int, warmup: int, samples:
     # there is no funnel to fight, the trajectories are simply long.
     kernel = NUTS(forward.model, target_accept_prob=0.8, max_tree_depth=8)
     mcmc = MCMC(
-        kernel, num_warmup=warmup, num_samples=samples, num_chains=2,
+        kernel, num_warmup=warmup, num_samples=samples, num_chains=chains,
         progress_bar=False, chain_method="sequential",
     )
     mcmc.run(jax.random.PRNGKey(seed), data=data, hold_mech=hold_mech)
@@ -223,7 +224,7 @@ def main() -> int:
             train_data = _masked(data, fold.train_cells)
             t_fold = time.time()
             p_fold = fit(train_data, fold.held_mech_idx, args.seed + 1,
-                         args.cv_warmup, args.cv_samples)
+                         args.cv_warmup, args.cv_samples, chains=1)
             test = _masked(data, fold.test_cells)
             pred = predict_rates(p_fold, test, fold.held_mech_idx)
             obs = _observed_rate(data, fold.test_cells)
