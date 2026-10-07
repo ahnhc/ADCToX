@@ -25,7 +25,6 @@ from pathlib import Path
 
 import jax
 import numpy as np
-import numpyro
 from numpyro.infer import MCMC, NUTS
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))

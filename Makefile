@@ -11,7 +11,7 @@ ART     := artifacts
 
 .PHONY: all env taxonomy corpus eligibility enrichment forward propose test \
         censoring-sensitivity label-history label-changes label-change-eval \
-        dose-mod dose-mod-eval module-b hard-flags sync-report check-report clean
+        dose-mod dose-mod-eval module-b hard-flags lint sync-report check-report clean
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
@@ -87,7 +87,7 @@ dose-mod-eval: forward
 propose:
 	$(PY) scripts/propose_demo.py --out $(ART)
 
-test:
+test: lint
 	$(PY) -m pytest tests/ -q
 
 # Guards against a number being typed into the report by hand and then drifting from the
@@ -97,6 +97,9 @@ test:
 # quoted one number as both current and pre-fix.
 # How much of the output is the rule layer rather than the fit? Measured, because a rule
 # that raises the band the ILD case study is about would make that case study circular.
+lint:
+	$(PY) scripts/check_unused_imports.py
+
 hard-flags:
 	$(PY) scripts/hard_flag_necessity.py --out $(ART)
 

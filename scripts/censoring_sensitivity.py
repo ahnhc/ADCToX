@@ -35,7 +35,7 @@ from numpyro.infer import MCMC, NUTS
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from adctox.model import dataset as ds, forward  # noqa: E402
-from adctox.model.dataset import CENSORED, OBSERVED, ZERO  # noqa: E402
+from adctox.model.dataset import CENSORED, ZERO  # noqa: E402
 from adctox.taxonomy import Taxonomy  # noqa: E402
 
 

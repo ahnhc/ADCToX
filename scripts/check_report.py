@@ -32,7 +32,6 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import sys
 from pathlib import Path
 
 # Decimals with at least two places: the shape of a measured quantity rather than a count.

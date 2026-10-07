@@ -12,7 +12,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import numpy as np
 import pytest
 
 from adctox.model.predict import MIN_ARMS_FOR_A_BAND, Posterior, risk_band

@@ -9,7 +9,6 @@ the output must always say which bands came from a rule.
 
 from __future__ import annotations
 
-import pytest
 import yaml
 
 from adctox.comorbidity.hard_flags import (

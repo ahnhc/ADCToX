@@ -30,7 +30,7 @@ import numpyro
 import numpyro.distributions as dist
 from jax.scipy.special import betainc
 
-from .dataset import CENSORED, OBSERVED, ZERO, ModelData
+from .dataset import ModelData
 
 
 def _family_term(data, mech_axis, n_axes: int, hold_family: int | None):

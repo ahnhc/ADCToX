@@ -18,7 +18,6 @@ underwrite.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from itertools import product
 from pathlib import Path
 
 import yaml
