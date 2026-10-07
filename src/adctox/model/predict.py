@@ -28,34 +28,40 @@ class Posterior:
 
     mu_axis: np.ndarray        # (S, A)
     mech_axis: np.ndarray      # (S, M, A)
+    family_axis: np.ndarray    # (S, F, A)
     cleav_axis: np.ndarray     # (S, A)
     b_dar: np.ndarray          # (S,)
     b_combo: np.ndarray
     sigma_agent: np.ndarray
     axes: list[str]
     mechanisms: list[str]
+    families: list[str]
     dar_mean: float
 
     @classmethod
     def from_samples(cls, post: dict, data: ModelData) -> "Posterior":
         tau_m = np.asarray(post["tau_mech"])[:, None, None]
+        tau_f = np.asarray(post["tau_family"])[:, None, None]
         tau_c = np.asarray(post["tau_cleav"])[:, None]
         return cls(
             mu_axis=np.asarray(post["mu_axis"]),
             mech_axis=tau_m * np.asarray(post["mech_axis_raw"]),
+            family_axis=tau_f * np.asarray(post["family_axis_raw"]),
             cleav_axis=tau_c * np.asarray(post["cleav_axis_raw"]),
             b_dar=np.asarray(post["b_dar"]),
             b_combo=np.asarray(post["b_combo"]),
             sigma_agent=np.asarray(post["sigma_agent"]),
             axes=list(data.axes),
             mechanisms=list(data.mechanisms),
+            families=list(data.families),
             dar_mean=float(data.dar_mean),
         )
 
     def save(self, path: Path) -> None:
         np.savez_compressed(
             path,
-            mu_axis=self.mu_axis, mech_axis=self.mech_axis, cleav_axis=self.cleav_axis,
+            mu_axis=self.mu_axis, mech_axis=self.mech_axis,
+            family_axis=self.family_axis, cleav_axis=self.cleav_axis,
             b_dar=self.b_dar, b_combo=self.b_combo, sigma_agent=self.sigma_agent,
             axes=np.array(self.axes), mechanisms=np.array(self.mechanisms),
             dar_mean=np.array([self.dar_mean]),
@@ -65,10 +71,12 @@ class Posterior:
     def load(cls, path: Path) -> "Posterior":
         z = np.load(path, allow_pickle=False)
         return cls(
-            mu_axis=z["mu_axis"], mech_axis=z["mech_axis"], cleav_axis=z["cleav_axis"],
+            mu_axis=z["mu_axis"], mech_axis=z["mech_axis"],
+            family_axis=z["family_axis"], cleav_axis=z["cleav_axis"],
             b_dar=z["b_dar"], b_combo=z["b_combo"], sigma_agent=z["sigma_agent"],
             axes=[str(s) for s in z["axes"]],
             mechanisms=[str(s) for s in z["mechanisms"]],
+            families=[str(s) for s in z["families"]],
             dar_mean=float(z["dar_mean"][0]),
         )
 
@@ -80,6 +88,7 @@ class Posterior:
 def predict_draws(
     post: Posterior,
     mechanisms: list[str],
+    families: list[str],
     dars: np.ndarray,
     cleavables: np.ndarray,
     include_agent_variation: bool = True,
@@ -110,11 +119,21 @@ def predict_draws(
         )
 
     mech_idx = np.array([post.mechanisms.index(m) for m in mechanisms])
+    fam_idx = np.array(
+        [post.families.index(f) if f in post.families else -1 for f in families]
+    )
     S, A = post.n_draws, len(post.axes)
 
     logit = (
         post.mu_axis[:, None, :]                             # (S,1,A)
         + post.mech_axis[:, mech_idx, :]                     # (S,D,A)
+        # A family absent from the corpus contributes nothing, falling back to its
+        # mechanism rather than borrowing another family's effect.
+        + np.where(
+            (fam_idx >= 0)[None, :, None],
+            post.family_axis[:, np.clip(fam_idx, 0, None), :],
+            0.0,
+        )
         + post.cleav_axis[:, None, :] * cleavables[None, :, None]
         + (post.b_dar[:, None] * (dars[None, :] - post.dar_mean))[:, :, None]
         # b_combo is intentionally not applied: a proposal is a monotherapy design, and

@@ -1,0 +1,68 @@
+Corpus (other): 3,990 cells over 285 arms x 14 axes (3,440 observed, 471 censored, 79 structural zero) | 16 agents, 5 mechanisms, 61 multi-arm trials (128 arms from single-arm trials carry no trial effect)
+
+Parameters: design 100, nuisance 83; identifying cells 224 (ratio 2.24:1)
+
+Folds:
+  mechanism         arms  agents  fold
+  dna_alkyl            2       1  skipped (<3 agents)
+  dna_cleave          39       2  skipped (<3 agents)
+  dna_crosslink        7       2  skipped (<3 agents)
+  topo1               68       4  VIABLE
+  tubulin            169       7  VIABLE
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+
+Full fit (2 seeds): 173.0s
+  seed agreement (|mean_a - mean_b| / pooled sd):
+    tau_mech     0.133
+    tau_cleav    0.064
+    b_dar        0.060
+    b_combo      0.046
+    b_thresh     0.113
+    b_log_n      0.020
+    sigma_trial  0.239
+    sigma_agent  0.112
+  worst standardized seed gap: 0.239 (acceptable)
+  tau_mech  (mechanism x axis scale): 0.592 [0.503, 0.711]
+  tau_cleav (cleavability x axis)   : 0.277 [0.198, 0.397]
+  b_dar        +0.038 [-0.004, +0.080]
+  b_combo      +0.202 [+0.171, +0.233]
+  b_thresh     +0.036 [+0.030, +0.040]
+  b_log_n      +0.030 [+0.020, +0.041]
+  sigma_trial  +0.490 [+0.408, +0.588]
+  sigma_agent  +0.121 [+0.076, +0.189]
+
+==========================================================================
+leave_one_mechanism_out  (2 folds)
+==========================================================================
+  topo1                      AUC 0.905 vs mech 0.910 (d -0.006) | global 0.910 | MAE 0.110 vs 0.085 | 131s
+  tubulin                    AUC 0.807 vs mech 0.833 (d -0.025) | global 0.833 | MAE 0.105 vs 0.101 | 56s
+
+  macro AUC   model 0.856 | mech-mean 0.871 | global-mean 0.871
+  delta AUC   -0.016  95% CI [-0.025, -0.006]  (excludes 0)
+
+==========================================================================
+leave_one_agent_out  (16 folds)
+==========================================================================
+  belantamab_mafodotin       AUC 0.579 vs mech 0.643 (d -0.064) | global 0.709 | MAE 0.129 vs 0.128 | 20s
+  brentuximab_vedotin        AUC 0.858 vs mech 0.864 (d -0.006) | global 0.860 | MAE 0.115 vs 0.117 | 19s
+  datopotamab_deruxtecan     AUC 0.945 vs mech 0.918 (d +0.027) | global 0.874 | MAE 0.066 vs 0.071 | 24s
+  enfortumab_vedotin         AUC 0.784 vs mech 0.768 (d +0.016) | global 0.806 | MAE 0.082 vs 0.084 | 23s
+  gemtuzumab_ozogamicin      AUC 0.789 vs mech 0.798 (d -0.009) | global 0.774 | MAE 0.149 vs 0.141 | 25s
+  inotuzumab_ozogamicin      AUC 0.875 vs mech 0.895 (d -0.019) | global 0.895 | MAE 0.118 vs 0.103 | 24s
+  loncastuximab_tesirine     AUC 0.948 vs mech 0.939 (d +0.008) | global 0.939 | MAE 0.066 vs 0.072 | 16s
+  mirvetuximab_soravtansine  AUC 0.690 vs mech 0.739 (d -0.050) | global 0.715 | MAE 0.118 vs 0.111 | 21s
+  patritumab_deruxtecan      AUC 0.907 vs mech 0.905 (d +0.002) | global 0.958 | MAE 0.069 vs 0.067 | 25s
+  pivekimab_sunirine         AUC 1.000 vs mech 1.000 (d +0.000) | global 1.000 | MAE 0.065 vs 0.062 | 21s
+  polatuzumab_vedotin        AUC 0.900 vs mech 0.939 (d -0.040) | global 0.936 | MAE 0.085 vs 0.082 | 38s
+  sacituzumab_govitecan      AUC 0.919 vs mech 0.866 (d +0.053) | global 0.885 | MAE 0.084 vs 0.087 | 20s
+  tisotumab_vedotin          AUC 0.743 vs mech 0.739 (d +0.004) | global 0.727 | MAE 0.106 vs 0.098 | 17s
+  trastuzumab_deruxtecan     AUC 0.935 vs mech 0.938 (d -0.002) | global 0.923 | MAE 0.078 vs 0.075 | 20s
+  trastuzumab_duocarmazine   AUC 0.629 vs mech 0.652 (d -0.023) | global 0.652 | MAE 0.105 vs 0.110 | 17s
+  trastuzumab_emtansine      AUC 0.705 vs mech 0.821 (d -0.115) | global 0.845 | MAE 0.136 vs 0.095 | 21s
+
+  macro AUC   model 0.825 | mech-mean 0.839 | global-mean 0.844
+  delta AUC   -0.014  95% CI [-0.033, +0.004]  (INCLUDES 0)
+
+-> artifacts/forward_other_metrics.json
+
+GATE (macro AUC, leave_one_agent_out): 0.825 vs 0.65 -> PASS

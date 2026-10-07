@@ -52,7 +52,7 @@ def _masked(data: ModelData, mask: np.ndarray) -> ModelData:
 
 
 def fit(data: ModelData, hold_mech: int | None, seed: int, warmup: int,
-        samples: int, chains: int = 1):
+        samples: int, chains: int = 1, hold_family: int | None = None):
     # max_tree_depth is capped at 8 rather than left at the default 10. Measured on this
     # model: the default averages 479 gradient evaluations per iteration against 255 at
     # depth 8, for a 2.5x speedup, while the sampler stays healthy (0 divergences,
@@ -68,17 +68,27 @@ def fit(data: ModelData, hold_mech: int | None, seed: int, warmup: int,
         kernel, num_warmup=warmup, num_samples=samples, num_chains=chains,
         progress_bar=False,
     )
-    mcmc.run(jax.random.PRNGKey(seed), data=data, hold_mech=hold_mech)
+    mcmc.run(
+        jax.random.PRNGKey(seed), data=data,
+        hold_mech=hold_mech, hold_family=hold_family,
+    )
     return mcmc.get_samples()
 
 
-def predict_rates(post: dict, data: ModelData, hold_mech: int | None) -> np.ndarray:
+def predict_rates(
+    post: dict, data: ModelData, hold_mech: int | None,
+    hold_family: int | None = None,
+) -> np.ndarray:
     """Posterior-mean rate per (arm, axis) cell, computed from the parameter draws."""
     mu = np.asarray(post["mu_axis"])                       # (S, A)
     mech = np.asarray(post["tau_mech"])[:, None, None] * np.asarray(post["mech_axis_raw"])
     if hold_mech is not None:
         mech = mech.copy()
         mech[:, hold_mech, :] = 0.0
+    fam = np.asarray(post["tau_family"])[:, None, None] * np.asarray(post["family_axis_raw"])
+    if hold_family is not None:
+        fam = fam.copy()
+        fam[:, hold_family, :] = 0.0
     cleav = np.asarray(post["tau_cleav"])[:, None] * np.asarray(post["cleav_axis_raw"])
     arm_lin = (
         np.asarray(post["b_dar"])[:, None] * data.arm_dar_c[None, :]
@@ -95,6 +105,7 @@ def predict_rates(post: dict, data: ModelData, hold_mech: int | None) -> np.ndar
     logit = (
         mu[:, xi]
         + mech[:, data.arm_mech_idx[ai], xi]
+        + fam[:, data.arm_family_idx[ai], xi]
         + cleav[:, xi] * data.arm_cleavable[ai][None, :]
         + arm_lin[:, ai]
     )
@@ -224,8 +235,8 @@ def main() -> int:
     # differ by much more than a Monte Carlo standard error have not converged.
     print("  seed agreement (|mean_a - mean_b| / pooled sd):")
     worst = 0.0
-    for name in ("tau_mech", "tau_cleav", "b_dar", "b_combo", "b_thresh", "b_log_n",
-                 "sigma_trial", "sigma_agent"):
+    for name in ("tau_mech", "tau_family", "tau_cleav", "b_dar", "b_combo", "b_thresh",
+                 "b_log_n", "sigma_trial", "sigma_agent"):
         a, b = np.asarray(post[name]), np.asarray(post_b[name])
         sd = np.sqrt(0.5 * (a.var() + b.var())) or 1.0
         z = abs(a.mean() - b.mean()) / sd
@@ -239,6 +250,11 @@ def main() -> int:
     print(
         f"  tau_mech  (mechanism x axis scale): "
         f"{tau.mean():.3f} [{np.percentile(tau, 5):.3f}, {np.percentile(tau, 95):.3f}]"
+    )
+    tau_f = np.asarray(post["tau_family"])
+    print(
+        f"  tau_family(payload family x axis) : "
+        f"{tau_f.mean():.3f} [{np.percentile(tau_f, 5):.3f}, {np.percentile(tau_f, 95):.3f}]"
     )
     print(
         f"  tau_cleav (cleavability x axis)   : "
@@ -271,6 +287,7 @@ def main() -> int:
     agent_rows: list[dict] = []
     for fold_set, label in (
         (splits.leave_one_mechanism_out(data), "leave_one_mechanism_out"),
+        (splits.leave_one_family_out(data), "leave_one_family_out"),
         (splits.leave_one_agent_out(data), "leave_one_agent_out"),
     ):
         print(f"\n{'=' * 74}\n{label}  ({len(fold_set)} folds)\n{'=' * 74}")
@@ -279,9 +296,10 @@ def main() -> int:
             train_data = _masked(data, fold.train_cells)
             t_fold = time.time()
             p_fold = fit(train_data, fold.held_mech_idx, args.seed + 1,
-                         args.cv_warmup, args.cv_samples, chains=1)
+                         args.cv_warmup, args.cv_samples, chains=1,
+                         hold_family=fold.held_family_idx)
             test = _masked(data, fold.test_cells)
-            pred = predict_rates(p_fold, test, fold.held_mech_idx)
+            pred = predict_rates(p_fold, test, fold.held_mech_idx, fold.held_family_idx)
             obs = _observed_rate(data, fold.test_cells)
 
             base_mech = mech_axis_mean(fold.train_cells)
@@ -391,6 +409,9 @@ def main() -> int:
         "kind": args.kind, "corpus": data.summary(), "parameters": acct,
         "tau_mech": {"mean": float(tau.mean()),
                      "q05": float(np.percentile(tau, 5)), "q95": float(np.percentile(tau, 95))},
+        "tau_family": {"mean": float(tau_f.mean()),
+                       "q05": float(np.percentile(tau_f, 5)),
+                       "q95": float(np.percentile(tau_f, 95))},
         "tau_cleav": {"mean": float(tau_c.mean())},
         "coefficients": {
             k: {"mean": float(np.asarray(post[k]).mean()),

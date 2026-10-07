@@ -90,6 +90,7 @@ def main() -> int:
                     "start_date": start,
                     "results_posted": posted,
                     "mechanism": spec["mechanism"] if spec else None,
+                    "payload_family": spec["payload_family"] if spec else None,
                     "payload": spec["payload"] if spec else None,
                     "linker_type": spec["linker_type"] if spec else None,
                     "linker_cleavable": spec["linker_cleavable"] if spec else None,

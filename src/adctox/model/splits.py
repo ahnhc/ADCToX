@@ -38,6 +38,7 @@ class Fold:
     train_cells: np.ndarray     # boolean mask over cells
     test_cells: np.ndarray
     held_mech_idx: int | None   # set for mechanism folds, so the model can zero it out
+    held_family_idx: int | None = None
 
 
 def _cells_for_arms(data: ModelData, arm_mask: np.ndarray) -> np.ndarray:
@@ -70,6 +71,35 @@ def leave_one_agent_out(data: ModelData, drop_shared_trials: bool = True) -> lis
     return folds
 
 
+def leave_one_family_out(data: ModelData, min_agents: int = 2) -> list[Fold]:
+    """One fold per payload family carrying at least `min_agents` agents.
+
+    Family is the resolution the failure analysis points at, and a lower agent floor is
+    defensible here than for mechanism because the question is narrower: can the model
+    predict a family from its *siblings inside the same mechanism*, rather than from
+    nothing. Families below the floor are skipped, as for mechanism.
+    """
+    agents_per_family: dict[int, set[int]] = {}
+    for fi, ai in zip(data.arm_family_idx, data.arm_agent_idx):
+        agents_per_family.setdefault(int(fi), set()).add(int(ai))
+    folds: list[Fold] = []
+    for fi, agent_set in sorted(agents_per_family.items()):
+        if len(agent_set) < min_agents:
+            continue
+        is_fam = data.arm_family_idx == fi
+        folds.append(
+            Fold(
+                name=data.families[fi],
+                kind="family",
+                train_cells=_cells_for_arms(data, ~is_fam),
+                test_cells=_cells_for_arms(data, is_fam),
+                held_mech_idx=None,
+                held_family_idx=fi,
+            )
+        )
+    return folds
+
+
 def leave_one_mechanism_out(data: ModelData, min_agents: int = 3) -> list[Fold]:
     """One fold per mechanism carrying at least `min_agents` distinct agents.
 
@@ -96,6 +126,9 @@ def leave_one_mechanism_out(data: ModelData, min_agents: int = 3) -> list[Fold]:
                 train_cells=_cells_for_arms(data, ~is_mech),
                 test_cells=_cells_for_arms(data, is_mech),
                 held_mech_idx=mi,
+                # A held-out mechanism's families are held out with it; otherwise the
+                # family term would leak the very chemistry the fold removed.
+                held_family_idx=None,
             )
         )
     return folds

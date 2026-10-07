@@ -28,7 +28,8 @@ def _arms(threshold, is_mono=True, n=100):
                 "agent": "trastuzumab_deruxtecan", "n_at_risk_other": n,
                 "n_at_risk_serious": n, "frequency_threshold": threshold,
                 "is_monotherapy": is_mono, "conventional_adc": True,
-                "mechanism": "topo1", "payload": "DXd", "linker_type": "GGFG",
+                "mechanism": "topo1", "payload": "DXd",
+                "payload_family": "camptothecin", "linker_type": "GGFG",
                 "linker_cleavable": True, "dar": 8.0, "isotype": "IgG1", "target": "ERBB2",
             }
         ]

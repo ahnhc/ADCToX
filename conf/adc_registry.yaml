@@ -15,6 +15,14 @@
 version: 1
 curated_at: 2026-10-07
 
+# `payload_family` sits between payload identity and mechanism. It exists because the
+# cross-validation failures are concentrated in agents that are the sole representative
+# of their family inside a broader mechanism class -- trastuzumab emtansine's platelet and
+# ocular signature predicted from MMAE's neuropathy, both being "tubulin". Family adds
+# exactly two splits over mechanism among the surviving agents:
+# tubulin -> auristatin (5 agents) + maytansinoid (2), and dna_crosslink -> pbd (1) + ign (1).
+# Only the first is estimable; the second shrinks back to its mechanism, which is correct.
+
 agents:
   brentuximab_vedotin:
     inn: brentuximab vedotin
@@ -23,6 +31,7 @@ agents:
     target: TNFRSF8
     target_label: CD30
     payload: MMAE
+    payload_family: auristatin
     mechanism: tubulin
     linker_type: vc_PABC
     linker_cleavable: true
@@ -43,6 +52,7 @@ agents:
     target: ERBB2
     target_label: HER2
     payload: DM1
+    payload_family: maytansinoid
     mechanism: tubulin
     linker_type: SMCC
     linker_cleavable: false
@@ -63,6 +73,7 @@ agents:
     target: TNFRSF17
     target_label: BCMA
     payload: MMAF
+    payload_family: auristatin
     mechanism: tubulin
     linker_type: mc
     linker_cleavable: false
@@ -85,6 +96,7 @@ agents:
     target: CD33
     target_label: CD33
     payload: calicheamicin
+    payload_family: enediyne
     mechanism: dna_cleave
     linker_type: hydrazone_AcBut_disulfide
     linker_cleavable: true
@@ -107,6 +119,7 @@ agents:
     target: CD22
     target_label: CD22
     payload: calicheamicin
+    payload_family: enediyne
     mechanism: dna_cleave
     linker_type: hydrazone_AcBut_disulfide
     linker_cleavable: true
@@ -129,6 +142,7 @@ agents:
     target: ERBB2
     target_label: HER2
     payload: DXd
+    payload_family: camptothecin
     mechanism: topo1
     linker_type: GGFG
     linker_cleavable: true
@@ -149,6 +163,7 @@ agents:
     target: TACSTD2
     target_label: TROP2
     payload: SN-38
+    payload_family: camptothecin
     mechanism: topo1
     linker_type: CL2A
     linker_cleavable: true
@@ -169,6 +184,7 @@ agents:
     target: CD79B
     target_label: CD79b
     payload: MMAE
+    payload_family: auristatin
     mechanism: tubulin
     linker_type: vc_PABC
     linker_cleavable: true
@@ -189,6 +205,7 @@ agents:
     target: FOLR1
     target_label: FRalpha
     payload: DM4
+    payload_family: maytansinoid
     mechanism: tubulin
     linker_type: sulfo_SPDB
     linker_cleavable: true
@@ -209,6 +226,7 @@ agents:
     target: NECTIN4
     target_label: Nectin-4
     payload: MMAE
+    payload_family: auristatin
     mechanism: tubulin
     linker_type: vc_PABC
     linker_cleavable: true
@@ -229,6 +247,7 @@ agents:
     target: CD22
     target_label: CD22
     payload: PE38
+    payload_family: immunotoxin
     mechanism: protein_synth
     linker_type: fusion
     linker_cleavable: false
@@ -251,6 +270,7 @@ agents:
     target: CD19
     target_label: CD19
     payload: SG3199
+    payload_family: pbd
     mechanism: dna_crosslink
     linker_type: val_ala_PABC_PEG8
     linker_cleavable: true
@@ -272,6 +292,7 @@ agents:
     target: F3
     target_label: tissue_factor
     payload: MMAE
+    payload_family: auristatin
     mechanism: tubulin
     linker_type: vc_PABC
     linker_cleavable: true
@@ -292,6 +313,7 @@ agents:
     target: TACSTD2
     target_label: TROP2
     payload: DXd
+    payload_family: camptothecin
     mechanism: topo1
     linker_type: GGFG
     linker_cleavable: true
@@ -312,6 +334,7 @@ agents:
     target: ERBB3
     target_label: HER3
     payload: DXd
+    payload_family: camptothecin
     mechanism: topo1
     linker_type: GGFG
     linker_cleavable: true
@@ -332,6 +355,7 @@ agents:
     target: ERBB2
     target_label: HER2
     payload: seco-DUBA
+    payload_family: duocarmycin
     mechanism: dna_alkyl
     linker_type: val_cit_cleavable
     linker_cleavable: true
@@ -352,6 +376,7 @@ agents:
     target: MET
     target_label: c-Met
     payload: MMAE
+    payload_family: auristatin
     mechanism: tubulin
     linker_type: vc_PABC
     linker_cleavable: true
@@ -372,6 +397,7 @@ agents:
     target: IL3RA
     target_label: CD123
     payload: DGN549
+    payload_family: ign
     mechanism: dna_crosslink
     linker_type: IGN_peptide
     linker_cleavable: true

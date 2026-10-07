@@ -48,9 +48,16 @@ def _log_binom_cdf_below(cut: jnp.ndarray, n: jnp.ndarray, p: jnp.ndarray) -> jn
     return jnp.log(jnp.clip(prob, 1e-30, 1.0))
 
 
-def model(data: ModelData, hold_mech: int | None = None) -> None:
-    """NumPyro model. Pass `hold_mech` to zero out one mechanism's interaction, which is
-    how leave-one-mechanism-out predicts a class it was not allowed to learn."""
+def model(
+    data: ModelData,
+    hold_mech: int | None = None,
+    hold_family: int | None = None,
+) -> None:
+    """NumPyro model.
+
+    `hold_mech` and `hold_family` zero out one level's interaction, which is how a
+    held-out fold predicts a class it was not allowed to learn.
+    """
     n_axes = len(data.axes)
     n_mech = len(data.mechanisms)
 
@@ -69,6 +76,24 @@ def model(data: ModelData, hold_mech: int | None = None) -> None:
         # the axis baseline plus the delivery terms. That is exactly the question
         # leave-one-mechanism-out asks.
         mech_axis = mech_axis.at[hold_mech, :].set(0.0)
+
+    # --- payload family x axis, nested inside mechanism.
+    # Added because the cross-validation misses concentrate on agents that are the sole
+    # representative of their payload family within a mechanism class: trastuzumab
+    # emtansine's platelet and ocular profile cannot be predicted from MMAE's neuropathy,
+    # yet both are "tubulin". Family adds two splits over mechanism among surviving
+    # agents, tubulin -> auristatin (5 agents) + maytansinoid (2) and
+    # dna_crosslink -> pbd (1) + ign (1). Its own scale decides how much survives: the
+    # first split has the agents to support an effect, the second does not and shrinks
+    # back toward its mechanism, which is the correct answer rather than a limitation.
+    tau_family = numpyro.sample("tau_family", dist.HalfNormal(0.3))
+    family_axis_raw = numpyro.sample(
+        "family_axis_raw",
+        dist.Normal(0.0, 1.0).expand([len(data.families), n_axes]).to_event(2),
+    )
+    family_axis = tau_family * family_axis_raw
+    if hold_family is not None:
+        family_axis = family_axis.at[hold_family, :].set(0.0)
 
     # --- linker cleavability x axis. Measured direction, worth stating because an earlier
     # draft had it backwards: non-cleavable linkers associate with ocular toxicity and
@@ -112,6 +137,7 @@ def model(data: ModelData, hold_mech: int | None = None) -> None:
     logit = (
         mu_axis[xi]
         + mech_axis[data.arm_mech_idx[ai], xi]
+        + family_axis[data.arm_family_idx[ai], xi]
         + cleav_axis[xi] * data.arm_cleavable[ai]
         + arm_lin[ai]
     )
@@ -152,8 +178,10 @@ def model(data: ModelData, hold_mech: int | None = None) -> None:
 def n_free_parameters(data: ModelData) -> dict[str, int]:
     """Nominal free parameters, split by whether the design matrix or the data supports them."""
     n_axes, n_mech = len(data.axes), len(data.mechanisms)
-    design = n_axes + n_mech * n_axes + n_axes + 2  # mu, mech x axis, cleav x axis, dar+combo
-    nuisance = 2 + len(data.trials) + len(data.agents) + 4  # thresh, log_n, REs, scales
+    n_fam = len(data.families)
+    # mu, mech x axis, family x axis, cleav x axis, dar + combo.
+    design = n_axes + n_mech * n_axes + n_fam * n_axes + n_axes + 2
+    nuisance = 2 + len(data.trials) + len(data.agents) + 5  # thresh, log_n, REs, scales
     return {
         "design": design,
         "nuisance": nuisance,

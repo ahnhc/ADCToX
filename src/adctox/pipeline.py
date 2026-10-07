@@ -29,6 +29,14 @@ from .taxonomy import Taxonomy
 
 CONF = Path(__file__).resolve().parents[2] / "conf"
 
+# Payload -> family, the level nested inside mechanism. Derived from the registry so the
+# two cannot drift apart.
+_FAMILY_OF: dict[str, str] = {}
+for _spec in yaml.safe_load(
+    (CONF / "adc_registry.yaml").read_text(encoding="utf-8")
+)["agents"].values():
+    _FAMILY_OF.setdefault(_spec["payload"], _spec["payload_family"])
+
 
 @dataclass
 class ComorbidityResolution:
@@ -147,6 +155,7 @@ def propose(
         return predict_draws(
             posterior,
             mechanisms=[d.mechanism for d in ds],
+            families=[_FAMILY_OF.get(d.payload, "") for d in ds],
             dars=np.array([d.dar for d in ds]),
             cleavables=np.array([float(d.cleavable) for d in ds]),
         )

@@ -49,6 +49,7 @@ class ModelData:
 
     # Arm-level
     arm_mech_idx: np.ndarray  # (n_arms,)
+    arm_family_idx: np.ndarray
     arm_trial_idx: np.ndarray
     arm_agent_idx: np.ndarray
     arm_dar_c: np.ndarray     # centered
@@ -67,6 +68,7 @@ class ModelData:
     # Labels
     axes: list[str]
     mechanisms: list[str]
+    families: list[str]
     agents: list[str]
     trials: list[str]
     arm_keys: list[str]
@@ -107,6 +109,7 @@ class ModelData:
             f"({counts['observed']:,} observed, {counts['censored']:,} censored, "
             f"{counts['zero']:,} structural zero) | "
             f"{len(self.agents)} agents, {len(self.mechanisms)} mechanisms, "
+            f"{len(self.families)} payload families, "
             f"{len(self.trials)} multi-arm trials "
             f"({int((self.arm_has_trial_effect == 0).sum())} arms from single-arm trials "
             f"carry no trial effect)"
@@ -142,6 +145,7 @@ def build(
         raise ValueError("no arms survive the filters")
 
     mechanisms = sorted(arms["mechanism"].dropna().unique())
+    families = sorted(arms["payload_family"].dropna().unique())
     agents = sorted(arms["agent"].unique())
     # Only multi-arm trials get a trial effect; see `arm_has_trial_effect`.
     arms_per_trial = arms["nct_id"].value_counts()
@@ -150,6 +154,7 @@ def build(
     arm_keys = arms["arm_key"].tolist()
 
     mech_of = {m: i for i, m in enumerate(mechanisms)}
+    family_of = {f: i for i, f in enumerate(families)}
     agent_of = {a: i for i, a in enumerate(agents)}
     trial_of = {t: i for i, t in enumerate(trials)}
     axis_of = {a: i for i, a in enumerate(axes)}
@@ -221,6 +226,7 @@ def build(
         axis_idx=np.asarray(ax_l, dtype=np.int32),
         arm_idx=np.asarray(arm_l, dtype=np.int32),
         arm_mech_idx=arms["mechanism"].map(mech_of).to_numpy(dtype=np.int32),
+        arm_family_idx=arms["payload_family"].map(family_of).to_numpy(dtype=np.int32),
         arm_trial_idx=arms["nct_id"].map(trial_of).fillna(0).to_numpy(dtype=np.int32),
         arm_has_trial_effect=arms["nct_id"]
         .isin(set(trials))
@@ -234,6 +240,7 @@ def build(
         arm_log_n_c=log_n - log_n_mean,
         axes=list(axes),
         mechanisms=mechanisms,
+        families=families,
         agents=agents,
         trials=trials,
         arm_keys=arm_keys,
