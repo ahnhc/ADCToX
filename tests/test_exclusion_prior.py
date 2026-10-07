@@ -57,9 +57,11 @@ def test_known_signals_are_present_and_ordered():
 def test_threshold_is_actually_enforced_at_the_boundary(monkeypatch):
     """A cell just under the cut is suppressed; just over it is served."""
     fake = {"m": {"a": {"odds_ratio": ep.MIN_INFORMATIVE_ODDS_RATIO - 0.01,
-                        "rate": 0.5, "n_trials": 10, "p": 0.1},
+                        "rate": 0.5, "n_trials": 10, "p": 1e-9,
+                        "fdr_significant": True},
                   "b": {"odds_ratio": ep.MIN_INFORMATIVE_ODDS_RATIO + 0.01,
-                        "rate": 0.5, "n_trials": 10, "p": 0.1}}}
+                        "rate": 0.5, "n_trials": 10, "p": 1e-9,
+                        "fdr_significant": True}}}
     monkeypatch.setattr(ep, "_load", lambda *a, **k: fake)
     assert ep.driver("m", "a") is None
     assert ep.driver("m", "b") is not None
@@ -113,3 +115,54 @@ def test_api_emits_all_four_declared_driver_sources():
         for d in axis["drivers"]
     }
     assert seen == declared, f"declared {declared}, emitted {seen}"
+
+
+def test_a_large_but_non_significant_ratio_is_suppressed():
+    """Magnitude alone was serving noise.
+
+    66 (mechanism, organ) cells are inspected at once, so a big ratio on a mechanism with
+    one agent is cheap. Three cells cleared the 2.0 magnitude filter without surviving
+    correction -- dna_alkyl/ocular at 13.57x with p = 0.11 the worst -- and all three come
+    from single-drug mechanisms, so the figure was one sponsor's protocol habits dressed
+    as a prior about the chemistry. Same shape as the fabricated Haldane ratios this
+    project already withdrew.
+    """
+    assert ep.driver("dna_alkyl", "ocular") is None, (
+        "a 13.57x ratio with p = 0.11 is being served again"
+    )
+    assert ep.driver("protein_synth", "infectious_immune") is None
+    assert ep.driver("protein_synth", "pulmonary") is None
+
+
+def test_served_drivers_all_survive_correction_and_carry_their_p():
+    import json
+    from pathlib import Path
+
+    art = Path(__file__).resolve().parents[1] / "artifacts" / (
+        "exclusion_enrichment_exclusion.json"
+    )
+    if not art.exists():
+        pytest.skip("enrichment artefact absent")
+    doc = json.loads(art.read_text(encoding="utf-8"))
+    crit = ep._bh_critical_p(
+        [c.get("p") for r in doc["by_mechanism"] for c in r["cells"]]
+    )
+    served = 0
+    for row in doc["by_mechanism"]:
+        for cell in row["cells"]:
+            d = ep.driver(row["mechanism"], cell["organ"])
+            if d is None:
+                continue
+            served += 1
+            assert d["odds_ratio"] >= ep.MIN_INFORMATIVE_ODDS_RATIO
+            assert d["p_value"] is not None and d["p_value"] <= crit
+    assert served >= 10, f"only {served} cells served; the filter may be too strict"
+
+
+def test_bh_critical_p_handles_the_degenerate_cases():
+    assert ep._bh_critical_p([]) == 0.0
+    assert ep._bh_critical_p([None, None]) == 0.0
+    # nothing significant -> reject nothing
+    assert ep._bh_critical_p([0.9, 0.8, 0.7]) == 0.0
+    # everything tiny -> reject everything, critical p is the largest
+    assert ep._bh_critical_p([1e-9, 1e-8, 1e-7]) == 1e-7

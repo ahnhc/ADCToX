@@ -213,6 +213,11 @@ class Driver(BaseModel):
     contribution: float | None
     detail: str | None = None
     odds_ratio: float | None = None
+    # Carried for the exclusion prior, whose ratios are selected on magnitude AND on
+    # surviving Benjamini-Hochberg correction across all 66 (mechanism, organ) cells.
+    # Shown because a 13x ratio on a single-drug mechanism is cheap, and three such cells
+    # were being served before the correction was applied.
+    p_value: float | None = None
     quote: str | None = None
     flag_id: str | None = None
     tier: str | None = None
