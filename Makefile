@@ -13,6 +13,8 @@ DATE    := $(SNAPSHOT)
 # Fetches write a new dated directory rather than overwriting the pinned one, so
 # refetching is additive and the pin has to be moved deliberately.
 FETCH_DATE := $(shell date -u +%Y-%m-%d)
+# Every artefact records which snapshot produced it; see src/adctox/provenance.py.
+export ADCTOX_SNAPSHOT = $(SNAPSHOT)
 RAW     := /data/hyeongchanahn/adctox/raw
 STUDIES := $(RAW)/ctgov/$(DATE)/studies
 ELIG    := $(RAW)/eligibility/$(DATE)

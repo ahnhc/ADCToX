@@ -32,6 +32,8 @@ from pathlib import Path
 
 import numpy as np
 
+from adctox.provenance import write_json
+
 
 def _spearman(a: np.ndarray, b: np.ndarray) -> float:
     if len(a) < 3:
@@ -309,7 +311,7 @@ def main() -> int:
         "gates": {k: docs[k].get("gate") for k in docs},
     }
     path = args.out / "event_table_comparison.json"
-    path.write_text(json.dumps(out, indent=1), encoding="utf-8")
+    write_json(path, out, {"other_metrics": paths["other"], "serious_metrics": paths["serious"]})
     print(f"\n-> {path}")
     return 0
 

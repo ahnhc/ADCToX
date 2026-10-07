@@ -18,7 +18,6 @@ Metric discipline, decided before seeing results:
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 import time
 from pathlib import Path
@@ -28,6 +27,8 @@ import numpy as np
 from numpyro.infer import MCMC, NUTS
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from adctox.provenance import write_json  # noqa: E402
 
 from adctox.model import dataset as ds, forward, splits  # noqa: E402
 from adctox.model.dataset import CENSORED, ModelData  # noqa: E402
@@ -496,7 +497,7 @@ def main() -> int:
         args.out / f"forward_{args.kind}_fold_predictions.parquet", index=False
     )
     path = args.out / f"forward_{args.kind}_metrics.json"
-    path.write_text(json.dumps(out, indent=1), encoding="utf-8")
+    write_json(path, out, {"processed": args.processed})
     print(f"\n-> {path}")
     print(f"\nGATE: {gate_key} macro AUC {gate_auc:.3f} vs best baseline "
           f"{best_baseline:.3f} -> delta {delta_vs_best:+.3f} -> "

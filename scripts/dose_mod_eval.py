@@ -33,6 +33,8 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from adctox.provenance import write_json  # noqa: E402
+
 from adctox.taxonomy import Taxonomy  # noqa: E402
 from adctox.validation.dose_modification import axis_concern, parse_tables  # noqa: E402
 
@@ -183,7 +185,7 @@ def main() -> int:
         "per_agent": df.to_dict("records"),
     }
     path = args.out / "dose_mod_eval.json"
-    path.write_text(json.dumps(out, indent=1), encoding="utf-8")
+    write_json(path, out, {"labels": args.labels})
     print(f"\n-> {path}")
     return 0
 

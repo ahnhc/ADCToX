@@ -39,6 +39,8 @@ from numpyro.infer import MCMC, NUTS
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from adctox.provenance import write_json  # noqa: E402
+
 from adctox.model import dataset as ds, forward  # noqa: E402
 from adctox.taxonomy import Taxonomy  # noqa: E402
 
@@ -245,10 +247,12 @@ def main() -> int:
         print("No event was scorable. Reporting that, rather than relaxing the floors.")
 
     path = args.out / "label_change_eval.json"
-    path.write_text(json.dumps(
+    write_json(
+        path,
         {"null_p_top3": P_TOP3, "power": power_table(len(events)),
          "summary": summary, "results": results},
-        indent=1, default=str), encoding="utf-8")
+        {"processed": args.processed, "events": args.out / "label_change_events.json"},
+    )
     print(f"\n-> {path}")
     return 0
 

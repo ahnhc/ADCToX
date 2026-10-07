@@ -8,11 +8,12 @@ demonstrated from a clean clone.
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from adctox.provenance import write_json  # noqa: E402
 
 from adctox.model.predict import Posterior  # noqa: E402
 from adctox.pipeline import propose  # noqa: E402
@@ -166,7 +167,7 @@ def main() -> int:
             print(f"    excluded by: {f}")
 
     path = args.out / "propose_demo.json"
-    path.write_text(json.dumps(result, indent=1), encoding="utf-8")
+    write_json(path, result, {"posterior": args.out / f"posterior_{args.kind}.npz"})
     print(f"\n-> {path}")
     return 0
 

@@ -19,7 +19,6 @@ two rules as confirmatory when they had simply not fired.
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from pathlib import Path
 
@@ -27,6 +26,8 @@ import numpy as np
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from adctox.provenance import write_json  # noqa: E402
 
 from adctox.comorbidity.hard_flags import applicable, override_band  # noqa: E402
 from adctox.model.predict import Posterior, predict_draws, risk_band  # noqa: E402
@@ -136,7 +137,7 @@ def main() -> int:
         "flags": rows,
     }
     out = args.out / "hard_flag_necessity.json"
-    out.write_text(json.dumps(doc, indent=1), encoding="utf-8")
+    write_json(out, doc, {"posterior_serious": path, "hard_flags": CONF / "hard_flags.yaml"})
     print(f"\n-> {out}")
     return 0
 

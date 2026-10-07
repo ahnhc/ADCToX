@@ -11,6 +11,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from adctox.provenance import write_json  # noqa: E402
+
 from adctox.validation.label_change import diff_versions, parse_version  # noqa: E402
 
 
@@ -92,7 +94,7 @@ def main() -> int:
         "unmapped_headings": dict(unmapped_total),
     }
     path = args.out / "label_change_events.json"
-    path.write_text(json.dumps(out, indent=1, default=str), encoding="utf-8")
+    write_json(path, out, {"raw": args.raw})
     print(f"\n-> {path}")
     return 0
 

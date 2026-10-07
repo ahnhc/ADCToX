@@ -31,6 +31,8 @@ from scipy.stats import fisher_exact
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from adctox.provenance import write_json  # noqa: E402
+
 from adctox.extract.arm_resolver import Registry  # noqa: E402
 from adctox.extract.organ_concern import OrganConcernExtractor  # noqa: E402
 
@@ -141,7 +143,7 @@ def main() -> int:
     }
     suffix = f"_{args.polarity}" if args.polarity else ""
     path = args.out / f"exclusion_enrichment{suffix}.json"
-    path.write_text(json.dumps(out, indent=1), encoding="utf-8")
+    write_json(path, out, {"eligibility": args.eligibility})
     print(f"\n-> {path}")
     return 0
 

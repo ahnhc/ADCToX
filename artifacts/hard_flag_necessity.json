@@ -73,5 +73,16 @@
    "source_label": "ENHERTU",
    "source_section": "USE IN SPECIFIC POPULATIONS -- Renal Impairment"
   }
- ]
+ ],
+ "provenance": {
+  "revision": "7d5a25ec6bf519424072fbfa84bd4172d42ca417",
+  "dirty": true,
+  "snapshot": null,
+  "script": "hard_flag_necessity.py",
+  "written_utc": "2026-10-07T14:10:07+00:00",
+  "inputs": {
+   "hard_flags": "sha256:bab234a7af1616454608040bb392c951ce2b286919ffa2fca81cffabce7e18b1",
+   "posterior_serious": "sha256:cd64389be24f888f9c9daefb714a30ad8e824cd141ce3ac41b215c6c487df1e8"
+  }
+ }
 }
