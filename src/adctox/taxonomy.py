@@ -346,5 +346,14 @@ def build_pt_dictionary(
 
 @lru_cache(maxsize=1)
 def default_taxonomy() -> Taxonomy:
-    """Process-wide Taxonomy built from the checked-in config."""
+    """Process-wide Taxonomy built from the checked-in config.
+
+    Construction costs about 20ms, and the request paths were paying it per call -- this
+    singleton existed to stop that and nothing used it.
+
+    Use it only where the instance stays read-only. `load_pt_dictionary` mutates the
+    object, so the corpus-build scripts construct their own; sharing one with them would
+    hand a mutated dictionary to every later caller. Everything that only reads `axes`,
+    `axis_order` or resolves a known SOC can share this one.
+    """
     return Taxonomy()

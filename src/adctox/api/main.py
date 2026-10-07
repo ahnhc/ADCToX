@@ -21,7 +21,7 @@ from ..design.enumerate import DesignSpace
 from ..model.predict import Posterior
 from ..pipeline import propose, resolve_comorbidities
 from ..schemas import AssessRequest, Disclaimer, ProposeRequest
-from ..taxonomy import Taxonomy
+from ..taxonomy import default_taxonomy
 
 ROOT = Path(__file__).resolve().parents[3]
 CONF = ROOT / "conf"
@@ -217,7 +217,8 @@ def disclaimer() -> dict:
 @app.get("/api/v1/ontology")
 def ontology() -> dict:
     """Everything a client needs so it never hardcodes a list of its own."""
-    tax = Taxonomy()
+    # Shared read-only singleton; see default_taxonomy() on why builders do not use it.
+    tax = default_taxonomy()
     space = DesignSpace()
     rows = []
     with (CONF / "comorbidity_registry.csv").open(encoding="utf-8") as fh:
@@ -289,7 +290,8 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
     from ..pipeline import _FAMILY_OF
 
     space = DesignSpace()
-    tax = Taxonomy()
+    # Shared read-only singleton; see default_taxonomy() on why builders do not use it.
+    tax = default_taxonomy()
     axes = list(tax.axis_order)
     d = req.design
     if d.payload not in space.payloads:

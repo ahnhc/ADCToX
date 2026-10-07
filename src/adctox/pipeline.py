@@ -33,7 +33,7 @@ from .model.predict import (
     predict_draws,
     risk_band,
 )
-from .taxonomy import Taxonomy
+from .taxonomy import default_taxonomy
 
 CONF = Path(__file__).resolve().parents[2] / "conf"
 
@@ -156,7 +156,8 @@ def propose(
     Omitting it keeps the earlier single-table behaviour, and every number says which
     table produced it.
     """
-    tax = Taxonomy()
+    # Shared read-only singleton; see default_taxonomy() on why builders do not use it.
+    tax = default_taxonomy()
     axes = list(tax.axis_order)
     space = DesignSpace()
     engine = ConstraintEngine()
