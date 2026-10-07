@@ -76,6 +76,16 @@ class ModelData:
         return len(self.status)
 
     @property
+    def point_idx(self) -> np.ndarray:
+        """Indices of cells with a point-mass likelihood (observed counts and true zeros)."""
+        return np.flatnonzero((self.status == OBSERVED) | (self.status == ZERO))
+
+    @property
+    def censored_idx(self) -> np.ndarray:
+        """Indices of cells whose count was suppressed below the reporting threshold."""
+        return np.flatnonzero(self.status == CENSORED)
+
+    @property
     def n_arms(self) -> int:
         return len(self.arm_keys)
 

@@ -1,0 +1,103 @@
+# ADC design space: the slots, their clinically precedented levels, and the chemistry
+# that constrains which combinations exist.
+#
+# Why the space is small. Measured against a 435-row ADC corpus: 71 distinct payload
+# SMILES x 82 distinct linker SMILES gives 5,822 cartesian combinations, of which only
+# 135 (2.3%) have ever been built. Chemists occupy ~10^2, not ~10^4, because conjugation
+# chemistry is *determined by* the linker's reactive handle, DAR is bounded by the
+# conjugation site, and each payload's attachment group admits only one to three linkers.
+# Enumerating the constrained space therefore yields a few hundred candidates per target,
+# every one an interpolation between things that exist rather than an extrapolation.
+#
+# Scale check worth stating out loud: HER2 is the most-worked ADC target in existence and
+# that corpus holds 111 distinct HER2 designs. A system proposing ~290 for an arbitrary
+# target is already proposing more variety than has ever been built against HER2.
+
+version: 1
+frozen_at: 2026-10-07
+
+# Two precedent counts per component, and the distinction is the Tier-1 gate.
+# `clinical_adcs` counts ADCs that reached at least phase 1 with that component;
+# `approved_adcs` counts regulatory approvals. Tier 1 requires clinical precedent, so a
+# component with approved_adcs: 0 is admissible but is flagged zero-approval in output.
+# Counts are hand-curated order-of-magnitude figures from the ADC development landscape,
+# not a database join, and are used only as an admissibility gate and a tie-break.
+precedent_counts_source: hand_curated_landscape_review
+
+payloads:
+  MMAE:          {mechanism: tubulin,       handle: secondary_amine, ic50_nm: 0.5,  bystander: true,  membrane_permeable: true,  approved_adcs: 5, clinical_adcs: 12}
+  MMAF:          {mechanism: tubulin,       handle: c_terminal_acid, ic50_nm: 2.0,  bystander: false, membrane_permeable: false, approved_adcs: 1, clinical_adcs: 4}
+  DM1:           {mechanism: tubulin,       handle: thiol,           ic50_nm: 0.3,  bystander: false, membrane_permeable: false, approved_adcs: 1, clinical_adcs: 6}
+  DM4:           {mechanism: tubulin,       handle: thiol,           ic50_nm: 0.2,  bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 4}
+  DXd:           {mechanism: topo1,         handle: aminoacetyl,     ic50_nm: 310,  bystander: true,  membrane_permeable: true,  approved_adcs: 2, clinical_adcs: 8}
+  exatecan:      {mechanism: topo1,         handle: aminoacetyl,     ic50_nm: 200,  bystander: true,  membrane_permeable: true,  approved_adcs: 0, clinical_adcs: 5}
+  SN-38:         {mechanism: topo1,         handle: phenol,          ic50_nm: 150,  bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 3}
+  calicheamicin: {mechanism: dna_cleave,    handle: thiol,           ic50_nm: 0.05, bystander: true,  membrane_permeable: true,  approved_adcs: 2, clinical_adcs: 3}
+  SG3199:        {mechanism: dna_crosslink, handle: aniline,         ic50_nm: 0.05, bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 5}
+  DGN549:        {mechanism: dna_crosslink, handle: thiol,           ic50_nm: 0.1,  bystander: true,  membrane_permeable: true,  approved_adcs: 1, clinical_adcs: 2}
+  seco-DUBA:     {mechanism: dna_alkyl,     handle: secondary_amine, ic50_nm: 1.0,  bystander: true,  membrane_permeable: true,  approved_adcs: 0, clinical_adcs: 2}
+
+# IC50 values are order-of-magnitude free-payload cytotoxicity against a human tumour
+# line, hand-curated because ChEMBL's coverage of the *conjugates* is good while the free
+# payloads are sparse and measured against heterogeneous targets. They are used only as a
+# potency floor (a necessary, not sufficient, condition), never as an efficacy prediction.
+ic50_source: hand_curated_literature
+ic50_caveat: >
+  Order-of-magnitude only, across heterogeneous assays and cell lines. Camptothecins
+  look weak against tubulin binders on this axis, which is why the floor is applied as
+  delivered-dose (DAR / IC50) relative to approved ADCs rather than as an absolute cut.
+
+linkers:
+  vc_PABC:                   {cleavable: true,  cleavage: enzymatic_cathepsin_b, handle: secondary_amine, attach: maleimide,    hydrophilic: false, approved_adcs: 5, clinical_adcs: 14}
+  val_ala_PABC_PEG8:         {cleavable: true,  cleavage: enzymatic_cathepsin,   handle: aniline,         attach: maleimide,    hydrophilic: true,  approved_adcs: 1, clinical_adcs: 3}
+  glucuronide:               {cleavable: true,  cleavage: enzymatic_glucuronidase, handle: secondary_amine, attach: maleimide,  hydrophilic: true,  approved_adcs: 0, clinical_adcs: 2}
+  GGFG:                      {cleavable: true,  cleavage: enzymatic_cathepsin,   handle: aminoacetyl,     attach: maleimide,    hydrophilic: true,  approved_adcs: 2, clinical_adcs: 8}
+  CL2A:                      {cleavable: true,  cleavage: ph_sensitive_carbonate, handle: phenol,         attach: maleimide,    hydrophilic: true,  approved_adcs: 1, clinical_adcs: 3}
+  hydrazone_AcBut_disulfide: {cleavable: true,  cleavage: acid_labile_hydrazone, handle: thiol,           attach: nhs_ester,    hydrophilic: false, approved_adcs: 2, clinical_adcs: 3}
+  sulfo_SPDB:                {cleavable: true,  cleavage: reducible_disulfide,   handle: thiol,           attach: nhs_ester,    hydrophilic: true,  approved_adcs: 1, clinical_adcs: 3}
+  SMCC:                      {cleavable: false, cleavage: none_lysosomal_catabolism, handle: thiol,       attach: nhs_ester,    hydrophilic: false, approved_adcs: 1, clinical_adcs: 4}
+  mc:                        {cleavable: false, cleavage: none_lysosomal_catabolism, handle: c_terminal_acid, attach: maleimide, hydrophilic: false, approved_adcs: 1, clinical_adcs: 5}
+  IGN_peptide:               {cleavable: true,  cleavage: enzymatic_peptidase,   handle: thiol,           attach: nhs_ester,    hydrophilic: true,  approved_adcs: 1, clinical_adcs: 2}
+  val_cit_cleavable:         {cleavable: true,  cleavage: enzymatic_cathepsin_b, handle: secondary_amine, attach: maleimide,    hydrophilic: false, approved_adcs: 0, clinical_adcs: 3}
+
+# Conjugation is not freely chosen: the linker's reactive group decides it.
+# NHS ester / activated acid -> lysine only. Maleimide / haloacetamide -> interchain or
+# engineered cysteine. Strained alkyne / azide / tetrazine -> glycan or unnatural aa.
+attach_to_conjugation:
+  nhs_ester: [lysine]
+  maleimide: [interchain_cysteine, engineered_cysteine]
+  click:     [glycan, unnatural_aa]
+
+# DAR is bounded by the conjugation chemistry, not by preference. Interchain cysteine
+# gives even values only (four interchain disulfides). Engineered cysteine and glycan
+# remodelling give fixed low values. Unnatural amino acids give 2.
+conjugation_dar:
+  lysine:              {levels: [2.0, 3.5], approved_adcs: 4, clinical_adcs: 6}
+  interchain_cysteine: {levels: [2.0, 4.0, 8.0], approved_adcs: 10, clinical_adcs: 20}
+  engineered_cysteine: {levels: [2.0, 4.0], approved_adcs: 0, clinical_adcs: 4}
+  glycan:              {levels: [2.0, 4.0], approved_adcs: 0, clinical_adcs: 3}
+  unnatural_aa:        {levels: [2.0], approved_adcs: 0, clinical_adcs: 2}
+
+isotypes:
+  IgG1: {approved_adcs: 13, clinical_adcs: 40}
+  IgG4: {approved_adcs: 2, clinical_adcs: 3, restrict_to_payloads: [calicheamicin]}
+
+# Hydrophilicity masking is offered only where it does work: enabling a higher DAR on a
+# hydrophobic payload. It is NOT a rescue for very high DAR -- upifitamab rilsodotin
+# (DAR 10-15) produced five grade-5 bleeding events in ~560 patients and was
+# discontinued after a partial clinical hold. Hence the hard cap.
+masking:
+  none: {approved_adcs: 15, clinical_adcs: 40}
+  PEG:  {approved_adcs: 2, clinical_adcs: 5, only_when_dar_at_least: 6.0}
+dar_hard_cap: 8.0
+
+# Fc engineering is deliberately absent as a slot. Zero approved ADCs use it, zero arms
+# in the training corpus carry it, and the primary literature on the mechanism it would
+# target (FcgammaRIIa-mediated thrombocytopenia) is mutually contradictory:
+# Uppal 2015 (PMID 25370470) for, Zhao 2017 (PMID 28655784) against,
+# Ansary 2022 (PMID 36108260) against in patients. Exposing it would be a design knob
+# with no coefficient behind it.
+excluded_slots:
+  fc_engineering: >
+    No approved precedent, no training arms, contradictory primary literature.
+    Any coefficient would be prior masquerading as inference.

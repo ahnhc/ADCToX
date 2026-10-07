@@ -1,0 +1,42 @@
+id,label,organ_axes,severity,severity_basis,mondo_id,icd10_prefix,notes
+chronic_liver_disease,Chronic liver disease,hepatic,1.0,"Child-Pugh B/C excluded in ADC protocols",MONDO:0005154,K76,
+cirrhosis,Cirrhosis,hepatic,1.0,"Child-Pugh B/C excluded",MONDO:0005155,K74,
+hepatitis_b_chronic,Chronic hepatitis B,hepatic;infectious_immune,0.6,"HBV exclusion present in 54% of ADC protocols",MONDO:0005344,B18.1,Boilerplate-adjacent: base rate is high
+hepatitis_c_chronic,Chronic hepatitis C,hepatic;infectious_immune,0.6,"HCV exclusion",MONDO:0005231,B18.2,
+hepatic_vod_history,Prior hepatic veno-occlusive disease,hepatic,1.0,"Explicit VOD exclusion; calicheamicin-specific",MONDO:0008customVOD,K76.5,Hand-pinned; verify before use
+nafld,Non-alcoholic fatty liver disease,hepatic,0.4,"Not generally excluded",MONDO:0013209,K76.0,
+ckd_stage_3,Chronic kidney disease stage 3,renal,0.7,"CrCl < 30-60 floors common",MONDO:0004994,N18.3,
+ckd_stage_4_5,Chronic kidney disease stage 4-5,renal,1.0,"CrCl < 30 excluded",MONDO:0004994,N18.4,
+dialysis,On dialysis,renal,1.0,"Routinely excluded",MONDO:0005240,Z99.2,
+heart_failure,Heart failure,cardiovascular,1.0,"LVEF < 50% excluded",MONDO:0005252,I50,
+reduced_lvef,Reduced ejection fraction (LVEF < 50%),cardiovascular,1.0,"LVEF floor is the single most common cardiac criterion",MONDO:0005009,I50.2,
+prior_anthracycline,Prior anthracycline exposure,cardiovascular,0.6,"Cumulative-dose limits in protocols",MONDO:0000001,Z92.3,Exposure history rather than a disease
+coronary_artery_disease,Coronary artery disease,cardiovascular,0.6,"Recent MI excluded",MONDO:0005010,I25,
+qt_prolongation,QT prolongation,cardiovascular,0.6,"QTc thresholds in protocols",MONDO:0017572,I45.8,Hand-pinned: naive lookup returns familial long QT
+interstitial_lung_disease,Interstitial lung disease,pulmonary,1.0,"Explicit ILD exclusion; 6.5x enriched for DXd payloads",MONDO:0004788,J84,
+pulmonary_fibrosis,Pulmonary fibrosis,pulmonary,1.0,"ILD-family exclusion",MONDO:0008345,J84.1,
+copd,Chronic obstructive pulmonary disease,pulmonary,0.6,"Variable; often a functional floor",MONDO:0005002,J44,
+prior_chest_radiation,Prior thoracic radiotherapy,pulmonary,0.7,"ILD risk factor named in protocols",MONDO:0000001,Z92.3,Exposure history
+peripheral_neuropathy,Peripheral neuropathy,neurologic,1.0,"Grade >1 excluded in vedotin protocols; 8.0x enriched for tubulin payloads",MONDO:0005244,G62,
+diabetic_neuropathy,Diabetic peripheral neuropathy,neurologic;metabolic_endocrine,1.0,"Additive with payload neuropathy",MONDO:0005147,E11.4,
+multiple_sclerosis,Multiple sclerosis,neurologic,0.7,"Demyelinating disease exclusion",MONDO:0005301,G35,
+keratopathy_history,Prior keratopathy,ocular,1.0,"Explicit exclusion; 17.8x enriched for tubulin payloads",MONDO:0002364,H18,
+dry_eye,Dry eye disease,ocular,0.6,"Named in MMAF protocols",MONDO:0005110,H04.12,
+glaucoma,Glaucoma,ocular,0.5,"Intraocular pressure monitoring",MONDO:0005041,H40,
+prior_corneal_surgery,Prior corneal surgery,ocular,0.6,"Ocular surface exclusion",MONDO:0000001,Z98.8,Procedure history
+thrombocytopenia,Thrombocytopenia,haematologic,1.0,"Platelet floors universal; HP term not MONDO",HP:0001873,D69.6,Hand-pinned: resolves to an HPO node
+itp,Immune thrombocytopenia,haematologic;infectious_immune,1.0,"Platelet floor plus autoimmune exclusion",MONDO:0006510,D69.3,
+neutropenia_chronic,Chronic neutropenia,haematologic,1.0,"ANC floors universal",MONDO:0001475,D70,
+anaemia_chronic,Chronic anaemia,haematologic,0.6,"Haemoglobin floors",MONDO:0001336,D64,
+mds,Myelodysplastic syndrome,haematologic,1.0,"Marrow reserve exclusion",MONDO:0018881,D46,
+prior_hsct,Prior haematopoietic stem cell transplant,haematologic,0.7,"Marrow reserve",MONDO:0000001,Z94.84,Procedure history
+inflammatory_bowel_disease,Inflammatory bowel disease,gastrointestinal,0.8,"IBD exclusion in protocols",MONDO:0005265,K51,
+prior_bowel_resection,Prior bowel resection,gastrointestinal,0.6,"Malabsorption concern",MONDO:0000001,Z90.49,Procedure history
+chronic_pancreatitis,Chronic pancreatitis,gastrointestinal,0.7,"Lipase/amylase monitoring",MONDO:0005003,K86.1,
+severe_psoriasis,Severe psoriasis,dermatologic,0.6,"Skin-disorder exclusion",MONDO:0005083,L40,
+prior_sjs_ten,Prior Stevens-Johnson syndrome or TEN,dermatologic,1.0,"Explicit exclusion; vedotin boxed warning",MONDO:0019574,L51.1,
+type_2_diabetes,Type 2 diabetes,metabolic_endocrine,0.6,"Hyperglycaemia monitoring",MONDO:0005148,E11,
+hypothyroidism,Hypothyroidism,metabolic_endocrine,0.4,"TSH monitoring",MONDO:0005420,E03,
+hiv_controlled,HIV infection on therapy,infectious_immune,0.6,"HIV exclusion in 55% of protocols",MONDO:0005109,B20,
+active_autoimmune,Active autoimmune disease,infectious_immune,0.8,"Autoimmune exclusion",MONDO:0007179,M35.9,
+hearing_loss,Sensorineural hearing loss,otologic,0.5,"Rarely excluded; audiometry in some protocols",MONDO:0005365,H90.3,

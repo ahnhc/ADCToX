@@ -115,23 +115,37 @@ def model(data: ModelData, hold_mech: int | None = None) -> None:
         + arm_lin[ai]
     )
     p = jax.nn.sigmoid(logit)
-    numpyro.deterministic("p", p)
+    # No `numpyro.deterministic` on p. Storing a 3,990-cell array per draw makes
+    # get_samples() dominate the run time (measured: >85s against a 23s fit), and nothing
+    # needs it -- prediction recomputes rates from the parameter draws in predict.py.
 
     n = data.n_at_risk.astype(jnp.float32)
-    is_point = (data.status == OBSERVED) | (data.status == ZERO)
 
-    # Point-mass cells: ordinary binomial log-density, masked so censored rows contribute
-    # nothing here.
-    log_point = dist.Binomial(total_count=n, probs=p).log_prob(
-        data.n_affected.astype(jnp.float32)
-    )
-    numpyro.factor("ll_point", jnp.sum(jnp.where(is_point, log_point, 0.0)))
+    # Each likelihood term is evaluated only on the cells it applies to, via precomputed
+    # index arrays. This matters a great deal: the incomplete-beta gradient costs ~15x an
+    # ordinary binomial gradient, and only ~12% of cells are censored, so masking a
+    # full-length betainc would throw away roughly 8x the work.
+    pi, ci = data.point_idx, data.censored_idx
 
-    # Censored cells: the count was suppressed below the trial's reporting threshold.
-    log_cens = _log_binom_cdf_below(data.censor_below.astype(jnp.float32), n, p)
-    numpyro.factor(
-        "ll_censored", jnp.sum(jnp.where(data.status == CENSORED, log_cens, 0.0))
-    )
+    if pi.size:
+        numpyro.factor(
+            "ll_point",
+            jnp.sum(
+                dist.Binomial(total_count=n[pi], probs=p[pi]).log_prob(
+                    data.n_affected[pi].astype(jnp.float32)
+                )
+            ),
+        )
+
+    if ci.size:
+        numpyro.factor(
+            "ll_censored",
+            jnp.sum(
+                _log_binom_cdf_below(
+                    data.censor_below[ci].astype(jnp.float32), n[ci], p[ci]
+                )
+            ),
+        )
 
 
 def n_free_parameters(data: ModelData) -> dict[str, int]:
