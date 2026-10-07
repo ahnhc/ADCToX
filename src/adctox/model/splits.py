@@ -17,8 +17,16 @@ feature is constant within an agent. Consequences, both load-bearing:
 
 A further leak worth naming: NCT03529110 is a T-DXd vs T-DM1 head-to-head. Holding out
 T-DXd while training on the T-DM1 arm of the *same* trial shares the antibody, the
-target, the population and the reporting threshold. So leave-one-agent-out drops every
-trial the held-out agent appears in, not just its arms.
+target, the population and the reporting threshold. Worse than sharing covariates, the
+held-out arm inherits a trial-level random intercept fitted from its own comparator arm.
+So every split drops whole trials, not just arms.
+
+That last sentence was false for a while, and the module said it anyway: only
+leave-one-agent-out dropped shared trials, while the family and mechanism splits dropped
+arms. Measured, counting only the 157 arms that carry a trial effect at all:
+leave-one-agent-out leaked 0 trials, and the family and mechanism splits leaked 2 each --
+every one of them NCT03529110, the trial named above. The leak flatters the held-out
+predictions, so the family and mechanism deltas were, if anything, optimistic.
 """
 
 from __future__ import annotations
@@ -45,17 +53,30 @@ def _cells_for_arms(data: ModelData, arm_mask: np.ndarray) -> np.ndarray:
     return arm_mask[data.arm_idx]
 
 
+def _drop_whole_trials(data: ModelData, held: np.ndarray) -> np.ndarray:
+    """Arms to exclude from training: the held-out arms and every arm sharing a trial.
+
+    Only arms that carry a trial effect can leak one, and single-arm trials are collapsed
+    onto a shared sentinel index, so masking on the raw index would exclude all 128 of
+    them from every fold and gut the training set for no reason.
+    """
+    carries = np.asarray(data.arm_has_trial_effect).astype(bool)
+    shared = {
+        int(t) for t in np.unique(data.arm_trial_idx[held & carries]).tolist()
+    }
+    if not shared:
+        return held
+    same_trial = np.isin(data.arm_trial_idx, list(shared)) & carries
+    return held | same_trial
+
+
 def leave_one_agent_out(data: ModelData, drop_shared_trials: bool = True) -> list[Fold]:
     """One fold per agent. Also drops every trial the agent appears in (see module note)."""
     folds: list[Fold] = []
     for ai, agent in enumerate(data.agents):
         is_agent = data.arm_agent_idx == ai
         test_arms = is_agent
-        if drop_shared_trials:
-            shared = set(np.unique(data.arm_trial_idx[is_agent]).tolist())
-            excluded = np.isin(data.arm_trial_idx, list(shared))
-        else:
-            excluded = is_agent
+        excluded = _drop_whole_trials(data, is_agent) if drop_shared_trials else is_agent
         train_arms = ~excluded
         if not train_arms.any() or not test_arms.any():
             continue
@@ -91,7 +112,7 @@ def leave_one_family_out(data: ModelData, min_agents: int = 2) -> list[Fold]:
             Fold(
                 name=data.families[fi],
                 kind="family",
-                train_cells=_cells_for_arms(data, ~is_fam),
+                train_cells=_cells_for_arms(data, ~_drop_whole_trials(data, is_fam)),
                 test_cells=_cells_for_arms(data, is_fam),
                 held_mech_idx=None,
                 held_family_idx=fi,
@@ -123,7 +144,7 @@ def leave_one_mechanism_out(data: ModelData, min_agents: int = 3) -> list[Fold]:
             Fold(
                 name=data.mechanisms[mi],
                 kind="mechanism",
-                train_cells=_cells_for_arms(data, ~is_mech),
+                train_cells=_cells_for_arms(data, ~_drop_whole_trials(data, is_mech)),
                 test_cells=_cells_for_arms(data, is_mech),
                 held_mech_idx=mi,
                 # A held-out mechanism's families are held out with it; otherwise the
