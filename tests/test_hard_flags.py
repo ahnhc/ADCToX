@@ -121,3 +121,23 @@ def test_tier_values_are_declared_in_the_config() -> None:
     doc = yaml.safe_load(CONF.read_text(encoding="utf-8"))
     declared = set(doc["tier_order"])
     assert {f["tier"] for f in doc["flags"]} <= declared
+
+
+def test_every_flag_fires_for_its_own_declared_inputs() -> None:
+    """A rule that never fires on its own declaration is dead and looks alive.
+
+    This caught a real mistake: a hand-run necessity check passed condition ids the flags
+    do not key on and reported two rules as "confirmatory" when they had simply not
+    applied -- a false reassurance that the model was covering those cases by itself.
+    """
+    flags, _ = load_flags()
+    for spec in flags:
+        mech = sorted(spec.mechanisms)[0]
+        payload = sorted(spec.payloads)[0]
+        applied = applicable(mech, payload, set(spec.comorbidities), enabled=True)
+        assert spec.axis in applied, (
+            f"{spec.id} declares mechanism {mech}, payload {payload} and comorbidities "
+            f"{sorted(spec.comorbidities)}, yet does not fire on {spec.axis} for exactly "
+            "those inputs"
+        )
+        assert any(f.id == spec.id for f in applied[spec.axis])
