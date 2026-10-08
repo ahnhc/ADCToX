@@ -51,6 +51,11 @@ def _masked(data: ModelData, mask: np.ndarray) -> ModelData:
     )
 
 
+# Bound once in main() so every fold fit uses the same structure. A flag read per call
+# is how a cross-validation ends up mixing two models.
+_MODEL = forward.model
+
+
 def fit(data: ModelData, hold_mech: int | None, seed: int, warmup: int,
         samples: int, chains: int = 1, hold_family: int | None = None):
     # max_tree_depth is capped at 8 rather than left at the default 10. Measured on this
@@ -58,7 +63,7 @@ def fit(data: ModelData, hold_mech: int | None, seed: int, warmup: int,
     # depth 8, for a 2.5x speedup, while the sampler stays healthy (0 divergences,
     # acceptance 0.84 against a 0.8 target). The geometry is not the problem here --
     # there is no funnel to fight, the trajectories are simply long.
-    kernel = NUTS(forward.model, target_accept_prob=0.8, max_tree_depth=8)
+    kernel = NUTS(_MODEL, target_accept_prob=0.8, max_tree_depth=8)
     # One chain per call. Measured on this machine, `num_chains=2` with
     # chain_method="sequential" takes more than ten times as long as two separate
     # single-chain runs, apparently recompiling per chain under a multi-device host
@@ -210,6 +215,10 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--processed", type=Path, default=Path("data/processed"))
     ap.add_argument("--kind", default="other", choices=["other", "serious"])
+    # Experimental agent x axis deviation. See forward.USE_AGENT_AXIS for the diagnosis
+    # it addresses; the comparison runs are kept as logs the way the payload-family
+    # attempts were, because a failed structure is a result.
+    ap.add_argument("--agent-axis", action="store_true")
     ap.add_argument("--out", type=Path, default=Path("artifacts"))
     ap.add_argument("--warmup", type=int, default=500)
     ap.add_argument("--samples", type=int, default=500)
@@ -222,6 +231,13 @@ def main() -> int:
     ap.add_argument("--gate-auc", type=float, default=0.65)
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
+
+    if args.agent_axis:
+        global _MODEL
+        from functools import partial
+
+        _MODEL = partial(forward.model, use_agent_axis=True)
+        print("agent x axis deviation ENABLED (experimental)", flush=True)
 
     tax = Taxonomy()
     data = ds.load(args.processed, list(tax.axis_order), kind=args.kind)

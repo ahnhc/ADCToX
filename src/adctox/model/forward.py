@@ -91,12 +91,17 @@ def _log_binom_cdf_below(cut: jnp.ndarray, n: jnp.ndarray, p: jnp.ndarray) -> jn
 # project's central structural finding appears again, and tighter than before.
 USE_PAYLOAD_FAMILY = False
 
+# Agent x axis deviation. Off until measured; see the block in `model` for the diagnosis
+# it is meant to address and the numbers behind it.
+USE_AGENT_AXIS = False
+
 
 def model(
     data: ModelData,
     hold_mech: int | None = None,
     hold_family: int | None = None,
     use_family: bool | None = None,
+    use_agent_axis: bool = USE_AGENT_AXIS,
 ) -> None:
     """NumPyro model.
 
@@ -211,6 +216,36 @@ def model(
         "u_agent_raw", dist.Normal(0.0, 1.0).expand([len(data.agents)]).to_event(1)
     )
     u_agent = u_agent_raw - u_agent_raw.mean()
+
+    # Agent x axis deviation, off by default and measured rather than assumed.
+    #
+    # Diagnosis it addresses (scripts/design_effect_size.py): `u_agent` is a scalar per
+    # agent, so it cannot absorb an agent's idiosyncratic *organ profile*. An agent whose
+    # ocular rate is unusual has nowhere to put that except `mech_axis[its mechanism,
+    # ocular]`. For a mechanism carried by one drug, the mechanism coefficient therefore
+    # IS that drug's agent effect, and the fitted effects show it: dna_alkyl's ocular
+    # coefficient reaches +1.98 on 2 arms of one agent, while tubulin's neurologic sits at
+    # +1.06 on 163 arms of seven. Effect size falls monotonically as agents accumulate --
+    # ratio to the baseline spread 0.71, 0.61, 0.36, 0.36, 0.29 for 1, 2, 2, 4 and 7
+    # agents -- which is what overfitting on thin data looks like.
+    #
+    # With this term, an agent's own organ profile has a home and `mech_axis` is left with
+    # what agents of a mechanism share. A held-out agent drops the term, which is the
+    # point: only the shared part should generalise.
+    #
+    # Centred over agents within each axis. Without that it is collinear with `mu_axis`,
+    # which is the degeneracy that already invalidated one whole evaluation round here.
+    if use_agent_axis:
+        sigma_agent_axis = numpyro.sample("sigma_agent_axis", dist.HalfNormal(0.5))
+        u_agent_axis_raw = numpyro.sample(
+            "u_agent_axis_raw",
+            dist.Normal(0.0, 1.0).expand([len(data.agents), n_axes]).to_event(2),
+        )
+        u_agent_axis = u_agent_axis_raw - u_agent_axis_raw.mean(axis=0, keepdims=True)
+        agent_axis = sigma_agent_axis * u_agent_axis
+        numpyro.deterministic("agent_axis", agent_axis)
+    else:
+        agent_axis = None
     numpyro.deterministic("u_trial", u_trial)
     numpyro.deterministic("u_agent", u_agent)
 
@@ -231,6 +266,8 @@ def model(
         + cleav_axis[xi] * cleav_centered[ai]
         + arm_lin[ai]
     )
+    if agent_axis is not None:
+        logit = logit + agent_axis[data.arm_agent_idx[ai], xi]
     p = jax.nn.sigmoid(logit)
     # No `numpyro.deterministic` on p. Storing a 3,990-cell array per draw makes
     # get_samples() dominate the run time (measured: >85s against a 23s fit), and nothing

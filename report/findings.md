@@ -240,6 +240,61 @@ from MMAE's neuropathy -- and the level that would fix that is payload, which is
 level whose vocabulary grows as fast as the corpus. Family at least stops growing, which is
 why it was the one worth trying.
 
+### 4.0 Why the design terms lose to a base rate: a ratio
+
+The model losing to a predictor that knows only the per-axis base rates was an empirical
+fact without a mechanism. The mechanism is a ratio, and it is measurable from the fitted
+coefficients alone.
+
+Within one arm the organ ranking is set by `mu_axis` plus the design effects. The baseline
+spread is **sd 0.963** across the fourteen axes. Against that:
+
+| mechanism | agents | effect sd | ratio to baseline | rank corr with baseline | axis positions moved |
+|---|---|---|---|---|---|
+| dna_alkyl | 1 | 0.686 | 0.71 | 0.670 | 26 |
+| dna_cleave | 2 | 0.588 | 0.61 | 0.921 | 20 |
+| dna_crosslink | 2 | 0.350 | 0.36 | 0.899 | 22 |
+| topo1 | 4 | 0.350 | 0.36 | 0.969 | 8 |
+| tubulin | 7 | 0.278 | 0.29 | 0.947 | 10 |
+
+Cleavability sits at ratio 0.25, rank
+correlation 0.938.
+
+**The mechanisms with the most evidence reshuffle the organ order least.** Tubulin, with
+seven agents, moves the ranking by a correlation of
+0.947
+-- which is to say barely. So on the within-arm metric the model is predicting the
+baseline's ordering with a small perturbation, and a small perturbation of a good
+predictor is a slightly worse predictor. That is the delta, explained.
+
+**And the mechanism with one agent reshuffles the order most.** The relationship is
+monotone in agent count -- ratios of 0.71, 0.61, 0.36, 0.36 and 0.29 for 1, 2, 2, 4 and 7
+agents -- which is the shape of overfitting on thin data, not of a chemistry effect
+emerging as evidence accumulates.
+
+| mechanism | axis | effect | arms | agents |
+|---|---|---|---|---|
+| dna_alkyl | ocular | +1.98 | 2 | 1 |
+| dna_cleave | ocular | -1.50 | 20 | 2 |
+| tubulin | neurologic | +1.06 | 163 | 7 |
+| topo1 | gastrointestinal | +1.03 | 68 | 4 |
+| dna_alkyl | hepatic | -1.00 | 1 | 1 |
+| dna_alkyl | haematologic | -0.97 | 2 | 1 |
+
+The rank correlation between an effect's magnitude and the arms behind it is
+**-0.231**: the largest fitted effects sit on the
+thinnest evidence. `dna_alkyl`'s ocular coefficient reaches +1.98 on two arms of one drug,
+beside tubulin's neurologic at +1.06 on 163 arms of seven -- and only the second is a
+chemistry effect.
+
+**The cause is a missing term.** `u_agent` is one scalar per agent, so it cannot absorb an
+agent's idiosyncratic *organ profile*. An agent whose ocular rate is unusual has nowhere
+to put it except `mech_axis[its mechanism, ocular]`. For a mechanism carried by a single
+drug, the mechanism coefficient therefore *is* that drug's agent effect, and the model has
+no way to know the difference. This is the project's central structural finding -- a design
+coefficient is identified by agents, not arms -- appearing for the first time in the fitted
+parameters rather than in a parameter count.
+
 ### 4.1 The obvious fix is not identifiable, in either form
 
 | model | worst standardized seed gap | outcome |

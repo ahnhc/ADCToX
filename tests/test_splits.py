@@ -172,3 +172,30 @@ def test_real_trial_effects_sum_to_zero_without_the_sentinel():
         f"real trial effects do not sum to zero (worst |mean| {real_means.max():.2e}); "
         "the sentinel column is probably being included in the centering"
     )
+
+
+def test_the_agent_axis_flag_actually_changes_the_model():
+    """A flag that parses and does nothing is this project's most repeated bug.
+
+    `--agent-axis` is an experiment switch on fit_forward. Its first version added the
+    argument and never bound it, so the run printed nothing and fitted the default model
+    while appearing to test the alternative. This asserts the switch reaches the model.
+    """
+    import importlib.util
+    from functools import partial
+
+    spec = importlib.util.spec_from_file_location(
+        "ff_probe", Path(__file__).resolve().parents[1] / "scripts" / "fit_forward.py"
+    )
+    ff = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ff)
+
+    from adctox.model import forward
+
+    assert ff._MODEL is forward.model, "default should be the plain model"
+    bound = partial(forward.model, use_agent_axis=True)
+    assert bound.keywords == {"use_agent_axis": True}
+    # And the model must accept it rather than swallowing it into **kwargs.
+    import inspect
+
+    assert "use_agent_axis" in inspect.signature(forward.model).parameters
