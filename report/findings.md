@@ -295,6 +295,43 @@ no way to know the difference. This is the project's central structural finding 
 coefficient is identified by agents, not arms -- appearing for the first time in the fitted
 parameters rather than in a parameter count.
 
+### 4.0b The missing term, added and measured
+
+Section 4.0 names the cause: `u_agent` is one scalar per agent and cannot absorb an
+agent's idiosyncratic organ *profile*, so for a single-drug mechanism the mechanism
+coefficient is that drug's agent effect. The fix is an agent x axis deviation, and it was
+built, run and kept behind `forward.USE_AGENT_AXIS` with the comparison in
+`artifacts/cv_agent_axis.log`.
+
+It converged -- worst standardized seed gap 0.133 -- and moved the right way. The thin
+cell shrank more than the thick one, which is what the diagnosis predicted:
+
+| | dna_alkyl / ocular (2 arms) | tubulin / neurologic (163 arms) |
+|---|---|---|
+| without | +1.989 | +1.064 |
+| with | +0.626 | +0.529 |
+
+And it split the splits:
+
+| split | without | with |
+|---|---|---|
+| leave-one-agent-out | -0.0422 | **-0.0340** |
+| leave-one-family-out | -0.0783 | **-0.0510** |
+| leave-one-mechanism-out | -0.0191 | -0.0280 |
+
+Agent and family holdout improve; mechanism holdout worsens. That is coherent rather than
+puzzling: absorbing an agent's idiosyncrasy leaves a cleaner shared signal when you hold
+out an agent or a family, but when you remove a whole mechanism there is no agent term to
+help and `tau_mech` is smaller than it was, so there is less left to predict with.
+
+**It is not enough.** All three splits still fail, `tau_mech` falls from
+0.590 to 0.359 and `tau_cleav` from 0.278 to
+0.151, so the term is absorbing design signal and not only idiosyncrasy --
+cleavability was the one design axis this corpus identified comfortably. It is left off by
+default: a structure that improves two splits, worsens a third and fixes none of them is
+not an improvement to ship silently, and the log is kept the way the payload-family
+attempts were, because a structure that does not work is a result.
+
 ### 4.1 The obvious fix is not identifiable, in either form
 
 | model | worst standardized seed gap | outcome |
@@ -582,6 +619,77 @@ for a psoriasis patient, NECTIN4 and ERBB2 give a `moderate` skin band sourced f
 for every target tested, because that candidate wins on the payload profile whatever the
 target. So the honest claim is that the target now changes the risk numbers, the bands and
 the stated reasons, and does not yet change which design is proposed first.
+
+## 5f. The one positive signal, and why it is not settled
+
+Every evaluation in this report fails. This section is the exception, and it is reported
+with its caveats attached rather than as a headline, because it does not survive every way
+of estimating it.
+
+### The measurement problem it starts from
+
+The across-agent metric ranks the 16 agents by predicted and by observed rate within one
+organ axis, and correlates. It is the comparison the product actually makes, and unlike
+the within-arm metric a constant per-axis predictor has no discriminative power on it by
+construction.
+
+But the agents were studied under conditions that differ more than the effect being
+measured:
+
+| reporting condition | range across agents | logit impact |
+|---|---|---|
+| combination fraction | 0.00 to 0.96 | ~0.19 |
+| reporting threshold | -2.25 to +0.75 | ~0.10 |
+| trial size | -0.44 to +0.57 | ~0.04 |
+
+Trastuzumab emtansine's arms are 96% combination; six agents have none. Against a tubulin
+mechanism effect of sd 0.278, roughly 0.33 logit of the between-agent spread is study
+design rather than chemistry. So the observed ranking is partly a ranking of how each drug
+happened to be tested.
+
+### Removing it from both series
+
+The adjustment subtracts the reporting contribution from the predicted and the observed
+series alike, leaving each agent's profile at a common reference. The direction was not
+assumed: a shared artefact would have inflated the correlation, and removing it would then
+have lowered the result.
+
+| adjustment | b_combo | mean rho | 95% CI (axis bootstrap) | permutation p |
+|---|---|---|---|---|
+| unadjusted | 0.0000 | +0.0966 | [-0.0632, +0.2586] | — |
+| adjusted design blind coefficients | 0.0319 | +0.1013 | [-0.0544, +0.2572] | 0.0683 |
+| adjusted within trial blind | 0.0482 | +0.1332 | [-0.0189, +0.2903] | 0.0250 |
+| adjusted joint coefficients | 0.1950 | +0.1729 | [+0.0319, +0.3156] | 0.0050 |
+
+The headline is the third row -- the combination effect estimated **within trials and
+design-blind**, from trial fixed effects plus the covariate and nothing about chemistry.
+It gives mean Spearman +0.1332 at **p = 0.0250** by permutation.
+
+### Why this is suggestive and not a result
+
+1. The result depends on the adjustment: unadjusted the mean is +0.0966 with an interval spanning zero.
+2. b_combo spans 0.032 to 0.195 across three estimators, and the headline sits between them at 0.048.
+3. b_combo is identified within trials from only 6 trials and 20 arms.
+4. b_thresh has zero within-trial variance and is therefore not identifiable except between trials, where it is confounded; the headline estimator sets it to zero rather than using a confounded value.
+5. The permutation test and the bootstrap over axes disagree for the headline estimator: p = 0.025 against an interval that includes zero. The per-axis correlations are heterogeneous, so the mean is not reliably positive under axis resampling.
+
+The two tests disagree for a reason worth stating. The permutation shuffles agent labels
+within each axis, which preserves the dependence between axes and asks the right question
+-- is the model's agent ranking better than a random one. The bootstrap resamples axes,
+which assumes they are independent when one agent's organs covary, and it is telling us
+something different: the per-axis correlations are heterogeneous enough that the mean is
+not reliably positive if you had drawn a different set of organs.
+
+Both readings are legitimate and they are reported together. What would settle it is more
+agents, not more analysis: with 16 agents a per-axis Spearman has a standard error near
+0.28, so only the mean over axes is usable at all.
+
+### What it does not change
+
+The within-arm result stands. Correcting the reporting conditions does nothing for it,
+because there the model and the baseline are compared on the same arm under the same
+conditions, and the failure is the ratio in section 4.0: where the evidence is good the
+design effects are too small to move the organ ranking.
 
 ## 6. The exclusion-criteria signal
 

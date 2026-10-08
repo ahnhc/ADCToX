@@ -1,0 +1,106 @@
+agent x axis deviation ENABLED (experimental)
+Corpus (other): 3,990 cells over 285 arms x 14 axes (3,440 observed, 471 censored, 79 structural zero) | 16 agents, 5 mechanisms, 7 payload families, 61 multi-arm trials (128 arms from single-arm trials carry no trial effect)
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+
+Parameters: design 100, nuisance 84; identifying cells 224 (ratio 2.24:1)
+
+Folds:
+  mechanism         arms  agents  fold
+  dna_alkyl            2       1  skipped (<3 agents)
+  dna_cleave          39       2  skipped (<3 agents)
+  dna_crosslink        7       2  skipped (<3 agents)
+  topo1               68       4  VIABLE
+  tubulin            169       7  VIABLE
+
+Full fit (2 seeds): 561.0s
+  seed agreement (|mean_a - mean_b| / pooled sd):
+    tau_mech     0.038
+    tau_cleav    0.033
+    b_dar        0.033
+    b_combo      0.012
+    b_thresh     0.007
+    b_log_n      0.074
+    sigma_trial  0.133
+    sigma_agent  0.132
+  worst standardized seed gap: 0.133 (acceptable)
+  tau_mech  (mechanism x axis scale): 0.359 [0.211, 0.494]
+  tau_family                        : not sampled (payload-family level disabled; see USE_PAYLOAD_FAMILY)
+  tau_cleav (cleavability x axis)   : 0.151 [0.008, 0.362]
+  b_dar        +0.034 [-0.014, +0.087]
+  b_combo      +0.200 [+0.174, +0.227]
+  b_thresh     +0.034 [+0.028, +0.039]
+  b_log_n      +0.040 [+0.029, +0.049]
+  sigma_trial  +0.481 [+0.411, +0.564]
+  sigma_agent  +0.097 [+0.008, +0.222]
+
+==========================================================================
+leave_one_mechanism_out  (2 folds)
+==========================================================================
+  topo1                      AUC 0.880 vs mech 0.910 (d -0.030) | global 0.910 | MAE 0.098 vs 0.085 | 93s
+  tubulin                    AUC 0.807 vs mech 0.833 (d -0.025) | global 0.833 | MAE 0.104 vs 0.101 | 33s
+
+  macro AUC   model 0.844 | mech-mean 0.871 | global-mean 0.871
+  delta AUC   -0.028  95% CI [-0.030, -0.025]  (excludes 0)
+
+  across-agent per-axis Spearman: not applicable to this split (2 folds contribute a point per axis; the metric needs at least 6 to be worth computing). This is a property of the split, not a failed computation.
+
+==========================================================================
+leave_one_family_out  (4 folds)
+==========================================================================
+  auristatin                 AUC 0.806 vs mech 0.831 (d -0.025) | global 0.838 | MAE 0.110 vs 0.108 | 115s
+  camptothecin               AUC 0.876 vs mech 0.910 (d -0.034) | global 0.910 | MAE 0.098 vs 0.085 | 86s
+  enediyne                   AUC 0.783 vs mech 0.839 (d -0.056) | global 0.839 | MAE 0.141 vs 0.126 | 98s
+  maytansinoid               AUC 0.734 vs mech 0.823 (d -0.089) | global 0.823 | MAE 0.125 vs 0.097 | 89s
+
+  macro AUC   model 0.800 | mech-mean 0.851 | global-mean 0.853
+  delta AUC   -0.051  95% CI [-0.075, -0.029]  (excludes 0)
+
+  across-agent per-axis Spearman: not applicable to this split (4 folds contribute a point per axis; the metric needs at least 6 to be worth computing). This is a property of the split, not a failed computation.
+
+==========================================================================
+leave_one_agent_out  (16 folds)
+==========================================================================
+  belantamab_mafodotin       AUC 0.667 vs mech 0.668 (d -0.002) | global 0.709 | MAE 0.153 vs 0.129 | 111s
+  brentuximab_vedotin        AUC 0.872 vs mech 0.881 (d -0.010) | global 0.860 | MAE 0.115 vs 0.116 | 111s
+  datopotamab_deruxtecan     AUC 0.869 vs mech 0.918 (d -0.049) | global 0.874 | MAE 0.104 vs 0.074 | 78s
+  enfortumab_vedotin         AUC 0.715 vs mech 0.768 (d -0.052) | global 0.806 | MAE 0.140 vs 0.082 | 76s
+  gemtuzumab_ozogamicin      AUC 0.698 vs mech 0.798 (d -0.100) | global 0.774 | MAE 0.157 vs 0.136 | 111s
+  inotuzumab_ozogamicin      AUC 0.877 vs mech 0.916 (d -0.039) | global 0.895 | MAE 0.123 vs 0.098 | 86s
+  loncastuximab_tesirine     AUC 0.893 vs mech 0.939 (d -0.046) | global 0.939 | MAE 0.128 vs 0.072 | 115s
+  mirvetuximab_soravtansine  AUC 0.665 vs mech 0.739 (d -0.074) | global 0.715 | MAE 0.116 vs 0.112 | 113s
+  patritumab_deruxtecan      AUC 0.919 vs mech 0.932 (d -0.013) | global 0.958 | MAE 0.120 vs 0.065 | 110s
+  pivekimab_sunirine         AUC 1.000 vs mech 1.000 (d +0.000) | global 1.000 | MAE 0.054 vs 0.063 | 111s
+  polatuzumab_vedotin        AUC 0.920 vs mech 0.936 (d -0.017) | global 0.936 | MAE 0.099 vs 0.081 | 110s
+  sacituzumab_govitecan      AUC 0.901 vs mech 0.882 (d +0.020) | global 0.885 | MAE 0.099 vs 0.086 | 76s
+  tisotumab_vedotin          AUC 0.680 vs mech 0.715 (d -0.035) | global 0.727 | MAE 0.112 vs 0.102 | 82s
+  trastuzumab_deruxtecan     AUC 0.926 vs mech 0.936 (d -0.010) | global 0.923 | MAE 0.080 vs 0.074 | 76s
+  trastuzumab_duocarmazine   AUC 0.621 vs mech 0.652 (d -0.030) | global 0.652 | MAE 0.097 vs 0.110 | 112s
+  trastuzumab_emtansine      AUC 0.766 vs mech 0.853 (d -0.087) | global 0.845 | MAE 0.117 vs 0.094 | 92s
+
+  macro AUC   model 0.812 | mech-mean 0.846 | global-mean 0.844
+  delta AUC   -0.034  95% CI [-0.049, -0.018]  (excludes 0)
+
+  across-agent per-axis Spearman (the product's actual comparison)
+    axis                     model    mech  global
+    haematologic            +0.229  +0.171  -0.385
+    hepatic                 +0.415  -0.326  -0.218
+    cardiovascular          -0.097  -0.268  +0.162
+    pulmonary               -0.247  +0.126  +0.350
+    renal                   -0.203  -0.703  -0.391
+    gastrointestinal        +0.532  +0.403  -0.021
+    neurologic              +0.229  +0.303  +0.215
+    ocular                  +0.144  +0.212  +0.085
+    dermatologic            +0.232  +0.182  -0.150
+    metabolic_endocrine     +0.535  +0.012  +0.274
+    musculoskeletal         +0.047  +0.297  +0.000
+    infectious_immune       -0.026  -0.429  -0.188
+    otologic                -0.129  -0.188  +0.218
+    constitutional          -0.394  -0.229  +0.418
+    MEAN                    +0.091  -0.031  +0.026
+    model 95% CI [-0.055, +0.243]  (INCLUDES 0)
+
+-> /tmp/aa_art/forward_other_metrics.json
+
+GATE: leave_one_agent_out paired per-fold delta -0.0340 95% CI [-0.0491, -0.0184] -> FAIL
+  (macro AUC 0.8118 vs the better macro baseline 0.8458 gives -0.0340; it differs from the paired figure because that one lets the baseline pick its best per fold, and it carries no interval, so the gate is the paired one)
+  (the absolute 0.65 gate reads 0.812 = PASS, but a constant global-mean predictor scores 0.844 on the same metric, so that gate is not informative)

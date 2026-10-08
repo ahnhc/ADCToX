@@ -1,0 +1,52 @@
+{
+ "_what": "Agent x axis deviation, built to address the diagnosis in scripts/design_effect_size.py and NOT adopted. Kept because a structure that does not work is a result, the same way the payload-family attempts are kept.",
+ "_status": "rejected; forward.USE_AGENT_AXIS stays False",
+ "_log": "artifacts/cv_agent_axis.log",
+ "converged": true,
+ "worst_standardized_seed_gap": 0.133,
+ "sigma_agent_axis": 0.54,
+ "tau_mech": {
+  "without": 0.59,
+  "with": 0.359
+ },
+ "tau_cleav": {
+  "without": 0.278,
+  "with": 0.151
+ },
+ "thin_vs_thick_cell": {
+  "_note": "the diagnosis predicted the thin cell would shrink more; it did",
+  "dna_alkyl_ocular_2_arms": {
+   "without": 1.989,
+   "with": 0.626
+  },
+  "tubulin_neurologic_163_arms": {
+   "without": 1.064,
+   "with": 0.529
+  }
+ },
+ "delta_auc": {
+  "leave_one_agent_out": {
+   "without": -0.0422,
+   "with": -0.034
+  },
+  "leave_one_family_out": {
+   "without": -0.0783,
+   "with": -0.051
+  },
+  "leave_one_mechanism_out": {
+   "without": -0.0191,
+   "with": -0.028
+  }
+ },
+ "_verdict": "Improves agent and family holdout, worsens mechanism holdout, fixes none: all three splits still fail. tau_cleav halved, so the term absorbs design signal and not only idiosyncrasy. Left off by default.",
+ "provenance": {
+  "revision": "ec16132ad998ba9fd8e5345d2c018be46807fec9",
+  "dirty": true,
+  "snapshot": null,
+  "script": "-",
+  "written_utc": "2026-10-08T23:23:01+00:00",
+  "inputs": {
+   "log": "sha256:a0d415266e4b5ab380d3778a239ea6e0d5de3715ca43807f3e0ce234611b840b"
+  }
+ }
+}

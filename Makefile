@@ -25,13 +25,13 @@ ART     := artifacts
         censoring-sensitivity label-history label-changes label-change-eval \
         dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
         check-report clean \
-        fetch snapshot-check target-expression expression design-effects
+        fetch snapshot-check target-expression expression design-effects across-agent
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
 # sensitivity analysis while the report cited both.
 all: taxonomy corpus forward censoring-sensitivity expression enrichment module-b \
-     propose test hard-flags fold-difficulty design-effects check-report
+     propose test hard-flags fold-difficulty design-effects across-agent check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
 # comparison. Both depend on fetched label data, so the fetches are separate targets --
@@ -143,6 +143,11 @@ lint:
 # go stale.
 # The ratio that explains the headline failure: how large are the fitted design effects
 # against the baseline spread they have to move?
+# The one positive signal: across-agent organ ranking once between-agent reporting
+# conditions are removed from both series. Reported with its caveats, not as a headline.
+across-agent: forward
+	$(PY) scripts/across_agent_adjusted.py --processed $(PROC) --out $(ART)
+
 design-effects: forward
 	$(PY) scripts/design_effect_size.py --out $(ART)
 
@@ -155,7 +160,7 @@ hard-flags: forward
 sync-report:
 	$(PY) scripts/sync_report_numbers.py
 
-check-report: hard-flags fold-difficulty design-effects sync-report
+check-report: hard-flags fold-difficulty design-effects across-agent sync-report
 	$(PY) scripts/check_report.py report/
 
 clean:
