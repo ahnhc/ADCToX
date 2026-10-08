@@ -7,7 +7,8 @@ Every source here was verified live on 2026-10-07. Counts are measured, not esti
 | ClinicalTrials.gov API v2 | arm-level adverse events, eligibility text, the PT->SOC dictionary | US Government public domain | Derived numbers published freely |
 | openFDA drug label | design metadata, hepatic/renal impairment statements | public domain | Quoted freely |
 | DailyMed SPL history | dated label-change detection | public domain | Quoted freely |
-| Human Protein Atlas / GTEx | **not ingested in this build** -- see note | CC BY 4.0 / open | n/a |
+| GTEx (via Open Targets) | per-organ target expression, bulk RNA | CC0 (Open Targets) | Attributed |
+| Tabula Sapiens (via Open Targets) | per-organ and per-cell-type target expression | CC0 (Open Targets) | Attributed |
 | SIDER 4.1 | reference lookup only, never a training source | CC BY-SA 4.0 | Not redistributed |
 | MONDO | comorbidity organ mapping | CC BY 4.0 | Attributed |
 | AHRQ Elixhauser CMR | comorbidity severity ordering | US Government public domain | Attributed |
@@ -67,17 +68,22 @@ bulk route; the PMC website's terms prohibit systematic downloading from the sit
 Recorded here rather than left as an unmarked row, because a source listed in this table
 reads as a source the pipeline uses.
 
-**Human Protein Atlas / GTEx** -- intended to supply per-organ target expression for
-constraint C3, the selectivity index. Nothing in the repository fetches it, so C3 is
-implemented, threaded through three layers of call signature, and never evaluated: no
-candidate is screened on selectivity. `ConstraintEngine.active_constraints()` reports it
-as declared-but-inactive so the gap is stated at runtime too.
+**Human Protein Atlas** is still not ingested. Per-organ target expression now comes from
+GTEx and Tabula Sapiens through Open Targets, which serves both under one field; HPA adds
+immunohistochemistry that would be closer to what an antibody binds, and is the obvious
+next addition rather than a gap in what is claimed.
 
-The omission is deliberate as well as unfinished. GTEx reports `ERBB2` at a median 86.7
-TPM in aorta and 66.6 in tibial artery, which would have the index call HER2 an artery
-gene; HER2 cardiotoxicity is real but cardiomyocyte, not aortic smooth muscle. The plan
-already concluded that the index belongs on screen as a flag rather than in the ranking.
-What was wrong was not the decision but leaving it silent.
+Two sources rather than one, because neither covers the 14 axes alone: GTEx has no eye and
+no ear, Tabula Sapiens has no brain. Their units are not comparable -- TPM against
+CPM-pseudobulk, with mass-spectrometry PPB also on offer -- so values are never pooled.
+Each source is ranked within a target across axes and only the ranks combine.
+
+The aorta objection that made the project plan abandon this constraint does not bite at
+axis granularity: GTEx puts `ERBB2` at 86.6 TPM in aorta, but aorta and cardiomyocyte are
+both `cardiovascular`, so the axis answer is the same either way. The cell-resolved data
+settles which it is -- cardiac myocytes at 112.0 and 103.6 against aortic smooth muscle at
+54.7 -- which is why cell types are carried as the evidence behind a flag rather than as
+the score.
 
 **MONDO** is used for the hand-pinned `mondo_id` column in the comorbidity registry,
 which was curated against it; the ontology is not loaded at runtime. **SIDER** is cited

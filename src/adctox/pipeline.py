@@ -17,6 +17,10 @@ import yaml
 
 from .comorbidity.exclusion_prior import driver as exclusion_driver
 from .comorbidity.hard_flags import applicable as applicable_flags
+from .comorbidity.target_expression import (
+    applicable as applicable_expression,
+    evaluable as target_evaluable,
+)
 from .comorbidity.hard_flags import override_band
 from .design.constraints import ConstraintEngine
 from .design.enumerate import Design, DesignSpace
@@ -175,6 +179,11 @@ def propose(
 
     designs, _rejections = space.enumerate(target_antigen, tier=1)
     comorb = resolve_comorbidities(condition_ids)
+    # On-target off-tumour: is the target abundant in an organ this patient cannot afford
+    # to lose? Target-level, so it cannot separate candidates that share a target -- it
+    # raises the band and names a driver, which is what the evidence supports. See
+    # adctox.comorbidity.target_expression for why it is not a constraint.
+    target_known = target_evaluable(target_antigen)
 
     def evidence_for(mechanism: str, axis: str) -> tuple[int, int]:
         """Agents and arms behind a (mechanism, axis) estimate, 0 if the corpus is silent."""
@@ -292,6 +301,11 @@ def propose(
         flags_by_axis = applicable_flags(
             s.design.mechanism, s.design.payload, conditions, enabled=hard_flags
         )
+        expr_by_axis = applicable_expression(
+            target_antigen, comorb.at_risk_axes,
+            permeable_payload=bool(space.payloads[s.design.payload].get("membrane_permeable")),
+            enabled=hard_flags,
+        )
         nearest, diff = _nearest_real_adc(s.design, registry)
         def band_for(axis: str) -> str:
             """Model band, raised where a label rule applies. A rule can only raise.
@@ -313,7 +327,16 @@ def propose(
                     evidence_for(s.design.mechanism, axis)[1],
                     posterior.band_edges,
                 )
-            return override_band(base, flags_by_axis.get(axis, []))
+            raised = override_band(base, flags_by_axis.get(axis, []))
+            # An abundant target in a compromised organ raises the band one step, and
+            # never lowers it. One step rather than straight to `high`, because the
+            # aggregate evidence is weak: expression does not predict labelled toxicity
+            # (AUROC 0.52-0.58), it only locates the organ a target could reach.
+            if axis in expr_by_axis and raised != "no_evidence":
+                ladder = ["low", "moderate", "high"]
+                if raised in ladder:
+                    raised = ladder[min(ladder.index(raised) + 1, len(ladder) - 1)]
+            return raised
 
         high_axes = [
             a for a in axes
@@ -377,10 +400,13 @@ def propose(
                         # the fit or from a label rule, which is the first thing a reviewer
                         # will ask about a red axis.
                         "band_source": (
-                            "rule" if flags_by_axis.get(a) else "model"
+                            "rule" if flags_by_axis.get(a)
+                            else "target_expression" if a in expr_by_axis
+                            else "model"
                         ),
                         "drivers": (
                             [f.as_driver() for f in flags_by_axis.get(a, [])]
+                            + ([expr_by_axis[a].as_driver()] if a in expr_by_axis else [])
                             + [
                                 d for d in
                                 [exclusion_driver(s.design.mechanism, a)]

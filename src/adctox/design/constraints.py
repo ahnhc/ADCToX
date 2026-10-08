@@ -89,10 +89,17 @@ class ConstraintEngine:
                 f"percentile over {self.n_reference_adcs} approved ADCs"
             ),
             "C3_selectivity": (
-                "DECLARED BUT INACTIVE: requires per-organ target expression, which this "
-                "build does not ingest. Deliberate -- GTEx reports ERBB2 at 86.7 median "
-                "TPM in aorta, so the index would call HER2 an artery gene -- but the "
-                "consequence is that no candidate is ever screened on selectivity."
+                "ACTIVE AS A FLAG, NOT A REJECTION. Per-organ target expression is now "
+                "ingested (GTEx + Tabula Sapiens, artifacts/target_expression.json) and "
+                "raises a risk band on an at-risk axis where the target is in the top "
+                "quintile of its own organ profile; it never rejects a candidate. "
+                "Measured reason: across 14 approved ADCs expression does not predict "
+                "which organs their labels warn about (AUROC 0.52-0.58), but it does "
+                "recover all five textbook on-target off-tumour cases. A rejection rule "
+                "was prototyped and discarded -- it removed 87% of candidates whenever it "
+                "fired and never changed the recommendation, because the two "
+                "non-permeable payloads it spares were already top-ranked. See "
+                "adctox.comorbidity.target_expression."
             ),
             "C4_tier_1_precedent": "active; enforced by the enumerator before scoring",
             "C5_chemistry_validity": "active",
@@ -140,14 +147,13 @@ class ConstraintEngine:
         # reports ERBB2 at a median 86.7 TPM in aorta, which would call HER2 "an artery
         # gene" -- real HER2 cardiotoxicity is cardiomyocyte, not aortic smooth muscle.
         #
-        # NOT EVALUATED in this build. No expression data is ingested -- there is no GTEx
-        # or HPA fetch anywhere in the repository -- so `selectivity` is None at every
-        # call site and this block never runs. That is a deliberate omission given the
-        # aorta measurement above, but it was an invisible one: the parameter is threaded
-        # through three layers of signatures, DATA_SOURCES.md listed HPA/GTEx as an
-        # attributed source for this flag, and nothing said the constraint was inert.
-        # `active_constraints()` now reports it as declared-but-inactive, so a reviewer
-        # is told rather than left to infer it from an empty margin.
+        # Still not a rejection path, and now for a measured reason rather than a
+        # missing one. Expression IS ingested, but it does not predict labelled organ
+        # toxicity in aggregate (AUROC 0.52-0.58 over 14 approved ADCs), so rejecting a
+        # candidate on it is unsupported. What it does support -- locating the organ a
+        # target could reach, 5 of 5 textbook cases -- is served as a band-raising flag
+        # in adctox.comorbidity.target_expression. This block therefore remains dormant
+        # unless a caller passes an explicit selectivity index, which nothing does.
         if at_risk_axes and selectivity and payload.get("membrane_permeable"):
             worst = min(
                 (selectivity[a] for a in at_risk_axes if a in selectivity), default=None

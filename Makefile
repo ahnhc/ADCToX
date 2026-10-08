@@ -25,13 +25,13 @@ ART     := artifacts
         censoring-sensitivity label-history label-changes label-change-eval \
         dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
         check-report clean \
-        fetch snapshot-check
+        fetch snapshot-check target-expression expression
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
 # sensitivity analysis while the report cited both.
-all: taxonomy corpus forward censoring-sensitivity enrichment module-b propose test \
-     hard-flags check-report
+all: taxonomy corpus forward censoring-sensitivity expression enrichment module-b \
+     propose test hard-flags fold-difficulty check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
 # comparison. Both depend on fetched label data, so the fetches are separate targets --
@@ -52,21 +52,30 @@ corpus: taxonomy
 
 # Fetches hit government services, write a new dated snapshot, and are deliberately not
 # part of `all`. After fetching, move SNAPSHOT to the new date to analyse it.
-fetch: eligibility label-history dose-mod
+fetch: eligibility label-history dose-mod target-expression
 	@echo "fetched into $(FETCH_DATE); set SNAPSHOT=$(FETCH_DATE) to analyse it"
 
 eligibility:
 	$(PY) scripts/fetch_eligibility.py --out $(RAW)/eligibility/$(FETCH_DATE)
 
+# Per-organ target expression, which is what makes the target antigen a real input at all.
+# Before it, swapping the target left every candidate, score and estimate bit-identical.
+target-expression:
+	$(PY) scripts/fetch_target_expression.py --out $(RAW)/opentargets/$(FETCH_DATE)
+
 # Every target below reads the pinned snapshot, so each depends on this guard. Without it
 # a missing snapshot surfaces as a FileNotFoundError from inside a script, or worse as an
 # empty result, which this project has already been bitten by.
 snapshot-check:
-	@for d in $(ELIG) $(RAW)/dailymed/$(DATE) $(RAW)/openfda_label/$(DATE); do \
+	@for d in $(ELIG) $(RAW)/dailymed/$(DATE) $(RAW)/openfda_label/$(DATE) \
+	          $(RAW)/opentargets/$(DATE); do \
 	  test -d "$$d" || { \
 	    echo "missing raw snapshot: $$d"; \
 	    echo "run 'make fetch' and then set SNAPSHOT to the new date"; exit 1; }; \
 	done
+
+expression: snapshot-check
+	$(PY) scripts/build_target_expression.py --raw $(RAW)/opentargets/$(DATE) --out $(ART)
 
 enrichment: snapshot-check
 	$(PY) scripts/exclusion_enrichment.py --eligibility $(ELIG) --out $(ART)

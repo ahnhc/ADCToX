@@ -175,10 +175,13 @@ def test_constraint_status_is_declared_and_honest() -> None:
         "C1_payload_potency", "C2_delivered_dose", "C3_selectivity",
         "C4_tier_1_precedent", "C5_chemistry_validity", "C6_evidence_on_at_risk_axes",
     }
-    assert "INACTIVE" in status["C3_selectivity"], (
-        "C3 is reported as active. If selectivity data is now ingested, this test should "
-        "be updated -- but check that a caller actually passes `selectivity=` first, "
-        "because threading the parameter is not the same as supplying it."
+    # C3 is now active as a band-raising flag and still not a rejection path. The
+    # distinction is the point: expression does not predict labelled organ toxicity in
+    # aggregate (AUROC 0.52-0.58 over 14 approved ADCs), so rejecting a candidate on it
+    # would outrun the evidence, while locating the organ a target could reach is
+    # supported by 5 of 5 textbook cases.
+    assert "FLAG, NOT A REJECTION" in status["C3_selectivity"].upper(), (
+        status["C3_selectivity"]
     )
     for name, text in status.items():
         if name != "C3_selectivity":

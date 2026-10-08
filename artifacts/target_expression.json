@@ -1,0 +1,4510 @@
+{
+ "abundant_percentile": 0.8,
+ "label_concern_check": {
+  "n_cells": 296,
+  "n_agents": 14,
+  "overall": {
+   "gtex": {
+    "auroc": 0.521,
+    "n_cells": 140,
+    "n_warned": 40
+   },
+   "tabula_sapiens": {
+    "auroc": 0.5760233918128654,
+    "n_cells": 156,
+    "n_warned": 42
+   }
+  },
+  "by_mechanism": {
+   "gtex": {
+    "dna_cleave": {
+     "auroc": 0.59375,
+     "n_agents": 2
+    },
+    "dna_crosslink": {
+     "auroc": 0.5,
+     "n_agents": 2
+    },
+    "topo1": {
+     "auroc": 0.5511363636363636,
+     "n_agents": 3
+    },
+    "tubulin": {
+     "auroc": 0.5,
+     "n_agents": 7
+    }
+   },
+   "tabula_sapiens": {
+    "dna_cleave": {
+     "auroc": 0.7037037037037037,
+     "n_agents": 2
+    },
+    "topo1": {
+     "auroc": 0.5381818181818182,
+     "n_agents": 3
+    },
+    "tubulin": {
+     "auroc": 0.5769794721407624,
+     "n_agents": 7
+    }
+   }
+  },
+  "verdict": "Expression does not predict which organs a label warns about. Controlling for payload mechanism does not rescue it. This agrees with PMID 38692647, which found ADC toxicity largely antigen-independent with target tissue expression poorly correlated with dose-limiting toxicity. So expression may locate the organ a target could reach -- see the on-target check -- but must not reject a candidate or set a rate."
+ },
+ "sources": {
+  "gtex": {
+   "unit": "TPM",
+   "datatype": "bulk rna-seq",
+   "n_tissues": 51
+  },
+  "tabula_sapiens": {
+   "unit": "CPM(pseudobulk sum[counts])",
+   "datatype": "scrna-seq",
+   "n_tissues": 65
+  }
+ },
+ "axes_not_evaluable": {
+  "constitutional": "systemic, not an organ; no tissue in either source"
+ },
+ "known_on_target_check": {
+  "pairs": [
+   {
+    "target": "NECTIN4",
+    "axis": "dermatologic",
+    "percentile": 1.0,
+    "captured": true,
+    "mechanism": "enfortumab vedotin skin toxicity; NECTIN4 is in normal skin"
+   },
+   {
+    "target": "CD33",
+    "axis": "haematologic",
+    "percentile": 1.0,
+    "captured": true,
+    "mechanism": "normal myeloid cells"
+   },
+   {
+    "target": "CD19",
+    "axis": "haematologic",
+    "percentile": 1.0,
+    "captured": true,
+    "mechanism": "normal B cells"
+   },
+   {
+    "target": "ERBB2",
+    "axis": "cardiovascular",
+    "percentile": 0.9166666666666666,
+    "captured": true,
+    "mechanism": "cardiomyocytes"
+   },
+   {
+    "target": "FOLR1",
+    "axis": "renal",
+    "percentile": 0.8333333333333334,
+    "captured": true,
+    "mechanism": "proximal tubule"
+   }
+  ],
+  "n_captured": 5,
+  "n_pairs": 5,
+  "n_independent_facts": 4,
+  "note": "Five pairs but four independent facts: the three blood targets are one fact about immune antigens in immune tissue. Hand-picked with stated mechanisms, written before the numbers were read, and not a systematic sample."
+ },
+ "targets": {
+  "CD19": {
+   "ensembl_id": "ENSG00000177455",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      0.395524,
+      "Adipose - Visceral (Omentum)"
+     ],
+     "gastrointestinal": [
+      27.9274,
+      "small intestine terminal ileum"
+     ],
+     "hepatic": [
+      0.331767,
+      "Liver"
+     ],
+     "renal": [
+      0.508179,
+      "Bladder"
+     ],
+     "cardiovascular": [
+      0.460519,
+      "Artery - Coronary"
+     ],
+     "neurologic": [
+      0.195935,
+      "Brain - Spinal cord (cervical c-1)"
+     ],
+     "haematologic": [
+      182.87,
+      "Spleen"
+     ],
+     "dermatologic": [
+      0.098147,
+      "Skin - Not Sun Exposed (Suprapubic)"
+     ],
+     "pulmonary": [
+      1.41534,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      0.034477,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      12.3569917678833,
+      "mucosa of stomach"
+     ],
+     "infectious_immune": [
+      72.34166717529297,
+      "inguinal lymph node"
+     ],
+     "haematologic": [
+      42.650718688964844,
+      "spleen"
+     ],
+     "cardiovascular": [
+      1.039517879486084,
+      "thoracic aorta"
+     ],
+     "ocular": [
+      40.67178726196289,
+      "lacrimal gland"
+     ],
+     "metabolic_endocrine": [
+      2.759748697280884,
+      "brown adipose tissue"
+     ],
+     "dermatologic": [
+      0.14046847820281982,
+      "skin of body"
+     ],
+     "otologic": [
+      1.4177221059799194,
+      "crista ampullaris"
+     ],
+     "pulmonary": [
+      2.5586605072021484,
+      "trachea"
+     ],
+     "hepatic": [
+      0.656312108039856,
+      "liver"
+     ],
+     "renal": [
+      3.8590879440307617,
+      "kidney"
+     ],
+     "musculoskeletal": [
+      0.5767334699630737,
+      "muscle of pelvic diaphragm"
+     ]
+    }
+   },
+   "percentile": {
+    "musculoskeletal": 0.16666666666666666,
+    "dermatologic": 0.2,
+    "neurologic": 0.3,
+    "hepatic": 0.4,
+    "metabolic_endocrine": 0.5833333333333334,
+    "cardiovascular": 0.6,
+    "renal": 0.7,
+    "pulmonary": 0.8,
+    "gastrointestinal": 0.9,
+    "haematologic": 1.0,
+    "otologic": 0.4166666666666667,
+    "ocular": 0.8333333333333334,
+    "infectious_immune": 1.0
+   },
+   "abundant_axes": [
+    "gastrointestinal",
+    "haematologic",
+    "infectious_immune",
+    "ocular",
+    "pulmonary"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       255.93751525878906,
+       "endocrine pancreas",
+       "B cell"
+      ],
+      [
+       139.93710327148438,
+       "exocrine pancreas",
+       "B cell"
+      ],
+      [
+       127.57945251464844,
+       "stomach smooth muscle",
+       "B cell"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       125.03720092773438,
+       "lymph node",
+       "B cell"
+      ],
+      [
+       123.52176666259766,
+       "mesenteric lymph node",
+       "B cell"
+      ],
+      [
+       101.64212799072266,
+       "thymus",
+       "B cell"
+      ]
+     ],
+     "haematologic": [
+      [
+       153.98780822753906,
+       "bone marrow",
+       "B cell"
+      ],
+      [
+       150.60858154296875,
+       "spleen",
+       "B cell"
+      ],
+      [
+       102.03778076171875,
+       "blood",
+       "B cell"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       91.31199645996094,
+       "thoracic aorta",
+       "B cell"
+      ],
+      [
+       13.943297386169434,
+       "aorta",
+       "plasma cell"
+      ],
+      [
+       8.701563835144043,
+       "coronary artery",
+       "plasma cell"
+      ]
+     ],
+     "ocular": [
+      [
+       113.22520446777344,
+       "anterior segment of eyeball",
+       "B cell"
+      ],
+      [
+       98.879638671875,
+       "sclera",
+       "B cell"
+      ],
+      [
+       89.86743927001953,
+       "eyelid",
+       "B cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       77.96250915527344,
+       "brown adipose tissue",
+       "B cell"
+      ],
+      [
+       66.34783935546875,
+       "adipose tissue",
+       "B cell"
+      ],
+      [
+       37.78114318847656,
+       "subcutaneous adipose tissue",
+       "plasma cell"
+      ]
+     ],
+     "dermatologic": [
+      [
+       0.2905847430229187,
+       "skin of body",
+       "T cell"
+      ],
+      [
+       0.1764933466911316,
+       "skin of body",
+       "macrophage"
+      ],
+      [
+       0.0,
+       "skin of chest",
+       "smooth muscle cell"
+      ]
+     ],
+     "otologic": [
+      [
+       3.255518913269043,
+       "crista ampullaris",
+       "stromal cell"
+      ],
+      [
+       0.8216379880905151,
+       "crista ampullaris",
+       "melanocyte"
+      ],
+      [
+       0.5422779321670532,
+       "crista ampullaris",
+       "pericyte"
+      ]
+     ],
+     "pulmonary": [
+      [
+       122.19596862792969,
+       "trachea",
+       "B cell"
+      ],
+      [
+       77.77709197998047,
+       "lung",
+       "B cell"
+      ],
+      [
+       28.9508113861084,
+       "trachea",
+       "plasma cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       108.40267181396484,
+       "liver",
+       "B cell"
+      ],
+      [
+       9.337105751037598,
+       "liver",
+       "plasma cell"
+      ],
+      [
+       1.1958932876586914,
+       "liver",
+       "macrophage"
+      ]
+     ],
+     "renal": [
+      [
+       95.75,
+       "kidney",
+       "B cell"
+      ],
+      [
+       70.43096923828125,
+       "bladder organ",
+       "B cell"
+      ],
+      [
+       11.510383605957031,
+       "bladder organ",
+       "plasma cell"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       102.0516357421875,
+       "muscle of pelvic diaphragm",
+       "B cell"
+      ],
+      [
+       0.6427926421165466,
+       "muscle of abdomen",
+       "macrophage"
+      ],
+      [
+       0.4966636300086975,
+       "muscle of abdomen",
+       "mesenchymal stem cell"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "CD22": {
+   "ensembl_id": "ENSG00000012124",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      4.724,
+      "Thyroid"
+     ],
+     "gastrointestinal": [
+      23.8574,
+      "small intestine terminal ileum"
+     ],
+     "hepatic": [
+      0.545634,
+      "Liver"
+     ],
+     "renal": [
+      2.96024,
+      "Bladder"
+     ],
+     "cardiovascular": [
+      1.19149,
+      "Artery - Coronary"
+     ],
+     "neurologic": [
+      55.6052,
+      "Brain - Spinal cord (cervical c-1)"
+     ],
+     "haematologic": [
+      205.526,
+      "Spleen"
+     ],
+     "dermatologic": [
+      0.308064,
+      "Skin - Not Sun Exposed (Suprapubic)"
+     ],
+     "pulmonary": [
+      7.40015,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      0.116933,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      16.458532333374023,
+      "stomach"
+     ],
+     "infectious_immune": [
+      177.64984130859375,
+      "inguinal lymph node"
+     ],
+     "haematologic": [
+      107.51914978027344,
+      "spleen"
+     ],
+     "cardiovascular": [
+      4.070262908935547,
+      "vasculature"
+     ],
+     "ocular": [
+      129.5235137939453,
+      "lacrimal gland"
+     ],
+     "metabolic_endocrine": [
+      2.9779701232910156,
+      "adipose tissue"
+     ],
+     "dermatologic": [
+      1.4324023723602295,
+      "skin of body"
+     ],
+     "otologic": [
+      3.907301187515259,
+      "crista ampullaris"
+     ],
+     "pulmonary": [
+      10.546958923339844,
+      "lung"
+     ],
+     "hepatic": [
+      7.878616809844971,
+      "liver"
+     ],
+     "renal": [
+      15.136123657226562,
+      "kidney"
+     ],
+     "musculoskeletal": [
+      0.8724637627601624,
+      "muscle of pelvic diaphragm"
+     ]
+    }
+   },
+   "percentile": {
+    "musculoskeletal": 0.1,
+    "dermatologic": 0.2,
+    "hepatic": 0.5,
+    "cardiovascular": 0.4166666666666667,
+    "renal": 0.6666666666666666,
+    "metabolic_endocrine": 0.6,
+    "pulmonary": 0.7,
+    "gastrointestinal": 0.8,
+    "neurologic": 0.9,
+    "haematologic": 1.0,
+    "otologic": 0.3333333333333333,
+    "ocular": 0.9166666666666666,
+    "infectious_immune": 1.0
+   },
+   "abundant_axes": [
+    "gastrointestinal",
+    "haematologic",
+    "infectious_immune",
+    "neurologic",
+    "ocular"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       336.6824645996094,
+       "parotid gland",
+       "B cell"
+      ],
+      [
+       331.6891174316406,
+       "sublingual gland",
+       "mast cell"
+      ],
+      [
+       316.5880432128906,
+       "endocrine pancreas",
+       "B cell"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       313.8220520019531,
+       "inguinal lymph node",
+       "B cell"
+      ],
+      [
+       285.74468994140625,
+       "lymph node",
+       "B cell"
+      ],
+      [
+       266.1398620605469,
+       "thymus",
+       "B cell"
+      ]
+     ],
+     "haematologic": [
+      [
+       399.82403564453125,
+       "spleen",
+       "B cell"
+      ],
+      [
+       301.0300598144531,
+       "blood",
+       "B cell"
+      ],
+      [
+       289.33941650390625,
+       "bone marrow",
+       "B cell"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       214.45599365234375,
+       "right cardiac atrium",
+       "B cell"
+      ],
+      [
+       202.1086883544922,
+       "coronary artery",
+       "mast cell"
+      ],
+      [
+       199.25051879882812,
+       "aorta",
+       "B cell"
+      ]
+     ],
+     "ocular": [
+      [
+       290.8948669433594,
+       "eyelid",
+       "B cell"
+      ],
+      [
+       276.46734619140625,
+       "lacrimal gland",
+       "B cell"
+      ],
+      [
+       239.17807006835938,
+       "sclera",
+       "B cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       229.4138946533203,
+       "adipose tissue",
+       "B cell"
+      ],
+      [
+       193.4673614501953,
+       "adipose tissue",
+       "mast cell"
+      ],
+      [
+       162.79920959472656,
+       "subcutaneous adipose tissue",
+       "mast cell"
+      ]
+     ],
+     "dermatologic": [
+      [
+       150.57803344726562,
+       "skin of chest",
+       "neutrophil"
+      ],
+      [
+       53.476287841796875,
+       "skin of abdomen",
+       "neutrophil"
+      ],
+      [
+       10.892578125,
+       "skin of abdomen",
+       "mast cell"
+      ]
+     ],
+     "otologic": [
+      [
+       26.991657257080078,
+       "utricle of membranous labyrinth",
+       "hematopoietic cell"
+      ],
+      [
+       18.16867446899414,
+       "crista ampullaris",
+       "macrophage"
+      ],
+      [
+       14.495705604553223,
+       "utricle of membranous labyrinth",
+       "macrophage"
+      ]
+     ],
+     "pulmonary": [
+      [
+       378.0432434082031,
+       "trachea",
+       "granulocyte"
+      ],
+      [
+       243.45213317871094,
+       "trachea",
+       "B cell"
+      ],
+      [
+       232.68365478515625,
+       "trachea",
+       "mast cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       231.56643676757812,
+       "liver",
+       "B cell"
+      ],
+      [
+       96.03717803955078,
+       "liver",
+       "mast cell"
+      ],
+      [
+       38.06468200683594,
+       "liver",
+       "non-classical monocyte"
+      ]
+     ],
+     "renal": [
+      [
+       347.140625,
+       "kidney",
+       "B cell"
+      ],
+      [
+       108.36448669433594,
+       "bladder organ",
+       "B cell"
+      ],
+      [
+       101.23123168945312,
+       "bladder organ",
+       "mast cell"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       213.6604766845703,
+       "muscle of pelvic diaphragm",
+       "B cell"
+      ],
+      [
+       8.801628112792969,
+       "muscle of abdomen",
+       "granulocyte"
+      ],
+      [
+       4.516028881072998,
+       "muscle of abdomen",
+       "macrophage"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "CD33": {
+   "ensembl_id": "ENSG00000105383",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      6.70963,
+      "Adipose - Subcutaneous"
+     ],
+     "gastrointestinal": [
+      4.1068,
+      "small intestine terminal ileum"
+     ],
+     "hepatic": [
+      0.918842,
+      "Liver"
+     ],
+     "renal": [
+      3.84438,
+      "Bladder"
+     ],
+     "cardiovascular": [
+      5.14808,
+      "Artery - Coronary"
+     ],
+     "neurologic": [
+      3.25859,
+      "Brain - Spinal cord (cervical c-1)"
+     ],
+     "haematologic": [
+      34.3524,
+      "Spleen"
+     ],
+     "dermatologic": [
+      1.88133,
+      "Skin - Sun Exposed (Lower leg)"
+     ],
+     "pulmonary": [
+      12.6733,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      0.344349,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      32.454620361328125,
+      "stomach"
+     ],
+     "infectious_immune": [
+      3.0876197814941406,
+      "lymph node"
+     ],
+     "haematologic": [
+      42.12456130981445,
+      "blood"
+     ],
+     "cardiovascular": [
+      26.968881607055664,
+      "thoracic aorta"
+     ],
+     "ocular": [
+      10.093517303466797,
+      "posterior segment of eyeball"
+     ],
+     "metabolic_endocrine": [
+      13.44922924041748,
+      "subcutaneous adipose tissue"
+     ],
+     "dermatologic": [
+      6.329246520996094,
+      "skin of body"
+     ],
+     "otologic": [
+      8.24836540222168,
+      "crista ampullaris"
+     ],
+     "pulmonary": [
+      14.243595123291016,
+      "lung"
+     ],
+     "hepatic": [
+      24.860902786254883,
+      "liver"
+     ],
+     "renal": [
+      3.39139461517334,
+      "bladder organ"
+     ],
+     "musculoskeletal": [
+      4.6318888664245605,
+      "muscle of pelvic diaphragm"
+     ]
+    }
+   },
+   "percentile": {
+    "musculoskeletal": 0.25,
+    "hepatic": 0.75,
+    "dermatologic": 0.3333333333333333,
+    "neurologic": 0.4,
+    "renal": 0.5,
+    "gastrointestinal": 0.9166666666666666,
+    "cardiovascular": 0.8333333333333334,
+    "metabolic_endocrine": 0.8,
+    "pulmonary": 0.9,
+    "haematologic": 1.0,
+    "infectious_immune": 0.08333333333333333,
+    "otologic": 0.4166666666666667,
+    "ocular": 0.5
+   },
+   "abundant_axes": [
+    "cardiovascular",
+    "gastrointestinal",
+    "haematologic",
+    "metabolic_endocrine",
+    "pulmonary"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       177.88169860839844,
+       "exocrine pancreas",
+       "monocyte"
+      ],
+      [
+       124.80828094482422,
+       "sublingual gland",
+       "mast cell"
+      ],
+      [
+       115.68253326416016,
+       "exocrine pancreas",
+       "classical monocyte"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       164.19192504882812,
+       "lymph node",
+       "myeloid dendritic cell"
+      ],
+      [
+       124.1408462524414,
+       "inguinal lymph node",
+       "macrophage"
+      ],
+      [
+       117.98921966552734,
+       "mesenteric lymph node",
+       "classical monocyte"
+      ]
+     ],
+     "haematologic": [
+      [
+       162.6239471435547,
+       "bone marrow",
+       "myeloid dendritic cell"
+      ],
+      [
+       151.21546936035156,
+       "spleen",
+       "macrophage"
+      ],
+      [
+       127.37763214111328,
+       "blood",
+       "classical monocyte"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       149.91981506347656,
+       "thoracic aorta",
+       "monocyte"
+      ],
+      [
+       124.86215209960938,
+       "coronary artery",
+       "monocyte"
+      ],
+      [
+       119.96697998046875,
+       "vasculature",
+       "mast cell"
+      ]
+     ],
+     "ocular": [
+      [
+       172.7762451171875,
+       "posterior segment of eyeball",
+       "monocyte"
+      ],
+      [
+       129.4227752685547,
+       "lacrimal gland",
+       "monocyte"
+      ],
+      [
+       111.87115478515625,
+       "eye",
+       "classical monocyte"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       133.22744750976562,
+       "brown adipose tissue",
+       "intermediate monocyte"
+      ],
+      [
+       112.3508071899414,
+       "brown adipose tissue",
+       "monocyte"
+      ],
+      [
+       109.5957260131836,
+       "subcutaneous adipose tissue",
+       "monocyte"
+      ]
+     ],
+     "dermatologic": [
+      [
+       86.70335388183594,
+       "skin of chest",
+       "mast cell"
+      ],
+      [
+       67.63011169433594,
+       "skin of abdomen",
+       "mast cell"
+      ],
+      [
+       20.55191993713379,
+       "skin of body",
+       "mast cell"
+      ]
+     ],
+     "otologic": [
+      [
+       85.91107940673828,
+       "utricle of membranous labyrinth",
+       "macrophage"
+      ],
+      [
+       71.79029846191406,
+       "crista ampullaris",
+       "macrophage"
+      ],
+      [
+       18.296504974365234,
+       "utricle of membranous labyrinth",
+       "hematopoietic cell"
+      ]
+     ],
+     "pulmonary": [
+      [
+       73.31857299804688,
+       "lung",
+       "classical monocyte"
+      ],
+      [
+       71.07315826416016,
+       "lung",
+       "intermediate monocyte"
+      ],
+      [
+       69.31824493408203,
+       "trachea",
+       "monocyte"
+      ]
+     ],
+     "hepatic": [
+      [
+       85.80684661865234,
+       "liver",
+       "classical monocyte"
+      ],
+      [
+       82.91205596923828,
+       "liver",
+       "macrophage"
+      ],
+      [
+       74.79863739013672,
+       "liver",
+       "monocyte"
+      ]
+     ],
+     "renal": [
+      [
+       103.7898178100586,
+       "kidney",
+       "monocyte"
+      ],
+      [
+       66.7906723022461,
+       "kidney",
+       "non-classical monocyte"
+      ],
+      [
+       53.0563850402832,
+       "kidney",
+       "macrophage"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       62.69489669799805,
+       "muscle of pelvic diaphragm",
+       "macrophage"
+      ],
+      [
+       58.61113357543945,
+       "muscle of abdomen",
+       "macrophage"
+      ],
+      [
+       0.298956036567688,
+       "muscle of abdomen",
+       "pericyte"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "CD79B": {
+   "ensembl_id": "ENSG00000007312",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      56.7334,
+      "Pituitary"
+     ],
+     "gastrointestinal": [
+      36.2176,
+      "small intestine terminal ileum"
+     ],
+     "hepatic": [
+      1.77955,
+      "Liver"
+     ],
+     "renal": [
+      7.71419,
+      "Bladder"
+     ],
+     "cardiovascular": [
+      10.6509,
+      "Artery - Coronary"
+     ],
+     "neurologic": [
+      0.746659,
+      "Brain - Cerebellum"
+     ],
+     "haematologic": [
+      285.973,
+      "Spleen"
+     ],
+     "dermatologic": [
+      9.06145,
+      "Skin - Not Sun Exposed (Suprapubic)"
+     ],
+     "pulmonary": [
+      6.51799,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      2.65054,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      75.50057220458984,
+      "mucosa of stomach"
+     ],
+     "infectious_immune": [
+      207.96763610839844,
+      "inguinal lymph node"
+     ],
+     "haematologic": [
+      105.24771881103516,
+      "spleen"
+     ],
+     "cardiovascular": [
+      41.989036560058594,
+      "heart"
+     ],
+     "ocular": [
+      134.19386291503906,
+      "lacrimal gland"
+     ],
+     "metabolic_endocrine": [
+      12.812712669372559,
+      "adipose tissue"
+     ],
+     "dermatologic": [
+      9.314610481262207,
+      "skin of chest"
+     ],
+     "otologic": [
+      18.91428565979004,
+      "crista ampullaris"
+     ],
+     "pulmonary": [
+      10.484346389770508,
+      "trachea"
+     ],
+     "hepatic": [
+      14.967118263244629,
+      "liver"
+     ],
+     "renal": [
+      17.658464431762695,
+      "kidney"
+     ],
+     "musculoskeletal": [
+      13.412135124206543,
+      "muscle of abdomen"
+     ]
+    }
+   },
+   "percentile": {
+    "neurologic": 0.1,
+    "hepatic": 0.4166666666666667,
+    "musculoskeletal": 0.3333333333333333,
+    "pulmonary": 0.4,
+    "renal": 0.5,
+    "dermatologic": 0.6,
+    "cardiovascular": 0.7,
+    "gastrointestinal": 0.8,
+    "metabolic_endocrine": 0.9,
+    "haematologic": 1.0,
+    "otologic": 0.5833333333333334,
+    "ocular": 0.9166666666666666,
+    "infectious_immune": 1.0
+   },
+   "abundant_axes": [
+    "gastrointestinal",
+    "haematologic",
+    "infectious_immune",
+    "metabolic_endocrine",
+    "ocular"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       599.1971435546875,
+       "endocrine pancreas",
+       "B cell"
+      ],
+      [
+       509.54632568359375,
+       "submandibular gland",
+       "B cell"
+      ],
+      [
+       424.6823425292969,
+       "exocrine pancreas",
+       "B cell"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       386.53570556640625,
+       "mesenteric lymph node",
+       "B cell"
+      ],
+      [
+       373.5109558105469,
+       "lymph node",
+       "B cell"
+      ],
+      [
+       304.0636901855469,
+       "thymus",
+       "B cell"
+      ]
+     ],
+     "haematologic": [
+      [
+       466.6209716796875,
+       "bone marrow",
+       "B cell"
+      ],
+      [
+       451.9950866699219,
+       "blood",
+       "B cell"
+      ],
+      [
+       308.3443603515625,
+       "spleen",
+       "B cell"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       357.9316101074219,
+       "aorta",
+       "B cell"
+      ],
+      [
+       332.1163330078125,
+       "thoracic aorta",
+       "B cell"
+      ],
+      [
+       316.4790954589844,
+       "right cardiac atrium",
+       "B cell"
+      ]
+     ],
+     "ocular": [
+      [
+       298.6479187011719,
+       "eyelid",
+       "B cell"
+      ],
+      [
+       270.349853515625,
+       "lacrimal gland",
+       "B cell"
+      ],
+      [
+       256.0387878417969,
+       "sclera",
+       "plasma cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       190.39358520507812,
+       "subcutaneous adipose tissue",
+       "B cell"
+      ],
+      [
+       178.31057739257812,
+       "brown adipose tissue",
+       "B cell"
+      ],
+      [
+       166.1317901611328,
+       "brown adipose tissue",
+       "plasma cell"
+      ]
+     ],
+     "dermatologic": [
+      [
+       100.24356079101562,
+       "skin of abdomen",
+       "plasma cell"
+      ],
+      [
+       97.98592376708984,
+       "skin of body",
+       "plasma cell"
+      ],
+      [
+       65.92628479003906,
+       "skin of body",
+       "natural killer cell"
+      ]
+     ],
+     "otologic": [
+      [
+       83.07984924316406,
+       "crista ampullaris",
+       "melanocyte"
+      ],
+      [
+       35.8527946472168,
+       "crista ampullaris",
+       "stromal cell"
+      ],
+      [
+       21.068605422973633,
+       "utricle of membranous labyrinth",
+       "stromal cell"
+      ]
+     ],
+     "pulmonary": [
+      [
+       272.8067932128906,
+       "lung",
+       "B cell"
+      ],
+      [
+       236.86802673339844,
+       "trachea",
+       "B cell"
+      ],
+      [
+       128.1946258544922,
+       "lung",
+       "plasma cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       146.75796508789062,
+       "liver",
+       "B cell"
+      ],
+      [
+       116.67050170898438,
+       "liver",
+       "plasma cell"
+      ],
+      [
+       75.53538513183594,
+       "liver",
+       "non-classical monocyte"
+      ]
+     ],
+     "renal": [
+      [
+       335.988037109375,
+       "kidney",
+       "B cell"
+      ],
+      [
+       113.35221862792969,
+       "bladder organ",
+       "plasma cell"
+      ],
+      [
+       77.64044189453125,
+       "kidney",
+       "plasma cell"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       147.92367553710938,
+       "muscle of pelvic diaphragm",
+       "B cell"
+      ],
+      [
+       86.31963348388672,
+       "muscle of abdomen",
+       "epithelial cell"
+      ],
+      [
+       78.04313659667969,
+       "muscle of abdomen",
+       "capillary endothelial cell"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "ERBB2": {
+   "ensembl_id": "ENSG00000141736",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      100.122,
+      "Thyroid"
+     ],
+     "gastrointestinal": [
+      112.808,
+      "Esophagus - Mucosa"
+     ],
+     "hepatic": [
+      13.5822,
+      "Liver"
+     ],
+     "renal": [
+      92.2856,
+      "Kidney - Medulla"
+     ],
+     "cardiovascular": [
+      86.6176,
+      "Artery - Aorta"
+     ],
+     "neurologic": [
+      9.53193,
+      "Brain - Nucleus accumbens (basal ganglia)"
+     ],
+     "haematologic": [
+      9.21037,
+      "Spleen"
+     ],
+     "dermatologic": [
+      120.104,
+      "Skin - Sun Exposed (Lower leg)"
+     ],
+     "pulmonary": [
+      48.8786,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      11.121,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      127.60088348388672,
+      "jejunum"
+     ],
+     "infectious_immune": [
+      11.91891098022461,
+      "thymus"
+     ],
+     "haematologic": [
+      5.749985218048096,
+      "blood"
+     ],
+     "cardiovascular": [
+      87.53008270263672,
+      "cardiac atrium"
+     ],
+     "ocular": [
+      86.5630111694336,
+      "anterior segment of eyeball"
+     ],
+     "metabolic_endocrine": [
+      12.236712455749512,
+      "subcutaneous adipose tissue"
+     ],
+     "dermatologic": [
+      3.27128267288208,
+      "skin of abdomen"
+     ],
+     "otologic": [
+      44.10981369018555,
+      "utricle of membranous labyrinth"
+     ],
+     "pulmonary": [
+      36.02067184448242,
+      "lung"
+     ],
+     "hepatic": [
+      9.560906410217285,
+      "liver"
+     ],
+     "renal": [
+      41.356388092041016,
+      "bladder organ"
+     ],
+     "musculoskeletal": [
+      19.044755935668945,
+      "muscle of abdomen"
+     ]
+    }
+   },
+   "percentile": {
+    "haematologic": 0.16666666666666666,
+    "neurologic": 0.2,
+    "musculoskeletal": 0.5,
+    "hepatic": 0.4,
+    "pulmonary": 0.5833333333333334,
+    "cardiovascular": 0.9166666666666666,
+    "renal": 0.7,
+    "metabolic_endocrine": 0.8,
+    "gastrointestinal": 1.0,
+    "dermatologic": 1.0,
+    "infectious_immune": 0.3333333333333333,
+    "otologic": 0.75,
+    "ocular": 0.8333333333333334
+   },
+   "abundant_axes": [
+    "cardiovascular",
+    "dermatologic",
+    "gastrointestinal",
+    "metabolic_endocrine",
+    "ocular"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       148.0485382080078,
+       "jejunum",
+       "enterocyte of epithelium proper of jejunum"
+      ],
+      [
+       145.72830200195312,
+       "submandibular gland",
+       "duct epithelial cell"
+      ],
+      [
+       139.37258911132812,
+       "ileum",
+       "paneth cell of epithelium of small intestine"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       67.7075424194336,
+       "thymus",
+       "medullary thymic epithelial cell"
+      ],
+      [
+       67.62825012207031,
+       "thymus",
+       "mesothelial cell"
+      ],
+      [
+       61.753265380859375,
+       "thymus",
+       "myo-medullary thymic epithelial cell"
+      ]
+     ],
+     "haematologic": [
+      [
+       34.19219207763672,
+       "blood",
+       "natural killer cell"
+      ],
+      [
+       32.2789421081543,
+       "bone marrow",
+       "natural killer cell"
+      ],
+      [
+       27.217159271240234,
+       "spleen",
+       "natural killer cell"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       141.26466369628906,
+       "heart right ventricle",
+       "neuron"
+      ],
+      [
+       131.74952697753906,
+       "cardiac ventricle",
+       "plasmacytoid dendritic cell"
+      ],
+      [
+       111.97972869873047,
+       "cardiac atrium",
+       "regular atrial cardiac myocyte"
+      ]
+     ],
+     "ocular": [
+      [
+       152.67941284179688,
+       "eye",
+       "acinar cell"
+      ],
+      [
+       136.2313232421875,
+       "eyelid",
+       "conjunctival epithelial cell"
+      ],
+      [
+       135.19000244140625,
+       "sclera",
+       "conjunctival epithelial cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       43.71406936645508,
+       "adipose tissue",
+       "smooth muscle cell"
+      ],
+      [
+       43.16475296020508,
+       "brown adipose tissue",
+       "smooth muscle cell"
+      ],
+      [
+       33.623504638671875,
+       "subcutaneous adipose tissue",
+       "natural killer cell"
+      ]
+     ],
+     "dermatologic": [
+      [
+       69.9396743774414,
+       "skin of body",
+       "sebocyte"
+      ],
+      [
+       10.370198249816895,
+       "skin of body",
+       "melanocyte"
+      ],
+      [
+       5.872161865234375,
+       "skin of abdomen",
+       "endothelial cell"
+      ]
+     ],
+     "otologic": [
+      [
+       80.45903015136719,
+       "utricle of membranous labyrinth",
+       "pericyte"
+      ],
+      [
+       74.29883575439453,
+       "crista ampullaris",
+       "pericyte"
+      ],
+      [
+       50.00045394897461,
+       "utricle of membranous labyrinth",
+       "supporting cell of vestibular epithelium"
+      ]
+     ],
+     "pulmonary": [
+      [
+       140.21434020996094,
+       "lung",
+       "club cell"
+      ],
+      [
+       124.9632797241211,
+       "trachea",
+       "mucus secreting cell"
+      ],
+      [
+       122.38131713867188,
+       "lung",
+       "respiratory tract goblet cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       83.84522247314453,
+       "liver",
+       "intrahepatic cholangiocyte"
+      ],
+      [
+       61.64014434814453,
+       "liver",
+       "fibroblast"
+      ],
+      [
+       23.39545440673828,
+       "liver",
+       "hepatic stellate cell"
+      ]
+     ],
+     "renal": [
+      [
+       83.3885726928711,
+       "bladder organ",
+       "bladder urothelial cell"
+      ],
+      [
+       51.59098815917969,
+       "kidney",
+       "natural killer cell"
+      ],
+      [
+       40.47642517089844,
+       "bladder organ",
+       "pericyte"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       182.63291931152344,
+       "muscle of pelvic diaphragm",
+       "erythrocyte"
+      ],
+      [
+       48.45452117919922,
+       "muscle of abdomen",
+       "mature NK T cell"
+      ],
+      [
+       38.14683532714844,
+       "muscle of abdomen",
+       "smooth muscle cell"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "ERBB3": {
+   "ensembl_id": "ENSG00000065361",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      10.5615,
+      "Thyroid"
+     ],
+     "gastrointestinal": [
+      64.9728,
+      "Esophagus - Mucosa"
+     ],
+     "hepatic": [
+      35.0601,
+      "Liver"
+     ],
+     "renal": [
+      16.3098,
+      "Bladder"
+     ],
+     "cardiovascular": [
+      4.04015,
+      "Heart - Atrial Appendage"
+     ],
+     "neurologic": [
+      51.4032,
+      "Brain - Spinal cord (cervical c-1)"
+     ],
+     "haematologic": [
+      0.180742,
+      "Spleen"
+     ],
+     "dermatologic": [
+      76.1005,
+      "Skin - Sun Exposed (Lower leg)"
+     ],
+     "pulmonary": [
+      19.5617,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      0.60128,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      230.97267150878906,
+      "jejunum"
+     ],
+     "infectious_immune": [
+      5.518586158752441,
+      "mesenteric lymph node"
+     ],
+     "haematologic": [
+      1.0156124830245972,
+      "spleen"
+     ],
+     "cardiovascular": [
+      20.737977981567383,
+      "heart right ventricle"
+     ],
+     "ocular": [
+      155.2266387939453,
+      "cornea"
+     ],
+     "metabolic_endocrine": [
+      2.085068941116333,
+      "adipose tissue"
+     ],
+     "dermatologic": [
+      2.4727182388305664,
+      "skin of body"
+     ],
+     "otologic": [
+      52.37541198730469,
+      "crista ampullaris"
+     ],
+     "pulmonary": [
+      42.79117965698242,
+      "trachea"
+     ],
+     "hepatic": [
+      23.504274368286133,
+      "liver"
+     ],
+     "renal": [
+      75.3543472290039,
+      "bladder organ"
+     ],
+     "musculoskeletal": [
+      2.493974447250366,
+      "muscle of abdomen"
+     ]
+    }
+   },
+   "percentile": {
+    "haematologic": 0.1,
+    "musculoskeletal": 0.3333333333333333,
+    "cardiovascular": 0.5,
+    "metabolic_endocrine": 0.4,
+    "renal": 0.8333333333333334,
+    "pulmonary": 0.6666666666666666,
+    "hepatic": 0.7,
+    "neurologic": 0.8,
+    "gastrointestinal": 1.0,
+    "dermatologic": 1.0,
+    "infectious_immune": 0.4166666666666667,
+    "otologic": 0.75,
+    "ocular": 0.9166666666666666
+   },
+   "abundant_axes": [
+    "dermatologic",
+    "gastrointestinal",
+    "neurologic",
+    "ocular",
+    "renal"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       368.2121887207031,
+       "anterior part of tongue",
+       "Schwann cell"
+      ],
+      [
+       348.6349182128906,
+       "posterior part of tongue",
+       "Schwann cell"
+      ],
+      [
+       343.9010009765625,
+       "ascending colon",
+       "enteroglial cell"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       57.92409133911133,
+       "thymus",
+       "neuro-medullary thymic epithelial cell"
+      ],
+      [
+       41.11712646484375,
+       "thymus",
+       "mesothelial cell"
+      ],
+      [
+       39.61254119873047,
+       "thymus",
+       "myo-medullary thymic epithelial cell"
+      ]
+     ],
+     "haematologic": [
+      [
+       2.5910494327545166,
+       "blood",
+       "CD8-positive, alpha-beta T cell"
+      ],
+      [
+       2.326059579849243,
+       "bone marrow",
+       "CD8-positive, alpha-beta T cell"
+      ],
+      [
+       2.1685752868652344,
+       "spleen",
+       "mature NK T cell"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       548.96630859375,
+       "right cardiac atrium",
+       "neuron"
+      ],
+      [
+       490.781982421875,
+       "heart right ventricle",
+       "neuron"
+      ],
+      [
+       64.870849609375,
+       "cardiac atrium",
+       "CD8-positive, alpha-beta T cell"
+      ]
+     ],
+     "ocular": [
+      [
+       283.9766845703125,
+       "anterior segment of eyeball",
+       "Schwann cell"
+      ],
+      [
+       211.265869140625,
+       "cornea",
+       "Schwann cell"
+      ],
+      [
+       201.71421813964844,
+       "cornea",
+       "corneal epithelial cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       95.61400604248047,
+       "subcutaneous adipose tissue",
+       "pericyte"
+      ],
+      [
+       3.0985968112945557,
+       "subcutaneous adipose tissue",
+       "myofibroblast cell"
+      ],
+      [
+       2.7975239753723145,
+       "brown adipose tissue",
+       "natural killer cell"
+      ]
+     ],
+     "dermatologic": [
+      [
+       120.10230255126953,
+       "skin of body",
+       "melanocyte"
+      ],
+      [
+       114.6323013305664,
+       "skin of body",
+       "sebocyte"
+      ],
+      [
+       109.07142639160156,
+       "skin of abdomen",
+       "melanocyte"
+      ]
+     ],
+     "otologic": [
+      [
+       171.4708251953125,
+       "utricle of membranous labyrinth",
+       "hematopoietic cell"
+      ],
+      [
+       137.3369598388672,
+       "utricle of membranous labyrinth",
+       "pericyte"
+      ],
+      [
+       124.59191131591797,
+       "utricle of membranous labyrinth",
+       "supporting cell of vestibular epithelium"
+      ]
+     ],
+     "pulmonary": [
+      [
+       183.51161193847656,
+       "trachea",
+       "mucus secreting cell"
+      ],
+      [
+       177.20579528808594,
+       "trachea",
+       "serous cell of epithelium of trachea"
+      ],
+      [
+       175.44041442871094,
+       "lung",
+       "club cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       142.36085510253906,
+       "liver",
+       "hepatocyte"
+      ],
+      [
+       134.0387725830078,
+       "liver",
+       "intrahepatic cholangiocyte"
+      ],
+      [
+       17.43782615661621,
+       "liver",
+       "erythrocyte"
+      ]
+     ],
+     "renal": [
+      [
+       128.76943969726562,
+       "bladder organ",
+       "bladder urothelial cell"
+      ],
+      [
+       51.847103118896484,
+       "bladder organ",
+       "erythrocyte"
+      ],
+      [
+       30.88072395324707,
+       "kidney",
+       "kidney epithelial cell"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       43.94192123413086,
+       "muscle of pelvic diaphragm",
+       "slow muscle cell"
+      ],
+      [
+       9.901578903198242,
+       "muscle of pelvic diaphragm",
+       "epithelial cell"
+      ],
+      [
+       7.293010234832764,
+       "muscle of pelvic diaphragm",
+       "natural killer cell"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "F3": {
+   "ensembl_id": "ENSG00000117525",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      168.9,
+      "Adipose - Visceral (Omentum)"
+     ],
+     "gastrointestinal": [
+      102.129,
+      "Minor Salivary Gland"
+     ],
+     "hepatic": [
+      2.06404,
+      "Liver"
+     ],
+     "renal": [
+      69.1099,
+      "Bladder"
+     ],
+     "cardiovascular": [
+      55.4399,
+      "Artery - Coronary"
+     ],
+     "neurologic": [
+      76.545,
+      "Brain - Caudate (basal ganglia)"
+     ],
+     "haematologic": [
+      7.63959,
+      "Spleen"
+     ],
+     "dermatologic": [
+      82.9265,
+      "Skin - Sun Exposed (Lower leg)"
+     ],
+     "pulmonary": [
+      98.818,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      4.42037,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      78.45527648925781,
+      "sublingual gland"
+     ],
+     "infectious_immune": [
+      46.893497467041016,
+      "thymus"
+     ],
+     "haematologic": [
+      3.240509271621704,
+      "spleen"
+     ],
+     "cardiovascular": [
+      66.0827407836914,
+      "vasculature"
+     ],
+     "ocular": [
+      749.45068359375,
+      "conjunctiva"
+     ],
+     "metabolic_endocrine": [
+      85.50567626953125,
+      "adipose tissue"
+     ],
+     "dermatologic": [
+      80.91156768798828,
+      "skin of chest"
+     ],
+     "otologic": [
+      108.16590118408203,
+      "utricle of membranous labyrinth"
+     ],
+     "pulmonary": [
+      115.59129333496094,
+      "lung"
+     ],
+     "hepatic": [
+      6.70052433013916,
+      "liver"
+     ],
+     "renal": [
+      44.593631744384766,
+      "bladder organ"
+     ],
+     "musculoskeletal": [
+      94.6041030883789,
+      "muscle of pelvic diaphragm"
+     ]
+    }
+   },
+   "percentile": {
+    "hepatic": 0.16666666666666666,
+    "musculoskeletal": 0.75,
+    "haematologic": 0.3,
+    "cardiovascular": 0.4166666666666667,
+    "renal": 0.5,
+    "neurologic": 0.6,
+    "dermatologic": 0.7,
+    "pulmonary": 0.9166666666666666,
+    "gastrointestinal": 0.9,
+    "metabolic_endocrine": 1.0,
+    "infectious_immune": 0.3333333333333333,
+    "otologic": 0.8333333333333334,
+    "ocular": 1.0
+   },
+   "abundant_axes": [
+    "gastrointestinal",
+    "metabolic_endocrine",
+    "ocular",
+    "otologic",
+    "pulmonary"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       519.6744384765625,
+       "mucosa of stomach",
+       "interstitial cell of Cajal"
+      ],
+      [
+       421.0387878417969,
+       "small intestine",
+       "small intestine goblet cell"
+      ],
+      [
+       333.0143737792969,
+       "duodenum",
+       "small intestine goblet cell"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       235.28961181640625,
+       "thymus",
+       "thymic fibroblast type 1"
+      ],
+      [
+       211.87770080566406,
+       "thymus",
+       "thymic fibroblast type 2"
+      ],
+      [
+       207.63894653320312,
+       "lymph node",
+       "stromal cell"
+      ]
+     ],
+     "haematologic": [
+      [
+       21.62502098083496,
+       "spleen",
+       "classical monocyte"
+      ],
+      [
+       13.259516716003418,
+       "spleen",
+       "intermediate monocyte"
+      ],
+      [
+       8.429993629455566,
+       "spleen",
+       "monocyte"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       210.2940216064453,
+       "thoracic aorta",
+       "fibroblast"
+      ],
+      [
+       144.95034790039062,
+       "vasculature",
+       "fibroblast"
+      ],
+      [
+       131.35971069335938,
+       "coronary artery",
+       "fibroblast"
+      ]
+     ],
+     "ocular": [
+      [
+       903.3032836914062,
+       "posterior segment of eyeball",
+       "conjunctival epithelial cell"
+      ],
+      [
+       753.1715087890625,
+       "conjunctiva",
+       "conjunctival epithelial cell"
+      ],
+      [
+       714.8836669921875,
+       "anterior segment of eyeball",
+       "conjunctival epithelial cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       295.5786437988281,
+       "subcutaneous adipose tissue",
+       "mesenchymal stem cell of adipose tissue"
+      ],
+      [
+       215.32872009277344,
+       "subcutaneous adipose tissue",
+       "fibroblast"
+      ],
+      [
+       188.37428283691406,
+       "adipose tissue",
+       "fibroblast"
+      ]
+     ],
+     "dermatologic": [
+      [
+       261.8816833496094,
+       "skin of chest",
+       "endothelial cell"
+      ],
+      [
+       189.1693572998047,
+       "skin of abdomen",
+       "endothelial cell"
+      ],
+      [
+       164.71783447265625,
+       "skin of body",
+       "endothelial cell"
+      ]
+     ],
+     "otologic": [
+      [
+       297.9983825683594,
+       "crista ampullaris",
+       "supporting cell of vestibular epithelium"
+      ],
+      [
+       152.39825439453125,
+       "utricle of membranous labyrinth",
+       "supporting cell of vestibular epithelium"
+      ],
+      [
+       135.16531372070312,
+       "utricle of membranous labyrinth",
+       "vascular associated smooth muscle cell"
+      ]
+     ],
+     "pulmonary": [
+      [
+       453.8990173339844,
+       "lung",
+       "basal cell"
+      ],
+      [
+       367.330078125,
+       "trachea",
+       "basal cell"
+      ],
+      [
+       366.0380859375,
+       "lung",
+       "respiratory tract goblet cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       49.49126434326172,
+       "liver",
+       "intermediate monocyte"
+      ],
+      [
+       34.84135437011719,
+       "liver",
+       "classical monocyte"
+      ],
+      [
+       29.09159278869629,
+       "liver",
+       "monocyte"
+      ]
+     ],
+     "renal": [
+      [
+       432.7065124511719,
+       "bladder organ",
+       "myofibroblast cell"
+      ],
+      [
+       106.12235260009766,
+       "bladder organ",
+       "endothelial cell"
+      ],
+      [
+       103.6969985961914,
+       "bladder organ",
+       "fibroblast"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       210.6007843017578,
+       "muscle of pelvic diaphragm",
+       "tendon cell"
+      ],
+      [
+       150.19390869140625,
+       "muscle of pelvic diaphragm",
+       "mesenchymal stem cell"
+      ],
+      [
+       141.11727905273438,
+       "muscle of abdomen",
+       "mesenchymal stem cell"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "FOLR1": {
+   "ensembl_id": "ENSG00000110195",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      33.9062,
+      "Thyroid"
+     ],
+     "gastrointestinal": [
+      79.1349,
+      "Minor Salivary Gland"
+     ],
+     "hepatic": [
+      0.062023,
+      "Liver"
+     ],
+     "renal": [
+      52.7925,
+      "Kidney - Medulla"
+     ],
+     "cardiovascular": [
+      0.273285,
+      "Heart - Atrial Appendage"
+     ],
+     "neurologic": [
+      1.3297,
+      "Brain - Hippocampus"
+     ],
+     "haematologic": [
+      0.13378,
+      "Spleen"
+     ],
+     "dermatologic": [
+      2.07018,
+      "Skin - Sun Exposed (Lower leg)"
+     ],
+     "pulmonary": [
+      109.572,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      0.026326,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      98.0272445678711,
+      "parotid gland"
+     ],
+     "infectious_immune": [
+      0.11241400241851807,
+      "thymus"
+     ],
+     "haematologic": [
+      0.14616011083126068,
+      "spleen"
+     ],
+     "cardiovascular": [
+      2.934753179550171,
+      "cardiac atrium"
+     ],
+     "ocular": [
+      13.073074340820312,
+      "lacrimal gland"
+     ],
+     "metabolic_endocrine": [
+      0.12009556591510773,
+      "brown adipose tissue"
+     ],
+     "dermatologic": [
+      0.0613500215113163,
+      "skin of body"
+     ],
+     "otologic": [
+      0.5508204698562622,
+      "utricle of membranous labyrinth"
+     ],
+     "pulmonary": [
+      65.0289077758789,
+      "lung"
+     ],
+     "hepatic": [
+      0.14775142073631287,
+      "liver"
+     ],
+     "renal": [
+      32.42591094970703,
+      "kidney"
+     ],
+     "musculoskeletal": [
+      0.043244343250989914,
+      "muscle of abdomen"
+     ]
+    }
+   },
+   "percentile": {
+    "musculoskeletal": 0.1,
+    "hepatic": 0.5,
+    "haematologic": 0.4166666666666667,
+    "cardiovascular": 0.6666666666666666,
+    "neurologic": 0.5,
+    "dermatologic": 0.6,
+    "metabolic_endocrine": 0.7,
+    "renal": 0.8333333333333334,
+    "gastrointestinal": 1.0,
+    "pulmonary": 1.0,
+    "infectious_immune": 0.25,
+    "otologic": 0.5833333333333334,
+    "ocular": 0.75
+   },
+   "abundant_axes": [
+    "gastrointestinal",
+    "pulmonary",
+    "renal"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       336.9611511230469,
+       "parotid gland",
+       "duct epithelial cell"
+      ],
+      [
+       175.2344207763672,
+       "posterior part of tongue",
+       "salivary gland cell"
+      ],
+      [
+       168.2398681640625,
+       "parotid gland",
+       "acinar cell of salivary gland"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       13.473621368408203,
+       "inguinal lymph node",
+       "macrophage"
+      ],
+      [
+       9.01169204711914,
+       "thymus",
+       "myo-medullary thymic epithelial cell"
+      ],
+      [
+       8.459027290344238,
+       "thymus",
+       "medullary thymic epithelial cell"
+      ]
+     ],
+     "haematologic": [
+      [
+       2.4919636249542236,
+       "spleen",
+       "macrophage"
+      ],
+      [
+       0.02531610243022442,
+       "blood",
+       "classical monocyte"
+      ],
+      [
+       0.0,
+       "spleen",
+       "regulatory T cell"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       4.535017013549805,
+       "cardiac ventricle",
+       "ventricular cardiac muscle cell"
+      ],
+      [
+       4.059960842132568,
+       "cardiac atrium",
+       "regular atrial cardiac myocyte"
+      ],
+      [
+       2.128943681716919,
+       "right cardiac atrium",
+       "macrophage"
+      ]
+     ],
+     "ocular": [
+      [
+       242.65817260742188,
+       "posterior segment of eyeball",
+       "retinal pigment epithelial cell"
+      ],
+      [
+       87.96178436279297,
+       "lacrimal gland",
+       "conjunctival epithelial cell"
+      ],
+      [
+       73.96920776367188,
+       "eye",
+       "retinal pigment epithelial cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       0.6279679536819458,
+       "adipose tissue",
+       "macrophage"
+      ],
+      [
+       0.6266565918922424,
+       "subcutaneous adipose tissue",
+       "macrophage"
+      ],
+      [
+       0.16523045301437378,
+       "brown adipose tissue",
+       "macrophage"
+      ]
+     ],
+     "dermatologic": [
+      [
+       3.6332271099090576,
+       "skin of body",
+       "sebocyte"
+      ],
+      [
+       0.11989928036928177,
+       "skin of body",
+       "fibroblast"
+      ],
+      [
+       0.0,
+       "skin of chest",
+       "smooth muscle cell"
+      ]
+     ],
+     "otologic": [
+      [
+       33.69890213012695,
+       "crista ampullaris",
+       "vestibular dark cell"
+      ],
+      [
+       1.4274168014526367,
+       "utricle of membranous labyrinth",
+       "supporting cell of vestibular epithelium"
+      ],
+      [
+       0.3424607813358307,
+       "crista ampullaris",
+       "pericyte"
+      ]
+     ],
+     "pulmonary": [
+      [
+       365.4121398925781,
+       "lung",
+       "club cell"
+      ],
+      [
+       342.5140075683594,
+       "lung",
+       "serous cell of epithelium of bronchus"
+      ],
+      [
+       273.3664855957031,
+       "lung",
+       "pulmonary alveolar type 1 cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       0.23611541092395782,
+       "liver",
+       "macrophage"
+      ],
+      [
+       0.0,
+       "liver",
+       "plasmacytoid dendritic cell"
+      ],
+      [
+       0.0,
+       "liver",
+       "plasma cell"
+      ]
+     ],
+     "renal": [
+      [
+       38.88166809082031,
+       "kidney",
+       "kidney epithelial cell"
+      ],
+      [
+       8.219353675842285,
+       "kidney",
+       "macrophage"
+      ],
+      [
+       6.283095359802246,
+       "kidney",
+       "endothelial cell"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       0.0,
+       "muscle of pelvic diaphragm",
+       "tendon cell"
+      ],
+      [
+       0.0,
+       "muscle of pelvic diaphragm",
+       "smooth muscle cell"
+      ],
+      [
+       0.0,
+       "muscle of pelvic diaphragm",
+       "slow muscle cell"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "IL3RA": {
+   "ensembl_id": "ENSG00000185291",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      46.1881,
+      "Adipose - Subcutaneous"
+     ],
+     "gastrointestinal": [
+      20.71,
+      "Esophagus - Gastroesophageal Junction"
+     ],
+     "hepatic": [
+      1.49529,
+      "Liver"
+     ],
+     "renal": [
+      18.3201,
+      "Bladder"
+     ],
+     "cardiovascular": [
+      21.6541,
+      "Artery - Coronary"
+     ],
+     "neurologic": [
+      16.6696,
+      "Brain - Cerebellum"
+     ],
+     "haematologic": [
+      13.7539,
+      "Spleen"
+     ],
+     "dermatologic": [
+      13.4154,
+      "Skin - Sun Exposed (Lower leg)"
+     ],
+     "pulmonary": [
+      52.978,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      5.61092,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {}
+   },
+   "percentile": {
+    "hepatic": 0.1,
+    "musculoskeletal": 0.2,
+    "dermatologic": 0.3,
+    "haematologic": 0.4,
+    "neurologic": 0.5,
+    "renal": 0.6,
+    "gastrointestinal": 0.7,
+    "cardiovascular": 0.8,
+    "metabolic_endocrine": 0.9,
+    "pulmonary": 1.0
+   },
+   "abundant_axes": [
+    "cardiovascular",
+    "metabolic_endocrine",
+    "pulmonary"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {}
+   },
+   "sources_present": [
+    "gtex"
+   ]
+  },
+  "MET": {
+   "ensembl_id": "ENSG00000105976",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      16.6804,
+      "Thyroid"
+     ],
+     "gastrointestinal": [
+      12.4219,
+      "Minor Salivary Gland"
+     ],
+     "hepatic": [
+      11.4347,
+      "Liver"
+     ],
+     "renal": [
+      11.5747,
+      "Kidney - Medulla"
+     ],
+     "cardiovascular": [
+      6.10435,
+      "Artery - Aorta"
+     ],
+     "neurologic": [
+      3.56362,
+      "Brain - Frontal Cortex (BA9)"
+     ],
+     "haematologic": [
+      4.69578,
+      "Spleen"
+     ],
+     "dermatologic": [
+      9.28443,
+      "Skin - Not Sun Exposed (Suprapubic)"
+     ],
+     "pulmonary": [
+      9.6757,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      6.99514,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      85.74520874023438,
+      "buccal mucosa"
+     ],
+     "infectious_immune": [
+      23.929828643798828,
+      "thymus"
+     ],
+     "haematologic": [
+      2.8153457641601562,
+      "spleen"
+     ],
+     "cardiovascular": [
+      39.208984375,
+      "coronary artery"
+     ],
+     "ocular": [
+      503.4744873046875,
+      "conjunctiva"
+     ],
+     "metabolic_endocrine": [
+      23.334869384765625,
+      "adipose tissue"
+     ],
+     "dermatologic": [
+      48.66106033325195,
+      "skin of abdomen"
+     ],
+     "otologic": [
+      91.50234985351562,
+      "crista ampullaris"
+     ],
+     "pulmonary": [
+      144.77420043945312,
+      "trachea"
+     ],
+     "hepatic": [
+      26.25286102294922,
+      "liver"
+     ],
+     "renal": [
+      59.21847915649414,
+      "bladder organ"
+     ],
+     "musculoskeletal": [
+      58.21569061279297,
+      "muscle of abdomen"
+     ]
+    }
+   },
+   "percentile": {
+    "neurologic": 0.1,
+    "haematologic": 0.2,
+    "cardiovascular": 0.4166666666666667,
+    "musculoskeletal": 0.5833333333333334,
+    "dermatologic": 0.5,
+    "pulmonary": 0.9166666666666666,
+    "hepatic": 0.7,
+    "renal": 0.8,
+    "gastrointestinal": 0.9,
+    "metabolic_endocrine": 1.0,
+    "infectious_immune": 0.25,
+    "otologic": 0.8333333333333334,
+    "ocular": 1.0
+   },
+   "abundant_axes": [
+    "gastrointestinal",
+    "metabolic_endocrine",
+    "ocular",
+    "otologic",
+    "pulmonary",
+    "renal"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       329.9554443359375,
+       "buccal mucosa",
+       "keratocyte"
+      ],
+      [
+       309.5162048339844,
+       "sublingual gland",
+       "myoepithelial cell"
+      ],
+      [
+       291.8255920410156,
+       "sublingual gland",
+       "endothelial cell of artery"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       265.00238037109375,
+       "inguinal lymph node",
+       "endothelial cell"
+      ],
+      [
+       263.5504150390625,
+       "thymus",
+       "vein endothelial cell"
+      ],
+      [
+       245.68959045410156,
+       "thymus",
+       "medullary thymic epithelial cell"
+      ]
+     ],
+     "haematologic": [
+      [
+       138.85589599609375,
+       "spleen",
+       "endothelial cell"
+      ],
+      [
+       5.815623760223389,
+       "spleen",
+       "classical monocyte"
+      ],
+      [
+       5.427207946777344,
+       "spleen",
+       "intermediate monocyte"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       268.0063781738281,
+       "vasculature",
+       "vein endothelial cell"
+      ],
+      [
+       230.90936279296875,
+       "vasculature",
+       "capillary endothelial cell"
+      ],
+      [
+       222.81919860839844,
+       "aorta",
+       "endothelial cell of artery"
+      ]
+     ],
+     "ocular": [
+      [
+       594.8125,
+       "posterior segment of eyeball",
+       "retinal pigment epithelial cell"
+      ],
+      [
+       527.9820556640625,
+       "cornea",
+       "radial glial cell"
+      ],
+      [
+       505.578125,
+       "conjunctiva",
+       "conjunctival epithelial cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       205.0131072998047,
+       "adipose tissue",
+       "pericyte"
+      ],
+      [
+       179.55128479003906,
+       "subcutaneous adipose tissue",
+       "endothelial cell"
+      ],
+      [
+       142.27816772460938,
+       "brown adipose tissue",
+       "intermediate monocyte"
+      ]
+     ],
+     "dermatologic": [
+      [
+       176.26795959472656,
+       "skin of abdomen",
+       "macrophage"
+      ],
+      [
+       155.36143493652344,
+       "skin of chest",
+       "macrophage"
+      ],
+      [
+       144.6201171875,
+       "skin of body",
+       "macrophage"
+      ]
+     ],
+     "otologic": [
+      [
+       412.80029296875,
+       "crista ampullaris",
+       "melanocyte"
+      ],
+      [
+       214.21365356445312,
+       "utricle of membranous labyrinth",
+       "hematopoietic cell"
+      ],
+      [
+       133.13534545898438,
+       "crista ampullaris",
+       "hematopoietic cell"
+      ]
+     ],
+     "pulmonary": [
+      [
+       395.8268737792969,
+       "lung",
+       "club cell"
+      ],
+      [
+       330.39605712890625,
+       "trachea",
+       "ionocyte"
+      ],
+      [
+       310.2549133300781,
+       "trachea",
+       "serous cell of epithelium of trachea"
+      ]
+     ],
+     "hepatic": [
+      [
+       136.97618103027344,
+       "liver",
+       "intrahepatic cholangiocyte"
+      ],
+      [
+       95.98255157470703,
+       "liver",
+       "hepatocyte"
+      ],
+      [
+       25.489534378051758,
+       "liver",
+       "mast cell"
+      ]
+     ],
+     "renal": [
+      [
+       156.37388610839844,
+       "bladder organ",
+       "bladder urothelial cell"
+      ],
+      [
+       143.8909912109375,
+       "bladder organ",
+       "vein endothelial cell"
+      ],
+      [
+       136.50303649902344,
+       "bladder organ",
+       "capillary endothelial cell"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       199.3846893310547,
+       "muscle of pelvic diaphragm",
+       "endothelial cell"
+      ],
+      [
+       198.9537353515625,
+       "muscle of abdomen",
+       "endothelial cell"
+      ],
+      [
+       197.49868774414062,
+       "muscle of abdomen",
+       "endothelial cell of artery"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "NECTIN4": {
+   "ensembl_id": "ENSG00000143217",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      1.27258,
+      "Pituitary"
+     ],
+     "gastrointestinal": [
+      149.53,
+      "Esophagus - Mucosa"
+     ],
+     "hepatic": [
+      0.076907,
+      "Liver"
+     ],
+     "renal": [
+      15.734,
+      "Bladder"
+     ],
+     "cardiovascular": [
+      0.228352,
+      "Artery - Coronary"
+     ],
+     "neurologic": [
+      0.130517,
+      "Brain - Cerebellum"
+     ],
+     "haematologic": [
+      0.108296,
+      "Spleen"
+     ],
+     "dermatologic": [
+      210.411,
+      "Skin - Sun Exposed (Lower leg)"
+     ],
+     "pulmonary": [
+      5.95714,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      0.059164,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      96.10920715332031,
+      "anterior part of tongue"
+     ],
+     "infectious_immune": [
+      0.7037492394447327,
+      "thymus"
+     ],
+     "haematologic": [
+      0.3060317635536194,
+      "blood"
+     ],
+     "cardiovascular": [
+      0.5489914417266846,
+      "vasculature"
+     ],
+     "ocular": [
+      220.6810302734375,
+      "cornea"
+     ],
+     "metabolic_endocrine": [
+      0.14613185822963715,
+      "subcutaneous adipose tissue"
+     ],
+     "dermatologic": [
+      0.733115017414093,
+      "skin of body"
+     ],
+     "otologic": [
+      0.9888200163841248,
+      "crista ampullaris"
+     ],
+     "pulmonary": [
+      27.23283576965332,
+      "trachea"
+     ],
+     "hepatic": [
+      0.3090510666370392,
+      "liver"
+     ],
+     "renal": [
+      99.67938232421875,
+      "bladder organ"
+     ],
+     "musculoskeletal": [
+      0.33650511503219604,
+      "muscle of pelvic diaphragm"
+     ]
+    }
+   },
+   "percentile": {
+    "musculoskeletal": 0.3333333333333333,
+    "hepatic": 0.25,
+    "haematologic": 0.3,
+    "neurologic": 0.4,
+    "cardiovascular": 0.5,
+    "metabolic_endocrine": 0.6,
+    "pulmonary": 0.75,
+    "renal": 0.9166666666666666,
+    "gastrointestinal": 0.9,
+    "dermatologic": 1.0,
+    "infectious_immune": 0.5,
+    "otologic": 0.6666666666666666,
+    "ocular": 1.0
+   },
+   "abundant_axes": [
+    "dermatologic",
+    "gastrointestinal",
+    "ocular",
+    "renal"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       214.38113403320312,
+       "posterior part of tongue",
+       "stratified squamous epithelial cell"
+      ],
+      [
+       144.68496704101562,
+       "anterior part of tongue",
+       "stratified squamous epithelial cell"
+      ],
+      [
+       140.35797119140625,
+       "buccal mucosa",
+       "epithelial cell"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       22.994611740112305,
+       "thymus",
+       "medullary thymic epithelial cell"
+      ],
+      [
+       6.034008502960205,
+       "thymus",
+       "myo-medullary thymic epithelial cell"
+      ],
+      [
+       1.1717203855514526,
+       "thymus",
+       "thymic fibroblast type 2"
+      ]
+     ],
+     "haematologic": [
+      [
+       0.6988261938095093,
+       "bone marrow",
+       "monocyte"
+      ],
+      [
+       0.4854383170604706,
+       "spleen",
+       "natural killer cell"
+      ],
+      [
+       0.32381671667099,
+       "spleen",
+       "classical monocyte"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       2.3631339073181152,
+       "thoracic aorta",
+       "pericyte"
+      ],
+      [
+       1.712567925453186,
+       "vasculature",
+       "capillary endothelial cell"
+      ],
+      [
+       1.5753093957901,
+       "vasculature",
+       "macrophage"
+      ]
+     ],
+     "ocular": [
+      [
+       322.08807373046875,
+       "cornea",
+       "corneal epithelial cell"
+      ],
+      [
+       263.0592041015625,
+       "anterior segment of eyeball",
+       "corneal epithelial cell"
+      ],
+      [
+       221.72254943847656,
+       "eye",
+       "corneal epithelial cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       42.6264762878418,
+       "subcutaneous adipose tissue",
+       "pericyte"
+      ],
+      [
+       1.0153892040252686,
+       "brown adipose tissue",
+       "monocyte"
+      ],
+      [
+       0.6700029373168945,
+       "adipose tissue",
+       "fibroblast"
+      ]
+     ],
+     "dermatologic": [
+      [
+       64.39743041992188,
+       "skin of body",
+       "sebocyte"
+      ],
+      [
+       11.574322700500488,
+       "skin of body",
+       "melanocyte"
+      ],
+      [
+       4.495565891265869,
+       "skin of chest",
+       "regulatory T cell"
+      ]
+     ],
+     "otologic": [
+      [
+       51.33461380004883,
+       "utricle of membranous labyrinth",
+       "supporting cell of vestibular epithelium"
+      ],
+      [
+       45.2236213684082,
+       "crista ampullaris",
+       "supporting cell of vestibular epithelium"
+      ],
+      [
+       22.951906204223633,
+       "utricle of membranous labyrinth",
+       "vestibular dark cell"
+      ]
+     ],
+     "pulmonary": [
+      [
+       112.79776000976562,
+       "trachea",
+       "serous cell of epithelium of trachea"
+      ],
+      [
+       86.51472473144531,
+       "trachea",
+       "mucus secreting cell"
+      ],
+      [
+       80.76006317138672,
+       "lung",
+       "respiratory tract goblet cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       2.04182505607605,
+       "liver",
+       "intrahepatic cholangiocyte"
+      ],
+      [
+       0.8305515050888062,
+       "liver",
+       "endothelial cell"
+      ],
+      [
+       0.0,
+       "liver",
+       "plasmacytoid dendritic cell"
+      ]
+     ],
+     "renal": [
+      [
+       194.38291931152344,
+       "bladder organ",
+       "bladder urothelial cell"
+      ],
+      [
+       4.551990032196045,
+       "bladder organ",
+       "neutrophil"
+      ],
+      [
+       3.3202080726623535,
+       "kidney",
+       "macrophage"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       0.5301045179367065,
+       "muscle of pelvic diaphragm",
+       "mesenchymal stem cell"
+      ],
+      [
+       0.2493702918291092,
+       "muscle of abdomen",
+       "mesenchymal stem cell"
+      ],
+      [
+       0.22812938690185547,
+       "muscle of abdomen",
+       "pericyte"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "TACSTD2": {
+   "ensembl_id": "ENSG00000184292",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      10.7243,
+      "Thyroid"
+     ],
+     "gastrointestinal": [
+      1822.41,
+      "Esophagus - Mucosa"
+     ],
+     "hepatic": [
+      1.84529,
+      "Liver"
+     ],
+     "renal": [
+      331.971,
+      "Kidney - Medulla"
+     ],
+     "cardiovascular": [
+      7.82975,
+      "Artery - Aorta"
+     ],
+     "neurologic": [
+      0.515998,
+      "Brain - Spinal cord (cervical c-1)"
+     ],
+     "haematologic": [
+      2.04726,
+      "Whole Blood"
+     ],
+     "dermatologic": [
+      930.88,
+      "Skin - Not Sun Exposed (Suprapubic)"
+     ],
+     "pulmonary": [
+      158.682,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      0.613383,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      501.6596374511719,
+      "anterior part of tongue"
+     ],
+     "infectious_immune": [
+      3.329841136932373,
+      "thymus"
+     ],
+     "haematologic": [
+      1.3209625482559204,
+      "bone marrow"
+     ],
+     "cardiovascular": [
+      3.8493857383728027,
+      "aorta"
+     ],
+     "ocular": [
+      877.0084228515625,
+      "conjunctiva"
+     ],
+     "metabolic_endocrine": [
+      1.5928014516830444,
+      "subcutaneous adipose tissue"
+     ],
+     "dermatologic": [
+      7.774555206298828,
+      "skin of body"
+     ],
+     "otologic": [
+      75.48336029052734,
+      "crista ampullaris"
+     ],
+     "pulmonary": [
+      195.81930541992188,
+      "trachea"
+     ],
+     "hepatic": [
+      1.9608831405639648,
+      "liver"
+     ],
+     "renal": [
+      222.0292510986328,
+      "bladder organ"
+     ],
+     "musculoskeletal": [
+      1.8005404472351074,
+      "muscle of abdomen"
+     ]
+    }
+   },
+   "percentile": {
+    "neurologic": 0.1,
+    "musculoskeletal": 0.25,
+    "hepatic": 0.3333333333333333,
+    "haematologic": 0.4,
+    "cardiovascular": 0.5,
+    "metabolic_endocrine": 0.6,
+    "pulmonary": 0.75,
+    "renal": 0.8333333333333334,
+    "dermatologic": 0.9,
+    "gastrointestinal": 1.0,
+    "infectious_immune": 0.4166666666666667,
+    "otologic": 0.6666666666666666,
+    "ocular": 1.0
+   },
+   "abundant_axes": [
+    "dermatologic",
+    "gastrointestinal",
+    "ocular",
+    "renal"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       663.1275634765625,
+       "submandibular gland",
+       "duct epithelial cell"
+      ],
+      [
+       646.7620849609375,
+       "posterior part of tongue",
+       "stratified squamous epithelial cell"
+      ],
+      [
+       608.709228515625,
+       "anterior part of tongue",
+       "stratified squamous epithelial cell"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       203.11582946777344,
+       "thymus",
+       "medullary thymic epithelial cell"
+      ],
+      [
+       58.30387496948242,
+       "thymus",
+       "myo-medullary thymic epithelial cell"
+      ],
+      [
+       47.752864837646484,
+       "thymus",
+       "neutrophil"
+      ]
+     ],
+     "haematologic": [
+      [
+       8.79980754852295,
+       "bone marrow",
+       "neutrophil"
+      ],
+      [
+       2.8419618606567383,
+       "spleen",
+       "neutrophil"
+      ],
+      [
+       1.188158631324768,
+       "blood",
+       "neutrophil"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       25.335031509399414,
+       "aorta",
+       "vein endothelial cell"
+      ],
+      [
+       22.28482437133789,
+       "thoracic aorta",
+       "endothelial cell of lymphatic vessel"
+      ],
+      [
+       18.729736328125,
+       "vasculature",
+       "endothelial cell"
+      ]
+     ],
+     "ocular": [
+      [
+       965.9095458984375,
+       "posterior segment of eyeball",
+       "conjunctival epithelial cell"
+      ],
+      [
+       936.4794921875,
+       "eye",
+       "corneal epithelial cell"
+      ],
+      [
+       932.9141845703125,
+       "anterior segment of eyeball",
+       "corneal epithelial cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       19.247812271118164,
+       "subcutaneous adipose tissue",
+       "endothelial cell"
+      ],
+      [
+       12.072347640991211,
+       "brown adipose tissue",
+       "neutrophil"
+      ],
+      [
+       5.415780544281006,
+       "brown adipose tissue",
+       "hematopoietic precursor cell"
+      ]
+     ],
+     "dermatologic": [
+      [
+       732.3118286132812,
+       "skin of body",
+       "sebocyte"
+      ],
+      [
+       24.515459060668945,
+       "skin of body",
+       "endothelial cell"
+      ],
+      [
+       24.362186431884766,
+       "skin of body",
+       "melanocyte"
+      ]
+     ],
+     "otologic": [
+      [
+       480.7871398925781,
+       "crista ampullaris",
+       "vestibular dark cell"
+      ],
+      [
+       197.224853515625,
+       "utricle of membranous labyrinth",
+       "vestibular dark cell"
+      ],
+      [
+       192.57260131835938,
+       "crista ampullaris",
+       "pericyte"
+      ]
+     ],
+     "pulmonary": [
+      [
+       720.4885864257812,
+       "trachea",
+       "tracheal goblet cell"
+      ],
+      [
+       454.3038330078125,
+       "trachea",
+       "basal cell"
+      ],
+      [
+       439.4969482421875,
+       "lung",
+       "basal cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       141.23887634277344,
+       "liver",
+       "intrahepatic cholangiocyte"
+      ],
+      [
+       3.643878698348999,
+       "liver",
+       "myeloid dendritic cell"
+      ],
+      [
+       0.8331595659255981,
+       "liver",
+       "endothelial cell"
+      ]
+     ],
+     "renal": [
+      [
+       709.6431884765625,
+       "bladder organ",
+       "erythrocyte"
+      ],
+      [
+       570.5969848632812,
+       "bladder organ",
+       "bladder urothelial cell"
+      ],
+      [
+       54.1129264831543,
+       "bladder organ",
+       "neutrophil"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       42.793601989746094,
+       "muscle of pelvic diaphragm",
+       "endothelial cell"
+      ],
+      [
+       26.135969161987305,
+       "muscle of abdomen",
+       "endothelial cell"
+      ],
+      [
+       8.089409828186035,
+       "muscle of pelvic diaphragm",
+       "endothelial cell of lymphatic vessel"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "TNFRSF17": {
+   "ensembl_id": "ENSG00000048462",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      0.274923,
+      "Thyroid"
+     ],
+     "gastrointestinal": [
+      7.91552,
+      "small intestine terminal ileum"
+     ],
+     "hepatic": [
+      0.12824,
+      "Liver"
+     ],
+     "renal": [
+      0.157616,
+      "Bladder"
+     ],
+     "cardiovascular": [
+      0.180172,
+      "Artery - Coronary"
+     ],
+     "neurologic": [
+      0.216423,
+      "Brain - Cerebellar Hemisphere"
+     ],
+     "haematologic": [
+      19.8076,
+      "Spleen"
+     ],
+     "dermatologic": [
+      0.078417,
+      "Skin - Not Sun Exposed (Suprapubic)"
+     ],
+     "pulmonary": [
+      0.765212,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      0.02877,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      163.5836639404297,
+      "mucosa of stomach"
+     ],
+     "infectious_immune": [
+      23.181650161743164,
+      "lymph node"
+     ],
+     "haematologic": [
+      18.88751220703125,
+      "spleen"
+     ],
+     "cardiovascular": [
+      0.6080849766731262,
+      "thoracic aorta"
+     ],
+     "ocular": [
+      53.0400390625,
+      "eyelid"
+     ],
+     "metabolic_endocrine": [
+      1.7177174091339111,
+      "brown adipose tissue"
+     ],
+     "dermatologic": [
+      0.0626598596572876,
+      "skin of chest"
+     ],
+     "otologic": [
+      0.08996399492025375,
+      "crista ampullaris"
+     ],
+     "pulmonary": [
+      1.3420915603637695,
+      "trachea"
+     ],
+     "hepatic": [
+      0.6194540858268738,
+      "liver"
+     ],
+     "renal": [
+      0.9833316802978516,
+      "kidney"
+     ],
+     "musculoskeletal": [
+      0.04276524484157562,
+      "muscle of abdomen"
+     ]
+    }
+   },
+   "percentile": {
+    "musculoskeletal": 0.1,
+    "dermatologic": 0.2,
+    "hepatic": 0.4166666666666667,
+    "renal": 0.5,
+    "cardiovascular": 0.5,
+    "neurologic": 0.6,
+    "metabolic_endocrine": 0.7,
+    "pulmonary": 0.8,
+    "gastrointestinal": 1.0,
+    "haematologic": 1.0,
+    "otologic": 0.25,
+    "infectious_immune": 0.8333333333333334,
+    "ocular": 0.9166666666666666
+   },
+   "abundant_axes": [
+    "gastrointestinal",
+    "haematologic",
+    "infectious_immune",
+    "ocular",
+    "pulmonary"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       574.836669921875,
+       "exocrine pancreas",
+       "plasma cell"
+      ],
+      [
+       574.7175903320312,
+       "stomach smooth muscle",
+       "plasma cell"
+      ],
+      [
+       434.96832275390625,
+       "small intestine",
+       "plasma cell"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       465.8152160644531,
+       "mesenteric lymph node",
+       "plasma cell"
+      ],
+      [
+       449.70428466796875,
+       "lymph node",
+       "plasma cell"
+      ],
+      [
+       375.26666259765625,
+       "thymus",
+       "plasma cell"
+      ]
+     ],
+     "haematologic": [
+      [
+       446.5793762207031,
+       "blood",
+       "plasma cell"
+      ],
+      [
+       365.7818603515625,
+       "bone marrow",
+       "plasma cell"
+      ],
+      [
+       355.17364501953125,
+       "spleen",
+       "plasma cell"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       272.0301513671875,
+       "aorta",
+       "plasma cell"
+      ],
+      [
+       131.70068359375,
+       "coronary artery",
+       "plasma cell"
+      ],
+      [
+       8.070504188537598,
+       "heart",
+       "natural killer cell"
+      ]
+     ],
+     "ocular": [
+      [
+       680.9868774414062,
+       "sclera",
+       "plasma cell"
+      ],
+      [
+       640.6061401367188,
+       "lacrimal gland",
+       "plasma cell"
+      ],
+      [
+       630.4109497070312,
+       "anterior segment of eyeball",
+       "plasma cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       393.1039123535156,
+       "subcutaneous adipose tissue",
+       "plasma cell"
+      ],
+      [
+       384.33331298828125,
+       "adipose tissue",
+       "plasma cell"
+      ],
+      [
+       230.3582763671875,
+       "brown adipose tissue",
+       "plasma cell"
+      ]
+     ],
+     "dermatologic": [
+      [
+       72.42799377441406,
+       "skin of abdomen",
+       "plasma cell"
+      ],
+      [
+       36.34520721435547,
+       "skin of body",
+       "plasma cell"
+      ],
+      [
+       28.634401321411133,
+       "skin of chest",
+       "plasma cell"
+      ]
+     ],
+     "otologic": [
+      [
+       0.9222601652145386,
+       "crista ampullaris",
+       "melanocyte"
+      ],
+      [
+       0.3385416865348816,
+       "crista ampullaris",
+       "macrophage"
+      ],
+      [
+       0.0,
+       "utricle of membranous labyrinth",
+       "vestibular dark cell"
+      ]
+     ],
+     "pulmonary": [
+      [
+       490.5389404296875,
+       "lung",
+       "plasma cell"
+      ],
+      [
+       241.2183074951172,
+       "trachea",
+       "plasma cell"
+      ],
+      [
+       26.793336868286133,
+       "lung",
+       "B cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       164.95790100097656,
+       "liver",
+       "plasma cell"
+      ],
+      [
+       6.5775041580200195,
+       "liver",
+       "B cell"
+      ],
+      [
+       2.1958091259002686,
+       "liver",
+       "mature NK T cell"
+      ]
+     ],
+     "renal": [
+      [
+       365.4158630371094,
+       "kidney",
+       "plasma cell"
+      ],
+      [
+       300.27825927734375,
+       "bladder organ",
+       "plasma cell"
+      ],
+      [
+       22.07659912109375,
+       "kidney",
+       "B cell"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       0.027676362544298172,
+       "muscle of abdomen",
+       "mesenchymal stem cell"
+      ],
+      [
+       0.0,
+       "muscle of pelvic diaphragm",
+       "tendon cell"
+      ],
+      [
+       0.0,
+       "muscle of pelvic diaphragm",
+       "smooth muscle cell"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  },
+  "TNFRSF8": {
+   "ensembl_id": "ENSG00000120949",
+   "values": {
+    "gtex": {
+     "metabolic_endocrine": [
+      6.59401,
+      "Adipose - Subcutaneous"
+     ],
+     "gastrointestinal": [
+      1.03052,
+      "Esophagus - Muscularis"
+     ],
+     "hepatic": [
+      0.064122,
+      "Liver"
+     ],
+     "renal": [
+      0.737789,
+      "Bladder"
+     ],
+     "cardiovascular": [
+      1.24112,
+      "Heart - Atrial Appendage"
+     ],
+     "neurologic": [
+      2.76566,
+      "Brain - Nucleus accumbens (basal ganglia)"
+     ],
+     "haematologic": [
+      5.48807,
+      "Whole Blood"
+     ],
+     "dermatologic": [
+      1.17689,
+      "Skin - Sun Exposed (Lower leg)"
+     ],
+     "pulmonary": [
+      1.10183,
+      "Lung"
+     ],
+     "musculoskeletal": [
+      0.535918,
+      "muscle skeletal"
+     ]
+    },
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      6.58595085144043,
+      "stomach"
+     ],
+     "infectious_immune": [
+      3.875896692276001,
+      "thymus"
+     ],
+     "haematologic": [
+      6.699777126312256,
+      "blood"
+     ],
+     "cardiovascular": [
+      11.999290466308594,
+      "heart right ventricle"
+     ],
+     "ocular": [
+      5.0162811279296875,
+      "eyelid"
+     ],
+     "metabolic_endocrine": [
+      6.476745128631592,
+      "adipose tissue"
+     ],
+     "dermatologic": [
+      4.12338924407959,
+      "skin of abdomen"
+     ],
+     "otologic": [
+      1.4771246910095215,
+      "crista ampullaris"
+     ],
+     "pulmonary": [
+      5.2318034172058105,
+      "trachea"
+     ],
+     "hepatic": [
+      5.051445484161377,
+      "liver"
+     ],
+     "renal": [
+      2.6075544357299805,
+      "kidney"
+     ],
+     "musculoskeletal": [
+      3.8262720108032227,
+      "muscle of abdomen"
+     ]
+    }
+   },
+   "percentile": {
+    "hepatic": 0.5833333333333334,
+    "musculoskeletal": 0.25,
+    "renal": 0.3,
+    "gastrointestinal": 0.8333333333333334,
+    "pulmonary": 0.6666666666666666,
+    "dermatologic": 0.6,
+    "cardiovascular": 1.0,
+    "neurologic": 0.8,
+    "haematologic": 0.9166666666666666,
+    "metabolic_endocrine": 1.0,
+    "otologic": 0.08333333333333333,
+    "infectious_immune": 0.3333333333333333,
+    "ocular": 0.5
+   },
+   "abundant_axes": [
+    "cardiovascular",
+    "gastrointestinal",
+    "haematologic",
+    "metabolic_endocrine",
+    "neurologic"
+   ],
+   "cell_evidence": {
+    "gtex": {},
+    "tabula_sapiens": {
+     "gastrointestinal": [
+      [
+       138.64483642578125,
+       "large intestine",
+       "monocyte"
+      ],
+      [
+       95.96138000488281,
+       "parotid gland",
+       "endothelial cell of artery"
+      ],
+      [
+       76.06253814697266,
+       "duodenum",
+       "myeloid dendritic cell"
+      ]
+     ],
+     "infectious_immune": [
+      [
+       226.63400268554688,
+       "mesenteric lymph node",
+       "erythrocyte"
+      ],
+      [
+       95.78152465820312,
+       "thymus",
+       "mast cell"
+      ],
+      [
+       28.08193588256836,
+       "lymph node",
+       "intermediate monocyte"
+      ]
+     ],
+     "haematologic": [
+      [
+       56.74163055419922,
+       "blood",
+       "non-classical monocyte"
+      ],
+      [
+       48.026737213134766,
+       "spleen",
+       "non-classical monocyte"
+      ],
+      [
+       42.61561965942383,
+       "bone marrow",
+       "non-classical monocyte"
+      ]
+     ],
+     "cardiovascular": [
+      [
+       112.25516510009766,
+       "heart",
+       "mesothelial cell"
+      ],
+      [
+       62.39165496826172,
+       "thoracic aorta",
+       "endothelial cell of artery"
+      ],
+      [
+       47.13529586791992,
+       "thoracic aorta",
+       "classical monocyte"
+      ]
+     ],
+     "ocular": [
+      [
+       78.99198913574219,
+       "cornea",
+       "neutrophil"
+      ],
+      [
+       70.81156158447266,
+       "eye",
+       "neutrophil"
+      ],
+      [
+       63.2532844543457,
+       "eyelid",
+       "mast cell"
+      ]
+     ],
+     "metabolic_endocrine": [
+      [
+       74.043212890625,
+       "adipose tissue",
+       "mast cell"
+      ],
+      [
+       57.204833984375,
+       "adipose tissue",
+       "pericyte"
+      ],
+      [
+       41.70166778564453,
+       "subcutaneous adipose tissue",
+       "mast cell"
+      ]
+     ],
+     "dermatologic": [
+      [
+       166.10386657714844,
+       "skin of abdomen",
+       "Langerhans cell"
+      ],
+      [
+       70.61651611328125,
+       "skin of chest",
+       "mast cell"
+      ],
+      [
+       40.774471282958984,
+       "skin of chest",
+       "neutrophil"
+      ]
+     ],
+     "otologic": [
+      [
+       16.038410186767578,
+       "utricle of membranous labyrinth",
+       "pericyte"
+      ],
+      [
+       3.405991554260254,
+       "crista ampullaris",
+       "pericyte"
+      ],
+      [
+       2.270787000656128,
+       "crista ampullaris",
+       "macrophage"
+      ]
+     ],
+     "pulmonary": [
+      [
+       44.255027770996094,
+       "trachea",
+       "regulatory T cell"
+      ],
+      [
+       43.19989776611328,
+       "trachea",
+       "granulocyte"
+      ],
+      [
+       24.401201248168945,
+       "trachea",
+       "T cell"
+      ]
+     ],
+     "hepatic": [
+      [
+       25.422931671142578,
+       "liver",
+       "intermediate monocyte"
+      ],
+      [
+       25.413999557495117,
+       "liver",
+       "mast cell"
+      ],
+      [
+       20.72104835510254,
+       "liver",
+       "monocyte"
+      ]
+     ],
+     "renal": [
+      [
+       72.5895767211914,
+       "bladder organ",
+       "regulatory T cell"
+      ],
+      [
+       22.296363830566406,
+       "kidney",
+       "monocyte"
+      ],
+      [
+       19.71939468383789,
+       "kidney",
+       "non-classical monocyte"
+      ]
+     ],
+     "musculoskeletal": [
+      [
+       15.793783187866211,
+       "muscle of pelvic diaphragm",
+       "epithelial cell"
+      ],
+      [
+       12.897850036621094,
+       "muscle of abdomen",
+       "endothelial cell of artery"
+      ],
+      [
+       12.02716064453125,
+       "muscle of abdomen",
+       "capillary endothelial cell"
+      ]
+     ]
+    }
+   },
+   "sources_present": [
+    "gtex",
+    "tabula_sapiens"
+   ]
+  }
+ },
+ "provenance": {
+  "revision": "5b2ed6ca0f0074c44b206c6915be185046c2ae41",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "build_target_expression.py",
+  "written_utc": "2026-10-08T07:45:21+00:00",
+  "inputs": {
+   "crosswalk": "sha256:d87c40d2e541b9ccd68785c673af11b4a60d407ee8ddf3057aa006422725a967",
+   "raw": "sha256:d7310bfb6b756d312b14850370ce9922f47f42bef08e1014d4034502ea4849f5"
+  }
+ }
+}

@@ -446,6 +446,88 @@ The rule layer is load-bearing for **3 of 5** flags. It is confirmatory for `dxd
 What the rules still carry is the informative part: MMAE/dermatologic, MMAF/ocular. Both are payload-level effects inside a single mechanism, and both are boxed warnings the model ranks `low`. That is not a bug to fix -- it is the same identification limit this report measures three other ways. The mechanism level is too coarse to separate MMAE from MMAF, and the payload family level does not converge at any corpus size reachable here, so these two warnings cannot come from the fit and have to come from the label.
 <!-- /generated: hard-flag-necessity -->
 
+## 5e. The target antigen was an inert input, and what it took to fix
+
+**Measured before the fix: the target changed nothing.** Swapping ERBB2 for CD33, for
+NECTIN4, or for an invented string left the 106 enumerated candidates, the 74 constraint
+passes, all fourteen organ estimates and every objective score bit-identical. The single
+thing it touched was a sentence naming the nearest existing ADC. So the product's headline
+-- comorbidity profile *and target antigen* in, design out -- was half false: the system
+was a function of the comorbidity profile alone.
+
+The cause was structural. The only route by which a target could matter is per-organ
+target expression, constraint C3, and that constraint was declared in the code and never
+ingested. It is also the gap that answers a separate question put to this project, whether
+AlphaFold would help: the missing quantity is abundance, not structure.
+
+### What the expression data does and does not support
+
+Per-organ expression for all 14 target antigens now comes from GTEx and Tabula Sapiens via
+Open Targets. Two sources because neither covers the axes alone -- GTEx has no eye and no
+ear, Tabula Sapiens has no brain -- and their units are never pooled, only ranked within a
+target.
+
+**It does not predict labelled organ toxicity.** Against the organ concern encoded in 14
+approved ADCs' dose-modification tables, AUROC is 0.521 from GTEx and 0.576 from Tabula
+Sapiens, and controlling for payload mechanism does not rescue it. That agrees with the
+preclinical literature this project already cites: across 14 vedotin ADCs toxicity was
+largely antigen-independent and target tissue expression correlated poorly with
+dose-limiting toxicity (PMID 38692647).
+
+**It does recover the specific on-target off-tumour cases.** Five textbook pairs, written
+down with their mechanisms before the numbers were read:
+
+| target | axis | percentile | mechanism |
+|---|---|---|---|
+| NECTIN4 | dermatologic | 1.00 | enfortumab vedotin skin toxicity; NECTIN4 is in normal skin |
+| CD33 | haematologic | 1.00 | normal myeloid cells |
+| CD19 | haematologic | 1.00 | normal B cells |
+| ERBB2 | cardiovascular | 0.92 | cardiomyocytes |
+| FOLR1 | renal | 0.83 | proximal tubule |
+
+All five land in the target's top quintile, against a chance expectation of one in five.
+Counted honestly there are four independent facts rather than five, because the blood
+targets are one fact about immune antigens in immune tissue.
+
+So expression locates **which organ a target could reach**, not **how toxic a drug is**.
+The threshold is the weakest known case rather than a round number: FOLR1 in kidney sits
+at 0.83, so the cut is 0.80 -- the strictest value that still captures all five, where 0.90
+drops FOLR1 and 1.00 drops three.
+
+### The aorta objection does not bite at axis granularity
+
+The project plan abandoned this constraint because GTEx reports ERBB2 at 86.6 TPM in aorta,
+which reads as "HER2 is an artery gene" when HER2 cardiotoxicity is cardiomyocyte. At axis
+granularity the objection dissolves: aorta and cardiomyocyte are both `cardiovascular`, so
+the axis answer is the same either way. The cell-resolved data then settles which it is --
+cardiac myocytes at 112.0 and 103.6 against aortic smooth muscle at 54.7 -- which is why
+cell types are carried as the evidence behind a flag and never as the score itself. Taking
+the maximum over cell types was tried and rejected: it put ERBB2's musculoskeletal axis at
+182 via erythrocytes and its cardiovascular axis at 141 via a neuron in a ventricle
+sample, single rows with no sample count behind them.
+
+### It is a flag, and a rejection rule was built and discarded
+
+A hard constraint was prototyped: reject a candidate when the patient is vulnerable in an
+organ, the target is abundant there, and the payload is bystander-permeable. It fired
+sensibly -- ERBB2 for a psoriasis patient but not for an ILD/CKD one, FOLR1 the reverse,
+TNFRSF8 never -- and it was still discarded, for two measured reasons. It removed **87% of
+candidates** whenever it fired, since 92 of 106 carry a permeable payload. And it **never
+changed the recommendation**, because the two non-permeable payloads it spares, DM1 and
+MMAF, were already the top-ranked ones. Destroying seven eighths of the candidate space to
+leave the answer untouched is not a screen.
+
+What ships instead raises the risk band one step on an at-risk axis where the target is
+abundant, in the same architecture as the label-derived rules, and names a
+`target_expression` driver that states its own weakness. The target now changes the output:
+for a psoriasis patient, NECTIN4 and ERBB2 give a `moderate` skin band sourced from
+`target_expression` while CD19 and TNFRSF8 give `low` sourced from `model`.
+
+**What it still does not change is the top recommendation.** Rank 1 is DM1/SMCC/DAR 3.5
+for every target tested, because that candidate wins on the payload profile whatever the
+target. So the honest claim is that the target now changes the risk numbers, the bands and
+the stated reasons, and does not yet change which design is proposed first.
+
 ## 6. The exclusion-criteria signal
 
 1,281 ADC trials against 2,481 oncology controls, all with eligibility text. Enrichment

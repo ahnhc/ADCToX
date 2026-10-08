@@ -1,0 +1,201 @@
+# GTEx and Tabula Sapiens tissue names mapped onto the 14 organ axes.
+#
+# Purpose: constraint C3 asks whether an ADC's target antigen is abundant in an organ the
+# patient cannot afford to lose. That is the on-target off-tumour mechanism -- the antibody
+# binds healthy tissue expressing the target, the payload is released there, and the organ
+# is damaged. It needs per-organ target expression, which nothing in this repository
+# previously ingested, so C3 was declared and never evaluated.
+#
+# Two sources, and they are complementary rather than redundant (measured 2026-10-07):
+#
+#   gtex            51 tissues, bulk RNA-seq, TPM.      Has brain. NO eye, NO ear.
+#   tabula_sapiens  65 tissues, scRNA pseudobulk, CPM.  Has eye (9 tissues) and vestibular
+#                                                       ear. NO brain.
+#
+# So `neurologic` is answerable only from GTEx, and `ocular` and `otologic` only from
+# Tabula Sapiens -- and ocular is one of the axes that matters most for ADCs (MMAF
+# keratopathy). Dropping either source would leave a hole on an axis the product is asked
+# about.
+#
+# The two units are NOT comparable: TPM, CPM-pseudobulk and the mass-spectrometry PPB that
+# Open Targets also serves differ by orders of magnitude, and mixing them put a pituitary
+# proteomics row at 13,265 above every RNA row during the survey. So values are never
+# pooled. Each source is ranked WITHIN a target across axes, and only the ranks are
+# combined. Every reported axis records which source produced it.
+#
+# Cell types are fetched alongside but do not set the axis score. The reason is worth
+# recording, because the project plan rejected this whole constraint over it: GTEx puts
+# ERBB2 at 86.6 TPM in aorta, which reads as "HER2 is an artery gene", while HER2
+# cardiotoxicity is cardiomyocyte. At axis granularity that objection does not bite --
+# aorta and cardiomyocyte are both `cardiovascular` -- and the cell-resolved data settles
+# which it is: cardiac myocytes score 112.0 and 103.6 against 54.7 for aortic smooth
+# muscle. So cell type is carried as the evidence that an axis flag is not a smooth-muscle
+# artefact, not as the score itself.
+#
+# `constitutional` has no tissue in either source and is never evaluable here. It is a
+# systemic axis, not an organ.
+
+version: 1
+frozen_at: '2026-10-07'
+sources:
+  gtex:
+    unit: TPM
+    datatype: bulk rna-seq
+    n_tissues: 51
+  tabula_sapiens:
+    unit: CPM(pseudobulk sum[counts])
+    datatype: scrna-seq
+    n_tissues: 65
+axes_not_evaluable:
+  constitutional: systemic, not an organ; no tissue in either source
+gtex:
+  cardiovascular:
+  - Artery - Aorta
+  - Artery - Coronary
+  - Artery - Tibial
+  - Heart - Atrial Appendage
+  - Heart - Left Ventricle
+  pulmonary:
+  - Lung
+  hepatic:
+  - Liver
+  renal:
+  - Kidney - Cortex
+  - Kidney - Medulla
+  - Bladder
+  gastrointestinal:
+  - Colon - Sigmoid
+  - Colon - Transverse
+  - Esophagus - Gastroesophageal Junction
+  - Esophagus - Mucosa
+  - Esophagus - Muscularis
+  - Stomach
+  - small intestine terminal ileum
+  - Pancreas
+  - Minor Salivary Gland
+  neurologic:
+  - Brain - Amygdala
+  - Brain - Anterior cingulate cortex (BA24)
+  - Brain - Caudate (basal ganglia)
+  - Brain - Cerebellar Hemisphere
+  - Brain - Cerebellum
+  - Brain - Cortex
+  - Brain - Frontal Cortex (BA9)
+  - Brain - Hippocampus
+  - Brain - Hypothalamus
+  - Brain - Nucleus accumbens (basal ganglia)
+  - Brain - Putamen (basal ganglia)
+  - Brain - Spinal cord (cervical c-1)
+  - Brain - Substantia nigra
+  dermatologic:
+  - Skin - Not Sun Exposed (Suprapubic)
+  - Skin - Sun Exposed (Lower leg)
+  haematologic:
+  - Whole Blood
+  - Spleen
+  metabolic_endocrine:
+  - Adrenal Gland
+  - Pituitary
+  - Thyroid
+  - Adipose - Subcutaneous
+  - Adipose - Visceral (Omentum)
+  musculoskeletal:
+  - muscle skeletal
+gtex_excluded:
+  Breast - Mammary Tissue: 'reproductive_or_breast: excluded from the organ model as indication-confounded,
+    matching conf/ontology/axes.yaml soc_excluded'
+  Fallopian Tube: 'reproductive_or_breast: excluded from the organ model as indication-confounded, matching
+    conf/ontology/axes.yaml soc_excluded'
+  Ovary: 'reproductive_or_breast: excluded from the organ model as indication-confounded, matching conf/ontology/axes.yaml
+    soc_excluded'
+  Prostate: 'reproductive_or_breast: excluded from the organ model as indication-confounded, matching
+    conf/ontology/axes.yaml soc_excluded'
+  Testis: 'reproductive_or_breast: excluded from the organ model as indication-confounded, matching conf/ontology/axes.yaml
+    soc_excluded'
+  Vagina: 'reproductive_or_breast: excluded from the organ model as indication-confounded, matching conf/ontology/axes.yaml
+    soc_excluded'
+  uterus: 'reproductive_or_breast: excluded from the organ model as indication-confounded, matching conf/ontology/axes.yaml
+    soc_excluded'
+  cervix ectocervix: 'reproductive_or_breast: excluded from the organ model as indication-confounded,
+    matching conf/ontology/axes.yaml soc_excluded'
+  cervix endocervix: 'reproductive_or_breast: excluded from the organ model as indication-confounded,
+    matching conf/ontology/axes.yaml soc_excluded'
+tabula_sapiens:
+  cardiovascular:
+  - aorta
+  - thoracic aorta
+  - coronary artery
+  - cardiac atrium
+  - right cardiac atrium
+  - cardiac ventricle
+  - heart
+  - heart right ventricle
+  - vasculature
+  pulmonary:
+  - lung
+  - trachea
+  hepatic:
+  - liver
+  renal:
+  - kidney
+  - bladder organ
+  gastrointestinal:
+  - ascending colon
+  - sigmoid colon
+  - large intestine
+  - small intestine
+  - duodenum
+  - jejunum
+  - ileum
+  - stomach
+  - mucosa of stomach
+  - stomach smooth muscle
+  - endocrine pancreas
+  - exocrine pancreas
+  - buccal mucosa
+  - anterior part of tongue
+  - posterior part of tongue
+  - parotid gland
+  - sublingual gland
+  - submandibular gland
+  dermatologic:
+  - skin of abdomen
+  - skin of body
+  - skin of chest
+  haematologic:
+  - blood
+  - bone marrow
+  - spleen
+  infectious_immune:
+  - lymph node
+  - inguinal lymph node
+  - mesenteric lymph node
+  - thymus
+  metabolic_endocrine:
+  - adipose tissue
+  - brown adipose tissue
+  - subcutaneous adipose tissue
+  musculoskeletal:
+  - muscle of abdomen
+  - muscle of pelvic diaphragm
+  ocular:
+  - eye
+  - cornea
+  - conjunctiva
+  - sclera
+  - eyelid
+  - lacrimal gland
+  - retinal neural layer
+  - anterior segment of eyeball
+  - posterior segment of eyeball
+  otologic:
+  - crista ampullaris
+  - utricle of membranous labyrinth
+tabula_sapiens_excluded:
+  mammary gland: 'reproductive_or_breast: see above'
+  left ovary: 'reproductive_or_breast: see above'
+  right ovary: 'reproductive_or_breast: see above'
+  prostate gland: 'reproductive_or_breast: see above'
+  testis: 'reproductive_or_breast: see above'
+  endometrium: 'reproductive_or_breast: see above'
+  myometrium: 'reproductive_or_breast: see above'

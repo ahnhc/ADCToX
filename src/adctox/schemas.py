@@ -206,7 +206,9 @@ class Driver(BaseModel):
     """
 
     factor: str
-    source: Literal["model", "exclusion_head", "elicited_prior", "rule"]
+    source: Literal[
+        "model", "exclusion_head", "elicited_prior", "rule", "target_expression"
+    ]
     # None where the driver is not a term in the linear predictor -- a label rule and an
     # exclusion-criteria prior both change what is shown without adding a logit. 0.0 would
     # read as a measured contribution of nothing, which is a different and false claim.
@@ -218,6 +220,8 @@ class Driver(BaseModel):
     # Shown because a 13x ratio on a single-drug mechanism is cheap, and three such cells
     # were being served before the correction was applied.
     p_value: float | None = None
+    # Target-expression percentile, for the on-target off-tumour flag.
+    percentile: float | None = None
     quote: str | None = None
     flag_id: str | None = None
     tier: str | None = None
