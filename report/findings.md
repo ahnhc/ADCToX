@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 31 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 32 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -1602,6 +1602,16 @@ neurologic.
     headers found 154. The lesson is the same as negative result 26's: a pattern that fires
     is not a pattern that is right, and the only way to tell was to read every header the
     corpus actually contains rather than the ones the pattern was written from.
+31. **The same defect one level down is bounded rather than fixed, and the bound is why.**
+    A grade restriction usually sits in the column header. It can also sit in the row --
+    "CRS, grade >=3", "Keratopathy, grade 3-4" -- and 14 cells carry one. The merge stores an
+    axis as the maximum over its rows, matching the registry's "any event in this organ", so
+    such a row is dominated whenever the axis also has an any-grade row with a larger count.
+    The exposure is what remains: **6 of 2,696 observations**, worst understatement 20% --
+    a maximum of 20 against a row sum of 24. Four are belantamab mafodotin's ocular axis,
+    the one its label is defined by, and it has 124 observations there. A row-level filter
+    would discard "Keratopathy, grade 2" where it is the only keratopathy row, which costs
+    a real signal to correct a fifth of four numbers. The bound is held by a test instead.
 
 ## 9b. The clean-clone check, run for the first time
 

@@ -28,7 +28,7 @@ ART     := artifacts
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
         corpus-ablation discover mondo-audit mondo-axes exclusion-holdout \
-        rank-resolution dar-gap driver-waterfall \
+        rank-resolution dar-gap driver-waterfall row-grade-exposure \
         label-impairment inverse-retrieval comorbidity literature expensive \
         pmc-fetch-discovered pmc-fetch-codenames
 
@@ -292,6 +292,11 @@ dar-gap: ## search the harvested articles for the registry's missing DAR values
 # acceptable if the gap is small and that had never been checked.
 driver-waterfall: ## the gap between the driver terms' sum and the rate they explain
 	$(PY) scripts/driver_waterfall.py
+
+# The outcome filter works on column headers; a grade can also sit in the row label. This
+# bounds how often one of those decides an axis, which is 6 observations of 2,696.
+row-grade-exposure: ## how often a grade in a row label decides an axis
+	$(PY) scripts/row_grade_exposure.py
 
 discover: ## find every ADC that has published, by payload-linker name stem
 	$(PY) scripts/discover_adc_agents.py --out $(ART)/adc_discovery.json --retmax 400

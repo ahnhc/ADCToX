@@ -1,0 +1,83 @@
+{
+ "summary": {
+  "observations": 2696,
+  "cells_with_a_grade_in_the_row_label": 14,
+  "observations_decided_by_one": 6,
+  "share": 0.002225519287833828,
+  "bound_the_test_holds": 0.01,
+  "by_agent": {
+   "belantamab_mafodotin": 4,
+   "polatuzumab_vedotin": 2
+  }
+ },
+ "affected": [
+  {
+   "agent": "belantamab_mafodotin",
+   "axis": "ocular",
+   "pmcid": "10878971",
+   "table": "Table 3",
+   "max": 4,
+   "sum_of_rows": 6,
+   "rows": 2,
+   "deciding_row": "Keratopathy, grade 3\u20134, n (%)"
+  },
+  {
+   "agent": "belantamab_mafodotin",
+   "axis": "ocular",
+   "pmcid": "10878971",
+   "table": "Table 3",
+   "max": 7,
+   "sum_of_rows": 10,
+   "rows": 2,
+   "deciding_row": "Keratopathy, grade 3\u20134, n (%)"
+  },
+  {
+   "agent": "belantamab_mafodotin",
+   "axis": "ocular",
+   "pmcid": "10878971",
+   "table": "Table 3",
+   "max": 7,
+   "sum_of_rows": 8,
+   "rows": 2,
+   "deciding_row": "Keratopathy, grade 3\u20134, n (%)"
+  },
+  {
+   "agent": "belantamab_mafodotin",
+   "axis": "ocular",
+   "pmcid": "10878971",
+   "table": "Table 3",
+   "max": 20,
+   "sum_of_rows": 24,
+   "rows": 2,
+   "deciding_row": "Keratopathy, grade 3\u20134, n (%)"
+  },
+  {
+   "agent": "polatuzumab_vedotin",
+   "axis": "haematologic",
+   "pmcid": "13428363",
+   "table": "TABLE 4",
+   "max": 13,
+   "sum_of_rows": 14,
+   "rows": 2,
+   "deciding_row": "Neutrophil count decreased/neutropenia (Grade \u2265 3)"
+  },
+  {
+   "agent": "polatuzumab_vedotin",
+   "axis": "haematologic",
+   "pmcid": "13428363",
+   "table": "TABLE 4",
+   "max": 9,
+   "sum_of_rows": 9,
+   "rows": 1,
+   "deciding_row": "Neutrophil count decreased/neutropenia (Grade \u2265 3)"
+  }
+ ],
+ "provenance": {
+  "revision": "395d08c264b51871abcc3b30c7734228f9e59cef",
+  "dirty": true,
+  "snapshot": null,
+  "script": "row_grade_exposure.py",
+  "written_utc": "2026-10-09T09:21:33+00:00",
+  "inputs": {}
+ }
+}

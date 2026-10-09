@@ -217,3 +217,33 @@ def test_the_pooled_class_arm_is_out_of_both_grids() -> None:
         assert not np.isin(data.arm_idx, bad).any(), (
             f"a class-pooling column still contributes to the {kind} grid"
         )
+
+
+def test_a_grade_in_the_row_label_decides_almost_nothing() -> None:
+    """The same defect one level down, bounded instead of filtered.
+
+    A grade restriction usually sits in the column header, which the outcome classifier
+    handles. It can also sit in the row: "CRS, grade >=3", "Keratopathy, grade 3-4". 14 cells
+    carry one. The merge takes the maximum count across an axis's rows -- matching the
+    registry, which stores an axis as "any event in this organ" -- so such a row is
+    harmlessly dominated whenever the same axis has an any-grade row with a larger count.
+
+    The exposure is the remainder, and it is 6 of 2,696 observations, with the worst
+    understatement 20% (a maximum of 20 against a row sum of 24). A row-level filter would
+    cost more than it fixes: dropping "Keratopathy, grade 2" where it is the only keratopathy
+    row would discard a real signal from the agent that axis is named for, which has 124
+    observations on it.
+
+    So the bound is held rather than the rows removed, and a corpus change that makes this
+    worse fails here instead of passing quietly.
+    """
+    import json
+
+    artefact = ROOT / "artifacts" / "row_grade_exposure.json"
+    if not artefact.exists():
+        pytest.skip("run `make row-grade-exposure`")
+    summary = json.loads(artefact.read_text(encoding="utf-8"))["summary"]
+    assert summary["observations"] > 2000, summary
+    assert summary["share"] < summary["bound_the_test_holds"], summary
+    # And the thing it bounds has to still exist, or the bound is vacuous.
+    assert summary["cells_with_a_grade_in_the_row_label"] > 0, summary
