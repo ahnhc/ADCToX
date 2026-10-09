@@ -61,6 +61,7 @@ all: taxonomy corpus forward censoring-sensitivity expression enrichment module-
      propose test hard-flags fold-difficulty design-effects across-agent residual-scale \
      comorbidity-sensitivity payload-compression axis-evidence posterior-scales \
      convergence-conditions design-balance fold-comparability across-agent-trend \
+     objective-label-gap superseded-figures \
      design-effects-atlas \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
      granularity-ratio source-axis source-confounding axis-composition \
@@ -346,6 +347,20 @@ comorbidity-sensitivity: $(ART)/posterior_other.npz
 payload-compression: $(ART)/posterior_other.npz
 	$(PY) scripts/payload_axis_compression.py --processed $(PROC) --artifacts $(ART) \
 	  --out $(ART)/payload_axis_compression.json
+
+# Does `worst_axis_risk` equal the risk on `worst_axis`? Not exactly: the axis is the
+# argmax of the mean and the risk is the mean of the maximum. Both are correct quantities
+# and the field name says the second, so the question is whether the gap can move a
+# displayed digit. Sweeps the product's own query space and bounds it.
+objective-label-gap: $(ART)/posterior_other.npz
+	$(PY) scripts/objective_label_gap.py --out $(ART)/objective_label_gap.json
+
+# Which report figures trace only to a *superseded* artefact? The number guard scans
+# `artifacts/superseded/` on purpose, so a figure that goes stale keeps tracing -- to the
+# record of what it used to be. This partitions the pool and fails on an undeclared one.
+superseded-figures:
+	$(PY) scripts/superseded_only_figures.py \
+	  --out $(ART)/superseded_only_figures.json
 
 sync-report:
 	$(PY) scripts/sync_report_numbers.py

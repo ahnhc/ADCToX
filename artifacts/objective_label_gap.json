@@ -1,0 +1,72 @@
+{
+ "queries": 48,
+ "candidates": 288,
+ "targets": [
+  "ALCAM",
+  "AXL",
+  "CD19",
+  "CD22",
+  "CD276",
+  "CD33"
+ ],
+ "profiles": [
+  [],
+  [
+   "ckd_stage_4_5"
+  ],
+  [
+   "interstitial_lung_disease"
+  ],
+  [
+   "peripheral_neuropathy"
+  ],
+  [
+   "heart_failure",
+   "reduced_lvef"
+  ],
+  [
+   "cirrhosis"
+  ],
+  [
+   "ckd_stage_4_5",
+   "peripheral_neuropathy"
+  ],
+  [
+   "thrombocytopenia",
+   "mds",
+   "prior_hsct",
+   "neutropenia_chronic"
+  ]
+ ],
+ "display_resolution": 0.005,
+ "unweighted": {
+  "n": 288,
+  "median": 0.0,
+  "mean": 1.7e-05,
+  "p95": 0.0001,
+  "max": 0.0001,
+  "share_zero_within_rounding": 1.0,
+  "share_over_display_resolution": 0.0
+ },
+ "weighted": {
+  "n": 288,
+  "median": 0.0,
+  "mean": 0.000748,
+  "p95": 0.0029,
+  "max": 0.0112,
+  "share_zero_within_rounding": 0.7708,
+  "share_over_display_resolution": 0.0417
+ },
+ "rounding_tolerance": 0.00015,
+ "negative_gaps": 0,
+ "reading": "The axis is the argmax of the mean and the risk is the mean of the maximum, so the risk is the expected worst rate across axes and not the rate on the named axis. Both are correct quantities -- the risk is objective O2 as the plan defines it -- and the field name says the second. The gap is what decides whether that matters.",
+ "jensen_holds": true,
+ "provenance": {
+  "revision": "ccc3bb2c5df125095eeed3dcb0f51c1ef6b79e79",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "objective_label_gap.py",
+  "written_utc": "2026-10-09T20:25:46+00:00",
+  "inputs": {}
+ }
+}

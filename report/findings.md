@@ -39,7 +39,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 60 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 63 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -81,7 +81,7 @@ specifically outside what it can say.
 So what the system is for is the filtering, the intervals, and the refusals: it will not
 rank what it cannot separate, will not price a payload mechanism it has never seen, and
 will not offer a design whose parts have no clinical precedent. Sections 3 and 4 are where
-the prediction fails, section 9 is the sixty measured negative results, and section
+the prediction fails, section 9 is the sixty-three measured negative results, and section
 10 is what this must not be used for.
 
 ## 2. The corpus, and the number that governs everything
@@ -293,17 +293,45 @@ That task ranks 14 axes *inside one arm*, and axis base rates are consistent eno
 arms that one fixed ordering is near-optimal everywhere. A model that knows those base
 rates and then perturbs them with design effects has little to gain and much to lose. The
 across-agent comparison is the one that can show design signal, since a constant predictor
-has no discriminative power there by construction -- and it comes back at +0.0966
-[-0.0639, +0.2632], an interval spanning zero, against a threshold of +0.3 declared
-before the run.
+has no discriminative power there by construction. Per axis, it cancels:
 
-Per-axis, that mean hides the structure that matters. Neurologic (+0.61), musculoskeletal
-(+0.51) and gastrointestinal (+0.49) correlate positively; renal (-0.57), otologic (-0.37)
-and pulmonary (-0.27) anti-correlate, and they cancel. Renal and otologic are the two
-sparsest axes, so noise accounts for them. Pulmonary has 5,009 rows and does not, and the
-likely cause is ascertainment: a trial that mandates chest imaging reports far more
-pulmonary events than one recording symptoms, which dominates any across-agent comparison
-on an axis that needs active surveillance to be seen at all.
+<!-- generated: across-agent-per-axis -->
+
+| organ axis | across-agent rho | registry rows |
+|---|---|---|
+| gastrointestinal | +0.5144 | 8078 |
+| neurologic | +0.3077 | 4314 |
+| metabolic_endocrine | +0.2761 | 4660 |
+| ocular | +0.2750 | 1937 |
+| hepatic | +0.1937 | 2191 |
+| haematologic | +0.1700 | 3788 |
+| musculoskeletal | +0.1101 | 3546 |
+| dermatologic | +0.0232 | 4136 |
+| renal | -0.0966 | 1793 |
+| cardiovascular | -0.2005 | 3441 |
+| infectious_immune | -0.2942 | 10893 |
+| otologic | -0.3281 | 468 |
+| constitutional | -0.3394 | 6764 |
+| pulmonary | -0.8238 | 5009 |
+
+Mean -0.0152, bootstrap over axes [-0.2037, +0.1518] -- an interval spanning zero, against a threshold of +0.3 declared before the run. The extremes cancel: the most positive axis is gastrointestinal at +0.5144 and the most negative is pulmonary at -0.8238.
+
+<!-- /generated: across-agent-per-axis -->
+
+The mean is not what the table is for. **Pulmonary is the extreme negative** and it is not
+a sparse axis: the table's own row counts put it among the best-evidenced of the fourteen,
+so noise does not account for it. The likely cause is ascertainment: a trial that mandates chest imaging
+reports far more pulmonary events than one recording symptoms, which dominates any
+across-agent comparison on an axis that needs active surveillance to be seen at all. The
+sparse axes, otologic among them, are negative too and there noise is the better
+explanation.
+
+These figures were typed by hand until they were not, and the way they were caught is worth
+one sentence. Six of them plus the mean and interval came from the 16-agent corpus and
+survived the rebuild intact, and `check_report.py` reported a clean run on every one --
+because each traces to `artifacts/superseded/`, the artefact recording what it used to be.
+The argument around them still read correctly, which is the worst version of this failure.
+Negative result 62 is the partition that found them.
 
 ### The centering bug, in detail
 
@@ -1699,8 +1727,8 @@ neurologic.
 
 ## 9. Measured negative results
 
-Before the list, one observation about it. **Fourteen of these findings are the same
-defect**, and naming it is worth more than the fourteenth instance: a quantity carrying a
+Before the list, one observation about it. **Fifteen of these findings are the same
+defect**, and naming it is worth more than the fifteenth instance: a quantity carrying a
 name that belongs to a different quantity.
 
 | the name | what it was | what it should have been | result |
@@ -1719,16 +1747,18 @@ name that belongs to a different quantity.
 | "the largest figure in this table" | the family split's | the agent split's | 58 |
 | "17 agents" in a size trend | a subset corpus | a smaller same corpus | 58 |
 | the corpus-mismatch message | `--processed` | `--metrics` | 59 |
+| `worst_axis_risk` | the expected worst rate | the rate on `worst_axis` | 60 |
 
 The last four differ from the first ten in kind and are listed anyway, because the pattern
 is the point. Result 57 is an *identifier* under the wrong name rather than a quantity.
 Results 58 and 59 happened inside the scripts written to measure and to guard this defect:
 one printed a figure under the wrong split's table, one put a corpus's agent count into a
 series where it meant something else, and one wrote an error message naming the input that
-was correct. Fourteen instances, and the four most recent are in the code whose subject is
-the other ten.
+was correct. Fifteen instances. Four are in the code whose subject is the other ten, and the
+fifteenth is the first one where measuring the gap showed that neither the name's quantity
+nor the field's was wrong and the right response was a bound.
 
-Two things follow. The first is that the number guard caught six of the fourteen and could
+Two things follow. The first is that the number guard caught six of the fifteen and could
 not have caught the rest: it checks that a figure traces to an artefact, and every one of these
 figures did trace -- to the artefact for the other quantity. A guard on provenance is not a
 guard on meaning.
@@ -1870,10 +1900,13 @@ between those two.
     for a table the paper never printed. The serious table remains the robustness check for
     the registry corpus and cannot be one for the expanded corpus.
 21. **The product cannot rank its own proposals, in any of 192 queries.** A ranked list is
-    printed only where the leader beats the runner-up on 80% of paired posterior draws. The
-    leader wins a median 52.2% across 24 targets by 8 comorbidity profiles, and **0 of 192**
-    queries clear the bar; the head tie group holds a median 73% of the constraint-passing
-    candidates. The output is a non-dominated set, not a ranking, and the interface says so.
+    printed only where the leader beats the runner-up on 80% of paired posterior draws, and
+    across 24 targets by 8 comorbidity profiles **0 of 192** queries clear the bar. Section
+    5e-b carries the figures in a generated block; the summary here states only the count,
+    because the median paired-draw win and the head tie group's share were typed by hand at
+    52.2% and 73% and both had moved -- see negative result 62 for how that passed the
+    number guard. The output is a non-dominated set, not a ranking, and the interface says
+    so.
 22. **The ranking layer's comparison was inverted where it mattered most, and no test
     noticed.** `P(a < b)` reads an exact tie as a loss, and exact ties are the normal case
     because the model has no term separating DM1 from DM4; the two were printed as rank 1
@@ -2954,6 +2987,140 @@ between those two.
     guard refused -- correctly, with no way to satisfy it. Section 5f's headline quantity was
     therefore uncomputable on the only converged 32-agent fit, and that is why the report had
     it at 16 and 22 agents and nowhere else. One flag, forwarded.
+
+60. **A product field's name says one quantity and its value is another, and measuring it
+    showed the fix was not needed.** Every candidate card carries `worst_axis` beside
+    `worst_axis_risk`, and the weighted pair beside those. They are computed differently: the
+    axis is `argmax` of the mean weighted rate, and the risk is the **mean over draws of the
+    maximum** weighted rate. The mean of a maximum is never below the maximum of the means,
+    so the risk sits at or above the rate on the axis it is printed next to, and the two
+    diverge exactly when the worst organ is a different organ in different posterior draws.
+
+    This is the eleventh name mismatch of the session and the first one in the product's own
+    output rather than in the report or the tooling. The prior response to each of the others
+    was to fix the name or the quantity. Here neither is wrong. The risk is objective O2 as
+    the plan defines it, and it has to be the expectation of the maximum: a candidate that is
+    catastrophic on a *different* organ in every draw has a modest maximum-of-means and a
+    large mean-of-maxima, and only the second scores it badly. The axis is a display label
+    for a quantity that does not have one axis.
+
+    So the question is not which is right but whether the gap can mislead, and that is a
+    measurement. Swept over the product's own query space -- **288 candidates across 48
+    queries**, six targets by eight comorbidity profiles including the empty one as a
+    control:
+
+    <!-- generated: objective-label-gap -->
+
+    | pair | median | p95 | max | share over the display resolution |
+    |---|---|---|---|---|
+    | unweighted | 0.0 | 0.0001 | 0.0001 | 0.0% |
+    | weighted | 0.0 | 0.0029 | **0.0112** | **4.2%** |
+
+    288 candidates across 48 queries. The interface prints rates to two significant figures, so a gap under 0.005 cannot move a displayed digit; the unweighted pair never exceeds the response's own rounding at four decimals, and the weighted pair can move a digit on 4.2% of candidates by at most 0.0112.
+
+    <!-- /generated: objective-label-gap -->
+
+    About one card in twenty-four, then. That is small enough to document and not to
+    redesign, and the response now carries a `worst_axis_risk_aggregation` field saying
+    which quantity it is serving.
+
+    **The bound is a test, not a sentence.** `make objective-label-gap` recomputes it and
+    `tests/test_objective_label_gap.py` fails if the maximum passes 0.02 or the share passes
+    a tenth -- the point at which the right response stops being documentation. It also pins
+    the direction: a negative gap beyond the rounding would mean the two fields come from
+    different draws or different weights, which is a defect rather than a label.
+
+    One detail about that tolerance, because it is the kind that gets quietly widened. The
+    check first ran at 1e-9 and reported the inequality violated on every candidate. The
+    cause was the response rounding both fields to four decimals, so a true zero reads as
+    -0.0001. The tolerance is that rounding, it is asserted to stay below the display
+    resolution, and the test says why -- a tolerance that grows past the resolution would
+    dismiss exactly the gaps this measurement exists to catch.
+
+61. **The field the API calls authoritative was empty, and nothing would ever have filled
+    it.** `/version` reports which posterior answered, and its docstring says why: the
+    posterior the product predicts from is written by a different run from the fit that
+    evaluates it, five corpora now exist that disagree about `sigma_agent` -- the parameter
+    every prediction for a new design draws from -- so *"the served posterior's own stamp is
+    the authoritative field and the metrics' corpus is reported beside it"*.
+
+    The stamp was added. The posterior on disk predates it, loads with an empty one, and
+    `/version` correctly reported `stamped: false`, `corpus: null` and
+    `served_and_evaluated_agree: null`. That is the honest answer and it was the permanent
+    answer, because the cache check that decides whether to refit compares the **agent
+    list** and nothing else. The agents matched, so the check returned "no refit needed"
+    every time, and a posterior that could not name its corpus was served indefinitely by a
+    product whose own documentation says that is the field that matters.
+
+    The argument the agent-list check is built on applies one level up: *a posterior that
+    cannot say which corpus it came from cannot be verified.* So the check now also requires
+    the stamp, and refuses a posterior whose stamped corpus differs from the one on disk --
+    which is the failure mode the stamp exists for, not the one that prompted it.
+
+    **Refitting cost nothing and proved something the project claims.** The sampler seed is
+    pinned, so the refit had to reproduce the posterior exactly, and whether it does had
+    never been checked. Two posterior-dependent artefacts -- `design_effect_size.json` and
+    `payload_axis_compression.json` -- were recomputed against the new file and are
+    **identical in every field** outside their provenance stamps. `/version` now reports
+    `served_and_evaluated_agree: true`.
+
+    The lesson is about where to put a check rather than about this bug. A cache validity
+    check is a claim about what makes two artefacts the same, and this one made that claim
+    on the one property the artefacts shared across every corpus. It was written when there
+    was one corpus.
+
+62. **The number guard reports a clean run on stale figures, and it has three independent
+    reasons for doing so.** The report's strongest procedural claim is that no figure in it
+    was typed by hand without an artefact behind it, and `check_report.py` enforces it. The
+    guard found real defects -- it is how negative result 38 was caught. It also reported a
+    clean run, every run, on eight figures that were a month out of date.
+
+    **One: a superseded artefact is still an artefact.** The guard scans
+    `artifacts/superseded/` deliberately, so that an overturned number quoted in a
+    before/after comparison traces to the record of its own supersession instead of to an
+    allowlist entry. The consequence is that a figure which *goes* stale does not stop
+    tracing. `make superseded-figures` now partitions the pool and classifies every figure
+    that appears in a superseded artefact and in no current one: **28 of them**, of which 22
+    share a line with a live figure -- the shape of a before/after row, where a stale
+    replacement would have taken its partner with it -- and 6 are declared individually with
+    their reason. The run that introduced the partition found **2 undeclared**, and they
+    were real: section 3's across-agent figure and its interval, +0.0966 [-0.0639, +0.2632],
+    were the 16-agent corpus's and the current ones are -0.0152 [-0.2054, +0.1614]. The six
+    per-axis correlations in the next paragraph were stale too.
+
+    The worst part is that the paragraph still read correctly. Its argument -- that the
+    positive and negative axes cancel, that the sparse axes are noise and pulmonary is
+    ascertainment -- survives the new numbers. A reader checking the reasoning finds it
+    sound. Both passages are generated blocks now.
+
+    **Two: a precision floor the guard cannot lower.** It matches decimals with at least two
+    places, because fewer is the shape of a count rather than a measurement. Outside
+    generated blocks the report and the model card carry **102 one-decimal figures and 87
+    integer percentages**, so the guard reaches **82%** of the hand-written figures. Result
+    21's two stale figures -- the leader's median paired-draw win at 52.2% and the head tie
+    group at 73% -- sat in the other 18% and were found by reading the model card.
+
+    Lowering the floor would not check them. At one decimal there are about a thousand
+    distinct values against a pool of twenty-eight thousand, so every one would match
+    something: the pattern would pass them, not verify them. The remedy for a figure below
+    the floor is a generated block, and that is what both became.
+
+    **Three: the pool saturated as the project measured more.** The guard reports its own
+    measured false-pass rate on fabricated figures, and it has moved with the number of
+    artefacts: **2dp 100%, 3dp 97%, 4dp 39%** against 28,760 values across 77 artefacts. A
+    fabricated two-decimal figure now always passes. The distribution of how tightly each
+    passing figure is pinned says the same thing from the other side: **16.9%** match
+    exactly one artefact value, 45.1% match two to five, and **9.1% match more than fifty**,
+    which is no check at all.
+
+    So the guard's claim has to be stated as what it is. It verifies that **no figure in this
+    report fails to appear in an artefact**, which catches a fabricated or mistyped number
+    at four decimals and catches very little at two. It does not verify that a figure appears
+    in the *right* artefact, and the three holes above are three forms of that one limit. The
+    measures that do work are different in kind: generated blocks, which cannot go stale
+    because they are rewritten from their artefact on every sync, and the staleness tests
+    that fail when regenerating would change the document. **Every figure this section
+    retracted was hand-typed prose, and every figure in a generated block was correct.**
 
 ## 9b. The clean-clone check, run for the first time
 

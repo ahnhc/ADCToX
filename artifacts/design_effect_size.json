@@ -152,13 +152,13 @@
  ],
  "reading": "Where the evidence is good the design effects are too small to reorder the organ ranking (tubulin ratio 0.29, rank corr 0.947), so the within-arm metric is the baseline's metric and the design terms only add noise. Where the effects are large the evidence is one drug (dna_alkyl ratio 0.71 on a single agent). A design coefficient is identified by agents, not patients, but the binomial likelihood counts patients, so a two-arm cell still carries hundreds of patients and the hierarchical prior does not shrink it enough.",
  "provenance": {
-  "revision": "479d1565a0668aae84acaf1c17657ac757ec301b",
+  "revision": "ccc3bb2c5df125095eeed3dcb0f51c1ef6b79e79",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "design_effect_size.py",
-  "written_utc": "2026-10-09T12:47:07+00:00",
+  "written_utc": "2026-10-09T20:29:51+00:00",
   "inputs": {
-   "posterior": "sha256:6d1d0d583d5066e2c54d78fbfde41a88d9ce91741312bc1ddd14f24f2f02bbf7"
+   "posterior": "sha256:3bb9641765dea19af8e50eaaa72d61ee7c8ca41b873251289564f0a79bc7353a"
   }
  }
 }

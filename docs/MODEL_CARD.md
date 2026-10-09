@@ -23,8 +23,9 @@ Research prototype. **It does not rank.** It returns a filtered, non-dominated *
 chemically valid, individually precedented ADC configurations with per-organ-system rates
 and intervals, weighted against a stated comorbidity profile. A ranked list is printed only
 where the leader beats the runner-up on 80% of paired posterior draws, and across 24 targets
-by 8 comorbidity profiles that happens in **0 of 192 queries**: the leader wins a median
-52.2% of paired draws. Not a clinical decision tool; not validated prospectively; no use in
+by 8 comorbidity profiles that happens in **0 of 192 queries**. The median paired-draw win
+is in the report's generated rank-resolution block; it is not quoted here, because the
+figure that used to be was stale for a month and traced to an artefact the whole time. Not a clinical decision tool; not validated prospectively; no use in
 patient care.
 
 ## What the data can identify
@@ -96,6 +97,33 @@ product adds a draw from that parameter to every prediction for a new design, so
 merged posterior would report reporting practice as drug uncertainty. The merged corpus is
 for the design coefficients and the folds; the registry corpus is for the agent-level
 residual, being the only one with no source variation at all. See negative result 48.
+
+**How much is that choice worth?** If switching posteriors changed nothing the argument
+would be academic, and it was never measured. `make posterior-choice` sweeps six targets by
+eight comorbidity profiles against both the registry posterior and the 32-agent one:
+
+<!-- generated: posterior-choice -->
+
+| quantity | value |
+|---|---|
+| posterior A / posterior B, in agents | 22 / 32 |
+| queries compared | 48 |
+| **queries where the two show the same designs** | **0** |
+| mean designs in common, of six shown | 0.75 |
+| organ band cells changed | 1411 of 4032 |
+| share of band cells changed | **35%** |
+| queries either posterior can rank | 0 / 0 |
+
+So the serving choice is not academic: the two posteriors agree on the displayed design set in 0 of 48 queries and disagree about 35% of the organ bands. Neither can rank, which is the one thing they agree on.
+
+<!-- /generated: posterior-choice -->
+
+The comparison is between the registry and the 32-agent posterior rather than the merged
+one, because the merged fits were still running. It does not say which posterior predicts
+better -- that is the ablation's question, answered on held-out agents, and the answer is
+that the expansions predict worse. It says the serving decision reaches the user in almost
+every query, which is why it is made on the measured residual scale and not on the corpus
+size.
 
 Worth reading the arms row against the identifying-cells row. Adding 312 literature arms
 for agents already present bought 14 identifying cells; the next 102 arms, belonging to

@@ -60,6 +60,15 @@ PAC_END = "<!-- /generated: payload-compression -->"
 SAX_BEGIN = "<!-- generated: source-axis -->"
 SAX_END = "<!-- /generated: source-axis -->"
 
+PCH_BEGIN = "<!-- generated: posterior-choice -->"
+PCH_END = "<!-- /generated: posterior-choice -->"
+
+AAX_BEGIN = "<!-- generated: across-agent-per-axis -->"
+AAX_END = "<!-- /generated: across-agent-per-axis -->"
+
+OLG_BEGIN = "<!-- generated: objective-label-gap -->"
+OLG_END = "<!-- /generated: objective-label-gap -->"
+
 AAT_BEGIN = "<!-- generated: across-agent-trend -->"
 AAT_END = "<!-- /generated: across-agent-trend -->"
 
@@ -468,6 +477,136 @@ def build_ablation_block(doc: dict) -> str | None:
     return "\n".join(lines)
 
 
+def build_posterior_choice_block(doc: dict, indent: str = "") -> str | None:
+    """How much the serving choice changes, from artifacts/posterior_choice.json.
+
+    The model card argues the registry posterior should be served and gives a reason --
+    `sigma_agent` is collinear with the reporting source on the larger corpora -- without
+    saying how much the choice is worth. If switching changed nothing the argument would be
+    academic. It does not change nothing.
+    """
+    s_ = doc.get("summary") or {}
+    need = ("agents_a", "agents_b", "queries", "queries_with_identical_designs",
+            "mean_designs_in_common", "band_cells_changed", "band_cells_compared",
+            "band_change_share")
+    if not all(k in s_ for k in need):
+        return None
+    lines = [
+        PCH_BEGIN, "",
+        "| quantity | value |",
+        "|---|---|",
+        f"| posterior A / posterior B, in agents | {s_['agents_a']} / {s_['agents_b']} |",
+        f"| queries compared | {s_['queries']} |",
+        "| **queries where the two show the same designs** | "
+        f"**{s_['queries_with_identical_designs']}** |",
+        f"| mean designs in common, of six shown | {s_['mean_designs_in_common']} |",
+        f"| organ band cells changed | {s_['band_cells_changed']} of "
+        f"{s_['band_cells_compared']} |",
+        f"| share of band cells changed | **{s_['band_change_share'] * 100:.0f}%** |",
+        "| queries either posterior can rank | "
+        f"{s_.get('queries_decisive_a', '--')} / {s_.get('queries_decisive_b', '--')} |",
+        "",
+        "So the serving choice is not academic: the two posteriors agree on the displayed "
+        f"design set in {s_['queries_with_identical_designs']} of {s_['queries']} queries "
+        f"and disagree about {s_['band_change_share'] * 100:.0f}% of the organ bands. "
+        "Neither can rank, which is the one thing they agree on.",
+        "",
+        PCH_END,
+    ]
+    return ("\n" + indent).join(lines).replace("\n" + indent + "\n", "\n\n")
+
+
+def build_across_agent_per_axis_block(
+    doc: dict, composition: dict | None = None, indent: str = ""
+) -> str | None:
+    """The per-axis across-agent correlations, which went stale without failing the guard.
+
+    Section 3 carried six of these figures as prose -- neurologic +0.61, musculoskeletal
+    +0.51, gastrointestinal +0.49, renal -0.57, otologic -0.37, pulmonary -0.27 -- from the
+    16-agent corpus, together with the mean and interval. The corpus rebuild moved every
+    one, and `check_report.py` reported a clean run on all of them, because each traces to
+    `artifacts/superseded/`: the artefact recording what it used to be. The paragraph's
+    argument survived the change and its numbers did not, which is the worst version of
+    this failure -- a reader checking the reasoning finds it sound.
+
+    So the figures are generated and the argument refers to them by position rather than by
+    value. The row counts come from `axis_composition.json` where it is present, because the
+    sparsity claim is about evidence and not about the correlation.
+    """
+    unadj = (doc.get("variants") or {}).get("unadjusted") or {}
+    per_axis = unadj.get("per_axis")
+    if not per_axis:
+        return None
+    rows_of = {
+        r["axis"]: r.get("registry_rows")
+        for r in ((composition or {}).get("axes") or [])
+    }
+    ordered = sorted(per_axis.items(), key=lambda kv: -kv[1])
+    lines = [
+        AAX_BEGIN, "",
+        "| organ axis | across-agent rho | registry rows |",
+        "|---|---|---|",
+    ]
+    for axis, rho in ordered:
+        n = rows_of.get(axis)
+        lines.append(f"| {axis} | {rho:+.4f} | {n if n is not None else '--'} |")
+    mean, ci = unadj.get("mean_spearman"), unadj.get("ci") or [None, None]
+    if mean is not None and ci[0] is not None:
+        lines += [
+            "",
+            f"Mean {mean:+.4f}, bootstrap over axes [{ci[0]:+.4f}, {ci[1]:+.4f}] -- an "
+            f"interval spanning zero, against a threshold of +0.3 declared before the run. "
+            f"The extremes cancel: the most positive axis is {ordered[0][0]} at "
+            f"{ordered[0][1]:+.4f} and the most negative is {ordered[-1][0]} at "
+            f"{ordered[-1][1]:+.4f}.",
+        ]
+    lines += ["", AAX_END]
+    return ("\n" + indent).join(lines).replace("\n" + indent + "\n", "\n\n")
+
+
+def build_objective_label_gap_block(doc: dict, indent: str = "") -> str | None:
+    """The bound on `worst_axis_risk` against the rate on `worst_axis`.
+
+    Generated because the medians are exact zeros, and a zero typed as `0.000000` does not
+    match an artefact's `0.0` -- which is how the number guard found this table typed by
+    hand in the first place.
+    """
+    need = ("unweighted", "weighted", "candidates", "queries", "display_resolution")
+    if not all(k in doc for k in need):
+        return None
+    lines = [
+        OLG_BEGIN, "",
+        "| pair | median | p95 | max | share over the display resolution |",
+        "|---|---|---|---|---|",
+    ]
+    for key in ("unweighted", "weighted"):
+        s_ = doc[key]
+        bold = "**" if key == "weighted" else ""
+        lines.append(
+            f"| {key} | {s_['median']} | {s_['p95']} | {bold}{s_['max']}{bold} | "
+            f"{bold}{s_['share_over_display_resolution'] * 100:.1f}%{bold} |"
+        )
+    lines += [
+        "",
+        f"{doc['candidates']} candidates across {doc['queries']} queries. The interface "
+        f"prints rates to two significant figures, so a gap under {doc['display_resolution']} "
+        "cannot move a displayed digit; the unweighted pair never exceeds the response's "
+        # Not printed as a figure. It is a five-decimal constant, the number guard's forms
+        # stop at four, and the project's own display rule is two significant figures --
+        # so a number that cannot be checked and should not be shown is described instead.
+        "own rounding at four decimals, and the weighted pair can move a "
+        f"digit on {doc['weighted']['share_over_display_resolution'] * 100:.1f}% of "
+        f"candidates by at most {doc['weighted']['max']}.",
+        "",
+        OLG_END,
+    ]
+    # The first line is not indented: the pattern matches from the marker, so the marker's
+    # own leading whitespace stays in the document. Prefixing it too added the indent on
+    # every regeneration -- four spaces, then eight, then twelve -- and eight spaces inside
+    # a list item is a code fence, so the table rendered as literal text.
+    return ("\n" + indent).join(lines).replace("\n" + indent + "\n", "\n\n")
+
+
 def build_across_agent_trend_block(doc: dict, indent: str = "") -> str | None:
     """Two metrics, one expansion, opposite directions -- from artifacts/across_agent_trend.json.
 
@@ -606,7 +745,8 @@ def build_across_agent_trend_block(doc: dict, indent: str = "") -> str | None:
         )
         lines.append("")
     lines.append(AAT_END)
-    return "\n".join(indent + ln if ln else ln for ln in lines)
+    # See build_objective_label_gap_block: the first line carries no indent.
+    return ("\n" + indent).join(lines).replace("\n" + indent + "\n", "\n\n")
 
 
 def build_rank_resolution_block(doc: dict) -> str | None:
@@ -1163,6 +1303,14 @@ def main() -> int:
                     default=Path("artifacts/source_axis_heterogeneity.json"))
     ap.add_argument("--across-agent-trend", type=Path,
                     default=Path("artifacts/across_agent_trend.json"))
+    ap.add_argument("--objective-label-gap", type=Path,
+                    default=Path("artifacts/objective_label_gap.json"))
+    ap.add_argument("--posterior-choice", type=Path,
+                    default=Path("artifacts/posterior_choice.json"))
+    ap.add_argument("--across-agent-adjusted", type=Path,
+                    default=Path("artifacts/across_agent_adjusted.json"))
+    ap.add_argument("--axis-composition", type=Path,
+                    default=Path("artifacts/axis_composition.json"))
     ap.add_argument("--check", action="store_true",
                     help="fail if the block is out of date instead of rewriting it")
     args = ap.parse_args()
@@ -1235,6 +1383,22 @@ def main() -> int:
         json.loads(args.across_agent_trend.read_text(encoding="utf-8"))
         if args.across_agent_trend.exists() else None
     )
+    olg_doc = (
+        json.loads(args.objective_label_gap.read_text(encoding="utf-8"))
+        if args.objective_label_gap.exists() else None
+    )
+    pch_doc = (
+        json.loads(args.posterior_choice.read_text(encoding="utf-8"))
+        if args.posterior_choice.exists() else None
+    )
+    aax_doc = (
+        json.loads(args.across_agent_adjusted.read_text(encoding="utf-8"))
+        if args.across_agent_adjusted.exists() else None
+    )
+    comp_doc = (
+        json.loads(args.axis_composition.read_text(encoding="utf-8"))
+        if args.axis_composition.exists() else None
+    )
     cens_block = None
     if args.censoring.exists():
         cens_block = build_censoring_block(
@@ -1254,6 +1418,9 @@ def main() -> int:
     pac_pattern = re.compile(re.escape(PAC_BEGIN) + r".*?" + re.escape(PAC_END), re.S)
     rr_pattern = re.compile(re.escape(RR_BEGIN) + r".*?" + re.escape(RR_END), re.S)
     aat_pattern = re.compile(re.escape(AAT_BEGIN) + r".*?" + re.escape(AAT_END), re.S)
+    olg_pattern = re.compile(re.escape(OLG_BEGIN) + r".*?" + re.escape(OLG_END), re.S)
+    aax_pattern = re.compile(re.escape(AAX_BEGIN) + r".*?" + re.escape(AAX_END), re.S)
+    pch_pattern = re.compile(re.escape(PCH_BEGIN) + r".*?" + re.escape(PCH_END), re.S)
     abl_pattern = re.compile(re.escape(ABL_BEGIN) + r".*?" + re.escape(ABL_END), re.S)
     rc = 0
     for doc in args.report:
@@ -1288,6 +1455,54 @@ def main() -> int:
                     text = replaced
                     doc.write_text(text, encoding="utf-8")
                     print(f"{doc}: rank-resolution block regenerated")
+        pch_block = (
+            build_posterior_choice_block(
+                pch_doc, indent=_marker_indent(text, PCH_BEGIN)
+            )
+            if pch_doc else None
+        )
+        if pch_block and pch_pattern.search(text):
+            replaced = pch_pattern.sub(lambda _: pch_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: posterior-choice block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: posterior-choice block regenerated")
+        aax_block = (
+            build_across_agent_per_axis_block(
+                aax_doc, comp_doc, indent=_marker_indent(text, AAX_BEGIN)
+            )
+            if aax_doc else None
+        )
+        if aax_block and aax_pattern.search(text):
+            replaced = aax_pattern.sub(lambda _: aax_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: across-agent-per-axis block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: across-agent-per-axis block regenerated")
+        olg_block = (
+            build_objective_label_gap_block(
+                olg_doc, indent=_marker_indent(text, OLG_BEGIN)
+            )
+            if olg_doc else None
+        )
+        if olg_block and olg_pattern.search(text):
+            replaced = olg_pattern.sub(lambda _: olg_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: objective-label-gap block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: objective-label-gap block regenerated")
         aat_block = (
             build_across_agent_trend_block(
                 aat_doc, indent=_marker_indent(text, AAT_BEGIN)

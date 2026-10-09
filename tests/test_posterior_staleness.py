@@ -84,14 +84,22 @@ def test_a_changed_axis_order_is_caught(tmp_path, data) -> None:
     assert demo._why_refit(path, data) == "the axis order has changed"
 
 
-def _fake(data, agents: list[str]) -> Posterior:
+def _fake(data, agents: list[str], corpus: str | None = None) -> Posterior:
     """A posterior with the right shapes and arbitrary values. The guard reads labels
-    only, so the draws need not come from a fit."""
+    only, so the draws need not come from a fit.
+
+    `corpus` defaults to this data's own summary, because the guard now also requires a
+    provenance stamp naming the corpus -- an unstamped posterior was served indefinitely
+    while `/version` reported `corpus: null`, since the agent list matched (result 61).
+    Passing a different string is how a test exercises the mismatch.
+    """
     import numpy as np
 
     s, a = 4, len(data.axes)
     m, f = len(data.mechanisms), len(data.families)
     return Posterior(
+        provenance={"corpus": data.summary() if corpus is None else corpus,
+                    "n_agents": len(agents), "kind": "other"},
         mu_axis=np.zeros((s, a)), mech_axis=np.zeros((s, m, a)),
         family_axis=np.zeros((s, f, a)), cleav_axis=np.zeros((s, a)),
         b_dar=np.zeros(s), b_combo=np.zeros(s), sigma_agent=np.zeros(s),
@@ -99,4 +107,54 @@ def _fake(data, agents: list[str]) -> Posterior:
         families=list(data.families), dar_mean=4.0, cleavable_mean=0.5,
         evidence_agents=np.zeros((m, a)), evidence_arms=np.zeros((m, a)),
         kind="other", band_edges=(0.01, 0.05), agents=agents,
+    )
+
+
+def test_an_unstamped_posterior_is_refitted(tmp_path, data) -> None:
+    """Result 61: the field `/version` calls authoritative was empty and stayed empty.
+
+    The guard compared the agent list and nothing else, so a posterior written before the
+    stamp existed satisfied it on every build and the product served numbers it could not
+    attribute to a corpus.
+    """
+    post = _fake(data, agents=list(data.agents))
+    post.provenance = {}
+    path = tmp_path / "p.npz"
+    post.save(path)
+    reason = demo._why_refit(path, data)
+    assert reason and "no provenance stamp" in reason
+
+
+def test_a_posterior_stamped_with_another_corpus_is_refitted(tmp_path, data) -> None:
+    """Same agents, different corpus -- which is exactly the absences-dropped pair."""
+    post = _fake(data, agents=list(data.agents), corpus="SOME OTHER CORPUS")
+    path = tmp_path / "p.npz"
+    post.save(path)
+    reason = demo._why_refit(path, data)
+    assert reason and "different corpus" in reason
+
+
+def test_the_served_posterior_on_disk_is_stamped_and_agrees_with_the_evaluated_fit() -> None:
+    """The product's own state rather than a fixture.
+
+    `/version` reports `served_and_evaluated_agree`, and it can only be `true` if the
+    posterior carries a stamp. This is the assertion behind that field.
+    """
+    import json
+
+    root = pathlib.Path(__file__).resolve().parents[1]
+    path = root / "artifacts" / "posterior_other.npz"
+    metrics = root / "artifacts" / "forward_other_metrics.json"
+    if not path.exists() or not metrics.exists():
+        return
+    post = Posterior.load(path)
+    assert post.provenance.get("corpus"), (
+        "the served posterior carries no corpus stamp, so the product cannot say which "
+        "corpus produced the numbers it serves"
+    )
+    evaluated = json.loads(metrics.read_text(encoding="utf-8")).get("corpus")
+    assert post.provenance["corpus"] == evaluated, (
+        "the served posterior and the evaluated fit describe different corpora:\n"
+        f"    served:    {post.provenance['corpus']}\n"
+        f"    evaluated: {evaluated}"
     )

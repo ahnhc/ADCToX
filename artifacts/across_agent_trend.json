@@ -529,11 +529,11 @@
  },
  "reading": "The two discrimination metrics answer different questions and need not move together. Within-arm AUC ranks axes inside an arm, a task a design-blind constant scores about 0.84 on; across-agent Spearman ranks agents within an axis, which no constant can do. The product's question is the second one.",
  "provenance": {
-  "revision": "ed4906d5aec077bfa83fba1628eb2f9fdb3debca",
+  "revision": "ccc3bb2c5df125095eeed3dcb0f51c1ef6b79e79",
   "dirty": true,
   "snapshot": null,
   "script": "across_agent_trend.py",
-  "written_utc": "2026-10-09T20:19:35+00:00",
+  "written_utc": "2026-10-09T20:38:42+00:00",
   "inputs": {}
  }
 }

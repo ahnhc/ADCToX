@@ -60,6 +60,28 @@ def _why_refit(path: Path, data) -> str | None:
         return "the axis order has changed"
     if list(cached.mechanisms) != list(data.mechanisms):
         return "the mechanism set has changed"
+    # The agent list says the corpus has the same agents. It does not say which corpus,
+    # and five of them share agent lists while disagreeing about `sigma_agent` -- the
+    # parameter the prediction path draws from for every new design. The provenance stamp
+    # carries the corpus summary, and `/version` calls that field authoritative.
+    #
+    # It was empty, and nothing would ever have filled it: the posterior on disk predates
+    # the stamp, the agent list matched, so this function returned None every time and the
+    # product served numbers it could not attribute to a corpus. The same argument the
+    # agent-list check is built on applies one level up -- a posterior that cannot say
+    # where it came from cannot be verified -- so it is refitted once rather than trusted.
+    if not cached.provenance.get("corpus"):
+        return (
+            "the cached posterior carries no provenance stamp, so the corpus it was "
+            "fitted on cannot be named; five corpora share agent lists and disagree about "
+            "sigma_agent"
+        )
+    if cached.provenance["corpus"] != data.summary():
+        return (
+            "the cached posterior names a different corpus:\n"
+            f"    cached: {cached.provenance['corpus']}\n"
+            f"    now:    {data.summary()}"
+        )
     return None
 
 

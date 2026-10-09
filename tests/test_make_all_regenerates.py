@@ -84,6 +84,7 @@ def test_the_exemption_list_names_only_scripts_that_exist() -> None:
 MEASUREMENT_TARGETS = [
     "residual-scale", "across-agent", "design-effects", "fold-difficulty", "hard-flags",
     "comorbidity-sensitivity", "payload-compression", "across-agent-trend",
+    "objective-label-gap", "superseded-figures",
 ]
 
 

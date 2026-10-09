@@ -555,6 +555,27 @@ def propose(
                 # invisible in the output in the first place.
                 "weighted_worst_axis": s.o2_weighted_worst_axis,
                 "weighted_worst_axis_risk": round(s.o2_weighted_worst_axis_risk, 4),
+                # The two fields above are not the same quantity's name and value, and the
+                # name alone reads as though they were. The axis is the argmax of the mean
+                # rate times its weight; the risk is the mean over draws of the maximum
+                # weighted rate, which is objective O2 as the plan defines it. Mean of a
+                # maximum is never below maximum of the means, so the risk sits at or above
+                # the weighted rate on the named axis, and they diverge exactly when the
+                # worst organ is a different organ in different draws.
+                #
+                # Measured across 288 candidates over 48 queries: the unweighted pair never
+                # differs by more than 0.0001, and the weighted pair exceeds the
+                # interface's two-significant-figure resolution on 4.2% of candidates, by
+                # at most 0.0112. So this is a label that can move a displayed digit about
+                # once in twenty-four cards, and `make objective-label-gap` is the
+                # measurement. The objective is not changed to match the label, because a
+                # candidate that is terrible on a different organ in every draw has to
+                # score badly, and only the expectation of the maximum does that.
+                "worst_axis_risk_aggregation": (
+                    "mean over posterior draws of the worst weighted organ rate (objective "
+                    "O2), not the rate on the named axis; the two differ when the worst "
+                    "organ varies across draws"
+                ),
                 "precedent_score": round(s.o3_precedent, 3),
                 "binding_constraint": s.binding_constraint,
                 "nearest_real_adc": nearest,

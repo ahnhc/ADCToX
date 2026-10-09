@@ -57,6 +57,22 @@ NUMBER = re.compile(r"(?<![\w.])(-?\d+\.\d{2,})(?!\w)(?!\.\d)")
 # the en dash is left alone because it separates ranges rather than negating anything.
 def _normalize_signs(text: str) -> str:
     return text.replace("\u2212", "-")
+# Figures this guard structurally cannot check, counted so it can state its own reach.
+#
+# At one decimal place there are about a thousand distinct values and the pool holds
+# fifteen thousand, so every one of them matches something: extending `NUMBER` downward
+# would not check these figures, it would pass them. Integer percentages are worse. So they
+# are not checked and the right response is to say how many there are -- a guard that
+# reports "every figure traces" while a fifth of the report's figures are invisible to it
+# is making a narrower claim than it sounds like.
+#
+# This is not hypothetical. "the leader wins a median 52.2% of paired draws" and "the head
+# tie group holds a median 73%" were both stale, in the report and in the model card, and
+# both sat below this floor. They were found by reading the model card, not by the guard.
+ONE_DECIMAL = re.compile(r"(?<![\w.])(-?\d+\.\d)(?!\d)(?!\w)")
+INTEGER_PERCENT = re.compile(r"(?<![\w.])(\d{1,3})%")
+GENERATED = re.compile(r"<!-- generated:.*?<!-- /generated:[^>]*-->", re.S)
+
 # Skip fenced code and inline code, which quote commands rather than results.
 FENCE = re.compile(r"```.*?```", re.S)
 INLINE = re.compile(r"`[^`]*`")
@@ -213,6 +229,28 @@ def main() -> int:
         f"{checked} decimal figures checked across {len(docs)} documents in "
         f"{', '.join(str(d) for d in args.report)}"
     )
+
+    # What the guard cannot see, measured on the same documents. Generated blocks are
+    # excluded: a figure inside one is regenerated from its artefact on every sync, so its
+    # precision is irrelevant to whether it can go stale.
+    below_floor = {"one_decimal": 0, "integer_percent": 0}
+    for doc in docs:
+        text = GENERATED.sub(" ", doc.read_text(encoding="utf-8"))
+        text = INLINE.sub(" ", FENCE.sub(" ", _normalize_signs(text)))
+        below_floor["one_decimal"] += len(ONE_DECIMAL.findall(text))
+        below_floor["integer_percent"] += len(INTEGER_PERCENT.findall(text))
+    invisible = below_floor["one_decimal"] + below_floor["integer_percent"]
+    if invisible:
+        reach = 100.0 * checked / (checked + invisible)
+        print(
+            f"  below this guard's precision floor and therefore unchecked: "
+            f"{below_floor['one_decimal']} one-decimal figures and "
+            f"{below_floor['integer_percent']} integer percentages outside generated "
+            f"blocks, so the guard reaches {reach:.0f}% of the hand-written figures.\n"
+            "    Extending it downward would pass them rather than check them: at one "
+            "decimal the pool saturates. The remedy is a generated block, not a wider "
+            "pattern."
+        )
     # How much of the report the guard actually verified. "Traces to an artefact" means
     # the string appears somewhere in the pool, and a figure matching hundreds of pool
     # entries was checked by nothing -- the 88% three-decimal false-pass rate above is the

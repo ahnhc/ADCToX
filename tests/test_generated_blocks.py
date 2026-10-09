@@ -67,3 +67,65 @@ def test_the_source_axis_block_is_generated_and_not_typed() -> None:
     # the artefact: the both-source agent count and the widest negative axis.
     assert "agents with arms from" in block
     assert "logit on" in block
+
+
+def test_regenerating_twice_changes_nothing() -> None:
+    """Idempotence, which staleness does not imply.
+
+    A block that grows by four spaces on every regeneration is never stale -- each run
+    produces exactly what the next check compares against, one run later. Two new blocks
+    did exactly that: the substitution matches from the opening marker, so the marker's own
+    leading whitespace stays in the document, and prefixing the indent to the first line
+    too added it again each time. Four spaces, then eight, and eight spaces inside a
+    numbered list item is a markdown code fence, so the table rendered as literal text
+    with its pipes showing.
+
+    The check is the generator applied twice with no artefact change between: if the second
+    run reports a rewrite, the generator is not a function of the artefacts alone.
+    """
+    if not (ROOT / "artifacts" / "forward_other_metrics.json").exists():
+        return
+    before = {d: d.read_text(encoding="utf-8") for d in _docs()}
+    try:
+        first = subprocess.run(
+            [sys.executable, "scripts/sync_report_numbers.py"],
+            cwd=ROOT, capture_output=True, text=True,
+        )
+        assert first.returncode == 0, first.stderr[-600:]
+        after_one = {d: d.read_text(encoding="utf-8") for d in _docs()}
+        second = subprocess.run(
+            [sys.executable, "scripts/sync_report_numbers.py"],
+            cwd=ROOT, capture_output=True, text=True,
+        )
+        assert second.returncode == 0, second.stderr[-600:]
+        for doc in _docs():
+            assert doc.read_text(encoding="utf-8") == after_one[doc], (
+                f"{doc.name} changed on a second run with the same artefacts, so a block "
+                "is a function of the document as well as of its artefact:\n"
+                + second.stdout
+            )
+    finally:
+        for doc, text in before.items():
+            if doc.read_text(encoding="utf-8") != text:
+                doc.write_text(text, encoding="utf-8")
+
+
+def test_a_block_inside_a_list_item_stays_at_the_list_indent() -> None:
+    """Four spaces continues the item; eight is a code fence.
+
+    The compounding bug above rendered a table as literal text. The symptom is mechanical
+    and checkable without running the generator: no generated marker may sit deeper than
+    the indent of the list item it belongs to.
+    """
+    for doc in _docs():
+        for line in doc.read_text(encoding="utf-8").splitlines():
+            m = re.match(r"^([ \t]*)<!-- /?generated: ([a-z-]+) -->", line)
+            if not m:
+                continue
+            indent, name = m.group(1), m.group(2)
+            assert "\t" not in indent, f"{doc.name}: block '{name}' is tab-indented"
+            assert len(indent) in (0, 4), (
+                f"{doc.name}: block '{name}' sits at {len(indent)} spaces. Zero is section "
+                "top level and four continues a numbered list item; anything else is a "
+                "markdown code fence, which renders the block as literal text."
+            )
