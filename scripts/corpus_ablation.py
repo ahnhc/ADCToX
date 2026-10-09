@@ -97,6 +97,15 @@ def main() -> int:
     # The nesting claim, checked. A stage that is not a superset of the one before it makes
     # the ablation uninterpretable, because a difference could then come from arms that
     # were dropped rather than from arms that were added.
+    #
+    # Two arm counts, reported separately because they differ by 77 arms at the first step
+    # and conflating them is how this table gets misread. The corpus count is what the
+    # merge wrote. The grid count is what the fit sees, and three filters stand between
+    # them: an attributable agent, a denominator of at least 30, and a conventional
+    # conjugate. A fourth was added later -- an arm enters a table's grid only if it
+    # published that table -- and it accounts for 5 of the 77; the pre-existing three
+    # account for the rest. The nesting verdict is about the corpus, which is the right
+    # level for it: a stage that drops a corpus arm makes the ablation uninterpretable.
     nesting: list[dict] = []
     order = [n for n in stages if n in described]
     for prev, cur in zip(order, order[1:]):
@@ -104,8 +113,9 @@ def main() -> int:
         b = set(pd.read_parquet(stages[cur] / "arms.parquet")["arm_key"])
         nesting.append({
             "from": prev, "to": cur,
-            "arms_added": len(b - a),
-            "arms_dropped": len(a - b),
+            "corpus_arms_added": len(b - a),
+            "corpus_arms_dropped": len(a - b),
+            "grid_arms_added": described[cur]["n_arms"] - described[prev]["n_arms"],
             "is_superset": not (a - b),
         })
 
@@ -118,8 +128,9 @@ def main() -> int:
     print()
     for n in nesting:
         verdict = "nested" if n["is_superset"] else "NOT NESTED"
-        print(f"  {n['from']} -> {n['to']}: +{n['arms_added']} arms, "
-              f"-{n['arms_dropped']} dropped  [{verdict}]")
+        print(f"  {n['from']} -> {n['to']}: corpus +{n['corpus_arms_added']} arms, "
+              f"-{n['corpus_arms_dropped']} dropped; "
+              f"grid +{n['grid_arms_added']}  [{verdict}]")
     print()
     for name in order:
         d = described[name]

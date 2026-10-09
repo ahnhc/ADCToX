@@ -447,13 +447,13 @@ generated block above.
 ### A free negative control, and a second correction to the same coefficient
 
 The `seriousEvents` table carries **no censoring at all** -- every missing cell there is a
-genuine zero, 0 of 3,990 cells are censored. So a censoring adjustment fitted on that
+genuine zero, 0 of its 3,976 cells are censored. So a censoring adjustment fitted on that
 table should be zero. It is not:
 
 | table | censored cells | `b_thresh` |
 |---|---|---|
 | otherEvents | 471 of 3,990 | +0.033 [+0.028, +0.039] |
-| seriousEvents | **0** of 3,990 | **+0.131 [+0.113, +0.147]** |
+| seriousEvents | **0** of 3,976 | **+0.131 [+0.113, +0.147]** |
 
 The coefficient is four times *larger* where there is nothing to correct. So the reporting
 threshold is substantially a **trial-level descriptor** -- trials that set a high
@@ -701,18 +701,24 @@ routes to new agents.
 
 ### Why arms are not agents, measured in one table
 
-| stage | agents | arms | cells | cells that identify a design coefficient | viable LOMO folds |
+| stage | agents | arms in the grid | cells | cells that identify a design coefficient | viable LOMO folds |
 |---|---|---|---|---|---|
 | ClinicalTrials.gov only | 16 | 285 | 3,990 | 224 | 2 |
-| + literature arms for agents already present | 17 | 525 | 7,350 | 238 | 2 |
-| + literature agents | 32 | 594 | 8,316 | 448 | 3 |
+| + literature arms for agents already present | 17 | 520 | 7,280 | 238 | 2 |
+| + literature agents | 32 | 588 | 8,232 | 448 | 3 |
 
 The three corpora nest exactly -- 312 arms added at the first step and 102 at the second,
 with **zero** arms dropped at either -- so a difference between fits is attributable to
 what was added. That is checked in `artifacts/corpus_ablation.json`, not assumed.
 
-Read the fourth column against the second. The first step adds 312 arms and 3,360 cells
-and buys **14** identifying cells. The second adds 102 arms and buys **210**. Section 2
+The arms column is the grid and not the corpus, and the two differ by 77 arms at the first
+step. Four filters stand between them: an attributable agent, a denominator of at least 30,
+a conventional conjugate, and publishing the table in question. The artefact reports both
+counts side by side, because reading a corpus figure off a grid column is how this table
+gets misread.
+
+Read the fourth column against the second. The first step adds 312 corpus arms and 3,290
+cells and buys **14** identifying cells. The second adds 102 and buys **210**. Section 2
 states the reason abstractly; this is it arithmetically. Design features are agent-level
 constants, so arms of an agent already in the corpus are additional observations of its
 trial populations and *no* additional observation of its chemistry.
@@ -737,12 +743,12 @@ This is what the ablation was built to detect, and the cell composition says wha
 | | observed | censored |
 |---|---|---|
 | ClinicalTrials.gov only | 86.2% | 11.8% |
-| + literature arms | 60.3% | **36.5%** |
-| + literature agents | 58.6% | 38.6% |
+| + literature arms | 60.9% | **35.9%** |
+| + literature agents | 59.2% | 38.0% |
 
 **A paper's adverse-event table is sparse in a way a registry record is not.** A registry
 arm reports most of its organs; a paper reports a handful, so the other ten or eleven axes
-arrive as censored cells. Of the 3,360 cells the literature arms add, about 2,200 are
+arrive as censored cells. Of the 3,290 cells the literature arms add, about 2,140 are
 censored -- and for 83% of paper arms the censoring boundary is an *upper* bound derived
 from the minimum printed rate rather than a stated cut. So the model is told "this organ's
 rate is below X" with X too large, for thousands of cells at once. Section 5g's threshold
@@ -757,6 +763,44 @@ appear there.
 It also sharpens what the 32-agent fit can show. If more agents improve things despite
 carrying the same sparsity, the agents are doing real work; if they do not, the literature
 path needs the threshold handled differently before its arms belong in the corpus at all.
+
+### The expansion buys one table and not the other, and a bug was hiding it
+
+The literature expansion was measured on the common-events table, where it takes the corpus
+from 16 agents to 32. On the serious table it buys almost nothing: **17 agents, 290 arms.**
+405 of the 414 literature arms publish no serious-adverse-event table at all -- neither a
+denominator nor a single row -- so the serious fit sees 9 new arms, and the registry's 284.
+
+| table | agents | arms | cells |
+|---|---|---|---|
+| otherEvents | **32** | 588 | 8,232 |
+| seriousEvents | **17** | 290 | 4,060 |
+
+This was invisible until it was looked for, because the corpus builder was manufacturing the
+missing arms. An arm's denominator is stored per table, but the arm-level `n_at_risk` is the
+*maximum* of the two, and the grid builder fell back to it whenever the per-table value was
+absent. So an arm that published only a common-events table still carried a positive
+denominator when the serious grid was built, with every axis missing: **4,256 cells, none of
+them observed,** each asserting either a zero or a censoring bound for a table the paper
+never printed. The serious grid looked like 8,316 cells over 594 arms. It was 4,060 over
+290, and the padding was all fabrication.
+
+The consequence is not only that a bug is gone. **The serious table cannot serve as the
+robustness check for the expanded corpus**, which is the role section 5b gives it and the
+role it still plays for the registry. Where the two tables disagree on an expanded-corpus
+agent, there is usually no serious evidence for that agent to disagree with. Section 5c's
+finding -- that the two tables rank organs differently, and that the serious table recovers
+the boxed warnings -- was measured on the registry and stands there; it does not extend to
+the 16 agents the literature added.
+
+A second, smaller correction came out of the same place. ClinicalTrials.gov `seriousEvents`
+really is complete -- the registry lists every serious event with no frequency cut -- so an
+absent organ there is a true zero, and the builder encoded that. But a paper's serious table
+is selected like any other table, and the completeness branch fired before the
+selected-absence check, so the 9 literature arms that *do* publish one were asserting zeros
+for about 81 axes they never reported. A zero is a stronger false statement than a bound, so
+completeness is now claimed only for arms whose cut is not merely derived from their own
+printed rates. Registry arms are never in that category, and their rows are unchanged.
 
 ### What the third fold costs and what it buys
 
@@ -1241,6 +1285,13 @@ neurologic.
     `+` -- the stub column of a cross-tab or an over-caught baseline table. Separating
     them moved the mapping rate from 40.7% to 53.7%, against the plan's 50.5%, without a
     single new dictionary entry.
+20. **The corpus expansion buys one event table and not the other.** The literature arms
+    take the common-events table from 16 agents to 32, and the serious table from 16 to
+    **17**: 405 of 414 literature arms publish no serious-adverse-event table at all. This
+    was hidden by a builder that fell back to the arm's other-table denominator, padding
+    the serious grid with 4,256 cells -- none observed -- that asserted a zero or a bound
+    for a table the paper never printed. The serious table remains the robustness check for
+    the registry corpus and cannot be one for the expanded corpus.
 
 ## 10. Limitations
 

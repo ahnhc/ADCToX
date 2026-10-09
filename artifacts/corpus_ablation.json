@@ -1,10 +1,10 @@
 {
   "provenance": {
-    "revision": "bb49b78e444989d779367c1977b1201b96560ce4",
+    "revision": "0bd279a11ca134cdf9d9b5c837727209d8c31865",
     "dirty": true,
-    "snapshot": null,
+    "snapshot": "2026-10-07",
     "script": "corpus_ablation.py",
-    "written_utc": "2026-10-09T05:42:48+00:00",
+    "written_utc": "2026-10-09T06:10:54+00:00",
     "inputs": {}
   },
   "min_agents_for_fold": 3,
@@ -72,16 +72,16 @@
       ]
     },
     "plus_literature_arms": {
-      "summary": "7,350 cells over 525 arms x 14 axes (4,433 observed, 2,684 censored, 233 structural zero) | 17 agents, 5 mechanisms, 7 payload families, 66 multi-arm trials (350 arms from single-arm trials carry no trial effect)",
-      "observed_share": 0.6031292517006803,
-      "censored_share": 0.36517006802721086,
+      "summary": "7,280 cells over 520 arms x 14 axes (4,433 observed, 2,614 censored, 233 structural zero) | 17 agents, 5 mechanisms, 7 payload families, 66 multi-arm trials (350 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.6089285714285714,
+      "censored_share": 0.35906593406593407,
       "n_agents": 17,
-      "n_arms": 525,
-      "n_cells": 7350,
+      "n_arms": 520,
+      "n_cells": 7280,
       "n_axes": 14,
       "identifying_cells": 238,
       "n_observed": 4433,
-      "n_censored": 2684,
+      "n_censored": 2614,
       "mechanisms": {
         "dna_alkyl": {
           "agents": 1,
@@ -135,16 +135,16 @@
       ]
     },
     "plus_literature_agents": {
-      "summary": "8,316 cells over 594 arms x 14 axes (4,874 observed, 3,209 censored, 233 structural zero) | 32 agents, 5 mechanisms, 8 payload families, 74 multi-arm trials (390 arms from single-arm trials carry no trial effect)",
-      "observed_share": 0.5860990860990861,
-      "censored_share": 0.3858826358826359,
+      "summary": "8,232 cells over 588 arms x 14 axes (4,874 observed, 3,125 censored, 233 structural zero) | 32 agents, 5 mechanisms, 8 payload families, 74 multi-arm trials (390 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.5920796890184645,
+      "censored_share": 0.37961613216715256,
       "n_agents": 32,
-      "n_arms": 594,
-      "n_cells": 8316,
+      "n_arms": 588,
+      "n_cells": 8232,
       "n_axes": 14,
       "identifying_cells": 448,
       "n_observed": 4874,
-      "n_censored": 3209,
+      "n_censored": 3125,
       "mechanisms": {
         "dna_alkyl": {
           "agents": 2,
@@ -218,15 +218,17 @@
     {
       "from": "registry_only",
       "to": "plus_literature_arms",
-      "arms_added": 312,
-      "arms_dropped": 0,
+      "corpus_arms_added": 312,
+      "corpus_arms_dropped": 0,
+      "grid_arms_added": 235,
       "is_superset": true
     },
     {
       "from": "plus_literature_arms",
       "to": "plus_literature_agents",
-      "arms_added": 102,
-      "arms_dropped": 0,
+      "corpus_arms_added": 102,
+      "corpus_arms_dropped": 0,
+      "grid_arms_added": 68,
       "is_superset": true
     }
   ],

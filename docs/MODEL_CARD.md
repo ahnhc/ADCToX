@@ -27,13 +27,19 @@ results or say nothing about them.
 
 | | ClinicalTrials.gov only | + literature |
 |---|---|---|
-| arms (attributable, n>=30, conventional ADC) | 285 | 594 |
-| (arm x axis) cells | 3,990 | 8,316 |
+| arms (attributable, n>=30, conventional ADC) | 285 | 588 |
+| (arm x axis) cells | 3,990 | 8,232 |
 | distinct agents | 16 | 32 |
 | **identifying cells (agents x axes)** | **224** | **448** |
 | design parameters | 100 | 100 |
 | ratio against identifying cells | 2.24 : 1 | 4.48 : 1 |
 | mechanisms with 3+ agents (a usable held-out fold) | 2 | 3 |
+
+Both columns are the **common-events** table. On the serious table the extension buys
+almost nothing -- 17 agents over 290 arms, against the registry's 16 over 284 -- because
+405 of the 414 literature arms publish no serious-adverse-event table at all. So the
+two-table comparison that this card uses as a robustness check is available for the
+registry corpus and not for the extended one.
 
 The second column is the point of the extension and the first column is what the results
 in this card rest on. Confusing the two would overstate the model: the corpus doubled, and

@@ -7,7 +7,7 @@ means the author *selected* rows, and absence then says almost nothing -- the se
 not a threshold on the rate.
 
 The first ablation round measured the cost of conflating them. Literature arms took the
-observed share from 86.2% to 60.3%, about 2,200 of their 3,360 cells are censored, 83% of
+observed share from 86.2% to 60.9%, about 2,140 of their 3,290 cells are censored, 83% of
 those carry a boundary derived from the arm's own minimum printed rate, and the
 leave-one-agent-out delta went from -0.0422 to -0.0782. The model was told "below X" with X
 too large, thousands of times.
@@ -57,7 +57,7 @@ def test_dropping_absences_keeps_every_arm_and_every_observation(axes) -> None:
                     reason="run `make pmc-merge`")
 def test_it_restores_the_registry_s_observed_share(axes) -> None:
     """The diagnosis, stated as a threshold. The registry corpus is 86.2% observed; the
-    literature-augmented one falls to 58.6%, which is what made it worse than its baseline.
+    literature-augmented one falls to 59.2%, which is what made it worse than its baseline.
     Dropping the uninformative absences brings it back above 80%."""
     dropped = ds.load(FULL, axes, kind="other", drop_uninformative_absences=True)
     share = int((dropped.status == 0).sum()) / int(dropped.n_cells)

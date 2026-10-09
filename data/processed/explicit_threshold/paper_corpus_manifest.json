@@ -1,13 +1,13 @@
 {
   "provenance": {
-    "revision": "5dc97050e605b247244e6d4eb3da5e4fbbada53f",
-    "dirty": true,
-    "snapshot": null,
+    "revision": "0bd279a11ca134cdf9d9b5c837727209d8c31865",
+    "dirty": null,
+    "snapshot": "2026-10-07",
     "script": "merge_literature_corpus.py",
-    "written_utc": "2026-10-09T01:53:44+00:00",
+    "written_utc": "2026-10-09T06:05:57+00:00",
     "inputs": {
-      "cells": "sha256:138dd4b9fb5267a0e35f61b176bb279705806de5f4007dea50d59f72c35d3fd3",
-      "registry": "sha256:9a5a2d8bb098a42caa825eab6be011a2ab5659b9185fe930279114506c4c2aa9"
+      "cells": "sha256:ecb023f2e88e9d2005e591325c0ca895d0ffce1b9a73ba25b8dc223830647aae",
+      "registry": "sha256:1631f64d4b158ca49fdbe1216b266e360dfebc8457dd872659c2ce2423f7b4d7"
     }
   },
   "filters": {
@@ -15,23 +15,27 @@
     "include_registry_overlap": false,
     "explicit_threshold_only": true
   },
-  "n_cells_in": 4781,
-  "n_cells_kept": 572,
-  "n_arms": 52,
-  "n_observations": 252,
-  "n_agents": 7,
-  "n_trials": 2,
+  "n_cells_in": 6535,
+  "n_cells_kept": 887,
+  "n_arms": 67,
+  "n_observations": 375,
+  "n_agents": 11,
+  "n_trials": 4,
   "n_arms_threshold_upper_bound": 0,
   "arms_per_agent": {
     "datopotamab_deruxtecan": 20,
     "belantamab_mafodotin": 12,
+    "disitamab_vedotin": 7,
     "telisotuzumab_vedotin": 6,
     "sacituzumab_govitecan": 6,
     "mirvetuximab_soravtansine": 4,
+    "cofetuzumab_pelidotin": 4,
+    "anetumab_ravtansine": 3,
     "brentuximab_vedotin": 3,
-    "polatuzumab_vedotin": 1
+    "polatuzumab_vedotin": 1,
+    "rovalpituzumab_tesirine": 1
   },
   "arms_per_gate": {
-    "title": 52
+    "title": 67
   }
 }
