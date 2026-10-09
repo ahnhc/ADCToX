@@ -208,3 +208,63 @@ def test_nothing_supplies_selectivity_so_c3_cannot_fire() -> None:
         "something now supplies a selectivity value, so C3 can fire:\n  "
         + "\n  ".join(callers)
     )
+
+
+def test_the_waterfall_sums_to_the_rate_across_a_sweep() -> None:
+    """The decomposition's honesty, measured rather than argued.
+
+    `driver_sum` reports the gap between the model terms' sum and the rate the row shows,
+    with a note saying the difference is Jensen's inequality: the terms are posterior means
+    in logit space, so they decompose the mean logit exactly and the mean rate only
+    approximately. That note is only acceptable if the gap is small, and "small" was never
+    measured.
+
+    Over six payload chemistries by four comorbidity profiles -- 336 rows -- the largest
+    absolute gap is 0.0047 and the median 0.0012. The bound here is 0.01, loose enough to
+    survive a refit and tight enough to catch the failure it is for: a term added to the
+    model and not to the decomposition, which is the same class of bug as the model terms
+    once being omitted from the driver list entirely and leaving a banded axis with no
+    account of its band.
+    """
+    import numpy as np
+    from fastapi.testclient import TestClient
+
+    from adctox.api.main import app
+
+    client = TestClient(app)
+    designs = [
+        ("DXd", "GGFG", "interchain_cysteine", 8.0),
+        ("MMAE", "vc_PABC", "interchain_cysteine", 4.0),
+        ("DM1", "SMCC", "lysine", 3.5),
+        ("MMAF", "mc", "interchain_cysteine", 4.0),
+        ("SG3199", "val_ala_PABC_PEG8", "interchain_cysteine", 2.0),
+        ("DGN549", "SMCC", "lysine", 2.0),
+    ]
+    profiles = [
+        [], ["cirrhosis"],
+        ["ckd_stage_4_5", "interstitial_lung_disease"], ["severe_psoriasis"],
+    ]
+    gaps = []
+    for payload, linker, conj, dar in designs:
+        for conditions in profiles:
+            r = client.post("/api/v1/assess", json={
+                "design": {
+                    "target_antigen": "ERBB2", "payload": payload, "linker": linker,
+                    "conjugation": conj, "dar": dar,
+                    "isotype": "IgG1", "masking": "none",
+                },
+                "comorbidity_profile": {"conditions": conditions},
+            })
+            if r.status_code != 200:
+                continue
+            for row in r.json().get("organ_risks", []):
+                summary = row.get("driver_sum") or {}
+                if summary.get("gap") is not None:
+                    gaps.append(abs(summary["gap"]))
+
+    assert len(gaps) > 300, len(gaps)
+    worst = float(np.max(gaps))
+    assert worst < 0.01, (
+        f"the driver waterfall misses {worst:.4f} of the rate at worst; a term is in the "
+        "model and not in the decomposition"
+    )

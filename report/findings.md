@@ -437,6 +437,23 @@ boxed warnings unprompted: calicheamicin tops hepatic at +0.70 (veno-occlusive d
 topoisomerase-I payloads top pulmonary and gastrointestinal, tubulin payloads place
 neurologic in their top three.
 
+### The per-axis explanation adds up, and that was never checked
+
+Every organ row carries a waterfall: the fitted terms that produced its rate, each with its
+source, plus the label rules and expression flags that may have raised its band. The
+response also reports the gap between the terms' sum and the rate shown, with a note saying
+the difference is Jensen's inequality -- the terms are posterior means in logit space, so
+they decompose the mean logit exactly and the mean rate only approximately.
+
+That note is only acceptable if the gap is small, and it had never been measured. Over six
+payload chemistries by four comorbidity profiles, 336 rows: **largest absolute gap 0.0047,
+median 0.0012.** So a reader adding up the contributions on screen lands within half a
+percentage point of the number above them, and the explanation is an explanation rather than
+an illustration. A test holds the worst case under 0.01, which is the failure it is for -- a
+term added to the model and not to the decomposition. That is not hypothetical: the model
+terms were once omitted from the driver list altogether, which left a banded axis showing a
+band and a weight with no account of either.
+
 ## 5b. Is the censoring treatment recovering signal or creating it?
 
 This is the project's most consequential modelling choice, so it is tested rather than

@@ -28,7 +28,7 @@ ART     := artifacts
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
         corpus-ablation discover mondo-audit mondo-axes exclusion-holdout \
-        rank-resolution dar-gap \
+        rank-resolution dar-gap driver-waterfall \
         label-impairment inverse-retrieval comorbidity literature expensive \
         pmc-fetch-discovered pmc-fetch-codenames
 
@@ -38,7 +38,7 @@ ART     := artifacts
 all: taxonomy corpus forward censoring-sensitivity expression enrichment module-b \
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent \
-     rank-resolution check-report
+     rank-resolution driver-waterfall check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
 # comparison. Both depend on fetched label data, so the fetches are separate targets --
@@ -287,6 +287,12 @@ rank-resolution: ## how often the proposal ranking resolves, over targets x prof
 # corpus measurements, and `all` stays offline.
 dar-gap: ## search the harvested articles for the registry's missing DAR values
 	$(PY) scripts/dar_gap.py
+
+# Does the per-axis explanation add up to the number above it? The waterfall's own gap,
+# measured across the design space, because the Jensen's-inequality note beside it is only
+# acceptable if the gap is small and that had never been checked.
+driver-waterfall: ## the gap between the driver terms' sum and the rate they explain
+	$(PY) scripts/driver_waterfall.py
 
 discover: ## find every ADC that has published, by payload-linker name stem
 	$(PY) scripts/discover_adc_agents.py --out $(ART)/adc_discovery.json --retmax 400
