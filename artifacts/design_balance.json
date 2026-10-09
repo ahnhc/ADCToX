@@ -3,6 +3,43 @@
  "corpora": {
   "registry": {
    "agents": 22,
+   "dar": {
+    "median": 4.0,
+    "within_mechanism_variance_share": 0.3991,
+    "by_mechanism": {
+     "dna_alkyl": {
+      "agents": 2,
+      "min": 2.8,
+      "max": 4.66,
+      "sd": 0.929
+     },
+     "dna_cleave": {
+      "agents": 2,
+      "min": 2.5,
+      "max": 6.0,
+      "sd": 1.75
+     },
+     "dna_crosslink": {
+      "agents": 4,
+      "min": 2.0,
+      "max": 4.66,
+      "sd": 1.037
+     },
+     "topo1": {
+      "agents": 4,
+      "min": 4.0,
+      "max": 8.0,
+      "sd": 1.682
+     },
+     "tubulin": {
+      "agents": 10,
+      "min": 3.5,
+      "max": 4.66,
+      "sd": 0.334
+     }
+    },
+    "note": "A low within-mechanism share means DAR carries mechanism identity, and `mech_axis` already has 14 parameters for that, so `b_dar` would be identified by nothing of its own."
+   },
    "cleavability": {
     "cleavable_agents": 19,
     "non_cleavable_agents": 3,
@@ -40,6 +77,43 @@
   },
   "expanded": {
    "agents": 32,
+   "dar": {
+    "median": 4.0,
+    "within_mechanism_variance_share": 0.418,
+    "by_mechanism": {
+     "dna_alkyl": {
+      "agents": 2,
+      "min": 2.8,
+      "max": 4.7,
+      "sd": 0.949
+     },
+     "dna_cleave": {
+      "agents": 2,
+      "min": 2.5,
+      "max": 6.0,
+      "sd": 1.75
+     },
+     "dna_crosslink": {
+      "agents": 5,
+      "min": 2.0,
+      "max": 4.7,
+      "sd": 1.18
+     },
+     "topo1": {
+      "agents": 7,
+      "min": 4.0,
+      "max": 8.0,
+      "sd": 1.585
+     },
+     "tubulin": {
+      "agents": 16,
+      "min": 3.1,
+      "max": 4.7,
+      "sd": 0.474
+     }
+    },
+    "note": "A low within-mechanism share means DAR carries mechanism identity, and `mech_axis` already has 14 parameters for that, so `b_dar` would be identified by nothing of its own."
+   },
    "cleavability": {
     "cleavable_agents": 29,
     "non_cleavable_agents": 3,
@@ -77,6 +151,43 @@
   },
   "merged": {
    "agents": 65,
+   "dar": {
+    "median": 4.0,
+    "within_mechanism_variance_share": 0.5555,
+    "by_mechanism": {
+     "dna_alkyl": {
+      "agents": 2,
+      "min": 2.8,
+      "max": 4.55,
+      "sd": 0.875
+     },
+     "dna_cleave": {
+      "agents": 4,
+      "min": 2.0,
+      "max": 6.0,
+      "sd": 1.613
+     },
+     "dna_crosslink": {
+      "agents": 8,
+      "min": 2.0,
+      "max": 4.55,
+      "sd": 0.817
+     },
+     "topo1": {
+      "agents": 10,
+      "min": 4.0,
+      "max": 8.0,
+      "sd": 1.632
+     },
+     "tubulin": {
+      "agents": 41,
+      "min": 2.0,
+      "max": 4.55,
+      "sd": 0.891
+     }
+    },
+    "note": "A low within-mechanism share means DAR carries mechanism identity, and `mech_axis` already has 14 parameters for that, so `b_dar` would be identified by nothing of its own."
+   },
    "cleavability": {
     "cleavable_agents": 48,
     "non_cleavable_agents": 17,
@@ -116,6 +227,11 @@
   }
  },
  "summary": {
+  "dar_within_mechanism_share": {
+   "registry": 0.3991,
+   "expanded": 0.418,
+   "merged": 0.5555
+  },
   "corpora_meeting_the_floor": [
    "merged"
   ],
@@ -125,11 +241,11 @@
   ]
  },
  "provenance": {
-  "revision": "ce0da9cf61cfbbf2b452027007a627ce4ea6c7d2",
+  "revision": "b83606c2f0fd185bf559323f45bb089744fb4c5d",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "design_balance.py",
-  "written_utc": "2026-10-09T18:30:07+00:00",
+  "written_utc": "2026-10-09T18:44:19+00:00",
   "inputs": {}
  }
 }

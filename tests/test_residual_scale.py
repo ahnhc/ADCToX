@@ -297,3 +297,32 @@ def test_the_balance_measurement_counts_agents_and_not_arms() -> None:
                     for d in c["by_mechanism"].values())
         assert total == corpus["agents"], (name, total, corpus["agents"])
         assert c["nested_in_one_mechanism"] == (len(c["mechanisms_with_variation"]) == 1)
+
+
+def test_dar_balance_is_measured_as_variance_within_mechanisms() -> None:
+    """DAR is continuous, so "both sides" is the wrong question for it.
+
+    `mech_axis` carries fourteen parameters per mechanism, so a DAR that only separates
+    mechanisms is identified by nothing of its own. The quantity is the share of
+    between-agent DAR variance sitting *within* mechanisms: 0.3991 on the registry corpus,
+    0.5555 on the merged one, which is the likeliest reason `b_dar` becomes clear of zero
+    there. See negative result 54.
+    """
+    import json
+    import pathlib
+
+    path = pathlib.Path(__file__).resolve().parents[1] / "artifacts" / "design_balance.json"
+    if not path.exists():
+        return
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    shares = doc["summary"]["dar_within_mechanism_share"]
+    for name, corpus in doc["corpora"].items():
+        dar = corpus["dar"]
+        share = dar["within_mechanism_variance_share"]
+        assert share is None or 0.0 <= share <= 1.0, name
+        assert shares[name] == share, name
+        # Agents must add up across mechanisms, or this is counting arms.
+        assert sum(d["agents"] for d in dar["by_mechanism"].values()) == corpus["agents"]
+        for m, d in dar["by_mechanism"].items():
+            assert d["min"] <= d["max"], (name, m)
+            assert d["sd"] >= 0.0, (name, m)

@@ -2596,6 +2596,22 @@ neurologic.
     and states what the contrast rests on, which is the thing the old claim asserted and
     never counted.
 
+    **The model's other design feature has the same shape of problem and the same
+    resolution.** DAR is the only continuous one, so its balance question is not "are there
+    agents on both sides" but "does it vary *inside* a mechanism" -- because `mech_axis`
+    already carries fourteen parameters per mechanism, and a DAR that only separates
+    mechanisms would be identified by nothing of its own. Measured as the share of
+    between-agent DAR variance that sits within mechanisms: **0.3991** on the registry
+    corpus, **0.4180** at 32 agents, **0.5555** at 65. So DAR is substantially collinear
+    with mechanism on the corpus this report's results come from, and the merge is what
+    makes it identifiable.
+
+    That is the likeliest reading of `b_dar` moving from +0.0456 including zero to clear of
+    zero on the merged corpus: not a DAR effect appearing, but a coefficient becoming
+    estimable. Both of the model's design features behave the same way across this merge --
+    the contrast that could not be identified was shrunk toward zero, and the one that can
+    be is not. **An effect that grows when the corpus grows is not thereby a larger effect.**
+
 ## 9b. The clean-clone check, run for the first time
 
 The plan's own acceptance test was `git clone` followed by `make all`, with the report's

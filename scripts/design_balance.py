@@ -75,8 +75,43 @@ def main() -> int:
             by_mech[mech_of_agent[agent]][0 if value == 0 else 1] += 1
         varying = [m for m, (a, b) in by_mech.items() if a and b]
 
+        # DAR is the model's only continuous design feature, and its balance question is
+        # different: not "are there agents on both sides" but "does it vary *inside* a
+        # mechanism". If it does not, `b_dar` competes with a 14-parameter `mech_axis`
+        # vector for the same information and is identified by nothing of its own.
+        dar_of_agent: dict[int, float] = {}
+        for agent, dar_c in zip(data.arm_agent_idx, data.arm_dar_c):
+            dar_of_agent[int(agent)] = float(dar_c) + data.dar_mean
+        dar_by_mech: dict[str, list[float]] = collections.defaultdict(list)
+        for agent, value in dar_of_agent.items():
+            dar_by_mech[mech_of_agent[agent]].append(value)
+        all_dar = np.array(list(dar_of_agent.values()))
+        grand = float(all_dar.mean())
+        within = float(sum(
+            float(((np.array(v) - np.mean(v)) ** 2).sum()) for v in dar_by_mech.values()
+        ))
+        between = float(sum(
+            len(v) * (float(np.mean(v)) - grand) ** 2 for v in dar_by_mech.values()
+        ))
+        total = within + between
+
         corpora[name] = {
             "agents": len(values),
+            "dar": {
+                "median": round(float(np.median(all_dar)), 3),
+                "within_mechanism_variance_share": (
+                    round(within / total, 4) if total else None
+                ),
+                "by_mechanism": {
+                    m: {"agents": len(v), "min": round(float(np.min(v)), 2),
+                        "max": round(float(np.max(v)), 2),
+                        "sd": round(float(np.std(v)), 3)}
+                    for m, v in sorted(dar_by_mech.items())
+                },
+                "note": ("A low within-mechanism share means DAR carries mechanism "
+                         "identity, and `mech_axis` already has 14 parameters for that, so "
+                         "`b_dar` would be identified by nothing of its own."),
+            },
             "cleavability": {
                 "cleavable_agents": n_cleav,
                 "non_cleavable_agents": n_non,
@@ -97,6 +132,9 @@ def main() -> int:
         "binary_agent_floor": BINARY_AGENT_FLOOR,
         "corpora": corpora,
         "summary": {
+            "dar_within_mechanism_share": {
+                k: v["dar"]["within_mechanism_variance_share"] for k, v in corpora.items()
+            },
             "corpora_meeting_the_floor": [
                 k for k, v in corpora.items()
                 if v["cleavability"]["meets_binary_agent_floor"]
@@ -124,6 +162,12 @@ def main() -> int:
         print(f"{name}: " + ", ".join(
             f"{m} {d['non_cleavable']}/{d['non_cleavable'] + d['cleavable']}"
             for m, d in c["by_mechanism"].items()) + "   (non-cleavable / agents)")
+    print()
+    print("DAR, the only continuous design feature: does it vary inside a mechanism?")
+    for name, v in corpora.items():
+        d = v["dar"]
+        print(f"  {name:10} median {d['median']:.2f}  within-mechanism variance share "
+              f"{d['within_mechanism_variance_share']}")
     print(f"-> {args.out}")
     return 0
 
