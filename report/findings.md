@@ -2437,15 +2437,22 @@ neurologic.
 
     Refitting the same corpus with `--drop-uninformative-absences` -- which treats an absent
     organ in an arm whose reporting cut is only an upper bound as *no information* rather
-    than as a censored observation -- takes the censored cells from 2,003 to **663** and the
-    seed gap from 0.722 to **0.190, acceptable**. So the non-convergence was the censoring
-    model applied to literature arms with uninformative bounds, which is the second suspect
-    result 47 names and not the agent-source collinearity of result 39.
+    than as a censored observation -- takes the censored cells from 2,003 to **663**, the
+    censored share from **30%** to **12%**, which is the registry corpus's share, and the
+    seed gap from **0.7219** to **0.1896, acceptable**. So the non-convergence was the
+    censoring model applied to literature arms with uninformative bounds, which is the
+    second suspect result 47 names and not the agent-source collinearity of result 39.
 
-    And the degradation survives the fix on both splits that have finished.
-    Leave-one-mechanism-out is **-0.156 [-0.259, -0.073]** on the converged variant against
-    the broken fit's -0.161, and leave-one-family-out **-0.155 [-0.218, -0.086]** against
-    -0.151: unchanged to within a thousandth, and still excluding zero. **So the expansion genuinely degrades held-out prediction, and that is
+    And the degradation survives the fix on all three splits:
+
+    | split | 32 agents, default | 32 agents, absences dropped |
+    |---|---|---|
+    | leave-one-mechanism-out | -0.1613 [-0.2622, -0.0569] | **-0.1564 [-0.2587, -0.0729]** |
+    | leave-one-family-out | -0.1509 [-0.2161, -0.0783] | **-0.1547 [-0.2181, -0.0856]** |
+    | leave-one-agent-out | -0.0972 [-0.1260, -0.0712] | **-0.1057 [-0.1460, -0.0682]** |
+
+    Two move by under a hundredth and the agent split gets slightly *worse*. Every interval
+    still excludes zero. **So the expansion genuinely degrades held-out prediction, and that is
     not an artefact of a fit that would not converge** -- the convergence excuse was
     available for an hour and the measurement removed it.
 

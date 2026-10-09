@@ -41,8 +41,20 @@
   },
   {
    "fit": "32 agents, absences dropped",
-   "status": "not fitted yet",
-   "absences_dropped": true
+   "status": "fitted",
+   "absences_dropped": true,
+   "agents": 32,
+   "cells": 5408,
+   "censored": 663,
+   "censored_share": 0.1226,
+   "identifying_cells": 448,
+   "cells_per_design_parameter": 4.48,
+   "worst_seed_gap": 0.18961459398269653,
+   "seed_threshold": 0.3,
+   "converged": true,
+   "tau_mech": 0.5649186968803406,
+   "tau_cleav": 0.3121851682662964,
+   "sigma_agent": 1.3117543458938599
   },
   {
    "fit": "explicit cuts only",
@@ -66,18 +78,18 @@
   }
  ],
  "summary": {
-  "n_fitted": 2,
-  "n_converged": 1,
+  "n_fitted": 3,
+  "n_converged": 2,
   "failed": [
    "32 agents, default"
   ]
  },
  "provenance": {
-  "revision": "98c31d4234c15a60ec638212632660150da417bc",
-  "dirty": true,
-  "snapshot": null,
+  "revision": "64707eaea4def8a117ac64d4764a74f4e965fb98",
+  "dirty": false,
+  "snapshot": "2026-10-07",
   "script": "convergence_conditions.py",
-  "written_utc": "2026-10-09T18:23:45+00:00",
+  "written_utc": "2026-10-09T18:59:44+00:00",
   "inputs": {}
  }
 }
