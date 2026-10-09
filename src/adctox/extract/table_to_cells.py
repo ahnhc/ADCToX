@@ -82,6 +82,40 @@ def combination_pattern(conf: pathlib.Path = COMBINATION_CONF) -> re.Pattern[str
     return re.compile(rf"(?<![A-Za-z0-9])(?:{alts})(?![A-Za-z0-9])", re.I)
 
 
+# A caption naming serious events as the table's *subject*. Distinct from the row
+# "Serious adverse events", which is an aggregate inside a common-events table -- the same
+# four words mean different things in the two positions.
+#
+# Which table a set of cells belongs to matters because the two rank organs differently
+# (measured mean rho +0.1455 on the registry corpus) and the model fits them separately,
+# with `serious` treated as complete reporting. A table misfiled as `serious` would have
+# its unreported axes recorded as true zeros instead of censored.
+SERIOUS_TABLE = re.compile(
+    # Modifiers go on either side of "serious": captions write both "serious
+    # treatment-related adverse events" and "treatment-related serious adverse events".
+    r"\b(?:[a-z][a-z-]*\s+){0,2}serious\s+(?:[a-z][a-z-]*\s+){0,2}"
+    r"(?:adverse\s+events?|teaes?|aes?)\b",
+    re.I,
+)
+# ... and the phrases that mean the table is the common-events one even though "serious"
+# appears somewhere in it. Checked first, because a caption reading "adverse events
+# occurring in >=10% of patients, including serious adverse events" is a common-events
+# table that happens to mention the word.
+COMMON_TABLE_OVERRIDE = re.compile(
+    r"occurring\s+in\s*[\u2265>]|\bin\s+[\u2265>]\s*\d|\ball[-\s]grades?\b"
+    r"|\bany[-\s]grade\b|\btreatment[-\s]emergent\s+adverse\s+events?\b",
+    re.I,
+)
+
+
+def table_kind(table: ParsedTable) -> str:
+    """'serious' or 'other', matching the registry's two event tables."""
+    blob = " ".join([table.label, table.caption, table.footer])
+    if COMMON_TABLE_OVERRIDE.search(blob):
+        return "other"
+    return "serious" if SERIOUS_TABLE.search(blob) else "other"
+
+
 # A column that is not a patient group at all.
 NON_ARM_HEADER = re.compile(
     r"\b(?:p[-\s]?value|hazard\s+ratio|odds\s+ratio|95%\s*ci|difference"
@@ -122,6 +156,7 @@ class TableExtraction:
     reason: str
     cells: list[ExtractedCell] = field(default_factory=list)
     threshold: Threshold | None = None
+    kind: str = "other"
     columns: list[ColumnAttribution] = field(default_factory=list)
     rows: list[MappedRow] = field(default_factory=list)
     counters: dict[str, int] = field(default_factory=dict)
@@ -192,10 +227,13 @@ def extract(
     def bump(key: str, by: int = 1) -> None:
         counters[key] = counters.get(key, 0) + by
 
+    kind = table_kind(table)
     if table.is_image_only:
-        return TableExtraction(False, "image_only", counters={"image_only": 1})
+        return TableExtraction(False, "image_only", kind=kind,
+                               counters={"image_only": 1})
     if not table.cells:
-        return TableExtraction(False, "empty_grid", counters={"empty_grid": 1})
+        return TableExtraction(False, "empty_grid", kind=kind,
+                               counters={"empty_grid": 1})
 
     cols = sorted({c.col for c in table.cells})
     attributions = [
@@ -220,6 +258,7 @@ def extract(
             "ambiguous_column: " + "; ".join(
                 f"col {a.col} ({a.header[:40]!r}): {a.reason}" for a in ambiguous[:3]
             ),
+            kind=kind,
             columns=attributions,
             counters=counters,
         )
@@ -230,8 +269,8 @@ def extract(
     ]
     if not usable_cols:
         bump("rejected_no_usable_column")
-        return TableExtraction(False, "no_usable_column", columns=attributions,
-                               counters=counters)
+        return TableExtraction(False, "no_usable_column", kind=kind,
+                               columns=attributions, counters=counters)
 
     rows: list[MappedRow] = []
     cells: list[ExtractedCell] = []
@@ -278,8 +317,8 @@ def extract(
 
     if not cells:
         bump("rejected_no_mapped_rows")
-        return TableExtraction(False, "no_mapped_rows", threshold=threshold,
+        return TableExtraction(False, "no_mapped_rows", threshold=threshold, kind=kind,
                                columns=attributions, rows=rows, counters=counters)
 
-    return TableExtraction(True, "ok", cells=cells, threshold=threshold,
+    return TableExtraction(True, "ok", cells=cells, threshold=threshold, kind=kind,
                            columns=attributions, rows=rows, counters=counters)

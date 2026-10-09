@@ -150,6 +150,7 @@ def main() -> int:
                 })
                 continue
             funnel["tables_accepted"] += 1
+            funnel[f"accepted_kind:{out.kind}"] += 1
             per_agent[agent]["tables_accepted"] += 1
             thr = out.threshold
             for c in out.cells:
@@ -174,6 +175,7 @@ def main() -> int:
                     "nct_id": nct,
                     "nct_provenance": nct_why,
                     "attribution_gate": gate,
+                    "caption_kind": out.kind,
                 })
 
     # ---- duplicate sources ------------------------------------------------------

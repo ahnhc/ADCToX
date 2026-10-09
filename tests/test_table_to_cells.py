@@ -292,3 +292,67 @@ def test_a_trial_of_two_combination_regimens_yields_nothing(tax) -> None:
     """), "brentuximab_vedotin", MINE, OTHERS, tax)
     assert not out.accepted and out.reason == "no_usable_column"
     assert out.cells == []
+
+
+SERIOUS_CAPTIONS = [
+    "Serious adverse events",
+    "Summary of serious treatment-related adverse events",
+    "Treatment-related serious adverse events",
+    "Table 3. Serious TEAEs",
+]
+COMMON_CAPTIONS = [
+    "Treatment-emergent adverse events occurring in ≥10% of patients",
+    "All-grade adverse events",
+    "Grade 3-4 adverse events",
+    "Adverse events of special interest",
+    "Adverse events occurring in ≥20% of patients, including serious adverse events",
+]
+
+
+@pytest.mark.parametrize("caption", SERIOUS_CAPTIONS)
+def test_a_serious_event_table_is_filed_as_serious(caption: str) -> None:
+    """The two tables rank organs differently -- measured mean rho +0.1455 on the registry
+    corpus -- and the model fits them separately, with `serious` treated as complete
+    reporting. A common-events table misfiled as serious would have its unreported axes
+    recorded as true zeros instead of censored."""
+    from adctox.extract.table_to_cells import table_kind
+    t = _table(f"""
+    <table-wrap><caption><p>{caption}</p></caption>
+      <table><tbody><tr><td>Nausea</td><td>4 (4.0)</td></tr></tbody></table>
+    </table-wrap>
+    """)
+    assert table_kind(t) == "serious", caption
+
+
+@pytest.mark.parametrize("caption", COMMON_CAPTIONS)
+def test_a_common_event_table_is_not_claimed_as_serious(caption: str) -> None:
+    """The last of these is the case the override exists for: a common-events table whose
+    caption mentions serious events in passing."""
+    from adctox.extract.table_to_cells import table_kind
+    t = _table(f"""
+    <table-wrap><caption><p>{caption}</p></caption>
+      <table><tbody><tr><td>Nausea</td><td>4 (4.0)</td></tr></tbody></table>
+    </table-wrap>
+    """)
+    assert table_kind(t) == "other", caption
+
+
+def test_the_row_phrase_and_the_caption_phrase_are_told_apart(tax) -> None:
+    """"Serious adverse events" is a table subject in a caption and an aggregate row
+    inside a common-events table. The same four words, two meanings, and getting it
+    backwards either drops a whole serious table or admits a 30% aggregate as an organ
+    rate."""
+    out = extract(_table("""
+    <table-wrap>
+      <caption><p>Treatment-emergent adverse events occurring in ≥10% of patients</p></caption>
+      <table>
+        <thead><tr><th>Event</th><th>Brentuximab vedotin (N = 100)</th></tr></thead>
+        <tbody>
+          <tr><td>Nausea</td><td>40 (40.0)</td></tr>
+          <tr><td>Serious adverse events</td><td>30 (30.0)</td></tr>
+        </tbody>
+      </table>
+    </table-wrap>
+    """), "brentuximab_vedotin", MINE, OTHERS, tax)
+    assert out.kind == "other"
+    assert [c.n for c in out.cells] == [40]
