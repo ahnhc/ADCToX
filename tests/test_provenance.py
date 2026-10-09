@@ -116,3 +116,33 @@ def test_a_clean_tree_records_false_and_not_null(tmp_path, monkeypatch):
     # And None stays reserved for "git could not answer", which is a different claim.
     monkeypatch.setattr(prov, "ROOT", tmp_path / "not-a-repo")
     assert prov.stamp()["dirty"] is None
+
+
+def test_the_snapshot_table_accounts_for_every_fetched_article() -> None:
+    """A documented snapshot table that does not add up is how a fourth snapshot sat on
+    disk, measured and unmentioned.
+
+    `pmc/<date>-discovery2` holds 7 articles for the five payload-linker stems whose first
+    sweep hit the fetch cap. It yields 0 parseable rate cells, which is the result section
+    5g's agent ceiling rests on -- and the documented table listed three snapshots summing
+    to 1,489 against the 1,496 files present. Checked against the yield artefacts rather
+    than the raw directory, so it holds on a clean clone where the snapshots are absent.
+    """
+    import re
+
+    root = Path(__file__).resolve().parents[1]
+    doc = (root / "docs" / "DATA_SOURCES.md").read_text(encoding="utf-8")
+    rows = re.findall(r"^\| `pmc/<date>[^|]*\|[^|]*\|\s*([\d,]+)\s*\|$", doc, re.M)
+    assert len(rows) >= 4, f"snapshot table has {len(rows)} rows"
+    documented = sum(int(n.replace(",", "")) for n in rows)
+
+    measured = 0
+    for name in ("table_yield", "discovery_yield", "codename_yield", "discovery2_yield"):
+        path = root / "artifacts" / f"{name}.json"
+        if not path.exists():
+            pytest.skip(f"{name}.json absent")
+        measured += json.loads(path.read_text(encoding="utf-8"))["totals"]["articles"]
+    assert documented == measured, (
+        f"the snapshot table documents {documented} articles; the yield artefacts "
+        f"measured {measured}"
+    )

@@ -71,13 +71,34 @@ which is why this is not a corner case.
   admits a term of art and excludes a reproduced sentence.
 
 Three snapshots were fetched, kept separate because each answered a different question and
-each is reproducible only with its own agent list:
+each is reproducible only with its own agent list. They overlap: **1,496 files for 1,471
+distinct articles**, because 25 papers answer to more than one of the three agent lists. A
+plain `cat` of the per-snapshot cell files therefore emitted 277 rows twice, and
+`scripts/merge_cell_files.py` now deduplicates and prints what it dropped -- a growing
+overlap is a signal about the fetch lists and a silent deduplication would hide it.
+
+The corpus itself was never affected, because the merge keys observations by (arm, axis,
+kind) and a duplicate collapses. The statistics computed per cell were: `pmc_validation.json`
+reported 6,535 paper cells and sized its rate comparison at 1,372 when fewer were distinct.
+And 149 of the 277 were not duplicates at all -- same article, table, row, parent column
+header, agent and axis, with *different counts* -- which is what a grade-stratified table
+looks like once the grade is dropped from the column identity, and is how the outcome
+mismatch in section 9's results 27 and 30 was found.
 
 | snapshot | how the agents were found | articles |
 |---|---|---|
 | `pmc/<date>` | the 18 registry agents, by INN | 1,319 |
 | `pmc/<date>-discovery` | 23 INNs from the payload-linker stem sweep (`conf/discovered_agents.txt`) | 144 |
 | `pmc/<date>-codename` | 10 agents an INN-only search missed, by code name (`conf/codename_agents.txt`) | 26 |
+| `pmc/<date>-discovery2` | the 5 payload-linker stems whose first sweep hit the fetch cap | 7 |
+
+The fourth row contributes **nothing**, and that is its result rather than an oversight. Its
+7 articles hold 12 tables, 4 of them adverse-event tables, and **0 parseable rate cells**:
+between them the five agents have no count with a denominator anywhere. The extraction
+pipeline has no target for this snapshot for that reason, `artifacts/discovery2_yield.json`
+records the measurement, and section 5g's conclusion that the ceiling is 32 agents rather
+than the planned 54 rests on it. The four rows sum to the 1,496 files on disk; the 25
+articles that answer to more than one agent list are what make that 1,471 distinct.
 
 The code names were harvested only from papers whose *titles* already named the INN, which
 makes the paper itself the evidence for the mapping. That matters because a wrong code name
