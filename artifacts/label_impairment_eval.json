@@ -1,0 +1,316 @@
+{
+  "provenance": {
+    "revision": "d85fe8fa97fcc1f4247581c57f06e3627ed4a609",
+    "dirty": true,
+    "snapshot": null,
+    "script": "label_impairment_eval.py",
+    "written_utc": "2026-10-09T03:49:31+00:00",
+    "inputs": {
+      "posterior": "sha256:88933386489fa0c6642d91c6634070fa1df2b648a24c628c56deb1cbaf7eff9f"
+    }
+  },
+  "what_the_sections_argue_from": {
+    "n_cells": 18,
+    "mentions_pharmacokinetics": 6,
+    "mentions_organ_event": 1,
+    "mentions_systemic_reactions": 3,
+    "pharmacokinetic_share": 0.3333333333333333,
+    "organ_event_share": 0.05555555555555555,
+    "note": "A label's impairment guidance argues from clearance and exposure; the model predicts organ-specific event rates. The ordinal correlation below compares two different quantities, which is why its null is the correct answer and not a failed validation."
+  },
+  "levels": {
+    "no_adjustment": 0,
+    "monitor": 1,
+    "avoid": 2,
+    "not_established": 3
+  },
+  "n_cells": 18,
+  "cells": [
+    {
+      "agent": "brentuximab_vedotin",
+      "organ": "hepatic",
+      "level": "avoid",
+      "level_rank": 2,
+      "model_rate": 0.1379,
+      "evidence": "Hepatic Impairment Avoid the use of ADCETRIS in patients with moderate (Child-Pugh B) or severe (Child-Pugh C) hep",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "brentuximab_vedotin",
+      "organ": "renal",
+      "level": "avoid",
+      "level_rank": 2,
+      "model_rate": 0.0431,
+      "evidence": "Renal Impairment Avoid the use of ADCETRIS in patients with severe renal impairment (CrCL <30 mL/min) [see Warni",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "datopotamab_deruxtecan",
+      "organ": "hepatic",
+      "level": "not_established",
+      "level_rank": 3,
+      "model_rate": 0.1337,
+      "evidence": "times ULN and any AST). The recommended dosage of DATROWAY has not been established for patients with severe hepatic impairment (total bilirubin >3 times ULN and any AST) [s",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "datopotamab_deruxtecan",
+      "organ": "renal",
+      "level": "monitor",
+      "level_rank": 1,
+      "model_rate": 0.0412,
+      "evidence": "Renal Impairment Monitor patients with renal impairment for increased adverse reactions, including respiratory rea",
+      "mentions_pharmacokinetics": true,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "enfortumab_vedotin",
+      "organ": "hepatic",
+      "level": "avoid",
+      "level_rank": 2,
+      "model_rate": 0.1372,
+      "evidence": "Hepatic Impairment Avoid the use of PADCEV in patients with moderate or severe hepatic impairment (total bilirubin",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": true
+    },
+    {
+      "agent": "loncastuximab_tesirine",
+      "organ": "hepatic",
+      "level": "monitor",
+      "level_rank": 1,
+      "model_rate": 0.2319,
+      "evidence": "ST) > ULN or total bilirubin > 1 to 1.5 × ULN and any AST). Monitor patients with mild hepatic impairment for potential increased incidence of adverse reacti",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "mirvetuximab_soravtansine",
+      "organ": "hepatic",
+      "level": "avoid",
+      "level_rank": 2,
+      "model_rate": 0.1361,
+      "evidence": "Hepatic Impairment Avoid use of ELAHERE in patients with moderate or severe hepatic impairment (total bilirubin >1",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "mirvetuximab_soravtansine",
+      "organ": "renal",
+      "level": "no_adjustment",
+      "level_rank": 0,
+      "model_rate": 0.0425,
+      "evidence": "Renal Impairment No dosage adjustment of ELAHERE is recommended for patients with mild to moderate renal impairment (CLcr 30 to 89 mL/min). The effect of",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "pivekimab_sunirine",
+      "organ": "hepatic",
+      "level": "not_established",
+      "level_rank": 3,
+      "model_rate": 0.2341,
+      "evidence": "(total bilirubin >1.5 to 3 times ULN and any AST). DECNUPAZ has not been studied in patients with severe hepatic impairment. No dosage adjustment of DECNUPAZ is recommend",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "pivekimab_sunirine",
+      "organ": "renal",
+      "level": "not_established",
+      "level_rank": 3,
+      "model_rate": 0.0418,
+      "evidence": "moderate renal impairment (CLcr 30 to <60 mL/min). DECNUPAZ has not been studied in patients with severe renal impairment (CLcr <30 mL/min) or end stage renal disease. No",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": true
+    },
+    {
+      "agent": "polatuzumab_vedotin",
+      "organ": "hepatic",
+      "level": "not_established",
+      "level_rank": 3,
+      "model_rate": 0.1361,
+      "evidence": "E, which may increase the risk of adverse reactions. POLIVY has not been studied in patients with moderate or severe hepatic impairment [see Clinical Pharmacology (12.3)",
+      "mentions_pharmacokinetics": true,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "sacituzumab_govitecan",
+      "organ": "hepatic",
+      "level": "not_established",
+      "level_rank": 3,
+      "model_rate": 0.1474,
+      "evidence": "N) or severe (total bilirubin > 3 × ULN) hepatic impairment has not been established. TRODELVY has not been evaluated in patients with AST or ALT > 3 ULN without liver metast",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "telisotuzumab_vedotin",
+      "organ": "hepatic",
+      "level": "not_established",
+      "level_rank": 3,
+      "model_rate": 0.1346,
+      "evidence": ", which may increase the risk of adverse reactions. EMRELIS has not been studied in patients with moderate or severe hepatic impairment. No dosage adjustment is recommend",
+      "mentions_pharmacokinetics": true,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "tisotumab_vedotin",
+      "organ": "hepatic",
+      "level": "avoid",
+      "level_rank": 2,
+      "model_rate": 0.1379,
+      "evidence": "Hepatic Impairment Avoid use of TIVDAK in patients with moderate or severe hepatic impairment [aspartate aminotran",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "trastuzumab_deruxtecan",
+      "organ": "hepatic",
+      "level": "not_established",
+      "level_rank": 3,
+      "model_rate": 0.149,
+      "evidence": "d Administration (2.3) ]. The recommended dosage of ENHERTU has not been established for patients with severe hepatic impairment (total bilirubin >3 times ULN and any AST) [s",
+      "mentions_pharmacokinetics": true,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "trastuzumab_deruxtecan",
+      "organ": "renal",
+      "level": "not_established",
+      "level_rank": 3,
+      "model_rate": 0.0465,
+      "evidence": "pairment more frequently. The recommended dosage of ENHERTU has not been established for patients with severe renal impairment (CLcr <30 mL/min) [see Clinical Pharmacology (1",
+      "mentions_pharmacokinetics": true,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "trastuzumab_emtansine",
+      "organ": "hepatic",
+      "level": "monitor",
+      "level_rank": 1,
+      "model_rate": 0.1848,
+      "evidence": "studied in patients with severe hepatic impairment. Closely monitor patients with hepatic impairment due to known hepatotoxicity observed with KADCYLA [ see",
+      "mentions_pharmacokinetics": false,
+      "mentions_organ_event": true,
+      "mentions_systemic_reactions": false
+    },
+    {
+      "agent": "trastuzumab_emtansine",
+      "organ": "renal",
+      "level": "not_established",
+      "level_rank": 3,
+      "model_rate": 0.0342,
+      "evidence": "Renal Impairment No dedicated renal impairment trial for KADCYLA has been conducted. Based on the population pharmacokinetics, as well as anal",
+      "mentions_pharmacokinetics": true,
+      "mentions_organ_event": false,
+      "mentions_systemic_reactions": true
+    }
+  ],
+  "missing": [
+    {
+      "agent": "enfortumab_vedotin",
+      "organ": "renal",
+      "reason": "no gradable guidance found",
+      "section_present": false
+    },
+    {
+      "agent": "gemtuzumab_ozogamicin",
+      "organ": "hepatic",
+      "reason": "no gradable guidance found",
+      "section_present": false
+    },
+    {
+      "agent": "gemtuzumab_ozogamicin",
+      "organ": "renal",
+      "reason": "no gradable guidance found",
+      "section_present": false
+    },
+    {
+      "agent": "inotuzumab_ozogamicin",
+      "organ": "hepatic",
+      "reason": "no gradable guidance found",
+      "section_present": true
+    },
+    {
+      "agent": "inotuzumab_ozogamicin",
+      "organ": "renal",
+      "reason": "no gradable guidance found",
+      "section_present": false
+    },
+    {
+      "agent": "loncastuximab_tesirine",
+      "organ": "renal",
+      "reason": "no gradable guidance found",
+      "section_present": false
+    },
+    {
+      "agent": "polatuzumab_vedotin",
+      "organ": "renal",
+      "reason": "no gradable guidance found",
+      "section_present": false
+    },
+    {
+      "agent": "sacituzumab_govitecan",
+      "organ": "renal",
+      "reason": "no gradable guidance found",
+      "section_present": false
+    },
+    {
+      "agent": "telisotuzumab_vedotin",
+      "organ": "renal",
+      "reason": "no gradable guidance found",
+      "section_present": false
+    },
+    {
+      "agent": "tisotumab_vedotin",
+      "organ": "renal",
+      "reason": "no gradable guidance found",
+      "section_present": false
+    }
+  ],
+  "cross_organ_sentences": [
+    {
+      "agent": "pivekimab_sunirine",
+      "sentence": "A higher incidence of Grade ≥3 adverse events, serious adverse events, and dose delays was observed in patients with moderate renal impairment (CLcr 30 to <60 mL/min)."
+    },
+    {
+      "agent": "trastuzumab_deruxtecan",
+      "sentence": "A higher incidence of Grade 1 and 2 ILD/pneumonitis has been observed in patients with moderate renal impairment [see Warnings and Precautions (5."
+    },
+    {
+      "agent": "trastuzumab_deruxtecan",
+      "sentence": "A higher incidence of Grade 1 and 2 ILD/pneumonitis has been observed in patients with moderate renal impairment."
+    }
+  ],
+  "all_levels": {
+    "n": 18,
+    "spearman": -0.04702286422869999,
+    "p": 0.8530092040823323,
+    "n_distinct_levels": 4
+  },
+  "without_not_established": {
+    "n": 9,
+    "spearman": 0.11227217828476799,
+    "p": 0.7736698998644514,
+    "n_distinct_levels": 3
+  }
+}
