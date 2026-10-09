@@ -28,6 +28,10 @@ EXEMPT = {
     # One posterior refit per held-out agent, about four hours. `make expensive` carries it,
     # the way `make fetch` carries the network steps, and `all` is meant to be runnable.
     "inverse_retrieval.py",
+    # Needs the expanded corpus's posterior, which is a separate multi-hour fit. It answers
+    # a decision rather than producing a report figure: whether the product's output moves
+    # between the two posteriors, which is what makes the serving choice measurable.
+    "posterior_choice.py",
 }
 def _scripts_writing_artefacts() -> set[str]:
     out = set()

@@ -7,18 +7,20 @@
    "n54_k7": 9.0
   },
   "ratio_change_registry_to_expanded": {
-   "payload_identity": 1.16,
-   "payload_family": 1.66,
-   "mechanism": 1.94
+   "payload_identity": 1.2,
+   "payload_family": 1.71,
+   "mechanism": 2.0
   },
-  "levels_that_clear_the_floor": [],
+  "levels_that_clear_the_floor": [
+   "mechanism"
+  ],
   "recedes": [
    "payload_identity"
   ]
  },
  "stages": [
   {
-   "stage": "registry_only",
+   "stage": "ctgov_original_agent_list",
    "agents": 16,
    "identifying_cells": 224,
    "levels": {
@@ -33,42 +35,57 @@
    }
   },
   {
-   "stage": "plus_literature_arms",
-   "agents": 17,
-   "identifying_cells": 238,
+   "stage": "ctgov_literature_agent_list",
+   "agents": 22,
+   "identifying_cells": 308,
    "levels": {
-    "payload_identity": 10,
-    "payload_family": 7,
+    "payload_identity": 11,
+    "payload_family": 8,
     "mechanism": 5
    },
    "ratio": {
-    "payload_identity": 1.89,
-    "payload_family": 2.83,
-    "mechanism": 4.25
+    "payload_identity": 2.2,
+    "payload_family": 3.14,
+    "mechanism": 5.5
+   }
+  },
+  {
+   "stage": "plus_literature_arms",
+   "agents": 25,
+   "identifying_cells": 350,
+   "levels": {
+    "payload_identity": 11,
+    "payload_family": 8,
+    "mechanism": 5
+   },
+   "ratio": {
+    "payload_identity": 2.5,
+    "payload_family": 3.57,
+    "mechanism": 6.25
    }
   },
   {
    "stage": "plus_literature_agents",
-   "agents": 31,
-   "identifying_cells": 434,
+   "agents": 32,
+   "identifying_cells": 448,
    "levels": {
     "payload_identity": 16,
     "payload_family": 8,
     "mechanism": 5
    },
    "ratio": {
-    "payload_identity": 2.07,
-    "payload_family": 4.43,
-    "mechanism": 7.75
+    "payload_identity": 2.13,
+    "payload_family": 4.57,
+    "mechanism": 8.0
    }
   }
  ],
  "provenance": {
-  "revision": "cdfbe035947e40de5cfb5f43b35999cea731e251",
+  "revision": "479d1565a0668aae84acaf1c17657ac757ec301b",
   "dirty": true,
-  "snapshot": "2026-10-07",
+  "snapshot": null,
   "script": "granularity_ratio.py",
-  "written_utc": "2026-10-09T10:07:30+00:00",
+  "written_utc": "2026-10-09T11:16:02+00:00",
   "inputs": {}
  }
 }

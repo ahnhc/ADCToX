@@ -156,13 +156,24 @@ def test_an_arm_only_enters_the_grid_for_a_table_it_published(axes) -> None:
     # serious one alone. That is the arm ratio moving for a reason unrelated to what this
     # test is for.
     assert other.n_arms > serious.n_arms
-    assert other.n_contributing_agents >= 31
-    assert serious.n_contributing_agents <= 20, (
-        "the serious grid has gained agents it has no serious table for"
+
+    # The claim, measured against the registry rather than against a pinned number. The
+    # registry corpus itself gained six agents when it was rebuilt against the current
+    # 35-agent list, so a literal "the serious table has 17" went stale -- and the
+    # comparison it stood in for is the one that matters: the expansion buys the
+    # common-events table ten agents and the serious table one.
+    registry_serious = ds.load(ROOT / "data" / "processed", axes, kind="serious")
+    registry_other = ds.load(ROOT / "data" / "processed", axes, kind="other")
+    gained_serious = serious.n_contributing_agents - registry_serious.n_contributing_agents
+    gained_other = other.n_contributing_agents - registry_other.n_contributing_agents
+    assert gained_serious <= 2, (
+        f"the serious table gained {gained_serious} agents from the literature; it is "
+        "supposed to gain almost none, because 405 of the 414 literature arms publish no "
+        "serious table at all"
     )
-    assert serious.n_contributing_agents - 16 <= 2, (
-        "the expansion is supposed to buy the serious table almost nothing; it has "
-        f"{serious.n_contributing_agents} agents against the registry's 16"
+    assert gained_other >= 8, (
+        f"the common-events table gained only {gained_other} agents, so the asymmetry this "
+        "test is about has gone"
     )
     # The two grids no longer span the same arms, and nothing needs them to. An earlier
     # version of this test asserted that the index arrays covered every arm under both

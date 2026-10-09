@@ -220,11 +220,17 @@ def test_the_waterfall_sums_to_the_rate_across_a_sweep() -> None:
     measured.
 
     Over six payload chemistries by four comorbidity profiles -- 336 rows -- the largest
-    absolute gap is 0.0047 and the median 0.0012. The bound here is 0.01, loose enough to
-    survive a refit and tight enough to catch the failure it is for: a term added to the
-    model and not to the decomposition, which is the same class of bug as the model terms
-    once being omitted from the driver list entirely and leaving a banded axis with no
-    account of its band.
+    absolute gap is 0.0128 and the median 0.0054. Those were 0.0047 and 0.0012 on the
+    16-agent corpus; the gap grew because it scales with the posterior variance, and
+    `sigma_agent` went from 0.159 to 0.343 when the corpus was rebuilt.
+
+    The bound alone would be arbitrary -- raising it to fit whatever the last refit produced
+    is fitting the test to the data -- so the sign is checked too, and that is what
+    distinguishes Jensen from a missing term. The sigmoid is convex below 0.5, so there the
+    mean rate exceeds the rate implied by the mean logit and the gap is negative; above 0.5
+    it flips. Measured: negative in 156 of 165 cells below 0.5 and positive in 3 of 3 above.
+    A term in the model and absent from the decomposition would shift every cell the same
+    way regardless of where its rate sits.
     """
     import numpy as np
     from fastapi.testclient import TestClient
@@ -244,7 +250,7 @@ def test_the_waterfall_sums_to_the_rate_across_a_sweep() -> None:
         [], ["cirrhosis"],
         ["ckd_stage_4_5", "interstitial_lung_disease"], ["severe_psoriasis"],
     ]
-    gaps = []
+    gaps, signed = [], []
     for payload, linker, conj, dar in designs:
         for conditions in profiles:
             r = client.post("/api/v1/assess", json={
@@ -259,12 +265,24 @@ def test_the_waterfall_sums_to_the_rate_across_a_sweep() -> None:
                 continue
             for row in r.json().get("organ_risks", []):
                 summary = row.get("driver_sum") or {}
-                if summary.get("gap") is not None:
-                    gaps.append(abs(summary["gap"]))
+                if summary.get("gap") is None:
+                    continue
+                gaps.append(abs(summary["gap"]))
+                if row.get("point_estimate") is not None:
+                    signed.append((row["point_estimate"], summary["gap"]))
 
     assert len(gaps) > 300, len(gaps)
     worst = float(np.max(gaps))
-    assert worst < 0.01, (
-        f"the driver waterfall misses {worst:.4f} of the rate at worst; a term is in the "
-        "model and not in the decomposition"
+    assert worst < 0.02, (
+        f"the driver waterfall misses {worst:.4f} of the rate at worst, which is more than "
+        "Jensen's inequality accounts for at this posterior width"
+    )
+    # The sign test, which is what makes the bound above a bound and not an accommodation.
+    below = [g for rate, g in signed if rate < 0.5]
+    assert len(below) > 100, len(below)
+    negative = sum(1 for g in below if g < 0)
+    assert negative / len(below) > 0.85, (
+        f"only {negative} of {len(below)} gaps below rate 0.5 are negative; Jensen's "
+        "inequality makes them negative there, so a two-sided pattern means a term is in "
+        "the model and not in the decomposition"
     )

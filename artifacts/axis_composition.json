@@ -4,6 +4,11 @@
    "hepatic"
   ],
   "registry_rows_resolved": 61018,
+  "registry_rows_excluded": 6249,
+  "excluded_share_of_rows": 0.093,
+  "excluded_patients_affected": 50738,
+  "resolved_patients_affected": 1034289,
+  "excluded_share_of_patients": 0.047,
   "literature_cells": 6407
  },
  "axes": [
@@ -134,12 +139,302 @@
    "literature_lab_share": 0.076
   }
  ],
+ "excluded": [
+  {
+   "soc": "injury, poisoning and procedural complications",
+   "rows": 2594,
+   "patients_affected": 9308,
+   "reason": "not_organ_attributable",
+   "top_terms": [
+    {
+     "term": "fall",
+     "rows": 234
+    },
+    {
+     "term": "infusion related reaction",
+     "rows": 176
+    },
+    {
+     "term": "contusion",
+     "rows": 104
+    },
+    {
+     "term": "head injury",
+     "rows": 63
+    },
+    {
+     "term": "femur fracture",
+     "rows": 62
+    },
+    {
+     "term": "thermal burn",
+     "rows": 56
+    }
+   ]
+  },
+  {
+   "soc": "psychiatric disorders",
+   "rows": 1551,
+   "patients_affected": 37394,
+   "reason": "not_organ_attributable",
+   "top_terms": [
+    {
+     "term": "insomnia",
+     "rows": 298
+    },
+    {
+     "term": "anxiety",
+     "rows": 218
+    },
+    {
+     "term": "depression",
+     "rows": 195
+    },
+    {
+     "term": "confusional state",
+     "rows": 129
+    },
+    {
+     "term": "irritability",
+     "rows": 62
+    },
+    {
+     "term": "agitation",
+     "rows": 55
+    }
+   ]
+  },
+  {
+   "soc": "neoplasms benign, malignant and unspecified (incl cysts and polyps)",
+   "rows": 990,
+   "patients_affected": 1640,
+   "reason": "indication_confounded",
+   "top_terms": [
+    {
+     "term": "cancer pain",
+     "rows": 51
+    },
+    {
+     "term": "tumour pain",
+     "rows": 37
+    },
+    {
+     "term": "basal cell carcinoma",
+     "rows": 35
+    },
+    {
+     "term": "malignant neoplasm progression",
+     "rows": 25
+    },
+    {
+     "term": "tumour haemorrhage",
+     "rows": 23
+    },
+    {
+     "term": "prostate cancer",
+     "rows": 21
+    }
+   ]
+  },
+  {
+   "soc": "reproductive system and breast disorders",
+   "rows": 690,
+   "patients_affected": 1686,
+   "reason": "indication_confounded",
+   "top_terms": [
+    {
+     "term": "vaginal haemorrhage",
+     "rows": 51
+    },
+    {
+     "term": "pelvic pain",
+     "rows": 42
+    },
+    {
+     "term": "breast pain",
+     "rows": 39
+    },
+    {
+     "term": "vaginal discharge",
+     "rows": 27
+    },
+    {
+     "term": "dysmenorrhoea",
+     "rows": 17
+    },
+    {
+     "term": "ovarian cyst",
+     "rows": 16
+    }
+   ]
+  },
+  {
+   "soc": "congenital, familial and genetic disorders",
+   "rows": 206,
+   "patients_affected": 390,
+   "reason": "not_organ_attributable",
+   "top_terms": [
+    {
+     "term": "dacryostenosis congenital",
+     "rows": 11
+    },
+    {
+     "term": "hydrocele",
+     "rows": 11
+    },
+    {
+     "term": "phimosis",
+     "rows": 9
+    },
+    {
+     "term": "atrial septal defect",
+     "rows": 7
+    },
+    {
+     "term": "plagiocephaly",
+     "rows": 6
+    },
+    {
+     "term": "pyloric stenosis",
+     "rows": 6
+    }
+   ]
+  },
+  {
+   "soc": "pregnancy, puerperium and perinatal conditions",
+   "rows": 74,
+   "patients_affected": 149,
+   "reason": "not_organ_attributable",
+   "top_terms": [
+    {
+     "term": "abortion spontaneous",
+     "rows": 13
+    },
+    {
+     "term": "pregnancy",
+     "rows": 6
+    },
+    {
+     "term": "pregnancy on oral contraceptive",
+     "rows": 3
+    },
+    {
+     "term": "ectopic pregnancy",
+     "rows": 3
+    },
+    {
+     "term": "gestational hypertension",
+     "rows": 3
+    },
+    {
+     "term": "pre-eclampsia",
+     "rows": 3
+    }
+   ]
+  },
+  {
+   "soc": "surgical and medical procedures",
+   "rows": 71,
+   "patients_affected": 84,
+   "reason": "not_organ_attributable",
+   "top_terms": [
+    {
+     "term": "tooth extraction",
+     "rows": 6
+    },
+    {
+     "term": "surgical and medical procedures - other, specify",
+     "rows": 6
+    },
+    {
+     "term": "abortion induced",
+     "rows": 2
+    },
+    {
+     "term": "hysterectomy",
+     "rows": 2
+    },
+    {
+     "term": "tumour excision",
+     "rows": 2
+    },
+    {
+     "term": "wound drainage",
+     "rows": 2
+    }
+   ]
+  },
+  {
+   "soc": "product issues",
+   "rows": 48,
+   "patients_affected": 55,
+   "reason": "not_organ_attributable",
+   "top_terms": [
+    {
+     "term": "device occlusion",
+     "rows": 21
+    },
+    {
+     "term": "device dislocation",
+     "rows": 6
+    },
+    {
+     "term": "device breakage",
+     "rows": 5
+    },
+    {
+     "term": "device extrusion",
+     "rows": 3
+    },
+    {
+     "term": "device malfunction",
+     "rows": 3
+    },
+    {
+     "term": "thrombosis in device",
+     "rows": 2
+    }
+   ]
+  },
+  {
+   "soc": "social circumstances",
+   "rows": 25,
+   "patients_affected": 32,
+   "reason": "not_organ_attributable",
+   "top_terms": [
+    {
+     "term": "exposure to communicable disease",
+     "rows": 3
+    },
+    {
+     "term": "child abuse",
+     "rows": 3
+    },
+    {
+     "term": "corrective lens user",
+     "rows": 2
+    },
+    {
+     "term": "menopause",
+     "rows": 2
+    },
+    {
+     "term": "pregnancy of partner",
+     "rows": 1
+    },
+    {
+     "term": "refusal of treatment by patient",
+     "rows": 1
+    }
+   ]
+  }
+ ],
  "provenance": {
-  "revision": "70e25761322307f951bd8b8f445853236a349ac8",
+  "revision": "479d1565a0668aae84acaf1c17657ac757ec301b",
   "dirty": true,
   "snapshot": null,
   "script": "axis_composition.py",
-  "written_utc": "2026-10-09T10:53:11+00:00",
+  "written_utc": "2026-10-09T11:02:20+00:00",
   "inputs": {}
  }
 }

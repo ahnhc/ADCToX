@@ -3,10 +3,10 @@
   "designs": 6,
   "profiles": 4,
   "rows_checked": 336,
-  "worst_gap": 0.00472,
-  "median_gap": 0.001215,
-  "mean_gap": 0.0015720238095238096,
-  "rows_over_1pp": 0,
+  "worst_gap": 0.01284,
+  "median_gap": 0.00541,
+  "mean_gap": 0.0051935714285714285,
+  "rows_over_1pp": 36,
   "bound_the_test_holds": 0.01
  },
  "rows": [
@@ -14,153 +14,153 @@
    "payload": "DXd",
    "profile": "none",
    "axes": 14,
-   "worst_gap": 0.00302
+   "worst_gap": 0.00693
   },
   {
    "payload": "DXd",
    "profile": "hepatic",
    "axes": 14,
-   "worst_gap": 0.00302
+   "worst_gap": 0.00693
   },
   {
    "payload": "DXd",
    "profile": "renal + pulmonary",
    "axes": 14,
-   "worst_gap": 0.00302
+   "worst_gap": 0.00693
   },
   {
    "payload": "DXd",
    "profile": "dermatologic",
    "axes": 14,
-   "worst_gap": 0.00302
+   "worst_gap": 0.00693
   },
   {
    "payload": "MMAE",
    "profile": "none",
    "axes": 14,
-   "worst_gap": 0.00133
+   "worst_gap": 0.00661
   },
   {
    "payload": "MMAE",
    "profile": "hepatic",
    "axes": 14,
-   "worst_gap": 0.00133
+   "worst_gap": 0.00661
   },
   {
    "payload": "MMAE",
    "profile": "renal + pulmonary",
    "axes": 14,
-   "worst_gap": 0.00133
+   "worst_gap": 0.00661
   },
   {
    "payload": "MMAE",
    "profile": "dermatologic",
    "axes": 14,
-   "worst_gap": 0.00133
+   "worst_gap": 0.00661
   },
   {
    "payload": "DM1",
    "profile": "none",
    "axes": 14,
-   "worst_gap": 0.00439
+   "worst_gap": 0.00457
   },
   {
    "payload": "DM1",
    "profile": "hepatic",
    "axes": 14,
-   "worst_gap": 0.00439
+   "worst_gap": 0.00457
   },
   {
    "payload": "DM1",
    "profile": "renal + pulmonary",
    "axes": 14,
-   "worst_gap": 0.00439
+   "worst_gap": 0.00457
   },
   {
    "payload": "DM1",
    "profile": "dermatologic",
    "axes": 14,
-   "worst_gap": 0.00439
+   "worst_gap": 0.00457
   },
   {
    "payload": "MMAF",
    "profile": "none",
    "axes": 14,
-   "worst_gap": 0.00472
+   "worst_gap": 0.01284
   },
   {
    "payload": "MMAF",
    "profile": "hepatic",
    "axes": 14,
-   "worst_gap": 0.00472
+   "worst_gap": 0.01284
   },
   {
    "payload": "MMAF",
    "profile": "renal + pulmonary",
    "axes": 14,
-   "worst_gap": 0.00472
+   "worst_gap": 0.01284
   },
   {
    "payload": "MMAF",
    "profile": "dermatologic",
    "axes": 14,
-   "worst_gap": 0.00472
+   "worst_gap": 0.01284
   },
   {
    "payload": "SG3199",
    "profile": "none",
    "axes": 14,
-   "worst_gap": 0.00254
+   "worst_gap": 0.00788
   },
   {
    "payload": "SG3199",
    "profile": "hepatic",
    "axes": 14,
-   "worst_gap": 0.00254
+   "worst_gap": 0.00788
   },
   {
    "payload": "SG3199",
    "profile": "renal + pulmonary",
    "axes": 14,
-   "worst_gap": 0.00254
+   "worst_gap": 0.00788
   },
   {
    "payload": "SG3199",
    "profile": "dermatologic",
    "axes": 14,
-   "worst_gap": 0.00254
+   "worst_gap": 0.00788
   },
   {
    "payload": "DGN549",
    "profile": "none",
    "axes": 14,
-   "worst_gap": 0.0015
+   "worst_gap": 0.0069
   },
   {
    "payload": "DGN549",
    "profile": "hepatic",
    "axes": 14,
-   "worst_gap": 0.0015
+   "worst_gap": 0.0069
   },
   {
    "payload": "DGN549",
    "profile": "renal + pulmonary",
    "axes": 14,
-   "worst_gap": 0.0015
+   "worst_gap": 0.0069
   },
   {
    "payload": "DGN549",
    "profile": "dermatologic",
    "axes": 14,
-   "worst_gap": 0.0015
+   "worst_gap": 0.0069
   }
  ],
  "provenance": {
-  "revision": "29a55e583d849c5b5754e11b9c628cf031ef914a",
+  "revision": "479d1565a0668aae84acaf1c17657ac757ec301b",
   "dirty": true,
   "snapshot": null,
   "script": "driver_waterfall.py",
-  "written_utc": "2026-10-09T08:33:44+00:00",
+  "written_utc": "2026-10-09T12:59:49+00:00",
   "inputs": {}
  }
 }

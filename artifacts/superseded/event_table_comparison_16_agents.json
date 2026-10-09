@@ -1,0 +1,166 @@
+{
+ "coefficients": [
+  {
+   "name": "b_combo",
+   "role": "design",
+   "other": 0.19496552646160126,
+   "serious": 0.5673002600669861,
+   "both_resolved": true,
+   "sign_agrees": true
+  },
+  {
+   "name": "b_dar",
+   "role": "design",
+   "other": 0.03188391029834747,
+   "serious": 0.0013223361456766725,
+   "both_resolved": false,
+   "sign_agrees": null
+  },
+  {
+   "name": "b_log_n",
+   "role": "nuisance",
+   "other": 0.03932355344295502,
+   "serious": -0.20029309391975403,
+   "both_resolved": true,
+   "sign_agrees": false
+  },
+  {
+   "name": "b_thresh",
+   "role": "nuisance",
+   "other": 0.03265463933348656,
+   "serious": 0.12973639369010925,
+   "both_resolved": true,
+   "sign_agrees": true
+  },
+  {
+   "name": "sigma_agent",
+   "role": "nuisance",
+   "other": 0.1590350866317749,
+   "serious": 0.5610533356666565,
+   "both_resolved": true,
+   "sign_agrees": true
+  },
+  {
+   "name": "sigma_trial",
+   "role": "nuisance",
+   "other": 0.47063037753105164,
+   "serious": 0.5001111626625061,
+   "both_resolved": true,
+   "sign_agrees": true
+  }
+ ],
+ "design_sign_disagreements": [],
+ "n_testable_coefficients": 5,
+ "n_coefficients": 6,
+ "b_thresh_negative_control": {
+  "other": {
+   "mean": 0.03265463933348656,
+   "q05": 0.027210289612412453,
+   "q95": 0.03754806891083717
+  },
+  "serious": {
+   "mean": 0.12973639369010925,
+   "q05": 0.1133921891450882,
+   "q95": 0.1447371244430542
+  },
+  "note": "b_thresh is non-zero in a corpus with no censoring, so the covariate is NOT purely a censoring adjustment: the reporting threshold also tracks trial-level reporting practice. It must stay in the model as a confounder control, and must not be described as the censoring correction."
+ },
+ "mechanism_profile_agreement": {
+  "band_edges": {
+   "other": [
+    0.06451612903225806,
+    0.21739130434782608
+   ],
+   "serious": [
+    0.007462686567164179,
+    0.025
+   ]
+  },
+  "boxed_warning_recovery": {
+   "pairs": {
+    "topo1/pulmonary": {
+     "common_rank": 10,
+     "serious_rank": 2
+    },
+    "tubulin/dermatologic": {
+     "common_rank": 13,
+     "serious_rank": 1
+    },
+    "dna_cleave/hepatic": {
+     "common_rank": 3,
+     "serious_rank": 3
+    },
+    "dna_crosslink/haematologic": {
+     "common_rank": 5,
+     "serious_rank": 10
+    }
+   },
+   "serious_ranks_higher": 2,
+   "n_pairs": 4
+  },
+  "per_mechanism_spearman": {
+   "dna_alkyl": 0.4901098901098901,
+   "dna_cleave": 0.2879120879120879,
+   "dna_crosslink": 0.16483516483516483,
+   "topo1": -0.12967032967032968,
+   "tubulin": -0.08571428571428572
+  },
+  "per_axis_spearman": {
+   "haematologic": 0.9,
+   "hepatic": -0.2,
+   "cardiovascular": -0.1,
+   "pulmonary": 0.2,
+   "renal": -0.1,
+   "gastrointestinal": 0.6,
+   "neurologic": 0.9,
+   "ocular": 0.9,
+   "dermatologic": -0.7,
+   "metabolic_endocrine": -0.4,
+   "musculoskeletal": 0.0,
+   "infectious_immune": 0.0,
+   "otologic": -0.3,
+   "constitutional": 0.2
+  },
+  "mean_per_mechanism": 0.14549450549450546,
+  "n_shared_mechanisms": 5
+ },
+ "verdict": "common and serious events rank organs DIFFERENTLY (mean rho +0.145). This is a product finding, not a censoring failure: a comorbidity declares a serious-risk question, so an axis must be scored on the table that matches the question. The two tables recover different label sections -- see the boxed-warning rows above -- and each is right about its own outcome.",
+ "tau_mech": {
+  "other": 0.5928035378456116,
+  "serious": 0.44571173191070557
+ },
+ "tau_cleav": {
+  "other": 0.28243640065193176,
+  "serious": 0.3573067784309387
+ },
+ "gates": {
+  "other": {
+   "metric": "macro_auc[leave_one_agent_out] minus best baseline",
+   "macro_auc": 0.8036228491982073,
+   "best_baseline": 0.8458359638047138,
+   "delta_vs_best_baseline": -0.04221311460650652,
+   "pass": false,
+   "absolute_auc_gate_note": "The original absolute-AUC gate of 0.65 is unfireable: a constant global-axis-mean predictor scores about 0.84 on this metric. Reported for the record, not used."
+  },
+  "serious": {
+   "metric": "macro_auc[leave_one_agent_out] minus best baseline",
+   "macro_auc": 0.8030847119038851,
+   "best_baseline": 0.8299571233164984,
+   "delta_vs_best_baseline": -0.026872411412613317,
+   "pass": false,
+   "absolute_auc_gate_note": "The original absolute-AUC gate of 0.65 is unfireable: a constant global-axis-mean predictor scores about 0.84 on this metric. Reported for the record, not used."
+  }
+ },
+ "provenance": {
+  "revision": "531b2da4b9187fcddba45552a7aaa231622d9c04",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "compare_event_tables.py",
+  "written_utc": "2026-10-07T15:49:25+00:00",
+  "inputs": {
+   "other_metrics": "sha256:3ab0b0bc0208abf8d218c0817d78e06d521a328cb7162820ecc5cae2c39c8122",
+   "serious_metrics": "sha256:5556ee0442dc129f1e7806089868f22c60fc6388152fd739aef13927ab046f2c"
+  }
+ },
+ "_superseded": "The two-table comparison on the 16-agent registry corpus, kept because section 5c quotes its figures in a before/after comparison. Mean per-mechanism agreement was +0.1455 and is +0.282 on the 22-agent corpus, so the two tables are less different than first reported and still different. The boxed-warning pairs moved too -- topoisomerase-I pulmonary from 10th against 2nd to 11th against 5th -- and the serious table still ranks higher on the two the common table buries. Superseded by artifacts/event_table_comparison.json."
+}

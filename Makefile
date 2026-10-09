@@ -19,6 +19,12 @@ RAW     := /data/hyeongchanahn/adctox/raw
 STUDIES := $(RAW)/ctgov/$(DATE)/studies
 ELIG    := $(RAW)/eligibility/$(DATE)
 PROC    := data/processed
+# What the post-fit measurements actually consume. They depended on the `forward`
+# target, which is .PHONY -- so running any one of them alone refit the whole model,
+# about an hour, to produce a file that was already on disk. Inside `make all` the
+# phony prerequisite runs once and the waste is invisible, which is why this went
+# unnoticed.
+FORWARD_METRICS := $(ART)/forward_other_metrics.json
 ART     := artifacts
 
 .PHONY: all env taxonomy corpus eligibility enrichment forward propose test \
@@ -116,6 +122,12 @@ enrichment: snapshot-check
 # cell is a true zero and no censoring is involved. If the two disagree on the mechanism
 # profiles, the censoring treatment is doing the work rather than recovering it, and that
 # has to be reported.
+# Depends on the corpus *file*, not on the phony `forward`, so it rebuilds when the corpus
+# is newer and not on every invocation. `forward` still does the whole job -- both tables
+# and both posteriors -- and remains what you run to refit deliberately.
+$(FORWARD_METRICS): $(PROC)/arms.parquet $(PROC)/observations.parquet
+	$(PY) scripts/fit_forward.py --processed $(PROC) --out $(ART) --kind other
+
 forward: corpus
 	$(PY) scripts/fit_forward.py --processed $(PROC) --out $(ART) --kind other
 	$(PY) scripts/fit_forward.py --processed $(PROC) --out $(ART) --kind serious
@@ -174,16 +186,16 @@ lint:
 # against the baseline spread they have to move?
 # The one positive signal: across-agent organ ranking once between-agent reporting
 # conditions are removed from both series. Reported with its caveats, not as a headline.
-across-agent: forward
+across-agent: $(FORWARD_METRICS)
 	$(PY) scripts/across_agent_adjusted.py --processed $(PROC) --out $(ART)
 
-design-effects: forward
+design-effects: $(FORWARD_METRICS)
 	$(PY) scripts/design_effect_size.py --out $(ART)
 
-fold-difficulty: forward
+fold-difficulty: $(FORWARD_METRICS)
 	$(PY) scripts/fold_difficulty.py --out $(ART)
 
-hard-flags: forward
+hard-flags: $(FORWARD_METRICS)
 	$(PY) scripts/hard_flag_necessity.py --out $(ART)
 
 sync-report:
@@ -328,6 +340,12 @@ source-confounding: ## audit every arm-level covariate against the source indica
 # 64% laboratory rows in the registry, against 0-8% for most axes. The interface says so.
 axis-composition: ## laboratory share of each organ axis, per source
 	$(PY) scripts/axis_composition.py
+
+# Which posterior should the product serve? Not in `all`: it needs the expanded corpus's
+# posterior, which `make expensive` territory produces, and a change the user never sees is
+# not a reason to prefer either corpus.
+posterior-choice: ## what changes in the product's output between the two posteriors
+	$(PY) scripts/posterior_choice.py
 
 discover: ## find every ADC that has published, by payload-linker name stem
 	$(PY) scripts/discover_adc_agents.py --out $(ART)/adc_discovery.json --retmax 400

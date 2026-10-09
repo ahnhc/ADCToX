@@ -1,18 +1,18 @@
 {
   "provenance": {
-    "revision": "cdfbe035947e40de5cfb5f43b35999cea731e251",
+    "revision": "479d1565a0668aae84acaf1c17657ac757ec301b",
     "dirty": true,
     "snapshot": "2026-10-07",
     "script": "corpus_ablation.py",
-    "written_utc": "2026-10-09T10:07:33+00:00",
+    "written_utc": "2026-10-09T11:08:04+00:00",
     "inputs": {}
   },
   "min_agents_for_fold": 3,
   "stages": {
-    "registry_only": {
-      "summary": "3,990 cells over 285 arms x 14 axes (3,440 observed, 471 censored, 79 structural zero) | 16 agents, 5 mechanisms, 7 payload families, 61 multi-arm trials (128 arms from single-arm trials carry no trial effect)",
-      "observed_share": 0.8621553884711779,
-      "censored_share": 0.11804511278195488,
+    "ctgov_original_agent_list": {
+      "summary": "3,990 cells over 285 arms x 14 axes (3,445 observed, 468 censored, 77 structural zero) | 16 agents, 5 mechanisms, 7 payload families, 61 multi-arm trials (128 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.8634085213032582,
+      "censored_share": 0.11729323308270677,
       "n_agents": 16,
       "n_arms": 285,
       "n_cells": 3990,
@@ -20,8 +20,8 @@
       "identifying_cells": 224,
       "design_parameters": 100,
       "cells_per_design_parameter": 2.24,
-      "n_observed": 3440,
-      "n_censored": 471,
+      "n_observed": 3445,
+      "n_censored": 468,
       "mechanisms": {
         "dna_alkyl": {
           "agents": 1,
@@ -73,56 +73,61 @@
         "trastuzumab_emtansine"
       ]
     },
-    "plus_literature_arms": {
-      "summary": "6,048 cells over 432 arms x 14 axes (4,080 observed, 1,735 censored, 233 structural zero) | 17 agents, 5 mechanisms, 7 payload families, 62 multi-arm trials (274 arms from single-arm trials carry no trial effect)",
-      "observed_share": 0.6746031746031746,
-      "censored_share": 0.28687169312169314,
-      "n_agents": 17,
-      "n_arms": 432,
-      "n_cells": 6048,
+    "ctgov_literature_agent_list": {
+      "summary": "4,186 cells over 299 arms x 14 axes (3,626 observed, 483 censored, 77 structural zero) | 22 agents, 5 mechanisms, 8 payload families, 64 multi-arm trials (134 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.8662207357859532,
+      "censored_share": 0.11538461538461539,
+      "n_agents": 22,
+      "n_arms": 299,
+      "n_cells": 4186,
       "n_axes": 14,
-      "identifying_cells": 238,
+      "identifying_cells": 308,
       "design_parameters": 100,
-      "cells_per_design_parameter": 2.38,
-      "n_observed": 4080,
-      "n_censored": 1735,
+      "cells_per_design_parameter": 3.08,
+      "n_observed": 3626,
+      "n_censored": 483,
       "mechanisms": {
         "dna_alkyl": {
-          "agents": 1,
-          "arms": 2,
+          "agents": 2,
+          "arms": 3,
           "viable_fold": false
         },
         "dna_cleave": {
           "agents": 2,
-          "arms": 44,
+          "arms": 39,
           "viable_fold": false
         },
         "dna_crosslink": {
-          "agents": 2,
-          "arms": 8,
-          "viable_fold": false
+          "agents": 4,
+          "arms": 10,
+          "viable_fold": true
         },
         "topo1": {
           "agents": 4,
-          "arms": 129,
+          "arms": 68,
           "viable_fold": true
         },
         "tubulin": {
-          "agents": 8,
-          "arms": 252,
+          "agents": 10,
+          "arms": 179,
           "viable_fold": true
         }
       },
-      "n_viable_folds": 2,
+      "n_viable_folds": 3,
       "viable_folds": [
+        "dna_crosslink",
         "topo1",
         "tubulin"
       ],
       "agents": [
         "belantamab_mafodotin",
         "brentuximab_vedotin",
+        "camidanlumab_tesirine",
         "datopotamab_deruxtecan",
+        "depatuxizumab_mafodotin",
+        "enapotamab_vedotin",
         "enfortumab_vedotin",
+        "farletuzumab_ecteribulin",
         "gemtuzumab_ozogamicin",
         "inotuzumab_ozogamicin",
         "loncastuximab_tesirine",
@@ -130,31 +135,32 @@
         "patritumab_deruxtecan",
         "pivekimab_sunirine",
         "polatuzumab_vedotin",
+        "rovalpituzumab_tesirine",
         "sacituzumab_govitecan",
-        "telisotuzumab_vedotin",
         "tisotumab_vedotin",
         "trastuzumab_deruxtecan",
         "trastuzumab_duocarmazine",
-        "trastuzumab_emtansine"
+        "trastuzumab_emtansine",
+        "vobramitamab_duocarmazine"
       ]
     },
-    "plus_literature_agents": {
-      "summary": "6,552 cells over 468 arms x 14 axes (4,328 observed, 1,991 censored, 233 structural zero) | 31 agents, 5 mechanisms, 8 payload families, 66 multi-arm trials (300 arms from single-arm trials carry no trial effect)",
-      "observed_share": 0.6605616605616605,
-      "censored_share": 0.30387667887667885,
-      "n_agents": 31,
-      "n_arms": 468,
-      "n_cells": 6552,
+    "plus_literature_arms": {
+      "summary": "6,426 cells over 459 arms x 14 axes (4,361 observed, 1,834 censored, 231 structural zero) | 25 agents, 5 mechanisms, 8 payload families, 66 multi-arm trials (291 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.6786492374727668,
+      "censored_share": 0.28540305010893247,
+      "n_agents": 25,
+      "n_arms": 459,
+      "n_cells": 6426,
       "n_axes": 14,
-      "identifying_cells": 434,
+      "identifying_cells": 350,
       "design_parameters": 100,
-      "cells_per_design_parameter": 4.34,
-      "n_observed": 4328,
-      "n_censored": 1991,
+      "cells_per_design_parameter": 3.5,
+      "n_observed": 4361,
+      "n_censored": 1834,
       "mechanisms": {
         "dna_alkyl": {
           "agents": 2,
-          "arms": 4,
+          "arms": 5,
           "viable_fold": false
         },
         "dna_cleave": {
@@ -164,17 +170,17 @@
         },
         "dna_crosslink": {
           "agents": 4,
-          "arms": 13,
+          "arms": 14,
           "viable_fold": true
         },
         "topo1": {
-          "agents": 7,
-          "arms": 136,
+          "agents": 4,
+          "arms": 129,
           "viable_fold": true
         },
         "tubulin": {
-          "agents": 16,
-          "arms": 275,
+          "agents": 13,
+          "arms": 270,
           "viable_fold": true
         }
       },
@@ -188,6 +194,81 @@
         "anetumab_ravtansine",
         "belantamab_mafodotin",
         "brentuximab_vedotin",
+        "camidanlumab_tesirine",
+        "datopotamab_deruxtecan",
+        "depatuxizumab_mafodotin",
+        "enapotamab_vedotin",
+        "enfortumab_vedotin",
+        "farletuzumab_ecteribulin",
+        "gemtuzumab_ozogamicin",
+        "inotuzumab_ozogamicin",
+        "loncastuximab_tesirine",
+        "mirvetuximab_soravtansine",
+        "patritumab_deruxtecan",
+        "pivekimab_sunirine",
+        "polatuzumab_vedotin",
+        "praluzatamab_ravtansine",
+        "rovalpituzumab_tesirine",
+        "sacituzumab_govitecan",
+        "telisotuzumab_vedotin",
+        "tisotumab_vedotin",
+        "trastuzumab_deruxtecan",
+        "trastuzumab_duocarmazine",
+        "trastuzumab_emtansine",
+        "vobramitamab_duocarmazine"
+      ]
+    },
+    "plus_literature_agents": {
+      "summary": "6,748 cells over 482 arms x 14 axes (4,514 observed, 2,003 censored, 231 structural zero) | 32 agents, 5 mechanisms, 8 payload families, 69 multi-arm trials (306 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.6689389448725548,
+      "censored_share": 0.29682868998221695,
+      "n_agents": 32,
+      "n_arms": 482,
+      "n_cells": 6748,
+      "n_axes": 14,
+      "identifying_cells": 448,
+      "design_parameters": 100,
+      "cells_per_design_parameter": 4.48,
+      "n_observed": 4514,
+      "n_censored": 2003,
+      "mechanisms": {
+        "dna_alkyl": {
+          "agents": 2,
+          "arms": 5,
+          "viable_fold": false
+        },
+        "dna_cleave": {
+          "agents": 2,
+          "arms": 44,
+          "viable_fold": false
+        },
+        "dna_crosslink": {
+          "agents": 5,
+          "arms": 16,
+          "viable_fold": true
+        },
+        "topo1": {
+          "agents": 7,
+          "arms": 136,
+          "viable_fold": true
+        },
+        "tubulin": {
+          "agents": 16,
+          "arms": 285,
+          "viable_fold": true
+        }
+      },
+      "n_viable_folds": 3,
+      "viable_folds": [
+        "dna_crosslink",
+        "topo1",
+        "tubulin"
+      ],
+      "agents": [
+        "anetumab_ravtansine",
+        "belantamab_mafodotin",
+        "brentuximab_vedotin",
+        "camidanlumab_tesirine",
         "cofetuzumab_pelidotin",
         "datopotamab_deruxtecan",
         "depatuxizumab_mafodotin",
@@ -221,19 +302,27 @@
   },
   "nesting": [
     {
-      "from": "registry_only",
-      "to": "plus_literature_arms",
-      "corpus_arms_added": 318,
+      "from": "ctgov_original_agent_list",
+      "to": "ctgov_literature_agent_list",
+      "corpus_arms_added": 1420,
       "corpus_arms_dropped": 0,
-      "grid_arms_added": 147,
+      "grid_arms_added": 14,
+      "is_superset": true
+    },
+    {
+      "from": "ctgov_literature_agent_list",
+      "to": "plus_literature_arms",
+      "corpus_arms_added": 351,
+      "corpus_arms_dropped": 0,
+      "grid_arms_added": 160,
       "is_superset": true
     },
     {
       "from": "plus_literature_arms",
       "to": "plus_literature_agents",
-      "corpus_arms_added": 108,
+      "corpus_arms_added": 75,
       "corpus_arms_dropped": 0,
-      "grid_arms_added": 36,
+      "grid_arms_added": 23,
       "is_superset": true
     }
   ],

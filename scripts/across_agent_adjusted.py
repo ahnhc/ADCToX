@@ -217,6 +217,37 @@ def _permutation_p(fp: pd.DataFrame, cond: dict, coef: dict, observed: float,
     return float(hits / n)
 
 
+def _reading(variants: dict, perm_p: dict, headline: str, n_agents: int) -> str:
+    """One sentence about what the measurement says, computed from it.
+
+    The metric is a per-axis Spearman between predicted and observed across-agent organ
+    rankings, which a constant per-axis predictor cannot score on by construction -- so
+    beating chance here is beating the baseline, and failing to is failing against it.
+    """
+    rho = float(variants[headline]["mean_spearman"])
+    lo, hi = variants[headline]["ci"]
+    p = perm_p.get(headline)
+    spread = max(
+        abs(float(v["mean_spearman"]) - rho) for v in variants.values()
+    )
+    if p is not None and p < 0.05 and lo > 0:
+        verdict = "A result. "
+    elif p is not None and p < 0.05:
+        verdict = "Suggestive, not settled. "
+    else:
+        verdict = "No signal. "
+    return (
+        f"{verdict}With between-agent reporting conditions removed using the "
+        f"{headline.replace('_', ' ')} estimator, the across-agent organ ranking over "
+        f"{n_agents} agents is rho = {rho:+.4f}, bootstrap over axes "
+        f"[{lo:+.4f}, {hi:+.4f}]"
+        + (f", permutation p = {p:.4f}" if p is not None else "")
+        + f". The estimate moves by up to {spread:.4f} across the five ways of estimating "
+        "the adjustment, which is larger than the estimate itself wherever the estimate is "
+        "near zero. The within-arm results are computed separately and are unaffected."
+    )
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--processed", type=Path, default=Path("data/processed"))
@@ -374,11 +405,16 @@ def main() -> int:
             "variants": results,
             "permutation_p": ps,
             "headline_variant": "adjusted_within_trial_blind",
+            # Derived, for the same reason the reading is. These were written against a
+            # 16-agent corpus and quoted figures that the 22-agent one does not produce.
             "caveats": [
-                "The result depends on the adjustment: unadjusted the mean is +0.0966 "
-                "with an interval spanning zero.",
-                "b_combo spans 0.032 to 0.195 across three estimators, and the headline "
-                "sits between them at 0.048.",
+                "The result depends on the adjustment: unadjusted the mean is "
+                f"{results['unadjusted']['mean_spearman']:+.4f} with an interval "
+                f"spanning {results['unadjusted']['ci'][0]:+.4f} to "
+                f"{results['unadjusted']['ci'][1]:+.4f}.",
+                "The estimate moves by up to "
+                + f"{max(abs(v['mean_spearman'] - results['adjusted_within_trial_blind']['mean_spearman']) for v in results.values()):.4f}"
+                + " across the five ways of estimating the adjustment.",
                 "b_combo is identified within trials from only 6 trials and 20 arms.",
                 "b_thresh has zero within-trial variance and is therefore not "
                 "identifiable except between trials, where it is confounded; the headline "
@@ -389,16 +425,13 @@ def main() -> int:
                 "positive under axis resampling.",
             ],
             "mechanism_share_of_combination_variance": frac,
-            "reading": (
-                "Suggestive, not settled. With between-agent reporting conditions removed "
-                "using the within-trial design-blind estimator, the across-agent organ "
-                "ranking beats chance at p = 0.025 by permutation -- and a constant "
-                "per-axis predictor has no discriminative power on this metric by "
-                "construction, so beating chance here is beating the baseline. But the "
-                "bootstrap over axes includes zero for that same estimator, the result "
-                "moves with how the adjustment is estimated, and the within-trial "
-                "identification rests on six trials. The within-arm result is unaffected "
-                "and still fails. This needs more agents to settle, not more analysis."
+            # Derived from the numbers above rather than written beside them. The
+            # previous version was a sentence asserting "beats chance at p = 0.025",
+            # which stayed in the artefact after the corpus grew from 16 agents to 22 and
+            # the same estimator moved to p = 0.46 -- a stale conclusion reads as a
+            # finding in a way a stale number does not.
+            "reading": _reading(
+                results, ps, "adjusted_within_trial_blind", len(cond)
             ),
         },
         {"fold_predictions": args.fold_predictions, "processed": args.processed},

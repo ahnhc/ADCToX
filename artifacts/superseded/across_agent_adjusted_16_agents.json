@@ -1,0 +1,188 @@
+{
+ "n_agents": 16,
+ "min_agents_per_axis": 6,
+ "reporting_spread": {
+  "combination_fraction": [
+   0.0,
+   0.9583333333333334
+  ],
+  "threshold_centered": [
+   -2.2491228070175437,
+   0.7508771929824558
+  ],
+  "log_n_centered": [
+   -0.44386453223053823,
+   0.5714686434523566
+  ]
+ },
+ "variants": {
+  "unadjusted": {
+   "mean_spearman": 0.09663865546218488,
+   "ci": [
+    -0.06323529411764706,
+    0.2586186974789916
+   ],
+   "n_axes": 14,
+   "per_axis": {
+    "cardiovascular": -0.17352941176470588,
+    "constitutional": -0.3088235294117647,
+    "dermatologic": 0.34411764705882353,
+    "gastrointestinal": 0.6323529411764706,
+    "haematologic": 0.12058823529411765,
+    "hepatic": 0.2323529411764706,
+    "infectious_immune": -0.061764705882352944,
+    "metabolic_endocrine": 0.5176470588235295,
+    "musculoskeletal": 0.15588235294117647,
+    "neurologic": 0.4176470588235294,
+    "ocular": 0.14705882352941177,
+    "otologic": 0.058823529411764705,
+    "pulmonary": -0.3088235294117647,
+    "renal": -0.42058823529411765
+   },
+   "coefficients": null
+  },
+  "combination_only": {
+   "mean_spearman": 0.15504201680672267,
+   "ci": [
+    0.017641806722689078,
+    0.29475315126050433
+   ],
+   "n_axes": 14,
+   "per_axis": {
+    "cardiovascular": -0.16176470588235295,
+    "constitutional": -0.11470588235294117,
+    "dermatologic": 0.3941176470588235,
+    "gastrointestinal": 0.6352941176470588,
+    "haematologic": 0.19705882352941176,
+    "hepatic": 0.25,
+    "infectious_immune": -0.05588235294117647,
+    "metabolic_endocrine": 0.5823529411764706,
+    "musculoskeletal": 0.23529411764705882,
+    "neurologic": 0.36764705882352944,
+    "ocular": 0.13823529411764707,
+    "otologic": 0.11764705882352941,
+    "pulmonary": -0.17058823529411765,
+    "renal": -0.24411764705882352
+   },
+   "coefficients": {
+    "b_combo": 0.19496552646160126,
+    "b_thresh": 0.0,
+    "b_log_n": 0.0
+   }
+  },
+  "adjusted_joint_coefficients": {
+   "mean_spearman": 0.17289915966386554,
+   "ci": [
+    0.031927521008403355,
+    0.31555147058823535
+   ],
+   "n_axes": 14,
+   "per_axis": {
+    "cardiovascular": -0.08823529411764706,
+    "constitutional": -0.17647058823529413,
+    "dermatologic": 0.39705882352941174,
+    "gastrointestinal": 0.6323529411764706,
+    "haematologic": 0.18235294117647058,
+    "hepatic": 0.3264705882352941,
+    "infectious_immune": 0.014705882352941176,
+    "metabolic_endocrine": 0.5941176470588235,
+    "musculoskeletal": 0.2411764705882353,
+    "neurologic": 0.3941176470588235,
+    "ocular": 0.15588235294117647,
+    "otologic": 0.19117647058823528,
+    "pulmonary": -0.1676470588235294,
+    "renal": -0.27647058823529413
+   },
+   "coefficients": {
+    "b_combo": 0.19496552646160126,
+    "b_thresh": 0.03265463933348656,
+    "b_log_n": 0.03932355344295502
+   }
+  },
+  "adjusted_design_blind_coefficients": {
+   "mean_spearman": 0.10126050420168065,
+   "ci": [
+    -0.05441176470588234,
+    0.25715861344537816
+   ],
+   "n_axes": 14,
+   "per_axis": {
+    "cardiovascular": -0.14705882352941177,
+    "constitutional": -0.3411764705882353,
+    "dermatologic": 0.34705882352941175,
+    "gastrointestinal": 0.6176470588235294,
+    "haematologic": 0.07647058823529412,
+    "hepatic": 0.2735294117647059,
+    "infectious_immune": -0.041176470588235294,
+    "metabolic_endocrine": 0.48823529411764705,
+    "musculoskeletal": 0.17941176470588235,
+    "neurologic": 0.4176470588235294,
+    "ocular": 0.16470588235294117,
+    "otologic": 0.03235294117647059,
+    "pulmonary": -0.29411764705882354,
+    "renal": -0.3558823529411765
+   },
+   "coefficients": {
+    "b_combo": 0.03186786912071617,
+    "b_thresh": 0.023911363628643597,
+    "b_log_n": -0.02024962416189462
+   }
+  },
+  "adjusted_within_trial_blind": {
+   "mean_spearman": 0.13319327731092437,
+   "ci": [
+    -0.018912815126050423,
+    0.2903361344537815
+   ],
+   "n_axes": 14,
+   "per_axis": {
+    "cardiovascular": -0.11764705882352941,
+    "constitutional": -0.2323529411764706,
+    "dermatologic": 0.3411764705882353,
+    "gastrointestinal": 0.6529411764705882,
+    "haematologic": 0.25882352941176473,
+    "hepatic": 0.27647058823529413,
+    "infectious_immune": -0.08529411764705883,
+    "metabolic_endocrine": 0.5588235294117647,
+    "musculoskeletal": 0.1676470588235294,
+    "neurologic": 0.4147058823529412,
+    "ocular": 0.13529411764705881,
+    "otologic": 0.10588235294117647,
+    "pulmonary": -0.26176470588235295,
+    "renal": -0.35
+   },
+   "coefficients": {
+    "b_combo": 0.04820382243048209,
+    "b_thresh": 0.0,
+    "b_log_n": 0.059658895311188335
+   }
+  }
+ },
+ "permutation_p": {
+  "adjusted_joint_coefficients": 0.005,
+  "adjusted_within_trial_blind": 0.025,
+  "adjusted_design_blind_coefficients": 0.06825
+ },
+ "headline_variant": "adjusted_within_trial_blind",
+ "caveats": [
+  "The result depends on the adjustment: unadjusted the mean is +0.0966 with an interval spanning zero.",
+  "b_combo spans 0.032 to 0.195 across three estimators, and the headline sits between them at 0.048.",
+  "b_combo is identified within trials from only 6 trials and 20 arms.",
+  "b_thresh has zero within-trial variance and is therefore not identifiable except between trials, where it is confounded; the headline estimator sets it to zero rather than using a confounded value.",
+  "The permutation test and the bootstrap over axes disagree for the headline estimator: p = 0.025 against an interval that includes zero. The per-axis correlations are heterogeneous, so the mean is not reliably positive under axis resampling."
+ ],
+ "mechanism_share_of_combination_variance": 0.32059897860063225,
+ "reading": "Suggestive, not settled. With between-agent reporting conditions removed using the within-trial design-blind estimator, the across-agent organ ranking beats chance at p = 0.025 by permutation -- and a constant per-axis predictor has no discriminative power on this metric by construction, so beating chance here is beating the baseline. But the bootstrap over axes includes zero for that same estimator, the result moves with how the adjustment is estimated, and the within-trial identification rests on six trials. The within-arm result is unaffected and still fails. This needs more agents to settle, not more analysis.",
+ "provenance": {
+  "revision": "ec16132ad998ba9fd8e5345d2c018be46807fec9",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "across_agent_adjusted.py",
+  "written_utc": "2026-10-08T23:21:13+00:00",
+  "inputs": {
+   "fold_predictions": "sha256:8372997e2797ebf2d0e069ea2fcf84da8d36a98a8f13a9333272deb428d3608f",
+   "processed": "sha256:f26bbbd3db0e7f39ddd543b9fe6c8e092b767bdbdc76bc4a56c3a9b596cda62f"
+  }
+ },
+ "_superseded": "The across-agent result on the 16-agent corpus, kept because section 5f quotes it in a before/after comparison. Rebuilding the registry corpus against the current 35-agent agent list took it to 22 agents and the headline estimator moved from rho +0.1332 at permutation p 0.025 to +0.0073 at p 0.4595. Six more agents erased the effect rather than sharpening it, which is what a sample-size artefact does, and the six arrived from ClinicalTrials.gov records already on disk so no reporting-selection story explains it away. Superseded by artifacts/across_agent_adjusted.json."
+}

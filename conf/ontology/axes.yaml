@@ -69,6 +69,26 @@ soc_redistribute: ["investigations"]
 # `reproductive system and breast disorders` is excluded because in a cervical-cancer
 # ADC trial it tracks the cancer, not the toxicity (measured: tisotumab vedotin
 # showed a spurious reproductive signal).
+# Preferred terms whose axis must not depend on which system-organ class the sponsor filed
+# them under. Applied before the SOC lookup, by exact normalized term, so each entry names
+# one event and cannot over-reach the way a pattern could.
+#
+# One entry, and it is here because the registry splits a single clinical event three ways.
+# "Infusion related reaction" appears 408 times: 192 rows filed under `immune system
+# disorders`, which map to infectious_immune; 31 under `general disorders`, which map to
+# constitutional; and 178 under `injury, poisoning and procedural complications`, which are
+# dropped. So whether an infusion reaction is counted at all, and on which axis, is decided
+# by the sponsor's coding rather than by the event.
+#
+# MedDRA's primary SOC for this term *is* injury/poisoning/procedural, which is why it lands
+# there. The exclusion of that SOC was aimed at procedural harm -- falls at 234 rows,
+# contusions at 104, fractures -- and this is a drug reaction that shares their SOC. It is
+# an immune-mediated hypersensitivity event, which is the axis the majority of sponsor
+# codings already assign it to.
+term_axis:
+  "infusion related reaction": infectious_immune
+  "infusion-related reaction": infectious_immune
+
 soc_excluded:
   "neoplasms benign, malignant and unspecified (incl cysts and polyps)": indication_confounded
   "injury, poisoning and procedural complications": not_organ_attributable

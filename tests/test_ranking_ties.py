@@ -163,14 +163,42 @@ def test_the_shown_set_spans_the_payloads_on_the_front() -> None:
     from adctox.api.main import _posterior, _serious_posterior
     from adctox.pipeline import propose
 
-    out = propose(
-        target_antigen="ERBB2",
-        condition_ids=["ckd_stage_4_5", "interstitial_lung_disease"],
-        posterior=_posterior(), top_k=6, serious_posterior=_serious_posterior(),
-    )
+    import adctox.design.search as search
+    import adctox.pipeline as pipeline
+
+    captured = {}
+    original = search.rank_and_group
+
+    def spy(scored, **kw):
+        out = original(scored, **kw)
+        captured["ordered"], captured["pareto"] = out[0], out[1]
+        return out
+
+    search.rank_and_group = spy
+    pipeline.rank_and_group = spy
+    try:
+        out = propose(
+            target_antigen="ERBB2",
+            condition_ids=["ckd_stage_4_5", "interstitial_lung_disease"],
+            posterior=_posterior(), top_k=6, serious_posterior=_serious_posterior(),
+        )
+    finally:
+        search.rank_and_group = original
+        pipeline.rank_and_group = original
+
     shown = out["candidates"]
     payloads = [c["design"]["payload"] for c in shown]
-    assert len(set(payloads)) == len(payloads), payloads
+    on_front = {
+        captured["ordered"][i].design.payload for i in captured["pareto"]
+    }
+    # The property the rule guarantees: every payload on the front is shown, and a repeat
+    # happens only after they are exhausted. Asserting all six distinct would be asserting
+    # that the front always has at least six payloads, which it does not -- here it has
+    # five, so the sixth slot must repeat one of them.
+    assert on_front <= set(payloads), sorted(on_front - set(payloads))
+    assert len(set(payloads)) == min(len(on_front), len(shown)), (
+        sorted(on_front), payloads
+    )
     assert out["shown_selection"], "the selection rule is not stated"
     # And it is still the front that is drawn from, not merely a diverse sample.
     assert all(c["on_pareto_front"] for c in shown)

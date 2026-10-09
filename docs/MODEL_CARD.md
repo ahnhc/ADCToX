@@ -1,11 +1,21 @@
 # Model card: forward organ-toxicity model
 
-**Status: the model does not beat a base-rate baseline on any of six evaluations. Read
-this section first.**
+**Status: the model does not beat a base-rate baseline on any of six evaluations. On one of
+them -- leave-one-agent-out, which is the task the product performs -- it is no longer
+measurably behind one: -0.0121 with an interval spanning zero. Read this section first.**
 
 Figures below are from the re-run on the corrected model. A non-identifiability was found
 after the first round, every number was withdrawn, and the re-run reproduced the within-arm
 results almost exactly -- see `## The bug that invalidated the first evaluation`.
+
+They are also from a rebuilt corpus. Attribution matches a ClinicalTrials.gov event group
+against the names in `conf/adc_registry.yaml`, 17 of whose 35 agents came from the
+literature's payload-linker stem sweep, and the corpus on disk predated that growth. Rebuilt
+against the current list it holds **22 agents, 299 arms and 4,186 cells** rather than 16, 285
+and 3,990. Two headline numbers moved with it: the leave-one-agent-out deficit from -0.0422
+to -0.0121, and the across-agent correlation that was this project's only positive result
+from rho +0.1332 at p = 0.025 to **+0.0073 at p = 0.4595**. Six more agents erased the
+second rather than sharpening it, so there is now no positive result to report.
 
 ## Intended use
 
@@ -29,18 +39,26 @@ ClinicalTrials.gov corpus alone. A literature-extended corpus exists and is larg
 only way that matters for this table; its fit is in progress and this card will state its
 results or say nothing about them.
 
-| | ClinicalTrials.gov only | + literature |
-|---|---|---|
-| arms (attributable, n>=30, conventional ADC) | 285 | 468 |
-| (arm x axis) cells | 3,990 | 6,552 |
-| distinct agents | 16 | **31** |
-| **identifying cells (agents x axes)** | **224** | **434** |
-| design parameters | 100 | 100 |
-| ratio against identifying cells | 2.24 : 1 | 4.34 : 1 |
-| mechanisms with 3+ agents (a usable held-out fold) | 2 | 3 |
-| agents with a non-cleavable linker | 2 of 16 | 3 of 31 |
+| | ClinicalTrials.gov, original agent list | ClinicalTrials.gov, literature's agent list | + literature arms |
+|---|---|---|---|
+| arms (attributable, n>=30, conventional ADC) | 285 | 299 | 482 |
+| (arm x axis) cells | 3,990 | 4,186 | 6,748 |
+| distinct agents | 16 | **22** | **32** |
+| **identifying cells (agents x axes)** | **224** | **308** | **448** |
+| design parameters | 100 | 100 | 100 |
+| ratio against identifying cells | 2.24 : 1 | 3.08 : 1 | 4.48 : 1 |
+| mechanisms with 3+ agents (a usable held-out fold) | 2 | **3** | 3 |
+| share of cells observed rather than censored | 86.3% | 86.6% | 66.9% |
 
-Both columns are the **common-events** table. On the serious table the extension buys
+The middle column is the one this card did not have. Attribution matches a
+ClinicalTrials.gov event group against the names in `conf/adc_registry.yaml`, and 17 of its
+35 agents were found by the literature's payload-linker stem sweep -- so **6 agents and 84
+identifying cells came out of registry data that was already on disk**, at no cost to the
+observed share, and the third mechanism fold opens there rather than with the paper arms.
+Extracting the arms bought 42 more identifying cells and took the observed share from 86.6%
+to 66.9%.
+
+All three columns are the **common-events** table. On the serious table the extension buys
 almost nothing -- 17 agents over 290 arms, against the registry's 16 over 284 -- because
 405 of the 414 literature arms publish no serious-adverse-event table at all. So the
 two-table comparison that this card uses as a robustness check is available for the
@@ -61,10 +79,10 @@ populations and none of its chemistry.
 
 | evaluation | model | best baseline | delta | 95% CI | |
 |---|---|---|---|---|---|
-| within-arm ranking, leave-one-agent-out (16) | 0.8036 | 0.8458 | **-0.0422** | [-0.0650, -0.0221] | excludes 0 |
-| within-arm ranking, leave-one-mechanism-out (2) | 0.8523 | 0.8715 | **-0.0191** | [-0.0287, -0.0096] | excludes 0 |
-| within-arm ranking, leave-one-family-out (4) | 0.7725 | 0.8525 | **-0.0783** | [-0.1223, -0.0317] | excludes 0 |
-| across-agent per-axis Spearman | +0.0966 | +0.0263 | -- | [-0.0639, +0.2632] | includes 0 |
+| within-arm ranking, leave-one-agent-out (22) | 0.8053 | 0.8220 | -0.0121 | [-0.0299, +0.0055] | includes 0 |
+| within-arm ranking, leave-one-mechanism-out (3) | 0.8568 | 0.8768 | **-0.0200** | [-0.0294, -0.0031] | excludes 0 |
+| within-arm ranking, leave-one-family-out (6) | 0.7800 | 0.8390 | **-0.0590** | [-0.0929, -0.0233] | excludes 0 |
+| across-agent per-axis Spearman | -0.0152 | +0.1162 | -- | [-0.2054, +0.1614] | includes 0 |
 | dose-modification ordering (13) | +0.1797 | +0.1672 | +0.0125 | [-0.0264, +0.0511] | includes 0 |
 
 <!-- /generated: results-table -->
@@ -119,13 +137,14 @@ Two coupled degeneracies:
    pull every observed arm back with its random effect. In sample this is harmless; out of
    sample it is ruinous, because a design with no trial and no agent drops the random
    effects and inherits the uncompensated intercept.
-2. **Cleavability entered as a raw indicator.** Two of sixteen agents carry a non-cleavable
-   linker, so the indicator is nearly constant and behaves as a second per-axis intercept,
-   unidentified against `mu_axis`. The literature expansion does not relieve this: it takes
-   the count from 2 of 16 to 3 of 31, a 9.7% share against 12.5%, so doubling the corpus
-   left the indicator no less nearly constant -- non-cleavable linkers are a fixed minority
-   of the chemistry rather than an under-sampled corner. The reparameterization is therefore
-   load-bearing at any corpus size this project can reach.
+2. **Cleavability entered as a raw indicator.** Three of twenty-two agents carry a
+   non-cleavable linker, so the indicator is nearly constant and behaves as a second
+   per-axis intercept, unidentified against `mu_axis`. Growing the corpus does not relieve
+   this. The count runs 2 of 16 on the original agent list, 3 of 22 once the literature's
+   names are used, and 3 of 32 with its arms -- a 12.5%, 13.6%, 9.4% share -- so tripling
+   the agents left the indicator no less nearly constant. Non-cleavable linkers are a fixed
+   minority of the chemistry rather than an under-sampled corner, and the reparameterization
+   is load-bearing at any corpus size this project can reach.
 
 | | before | after |
 |---|---|---|
@@ -151,12 +170,12 @@ representative of its family, and the two worst are each other's only family sib
 
 | fold | delta vs baseline | same-payload siblings | family share of mechanism | sole of family |
 |---|---|---|---|---|
-| trastuzumab emtansine | **-0.1565** | 0 | 0.29 | no |
-| mirvetuximab soravtansine | **-0.1058** | 0 | 0.29 | no |
-| belantamab mafodotin | **-0.0981** | 0 | 0.71 | no |
-| gemtuzumab ozogamicin | **-0.0697** | 1 | 1.00 | no |
+| trastuzumab emtansine | **-0.1165** | 0 | 0.20 | no |
+| mirvetuximab soravtansine | **-0.0945** | 0 | 0.20 | no |
+| belantamab mafodotin | **-0.0543** | 1 | 0.70 | no |
+| gemtuzumab ozogamicin | **-0.0484** | 1 | 1.00 | no |
 
-Sole-of-family agents among the four worst folds: 0/4. Mean delta -0.0485 for the 3 sole-of-family agents against -0.0408 for the 13 that share one -- no separation. Rank correlation of fold delta with same-payload siblings +0.771, with family share of its mechanism +0.694.
+Sole-of-family agents among the four worst folds: 0/4. Mean delta +0.0227 for the 2 sole-of-family agents against -0.0156 for the 20 that share one -- no separation. Rank correlation of fold delta with same-payload siblings +0.206, with family share of its mechanism +0.242.
 <!-- /generated: fold-difficulty -->
 
 What replaces it is coarser and worse for the project. Fold difficulty tracks **how many
@@ -177,21 +196,21 @@ level" but "the level that would help is the one that recedes".
 ## Calibration and uncertainty
 
 <!-- generated: fitted-parameters -->
-`tau_cleav` 0.2824 [0.1976, 0.4103] -- the scale of the cleavable-versus-non-cleavable linker contrast across axes. Clear of zero, and about half the size of the mechanism scale -- so linker cleavability shifts the organ profile, and shifts it less than the payload mechanism does. This is the one design axis the corpus identifies comfortably: cleavability is binary and needs only 8 agents to estimate, against the 40 a mechanism level needs and the 80 a payload level would.
+`tau_cleav` 0.2871 [0.2027, 0.4133] -- the scale of the cleavable-versus-non-cleavable linker contrast across axes. Clear of zero, and about half the size of the mechanism scale -- so linker cleavability shifts the organ profile, and shifts it less than the payload mechanism does. This is the one design axis the corpus identifies comfortably: cleavability is binary and needs only 8 agents to estimate, against the 40 a mechanism level needs and the 80 a payload level would.
 
-`tau_mech` 0.5928 [0.4928, 0.7008] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
+`tau_mech` 0.5424 [0.4494, 0.6398] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
 
-`sigma_agent` 0.1590 [0.0980, 0.2402] -- small, so the design slots account for much of the between-agent variation.
+`sigma_agent` 0.3433 [0.2423, 0.4898] -- small, so the design slots account for much of the between-agent variation.
 
-`b_combo` +0.1950 [+0.1691, +0.2213] -- combination arms do report higher rates -- on this corpus, where every arm is a ClinicalTrials.gov record. On the literature-extended corpus the same coefficient reaches +1.091 without a source indicator, because every combination arm is a registry arm and none of the 194 literature arms is one, so it estimates the corpus rather than the regimen. See negative result 33.
+`b_combo` +0.1930 [+0.1645, +0.2202] -- combination arms do report higher rates -- on this corpus, where every arm is a ClinicalTrials.gov record. On the literature-extended corpus the same coefficient reaches +1.091 without a source indicator, because every combination arm is a registry arm and none of the 194 literature arms is one, so it estimates the corpus rather than the regimen. See negative result 33.
 
-`b_log_n` +0.0393 [+0.0288, +0.0491] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
+`b_log_n` +0.0336 [+0.0236, +0.0435] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
 
-`b_dar` +0.0319 [-0.0175, +0.0840] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
+`b_dar` +0.0385 [-0.0430, +0.1220] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
 
-`b_thresh` +0.0327 [+0.0272, +0.0375] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
+`b_thresh` +0.0341 [+0.0292, +0.0393] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
 
-Convergence stands in for R-hat: the model is refit under a second seed and posterior means compared. The worst standardized gap is 0.1376 pooled standard deviations, on `b_thresh`, against a threshold of 0.3 -- acceptable.
+Convergence stands in for R-hat: the model is refit under a second seed and posterior means compared. The worst standardized gap is 0.0987 pooled standard deviations, on `sigma_agent`, against a threshold of 0.3 -- acceptable.
 <!-- /generated: fitted-parameters -->
 
 

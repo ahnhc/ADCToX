@@ -123,6 +123,17 @@ class Taxonomy:
         self._soc_redistribute = {
             normalize_text(s) for s in (axes_doc.get("soc_redistribute") or [])
         }
+        # Kept accessible, not private-by-accident: the exclusions drop a tenth of the
+        # registry's adverse-event rows, which is the largest discretionary decision in the
+        # corpus, and a measurement that reports what is in each bucket has to be able to
+        # name the reason beside it.
+        # Terms whose axis is fixed regardless of the SOC they arrive under. Checked
+        # first, and by exact normalized term rather than by pattern, so an entry can only
+        # affect the event it names. See `term_axis` in the config for why there is one.
+        self._term_axis = {
+            normalize_text(k): v
+            for k, v in (axes_doc.get("term_axis") or {}).items()
+        }
         self._soc_excluded = {
             normalize_text(k): v
             for k, v in (axes_doc.get("soc_excluded") or {}).items()
@@ -223,6 +234,10 @@ class Taxonomy:
             return AXIS_EXCLUDED, f"soc_excluded:{self._soc_excluded[soc]}"
         return None
 
+    def excluded_reasons(self) -> dict[str, str]:
+        """System-organ classes dropped before any axis, and why, keyed casefolded."""
+        return dict(self._soc_excluded)
+
     def resolve(self, term: str | None, raw_soc: str | None) -> tuple[str, str]:
         """Map an AE record to an organ axis.
 
@@ -238,6 +253,10 @@ class Taxonomy:
         unmapped rather than looked up again (an earlier version recursed until the
         stack blew).
         """
+        fixed = self._term_axis.get(normalize_text(term))
+        if fixed is not None:
+            return fixed, f"term_axis:{normalize_text(term)}"
+
         soc = self.canonical_soc(raw_soc)
 
         direct = self._resolve_known_soc(term, soc)

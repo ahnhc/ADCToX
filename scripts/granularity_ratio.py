@@ -19,26 +19,50 @@ from __future__ import annotations
 
 import argparse
 import pathlib
+import sys
 
 import pandas as pd
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+
 from adctox.model.dataset import build
+import corpus_ablation as _ablation
 from adctox.provenance import write_json
 from adctox.taxonomy import default_taxonomy
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 # The plan's threshold for identifying a level-by-axis interaction.
 IDENTIFICATION_FLOOR = 8.0
+# Shared with `corpus_ablation.py`, which is where it is defined and
+# justified; imported so the two scripts cannot drift apart about what
+# "before the literature work" means.
+ORIGINAL_REGISTRY_AGENTS = _ablation.ORIGINAL_REGISTRY_AGENTS
 
 
-def _stage(path: pathlib.Path, axes: list[str], keep: set[str] | None):
+def _stage(
+    path: pathlib.Path, axes: list[str], keep: set[str] | None,
+    restrict_all: bool = False,
+):
+    """One corpus stage, sharing `corpus_ablation.py`'s definitions.
+
+    The two scripts must not disagree about what "registry only" means. The ablation found
+    that the phrase was ambiguous -- attribution uses the registry's *names*, and 17 of the
+    35 came from the literature's stem sweep -- so both now carry the same four stages and
+    the same filter semantics, including that `restrict_all` is what the agent-list stages
+    need: on the registry frame `source` is null for every row, so "keep a registry arm or
+    an arm of a named agent" keeps everything.
+    """
     arms = pd.read_parquet(path / "arms.parquet")
     obs = pd.read_parquet(path / "observations.parquet")
     if keep is not None:
-        arms = arms[
-            (arms["source"].isna() if "source" in arms else True)
-            | arms["agent"].isin(keep)
-        ].reset_index(drop=True)
+        if restrict_all:
+            mask = arms["agent"].isin(keep)
+        else:
+            mask = (
+                arms["source"].isna() if "source" in arms
+                else pd.Series(True, index=arms.index)
+            ) | arms["agent"].isin(keep)
+        arms = arms[mask].reset_index(drop=True)
         obs = obs[obs["arm_key"].isin(set(arms["arm_key"]))].reset_index(drop=True)
     data = build(arms, obs, axes, kind="other")
     inc = set(data.agents)
@@ -62,14 +86,15 @@ def main() -> None:
         pd.read_parquet(args.processed / "arms.parquet")["agent"].dropna().unique()
     )
     stages = {
-        "registry_only": (args.processed, None),
-        "plus_literature_arms": (full, registry_agents),
-        "plus_literature_agents": (full, None),
+        "ctgov_original_agent_list": (args.processed, ORIGINAL_REGISTRY_AGENTS, True),
+        "ctgov_literature_agent_list": (args.processed, None, False),
+        "plus_literature_arms": (full, registry_agents, False),
+        "plus_literature_agents": (full, None, False),
     }
 
     rows = []
-    for name, (path, keep) in stages.items():
-        data, payloads = _stage(path, axes, keep)
+    for name, (path, keep, restrict) in stages.items():
+        data, payloads = _stage(path, axes, keep, restrict)
         agents = data.n_contributing_agents
         identifying = agents * len(axes)
         levels = {

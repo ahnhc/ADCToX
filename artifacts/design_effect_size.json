@@ -1,164 +1,164 @@
 {
- "baseline_sd": 0.9626901149749756,
+ "baseline_sd": 0.9894903898239136,
  "baseline_range": [
-  -4.37514591217041,
-  -0.7218210101127625
+  -4.4286298751831055,
+  -0.6960490345954895
  ],
  "per_mechanism": [
   {
    "mechanism": "dna_alkyl",
-   "n_agents": 1,
-   "effect_sd": 0.6864951252937317,
-   "ratio_to_baseline_sd": 0.7131008505821228,
-   "rank_corr_with_baseline": 0.6703296703296703,
-   "axis_positions_moved": 26
+   "n_agents": 2,
+   "effect_sd": 0.6291176080703735,
+   "ratio_to_baseline_sd": 0.6357995867729187,
+   "rank_corr_with_baseline": 0.701098901098901,
+   "axis_positions_moved": 20
   },
   {
    "mechanism": "dna_cleave",
    "n_agents": 2,
-   "effect_sd": 0.588320791721344,
-   "ratio_to_baseline_sd": 0.611121654510498,
-   "rank_corr_with_baseline": 0.9208791208791208,
-   "axis_positions_moved": 20
+   "effect_sd": 0.5823928117752075,
+   "ratio_to_baseline_sd": 0.5885785222053528,
+   "rank_corr_with_baseline": 0.8945054945054945,
+   "axis_positions_moved": 22
   },
   {
    "mechanism": "dna_crosslink",
-   "n_agents": 2,
-   "effect_sd": 0.350206196308136,
-   "ratio_to_baseline_sd": 0.3637787401676178,
-   "rank_corr_with_baseline": 0.8989010989010989,
-   "axis_positions_moved": 22
+   "n_agents": 4,
+   "effect_sd": 0.31767863035202026,
+   "ratio_to_baseline_sd": 0.32105275988578796,
+   "rank_corr_with_baseline": 0.9692307692307692,
+   "axis_positions_moved": 10
   },
   {
    "mechanism": "topo1",
    "n_agents": 4,
-   "effect_sd": 0.3497035801410675,
-   "ratio_to_baseline_sd": 0.36325663328170776,
-   "rank_corr_with_baseline": 0.9692307692307692,
+   "effect_sd": 0.3377443850040436,
+   "ratio_to_baseline_sd": 0.3413316607475281,
+   "rank_corr_with_baseline": 0.978021978021978,
    "axis_positions_moved": 8
   },
   {
    "mechanism": "tubulin",
-   "n_agents": 7,
-   "effect_sd": 0.2783661186695099,
-   "ratio_to_baseline_sd": 0.28915444016456604,
+   "n_agents": 10,
+   "effect_sd": 0.2814424932003021,
+   "ratio_to_baseline_sd": 0.2844317555427551,
    "rank_corr_with_baseline": 0.9472527472527472,
    "axis_positions_moved": 10
   }
  ],
  "cleavability": {
-  "effect_sd": 0.24385257065296173,
-  "ratio_to_baseline_sd": 0.25330328941345215,
-  "rank_corr_with_baseline": 0.9384615384615385
+  "effect_sd": 0.2423536479473114,
+  "ratio_to_baseline_sd": 0.24492774903774261,
+  "rank_corr_with_baseline": 0.9428571428571428
  },
- "effect_vs_evidence_spearman": -0.23096841921091768,
+ "effect_vs_evidence_spearman": -0.25556819175925116,
  "largest_cells": [
   {
    "mechanism": "dna_alkyl",
    "axis": "ocular",
-   "effect": 1.9830131530761719,
-   "abs_effect": 1.9830131530761719,
-   "arms": 2,
-   "agents": 1
+   "effect": 2.027953863143921,
+   "abs_effect": 2.027953863143921,
+   "arms": 3,
+   "agents": 2
   },
   {
    "mechanism": "dna_cleave",
    "axis": "ocular",
-   "effect": -1.4961955547332764,
-   "abs_effect": 1.4961955547332764,
+   "effect": -1.372160792350769,
+   "abs_effect": 1.372160792350769,
    "arms": 20,
    "agents": 2
   },
   {
-   "mechanism": "tubulin",
-   "axis": "neurologic",
-   "effect": 1.061063528060913,
-   "abs_effect": 1.061063528060913,
-   "arms": 163,
-   "agents": 7
+   "mechanism": "dna_cleave",
+   "axis": "haematologic",
+   "effect": 1.0452615022659302,
+   "abs_effect": 1.0452615022659302,
+   "arms": 36,
+   "agents": 2
   },
   {
    "mechanism": "topo1",
    "axis": "gastrointestinal",
-   "effect": 1.025193214416504,
-   "abs_effect": 1.025193214416504,
+   "effect": 0.9706902503967285,
+   "abs_effect": 0.9706902503967285,
    "arms": 68,
    "agents": 4
   },
   {
+   "mechanism": "tubulin",
+   "axis": "neurologic",
+   "effect": 0.810283899307251,
+   "abs_effect": 0.810283899307251,
+   "arms": 173,
+   "agents": 10
+  },
+  {
    "mechanism": "dna_alkyl",
    "axis": "hepatic",
-   "effect": -1.000937819480896,
-   "abs_effect": 1.000937819480896,
-   "arms": 1,
-   "agents": 1
-  },
-  {
-   "mechanism": "dna_alkyl",
-   "axis": "haematologic",
-   "effect": -0.9730167388916016,
-   "abs_effect": 0.9730167388916016,
+   "effect": -0.6973192095756531,
+   "abs_effect": 0.6973192095756531,
    "arms": 2,
-   "agents": 1
-  },
-  {
-   "mechanism": "dna_cleave",
-   "axis": "haematologic",
-   "effect": 0.9362221360206604,
-   "abs_effect": 0.9362221360206604,
-   "arms": 36,
    "agents": 2
   },
   {
    "mechanism": "dna_cleave",
    "axis": "otologic",
-   "effect": -0.8079020977020264,
-   "abs_effect": 0.8079020977020264,
+   "effect": -0.6623356342315674,
+   "abs_effect": 0.6623356342315674,
    "arms": 6,
+   "agents": 2
+  },
+  {
+   "mechanism": "dna_cleave",
+   "axis": "dermatologic",
+   "effect": -0.6211658716201782,
+   "abs_effect": 0.6211658716201782,
+   "arms": 32,
+   "agents": 2
+  },
+  {
+   "mechanism": "dna_crosslink",
+   "axis": "ocular",
+   "effect": -0.6001391410827637,
+   "abs_effect": 0.6001391410827637,
+   "arms": 7,
+   "agents": 3
+  },
+  {
+   "mechanism": "dna_alkyl",
+   "axis": "haematologic",
+   "effect": -0.5980237722396851,
+   "abs_effect": 0.5980237722396851,
+   "arms": 3,
+   "agents": 2
+  },
+  {
+   "mechanism": "dna_cleave",
+   "axis": "hepatic",
+   "effect": 0.5803563594818115,
+   "abs_effect": 0.5803563594818115,
+   "arms": 31,
    "agents": 2
   },
   {
    "mechanism": "topo1",
    "axis": "dermatologic",
-   "effect": 0.7523614764213562,
-   "abs_effect": 0.7523614764213562,
+   "effect": 0.54864901304245,
+   "abs_effect": 0.54864901304245,
    "arms": 67,
    "agents": 4
-  },
-  {
-   "mechanism": "dna_crosslink",
-   "axis": "hepatic",
-   "effect": 0.7002364993095398,
-   "abs_effect": 0.7002364993095398,
-   "arms": 7,
-   "agents": 2
-  },
-  {
-   "mechanism": "dna_alkyl",
-   "axis": "cardiovascular",
-   "effect": -0.5910349488258362,
-   "abs_effect": 0.5910349488258362,
-   "arms": 0,
-   "agents": 0
-  },
-  {
-   "mechanism": "dna_cleave",
-   "axis": "dermatologic",
-   "effect": -0.5759685635566711,
-   "abs_effect": 0.5759685635566711,
-   "arms": 32,
-   "agents": 2
   }
  ],
  "reading": "Where the evidence is good the design effects are too small to reorder the organ ranking (tubulin ratio 0.29, rank corr 0.947), so the within-arm metric is the baseline's metric and the design terms only add noise. Where the effects are large the evidence is one drug (dna_alkyl ratio 0.71 on a single agent). A design coefficient is identified by agents, not patients, but the binomial likelihood counts patients, so a two-arm cell still carries hundreds of patients and the hierarchical prior does not shrink it enough.",
  "provenance": {
-  "revision": "e9f54c5ef553221bb58e5600102b40478e043eda",
+  "revision": "479d1565a0668aae84acaf1c17657ac757ec301b",
   "dirty": true,
-  "snapshot": "2026-10-07",
+  "snapshot": null,
   "script": "design_effect_size.py",
-  "written_utc": "2026-10-08T13:57:28+00:00",
+  "written_utc": "2026-10-09T12:47:07+00:00",
   "inputs": {
-   "posterior": "sha256:88933386489fa0c6642d91c6634070fa1df2b648a24c628c56deb1cbaf7eff9f"
+   "posterior": "sha256:6d1d0d583d5066e2c54d78fbfde41a88d9ce91741312bc1ddd14f24f2f02bbf7"
   }
  }
 }

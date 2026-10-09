@@ -28,6 +28,19 @@ from adctox.provenance import stamp  # noqa: E402
 from adctox.taxonomy import default_taxonomy  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+# The 18 agents `conf/adc_registry.yaml` held before the literature stem sweep, at commit
+# 0dfecc8. Pinned as a literal rather than read from git history, so the ablation's first
+# stage is reproducible from a clean clone without a revision walk -- and so that a later
+# edit to the registry cannot silently change what "before" means.
+ORIGINAL_REGISTRY_AGENTS = frozenset({
+    "belantamab_mafodotin", "brentuximab_vedotin", "datopotamab_deruxtecan",
+    "enfortumab_vedotin", "gemtuzumab_ozogamicin", "inotuzumab_ozogamicin",
+    "loncastuximab_tesirine", "mirvetuximab_soravtansine", "moxetumomab_pasudotox",
+    "patritumab_deruxtecan", "pivekimab_sunirine", "polatuzumab_vedotin",
+    "sacituzumab_govitecan", "telisotuzumab_vedotin", "tisotumab_vedotin",
+    "trastuzumab_deruxtecan", "trastuzumab_duocarmazine", "trastuzumab_emtansine",
+})
+
 MIN_AGENTS_FOR_FOLD = 3
 # Design coefficients in the shipped specification: mu_axis, the mechanism and cleavability
 # interactions, and the four scalars. Fixed rather than counted from a fit, because the
@@ -36,7 +49,9 @@ DESIGN_PARAMETERS = 100
 
 
 def _frames(
-    path: pathlib.Path, agents: set[str] | None = None
+    path: pathlib.Path,
+    agents: set[str] | None = None,
+    restrict_all: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Load a corpus, optionally keeping only arms of the given agents.
 
@@ -50,18 +65,31 @@ def _frames(
     arms = pd.read_parquet(path / "arms.parquet")
     obs = pd.read_parquet(path / "observations.parquet")
     if agents is not None:
-        arms = arms[
-            (arms["source"].isna() if "source" in arms else True)
-            | arms["agent"].isin(agents)
-        ].reset_index(drop=True)
+        if restrict_all:
+            # Every arm must be one of the named agents. This is what the agent-list
+            # stages need, and the clause below is not: on the registry frame `source` is
+            # null for every row, so "keep a registry arm or an arm of a named agent" keeps
+            # everything and the filter was silently a no-op -- the first two stages came
+            # out identical.
+            mask = arms["agent"].isin(agents)
+        else:
+            # Keep every registry arm plus the literature arms of the named agents, which
+            # is what separates "more arms of agents we had" from "arms of new agents".
+            mask = (
+                arms["source"].isna() if "source" in arms else pd.Series(
+                    True, index=arms.index
+                )
+            ) | arms["agent"].isin(agents)
+        arms = arms[mask].reset_index(drop=True)
         obs = obs[obs["arm_key"].isin(set(arms["arm_key"]))].reset_index(drop=True)
     return arms, obs
 
 
 def describe(
-    path: pathlib.Path, axes: list[str], agents: set[str] | None = None
+    path: pathlib.Path, axes: list[str], agents: set[str] | None = None,
+    restrict_all: bool = False,
 ) -> dict:
-    arms, obs = _frames(path, agents)
+    arms, obs = _frames(path, agents, restrict_all)
     data = ds.build(arms, obs, axes, kind="other")
     per_mech: dict[str, set[int]] = {}
     arms_per_mech: dict[str, int] = {}
@@ -125,20 +153,33 @@ def main() -> int:
         print(f"missing {full}; run `make pmc-merge`", file=sys.stderr)
         return 1
 
-    # The agents the registry already had, which is what separates the two literature
-    # stages: arms of a known agent add observations of its trial populations and none of
-    # its chemistry.
+    # Four stages, not three, because the first one was mislabelled.
+    #
+    # Attribution matches a ClinicalTrials.gov event group against the *names and aliases*
+    # in `conf/adc_registry.yaml`, and 17 of that file's 35 agents were found by the
+    # literature's payload-linker stem sweep. So "registry only" with the current registry
+    # is not "before the literature work": it is registry data read with a literature-
+    # derived agent list, and it attributes 894 event groups where the original 18-agent
+    # list attributed 781.
+    #
+    # That makes the literature's contribution two separate things, and they were being
+    # reported as one. Naming an agent turns its existing ClinicalTrials.gov records from
+    # unattributable into usable; extracting its arms from papers adds new records. The
+    # first is free of the literature's reporting selection entirely, which is the opposite
+    # of what section 5g measures about the second.
+    original = ORIGINAL_REGISTRY_AGENTS
     registry_agents = set(
         pd.read_parquet(registry / "arms.parquet")["agent"].dropna().unique()
     )
     stages = {
-        "registry_only": (registry, None),
-        "plus_literature_arms": (full, registry_agents),
-        "plus_literature_agents": (full, None),
+        "ctgov_original_agent_list": (registry, original, True),
+        "ctgov_literature_agent_list": (registry, None, False),
+        "plus_literature_arms": (full, registry_agents, False),
+        "plus_literature_agents": (full, None, False),
     }
     described: dict[str, dict] = {}
-    for name, (path, agents) in stages.items():
-        described[name] = describe(path, axes, agents)
+    for name, (path, agents, restrict) in stages.items():
+        described[name] = describe(path, axes, agents, restrict)
 
     # The nesting claim, checked. A stage that is not a superset of the one before it makes
     # the ablation uninterpretable, because a difference could then come from arms that

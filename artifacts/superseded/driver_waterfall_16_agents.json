@@ -1,0 +1,167 @@
+{
+ "summary": {
+  "designs": 6,
+  "profiles": 4,
+  "rows_checked": 336,
+  "worst_gap": 0.00472,
+  "median_gap": 0.001215,
+  "mean_gap": 0.0015720238095238096,
+  "rows_over_1pp": 0,
+  "bound_the_test_holds": 0.01
+ },
+ "rows": [
+  {
+   "payload": "DXd",
+   "profile": "none",
+   "axes": 14,
+   "worst_gap": 0.00302
+  },
+  {
+   "payload": "DXd",
+   "profile": "hepatic",
+   "axes": 14,
+   "worst_gap": 0.00302
+  },
+  {
+   "payload": "DXd",
+   "profile": "renal + pulmonary",
+   "axes": 14,
+   "worst_gap": 0.00302
+  },
+  {
+   "payload": "DXd",
+   "profile": "dermatologic",
+   "axes": 14,
+   "worst_gap": 0.00302
+  },
+  {
+   "payload": "MMAE",
+   "profile": "none",
+   "axes": 14,
+   "worst_gap": 0.00133
+  },
+  {
+   "payload": "MMAE",
+   "profile": "hepatic",
+   "axes": 14,
+   "worst_gap": 0.00133
+  },
+  {
+   "payload": "MMAE",
+   "profile": "renal + pulmonary",
+   "axes": 14,
+   "worst_gap": 0.00133
+  },
+  {
+   "payload": "MMAE",
+   "profile": "dermatologic",
+   "axes": 14,
+   "worst_gap": 0.00133
+  },
+  {
+   "payload": "DM1",
+   "profile": "none",
+   "axes": 14,
+   "worst_gap": 0.00439
+  },
+  {
+   "payload": "DM1",
+   "profile": "hepatic",
+   "axes": 14,
+   "worst_gap": 0.00439
+  },
+  {
+   "payload": "DM1",
+   "profile": "renal + pulmonary",
+   "axes": 14,
+   "worst_gap": 0.00439
+  },
+  {
+   "payload": "DM1",
+   "profile": "dermatologic",
+   "axes": 14,
+   "worst_gap": 0.00439
+  },
+  {
+   "payload": "MMAF",
+   "profile": "none",
+   "axes": 14,
+   "worst_gap": 0.00472
+  },
+  {
+   "payload": "MMAF",
+   "profile": "hepatic",
+   "axes": 14,
+   "worst_gap": 0.00472
+  },
+  {
+   "payload": "MMAF",
+   "profile": "renal + pulmonary",
+   "axes": 14,
+   "worst_gap": 0.00472
+  },
+  {
+   "payload": "MMAF",
+   "profile": "dermatologic",
+   "axes": 14,
+   "worst_gap": 0.00472
+  },
+  {
+   "payload": "SG3199",
+   "profile": "none",
+   "axes": 14,
+   "worst_gap": 0.00254
+  },
+  {
+   "payload": "SG3199",
+   "profile": "hepatic",
+   "axes": 14,
+   "worst_gap": 0.00254
+  },
+  {
+   "payload": "SG3199",
+   "profile": "renal + pulmonary",
+   "axes": 14,
+   "worst_gap": 0.00254
+  },
+  {
+   "payload": "SG3199",
+   "profile": "dermatologic",
+   "axes": 14,
+   "worst_gap": 0.00254
+  },
+  {
+   "payload": "DGN549",
+   "profile": "none",
+   "axes": 14,
+   "worst_gap": 0.0015
+  },
+  {
+   "payload": "DGN549",
+   "profile": "hepatic",
+   "axes": 14,
+   "worst_gap": 0.0015
+  },
+  {
+   "payload": "DGN549",
+   "profile": "renal + pulmonary",
+   "axes": 14,
+   "worst_gap": 0.0015
+  },
+  {
+   "payload": "DGN549",
+   "profile": "dermatologic",
+   "axes": 14,
+   "worst_gap": 0.0015
+  }
+ ],
+ "provenance": {
+  "revision": "29a55e583d849c5b5754e11b9c628cf031ef914a",
+  "dirty": true,
+  "snapshot": null,
+  "script": "driver_waterfall.py",
+  "written_utc": "2026-10-09T08:33:44+00:00",
+  "inputs": {}
+ },
+ "_superseded": "The driver waterfall's gap on the 16-agent registry corpus, kept because section 5b quotes it in a before/after comparison. Worst absolute gap 0.0047 and median 0.0012, against 0.0128 and 0.0054 on the 22-agent corpus. The gap scales with the posterior variance and sigma_agent went from 0.159 to 0.343 with the rebuild, so it grew with the width of the posterior rather than with any change to the decomposition -- which the sign test confirms: negative in 156 of 165 cells below rate 0.5, as Jensen's inequality requires. Superseded by artifacts/driver_waterfall.json."
+}

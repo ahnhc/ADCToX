@@ -58,6 +58,11 @@ def _registry_designs(path: Path = REGISTRY) -> tuple[list[dict], int]:
         if spec.get("dar") is None or not spec.get("mechanism"):
             continue
         out.append({
+            # The registry key, which is what `Posterior.agents` and the corpus frames use.
+            # Carried beside the INN because the two are different strings -- "brentuximab
+            # vedotin" against `brentuximab_vedotin` -- and matching the display name
+            # against the fitted agent list gave an intersection of zero, reporting that
+            # none of the references was in the fit when 17 of 22 were.
             "key": key,
             "inn": spec["inn"],
             "mechanism": spec["mechanism"],
@@ -77,24 +82,30 @@ def _registry_designs(path: Path = REGISTRY) -> tuple[list[dict], int]:
 # makes the entry's lifetime the posterior's. The registry and the fit are fixed for the
 # life of a process, and recomputing 30-odd predictions per request would put a Monte Carlo
 # draw on the serving path for a number that never changes.
-_CACHE: dict[int, tuple[Posterior, np.ndarray, list[str], int]] = {}
+_CACHE: dict[int, tuple[Posterior, np.ndarray, list[str], int, list[str]]] = {}
 
 
-def _reference_matrix(post: Posterior) -> tuple[np.ndarray, list[str], int]:
-    """(n_agents, n_axes) posterior-mean rates for the corpus chemistries."""
+def _reference_matrix(
+    post: Posterior,
+) -> tuple[np.ndarray, list[str], int, list[str]]:
+    """(n_agents, n_axes) posterior-mean rates for the registry chemistries.
+
+    Returns the matrix, the display names, how many conventional conjugates the registry
+    holds, and the registry *keys* -- which are what the fitted agent list uses.
+    """
     hit = _CACHE.get(id(post))
     if hit is not None and hit[0] is post:
-        return hit[1], hit[2], hit[3]
-    mat, names, n_registry = _compute_reference_matrix(post)
-    _CACHE[id(post)] = (post, mat, names, n_registry)
-    return mat, names, n_registry
+        return hit[1], hit[2], hit[3], hit[4]
+    mat, names, n_registry, keys = _compute_reference_matrix(post)
+    _CACHE[id(post)] = (post, mat, names, n_registry, keys)
+    return mat, names, n_registry, keys
 
 
 def _compute_reference_matrix(post: Posterior) -> tuple[np.ndarray, list[str], int]:
     designs, n_conventional = _registry_designs()
     usable = [d for d in designs if d["mechanism"] in post.mechanisms]
     if not usable:
-        return np.zeros((0, len(post.axes))), [], n_conventional
+        return np.zeros((0, len(post.axes))), [], n_conventional, []
     draws = predict_draws(
         post,
         [d["mechanism"] for d in usable],
@@ -105,11 +116,16 @@ def _compute_reference_matrix(post: Posterior) -> tuple[np.ndarray, list[str], i
         # draw would make the ranking partly a function of the random seed.
         include_agent_variation=False,
     )
-    return draws.mean(axis=0), [d["inn"] for d in usable], n_conventional
+    return (
+        draws.mean(axis=0),
+        [d["inn"] for d in usable],
+        n_conventional,
+        [d["key"] for d in usable],
+    )
 
 
 def reference_count(post: Posterior) -> int:
-    _, names, _ = _reference_matrix(post)
+    _, names, _, _ = _reference_matrix(post)
     return len(names)
 
 
@@ -121,7 +137,7 @@ def axis_comparator(post: Posterior, axis: str, rate: float) -> dict | None:
     """
     if axis not in post.axes:
         return None
-    mat, names, n_registry = _reference_matrix(post)
+    mat, names, n_registry, keys = _reference_matrix(post)
     if not names:
         return None
     col = mat[:, post.axes.index(axis)]
@@ -140,7 +156,7 @@ def axis_comparator(post: Posterior, axis: str, rate: float) -> dict | None:
         # How many of the references the fit actually saw. None for a posterior written
         # before the agent list was recorded, which is not the same as zero.
         "n_reference_in_fitted_corpus": (
-            sum(1 for n in names if n in fitted) if fitted else None
+            sum(1 for k in keys if k in fitted) if fitted else None
         ),
         "n_excluded_for_missing_slots": n_registry - len(names),
         "interpretation": "relative_ranking_only",

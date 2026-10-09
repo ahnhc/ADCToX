@@ -22,8 +22,8 @@ line says what the section concluded, so a reader can go to the ones that matter
 |---|---|
 | 1. What was built | A comorbidity profile and a target antigen in, proposed designs with per-organ rates out. |
 | 2. The corpus | 3,990 cells, but only **224** identify a design coefficient, because design features are agent-level constants. |
-| 3. Results | The model does not beat a base-rate baseline on any evaluation, after two rounds of correction. |
-| 4. Where it fails | The design terms lose to a base rate by a measurable ratio; the obvious fix is not identifiable at either granularity, and the plan's "the horizon recedes at every level" holds only at the payload level. |
+| 3. Results | Beats no base-rate baseline, and on leave-one-agent-out is no longer measurably behind one: -0.0121, interval spanning zero. |
+| 4. Where it fails | The design terms lose to a base rate by a measurable ratio; the obvious fix is not identifiable at either granularity, and the plan's "the horizon recedes at every level" holds only at the payload level -- the mechanism level doubled to the 8:1 floor. |
 | 5. What it does support | The mechanism x axis interaction, linker cleavability, and the censoring treatment. |
 | 5b. Censoring | The censoring treatment recovers signal rather than creating it, and `b_thresh` is a confounder control rather than that correction. |
 | 5c. Two event tables | The common and serious tables rank organs differently; the serious one recovers the boxed warnings. |
@@ -31,14 +31,14 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 5e. Target antigen | It was an inert input. Expression data now changes the bands and the stated reasons, and not which design is proposed. |
 | 5e-b. Ranking | **The product cannot rank its own proposals in any of 192 queries**, and the comorbidity profile's influence is a function of an arbitrary constant. |
 | 5e-c. Ordinal comparison | Every rate now carries its position among the registry chemistries, which recovers a boxed warning on its first use. |
-| 5f. The one positive signal | Across-agent per-axis correlation of +0.17 after adjustment, and why it is not settled. |
+| 5f. The one positive signal | **Gone.** It was +0.13 at p=0.025 on 16 agents and +0.007 at p=0.46 on 22 -- six more agents erased it. |
 | 5g. Corpus expansion | The ceiling is 32 agents and not the planned 54, of which **31** publish an any-grade column; the expansion buys the common-events table and not the serious one. |
 | 5h. Comorbidity layer | A non-circular holdout against 1,741 trials' exclusion criteria, at AUROC 0.666 against 0.750 circularly. |
 | 5i. Its primary validation | Misspecified. The FDA labels argue from clearance, not organ toxicity, and point somewhere else. |
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 37 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 38 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -77,22 +77,60 @@ the prediction fails, section 9 is the thirty-three measured negative results, a
 
 ## 2. The corpus, and the number that governs everything
 
-| | count |
-|---|---|
-| ClinicalTrials.gov studies with an adverse-event module | 593 |
-| AE event rows | 67,609 |
-| event groups | 2,201 |
-| attributable to one ADC, n>=30, conventional ADC | **285 arms** |
-| (arm x axis) cells, 91% fill | **3,990** |
-| distinct agents | **16** |
-| **cells that identify a design coefficient** | **224** |
+Two columns, because which agents the registry knows about decides how much of
+ClinicalTrials.gov is usable, and 17 of the 35 names in `conf/adc_registry.yaml` were found
+by the literature's payload-linker stem sweep. The first column is the project's starting
+point; the second is the same ClinicalTrials.gov data read with the literature's agent list.
+
+| | original 18-agent list | literature's 35-agent list |
+|---|---|---|
+| ClinicalTrials.gov studies with an adverse-event module | 593 | 593 |
+| AE event rows | 67,609 | 67,609 |
+| event groups | 2,201 | 2,201 |
+| attributable event groups | 781 | **894** |
+| attributable to one ADC, n>=30, conventional ADC | **285 arms** | **299 arms** |
+| (arm x axis) cells | **3,990** | **4,186** |
+| distinct agents | **16** | **22** |
+| **cells that identify a design coefficient** | **224** | **308** |
+| mechanisms with a usable held-out fold | 2 | **3** |
 
 The last row is the one that matters. Design features -- payload mechanism, linker,
 cleavability, DAR, isotype, target -- are **agent-level constants**. Trastuzumab
 emtansine's 48 arms are 48 observations of its trial populations and *one* observation of
-DM1 chemistry. So the data identifying a design coefficient is `agents x axes = 224`, not
-3,990. An earlier draft of this project proposed a 420-parameter design matrix, which is
+DM1 chemistry. So the data identifying a design coefficient is `agents x axes` -- 224 in the
+first column and 308 in the second -- not 3,990. An earlier draft of this project proposed a 420-parameter design matrix, which is
 0.57 observations per parameter: fewer data points than parameters.
+
+### What the corpus drops, and what each axis is made of
+
+Two composition facts, both measured because both are discretionary and neither was
+written down.
+
+**The exclusions drop 9.3% of registry adverse-event rows and 4.7% of the patient mass.**
+Nine system-organ classes never reach an axis, each with a stated reason in
+`conf/ontology/axes.yaml`, and three quarters of the excluded patient mass is one of them:
+
+| excluded system-organ class | rows | patients affected | reason | what is in it |
+|---|---|---|---|---|
+| injury, poisoning, procedural | 2,594 | 9,308 | not organ attributable | falls 234, contusions 104, fractures |
+| psychiatric disorders | 1,551 | **37,394** | not organ attributable | insomnia 298, anxiety 218, depression 195 |
+| neoplasms | 990 | 1,640 | indication confounded | |
+| reproductive and breast | 690 | 1,686 | indication confounded | |
+| five others | 424 | 710 | | |
+
+Psychiatric is 74% of the excluded mass and is dominated by insomnia, anxiety and
+depression, which is what makes the reason hold. The CNS-type minority inside it --
+confusional state 129 rows, delirium, hallucination -- is 282 of 1,551, and in an oncology
+population with brain metastases, opioids and steroids those are multifactorial, which is an
+argument for excluding them rather than against. One term was rescued from the
+injury/procedural bucket and it is negative result 37.
+
+**One axis is mostly a laboratory finding.** MedDRA files laboratory abnormalities under
+`Investigations`, so the taxonomy redistributes them to the organ -- and the hepatic axis
+comes out **64% laboratory rows in the registry and 84% in the literature**, against 0-8%
+for most axes. Haematologic is 35% and 18%, renal 17% and 31%. So "hepatic risk" is largely
+transaminase elevation rather than hepatotoxicity as a clinical event; the interface labels
+that axis rather than leaving it to a reader to know.
 
 ## 3. Results, after two rounds of correction
 
@@ -101,11 +139,24 @@ invalidated a first round of evaluation entirely; and two bugs in the cross-vali
 fold construction, which were leaking a trial into two splits while discarding half the
 training arms from a third. Everything below is from after both.
 
-**The model does not beat a base-rate baseline on any of these.** On the three
-within-arm splits the deficit now excludes zero, which it did not on leave-one-agent-out
-before the folds were fixed -- correcting them made the verdict stronger rather than
-weaker, and the subsection "The folds themselves were wrong" below explains why that is
-the correct direction.
+**The model does not beat a base-rate baseline on any of these**, and on one of them it is
+no longer measurably worse. The deficit excludes zero on leave-one-mechanism-out and
+leave-one-family-out. On **leave-one-agent-out it is -0.0121 with an interval spanning
+zero** -- the split that matches what the product does, predicting an agent it has not seen.
+
+That changed with the corpus. On the 16-agent corpus the same split gave -0.0422 with an
+interval excluding zero; rebuilding the registry against the current agent list took it to
+22 agents and the deficit to a third of its size. Predicting a new agent is the task, and
+on it the model is now indistinguishable from a base rate rather than measurably behind
+one. It is not ahead: the point estimate is still negative.
+
+The other direction moved too, and against the project. Section 5f's across-agent
+correlation was this report's only positive result at 16 agents, at rho +0.1332 with a
+permutation p of 0.025. At 22 agents the same estimator gives **+0.0073 at p = 0.4595**.
+Six more agents erased it rather than sharpening it, so the report now has no positive
+result at all -- which is a cleaner position than one marginal result reported with
+caveats, and is the project's own best demonstration of why a p of 0.025 on sixteen units
+is not a finding.
 
 Deltas are paired against the strongest baseline for that split, because the model's own
 interval excluding zero would only say the target ordering is not random. Each delta is
@@ -117,10 +168,10 @@ averages, is in the artefact and differs where the winning baseline varies by fo
 
 | evaluation | model | best baseline | delta | 95% CI | |
 |---|---|---|---|---|---|
-| within-arm ranking, leave-one-agent-out (16) | 0.8036 | 0.8458 | **-0.0422** | [-0.0650, -0.0221] | excludes 0 |
-| within-arm ranking, leave-one-mechanism-out (2) | 0.8523 | 0.8715 | **-0.0191** | [-0.0287, -0.0096] | excludes 0 |
-| within-arm ranking, leave-one-family-out (4) | 0.7725 | 0.8525 | **-0.0783** | [-0.1223, -0.0317] | excludes 0 |
-| across-agent per-axis Spearman | +0.0966 | +0.0263 | -- | [-0.0639, +0.2632] | includes 0 |
+| within-arm ranking, leave-one-agent-out (22) | 0.8053 | 0.8220 | -0.0121 | [-0.0299, +0.0055] | includes 0 |
+| within-arm ranking, leave-one-mechanism-out (3) | 0.8568 | 0.8768 | **-0.0200** | [-0.0294, -0.0031] | excludes 0 |
+| within-arm ranking, leave-one-family-out (6) | 0.7800 | 0.8390 | **-0.0590** | [-0.0929, -0.0233] | excludes 0 |
+| across-agent per-axis Spearman | -0.0152 | +0.1162 | -- | [-0.2054, +0.1614] | includes 0 |
 | dose-modification ordering (13) | +0.1797 | +0.1672 | +0.0125 | [-0.0264, +0.0511] | includes 0 |
 
 <!-- /generated: results-table -->
@@ -250,7 +301,7 @@ on an axis that needs active surveillance to be seen at all.
 On a 153-arm corpus the model predicted the otologic axis at 0.9997 against an observed
 rate of 0.04. Two coupled degeneracies: the random intercepts were not constrained to sum
 to zero, so they could carry a common offset collinear with the axis intercept; and
-cleavability entered as a raw indicator which, being nearly constant across 16 agents,
+cleavability entered as a raw indicator which, being nearly constant across the agents,
 acted as a second per-axis intercept. In sample both are harmless. Out of sample they are
 not, because predicting a design with no trial and no agent drops the random effects and
 inherits an intercept nothing compensates for.
@@ -272,12 +323,12 @@ explain them:
 
 | fold | delta vs baseline | same-payload siblings | family share of mechanism | sole of family |
 |---|---|---|---|---|
-| trastuzumab emtansine | **-0.1565** | 0 | 0.29 | no |
-| mirvetuximab soravtansine | **-0.1058** | 0 | 0.29 | no |
-| belantamab mafodotin | **-0.0981** | 0 | 0.71 | no |
-| gemtuzumab ozogamicin | **-0.0697** | 1 | 1.00 | no |
+| trastuzumab emtansine | **-0.1165** | 0 | 0.20 | no |
+| mirvetuximab soravtansine | **-0.0945** | 0 | 0.20 | no |
+| belantamab mafodotin | **-0.0543** | 1 | 0.70 | no |
+| gemtuzumab ozogamicin | **-0.0484** | 1 | 1.00 | no |
 
-Sole-of-family agents among the four worst folds: 0/4. Mean delta -0.0485 for the 3 sole-of-family agents against -0.0408 for the 13 that share one -- no separation. Rank correlation of fold delta with same-payload siblings +0.771, with family share of its mechanism +0.694.
+Sole-of-family agents among the four worst folds: 0/4. Mean delta +0.0227 for the 2 sole-of-family agents against -0.0156 for the 20 that share one -- no separation. Rank correlation of fold delta with same-payload siblings +0.206, with family share of its mechanism +0.242.
 <!-- /generated: fold-difficulty -->
 
 An earlier version of this section led with the pre-fix figures and read them as showing
@@ -300,18 +351,18 @@ fact without a mechanism. The mechanism is a ratio, and it is measurable from th
 coefficients alone.
 
 Within one arm the organ ranking is set by `mu_axis` plus the design effects. The baseline
-spread is **sd 0.963** across the fourteen axes. Against that:
+spread is **sd 0.989** across the fourteen axes. Against that:
 
 | mechanism | agents | effect sd | ratio to baseline | rank corr with baseline | axis positions moved |
 |---|---|---|---|---|---|
-| dna_alkyl | 1 | 0.686 | 0.71 | 0.670 | 26 |
-| dna_cleave | 2 | 0.588 | 0.61 | 0.921 | 20 |
-| dna_crosslink | 2 | 0.350 | 0.36 | 0.899 | 22 |
-| topo1 | 4 | 0.350 | 0.36 | 0.969 | 8 |
-| tubulin | 7 | 0.278 | 0.29 | 0.947 | 10 |
+| dna_alkyl | 2 | 0.629 | 0.64 | 0.701 | 20 |
+| dna_cleave | 2 | 0.582 | 0.59 | 0.895 | 22 |
+| dna_crosslink | 4 | 0.318 | 0.32 | 0.969 | 10 |
+| topo1 | 4 | 0.338 | 0.34 | 0.978 | 8 |
+| tubulin | 10 | 0.281 | 0.28 | 0.947 | 10 |
 
-Cleavability sits at ratio 0.25, rank
-correlation 0.938.
+Cleavability sits at ratio 0.245, rank
+correlation 0.943.
 
 **The mechanisms with the most evidence reshuffle the organ order least.** Tubulin, with
 seven agents, moves the ranking by a correlation of
@@ -395,7 +446,7 @@ attempts were, because a structure that does not work is a result.
 
 Additive fails for a clear reason: family determines mechanism, so two independent terms
 compete for one variance. Nesting is the textbook correction and did not rescue it --
-with 7 families across 5 mechanisms and 16 agents there is not enough information to
+with 8 families across 5 mechanisms and 22 agents there is not enough information to
 separate between-mechanism from within-mechanism spread, whatever the parameterization.
 
 ### 4.2 The two levels fail in opposite directions, which closes the question
@@ -426,22 +477,24 @@ vocabulary was projected to reach 12 classes and then 20. It reaches **16 payloa
 and 8 families** at 31 agents. Measured the plan's own way -- identifying cells over
 `(levels - 1) x 14 axes`, which reproduces its mechanism-level 4.25, 6.40 and 9.00 exactly:
 
-| granularity | registry, 16 agents | expanded, 31 agents | change |
-|---|---|---|---|
-| payload identity | 1.78 : 1 (10 levels) | 2.07 : 1 (16 levels) | **1.16x** |
-| payload family | 2.67 : 1 (7 levels) | 4.43 : 1 (8 levels) | 1.66x |
-| payload mechanism | 4.00 : 1 (5 levels) | **7.75 : 1** (5 levels) | **1.94x** |
+| granularity | original list, 16 agents | literature's list, 22 | + arms, 25 | full, 32 | change |
+|---|---|---|---|---|---|
+| payload identity | 1.78 : 1 (10 levels) | 2.20 (11) | 2.50 (11) | 2.13 : 1 (16 levels) | **1.20x** |
+| payload family | 2.67 : 1 (7 levels) | 3.14 (8) | 3.57 (8) | 4.57 : 1 (8 levels) | 1.71x |
+| payload mechanism | 4.00 : 1 (5 levels) | 5.50 (5) | 6.25 (5) | **8.00 : 1** (5 levels) | **2.00x** |
 
 So the receding horizon is real and it is **specific to the payload level**. There the
-vocabulary grew from 10 to 16 while the corpus grew from 16 to 31, and the ratio moved 16%.
-At the family level it grew by one and the ratio rose by two thirds. At the mechanism level
-it did not grow at all -- the taxonomy was frozen at seven before extraction and five
-appear in both corpora -- and the ratio nearly doubled.
+vocabulary grew from 10 to 16 while the corpus grew from 16 to 32, and the ratio moved 20%
+-- and it went *backwards* at the last step, 2.50 to 2.13, because the agents the extraction
+added brought five new payloads with them. At the family level the vocabulary grew by one
+and the ratio rose by seven tenths. At the mechanism level it did not grow at all -- the
+taxonomy was frozen at seven before extraction and five appear in every stage -- and the
+ratio **doubled to exactly the plan's 8:1 floor**.
 
-**None of the three clears the plan's 8:1 floor, and the mechanism level is just under it at
-7.75.** That is the honest position: the level the model actually uses is close to
-identified rather than comfortably short of it, and the level that would improve prediction
-is the one that recedes.
+That is the honest position and it is better than this report previously stated: the level
+the model actually uses is identified at the threshold the plan set for it, the level that
+would improve prediction is the one that recedes, and the family level in between sits at
+4.57 against the 6.00 the plan projected it would need.
 
 The first row counts the 16 agents the fitted model can represent. The registry holds 17
 with usable arms; one is an immunotoxin -- an antibody-toxin fusion with no linker and no
@@ -457,21 +510,21 @@ exists.
 ## 5. What the model does support
 
 <!-- generated: fitted-parameters -->
-`tau_cleav` 0.2824 [0.1976, 0.4103] -- the scale of the cleavable-versus-non-cleavable linker contrast across axes. Clear of zero, and about half the size of the mechanism scale -- so linker cleavability shifts the organ profile, and shifts it less than the payload mechanism does. This is the one design axis the corpus identifies comfortably: cleavability is binary and needs only 8 agents to estimate, against the 40 a mechanism level needs and the 80 a payload level would.
+`tau_cleav` 0.2871 [0.2027, 0.4133] -- the scale of the cleavable-versus-non-cleavable linker contrast across axes. Clear of zero, and about half the size of the mechanism scale -- so linker cleavability shifts the organ profile, and shifts it less than the payload mechanism does. This is the one design axis the corpus identifies comfortably: cleavability is binary and needs only 8 agents to estimate, against the 40 a mechanism level needs and the 80 a payload level would.
 
-`tau_mech` 0.5928 [0.4928, 0.7008] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
+`tau_mech` 0.5424 [0.4494, 0.6398] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count.
 
-`sigma_agent` 0.1590 [0.0980, 0.2402] -- small, so the design slots account for much of the between-agent variation.
+`sigma_agent` 0.3433 [0.2423, 0.4898] -- small, so the design slots account for much of the between-agent variation.
 
-`b_combo` +0.1950 [+0.1691, +0.2213] -- combination arms do report higher rates -- on this corpus, where every arm is a ClinicalTrials.gov record. On the literature-extended corpus the same coefficient reaches +1.091 without a source indicator, because every combination arm is a registry arm and none of the 194 literature arms is one, so it estimates the corpus rather than the regimen. See negative result 33.
+`b_combo` +0.1930 [+0.1645, +0.2202] -- combination arms do report higher rates -- on this corpus, where every arm is a ClinicalTrials.gov record. On the literature-extended corpus the same coefficient reaches +1.091 without a source indicator, because every combination arm is a registry arm and none of the 194 literature arms is one, so it estimates the corpus rather than the regimen. See negative result 33.
 
-`b_log_n` +0.0393 [+0.0288, +0.0491] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
+`b_log_n` +0.0336 [+0.0236, +0.0435] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
 
-`b_dar` +0.0319 [-0.0175, +0.0840] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
+`b_dar` +0.0385 [-0.0430, +0.1220] -- includes zero. DAR is an agent-level constant and is confounded with agent identity here. The pharmacokinetic literature supports a DAR effect; this corpus does not resolve one.
 
-`b_thresh` +0.0327 [+0.0272, +0.0375] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
+`b_thresh` +0.0341 [+0.0292, +0.0393] -- the reporting-threshold covariate. Not the censoring correction: it is four times larger on the seriousEvents table, which has no censored cells at all, so it is substantially absorbing trial-level reporting practice.
 
-Convergence stands in for R-hat: the model is refit under a second seed and posterior means compared. The worst standardized gap is 0.1376 pooled standard deviations, on `b_thresh`, against a threshold of 0.3 -- acceptable.
+Convergence stands in for R-hat: the model is refit under a second seed and posterior means compared. The worst standardized gap is 0.0987 pooled standard deviations, on `sigma_agent`, against a threshold of 0.3 -- acceptable.
 <!-- /generated: fitted-parameters -->
 
 Qualitatively the corpus is sound. Baseline-centered mechanism fingerprints reproduce the
@@ -488,13 +541,22 @@ the difference is Jensen's inequality -- the terms are posterior means in logit 
 they decompose the mean logit exactly and the mean rate only approximately.
 
 That note is only acceptable if the gap is small, and it had never been measured. Over six
-payload chemistries by four comorbidity profiles, 336 rows: **largest absolute gap 0.0047,
-median 0.0012.** So a reader adding up the contributions on screen lands within half a
-percentage point of the number above them, and the explanation is an explanation rather than
-an illustration. A test holds the worst case under 0.01, which is the failure it is for -- a
-term added to the model and not to the decomposition. That is not hypothetical: the model
-terms were once omitted from the driver list altogether, which left a banded axis showing a
-band and a weight with no account of either.
+payload chemistries by four comorbidity profiles, 336 rows: **largest absolute gap 0.0128,
+median 0.0054.** So a reader adding up the contributions on screen lands within about half a
+percentage point of the number above them and within 1.3 points at worst, and the
+explanation is an explanation rather than an illustration.
+
+Those figures were 0.0047 and 0.0012 on the 16-agent corpus. The gap scales with the
+posterior variance and `sigma_agent` went from 0.159 to 0.343 when the corpus was rebuilt,
+so it grew with the width of the posterior rather than with any change to the decomposition.
+Raising the bound to match would be fitting the test to the data, so the **sign** is checked
+instead, and that is what separates Jensen from a missing term: the sigmoid is convex below
+0.5, so there the mean rate exceeds the rate implied by the mean logit and the gap is
+negative. Measured, it is negative in **156 of 165** cells below rate 0.5 and positive in 3
+of 3 above it. A term in the model and absent from the decomposition would shift every cell
+the same way wherever its rate sat. That failure is not hypothetical: the model terms were
+once omitted from the driver list altogether, leaving a banded axis showing a band and a
+weight with no account of either.
 
 ## 5b. Is the censoring treatment recovering signal or creating it?
 
@@ -556,20 +618,28 @@ to make.
 `otherEvents` and `seriousEvents` are not two views of one outcome. One asks whether this
 chemistry irritates an organ, the other whether it damages it. A grade-1 cough and fatal
 interstitial lung disease are both pulmonary and are not the same event. Across the five
-shared mechanisms the two fits agree on organ ranking at a mean Spearman of only **+0.1455**
+shared mechanisms the two fits agree on organ ranking at a mean Spearman of only **+0.282**
 -- and each table turns out to recover a different part of the approved label:
 
 | label warning | rank in common table | rank in serious table |
 |---|---|---|
-| ENHERTU boxed warning: interstitial lung disease (topo-I → pulmonary) | 10 / 14 | **2 / 14** |
-| PADCEV boxed warning: SJS/TEN (tubulin → dermatologic) | 13 / 14 | **1 / 14** |
-| BESPONSA boxed warning: hepatotoxicity/VOD (calicheamicin → hepatic) | 3 / 14 | 3 / 14 |
-| ZYNLONTA: myelosuppression (PBD → haematologic) | **5 / 14** | 10 / 14 |
+| ENHERTU boxed warning: interstitial lung disease (topo-I → pulmonary) | 11 / 14 | **5 / 14** |
+| PADCEV boxed warning: SJS/TEN (tubulin → dermatologic) | 14 / 14 | **4 / 14** |
+| BESPONSA boxed warning: hepatotoxicity/VOD (calicheamicin → hepatic) | **2 / 14** | 3 / 14 |
+| ZYNLONTA: myelosuppression (PBD → haematologic) | **10 / 14** | 14 / 14 |
 
-The pattern is not noise. The **serious** table recovers the *boxed* warnings, which are
-life-threatening events by definition. The **common** table recovers the high-frequency
-sections -- and ZYNLONTA's myelosuppression, a Warning rather than a boxed warning, is
-where the common table is the better of the two. Each is right about its own outcome.
+The serious table ranks the boxed-warning organ higher in **2 of the 4** label-verified
+pairs, and the two it wins are the two the common table buries: topoisomerase-I pulmonary
+moves from 11th to 5th and tubulin dermatologic from last to 4th. The two it loses are a
+calicheamicin hepatic signal the common table already has at 2nd, and ZYNLONTA's
+myelosuppression -- a Warning rather than a boxed warning, where the common table is the
+right one. Each table is right about its own outcome.
+
+These ranks moved with the corpus rebuild and the direction of the finding did not: on the
+16-agent corpus the pulmonary pair was 10th against 2nd and the dermatologic 13th against
+1st, so the serious table's advantage on the two boxed warnings the common table buries is
+smaller than it was and still there. The mean agreement rose from +0.1455 to +0.282, which
+makes the tables less different than this section first reported and not similar.
 
 **This is a finding about our product, not about the censoring.** The system ranked designs
 on the common table, so for a patient with pre-existing ILD it placed T-DXd's
@@ -597,7 +667,7 @@ constants would render 91% of serious cells `low`. For the deruxtecan design abo
 | basis | rate | band |
 |---|---|---|
 | serious rate on measured serious edges (0.0075, 0.0250) | 3.1% | **high** |
-| common rate on measured common edges (0.0645, 0.2174) | 14.0% | moderate |
+| common rate on measured common edges (0.0645, 0.2157) | 14.0% | moderate |
 | serious rate on the old asserted constants (0.05, 0.20) | 3.1% | **low** ← the bug |
 
 The error ran in the most dangerous available direction: reassuring, on the organ named in
@@ -864,15 +934,45 @@ The ordinal turns that warning into a number. Conversely its haematologic axis b
 at **#19 of 23**: every chemistry is high on that organ, and this chemistry is better than
 eighteen of the twenty-two alternatives. A band cannot say either of those things.
 
-## 5f. The one positive signal, and why it is not settled
+## 5f. The one positive signal disappeared when the corpus grew, which settles it
 
-Every evaluation in this report fails. This section is the exception, and it is reported
-with its caveats attached rather than as a headline, because it does not survive every way
-of estimating it.
+This section used to be the exception. On the 16-agent corpus the across-agent organ
+ranking, with between-agent reporting conditions removed, came out at rho **+0.1332** with
+a permutation p of **0.025** -- and because a constant per-axis predictor cannot score on
+this metric by construction, beating chance was beating the baseline.
+
+Rebuilding the registry corpus against the current agent list took it to 22 agents. The
+same estimator now gives rho **+0.0073**, bootstrap over axes [-0.1791, +0.1753],
+permutation p **0.4595**:
+
+| variant | 16 agents | 22 agents |
+|---|---|---|
+| unadjusted | +0.0966 | **-0.0152** |
+| adjusted, within-trial blind (headline) | +0.1332, p = 0.025 | **+0.0073, p = 0.4595** |
+| adjusted, joint coefficients | +0.1729, p = 0.005 | +0.0590, p = 0.1648 |
+| adjusted, design-blind coefficients | +0.1013, p = 0.068 | -0.0042, p = 0.5298 |
+
+**Six more agents did not sharpen the effect; they erased it.** A real correlation gains
+precision as n grows -- the bootstrap interval should narrow around a stable centre. This
+one moved its centre to zero and kept its width, which is what a sample-size artefact does.
+And the six agents arrived from ClinicalTrials.gov records that were already on disk, so
+there is no reporting-selection story to explain it away: they are the same kind of data as
+the sixteen.
+
+So the report has no positive result, and that is a cleaner position than one marginal
+result reported with caveats. The project's own best demonstration of why a p of 0.025 on
+sixteen units is not a finding is that this one did not survive going to twenty-two. The
+section is kept in full below, because the measurement problem it starts from is real and
+the adjustment it builds is the right one -- the conclusion is what changed.
+
+The artefact states its own verdict now, computed from its numbers rather than written
+beside them. The previous version carried the sentence "beats chance at p = 0.025" in a
+`reading` field, and that sentence survived the corpus change intact: a stale conclusion
+reads as a finding in a way a stale number does not.
 
 ### The measurement problem it starts from
 
-The across-agent metric ranks the 16 agents by predicted and by observed rate within one
+The across-agent metric ranks the agents by predicted and by observed rate within one
 organ axis, and correlates. It is the comparison the product actually makes, and unlike
 the within-arm metric a constant per-axis predictor has no discriminative power on it by
 construction.
@@ -925,7 +1025,7 @@ something different: the per-axis correlations are heterogeneous enough that the
 not reliably positive if you had drawn a different set of organs.
 
 Both readings are legitimate and they are reported together. What would settle it is more
-agents, not more analysis: with 16 agents a per-axis Spearman has a standard error near
+agents, not more analysis: with 22 agents a per-axis Spearman has a standard error near
 0.28, so only the mean over axes is usable at all.
 
 ### What it does not change
@@ -945,18 +1045,33 @@ routes to new agents.
 
 ### Why arms are not agents, measured in one table
 
-| stage | agents | arms in the grid | cells | cells that identify a design coefficient | viable LOMO folds |
-|---|---|---|---|---|---|
-| ClinicalTrials.gov only | 16 | 285 | 3,990 | 224 | 2 |
-| + literature arms for agents already present | 17 | 432 | 6,048 | 238 | 2 |
-| + literature agents | **31** | 468 | 6,552 | 434 | 3 |
+| stage | agents | arms in the grid | cells | cells that identify a design coefficient | observed | viable LOMO folds |
+|---|---|---|---|---|---|---|
+| ClinicalTrials.gov, the original 18-agent list | 16 | 285 | 3,990 | 224 | 86.3% | 2 |
+| ClinicalTrials.gov, the literature's agent list | **22** | 299 | 4,186 | **308** | 86.6% | **3** |
+| + literature arms for agents already present | 25 | 459 | 6,426 | 350 | 67.9% | 3 |
+| + literature agents | **32** | 482 | 6,748 | 448 | 66.9% | 3 |
+
+**The second row was not in this report and it is where most of the value is.** Attribution
+matches a ClinicalTrials.gov event group against the names and aliases in
+`conf/adc_registry.yaml`, and 17 of that file's 35 agents were found by the literature's
+payload-linker stem sweep. So the first stage had been labelled "ClinicalTrials.gov only"
+while being computed with a literature-derived agent list -- and separating the two shows
+that **naming the agents bought 6 agents and 84 identifying cells out of data that was
+already on disk, at no cost to the observed share**, 86.3% to 86.6%, because nothing about
+the reporting changed.
+
+Against that, extracting the arms bought 42 more identifying cells and took the observed
+share from 86.6% to 67.9%. Two contributions were being reported as one, and they are
+opposite in kind: the first is free of the literature's reporting selection entirely, and
+the second is what section 5g's negative ablation result is about.
 
 The three corpora nest exactly -- 312 arms added at the first step and 102 at the second,
 with **zero** arms dropped at either -- so a difference between fits is attributable to
 what was added. That is checked in `artifacts/corpus_ablation.json`, not assumed.
 
-The arms column is the grid and not the corpus, and the two differ by 165 arms at the first
-step. Six filters stand between them: an attributable agent, a denominator of at least 30,
+The arms column is the grid and not the corpus, and the two differ by 191 arms at the
+literature-arms step. Six filters stand between them: an attributable agent, a denominator of at least 30,
 a conventional conjugate, publishing the table in question, reporting the any-grade outcome
 the registry's `otherEvents` reports, and naming one agent rather than a class of them. The
 fifth is the expensive one: 154 of the 414 literature arms report a grade-restricted tail, a
@@ -968,8 +1083,11 @@ stages are derived from the one merged corpus, which makes the nesting true by c
 the middle stage used to be a separate directory on disk, and it went stale the moment the
 merge gained a column.
 
-Read the fourth column against the second. The first step adds 312 corpus arms and 2,058
-cells and buys **14** identifying cells. The second adds 102 and buys **196**. Section 2
+Read the identifying-cells column against the arms column. Naming the agents adds 14 grid
+arms and buys **84** identifying cells. Extracting 351 corpus arms of agents already present
+buys **42**. The 75 arms belonging to agents the extraction added buy **98**. So the cheapest
+identification in the project came from reading a name off a paper, and the most expensive
+from reading a table off one. Section 2
 states the reason abstractly; this is it arithmetically. Design features are agent-level
 constants, so arms of an agent already in the corpus are additional observations of its
 trial populations and *no* additional observation of its chemistry.
@@ -1018,14 +1136,14 @@ path needs the threshold handled differently before its arms belong in the corpu
 ### The expansion buys one table and not the other, and a bug was hiding it
 
 The literature expansion was measured on the common-events table, where it takes the corpus
-from 16 agents to 31. On the serious table it buys almost nothing: **17 agents, 290 arms.**
-405 of the 414 literature arms publish no serious-adverse-event table at all -- neither a
-denominator nor a single row -- so the serious fit sees 9 new arms, and the registry's 284.
+from 22 agents to 32. On the serious table it buys **one**: 23 agents against the
+registry's 22. 405 of the 414 literature arms publish no serious-adverse-event table at
+all -- neither a denominator nor a single row -- so the serious fit sees 9 new arms.
 
-| table | agents | arms | cells |
-|---|---|---|---|
-| otherEvents | **31** | 468 | 6,552 |
-| seriousEvents | **17** | 290 | 4,060 |
+| table | agents | gained from the literature | arms | cells |
+|---|---|---|---|---|
+| otherEvents | **32** | **+10** | 482 | 6,748 |
+| seriousEvents | **23** | **+1** | 304 | 4,256 |
 
 This was invisible until it was looked for, because the corpus builder was manufacturing the
 missing arms. An arm's denominator is stored per table, but the arm-level `n_at_risk` is the
@@ -1042,7 +1160,7 @@ role it still plays for the registry. Where the two tables disagree on an expand
 agent, there is usually no serious evidence for that agent to disagree with. Section 5c's
 finding -- that the two tables rank organs differently, and that the serious table recovers
 the boxed warnings -- was measured on the registry and stands there; it does not extend to
-the 16 agents the literature added.
+the 10 agents the literature's arms added.
 
 A second, smaller correction came out of the same place. ClinicalTrials.gov `seriousEvents`
 really is complete -- the registry lists every serious event with no frequency cut -- so an
@@ -1053,15 +1171,28 @@ for about 81 axes they never reported. A zero is a stronger false statement than
 completeness is now claimed only for arms whose cut is not merely derived from their own
 printed rates. Registry arms are never in that category, and their rows are unchanged.
 
-### What the third fold costs and what it buys
+### The third fold was free, and this report credited it to the wrong thing
 
-`dna_crosslink` goes from 2 agents to 4 and crosses the three-agent floor, so the headline
-validation is now leave-one-mechanism-out over tubulin, topoisomerase-I and DNA
-crosslinking rather than the first two alone. The plan predicted exactly this at N=32, and
-predicted the rest correctly too: `dna_cleave` stays at 2 agents and `dna_alkyl` at 2,
-because two calicheamicin ADCs and two duocarmycin ADCs are all that have published a
-usable table anywhere. Those folds are not waiting on more work, and the project does not
-claim them.
+`dna_crosslink` crosses the three-agent floor -- 2 agents to 4 -- so the headline validation
+is leave-one-mechanism-out over tubulin, topoisomerase-I and DNA crosslinking rather than
+the first two alone. This report said the literature arms bought that. They did not:
+
+| stage | dna_crosslink agents | arms | viable |
+|---|---|---|---|
+| ClinicalTrials.gov, original agent list | 2 | 7 | no |
+| ClinicalTrials.gov, literature's agent list | **4** | 10 | **yes** |
+| + literature arms | 4 | 14 | yes |
+| + literature agents | 5 | 16 | yes |
+
+The fold opens at the **agent-list** stage, on ClinicalTrials.gov records that were already
+on disk and unattributable only because nothing had named the drug. Not one paper arm is
+involved. The literature arms later add a fifth agent to the mechanism, by which point the
+fold was already viable.
+
+The plan predicted the third fold at N=32 and predicted the rest correctly: `dna_cleave`
+stays at 2 agents and `dna_alkyl` at 2, because two calicheamicin ADCs and two duocarmycin
+ADCs are all that have published a usable table anywhere. Those folds are not waiting on
+more work, and the project does not claim them.
 
 ### The ceiling is 32, not 54
 
@@ -1461,11 +1592,12 @@ neurologic.
    flat at every granularity as the corpus grows -- 2.12, 2.91, 2.84 over 17, 32 and 54
    agents -- and two of those rows were projections of a 54-agent corpus that was measured
    not to exist and of a payload vocabulary that grew faster than the real one. Measured the
-   plan's own way, from 16 agents to 31: payload identity 1.78 to 2.07 (**1.16x**, 10 levels
-   to 16), family 2.67 to 4.43 (1.66x, 7 to 8), mechanism 4.00 to **7.75** (1.94x, 5 to 5,
-   the taxonomy frozen before extraction). So the receding horizon is real and specific to
-   the payload level. None of the three clears the plan's 8:1 floor and the level the model
-   actually uses sits just under it.
+   plan's own way, from 16 agents to 32: payload identity 1.78 to 2.13 (**1.20x**, 10 levels
+   to 16, and *backwards* at the last step, 2.50 to 2.13, because the agents the extraction
+   added brought five new payloads), family 2.67 to 4.57 (1.71x, 7 to 8), mechanism 4.00 to
+   **8.00** (2.00x, 5 to 5, the taxonomy frozen before extraction). So the receding horizon
+   is real and specific to the payload level -- and the level the model actually uses now
+   reaches the plan's 8:1 floor exactly, which is better than this report previously said.
 7. **Fc silencing is not a design lever.** Three primary papers contradict each other on
    the mechanism, no approved ADC uses it, and no training arm carries it. It is not
    offered as a design slot.
@@ -1480,9 +1612,17 @@ neurologic.
     Three independent search routes agree. The decisive one: re-searching the five
     payload-linker stems that had hit the fetch cap found 5 further agents and **0** of
     them has a parseable safety table, so the next tier of the literature yields nothing.
-11. **More arms are not more agents, and the exchange rate is brutal.** 312 literature arms
-    for agents already in the corpus bought 14 cells that identify a design coefficient;
-    the next 102 arms, belonging to new agents, bought 210. Section 5g.
+11. **Naming an agent is worth more than extracting its arms, and this report credited the
+    wrong one.** Attribution matches a ClinicalTrials.gov event group against the names in
+    `conf/adc_registry.yaml`, and 17 of its 35 agents came from the literature's
+    payload-linker stem sweep -- so the stage this report called "ClinicalTrials.gov only"
+    was already using a literature-derived agent list. Separated: **naming the agents bought
+    6 agents and 84 identifying cells out of registry data already on disk, at no cost to
+    the observed share** (86.3% to 86.6%), and opened the third mechanism fold.
+    Extracting 351 arms of agents already present bought 42 identifying cells and took the
+    observed share to 67.9%. The two contributions are opposite in kind -- the first carries
+    none of the literature's reporting selection -- and were being reported as one. Section
+    5g.
 12. **Searching for drug names inside a corpus assembled by searching for drug names is
     circular.** Harvesting ADC names from the 1,319 articles fetched for the 18 registry
     agents found 18 "new" agents, of which six were misspellings of registry drugs and the
@@ -1547,8 +1687,8 @@ neurologic.
     them moved the mapping rate from 40.7% to 53.7%, against the plan's 50.5%, without a
     single new dictionary entry.
 20. **The corpus expansion buys one event table and not the other.** The literature arms
-    take the common-events table from 16 agents to 31, and the serious table from 16 to
-    **17**: 405 of 414 literature arms publish no serious-adverse-event table at all. This
+    take the common-events table from 22 agents to 32, and the serious table from 22 to
+    **23**: 405 of 414 literature arms publish no serious-adverse-event table at all. This
     was hidden by a builder that fell back to the arm's other-table denominator, padding
     the serious grid with 4,256 cells -- none observed -- that asserted a zero or a bound
     for a table the paper never printed. The serious table remains the robustness check for
@@ -1747,6 +1887,20 @@ neurologic.
     interface rather than a line in this list -- and where the composition has not been
     measured the interface says nothing, because "not measured" and "not
     laboratory-dominated" must not render the same way.
+37. **One clinical event was landing on three different axes by sponsor coding, and 44% of
+    it was being discarded.** "Infusion related reaction" appears 408 times in the registry:
+    192 rows filed under `immune system disorders`, which map to infectious_immune; 31 under
+    `general disorders`, which map to constitutional; and **178 under `injury, poisoning and
+    procedural complications`, which are dropped entirely** -- 1,725 patients' worth of a
+    named ADC toxicity. MedDRA's primary system-organ class for the term *is*
+    injury/poisoning/procedural, which is why it lands there, and that class is excluded for
+    procedural harm: 234 rows of falls, 104 of contusions, femur fractures. An infusion
+    reaction is a drug reaction that shares their class. So whether it was counted at all,
+    and on which axis, was decided by the sponsor's coding rather than by the event. The fix
+    is a term-level override applied before the system-organ lookup, by exact normalized
+    term rather than by pattern, so an entry can only affect the event it names -- the
+    discipline that stops "Blood creatinine increased" being stolen by a renal pattern when
+    it is filed under a real class is preserved because nothing in the table is a pattern.
 
 ## 9b. The clean-clone check, run for the first time
 

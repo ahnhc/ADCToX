@@ -53,7 +53,7 @@ def test_a_tie_does_not_count_as_beating_the_tied_chemistry() -> None:
 
     from adctox.model.comparator import _reference_matrix
 
-    mat, names, _ = _reference_matrix(post)
+    mat, names, _, _ = _reference_matrix(post)
     axis = "hepatic"
     col = mat[:, post.axes.index(axis)]
     worst = float(np.max(col))
@@ -129,7 +129,7 @@ def test_the_serious_table_is_not_ranked_against_the_common_one() -> None:
 
     from adctox.model.comparator import _reference_matrix
 
-    s_mat, _, _ = _reference_matrix(spost)
+    s_mat, _, _, _ = _reference_matrix(spost)
     worst_serious = float(np.max(s_mat[:, spost.axes.index(axis)]))
     assert axis_comparator(spost, axis, worst_serious)["rank"] == 1
     wrong = axis_comparator(post, axis, worst_serious)
@@ -170,14 +170,15 @@ def test_the_reference_set_is_the_registry_and_says_so() -> None:
     from adctox.model.comparator import _reference_matrix
 
     post = _posterior()
-    _, names, _ = _reference_matrix(post)
+    _, names, _, _ = _reference_matrix(post)
     arms = pd.read_parquet(ROOT_ARMS) if ROOT_ARMS.exists() else None
     c = axis_comparator(post, "hepatic", 0.2)
     assert "corpus agent" not in c["basis"], c["basis"]
     assert "registry" in c["basis"]
     if arms is not None:
+        _, _, _, keys = _reference_matrix(post)
         fitted = set(arms["agent"].dropna().unique())
-        outside = [n for n in names if n not in fitted]
+        outside = [k for k in keys if k not in fitted]
         assert outside, "no reference chemistry is outside the fit; the claim is stale"
     # The split is reported where the posterior records which agents it saw, and is null
     # rather than zero where it does not.
@@ -193,6 +194,10 @@ def test_the_split_is_reported_once_the_posterior_carries_its_agents() -> None:
 
     post = _posterior()
     assert post.agents == [] or isinstance(post.agents[0], str)
-    with_agents = dataclasses.replace(post, agents=["trastuzumab emtansine"])
+    # The registry *key*, which is what `Posterior.agents` holds. Matching on the display
+    # name gave an intersection of zero -- "brentuximab vedotin" against
+    # `brentuximab_vedotin` -- so the field reported that none of the references was in the
+    # fit when 19 of 24 were, which is worse than reporting nothing.
+    with_agents = dataclasses.replace(post, agents=["trastuzumab_emtansine"])
     c = axis_comparator(with_agents, "hepatic", 0.2)
     assert c["n_reference_in_fitted_corpus"] == 1, c["n_reference_in_fitted_corpus"]

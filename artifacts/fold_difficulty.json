@@ -2,63 +2,43 @@
  "folds": [
   {
    "agent": "trastuzumab_emtansine",
-   "delta_auc": -0.15648674242424243,
+   "delta_auc": -0.11649042508417506,
    "payload": "DM1",
    "payload_family": "maytansinoid",
    "mechanism": "tubulin",
    "same_payload_siblings": 0,
-   "family_share_of_mechanism": 0.2857142857142857,
+   "family_share_of_mechanism": 0.2,
    "sole_of_family": false
   },
   {
    "agent": "mirvetuximab_soravtansine",
-   "delta_auc": -0.10575757575757572,
+   "delta_auc": -0.09454545454545449,
    "payload": "DM4",
    "payload_family": "maytansinoid",
    "mechanism": "tubulin",
    "same_payload_siblings": 0,
-   "family_share_of_mechanism": 0.2857142857142857,
+   "family_share_of_mechanism": 0.2,
    "sole_of_family": false
   },
   {
    "agent": "belantamab_mafodotin",
-   "delta_auc": -0.09811073699962591,
+   "delta_auc": -0.05433969322858212,
    "payload": "MMAF",
    "payload_family": "auristatin",
    "mechanism": "tubulin",
-   "same_payload_siblings": 0,
-   "family_share_of_mechanism": 0.7142857142857143,
+   "same_payload_siblings": 1,
+   "family_share_of_mechanism": 0.7,
    "sole_of_family": false
   },
   {
    "agent": "gemtuzumab_ozogamicin",
-   "delta_auc": -0.06967826412270861,
+   "delta_auc": -0.048353909465020606,
    "payload": "calicheamicin",
    "payload_family": "enediyne",
    "mechanism": "dna_cleave",
    "same_payload_siblings": 1,
    "family_share_of_mechanism": 1.0,
    "sole_of_family": false
-  },
-  {
-   "agent": "pivekimab_sunirine",
-   "delta_auc": -0.06060606060606055,
-   "payload": "DGN549",
-   "payload_family": "ign",
-   "mechanism": "dna_crosslink",
-   "same_payload_siblings": 0,
-   "family_share_of_mechanism": 0.5,
-   "sole_of_family": true
-  },
-  {
-   "agent": "trastuzumab_duocarmazine",
-   "delta_auc": -0.045454545454545414,
-   "payload": "seco-DUBA",
-   "payload_family": "duocarmycin",
-   "mechanism": "dna_alkyl",
-   "same_payload_siblings": 0,
-   "family_share_of_mechanism": 1.0,
-   "sole_of_family": true
   },
   {
    "agent": "loncastuximab_tesirine",
@@ -66,13 +46,23 @@
    "payload": "SG3199",
    "payload_family": "pbd",
    "mechanism": "dna_crosslink",
-   "same_payload_siblings": 0,
-   "family_share_of_mechanism": 0.5,
-   "sole_of_family": true
+   "same_payload_siblings": 2,
+   "family_share_of_mechanism": 0.75,
+   "sole_of_family": false
+  },
+  {
+   "agent": "vobramitamab_duocarmazine",
+   "delta_auc": -0.030303030303030276,
+   "payload": "seco-DUBA",
+   "payload_family": "duocarmycin",
+   "mechanism": "dna_alkyl",
+   "same_payload_siblings": 1,
+   "family_share_of_mechanism": 1.0,
+   "sole_of_family": false
   },
   {
    "agent": "inotuzumab_ozogamicin",
-   "delta_auc": -0.03126503126503122,
+   "delta_auc": -0.0226757369614512,
    "payload": "calicheamicin",
    "payload_family": "enediyne",
    "mechanism": "dna_cleave",
@@ -81,48 +71,28 @@
    "sole_of_family": false
   },
   {
-   "agent": "patritumab_deruxtecan",
-   "delta_auc": -0.02320075757575757,
-   "payload": "DXd",
-   "payload_family": "camptothecin",
-   "mechanism": "topo1",
-   "same_payload_siblings": 2,
-   "family_share_of_mechanism": 1.0,
-   "sole_of_family": false
-  },
-  {
    "agent": "enfortumab_vedotin",
-   "delta_auc": -0.022095959595959558,
+   "delta_auc": -0.016624579124579042,
    "payload": "MMAE",
    "payload_family": "auristatin",
    "mechanism": "tubulin",
-   "same_payload_siblings": 3,
-   "family_share_of_mechanism": 0.7142857142857143,
-   "sole_of_family": false
-  },
-  {
-   "agent": "polatuzumab_vedotin",
-   "delta_auc": -0.018636363636363673,
-   "payload": "MMAE",
-   "payload_family": "auristatin",
-   "mechanism": "tubulin",
-   "same_payload_siblings": 3,
-   "family_share_of_mechanism": 0.7142857142857143,
+   "same_payload_siblings": 4,
+   "family_share_of_mechanism": 0.7,
    "sole_of_family": false
   },
   {
    "agent": "tisotumab_vedotin",
-   "delta_auc": -0.018181818181818188,
+   "delta_auc": -0.01575757575757586,
    "payload": "MMAE",
    "payload_family": "auristatin",
    "mechanism": "tubulin",
-   "same_payload_siblings": 3,
-   "family_share_of_mechanism": 0.7142857142857143,
+   "same_payload_siblings": 4,
+   "family_share_of_mechanism": 0.7,
    "sole_of_family": false
   },
   {
-   "agent": "datopotamab_deruxtecan",
-   "delta_auc": -0.006802721088435382,
+   "agent": "patritumab_deruxtecan",
+   "delta_auc": -0.014678030303030276,
    "payload": "DXd",
    "payload_family": "camptothecin",
    "mechanism": "topo1",
@@ -131,57 +101,147 @@
    "sole_of_family": false
   },
   {
-   "agent": "brentuximab_vedotin",
-   "delta_auc": -0.0041937229437228885,
+   "agent": "polatuzumab_vedotin",
+   "delta_auc": -0.010530303030303001,
    "payload": "MMAE",
    "payload_family": "auristatin",
    "mechanism": "tubulin",
-   "same_payload_siblings": 3,
-   "family_share_of_mechanism": 0.7142857142857143,
+   "same_payload_siblings": 4,
+   "family_share_of_mechanism": 0.7,
+   "sole_of_family": false
+  },
+  {
+   "agent": "depatuxizumab_mafodotin",
+   "delta_auc": -0.010101010101010166,
+   "payload": "MMAF",
+   "payload_family": "auristatin",
+   "mechanism": "tubulin",
+   "same_payload_siblings": 1,
+   "family_share_of_mechanism": 0.7,
+   "sole_of_family": false
+  },
+  {
+   "agent": "brentuximab_vedotin",
+   "delta_auc": -0.004560915275200972,
+   "payload": "MMAE",
+   "payload_family": "auristatin",
+   "mechanism": "tubulin",
+   "same_payload_siblings": 4,
+   "family_share_of_mechanism": 0.7,
    "sole_of_family": false
   },
   {
    "agent": "trastuzumab_deruxtecan",
-   "delta_auc": -0.0033439867424241987,
+   "delta_auc": -0.0009173768939394478,
    "payload": "DXd",
    "payload_family": "camptothecin",
    "mechanism": "topo1",
    "same_payload_siblings": 2,
+   "family_share_of_mechanism": 1.0,
+   "sole_of_family": false
+  },
+  {
+   "agent": "enapotamab_vedotin",
+   "delta_auc": 0.0,
+   "payload": "MMAE",
+   "payload_family": "auristatin",
+   "mechanism": "tubulin",
+   "same_payload_siblings": 4,
+   "family_share_of_mechanism": 0.7,
+   "sole_of_family": false
+  },
+  {
+   "agent": "pivekimab_sunirine",
+   "delta_auc": 0.0,
+   "payload": "DGN549",
+   "payload_family": "ign",
+   "mechanism": "dna_crosslink",
+   "same_payload_siblings": 0,
+   "family_share_of_mechanism": 0.25,
+   "sole_of_family": true
+  },
+  {
+   "agent": "datopotamab_deruxtecan",
+   "delta_auc": 0.008658008658008698,
+   "payload": "DXd",
+   "payload_family": "camptothecin",
+   "mechanism": "topo1",
+   "same_payload_siblings": 2,
+   "family_share_of_mechanism": 1.0,
+   "sole_of_family": false
+  },
+  {
+   "agent": "trastuzumab_duocarmazine",
+   "delta_auc": 0.015151515151515138,
+   "payload": "seco-DUBA",
+   "payload_family": "duocarmycin",
+   "mechanism": "dna_alkyl",
+   "same_payload_siblings": 1,
    "family_share_of_mechanism": 1.0,
    "sole_of_family": false
   },
   {
    "agent": "sacituzumab_govitecan",
-   "delta_auc": 0.027966742252456545,
+   "delta_auc": 0.029753315467601182,
    "payload": "SN-38",
    "payload_family": "camptothecin",
    "mechanism": "topo1",
    "same_payload_siblings": 0,
    "family_share_of_mechanism": 1.0,
    "sole_of_family": false
+  },
+  {
+   "agent": "rovalpituzumab_tesirine",
+   "delta_auc": 0.030303030303030387,
+   "payload": "SG3199",
+   "payload_family": "pbd",
+   "mechanism": "dna_crosslink",
+   "same_payload_siblings": 2,
+   "family_share_of_mechanism": 0.75,
+   "sole_of_family": false
+  },
+  {
+   "agent": "farletuzumab_ecteribulin",
+   "delta_auc": 0.045454545454545414,
+   "payload": "eribulin",
+   "payload_family": "halichondrin",
+   "mechanism": "tubulin",
+   "same_payload_siblings": 0,
+   "family_share_of_mechanism": 0.1,
+   "sole_of_family": true
+  },
+  {
+   "agent": "camidanlumab_tesirine",
+   "delta_auc": 0.08333333333333326,
+   "payload": "SG3199",
+   "payload_family": "pbd",
+   "mechanism": "dna_crosslink",
+   "same_payload_siblings": 2,
+   "family_share_of_mechanism": 0.75,
+   "sole_of_family": false
   }
  ],
  "sole_of_family_claim": {
   "sole_among_worst_four": 0,
-  "mean_delta_sole": -0.04854096520763185,
-  "mean_delta_shared": -0.040752841390862216,
-  "n_sole": 3,
-  "n_shared": 13,
+  "mean_delta_sole": 0.022727272727272707,
+  "mean_delta_shared": -0.015612056336107672,
+  "n_sole": 2,
+  "n_shared": 20,
   "supported": false
  },
  "spearman_delta_vs": {
-  "same_payload_siblings": 0.7705882352941177,
-  "family_share_of_mechanism": 0.6941176470588235
+  "same_payload_siblings": 0.20609824957651043,
+  "family_share_of_mechanism": 0.2422360248447205
  },
  "provenance": {
-  "revision": "531b2da4b9187fcddba45552a7aaa231622d9c04",
+  "revision": "479d1565a0668aae84acaf1c17657ac757ec301b",
   "dirty": true,
-  "snapshot": "2026-10-07",
+  "snapshot": null,
   "script": "fold_difficulty.py",
-  "written_utc": "2026-10-07T15:49:19+00:00",
+  "written_utc": "2026-10-09T12:46:46+00:00",
   "inputs": {
-   "metrics": "sha256:3ab0b0bc0208abf8d218c0817d78e06d521a328cb7162820ecc5cae2c39c8122",
-   "registry": "sha256:9a5a2d8bb098a42caa825eab6be011a2ab5659b9185fe930279114506c4c2aa9"
+   "metrics": "sha256:011262dca4592e959a86f9205dbed1bdfb45965c679f99ea93b70267eb52ee60",
+   "registry": "sha256:5571a356da5454bfe14511181ffebc1a73ce1948c3db7ad079a3e8ee4cd5ab9c"
   }
  }
 }
