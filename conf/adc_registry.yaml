@@ -438,8 +438,7 @@ agents:
     conventional_adc: true
     curation_source: PMC11911801
     curation_note: >-
-      "conjugated to a tubulin polymerization inhibitor, a maytansine derivative known as
-      DM4 through a cleavable disulfide linker (sulfo-SPDB)".
+      PMC11911801 reports DM4 as the payload, a maytansine derivative acting as a tubulin polymerisation inhibitor, on a cleavable sulfo-SPDB disulfide linker. Paraphrased rather than quoted: that article is CC BY-NC-ND, and this repository publishes verbatim text only from CC BY and CC0 sources.
 
   camidanlumab_tesirine:
     inn: camidanlumab tesirine
@@ -490,8 +489,9 @@ agents:
     conventional_adc: true
     curation_source: discovery corpus
     curation_note: >-
-      "auristatin" with a "cleavable valine-citrulline" linker. Conjugation recorded as
-      site-specific engineered cysteine; that field does not enter the forward model.
+      The discovery corpus reports an auristatin payload on a cleavable
+      valine-citrulline linker. Conjugation is recorded as site-specific engineered
+      cysteine; that field does not enter the forward model.
 
   depatuxizumab_mafodotin:
     inn: depatuxizumab mafodotin
@@ -508,7 +508,8 @@ agents:
     conjugation: interchain_cysteine
     dar: 4.0
     dar_source: literature
-    dar_note: 'PMC5969257: "The average DAR of depatux-m is approximately 4".'
+    dar_note: >-
+      PMC5969257 reports an average DAR of approximately 4. Paraphrased; the article is CC BY-NC-ND.
     isotype: IgG1
     fc_engineering: none
     bystander: false
@@ -516,9 +517,7 @@ agents:
     conventional_adc: true
     curation_source: PMC5969257
     curation_note: >-
-      MMAF on a non-cleavable maleimidocaproyl linker. MMAF is charged and does not cross
-      membranes, so no bystander effect -- the same reasoning the registry applies to
-      belantamab mafodotin.
+      MMAF on a non-cleavable maleimidocaproyl linker, per PMC5969257. MMAF is charged and does not cross membranes, so no bystander effect -- the same reasoning the registry applies to belantamab mafodotin.
 
   disitamab_vedotin:
     inn: disitamab vedotin
@@ -535,7 +534,8 @@ agents:
     conjugation: interchain_cysteine
     dar: 4.0
     dar_source: literature
-    dar_note: 'PMC11576286: "the well-balanced DAR design of 4 in RC48".'
+    dar_note: >-
+      PMC11576286 reports a DAR of 4 for RC48, describing it as a balanced design.
     isotype: IgG1
     fc_engineering: none
     bystander: true
@@ -568,7 +568,8 @@ agents:
     first_us_approval: null
     conventional_adc: true
     curation_source: discovery corpus
-    curation_note: 'MMAE with a "cleavable valine-citrulline" linker, IgG1.'
+    curation_note: >-
+      MMAE on a cleavable valine-citrulline linker, IgG1, per the discovery corpus.
 
   farletuzumab_ecteribulin:
     inn: farletuzumab ecteribulin
@@ -585,7 +586,8 @@ agents:
     conjugation: interchain_cysteine
     dar: 4.0
     dar_source: literature
-    dar_note: 'PMC11903193: "The DAR of FZEC and MORAb-109 is 4 and 2, respectively".'
+    dar_note: >-
+      PMC11903193 reports a DAR of 4 for farletuzumab ecteribulin and 2 for MORAb-109.
     isotype: IgG1
     fc_engineering: none
     bystander: true
@@ -593,11 +595,7 @@ agents:
     conventional_adc: true
     curation_source: PMC12110728
     curation_note: >-
-      "the potent microtubule dynamics inhibitor, eribulin, conjugated by a cathepsin
-      B-cleavable linker". Eribulin is a halichondrin B analogue, so it needs a new payload
-      family -- it inhibits microtubule growth at the plus end rather than binding the vinca
-      site like the auristatins and maytansinoids. The frozen taxonomy's mechanism level is
-      "tubulin polymerization inhibitor", which it is, so no mechanism is added.
+      PMC12110728 reports eribulin, a microtubule dynamics inhibitor, on a cathepsin B-cleavable linker. Eribulin is a halichondrin B analogue, so it needs a new payload family: it inhibits microtubule growth at the plus end rather than binding the vinca site like the auristatins and maytansinoids. The frozen taxonomy's mechanism level is a tubulin polymerisation inhibitor, which it is, so no mechanism is added.
 
   ifinatamab_deruxtecan:
     inn: ifinatamab deruxtecan
@@ -615,7 +613,7 @@ agents:
     dar: null
     dar_source: null
     dar_note: >-
-      PMC12536792 describes "an optimized drug-to-antibody ratio" without stating it.
+      PMC12536792 refers to an optimised drug-to-antibody ratio without stating a figure, so the field is null and the model imputes the corpus mean.
     isotype: IgG1
     fc_engineering: none
     bystander: true
@@ -623,8 +621,7 @@ agents:
     conventional_adc: true
     curation_source: PMC12536792
     curation_note: >-
-      "a plasma-stable, tetrapeptide-based, tumour-selective, cleavable linker" -- the GGFG
-      chemistry shared with the other deruxtecans in this registry.
+      PMC12536792 describes a plasma-stable, tumour-selective cleavable linker built on a tetrapeptide -- the GGFG chemistry shared with the other deruxtecans in this registry. Paraphrased; the article is CC BY-NC-ND.
 
   izalontamab_brengitecan:
     inn: izalontamab brengitecan
@@ -641,7 +638,8 @@ agents:
     conjugation: interchain_cysteine
     dar: null
     dar_source: null
-    dar_note: PMC13623066 says "a high drug-to-antibody ratio" without a figure.
+    dar_note: >-
+      PMC13623066 describes a high drug-to-antibody ratio without a figure, so the field is null and the model imputes the corpus mean.
     isotype: IgG1
     fc_engineering: none
     bystander: true
@@ -649,11 +647,7 @@ agents:
     conventional_adc: true
     curation_source: PMC13011950
     curation_note: >-
-      "a bispecific IgG1 backbone conjugated to a topoisomerase I inhibitor payload (Ed-04)
-      via a cleavable linker". The linker chemistry is not named, so linker_type is null;
-      the forward model reads only linker_cleavable. The target field holds EGFR because it
-      takes one gene symbol, and the bispecificity is recorded in target_label -- the only
-      bispecific in the registry, which is worth knowing when reading a target effect.
+      PMC13011950 reports a bispecific IgG1 backbone carrying the topoisomerase-I inhibitor Ed-04 on a cleavable linker, without naming the linker chemistry, so linker_type is null and the forward model reads only linker_cleavable. Paraphrased; the article is CC BY-NC-ND. The target field holds EGFR because it takes one gene symbol, and the bispecificity is recorded in target_label -- the only bispecific in the registry, which is worth knowing when reading a target effect.
 
   praluzatamab_ravtansine:
     inn: praluzatamab ravtansine
@@ -678,10 +672,7 @@ agents:
     conventional_adc: true
     curation_source: PMC9365353
     curation_note: >-
-      "conjugated via a disulfide cleavable linker to the potent microtubule inhibitor
-      ... (DM4)". A probody, so the antibody is masked until tumour proteases cleave it --
-      a design axis this registry does not model, recorded here so it is not mistaken for a
-      conventional antibody.
+      PMC9365353 reports DM4, a microtubule inhibitor, on a cleavable disulfide linker; paraphrased, as the article is CC BY-NC-ND. A probody, so the antibody is masked until tumour proteases cleave it -- a design axis this registry does not model, recorded here so it is not mistaken for a conventional antibody.
 
   rovalpituzumab_tesirine:
     inn: rovalpituzumab tesirine
@@ -698,7 +689,8 @@ agents:
     conjugation: interchain_cysteine
     dar: 2.0
     dar_source: literature
-    dar_note: 'PMC6277321: "Rovalpituzumab has a drug-to-antibody ratio of 2".'
+    dar_note: >-
+      PMC6277321 reports a drug-to-antibody ratio of 2. Paraphrased; the article is CC BY-NC.
     isotype: IgG1
     fc_engineering: none
     bystander: true
@@ -706,10 +698,7 @@ agents:
     conventional_adc: true
     curation_source: PMC6277321
     curation_note: >-
-      Development was discontinued, which does not disqualify it: the corpus models reported
-      toxicity, and a terminated agent's published safety table is as informative as an
-      approved one. PMC8342450 discusses refining "both the drug-antibody ratio and the
-      linker in Rova-T", which is a statement about its toxicity rather than its chemistry.
+      Development was discontinued, which does not disqualify it: the corpus models reported toxicity, and a terminated agent's published safety table is as informative as an approved one. PMC8342450 discusses refining both the drug-to-antibody ratio and the linker, which is a statement about its toxicity rather than its chemistry.
 
   sacituzumab_tirumotecan:
     inn: sacituzumab tirumotecan
@@ -726,7 +715,8 @@ agents:
     conjugation: interchain_cysteine
     dar: 7.4
     dar_source: literature
-    dar_note: 'PMC12916699: "The average Drug-to-antibody Ratio (DAR) is 7.4".'
+    dar_note: >-
+      PMC12916699 reports an average drug-to-antibody ratio of 7.4.
     isotype: IgG1
     fc_engineering: none
     bystander: true
@@ -734,9 +724,7 @@ agents:
     conventional_adc: true
     curation_source: PMC12139608
     curation_note: >-
-      "a proprietary Kthiol (pyrimidine-thiol) linker to conjugate the topoisomerase I
-      inhibitor KL610023". The linker is a named novel chemistry rather than one of the 11
-      in the design space, so linker_type is null and only linker_cleavable is recorded.
+      PMC12139608 reports the topoisomerase-I inhibitor KL610023 conjugated through a proprietary pyrimidine-thiol linker; paraphrased, as the article is CC BY-NC. The linker is a named novel chemistry rather than one of the 11 in the design space, so linker_type is null and only linker_cleavable is recorded.
 
   serclutamab_talirine:
     inn: serclutamab talirine
@@ -754,8 +742,7 @@ agents:
     dar: null
     dar_source: null
     dar_note: >-
-      PMC9940695 states the conjugation method yields "a low DAR of 2", which is a claim
-      about the method rather than about this agent. Left null.
+      PMC9940695 reports that the conjugation method used yields a low DAR of 2, which is a claim about the method rather than about this agent, so the field is left null. Paraphrased; the article is CC BY-NC.
     isotype: IgG1
     fc_engineering: none
     bystander: true
@@ -789,10 +776,7 @@ agents:
     conventional_adc: true
     curation_source: PMC13340450
     curation_note: >-
-      "the c-Met-targeting antibody telisotuzumab (ABT-700) conjugated to a novel potent
-      topoisomerase 1 (Top1) inhibitor payload, adizutecan". Shares its antibody with
-      telisotuzumab vedotin, already in this registry -- the same target and antibody with a
-      different payload, which is the cleanest within-registry contrast for a payload effect.
+      PMC13340450 reports the c-Met-targeting antibody telisotuzumab (ABT-700) carrying a topoisomerase-1 inhibitor payload, adizutecan; paraphrased, as the article is CC BY-NC-ND. Shares its antibody with telisotuzumab vedotin, already in this registry -- the same target and antibody with a different payload, which is the cleanest within-registry contrast for a payload effect.
 
   tusamitamab_ravtansine:
     inn: tusamitamab ravtansine
@@ -819,8 +803,7 @@ agents:
     conventional_adc: true
     curation_source: PMC12478256
     curation_note: >-
-      "a humanized anti-CEACAM5 antibody joined by a cleavable N-succinimidyl
-      4-(2-pyridyldithio)butyrate linker to a cytotoxic maytansinoid payload (DM4)" -- SPDB.
+      PMC12478256 reports a humanised anti-CEACAM5 antibody joined to the maytansinoid DM4 by a cleavable N-succinimidyl 4-(2-pyridyldithio)butyrate linker, which is SPDB. Paraphrased; the article is CC BY-NC-ND.
 
   vobramitamab_duocarmazine:
     inn: vobramitamab duocarmazine
@@ -845,9 +828,7 @@ agents:
     conventional_adc: true
     curation_source: PMC13376878
     curation_note: >-
-      "a duocarmycin-based, humanized antibody-drug conjugate (ADC) targeting B7-H3". Shares
-      its target with ifinatamab deruxtecan, giving a second same-target, different-payload
-      contrast.
+      PMC13376878 describes a duocarmycin-based humanised ADC targeting B7-H3; paraphrased, as the article is CC BY-NC-ND. Shares its target with ifinatamab deruxtecan, giving a second same-target, different-payload contrast.
   naratuximab_emtansine:
     inn: naratuximab emtansine
     brand: null
@@ -871,12 +852,9 @@ agents:
     conventional_adc: true
     curation_source: PMC11699082
     curation_note: >-
-      "the anti-CD37 humanized immunoglobulin G1 monoclonal antibody K7153A conjugated to
-      the maytansinoid Mertansine (microtubulin inhibitor) (DM1)". The linker is not
-      curated from that sentence but from the INN: the stem `emtansine` denotes the
-      DM1-MCC conjugate, as in ado-trastuzumab emtansine, so SMCC and non-cleavable are
-      definitional rather than inferred -- and the same reasoning gives bystander false,
-      since a non-cleavable maytansinoid releases only the charged lysine adduct.
+      PMC11699082 reports an anti-CD37 humanised IgG1 antibody carrying the maytansinoid DM1; paraphrased, as the article is CC BY-NC-ND. The linker is not curated from that sentence but from the INN: the stem `emtansine` denotes the DM1-MCC conjugate, as in ado-trastuzumab emtansine, so SMCC and non-cleavable are definitional rather than inferred -- and the same reasoning gives bystander false, since a non-cleavable maytansinoid releases only the charged lysine adduct.
+      
+      Recovered only through its code name. An INN-only search returned papers with no usable adverse-event table; searching IMGN529 alongside the INN found four, one of which carries an extractable table.
 
       Recovered only through its code name. An INN-only search returned papers with no
       usable adverse-event table; searching IMGN529 alongside the INN found four, one of
