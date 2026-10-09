@@ -245,9 +245,30 @@ def main() -> int:
             for n, name, line, raw in sorted(weak, reverse=True)[:8]:
                 print(f"    {name}:{line}  {raw}  matches {n} artefact values")
 
-    if not unexplained:
+    # The guard's description of itself. `N are allowlisted` is an integer, and this guard
+    # only checks decimals, so the sentence drifted from 16 to a real 19 without anything
+    # noticing -- a hand-typed figure in the very paragraph that promises none are. Cheap to
+    # pin, and the failure it prevents is embarrassing in a way a wrong decimal is not.
+    stale_self_description: list[tuple[str, int, str]] = []
+    for doc in sorted(d for root in args.report for d in root.glob("*.md")):
+        for lineno, line in enumerate(
+            doc.read_text(encoding="utf-8").splitlines(), start=1
+        ):
+            for m in re.finditer(r"(\d+) are allowlisted", line):
+                if int(m.group(1)) != len(allow):
+                    stale_self_description.append(
+                        (doc.name, lineno,
+                         f"says {m.group(1)} allowlisted, the allowlist holds {len(allow)}")
+                    )
+
+    if not unexplained and not stale_self_description:
         print("every figure traces to an artefact or the allowlist")
         return 0
+
+    for name, lineno, why in stale_self_description:
+        print(f"\n{name}:{lineno}  {why}")
+    if not unexplained:
+        return 1
 
     print(f"\n{len(unexplained)} figures with no artefact behind them:")
     for name, lineno, raw in unexplained[:40]:

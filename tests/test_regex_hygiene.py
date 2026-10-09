@@ -188,3 +188,30 @@ def test_a_figure_that_ends_a_sentence_is_checked() -> None:
     assert NUMBER.findall("see section 2.10.4") == []
     # And not part of a word.
     assert NUMBER.findall("x0.4567y") == []
+
+
+def test_the_guard_catches_its_own_stale_self_description() -> None:
+    """The one hand-typed figure in the paragraph that promises there are none.
+
+    `19 are allowlisted` is an integer, and this guard only checks decimals, so the sentence
+    sat at 16 while the allowlist grew to 19 with nothing noticing. Planted rather than
+    reasoned about, for the reason the test above gives.
+    """
+    import re
+    import subprocess
+    import sys
+
+    findings = ROOT / "report" / "findings.md"
+    original = findings.read_text(encoding="utf-8")
+    wrong = re.sub(r"\d+ are allowlisted", "3 are allowlisted", original, count=1)
+    assert wrong != original, "the self-description sentence is no longer in the report"
+    try:
+        findings.write_text(wrong, encoding="utf-8")
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "check_report.py")],
+            capture_output=True, text=True, cwd=ROOT,
+        )
+    finally:
+        findings.write_text(original, encoding="utf-8")
+    assert result.returncode == 1, result.stdout[-800:]
+    assert "says 3 allowlisted" in result.stdout, result.stdout[-800:]

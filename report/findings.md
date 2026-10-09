@@ -6,7 +6,7 @@ Working draft. Every number here is measured, and `make all` regenerates all of 
 Stated precisely, because the looser version of this claim was false for most of the
 project's life. The tables are generated from artefacts between markers in this file, so
 they cannot drift. Figures quoted in prose are checked by `make check-report`, which fails
-on any decimal it cannot find in an artefact; 16 are allowlisted with a stated reason
+on any decimal it cannot find in an artefact; 19 are allowlisted with a stated reason
 each, and superseded figures quoted in before/after comparisons live in
 `artifacts/superseded/`. That guard was itself a no-op until recently -- it passed 99% of
 randomly fabricated four-decimal figures -- so it now measures and prints its own
