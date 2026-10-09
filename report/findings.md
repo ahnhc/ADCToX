@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 47 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 48 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -2269,6 +2269,50 @@ neurologic.
 
     **A count a human typed once, that a gate refuses on, is a parameter -- and this project
     checks every parameter it fits and had never checked this one.**
+
+47. **A parse error presented itself as a convergence failure, and cost two fits to find.**
+    The merged corpus's first posterior came back with every interval collapsed:
+    `sigma_agent +0.2346 [+0.2346, +0.2346]`, zero width on 400 draws, and a seed-agreement
+    check reporting gaps of **820 pooled standard deviations**. Everything about it read as
+    a sampling problem -- too few warmup iterations for 266 parameters, a pathological
+    posterior geometry, the same non-convergence the 32-agent fit had shown.
+
+    It was none of those. One arm had a **centred DAR of +994**. The source field reads
+    *"2.7 in 2006 preclinical CR011-vcMMAE; not assumed clinical-product loading"*, and the
+    parser's range heuristic -- if the string contains a hyphen and the second number
+    exceeds the first, take the midpoint -- found the hyphen in the drug code `CR011-vcMMAE`
+    and averaged 2.7 with the year **2006**. With `b_dar * 994` in the logit the likelihood
+    is so extreme that NUTS rejects every proposal and sits at its initial point. A frozen
+    chain has no variance, so the pooled standard deviation is near zero, so the
+    standardised seed gap is enormous: the diagnostic fires, and it fires on the wrong
+    thing.
+
+    Two lessons, and the second is the one worth keeping. The first is the old one, for the
+    third time in this project: **a pattern over free text eventually reads a number the
+    sentence was telling it not to use.** The field explicitly says the figure is preclinical
+    and must not be assumed to be the clinical loading, and the right answer was no DAR at
+    all. The parser is now a whole-field match against a short list of shapes a DAR is
+    actually written in, with a disclaimer-word check on each segment; over the 46 distinct
+    strings in the source it accepts 39 and refuses 7, and every refusal names a reason.
+
+    The second lesson is about where the guard belongs. The dataset builder now refuses any
+    centred arm-level covariate beyond 100 and names the offending arm, its agent and its raw
+    field value. A real DAR spans 1 to 15 and a real reporting cut 0 to 100, so nothing
+    legitimate can trip it. The check costs microseconds and replaces twenty minutes of
+    sampling followed by a misdiagnosis. **A convergence diagnostic cannot tell a bad
+    posterior from a bad covariate, so the covariate has to be checked before the sampler
+    sees it.**
+
+    One thing the investigation turned up that is not fixed. The centred reporting threshold
+    reaches **+64.8** on the merged corpus and **+63.9** on the 32-agent one, against
+    **+0.7** on the registry corpus the model was developed on -- a cohort whose smallest
+    reported percentage is 71% is a cohort that reported almost nothing, and the covariate
+    enters linearly. Nine arms sit above 40%. This is not a parse error, the arms are real,
+    and it predates the merge: the 32-agent fit that failed its seed-agreement check at
+    0.722 carries four of them. So it is a live second suspect for that failure beside the
+    agent-source collinearity of result 39, and it is a specification question -- whether a
+    reporting cut belongs in the linear predictor at all, or only in the censoring -- rather
+    than a bug.
 
 ## 9b. The clean-clone check, run for the first time
 

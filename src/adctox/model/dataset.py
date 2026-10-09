@@ -154,6 +154,48 @@ class ModelData:
         )
 
 
+# A centred arm-level covariate this far from zero is a parse error, not a drug. The bound
+# is deliberately loose: a real DAR spans 1 to 15 and a real reporting cut 0 to 100, so a
+# centred value beyond a hundred cannot be either.
+#
+# Why this is a hard failure and not a warning. A free-text DAR field reading
+# `"2.7 in 2006 preclinical CR011-vcMMAE; not assumed clinical-product loading"` was once
+# parsed as 1004.35 -- a range heuristic saw the hyphen in the drug code and averaged 2.7
+# with the year. Centred, that covariate reached +994, and `b_dar * 994` in the logit froze
+# the sampler: every posterior interval came back zero-width, the seed-agreement check
+# reported gaps of 820 pooled standard deviations, and the whole thing read as a
+# convergence problem. It cost two fits of about twenty minutes each to find. An exception
+# naming the arm costs nothing. See negative result 47.
+COVARIATE_SANITY_BOUND = 100.0
+
+
+def _check_covariate_scale(arms, *centred) -> None:
+    names = ("dar", "frequency_threshold", "log n_at_risk")
+    for name, values in zip(names, centred):
+        v = np.asarray(values, dtype=float)
+        if not np.isfinite(v).all():
+            bad = arms.iloc[np.where(~np.isfinite(v))[0][:3]]
+            raise ValueError(
+                f"centred {name} is not finite for arms "
+                f"{list(bad.get('arm_key', bad.index))}. A non-finite covariate makes the "
+                "likelihood non-finite and the sampler will sit at its initial point "
+                "rather than fail."
+            )
+        worst = float(np.abs(v).max())
+        if worst > COVARIATE_SANITY_BOUND:
+            i = int(np.argmax(np.abs(v)))
+            row = arms.iloc[i]
+            raise ValueError(
+                f"centred {name} reaches {worst:+.1f} on arm "
+                f"{row.get('arm_key', i)} (agent {row.get('agent')}), beyond the sanity "
+                f"bound of {COVARIATE_SANITY_BOUND}. This is a parse error in the source "
+                f"field, not a property of the drug: raw value "
+                f"{row.get('dar') if name == 'dar' else row.get('frequency_threshold')!r}. "
+                "Fix the parser rather than raising this bound -- a covariate this large "
+                "freezes the sampler and the failure looks like non-convergence."
+            )
+
+
 def build(
     arms: pd.DataFrame,
     obs: pd.DataFrame,
@@ -360,6 +402,7 @@ def build(
     thresh_mean = float(thresh.mean())
     log_n_mean = float(log_n.mean())
 
+    _check_covariate_scale(arms, dar - dar_mean, thresh - thresh_mean, log_n - log_n_mean)
     return ModelData(
         kind=kind,
         status=np.asarray(status_l, dtype=np.int32),

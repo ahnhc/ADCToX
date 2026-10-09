@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import argparse
 import pathlib
+import re
 import sys
 
 import pandas as pd
@@ -62,16 +63,87 @@ MIN_AGENTS_FOR_HOLDOUT = 3
 MIN_N = 30
 
 
+# DAR is free text, and a parser over free text eventually reads a number the sentence was
+# telling it not to use. One did: `"2.7 in 2006 preclinical CR011-vcMMAE; not assumed
+# clinical-product loading"` became **1004.35**, because a "range" heuristic saw the hyphen
+# in the drug code `CR011-vcMMAE` and averaged 2.7 with the year 2006. A centred DAR of +994
+# froze the sampler -- zero-width posterior intervals on every parameter -- and the fit
+# looked like a convergence problem rather than a parse error. See negative result 47.
+#
+# So the field is matched as a whole against a small set of shapes a DAR is actually written
+# in, and anything else is refused. A refused DAR becomes NaN, which the dataset builder
+# already handles; a fabricated one cannot be handled by anything.
+_DAR_SHAPES = [
+    r"(?P<a>\d+(?:\.\d+)?)",                                  # 4   3.5
+    r"~\s*(?P<a>\d+(?:\.\d+)?)",                              # ~4
+    # Lead words a DAR is reported behind. `target` and `average` are here because the
+    # field uses them and a shape list that omits them refuses a number that is perfectly
+    # clear -- which is the opposite failure from the one that froze the sampler, and worth
+    # avoiding too.
+    r"(?:target\s+)?(?:approximately|approx\.?|about|mean|nominal|average)\s*(?P<a>\d+(?:\.\d+)?)",
+    r"(?P<a>\d+(?:\.\d+)?)\s*(?:\u00b1|\+/-)\s*\d+(?:\.\d+)?",     # 3.5 +/- 0.5
+    r"(?P<a>\d+(?:\.\d+)?)\s*[\u2013\u2014-]\s*(?P<b>\d+(?:\.\d+)?)",  # 2-3   7-8
+    r"(?P<a>\d+(?:\.\d+)?)\s*\(\s*(?:nominal|mean)\s*\)",
+]
+
+# Above this a DAR is not a DAR. The design space carries the same cap as a hard constraint;
+# this is the parse-time version of it, and it is a refusal rather than a clamp because a
+# clamped value is a fabricated one wearing a plausible number.
+DAR_SANITY_CAP = 16.0
+
+
+# Words that make a number unusable however cleanly it is written. The field sometimes
+# states a figure and then says not to use it, and a parser that takes the figure anyway is
+# worse than one that takes nothing.
+_DAR_DISCLAIMERS = ("not assumed", "not confirmed", "not clinical", "preclinical",
+                    "experimental", "unknown", "not reported", "not verified",
+                    "compared in", "before hic")
+
+# Trailing decorations that carry no DAR information: a purity parenthetical, a ratio
+# marker, a method name.
+_DAR_TRAILERS = re.compile(
+    r"\s*(?:\(\s*[^)]*\s*\)|:\s*1|mol/mol|dyes?/antibody)\s*$", re.I)
+
+
 def _first_number(text: str) -> float | None:
-    import re
-    s = str(text).split("|")[0]
-    nums = [float(x) for x in re.findall(r"\d+(?:\.\d+)?", s.replace("–", "-"))]
-    if not nums:
+    """Parse a DAR, or refuse. Never guess.
+
+    Each candidate segment -- the field split on "|" and then on ";" -- is stripped of
+    trailing decoration and matched **whole** against a small set of shapes a DAR is
+    actually written in. The first segment that both clears the disclaimer words and matches
+    a shape wins; if none does, the answer is None.
+
+    A looser version of this read `"2.7 in 2006 preclinical CR011-vcMMAE; not assumed
+    clinical-product loading"` as **1004.35**: a range heuristic saw the hyphen in the drug
+    code and averaged 2.7 with the year. Centred, that DAR reached +994 and froze the
+    sampler, producing zero-width posterior intervals that looked like non-convergence
+    rather than a parse error. See negative result 47.
+    """
+    if text is None:
         return None
-    # A range takes its midpoint; a tolerance takes its centre, which is the leading number.
-    if "-" in s and len(nums) >= 2 and nums[1] > nums[0] and "±" not in s:
-        return (nums[0] + nums[1]) / 2
-    return nums[0]
+    raw = str(text)
+    if not raw.strip() or raw.strip().lower() in ("nan", "not verified", "nr"):
+        return None
+    segments: list[str] = []
+    for alt in raw.split("|"):
+        for seg in alt.split(";"):
+            seg = seg.strip()
+            if seg:
+                segments.append(seg)
+    for seg in segments:
+        low = seg.lower()
+        if any(w in low for w in _DAR_DISCLAIMERS):
+            continue
+        cleaned = _DAR_TRAILERS.sub("", seg).strip()
+        for shape in _DAR_SHAPES:
+            m = re.fullmatch(shape, cleaned, flags=re.I)
+            if not m:
+                continue
+            a = float(m.group("a"))
+            b = m.groupdict().get("b")
+            value = (a + float(b)) / 2 if b and float(b) > a else a
+            return value if 0 < value <= DAR_SANITY_CAP else None
+    return None
 
 
 def _atlas_design(workbook: pathlib.Path, slots: dict) -> pd.DataFrame:
