@@ -1534,7 +1534,14 @@ only from a clone, which is the argument for running the check at all.
 ## 10. Limitations
 
 * Tier 2 novelty -- a new molecule in a known chemical family -- is not supported, and the
-  system refuses to give a point estimate outside Tier 1.
+  system refuses to give a point estimate outside Tier 1. The refusal is earlier and harder
+  than the plan asked for: `payload` is a closed enumeration, so a chemistry the model has
+  never seen cannot be named in a request at all and is rejected by the schema. The tier-3
+  path, which returns no organ estimate, therefore never fires for an ordinary caller --
+  every one of the design space's eleven payloads has a mechanism the full fit covers. It
+  stays because any posterior fitted on fewer mechanisms, which is every
+  leave-one-mechanism-out fold, puts a design-space payload outside the fit, and then it is
+  the only thing between a caller and fourteen extrapolated numbers.
 * No efficacy model. The one public ADC activity dataset (435 rows) is beaten by a
   decision tree on SMILES string length and DAR under a leakage-free grouped split.
 * The comorbidity layer has zero training rows and is an elicited prior throughout,
