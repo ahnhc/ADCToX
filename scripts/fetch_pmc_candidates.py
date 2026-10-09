@@ -130,6 +130,11 @@ def main() -> int:
     ap.add_argument("--retmax", type=int, default=400)
     ap.add_argument("--agents", nargs="*", default=None,
                     help="registry keys; default is every agent with an INN")
+    ap.add_argument("--abstract-only", action="store_true",
+                    help="also keep papers naming the agent only in the abstract. The "
+                         "title requirement was a proxy for attribution; the extractor "
+                         "now attributes at the column level, so these are recoverable -- "
+                         "but their yield and precision must be reported separately.")
     ap.add_argument("--limit-xml", type=int, default=None,
                     help="stop after this many XML downloads (for a bounded first pass)")
     args = ap.parse_args()
@@ -142,7 +147,7 @@ def main() -> int:
     funnel = {k: 0 for k in (
         "esearch_hits", "unique_pmcids", "meta_fetched", "meta_missing",
         "not_open_access", "retracted", "review_title", "agent_not_in_title",
-        "passed_title_filter", "xml_fetched", "xml_missing",
+        "passed_title_filter", "abstract_only", "xml_fetched", "xml_missing",
     )}
     rejected: dict[str, list[str]] = {}
     records: dict[str, dict] = {}
@@ -181,15 +186,22 @@ def main() -> int:
                 funnel["review_title"] += 1
                 rejected.setdefault("review_title", []).append(pmcid)
                 continue
-            if not any(n in low for n in names):
+            in_title = any(n in low for n in names)
+            if not in_title and not args.abstract_only:
                 funnel["agent_not_in_title"] += 1
                 rejected.setdefault("agent_not_in_title", []).append(pmcid)
                 continue
-            funnel["passed_title_filter"] += 1
+            funnel["passed_title_filter" if in_title else "abstract_only"] += 1
             records[pmcid] = {
                 "pmcid": pmcid, "version": version, "agent_hint": key,
                 "title": title, "license_code": doc.get("license_code"),
                 "pmid": doc.get("pmid"), "doi": doc.get("doi"),
+                # Which gate let this paper through. The title gate is the plan's
+                # high-precision path; the abstract-only path relies entirely on the
+                # column-level attribution in extract/table_to_cells.py, and the two have
+                # to be measured separately or the looser one launders the stricter one's
+                # precision.
+                "attribution_gate": "title" if in_title else "abstract_only",
             }
             kept += 1
         print(f"  {key:28s} esearch {len(ids):4d}  new {len(fresh):4d}  "

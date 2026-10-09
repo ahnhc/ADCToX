@@ -115,6 +115,8 @@ def main() -> int:
             )
             continue
         funnel["articles"] += 1
+        gate = rec.get("attribution_gate", "title")
+        funnel[f"gate:{gate}"] += 1
         per_agent[agent]["articles"] += 1
         others = {k: v for k, v in alias_map.items() if k != agent}
         try:
@@ -171,6 +173,7 @@ def main() -> int:
                     "license_code": rec.get("license_code"),
                     "nct_id": nct,
                     "nct_provenance": nct_why,
+                    "attribution_gate": gate,
                 })
 
     # ---- duplicate sources ------------------------------------------------------
@@ -237,6 +240,12 @@ def main() -> int:
         print(f"{mark} {a:30s} {c['articles']:4d} {c['ae_tables']:5d} "
               f"{c['tables_accepted']:5d} {c['cells']:6d}")
 
+    gates = collections.Counter(c["attribution_gate"] for c in cells_out)
+    if len(gates) > 1 or "abstract_only" in gates:
+        print("\n귀속 관문별 셀 (느슨한 쪽이 엄격한 쪽의 정밀도를 세탁하지 않도록 분리)")
+        for g, n in sorted(gates.items()):
+            print(f"  {g:16s} {n:6d}")
+
     print("\n축별 셀")
     for axis, n in axis_cells.most_common():
         print(f"  {axis:24s} {n:6d}")
@@ -253,6 +262,9 @@ def main() -> int:
         "agents_sought": sorted(alias_map),
         "per_agent": {a: dict(per_agent[a]) for a in sorted(alias_map)},
         "axis_cells": dict(axis_cells),
+        "cells_by_attribution_gate": dict(
+            collections.Counter(c["attribution_gate"] for c in cells_out)
+        ),
         "unmapped_rows": dict(row_misses.most_common(300)),
         "rejected": {k: v[:60] for k, v in reject.items()},
         "rejected_counts": {k: len(v) for k, v in reject.items()},
