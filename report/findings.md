@@ -881,7 +881,34 @@ feature when it reflects multi-organ involvement, since hepatitis B is genuinely
 and immune, and an artifact when it reflects where a curator filed an organ.
 
 This validates the organ mapping. The severity weights are still hand-assigned and
-untested, and the disease-disease coupling term is unbuilt.
+untested, and the disease-disease coupling term is unbuilt -- for a reason the measurements
+supply rather than for lack of time.
+
+### Why the coupling term is not built
+
+The plan's third component is `Coupling(a,c)`, a disease-disease term from FAERS indication
+co-occurrence, with the lift between two conditions standing in for one amplifying the
+other's organ risk. Two measurements argue against spending days on it.
+
+The plan's own FAERS figures carry a channel confound it names: the lifts are 6.41 for
+hypertension with hypothyroidism and 4.35 for heart failure with renal failure, but every
+rheumatoid pair *shrinks* -- hypertension with rheumatoid arthritis comes out at 0.68 --
+because rheumatoid reports arrive through biologic safety programmes that do not enumerate
+concomitant cardiometabolic drugs. A term whose sign depends on which safety programme
+filed the report is not measuring disease biology.
+
+The second is new here. Section 5i found that every cross-organ effect the FDA labels
+document is renal and raises risk elsewhere or systemically, which is the signature of a
+clearance effect. **Disease co-occurrence cannot represent that.** Renal impairment raises
+deruxtecan ILD because clearance falls and exposure rises, not because kidney disease and
+interstitial lung disease co-occur in patients. So the coupling term would add a quantity
+with a known reporting artefact, modelling a mechanism the only available evidence says is
+the wrong one.
+
+What the evidence would support is a clearance term -- hepatic and renal impairment raising
+exposure, and therefore every axis, by an amount depending on the payload's elimination
+route. That is a different model from the one the plan specifies, and 18 ordinal cells and
+three sentences are not enough to fit it. Both are stated rather than built.
 
 ## 5i. The comorbidity layer's primary validation was misspecified
 
