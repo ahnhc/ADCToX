@@ -66,6 +66,26 @@ def load_flags(path: Path = CONF) -> tuple[tuple[HardFlag, ...], tuple[str, ...]
         )
         for f in doc["flags"]
     )
+    # An empty `mechanisms` or `payloads` list means "any", which is the right convention
+    # and a hazard with no guard. A flag specifying neither would raise a band for every
+    # chemistry a patient with that comorbidity is scored against -- the whole product
+    # turning one axis red on the strength of one label sentence, with `source: rule` on it
+    # and nothing saying the rule was never meant to be universal. All five flags today
+    # name both, so this costs nothing now and refuses the flag that would not.
+    #
+    # The axis has to be a real axis for the same reason: a typo there produces a flag that
+    # silently never fires, which reads as a rule that was considered and found not to apply.
+    for f in flags:
+        if not (f.mechanisms or f.payloads):
+            raise ValueError(
+                f"hard flag {f.id!r} names neither a mechanism nor a payload, so it would "
+                "fire for every chemistry. Name the ones its label sentence is about."
+            )
+        if not f.comorbidities:
+            raise ValueError(
+                f"hard flag {f.id!r} names no comorbidity, so it would fire for every "
+                "patient including one who declared nothing."
+            )
     return flags, tuple(doc["tier_order"])
 
 

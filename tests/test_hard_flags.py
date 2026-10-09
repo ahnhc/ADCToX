@@ -140,3 +140,56 @@ def test_every_flag_fires_for_its_own_declared_inputs() -> None:
             "those inputs"
         )
         assert any(f.id == spec.id for f in applied[spec.axis])
+
+
+def test_a_flag_that_would_fire_for_every_chemistry_is_refused() -> None:
+    """An empty `mechanisms` or `payloads` list means "any", which is the right convention
+    and was a hazard with no guard.
+
+    A flag specifying neither would raise a band for every chemistry any patient with that
+    comorbidity is scored against -- the whole product turning one axis red on the strength
+    of one label sentence, carrying `source: rule` and nothing to say the rule was never
+    meant to be universal. All five flags today name both a mechanism and a payload, and
+    they have to: `vedotin_prior_sjs_ten` and `mmaf_prior_keratopathy` are both `tubulin`,
+    so only the payload separates them, and an MMAE design must not inherit MMAF's
+    keratopathy warning.
+    """
+    import tempfile
+
+    import pytest
+    import yaml
+
+    from adctox.comorbidity.hard_flags import applicable, load_flags
+
+    # The conjunction that keeps the two tubulin flags apart.
+    assert "ocular" in applicable("tubulin", "MMAF", {"keratopathy_history"})
+    assert "ocular" not in applicable("tubulin", "MMAE", {"keratopathy_history"})
+
+    flags, tier_order = load_flags()
+    assert len(flags) == 5
+    for f in flags:
+        assert f.mechanisms or f.payloads, f.id
+        assert f.comorbidities, f.id
+
+    doc = {
+        "version": 1,
+        "tier_order": list(tier_order),
+        "flags": [{
+            "id": "universal", "axis": "hepatic", "tier": "monitor",
+            "comorbidities": ["cirrhosis"],
+            "source_label": "X", "source_section": "Y", "quote": "z",
+        }],
+    }
+    with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False) as fh:
+        yaml.safe_dump(doc, fh)
+        path = fh.name
+    with pytest.raises(ValueError, match="neither a mechanism nor a payload"):
+        load_flags(path)
+
+    doc["flags"][0]["payloads"] = ["DXd"]
+    doc["flags"][0]["comorbidities"] = []
+    with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False) as fh:
+        yaml.safe_dump(doc, fh)
+        path2 = fh.name
+    with pytest.raises(ValueError, match="no comorbidity"):
+        load_flags(path2)
