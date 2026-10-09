@@ -174,3 +174,27 @@ def test_the_coverage_block_agrees_with_the_target_list() -> None:
         assert resp.status_code == 200, (name, resp.text[:200])
         assert resp.json()["coverage"]["target_in_corpus"] is expected, name
         assert (name.upper() in targets) is expected, name
+
+
+def test_the_interface_posts_the_identifier_the_endpoint_matches_on() -> None:
+    """The web page sends the gene symbol, which is why it never saw negative result 57.
+
+    It posts `t.id` from `/ontology` and displays `label (symbol)`, so the page and the
+    endpoint agreed and only direct API callers were told HER2 was absent. Pinned because
+    the page switching to the label would be a silent behaviour change for every caller --
+    and because the opposite direction, the endpoint narrowing again, is what the test above
+    guards.
+    """
+    import pathlib as _p
+    import re
+
+    page = (_p.Path(__file__).resolve().parents[1] / "web" / "index.html").read_text(
+        encoding="utf-8"
+    )
+    # The option carries the symbol as its value and the label as its text.
+    assert re.search(r'<option value="\$\{t\.id\}"', page), (
+        "the target select no longer posts the gene symbol; the coverage check accepts "
+        "both spellings now, but a change here is a change for every caller and should be "
+        "deliberate"
+    )
+    assert "target_antigen: document.getElementById(\"target\").value" in page

@@ -2725,12 +2725,20 @@ between those two.
     those returned `false` and a warning saying the target was absent from the training
     corpus.
 
-    HER2 is the worst case available. Eight of the registry's agents are built against it.
-    A clinician typing the name of the most-studied antigen in the field was told the corpus
-    had never seen it, in a block whose purpose is to say when a number should not be
-    trusted. **A coverage warning that fires on the best-covered input is worse than no
-    coverage warning**, because it spends the reader's attention on the wrong cases and
-    teaches them to ignore it.
+    HER2 is the worst case available. Eight of the registry's agents are built against it,
+    and a caller naming the most-studied antigen in the field was told the corpus had never
+    seen it -- in a block whose purpose is to say when a number should not be trusted.
+    **A coverage warning that fires on the best-covered input is worse than no coverage
+    warning**, because it spends the reader's attention on the wrong cases and teaches them
+    to ignore it.
+
+    Who it reached, stated precisely rather than dramatically. The web interface was never
+    affected: its target select posts `t.id`, the gene symbol, and displays
+    `label (symbol)`, so it always asked about ERBB2. It also has no expert mode, so it
+    never calls this endpoint at all. The defect reached **API callers and anyone using
+    `/assess` directly**, which is the audience the expert mode exists for and the one with
+    no screen to correct the answer against. A bug that the project's own front end cannot
+    reproduce is a bug its own testing was least likely to find.
 
     This is the session's name-mismatch defect once more, and the eleventh instance differs
     from the ten in the opening table in one way worth noting: those were quantities under
