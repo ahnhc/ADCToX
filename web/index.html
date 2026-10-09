@@ -265,7 +265,12 @@ function axisRow(r) {
 be. ${cm.n_reference_chemistries} corpus chemistries plus this design, on the
 ${cm.table === "serious" ? "serious-event" : "common-event"} table &mdash; the same table
 the band was computed on. ${cm.basis}. ${cm.n_excluded_for_missing_slots} registry agents
-are left out for want of a stated DAR or mechanism.">#${cm.rank} of ${cm.n}</span>`
+are left out for want of a stated DAR or mechanism.
+
+What this is not: a fine distinction. The model's across-agent ranking on one axis
+correlates with the observed ranking at about 0.17 after the reporting conditions are
+removed from both, so a one-place difference is noise and only the extremes mean
+anything.">#${cm.rank} of ${cm.n}</span>`
     : "";
   return `${why}<div class="axis ${r.at_risk_for_patient ? "at-risk" : ""}">
       <span>${r.label}${r.at_risk_for_patient ? ` <span class="tag">weighted &times;${r.weight_applied.toFixed(1)}</span>` : ""}${basisTag}${ruleTag}</span>

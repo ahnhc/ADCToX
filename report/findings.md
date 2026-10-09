@@ -710,7 +710,7 @@ proposal at every value of the constant**, because four at-risk axes out of four
 the weight back towards uniform and the payload that is best on their average is the payload
 that is best overall. The comorbidity layer has the most influence on the simplest patient
 and none on the most complex one, which is the opposite of useful. Seven profiles is not
-enough to call that a law -- the single-concern profiles give switch points from 5 to 30 with
+enough to call that a law -- the single-concern profiles give switch points from 5 to 50 with
 no clean ordering -- but the four-organ invariance is measured and it is the case a clinician
 would care about most.
 
@@ -749,6 +749,21 @@ design -- DXd on GGFG at DAR 8 -- queried for a patient with interstitial lung d
 Highest predicted serious pulmonary rate of any chemistry in the corpus, which is
 trastuzumab deruxtecan's boxed interstitial-lung-disease warning. The band alone said
 `high`; the ordinal says *how* high, and on this axis there is nothing above it.
+
+### What the ordinal is worth, which is the next section's number
+
+An ordinal position asserts that the ordering means something, so it inherits whatever
+skill the across-agent ranking has -- and that is the quantity section 5f measures. It is
+the one positive result in this report and it is weak: after removing the reporting
+conditions from both series, the mean per-axis Spearman correlation between predicted and
+observed across-agent rankings is **+0.17, 95% CI [+0.03, +0.32], permutation p = 0.005**,
+and the unadjusted estimate is +0.10 with an interval that includes zero.
+
+So the comparator is the product's most readable field and it rests on a correlation of
+about 0.17. That is enough to prefer it to a bare rate, which carries no comparison at all,
+and not enough to treat a one-place difference as real. The interface prints the denominator
+beside every rank for exactly that reason, and the two cases below are both extremes --
+first and nineteenth of twenty-three -- rather than fine distinctions.
 
 **The second thing it did was make a proposal's weak point legible.** For the renal and
 pulmonary profile the leading proposal is DGN549 on SMCC, and its hepatic axis is **#1 of

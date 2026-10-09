@@ -130,3 +130,24 @@ def test_the_serious_table_is_not_ranked_against_the_common_one() -> None:
         "the worst serious rate looks unremarkable against common-table chemistries, "
         "which is why the comparator follows the band's table"
     )
+
+
+def test_the_interface_says_what_the_ordinal_is_not() -> None:
+    """Law 7 of the project's own uncertainty rules: one sentence per screen says what the
+    number is not.
+
+    An ordinal position asserts that the ordering means something, and the measured skill of
+    that ordering is a per-axis across-agent correlation of about 0.17 after the reporting
+    conditions are removed from both series. Printing `#1 of 23` without that is the kind of
+    false precision the rest of this interface was built to avoid.
+    """
+    import pathlib
+
+    page = (
+        pathlib.Path(__file__).resolve().parents[1] / "web" / "index.html"
+    ).read_text(encoding="utf-8")
+    block = page[page.index('class="cmp" title='):]
+    block = block[: block.index("</span>")]
+    assert "What this is not" in block
+    assert "0.17" in block, "the measured correlation is not stated beside the rank"
+    assert "noise" in block or "only the extremes" in block
