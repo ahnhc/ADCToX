@@ -46,6 +46,15 @@ class ScoredDesign:
     o1_weighted_risk: float
     o2_worst_axis_risk: float
     o2_worst_axis: str
+    # The same worst-organ statistic under the patient's declared weights. O2 itself stays
+    # unweighted, because its job on the Pareto front is to stop a design that spreads risk
+    # thinly across fourteen axes from winning, and that job is about the design. This is
+    # the version used to order designs *inside* a tie group, where O1 has said all it can
+    # and what remains is a stated preference -- and the patient's own weights are the most
+    # relevant stated preference available. Ordering by the unweighted statistic there made
+    # the comorbidity profile unable to reach the proposal at all; see negative result 40.
+    o2_weighted_worst_axis_risk: float
+    o2_weighted_worst_axis: str
     o3_precedent: float
     binding_constraint: str | None
     # Serious-event rates for the same design, when the serious posterior is supplied.
@@ -169,6 +178,7 @@ def score_designs(
     o1_basis = "common" if serious_draws is None else "serious"
     o1_draws = (o1_source * w[None, None, :]).sum(axis=2)   # (draws, designs)
     o2_draws = rate_draws.max(axis=2)
+    o2_weighted_draws = (rate_draws * w[None, None, :]).max(axis=2)
 
     out: list[ScoredDesign] = []
     for j, design in enumerate(designs):
@@ -188,6 +198,8 @@ def score_designs(
                 o1_weighted_risk=float(o1_draws[:, j].mean()),
                 o2_worst_axis_risk=float(o2_draws[:, j].mean()),
                 o2_worst_axis=axes[worst],
+                o2_weighted_worst_axis_risk=float(o2_weighted_draws[:, j].mean()),
+                o2_weighted_worst_axis=axes[int(np.argmax(mean_rates * w))],
                 o3_precedent=float(precedent.get(design.key(), 0.0)),
                 binding_constraint=res.binding,
                 serious_risk=(
@@ -256,7 +268,8 @@ def rank_and_group(
         if len(group) > 1:
             inner = sorted(
                 group,
-                key=lambda i: (ordered[i].o2_worst_axis_risk, -ordered[i].o3_precedent),
+                key=lambda i: (ordered[i].o2_weighted_worst_axis_risk,
+                               -ordered[i].o3_precedent),
             )
             reordered = [ordered[i] for i in inner]
             for slot, item in zip(group, reordered):
@@ -271,7 +284,9 @@ def rank_and_group(
             ordered[i].group_size = len(group)
             if len(group) > 1:
                 ordered[i].secondary_order_basis = (
-                    "worst single organ, then precedent -- O1 cannot separate this group"
+                    "worst single organ under your declared weights, then precedent -- "
+                    "O1 cannot separate this group, so the order is your stated preference "
+                    "and not a confidence ranking"
                 )
 
     if len(ordered) >= 2 and ordered[0].draws_o1 is not None:

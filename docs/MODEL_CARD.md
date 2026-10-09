@@ -193,6 +193,37 @@ can never reach: its vocabulary grows as fast as the corpus does, 9 classes at 1
 converge here in either parameterization. So the diagnosis is not "we need the family
 level" but "the level that would help is the one that recedes".
 
+### The same squeeze measured at the output, not at the folds
+
+Fold difficulty says payload is the level that predicts held-out performance. The direct
+version of that is to ask what the model can say about two payloads *inside* one mechanism,
+where cleavability and DAR are the only levers it has left.
+
+<!-- generated: payload-compression -->
+
+Within `tubulin`, over the payloads with enough observed cells, the model's ordering of the payloads on an organ axis is uncorrelated with the observed ordering: **mean Spearman -0.0571** across 14 axes, from -1.0000 on constitutional to +0.8000 on neurologic.
+
+On the ocular axis the observed rates span **0.0698 to 0.5262, a factor of 7.54**, and the model spans **1.27**.
+
+| payload | observed | cells | model |
+|---|---|---|---|
+| DM4 | 0.5262 | 10 | 0.0817 |
+| MMAF | 0.3968 | 24 | 0.1039 |
+| DM1 | 0.0880 | 36 | 0.1019 |
+| MMAE | 0.0698 | 64 | 0.0834 |
+
+Which granularity recovers the spread, axis by axis: on ocular **7.54x at payload, 1.15x at family, 1.61x at cleavability**; on hepatic **2.99x and 2.99x**; on cardiovascular **4.68x and 3.53x**. So payload family is a serviceable proxy for most organ axes and a useless one for ocular -- and the fit has the family level disabled, which leaves cleavability as the whole vocabulary.
+
+<!-- /generated: payload-compression -->
+
+The two high-ocular payloads are MMAF, which is non-cleavable, and DM4, which is cleavable;
+the two low ones are DM1, non-cleavable, and MMAE, cleavable. Cleavability is orthogonal to
+ocular risk on this corpus, and the high pair straddles both families, so neither of the two
+coarser levels stands in for payload here. **The system distinguishes mechanisms on organ
+profile and does not distinguish payloads within one.** MMAF corneal toxicity is among the
+best-established organ effects in ADC pharmacology and is the clearest case of something
+this model cannot express.
+
 ## Calibration and uncertainty
 
 <!-- generated: fitted-parameters -->

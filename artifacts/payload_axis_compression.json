@@ -1,0 +1,1014 @@
+{
+ "thresholds": {
+  "min_payloads": 2,
+  "min_cells": 3
+ },
+ "rows": [
+  {
+   "axis": "haematologic",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.3694,
+    "SN-38": 0.4142
+   },
+   "payload_cells": {
+    "DXd": 47,
+    "SN-38": 21
+   },
+   "observed_max_rate": 0.4142,
+   "observed_lo": 0.3694,
+   "observed_hi": 0.4142,
+   "observed_fold": 1.12,
+   "model_by_payload": {
+    "SN-38": 0.3356,
+    "DXd": 0.3399
+   },
+   "model_lo": 0.3356,
+   "model_hi": 0.3399,
+   "model_fold": 1.01,
+   "compression": 1.11
+  },
+  {
+   "axis": "haematologic",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.2667,
+    "DM4": 0.2284,
+    "MMAE": 0.3402,
+    "MMAF": 0.3703
+   },
+   "payload_cells": {
+    "DM1": 47,
+    "DM4": 10,
+    "MMAE": 95,
+    "MMAF": 24
+   },
+   "observed_max_rate": 0.3703,
+   "observed_lo": 0.2284,
+   "observed_hi": 0.3703,
+   "observed_fold": 1.62,
+   "model_by_payload": {
+    "DM1": 0.2095,
+    "MMAE": 0.273,
+    "DM4": 0.2685,
+    "MMAF": 0.2133
+   },
+   "model_lo": 0.2095,
+   "model_hi": 0.273,
+   "model_fold": 1.3,
+   "compression": 1.25,
+   "within_mechanism_spearman": 0.0,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "hepatic",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.1985,
+    "SN-38": 0.0863
+   },
+   "payload_cells": {
+    "DXd": 47,
+    "SN-38": 21
+   },
+   "observed_max_rate": 0.1985,
+   "observed_lo": 0.0863,
+   "observed_hi": 0.1985,
+   "observed_fold": 2.3,
+   "model_by_payload": {
+    "SN-38": 0.1512,
+    "DXd": 0.1538
+   },
+   "model_lo": 0.1512,
+   "model_hi": 0.1538,
+   "model_fold": 1.02,
+   "compression": 2.25
+  },
+  {
+   "axis": "hepatic",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.2566,
+    "DM4": 0.2563,
+    "MMAE": 0.1804,
+    "MMAF": 0.1734
+   },
+   "payload_cells": {
+    "DM1": 46,
+    "DM4": 10,
+    "MMAE": 80,
+    "MMAF": 24
+   },
+   "observed_max_rate": 0.2566,
+   "observed_lo": 0.1734,
+   "observed_hi": 0.2566,
+   "observed_fold": 1.48,
+   "model_by_payload": {
+    "DM1": 0.1637,
+    "MMAE": 0.1215,
+    "DM4": 0.1191,
+    "MMAF": 0.1668
+   },
+   "model_lo": 0.1191,
+   "model_hi": 0.1668,
+   "model_fold": 1.4,
+   "compression": 1.06,
+   "within_mechanism_spearman": -0.4,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "cardiovascular",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.0677,
+    "SN-38": 0.0803
+   },
+   "payload_cells": {
+    "DXd": 40,
+    "SN-38": 20
+   },
+   "observed_max_rate": 0.0803,
+   "observed_lo": 0.0677,
+   "observed_hi": 0.0803,
+   "observed_fold": 1.19,
+   "model_by_payload": {
+    "SN-38": 0.0547,
+    "DXd": 0.0558
+   },
+   "model_lo": 0.0547,
+   "model_hi": 0.0558,
+   "model_fold": 1.02,
+   "compression": 1.17
+  },
+  {
+   "axis": "cardiovascular",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.0771,
+    "DM4": 0.1336,
+    "MMAE": 0.1081,
+    "MMAF": 0.073
+   },
+   "payload_cells": {
+    "DM1": 38,
+    "DM4": 9,
+    "MMAE": 82,
+    "MMAF": 21
+   },
+   "observed_max_rate": 0.1336,
+   "observed_lo": 0.073,
+   "observed_hi": 0.1336,
+   "observed_fold": 1.83,
+   "model_by_payload": {
+    "DM1": 0.0564,
+    "MMAE": 0.0655,
+    "DM4": 0.0642,
+    "MMAF": 0.0576
+   },
+   "model_lo": 0.0564,
+   "model_hi": 0.0655,
+   "model_fold": 1.16,
+   "compression": 1.58,
+   "within_mechanism_spearman": 0.6,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "pulmonary",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.1576,
+    "SN-38": 0.1792
+   },
+   "payload_cells": {
+    "DXd": 47,
+    "SN-38": 21
+   },
+   "observed_max_rate": 0.1792,
+   "observed_lo": 0.1576,
+   "observed_hi": 0.1792,
+   "observed_fold": 1.14,
+   "model_by_payload": {
+    "SN-38": 0.1416,
+    "DXd": 0.1441
+   },
+   "model_lo": 0.1416,
+   "model_hi": 0.1441,
+   "model_fold": 1.02,
+   "compression": 1.12
+  },
+  {
+   "axis": "pulmonary",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.2237,
+    "DM4": 0.1698,
+    "MMAE": 0.1969,
+    "MMAF": 0.1015
+   },
+   "payload_cells": {
+    "DM1": 46,
+    "DM4": 10,
+    "MMAE": 91,
+    "MMAF": 23
+   },
+   "observed_max_rate": 0.2237,
+   "observed_lo": 0.1015,
+   "observed_hi": 0.2237,
+   "observed_fold": 2.2,
+   "model_by_payload": {
+    "DM1": 0.1594,
+    "MMAE": 0.1286,
+    "DM4": 0.1261,
+    "MMAF": 0.1624
+   },
+   "model_lo": 0.1261,
+   "model_hi": 0.1624,
+   "model_fold": 1.29,
+   "compression": 1.71,
+   "within_mechanism_spearman": -0.2,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "renal",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.0566,
+    "SN-38": 0.0915
+   },
+   "payload_cells": {
+    "DXd": 37,
+    "SN-38": 16
+   },
+   "observed_max_rate": 0.0915,
+   "observed_lo": 0.0566,
+   "observed_hi": 0.0915,
+   "observed_fold": 1.62,
+   "model_by_payload": {
+    "SN-38": 0.0472,
+    "DXd": 0.0481
+   },
+   "model_lo": 0.0472,
+   "model_hi": 0.0481,
+   "model_fold": 1.02,
+   "compression": 1.59
+  },
+  {
+   "axis": "renal",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.061,
+    "DM4": 0.0787,
+    "MMAE": 0.0605,
+    "MMAF": 0.0561
+   },
+   "payload_cells": {
+    "DM1": 17,
+    "DM4": 7,
+    "MMAE": 67,
+    "MMAF": 23
+   },
+   "observed_max_rate": 0.0787,
+   "observed_lo": 0.0561,
+   "observed_hi": 0.0787,
+   "observed_fold": 1.4,
+   "model_by_payload": {
+    "DM1": 0.0282,
+    "MMAE": 0.0373,
+    "DM4": 0.0365,
+    "MMAF": 0.0288
+   },
+   "model_lo": 0.0282,
+   "model_hi": 0.0373,
+   "model_fold": 1.32,
+   "compression": 1.06,
+   "within_mechanism_spearman": 0.0,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "gastrointestinal",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.6748,
+    "SN-38": 0.4952
+   },
+   "payload_cells": {
+    "DXd": 47,
+    "SN-38": 21
+   },
+   "observed_max_rate": 0.6748,
+   "observed_lo": 0.4952,
+   "observed_hi": 0.6748,
+   "observed_fold": 1.36,
+   "model_by_payload": {
+    "SN-38": 0.5975,
+    "DXd": 0.6017
+   },
+   "model_lo": 0.5975,
+   "model_hi": 0.6017,
+   "model_fold": 1.01,
+   "compression": 1.35
+  },
+  {
+   "axis": "gastrointestinal",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.4193,
+    "DM4": 0.5257,
+    "MMAE": 0.4174,
+    "MMAF": 0.2282
+   },
+   "payload_cells": {
+    "DM1": 47,
+    "DM4": 10,
+    "MMAE": 90,
+    "MMAF": 23
+   },
+   "observed_max_rate": 0.5257,
+   "observed_lo": 0.2282,
+   "observed_hi": 0.5257,
+   "observed_fold": 2.3,
+   "model_by_payload": {
+    "DM1": 0.3483,
+    "MMAE": 0.343,
+    "DM4": 0.3379,
+    "MMAF": 0.3535
+   },
+   "model_lo": 0.3379,
+   "model_hi": 0.3535,
+   "model_fold": 1.05,
+   "compression": 2.19,
+   "within_mechanism_spearman": -0.8,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "neurologic",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.1467,
+    "SN-38": 0.1472
+   },
+   "payload_cells": {
+    "DXd": 46,
+    "SN-38": 21
+   },
+   "observed_max_rate": 0.1472,
+   "observed_lo": 0.1467,
+   "observed_hi": 0.1472,
+   "observed_fold": 1.0,
+   "model_by_payload": {
+    "SN-38": 0.134,
+    "DXd": 0.1364
+   },
+   "model_lo": 0.134,
+   "model_hi": 0.1364,
+   "model_fold": 1.02,
+   "compression": 0.98
+  },
+  {
+   "axis": "neurologic",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.2476,
+    "DM4": 0.2978,
+    "MMAE": 0.3335,
+    "MMAF": 0.1523
+   },
+   "payload_cells": {
+    "DM1": 46,
+    "DM4": 10,
+    "MMAE": 94,
+    "MMAF": 21
+   },
+   "observed_max_rate": 0.3335,
+   "observed_lo": 0.1523,
+   "observed_hi": 0.3335,
+   "observed_fold": 2.19,
+   "model_by_payload": {
+    "DM1": 0.1885,
+    "MMAE": 0.2759,
+    "DM4": 0.2714,
+    "MMAF": 0.1919
+   },
+   "model_lo": 0.1885,
+   "model_hi": 0.2759,
+   "model_fold": 1.46,
+   "compression": 1.5,
+   "within_mechanism_spearman": 0.8,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "ocular",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.0871,
+    "SN-38": 0.0345
+   },
+   "payload_cells": {
+    "DXd": 38,
+    "SN-38": 13
+   },
+   "observed_max_rate": 0.0871,
+   "observed_lo": 0.0345,
+   "observed_hi": 0.0871,
+   "observed_fold": 2.52,
+   "model_by_payload": {
+    "SN-38": 0.0582,
+    "DXd": 0.0594
+   },
+   "model_lo": 0.0582,
+   "model_hi": 0.0594,
+   "model_fold": 1.02,
+   "compression": 2.47
+  },
+  {
+   "axis": "ocular",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.088,
+    "DM4": 0.5262,
+    "MMAE": 0.0698,
+    "MMAF": 0.3968
+   },
+   "payload_cells": {
+    "DM1": 36,
+    "DM4": 10,
+    "MMAE": 64,
+    "MMAF": 24
+   },
+   "observed_max_rate": 0.5262,
+   "observed_lo": 0.0698,
+   "observed_hi": 0.5262,
+   "observed_fold": 7.54,
+   "model_by_payload": {
+    "DM1": 0.1019,
+    "MMAE": 0.0834,
+    "DM4": 0.0817,
+    "MMAF": 0.1039
+   },
+   "model_lo": 0.0817,
+   "model_hi": 0.1039,
+   "model_fold": 1.27,
+   "compression": 5.94,
+   "within_mechanism_spearman": -0.2,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "dermatologic",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.3254,
+    "SN-38": 0.4034
+   },
+   "payload_cells": {
+    "DXd": 46,
+    "SN-38": 21
+   },
+   "observed_max_rate": 0.4034,
+   "observed_lo": 0.3254,
+   "observed_hi": 0.4034,
+   "observed_fold": 1.24,
+   "model_by_payload": {
+    "SN-38": 0.3473,
+    "DXd": 0.3516
+   },
+   "model_lo": 0.3473,
+   "model_hi": 0.3516,
+   "model_fold": 1.01,
+   "compression": 1.23
+  },
+  {
+   "axis": "dermatologic",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.2154,
+    "DM4": 0.0632,
+    "MMAE": 0.2297,
+    "MMAF": 0.059
+   },
+   "payload_cells": {
+    "DM1": 44,
+    "DM4": 10,
+    "MMAE": 93,
+    "MMAF": 21
+   },
+   "observed_max_rate": 0.2297,
+   "observed_lo": 0.059,
+   "observed_hi": 0.2297,
+   "observed_fold": 3.89,
+   "model_by_payload": {
+    "DM1": 0.1659,
+    "MMAE": 0.1598,
+    "DM4": 0.1568,
+    "MMAF": 0.169
+   },
+   "model_lo": 0.1568,
+   "model_hi": 0.169,
+   "model_fold": 1.08,
+   "compression": 3.6,
+   "within_mechanism_spearman": -0.4,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "metabolic_endocrine",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.3542,
+    "SN-38": 0.241
+   },
+   "payload_cells": {
+    "DXd": 47,
+    "SN-38": 21
+   },
+   "observed_max_rate": 0.3542,
+   "observed_lo": 0.241,
+   "observed_hi": 0.3542,
+   "observed_fold": 1.47,
+   "model_by_payload": {
+    "SN-38": 0.2611,
+    "DXd": 0.2649
+   },
+   "model_lo": 0.2611,
+   "model_hi": 0.2649,
+   "model_fold": 1.01,
+   "compression": 1.46
+  },
+  {
+   "axis": "metabolic_endocrine",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.2003,
+    "DM4": 0.26,
+    "MMAE": 0.2316,
+    "MMAF": 0.1592
+   },
+   "payload_cells": {
+    "DM1": 47,
+    "DM4": 10,
+    "MMAE": 91,
+    "MMAF": 23
+   },
+   "observed_max_rate": 0.26,
+   "observed_lo": 0.1592,
+   "observed_hi": 0.26,
+   "observed_fold": 1.63,
+   "model_by_payload": {
+    "DM1": 0.1456,
+    "MMAE": 0.171,
+    "DM4": 0.1679,
+    "MMAF": 0.1484
+   },
+   "model_lo": 0.1456,
+   "model_hi": 0.171,
+   "model_fold": 1.17,
+   "compression": 1.39,
+   "within_mechanism_spearman": 0.6,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "musculoskeletal",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.1016,
+    "SN-38": 0.1399
+   },
+   "payload_cells": {
+    "DXd": 46,
+    "SN-38": 21
+   },
+   "observed_max_rate": 0.1399,
+   "observed_lo": 0.1016,
+   "observed_hi": 0.1399,
+   "observed_fold": 1.38,
+   "model_by_payload": {
+    "SN-38": 0.097,
+    "DXd": 0.0988
+   },
+   "model_lo": 0.097,
+   "model_hi": 0.0988,
+   "model_fold": 1.02,
+   "compression": 1.35
+  },
+  {
+   "axis": "musculoskeletal",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.1805,
+    "DM4": 0.2014,
+    "MMAE": 0.1419,
+    "MMAF": 0.112
+   },
+   "payload_cells": {
+    "DM1": 45,
+    "DM4": 10,
+    "MMAE": 90,
+    "MMAF": 23
+   },
+   "observed_max_rate": 0.2014,
+   "observed_lo": 0.112,
+   "observed_hi": 0.2014,
+   "observed_fold": 1.8,
+   "model_by_payload": {
+    "DM1": 0.1316,
+    "MMAE": 0.1063,
+    "DM4": 0.1042,
+    "MMAF": 0.1342
+   },
+   "model_lo": 0.1042,
+   "model_hi": 0.1342,
+   "model_fold": 1.29,
+   "compression": 1.4,
+   "within_mechanism_spearman": -0.8,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "infectious_immune",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.1521,
+    "SN-38": 0.1555
+   },
+   "payload_cells": {
+    "DXd": 47,
+    "SN-38": 21
+   },
+   "observed_max_rate": 0.1555,
+   "observed_lo": 0.1521,
+   "observed_hi": 0.1555,
+   "observed_fold": 1.02,
+   "model_by_payload": {
+    "SN-38": 0.1301,
+    "DXd": 0.1324
+   },
+   "model_lo": 0.1301,
+   "model_hi": 0.1324,
+   "model_fold": 1.02,
+   "compression": 1.0
+  },
+  {
+   "axis": "infectious_immune",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.1223,
+    "DM4": 0.2051,
+    "MMAE": 0.1577,
+    "MMAF": 0.1758
+   },
+   "payload_cells": {
+    "DM1": 44,
+    "DM4": 10,
+    "MMAE": 92,
+    "MMAF": 23
+   },
+   "observed_max_rate": 0.2051,
+   "observed_lo": 0.1223,
+   "observed_hi": 0.2051,
+   "observed_fold": 1.68,
+   "model_by_payload": {
+    "DM1": 0.0938,
+    "MMAE": 0.1107,
+    "DM4": 0.1085,
+    "MMAF": 0.0958
+   },
+   "model_lo": 0.0938,
+   "model_hi": 0.1107,
+   "model_fold": 1.18,
+   "compression": 1.42,
+   "within_mechanism_spearman": 0.4,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "otologic",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.0329,
+    "DM4": 0.0434,
+    "MMAE": 0.0421,
+    "MMAF": 0.0039
+   },
+   "payload_cells": {
+    "DM1": 13,
+    "DM4": 6,
+    "MMAE": 47,
+    "MMAF": 11
+   },
+   "observed_max_rate": 0.0434,
+   "observed_lo": 0.0039,
+   "observed_hi": 0.0434,
+   "observed_fold": 11.01,
+   "model_by_payload": {
+    "DM1": 0.0158,
+    "MMAE": 0.0171,
+    "DM4": 0.0167,
+    "MMAF": 0.0162
+   },
+   "model_lo": 0.0158,
+   "model_hi": 0.0171,
+   "model_fold": 1.08,
+   "compression": 10.19,
+   "within_mechanism_spearman": 0.6,
+   "n_payloads_ranked": 4
+  },
+  {
+   "axis": "constitutional",
+   "mechanism": "topo1",
+   "n_payloads": 2,
+   "payloads": {
+    "DXd": 0.3526,
+    "SN-38": 0.4402
+   },
+   "payload_cells": {
+    "DXd": 47,
+    "SN-38": 21
+   },
+   "observed_max_rate": 0.4402,
+   "observed_lo": 0.3526,
+   "observed_hi": 0.4402,
+   "observed_fold": 1.25,
+   "model_by_payload": {
+    "SN-38": 0.3296,
+    "DXd": 0.3339
+   },
+   "model_lo": 0.3296,
+   "model_hi": 0.3339,
+   "model_fold": 1.01,
+   "compression": 1.24
+  },
+  {
+   "axis": "constitutional",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.3855,
+    "DM4": 0.4394,
+    "MMAE": 0.3904,
+    "MMAF": 0.2129
+   },
+   "payload_cells": {
+    "DM1": 47,
+    "DM4": 10,
+    "MMAE": 94,
+    "MMAF": 23
+   },
+   "observed_max_rate": 0.4394,
+   "observed_lo": 0.2129,
+   "observed_hi": 0.4394,
+   "observed_fold": 2.06,
+   "model_by_payload": {
+    "DM1": 0.2913,
+    "MMAE": 0.288,
+    "DM4": 0.2834,
+    "MMAF": 0.296
+   },
+   "model_lo": 0.2834,
+   "model_hi": 0.296,
+   "model_fold": 1.04,
+   "compression": 1.98,
+   "within_mechanism_spearman": -1.0,
+   "n_payloads_ranked": 4
+  }
+ ],
+ "granularity": [
+  {
+   "axis": "haematologic",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 2.72,
+   "family_levels": 3,
+   "family_fold": 2.55,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.08
+  },
+  {
+   "axis": "hepatic",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 2.99,
+   "family_levels": 3,
+   "family_fold": 2.99,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.21
+  },
+  {
+   "axis": "cardiovascular",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 4.68,
+   "family_levels": 3,
+   "family_fold": 3.53,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.45
+  },
+  {
+   "axis": "pulmonary",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 2.82,
+   "family_levels": 3,
+   "family_fold": 1.61,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.07
+  },
+  {
+   "axis": "renal",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 1.72,
+   "family_levels": 3,
+   "family_fold": 1.63,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.08
+  },
+  {
+   "axis": "gastrointestinal",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 3.1,
+   "family_levels": 3,
+   "family_fold": 2.58,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.19
+  },
+  {
+   "axis": "neurologic",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 2.52,
+   "family_levels": 3,
+   "family_fold": 2.27,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.5
+  },
+  {
+   "axis": "ocular",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payload_levels": 4,
+   "payload_fold": 7.54,
+   "family_levels": 2,
+   "family_fold": 1.15,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.61
+  },
+  {
+   "axis": "dermatologic",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 3.89,
+   "family_levels": 3,
+   "family_fold": 2.92,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.28
+  },
+  {
+   "axis": "metabolic_endocrine",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 2.85,
+   "family_levels": 3,
+   "family_fold": 2.38,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.24
+  },
+  {
+   "axis": "musculoskeletal",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 1.8,
+   "family_levels": 3,
+   "family_fold": 1.64,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.07
+  },
+  {
+   "axis": "infectious_immune",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 2.2,
+   "family_levels": 3,
+   "family_fold": 1.73,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.14
+  },
+  {
+   "axis": "otologic",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payload_levels": 4,
+   "payload_fold": 11.01,
+   "family_levels": 2,
+   "family_fold": 1.04,
+   "cleavable_levels": 2,
+   "cleavable_fold": 2.15
+  },
+  {
+   "axis": "constitutional",
+   "mechanism": "tubulin",
+   "n_payloads": 5,
+   "payload_levels": 5,
+   "payload_fold": 2.41,
+   "family_levels": 3,
+   "family_fold": 2.16,
+   "cleavable_levels": 2,
+   "cleavable_fold": 1.19
+  }
+ ],
+ "summary": {
+  "n_axis_mechanism_pairs": 27,
+  "n_comparable": 27,
+  "worst": {
+   "axis": "otologic",
+   "mechanism": "tubulin",
+   "n_payloads": 4,
+   "payloads": {
+    "DM1": 0.0329,
+    "DM4": 0.0434,
+    "MMAE": 0.0421,
+    "MMAF": 0.0039
+   },
+   "payload_cells": {
+    "DM1": 13,
+    "DM4": 6,
+    "MMAE": 47,
+    "MMAF": 11
+   },
+   "observed_max_rate": 0.0434,
+   "observed_lo": 0.0039,
+   "observed_hi": 0.0434,
+   "observed_fold": 11.01,
+   "model_by_payload": {
+    "DM1": 0.0158,
+    "MMAE": 0.0171,
+    "DM4": 0.0167,
+    "MMAF": 0.0162
+   },
+   "model_lo": 0.0158,
+   "model_hi": 0.0171,
+   "model_fold": 1.08,
+   "compression": 10.19,
+   "within_mechanism_spearman": 0.6,
+   "n_payloads_ranked": 4
+  },
+  "within_mechanism_spearman": {
+   "otologic/tubulin": 0.6,
+   "ocular/tubulin": -0.2,
+   "dermatologic/tubulin": -0.4,
+   "gastrointestinal/tubulin": -0.8,
+   "constitutional/tubulin": -1.0,
+   "pulmonary/tubulin": -0.2,
+   "cardiovascular/tubulin": 0.6,
+   "neurologic/tubulin": 0.8,
+   "infectious_immune/tubulin": 0.4,
+   "musculoskeletal/tubulin": -0.8,
+   "metabolic_endocrine/tubulin": 0.6,
+   "haematologic/tubulin": 0.0,
+   "hepatic/tubulin": -0.4,
+   "renal/tubulin": 0.0
+  },
+  "mean_within_mechanism_spearman": -0.0571,
+  "median_compression": 1.4
+ },
+ "provenance": {
+  "revision": "bcc3ec49f5a60b07c7f5b2ff8f0839d8793055d5",
+  "dirty": true,
+  "snapshot": null,
+  "script": "payload_axis_compression.py",
+  "written_utc": "2026-10-09T14:18:11+00:00",
+  "inputs": {}
+ }
+}

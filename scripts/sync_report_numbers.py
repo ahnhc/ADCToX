@@ -48,6 +48,9 @@ HFN_END = "<!-- /generated: hard-flag-necessity -->"
 LCE_BEGIN = "<!-- generated: label-change -->"
 LCE_END = "<!-- /generated: label-change -->"
 
+PAC_BEGIN = "<!-- generated: payload-compression -->"
+PAC_END = "<!-- /generated: payload-compression -->"
+
 SAX_BEGIN = "<!-- generated: source-axis -->"
 SAX_END = "<!-- /generated: source-axis -->"
 
@@ -340,6 +343,94 @@ def _bootstrap_ci(values, n_boot: int = 2000, seed: int = 0):
     rng = np.random.default_rng(seed)
     means = [rng.choice(arr, size=len(arr), replace=True).mean() for _ in range(n_boot)]
     return (float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5)))
+
+
+def _marker_indent(text: str, marker: str) -> str:
+    """The whitespace in front of a block's opening marker, which is its context.
+
+    A generated block sits inside a numbered list item in one document and at the top level
+    of a section in another. Markdown reads four leading spaces at the top level as a code
+    fence, so a fixed indent renders the table in `MODEL_CARD.md` as literal text while a
+    bare block ends the list in `findings.md`. The marker already records which it is.
+    """
+    m = re.search(r"^([ \t]*)" + re.escape(marker), text, re.M)
+    return m.group(1) if m else ""
+
+
+def build_payload_compression_block(doc: dict, indent: str = "    ") -> str | None:
+    """What a mechanism-level model can say about payloads inside one mechanism.
+
+    Every figure is read from `artifacts/payload_axis_compression.json`. The block states
+    the rank agreement first, because it is the sharper claim: a flat prediction that still
+    ordered the payloads correctly would be useful, and one that does not order them is not.
+    """
+    summary = doc.get("summary") or {}
+    rows = doc.get("rows") or []
+    gran = doc.get("granularity") or []
+    rho = summary.get("mean_within_mechanism_spearman")
+    if rho is None or not rows:
+        return None
+    ranked = [r for r in rows if "within_mechanism_spearman" in r]
+    if not ranked:
+        return None
+    lo = min(ranked, key=lambda r: r["within_mechanism_spearman"])
+    hi = max(ranked, key=lambda r: r["within_mechanism_spearman"])
+    ocular = next(
+        (r for r in rows if r["axis"] == "ocular" and r["mechanism"] == "tubulin"), None
+    )
+
+    lines = [PAC_BEGIN, ""]
+    lines.append(
+        f"Within `{lo['mechanism']}`, over the payloads with enough observed cells, the "
+        f"model's ordering of the payloads on an organ axis is uncorrelated with the "
+        f"observed ordering: **mean Spearman {rho:+.4f}** across "
+        f"{len(ranked)} axes, from {lo['within_mechanism_spearman']:+.4f} on "
+        f"{lo['axis']} to {hi['within_mechanism_spearman']:+.4f} on {hi['axis']}."
+    )
+    if ocular:
+        pay = ocular["payloads"]
+        cells = ocular.get("payload_cells") or {}
+        mdl = ocular.get("model_by_payload") or {}
+        lines.append("")
+        lines.append(
+            f"On the ocular axis the observed rates span **{ocular['observed_lo']:.4f} to "
+            f"{ocular['observed_hi']:.4f}, a factor of {ocular['observed_fold']:.2f}**, and "
+            f"the model spans **{ocular['model_fold']:.2f}**."
+        )
+        lines.append("")
+        lines.append("| payload | observed | cells | model |")
+        lines.append("|---|---|---|---|")
+        for k in sorted(pay, key=lambda k: -pay[k]):
+            lines.append(
+                f"| {k} | {pay[k]:.4f} | {cells.get(k, '?')} | "
+                f"{mdl.get(k, float('nan')):.4f} |"
+            )
+    g_oc = next((r for r in gran if r["axis"] == "ocular"), None)
+    if g_oc:
+        others = [
+            r for r in gran
+            if r["axis"] in ("cardiovascular", "hepatic") and r.get("family_fold")
+        ]
+        lines.append("")
+        text = (
+            f"Which granularity recovers the spread, axis by axis: on ocular "
+            f"**{g_oc['payload_fold']:.2f}x at payload, {g_oc['family_fold']:.2f}x at "
+            f"family, {g_oc['cleavable_fold']:.2f}x at cleavability**"
+        )
+        for r in others:
+            text += (
+                f"; on {r['axis']} **{r['payload_fold']:.2f}x and "
+                f"{r['family_fold']:.2f}x**"
+            )
+        text += (
+            ". So payload family is a serviceable proxy for most organ axes and a useless "
+            "one for ocular -- and the fit has the family level disabled, which leaves "
+            "cleavability as the whole vocabulary."
+        )
+        lines.append(text)
+    lines.append("")
+    lines.append(PAC_END)
+    return ("\n" + indent).join(lines).replace("\n" + indent + "\n", "\n\n")
 
 
 def build_source_axis_block(doc: dict, metrics: dict, indent: str = "    ") -> str | None:
@@ -771,6 +862,8 @@ def main() -> int:
     # at all.
     ap.add_argument("--report", type=Path, nargs="+",
                     default=[Path("report/findings.md"), Path("docs/MODEL_CARD.md")])
+    ap.add_argument("--payload-compression", type=Path,
+                    default=Path("artifacts/payload_axis_compression.json"))
     ap.add_argument("--source-axis", type=Path,
                     default=Path("artifacts/source_axis_heterogeneity.json"))
     ap.add_argument("--check", action="store_true",
@@ -819,10 +912,14 @@ def main() -> int:
         )
         if args.label_change.exists() else None
     )
-    sax_block = (
-        build_source_axis_block(
-            json.loads(args.source_axis.read_text(encoding="utf-8")), metrics
-        )
+    # These two are built per document rather than once, because their indent comes from
+    # where the marker sits in that document.
+    pac_doc = (
+        json.loads(args.payload_compression.read_text(encoding="utf-8"))
+        if args.payload_compression.exists() else None
+    )
+    sax_doc = (
+        json.loads(args.source_axis.read_text(encoding="utf-8"))
         if args.source_axis.exists() else None
     )
     cens_block = None
@@ -841,6 +938,7 @@ def main() -> int:
     enr_pattern = re.compile(re.escape(ENR_BEGIN) + r".*?" + re.escape(ENR_END), re.S)
     fd_pattern = re.compile(re.escape(FD_BEGIN) + r".*?" + re.escape(FD_END), re.S)
     sax_pattern = re.compile(re.escape(SAX_BEGIN) + r".*?" + re.escape(SAX_END), re.S)
+    pac_pattern = re.compile(re.escape(PAC_BEGIN) + r".*?" + re.escape(PAC_END), re.S)
     rc = 0
     for doc in args.report:
         text = doc.read_text(encoding="utf-8")
@@ -854,6 +952,28 @@ def main() -> int:
                     text = replaced
                     doc.write_text(text, encoding="utf-8")
                     print(f"{doc}: results table regenerated")
+        pac_block = (
+            build_payload_compression_block(
+                pac_doc, indent=_marker_indent(text, PAC_BEGIN)
+            )
+            if pac_doc else None
+        )
+        sax_block = (
+            build_source_axis_block(
+                sax_doc, metrics, indent=_marker_indent(text, SAX_BEGIN)
+            )
+            if sax_doc else None
+        )
+        if pac_block and pac_pattern.search(text):
+            replaced = pac_pattern.sub(lambda _: pac_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: payload-compression block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: payload-compression block regenerated")
         if sax_block and sax_pattern.search(text):
             replaced = sax_pattern.sub(lambda _: sax_block, text)
             if replaced != text:

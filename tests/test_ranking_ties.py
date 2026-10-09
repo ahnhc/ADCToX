@@ -38,12 +38,21 @@ def _design(payload: str, dar: float = 2.0) -> Design:
 
 
 def _scored(payload: str, draws: np.ndarray, o2: float = 0.5,
-            o3: float = 1.0) -> ScoredDesign:
+            o3: float = 1.0, o2w: float | None = None) -> ScoredDesign:
+    """`o2w` is the patient-weighted worst organ, which is what orders a tie group.
+
+    It defaults to the unweighted value so a test that does not care about the weighting
+    reads as before; a test about the ordering inside a group passes the two separately,
+    because that is the distinction negative result 40 turns on.
+    """
     return ScoredDesign(
         design=_design(payload),
         organ_risk={}, organ_interval={},
         o1_weighted_risk=float(draws.mean()),
-        o2_worst_axis_risk=o2, o2_worst_axis="hepatic", o3_precedent=o3,
+        o2_worst_axis_risk=o2, o2_worst_axis="hepatic",
+        o2_weighted_worst_axis_risk=o2 if o2w is None else o2w,
+        o2_weighted_worst_axis="hepatic",
+        o3_precedent=o3,
         binding_constraint=None, draws_o1=draws,
     )
 

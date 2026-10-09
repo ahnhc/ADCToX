@@ -30,7 +30,7 @@ ART     := artifacts
 .PHONY: all env taxonomy corpus eligibility enrichment forward propose test \
         censoring-sensitivity label-history label-changes label-change-eval \
         dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
-        residual-scale \
+        residual-scale comorbidity-sensitivity payload-compression \
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
@@ -46,6 +46,7 @@ ART     := artifacts
 all: taxonomy corpus forward censoring-sensitivity expression enrichment module-b \
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent residual-scale \
+     comorbidity-sensitivity payload-compression \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
      granularity-ratio source-axis source-confounding axis-composition \
      check-report
@@ -215,6 +216,18 @@ hard-flags: $(FORWARD_METRICS)
 # about, and it was a hand-written word until it went stale -- see negative result 38.
 residual-scale: $(FORWARD_METRICS)
 	$(PY) scripts/residual_scale.py --artifacts $(ART) --out $(ART)/residual_scale.json
+
+# Does the comorbidity profile reach the proposed design? The product's primary input
+# against its primary output, which had never been measured. See negative result 40.
+comorbidity-sensitivity: $(ART)/posterior_other.npz
+	$(PY) scripts/comorbidity_sensitivity.py --artifacts $(ART) \
+	  --out $(ART)/comorbidity_sensitivity.json
+
+# How much of the payload-level organ spread survives a mechanism-level model? The cost of
+# result 6's structural decision, measured at the output. See negative result 41.
+payload-compression: $(ART)/posterior_other.npz
+	$(PY) scripts/payload_axis_compression.py --processed $(PROC) --artifacts $(ART) \
+	  --out $(ART)/payload_axis_compression.json
 
 sync-report:
 	$(PY) scripts/sync_report_numbers.py

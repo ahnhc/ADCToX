@@ -223,9 +223,15 @@ def predict_draws(
     `include_agent_variation` adds a draw from the fitted agent-level residual
     distribution. It belongs in a prediction for a *new* molecule: two ADCs with identical
     slots still differ, and omitting that term would state the interval more tightly than
-    the evidence supports. Measured here, the term is small (sigma_agent posterior mean
-    around 0.08), which is itself the finding that the design slots explain most of the
-    between-agent variation.
+    the evidence supports.
+
+    How large that term is, and what it implies, is read from the fit rather than written
+    here: `artifacts/residual_scale.json` carries `sigma_agent` against `tau_mech` on both
+    event tables. An earlier version of this docstring said the term was "small (around
+    0.08) ... which is itself the finding that the design slots explain most of the
+    between-agent variation". On the rebuilt corpus it is 0.3433, about two thirds of the
+    mechanism-by-axis scale and above it on the seriousEvents table, so that reading was
+    wrong in both its number and its conclusion. See negative result 38.
     """
     n_designs = len(mechanisms)
     if not (len(dars) == len(cleavables) == n_designs):

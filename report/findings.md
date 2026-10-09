@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 40 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 42 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -2022,6 +2022,93 @@ neurologic.
     records the per-agent source counts, so the condition is checked on whatever corpus is
     fitted rather than assumed. **An audit covers what its author thought of as a term, and
     a random effect does not look like a term.**
+
+40. **The comorbidity profile reached the proposed design in 4 of 200 cases, and the one
+    case that moved was a 0.0005 tiebreak.** The product's claim is (comorbidity profile +
+    target antigen) in, proposed design out. The weights were computed, returned in
+    `weights_applied`, shown on screen, and visibly moved `weighted_risk` -- 0.2259 with no
+    comorbidity, up to 0.3469 and down to 0.2154 across the single-condition profiles.
+    None of that is the claim. Measured over every
+    condition in the closed 41-item list singly, plus eight combinations chosen to weight
+    the leading design's own worst organs, across four targets -- 200 profile-by-target
+    pairs -- the proposed design changed in **4**, all four being the same profile, and that
+    profile won by flipping the worst organ from gastrointestinal at 0.3290 to
+    constitutional at 0.3285.
+
+    The cause is a single line. O1 is the only weighted objective, so the weights enter the
+    initial sort and nothing else. On this corpus O1 cannot separate the head of the
+    ranking -- the leading tie group runs to **40 to 76 designs** -- and inside a tie group
+    the display order came from O2, the *unweighted* worst single organ, and then precedent.
+    So the weights decided group membership and then stopped mattering, and what the user
+    saw was ordered by a statistic their input could not touch.
+
+    The fix is to order inside the group by the worst organ **under the declared weights**.
+    That is not a stronger statistical claim: a tie group is by construction a set O1 cannot
+    separate, the card already says so, and an ordering inside it is a stated preference
+    either way -- the unweighted version was simply a less relevant stated preference than
+    the patient's own. O2 itself stays unweighted on the Pareto front, where its job is to
+    stop a design that spreads risk thinly across fourteen axes from winning, and that job
+    is about the design rather than the patient. After the change the profile reaches the
+    proposal in **52 of 200** pairs.
+
+    Two things remain true and are the honest limit. There are still only **two distinct
+    proposals** across fifty profiles per target, and the behaviour that does appear is
+    pharmacologically reasonable rather than impressive: haematologic and neurologic
+    comorbidities move the leader from DM1 to MMAF, and a keratopathy history does not,
+    which is the right direction given that MMAF is the worst ocular payload in the corpus.
+    **A number that is computed, returned and displayed is not thereby in use, and the only
+    way to find out is to vary the input and look at the output.**
+
+41. **Inside a payload mechanism the model carries no information about which payload hits
+    which organ, and the axis where that costs most is the one the field knows best.**
+    Result 6 established that a payload-level by-axis interaction is unidentifiable at any
+    corpus size this field will reach, so the model is specified at the mechanism level.
+    That decision is correct and this is its price at the output, which had not been
+    measured. Two designs sharing a mechanism differ to the model only by linker
+    cleavability and DAR, so for a proposal the payload-level spread is unavailable: it is
+    real, it is absorbed into `u_agent`, and `u_agent` is set to zero when a new design is
+    scored.
+
+    <!-- generated: payload-compression -->
+
+    Within `tubulin`, over the payloads with enough observed cells, the model's ordering of the payloads on an organ axis is uncorrelated with the observed ordering: **mean Spearman -0.0571** across 14 axes, from -1.0000 on constitutional to +0.8000 on neurologic.
+
+    On the ocular axis the observed rates span **0.0698 to 0.5262, a factor of 7.54**, and the model spans **1.27**.
+
+    | payload | observed | cells | model |
+    |---|---|---|---|
+    | DM4 | 0.5262 | 10 | 0.0817 |
+    | MMAF | 0.3968 | 24 | 0.1039 |
+    | DM1 | 0.0880 | 36 | 0.1019 |
+    | MMAE | 0.0698 | 64 | 0.0834 |
+
+    Which granularity recovers the spread, axis by axis: on ocular **7.54x at payload, 1.15x at family, 1.61x at cleavability**; on hepatic **2.99x and 2.99x**; on cardiovascular **4.68x and 3.53x**. So payload family is a serviceable proxy for most organ axes and a useless one for ocular -- and the fit has the family level disabled, which leaves cleavability as the whole vocabulary.
+
+    <!-- /generated: payload-compression -->
+
+    The reason is worth stating exactly, because it refutes this project's own plan, which
+    plans the ocular axis on "payload family plus a non-cleavable indicator". The two
+    high-ocular payloads in the table above are **MMAF, which is non-cleavable, and DM4,
+    which is cleavable**; the two low ones are DM1, non-cleavable, and MMAE, cleavable.
+    Cleavability is therefore exactly orthogonal to ocular risk here -- each of its values
+    holds one high payload and one low one -- and the high pair straddles both payload
+    families, so family does not work either. The model, having only cleavability, orders
+    the four payloads by it, which is why the rank agreement on ocular is about zero rather
+    than merely weak.
+
+    One corollary is worth stating because it reads the other way round. Where the payloads
+    genuinely do not differ, the model is the *wider* of the two: on neurologic within
+    `topo1` the observed fold is **1.00** -- DXd at 0.1467 against SN-38 at 0.1472 -- and
+    the model shows **1.02**, manufactured out of cleavability. So a gap between two
+    payloads in this model's output is not evidence that the two payloads differ. The first
+    version of the test guarding this measurement asserted that the model spread never
+    exceeds the observed one, and that row refuted it.
+
+    This is the structural limit of result 6 arriving at the product, and it bounds what
+    may be claimed: the system distinguishes mechanisms on organ profile and does not
+    distinguish payloads within one. **MMAF corneal toxicity is among the best-established
+    organ effects in ADC pharmacology, and it is the specific thing this model cannot
+    say.**
 
 ## 9b. The clean-clone check, run for the first time
 

@@ -548,6 +548,13 @@ def propose(
                 "worst_axis": s.o2_worst_axis,
                 "worst_axis_risk": round(s.o2_worst_axis_risk, 4),
                 "worst_axis_risk_basis": "common",
+                # The weighted version is reported beside it because it, not the unweighted
+                # one, orders the designs inside a tie group. A card that showed only the
+                # unweighted worst organ would name a different organ from the one the
+                # ordering turned on, which is how the comorbidity profile came to be
+                # invisible in the output in the first place.
+                "weighted_worst_axis": s.o2_weighted_worst_axis,
+                "weighted_worst_axis_risk": round(s.o2_weighted_worst_axis_risk, 4),
                 "precedent_score": round(s.o3_precedent, 3),
                 "binding_constraint": s.binding_constraint,
                 "nearest_real_adc": nearest,

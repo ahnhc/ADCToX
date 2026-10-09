@@ -250,14 +250,24 @@ LIMITATIONS = [
     "Research prototype. Not validated prospectively and not for use in patient care.",
     "The forward model does not beat a global-axis-mean baseline on within-arm axis "
     "ranking; see docs/MODEL_CARD.md before reading any number as predictive.",
-    "Design features are agent-level constants, so 16 agents x 14 axes = 224 cells "
-    "identify the design coefficients, not the 3,990 arm-axis cells.",
+    "Design features are agent-level constants, so 308 agent-by-axis cells identify the "
+    "design coefficients, not the 4,186 arm-axis cells the corpus contains.",
     "Only Tier 1 novelty is supported: a new combination of individually precedented "
     "parts. A new molecule in a known family is not supported.",
     "No efficacy model is used. Rankings are about predicted toxicity only.",
     "The comorbidity weighting is an elicited prior with zero training rows, derived "
     "from quantitative thresholds in trial exclusion criteria.",
-    "Two of six payload mechanisms have enough agents to serve as a held-out fold.",
+    "Three of the five payload mechanisms in the corpus have enough agents to serve as a "
+    "held-out fold; the other two are single-agent cases.",
+    "Within a payload mechanism the model distinguishes designs only by linker "
+    "cleavability and DAR, so it carries no information about which payload hits which "
+    "organ: measured inside the tubulin mechanism, its ordering of the four payloads is "
+    "uncorrelated with the observed ordering (mean Spearman -0.06 over 14 axes), and on "
+    "the ocular axis the observed spread is 7.5-fold against a predicted 1.3-fold. MMAF "
+    "corneal toxicity is the clearest example of something this model cannot express.",
+    "The comorbidity profile changes which design is proposed in about a quarter of "
+    "profiles, and only between two designs. Where the ranking cannot be resolved the "
+    "order inside a tie group is your stated weighting, not a confidence ranking.",
     "Organ risks come from two event tables that rank organs differently. An axis a "
     "declared comorbidity touches is banded on serious events, the rest on any-grade "
     "events, and each row states its basis. Bands are not comparable across bases: the "
