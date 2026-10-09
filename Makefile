@@ -39,7 +39,7 @@ FORWARD_METRICS := $(ART)/forward_other_metrics.json
         censoring-sensitivity label-history label-changes label-change-eval \
         dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
         residual-scale comorbidity-sensitivity payload-compression \
-        atlas-ingest atlas-merge merged-scale \
+        atlas-ingest atlas-merge merged-scale precedent-audit \
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
@@ -240,6 +240,11 @@ atlas-merge: atlas-ingest
 
 merged-scale: atlas-merge
 	$(PY) scripts/merged_corpus_scale.py
+
+# Are the hand-curated precedent counts that drive O3 and the Tier-1 gate right? They had
+# never been checked against a corpus. See negative result 46.
+precedent-audit: atlas-merge
+	$(PY) scripts/precedent_audit.py
 
 # Does the comorbidity profile reach the proposed design? The product's primary input
 # against its primary output, which had never been measured. See negative result 40.

@@ -272,3 +272,50 @@ def test_the_merged_corpus_carries_more_than_two_source_tiers() -> None:
         "as publications."
     )
     assert len(tiers) >= 4, tiers
+
+
+AUDIT = ROOT / "artifacts" / "precedent_audit.json"
+
+
+@pytest.mark.skipif(not AUDIT.exists(), reason="run `make precedent-audit`")
+def test_the_precedent_audit_keeps_the_two_directions_apart() -> None:
+    """Below what can be named is an error; above it is unverified.
+
+    Conflating them would report nine wrong counts where there are four. The count is used
+    as a floor -- C4 refuses a design when it is zero and O3 ranks on it -- so an undercount
+    changes behaviour and an overcount only fails to be confirmable from this corpus.
+    """
+    doc = json.loads(AUDIT.read_text(encoding="utf-8"))
+    for r in doc["payloads"]:
+        assert r["curated_below_named"] == (r["curated"] < r["named_union"]), r
+        # The union can never be smaller than either source it is built from.
+        assert r["named_union"] >= r["named_in_corpus"], r
+        assert r["named_union"] >= r["named_in_workbook"], r
+        assert r["named_union"] <= r["named_in_corpus"] + r["named_in_workbook"], r
+    under = [r for r in doc["payloads"] if r["curated_below_named"]]
+    assert doc["summary"]["n_curated_below_named"] == len(under)
+
+
+@pytest.mark.skipif(not AUDIT.exists(), reason="run `make precedent-audit`")
+def test_absent_payloads_are_reported_with_what_blocks_them() -> None:
+    """A payload the corpus names and the design space lacks cannot be proposed.
+
+    Listing it without saying what adding it needs would read as a configuration oversight.
+    It is not: constraint C1 needs a free-payload IC50 and C5 needs an attachment group,
+    and neither source carries either.
+    """
+    doc = json.loads(AUDIT.read_text(encoding="utf-8"))
+    absent = doc["payloads_absent_from_design_space"]
+    assert doc["summary"]["n_payloads_absent_from_design_space"] == len(absent)
+    if absent:
+        assert doc["summary"]["blocked_on"].strip()
+        for a in absent:
+            assert a["named_union"] == len(a["agents"]) >= 1, a
+
+
+@pytest.mark.skipif(not AUDIT.exists(), reason="run `make precedent-audit`")
+def test_the_audit_records_that_the_counts_were_hand_curated() -> None:
+    """The provenance is the reason the audit exists, so it is carried, not assumed."""
+    doc = json.loads(AUDIT.read_text(encoding="utf-8"))
+    assert doc["counts_source"] == "hand_curated_landscape_review"
+    assert doc["design_space_frozen_at"]

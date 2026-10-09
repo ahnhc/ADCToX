@@ -1,0 +1,306 @@
+{
+ "counts_source": "hand_curated_landscape_review",
+ "design_space_frozen_at": "2026-10-07",
+ "payloads": [
+  {
+   "slot": "payload",
+   "part": "MMAE",
+   "curated": 12,
+   "named_in_corpus": 23,
+   "named_in_workbook": 26,
+   "named_union": 27,
+   "curated_below_named": true,
+   "agents": [
+    "atg_022",
+    "brentuximab_vedotin",
+    "bry_812",
+    "crb_701",
+    "disitamab_vedotin",
+    "dlye5953a",
+    "dmot4039a",
+    "dp_303c",
+    "ebc_129",
+    "enapotamab_vedotin",
+    "enfortumab_vedotin",
+    "glembatumumab_vedotin",
+    "iladatuzumab_vedotin",
+    "indusatumab_vedotin",
+    "lifastuzumab_vedotin",
+    "mrg_004a",
+    "mytx_011",
+    "obi_999",
+    "pinatuzumab_vedotin",
+    "polatuzumab_vedotin",
+    "samrotamab_vedotin",
+    "sirtratumab_vedotin",
+    "sysa_1801",
+    "telisotuzumab_vedotin",
+    "tisotumab_vedotin",
+    "torl_1_23",
+    "zilovertamab_vedotin"
+   ]
+  },
+  {
+   "slot": "payload",
+   "part": "MMAF",
+   "curated": 4,
+   "named_in_corpus": 4,
+   "named_in_workbook": 7,
+   "named_union": 7,
+   "curated_below_named": true,
+   "agents": [
+    "ags_16c3f",
+    "ags_16m8f",
+    "belantamab_mafodotin",
+    "depatuxizumab_mafodotin",
+    "fs_1502",
+    "pf_06263507",
+    "vorsetuzumab_mafodotin"
+   ]
+  },
+  {
+   "slot": "payload",
+   "part": "DM1",
+   "curated": 6,
+   "named_in_corpus": 3,
+   "named_in_workbook": 2,
+   "named_union": 3,
+   "curated_below_named": false,
+   "agents": [
+    "lorvotuzumab_mertansine",
+    "naratuximab_emtansine",
+    "trastuzumab_emtansine"
+   ]
+  },
+  {
+   "slot": "payload",
+   "part": "DM4",
+   "curated": 4,
+   "named_in_corpus": 6,
+   "named_in_workbook": 7,
+   "named_union": 7,
+   "curated_below_named": true,
+   "agents": [
+    "anetumab_ravtansine",
+    "coltuximab_ravtansine",
+    "indatuximab_ravtansine",
+    "men_1309",
+    "mirvetuximab_soravtansine",
+    "praluzatamab_ravtansine",
+    "tusamitamab_ravtansine"
+   ]
+  },
+  {
+   "slot": "payload",
+   "part": "DXd",
+   "curated": 8,
+   "named_in_corpus": 3,
+   "named_in_workbook": 3,
+   "named_union": 3,
+   "curated_below_named": false,
+   "agents": [
+    "datopotamab_deruxtecan",
+    "patritumab_deruxtecan",
+    "trastuzumab_deruxtecan"
+   ]
+  },
+  {
+   "slot": "payload",
+   "part": "exatecan",
+   "curated": 5,
+   "named_in_corpus": 1,
+   "named_in_workbook": 3,
+   "named_union": 3,
+   "curated_below_named": false,
+   "agents": [
+    "bat_8006",
+    "bat_8008",
+    "m_9140"
+   ]
+  },
+  {
+   "slot": "payload",
+   "part": "SN-38",
+   "curated": 3,
+   "named_in_corpus": 1,
+   "named_in_workbook": 1,
+   "named_union": 1,
+   "curated_below_named": false,
+   "agents": [
+    "sacituzumab_govitecan"
+   ]
+  },
+  {
+   "slot": "payload",
+   "part": "calicheamicin",
+   "curated": 3,
+   "named_in_corpus": 4,
+   "named_in_workbook": 4,
+   "named_union": 4,
+   "curated_below_named": true,
+   "agents": [
+    "abbv_011",
+    "gemtuzumab_ozogamicin",
+    "inotuzumab_ozogamicin",
+    "pf_06647263"
+   ]
+  },
+  {
+   "slot": "payload",
+   "part": "SG3199",
+   "curated": 5,
+   "named_in_corpus": 5,
+   "named_in_workbook": 4,
+   "named_union": 5,
+   "curated_below_named": false,
+   "agents": [
+    "camidanlumab_tesirine",
+    "loncastuximab_tesirine",
+    "medi2228",
+    "rovalpituzumab_tesirine",
+    "serclutamab_talirine"
+   ]
+  },
+  {
+   "slot": "payload",
+   "part": "DGN549",
+   "curated": 2,
+   "named_in_corpus": 1,
+   "named_in_workbook": 0,
+   "named_union": 1,
+   "curated_below_named": false,
+   "agents": [
+    "pivekimab_sunirine"
+   ]
+  },
+  {
+   "slot": "payload",
+   "part": "seco-DUBA",
+   "curated": 2,
+   "named_in_corpus": 2,
+   "named_in_workbook": 1,
+   "named_union": 2,
+   "curated_below_named": false,
+   "agents": [
+    "trastuzumab_duocarmazine",
+    "vobramitamab_duocarmazine"
+   ]
+  }
+ ],
+ "payloads_absent_from_design_space": [
+  {
+   "part": "AS269",
+   "named_union": 1,
+   "agents": [
+    "arx788"
+   ]
+  },
+  {
+   "part": "Aur0101",
+   "named_union": 3,
+   "agents": [
+    "cofetuzumab_pelidotin",
+    "pf_06664178",
+    "pf_06804103"
+   ]
+  },
+  {
+   "part": "D6.5-PBD",
+   "named_union": 1,
+   "agents": [
+    "rovalpituzumab_tesirine"
+   ]
+  },
+  {
+   "part": "Ed-04",
+   "named_union": 1,
+   "agents": [
+    "izalontamab_brengitecan"
+   ]
+  },
+  {
+   "part": "KL610023",
+   "named_union": 1,
+   "agents": [
+    "sacituzumab_tirumotecan"
+   ]
+  },
+  {
+   "part": "PE38",
+   "named_union": 1,
+   "agents": [
+    "moxetumomab_pasudotox"
+   ]
+  },
+  {
+   "part": "SC-DR002",
+   "named_union": 1,
+   "agents": [
+    "sc_002"
+   ]
+  },
+  {
+   "part": "SGD-1882",
+   "named_union": 2,
+   "agents": [
+    "serclutamab_talirine",
+    "vadastuximab_talirine"
+   ]
+  },
+  {
+   "part": "adizutecan",
+   "named_union": 1,
+   "agents": [
+    "telisotuzumab_adizutecan"
+   ]
+  },
+  {
+   "part": "duostatin",
+   "named_union": 1,
+   "agents": [
+    "a166"
+   ]
+  },
+  {
+   "part": "eribulin",
+   "named_union": 1,
+   "agents": [
+    "farletuzumab_ecteribulin"
+   ]
+  },
+  {
+   "part": "rezetecan",
+   "named_union": 1,
+   "agents": [
+    "trastuzumab_rezetecan"
+   ]
+  },
+  {
+   "part": "tubulysin",
+   "named_union": 1,
+   "agents": [
+    "bms_986148"
+   ]
+  }
+ ],
+ "summary": {
+  "n_payload_slots": 11,
+  "n_disagreeing": 9,
+  "n_curated_below_named": 4,
+  "largest_disagreement": {
+   "part": "MMAE",
+   "curated": 12,
+   "named_union": 27
+  },
+  "n_payloads_absent_from_design_space": 13,
+  "blocked_on": "free-payload IC50 (C1) and attachment chemistry (C5)"
+ },
+ "provenance": {
+  "revision": "3220861c28cea1a9ac83bc631e533d36ffe910c8",
+  "dirty": true,
+  "snapshot": null,
+  "script": "precedent_audit.py",
+  "written_utc": "2026-10-09T16:18:51+00:00",
+  "inputs": {}
+ }
+}

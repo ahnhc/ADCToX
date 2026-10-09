@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 46 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 47 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -2237,6 +2237,38 @@ neurologic.
     raised the ingest from 54 agents to **67**, and the 492 rows with no denominator at all
     are the only irreversible loss -- no denominator, no rate. **A quality gate placed at
     the entrance stops being a measurement and becomes a sampling rule.**
+
+46. **The precedent counts that drive an objective and a hard gate were hand-curated and had
+    never been checked, and four of eleven are below what the corpus can name.**
+    `conf/design_space.yaml` carries a `clinical_adcs` count for every payload, linker and
+    conjugation chemistry, stamped `precedent_counts_source: hand_curated_landscape_review`.
+    Two things rest on it: **O3**, the objective that stops the search returning designs
+    nobody has built, and **C4**, the Tier-1 gate, which refuses a design outright when any
+    of its parts has a count of zero. Until the corpus named 66 agents there was nothing to
+    check them against.
+
+    Checked now, **9 of the 11 payload counts differ** from the number of agents this
+    project can name using that payload. The two directions are not symmetric and conflating
+    them would overstate the finding. **Four are below**, which is an error, and an error in
+    the direction that matters, because the count is used as a floor: MMAE is curated at 12
+    against **27** nameable agents, DM4 at 4 against 7, MMAF at 4 against 7, calicheamicin at
+    3 against 4. The other five sit above what can be named, which is *unverified* rather
+    than wrong -- a landscape review may know of agents that never published a usable
+    toxicity table, and this corpus cannot name those.
+
+    The larger finding is what the frozen design space does not contain at all. The corpus
+    names **13 payloads with no slot in it** -- Aur0101 across 3 agents, SGD-1882 across 2,
+    then AS269, D6.5-PBD, Ed-04, KL610023, PE38, SC-DR002, adizutecan, duostatin, eribulin,
+    rezetecan and tubulysin. Every one of them has clinical precedent and **none can be
+    proposed**, because the enumerator can only combine parts the design space holds. They
+    are not a curation oversight that can simply be fixed: adding a payload needs a
+    free-payload IC50 for constraint C1 and an attachment group for the chemistry matrix in
+    C5, and neither source carries either. So the design space is smaller than the evidence
+    by thirteen payloads, and closing that gap is a data-collection task rather than a
+    configuration edit.
+
+    **A count a human typed once, that a gate refuses on, is a parameter -- and this project
+    checks every parameter it fits and had never checked this one.**
 
 ## 9b. The clean-clone check, run for the first time
 
