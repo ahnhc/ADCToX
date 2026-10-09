@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 32 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 33 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -1612,6 +1612,18 @@ neurologic.
     the one its label is defined by, and it has 124 observations there. A row-level filter
     would discard "Keratopathy, grade 2" where it is the only keratopathy row, which costs
     a real signal to correct a fifth of four numbers. The bound is held by a test instead.
+32. **More agents buy no observations, which is the mirror image of result 11.** The 112
+    severe-tail columns the any-grade grid excludes are not waste: grade 3 and above is the
+    threshold clinical practice acts on, so they become a third outcome table. It is
+    literature-only, because ClinicalTrials.gov has no grade split at all, which makes it the
+    clean form of the question the ablation asks -- can literature arms support a model with
+    no registry arms mixed in to carry them? The table reaches **21 agents**, more than the
+    registry's 16, at **1.55 observed cells per identifying cell** against the any-grade
+    table's 9.97 and the 8:1 the plan set for identifying a mechanism-by-axis interaction.
+    A grade >=3 table lists only the organs that reached grade 3, so each arm contributes
+    four or five observed axes instead of nine. Result 11 found that more arms bought no
+    agents; this finds that more agents buy no observations. The table is built and labelled
+    so the set-aside data is inspectable rather than invisible, and no fit is run on it.
 
 ## 9b. The clean-clone check, run for the first time
 

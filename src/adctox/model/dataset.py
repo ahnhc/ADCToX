@@ -180,7 +180,11 @@ def build(
         shared = {t for t in shared if multi.get(t, 0) >= 2}
         arms = arms[~(held | arms["nct_id"].isin(shared))].reset_index(drop=True)
         obs = obs[obs["arm_key"].isin(set(arms["arm_key"]))]
-    arms["n_at_risk"] = arms[["n_at_risk_other", "n_at_risk_serious"]].max(axis=1)
+    # The arm-level fallback denominator, across whichever outcome tables this corpus
+    # carries. Enumerated rather than hardcoded to two, because the severe-tail columns the
+    # any-grade grid excludes form a third table and the list has to grow with them.
+    risk_cols = [c for c in arms.columns if c.startswith("n_at_risk_")]
+    arms["n_at_risk"] = arms[risk_cols].max(axis=1)
     keep = arms["agent"].notna() & (arms["n_at_risk"] >= min_n)
     if "agent_class_column" in arms.columns:
         # Not an outcome question but an attribution one, so it applies to both tables. A
@@ -283,7 +287,7 @@ def build(
         arm_key = row["arm_key"]
         n_risk = int(row["n_at_risk"])
         # Prefer the table-specific denominator where the corpus gave one.
-        col = "n_at_risk_other" if kind == "other" else "n_at_risk_serious"
+        col = f"n_at_risk_{kind}"
         has_denominator = pd.notna(row.get(col)) and bool(row[col])
         if has_denominator:
             n_risk = int(row[col])
@@ -301,6 +305,9 @@ def build(
         #
         # Registry arms have no `threshold_is_upper_bound`, so `bounded` is False for them
         # and this changes nothing about the registry corpus.
+        # Only `seriousEvents` is complete, and only on the registry: see the note above.
+        # A grade-restricted table is selected exactly like a common-events one, so its
+        # absences are censored rather than zero.
         complete = (kind == "serious" and not bounded[i]) or (thresh[i] <= 0)
         # Successes strictly below this count were suppressed by the reporting cut.
         cut = int(np.ceil(n_risk * thresh[i] / 100.0))

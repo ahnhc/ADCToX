@@ -28,7 +28,7 @@ ART     := artifacts
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
         corpus-ablation discover mondo-audit mondo-axes exclusion-holdout \
-        rank-resolution dar-gap driver-waterfall row-grade-exposure \
+        rank-resolution dar-gap driver-waterfall row-grade-exposure outcome-tables \
         label-impairment inverse-retrieval comorbidity literature expensive \
         pmc-fetch-discovered pmc-fetch-codenames
 
@@ -38,7 +38,7 @@ ART     := artifacts
 all: taxonomy corpus forward censoring-sensitivity expression enrichment module-b \
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent \
-     rank-resolution driver-waterfall check-report
+     rank-resolution driver-waterfall outcome-tables check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
 # comparison. Both depend on fetched label data, so the fetches are separate targets --
@@ -297,6 +297,12 @@ driver-waterfall: ## the gap between the driver terms' sum and the rate they exp
 # bounds how often one of those decides an axis, which is 6 observations of 2,696.
 row-grade-exposure: ## how often a grade in a row label decides an axis
 	$(PY) scripts/row_grade_exposure.py
+
+# Three outcome tables and which can carry the model. The severe-tail columns the any-grade
+# grid excludes form a literature-only third table; it reaches more agents than the registry
+# and a sixth of the observations per agent, so it is measured and not fitted.
+outcome-tables: ## agents, observations and identification ratio per outcome table
+	$(PY) scripts/outcome_tables.py
 
 discover: ## find every ADC that has published, by payload-linker name stem
 	$(PY) scripts/discover_adc_agents.py --out $(ART)/adc_discovery.json --retmax 400

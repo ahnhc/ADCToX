@@ -1,10 +1,10 @@
 {
   "provenance": {
-    "revision": "5834519404fbc76bab2aec93761eaa1103144a52",
+    "revision": "1ca7682650737b2e7630eb60667c9e40519768c7",
     "dirty": true,
     "snapshot": "2026-10-07",
     "script": "merge_literature_corpus.py",
-    "written_utc": "2026-10-09T09:10:06+00:00",
+    "written_utc": "2026-10-09T09:27:51+00:00",
     "inputs": {
       "cells": "sha256:bf1fbdd75bd39a7a0f9ee0f39bb9da88b4be241315556875aa8e4b857f194974",
       "registry": "sha256:5571a356da5454bfe14511181ffebc1a73ce1948c3db7ad079a3e8ee4cd5ab9c"
@@ -17,32 +17,32 @@
   },
   "n_cells_in": 6407,
   "n_cells_kept": 4782,
-  "n_arms": 414,
-  "n_observations": 2015,
+  "n_arms": 422,
+  "n_observations": 2062,
   "n_agents": 29,
   "n_trials": 23,
-  "n_arms_threshold_upper_bound": 347,
+  "n_arms_threshold_upper_bound": 353,
   "arms_per_agent": {
-    "sacituzumab_govitecan": 48,
+    "sacituzumab_govitecan": 50,
     "trastuzumab_emtansine": 41,
     "datopotamab_deruxtecan": 37,
-    "disitamab_vedotin": 33,
-    "belantamab_mafodotin": 30,
+    "disitamab_vedotin": 34,
+    "belantamab_mafodotin": 32,
     "brentuximab_vedotin": 29,
     "enfortumab_vedotin": 28,
     "polatuzumab_vedotin": 25,
     "trastuzumab_deruxtecan": 25,
-    "telisotuzumab_vedotin": 17,
+    "telisotuzumab_vedotin": 18,
     "telisotuzumab_adizutecan": 15,
     "inotuzumab_ozogamicin": 10,
     "patritumab_deruxtecan": 7,
+    "izalontamab_brengitecan": 7,
     "tisotumab_vedotin": 7,
     "mirvetuximab_soravtansine": 6,
-    "izalontamab_brengitecan": 6,
+    "rovalpituzumab_tesirine": 6,
     "praluzatamab_ravtansine": 6,
     "anetumab_ravtansine": 5,
     "depatuxizumab_mafodotin": 5,
-    "rovalpituzumab_tesirine": 5,
     "enapotamab_vedotin": 4,
     "farletuzumab_ecteribulin": 4,
     "cofetuzumab_pelidotin": 4,
@@ -54,6 +54,6 @@
     "pivekimab_sunirine": 2
   },
   "arms_per_gate": {
-    "title": 414
+    "title": 422
   }
 }

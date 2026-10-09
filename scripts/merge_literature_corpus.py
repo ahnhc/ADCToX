@@ -100,6 +100,13 @@ DESIGN_COLS = (
 # Roman, and defers to an explicit all-grade or any-grade claim in the same header, which is
 # how a spanning header split upstream reads.
 ANY_GRADE = re.compile(r"all[-\s]*grades?|any[-\s]*grades?|maximum\s+grade", re.I)
+# Grade 3 and above, Arabic or Roman, including the open forms "Grade >=3" and "Grade 3-".
+# This is the half of the grade-restricted set that becomes its own outcome table.
+SEVERE_TAIL = re.compile(
+    r"grades?\s*(?:[>=\u2265]\s*)?(?:[345]|III|IV|V)\b"
+    r"|grades?\s*3\s*[-\u2013/]",
+    re.I,
+)
 GRADE_NUMBER = re.compile(
     r"grades?\s*[>=\u2265\u2264<]*\s*(?:[1-5](?![0-9])|I{1,3}V?\b)", re.I
 )
@@ -201,6 +208,22 @@ def main() -> int:
         ),
         kind=lambda d: d["caption_kind"] if "caption_kind" in d else "other",
     )
+    # The severe tail is a third outcome table, not data to throw away. 112 of the 142
+    # grade-restricted columns report grade 3 and above, which is the threshold clinical
+    # practice acts on -- and `otherEvents` on ClinicalTrials.gov has no grade split at all,
+    # so this table is literature-only. That makes it the clean form of the question the
+    # corpus ablation asks: whether literature arms can support a model, with no registry
+    # arms mixed in to carry it.
+    #
+    # The low-grade remainder -- "Grade 1-2", 30 columns -- stays out. A rate restricted to
+    # the mild end is not an outcome anything would act on.
+    # Mapped through Python's `re` rather than `str.contains`: the column is arrow-backed
+    # and pyarrow's RE2 engine rejects a `\u` escape outright.
+    severe = cells["column_header"].map(
+        lambda h: bool(SEVERE_TAIL.search(str(h or "")))
+        and column_outcome(h) == "grade_restricted"
+    )
+    cells.loc[severe, "kind"] = "grade3"
 
     arm_rows = []
     obs_rows = []
@@ -223,6 +246,7 @@ def main() -> int:
             "n_combo_agents": 0,
             "n_at_risk_other": (n_at_risk if kind == "other" else None),
             "n_at_risk_serious": (n_at_risk if kind == "serious" else None),
+            "n_at_risk_grade3": (n_at_risk if kind == "grade3" else None),
             "n_at_risk": n_at_risk,
             "frequency_threshold": (float(thr.min()) if len(thr) else None),
             "threshold_is_upper_bound": bool(

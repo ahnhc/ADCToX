@@ -247,3 +247,47 @@ def test_a_grade_in_the_row_label_decides_almost_nothing() -> None:
     assert summary["share"] < summary["bound_the_test_holds"], summary
     # And the thing it bounds has to still exist, or the bound is vacuous.
     assert summary["cells_with_a_grade_in_the_row_label"] > 0, summary
+
+
+@pytest.mark.skipif(not (FULL / "arms.parquet").exists(), reason="run `make pmc-merge`")
+def test_the_severe_tail_becomes_its_own_table_and_cannot_carry_the_model() -> None:
+    """The set-aside data, labelled rather than discarded, and measured rather than fitted.
+
+    112 of the 142 grade-restricted columns report grade 3 and above, which is the threshold
+    clinical practice acts on, so they become `kind="grade3"`. The table is literature-only
+    -- the registry has no grade split at all -- which makes it the clean form of the
+    question the corpus ablation asks: can literature arms support a model with no registry
+    arms mixed in to carry them?
+
+    No. It reaches 21 agents, more than the registry's 16, at 1.55 observed cells per
+    identifying cell against the any-grade table's 9.97 and the 8:1 floor the plan set. More
+    agents, each contributing four or five observed axes instead of nine, because a grade >=3
+    table lists only the organs that reached grade 3. The mirror image of section 5g: there,
+    more arms bought no agents; here, more agents buy no observations.
+    """
+    from adctox.model.dataset import load
+    from adctox.taxonomy import default_taxonomy
+
+    axes = list(default_taxonomy().axis_order)
+    g3 = load(FULL, axes, kind="grade3")
+    other = load(FULL, axes, kind="other")
+
+    # The table exists and is not trivial.
+    assert g3.n_contributing_agents >= 20, g3.summary()
+    assert g3.n_arms >= 80, g3.summary()
+    # And it has more agents than the registry while being far thinner per agent.
+    g3_obs = int((g3.status == 0).sum())
+    other_obs = int((other.status == 0).sum())
+    g3_ratio = g3_obs / (g3.n_contributing_agents * len(axes))
+    other_ratio = other_obs / (other.n_contributing_agents * len(axes))
+    assert g3_ratio < 3.0, g3_ratio
+    assert other_ratio > 8.0, other_ratio
+    # The low-grade remainder stays out of every table: a rate restricted to the mild end is
+    # not an outcome anything would act on.
+    arms = pd.read_parquet(FULL / "arms.parquet")
+    low = arms[
+        (arms["column_outcome"] == "grade_restricted")
+        & arms["n_at_risk_grade3"].isna()
+        & arms["source"].notna()
+    ]
+    assert len(low) >= 25, len(low)
