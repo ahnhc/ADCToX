@@ -1610,6 +1610,34 @@ neurologic.
 
 ## 9. Measured negative results
 
+Before the list, one observation about it. **Ten of these findings are the same defect**, and
+naming it is worth more than the tenth instance: a quantity carrying a name that belongs to a
+different quantity.
+
+| the name | what it was | what it should have been | result |
+|---|---|---|---|
+| "evidence" on a candidate card | arms | agents | 52 |
+| "identifying cells" | observed agent-axis pairs | agents x axes | 44 |
+| `tau_cleav`, read as an effect | the scale of a deviation | the deviation | 55 |
+| "needs only 8 agents" | the corpus | the minority level | 54 |
+| "calicheamicin ADCs number two" | approved | with a published table | 43 |
+| "the ceiling is 32 agents" | this pipeline's ceiling | the literature's | 43 |
+| single-source share | three different denominators | the arms the grid keeps | 48 |
+| payload identities | 24 from the frames | 23 from the grid | 44 |
+| `ratio_change_..._to_expanded` | a stage that stopped being last | first to last | 44 |
+| severe-grade rows left unused | 5,494 typed by hand | 5,516 measured | 9b |
+
+Two things follow. The first is that the number guard caught six of the ten and could not
+have caught the rest: it checks that a figure traces to an artefact, and every one of these
+figures did trace -- to the artefact for the other quantity. A guard on provenance is not a
+guard on meaning.
+
+The second is what did catch them. In every case it was writing the quantity's definition
+down next to its name and finding the two did not match, which is why so many of these
+appear as corrections to this report rather than as discoveries about ADCs. **A project that
+measures everything still has to say what it measured**, and the defect lives in the gap
+between those two.
+
 1. **Free-drug transfer does not work.** Baseline-centered matched-versus-mismatched gap
    -0.001. ADC payloads are derivatives of drugs with human exposure history, but a free
    drug's organ profile does not predict its conjugate's, because free-drug arms carry

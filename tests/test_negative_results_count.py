@@ -67,3 +67,43 @@ def test_no_numbered_item_lives_outside_section_nine() -> None:
     )
     # And nothing numbered sits before the section either.
     assert not ITEM.findall(text[:start])
+
+
+def test_the_name_mismatch_table_points_at_results_that_exist() -> None:
+    """Section 9 opens by naming a defect ten of its findings share, with a table.
+
+    The table cites result numbers, and a citation to a result that does not exist is the
+    same defect the table is about -- a label pointing somewhere other than where it says.
+    """
+    text = REPORT.read_text(encoding="utf-8")
+    start = text.index("## 9. Measured negative results")
+    end = text.index("\n1. **", start)
+    preamble = text[start:end]
+    cited = {
+        int(m) for m in re.findall(r"\| (\d+) \|", preamble)
+    }
+    assert cited, "the opening table no longer cites any result"
+    items = {int(i) for i in ITEM.findall(_section_nine()) if i.isdigit()}
+    missing = sorted(cited - items)
+    assert not missing, f"the opening table cites results that do not exist: {missing}"
+
+
+def test_the_stated_count_of_shared_defects_matches_the_table() -> None:
+    """The count in the prose and the rows in the table are the same claim twice."""
+    text = REPORT.read_text(encoding="utf-8")
+    start = text.index("## 9. Measured negative results")
+    end = text.index("\n1. **", start)
+    preamble = text[start:end]
+    stated = re.search(r"\*\*(\w+) of these findings are the same defect\*\*", preamble)
+    assert stated, "the opening no longer states how many findings share the defect"
+    words = {"two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7,
+             "eight": 8, "nine": 9, "ten": 10, "eleven": 11, "twelve": 12}
+    n = words.get(stated.group(1).lower())
+    assert n is not None, f"unrecognised number word {stated.group(1)!r}"
+    rows = [
+        ln for ln in preamble.splitlines()
+        if ln.startswith("| ") and "---" not in ln and not ln.startswith("| the name")
+    ]
+    assert len(rows) == n, (
+        f"the opening says {n} findings share the defect and the table has {len(rows)} rows"
+    )
