@@ -94,10 +94,16 @@ def test_the_stated_count_of_shared_defects_matches_the_table() -> None:
     start = text.index("## 9. Measured negative results")
     end = text.index("\n1. **", start)
     preamble = text[start:end]
-    stated = re.search(r"\*\*(\w+) of these findings are the same defect\*\*", preamble)
+    # Whitespace-normalised: the sentence is bold and wraps, so a line break can fall
+    # inside the match. It did, and the test read it as "the opening no longer states a
+    # count" -- a guard reporting a missing claim because the claim moved onto two lines.
+    flat = re.sub(r"\s+", " ", preamble)
+    stated = re.search(r"\*\*(\w+) of these findings are the same defect\*\*", flat)
     assert stated, "the opening no longer states how many findings share the defect"
     words = {"two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7,
-             "eight": 8, "nine": 9, "ten": 10, "eleven": 11, "twelve": 12}
+             "eight": 8, "nine": 9, "ten": 10, "eleven": 11, "twelve": 12,
+             "thirteen": 13, "fourteen": 14, "fifteen": 15, "sixteen": 16,
+             "seventeen": 17, "eighteen": 18, "nineteen": 19, "twenty": 20}
     n = words.get(stated.group(1).lower())
     assert n is not None, f"unrecognised number word {stated.group(1)!r}"
     rows = [
@@ -106,4 +112,35 @@ def test_the_stated_count_of_shared_defects_matches_the_table() -> None:
     ]
     assert len(rows) == n, (
         f"the opening says {n} findings share the defect and the table has {len(rows)} rows"
+    )
+
+
+def test_the_prose_count_matches_the_section_too() -> None:
+    """The same hole, one layer out.
+
+    The contents table's count is checked above. The report's opening paragraph states the
+    count a second time and spells it as a word -- "section 9 is the forty-three measured
+    negative results" -- which neither the number guard nor the test above can see, because
+    one looks for decimals and the other looks in the table. It sat at forty-three while the
+    section held fifty-eight.
+    """
+    text = REPORT.read_text(encoding="utf-8")
+    words = {
+        "seventeen": 17, "eighteen": 18, "nineteen": 19, "twenty": 20,
+        "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "seventy": 70,
+    }
+    units = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+             "seven": 7, "eight": 8, "nine": 9}
+    m = re.search(r"section 9 is the ([a-z]+(?:-[a-z]+)?) measured negative results", text)
+    assert m, "the opening paragraph no longer states the count in words"
+    spelled = m.group(1)
+    if "-" in spelled:
+        tens, ones = spelled.split("-")
+        value = words[tens] + units[ones]
+    else:
+        value = words.get(spelled, units.get(spelled))
+    assert value is not None, f"unrecognised number word {spelled!r}"
+    items = ITEM.findall(_section_nine())
+    assert value == len(items), (
+        f"the opening paragraph says {spelled} ({value}), section 9 holds {len(items)}"
     )

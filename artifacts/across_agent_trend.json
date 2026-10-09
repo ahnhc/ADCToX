@@ -1,0 +1,539 @@
+{
+ "declaration": "a mean Spearman above +0.3 with a bootstrap CI excluding zero would support the claim; anything at or below zero refutes it",
+ "prediction": {
+  "made": "the merged 65-agent corpus will put leave-one-agent-out across-agent Spearman above zero with a CI excluding zero, and still below +0.3",
+  "because": "leave-one-agent-out has been the more positive split at every corpus; the same posterior's family split is already +0.196 with a CI excluding zero; 65 folds give a tighter interval than 6; and the three converged fits run -0.070, -0.015, +0.047, which does not extrapolate to +0.3",
+  "clauses": {
+   "positive": null,
+   "ci_excludes_zero": null,
+   "below_declared_bar": null
+  },
+  "outcome": null
+ },
+ "support_threshold": 0.3,
+ "corpora": [
+  {
+   "corpus": "registry 22",
+   "status": "present",
+   "artefact": "artifacts",
+   "processed": "data/processed",
+   "drop_uninformative_absences": false,
+   "n_agents": 22,
+   "identification_ratio": 3.08,
+   "identifying_cells": 308,
+   "censored_share": 0.1154,
+   "converged": true,
+   "worst_seed_gap": 0.0987,
+   "splits": {
+    "leave_one_agent_out": {
+     "delta_auc_mean": -0.0121,
+     "delta_auc_ci": [
+      -0.0299,
+      0.0055
+     ],
+     "n_folds": 22,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": -0.0152,
+      "model_ci": [
+       -0.2054,
+       0.1614
+      ],
+      "mech_baseline_mean": -0.0678,
+      "global_baseline_mean": 0.1162,
+      "n_folds_contributing": 22,
+      "verdict": "indistinguishable from zero"
+     }
+    },
+    "leave_one_family_out": {
+     "delta_auc_mean": -0.059,
+     "delta_auc_ci": [
+      -0.0929,
+      -0.0233
+     ],
+     "n_folds": 6,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": -0.1673,
+      "model_ci": [
+       -0.3469,
+       0.0122
+      ],
+      "mech_baseline_mean": 0.0694,
+      "global_baseline_mean": 0.0408,
+      "n_folds_contributing": 6,
+      "verdict": "indistinguishable from zero"
+     }
+    },
+    "leave_one_mechanism_out": {
+     "delta_auc_mean": -0.02,
+     "delta_auc_ci": [
+      -0.0294,
+      -0.0031
+     ],
+     "n_folds": 3,
+     "across_agent": {
+      "applicable": false,
+      "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
+     }
+    }
+   },
+   "adjusted": {
+    "variant": "adjusted_within_trial_blind",
+    "mean": 0.0073,
+    "ci": [
+     -0.1791,
+     0.1753
+    ],
+    "permutation_p": 0.4595,
+    "n_agents": 22
+   },
+   "on_expansion_path": true,
+   "off_path_reason": null
+  },
+  {
+   "corpus": "literature 17",
+   "status": "present",
+   "artefact": "artifacts/with_literature",
+   "processed": "data/processed/with_literature",
+   "drop_uninformative_absences": false,
+   "n_agents": 17,
+   "identification_ratio": 2.38,
+   "identifying_cells": 238,
+   "censored_share": 0.3652,
+   "converged": true,
+   "worst_seed_gap": 0.174,
+   "splits": {
+    "leave_one_agent_out": {
+     "delta_auc_mean": -0.0782,
+     "delta_auc_ci": [
+      -0.1037,
+      -0.0563
+     ],
+     "n_folds": 17,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": -0.0695,
+      "model_ci": [
+       -0.1889,
+       0.065
+      ],
+      "mech_baseline_mean": -0.0861,
+      "global_baseline_mean": 0.0509,
+      "n_folds_contributing": 17,
+      "verdict": "indistinguishable from zero"
+     }
+    },
+    "leave_one_family_out": {
+     "delta_auc_mean": -0.0982,
+     "delta_auc_ci": [
+      -0.1274,
+      -0.0632
+     ],
+     "n_folds": 4,
+     "across_agent": {
+      "applicable": false,
+      "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
+     }
+    },
+    "leave_one_mechanism_out": {
+     "delta_auc_mean": -0.0349,
+     "delta_auc_ci": [
+      -0.0462,
+      -0.0236
+     ],
+     "n_folds": 2,
+     "across_agent": {
+      "applicable": false,
+      "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
+     }
+    }
+   },
+   "on_expansion_path": false,
+   "off_path_reason": "lacks 6 of the registry 22 grid's agents (camidanlumab_tesirine, depatuxizumab_mafodotin, enapotamab_vedotin, farletuzumab_ecteribulin, rovalpituzumab_tesirine, vobramitamab_duocarmazine) and adds 1 it does not carry, so it is neither a subset nor a superset of the baseline"
+  },
+  {
+   "corpus": "explicit cuts 26",
+   "status": "present",
+   "artefact": "artifacts/with_explicit_threshold",
+   "processed": "data/processed/with_explicit_threshold",
+   "drop_uninformative_absences": false,
+   "n_agents": 26,
+   "identification_ratio": 3.64,
+   "identifying_cells": 364,
+   "censored_share": 0.1457,
+   "converged": true,
+   "worst_seed_gap": 0.1816,
+   "splits": {
+    "leave_one_agent_out": {
+     "delta_auc_mean": -0.0154,
+     "delta_auc_ci": [
+      -0.0319,
+      -0.0
+     ],
+     "n_folds": 26,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": 0.0303,
+      "model_ci": [
+       -0.1033,
+       0.1683
+      ],
+      "mech_baseline_mean": -0.1411,
+      "global_baseline_mean": 0.0701,
+      "n_folds_contributing": 26,
+      "verdict": "indistinguishable from zero"
+     }
+    },
+    "leave_one_family_out": {
+     "delta_auc_mean": -0.0553,
+     "delta_auc_ci": [
+      -0.0846,
+      -0.0251
+     ],
+     "n_folds": 6,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": -0.2163,
+      "model_ci": [
+       -0.4245,
+       0.0245
+      ],
+      "mech_baseline_mean": 0.0735,
+      "global_baseline_mean": 0.0571,
+      "n_folds_contributing": 6,
+      "verdict": "indistinguishable from zero"
+     }
+    },
+    "leave_one_mechanism_out": {
+     "delta_auc_mean": -0.0145,
+     "delta_auc_ci": [
+      -0.0288,
+      -0.0045
+     ],
+     "n_folds": 3,
+     "across_agent": {
+      "applicable": false,
+      "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
+     }
+    }
+   },
+   "adjusted": {
+    "variant": "adjusted_within_trial_blind",
+    "mean": 0.047,
+    "ci": [
+     -0.0838,
+     0.1824
+    ],
+    "permutation_p": 0.1945,
+    "n_agents": 26
+   },
+   "on_expansion_path": true,
+   "off_path_reason": null
+  },
+  {
+   "corpus": "expanded 32",
+   "status": "present",
+   "artefact": "artifacts/with_literature_final",
+   "processed": "data/processed/with_literature_final",
+   "drop_uninformative_absences": false,
+   "n_agents": 32,
+   "identification_ratio": 4.48,
+   "identifying_cells": 448,
+   "censored_share": 0.2968,
+   "converged": false,
+   "worst_seed_gap": 0.7219,
+   "splits": {
+    "leave_one_agent_out": {
+     "delta_auc_mean": -0.0972,
+     "delta_auc_ci": [
+      -0.126,
+      -0.0712
+     ],
+     "n_folds": 32,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": 0.1308,
+      "model_ci": [
+       0.0742,
+       0.1907
+      ],
+      "mech_baseline_mean": -0.0045,
+      "global_baseline_mean": -0.122,
+      "n_folds_contributing": 32,
+      "verdict": "positive, excludes zero, below the declared bar"
+     }
+    },
+    "leave_one_family_out": {
+     "delta_auc_mean": -0.1509,
+     "delta_auc_ci": [
+      -0.2161,
+      -0.0783
+     ],
+     "n_folds": 6,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": 0.0163,
+      "model_ci": [
+       -0.1469,
+       0.1755
+      ],
+      "mech_baseline_mean": 0.1143,
+      "global_baseline_mean": -0.0449,
+      "n_folds_contributing": 6,
+      "verdict": "indistinguishable from zero"
+     }
+    },
+    "leave_one_mechanism_out": {
+     "delta_auc_mean": -0.1613,
+     "delta_auc_ci": [
+      -0.2622,
+      -0.0569
+     ],
+     "n_folds": 3,
+     "across_agent": {
+      "applicable": false,
+      "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
+     }
+    }
+   },
+   "on_expansion_path": true,
+   "off_path_reason": null
+  },
+  {
+   "corpus": "expanded 32, absences dropped",
+   "status": "present",
+   "artefact": "artifacts/with_literature_dropabs",
+   "processed": "data/processed/with_literature_final",
+   "drop_uninformative_absences": true,
+   "n_agents": 32,
+   "identification_ratio": 4.48,
+   "identifying_cells": 448,
+   "censored_share": 0.1226,
+   "converged": true,
+   "worst_seed_gap": 0.1896,
+   "splits": {
+    "leave_one_agent_out": {
+     "delta_auc_mean": -0.1057,
+     "delta_auc_ci": [
+      -0.146,
+      -0.0682
+     ],
+     "n_folds": 32,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": 0.0472,
+      "model_ci": [
+       -0.0586,
+       0.1447
+      ],
+      "mech_baseline_mean": -0.0631,
+      "global_baseline_mean": 0.0555,
+      "n_folds_contributing": 32,
+      "verdict": "indistinguishable from zero"
+     }
+    },
+    "leave_one_family_out": {
+     "delta_auc_mean": -0.1547,
+     "delta_auc_ci": [
+      -0.2181,
+      -0.0856
+     ],
+     "n_folds": 6,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": -0.1388,
+      "model_ci": [
+       -0.3061,
+       0.0286
+      ],
+      "mech_baseline_mean": 0.151,
+      "global_baseline_mean": -0.0898,
+      "n_folds_contributing": 6,
+      "verdict": "indistinguishable from zero"
+     }
+    },
+    "leave_one_mechanism_out": {
+     "delta_auc_mean": -0.1564,
+     "delta_auc_ci": [
+      -0.2587,
+      -0.0729
+     ],
+     "n_folds": 3,
+     "across_agent": {
+      "applicable": false,
+      "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
+     }
+    }
+   },
+   "adjusted": {
+    "variant": "adjusted_within_trial_blind",
+    "mean": 0.0467,
+    "ci": [
+     -0.0531,
+     0.1433
+    ],
+    "permutation_p": 0.1835,
+    "n_agents": 32
+   },
+   "on_expansion_path": true,
+   "off_path_reason": null
+  },
+  {
+   "corpus": "explicit agents 27, all arms",
+   "status": "pending",
+   "artefact": "artifacts/with_literature_26agents",
+   "processed": "data/processed/with_literature_26agents"
+  },
+  {
+   "corpus": "merged 65",
+   "status": "pending",
+   "artefact": "artifacts/with_atlas",
+   "processed": "data/processed/with_atlas"
+  },
+  {
+   "corpus": "merged 65, absences dropped",
+   "status": "pending",
+   "artefact": "artifacts/with_atlas_dropabs",
+   "processed": "data/processed/with_atlas"
+  }
+ ],
+ "pending": [
+  "explicit agents 27, all arms",
+  "merged 65",
+  "merged 65, absences dropped"
+ ],
+ "trends": {
+  "leave_one_agent_out": {
+   "computed": true,
+   "n_points": 3,
+   "points": [
+    {
+     "n_agents": 22,
+     "across_agent": -0.0152,
+     "delta_auc": -0.0121
+    },
+    {
+     "n_agents": 26,
+     "across_agent": 0.0303,
+     "delta_auc": -0.0154
+    },
+    {
+     "n_agents": 32,
+     "across_agent": 0.0472,
+     "delta_auc": -0.1057
+    }
+   ],
+   "across_agent_vs_corpus_size": {
+    "rho": 1.0,
+    "p": null,
+    "p_withheld_because": "3 points; a p-value needs at least five"
+   },
+   "delta_auc_vs_corpus_size": {
+    "rho": -1.0,
+    "p": null,
+    "p_withheld_because": "3 points; a p-value needs at least five"
+   },
+   "opposite_directions": true,
+   "adjusted_vs_corpus_size": {
+    "rho": 0.5,
+    "n_points": 3,
+    "points": [
+     {
+      "n_agents": 22,
+      "adjusted": 0.0073
+     },
+     {
+      "n_agents": 26,
+      "adjusted": 0.047
+     },
+     {
+      "n_agents": 32,
+      "adjusted": 0.0467
+     }
+    ]
+   },
+   "note": "3 converged fits carry this split. A rank correlation over 3 points cannot carry a p-value worth quoting; the sign is the claim."
+  },
+  "leave_one_family_out": {
+   "computed": true,
+   "n_points": 3,
+   "points": [
+    {
+     "n_agents": 22,
+     "across_agent": -0.1673,
+     "delta_auc": -0.059
+    },
+    {
+     "n_agents": 26,
+     "across_agent": -0.2163,
+     "delta_auc": -0.0553
+    },
+    {
+     "n_agents": 32,
+     "across_agent": -0.1388,
+     "delta_auc": -0.1547
+    }
+   ],
+   "across_agent_vs_corpus_size": {
+    "rho": 0.5,
+    "p": null,
+    "p_withheld_because": "3 points; a p-value needs at least five"
+   },
+   "delta_auc_vs_corpus_size": {
+    "rho": -0.5,
+    "p": null,
+    "p_withheld_because": "3 points; a p-value needs at least five"
+   },
+   "opposite_directions": true,
+   "adjusted_vs_corpus_size": {
+    "rho": 0.5,
+    "n_points": 3,
+    "points": [
+     {
+      "n_agents": 22,
+      "adjusted": 0.0073
+     },
+     {
+      "n_agents": 26,
+      "adjusted": 0.047
+     },
+     {
+      "n_agents": 32,
+      "adjusted": 0.0467
+     }
+    ]
+   },
+   "note": "3 converged fits carry this split. A rank correlation over 3 points cannot carry a p-value worth quoting; the sign is the claim."
+  },
+  "leave_one_mechanism_out": {
+   "computed": false,
+   "n_points": 0,
+   "points": [],
+   "reason": "fewer than three converged fits on the expansion path carry this split, and two points cannot carry a trend"
+  }
+ },
+ "strongest_figure_from_a_nonconverged_fit_by_split": {
+  "leave_one_agent_out": {
+   "split": "leave_one_agent_out",
+   "corpus": "expanded 32",
+   "model_mean": 0.1308,
+   "worst_seed_gap": 0.7219
+  },
+  "leave_one_family_out": {
+   "split": "leave_one_family_out",
+   "corpus": "expanded 32",
+   "model_mean": 0.0163,
+   "worst_seed_gap": 0.7219
+  }
+ },
+ "reading": "The two discrimination metrics answer different questions and need not move together. Within-arm AUC ranks axes inside an arm, a task a design-blind constant scores about 0.84 on; across-agent Spearman ranks agents within an axis, which no constant can do. The product's question is the second one.",
+ "provenance": {
+  "revision": "ed4906d5aec077bfa83fba1628eb2f9fdb3debca",
+  "dirty": true,
+  "snapshot": null,
+  "script": "across_agent_trend.py",
+  "written_utc": "2026-10-09T20:19:35+00:00",
+  "inputs": {}
+ }
+}

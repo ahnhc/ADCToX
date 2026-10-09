@@ -174,14 +174,14 @@
  "mechanism_share_of_combination_variance": 0.25313992606655317,
  "reading": "No signal. With between-agent reporting conditions removed using the adjusted within trial blind estimator, the across-agent organ ranking over 22 agents is rho = +0.0073, bootstrap over axes [-0.1791, +0.1753], permutation p = 0.4595. The estimate moves by up to 0.0517 across the five ways of estimating the adjustment, which is larger than the estimate itself wherever the estimate is near zero. The within-arm results are computed separately and are unaffected.",
  "provenance": {
-  "revision": "479d1565a0668aae84acaf1c17657ac757ec301b",
+  "revision": "ed4906d5aec077bfa83fba1628eb2f9fdb3debca",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "across_agent_adjusted.py",
-  "written_utc": "2026-10-09T12:50:30+00:00",
+  "written_utc": "2026-10-09T20:07:54+00:00",
   "inputs": {
    "fold_predictions": "sha256:fe6249373b551a6d39fad1a503192ac576a366ee86dac5bb1e0b87f847d731d2",
-   "processed": "sha256:8362859b1c9d3a19bc355f52c4dca74226435e205c36822b05fed897aa25abf4"
+   "processed": "sha256:51d398ae6d4eceded89b21f61e2e4719bd17e6d773b962bac52fc3cafbf11caf"
   }
  }
 }

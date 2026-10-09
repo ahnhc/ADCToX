@@ -60,7 +60,7 @@ all: taxonomy corpus forward censoring-sensitivity expression enrichment module-
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent residual-scale \
      comorbidity-sensitivity payload-compression axis-evidence posterior-scales \
-     convergence-conditions design-balance fold-comparability \
+     convergence-conditions design-balance fold-comparability across-agent-trend \
      design-effects-atlas \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
      granularity-ratio source-axis source-confounding axis-composition \
@@ -290,6 +290,11 @@ design-balance:
 fold-comparability:
 	$(PY) scripts/fold_comparability.py
 
+# Reads whatever fits are on disk and reports the ones that are not there as pending, so a
+# clean clone with only the registry fit produces a one-row table rather than an error.
+across-agent-trend: $(FORWARD_METRICS)
+	$(PY) scripts/across_agent_trend.py --out $(ART)/across_agent_trend.json
+
 # The same design-effect measurement on the merged corpus's posterior. Section 4's argument
 # is that the design terms are too small to reorder the organ ranking, and the merged corpus
 # triples `tau_cleav`, so whether the argument survives is a measurement rather than an
@@ -303,6 +308,28 @@ restrict-26:
 	  --source $(PROC)/with_literature_final \
 	  --agents-from $(PROC)/with_explicit_threshold \
 	  --out $(PROC)/with_literature_26agents
+
+# Section 5f's headline quantity on the converged 32-agent fit, which had never been
+# computed: `--drop-uninformative-absences` is a fit-time option, so that fit's corpus
+# summary differs from the frames it read and the corpus guard refused with no way to
+# satisfy it. See negative result 59.
+across-agent-dropabs:
+	$(PY) scripts/across_agent_adjusted.py \
+	  --processed $(PROC)/with_literature_final \
+	  --fold-predictions $(ART)/with_literature_dropabs/forward_other_fold_predictions.parquet \
+	  --drop-uninformative-absences --out $(ART)/with_literature_dropabs
+
+# Section 5f's headline quantity on the merged corpus. The *unadjusted* across-agent
+# figure comes free in the fit's own metrics; this is the adjusted one, which removes the
+# between-agent reporting conditions and is the number the report quotes. The script
+# refuses if the fold predictions and `--processed` describe different corpora -- that
+# mismatch once turned +0.1332 into +0.2118 and looked like a finding.
+across-agent-atlas:
+	@test -f $(ART)/with_atlas/forward_other_fold_predictions.parquet || \
+	  { echo "the merged fit has not landed yet; its fold predictions are written at the end of the run"; exit 1; }
+	$(PY) scripts/across_agent_adjusted.py --processed $(PROC)/with_atlas \
+	  --fold-predictions $(ART)/with_atlas/forward_other_fold_predictions.parquet \
+	  --out $(ART)/with_atlas
 
 design-effects-atlas: $(ART)/with_atlas/posterior_other.npz
 	$(PY) scripts/design_effect_size.py \

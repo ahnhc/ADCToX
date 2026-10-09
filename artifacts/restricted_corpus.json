@@ -14,13 +14,21 @@
   "tusamitamab_ravtansine"
  ],
  "upper_bound_arms_kept": 2521,
- "purpose": "the missing cell of the 2x2: the agents of the explicit-cuts corpus with all of their arms, so the arm set and the agent set stop moving together",
+ "grid_agents_reference": 26,
+ "grid_agents_written": 27,
+ "grid_agents_promoted_by_keeping_bounded_arms": [
+  "praluzatamab_ravtansine"
+ ],
+ "grid_agents_lost": [],
+ "holds_the_agent_set_fixed": false,
+ "why_not": "an agent reaches the model grid on the cells its arms carry, so restoring an agent's upper-bound arms can promote it into the grid; the restriction is applied to the arm table and the comparison is made on the grid",
+ "purpose": "the missing cell of the 2x2: the agents of the explicit-cuts corpus with all of their arms, so the arm set and the agent set stop moving together -- which it achieves to within the agents named above",
  "provenance": {
-  "revision": "a539ad771aa351ddd750b0b89ecd17c18f7fc420",
+  "revision": "ed4906d5aec077bfa83fba1628eb2f9fdb3debca",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "restrict_corpus_agents.py",
-  "written_utc": "2026-10-09T19:23:45+00:00",
+  "written_utc": "2026-10-09T20:19:03+00:00",
   "inputs": {}
  }
 }

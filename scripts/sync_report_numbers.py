@@ -60,6 +60,9 @@ PAC_END = "<!-- /generated: payload-compression -->"
 SAX_BEGIN = "<!-- generated: source-axis -->"
 SAX_END = "<!-- /generated: source-axis -->"
 
+AAT_BEGIN = "<!-- generated: across-agent-trend -->"
+AAT_END = "<!-- /generated: across-agent-trend -->"
+
 RES_BEGIN = "<!-- generated: results-table -->"
 RES_END = "<!-- /generated: results-table -->"
 
@@ -463,6 +466,147 @@ def build_ablation_block(doc: dict) -> str | None:
         )]
     lines += ["", ABL_END]
     return "\n".join(lines)
+
+
+def build_across_agent_trend_block(doc: dict, indent: str = "") -> str | None:
+    """Two metrics, one expansion, opposite directions -- from artifacts/across_agent_trend.json.
+
+    The block is generated rather than written because every one of its figures is the kind
+    that moves under a refit, and because two of them are traps. The strongest across-agent
+    number in the series belongs to a fit that failed its seed-agreement check, so the table
+    has to carry convergence in the same row as the figure; and a positive mean whose
+    interval excludes zero is still not support when the bar was declared at +0.3, so the
+    verdict column has three values rather than two.
+    """
+    rows = [r for r in (doc.get("corpora") or []) if r.get("status") == "present"]
+    if not rows:
+        return None
+    thr = doc.get("support_threshold")
+    split = "leave_one_agent_out"
+    carriers = [
+        r for r in rows
+        if (r["splits"].get(split, {}).get("across_agent", {}) or {}).get("applicable")
+    ]
+    if not carriers:
+        return None
+    carriers.sort(key=lambda r: r["n_agents"])
+    lines = [
+        AAT_BEGIN, "",
+        "| corpus | agents | identification | censored | within-arm dAUC | "
+        "across-agent rho | 95% CI | adjusted | reading |",
+        "|---|---|---|---|---|---|---|---|---|",
+    ]
+    for r in carriers:
+        e = r["splits"][split]
+        aa = e["across_agent"]
+        name = r["corpus"]
+        if not r["converged"]:
+            name += " *(did not converge)*"
+        if not r.get("on_expansion_path"):
+            name += " *(off the expansion path)*"
+        lines.append(
+            f"| {name} | {r['n_agents']} | {r['identification_ratio']:.2f}:1 | "
+            f"{r['censored_share'] * 100:.1f}% | "
+            f"{e['delta_auc_mean']:+.4f} | {aa['model_mean']:+.4f} | "
+            f"[{aa['model_ci'][0]:+.3f}, {aa['model_ci'][1]:+.3f}] | "
+            # Section 5f's headline, which is computed from leave-one-agent-out fold
+            # predictions and therefore belongs in no other split's table.
+            + (f"{r['adjusted']['mean']:+.4f}"
+               if (r.get("adjusted") and split == "leave_one_agent_out") else "--")
+            + f" | {aa['verdict']} |"
+        )
+    lines.append("")
+    tr = (doc.get("trends") or {}).get(split) or {}
+    if not tr.get("computed"):
+        pts = tr.get("points") or []
+        lines.append(
+            "**There is no trend to report**: "
+            + f"{tr.get('reason', 'not computed')}."
+            + (" The qualifying fits are "
+               + ", ".join(f"{p['n_agents']} agents at {p['across_agent']:+.4f}"
+                           for p in pts)
+               + "." if pts else "")
+        )
+        lines.append("")
+    if tr.get("computed"):
+        lines.append(
+            f"Over the {tr['n_points']} converged fits the two metrics move in "
+            f"{'opposite' if tr['opposite_directions'] else 'the same'} directions: "
+            f"across-agent rho against corpus size "
+            f"{tr['across_agent_vs_corpus_size']['rho']:+.3f}, within-arm delta AUC "
+            f"against corpus size {tr['delta_auc_vs_corpus_size']['rho']:+.3f}. "
+            f"{tr['note']}"
+        )
+        lines.append("")
+        adj_tr = tr.get("adjusted_vs_corpus_size") or {}
+        if adj_tr.get("rho") is not None:
+            lines.append(
+                "Section 5f's adjusted headline over the same fits gives rho "
+                f"{adj_tr['rho']:+.3f} on {adj_tr['n_points']} points -- "
+                + ", ".join(f"{p['n_agents']} agents at {p['adjusted']:+.4f}"
+                            for p in adj_tr.get("points", []))
+                + ". It moves with the unadjusted figure rather than against it, and like "
+                "it reaches no significance at any corpus."
+            )
+            lines.append("")
+    # Keyed by split, because the figure quoted here has to be the one in the table
+    # above it. An earlier version read a single slot that the producing script
+    # overwrote per split, and printed the family split's +0.0163 under the agent
+    # split's table.
+    flagged = (doc.get("strongest_figure_from_a_nonconverged_fit_by_split") or {}).get(split)
+    if flagged:
+        lines.append(
+            f"The largest across-agent figure in the table, {flagged['model_mean']:+.4f} "
+            f"on {flagged['corpus']}, is **not quotable**: that fit's worst standardised "
+            f"seed gap is {flagged['worst_seed_gap']:.4f} against a 0.3 threshold. It is "
+            "the most attractive number this project has produced and it comes from the "
+            "one fit that failed its own convergence check."
+        )
+        lines.append("")
+    pred = doc.get("prediction") or {}
+    if pred.get("made"):
+        if pred.get("outcome"):
+            obs = pred.get("observed") or {}
+            lines.append(
+                f"Prediction recorded before the merged fit landed -- *{pred['made']}* -- "
+                f"**{pred['outcome']}**"
+                + (f" (observed {obs['model_mean']:+.4f}, CI "
+                   f"[{obs['model_ci'][0]:+.3f}, {obs['model_ci'][1]:+.3f}])."
+                   if obs else ".")
+            )
+        else:
+            lines.append(
+                f"Prediction recorded, not yet scorable: *{pred['made']}*. "
+                f"Pending: {', '.join(doc.get('pending') or []) or 'nothing'}."
+            )
+        lines.append("")
+    if thr is not None:
+        clears = [
+            r for r in carriers
+            if r["converged"] and not r.get("superseded")
+            and r["splits"][split]["across_agent"]["verdict"] == "supports the claim"
+        ]
+        lines.append(
+            f"The bar was declared at +{thr} before the metric was first computed, and "
+            + ("no row clears it." if not clears else
+               f"{len(clears)} row(s) clear it: "
+               + ", ".join(r["corpus"] for r in clears) + ".")
+            + (
+                " The trend is in the point estimates only: every on-path row reads "
+                "*indistinguishable from zero* on its own interval, so what the table "
+                "supports is a direction and not an effect -- the comparison the product "
+                "makes moves up as the corpus grows while the pre-specified one moves "
+                "down, and neither has yet reached a figure worth quoting alone."
+                if tr.get("computed") else
+                " Without a trend, what the table shows is two quotable fits whose "
+                "across-agent figures differ by 0.06 with overlapping intervals, and one "
+                "unquotable fit that looks better than both. That is a reason to finish "
+                "the pending fits, not a result."
+            )
+        )
+        lines.append("")
+    lines.append(AAT_END)
+    return "\n".join(indent + ln if ln else ln for ln in lines)
 
 
 def build_rank_resolution_block(doc: dict) -> str | None:
@@ -1017,6 +1161,8 @@ def main() -> int:
                     default=Path("artifacts/payload_axis_compression.json"))
     ap.add_argument("--source-axis", type=Path,
                     default=Path("artifacts/source_axis_heterogeneity.json"))
+    ap.add_argument("--across-agent-trend", type=Path,
+                    default=Path("artifacts/across_agent_trend.json"))
     ap.add_argument("--check", action="store_true",
                     help="fail if the block is out of date instead of rewriting it")
     args = ap.parse_args()
@@ -1085,6 +1231,10 @@ def main() -> int:
         json.loads(args.source_axis.read_text(encoding="utf-8"))
         if args.source_axis.exists() else None
     )
+    aat_doc = (
+        json.loads(args.across_agent_trend.read_text(encoding="utf-8"))
+        if args.across_agent_trend.exists() else None
+    )
     cens_block = None
     if args.censoring.exists():
         cens_block = build_censoring_block(
@@ -1103,6 +1253,7 @@ def main() -> int:
     sax_pattern = re.compile(re.escape(SAX_BEGIN) + r".*?" + re.escape(SAX_END), re.S)
     pac_pattern = re.compile(re.escape(PAC_BEGIN) + r".*?" + re.escape(PAC_END), re.S)
     rr_pattern = re.compile(re.escape(RR_BEGIN) + r".*?" + re.escape(RR_END), re.S)
+    aat_pattern = re.compile(re.escape(AAT_BEGIN) + r".*?" + re.escape(AAT_END), re.S)
     abl_pattern = re.compile(re.escape(ABL_BEGIN) + r".*?" + re.escape(ABL_END), re.S)
     rc = 0
     for doc in args.report:
@@ -1137,6 +1288,22 @@ def main() -> int:
                     text = replaced
                     doc.write_text(text, encoding="utf-8")
                     print(f"{doc}: rank-resolution block regenerated")
+        aat_block = (
+            build_across_agent_trend_block(
+                aat_doc, indent=_marker_indent(text, AAT_BEGIN)
+            )
+            if aat_doc else None
+        )
+        if aat_block and aat_pattern.search(text):
+            replaced = aat_pattern.sub(lambda _: aat_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: across-agent-trend block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: across-agent-trend block regenerated")
         pac_block = (
             build_payload_compression_block(
                 pac_doc, indent=_marker_indent(text, PAC_BEGIN)

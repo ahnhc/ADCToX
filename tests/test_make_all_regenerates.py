@@ -83,7 +83,7 @@ def test_the_exemption_list_names_only_scripts_that_exist() -> None:
 # any one of these should cost seconds.
 MEASUREMENT_TARGETS = [
     "residual-scale", "across-agent", "design-effects", "fold-difficulty", "hard-flags",
-    "comorbidity-sensitivity", "payload-compression",
+    "comorbidity-sensitivity", "payload-compression", "across-agent-trend",
 ]
 
 

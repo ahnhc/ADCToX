@@ -32,13 +32,14 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 5e-b. Ranking | **The product cannot rank its own proposals in any of 192 queries**, and the comorbidity profile's influence is a function of an arbitrary constant. |
 | 5e-c. Ordinal comparison | Every rate now carries its position among the registry chemistries, which recovers a boxed warning on its first use. |
 | 5f. The one positive signal | **Gone.** It was +0.13 at p=0.025 on 16 agents and +0.007 at p=0.46 on 22 -- six more agents erased it. |
+| 5f-b. Two metrics, opposite directions | Across three nested corpora the held-out across-agent figure runs -0.015, +0.030, +0.047 while the pre-specified within-arm delta runs -0.012, -0.015, -0.106. Every interval includes zero, so it is a direction and not an effect. |
 | 5g. Corpus expansion | The ceiling is 32 agents and not the planned 54, of which **31** publish an any-grade column; the expansion buys the common-events table and not the serious one. |
 | 5h. Comorbidity layer | A non-circular holdout against 1,741 trials' exclusion criteria, at AUROC 0.666 against 0.750 circularly. |
 | 5i. Its primary validation | Misspecified. The FDA labels argue from clearance, not organ toxicity, and point somewhere else. |
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 58 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 60 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -64,7 +65,10 @@ median **50.0%** of paired posterior draws against the 80% this interface requir
 model that **does not beat a base-rate baseline on any of six evaluations**, and the
 across-agent organ correlation that was this report's one positive result **did not survive
 the corpus rebuild**: it is now rho **+0.0073** at permutation **p = 0.4595**, so there is
-no positive result here to inherit. The comorbidity profile enters as a displayed weight
+no positive result here to inherit. That retraction is about the *adjusted* figure on the
+22-agent corpus; section 5f-b reports what the same comparison does as the corpus grows, on
+the held-out and unadjusted series, and it moves the other way from the pre-specified metric
+without ever clearing the bar declared for it. The comorbidity profile enters as a displayed weight
 rather than a logit; it changes the proposed set of options for six of the seven profiles
 that name a condition, somewhere in the weighting constant's range, and changes nothing at
 all for the seventh -- a patient with four comorbidities. Which design leads is responsive
@@ -77,7 +81,7 @@ specifically outside what it can say.
 So what the system is for is the filtering, the intervals, and the refusals: it will not
 rank what it cannot separate, will not price a payload mechanism it has never seen, and
 will not offer a design whose parts have no clinical precedent. Sections 3 and 4 are where
-the prediction fails, section 9 is the forty-three measured negative results, and section
+the prediction fails, section 9 is the sixty measured negative results, and section
 10 is what this must not be used for.
 
 ## 2. The corpus, and the number that governs everything
@@ -1044,6 +1048,91 @@ because there the model and the baseline are compared on the same arm under the 
 conditions, and the failure is the ratio in section 4.0: where the evidence is good the
 design effects are too small to move the organ ranking.
 
+## 5f-b. Two metrics were being read as one, and only one of them is the product's
+
+Section 5f closes by saying what would settle its question: *more agents, not more
+analysis*. Agents arrived. Checking the sentence separates two numbers that have been
+summarised as one verdict, and the separation is the finding -- the trend is not.
+
+The project measures held-out discrimination two ways, off the same cross-validation folds,
+and they ask different questions about the same posterior:
+
+- **within-arm AUC** ranks the fourteen axes *inside* one held-out arm. A design-blind
+  constant -- the global axis mean -- scores about **0.84** on it, because axis base rates
+  are consistent enough across arms that knowing them is nearly the whole task.
+- **across-agent Spearman** ranks the held-out *agents* within one axis. No constant can
+  score on this by construction, so it is the metric that can separate a model from a base
+  rate, and it is the comparison the product actually makes: a clinician choosing between
+  two candidate designs for a patient with kidney disease asks which design carries less
+  renal risk, not which organ is this design's worst.
+
+Section 4.0's ratio argument makes it possible for these to disagree without contradiction.
+Design effects too small to reorder organs *inside* an arm can still be large enough to
+order agents *within* an organ, because the second comparison does not have to beat the
+axis base rates -- they cancel.
+
+<!-- generated: across-agent-trend -->
+
+| corpus | agents | identification | censored | within-arm dAUC | across-agent rho | 95% CI | adjusted | reading |
+|---|---|---|---|---|---|---|---|---|
+| literature 17 *(off the expansion path)* | 17 | 2.38:1 | 36.5% | -0.0782 | -0.0695 | [-0.189, +0.065] | -- | indistinguishable from zero |
+| registry 22 | 22 | 3.08:1 | 11.5% | -0.0121 | -0.0152 | [-0.205, +0.161] | +0.0073 | indistinguishable from zero |
+| explicit cuts 26 | 26 | 3.64:1 | 14.6% | -0.0154 | +0.0303 | [-0.103, +0.168] | +0.0470 | indistinguishable from zero |
+| expanded 32 *(did not converge)* | 32 | 4.48:1 | 29.7% | -0.0972 | +0.1308 | [+0.074, +0.191] | -- | positive, excludes zero, below the declared bar |
+| expanded 32, absences dropped | 32 | 4.48:1 | 12.3% | -0.1057 | +0.0472 | [-0.059, +0.145] | +0.0467 | indistinguishable from zero |
+
+Over the 3 converged fits the two metrics move in opposite directions: across-agent rho against corpus size +1.000, within-arm delta AUC against corpus size -1.000. 3 converged fits carry this split. A rank correlation over 3 points cannot carry a p-value worth quoting; the sign is the claim.
+
+Section 5f's adjusted headline over the same fits gives rho +0.500 on 3 points -- 22 agents at +0.0073, 26 agents at +0.0470, 32 agents at +0.0467. It moves with the unadjusted figure rather than against it, and like it reaches no significance at any corpus.
+
+The largest across-agent figure in the table, +0.1308 on expanded 32, is **not quotable**: that fit's worst standardised seed gap is 0.7219 against a 0.3 threshold. It is the most attractive number this project has produced and it comes from the one fit that failed its own convergence check.
+
+Prediction recorded, not yet scorable: *the merged 65-agent corpus will put leave-one-agent-out across-agent Spearman above zero with a CI excluding zero, and still below +0.3*. Pending: explicit agents 27, all arms, merged 65, merged 65, absences dropped.
+
+The bar was declared at +0.3 before the metric was first computed, and no row clears it. The trend is in the point estimates only: every on-path row reads *indistinguishable from zero* on its own interval, so what the table supports is a direction and not an effect -- the comparison the product makes moves up as the corpus grows while the pre-specified one moves down, and neither has yet reached a figure worth quoting alone.
+
+<!-- /generated: across-agent-trend -->
+
+Four things qualify the table, and together they leave a direction rather than a result.
+
+**One row is not on the path.** `artifacts/with_literature` reports 17 agents, and 17 is not
+a smaller value of the 22 beside it. Its grid carries telisotuzumab vedotin, which the
+registry's does not, and lacks six agents that the registry's does -- camidanlumab tesirine,
+depatuxizumab mafodotin, enapotamab vedotin, farletuzumab ecteribulin, rovalpituzumab
+tesirine, vobramitamab duocarmazine. Neither subset nor superset, so its agent count is a
+different quantity with the same name. The script computes this rather than taking it on
+trust: it loads each fit's frames, checks whether the grid contains the registry's, and
+excludes the ones that do not. The remaining four form a proper chain -- registry 22, then
+explicit cuts 26, then expanded 32, then merged 65 -- each a superset of the one before.
+
+**The censoring is roughly held constant across the three quotable points**, at 11.5%, 14.6%
+and 12.3%, while the fit excluded for non-convergence sits at 29.7%. Without that column the
+series could be measuring the censoring treatment instead of the corpus; with it, the three
+comparable points differ mainly in size.
+
+**The largest figure is not quotable.** The 32-agent default fit's worst standardised seed
+gap is 0.7219 against a 0.3 threshold, and it holds the best across-agent number in the
+table. It is the most attractive figure this project has produced.
+
+**Nothing is significant and nothing clears the bar.** +0.3 was written into
+`fit_forward.py` before the metric was ever computed. Every on-path row's interval includes
+zero. Three points can carry a sign and not a p-value, and the script withholds one: a
+Spearman rho of 1.000 over three points returns p = 0.0 from only six possible orderings,
+which would be this report's most quotable and least meaningful number.
+
+The adjusted figure -- section 5f's headline, which removes the between-agent reporting
+conditions -- had never been computed beyond 22 agents, for a mechanical reason that is
+negative result 59. It is in the table now and it moves *with* the unadjusted figure rather
+than against it, which matters: if the two had disagreed, the direction would have been a
+property of the adjustment.
+
+So section 5f's retraction stands, and this section does not reinstate it. What it changes is
+what the retraction was a verdict on. It was read as a verdict on the model; it is a verdict
+on one of two metrics, and on the other one -- the comparison the product's own question asks
+-- the three comparable fits run -0.0152, +0.0303, +0.0472 while the pre-specified metric
+runs -0.0121, -0.0154, -0.1057. A merged fit at 65 agents and 9.10:1 identification is
+running, and the prediction above was recorded before it landed.
+
 ## 5g. The corpus was agent-limited, and the limit turned out to be measurable
 
 Section 5f ends by saying the one positive signal needs more agents rather than more
@@ -1610,9 +1699,9 @@ neurologic.
 
 ## 9. Measured negative results
 
-Before the list, one observation about it. **Ten of these findings are the same defect**, and
-naming it is worth more than the tenth instance: a quantity carrying a name that belongs to a
-different quantity.
+Before the list, one observation about it. **Fourteen of these findings are the same
+defect**, and naming it is worth more than the fourteenth instance: a quantity carrying a
+name that belongs to a different quantity.
 
 | the name | what it was | what it should have been | result |
 |---|---|---|---|
@@ -1626,9 +1715,21 @@ different quantity.
 | payload identities | 24 from the frames | 23 from the grid | 44 |
 | `ratio_change_..._to_expanded` | a stage that stopped being last | first to last | 44 |
 | severe-grade rows left unused | 5,494 typed by hand | 5,516 measured | 9b |
+| `target_in_corpus` | the gene symbol only | either spelling | 57 |
+| "the largest figure in this table" | the family split's | the agent split's | 58 |
+| "17 agents" in a size trend | a subset corpus | a smaller same corpus | 58 |
+| the corpus-mismatch message | `--processed` | `--metrics` | 59 |
 
-Two things follow. The first is that the number guard caught six of the ten and could not
-have caught the rest: it checks that a figure traces to an artefact, and every one of these
+The last four differ from the first ten in kind and are listed anyway, because the pattern
+is the point. Result 57 is an *identifier* under the wrong name rather than a quantity.
+Results 58 and 59 happened inside the scripts written to measure and to guard this defect:
+one printed a figure under the wrong split's table, one put a corpus's agent count into a
+series where it meant something else, and one wrote an error message naming the input that
+was correct. Fourteen instances, and the four most recent are in the code whose subject is
+the other ten.
+
+Two things follow. The first is that the number guard caught six of the fourteen and could
+not have caught the rest: it checks that a figure traces to an artefact, and every one of these
 figures did trace -- to the artefact for the other quantity. A guard on provenance is not a
 guard on meaning.
 
@@ -2444,8 +2545,9 @@ between those two.
     see, and that is a fact about the literature and not about the ear.
 
 50. **The literature expansion made the model worse on every held-out split and broke the
-    fit, and the second half of that sentence is what settles it.** The 32-agent corpus's
-    full cross-validation finished. Against the registry corpus's 22 agents:
+    fit -- and a later fit narrowed "the expansion" to six of its ten agents, or to their
+    arms.** The 32-agent corpus's full cross-validation finished. Against the registry
+    corpus's 22 agents:
 
     | split | registry (22 agents) | expanded (32 agents) |
     |---|---|---|
@@ -2494,6 +2596,44 @@ between those two.
     version of it, the transcribed cohorts reaching a 71% reporting cut against the
     literature's 63.9%, so both variants have to be fitted there as well or the merged
     result cannot be told apart from this one.
+
+    **And the headline of this result is now too broad.** A third fit has landed: the
+    registry corpus plus only those literature arms whose caption *stated* a reporting cut
+    -- 69 arms, 26 agents, 663 censored cells, 14.6% censored, converged at a seed gap of
+    0.182. It does not degrade anything.
+
+    | split | registry 22 | **explicit cuts 26** | expanded 32, absences dropped |
+    |---|---|---|---|
+    | leave-one-mechanism-out | -0.0200 [-0.029, -0.003] | **-0.0145 [-0.029, -0.005]** | -0.1564 [-0.259, -0.073] |
+    | leave-one-family-out | -0.0590 [-0.093, -0.023] | **-0.0553 [-0.085, -0.025]** | -0.1547 [-0.218, -0.086] |
+    | leave-one-agent-out | -0.0121 [-0.030, +0.006] | **-0.0154 [-0.032, -0.000]** | -0.1057 [-0.146, -0.068] |
+
+    Four more agents, 69 more literature arms, and every split lands within a hundredth of
+    the registry's -- on the mechanism split slightly *better*. So **literature arms do not
+    degrade held-out prediction**. This was recorded as a prediction before the fit ran, in
+    `artifacts/convergence_conditions.json`, and it is **confirmed**.
+
+    The same artefact records that the prediction's *reasoning* was wrong, which is the part
+    worth keeping. The pair was meant to isolate the censoring: the explicit-cuts fit and the
+    absences-dropped fit reach the same 663 censored cells by different routes, so a
+    difference between them should be attributable to the bounded thresholds. It is not,
+    because the explicit-cuts corpus also drops six agents -- every one an agent whose only
+    literature arms carry an upper-bound cut -- so the arm set and the agent set moved
+    together. **The difference between -0.0145 and -0.1564 is attributable to either**, and
+    the fit that narrows it is those agents with *all* of their arms, the bounded ones
+    included. It is running. Bad means the damage is in the arms; good means it is in the six
+    agents.
+
+    **It narrows the confound rather than removing it, and the reason is worth recording.**
+    Restricting the 32-agent corpus to the explicit-cuts corpus's agents and keeping every
+    arm does not reproduce a 26-agent grid: it produces a **27-agent** one. Praluzatamab
+    ravtansine's only arms are upper-bound, and with them it clears the grid's cell
+    threshold; without them it does not. So **the arm set and the grid are not independent**
+    -- an arm restriction is also an agent restriction, in one direction, and "the same
+    agents with different arms" is not a corpus that exists here. The comparison it buys is
+    26 against 27 grid agents rather than 26 against 32, which takes the confound from six
+    agents to one, and one agent's contribution can be bounded from the per-fold deltas
+    afterwards.
 
 51. **The "irreversible" loss was partly recoverable from the same workbook, and verifying
     that took one comparison.** The ingest discarded 492 organ-specific any-grade rows for
@@ -2746,6 +2886,74 @@ between those two.
     the first kind -- every figure traces to an artefact -- has nothing to say about a string
     comparison, and neither does any test that only checks response shape. It was found by
     typing HER2 into the endpoint and reading the answer.
+
+58. **The two discrimination metrics were reported as one story, and the story needed the
+    other one.** Every corpus expansion made the headline validation worse -- leave-one-mechanism-out
+    macro delta -0.0200 on the registry corpus, -0.1613 at 32 agents, -0.121 at 65 -- while the
+    identification ratio improved at every step. That pairing has been this project's central
+    puzzle and the working reading was that the added data is worse data.
+
+    The folds carry a second metric and it was never put beside the first. **Within-arm AUC**
+    ranks the fourteen axes inside one held-out arm, and a design-blind constant scores about
+    0.84 on it. **Across-agent Spearman** ranks held-out agents within one axis, where no
+    constant can score at all. The first is pre-specified; the second is the comparison the
+    product makes. Section 4.0's ratio argument makes disagreement between them possible
+    without contradiction, and nothing had checked whether they disagreed.
+
+    They do, on the three comparable fits: the within-arm delta runs -0.0121, -0.0154, -0.1057
+    as the corpus grows from 22 to 26 to 32 agents, and the across-agent figure runs -0.0152,
+    +0.0303, +0.0472 over the same three. Spearman rho against corpus size is +1.000 and
+    -1.000. **Every one of those across-agent intervals includes zero**, none reaches the +0.3
+    bar declared in `fit_forward.py` before the metric was first computed, and three points
+    carry a sign and not a p-value -- the script withholds one, because a rho of 1.000 over
+    three points returns p = 0.0 from six possible orderings. So what section 5f-b reports is
+    a direction. What is a *result* is narrower and does not need the direction: the
+    retraction in section 5f was read as a verdict on the model when it is a verdict on one of
+    two metrics, and the other one had never been put beside it.
+
+    **Three things went wrong in the measuring, and each is the same defect as the subject.**
+    The producing script kept one slot for "the strongest figure from a non-converged fit" and
+    filled it in a loop over three splits, so the report block printed the family split's
+    `+0.0163` beneath the agent split's table, whose own largest value was `+0.1308`. The
+    adjusted figure, which is computed from leave-one-agent-out predictions only, was printed
+    as a column of the family split's table too. And the first version of the trend ran over
+    four fits of which one, reported as **17 agents**, is neither a subset nor a superset of
+    the 22-agent registry grid: it carries telisotuzumab vedotin, which the registry's does
+    not, and lacks six that it does. Its 17 and the series' 22 are not two sizes of one thing.
+    Excluding it left two points and no trend at all, until the 26-agent fit landed and made
+    three. The fix was to stop declaring membership and compute it -- load each fit's frames
+    and check whether its grid contains the baseline's -- because a hand-maintained flag for
+    this is one more thing that has to be kept true.
+
+    All three were found by reading the generated block, not by any check. The number guard
+    passed every one of them, because `+0.0163` and `+0.0073` and `-0.0695` all trace to
+    artefacts -- the artefacts for the other split, the other metric, and the other corpus.
+
+59. **The corpus-match guard validated two of its three inputs, and its error message blamed
+    the wrong one.** `across_agent_adjusted.py` reads three things that must describe one fit:
+    the fold predictions, the posterior's nuisance coefficients, and the per-agent reporting
+    conditions. It compared the second against the third and left the first unchecked against
+    either -- and `--metrics` carried a fixed default pointing at the registry fit. So pointing
+    `--fold-predictions` at another corpus's directory mixed that corpus's predictions with the
+    registry fit's coefficients, and the guard that fired said *"the fitted corpus differs from
+    --processed"*, directing attention at the one input that was correct.
+
+    The guard exists because this exact class of error already cost the project a false
+    finding: running the adjustment against the literature corpus while the fold predictions
+    were still the registry's moved the headline from +0.1332 to +0.2118, entirely through
+    `b_combo`. The guard was written against the two inputs that failure involved.
+
+    Fixed by removing the mismatch rather than detecting it: `--metrics` now defaults to the
+    metrics file beside `--fold-predictions`, and an explicit `--metrics` from a different
+    directory is refused. **A guard with a default is a guard with a hole**, because the
+    default is the value nobody passes and therefore the value nobody checks.
+
+    The second half of the same session: the script could not compute the adjusted figure for
+    any absences-dropped fit at all. `--drop-uninformative-absences` is a *fit-time* option, so
+    the corpus summary of a fit that used it differs from the frames it read, and the corpus
+    guard refused -- correctly, with no way to satisfy it. Section 5f's headline quantity was
+    therefore uncomputable on the only converged 32-agent fit, and that is why the report had
+    it at 16 and 22 agents and nowhere else. One flag, forwarded.
 
 ## 9b. The clean-clone check, run for the first time
 

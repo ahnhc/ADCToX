@@ -253,15 +253,51 @@ def main() -> int:
     ap.add_argument("--processed", type=Path, default=Path("data/processed"))
     ap.add_argument("--fold-predictions", type=Path,
                     default=Path("artifacts/forward_other_fold_predictions.parquet"))
-    ap.add_argument("--metrics", type=Path,
-                    default=Path("artifacts/forward_other_metrics.json"))
+    # No default. It is derived from --fold-predictions below, because three inputs have
+    # to come from one fit and only two of them were ever checked against each other.
+    ap.add_argument("--metrics", type=Path, default=None,
+                    help="defaults to forward_other_metrics.json beside --fold-predictions")
     ap.add_argument("--out", type=Path, default=Path("artifacts"))
+    # Not a corpus on disk but a fit-time option, so the corpus summary differs between a
+    # fit that used it and the frames it read. Without this flag the adjusted figure
+    # cannot be computed for any absences-dropped fit at all: the guard below refuses,
+    # correctly, and there is no way to satisfy it.
+    ap.add_argument("--drop-uninformative-absences", action="store_true",
+                    help="match a fit run with the same flag; the corpus summary differs")
     args = ap.parse_args()
 
     if not args.fold_predictions.exists():
         print(f"{args.fold_predictions} absent; run `make forward`")
         return 1
-    data = ds.load(args.processed, list(default_taxonomy().axis_order), kind="other")
+
+    # This script reads three things and all three must describe one fit: the fold
+    # predictions, the posterior's nuisance coefficients from the metrics file, and the
+    # per-agent reporting conditions from --processed. The guard below compared the last
+    # two and left the first unchecked against them, and `--metrics` had a fixed default
+    # pointing at the registry fit. So pointing --fold-predictions at another corpus's
+    # directory silently mixed that corpus's predictions with the registry fit's
+    # coefficients, and the error message that fired blamed --processed.
+    #
+    # Deriving the path removes the mismatch rather than detecting it. An explicit
+    # --metrics from a different directory is still allowed and still refused below.
+    if args.metrics is None:
+        args.metrics = args.fold_predictions.parent / "forward_other_metrics.json"
+        if not args.metrics.exists():
+            print(f"{args.metrics} absent; it has to sit beside the fold predictions so "
+                  "the coefficients and the predictions come from one fit")
+            return 1
+    elif args.metrics.parent != args.fold_predictions.parent:
+        print(
+            f"--metrics is in {args.metrics.parent} and --fold-predictions in "
+            f"{args.fold_predictions.parent}. The nuisance coefficients and the "
+            "predictions they adjust have to come from the same fit.",
+            file=sys.stderr,
+        )
+        return 1
+    data = ds.load(
+        args.processed, list(default_taxonomy().axis_order), kind="other",
+        drop_uninformative_absences=args.drop_uninformative_absences,
+    )
     fp = pd.read_parquet(args.fold_predictions)
     fp = fp[fp.split == "leave_one_agent_out"]
 

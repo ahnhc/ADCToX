@@ -2,8 +2,9 @@
  "prediction_two": {
   "made": "the explicit-cuts fit will land nearer the registry corpus than the 32-agent fits on leave-one-mechanism-out",
   "because": "it reaches the same censoring state as the absences-dropped variant by a different route -- 69 literature arms over 11 agents, every one with a cut its caption stated -- so if the degradation is the bounded threshold it should mostly disappear here",
-  "outcome": null,
-  "reasoning_was_wrong_because": "the pair does not isolate the censoring. Step 4 also drops six agents -- every one an agent whose only literature arms are upper-bound -- so the arm set and the agent set move together and the difference between -0.1564 and -0.014 is attributable to either. The missing cell of the 2x2 is the same 26 agents with all of their arms, which `make restrict-26` builds and the row below reports."
+  "outcome": "confirmed",
+  "reasoning_was_wrong_because": "the pair does not isolate the censoring. Step 4 also drops six agents -- every one an agent whose only literature arms are upper-bound -- so the arm set and the agent set move together and the difference between -0.1564 and -0.014 is attributable to either. The missing cell of the 2x2 is the same 26 agents with all of their arms, which `make restrict-26` builds and the row below reports.",
+  "explicit_lomo_delta": -0.014459622434677688
  },
  "prediction": {
   "made": "the merged corpus will fail its seed-agreement check",
@@ -67,8 +68,21 @@
   },
   {
    "fit": "explicit cuts only",
-   "status": "not fitted yet",
-   "absences_dropped": false
+   "status": "fitted",
+   "absences_dropped": false,
+   "agents": 26,
+   "cells": 4550,
+   "censored": 663,
+   "censored_share": 0.1457,
+   "identifying_cells": 364,
+   "cells_per_design_parameter": 3.64,
+   "worst_seed_gap": 0.18164198100566864,
+   "seed_threshold": 0.3,
+   "converged": true,
+   "lomo_delta": -0.014459622434677688,
+   "tau_mech": 0.5516256093978882,
+   "tau_cleav": 0.29374197125434875,
+   "sigma_agent": 0.3917015790939331
   },
   {
    "fit": "65 agents, default",
@@ -92,18 +106,18 @@
   }
  ],
  "summary": {
-  "n_fitted": 3,
-  "n_converged": 2,
+  "n_fitted": 4,
+  "n_converged": 3,
   "failed": [
    "32 agents, default"
   ]
  },
  "provenance": {
-  "revision": "a539ad771aa351ddd750b0b89ecd17c18f7fc420",
+  "revision": "ed4906d5aec077bfa83fba1628eb2f9fdb3debca",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "convergence_conditions.py",
-  "written_utc": "2026-10-09T19:24:52+00:00",
+  "written_utc": "2026-10-09T20:08:16+00:00",
   "inputs": {}
  }
 }
