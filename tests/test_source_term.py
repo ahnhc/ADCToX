@@ -99,9 +99,69 @@ def test_the_term_is_sampled_and_counted_where_it_does() -> None:
     # across both is how a wrong assertion passes.
     counts = n_free_parameters(data)
     assert counts["design"] == 100
-    assert counts["nuisance"] == 3 + len(data.trials) + len(data.agents) + 5
+    # `b_source`, the 14-axis deviation vector and its scale.
+    assert counts["nuisance"] == (
+        2 + (1 + len(AXES) + 1) + len(data.trials) + len(data.agents) + 5
+    )
 
     registry = load(REGISTRY, AXES, kind="other")
     reg_counts = n_free_parameters(registry)
     assert reg_counts["design"] == 100
     assert reg_counts["nuisance"] == 2 + len(registry.trials) + len(registry.agents) + 5
+
+
+@pytest.mark.skipif(not (FULL / "arms.parquet").exists(), reason="run `make pmc-merge`")
+def test_the_source_gap_is_axis_specific_and_the_model_says_so() -> None:
+    """One intercept was the right first move and the wrong final one.
+
+    Measured on the 12 agents with arms from both sources -- which holds the chemistry fixed,
+    so the gap is reporting and not drug -- the literature-minus-registry gap runs from
+    -1.16 logit on cardiovascular to +1.79 on ocular, heterogeneity Q = 80 on 11 degrees of
+    freedom, p = 1.5e-12, between-axis standard deviation about 0.72.
+
+    The direction is what makes it a specification error rather than noise: papers report
+    *more* than the registry on ocular and dermatologic, which are the signature findings
+    those papers are about, and *less* on cardiovascular and the other background organs,
+    which fall below a "most common adverse events" cut. With one shift the remainder goes
+    into `mech_axis`, because literature arms are not spread evenly across mechanisms.
+    """
+    import json
+
+    artefact = ROOT / "artifacts" / "source_axis_heterogeneity.json"
+    if not artefact.exists():
+        pytest.skip("run `make source-axis`")
+    summary = json.loads(artefact.read_text(encoding="utf-8"))["summary"]
+    assert summary["agents_with_both_sources"] >= 10, summary
+    assert summary["p"] < 1e-6, summary
+    assert summary["between_axis_sd"] > 0.4, summary
+    # The two ends, which are the interpretable part.
+    assert summary["min_axis"] == "cardiovascular", summary
+    assert summary["max_axis"] == "ocular", summary
+
+
+@pytest.mark.skipif(not (FULL / "arms.parquet").exists(), reason="run `make pmc-merge`")
+def test_the_axis_deviation_is_sampled_centred_and_only_where_it_applies() -> None:
+    """`b_source` carries the mean and `source_axis` the deviations, so the two are not
+    competing for the same level -- the same split the mechanism and cleavability terms use.
+    """
+    import jax
+    import numpy as np
+    from numpyro.infer import MCMC, NUTS
+
+    data = load(FULL, AXES, kind="other")
+    mcmc = MCMC(NUTS(model, max_tree_depth=4), num_warmup=4, num_samples=8,
+                num_chains=1, progress_bar=False)
+    mcmc.run(jax.random.PRNGKey(0), data=data)
+    draws = mcmc.get_samples()
+    assert "tau_source" in draws and "source_axis" in draws
+    sa = np.asarray(draws["source_axis"])
+    assert sa.shape[1] == len(AXES)
+    # Centred by construction, so it cannot shift the overall level.
+    assert np.allclose(sa.mean(axis=1), 0.0, atol=1e-5), sa.mean(axis=1)[:3]
+
+    registry = load(REGISTRY, AXES, kind="other")
+    reg = MCMC(NUTS(model, max_tree_depth=4), num_warmup=4, num_samples=8,
+               num_chains=1, progress_bar=False)
+    reg.run(jax.random.PRNGKey(0), data=registry)
+    assert "tau_source" not in reg.get_samples()
+    assert "source_axis" not in reg.get_samples()

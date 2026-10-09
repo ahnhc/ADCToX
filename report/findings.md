@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 34 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 35 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -1690,6 +1690,25 @@ neurologic.
     reporting practice rather than correcting censoring, and it is sampled only where the
     indicator varies -- on the registry corpus it would draw its prior and then appear in
     the seed-agreement table as though the fit had estimated it.
+34. **And the source gap is not one number but fourteen, larger than the mechanism effect
+    it was confounding.** Measured on the 12 agents with arms from *both* sources, which
+    holds the chemistry fixed so the difference is reporting rather than drug, the
+    literature-minus-registry gap runs from **-1.16 logit on cardiovascular to +1.79 on
+    ocular**: heterogeneity **Q = 80 on 11 degrees of freedom, p = 1.5e-12**, between-axis
+    standard deviation **0.72** -- larger than `tau_mech`, the mechanism-by-axis scale the
+    model exists to estimate. It is fitted as a centred axis vector; a smoke fit puts its
+    scale above the mechanism scale and clear of zero, and the production figures go in this
+    paragraph when the full fit lands rather than being quoted from 150 draws.
+
+    The direction is what makes it a specification error rather than noise: papers
+    report more than the registry on ocular and dermatologic, which are the signature
+    findings those papers are about, and less on otologic -- papers essentially never
+    mention hearing -- and on musculoskeletal, renal and cardiovascular, which are
+    background and fall below a "most common adverse events" cut.
+    With a single shift the axis-varying remainder had nowhere to go but `mech_axis`,
+    because literature arms are not spread evenly across mechanisms. One consequence is an
+    improvement: `mu_axis` now means the registry's reporting level rather than a blend of
+    the two, so a prediction for a new design is on the more completely reported scale.
 
 ## 9b. The clean-clone check, run for the first time
 

@@ -1,0 +1,108 @@
+{
+ "summary": {
+  "agents_with_both_sources": 12,
+  "axes_compared": 12,
+  "weighted_mean_gap": -0.232,
+  "gap_sd": 0.758,
+  "between_axis_sd": 0.716,
+  "heterogeneity_q": 80.0,
+  "df": 11,
+  "p": 1.5053617958595173e-12,
+  "min_axis": "cardiovascular",
+  "max_axis": "ocular"
+ },
+ "axes": [
+  {
+   "axis": "haematologic",
+   "n_literature": 106,
+   "n_registry": 253,
+   "gap_logit": -0.0306031502832379,
+   "se": 0.1515090698658454
+  },
+  {
+   "axis": "hepatic",
+   "n_literature": 32,
+   "n_registry": 236,
+   "gap_logit": -0.38804515918270854,
+   "se": 0.19278627798559914
+  },
+  {
+   "axis": "cardiovascular",
+   "n_literature": 11,
+   "n_registry": 217,
+   "gap_logit": -1.1580448762580997,
+   "se": 0.37241879802466815
+  },
+  {
+   "axis": "pulmonary",
+   "n_literature": 35,
+   "n_registry": 245,
+   "gap_logit": -0.9236889328237332,
+   "se": 0.19563854177497708
+  },
+  {
+   "axis": "gastrointestinal",
+   "n_literature": 92,
+   "n_registry": 246,
+   "gap_logit": -0.5082722627200059,
+   "se": 0.1739524682572561
+  },
+  {
+   "axis": "neurologic",
+   "n_literature": 43,
+   "n_registry": 246,
+   "gap_logit": -0.2414923447639914,
+   "se": 0.1626757294473838
+  },
+  {
+   "axis": "ocular",
+   "n_literature": 25,
+   "n_registry": 184,
+   "gap_logit": 1.792542529859389,
+   "se": 0.37333704571779736
+  },
+  {
+   "axis": "dermatologic",
+   "n_literature": 52,
+   "n_registry": 243,
+   "gap_logit": 0.612627449175216,
+   "se": 0.17127390439876714
+  },
+  {
+   "axis": "metabolic_endocrine",
+   "n_literature": 52,
+   "n_registry": 247,
+   "gap_logit": -0.4621835014812603,
+   "se": 0.14730706841444197
+  },
+  {
+   "axis": "musculoskeletal",
+   "n_literature": 10,
+   "n_registry": 242,
+   "gap_logit": -0.24057927307775806,
+   "se": 0.4120337707067384
+  },
+  {
+   "axis": "infectious_immune",
+   "n_literature": 39,
+   "n_registry": 241,
+   "gap_logit": -0.31163170013210006,
+   "se": 0.22828564433011037
+  },
+  {
+   "axis": "constitutional",
+   "n_literature": 82,
+   "n_registry": 250,
+   "gap_logit": -0.2583116666402122,
+   "se": 0.1419806926107478
+  }
+ ],
+ "provenance": {
+  "revision": "cc9088a8ec5d0a9be4877bb3e0cf287247d2439f",
+  "dirty": true,
+  "snapshot": null,
+  "script": "source_axis_heterogeneity.py",
+  "written_utc": "2026-10-09T10:29:14+00:00",
+  "inputs": {}
+ }
+}

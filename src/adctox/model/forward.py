@@ -195,6 +195,35 @@ def model(
         b_source = numpyro.sample("b_source", dist.Normal(0.0, 1.0))
     else:
         b_source = 0.0
+
+    # --- and the gap is not one number. Measured on the 12 agents with arms from both
+    # sources, which holds the chemistry fixed so the difference is reporting rather than
+    # drug, it runs from -1.16 logit on cardiovascular to +1.79 on ocular, with
+    # heterogeneity Q = 80 on 11 degrees of freedom and p = 1.5e-12. The between-axis
+    # standard deviation is about 0.72, larger than `tau_mech`.
+    #
+    # The direction is what makes it a specification error rather than noise. A paper's
+    # adverse-event table is selected for what is notable about that drug, so papers report
+    # *more* than the registry on ocular and dermatologic -- belantamab's keratopathy and
+    # enfortumab's skin toxicity are what those papers are about -- and *less* on
+    # cardiovascular, pulmonary, gastrointestinal and metabolic, which are background and
+    # fall below a "most common adverse events" cut.
+    #
+    # With one shift the axis-varying remainder has to go somewhere, and it goes into
+    # `mech_axis`, because literature arms are not spread evenly across mechanisms. So this
+    # is a confound on the model's central parameter, not a nuisance refinement.
+    #
+    # Centered like the mechanism and cleavability terms: `b_source` carries the mean shift
+    # and this carries the deviations, so the two are not competing for the same level.
+    if has_both_sources:
+        tau_source = numpyro.sample("tau_source", dist.HalfNormal(0.5))
+        source_axis_raw = numpyro.sample(
+            "source_axis_raw", dist.Normal(0.0, 1.0).expand([n_axes]).to_event(1)
+        )
+        source_axis = tau_source * (source_axis_raw - source_axis_raw.mean())
+        numpyro.deterministic("source_axis", source_axis)
+    else:
+        source_axis = jnp.zeros(n_axes)
     b_thresh = numpyro.sample("b_thresh", dist.Normal(0.0, 0.5))
     b_log_n = numpyro.sample("b_log_n", dist.Normal(0.0, 0.5))
 
@@ -280,6 +309,7 @@ def model(
         mu_axis[xi]
         + family_axis[data.arm_family_idx[ai], xi]
         + cleav_axis[xi] * cleav_centered[ai]
+        + source_axis[xi] * data.arm_is_literature[ai]
         + arm_lin[ai]
     )
     if agent_axis is not None:
@@ -335,8 +365,12 @@ def n_free_parameters(data: ModelData) -> dict[str, int]:
     # `b_source` is nuisance and not design: it describes which corpus an arm was read from,
     # which is a property of the reporting rather than of the chemistry. It exists because
     # `b_combo` was carrying it.
+    # `b_source` plus the 14-axis source deviation vector and its scale, where the corpus
+    # carries both sources. Nuisance and not design: it describes which corpus an arm was
+    # read from, which is a property of the reporting rather than of the chemistry.
+    both_sources = int(float(data.arm_is_literature.std()) > 0)
     nuisance = (
-        2 + int(float(data.arm_is_literature.std()) > 0)
+        2 + both_sources * (1 + n_axes + 1)
         + len(data.trials) + len(data.agents) + 5
     )
     return {
