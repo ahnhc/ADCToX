@@ -1,0 +1,74 @@
+{
+ "summary": {
+  "identification_floor": 8.0,
+  "plan_projection_mechanism_level": {
+   "n17_k5": 4.25,
+   "n32_k6": 6.4,
+   "n54_k7": 9.0
+  },
+  "ratio_change_registry_to_expanded": {
+   "payload_identity": 1.16,
+   "payload_family": 1.66,
+   "mechanism": 1.94
+  },
+  "levels_that_clear_the_floor": [],
+  "recedes": [
+   "payload_identity"
+  ]
+ },
+ "stages": [
+  {
+   "stage": "registry_only",
+   "agents": 16,
+   "identifying_cells": 224,
+   "levels": {
+    "payload_identity": 10,
+    "payload_family": 7,
+    "mechanism": 5
+   },
+   "ratio": {
+    "payload_identity": 1.78,
+    "payload_family": 2.67,
+    "mechanism": 4.0
+   }
+  },
+  {
+   "stage": "plus_literature_arms",
+   "agents": 17,
+   "identifying_cells": 238,
+   "levels": {
+    "payload_identity": 10,
+    "payload_family": 7,
+    "mechanism": 5
+   },
+   "ratio": {
+    "payload_identity": 1.89,
+    "payload_family": 2.83,
+    "mechanism": 4.25
+   }
+  },
+  {
+   "stage": "plus_literature_agents",
+   "agents": 31,
+   "identifying_cells": 434,
+   "levels": {
+    "payload_identity": 16,
+    "payload_family": 8,
+    "mechanism": 5
+   },
+   "ratio": {
+    "payload_identity": 2.07,
+    "payload_family": 4.43,
+    "mechanism": 7.75
+   }
+  }
+ ],
+ "provenance": {
+  "revision": "ee8b48f23149a05e8f15648c873a7e344df0517d",
+  "dirty": true,
+  "snapshot": null,
+  "script": "granularity_ratio.py",
+  "written_utc": "2026-10-09T09:59:54+00:00",
+  "inputs": {}
+ }
+}

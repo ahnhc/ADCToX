@@ -23,7 +23,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 1. What was built | A comorbidity profile and a target antigen in, proposed designs with per-organ rates out. |
 | 2. The corpus | 3,990 cells, but only **224** identify a design coefficient, because design features are agent-level constants. |
 | 3. Results | The model does not beat a base-rate baseline on any evaluation, after two rounds of correction. |
-| 4. Where it fails | The design terms lose to a base rate by a measurable ratio, and the obvious fix is not identifiable at either granularity. |
+| 4. Where it fails | The design terms lose to a base rate by a measurable ratio; the obvious fix is not identifiable at either granularity, and the plan's "the horizon recedes at every level" holds only at the payload level. |
 | 5. What it does support | The mechanism x axis interaction, linker cleavability, and the censoring treatment. |
 | 5b. Censoring | The censoring treatment recovers signal rather than creating it, and `b_thresh` is a confounder control rather than that correction. |
 | 5c. Two event tables | The common and serious tables rank organs differently; the serious one recovers the boxed warnings. |
@@ -413,28 +413,46 @@ Put the two results together and the corpus has answered:
 There is no resolution in between. Mechanism is the finest level this data can estimate
 and it is coarser than the phenomenon.
 
-### 4.3 And more data would not reach it
+### 4.3 More data reaches it at two granularities and not at the third
 
-Measured across corpus sizes, the payload *identity* vocabulary grows as fast as the
-corpus:
+The plan's claim was that the resolution which would improve prediction recedes as fast as
+it is approached: each new agent brings a new payload, so the corpus can triple and
+identifying-cells-per-design-parameter stays flat. Its table put that at 2.12, 2.91 and 2.84
+over corpora of 17, 32 and 54 agents.
 
-| corpus | agents | identifying cells | payload classes | design params | cells per param |
-|---|---|---|---|---|---|
-| registry only | 17 | 238 | 9 | 112 | 2.12 |
-| + INN-named literature | 32 | 448 | **12** | 154 | 2.91 |
-| + code-named literature | 54 | 756 | **20** | 266 | **2.84** |
+**Two of those three rows were projections, and the third corpus does not exist.** The
+ceiling is 32 agents, of which 31 publish an any-grade column (section 5g), and the payload
+vocabulary was projected to reach 12 classes and then 20. It reaches **16 payload identities
+and 8 families** at 31 agents. Measured the plan's own way -- identifying cells over
+`(levels - 1) x 14 axes`, which reproduces its mechanism-level 4.25, 6.40 and 9.00 exactly:
 
-The first row counts the 17 agents in the registry with usable arms. The fitted model uses
-**16 and 224 cells**, because one of the 17 is an immunotoxin -- an antibody-toxin fusion
-with no linker and no conjugation chemistry -- and the design matrix has no slots to
-describe it. Both numbers appear in this report and they count different populations: 17
-is what the registry holds, 16 is what the model can represent.
+| granularity | registry, 16 agents | expanded, 31 agents | change |
+|---|---|---|---|
+| payload identity | 1.78 : 1 (10 levels) | 2.07 : 1 (16 levels) | **1.16x** |
+| payload family | 2.67 : 1 (7 levels) | 4.43 : 1 (8 levels) | 1.66x |
+| payload mechanism | 4.00 : 1 (5 levels) | **7.75 : 1** (5 levels) | **1.94x** |
 
-Tripling the corpus leaves the ratio flat, because each new agent brings a new payload.
-**The resolution that would improve prediction recedes as fast as it is approached.** This
-is the project's central structural finding, and it showed up three times independently:
-in the parameter counting, in the per-fold failure pattern, and in the identification
-failure of both family parameterizations.
+So the receding horizon is real and it is **specific to the payload level**. There the
+vocabulary grew from 10 to 16 while the corpus grew from 16 to 31, and the ratio moved 16%.
+At the family level it grew by one and the ratio rose by two thirds. At the mechanism level
+it did not grow at all -- the taxonomy was frozen at seven before extraction and five
+appear in both corpora -- and the ratio nearly doubled.
+
+**None of the three clears the plan's 8:1 floor, and the mechanism level is just under it at
+7.75.** That is the honest position: the level the model actually uses is close to
+identified rather than comfortably short of it, and the level that would improve prediction
+is the one that recedes.
+
+The first row counts the 16 agents the fitted model can represent. The registry holds 17
+with usable arms; one is an immunotoxin -- an antibody-toxin fusion with no linker and no
+conjugation chemistry -- and the design matrix has no slots to describe it. Both numbers
+appear in this report and they count different populations.
+
+The structural finding stands, narrowed: it showed up three times independently -- in the
+parameter counting at the payload level, in the per-fold failure pattern, and in the
+identification failure of both family parameterizations -- and the plan's version of it
+overstated the case by projecting a payload vocabulary that grew faster than the one that
+exists.
 
 ## 5. What the model does support
 
@@ -1438,7 +1456,16 @@ neurologic.
    meaning nothing. It was not run, and the reason is reported.
 5. **Design features are agent-level constants**, so 3,990 cells carry 224 cells' worth of
    design information. A sample-size illusion.
-6. **Payload-class interactions are unreachable at any corpus size** (section 4.2).
+6. **Payload-identity interactions are unreachable at any corpus size, and the two coarser
+   levels are not** (section 4.3). The plan's claim was that the identification ratio stays
+   flat at every granularity as the corpus grows -- 2.12, 2.91, 2.84 over 17, 32 and 54
+   agents -- and two of those rows were projections of a 54-agent corpus that was measured
+   not to exist and of a payload vocabulary that grew faster than the real one. Measured the
+   plan's own way, from 16 agents to 31: payload identity 1.78 to 2.07 (**1.16x**, 10 levels
+   to 16), family 2.67 to 4.43 (1.66x, 7 to 8), mechanism 4.00 to **7.75** (1.94x, 5 to 5,
+   the taxonomy frozen before extraction). So the receding horizon is real and specific to
+   the payload level. None of the three clears the plan's 8:1 floor and the level the model
+   actually uses sits just under it.
 7. **Fc silencing is not a design lever.** Three primary papers contradict each other on
    the mechanism, no approved ADC uses it, and no training arm carries it. It is not
    offered as a design slot.

@@ -29,6 +29,7 @@ ART     := artifacts
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
         corpus-ablation discover mondo-audit mondo-axes exclusion-holdout \
         rank-resolution dar-gap driver-waterfall row-grade-exposure outcome-tables \
+        granularity-ratio \
         label-impairment inverse-retrieval comorbidity literature expensive \
         pmc-fetch-discovered pmc-fetch-codenames
 
@@ -39,6 +40,7 @@ all: taxonomy corpus forward censoring-sensitivity expression enrichment module-
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
+     granularity-ratio \
      check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
@@ -305,6 +307,11 @@ row-grade-exposure: ## how often a grade in a row label decides an axis
 # and a sixth of the observations per agent, so it is measured and not fitted.
 outcome-tables: ## agents, observations and identification ratio per outcome table
 	$(PY) scripts/outcome_tables.py
+
+# At which granularity does the identification ratio recede as the corpus grows? The plan
+# said every level; measured, only the payload level. Two of its three rows were projections.
+granularity-ratio: ## identification ratio by payload / family / mechanism granularity
+	$(PY) scripts/granularity_ratio.py
 
 discover: ## find every ADC that has published, by payload-linker name stem
 	$(PY) scripts/discover_adc_agents.py --out $(ART)/adc_discovery.json --retmax 400
