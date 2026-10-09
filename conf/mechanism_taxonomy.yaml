@@ -34,8 +34,9 @@ mechanisms:
     label: DNA-cleaving enediyne
     payloads: [calicheamicin]
     note: >
-      Only two ADCs with this payload have ever been approved anywhere, so this
-      mechanism is permanently degenerate as a held-out fold.
+      Only two ADCs with this payload have ever been *approved* anywhere. That is true
+      and was the wrong quantity: four have published a usable clinical toxicity table,
+      which is what a fold needs, so this mechanism is viable rather than degenerate.
   dna_crosslink:
     label: DNA minor-groove crosslinker
     payloads: [PBD, SG3199, tesirine, IGN, DGN549, sunirine]
@@ -57,6 +58,10 @@ mechanisms:
 
 # Mechanisms with fewer than 3 distinct agents cannot serve as a held-out fold: removing
 # the class removes the only agent carrying the level, so a categorical mechanism factor
-# has no coefficient left to predict with. Measured at N=17 and again at N=54: the same
-# three mechanisms are the only viable folds, and that does not improve with corpus size.
+# has no coefficient left to predict with. Measured at N=17 and again at N=32: three
+# mechanisms are viable. The claim that this "does not improve with corpus size" stood here
+# and was wrong -- it rested on the two *approved* calicheamicin ADCs standing for the
+# number with a usable toxicity table, and there are four. On the corpus merged with the
+# hand-transcribed database `dna_cleave` is viable and the count is four. See negative
+# result 43.
 min_agents_for_holdout: 3

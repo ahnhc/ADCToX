@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 43 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 46 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -1198,12 +1198,15 @@ on disk and unattributable only because nothing had named the drug. Not one pape
 involved. The literature arms later add a fifth agent to the mechanism, by which point the
 fold was already viable.
 
-The plan predicted the third fold at N=32 and predicted the rest correctly: `dna_cleave`
-stays at 2 agents and `dna_alkyl` at 2, because two calicheamicin ADCs and two duocarmycin
-ADCs are all that have published a usable table anywhere. Those folds are not waiting on
-more work, and the project does not claim them.
+The plan predicted the third fold at N=32. It predicted the rest *incorrectly*, and so did
+this report: `dna_cleave` stays at 2 agents here because two calicheamicin ADCs are approved
+anywhere, and that was silently treated as the number with a usable toxicity table. It is
+not. **Four** have one -- gemtuzumab and inotuzumab, plus PF-06647263 and ABBV-011, both
+investigational -- so the mechanism crosses the three-agent floor and `dna_cleave` is a
+viable fourth fold. The conflation of "approved" with "has published a table" is negative
+result 43.
 
-### The ceiling is 32, not 54
+### The ceiling of this pipeline is 32, which is not the ceiling of the literature
 
 Three routes, each measured before any design feature was curated -- which is the only
 reason the curation cost what it did.
@@ -2153,6 +2156,67 @@ neurologic.
     only evidence that a dependency is wired correctly is that the cheap thing stays
     cheap.**
 
+43. **The corpus ceiling this project measured was its pipeline's ceiling, not the
+    literature's, and one permanently-impossible fold turned out to be possible.** Section
+    4.3 measured the automated route to a hard stop at 32 agents and the plan called 54 a
+    ceiling beyond which "there is no road". A hand-transcribed database arrived covering 99
+    ADCs, and at this project's own quality threshold -- a denominator, an organ-specific
+    any-grade row, `min_n = 30` -- it contributes **55 agents of which 32 are new**, for a
+    merged corpus of **66**. The plan's ceiling was exceeded by 12 and this report's by 34.
+
+    The reason the automated route stopped at 32 is now measurable rather than inferred. It
+    was confined to PMC open-access articles that a parser could read, and the binding
+    constraint was never the literature: it was that a table image, a non-open-access PDF
+    and a conference poster are all invisible to it and all legible to a person. The
+    transcription is *better* than the extraction where the two can be compared -- the
+    arithmetic gate, this project's deterministic hallucination detector, passes **99.82%**
+    of the 4,433 verifiable rows at a median gap of **0.0273pp**, against **86.8%** for the
+    automated pipeline, because a human who keeps the source cell beside the number has
+    nothing to hallucinate with.
+
+    The fold count moves too, and this one is a claim this report got wrong rather than
+    merely under-measured. `dna_cleave` was recorded as permanently degenerate on the
+    grounds that "calicheamicin ADCs number two worldwide". Two are *approved*. **Four have
+    published a usable clinical toxicity table** -- gemtuzumab, inotuzumab, PF-06647263 and
+    ABBV-011 -- so the mechanism crosses the three-agent holdout floor and
+    leave-one-mechanism-out has **four** viable folds rather than three. The error was a
+    conflation of two quantities, one of which was easy to look up and the other of which
+    was the one that mattered. **A ceiling measured on one route is a fact about the route.**
+
+44. **And doubling the agents does not reach the identification floor, so result 6 survives
+    at twice the corpus size it was measured on.** The plan set a floor of 8 identifying
+    cells per design parameter for a level-by-axis interaction, and this report has never
+    reached it. Merging the database moves the ratio from **4.45 to 6.76** -- a real gain,
+    64% more identifying cells, and still short. The design is still being estimated below
+    the threshold its own plan set.
+
+    Result 6 is the sharper test, because it has only ever been measured at 17 and 31 agents
+    with 54 projected. Measured now at 66: the payload vocabulary goes from **17 identities
+    to 24** while the agent count goes from 34 to 66, so payloads per agent **falls from
+    0.500 to 0.364**. The vocabulary does decelerate, which the report did not know. It does
+    not decelerate nearly enough: a payload-level by-axis model at 66 agents needs
+    (24-1) x 14 = 322 parameters against 676 identifying cells, a ratio of **2.10:1** where
+    34 agents gave 1.99:1. **Doubling the corpus moved the payload-level identification
+    ratio by one tenth.** The structural claim stands, and it now stands on a measurement
+    instead of a projection.
+
+45. **A filter that asked "is this verifiable" while meaning "is this usable" silently
+    discarded 28% of the new corpus, including every row derived from a drug label.** The
+    arithmetic gate needs a numerator, a denominator and a printed percentage, because it
+    checks one against the other two. Written as the admission test, it dropped **1,748 of
+    6,181** organ-specific any-grade rows -- and all **883** regulatory-label rows among
+    them, because a label table prints a percentage and a denominator and never a numerator.
+    The ingest reported 54 agents and looked plausible.
+
+    The two questions come apart cleanly once asked separately. **Usable** needs a
+    denominator and either a numerator or a percentage, which makes 632 of the dropped rows
+    recoverable by reconstructing `n = round(pct * N / 100)`. **Verifiable** needs all three,
+    and a reconstructed numerator must be marked *not* verifiable, because checking it
+    against the percentage it was derived from passes by construction. Separating them
+    raised the ingest from 54 agents to **67**, and the 492 rows with no denominator at all
+    are the only irreversible loss -- no denominator, no rate. **A quality gate placed at
+    the entrance stops being a measurement and becomes a sampling rule.**
+
 ## 9b. The clean-clone check, run for the first time
 
 The plan's own acceptance test was `git clone` followed by `make all`, with the report's
@@ -2199,8 +2263,9 @@ only from a clone, which is the argument for running the check at all.
   labelled `elicited_prior` in every API response.
 * Two of the registry corpus's five payload mechanisms can serve as a held-out fold, and
   three of the expanded corpus's five: `dna_crosslink` crosses the three-agent floor on the
-  strength of the literature arms. The remaining two do not improve with corpus size, and
-  the reason is arithmetic rather than effort -- calicheamicin ADCs number two worldwide and
-  duocarmycin ADCs two. Immunotoxins and photoimmunotherapy are a mechanism each and are
+  strength of the literature arms. On the corpus merged with the hand-transcribed database
+  there are **four**, `dna_cleave` having turned out to hold four agents and not two --
+  two approved and two investigational. `dna_alkyl` stays at two and is the one fold this
+  project still does not claim. Immunotoxins and photoimmunotherapy are a mechanism each and are
   excluded from the corpus as non-conventional conjugates, which is why the figure is five
   mechanisms here and seven in the plan.

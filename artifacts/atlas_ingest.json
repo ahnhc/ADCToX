@@ -1,0 +1,94 @@
+{
+ "workbook_sha256": "ef3a04504294eadd6026e6215e905852369c22a26edf2178ecdedef1c63c6181",
+ "arithmetic_gate": {
+  "tolerance_pp": 0.6,
+  "verifiable": 4433,
+  "not_verifiable": 1183,
+  "passed": 4425,
+  "pass_rate_of_verifiable": 0.9981953530340627,
+  "median_gap_pp": 0.027272727272727337,
+  "numerator_reconstructed_from_percentage": 632,
+  "note": "Failures are flagged, not dropped -- the same rule the extraction pipeline uses. A reconstructed numerator is marked not-verifiable rather than passing, because checking it against the percentage it came from is circular."
+ },
+ "funnel": [
+  {
+   "step": "raw TOXICITY rows",
+   "rows": 17094
+  },
+  {
+   "step": "minus aggregate/outcome rows",
+   "rows": 16348,
+   "agents": 76
+  },
+  {
+   "step": "minus non-canonical duplicates",
+   "rows": 16300,
+   "agents": 76
+  },
+  {
+   "step": "any-grade only",
+   "rows": 6181,
+   "agents": 72
+  },
+  {
+   "step": "minus rows with no denominator",
+   "rows": 5689,
+   "agents": 69
+  },
+  {
+   "step": "minus rows with neither a numerator nor a percentage",
+   "rows": 5616,
+   "agents": 68
+  },
+  {
+   "step": "minus rows whose numerator exceeds its denominator",
+   "rows": 5616,
+   "agents": 68
+  },
+  {
+   "step": "minus unconjugated antibodies",
+   "rows": 5565,
+   "agents": 67
+  },
+  {
+   "step": "minus domains outside the 14 axes",
+   "rows": 5356,
+   "agents": 67
+  }
+ ],
+ "arms": 302,
+ "agents": 67,
+ "axis_cells": 2047,
+ "axes_covered": 13,
+ "source_tiers": {
+  "publication": 258,
+  "label": 22,
+  "abstract": 14,
+  "presentation": 8
+ },
+ "threshold_hat": {
+  "median": 4.522727272727273,
+  "max": 95.0,
+  "recoverable_for_arms": 302
+ },
+ "dropped_domains": {
+  "Investigations / Organ nonspecific": "A laboratory abnormality with no organ named. This project's `investigations` handling redistributes such findings per preferred term (investigations_rules.yaml), and that requires the term, not a domain label. The rows are retained in the raw frame with this reason so the redistribution can be applied later.\n",
+  "Psychiatric": "Outside the 14 axes. No MedDRA psychiatric SOC maps onto any axis here.",
+  "Neoplasm / Disease progression": "Disease progression is an outcome, not a toxicity. Counting it as an organ event would make a rapidly progressing cohort look toxic.\n",
+  "Reproductive": "Outside the 14 axes.",
+  "Injury / Procedural": "The same class the registry work excludes for procedural harm -- falls, contusions, fractures. See negative result 37.\n",
+  "Unspecified site / Review needed": "Their own review flag. Not assigned to an axis before a human confirms it.",
+  "Hematologic / Renal (multisystem)": "Two rows naming two systems. Splitting them would invent a denominator and assigning both would double-count the arm.\n"
+ },
+ "unconjugated_excluded": [
+  "farletuzumab"
+ ],
+ "provenance": {
+  "revision": "05afd36c1accabdbb8ea10b4c14af3793db27ce5",
+  "dirty": true,
+  "snapshot": null,
+  "script": "ingest_atlas_db.py",
+  "written_utc": "2026-10-09T15:31:10+00:00",
+  "inputs": {}
+ }
+}

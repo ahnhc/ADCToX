@@ -1,0 +1,117 @@
+{
+ "min_n": 30,
+ "design_parameters": 100,
+ "identification_floor": 8.0,
+ "corpora": [
+  {
+   "corpus": "registry + literature (ours)",
+   "agents": 34,
+   "identifying_cells": 445,
+   "cells_per_design_parameter": 4.45,
+   "meets_identification_floor": false,
+   "payload_identities": 17,
+   "payload_families": 9,
+   "payloads_per_agent": 0.5
+  },
+  {
+   "corpus": "atlas only",
+   "agents": 55,
+   "identifying_cells": 413,
+   "cells_per_design_parameter": 4.13,
+   "meets_identification_floor": false,
+   "payload_identities": 19,
+   "payload_families": 7,
+   "payloads_per_agent": 0.345
+  },
+  {
+   "corpus": "merged",
+   "agents": 66,
+   "identifying_cells": 676,
+   "cells_per_design_parameter": 6.76,
+   "meets_identification_floor": false,
+   "payload_identities": 24,
+   "payload_families": 10,
+   "payloads_per_agent": 0.364
+  }
+ ],
+ "new_agents": [
+  "a166",
+  "abbv_011",
+  "ags_16c3f",
+  "arx788",
+  "atg_022",
+  "bat_8006",
+  "bms_986148",
+  "coltuximab_ravtansine",
+  "crb_701",
+  "dlye5953a",
+  "dmot4039a",
+  "dp_303c",
+  "fs_1502",
+  "glembatumumab_vedotin",
+  "iladatuzumab_vedotin",
+  "indatuximab_ravtansine",
+  "indusatumab_vedotin",
+  "lifastuzumab_vedotin",
+  "lorvotuzumab_mertansine",
+  "medi2228",
+  "mrg_004a",
+  "mytx_011",
+  "pf_06647263",
+  "pf_06804103",
+  "pinatuzumab_vedotin",
+  "samrotamab_vedotin",
+  "sc_002",
+  "sirtratumab_vedotin",
+  "sysa_1801",
+  "trastuzumab_rezetecan",
+  "vadastuximab_talirine",
+  "zilovertamab_vedotin"
+ ],
+ "agents_lost_to_unassignable_payload": [
+  "for_46",
+  "pf_06650808"
+ ],
+ "folds": [
+  {
+   "mechanism": "tubulin",
+   "agents": 42,
+   "holdout_viable": true
+  },
+  {
+   "mechanism": "topo1",
+   "agents": 9,
+   "holdout_viable": true
+  },
+  {
+   "mechanism": "dna_crosslink",
+   "agents": 8,
+   "holdout_viable": true
+  },
+  {
+   "mechanism": "dna_cleave",
+   "agents": 4,
+   "holdout_viable": true
+  },
+  {
+   "mechanism": "dna_alkyl",
+   "agents": 2,
+   "holdout_viable": false
+  },
+  {
+   "mechanism": "protein_synth",
+   "agents": 1,
+   "holdout_viable": false
+  }
+ ],
+ "n_viable_folds": 4,
+ "atlas_arms_at_min_n": 140,
+ "provenance": {
+  "revision": "05afd36c1accabdbb8ea10b4c14af3793db27ce5",
+  "dirty": true,
+  "snapshot": null,
+  "script": "merged_corpus_scale.py",
+  "written_utc": "2026-10-09T15:35:19+00:00",
+  "inputs": {}
+ }
+}

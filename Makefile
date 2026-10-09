@@ -39,6 +39,7 @@ FORWARD_METRICS := $(ART)/forward_other_metrics.json
         censoring-sensitivity label-history label-changes label-change-eval \
         dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
         residual-scale comorbidity-sensitivity payload-compression \
+        atlas-ingest merged-scale \
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
@@ -224,6 +225,15 @@ hard-flags: $(FORWARD_METRICS)
 # about, and it was a hand-written word until it went stale -- see negative result 38.
 residual-scale: $(FORWARD_METRICS)
 	$(PY) scripts/residual_scale.py --artifacts $(ART) --out $(ART)/residual_scale.json
+
+# The teammate-supplied ADC database. The workbook is not redistributed -- see
+# data/raw/atlas/*/_manifest.json for its hash -- so these two targets are skipped rather
+# than failed where it is absent. docs/TEAMMATE_DATA_USE.md is the hand-off note.
+atlas-ingest:
+	$(PY) scripts/ingest_atlas_db.py
+
+merged-scale: atlas-ingest
+	$(PY) scripts/merged_corpus_scale.py
 
 # Does the comorbidity profile reach the proposed design? The product's primary input
 # against its primary output, which had never been measured. See negative result 40.

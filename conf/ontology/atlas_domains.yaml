@@ -1,0 +1,92 @@
+# Crosswalk from the teammate-supplied ADC database's `Toxicity domain` labels onto this
+# project's 14 organ-system axes.
+#
+# Why a hand-written table and not a matcher: the lesson from `term_axis` in axes.yaml and
+# from the MONDO identifier pinning is that a pattern over clinical labels eventually
+# claims a term it was not written for. Every label below is an exact string observed in
+# the TOXICITY sheet, listed with the row count it carried at ingestion, and an entry can
+# only affect the label it names.
+#
+# Their taxonomy is *finer* than ours in one place and *coarser* in none. Haematologic is
+# split six ways (neutropenia, anaemia, thrombocytopenia, leukopenia, lymphopenia, other),
+# and that detail is kept in a `source_domain` column rather than discarded, so a later
+# severity- or lineage-stratified analysis can use it without re-ingesting.
+#
+# Counts are from the 16,348 organ-specific rows of the 2026-10-10 snapshot.
+
+axis_of_domain:
+  # --- direct, one-to-one ---
+  "GI": gastrointestinal                          # 2392
+  "Hepatic": hepatic                              # 1311
+  "Skin / Subcutaneous": dermatologic             # 1023
+  "Pulmonary / Respiratory": pulmonary            # 1008
+  "Ocular": ocular                                # 914
+  "Musculoskeletal": musculoskeletal              # 702
+  "Neurologic": neurologic                        # 625
+  "Renal / Urinary": renal                        # 393
+  "Endocrine": metabolic_endocrine                # 95
+  "Ear / Labyrinth": otologic                     # 12
+
+  # --- their finer level collapsed onto ours ---
+  # Six haematologic sub-domains. The split by lineage is real and useful; this model has
+  # one haematologic axis because the registry's SOC layer has one, so the sub-domain is
+  # preserved in `source_domain` and collapsed here.
+  "Hematologic / Neutropenia": haematologic       # 590
+  "Hematologic / Anemia": haematologic            # 548
+  "Hematologic / Thrombocytopenia": haematologic  # 490
+  "Hematologic / Leukopenia": haematologic        # 358
+  "Hematologic / Lymphopenia": haematologic       # 209
+  "Hematologic / Other": haematologic             # 91
+  "Neurologic / Peripheral neuropathy": neurologic  # 427
+  "Pulmonary / ILD": pulmonary                    # 144
+  "GI / Pancreatic enzyme": gastrointestinal      # 86
+  "Metabolic / Nutrition": metabolic_endocrine    # 1776
+  "General / Systemic": constitutional            # 1512
+  # Cardiac and vascular are one axis here, as they are in the registry SOC layer.
+  "Cardiac": cardiovascular                       # 277
+  "Vascular": cardiovascular                      # 168
+
+  # Infusion-related reaction. axes.yaml already overrides this term to infectious_immune
+  # by exact normalized term, because the registry files it under three different SOCs and
+  # drops 44% of it; the same destination is used here so the two corpora agree.
+  "Immune / Infusion reaction": infectious_immune  # 97
+  "Infection / Site unspecified": infectious_immune  # 263
+
+  # Administration-site reactions are local, not systemic, but they are the same clinical
+  # family as an infusion reaction and the registry maps them to general disorders.
+  "General / Administration site": constitutional  # 28
+
+# Labels that exist in their taxonomy and have no axis here. Dropped with a reason rather
+# than silently, because a dropped label that should have been mapped is invisible.
+dropped:
+  "Investigations / Organ nonspecific":
+    rows: 420
+    reason: >
+      A laboratory abnormality with no organ named. This project's `investigations`
+      handling redistributes such findings per preferred term (investigations_rules.yaml),
+      and that requires the term, not a domain label. The rows are retained in the raw
+      frame with this reason so the redistribution can be applied later.
+  "Psychiatric":
+    rows: 154
+    reason: Outside the 14 axes. No MedDRA psychiatric SOC maps onto any axis here.
+  "Neoplasm / Disease progression":
+    rows: 95
+    reason: >
+      Disease progression is an outcome, not a toxicity. Counting it as an organ event
+      would make a rapidly progressing cohort look toxic.
+  "Reproductive":
+    rows: 25
+    reason: Outside the 14 axes.
+  "Injury / Procedural":
+    rows: 8
+    reason: >
+      The same class the registry work excludes for procedural harm -- falls, contusions,
+      fractures. See negative result 37.
+  "Unspecified site / Review needed":
+    rows: 105
+    reason: Their own review flag. Not assigned to an axis before a human confirms it.
+  "Hematologic / Renal (multisystem)":
+    rows: 2
+    reason: >
+      Two rows naming two systems. Splitting them would invent a denominator and assigning
+      both would double-count the arm.

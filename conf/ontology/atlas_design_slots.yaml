@@ -1,0 +1,149 @@
+# Crosswalk from the teammate-supplied database's free-text design fields onto this
+# project's frozen vocabularies.
+#
+# Their fields carry alternative wordings separated by " | " and an explicit "Not verified"
+# sentinel, so 33 distinct `Payload` strings stand for roughly 19 payload identities: five
+# spellings of calicheamicin, seven of the tesirine/PBD/SG3199 family, two each of
+# Amberstatin269, Aur0101 and seco-DUBA. Normalising before counting matters more than it
+# looks: the report's negative result 6 is a claim about how fast the *payload vocabulary*
+# grows, and 33 would overstate it by 70%.
+#
+# Hand-written and exact, for the reason the term_axis table in axes.yaml is: a pattern over
+# chemical names eventually claims one it was not written for. Every key below is a string
+# observed in the 2026-10-10 snapshot.
+
+# Canonical payload identity. The key is the raw string with surrounding whitespace stripped;
+# alternatives split on "|" are resolved independently and must agree.
+payload_identity:
+  "MMAE": MMAE
+  "MMAF": MMAF
+  "mcMMAF": MMAF                      # mc is the linker, not the payload
+  "DM1": DM1
+  "DM4": DM4
+  "DXd": DXd
+  "Exatecan": exatecan
+  "SN-38": SN-38
+  "SHR169265": rezetecan              # the payload of trastuzumab rezetecan
+  "KL610023": KL610023
+  "Duostatin-5 (Duo-5)": duostatin
+  "Tubulysin": tubulysin
+  "Amberstatin269 (AS269)": AS269
+  "Amberstatin AS269": AS269
+  "Aur-06380101 (Aur0101)": Aur0101
+  "Aur0101 (PF-06380101)": Aur0101
+  "N-acetyl-calicheamicin gamma1": calicheamicin
+  "N-acetyl-gamma-calicheamicin": calicheamicin
+  "N-acetyl-gamma-calicheamicin dimethyl hydrazide": calicheamicin
+  "N-acetyl-gamma-calicheamicin dimethyl hydrazide (CalichDMH)": calicheamicin
+  "PBD dimer": SG3199
+  "SG3199": SG3199
+  "SG3199 (PBD dimer); linker-payload SG3249": SG3199
+  "Tesirine (SG3249), releasing SG3199": SG3199
+  "Tesirine (SG3249); released warhead SG3199": SG3199
+  "Tesirine / PBD": SG3199
+  "Tesirine PBD dimer": SG3199
+  "Tesirine, PBD dimer": SG3199
+  "D6.5 PBD dimer": D6.5-PBD           # a distinct PBD, not SG3199
+  "SGD-1882 / PBD dimer": SGD-1882
+  "SC-DR002": SC-DR002
+  "seco-DUBA (duocarmycin prodrug)": seco-DUBA
+  "seco-DUBA / duocarmycin": seco-DUBA
+
+# Canonical payload identity -> this project's frozen mechanism taxonomy. Nothing new is
+# invented here except `rna_pol2`, recorded below with its justification.
+mechanism_of_payload:
+  MMAE: tubulin
+  MMAF: tubulin
+  DM1: tubulin
+  DM4: tubulin
+  tubulysin: tubulin
+  duostatin: tubulin
+  AS269: tubulin                      # auristatin-class
+  Aur0101: tubulin                    # auristatin-class
+  DXd: topo1
+  exatecan: topo1
+  SN-38: topo1
+  rezetecan: topo1
+  KL610023: topo1
+  calicheamicin: dna_cleave
+  SG3199: dna_crosslink
+  D6.5-PBD: dna_crosslink
+  SGD-1882: dna_crosslink
+  SC-DR002: dna_crosslink             # PBD-class warhead, per their STRUCTURE_EVIDENCE
+  seco-DUBA: dna_alkyl
+  PE38: protein_synth
+
+# Payload family, the intermediate level the report tests and rejects on identification
+# grounds. Kept so the rejection can be re-tested at the merged corpus size rather than
+# re-asserted.
+family_of_payload:
+  MMAE: auristatin
+  MMAF: auristatin
+  AS269: auristatin
+  Aur0101: auristatin
+  duostatin: auristatin
+  DM1: maytansinoid
+  DM4: maytansinoid
+  tubulysin: tubulysin
+  DXd: camptothecin
+  exatecan: camptothecin
+  SN-38: camptothecin
+  rezetecan: camptothecin
+  KL610023: camptothecin
+  calicheamicin: enediyne
+  SG3199: pbd
+  D6.5-PBD: pbd
+  SGD-1882: pbd
+  SC-DR002: pbd
+  seco-DUBA: duocarmycin
+  PE38: immunotoxin
+
+# Linker cleavability. Only one of their fourteen linker-type strings is non-cleavable; the
+# rest name a cleavage route (protease, cathepsin, disulfide, acid-labile, peptide), which is
+# the binary this project's `linker_cleavable` carries.
+cleavable_of_linker_type:
+  "Non-cleavable": false
+  "Acid-labile": true
+  "Acid-labile hydrazone": true
+  "Cathepsin B-cleavable": true
+  "Cathepsin-cleavable dipeptide": true
+  "Cleavable": true
+  "Cleavable (reducible disulfide)": true
+  "Cleavable disulfide": true
+  "Cleavable hindered disulfide": true
+  "Cleavable peptide": true
+  "Cleavable; third-generation linker as abstract description": true
+  "Hydrolysable / acid-sensitive": true
+  "Protease-cleavable": true
+  "Protease-labile": true
+
+# Mechanisms added after the 2026-10-07 freeze. The freeze exists to stop the taxonomy
+# inflating to fit new data, and its own rule is that additions are recorded with a date and
+# a justification rather than forbidden.
+post_freeze_additions:
+  rna_pol2:
+    added: 2026-10-10
+    label: RNA polymerase II inhibitor
+    payloads: [amanitin]
+    justification: >
+      HDP-101 carries an amanitin payload, which inhibits RNA polymerase II. This is a
+      mechanism that exists in the world and is absent from the frozen list because no
+      amanitin ADC appeared in the registry corpus. Adding it is not inflation: it is a
+      single-agent level, so it supplies one parameter and cannot serve as a held-out fold,
+      exactly like protein_synth and photo. Inflation would be splitting tubulin into
+      auristatin and maytansinoid, which this file still refuses to do.
+    holdout_viable: false
+
+# Agents whose payload cannot be determined from any of the three fields. Excluded rather
+# than guessed: the mechanism-by-axis term is the model's core and an arm with a wrong
+# mechanism is worse than an absent one.
+unassignable:
+  for_46: "Payload, Payload class and Payload MOA all 'Not verified'."
+  pf_06650808: "Payload, Payload class and Payload MOA all 'Not verified'."
+
+# DAR is free text: ranges ("2-3", "7-8"), tolerances ("3.5 +/- 0.5"), alternatives
+# ("3.5 | 3.7 for polatuzumab") and parentheticals ("2.25 (RP chromatography)"). The rule is
+# to take the first alternative, then the mean of a range, then the leading number, and to
+# record `dar_is_range` so a later analysis can widen those arms.
+dar_parse:
+  take: first_alternative_then_range_mean

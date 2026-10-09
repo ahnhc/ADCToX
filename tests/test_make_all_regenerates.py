@@ -8,10 +8,10 @@ Nothing noticed, because the number guard checks that a figure traces to an arte
 disk* and cannot tell whether a clean tree would still produce that artefact.
 
 So the invariant is mechanical: a script that writes under `artifacts/` is either reachable
-from `make all` or explicitly exempted here with a reason. There is one exemption: the
+from `make all` or explicitly exempted here with a reason. There are four exemptions: the
 inverse-retrieval evaluation, which refits a posterior per held-out agent and takes about
 four hours, so `make expensive` carries it the way `make fetch` carries the network steps.
-26 of the 27 artefact-writing scripts are reachable from `all`.
+The rest are reachable from `all`.
 """
 
 from __future__ import annotations
@@ -32,6 +32,13 @@ EXEMPT = {
     # a decision rather than producing a report figure: whether the product's output moves
     # between the two posteriors, which is what makes the serving choice measurable.
     "posterior_choice.py",
+    # Both read the teammate-supplied workbook, which is not redistributed: `data/raw/` is
+    # gitignored and only the hash is recorded, the same posture the MedDRA dictionary uses.
+    # `make all` has to be runnable from a clone, so these cannot be in it. The ingest is
+    # reproducible from the workbook by `make atlas-ingest merged-scale`, and
+    # docs/TEAMMATE_DATA_USE.md records what it does.
+    "ingest_atlas_db.py",
+    "merged_corpus_scale.py",
 }
 def _scripts_writing_artefacts() -> set[str]:
     out = set()
