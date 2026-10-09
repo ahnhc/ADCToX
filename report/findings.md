@@ -620,6 +620,53 @@ for every target tested, because that candidate wins on the payload profile what
 target. So the honest claim is that the target now changes the risk numbers, the bands and
 the stated reasons, and does not yet change which design is proposed first.
 
+## 5e-b. The product cannot rank its own proposals, in any of 192 queries
+
+The interface was built to refuse to order designs it cannot separate: a ranked list is
+printed only where the leader beats the runner-up on 80% of paired posterior draws, and
+otherwise the head of the list is an unordered set. Whether that threshold ever fires was
+never measured. It fires everywhere.
+
+| quantity | value |
+|---|---|
+| queries swept (24 targets x 8 comorbidity profiles) | 192 |
+| **queries with a decisive leader** | **0** |
+| queries where every displayed candidate is in one tie group | 192 |
+| median tie-group size at the head | 51.5 |
+| median share of constraint-passing candidates in that group | 73% |
+| median P(leader beats runner-up) | 0.522 |
+
+0.522 against the 0.800 required, and it barely moves across targets or profiles. This is
+not a threshold set too strictly: a leader that wins 52% of paired draws is a coin flip, and
+the number is what it is because the posterior intervals on a single axis span roughly 0.17
+to 0.28 while the designs differ by a few hundredths. **The ranked list of candidates this
+product was specified to emit does not exist.** What exists is a filtered, non-dominated set
+with per-axis intervals, and the interface now says so in those words rather than printing
+"Rank 1" six times.
+
+The fix for that display was not cosmetic, and three defects in the ranking layer came out
+of looking at it -- an exact tie read as a loss, a transitive grouping rule, and a
+non-dominated candidate displaced by a dominated one. All three are in section 9. None of
+them was covered by any of the 413 tests passing at the time.
+
+### The same sweep measures what the target antigen is worth
+
+Section 5e found the target had been an inert input and reports what the expression flag
+bought. The sweep quantifies the remainder:
+
+| quantity | value |
+|---|---|
+| queries where the target changes at least one risk band | 49 of 192 (26%) |
+| distinct sets of proposed designs across all 192 queries | **4** |
+| comorbidity profiles swept | 8 |
+
+Four distinct proposals from 192 queries, and fewer than one per profile. So the target
+changes bands and stated reasons in a quarter of queries and changes the proposed designs in
+none of them, which is exactly what section 5e claims and is now measured over the whole
+input space rather than on the handful of targets it was spot-checked on. The comorbidity
+profile does not do much better: eight profiles produce four distinct design sets, because
+the weighting changes which axes are penalised and the payload ordering survives it.
+
 ## 5f. The one positive signal, and why it is not settled
 
 Every evaluation in this report fails. This section is the exception, and it is reported
@@ -1292,6 +1339,23 @@ neurologic.
     the serious grid with 4,256 cells -- none observed -- that asserted a zero or a bound
     for a table the paper never printed. The serious table remains the robustness check for
     the registry corpus and cannot be one for the expanded corpus.
+21. **The product cannot rank its own proposals, in any of 192 queries.** A ranked list is
+    printed only where the leader beats the runner-up on 80% of paired posterior draws. The
+    leader wins a median 52.2% across 24 targets by 8 comorbidity profiles, and **0 of 192**
+    queries clear the bar; the head tie group holds a median 73% of the constraint-passing
+    candidates. The output is a non-dominated set, not a ranking, and the interface says so.
+22. **The ranking layer's comparison was inverted where it mattered most, and no test
+    noticed.** `P(a < b)` reads an exact tie as a loss, and exact ties are the normal case
+    because the model has no term separating DM1 from DM4; the two were printed as rank 1
+    and rank 2 while pairs genuinely overlapping at P = 0.53 were correctly merged. Grouping
+    also chained on adjacent pairs, which is transitive, so with that fixed all 74
+    candidates collapsed into one set until membership was anchored on the group's leader.
+    And the display took the first six of the ordering, which showed three dominated designs
+    while hiding five non-dominated ones. 413 tests passed throughout.
+23. **Four distinct proposals from 192 queries.** The target antigen changes at least one
+    risk band in 26% of queries and never changes which designs are proposed; eight
+    comorbidity profiles produce four distinct design sets. The payload ordering survives
+    every reweighting the comorbidity layer can apply.
 
 ## 10. Limitations
 

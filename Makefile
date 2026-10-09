@@ -28,6 +28,7 @@ ART     := artifacts
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
         corpus-ablation discover mondo-audit mondo-axes exclusion-holdout \
+        rank-resolution \
         label-impairment inverse-retrieval comorbidity literature expensive \
         pmc-fetch-discovered pmc-fetch-codenames
 
@@ -36,7 +37,8 @@ ART     := artifacts
 # sensitivity analysis while the report cited both.
 all: taxonomy corpus forward censoring-sensitivity expression enrichment module-b \
      comorbidity literature \
-     propose test hard-flags fold-difficulty design-effects across-agent check-report
+     propose test hard-flags fold-difficulty design-effects across-agent \
+     rank-resolution check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
 # comparison. Both depend on fetched label data, so the fetches are separate targets --
@@ -273,6 +275,12 @@ exclusion-holdout: ## MONDO organ mapping vs trial exclusion criteria, non-circu
 
 corpus-ablation: ## the three nested corpora, agents/arms/cells/identifying-cells/folds
 	$(PY) scripts/corpus_ablation.py
+
+# Can the product rank at all? The tie machinery was written to stop the system ordering
+# designs it cannot separate, and whether it ever fires was never measured. It fires on
+# every query: 0 of 192 have a decisive leader. In `all` because the report quotes it.
+rank-resolution: ## how often the proposal ranking resolves, over targets x profiles
+	$(PY) scripts/rank_resolution.py
 
 discover: ## find every ADC that has published, by payload-linker name stem
 	$(PY) scripts/discover_adc_agents.py --out $(ART)/adc_discovery.json --retmax 400
