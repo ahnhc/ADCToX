@@ -1056,13 +1056,13 @@ routes to new agents.
 
 <!-- generated: corpus-ablation -->
 
-| stage | agents | arms in the grid | cells | cells that identify a design coefficient | observed | viable LOMO folds |
-|---|---|---|---|---|---|---|
-| ClinicalTrials.gov, the original 18-agent list | 16 | 285 | 3,990 | 224 | 86.3% | 2 |
-| ClinicalTrials.gov, the literature's agent list | 22 | 299 | 4,186 | 308 | 86.6% | 3 |
-| + literature arms for agents already present | 25 | 459 | 6,426 | 350 | 67.9% | 3 |
-| + literature agents | 32 | 482 | 6,748 | 448 | 66.9% | 3 |
-| + the hand-transcribed database | **65** | 613 | 8,582 | **910** | 63.0% | **4** |
+| stage | agents | arms in the grid | cells | cells that identify a design coefficient | ratio against 100 design parameters | observed | viable LOMO folds |
+|---|---|---|---|---|---|---|---|
+| ClinicalTrials.gov, the original 18-agent list | 16 | 285 | 3,990 | 224 | 2.24 : 1 | 86.3% | 2 |
+| ClinicalTrials.gov, the literature's agent list | 22 | 299 | 4,186 | 308 | 3.08 : 1 | 86.6% | 3 |
+| + literature arms for agents already present | 25 | 459 | 6,426 | 350 | 3.5 : 1 | 67.9% | 3 |
+| + literature agents | 32 | 482 | 6,748 | 448 | 4.48 : 1 | 66.9% | 3 |
+| + the hand-transcribed database | **65** | 613 | 8,582 | **910** | **9.1 : 1** | 63.0% | **4** |
 
 Each stage is a superset of the one before it -- 4 transitions, **0 corpus arms dropped** across all of them -- so a difference in this table is always arms added and never arms lost.
 

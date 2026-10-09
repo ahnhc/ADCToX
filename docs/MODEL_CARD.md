@@ -34,23 +34,26 @@ are **agent-level constants**. Trastuzumab emtansine's 48 arms are 48 observatio
 trial populations but one observation of DM1 chemistry. The data that identifies a design
 coefficient is therefore `n_agents x n_axes`:
 
-The numbers below are for the corpus this card's results were fitted on -- the
-ClinicalTrials.gov corpus alone. A literature-extended corpus exists and is larger in the
-only way that matters for this table; its fit is in progress and this card will state its
-results or say nothing about them.
+The numbers below are for every corpus this project has built, generated from
+`artifacts/corpus_ablation.json` so the table cannot describe fewer stages than exist. **The
+results in this card are fitted on the second row**, the ClinicalTrials.gov corpus read with
+the literature's agent list.
 
-| | ClinicalTrials.gov, original agent list | ClinicalTrials.gov, literature's agent list | + literature arms |
-|---|---|---|---|
-| arms (attributable, n>=30, conventional ADC) | 285 | 299 | 482 |
-| (arm x axis) cells | 3,990 | 4,186 | 6,748 |
-| distinct agents | 16 | **22** | **32** |
-| **identifying cells (agents x axes)** | **224** | **308** | **448** |
-| design parameters | 100 | 100 | 100 |
-| ratio against identifying cells | 2.24 : 1 | 3.08 : 1 | 4.48 : 1 |
-| mechanisms with 3+ agents (a usable held-out fold) | 2 | **3** | 3 |
-| share of cells observed rather than censored | 86.3% | 86.6% | 66.9% |
+<!-- generated: corpus-ablation -->
 
-The middle column is the one this card did not have. Attribution matches a
+| stage | agents | arms in the grid | cells | cells that identify a design coefficient | ratio against 100 design parameters | observed | viable LOMO folds |
+|---|---|---|---|---|---|---|---|
+| ClinicalTrials.gov, the original 18-agent list | 16 | 285 | 3,990 | 224 | 2.24 : 1 | 86.3% | 2 |
+| ClinicalTrials.gov, the literature's agent list | 22 | 299 | 4,186 | 308 | 3.08 : 1 | 86.6% | 3 |
+| + literature arms for agents already present | 25 | 459 | 6,426 | 350 | 3.5 : 1 | 67.9% | 3 |
+| + literature agents | 32 | 482 | 6,748 | 448 | 4.48 : 1 | 66.9% | 3 |
+| + the hand-transcribed database | **65** | 613 | 8,582 | **910** | **9.1 : 1** | 63.0% | **4** |
+
+Each stage is a superset of the one before it -- 4 transitions, **0 corpus arms dropped** across all of them -- so a difference in this table is always arms added and never arms lost.
+
+<!-- /generated: corpus-ablation -->
+
+The second row is the one this card did not have. Attribution matches a
 ClinicalTrials.gov event group against the names in `conf/adc_registry.yaml`, and 17 of its
 35 agents were found by the literature's payload-linker stem sweep -- so **6 agents and 84
 identifying cells came out of registry data that was already on disk**, at no cost to the
@@ -58,15 +61,41 @@ observed share, and the third mechanism fold opens there rather than with the pa
 Extracting the arms bought 42 more identifying cells and took the observed share from 86.6%
 to 66.9%.
 
-All three columns are the **common-events** table. On the serious table the extension buys
-almost nothing -- 17 agents over 290 arms, against the registry's 16 over 284 -- because
-405 of the 414 literature arms publish no serious-adverse-event table at all. So the
-two-table comparison that this card uses as a robustness check is available for the
-registry corpus and not for the extended one.
+Every row is the **common-events** table. On the serious table the extension buys almost
+nothing -- 17 agents over 290 arms, against the registry's 16 over 284 -- because 405 of the
+414 literature arms publish no serious-adverse-event table at all, and the hand-transcribed
+database was ingested for its any-grade rows only: its **5,516** severe-grade organ rows
+with denominators, over 69 agents, are a severity table and not a seriousness one -- Grade
+>=3 is a severity cut where a serious adverse event is a regulatory category, and a severity
+table from a paper carries its own reporting cut, so it cannot serve as the uncensored
+comparison the serious table provides. A different outcome rather than more of the same. So the two-table comparison this card uses as a robustness
+check is available for the registry corpus and for neither extension.
 
-The second column is the point of the extension and the first column is what the results
-in this card rest on. Confusing the two would overstate the model: the corpus doubled, and
-whether that changes any conclusion is a measurement that has not come back yet.
+**The measurement that had not come back has come back, and it is why this card still
+reports the second row.** The 32-agent corpus's cross-validation is worse than the
+22-agent corpus's on every split -- leave-one-mechanism-out -0.156 against -0.0200,
+leave-one-family-out -0.155 against -0.0590 -- and its default fit does not converge, at a
+worst standardised seed gap of 0.722 against a threshold of 0.3. Dropping uninformative
+absences fixes the convergence and leaves the degradation where it was, so the expansion
+genuinely costs held-out accuracy rather than merely breaking the sampler. See negative
+result 50.
+
+**The last row is a different kind of corpus and changes what is identifiable.** It merges a
+hand-transcribed database of 99 ADCs supplied by a collaborator, and at this project's own
+quality threshold it reaches 65 agents and 910 identifying cells -- **9.1 : 1, the first time
+this project clears the 8:1 floor its own plan set for a level-by-axis interaction** -- and
+makes `dna_cleave` a fourth viable fold, four calicheamicin ADCs having published a usable
+table where two are approved. Its fits are running and this card will state their results or
+say nothing about them.
+
+One thing already measured about it is a reason *not* to serve it. 44 of its 65 agents have
+arms from a single reporting source, so the agent random intercept and the source term are
+collinear for two thirds of the corpus and `sigma_agent` comes back at +1.0326 against the
+registry corpus's +0.3500 -- a between-agent scale with a reporting gap added to it. The
+product adds a draw from that parameter to every prediction for a new design, so serving the
+merged posterior would report reporting practice as drug uncertainty. The merged corpus is
+for the design coefficients and the folds; the registry corpus is for the agent-level
+residual, being the only one with no source variation at all. See negative result 48.
 
 Worth reading the arms row against the identifying-cells row. Adding 312 literature arms
 for agents already present bought 14 identifying cells; the next 102 arms, belonging to

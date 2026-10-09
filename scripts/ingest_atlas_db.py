@@ -322,7 +322,34 @@ def main() -> int:
     grouped.to_parquet(out / "observations_raw.parquet", index=False)
     arm_meta.to_parquet(out / "arms_raw.parquet", index=False)
 
+    # What this ingest deliberately leaves on the table, measured so "we only took the
+    # any-grade rows" is a number rather than a shrug. The severe-grade rows are plentiful
+    # and they are not a substitute for the registry's seriousEvents table: Grade >=3 is a
+    # *severity* cut and a serious adverse event is a *regulatory* category (hospitalisation,
+    # death, a life-threatening event), and a severity table from a paper carries its own
+    # reporting cut so it would not serve the purpose the serious table serves here -- a
+    # table where an absence is a true zero. Using it would need a severity-stratified
+    # outcome, which is a different model.
+    _tox_domain = tox["Toxicity domain"].astype(str).str.strip().str.lower()
+    severe = tox[
+        tox["Grade category"].astype(str).str.contains("Grade >=3|Grade 3", na=False)
+        & ~_tox_domain.apply(lambda v: any(m in v for m in AGGREGATE_MARKERS))
+    ]
+    severe_n = pd.to_numeric(severe["At risk N"], errors="coerce")
+    unused = {
+        "severe_grade_organ_rows": int(len(severe)),
+        "severe_grade_organ_rows_with_denominator": int(severe_n.notna().sum()),
+        "severe_grade_agents": int(severe["ADC ID"].nunique()),
+        "grade_categories": {str(k): int(v) for k, v in
+                             severe["Grade category"].value_counts().items()},
+        "reason": ("Grade >=3 is a severity cut; the registry's seriousEvents table is a "
+                   "regulatory category. They are different outcomes, and a severity table "
+                   "from a paper carries its own reporting cut, so it cannot serve as the "
+                   "uncensored comparison the serious table provides."),
+    }
+
     report = {
+        "deliberately_unused": unused,
         "denominator_fallback": denominator_check,
         "workbook_sha256": hashlib.sha256(args.workbook.read_bytes()).hexdigest(),
         "arithmetic_gate": gate,
@@ -364,6 +391,10 @@ def main() -> int:
           f"axis cells {report['axis_cells']} over {report['axes_covered']} axes")
     print(f"source tiers: {report['source_tiers']}")
     print(f"threshold_hat median {report['threshold_hat']['median']:.1f}%")
+    print(f"deliberately unused: {unused['severe_grade_organ_rows_with_denominator']} "
+          f"severe-grade organ rows with a denominator over "
+          f"{unused['severe_grade_agents']} agents -- a severity table, not a seriousness "
+          "one")
     print(f"-> {out}/ and {args.report}")
     return 0
 

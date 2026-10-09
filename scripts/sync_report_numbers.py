@@ -389,8 +389,9 @@ def build_ablation_block(doc: dict) -> str | None:
     lines = [
         ABL_BEGIN, "",
         "| stage | agents | arms in the grid | cells | cells that identify a design "
-        "coefficient | observed | viable LOMO folds |",
-        "|---|---|---|---|---|---|---|",
+        "coefficient | ratio against 100 design parameters | observed | "
+        "viable LOMO folds |",
+        "|---|---|---|---|---|---|---|---|",
     ]
     for key in order:
         st = stages[key]
@@ -398,9 +399,11 @@ def build_ablation_block(doc: dict) -> str | None:
                     if m.get("viable_fold"))
         last = key == order[-1]
         bold = (lambda v: f"**{v}**") if last else (lambda v: str(v))
+        ratio = st["cells_per_design_parameter"]
         lines.append(
             f"| {ABLATION_LABELS[key]} | {bold(st['n_agents'])} | {st['n_arms']} | "
             f"{st['n_cells']:,} | {bold(st['identifying_cells'])} | "
+            f"{bold(str(ratio) + ' : 1')} | "
             f"{st['observed_share'] * 100:.1f}% | {bold(folds)} |"
         )
     # The nesting verdict belongs with the table: a stage that is not a superset of the one

@@ -1,4 +1,17 @@
 {
+ "deliberately_unused": {
+  "severe_grade_organ_rows": 6014,
+  "severe_grade_organ_rows_with_denominator": 5516,
+  "severe_grade_agents": 69,
+  "grade_categories": {
+   "Grade >=3": 2945,
+   "Grade 3-4": 1496,
+   "Grade 3": 1445,
+   "Grade 3-5": 92,
+   "Above Grade 3 (source header)": 36
+  },
+  "reason": "Grade >=3 is a severity cut; the registry's seriousEvents table is a regulatory category. They are different outcomes, and a severity table from a paper carries its own reporting cut, so it cannot serve as the uncensored comparison the serious table provides."
+ },
  "denominator_fallback": {
   "rows_with_both": 15947,
   "rows_disagreeing": 48,
@@ -92,11 +105,11 @@
   "farletuzumab"
  ],
  "provenance": {
-  "revision": "1f6fe40f59a12a1a7b28b812d24af3483fc34280",
+  "revision": "65b1c7d1757f9bd3315105024b7002190e01da79",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "ingest_atlas_db.py",
-  "written_utc": "2026-10-09T17:35:33+00:00",
+  "written_utc": "2026-10-09T17:49:37+00:00",
   "inputs": {}
  }
 }
