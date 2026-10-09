@@ -2419,21 +2419,35 @@ neurologic.
     on the mechanism split. Ten more agents and 2,562 more cells bought a model that loses
     to a base rate by more than it did before.
 
-    The temptation is to read that as "the expansion degrades prediction", and the fit's own
-    convergence check says not to. A worst standardised seed gap of **0.722** against a
-    threshold of 0.3 means the two seeds landed in different places, so the posterior the
-    cross-validation scored is not a posterior the sampler agreed on, and the fold figures
-    inherit that. The defensible statement is the stronger one anyway: **a corpus that
-    breaks the fit is not usable, whatever it would otherwise have shown.** Result 39 names
-    the mechanism -- 15 of its 32 agents have arms from one source only, so `u_agent` and
-    the source term are collinear for half the corpus -- and result 47 names a second
-    suspect, the reporting-threshold covariate reaching +63.9 where the registry corpus
-    stops at +0.7.
+    The fit also failed its own convergence check -- worst standardised seed gap **0.722**
+    against a threshold of 0.3 -- which at first looked like grounds to withhold the
+    verdict: a posterior the sampler did not agree on cannot be cross-validated. **The
+    variant that settles it has since run, and it separates the two problems cleanly.**
+
+    Refitting the same corpus with `--drop-uninformative-absences` -- which treats an absent
+    organ in an arm whose reporting cut is only an upper bound as *no information* rather
+    than as a censored observation -- takes the censored cells from 2,003 to **663** and the
+    seed gap from 0.722 to **0.190, acceptable**. So the non-convergence was the censoring
+    model applied to literature arms with uninformative bounds, which is the second suspect
+    result 47 names and not the agent-source collinearity of result 39.
+
+    And the degradation survives the fix on both splits that have finished.
+    Leave-one-mechanism-out is **-0.156 [-0.259, -0.073]** on the converged variant against
+    the broken fit's -0.161, and leave-one-family-out **-0.155 [-0.218, -0.086]** against
+    -0.151: unchanged to within a thousandth, and still excluding zero. **So the expansion genuinely degrades held-out prediction, and that is
+    not an artefact of a fit that would not converge** -- the convergence excuse was
+    available for an hour and the measurement removed it.
 
     This is what the ablation was built to answer and the answer is unflattering to the
     work that produced it. The literature sweep bought 6 agents out of data already on disk
     at no cost to the observed share (the second row of the section 4.3 table), and then
-    bought 10 more agents at the cost of a fit that does not converge.
+    bought 10 more agents at the cost of a held-out loss four times larger -- a cost that
+    one flag does not remove, because the flag fixes the sampler and not the prediction.
+
+    One operational consequence. The merged corpus carries the same kind of arm and a worse
+    version of it, the transcribed cohorts reaching a 71% reporting cut against the
+    literature's 63.9%, so both variants have to be fitted there as well or the merged
+    result cannot be told apart from this one.
 
 51. **The "irreversible" loss was partly recoverable from the same workbook, and verifying
     that took one comparison.** The ingest discarded 492 organ-specific any-grade rows for
