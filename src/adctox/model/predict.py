@@ -17,6 +17,7 @@ from __future__ import annotations
 import hashlib
 
 from dataclasses import dataclass, field
+import json
 from pathlib import Path
 
 import numpy as np
@@ -66,6 +67,28 @@ def _evidence_counts(data: ModelData) -> dict[str, np.ndarray]:
 #     zero is a genuine zero. Including them would drag the 15th percentile onto 0.0 and
 #     collapse the "low" band to nothing.
 BAND_PERCENTILES = (15.0, 60.0)
+
+
+def _fit_provenance(data: ModelData) -> dict:
+    """The stamp a served posterior needs to be traceable.
+
+    `provenance.stamp` gives the revision, whether the tree was dirty, and the pinned
+    snapshot. What it cannot give is which corpus this was fitted on, and that is the field
+    that matters here: five corpora exist and they disagree about `sigma_agent`, the
+    parameter the prediction path draws from for every new design. The corpus summary line
+    is the fit's own description of the grid, so it names the agents, the cells and the
+    censoring in one string.
+    """
+    from ..provenance import stamp
+
+    out = stamp()
+    out["corpus"] = data.summary()
+    out["n_agents"] = len(data.agents)
+    out["kind"] = str(getattr(data, "kind", "other"))
+    # `stamp` records the script that wrote the artefact; for a posterior that is the fit,
+    # and keeping it means a posterior written by a one-off script is distinguishable from
+    # one written by `make forward`.
+    return out
 
 
 def _band_edges(data: ModelData) -> tuple[float, float]:
@@ -119,6 +142,17 @@ class Posterior:
     # Tolerated as empty on load rather than added to the format guard, because a posterior
     # written before this field existed is otherwise valid and refitting takes hours.
     agents: list[str] = field(default_factory=list)
+    # Where this posterior came from: the git revision, whether the tree was dirty, the
+    # pinned raw snapshot, and the corpus summary line the fit printed. Serialised as a
+    # JSON string so the npz stays `allow_pickle=False`.
+    #
+    # Why it is here: five corpora now exist -- registry, literature-extended,
+    # explicit-cuts-only, agent-restricted, and merged with a hand-transcribed database --
+    # and they disagree about the parameter the prediction path draws from. A served
+    # posterior that cannot name the corpus it was fitted on makes two deployments
+    # indistinguishable while answering differently, and the project plan asks `/version`
+    # for a git sha and a cutoff that it had no way to supply.
+    provenance: dict = field(default_factory=dict)
 
     @classmethod
     def from_samples(cls, post: dict, data: ModelData) -> "Posterior":
@@ -146,6 +180,7 @@ class Posterior:
             kind=str(getattr(data, "kind", "other")),
             band_edges=_band_edges(data),
             agents=list(data.agents),
+            provenance=_fit_provenance(data),
             **_evidence_counts(data),
         )
 
@@ -164,11 +199,14 @@ class Posterior:
             kind=np.array([self.kind]),
             band_edges=np.array(self.band_edges, dtype=float),
             agents=np.array(self.agents, dtype=object).astype(str),
+            provenance=np.array([json.dumps(self.provenance, sort_keys=True)]),
         )
 
     # Bumped whenever the saved field set changes, so a stale artefact fails with a
-    # sentence rather than a KeyError from deep inside numpy.
-    FORMAT = 5
+    # sentence rather than a KeyError from deep inside numpy. `provenance` was added at 6
+    # and is read tolerantly rather than required, so an older posterior still loads -- the
+    # bump records the change without refusing the file.
+    FORMAT = 6
 
     @classmethod
     def load(cls, path: Path) -> "Posterior":
@@ -197,6 +235,12 @@ class Posterior:
             kind=str(z["kind"][0]),
             band_edges=(float(z["band_edges"][0]), float(z["band_edges"][1])),
             agents=[str(a) for a in z["agents"]] if "agents" in z.files else [],
+            # Tolerant, like `agents`: a posterior written before this field existed loads
+            # with an empty stamp rather than failing, and an empty stamp is distinguishable
+            # from a stamp that says nothing useful.
+            provenance=(
+                json.loads(str(z["provenance"][0])) if "provenance" in z.files else {}
+            ),
         )
 
     @property

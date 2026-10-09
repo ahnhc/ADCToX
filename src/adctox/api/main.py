@@ -357,14 +357,57 @@ def _serious_posterior() -> Posterior | None:
 
 @lru_cache(maxsize=1)
 def _version_info() -> dict:
+    """What this deployment is, including which posterior it answers from.
+
+    It used to report the corpus named in `forward_other_metrics.json`, which is the fit's
+    evaluation artefact -- and the posterior the product predicts from is written by a
+    separate run. The two can describe different corpora, and five corpora now exist that
+    disagree about `sigma_agent`, the parameter every prediction for a new design draws
+    from. So the served posterior's own stamp is the authoritative field and the metrics'
+    corpus is reported beside it, labelled, with a flag when they differ.
+    """
+    out: dict = {"app": app.version}
+
+    posterior = None
+    try:
+        posterior = _posterior()
+    except Exception:  # an absent posterior is reported, not raised, as elsewhere here
+        posterior = None
+    served = dict(getattr(posterior, "provenance", {}) or {}) if posterior else {}
+    out["served_posterior"] = {
+        "corpus": served.get("corpus"),
+        "n_agents": served.get("n_agents") or (len(posterior.agents) if posterior else None),
+        "revision": served.get("revision"),
+        "dirty": served.get("dirty"),
+        "snapshot": served.get("snapshot"),
+        "written_utc": served.get("written_utc"),
+        "written_by": served.get("script"),
+        # A posterior saved before the stamp existed loads with an empty one, and an empty
+        # stamp is a different statement from a missing posterior.
+        "stamped": bool(served),
+    }
+
     metrics = ARTIFACTS / "forward_other_metrics.json"
-    corpus = "unknown"
-    gate = None
+    evaluated: dict = {}
     if metrics.exists():
         doc = json.loads(metrics.read_text(encoding="utf-8"))
-        corpus = doc.get("corpus", "unknown")
-        gate = doc.get("gate")
-    return {"app": app.version, "corpus": corpus, "gate": gate}
+        evaluated = {
+            "corpus": doc.get("corpus", "unknown"),
+            "revision": (doc.get("provenance") or {}).get("revision"),
+            "snapshot": (doc.get("provenance") or {}).get("snapshot"),
+        }
+        out["gate"] = doc.get("gate")
+    out["evaluated_fit"] = evaluated or None
+
+    served_corpus, eval_corpus = served.get("corpus"), evaluated.get("corpus")
+    out["served_and_evaluated_agree"] = (
+        None if not (served_corpus and eval_corpus) else served_corpus == eval_corpus
+    )
+    # Kept for callers that read `corpus`; it now names the served posterior where that is
+    # known, because the alternative was naming a corpus this deployment does not predict
+    # from.
+    out["corpus"] = served_corpus or eval_corpus or "unknown"
+    return out
 
 
 # Served from the same process as the API: one artefact, one port, no CORS. The plan's
