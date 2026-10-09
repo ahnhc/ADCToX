@@ -130,6 +130,7 @@ def build(
     kind: str = "other",
     min_n: int = 30,
     conventional_only: bool = True,
+    drop_agents: list[str] | None = None,
 ) -> ModelData:
     """Assemble the full (arm x axis) grid for one event table.
 
@@ -140,6 +141,25 @@ def build(
     reported as such.
     """
     arms = arms.copy()
+    if drop_agents:
+        # Holding an agent out for an honest out-of-corpus prediction, which is what the
+        # inverse-retrieval evaluation needs: the model must not have seen the drug whose
+        # design it is being asked to propose.
+        #
+        # Arms sharing a trial with the dropped agent go too. NCT03529110 is a T-DXd
+        # versus T-DM1 head-to-head, so dropping one arm leaves a comparator whose
+        # trial-level intercept was fitted partly from the arm just removed -- the leak
+        # splits.py documents, and it would flatter the retrieval exactly where the
+        # retrieval is hardest.
+        drop = set(drop_agents)
+        held = arms["agent"].isin(drop)
+        shared = set(
+            arms.loc[held & (arms["nct_id"].notna()), "nct_id"].unique().tolist()
+        )
+        multi = arms["nct_id"].value_counts()
+        shared = {t for t in shared if multi.get(t, 0) >= 2}
+        arms = arms[~(held | arms["nct_id"].isin(shared))].reset_index(drop=True)
+        obs = obs[obs["arm_key"].isin(set(arms["arm_key"]))]
     arms["n_at_risk"] = arms[["n_at_risk_other", "n_at_risk_serious"]].max(axis=1)
     keep = arms["agent"].notna() & (arms["n_at_risk"] >= min_n)
     if conventional_only:

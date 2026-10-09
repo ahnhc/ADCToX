@@ -27,7 +27,7 @@ ART     := artifacts
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
-        corpus-ablation discover mondo-audit mondo-axes exclusion-holdout label-impairment
+        corpus-ablation discover mondo-audit mondo-axes exclusion-holdout label-impairment inverse-retrieval
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
@@ -195,6 +195,12 @@ mondo-audit: ## check every pinned MONDO id against what it actually names
 
 mondo-axes: ## derive each comorbidity's organ axes from the MONDO is_a closure
 	$(PY) scripts/derive_organ_axes.py --obo $(MONDO_OBO)
+
+# The plan's most important evaluation and its most expensive: one refit per approved
+# agent, because a model that has seen a drug's pivotal trials cannot be asked to propose
+# its design. Budget about four hours on the registry corpus.
+inverse-retrieval:
+	$(PY) scripts/inverse_retrieval.py --processed $(PROC) --out $(ART)/inverse_retrieval.json
 
 label-impairment: ## FDA label hepatic/renal guidance vs the model's organ ranking
 	$(PY) scripts/label_impairment_eval.py --labels $(RAW)/openfda_label/$(DATE)

@@ -99,14 +99,22 @@ def resolve_comorbidities(condition_ids: list[str]) -> ComorbidityResolution:
     return ComorbidityResolution(severity, set(severity), per_condition)
 
 
-def _precedent_scores(designs: list[Design]) -> dict[tuple, float]:
+def _precedent_scores(
+    designs: list[Design], space: dict | None = None
+) -> dict[tuple, float]:
     """log(1 + clinical ADCs sharing the configuration), the anti-degeneracy objective.
 
     Scored at component level rather than whole-configuration level, because almost no
     exact configuration has been built more than once -- of 5,822 cartesian
     payload-linker combinations in the reference corpus, only 135 (2.3%) exist at all.
     """
-    doc = yaml.safe_load((CONF / "design_space.yaml").read_text(encoding="utf-8"))
+    # `space` lets a caller supply counts with one agent's own contribution removed. The
+    # inverse-retrieval evaluation needs that: O3 rewards configurations clinical ADCs
+    # already use, and the agent being searched for is one of them, so leaving its counts
+    # in would let memory pass for prediction.
+    doc = space or yaml.safe_load(
+        (CONF / "design_space.yaml").read_text(encoding="utf-8")
+    )
     out: dict[tuple, float] = {}
     for d in designs:
         n = min(
@@ -162,6 +170,7 @@ def propose(
     lam: float = 2.0,
     hard_flags: bool = True,
     serious_posterior: Posterior | None = None,
+    design_space_override: dict | None = None,
 ) -> dict:
     """The primary product path.
 
@@ -280,7 +289,7 @@ def propose(
         sd_passing, common_passing = sd_passing[:n], common_passing[:n]
     scored = score_designs(
         passing, common_passing, axes, weights,
-        _precedent_scores(passing), engine,
+        _precedent_scores(passing, design_space_override), engine,
         at_risk_axes=comorb.at_risk_axes,
         evidence_by_mechanism=evidence_arg,
         serious_draws=sd_passing,
