@@ -144,3 +144,41 @@ def test_propose_and_assess_cannot_disagree_about_novelty_tier():
         f"{missing}. The enumerator would rank them as tier 1 while /assess reports them "
         f"as tier 2. Fitted families: {sorted(fitted)}"
     )
+
+
+def test_a_registry_agent_may_have_no_stated_dar() -> None:
+    """A latent assumption that new data broke.
+
+    `_nearest_real_adc` called `float(spec["dar"])` unconditionally, which held while the
+    registry contained only approved drugs whose labels state a DAR. Curating 16 agents
+    from the primary literature put 11 entries in with `dar: null` -- the figure is simply
+    not stated in their papers, and guessing one would feed a regression coefficient a
+    number presented as measured. The call then raised TypeError on every proposal.
+
+    An unknown DAR counts as a *difference*, not a match. The comparison is a Hamming
+    distance over design slots, so letting an unknown slot pass free would make an agent
+    with missing data look closer to a design than one with a complete record.
+    """
+    from adctox.design.enumerate import Design
+    from adctox.pipeline import _nearest_real_adc
+
+    registry = _load("adc_registry.yaml")["agents"]
+    without_dar = [k for k, v in registry.items() if v.get("dar") is None]
+    assert without_dar, (
+        "this test is vacuous unless some registry agent lacks a DAR; if the registry "
+        "ever becomes complete, keep the None branch anyway -- the next curated agent "
+        "will reintroduce it"
+    )
+
+    design = Design(
+        target="ERBB2", payload="MMAE", mechanism="tubulin", linker="vc_PABC",
+        cleavable=True, conjugation="interchain_cysteine", dar=4.0, isotype="IgG1",
+        masking="none", has_unapproved_component=False,
+    )
+    sentence, diffs = _nearest_real_adc(design, registry)
+    assert sentence and isinstance(diffs, str)
+    # And an agent with no DAR never wins on a design whose DAR is known, because the
+    # unknown slot costs it a difference.
+    for agent in without_dar:
+        _, lone = _nearest_real_adc(design, {agent: registry[agent]})
+        assert "DAR unknown" in lone, (agent, lone)

@@ -132,7 +132,15 @@ def _nearest_real_adc(design: Design, registry: dict) -> tuple[str | None, str |
             diffs.append(f"payload {spec['payload']} -> {design.payload}")
         if spec["linker_type"] != design.linker:
             diffs.append(f"linker {spec['linker_type']} -> {design.linker}")
-        if abs(float(spec["dar"]) - design.dar) > 0.25:
+        if spec.get("dar") is None:
+            # An agent whose DAR no source states cannot be confirmed as matching, so the
+            # slot counts as a difference. Letting it pass silently would make an agent
+            # with missing data look *closer* to the design than one with a complete
+            # record -- the comparison is a Hamming distance over slots, so an unknown
+            # slot has to cost something. Registry agents curated from the literature
+            # routinely have no stated DAR; 11 of the 16 added from the stem sweep do not.
+            diffs.append(f"DAR unknown -> {design.dar}")
+        elif abs(float(spec["dar"]) - design.dar) > 0.25:
             diffs.append(f"DAR {spec['dar']} -> {design.dar}")
         if spec["isotype"] != design.isotype:
             diffs.append(f"isotype {spec['isotype']} -> {design.isotype}")

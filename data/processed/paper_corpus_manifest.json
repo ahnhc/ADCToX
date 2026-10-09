@@ -1,13 +1,13 @@
 {
   "provenance": {
-    "revision": "4ba42e3d883fab4f5131d813c3ba557f7cafd3ee",
+    "revision": "d84a85f65b9d8e16759051fbb0c1e6e839164c43",
     "dirty": true,
     "snapshot": null,
     "script": "merge_literature_corpus.py",
-    "written_utc": "2026-10-09T01:59:02+00:00",
+    "written_utc": "2026-10-09T02:36:58+00:00",
     "inputs": {
-      "cells": "sha256:138dd4b9fb5267a0e35f61b176bb279705806de5f4007dea50d59f72c35d3fd3",
-      "registry": "sha256:9a5a2d8bb098a42caa825eab6be011a2ab5659b9185fe930279114506c4c2aa9"
+      "cells": "sha256:b1beec4d86c2ec8b4cace971bdf2690c687f12a23a038378ad2483898d8963d1",
+      "registry": "sha256:3930094cdf56258ab93157b6b89a31c9dc9a698658e99fd83671b0c26d1c08c7"
     }
   },
   "filters": {
@@ -15,30 +15,43 @@
     "include_registry_overlap": false,
     "explicit_threshold_only": false
   },
-  "n_cells_in": 4781,
-  "n_cells_kept": 3340,
-  "n_arms": 312,
-  "n_observations": 1413,
-  "n_agents": 14,
-  "n_trials": 14,
-  "n_arms_threshold_upper_bound": 260,
+  "n_cells_in": 6362,
+  "n_cells_kept": 4723,
+  "n_arms": 408,
+  "n_observations": 1974,
+  "n_agents": 27,
+  "n_trials": 23,
+  "n_arms_threshold_upper_bound": 341,
   "arms_per_agent": {
     "sacituzumab_govitecan": 48,
     "trastuzumab_emtansine": 41,
     "datopotamab_deruxtecan": 37,
+    "disitamab_vedotin": 33,
     "belantamab_mafodotin": 30,
     "brentuximab_vedotin": 29,
     "enfortumab_vedotin": 28,
     "polatuzumab_vedotin": 25,
     "trastuzumab_deruxtecan": 25,
     "telisotuzumab_vedotin": 17,
+    "telisotuzumab_adizutecan": 15,
     "inotuzumab_ozogamicin": 10,
     "patritumab_deruxtecan": 7,
     "tisotumab_vedotin": 7,
     "mirvetuximab_soravtansine": 6,
+    "izalontamab_brengitecan": 6,
+    "praluzatamab_ravtansine": 6,
+    "anetumab_ravtansine": 5,
+    "depatuxizumab_mafodotin": 5,
+    "rovalpituzumab_tesirine": 5,
+    "enapotamab_vedotin": 4,
+    "farletuzumab_ecteribulin": 4,
+    "cofetuzumab_pelidotin": 4,
+    "serclutamab_talirine": 4,
+    "sacituzumab_tirumotecan": 3,
+    "tusamitamab_ravtansine": 2,
     "pivekimab_sunirine": 2
   },
   "arms_per_gate": {
-    "title": 312
+    "title": 408
   }
 }

@@ -1,0 +1,1000 @@
+{
+  "provenance": {
+    "revision": "d84a85f65b9d8e16759051fbb0c1e6e839164c43",
+    "dirty": true,
+    "snapshot": null,
+    "script": "extract_pmc_cells.py",
+    "written_utc": "2026-10-09T02:36:16+00:00",
+    "inputs": {
+      "pt_dictionary": "sha256:59dfb370333da71c8b7315ba6910f6aaf16b49f382e69c486446c6ab2277c11b",
+      "registry": "sha256:3930094cdf56258ab93157b6b89a31c9dc9a698658e99fd83671b0c26d1c08c7"
+    }
+  },
+  "funnel": {
+    "articles": 132,
+    "gate:title": 132,
+    "trial_id:resolved": 30,
+    "tables": 330,
+    "not_ae_table": 238,
+    "ae_tables": 92,
+    "row_or_cell:denominator_inferred": 33,
+    "row_or_cell:column_attributed_by_title": 99,
+    "row_or_cell:row_pt": 953,
+    "row_or_cell:cells_extracted": 1581,
+    "tables_accepted": 42,
+    "accepted_kind:other": 41,
+    "cells": 1581,
+    "cells_arith_ok": 1581,
+    "trial_id:ext_link_names_2_trials": 18,
+    "trial_id:ext_link_names_3_trials": 9,
+    "row_or_cell:rejected_no_usable_column": 29,
+    "table_rejected:no_usable_column": 29,
+    "row_or_cell:row_aggregate": 151,
+    "row_or_cell:rejected_no_mapped_rows": 15,
+    "table_rejected:no_mapped_rows": 15,
+    "article_unattributed": 12,
+    "trial_id:no_trial_id": 58,
+    "trial_id:ext_link_names_5_trials": 4,
+    "row_or_cell:column_dropped_as_subgroup": 97,
+    "row_or_cell:row_not_an_event": 70,
+    "trial_id:ext_link_names_12_trials": 1,
+    "trial_id:ext_link_names_6_trials": 3,
+    "trial_id:ext_link_names_4_trials": 7,
+    "row_or_cell:row_soc_header": 24,
+    "row_or_cell:rejected_ambiguous_column": 11,
+    "table_rejected:ambiguous_column": 6,
+    "trial_id:ext_link_names_8_trials": 1,
+    "row_or_cell:title_path_blocked_by_foreign_agent": 2,
+    "trial_id:ext_link_names_9_trials": 1,
+    "accepted_kind:serious": 1
+  },
+  "agents_recovered": [
+    "anetumab_ravtansine",
+    "camidanlumab_tesirine",
+    "cofetuzumab_pelidotin",
+    "depatuxizumab_mafodotin",
+    "disitamab_vedotin",
+    "enapotamab_vedotin",
+    "farletuzumab_ecteribulin",
+    "izalontamab_brengitecan",
+    "praluzatamab_ravtansine",
+    "rovalpituzumab_tesirine",
+    "sacituzumab_tirumotecan",
+    "serclutamab_talirine",
+    "telisotuzumab_adizutecan",
+    "tusamitamab_ravtansine"
+  ],
+  "agents_sought": [
+    "anetumab_ravtansine",
+    "belantamab_mafodotin",
+    "brentuximab_vedotin",
+    "camidanlumab_tesirine",
+    "cofetuzumab_pelidotin",
+    "datopotamab_deruxtecan",
+    "depatuxizumab_mafodotin",
+    "disitamab_vedotin",
+    "enapotamab_vedotin",
+    "enfortumab_vedotin",
+    "farletuzumab_ecteribulin",
+    "gemtuzumab_ozogamicin",
+    "ifinatamab_deruxtecan",
+    "inotuzumab_ozogamicin",
+    "izalontamab_brengitecan",
+    "loncastuximab_tesirine",
+    "mirvetuximab_soravtansine",
+    "moxetumomab_pasudotox",
+    "patritumab_deruxtecan",
+    "pivekimab_sunirine",
+    "polatuzumab_vedotin",
+    "praluzatamab_ravtansine",
+    "rovalpituzumab_tesirine",
+    "sacituzumab_govitecan",
+    "sacituzumab_tirumotecan",
+    "serclutamab_talirine",
+    "telisotuzumab_adizutecan",
+    "telisotuzumab_vedotin",
+    "tisotumab_vedotin",
+    "trastuzumab_deruxtecan",
+    "trastuzumab_duocarmazine",
+    "trastuzumab_emtansine",
+    "tusamitamab_ravtansine",
+    "vobramitamab_duocarmazine"
+  ],
+  "per_agent": {
+    "anetumab_ravtansine": {
+      "articles": 5,
+      "ae_tables": 2,
+      "tables_accepted": 2,
+      "cells": 102
+    },
+    "belantamab_mafodotin": {},
+    "brentuximab_vedotin": {},
+    "camidanlumab_tesirine": {
+      "articles": 2,
+      "ae_tables": 2,
+      "tables_accepted": 2,
+      "cells": 126
+    },
+    "cofetuzumab_pelidotin": {
+      "articles": 2,
+      "ae_tables": 3,
+      "rejected_no_usable_column": 2,
+      "tables_accepted": 1,
+      "cells": 40
+    },
+    "datopotamab_deruxtecan": {},
+    "depatuxizumab_mafodotin": {
+      "articles": 8,
+      "ae_tables": 10,
+      "rejected_no_usable_column": 2,
+      "rejected_no_mapped_rows": 3,
+      "tables_accepted": 4,
+      "cells": 42,
+      "rejected_ambiguous_column": 1
+    },
+    "disitamab_vedotin": {
+      "articles": 71,
+      "ae_tables": 39,
+      "rejected_no_usable_column": 15,
+      "tables_accepted": 16,
+      "cells": 538,
+      "rejected_ambiguous_column": 4,
+      "rejected_no_mapped_rows": 4
+    },
+    "enapotamab_vedotin": {
+      "articles": 2,
+      "ae_tables": 1,
+      "tables_accepted": 1,
+      "cells": 43
+    },
+    "enfortumab_vedotin": {},
+    "farletuzumab_ecteribulin": {
+      "articles": 4,
+      "ae_tables": 3,
+      "rejected_no_mapped_rows": 1,
+      "tables_accepted": 2,
+      "cells": 56
+    },
+    "gemtuzumab_ozogamicin": {},
+    "ifinatamab_deruxtecan": {
+      "articles": 2,
+      "ae_tables": 2,
+      "rejected_no_usable_column": 1,
+      "rejected_no_mapped_rows": 1
+    },
+    "inotuzumab_ozogamicin": {},
+    "izalontamab_brengitecan": {
+      "articles": 2,
+      "ae_tables": 2,
+      "tables_accepted": 2,
+      "cells": 178
+    },
+    "loncastuximab_tesirine": {},
+    "mirvetuximab_soravtansine": {},
+    "moxetumomab_pasudotox": {},
+    "patritumab_deruxtecan": {},
+    "pivekimab_sunirine": {},
+    "polatuzumab_vedotin": {},
+    "praluzatamab_ravtansine": {
+      "articles": 1,
+      "ae_tables": 2,
+      "rejected_no_mapped_rows": 1,
+      "tables_accepted": 1,
+      "cells": 24
+    },
+    "rovalpituzumab_tesirine": {
+      "articles": 4,
+      "ae_tables": 3,
+      "tables_accepted": 2,
+      "cells": 129,
+      "rejected_no_mapped_rows": 1
+    },
+    "sacituzumab_govitecan": {},
+    "sacituzumab_tirumotecan": {
+      "articles": 15,
+      "ae_tables": 10,
+      "tables_accepted": 2,
+      "cells": 41,
+      "rejected_no_usable_column": 6,
+      "rejected_no_mapped_rows": 2
+    },
+    "serclutamab_talirine": {
+      "articles": 1,
+      "ae_tables": 1,
+      "tables_accepted": 1,
+      "cells": 75
+    },
+    "telisotuzumab_adizutecan": {
+      "articles": 2,
+      "ae_tables": 4,
+      "tables_accepted": 4,
+      "cells": 148
+    },
+    "telisotuzumab_vedotin": {},
+    "tisotumab_vedotin": {},
+    "trastuzumab_deruxtecan": {},
+    "trastuzumab_duocarmazine": {},
+    "trastuzumab_emtansine": {},
+    "tusamitamab_ravtansine": {
+      "articles": 7,
+      "ae_tables": 6,
+      "rejected_no_mapped_rows": 1,
+      "tables_accepted": 2,
+      "cells": 39,
+      "rejected_no_usable_column": 3
+    },
+    "vobramitamab_duocarmazine": {
+      "articles": 4,
+      "ae_tables": 2,
+      "rejected_no_mapped_rows": 1,
+      "rejected_ambiguous_column": 1
+    }
+  },
+  "axis_cells": {
+    "gastrointestinal": 290,
+    "metabolic_endocrine": 227,
+    "constitutional": 179,
+    "ocular": 43,
+    "hepatic": 155,
+    "haematologic": 330,
+    "dermatologic": 91,
+    "pulmonary": 52,
+    "musculoskeletal": 46,
+    "neurologic": 95,
+    "infectious_immune": 29,
+    "renal": 26,
+    "cardiovascular": 18
+  },
+  "cells_by_denominator_source": {
+    "inferred_corroborated": 393,
+    "header": 1188
+  },
+  "cells_by_attribution_gate": {
+    "title": 1581
+  },
+  "unmapped_rows": {
+    "Treatment regimen": 6,
+    "BMI": 4,
+    "Cycle length": 4,
+    "Ocular": 4,
+    "≥+0.3 change on LogMAR scale in baseline-adjusted visual acuity OR grade ≥3 CEAE": 3,
+    "≥+0.3 change on LogMAR scale in baseline-adjusted visual acuity": 3,
+    "Grade ≥3 CEAE": 3,
+    "Insomnia": 3,
+    "Age/years": 3,
+    "Underlying diseases": 3,
+    "HER2 expression status": 3,
+    "Previous use of trastuzumab": 3,
+    "Line of RC48 therapy": 3,
+    "SAE": 3,
+    "Patients tested, n": 2,
+    "Hyperbilirubinemia": 2,
+    "Liver impairment": 2,
+    "Maculopapular rash": 2,
+    "GBS": 2,
+    "FZEC discontinuation": 2,
+    "FZEC dose reduction": 2,
+    "FZEC interruption": 2,
+    "Grade ≥3 TRAE": 2,
+    "ECOG performance status": 2,
+    "Non-ocular": 2,
+    "Nonocular": 2,
+    "Neuropathy, peripheral": 1,
+    "Adjuvant phase": 1,
+    "Post-BCTL intervention": 1,
+    "Patients who met the primary endpoint and received BCTL intervention": 1,
+    "Age, years, median (range)": 1,
+    "Male sex": 1,
+    "Body surface area, m2, median (range)": 1,
+    "Measurable disease": 1,
+    "Primary tumor location": 1,
+    "Colon/rectum": 1,
+    "Stomach": 1,
+    "Gastroesophageal junction": 1,
+    "Pancreas": 1,
+    "Organs involved in >30% patients in either cohort": 1,
+    "Number of prior regimens, median (range)": 1,
+    "Prior anti-tubulin exposure": 1,
+    "CEACAM5 expression in tumor samples": 1,
+    "<50%": 1,
+    "50%–80%": 1,
+    "≥80%": 1,
+    "Circulating CEA level": 1,
+    "<5 μg/L": 1,
+    "≥5 μg/L": 1,
+    "Treatment-related grade ≥3 TEAE": 1,
+    "Serious treatment-related TEAE": 1,
+    "Decreased white blood count": 1,
+    "Decreased platelet": 1,
+    "TSH elevation": 1,
+    "Nausea or Vomiting": 1,
+    "Infusion related reaction": 1,
+    "Hematology investigations": 1,
+    "Hepatobiliary investigations": 1,
+    "Gamma‐glutamyl transferase increased": 1,
+    "Vomited": 1,
+    "Alfa hydroxybutyrate dehydrogenase increased": 1,
+    "Pain in limb": 1,
+    "Decreased WBC count": 1,
+    "Hand-foot syndrome": 1,
+    "Nausea or vomiting": 1,
+    "Intestinal stoma site bleeding": 1,
+    "Peripheral neuropathy (sensory/motor)": 1,
+    "Infusion-related reaction": 1,
+    "Blurred/decreased vision": 1,
+    "Early corneal microcysts": 1,
+    "Eye floaters": 1,
+    "Outcome of adverse events": 1,
+    "Preferred term": 1,
+    "Serious": 1,
+    "Led to treatment interruption": 1,
+    "Led to dose reduction": 1,
+    "Led to dose discontinuation": 1,
+    "Led to dose modification": 1,
+    "Occurring in ≥20% of patients in the total population": 1,
+    "No AE": 1,
+    "Neurotoxicity (%)": 1,
+    "Gastrointestinal reactions (%)": 1,
+    "Rash (%)": 1,
+    "Gingival bleeding (%)": 1,
+    "Alopecia (%)": 1,
+    "Pain (%)": 1,
+    "Fatigue (%)": 1,
+    "Weight loss (%)": 1,
+    "Blurred vision (%)": 1,
+    "WBC decreased (%)": 1,
+    "Platelet count decreased (%)": 1,
+    "Anemia (%)": 1,
+    "Lymphocyte count decreased (%)": 1,
+    "Neutrophil count decreased (%)": 1,
+    "AST increased (%)": 1,
+    "ALT increased (%)": 1,
+    "GGT increased (%)": 1,
+    "Hematological TEAEsb": 1,
+    "Leukopoenia": 1,
+    "Aspartate aminotransferase level increased": 1,
+    "Gamma glutamyl transpeptidase": 1,
+    "Alanine aminotransferase level increased": 1,
+    "Aplastic anemia": 1,
+    "Autoimmune hemolytic anemia": 1,
+    "Generalized dermatitis exfoliative": 1,
+    "Lymphocytopenia": 1,
+    "Increased γGT": 1,
+    "Anemic": 1,
+    "Interstitial pneumonia": 1,
+    "Immune-mediated myositis": 1,
+    "Immunological cystitis": 1,
+    "Other seriousa": 1,
+    "ILD/Pneumonitisa": 1,
+    "Hypodynamia": 1,
+    "Infectious pneumonia": 1,
+    "Elevated serum creatinine": 1,
+    "Thyroid dysfunction": 1,
+    "Other serious": 1,
+    "18~49": 1,
+    "> 18.5 kg·m-2": 1,
+    "18.5~23.9 kg·m-2": 1,
+    "> 23.9 kg·m-2": 1,
+    "RC48 monotherapy": 1,
+    "ICIs+RC48": 1,
+    "targeted+RC48": 1,
+    "chemotherapy+RC48": 1,
+    "ICIs+chemotherapy/targeted+RC48": 1,
+    "2-week regimen": 1,
+    "3-week regimen": 1,
+    "4-week regimen": 1,
+    "HER2 over expression": 1,
+    "HER2 low expression": 1,
+    "3rd line": 1,
+    ">3rd line": 1,
+    "Whether ADR occurred": 1,
+    "Hemoglobin reduction": 1,
+    "Cardiovascular toxicity": 1,
+    "Digestive tract toxicity": 1,
+    "Cutaneous toxicity": 1,
+    "Elevated uric acid": 1,
+    "Hematologic with an any grade incidence": 1,
+    "Nonhematologic with an any grade incidence >20%": 1,
+    "Nonhematologic occurring with incidence >20%": 1,
+    "Adjudicated pneumonitis/ILD": 1,
+    "Corneal epitheliopathy": 1,
+    "Hematologic TEAEs": 1,
+    "Nonhematologic TEAES occurring in ≥20% of patients": 1,
+    "Adjudicated pneumonitis/": 1,
+    "infusion-related reaction": 1,
+    "ECG – QT prolonged": 1,
+    "Hematological toxicity": 1,
+    "Non-hematological toxicity": 1,
+    "Radiation cystitis": 1,
+    "Hand-foot numbness": 1,
+    "Radiation proctitis": 1,
+    "Delayed hemorrhagic cystitis": 1,
+    "Treatment-related death": 1,
+    "Dose‐limiting toxicity": 1,
+    "TRSAE": 1,
+    "Serious TRAE": 1,
+    "Median age (range), years": 1,
+    "Age < 65 years": 1,
+    "TNBC at initial diagnosis": 1,
+    "Location of metastases": 1,
+    "Visceral sites": 1,
+    "Prior therapy": 1,
+    "Taxane": 1,
+    "Anthracycline": 1,
+    "PD-1 or PD-L1 inhibitor": 1,
+    "(Neo)adjuvant": 1,
+    "Previous chemotherapy lines in advanced setting": 1,
+    "2 lines": 1,
+    "3 lines": 1,
+    "> 3 lines": 1,
+    "Treatment-related SAEs": 1,
+    "Treatment‐emergent adverse events (TEAEs)": 1,
+    "Elevated triglycerides": 1,
+    "Abnormal urinalysis": 1,
+    "ADC related to adverse events": 1,
+    "Allergic dermatitis": 1,
+    "Immune‐related to adverse events": 1,
+    "Immune‐mediated myocarditis": 1,
+    "Foreign body sensation in eye": 1,
+    "Malignant neoplasm progression": 1,
+    "Grade 3/4 TEAE": 1,
+    "Drug-related grade 3/4 TEAE": 1,
+    "Drug-related SAEs": 1,
+    "Aspartate aminotransferase elevation": 1,
+    "Alanine aminotransferase elevation": 1,
+    "Age, years": 1,
+    "Black or African American": 1,
+    "Native Hawaiian or other Pacific Islander": 1,
+    "Tumor type": 1,
+    "Breast carcinoma": 1,
+    "HR-positive, HER2-nonamplified": 1,
+    "HER2 positive": 1,
+    "Triple negative": 1,
+    "CRPC": 1,
+    "NSCLC": 1,
+    "Epithelial ovarian carcinoma": 1,
+    "Endometrial carcinoma": 1,
+    "HNSCC": 1,
+    "Cholangiocarcinoma": 1,
+    "CD166 status": 1,
+    "High": 1,
+    "Low": 1,
+    "No. of prior cancer treatment regimens": 1,
+    "Types of prior treatments": 1,
+    "Platinum-containing compound or microtubule inhibitor": 1,
+    "Platinum-containing compounds": 1,
+    "Microtubule inhibitor": 1,
+    "Anti–PD-1/PD-L1 treatment": 1,
+    "CDK4/6 inhibitor": 1,
+    "IRRs": 1,
+    "IRRs CTCAE grade ≥3": 1,
+    "Dose-limiting toxicity": 1,
+    "SAE related to CX-2009": 1,
+    "Ocular toxicity related to CX-2009": 1,
+    "Ocular toxicity CTCAE grade ≥3 related to CX-2009": 1,
+    "Incidence of grade ≥3 CX-2009–related TEAEs reported in ≥10% of patients in any dosing cohort": 1,
+    "Corneal epitheliopathy (CE)": 1
+  },
+  "rejected": {
+    "no_usable_column": [
+      {
+        "pmcid": "10413800",
+        "agent": "depatuxizumab_mafodotin",
+        "journal": "Ophthalmic Research",
+        "table": "Table 1.",
+        "caption": "Adverse event grading scales",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "10461006",
+        "agent": "disitamab_vedotin",
+        "journal": "Frontiers in Pharmacology",
+        "table": "TABLE 3",
+        "caption": "Adverse reactions and grading.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "11903475",
+        "agent": "disitamab_vedotin",
+        "journal": "Frontiers in Immunology",
+        "table": "Table 3",
+        "caption": "Comparison of treatment-related adverse events between the ADC+PD-1 and GC+PD-1 Groups.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12142944",
+        "agent": "sacituzumab_tirumotecan",
+        "journal": "Journal of Hematology & Oncology",
+        "table": "Table 5",
+        "caption": "Summary of treatment-related AEs in phase 2 in all treated patients",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12296879",
+        "agent": "tusamitamab_ravtansine",
+        "journal": "International Journal of Clinical Oncology",
+        "table": "Table 3",
+        "caption": "Overview of safety profile",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12351129",
+        "agent": "sacituzumab_tirumotecan",
+        "journal": "The Breast : Official Journal of the European Society of Mastology",
+        "table": "Table 1",
+        "caption": "Key model inputs.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12355133",
+        "agent": "disitamab_vedotin",
+        "journal": "Neoplasia (New York, N.Y.)",
+        "table": "Table 1",
+        "caption": "Safety profile.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12395257",
+        "agent": "disitamab_vedotin",
+        "journal": "The Oncologist",
+        "table": "Table 4.",
+        "caption": "Treatment-related adverse events (TRAE) in all patients.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12407659",
+        "agent": "disitamab_vedotin",
+        "journal": "Future Oncology",
+        "table": "Table 2.",
+        "caption": "Trial endpoints.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12433416",
+        "agent": "disitamab_vedotin",
+        "journal": "Cancer Immunology, Immunotherapy : CII",
+        "table": "Table 2",
+        "caption": "Treatment-related adverse events (TRAEs) of patients",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12536792",
+        "agent": "ifinatamab_deruxtecan",
+        "journal": "Future Oncology",
+        "table": "Table 2.",
+        "caption": "IDeate-Lung02: endpoints.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12780152",
+        "agent": "disitamab_vedotin",
+        "journal": "NPJ Precision Oncology",
+        "table": "Table 3",
+        "caption": "Summary of treatment-related adverse events (TRAEs)",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12896379",
+        "agent": "tusamitamab_ravtansine",
+        "journal": "CPT: Pharmacometrics & Systems Pharmacology",
+        "table": "TABLE 1",
+        "caption": "Study design.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12896379",
+        "agent": "tusamitamab_ravtansine",
+        "journal": "CPT: Pharmacometrics & Systems Pharmacology",
+        "table": "TABLE 3",
+        "caption": "Exposure/safety/joint model parameter estimates. Safety model is based on the 254 patients of the phase I study. Joint model of TS/PFS is based on the 88 nsq NS",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "12916699",
+        "agent": "sacituzumab_tirumotecan",
+        "journal": "Oncology Reviews",
+        "table": "TABLE 1",
+        "caption": "Summary of the ongoing clinical trials evaluating sac-TMT in breast cancer patients.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "13287214",
+        "agent": "sacituzumab_tirumotecan",
+        "journal": "Current Oncology Reports",
+        "table": "Table 1",
+        "caption": "Clinical trials of Sacituzumab Tirumotecan in cervical cancer",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "13287214",
+        "agent": "sacituzumab_tirumotecan",
+        "journal": "Current Oncology Reports",
+        "table": "Table 2",
+        "caption": "Clinical trials of Sacituzumab Tirumotecan in ovarian cancer",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "13287214",
+        "agent": "sacituzumab_tirumotecan",
+        "journal": "Current Oncology Reports",
+        "table": "Table 3",
+        "caption": "Clinical trials of Sacituzumab Tirumotecan in endometrial cancer",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "13368643",
+        "agent": "disitamab_vedotin",
+        "journal": "Frontiers in Oncology",
+        "table": "Table 4",
+        "caption": "Detailed patient characteristics, treatment, and pathological biomarkers (n=10).",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "13423685",
+        "agent": "disitamab_vedotin",
+        "journal": "Frontiers in Pharmacology",
+        "table": "TABLE 2",
+        "caption": "Model parameters.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "13454782",
+        "agent": "disitamab_vedotin",
+        "journal": "Frontiers in Pharmacology",
+        "table": "TABLE 2",
+        "caption": "Parameters and corresponding sources.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "13473755",
+        "agent": "cofetuzumab_pelidotin",
+        "journal": "Clinical Pharmacology and Therapeutics",
+        "table": "Table 3",
+        "caption": "Summary of exposure‐efficacy and exposure‐safety predictions",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "13488466",
+        "agent": "disitamab_vedotin",
+        "journal": "Human Vaccines & Immunotherapeutics",
+        "table": "Table 2.",
+        "caption": "Summary of model parameter input.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "13504887",
+        "agent": "disitamab_vedotin",
+        "journal": "BMJ Open",
+        "table": "Table 2",
+        "caption": "Baseline values and ranges for sensitivity analyses",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "13617043",
+        "agent": "disitamab_vedotin",
+        "journal": "Frontiers in Pharmacology",
+        "table": "TABLE 2",
+        "caption": "Treatment-related adverse events (TRAEs) in the UTUC cohort.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "8199759",
+        "agent": "depatuxizumab_mafodotin",
+        "journal": "Cancers",
+        "table": "Table 6",
+        "caption": "Drug-related treatment-emergent adverse events.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "8935729",
+        "agent": "disitamab_vedotin",
+        "journal": "OncoTargets and therapy",
+        "table": "Table 2",
+        "caption": "Comparison of Adverse Reaction Grades and ECOG and QOL Scores",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "9090390",
+        "agent": "disitamab_vedotin",
+        "journal": "Drug Delivery",
+        "table": "Table 2.",
+        "caption": "Comparison of RC48 with T-DM1 and DS-8201 in clinical trials.",
+        "reason": "no_usable_column"
+      },
+      {
+        "pmcid": "9401513",
+        "agent": "cofetuzumab_pelidotin",
+        "journal": "Clinical Cancer Research",
+        "table": "Table 3.",
+        "caption": "Summary of TRAEs by dose level with every 3 weeks dosing of PF-06647020 (all cycles, N = 112).",
+        "reason": "no_usable_column"
+      }
+    ],
+    "no_mapped_rows": [
+      {
+        "pmcid": "10413800",
+        "agent": "depatuxizumab_mafodotin",
+        "journal": "Ophthalmic Research",
+        "table": "Table 3.",
+        "caption": "Change in OSE management due to inadequate control of OSEs (worst eye)",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "10413800",
+        "agent": "depatuxizumab_mafodotin",
+        "journal": "Ophthalmic Research",
+        "table": "Table 4.",
+        "caption": "OSEs summarized according to CEAE",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "10461573",
+        "agent": "tusamitamab_ravtansine",
+        "journal": "Cancer Research Communications",
+        "table": "TABLE 1",
+        "caption": "Baseline demographics and disease characteristics by DL in cohorts Q2W-LD and Q3W (all-treated/safety population)",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "12408859",
+        "agent": "disitamab_vedotin",
+        "journal": "Oncology Research",
+        "table": "Table 2",
+        "caption": "Treatment-related adverse events (TRAE) in all patients",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "12834294",
+        "agent": "ifinatamab_deruxtecan",
+        "journal": "Journal of Clinical Oncology",
+        "table": "TABLE 5.",
+        "caption": "Adverse Events in the Total 12-mg/kg Group (n = 137)",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "13081172",
+        "agent": "farletuzumab_ecteribulin",
+        "journal": "JTO Clinical and Research Reports",
+        "table": "Table 2",
+        "caption": "Overview of TEAEs",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "13229803",
+        "agent": "disitamab_vedotin",
+        "journal": "Frontiers in Oncology",
+        "table": "Table 1",
+        "caption": "Clinical characteristics of patients and their correlation with DCR.",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "13229803",
+        "agent": "disitamab_vedotin",
+        "journal": "Frontiers in Oncology",
+        "table": "Table 3",
+        "caption": "Univariate analysis of treatment-related adverse reactions in RC48 [n (%)].",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "13392588",
+        "agent": "vobramitamab_duocarmazine",
+        "journal": "Cancer",
+        "table": "TABLE 3",
+        "caption": "Overall safety summary across all expansion cohorts.",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "13616963",
+        "agent": "disitamab_vedotin",
+        "journal": "Nature Communications",
+        "table": "Table 3",
+        "caption": "Summary of adverse events",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "13617735",
+        "agent": "sacituzumab_tirumotecan",
+        "journal": "Breast Cancer Research : BCR",
+        "table": "Table 1",
+        "caption": "Baseline Patient Characteristics (Safety Population)",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "13617735",
+        "agent": "sacituzumab_tirumotecan",
+        "journal": "Breast Cancer Research : BCR",
+        "table": "Table 2",
+        "caption": "Summary of Key Adverse Events in the Safety Population",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "5969257",
+        "agent": "depatuxizumab_mafodotin",
+        "journal": "Cancer",
+        "table": "Table 3",
+        "caption": "Grade 3 and 4 Adverse Events",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "8342450",
+        "agent": "rovalpituzumab_tesirine",
+        "journal": "NPJ Precision Oncology",
+        "table": "Table 2",
+        "caption": "Summary of overall safety by dose.",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "9365353",
+        "agent": "praluzatamab_ravtansine",
+        "journal": "Clinical Cancer Research",
+        "table": "Table 1.",
+        "caption": "Baseline characteristics of patients (safety population).",
+        "reason": "no_mapped_rows"
+      }
+    ],
+    "ambiguous_column": [
+      {
+        "pmcid": "11742410",
+        "agent": "disitamab_vedotin",
+        "journal": "Scientific Reports",
+        "table": "Table 4",
+        "caption": "Summary of major adverse events (AEs).",
+        "reason": "ambiguous_column: col 4 ('RC48 + PD-1 (n = 34) All grades'): combination arm (joined by '+'): 'RC48 + PD-1'; col 5 ('RC48 + PD-1 (n = 34) Grades 3-5'): combination arm (joined by '+'): 'RC48 + PD-1'"
+      },
+      {
+        "pmcid": "12816211",
+        "agent": "disitamab_vedotin",
+        "journal": "Frontiers in Immunology",
+        "table": "Table 3",
+        "caption": "Summary of treatment-related adverse events (AEs) in all patients and subgroups.",
+        "reason": "ambiguous_column: col 5 ('RC48 + PD-1 (n = 32) All grades n (%)'): combination arm (joined by '+'): 'RC48 + PD-1'; col 6 ('RC48 + PD-1 (n = 32) Grade ≥3 n (%)'): combination arm (joined by '+'): 'RC48 + PD-1'"
+      },
+      {
+        "pmcid": "13238207",
+        "agent": "disitamab_vedotin",
+        "journal": "Pakistan Journal of Medical Sciences",
+        "table": "Table-I",
+        "caption": "Clinical characteristics, treatment effect, and adverse events of patients treated with HER2 ADCs.",
+        "reason": "ambiguous_column: col 2 ('DS-8201(n=6)'): names another agent: ['trastuzumab_deruxtecan']"
+      },
+      {
+        "pmcid": "13315034",
+        "agent": "disitamab_vedotin",
+        "journal": "Frontiers in Immunology",
+        "table": "Table 3",
+        "caption": "Treatment-related adverse events in Cohort B.",
+        "reason": "ambiguous_column: col 1 ('RNU+GC (n=48)'): combination arm (joined by '+'): 'RNU+GC'; col 2 ('RNU+ADC+ICI (n=53)'): combination arm (joined by '+'): 'RNU+ADC'"
+      },
+      {
+        "pmcid": "13392588",
+        "agent": "vobramitamab_duocarmazine",
+        "journal": "Cancer",
+        "table": "TABLE 4",
+        "caption": "TRAEs of all grades occurring in ≥10% of patients: Safety population (N = 143).",
+        "reason": "ambiguous_column: col 1 ('Dose escalation + cohort expansion (N = '): combination arm (joined by '+'): 'escalation + cohort'"
+      },
+      {
+        "pmcid": "8645742",
+        "agent": "depatuxizumab_mafodotin",
+        "journal": "Cancer Science",
+        "table": "TABLE 2",
+        "caption": "Most common treatment‐emergent adverse events reported in ≥20% of patients or of grade ≥3 in ≥10% of patients in all dosed population",
+        "reason": "ambiguous_column: col 2 ('2L Depatux-M + CT n = 29'): combination arm (joined by '+'): 'Depatux-M + CT'; col 3 ('1L Depatux-M DE +CT-RT n = 9'): combination arm (joined by '+'): 'DE +CT-RT'; col 4 ('1L Depatux-M + CT-RT n = 6'): combination"
+      }
+    ]
+  },
+  "rejected_counts": {
+    "no_usable_column": 29,
+    "no_mapped_rows": 15,
+    "ambiguous_column": 6
+  },
+  "trials": {
+    "n_groups": 10,
+    "n_duplicate_sources_dropped": 1,
+    "n_overlapping_registry": 1,
+    "n_sources_without_trial_id": 0,
+    "groups": [
+      {
+        "nct_id": "NCT02751918",
+        "agent": "anetumab_ravtansine",
+        "overlaps_registry": false,
+        "chosen_pmcid": "10086500",
+        "reason": "only source",
+        "candidates": [
+          "10086500"
+        ]
+      },
+      {
+        "nct_id": "NCT02874664",
+        "agent": "rovalpituzumab_tesirine",
+        "overlaps_registry": false,
+        "chosen_pmcid": "7993269",
+        "reason": "only source",
+        "candidates": [
+          "7993269"
+        ]
+      },
+      {
+        "nct_id": "NCT03234712",
+        "agent": "serclutamab_talirine",
+        "overlaps_registry": false,
+        "chosen_pmcid": "9940695",
+        "reason": "only source",
+        "candidates": [
+          "9940695"
+        ]
+      },
+      {
+        "nct_id": "NCT03500380",
+        "agent": "disitamab_vedotin",
+        "overlaps_registry": false,
+        "chosen_pmcid": "13616963",
+        "reason": "largest denominator of 2 sources",
+        "candidates": [
+          "12517412",
+          "13616963"
+        ]
+      },
+      {
+        "nct_id": "NCT04052997",
+        "agent": "camidanlumab_tesirine",
+        "overlaps_registry": true,
+        "chosen_pmcid": "12745010",
+        "reason": "only source",
+        "candidates": [
+          "12745010"
+        ]
+      },
+      {
+        "nct_id": "NCT04280341",
+        "agent": "disitamab_vedotin",
+        "overlaps_registry": false,
+        "chosen_pmcid": "10789637",
+        "reason": "only source",
+        "candidates": [
+          "10789637"
+        ]
+      },
+      {
+        "nct_id": "NCT04714190",
+        "agent": "disitamab_vedotin",
+        "overlaps_registry": false,
+        "chosen_pmcid": "12839656",
+        "reason": "only source",
+        "candidates": [
+          "12839656"
+        ]
+      },
+      {
+        "nct_id": "NCT05029882",
+        "agent": "telisotuzumab_adizutecan",
+        "overlaps_registry": false,
+        "chosen_pmcid": "13340450",
+        "reason": "only source",
+        "candidates": [
+          "13340450"
+        ]
+      },
+      {
+        "nct_id": "NCT05194982",
+        "agent": "izalontamab_brengitecan",
+        "overlaps_registry": false,
+        "chosen_pmcid": "13011950",
+        "reason": "only source",
+        "candidates": [
+          "13011950"
+        ]
+      },
+      {
+        "nct_id": "NCT05726175",
+        "agent": "disitamab_vedotin",
+        "overlaps_registry": false,
+        "chosen_pmcid": "13634177",
+        "reason": "only source",
+        "candidates": [
+          "13634177"
+        ]
+      }
+    ]
+  }
+}
