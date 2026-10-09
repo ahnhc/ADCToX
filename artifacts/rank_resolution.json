@@ -11,7 +11,9 @@
   "lead_p_median": 0.522,
   "queries_where_target_changes_a_band": 49,
   "distinct_proposals": 4,
-  "distinct_profiles": 8
+  "distinct_profiles": 8,
+  "profiles_whose_proposal_is_lambda_sensitive": 6,
+  "at_risk_share_of_objective_at_lam_2_median": 0.1875
  },
  "rows": [
   {
@@ -8463,12 +8465,63 @@
    ]
   }
  ],
+ "lambda_sensitivity": [
+  {
+   "profile": "renal + pulmonary",
+   "n_at_risk_axes": 2,
+   "at_risk_share_of_objective_at_lam_2": 0.3333333333333333,
+   "lambda_at_first_change": 5.0,
+   "distinct_proposals_over_lambda": 4
+  },
+  {
+   "profile": "hepatic",
+   "n_at_risk_axes": 1,
+   "at_risk_share_of_objective_at_lam_2": 0.1875,
+   "lambda_at_first_change": 8.0,
+   "distinct_proposals_over_lambda": 2
+  },
+  {
+   "profile": "cardiac",
+   "n_at_risk_axes": 1,
+   "at_risk_share_of_objective_at_lam_2": 0.1875,
+   "lambda_at_first_change": 5.0,
+   "distinct_proposals_over_lambda": 2
+  },
+  {
+   "profile": "neuro + ocular",
+   "n_at_risk_axes": 2,
+   "at_risk_share_of_objective_at_lam_2": 0.3333333333333333,
+   "lambda_at_first_change": 30.0,
+   "distinct_proposals_over_lambda": 2
+  },
+  {
+   "profile": "haematologic",
+   "n_at_risk_axes": 1,
+   "at_risk_share_of_objective_at_lam_2": 0.1875,
+   "lambda_at_first_change": 20.0,
+   "distinct_proposals_over_lambda": 4
+  },
+  {
+   "profile": "dermatologic",
+   "n_at_risk_axes": 1,
+   "at_risk_share_of_objective_at_lam_2": 0.1875,
+   "lambda_at_first_change": 20.0,
+   "distinct_proposals_over_lambda": 3
+  },
+  {
+   "profile": "four organs",
+   "n_at_risk_axes": 4,
+   "at_risk_share_of_objective_at_lam_2": 0.5283018867924528,
+   "lambda_at_first_change": null,
+   "distinct_proposals_over_lambda": 1
+  }
+ ],
  "provenance": {
-  "revision": "161ee7af15af24da5726ef1cca50427f5b294e28",
+  "revision": "92b94dcb6dd9777072480457d1608ab407b8af93",
   "dirty": true,
   "snapshot": null,
   "script": "rank_resolution.py",
-  "written_utc": "2026-10-09T06:40:12+00:00",
+  "written_utc": "2026-10-09T06:44:56+00:00",
   "inputs": {
    "posterior": "sha256:88933386489fa0c6642d91c6634070fa1df2b648a24c628c56deb1cbaf7eff9f",
    "serious_posterior": "sha256:cd64389be24f888f9c9daefb714a30ad8e824cd141ce3ac41b215c6c487df1e8"

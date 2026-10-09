@@ -667,6 +667,39 @@ input space rather than on the handful of targets it was spot-checked on. The co
 profile does not do much better: eight profiles produce four distinct design sets, because
 the weighting changes which axes are penalised and the payload ordering survives it.
 
+### And the comorbidity profile's influence is a function of an arbitrary constant
+
+The patient enters the objective as `w_o = 1 + lambda * severity_o`, and the shipped
+`lambda = 2` gives an at-risk organ a weight of 3 against 1 for the other thirteen. That is
+the plan's stated and defensible preference -- *you told us CrCl 25, so the renal axis is
+weighted 3x* -- and it is also the reason the profile moves the proposal so little:
+
+| profile | at-risk axes | share of the objective at lambda = 2 | lambda where the proposal first changes | distinct proposals over lambda in [0, 100] |
+|---|---|---|---|---|
+| renal + pulmonary | 2 | 33% | 5 | 4 |
+| hepatic | 1 | 19% | 8 | 2 |
+| cardiac | 1 | 19% | 5 | 2 |
+| neuro + ocular | 2 | 33% | 30 | 2 |
+| haematologic | 1 | 19% | 20 | 4 |
+| dermatologic | 1 | 19% | 20 | 3 |
+| **four organs** | 4 | 53% | **never** | **1** |
+
+Two thirds to four fifths of the objective is organs the patient has no stated problem with.
+Raising `lambda` to 30 does give all six single-concern profiles their own proposal, and
+that is not a fix -- it is choosing a constant to make the output look responsive. The
+constant is the most arbitrary quantity in the system, the plan picked 2 precisely because
+3x is a preference a reader can check, and the dependence is not even monotone: `lambda` =
+100 collapses two of the profiles back together.
+
+The last row is the one worth keeping. **A patient with four comorbidities receives the same
+proposal at every value of the constant**, because four at-risk axes out of fourteen spread
+the weight back towards uniform and the payload that is best on their average is the payload
+that is best overall. The comorbidity layer has the most influence on the simplest patient
+and none on the most complex one, which is the opposite of useful. Seven profiles is not
+enough to call that a law -- the single-concern profiles give switch points from 5 to 30 with
+no clean ordering -- but the four-organ invariance is measured and it is the case a clinician
+would care about most.
+
 ## 5f. The one positive signal, and why it is not settled
 
 Every evaluation in this report fails. This section is the exception, and it is reported
@@ -1356,6 +1389,15 @@ neurologic.
     risk band in 26% of queries and never changes which designs are proposed; eight
     comorbidity profiles produce four distinct design sets. The payload ordering survives
     every reweighting the comorbidity layer can apply.
+24. **The comorbidity profile's influence on the proposal is a function of an arbitrary
+    constant, and vanishes for the patients who need it most.** At the shipped weighting
+    constant the patient's own at-risk organs carry 19-33% of the objective, and the
+    proposal first changes between lambda = 5 and lambda = 30 depending on the profile.
+    Raising the constant until every profile gets its own answer is choosing a constant to
+    produce an appearance, and the dependence is not monotone anyway. The measured case that
+    matters: a **four-comorbidity profile receives the same proposal at every lambda from 0
+    to 100**, because four at-risk axes out of fourteen return the weighting to near-uniform.
+    The layer influences the simplest patient most and the most complex one not at all.
 
 ## 10. Limitations
 
