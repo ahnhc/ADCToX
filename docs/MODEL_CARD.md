@@ -9,9 +9,13 @@ results almost exactly -- see `## The bug that invalidated the first evaluation`
 
 ## Intended use
 
-Research prototype. Ranks chemically valid, individually precedented ADC configurations
-by predicted organ-system toxicity against a stated comorbidity profile. Not a clinical
-decision tool; not validated prospectively; no use in patient care.
+Research prototype. **It does not rank.** It returns a filtered, non-dominated *set* of
+chemically valid, individually precedented ADC configurations with per-organ-system rates
+and intervals, weighted against a stated comorbidity profile. A ranked list is printed only
+where the leader beats the runner-up on 80% of paired posterior draws, and across 24 targets
+by 8 comorbidity profiles that happens in **0 of 192 queries**: the leader wins a median
+52.2% of paired draws. Not a clinical decision tool; not validated prospectively; no use in
+patient care.
 
 ## What the data can identify
 
@@ -193,5 +197,12 @@ Convergence stands in for R-hat: the model is refit under a second seed and post
 * Any efficacy claim. No efficacy model is used.
 * Any patient-specific risk statement. The comorbidity layer is an elicited prior with
   zero training rows and is labelled `elicited_prior` in every response.
-* Ranking candidates whose credible intervals overlap. The API collapses those into
-  explicitly indistinguishable groups.
+* Ranking candidates at all, on the evidence measured. The API collapses candidates whose
+  posteriors overlap into explicitly indistinguishable groups, and on every query swept the
+  leading group holds a median 73% of the candidates that pass the constraints. The cards
+  are a sample of the non-dominated set, chosen to span the payload chemistries, and the
+  response states that selection rule rather than letting the order read as confidence.
+* Reading an organ rate's ordinal comparison as a comparison with observed clinical rates.
+  It ranks against this model's own prediction for each corpus agent's slots; the posterior
+  integrates out the per-agent effect, and the observed rates are censored at each trial's
+  reporting cut.
