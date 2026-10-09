@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 56 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 57 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -2655,6 +2655,31 @@ neurologic.
     overturned section 4 on a reading that one measurement refutes -- and the measurement
     was already written, because `design_effect_size.py` exists precisely to put fitted
     effects next to the baseline they have to move.
+
+56. **Four of the fourteen organ axes ever reach a proposal's top three, and the two
+    thinnest never do.** Section 4 measures the base rate's dominance as a ratio: the
+    design effects are a quarter to two fifths of the spread of `mu_axis`, and every
+    well-evidenced mechanism orders the organs within 0.9077 of the base rate's ordering.
+    Here is the same fact as a count of what the product actually puts on a screen.
+
+    Over 48 candidates across eight targets, **gastrointestinal is in the top three of all
+    48 and constitutional in all 48**, neurologic in 32, haematologic in 16. The other
+    **ten** -- cardiovascular, dermatologic, hepatic, infectious_immune, metabolic_endocrine,
+    musculoskeletal, ocular, otologic, pulmonary, renal -- reach a top three **never**, and
+    gastrointestinal is the worst single axis for 40 of the 48. A reader comparing two
+    candidate cards is comparing two orderings whose first two entries are the same every
+    time.
+
+    The reassuring half is the one that was asked first. Result 49 found otologic resting
+    on 28% of the corpus's agents and renal on 49%, and whether that matters for the product
+    depends on whether those axes surface. **Neither reaches a top three in any candidate,
+    and neither is the worst axis in any**, so the thinnest evidence in the corpus is not
+    load-bearing for the output. The axes that drive the ranking are the four with the most:
+    0.92, 0.91, 0.80 and 0.92 of the agents.
+
+    The two halves are the same measurement read in two directions, and the second is the
+    one the product has to answer for. **An organ ranking in which ten of fourteen organs
+    never place is a ranking of four organs**, and the interface prints fourteen rows.
 
 ## 9b. The clean-clone check, run for the first time
 

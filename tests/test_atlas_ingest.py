@@ -543,3 +543,37 @@ def test_the_share_held_out_is_measured_rather_than_assumed_irrelevant() -> None
         f"the delta now tracks the share held out at {rho:+.4f}, so part of the "
         "cross-corpus degradation is fold size and the comparison must say so"
     )
+
+
+@pytest.mark.skipif(not EVIDENCE.exists(), reason="run `make axis-evidence`")
+def test_a_thin_axis_is_checked_against_whether_it_reaches_the_output() -> None:
+    """Thin evidence only matters where it surfaces.
+
+    Otologic rests on 28% of the corpus's agents. If it never reaches a candidate's top
+    three, the thinness is real and not load-bearing; if it does, the product is ranking on
+    its weakest evidence. The two questions are asked in one pass, and the answer to the
+    second is the finding: four of fourteen axes ever place. See negative results 49 and 56.
+    """
+    doc = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+    out = doc.get("axes_reaching_the_output")
+    if not out:
+        return
+    reaching = set(out["axes_reaching_top_three"])
+    never = set(out["axes_never_reaching_top_three"])
+    assert reaching & never == set()
+    assert len(reaching) + len(never) == doc["summary"]["n_axes"]
+    assert out["n_axes_reaching_top_three"] == len(reaching)
+    # Every axis in a top-three count must be one of the axes said to reach it.
+    assert set(out["top_three_counts"]) == reaching
+    assert set(out["worst_axis_counts"]) <= reaching
+    # No count may exceed the candidates, and the top-three counts must sum to three per
+    # candidate -- otherwise the ranking is being read wrong.
+    assert sum(out["top_three_counts"].values()) == 3 * out["candidates"]
+    assert sum(out["worst_axis_counts"].values()) == out["candidates"]
+    thin = {r["axis"] for r in doc["growth"] if r["thin"]}
+    if thin & reaching:
+        raise AssertionError(
+            f"thin axes {sorted(thin & reaching)} now reach a candidate's top three, so "
+            "the product is ranking on its weakest evidence and result 56's reassuring "
+            "half no longer holds"
+        )

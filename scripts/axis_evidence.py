@@ -21,6 +21,7 @@ the other axes see, and that is a fact about the literature rather than about th
 from __future__ import annotations
 
 import argparse
+import collections
 import pathlib
 import sys
 
@@ -110,6 +111,65 @@ def _thinness_is_not_in_the_interval(limit: int = 8) -> dict | None:
     }
 
 
+def _which_axes_reach_the_output(limit: int = 8) -> dict | None:
+    """Which organ axes actually surface in a proposal, and are they the well-evidenced ones?
+
+    Two questions in one pass, and they answer each other.
+
+    The first is whether a thin axis is load-bearing. Otologic rests on 28% of the corpus's
+    agents and renal on 49%, and that only matters for the product if those axes reach the
+    screen's top of the ranking. They do not -- which is the reassuring half.
+
+    The second is what that implies about the ranking. If the same handful of axes occupies
+    the top of every proposal, the organ ordering is the base rate's ordering, which is what
+    section 4 measures as a ratio and this states as a count: how many of the fourteen axes
+    ever reach a candidate's top three.
+    """
+    try:
+        from fastapi.testclient import TestClient
+
+        from adctox.api.main import app
+    except Exception:
+        return None
+    client = TestClient(app)
+    top3: collections.Counter = collections.Counter()
+    worst: collections.Counter = collections.Counter()
+    candidates = 0
+    for target in ("HER2", "TROP2", "CD30", "BCMA", "FOLR1", "EGFR", "CD19",
+                   "NaPi2b")[:limit]:
+        resp = client.post("/api/v1/propose", json={
+            "comorbidity_profile": {"conditions": [],
+                                    "cohort": {"age_band": "65_74", "sex": "female"}},
+            "target_antigen": target, "top_k": 6,
+        })
+        if resp.status_code != 200:
+            continue
+        for cand in resp.json().get("candidates", []):
+            ranked = sorted(
+                ((r["organ_axis"], r.get("point_estimate") or 0.0)
+                 for r in cand["organ_risks"]),
+                key=lambda kv: -kv[1],
+            )
+            if not ranked:
+                continue
+            candidates += 1
+            for axis, _ in ranked[:3]:
+                top3[axis] += 1
+            worst[ranked[0][0]] += 1
+    if not candidates:
+        return None
+    return {
+        "candidates": candidates,
+        "axes_reaching_top_three": sorted(top3),
+        "n_axes_reaching_top_three": len(top3),
+        "axes_never_reaching_top_three": sorted(
+            set(Taxonomy().axis_order) - set(top3)
+        ),
+        "top_three_counts": dict(top3.most_common()),
+        "worst_axis_counts": dict(worst.most_common()),
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", type=pathlib.Path,
@@ -159,6 +219,7 @@ def main() -> int:
     doc = {
         "thin_agent_share": THIN_AGENT_SHARE,
         "thinness_vs_interval": _thinness_is_not_in_the_interval(),
+        "axes_reaching_the_output": _which_axes_reach_the_output(),
         "stages": stages,
         "growth": growth,
         "summary": {
@@ -184,6 +245,16 @@ def main() -> int:
         print(f"stalled: {doc['summary']['stalled_axes'] or 'none'}")
         print(f"thin (below {THIN_AGENT_SHARE:.0%} of agents): "
               f"{doc['summary']['thin_axes'] or 'none'}")
+    out = doc.get("axes_reaching_the_output")
+    if out:
+        thin = {r["axis"] for r in growth if r["thin"]}
+        reached = set(out["axes_reaching_top_three"])
+        print()
+        print(f"axes reaching a candidate's top three, over {out['candidates']} "
+              f"candidates: {out['n_axes_reaching_top_three']} of {len(axes)}")
+        print(f"  {out['top_three_counts']}")
+        print(f"  never in a top three: {out['axes_never_reaching_top_three']}")
+        print(f"  thin axes reaching a top three: {sorted(thin & reached) or 'none'}")
     tvi = doc.get("thinness_vs_interval")
     if tvi:
         print()

@@ -24,6 +24,38 @@
   "monotone": false,
   "reading": "The interval does not encode the agent count: the rank correlation is -0.3104 and the medians are not monotone in it. So the thin flag is not redundant with the interval, and its threshold is not a precision cut-off. What three agents buys is attributability -- below it the chemistry's effect on that organ cannot be held out, so the estimate is untestable rather than imprecise, and those are different warnings."
  },
+ "axes_reaching_the_output": {
+  "candidates": 48,
+  "axes_reaching_top_three": [
+   "constitutional",
+   "gastrointestinal",
+   "haematologic",
+   "neurologic"
+  ],
+  "n_axes_reaching_top_three": 4,
+  "axes_never_reaching_top_three": [
+   "cardiovascular",
+   "dermatologic",
+   "hepatic",
+   "infectious_immune",
+   "metabolic_endocrine",
+   "musculoskeletal",
+   "ocular",
+   "otologic",
+   "pulmonary",
+   "renal"
+  ],
+  "top_three_counts": {
+   "gastrointestinal": 48,
+   "constitutional": 48,
+   "neurologic": 32,
+   "haematologic": 16
+  },
+  "worst_axis_counts": {
+   "gastrointestinal": 40,
+   "constitutional": 8
+  }
+ },
  "stages": {
   "registry": {
    "corpus_agents": 22,
@@ -406,11 +438,11 @@
   "corpus_agents_last": 65
  },
  "provenance": {
-  "revision": "add304b30d1279b7f981488acf20adfc687faf56",
+  "revision": "e3afdd18852519568e0e7c50d4ec22369c26a8ba",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "axis_evidence.py",
-  "written_utc": "2026-10-09T18:02:50+00:00",
+  "written_utc": "2026-10-09T19:06:16+00:00",
   "inputs": {}
  }
 }
