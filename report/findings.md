@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 33 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 34 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -463,7 +463,7 @@ exists.
 
 `sigma_agent` 0.1590 [0.0980, 0.2402] -- small, so the design slots account for much of the between-agent variation.
 
-`b_combo` +0.1950 [+0.1691, +0.2213] -- combination arms do report higher rates.
+`b_combo` +0.1950 [+0.1691, +0.2213] -- combination arms do report higher rates -- on this corpus, where every arm is a ClinicalTrials.gov record. On the literature-extended corpus the same coefficient reaches +1.091 without a source indicator, because every combination arm is a registry arm and none of the 194 literature arms is one, so it estimates the corpus rather than the regimen. See negative result 33.
 
 `b_log_n` +0.0393 [+0.0288, +0.0491] -- an ascertainment effect that would have been attributed to the design had it not been controlled.
 
@@ -1675,6 +1675,21 @@ neurologic.
     axes instead of nine. Result 11 found that more arms bought no
     agents; this finds that more agents buy no observations. The table is built and labelled
     so the set-aside data is inspectable rather than invisible, and no fit is run on it.
+33. **A design coefficient was estimating which corpus the arm came from.** Every one of
+    the 139 combination arms is a ClinicalTrials.gov arm and none of the 194 literature arms
+    is a combination, so `is_combination` and `is_literature` correlate at **-0.53**. Without
+    a source term `b_combo` therefore estimated "registry combination against everything
+    else" rather than "combination against monotherapy", and its posterior mean went from
+    **+0.195** on the registry corpus to **+1.091** on the expanded one -- the reference
+    group changing rather than combinations getting worse. This report was quoting it as
+    "combination arms do report higher rates". With a source indicator added, a smoke fit
+    gives `b_combo` **+0.512** and `b_source` **-0.924**: a literature arm reports about
+    0.9 logit lower than a registry arm of the same chemistry, which is what a selected
+    table with a reporting cut should do. The term is nuisance in the same sense as
+    `b_thresh`, which section 5b already shows is substantially absorbing trial-level
+    reporting practice rather than correcting censoring, and it is sampled only where the
+    indicator varies -- on the registry corpus it would draw its prior and then appear in
+    the seed-agreement table as though the fit had estimated it.
 
 ## 9b. The clean-clone check, run for the first time
 

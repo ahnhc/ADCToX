@@ -180,6 +180,21 @@ def model(
     # the training mean rather than a nonsensical edge (log n = 0 would be a 1-patient arm).
     b_dar = numpyro.sample("b_dar", dist.Normal(0.0, 0.5))
     b_combo = numpyro.sample("b_combo", dist.Normal(0.0, 1.0))
+    # Which corpus the arm came from. A nuisance control in the same sense as `b_thresh`:
+    # a journal table and a registry posting are different data cuts of the same events,
+    # selected differently and reported to different cuts, and without this term `b_combo`
+    # absorbs the difference because every combination arm is a registry arm.
+    #
+    # Sampled only where the indicator varies. On the registry-only corpus every arm is a
+    # registry arm, so the coefficient would see no data, draw its prior, and contribute
+    # nothing but a spurious row to the seed-agreement table -- which is read as a
+    # convergence diagnostic and would then be reporting on a parameter the fit never
+    # estimated.
+    has_both_sources = float(data.arm_is_literature.std()) > 0
+    if has_both_sources:
+        b_source = numpyro.sample("b_source", dist.Normal(0.0, 1.0))
+    else:
+        b_source = 0.0
     b_thresh = numpyro.sample("b_thresh", dist.Normal(0.0, 0.5))
     b_log_n = numpyro.sample("b_log_n", dist.Normal(0.0, 0.5))
 
@@ -252,6 +267,7 @@ def model(
     arm_lin = (
         b_dar * data.arm_dar_c
         + b_combo * data.arm_combo
+        + b_source * data.arm_is_literature
         + b_thresh * data.arm_thresh_c
         + b_log_n * data.arm_log_n_c
         # Masked: a single-arm trial's effect is confounded with that arm's residual.
@@ -311,11 +327,18 @@ def n_free_parameters(data: ModelData) -> dict[str, int]:
     design = n_axes + n_mech * n_axes + n_axes + 2
     if USE_PAYLOAD_FAMILY:
         design += n_fam * n_axes
-    # thresh, log_n, random intercepts, scales. Counted over the REAL trials: the model
-    # samples one extra trial slot as a sentinel for arms from single-arm trials, but it
-    # is masked out of the linear predictor and sees no data, so counting it would
+    # thresh, log_n, source, random intercepts, scales. Counted over the REAL trials: the
+    # model samples one extra trial slot as a sentinel for arms from single-arm trials, but
+    # it is masked out of the linear predictor and sees no data, so counting it would
     # overstate the nuisance load against the identifying cells.
-    nuisance = 2 + len(data.trials) + len(data.agents) + 5
+    #
+    # `b_source` is nuisance and not design: it describes which corpus an arm was read from,
+    # which is a property of the reporting rather than of the chemistry. It exists because
+    # `b_combo` was carrying it.
+    nuisance = (
+        2 + int(float(data.arm_is_literature.std()) > 0)
+        + len(data.trials) + len(data.agents) + 5
+    )
     return {
         "design": design,
         "nuisance": nuisance,

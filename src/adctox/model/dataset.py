@@ -55,6 +55,18 @@ class ModelData:
     arm_dar_c: np.ndarray     # centered
     arm_cleavable: np.ndarray
     arm_combo: np.ndarray
+    # 1.0 for an arm extracted from a paper, 0.0 for a ClinicalTrials.gov record.
+    #
+    # Needed because `arm_combo` was carrying it. Every one of the 139 combination arms is a
+    # registry arm and none of the 194 literature arms is a combination, so the two
+    # indicators correlate at -0.53 and `b_combo` estimates "registry combination against
+    # everything else" rather than "combination against monotherapy". Its posterior mean
+    # went from +0.195 on the registry corpus to +1.091 on the expanded one, which is the
+    # reference group changing rather than combinations getting worse.
+    #
+    # Three cells over two parameters, so both are estimable: literature monotherapy,
+    # registry monotherapy, registry combination.
+    arm_is_literature: np.ndarray
     arm_thresh_c: np.ndarray  # centered
     arm_log_n_c: np.ndarray   # centered log denominator
     # 1.0 where the arm's trial contributes two or more arms, else 0.0. A trial that
@@ -378,6 +390,11 @@ def build(
         arm_dar_c=dar - dar_mean,
         arm_cleavable=arms["linker_cleavable"].fillna(False).astype(float).to_numpy(),
         arm_combo=(arms["is_monotherapy"] == False).astype(float).to_numpy(),  # noqa: E712
+        arm_is_literature=(
+            arms["source"].notna().astype(float).to_numpy()
+            if "source" in arms.columns
+            else np.zeros(len(arms), dtype=float)
+        ),
         arm_thresh_c=thresh - thresh_mean,
         arm_log_n_c=log_n - log_n_mean,
         axes=list(axes),

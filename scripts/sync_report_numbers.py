@@ -71,7 +71,14 @@ NOTES: dict[str, tuple[str, str]] = {
         "coefficients",
         "small, so the design slots account for much of the between-agent variation.",
     ),
-    "b_combo": ("coefficients", "combination arms do report higher rates."),
+    "b_combo": (
+        "coefficients",
+        "combination arms do report higher rates -- on this corpus, where every arm is a "
+        "ClinicalTrials.gov record. On the literature-extended corpus the same coefficient "
+        "reaches +1.091 without a source indicator, because every combination arm is a "
+        "registry arm and none of the 194 literature arms is one, so it estimates the "
+        "corpus rather than the regimen. See negative result 33.",
+    ),
     "b_log_n": (
         "coefficients",
         "an ascertainment effect that would have been attributed to the design had it not "
