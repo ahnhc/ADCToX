@@ -203,6 +203,7 @@ Convergence stands in for R-hat: the model is refit under a second seed and post
   are a sample of the non-dominated set, chosen to span the payload chemistries, and the
   response states that selection rule rather than letting the order read as confidence.
 * Reading an organ rate's ordinal comparison as a comparison with observed clinical rates.
-  It ranks against this model's own prediction for each corpus agent's slots; the posterior
+  It ranks against this model's own prediction for the slots of every registry ADC with a
+  fully stated chemistry; the posterior
   integrates out the per-agent effect, and the observed rates are censored at each trial's
   reporting cut.

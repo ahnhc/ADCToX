@@ -235,11 +235,13 @@ class Driver(BaseModel):
 class AxisComparator(BaseModel):
     """An ordinal position among the chemistries that have been built.
 
-    The claim is model against model: the same posterior's prediction for each corpus
-    agent's slots, with the agent-level residual off. Not against their observed rates --
-    the posterior integrates out the per-agent effect, so those cannot be recovered from
-    it, and they are censored at each trial's reporting cut, which leaves "higher than"
-    undefined for a large share of cells.
+    The claim is model against model: the same posterior's prediction for the slots of
+    every registry ADC with a fully stated chemistry, with the agent-level residual off.
+    Registry and not corpus -- five of the references are absent from the fit, so their
+    rates are out-of-corpus predictions exactly as the queried design's is, which is the
+    consistent footing. Not against their observed rates: the posterior integrates out the
+    per-agent effect, so those cannot be recovered from it, and they are censored at each
+    trial's reporting cut, which leaves "higher than" undefined for a large share of cells.
     """
 
     model_config = ConfigDict(extra="forbid")
@@ -248,6 +250,10 @@ class AxisComparator(BaseModel):
     # Reference chemistries plus the queried design.
     n: int
     n_reference_chemistries: int
+    # How many of those the fit actually saw. Null for a posterior written before the agent
+    # list was recorded, which is not the same as zero. The rest are out-of-corpus
+    # predictions, on the same footing as the queried design -- which is the point.
+    n_reference_in_fitted_corpus: int | None = None
     # Registry agents with no stated DAR or no mechanism. Excluded rather than given the
     # corpus mean, which would seat them at the centre of the comparison on a missing value.
     n_excluded_for_missing_slots: int

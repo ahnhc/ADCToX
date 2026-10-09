@@ -262,7 +262,9 @@ function axisRow(r) {
   const cm = r.comparator;
   const cmp = (cm && !noEvidence)
     ? `<span class="cmp" title="Rank 1 is the highest rate, so rank 1 is the worst place to
-be. ${cm.n_reference_chemistries} corpus chemistries plus this design, on the
+be. ${cm.n_reference_chemistries} registry chemistries plus this design${
+  cm.n_reference_in_fitted_corpus == null ? ""
+  : ` (${cm.n_reference_in_fitted_corpus} of them in the fitted corpus; the rest are predicted out of corpus, as this design is)`}, on the
 ${cm.table === "serious" ? "serious-event" : "common-event"} table &mdash; the same table
 the band was computed on. ${cm.basis}. ${cm.n_excluded_for_missing_slots} registry agents
 are left out for want of a stated DAR or mechanism.

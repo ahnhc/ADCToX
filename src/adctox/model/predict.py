@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import hashlib
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import numpy as np
@@ -113,6 +113,12 @@ class Posterior:
     # outcome it bands, and the two tables differ by an order of magnitude.
     kind: str
     band_edges: tuple[float, float]
+    # The agents the fit actually saw. Needed to say whether a reference chemistry in a
+    # comparison was fitted or predicted out of corpus, which are different claims: 5 of
+    # the 22 registry chemistries with complete slots are absent from the 16-agent fit.
+    # Tolerated as empty on load rather than added to the format guard, because a posterior
+    # written before this field existed is otherwise valid and refitting takes hours.
+    agents: list[str] = field(default_factory=list)
 
     @classmethod
     def from_samples(cls, post: dict, data: ModelData) -> "Posterior":
@@ -139,6 +145,7 @@ class Posterior:
             cleavable_mean=float(data.cleavable_mean),
             kind=str(getattr(data, "kind", "other")),
             band_edges=_band_edges(data),
+            agents=list(data.agents),
             **_evidence_counts(data),
         )
 
@@ -156,6 +163,7 @@ class Posterior:
             evidence_arms=self.evidence_arms,
             kind=np.array([self.kind]),
             band_edges=np.array(self.band_edges, dtype=float),
+            agents=np.array(self.agents, dtype=object).astype(str),
         )
 
     # Bumped whenever the saved field set changes, so a stale artefact fails with a
@@ -188,6 +196,7 @@ class Posterior:
             evidence_arms=z["evidence_arms"],
             kind=str(z["kind"][0]),
             band_edges=(float(z["band_edges"][0]), float(z["band_edges"][1])),
+            agents=[str(a) for a in z["agents"]] if "agents" in z.files else [],
         )
 
     @property

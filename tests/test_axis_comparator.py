@@ -17,6 +17,8 @@ The two rules that make it honest rather than decorative:
 
 from __future__ import annotations
 
+import pathlib
+
 import pytest
 
 from adctox.api.main import _posterior, _serious_posterior
@@ -24,6 +26,11 @@ from adctox.model.comparator import (
     _registry_designs,
     axis_comparator,
     reference_count,
+)
+
+ROOT_ARMS = (
+    pathlib.Path(__file__).resolve().parents[1] / "data" / "processed"
+    / "arms.parquet"
 )
 
 
@@ -151,3 +158,41 @@ def test_the_interface_says_what_the_ordinal_is_not() -> None:
     assert "What this is not" in block
     assert "0.17" in block, "the measured correlation is not stated beside the rank"
     assert "noise" in block or "only the extremes" in block
+
+
+def test_the_reference_set_is_the_registry_and_says_so() -> None:
+    """Five of the 22 reference chemistries are absent from the 16-agent fit, so calling
+    them "corpus chemistries" was wrong. They belong in the comparison -- their rates are
+    out-of-corpus predictions exactly as the queried design's is, which is the consistent
+    footing -- but the field has to say which it is."""
+    import pandas as pd
+
+    from adctox.model.comparator import _reference_matrix
+
+    post = _posterior()
+    _, names, _ = _reference_matrix(post)
+    arms = pd.read_parquet(ROOT_ARMS) if ROOT_ARMS.exists() else None
+    c = axis_comparator(post, "hepatic", 0.2)
+    assert "corpus agent" not in c["basis"], c["basis"]
+    assert "registry" in c["basis"]
+    if arms is not None:
+        fitted = set(arms["agent"].dropna().unique())
+        outside = [n for n in names if n not in fitted]
+        assert outside, "no reference chemistry is outside the fit; the claim is stale"
+    # The split is reported where the posterior records which agents it saw, and is null
+    # rather than zero where it does not.
+    assert c["n_reference_in_fitted_corpus"] is None or (
+        0 < c["n_reference_in_fitted_corpus"] <= c["n_reference_chemistries"]
+    )
+
+
+def test_the_split_is_reported_once_the_posterior_carries_its_agents() -> None:
+    """A posterior written before the agent list existed loads with an empty list, and
+    empty must read as "not recorded" rather than "none of them"."""
+    import dataclasses
+
+    post = _posterior()
+    assert post.agents == [] or isinstance(post.agents[0], str)
+    with_agents = dataclasses.replace(post, agents=["trastuzumab emtansine"])
+    c = axis_comparator(with_agents, "hepatic", 0.2)
+    assert c["n_reference_in_fitted_corpus"] == 1, c["n_reference_in_fitted_corpus"]

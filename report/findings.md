@@ -719,8 +719,9 @@ would care about most.
 "Gastrointestinal 0.59, high" is close to unreadable. The plan specified an ordinal
 position with its denominator and banned percentiles -- on roughly twenty reference
 chemistries a percentile invents resolution the sample cannot carry -- and the field had
-never been built. It is built now: the same posterior's prediction for each corpus agent's
-*slots*, agent-level residual off, ranked against the queried design.
+never been built. It is built now: the same posterior's prediction for the *slots* of
+every registry ADC with a fully stated chemistry, agent-level residual off, ranked against
+the queried design.
 
 Two rules make it a claim rather than a decoration. It **follows the band's table**: an
 at-risk axis is banded on the serious table, and ranking a serious rate against
@@ -728,7 +729,9 @@ common-table chemistries -- an order of magnitude larger -- would make every suc
 as unusually safe. And a registry agent with **no stated DAR is excluded, not given the
 corpus mean**, which would seat it at the centre of the comparison on a missing value;
 twelve of the registry's 34 conventional conjugates have no DAR in any source, so 22
-reference chemistries remain.
+reference chemistries remain -- and five of those 22 are absent from the 16-agent fit, so
+their rates are out-of-corpus predictions exactly as the queried design's is. Registry and
+not corpus, which is the consistent footing and which the field now says.
 
 It is also not a comparison against what those agents were *observed* to do. The posterior
 integrates out the per-agent effect, so an agent's fitted rate cannot be recovered from it,
@@ -746,7 +749,7 @@ design -- DXd on GGFG at DAR 8 -- queried for a patient with interstitial lung d
 | hepatic | common | moderate | #11 of 23 |
 | neurologic | common | moderate | #14 of 23 |
 
-Highest predicted serious pulmonary rate of any chemistry in the corpus, which is
+Highest predicted serious pulmonary rate of any chemistry in the registry, which is
 trastuzumab deruxtecan's boxed interstitial-lung-disease warning. The band alone said
 `high`; the ordinal says *how* high, and on this axis there is nothing above it.
 
@@ -767,10 +770,10 @@ first and nineteenth of twenty-three -- rather than fine distinctions.
 
 **The second thing it did was make a proposal's weak point legible.** For the renal and
 pulmonary profile the leading proposal is DGN549 on SMCC, and its hepatic axis is **#1 of
-23** -- the worst chemistry in the corpus for the liver. The interface already warned that
+23** -- the worst chemistry in the registry for the liver. The interface already warned that
 hepatic was in the high band and unweighted, because the patient named no liver condition.
 The ordinal turns that warning into a number. Conversely its haematologic axis bands `high`
-at **#19 of 23**: the whole corpus is high on that organ, and this chemistry is better than
+at **#19 of 23**: every chemistry is high on that organ, and this chemistry is better than
 eighteen of the twenty-two alternatives. A band cannot say either of those things.
 
 ## 5f. The one positive signal, and why it is not settled

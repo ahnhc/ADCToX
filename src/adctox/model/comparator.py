@@ -5,15 +5,26 @@ than 29 of the 32 ADC chemistries in this corpus", and the plan asked for exactl
 banned percentiles: a percentile on a sample of 32 invents resolution the sample cannot
 carry, so the comparator is an ordinal position with its denominator printed beside it.
 
-What it is: the same model's prediction for each corpus agent's *slots*, with the
-agent-level residual switched off, ranked against the queried design's prediction. Design
-against design, on one footing.
+What it is: the same model's prediction for the *slots* of every ADC in the registry whose
+chemistry is fully stated, with the agent-level residual switched off, ranked against the
+queried design's prediction. Design against design, on one footing.
+
+Registry and not corpus. Five of the 22 reference chemistries -- depatuxizumab mafodotin,
+disitamab vedotin, farletuzumab ecteribulin, rovalpituzumab tesirine and sacituzumab
+tirumotecan -- are absent from the 16-agent fit, so their rates are out-of-corpus
+predictions exactly as the queried design's is. That is the consistent footing, and calling
+them "corpus chemistries" would have been wrong; where the posterior records which agents it
+saw, the comparison reports the split.
 
 What it is not: a comparison against what those agents were observed to do. The posterior
 integrates out the per-agent effect, so an agent's fitted rate cannot be recovered from it,
 and the observed rates are censored at each trial's reporting cut, which leaves "higher
 than" undefined for a large share of cells. A model-against-model rank is the claim the
 available quantities support.
+
+Nor is it a fine distinction. The across-agent ranking this inherits its meaning from
+correlates with the observed ranking at about 0.17 per axis after the reporting conditions
+are removed from both series, so only the extremes carry information.
 """
 
 from __future__ import annotations
@@ -116,6 +127,7 @@ def axis_comparator(post: Posterior, axis: str, rate: float) -> dict | None:
     col = mat[:, post.axes.index(axis)]
     # Strictly greater, so the queried design is not counted as beating a tie.
     higher = int((col > rate).sum())
+    fitted = set(post.agents)
     return {
         "rank": higher + 1,
         "n": len(names) + 1,
@@ -125,11 +137,16 @@ def axis_comparator(post: Posterior, axis: str, rate: float) -> dict | None:
         # on one row look like they disagree.
         "table": post.kind,
         "n_reference_chemistries": len(names),
+        # How many of the references the fit actually saw. None for a posterior written
+        # before the agent list was recorded, which is not the same as zero.
+        "n_reference_in_fitted_corpus": (
+            sum(1 for n in names if n in fitted) if fitted else None
+        ),
         "n_excluded_for_missing_slots": n_registry - len(names),
         "interpretation": "relative_ranking_only",
         "basis": (
-            "this model's prediction for each corpus agent's slots, agent-level residual "
-            "off; not their observed rates, which are censored at each trial's reporting "
-            "cut"
+            "this model's prediction for the slots of every registry ADC with a fully "
+            "stated chemistry, agent-level residual off; not their observed rates, which "
+            "are censored at each trial's reporting cut"
         ),
     }
