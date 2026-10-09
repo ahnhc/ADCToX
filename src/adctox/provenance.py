@@ -27,12 +27,21 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def _git(*args: str) -> str | None:
+    """Stripped stdout on success, or None if git could not answer.
+
+    Empty output is a success and must not collapse to None. `git status --porcelain`
+    prints nothing for a clean tree, so folding empty into None made `dirty` null exactly
+    where it should read False -- for a clean checkout, the only state in which the recorded
+    revision does identify the code. Null there is also indistinguishable from "git was
+    unavailable", which is the opposite claim. A clean clone's test caught it; the working
+    tree never could, because it was dirty whenever anything was being developed.
+    """
     try:
         out = subprocess.run(
             ["git", "-C", str(ROOT), *args],
             capture_output=True, text=True, timeout=10, check=False,
         )
-        return out.stdout.strip() or None if out.returncode == 0 else None
+        return out.stdout.strip() if out.returncode == 0 else None
     except (OSError, subprocess.SubprocessError):
         return None
 
@@ -69,7 +78,7 @@ def stamp(inputs: dict[str, str | Path] | None = None) -> dict:
     rev = _git("rev-parse", "HEAD")
     status = _git("status", "--porcelain")
     return {
-        "revision": rev,
+        "revision": rev or None,
         "dirty": bool(status) if status is not None else None,
         "snapshot": os.environ.get("ADCTOX_SNAPSHOT") or None,
         "script": Path(sys.argv[0]).name if sys.argv and sys.argv[0] else None,

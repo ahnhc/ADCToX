@@ -9,6 +9,7 @@ which modules a process had already imported, when the file should simply have s
 
 from __future__ import annotations
 
+import os
 import json
 from pathlib import Path
 
@@ -74,3 +75,44 @@ def test_artefacts_carry_provenance_and_the_exemption_list_only_shrinks():
     assert not stale, (
         f"these are now stamped and should be removed from PRE_STAMP: {sorted(stale)}"
     )
+
+
+def test_a_clean_tree_records_false_and_not_null(tmp_path, monkeypatch):
+    """The failure mode the working tree could never show.
+
+    `_git` folded empty output into None, so `git status --porcelain` on a clean checkout --
+    which prints nothing -- made `dirty` null. Null is also what an unavailable git
+    produces, so the stamp could not distinguish "this revision does identify the code" from
+    "we could not tell", and the clean case is the only one where the distinction pays. Every
+    test ran against a dirty tree, which returned True and passed.
+    """
+    import subprocess
+
+    import adctox.provenance as prov
+
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    env = {
+        "GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t",
+        "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t",
+        "PATH": os.environ.get("PATH", ""), "HOME": str(tmp_path),
+    }
+    run = lambda *a: subprocess.run(  # noqa: E731
+        ["git", "-C", str(repo), *a], check=True, capture_output=True, env=env
+    )
+    run("init", "-q")
+    (repo / "f.txt").write_text("x")
+    run("add", "f.txt")
+    run("commit", "-qm", "c")
+
+    monkeypatch.setattr(prov, "ROOT", repo)
+    clean = prov.stamp()
+    assert clean["dirty"] is False, clean["dirty"]
+    assert clean["revision"] and len(clean["revision"]) == 40
+
+    (repo / "f.txt").write_text("y")
+    assert prov.stamp()["dirty"] is True
+
+    # And None stays reserved for "git could not answer", which is a different claim.
+    monkeypatch.setattr(prov, "ROOT", tmp_path / "not-a-repo")
+    assert prov.stamp()["dirty"] is None
