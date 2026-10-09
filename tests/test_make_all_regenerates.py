@@ -65,3 +65,55 @@ def test_the_exemption_list_names_only_scripts_that_exist() -> None:
     present = {p.name for p in (ROOT / "scripts").glob("*.py")}
     stale = sorted(EXEMPT - present)
     assert not stale, f"exemptions for scripts that no longer exist: {stale}"
+
+
+# The measurement targets that read the fit's artefacts rather than producing them. Running
+# any one of these should cost seconds.
+MEASUREMENT_TARGETS = [
+    "residual-scale", "across-agent", "design-effects", "fold-difficulty", "hard-flags",
+    "comorbidity-sensitivity", "payload-compression",
+]
+
+
+def test_a_measurement_target_does_not_refit_the_model() -> None:
+    """Twice now, running one measurement has silently refit the whole model.
+
+    First because the targets depended on `forward`, which is `.PHONY`, so make rebuilt it
+    unconditionally. That was fixed by depending on the metrics *file* instead -- and the
+    fix did nothing, because the variable holding its path was defined one line above
+    `ART := artifacts` and `:=` expands immediately, making the prerequisite
+    `/forward_other_metrics.json`: a path at the filesystem root that never exists. Make
+    rebuilt it every time, exactly as before, so the symptom was unchanged and the fix
+    looked like it had failed to apply.
+
+    Neither failure is visible from inside `make all`, where the fit runs once anyway. It
+    costs about an hour per invocation outside it, and it silently overwrites the artefacts
+    the report's figures are checked against while a session is working on them.
+    """
+    for target in MEASUREMENT_TARGETS:
+        proc = subprocess.run(
+            ["make", "-n", target], cwd=ROOT, capture_output=True, text=True,
+        )
+        assert proc.returncode == 0, (target, proc.stderr[-500:])
+        assert "fit_forward.py" not in proc.stdout, (
+            f"`make {target}` would run fit_forward.py:\n{proc.stdout}\n"
+            "Its prerequisite does not resolve to a file on disk. Check that "
+            "FORWARD_METRICS is defined after ART."
+        )
+
+
+def test_the_metrics_prerequisite_resolves_to_a_real_path() -> None:
+    """The root cause, caught directly rather than through its symptom.
+
+    A prerequisite of `/something` is not a typo make will complain about: it is a perfectly
+    valid path that simply never exists, so the only signal is an hour of wasted compute.
+    """
+    proc = subprocess.run(
+        ["make", "-n", "--print-data-base", "residual-scale"],
+        cwd=ROOT, capture_output=True, text=True,
+    )
+    assert "FORWARD_METRICS = artifacts/forward_other_metrics.json" in proc.stdout or \
+           "FORWARD_METRICS := artifacts/forward_other_metrics.json" in proc.stdout, (
+        "FORWARD_METRICS does not expand to a path under artifacts/; a `:=` assignment "
+        "above `ART := artifacts` expands it to the filesystem root."
+    )

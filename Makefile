@@ -19,13 +19,21 @@ RAW     := /data/hyeongchanahn/adctox/raw
 STUDIES := $(RAW)/ctgov/$(DATE)/studies
 ELIG    := $(RAW)/eligibility/$(DATE)
 PROC    := data/processed
+ART     := artifacts
 # What the post-fit measurements actually consume. They depended on the `forward`
 # target, which is .PHONY -- so running any one of them alone refit the whole model,
 # about an hour, to produce a file that was already on disk. Inside `make all` the
 # phony prerequisite runs once and the waste is invisible, which is why this went
 # unnoticed.
+#
+# And the fix did not work for a second reason, which looked identical from outside. This
+# line stood *above* `ART := artifacts`, and `:=` expands immediately, so the prerequisite
+# was `/forward_other_metrics.json` -- a path at the filesystem root that never exists.
+# Make therefore rebuilt it every single time, exactly as the phony version had. The
+# symptom was unchanged, so the first fix appeared to have failed to apply rather than to
+# have been undone by a variable order. Definition order matters with `:=`; `=` would have
+# deferred the expansion and hidden the ordering entirely.
 FORWARD_METRICS := $(ART)/forward_other_metrics.json
-ART     := artifacts
 
 .PHONY: all env taxonomy corpus eligibility enrichment forward propose test \
         censoring-sensitivity label-history label-changes label-change-eval \

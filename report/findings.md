@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 42 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 43 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -2109,6 +2109,34 @@ neurologic.
     distinguish payloads within one. **MMAF corneal toxicity is among the best-established
     organ effects in ADC pharmacology, and it is the specific thing this model cannot
     say.**
+
+42. **A fix that was applied, was correct, and did nothing, because of the order of two
+    lines.** The post-fit measurements -- the organ-rank resolution, the driver waterfall,
+    the effect sizes, the fold difficulty -- all read `artifacts/forward_other_metrics.json`
+    rather than producing it, and all of them listed the `forward` target as a prerequisite.
+    `forward` is `.PHONY`, so running any one of them alone refit the whole model, about an
+    hour, to produce a file that was already on disk. Inside `make all` the phony
+    prerequisite runs once and the waste is invisible, which is why it went unnoticed for
+    the life of the project.
+
+    The fix was to depend on the metrics *file*. It did not work, and the reason is the
+    finding. The variable holding its path was assigned one line **above**
+    `ART := artifacts`, and `:=` expands immediately, so the prerequisite was
+    `/forward_other_metrics.json` -- a path at the filesystem root. Not an error: a
+    perfectly valid path that never exists, which make therefore rebuilt every single time.
+    The symptom was identical to the phony version, so the fix looked like it had failed to
+    apply rather than like it had been undone by the order of two assignments. A deferred
+    `=` would have hidden the ordering entirely and worked by accident.
+
+    It was found by noticing a `fit_forward.py` process in its fiftieth minute that no
+    deliberate command had started, during a session in which a measurement script had been
+    run several times. The cost is not only compute: that process would have overwritten the
+    very artefacts the report's figures were being checked against, mid-session, while
+    another fit was already running. `tests/test_make_all_regenerates.py` now asserts that
+    `make -n` on each measurement target does not mention `fit_forward.py`, and separately
+    that the variable expands to a path under `artifacts/`. **A build graph is code, and the
+    only evidence that a dependency is wired correctly is that the cheap thing stays
+    cheap.**
 
 ## 9b. The clean-clone check, run for the first time
 

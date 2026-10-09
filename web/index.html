@@ -427,7 +427,16 @@ Read the head of the list as a set.">leads, but not decisively (${pct(c.lead_p)}
     <details><summary class="note">remaining ${rest.length} axes</summary>
       ${rest.map(axisRow).join("")}</details>
     <div class="disclose">
-      worst axis <strong>${c.worst_axis}</strong> at ${pct(c.worst_axis_risk)} &middot;
+      worst axis <strong>${c.worst_axis}</strong> at ${pct(c.worst_axis_risk)}${
+        /* The ordering inside a tie group is decided by the worst organ *under the
+           declared weights*, so naming only the unweighted one would point at a different
+           organ from the one the order turned on -- which is how the comorbidity profile
+           came to be invisible in the output. Shown only when the two differ, so a card
+           with no comorbidity stays as short as it was. */
+        c.weighted_worst_axis && c.weighted_worst_axis !== c.worst_axis
+          ? `, and <strong>${c.weighted_worst_axis}</strong> at ${pct(c.weighted_worst_axis_risk)} under your weights`
+          : ""
+      } &middot;
       binding constraint <strong>${c.binding_constraint || "none"}</strong><br>
       nearest existing ADC: <strong>${c.nearest_real_adc || "none"}</strong>
       ${c.nearest_real_diff ? "(" + c.nearest_real_diff + ")" : ""}
