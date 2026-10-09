@@ -103,13 +103,52 @@ def main() -> int:
             "worst_seed_gap": sa.get("worst_standardized_gap"),
             "seed_threshold": sa.get("threshold"),
             "converged": sa.get("converged"),
+            "lomo_delta": (
+                ((doc.get("cv") or {}).get("leave_one_mechanism_out") or {})
+                .get("delta_auc_mean")
+            ),
             "tau_mech": (doc.get("tau_mech") or {}).get("mean"),
             "tau_cleav": (doc.get("tau_cleav") or {}).get("mean"),
             "sigma_agent": (doc.get("coefficients") or {}).get("sigma_agent", {}).get("mean"),
         })
 
     fitted = [r for r in rows if r["status"] == "fitted" and r["converged"] is not None]
+    # A second prediction, written before its fit landed, for the same reason as the first:
+    # a prediction kept beside its result is the only kind that can be wrong usefully.
+    #
+    # Steps 3 and 4 of the evaluation chain reach the *same* censoring state by two routes.
+    # Dropping uninformative absences from the 32-agent corpus leaves 663 censored cells;
+    # keeping only the tables that stated a cut leaves 663 as well, on 26 agents. So the
+    # pair separates two explanations for why the literature expansion costs held-out
+    # accuracy. If the damage is the censoring -- an upper bound standing in for a stated
+    # cut, thousands of cells told "this rate is below X" with X too large -- the
+    # explicit-cuts fit should land near the registry corpus's -0.0200. If the damage is the
+    # literature arms themselves, it should land near the expansion's -0.1564 despite
+    # carrying none of the bounded cells.
+    explicit = next((r for r in fitted if r["fit"] == "explicit cuts only"), None)
+    second = {
+        "made": ("the explicit-cuts fit will land nearer the registry corpus than the "
+                 "32-agent fits on leave-one-mechanism-out"),
+        "because": ("it reaches the same censoring state as the absences-dropped variant by "
+                    "a different route -- 69 literature arms over 11 agents, every one with "
+                    "a cut its caption stated -- so if the degradation is the bounded "
+                    "threshold it should mostly disappear here"),
+        "outcome": None,
+    }
+    if explicit:
+        lomo = explicit.get("lomo_delta")
+        reg = next((r.get("lomo_delta") for r in fitted if r["fit"] == "registry, default"),
+                   None)
+        exp = next((r.get("lomo_delta") for r in fitted
+                    if r["fit"] == "32 agents, absences dropped"), None)
+        if lomo is not None and reg is not None and exp is not None:
+            second["outcome"] = (
+                "confirmed" if abs(lomo - reg) < abs(lomo - exp) else "refuted"
+            )
+            second["explicit_lomo_delta"] = lomo
+
     doc = {
+        "prediction_two": second,
         "prediction": {
             "made": "the merged corpus will fail its seed-agreement check",
             "because": ("the 32-agent fit failed at 0.722, the cause was the censoring "

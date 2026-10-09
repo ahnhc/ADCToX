@@ -465,6 +465,37 @@ def test_the_prediction_is_recorded_before_its_outcome() -> None:
 
 
 @pytest.mark.skipif(not CONV.exists(), reason="run `make convergence-conditions`")
+def test_the_second_prediction_is_also_recorded_before_its_outcome() -> None:
+    """Chain steps 3 and 4 reach the same censoring state by two routes.
+
+    Dropping uninformative absences from the 32-agent corpus leaves 663 censored cells;
+    keeping only the tables that stated a cut leaves 663 on 26 agents. So the pair separates
+    "the damage is the bounded threshold" from "the damage is the literature arms", and the
+    prediction -- that the explicit-cuts fit lands nearer the registry corpus -- is written
+    down before the fit so the refutation would be as legible as the confirmation.
+    """
+    doc = json.loads(CONV.read_text(encoding="utf-8"))
+    pred = doc["prediction_two"]
+    assert pred["made"].strip() and pred["because"].strip()
+    assert pred["outcome"] in (None, "confirmed", "refuted")
+    explicit = next((r for r in doc["fits"] if r["fit"] == "explicit cuts only"), None)
+    if explicit and explicit["status"] == "fitted" and explicit.get("lomo_delta") is not None:
+        # Scored only against fits that have landed, and by the stated rule.
+        reg = next((r.get("lomo_delta") for r in doc["fits"]
+                    if r["fit"] == "registry, default"), None)
+        exp = next((r.get("lomo_delta") for r in doc["fits"]
+                    if r["fit"] == "32 agents, absences dropped"), None)
+        if reg is not None and exp is not None:
+            want = "confirmed" if abs(explicit["lomo_delta"] - reg) < abs(
+                explicit["lomo_delta"] - exp) else "refuted"
+            assert pred["outcome"] == want
+    else:
+        assert pred["outcome"] is None, (
+            "an outcome is recorded for the explicit-cuts fit, which has not landed"
+        )
+
+
+@pytest.mark.skipif(not CONV.exists(), reason="run `make convergence-conditions`")
 def test_no_fit_is_summarised_before_it_has_run() -> None:
     """The table shortens rather than guessing: a fit with no artefact gets no row of
     numbers, because a blank and a zero are different and only one of them is true."""

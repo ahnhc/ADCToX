@@ -1,4 +1,9 @@
 {
+ "prediction_two": {
+  "made": "the explicit-cuts fit will land nearer the registry corpus than the 32-agent fits on leave-one-mechanism-out",
+  "because": "it reaches the same censoring state as the absences-dropped variant by a different route -- 69 literature arms over 11 agents, every one with a cut its caption stated -- so if the degradation is the bounded threshold it should mostly disappear here",
+  "outcome": null
+ },
  "prediction": {
   "made": "the merged corpus will fail its seed-agreement check",
   "because": "the 32-agent fit failed at 0.722, the cause was the censoring model on upper-bound reporting cuts, and the merged corpus's transcribed cohorts reach a 71% cut against the literature's 63.9%",
@@ -18,6 +23,7 @@
    "worst_seed_gap": 0.09870179742574692,
    "seed_threshold": 0.3,
    "converged": true,
+   "lomo_delta": -0.019997296160394806,
    "tau_mech": 0.5424401760101318,
    "tau_cleav": 0.2871069014072418,
    "sigma_agent": 0.3433225452899933
@@ -35,6 +41,7 @@
    "worst_seed_gap": 0.7219464182853699,
    "seed_threshold": 0.3,
    "converged": false,
+   "lomo_delta": -0.1612741539138923,
    "tau_mech": 0.5343019962310791,
    "tau_cleav": 0.34827178716659546,
    "sigma_agent": 1.7655117511749268
@@ -52,6 +59,7 @@
    "worst_seed_gap": 0.18961459398269653,
    "seed_threshold": 0.3,
    "converged": true,
+   "lomo_delta": -0.1564365920434343,
    "tau_mech": 0.5649186968803406,
    "tau_cleav": 0.3121851682662964,
    "sigma_agent": 1.3117543458938599
@@ -85,11 +93,11 @@
   ]
  },
  "provenance": {
-  "revision": "64707eaea4def8a117ac64d4764a74f4e965fb98",
-  "dirty": false,
-  "snapshot": "2026-10-07",
+  "revision": "cf8ddbb6c4f16623ae97dcafa6858852b843521e",
+  "dirty": true,
+  "snapshot": null,
   "script": "convergence_conditions.py",
-  "written_utc": "2026-10-09T18:59:44+00:00",
+  "written_utc": "2026-10-09T19:17:35+00:00",
   "inputs": {}
  }
 }
