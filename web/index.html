@@ -268,29 +268,42 @@ function axisRow(r) {
 // ranking, and printing "Rank 1" six times with a small tag says that far too quietly. The
 // cards still need an order, so the criterion that produced it is stated here instead of
 // left to be mistaken for confidence.
-function headIsOneSet(d) {
+// How many of the leading cards share the head tie group, counted from the top. Not "all of
+// them": spanning the payloads on the Pareto front can reach past the head group, and the
+// candidate it reaches is one the model *can* say is worse. Showing it is informative;
+// presenting it as an equal would not be.
+function headSetSize(d) {
   const cs = d.candidates || [];
-  if (!cs.length) return false;
-  const head = cs[0];
-  return (head.group_size || 1) > 1 && cs.every(c => c.tie_group === head.tie_group);
+  if (!cs.length || (cs[0].group_size || 1) < 2) return 0;
+  let n = 0;
+  while (n < cs.length && cs[n].tie_group === cs[0].tie_group) n++;
+  return n < 2 ? 0 : n;
 }
 
 function headNote(d) {
   const cs = d.candidates || [];
-  if (!headIsOneSet(d)) return "";
+  const inSet = headSetSize(d);
+  if (!inSet) return "";
   const head = cs[0];
   const n = head.group_size || 1;
+  const rest = cs.length - inSet;
   return `<div class="card warn-card">
-    <h3>These ${cs.length} designs are not ranked</h3>
+    <h3>${inSet === cs.length ? `These ${inSet} designs are`
+                              : `The first ${inSet} of these designs are`} not ranked</h3>
     <p class="note">The patient-weighted risk posteriors of
       <strong>${n}</strong> candidates overlap too far to order them: the leader beats the
       runner-up on ${pct(head.lead_p)} of paired posterior draws, where this interface
-      requires ${pct(0.8)} before printing a winner. Read the cards below as a set.</p>
-    <p class="note">They are shown in the order of <strong>${head.secondary_order_basis}</strong>,
-      which is a stated preference and not a measure of confidence.
+      requires ${pct(0.8)} before printing a winner. Read the first ${inSet} cards as a
+      set.${rest ? ` The remaining ${rest} ${rest === 1 ? "card is" : "cards are"} shown
+      because ${rest === 1 ? "it carries a payload" : "they carry payloads"} none of the
+      first ${inSet} do, and ${rest === 1 ? "it is" : "they are"} ranked below them
+      because the model can separate ${rest === 1 ? "it" : "them"} from the leader.` : ""}</p>
+    <p class="note">The set is shown in the order of
+      <strong>${head.secondary_order_basis}</strong>, which is a stated preference and not a
+      measure of confidence. ${d.shown_selection
+        ? `Selection: ${d.shown_selection}.` : ""}
       ${d.n_pareto_front > cs.length
-        ? `${d.n_pareto_front} candidates are non-dominated in all; the
-           ${cs.length} shown are drawn from them.`
+        ? `${d.n_pareto_front} candidates are non-dominated in all.`
         : ""}</p>
   </div>`;
 }
@@ -316,9 +329,13 @@ function card(c, i, opts) {
     `<span class="tag" title="The leader beats the runner-up on ${pct(c.lead_p)} of paired
 posterior draws, below the ${pct(0.8)} this interface requires before printing a winner.
 Read the head of the list as a set.">leads, but not decisively (${pct(c.lead_p)})</span>` : "";
+  // A rank is a position in the whole ordering, not among the cards on screen: the last
+  // card here can read "rank 50" while being the sixth shown. Saying so avoids a reader
+  // concluding that 44 cards went missing.
+  const outOf = (opts || {}).outOf;
   const heading = oneSet
     ? `Design ${i + 1} of ${total} &mdash; unranked set`
-    : `Rank ${c.rank}`;
+    : `Rank ${c.rank}${outOf ? ` of ${outOf}` : ""}`;
   const pareto = c.on_pareto_front ? `<span class="tag">Pareto front</span>` : "";
   const unapproved = c.has_unapproved_component ?
     `<span class="tag">contains a component with no approved ADC</span>` : "";
@@ -373,8 +390,9 @@ async function run() {
         <p class="note">${d.ranking_evidence.summary}</p>
         ${d.ranking_evidence.evaluations.map(evalRow).join("")}
         </div>` : ""}
-      ${d.candidates.map((c, i) => card(c, i,
-          { oneSet: headIsOneSet(d), total: d.candidates.length })).join("")}
+      ${(() => { const n = headSetSize(d); return d.candidates.map((c, i) =>
+          card(c, i, { oneSet: i < n, total: n,
+                       outOf: d.n_passed_constraints })).join(""); })()}
       ${wn ? `<div class="card"><h3>Why not the obvious one</h3>
         <div class="slots">${wn.design.payload} &middot; ${wn.design.linker}
           &middot; DAR ${wn.design.dar}</div>

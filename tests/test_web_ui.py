@@ -155,20 +155,24 @@ vm.createContext(ctx);
 try { vm.runInContext(js, ctx); } catch (e) {}
 const d = JSON.parse(fs.readFileSync(process.argv[3], "utf8"));
 const note = ctx.headNote(d);
-const opts0 = { oneSet: ctx.headIsOneSet(d), total: d.candidates.length };
+const inSet = ctx.headSetSize(d);
+const opts0 = { oneSet: inSet > 0, total: inSet };
 if (!note) { console.error("no head note for a tied head group"); process.exit(1); }
 if (!/unranked set/.test(ctx.card(d.candidates[0], 0, opts0))) {
   console.error("a card in a one-set head still prints a rank");
   process.exit(1);
 }
-for (const want of ["are not ranked", "as a set", String(d.candidates[0].group_size)]) {
-  if (!note.includes(want)) {
+// Whitespace-normalised: the markup wraps and indents, so a literal newline in a phrase
+// makes the assertion about the template's line breaks rather than about its words.
+const flat = note.replace(/\s+/g, " ");
+for (const want of ["not ranked", "as a set", String(d.candidates[0].group_size)]) {
+  if (!flat.includes(want)) {
     console.error("head note omits " + JSON.stringify(want) + ": " + note);
     process.exit(1);
   }
 }
-const opts = { oneSet: ctx.headIsOneSet(d), total: d.candidates.length };
-const all = note + d.candidates.map((c, i) => ctx.card(c, i, opts)).join("");
+const all = note + d.candidates.map((c, i) =>
+  ctx.card(c, i, { oneSet: i < inSet, total: inSet })).join("");
 if (/undefined|NaN/.test(all)) { console.error("undefined/NaN in markup"); process.exit(1); }
 // The false sentence: a singleton group told it is indistinguishable from its group.
 for (const c of d.candidates) {

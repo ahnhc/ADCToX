@@ -323,7 +323,28 @@ def propose(
     # So the Pareto front comes first, in the order already established, and the remainder
     # fills any slots left over. Where O1 does separate the candidates the front contains
     # the leader anyway, so this changes nothing in the case the ranking works.
-    shown_idx = [i for i in range(len(ordered)) if i in pareto_set][:top_k]
+    #
+    # Within the front, one per payload before a second of anything. The ordering inside a
+    # tie group is a secondary preference, and taking the first six of it showed DGN549
+    # twice, DM1 twice and DM4 twice -- three payloads of the front's six, and two of those
+    # pairs are designs this model cannot tell apart at all -- while MMAE, MMAF and the
+    # pyrrolobenzodiazepine never appeared despite being non-dominated. Payload is the
+    # dominant lever in this model, so spanning it is what shows the reader the choice they
+    # actually have. `shown_selection` states the rule in the response.
+    front = [i for i in range(len(ordered)) if i in pareto_set]
+    shown_idx: list[int] = []
+    seen_payload: set[str] = set()
+    for i in front:
+        payload = ordered[i].design.payload
+        if payload not in seen_payload:
+            seen_payload.add(payload)
+            shown_idx.append(i)
+        if len(shown_idx) == top_k:
+            break
+    if len(shown_idx) < top_k:
+        shown_idx += [i for i in front if i not in shown_idx][
+            : top_k - len(shown_idx)
+        ]
     if len(shown_idx) < top_k:
         shown_idx += [
             i for i in range(len(ordered)) if i not in pareto_set
@@ -524,6 +545,11 @@ def propose(
             pos for pos, i in enumerate(shown_idx) if i in pareto_set
         ],
         "n_pareto_front": len(pareto),
+        "shown_selection": (
+            "non-dominated candidates, one per payload chemistry before a second "
+            "of any, since the ranking does not resolve and payload is the "
+            "dominant lever"
+        ),
         "tie_groups": groups,
         "weights_applied": weights,
         "comorbidity_resolution": comorb.per_condition,

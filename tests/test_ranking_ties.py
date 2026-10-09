@@ -149,3 +149,28 @@ def test_a_large_head_group_says_what_orders_it() -> None:
         assert head["distinguishable"] is False
         assert all(c["rank"] == head["rank"] for c in out["candidates"]
                    if c["tie_group"] == head["tie_group"])
+
+
+def test_the_shown_set_spans_the_payloads_on_the_front() -> None:
+    """A fourth defect in the same place, found by looking at what the cards actually said.
+
+    With the front selected but ordered by the secondary preference, the six cards were
+    DGN549 twice, DM1 twice and DM4 twice -- three of the front's six payloads, and two of
+    those pairs are designs this model cannot separate at all -- while MMAE, MMAF and the
+    pyrrolobenzodiazepine never appeared despite being non-dominated. Six cards showing
+    three payloads, two of them doubled, is a worse answer than six showing six.
+    """
+    from adctox.api.main import _posterior, _serious_posterior
+    from adctox.pipeline import propose
+
+    out = propose(
+        target_antigen="ERBB2",
+        condition_ids=["ckd_stage_4_5", "interstitial_lung_disease"],
+        posterior=_posterior(), top_k=6, serious_posterior=_serious_posterior(),
+    )
+    shown = out["candidates"]
+    payloads = [c["design"]["payload"] for c in shown]
+    assert len(set(payloads)) == len(payloads), payloads
+    assert out["shown_selection"], "the selection rule is not stated"
+    # And it is still the front that is drawn from, not merely a diverse sample.
+    assert all(c["on_pareto_front"] for c in shown)

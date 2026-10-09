@@ -644,10 +644,19 @@ product was specified to emit does not exist.** What exists is a filtered, non-d
 with per-axis intervals, and the interface now says so in those words rather than printing
 "Rank 1" six times.
 
-The fix for that display was not cosmetic, and three defects in the ranking layer came out
-of looking at it -- an exact tie read as a loss, a transitive grouping rule, and a
-non-dominated candidate displaced by a dominated one. All three are in section 9. None of
-them was covered by any of the 413 tests passing at the time.
+The fix for that display was not cosmetic, and four defects in the ranking layer came out
+of looking at it -- an exact tie read as a loss, a transitive grouping rule, a non-dominated
+candidate displaced by a dominated one, and six cards showing three payload chemistries with
+two of them doubled while three non-dominated payloads went unshown. All four are in section
+9. None was covered by any of the 413 tests passing at the time.
+
+The last one changes what the product is for. Since the ranking does not resolve, the six
+cards are a sample of the non-dominated set, and the sampling rule is doing the work the
+ranking cannot. It now takes one candidate per payload chemistry before a second of any,
+because payload is the dominant lever in this model: for the renal-plus-pulmonary HER2 query
+the cards went from `DGN549, DGN549, DM1, DM1, DM4, DM4` to `DGN549, DM1, DM4, MMAE, MMAF,
+SG3199`, six payloads with six different nearest approved ADCs. One of those six sits outside
+the leading tie group, so it carries its rank and the interface says why it is there.
 
 ### The same sweep measures what the target antigen is worth
 
@@ -674,22 +683,27 @@ The patient enters the objective as `w_o = 1 + lambda * severity_o`, and the shi
 the plan's stated and defensible preference -- *you told us CrCl 25, so the renal axis is
 weighted 3x* -- and it is also the reason the profile moves the proposal so little:
 
-| profile | at-risk axes | share of the objective at lambda = 2 | lambda where the proposal first changes | distinct proposals over lambda in [0, 100] |
+The quantity swept is the set of designs the product displays, which after the selection
+fix spans the payload chemistries on the Pareto front -- so the question it answers is
+whether the *options offered* change, not whether an ordering within them does.
+
+| profile | at-risk axes | share of the objective at lambda = 2 | lambda where the shown set first changes | distinct sets over lambda in [0, 100] |
 |---|---|---|---|---|
-| renal + pulmonary | 2 | 33% | 5 | 4 |
-| hepatic | 1 | 19% | 8 | 2 |
-| cardiac | 1 | 19% | 5 | 2 |
+| renal + pulmonary | 2 | 33% | 5 | 5 |
+| hepatic | 1 | 19% | 50 | 2 |
+| cardiac | 1 | 19% | 5 | 3 |
 | neuro + ocular | 2 | 33% | 30 | 2 |
-| haematologic | 1 | 19% | 20 | 4 |
-| dermatologic | 1 | 19% | 20 | 3 |
+| haematologic | 1 | 19% | 8 | 5 |
+| dermatologic | 1 | 19% | 20 | 4 |
 | **four organs** | 4 | 53% | **never** | **1** |
 
 Two thirds to four fifths of the objective is organs the patient has no stated problem with.
-Raising `lambda` to 30 does give all six single-concern profiles their own proposal, and
-that is not a fix -- it is choosing a constant to make the output look responsive. The
-constant is the most arbitrary quantity in the system, the plan picked 2 precisely because
-3x is a preference a reader can check, and the dependence is not even monotone: `lambda` =
-100 collapses two of the profiles back together.
+Raising `lambda` until every profile gets its own set is not a fix -- it is choosing a
+constant to make the output look responsive. The constant is the most arbitrary quantity in
+the system, the plan picked 2 precisely because 3x is a preference a reader can check, and
+the dependence is not monotone: the switch points run from 5 to 50 with no ordering by the
+number of at-risk axes, and a hepatic profile needs a 51x weighting before its options
+change at all.
 
 The last row is the one worth keeping. **A patient with four comorbidities receives the same
 proposal at every value of the constant**, because four at-risk axes out of fourteen spread
@@ -1385,6 +1399,13 @@ neurologic.
     candidates collapsed into one set until membership was anchored on the group's leader.
     And the display took the first six of the ordering, which showed three dominated designs
     while hiding five non-dominated ones. 413 tests passed throughout.
+22b. **Six cards showed three payload chemistries, two of them doubled.** With the
+    Pareto front selected but ordered by the secondary preference, the displayed designs for
+    a HER2 query were `DGN549, DGN549, DM1, DM1, DM4, DM4` -- and DM1 against DM4 is a pair
+    this model cannot separate at all -- while MMAE, MMAF and a pyrrolobenzodiazepine went
+    unshown despite being non-dominated. Since the ranking does not resolve, the selection
+    rule is doing the work the ranking cannot, and it now takes one candidate per payload
+    before a second of any.
 23. **Four distinct proposals from 192 queries.** The target antigen changes at least one
     risk band in 26% of queries and never changes which designs are proposed; eight
     comorbidity profiles produce four distinct design sets. The payload ordering survives
@@ -1392,7 +1413,8 @@ neurologic.
 24. **The comorbidity profile's influence on the proposal is a function of an arbitrary
     constant, and vanishes for the patients who need it most.** At the shipped weighting
     constant the patient's own at-risk organs carry 19-33% of the objective, and the
-    proposal first changes between lambda = 5 and lambda = 30 depending on the profile.
+    shown set of design options first changes between lambda = 5 and lambda = 50 depending
+    on the profile.
     Raising the constant until every profile gets its own answer is choosing a constant to
     produce an appearance, and the dependence is not monotone anyway. The measured case that
     matters: a **four-comorbidity profile receives the same proposal at every lambda from 0

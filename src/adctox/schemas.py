@@ -366,6 +366,10 @@ class ProposeResponse(BaseModel):
     # How many non-dominated candidates exist in total, which is usually larger
     # than what fits in `candidates` and says how much choice was left unshown.
     n_pareto_front: int = 0
+    # How the shown candidates were chosen out of the non-dominated set. Stated
+    # because the ranking does not resolve, so the selection rule is doing work the
+    # ranking cannot and a reader is entitled to know which rule.
+    shown_selection: str = ""
     tie_groups: list[list[int]]
     weights_applied: dict[str, float]
     why_not_the_obvious_one: dict | None = None
