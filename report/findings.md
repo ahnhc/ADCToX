@@ -1546,6 +1546,10 @@ only from a clone, which is the argument for running the check at all.
   decision tree on SMILES string length and DAR under a leakage-free grouped split.
 * The comorbidity layer has zero training rows and is an elicited prior throughout,
   labelled `elicited_prior` in every API response.
-* Two of six payload mechanisms can serve as a held-out fold. Calicheamicin ADCs number
-  two worldwide, immunotoxins one, photoimmunotherapy one; these do not improve with
-  corpus size.
+* Two of the registry corpus's five payload mechanisms can serve as a held-out fold, and
+  three of the expanded corpus's five: `dna_crosslink` crosses the three-agent floor on the
+  strength of the literature arms. The remaining two do not improve with corpus size, and
+  the reason is arithmetic rather than effort -- calicheamicin ADCs number two worldwide and
+  duocarmycin ADCs two. Immunotoxins and photoimmunotherapy are a mechanism each and are
+  excluded from the corpus as non-conventional conjugates, which is why the figure is five
+  mechanisms here and seven in the plan.
