@@ -99,4 +99,51 @@ const more = [
 for (const [name, ok] of more) {
   if (!ok) { failed++; console.error("FAIL  " + name); } else { console.log("ok    " + name); }
 }
+
+
+// --- driver panel ---------------------------------------------------------------------
+// The plan asks for the four declared driver sources to be separated by colour, because the
+// first question a reader has about a red organ is whether the model said so or a rule did.
+// `elicited_prior` is the source with no training data behind it, so it must never render
+// as a fitted quantity.
+const withDrivers = {
+  organ_axis: "pulmonary", label: "Pulmonary", risk_band: "high",
+  band_basis: "serious", band_source: "rule",
+  point_estimate: 0.14, serious_estimate: 0.03,
+  interval: { lo: 0.1, hi: 0.19 }, serious_interval: { lo: 0.01, hi: 0.06 },
+  n_supporting_arms: 40, n_supporting_agents: 5,
+  at_risk_for_patient: true, weight_applied: 3.0,
+  drivers: [
+    { factor: "axis baseline", source: "model", contribution: -1.8089 },
+    { factor: "payload chemistry (camptothecin, topo1)", source: "model",
+      contribution: -0.0425 },
+    { factor: "label rule: dxd_prior_ild", source: "rule", contribution: null,
+      detail: "ENHERTU boxed warning" },
+    { factor: "comorbidity weighting on pulmonary", source: "elicited_prior",
+      contribution: 3.0 },
+  ],
+};
+const drvHtml = axisRow(withDrivers);
+const bareHtml = axisRow({ ...withDrivers, drivers: [] });
+
+const driverChecks = [
+  ["a why toggle appears when drivers exist",
+    drvHtml.includes('data-why="why-pulmonary"')],
+  ["the panel starts hidden", /id="why-pulmonary"[^>]*hidden/.test(drvHtml)],
+  ["every driver source is colour-tagged",
+    ["model", "rule", "elicited_prior"].every(
+      (src) => drvHtml.includes("var(--src-" + src + ")"))],
+  ["a fitted contribution shows its number", drvHtml.includes("-1.809")],
+  ["a rule shows a dash rather than a number", drvHtml.includes("&mdash;")],
+  ["the elicited prior is not coloured as the model",
+    drvHtml.includes("elicited prior") &&
+    !drvHtml.includes('var(--src-model)">elicited')],
+  ["no toggle when there is nothing to explain", !bareHtml.includes("data-why")],
+  ["no empty panel when there is nothing to explain",
+    !bareHtml.includes('class="why"')],
+];
+for (const [name, ok] of driverChecks) {
+  if (!ok) { failed++; console.error("FAIL  " + name); } else { console.log("ok    " + name); }
+}
+
 process.exit(failed ? 1 : 0);

@@ -12,6 +12,8 @@
     :root:not([data-theme=light]){
       --bg:#17171a; --panel:#1f1f23; --ink:#ececeb; --ink-dim:#9a9a98; --line:#30303a;
       --low:#6fa07c; --moderate:#d4a845; --high:#cf6b5a; --none:#6a6a70; --accent:#7fa8d4;
+      --src-model:#8fb4dc; --src-exclusion_head:#c9a45e; --src-elicited_prior:#b08fb0;
+      --src-rule:#cf6b5a; --src-target_expression:#6fb39f;
     }
   }
   *{box-sizing:border-box}
@@ -47,6 +49,12 @@
         background:var(--panel)}
   .card h3{margin:0 0 3px;font-size:15px;font-variant-numeric:tabular-nums}
   .slots{font-size:13px;color:var(--ink-dim);margin-bottom:9px}
+  /* One colour per declared driver source. The plan asks for the four to be separated by
+     colour because the first question a reader has about a red organ is whether the model
+     said so or a rule did -- and `elicited_prior` is the one with no training data behind
+     it, so it must never read as a fitted quantity. */
+  --src-model:#2d4a6b; --src-exclusion_head:#7a5c2e; --src-elicited_prior:#6b4a6b;
+  --src-rule:#a23b2d; --src-target_expression:#2e6b5c;
   .tag{display:inline-block;font-size:11px;padding:2px 6px;border-radius:3px;
        border:1px solid var(--line);margin-left:6px;color:var(--ink-dim)}
   .axis{display:grid;grid-template-columns:148px 1fr 108px 64px;gap:9px;align-items:center;
@@ -61,6 +69,15 @@
   .pt{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--ink)}
   .alt{display:block;font-size:10px;color:var(--muted);letter-spacing:.02em}
   .hatch{background:repeating-linear-gradient(45deg,var(--none) 0 3px,transparent 3px 6px)}
+  .why{grid-column:1/-1;margin:2px 0 8px 0;padding:7px 10px;border-left:3px solid var(--line);
+       background:color-mix(in srgb, var(--panel) 92%, var(--ink) 8%);border-radius:0 4px 4px 0}
+  .why[hidden]{display:none}
+  .drv{display:grid;grid-template-columns:120px 68px 1fr;gap:8px;align-items:baseline;
+       font-size:12px;padding:1px 0}
+  .drv b{font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em}
+  .drv .c{font-variant-numeric:tabular-nums;text-align:right;color:var(--ink-dim)}
+  .whytoggle{background:none;border:0;padding:0;font:inherit;font-size:11px;
+             color:var(--accent);cursor:pointer;text-decoration:underline}
   .band{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
   .b-low{color:var(--low)} .b-moderate{color:var(--moderate)}
   .b-high{color:var(--high)} .b-no_evidence{color:var(--none)}
@@ -211,7 +228,26 @@ function axisRow(r) {
   const interval = (!noEvidence && iv)
     ? " [" + pct(iv.lo) + "&ndash;" + pct(iv.hi) + "]"
     : "";
-  return `<div class="axis ${r.at_risk_for_patient ? "at-risk" : ""}">
+  // Law 5 wants an evidence strength meter; this is the same idea applied to *which*
+  // source spoke. `contribution` is in logits for a fitted term and null for a rule,
+  // because a rule has no logit -- showing a number there would imply it was fitted
+  // alongside the model's own contributions.
+  const drv = (r.drivers || []).map(d => {
+    const c = d.contribution == null
+      ? `<span class="c" title="A rule or a flag has no fitted coefficient.">&mdash;</span>`
+      : `<span class="c">${d.contribution > 0 ? "+" : ""}${d.contribution.toFixed(3)}</span>`;
+    return `<div class="drv"><b style="color:var(--src-${d.source})">${d.source.replace(/_/g, " ")}</b>${c}
+      <span title="${(d.detail || "").replace(/"/g, "&quot;")}">${d.factor}</span></div>`;
+  }).join("");
+  const why = drv
+    ? `<div class="why" id="why-${r.organ_axis}" hidden>${drv}
+         <div class="note" style="margin-top:6px">Contributions are in logits on the model's
+         own scale, so they add rather than multiply, and they explain the band rather than
+         the weighting. A dash means the source has no fitted coefficient.</div></div>`
+    : "";
+  const whyBtn = drv
+    ? `<button class="whytoggle" data-why="why-${r.organ_axis}">why</button>` : "";
+  return `${why}<div class="axis ${r.at_risk_for_patient ? "at-risk" : ""}">
       <span>${r.label}${r.at_risk_for_patient ? ` <span class="tag">weighted &times;${r.weight_applied.toFixed(1)}</span>` : ""}${basisTag}${ruleTag}</span>
       <span class="bar">${fill}</span>
       <span><span class="band b-${r.risk_band}">${r.risk_band.replace("_", " ")}</span>
@@ -221,6 +257,7 @@ function axisRow(r) {
               ? "Too little in the corpus on this organ for this chemistry to band a rate. Not the same as low risk."
               : `${arms} arms across ${agents} agents of this payload chemistry reported a count on this axis`}"
         >${arms} arm${arms === 1 ? "" : "s"}</span>
+      ${whyBtn}
     </div>`;
 }
 
@@ -293,6 +330,18 @@ async function run() {
     st.textContent = `error: ${e.message}`;
   } finally { btn.disabled = false; }
 }
+
+// Delegated, because the axis rows are rebuilt on every proposal. Bound once on the
+// document rather than per button, which is also what keeps the panel closed by default:
+// the number is the product, and the explanation is there when asked for.
+document.addEventListener("click", e => {
+  const btn = e.target.closest?.("[data-why]");
+  if (!btn) return;
+  const panel = document.getElementById(btn.dataset.why);
+  if (!panel) return;
+  panel.hidden = !panel.hidden;
+  btn.textContent = panel.hidden ? "why" : "hide";
+});
 
 document.getElementById("go").addEventListener("click", run);
 boot();
