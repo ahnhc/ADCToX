@@ -176,6 +176,23 @@ def table_kind(table: ParsedTable) -> str:
 # no denominator, so the denominator check above already excludes them; a p-value or a
 # hazard-ratio column never carries an `N =`. So this pattern only has to name the
 # statistics that could somehow acquire one.
+# A column headed with a *plural class* of agents is not one agent, however clearly the
+# paper's title names one. "Novel anti-HER2 ADCs (n = 73)" is the comparator arm of a paper
+# about trastuzumab emtansine, and the title gate passed it: the title names the agent, no
+# other ADC is named by name anywhere in the table, and the column has its own denominator.
+# 22 cells from one paper were attributed to trastuzumab emtansine this way, 11 of them
+# any-grade and in the corpus.
+#
+# The plural is what carries the meaning, and it has to be a plural *of agents*: "Pooled RDE
+# 5.6 mg/kg (n = 57)" pools dose-expansion cohorts of one agent and is a legitimate arm, so
+# `pooled` on its own is not a signal. Nor is a singular "ADC", which is how a paper refers
+# to the one it is about.
+AGENT_CLASS_HEADER = re.compile(
+    r"\b(?:ADCs|antibody[-\s]drug\s+conjugates|conjugates|agents|drugs|regimens"
+    r"|inhibitors|therapies|treatments)\b",
+    re.I,
+)
+
 NON_ARM_HEADER = re.compile(
     r"\b(?:p[-\s]?value|hazard\s+ratio|odds\s+ratio|rate\s+ratio|relative\s+risk"
     r"|95%\s*ci|confidence\s+interval|difference)\b",
@@ -432,6 +449,12 @@ def attribute_column(
         return ColumnAttribution(col, header, "non_arm", "no denominator", None)
     if NON_ARM_HEADER.search(header):
         return ColumnAttribution(col, header, "non_arm", "statistic column", denominator)
+    # Before the title gate, which is the gate this defeats.
+    if AGENT_CLASS_HEADER.search(header):
+        return ColumnAttribution(
+            col, header, "comparator",
+            f"header names a class of agents, not one: {header!r}", denominator,
+        )
     if title_names_agent:
         return ColumnAttribution(col, header, "agent_by_title",
                                  "title names the agent and no other ADC is in the table",

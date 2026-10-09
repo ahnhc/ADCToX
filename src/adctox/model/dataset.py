@@ -182,6 +182,12 @@ def build(
         obs = obs[obs["arm_key"].isin(set(arms["arm_key"]))]
     arms["n_at_risk"] = arms[["n_at_risk_other", "n_at_risk_serious"]].max(axis=1)
     keep = arms["agent"].notna() & (arms["n_at_risk"] >= min_n)
+    if "agent_class_column" in arms.columns:
+        # Not an outcome question but an attribution one, so it applies to both tables. A
+        # column headed "Novel anti-HER2 ADCs (n = 73)" is the comparator arm of a paper
+        # about trastuzumab emtansine, and the title gate admitted it because the title
+        # named the agent and no other ADC appeared by name in the table.
+        keep &= ~arms["agent_class_column"].fillna(False).astype(bool)
     if kind == "other" and "column_outcome" in arms.columns:
         # `otherEvents` is any-grade, all-cause incidence, and a literature column is only
         # comparable to it if it reports the same thing. 106 of 414 literature arms do not:

@@ -130,3 +130,54 @@ def test_the_arm_that_reported_nausea_at_one_percent_is_gone() -> None:
         "the grade-3-only trastuzumab deruxtecan arm is still contributing an any-grade "
         "gastrointestinal rate of 1.4%"
     )
+
+
+@pytest.mark.parametrize(("header", "is_class"), [
+    ("Novel anti-HER2 ADCs (n = 73) Any grade", True),
+    ("antibody-drug conjugates (n=50)", True),
+    ("Other agents (n=12)", True),
+    # Pooling cohorts of one agent is a legitimate arm; `pooled` alone is not a signal.
+    ("Pooled RDE 5.6 mg/kg (n = 57), n (%)", False),
+    # A singular "ADC" is how a paper refers to the one it is about.
+    ("T-DXd ADC (n=40)", False),
+    ("Patients, n (%) All grades", False),
+    ("EV-301N = 296n (%)", False),
+])
+def test_a_class_of_agents_is_not_an_agent(header: str, is_class: bool) -> None:
+    """The failure the title gate cannot see.
+
+    "Novel anti-HER2 ADCs (n = 73)" is the comparator arm of a paper about trastuzumab
+    emtansine, and every check passed: the title names the agent, no other ADC appears by
+    name anywhere in the table, the column has its own denominator, and the arithmetic is
+    consistent. 22 cells were attributed to trastuzumab emtansine, 11 of them any-grade and
+    in the corpus. This is the 75%-false-positive attribution trap arriving through a door
+    the project had already locked twice.
+
+    The plural is what carries the meaning, and it has to be a plural of *agents*.
+    """
+    assert merge.names_an_agent_class(header) is is_class, header
+
+
+@pytest.mark.skipif(not (FULL / "arms.parquet").exists(), reason="run `make pmc-merge`")
+def test_the_pooled_class_arm_is_out_of_both_grids() -> None:
+    """Attribution, not outcome, so it applies to the serious table too."""
+    import numpy as np
+
+    from adctox.model.dataset import load
+    from adctox.taxonomy import default_taxonomy
+
+    arms = pd.read_parquet(FULL / "arms.parquet")
+    flagged = arms[arms["agent_class_column"].fillna(False).astype(bool)]
+    assert len(flagged) >= 1, "nothing is flagged, so this test proves nothing"
+    assert all("10546815" in str(k) for k in flagged["arm_key"]), (
+        flagged["arm_key"].tolist()
+    )
+
+    axes = list(default_taxonomy().axis_order)
+    for kind in ("other", "serious"):
+        data = load(FULL, axes, kind=kind)
+        pos = {k: i for i, k in enumerate(data.arm_keys)}
+        bad = [pos[k] for k in flagged["arm_key"] if k in pos]
+        assert not np.isin(data.arm_idx, bad).any(), (
+            f"a class-pooling column still contributes to the {kind} grid"
+        )

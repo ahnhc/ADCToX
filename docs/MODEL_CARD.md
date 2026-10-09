@@ -31,8 +31,8 @@ results or say nothing about them.
 
 | | ClinicalTrials.gov only | + literature |
 |---|---|---|
-| arms (attributable, n>=30, conventional ADC) | 285 | 507 |
-| (arm x axis) cells | 3,990 | 7,098 |
+| arms (attributable, n>=30, conventional ADC) | 285 | 506 |
+| (arm x axis) cells | 3,990 | 7,084 |
 | distinct agents | 16 | 32 |
 | **identifying cells (agents x axes)** | **224** | **448** |
 | design parameters | 100 | 100 |

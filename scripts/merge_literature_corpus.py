@@ -45,6 +45,7 @@ import yaml
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "src"))
 
+from adctox.extract.table_to_cells import AGENT_CLASS_HEADER  # noqa: E402
 from adctox.provenance import stamp  # noqa: E402
 from adctox.taxonomy import default_taxonomy  # noqa: E402
 
@@ -97,6 +98,17 @@ OUTCOME_PATTERNS = (
     ("grade_restricted",
      r"grade\s*(?:>=|\u2265|3\s*[-\u2013/]\s*[45]|3\+|3\b)|\bsevere\b"),
 )
+
+
+def names_an_agent_class(header: str) -> bool:
+    """True where the column pools a class of agents rather than naming one.
+
+    The predicate lives in `adctox.extract.table_to_cells`, which is where the attribution
+    decision belongs and where it now runs for any future extraction. It is applied again
+    here because the cells already on disk were extracted before it existed, and
+    re-extracting 1,471 articles to drop eleven cells is the wrong trade.
+    """
+    return bool(AGENT_CLASS_HEADER.search(str(header or "")))
 
 
 def column_outcome(header: str) -> str:
@@ -196,6 +208,9 @@ def main() -> int:
             # remain available to a severity-stratified outcome. `dataset.build` is what
             # keeps them out of the any-grade grid.
             "column_outcome": column_outcome(g["column_header"].iloc[0]),
+            # Attribution rather than outcome: a column headed with a plural class of
+            # agents is not the agent the title names.
+            "agent_class_column": names_an_agent_class(g["column_header"].iloc[0]),
             "phase": None,
             "start_date": None,
             "results_posted": None,
@@ -236,6 +251,9 @@ def main() -> int:
     arms.to_parquet(args.out_dir / "paper_arms.parquet", index=False)
     obs.to_parquet(args.out_dir / "paper_observations.parquet", index=False)
 
+    n_class = int(arms["agent_class_column"].sum())
+    if n_class:
+        print(f"  약물 클래스를 명명한 열 {n_class} / {len(arms)} 팔 — 귀속 불가로 제외됨")
     mism = arms["column_outcome"].value_counts().to_dict()
     off = {k: v for k, v in mism.items() if k != "any_grade"}
     if off:
