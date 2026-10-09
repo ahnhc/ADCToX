@@ -1,6 +1,7 @@
 {
  "summary": {
-  "articles_searched": 1496,
+  "articles_searched": 1471,
+  "files_on_disk": 1496,
   "agents_without_a_dar": 10,
   "agents_with_a_candidate": 1,
   "agents_with_one_usable_value": 0,
@@ -49,7 +50,7 @@
    "agent": "enapotamab_vedotin",
    "inn": "enapotamab vedotin",
    "articles_mentioning": 3,
-   "dar_candidates": 2,
+   "dar_candidates": 1,
    "n_average_statements": 0,
    "n_in_a_paper_about_this_agent": 0,
    "n_species_labels": 0,
@@ -58,14 +59,6 @@
     4.0
    ],
    "evidence": [
-    {
-     "pmcid": "PMC12146481",
-     "match": "DAR4",
-     "value": 4.0,
-     "reading": "unqualified",
-     "primary": false,
-     "context": " AXL-targeting ADCs have entered into clinical trials so far. Clinical development for two of them has been stopped. Notably, enapotamab vedotin (payload MMAE, DAR4) was in early clinical development for the treatment of var"
-    },
     {
      "pmcid": "PMC12146481",
      "match": "DAR4",
@@ -150,11 +143,11 @@
   }
  ],
  "provenance": {
-  "revision": "3b1fe4f72db192452a74e4d76dae11026674d5c7",
+  "revision": "1109708fe0cef12ed7053bc3aff19d162133e9fb",
   "dirty": true,
   "snapshot": null,
   "script": "dar_gap.py",
-  "written_utc": "2026-10-09T07:42:31+00:00",
+  "written_utc": "2026-10-09T08:51:34+00:00",
   "inputs": {}
  }
 }

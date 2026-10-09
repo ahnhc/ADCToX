@@ -7,7 +7,7 @@ means the author *selected* rows, and absence then says almost nothing -- the se
 not a threshold on the rate.
 
 The first ablation round measured the cost of conflating them. Literature arms took the
-observed share from 86.2% to 60.9%, about 2,140 of their 3,290 cells are censored, 83% of
+observed share from 86.2% to 63.6%, about 1,560 of their 2,450 cells are censored, 83% of
 those carry a boundary derived from the arm's own minimum printed rate, and the
 leave-one-agent-out delta went from -0.0422 to -0.0782. The model was told "below X" with X
 too large, thousands of times.
@@ -57,7 +57,7 @@ def test_dropping_absences_keeps_every_arm_and_every_observation(axes) -> None:
                     reason="run `make pmc-merge`")
 def test_it_restores_the_registry_s_observed_share(axes) -> None:
     """The diagnosis, stated as a threshold. The registry corpus is 86.2% observed; the
-    literature-augmented one falls to 59.2%, which is what made it worse than its baseline.
+    literature-augmented one falls to 63.6%, which is what made it worse than its baseline.
     Dropping the uninformative absences brings it back above 80%."""
     dropped = ds.load(FULL, axes, kind="other", drop_uninformative_absences=True)
     share = int((dropped.status == 0).sum()) / int(dropped.n_cells)
@@ -146,10 +146,30 @@ def test_an_arm_only_enters_the_grid_for_a_table_it_published(axes) -> None:
     other = ds.load(FULL, axes, kind="other")
     serious = ds.load(FULL, axes, kind="serious")
 
-    assert other.n_arms > 2 * serious.n_arms
+    # The claim is about agents, not arms. An earlier version asserted that the any-grade
+    # grid held more than twice the arms of the serious one, which was true at 588 against
+    # 290 and stopped being true at 507 -- because excluding the columns that report a
+    # severity-restricted or non-incidence outcome shrinks the any-grade grid and leaves the
+    # serious one alone. That is the arm ratio moving for a reason unrelated to what this
+    # test is for.
+    assert other.n_arms > serious.n_arms
     assert other.n_contributing_agents >= 32
     assert serious.n_contributing_agents <= 20, (
         "the serious grid has gained agents it has no serious table for"
     )
-    # The index arrays still cover every arm, so an arm's position is table-independent.
-    assert len(other.arm_keys) == len(serious.arm_keys)
+    assert serious.n_contributing_agents - 16 <= 2, (
+        "the expansion is supposed to buy the serious table almost nothing; it has "
+        f"{serious.n_contributing_agents} agents against the registry's 16"
+    )
+    # The two grids no longer span the same arms, and nothing needs them to. An earlier
+    # version of this test asserted that the index arrays covered every arm under both
+    # tables, on the reasoning that an arm's position should be table-independent. That
+    # stopped holding once the any-grade grid began excluding columns reporting a
+    # severity-restricted or non-incidence outcome -- and the property was never
+    # load-bearing: each fit builds its own `ModelData`, the agent and trial effects are
+    # indexed within one fit, and a saved posterior carries agent *labels* rather than
+    # positions. The claim was removed rather than the filter weakened to preserve it.
+    assert set(serious.arm_keys) - set(other.arm_keys), (
+        "the serious grid holds no arm the any-grade grid lacks, so the two are not "
+        "actually built from different column sets"
+    )

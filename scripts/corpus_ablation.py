@@ -31,8 +31,34 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 MIN_AGENTS_FOR_FOLD = 3
 
 
-def describe(path: pathlib.Path, axes: list[str]) -> dict:
-    data = ds.load(path, axes, kind="other")
+def _frames(
+    path: pathlib.Path, agents: set[str] | None = None
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Load a corpus, optionally keeping only arms of the given agents.
+
+    The middle stage -- registry arms plus literature arms for agents already present -- was
+    a separate directory on disk, produced once by a path no flag reproduces. It went stale
+    the moment the merge gained a column, and the ablation then compared a filtered corpus
+    against an unfiltered one and reported the second stage as *losing* thirteen arms. All
+    three stages are now derived from the full union here, which is what makes the nesting
+    claim true by construction rather than by a check.
+    """
+    arms = pd.read_parquet(path / "arms.parquet")
+    obs = pd.read_parquet(path / "observations.parquet")
+    if agents is not None:
+        arms = arms[
+            (arms["source"].isna() if "source" in arms else True)
+            | arms["agent"].isin(agents)
+        ].reset_index(drop=True)
+        obs = obs[obs["arm_key"].isin(set(arms["arm_key"]))].reset_index(drop=True)
+    return arms, obs
+
+
+def describe(
+    path: pathlib.Path, axes: list[str], agents: set[str] | None = None
+) -> dict:
+    arms, obs = _frames(path, agents)
+    data = ds.build(arms, obs, axes, kind="other")
     per_mech: dict[str, set[int]] = {}
     arms_per_mech: dict[str, int] = {}
     for mi, ai in zip(data.arm_mech_idx, data.arm_agent_idx):
@@ -82,17 +108,26 @@ def main() -> int:
     args = ap.parse_args()
 
     axes = list(default_taxonomy().axis_order)
+    registry = ROOT / "data" / "processed"
+    full = registry / "with_literature_final"
+    if not (full / "arms.parquet").exists():
+        print(f"missing {full}; run `make pmc-merge`", file=sys.stderr)
+        return 1
+
+    # The agents the registry already had, which is what separates the two literature
+    # stages: arms of a known agent add observations of its trial populations and none of
+    # its chemistry.
+    registry_agents = set(
+        pd.read_parquet(registry / "arms.parquet")["agent"].dropna().unique()
+    )
     stages = {
-        "registry_only": ROOT / "data" / "processed",
-        "plus_literature_arms": ROOT / "data" / "processed" / "with_literature",
-        "plus_literature_agents": ROOT / "data" / "processed" / "with_literature_final",
+        "registry_only": (registry, None),
+        "plus_literature_arms": (full, registry_agents),
+        "plus_literature_agents": (full, None),
     }
     described: dict[str, dict] = {}
-    for name, path in stages.items():
-        if not (path / "arms.parquet").exists():
-            print(f"missing {path}; skipping {name}", file=sys.stderr)
-            continue
-        described[name] = describe(path, axes)
+    for name, (path, agents) in stages.items():
+        described[name] = describe(path, axes, agents)
 
     # The nesting claim, checked. A stage that is not a superset of the one before it makes
     # the ablation uninterpretable, because a difference could then come from arms that
@@ -109,8 +144,8 @@ def main() -> int:
     nesting: list[dict] = []
     order = [n for n in stages if n in described]
     for prev, cur in zip(order, order[1:]):
-        a = set(pd.read_parquet(stages[prev] / "arms.parquet")["arm_key"])
-        b = set(pd.read_parquet(stages[cur] / "arms.parquet")["arm_key"])
+        a = set(_frames(*stages[prev])[0]["arm_key"])
+        b = set(_frames(*stages[cur])[0]["arm_key"])
         nesting.append({
             "from": prev, "to": cur,
             "corpus_arms_added": len(b - a),

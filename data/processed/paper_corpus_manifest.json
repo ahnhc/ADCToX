@@ -1,13 +1,13 @@
 {
   "provenance": {
-    "revision": "3b1fe4f72db192452a74e4d76dae11026674d5c7",
+    "revision": "1109708fe0cef12ed7053bc3aff19d162133e9fb",
     "dirty": true,
     "snapshot": "2026-10-07",
     "script": "merge_literature_corpus.py",
-    "written_utc": "2026-10-09T07:40:14+00:00",
+    "written_utc": "2026-10-09T08:47:31+00:00",
     "inputs": {
-      "cells": "sha256:ecb023f2e88e9d2005e591325c0ca895d0ffce1b9a73ba25b8dc223830647aae",
-      "registry": "sha256:f39f62dcd2d8f4782d2559947a009c70dc119e7bb925a48e40940ab7f2846301"
+      "cells": "sha256:bf1fbdd75bd39a7a0f9ee0f39bb9da88b4be241315556875aa8e4b857f194974",
+      "registry": "sha256:5571a356da5454bfe14511181ffebc1a73ce1948c3db7ad079a3e8ee4cd5ab9c"
     }
   },
   "filters": {
@@ -15,8 +15,8 @@
     "include_registry_overlap": false,
     "explicit_threshold_only": false
   },
-  "n_cells_in": 6535,
-  "n_cells_kept": 4910,
+  "n_cells_in": 6407,
+  "n_cells_kept": 4782,
   "n_arms": 414,
   "n_observations": 2015,
   "n_agents": 29,

@@ -244,10 +244,9 @@ pmc-extract: snapshot-check ## full extraction funnel -> attributed arm-axis cel
 	  --out artifacts/codename_extraction.json \
 	  --cells-out $(CELLS_DIR)/codename_cells.jsonl || \
 	  echo "no code-name snapshot; skipping"
-	cat $(CELLS_DIR)/pmc_cells.jsonl \
+	$(PY) scripts/merge_cell_files.py $(CELLS_DIR)/pmc_cells.jsonl \
 	  $(wildcard $(CELLS_DIR)/discovery_cells.jsonl) \
-	  $(wildcard $(CELLS_DIR)/codename_cells.jsonl) > $(ALL_CELLS)
-	@wc -l < $(ALL_CELLS) | xargs echo "  cells in all_cells.jsonl:"
+	  $(wildcard $(CELLS_DIR)/codename_cells.jsonl) --out $(ALL_CELLS)
 
 pmc-validate: ## extracted rates vs the registry's own numbers for the same arms
 	$(PY) scripts/validate_pmc_against_ctgov.py --cells $(ALL_CELLS) \

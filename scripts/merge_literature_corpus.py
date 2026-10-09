@@ -66,6 +66,54 @@ DESIGN_COLS = (
 )
 
 
+# What outcome does a column actually report? `otherEvents` on ClinicalTrials.gov is
+# any-grade, all-cause incidence, and a paper column is only comparable to it if it reports
+# the same thing. Several do not, and they were all being merged in as though they did:
+#
+#   grade_restricted   100 arms  "Grade >=3", "Grade 3-4" -- the severe tail, five to ten
+#                                times lower. The clearest case was a trastuzumab
+#                                deruxtecan arm reporting nausea at 1.4% against a median
+#                                of 67% across its other 79 arms.
+#   fatal                3 arms  "Grade 5" -- deaths per organ, near zero everywhere.
+#   serious              1 arm   a serious-event column, which belongs to the other table.
+#   dose_modification    2 arms  "EV Dose Reduction", "Permanent Discontinuation" -- a
+#                                clinical action per organ, not an incidence at all.
+#
+# 106 of 414 literature arms. Setting them aside costs no agents: every agent with one also
+# has an any-grade arm. No registry arm is affected, because a ClinicalTrials.gov event
+# group has no outcome qualifier in its title.
+#
+# Classified rather than dropped here, so the counts are reportable and the arms stay
+# available to a severity-stratified outcome later. `dataset.build` keeps them out of the
+# any-grade grid.
+ANY_GRADE = re.compile(r"all[- ]grade|any[- ]grade", re.I)
+OUTCOME_PATTERNS = (
+    # Order matters: a "Grade 5 serious" column is fatal first. Each pattern is tried in
+    # turn and the first match names the column.
+    ("dose_modification",
+     r"dose\s*(?:reduc|interrupt|modif|delay)|discontinu|withdraw"),
+    ("fatal", r"grade\s*5\b|\bfatal\b|\bdeaths?\b"),
+    ("serious", r"\bserious\b|\bSAE\b"),
+    ("grade_restricted",
+     r"grade\s*(?:>=|\u2265|3\s*[-\u2013/]\s*[45]|3\+|3\b)|\bsevere\b"),
+)
+
+
+def column_outcome(header: str) -> str:
+    """Which outcome the column reports; `any_grade` is the one the corpus wants.
+
+    A header naming both ends -- "all grades and grade 3-4" -- is a spanning header whose
+    children were split upstream, so it counts as any-grade.
+    """
+    text = str(header or "")
+    for name, pattern in OUTCOME_PATTERNS:
+        if re.search(pattern, text, re.I):
+            if name == "grade_restricted" and ANY_GRADE.search(text):
+                continue
+            return name
+    return "any_grade"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--cells", type=pathlib.Path, required=True)
@@ -144,6 +192,10 @@ def main() -> int:
             "threshold_is_upper_bound": bool(
                 not g["threshold_explicit"].astype(bool).any()
             ),
+            # Carried rather than dropped here, so the count is reportable and the arms
+            # remain available to a severity-stratified outcome. `dataset.build` is what
+            # keeps them out of the any-grade grid.
+            "column_outcome": column_outcome(g["column_header"].iloc[0]),
             "phase": None,
             "start_date": None,
             "results_posted": None,
@@ -184,6 +236,11 @@ def main() -> int:
     arms.to_parquet(args.out_dir / "paper_arms.parquet", index=False)
     obs.to_parquet(args.out_dir / "paper_observations.parquet", index=False)
 
+    mism = arms["column_outcome"].value_counts().to_dict()
+    off = {k: v for k, v in mism.items() if k != "any_grade"}
+    if off:
+        print(f"  전등급이 아닌 결과를 보고하는 열 {sum(off.values())} / {len(arms)} 팔"
+              f" — 전등급 격자에서 제외됨: {off}")
     n_bound = int(arms["threshold_is_upper_bound"].sum())
     print(f"\n팔 {len(arms)}개, 약물 {arms['agent'].nunique()}종, "
           f"시험 {arms['nct_id'].nunique()}건, 관측 {len(obs)}개")

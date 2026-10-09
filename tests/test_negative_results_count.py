@@ -45,3 +45,25 @@ def test_the_numbering_has_no_gaps() -> None:
         f"numbers run to {plain[-1]} over {len(plain)} plain-numbered items, so one is "
         "missing from this section"
     )
+
+
+def test_no_numbered_item_lives_outside_section_nine() -> None:
+    """The failure mode, caught directly rather than through a count.
+
+    Items were inserted before `## 10. Limitations` twice, and the clean-clone section sits
+    between 9 and 10, so both times they landed inside it. Neither of the tests above saw
+    it: the numbering stayed contiguous and the contents count was updated to the number of
+    items the author believed they had added, so the two agreed about a document neither
+    had looked at.
+    """
+    text = REPORT.read_text(encoding="utf-8")
+    start = text.index("## 9. Measured negative results")
+    end = text.index("## 9b.", start)
+    after = text[end:]
+    stray = ITEM.findall(after)
+    assert not stray, (
+        f"numbered items after section 9 ends: {stray}. They were meant for section 9 and "
+        "the section between it and the limitations swallowed them."
+    )
+    # And nothing numbered sits before the section either.
+    assert not ITEM.findall(text[:start])

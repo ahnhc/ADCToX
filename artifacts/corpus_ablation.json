@@ -1,10 +1,10 @@
 {
   "provenance": {
-    "revision": "0bd279a11ca134cdf9d9b5c837727209d8c31865",
+    "revision": "1109708fe0cef12ed7053bc3aff19d162133e9fb",
     "dirty": true,
     "snapshot": "2026-10-07",
     "script": "corpus_ablation.py",
-    "written_utc": "2026-10-09T06:10:54+00:00",
+    "written_utc": "2026-10-09T08:49:39+00:00",
     "inputs": {}
   },
   "min_agents_for_fold": 3,
@@ -72,16 +72,16 @@
       ]
     },
     "plus_literature_arms": {
-      "summary": "7,280 cells over 520 arms x 14 axes (4,433 observed, 2,614 censored, 233 structural zero) | 17 agents, 5 mechanisms, 7 payload families, 66 multi-arm trials (350 arms from single-arm trials carry no trial effect)",
-      "observed_share": 0.6089285714285714,
-      "censored_share": 0.35906593406593407,
+      "summary": "6,440 cells over 460 arms x 14 axes (4,189 observed, 2,018 censored, 233 structural zero) | 17 agents, 5 mechanisms, 7 payload families, 65 multi-arm trials (294 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.6504658385093167,
+      "censored_share": 0.3133540372670807,
       "n_agents": 17,
-      "n_arms": 520,
-      "n_cells": 7280,
+      "n_arms": 460,
+      "n_cells": 6440,
       "n_axes": 14,
       "identifying_cells": 238,
-      "n_observed": 4433,
-      "n_censored": 2614,
+      "n_observed": 4189,
+      "n_censored": 2018,
       "mechanisms": {
         "dna_alkyl": {
           "agents": 1,
@@ -90,7 +90,7 @@
         },
         "dna_cleave": {
           "agents": 2,
-          "arms": 46,
+          "arms": 45,
           "viable_fold": false
         },
         "dna_crosslink": {
@@ -100,12 +100,12 @@
         },
         "topo1": {
           "agents": 4,
-          "arms": 174,
+          "arms": 145,
           "viable_fold": true
         },
         "tubulin": {
           "agents": 8,
-          "arms": 295,
+          "arms": 263,
           "viable_fold": true
         }
       },
@@ -135,16 +135,16 @@
       ]
     },
     "plus_literature_agents": {
-      "summary": "8,232 cells over 588 arms x 14 axes (4,874 observed, 3,125 censored, 233 structural zero) | 32 agents, 5 mechanisms, 8 payload families, 74 multi-arm trials (390 arms from single-arm trials carry no trial effect)",
-      "observed_share": 0.5920796890184645,
-      "censored_share": 0.37961613216715256,
+      "summary": "7,098 cells over 507 arms x 14 axes (4,513 observed, 2,352 censored, 233 structural zero) | 32 agents, 5 mechanisms, 8 payload families, 71 multi-arm trials (325 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.6358129050436743,
+      "censored_share": 0.33136094674556216,
       "n_agents": 32,
-      "n_arms": 588,
-      "n_cells": 8232,
+      "n_arms": 507,
+      "n_cells": 7098,
       "n_axes": 14,
       "identifying_cells": 448,
-      "n_observed": 4874,
-      "n_censored": 3125,
+      "n_observed": 4513,
+      "n_censored": 2352,
       "mechanisms": {
         "dna_alkyl": {
           "agents": 2,
@@ -153,22 +153,22 @@
         },
         "dna_cleave": {
           "agents": 2,
-          "arms": 46,
+          "arms": 45,
           "viable_fold": false
         },
         "dna_crosslink": {
           "agents": 4,
-          "arms": 17,
+          "arms": 13,
           "viable_fold": true
         },
         "topo1": {
           "agents": 7,
-          "arms": 189,
+          "arms": 154,
           "viable_fold": true
         },
         "tubulin": {
           "agents": 17,
-          "arms": 338,
+          "arms": 295,
           "viable_fold": true
         }
       },
@@ -220,7 +220,7 @@
       "to": "plus_literature_arms",
       "corpus_arms_added": 312,
       "corpus_arms_dropped": 0,
-      "grid_arms_added": 235,
+      "grid_arms_added": 175,
       "is_superset": true
     },
     {
@@ -228,7 +228,7 @@
       "to": "plus_literature_agents",
       "corpus_arms_added": 102,
       "corpus_arms_dropped": 0,
-      "grid_arms_added": 68,
+      "grid_arms_added": 47,
       "is_superset": true
     }
   ],

@@ -82,7 +82,14 @@ def main() -> None:
         for k, s in missing.items()
     }
 
-    files = sorted(args.pmc.rglob("*.xml"))
+    # One file per article. Three snapshots were fetched with three different agent lists,
+    # and 25 of the 1,471 articles answer to more than one, so a plain rglob yields 1,496
+    # files and counts those 25 twice -- which is how enapotamab vedotin's single candidate
+    # sentence was reported as two.
+    by_id: dict[str, pathlib.Path] = {}
+    for f in sorted(args.pmc.rglob("*.xml")):
+        by_id.setdefault(f.stem, f)
+    files = [by_id[k] for k in sorted(by_id)]
     mentioned: dict[str, set[str]] = {k: set() for k in missing}
     candidates: dict[str, list[dict]] = {k: [] for k in missing}
 
@@ -167,6 +174,7 @@ def main() -> None:
         })
     summary = {
         "articles_searched": len(files),
+        "files_on_disk": len(list(args.pmc.rglob("*.xml"))),
         "agents_without_a_dar": len(missing),
         "agents_with_a_candidate": sum(1 for r in rows if r["dar_candidates"]),
         "agents_with_one_usable_value": sum(

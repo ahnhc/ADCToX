@@ -106,10 +106,16 @@ class ModelData:
         """Arms that contribute at least one cell.
 
         This is smaller than ``len(arm_keys)`` for the serious table, because an arm that
-        published only a common-events table contributes nothing there. The index arrays
-        keep every arm so that an arm's position is the same under both tables, but the
-        summary must count what the fit actually sees: reporting 594 arms for a serious
-        grid built from 290 of them would overstate the corpus by a factor of two.
+        published only a common-events table contributes nothing there. The summary must
+        count what the fit actually sees: reporting 594 arms for a serious grid built from
+        290 of them would overstate the corpus by a factor of two.
+
+        An earlier version of this note claimed the index arrays kept every arm so that an
+        arm's position was the same under both tables. That stopped being true once the
+        any-grade grid began excluding columns reporting a severity-restricted or
+        non-incidence outcome, and it was never load-bearing: each fit builds its own
+        ``ModelData``, the agent and trial effects are indexed within one fit, and a saved
+        posterior carries agent labels rather than positions.
         """
         return int(np.unique(self.arm_idx).size)
 
@@ -176,6 +182,21 @@ def build(
         obs = obs[obs["arm_key"].isin(set(arms["arm_key"]))]
     arms["n_at_risk"] = arms[["n_at_risk_other", "n_at_risk_serious"]].max(axis=1)
     keep = arms["agent"].notna() & (arms["n_at_risk"] >= min_n)
+    if kind == "other" and "column_outcome" in arms.columns:
+        # `otherEvents` is any-grade, all-cause incidence, and a literature column is only
+        # comparable to it if it reports the same thing. 106 of 414 literature arms do not:
+        # a severity-restricted tail ("Grade >=3"), deaths ("Grade 5"), a serious-event
+        # column, or a clinical action per organ ("EV Dose Reduction", "Permanent
+        # Discontinuation") -- the last of which is not an incidence at all. All were being
+        # merged in as though they were any-grade, the clearest case a trastuzumab
+        # deruxtecan arm reporting nausea at 1.4% against a median of 67% across its other
+        # 79 arms.
+        #
+        # Dropped rather than adjusted, because an adjustment would be a guess at a grade
+        # distribution the papers do not report. It costs no agents: every agent with such
+        # an arm also has an any-grade one. No registry arm is affected -- a
+        # ClinicalTrials.gov event group has no outcome qualifier in its title.
+        keep &= arms["column_outcome"].fillna("any_grade") == "any_grade"
     if conventional_only:
         # moxetumomab pasudotox is a recombinant immunotoxin fusion, not a chemically
         # conjugated ADC: it has no linker and DAR is 1 by construction, so it cannot

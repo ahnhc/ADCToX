@@ -1,0 +1,132 @@
+"""A literature column is comparable to `otherEvents` only if it reports the same outcome.
+
+ClinicalTrials.gov's `otherEvents` is any-grade, all-cause incidence. 106 of the 414
+literature arms report something else and were being merged in as though they did not:
+
+* 100 a severity-restricted tail -- "Grade >=3", "Grade 3-4" -- whose rates are five to ten
+  times lower;
+* 3 deaths, headed "Grade 5";
+* 1 a serious-event column, which belongs to the other table;
+* 2 a clinical action per organ -- "EV Dose Reduction", "Permanent Discontinuation" -- which
+  is not an incidence at all.
+
+The clearest single case: a trastuzumab deruxtecan arm reporting nausea at 1.4%, against a
+median of 67% across the agent's other 79 arms. It survived every check the project had,
+because 2/142 is arithmetically consistent, the row label maps cleanly, the denominator is
+stated in the header, and nothing anywhere asked what the column was counting.
+
+Found by looking for duplicate cells and noticing that the duplicates were not duplicates:
+the same row and the same parent column header with two different counts, which is what a
+grade-stratified table looks like once the grade is dropped from the column identity.
+"""
+
+from __future__ import annotations
+
+import importlib.util
+import pathlib
+import sys
+
+import pandas as pd
+import pytest
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+SPEC = importlib.util.spec_from_file_location(
+    "merge_literature_corpus", ROOT / "scripts" / "merge_literature_corpus.py"
+)
+merge = importlib.util.module_from_spec(SPEC)
+sys.modules["merge_literature_corpus"] = merge
+SPEC.loader.exec_module(merge)
+
+PAPER = ROOT / "data" / "processed" / "paper_arms.parquet"
+FULL = ROOT / "data" / "processed" / "with_literature_final"
+REGISTRY = ROOT / "data" / "processed" / "arms.parquet"
+
+
+@pytest.mark.parametrize(("header", "expected"), [
+    ("Patients, n (%) All grades", "any_grade"),
+    ("Overall cohort, n = 120", "any_grade"),
+    ("All patients (n=28), n (%) Grade 3-4", "grade_restricted"),
+    ("2.4 mg/kg Q3W (n = 16) Grade ≥3", "grade_restricted"),
+    ("Depatux-m (n=323) n (%) Grade 3", "grade_restricted"),
+    ("EV-301N = 296n (%) Grade 3/4", "grade_restricted"),
+    ("N = 137, No. (%) Grade 5", "fatal"),
+    ("Seriousness and CTCAE grade Serious neutropenia/FN", "serious"),
+    ("EV Dose Reduction", "dose_modification"),
+    ("Permanent Discontinuation EV", "dose_modification"),
+    # A spanning header naming both ends was split upstream, so it is not restricted.
+    ("All grades and grade 3-4", "any_grade"),
+    # And the fatal reading wins over the grade reading when both are present, because a
+    # grade-5 column is deaths however it is also described.
+    ("Grade 3-5 deaths", "fatal"),
+])
+def test_the_classifier_names_the_outcome(header: str, expected: str) -> None:
+    assert merge.column_outcome(header) == expected, header
+
+
+@pytest.mark.skipif(not PAPER.exists(), reason="run `make pmc-merge`")
+def test_the_counts_are_what_the_corpus_reports() -> None:
+    arms = pd.read_parquet(PAPER)
+    counts = arms["column_outcome"].value_counts().to_dict()
+    assert counts.get("grade_restricted", 0) >= 90, counts
+    assert counts.get("fatal", 0) >= 3, counts
+    assert counts.get("dose_modification", 0) >= 2, counts
+    assert sum(v for k, v in counts.items() if k != "any_grade") >= 100, counts
+
+
+@pytest.mark.skipif(not REGISTRY.exists(), reason="run `make corpus`")
+def test_no_registry_arm_is_reclassified() -> None:
+    """A ClinicalTrials.gov event group has no outcome qualifier in its title, so this must
+    change nothing about the registry corpus. If it ever does, the pattern is over-matching
+    and the registry results move with it."""
+    arms = pd.read_parquet(REGISTRY)
+    titles = arms["title"].astype(str) if "title" in arms else arms["arm_key"].astype(str)
+    offenders = [t for t in titles if merge.column_outcome(t) != "any_grade"]
+    assert not offenders, offenders[:5]
+
+
+@pytest.mark.skipif(not (FULL / "arms.parquet").exists(), reason="run `make pmc-merge`")
+def test_the_any_grade_grid_excludes_them_and_loses_no_agent() -> None:
+    """The reason this is a correction rather than a trade-off. Every agent carrying a
+    non-any-grade arm also has an any-grade one, so the 32-agent count survives."""
+    from adctox.model.dataset import load
+    from adctox.taxonomy import default_taxonomy
+
+    axes = list(default_taxonomy().axis_order)
+    data = load(FULL, axes, kind="other")
+    assert data.n_contributing_agents == 32, data.summary()
+    assert data.n_arms < 560, data.summary()
+
+    arms = pd.read_parquet(FULL / "arms.parquet")
+    off = arms[arms["column_outcome"].fillna("any_grade") != "any_grade"]
+    assert len(off) > 100
+    assert not (set(off["agent"].dropna()) - set(
+        arms.loc[arms["column_outcome"].fillna("any_grade") == "any_grade", "agent"]
+        .dropna()
+    )), "an agent would be lost, which would make this a trade-off rather than a fix"
+
+
+@pytest.mark.skipif(not (FULL / "arms.parquet").exists(), reason="run `make pmc-merge`")
+def test_the_arm_that_reported_nausea_at_one_percent_is_gone() -> None:
+    """The case this started from, pinned by name."""
+    import numpy as np
+
+    from adctox.model.dataset import load
+    from adctox.taxonomy import default_taxonomy
+
+    axes = list(default_taxonomy().axis_order)
+    data = load(FULL, axes, kind="other")
+    gi = axes.index("gastrointestinal")
+    arms = pd.read_parquet(FULL / "arms.parquet")
+    key_to_pos = {k: i for i, k in enumerate(data.arm_keys)}
+    bad = [
+        key_to_pos[k] for k in arms.loc[
+            arms["arm_key"].astype(str).str.contains("13187561", na=False), "arm_key"
+        ] if k in key_to_pos
+    ]
+    cells = np.flatnonzero(
+        (data.axis_idx == gi) & np.isin(data.arm_idx, bad)
+    )
+    assert cells.size == 0, (
+        "the grade-3-only trastuzumab deruxtecan arm is still contributing an any-grade "
+        "gastrointestinal rate of 1.4%"
+    )

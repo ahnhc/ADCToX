@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 27 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 29 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -906,20 +906,23 @@ routes to new agents.
 | stage | agents | arms in the grid | cells | cells that identify a design coefficient | viable LOMO folds |
 |---|---|---|---|---|---|
 | ClinicalTrials.gov only | 16 | 285 | 3,990 | 224 | 2 |
-| + literature arms for agents already present | 17 | 520 | 7,280 | 238 | 2 |
-| + literature agents | 32 | 588 | 8,232 | 448 | 3 |
+| + literature arms for agents already present | 17 | 460 | 6,440 | 238 | 2 |
+| + literature agents | 32 | 507 | 7,098 | 448 | 3 |
 
 The three corpora nest exactly -- 312 arms added at the first step and 102 at the second,
 with **zero** arms dropped at either -- so a difference between fits is attributable to
 what was added. That is checked in `artifacts/corpus_ablation.json`, not assumed.
 
-The arms column is the grid and not the corpus, and the two differ by 77 arms at the first
-step. Four filters stand between them: an attributable agent, a denominator of at least 30,
-a conventional conjugate, and publishing the table in question. The artefact reports both
-counts side by side, because reading a corpus figure off a grid column is how this table
-gets misread.
+The arms column is the grid and not the corpus, and the two differ by 137 arms at the first
+step. Five filters stand between them: an attributable agent, a denominator of at least 30,
+a conventional conjugate, publishing the table in question, and reporting the any-grade
+outcome the registry's `otherEvents` reports. The artefact reports both counts side by side,
+because reading a corpus figure off a grid column is how this table gets misread. All three
+stages are derived from the one merged corpus, which makes the nesting true by construction;
+the middle stage used to be a separate directory on disk, and it went stale the moment the
+merge gained a column.
 
-Read the fourth column against the second. The first step adds 312 corpus arms and 3,290
+Read the fourth column against the second. The first step adds 312 corpus arms and 2,450
 cells and buys **14** identifying cells. The second adds 102 and buys **210**. Section 2
 states the reason abstractly; this is it arithmetically. Design features are agent-level
 constants, so arms of an agent already in the corpus are additional observations of its
@@ -945,12 +948,12 @@ This is what the ablation was built to detect, and the cell composition says wha
 | | observed | censored |
 |---|---|---|
 | ClinicalTrials.gov only | 86.2% | 11.8% |
-| + literature arms | 60.9% | **35.9%** |
-| + literature agents | 59.2% | 38.0% |
+| + literature arms | 65.0% | **31.3%** |
+| + literature agents | 63.6% | 33.1% |
 
 **A paper's adverse-event table is sparse in a way a registry record is not.** A registry
 arm reports most of its organs; a paper reports a handful, so the other ten or eleven axes
-arrive as censored cells. Of the 3,290 cells the literature arms add, about 2,140 are
+arrive as censored cells. Of the 2,450 cells the literature arms add, about 1,560 are
 censored -- and for 83% of paper arms the censoring boundary is an *upper* bound derived
 from the minimum printed rate rather than a stated cut. So the model is told "this organ's
 rate is below X" with X too large, for thousands of cells at once. Section 5g's threshold
@@ -975,7 +978,7 @@ denominator nor a single row -- so the serious fit sees 9 new arms, and the regi
 
 | table | agents | arms | cells |
 |---|---|---|---|
-| otherEvents | **32** | 588 | 8,232 |
+| otherEvents | **32** | 507 | 7,098 |
 | seriousEvents | **17** | 290 | 4,060 |
 
 This was invisible until it was looked for, because the corpus builder was manufacturing the
@@ -1535,10 +1538,10 @@ neurologic.
     Its own population-pharmacokinetic paper gives an average DAR of 3.8, three times --
     and labels its conjugate species `DAR0` through `DAR8`, seven tokens to the one real
     statement, beside the agent's name in the same sentences. Read as the ratio they give
-    the agent a DAR of 0, 1 or 8. Searching 1,496 harvested articles recovers 2 of the 12;
+    the agent a DAR of 0, 1 or 8. Searching the 1,471 harvested articles recovers 2 of the 12;
     a third candidate is rejected because its only source is a paper about a different drug.
     The gap is not a search failure: eight agents' ratios are stated in no article on disk,
-    and 28 of 594 arms are still fitted at the corpus mean.
+    and 19 of 507 arms are still fitted at the corpus mean.
 26. **A regex guard that never fires is worse than no guard, and this project wrote one.** A
     pattern to bracket the species enumeration -- `DAR1 ... to DAR8` -- failed on the one
     sentence it was written for, because that sentence contains `i.e.` and an abbreviation's
@@ -1547,6 +1550,28 @@ neurologic.
     deleted rather than patched, and a word-level test does the work. This is the second
     time in this project that a guard passing was mistaken for a guard working; the first
     was a `sed` pattern that never matched and therefore fabricated nothing to detect.
+
+27. **106 of 414 literature arms were reporting a different outcome than the corpus asks
+    for.** `otherEvents` on ClinicalTrials.gov is any-grade, all-cause incidence. 100 of the
+    paper arms report only the severe tail -- "Grade >=3", "Grade 3-4" -- 3 report deaths
+    ("Grade 5"), 1 is a serious-event column, and 2 report a clinical action per organ ("EV
+    Dose Reduction", "Permanent Discontinuation") which is not an incidence at all. All were
+    merged in as though they were any-grade. The clearest case is a trastuzumab deruxtecan
+    arm reporting nausea at **1.4%**, against a median of **67%** across the agent's other
+    79 arms. It passed every check the project had: 2/142 is arithmetically consistent, the
+    row label maps cleanly, the denominator is stated in its own header, and nothing anywhere
+    asked what the column was counting. Setting them aside costs **no agents** -- every
+    agent with such an arm also has an any-grade one -- and takes the corpus from 8,232
+    cells over 588 arms to 7,098 over 507, with the observed share rising from 59.2% to
+    63.6%.
+28. **The duplicates that were not duplicates are what found it.** Concatenating the three
+    snapshots' cell files emitted 277 rows twice, since 25 of the 1,471 articles answer to
+    more than one fetch list. 128 were true copies. The other 149 shared the article, table,
+    row, parent column header, agent and axis while carrying *different counts* -- which is
+    what a grade-stratified table looks like once the grade is dropped from the column
+    identity. The corpus was never affected by the copies, because the merge keys
+    observations by (arm, axis, kind); the statistics computed per cell were, and
+    `pmc_validation.json` sized its rate comparison at 1,372 cells when fewer were distinct.
 
 ## 9b. The clean-clone check, run for the first time
 
@@ -1577,7 +1602,6 @@ the stamp could not distinguish *this revision does identify the code* from *we 
 tell* -- and the clean case is the only one where that distinction pays for itself. Every
 test had passed because every test ran against a dirty tree. The failure mode was reachable
 only from a clone, which is the argument for running the check at all.
-
 ## 10. Limitations
 
 * Tier 2 novelty -- a new molecule in a known chemical family -- is not supported, and the
