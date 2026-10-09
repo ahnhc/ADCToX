@@ -489,3 +489,57 @@ def test_the_convergence_verdict_follows_the_gap_and_the_threshold() -> None:
         assert r["converged"] == (r["worst_seed_gap"] <= r["seed_threshold"]), r
         if r["censored_share"] is not None:
             assert 0.0 <= r["censored_share"] <= 1.0, r
+
+
+COMPAR = ROOT / "artifacts" / "fold_comparability.json"
+
+
+@pytest.mark.skipif(not COMPAR.exists(), reason="run `make fold-comparability`")
+def test_the_like_for_like_macro_uses_folds_every_corpus_has() -> None:
+    """A corpus must not be penalised for having gained a fourth and harder fold.
+
+    The merged corpus has `dna_cleave` and the registry corpus does not, so comparing a
+    four-fold macro against a three-fold one would charge the merged corpus for a test the
+    others never took. The like-for-like macro is over the intersection.
+    """
+    doc = json.loads(COMPAR.read_text(encoding="utf-8"))
+    common = set(doc["common_folds"])
+    if not common:
+        return
+    for corpus, v in doc["like_for_like_macro"].items():
+        assert set(v["folds"]) == common, corpus
+        deltas = [r["delta_auc"] for r in doc["rows"]
+                  if r["corpus"] == corpus and r["fold"] in common]
+        assert v["macro_delta"] == pytest.approx(sum(deltas) / len(deltas), abs=1e-4)
+    # Every corpus present must carry every common fold, or the intersection is wrong.
+    for corpus in {r["corpus"] for r in doc["rows"]}:
+        got = {r["fold"] for r in doc["rows"] if r["corpus"] == corpus}
+        assert common <= got, (corpus, sorted(common - got))
+
+
+@pytest.mark.skipif(not COMPAR.exists(), reason="run `make fold-comparability`")
+def test_the_share_held_out_is_measured_rather_than_assumed_irrelevant() -> None:
+    """The confound, quantified instead of waved away.
+
+    A fold that removes more of the corpus is a harder test, and the expansions are
+    tubulin-heavy, so tubulin removes 45%, 50% and 63% in turn. If the degradation tracked
+    that, part of the headline would be the expansion's composition rather than its quality.
+    Measured, the correlation is weak -- which is what licenses reading the degradation as
+    being about content.
+    """
+    doc = json.loads(COMPAR.read_text(encoding="utf-8"))
+    for r in doc["rows"]:
+        if r["agent_share_held_out"] is None:
+            continue
+        assert 0.0 < r["agent_share_held_out"] <= 1.0, r
+        assert 0.0 < r["cell_share_held_out"] <= 1.0, r
+    rho = doc["summary"]["spearman_delta_vs_agent_share_held_out"]
+    if rho is None:
+        return
+    assert -1.0 <= rho <= 1.0
+    # If it ever becomes strong, the cross-corpus comparison needs restating rather than
+    # repeating: the folds would no longer be measuring the same thing.
+    assert abs(rho) < 0.7, (
+        f"the delta now tracks the share held out at {rho:+.4f}, so part of the "
+        "cross-corpus degradation is fold size and the comparison must say so"
+    )

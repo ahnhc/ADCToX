@@ -41,7 +41,7 @@ FORWARD_METRICS := $(ART)/forward_other_metrics.json
         residual-scale comorbidity-sensitivity payload-compression \
         atlas-ingest atlas-merge merged-scale precedent-audit \
         source-confounding-atlas axis-evidence posterior-scales \
-        convergence-conditions design-balance \
+        convergence-conditions design-balance fold-comparability \
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
@@ -58,7 +58,7 @@ all: taxonomy corpus forward censoring-sensitivity expression enrichment module-
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent residual-scale \
      comorbidity-sensitivity payload-compression axis-evidence posterior-scales \
-     convergence-conditions design-balance \
+     convergence-conditions design-balance fold-comparability \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
      granularity-ratio source-axis source-confounding axis-composition \
      check-report
@@ -280,6 +280,12 @@ convergence-conditions:
 # being checked against the wrong count. See negative result 54.
 design-balance:
 	$(PY) scripts/design_balance.py
+
+# Is a leave-one-mechanism-out delta comparable across corpora? Holding out a mechanism
+# removes its agents, the expansions are tubulin-heavy, and tubulin is the fold that
+# dominates the macro average. See negative result 55.
+fold-comparability:
+	$(PY) scripts/fold_comparability.py
 
 # Does the comorbidity profile reach the proposed design? The product's primary input
 # against its primary output, which had never been measured. See negative result 40.

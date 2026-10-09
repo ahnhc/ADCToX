@@ -1,0 +1,87 @@
+{
+ "rows": [
+  {
+   "corpus": "registry",
+   "fold": "dna_crosslink",
+   "delta_auc": -0.0294,
+   "agents_held_out": 4,
+   "agent_share_held_out": 0.1818,
+   "cell_share_held_out": 0.0334
+  },
+  {
+   "corpus": "registry",
+   "fold": "topo1",
+   "delta_auc": -0.0031,
+   "agents_held_out": 4,
+   "agent_share_held_out": 0.1818,
+   "cell_share_held_out": 0.2274
+  },
+  {
+   "corpus": "registry",
+   "fold": "tubulin",
+   "delta_auc": -0.0275,
+   "agents_held_out": 10,
+   "agent_share_held_out": 0.4545,
+   "cell_share_held_out": 0.5987
+  },
+  {
+   "corpus": "expanded",
+   "fold": "dna_crosslink",
+   "delta_auc": -0.1647,
+   "agents_held_out": 5,
+   "agent_share_held_out": 0.1562,
+   "cell_share_held_out": 0.0332
+  },
+  {
+   "corpus": "expanded",
+   "fold": "topo1",
+   "delta_auc": -0.0569,
+   "agents_held_out": 7,
+   "agent_share_held_out": 0.2188,
+   "cell_share_held_out": 0.2759
+  },
+  {
+   "corpus": "expanded",
+   "fold": "tubulin",
+   "delta_auc": -0.2622,
+   "agents_held_out": 16,
+   "agent_share_held_out": 0.5,
+   "cell_share_held_out": 0.5892
+  }
+ ],
+ "common_folds": [
+  "dna_crosslink",
+  "topo1",
+  "tubulin"
+ ],
+ "like_for_like_macro": {
+  "expanded": {
+   "folds": [
+    "dna_crosslink",
+    "topo1",
+    "tubulin"
+   ],
+   "macro_delta": -0.1613
+  },
+  "registry": {
+   "folds": [
+    "dna_crosslink",
+    "topo1",
+    "tubulin"
+   ],
+   "macro_delta": -0.02
+  }
+ },
+ "summary": {
+  "spearman_delta_vs_agent_share_held_out": -0.1429,
+  "reading": "A fold that removes more of the corpus is a harder test, and the expansions are tubulin-heavy, so the tubulin fold removes a larger share each time. The correlation above is how much of the cross-corpus degradation that accounts for."
+ },
+ "provenance": {
+  "revision": "4644175fb70cd5fb41461f39f9345ee4bc1c0478",
+  "dirty": true,
+  "snapshot": null,
+  "script": "fold_comparability.py",
+  "written_utc": "2026-10-09T18:37:45+00:00",
+  "inputs": {}
+ }
+}
