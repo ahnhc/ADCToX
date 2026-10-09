@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 55 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 56 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -2611,6 +2611,43 @@ neurologic.
     estimable. Both of the model's design features behave the same way across this merge --
     the contrast that could not be identified was shrunk toward zero, and the one that can
     be is not. **An effect that grows when the corpus grows is not thereby a larger effect.**
+
+55. **A hyperparameter tripling is not an effect tripling, and section 4's argument survives
+    the merge because of the difference.** The merged corpus returns `tau_cleav` at about
+    three times its registry value, and the obvious reading -- which this report nearly
+    printed -- is that linker cleavability has become the dominant design term, overtaking
+    the payload mechanism and undermining section 4's claim that the design terms are too
+    small to reorder the organ ranking.
+
+    `tau_cleav` is the *scale* of the cleavability-by-axis deviations, not the deviations.
+    The realised effect is `tau_cleav` times a standardised vector, and where the data does
+    not support large deviations the vector shrinks to compensate. Measured on the two
+    posteriors, the realised cleavability effect has standard deviation **0.2424** on the
+    registry corpus and **0.2613** on the merged one: an **8%** change under a hyperparameter
+    that tripled.
+
+    So section 4's measurement holds. The effect sizes against the spread of `mu_axis`, the
+    baseline the design terms have to move:
+
+    | term | registry ratio | merged ratio | registry rank corr | merged rank corr |
+    |---|---|---|---|---|
+    | tubulin | 0.2840 | 0.3840 | 0.9473 | 0.9165 |
+    | topo1 | 0.3410 | 0.4190 | 0.9780 | 0.9736 |
+    | dna_crosslink | 0.3210 | 0.2890 | 0.9692 | 0.9077 |
+    | cleavability | **0.2449** | **0.2468** | 0.9429 | 0.9473 |
+
+    Every well-evidenced mechanism still ranks the organs within 0.9077 of the base rate's
+    ordering, and the design effects are still a quarter to two fifths of the spread they
+    would have to overcome. The merge moves tubulin's ratio from 0.2840 to 0.3840 and its rank
+    correlation from 0.9473 to 0.9165, which is the right direction and not nearly far
+    enough.
+
+    **This is the session's recurring defect in the place where it would have done the most
+    damage.** A scale parameter and the effect it scales are two quantities, and one of them
+    has the other's name in the output. Reporting the first as the second would have
+    overturned section 4 on a reading that one measurement refutes -- and the measurement
+    was already written, because `design_effect_size.py` exists precisely to put fitted
+    effects next to the baseline they have to move.
 
 ## 9b. The clean-clone check, run for the first time
 

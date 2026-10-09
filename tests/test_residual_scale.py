@@ -326,3 +326,42 @@ def test_dar_balance_is_measured_as_variance_within_mechanisms() -> None:
         for m, d in dar["by_mechanism"].items():
             assert d["min"] <= d["max"], (name, m)
             assert d["sd"] >= 0.0, (name, m)
+
+
+def test_the_scale_parameter_and_the_effect_it_scales_are_kept_apart() -> None:
+    """`tau_cleav` triples across the merge and the realised effect moves 8%.
+
+    A scale parameter and the effect it scales are two quantities, and in this model's
+    output one of them has the other's name. Reading the first as the second would have
+    overturned section 4's argument on a claim one measurement refutes. See negative
+    result 55.
+    """
+    import json
+    import pathlib
+
+    root = pathlib.Path(__file__).resolve().parents[1]
+    reg = root / "artifacts" / "design_effect_size.json"
+    mer = root / "artifacts" / "with_atlas" / "design_effect_size.json"
+    if not (reg.exists() and mer.exists()):
+        return
+    a = json.loads(reg.read_text(encoding="utf-8"))
+    b = json.loads(mer.read_text(encoding="utf-8"))
+
+    # The realised cleavability effect, which is what section 4 reasons about.
+    ea, eb = a["cleavability"]["effect_sd"], b["cleavability"]["effect_sd"]
+    assert eb / ea < 1.5, (
+        f"the realised cleavability effect grew by {eb / ea:.2f}x. Section 4's argument "
+        "rests on the design effects being small against the baseline spread, and a change "
+        "this size means the argument has to be re-derived rather than cited."
+    )
+    # And the argument itself: every mechanism with more than two agents still orders the
+    # organs close to the base rate's ordering.
+    for corpus, doc in (("registry", a), ("merged", b)):
+        for row in doc["per_mechanism"]:
+            mech = row.get("mechanism")
+            assert 0.0 <= row["ratio_to_baseline_sd"] <= 2.0, (corpus, mech)
+            assert -1.0 <= row["rank_corr_with_baseline"] <= 1.0, (corpus, mech)
+    # Cleavability's ratio to the baseline spread is the one that would move if the scale
+    # parameter were the effect.
+    assert abs(b["cleavability"]["ratio_to_baseline_sd"]
+               - a["cleavability"]["ratio_to_baseline_sd"]) < 0.1

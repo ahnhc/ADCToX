@@ -1,0 +1,164 @@
+{
+ "baseline_sd": 1.0588854551315308,
+ "baseline_range": [
+  -4.353503227233887,
+  -0.5057287216186523
+ ],
+ "per_mechanism": [
+  {
+   "mechanism": "dna_alkyl",
+   "n_agents": 2,
+   "effect_sd": 0.49240171909332275,
+   "ratio_to_baseline_sd": 0.4650188684463501,
+   "rank_corr_with_baseline": 0.8065934065934066,
+   "axis_positions_moved": 28
+  },
+  {
+   "mechanism": "dna_cleave",
+   "n_agents": 4,
+   "effect_sd": 0.6186241507530212,
+   "ratio_to_baseline_sd": 0.5842219591140747,
+   "rank_corr_with_baseline": 0.9208791208791208,
+   "axis_positions_moved": 18
+  },
+  {
+   "mechanism": "dna_crosslink",
+   "n_agents": 8,
+   "effect_sd": 0.3064466714859009,
+   "ratio_to_baseline_sd": 0.2894049286842346,
+   "rank_corr_with_baseline": 0.9076923076923077,
+   "axis_positions_moved": 18
+  },
+  {
+   "mechanism": "topo1",
+   "n_agents": 9,
+   "effect_sd": 0.44380101561546326,
+   "ratio_to_baseline_sd": 0.4191208779811859,
+   "rank_corr_with_baseline": 0.9736263736263736,
+   "axis_positions_moved": 10
+  },
+  {
+   "mechanism": "tubulin",
+   "n_agents": 36,
+   "effect_sd": 0.40621417760849,
+   "ratio_to_baseline_sd": 0.38362428545951843,
+   "rank_corr_with_baseline": 0.9164835164835164,
+   "axis_positions_moved": 16
+  }
+ ],
+ "cleavability": {
+  "effect_sd": 0.2613135576248169,
+  "ratio_to_baseline_sd": 0.24678170680999756,
+  "rank_corr_with_baseline": 0.9472527472527472
+ },
+ "effect_vs_evidence_spearman": 0.027556644213104716,
+ "largest_cells": [
+  {
+   "mechanism": "topo1",
+   "axis": "gastrointestinal",
+   "effect": 1.1736160516738892,
+   "abs_effect": 1.1736160516738892,
+   "arms": 139,
+   "agents": 9
+  },
+  {
+   "mechanism": "dna_cleave",
+   "axis": "haematologic",
+   "effect": 1.1264548301696777,
+   "abs_effect": 1.1264548301696777,
+   "arms": 48,
+   "agents": 4
+  },
+  {
+   "mechanism": "dna_cleave",
+   "axis": "ocular",
+   "effect": -1.1233412027359009,
+   "abs_effect": 1.1233412027359009,
+   "arms": 20,
+   "agents": 2
+  },
+  {
+   "mechanism": "dna_alkyl",
+   "axis": "hepatic",
+   "effect": -0.991299569606781,
+   "abs_effect": 0.991299569606781,
+   "arms": 2,
+   "agents": 2
+  },
+  {
+   "mechanism": "dna_alkyl",
+   "axis": "ocular",
+   "effect": 0.9649170637130737,
+   "abs_effect": 0.9649170637130737,
+   "arms": 4,
+   "agents": 2
+  },
+  {
+   "mechanism": "tubulin",
+   "axis": "neurologic",
+   "effect": 0.9474589824676514,
+   "abs_effect": 0.9474589824676514,
+   "arms": 295,
+   "agents": 34
+  },
+  {
+   "mechanism": "dna_cleave",
+   "axis": "hepatic",
+   "effect": 0.8560930490493774,
+   "abs_effect": 0.8560930490493774,
+   "arms": 42,
+   "agents": 3
+  },
+  {
+   "mechanism": "topo1",
+   "axis": "dermatologic",
+   "effect": 0.7074066400527954,
+   "abs_effect": 0.7074066400527954,
+   "arms": 113,
+   "agents": 7
+  },
+  {
+   "mechanism": "dna_cleave",
+   "axis": "otologic",
+   "effect": -0.6646822094917297,
+   "abs_effect": 0.6646822094917297,
+   "arms": 6,
+   "agents": 2
+  },
+  {
+   "mechanism": "dna_cleave",
+   "axis": "dermatologic",
+   "effect": -0.6586669087409973,
+   "abs_effect": 0.6586669087409973,
+   "arms": 34,
+   "agents": 3
+  },
+  {
+   "mechanism": "dna_cleave",
+   "axis": "infectious_immune",
+   "effect": 0.6397731900215149,
+   "abs_effect": 0.6397731900215149,
+   "arms": 43,
+   "agents": 2
+  },
+  {
+   "mechanism": "tubulin",
+   "axis": "haematologic",
+   "effect": -0.6192077994346619,
+   "abs_effect": 0.6192077994346619,
+   "arms": 325,
+   "agents": 36
+  }
+ ],
+ "reading": "Where the evidence is good the design effects are too small to reorder the organ ranking (tubulin ratio 0.29, rank corr 0.947), so the within-arm metric is the baseline's metric and the design terms only add noise. Where the effects are large the evidence is one drug (dna_alkyl ratio 0.71 on a single agent). A design coefficient is identified by agents, not patients, but the binomial likelihood counts patients, so a two-arm cell still carries hundreds of patients and the hierarchical prior does not shrink it enough.",
+ "provenance": {
+  "revision": "298e9a5ce285cf102c9b7e06e82c2a4624798849",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "design_effect_size.py",
+  "written_utc": "2026-10-09T18:49:57+00:00",
+  "inputs": {
+   "posterior": "sha256:b0843ca8c766cdbacf8a61d56042fc0fad29b76762dd8a1cf65c0bb33ec9f86d"
+  }
+ }
+}
