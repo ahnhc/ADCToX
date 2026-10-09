@@ -1137,12 +1137,26 @@ neurologic.
     cardiomyopathy, interstitial lung disease to cervix squamous papilloma. A higher error
     rate than the API it was protecting against. Nothing had broken only because nothing
     read the column until the MONDO derivation became its first consumer. Section 5h.
-16. **The number guard weakens as the artefact pool grows, and says so.** It reports its own
-    measured false-pass rate on fabricated figures every run. With 15,184 artefact values
-    that was 100% at two decimals, 75% at three and 20% at four; at 19,523 values it is
-    100%, **89%** and **26%**. A report figure quoted to three decimals is now barely
-    checked, and the guard is only meaningfully adversarial at four. The rate is printed
-    rather than assumed precisely so this degradation is visible.
+16. **The number guard verifies about 70% of the report tightly and almost nothing for 6%,
+    and now says which.** "Every figure traces to an artefact" means the figure's string
+    appears somewhere in a pool of 19,449 values, and in a pool that dense a three-decimal
+    number appears by coincidence most of the time -- the guard's own measured false-pass
+    rate on deliberately fabricated figures is 100% at two decimals, 88% at three and 27%
+    at four. So it now reports how many pool entries each passing figure matches: **28.7%
+    match exactly one** and are tightly pinned, 41.8% match two to five, 18.7% match six to
+    fifty, and **5.9% match more than fifty** and are checked by nothing at all. The worst
+    are figures of the form `1.00`, which match 15,688 pool entries -- real values from real
+    artefacts that this method cannot verify, because every probability of one and every
+    ratio of one looks identical. That is a limit of existence-checking rather than a defect
+    in those figures, and closing it would require each figure to cite its own artefact and
+    key path.
+
+    The same inspection found that the guard had never looked at a figure ending a
+    sentence. Its figure pattern excluded a following period, so the most common position
+    for a number in prose was skipped outright -- 18 figures, including `0.0345`, `0.2120`
+    and `3.872`. All 18 trace to artefacts now that they are read, so nothing was wrong in
+    the report; the guard had simply been checking 390 of 408 figures while reporting that
+    every figure traced.
 17. **The comorbidity layer's designated primary validation was misspecified.** The plan
     named the FDA label hepatic and renal impairment sections as the single validation to
     build; the correlation against the model's organ ranking is null at rho -0.047. The

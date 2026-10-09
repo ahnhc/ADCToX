@@ -43,7 +43,12 @@ import re
 from pathlib import Path
 
 # Decimals with at least two places: the shape of a measured quantity rather than a count.
-NUMBER = re.compile(r"(?<![\w.])(-?\d+\.\d{2,})(?![\w.])")
+# The trailing guard excludes a following *digit* after a dot, not every dot. The first
+# version excluded any following period, which silently skipped every figure that ends a
+# sentence -- 18 of them in the report, including `0.0345`, `0.2120` and `3.872`. A guard
+# that cannot see the most common position for a number in prose is not checking the prose.
+# `1.2.3` is still excluded, which is what the guard was for.
+NUMBER = re.compile(r"(?<![\w.])(-?\d+\.\d{2,})(?!\w)(?!\.\d)")
 
 # The documents are typeset with a Unicode minus (U+2212), which the pattern above cannot
 # see, so every negative figure was extracted without its sign -- checked as positive and
@@ -57,9 +62,20 @@ FENCE = re.compile(r"```.*?```", re.S)
 INLINE = re.compile(r"`[^`]*`")
 
 
-def artefact_values(dirs: list[Path]) -> set[str]:
-    """Every numeric value anywhere in the artefact JSONs, as rounded strings."""
+def artefact_values(dirs: list[Path]) -> tuple[set[str], dict[str, int]]:
+    """Every numeric value in the artefact JSONs, and how many values each string matches.
+
+    The multiplicity is the honest part. "Traces to an artefact" means the figure's string
+    appears somewhere in the pool, and with 19,000 values a three-decimal number appears by
+    coincidence almost always -- which the guard's own measured false-pass rate says, at 88%
+    for three decimals. A figure matching one or two pool entries was probably copied from
+    the artefact it claims. One matching four hundred was not checked by anything.
+
+    So the count travels with the set, and the summary reports how much of the report the
+    guard is actually verifying rather than only that nothing failed.
+    """
     out: set[str] = set()
+    multiplicity: dict[str, int] = {}
 
     def walk(node) -> None:
         if isinstance(node, dict):
@@ -70,8 +86,12 @@ def artefact_values(dirs: list[Path]) -> set[str]:
                 walk(v)
         elif isinstance(node, (int, float)) and not isinstance(node, bool):
             for places in (2, 3, 4):
-                out.add(f"{round(float(node), places):.{places}f}")
-                out.add(f"{round(float(node) * 100, places):.{places}f}")
+                for form in (
+                    f"{round(float(node), places):.{places}f}",
+                    f"{round(float(node) * 100, places):.{places}f}",
+                ):
+                    out.add(form)
+                    multiplicity[form] = multiplicity.get(form, 0) + 1
 
     for d in dirs:
         # `artifacts/superseded/` holds results a later fix overturned. They are scanned
@@ -83,7 +103,7 @@ def artefact_values(dirs: list[Path]) -> set[str]:
                 walk(json.loads(path.read_text(encoding="utf-8")))
             except (OSError, json.JSONDecodeError):
                 continue
-    return out
+    return out, multiplicity
 
 
 def _presentation_variants(raw: str) -> set[str]:
@@ -133,7 +153,7 @@ def main() -> int:
                     default=Path("report/number_allowlist.json"))
     args = ap.parse_args()
 
-    values = artefact_values(args.artifacts)
+    values, multiplicity = artefact_values(args.artifacts)
     allow = load_allowlist(args.allowlist)
     n_files = sum(
         len(list(d.glob("*.json"))) + len(list(d.glob("superseded/*.json")))
@@ -149,6 +169,9 @@ def main() -> int:
     )
 
     unexplained: list[tuple[str, int, str]] = []
+    # How many pool entries each passing figure matched, so the summary can say how much
+    # of the report the guard actually verified.
+    verified: list[tuple[str, int, str, int]] = []
     checked = 0
     docs = sorted(d for root in args.report for d in root.rglob("*.md"))
     for doc in docs:
@@ -158,14 +181,26 @@ def main() -> int:
             for m in NUMBER.finditer(line):
                 raw = m.group(1)
                 checked += 1
-                if raw.lstrip("-") in values or raw in values or raw in allow:
+                if raw in allow:
+                    verified.append((doc.name, lineno, raw, 0))
+                    continue
+                if raw.lstrip("-") in values or raw in values:
+                    verified.append((
+                        doc.name, lineno, raw,
+                        multiplicity.get(raw, multiplicity.get(raw.lstrip("-"), 0)),
+                    ))
                     continue
                 # Tolerate a sign or trailing-zero difference in presentation, and
                 # nothing else. Retrying at lower precision is what made this check
                 # vacuous: it turns "does this exact figure exist" into "does something
                 # roughly like it exist", and in a pool this dense the answer is always
                 # yes.
-                if _presentation_variants(raw) & (values | set(allow)):
+                hit = _presentation_variants(raw) & (values | set(allow))
+                if hit:
+                    verified.append((
+                        doc.name, lineno, raw,
+                        max(multiplicity.get(h, 0) for h in hit),
+                    ))
                     continue
                 unexplained.append((doc.name, lineno, raw))
 
@@ -173,6 +208,38 @@ def main() -> int:
         f"{checked} decimal figures checked across {len(docs)} documents in "
         f"{', '.join(str(d) for d in args.report)}"
     )
+    # How much of the report the guard actually verified. "Traces to an artefact" means
+    # the string appears somewhere in the pool, and a figure matching hundreds of pool
+    # entries was checked by nothing -- the 88% three-decimal false-pass rate above is the
+    # same fact stated as a rate. Reporting the distribution turns a reassuring "all clear"
+    # into a statement about coverage.
+    if verified:
+        buckets = {"allowlisted": 0, "unique (1)": 0, "few (2-5)": 0,
+                   "many (6-50)": 0, "coincidental (>50)": 0}
+        for _, _, _, n in verified:
+            if n == 0:
+                buckets["allowlisted"] += 1
+            elif n == 1:
+                buckets["unique (1)"] += 1
+            elif n <= 5:
+                buckets["few (2-5)"] += 1
+            elif n <= 50:
+                buckets["many (6-50)"] += 1
+            else:
+                buckets["coincidental (>50)"] += 1
+        total = len(verified)
+        print("  how tightly each passing figure is pinned, by how many artefact values "
+              "it matches:")
+        for name, n in buckets.items():
+            print(f"    {name:20s} {n:4d}  {100.0 * n / total:5.1f}%")
+        weak = sorted(
+            (n, name, line, raw) for name, line, raw, n in verified if n > 50
+        )
+        if weak:
+            print(f"  the {len(weak)} loosest, which this guard is not really checking:")
+            for n, name, line, raw in sorted(weak, reverse=True)[:8]:
+                print(f"    {name}:{line}  {raw}  matches {n} artefact values")
+
     if not unexplained:
         print("every figure traces to an artefact or the allowlist")
         return 0
