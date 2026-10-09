@@ -884,6 +884,74 @@ and immune, and an artifact when it reflects where a curator filed an organ.
 This validates the organ mapping. The severity weights are still hand-assigned and
 untested, and the disease-disease coupling term is unbuilt.
 
+## 5i. The comorbidity layer's primary validation was misspecified
+
+The plan names one validation as the single thing to build for the comorbidity layer: the
+FDA label hepatic and renal impairment sections, coded as a four-level ordinal -- no
+adjustment, monitor, avoid, not established -- and correlated against the model's organ
+ranking. Its appeal is real. The text is graded rather than boilerplate, a regulator
+adjudicated it, and it never saw this corpus.
+
+It was built. The correlation is null: Spearman rho -0.047 at p 0.85 over 18 cells, and
++0.112 at p 0.77 with `not_established` dropped.
+
+### The null is the right answer, and the same text says why
+
+A label's impairment section argues from **clearance**, not from organ-specific event
+rates. Measured on the same sections, pharmacokinetic language -- exposure, clearance, AUC,
+unconjugated payload -- outnumbers organ-event language about six to one, and the ratio
+holds whether the window is the subsection alone (6 cells to 1) or 900 characters around
+the phrase (10 to 2).
+
+| what the impairment section argues from | cells |
+|---|---|
+| pharmacokinetics (exposure, clearance) | 6 |
+| systemic adverse reactions | 3 |
+| an organ-specific event | 1 |
+
+ADCETRIS tells you to avoid moderate hepatic impairment because "MMAE **exposure** and
+adverse reactions are increased". Inotuzumab ozogamicin's section opens "based on a
+population pharmacokinetic analysis, the **clearance** of inotuzumab ozogamicin ...". The
+model predicts how often a given organ has an event. These are different quantities, and
+correlating them was never the right test -- which is a finding about the plan rather than
+about the model, and the reason this section exists instead of a reported null.
+
+### What the labels do support, and it points somewhere else
+
+Three cross-organ sentences, and **every one of them is renal**:
+
+- trastuzumab deruxtecan: "A higher incidence of Grade 1 and 2 ILD/pneumonitis has been
+  observed in patients with moderate renal impairment." (the sentence the plan quotes)
+- datopotamab deruxtecan: "Monitor patients with renal impairment for increased adverse
+  reactions, including respiratory reactions."
+- pivekimab sunirine: a higher incidence of Grade >=3 adverse events, serious adverse
+  events and dose delays in moderate renal impairment.
+
+All renal, all raising risk in a *different* organ or systemically. That is the signature of
+a clearance effect, not of tissue overlap.
+
+And it has a consequence the plan did not anticipate. Its coupling term is built from MONDO
+tissue overlap and FAERS disease co-occurrence, and **neither mechanism can produce a
+renal-impairment-raises-pulmonary-ILD link**, because that link is pharmacokinetic. The one
+cross-organ effect the labels document is not of the kind the layer models. A layer that
+modelled clearance organs -- hepatic and renal impairment raising systemic exposure, and
+therefore every axis, by an amount depending on the payload's elimination route -- would fit
+this evidence better. It is not built, because 18 ordinal cells and three sentences are not
+enough to fit it on, and saying so is more useful than fitting it anyway.
+
+### One parser bug the plan's own numbers caught
+
+The section finder terminated each organ's block with a lookahead on a newline, after the
+newlines had been collapsed by whitespace normalisation, so the lookahead could never fire
+and nine of fourteen renal sections came back as absent. The plan's measured figure --
+renal text present in 13 of 14 labels -- is what exposed it. Without that number, a parser
+silently dropping twelve of twenty-eight cells would have been indistinguishable from a thin
+corpus, and the null would have been reported as an underpowered test rather than a
+misspecified one.
+
+After the fix, nine of ten remaining gaps are genuine label silence: sacituzumab govitecan
+and polatuzumab vedotin mention renal zero times in Use in Specific Populations.
+
 ## 6. The exclusion-criteria signal
 
 1,281 ADC trials against 2,481 oncology controls, all with eligibility text. Enrichment
@@ -1045,7 +1113,18 @@ neurologic.
     100%, **89%** and **26%**. A report figure quoted to three decimals is now barely
     checked, and the guard is only meaningfully adversarial at four. The rate is printed
     rather than assumed precisely so this degradation is visible.
-17. **A low row-mapping rate looked like a vocabulary problem and was not.** 59.3% of
+17. **The comorbidity layer's designated primary validation was misspecified.** The plan
+    named the FDA label hepatic and renal impairment sections as the single validation to
+    build; the correlation against the model's organ ranking is null at rho -0.047. The
+    reason is in the same text: those sections argue from clearance, with pharmacokinetic
+    language outnumbering organ-event language about six to one, while the model predicts
+    organ-specific event rates. Section 5i.
+18. **The one cross-organ effect the labels document is pharmacokinetic, so the planned
+    coupling term cannot capture it.** All three cross-organ sentences are renal, raising
+    risk in a different organ or systemically -- the signature of a clearance effect.
+    Neither MONDO tissue overlap nor FAERS disease co-occurrence, the two mechanisms the
+    coupling term is built from, can produce a renal-impairment-raises-pulmonary-ILD link.
+19. **A low row-mapping rate looked like a vocabulary problem and was not.** 59.3% of
     adverse-event rows missed the preferred-term dictionary, and the misses were dominated
     not by unknown medical terms but by labels like `1`, `Yes`, `Grade 3`, `Female` and
     `+` -- the stub column of a cross-tab or an over-caught baseline table. Separating

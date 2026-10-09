@@ -20,14 +20,29 @@ are **agent-level constants**. Trastuzumab emtansine's 48 arms are 48 observatio
 trial populations but one observation of DM1 chemistry. The data that identifies a design
 coefficient is therefore `n_agents x n_axes`:
 
-| | count |
-|---|---|
-| arms (attributable, n>=30, conventional ADC) | 285 |
-| (arm x axis) cells | 3,990 |
-| distinct agents | 16 |
-| **identifying cells (agents x axes)** | **224** |
-| design parameters | 100 |
-| ratio against identifying cells | 2.24 : 1 |
+The numbers below are for the corpus this card's results were fitted on -- the
+ClinicalTrials.gov corpus alone. A literature-extended corpus exists and is larger in the
+only way that matters for this table; its fit is in progress and this card will state its
+results or say nothing about them.
+
+| | ClinicalTrials.gov only | + literature |
+|---|---|---|
+| arms (attributable, n>=30, conventional ADC) | 285 | 594 |
+| (arm x axis) cells | 3,990 | 8,316 |
+| distinct agents | 16 | 32 |
+| **identifying cells (agents x axes)** | **224** | **448** |
+| design parameters | 100 | 100 |
+| ratio against identifying cells | 2.24 : 1 | 4.48 : 1 |
+| mechanisms with 3+ agents (a usable held-out fold) | 2 | 3 |
+
+The second column is the point of the extension and the first column is what the results
+in this card rest on. Confusing the two would overstate the model: the corpus doubled, and
+whether that changes any conclusion is a measurement that has not come back yet.
+
+Worth reading the arms row against the identifying-cells row. Adding 312 literature arms
+for agents already present bought 14 identifying cells; the next 102 arms, belonging to
+agents that were not, bought 210. Arms of a known agent are more observations of its trial
+populations and none of its chemistry.
 
 ## Results
 
