@@ -41,8 +41,16 @@ N_PCT = re.compile(
 BARE_PCT = re.compile(r"^\s*(?P<pct>\d+(?:\.\d+)?)\s*%\s*$")
 # `n/N`, which states its own denominator.
 N_OVER_N = re.compile(r"^\s*(?P<n>\d[\d,]*)\s*/\s*(?P<d>\d[\d,]*)\s*$")
-# A denominator in a header: `(N = 123)`, `(n=123)`, `N 123`.
-HEADER_N = re.compile(r"[\(\[]?\s*[Nn]\s*[=:]?\s*(?P<d>\d[\d,]*)\s*[\)\]]?")
+# A denominator in a header: `(N = 123)`, `(n=123)`, `[N:123]`.
+#
+# The `N` has to be a standalone token and the separator is required. Without both, the
+# first version matched the final letter of a drug name followed by a dose: "brentuximab
+# vedotin 1.8 mg/kg (N = 100)" gave a denominator of **1**, from "...vedoti[n] [1].8".
+# Every count in that column then failed the arithmetic gate for the wrong reason, and a
+# column whose real denominator was small enough could have passed with a wrong one.
+HEADER_N = re.compile(
+    r"(?<![A-Za-z])[Nn](?![A-Za-z])\s*[=:]\s*(?P<d>\d[\d,]*)"
+)
 
 # Agreement tolerance in percentage points. 0.6 absorbs the printing of a percentage to
 # one decimal or to the nearest integer without admitting a wrong numerator.
@@ -83,11 +91,28 @@ class ParsedTable:
     n_rows: int
     n_cols: int
     header_rows: int
+    # The expanded header rows, kept because a column's arm identity lives there and
+    # attribution needs it. A two-row header splits the arm name from the grade, so the
+    # name is only recoverable by joining the rows above a column.
+    header_grid: list[list[str]] = field(default_factory=list)
     column_denominators: dict[int, int] = field(default_factory=dict)
     row_labels: dict[int, str] = field(default_factory=dict)
     cells: list[Cell] = field(default_factory=list)
     is_image_only: bool = False
     looks_like_ae_table: bool = False
+
+    def column_header(self, col: int) -> str:
+        """Every header cell above this column, joined top to bottom."""
+        parts = [
+            row[col] for row in self.header_grid
+            if col < len(row) and row[col]
+        ]
+        # A rowspan repeats its text down the header rows; say it once.
+        out: list[str] = []
+        for p in parts:
+            if not out or out[-1] != p:
+                out.append(p)
+        return " ".join(out).strip()
 
     @property
     def checkable(self) -> list[Cell]:
@@ -194,8 +219,8 @@ def parse_table_wrap(wrap) -> ParsedTable:
     out = ParsedTable(
         label=label, caption=caption, footer=footer,
         n_rows=len(grid), n_cols=(len(grid[0]) if grid else 0),
-        header_rows=header_rows, column_denominators=denoms,
-        looks_like_ae_table=looks_ae,
+        header_rows=header_rows, header_grid=[list(r) for r in grid[:header_rows]],
+        column_denominators=denoms, looks_like_ae_table=looks_ae,
     )
     for r in range(header_rows, len(grid)):
         row = grid[r]

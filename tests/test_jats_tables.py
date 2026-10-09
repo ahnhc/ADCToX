@@ -215,3 +215,44 @@ def test_an_ae_table_is_recognised_from_its_contents_when_the_caption_is_vague()
     </table-wrap>
     """))
     assert t.looks_like_ae_table
+
+
+def test_a_drug_name_followed_by_a_dose_is_not_read_as_a_denominator() -> None:
+    """A real bug, caught by an attribution test rather than by this file.
+
+    The first denominator pattern allowed a bare `N` with an optional separator, so
+    "Brentuximab vedotin 1.8 mg/kg (N = 100)" matched at "...vedoti[n] [1].8" and gave a
+    denominator of 1. Every count in the column then failed the arithmetic gate for the
+    wrong reason -- and on a column whose real denominator happened to be small, a wrong
+    one could have passed instead."""
+    t = parse_table_wrap(_wrap("""
+    <table-wrap>
+      <caption><p>Treatment-emergent adverse events</p></caption>
+      <table>
+        <thead><tr><th>Event</th>
+          <th>Brentuximab vedotin 1.8 mg/kg (N = 100)</th>
+          <th>Trastuzumab deruxtecan 5.4 mg/kg (N=184)</th></tr></thead>
+        <tbody><tr><td>Nausea</td><td>40 (40.0)</td><td>138 (75.0)</td></tr></tbody>
+      </table>
+    </table-wrap>
+    """))
+    assert t.column_denominators == {1: 100, 2: 184}
+    assert all(c.arithmetic_ok for c in t.checkable)
+
+
+def test_a_header_with_no_separator_yields_no_denominator() -> None:
+    """The cost of the fix, stated. "N 100" without an `=` or `:` is now ignored, which
+    loses a rare phrasing in exchange for never inventing a denominator from a drug name.
+    The cells still parse; they are simply not arithmetic-checkable."""
+    t = parse_table_wrap(_wrap("""
+    <table-wrap>
+      <caption><p>Adverse events</p></caption>
+      <table>
+        <thead><tr><th>Event</th><th>ADC N 100</th></tr></thead>
+        <tbody><tr><td>Nausea</td><td>40 (40.0)</td></tr></tbody>
+      </table>
+    </table-wrap>
+    """))
+    assert t.column_denominators == {}
+    assert t.checkable == []
+    assert [c.n for c in t.cells if c.n] == [40]
