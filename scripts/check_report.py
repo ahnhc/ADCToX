@@ -190,5 +190,10 @@ def main() -> int:
     return 1
 
 
+# Run this WITHOUT a pipe. `check_report.py | tail -2; echo $?` reports `tail`'s status,
+# not this script's, so a failing guard reads as a passing one. That mistake was made five
+# times in one session -- on this script, on the unused-import check, and on pytest -- and
+# twice it put a commit in with the tree red. The guard returns 1 on an untraceable figure;
+# the shell has to be allowed to see it.
 if __name__ == "__main__":
     raise SystemExit(main())

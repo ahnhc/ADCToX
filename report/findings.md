@@ -691,6 +691,94 @@ because there the model and the baseline are compared on the same arm under the 
 conditions, and the failure is the ratio in section 4.0: where the evidence is good the
 design effects are too small to move the organ ranking.
 
+## 5g. The corpus was agent-limited, and the limit turned out to be measurable
+
+Section 5f ends by saying the one positive signal needs more agents rather than more
+analysis. That was a verdict on the data, not a plan, because the plan's own estimate --
+about 54 ADCs have published a per-organ safety table with a denominator -- had never been
+checked. It has now been checked, by building the extraction path and then exhausting three
+routes to new agents.
+
+### Why arms are not agents, measured in one table
+
+| stage | agents | arms | cells | cells that identify a design coefficient | viable LOMO folds |
+|---|---|---|---|---|---|
+| ClinicalTrials.gov only | 16 | 285 | 3,990 | 224 | 2 |
+| + literature arms for agents already present | 17 | 525 | 7,350 | 238 | 2 |
+| + literature agents | 32 | 594 | 8,316 | 448 | 3 |
+
+The three corpora nest exactly -- 312 arms added at the first step and 102 at the second,
+with **zero** arms dropped at either -- so a difference between fits is attributable to
+what was added. That is checked in `artifacts/corpus_ablation.json`, not assumed.
+
+Read the fourth column against the second. The first step adds 312 arms and 3,360 cells
+and buys **14** identifying cells. The second adds 102 arms and buys **210**. Section 2
+states the reason abstractly; this is it arithmetically. Design features are agent-level
+constants, so arms of an agent already in the corpus are additional observations of its
+trial populations and *no* additional observation of its chemistry.
+
+The 14 is not zero only because one agent crossed the 30-patient floor on the strength of
+its literature arms.
+
+### What the third fold costs and what it buys
+
+`dna_crosslink` goes from 2 agents to 4 and crosses the three-agent floor, so the headline
+validation is now leave-one-mechanism-out over tubulin, topoisomerase-I and DNA
+crosslinking rather than the first two alone. The plan predicted exactly this at N=32, and
+predicted the rest correctly too: `dna_cleave` stays at 2 agents and `dna_alkyl` at 2,
+because two calicheamicin ADCs and two duocarmycin ADCs are all that have published a
+usable table anywhere. Those folds are not waiting on more work, and the project does not
+claim them.
+
+### The ceiling is 32, not 54
+
+Three routes, each measured before any design feature was curated -- which is the only
+reason the curation cost what it did.
+
+| route | agents found | with a machine-readable safety table |
+|---|---|---|
+| INN search over 41 payload-linker stems | 23 | 16 |
+| deeper re-search of the 5 stems that hit the fetch cap | 5 | **0** |
+| code-name search for the 10 that had failed | 10 retried | 2 |
+
+The second row is the informative one. Those five are all vedotins, found only because the
+first sweep truncated; between them they have 7 open-access articles and 4 adverse-event
+tables, none of which parses to a count with a denominator. Curating them would have been
+roughly 50 hand-sourced field values for nothing.
+
+So the plan's figure of about 54 is not supported. The agents exist -- over 370 ADCs have
+entered the clinic -- but the ones outside this corpus have not published a per-organ table
+with a denominator, and three independent search routes agree on that.
+
+### The discovery method, and why it should be unbiased
+
+An ADC's international nonproprietary name is two words: an antibody stem, then a
+payload-linker stem coined for the conjugate chemistry. `vedotin` is MMAE on a cleavable
+dipeptide, `deruxtecan` is DXd on a GGFG tetrapeptide, `tesirine` is a pyrrolobenzodiazepine
+dimer. That vocabulary is closed, so searching each stem finds every agent built on that
+chemistry whether or not anyone has reviewed it.
+
+The first method tried was biased by construction and is recorded because the bias is easy
+to repeat. Harvesting ADC names from the 1,319 articles already fetched found 18
+non-registry agents -- but that corpus was assembled by searching for the 18 registry
+agents, so it sees another ADC only when a paper mentions it beside one of those. Six of
+the 18 were misspellings of registry drugs.
+
+Two stems were removed after the deep sweep: `doxorubicin` and `paclitaxel` are free-drug
+names rather than conjugate stems, so "<antibody> <stem>" matches co-administration with
+the punctuation lost. They returned "trastuzumab doxorubicin" and "bevacizumab paclitaxel",
+neither of which is an ADC.
+
+### Code names had to come from the data
+
+Ten agents yielded nothing from an INN-only search, and several of them are drugs whose
+primary reports use a code name and never the INN. Recalling the mapping was not an option:
+a wrong code name misattributes every row of an agent, which is the failure mode this
+project measures at a 75% false-positive rate for loose attribution. So code names were
+harvested only from papers whose *titles* already name the INN, which makes the paper itself
+the evidence for the mapping. Searching them alongside the INN roughly doubled the hit count
+for several agents and recovered two.
+
 ## 6. The exclusion-criteria signal
 
 1,281 ADC trials against 2,481 oncology controls, all with eligibility text. Enrichment
@@ -815,6 +903,36 @@ neurologic.
 9. **Gene-set overlap does not beat a disease ontology.** Jaccard over Open Targets gene
    sets predicts same-organ pairs at AUC 0.748, a task MONDO's `is_a` closure answers
    exactly and for free.
+10. **The literature corpus's ceiling is 32 agents, not the ~54 the plan estimated.**
+    Three independent search routes agree. The decisive one: re-searching the five
+    payload-linker stems that had hit the fetch cap found 5 further agents and **0** of
+    them has a parseable safety table, so the next tier of the literature yields nothing.
+11. **More arms are not more agents, and the exchange rate is brutal.** 312 literature arms
+    for agents already in the corpus bought 14 cells that identify a design coefficient;
+    the next 102 arms, belonging to new agents, bought 210. Section 5g.
+12. **Searching for drug names inside a corpus assembled by searching for drug names is
+    circular.** Harvesting ADC names from the 1,319 articles fetched for the 18 registry
+    agents found 18 "new" agents, of which six were misspellings of registry drugs and the
+    rest were visible only because they appear beside a registry agent. The payload-linker
+    stem vocabulary gives an unbiased handle; the corpus does not.
+13. **A reporting threshold is a property of row selection, not of cell values.** Pooling
+    every cell of a table and taking the minimum printed rate manufactures a contradiction
+    with the stated cut in any table that breaks events out by grade -- which is most of
+    them. It demoted 44 of the 45 tables whose caption stated a cut, and put the measured
+    explicit-threshold rate at 0.6% against the plan's 19.3%. Reading one rate per row
+    fixes it.
+14. **An inferred denominator is 88.3% precise and that is not good enough.** A table's
+    `n (%)` cells identify their own denominator, and on the 162 columns that state one the
+    inference produced a value for 143 and got 19 wrong -- mostly by one or two patients,
+    which no downstream check can see, because the arithmetic gate would re-derive both the
+    count and the percentage from the same wrong N. Requiring the integer to appear
+    independently elsewhere in the article gave 124 of 124 correct and rejected all 19.
+15. **A low row-mapping rate looked like a vocabulary problem and was not.** 59.3% of
+    adverse-event rows missed the preferred-term dictionary, and the misses were dominated
+    not by unknown medical terms but by labels like `1`, `Yes`, `Grade 3`, `Female` and
+    `+` -- the stub column of a cross-tab or an over-caught baseline table. Separating
+    them moved the mapping rate from 40.7% to 53.7%, against the plan's 50.5%, without a
+    single new dictionary entry.
 
 ## 10. Limitations
 

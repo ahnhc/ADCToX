@@ -1,0 +1,228 @@
+{
+  "provenance": {
+    "revision": "6b8f469566b5da81179ee17867aa064ce016516f",
+    "dirty": true,
+    "snapshot": null,
+    "script": "corpus_ablation.py",
+    "written_utc": "2026-10-09T03:07:20+00:00",
+    "inputs": {}
+  },
+  "min_agents_for_fold": 3,
+  "stages": {
+    "registry_only": {
+      "summary": "3,990 cells over 285 arms x 14 axes (3,440 observed, 471 censored, 79 structural zero) | 16 agents, 5 mechanisms, 7 payload families, 61 multi-arm trials (128 arms from single-arm trials carry no trial effect)",
+      "n_agents": 16,
+      "n_arms": 285,
+      "n_cells": 3990,
+      "n_axes": 14,
+      "identifying_cells": 224,
+      "n_observed": 3440,
+      "n_censored": 471,
+      "mechanisms": {
+        "dna_alkyl": {
+          "agents": 1,
+          "arms": 2,
+          "viable_fold": false
+        },
+        "dna_cleave": {
+          "agents": 2,
+          "arms": 39,
+          "viable_fold": false
+        },
+        "dna_crosslink": {
+          "agents": 2,
+          "arms": 7,
+          "viable_fold": false
+        },
+        "topo1": {
+          "agents": 4,
+          "arms": 68,
+          "viable_fold": true
+        },
+        "tubulin": {
+          "agents": 7,
+          "arms": 169,
+          "viable_fold": true
+        }
+      },
+      "n_viable_folds": 2,
+      "viable_folds": [
+        "topo1",
+        "tubulin"
+      ],
+      "agents": [
+        "belantamab_mafodotin",
+        "brentuximab_vedotin",
+        "datopotamab_deruxtecan",
+        "enfortumab_vedotin",
+        "gemtuzumab_ozogamicin",
+        "inotuzumab_ozogamicin",
+        "loncastuximab_tesirine",
+        "mirvetuximab_soravtansine",
+        "patritumab_deruxtecan",
+        "pivekimab_sunirine",
+        "polatuzumab_vedotin",
+        "sacituzumab_govitecan",
+        "tisotumab_vedotin",
+        "trastuzumab_deruxtecan",
+        "trastuzumab_duocarmazine",
+        "trastuzumab_emtansine"
+      ]
+    },
+    "plus_literature_arms": {
+      "summary": "7,350 cells over 525 arms x 14 axes (4,433 observed, 2,684 censored, 233 structural zero) | 17 agents, 5 mechanisms, 7 payload families, 66 multi-arm trials (350 arms from single-arm trials carry no trial effect)",
+      "n_agents": 17,
+      "n_arms": 525,
+      "n_cells": 7350,
+      "n_axes": 14,
+      "identifying_cells": 238,
+      "n_observed": 4433,
+      "n_censored": 2684,
+      "mechanisms": {
+        "dna_alkyl": {
+          "agents": 1,
+          "arms": 2,
+          "viable_fold": false
+        },
+        "dna_cleave": {
+          "agents": 2,
+          "arms": 46,
+          "viable_fold": false
+        },
+        "dna_crosslink": {
+          "agents": 2,
+          "arms": 8,
+          "viable_fold": false
+        },
+        "topo1": {
+          "agents": 4,
+          "arms": 174,
+          "viable_fold": true
+        },
+        "tubulin": {
+          "agents": 8,
+          "arms": 295,
+          "viable_fold": true
+        }
+      },
+      "n_viable_folds": 2,
+      "viable_folds": [
+        "topo1",
+        "tubulin"
+      ],
+      "agents": [
+        "belantamab_mafodotin",
+        "brentuximab_vedotin",
+        "datopotamab_deruxtecan",
+        "enfortumab_vedotin",
+        "gemtuzumab_ozogamicin",
+        "inotuzumab_ozogamicin",
+        "loncastuximab_tesirine",
+        "mirvetuximab_soravtansine",
+        "patritumab_deruxtecan",
+        "pivekimab_sunirine",
+        "polatuzumab_vedotin",
+        "sacituzumab_govitecan",
+        "telisotuzumab_vedotin",
+        "tisotumab_vedotin",
+        "trastuzumab_deruxtecan",
+        "trastuzumab_duocarmazine",
+        "trastuzumab_emtansine"
+      ]
+    },
+    "plus_literature_agents": {
+      "summary": "8,316 cells over 594 arms x 14 axes (4,874 observed, 3,209 censored, 233 structural zero) | 32 agents, 5 mechanisms, 8 payload families, 74 multi-arm trials (390 arms from single-arm trials carry no trial effect)",
+      "n_agents": 32,
+      "n_arms": 594,
+      "n_cells": 8316,
+      "n_axes": 14,
+      "identifying_cells": 448,
+      "n_observed": 4874,
+      "n_censored": 3209,
+      "mechanisms": {
+        "dna_alkyl": {
+          "agents": 2,
+          "arms": 4,
+          "viable_fold": false
+        },
+        "dna_cleave": {
+          "agents": 2,
+          "arms": 46,
+          "viable_fold": false
+        },
+        "dna_crosslink": {
+          "agents": 4,
+          "arms": 17,
+          "viable_fold": true
+        },
+        "topo1": {
+          "agents": 7,
+          "arms": 189,
+          "viable_fold": true
+        },
+        "tubulin": {
+          "agents": 17,
+          "arms": 338,
+          "viable_fold": true
+        }
+      },
+      "n_viable_folds": 3,
+      "viable_folds": [
+        "dna_crosslink",
+        "topo1",
+        "tubulin"
+      ],
+      "agents": [
+        "anetumab_ravtansine",
+        "belantamab_mafodotin",
+        "brentuximab_vedotin",
+        "cofetuzumab_pelidotin",
+        "datopotamab_deruxtecan",
+        "depatuxizumab_mafodotin",
+        "disitamab_vedotin",
+        "enapotamab_vedotin",
+        "enfortumab_vedotin",
+        "farletuzumab_ecteribulin",
+        "gemtuzumab_ozogamicin",
+        "inotuzumab_ozogamicin",
+        "izalontamab_brengitecan",
+        "loncastuximab_tesirine",
+        "mirvetuximab_soravtansine",
+        "naratuximab_emtansine",
+        "patritumab_deruxtecan",
+        "pivekimab_sunirine",
+        "polatuzumab_vedotin",
+        "praluzatamab_ravtansine",
+        "rovalpituzumab_tesirine",
+        "sacituzumab_govitecan",
+        "sacituzumab_tirumotecan",
+        "serclutamab_talirine",
+        "telisotuzumab_adizutecan",
+        "telisotuzumab_vedotin",
+        "tisotumab_vedotin",
+        "trastuzumab_deruxtecan",
+        "trastuzumab_duocarmazine",
+        "trastuzumab_emtansine",
+        "tusamitamab_ravtansine",
+        "vobramitamab_duocarmazine"
+      ]
+    }
+  },
+  "nesting": [
+    {
+      "from": "registry_only",
+      "to": "plus_literature_arms",
+      "arms_added": 312,
+      "arms_dropped": 0,
+      "is_superset": true
+    },
+    {
+      "from": "plus_literature_arms",
+      "to": "plus_literature_agents",
+      "arms_added": 102,
+      "arms_dropped": 0,
+      "is_superset": true
+    }
+  ],
+  "all_nested": true
+}
