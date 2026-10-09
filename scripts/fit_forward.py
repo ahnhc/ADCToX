@@ -219,6 +219,13 @@ def main() -> int:
     # it addresses; the comparison runs are kept as logs the way the payload-family
     # attempts were, because a failed structure is a result.
     ap.add_argument("--agent-axis", action="store_true")
+    ap.add_argument("--drop-uninformative-absences", action="store_true",
+                    help="treat an absent organ in a literature arm whose reporting cut "
+                         "is only an upper bound as no information rather than as a "
+                         "censored observation. A ClinicalTrials.gov threshold means "
+                         "every event above it is listed, so absence is informative; a "
+                         "paper captioned 'most common adverse events' selected its rows, "
+                         "so absence is not. See dataset.build.")
     ap.add_argument("--out", type=Path, default=Path("artifacts"))
     ap.add_argument("--warmup", type=int, default=500)
     ap.add_argument("--samples", type=int, default=500)
@@ -240,7 +247,12 @@ def main() -> int:
         print("agent x axis deviation ENABLED (experimental)", flush=True)
 
     tax = Taxonomy()
-    data = ds.load(args.processed, list(tax.axis_order), kind=args.kind)
+    data = ds.load(
+        args.processed, list(tax.axis_order), kind=args.kind,
+        drop_uninformative_absences=args.drop_uninformative_absences,
+    )
+    if args.drop_uninformative_absences:
+        print("uninformative absences DROPPED (selection, not censoring)", flush=True)
     print(f"Corpus ({args.kind}): {data.summary()}", flush=True)
     acct = forward.n_free_parameters(data)
     print(

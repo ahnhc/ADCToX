@@ -131,6 +131,7 @@ def build(
     min_n: int = 30,
     conventional_only: bool = True,
     drop_agents: list[str] | None = None,
+    drop_uninformative_absences: bool = False,
 ) -> ModelData:
     """Assemble the full (arm x axis) grid for one event table.
 
@@ -194,6 +195,32 @@ def build(
     thresh_known = ~np.isnan(thresh)
     thresh = np.where(thresh_known, thresh, 5.0)
 
+    # Whether an absent organ is *informative* for this arm, which is not the same question
+    # as whether a threshold exists.
+    #
+    # A ClinicalTrials.gov record with `frequencyThreshold = 5` means every event above 5%
+    # is listed, so an organ that does not appear has a rate below 5% and the censored
+    # likelihood is exactly right. A paper table captioned "most common adverse events"
+    # with no stated cut means the author *selected* some organs, and absence then carries
+    # almost nothing -- the selection was not a threshold on the rate.
+    #
+    # Treating the second as the first is what the first ablation round measured as harmful.
+    # Literature arms took the observed share from 86.2% to 60.3%, about 2,200 of their
+    # 3,360 cells are censored, and 83% of them carry a boundary derived from the minimum
+    # printed rate rather than a stated cut -- so the model was told "below X" with X too
+    # large, thousands of times, and the leave-one-agent-out delta went from -0.0422 to
+    # -0.0782.
+    #
+    # `drop_uninformative_absences` keeps those arms' observed cells and drops only the
+    # absences that are selection rather than censoring. That is different from dropping
+    # the arms, which is what the explicit-threshold-only corpus does and which costs 362
+    # of 414 paper arms.
+    bounded = (
+        arms["threshold_is_upper_bound"].fillna(False).astype(bool).to_numpy()
+        if "threshold_is_upper_bound" in arms.columns
+        else np.zeros(len(arms), dtype=bool)
+    )
+
     sub = obs[(obs["kind"] == kind) & obs["arm_key"].isin(set(arm_keys))]
     observed = {
         (r.arm_key, r.axis): (int(r.n_affected), int(r.n_at_risk))
@@ -230,6 +257,12 @@ def build(
                 k_l.append(0)
                 n_l.append(n_risk)
                 cens_l.append(0)
+            elif drop_uninformative_absences and bounded[i]:
+                # Selection, not censoring: this arm's cut is a bound derived from its own
+                # printed rates, so an absent organ says nothing about its rate. Dropping
+                # the cell is the honest encoding of "no information", and it is why this
+                # option exists.
+                continue
             else:
                 status_l.append(CENSORED)
                 k_l.append(0)
