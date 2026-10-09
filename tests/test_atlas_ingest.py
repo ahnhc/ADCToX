@@ -437,3 +437,55 @@ def test_the_thin_flag_is_checked_against_the_interval_it_sits_beside() -> None:
         )
     counts = tvi["by_supporting_agents"]
     assert sum(v["cells"] for v in counts.values()) == tvi["cells"]
+
+
+CONV = ROOT / "artifacts" / "convergence_conditions.json"
+
+
+@pytest.mark.skipif(not CONV.exists(), reason="run `make convergence-conditions`")
+def test_the_prediction_is_recorded_before_its_outcome() -> None:
+    """A prediction kept beside its result is the only kind that can be wrong usefully.
+
+    One was written down before the merged corpus was fitted -- that it would fail its
+    seed-agreement check, because the 32-agent fit failed and the merged corpus has worse
+    upper-bound reporting cuts. The artefact carries the claim, the reasoning and the
+    outcome, so the refutation is as legible as a confirmation would have been.
+    """
+    doc = json.loads(CONV.read_text(encoding="utf-8"))
+    pred = doc["prediction"]
+    assert pred["made"].strip() and pred["because"].strip()
+    assert pred["outcome"] in (None, "confirmed", "refuted")
+    merged = next((r for r in doc["fits"] if r["fit"] == "65 agents, default"), None)
+    if merged and merged["status"] == "fitted":
+        assert pred["outcome"] == ("refuted" if merged["converged"] else "confirmed")
+    else:
+        assert pred["outcome"] is None, (
+            "an outcome is recorded for a fit that has not landed"
+        )
+
+
+@pytest.mark.skipif(not CONV.exists(), reason="run `make convergence-conditions`")
+def test_no_fit_is_summarised_before_it_has_run() -> None:
+    """The table shortens rather than guessing: a fit with no artefact gets no row of
+    numbers, because a blank and a zero are different and only one of them is true."""
+    doc = json.loads(CONV.read_text(encoding="utf-8"))
+    for r in doc["fits"]:
+        if r["status"] == "fitted":
+            assert r["cells"] and r["agents"], r
+            continue
+        assert "worst_seed_gap" not in r and "cells" not in r, r
+    fitted = [r for r in doc["fits"] if r["status"] == "fitted"]
+    assert doc["summary"]["n_fitted"] == len(
+        [r for r in fitted if r["converged"] is not None]
+    )
+
+
+@pytest.mark.skipif(not CONV.exists(), reason="run `make convergence-conditions`")
+def test_the_convergence_verdict_follows_the_gap_and_the_threshold() -> None:
+    doc = json.loads(CONV.read_text(encoding="utf-8"))
+    for r in doc["fits"]:
+        if r["status"] != "fitted" or r["worst_seed_gap"] is None:
+            continue
+        assert r["converged"] == (r["worst_seed_gap"] <= r["seed_threshold"]), r
+        if r["censored_share"] is not None:
+            assert 0.0 <= r["censored_share"] <= 1.0, r

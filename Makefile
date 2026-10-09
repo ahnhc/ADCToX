@@ -41,6 +41,7 @@ FORWARD_METRICS := $(ART)/forward_other_metrics.json
         residual-scale comorbidity-sensitivity payload-compression \
         atlas-ingest atlas-merge merged-scale precedent-audit \
         source-confounding-atlas axis-evidence posterior-scales \
+        convergence-conditions \
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
@@ -57,6 +58,7 @@ all: taxonomy corpus forward censoring-sensitivity expression enrichment module-
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent residual-scale \
      comorbidity-sensitivity payload-compression axis-evidence posterior-scales \
+     convergence-conditions \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
      granularity-ratio source-axis source-confounding axis-composition \
      check-report
@@ -266,6 +268,12 @@ axis-evidence:
 # See negative result 48.
 posterior-scales:
 	$(PY) scripts/posterior_scales.py
+
+# What makes these fits converge? A prediction that the merged corpus would fail its
+# seed-agreement check was written down before it was fitted, and this is where it is
+# checked against every fit on disk rather than argued from one case.
+convergence-conditions:
+	$(PY) scripts/convergence_conditions.py
 
 # Does the comorbidity profile reach the proposed design? The product's primary input
 # against its primary output, which had never been measured. See negative result 40.

@@ -1,0 +1,83 @@
+{
+ "prediction": {
+  "made": "the merged corpus will fail its seed-agreement check",
+  "because": "the 32-agent fit failed at 0.722, the cause was the censoring model on upper-bound reporting cuts, and the merged corpus's transcribed cohorts reach a 71% cut against the literature's 63.9%",
+  "outcome": null
+ },
+ "fits": [
+  {
+   "fit": "registry, default",
+   "status": "fitted",
+   "absences_dropped": false,
+   "agents": 22,
+   "cells": 4186,
+   "censored": 483,
+   "censored_share": 0.1154,
+   "identifying_cells": 308,
+   "cells_per_design_parameter": 3.08,
+   "worst_seed_gap": 0.09870179742574692,
+   "seed_threshold": 0.3,
+   "converged": true,
+   "tau_mech": 0.5424401760101318,
+   "tau_cleav": 0.2871069014072418,
+   "sigma_agent": 0.3433225452899933
+  },
+  {
+   "fit": "32 agents, default",
+   "status": "fitted",
+   "absences_dropped": false,
+   "agents": 32,
+   "cells": 6748,
+   "censored": 2003,
+   "censored_share": 0.2968,
+   "identifying_cells": 448,
+   "cells_per_design_parameter": 4.48,
+   "worst_seed_gap": 0.7219464182853699,
+   "seed_threshold": 0.3,
+   "converged": false,
+   "tau_mech": 0.5343019962310791,
+   "tau_cleav": 0.34827178716659546,
+   "sigma_agent": 1.7655117511749268
+  },
+  {
+   "fit": "32 agents, absences dropped",
+   "status": "not fitted yet",
+   "absences_dropped": true
+  },
+  {
+   "fit": "explicit cuts only",
+   "status": "not fitted yet",
+   "absences_dropped": false
+  },
+  {
+   "fit": "65 agents, default",
+   "status": "not fitted yet",
+   "absences_dropped": false
+  },
+  {
+   "fit": "65 agents, absences dropped",
+   "status": "not fitted yet",
+   "absences_dropped": true
+  },
+  {
+   "fit": "65 agents, payload family",
+   "status": "not fitted yet",
+   "absences_dropped": false
+  }
+ ],
+ "summary": {
+  "n_fitted": 2,
+  "n_converged": 1,
+  "failed": [
+   "32 agents, default"
+  ]
+ },
+ "provenance": {
+  "revision": "98c31d4234c15a60ec638212632660150da417bc",
+  "dirty": true,
+  "snapshot": null,
+  "script": "convergence_conditions.py",
+  "written_utc": "2026-10-09T18:23:45+00:00",
+  "inputs": {}
+ }
+}
