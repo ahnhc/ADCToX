@@ -1,0 +1,9 @@
+{
+ "moved_utc": "2026-10-09T18:11:46+00:00",
+ "why": "Intermediate corpora from the 2026-10-09 rebuild sequence. No Makefile recipe writes them, so nothing keeps them in step with the corpus, and a fit that read one could not be interpreted -- which is what happened to with_explicit_threshold (negative result 54). Moved rather than deleted because they are not regenerable: no flag reproduces them.",
+ "contents": {
+  "with_literature_34": "2,609 arms, 31 agents",
+  "with_literature_35": "2,612 arms, 32 agents"
+ },
+ "superseded_by": "data/processed/with_literature_final"
+}

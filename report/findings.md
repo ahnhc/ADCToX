@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 53 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 54 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -1152,9 +1152,19 @@ discussion called that conservative because it widens intervals; at this volume 
 conservative, it is wrong information in bulk.
 
 That makes the explicit-threshold subset the decisive experiment rather than a robustness
-check, and `make pmc-merge-explicit` already builds it: 52 arms over 7 agents, every one
-with a cut the caption stated. If the degradation is the bounded threshold, it should not
-appear there.
+check: **69 paper arms over 11 agents**, every one with a cut the caption stated, none with
+an upper bound. Merged with the registry it gives 28 agents, 26 of them in the grid, and 364
+identifying cells against the full corpus's 32 and 448. If the degradation is the bounded
+threshold, it should not appear there.
+
+`make pmc-merge-explicit` was said to build it and did not. The target wrote only the paper
+frames; the *merged* corpus the refit reads was produced once by hand and then drifted,
+holding 22 agents while the corpus it is compared against grew to 34. Fitting it would have
+compared explicit cuts on 22 agents against min-reported cuts on 34 and charged twelve
+agents to the treatment. The target carries `--union` now, so the comparison is a treatment
+and a restriction rather than a treatment and an accident -- and the restriction is part of
+the treatment, because an agent whose every literature arm lacks a stated cut drops out with
+its arms. Six do. See negative result 53.
 
 It also sharpens what the 32-agent fit can show. If more agents improve things despite
 carrying the same sparsity, the agents are doing real work; if they do not, the literature
@@ -2519,6 +2529,41 @@ neurologic.
     belonged to a different quantity, caught in a script or a report. This one was in the
     interface, where a reader cannot check it against anything. The guard that found the
     others -- every figure traces to an artefact -- does not look at an `if`.
+
+53. **The corpus a sensitivity refit reads had no target that built it, so it drifted by
+    twelve agents.** Section 5's censoring discussion calls the explicit-threshold subset
+    "the decisive experiment" -- 83% of paper arms carry a reporting boundary that is an
+    *upper* bound derived from the minimum printed rate rather than a stated cut, so a refit
+    restricted to the tables that stated one is what separates a censoring artefact from a
+    real effect. It also said `make pmc-merge-explicit` builds it.
+
+    That target wrote the paper frames and not the merged corpus. `--union`, the flag that
+    writes the thing a fit actually loads, was missing, so `data/processed/with_explicit_threshold`
+    had been produced once by hand. Five hours and three corpus rebuilds later it held **22
+    agents while the corpus it is compared against held 34**, and the twelve missing agents
+    had **zero** arms with an explicit threshold between them -- they were absent for
+    provenance, not for treatment. Fitting it would have charged twelve agents to the
+    censoring treatment.
+
+    This is the defect `corpus_ablation._frames` already documents for the middle ablation
+    stage, in a second place: *a directory no flag reproduces is a directory that drifts.*
+    That docstring was written after the same thing produced an ablation reporting a stage
+    as **losing** thirteen arms, and the lesson did not generalise to the next directory.
+
+    Rebuilt from the current corpus it holds 28 agents, 26 in the grid, 364 identifying
+    cells, and **69 paper arms over 11 agents with a stated cut and no upper bound at all**.
+    Six agents drop, and they drop because every literature arm they have lacks a stated cut
+    -- which is the treatment doing its job rather than the corpus moving underneath it. The
+    comparison is interpretable now, and it was queued to run on the stale directory within
+    the hour.
+
+    The guard written for it found two more. `with_literature_34` and `with_literature_35`
+    are intermediate states from the same rebuild sequence, 31 and 32 agents, and no recipe
+    writes either. They are retired to `data/processed/superseded/` with a note saying what
+    replaced them -- moved and not deleted, because nothing reproduces them -- and the
+    invariant is now mechanical: **every directory under `data/processed/` holding an
+    `arms.parquet` must be named as an output by some Makefile recipe, or be explicitly
+    retired.** Three corpora failed it the first time it ran.
 
 ## 9b. The clean-clone check, run for the first time
 

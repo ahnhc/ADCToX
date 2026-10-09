@@ -212,3 +212,45 @@ def test_the_generated_table_states_the_nesting_verdict() -> None:
         f"{dropped} corpus arms are dropped across the stages, so the ablation is no "
         "longer interpretable as arms added"
     )
+
+
+def test_every_processed_corpus_a_fit_reads_has_a_target_that_builds_it() -> None:
+    """A directory no flag reproduces is a directory that drifts.
+
+    `data/processed/with_explicit_threshold` was produced once by hand because
+    `pmc-merge-explicit` omitted `--union`, and five hours later it held 22 agents while the
+    corpus it is compared against held 34 -- so the censoring sensitivity refit would have
+    charged twelve agents to the treatment. `corpus_ablation._frames` documents the same
+    defect for the middle ablation stage, which is how it is known to recur. See negative
+    result 54.
+
+    The invariant is mechanical: every directory under `data/processed/` that holds an
+    `arms.parquet` must be named as an output by some Makefile recipe.
+    """
+    import pathlib
+    import re
+
+    root = pathlib.Path(__file__).resolve().parents[1]
+    makefile = (root / "Makefile").read_text(encoding="utf-8")
+    proc = root / "data" / "processed"
+    if not proc.exists():
+        return
+    # The project's own variable for the processed root, as the recipes spell it.
+    spellings = ("$(PROC)/", "data/processed/")
+    missing = []
+    for child in sorted(proc.rglob("arms.parquet")):
+        child = child.parent
+        if child == proc:
+            continue
+        # Deliberately retired corpora, with a README saying what they were and what
+        # replaced them. Moved rather than deleted because no flag reproduces them.
+        if "superseded" in child.parts:
+            continue
+        if any(f"{s}{child.name}" in makefile for s in spellings):
+            continue
+        missing.append(child.name)
+    assert not missing, (
+        "these processed corpora hold an arms.parquet and no Makefile recipe writes them, "
+        f"so nothing keeps them in step with the corpus: {missing}. Add the target or "
+        "delete the directory -- a fit that reads one cannot be interpreted."
+    )

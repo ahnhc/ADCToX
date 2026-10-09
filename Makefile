@@ -439,6 +439,15 @@ pmc-merge: ## fold the extracted cells into the corpus schema the model reads
 # The sensitivity refit the censoring treatment needs: 70% of paper tables state no
 # reporting cut, so their cut is an upper bound derived from the minimum printed rate.
 # This drops them and keeps only the tables that stated one.
+# `--union` is the part that was missing. Without it this target writes only the paper
+# frames, and the *merged* corpus the sensitivity refit actually reads --
+# `$(PROC)/with_explicit_threshold` -- was produced once by hand and then went stale: it
+# held 22 agents while the corpus it is compared against had grown to 34. Fitting it would
+# have compared "explicit cuts on 22 agents" against "min-reported cuts on 34", confounding
+# the treatment with twelve agents, which is the same defect `corpus_ablation._frames`
+# documents for the middle ablation stage. A directory no flag reproduces is a directory
+# that drifts.
 pmc-merge-explicit:
 	$(PY) scripts/merge_literature_corpus.py --cells $(ALL_CELLS) \
-	  --explicit-threshold-only --out-dir $(PROC)/explicit_threshold
+	  --explicit-threshold-only --out-dir $(PROC)/explicit_threshold \
+	  --union $(PROC)/with_explicit_threshold
