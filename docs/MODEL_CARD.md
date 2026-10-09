@@ -256,7 +256,7 @@ this model cannot express.
 ## Calibration and uncertainty
 
 <!-- generated: fitted-parameters -->
-`tau_cleav` 0.2871 [0.2027, 0.4133] -- the scale of the cleavable-versus-non-cleavable linker contrast across axes. Clear of zero, and about 0.5293 times the mechanism scale -- so linker cleavability shifts the organ profile, and shifts it less than the payload mechanism does. This is the one design axis the corpus identifies comfortably: cleavability is binary and needs only 8 agents to estimate, against the 40 a mechanism level needs and the 80 a payload level would.
+`tau_cleav` 0.2871 [0.2027, 0.4133] -- the scale of the cleavable-versus-non-cleavable linker contrast across axes. Clear of zero, and about 0.5293 times the mechanism scale -- so linker cleavability shifts the organ profile, and shifts it less than the payload mechanism does. **It rests on 3 agents at the minority level, below the 8 a binary contrast needs**, and all of them sit in one mechanism (tubulin). So this is not the comfortably identified design axis this report used to call it: the contrast has no variation at all in the other mechanisms, and removing tubulin would remove it entirely. On the corpus merged with the hand-transcribed database the minority level reaches 17 agents across three mechanisms, which is the first corpus where the contrast is between chemistries rather than inside one.
 
 `tau_mech` 0.5424 [0.4494, 0.6398] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count: the scale clears zero, and it is the largest of the design scales in this block.
 

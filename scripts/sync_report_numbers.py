@@ -195,7 +195,27 @@ def _b_thresh_note(metrics: dict, sibling: dict | None) -> str | None:
     )
 
 
+def _cleavability_balance() -> dict | None:
+    """What the cleavability contrast rests on, from artifacts/design_balance.json."""
+    path = Path("artifacts/design_balance.json")
+    if not path.exists():
+        return None
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    # Keyed to the corpus the fitted-parameter block describes, which is the registry one.
+    return (doc.get("corpora") or {}).get("registry", {}).get("cleavability")
+
+
 def _tau_cleav_note(metrics: dict) -> str | None:
+    """The scale of the cleavability contrast, and what it is estimated from.
+
+    This note used to call cleavability "the one design axis the corpus identifies
+    comfortably", on the grounds that a binary needs only 8 agents against the 40 a
+    mechanism level needs. The claim was checked against the wrong count. Eight is a floor
+    on the *minority* level, and the registry corpus has **three** non-cleavable agents, all
+    of them tubulin -- so for every other payload mechanism the contrast has no variation at
+    all and the scale is an effect estimated inside one mechanism under a corpus-wide name.
+    See negative result 54.
+    """
     cell = metrics.get("tau_cleav")
     if not cell or "q05" not in cell:
         return None
@@ -206,13 +226,37 @@ def _tau_cleav_note(metrics: dict) -> str | None:
         "payload mechanism does"
         if cell["mean"] < metrics.get("tau_mech", {}).get("mean", float("inf"))
         else "so linker cleavability shifts the organ profile by more than the payload "
-             "mechanism does, which would be a surprise worth checking before quoting"
+             "mechanism does, which is a reversal of what this report says elsewhere and "
+             "needs checking before it is quoted"
     )
-    return (
+    text = (
         "the scale of the cleavable-versus-non-cleavable linker contrast across axes. "
-        f"{clear}, and {rel} -- {direction}. This is the one design axis the corpus "
-        "identifies comfortably: cleavability is binary and needs only 8 agents to "
-        "estimate, against the 40 a mechanism level needs and the 80 a payload level would."
+        f"{clear}, and {rel} -- {direction}."
+    )
+    bal = _cleavability_balance()
+    if not bal:
+        return text + (" What it is estimated from is not measured in this tree; run "
+                       "`make design-balance`.")
+    floor = bal["minority_agents"]
+    varying = bal["mechanisms_with_variation"]
+    if bal["meets_binary_agent_floor"] and not bal["nested_in_one_mechanism"]:
+        return text + (
+            f" It rests on {floor} agents at the minority level, above the 8 a binary "
+            f"contrast needs, with variation inside {len(varying)} of "
+            f"{bal['n_mechanisms']} mechanisms -- so it is a contrast between chemistries "
+            "and not within one of them."
+        )
+    return text + (
+        f" **It rests on {floor} agents at the minority level, below the {8} a binary "
+        f"contrast needs**, and all of them sit in "
+        + (f"one mechanism ({varying[0]})" if len(varying) == 1 else
+           f"{len(varying)} of {bal['n_mechanisms']} mechanisms")
+        + ". So this is not the comfortably identified design axis this report used to call "
+        "it: the contrast has no variation at all in the other mechanisms, and removing "
+        f"{varying[0] if varying else 'that mechanism'} would remove it entirely. On the "
+        "corpus merged with the hand-transcribed database the minority level reaches 17 "
+        "agents across three mechanisms, which is the first corpus where the contrast is "
+        "between chemistries rather than inside one."
     )
 
 

@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 54 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 55 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -515,7 +515,7 @@ exists.
 ## 5. What the model does support
 
 <!-- generated: fitted-parameters -->
-`tau_cleav` 0.2871 [0.2027, 0.4133] -- the scale of the cleavable-versus-non-cleavable linker contrast across axes. Clear of zero, and about 0.5293 times the mechanism scale -- so linker cleavability shifts the organ profile, and shifts it less than the payload mechanism does. This is the one design axis the corpus identifies comfortably: cleavability is binary and needs only 8 agents to estimate, against the 40 a mechanism level needs and the 80 a payload level would.
+`tau_cleav` 0.2871 [0.2027, 0.4133] -- the scale of the cleavable-versus-non-cleavable linker contrast across axes. Clear of zero, and about 0.5293 times the mechanism scale -- so linker cleavability shifts the organ profile, and shifts it less than the payload mechanism does. **It rests on 3 agents at the minority level, below the 8 a binary contrast needs**, and all of them sit in one mechanism (tubulin). So this is not the comfortably identified design axis this report used to call it: the contrast has no variation at all in the other mechanisms, and removing tubulin would remove it entirely. On the corpus merged with the hand-transcribed database the minority level reaches 17 agents across three mechanisms, which is the first corpus where the contrast is between chemistries rather than inside one.
 
 `tau_mech` 0.5424 [0.4494, 0.6398] -- the mechanism x axis interaction is supported by the data rather than asserted by a parameter count: the scale clears zero, and it is the largest of the design scales in this block.
 
@@ -2564,6 +2564,37 @@ neurologic.
     invariant is now mechanical: **every directory under `data/processed/` holding an
     `arms.parquet` must be named as an output by some Makefile recipe, or be explicitly
     retired.** Three corpora failed it the first time it ran.
+
+54. **The one design axis this report called comfortably identified rests on three agents,
+    and all three are in one mechanism.** The plan's floor for a binary design contrast is
+    eight agents, against the forty a mechanism level needs and the eighty a payload level
+    would, and linker cleavability is binary -- so the note beside `tau_cleav` has said
+    throughout that this is the axis the corpus identifies comfortably.
+
+    The floor was checked against the wrong count. Eight is a floor on the **minority**
+    level, because a contrast rests on the smaller side of itself, and counted in agents --
+    design features being agent-level constants -- the registry corpus has **3
+    non-cleavable agents** against 19 cleavable. Not eight. The literature expansion added
+    none: 32 agents, still 3.
+
+    Worse than the count is where they sit. All three are `tubulin`, so in the other four
+    payload mechanisms cleavability has **no variation at all**. The contrast is nested
+    inside one mechanism: removing tubulin removes it entirely, and `tau_cleav` on this
+    corpus is an effect estimated within one chemistry class and reported under a
+    corpus-wide name.
+
+    | corpus | agents | cleavable | non-cleavable | mechanisms with variation |
+    |---|---|---|---|---|
+    | registry | 22 | 19 | **3** | 1 of 5 |
+    | + literature | 32 | 29 | **3** | 1 of 5 |
+    | + hand-transcribed | 65 | 48 | **17** | **3 of 5** |
+
+    The merged corpus is the first where the contrast is between chemistries rather than
+    inside one, and that is the likeliest reading of what happens to the coefficient there:
+    `tau_cleav` is not a larger effect so much as an effect that was previously estimated
+    from three agents and shrunk toward zero. The note is derived from this measurement now
+    and states what the contrast rests on, which is the thing the old claim asserted and
+    never counted.
 
 ## 9b. The clean-clone check, run for the first time
 

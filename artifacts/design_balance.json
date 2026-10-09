@@ -1,0 +1,135 @@
+{
+ "binary_agent_floor": 8,
+ "corpora": {
+  "registry": {
+   "agents": 22,
+   "cleavability": {
+    "cleavable_agents": 19,
+    "non_cleavable_agents": 3,
+    "minority_agents": 3,
+    "minority_share": 0.1364,
+    "meets_binary_agent_floor": false,
+    "by_mechanism": {
+     "dna_alkyl": {
+      "non_cleavable": 0,
+      "cleavable": 2
+     },
+     "dna_cleave": {
+      "non_cleavable": 0,
+      "cleavable": 2
+     },
+     "dna_crosslink": {
+      "non_cleavable": 0,
+      "cleavable": 4
+     },
+     "topo1": {
+      "non_cleavable": 0,
+      "cleavable": 4
+     },
+     "tubulin": {
+      "non_cleavable": 3,
+      "cleavable": 7
+     }
+    },
+    "mechanisms_with_variation": [
+     "tubulin"
+    ],
+    "n_mechanisms": 5,
+    "nested_in_one_mechanism": true
+   }
+  },
+  "expanded": {
+   "agents": 32,
+   "cleavability": {
+    "cleavable_agents": 29,
+    "non_cleavable_agents": 3,
+    "minority_agents": 3,
+    "minority_share": 0.0938,
+    "meets_binary_agent_floor": false,
+    "by_mechanism": {
+     "dna_alkyl": {
+      "non_cleavable": 0,
+      "cleavable": 2
+     },
+     "dna_cleave": {
+      "non_cleavable": 0,
+      "cleavable": 2
+     },
+     "dna_crosslink": {
+      "non_cleavable": 0,
+      "cleavable": 5
+     },
+     "topo1": {
+      "non_cleavable": 0,
+      "cleavable": 7
+     },
+     "tubulin": {
+      "non_cleavable": 3,
+      "cleavable": 13
+     }
+    },
+    "mechanisms_with_variation": [
+     "tubulin"
+    ],
+    "n_mechanisms": 5,
+    "nested_in_one_mechanism": true
+   }
+  },
+  "merged": {
+   "agents": 65,
+   "cleavability": {
+    "cleavable_agents": 48,
+    "non_cleavable_agents": 17,
+    "minority_agents": 17,
+    "minority_share": 0.2615,
+    "meets_binary_agent_floor": true,
+    "by_mechanism": {
+     "dna_alkyl": {
+      "non_cleavable": 0,
+      "cleavable": 2
+     },
+     "dna_cleave": {
+      "non_cleavable": 2,
+      "cleavable": 2
+     },
+     "dna_crosslink": {
+      "non_cleavable": 0,
+      "cleavable": 8
+     },
+     "topo1": {
+      "non_cleavable": 4,
+      "cleavable": 6
+     },
+     "tubulin": {
+      "non_cleavable": 11,
+      "cleavable": 30
+     }
+    },
+    "mechanisms_with_variation": [
+     "dna_cleave",
+     "topo1",
+     "tubulin"
+    ],
+    "n_mechanisms": 5,
+    "nested_in_one_mechanism": false
+   }
+  }
+ },
+ "summary": {
+  "corpora_meeting_the_floor": [
+   "merged"
+  ],
+  "corpora_where_cleavability_is_nested": [
+   "registry",
+   "expanded"
+  ]
+ },
+ "provenance": {
+  "revision": "ce0da9cf61cfbbf2b452027007a627ce4ea6c7d2",
+  "dirty": true,
+  "snapshot": null,
+  "script": "design_balance.py",
+  "written_utc": "2026-10-09T18:30:07+00:00",
+  "inputs": {}
+ }
+}

@@ -241,3 +241,59 @@ def test_the_denominator_note_reports_the_sign_disagreement() -> None:
     agreeing = srn._b_log_n_note(one(0.0336), one(0.0400))
     assert "same sign" in agreeing.lower() and "opposite" not in agreeing
     assert srn._b_log_n_note(one(0.0336), None) is not None
+
+
+def test_the_cleavability_note_states_what_the_contrast_rests_on() -> None:
+    """A binary contrast rests on its minority level, and the floor applies there.
+
+    The note asserted cleavability was "the one design axis the corpus identifies
+    comfortably" because a binary needs only 8 agents. The registry corpus has 3
+    non-cleavable agents, all tubulin, so for the other four mechanisms the contrast has no
+    variation at all. The claim was checked against the corpus size instead of the minority
+    count. See negative result 54.
+    """
+    import json
+    import pathlib
+
+    balance = pathlib.Path(__file__).resolve().parents[1] / "artifacts" / "design_balance.json"
+    note = srn._tau_cleav_note(_metrics_tau(0.2871, 0.5424))
+    assert note is not None
+    if not balance.exists():
+        # Without the measurement the note must say so rather than repeat the old claim.
+        assert "not measured" in note, note
+        return
+    reg = json.loads(balance.read_text(encoding="utf-8"))["corpora"]["registry"]["cleavability"]
+    assert str(reg["minority_agents"]) in note, note
+    if not reg["meets_binary_agent_floor"]:
+        assert "below the" in note, note
+        assert "comfortably identified" in note or "not the comfortably" in note, note
+    if reg["nested_in_one_mechanism"]:
+        assert reg["mechanisms_with_variation"][0] in note, note
+
+
+def test_the_balance_measurement_counts_agents_and_not_arms() -> None:
+    """Counting arms would count trial populations and call them evidence about chemistry.
+
+    Trastuzumab emtansine's 48 arms are one observation of DM1 chemistry, so a cleavability
+    contrast counted in arms would look far better supported than it is -- which is exactly
+    the error the evidence meter made on screen (negative result 52).
+    """
+    import json
+    import pathlib
+
+    path = pathlib.Path(__file__).resolve().parents[1] / "artifacts" / "design_balance.json"
+    if not path.exists():
+        return
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    for name, corpus in doc["corpora"].items():
+        c = corpus["cleavability"]
+        assert c["cleavable_agents"] + c["non_cleavable_agents"] == corpus["agents"], name
+        assert c["minority_agents"] == min(c["cleavable_agents"], c["non_cleavable_agents"])
+        assert c["meets_binary_agent_floor"] == (
+            c["minority_agents"] >= doc["binary_agent_floor"]
+        ), name
+        # Per-mechanism counts must add up to the same agents, or one is counting arms.
+        total = sum(d["non_cleavable"] + d["cleavable"]
+                    for d in c["by_mechanism"].values())
+        assert total == corpus["agents"], (name, total, corpus["agents"])
+        assert c["nested_in_one_mechanism"] == (len(c["mechanisms_with_variation"]) == 1)
