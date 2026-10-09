@@ -22,6 +22,47 @@ from adctox.taxonomy import Taxonomy  # noqa: E402
 
 
 
+def _why_refit(path: Path, data) -> str | None:
+    """None if the cached posterior was fitted on exactly this corpus, else why not.
+
+    The previous version returned any file that existed. The corpus changed four times in
+    one session -- the serious-grid fix, two DAR values, the outcome filter, the
+    agent-class filter -- and each time `make propose` would have served a posterior fitted
+    on the corpus before it, with nothing in the response to say so. This project has
+    already paid for that once: a stale set of fold predictions adjusted against a
+    different corpus's nuisance conditions produced a p-value of 0.0010 that was not real,
+    and the tell was that one mean matched to four decimals.
+
+    A posterior written before the agent list was recorded cannot be checked, so it is
+    refitted rather than trusted. That is a one-time cost and then the question is always
+    answerable.
+    """
+    if not path.exists():
+        return "absent"
+    try:
+        cached = Posterior.load(path)
+    except ValueError as exc:
+        return f"unreadable under the current format: {exc}"
+    if not cached.agents:
+        return (
+            "the cached posterior records no agent list, so the corpus it was fitted on "
+            "cannot be verified"
+        )
+    if list(cached.agents) != list(data.agents):
+        gone = sorted(set(cached.agents) - set(data.agents))
+        new = sorted(set(data.agents) - set(cached.agents))
+        return (
+            f"fitted on {len(cached.agents)} agents, the corpus now has {len(data.agents)}"
+            + (f"; gone: {gone}" if gone else "")
+            + (f"; new: {new}" if new else "")
+        )
+    if list(cached.axes) != list(data.axes):
+        return "the axis order has changed"
+    if list(cached.mechanisms) != list(data.mechanisms):
+        return "the mechanism set has changed"
+    return None
+
+
 def _ensure_posterior(
     processed: Path, out: Path, warmup: int, samples: int, kind: str = "other"
 ) -> Posterior:
@@ -31,17 +72,20 @@ def _ensure_posterior(
     posterior to compare mechanism profiles against. The product itself always uses
     "other": serious events are too sparse per axis to rank designs on.
     """
-    path = out / f"posterior_{kind}.npz"
-    if path.exists():
-        return Posterior.load(path)
-    print(f"{path} absent; fitting one ...", flush=True)
-    import jax
-    from numpyro.infer import MCMC, NUTS
-
-    from adctox.model import dataset as ds, forward
+    from adctox.model import dataset as ds
 
     tax = Taxonomy()
     data = ds.load(processed, list(tax.axis_order), kind=kind)
+    path = out / f"posterior_{kind}.npz"
+    reason = _why_refit(path, data)
+    if reason is None:
+        return Posterior.load(path)
+    print(f"fitting {path}: {reason}", flush=True)
+    import jax
+    from numpyro.infer import MCMC, NUTS
+
+    from adctox.model import forward
+
     mcmc = MCMC(
         NUTS(forward.model, target_accept_prob=0.8, max_tree_depth=8),
         num_warmup=warmup, num_samples=samples, num_chains=1, progress_bar=False,
