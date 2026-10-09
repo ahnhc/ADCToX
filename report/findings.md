@@ -939,6 +939,37 @@ therefore every axis, by an amount depending on the payload's elimination route 
 this evidence better. It is not built, because 18 ordinal cells and three sentences are not
 enough to fit it on, and saying so is more useful than fitting it anyway.
 
+### The severity column has no validation path at all
+
+The comorbidity layer has two hand-assigned columns, and this round separated them. The
+organ mapping now has an independent MONDO derivation that recovers exclusion concern at
+AUROC 0.675. The severity column has nothing of the kind, and the reason is in its own
+documentation: **34 of 41 severity values cite trial exclusion criteria as their basis** --
+"Child-Pugh B/C excluded in ADC protocols", "HBV exclusion present in 54% of ADC
+protocols". One value of 41 cites a label.
+
+So severity cannot be validated against exclusion criteria, because it was assigned from
+them, and the plan's designated alternative has just been shown to measure clearance rather
+than organ event rates. Both paths are closed.
+
+The plan's own design decision is what makes that tolerable, and it was made for a
+different reason. Severity enters as a displayed weight, `w_o = 1 + lambda * severity_o`,
+never as a logit -- the plan's words are that a term with zero training rows must not drive
+a core function and that the weight must be shown on screen. An unvalidated number
+presented as a transparent preference is honest; the same number presented as a prediction
+would not be. `/assess` reports it as an `elicited_prior` driver and `/propose` as
+`weight_applied` on each axis, and tests now fail if either ever labels it `model`.
+
+Two things follow. The scale is coarser than it looks -- 17 of 41 values sit at exactly 1.0
+and 13 at 0.6, so it is effectively three levels and the second decimal is not a
+measurement. And Elixhauser comorbidity weights, which the plan proposed as the citable
+replacement, would not fix this: they are calibrated to all-cause in-hospital mortality,
+which is further from "how much should this organ's risk be up-weighted for an outpatient
+receiving an ADC" than the label text was, and with the label ordinal misspecified there
+would be no way to check whether the substitution helped. Importing a mis-calibrated
+external weight with no validation path is worse than a hand-assigned one that says where
+it came from.
+
 ### One parser bug the plan's own numbers caught
 
 The section finder terminated each organ's block with a lookahead on a newline, after the
