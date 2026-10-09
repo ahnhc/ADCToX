@@ -42,6 +42,7 @@ FORWARD_METRICS := $(ART)/forward_other_metrics.json
         atlas-ingest atlas-merge merged-scale precedent-audit \
         source-confounding-atlas axis-evidence posterior-scales \
         convergence-conditions design-balance fold-comparability design-effects-atlas \
+        restrict-26 \
      design-effects-atlas \
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
@@ -293,6 +294,16 @@ fold-comparability:
 # is that the design terms are too small to reorder the organ ranking, and the merged corpus
 # triples `tau_cleav`, so whether the argument survives is a measurement rather than an
 # assumption. See negative result 55.
+# The missing cell of the 2x2 that chain steps 3 and 4 were supposed to form. They change
+# the arm set and the agent set together, so the -0.1564 against -0.014 between them is
+# attributable to either. This is the same 26 agents with all of their arms. See negative
+# result 57.
+restrict-26:
+	$(PY) scripts/restrict_corpus_agents.py \
+	  --source $(PROC)/with_literature_final \
+	  --agents-from $(PROC)/with_explicit_threshold \
+	  --out $(PROC)/with_literature_26agents
+
 design-effects-atlas: $(ART)/with_atlas/posterior_other.npz
 	$(PY) scripts/design_effect_size.py \
 	  --posterior $(ART)/with_atlas/posterior_other.npz --out $(ART)/with_atlas

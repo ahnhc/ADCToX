@@ -1,0 +1,26 @@
+{
+ "source": "data/processed/with_literature_final",
+ "agents_from": "data/processed/with_explicit_threshold",
+ "arms_in": 2627,
+ "arms_out": 2590,
+ "agents_in": 34,
+ "agents_out": 28,
+ "agents_dropped": [
+  "izalontamab_brengitecan",
+  "naratuximab_emtansine",
+  "sacituzumab_tirumotecan",
+  "serclutamab_talirine",
+  "telisotuzumab_adizutecan",
+  "tusamitamab_ravtansine"
+ ],
+ "upper_bound_arms_kept": 2521,
+ "purpose": "the missing cell of the 2x2: the agents of the explicit-cuts corpus with all of their arms, so the arm set and the agent set stop moving together",
+ "provenance": {
+  "revision": "a539ad771aa351ddd750b0b89ecd17c18f7fc420",
+  "dirty": true,
+  "snapshot": null,
+  "script": "restrict_corpus_agents.py",
+  "written_utc": "2026-10-09T19:23:45+00:00",
+  "inputs": {}
+ }
+}

@@ -41,6 +41,9 @@ EXEMPT = {
     "merged_corpus_scale.py",
     "merge_atlas_corpus.py",
     "precedent_audit.py",
+    # Writes a corpus rather than a report figure, and the corpus it writes is an
+    # experiment's cell: `make restrict-26` builds it from frames the workbook produced.
+    "restrict_corpus_agents.py",
 }
 def _scripts_writing_artefacts() -> set[str]:
     out = set()

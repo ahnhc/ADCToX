@@ -42,6 +42,9 @@ FITS = [
      "data/processed/with_atlas", True),
     ("65 agents, payload family", "artifacts/with_atlas_family",
      "data/processed/with_atlas", False),
+    # The missing cell of the 2x2: the explicit-cuts corpus's agents with all of their arms.
+    ("26 agents, all their arms", "artifacts/with_literature_26agents",
+     "data/processed/with_literature_26agents", False),
 ]
 
 
@@ -135,6 +138,13 @@ def main() -> int:
                     "threshold it should mostly disappear here"),
         "outcome": None,
     }
+    second["reasoning_was_wrong_because"] = (
+        "the pair does not isolate the censoring. Step 4 also drops six agents -- every one "
+        "an agent whose only literature arms are upper-bound -- so the arm set and the "
+        "agent set move together and the difference between -0.1564 and -0.014 is "
+        "attributable to either. The missing cell of the 2x2 is the same 26 agents with all "
+        "of their arms, which `make restrict-26` builds and the row below reports."
+    )
     if explicit:
         lomo = explicit.get("lomo_delta")
         reg = next((r.get("lomo_delta") for r in fitted if r["fit"] == "registry, default"),

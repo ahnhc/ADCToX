@@ -2,7 +2,8 @@
  "prediction_two": {
   "made": "the explicit-cuts fit will land nearer the registry corpus than the 32-agent fits on leave-one-mechanism-out",
   "because": "it reaches the same censoring state as the absences-dropped variant by a different route -- 69 literature arms over 11 agents, every one with a cut its caption stated -- so if the degradation is the bounded threshold it should mostly disappear here",
-  "outcome": null
+  "outcome": null,
+  "reasoning_was_wrong_because": "the pair does not isolate the censoring. Step 4 also drops six agents -- every one an agent whose only literature arms are upper-bound -- so the arm set and the agent set move together and the difference between -0.1564 and -0.014 is attributable to either. The missing cell of the 2x2 is the same 26 agents with all of their arms, which `make restrict-26` builds and the row below reports."
  },
  "prediction": {
   "made": "the merged corpus will fail its seed-agreement check",
@@ -83,6 +84,11 @@
    "fit": "65 agents, payload family",
    "status": "not fitted yet",
    "absences_dropped": false
+  },
+  {
+   "fit": "26 agents, all their arms",
+   "status": "not fitted yet",
+   "absences_dropped": false
   }
  ],
  "summary": {
@@ -93,11 +99,11 @@
   ]
  },
  "provenance": {
-  "revision": "cf8ddbb6c4f16623ae97dcafa6858852b843521e",
+  "revision": "a539ad771aa351ddd750b0b89ecd17c18f7fc420",
   "dirty": true,
   "snapshot": null,
   "script": "convergence_conditions.py",
-  "written_utc": "2026-10-09T19:17:35+00:00",
+  "written_utc": "2026-10-09T19:24:52+00:00",
   "inputs": {}
  }
 }
