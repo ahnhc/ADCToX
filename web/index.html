@@ -158,11 +158,14 @@ async function boot() {
   document.getElementById("footer").innerHTML =
     `<p>${dis.text}</p><ul>${dis.limitations.map(l => `<li>${l}</li>`).join("")}</ul>`;
 
-  // Targets come from the registry via the ontology; the page hardcodes no list.
-  const targets = [...new Set(ont.comorbidities.length ? ["ERBB2","TACSTD2","TNFRSF8",
-    "NECTIN4","CD19","CD22","CD33","FOLR1","TNFRSF17","F3","MET","ERBB3","CD79B","IL3RA"] : [])];
-  document.getElementById("target").innerHTML =
-    targets.map(t => `<option>${t}</option>`).join("");
+  // Targets come from the registry via the ontology, which this comment used to claim
+  // while a literal array of fourteen sat below it -- hiding ten of the registry's targets
+  // from the interface, and guarded by the comorbidity count, which decides nothing about
+  // targets. The label is what a clinician recognises and the gene symbol is what the API
+  // takes, so the option shows both and submits the symbol.
+  document.getElementById("target").innerHTML = (ont.targets || [])
+    .map(t => `<option value="${t.id}" title="${t.n_adcs} ADC${t.n_adcs === 1 ? "" : "s"} in the registry target ${t.id}">${t.label}${t.label === t.id ? "" : ` (${t.id})`} &middot; ${t.n_adcs}</option>`)
+    .join("");
 
   const chips = document.getElementById("chips");
   chips.innerHTML = ont.comorbidities.map(c =>

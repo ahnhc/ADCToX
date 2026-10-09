@@ -14,7 +14,7 @@ from pathlib import Path
 
 import numpy as np
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, PlainTextResponse
 
 from ..design.enumerate import DesignSpace
 from ..model.predict import Posterior
@@ -26,7 +26,15 @@ ROOT = Path(__file__).resolve().parents[3]
 CONF = ROOT / "conf"
 ARTIFACTS = ROOT / "artifacts"
 
-def _targets_in_corpus() -> set[str]:
+def _registry_targets() -> set[str]:
+    """Targets some ADC has been built against, from the registry.
+
+    Named for what it reads. It was `_targets_in_corpus`, which claimed more: the registry
+    holds 35 agents and the fit sees 16 of them, so a target can be in here and carry no
+    fitted arm at all. Nothing downstream wanted the stronger claim -- the comparison set it
+    guards is also registry-based -- but a name that overstates its own scope is how a later
+    reader comes to rely on the stronger one.
+    """
     return {
         str(spec.get("target")).upper()
         for spec in _registry().values()
@@ -52,7 +60,7 @@ def _coverage(design, family: str, post) -> dict:
     # are identical for every target. Said out loud because the endpoint accepts any
     # well-formed antigen name and returns fourteen confident numbers, and a caller who
     # named their target would otherwise reasonably assume it was used.
-    known_target = str(design.target).upper() in _targets_in_corpus()
+    known_target = str(design.target).upper() in _registry_targets()
     warnings.append(
         "the target antigen does not enter these estimates: target x axis interactions "
         "were dropped as near-collinear with payload family, so the same chemistry "
@@ -382,6 +390,50 @@ def disclaimer() -> dict:
     return {**Disclaimer().model_dump(), "limitations": LIMITATIONS}
 
 
+@lru_cache(maxsize=1)
+def _targets() -> list[dict]:
+    """Registry targets, with the label a clinician would recognise.
+
+    `target_label` is the common name -- CD30 for TNFRSF8 -- and the registry carries both
+    because the gene symbol is what the corpus keys on and the label is what a reader knows.
+    """
+    seen: dict[str, dict] = {}
+    for spec in _registry().values():
+        gene = spec.get("target")
+        if not gene:
+            continue
+        row = seen.setdefault(gene, {
+            "id": gene,
+            "label": spec.get("target_label") or gene,
+            "n_adcs": 0,
+        })
+        row["n_adcs"] += 1
+    return [seen[k] for k in sorted(seen)]
+
+
+@app.get("/api/v1/model-card")
+def model_card() -> PlainTextResponse:
+    """The model card, served as written.
+
+    The plan listed this endpoint and it was never built, which left the one document that
+    opens with "the model does not beat a base-rate baseline on any of six evaluations"
+    reachable only by reading the repository. Everything else about this API is arranged so
+    a caller cannot take a number without its caveats; the caveats themselves should not be
+    the part that requires a checkout.
+
+    Served verbatim rather than summarised, because a summary of a limitations document is
+    the thing a limitations document exists to prevent.
+    """
+    path = ROOT / "docs" / "MODEL_CARD.md"
+    if not path.exists():
+        raise HTTPException(status_code=503, detail="model card is not in this deployment")
+    return PlainTextResponse(
+        path.read_text(encoding="utf-8"),
+        media_type="text/markdown; charset=utf-8",
+        headers={"X-Corpus-Version": _version_info()["corpus"][:200]},
+    )
+
+
 @app.get("/api/v1/ontology")
 def ontology() -> dict:
     """Everything a client needs so it never hardcodes a list of its own."""
@@ -409,6 +461,17 @@ def ontology() -> dict:
         # difference decides how much the screen is worth.
         "constraints": ConstraintEngine().active_constraints(),
         "comorbidities": rows,
+        # Targets with clinical precedent, from the registry. The page used to hold a
+        # literal array of fourteen of them under a comment claiming it hardcoded no list,
+        # which hid ten of the registry's targets from the interface -- and the guard around
+        # that array keyed off the comorbidity count, so it would have shown the hardcoded
+        # targets even if this endpoint had served none.
+        #
+        # `n_adcs` is how many registry agents target it, which is the one fact about a
+        # target this system can act on -- it sizes the comparison set behind the
+        # nearest-real-ADC sentence. An earlier draft of this field said `in_corpus`, which
+        # was true for all 24 of them and so said nothing.
+        "targets": _targets(),
         "payloads": sorted(space.payloads),
         "linkers": sorted(space.linkers),
         "conjugations": sorted(space.conj_dar),
