@@ -27,7 +27,7 @@ ART     := artifacts
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
-        corpus-ablation discover mondo-audit mondo-axes
+        corpus-ablation discover mondo-audit mondo-axes exclusion-holdout
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
@@ -195,6 +195,9 @@ mondo-audit: ## check every pinned MONDO id against what it actually names
 
 mondo-axes: ## derive each comorbidity's organ axes from the MONDO is_a closure
 	$(PY) scripts/derive_organ_axes.py --obo $(MONDO_OBO)
+
+exclusion-holdout: ## MONDO organ mapping vs trial exclusion criteria, non-circularly
+	$(PY) scripts/exclusion_holdout.py --obo $(MONDO_OBO) --eligibility $(ELIG)
 
 corpus-ablation: ## the three nested corpora, agents/arms/cells/identifying-cells/folds
 	$(PY) scripts/corpus_ablation.py
