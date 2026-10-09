@@ -33,6 +33,7 @@ from .design.search import (
 from .model.predict import (
     MIN_ARMS_FOR_A_BAND,
     Posterior,
+    decompose,
     predict_draws,
     risk_band,
 )
@@ -412,8 +413,25 @@ def propose(
                             else "target_expression" if a in expr_by_axis
                             else "model"
                         ),
+                        # The fitted terms come first and always, because the model is
+                        # the source that always applies. Listing only the other three
+                        # left a model-banded axis with an empty driver list -- the
+                        # patient's at-risk organ showing a band and a weight with no
+                        # account of either.
+                        #
+                        # `decompose` is the same function `/assess` uses, deliberately. A
+                        # first attempt added a second, thinner driver builder here, which
+                        # would have made the two endpoints explain one number two
+                        # different ways -- the inconsistency `test_propose_and_assess_
+                        # cannot_disagree_about_novelty_tier` already guards against for
+                        # the novelty tier.
                         "drivers": (
-                            [f.as_driver() for f in flags_by_axis.get(a, [])]
+                            decompose(
+                                posterior, s.design.mechanism,
+                                _FAMILY_OF.get(s.design.payload, s.design.mechanism),
+                                float(s.design.dar), bool(s.design.cleavable), a,
+                            )
+                            + [f.as_driver() for f in flags_by_axis.get(a, [])]
                             + ([expr_by_axis[a].as_driver()] if a in expr_by_axis else [])
                             + [
                                 d for d in

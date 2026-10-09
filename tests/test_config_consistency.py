@@ -182,3 +182,60 @@ def test_a_registry_agent_may_have_no_stated_dar() -> None:
     for agent in without_dar:
         _, lone = _nearest_real_adc(design, {agent: registry[agent]})
         assert "DAR unknown" in lone, (agent, lone)
+
+
+def test_propose_and_assess_explain_a_number_the_same_way() -> None:
+    """A gap that became a worse gap before it was fixed.
+
+    `/propose` listed only the three driver sources that fire *sometimes* -- a label rule,
+    a target-expression flag, an exclusion enrichment -- and omitted the one that always
+    applies. So an axis reporting `band_source: "model"` came back with an empty driver
+    list: a patient's at-risk organ showing a band, a point estimate and a weight of 3.0
+    with no account of any of them.
+
+    The first fix was to add a driver builder to `/propose`, which would have left the two
+    endpoints explaining one number two different ways -- `/assess` already had a full
+    waterfall from `decompose`. Both now call `decompose`, and this test is the reason that
+    stays true.
+    """
+    from fastapi.testclient import TestClient
+
+    from adctox.api.main import app
+
+    client = TestClient(app)
+    profile = {
+        "conditions": ["interstitial_lung_disease", "ckd_stage_3"],
+        "cohort": {"age_band": "65_74", "sex": "female"},
+    }
+    proposed = client.post("/api/v1/propose", json={
+        "comorbidity_profile": profile, "target_antigen": "ERBB2", "top_k": 3,
+    })
+    assert proposed.status_code == 200, proposed.text[:400]
+    candidate = proposed.json()["candidates"][0]
+    design = candidate["design"]
+
+    assessed = client.post("/api/v1/assess", json={
+        "design": {
+            "target_antigen": design["target"], "payload": design["payload"],
+            "linker": design["linker"], "conjugation": design["conjugation"],
+            "dar": design["dar"], "isotype": design["isotype"],
+            "masking": design["masking"],
+        },
+        "comorbidity_profile": profile,
+    })
+    assert assessed.status_code == 200, assessed.text[:400]
+
+    def model_terms(organ_risks: list[dict], axis: str) -> list[tuple]:
+        row = next(o for o in organ_risks if o["organ_axis"] == axis)
+        return [
+            (d["factor"], d["contribution"])
+            for d in row["drivers"] if d["source"] == "model"
+        ], row["point_estimate"]
+
+    for axis in ("pulmonary", "renal", "haematologic"):
+        p_terms, p_rate = model_terms(candidate["organ_risks"], axis)
+        a_terms, a_rate = model_terms(assessed.json()["organ_risks"], axis)
+        assert p_terms == a_terms, (axis, p_terms, a_terms)
+        assert p_rate == a_rate, (axis, p_rate, a_rate)
+        # And the model source must actually be present, which is the original defect.
+        assert p_terms, f"{axis} has no model driver"
