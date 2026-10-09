@@ -30,6 +30,7 @@ from .design.search import (
     score_designs,
     why_not_the_obvious_one,
 )
+from .model.comparator import axis_comparator
 from .model.predict import (
     MIN_ARMS_FOR_A_BAND,
     Posterior,
@@ -124,6 +125,27 @@ def _precedent_scores(
         )
         out[d.key()] = float(np.log1p(n))
     return out
+
+
+def _comparator_for(
+    posterior,
+    serious_posterior,
+    scored,
+    axis: str,
+    basis: str,
+) -> dict | None:
+    """The ordinal comparison for one axis, on whichever table the band used.
+
+    Following the band rather than always using the common table matters: an at-risk axis
+    is banded on the serious table, and comparing a serious rate against common-table
+    chemistries would rank it against numbers an order of magnitude larger. Every row would
+    then read as unusually safe.
+    """
+    if basis == "serious":
+        if serious_posterior is None or scored.serious_risk is None:
+            return None
+        return axis_comparator(serious_posterior, axis, scored.serious_risk[axis])
+    return axis_comparator(posterior, axis, scored.organ_risk[axis])
 
 
 def _nearest_real_adc(design: Design, registry: dict) -> tuple[str | None, str | None]:
@@ -460,6 +482,12 @@ def propose(
                         # is vulnerable on is a serious-harm question; the rest are
                         # tolerability. Stated because the two are not comparable.
                         "band_basis": table_for(a),
+                        # Where this rate sits among the chemistries that have been built.
+                        # Same function and same table-following rule as `/assess`: the two
+                        # endpoints must not explain one number two different ways.
+                        "comparator": _comparator_for(
+                            posterior, serious_posterior, s, a, table_for(a),
+                        ),
                         # Stated separately so a reader can see whether a band came from
                         # the fit or from a label rule, which is the first thing a reviewer
                         # will ask about a red axis.

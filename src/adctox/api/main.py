@@ -455,6 +455,7 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
     from ..comorbidity.exclusion_prior import driver as exclusion_driver
     from ..comorbidity.hard_flags import applicable as applicable_flags
     from ..comorbidity.hard_flags import override_band
+    from ..model.comparator import axis_comparator
     from ..model.predict import (
         MIN_ARMS_FOR_A_BAND,
         decompose,
@@ -626,6 +627,16 @@ def assess_endpoint(req: AssessRequest) -> JSONResponse:
                     if use_serious else n_agents
                 ),
                 "n_supporting_arms": shown_arms,
+                # Where this rate sits among the chemistries that have actually been built.
+                # A rate on its own is close to unreadable, and the plan asked for an
+                # ordinal position with its denominator rather than a percentile, which on
+                # a sample of this size would invent resolution. Computed on the table the
+                # band was computed on, or the question and the comparison would disagree.
+                "comparator": axis_comparator(
+                    spost if use_serious else post,
+                    axis,
+                    s_mean if use_serious and s_mean is not None else mean,
+                ),
                 "weight_applied": weight,
                 "at_risk_for_patient": axis in comorb.at_risk_axes,
                 "drivers": drivers,

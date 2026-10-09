@@ -232,6 +232,30 @@ class Driver(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
+class AxisComparator(BaseModel):
+    """An ordinal position among the chemistries that have been built.
+
+    The claim is model against model: the same posterior's prediction for each corpus
+    agent's slots, with the agent-level residual off. Not against their observed rates --
+    the posterior integrates out the per-agent effect, so those cannot be recovered from
+    it, and they are censored at each trial's reporting cut, which leaves "higher than"
+    undefined for a large share of cells.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+    # 1 is the highest rate, so rank 1 is the worst place to be.
+    rank: int
+    # Reference chemistries plus the queried design.
+    n: int
+    n_reference_chemistries: int
+    # Registry agents with no stated DAR or no mechanism. Excluded rather than given the
+    # corpus mean, which would seat them at the centre of the comparison on a missing value.
+    n_excluded_for_missing_slots: int
+    table: Literal["other", "serious"]
+    interpretation: Literal["relative_ranking_only"] = "relative_ranking_only"
+    basis: str
+
+
 class OrganRisk(BaseModel):
     organ_axis: str
     label: str
@@ -260,6 +284,12 @@ class OrganRisk(BaseModel):
     weight_applied: float
     n_supporting_agents: int
     n_supporting_arms: int
+    # Where this rate sits among the ADC chemistries in the corpus, as an ordinal position
+    # with its denominator. Deliberately not a percentile: on roughly twenty reference
+    # chemistries a percentile invents resolution the sample cannot carry. Computed on the
+    # same table the band was, and it says which, because a row can print a common-table
+    # estimate beside a serious-table comparison.
+    comparator: AxisComparator | None = None
     at_risk_for_patient: bool = False
     drivers: list[Driver] = Field(default_factory=list)
     # The exact additive waterfall check: the drivers' sum against the reported rate, and

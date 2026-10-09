@@ -57,8 +57,10 @@
   --src-rule:#a23b2d; --src-target_expression:#2e6b5c;
   .tag{display:inline-block;font-size:11px;padding:2px 6px;border-radius:3px;
        border:1px solid var(--line);margin-left:6px;color:var(--ink-dim)}
-  .axis{display:grid;grid-template-columns:148px 1fr 108px 64px;gap:9px;align-items:center;
-        padding:2px 0;font-size:13px}
+  /* Five columns: label, interval bar, band and rate, evidence count, ordinal comparison.
+     The `why` button is a sixth item and wraps to its own line, as it did before. */
+  .axis{display:grid;grid-template-columns:148px 1fr 108px 64px 62px;gap:9px;
+        align-items:center;padding:2px 0;font-size:13px}
   .ev{font-size:11px;color:var(--ink-dim);font-variant-numeric:tabular-nums;text-align:right}
   .ev.thin{color:var(--none);font-style:italic}
   .axis.at-risk{font-weight:600}
@@ -82,6 +84,10 @@
   .b-low{color:var(--low)} .b-moderate{color:var(--moderate)}
   .b-high{color:var(--high)} .b-no_evidence{color:var(--none)}
   .num{font-size:11px;color:var(--ink-dim);font-variant-numeric:tabular-nums}
+  /* The ordinal comparison. Dim and tabular: it is context for the rate, not a
+     score of its own, and law 1 keeps it to the two digits the sample supports. */
+  .cmp{font-size:11px;color:var(--ink-dim);font-variant-numeric:tabular-nums;
+       white-space:nowrap;text-align:right}
   .warn{border-left:3px solid var(--high);padding-left:9px;font-size:13px;margin:9px 0}
   /* The "these are not ranked" card. Not the high-risk colour, which means an organ
      risk elsewhere on the page: this is a statement about resolution, not danger. */
@@ -250,6 +256,17 @@ function axisRow(r) {
     : "";
   const whyBtn = drv
     ? `<button class="whytoggle" data-why="why-${r.organ_axis}">why</button>` : "";
+  // A rate on its own is close to unreadable. An ordinal position against the chemistries
+  // that have actually been built says what 0.59 means, and it is an ordinal and not a
+  // percentile on purpose: roughly twenty reference chemistries cannot carry a percentile.
+  const cm = r.comparator;
+  const cmp = (cm && !noEvidence)
+    ? `<span class="cmp" title="Rank 1 is the highest rate, so rank 1 is the worst place to
+be. ${cm.n_reference_chemistries} corpus chemistries plus this design, on the
+${cm.table === "serious" ? "serious-event" : "common-event"} table &mdash; the same table
+the band was computed on. ${cm.basis}. ${cm.n_excluded_for_missing_slots} registry agents
+are left out for want of a stated DAR or mechanism.">#${cm.rank} of ${cm.n}</span>`
+    : "";
   return `${why}<div class="axis ${r.at_risk_for_patient ? "at-risk" : ""}">
       <span>${r.label}${r.at_risk_for_patient ? ` <span class="tag">weighted &times;${r.weight_applied.toFixed(1)}</span>` : ""}${basisTag}${ruleTag}</span>
       <span class="bar">${fill}</span>
@@ -260,6 +277,7 @@ function axisRow(r) {
               ? "Too little in the corpus on this organ for this chemistry to band a rate. Not the same as low risk."
               : `${arms} arms across ${agents} agents of this payload chemistry reported a count on this axis`}"
         >${arms} arm${arms === 1 ? "" : "s"}</span>
+      ${cmp}
       ${whyBtn}
     </div>`;
 }
