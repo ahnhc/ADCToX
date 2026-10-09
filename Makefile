@@ -28,7 +28,7 @@ ART     := artifacts
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
         corpus-ablation discover mondo-audit mondo-axes exclusion-holdout \
-        rank-resolution \
+        rank-resolution dar-gap \
         label-impairment inverse-retrieval comorbidity literature expensive \
         pmc-fetch-discovered pmc-fetch-codenames
 
@@ -281,6 +281,12 @@ corpus-ablation: ## the three nested corpora, agents/arms/cells/identifying-cell
 # every query: 0 of 192 have a decisive leader. In `all` because the report quotes it.
 rank-resolution: ## how often the proposal ranking resolves, over targets x profiles
 	$(PY) scripts/rank_resolution.py
+
+# Which registry agents still have no drug-to-antibody ratio, and whether the articles
+# already on disk state it. Not in `all`: it reads the raw PMC snapshot, like the other
+# corpus measurements, and `all` stays offline.
+dar-gap: ## search the harvested articles for the registry's missing DAR values
+	$(PY) scripts/dar_gap.py
 
 discover: ## find every ADC that has published, by payload-linker name stem
 	$(PY) scripts/discover_adc_agents.py --out $(ART)/adc_discovery.json --retmax 400

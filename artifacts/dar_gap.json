@@ -1,0 +1,160 @@
+{
+ "summary": {
+  "articles_searched": 1496,
+  "agents_without_a_dar": 10,
+  "agents_with_a_candidate": 1,
+  "agents_with_one_usable_value": 0,
+  "agents_with_an_average_statement": 0,
+  "agents_never_mentioned": 0,
+  "species_label_matches_rejected": 0
+ },
+ "agents": [
+  {
+   "agent": "anetumab_ravtansine",
+   "inn": "anetumab ravtansine",
+   "articles_mentioning": 10,
+   "dar_candidates": 0,
+   "n_average_statements": 0,
+   "n_in_a_paper_about_this_agent": 0,
+   "n_species_labels": 0,
+   "usable_value": null,
+   "values_seen": [],
+   "evidence": []
+  },
+  {
+   "agent": "camidanlumab_tesirine",
+   "inn": "camidanlumab tesirine",
+   "articles_mentioning": 5,
+   "dar_candidates": 0,
+   "n_average_statements": 0,
+   "n_in_a_paper_about_this_agent": 0,
+   "n_species_labels": 0,
+   "usable_value": null,
+   "values_seen": [],
+   "evidence": []
+  },
+  {
+   "agent": "cofetuzumab_pelidotin",
+   "inn": "cofetuzumab pelidotin",
+   "articles_mentioning": 2,
+   "dar_candidates": 0,
+   "n_average_statements": 0,
+   "n_in_a_paper_about_this_agent": 0,
+   "n_species_labels": 0,
+   "usable_value": null,
+   "values_seen": [],
+   "evidence": []
+  },
+  {
+   "agent": "enapotamab_vedotin",
+   "inn": "enapotamab vedotin",
+   "articles_mentioning": 3,
+   "dar_candidates": 2,
+   "n_average_statements": 0,
+   "n_in_a_paper_about_this_agent": 0,
+   "n_species_labels": 0,
+   "usable_value": null,
+   "values_seen": [
+    4.0
+   ],
+   "evidence": [
+    {
+     "pmcid": "PMC12146481",
+     "match": "DAR4",
+     "value": 4.0,
+     "reading": "unqualified",
+     "primary": false,
+     "context": " AXL-targeting ADCs have entered into clinical trials so far. Clinical development for two of them has been stopped. Notably, enapotamab vedotin (payload MMAE, DAR4) was in early clinical development for the treatment of var"
+    },
+    {
+     "pmcid": "PMC12146481",
+     "match": "DAR4",
+     "value": 4.0,
+     "reading": "unqualified",
+     "primary": false,
+     "context": " AXL-targeting ADCs have entered into clinical trials so far. Clinical development for two of them has been stopped. Notably, enapotamab vedotin (payload MMAE, DAR4) was in early clinical development for the treatment of var"
+    }
+   ]
+  },
+  {
+   "agent": "ifinatamab_deruxtecan",
+   "inn": "ifinatamab deruxtecan",
+   "articles_mentioning": 10,
+   "dar_candidates": 0,
+   "n_average_statements": 0,
+   "n_in_a_paper_about_this_agent": 0,
+   "n_species_labels": 0,
+   "usable_value": null,
+   "values_seen": [],
+   "evidence": []
+  },
+  {
+   "agent": "naratuximab_emtansine",
+   "inn": "naratuximab emtansine",
+   "articles_mentioning": 5,
+   "dar_candidates": 0,
+   "n_average_statements": 0,
+   "n_in_a_paper_about_this_agent": 0,
+   "n_species_labels": 0,
+   "usable_value": null,
+   "values_seen": [],
+   "evidence": []
+  },
+  {
+   "agent": "praluzatamab_ravtansine",
+   "inn": "praluzatamab ravtansine",
+   "articles_mentioning": 2,
+   "dar_candidates": 0,
+   "n_average_statements": 0,
+   "n_in_a_paper_about_this_agent": 0,
+   "n_species_labels": 0,
+   "usable_value": null,
+   "values_seen": [],
+   "evidence": []
+  },
+  {
+   "agent": "serclutamab_talirine",
+   "inn": "serclutamab talirine",
+   "articles_mentioning": 3,
+   "dar_candidates": 0,
+   "n_average_statements": 0,
+   "n_in_a_paper_about_this_agent": 0,
+   "n_species_labels": 0,
+   "usable_value": null,
+   "values_seen": [],
+   "evidence": []
+  },
+  {
+   "agent": "telisotuzumab_adizutecan",
+   "inn": "telisotuzumab adizutecan",
+   "articles_mentioning": 2,
+   "dar_candidates": 0,
+   "n_average_statements": 0,
+   "n_in_a_paper_about_this_agent": 0,
+   "n_species_labels": 0,
+   "usable_value": null,
+   "values_seen": [],
+   "evidence": []
+  },
+  {
+   "agent": "vobramitamab_duocarmazine",
+   "inn": "vobramitamab duocarmazine",
+   "articles_mentioning": 4,
+   "dar_candidates": 0,
+   "n_average_statements": 0,
+   "n_in_a_paper_about_this_agent": 0,
+   "n_species_labels": 0,
+   "usable_value": null,
+   "values_seen": [],
+   "evidence": []
+  }
+ ],
+ "provenance": {
+  "revision": "3b1fe4f72db192452a74e4d76dae11026674d5c7",
+  "dirty": true,
+  "snapshot": null,
+  "script": "dar_gap.py",
+  "written_utc": "2026-10-09T07:42:31+00:00",
+  "inputs": {}
+ }
+}

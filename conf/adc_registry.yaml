@@ -636,10 +636,14 @@ agents:
     linker_cleavable: true
     linker_cleavage: enzymatic_peptidase
     conjugation: interchain_cysteine
-    dar: null
-    dar_source: null
+    dar: 8.0
+    dar_source: pmc:PMC13011950
     dar_note: >-
-      PMC13623066 describes a high drug-to-antibody ratio without a figure, so the field is null and the model imputes the corpus mean.
+      The figure is in this agent's own clinical report, which is already this entry's
+      curation source: the payload is conjugated through a cleavable linker at a
+      drug-to-antibody ratio of 8. The earlier note cited a different article that
+      describes the ratio as high without giving it, and concluded the field had to stay
+      null.
     isotype: IgG1
     fc_engineering: none
     bystander: true
@@ -791,11 +795,15 @@ agents:
     linker_cleavable: true
     linker_cleavage: reducible_disulfide
     conjugation: lysine
-    dar: null
-    dar_source: null
+    dar: 3.8
+    dar_source: pmc:PMC9098589
     dar_note: >-
-      102 DAR mentions in the fetched corpus and none states a figure for this agent; the
-      pharmacokinetic papers define the term and report DAR>=1 species instead.
+      The agent's own population-pharmacokinetic paper states an average drug-to-antibody
+      ratio of 3.8 for the administered solution, three times. An earlier pass recorded the
+      field as unstated anywhere in the corpus, because the same paper labels its conjugate
+      species DAR0 through DAR8 and those tokens outnumber the one real statement seven to
+      one; `scripts/dar_gap.py` separates a qualified average from a species label and
+      finds it.
     isotype: IgG1
     fc_engineering: none
     bystander: true
