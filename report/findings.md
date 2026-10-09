@@ -51,6 +51,30 @@ The gap it addresses: existing ADC machine-learning work (ADCNet, DumplingGNN, L
 predicts efficacy, cytotoxicity, DAR and linker stability. Nothing predicts organ-level
 *clinical* toxicity conditioned on a patient's existing organ damage.
 
+### What it actually delivers, in one paragraph
+
+Given a comorbidity profile and a target antigen, the system enumerates the chemically
+valid, individually precedented designs, filters them against six constraints -- five of which reject and one of which
+only flags -- and returns
+the non-dominated set with a rate and a 90% credible interval on each of fourteen organ
+systems, plus the ordinal position of each rate among the registry's chemistries. **It does
+not rank the set**: across 24 targets by 8 profiles the leader beats the runner-up on a
+median 52% of paired posterior draws against the 80% this interface requires, so 0 of 192
+queries produce a ranked list. The rates come from a hierarchical binomial model that
+**does not beat a base-rate baseline on any of six evaluations**. The ordinal comparison
+inherits a per-axis across-agent correlation of **+0.17** after the reporting conditions are
+removed from both series, which is this report's one positive result and is weak. The
+comorbidity profile enters as a displayed weight rather than a logit, changes the proposed
+set of options for six of the seven profiles that name a condition, somewhere in the
+weighting constant's range, and changes nothing at all for the seventh -- a patient with
+four comorbidities.
+
+So what the system is for is the filtering, the intervals, and the refusals: it will not
+rank what it cannot separate, will not price a payload mechanism it has never seen, and
+will not offer a design whose parts have no clinical precedent. Sections 3 and 4 are where
+the prediction fails, section 9 is the thirty-three measured negative results, and section
+10 is what this must not be used for.
+
 ## 2. The corpus, and the number that governs everything
 
 | | count |
