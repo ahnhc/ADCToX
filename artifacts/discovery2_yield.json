@@ -1,0 +1,99 @@
+{
+  "provenance": {
+    "revision": "d0c12e5c51052efd9f5abe3d5257c256efbadee4",
+    "dirty": true,
+    "snapshot": null,
+    "script": "measure_table_yield.py",
+    "written_utc": "2026-10-09T02:51:51+00:00",
+    "inputs": {
+      "xml_listing": "sha256:470df7f48d9033667210ec2dbe535de393eee03099259a9d66c0fcfba7eb3135"
+    }
+  },
+  "agents": {
+    "sought": [
+      "glembatumumab_vedotin",
+      "ladiratuzumab_vedotin",
+      "losatuxizumab_vedotin",
+      "mecbotamab_vedotin",
+      "ozuriftamab_vedotin"
+    ],
+    "recovered": [],
+    "lost_to_image_only": [],
+    "no_ae_table_found": [
+      "ladiratuzumab_vedotin",
+      "losatuxizumab_vedotin",
+      "mecbotamab_vedotin",
+      "ozuriftamab_vedotin"
+    ],
+    "per_agent": {
+      "glembatumumab_vedotin": {
+        "articles": 3,
+        "ae_tables": 4
+      },
+      "ladiratuzumab_vedotin": {
+        "articles": 1
+      },
+      "losatuxizumab_vedotin": {
+        "articles": 1
+      },
+      "mecbotamab_vedotin": {
+        "articles": 1
+      },
+      "ozuriftamab_vedotin": {
+        "articles": 1
+      }
+    },
+    "journals_per_agent": {
+      "glembatumumab_vedotin": {
+        "Cancers": 2,
+        "NPJ Breast Cancer": 1,
+        "JTO Clinical and Research Reports": 1
+      }
+    }
+  },
+  "totals": {
+    "articles": 7,
+    "tables": 12,
+    "ae_tables": 4,
+    "ae_no_rate_cells": 4,
+    "ae_no_parseable_rate_format": 4
+  },
+  "arithmetic": {
+    "cells_checked": 0,
+    "cells_passed": 0,
+    "pass_rate": null,
+    "plan_claimed_pass_rate": 0.868,
+    "median_delta_pp": null
+  },
+  "by_journal": {
+    "Antibody Therapeutics": {
+      "articles": 1
+    },
+    "Cancers": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 2
+    },
+    "Clinical Cancer Research": {
+      "articles": 1
+    },
+    "Cureus": {
+      "articles": 1,
+      "tables": 2
+    },
+    "JTO Clinical and Research Reports": {
+      "articles": 1,
+      "tables": 2,
+      "ae_tables": 1
+    },
+    "NPJ Breast Cancer": {
+      "articles": 1,
+      "tables": 5,
+      "ae_tables": 1
+    },
+    "mAbs": {
+      "articles": 1
+    }
+  },
+  "unparseable": []
+}

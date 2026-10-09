@@ -1,13 +1,13 @@
 {
   "provenance": {
-    "revision": "5dc97050e605b247244e6d4eb3da5e4fbbada53f",
+    "revision": "d0c12e5c51052efd9f5abe3d5257c256efbadee4",
     "dirty": true,
     "snapshot": null,
     "script": "extract_pmc_cells.py",
-    "written_utc": "2026-10-09T01:51:10+00:00",
+    "written_utc": "2026-10-09T02:58:46+00:00",
     "inputs": {
       "pt_dictionary": "sha256:59dfb370333da71c8b7315ba6910f6aaf16b49f382e69c486446c6ab2277c11b",
-      "registry": "sha256:9a5a2d8bb098a42caa825eab6be011a2ab5659b9185fe930279114506c4c2aa9"
+      "registry": "sha256:9e11dcd6bcae92cebe312d98523f356607ebc81455b445ab33f0c687bbdb1980"
     }
   },
   "funnel": {
@@ -28,27 +28,27 @@
     "row_or_cell:image_only": 48,
     "table_rejected:image_only": 48,
     "row_or_cell:column_dropped_as_subgroup": 136,
-    "row_or_cell:column_attributed_by_title": 508,
-    "row_or_cell:row_pt": 4194,
-    "row_or_cell:row_aggregate": 484,
+    "row_or_cell:column_attributed_by_title": 507,
+    "row_or_cell:row_pt": 4164,
+    "row_or_cell:row_aggregate": 483,
     "row_or_cell:rejected_no_mapped_rows": 100,
     "table_rejected:no_mapped_rows": 100,
     "trial_id:ext_link_names_26_trials": 2,
     "trial_id:ext_link_names_10_trials": 9,
     "row_or_cell:denominator_inferred": 124,
-    "row_or_cell:cells_extracted": 4781,
-    "tables_accepted": 164,
-    "accepted_kind:other": 159,
-    "cells": 4781,
-    "cells_arith_ok": 4753,
+    "row_or_cell:cells_extracted": 4767,
+    "tables_accepted": 163,
+    "accepted_kind:other": 158,
+    "cells": 4767,
+    "cells_arith_ok": 4739,
     "trial_id:ext_link_names_12_trials": 9,
     "trial_id:ext_link_names_3_trials": 51,
     "cells_arith_fail": 28,
     "trial_id:ext_link_names_11_trials": 2,
-    "row_or_cell:title_path_blocked_by_foreign_agent": 29,
-    "row_or_cell:row_not_an_event": 1022,
-    "row_or_cell:rejected_ambiguous_column": 74,
-    "table_rejected:ambiguous_column": 34,
+    "row_or_cell:title_path_blocked_by_foreign_agent": 30,
+    "row_or_cell:row_not_an_event": 1004,
+    "row_or_cell:rejected_ambiguous_column": 75,
+    "table_rejected:ambiguous_column": 35,
     "trial_id:ext_link_names_6_trials": 20,
     "row_or_cell:row_soc_header": 153,
     "trial_id:ext_link_names_9_trials": 6,
@@ -86,26 +86,44 @@
     "trastuzumab_emtansine"
   ],
   "agents_sought": [
+    "anetumab_ravtansine",
     "belantamab_mafodotin",
     "brentuximab_vedotin",
+    "camidanlumab_tesirine",
+    "cofetuzumab_pelidotin",
     "datopotamab_deruxtecan",
+    "depatuxizumab_mafodotin",
+    "disitamab_vedotin",
+    "enapotamab_vedotin",
     "enfortumab_vedotin",
+    "farletuzumab_ecteribulin",
     "gemtuzumab_ozogamicin",
+    "ifinatamab_deruxtecan",
     "inotuzumab_ozogamicin",
+    "izalontamab_brengitecan",
     "loncastuximab_tesirine",
     "mirvetuximab_soravtansine",
     "moxetumomab_pasudotox",
+    "naratuximab_emtansine",
     "patritumab_deruxtecan",
     "pivekimab_sunirine",
     "polatuzumab_vedotin",
+    "praluzatamab_ravtansine",
+    "rovalpituzumab_tesirine",
     "sacituzumab_govitecan",
+    "sacituzumab_tirumotecan",
+    "serclutamab_talirine",
+    "telisotuzumab_adizutecan",
     "telisotuzumab_vedotin",
     "tisotumab_vedotin",
     "trastuzumab_deruxtecan",
     "trastuzumab_duocarmazine",
-    "trastuzumab_emtansine"
+    "trastuzumab_emtansine",
+    "tusamitamab_ravtansine",
+    "vobramitamab_duocarmazine"
   ],
   "per_agent": {
+    "anetumab_ravtansine": {},
     "belantamab_mafodotin": {
       "articles": 107,
       "ae_tables": 75,
@@ -125,6 +143,8 @@
       "rejected_no_mapped_rows": 13,
       "rejected_ambiguous_column": 5
     },
+    "camidanlumab_tesirine": {},
+    "cofetuzumab_pelidotin": {},
     "datopotamab_deruxtecan": {
       "articles": 43,
       "ae_tables": 49,
@@ -135,6 +155,9 @@
       "rejected_no_mapped_rows": 2,
       "rejected_ambiguous_column": 1
     },
+    "depatuxizumab_mafodotin": {},
+    "disitamab_vedotin": {},
+    "enapotamab_vedotin": {},
     "enfortumab_vedotin": {
       "articles": 201,
       "ae_tables": 96,
@@ -145,6 +168,7 @@
       "rejected_ambiguous_column": 4,
       "rejected_image_only": 6
     },
+    "farletuzumab_ecteribulin": {},
     "gemtuzumab_ozogamicin": {
       "articles": 81,
       "ae_tables": 33,
@@ -154,6 +178,7 @@
       "cells": 98,
       "rejected_ambiguous_column": 1
     },
+    "ifinatamab_deruxtecan": {},
     "inotuzumab_ozogamicin": {
       "articles": 93,
       "ae_tables": 23,
@@ -163,6 +188,7 @@
       "cells": 209,
       "rejected_image_only": 2
     },
+    "izalontamab_brengitecan": {},
     "loncastuximab_tesirine": {
       "articles": 24,
       "ae_tables": 6,
@@ -186,6 +212,7 @@
       "cells": 62,
       "rejected_no_usable_column": 1
     },
+    "naratuximab_emtansine": {},
     "patritumab_deruxtecan": {
       "articles": 19,
       "ae_tables": 14,
@@ -211,6 +238,8 @@
       "rejected_image_only": 8,
       "rejected_ambiguous_column": 6
     },
+    "praluzatamab_ravtansine": {},
+    "rovalpituzumab_tesirine": {},
     "sacituzumab_govitecan": {
       "articles": 142,
       "ae_tables": 86,
@@ -221,6 +250,9 @@
       "rejected_ambiguous_column": 2,
       "rejected_image_only": 3
     },
+    "sacituzumab_tirumotecan": {},
+    "serclutamab_talirine": {},
+    "telisotuzumab_adizutecan": {},
     "telisotuzumab_vedotin": {
       "articles": 10,
       "ae_tables": 10,
@@ -241,11 +273,11 @@
       "articles": 158,
       "ae_tables": 76,
       "rejected_no_usable_column": 38,
-      "tables_accepted": 16,
-      "cells": 260,
+      "tables_accepted": 15,
+      "cells": 246,
       "rejected_no_mapped_rows": 12,
       "rejected_image_only": 6,
-      "rejected_ambiguous_column": 4
+      "rejected_ambiguous_column": 5
     },
     "trastuzumab_duocarmazine": {},
     "trastuzumab_emtansine": {
@@ -257,19 +289,21 @@
       "rejected_no_mapped_rows": 10,
       "rejected_ambiguous_column": 4,
       "rejected_image_only": 5
-    }
+    },
+    "tusamitamab_ravtansine": {},
+    "vobramitamab_duocarmazine": {}
   },
   "axis_cells": {
     "neurologic": 271,
-    "constitutional": 508,
+    "constitutional": 506,
     "infectious_immune": 236,
-    "gastrointestinal": 935,
+    "gastrointestinal": 933,
     "ocular": 296,
     "dermatologic": 323,
-    "metabolic_endocrine": 329,
-    "haematologic": 1117,
+    "metabolic_endocrine": 327,
+    "haematologic": 1115,
     "pulmonary": 246,
-    "cardiovascular": 89,
+    "cardiovascular": 83,
     "musculoskeletal": 78,
     "hepatic": 314,
     "renal": 29,
@@ -277,10 +311,10 @@
   },
   "cells_by_denominator_source": {
     "inferred_corroborated": 1108,
-    "header": 3673
+    "header": 3659
   },
   "cells_by_attribution_gate": {
-    "title": 4781
+    "title": 4767
   },
   "unmapped_rows": {
     "Infusion-related reaction": 17,
@@ -408,7 +442,6 @@
     "Hormonal therapy": 2,
     "Lapatinib": 2,
     "Efficacy outcomes": 2,
-    "Oral ulcer": 2,
     "Age category, years": 2,
     "Clinical stage (Ann Arbor classification)": 2,
     "Presence of B symptoms": 2,
@@ -468,9 +501,6 @@
     "Grade ≥ III": 2,
     "Treatment reduction": 2,
     "Unavailable": 2,
-    "ECOG-PS": 2,
-    "HER2 status": 2,
-    "IHC 3+": 2,
     "CTCAE v5 alopecia": 2,
     "Primary endpoint—grade 1 or higher alopecia,an (%)": 2,
     "Grade 1 + 2": 2,
@@ -582,7 +612,11 @@
     "Mixed sensory and motor": 1,
     "Median time to onset, mo (range)": 1,
     "TRAEswith ≥2 patients in either phase": 1,
-    "Neutropenia grade ≥3": 1
+    "Neutropenia grade ≥3": 1,
+    "Anemia grade ≥3": 1,
+    "Increase of ALT grade ≥3": 1,
+    "Increase of lipase grade ≥3": 1,
+    "Thrombocytopenia grade ≥3": 1
   },
   "rejected": {
     "no_usable_column": [
@@ -2121,6 +2155,14 @@
         "reason": "ambiguous_column: col 3 ('EV+ICI (n=128) Non-EV-inducedcAE (n=67)'): combination arm (joined by '+'): 'EV+ICI'; col 4 ('EV+ICI (n=128) EV-inducedcAE (n=61)'): combination arm (joined by '+'): 'EV+ICI'; col 5 ('EV+other (n=13) Non-EV-induced"
       },
       {
+        "pmcid": "13238207",
+        "agent": "trastuzumab_deruxtecan",
+        "journal": "Pakistan Journal of Medical Sciences",
+        "table": "Table-I",
+        "caption": "Clinical characteristics, treatment effect, and adverse events of patients treated with HER2 ADCs.",
+        "reason": "ambiguous_column: col 1 ('RC48(n=12)'): names another agent: ['disitamab_vedotin']"
+      },
+      {
         "pmcid": "13309285",
         "agent": "trastuzumab_deruxtecan",
         "journal": "Nature Cancer",
@@ -2214,12 +2256,12 @@
     "no_usable_column": 355,
     "image_only": 48,
     "no_mapped_rows": 100,
-    "ambiguous_column": 34
+    "ambiguous_column": 35
   },
   "trials": {
-    "n_groups": 34,
+    "n_groups": 33,
     "n_duplicate_sources_dropped": 6,
-    "n_overlapping_registry": 20,
+    "n_overlapping_registry": 19,
     "n_sources_without_trial_id": 0,
     "groups": [
       {
@@ -2363,16 +2405,6 @@
         "reason": "only source",
         "candidates": [
           "9939146"
-        ]
-      },
-      {
-        "nct_id": "NCT03529110",
-        "agent": "trastuzumab_deruxtecan",
-        "overlaps_registry": true,
-        "chosen_pmcid": "13238207",
-        "reason": "only source",
-        "candidates": [
-          "13238207"
         ]
       },
       {

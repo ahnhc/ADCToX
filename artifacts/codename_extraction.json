@@ -1,0 +1,184 @@
+{
+  "provenance": {
+    "revision": "d0c12e5c51052efd9f5abe3d5257c256efbadee4",
+    "dirty": true,
+    "snapshot": null,
+    "script": "extract_pmc_cells.py",
+    "written_utc": "2026-10-09T02:57:55+00:00",
+    "inputs": {
+      "pt_dictionary": "sha256:59dfb370333da71c8b7315ba6910f6aaf16b49f382e69c486446c6ab2277c11b",
+      "registry": "sha256:9e11dcd6bcae92cebe312d98523f356607ebc81455b445ab33f0c687bbdb1980"
+    }
+  },
+  "funnel": {
+    "article_unattributed": 18,
+    "articles": 8,
+    "gate:title": 8,
+    "trial_id:no_trial_id": 4,
+    "tables": 14,
+    "not_ae_table": 10,
+    "trial_id:resolved": 2,
+    "trial_id:ext_link_names_6_trials": 1,
+    "ae_tables": 4,
+    "row_or_cell:column_dropped_as_subgroup": 10,
+    "row_or_cell:row_pt": 53,
+    "row_or_cell:row_aggregate": 8,
+    "row_or_cell:rejected_no_mapped_rows": 2,
+    "table_rejected:no_mapped_rows": 2,
+    "row_or_cell:column_attributed_by_title": 2,
+    "row_or_cell:cells_extracted": 113,
+    "tables_accepted": 2,
+    "accepted_kind:other": 2,
+    "cells": 113,
+    "cells_arith_ok": 113,
+    "trial_id:ext_link_names_2_trials": 1,
+    "row_or_cell:row_not_an_event": 10
+  },
+  "agents_recovered": [
+    "naratuximab_emtansine",
+    "vobramitamab_duocarmazine"
+  ],
+  "agents_sought": [
+    "anetumab_ravtansine",
+    "belantamab_mafodotin",
+    "brentuximab_vedotin",
+    "camidanlumab_tesirine",
+    "cofetuzumab_pelidotin",
+    "datopotamab_deruxtecan",
+    "depatuxizumab_mafodotin",
+    "disitamab_vedotin",
+    "enapotamab_vedotin",
+    "enfortumab_vedotin",
+    "farletuzumab_ecteribulin",
+    "gemtuzumab_ozogamicin",
+    "ifinatamab_deruxtecan",
+    "inotuzumab_ozogamicin",
+    "izalontamab_brengitecan",
+    "loncastuximab_tesirine",
+    "mirvetuximab_soravtansine",
+    "moxetumomab_pasudotox",
+    "naratuximab_emtansine",
+    "patritumab_deruxtecan",
+    "pivekimab_sunirine",
+    "polatuzumab_vedotin",
+    "praluzatamab_ravtansine",
+    "rovalpituzumab_tesirine",
+    "sacituzumab_govitecan",
+    "sacituzumab_tirumotecan",
+    "serclutamab_talirine",
+    "telisotuzumab_adizutecan",
+    "telisotuzumab_vedotin",
+    "tisotumab_vedotin",
+    "trastuzumab_deruxtecan",
+    "trastuzumab_duocarmazine",
+    "trastuzumab_emtansine",
+    "tusamitamab_ravtansine",
+    "vobramitamab_duocarmazine"
+  ],
+  "per_agent": {
+    "anetumab_ravtansine": {},
+    "belantamab_mafodotin": {},
+    "brentuximab_vedotin": {},
+    "camidanlumab_tesirine": {},
+    "cofetuzumab_pelidotin": {},
+    "datopotamab_deruxtecan": {},
+    "depatuxizumab_mafodotin": {},
+    "disitamab_vedotin": {},
+    "enapotamab_vedotin": {},
+    "enfortumab_vedotin": {},
+    "farletuzumab_ecteribulin": {},
+    "gemtuzumab_ozogamicin": {},
+    "ifinatamab_deruxtecan": {},
+    "inotuzumab_ozogamicin": {},
+    "izalontamab_brengitecan": {},
+    "loncastuximab_tesirine": {},
+    "mirvetuximab_soravtansine": {},
+    "moxetumomab_pasudotox": {},
+    "naratuximab_emtansine": {
+      "articles": 4,
+      "ae_tables": 2,
+      "rejected_no_mapped_rows": 1,
+      "tables_accepted": 1,
+      "cells": 39
+    },
+    "patritumab_deruxtecan": {},
+    "pivekimab_sunirine": {},
+    "polatuzumab_vedotin": {},
+    "praluzatamab_ravtansine": {},
+    "rovalpituzumab_tesirine": {},
+    "sacituzumab_govitecan": {},
+    "sacituzumab_tirumotecan": {},
+    "serclutamab_talirine": {},
+    "telisotuzumab_adizutecan": {},
+    "telisotuzumab_vedotin": {},
+    "tisotumab_vedotin": {},
+    "trastuzumab_deruxtecan": {},
+    "trastuzumab_duocarmazine": {},
+    "trastuzumab_emtansine": {},
+    "tusamitamab_ravtansine": {},
+    "vobramitamab_duocarmazine": {
+      "articles": 4,
+      "ae_tables": 2,
+      "rejected_no_mapped_rows": 1,
+      "tables_accepted": 1,
+      "cells": 74
+    }
+  },
+  "axis_cells": {
+    "constitutional": 18,
+    "haematologic": 40,
+    "gastrointestinal": 16,
+    "pulmonary": 8,
+    "metabolic_endocrine": 9,
+    "dermatologic": 9,
+    "cardiovascular": 3,
+    "neurologic": 3,
+    "hepatic": 4,
+    "musculoskeletal": 1,
+    "infectious_immune": 2
+  },
+  "cells_by_denominator_source": {
+    "header": 113
+  },
+  "cells_by_attribution_gate": {
+    "title": 113
+  },
+  "unmapped_rows": {
+    "Dose‐limiting toxicity": 1,
+    "Grade ≥3 TRAE": 1,
+    "SAE": 1,
+    "TRSAE": 1,
+    "Palmar–plantar erythrodysesthesia syndrome": 1,
+    "Infusion‐related reaction": 1
+  },
+  "rejected": {
+    "no_mapped_rows": [
+      {
+        "pmcid": "13392588",
+        "agent": "vobramitamab_duocarmazine",
+        "journal": "Cancer",
+        "table": "TABLE 3",
+        "caption": "Overall safety summary across all expansion cohorts.",
+        "reason": "no_mapped_rows"
+      },
+      {
+        "pmcid": "6153548",
+        "agent": "naratuximab_emtansine",
+        "journal": "Investigational New Drugs",
+        "table": "Table 2",
+        "caption": "Dose-escalation schedule and dose-limiting toxicities",
+        "reason": "no_mapped_rows"
+      }
+    ]
+  },
+  "rejected_counts": {
+    "no_mapped_rows": 2
+  },
+  "trials": {
+    "n_groups": 0,
+    "n_duplicate_sources_dropped": 0,
+    "n_overlapping_registry": 0,
+    "n_sources_without_trial_id": 0,
+    "groups": []
+  }
+}

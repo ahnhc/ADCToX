@@ -1,48 +1,48 @@
 {
   "provenance": {
-    "revision": "d84a85f65b9d8e16759051fbb0c1e6e839164c43",
+    "revision": "d0c12e5c51052efd9f5abe3d5257c256efbadee4",
     "dirty": true,
     "snapshot": null,
     "script": "extract_pmc_cells.py",
-    "written_utc": "2026-10-09T02:36:16+00:00",
+    "written_utc": "2026-10-09T02:58:09+00:00",
     "inputs": {
       "pt_dictionary": "sha256:59dfb370333da71c8b7315ba6910f6aaf16b49f382e69c486446c6ab2277c11b",
-      "registry": "sha256:3930094cdf56258ab93157b6b89a31c9dc9a698658e99fd83671b0c26d1c08c7"
+      "registry": "sha256:9e11dcd6bcae92cebe312d98523f356607ebc81455b445ab33f0c687bbdb1980"
     }
   },
   "funnel": {
-    "articles": 132,
-    "gate:title": 132,
+    "articles": 133,
+    "gate:title": 133,
     "trial_id:resolved": 30,
-    "tables": 330,
-    "not_ae_table": 238,
+    "tables": 332,
+    "not_ae_table": 240,
     "ae_tables": 92,
     "row_or_cell:denominator_inferred": 33,
-    "row_or_cell:column_attributed_by_title": 99,
-    "row_or_cell:row_pt": 953,
-    "row_or_cell:cells_extracted": 1581,
-    "tables_accepted": 42,
-    "accepted_kind:other": 41,
-    "cells": 1581,
-    "cells_arith_ok": 1581,
+    "row_or_cell:column_attributed_by_title": 100,
+    "row_or_cell:row_pt": 980,
+    "row_or_cell:cells_extracted": 1655,
+    "tables_accepted": 43,
+    "accepted_kind:other": 42,
+    "cells": 1655,
+    "cells_arith_ok": 1655,
     "trial_id:ext_link_names_2_trials": 18,
     "trial_id:ext_link_names_3_trials": 9,
     "row_or_cell:rejected_no_usable_column": 29,
     "table_rejected:no_usable_column": 29,
-    "row_or_cell:row_aggregate": 151,
+    "row_or_cell:row_aggregate": 152,
     "row_or_cell:rejected_no_mapped_rows": 15,
     "table_rejected:no_mapped_rows": 15,
-    "article_unattributed": 12,
-    "trial_id:no_trial_id": 58,
+    "article_unattributed": 11,
+    "trial_id:no_trial_id": 59,
     "trial_id:ext_link_names_5_trials": 4,
-    "row_or_cell:column_dropped_as_subgroup": 97,
+    "row_or_cell:column_dropped_as_subgroup": 102,
     "row_or_cell:row_not_an_event": 70,
     "trial_id:ext_link_names_12_trials": 1,
     "trial_id:ext_link_names_6_trials": 3,
     "trial_id:ext_link_names_4_trials": 7,
     "row_or_cell:row_soc_header": 24,
-    "row_or_cell:rejected_ambiguous_column": 11,
-    "table_rejected:ambiguous_column": 6,
+    "row_or_cell:rejected_ambiguous_column": 10,
+    "table_rejected:ambiguous_column": 5,
     "trial_id:ext_link_names_8_trials": 1,
     "row_or_cell:title_path_blocked_by_foreign_agent": 2,
     "trial_id:ext_link_names_9_trials": 1,
@@ -62,7 +62,8 @@
     "sacituzumab_tirumotecan",
     "serclutamab_talirine",
     "telisotuzumab_adizutecan",
-    "tusamitamab_ravtansine"
+    "tusamitamab_ravtansine",
+    "vobramitamab_duocarmazine"
   ],
   "agents_sought": [
     "anetumab_ravtansine",
@@ -83,6 +84,7 @@
     "loncastuximab_tesirine",
     "mirvetuximab_soravtansine",
     "moxetumomab_pasudotox",
+    "naratuximab_emtansine",
     "patritumab_deruxtecan",
     "pivekimab_sunirine",
     "polatuzumab_vedotin",
@@ -172,6 +174,9 @@
     "loncastuximab_tesirine": {},
     "mirvetuximab_soravtansine": {},
     "moxetumomab_pasudotox": {},
+    "naratuximab_emtansine": {
+      "articles": 1
+    },
     "patritumab_deruxtecan": {},
     "pivekimab_sunirine": {},
     "polatuzumab_vedotin": {},
@@ -227,30 +232,31 @@
       "articles": 4,
       "ae_tables": 2,
       "rejected_no_mapped_rows": 1,
-      "rejected_ambiguous_column": 1
+      "tables_accepted": 1,
+      "cells": 74
     }
   },
   "axis_cells": {
-    "gastrointestinal": 290,
-    "metabolic_endocrine": 227,
-    "constitutional": 179,
+    "gastrointestinal": 302,
+    "metabolic_endocrine": 230,
+    "constitutional": 190,
     "ocular": 43,
     "hepatic": 155,
-    "haematologic": 330,
-    "dermatologic": 91,
-    "pulmonary": 52,
+    "haematologic": 357,
+    "dermatologic": 100,
+    "pulmonary": 58,
     "musculoskeletal": 46,
-    "neurologic": 95,
+    "neurologic": 98,
     "infectious_immune": 29,
     "renal": 26,
-    "cardiovascular": 18
+    "cardiovascular": 21
   },
   "cells_by_denominator_source": {
     "inferred_corroborated": 393,
-    "header": 1188
+    "header": 1262
   },
   "cells_by_attribution_gate": {
-    "title": 1581
+    "title": 1655
   },
   "unmapped_rows": {
     "Treatment regimen": 6,
@@ -412,6 +418,8 @@
     "Treatment-related death": 1,
     "Dose‐limiting toxicity": 1,
     "TRSAE": 1,
+    "Palmar–plantar erythrodysesthesia syndrome": 1,
+    "Infusion‐related reaction": 1,
     "Serious TRAE": 1,
     "Median age (range), years": 1,
     "Age < 65 years": 1,
@@ -866,14 +874,6 @@
         "reason": "ambiguous_column: col 1 ('RNU+GC (n=48)'): combination arm (joined by '+'): 'RNU+GC'; col 2 ('RNU+ADC+ICI (n=53)'): combination arm (joined by '+'): 'RNU+ADC'"
       },
       {
-        "pmcid": "13392588",
-        "agent": "vobramitamab_duocarmazine",
-        "journal": "Cancer",
-        "table": "TABLE 4",
-        "caption": "TRAEs of all grades occurring in ≥10% of patients: Safety population (N = 143).",
-        "reason": "ambiguous_column: col 1 ('Dose escalation + cohort expansion (N = '): combination arm (joined by '+'): 'escalation + cohort'"
-      },
-      {
         "pmcid": "8645742",
         "agent": "depatuxizumab_mafodotin",
         "journal": "Cancer Science",
@@ -886,7 +886,7 @@
   "rejected_counts": {
     "no_usable_column": 29,
     "no_mapped_rows": 15,
-    "ambiguous_column": 6
+    "ambiguous_column": 5
   },
   "trials": {
     "n_groups": 10,

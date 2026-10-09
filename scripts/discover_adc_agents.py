@@ -66,9 +66,26 @@ PAYLOAD_STEMS = (
     "tesirine", "talirine", "duocarmazine", "ozogamicin", "nogamicin", "arihecan",
     # Everything else
     "pasudotox", "sudotox", "sunirine", "ecteribulin", "rilsodotin", "clezutoclax",
-    "sarotalocan", "doxorubicin", "paclitaxel", "zotiramab",
+    "sarotalocan", "zotiramab",
 )
 
+# Stems that look like the others and are not usable. `doxorubicin` and `paclitaxel` are
+# free-drug names, not payload stems coined for a conjugate, so "<antibody> <stem>" matches
+# co-administration with the punctuation lost: a deep search returned "trastuzumab
+# doxorubicin" and "bevacizumab paclitaxel", neither of which is an ADC. There is a real
+# milatuzumab doxorubicin, but the false-positive rate makes the stem cost more than it
+# finds. Kept as a record so neither is added back.
+REJECTED_STEMS = {
+    "doxorubicin": "free-drug name; matches co-administration phrasing",
+    "paclitaxel": "free-drug name; matches co-administration phrasing",
+}
+
+# Two artefacts to expect in the output rather than be surprised by. A name can be a
+# misspelling of a real agent -- measured at 0.43% of ADC-naming titles, 5 of 1,158 -- and
+# a name can be two strings joined where a title's punctuation was lost, which produced
+# "cancertrastuzumab deruxtecan". Both are cheap to spot by eye against the registry and
+# neither is worth a fuzzy matcher.
+#
 # An antibody stem followed by a payload stem. The antibody stems are the WHO suffixes,
 # including the -tamab/-tumab forms the newer bispecifics use.
 NAME = re.compile(

@@ -848,3 +848,36 @@ agents:
       "a duocarmycin-based, humanized antibody-drug conjugate (ADC) targeting B7-H3". Shares
       its target with ifinatamab deruxtecan, giving a second same-target, different-payload
       contrast.
+  naratuximab_emtansine:
+    inn: naratuximab emtansine
+    brand: null
+    aliases: [naratuximab emtansine, naratuximab, IMGN529, IMGN-529, Debio 1562]
+    target: CD37
+    target_label: CD37
+    payload: DM1
+    payload_family: maytansinoid
+    mechanism: tubulin
+    linker_type: SMCC
+    linker_cleavable: false
+    linker_cleavage: none_lysosomal_catabolism
+    conjugation: lysine
+    dar: null
+    dar_source: null
+    dar_note: No DAR figure in the fetched corpus.
+    isotype: IgG1
+    fc_engineering: none
+    bystander: false
+    first_us_approval: null
+    conventional_adc: true
+    curation_source: PMC11699082
+    curation_note: >-
+      "the anti-CD37 humanized immunoglobulin G1 monoclonal antibody K7153A conjugated to
+      the maytansinoid Mertansine (microtubulin inhibitor) (DM1)". The linker is not
+      curated from that sentence but from the INN: the stem `emtansine` denotes the
+      DM1-MCC conjugate, as in ado-trastuzumab emtansine, so SMCC and non-cleavable are
+      definitional rather than inferred -- and the same reasoning gives bystander false,
+      since a non-cleavable maytansinoid releases only the charged lysine adduct.
+
+      Recovered only through its code name. An INN-only search returned papers with no
+      usable adverse-event table; searching IMGN529 alongside the INN found four, one of
+      which carries an extractable table.

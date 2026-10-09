@@ -577,3 +577,33 @@ def test_a_hyphen_joined_combination_regimen_is_caught() -> None:
         assert "atezo" in a.reason
     # And the monotherapy column of the same trial is still ours.
     assert attribute_column("Polatuzumab vedotin (n = 50)", 2, 50, pola, {}).kind == "agent"
+
+
+def test_a_plus_between_study_design_words_is_not_a_combination() -> None:
+    """A false positive in the structural combination rule, and an expensive one.
+
+    "Dose escalation + cohort expansion (N = 29)" was read as a combination arm and threw
+    away vobramitamab duocarmazine's only extractable table -- the one agent that would
+    have taken the dna_alkyl mechanism from one agent to two. Study design is not
+    treatment, and the rule now says so.
+
+    The reach that made the rule worth having has to survive the fix: "Pola + BR" is still
+    a combination, because "BR" is a regimen abbreviation no enumerated list had and that
+    is exactly what the structural rule exists to catch."""
+    vobra = {"vobramitamab", "vobramitamab duocarmazine", "MGC018"}
+    pola = {"polatuzumab", "polatuzumab vedotin", "pola"}
+
+    for header in [
+        "Dose escalation + cohort expansion (N = 29)",
+        "Dose expansion + safety run-in (n = 40)",
+        "Phase 1 + phase 2 (n = 50)",
+    ]:
+        a = attribute_column(header, 1, 29, vobra, {})
+        assert "combination" not in a.reason, f"{header!r} -> {a.reason}"
+
+    for header, aliases in [
+        ("Pola + BR (N = 35) All grades", pola),
+        ("ADC + XYZ-123 (n = 40)", vobra),
+    ]:
+        a = attribute_column(header, 1, 35, aliases, {})
+        assert a.kind == "ambiguous" and "+" in a.reason, f"{header!r} -> {a.reason}"

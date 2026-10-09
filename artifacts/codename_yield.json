@@ -1,0 +1,207 @@
+{
+  "provenance": {
+    "revision": "d0c12e5c51052efd9f5abe3d5257c256efbadee4",
+    "dirty": true,
+    "snapshot": null,
+    "script": "measure_table_yield.py",
+    "written_utc": "2026-10-09T02:55:08+00:00",
+    "inputs": {
+      "xml_listing": "sha256:59eb686f283c603f59f86f6a8954af79d95336d158cb0669f2ddf9216fad766b"
+    }
+  },
+  "agents": {
+    "sought": [
+      "cetuximab_sarotalocan",
+      "coltuximab_ravtansine",
+      "glembatumumab_vedotin",
+      "indatuximab_ravtansine",
+      "losatuxizumab_vedotin",
+      "mecbotamab_vedotin",
+      "naratuximab_emtansine",
+      "ozuriftamab_vedotin",
+      "vobramitamab_duocarmazine",
+      "zilovertamab_vedotin"
+    ],
+    "recovered": [
+      "naratuximab_emtansine",
+      "vobramitamab_duocarmazine"
+    ],
+    "lost_to_image_only": [
+      "coltuximab_ravtansine"
+    ],
+    "no_ae_table_found": [
+      "indatuximab_ravtansine",
+      "losatuxizumab_vedotin",
+      "mecbotamab_vedotin",
+      "ozuriftamab_vedotin",
+      "zilovertamab_vedotin"
+    ],
+    "per_agent": {
+      "cetuximab_sarotalocan": {
+        "articles": 2,
+        "ae_tables": 1,
+        "ae_counts_no_denominator": 1
+      },
+      "coltuximab_ravtansine": {
+        "articles": 2,
+        "ae_tables": 2,
+        "ae_image_only": 2
+      },
+      "glembatumumab_vedotin": {
+        "articles": 3,
+        "ae_tables": 4
+      },
+      "indatuximab_ravtansine": {
+        "articles": 2
+      },
+      "losatuxizumab_vedotin": {
+        "articles": 1
+      },
+      "mecbotamab_vedotin": {
+        "articles": 1
+      },
+      "naratuximab_emtansine": {
+        "articles": 4,
+        "ae_tables": 2,
+        "ae_usable": 1,
+        "usable_cells": 39
+      },
+      "ozuriftamab_vedotin": {
+        "articles": 1
+      },
+      "vobramitamab_duocarmazine": {
+        "articles": 4,
+        "ae_tables": 2,
+        "ae_usable": 2,
+        "usable_cells": 268
+      },
+      "zilovertamab_vedotin": {
+        "articles": 6
+      }
+    },
+    "journals_per_agent": {
+      "cetuximab_sarotalocan": {
+        "International Journal of Clinical Oncology": 1
+      },
+      "coltuximab_ravtansine": {
+        "Haematologica": 2
+      },
+      "glembatumumab_vedotin": {
+        "Cancers": 2,
+        "NPJ Breast Cancer": 1,
+        "JTO Clinical and Research Reports": 1
+      },
+      "naratuximab_emtansine": {
+        "Investigational New Drugs": 2
+      },
+      "vobramitamab_duocarmazine": {
+        "Cancer": 2
+      }
+    }
+  },
+  "totals": {
+    "articles": 26,
+    "tables": 46,
+    "ae_tables": 11,
+    "ae_usable": 3,
+    "usable_cells": 307,
+    "ae_image_only": 2,
+    "ae_no_rate_cells": 5,
+    "ae_no_parseable_rate_format": 5,
+    "ae_counts_no_denominator": 1
+  },
+  "arithmetic": {
+    "cells_checked": 307,
+    "cells_passed": 307,
+    "pass_rate": 1.0,
+    "plan_claimed_pass_rate": 0.868,
+    "median_delta_pp": 0.02307692307692477
+  },
+  "by_journal": {
+    "Antibody Therapeutics": {
+      "articles": 1
+    },
+    "Blood Advances": {
+      "articles": 1,
+      "tables": 2
+    },
+    "Cancer": {
+      "articles": 1,
+      "tables": 5,
+      "ae_tables": 2,
+      "ae_usable": 2
+    },
+    "Cancer Research Communications": {
+      "articles": 1,
+      "tables": 4
+    },
+    "Cancers": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 2
+    },
+    "Cell Death & Disease": {
+      "articles": 1,
+      "tables": 1
+    },
+    "Clinical Cancer Research": {
+      "articles": 2,
+      "tables": 1
+    },
+    "Haematologica": {
+      "articles": 2,
+      "tables": 4,
+      "ae_tables": 2,
+      "ae_image_only": 2
+    },
+    "HemaSphere": {
+      "articles": 4,
+      "tables": 2
+    },
+    "International Journal of Clinical Oncology": {
+      "articles": 1,
+      "tables": 4,
+      "ae_tables": 1
+    },
+    "Investigational New Drugs": {
+      "articles": 1,
+      "tables": 5,
+      "ae_tables": 2,
+      "ae_usable": 1
+    },
+    "JTO Clinical and Research Reports": {
+      "articles": 1,
+      "tables": 2,
+      "ae_tables": 1
+    },
+    "Journal for Immunotherapy of Cancer": {
+      "articles": 1
+    },
+    "Journal of Hematology & Oncology": {
+      "articles": 2
+    },
+    "Journal of Pharmaceutical Health Care and Sciences": {
+      "articles": 1,
+      "tables": 2
+    },
+    "Leukemia": {
+      "articles": 1
+    },
+    "NPJ Breast Cancer": {
+      "articles": 1,
+      "tables": 5,
+      "ae_tables": 1
+    },
+    "Neoplasia (New York, N.Y.)": {
+      "articles": 1
+    },
+    "Pharmaceutical Research": {
+      "articles": 1,
+      "tables": 6
+    },
+    "mAbs": {
+      "articles": 1
+    }
+  },
+  "unparseable": []
+}

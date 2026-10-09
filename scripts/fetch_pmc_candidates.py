@@ -147,11 +147,24 @@ def main() -> int:
     args = ap.parse_args()
 
     if args.inns:
-        reg = {
-            inn.strip().lower().replace(" ", "_"): {"inn": inn.strip(), "aliases": []}
-            for inn in args.inns.split(",") if inn.strip()
-        }
-        print(f"discovery mode: {len(reg)} INNs, registry not consulted", flush=True)
+        # "INN" or "INN=CODE1|CODE2". A code name is accepted only when it was harvested
+        # from a paper whose *title* already named the INN, so the paper itself verifies
+        # the mapping -- the alternative is recalling it, and a wrong code name
+        # misattributes every row of an agent, which is the 75% false-positive trap.
+        reg = {}
+        for spec in args.inns.split(","):
+            spec = spec.strip()
+            if not spec:
+                continue
+            inn, _, codes = spec.partition("=")
+            inn = inn.strip()
+            reg[inn.lower().replace(" ", "_")] = {
+                "inn": inn,
+                "aliases": [c.strip() for c in codes.split("|") if c.strip()],
+            }
+        n_coded = sum(1 for v in reg.values() if v["aliases"])
+        print(f"discovery mode: {len(reg)} INNs ({n_coded} with code names), "
+              "registry not consulted", flush=True)
     else:
         reg = yaml.safe_load(
             (CONF / "adc_registry.yaml").read_text(encoding="utf-8")
@@ -174,7 +187,14 @@ def main() -> int:
         if not spec or not spec.get("inn"):
             continue
         names = aliases_for(spec)
-        term = f'"{spec["inn"]}"[Title/Abstract] AND open access[filter]'
+        # Code names are searched alongside the INN, because an agent's earliest and
+        # often only primary reports use the code name and never the INN -- which is how
+        # ten agents came back with no usable table from an INN-only search.
+        handles = [spec["inn"]] + [
+            a for a in (spec.get("aliases") or []) if any(ch.isdigit() for ch in a)
+        ]
+        joined = " OR ".join(f'"{h}"[Title/Abstract]' for h in handles)
+        term = f"({joined}) AND open access[filter]"
         ids = esearch(term, args.retmax)
         time.sleep(NCBI_DELAY)
         funnel["esearch_hits"] += len(ids)

@@ -1,13 +1,13 @@
 {
   "provenance": {
-    "revision": "d84a85f65b9d8e16759051fbb0c1e6e839164c43",
+    "revision": "d0c12e5c51052efd9f5abe3d5257c256efbadee4",
     "dirty": true,
     "snapshot": null,
     "script": "merge_literature_corpus.py",
-    "written_utc": "2026-10-09T02:36:58+00:00",
+    "written_utc": "2026-10-09T02:59:08+00:00",
     "inputs": {
-      "cells": "sha256:b1beec4d86c2ec8b4cace971bdf2690c687f12a23a038378ad2483898d8963d1",
-      "registry": "sha256:3930094cdf56258ab93157b6b89a31c9dc9a698658e99fd83671b0c26d1c08c7"
+      "cells": "sha256:ecb023f2e88e9d2005e591325c0ca895d0ffce1b9a73ba25b8dc223830647aae",
+      "registry": "sha256:9e11dcd6bcae92cebe312d98523f356607ebc81455b445ab33f0c687bbdb1980"
     }
   },
   "filters": {
@@ -15,13 +15,13 @@
     "include_registry_overlap": false,
     "explicit_threshold_only": false
   },
-  "n_cells_in": 6362,
-  "n_cells_kept": 4723,
-  "n_arms": 408,
-  "n_observations": 1974,
-  "n_agents": 27,
+  "n_cells_in": 6535,
+  "n_cells_kept": 4910,
+  "n_arms": 414,
+  "n_observations": 2015,
+  "n_agents": 29,
   "n_trials": 23,
-  "n_arms_threshold_upper_bound": 341,
+  "n_arms_threshold_upper_bound": 347,
   "arms_per_agent": {
     "sacituzumab_govitecan": 48,
     "trastuzumab_emtansine": 41,
@@ -48,10 +48,12 @@
     "cofetuzumab_pelidotin": 4,
     "serclutamab_talirine": 4,
     "sacituzumab_tirumotecan": 3,
+    "vobramitamab_duocarmazine": 3,
+    "naratuximab_emtansine": 3,
     "tusamitamab_ravtansine": 2,
     "pivekimab_sunirine": 2
   },
   "arms_per_gate": {
-    "title": 408
+    "title": 414
   }
 }

@@ -110,8 +110,19 @@ def combination_pattern(conf: pathlib.Path = COMBINATION_CONF) -> re.Pattern[str
 # ("Grade 3+"), a receptor status ("HR+", "HER2+"), and a line count ("2+ prior lines").
 COMBINATION_PLUS = re.compile(
     r"(?<![A-Za-z0-9])(?![\s]*(?:grade|mg|kg|prior|line|year|mo\b|month))"
-    r"[A-Za-z][A-Za-z0-9-]{1,}\s*\+\s*"
-    r"(?!\s*(?:\d|grade|mg/kg))[A-Za-z][A-Za-z0-9-]{1,}",
+    r"(?P<left>[A-Za-z][A-Za-z0-9-]{1,})\s*\+\s*"
+    r"(?!\s*(?:\d|grade|mg/kg))(?P<right>[A-Za-z][A-Za-z0-9-]{1,})",
+    re.I,
+)
+# Words that are study design, not treatment. A "+" between two of these is not a
+# combination, and the first version of the structural rule did not know that: it read
+# "Dose escalation + cohort expansion (N = 29)" as a combination arm and threw away
+# vobramitamab duocarmazine's only extractable table -- the one agent that would have
+# taken the dna_alkyl mechanism from one agent to two.
+DESIGN_WORD = re.compile(
+    r"^(?:dose|doses|escalation|expansion|cohort|cohorts|phase|part|parts|arm|arms"
+    r"|group|groups|stage|extension|enrol+ment|run-?in|safety|efficacy|overall|total"
+    r"|combined|pooled|population|set|analysis|evaluable|all|any)$",
     re.I,
 )
 RECEPTOR_STATUS = re.compile(
@@ -392,7 +403,10 @@ def attribute_column(
     combo = combination_pattern().search(header)
     if combo is None and not RECEPTOR_STATUS.search(header):
         structural = COMBINATION_PLUS.search(header)
-        if structural:
+        if structural and not (
+            DESIGN_WORD.match(structural.group("left"))
+            or DESIGN_WORD.match(structural.group("right"))
+        ):
             return ColumnAttribution(
                 col, header, "ambiguous",
                 f"combination arm (joined by '+'): {structural.group(0)!r}", denominator,
