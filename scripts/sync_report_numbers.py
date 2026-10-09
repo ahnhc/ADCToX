@@ -48,6 +48,9 @@ HFN_END = "<!-- /generated: hard-flag-necessity -->"
 LCE_BEGIN = "<!-- generated: label-change -->"
 LCE_END = "<!-- /generated: label-change -->"
 
+RR_BEGIN = "<!-- generated: rank-resolution -->"
+RR_END = "<!-- /generated: rank-resolution -->"
+
 PAC_BEGIN = "<!-- generated: payload-compression -->"
 PAC_END = "<!-- /generated: payload-compression -->"
 
@@ -355,6 +358,45 @@ def _marker_indent(text: str, marker: str) -> str:
     """
     m = re.search(r"^([ \t]*)" + re.escape(marker), text, re.M)
     return m.group(1) if m else ""
+
+
+def build_rank_resolution_block(doc: dict) -> str | None:
+    """The table behind "it does not rank", from artifacts/rank_resolution.json.
+
+    Hand-typed until now, and two of its six rows were stale: the median leader probability
+    had moved from 0.522 to 0.500, and the count of queries where every displayed candidate
+    sits in one tie group had fallen from 192 to 48 when the display order inside a group
+    became the patient's weighting. The row that matters did not move -- 0 of 192 queries
+    produce a decisive leader -- which is exactly why the stale neighbours went unnoticed.
+    """
+    s_ = doc.get("summary") or {}
+    need = ("queries", "decisive_leader", "all_shown_in_one_group",
+            "head_group_size_median", "head_share_of_passing_median", "lead_p_median",
+            "distinct_targets", "distinct_profiles")
+    if not all(k in s_ for k in need):
+        return None
+    n = s_["queries"]
+    lines = [
+        RR_BEGIN, "",
+        "| quantity | value |",
+        "|---|---|",
+        f"| queries swept ({s_['distinct_targets']} targets x "
+        f"{s_['distinct_profiles']} comorbidity profiles) | {n} |",
+        f"| **queries with a decisive leader** | **{s_['decisive_leader']}** |",
+        "| queries where every displayed candidate is in one tie group | "
+        f"{s_['all_shown_in_one_group']} |",
+        f"| median tie-group size at the head | {s_['head_group_size_median']} |",
+        "| median share of constraint-passing candidates in that group | "
+        f"{s_['head_share_of_passing_median'] * 100:.0f}% |",
+        f"| median P(leader beats runner-up) | {s_['lead_p_median']:.4f} |",
+        "",
+        f"**{s_['lead_p_median']:.4f}** against the 0.800 required, and it barely moves "
+        "across targets or profiles. This is not a threshold set too strictly: a leader "
+        f"that wins {s_['lead_p_median'] * 100:.0f}% of paired draws is a coin flip.",
+        "",
+        RR_END,
+    ]
+    return "\n".join(lines)
 
 
 def build_payload_compression_block(doc: dict, indent: str = "    ") -> str | None:
@@ -862,6 +904,8 @@ def main() -> int:
     # at all.
     ap.add_argument("--report", type=Path, nargs="+",
                     default=[Path("report/findings.md"), Path("docs/MODEL_CARD.md")])
+    ap.add_argument("--rank-resolution", type=Path,
+                    default=Path("artifacts/rank_resolution.json"))
     ap.add_argument("--payload-compression", type=Path,
                     default=Path("artifacts/payload_axis_compression.json"))
     ap.add_argument("--source-axis", type=Path,
@@ -914,6 +958,12 @@ def main() -> int:
     )
     # These two are built per document rather than once, because their indent comes from
     # where the marker sits in that document.
+    rr_block = (
+        build_rank_resolution_block(
+            json.loads(args.rank_resolution.read_text(encoding="utf-8"))
+        )
+        if args.rank_resolution.exists() else None
+    )
     pac_doc = (
         json.loads(args.payload_compression.read_text(encoding="utf-8"))
         if args.payload_compression.exists() else None
@@ -939,6 +989,7 @@ def main() -> int:
     fd_pattern = re.compile(re.escape(FD_BEGIN) + r".*?" + re.escape(FD_END), re.S)
     sax_pattern = re.compile(re.escape(SAX_BEGIN) + r".*?" + re.escape(SAX_END), re.S)
     pac_pattern = re.compile(re.escape(PAC_BEGIN) + r".*?" + re.escape(PAC_END), re.S)
+    rr_pattern = re.compile(re.escape(RR_BEGIN) + r".*?" + re.escape(RR_END), re.S)
     rc = 0
     for doc in args.report:
         text = doc.read_text(encoding="utf-8")
@@ -952,6 +1003,16 @@ def main() -> int:
                     text = replaced
                     doc.write_text(text, encoding="utf-8")
                     print(f"{doc}: results table regenerated")
+        if rr_block and rr_pattern.search(text):
+            replaced = rr_pattern.sub(lambda _: rr_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: rank-resolution block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: rank-resolution block regenerated")
         pac_block = (
             build_payload_compression_block(
                 pac_doc, indent=_marker_indent(text, PAC_BEGIN)

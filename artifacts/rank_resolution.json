@@ -3,15 +3,16 @@
   "queries": 192,
   "decisive_leader": 0,
   "decisive_share": 0.0,
-  "all_shown_in_one_group": 144,
-  "one_set_share": 0.75,
-  "head_group_size_median": 51.5,
-  "head_group_size_max": 66.0,
-  "head_share_of_passing_median": 0.7297297297297297,
-  "lead_p_median": 0.522,
+  "all_shown_in_one_group": 48,
+  "one_set_share": 0.25,
+  "head_group_size_median": 45.5,
+  "head_group_size_max": 64.0,
+  "head_share_of_passing_median": 0.6586368977673325,
+  "lead_p_median": 0.5,
   "queries_where_target_changes_a_band": 49,
   "distinct_proposals": 4,
   "distinct_profiles": 8,
+  "distinct_targets": 24,
   "profiles_whose_proposal_is_lambda_sensitive": 6,
   "at_risk_share_of_objective_at_lam_2_median": 0.1875
  },
@@ -21,28 +22,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -56,6 +42,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -65,18 +66,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -98,8 +94,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -109,23 +110,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -144,6 +135,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -152,24 +153,14 @@
    "target": "ALCAM",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -188,6 +179,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -197,7 +198,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -205,14 +206,19 @@
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -226,12 +232,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -240,28 +241,28 @@
    "target": "ALCAM",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -269,13 +270,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -285,23 +286,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -321,6 +312,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -329,7 +330,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -373,28 +374,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -408,6 +394,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -417,18 +418,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -450,8 +446,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -461,23 +462,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -496,6 +487,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -504,24 +505,14 @@
    "target": "AXL",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -540,6 +531,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -549,7 +550,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -557,14 +558,19 @@
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -578,12 +584,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -592,28 +593,28 @@
    "target": "AXL",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -621,13 +622,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -637,23 +638,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -673,6 +664,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -681,7 +682,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -725,28 +726,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -761,6 +747,21 @@
      "MMAE",
      "vc_PABC",
      2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -769,19 +770,14 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
      "DM1",
      "hydrazone_AcBut_disulfide",
      2.0
@@ -802,8 +798,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -813,23 +814,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -848,6 +839,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -856,24 +857,14 @@
    "target": "CD19",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -892,6 +883,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -901,7 +902,139 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
+   "head_group_size": 44,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": true,
+   "bands_from_target_expression": 4,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CD19",
+   "profile": "haematologic",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 6,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CD19",
+   "profile": "dermatologic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CD19",
+   "profile": "four organs",
+   "n_enumerated": 106,
+   "n_passed": 44,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -941,164 +1074,17 @@
    ]
   },
   {
-   "target": "CD19",
-   "profile": "haematologic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": false,
-   "bands_from_target_expression": 6,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "CD19",
-   "profile": "dermatologic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "CD19",
-   "profile": "four organs",
-   "n_enumerated": 106,
-   "n_passed": 44,
-   "n_pareto_front": 10,
-   "head_group_size": 44,
-   "lead_p": 0.5,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 5,
-   "slots_shown": [
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
-     2.0
-    ]
-   ]
-  },
-  {
    "target": "CD22",
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1112,6 +1098,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1121,18 +1122,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1154,8 +1150,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1165,23 +1166,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1200,6 +1191,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1208,24 +1209,14 @@
    "target": "CD22",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1244,6 +1235,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1253,22 +1254,27 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": true,
-   "bands_from_target_expression": 11,
+   "bands_from_target_expression": 10,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -1282,12 +1288,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -1296,28 +1297,28 @@
    "target": "CD22",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -1325,13 +1326,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -1341,23 +1342,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1377,6 +1368,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -1385,7 +1386,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -1429,28 +1430,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1464,6 +1450,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1473,18 +1474,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1506,8 +1502,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1517,23 +1518,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1552,6 +1543,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1560,24 +1561,14 @@
    "target": "CD276",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1596,6 +1587,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1605,7 +1606,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -1613,14 +1614,19 @@
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -1634,12 +1640,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -1648,28 +1649,28 @@
    "target": "CD276",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -1677,13 +1678,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -1693,23 +1694,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1729,6 +1720,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -1737,7 +1738,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -1781,28 +1782,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1816,6 +1802,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1825,18 +1826,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1858,8 +1854,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1869,23 +1870,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1904,6 +1895,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1912,24 +1913,14 @@
    "target": "CD33",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -1948,6 +1939,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -1957,7 +1958,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -1965,14 +1966,19 @@
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -1986,12 +1992,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -2000,28 +2001,28 @@
    "target": "CD33",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -2029,13 +2030,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -2045,23 +2046,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2081,6 +2072,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -2089,7 +2090,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -2133,28 +2134,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2168,6 +2154,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -2177,18 +2178,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2210,8 +2206,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -2221,23 +2222,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2256,6 +2247,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -2264,24 +2265,14 @@
    "target": "CD37",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2300,6 +2291,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -2309,7 +2310,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -2317,14 +2318,19 @@
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -2338,12 +2344,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -2352,28 +2353,28 @@
    "target": "CD37",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -2381,13 +2382,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -2397,23 +2398,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2433,6 +2424,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -2441,7 +2442,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -2485,28 +2486,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2520,6 +2506,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -2529,18 +2530,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2562,8 +2558,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -2573,23 +2574,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2608,6 +2599,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -2616,24 +2617,14 @@
    "target": "CD79B",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2652,6 +2643,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -2661,7 +2662,139 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
+   "head_group_size": 44,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": true,
+   "bands_from_target_expression": 4,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CD79B",
+   "profile": "haematologic",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 6,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CD79B",
+   "profile": "dermatologic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CD79B",
+   "profile": "four organs",
+   "n_enumerated": 106,
+   "n_passed": 44,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -2701,22 +2834,17 @@
    ]
   },
   {
-   "target": "CD79B",
-   "profile": "haematologic",
+   "target": "CEACAM5",
+   "profile": "none",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
-   "bands_from_target_expression": 6,
+   "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2738,34 +2866,249 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
   },
   {
-   "target": "CD79B",
-   "profile": "dermatologic",
+   "target": "CEACAM5",
+   "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "hepatic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "cardiac",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "neuro + ocular",
+   "n_enumerated": 106,
+   "n_passed": 44,
+   "n_pareto_front": 12,
+   "head_group_size": 44,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": true,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
      2.0
     ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "haematologic",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "dermatologic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -2785,19 +3128,1041 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
   {
-   "target": "CD79B",
+   "target": "CEACAM5",
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": true,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ],
+    [
+     "DM4",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "DLL3",
+   "profile": "none",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "DLL3",
+   "profile": "renal + pulmonary",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "DLL3",
+   "profile": "hepatic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "DLL3",
+   "profile": "cardiac",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "DLL3",
+   "profile": "neuro + ocular",
+   "n_enumerated": 106,
+   "n_passed": 44,
+   "n_pareto_front": 12,
+   "head_group_size": 44,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": true,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "DLL3",
+   "profile": "haematologic",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "DLL3",
+   "profile": "dermatologic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "DLL3",
+   "profile": "four organs",
+   "n_enumerated": 106,
+   "n_passed": 44,
+   "n_pareto_front": 12,
+   "head_group_size": 44,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": true,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ],
+    [
+     "DM4",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "EGFR",
+   "profile": "none",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "EGFR",
+   "profile": "renal + pulmonary",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "EGFR",
+   "profile": "hepatic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "EGFR",
+   "profile": "cardiac",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "EGFR",
+   "profile": "neuro + ocular",
+   "n_enumerated": 106,
+   "n_passed": 44,
+   "n_pareto_front": 12,
+   "head_group_size": 44,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": true,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "EGFR",
+   "profile": "haematologic",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "EGFR",
+   "profile": "dermatologic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "EGFR",
+   "profile": "four organs",
+   "n_enumerated": 106,
+   "n_passed": 44,
+   "n_pareto_front": 12,
+   "head_group_size": 44,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": true,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ],
+    [
+     "DM4",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB2",
+   "profile": "none",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB2",
+   "profile": "renal + pulmonary",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB2",
+   "profile": "hepatic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB2",
+   "profile": "cardiac",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 6,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB2",
+   "profile": "neuro + ocular",
+   "n_enumerated": 106,
+   "n_passed": 44,
+   "n_pareto_front": 12,
+   "head_group_size": 44,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": true,
+   "bands_from_target_expression": 4,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB2",
+   "profile": "haematologic",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB2",
+   "profile": "dermatologic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 5,
    "slots_shown": [
     [
@@ -2821,1377 +4186,13 @@
      2.0
     ],
     [
-     "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "CEACAM5",
-   "profile": "none",
-   "n_enumerated": 106,
-   "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
      "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
      "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "CEACAM5",
-   "profile": "renal + pulmonary",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": false,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "CEACAM5",
-   "profile": "hepatic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "CEACAM5",
-   "profile": "cardiac",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "CEACAM5",
-   "profile": "neuro + ocular",
-   "n_enumerated": 106,
-   "n_passed": 44,
-   "n_pareto_front": 10,
-   "head_group_size": 44,
-   "lead_p": 0.5,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
      2.0
     ],
     [
      "DM1",
      "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "CEACAM5",
-   "profile": "haematologic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": false,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "CEACAM5",
-   "profile": "dermatologic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "CEACAM5",
-   "profile": "four organs",
-   "n_enumerated": 106,
-   "n_passed": 44,
-   "n_pareto_front": 10,
-   "head_group_size": 44,
-   "lead_p": 0.5,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "DLL3",
-   "profile": "none",
-   "n_enumerated": 106,
-   "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "DLL3",
-   "profile": "renal + pulmonary",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": false,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "DLL3",
-   "profile": "hepatic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "DLL3",
-   "profile": "cardiac",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "DLL3",
-   "profile": "neuro + ocular",
-   "n_enumerated": 106,
-   "n_passed": 44,
-   "n_pareto_front": 10,
-   "head_group_size": 44,
-   "lead_p": 0.5,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "DLL3",
-   "profile": "haematologic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": false,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "DLL3",
-   "profile": "dermatologic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "DLL3",
-   "profile": "four organs",
-   "n_enumerated": 106,
-   "n_passed": 44,
-   "n_pareto_front": 10,
-   "head_group_size": 44,
-   "lead_p": 0.5,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "EGFR",
-   "profile": "none",
-   "n_enumerated": 106,
-   "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "EGFR",
-   "profile": "renal + pulmonary",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": false,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "EGFR",
-   "profile": "hepatic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "EGFR",
-   "profile": "cardiac",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "EGFR",
-   "profile": "neuro + ocular",
-   "n_enumerated": 106,
-   "n_passed": 44,
-   "n_pareto_front": 10,
-   "head_group_size": 44,
-   "lead_p": 0.5,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "EGFR",
-   "profile": "haematologic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": false,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "EGFR",
-   "profile": "dermatologic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "EGFR",
-   "profile": "four organs",
-   "n_enumerated": 106,
-   "n_passed": 44,
-   "n_pareto_front": 10,
-   "head_group_size": 44,
-   "lead_p": 0.5,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB2",
-   "profile": "none",
-   "n_enumerated": 106,
-   "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB2",
-   "profile": "renal + pulmonary",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": false,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB2",
-   "profile": "hepatic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB2",
-   "profile": "cardiac",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 6,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB2",
-   "profile": "neuro + ocular",
-   "n_enumerated": 106,
-   "n_passed": 44,
-   "n_pareto_front": 10,
-   "head_group_size": 44,
-   "lead_p": 0.5,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 5,
-   "slots_shown": [
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB2",
-   "profile": "haematologic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": false,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB2",
-   "profile": "dermatologic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 5,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
      2.0
     ]
    ]
@@ -4201,227 +4202,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
-   "head_group_size": 44,
-   "lead_p": 0.5,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 11,
-   "slots_shown": [
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB3",
-   "profile": "none",
-   "n_enumerated": 106,
-   "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB3",
-   "profile": "renal + pulmonary",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": false,
-   "bands_from_target_expression": 6,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB3",
-   "profile": "hepatic",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB3",
-   "profile": "cardiac",
-   "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
-   "lead_is_decisive": false,
-   "shown_all_one_group": true,
-   "bands_from_target_expression": 0,
-   "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
-    [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
-    ],
-    [
-     "MMAE",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "MMAF",
-     "mc",
-     2.0
-    ]
-   ]
-  },
-  {
-   "target": "ERBB3",
-   "profile": "neuro + ocular",
-   "n_enumerated": 106,
-   "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -4462,21 +4243,16 @@
   },
   {
    "target": "ERBB3",
-   "profile": "haematologic",
+   "profile": "none",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -4498,8 +4274,233 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB3",
+   "profile": "renal + pulmonary",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 6,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB3",
+   "profile": "hepatic",
+   "n_enumerated": 106,
+   "n_passed": 74,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB3",
+   "profile": "cardiac",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM4",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB3",
+   "profile": "neuro + ocular",
+   "n_enumerated": 106,
+   "n_passed": 44,
+   "n_pareto_front": 12,
+   "head_group_size": 44,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": true,
+   "bands_from_target_expression": 10,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ]
+   ]
+  },
+  {
+   "target": "ERBB3",
+   "profile": "haematologic",
+   "n_enumerated": 106,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
+   "lead_is_decisive": false,
+   "shown_all_one_group": false,
+   "bands_from_target_expression": 0,
+   "slots_shown": [
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
+     "DM4",
+     "SMCC",
+     3.5
+    ],
+    [
+     "MMAE",
+     "vc_PABC",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -4509,23 +4510,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 5,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -4545,6 +4536,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -4553,7 +4554,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -4597,28 +4598,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -4632,6 +4618,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -4641,18 +4642,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -4674,8 +4670,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -4685,23 +4686,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -4720,6 +4711,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -4728,24 +4729,14 @@
    "target": "F3",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -4764,6 +4755,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -4773,22 +4774,27 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": true,
-   "bands_from_target_expression": 5,
+   "bands_from_target_expression": 4,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -4802,12 +4808,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -4816,28 +4817,28 @@
    "target": "F3",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -4845,13 +4846,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -4861,23 +4862,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -4897,6 +4888,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -4905,7 +4906,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -4949,28 +4950,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -4985,6 +4971,21 @@
      "MMAE",
      "vc_PABC",
      2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -4993,19 +4994,14 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 12,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
      "DM1",
      "hydrazone_AcBut_disulfide",
      2.0
@@ -5026,8 +5022,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5037,23 +5038,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5072,6 +5063,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5080,24 +5081,14 @@
    "target": "FOLR1",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5116,6 +5107,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5125,7 +5126,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -5133,14 +5134,19 @@
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -5154,12 +5160,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -5168,28 +5169,28 @@
    "target": "FOLR1",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -5197,13 +5198,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -5213,23 +5214,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5249,6 +5240,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -5257,7 +5258,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -5301,28 +5302,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5336,6 +5322,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5345,18 +5346,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5378,8 +5374,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5389,23 +5390,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5424,6 +5415,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5432,24 +5433,14 @@
    "target": "IL2RA",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5468,6 +5459,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5477,7 +5478,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -5485,14 +5486,19 @@
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -5506,12 +5512,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -5520,28 +5521,28 @@
    "target": "IL2RA",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -5549,13 +5550,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -5565,23 +5566,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5601,6 +5592,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -5609,7 +5610,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -5653,28 +5654,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5688,6 +5674,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5697,18 +5698,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5730,8 +5726,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5741,23 +5742,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5776,6 +5767,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5784,24 +5785,14 @@
    "target": "IL3RA",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5820,6 +5811,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -5829,7 +5830,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -5837,14 +5838,19 @@
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -5858,12 +5864,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -5872,28 +5873,28 @@
    "target": "IL3RA",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -5901,13 +5902,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -5917,23 +5918,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -5953,6 +5944,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -5961,7 +5962,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -6005,28 +6006,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6041,6 +6027,21 @@
      "MMAE",
      "vc_PABC",
      2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -6049,19 +6050,14 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 12,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
      "DM1",
      "hydrazone_AcBut_disulfide",
      2.0
@@ -6082,8 +6078,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6093,23 +6094,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6128,6 +6119,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6136,24 +6137,14 @@
    "target": "MET",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6172,6 +6163,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6181,22 +6182,27 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": true,
-   "bands_from_target_expression": 5,
+   "bands_from_target_expression": 4,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -6210,12 +6216,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -6224,28 +6225,28 @@
    "target": "MET",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -6253,13 +6254,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -6269,23 +6270,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6305,6 +6296,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -6313,7 +6314,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -6357,28 +6358,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6392,6 +6378,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6401,18 +6402,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6434,8 +6430,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6445,23 +6446,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6480,6 +6471,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6488,24 +6489,14 @@
    "target": "MSLN",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6524,6 +6515,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6533,7 +6534,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -6541,14 +6542,19 @@
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -6562,12 +6568,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -6576,28 +6577,28 @@
    "target": "MSLN",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -6605,13 +6606,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -6621,23 +6622,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6657,6 +6648,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -6665,7 +6666,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -6709,28 +6710,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6744,6 +6730,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6753,18 +6754,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6786,8 +6782,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6797,23 +6798,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6832,6 +6823,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6840,24 +6841,14 @@
    "target": "NECTIN4",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -6876,6 +6867,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -6885,22 +6886,27 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": true,
-   "bands_from_target_expression": 5,
+   "bands_from_target_expression": 4,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -6914,12 +6920,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -6928,28 +6929,28 @@
    "target": "NECTIN4",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -6957,13 +6958,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -6973,23 +6974,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 5,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7009,6 +7000,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -7017,7 +7018,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -7061,28 +7062,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7096,6 +7082,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7105,18 +7106,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7138,8 +7134,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7149,23 +7150,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7184,6 +7175,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7192,24 +7193,14 @@
    "target": "PTK7",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7228,6 +7219,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7237,7 +7238,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -7245,14 +7246,19 @@
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -7266,12 +7272,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -7280,28 +7281,28 @@
    "target": "PTK7",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -7309,13 +7310,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -7325,23 +7326,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7361,6 +7352,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -7369,7 +7370,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -7413,28 +7414,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7448,6 +7434,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7457,18 +7458,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7490,8 +7486,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7501,23 +7502,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7536,6 +7527,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7544,24 +7545,14 @@
    "target": "TACSTD2",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7580,6 +7571,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7589,22 +7590,27 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": true,
-   "bands_from_target_expression": 5,
+   "bands_from_target_expression": 4,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -7618,12 +7624,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -7632,28 +7633,28 @@
    "target": "TACSTD2",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -7661,13 +7662,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -7677,23 +7678,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 5,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7713,6 +7704,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -7721,7 +7722,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -7765,28 +7766,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7800,6 +7786,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7809,18 +7810,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7842,8 +7838,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7853,23 +7854,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7888,6 +7879,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7896,24 +7897,14 @@
    "target": "TNFRSF17",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -7932,6 +7923,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -7941,22 +7942,27 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": true,
-   "bands_from_target_expression": 5,
+   "bands_from_target_expression": 4,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -7970,12 +7976,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -7984,28 +7985,28 @@
    "target": "TNFRSF17",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -8013,13 +8014,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -8029,23 +8030,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -8065,6 +8056,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -8073,7 +8074,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -8117,28 +8118,13 @@
    "profile": "none",
    "n_enumerated": 106,
    "n_passed": 92,
-   "n_pareto_front": 26,
-   "head_group_size": 66,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "seco-DUBA",
-     "vc_PABC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -8152,6 +8138,21 @@
     [
      "MMAE",
      "vc_PABC",
+     2.0
+    ],
+    [
+     "MMAF",
+     "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -8161,18 +8162,13 @@
    "profile": "renal + pulmonary",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 40,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -8194,8 +8190,13 @@
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -8205,23 +8206,13 @@
    "profile": "hepatic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -8240,6 +8231,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -8248,24 +8249,14 @@
    "target": "TNFRSF8",
    "profile": "cardiac",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 45,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -8284,6 +8275,16 @@
     [
      "MMAF",
      "mc",
+     2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
      2.0
     ]
    ]
@@ -8293,7 +8294,7 @@
    "profile": "neuro + ocular",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -8301,14 +8302,19 @@
    "bands_from_target_expression": 6,
    "slots_shown": [
     [
-     "DM1",
-     "hydrazone_AcBut_disulfide",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
+     "DM1",
+     "SMCC",
+     3.5
+    ],
+    [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -8322,12 +8328,7 @@
     ],
     [
      "DM1",
-     "sulfo_SPDB",
-     2.0
-    ],
-    [
-     "DM4",
-     "sulfo_SPDB",
+     "hydrazone_AcBut_disulfide",
      2.0
     ]
    ]
@@ -8336,28 +8337,28 @@
    "target": "TNFRSF8",
    "profile": "haematologic",
    "n_enumerated": 106,
-   "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 49,
-   "lead_p": 0.522,
+   "n_passed": 92,
+   "n_pareto_front": 15,
+   "head_group_size": 64,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
    "shown_all_one_group": false,
    "bands_from_target_expression": 6,
    "slots_shown": [
     [
-     "DGN549",
-     "SMCC",
+     "MMAF",
+     "mc",
      2.0
     ],
     [
      "DM1",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "DM4",
-     "hydrazone_AcBut_disulfide",
-     2.0
+     "SMCC",
+     3.5
     ],
     [
      "MMAE",
@@ -8365,13 +8366,13 @@
      2.0
     ],
     [
-     "MMAF",
-     "mc",
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
      2.0
     ],
     [
-     "SG3199",
-     "val_ala_PABC_PEG8",
+     "MMAF",
+     "mc",
      2.0
     ]
    ]
@@ -8381,23 +8382,13 @@
    "profile": "dermatologic",
    "n_enumerated": 106,
    "n_passed": 74,
-   "n_pareto_front": 14,
-   "head_group_size": 54,
-   "lead_p": 0.522,
+   "n_pareto_front": 15,
+   "head_group_size": 46,
+   "lead_p": 0.5,
    "lead_is_decisive": false,
-   "shown_all_one_group": true,
+   "shown_all_one_group": false,
    "bands_from_target_expression": 0,
    "slots_shown": [
-    [
-     "DGN549",
-     "SMCC",
-     2.0
-    ],
-    [
-     "SG3199",
-     "val_ala_PABC_PEG8",
-     2.0
-    ],
     [
      "DM1",
      "hydrazone_AcBut_disulfide",
@@ -8417,6 +8408,16 @@
      "MMAF",
      "mc",
      2.0
+    ],
+    [
+     "DGN549",
+     "hydrazone_AcBut_disulfide",
+     2.0
+    ],
+    [
+     "DM1",
+     "sulfo_SPDB",
+     2.0
     ]
    ]
   },
@@ -8425,7 +8426,7 @@
    "profile": "four organs",
    "n_enumerated": 106,
    "n_passed": 44,
-   "n_pareto_front": 10,
+   "n_pareto_front": 12,
    "head_group_size": 44,
    "lead_p": 0.5,
    "lead_is_decisive": false,
@@ -8470,8 +8471,8 @@
    "profile": "renal + pulmonary",
    "n_at_risk_axes": 2,
    "at_risk_share_of_objective_at_lam_2": 0.3333333333333333,
-   "lambda_at_first_change": 5.0,
-   "distinct_proposals_over_lambda": 5
+   "lambda_at_first_change": 20.0,
+   "distinct_proposals_over_lambda": 4
   },
   {
    "profile": "hepatic",
@@ -8485,28 +8486,28 @@
    "n_at_risk_axes": 1,
    "at_risk_share_of_objective_at_lam_2": 0.1875,
    "lambda_at_first_change": 5.0,
-   "distinct_proposals_over_lambda": 3
+   "distinct_proposals_over_lambda": 4
   },
   {
    "profile": "neuro + ocular",
    "n_at_risk_axes": 2,
    "at_risk_share_of_objective_at_lam_2": 0.3333333333333333,
-   "lambda_at_first_change": 30.0,
-   "distinct_proposals_over_lambda": 2
+   "lambda_at_first_change": 5.0,
+   "distinct_proposals_over_lambda": 4
   },
   {
    "profile": "haematologic",
    "n_at_risk_axes": 1,
    "at_risk_share_of_objective_at_lam_2": 0.1875,
-   "lambda_at_first_change": 8.0,
+   "lambda_at_first_change": 3.0,
    "distinct_proposals_over_lambda": 5
   },
   {
    "profile": "dermatologic",
    "n_at_risk_axes": 1,
    "at_risk_share_of_objective_at_lam_2": 0.1875,
-   "lambda_at_first_change": 20.0,
-   "distinct_proposals_over_lambda": 4
+   "lambda_at_first_change": 8.0,
+   "distinct_proposals_over_lambda": 7
   },
   {
    "profile": "four organs",
@@ -8517,14 +8518,14 @@
   }
  ],
  "provenance": {
-  "revision": "e7b3896b86ce0667c5b607e0b64910ecb07ce2ad",
+  "revision": "583f4694d2510cb81c04994320da4935e95aeac8",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "rank_resolution.py",
-  "written_utc": "2026-10-09T07:03:22+00:00",
+  "written_utc": "2026-10-09T14:40:24+00:00",
   "inputs": {
-   "posterior": "sha256:88933386489fa0c6642d91c6634070fa1df2b648a24c628c56deb1cbaf7eff9f",
-   "serious_posterior": "sha256:cd64389be24f888f9c9daefb714a30ad8e824cd141ce3ac41b215c6c487df1e8"
+   "posterior": "sha256:6d1d0d583d5066e2c54d78fbfde41a88d9ce91741312bc1ddd14f24f2f02bbf7",
+   "serious_posterior": "sha256:a5aaf8c0b0cd2188e16f0464ff4b929f5d61b5e274bc6ed71166990cbd8739ea"
   }
  }
 }

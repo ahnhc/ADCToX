@@ -142,6 +142,10 @@ def main() -> None:
             {json.dumps(r["slots_shown"]) for r in rows}
         ),
         "distinct_profiles": len(PROFILES),
+        # Recorded so the report's table does not have to assume it. A generated table that
+        # falls back to a literal when a field is absent has a hand-typed number in it
+        # again, just one that is harder to find.
+        "distinct_targets": len({r["target"] for r in rows}),
     }
 
     print(f"  {'target':10s} {'profile':18s} {'passed':>7s} {'front':>6s} "

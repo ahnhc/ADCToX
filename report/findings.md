@@ -59,20 +59,25 @@ only flags -- and returns
 the non-dominated set with a rate and a 90% credible interval on each of fourteen organ
 systems, plus the ordinal position of each rate among the registry's chemistries. **It does
 not rank the set**: across 24 targets by 8 profiles the leader beats the runner-up on a
-median 52% of paired posterior draws against the 80% this interface requires, so 0 of 192
-queries produce a ranked list. The rates come from a hierarchical binomial model that
-**does not beat a base-rate baseline on any of six evaluations**. The ordinal comparison
-inherits a per-axis across-agent correlation of **+0.17** after the reporting conditions are
-removed from both series, which is this report's one positive result and is weak. The
-comorbidity profile enters as a displayed weight rather than a logit, changes the proposed
-set of options for six of the seven profiles that name a condition, somewhere in the
-weighting constant's range, and changes nothing at all for the seventh -- a patient with
-four comorbidities.
+median **50.0%** of paired posterior draws against the 80% this interface requires, so
+**0 of 192** queries produce a ranked list. The rates come from a hierarchical binomial
+model that **does not beat a base-rate baseline on any of six evaluations**, and the
+across-agent organ correlation that was this report's one positive result **did not survive
+the corpus rebuild**: it is now rho **+0.0073** at permutation **p = 0.4595**, so there is
+no positive result here to inherit. The comorbidity profile enters as a displayed weight
+rather than a logit; it changes the proposed set of options for six of the seven profiles
+that name a condition, somewhere in the weighting constant's range, and changes nothing at
+all for the seventh -- a patient with four comorbidities. Which design leads is responsive
+to the profile in about a quarter of cases and only ever between two designs, because
+**inside a payload mechanism the model cannot tell one payload from another on organ
+profile**: its ordering of the four tubulin payloads is uncorrelated with the observed one,
+and MMAF corneal toxicity, among the best-established organ effects in the field, is
+specifically outside what it can say.
 
 So what the system is for is the filtering, the intervals, and the refusals: it will not
 rank what it cannot separate, will not price a payload mechanism it has never seen, and
 will not offer a design whose parts have no clinical precedent. Sections 3 and 4 are where
-the prediction fails, section 9 is the thirty-three measured negative results, and section
+the prediction fails, section 9 is the forty-three measured negative results, and section
 10 is what this must not be used for.
 
 ## 2. The corpus, and the number that governs everything
@@ -785,18 +790,22 @@ printed only where the leader beats the runner-up on 80% of paired posterior dra
 otherwise the head of the list is an unordered set. Whether that threshold ever fires was
 never measured. It fires everywhere.
 
+<!-- generated: rank-resolution -->
+
 | quantity | value |
 |---|---|
 | queries swept (24 targets x 8 comorbidity profiles) | 192 |
 | **queries with a decisive leader** | **0** |
-| queries where every displayed candidate is in one tie group | 192 |
-| median tie-group size at the head | 51.5 |
-| median share of constraint-passing candidates in that group | 73% |
-| median P(leader beats runner-up) | 0.522 |
+| queries where every displayed candidate is in one tie group | 48 |
+| median tie-group size at the head | 45.5 |
+| median share of constraint-passing candidates in that group | 66% |
+| median P(leader beats runner-up) | 0.5000 |
 
-0.522 against the 0.800 required, and it barely moves across targets or profiles. This is
-not a threshold set too strictly: a leader that wins 52% of paired draws is a coin flip, and
-the number is what it is because the posterior intervals on a single axis span roughly 0.17
+**0.5000** against the 0.800 required, and it barely moves across targets or profiles. This is not a threshold set too strictly: a leader that wins 50% of paired draws is a coin flip.
+
+<!-- /generated: rank-resolution -->
+
+The number is what it is because the posterior intervals on a single axis span roughly 0.17
 to 0.28 while the designs differ by a few hundredths. **The ranked list of candidates this
 product was specified to emit does not exist.** What exists is a filtered, non-dominated set
 with per-axis intervals, and the interface now says so in those words rather than printing
@@ -2049,7 +2058,13 @@ neurologic.
     the patient's own. O2 itself stays unweighted on the Pareto front, where its job is to
     stop a design that spreads risk thinly across fourteen axes from winning, and that job
     is about the design rather than the patient. After the change the profile reaches the
-    proposal in **52 of 200** pairs.
+    proposal in **52 of 200** pairs, and the displayed set stops collapsing into a single
+    tie group: the sweep in section 5c went from **192 of 192** queries where every shown
+    candidate shared one group to **48**, so the cards now carry different rank numbers
+    rather than six copies of the same one. The ranking itself did not improve and could
+    not have -- 0 of 192 queries have a decisive leader before and after, and the median
+    leader probability is 0.5000 -- which is the distinction: what changed is which
+    stated preference the display obeys, not what the model knows.
 
     Two things remain true and are the honest limit. There are still only **two distinct
     proposals** across fifty profiles per target, and the behaviour that does appear is
