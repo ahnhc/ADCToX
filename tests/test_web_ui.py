@@ -196,3 +196,89 @@ console.log("ok");
             capture_output=True, text=True,
         )
     assert result.returncode == 0, result.stderr[-800:] + result.stdout[-400:]
+
+
+def test_the_whole_result_block_renders_a_live_response() -> None:
+    """The assembly, not just its pieces.
+
+    `axisRow` and `card` were the only testable units, because the rest of the result block
+    was a template literal inside the submit handler. So the assembly, the ranking-evidence
+    rows and the why-not block were covered by nothing, and a renamed field in any of them
+    would have reached the page as `undefined`. `renderResult` is extracted for this.
+
+    Run over several profiles, because the blocks are conditional: a profile with no
+    comorbidity produces no at-risk axis, a dermatologic one against a skin-expressed target
+    is the only case that fires the target-expression flag, and the why-not block exists only
+    when a constraint actually excluded the lowest-risk candidate.
+    """
+    import json
+    import tempfile
+
+    if not shutil.which("node"):
+        pytest.skip("node not available")
+
+    from fastapi.testclient import TestClient
+
+    from adctox.api.main import app
+
+    client = TestClient(app)
+    queries = [
+        ({"conditions": []}, "TACSTD2"),
+        ({"conditions": ["ckd_stage_4_5", "interstitial_lung_disease"]}, "ERBB2"),
+        ({"conditions": ["severe_psoriasis", "prior_sjs_ten"]}, "NECTIN4"),
+        ({"conditions": ["cirrhosis", "ckd_stage_4_5", "heart_failure", "dry_eye"]},
+         "CD33"),
+    ]
+    payloads = []
+    for profile, target in queries:
+        r = client.post("/api/v1/propose", json={
+            "comorbidity_profile": profile, "target_antigen": target, "top_k": 4,
+        })
+        if r.status_code == 503:
+            pytest.skip("posterior artefact absent")
+        assert r.status_code == 200, r.text[:300]
+        payloads.append(r.json())
+
+    harness = r"""
+const fs = require("fs"), vm = require("vm");
+const js = fs.readFileSync(process.argv[2], "utf8")
+  .match(/<script[^>]*>([\s\S]*?)<\/script>/)[1];
+const ctx = { document: { getElementById: () => null, querySelectorAll: () => [],
+  addEventListener() {} }, window: {},
+  fetch: () => Promise.resolve({ json: () => ({}) }), console };
+vm.createContext(ctx);
+try { vm.runInContext(js, ctx); } catch (e) {}
+const payloads = JSON.parse(fs.readFileSync(process.argv[3], "utf8"));
+let rendered = 0;
+for (const d of payloads) {
+  const html = ctx.renderResult(d);
+  if (!html || html.length < 400) {
+    console.error("result block is empty or trivial"); process.exit(1);
+  }
+  // `undefined` and `NaN` reaching the markup is a renamed or absent field.
+  const bad = html.match(/undefined|NaN/g);
+  if (bad) { console.error("markup contains " + bad.join(", ")); process.exit(1); }
+  // The blocks that must always be there.
+  for (const want of ["passed the constraints", "organ_axis" in d ? "" : "axis",
+                      "Pareto front"]) {
+    if (want && !html.includes(want)) {
+      console.error("missing " + JSON.stringify(want)); process.exit(1);
+    }
+  }
+  rendered++;
+}
+if (rendered !== payloads.length) { console.error("not all rendered"); process.exit(1); }
+console.log("rendered " + rendered);
+"""
+    with tempfile.TemporaryDirectory() as tmp:
+        script = Path(tmp) / "whole.js"
+        data = Path(tmp) / "payloads.json"
+        script.write_text(harness, encoding="utf-8")
+        data.write_text(json.dumps(payloads), encoding="utf-8")
+        result = subprocess.run(
+            ["node", str(script),
+             str(Path(__file__).resolve().parents[1] / "web" / "index.html"),
+             str(data)],
+            capture_output=True, text=True,
+        )
+    assert result.returncode == 0, result.stderr[-900:] + result.stdout[-300:]

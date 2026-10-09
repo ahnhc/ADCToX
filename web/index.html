@@ -300,6 +300,33 @@ anything.">#${cm.rank} of ${cm.n}</span>`
 // them": spanning the payloads on the Pareto front can reach past the head group, and the
 // candidate it reaches is one the model *can* say is worse. Showing it is informative;
 // presenting it as an equal would not be.
+// The whole result block, extracted from the submit handler so it can be rendered against
+// a live response in a test. Inline in the handler, the only testable pieces were `axisRow`
+// and `card` -- so the assembly, the evidence rows and the why-not block were covered by
+// nothing, and a renamed field there would have shown up as `undefined` on the page.
+function renderResult(d) {
+  const wn = d.why_not_the_obvious_one;
+  const n = headSetSize(d);
+  return `
+      <p class="note">${d.n_enumerated} chemically valid, individually precedented designs
+        enumerated; ${d.n_passed_constraints} passed the constraints.
+        ${d.ranking_caveat || ""}</p>
+      ${headNote(d)}
+      ${d.ranking_evidence ? `<div class="card"><h3>What this ordering is worth</h3>
+        <p class="note">${d.ranking_evidence.summary}</p>
+        ${d.ranking_evidence.evaluations.map(evalRow).join("")}
+        </div>` : ""}
+      ${d.candidates.map((c, i) => card(c, i,
+          { oneSet: i < n, total: n, outOf: d.n_passed_constraints })).join("")}
+      ${wn ? `<div class="card"><h3>Why not the obvious one</h3>
+        <div class="slots">${wn.design.payload} &middot; ${wn.design.linker}
+          &middot; DAR ${wn.design.dar}</div>
+        <p class="note">Lowest-risk candidate a constraint excluded.
+          ${wn.would_have_ranked_first ? "It would have ranked first."
+            : "It would not have placed in any case."}</p>
+        ${wn.excluded_by.map(f => `<p class="warn">${f}</p>`).join("")}</div>` : ""}`;
+}
+
 function headSetSize(d) {
   const cs = d.candidates || [];
   if (!cs.length || (cs[0].group_size || 1) < 2) return 0;
@@ -408,26 +435,7 @@ async function run() {
     const d = await r.json();
     if (!r.ok) { st.textContent = `error: ${d.detail || r.status}`; return; }
     st.textContent = "";
-    const wn = d.why_not_the_obvious_one;
-    document.getElementById("out").innerHTML = `
-      <p class="note">${d.n_enumerated} chemically valid, individually precedented designs
-        enumerated; ${d.n_passed_constraints} passed the constraints.
-        ${d.ranking_caveat || ""}</p>
-      ${headNote(d)}
-      ${d.ranking_evidence ? `<div class="card"><h3>What this ordering is worth</h3>
-        <p class="note">${d.ranking_evidence.summary}</p>
-        ${d.ranking_evidence.evaluations.map(evalRow).join("")}
-        </div>` : ""}
-      ${(() => { const n = headSetSize(d); return d.candidates.map((c, i) =>
-          card(c, i, { oneSet: i < n, total: n,
-                       outOf: d.n_passed_constraints })).join(""); })()}
-      ${wn ? `<div class="card"><h3>Why not the obvious one</h3>
-        <div class="slots">${wn.design.payload} &middot; ${wn.design.linker}
-          &middot; DAR ${wn.design.dar}</div>
-        <p class="note">Lowest-risk candidate a constraint excluded.
-          ${wn.would_have_ranked_first ? "It would have ranked first."
-            : "It would not have placed in any case."}</p>
-        ${wn.excluded_by.map(f => `<p class="warn">${f}</p>`).join("")}</div>` : ""}`;
+    document.getElementById("out").innerHTML = renderResult(d);
   } catch (e) {
     st.textContent = `error: ${e.message}`;
   } finally { btn.disabled = false; }
