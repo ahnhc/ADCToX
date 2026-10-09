@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 39 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 40 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -1835,22 +1835,26 @@ neurologic.
     reporting practice rather than correcting censoring, and it is sampled only where the
     indicator varies -- on the registry corpus it would draw its prior and then appear in
     the seed-agreement table as though the fit had estimated it.
-34. **And the source gap is not one number but fourteen, larger than the mechanism effect
-    it was confounding.** Measured on the 12 agents with arms from *both* sources, which
-    holds the chemistry fixed so the difference is reporting rather than drug, the
-    literature-minus-registry gap runs from **-1.16 logit on cardiovascular to +1.79 on
-    ocular**: heterogeneity **Q = 80 on 11 degrees of freedom, p = 1.5e-12**, between-axis
-    standard deviation **0.72** -- larger than `tau_mech`, the mechanism-by-axis scale the
-    model exists to estimate. It is fitted as a centred axis vector; a smoke fit puts its
-    scale above the mechanism scale and clear of zero, and the production figures go in this
-    paragraph when the full fit lands rather than being quoted from 150 draws.
+34. **And the source gap is not one number but one per organ axis, larger than the
+    mechanism effect it was confounding.** It is fitted as a centred axis vector. Every
+    figure below is generated, because the hand-typed version of this paragraph went stale
+    when the corpus grew: it quoted 12 agents where there are now 17, named cardiovascular
+    as the widest negative axis where it is now pulmonary, and listed otologic and renal
+    among the measured gaps when neither has enough literature observations to be measured
+    at all. See negative result 38.
 
-    The direction is what makes it a specification error rather than noise: papers
-    report more than the registry on ocular and dermatologic, which are the signature
-    findings those papers are about, and less on otologic -- papers essentially never
-    mention hearing -- and on musculoskeletal, renal and cardiovascular, which are
-    background and fall below a "most common adverse events" cut.
-    With a single shift the axis-varying remainder had nowhere to go but `mech_axis`,
+    <!-- generated: source-axis -->
+
+    Measured on the **17 agents with arms from *both* sources**, which holds the chemistry fixed so the difference is reporting rather than drug, the literature-minus-registry gap runs from **-0.5940 logit on pulmonary** to **+1.8547 on ocular**: heterogeneity **Q = 73.4 on 11 degrees of freedom, p = 2.71e-11**, between-axis standard deviation **0.6280** -- larger than `tau_mech` at 0.5424, the mechanism-by-axis scale the model exists to estimate.
+
+    The direction is what makes it a specification error rather than noise. Papers report **more** than the registry on ocular (+1.8547), dermatologic (+0.6298) -- the signature findings those papers are about -- and **less** on pulmonary (-0.5940), gastrointestinal (-0.4445), hepatic (-0.3596), which are background and fall below a "most common adverse events" cut.
+
+    12 of the 14 axes are compared. An axis needs at least 6 observations on each side to enter. The ones that do not qualify are the same finding in miniature: otologic has 0 literature observations against 96 registry, renal has 5 literature observations against 177 registry -- short on the literature side in every case, which is the reporting selection the included axes quantify, not a gap in the measurement.
+
+    <!-- /generated: source-axis -->
+
+    That pattern is why a single source shift does not suffice. With one shift the
+    axis-varying remainder had nowhere to go but `mech_axis`,
     because literature arms are not spread evenly across mechanisms. One consequence is an
     improvement: `mu_axis` now means the registry's reporting level rather than a blend of
     the two, so a prediction for a new design is on the more completely reported scale.
@@ -1979,8 +1983,45 @@ neurologic.
     `3.7318` was rejected until the ratio was written to one. The guard worked as designed
     the moment the claim was stated precisely enough to check, having been invisible to it
     for the whole project.
+
+    The defect was in the test suite too. A test asserting the source gap is axis-specific
+    pinned `min_axis == "cardiovascular"` -- the identity of the most negative axis on the
+    corpus it was written against -- and the rebuild moved that axis to pulmonary. The
+    assertion was a transcript of one corpus wearing the clothes of a claim, and it failed
+    for being right about the wrong thing. It now checks what the finding says: the extremes
+    are a signature organ and a background organ, ocular is positive, and the background
+    organs are negative as a set.
+
     **A reproducibility guard that checks numbers and not prose leaves the interpretation as
     the one hand-typed thing in the document, and interpretation is what a reader takes away.**
+
+39. **The source term cannot separate reporting from chemistry for half the expanded
+    corpus, because half its agents exist in only one source.** Result 33 added `b_source`
+    and result 34 made it an axis vector, so the reporting gap would stop being charged to
+    the design. Both are necessary and neither is sufficient, and the reason is an
+    identifiability condition nobody had checked: a source term can only be told apart from
+    an agent's random intercept where that agent has arms on *both* sides of the indicator.
+    Measured on the 32-agent corpus, **15 of 32 agents have arms from one source only** --
+    10 literature-only, 5 registry-only -- and **5 of those rest on a single arm**. For
+    those agents `u_agent` and the source indicator are perfectly collinear: whatever the
+    reporting gap is for that drug is indistinguishable from the drug. Only **17 of 32**
+    can tell the two apart.
+
+    The consequence is specific rather than general. `sigma_agent` on that corpus is not a
+    between-agent scale, it is a between-agent scale and a reporting gap added together,
+    and it is therefore not comparable to the same parameter on the registry corpus where
+    every agent is a registry agent and the indicator does not vary at all. Comparing them
+    across the ablation -- which is what an ablation table invites a reader to do -- would
+    be comparing two different quantities with one name.
+
+    This was missed because `make source-confounding` audited *coefficients*: correlation
+    with the source and variance within it, for every arm-level covariate, which is where
+    results 33 and 35 came from. `u_agent` is a random effect and was outside the audit,
+    which left the largest confound of the three outside the instrument built to find
+    confounds. The audit now asks the same separability question of the agent level and
+    records the per-agent source counts, so the condition is checked on whatever corpus is
+    fitted rather than assumed. **An audit covers what its author thought of as a term, and
+    a random effect does not look like a term.**
 
 ## 9b. The clean-clone check, run for the first time
 

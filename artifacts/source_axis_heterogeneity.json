@@ -1,108 +1,123 @@
 {
  "summary": {
-  "agents_with_both_sources": 12,
+  "agents_with_both_sources": 17,
+  "min_per_side": 6,
+  "axes_excluded": [
+   {
+    "axis": "renal",
+    "n_literature": 5,
+    "n_registry": 177,
+    "short_side": "literature"
+   },
+   {
+    "axis": "otologic",
+    "n_literature": 0,
+    "n_registry": 96,
+    "short_side": "literature"
+   }
+  ],
   "axes_compared": 12,
-  "weighted_mean_gap": -0.232,
-  "gap_sd": 0.758,
-  "between_axis_sd": 0.716,
-  "heterogeneity_q": 80.0,
+  "weighted_mean_gap": -0.131,
+  "gap_sd": 0.671,
+  "between_axis_sd": 0.628,
+  "heterogeneity_q": 73.4,
   "df": 11,
-  "p": 1.5053617958595173e-12,
-  "min_axis": "cardiovascular",
+  "p": 2.7051318824257235e-11,
+  "min_axis": "pulmonary",
   "max_axis": "ocular"
  },
  "axes": [
   {
    "axis": "haematologic",
-   "n_literature": 106,
-   "n_registry": 253,
-   "gap_logit": -0.0306031502832379,
-   "se": 0.1515090698658454
+   "n_literature": 114,
+   "n_registry": 265,
+   "gap_logit": -0.016894233005965598,
+   "se": 0.14532841302323993
   },
   {
    "axis": "hepatic",
-   "n_literature": 32,
-   "n_registry": 236,
-   "gap_logit": -0.38804515918270854,
-   "se": 0.19278627798559914
+   "n_literature": 38,
+   "n_registry": 247,
+   "gap_logit": -0.35957029044704947,
+   "se": 0.17131940673767404
   },
   {
    "axis": "cardiovascular",
-   "n_literature": 11,
-   "n_registry": 217,
-   "gap_logit": -1.1580448762580997,
-   "se": 0.37241879802466815
+   "n_literature": 16,
+   "n_registry": 228,
+   "gap_logit": -0.35365815282671553,
+   "se": 0.40374040200271577
   },
   {
    "axis": "pulmonary",
-   "n_literature": 35,
-   "n_registry": 245,
-   "gap_logit": -0.9236889328237332,
-   "se": 0.19563854177497708
+   "n_literature": 41,
+   "n_registry": 257,
+   "gap_logit": -0.5939899691739754,
+   "se": 0.2055234457618167
   },
   {
    "axis": "gastrointestinal",
-   "n_literature": 92,
-   "n_registry": 246,
-   "gap_logit": -0.5082722627200059,
-   "se": 0.1739524682572561
+   "n_literature": 102,
+   "n_registry": 258,
+   "gap_logit": -0.444509806629997,
+   "se": 0.16032313388854608
   },
   {
    "axis": "neurologic",
-   "n_literature": 43,
-   "n_registry": 246,
-   "gap_logit": -0.2414923447639914,
-   "se": 0.1626757294473838
+   "n_literature": 50,
+   "n_registry": 258,
+   "gap_logit": -0.18485802094933246,
+   "se": 0.1457849834885363
   },
   {
    "axis": "ocular",
-   "n_literature": 25,
-   "n_registry": 184,
-   "gap_logit": 1.792542529859389,
-   "se": 0.37333704571779736
+   "n_literature": 29,
+   "n_registry": 193,
+   "gap_logit": 1.8546581226815066,
+   "se": 0.33694168912894273
   },
   {
    "axis": "dermatologic",
-   "n_literature": 52,
-   "n_registry": 243,
-   "gap_logit": 0.612627449175216,
-   "se": 0.17127390439876714
+   "n_literature": 59,
+   "n_registry": 255,
+   "gap_logit": 0.6297682411951511,
+   "se": 0.1571402805934166
   },
   {
    "axis": "metabolic_endocrine",
-   "n_literature": 52,
-   "n_registry": 247,
-   "gap_logit": -0.4621835014812603,
-   "se": 0.14730706841444197
+   "n_literature": 61,
+   "n_registry": 259,
+   "gap_logit": -0.3464655462165962,
+   "se": 0.1334544736484209
   },
   {
    "axis": "musculoskeletal",
-   "n_literature": 10,
-   "n_registry": 242,
-   "gap_logit": -0.24057927307775806,
-   "se": 0.4120337707067384
+   "n_literature": 11,
+   "n_registry": 254,
+   "gap_logit": -0.20039674308362398,
+   "se": 0.37350458960716515
   },
   {
    "axis": "infectious_immune",
-   "n_literature": 39,
-   "n_registry": 241,
-   "gap_logit": -0.31163170013210006,
-   "se": 0.22828564433011037
+   "n_literature": 42,
+   "n_registry": 256,
+   "gap_logit": -0.3237067191292362,
+   "se": 0.21557884676249445
   },
   {
    "axis": "constitutional",
-   "n_literature": 82,
-   "n_registry": 250,
-   "gap_logit": -0.2583116666402122,
-   "se": 0.1419806926107478
+   "n_literature": 93,
+   "n_registry": 262,
+   "gap_logit": -0.17000522124883344,
+   "se": 0.13053346452498257
   }
  ],
  "provenance": {
-  "revision": "cc9088a8ec5d0a9be4877bb3e0cf287247d2439f",
+  "revision": "56bf3b2abe4773b54338cdc9d04d20fbfa53dba8",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "source_axis_heterogeneity.py",
-  "written_utc": "2026-10-09T10:29:14+00:00",
+  "written_utc": "2026-10-09T13:52:55+00:00",
   "inputs": {}
  }
 }

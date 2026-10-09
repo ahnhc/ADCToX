@@ -73,11 +73,22 @@ def main() -> None:
     keep = np.isin(agent, both)
 
     rows = []
+    # An axis that cannot enter the comparison is not a gap in the measurement, it is the
+    # measurement in miniature: otologic is excluded because the literature side is empty,
+    # which is the same reporting selection the included axes quantify. So the exclusions
+    # are recorded with their counts rather than silently dropped.
+    excluded = []
     for a in axes:
         sel = keep & (axis == a)
         left = _logit(rate[sel & (lit == 1)])
         right = _logit(rate[sel & (lit == 0)])
         if len(left) < MIN_PER_SIDE or len(right) < MIN_PER_SIDE:
+            excluded.append({
+                "axis": a,
+                "n_literature": int(len(left)),
+                "n_registry": int(len(right)),
+                "short_side": "literature" if len(left) < MIN_PER_SIDE else "registry",
+            })
             continue
         se = float(np.sqrt(
             left.var(ddof=1) / len(left) + right.var(ddof=1) / len(right)
@@ -95,6 +106,8 @@ def main() -> None:
     excess = float(g.var(ddof=1) - (se**2).mean())
     summary = {
         "agents_with_both_sources": len(both),
+        "min_per_side": MIN_PER_SIDE,
+        "axes_excluded": excluded,
         "axes_compared": len(rows),
         "weighted_mean_gap": round(weighted, 3),
         "gap_sd": round(float(g.std(ddof=1)), 3),

@@ -48,6 +48,9 @@ HFN_END = "<!-- /generated: hard-flag-necessity -->"
 LCE_BEGIN = "<!-- generated: label-change -->"
 LCE_END = "<!-- /generated: label-change -->"
 
+SAX_BEGIN = "<!-- generated: source-axis -->"
+SAX_END = "<!-- /generated: source-axis -->"
+
 RES_BEGIN = "<!-- generated: results-table -->"
 RES_END = "<!-- /generated: results-table -->"
 
@@ -337,6 +340,95 @@ def _bootstrap_ci(values, n_boot: int = 2000, seed: int = 0):
     rng = np.random.default_rng(seed)
     means = [rng.choice(arr, size=len(arr), replace=True).mean() for _ in range(n_boot)]
     return (float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5)))
+
+
+def build_source_axis_block(doc: dict, metrics: dict, indent: str = "    ") -> str | None:
+    """Section 34's figures, which were hand-typed and went stale when the corpus grew.
+
+    Every number here moved when the expanded corpus gained five agents with arms from both
+    sources -- the comparison's denominator went from 12 agents to 17, the widest negative
+    axis changed from cardiovascular to pulmonary, and the between-axis scale fell from
+    0.716 to 0.628. The guard caught exactly one of those, because the others were stated to
+    two decimals and a two-decimal figure passes against 22,000 artefact values by accident.
+    See negative result 38.
+
+    The direction claim is derived too: which axes papers over-report relative to the
+    registry is a statement about signs, and signs are in the artefact.
+    """
+    summary = doc.get("summary") or {}
+    axes = doc.get("axes") or []
+    if not summary or not axes:
+        return None
+    ranked = sorted(axes, key=lambda r: -r["gap_logit"])
+    hi, lo = ranked[0], ranked[-1]
+    over = [r for r in ranked if r["gap_logit"] > 0]
+    under = [r for r in ranked if r["gap_logit"] <= 0]
+    tau_mech = (metrics.get("tau_mech") or {}).get("mean")
+
+    lines = [SAX_BEGIN, ""]
+    lines.append(
+        f"Measured on the **{summary['agents_with_both_sources']} agents with arms from "
+        "*both* sources**, which holds the chemistry fixed so the difference is reporting "
+        "rather than drug, the literature-minus-registry gap runs from "
+        f"**{lo['gap_logit']:+.4f} logit on {lo['axis']}** to "
+        f"**{hi['gap_logit']:+.4f} on {hi['axis']}**: heterogeneity "
+        f"**Q = {summary['heterogeneity_q']:.1f} on {summary['df']} degrees of freedom, "
+        f"p = {summary['p']:.3g}**, between-axis standard deviation "
+        f"**{summary['between_axis_sd']:.4f}**"
+        + (
+            f" -- larger than `tau_mech` at {tau_mech:.4f}, the mechanism-by-axis scale the "
+            "model exists to estimate."
+            if tau_mech and summary["between_axis_sd"] > tau_mech
+            else f" -- against `tau_mech` at {tau_mech:.4f}, the mechanism-by-axis scale the "
+                 "model exists to estimate, which it no longer exceeds."
+            if tau_mech
+            else "."
+        )
+    )
+    lines.append("")
+    lines.append(
+        "The direction is what makes it a specification error rather than noise. Papers "
+        "report **more** than the registry on "
+        + ", ".join(f"{r['axis']} ({r['gap_logit']:+.4f})" for r in over)
+        + " -- the signature findings those papers are about -- and **less** on "
+        + ", ".join(f"{r['axis']} ({r['gap_logit']:+.4f})" for r in under[-3:][::-1])
+        + ", which are background and fall below a \"most common adverse events\" cut."
+    )
+    n_cmp = summary.get("axes_compared")
+    excluded = summary.get("axes_excluded") or []
+    if n_cmp is not None:
+        lines.append("")
+        text = (
+            f"{n_cmp} of the {n_cmp + len(excluded)} axes are compared. An axis needs at "
+            f"least {summary.get('min_per_side', 6)} observations on each side to enter."
+        )
+        if excluded:
+            # Every exclusion so far has been short on the literature side, which makes the
+            # exclusions the same finding as the gaps. If one is ever short on the registry
+            # side instead, that sentence stops being true and the block must not say it.
+            lit_short = [r for r in excluded if r.get("short_side") == "literature"]
+            text += (
+                " The ones that do not qualify are the same finding in miniature: "
+                + ", ".join(
+                    f"{r['axis']} has {r['n_literature']} literature observations against "
+                    f"{r['n_registry']} registry"
+                    for r in sorted(excluded, key=lambda r: r["n_literature"])
+                )
+                + (
+                    " -- short on the literature side in every case, which is the reporting "
+                    "selection the included axes quantify, not a gap in the measurement."
+                    if len(lit_short) == len(excluded)
+                    else " -- and not all of them short on the literature side, so these "
+                         "are not all the same effect as the gaps above."
+                )
+            )
+        lines.append(text)
+    lines.append("")
+    lines.append(SAX_END)
+    # This block sits inside a numbered list item, so every line after the first carries the
+    # item's indent or markdown ends the list and renumbers what follows. The first line is
+    # left bare because the marker it replaces already has the indent in front of it.
+    return ("\n" + indent).join(lines).replace("\n" + indent + "\n", "\n\n")
 
 
 def build_results_block(metrics: dict, dose: dict | None) -> str | None:
@@ -679,6 +771,8 @@ def main() -> int:
     # at all.
     ap.add_argument("--report", type=Path, nargs="+",
                     default=[Path("report/findings.md"), Path("docs/MODEL_CARD.md")])
+    ap.add_argument("--source-axis", type=Path,
+                    default=Path("artifacts/source_axis_heterogeneity.json"))
     ap.add_argument("--check", action="store_true",
                     help="fail if the block is out of date instead of rewriting it")
     args = ap.parse_args()
@@ -725,6 +819,12 @@ def main() -> int:
         )
         if args.label_change.exists() else None
     )
+    sax_block = (
+        build_source_axis_block(
+            json.loads(args.source_axis.read_text(encoding="utf-8")), metrics
+        )
+        if args.source_axis.exists() else None
+    )
     cens_block = None
     if args.censoring.exists():
         cens_block = build_censoring_block(
@@ -740,6 +840,7 @@ def main() -> int:
     hfn_pattern = re.compile(re.escape(HFN_BEGIN) + r".*?" + re.escape(HFN_END), re.S)
     enr_pattern = re.compile(re.escape(ENR_BEGIN) + r".*?" + re.escape(ENR_END), re.S)
     fd_pattern = re.compile(re.escape(FD_BEGIN) + r".*?" + re.escape(FD_END), re.S)
+    sax_pattern = re.compile(re.escape(SAX_BEGIN) + r".*?" + re.escape(SAX_END), re.S)
     rc = 0
     for doc in args.report:
         text = doc.read_text(encoding="utf-8")
@@ -753,6 +854,16 @@ def main() -> int:
                     text = replaced
                     doc.write_text(text, encoding="utf-8")
                     print(f"{doc}: results table regenerated")
+        if sax_block and sax_pattern.search(text):
+            replaced = sax_pattern.sub(lambda _: sax_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: source-axis block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: source-axis block regenerated")
         if fd_block and fd_pattern.search(text):
             replaced = fd_pattern.sub(lambda _: fd_block, text)
             if replaced != text:

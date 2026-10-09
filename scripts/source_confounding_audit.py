@@ -111,6 +111,53 @@ def main() -> None:
             "addressed_by": ADDRESSED.get(name),
         })
 
+    # The audit above covers coefficients. `u_agent` is a random effect and was outside it,
+    # which left the largest confound in the expanded fit unexamined: where an agent's arms
+    # all come from one source, its random intercept and the source term are perfectly
+    # collinear, so `u_agent` absorbs the reporting gap and `sigma_agent` measures the two
+    # together. That is a separability question of exactly the kind this script exists to
+    # ask, so it is asked of the agent level too.
+    agent = np.array([data.agents[i] for i in data.arm_agent_idx])
+    agent_rows = []
+    for a in sorted(set(agent)):
+        n_lit = int(((agent == a) & (lit == 1)).sum())
+        n_reg = int(((agent == a) & (lit == 0)).sum())
+        agent_rows.append({
+            "agent": str(a),
+            "registry_arms": n_reg,
+            "literature_arms": n_lit,
+            "source": ("both" if n_lit and n_reg
+                       else "literature_only" if n_lit else "registry_only"),
+        })
+    single = [r for r in agent_rows if r["source"] != "both"]
+    agent_level = {
+        "n_agents": len(agent_rows),
+        "n_both_sources": len(agent_rows) - len(single),
+        "n_literature_only": sum(1 for r in single if r["source"] == "literature_only"),
+        "n_registry_only": sum(1 for r in single if r["source"] == "registry_only"),
+        # One arm and one source is the worst case: the agent intercept is estimated from a
+        # single selected table and cannot be told from that table's reporting cut at all.
+        "n_single_source_single_arm": sum(
+            1 for r in single if r["registry_arms"] + r["literature_arms"] == 1
+        ),
+        "agents": agent_rows,
+        "reading": None,  # filled below, so the conclusion follows the counts
+    }
+    frac = len(single) / len(agent_rows) if agent_rows else 0.0
+    agent_level["fraction_single_source"] = frac
+    agent_level["reading"] = (
+        "Every agent has arms from one source only, so `u_agent` and the source term are "
+        "collinear throughout and `sigma_agent` cannot be read as a between-agent scale."
+        if frac == 1.0 else
+        "No agent is confined to one source, so `u_agent` is identified separately from the "
+        "source term."
+        if frac == 0.0 else
+        f"{len(single)} of {len(agent_rows)} agents have arms from one source only, so for "
+        "those agents `u_agent` and the source term are collinear and `sigma_agent` is "
+        "estimating the between-agent scale and the reporting gap together. It is not "
+        "comparable to the same parameter on a corpus where every agent spans both sources."
+    )
+
     mech = np.array([data.mechanisms[i] for i in data.arm_mech_idx])
     levels = []
     for m in sorted(set(mech)):
@@ -133,6 +180,7 @@ def main() -> None:
             if r["confounded"] and not r["addressed_by"]
         ],
         "mechanism_levels_separated_by_source": separated_levels,
+        "agent_level": agent_level,
         "smallest_mechanism_cell": min(
             min(x["registry_arms"], x["literature_arms"]) for x in levels
         ),
@@ -150,7 +198,16 @@ def main() -> None:
         print(f"  {x['level']:16s} {x['registry_arms']:9d} {x['literature_arms']:11d}")
     print()
     for k, v in summary.items():
+        if k == "agent_level":
+            # The per-agent table belongs in the artefact, not on the terminal.
+            print(f"  {'agents, both sources':36s} {v['n_both_sources']} of {v['n_agents']}")
+            print(f"  {'agents, literature only':36s} {v['n_literature_only']}")
+            print(f"  {'agents, registry only':36s} {v['n_registry_only']}")
+            print(f"  {'single source and a single arm':36s} "
+                  f"{v['n_single_source_single_arm']}")
+            continue
         print(f"  {k:36s} {v}")
+    print(f"\n  {summary['agent_level']['reading']}")
     write_json(args.out, {
         "summary": summary,
         "coefficients": rows,
