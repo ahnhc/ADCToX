@@ -165,3 +165,40 @@ def test_the_axis_deviation_is_sampled_centred_and_only_where_it_applies() -> No
     reg.run(jax.random.PRNGKey(0), data=registry)
     assert "tau_source" not in reg.get_samples()
     assert "source_axis" not in reg.get_samples()
+
+
+@pytest.mark.skipif(not (FULL / "arms.parquet").exists(), reason="run `make pmc-merge`")
+def test_no_coefficient_is_confounded_with_the_source_and_unhandled() -> None:
+    """The audit's point is that two confounds were found and fixed and the rest are clear.
+
+    Both were found by the same question asked twice -- a coefficient moved when the corpus
+    grew, so what is it measuring? -- which is a reason to check the rest rather than a
+    reason to stop. Every arm-level covariate is measured against the source indicator by
+    the two things that decide separability: how much it tracks the source, and whether it
+    still varies *inside* each corpus, which is what identifies it when the source term is
+    also in the model.
+
+    `b_combo` is the only one that separates completely, and it is handled. If another ever
+    joins it, this fails rather than the model quietly estimating the corpus again.
+    """
+    import json
+
+    artefact = ROOT / "artifacts" / "source_confounding.json"
+    if not artefact.exists():
+        pytest.skip("run `make source-confounding`")
+    doc = json.loads(artefact.read_text(encoding="utf-8"))
+    summary = doc["summary"]
+
+    assert summary["confounded_and_unaddressed"] == [], summary
+    assert "b_combo (arm_combo)" in summary["confounded"], summary
+    # Every mechanism level appears in both corpora, so the mechanism-by-axis term and the
+    # source term are separately identified rather than competing for the same contrast.
+    assert summary["mechanism_levels_separated_by_source"] == [], summary
+    assert summary["smallest_mechanism_cell"] >= 1, summary
+    # And the covariates the audit calls clear have to actually be clear, not merely
+    # unflagged because the thresholds are loose.
+    clear = [c for c in doc["coefficients"] if not c["confounded"]]
+    assert len(clear) >= 4, clear
+    for c in clear:
+        assert abs(c["correlation_with_source"]) < 0.3, c
+        assert c["within_source_variance_share"] > 0.9, c

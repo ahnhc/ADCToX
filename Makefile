@@ -29,7 +29,7 @@ ART     := artifacts
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
         corpus-ablation discover mondo-audit mondo-axes exclusion-holdout \
         rank-resolution dar-gap driver-waterfall row-grade-exposure outcome-tables \
-        granularity-ratio source-axis \
+        granularity-ratio source-axis source-confounding \
         label-impairment inverse-retrieval comorbidity literature expensive \
         pmc-fetch-discovered pmc-fetch-codenames
 
@@ -40,7 +40,7 @@ all: taxonomy corpus forward censoring-sensitivity expression enrichment module-
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
-     granularity-ratio source-axis \
+     granularity-ratio source-axis source-confounding \
      check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
@@ -317,6 +317,11 @@ granularity-ratio: ## identification ratio by payload / family / mechanism granu
 # arms from both sources, so the chemistry is held fixed: fourteen, Q = 80 on 11 df.
 source-axis: ## heterogeneity of the reporting-source gap across organ axes
 	$(PY) scripts/source_axis_heterogeneity.py
+
+# Which other coefficients track the corpus an arm was read from? One of five, and it is
+# handled; every mechanism level appears in both corpora.
+source-confounding: ## audit every arm-level covariate against the source indicator
+	$(PY) scripts/source_confounding_audit.py
 
 discover: ## find every ADC that has published, by payload-linker name stem
 	$(PY) scripts/discover_adc_agents.py --out $(ART)/adc_discovery.json --retmax 400

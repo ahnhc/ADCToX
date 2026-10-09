@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 35 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 36 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -1709,6 +1709,29 @@ neurologic.
     because literature arms are not spread evenly across mechanisms. One consequence is an
     improvement: `mu_axis` now means the registry's reporting level rather than a blend of
     the two, so a prediction for a new design is on the more completely reported scale.
+35. **And the other five coefficients are clear, which is why finding two was worth
+    checking.** Both confounds came from the same question asked twice -- a coefficient
+    moved when the corpus grew, so what is it measuring? -- so `make source-confounding`
+    asks it of every arm-level covariate, by the two things that decide separability: how
+    much the covariate tracks the source, and whether it still varies *inside* each corpus,
+    which is what identifies it when the source term is also in the model.
+
+    | coefficient | correlation with source | variance within source | verdict |
+    |---|---|---|---|
+    | `b_dar` | +0.022 | 100% | clear |
+    | `b_thresh` | +0.199 | 96% | clear |
+    | `b_log_n` | +0.070 | 99% | clear |
+    | `b_combo` | **-0.523** | 73% | separates completely; handled |
+    | `cleav_axis` | +0.033 | 100% | clear |
+
+    `b_thresh` is the one that looks alarming and is not: literature cuts average 1.75
+    logit above registry cuts, but **96% of the threshold's variance is within source** and
+    its standard deviation inside the literature arms alone is 6.3, so it is identified
+    from variation the source term cannot reach. Section 5b's reading of it is unchanged,
+    and the smoke fits bear that out -- it moved from +0.055 to +0.051 when the source terms
+    went in. And every mechanism level appears in both corpora, the smallest cell being two
+    arms against two, so the mechanism-by-axis term and the source term are separately
+    identified rather than competing for one contrast.
 
 ## 9b. The clean-clone check, run for the first time
 

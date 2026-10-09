@@ -1,0 +1,89 @@
+{
+ "summary": {
+  "correlation_concern": 0.3,
+  "within_share_floor": 0.5,
+  "confounded": [
+   "b_combo (arm_combo)"
+  ],
+  "confounded_and_unaddressed": [],
+  "mechanism_levels_separated_by_source": [],
+  "smallest_mechanism_cell": 2
+ },
+ "coefficients": [
+  {
+   "coefficient": "b_dar (arm_dar_c)",
+   "correlation_with_source": 0.022,
+   "within_source_variance_share": 1.0,
+   "separated": false,
+   "confounded": false,
+   "addressed_by": null
+  },
+  {
+   "coefficient": "b_thresh (arm_thresh_c)",
+   "correlation_with_source": 0.199,
+   "within_source_variance_share": 0.961,
+   "separated": false,
+   "confounded": false,
+   "addressed_by": null
+  },
+  {
+   "coefficient": "b_log_n (arm_log_n_c)",
+   "correlation_with_source": 0.07,
+   "within_source_variance_share": 0.995,
+   "separated": false,
+   "confounded": false,
+   "addressed_by": null
+  },
+  {
+   "coefficient": "b_combo (arm_combo)",
+   "correlation_with_source": -0.523,
+   "within_source_variance_share": 0.726,
+   "separated": true,
+   "confounded": true,
+   "addressed_by": "b_source plus the centred source_axis vector, added after b_combo moved from +0.195 on the registry corpus to +1.091 on the expanded one"
+  },
+  {
+   "coefficient": "cleav_axis (arm_cleavable)",
+   "correlation_with_source": 0.033,
+   "within_source_variance_share": 0.999,
+   "separated": false,
+   "confounded": false,
+   "addressed_by": null
+  }
+ ],
+ "mechanisms": [
+  {
+   "level": "dna_alkyl",
+   "registry_arms": 2,
+   "literature_arms": 2
+  },
+  {
+   "level": "dna_cleave",
+   "registry_arms": 39,
+   "literature_arms": 5
+  },
+  {
+   "level": "dna_crosslink",
+   "registry_arms": 7,
+   "literature_arms": 6
+  },
+  {
+   "level": "topo1",
+   "registry_arms": 68,
+   "literature_arms": 68
+  },
+  {
+   "level": "tubulin",
+   "registry_arms": 169,
+   "literature_arms": 106
+  }
+ ],
+ "provenance": {
+  "revision": "e179153a9487eeb95d4bf89ad38d183822da883b",
+  "dirty": true,
+  "snapshot": null,
+  "script": "source_confounding_audit.py",
+  "written_utc": "2026-10-09T10:44:58+00:00",
+  "inputs": {}
+ }
+}
