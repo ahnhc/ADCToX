@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 52 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 53 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -2477,6 +2477,35 @@ neurologic.
     disk. The plan calls the corpus freeze a hard gate and the project has a
     corpus-mismatch guard for exactly this. **Freeze, then fit** -- and the restart is
     stamped with the frozen figures so the next one cannot repeat it.
+
+52. **The interface's evidence meter counted arms, which is the one quantity this report
+    spends a section telling the reader not to count.** Every organ row on a candidate card
+    carries an evidence column, and it greys out and italicises when the row is thinly
+    supported. The test was `arms < 3`.
+
+    Result 5 is that arms are not agents. Design features are agent-level constants, so
+    trastuzumab emtansine's 48 arms are 48 observations of its trial populations and **one**
+    observation of DM1 chemistry; the section 4.3 table exists to make that point, and the
+    whole corpus-expansion argument is conducted in identifying cells rather than arms for
+    the same reason. An axis banded from 67 arms of two agents rests on two agents, and the
+    meter called it well-evidenced.
+
+    The API was already returning the right number. `n_supporting_agents` comes from the
+    posterior's evidence matrix and counts agents **of that payload chemistry** that
+    reported on that axis, which is the granularity a design prediction is made at. The row
+    displayed it and judged on the other one.
+
+    The threshold is now three *agents*, which is the project's own
+    `min_agents_for_holdout`: below three agents of a chemistry, that chemistry's effect on
+    that organ cannot be held out, so it should not be banded as though it could. Result 49
+    is what this costs in practice -- otologic rests on 18 of the corpus's 65 agents where
+    haematologic rests on 59, and it is not short of arms.
+
+    **The pattern this session kept producing has a screen-level version.** Results 38, 44,
+    48 and the two in the commit before this one were all a quantity under a name that
+    belonged to a different quantity, caught in a script or a report. This one was in the
+    interface, where a reader cannot check it against anything. The guard that found the
+    others -- every figure traces to an artefact -- does not look at an `if`.
 
 ## 9b. The clean-clone check, run for the first time
 

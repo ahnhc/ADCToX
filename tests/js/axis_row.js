@@ -146,4 +146,31 @@ for (const [name, ok] of driverChecks) {
   if (!ok) { failed++; console.error("FAIL  " + name); } else { console.log("ok    " + name); }
 }
 
+// --- the evidence meter counts agents, not arms ---
+//
+// It counted arms, which is the quantity this project's central structural finding says not
+// to count: design features are agent-level constants, so 67 arms of 2 agents are two
+// observations of that chemistry. An axis with arms to spare and two agents was shown as
+// well-evidenced. Measured consequence: otologic rests on 18 of the corpus's 65 agents
+// where haematologic rests on 59, and it is not short of arms. Negative results 5 and 49.
+const manyArmsFewAgents = { ...withDrivers, n_supporting_arms: 67, n_supporting_agents: 2,
+  risk_band: "high", drivers: [] };
+const fewArmsManyAgents = { ...withDrivers, n_supporting_arms: 2, n_supporting_agents: 9,
+  risk_band: "high", drivers: [] };
+const thinChecks = [
+  ["many arms over two agents is thin",
+    /class="ev thin"/.test(axisRow(manyArmsFewAgents))],
+  ["two arms over nine agents is not thin",
+    /class="ev "/.test(axisRow(fewArmsManyAgents))],
+  ["the thin tooltip says how many agents, not just that it is thin",
+    axisRow(manyArmsFewAgents).includes("2 agents of this payload chemistry")],
+  ["the thin tooltip still refuses to read as low risk",
+    axisRow(manyArmsFewAgents).includes("Not the same as low risk")],
+  ["a well-evidenced row reports both counts",
+    axisRow(fewArmsManyAgents).includes("2 arms across 9 agents")],
+];
+for (const [name, ok] of thinChecks) {
+  if (!ok) { failed++; console.error("FAIL  " + name); } else { console.log("ok    " + name); }
+}
+
 process.exit(failed ? 1 : 0);

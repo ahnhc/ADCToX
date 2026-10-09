@@ -219,7 +219,18 @@ function axisRow(r) {
   const other = serious ? r.point_estimate : r.serious_estimate;
   const noEvidence = r.risk_band === "no_evidence" || shown == null;
   const arms = r.n_supporting_arms ?? 0, agents = r.n_supporting_agents ?? 0;
-  const thin = noEvidence || arms < 3;
+  // Thin is about *agents*, not arms, and the difference is this project's central
+  // structural finding. Design features are agent-level constants: trastuzumab emtansine's
+  // 48 arms are 48 observations of its trial populations and one observation of DM1
+  // chemistry. So an axis banded from 40 arms of two agents rests on two, and counting arms
+  // called it well-evidenced. The threshold is the project's own `min_agents_for_holdout`:
+  // below three agents of a chemistry, that chemistry's effect on this organ cannot be held
+  // out, and it should not be banded as though it could.
+  //
+  // Measured consequence of getting this wrong: otologic rests on 18 of the corpus's 65
+  // agents where haematologic rests on 59, and it has arms to spare. See negative results 5
+  // and 49.
+  const thin = noEvidence || agents < 3;
   const scale = serious ? 8 : 60;   // percent of risk that fills the bar
   const pt = (shown ?? 0) * 100;
   // Both tables carry their own credible interval, and the row draws whichever belongs
@@ -298,7 +309,7 @@ anything.">#${cm.rank} of ${cm.n}</span>`
         <span class="num">${noEvidence ? "" : pct(shown) + interval}</span>${secondary}</span>
       <span class="ev ${thin ? "thin" : ""}"
             title="${thin
-              ? "Too little in the corpus on this organ for this chemistry to band a rate. Not the same as low risk."
+              ? `Banded on ${agents} agent${agents === 1 ? "" : "s"} of this payload chemistry (${arms} arm${arms === 1 ? "" : "s"}). Design features are agent-level constants, so arms do not add evidence about chemistry; below three agents this organ's effect cannot be held out. Not the same as low risk.`
               : `${arms} arms across ${agents} agents of this payload chemistry reported a count on this axis`}"
         >${arms} arm${arms === 1 ? "" : "s"}</span>
       ${cmp}
