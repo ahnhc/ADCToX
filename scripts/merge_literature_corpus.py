@@ -87,17 +87,56 @@ DESIGN_COLS = (
 # Classified rather than dropped here, so the counts are reportable and the arms stay
 # available to a severity-stratified outcome later. `dataset.build` keeps them out of the
 # any-grade grid.
-ANY_GRADE = re.compile(r"all[- ]grade|any[- ]grade", re.I)
-OUTCOME_PATTERNS = (
-    # Order matters: a "Grade 5 serious" column is fatal first. Each pattern is tried in
-    # turn and the first match names the column.
-    ("dose_modification",
-     r"dose\s*(?:reduc|interrupt|modif|delay)|discontinu|withdraw"),
-    ("fatal", r"grade\s*5\b|\bfatal\b|\bdeaths?\b"),
-    ("serious", r"\bserious\b|\bSAE\b"),
-    ("grade_restricted",
-     r"grade\s*(?:>=|\u2265|3\s*[-\u2013/]\s*[45]|3\+|3\b)|\bsevere\b"),
+# What the column reports, which `otherEvents` on ClinicalTrials.gov answers as any-grade,
+# all-cause incidence. The first version of this classifier caught only the severe tail and
+# had two pattern bugs that a sweep of all 516 column headers exposed:
+#
+#   * "Grades 3-4" -- the plural. `grade\s*` cannot cross the "s".
+#   * "Grade 3n (%)" -- `3\b` fails before a letter.
+#
+# and it missed the low grades entirely. A column headed "Grade 1-2" is no more any-grade
+# than one headed "Grade >=3", and 42 arms carried one: Grade 1, Grade 2, Grade 1-2,
+# Grade 4, Grade I-II, Grade III-IV. The pattern now matches any grade number, Arabic or
+# Roman, and defers to an explicit all-grade or any-grade claim in the same header, which is
+# how a spanning header split upstream reads.
+ANY_GRADE = re.compile(r"all[-\s]*grades?|any[-\s]*grades?|maximum\s+grade", re.I)
+GRADE_NUMBER = re.compile(
+    r"grades?\s*[>=\u2265\u2264<]*\s*(?:[1-5](?![0-9])|I{1,3}V?\b)", re.I
 )
+# A clinical action per organ -- hospitalisation, a hold, a dose reduction, steroid use --
+# which is not an incidence at all. Named for the category rather than for one member of it:
+# "Hospitalization" is not a dose modification.
+ACTION = re.compile(
+    r"hospitali|\bhold\b|\bdelay\b|corticosteroid|premedication|dose\s*reduc"
+    r"|discontinu|withdraw|interrupt|dose\s*modif",
+    re.I,
+)
+# A cross-tab stub or the table's label column, not a data column. Narrow on purpose:
+# "No primary prophylaxis group (n = 203)" is an arm and "Total (N = 66)" is a pooled total.
+STUB = re.compile(r"^(?:yes|no)\s*[,:]|^adverse\s+events?$", re.I)
+OUTCOME_PATTERNS = (
+    # Order matters, and the first match names the column.
+    ("not_an_arm", STUB),
+    ("clinical_action", ACTION),
+    ("fatal", re.compile(r"grades?\s*5\b|\bfatal\b|\bdeaths?\b", re.I)),
+    ("serious", re.compile(r"\bserious\b|\bSAE\b", re.I)),
+    ("grade_restricted", GRADE_NUMBER),
+)
+
+
+def column_outcome(header: str) -> str:
+    """Which outcome the column reports; `any_grade` is the one the corpus wants."""
+    text = str(header or "").strip()
+    for name, pattern in OUTCOME_PATTERNS:
+        if name == "not_an_arm":
+            if pattern.match(text):
+                return name
+            continue
+        if pattern.search(text):
+            if name == "grade_restricted" and ANY_GRADE.search(text):
+                continue
+            return name
+    return "any_grade"
 
 
 def names_an_agent_class(header: str) -> bool:
@@ -109,21 +148,6 @@ def names_an_agent_class(header: str) -> bool:
     re-extracting 1,471 articles to drop eleven cells is the wrong trade.
     """
     return bool(AGENT_CLASS_HEADER.search(str(header or "")))
-
-
-def column_outcome(header: str) -> str:
-    """Which outcome the column reports; `any_grade` is the one the corpus wants.
-
-    A header naming both ends -- "all grades and grade 3-4" -- is a spanning header whose
-    children were split upstream, so it counts as any-grade.
-    """
-    text = str(header or "")
-    for name, pattern in OUTCOME_PATTERNS:
-        if re.search(pattern, text, re.I):
-            if name == "grade_restricted" and ANY_GRADE.search(text):
-                continue
-            return name
-    return "any_grade"
 
 
 def main() -> int:

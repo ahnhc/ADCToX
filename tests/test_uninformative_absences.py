@@ -14,7 +14,10 @@ too large, thousands of times.
 
 Dropping those absences is not the same as dropping the arms. The explicit-threshold-only
 corpus keeps 67 of 414 paper arms and lands at 21 agents; this keeps every arm and every
-observed cell, and lands at 32 agents with the registry's own observed/censored balance.
+observed cell, and lands at 31 agents with the registry's own observed/censored balance.
+(32 agents publish a machine-readable per-organ table; one of them publishes no any-grade
+column anywhere, so the any-grade corpus holds 31. The two counts answer different
+questions and both appear in the report.)
 """
 
 from __future__ import annotations
@@ -153,7 +156,7 @@ def test_an_arm_only_enters_the_grid_for_a_table_it_published(axes) -> None:
     # serious one alone. That is the arm ratio moving for a reason unrelated to what this
     # test is for.
     assert other.n_arms > serious.n_arms
-    assert other.n_contributing_agents >= 32
+    assert other.n_contributing_agents >= 31
     assert serious.n_contributing_agents <= 20, (
         "the serious grid has gained agents it has no serious table for"
     )

@@ -32,13 +32,13 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 5e-b. Ranking | **The product cannot rank its own proposals in any of 192 queries**, and the comorbidity profile's influence is a function of an arbitrary constant. |
 | 5e-c. Ordinal comparison | Every rate now carries its position among the registry chemistries, which recovers a boxed warning on its first use. |
 | 5f. The one positive signal | Across-agent per-axis correlation of +0.17 after adjustment, and why it is not settled. |
-| 5g. Corpus expansion | The ceiling is 32 agents and not the planned 54; the expansion buys the common-events table and not the serious one. |
+| 5g. Corpus expansion | The ceiling is 32 agents and not the planned 54, of which **31** publish an any-grade column; the expansion buys the common-events table and not the serious one. |
 | 5h. Comorbidity layer | A non-circular holdout against 1,741 trials' exclusion criteria, at AUROC 0.666 against 0.750 circularly. |
 | 5i. Its primary validation | Misspecified. The FDA labels argue from clearance, not organ toxicity, and point somewhere else. |
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 30 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 31 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -906,24 +906,28 @@ routes to new agents.
 | stage | agents | arms in the grid | cells | cells that identify a design coefficient | viable LOMO folds |
 |---|---|---|---|---|---|
 | ClinicalTrials.gov only | 16 | 285 | 3,990 | 224 | 2 |
-| + literature arms for agents already present | 17 | 459 | 6,426 | 238 | 2 |
-| + literature agents | 32 | 506 | 7,084 | 448 | 3 |
+| + literature arms for agents already present | 17 | 432 | 6,048 | 238 | 2 |
+| + literature agents | **31** | 468 | 6,552 | 434 | 3 |
 
 The three corpora nest exactly -- 312 arms added at the first step and 102 at the second,
 with **zero** arms dropped at either -- so a difference between fits is attributable to
 what was added. That is checked in `artifacts/corpus_ablation.json`, not assumed.
 
-The arms column is the grid and not the corpus, and the two differ by 138 arms at the first
+The arms column is the grid and not the corpus, and the two differ by 165 arms at the first
 step. Six filters stand between them: an attributable agent, a denominator of at least 30,
 a conventional conjugate, publishing the table in question, reporting the any-grade outcome
-the registry's `otherEvents` reports, and naming one agent rather than a class of them. The artefact reports both counts side by side,
+the registry's `otherEvents` reports, and naming one agent rather than a class of them. The
+fifth is the expensive one: 154 of the 414 literature arms report a grade-restricted tail, a
+death count, a serious-event column or a clinical action, and one agent -- naratuximab
+emtansine -- has no any-grade column anywhere, which is why the agent count here is 31 and
+not the 32 the discovery sweep found. The artefact reports both counts side by side,
 because reading a corpus figure off a grid column is how this table gets misread. All three
 stages are derived from the one merged corpus, which makes the nesting true by construction;
 the middle stage used to be a separate directory on disk, and it went stale the moment the
 merge gained a column.
 
-Read the fourth column against the second. The first step adds 312 corpus arms and 2,436
-cells and buys **14** identifying cells. The second adds 102 and buys **210**. Section 2
+Read the fourth column against the second. The first step adds 312 corpus arms and 2,058
+cells and buys **14** identifying cells. The second adds 102 and buys **196**. Section 2
 states the reason abstractly; this is it arithmetically. Design features are agent-level
 constants, so arms of an agent already in the corpus are additional observations of its
 trial populations and *no* additional observation of its chemistry.
@@ -948,12 +952,12 @@ This is what the ablation was built to detect, and the cell composition says wha
 | | observed | censored |
 |---|---|---|
 | ClinicalTrials.gov only | 86.2% | 11.8% |
-| + literature arms | 65.0% | **31.3%** |
-| + literature agents | 63.6% | 33.1% |
+| + literature arms | 67.5% | **28.7%** |
+| + literature agents | 66.1% | 30.4% |
 
 **A paper's adverse-event table is sparse in a way a registry record is not.** A registry
 arm reports most of its organs; a paper reports a handful, so the other ten or eleven axes
-arrive as censored cells. Of the 2,436 cells the literature arms add, about 1,550 are
+arrive as censored cells. Of the 2,058 cells the literature arms add, about 1,290 are
 censored -- and for 83% of paper arms the censoring boundary is an *upper* bound derived
 from the minimum printed rate rather than a stated cut. So the model is told "this organ's
 rate is below X" with X too large, for thousands of cells at once. Section 5g's threshold
@@ -972,13 +976,13 @@ path needs the threshold handled differently before its arms belong in the corpu
 ### The expansion buys one table and not the other, and a bug was hiding it
 
 The literature expansion was measured on the common-events table, where it takes the corpus
-from 16 agents to 32. On the serious table it buys almost nothing: **17 agents, 290 arms.**
+from 16 agents to 31. On the serious table it buys almost nothing: **17 agents, 290 arms.**
 405 of the 414 literature arms publish no serious-adverse-event table at all -- neither a
 denominator nor a single row -- so the serious fit sees 9 new arms, and the registry's 284.
 
 | table | agents | arms | cells |
 |---|---|---|---|
-| otherEvents | **32** | 506 | 7,084 |
+| otherEvents | **31** | 468 | 6,552 |
 | seriousEvents | **17** | 290 | 4,060 |
 
 This was invisible until it was looked for, because the corpus builder was manufacturing the
@@ -1420,7 +1424,8 @@ neurologic.
 9. **Gene-set overlap does not beat a disease ontology.** Jaccard over Open Targets gene
    sets predicts same-organ pairs at AUC 0.748, a task MONDO's `is_a` closure answers
    exactly and for free.
-10. **The literature corpus's ceiling is 32 agents, not the ~54 the plan estimated.**
+10. **The literature corpus's ceiling is 32 agents, not the ~54 the plan estimated,** and
+    31 of those 32 publish an any-grade column, which is what the forward model can fit.
     Three independent search routes agree. The decisive one: re-searching the five
     payload-linker stems that had hit the fetch cap found 5 further agents and **0** of
     them has a parseable safety table, so the next tier of the literature yields nothing.
@@ -1491,7 +1496,7 @@ neurologic.
     them moved the mapping rate from 40.7% to 53.7%, against the plan's 50.5%, without a
     single new dictionary entry.
 20. **The corpus expansion buys one event table and not the other.** The literature arms
-    take the common-events table from 16 agents to 32, and the serious table from 16 to
+    take the common-events table from 16 agents to 31, and the serious table from 16 to
     **17**: 405 of 414 literature arms publish no serious-adverse-event table at all. This
     was hidden by a builder that fell back to the arm's other-table denominator, padding
     the serious grid with 4,256 cells -- none observed -- that asserted a zero or a bound
@@ -1541,7 +1546,7 @@ neurologic.
     the agent a DAR of 0, 1 or 8. Searching the 1,471 harvested articles recovers 2 of the 12;
     a third candidate is rejected because its only source is a paper about a different drug.
     The gap is not a search failure: eight agents' ratios are stated in no article on disk,
-    and 19 of 506 arms are still fitted at the corpus mean.
+    and 13 of 468 arms are still fitted at the corpus mean.
 26. **A regex guard that never fires is worse than no guard, and this project wrote one.** A
     pattern to bracket the species enumeration -- `DAR1 ... to DAR8` -- failed on the one
     sentence it was written for, because that sentence contains `i.e.` and an abbreviation's
@@ -1551,19 +1556,24 @@ neurologic.
     time in this project that a guard passing was mistaken for a guard working; the first
     was a `sed` pattern that never matched and therefore fabricated nothing to detect.
 
-27. **106 of 414 literature arms were reporting a different outcome than the corpus asks
-    for.** `otherEvents` on ClinicalTrials.gov is any-grade, all-cause incidence. 100 of the
-    paper arms report only the severe tail -- "Grade >=3", "Grade 3-4" -- 3 report deaths
-    ("Grade 5"), 1 is a serious-event column, and 2 report a clinical action per organ ("EV
-    Dose Reduction", "Permanent Discontinuation") which is not an incidence at all. All were
-    merged in as though they were any-grade. The clearest case is a trastuzumab deruxtecan
+27. **154 of 414 literature arms were reporting a different outcome than the corpus asks
+    for.** `otherEvents` on ClinicalTrials.gov is any-grade, all-cause incidence. 142 of the
+    paper arms report a single grade or a range of them -- "Grade >=3", "Grade 3-4",
+    "Grade 1-2", "Grade 4", "Grade I-II" -- 3 report deaths ("Grade 5"), 1 is a
+    serious-event column, 5 report a clinical action per organ ("EV Dose Reduction",
+    "Temporary Hold/Delay", "Hospitalization") which is not an incidence at all, and 3 are a
+    cross-tab stub or the table's own label column. All were merged in as though they were
+    any-grade. The clearest case is a trastuzumab deruxtecan
     arm reporting nausea at **1.4%**, against a median of **67%** across the agent's other
     79 arms. It passed every check the project had: 2/142 is arithmetically consistent, the
     row label maps cleanly, the denominator is stated in its own header, and nothing anywhere
     asked what the column was counting. Setting them aside costs **no agents** -- every
     agent with such an arm also has an any-grade one -- and takes the corpus from 8,232
-    cells over 588 arms to 7,084 over 506, with the observed share rising from 59.2% to
-    63.6%.
+    cells over 588 arms to 6,552 over 468, with the observed share rising from 59.2% to
+    66.1%, and costs one agent: naratuximab emtansine's only table splits the grade scale
+    into Grade 1-2, Grade 3 and Grade 4 columns with no any-grade column, so the agent has
+    no any-grade evidence at all. Its rate could in principle be reconstructed by summing
+    the strata, and is not, because the partition omits grade 5.
 28. **The duplicates that were not duplicates are what found it.** Concatenating the three
     snapshots' cell files emitted 277 rows twice, since 25 of the 1,471 articles answer to
     more than one fetch list. 128 were true copies. The other 149 shared the article, table,
@@ -1583,6 +1593,15 @@ neurologic.
     *what population is this?* The rule added is narrow, because the plural has to be a
     plural of agents: "Pooled RDE 5.6 mg/kg (n = 57)" pools dose-expansion cohorts of one
     agent and is a legitimate arm.
+30. **The pattern written to find that defect had the defect in it.** The first version of
+    the outcome classifier caught only the severe tail and let two of its own target cases
+    through: `grade\s*` cannot cross the "s" of "Grades 3-4", and `3\b` fails before the
+    letter in "Grade 3n (%)". It also never considered the low grades, and 42 arms carried
+    one -- "Grade 1", "Grade 1-2", "Grade 4", "Grade I-II" -- which are no more any-grade
+    than the severe tail is. The first pass found 106 arms; a sweep of all 516 column
+    headers found 154. The lesson is the same as negative result 26's: a pattern that fires
+    is not a pattern that is right, and the only way to tell was to read every header the
+    corpus actually contains rather than the ones the pattern was written from.
 
 ## 9b. The clean-clone check, run for the first time
 

@@ -31,14 +31,14 @@ results or say nothing about them.
 
 | | ClinicalTrials.gov only | + literature |
 |---|---|---|
-| arms (attributable, n>=30, conventional ADC) | 285 | 506 |
-| (arm x axis) cells | 3,990 | 7,084 |
-| distinct agents | 16 | 32 |
-| **identifying cells (agents x axes)** | **224** | **448** |
+| arms (attributable, n>=30, conventional ADC) | 285 | 468 |
+| (arm x axis) cells | 3,990 | 6,552 |
+| distinct agents | 16 | **31** |
+| **identifying cells (agents x axes)** | **224** | **434** |
 | design parameters | 100 | 100 |
-| ratio against identifying cells | 2.24 : 1 | 4.48 : 1 |
+| ratio against identifying cells | 2.24 : 1 | 4.34 : 1 |
 | mechanisms with 3+ agents (a usable held-out fold) | 2 | 3 |
-| agents with a non-cleavable linker | 2 of 16 | 4 of 32 |
+| agents with a non-cleavable linker | 2 of 16 | 3 of 31 |
 
 Both columns are the **common-events** table. On the serious table the extension buys
 almost nothing -- 17 agents over 290 arms, against the registry's 16 over 284 -- because
@@ -122,9 +122,10 @@ Two coupled degeneracies:
 2. **Cleavability entered as a raw indicator.** Two of sixteen agents carry a non-cleavable
    linker, so the indicator is nearly constant and behaves as a second per-axis intercept,
    unidentified against `mu_axis`. The literature expansion does not relieve this: it takes
-   the count from 2 of 16 to 4 of 32, the identical 12.5% share, because non-cleavable
-   linkers are a fixed minority of the chemistry rather than an under-sampled corner. The
-   reparameterization is therefore load-bearing at any corpus size this project can reach.
+   the count from 2 of 16 to 3 of 31, a 9.7% share against 12.5%, so doubling the corpus
+   left the indicator no less nearly constant -- non-cleavable linkers are a fixed minority
+   of the chemistry rather than an under-sampled corner. The reparameterization is therefore
+   load-bearing at any corpus size this project can reach.
 
 | | before | after |
 |---|---|---|

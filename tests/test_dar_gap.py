@@ -114,7 +114,7 @@ def test_the_registry_carries_both_recovered_values_with_their_source() -> None:
 def test_the_agent_whose_only_source_is_another_drug_s_paper_stays_null() -> None:
     """enapotamab vedotin's DAR4 comes from a paper about mecbotamab vedotin. The number is
     probably right; it is not the agent's own primary report, and this project's attribution
-    standard is the reason the corpus has 32 agents rather than 52."""
+    standard is the reason the discovery sweep found 32 agents rather than 52."""
     doc = yaml.safe_load(
         (ROOT / "conf" / "adc_registry.yaml").read_text(encoding="utf-8")
     )["agents"]

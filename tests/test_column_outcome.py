@@ -43,6 +43,28 @@ REGISTRY = ROOT / "data" / "processed" / "arms.parquet"
 
 
 @pytest.mark.parametrize(("header", "expected"), [
+    # The two pattern bugs a sweep of all 516 column headers exposed. The first version
+    # caught only the severe tail, so the low grades went through untouched, and it missed
+    # even some severe ones: `grade\s*` cannot cross the "s" of "Grades", and `3\b` fails
+    # before the letter in "3n".
+    ("Grades 3-4, n %", "grade_restricted"),
+    ("Grade 3n (%)", "grade_restricted"),
+    ("N = 17 Grade 1", "grade_restricted"),
+    ("Grade 1-2", "grade_restricted"),
+    ("N = 57 Grade 4", "grade_restricted"),
+    ("HER2-low expression (n=41, %) Grade I-II", "grade_restricted"),
+    # Actions, named for the category rather than one member: hospitalisation is not a dose
+    # modification.
+    ("Hospitalization", "clinical_action"),
+    ("Temporary Hold/Delay", "clinical_action"),
+    ("Systemic Corticosteroid Use Beyond Routine Premedication, n (%)", "clinical_action"),
+    # A cross-tab stub and the table's own label column.
+    ("Yes, n (%)", "not_an_arm"),
+    ("Adverse event", "not_an_arm"),
+    # And the near misses the narrow patterns must not take: these are arms.
+    ("Total (N = 66)", "any_grade"),
+    ("No primary prophylaxis group (n = 203)", "any_grade"),
+    ("Maximum grade Grade 1", "any_grade"),
     ("Patients, n (%) All grades", "any_grade"),
     ("Overall cohort, n = 120", "any_grade"),
     ("All patients (n=28), n (%) Grade 3-4", "grade_restricted"),
@@ -51,8 +73,8 @@ REGISTRY = ROOT / "data" / "processed" / "arms.parquet"
     ("EV-301N = 296n (%) Grade 3/4", "grade_restricted"),
     ("N = 137, No. (%) Grade 5", "fatal"),
     ("Seriousness and CTCAE grade Serious neutropenia/FN", "serious"),
-    ("EV Dose Reduction", "dose_modification"),
-    ("Permanent Discontinuation EV", "dose_modification"),
+    ("EV Dose Reduction", "clinical_action"),
+    ("Permanent Discontinuation EV", "clinical_action"),
     # A spanning header naming both ends was split upstream, so it is not restricted.
     ("All grades and grade 3-4", "any_grade"),
     # And the fatal reading wins over the grade reading when both are present, because a
@@ -67,10 +89,11 @@ def test_the_classifier_names_the_outcome(header: str, expected: str) -> None:
 def test_the_counts_are_what_the_corpus_reports() -> None:
     arms = pd.read_parquet(PAPER)
     counts = arms["column_outcome"].value_counts().to_dict()
-    assert counts.get("grade_restricted", 0) >= 90, counts
+    assert counts.get("grade_restricted", 0) >= 140, counts
     assert counts.get("fatal", 0) >= 3, counts
-    assert counts.get("dose_modification", 0) >= 2, counts
-    assert sum(v for k, v in counts.items() if k != "any_grade") >= 100, counts
+    assert counts.get("clinical_action", 0) >= 5, counts
+    assert counts.get("not_an_arm", 0) >= 3, counts
+    assert sum(v for k, v in counts.items() if k != "any_grade") >= 150, counts
 
 
 @pytest.mark.skipif(not REGISTRY.exists(), reason="run `make corpus`")
@@ -93,16 +116,29 @@ def test_the_any_grade_grid_excludes_them_and_loses_no_agent() -> None:
 
     axes = list(default_taxonomy().axis_order)
     data = load(FULL, axes, kind="other")
-    assert data.n_contributing_agents == 32, data.summary()
-    assert data.n_arms < 560, data.summary()
+    # 31 and not 32. naratuximab emtansine's only table splits the grade scale into
+    # Grade 1-2, Grade 3 and Grade 4 columns with no any-grade column, so the agent has no
+    # any-grade evidence at all. The sum of the strata would reconstruct it, and does not,
+    # because the partition omits grade 5. Every other agent with a non-any-grade arm also
+    # has an any-grade one.
+    assert data.n_contributing_agents == 31, data.summary()
+    assert data.n_arms < 500, data.summary()
+    # The three mechanism folds survive, which is the thing this could have cost and did
+    # not: dna_crosslink stays above the three-agent floor.
+    by_mech: dict[str, set[int]] = {}
+    for mi, ai in zip(data.arm_mech_idx, data.arm_agent_idx):
+        by_mech.setdefault(data.mechanisms[int(mi)], set()).add(int(ai))
+    viable = {m for m, a in by_mech.items() if len(a) >= 3}
+    assert {"tubulin", "topo1", "dna_crosslink"} <= viable, sorted(viable)
 
     arms = pd.read_parquet(FULL / "arms.parquet")
     off = arms[arms["column_outcome"].fillna("any_grade") != "any_grade"]
-    assert len(off) > 100
-    assert not (set(off["agent"].dropna()) - set(
+    assert len(off) > 150
+    lost = set(off["agent"].dropna()) - set(
         arms.loc[arms["column_outcome"].fillna("any_grade") == "any_grade", "agent"]
         .dropna()
-    )), "an agent would be lost, which would make this a trade-off rather than a fix"
+    )
+    assert lost == {"naratuximab_emtansine"}, sorted(lost)
 
 
 @pytest.mark.skipif(not (FULL / "arms.parquet").exists(), reason="run `make pmc-merge`")

@@ -1,10 +1,10 @@
 {
   "provenance": {
-    "revision": "262a2764a13522f001b9fbc27419f96de922f3b5",
+    "revision": "5834519404fbc76bab2aec93761eaa1103144a52",
     "dirty": true,
     "snapshot": "2026-10-07",
     "script": "corpus_ablation.py",
-    "written_utc": "2026-10-09T09:03:41+00:00",
+    "written_utc": "2026-10-09T09:12:59+00:00",
     "inputs": {}
   },
   "min_agents_for_fold": 3,
@@ -18,6 +18,8 @@
       "n_cells": 3990,
       "n_axes": 14,
       "identifying_cells": 224,
+      "design_parameters": 100,
+      "cells_per_design_parameter": 2.24,
       "n_observed": 3440,
       "n_censored": 471,
       "mechanisms": {
@@ -72,16 +74,18 @@
       ]
     },
     "plus_literature_arms": {
-      "summary": "6,426 cells over 459 arms x 14 axes (4,183 observed, 2,010 censored, 233 structural zero) | 17 agents, 5 mechanisms, 7 payload families, 65 multi-arm trials (293 arms from single-arm trials carry no trial effect)",
-      "observed_share": 0.6509492685963274,
-      "censored_share": 0.3127917833800187,
+      "summary": "6,048 cells over 432 arms x 14 axes (4,080 observed, 1,735 censored, 233 structural zero) | 17 agents, 5 mechanisms, 7 payload families, 62 multi-arm trials (274 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.6746031746031746,
+      "censored_share": 0.28687169312169314,
       "n_agents": 17,
-      "n_arms": 459,
-      "n_cells": 6426,
+      "n_arms": 432,
+      "n_cells": 6048,
       "n_axes": 14,
       "identifying_cells": 238,
-      "n_observed": 4183,
-      "n_censored": 2010,
+      "design_parameters": 100,
+      "cells_per_design_parameter": 2.38,
+      "n_observed": 4080,
+      "n_censored": 1735,
       "mechanisms": {
         "dna_alkyl": {
           "agents": 1,
@@ -90,7 +94,7 @@
         },
         "dna_cleave": {
           "agents": 2,
-          "arms": 45,
+          "arms": 44,
           "viable_fold": false
         },
         "dna_crosslink": {
@@ -100,12 +104,12 @@
         },
         "topo1": {
           "agents": 4,
-          "arms": 145,
+          "arms": 129,
           "viable_fold": true
         },
         "tubulin": {
           "agents": 8,
-          "arms": 262,
+          "arms": 252,
           "viable_fold": true
         }
       },
@@ -135,16 +139,18 @@
       ]
     },
     "plus_literature_agents": {
-      "summary": "7,084 cells over 506 arms x 14 axes (4,507 observed, 2,344 censored, 233 structural zero) | 32 agents, 5 mechanisms, 8 payload families, 71 multi-arm trials (324 arms from single-arm trials carry no trial effect)",
-      "observed_share": 0.6362224731789949,
-      "censored_share": 0.3308865047995483,
-      "n_agents": 32,
-      "n_arms": 506,
-      "n_cells": 7084,
+      "summary": "6,552 cells over 468 arms x 14 axes (4,328 observed, 1,991 censored, 233 structural zero) | 31 agents, 5 mechanisms, 8 payload families, 66 multi-arm trials (300 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.6605616605616605,
+      "censored_share": 0.30387667887667885,
+      "n_agents": 31,
+      "n_arms": 468,
+      "n_cells": 6552,
       "n_axes": 14,
-      "identifying_cells": 448,
-      "n_observed": 4507,
-      "n_censored": 2344,
+      "identifying_cells": 434,
+      "design_parameters": 100,
+      "cells_per_design_parameter": 4.34,
+      "n_observed": 4328,
+      "n_censored": 1991,
       "mechanisms": {
         "dna_alkyl": {
           "agents": 2,
@@ -153,7 +159,7 @@
         },
         "dna_cleave": {
           "agents": 2,
-          "arms": 45,
+          "arms": 44,
           "viable_fold": false
         },
         "dna_crosslink": {
@@ -163,12 +169,12 @@
         },
         "topo1": {
           "agents": 7,
-          "arms": 154,
+          "arms": 136,
           "viable_fold": true
         },
         "tubulin": {
-          "agents": 17,
-          "arms": 294,
+          "agents": 16,
+          "arms": 275,
           "viable_fold": true
         }
       },
@@ -194,7 +200,6 @@
         "izalontamab_brengitecan",
         "loncastuximab_tesirine",
         "mirvetuximab_soravtansine",
-        "naratuximab_emtansine",
         "patritumab_deruxtecan",
         "pivekimab_sunirine",
         "polatuzumab_vedotin",
@@ -220,7 +225,7 @@
       "to": "plus_literature_arms",
       "corpus_arms_added": 312,
       "corpus_arms_dropped": 0,
-      "grid_arms_added": 174,
+      "grid_arms_added": 147,
       "is_superset": true
     },
     {
@@ -228,7 +233,7 @@
       "to": "plus_literature_agents",
       "corpus_arms_added": 102,
       "corpus_arms_dropped": 0,
-      "grid_arms_added": 47,
+      "grid_arms_added": 36,
       "is_superset": true
     }
   ],

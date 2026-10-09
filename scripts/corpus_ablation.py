@@ -29,6 +29,10 @@ from adctox.taxonomy import default_taxonomy  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 MIN_AGENTS_FOR_FOLD = 3
+# Design coefficients in the shipped specification: mu_axis, the mechanism and cleavability
+# interactions, and the four scalars. Fixed rather than counted from a fit, because the
+# ratio is a property of the specification and must be comparable across corpora.
+DESIGN_PARAMETERS = 100
 
 
 def _frames(
@@ -90,6 +94,13 @@ def describe(
         "n_cells": int(data.n_cells),
         "n_axes": len(data.axes),
         "identifying_cells": len(data.agents) * len(data.axes),
+        # The ratio the model card quotes. Derived rather than typed, because a figure
+        # computed in prose is a figure the number guard cannot trace -- and the previous
+        # value traced only by coincidence, 4.48 happening to appear elsewhere in the pool.
+        "design_parameters": DESIGN_PARAMETERS,
+        "cells_per_design_parameter": round(
+            len(data.agents) * len(data.axes) / DESIGN_PARAMETERS, 2
+        ),
         "n_observed": int((data.status == 0).sum()),
         "n_censored": int(len(data.censored_idx)),
         "mechanisms": mechanisms,
