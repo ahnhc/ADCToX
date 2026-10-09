@@ -6,32 +6,41 @@
   {
    "corpus": "registry + literature (ours)",
    "agents": 34,
-   "identifying_cells": 445,
-   "cells_per_design_parameter": 4.45,
-   "meets_identification_floor": false,
+   "agents_in_grid": 32,
+   "identifying_cells_capacity": 448,
+   "identifying_cells_observed": 448,
    "payload_identities": 17,
    "payload_families": 9,
-   "payloads_per_agent": 0.5
+   "payloads_per_agent": 0.5,
+   "ratio_capacity": 4.48,
+   "ratio_observed": 4.48,
+   "meets_identification_floor": false
   },
   {
    "corpus": "atlas only",
    "agents": 55,
-   "identifying_cells": 413,
-   "cells_per_design_parameter": 4.13,
-   "meets_identification_floor": false,
+   "agents_in_grid": null,
+   "identifying_cells_capacity": null,
+   "identifying_cells_observed": 413,
    "payload_identities": 19,
    "payload_families": 7,
-   "payloads_per_agent": 0.345
+   "payloads_per_agent": 0.345,
+   "ratio_capacity": null,
+   "ratio_observed": 4.13,
+   "meets_identification_floor": false
   },
   {
    "corpus": "merged",
    "agents": 66,
-   "identifying_cells": 676,
-   "cells_per_design_parameter": 6.76,
-   "meets_identification_floor": false,
+   "agents_in_grid": 64,
+   "identifying_cells_capacity": 896,
+   "identifying_cells_observed": 878,
    "payload_identities": 24,
    "payload_families": 10,
-   "payloads_per_agent": 0.364
+   "payloads_per_agent": 0.364,
+   "ratio_capacity": 8.96,
+   "ratio_observed": 8.78,
+   "meets_identification_floor": true
   }
  ],
  "new_agents": [
@@ -72,6 +81,29 @@
   "for_46",
   "pf_06650808"
  ],
+ "granularity_ladder": [
+  {
+   "level": "mechanism",
+   "levels": 5,
+   "parameters": 56,
+   "ratio": 16.0,
+   "meets_identification_floor": true
+  },
+  {
+   "level": "payload_family",
+   "levels": 9,
+   "parameters": 112,
+   "ratio": 8.0,
+   "meets_identification_floor": true
+  },
+  {
+   "level": "payload_identity",
+   "levels": 24,
+   "parameters": 322,
+   "ratio": 2.78,
+   "meets_identification_floor": false
+  }
+ ],
  "folds": [
   {
    "mechanism": "tubulin",
@@ -107,11 +139,11 @@
  "n_viable_folds": 4,
  "atlas_arms_at_min_n": 140,
  "provenance": {
-  "revision": "05afd36c1accabdbb8ea10b4c14af3793db27ce5",
+  "revision": "6dfe16e92fa16f6dbc33f4d1eacbfb593961af9c",
   "dirty": true,
   "snapshot": null,
   "script": "merged_corpus_scale.py",
-  "written_utc": "2026-10-09T15:35:19+00:00",
+  "written_utc": "2026-10-09T15:53:05+00:00",
   "inputs": {}
  }
 }

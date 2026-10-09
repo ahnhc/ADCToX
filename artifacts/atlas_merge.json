@@ -1,0 +1,93 @@
+{
+ "min_n": 30,
+ "base": {
+  "arms": 2627,
+  "agents": 34,
+  "observations": 41089
+ },
+ "atlas_added": {
+  "arms": 130,
+  "agents": 54,
+  "observations": 887,
+  "new_agents": [
+   "a166",
+   "abbv_011",
+   "ags_16c3f",
+   "arx788",
+   "atg_022",
+   "bat_8006",
+   "bms_986148",
+   "coltuximab_ravtansine",
+   "crb_701",
+   "dlye5953a",
+   "dmot4039a",
+   "dp_303c",
+   "fs_1502",
+   "glembatumumab_vedotin",
+   "iladatuzumab_vedotin",
+   "indatuximab_ravtansine",
+   "indusatumab_vedotin",
+   "lifastuzumab_vedotin",
+   "lorvotuzumab_mertansine",
+   "medi2228",
+   "mrg_004a",
+   "mytx_011",
+   "pf_06647263",
+   "pf_06804103",
+   "pinatuzumab_vedotin",
+   "samrotamab_vedotin",
+   "sc_002",
+   "sirtratumab_vedotin",
+   "sysa_1801",
+   "trastuzumab_rezetecan",
+   "vadastuximab_talirine",
+   "zilovertamab_vedotin"
+  ]
+ },
+ "merged": {
+  "arms": 2757,
+  "agents": 66,
+  "observations": 41976
+ },
+ "dropped_as_already_counted": 10,
+ "overlap_exposure": {
+  "arms_without_nct": 86,
+  "residual_overlap_exposure_arms": 46,
+  "residual_overlap_exposure_agents": [
+   "anetumab_ravtansine",
+   "belantamab_mafodotin",
+   "camidanlumab_tesirine",
+   "datopotamab_deruxtecan",
+   "depatuxizumab_mafodotin",
+   "disitamab_vedotin",
+   "enfortumab_vedotin",
+   "gemtuzumab_ozogamicin",
+   "inotuzumab_ozogamicin",
+   "mirvetuximab_soravtansine",
+   "sacituzumab_govitecan",
+   "serclutamab_talirine",
+   "telisotuzumab_vedotin",
+   "tisotumab_vedotin",
+   "trastuzumab_deruxtecan",
+   "trastuzumab_emtansine",
+   "vobramitamab_duocarmazine"
+  ],
+  "note": "An atlas cohort with no NCT number cannot be checked against the base corpus. The risk only exists where the base corpus already has arms for that agent; for a new agent there is nothing to collide with."
+ },
+ "source_tiers": {
+  "registry": 2201,
+  "publication": 522,
+  "label": 21,
+  "abstract": 8,
+  "presentation": 5
+ },
+ "threshold_is_upper_bound_share": 0.17664127675009067,
+ "provenance": {
+  "revision": "6dfe16e92fa16f6dbc33f4d1eacbfb593961af9c",
+  "dirty": true,
+  "snapshot": null,
+  "script": "merge_atlas_corpus.py",
+  "written_utc": "2026-10-09T15:51:09+00:00",
+  "inputs": {}
+ }
+}

@@ -39,7 +39,7 @@ FORWARD_METRICS := $(ART)/forward_other_metrics.json
         censoring-sensitivity label-history label-changes label-change-eval \
         dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
         residual-scale comorbidity-sensitivity payload-compression \
-        atlas-ingest merged-scale \
+        atlas-ingest atlas-merge merged-scale \
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
@@ -232,7 +232,13 @@ residual-scale: $(FORWARD_METRICS)
 atlas-ingest:
 	$(PY) scripts/ingest_atlas_db.py
 
-merged-scale: atlas-ingest
+# The merge has to run before the scale measurement, because the ladder reads the merged
+# grid: the plan's ratio is defined on agents x axes and only the dataset builder knows how
+# many agents the grid keeps.
+atlas-merge: atlas-ingest
+	$(PY) scripts/merge_atlas_corpus.py
+
+merged-scale: atlas-merge
 	$(PY) scripts/merged_corpus_scale.py
 
 # Does the comorbidity profile reach the proposed design? The product's primary input

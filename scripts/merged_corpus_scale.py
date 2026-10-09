@@ -20,6 +20,19 @@ Three questions, and the third is the one that matters most:
 Counted on normalised payload identities, not raw strings: 33 of their `Payload` spellings
 stand for 19 payloads, and counting the strings would inflate the vocabulary by 70% and
 manufacture a confirmation of result 6.
+
+Two definitions of "identifying cells" are reported, because the first version of this
+script quietly used the second while comparing against a threshold set on the first:
+
+  * **capacity** -- `agents x axes`. What `forward.n_free_parameters` counts and what the
+    plan's 8:1 floor was set on, because design features are agent-level constants and the
+    grid has a slot for every agent-axis pair whether or not it is filled.
+  * **observed** -- agent-axis pairs that actually carry an observation. Always the smaller,
+    and the more honest number for "how much evidence is there", but not the one the
+    threshold was written against.
+
+Quoting the observed count against the capacity threshold understated the merged corpus by
+a third and would have reported a floor as unmet when the plan's own measure clears it.
 """
 
 from __future__ import annotations
@@ -149,30 +162,83 @@ def main() -> int:
     def ratio(n_cells: int) -> float:
         return round(n_cells / DESIGN_PARAMETERS, 2)
 
+    def _grid(path: pathlib.Path) -> tuple[int, int, int]:
+        """Capacity, observed cells and agents, straight from the builder the model uses."""
+        from adctox.model import dataset as _ds, forward as _fw
+        data = _ds.load(path, axes, kind="other")
+        acct = _fw.n_free_parameters(data)
+        observed = len({
+            (int(data.arm_agent_idx[a]), int(x))
+            for a, x, st in zip(data.arm_idx, data.axis_idx, data.status)
+            if st != _ds.ZERO
+        })
+        return int(acct["identifying_cells"]), observed, len(data.agents)
+
     # Negative result 6, re-measured. Payload identity and family vocabularies at each size.
     ours_payloads = set(ours.payload.dropna().unique())
     ours_families = set(ours.payload_family.dropna().unique())
     atlas_payloads = set(usable.payload.dropna().unique())
     atlas_families = set(usable.payload_family.dropna().unique())
 
+    merged_frames = ROOT / "data" / "processed" / "with_atlas"
+    grids: dict[str, tuple[int, int, int]] = {}
+    if (args.ours / "arms.parquet").exists():
+        grids["registry + literature (ours)"] = _grid(args.ours)
+    if (merged_frames / "arms.parquet").exists():
+        grids["merged"] = _grid(merged_frames)
+
     rows = []
-    for name, agents, cells, pays, fams in [
+    for name, agents, obs_cells, pays, fams in [
         ("registry + literature (ours)", ours_agents, len(ours_cells),
          ours_payloads, ours_families),
         ("atlas only", atlas_agents, len(atlas_cells), atlas_payloads, atlas_families),
         ("merged", merged_agents, len(merged_cells),
          ours_payloads | atlas_payloads, ours_families | atlas_families),
     ]:
-        rows.append({
+        capacity, observed, grid_agents = grids.get(name, (None, None, None))
+        row = {
             "corpus": name,
             "agents": len(agents),
-            "identifying_cells": int(cells),
-            "cells_per_design_parameter": ratio(int(cells)),
-            "meets_identification_floor": ratio(int(cells)) >= IDENTIFICATION_FLOOR,
+            # The builder drops agents the grid cannot use (non-conventional conjugates, no
+            # observation), so its agent count is the one a fit sees.
+            "agents_in_grid": grid_agents,
+            "identifying_cells_capacity": capacity,
+            "identifying_cells_observed": observed if observed is not None else int(obs_cells),
             "payload_identities": len(pays),
             "payload_families": len(fams),
             "payloads_per_agent": round(len(pays) / max(len(agents), 1), 3),
-        })
+        }
+        row["ratio_capacity"] = ratio(capacity) if capacity else None
+        row["ratio_observed"] = ratio(row["identifying_cells_observed"])
+        row["meets_identification_floor"] = bool(
+            row["ratio_capacity"] and row["ratio_capacity"] >= IDENTIFICATION_FLOOR
+        )
+        rows.append(row)
+
+    # The granularity ladder, the plan's own way: identifying cells over (levels - 1) x axes.
+    # This is the comparison the plan used to choose the mechanism level and to rule the
+    # family level out ("only 6.00:1 even at 54 agents"), so it is the comparison that has to
+    # be re-run rather than re-asserted at a corpus twice the size.
+    ladder = []
+    merged_row = next(r for r in rows if r["corpus"] == "merged")
+    capacity = merged_row["identifying_cells_capacity"]
+    if capacity:
+        from adctox.model import dataset as _ds2
+        grid = _ds2.load(ROOT / "data" / "processed" / "with_atlas", axes, kind="other")
+        levels = {
+            "mechanism": len(grid.mechanisms),
+            "payload_family": len(grid.families),
+            "payload_identity": merged_row["payload_identities"],
+        }
+        for name, k in levels.items():
+            params = (k - 1) * len(axes)
+            ladder.append({
+                "level": name,
+                "levels": k,
+                "parameters": params,
+                "ratio": round(capacity / params, 2) if params else None,
+                "meets_identification_floor": bool(params and capacity / params >= IDENTIFICATION_FLOOR),
+            })
 
     # Fold viability on the merged mechanism assignment.
     ours_mech = ours.dropna(subset=["agent", "mechanism"]).drop_duplicates("agent")[
@@ -192,20 +258,30 @@ def main() -> int:
         "corpora": rows,
         "new_agents": sorted(atlas_agents - ours_agents),
         "agents_lost_to_unassignable_payload": sorted(unassignable),
+        "granularity_ladder": ladder,
         "folds": folds.to_dict("records"),
         "n_viable_folds": int(folds.holdout_viable.sum()),
         "atlas_arms_at_min_n": int(len(usable)),
     }
     write_json(args.out, doc)
 
-    print(f"{'corpus':30} {'agents':>7} {'cells':>7} {'ratio':>7} {'floor':>6} "
-          f"{'payloads':>9} {'families':>9} {'pay/agent':>10}")
+    print(f"{'corpus':30} {'agents':>7} {'grid':>5} {'capacity':>9} {'observed':>9} "
+          f"{'cap ratio':>10} {'obs ratio':>10} {'floor':>6} {'payloads':>9} {'pay/ag':>7}")
     for r in rows:
-        print(f"{r['corpus']:30} {r['agents']:>7} {r['identifying_cells']:>7} "
-              f"{r['cells_per_design_parameter']:>7} "
+        print(f"{r['corpus']:30} {r['agents']:>7} "
+              f"{str(r['agents_in_grid'] or '-'):>5} "
+              f"{str(r['identifying_cells_capacity'] or '-'):>9} "
+              f"{r['identifying_cells_observed']:>9} "
+              f"{str(r['ratio_capacity'] or '-'):>10} {r['ratio_observed']:>10} "
               f"{'yes' if r['meets_identification_floor'] else 'no':>6} "
-              f"{r['payload_identities']:>9} {r['payload_families']:>9} "
-              f"{r['payloads_per_agent']:>10}")
+              f"{r['payload_identities']:>9} {r['payloads_per_agent']:>7}")
+    if ladder:
+        print()
+        print("granularity ladder on the merged corpus (plan's own ratio):")
+        for L in ladder:
+            print(f"  {L['level']:18} {L['levels']:3} levels  {L['parameters']:4} params  "
+                  f"{L['ratio']:6}:1  "
+                  f"{'MEETS the 8:1 floor' if L['meets_identification_floor'] else 'below floor'}")
     print()
     print(f"new agents: {len(doc['new_agents'])}")
     print(f"folds ({doc['n_viable_folds']} viable at >={MIN_AGENTS_FOR_HOLDOUT} agents):")

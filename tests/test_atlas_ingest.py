@@ -144,6 +144,9 @@ def test_the_funnel_only_ever_loses_rows() -> None:
     assert rows == sorted(rows, reverse=True), doc["funnel"]
 
 
+MERGE = ROOT / "artifacts" / "atlas_merge.json"
+
+
 @pytest.mark.skipif(not SCALE.exists(), reason="run `make merged-scale`")
 def test_the_merged_corpus_is_a_superset_of_both() -> None:
     doc = json.loads(SCALE.read_text(encoding="utf-8"))
@@ -151,43 +154,121 @@ def test_the_merged_corpus_is_a_superset_of_both() -> None:
     merged = by["merged"]
     for name in ("registry + literature (ours)", "atlas only"):
         assert merged["agents"] >= by[name]["agents"], name
-        assert merged["identifying_cells"] >= by[name]["identifying_cells"], name
+        assert merged["identifying_cells_observed"] >= by[name]["identifying_cells_observed"]
         assert merged["payload_identities"] >= by[name]["payload_identities"], name
 
 
 @pytest.mark.skipif(not SCALE.exists(), reason="run `make merged-scale`")
-def test_the_identification_floor_is_reported_and_not_assumed_met() -> None:
-    """Doubling the agents raised the ratio and did not reach the floor, which is the
-    honest result and the one a reader is most likely to assume away."""
+def test_the_two_definitions_of_identifying_cells_are_kept_apart() -> None:
+    """The defect that reported a met floor as unmet.
+
+    `capacity` is agents x axes, which is what the model's parameter accounting counts and
+    what the plan's 8:1 floor was written against. `observed` counts only the agent-axis
+    pairs carrying data. The first version of this measurement reported the second against
+    the first's threshold, understating the merged corpus by a third. Both are now present,
+    the floor verdict is taken from capacity, and observed can never exceed it.
+    """
     doc = json.loads(SCALE.read_text(encoding="utf-8"))
-    by = {r["corpus"]: r for r in doc["corpora"]}
-    merged = by["merged"]
-    assert merged["cells_per_design_parameter"] == pytest.approx(
-        merged["identifying_cells"] / doc["design_parameters"], abs=0.01
-    )
-    assert merged["meets_identification_floor"] == (
-        merged["cells_per_design_parameter"] >= doc["identification_floor"]
+    for r in doc["corpora"]:
+        cap, obs = r["identifying_cells_capacity"], r["identifying_cells_observed"]
+        if cap is None:
+            continue
+        assert obs <= cap, r
+        assert r["ratio_capacity"] == pytest.approx(cap / doc["design_parameters"], abs=0.01)
+        assert r["meets_identification_floor"] == (
+            r["ratio_capacity"] >= doc["identification_floor"]
+        ), r
+
+
+@pytest.mark.skipif(not SCALE.exists(), reason="run `make merged-scale`")
+def test_the_granularity_ladder_is_ordered_and_uses_the_plans_ratio() -> None:
+    """Coarser levels must have fewer parameters and therefore a higher ratio.
+
+    The ladder is what the plan used to choose the mechanism level and to rule the family
+    level out. Re-running it rather than re-asserting it is the point: at the merged corpus
+    size the family level reaches the floor the plan said it never would.
+    """
+    doc = json.loads(SCALE.read_text(encoding="utf-8"))
+    ladder = doc.get("granularity_ladder") or []
+    if not ladder:
+        return
+    by_level = {L["level"]: L for L in ladder}
+    assert {"mechanism", "payload_family", "payload_identity"} <= set(by_level)
+    ratios = [by_level[k]["ratio"] for k in
+              ("mechanism", "payload_family", "payload_identity")]
+    assert ratios == sorted(ratios, reverse=True), ladder
+    for L in ladder:
+        assert L["parameters"] == (L["levels"] - 1) * 14, L
+        assert L["meets_identification_floor"] == (L["ratio"] >= doc["identification_floor"])
+
+
+@pytest.mark.skipif(not SCALE.exists(), reason="run `make merged-scale`")
+def test_payload_identity_stays_below_the_floor() -> None:
+    """Negative result 6, as an invariant rather than a sentence.
+
+    If payload identity ever clears the floor, the report's most load-bearing structural
+    claim has changed and must be re-derived rather than kept.
+    """
+    doc = json.loads(SCALE.read_text(encoding="utf-8"))
+    ladder = {L["level"]: L for L in (doc.get("granularity_ladder") or [])}
+    if "payload_identity" not in ladder:
+        return
+    assert not ladder["payload_identity"]["meets_identification_floor"], (
+        f"payload identity reached {ladder['payload_identity']['ratio']}:1. Result 6 says "
+        "this cannot happen at any reachable corpus size; re-derive it."
     )
 
 
 @pytest.mark.skipif(not SCALE.exists(), reason="run `make merged-scale`")
-def test_negative_result_six_is_measured_not_projected() -> None:
-    """The payload vocabulary's growth rate, which result 6 turns on.
-
-    The claim is that it grows as fast as the corpus. Measured across the two corpus sizes,
-    payloads per agent should be reported for each, and the merged payload-level ratio
-    should still be far below the identification floor -- that is the claim, and if it ever
-    stops holding the report's most load-bearing structural result has changed.
-    """
+def test_the_payload_vocabulary_growth_rate_is_reported_per_corpus() -> None:
     doc = json.loads(SCALE.read_text(encoding="utf-8"))
-    by = {r["corpus"]: r for r in doc["corpora"]}
     for r in doc["corpora"]:
         assert r["payloads_per_agent"] > 0
-    merged = by["merged"]
-    payload_parameters = (merged["payload_identities"] - 1) * 14
-    payload_ratio = merged["identifying_cells"] / payload_parameters
-    assert payload_ratio < doc["identification_floor"], (
-        f"payload-level ratio reached {payload_ratio:.2f}, at or above the "
-        f"{doc['identification_floor']}:1 floor. Negative result 6 says this cannot happen "
-        "at any reachable corpus size; re-derive it before the report keeps the claim."
+        assert r["payloads_per_agent"] == pytest.approx(
+            r["payload_identities"] / r["agents"], abs=0.002)
+
+
+@pytest.mark.skipif(not MERGE.exists(), reason="run `make atlas-merge`")
+def test_the_merge_refuses_cohorts_whose_patients_are_already_counted() -> None:
+    """Ten atlas cohorts name a trial the base corpus already holds for the same agent.
+
+    Keeping them would inflate the denominator with the same patients twice, which is worse
+    than losing an arm: a false denominator moves every rate on that arm.
+    """
+    doc = json.loads(MERGE.read_text(encoding="utf-8"))
+    assert doc["dropped_as_already_counted"] > 0, (
+        "no cohort was dropped as already counted. Either the base corpus changed or the "
+        "(agent, NCT) check stopped matching -- verify before trusting the merged totals."
     )
+    merged, base, added = doc["merged"], doc["base"], doc["atlas_added"]
+    assert merged["arms"] == base["arms"] + added["arms"]
+    assert merged["agents"] <= base["agents"] + added["agents"]
+
+
+@pytest.mark.skipif(not MERGE.exists(), reason="run `make atlas-merge`")
+def test_the_residual_overlap_exposure_is_measured_and_not_assumed_zero() -> None:
+    """86 atlas cohorts name no NCT, so the check cannot run on them.
+
+    The exposure is only real where the base corpus already has arms for that agent; for a
+    new agent there is nothing to collide with. That bound is the honest number and it is
+    recorded rather than left as "we deduplicated".
+    """
+    doc = json.loads(MERGE.read_text(encoding="utf-8"))
+    exp = doc["overlap_exposure"]
+    assert exp["arms_without_nct"] >= exp["residual_overlap_exposure_arms"]
+    assert len(exp["residual_overlap_exposure_agents"]) > 0, (
+        "the exposure is reported as zero; if that is now true the note should say why "
+        "rather than the field reading as a default"
+    )
+
+
+@pytest.mark.skipif(not MERGE.exists(), reason="run `make atlas-merge`")
+def test_the_merged_corpus_carries_more_than_two_source_tiers() -> None:
+    doc = json.loads(MERGE.read_text(encoding="utf-8"))
+    tiers = doc["source_tiers"]
+    assert "registry" in tiers and tiers["registry"] > 0, (
+        f"no registry arms in the merged corpus: {tiers}. An earlier version keyed the tier "
+        'on source == "ctgov", which no row carries, and labelled all 2,201 registry arms '
+        "as publications."
+    )
+    assert len(tiers) >= 4, tiers

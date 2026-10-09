@@ -39,6 +39,7 @@ EXEMPT = {
     # docs/TEAMMATE_DATA_USE.md records what it does.
     "ingest_atlas_db.py",
     "merged_corpus_scale.py",
+    "merge_atlas_corpus.py",
 }
 def _scripts_writing_artefacts() -> set[str]:
     out = set()

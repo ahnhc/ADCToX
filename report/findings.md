@@ -6,7 +6,7 @@ Working draft. Every number here is measured, and `make all` regenerates all of 
 Stated precisely, because the looser version of this claim was false for most of the
 project's life. The tables are generated from artefacts between markers in this file, so
 they cannot drift. Figures quoted in prose are checked by `make check-report`, which fails
-on any decimal it cannot find in an artefact; 19 are allowlisted with a stated reason
+on any decimal it cannot find in an artefact; 20 are allowlisted with a stated reason
 each, and superseded figures quoted in before/after comparisons live in
 `artifacts/superseded/`. That guard was itself a no-op until recently -- it passed 99% of
 randomly fabricated four-decimal figures -- so it now measures and prints its own
@@ -2183,22 +2183,43 @@ neurologic.
     conflation of two quantities, one of which was easy to look up and the other of which
     was the one that mattered. **A ceiling measured on one route is a fact about the route.**
 
-44. **And doubling the agents does not reach the identification floor, so result 6 survives
-    at twice the corpus size it was measured on.** The plan set a floor of 8 identifying
-    cells per design parameter for a level-by-axis interaction, and this report has never
-    reached it. Merging the database moves the ratio from **4.45 to 6.76** -- a real gain,
-    64% more identifying cells, and still short. The design is still being estimated below
-    the threshold its own plan set.
+44. **Doubling the agents crosses the identification floor this project had never reached,
+    and the payload *family* level reaches it for the first time -- while payload identity
+    stays where result 6 says it stays.** The plan set a floor of 8 identifying cells per
+    design parameter for a level-by-axis interaction. On the merged corpus the grid holds
+    **64 agents and 896 identifying cells against 100 design parameters: 8.96:1**, and 8.78:1
+    counting only the agent-axis pairs that actually carry an observation. Both clear the
+    floor. Before the merge it was 4.48:1.
 
-    Result 6 is the sharper test, because it has only ever been measured at 17 and 31 agents
-    with 54 projected. Measured now at 66: the payload vocabulary goes from **17 identities
-    to 24** while the agent count goes from 34 to 66, so payloads per agent **falls from
-    0.500 to 0.364**. The vocabulary does decelerate, which the report did not know. It does
-    not decelerate nearly enough: a payload-level by-axis model at 66 agents needs
-    (24-1) x 14 = 322 parameters against 676 identifying cells, a ratio of **2.10:1** where
-    34 agents gave 1.99:1. **Doubling the corpus moved the payload-level identification
-    ratio by one tenth.** The structural claim stands, and it now stands on a measurement
-    instead of a projection.
+    Run up the granularity ladder the plan's own way -- identifying cells over
+    `(levels - 1) x axes` -- the merged corpus says:
+
+    | level | levels | parameters | ratio | plan's floor |
+    |---|---|---|---|---|
+    | payload mechanism | 5 | 56 | **16.00:1** | met |
+    | payload family | 9 | 112 | **8.00:1** | met |
+    | payload identity | 24 | 322 | **2.78:1** | not met |
+
+    The middle row is new. The plan ruled the family level out on the grounds that it
+    "reaches only 6.00:1 even at a 54-agent corpus", and this report has two
+    non-converging family parameterizations on the smaller corpus to go with that. At 64
+    agents in the grid it is exactly at the floor, which makes it a thing to *test* rather
+    than a thing to rule out -- and the test is a fit, not an arithmetic.
+
+    The bottom row is result 6, holding. Payload identity goes from 17 to 24 as the agents
+    go from 34 to 66, so payloads per agent falls from **0.500 to 0.364**: the vocabulary
+    decelerates, which this report did not know, and nowhere near enough. Doubling the
+    corpus moved the payload-level ratio from 1.99:1 to 2.78:1, still a third of what it
+    would need. **The level that recedes is payload identity, and the level the plan
+    dismissed turns out to have been the one worth waiting for.**
+
+    One correction, since it is the same defect this section's result 38 is about. The first
+    version of this item reported 6.76:1 and concluded the floor was *not* reached. That
+    number came from a script that counted identifying cells as observed agent-axis pairs
+    while comparing them against a threshold defined on `agents x axes`, which is what the
+    model's own parameter accounting uses. Two quantities, one name, and the mismatch
+    understated the merged corpus by a third and reported a met floor as unmet. The script
+    now reports both and labels which threshold belongs to which.
 
 45. **A filter that asked "is this verifiable" while meaning "is this usable" silently
     discarded 28% of the new corpus, including every row derived from a drug label.** The
@@ -2225,7 +2246,7 @@ and refutes another.
 
 **What holds.** A fresh clone passes `make check-report` unaided: 19,352 numeric values
 across 40 tracked artefacts, **429 decimal figures across the report and the model card,
-every one of them tracing to an artefact or to the 19-entry allowlist.** The claim that no
+every one of them tracing to an artefact or to the 20-entry allowlist.** The claim that no
 figure in this report was typed by hand is machine-checked from a clone and not only from
 the working tree. Every file under `conf/`, `docs/`, `report/`, `src/`, `scripts/`, `tests/`
 and `web/` is tracked, so there is no silent reproducibility break of the usual kind -- an
