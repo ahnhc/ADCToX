@@ -297,10 +297,21 @@ def main() -> int:
     if capacity:
         from adctox.model import dataset as _ds2
         grid = _ds2.load(ROOT / "data" / "processed" / "with_atlas", axes, kind="other")
+        # All three level counts come from the grid, which is what the fit sees. An earlier
+        # version took the payload count from the arms frames instead -- 24 against the
+        # grid's 23 -- and reported 2.78:1 where `granularity_ratio.py` reported 2.91:1 for
+        # the same quantity. Two scripts, one name, two numbers: the fourth instance of the
+        # defect negative results 38, 44 and 48 are about.
+        grid_payloads = {
+            str(p) for p in pd.read_parquet(
+                ROOT / "data" / "processed" / "with_atlas" / "arms.parquet"
+            ).loc[lambda d: d.arm_key.isin(set(grid.arm_keys)), "payload"].dropna()
+            if str(p) not in ("nan", "None", "")
+        }
         levels = {
             "mechanism": len(grid.mechanisms),
             "payload_family": len(grid.families),
-            "payload_identity": merged_row["payload_identities"],
+            "payload_identity": len(grid_payloads),
         }
         for name, k in levels.items():
             params = (k - 1) * len(axes)

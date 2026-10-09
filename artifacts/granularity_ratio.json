@@ -6,17 +6,19 @@
    "n32_k6": 6.4,
    "n54_k7": 9.0
   },
-  "ratio_change_registry_to_expanded": {
-   "payload_identity": 1.2,
-   "payload_family": 1.71,
-   "mechanism": 2.0
+  "ratio_change_first_to_last_stage": {
+   "payload_identity": 1.63,
+   "payload_family": 3.0,
+   "mechanism": 4.0
   },
+  "first_stage": "ctgov_original_agent_list",
+  "last_stage": "plus_transcribed",
   "levels_that_clear_the_floor": [
+   "payload_family",
    "mechanism"
   ],
-  "recedes": [
-   "payload_identity"
-  ]
+  "recedes_threshold": 1.25,
+  "recedes": []
  },
  "stages": [
   {
@@ -78,14 +80,29 @@
     "payload_family": 4.57,
     "mechanism": 8.0
    }
+  },
+  {
+   "stage": "plus_transcribed",
+   "agents": 64,
+   "identifying_cells": 896,
+   "levels": {
+    "payload_identity": 23,
+    "payload_family": 9,
+    "mechanism": 5
+   },
+   "ratio": {
+    "payload_identity": 2.91,
+    "payload_family": 8.0,
+    "mechanism": 16.0
+   }
   }
  ],
  "provenance": {
-  "revision": "479d1565a0668aae84acaf1c17657ac757ec301b",
+  "revision": "91848175da577fc76fb81e653043f900c722f5a1",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "granularity_ratio.py",
-  "written_utc": "2026-10-09T11:16:02+00:00",
+  "written_utc": "2026-10-09T17:20:11+00:00",
   "inputs": {}
  }
 }

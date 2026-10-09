@@ -5,6 +5,12 @@ recedes as fast as it is approached: each new agent brings a new payload, so tri
 corpus leaves identifying-cells-per-design-parameter flat. Its table put that at 2.12, 2.91
 and 2.84 across corpora of 17, 32 and 54 agents.
 
+**Measured over five stages, that mechanism is wrong and the conclusion survives.** The
+payload-level ratio runs 1.78, 2.20, 2.50, 2.13, 2.91 as the agents run 16, 22, 25, 32, 64:
+a 1.63x gain for a 4x corpus, so `recedes` comes back empty. The level approaches its floor
+at a rate that would need something over a thousand agents to reach it, against the roughly
+370 that have ever entered the clinic. Out of reach because the field is finite.
+
 Two of those three rows were projections. The 54-agent corpus was measured not to exist --
 the ceiling is 32 agents, 31 of which publish an any-grade column -- and the payload
 vocabulary was projected to reach 12 classes at the second step and 20 at the third. It
@@ -91,6 +97,13 @@ def main() -> None:
         "plus_literature_arms": (full, registry_agents, False),
         "plus_literature_agents": (full, None, False),
     }
+    # The fifth stage, kept in step with `corpus_ablation.py` by a test: two scripts that
+    # disagree about what a stage is produce two tables the report presents as one. Added
+    # conditionally, because the hand-transcribed workbook is not redistributed and a clean
+    # clone has four stages.
+    merged = ROOT / "data" / "processed" / "with_atlas"
+    if (merged / "arms.parquet").exists():
+        stages["plus_transcribed"] = (merged, None, False)
 
     rows = []
     for name, (path, keep, restrict) in stages.items():
@@ -125,10 +138,23 @@ def main() -> None:
             "n32_k6": round(32 * 14 / ((6 - 1) * 14), 2),
             "n54_k7": round(54 * 14 / ((7 - 1) * 14), 2),
         },
-        "ratio_change_registry_to_expanded": change,
+        # Named for the stages it actually spans, not for a stage that used to be last. It
+        # read `ratio_change_registry_to_expanded` while comparing the registry corpus to
+        # whatever the final stage was, and the final stage changed: the payload-level
+        # change it reports went from 1.20 against the 32-agent corpus to 1.63 against the
+        # 64-agent one, which is the difference between "recedes" and "approaches too
+        # slowly". A key named after a moving target is the same defect as a sentence
+        # beside a regenerated number; see negative result 38.
+        "ratio_change_first_to_last_stage": change,
+        "first_stage": rows[0]["stage"],
+        "last_stage": rows[-1]["stage"],
         "levels_that_clear_the_floor": [
             level for level, v in last["ratio"].items() if v >= IDENTIFICATION_FLOOR
         ],
+        # "Recedes" is the claim that a level's ratio does not improve as the corpus grows,
+        # which is result 6's stated mechanism. 1.25 is the floor for calling an improvement
+        # real; below it the ratio is flat within the noise of a stage boundary.
+        "recedes_threshold": 1.25,
         "recedes": [level for level, v in change.items() if v < 1.25],
     }
 

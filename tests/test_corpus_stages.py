@@ -151,3 +151,64 @@ def test_the_granularity_stages_match_the_ablation_s() -> None:
             row["identifying_cells"]
             == ab["stages"][row["stage"]]["identifying_cells"]
         ), row["stage"]
+
+
+def test_the_ablation_table_grows_a_row_when_a_stage_is_added() -> None:
+    """The table was hand-typed, and a hand-typed table does not grow a row.
+
+    A fifth corpus stage arrived -- the hand-transcribed database -- and the four-stage
+    table in section 4.3 would have gone on describing four. It is generated from
+    `corpus_ablation.json` now, so the stages in the artefact and the rows in the report
+    cannot disagree.
+    """
+    import json
+    import pathlib
+    import sys
+
+    root = pathlib.Path(__file__).resolve().parents[1]
+    artefact = root / "artifacts" / "corpus_ablation.json"
+    if not artefact.exists():
+        return
+    sys.path.insert(0, str(root / "scripts"))
+    import sync_report_numbers as srn
+
+    doc = json.loads(artefact.read_text(encoding="utf-8"))
+    block = srn.build_ablation_block(doc)
+    assert block is not None
+    # One row per stage the artefact holds, and a label for every stage: an unlabelled key
+    # would be dropped from the table silently.
+    for key in doc["stages"]:
+        assert key in srn.ABLATION_LABELS, (
+            f"stage {key!r} has no label, so it is missing from the generated table"
+        )
+        assert srn.ABLATION_LABELS[key] in block, key
+    body = [ln for ln in block.splitlines() if ln.startswith("| ") and "---" not in ln]
+    assert len(body) == len(doc["stages"]) + 1, (len(body), len(doc["stages"]))
+
+
+def test_the_generated_table_states_the_nesting_verdict() -> None:
+    """A stage that is not a superset makes every difference in the table ambiguous.
+
+    The table reports differences between stages. If a stage dropped arms, a change could
+    be arms added or arms lost and the reader cannot tell which, so the verdict belongs
+    beside the numbers rather than in a separate section.
+    """
+    import json
+    import pathlib
+    import sys
+
+    root = pathlib.Path(__file__).resolve().parents[1]
+    artefact = root / "artifacts" / "corpus_ablation.json"
+    if not artefact.exists():
+        return
+    sys.path.insert(0, str(root / "scripts"))
+    import sync_report_numbers as srn
+
+    doc = json.loads(artefact.read_text(encoding="utf-8"))
+    block = srn.build_ablation_block(doc)
+    dropped = sum(n.get("corpus_arms_dropped", 0) for n in doc.get("nesting") or [])
+    assert f"**{dropped} corpus arms dropped**" in block
+    assert dropped == 0, (
+        f"{dropped} corpus arms are dropped across the stages, so the ablation is no "
+        "longer interpretable as arms added"
+    )

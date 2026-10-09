@@ -48,6 +48,9 @@ HFN_END = "<!-- /generated: hard-flag-necessity -->"
 LCE_BEGIN = "<!-- generated: label-change -->"
 LCE_END = "<!-- /generated: label-change -->"
 
+ABL_BEGIN = "<!-- generated: corpus-ablation -->"
+ABL_END = "<!-- /generated: corpus-ablation -->"
+
 RR_BEGIN = "<!-- generated: rank-resolution -->"
 RR_END = "<!-- /generated: rank-resolution -->"
 
@@ -358,6 +361,61 @@ def _marker_indent(text: str, marker: str) -> str:
     """
     m = re.search(r"^([ \t]*)" + re.escape(marker), text, re.M)
     return m.group(1) if m else ""
+
+
+# Stage key -> the label the report uses. Hand-written because the keys are identifiers and
+# the labels are prose, and a generated label would read like one.
+ABLATION_LABELS = {
+    "ctgov_original_agent_list": "ClinicalTrials.gov, the original 18-agent list",
+    "ctgov_literature_agent_list": "ClinicalTrials.gov, the literature's agent list",
+    "plus_literature_arms": "+ literature arms for agents already present",
+    "plus_literature_agents": "+ literature agents",
+    "plus_transcribed": "+ the hand-transcribed database",
+}
+
+
+def build_ablation_block(doc: dict) -> str | None:
+    """The corpus stages, from artifacts/corpus_ablation.json.
+
+    Hand-typed until the fifth stage arrived, and a hand-typed table does not grow a row.
+    The stage that matters most is the last: it is the first that is not a reading of
+    ClinicalTrials.gov plus the open-access literature, and the first to cross the plan's
+    identification floor and to make a fourth mechanism fold viable.
+    """
+    stages = doc.get("stages") or {}
+    order = [k for k in ABLATION_LABELS if k in stages]
+    if len(order) < 2:
+        return None
+    lines = [
+        ABL_BEGIN, "",
+        "| stage | agents | arms in the grid | cells | cells that identify a design "
+        "coefficient | observed | viable LOMO folds |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    for key in order:
+        st = stages[key]
+        folds = sum(1 for m in (st.get("mechanisms") or {}).values()
+                    if m.get("viable_fold"))
+        last = key == order[-1]
+        bold = (lambda v: f"**{v}**") if last else (lambda v: str(v))
+        lines.append(
+            f"| {ABLATION_LABELS[key]} | {bold(st['n_agents'])} | {st['n_arms']} | "
+            f"{st['n_cells']:,} | {bold(st['identifying_cells'])} | "
+            f"{st['observed_share'] * 100:.1f}% | {bold(folds)} |"
+        )
+    # The nesting verdict belongs with the table: a stage that is not a superset of the one
+    # before it makes every difference in the table ambiguous between arms added and arms
+    # dropped.
+    nesting = doc.get("nesting") or []
+    if nesting:
+        dropped = sum(n.get("corpus_arms_dropped", 0) for n in nesting)
+        lines += ["", (
+            f"Each stage is a superset of the one before it -- {len(nesting)} transitions, "
+            f"**{dropped} corpus arms dropped** across all of them -- so a difference in "
+            "this table is always arms added and never arms lost."
+        )]
+    lines += ["", ABL_END]
+    return "\n".join(lines)
 
 
 def build_rank_resolution_block(doc: dict) -> str | None:
@@ -904,6 +962,8 @@ def main() -> int:
     # at all.
     ap.add_argument("--report", type=Path, nargs="+",
                     default=[Path("report/findings.md"), Path("docs/MODEL_CARD.md")])
+    ap.add_argument("--corpus-ablation", type=Path,
+                    default=Path("artifacts/corpus_ablation.json"))
     ap.add_argument("--rank-resolution", type=Path,
                     default=Path("artifacts/rank_resolution.json"))
     ap.add_argument("--payload-compression", type=Path,
@@ -958,6 +1018,12 @@ def main() -> int:
     )
     # These two are built per document rather than once, because their indent comes from
     # where the marker sits in that document.
+    abl_block = (
+        build_ablation_block(
+            json.loads(args.corpus_ablation.read_text(encoding="utf-8"))
+        )
+        if args.corpus_ablation.exists() else None
+    )
     rr_block = (
         build_rank_resolution_block(
             json.loads(args.rank_resolution.read_text(encoding="utf-8"))
@@ -990,6 +1056,7 @@ def main() -> int:
     sax_pattern = re.compile(re.escape(SAX_BEGIN) + r".*?" + re.escape(SAX_END), re.S)
     pac_pattern = re.compile(re.escape(PAC_BEGIN) + r".*?" + re.escape(PAC_END), re.S)
     rr_pattern = re.compile(re.escape(RR_BEGIN) + r".*?" + re.escape(RR_END), re.S)
+    abl_pattern = re.compile(re.escape(ABL_BEGIN) + r".*?" + re.escape(ABL_END), re.S)
     rc = 0
     for doc in args.report:
         text = doc.read_text(encoding="utf-8")
@@ -1003,6 +1070,16 @@ def main() -> int:
                     text = replaced
                     doc.write_text(text, encoding="utf-8")
                     print(f"{doc}: results table regenerated")
+        if abl_block and abl_pattern.search(text):
+            replaced = abl_pattern.sub(lambda _: abl_block, text)
+            if replaced != text:
+                if args.check:
+                    print(f"{doc}: corpus-ablation block is STALE")
+                    rc = 1
+                else:
+                    text = replaced
+                    doc.write_text(text, encoding="utf-8")
+                    print(f"{doc}: corpus-ablation block regenerated")
         if rr_block and rr_pattern.search(text):
             replaced = rr_pattern.sub(lambda _: rr_block, text)
             if replaced != text:

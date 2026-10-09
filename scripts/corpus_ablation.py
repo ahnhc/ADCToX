@@ -177,6 +177,14 @@ def main() -> int:
         "plus_literature_arms": (full, registry_agents, False),
         "plus_literature_agents": (full, None, False),
     }
+    # A fifth stage, where the frames exist: the corpus merged with the hand-transcribed
+    # database. It is the first stage that is not a reading of ClinicalTrials.gov plus the
+    # open-access literature, and the one that crosses the plan's identification floor.
+    # Added conditionally because the workbook is not redistributed, so a clean clone has
+    # four stages and the table shortens rather than failing.
+    merged = ROOT / "data" / "processed" / "with_atlas"
+    if (merged / "arms.parquet").exists():
+        stages["plus_transcribed"] = (merged, None, False)
     described: dict[str, dict] = {}
     for name, (path, agents, restrict) in stages.items():
         described[name] = describe(path, axes, agents, restrict)

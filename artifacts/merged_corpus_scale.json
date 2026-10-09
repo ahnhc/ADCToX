@@ -98,9 +98,9 @@
   },
   {
    "level": "payload_identity",
-   "levels": 24,
-   "parameters": 322,
-   "ratio": 2.78,
+   "levels": 23,
+   "parameters": 308,
+   "ratio": 2.91,
    "meets_identification_floor": false
   }
  ],
@@ -139,11 +139,11 @@
  "n_viable_folds": 4,
  "atlas_arms_at_min_n": 140,
  "provenance": {
-  "revision": "d0745ee7129fb0a6d2877af8f606719752c87519",
+  "revision": "91848175da577fc76fb81e653043f900c722f5a1",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "merged_corpus_scale.py",
-  "written_utc": "2026-10-09T16:38:29+00:00",
+  "written_utc": "2026-10-09T17:19:32+00:00",
   "inputs": {}
  }
 }

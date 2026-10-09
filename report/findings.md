@@ -1054,12 +1054,20 @@ routes to new agents.
 
 ### Why arms are not agents, measured in one table
 
+<!-- generated: corpus-ablation -->
+
 | stage | agents | arms in the grid | cells | cells that identify a design coefficient | observed | viable LOMO folds |
 |---|---|---|---|---|---|---|
 | ClinicalTrials.gov, the original 18-agent list | 16 | 285 | 3,990 | 224 | 86.3% | 2 |
-| ClinicalTrials.gov, the literature's agent list | **22** | 299 | 4,186 | **308** | 86.6% | **3** |
+| ClinicalTrials.gov, the literature's agent list | 22 | 299 | 4,186 | 308 | 86.6% | 3 |
 | + literature arms for agents already present | 25 | 459 | 6,426 | 350 | 67.9% | 3 |
-| + literature agents | **32** | 482 | 6,748 | 448 | 66.9% | 3 |
+| + literature agents | 32 | 482 | 6,748 | 448 | 66.9% | 3 |
+| + the hand-transcribed database | **64** | 612 | 8,568 | **896** | 63.0% | **4** |
+
+Each stage is a superset of the one before it -- 4 transitions, **0 corpus arms dropped** across all of them -- so a difference in this table is always arms added and never arms lost.
+
+<!-- /generated: corpus-ablation -->
+
 
 **The second row was not in this report and it is where most of the value is.** Attribution
 matches a ClinicalTrials.gov event group against the names and aliases in
@@ -1069,6 +1077,16 @@ while being computed with a literature-derived agent list -- and separating the 
 that **naming the agents bought 6 agents and 84 identifying cells out of data that was
 already on disk, at no cost to the observed share**, 86.3% to 86.6%, because nothing about
 the reporting changed.
+
+**And the last row is a different kind of thing from the four above it.** The first four are
+readings of ClinicalTrials.gov and the open-access literature by this project's own
+pipeline, and they stop at 32 agents. The fifth is a hand-transcribed database of 99 ADCs
+that arrived from a collaborator, and at this project's own quality threshold it doubles the
+corpus to 64 agents and 896 identifying cells -- crossing the plan's 8:1 identification
+floor for the first time, and making `dna_cleave` a fourth viable fold because four
+calicheamicin ADCs have published a usable table where two are approved. What it costs is
+visible in the same row: the observed share falls to 63.0%, because a transcribed cohort's
+reporting cut is an upper bound and a higher one. See negative results 43, 44 and 48.
 
 Against that, extracting the arms bought 42 more identifying cells and took the observed
 share from 86.6% to 67.9%. Two contributions were being reported as one, and they are
@@ -1607,9 +1625,16 @@ neurologic.
    plan's own way, from 16 agents to 32: payload identity 1.78 to 2.13 (**1.20x**, 10 levels
    to 16, and *backwards* at the last step, 2.50 to 2.13, because the agents the extraction
    added brought five new payloads), family 2.67 to 4.57 (1.71x, 7 to 8), mechanism 4.00 to
-   **8.00** (2.00x, 5 to 5, the taxonomy frozen before extraction). So the receding horizon
-   is real and specific to the payload level -- and the level the model actually uses now
-   reaches the plan's 8:1 floor exactly, which is better than this report previously said.
+   **8.00** (2.00x, 5 to 5, the taxonomy frozen before extraction).
+
+   A fifth corpus stage has since arrived and it corrects the *mechanism* of this result
+   while leaving the conclusion. Over all five stages payload identity runs 1.78, 2.20,
+   2.50, 2.13, **2.91** -- a 1.63x gain for a 4x corpus -- so it is not a receding horizon
+   and `granularity_ratio.py` reports the set of receding levels as empty. It approaches, at
+   a rate that needs something over a thousand agents to reach 8:1 against the roughly 370
+   that have ever entered the clinic. Unreachable because the field is finite, which is a
+   measured claim where the receding horizon was an asserted one. The two coarser levels
+   clear the floor: mechanism at 16.00 and family at **8.00**. See negative result 44.
 7. **Fc silencing is not a design lever.** Three primary papers contradict each other on
    the mechanism, no approved ADC uses it, and no training arm carries it. It is not
    offered as a design slot.
@@ -2198,7 +2223,7 @@ neurologic.
     |---|---|---|---|---|
     | payload mechanism | 5 | 56 | **16.00:1** | met |
     | payload family | 9 | 112 | **8.00:1** | met |
-    | payload identity | 24 | 322 | **2.78:1** | not met |
+    | payload identity | 23 | 308 | **2.91:1** | not met |
 
     The middle row is new. The plan ruled the family level out on the grounds that it
     "reaches only 6.00:1 even at a 54-agent corpus", and this report has two
@@ -2206,12 +2231,22 @@ neurologic.
     agents in the grid it is exactly at the floor, which makes it a thing to *test* rather
     than a thing to rule out -- and the test is a fit, not an arithmetic.
 
-    The bottom row is result 6, holding. Payload identity goes from 17 to 24 as the agents
-    go from 34 to 66, so payloads per agent falls from **0.500 to 0.364**: the vocabulary
-    decelerates, which this report did not know, and nowhere near enough. Doubling the
-    corpus moved the payload-level ratio from 1.99:1 to 2.78:1, still a third of what it
-    would need. **The level that recedes is payload identity, and the level the plan
-    dismissed turns out to have been the one worth waiting for.**
+    **The bottom row corrects result 6's stated mechanism while leaving its conclusion
+    standing, and the correction matters.** This report has said throughout that the payload
+    level "recedes as fast as it is approached": each new agent brings a new payload, so the
+    ratio stays flat however much data arrives. Measured over all five corpus stages, the
+    payload-level ratio runs **1.78, 2.20, 2.50, 2.13, 2.91** as the agents run 16, 22, 25,
+    32, 64. It does not stay flat. It improves by **1.63x** while the corpus grows **4x**,
+    and `granularity_ratio.py` now reports the set of receding levels as **empty**.
+
+    So the honest claim is weaker in form and no weaker in force. The payload level
+    *approaches* its floor, at a rate of roughly 1.6x the ratio for 4x the agents. From
+    2.91 it needs another 2.75x, which at that rate is about **17 times the current corpus,
+    or something over a thousand agents**. Around 370 ADCs have entered the clinic in total
+    and the best database anyone has assembled holds 99. **Payload x axis is out of reach
+    because the field is finite, not because the ratio refuses to move** -- and that is a
+    sharper statement than the one it replaces, because it is a claim about a number that
+    was measured rather than about a trend that was asserted.
 
     One correction, since it is the same defect this section's result 38 is about. The first
     version of this item reported 6.76:1 and concluded the floor was *not* reached. That
