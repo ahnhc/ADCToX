@@ -1,0 +1,79 @@
+{
+  "provenance": {
+    "revision": "7e81149769ec1aa39f700efb102fdca2ed26bd8d",
+    "dirty": true,
+    "snapshot": null,
+    "script": "measure_table_yield.py",
+    "written_utc": "2026-10-09T00:26:57+00:00",
+    "inputs": {
+      "xml_listing": "sha256:7cd7d551cb9911e2be15820f0142d4ac35328008cc03a6d920b4ff2b8f7d8000"
+    }
+  },
+  "agents": {
+    "sought": [
+      "loncastuximab_tesirine",
+      "mirvetuximab_soravtansine"
+    ],
+    "recovered": [],
+    "lost_to_image_only": [
+      "loncastuximab_tesirine"
+    ],
+    "no_ae_table_found": [
+      "mirvetuximab_soravtansine"
+    ],
+    "per_agent": {
+      "loncastuximab_tesirine": {
+        "articles": 8,
+        "ae_tables": 1,
+        "ae_image_only": 1
+      },
+      "mirvetuximab_soravtansine": {}
+    },
+    "journals_per_agent": {
+      "loncastuximab_tesirine": {
+        "Haematologica": 1
+      }
+    }
+  },
+  "totals": {
+    "articles": 8,
+    "tables": 12,
+    "ae_tables": 1,
+    "ae_image_only": 1
+  },
+  "arithmetic": {
+    "cells_checked": 0,
+    "cells_passed": 0,
+    "pass_rate": null,
+    "plan_claimed_pass_rate": 0.868,
+    "median_delta_pp": null
+  },
+  "by_journal": {
+    "Blood Advances": {
+      "articles": 1,
+      "tables": 1
+    },
+    "EJHaem": {
+      "articles": 2,
+      "tables": 2
+    },
+    "Haematologica": {
+      "articles": 2,
+      "tables": 6,
+      "ae_tables": 1,
+      "ae_image_only": 1
+    },
+    "HemaSphere": {
+      "articles": 1
+    },
+    "International Journal of Molecular Sciences": {
+      "articles": 1,
+      "tables": 2
+    },
+    "JAAD Case Reports": {
+      "articles": 1,
+      "tables": 1
+    }
+  },
+  "unparseable": []
+}
