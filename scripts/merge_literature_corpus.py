@@ -79,6 +79,10 @@ def main() -> int:
                          "default: those are the same patients, and admitting both gives "
                          "the trial double weight. On for the validation run, where the "
                          "overlap is the point.")
+    ap.add_argument("--union", type=pathlib.Path, default=None,
+                    help="also write the registry corpus unioned with these arms to this "
+                         "directory, so `fit_forward.py --processed <dir>` refits on both. "
+                         "The registry frames are the base; paper arms are appended.")
     ap.add_argument("--explicit-threshold-only", action="store_true",
                     help="the sensitivity refit: drop tables whose reporting cut was "
                          "derived from the minimum printed rate rather than stated")
@@ -215,6 +219,33 @@ def main() -> int:
     )
     print(f"\n→ {args.out_dir / 'paper_arms.parquet'}")
     print(f"→ {args.out_dir / 'paper_observations.parquet'}")
+
+    if args.union:
+        # The registry frames are the base and paper arms are appended, so a union is only
+        # ever additive -- an existing analysis pointed at `data/processed` is unaffected,
+        # and the comparison that matters is between two directories rather than between
+        # two versions of one file.
+        reg_arms = pd.read_parquet(ROOT / "data" / "processed" / "arms.parquet")
+        reg_obs = pd.read_parquet(ROOT / "data" / "processed" / "observations.parquet")
+        clash = set(reg_arms["arm_key"]) & set(arms["arm_key"])
+        if clash:
+            print(f"오류: arm_key가 겹칩니다 ({len(clash)}건) — union을 쓰지 않습니다",
+                  file=sys.stderr)
+            return 1
+        u_arms = pd.concat([reg_arms, arms], ignore_index=True)
+        u_obs = pd.concat([reg_obs, obs], ignore_index=True)
+        args.union.mkdir(parents=True, exist_ok=True)
+        u_arms.to_parquet(args.union / "arms.parquet", index=False)
+        u_obs.to_parquet(args.union / "observations.parquet", index=False)
+        n_reg_agents = reg_arms["agent"].nunique()
+        n_union_agents = u_arms["agent"].nunique()
+        print(f"\n합집합: 팔 {len(reg_arms)} + {len(arms)} = {len(u_arms)}, "
+              f"약물 {n_reg_agents} → {n_union_agents}, "
+              f"관측 {len(reg_obs)} + {len(obs)} = {len(u_obs)}")
+        if n_union_agents == n_reg_agents:
+            print("  주의: 새 약물 0종입니다. 설계 특징은 약물 단위 상수이므로 "
+                  "식별 셀은 늘지 않습니다 — 늘어난 것은 약물별 프로파일의 정밀도뿐입니다.")
+        print(f"→ {args.union / 'arms.parquet'}")
     return 0
 
 
