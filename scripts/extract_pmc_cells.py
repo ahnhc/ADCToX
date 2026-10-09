@@ -28,18 +28,26 @@ import json
 import pathlib
 import sys
 
+import pandas as pd
 import yaml
+from lxml import etree
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "src"))
 
 from adctox.extract.jats_tables import parse_article  # noqa: E402
 from adctox.extract.table_to_cells import extract  # noqa: E402
+from adctox.extract.trial_dedup import (  # noqa: E402
+    group_sources,
+    primary_trial,
+    trial_ids,
+)
 from adctox.provenance import stamp  # noqa: E402
 from adctox.taxonomy import default_taxonomy  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "conf" / "adc_registry.yaml"
 PT_DICT = ROOT / "data" / "processed" / "pt_soc_dictionary.json"
+ARMS = ROOT / "data" / "processed" / "arms.parquet"
 
 
 def aliases_for(spec: dict) -> set[str]:
@@ -109,6 +117,12 @@ def main() -> int:
         funnel["articles"] += 1
         per_agent[agent]["articles"] += 1
         others = {k: v for k, v in alias_map.items() if k != agent}
+        try:
+            locations = trial_ids(etree.parse(str(path)).getroot())
+        except Exception:
+            locations = {}
+        nct, nct_why = primary_trial(locations)
+        funnel[f"trial_id:{nct_why if nct is None else 'resolved'}"] += 1
 
         for ti, table in enumerate(tables):
             funnel["tables"] += 1
@@ -155,7 +169,34 @@ def main() -> int:
                     "pmcid": pmcid, "table_label": table.label or f"#{ti}",
                     "journal": meta["journal"],
                     "license_code": rec.get("license_code"),
+                    "nct_id": nct,
+                    "nct_provenance": nct_why,
                 })
+
+    # ---- duplicate sources ------------------------------------------------------
+    # Four of the first eight articles report NCT03589469 and the registry holds a fifth
+    # record of the same patients. Admitting all five gives that trial five times its
+    # weight, and the hierarchical model reads the agreement between duplicates as
+    # precision rather than as repetition.
+    registry_ncts: set[str] = set()
+    if ARMS.exists():
+        registry_ncts = set(pd.read_parquet(ARMS, columns=["nct_id"])["nct_id"])
+    by_source: dict[tuple[str, str], dict] = {}
+    for c in cells_out:
+        if not c["nct_id"]:
+            continue
+        key = (c["pmcid"], c["agent"])
+        row = by_source.setdefault(key, {
+            "pmcid": c["pmcid"], "agent": c["agent"], "nct_id": c["nct_id"],
+            "max_denominator": 0, "n_cells": 0,
+        })
+        row["max_denominator"] = max(row["max_denominator"], c["denominator"])
+        row["n_cells"] += 1
+    groups, unresolved = group_sources(list(by_source.values()), registry_ncts)
+    chosen = {(g.chosen_pmcid, g.agent) for g in groups}
+    for c in cells_out:
+        c["is_chosen_source"] = (c["pmcid"], c["agent"]) in chosen or not c["nct_id"]
+        c["overlaps_registry"] = c["nct_id"] in registry_ncts
 
     def pct(n: int, d: int) -> str:
         return f"{100.0 * n / d:5.1f}%" if d else "    --"
@@ -170,6 +211,14 @@ def main() -> int:
           f"{funnel['cells_arith_ok'] + funnel['cells_arith_fail']} "
           f"({pct(funnel['cells_arith_ok'], funnel['cells_arith_ok'] + funnel['cells_arith_fail'])})"
           f"   [계획서 실측 86.8%]")
+
+    n_dup = sum(len(g.candidates) - 1 for g in groups)
+    n_overlap = sum(1 for g in groups if g.overlaps_registry)
+    print(f"  시험 {len(groups)}건, 중복 출처 {n_dup}편 제거, "
+          f"그중 CTGov 중복 {n_overlap}건 (플래그만, 제거 안 함), "
+          f"시험 미확인 {len(unresolved)}편")
+    kept = sum(1 for c in cells_out if c["is_chosen_source"])
+    print(f"  셀 {kept}/{len(cells_out)}개가 선택된 출처에서 나왔습니다")
 
     print("\nAE 표 거부 사유")
     for key in sorted(k for k in funnel if k.startswith("table_rejected:")):
@@ -207,6 +256,21 @@ def main() -> int:
         "unmapped_rows": dict(row_misses.most_common(300)),
         "rejected": {k: v[:60] for k, v in reject.items()},
         "rejected_counts": {k: len(v) for k, v in reject.items()},
+        "trials": {
+            "n_groups": len(groups),
+            "n_duplicate_sources_dropped": n_dup,
+            "n_overlapping_registry": n_overlap,
+            "n_sources_without_trial_id": len(unresolved),
+            "groups": [
+                {
+                    "nct_id": g.nct_id, "agent": g.agent,
+                    "overlaps_registry": g.overlaps_registry,
+                    "chosen_pmcid": g.chosen_pmcid, "reason": g.reason,
+                    "candidates": [c["pmcid"] for c in g.candidates],
+                }
+                for g in groups
+            ],
+        },
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n",
