@@ -286,7 +286,12 @@ class OrganRisk(BaseModel):
     band_basis: Literal["common", "serious"] = "common"
     # Whether the band came from the fit or was raised by a label rule. The first thing a
     # reviewer asks about a red axis.
-    band_source: Literal["model", "rule"] = "model"
+    # `target_expression` was emitted by `/propose` and absent from this list, which the
+    # existing validation tests could not see: they query an ILD profile, where the
+    # expression flag does not fire, so no response they build carries the value. The
+    # schema is the contract the TypeScript client is generated from, so a missing member
+    # is a type the client will be told cannot occur.
+    band_source: Literal["model", "rule", "target_expression"] = "model"
     weight_applied: float
     n_supporting_agents: int
     n_supporting_arms: int
