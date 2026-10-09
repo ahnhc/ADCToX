@@ -319,3 +319,87 @@ def test_the_audit_records_that_the_counts_were_hand_curated() -> None:
     doc = json.loads(AUDIT.read_text(encoding="utf-8"))
     assert doc["counts_source"] == "hand_curated_landscape_review"
     assert doc["design_space_frozen_at"]
+
+
+SCALES = ROOT / "artifacts" / "posterior_scales.json"
+EVIDENCE = ROOT / "artifacts" / "axis_evidence.json"
+
+
+@pytest.mark.skipif(not SCALES.exists(), reason="run `make posterior-scales`")
+def test_a_zero_width_interval_is_flagged_as_a_frozen_sampler() -> None:
+    """How the DAR parse error of result 47 presented itself.
+
+    A posterior interval of width zero on 400 draws is not precision, it is a chain that
+    never moved. Flagging it in the artefact is what turns the next occurrence into a line
+    of output rather than a misdiagnosis.
+    """
+    doc = json.loads(SCALES.read_text(encoding="utf-8"))
+    for r in doc["corpora"]:
+        for name, v in r["scales"].items():
+            assert v["degenerate"] == (v["width"] < 1e-6), (r["corpus"], name)
+            assert v["q05"] <= v["mean"] <= v["q95"], (r["corpus"], name)
+    assert doc["summary"]["degenerate_parameters"] == [
+        f"{r['corpus']}/{k}" for r in doc["corpora"]
+        for k, v in r["scales"].items() if v["degenerate"]
+    ]
+
+
+@pytest.mark.skipif(not SCALES.exists(), reason="run `make posterior-scales`")
+def test_a_corpus_with_one_source_is_not_reported_as_wholly_confounded() -> None:
+    """Two situations look alike in a share and are opposite in consequence.
+
+    No source variation at all means the source term is not sampled and `sigma_agent` means
+    what its name says. Variation that some agents do not span means the term is estimated
+    *and* those agents absorb it. Reporting the first as "100% single-source" would read as
+    the worst case when it is the clean one.
+    """
+    doc = json.loads(SCALES.read_text(encoding="utf-8"))
+    for r in doc["corpora"]:
+        ident = r["identifiability"]
+        assert "source_term_sampled" in ident, r["corpus"]
+        if not ident["source_term_sampled"]:
+            assert ident["single_source_share"] is None, r["corpus"]
+            assert ident["both_sources"] == 0
+        else:
+            assert ident["both_sources"] + ident["single_source"] == ident["agents"]
+            assert ident["single_source_share"] == pytest.approx(
+                ident["single_source"] / ident["agents"], abs=1e-4)
+
+
+@pytest.mark.skipif(not SCALES.exists(), reason="run `make posterior-scales`")
+def test_the_identifiability_share_is_counted_on_the_arms_the_grid_keeps() -> None:
+    """Three plausible denominators give 62%, 64% and 67%, and only one is the fit's view.
+
+    The builder drops arms with no observation and below the denominator floor, so an agent
+    whose only registry arm was dropped is literature-only as far as the fit is concerned.
+    Counting over parquet rows, or over every arm of a surviving agent, disagrees with the
+    separability audit -- which is the same two-quantities-one-name defect as results 38
+    and 44, in a third place.
+    """
+    doc = json.loads(SCALES.read_text(encoding="utf-8"))
+    audit = ROOT / "artifacts" / "source_confounding_atlas.json"
+    merged = next((r for r in doc["corpora"] if r["corpus"] == "merged"), None)
+    if merged is None or not audit.exists():
+        return
+    agent_level = json.loads(audit.read_text(encoding="utf-8"))["summary"]["agent_level"]
+    assert merged["identifiability"]["both_sources"] == agent_level["n_both_sources"], (
+        "posterior_scales.py and source_confounding_audit.py disagree about how many "
+        "agents span both sources; they must count the same thing"
+    )
+    assert merged["identifiability"]["agents"] == agent_level["n_agents"]
+
+
+@pytest.mark.skipif(not EVIDENCE.exists(), reason="run `make axis-evidence`")
+def test_a_stalled_axis_is_reported_as_stalled() -> None:
+    """Otologic gains nothing from 46 new agents, and that is a finding rather than a gap."""
+    doc = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+    for r in doc["growth"]:
+        assert r["stalled"] == (r["agents_last"] == r["agents_first"]), r
+        assert r["agents_gained"] == r["agents_last"] - r["agents_first"], r
+        assert r["agents_gained"] >= 0, (
+            f"{r['axis']} lost agents as the corpus grew, which cannot happen if each "
+            "stage is a superset of the last"
+        )
+    assert doc["summary"]["stalled_axes"] == [
+        r["axis"] for r in doc["growth"] if r["stalled"]
+    ]

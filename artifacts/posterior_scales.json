@@ -1,0 +1,104 @@
+{
+ "corpora": [
+  {
+   "corpus": "registry",
+   "agents_in_grid": 22,
+   "identifying_cells": 308,
+   "cells_per_design_parameter": 3.08,
+   "identifiability": {
+    "agents": 22,
+    "both_sources": 0,
+    "single_source": 22,
+    "single_source_share": null,
+    "source_term_sampled": false,
+    "note": "No source variation in this corpus, so the source term is not sampled and sigma_agent is not confounded with it."
+   },
+   "scales": {
+    "sigma_agent": {
+     "mean": 0.3499721726030111,
+     "q05": 0.2364841215312481,
+     "q95": 0.4911538690328597,
+     "width": 0.2546697475016116,
+     "degenerate": false
+    },
+    "b_combo": {
+     "mean": 0.19170185003429652,
+     "q05": 0.1656929776072502,
+     "q95": 0.22039780467748643,
+     "width": 0.05470482707023622,
+     "degenerate": false
+    },
+    "b_dar": {
+     "mean": 0.04555064641745048,
+     "q05": -0.04109096247702836,
+     "q95": 0.13176727220416065,
+     "width": 0.17285823468118902,
+     "degenerate": false
+    }
+   }
+  },
+  {
+   "corpus": "merged",
+   "agents_in_grid": 64,
+   "identifying_cells": 896,
+   "cells_per_design_parameter": 8.96,
+   "identifiability": {
+    "agents": 64,
+    "both_sources": 21,
+    "single_source": 43,
+    "single_source_share": 0.6719,
+    "source_term_sampled": true,
+    "note": "Source variation exists, so the term is sampled; agents that do not span it absorb the reporting gap into their own intercept."
+   },
+   "scales": {
+    "sigma_agent": {
+     "mean": 1.032645915299654,
+     "q05": 0.871288537979126,
+     "q95": 1.1998389899730681,
+     "width": 0.32855045199394217,
+     "degenerate": false
+    },
+    "b_combo": {
+     "mean": 0.36013605564832685,
+     "q05": 0.3397471845149994,
+     "q95": 0.3784283190965652,
+     "width": 0.0386811345815658,
+     "degenerate": false
+    },
+    "b_dar": {
+     "mean": -0.3807218893617392,
+     "q05": -0.43531416952610014,
+     "q95": -0.32701280117034914,
+     "width": 0.108301368355751,
+     "degenerate": false
+    }
+   }
+  }
+ ],
+ "summary": {
+  "n_posteriors": 2,
+  "degenerate_parameters": [],
+  "tradeoff": [
+   {
+    "corpus": "registry",
+    "cells_per_design_parameter": 3.08,
+    "single_source_share": null,
+    "sigma_agent": 0.3499721726030111
+   },
+   {
+    "corpus": "merged",
+    "cells_per_design_parameter": 8.96,
+    "single_source_share": 0.6719,
+    "sigma_agent": 1.032645915299654
+   }
+  ]
+ },
+ "provenance": {
+  "revision": "7f4c5c143278d44ce36091bef472d0be963bdd34",
+  "dirty": true,
+  "snapshot": null,
+  "script": "posterior_scales.py",
+  "written_utc": "2026-10-09T17:00:57+00:00",
+  "inputs": {}
+ }
+}

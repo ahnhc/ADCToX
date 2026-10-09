@@ -1,0 +1,487 @@
+{
+ "summary": {
+  "correlation_concern": 0.3,
+  "within_share_floor": 0.5,
+  "confounded": [],
+  "confounded_and_unaddressed": [],
+  "mechanism_levels_separated_by_source": [],
+  "agent_level": {
+   "n_agents": 64,
+   "n_both_sources": 21,
+   "n_literature_only": 42,
+   "n_registry_only": 1,
+   "n_single_source_single_arm": 12,
+   "agents": [
+    {
+     "agent": "a166",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "abbv_011",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "ags_16c3f",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "anetumab_ravtansine",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "arx788",
+     "registry_arms": 0,
+     "literature_arms": 4,
+     "source": "literature_only"
+    },
+    {
+     "agent": "atg_022",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "bat_8006",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "belantamab_mafodotin",
+     "registry_arms": 18,
+     "literature_arms": 12,
+     "source": "both"
+    },
+    {
+     "agent": "bms_986148",
+     "registry_arms": 0,
+     "literature_arms": 3,
+     "source": "literature_only"
+    },
+    {
+     "agent": "brentuximab_vedotin",
+     "registry_arms": 56,
+     "literature_arms": 15,
+     "source": "both"
+    },
+    {
+     "agent": "camidanlumab_tesirine",
+     "registry_arms": 2,
+     "literature_arms": 1,
+     "source": "both"
+    },
+    {
+     "agent": "cofetuzumab_pelidotin",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "coltuximab_ravtansine",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "crb_701",
+     "registry_arms": 0,
+     "literature_arms": 4,
+     "source": "literature_only"
+    },
+    {
+     "agent": "datopotamab_deruxtecan",
+     "registry_arms": 7,
+     "literature_arms": 24,
+     "source": "both"
+    },
+    {
+     "agent": "depatuxizumab_mafodotin",
+     "registry_arms": 6,
+     "literature_arms": 6,
+     "source": "both"
+    },
+    {
+     "agent": "disitamab_vedotin",
+     "registry_arms": 0,
+     "literature_arms": 20,
+     "source": "literature_only"
+    },
+    {
+     "agent": "dlye5953a",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "dmot4039a",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "dp_303c",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "enapotamab_vedotin",
+     "registry_arms": 2,
+     "literature_arms": 2,
+     "source": "both"
+    },
+    {
+     "agent": "enfortumab_vedotin",
+     "registry_arms": 12,
+     "literature_arms": 16,
+     "source": "both"
+    },
+    {
+     "agent": "farletuzumab_ecteribulin",
+     "registry_arms": 2,
+     "literature_arms": 1,
+     "source": "both"
+    },
+    {
+     "agent": "fs_1502",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "gemtuzumab_ozogamicin",
+     "registry_arms": 18,
+     "literature_arms": 1,
+     "source": "both"
+    },
+    {
+     "agent": "glembatumumab_vedotin",
+     "registry_arms": 0,
+     "literature_arms": 3,
+     "source": "literature_only"
+    },
+    {
+     "agent": "iladatuzumab_vedotin",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "indatuximab_ravtansine",
+     "registry_arms": 0,
+     "literature_arms": 3,
+     "source": "literature_only"
+    },
+    {
+     "agent": "indusatumab_vedotin",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "inotuzumab_ozogamicin",
+     "registry_arms": 21,
+     "literature_arms": 9,
+     "source": "both"
+    },
+    {
+     "agent": "izalontamab_brengitecan",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "lifastuzumab_vedotin",
+     "registry_arms": 0,
+     "literature_arms": 4,
+     "source": "literature_only"
+    },
+    {
+     "agent": "loncastuximab_tesirine",
+     "registry_arms": 6,
+     "literature_arms": 0,
+     "source": "registry_only"
+    },
+    {
+     "agent": "lorvotuzumab_mertansine",
+     "registry_arms": 0,
+     "literature_arms": 5,
+     "source": "literature_only"
+    },
+    {
+     "agent": "medi2228",
+     "registry_arms": 0,
+     "literature_arms": 3,
+     "source": "literature_only"
+    },
+    {
+     "agent": "mirvetuximab_soravtansine",
+     "registry_arms": 10,
+     "literature_arms": 5,
+     "source": "both"
+    },
+    {
+     "agent": "mrg_004a",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "mytx_011",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "patritumab_deruxtecan",
+     "registry_arms": 8,
+     "literature_arms": 4,
+     "source": "both"
+    },
+    {
+     "agent": "pf_06647263",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "pf_06804103",
+     "registry_arms": 0,
+     "literature_arms": 3,
+     "source": "literature_only"
+    },
+    {
+     "agent": "pinatuzumab_vedotin",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "pivekimab_sunirine",
+     "registry_arms": 1,
+     "literature_arms": 1,
+     "source": "both"
+    },
+    {
+     "agent": "polatuzumab_vedotin",
+     "registry_arms": 20,
+     "literature_arms": 9,
+     "source": "both"
+    },
+    {
+     "agent": "praluzatamab_ravtansine",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "rovalpituzumab_tesirine",
+     "registry_arms": 1,
+     "literature_arms": 4,
+     "source": "both"
+    },
+    {
+     "agent": "sacituzumab_govitecan",
+     "registry_arms": 21,
+     "literature_arms": 27,
+     "source": "both"
+    },
+    {
+     "agent": "sacituzumab_tirumotecan",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "samrotamab_vedotin",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "sc_002",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "serclutamab_talirine",
+     "registry_arms": 0,
+     "literature_arms": 3,
+     "source": "literature_only"
+    },
+    {
+     "agent": "sirtratumab_vedotin",
+     "registry_arms": 0,
+     "literature_arms": 5,
+     "source": "literature_only"
+    },
+    {
+     "agent": "sysa_1801",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "telisotuzumab_adizutecan",
+     "registry_arms": 0,
+     "literature_arms": 4,
+     "source": "literature_only"
+    },
+    {
+     "agent": "telisotuzumab_vedotin",
+     "registry_arms": 0,
+     "literature_arms": 15,
+     "source": "literature_only"
+    },
+    {
+     "agent": "tisotumab_vedotin",
+     "registry_arms": 5,
+     "literature_arms": 2,
+     "source": "both"
+    },
+    {
+     "agent": "trastuzumab_deruxtecan",
+     "registry_arms": 32,
+     "literature_arms": 16,
+     "source": "both"
+    },
+    {
+     "agent": "trastuzumab_duocarmazine",
+     "registry_arms": 2,
+     "literature_arms": 1,
+     "source": "both"
+    },
+    {
+     "agent": "trastuzumab_emtansine",
+     "registry_arms": 48,
+     "literature_arms": 26,
+     "source": "both"
+    },
+    {
+     "agent": "trastuzumab_rezetecan",
+     "registry_arms": 0,
+     "literature_arms": 8,
+     "source": "literature_only"
+    },
+    {
+     "agent": "tusamitamab_ravtansine",
+     "registry_arms": 0,
+     "literature_arms": 2,
+     "source": "literature_only"
+    },
+    {
+     "agent": "vadastuximab_talirine",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "vobramitamab_duocarmazine",
+     "registry_arms": 1,
+     "literature_arms": 5,
+     "source": "both"
+    },
+    {
+     "agent": "zilovertamab_vedotin",
+     "registry_arms": 0,
+     "literature_arms": 3,
+     "source": "literature_only"
+    }
+   ],
+   "reading": "43 of 64 agents have arms from one source only, so for those agents `u_agent` and the source term are collinear and `sigma_agent` is estimating the between-agent scale and the reporting gap together. It is not comparable to the same parameter on a corpus where every agent spans both sources.",
+   "fraction_single_source": 0.671875
+  },
+  "smallest_mechanism_cell": 3
+ },
+ "coefficients": [
+  {
+   "coefficient": "b_dar (arm_dar_c)",
+   "correlation_with_source": -0.059,
+   "within_source_variance_share": 0.996,
+   "separated": false,
+   "confounded": false,
+   "addressed_by": null
+  },
+  {
+   "coefficient": "b_thresh (arm_thresh_c)",
+   "correlation_with_source": 0.274,
+   "within_source_variance_share": 0.925,
+   "separated": false,
+   "confounded": false,
+   "addressed_by": null
+  },
+  {
+   "coefficient": "b_log_n (arm_log_n_c)",
+   "correlation_with_source": 0.047,
+   "within_source_variance_share": 0.998,
+   "separated": false,
+   "confounded": false,
+   "addressed_by": null
+  },
+  {
+   "coefficient": "b_combo (arm_combo)",
+   "correlation_with_source": -0.472,
+   "within_source_variance_share": 0.777,
+   "separated": false,
+   "confounded": false,
+   "addressed_by": "b_source plus the centred source_axis vector, added after b_combo moved from +0.195 on the registry corpus to +1.091 on the expanded one"
+  },
+  {
+   "coefficient": "cleav_axis (arm_cleavable)",
+   "correlation_with_source": 0.02,
+   "within_source_variance_share": 1.0,
+   "separated": false,
+   "confounded": false,
+   "addressed_by": null
+  }
+ ],
+ "mechanisms": [
+  {
+   "level": "dna_alkyl",
+   "registry_arms": 3,
+   "literature_arms": 6
+  },
+  {
+   "level": "dna_cleave",
+   "registry_arms": 39,
+   "literature_arms": 13
+  },
+  {
+   "level": "dna_crosslink",
+   "registry_arms": 10,
+   "literature_arms": 14
+  },
+  {
+   "level": "topo1",
+   "registry_arms": 68,
+   "literature_arms": 88
+  },
+  {
+   "level": "tubulin",
+   "registry_arms": 179,
+   "literature_arms": 196
+  }
+ ],
+ "b_combo_without_source_term": {
+  "registry": 0.195,
+  "expanded": 1.091,
+  "note": "Posterior means for b_combo with no source indicator in the model. Both predate the corpus rebuild -- the registry corpus then held 16 agents and 285 arms, not 22 and 299 -- and the specification that produced them no longer exists, because b_source was added in response to exactly this gap. Quoted for the gap between them, which is the finding, and not as current coefficients."
+ },
+ "provenance": {
+  "revision": "7f4c5c143278d44ce36091bef472d0be963bdd34",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "source_confounding_audit.py",
+  "written_utc": "2026-10-09T16:58:04+00:00",
+  "inputs": {}
+ }
+}

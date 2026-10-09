@@ -40,6 +40,7 @@ FORWARD_METRICS := $(ART)/forward_other_metrics.json
         dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
         residual-scale comorbidity-sensitivity payload-compression \
         atlas-ingest atlas-merge merged-scale precedent-audit \
+        source-confounding-atlas axis-evidence posterior-scales \
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
@@ -55,7 +56,7 @@ FORWARD_METRICS := $(ART)/forward_other_metrics.json
 all: taxonomy corpus forward censoring-sensitivity expression enrichment module-b \
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent residual-scale \
-     comorbidity-sensitivity payload-compression \
+     comorbidity-sensitivity payload-compression axis-evidence posterior-scales \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
      granularity-ratio source-axis source-confounding axis-composition \
      check-report
@@ -245,6 +246,26 @@ merged-scale: atlas-merge
 # never been checked against a corpus. See negative result 46.
 precedent-audit: atlas-merge
 	$(PY) scripts/precedent_audit.py
+
+# The same separability audit on the merged corpus. It answers a question the merge raises
+# and does not settle: crossing the identification floor for the *design* terms made the
+# *agent* random effect less identifiable, because 42 of the 46 added agents have arms from
+# one source only. See negative result 48.
+source-confounding-atlas: atlas-merge
+	$(PY) scripts/source_confounding_audit.py \
+	  --processed $(PROC)/with_atlas --out $(ART)/source_confounding_atlas.json
+
+# How many agents does each organ axis rest on, and which axes stop growing as the corpus
+# does? Thirteen of fourteen gain agents; otologic gains nothing from 46 new ones, which is
+# negative result 34's reporting selection in its total form.
+axis-evidence:
+	$(PY) scripts/axis_evidence.py
+
+# Which corpus is each parameter's estimate worth taking from? The identification ratio and
+# the agent-source identifiability move in opposite directions, so "bigger" does not decide.
+# See negative result 48.
+posterior-scales:
+	$(PY) scripts/posterior_scales.py
 
 # Does the comorbidity profile reach the proposed design? The product's primary input
 # against its primary output, which had never been measured. See negative result 40.

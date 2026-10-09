@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 48 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 50 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -2313,6 +2313,61 @@ neurologic.
     agent-source collinearity of result 39, and it is a specification question -- whether a
     reporting cut belongs in the linear predictor at all, or only in the censoring -- rather
     than a bug.
+
+48. **Crossing the identification floor for the design terms made the agent random effect
+    less identifiable, and the two move in opposite directions.** The merged corpus fits.
+    With the DAR parse error of result 47 out of the way the sampler moves and the intervals
+    are real: `sigma_agent` **+1.0326 [+0.8713, +1.1998]**, `b_combo` **+0.3601**, `b_dar`
+    **-0.3807** and clear of zero where the registry corpus had +0.0456 including it.
+
+    `sigma_agent` is three times the registry corpus's **+0.3500**, and result 39 says what
+    that means. Of the 64 agents in the merged grid, **43 have arms from one source only**
+    -- 42 from the transcribed and literature side, 1 from the registry -- and 12 of those
+    rest on a single arm. Only **21 of 64** can tell the source term apart from the agent's
+    own intercept. The merge made this *worse*: on the 32-agent corpus it was 15 of 32, 47%,
+    and here it is 67%. So `sigma_agent` on this corpus is a between-agent scale and a
+    reporting gap added together, and more of it is reporting gap than before.
+
+    The magnitudes agree with that reading rather than with a drug-diversity one. The jump
+    is 1.0326 - 0.3500 = **0.68**, and result 34 measured the reporting-source gap's
+    between-axis standard deviation at **0.6280** with a range of -0.5940 to +1.8547. A
+    source gap of that size absorbed into an agent intercept is exactly an 0.68 inflation.
+
+    This has a product consequence that is not a caveat but a decision. The prediction path
+    adds a draw from `sigma_agent` to every new design, because two ADCs with identical
+    slots do differ. At 0.35 that widens an interval honestly. At 1.03 it widens it with
+    variance that is mostly an artefact of which document the arm was read from, and the
+    product would be reporting reporting-practice as drug uncertainty. **So the two corpora
+    are for different things**: the merged corpus is where the design coefficients and the
+    fold validation belong, because that is what 8.96:1 and a fourth viable fold buy, and
+    the registry corpus is where the agent-level residual belongs, because it is the only
+    one of the three where every agent has one source and the parameter means what its name
+    says. Serving one posterior for both was never a measured choice; it is now a measured
+    refusal.
+
+    **A corpus can be better for one parameter and worse for another, and "bigger" does not
+    decide which.**
+
+49. **Thirteen of the fourteen organ axes grow with the corpus and one does not move at
+    all.** The interface greys out an axis with "no evidence in the training set", and that
+    hatching was driven by whether a cell existed rather than by how many agents the axis
+    rests on -- which is the weaker question, since design features are agent-level constants
+    and an axis estimated from eighteen agents is estimated from eighteen.
+
+    Measured across the three corpus stages as the agent count goes 22 to 64: haematologic
+    and gastrointestinal reach **59** agents, constitutional 58, metabolic 57, and the
+    thinnest of the growing axes, renal, reaches 32. **Otologic stands at 18 agents and 104
+    observed cells at every stage** -- identical on the registry corpus, the
+    literature-extended corpus and the merged one. Forty-six new agents contributed nothing
+    to it.
+
+    The cause is negative result 34's reporting selection in its total form. Among the
+    agents with arms from both a registry and a paper, the papers supply **zero** otologic
+    observations against the registry's 96, and the transcribed database's twelve
+    `Ear / Labyrinth` rows had no any-grade row with a denominator. Papers about ADCs do not
+    mention hearing, and a hand transcription of those papers cannot either. So for one
+    organ of fourteen the design coefficients rest on **28%** of the agents the other axes
+    see, and that is a fact about the literature and not about the ear.
 
 ## 9b. The clean-clone check, run for the first time
 
