@@ -62,8 +62,42 @@ class ScoredDesign:
     nearest_real_diff: str | None = None
     rank: int | None = None
     tie_group: int | None = None
+    # Two different statements, which one flag used to carry and which read as a
+    # contradiction whenever the leader sat alone in its tie group: the interface said
+    # "not distinguishable from its group" about a group of one.
+    #
+    # `distinguishable` is pairwise: this candidate's tie group holds only itself, so it is
+    # separable from its immediate neighbours.
     distinguishable: bool | None = None
+    # `lead_is_decisive` is about the head of the list only, and is None for everything
+    # else. The leader can be separable from the runner-up and still win on too few paired
+    # draws to print a winner, which is the case the decisive threshold exists for.
+    lead_is_decisive: bool | None = None
+    # P(this candidate's weighted risk < the runner-up's), on paired draws. Head only.
+    lead_p: float | None = None
+    # How many candidates share this one's rank, so a reader does not have to count them.
+    group_size: int | None = None
+    # Set only where the group holds more than one candidate: what the display order inside
+    # it means, since O1 has stopped discriminating and something still had to order them.
+    secondary_order_basis: str | None = None
     draws_o1: np.ndarray | None = field(default=None, repr=False)
+
+
+def _p_better(a: np.ndarray, b: np.ndarray) -> float:
+    """P(a beats b) on paired draws, splitting exact ties.
+
+    A strict ``(a < b).mean()`` reads an exact tie as a loss, and exact ties are the normal
+    case here rather than a corner: the model has no term separating DM1 from DM4, both
+    maytansinoids on the same linker, so their predicted risk is identical in every draw.
+    The strict form returned 0.0 for such a pair, which `min(p, 1-p)` then read as decisive
+    separation -- so two designs the model considers the same were printed as rank 1 and
+    rank 2, while pairs that genuinely overlapped at P = 0.53 were correctly merged. The
+    comparison was inverted precisely where it mattered most.
+
+    Splitting the tied mass sends an identical pair to 0.5, which is both the right answer
+    and the most strongly tied value the thresholds can see.
+    """
+    return float((a < b).mean() + 0.5 * (a == b).mean())
 
 
 def _pareto_front(points: np.ndarray) -> np.ndarray:
@@ -183,10 +217,14 @@ def rank_and_group(
     tie_threshold: float = 0.35,
     decisive_threshold: float = 0.80,
 ) -> tuple[list[ScoredDesign], list[int], list[list[int]]]:
-    """Order by O1, then collapse adjacent candidates whose posteriors overlap.
+    """Order by O1, then collapse candidates whose posteriors overlap with their group's best.
 
-    `tie_threshold`: if P(i better than j) sits within [1-t, t] for an adjacent pair,
-    the two are not distinguishable and share a rank.
+    `tie_threshold`: a candidate joins the open group if P(group leader beats it) sits
+    within [t, 1-t]. Measured against the **leader** and not the immediate predecessor:
+    chaining on adjacent pairs is transitive, so A~B and B~C put A and C in one group even
+    where A beats C on nearly every draw, and on a real query that swallowed all 74
+    candidates into a single set. Leader-anchored, the same query gives two groups of 49
+    and 25.
     `decisive_threshold`: a ranked list is only emitted when the leader beats the runner-up
     on this fraction of paired draws; otherwise the head of the list is an unordered set.
 
@@ -198,11 +236,11 @@ def rank_and_group(
     groups: list[list[int]] = []
     current = [0]
     for i in range(1, len(ordered)):
-        a, b = ordered[i - 1].draws_o1, ordered[i].draws_o1
+        a, b = ordered[current[0]].draws_o1, ordered[i].draws_o1
         if a is None or b is None:
             p_better = 1.0
         else:
-            p_better = float((a < b).mean())
+            p_better = _p_better(a, b)
         if min(p_better, 1.0 - p_better) > tie_threshold:
             current.append(i)
         else:
@@ -210,20 +248,40 @@ def rank_and_group(
             current = [i]
     groups.append(current)
 
+    # Within a group O1 has said all it can, so the display order comes from the other two
+    # objectives: worst single organ first, then precedent. This is a stated preference and
+    # not a confidence ordering, which is why `distinguishable` stays False for all of them
+    # and `secondary_order_basis` names the criterion on every card.
+    for group in groups:
+        if len(group) > 1:
+            inner = sorted(
+                group,
+                key=lambda i: (ordered[i].o2_worst_axis_risk, -ordered[i].o3_precedent),
+            )
+            reordered = [ordered[i] for i in inner]
+            for slot, item in zip(group, reordered):
+                ordered[slot] = item
+
     for gi, group in enumerate(groups):
         rank = group[0] + 1
         for i in group:
             ordered[i].rank = rank
             ordered[i].tie_group = gi
             ordered[i].distinguishable = len(group) == 1
+            ordered[i].group_size = len(group)
+            if len(group) > 1:
+                ordered[i].secondary_order_basis = (
+                    "worst single organ, then precedent -- O1 cannot separate this group"
+                )
 
     if len(ordered) >= 2 and ordered[0].draws_o1 is not None:
-        lead = float((ordered[0].draws_o1 < ordered[1].draws_o1).mean())
-        if lead < decisive_threshold:
-            # The leader is not decisive; mark the head group as unordered so the UI
-            # presents a set rather than a winner.
-            for i in groups[0]:
-                ordered[i].distinguishable = False
+        lead = _p_better(ordered[0].draws_o1, ordered[1].draws_o1)
+        # The head group carries the decisiveness verdict separately from the pairwise one.
+        # Collapsing the two into `distinguishable` made a singleton head group report that
+        # it was indistinguishable from a group containing nothing else.
+        for i in groups[0]:
+            ordered[i].lead_is_decisive = lead >= decisive_threshold
+            ordered[i].lead_p = lead
 
     pts = np.array(
         [[s.o1_weighted_risk, s.o2_worst_axis_risk, -s.o3_precedent] for s in ordered]

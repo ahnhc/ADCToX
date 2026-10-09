@@ -313,9 +313,25 @@ def propose(
     # further signal it would mislead. So the peak is surfaced explicitly, and Pareto
     # membership (which does account for O2) is attached per candidate.
     pareto_set = set(pareto)
+    # Which candidates to show. The first `top_k` by O1 is wrong once the head group is
+    # large: on the HER2 query above, 49 of 74 candidates sit in one indistinguishable
+    # group, and taking the first six by their secondary order displayed three dominated
+    # designs while hiding five non-dominated ones. Showing a candidate that is beaten on
+    # all three objectives, in place of one that is beaten on none, cannot be defended
+    # whatever the ordering inside the group.
+    #
+    # So the Pareto front comes first, in the order already established, and the remainder
+    # fills any slots left over. Where O1 does separate the candidates the front contains
+    # the leader anyway, so this changes nothing in the case the ranking works.
+    shown_idx = [i for i in range(len(ordered)) if i in pareto_set][:top_k]
+    if len(shown_idx) < top_k:
+        shown_idx += [
+            i for i in range(len(ordered)) if i not in pareto_set
+        ][: top_k - len(shown_idx)]
     conditions = set(condition_ids)
     candidates = []
-    for idx, s in enumerate(ordered[:top_k]):
+    for idx in shown_idx:
+        s = ordered[idx]
         flags_by_axis = applicable_flags(
             s.design.mechanism, s.design.payload, conditions, enabled=hard_flags
         )
@@ -368,6 +384,15 @@ def propose(
                 # penalise, because no stated comorbidity touches them.
                 "unweighted_high_axes": high_axes,
                 "distinguishable": s.distinguishable,
+                # Head of the list only, and None elsewhere. A leader can be
+                # separable from the runner-up and still not beat it on enough
+                # paired draws to print a winner.
+                "lead_is_decisive": s.lead_is_decisive,
+                "group_size": s.group_size,
+                "secondary_order_basis": s.secondary_order_basis,
+                "lead_p": (
+                    round(s.lead_p, 3) if s.lead_p is not None else None
+                ),
                 "design": s.design.slots,
                 "mechanism": s.design.mechanism,
                 "organ_risks": [
@@ -493,7 +518,12 @@ def propose(
         "n_enumerated": len(designs),
         "n_passed_constraints": len(passing),
         "candidates": candidates,
-        "pareto_front": [i for i in pareto if i < top_k],
+        # Positions within `candidates`, not indices into the full ordering: a
+        # consumer can only resolve what it was sent.
+        "pareto_front": [
+            pos for pos, i in enumerate(shown_idx) if i in pareto_set
+        ],
+        "n_pareto_front": len(pareto),
         "tie_groups": groups,
         "weights_applied": weights,
         "comorbidity_resolution": comorb.per_condition,

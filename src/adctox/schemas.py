@@ -325,7 +325,20 @@ class AssessResponse(BaseModel):
 class Candidate(BaseModel):
     rank: int
     tie_group: int
+    # Pairwise: this candidate's tie group holds only itself.
     distinguishable: bool
+    # The head of the list only, null for every other candidate: whether the leader beats
+    # the runner-up on enough paired draws to be printed as a winner, and on what fraction.
+    # Separate from `distinguishable` because a leader alone in its tie group can still
+    # fail this, and one flag covering both said "not distinguishable from its group" about
+    # a group of one.
+    lead_is_decisive: bool | None = None
+    lead_p: float | None = None
+    # How many candidates share this rank.
+    group_size: int | None = None
+    # Non-null only inside a group of more than one: what orders the group, given that the
+    # patient-weighted risk could not. A stated preference, never a confidence ordering.
+    secondary_order_basis: str | None = None
     design: dict
     organ_risks: list[OrganRisk]
     weighted_risk: float
@@ -348,7 +361,11 @@ class ProposeResponse(BaseModel):
     n_enumerated: int
     n_passed_constraints: int
     candidates: list[Candidate]
+    # Positions within `candidates`, not indices into the full enumeration.
     pareto_front: list[int]
+    # How many non-dominated candidates exist in total, which is usually larger
+    # than what fits in `candidates` and says how much choice was left unshown.
+    n_pareto_front: int = 0
     tie_groups: list[list[int]]
     weights_applied: dict[str, float]
     why_not_the_obvious_one: dict | None = None

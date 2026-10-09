@@ -83,6 +83,9 @@
   .b-high{color:var(--high)} .b-no_evidence{color:var(--none)}
   .num{font-size:11px;color:var(--ink-dim);font-variant-numeric:tabular-nums}
   .warn{border-left:3px solid var(--high);padding-left:9px;font-size:13px;margin:9px 0}
+  /* The "these are not ranked" card. Not the high-risk colour, which means an organ
+     risk elsewhere on the page: this is a statement about resolution, not danger. */
+  .warn-card{border-left:3px solid var(--none)}
   .disclose{font-size:12px;color:var(--ink-dim);border-top:1px solid var(--line);
             margin-top:9px;padding-top:7px}
   footer{max-width:1100px;margin:22px auto;padding:0 16px;font-size:12px;color:var(--ink-dim)}
@@ -261,10 +264,61 @@ function axisRow(r) {
     </div>`;
 }
 
-function card(c, i) {
+// When the leading tie group covers everything on screen, the cards are a set and not a
+// ranking, and printing "Rank 1" six times with a small tag says that far too quietly. The
+// cards still need an order, so the criterion that produced it is stated here instead of
+// left to be mistaken for confidence.
+function headIsOneSet(d) {
+  const cs = d.candidates || [];
+  if (!cs.length) return false;
+  const head = cs[0];
+  return (head.group_size || 1) > 1 && cs.every(c => c.tie_group === head.tie_group);
+}
+
+function headNote(d) {
+  const cs = d.candidates || [];
+  if (!headIsOneSet(d)) return "";
+  const head = cs[0];
+  const n = head.group_size || 1;
+  return `<div class="card warn-card">
+    <h3>These ${cs.length} designs are not ranked</h3>
+    <p class="note">The patient-weighted risk posteriors of
+      <strong>${n}</strong> candidates overlap too far to order them: the leader beats the
+      runner-up on ${pct(head.lead_p)} of paired posterior draws, where this interface
+      requires ${pct(0.8)} before printing a winner. Read the cards below as a set.</p>
+    <p class="note">They are shown in the order of <strong>${head.secondary_order_basis}</strong>,
+      which is a stated preference and not a measure of confidence.
+      ${d.n_pareto_front > cs.length
+        ? `${d.n_pareto_front} candidates are non-dominated in all; the
+           ${cs.length} shown are drawn from them.`
+        : ""}</p>
+  </div>`;
+}
+
+// `opts` is an object rather than positional arguments because `candidates.map(card)` is
+// the obvious way to call this and passes the array as the third parameter. Positionally
+// that made the array the "one set" flag -- truthy -- and the count `undefined`.
+function card(c, i, opts) {
+  const oneSet = (opts || {}).oneSet === true;
+  const total = (opts || {}).total;
   // Law 6: a shared rank means the posteriors overlap; no medal styling.
-  const tie = c.distinguishable ? "" :
+  //
+  // `distinguishable` and `lead_is_decisive` are two separate statements, and the interface
+  // used to print the first one for both. A leader alone in its tie group was told it was
+  // "not distinguishable from its group", about a group containing nothing else.
+  //
+  // When every card on screen is in one tie group the head note has already said so once,
+  // and repeating it per card -- six identical "Rank 1" headers with two tags each -- buries
+  // the statement in its own repetition. There the header drops the rank entirely.
+  const tie = (oneSet || c.distinguishable) ? "" :
     `<span class="tag">tied &mdash; not distinguishable from its group</span>`;
+  const undecided = (!oneSet && c.lead_is_decisive === false) ?
+    `<span class="tag" title="The leader beats the runner-up on ${pct(c.lead_p)} of paired
+posterior draws, below the ${pct(0.8)} this interface requires before printing a winner.
+Read the head of the list as a set.">leads, but not decisively (${pct(c.lead_p)})</span>` : "";
+  const heading = oneSet
+    ? `Design ${i + 1} of ${total} &mdash; unranked set`
+    : `Rank ${c.rank}`;
   const pareto = c.on_pareto_front ? `<span class="tag">Pareto front</span>` : "";
   const unapproved = c.has_unapproved_component ?
     `<span class="tag">contains a component with no approved ADC</span>` : "";
@@ -273,7 +327,7 @@ function card(c, i) {
   const atRisk = c.organ_risks.filter(r => r.at_risk_for_patient);
   const rest = c.organ_risks.filter(r => !r.at_risk_for_patient);
   return `<div class="card">
-    <h3>Rank ${c.rank}${tie}${pareto}${unapproved}</h3>
+    <h3>${heading}${tie}${undecided}${pareto}${unapproved}</h3>
     <div class="slots">${d.payload} &middot; ${d.linker} &middot; DAR ${d.dar}
       &middot; ${d.conjugation} &middot; ${d.isotype}${d.masking !== "none" ? " &middot; " + d.masking : ""}</div>
     ${high.length ? `<p class="warn"><strong>High-band on axes this profile does not weight:</strong>
@@ -314,11 +368,13 @@ async function run() {
       <p class="note">${d.n_enumerated} chemically valid, individually precedented designs
         enumerated; ${d.n_passed_constraints} passed the constraints.
         ${d.ranking_caveat || ""}</p>
+      ${headNote(d)}
       ${d.ranking_evidence ? `<div class="card"><h3>What this ordering is worth</h3>
         <p class="note">${d.ranking_evidence.summary}</p>
         ${d.ranking_evidence.evaluations.map(evalRow).join("")}
         </div>` : ""}
-      ${d.candidates.map(card).join("")}
+      ${d.candidates.map((c, i) => card(c, i,
+          { oneSet: headIsOneSet(d), total: d.candidates.length })).join("")}
       ${wn ? `<div class="card"><h3>Why not the obvious one</h3>
         <div class="slots">${wn.design.payload} &middot; ${wn.design.linker}
           &middot; DAR ${wn.design.dar}</div>
