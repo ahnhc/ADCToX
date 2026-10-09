@@ -2391,7 +2391,8 @@ neurologic.
 
     Measured across the three corpus stages as the agent count goes 22 to 65: haematologic
     and gastrointestinal reach **59** agents, constitutional 58, metabolic 57, and the
-    thinnest of the growing axes, renal, reaches 32. **Otologic stands at 18 agents and 104
+    thinnest of the growing axes, renal, reaches 32 -- which is below half the corpus, so
+    two of the fourteen axes now rest on a minority of the evidence rather than one. **Otologic stands at 18 agents and 104
     observed cells at every stage** -- identical on the registry corpus, the
     literature-extended corpus and the merged one. Forty-six new agents contributed nothing
     to it.
@@ -2496,10 +2497,22 @@ neurologic.
     displayed it and judged on the other one.
 
     The threshold is now three *agents*, which is the project's own
-    `min_agents_for_holdout`: below three agents of a chemistry, that chemistry's effect on
-    that organ cannot be held out, so it should not be banded as though it could. Result 49
-    is what this costs in practice -- otologic rests on 18 of the corpus's 65 agents where
-    haematologic rests on 59, and it is not short of arms.
+    `min_agents_for_holdout`. Borrowing a threshold from a different question is the kind of
+    thing this section is full of, so it was checked: **does the credible interval already
+    say what the flag says?** If a thinly supported cell always came with a wide interval the
+    flag would be decoration, and the screen shows the interval anyway.
+
+    Measured over 672 cells of the product's own output, the rank correlation between
+    supporting agents and relative interval width is **-0.3104** and the medians are **not
+    monotone** in it -- 3 agents gives 1.467, 4 gives 1.068, 9 gives 1.217, 10 gives 1.060.
+    So the interval does not encode the agent count, the flag is not redundant, **and its
+    threshold is not a precision cut-off**. What three agents buys is *attributability*:
+    below it the chemistry's effect on that organ cannot be held out, so the estimate is
+    untestable rather than imprecise. Those are different warnings and the screen owes the
+    reader both.
+
+    Result 49 is the cost in practice -- otologic rests on 18 of the corpus's 65 agents and
+    renal on 32, against haematologic's 59, and neither is short of arms.
 
     **The pattern this session kept producing has a screen-level version.** Results 38, 44,
     48 and the two in the commit before this one were all a quantity under a name that

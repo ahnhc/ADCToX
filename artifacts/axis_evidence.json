@@ -1,5 +1,29 @@
 {
  "thin_agent_share": 0.5,
+ "thinness_vs_interval": {
+  "cells": 672,
+  "spearman_agents_vs_relative_interval_width": -0.3104,
+  "by_supporting_agents": {
+   "3": {
+    "cells": 24,
+    "median_relative_width": 1.4674
+   },
+   "4": {
+    "cells": 88,
+    "median_relative_width": 1.0676
+   },
+   "9": {
+    "cells": 80,
+    "median_relative_width": 1.217
+   },
+   "10": {
+    "cells": 480,
+    "median_relative_width": 1.0602
+   }
+  },
+  "monotone": false,
+  "reading": "The interval does not encode the agent count: the rank correlation is -0.3104 and the medians are not monotone in it. So the thin flag is not redundant with the interval, and its threshold is not a precision cut-off. What three agents buys is attributability -- below it the chemistry's effect on that organ cannot be held out, so the estimate is untestable rather than imprecise, and those are different warnings."
+ },
  "stages": {
   "registry": {
    "corpus_agents": 22,
@@ -382,11 +406,11 @@
   "corpus_agents_last": 65
  },
  "provenance": {
-  "revision": "1f6fe40f59a12a1a7b28b812d24af3483fc34280",
+  "revision": "add304b30d1279b7f981488acf20adfc687faf56",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "axis_evidence.py",
-  "written_utc": "2026-10-09T17:33:25+00:00",
+  "written_utc": "2026-10-09T18:02:50+00:00",
   "inputs": {}
  }
 }

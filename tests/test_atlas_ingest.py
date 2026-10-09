@@ -403,3 +403,37 @@ def test_a_stalled_axis_is_reported_as_stalled() -> None:
     assert doc["summary"]["stalled_axes"] == [
         r["axis"] for r in doc["growth"] if r["stalled"]
     ]
+
+
+@pytest.mark.skipif(not EVIDENCE.exists(), reason="run `make axis-evidence`")
+def test_the_thin_flag_is_checked_against_the_interval_it_sits_beside() -> None:
+    """A warning that repeats the interval is decoration; one that does not is information.
+
+    The thin flag's threshold is borrowed from `min_agents_for_holdout`, and borrowing a
+    threshold from a different question is the defect this session kept finding. So the
+    check is whether the credible interval already encodes the agent count. It does not --
+    weak rank correlation, non-monotone medians -- which is what makes the flag carry
+    something and what rules out justifying its threshold as a precision cut-off.
+    """
+    doc = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+    tvi = doc.get("thinness_vs_interval")
+    if not tvi:
+        return
+    rho = tvi["spearman_agents_vs_relative_interval_width"]
+    assert -1.0 <= rho <= 1.0
+    # More agents should not make the interval *wider* on average; a positive correlation
+    # would mean the evidence count and the uncertainty point opposite ways and the flag
+    # would need rethinking rather than defending.
+    assert rho <= 0.0, (
+        f"supporting agents correlate positively with interval width at {rho:+.4f}; the "
+        "thin flag and the interval would then be telling opposite stories"
+    )
+    # And if it ever becomes strong and monotone, the flag IS the interval and should go.
+    if tvi["monotone"] and rho < -0.8:
+        raise AssertionError(
+            f"the interval now encodes the agent count (rho {rho:+.4f}, monotone), so the "
+            "thin flag is telling the reader the same thing twice and should be removed "
+            "rather than kept out of habit"
+        )
+    counts = tvi["by_supporting_agents"]
+    assert sum(v["cells"] for v in counts.values()) == tvi["cells"]

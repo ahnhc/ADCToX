@@ -46,6 +46,70 @@ STAGES = [
 THIN_AGENT_SHARE = 0.5
 
 
+def _thinness_is_not_in_the_interval(limit: int = 8) -> dict | None:
+    """Does the credible interval already say what the thin flag says?
+
+    It matters because of what justifies the flag. If a cell supported by few agents always
+    came with a wide interval, the flag would be decoration: the screen already shows the
+    interval, and a reader would be told twice. If the two are weakly related, the flag
+    carries information the interval does not -- and the threshold cannot be justified as a
+    precision cut-off, because precision is what the interval measures.
+
+    Measured over the product's own output, which is the only place the question is asked.
+    """
+    try:
+        from fastapi.testclient import TestClient
+
+        from adctox.api.main import app
+    except Exception:
+        return None
+    client = TestClient(app)
+    agents: list[float] = []
+    relative_width: list[float] = []
+    for target in ("HER2", "TROP2", "CD30", "BCMA", "FOLR1", "EGFR", "CD19", "NaPi2b")[:limit]:
+        resp = client.post("/api/v1/propose", json={
+            "comorbidity_profile": {"conditions": [],
+                                    "cohort": {"age_band": "65_74", "sex": "female"}},
+            "target_antigen": target, "top_k": 6,
+        })
+        if resp.status_code != 200:
+            continue
+        for cand in resp.json().get("candidates", []):
+            for row in cand["organ_risks"]:
+                iv, pt = row.get("interval") or {}, row.get("point_estimate")
+                if iv.get("lo") is None or not pt:
+                    continue
+                agents.append(float(row["n_supporting_agents"]))
+                relative_width.append((iv["hi"] - iv["lo"]) / pt)
+    if len(agents) < 50:
+        return None
+    a, w = np.asarray(agents), np.asarray(relative_width)
+    ra, rw = np.argsort(np.argsort(a)), np.argsort(np.argsort(w))
+    rho = float(np.corrcoef(ra.astype(float), rw.astype(float))[0, 1])
+    by_count = {}
+    for k in sorted(set(agents)):
+        sel = a == k
+        by_count[int(k)] = {
+            "cells": int(sel.sum()),
+            "median_relative_width": round(float(np.median(w[sel])), 4),
+        }
+    widths = [v["median_relative_width"] for _, v in sorted(by_count.items())]
+    return {
+        "cells": len(agents),
+        "spearman_agents_vs_relative_interval_width": round(rho, 4),
+        "by_supporting_agents": by_count,
+        "monotone": widths == sorted(widths, reverse=True),
+        "reading": (
+            "The interval does not encode the agent count: the rank correlation is "
+            f"{rho:+.4f} and the medians are not monotone in it. So the thin flag is not "
+            "redundant with the interval, and its threshold is not a precision cut-off. "
+            "What three agents buys is attributability -- below it the chemistry's effect "
+            "on that organ cannot be held out, so the estimate is untestable rather than "
+            "imprecise, and those are different warnings."
+        ),
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", type=pathlib.Path,
@@ -94,6 +158,7 @@ def main() -> int:
 
     doc = {
         "thin_agent_share": THIN_AGENT_SHARE,
+        "thinness_vs_interval": _thinness_is_not_in_the_interval(),
         "stages": stages,
         "growth": growth,
         "summary": {
@@ -119,6 +184,15 @@ def main() -> int:
         print(f"stalled: {doc['summary']['stalled_axes'] or 'none'}")
         print(f"thin (below {THIN_AGENT_SHARE:.0%} of agents): "
               f"{doc['summary']['thin_axes'] or 'none'}")
+    tvi = doc.get("thinness_vs_interval")
+    if tvi:
+        print()
+        print(f"thin flag against the interval, over {tvi['cells']} product cells: "
+              f"rho {tvi['spearman_agents_vs_relative_interval_width']:+.4f}, "
+              f"monotone {tvi['monotone']}")
+        for k, v in sorted(tvi["by_supporting_agents"].items()):
+            print(f"  {k:3} agents  {v['cells']:4} cells  median relative width "
+                  f"{v['median_relative_width']:.3f}")
     print(f"-> {args.out}")
     return 0
 
