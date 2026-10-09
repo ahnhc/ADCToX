@@ -94,11 +94,15 @@ def artefact_values(dirs: list[Path]) -> tuple[set[str], dict[str, int]]:
                     multiplicity[form] = multiplicity.get(form, 0) + 1
 
     for d in dirs:
-        # `artifacts/superseded/` holds results a later fix overturned. They are scanned
-        # because the report quotes them deliberately, in before/after comparisons, and a
-        # superseded number should trace to a record rather than to an allowlist entry
-        # saying a human checked it once.
-        for path in sorted([*d.glob("*.json"), *d.glob("superseded/*.json")]):
+        # One level of subdirectory is scanned as well as the top level.
+        # `artifacts/superseded/` holds results a later fix overturned, quoted deliberately
+        # in before/after comparisons, and a superseded number should trace to a record
+        # rather than to an allowlist entry saying a human checked it once. The corpus
+        # ablation then added `artifacts/with_literature/` and
+        # `artifacts/with_literature_final/`, whose fitted metrics the report quotes --
+        # and those went unscanned until the guard failed on `0.7213`, which is a real
+        # figure from a real artefact it simply could not see.
+        for path in sorted([*d.glob("*.json"), *d.glob("*/*.json")]):
             try:
                 walk(json.loads(path.read_text(encoding="utf-8")))
             except (OSError, json.JSONDecodeError):
@@ -155,8 +159,9 @@ def main() -> int:
 
     values, multiplicity = artefact_values(args.artifacts)
     allow = load_allowlist(args.allowlist)
+    # Counted with the same glob the scan uses, or the header understates the pool.
     n_files = sum(
-        len(list(d.glob("*.json"))) + len(list(d.glob("superseded/*.json")))
+        len(list(d.glob("*.json"))) + len(list(d.glob("*/*.json")))
         for d in args.artifacts
     )
     print(f"{len(values):,} numeric values across {n_files} artefacts in "

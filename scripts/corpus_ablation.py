@@ -47,8 +47,18 @@ def describe(path: pathlib.Path, axes: list[str]) -> dict:
         }
         for name, agents in sorted(per_mech.items())
     }
+    observed = int((data.status == 0).sum())
+    censored = int(len(data.censored_idx))
     return {
         "summary": data.summary(),
+        # The share of cells that are censored rather than observed, which turned out to
+        # be the thing that decides whether literature arms help. A registry arm reports
+        # most of its organs; a paper's AE table reports a handful, so the other ten or
+        # eleven axes arrive as censored cells -- and for 83% of paper arms the censoring
+        # boundary is an *upper* bound derived from the minimum printed rate rather than a
+        # stated cut. Thousands of cells are therefore told "below X" with X too large.
+        "observed_share": observed / int(data.n_cells),
+        "censored_share": censored / int(data.n_cells),
         "n_agents": len(data.agents),
         "n_arms": int(data.n_arms),
         "n_cells": int(data.n_cells),

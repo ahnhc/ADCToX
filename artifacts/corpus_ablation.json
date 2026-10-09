@@ -1,16 +1,18 @@
 {
   "provenance": {
-    "revision": "5de4cb389955bef68df0e38991af7a10b44a1df6",
+    "revision": "bb49b78e444989d779367c1977b1201b96560ce4",
     "dirty": true,
-    "snapshot": "2026-10-07",
+    "snapshot": null,
     "script": "corpus_ablation.py",
-    "written_utc": "2026-10-09T04:27:12+00:00",
+    "written_utc": "2026-10-09T05:42:48+00:00",
     "inputs": {}
   },
   "min_agents_for_fold": 3,
   "stages": {
     "registry_only": {
       "summary": "3,990 cells over 285 arms x 14 axes (3,440 observed, 471 censored, 79 structural zero) | 16 agents, 5 mechanisms, 7 payload families, 61 multi-arm trials (128 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.8621553884711779,
+      "censored_share": 0.11804511278195488,
       "n_agents": 16,
       "n_arms": 285,
       "n_cells": 3990,
@@ -71,6 +73,8 @@
     },
     "plus_literature_arms": {
       "summary": "7,350 cells over 525 arms x 14 axes (4,433 observed, 2,684 censored, 233 structural zero) | 17 agents, 5 mechanisms, 7 payload families, 66 multi-arm trials (350 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.6031292517006803,
+      "censored_share": 0.36517006802721086,
       "n_agents": 17,
       "n_arms": 525,
       "n_cells": 7350,
@@ -132,6 +136,8 @@
     },
     "plus_literature_agents": {
       "summary": "8,316 cells over 594 arms x 14 axes (4,874 observed, 3,209 censored, 233 structural zero) | 32 agents, 5 mechanisms, 8 payload families, 74 multi-arm trials (390 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.5860990860990861,
+      "censored_share": 0.3858826358826359,
       "n_agents": 32,
       "n_arms": 594,
       "n_cells": 8316,

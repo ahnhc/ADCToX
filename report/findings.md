@@ -720,6 +720,44 @@ trial populations and *no* additional observation of its chemistry.
 The 14 is not zero only because one agent crossed the 30-patient floor on the strength of
 its literature arms.
 
+### The first ablation result is negative, and it says why
+
+Adding 312 literature arms for agents already in the corpus made the model *worse* against
+its own baseline, on both metrics:
+
+| | ClinicalTrials.gov only | + literature arms |
+|---|---|---|
+| leave-one-agent-out macro AUC | 0.8036 | 0.7213 |
+| better baseline on the same folds | 0.8458 | 0.7994 |
+| **delta** | **-0.0422** | **-0.0782** |
+| across-agent mean rho | +0.097 [-0.064, +0.263] | -0.070 [-0.189, +0.065] |
+
+This is what the ablation was built to detect, and the cell composition says what happened:
+
+| | observed | censored |
+|---|---|---|
+| ClinicalTrials.gov only | 86.2% | 11.8% |
+| + literature arms | 60.3% | **36.5%** |
+| + literature agents | 58.6% | 38.6% |
+
+**A paper's adverse-event table is sparse in a way a registry record is not.** A registry
+arm reports most of its organs; a paper reports a handful, so the other ten or eleven axes
+arrive as censored cells. Of the 3,360 cells the literature arms add, about 2,200 are
+censored -- and for 83% of paper arms the censoring boundary is an *upper* bound derived
+from the minimum printed rate rather than a stated cut. So the model is told "this organ's
+rate is below X" with X too large, for thousands of cells at once. Section 5g's threshold
+discussion called that conservative because it widens intervals; at this volume it is not
+conservative, it is wrong information in bulk.
+
+That makes the explicit-threshold subset the decisive experiment rather than a robustness
+check, and `make pmc-merge-explicit` already builds it: 52 arms over 7 agents, every one
+with a cut the caption stated. If the degradation is the bounded threshold, it should not
+appear there.
+
+It also sharpens what the 32-agent fit can show. If more agents improve things despite
+carrying the same sparsity, the agents are doing real work; if they do not, the literature
+path needs the threshold handled differently before its arms belong in the corpus at all.
+
 ### What the third fold costs and what it buys
 
 `dna_crosslink` goes from 2 agents to 4 and crosses the three-agent floor, so the headline
@@ -1174,7 +1212,9 @@ neurologic.
     fifty, and **5.9% match more than fifty** and are checked by nothing at all. The worst
     are figures of the form `1.00`, which match 15,688 pool entries -- real values from real
     artefacts that this method cannot verify, because every probability of one and every
-    ratio of one looks identical. That is a limit of existence-checking rather than a defect
+    ratio of one looks identical. The rate also degrades as the project measures more: the
+    pool grew from 15,184 values to 20,453 over this round and the three-decimal false-pass
+    rate went 75% to 91%, which is the opposite of the direction a guard should move. That is a limit of existence-checking rather than a defect
     in those figures, and closing it would require each figure to cite its own artefact and
     key path.
 

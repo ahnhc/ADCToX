@@ -1,0 +1,472 @@
+{
+ "kind": "other",
+ "corpus": "7,350 cells over 525 arms x 14 axes (4,433 observed, 2,684 censored, 233 structural zero) | 17 agents, 5 mechanisms, 7 payload families, 66 multi-arm trials (350 arms from single-arm trials carry no trial effect)",
+ "parameters": {
+  "design": 100,
+  "nuisance": 90,
+  "total": 190,
+  "identifying_cells": 238,
+  "arm_axis_cells": 7350,
+  "design_ratio_vs_identifying": 2.38
+ },
+ "seed_agreement": {
+  "by_parameter": {
+   "tau_mech": 0.09175526350736618,
+   "tau_cleav": 0.1740054041147232,
+   "b_dar": 0.1064445897936821,
+   "b_combo": 0.003295117523521185,
+   "b_thresh": 0.11226598173379898,
+   "b_log_n": 0.00571437319740653,
+   "sigma_trial": 0.1500788927078247,
+   "sigma_agent": 0.10133247077465057
+  },
+  "worst_standardized_gap": 0.1740054041147232,
+  "threshold": 0.3,
+  "converged": true
+ },
+ "tau_mech": {
+  "mean": 0.6047528982162476,
+  "q05": 0.5063992142677307,
+  "q95": 0.7110794186592102
+ },
+ "tau_family": {
+  "enabled": false
+ },
+ "tau_cleav": {
+  "mean": 0.3294561207294464,
+  "q05": 0.22347187995910645,
+  "q95": 0.4784337878227234
+ },
+ "coefficients": {
+  "b_dar": {
+   "mean": -0.02429777756333351,
+   "q05": -0.14075422286987305,
+   "q95": 0.09394596517086029
+  },
+  "b_combo": {
+   "mean": 1.2135655879974365,
+   "q05": 1.1940500736236572,
+   "q95": 1.232330322265625
+  },
+  "b_thresh": {
+   "mean": 0.03885272517800331,
+   "q05": 0.037364616990089417,
+   "q95": 0.04034049063920975
+  },
+  "b_log_n": {
+   "mean": -0.04069124534726143,
+   "q05": -0.04722483828663826,
+   "q95": -0.0342593714594841
+  },
+  "sigma_trial": {
+   "mean": 0.6355559825897217,
+   "q05": 0.5400800704956055,
+   "q95": 0.7578985691070557
+  },
+  "sigma_agent": {
+   "mean": 0.5420011281967163,
+   "q05": 0.397866815328598,
+   "q95": 0.7908143401145935
+  }
+ },
+ "cv": {
+  "leave_one_mechanism_out": {
+   "folds": [
+    {
+     "fold": "topo1",
+     "n_test_cells": 2436,
+     "auc_model": 0.8047398279265104,
+     "auc_mech_baseline": 0.8509230233368165,
+     "auc_global_baseline": 0.8509230233368165,
+     "delta_auc": -0.04618319541030602,
+     "spearman_model": 0.5655873364382732,
+     "spearman_mech_baseline": 0.4884549379351204,
+     "mae_model": 0.10060269293126212,
+     "mae_mech_baseline": 0.10584754750255261
+    },
+    {
+     "fold": "tubulin",
+     "n_test_cells": 4130,
+     "auc_model": 0.7422409095261724,
+     "auc_mech_baseline": 0.765793528505393,
+     "auc_global_baseline": 0.765793528505393,
+     "delta_auc": -0.023552618979220563,
+     "spearman_model": 0.48515986317254345,
+     "spearman_mech_baseline": 0.42809958722904473,
+     "mae_model": 0.10034559926879354,
+     "mae_mech_baseline": 0.10490164348115785
+    }
+   ],
+   "macro_auc": 0.7734903687263415,
+   "macro_auc_mech_baseline": 0.8083582759211048,
+   "macro_auc_global_baseline": 0.8083582759211048,
+   "delta_auc_mean": -0.03486790719476329,
+   "delta_auc_ci": [
+    -0.04618319541030602,
+    -0.023552618979220563
+   ],
+   "across_agent_spearman": {
+    "applicable": false,
+    "n_folds_contributing": 2,
+    "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
+   }
+  },
+  "leave_one_family_out": {
+   "folds": [
+    {
+     "fold": "auristatin",
+     "n_test_cells": 2758,
+     "auc_model": 0.634312409570726,
+     "auc_mech_baseline": 0.7695739117058914,
+     "auc_global_baseline": 0.7589601599753883,
+     "delta_auc": -0.1352615021351654,
+     "spearman_model": 0.33994029399468123,
+     "spearman_mech_baseline": 0.42284955451293615,
+     "mae_model": 0.11557878906593418,
+     "mae_mech_baseline": 0.10596722981685894
+    },
+    {
+     "fold": "camptothecin",
+     "n_test_cells": 2436,
+     "auc_model": 0.8013858361658599,
+     "auc_mech_baseline": 0.8509230233368165,
+     "auc_global_baseline": 0.8509230233368165,
+     "delta_auc": -0.049537187170956565,
+     "spearman_model": 0.564283852082192,
+     "spearman_mech_baseline": 0.4884549379351204,
+     "mae_model": 0.1005865971844058,
+     "mae_mech_baseline": 0.10584754750255261
+    },
+    {
+     "fold": "enediyne",
+     "n_test_cells": 644,
+     "auc_model": 0.7152002062210002,
+     "auc_mech_baseline": 0.8188405797101449,
+     "auc_global_baseline": 0.8188405797101449,
+     "delta_auc": -0.10364037348914468,
+     "spearman_model": 0.36636109849985027,
+     "spearman_mech_baseline": 0.49306077135088955,
+     "mae_model": 0.13854793459251355,
+     "mae_mech_baseline": 0.12129267519297399
+    },
+    {
+     "fold": "maytansinoid",
+     "n_test_cells": 1372,
+     "auc_model": 0.6578256534524756,
+     "auc_mech_baseline": 0.7622139764996908,
+     "auc_global_baseline": 0.7795299938157081,
+     "delta_auc": -0.10438832304721524,
+     "spearman_model": 0.4271480420445724,
+     "spearman_mech_baseline": 0.4023633810644234,
+     "mae_model": 0.12737265292235658,
+     "mae_mech_baseline": 0.10705871533017434
+    }
+   ],
+   "macro_auc": 0.7021810263525154,
+   "macro_auc_mech_baseline": 0.800387872813136,
+   "macro_auc_global_baseline": 0.8020634392095145,
+   "delta_auc_mean": -0.09820684646062047,
+   "delta_auc_ci": [
+    -0.12735621997366023,
+    -0.06324997114002123
+   ],
+   "across_agent_spearman": {
+    "applicable": false,
+    "n_folds_contributing": 4,
+    "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
+   }
+  },
+  "leave_one_agent_out": {
+   "folds": [
+    {
+     "fold": "belantamab_mafodotin",
+     "n_test_cells": 406,
+     "auc_model": 0.5655604799481138,
+     "auc_mech_baseline": 0.6280041797283177,
+     "auc_global_baseline": 0.6635318704284221,
+     "delta_auc": -0.06244369978020392,
+     "spearman_model": 0.19689416241140378,
+     "spearman_mech_baseline": 0.288317784869509,
+     "mae_model": 0.1286025690232669,
+     "mae_mech_baseline": 0.11523951317358848
+    },
+    {
+     "fold": "brentuximab_vedotin",
+     "n_test_cells": 1106,
+     "auc_model": 0.7107155516064345,
+     "auc_mech_baseline": 0.8093594169543536,
+     "auc_global_baseline": 0.791331031837361,
+     "delta_auc": -0.09864386534791914,
+     "spearman_model": 0.5387921265988207,
+     "spearman_mech_baseline": 0.4485866683022668,
+     "mae_model": 0.11271801281025824,
+     "mae_mech_baseline": 0.1109013351605636
+    },
+    {
+     "fold": "datopotamab_deruxtecan",
+     "n_test_cells": 616,
+     "auc_model": 0.7745899073378413,
+     "auc_mech_baseline": 0.8099173553719008,
+     "auc_global_baseline": 0.7789256198347108,
+     "delta_auc": -0.035327448034059517,
+     "spearman_model": 0.2635249085025738,
+     "spearman_mech_baseline": 0.3172099869139044,
+     "mae_model": 0.10921169034997497,
+     "mae_mech_baseline": 0.09840799636595454
+    },
+    {
+     "fold": "enfortumab_vedotin",
+     "n_test_cells": 560,
+     "auc_model": 0.6350757575757576,
+     "auc_mech_baseline": 0.6803030303030303,
+     "auc_global_baseline": 0.7257575757575757,
+     "delta_auc": -0.04522727272727267,
+     "spearman_model": 0.10627040538121249,
+     "spearman_mech_baseline": 0.31602515131926895,
+     "mae_model": 0.10289194553796788,
+     "mae_mech_baseline": 0.10889339380912591
+    },
+    {
+     "fold": "gemtuzumab_ozogamicin",
+     "n_test_cells": 252,
+     "auc_model": 0.7085671530115975,
+     "auc_mech_baseline": 0.797979797979798,
+     "auc_global_baseline": 0.7727272727272727,
+     "delta_auc": -0.08941264496820056,
+     "spearman_model": 0.2486241744859448,
+     "spearman_mech_baseline": 0.47980710322646924,
+     "mae_model": 0.17885109170115437,
+     "mae_mech_baseline": 0.13255423597140725
+    },
+    {
+     "fold": "inotuzumab_ozogamicin",
+     "n_test_cells": 392,
+     "auc_model": 0.8235544217687075,
+     "auc_mech_baseline": 0.8841991341991342,
+     "auc_global_baseline": 0.8484848484848485,
+     "delta_auc": -0.060644712430426684,
+     "spearman_model": 0.44740697473811963,
+     "spearman_mech_baseline": 0.5716610573867782,
+     "mae_model": 0.11075455681019224,
+     "mae_mech_baseline": 0.10728233854262237
+    },
+    {
+     "fold": "loncastuximab_tesirine",
+     "n_test_cells": 84,
+     "auc_model": 0.8434343434343434,
+     "auc_mech_baseline": 0.9393939393939394,
+     "auc_global_baseline": 0.9393939393939394,
+     "delta_auc": -0.09595959595959602,
+     "spearman_model": 0.5295737572137289,
+     "spearman_mech_baseline": 0.7879720562923965,
+     "mae_model": 0.13978404873569303,
+     "mae_mech_baseline": 0.06009338030858261
+    },
+    {
+     "fold": "mirvetuximab_soravtansine",
+     "n_test_cells": 182,
+     "auc_model": 0.5768334229872691,
+     "auc_mech_baseline": 0.6783216783216783,
+     "auc_global_baseline": 0.682983682983683,
+     "delta_auc": -0.1014882553344092,
+     "spearman_model": 0.030070735351054163,
+     "spearman_mech_baseline": 0.379903675710215,
+     "mae_model": 0.16497975803360101,
+     "mae_mech_baseline": 0.12115977080816984
+    },
+    {
+     "fold": "patritumab_deruxtecan",
+     "n_test_cells": 182,
+     "auc_model": 0.8757396449704142,
+     "auc_mech_baseline": 0.9067599067599068,
+     "auc_global_baseline": 0.9137529137529138,
+     "delta_auc": -0.031020261789492576,
+     "spearman_model": 0.3602168142517749,
+     "spearman_mech_baseline": 0.6058507202425326,
+     "mae_model": 0.12998093741811292,
+     "mae_mech_baseline": 0.08528034765441216
+    },
+    {
+     "fold": "pivekimab_sunirine",
+     "n_test_cells": 28,
+     "auc_model": 0.8712121212121212,
+     "auc_mech_baseline": 0.9393939393939394,
+     "auc_global_baseline": 0.9696969696969697,
+     "delta_auc": -0.06818181818181823,
+     "spearman_model": 0.7679255610290093,
+     "spearman_mech_baseline": 0.7586206896551724,
+     "mae_model": 0.07016797334430076,
+     "mae_mech_baseline": 0.07176815764651948
+    },
+    {
+     "fold": "polatuzumab_vedotin",
+     "n_test_cells": 392,
+     "auc_model": 0.6444418676561534,
+     "auc_mech_baseline": 0.8733766233766234,
+     "auc_global_baseline": 0.8658008658008658,
+     "delta_auc": -0.22893475572046995,
+     "spearman_model": 0.31287231122120274,
+     "spearman_mech_baseline": 0.554798753221833,
+     "mae_model": 0.37403811934211106,
+     "mae_mech_baseline": 0.09443462405909274
+    },
+    {
+     "fold": "sacituzumab_govitecan",
+     "n_test_cells": 854,
+     "auc_model": 0.7848981619473423,
+     "auc_mech_baseline": 0.8460009935419771,
+     "auc_global_baseline": 0.8479880774962743,
+     "delta_auc": -0.06110283159463481,
+     "spearman_model": 0.5052973659910351,
+     "spearman_mech_baseline": 0.5032415663339156,
+     "mae_model": 0.11268334779203536,
+     "mae_mech_baseline": 0.10787892511873401
+    },
+    {
+     "fold": "telisotuzumab_vedotin",
+     "n_test_cells": 224,
+     "auc_model": 0.7568655303030303,
+     "auc_mech_baseline": 0.7443181818181818,
+     "auc_global_baseline": 0.6761363636363636,
+     "delta_auc": 0.012547348484848508,
+     "spearman_model": 0.32834614563314113,
+     "spearman_mech_baseline": 0.28264680760196453,
+     "mae_model": 0.07162320816995157,
+     "mae_mech_baseline": 0.09771902250278487
+    },
+    {
+     "fold": "tisotumab_vedotin",
+     "n_test_cells": 70,
+     "auc_model": 0.6193939393939394,
+     "auc_mech_baseline": 0.7272727272727273,
+     "auc_global_baseline": 0.7333333333333333,
+     "delta_auc": -0.10787878787878791,
+     "spearman_model": 0.14618143644475548,
+     "spearman_mech_baseline": 0.619735806141195,
+     "mae_model": 0.1859673856202421,
+     "mae_mech_baseline": 0.11661581666109108
+    },
+    {
+     "fold": "trastuzumab_deruxtecan",
+     "n_test_cells": 784,
+     "auc_model": 0.8630275974025974,
+     "auc_mech_baseline": 0.8961038961038961,
+     "auc_global_baseline": 0.8961038961038961,
+     "delta_auc": -0.03307629870129869,
+     "spearman_model": 0.5750158501060575,
+     "spearman_mech_baseline": 0.5576693346640947,
+     "mae_model": 0.10558473010130592,
+     "mae_mech_baseline": 0.10749126388008345
+    },
+    {
+     "fold": "trastuzumab_duocarmazine",
+     "n_test_cells": 28,
+     "auc_model": 0.5454545454545454,
+     "auc_mech_baseline": 0.6666666666666666,
+     "auc_global_baseline": 0.6666666666666666,
+     "delta_auc": -0.12121212121212122,
+     "spearman_model": 0.5030103995621237,
+     "spearman_mech_baseline": 0.5577449370552818,
+     "mae_model": 0.12023087271310309,
+     "mae_mech_baseline": 0.07968610970507249
+    },
+    {
+     "fold": "trastuzumab_emtansine",
+     "n_test_cells": 1190,
+     "auc_model": 0.6620153087973157,
+     "auc_mech_baseline": 0.7625668449197861,
+     "auc_global_baseline": 0.7942959001782531,
+     "delta_auc": -0.10055153612247036,
+     "spearman_model": 0.4516253003034772,
+     "spearman_mech_baseline": 0.3868801759284491,
+     "mae_model": 0.12990921333514052,
+     "mae_mech_baseline": 0.10605601734281248
+    }
+   ],
+   "macro_auc": 0.7212576326357367,
+   "macro_auc_mech_baseline": 0.7994081360062267,
+   "macro_auc_global_baseline": 0.7980535781243148,
+   "delta_auc_mean": -0.07815050337049018,
+   "delta_auc_ci": [
+    -0.10370873776069173,
+    -0.05630952019686863
+   ],
+   "across_agent_spearman": {
+    "model": {
+     "haematologic": 0.06862745098039216,
+     "hepatic": -0.13970588235294118,
+     "cardiovascular": -0.16911764705882354,
+     "pulmonary": -0.17892156862745098,
+     "renal": -0.4166666666666667,
+     "gastrointestinal": 0.22549019607843138,
+     "neurologic": 0.625,
+     "ocular": -0.16176470588235295,
+     "dermatologic": 0.051470588235294115,
+     "metabolic_endocrine": -0.31862745098039214,
+     "musculoskeletal": -0.21568627450980393,
+     "infectious_immune": -0.14215686274509803,
+     "otologic": 0.012254901960784314,
+     "constitutional": -0.21323529411764705
+    },
+    "mech_baseline": {
+     "haematologic": -0.03676470588235294,
+     "hepatic": 0.051470588235294115,
+     "cardiovascular": -0.14950980392156862,
+     "pulmonary": 0.029411764705882353,
+     "renal": -0.7475490196078431,
+     "gastrointestinal": 0.1323529411764706,
+     "neurologic": 0.49264705882352944,
+     "ocular": 0.21323529411764705,
+     "dermatologic": 0.051470588235294115,
+     "metabolic_endocrine": -0.2647058823529412,
+     "musculoskeletal": 0.024509803921568627,
+     "infectious_immune": -0.09068627450980392,
+     "otologic": -0.4803921568627451,
+     "constitutional": -0.43137254901960786
+    },
+    "global_baseline": {
+     "haematologic": -0.02696078431372549,
+     "hepatic": -0.02696078431372549,
+     "cardiovascular": -0.5,
+     "pulmonary": 0.19852941176470587,
+     "renal": 0.22549019607843138,
+     "gastrointestinal": -0.022058823529411766,
+     "neurologic": -0.007352941176470588,
+     "ocular": 0.02696078431372549,
+     "dermatologic": 0.3799019607843137,
+     "metabolic_endocrine": 0.4950980392156863,
+     "musculoskeletal": 0.0,
+     "infectious_immune": -0.07598039215686274,
+     "otologic": -0.2916666666666667,
+     "constitutional": 0.3382352941176471
+    },
+    "model_mean": -0.06950280112044818,
+    "model_ci": [
+     -0.18893995098039215,
+     0.06495535714285713
+    ],
+    "mech_baseline_mean": -0.0861344537815126,
+    "global_baseline_mean": 0.0509453781512605,
+    "n_folds_contributing": 17
+   }
+  }
+ },
+ "gate": {
+  "metric": "macro_auc[leave_one_agent_out] minus best baseline",
+  "macro_auc": 0.7212576326357367,
+  "best_baseline": 0.7994081360062267,
+  "delta_vs_best_baseline": -0.07815050337049018,
+  "pass": false,
+  "absolute_auc_gate_note": "The original absolute-AUC gate of 0.65 is unfireable: a constant global-axis-mean predictor scores about 0.84 on this metric. Reported for the record, not used."
+ },
+ "provenance": {
+  "revision": "bb49b78e444989d779367c1977b1201b96560ce4",
+  "dirty": null,
+  "snapshot": "2026-10-07",
+  "script": "fit_forward.py",
+  "written_utc": "2026-10-09T05:40:51+00:00",
+  "inputs": {
+   "processed": "sha256:c8e622252d23013f98d2c51d59053a91f70f9c7fffd768c2d6a8ac68ecd25f0e"
+  }
+ }
+}
