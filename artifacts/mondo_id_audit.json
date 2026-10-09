@@ -1,0 +1,869 @@
+{
+  "provenance": {
+    "revision": "00f7b78a95cb7bde536ce5f64d2a815b6f5a3008",
+    "dirty": true,
+    "snapshot": null,
+    "script": "audit_mondo_ids.py",
+    "written_utc": "2026-10-09T03:20:39+00:00",
+    "inputs": {
+      "registry": "sha256:d52b151a9a9a70b7db80438e957af674fb98c6aa1b2d717ec2a5751b65f5db95"
+    }
+  },
+  "n_conditions": 41,
+  "verdict_counts": {
+    "pin_matches_label": 23,
+    "pin_broader_same_organ": 12,
+    "root_placeholder": 6
+  },
+  "n_pin_wrong": 0,
+  "n_pin_absent": 0,
+  "findings": [
+    {
+      "id": "chronic_liver_disease",
+      "label": "Chronic liver disease",
+      "pinned": "MONDO:0005154",
+      "pinned_names": "liver disorder",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "hepatic"
+      ],
+      "pin_implied_axes": [
+        "gastrointestinal",
+        "hepatic",
+        "metabolic_endocrine"
+      ],
+      "proposals": [
+        {
+          "query": "  liver disease",
+          "mondo_id": "MONDO:0005154",
+          "mondo_name": "liver disorder"
+        }
+      ]
+    },
+    {
+      "id": "cirrhosis",
+      "label": "Cirrhosis",
+      "pinned": "MONDO:0005155",
+      "pinned_names": "cirrhosis of liver",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "hepatic"
+      ],
+      "pin_implied_axes": [
+        "gastrointestinal",
+        "hepatic",
+        "metabolic_endocrine"
+      ],
+      "proposals": [
+        {
+          "query": "Cirrhosis",
+          "mondo_id": "HP:0001394",
+          "mondo_name": "Cirrhosis"
+        },
+        {
+          "query": "Cirrhosis",
+          "mondo_id": "MONDO:0005155",
+          "mondo_name": "cirrhosis of liver"
+        }
+      ]
+    },
+    {
+      "id": "hepatitis_b_chronic",
+      "label": "Chronic hepatitis B",
+      "pinned": "MONDO:0005344",
+      "pinned_names": "hepatitis B virus infection",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "hepatic",
+        "infectious_immune"
+      ],
+      "pin_implied_axes": [
+        "gastrointestinal",
+        "hepatic",
+        "infectious_immune",
+        "metabolic_endocrine"
+      ],
+      "proposals": [
+        {
+          "query": "Chronic hepatitis B",
+          "mondo_id": "MONDO:0005366",
+          "mondo_name": "chronic hepatitis B virus infection"
+        },
+        {
+          "query": "  hepatitis B",
+          "mondo_id": "MONDO:0005344",
+          "mondo_name": "hepatitis B virus infection"
+        }
+      ]
+    },
+    {
+      "id": "hepatitis_c_chronic",
+      "label": "Chronic hepatitis C",
+      "pinned": "MONDO:0005231",
+      "pinned_names": "hepatitis C virus infection",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "hepatic",
+        "infectious_immune"
+      ],
+      "pin_implied_axes": [
+        "gastrointestinal",
+        "hepatic",
+        "infectious_immune",
+        "metabolic_endocrine"
+      ],
+      "proposals": [
+        {
+          "query": "Chronic hepatitis C",
+          "mondo_id": "MONDO:0005354",
+          "mondo_name": "chronic hepatitis C virus infection"
+        }
+      ]
+    },
+    {
+      "id": "hepatic_vod_history",
+      "label": "Prior hepatic veno-occlusive disease",
+      "pinned": "MONDO:0019514",
+      "pinned_names": "hepatic veno-occlusive disease",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "hepatic"
+      ],
+      "pin_implied_axes": [
+        "cardiovascular",
+        "gastrointestinal",
+        "hepatic",
+        "metabolic_endocrine"
+      ],
+      "proposals": [
+        {
+          "query": "  hepatic veno-occlusive disease",
+          "mondo_id": "MONDO:0019514",
+          "mondo_name": "hepatic veno-occlusive disease"
+        }
+      ]
+    },
+    {
+      "id": "nafld",
+      "label": "Non-alcoholic fatty liver disease",
+      "pinned": "MONDO:0013209",
+      "pinned_names": "metabolic dysfunction-associated steatotic liver disease",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "hepatic"
+      ],
+      "pin_implied_axes": [
+        "gastrointestinal",
+        "hepatic",
+        "metabolic_endocrine"
+      ],
+      "proposals": [
+        {
+          "query": "Non-alcoholic fatty liver disease",
+          "mondo_id": "MONDO:0013209",
+          "mondo_name": "metabolic dysfunction-associated steatotic liver disease"
+        }
+      ]
+    },
+    {
+      "id": "ckd_stage_3",
+      "label": "Chronic kidney disease stage 3",
+      "pinned": "MONDO:0005300",
+      "pinned_names": "chronic kidney disease",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "renal"
+      ],
+      "pin_implied_axes": [
+        "renal"
+      ],
+      "proposals": [
+        {
+          "query": "  kidney disease  ",
+          "mondo_id": "MONDO:0005240",
+          "mondo_name": "kidney disorder"
+        }
+      ]
+    },
+    {
+      "id": "ckd_stage_4_5",
+      "label": "Chronic kidney disease stage 4-5",
+      "pinned": "MONDO:0005300",
+      "pinned_names": "chronic kidney disease",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "renal"
+      ],
+      "pin_implied_axes": [
+        "renal"
+      ],
+      "proposals": [
+        {
+          "query": "  kidney disease  ",
+          "mondo_id": "MONDO:0005240",
+          "mondo_name": "kidney disorder"
+        }
+      ]
+    },
+    {
+      "id": "dialysis",
+      "label": "On dialysis",
+      "pinned": "MONDO:0005240",
+      "pinned_names": "kidney disorder",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "renal"
+      ],
+      "pin_implied_axes": [
+        "renal"
+      ],
+      "proposals": []
+    },
+    {
+      "id": "heart_failure",
+      "label": "Heart failure",
+      "pinned": "MONDO:0005252",
+      "pinned_names": "heart failure",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "cardiovascular"
+      ],
+      "pin_implied_axes": [
+        "cardiovascular"
+      ],
+      "proposals": [
+        {
+          "query": "Heart failure",
+          "mondo_id": "MONDO:0005252",
+          "mondo_name": "heart failure"
+        },
+        {
+          "query": "Heart failure",
+          "mondo_id": "MONDO:0005252",
+          "mondo_name": "heart failure"
+        }
+      ]
+    },
+    {
+      "id": "reduced_lvef",
+      "label": "Reduced ejection fraction (LVEF < 50%)",
+      "pinned": "MONDO:0005009",
+      "pinned_names": "congestive heart failure",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "cardiovascular"
+      ],
+      "pin_implied_axes": [
+        "cardiovascular"
+      ],
+      "proposals": []
+    },
+    {
+      "id": "prior_anthracycline",
+      "label": "Prior anthracycline exposure",
+      "pinned": "MONDO:0000001",
+      "pinned_names": "disease",
+      "verdict": "root_placeholder",
+      "hand_axes": [
+        "cardiovascular"
+      ],
+      "pin_implied_axes": [],
+      "proposals": []
+    },
+    {
+      "id": "coronary_artery_disease",
+      "label": "Coronary artery disease",
+      "pinned": "MONDO:0005010",
+      "pinned_names": "coronary artery disorder",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "cardiovascular"
+      ],
+      "pin_implied_axes": [
+        "cardiovascular"
+      ],
+      "proposals": [
+        {
+          "query": "Coronary artery disease",
+          "mondo_id": "MONDO:0005010",
+          "mondo_name": "coronary artery disorder"
+        }
+      ]
+    },
+    {
+      "id": "qt_prolongation",
+      "label": "QT prolongation",
+      "pinned": "MONDO:0000001",
+      "pinned_names": "disease",
+      "verdict": "root_placeholder",
+      "hand_axes": [
+        "cardiovascular"
+      ],
+      "pin_implied_axes": [],
+      "proposals": []
+    },
+    {
+      "id": "interstitial_lung_disease",
+      "label": "Interstitial lung disease",
+      "pinned": "MONDO:0015925",
+      "pinned_names": "interstitial lung disease",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "pulmonary"
+      ],
+      "pin_implied_axes": [
+        "pulmonary"
+      ],
+      "proposals": [
+        {
+          "query": "Interstitial lung disease",
+          "mondo_id": "MONDO:0015925",
+          "mondo_name": "interstitial lung disease"
+        },
+        {
+          "query": "Interstitial lung disease",
+          "mondo_id": "MONDO:0015925",
+          "mondo_name": "interstitial lung disease"
+        }
+      ]
+    },
+    {
+      "id": "pulmonary_fibrosis",
+      "label": "Pulmonary fibrosis",
+      "pinned": "MONDO:0002771",
+      "pinned_names": "pulmonary fibrosis",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "pulmonary"
+      ],
+      "pin_implied_axes": [
+        "pulmonary"
+      ],
+      "proposals": [
+        {
+          "query": "Pulmonary fibrosis",
+          "mondo_id": "HP:0002206",
+          "mondo_name": "Pulmonary fibrosis"
+        },
+        {
+          "query": "Pulmonary fibrosis",
+          "mondo_id": "MONDO:0002771",
+          "mondo_name": "pulmonary fibrosis"
+        }
+      ]
+    },
+    {
+      "id": "copd",
+      "label": "Chronic obstructive pulmonary disease",
+      "pinned": "MONDO:0005002",
+      "pinned_names": "chronic obstructive pulmonary disease",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "pulmonary"
+      ],
+      "pin_implied_axes": [
+        "pulmonary"
+      ],
+      "proposals": [
+        {
+          "query": "Chronic obstructive pulmonary disease",
+          "mondo_id": "MONDO:0005002",
+          "mondo_name": "chronic obstructive pulmonary disease"
+        }
+      ]
+    },
+    {
+      "id": "prior_chest_radiation",
+      "label": "Prior thoracic radiotherapy",
+      "pinned": "MONDO:0000001",
+      "pinned_names": "disease",
+      "verdict": "root_placeholder",
+      "hand_axes": [
+        "pulmonary"
+      ],
+      "pin_implied_axes": [],
+      "proposals": []
+    },
+    {
+      "id": "peripheral_neuropathy",
+      "label": "Peripheral neuropathy",
+      "pinned": "MONDO:0005244",
+      "pinned_names": "peripheral neuropathy",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "neurologic"
+      ],
+      "pin_implied_axes": [
+        "neurologic"
+      ],
+      "proposals": [
+        {
+          "query": "Peripheral neuropathy",
+          "mondo_id": "HP:0009830",
+          "mondo_name": "Peripheral neuropathy"
+        },
+        {
+          "query": "Peripheral neuropathy",
+          "mondo_id": "MONDO:0005244",
+          "mondo_name": "peripheral neuropathy"
+        },
+        {
+          "query": "Peripheral neuropathy",
+          "mondo_id": "MONDO:0005244",
+          "mondo_name": "peripheral neuropathy"
+        }
+      ]
+    },
+    {
+      "id": "diabetic_neuropathy",
+      "label": "Diabetic peripheral neuropathy",
+      "pinned": "MONDO:0005147",
+      "pinned_names": "type 1 diabetes mellitus",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "metabolic_endocrine",
+        "neurologic"
+      ],
+      "pin_implied_axes": [
+        "gastrointestinal",
+        "infectious_immune",
+        "metabolic_endocrine"
+      ],
+      "proposals": []
+    },
+    {
+      "id": "multiple_sclerosis",
+      "label": "Multiple sclerosis",
+      "pinned": "MONDO:0005301",
+      "pinned_names": "multiple sclerosis",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "neurologic"
+      ],
+      "pin_implied_axes": [
+        "infectious_immune",
+        "neurologic"
+      ],
+      "proposals": [
+        {
+          "query": "Multiple sclerosis",
+          "mondo_id": "MONDO:0005301",
+          "mondo_name": "multiple sclerosis"
+        }
+      ]
+    },
+    {
+      "id": "keratopathy_history",
+      "label": "Prior keratopathy",
+      "pinned": "MONDO:0002261",
+      "pinned_names": "keratopathy",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "ocular"
+      ],
+      "pin_implied_axes": [
+        "ocular"
+      ],
+      "proposals": [
+        {
+          "query": "  keratopathy",
+          "mondo_id": "MONDO:0002261",
+          "mondo_name": "keratopathy"
+        }
+      ]
+    },
+    {
+      "id": "dry_eye",
+      "label": "Dry eye disease",
+      "pinned": "MONDO:0006733",
+      "pinned_names": "dry eye syndrome",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "ocular"
+      ],
+      "pin_implied_axes": [
+        "ocular"
+      ],
+      "proposals": []
+    },
+    {
+      "id": "glaucoma",
+      "label": "Glaucoma",
+      "pinned": "MONDO:0005041",
+      "pinned_names": "glaucoma",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "ocular"
+      ],
+      "pin_implied_axes": [
+        "ocular"
+      ],
+      "proposals": [
+        {
+          "query": "Glaucoma",
+          "mondo_id": "HP:0000501",
+          "mondo_name": "Glaucoma"
+        },
+        {
+          "query": "Glaucoma",
+          "mondo_id": "MONDO:0005041",
+          "mondo_name": "glaucoma"
+        },
+        {
+          "query": "Glaucoma",
+          "mondo_id": "MONDO:0005041",
+          "mondo_name": "glaucoma"
+        }
+      ]
+    },
+    {
+      "id": "prior_corneal_surgery",
+      "label": "Prior corneal surgery",
+      "pinned": "MONDO:0000001",
+      "pinned_names": "disease",
+      "verdict": "root_placeholder",
+      "hand_axes": [
+        "ocular"
+      ],
+      "pin_implied_axes": [],
+      "proposals": []
+    },
+    {
+      "id": "thrombocytopenia",
+      "label": "Thrombocytopenia",
+      "pinned": "MONDO:0002048",
+      "pinned_names": "thrombocytopenia due to immune destruction",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "haematologic"
+      ],
+      "pin_implied_axes": [
+        "haematologic"
+      ],
+      "proposals": [
+        {
+          "query": "Thrombocytopenia",
+          "mondo_id": "HP:0001873",
+          "mondo_name": "Thrombocytopenia"
+        },
+        {
+          "query": "Thrombocytopenia",
+          "mondo_id": "MONDO:0002049",
+          "mondo_name": "thrombocytopenia"
+        }
+      ]
+    },
+    {
+      "id": "itp",
+      "label": "Immune thrombocytopenia",
+      "pinned": "MONDO:0002048",
+      "pinned_names": "thrombocytopenia due to immune destruction",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "haematologic",
+        "infectious_immune"
+      ],
+      "pin_implied_axes": [
+        "haematologic"
+      ],
+      "proposals": [
+        {
+          "query": "Immune thrombocytopenia",
+          "mondo_id": "MONDO:0002048",
+          "mondo_name": "thrombocytopenia due to immune destruction"
+        }
+      ]
+    },
+    {
+      "id": "neutropenia_chronic",
+      "label": "Chronic neutropenia",
+      "pinned": "MONDO:0001475",
+      "pinned_names": "neutropenia",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "haematologic"
+      ],
+      "pin_implied_axes": [
+        "haematologic",
+        "infectious_immune"
+      ],
+      "proposals": [
+        {
+          "query": "  neutropenia",
+          "mondo_id": "MONDO:0001475",
+          "mondo_name": "neutropenia"
+        },
+        {
+          "query": "  neutropenia",
+          "mondo_id": "MONDO:0001475",
+          "mondo_name": "neutropenia"
+        }
+      ]
+    },
+    {
+      "id": "anaemia_chronic",
+      "label": "Chronic anaemia",
+      "pinned": "MONDO:0002280",
+      "pinned_names": "anemia",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "haematologic"
+      ],
+      "pin_implied_axes": [
+        "haematologic"
+      ],
+      "proposals": []
+    },
+    {
+      "id": "mds",
+      "label": "Myelodysplastic syndrome",
+      "pinned": "MONDO:0018881",
+      "pinned_names": "myelodysplastic syndrome",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "haematologic"
+      ],
+      "pin_implied_axes": [
+        "haematologic"
+      ],
+      "proposals": [
+        {
+          "query": "Myelodysplastic syndrome",
+          "mondo_id": "MONDO:0018881",
+          "mondo_name": "myelodysplastic syndrome"
+        },
+        {
+          "query": "Myelodysplastic syndrome",
+          "mondo_id": "MONDO:0018881",
+          "mondo_name": "myelodysplastic syndrome"
+        }
+      ]
+    },
+    {
+      "id": "prior_hsct",
+      "label": "Prior haematopoietic stem cell transplant",
+      "pinned": "MONDO:0000001",
+      "pinned_names": "disease",
+      "verdict": "root_placeholder",
+      "hand_axes": [
+        "haematologic"
+      ],
+      "pin_implied_axes": [],
+      "proposals": []
+    },
+    {
+      "id": "inflammatory_bowel_disease",
+      "label": "Inflammatory bowel disease",
+      "pinned": "MONDO:0005265",
+      "pinned_names": "inflammatory bowel disease",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "gastrointestinal"
+      ],
+      "pin_implied_axes": [
+        "gastrointestinal",
+        "infectious_immune"
+      ],
+      "proposals": [
+        {
+          "query": "Inflammatory bowel disease",
+          "mondo_id": "MONDO:0005265",
+          "mondo_name": "inflammatory bowel disease"
+        },
+        {
+          "query": "Inflammatory bowel disease",
+          "mondo_id": "MONDO:0005265",
+          "mondo_name": "inflammatory bowel disease"
+        }
+      ]
+    },
+    {
+      "id": "prior_bowel_resection",
+      "label": "Prior bowel resection",
+      "pinned": "MONDO:0000001",
+      "pinned_names": "disease",
+      "verdict": "root_placeholder",
+      "hand_axes": [
+        "gastrointestinal"
+      ],
+      "pin_implied_axes": [],
+      "proposals": []
+    },
+    {
+      "id": "chronic_pancreatitis",
+      "label": "Chronic pancreatitis",
+      "pinned": "MONDO:0005003",
+      "pinned_names": "chronic pancreatitis",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "gastrointestinal"
+      ],
+      "pin_implied_axes": [
+        "gastrointestinal",
+        "metabolic_endocrine"
+      ],
+      "proposals": [
+        {
+          "query": "Chronic pancreatitis",
+          "mondo_id": "MONDO:0005003",
+          "mondo_name": "chronic pancreatitis"
+        },
+        {
+          "query": "  pancreatitis",
+          "mondo_id": "HP:0001733",
+          "mondo_name": "Pancreatitis"
+        },
+        {
+          "query": "  pancreatitis",
+          "mondo_id": "MONDO:0004982",
+          "mondo_name": "pancreatitis"
+        }
+      ]
+    },
+    {
+      "id": "severe_psoriasis",
+      "label": "Severe psoriasis",
+      "pinned": "MONDO:0005083",
+      "pinned_names": "psoriasis",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "dermatologic"
+      ],
+      "pin_implied_axes": [
+        "dermatologic",
+        "infectious_immune"
+      ],
+      "proposals": [
+        {
+          "query": "  psoriasis",
+          "mondo_id": "MONDO:0005083",
+          "mondo_name": "psoriasis"
+        }
+      ]
+    },
+    {
+      "id": "prior_sjs_ten",
+      "label": "Prior Stevens-Johnson syndrome or TEN",
+      "pinned": "MONDO:0018229",
+      "pinned_names": "Stevens-Johnson syndrome",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "dermatologic"
+      ],
+      "pin_implied_axes": [
+        "dermatologic"
+      ],
+      "proposals": []
+    },
+    {
+      "id": "type_2_diabetes",
+      "label": "Type 2 diabetes",
+      "pinned": "MONDO:0005148",
+      "pinned_names": "type 2 diabetes mellitus",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "metabolic_endocrine"
+      ],
+      "pin_implied_axes": [
+        "gastrointestinal",
+        "metabolic_endocrine"
+      ],
+      "proposals": [
+        {
+          "query": "Type 2 diabetes",
+          "mondo_id": "MONDO:0005148",
+          "mondo_name": "type 2 diabetes mellitus"
+        }
+      ]
+    },
+    {
+      "id": "hypothyroidism",
+      "label": "Hypothyroidism",
+      "pinned": "MONDO:0005420",
+      "pinned_names": "hypothyroidism",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "metabolic_endocrine"
+      ],
+      "pin_implied_axes": [
+        "metabolic_endocrine"
+      ],
+      "proposals": [
+        {
+          "query": "Hypothyroidism",
+          "mondo_id": "HP:0000821",
+          "mondo_name": "Hypothyroidism"
+        },
+        {
+          "query": "Hypothyroidism",
+          "mondo_id": "MONDO:0005420",
+          "mondo_name": "hypothyroidism"
+        },
+        {
+          "query": "Hypothyroidism",
+          "mondo_id": "MONDO:0005420",
+          "mondo_name": "hypothyroidism"
+        }
+      ]
+    },
+    {
+      "id": "hiv_controlled",
+      "label": "HIV infection on therapy",
+      "pinned": "MONDO:0005109",
+      "pinned_names": "HIV infectious disease",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "infectious_immune"
+      ],
+      "pin_implied_axes": [
+        "infectious_immune"
+      ],
+      "proposals": []
+    },
+    {
+      "id": "active_autoimmune",
+      "label": "Active autoimmune disease",
+      "pinned": "MONDO:0007179",
+      "pinned_names": "autoimmune disease",
+      "verdict": "pin_matches_label",
+      "hand_axes": [
+        "infectious_immune"
+      ],
+      "pin_implied_axes": [
+        "infectious_immune"
+      ],
+      "proposals": [
+        {
+          "query": "  autoimmune disease",
+          "mondo_id": "MONDO:0007179",
+          "mondo_name": "autoimmune disease"
+        },
+        {
+          "query": "  autoimmune disease",
+          "mondo_id": "MONDO:0007179",
+          "mondo_name": "autoimmune disease"
+        }
+      ]
+    },
+    {
+      "id": "hearing_loss",
+      "label": "Sensorineural hearing loss",
+      "pinned": "MONDO:0005365",
+      "pinned_names": "hearing loss disorder",
+      "verdict": "pin_broader_same_organ",
+      "hand_axes": [
+        "otologic"
+      ],
+      "pin_implied_axes": [
+        "otologic"
+      ],
+      "proposals": [
+        {
+          "query": "Sensorineural hearing loss",
+          "mondo_id": "MONDO:0020678",
+          "mondo_name": "sensorineural hearing loss disorder"
+        }
+      ]
+    }
+  ]
+}

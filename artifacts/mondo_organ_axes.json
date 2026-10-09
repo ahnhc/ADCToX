@@ -1,0 +1,1062 @@
+{
+  "provenance": {
+    "revision": "00f7b78a95cb7bde536ce5f64d2a815b6f5a3008",
+    "dirty": true,
+    "snapshot": null,
+    "script": "derive_organ_axes.py",
+    "written_utc": "2026-10-09T03:20:47+00:00",
+    "inputs": {
+      "crosswalk": "sha256:40bb537e3994a02883836ef9930132362fb5a1f434fc8f58ef87cf07e3fcab3e",
+      "registry": "sha256:d52b151a9a9a70b7db80438e957af674fb98c6aa1b2d717ec2a5751b65f5db95"
+    }
+  },
+  "obo_terms": 58690,
+  "n_conditions": 41,
+  "n_resolved": 41,
+  "n_unresolvable": 0,
+  "n_exact_agreement": 21,
+  "n_sharing_an_axis": 35,
+  "exact_agreement_rate": 0.5121951219512195,
+  "sharing_rate": 0.8536585365853658,
+  "conditions_with_no_derived_axis": [
+    "prior_anthracycline",
+    "qt_prolongation",
+    "prior_chest_radiation",
+    "prior_corneal_surgery",
+    "prior_hsct",
+    "prior_bowel_resection"
+  ],
+  "hand_only_axis_counts": {
+    "cardiovascular": 2,
+    "pulmonary": 1,
+    "neurologic": 1,
+    "ocular": 1,
+    "infectious_immune": 1,
+    "haematologic": 1,
+    "gastrointestinal": 1
+  },
+  "mondo_only_axis_counts": {
+    "gastrointestinal": 8,
+    "metabolic_endocrine": 7,
+    "cardiovascular": 1,
+    "infectious_immune": 5
+  },
+  "derived": {
+    "chronic_liver_disease": {
+      "mondo_id": "MONDO:0005154",
+      "mondo_name": "liver disorder",
+      "n_ancestors": 6,
+      "derived_axes": [
+        "gastrointestinal",
+        "hepatic",
+        "metabolic_endocrine"
+      ],
+      "via": {
+        "gastrointestinal": [
+          "digestive system disorder"
+        ],
+        "hepatic": [
+          "hepatobiliary disorder"
+        ],
+        "metabolic_endocrine": [
+          "endocrine system disorder"
+        ]
+      },
+      "hand_axes": [
+        "hepatic"
+      ],
+      "agree": [
+        "hepatic"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "gastrointestinal",
+        "metabolic_endocrine"
+      ]
+    },
+    "cirrhosis": {
+      "mondo_id": "MONDO:0005155",
+      "mondo_name": "cirrhosis of liver",
+      "n_ancestors": 7,
+      "derived_axes": [
+        "gastrointestinal",
+        "hepatic",
+        "metabolic_endocrine"
+      ],
+      "via": {
+        "gastrointestinal": [
+          "digestive system disorder"
+        ],
+        "hepatic": [
+          "hepatobiliary disorder",
+          "liver disorder"
+        ],
+        "metabolic_endocrine": [
+          "endocrine system disorder"
+        ]
+      },
+      "hand_axes": [
+        "hepatic"
+      ],
+      "agree": [
+        "hepatic"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "gastrointestinal",
+        "metabolic_endocrine"
+      ]
+    },
+    "hepatitis_b_chronic": {
+      "mondo_id": "MONDO:0005344",
+      "mondo_name": "hepatitis B virus infection",
+      "n_ancestors": 18,
+      "derived_axes": [
+        "gastrointestinal",
+        "hepatic",
+        "infectious_immune",
+        "metabolic_endocrine"
+      ],
+      "via": {
+        "gastrointestinal": [
+          "digestive system disorder",
+          "digestive system infectious disorder"
+        ],
+        "hepatic": [
+          "hepatitis",
+          "hepatobiliary disorder",
+          "liver disorder",
+          "viral hepatitis"
+        ],
+        "infectious_immune": [
+          "infectious disease",
+          "primary viral infectious disease",
+          "viral infectious disease"
+        ],
+        "metabolic_endocrine": [
+          "endocrine system disorder"
+        ]
+      },
+      "hand_axes": [
+        "hepatic",
+        "infectious_immune"
+      ],
+      "agree": [
+        "hepatic",
+        "infectious_immune"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "gastrointestinal",
+        "metabolic_endocrine"
+      ]
+    },
+    "hepatitis_c_chronic": {
+      "mondo_id": "MONDO:0005231",
+      "mondo_name": "hepatitis C virus infection",
+      "n_ancestors": 17,
+      "derived_axes": [
+        "gastrointestinal",
+        "hepatic",
+        "infectious_immune",
+        "metabolic_endocrine"
+      ],
+      "via": {
+        "gastrointestinal": [
+          "digestive system disorder",
+          "digestive system infectious disorder"
+        ],
+        "hepatic": [
+          "hepatitis",
+          "hepatobiliary disorder",
+          "liver disorder",
+          "viral hepatitis"
+        ],
+        "infectious_immune": [
+          "infectious disease",
+          "primary viral infectious disease",
+          "viral infectious disease"
+        ],
+        "metabolic_endocrine": [
+          "endocrine system disorder"
+        ]
+      },
+      "hand_axes": [
+        "hepatic",
+        "infectious_immune"
+      ],
+      "agree": [
+        "hepatic",
+        "infectious_immune"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "gastrointestinal",
+        "metabolic_endocrine"
+      ]
+    },
+    "hepatic_vod_history": {
+      "mondo_id": "MONDO:0019514",
+      "mondo_name": "hepatic veno-occlusive disease",
+      "n_ancestors": 10,
+      "derived_axes": [
+        "cardiovascular",
+        "gastrointestinal",
+        "hepatic",
+        "metabolic_endocrine"
+      ],
+      "via": {
+        "cardiovascular": [
+          "cardiovascular disorder",
+          "vascular disorder"
+        ],
+        "gastrointestinal": [
+          "digestive system disorder"
+        ],
+        "hepatic": [
+          "hepatobiliary disorder",
+          "liver disorder"
+        ],
+        "metabolic_endocrine": [
+          "endocrine system disorder"
+        ]
+      },
+      "hand_axes": [
+        "hepatic"
+      ],
+      "agree": [
+        "hepatic"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "cardiovascular",
+        "gastrointestinal",
+        "metabolic_endocrine"
+      ]
+    },
+    "nafld": {
+      "mondo_id": "MONDO:0013209",
+      "mondo_name": "metabolic dysfunction-associated steatotic liver disease",
+      "n_ancestors": 8,
+      "derived_axes": [
+        "gastrointestinal",
+        "hepatic",
+        "metabolic_endocrine"
+      ],
+      "via": {
+        "gastrointestinal": [
+          "digestive system disorder"
+        ],
+        "hepatic": [
+          "hepatobiliary disorder",
+          "liver disorder"
+        ],
+        "metabolic_endocrine": [
+          "endocrine system disorder"
+        ]
+      },
+      "hand_axes": [
+        "hepatic"
+      ],
+      "agree": [
+        "hepatic"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "gastrointestinal",
+        "metabolic_endocrine"
+      ]
+    },
+    "ckd_stage_3": {
+      "mondo_id": "MONDO:0005300",
+      "mondo_name": "chronic kidney disease",
+      "n_ancestors": 5,
+      "derived_axes": [
+        "renal"
+      ],
+      "via": {
+        "renal": [
+          "kidney disorder",
+          "urinary system disorder"
+        ]
+      },
+      "hand_axes": [
+        "renal"
+      ],
+      "agree": [
+        "renal"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "ckd_stage_4_5": {
+      "mondo_id": "MONDO:0005300",
+      "mondo_name": "chronic kidney disease",
+      "n_ancestors": 5,
+      "derived_axes": [
+        "renal"
+      ],
+      "via": {
+        "renal": [
+          "kidney disorder",
+          "urinary system disorder"
+        ]
+      },
+      "hand_axes": [
+        "renal"
+      ],
+      "agree": [
+        "renal"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "dialysis": {
+      "mondo_id": "MONDO:0005240",
+      "mondo_name": "kidney disorder",
+      "n_ancestors": 4,
+      "derived_axes": [
+        "renal"
+      ],
+      "via": {
+        "renal": [
+          "urinary system disorder"
+        ]
+      },
+      "hand_axes": [
+        "renal"
+      ],
+      "agree": [
+        "renal"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "heart_failure": {
+      "mondo_id": "MONDO:0005252",
+      "mondo_name": "heart failure",
+      "n_ancestors": 5,
+      "derived_axes": [
+        "cardiovascular"
+      ],
+      "via": {
+        "cardiovascular": [
+          "cardiovascular disorder",
+          "heart disorder"
+        ]
+      },
+      "hand_axes": [
+        "cardiovascular"
+      ],
+      "agree": [
+        "cardiovascular"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "reduced_lvef": {
+      "mondo_id": "MONDO:0005009",
+      "mondo_name": "congestive heart failure",
+      "n_ancestors": 6,
+      "derived_axes": [
+        "cardiovascular"
+      ],
+      "via": {
+        "cardiovascular": [
+          "cardiovascular disorder",
+          "heart disorder"
+        ]
+      },
+      "hand_axes": [
+        "cardiovascular"
+      ],
+      "agree": [
+        "cardiovascular"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "prior_anthracycline": {
+      "mondo_id": "MONDO:0000001",
+      "mondo_name": "disease",
+      "n_ancestors": 0,
+      "derived_axes": [],
+      "via": {},
+      "hand_axes": [
+        "cardiovascular"
+      ],
+      "agree": [],
+      "hand_only": [
+        "cardiovascular"
+      ],
+      "mondo_only": []
+    },
+    "coronary_artery_disease": {
+      "mondo_id": "MONDO:0005010",
+      "mondo_name": "coronary artery disorder",
+      "n_ancestors": 7,
+      "derived_axes": [
+        "cardiovascular"
+      ],
+      "via": {
+        "cardiovascular": [
+          "cardiovascular disorder",
+          "heart disorder",
+          "vascular disorder"
+        ]
+      },
+      "hand_axes": [
+        "cardiovascular"
+      ],
+      "agree": [
+        "cardiovascular"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "qt_prolongation": {
+      "mondo_id": "MONDO:0000001",
+      "mondo_name": "disease",
+      "n_ancestors": 0,
+      "derived_axes": [],
+      "via": {},
+      "hand_axes": [
+        "cardiovascular"
+      ],
+      "agree": [],
+      "hand_only": [
+        "cardiovascular"
+      ],
+      "mondo_only": []
+    },
+    "interstitial_lung_disease": {
+      "mondo_id": "MONDO:0015925",
+      "mondo_name": "interstitial lung disease",
+      "n_ancestors": 6,
+      "derived_axes": [
+        "pulmonary"
+      ],
+      "via": {
+        "pulmonary": [
+          "lower respiratory tract disorder",
+          "lung disorder",
+          "respiratory system disorder"
+        ]
+      },
+      "hand_axes": [
+        "pulmonary"
+      ],
+      "agree": [
+        "pulmonary"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "pulmonary_fibrosis": {
+      "mondo_id": "MONDO:0002771",
+      "mondo_name": "pulmonary fibrosis",
+      "n_ancestors": 7,
+      "derived_axes": [
+        "pulmonary"
+      ],
+      "via": {
+        "pulmonary": [
+          "lower respiratory tract disorder",
+          "lung disorder",
+          "respiratory system disorder"
+        ]
+      },
+      "hand_axes": [
+        "pulmonary"
+      ],
+      "agree": [
+        "pulmonary"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "copd": {
+      "mondo_id": "MONDO:0005002",
+      "mondo_name": "chronic obstructive pulmonary disease",
+      "n_ancestors": 9,
+      "derived_axes": [
+        "pulmonary"
+      ],
+      "via": {
+        "pulmonary": [
+          "lower respiratory tract disorder",
+          "lung disorder",
+          "respiratory system disorder",
+          "tracheal disorder"
+        ]
+      },
+      "hand_axes": [
+        "pulmonary"
+      ],
+      "agree": [
+        "pulmonary"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "prior_chest_radiation": {
+      "mondo_id": "MONDO:0000001",
+      "mondo_name": "disease",
+      "n_ancestors": 0,
+      "derived_axes": [],
+      "via": {},
+      "hand_axes": [
+        "pulmonary"
+      ],
+      "agree": [],
+      "hand_only": [
+        "pulmonary"
+      ],
+      "mondo_only": []
+    },
+    "peripheral_neuropathy": {
+      "mondo_id": "MONDO:0005244",
+      "mondo_name": "peripheral neuropathy",
+      "n_ancestors": 6,
+      "derived_axes": [
+        "neurologic"
+      ],
+      "via": {
+        "neurologic": [
+          "nervous system disorder",
+          "peripheral nervous system disorder"
+        ]
+      },
+      "hand_axes": [
+        "neurologic"
+      ],
+      "agree": [
+        "neurologic"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "diabetic_neuropathy": {
+      "mondo_id": "MONDO:0005147",
+      "mondo_name": "type 1 diabetes mellitus",
+      "n_ancestors": 15,
+      "derived_axes": [
+        "gastrointestinal",
+        "infectious_immune",
+        "metabolic_endocrine"
+      ],
+      "via": {
+        "gastrointestinal": [
+          "digestive system disorder",
+          "pancreas disorder"
+        ],
+        "infectious_immune": [
+          "autoimmune disease",
+          "immune system disorder"
+        ],
+        "metabolic_endocrine": [
+          "diabetes mellitus",
+          "endocrine pancreas disorder",
+          "endocrine system disorder",
+          "glucose metabolism disease",
+          "metabolic disease"
+        ]
+      },
+      "hand_axes": [
+        "metabolic_endocrine",
+        "neurologic"
+      ],
+      "agree": [
+        "metabolic_endocrine"
+      ],
+      "hand_only": [
+        "neurologic"
+      ],
+      "mondo_only": [
+        "gastrointestinal",
+        "infectious_immune"
+      ]
+    },
+    "multiple_sclerosis": {
+      "mondo_id": "MONDO:0005301",
+      "mondo_name": "multiple sclerosis",
+      "n_ancestors": 16,
+      "derived_axes": [
+        "infectious_immune",
+        "neurologic"
+      ],
+      "via": {
+        "infectious_immune": [
+          "autoimmune disease",
+          "immune system disorder"
+        ],
+        "neurologic": [
+          "brain disorder",
+          "central nervous system disorder",
+          "nervous system disorder"
+        ]
+      },
+      "hand_axes": [
+        "neurologic"
+      ],
+      "agree": [
+        "neurologic"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "infectious_immune"
+      ]
+    },
+    "keratopathy_history": {
+      "mondo_id": "MONDO:0002261",
+      "mondo_name": "keratopathy",
+      "n_ancestors": 7,
+      "derived_axes": [
+        "ocular"
+      ],
+      "via": {
+        "ocular": [
+          "eye disorder"
+        ]
+      },
+      "hand_axes": [
+        "ocular"
+      ],
+      "agree": [
+        "ocular"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "dry_eye": {
+      "mondo_id": "MONDO:0006733",
+      "mondo_name": "dry eye syndrome",
+      "n_ancestors": 16,
+      "derived_axes": [
+        "ocular"
+      ],
+      "via": {
+        "ocular": [
+          "eye disorder"
+        ]
+      },
+      "hand_axes": [
+        "ocular"
+      ],
+      "agree": [
+        "ocular"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "glaucoma": {
+      "mondo_id": "MONDO:0005041",
+      "mondo_name": "glaucoma",
+      "n_ancestors": 6,
+      "derived_axes": [
+        "ocular"
+      ],
+      "via": {
+        "ocular": [
+          "eye disorder"
+        ]
+      },
+      "hand_axes": [
+        "ocular"
+      ],
+      "agree": [
+        "ocular"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "prior_corneal_surgery": {
+      "mondo_id": "MONDO:0000001",
+      "mondo_name": "disease",
+      "n_ancestors": 0,
+      "derived_axes": [],
+      "via": {},
+      "hand_axes": [
+        "ocular"
+      ],
+      "agree": [],
+      "hand_only": [
+        "ocular"
+      ],
+      "mondo_only": []
+    },
+    "thrombocytopenia": {
+      "mondo_id": "MONDO:0002048",
+      "mondo_name": "thrombocytopenia due to immune destruction",
+      "n_ancestors": 6,
+      "derived_axes": [
+        "haematologic"
+      ],
+      "via": {
+        "haematologic": [
+          "hematologic disorder"
+        ]
+      },
+      "hand_axes": [
+        "haematologic"
+      ],
+      "agree": [
+        "haematologic"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "itp": {
+      "mondo_id": "MONDO:0002048",
+      "mondo_name": "thrombocytopenia due to immune destruction",
+      "n_ancestors": 6,
+      "derived_axes": [
+        "haematologic"
+      ],
+      "via": {
+        "haematologic": [
+          "hematologic disorder"
+        ]
+      },
+      "hand_axes": [
+        "haematologic",
+        "infectious_immune"
+      ],
+      "agree": [
+        "haematologic"
+      ],
+      "hand_only": [
+        "infectious_immune"
+      ],
+      "mondo_only": []
+    },
+    "neutropenia_chronic": {
+      "mondo_id": "MONDO:0001475",
+      "mondo_name": "neutropenia",
+      "n_ancestors": 8,
+      "derived_axes": [
+        "haematologic",
+        "infectious_immune"
+      ],
+      "via": {
+        "haematologic": [
+          "hematologic disorder"
+        ],
+        "infectious_immune": [
+          "immune system disorder"
+        ]
+      },
+      "hand_axes": [
+        "haematologic"
+      ],
+      "agree": [
+        "haematologic"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "infectious_immune"
+      ]
+    },
+    "anaemia_chronic": {
+      "mondo_id": "MONDO:0002280",
+      "mondo_name": "anemia",
+      "n_ancestors": 4,
+      "derived_axes": [
+        "haematologic"
+      ],
+      "via": {
+        "haematologic": [
+          "hematologic disorder"
+        ]
+      },
+      "hand_axes": [
+        "haematologic"
+      ],
+      "agree": [
+        "haematologic"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "mds": {
+      "mondo_id": "MONDO:0018881",
+      "mondo_name": "myelodysplastic syndrome",
+      "n_ancestors": 12,
+      "derived_axes": [
+        "haematologic"
+      ],
+      "via": {
+        "haematologic": [
+          "hematologic disorder"
+        ]
+      },
+      "hand_axes": [
+        "haematologic"
+      ],
+      "agree": [
+        "haematologic"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "prior_hsct": {
+      "mondo_id": "MONDO:0000001",
+      "mondo_name": "disease",
+      "n_ancestors": 0,
+      "derived_axes": [],
+      "via": {},
+      "hand_axes": [
+        "haematologic"
+      ],
+      "agree": [],
+      "hand_only": [
+        "haematologic"
+      ],
+      "mondo_only": []
+    },
+    "inflammatory_bowel_disease": {
+      "mondo_id": "MONDO:0005265",
+      "mondo_name": "inflammatory bowel disease",
+      "n_ancestors": 9,
+      "derived_axes": [
+        "gastrointestinal",
+        "infectious_immune"
+      ],
+      "via": {
+        "gastrointestinal": [
+          "digestive system disorder",
+          "intestinal disorder"
+        ],
+        "infectious_immune": [
+          "immune system disorder"
+        ]
+      },
+      "hand_axes": [
+        "gastrointestinal"
+      ],
+      "agree": [
+        "gastrointestinal"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "infectious_immune"
+      ]
+    },
+    "prior_bowel_resection": {
+      "mondo_id": "MONDO:0000001",
+      "mondo_name": "disease",
+      "n_ancestors": 0,
+      "derived_axes": [],
+      "via": {},
+      "hand_axes": [
+        "gastrointestinal"
+      ],
+      "agree": [],
+      "hand_only": [
+        "gastrointestinal"
+      ],
+      "mondo_only": []
+    },
+    "chronic_pancreatitis": {
+      "mondo_id": "MONDO:0005003",
+      "mondo_name": "chronic pancreatitis",
+      "n_ancestors": 9,
+      "derived_axes": [
+        "gastrointestinal",
+        "metabolic_endocrine"
+      ],
+      "via": {
+        "gastrointestinal": [
+          "digestive system disorder",
+          "pancreas disorder"
+        ],
+        "metabolic_endocrine": [
+          "endocrine system disorder"
+        ]
+      },
+      "hand_axes": [
+        "gastrointestinal"
+      ],
+      "agree": [
+        "gastrointestinal"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "metabolic_endocrine"
+      ]
+    },
+    "severe_psoriasis": {
+      "mondo_id": "MONDO:0005083",
+      "mondo_name": "psoriasis",
+      "n_ancestors": 13,
+      "derived_axes": [
+        "dermatologic",
+        "infectious_immune"
+      ],
+      "via": {
+        "dermatologic": [
+          "hereditary skin disorder",
+          "integumentary system disorder",
+          "skin disorder"
+        ],
+        "infectious_immune": [
+          "immune system disorder"
+        ]
+      },
+      "hand_axes": [
+        "dermatologic"
+      ],
+      "agree": [
+        "dermatologic"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "infectious_immune"
+      ]
+    },
+    "prior_sjs_ten": {
+      "mondo_id": "MONDO:0018229",
+      "mondo_name": "Stevens-Johnson syndrome",
+      "n_ancestors": 8,
+      "derived_axes": [
+        "dermatologic"
+      ],
+      "via": {
+        "dermatologic": [
+          "integumentary system disorder",
+          "skin disorder"
+        ]
+      },
+      "hand_axes": [
+        "dermatologic"
+      ],
+      "agree": [
+        "dermatologic"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "type_2_diabetes": {
+      "mondo_id": "MONDO:0005148",
+      "mondo_name": "type 2 diabetes mellitus",
+      "n_ancestors": 11,
+      "derived_axes": [
+        "gastrointestinal",
+        "metabolic_endocrine"
+      ],
+      "via": {
+        "gastrointestinal": [
+          "digestive system disorder",
+          "pancreas disorder"
+        ],
+        "metabolic_endocrine": [
+          "diabetes mellitus",
+          "endocrine pancreas disorder",
+          "endocrine system disorder",
+          "glucose metabolism disease",
+          "metabolic disease"
+        ]
+      },
+      "hand_axes": [
+        "metabolic_endocrine"
+      ],
+      "agree": [
+        "metabolic_endocrine"
+      ],
+      "hand_only": [],
+      "mondo_only": [
+        "gastrointestinal"
+      ]
+    },
+    "hypothyroidism": {
+      "mondo_id": "MONDO:0005420",
+      "mondo_name": "hypothyroidism",
+      "n_ancestors": 5,
+      "derived_axes": [
+        "metabolic_endocrine"
+      ],
+      "via": {
+        "metabolic_endocrine": [
+          "endocrine system disorder"
+        ]
+      },
+      "hand_axes": [
+        "metabolic_endocrine"
+      ],
+      "agree": [
+        "metabolic_endocrine"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "hiv_controlled": {
+      "mondo_id": "MONDO:0005109",
+      "mondo_name": "HIV infectious disease",
+      "n_ancestors": 12,
+      "derived_axes": [
+        "infectious_immune"
+      ],
+      "via": {
+        "infectious_immune": [
+          "infectious disease",
+          "primary viral infectious disease",
+          "viral infectious disease"
+        ]
+      },
+      "hand_axes": [
+        "infectious_immune"
+      ],
+      "agree": [
+        "infectious_immune"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "active_autoimmune": {
+      "mondo_id": "MONDO:0007179",
+      "mondo_name": "autoimmune disease",
+      "n_ancestors": 4,
+      "derived_axes": [
+        "infectious_immune"
+      ],
+      "via": {
+        "infectious_immune": [
+          "immune system disorder"
+        ]
+      },
+      "hand_axes": [
+        "infectious_immune"
+      ],
+      "agree": [
+        "infectious_immune"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    },
+    "hearing_loss": {
+      "mondo_id": "MONDO:0005365",
+      "mondo_name": "hearing loss disorder",
+      "n_ancestors": 5,
+      "derived_axes": [
+        "otologic"
+      ],
+      "via": {
+        "otologic": [
+          "auditory system disorder"
+        ]
+      },
+      "hand_axes": [
+        "otologic"
+      ],
+      "agree": [
+        "otologic"
+      ],
+      "hand_only": [],
+      "mondo_only": []
+    }
+  },
+  "unresolvable": [],
+  "axes_not_derivable": {
+    "constitutional": "a reporting class, not an organ system"
+  }
+}

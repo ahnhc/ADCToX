@@ -1,0 +1,139 @@
+# MONDO organ-system ancestors mapped to the project's 14 organ axes.
+#
+# Why this exists, and it is the strongest argument in the plan's comorbidity section. The
+# registry's `organ_axes` column is hand-assigned, and the hands that assigned it were
+# reading trial exclusion criteria -- so the mapping cannot be validated against exclusion
+# criteria without circularity, and the only holdout left is 28 cells of FDA label text.
+#
+# A MONDO `is_a` closure touches no exclusion text at all. It derives a disease's organs
+# from a curated ontology built for entirely different purposes, which makes exclusion
+# recovery over 1,741 trials a legitimate holdout and raises the available power by two
+# orders of magnitude. That is the whole point; the organ assignments it produces are not
+# expected to be better than the hand map, only independent of it.
+#
+# Multiple parents are a feature rather than a problem: cirrhosis is hepatobiliary *and*
+# digestive, and a multi-organ assignment is what the scoring layer needs. So every
+# matching ancestor contributes, and nothing resolves to a single axis by fiat.
+#
+# Each key is matched against the *name* of every `is_a` ancestor, exactly and in lower
+# case. Names rather than identifiers because MONDO's organ-system roots are stable in
+# wording and because a reader can audit a name.
+version: 1
+source: mondo.obo v2026-10-06, CC BY 4.0
+snapshot: '2026-10-07'
+
+ancestor_to_axis:
+  # Every key below was harvested from the actual `is_a` closure of the 41 registry
+  # conditions, not guessed. The first version was guessed, used "disease" where MONDO says
+  # "disorder", and derived no organ for 34 of 38 conditions.
+  hepatobiliary disorder: hepatic
+  liver disorder: hepatic
+  hepatitis: hepatic
+  viral hepatitis: hepatic
+
+  urinary system disorder: renal
+  kidney disorder: renal
+
+  cardiovascular disorder: cardiovascular
+  heart disorder: cardiovascular
+  vascular disorder: cardiovascular
+
+  respiratory system disorder: pulmonary
+  lower respiratory tract disorder: pulmonary
+  lung disorder: pulmonary
+  tracheal disorder: pulmonary
+
+  eye disorder: ocular
+  eye disease: ocular
+
+  auditory system disorder: otologic
+  ear disorder: otologic
+  cochlear disorder: otologic
+
+  hematologic disorder: haematologic
+  blood coagulation disorder: haematologic
+  bone marrow disorder: haematologic
+
+  nervous system disorder: neurologic
+  central nervous system disorder: neurologic
+  brain disorder: neurologic
+  peripheral nervous system disorder: neurologic
+
+  immune system disorder: infectious_immune
+  autoimmune disease: infectious_immune
+  infectious disease: infectious_immune
+  viral infectious disease: infectious_immune
+  primary viral infectious disease: infectious_immune
+
+  endocrine system disorder: metabolic_endocrine
+  metabolic disease: metabolic_endocrine
+  diabetes mellitus: metabolic_endocrine
+  glucose metabolism disease: metabolic_endocrine
+  endocrine pancreas disorder: metabolic_endocrine
+  lipid metabolism disorder: metabolic_endocrine
+
+  digestive system disorder: gastrointestinal
+  intestinal disorder: gastrointestinal
+  pancreas disorder: gastrointestinal
+  digestive system infectious disorder: gastrointestinal
+
+  integumentary system disorder: dermatologic
+  skin disorder: dermatologic
+  hereditary skin disorder: dermatologic
+
+  musculoskeletal system disorder: musculoskeletal
+  muscle tissue disorder: musculoskeletal
+  bone disorder: musculoskeletal
+  connective tissue disorder: musculoskeletal
+
+# Ancestors that are organ-shaped and deliberately not mapped, with the reason. Recorded so
+# an unmapped ancestor is a decision rather than an omission.
+not_mapped:
+  neoplasm: >-
+    Every comorbidity in an oncology trial coexists with a neoplasm, so the axis carries no
+    information and would be assigned to all 41 conditions.
+  disease: >-
+    The ontology root. Present for every condition that resolves at all, so it carries no
+    information.
+  human disease: >-
+    One level below the root, and present for 32 of 41 conditions.
+  syndromic disease: >-
+    A mode of presentation rather than an organ system.
+  genetic disease: >-
+    An aetiology rather than an organ system.
+  reproductive system disorder: >-
+    No axis. The 14 axes come from MedDRA system organ classes that ADC trials report, and
+    reproductive events are reported too rarely to carry a cell.
+  female reproductive system disorder: >-
+    As for reproductive system disorder: no axis exists for it.
+  male reproductive system disorder: >-
+    As for reproductive system disorder: no axis exists for it.
+  disease by body system or component: >-
+    A grouping node above the organ roots, present for 31 of 41 conditions, so it
+    separates nothing.
+  disease by etiologic mechanism: >-
+    An aetiology axis rather than an organ system.
+  disease by developmental or physiological process: >-
+    A process axis rather than an organ system.
+  inflammatory disease: >-
+    A process rather than an organ. It appears for 5 conditions spanning four different
+    organ systems.
+  hereditary disease: >-
+    An aetiology rather than an organ system.
+  disease of genetic or genomic mechanism: >-
+    An aetiology rather than an organ system.
+  disease of primarily extrinsic mechanism: >-
+    An aetiology rather than an organ system.
+  cancer or benign tumor: >-
+    As for neoplasm: every comorbidity here coexists with one.
+  neoplastic disease or syndrome: >-
+    As for neoplasm: every comorbidity here coexists with one.
+  idiopathic disease: >-
+    An absence of aetiology rather than an organ system.
+
+# `constitutional` has no MONDO counterpart on purpose: it is a MedDRA reporting class
+# (fatigue, pyrexia, weight loss) rather than an organ, so no disease ontology can place a
+# comorbidity on it. The axis stays available to the forward model and unreachable from
+# this layer, which is stated rather than silently empty.
+axes_not_derivable:
+  constitutional: a reporting class, not an organ system
