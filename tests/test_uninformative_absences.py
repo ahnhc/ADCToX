@@ -94,3 +94,62 @@ def test_the_option_is_off_by_default(axes) -> None:
 
     sig = inspect.signature(ds.build)
     assert sig.parameters["drop_uninformative_absences"].default is False
+
+
+@pytest.mark.skipif(not (FULL / "arms.parquet").exists(),
+                    reason="run `make pmc-merge`")
+def test_a_paper_s_serious_table_is_not_treated_as_complete(axes) -> None:
+    """`seriousEvents` is complete on ClinicalTrials.gov, where the registry lists every
+    serious event with no frequency cut, so an absent organ there is a true zero. A
+    *paper's* serious-adverse-event table is selected like any other table. Asserting a
+    zero is a stronger false statement than asserting a bound, so the completeness
+    assumption holds only for arms whose cut is not merely a bound."""
+    import pandas as pd
+
+    arms = pd.read_parquet(FULL / "arms.parquet")
+    bounded = arms["threshold_is_upper_bound"].fillna(False).astype(bool)
+    paper_serious = arms[bounded & arms["n_at_risk_serious"].notna()]
+    assert len(paper_serious) > 0, "no bounded arm publishes a serious table"
+
+    kept = ds.load(FULL, axes, kind="serious", drop_uninformative_absences=False)
+    # Their absences are censored, not zero.
+    assert len(kept.censored_idx) > 0, (
+        "a bounded paper arm's absent organ is still being asserted as a zero"
+    )
+    dropped = ds.load(FULL, axes, kind="serious", drop_uninformative_absences=True)
+    assert len(dropped.censored_idx) == 0
+    assert int((dropped.status == 0).sum()) == int((kept.status == 0).sum())
+
+
+@pytest.mark.skipif(not (ROOT / "data" / "processed" / "arms.parquet").exists(),
+                    reason="run `make corpus`")
+def test_the_registry_s_serious_zeros_survive(axes) -> None:
+    """The counterpart. A registry serious table really is complete, and its roughly 1,025
+    structural zeros are the reason the serious fit is a usable robustness check at all."""
+    registry = ds.load(ROOT / "data" / "processed", axes, kind="serious")
+    assert len(registry.censored_idx) == 0, "a registry serious arm must need no censoring"
+    assert int((registry.status == 2).sum()) > 900
+
+
+@pytest.mark.skipif(not (FULL / "arms.parquet").exists(),
+                    reason="run `make pmc-merge`")
+def test_an_arm_only_enters_the_grid_for_a_table_it_published(axes) -> None:
+    """`arms.n_at_risk` is the maximum of the two table denominators, so a literature arm
+    that published only a common-events table still carries a positive denominator when the
+    serious grid is built. Taken literally that put 405 of 414 paper arms into the serious
+    grid on a denominator from a different table.
+
+    The consequence is a real result and not only a bug fix: the literature expansion buys
+    the common-events table (16 agents -> 32) and buys the serious table almost nothing
+    (16 -> 17). The serious fit cannot serve as the robustness check for the expanded
+    corpus, and the fabricated cells were hiding that."""
+    other = ds.load(FULL, axes, kind="other")
+    serious = ds.load(FULL, axes, kind="serious")
+
+    assert other.n_arms > 2 * serious.n_arms
+    assert other.n_contributing_agents >= 32
+    assert serious.n_contributing_agents <= 20, (
+        "the serious grid has gained agents it has no serious table for"
+    )
+    # The index arrays still cover every arm, so an arm's position is table-independent.
+    assert len(other.arm_keys) == len(serious.arm_keys)

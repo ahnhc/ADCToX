@@ -103,7 +103,20 @@ class ModelData:
 
     @property
     def n_arms(self) -> int:
-        return len(self.arm_keys)
+        """Arms that contribute at least one cell.
+
+        This is smaller than ``len(arm_keys)`` for the serious table, because an arm that
+        published only a common-events table contributes nothing there. The index arrays
+        keep every arm so that an arm's position is the same under both tables, but the
+        summary must count what the fit actually sees: reporting 594 arms for a serious
+        grid built from 290 of them would overstate the corpus by a factor of two.
+        """
+        return int(np.unique(self.arm_idx).size)
+
+    @property
+    def n_contributing_agents(self) -> int:
+        """Agents with at least one cell -- see :attr:`n_arms`."""
+        return int(np.unique(self.arm_agent_idx[np.unique(self.arm_idx)]).size)
 
     def summary(self) -> str:
         counts = {
@@ -115,7 +128,7 @@ class ModelData:
             f"{self.n_cells:,} cells over {self.n_arms:,} arms x {len(self.axes)} axes "
             f"({counts['observed']:,} observed, {counts['censored']:,} censored, "
             f"{counts['zero']:,} structural zero) | "
-            f"{len(self.agents)} agents, {len(self.mechanisms)} mechanisms, "
+            f"{self.n_contributing_agents} agents, {len(self.mechanisms)} mechanisms, "
             f"{len(self.families)} payload families, "
             f"{len(self.trials)} multi-arm trials "
             f"({int((self.arm_has_trial_effect == 0).sum())} arms from single-arm trials "
@@ -227,18 +240,41 @@ def build(
         for r in sub.itertuples()
     }
 
+    # `arms.n_at_risk` is the maximum of the two table denominators, so an arm that
+    # published only a common-events table still carries a positive denominator when the
+    # serious grid is built. Taken literally that puts 405 of the 414 literature arms into
+    # the serious grid on the strength of a denominator from a different table, where every
+    # axis is absent -- about 5,600 cells asserting either a zero or a bound for a table
+    # the paper never printed. An arm belongs in a kind's grid only if the corpus reported
+    # that kind for it: a denominator of its own, or at least one observation. The
+    # observation test is required, because 8 registry arms report serious events without a
+    # serious denominator and must keep the arm-level fallback.
+    reporting = {arm_key for arm_key, _ in observed}
+
     status_l, k_l, n_l, cens_l, ax_l, arm_l = [], [], [], [], [], []
     for i, row in arms.iterrows():
         arm_key = row["arm_key"]
         n_risk = int(row["n_at_risk"])
         # Prefer the table-specific denominator where the corpus gave one.
         col = "n_at_risk_other" if kind == "other" else "n_at_risk_serious"
-        if pd.notna(row.get(col)) and row[col]:
+        has_denominator = pd.notna(row.get(col)) and bool(row[col])
+        if has_denominator:
             n_risk = int(row[col])
+        elif arm_key not in reporting:
+            continue
         if n_risk <= 0:
             continue
-        # seriousEvents are complete; otherEvents are complete only at threshold 0.
-        complete = (kind == "serious") or (thresh[i] <= 0)
+        # ClinicalTrials.gov `seriousEvents` are complete -- the registry lists every
+        # serious event with no frequency cut -- so an absent organ is a true zero there.
+        # A *paper's* serious-adverse-event table is not complete: it is selected like any
+        # other table, and 9 literature arms report a median of 5 axes each, which would
+        # assert about 81 zeros the papers never claim. A zero is a stronger false
+        # statement than a censoring bound, so the completeness assumption is withdrawn
+        # for any arm whose reporting cut is only a bound.
+        #
+        # Registry arms have no `threshold_is_upper_bound`, so `bounded` is False for them
+        # and this changes nothing about the registry corpus.
+        complete = (kind == "serious" and not bounded[i]) or (thresh[i] <= 0)
         # Successes strictly below this count were suppressed by the reporting cut.
         cut = int(np.ceil(n_risk * thresh[i] / 100.0))
 
