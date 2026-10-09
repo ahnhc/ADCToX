@@ -1,0 +1,63 @@
+"""Every script that writes an artefact the report quotes must be in `make all`.
+
+The report opens by claiming that `make all` regenerates every number in it. Two targets
+added today were not in `all` while their figures were quoted -- `row-grade-exposure`, which
+bounds the grade-in-the-row-label exposure at 6 of 2,696 observations, and `dar-gap`, which
+reports that 1,471 harvested articles recover 2 of the 12 missing drug-to-antibody ratios.
+Nothing noticed, because the number guard checks that a figure traces to an artefact *on
+disk* and cannot tell whether a clean tree would still produce that artefact.
+
+So the invariant is mechanical: a script that writes under `artifacts/` is either reachable
+from `make all` or explicitly exempted here with a reason. There is one exemption: the
+inverse-retrieval evaluation, which refits a posterior per held-out agent and takes about
+four hours, so `make expensive` carries it the way `make fetch` carries the network steps.
+26 of the 27 artefact-writing scripts are reachable from `all`.
+"""
+
+from __future__ import annotations
+
+import pathlib
+import re
+import subprocess
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+
+# Scripts that write an artefact and are deliberately outside `all`.
+# Scripts that write an artefact and are deliberately outside `all`. One, and it says why.
+EXEMPT = {
+    # One posterior refit per held-out agent, about four hours. `make expensive` carries it,
+    # the way `make fetch` carries the network steps, and `all` is meant to be runnable.
+    "inverse_retrieval.py",
+}
+def _scripts_writing_artefacts() -> set[str]:
+    out = set()
+    for path in sorted((ROOT / "scripts").glob("*.py")):
+        text = path.read_text(encoding="utf-8")
+        if "write_json(" in text or re.search(r'artifacts["\'/]', text):
+            out.add(path.name)
+    return out
+
+
+def _scripts_in_make_all() -> set[str]:
+    proc = subprocess.run(
+        ["make", "-n", "all"], cwd=ROOT, capture_output=True, text=True, timeout=300,
+    )
+    assert proc.returncode == 0, proc.stderr[-800:]
+    return set(re.findall(r"scripts/([a-z_0-9]+\.py)", proc.stdout))
+
+
+def test_every_artefact_writing_script_is_reachable_from_make_all() -> None:
+    writing = _scripts_writing_artefacts()
+    reached = _scripts_in_make_all()
+    missing = sorted(writing - reached - EXEMPT)
+    assert not missing, (
+        "these write artefacts the report may quote and are not in `make all`: "
+        f"{missing}. Add the target to `all`, or add the script to EXEMPT with the reason."
+    )
+
+
+def test_the_exemption_list_names_only_scripts_that_exist() -> None:
+    """An exemption for a deleted script is an exemption that hides its replacement."""
+    present = {p.name for p in (ROOT / "scripts").glob("*.py")}
+    stale = sorted(EXEMPT - present)
+    assert not stale, f"exemptions for scripts that no longer exist: {stale}"

@@ -38,7 +38,8 @@ ART     := artifacts
 all: taxonomy corpus forward censoring-sensitivity expression enrichment module-b \
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent \
-     rank-resolution driver-waterfall outcome-tables check-report
+     rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
+     check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
 # comparison. Both depend on fetched label data, so the fetches are separate targets --
@@ -282,8 +283,9 @@ rank-resolution: ## how often the proposal ranking resolves, over targets x prof
 	$(PY) scripts/rank_resolution.py
 
 # Which registry agents still have no drug-to-antibody ratio, and whether the articles
-# already on disk state it. Not in `all`: it reads the raw PMC snapshot, like the other
-# corpus measurements, and `all` stays offline.
+# already on disk state it. In `all`, because the report quotes its figures and the claim
+# that `make all` regenerates every number has to hold for them too. It reads the raw PMC
+# snapshot and fetches nothing, like the other corpus measurements.
 dar-gap: ## search the harvested articles for the registry's missing DAR values
 	$(PY) scripts/dar_gap.py
 
