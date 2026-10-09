@@ -1,0 +1,89 @@
+{
+ "bands": {
+  "accounts_for": 0.4,
+  "does_not_account_for": 0.9
+ },
+ "tables": {
+  "other": {
+   "sigma_agent": {
+    "mean": 0.3433225452899933,
+    "q05": 0.24228161573410034,
+    "q95": 0.48981499671936035
+   },
+   "tau_mech": {
+    "mean": 0.5424401760101318,
+    "q05": 0.4493687152862549,
+    "q95": 0.6398335695266724
+   },
+   "ratio": 0.6329224133346285,
+   "ratio_q05": 0.44665131096332167,
+   "ratio_q95": 0.9029843628511238,
+   "reading": "comparable scales: the slots account for part of it",
+   "corpus": "4,186 cells over 299 arms x 14 axes (3,626 observed, 483 censored, 77 structural zero) | 22 agents, 5 mechanisms, 8 payload families, 64 multi-arm trials (134 arms from single-arm trials carry no trial effect)"
+  },
+  "serious": {
+   "sigma_agent": {
+    "mean": 0.5677055716514587,
+    "q05": 0.4114265441894531,
+    "q95": 0.7596442699432373
+   },
+   "tau_mech": {
+    "mean": 0.47072628140449524,
+    "q05": 0.3854706287384033,
+    "q95": 0.5762295126914978
+   },
+   "ratio": 1.2060205560599009,
+   "ratio_q05": 0.8740250129265975,
+   "ratio_q95": 1.613770677253677,
+   "reading": "the residual exceeds the mechanism effect: the slots do not account for it",
+   "corpus": "4,172 cells over 298 arms x 14 axes (3,117 observed, 0 censored, 1,055 structural zero) | 22 agents, 5 mechanisms, 8 payload families, 64 multi-arm trials (134 arms from single-arm trials carry no trial effect)"
+  }
+ },
+ "against_tau_mech": {
+  "other": {
+   "tau_cleav": 0.5292876783556666,
+   "sigma_agent": 0.6329224133346285,
+   "sigma_trial": 0.8854634994741027
+  },
+  "serious": {
+   "tau_cleav": 0.9832850404809689,
+   "sigma_agent": 1.2060205560599009,
+   "sigma_trial": 1.0478568692163883
+  }
+ },
+ "across_tables": {
+  "b_thresh": {
+   "other": 0.034092385321855545,
+   "serious": 0.12722471356391907,
+   "serious_over_other": 3.7317633355023516,
+   "same_sign": true
+  },
+  "b_log_n": {
+   "other": 0.0335790179669857,
+   "serious": -0.20633620023727417,
+   "serious_over_other": -6.14479555179786,
+   "same_sign": false
+  },
+  "b_combo": {
+   "other": 0.1929682344198227,
+   "serious": 0.5604715943336487,
+   "serious_over_other": 2.9044759414354373,
+   "same_sign": true
+  },
+  "b_dar": {
+   "other": 0.03849330544471741,
+   "serious": -0.014877580106258392,
+   "serious_over_other": -0.3864978581178225,
+   "same_sign": false
+  }
+ },
+ "reverses_across_tables": true,
+ "provenance": {
+  "revision": "abf44eb9341a8bf451d878ddda40847e179bbb94",
+  "dirty": true,
+  "snapshot": null,
+  "script": "residual_scale.py",
+  "written_utc": "2026-10-09T13:40:13+00:00",
+  "inputs": {}
+ }
+}

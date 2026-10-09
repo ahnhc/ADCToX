@@ -30,6 +30,7 @@ ART     := artifacts
 .PHONY: all env taxonomy corpus eligibility enrichment forward propose test \
         censoring-sensitivity label-history label-changes label-change-eval \
         dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
+        residual-scale \
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
@@ -44,7 +45,7 @@ ART     := artifacts
 # sensitivity analysis while the report cited both.
 all: taxonomy corpus forward censoring-sensitivity expression enrichment module-b \
      comorbidity literature \
-     propose test hard-flags fold-difficulty design-effects across-agent \
+     propose test hard-flags fold-difficulty design-effects across-agent residual-scale \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
      granularity-ratio source-axis source-confounding axis-composition \
      check-report
@@ -125,6 +126,17 @@ enrichment: snapshot-check
 # Depends on the corpus *file*, not on the phony `forward`, so it rebuilds when the corpus
 # is newer and not on every invocation. `forward` still does the whole job -- both tables
 # and both posteriors -- and remains what you run to refit deliberately.
+#
+# One thing mtimes cannot tell you: `make corpus` rewrites these frames even when it
+# reproduces them row for row, so an interrupted build, or a rebuild run for any other
+# reason, leaves the frames newer than a fit that is still perfectly valid for them -- and
+# every downstream measurement target then pays for a full refit. The provenance input hash
+# does not settle it either, because the hashed directory contains stamps carrying their own
+# write time (see `src/adctox/provenance.py`). What settles it is comparing the quantities
+# the fit scored against the frames on disk: the per-fold, per-axis observed rates in
+# `$(ART)/forward_other_fold_predictions.parquet`, which are a pure function of the grid. If
+# all of them match, `touch $(ART)/forward_*_metrics.json` is correcting make's bookkeeping
+# rather than hiding a stale fit. If any differ, refit.
 $(FORWARD_METRICS): $(PROC)/arms.parquet $(PROC)/observations.parquet
 	$(PY) scripts/fit_forward.py --processed $(PROC) --out $(ART) --kind other
 
@@ -198,10 +210,17 @@ fold-difficulty: $(FORWARD_METRICS)
 hard-flags: $(FORWARD_METRICS)
 	$(PY) scripts/hard_flag_necessity.py --out $(ART)
 
+# How much of the between-agent variation the seven design slots actually account for:
+# sigma_agent over tau_mech, on both tables. The ratio is what the report makes a claim
+# about, and it was a hand-written word until it went stale -- see negative result 38.
+residual-scale: $(FORWARD_METRICS)
+	$(PY) scripts/residual_scale.py --artifacts $(ART) --out $(ART)/residual_scale.json
+
 sync-report:
 	$(PY) scripts/sync_report_numbers.py
 
-check-report: hard-flags fold-difficulty design-effects across-agent sync-report
+check-report: hard-flags fold-difficulty design-effects across-agent residual-scale \
+               sync-report
 	$(PY) scripts/check_report.py report/
 
 clean:

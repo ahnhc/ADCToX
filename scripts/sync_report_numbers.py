@@ -22,6 +22,12 @@ import argparse
 import json
 import re
 from pathlib import Path
+from collections.abc import Callable
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import residual_scale as _residual_scale
 
 BEGIN = "<!-- generated: fitted-parameters -->"
 END = "<!-- /generated: fitted-parameters -->"
@@ -51,51 +57,229 @@ CENS_ROWS = [
     ("threshold_0_only", "completely-reported subset only"),
 ]
 
-# parameter -> (source, sentence). `{v}` is substituted with "mean [q05, q95]".
-NOTES: dict[str, tuple[str, str]] = {
-    "tau_cleav": (
-        "tau_cleav",
-        "the scale of the cleavable-versus-non-cleavable linker contrast across axes. "
-        "Clear of zero, and about half the size of the mechanism scale -- so linker "
-        "cleavability shifts the organ profile, and shifts it less than the payload "
-        "mechanism does. This is the one design axis the corpus identifies comfortably: "
-        "cleavability is binary and needs only 8 agents to estimate, against the 40 a "
-        "mechanism level needs and the 80 a payload level would.",
-    ),
-    "tau_mech": (
-        "tau_mech",
+def _relative_to_mech(cell: dict, metrics: dict) -> str:
+    """Phrase one scale against `tau_mech`, from the numbers rather than from memory.
+
+    "about half the size of the mechanism scale" was hand-written beside `tau_cleav`. It
+    happened to be true. Nothing would have moved it if the fit had, which is the defect
+    negative result 38 is about, so the fraction is read off instead of asserted.
+    """
+    tm = metrics.get("tau_mech", {}).get("mean")
+    if not tm:
+        return ""
+    ratio = cell["mean"] / tm
+    # Four decimals, so `check_report.py` has real power on the figure: its own measured
+    # false-pass rate against fabricated numbers is 100% at two decimals and 31% at four.
+    if ratio < 0.60:
+        return f"about {ratio:.4f} times the mechanism scale"
+    if ratio < 0.90:
+        return f"{ratio:.4f} times the mechanism scale, not far below it"
+    if ratio < 1.10:
+        return f"{ratio:.4f} times the mechanism scale -- effectively the same size"
+    return f"{ratio:.4f} times the mechanism scale, which it exceeds"
+
+
+def _straddles_zero(cell: dict) -> bool:
+    """Whether the 90% interval contains zero, which is the claim, not a recollection."""
+    return cell["q05"] <= 0.0 <= cell["q95"]
+
+
+def _tau_mech_note(metrics: dict) -> str | None:
+    """"Supported by the data rather than asserted by a parameter count" is a sign claim.
+
+    Section 4's conclusion -- that the design terms cannot reorder the organ ranking -- is
+    argued from this scale clearing zero while being the largest of the design scales. Both
+    halves are read off here rather than remembered, and every design scale in the block is
+    in the comparison, not only the one that happens to be sampled today.
+    """
+    cell = metrics.get("tau_mech")
+    if not cell or "q05" not in cell:
+        return None
+    if _straddles_zero(cell):
+        return (
+            "the mechanism x axis interaction, whose scale now includes zero -- so on this "
+            "corpus it is asserted by the parameter count rather than supported by the "
+            "data, and section 4's conclusion rests on it being the other way round."
+        )
+    others = [
+        c["mean"] for name in ("tau_cleav", "tau_family")
+        if isinstance((c := metrics.get(name)), dict) and c.get("mean")
+    ]
+    if others and cell["mean"] < max(others):
+        return (
+            "the mechanism x axis interaction clears zero, so it is supported by the data "
+            "rather than asserted by a parameter count -- but it is no longer the largest "
+            f"design scale in this block, which reaches {max(others):.4f}. Section 4 argues "
+            "from the mechanism being the dominant design term, so that argument needs "
+            "rechecking before it is quoted."
+        )
+    return (
         "the mechanism x axis interaction is supported by the data rather than asserted "
-        "by a parameter count.",
-    ),
-    "sigma_agent": (
-        "coefficients",
-        "small, so the design slots account for much of the between-agent variation.",
-    ),
+        "by a parameter count: the scale clears zero, and it is the largest of the design "
+        "scales in this block."
+    )
+
+
+def _b_log_n_note(metrics: dict, sibling: dict | None) -> str | None:
+    cell = metrics.get("coefficients", {}).get("b_log_n")
+    if not cell:
+        return None
+    lead = (
+        "an ascertainment effect that would have been attributed to the design had it not "
+        "been controlled. "
+    )
+    there = (sibling or {}).get("coefficients", {}).get("b_log_n")
+    if not there or not cell.get("mean"):
+        return lead.rstrip()
+    # The one coefficient whose sign is not shared by the two tables. Worth saying here
+    # rather than only in the censoring comparison, because the sentence above reads as a
+    # single mechanism and on this evidence it is not one.
+    if (cell["mean"] > 0) != (there["mean"] > 0):
+        return lead + (
+            f"It takes the opposite sign on the seriousEvents table ({there['mean']:+.4f} "
+            f"against {cell['mean']:+.4f} here), which is the largest disagreement between "
+            "the two tables in this block, so what it absorbs is not one effect measured "
+            "twice. Treat it as a per-table nuisance term and not as an estimate of how "
+            "ascertainment works."
+        )
+    return lead + (
+        f"The same sign on the seriousEvents table ({there['mean']:+.4f}), so the two "
+        "tables agree about its direction."
+    )
+
+
+def _b_thresh_note(metrics: dict, sibling: dict | None) -> str | None:
+    """"Four times larger on the seriousEvents table" is a ratio between two fitted values.
+
+    It was hand-written, and it was the argument for calling this coefficient a reporting
+    covariate rather than the censoring correction, so it is the last clause in this block
+    that should have been a constant. Derived now from both tables; without the sibling
+    artefact the comparison is omitted rather than asserted.
+    """
+    here = metrics.get("coefficients", {}).get("b_thresh")
+    if not here:
+        return None
+    lead = "the reporting-threshold covariate. "
+    there = (sibling or {}).get("coefficients", {}).get("b_thresh")
+    if not there or not here.get("mean"):
+        return lead + (
+            "The comparison that makes it a reporting covariate rather than the censoring "
+            "correction needs the other event table, whose metrics are absent here."
+        )
+    ratio = there["mean"] / here["mean"]
+    # Same sign and larger there is the finding. A sign flip would be a different one, and
+    # saying "N times larger" about it would hide that.
+    if ratio < 0:
+        return lead + (
+            f"It takes the opposite sign on the seriousEvents table ({there['mean']:+.4f} "
+            f"against {here['mean']:+.4f} here), which has no censored cells at all, so it "
+            "is not estimating one thing on the two tables and should not be read as a "
+            "censoring correction on either."
+        )
+    return lead + (
+        f"Not the censoring correction: it is {ratio:.4f} times larger on the seriousEvents "
+        "table, which has no censored cells at all, so it is substantially absorbing "
+        "trial-level reporting practice."
+    )
+
+
+def _tau_cleav_note(metrics: dict) -> str | None:
+    cell = metrics.get("tau_cleav")
+    if not cell or "q05" not in cell:
+        return None
+    clear = "Clear of zero" if not _straddles_zero(cell) else "Includes zero"
+    rel = _relative_to_mech(cell, metrics)
+    direction = (
+        "so linker cleavability shifts the organ profile, and shifts it less than the "
+        "payload mechanism does"
+        if cell["mean"] < metrics.get("tau_mech", {}).get("mean", float("inf"))
+        else "so linker cleavability shifts the organ profile by more than the payload "
+             "mechanism does, which would be a surprise worth checking before quoting"
+    )
+    return (
+        "the scale of the cleavable-versus-non-cleavable linker contrast across axes. "
+        f"{clear}, and {rel} -- {direction}. This is the one design axis the corpus "
+        "identifies comfortably: cleavability is binary and needs only 8 agents to "
+        "estimate, against the 40 a mechanism level needs and the 80 a payload level would."
+    )
+
+
+def _b_dar_note(metrics: dict) -> str | None:
+    cell = metrics.get("coefficients", {}).get("b_dar")
+    if not cell or "q05" not in cell:
+        return None
+    lead = (
+        "includes zero. " if _straddles_zero(cell)
+        else "clear of zero, which it was not on the registry corpus -- worth checking "
+             "against the confounding below before it is quoted as a DAR effect. "
+    )
+    return lead + (
+        "DAR is an agent-level constant and is confounded with agent identity here. The "
+        "pharmacokinetic literature supports a DAR effect; this corpus does not resolve one."
+    )
+
+
+def _sigma_agent_note(metrics: dict) -> str | None:
+    """Derive the reading rather than assert it.
+
+    `sigma_agent` is the residual between-agent SD *after* the design slots; `tau_mech` is
+    the scale of the mechanism x axis effect the slots supply. The ratio of the two decides
+    whether the slots account for the between-agent variation, so the sentence is selected
+    by that ratio and prints it. A hardcoded "small" survived the corpus rebuild that moved
+    this parameter from 0.159 to 0.343 and became false; see negative result 38.
+
+    The ratio and its bands come from `residual_scale.py`, which is where they are measured
+    and where the artefact the report's figures are checked against is written. Computing
+    them a second time here would be a second place to get them wrong.
+    """
+    got = _residual_scale._ratio(metrics)
+    if not got:
+        return None
+    lead = (
+        f"the residual between-agent scale left after the design slots, at {got['ratio']:.4f} "
+        f"times the mechanism x axis scale (`tau_mech` {got['tau_mech']['mean']:.4f}). "
+    )
+    if got["ratio"] < _residual_scale.ACCOUNTS_FOR:
+        return lead + (
+            "Small against that scale, so the design slots account for much of the "
+            "between-agent variation."
+        )
+    if got["ratio"] < _residual_scale.DOES_NOT_ACCOUNT_FOR:
+        return lead + (
+            "Comparable in magnitude, so the slots account for part of the between-agent "
+            "variation and leave a residual of the same order as the mechanism effect "
+            "itself. Agent identity carries information the seven design slots do not. On "
+            "the seriousEvents table, which has no censored cells, the same ratio is above "
+            "one and the reading reverses -- see `artifacts/residual_scale.json`."
+        )
+    return lead + (
+        "At or above that scale, so the design slots do NOT account for the between-agent "
+        "variation: what distinguishes two agents of the same mechanism, linker and DAR is "
+        "larger than what the mechanism contributes."
+    )
+
+
+# parameter -> (source, sentence). `{v}` is substituted with "mean [q05, q95]".
+NOTES: dict[str, tuple[str, str | Callable[[dict, dict | None], str | None]]] = {
+    "tau_cleav": ("tau_cleav", lambda m, sib: _tau_cleav_note(m)),
+    "tau_mech": ("tau_mech", lambda m, sib: _tau_mech_note(m)),
+    "sigma_agent": ("coefficients", lambda m, sib: _sigma_agent_note(m)),
     "b_combo": (
         "coefficients",
         "combination arms do report higher rates -- on this corpus, where every arm is a "
         "ClinicalTrials.gov record. On the literature-extended corpus the same coefficient "
         "reaches +1.091 without a source indicator, because every combination arm is a "
         "registry arm and none of the 194 literature arms is one, so it estimates the "
-        "corpus rather than the regimen. See negative result 33.",
+        "corpus rather than the regimen. That pair was measured before the corpus rebuild "
+        "and before `b_source` existed, so the registry value beside it there is +0.195 "
+        "rather than the figure above; both are recorded under "
+        "`b_combo_without_source_term` in `artifacts/source_confounding.json` and neither "
+        "is regenerated by any target, because the specification that produced them was "
+        "replaced in response to them. See negative result 33.",
     ),
-    "b_log_n": (
-        "coefficients",
-        "an ascertainment effect that would have been attributed to the design had it not "
-        "been controlled.",
-    ),
-    "b_dar": (
-        "coefficients",
-        "includes zero. DAR is an agent-level constant and is confounded with agent "
-        "identity here. The pharmacokinetic literature supports a DAR effect; this corpus "
-        "does not resolve one.",
-    ),
-    "b_thresh": (
-        "coefficients",
-        "the reporting-threshold covariate. Not the censoring correction: it is four times "
-        "larger on the seriousEvents table, which has no censored cells at all, so it is "
-        "substantially absorbing trial-level reporting practice.",
-    ),
+    "b_log_n": ("coefficients", _b_log_n_note),
+    "b_dar": ("coefficients", lambda m, sib: _b_dar_note(m)),
+    "b_thresh": ("coefficients", _b_thresh_note),
 }
 
 
@@ -110,7 +294,7 @@ def _fmt(cell: dict, signed: bool) -> str:
     return f"{cell['mean']:+.4f} [{cell['q05']:+.4f}, {cell['q95']:+.4f}]"
 
 
-def build_block(metrics: dict) -> str:
+def build_block(metrics: dict, sibling: dict | None = None) -> str:
     lines = [BEGIN]
     for name, (where, note) in NOTES.items():
         cell = metrics.get(name) if where.startswith("tau") else (
@@ -122,7 +306,10 @@ def build_block(metrics: dict) -> str:
         if not cell or "mean" not in cell or "q05" not in cell:
             continue
         signed = name.startswith("b_")
-        lines.append(f"`{name}` {_fmt(cell, signed)} -- {note}")
+        text = note(metrics, sibling) if callable(note) else note
+        if text is None:
+            continue
+        lines.append(f"`{name}` {_fmt(cell, signed)} -- {text}")
         lines.append("")
     sa = metrics.get("seed_agreement")
     if sa:
@@ -500,7 +687,16 @@ def main() -> int:
         print(f"{args.metrics} absent; run `make forward` first")
         return 1
     metrics = json.loads(args.metrics.read_text(encoding="utf-8"))
-    block = build_block(metrics)
+    # The other event table, for the notes that compare the two. Named from the given path
+    # rather than hardcoded, so pointing --metrics at a different artefacts directory picks
+    # up that directory's sibling and not this one's.
+    other_kind = "serious" if "_other_" in args.metrics.name else "other"
+    sibling_path = args.metrics.with_name(f"forward_{other_kind}_metrics.json")
+    sibling = (
+        json.loads(sibling_path.read_text(encoding="utf-8"))
+        if sibling_path.exists() else None
+    )
+    block = build_block(metrics, sibling)
 
     dose = (
         json.loads(args.dose_mod.read_text(encoding="utf-8"))

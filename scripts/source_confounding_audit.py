@@ -46,6 +46,22 @@ ADDRESSED = {
         "+0.195 on the registry corpus to +1.091 on the expanded one",
 }
 
+# The two values that argument rests on, recorded as numbers rather than only inside the
+# sentence above. They were measured on fits that predate both the corpus rebuild and the
+# `b_source` term, so no target regenerates them -- and a figure the report prints has to
+# trace to an artefact, which a number embedded in a prose string does not.
+B_COMBO_WITHOUT_SOURCE_TERM = {
+    "registry": 0.195,
+    "expanded": 1.091,
+    "note": (
+        "Posterior means for b_combo with no source indicator in the model. Both predate "
+        "the corpus rebuild -- the registry corpus then held 16 agents and 285 arms, not 22 "
+        "and 299 -- and the specification that produced them no longer exists, because "
+        "b_source was added in response to exactly this gap. Quoted for the gap between "
+        "them, which is the finding, and not as current coefficients."
+    ),
+}
+
 
 def main() -> None:
     ap = argparse.ArgumentParser()
@@ -135,7 +151,12 @@ def main() -> None:
     print()
     for k, v in summary.items():
         print(f"  {k:36s} {v}")
-    write_json(args.out, {"summary": summary, "coefficients": rows, "mechanisms": levels})
+    write_json(args.out, {
+        "summary": summary,
+        "coefficients": rows,
+        "mechanisms": levels,
+        "b_combo_without_source_term": B_COMBO_WITHOUT_SOURCE_TERM,
+    })
     print(f"\n-> {args.out}")
 
 

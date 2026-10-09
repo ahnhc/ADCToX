@@ -12,40 +12,40 @@
  "coefficients": [
   {
    "coefficient": "b_dar (arm_dar_c)",
-   "correlation_with_source": 0.022,
-   "within_source_variance_share": 1.0,
+   "correlation_with_source": 0.029,
+   "within_source_variance_share": 0.999,
    "separated": false,
    "confounded": false,
    "addressed_by": null
   },
   {
    "coefficient": "b_thresh (arm_thresh_c)",
-   "correlation_with_source": 0.199,
-   "within_source_variance_share": 0.961,
+   "correlation_with_source": 0.2,
+   "within_source_variance_share": 0.96,
    "separated": false,
    "confounded": false,
    "addressed_by": null
   },
   {
    "coefficient": "b_log_n (arm_log_n_c)",
-   "correlation_with_source": 0.07,
-   "within_source_variance_share": 0.995,
+   "correlation_with_source": 0.064,
+   "within_source_variance_share": 0.996,
    "separated": false,
    "confounded": false,
    "addressed_by": null
   },
   {
    "coefficient": "b_combo (arm_combo)",
-   "correlation_with_source": -0.523,
-   "within_source_variance_share": 0.726,
+   "correlation_with_source": -0.508,
+   "within_source_variance_share": 0.742,
    "separated": true,
    "confounded": true,
    "addressed_by": "b_source plus the centred source_axis vector, added after b_combo moved from +0.195 on the registry corpus to +1.091 on the expanded one"
   },
   {
    "coefficient": "cleav_axis (arm_cleavable)",
-   "correlation_with_source": 0.033,
-   "within_source_variance_share": 0.999,
+   "correlation_with_source": 0.044,
+   "within_source_variance_share": 0.998,
    "separated": false,
    "confounded": false,
    "addressed_by": null
@@ -54,7 +54,7 @@
  "mechanisms": [
   {
    "level": "dna_alkyl",
-   "registry_arms": 2,
+   "registry_arms": 3,
    "literature_arms": 2
   },
   {
@@ -64,7 +64,7 @@
   },
   {
    "level": "dna_crosslink",
-   "registry_arms": 7,
+   "registry_arms": 10,
    "literature_arms": 6
   },
   {
@@ -74,16 +74,21 @@
   },
   {
    "level": "tubulin",
-   "registry_arms": 169,
+   "registry_arms": 179,
    "literature_arms": 106
   }
  ],
+ "b_combo_without_source_term": {
+  "registry": 0.195,
+  "expanded": 1.091,
+  "note": "Posterior means for b_combo with no source indicator in the model. Both predate the corpus rebuild -- the registry corpus then held 16 agents and 285 arms, not 22 and 299 -- and the specification that produced them no longer exists, because b_source was added in response to exactly this gap. Quoted for the gap between them, which is the finding, and not as current coefficients."
+ },
  "provenance": {
-  "revision": "e179153a9487eeb95d4bf89ad38d183822da883b",
+  "revision": "abf44eb9341a8bf451d878ddda40847e179bbb94",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "source_confounding_audit.py",
-  "written_utc": "2026-10-09T10:44:58+00:00",
+  "written_utc": "2026-10-09T13:32:39+00:00",
   "inputs": {}
  }
 }

@@ -11,6 +11,14 @@ Deliberately small. It records what is cheap and unambiguous -- revision, whethe
 was dirty, the pinned snapshot, the writing script, UTC time, and the sha256 of each named
 input -- and claims nothing else. A `dirty` tree means the revision does not identify the
 code, and that is worth knowing even though it cannot be fixed after the fact.
+
+One thing an input hash is *not*: a staleness test. The digest of a directory covers every
+file in it, and some of those files are themselves stamps carrying `written_utc`. So
+regenerating a corpus deterministically -- same rows, same values -- still moves the hash,
+because one of the hashed files records the time it was written. A hash difference therefore
+means "something under here was rewritten", never "the data changed", and nothing in this
+project decides anything on it. Establishing that a fit is still valid for the frames on
+disk takes a comparison of the quantities the fit scored, not of this digest.
 """
 
 from __future__ import annotations
