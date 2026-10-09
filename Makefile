@@ -25,7 +25,8 @@ ART     := artifacts
         censoring-sensitivity label-history label-changes label-change-eval \
         dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
         check-report clean \
-        fetch snapshot-check target-expression expression design-effects across-agent
+        fetch snapshot-check target-expression expression design-effects across-agent \
+        pmc-fetch pmc-yield pmc-extract
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
@@ -165,3 +166,19 @@ check-report: hard-flags fold-difficulty design-effects across-agent sync-report
 
 clean:
 	rm -rf $(PROC)/*.parquet $(PROC)/*.json $(ART)/*.json $(ART)/*.npz
+
+# ---------------------------------------------------------------- literature corpus
+PMC_RAW := $(RAW)/pmc/$(SNAPSHOT)
+
+pmc-fetch: ## PMC OA candidate discovery + JATS download for every registry agent
+	$(PY) scripts/fetch_pmc_candidates.py --out $(RAW)/pmc/$(FETCH_DATE) \
+	  --retmax 400
+
+pmc-yield: snapshot-check ## feasibility gate: recoverable agents, image-only rate by journal
+	$(PY) scripts/measure_table_yield.py --raw-dir $(PMC_RAW) \
+	  --out artifacts/table_yield.json
+
+pmc-extract: snapshot-check ## full extraction funnel -> attributed arm-axis cells
+	$(PY) scripts/extract_pmc_cells.py --raw-dir $(PMC_RAW) \
+	  --out artifacts/pmc_extraction.json \
+	  --cells-out $(PROC)/pmc_cells.jsonl

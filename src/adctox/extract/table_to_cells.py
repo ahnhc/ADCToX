@@ -29,8 +29,12 @@ these cells carry the string unparsed for a later, measured pass.
 
 from __future__ import annotations
 
+import functools
+import pathlib
 import re
 from dataclasses import dataclass, field
+
+import yaml
 
 from .jats_tables import Cell, ParsedTable
 from .row_labels import MappedRow, map_row
@@ -51,6 +55,33 @@ COMPARATOR_HEADER = re.compile(
     r"|observation|untreated|vehicle)\b",
     re.I,
 )
+COMBINATION_CONF = (
+    pathlib.Path(__file__).resolve().parents[3] / "conf" / "ontology"
+    / "combination_partners.yaml"
+)
+
+
+@functools.lru_cache(maxsize=1)
+def combination_pattern(conf: pathlib.Path = COMBINATION_CONF) -> re.Pattern[str]:
+    """A column naming a combination partner is a combination arm.
+
+    Needed because a combination rate belongs to neither drug alone, and the corpus models
+    combination as a binary covariate rather than as a shared row. Without it,
+    "Enfortumab vedotin + pembrolizumab (N = 440)" attributes to enfortumab and the EV-302
+    combination profile enters the corpus as monotherapy. Regimen acronyms are matched too,
+    because haematology headers name the regimen rather than its parts.
+    """
+    doc = yaml.safe_load(conf.read_text(encoding="utf-8"))
+    names = sorted(
+        (str(x).strip().lower() for x in doc["partners"] + doc["regimens"]),
+        key=len, reverse=True,
+    )
+    # Regimen acronyms carry `+` and digits, so the boundary has to be non-alphanumeric
+    # rather than \b -- `\bA+AVD\b` does not match what it looks like it matches.
+    alts = "|".join(re.escape(n) for n in names if n)
+    return re.compile(rf"(?<![A-Za-z0-9])(?:{alts})(?![A-Za-z0-9])", re.I)
+
+
 # A column that is not a patient group at all.
 NON_ARM_HEADER = re.compile(
     r"\b(?:p[-\s]?value|hazard\s+ratio|odds\s+ratio|95%\s*ci|difference"
@@ -117,9 +148,19 @@ def attribute_column(
     if hits and mine:
         return ColumnAttribution(col, header, "ambiguous",
                                  f"names this agent and {sorted(hits)}", denominator)
+    combo = combination_pattern().search(header)
+    if combo and mine:
+        return ColumnAttribution(
+            col, header, "ambiguous",
+            f"combination arm: this agent with {combo.group(0)!r}", denominator,
+        )
     if COMPARATOR_HEADER.search(header):
         return ColumnAttribution(col, header, "comparator", "named comparator",
                                  denominator)
+    if combo:
+        # A partner named without our agent is somebody else's arm.
+        return ColumnAttribution(col, header, "comparator",
+                                 f"other regimen: {combo.group(0)!r}", denominator)
     if mine:
         return ColumnAttribution(col, header, "agent", "agent named in header",
                                  denominator, dose_text=header)

@@ -1,0 +1,92 @@
+# Drugs that appear in a column header beside an ADC, making the column a combination arm.
+#
+# Needed because a combination rate belongs to neither drug alone, and the corpus models
+# combination as a binary covariate on an arm rather than as a shared row. Without this
+# list "Enfortumab vedotin + pembrolizumab (N = 440)" would attribute to enfortumab, and
+# the EV-302 combination toxicity profile would enter the corpus as monotherapy.
+#
+# This is not a pharmacology reference. It is the set of partners actually seen in ADC
+# trial column headers, and it only has to be good enough to make such a column ambiguous
+# -- a partner missing from this list is a false monotherapy, so additions are cheap and
+# omissions are not. The regimen acronyms matter as much as the single agents, because
+# haematology headers name the regimen and not its parts.
+version: 1
+
+partners:
+  # Checkpoint inhibitors -- the dominant ADC combination partner class.
+  - pembrolizumab
+  - keytruda
+  - nivolumab
+  - opdivo
+  - atezolizumab
+  - tecentriq
+  - durvalumab
+  - imfinzi
+  - avelumab
+  - ipilimumab
+  - cemiplimab
+  - toripalimab
+  - tislelizumab
+  - sintilimab
+  - camrelizumab
+
+  # Anti-CD20 and other antibodies paired with haematology ADCs.
+  - rituximab
+  - obinutuzumab
+  - trastuzumab          # as a partner, not as an ADC antibody
+  - pertuzumab
+  - cetuximab
+  - bevacizumab
+
+  # Cytotoxics and targeted agents named in ADC combination arms.
+  - bendamustine
+  - lenalidomide
+  - pomalidomide
+  - dexamethasone
+  - bortezomib
+  - carboplatin
+  - cisplatin
+  - paclitaxel
+  - docetaxel
+  - gemcitabine
+  - capecitabine
+  - cyclophosphamide
+  - doxorubicin
+  - vincristine
+  - prednisone
+  - prednisolone
+  - cytarabine
+  - daunorubicin
+  - fludarabine
+  - venetoclax
+  - azacitidine
+  - olaparib
+  - osimertinib
+  - tucatinib
+  - lapatinib
+  - letrozole
+  - fulvestrant
+  - anastrozole
+  - endocrine therapy
+
+# Regimen acronyms. A header naming one of these is a combination arm even when no single
+# drug name appears, which is the usual case in haematology tables.
+regimens:
+  - r-chp
+  - r-chop
+  - chop
+  - a-chp
+  - avd
+  - abvd
+  - a+avd
+  - r-gemox
+  - r-ice
+  - dhap
+  - r-dhap
+  - cvp
+  - r-cvp
+  - vd                   # bortezomib + dexamethasone
+  - rd                   # lenalidomide + dexamethasone
+  - vrd
+  - krd
+  - 7+3

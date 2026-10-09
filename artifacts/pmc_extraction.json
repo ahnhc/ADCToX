@@ -1,0 +1,83 @@
+{
+  "provenance": {
+    "revision": "5e78fb538c6de370f9a72cec3d99e8fb6286816e",
+    "dirty": true,
+    "snapshot": null,
+    "script": "extract_pmc_cells.py",
+    "written_utc": "2026-10-09T00:42:44+00:00",
+    "inputs": {
+      "pt_dictionary": "sha256:59dfb370333da71c8b7315ba6910f6aaf16b49f382e69c486446c6ab2277c11b",
+      "registry": "sha256:9a5a2d8bb098a42caa825eab6be011a2ab5659b9185fe930279114506c4c2aa9"
+    }
+  },
+  "funnel": {
+    "articles": 8,
+    "tables": 12,
+    "not_ae_table": 11,
+    "ae_tables": 1,
+    "row_or_cell:image_only": 1,
+    "table_rejected:image_only": 1
+  },
+  "agents_recovered": [],
+  "agents_sought": [
+    "belantamab_mafodotin",
+    "brentuximab_vedotin",
+    "datopotamab_deruxtecan",
+    "enfortumab_vedotin",
+    "gemtuzumab_ozogamicin",
+    "inotuzumab_ozogamicin",
+    "loncastuximab_tesirine",
+    "mirvetuximab_soravtansine",
+    "moxetumomab_pasudotox",
+    "patritumab_deruxtecan",
+    "pivekimab_sunirine",
+    "polatuzumab_vedotin",
+    "sacituzumab_govitecan",
+    "telisotuzumab_vedotin",
+    "tisotumab_vedotin",
+    "trastuzumab_deruxtecan",
+    "trastuzumab_duocarmazine",
+    "trastuzumab_emtansine"
+  ],
+  "per_agent": {
+    "belantamab_mafodotin": {},
+    "brentuximab_vedotin": {},
+    "datopotamab_deruxtecan": {},
+    "enfortumab_vedotin": {},
+    "gemtuzumab_ozogamicin": {},
+    "inotuzumab_ozogamicin": {},
+    "loncastuximab_tesirine": {
+      "articles": 8,
+      "ae_tables": 1,
+      "rejected_image_only": 1
+    },
+    "mirvetuximab_soravtansine": {},
+    "moxetumomab_pasudotox": {},
+    "patritumab_deruxtecan": {},
+    "pivekimab_sunirine": {},
+    "polatuzumab_vedotin": {},
+    "sacituzumab_govitecan": {},
+    "telisotuzumab_vedotin": {},
+    "tisotumab_vedotin": {},
+    "trastuzumab_deruxtecan": {},
+    "trastuzumab_duocarmazine": {},
+    "trastuzumab_emtansine": {}
+  },
+  "axis_cells": {},
+  "unmapped_rows": {},
+  "rejected": {
+    "image_only": [
+      {
+        "pmcid": "10985439",
+        "agent": "loncastuximab_tesirine",
+        "journal": "Haematologica",
+        "table": "Table 3.",
+        "caption": "Treatment-emergent adverse events occurring in ≥10% of the all-treated population.",
+        "reason": "image_only"
+      }
+    ]
+  },
+  "rejected_counts": {
+    "image_only": 1
+  }
+}

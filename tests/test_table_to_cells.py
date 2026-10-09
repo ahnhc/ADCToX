@@ -252,3 +252,43 @@ def test_a_spanning_header_keeps_each_grade_column_with_its_own_arm(tax) -> None
     kinds = {a.col: a.kind for a in out.columns}
     assert kinds[1] == kinds[2] == "agent"
     assert kinds[3] == kinds[4] == "comparator"
+
+
+def test_a_combination_column_is_not_attributed_to_the_agent() -> None:
+    """A combination rate belongs to neither drug alone, and the corpus models combination
+    as a binary covariate on an arm rather than as a shared row. Without this check,
+    "Enfortumab vedotin + pembrolizumab (N = 440)" attributes to enfortumab and the EV-302
+    combination profile enters the corpus as monotherapy."""
+    ev = {"enfortumab", "enfortumab vedotin", "padcev"}
+    a = attribute_column("Enfortumab vedotin + pembrolizumab (N = 440)", 1, 440, ev, {})
+    assert a.kind == "ambiguous"
+    assert "pembrolizumab" in a.reason
+    # The monotherapy arm of the same trial is still ours.
+    b = attribute_column("Enfortumab vedotin (N = 301)", 2, 301, ev, {})
+    assert b.kind == "agent"
+
+
+def test_a_regimen_acronym_is_recognised_without_any_drug_name() -> None:
+    """Haematology headers name the regimen, not its parts. "A+AVD" carries `+` and would
+    not match a \\b-delimited pattern, which is why the boundary is non-alphanumeric."""
+    bv = {"brentuximab", "brentuximab vedotin", "adcetris"}
+    for header in ["A+AVD (N = 664)", "ABVD (N = 670)", "R-CHP (N = 440)"]:
+        a = attribute_column(header, 1, 100, bv, {})
+        assert a.kind == "comparator", f"{header} -> {a.kind}"
+
+
+def test_a_trial_of_two_combination_regimens_yields_nothing(tax) -> None:
+    """ECHELON-1 is A+AVD versus ABVD: brentuximab appears in the trial but in no
+    monotherapy column. The table must be declined rather than contribute a combination
+    rate as if it were the drug alone."""
+    out = extract(_table("""
+    <table-wrap>
+      <caption><p>Adverse events</p></caption>
+      <table>
+        <thead><tr><th>Event</th><th>A+AVD (N = 664)</th><th>ABVD (N = 670)</th></tr></thead>
+        <tbody><tr><td>Neutropenia</td><td>389 (58.6)</td><td>300 (44.8)</td></tr></tbody>
+      </table>
+    </table-wrap>
+    """), "brentuximab_vedotin", MINE, OTHERS, tax)
+    assert not out.accepted and out.reason == "no_usable_column"
+    assert out.cells == []
