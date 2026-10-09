@@ -117,3 +117,32 @@ def test_the_sanity_bound_admits_every_real_corpus() -> None:
         for field in ("arm_dar_c", "arm_thresh_c", "arm_log_n_c"):
             v = np.asarray(getattr(data, field), dtype=float)
             assert np.abs(v).max() <= ds.COVARIATE_SANITY_BOUND, (name, field)
+
+
+def test_the_parameter_count_follows_the_family_flag() -> None:
+    """`n_free_parameters` read the module constant while `model` took an argument.
+
+    So a fit run with `--payload-family` would have printed the parameter count, and
+    therefore the identification ratio, of a fit without it -- and that ratio is the
+    quantity the project's whole granularity argument rests on. The two now take the same
+    argument.
+    """
+    path = ROOT / "data" / "processed" / "arms.parquet"
+    if not path.exists():
+        pytest.skip("run `make corpus`")
+    from adctox.model import forward
+    from adctox.taxonomy import Taxonomy
+    data = ds.load(ROOT / "data" / "processed", list(Taxonomy().axis_order), kind="other")
+
+    off = forward.n_free_parameters(data, use_family=False)
+    on = forward.n_free_parameters(data, use_family=True)
+    assert on["design"] - off["design"] == len(data.families) * len(data.axes), (
+        off["design"], on["design"], len(data.families), len(data.axes)
+    )
+    # Enabling a level can only lower the ratio, because the cells do not change.
+    assert on["design_ratio_vs_identifying"] < off["design_ratio_vs_identifying"]
+    # And the default must still follow the module constant, so an unflagged fit is
+    # unchanged by this plumbing.
+    default = forward.n_free_parameters(data)
+    expected = on if forward.USE_PAYLOAD_FAMILY else off
+    assert default["design"] == expected["design"]

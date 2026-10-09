@@ -219,6 +219,13 @@ def main() -> int:
     # it addresses; the comparison runs are kept as logs the way the payload-family
     # attempts were, because a failed structure is a result.
     ap.add_argument("--agent-axis", action="store_true")
+    ap.add_argument(
+        "--payload-family", action="store_true",
+        help="enable the nested payload-family x axis deviations. Off by default: on the "
+             "registry corpus the level is not separable from mechanism, and two "
+             "parameterizations of it failed their seed-agreement check. The merged corpus "
+             "puts it at 8.00:1, exactly the plan's identification floor, which turns it "
+             "from a thing to rule out into a thing to test.")
     ap.add_argument("--drop-uninformative-absences", action="store_true",
                     help="treat an absent organ in a literature arm whose reporting cut "
                          "is only an upper bound as no information rather than as a "
@@ -239,12 +246,24 @@ def main() -> int:
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
 
-    if args.agent_axis:
-        global _MODEL
-        from functools import partial
+    global _MODEL
+    from functools import partial
 
-        _MODEL = partial(forward.model, use_agent_axis=True)
+    # The payload-family level, which the project rules out on the registry corpus and which
+    # the merged corpus brings to exactly the plan's 8:1 floor (negative result 44). A flag
+    # rather than an edit to the module constant, so the two fits are one command apart and
+    # the comparison is reproducible.
+    _USE_FAMILY = bool(args.payload_family)
+    _extra: dict = {}
+    if _USE_FAMILY:
+        _extra["use_family"] = True
+        print("payload-family x axis ENABLED (experimental; see USE_PAYLOAD_FAMILY)",
+              flush=True)
+    if args.agent_axis:
+        _extra["use_agent_axis"] = True
         print("agent x axis deviation ENABLED (experimental)", flush=True)
+    if _extra:
+        _MODEL = partial(forward.model, **_extra)
 
     tax = Taxonomy()
     data = ds.load(
@@ -254,7 +273,7 @@ def main() -> int:
     if args.drop_uninformative_absences:
         print("uninformative absences DROPPED (selection, not censoring)", flush=True)
     print(f"Corpus ({args.kind}): {data.summary()}", flush=True)
-    acct = forward.n_free_parameters(data)
+    acct = forward.n_free_parameters(data, use_family=_USE_FAMILY)
     print(
         f"\nParameters: design {acct['design']}, nuisance {acct['nuisance']}; "
         f"identifying cells {acct['identifying_cells']} "

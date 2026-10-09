@@ -86,9 +86,17 @@ def _log_binom_cdf_below(cut: jnp.ndarray, n: jnp.ndarray, p: jnp.ndarray) -> jn
 #
 # So the level that would help is payload, not family -- and payload is the one level this
 # corpus provably cannot reach, because its vocabulary grows as fast as the corpus does.
-# Family at least stops growing, which is why it was worth trying; it is still not
-# separable from mechanism given 7 families across 5 mechanisms and 16 agents. The
-# project's central structural finding appears again, and tighter than before.
+# Family at least stops growing, which is why it was worth trying; it was not separable
+# from mechanism given 7 families across 5 mechanisms and 16 agents, and two
+# parameterizations of it failed their seed-agreement check.
+#
+# That justification is a statement about a corpus, not about the level, and the corpus has
+# changed. The corpus merged with the hand-transcribed database holds **9 families across 5
+# mechanisms and 64 agents**, and the plan's own identification ratio puts the family level
+# at exactly **8.00:1** -- its floor. So the default stays off, because it is still the
+# right default for the registry corpus the product serves, and `--payload-family` runs the
+# experiment on the corpus where it is now a question rather than a foregone conclusion.
+# See negative result 44.
 USE_PAYLOAD_FAMILY = False
 
 # Agent x axis deviation. Off until measured; see the block in `model` for the diagnosis
@@ -348,14 +356,21 @@ def model(
         )
 
 
-def n_free_parameters(data: ModelData) -> dict[str, int]:
-    """Nominal free parameters, split by whether the design matrix or the data supports them."""
+def n_free_parameters(data: ModelData, use_family: bool | None = None) -> dict[str, int]:
+    """Nominal free parameters, split by whether the design matrix or the data supports them.
+
+    `use_family` mirrors the argument of the same name on `model`. It used to read the module
+    constant only, so a fit run with the family level enabled reported the parameter count of
+    a fit without it -- and the identification ratio printed beside it would have been the
+    wrong one for the model actually being fitted, which is the measurement the whole
+    granularity argument rests on.
+    """
     n_axes, n_mech = len(data.axes), len(data.mechanisms)
     n_fam = len(data.families)
-    # mu, mech x axis, cleav x axis, dar + combo. Family deviations are excluded because
-    # they are not identifiable here (see USE_PAYLOAD_FAMILY).
+    # mu, mech x axis, cleav x axis, dar + combo. Family deviations are excluded by default
+    # because they are not identifiable on the registry corpus (see USE_PAYLOAD_FAMILY).
     design = n_axes + n_mech * n_axes + n_axes + 2
-    if USE_PAYLOAD_FAMILY:
+    if USE_PAYLOAD_FAMILY if use_family is None else use_family:
         design += n_fam * n_axes
     # thresh, log_n, source, random intercepts, scales. Counted over the REAL trials: the
     # model samples one extra trial slot as a sentinel for arms from single-arm trials, but
