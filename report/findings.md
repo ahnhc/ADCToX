@@ -1512,6 +1512,24 @@ the stamp could not distinguish *this revision does identify the code* from *we 
 tell* -- and the clean case is the only one where that distinction pays for itself. Every
 test had passed because every test ran against a dirty tree. The failure mode was reachable
 only from a clone, which is the argument for running the check at all.
+25. **A registry field recorded as unstated was stated three times, and a species label is
+    why.** Twelve of 34 conventional conjugates had no drug-to-antibody ratio, and
+    tusamitamab ravtansine's entry said the figure appeared nowhere in the fetched corpus.
+    Its own population-pharmacokinetic paper gives an average DAR of 3.8, three times --
+    and labels its conjugate species `DAR0` through `DAR8`, seven tokens to the one real
+    statement, beside the agent's name in the same sentences. Read as the ratio they give
+    the agent a DAR of 0, 1 or 8. Searching 1,496 harvested articles recovers 2 of the 12;
+    a third candidate is rejected because its only source is a paper about a different drug.
+    The gap is not a search failure: eight agents' ratios are stated in no article on disk,
+    and 28 of 594 arms are still fitted at the corpus mean.
+26. **A regex guard that never fires is worse than no guard, and this project wrote one.** A
+    pattern to bracket the species enumeration -- `DAR1 ... to DAR8` -- failed on the one
+    sentence it was written for, because that sentence contains `i.e.` and an abbreviation's
+    dot before a space is indistinguishable from a sentence's. The script had reported four
+    rejections, so the check looked alive while missing its own motivating case. It was
+    deleted rather than patched, and a word-level test does the work. This is the second
+    time in this project that a guard passing was mistaken for a guard working; the first
+    was a `sed` pattern that never matched and therefore fabricated nothing to detect.
 
 ## 10. Limitations
 
