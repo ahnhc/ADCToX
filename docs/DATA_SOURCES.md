@@ -40,13 +40,49 @@ the full text in XML form"), so there is no path by which the automated route to
 licensed full text.
 
 Within the OA subset the licence still varies per article, and the per-row `license_code`
-is recorded so the posture can be applied row by row:
+is recorded so the posture can be applied row by row. Measured across the 1,471 articles
+actually fetched, rather than estimated:
+
+| licence | articles |
+|---|---|
+| CC BY | 663 |
+| CC BY-NC-ND | 526 |
+| CC BY-NC | 251 |
+| CC BY-NC-SA | 12 |
+| TDM | 3 |
+| CC BY-ND | 2 |
+| CC0 | 1 |
+| not stated | 13 |
+
+So 45% is CC BY -- the plan estimated 39% -- and **55% carries an NC or ND restriction**,
+which is why this is not a corner case.
 
 * **extracted numbers** -- published for every row. A measured incidence is a fact, not
   a copyrightable expression.
-* **verbatim table and caption text** -- published only for CC BY articles (about 39% of
-  the ADC OA corpus). For CC BY-NC-ND and TDM-licensed articles we publish the number,
-  the PMCID, the table label and a paraphrase.
+* **verbatim table and caption text** -- not published, for any article. The licence would
+  permit it for the CC BY 45%, and the rule is stricter on purpose. Curating 16 agents from
+  the primary literature put quoted sentences from 18 papers into `conf/adc_registry.yaml`,
+  and 14 of those papers turned out to be CC BY-NC-ND or CC BY-NC. A policy of the form
+  "quote CC BY freely, never quote NC-ND" requires whoever edits that hand-maintained file
+  next to look up a licence first, and a policy that depends on remembering an exception is
+  one that breaks. Every citation is now a paraphrase with the PMCID kept, which costs
+  nothing: the design facts are facts and survive it.
+  `tests/test_licence_posture.py` fails on any quotation longer than 24 characters, which
+  admits a term of art and excludes a reproduced sentence.
+
+Three snapshots were fetched, kept separate because each answered a different question and
+each is reproducible only with its own agent list:
+
+| snapshot | how the agents were found | articles |
+|---|---|---|
+| `pmc/<date>` | the 18 registry agents, by INN | 1,319 |
+| `pmc/<date>-discovery` | 23 INNs from the payload-linker stem sweep (`conf/discovered_agents.txt`) | 144 |
+| `pmc/<date>-codename` | 10 agents an INN-only search missed, by code name (`conf/codename_agents.txt`) | 26 |
+
+The code names were harvested only from papers whose *titles* already named the INN, which
+makes the paper itself the evidence for the mapping. That matters because a wrong code name
+misattributes every row of an agent, and loose detection was measured at a 75%
+false-positive rate.
 
 Bulk access uses the AWS Open Data mirror (`pmc-oa-opendata`), which is the sanctioned
 bulk route; the PMC website's terms prohibit systematic downloading from the site itself.
