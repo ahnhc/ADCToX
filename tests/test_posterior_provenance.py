@@ -124,3 +124,53 @@ def test_a_disagreement_between_served_and_evaluated_is_not_silent() -> None:
     evaluated = doc.get("evaluated_fit")
     if evaluated and evaluated.get("corpus"):
         assert doc["served_and_evaluated_agree"] is (evaluated["corpus"] == "A")
+
+
+def test_a_target_is_recognised_by_either_of_its_names() -> None:
+    """The registry keys on the gene symbol and a caller types the clinical name.
+
+    14 of the registry's 26 target pairs differ -- ERBB2/HER2, TACSTD2/TROP2,
+    TNFRSF17/BCMA, TNFRSF8/CD30, FOLR1/FRalpha among them -- and matching only the symbol
+    told a caller asking about HER2 that the target was absent from a corpus holding eight
+    HER2 ADCs. The membership question is whether an ADC has been built against the
+    antigen, and the antigen has two names.
+    """
+    from adctox.api.main import _registry, _registry_targets
+
+    targets = _registry_targets()
+    pairs = {
+        (str(spec["target"]).upper(), str(spec.get("target_label") or "").upper())
+        for spec in _registry().values() if spec.get("target")
+    }
+    differing = [(g, l) for g, l in pairs if l and l != g]
+    assert differing, "no target carries a label distinct from its symbol any more"
+    for gene, label in pairs:
+        assert gene in targets, gene
+        if label:
+            assert label in targets, (gene, label)
+
+
+def test_a_target_nobody_has_built_against_is_still_reported_absent() -> None:
+    """Widening the match must not make the check vacuous."""
+    from adctox.api.main import _registry_targets
+
+    assert "NOTATARGET" not in _registry_targets()
+    assert "" not in _registry_targets()
+
+
+def test_the_coverage_block_agrees_with_the_target_list() -> None:
+    from fastapi.testclient import TestClient
+
+    from adctox.api.main import _registry_targets, app
+
+    client = TestClient(app)
+    targets = _registry_targets()
+    for name, expected in (("HER2", True), ("ERBB2", True), ("NOTATARGET", False)):
+        resp = client.post("/api/v1/assess", json={
+            "design": {"target_antigen": name, "payload": "DXd", "linker": "GGFG",
+                       "conjugation": "interchain_cysteine", "dar": 8.0},
+            "comorbidity_profile": {"conditions": []},
+        })
+        assert resp.status_code == 200, (name, resp.text[:200])
+        assert resp.json()["coverage"]["target_in_corpus"] is expected, name
+        assert (name.upper() in targets) is expected, name

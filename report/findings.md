@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 57 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 58 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -2708,6 +2708,36 @@ between those two.
     The two halves are the same measurement read in two directions, and the second is the
     one the product has to answer for. **An organ ranking in which ten of fourteen organs
     never place is a ranking of four organs**, and the interface prints fourteen rows.
+
+57. **The expert endpoint told a caller that HER2 is absent from a corpus of HER2 ADCs.**
+    `/assess` returns a `coverage` block, and in it `target_in_corpus`, which answers
+    whether any ADC has been built against the antigen the caller named. It was computed by
+    matching the name against the registry's `target` field -- and the registry keys on the
+    **gene symbol** while a caller, and this project's own interface, uses the **clinical
+    name**.
+
+    The registry carries both. `target_label` sits beside `target` precisely because "the
+    gene symbol is what the corpus keys on and the label is what a reader knows", and
+    `/ontology` already serves the label. The membership check used one of them. **14 of the
+    registry's 26 target pairs differ** -- ERBB2/HER2, TACSTD2/TROP2, TNFRSF17/BCMA,
+    TNFRSF8/CD30, FOLR1/FRalpha, CD276/B7-H3, MET/c-Met, MSLN/mesothelin, NECTIN4/Nectin-4,
+    F3/tissue_factor, ERBB3/HER3, IL2RA/CD25, IL3RA/CD123, ALCAM/CD166 -- so every one of
+    those returned `false` and a warning saying the target was absent from the training
+    corpus.
+
+    HER2 is the worst case available. Eight of the registry's agents are built against it.
+    A clinician typing the name of the most-studied antigen in the field was told the corpus
+    had never seen it, in a block whose purpose is to say when a number should not be
+    trusted. **A coverage warning that fires on the best-covered input is worse than no
+    coverage warning**, because it spends the reader's attention on the wrong cases and
+    teaches them to ignore it.
+
+    This is the session's name-mismatch defect once more, and the eleventh instance differs
+    from the ten in the opening table in one way worth noting: those were quantities under
+    the wrong name, and this is an *identifier* under the wrong name. The guard that catches
+    the first kind -- every figure traces to an artefact -- has nothing to say about a string
+    comparison, and neither does any test that only checks response shape. It was found by
+    typing HER2 into the endpoint and reading the answer.
 
 ## 9b. The clean-clone check, run for the first time
 

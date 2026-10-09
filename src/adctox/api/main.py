@@ -35,11 +35,19 @@ def _registry_targets() -> set[str]:
     guards is also registry-based -- but a name that overstates its own scope is how a later
     reader comes to rely on the stronger one.
     """
-    return {
-        str(spec.get("target")).upper()
-        for spec in _registry().values()
-        if spec.get("target")
-    }
+    # Both spellings, because the registry keys on the gene symbol and a caller types the
+    # clinical name. 14 of the registry's 26 target pairs differ -- ERBB2/HER2,
+    # TACSTD2/TROP2, TNFRSF17/BCMA, TNFRSF8/CD30, FOLR1/FRalpha and nine more -- and
+    # matching only the symbol told a caller who asked about HER2 that the target was
+    # absent from a corpus with eight HER2 ADCs in it. The membership question is "has an
+    # ADC been built against this antigen", and the antigen has two names.
+    out: set[str] = set()
+    for spec in _registry().values():
+        for key in ("target", "target_label"):
+            value = spec.get(key)
+            if value:
+                out.add(str(value).upper())
+    return out
 
 
 def _coverage(design, family: str, post) -> dict:
