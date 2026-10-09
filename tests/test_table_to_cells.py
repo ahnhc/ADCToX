@@ -356,3 +356,224 @@ def test_the_row_phrase_and_the_caption_phrase_are_told_apart(tax) -> None:
     """), "brentuximab_vedotin", MINE, OTHERS, tax)
     assert out.kind == "other"
     assert [c.n for c in out.cells] == [40]
+
+
+def test_a_comparator_with_a_typographic_apostrophe_is_still_a_comparator() -> None:
+    """Found by validating against the registry, and it put chemotherapy toxicity into the
+    corpus as ADC toxicity. "Physician's choice" was already in the pattern, but papers
+    write it with U+2019, which `'?` does not match -- so the header is apostrophe-
+    normalised before any pattern runs rather than each pattern being widened."""
+    for header in [
+        "Physician’s choice (n = 49)",
+        "Physician's choice (N = 50)",
+        "Investigator’s choice (n = 30)",
+        "SoC (n = 143), No. (%) Any Grade",      # bare, not "SoC arm"
+        "BSC (n = 20)",
+        "Chemo (n = 44)",
+    ]:
+        a = attribute_column(header, 1, 100, MINE, OTHERS)
+        assert a.kind == "comparator", f"{header!r} -> {a.kind}"
+
+
+def test_a_combination_joined_by_a_plus_is_caught_without_naming_the_partner() -> None:
+    """The enumerated partner list will always be behind the literature. Validating against
+    the registry caught "Pola + BR (N = 35)" -- polatuzumab plus bendamustine-rituximab --
+    entering the corpus as polatuzumab monotherapy, because "BR" is a regimen abbreviation
+    no list had. So any "+" between two treatment-looking words makes the column a
+    combination whether or not either name is recognised."""
+    pola = {"polatuzumab", "polatuzumab vedotin", "polivy"}
+    for header in ["Pola + BR (N = 35) All grades", "ADC + XYZ-123 (n = 40)"]:
+        a = attribute_column(header, 1, 35, pola, {})
+        assert a.kind == "ambiguous", f"{header!r} -> {a.kind}"
+        assert "+" in a.reason
+
+
+def test_a_plus_that_is_not_a_combination_is_left_alone() -> None:
+    """Receptor status, grade ceilings and prior-line counts all use "+"."""
+    pola = {"polatuzumab", "polivy"}
+    for header in ["HR+/HER2- MBC (n = 56)", "Grade 3+ events (n = 20)",
+                   "2+ prior lines (n = 44)"]:
+        a = attribute_column(header, 1, 56, pola, {})
+        assert "+" not in a.reason, f"{header!r} -> {a.reason}"
+
+
+def test_a_subgroup_column_is_dropped_in_favour_of_its_parent_arm(tax) -> None:
+    """Found as a run of denominator mismatches against the registry, every one smaller
+    than the registry's. A table reporting "Brentuximab vedotin (n = 50) CD30 < 10%"
+    beside "... CD30 >= 10%" has two columns naming one arm with denominators of 22 and 28
+    against a registry arm of 66. Both are real data about subsets, and admitting them as
+    arms puts two correlated partial populations into one trial.
+
+    The signal has to be structural, because the qualifier wording is unbounded -- "CD30min
+    < 10%", "Phase I", "Japanese population", "<65 years". A column whose arm identity
+    extends another's while carrying a smaller denominator can only be a subset of it."""
+    out = extract(_table("""
+    <table-wrap>
+      <caption><p>Adverse events</p></caption>
+      <table>
+        <thead><tr><th rowspan="2">Event</th>
+          <th colspan="2">Brentuximab vedotin (n = 50)</th>
+          <th>Brentuximab vedotin (n = 22) CD30min &lt; 10%</th>
+          <th>Brentuximab vedotin (n = 28) CD30min ≥ 10%</th></tr>
+        <tr><th>Any grade</th><th>Grade 3/4</th><th>Any grade</th><th>Any grade</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Nausea</td><td>20 (40.0)</td><td>5 (10.0)</td>
+              <td>9 (40.9)</td><td>11 (39.3)</td></tr>
+          <tr><td>Neutropenia</td><td>15 (30.0)</td><td>10 (20.0)</td>
+              <td>7 (31.8)</td><td>8 (28.6)</td></tr>
+          <tr><td>Fatigue</td><td>25 (50.0)</td><td>3 (6.0)</td>
+              <td>11 (50.0)</td><td>14 (50.0)</td></tr>
+        </tbody>
+      </table>
+    </table-wrap>
+    """), "brentuximab_vedotin", MINE, OTHERS, tax)
+    assert out.accepted, out.reason
+    assert out.counters["column_dropped_as_subgroup"] == 2
+    assert {c.denominator for c in out.cells} == {50}
+
+
+def test_two_different_dose_arms_are_not_mistaken_for_subgroups(tax) -> None:
+    """The risk the structural rule runs: a 1.2 mg/kg arm and a 1.8 mg/kg arm are different
+    arms, not a subgroup of each other, and neither identity is a prefix of the other."""
+    out = extract(_table("""
+    <table-wrap>
+      <caption><p>Adverse events</p></caption>
+      <table>
+        <thead><tr><th>Event</th>
+          <th>Brentuximab vedotin 1.2 mg/kg (n = 40)</th>
+          <th>Brentuximab vedotin 1.8 mg/kg (n = 60)</th></tr></thead>
+        <tbody>
+          <tr><td>Nausea</td><td>16 (40.0)</td><td>24 (40.0)</td></tr>
+          <tr><td>Neutropenia</td><td>12 (30.0)</td><td>18 (30.0)</td></tr>
+          <tr><td>Fatigue</td><td>20 (50.0)</td><td>30 (50.0)</td></tr>
+        </tbody>
+      </table>
+    </table-wrap>
+    """), "brentuximab_vedotin", MINE, OTHERS, tax)
+    assert out.accepted, out.reason
+    assert out.counters.get("column_dropped_as_subgroup", 0) == 0
+    assert {c.denominator for c in out.cells} == {40, 60}
+
+
+def test_the_title_path_is_blocked_when_another_adc_is_in_the_table(tax) -> None:
+    """The title path is the loosest thing in the pipeline, so its guard is the one that
+    matters: a review's comparison table names the other drugs in its caption even when the
+    columns do not, and that is the measured 75% false-positive trap."""
+    xml = """
+    <table-wrap>
+      <caption><p>Adverse events reported with %s</p></caption>
+      <table>
+        <thead><tr><th>Event</th><th>N = 57 Any grade</th></tr></thead>
+        <tbody>
+          <tr><td>Nausea</td><td>23 (40.4)</td></tr>
+          <tr><td>Neutropenia</td><td>17 (29.8)</td></tr>
+          <tr><td>Fatigue</td><td>29 (50.9)</td></tr>
+        </tbody>
+      </table>
+    </table-wrap>
+    """
+    clean = extract(_table(xml % "this agent"), "brentuximab_vedotin", MINE, OTHERS, tax,
+                    title_names_agent=True)
+    assert clean.accepted, clean.reason
+    assert clean.columns[1].kind == "agent_by_title"
+
+    tainted = extract(_table(xml % "polatuzumab vedotin"), "brentuximab_vedotin",
+                      MINE, OTHERS, tax, title_names_agent=True)
+    assert not tainted.accepted
+    assert tainted.counters["title_path_blocked_by_foreign_agent"] == 1
+    assert tainted.cells == []
+
+
+def test_without_the_title_the_same_table_is_refused(tax) -> None:
+    """The second path has to be an explicit decision by the caller, not a default."""
+    out = extract(_table("""
+    <table-wrap>
+      <caption><p>Adverse events</p></caption>
+      <table>
+        <thead><tr><th>Event</th><th>N = 57 Any grade</th></tr></thead>
+        <tbody><tr><td>Nausea</td><td>23 (40.4)</td></tr></tbody>
+      </table>
+    </table-wrap>
+    """), "brentuximab_vedotin", MINE, OTHERS, tax, title_names_agent=False)
+    assert not out.accepted
+    assert "unidentifiable header" in out.reason
+
+
+def test_strata_that_partition_a_parent_column_are_dropped(tax) -> None:
+    """The subgroup rule needs the subgroup's header to extend its parent's, which fails
+    when the strata are named independently: "Normal (BMI 18.5 to <25) n = 117" and
+    "Obese (BMI >=30) n = 66" beside a safety population of 258 share no arm name with it.
+    The registry comparison surfaced these as denominator mismatches, all smaller than the
+    registry's.
+
+    Arithmetic finds them without reading the labels. Columns whose denominators sum
+    exactly to another column's are a stratification of it, and admitting them as arms
+    would put correlated partial populations into one trial, which the hierarchical model
+    would read as independent evidence."""
+    from adctox.extract.table_to_cells import _partition_columns
+
+    def col(c: int, n: int):
+        from adctox.extract.table_to_cells import ColumnAttribution
+        return ColumnAttribution(c, f"arm {c} (n = {n})", "agent", "x", n)
+
+    # Two strata and their parent.
+    assert _partition_columns([col(1, 144), col(2, 173), col(3, 317)]) == {1, 2}
+    # Three strata and their parent.
+    assert _partition_columns(
+        [col(1, 117), col(2, 66), col(3, 75), col(4, 258)]
+    ) == {1, 2, 3}
+
+
+def test_a_pooled_total_that_is_not_a_sum_drops_nothing(tax) -> None:
+    """The risk the arithmetic runs. Two dose arms of 40 and 60 beside a pooled column of
+    120 are not a partition -- 40 + 60 is 100 -- and all three must survive. A partition
+    rule that fired on "there is a bigger column" would delete real arms."""
+    from adctox.extract.table_to_cells import ColumnAttribution, _partition_columns
+
+    def col(c: int, n: int):
+        return ColumnAttribution(c, f"arm {c} (n = {n})", "agent", "x", n)
+
+    assert _partition_columns([col(1, 40), col(2, 60), col(3, 120)]) == set()
+    # Fewer than three distinct denominators cannot show a partition at all.
+    assert _partition_columns([col(1, 40), col(2, 60)]) == set()
+
+
+def test_a_header_stating_two_denominators_is_a_subgroup_column() -> None:
+    """A two-row header joining "SG (n = 243)" to "*1/*1 wild type (n = 113)" declares the
+    arm and then a stratum of it in one string. The denominator parse keeps the last match,
+    so the column carries 113 and the parent 243 never becomes a column -- which puts both
+    the subgroup rule and the partition rule out of reach, since neither can see a parent
+    that is not a column.
+
+    Two `N =` statements in one header is the signal by itself. Found by validating against
+    the registry, where three UGT1A1 genotype strata of one sacituzumab arm (113, 96 and
+    34 against a registry arm of 258) each carried a header that also said 243."""
+    from adctox.extract.table_to_cells import (
+        ColumnAttribution,
+        _nested_denominator_columns,
+    )
+
+    def col(c: int, n: int, header: str):
+        return ColumnAttribution(c, header, "agent", "x", n)
+
+    cols = [
+        col(1, 113, "SG (n = 243)1 *1/*1 wild type (n = 113) All grades"),
+        col(2, 96, "SG (n = 243)1 *1/*28 heterozygous (n = 96) All grades"),
+        col(3, 50, "Brentuximab vedotin (n = 50) Any grade"),
+    ]
+    assert _nested_denominator_columns(cols) == {1, 2}
+
+
+def test_a_hyphen_joined_combination_regimen_is_caught() -> None:
+    """The "+"-based rule cannot see "G-atezo-pola", and only the full INN was listed, so
+    "R/R FLG-atezo-pola (N = 13)" put an atezolizumab combination into the corpus as
+    polatuzumab monotherapy. The short forms are how trial arm names actually write them."""
+    pola = {"polatuzumab", "polatuzumab vedotin", "pola", "polivy"}
+    for header in ["R/R FLG-atezo-pola(N = 13) Pola 1.8 mg(N = 10)",
+                   "G-atezo-pola (n = 21)"]:
+        a = attribute_column(header, 1, 20, pola, {})
+        assert a.kind == "ambiguous", f"{header!r} -> {a.kind}"
+        assert "atezo" in a.reason
+    # And the monotherapy column of the same trial is still ours.
+    assert attribute_column("Polatuzumab vedotin (n = 50)", 2, 50, pola, {}).kind == "agent"

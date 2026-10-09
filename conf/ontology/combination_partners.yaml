@@ -29,9 +29,20 @@ partners:
   - tislelizumab
   - sintilimab
   - camrelizumab
+  # Short forms, which is how trial arm names write them. Found by validating against the
+  # registry: "R/R FLG-atezo-pola (N = 13)" put an atezolizumab combination into the
+  # corpus as polatuzumab monotherapy, because only the full INN was listed.
+  - atezo
+  - pembro
+  - nivo
+  - durva
+  - ipi
+  - toripa
 
   # Anti-CD20 and other antibodies paired with haematology ADCs.
   - rituximab
+  - ritux
+  - obinu
   - obinutuzumab
   - trastuzumab          # as a partner, not as an ADC antibody
   - pertuzumab
@@ -90,3 +101,9 @@ regimens:
   - vrd
   - krd
   - 7+3
+  # Hyphen-joined regimen names. A "+"-based rule cannot see these.
+  - g-atezo-pola
+  - r-atezo-pola
+  - atezo-pola
+  - pola-r-chp
+  - ev-pembro

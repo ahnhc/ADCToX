@@ -31,6 +31,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+from copy import deepcopy
+
 from lxml import etree
 
 # `n (%)`, `n (%%)`, `n(%)`, and the same with a thousands separator or a decimal percent.
@@ -65,10 +67,59 @@ AE_VOCAB = re.compile(
     re.I,
 )
 GRADE_TOKEN = re.compile(r"grade\s*[≥>=]*\s*[1-5]|grade\s*3|all[- ]grade", re.I)
+# A caption saying the table reports something other than event rates. Used for *reporting*
+# and not for detection: these tables are still flagged as adverse-event-related, because
+# dropping them from detection risks dropping a real rate table whose caption happens to
+# mention a median. What it buys is an honest yield statistic.
+#
+# The measurement that forced this. Of 131 detected AE tables with no parseable numeric
+# cell, 29% have a caption like this (medians and ranges, modelled odds ratios, predicted
+# proportions, FAERS disproportionality formulas, health-state durations, a reporting
+# checklist) and 62% have no recoverable numeric format at all. Only 9% declare their
+# percentages in the header with bare integers in the cells, and just 2 of those also state
+# a denominator -- both in the same review article pooling five trials. So the parser is
+# not leaving much behind; the low yield was mostly this category inflating the denominator.
+NON_RATE_CAPTION = re.compile(
+    r"\bmedian\b|\bmean\b|\bodds\s+ratio\b|\bhazard\s+ratio\b|\bformula"
+    r"|\balgorithm|\bduration\b|\bcheck\s*list\b|\bpredicted\b|\bmodel",
+    re.I,
+)
+
+
+# A superscript holding a footnote marker. `itertext()` concatenates it into the term, so
+# "Anaemia" with a footnote `c` arrives as "Anaemiac" and misses the dictionary. Measured
+# in the residual as a recurring pattern on real preferred terms -- "Anemiac",
+# "Keratopathya". Only short marker-shaped superscripts are dropped: a longer one could be
+# part of the content, and `<sub>` is left alone because chemical formulas use it.
+#
+# A pure-digit superscript is excluded, because it is notation far more often than a
+# footnote: the first version turned "Vitamin B12 deficiency" into "Vitamin B deficiency".
+# Numeric footnote markers written as Unicode superscript characters are handled where
+# they belong, in row_labels.SUPERSCRIPT_DIGIT.
+FOOTNOTE_SUP = re.compile(
+    r"^(?=.*[a-zA-Z*\u2020\u2021\u00a7\u00b6#])"
+    r"[a-zA-Z*\u2020\u2021\u00a7\u00b6#,\s\d]{1,3}$"
+)
 
 
 def _text(node) -> str:
-    return re.sub(r"\s+", " ", "".join(node.itertext())).strip()
+    """The node's text, with footnote superscripts removed and everything else kept.
+
+    Implemented by emptying the marker elements on a copy rather than by filtering during
+    the walk. The filtering version dropped the *tail* of every superscript it kept, so
+    "Vitamin B12 deficiency" came out as "Vitamin B12" -- the kind of loss that is invisible
+    unless you look for it, because the result is still a plausible string.
+    """
+    copy = deepcopy(node)
+    for el in copy.iter():
+        if not isinstance(el.tag, str) or etree.QName(el).localname != "sup":
+            continue
+        inner = "".join(el.itertext()).strip()
+        if inner and FOOTNOTE_SUP.match(inner):
+            el.text = None
+            for child in list(el):
+                el.remove(child)
+    return re.sub(r"\s+", " ", "".join(copy.itertext())).strip()
 
 
 @dataclass
@@ -100,6 +151,9 @@ class ParsedTable:
     cells: list[Cell] = field(default_factory=list)
     is_image_only: bool = False
     looks_like_ae_table: bool = False
+    # True when the caption says the table reports medians, model output or similar rather
+    # than event rates. Reporting only; see NON_RATE_CAPTION.
+    caption_disclaims_rates: bool = False
 
     def column_header(self, col: int) -> str:
         """Every header cell above this column, joined top to bottom."""
@@ -212,6 +266,7 @@ def parse_table_wrap(wrap) -> ParsedTable:
             label=label, caption=caption, footer=footer, n_rows=0, n_cols=0,
             header_rows=0, is_image_only=bool(wrap.findall(".//graphic")),
             looks_like_ae_table=looks_ae,
+            caption_disclaims_rates=bool(NON_RATE_CAPTION.search(blob)),
         )
 
     grid, header_rows = _grid(table)
@@ -221,6 +276,7 @@ def parse_table_wrap(wrap) -> ParsedTable:
         n_rows=len(grid), n_cols=(len(grid[0]) if grid else 0),
         header_rows=header_rows, header_grid=[list(r) for r in grid[:header_rows]],
         column_denominators=denoms, looks_like_ae_table=looks_ae,
+        caption_disclaims_rates=bool(NON_RATE_CAPTION.search(blob)),
     )
     for r in range(header_rows, len(grid)):
         row = grid[r]

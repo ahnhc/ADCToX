@@ -133,7 +133,9 @@ def main() -> int:
                 continue
             funnel["ae_tables"] += 1
             per_agent[agent]["ae_tables"] += 1
-            out = extract(table, agent, alias_map[agent], others, tax)
+            out = extract(table, agent, alias_map[agent], others, tax,
+                          sibling_tables=tables,
+                          title_names_agent=(gate == "title"))
             for key, val in out.counters.items():
                 funnel[f"row_or_cell:{key}"] += val
             for row in out.rows:
@@ -176,6 +178,7 @@ def main() -> int:
                     "nct_provenance": nct_why,
                     "attribution_gate": gate,
                     "caption_kind": out.kind,
+                    "denominator_source": c.denominator_source,
                 })
 
     # ---- duplicate sources ------------------------------------------------------
@@ -232,7 +235,7 @@ def main() -> int:
 
     print("\n행 분류")
     for key in sorted(k for k in funnel if k.startswith("row_or_cell:row_")):
-        print(f"  {key.rsplit('_', 1)[-1]:28s} {funnel[key]:5d}")
+        print(f"  {key.split(':', 1)[1].removeprefix('row_'):28s} {funnel[key]:5d}")
 
     print(f"\n약물별 (셀 0인 약물에 ✗)")
     print(f"  {'agent':30s} {'논문':>4s} {'AE표':>5s} {'채택':>5s} {'셀':>6s}")
@@ -247,6 +250,12 @@ def main() -> int:
         print("\n귀속 관문별 셀 (느슨한 쪽이 엄격한 쪽의 정밀도를 세탁하지 않도록 분리)")
         for g, n in sorted(gates.items()):
             print(f"  {g:16s} {n:6d}")
+
+    for key in sorted(k for k in funnel
+                      if k.startswith("row_or_cell:") and "row_" not in k):
+        print(f"  {key.split(':', 1)[1]:34s} {funnel[key]:5d}")
+    dsrc = collections.Counter(c["denominator_source"] for c in cells_out)
+    print(f"\n분모 출처: " + ", ".join(f"{k}={v}" for k, v in sorted(dsrc.items())))
 
     print("\n축별 셀")
     for axis, n in axis_cells.most_common():
@@ -264,6 +273,9 @@ def main() -> int:
         "agents_sought": sorted(alias_map),
         "per_agent": {a: dict(per_agent[a]) for a in sorted(alias_map)},
         "axis_cells": dict(axis_cells),
+        "cells_by_denominator_source": dict(
+            collections.Counter(c["denominator_source"] for c in cells_out)
+        ),
         "cells_by_attribution_gate": dict(
             collections.Counter(c["attribution_gate"] for c in cells_out)
         ),

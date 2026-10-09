@@ -173,10 +173,22 @@ def from_reported_rates(rates: list[float]) -> Threshold | None:
 def resolve(caption_text: str, reported_rates: list[float]) -> Threshold:
     """The threshold for one table, preferring a stated cut to a derived bound.
 
-    When the caption states a cut *and* the rates contradict it -- a stated ">=10%" beside
-    a printed 4.2% -- the printed rate wins and the result is marked as a bound. The caption
-    is a claim about the table; the rates are the table. This happens when a footnote
-    exempts certain events from the cut, which is common for events of special interest.
+    `reported_rates` must be **one rate per row** -- the row's maximum across columns --
+    not every cell in the table. The distinction is the whole correctness of this function,
+    and getting it wrong invalidated the first version.
+
+    A reporting cut is a property of *row selection*, not of cell values: an event appears
+    in the table because its any-grade rate cleared the cut, and the grade 3-4 sub-rates
+    then printed for that already-selected row are routinely 1-5%. Pooling every cell and
+    taking the minimum therefore manufactures a contradiction in any table with a grade
+    breakdown, which is most of them. Measured: with all cells pooled, 44 of the 45 tables
+    whose caption stated a cut were demoted to bounds -- 26.8% of the corpus -- and the
+    explicit-threshold rate came out at 0.6% against the plan's measured 19.3%.
+
+    A row maximum below the stated cut is a real contradiction: it means a row was included
+    that the stated cut would have excluded, which happens when a footnote exempts events of
+    special interest. Then the printed rate wins and the result is marked as a bound,
+    because the caption is a claim about the table and the rates are the table.
     """
     stated = from_caption(caption_text)
     derived = from_reported_rates(reported_rates)

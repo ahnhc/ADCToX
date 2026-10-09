@@ -1,0 +1,37 @@
+{
+  "provenance": {
+    "revision": "5dc97050e605b247244e6d4eb3da5e4fbbada53f",
+    "dirty": true,
+    "snapshot": null,
+    "script": "merge_literature_corpus.py",
+    "written_utc": "2026-10-09T01:53:44+00:00",
+    "inputs": {
+      "cells": "sha256:138dd4b9fb5267a0e35f61b176bb279705806de5f4007dea50d59f72c35d3fd3",
+      "registry": "sha256:9a5a2d8bb098a42caa825eab6be011a2ab5659b9185fe930279114506c4c2aa9"
+    }
+  },
+  "filters": {
+    "chosen_only": true,
+    "include_registry_overlap": false,
+    "explicit_threshold_only": true
+  },
+  "n_cells_in": 4781,
+  "n_cells_kept": 572,
+  "n_arms": 52,
+  "n_observations": 252,
+  "n_agents": 7,
+  "n_trials": 2,
+  "n_arms_threshold_upper_bound": 0,
+  "arms_per_agent": {
+    "datopotamab_deruxtecan": 20,
+    "belantamab_mafodotin": 12,
+    "telisotuzumab_vedotin": 6,
+    "sacituzumab_govitecan": 6,
+    "mirvetuximab_soravtansine": 4,
+    "brentuximab_vedotin": 3,
+    "polatuzumab_vedotin": 1
+  },
+  "arms_per_gate": {
+    "title": 52
+  }
+}

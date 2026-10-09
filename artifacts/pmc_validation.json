@@ -1,0 +1,631 @@
+{
+  "provenance": {
+    "revision": "5dc97050e605b247244e6d4eb3da5e4fbbada53f",
+    "dirty": true,
+    "snapshot": null,
+    "script": "validate_pmc_against_ctgov.py",
+    "written_utc": "2026-10-09T01:44:38+00:00",
+    "inputs": {
+      "cells": "sha256:3c86c60599087819cec71f8847983e164e13412f82976a2ce1910b091be586a4",
+      "observations": "sha256:723edffc8b5aad7332bd7aadcdf78668a57aa3ebdd8f674f4b56e5429e12f514"
+    }
+  },
+  "extractor_hard_failures": {
+    "count_exceeds_denominator": 0,
+    "rate_above_100": 0,
+    "arithmetic_gate_failed": 28,
+    "denominator_below_3": 0
+  },
+  "n_paper_cells": 4781,
+  "rate_tolerance_pp": 5.0,
+  "denominator": {
+    "n_arms_compared": 90,
+    "n_exact": 42,
+    "exact_rate": 0.4666666666666667,
+    "mismatches": [
+      {
+        "nct_id": "NCT01055496",
+        "agent": "inotuzumab_ozogamicin",
+        "paper": 36,
+        "registry": 55,
+        "pmcid": "5614242",
+        "column_header": "Patients receiving RP2D in parts 1-3 (n = 36) All grades"
+      },
+      {
+        "nct_id": "NCT01055496",
+        "agent": "inotuzumab_ozogamicin",
+        "paper": 36,
+        "registry": 55,
+        "pmcid": "5614242",
+        "column_header": "Patients receiving RP2D in parts 1-3 (n = 36) Grade ≥3"
+      },
+      {
+        "nct_id": "NCT01657331",
+        "agent": "brentuximab_vedotin",
+        "paper": 28,
+        "registry": 37,
+        "pmcid": "9098158",
+        "column_header": "Phase I (n=28) All"
+      },
+      {
+        "nct_id": "NCT01657331",
+        "agent": "brentuximab_vedotin",
+        "paper": 28,
+        "registry": 37,
+        "pmcid": "9098158",
+        "column_header": "Phase I (n=28) Grade 1"
+      },
+      {
+        "nct_id": "NCT01657331",
+        "agent": "brentuximab_vedotin",
+        "paper": 28,
+        "registry": 37,
+        "pmcid": "9098158",
+        "column_header": "Phase I (n=28) Grade 2"
+      },
+      {
+        "nct_id": "NCT01657331",
+        "agent": "brentuximab_vedotin",
+        "paper": 28,
+        "registry": 37,
+        "pmcid": "9098158",
+        "column_header": "Phase I (n=28) Grade 3"
+      },
+      {
+        "nct_id": "NCT01657331",
+        "agent": "brentuximab_vedotin",
+        "paper": 28,
+        "registry": 37,
+        "pmcid": "9098158",
+        "column_header": "Phase I (n=28) Grade 4"
+      },
+      {
+        "nct_id": "NCT02574455",
+        "agent": "sacituzumab_govitecan",
+        "paper": 209,
+        "registry": 258,
+        "pmcid": "9424318",
+        "column_header": "SG <65 years (n = 209) All grades"
+      },
+      {
+        "nct_id": "NCT02574455",
+        "agent": "sacituzumab_govitecan",
+        "paper": 209,
+        "registry": 258,
+        "pmcid": "9424318",
+        "column_header": "SG <65 years (n = 209) Grade 3"
+      },
+      {
+        "nct_id": "NCT02574455",
+        "agent": "sacituzumab_govitecan",
+        "paper": 117,
+        "registry": 258,
+        "pmcid": "12167086",
+        "column_header": "Normala(BMI 18.5 to <25 kg/m2)n = 117"
+      },
+      {
+        "nct_id": "NCT02574455",
+        "agent": "sacituzumab_govitecan",
+        "paper": 66,
+        "registry": 258,
+        "pmcid": "12167086",
+        "column_header": "Obese(BMI ≥30 kg/m2)n = 66"
+      },
+      {
+        "nct_id": "NCT02574455",
+        "agent": "sacituzumab_govitecan",
+        "paper": 67,
+        "registry": 258,
+        "pmcid": "12167086",
+        "column_header": "Overweight(BMI 25 to <30 kg/m2)n = 67"
+      },
+      {
+        "nct_id": "NCT02581631",
+        "agent": "brentuximab_vedotin",
+        "paper": 30,
+        "registry": 42,
+        "pmcid": "10500465",
+        "column_header": "Any grade"
+      },
+      {
+        "nct_id": "NCT02581631",
+        "agent": "brentuximab_vedotin",
+        "paper": 30,
+        "registry": 42,
+        "pmcid": "10500465",
+        "column_header": "Grade 3/4"
+      },
+      {
+        "nct_id": "NCT02581631",
+        "agent": "brentuximab_vedotin",
+        "paper": 29,
+        "registry": 42,
+        "pmcid": "11112622",
+        "column_header": "CTCL (n = 29) Any grade"
+      },
+      {
+        "nct_id": "NCT02581631",
+        "agent": "brentuximab_vedotin",
+        "paper": 33,
+        "registry": 42,
+        "pmcid": "11112622",
+        "column_header": "PTCL (n = 33) Any grade"
+      },
+      {
+        "nct_id": "NCT02581631",
+        "agent": "brentuximab_vedotin",
+        "paper": 33,
+        "registry": 42,
+        "pmcid": "11112622",
+        "column_header": "PTCL (n = 33) Grade 3/4"
+      },
+      {
+        "nct_id": "NCT02581631",
+        "agent": "brentuximab_vedotin",
+        "paper": 29,
+        "registry": 42,
+        "pmcid": "11112622",
+        "column_header": "CTCL (n = 29) Grade 3/4"
+      },
+      {
+        "nct_id": "NCT02927769",
+        "agent": "brentuximab_vedotin",
+        "paper": 44,
+        "registry": 33,
+        "pmcid": "10646780",
+        "column_header": "Induction (n = 44) Any grade"
+      },
+      {
+        "nct_id": "NCT02927769",
+        "agent": "brentuximab_vedotin",
+        "paper": 11,
+        "registry": 33,
+        "pmcid": "10646780",
+        "column_header": "Intensification (n = 11) Any grade"
+      },
+      {
+        "nct_id": "NCT02927769",
+        "agent": "brentuximab_vedotin",
+        "paper": 11,
+        "registry": 33,
+        "pmcid": "10646780",
+        "column_header": "Intensification (n = 11) Grade 3/4"
+      },
+      {
+        "nct_id": "NCT03329690",
+        "agent": "trastuzumab_deruxtecan",
+        "paper": 1070,
+        "registry": 125,
+        "pmcid": "12800766",
+        "column_header": "N = 1070"
+      },
+      {
+        "nct_id": "NCT03474107",
+        "agent": "enfortumab_vedotin",
+        "paper": 36,
+        "registry": 296,
+        "pmcid": "9939146",
+        "column_header": "Enfortumab vedotin (n = 36) Any grade"
+      },
+      {
+        "nct_id": "NCT03474107",
+        "agent": "enfortumab_vedotin",
+        "paper": 36,
+        "registry": 296,
+        "pmcid": "9939146",
+        "column_header": "Enfortumab vedotin (n = 36) Grade ≥ 3"
+      },
+      {
+        "nct_id": "NCT03529110",
+        "agent": "trastuzumab_deruxtecan",
+        "paper": 6,
+        "registry": 257,
+        "pmcid": "13238207",
+        "column_header": "DS-8201(n=6)"
+      },
+      {
+        "nct_id": "NCT03529110",
+        "agent": "trastuzumab_deruxtecan",
+        "paper": 12,
+        "registry": 257,
+        "pmcid": "13238207",
+        "column_header": "RC48(n=12)"
+      },
+      {
+        "nct_id": "NCT03531918",
+        "agent": "gemtuzumab_ozogamicin",
+        "paper": 18,
+        "registry": 60,
+        "pmcid": "9221325",
+        "column_header": "Phase 1 Cohort(n = 18)"
+      },
+      {
+        "nct_id": "NCT04223856",
+        "agent": "enfortumab_vedotin",
+        "paper": 203,
+        "registry": 440,
+        "pmcid": "12811209",
+        "column_header": "(A) Treatment-related adverse events (TRAEs) Grade 1-2"
+      },
+      {
+        "nct_id": "NCT04223856",
+        "agent": "enfortumab_vedotin",
+        "paper": 203,
+        "registry": 440,
+        "pmcid": "12811209",
+        "column_header": "(A) Treatment-related adverse events (TRAEs) Grade ≥3"
+      },
+      {
+        "nct_id": "NCT04225117",
+        "agent": "enfortumab_vedotin",
+        "paper": 41,
+        "registry": 46,
+        "pmcid": "13473864",
+        "column_header": "R/M HNSCCn = 41 Any grade"
+      },
+      {
+        "nct_id": "NCT04225117",
+        "agent": "enfortumab_vedotin",
+        "paper": 41,
+        "registry": 46,
+        "pmcid": "13473864",
+        "column_header": "R/M HNSCCn = 41 Grade ≥3"
+      },
+      {
+        "nct_id": "NCT04484623",
+        "agent": "belantamab_mafodotin",
+        "paper": 10,
+        "registry": 150,
+        "pmcid": "13171770",
+        "column_header": "BPd (N = 10) Any grade"
+      },
+      {
+        "nct_id": "NCT04484623",
+        "agent": "belantamab_mafodotin",
+        "paper": 11,
+        "registry": 150,
+        "pmcid": "13171770",
+        "column_header": "PVd (N = 11) Any grade"
+      },
+      {
+        "nct_id": "NCT04484623",
+        "agent": "belantamab_mafodotin",
+        "paper": 10,
+        "registry": 150,
+        "pmcid": "13171770",
+        "column_header": "BPd (N = 10) Grade ≥ 3"
+      },
+      {
+        "nct_id": "NCT04484623",
+        "agent": "belantamab_mafodotin",
+        "paper": 11,
+        "registry": 150,
+        "pmcid": "13171770",
+        "column_header": "PVd (N = 11) Grade ≥ 3"
+      },
+      {
+        "nct_id": "NCT04484623",
+        "agent": "belantamab_mafodotin",
+        "paper": 10,
+        "registry": 150,
+        "pmcid": "13171770",
+        "column_header": "BPd Any grade"
+      },
+      {
+        "nct_id": "NCT04484623",
+        "agent": "belantamab_mafodotin",
+        "paper": 10,
+        "registry": 150,
+        "pmcid": "13171770",
+        "column_header": "BPd Grade ≥ 3"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "11771365",
+        "column_header": "ICC (n = 351), No. (%) Any Grade"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "11771365",
+        "column_header": "ICC (n = 351), No. (%) Grade ≥3"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "13449377",
+        "column_header": "ICC (n = 351) Any grade"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "13449377",
+        "column_header": "ICC (n = 351) Grade 1"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "13449377",
+        "column_header": "ICC (n = 351) Grade ≥3"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "13449377",
+        "column_header": "ICC (n = 351) Leading to: Dose interruption"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "13449377",
+        "column_header": "ICC (n = 351) Leading to: Dose reduction"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "11771365",
+        "column_header": "ICC (n = 351), No. (%) Grade 1"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "11771365",
+        "column_header": "ICC (n = 351), No. (%) Grade 2"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "11771365",
+        "column_header": "ICC (n = 351), No. (%) Grade 3"
+      },
+      {
+        "nct_id": "NCT05104866",
+        "agent": "datopotamab_deruxtecan",
+        "paper": 351,
+        "registry": 360,
+        "pmcid": "13449377",
+        "column_header": "ICC (n = 351) Grade 2"
+      }
+    ]
+  },
+  "rates": {
+    "other": {
+      "n": 1381,
+      "n_within_tolerance": 343,
+      "within_rate": 0.24837074583635046,
+      "median_delta_pp": -11.111111111111112,
+      "mean_delta_pp": -14.458681505196864,
+      "spearman": 0.324906611279149,
+      "by_axis": {
+        "cardiovascular": {
+          "n": 72,
+          "median_delta_pp": -2.7027027027027026
+        },
+        "constitutional": {
+          "n": 169,
+          "median_delta_pp": -26.944444444444443
+        },
+        "dermatologic": {
+          "n": 132,
+          "median_delta_pp": -1.708701098945001
+        },
+        "gastrointestinal": {
+          "n": 179,
+          "median_delta_pp": -27.552552552552548
+        },
+        "haematologic": {
+          "n": 170,
+          "median_delta_pp": -11.433475797208562
+        },
+        "hepatic": {
+          "n": 84,
+          "median_delta_pp": -7.011494252873563
+        },
+        "infectious_immune": {
+          "n": 89,
+          "median_delta_pp": -14.285714285714286
+        },
+        "metabolic_endocrine": {
+          "n": 70,
+          "median_delta_pp": -13.875
+        },
+        "musculoskeletal": {
+          "n": 81,
+          "median_delta_pp": 0.0
+        },
+        "neurologic": {
+          "n": 131,
+          "median_delta_pp": -14.848484848484848
+        },
+        "ocular": {
+          "n": 43,
+          "median_delta_pp": -8.238482384823847
+        },
+        "otologic": {
+          "n": 50,
+          "median_delta_pp": 0.0
+        },
+        "pulmonary": {
+          "n": 90,
+          "median_delta_pp": -19.48051948051948
+        },
+        "renal": {
+          "n": 21,
+          "median_delta_pp": 0.43360433604336013
+        }
+      }
+    },
+    "serious": {
+      "n": 1238,
+      "n_within_tolerance": 520,
+      "within_rate": 0.420032310177706,
+      "median_delta_pp": 4.878048780487806,
+      "mean_delta_pp": 10.305343273337087,
+      "spearman": 0.0941744852053211,
+      "by_axis": {
+        "cardiovascular": {
+          "n": 72,
+          "median_delta_pp": 0.0
+        },
+        "constitutional": {
+          "n": 167,
+          "median_delta_pp": 4.878048780487805
+        },
+        "dermatologic": {
+          "n": 123,
+          "median_delta_pp": 10.459770114942527
+        },
+        "gastrointestinal": {
+          "n": 179,
+          "median_delta_pp": 10.772946859903382
+        },
+        "haematologic": {
+          "n": 166,
+          "median_delta_pp": 9.526277010370329
+        },
+        "hepatic": {
+          "n": 70,
+          "median_delta_pp": 6.954022988505747
+        },
+        "infectious_immune": {
+          "n": 91,
+          "median_delta_pp": -1.103988603988604
+        },
+        "metabolic_endocrine": {
+          "n": 68,
+          "median_delta_pp": 10.586297760210805
+        },
+        "musculoskeletal": {
+          "n": 81,
+          "median_delta_pp": 3.4482758620689653
+        },
+        "neurologic": {
+          "n": 69,
+          "median_delta_pp": 12.195121951219512
+        },
+        "ocular": {
+          "n": 43,
+          "median_delta_pp": 7.317073170731708
+        },
+        "pulmonary": {
+          "n": 90,
+          "median_delta_pp": 0.010683760683760646
+        },
+        "renal": {
+          "n": 19,
+          "median_delta_pp": 2.5524673851389674
+        }
+      }
+    }
+  },
+  "ranking": {
+    "n_arms": 75,
+    "median_rho": 0.546036656414869,
+    "mean_rho": 0.46537530280504585,
+    "rhos": [
+      0.8863,
+      0.7715,
+      0.9093,
+      0.7715,
+      0.4,
+      0.4,
+      0.2052,
+      -0.1118,
+      0.4,
+      0.7333,
+      0.546,
+      0.6971,
+      0.1563,
+      0.7155,
+      0.7006,
+      0.4443,
+      0.0561,
+      0.1563,
+      0.9602,
+      -0.119,
+      0.8857,
+      0.8,
+      0.8,
+      0.2653,
+      0.1595,
+      0.3087,
+      -0.0401,
+      0.222,
+      0.0613,
+      0.1955,
+      0.5933,
+      0.8783,
+      0.4414,
+      -0.2236,
+      -0.3162,
+      -0.6325,
+      0.69,
+      0.6706,
+      0.9118,
+      0.5443,
+      0.3162,
+      0.7857,
+      0.8117,
+      0.6009,
+      -0.6685,
+      0.8807,
+      0.0955,
+      0.2046,
+      0.6606,
+      0.4927,
+      0.504,
+      1.0,
+      0.2,
+      0.6307,
+      -0.3,
+      0.7833,
+      0.3,
+      0.3591,
+      0.6667,
+      0.4667,
+      0.8,
+      0.6179,
+      0.7833,
+      0.0857,
+      0.3189,
+      0.8117,
+      0.8197,
+      0.7,
+      0.6167,
+      0.4058,
+      0.7171,
+      0.6172,
+      0.8001,
+      0.919,
+      0.2052
+    ]
+  },
+  "caveats": [
+    "A journal report and a registry posting are different data cuts of the same trial, taken at different dates, so exact agreement is not expected.",
+    "The reporting thresholds differ, which changes which terms reach an axis. Aggregating by the maximum over terms rather than the sum limits but does not remove the effect.",
+    "The registry's own numbers are not ground truth; they are a second measurement.",
+    "A paper's column may pool doses the registry splits, or the reverse.",
+    "Only the denominator check and the hard-failure counts isolate the extractor; every rate difference has at least two possible causes."
+  ]
+}

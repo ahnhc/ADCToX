@@ -140,3 +140,32 @@ def test_the_bound_direction_is_conservative() -> None:
     bound = from_reported_rates(printed)
     assert bound is not None and bound.value >= true_cut
     assert bound.is_upper_bound
+
+
+def test_a_grade_breakdown_does_not_contradict_a_stated_cut() -> None:
+    """The error that invalidated the first version of this module, and the reason
+    `reported_rates` is one rate per row rather than every cell.
+
+    A reporting cut selects *rows*: an event appears because its any-grade rate cleared the
+    cut. The grade 3-4 sub-rates then printed for that already-selected row are routinely
+    1-5%. Pooling every cell and taking the minimum therefore manufactures a contradiction
+    in any table with a grade breakdown -- which is most of them. Measured on the corpus:
+    with cells pooled, 44 of the 45 tables whose caption stated a cut were demoted to
+    bounds, and the explicit-threshold rate came out at 0.6% against the plan's 19.3%."""
+    caption = "TEAEs occurring in ≥10% of patients"
+    # Row maxima, which all clear the cut, even though grade 3-4 cells do not.
+    t = resolve(caption, [40.0, 25.0, 12.0])
+    assert t.value == 10.0
+    assert t.is_explicit and not t.is_upper_bound
+    # The same table with every cell pooled is what used to arrive here.
+    pooled = resolve(caption, [40.0, 5.0, 25.0, 2.0, 12.0, 1.0])
+    assert pooled.value == 1.0 and pooled.is_upper_bound
+
+
+def test_a_row_below_the_stated_cut_is_still_a_contradiction() -> None:
+    """The case the demotion exists for: a footnote exempting events of special interest
+    from the cut, so a row appears whose own maximum is below it."""
+    t = resolve("Adverse events occurring in ≥10% of patients and events of "
+                "special interest", [40.0, 25.0, 4.2])
+    assert t.value == 4.2
+    assert t.is_upper_bound and not t.is_explicit

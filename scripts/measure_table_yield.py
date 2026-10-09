@@ -32,6 +32,8 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "src"))
 
+from adctox.extract.denominator import fill as fill_denominators  # noqa: E402
+from adctox.extract.jats_tables import ARITHMETIC_TOLERANCE_PP  # noqa: E402
 from adctox.extract.jats_tables import parse_article  # noqa: E402
 from adctox.provenance import stamp  # noqa: E402
 
@@ -114,7 +116,33 @@ def main() -> int:
                 totals["ae_no_cells"] += 1
                 per_agent[agent]["ae_no_cells"] += 1
                 continue
-            usable = [c for c in t.cells if c.n is not None and c.denominator]
+            # The same denominator recovery the extractor uses, so this gate measures the
+            # pipeline rather than a weaker version of it. 44% of count-carrying AE tables
+            # state no denominator in the header; see extract/denominator.py.
+            recovered = fill_denominators(t, tables)
+            if recovered:
+                totals["denominator_recovered_tables"] += 1
+                totals["denominator_recovered_columns"] += len(recovered)
+            denom_of = dict(t.column_denominators)
+            denom_of.update({col: got.value for col, got in recovered.items()})
+            if not any(c.n is not None or c.pct is not None for c in t.cells):
+                # No parseable rate cell at all. The two causes need different work, so
+                # they are counted apart: a caption disclaiming rates means the AE detector
+                # over-fired and nothing is lost, while the rest is a table the parser
+                # cannot read or one that holds no rates to read. Measured decomposition of
+                # 131 such tables: 29% disclaim, 62% have no recoverable numeric format,
+                # and 9% declare their percentages in the header -- of which only 2 also
+                # state a denominator, both in one review, so that format is not worth
+                # parsing.
+                totals["ae_no_rate_cells"] += 1
+                totals[
+                    "ae_caption_disclaims_rates" if t.caption_disclaims_rates
+                    else "ae_no_parseable_rate_format"
+                ] += 1
+                continue
+            usable = [
+                c for c in t.cells if c.n is not None and denom_of.get(c.col)
+            ]
             if len(usable) >= MIN_USABLE_CELLS:
                 totals["ae_usable"] += 1
                 per_agent[agent]["ae_usable"] += 1
@@ -127,11 +155,17 @@ def main() -> int:
             else:
                 totals["ae_pct_only"] += 1
                 per_agent[agent]["ae_pct_only"] += 1
-            for c in t.checkable:
+            # Re-check against the recovered denominators, not only the stated ones:
+            # `t.checkable` was computed before recovery ran, so using it would measure
+            # the gate on a strict subset and understate the corpus.
+            for c in t.cells:
+                d = denom_of.get(c.col)
+                if c.n is None or c.pct is None or not d:
+                    continue
                 cells_checked += 1
-                cells_ok += bool(c.arithmetic_ok)
-                if c.arithmetic_delta_pp is not None:
-                    deltas.append(c.arithmetic_delta_pp)
+                delta = abs(100.0 * c.n / d - c.pct)
+                cells_ok += delta <= ARITHMETIC_TOLERANCE_PP
+                deltas.append(delta)
 
     # ---- headline: agents recovered -------------------------------------------------
     agents_sought = sorted({r["agent_hint"] for r in records.values()})
@@ -147,6 +181,15 @@ def main() -> int:
 
     print(f"약물 {len(agents_sought)}종 검색, 논문 {totals['articles']}편 파싱, "
           f"표 {totals['tables']}개, AE 표 {totals['ae_tables']}개")
+    # A silent parse failure is the worst possible outcome for a feasibility gate: it
+    # reports a low yield and attributes it to the corpus. This counter was incremented
+    # and never printed, and 211 articles failed behind it on a NameError while the script
+    # cheerfully reported "0 tables".
+    if totals["unparseable_article"]:
+        print(f"  !! 파싱 실패 논문 {totals['unparseable_article']}편 "
+              f"— 아래 수율은 그만큼 과소평가입니다")
+        for f in failures[:5]:
+            print(f"     {f['path']}: {f['error'][:90]}")
     print()
     print(f"★ 기계판독 가능한 AE 표를 1개 이상 가진 약물: "
           f"{len(recovered)}/{len(agents_sought)} "
@@ -173,7 +216,10 @@ def main() -> int:
         ("ae_no_cells", "빈 격자"),
         ("ae_usable", f"분자+분모 {MIN_USABLE_CELLS}셀 이상 (사용)"),
         ("ae_counts_no_denominator", "분자만, 분모 미기재"),
-        ("ae_pct_only", "퍼센트만"),
+        ("ae_pct_only", "퍼센트만 (분자 없음)"),
+        ("ae_no_rate_cells", "비율 셀 없음"),
+        ("ae_caption_disclaims_rates", "  캡션이 비율표가 아니라고 함 (탐지기 위양성)"),
+        ("ae_no_parseable_rate_format", "  파싱 가능한 비율 포맷 없음"),
     ]:
         print(f"  {label:34s} {totals[key]:5d}  {_pct(totals[key], ae)}")
 

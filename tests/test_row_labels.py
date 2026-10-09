@@ -175,3 +175,89 @@ def test_classify_agrees_with_map_row_on_the_aggregate_question() -> None:
         assert classify(label) == "aggregate"
     for label, _ in ORGAN_LABELS + REWRITES:
         assert classify(label) == "pt", label
+
+
+NOT_EVENTS = [
+    # Bare values and punctuation, from tables whose stub column is not an event name.
+    "1", "2", "0", "3", "+", "−", "–", "≥ 75",
+    # Presence/absence and missingness.
+    "Yes", "No", "None", "Other", "Unknown", "Missing", "Unknown/missing", "N/A",
+    # Grade labels in every form the corpus uses, including the glyph that is not U+2265.
+    "Grade 0", "Grade 3", "Grade ≥3", "⩾Grade 3", "Grade 1–2",
+    "G1", "G4", "G I–II", "G III–IV",
+    # Severity strata.
+    "Mild", "Moderate", "Severe",
+    # Statistics and analysis rows.
+    "Median (range)", "Mean (SD)", "Logistic regression (AEs)",
+    # Demographics and performance status.
+    "Female", "Male", "White", "Asian", "ECOG PS", "Normal",
+    # Attribution and prior therapy.
+    "Drug-related", "Related to study treatment", "Related to any study treatment",
+    "Chemotherapy", "Palliative systemic therapy", "Non-hematological",
+    # Disease sites, which appear as strata in cross-tabs.
+    "Bone", "Liver", "Brain",
+    # Operational rows.
+    "Treatment interruption", "Treatment delays",
+]
+
+
+@pytest.mark.parametrize("label", NOT_EVENTS)
+def test_a_label_that_is_not_an_event_is_not_a_dictionary_miss(label: str, tax) -> None:
+    """Measured on 4,378 rows from denominator-bearing AE tables: labels like these were
+    being classified as preferred terms and counted as dictionary misses, which made the
+    mapping rate look like a vocabulary problem and would have sent the next round of work
+    hunting for terms that do not exist. A table's stub column is not always an event name
+    -- cross-tabs, over-caught baseline tables and grade-stratified blocks all put
+    something else there. Separating them moved the measured mapping rate from 40.7% to
+    53.7%, against the plan's 50.5%, without a single new dictionary entry."""
+    row = map_row(label, tax)
+    assert row.kind == "not_an_event", f"{label!r} classified as {row.kind}"
+    assert row.axis == AXIS_UNMAPPED
+
+
+def test_a_grade_stratum_is_dropped_whichever_bucket_claims_it(tax) -> None:
+    """"Any grade" and "All grades" are claimed by the aggregate pattern before the
+    not-an-event one gets to them. The bucket differs; the two properties that matter do
+    not -- the row never reaches an axis and is never counted as a dictionary miss."""
+    for label in ["Any grade", "All grades", "Any-grade", "All grade"]:
+        row = map_row(label, tax)
+        assert row.kind in ("aggregate", "not_an_event"), f"{label!r} -> {row.kind}"
+        assert row.axis == AXIS_UNMAPPED
+
+
+def test_a_real_event_is_not_swept_up_by_the_not_an_event_patterns(tax) -> None:
+    """The patterns are broad, so the risk runs the other way. These must survive."""
+    for label, axis in [
+        ("Nausea", "gastrointestinal"),
+        ("Neutropenia", "haematologic"),
+        ("Febrile neutropenia", "haematologic"),
+        ("Interstitial lung disease", "pulmonary"),
+        ("Keratopathy", "ocular"),
+        ("Peripheral sensory neuropathy", "neurologic"),
+        ("Alopecia", "dermatologic"),
+    ]:
+        row = map_row(label, tax)
+        assert row.kind == "pt", f"{label} classified as {row.kind}"
+        assert row.axis == axis
+
+
+def test_a_soc_abbreviation_and_an_oxford_comma_both_resolve(tax) -> None:
+    """Two clerical SOC failures from the residual. "GI disorders" is an abbreviation, and
+    "Respiratory, thoracic, and mediastinal disorders" is correctly spelled apart from a
+    comma MedDRA does not use -- so an exact match fails on a perfectly good header."""
+    gi = map_row("GI disorders", tax)
+    assert gi.kind == "soc_header" and gi.axis == "gastrointestinal"
+    oxford = map_row("Respiratory, thoracic, and mediastinal disorders", tax)
+    assert oxford.kind == "soc_header" and oxford.axis == "pulmonary"
+
+
+def test_an_event_abbreviation_expands(tax) -> None:
+    for label, axis in [("ILD", "pulmonary"), ("AKI", "renal")]:
+        assert map_row(label, tax).axis == axis, label
+
+
+def test_a_plural_and_a_compound_label_resolve(tax) -> None:
+    """Papers pluralise and MedDRA does not, and an author writing "a/b" means the two are
+    the same thing -- so either side places the axis."""
+    assert map_row("Oral mucositis/stomatitis", tax).axis == "gastrointestinal"
+    assert map_row("ALT/AST increased", tax).axis == "hepatic"
