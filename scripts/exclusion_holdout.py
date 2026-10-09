@@ -84,8 +84,25 @@ def condition_matcher(label: str, mondo_name: str | None,
             cleaned.add(f)
     if not cleaned:
         return None
-    alts = "|".join(re.escape(f) for f in sorted(cleaned, key=len, reverse=True))
-    return re.compile(rf"(?<![a-z]){alts}(?![a-z])", re.I)
+    # Longest first so a longer form is preferred, then lexicographic so the order does
+    # not depend on set iteration. `sorted(set, key=len)` leaves equal-length forms in
+    # hash order, which varies per process, and that made the whole evaluation
+    # irreproducible: two consecutive runs of `make exclusion-holdout` returned AUROC
+    # 0.674506 and 0.674111, with `active_autoimmune` matching 568 trials and then 642.
+    # A reported number that moves between runs is worse than a wrong one, because it
+    # cannot be checked.
+    alts = "|".join(
+        re.escape(f) for f in sorted(cleaned, key=lambda form: (-len(form), form))
+    )
+    # The alternation MUST be grouped. `|` binds loosest, so
+    #   (?<![a-z])alt1|alt2|alt3(?![a-z])
+    # applies the lookbehind to alt1 only and the lookahead to alt3 only, leaving every
+    # middle alternative with no word-boundary protection at all. That is a correctness
+    # bug in every condition with more than one name form, and it is what made the
+    # evaluation irreproducible: whichever alternative happened to sort first got the
+    # lookbehind, so the match count moved with the set iteration order. Found by chasing
+    # a 0.0004 difference in a reported AUROC between two runs.
+    return re.compile(rf"(?<![a-z])(?:{alts})(?![a-z])", re.I)
 
 
 def _auroc(scores: list[float], labels: list[int]) -> float | None:

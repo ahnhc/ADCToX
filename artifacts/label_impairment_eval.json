@@ -1,10 +1,10 @@
 {
   "provenance": {
-    "revision": "d85fe8fa97fcc1f4247581c57f06e3627ed4a609",
+    "revision": "5de4cb389955bef68df0e38991af7a10b44a1df6",
     "dirty": true,
-    "snapshot": null,
+    "snapshot": "2026-10-07",
     "script": "label_impairment_eval.py",
-    "written_utc": "2026-10-09T03:49:31+00:00",
+    "written_utc": "2026-10-09T04:25:13+00:00",
     "inputs": {
       "posterior": "sha256:88933386489fa0c6642d91c6634070fa1df2b648a24c628c56deb1cbaf7eff9f"
     }

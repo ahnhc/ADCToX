@@ -27,18 +27,40 @@ ART     := artifacts
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
-        corpus-ablation discover mondo-audit mondo-axes exclusion-holdout label-impairment inverse-retrieval
+        corpus-ablation discover mondo-audit mondo-axes exclusion-holdout \
+        label-impairment inverse-retrieval comorbidity literature expensive \
+        pmc-fetch-discovered pmc-fetch-codenames
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
 # sensitivity analysis while the report cited both.
 all: taxonomy corpus forward censoring-sensitivity expression enrichment module-b \
+     comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
 # comparison. Both depend on fetched label data, so the fetches are separate targets --
 # they hit government services and should not re-run on every build.
 module-b: label-changes label-change-eval dose-mod-eval
+
+# The comorbidity layer's own evaluations. Same split as Module B: these read raw snapshots
+# that `make fetch` produces and never fetch anything themselves, so `all` can depend on
+# them while remaining offline.
+#
+# `mondo-audit` comes first on purpose. It is the check that found 8 of 41 pinned MONDO
+# identifiers naming unrelated diseases, and `mondo-axes` consumes those identifiers -- so
+# running the derivation before the audit would derive organs from whatever the pins happen
+# to say.
+comorbidity: mondo-audit mondo-axes exclusion-holdout label-impairment
+
+# The literature corpus's own measurements, in the order they depend on each other:
+# feasibility, then extraction, then the registry comparison, then the merged frames and
+# the nested-corpus table the report quotes.
+literature: pmc-yield pmc-extract pmc-validate pmc-merge corpus-ablation
+
+# Deliberately not in `all`: one posterior refit per approved agent, about four hours.
+# Expensive evaluations are run on request, the way `fetch` is.
+expensive: inverse-retrieval
 
 env:
 	uv venv .venv && uv pip install -e ".[model,api]"
@@ -169,11 +191,40 @@ clean:
 	rm -rf $(PROC)/*.parquet $(PROC)/*.json $(ART)/*.json $(ART)/*.npz
 
 # ---------------------------------------------------------------- literature corpus
-PMC_RAW := $(RAW)/pmc/$(SNAPSHOT)
+# Three PMC snapshots, because the agents were found three ways and each needed its own
+# search: the registry agents by INN, the newly discovered agents by INN, and the ten that
+# an INN-only search missed by code name. They are separate directories rather than one
+# because each has its own fetch funnel and manifest, and merging them would lose the
+# record of which route found which agent.
+PMC_RAW   := $(RAW)/pmc/$(SNAPSHOT)
+PMC_DISC  := $(RAW)/pmc/$(SNAPSHOT)-discovery
+PMC_CODE  := $(RAW)/pmc/$(SNAPSHOT)-codename
+# Extracted cells are a large intermediate, so they live with the other large outputs
+# rather than in `data/processed`, which holds the model's input frames. Writing a 4 MB
+# jsonl into the latter is what the project's own layout rule forbids, and having two
+# candidate locations for one artefact is how `make literature` came to rebuild a 16-agent
+# corpus while the 32-agent one sat somewhere else.
+CELLS_DIR := /data/hyeongchanahn/adctox/processed
+ALL_CELLS := $(CELLS_DIR)/all_cells.jsonl
 
 pmc-fetch: ## PMC OA candidate discovery + JATS download for every registry agent
 	$(PY) scripts/fetch_pmc_candidates.py --out $(RAW)/pmc/$(FETCH_DATE) \
 	  --retmax 400
+
+# The two follow-on fetches, kept separate because each answered a different question and
+# each is reproducible only with its own agent list. The discovered agents came from
+# `make discover`; the code names were harvested from papers whose titles already named the
+# INN, which is what makes the mapping evidence rather than recollection -- see
+# docs/DATA_SOURCES.md.
+pmc-fetch-discovered: ## the agents the stem sweep found, by INN
+	$(PY) scripts/fetch_pmc_candidates.py \
+	  --out $(RAW)/pmc/$(FETCH_DATE)-discovery --retmax 300 \
+	  --inns "$$(cat conf/discovered_agents.txt | tr '\n' ',' | sed 's/,$$//')"
+
+pmc-fetch-codenames: ## the ten an INN-only search missed, by code name
+	$(PY) scripts/fetch_pmc_candidates.py \
+	  --out $(RAW)/pmc/$(FETCH_DATE)-codename --retmax 300 \
+	  --inns "$$(cat conf/codename_agents.txt | tr '\n' ',' | sed 's/,$$//')"
 
 pmc-yield: snapshot-check ## feasibility gate: recoverable agents, image-only rate by journal
 	$(PY) scripts/measure_table_yield.py --raw-dir $(PMC_RAW) \
@@ -182,10 +233,22 @@ pmc-yield: snapshot-check ## feasibility gate: recoverable agents, image-only ra
 pmc-extract: snapshot-check ## full extraction funnel -> attributed arm-axis cells
 	$(PY) scripts/extract_pmc_cells.py --raw-dir $(PMC_RAW) \
 	  --out artifacts/pmc_extraction.json \
-	  --cells-out $(PROC)/pmc_cells.jsonl
+	  --cells-out $(CELLS_DIR)/pmc_cells.jsonl
+	@test -d $(PMC_DISC) && $(PY) scripts/extract_pmc_cells.py --raw-dir $(PMC_DISC) \
+	  --out artifacts/discovery_extraction.json \
+	  --cells-out $(CELLS_DIR)/discovery_cells.jsonl || \
+	  echo "no discovery snapshot; skipping (run 'make pmc-fetch-discovered')"
+	@test -d $(PMC_CODE) && $(PY) scripts/extract_pmc_cells.py --raw-dir $(PMC_CODE) \
+	  --out artifacts/codename_extraction.json \
+	  --cells-out $(CELLS_DIR)/codename_cells.jsonl || \
+	  echo "no code-name snapshot; skipping"
+	cat $(CELLS_DIR)/pmc_cells.jsonl \
+	  $(wildcard $(CELLS_DIR)/discovery_cells.jsonl) \
+	  $(wildcard $(CELLS_DIR)/codename_cells.jsonl) > $(ALL_CELLS)
+	@wc -l < $(ALL_CELLS) | xargs echo "  cells in all_cells.jsonl:"
 
 pmc-validate: ## extracted rates vs the registry's own numbers for the same arms
-	$(PY) scripts/validate_pmc_against_ctgov.py --cells $(PROC)/pmc_cells.jsonl \
+	$(PY) scripts/validate_pmc_against_ctgov.py --cells $(ALL_CELLS) \
 	  --out artifacts/pmc_validation.json
 
 MONDO_OBO := $(RAW)/mondo/$(DATE)/mondo.obo
@@ -215,11 +278,12 @@ discover: ## find every ADC that has published, by payload-linker name stem
 	$(PY) scripts/discover_adc_agents.py --out $(ART)/adc_discovery.json --retmax 400
 
 pmc-merge: ## fold the extracted cells into the corpus schema the model reads
-	$(PY) scripts/merge_literature_corpus.py --cells $(PROC)/pmc_cells.jsonl
+	$(PY) scripts/merge_literature_corpus.py --cells $(ALL_CELLS) \
+	  --union $(PROC)/with_literature_final
 
 # The sensitivity refit the censoring treatment needs: 70% of paper tables state no
 # reporting cut, so their cut is an upper bound derived from the minimum printed rate.
 # This drops them and keeps only the tables that stated one.
 pmc-merge-explicit:
-	$(PY) scripts/merge_literature_corpus.py --cells $(PROC)/pmc_cells.jsonl \
+	$(PY) scripts/merge_literature_corpus.py --cells $(ALL_CELLS) \
 	  --explicit-threshold-only --out-dir $(PROC)/explicit_threshold

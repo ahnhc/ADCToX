@@ -827,32 +827,31 @@ that is a hereditary channelopathy while the trial criterion is a drug-induced E
 a prior anthracycline, chest radiation, corneal surgery, transplant or bowel resection is
 not a disease, and no disease ontology can place one.
 
-### The holdout: 0.675 non-circularly, against 0.757 circularly
+### The holdout: 0.666 non-circularly, against 0.750 circularly
 
 For each condition, find the trials whose eligibility text names it, and ask whether the
 organ axes its MONDO closure derives are the axes those trials express concern about.
 
 | mapping | AUROC | permutation p |
 |---|---|---|
-| MONDO-derived (non-circular) | **0.675** | **0.0010** |
-| hand-assigned (circular, reported as a ceiling) | 0.757 | 0.0005 |
+| MONDO-derived (non-circular) | **0.666** | **0.0005** |
+| hand-assigned (circular, reported as a ceiling) | 0.750 | 0.0005 |
 
 The permutation shuffles axis assignments *within* each condition, holding the number
 assigned fixed, because the eleven cells of one condition are not independent -- their
-shares sum to one -- so a standard error over 293 cells would treat 27 conditions as 293.
-The null sits at 0.495 with a 95th percentile of 0.575.
+shares sum to one -- so a standard error over 286 cells would treat 26 conditions as 286.
+The null sits at 0.493 with a 95th percentile of 0.571.
 
-The hand map wins by 0.082, which bounds what its circularity buys. A small gap is the
+The hand map wins by 0.085, which bounds what its circularity buys. A small gap is the
 informative outcome: the hand map is not living off the leak.
 
 ### Two corrections without which the number is worthless
 
 **Protocol verbosity.** Any protocol detailed enough to name a comorbidity sets thresholds
 on several organs, so raw rates come out enriched on every axis at once. The signature is
-both medians positive: +0.556 for assigned axes and +0.448 for unassigned, with `ocular`
-the top-enriched axis for both cirrhosis and chronic kidney disease. Normalising to each
-trial's share of concern makes protocol length cancel, putting unassigned axes at -0.037
-and raising the AUROC from 0.606 to 0.675. This is the reporting-channel artifact the plan
+both medians positive, with `ocular` the top-enriched axis for both cirrhosis and chronic
+kidney disease. Normalising to each trial's share of concern makes protocol length cancel,
+putting unassigned axes at -0.033 and raising the AUROC from 0.605 to 0.666. This is the reporting-channel artifact the plan
 names for FAERS, in a different dataset.
 
 **Shared regular expressions.** The organ-concern rules were also written by reading
@@ -866,7 +865,7 @@ standing for cirrhosis on the hepatic axis.
 
 ### What it does and does not establish
 
-Fourteen of 41 conditions are excluded, each with a reason. Six derive no organ because
+Fifteen of 41 conditions are excluded, each with a reason. Six derive no organ because
 they are prior exposures rather than diseases. A guard drops any condition whose matcher
 hits more than a quarter of the corpus, which is how the root-pinned six announced
 themselves: the root's synonyms were reaching their matchers, each hit about 60% of trials,
@@ -943,7 +942,7 @@ enough to fit it on, and saying so is more useful than fitting it anyway.
 
 The comorbidity layer has two hand-assigned columns, and this round separated them. The
 organ mapping now has an independent MONDO derivation that recovers exclusion concern at
-AUROC 0.675. The severity column has nothing of the kind, and the reason is in its own
+AUROC 0.666. The severity column has nothing of the kind, and the reason is in its own
 documentation: **34 of 41 severity values cite trial exclusion criteria as their basis** --
 "Child-Pugh B/C excluded in ADC protocols", "HBV exclusion present in 54% of ADC
 protocols". One value of 41 cites a label.

@@ -1,12 +1,12 @@
 {
   "provenance": {
-    "revision": "5dc97050e605b247244e6d4eb3da5e4fbbada53f",
+    "revision": "5de4cb389955bef68df0e38991af7a10b44a1df6",
     "dirty": true,
-    "snapshot": null,
+    "snapshot": "2026-10-07",
     "script": "validate_pmc_against_ctgov.py",
-    "written_utc": "2026-10-09T01:44:38+00:00",
+    "written_utc": "2026-10-09T04:27:05+00:00",
     "inputs": {
-      "cells": "sha256:3c86c60599087819cec71f8847983e164e13412f82976a2ce1910b091be586a4",
+      "cells": "sha256:ecb023f2e88e9d2005e591325c0ca895d0ffce1b9a73ba25b8dc223830647aae",
       "observations": "sha256:723edffc8b5aad7332bd7aadcdf78668a57aa3ebdd8f674f4b56e5429e12f514"
     }
   },
@@ -16,12 +16,12 @@
     "arithmetic_gate_failed": 28,
     "denominator_below_3": 0
   },
-  "n_paper_cells": 4781,
+  "n_paper_cells": 6535,
   "rate_tolerance_pp": 5.0,
   "denominator": {
-    "n_arms_compared": 90,
+    "n_arms_compared": 88,
     "n_exact": 42,
-    "exact_rate": 0.4666666666666667,
+    "exact_rate": 0.4772727272727273,
     "mismatches": [
       {
         "nct_id": "NCT01055496",
@@ -216,22 +216,6 @@
         "column_header": "Enfortumab vedotin (n = 36) Grade ≥ 3"
       },
       {
-        "nct_id": "NCT03529110",
-        "agent": "trastuzumab_deruxtecan",
-        "paper": 6,
-        "registry": 257,
-        "pmcid": "13238207",
-        "column_header": "DS-8201(n=6)"
-      },
-      {
-        "nct_id": "NCT03529110",
-        "agent": "trastuzumab_deruxtecan",
-        "paper": 12,
-        "registry": 257,
-        "pmcid": "13238207",
-        "column_header": "RC48(n=12)"
-      },
-      {
         "nct_id": "NCT03531918",
         "agent": "gemtuzumab_ozogamicin",
         "paper": 18,
@@ -411,32 +395,32 @@
   },
   "rates": {
     "other": {
-      "n": 1381,
+      "n": 1372,
       "n_within_tolerance": 343,
-      "within_rate": 0.24837074583635046,
-      "median_delta_pp": -11.111111111111112,
-      "mean_delta_pp": -14.458681505196864,
-      "spearman": 0.324906611279149,
+      "within_rate": 0.25,
+      "median_delta_pp": -11.116728457476691,
+      "mean_delta_pp": -14.606324745171985,
+      "spearman": 0.32493727654011173,
       "by_axis": {
         "cardiovascular": {
-          "n": 72,
+          "n": 70,
           "median_delta_pp": -2.7027027027027026
         },
         "constitutional": {
-          "n": 169,
-          "median_delta_pp": -26.944444444444443
+          "n": 167,
+          "median_delta_pp": -27.027027027027025
         },
         "dermatologic": {
           "n": 132,
           "median_delta_pp": -1.708701098945001
         },
         "gastrointestinal": {
-          "n": 179,
+          "n": 177,
           "median_delta_pp": -27.552552552552548
         },
         "haematologic": {
-          "n": 170,
-          "median_delta_pp": -11.433475797208562
+          "n": 169,
+          "median_delta_pp": -11.452810180275714
         },
         "hepatic": {
           "n": 84,
@@ -447,8 +431,8 @@
           "median_delta_pp": -14.285714285714286
         },
         "metabolic_endocrine": {
-          "n": 70,
-          "median_delta_pp": -13.875
+          "n": 68,
+          "median_delta_pp": -14.16403162055336
         },
         "musculoskeletal": {
           "n": 81,
@@ -477,32 +461,32 @@
       }
     },
     "serious": {
-      "n": 1238,
+      "n": 1229,
       "n_within_tolerance": 520,
-      "within_rate": 0.420032310177706,
-      "median_delta_pp": 4.878048780487806,
-      "mean_delta_pp": 10.305343273337087,
-      "spearman": 0.0941744852053211,
+      "within_rate": 0.4231082180634662,
+      "median_delta_pp": 4.878048780487805,
+      "mean_delta_pp": 10.077134557018299,
+      "spearman": 0.09648272952070924,
       "by_axis": {
         "cardiovascular": {
-          "n": 72,
+          "n": 70,
           "median_delta_pp": 0.0
         },
         "constitutional": {
-          "n": 167,
-          "median_delta_pp": 4.878048780487805
+          "n": 165,
+          "median_delta_pp": 4.358486341244962
         },
         "dermatologic": {
           "n": 123,
           "median_delta_pp": 10.459770114942527
         },
         "gastrointestinal": {
-          "n": 179,
-          "median_delta_pp": 10.772946859903382
+          "n": 177,
+          "median_delta_pp": 10.455486542443065
         },
         "haematologic": {
-          "n": 166,
-          "median_delta_pp": 9.526277010370329
+          "n": 165,
+          "median_delta_pp": 8.766233766233766
         },
         "hepatic": {
           "n": 70,
@@ -513,8 +497,8 @@
           "median_delta_pp": -1.103988603988604
         },
         "metabolic_endocrine": {
-          "n": 68,
-          "median_delta_pp": 10.586297760210805
+          "n": 66,
+          "median_delta_pp": 10.094043887147336
         },
         "musculoskeletal": {
           "n": 81,
@@ -540,9 +524,9 @@
     }
   },
   "ranking": {
-    "n_arms": 75,
-    "median_rho": 0.546036656414869,
-    "mean_rho": 0.46537530280504585,
+    "n_arms": 73,
+    "median_rho": 0.5933433740104477,
+    "mean_rho": 0.49112097271820493,
     "rhos": [
       0.8863,
       0.7715,
@@ -578,8 +562,6 @@
       0.8783,
       0.4414,
       -0.2236,
-      -0.3162,
-      -0.6325,
       0.69,
       0.6706,
       0.9118,

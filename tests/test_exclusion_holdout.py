@@ -29,8 +29,49 @@ def _load() -> dict:
     return json.loads(HOLDOUT.read_text(encoding="utf-8"))
 
 
+def test_the_condition_matcher_groups_its_alternation() -> None:
+    """A correctness bug that also made the whole evaluation irreproducible.
+
+    The matcher was built as `(?<![a-z])alt1|alt2|alt3(?![a-z])`. `|` binds loosest, so the
+    lookbehind applied to `alt1` only and the lookahead to `alt3` only, leaving every middle
+    alternative with no word-boundary protection. Because the forms came out of a `set`,
+    whichever alternative sorted first got the lookbehind -- and set iteration order varies
+    with the per-process string hash seed, so two consecutive runs of the same command
+    returned AUROC 0.674506 and 0.674111, with `active_autoimmune` matching 568 trials and
+    then 642. Grouped and sorted deterministically it matches 558, below both, because the
+    unprotected alternatives had been matching inside longer words.
+
+    Found by chasing a 0.0004 difference between two runs of a reported number. A figure
+    that moves between runs is worse than a wrong one, because it cannot be checked.
+    """
+    import sys
+
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from exclusion_holdout import condition_matcher
+
+    m = condition_matcher(
+        "Active autoimmune disease", "autoimmune disease",
+        {"autoimmune disorder", "autoimmune disease or disorder", "disease, autoimmune"},
+    )
+    assert m is not None
+    assert m.pattern.startswith("(?<![a-z])(?:"), m.pattern
+    assert m.pattern.endswith(")(?![a-z])"), m.pattern
+    # Every alternative is inside the group, so none of them can match mid-word.
+    assert not m.search("nonautoimmune disease")
+    assert not m.search("autoimmune diseased")
+    assert m.search("history of autoimmune disorder requiring")
+    assert m.search("active autoimmune disease")
+
+    # And the order is a pure function of the forms, not of set iteration.
+    again = condition_matcher(
+        "Active autoimmune disease", "autoimmune disease",
+        {"disease, autoimmune", "autoimmune disease or disorder", "autoimmune disorder"},
+    )
+    assert again.pattern == m.pattern
+
+
 def test_the_non_circular_mapping_beats_chance() -> None:
-    """AUROC 0.675 with a permutation p of 0.0010. The permutation shuffles axis
+    """AUROC 0.666 with a permutation p of 0.0005. The permutation shuffles axis
     assignments *within* each condition, because the 11 cells of one condition are not
     independent -- their shares sum to one -- so a standard error over 293 cells would
     treat 27 conditions as 293."""
