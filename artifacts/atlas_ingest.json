@@ -1,13 +1,21 @@
 {
+ "denominator_fallback": {
+  "rows_with_both": 15947,
+  "rows_disagreeing": 48,
+  "disagreement_rate": 0.003,
+  "agreement_rate": 0.997,
+  "rows_substituted": 45,
+  "note": "Where both are present the printed row-level denominator wins. The disagreements are sub-population denominators -- an ocular sub-study, a laboratory-evaluable subset -- so the substituted rows carry the risk of an enrolment standing in for a smaller evaluable subset, which would deflate the rate. The measured rate of that happening is the disagreement rate above."
+ },
  "workbook_sha256": "ef3a04504294eadd6026e6215e905852369c22a26edf2178ecdedef1c63c6181",
  "arithmetic_gate": {
   "tolerance_pp": 0.6,
-  "verifiable": 4433,
-  "not_verifiable": 1183,
+  "verifiable": 4435,
+  "not_verifiable": 1198,
   "passed": 4425,
-  "pass_rate_of_verifiable": 0.9981953530340627,
+  "pass_rate_of_verifiable": 0.9977452085682075,
   "median_gap_pp": 0.027272727272727337,
-  "numerator_reconstructed_from_percentage": 632,
+  "numerator_reconstructed_from_percentage": 644,
   "note": "Failures are flagged, not dropped -- the same rule the extraction pipeline uses. A reconstructed numerator is marked not-verifiable rather than passing, because checking it against the percentage it came from is circular."
  },
  "funnel": [
@@ -32,44 +40,44 @@
   },
   {
    "step": "minus rows with no denominator",
-   "rows": 5689,
-   "agents": 69
+   "rows": 5706,
+   "agents": 71
   },
   {
    "step": "minus rows with neither a numerator nor a percentage",
-   "rows": 5616,
-   "agents": 68
+   "rows": 5633,
+   "agents": 70
   },
   {
    "step": "minus rows whose numerator exceeds its denominator",
-   "rows": 5616,
-   "agents": 68
+   "rows": 5633,
+   "agents": 70
   },
   {
    "step": "minus unconjugated antibodies",
-   "rows": 5565,
-   "agents": 67
+   "rows": 5582,
+   "agents": 69
   },
   {
    "step": "minus domains outside the 14 axes",
-   "rows": 5356,
-   "agents": 67
+   "rows": 5373,
+   "agents": 69
   }
  ],
- "arms": 302,
- "agents": 67,
- "axis_cells": 2047,
+ "arms": 304,
+ "agents": 69,
+ "axis_cells": 2054,
  "axes_covered": 13,
  "source_tiers": {
   "publication": 258,
   "label": 22,
-  "abstract": 14,
+  "abstract": 16,
   "presentation": 8
  },
  "threshold_hat": {
-  "median": 4.522727272727273,
+  "median": 4.25,
   "max": 95.0,
-  "recoverable_for_arms": 302
+  "recoverable_for_arms": 304
  },
  "dropped_domains": {
   "Investigations / Organ nonspecific": "A laboratory abnormality with no organ named. This project's `investigations` handling redistributes such findings per preferred term (investigations_rules.yaml), and that requires the term, not a domain label. The rows are retained in the raw frame with this reason so the redistribution can be applied later.\n",
@@ -84,11 +92,11 @@
   "farletuzumab"
  ],
  "provenance": {
-  "revision": "91848175da577fc76fb81e653043f900c722f5a1",
+  "revision": "1f6fe40f59a12a1a7b28b812d24af3483fc34280",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "ingest_atlas_db.py",
-  "written_utc": "2026-10-09T17:19:20+00:00",
+  "written_utc": "2026-10-09T17:35:33+00:00",
   "inputs": {}
  }
 }

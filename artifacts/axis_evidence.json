@@ -152,77 +152,77 @@
    }
   },
   "plus_transcribed": {
-   "corpus_agents": 64,
+   "corpus_agents": 65,
    "axes": {
     "haematologic": {
-     "observed_cells": 538,
-     "agents": 59,
-     "agent_share": 0.9219
+     "observed_cells": 539,
+     "agents": 60,
+     "agent_share": 0.9231
     },
     "hepatic": {
      "observed_cells": 401,
      "agents": 45,
-     "agent_share": 0.7031
+     "agent_share": 0.6923
     },
     "cardiovascular": {
      "observed_cells": 294,
      "agents": 33,
-     "agent_share": 0.5156
+     "agent_share": 0.5077
     },
     "pulmonary": {
      "observed_cells": 407,
      "agents": 45,
-     "agent_share": 0.7031
+     "agent_share": 0.6923
     },
     "renal": {
      "observed_cells": 239,
      "agents": 32,
-     "agent_share": 0.5
+     "agent_share": 0.4923
     },
     "gastrointestinal": {
-     "observed_cells": 522,
-     "agents": 59,
-     "agent_share": 0.9219
+     "observed_cells": 523,
+     "agents": 60,
+     "agent_share": 0.9231
     },
     "neurologic": {
      "observed_cells": 447,
      "agents": 52,
-     "agent_share": 0.8125
+     "agent_share": 0.8
     },
     "ocular": {
      "observed_cells": 306,
      "agents": 43,
-     "agent_share": 0.6719
+     "agent_share": 0.6615
     },
     "dermatologic": {
      "observed_cells": 429,
      "agents": 49,
-     "agent_share": 0.7656
+     "agent_share": 0.7538
     },
     "metabolic_endocrine": {
-     "observed_cells": 481,
-     "agents": 57,
-     "agent_share": 0.8906
+     "observed_cells": 482,
+     "agents": 58,
+     "agent_share": 0.8923
     },
     "musculoskeletal": {
      "observed_cells": 353,
      "agents": 41,
-     "agent_share": 0.6406
+     "agent_share": 0.6308
     },
     "infectious_immune": {
      "observed_cells": 363,
      "agents": 33,
-     "agent_share": 0.5156
+     "agent_share": 0.5077
     },
     "otologic": {
      "observed_cells": 104,
      "agents": 18,
-     "agent_share": 0.2812
+     "agent_share": 0.2769
     },
     "constitutional": {
-     "observed_cells": 517,
-     "agents": 58,
-     "agent_share": 0.9062
+     "observed_cells": 518,
+     "agents": 59,
+     "agent_share": 0.9077
     }
    }
   }
@@ -234,7 +234,7 @@
    "agents_last": 18,
    "agents_gained": 0,
    "cells_gained": 0,
-   "agent_share_last": 0.2812,
+   "agent_share_last": 0.2769,
    "stalled": true,
    "thin": true
   },
@@ -244,7 +244,7 @@
    "agents_last": 33,
    "agents_gained": 11,
    "cells_gained": 76,
-   "agent_share_last": 0.5156,
+   "agent_share_last": 0.5077,
    "stalled": false,
    "thin": false
   },
@@ -254,7 +254,7 @@
    "agents_last": 33,
    "agents_gained": 12,
    "cells_gained": 42,
-   "agent_share_last": 0.5156,
+   "agent_share_last": 0.5077,
    "stalled": false,
    "thin": false
   },
@@ -264,9 +264,9 @@
    "agents_last": 32,
    "agents_gained": 13,
    "cells_gained": 39,
-   "agent_share_last": 0.5,
+   "agent_share_last": 0.4923,
    "stalled": false,
-   "thin": false
+   "thin": true
   },
   {
    "axis": "musculoskeletal",
@@ -274,7 +274,7 @@
    "agents_last": 41,
    "agents_gained": 19,
    "cells_gained": 73,
-   "agent_share_last": 0.6406,
+   "agent_share_last": 0.6308,
    "stalled": false,
    "thin": false
   },
@@ -284,7 +284,7 @@
    "agents_last": 45,
    "agents_gained": 23,
    "cells_gained": 129,
-   "agent_share_last": 0.7031,
+   "agent_share_last": 0.6923,
    "stalled": false,
    "thin": false
   },
@@ -294,7 +294,7 @@
    "agents_last": 45,
    "agents_gained": 23,
    "cells_gained": 122,
-   "agent_share_last": 0.7031,
+   "agent_share_last": 0.6923,
    "stalled": false,
    "thin": false
   },
@@ -304,7 +304,7 @@
    "agents_last": 43,
    "agents_gained": 23,
    "cells_gained": 91,
-   "agent_share_last": 0.6719,
+   "agent_share_last": 0.6615,
    "stalled": false,
    "thin": false
   },
@@ -314,7 +314,7 @@
    "agents_last": 49,
    "agents_gained": 27,
    "cells_gained": 147,
-   "agent_share_last": 0.7656,
+   "agent_share_last": 0.7538,
    "stalled": false,
    "thin": false
   },
@@ -324,47 +324,47 @@
    "agents_last": 52,
    "agents_gained": 30,
    "cells_gained": 161,
-   "agent_share_last": 0.8125,
+   "agent_share_last": 0.8,
    "stalled": false,
    "thin": false
   },
   {
    "axis": "metabolic_endocrine",
    "agents_first": 22,
-   "agents_last": 57,
-   "agents_gained": 35,
-   "cells_gained": 194,
-   "agent_share_last": 0.8906,
+   "agents_last": 58,
+   "agents_gained": 36,
+   "cells_gained": 195,
+   "agent_share_last": 0.8923,
    "stalled": false,
    "thin": false
   },
   {
    "axis": "constitutional",
    "agents_first": 22,
-   "agents_last": 58,
-   "agents_gained": 36,
-   "cells_gained": 225,
-   "agent_share_last": 0.9062,
+   "agents_last": 59,
+   "agents_gained": 37,
+   "cells_gained": 226,
+   "agent_share_last": 0.9077,
    "stalled": false,
    "thin": false
   },
   {
    "axis": "haematologic",
    "agents_first": 22,
-   "agents_last": 59,
-   "agents_gained": 37,
-   "cells_gained": 243,
-   "agent_share_last": 0.9219,
+   "agents_last": 60,
+   "agents_gained": 38,
+   "cells_gained": 244,
+   "agent_share_last": 0.9231,
    "stalled": false,
    "thin": false
   },
   {
    "axis": "gastrointestinal",
    "agents_first": 22,
-   "agents_last": 59,
-   "agents_gained": 37,
-   "cells_gained": 233,
-   "agent_share_last": 0.9219,
+   "agents_last": 60,
+   "agents_gained": 38,
+   "cells_gained": 234,
+   "agent_share_last": 0.9231,
    "stalled": false,
    "thin": false
   }
@@ -375,17 +375,18 @@
    "otologic"
   ],
   "thin_axes": [
-   "otologic"
+   "otologic",
+   "renal"
   ],
   "corpus_agents_first": 22,
-  "corpus_agents_last": 64
+  "corpus_agents_last": 65
  },
  "provenance": {
-  "revision": "7f4c5c143278d44ce36091bef472d0be963bdd34",
+  "revision": "1f6fe40f59a12a1a7b28b812d24af3483fc34280",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "axis_evidence.py",
-  "written_utc": "2026-10-09T16:58:06+00:00",
+  "written_utc": "2026-10-09T17:33:25+00:00",
   "inputs": {}
  }
 }

@@ -1,10 +1,10 @@
 {
   "provenance": {
-    "revision": "91848175da577fc76fb81e653043f900c722f5a1",
+    "revision": "1f6fe40f59a12a1a7b28b812d24af3483fc34280",
     "dirty": true,
     "snapshot": "2026-10-07",
     "script": "corpus_ablation.py",
-    "written_utc": "2026-10-09T17:16:54+00:00",
+    "written_utc": "2026-10-09T17:33:48+00:00",
     "inputs": {}
   },
   "min_agents_for_fold": 3,
@@ -300,18 +300,18 @@
       ]
     },
     "plus_transcribed": {
-      "summary": "8,568 cells over 612 arms x 14 axes (5,401 observed, 2,823 censored, 344 structural zero) | 64 agents, 5 mechanisms, 9 payload families, 79 multi-arm trials (328 arms from single-arm trials carry no trial effect)",
-      "observed_share": 0.6303688141923436,
-      "censored_share": 0.32948179271708683,
-      "n_agents": 64,
-      "n_arms": 612,
-      "n_cells": 8568,
+      "summary": "8,582 cells over 613 arms x 14 axes (5,405 observed, 2,833 censored, 344 structural zero) | 65 agents, 5 mechanisms, 9 payload families, 79 multi-arm trials (329 arms from single-arm trials carry no trial effect)",
+      "observed_share": 0.6298065718946633,
+      "censored_share": 0.3301095315777208,
+      "n_agents": 65,
+      "n_arms": 613,
+      "n_cells": 8582,
       "n_axes": 14,
-      "identifying_cells": 896,
+      "identifying_cells": 910,
       "design_parameters": 100,
-      "cells_per_design_parameter": 8.96,
-      "n_observed": 5401,
-      "n_censored": 2823,
+      "cells_per_design_parameter": 9.1,
+      "n_observed": 5405,
+      "n_censored": 2833,
       "mechanisms": {
         "dna_alkyl": {
           "agents": 2,
@@ -329,8 +329,8 @@
           "viable_fold": true
         },
         "topo1": {
-          "agents": 9,
-          "arms": 156,
+          "agents": 10,
+          "arms": 157,
           "viable_fold": true
         },
         "tubulin": {
@@ -354,6 +354,7 @@
         "arx788",
         "atg_022",
         "bat_8006",
+        "bat_8008",
         "belantamab_mafodotin",
         "bms_986148",
         "brentuximab_vedotin",
@@ -442,9 +443,9 @@
     {
       "from": "plus_literature_agents",
       "to": "plus_transcribed",
-      "corpus_arms_added": 130,
+      "corpus_arms_added": 131,
       "corpus_arms_dropped": 0,
-      "grid_arms_added": 130,
+      "grid_arms_added": 131,
       "is_superset": true
     }
   ],

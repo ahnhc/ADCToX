@@ -6,11 +6,11 @@
   "confounded_and_unaddressed": [],
   "mechanism_levels_separated_by_source": [],
   "agent_level": {
-   "n_agents": 64,
+   "n_agents": 65,
    "n_both_sources": 21,
-   "n_literature_only": 42,
+   "n_literature_only": 43,
    "n_registry_only": 1,
-   "n_single_source_single_arm": 12,
+   "n_single_source_single_arm": 13,
    "agents": [
     {
      "agent": "a166",
@@ -50,6 +50,12 @@
     },
     {
      "agent": "bat_8006",
+     "registry_arms": 0,
+     "literature_arms": 1,
+     "source": "literature_only"
+    },
+    {
+     "agent": "bat_8008",
      "registry_arms": 0,
      "literature_arms": 1,
      "source": "literature_only"
@@ -397,8 +403,8 @@
      "source": "literature_only"
     }
    ],
-   "reading": "43 of 64 agents have arms from one source only, so for those agents `u_agent` and the source term are collinear and `sigma_agent` is estimating the between-agent scale and the reporting gap together. It is not comparable to the same parameter on a corpus where every agent spans both sources.",
-   "fraction_single_source": 0.671875
+   "reading": "44 of 65 agents have arms from one source only, so for those agents `u_agent` and the source term are collinear and `sigma_agent` is estimating the between-agent scale and the reporting gap together. It is not comparable to the same parameter on a corpus where every agent spans both sources.",
+   "fraction_single_source": 0.676923076923077
   },
   "smallest_mechanism_cell": 3
  },
@@ -413,15 +419,15 @@
   },
   {
    "coefficient": "b_thresh (arm_thresh_c)",
-   "correlation_with_source": 0.274,
-   "within_source_variance_share": 0.925,
+   "correlation_with_source": 0.276,
+   "within_source_variance_share": 0.924,
    "separated": false,
    "confounded": false,
    "addressed_by": null
   },
   {
    "coefficient": "b_log_n (arm_log_n_c)",
-   "correlation_with_source": 0.047,
+   "correlation_with_source": 0.048,
    "within_source_variance_share": 0.998,
    "separated": false,
    "confounded": false,
@@ -437,7 +443,7 @@
   },
   {
    "coefficient": "cleav_axis (arm_cleavable)",
-   "correlation_with_source": 0.02,
+   "correlation_with_source": 0.017,
    "within_source_variance_share": 1.0,
    "separated": false,
    "confounded": false,
@@ -463,7 +469,7 @@
   {
    "level": "topo1",
    "registry_arms": 68,
-   "literature_arms": 88
+   "literature_arms": 89
   },
   {
    "level": "tubulin",
@@ -477,11 +483,11 @@
   "note": "Posterior means for b_combo with no source indicator in the model. Both predate the corpus rebuild -- the registry corpus then held 16 agents and 285 arms, not 22 and 299 -- and the specification that produced them no longer exists, because b_source was added in response to exactly this gap. Quoted for the gap between them, which is the finding, and not as current coefficients."
  },
  "provenance": {
-  "revision": "7f4c5c143278d44ce36091bef472d0be963bdd34",
+  "revision": "1f6fe40f59a12a1a7b28b812d24af3483fc34280",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "source_confounding_audit.py",
-  "written_utc": "2026-10-09T16:58:04+00:00",
+  "written_utc": "2026-10-09T17:33:22+00:00",
   "inputs": {}
  }
 }

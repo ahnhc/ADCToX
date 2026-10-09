@@ -18,28 +18,28 @@
   },
   {
    "corpus": "atlas only",
-   "agents": 55,
+   "agents": 56,
    "agents_in_grid": null,
    "identifying_cells_capacity": null,
-   "identifying_cells_observed": 413,
+   "identifying_cells_observed": 417,
    "payload_identities": 19,
    "payload_families": 7,
-   "payloads_per_agent": 0.345,
+   "payloads_per_agent": 0.339,
    "ratio_capacity": null,
-   "ratio_observed": 4.13,
+   "ratio_observed": 4.17,
    "meets_identification_floor": false
   },
   {
    "corpus": "merged",
-   "agents": 66,
-   "agents_in_grid": 64,
-   "identifying_cells_capacity": 896,
-   "identifying_cells_observed": 878,
+   "agents": 67,
+   "agents_in_grid": 65,
+   "identifying_cells_capacity": 910,
+   "identifying_cells_observed": 892,
    "payload_identities": 24,
    "payload_families": 10,
-   "payloads_per_agent": 0.364,
-   "ratio_capacity": 8.96,
-   "ratio_observed": 8.78,
+   "payloads_per_agent": 0.358,
+   "ratio_capacity": 9.1,
+   "ratio_observed": 8.92,
    "meets_identification_floor": true
   }
  ],
@@ -50,6 +50,7 @@
   "arx788",
   "atg_022",
   "bat_8006",
+  "bat_8008",
   "bms_986148",
   "coltuximab_ravtansine",
   "crb_701",
@@ -86,21 +87,21 @@
    "level": "mechanism",
    "levels": 5,
    "parameters": 56,
-   "ratio": 16.0,
+   "ratio": 16.25,
    "meets_identification_floor": true
   },
   {
    "level": "payload_family",
    "levels": 9,
    "parameters": 112,
-   "ratio": 8.0,
+   "ratio": 8.12,
    "meets_identification_floor": true
   },
   {
    "level": "payload_identity",
    "levels": 23,
    "parameters": 308,
-   "ratio": 2.91,
+   "ratio": 2.95,
    "meets_identification_floor": false
   }
  ],
@@ -112,7 +113,7 @@
   },
   {
    "mechanism": "topo1",
-   "agents": 9,
+   "agents": 10,
    "holdout_viable": true
   },
   {
@@ -137,13 +138,13 @@
   }
  ],
  "n_viable_folds": 4,
- "atlas_arms_at_min_n": 140,
+ "atlas_arms_at_min_n": 141,
  "provenance": {
-  "revision": "91848175da577fc76fb81e653043f900c722f5a1",
+  "revision": "1f6fe40f59a12a1a7b28b812d24af3483fc34280",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "merged_corpus_scale.py",
-  "written_utc": "2026-10-09T17:19:32+00:00",
+  "written_utc": "2026-10-09T17:33:16+00:00",
   "inputs": {}
  }
 }

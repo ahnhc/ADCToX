@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 50 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 52 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -1062,7 +1062,7 @@ routes to new agents.
 | ClinicalTrials.gov, the literature's agent list | 22 | 299 | 4,186 | 308 | 86.6% | 3 |
 | + literature arms for agents already present | 25 | 459 | 6,426 | 350 | 67.9% | 3 |
 | + literature agents | 32 | 482 | 6,748 | 448 | 66.9% | 3 |
-| + the hand-transcribed database | **64** | 612 | 8,568 | **896** | 63.0% | **4** |
+| + the hand-transcribed database | **65** | 613 | 8,582 | **910** | 63.0% | **4** |
 
 Each stage is a superset of the one before it -- 4 transitions, **0 corpus arms dropped** across all of them -- so a difference in this table is always arms added and never arms lost.
 
@@ -1082,7 +1082,7 @@ the reporting changed.
 readings of ClinicalTrials.gov and the open-access literature by this project's own
 pipeline, and they stop at 32 agents. The fifth is a hand-transcribed database of 99 ADCs
 that arrived from a collaborator, and at this project's own quality threshold it doubles the
-corpus to 64 agents and 896 identifying cells -- crossing the plan's 8:1 identification
+corpus to 65 agents and 910 identifying cells -- crossing the plan's 8:1 identification
 floor for the first time, and making `dna_cleave` a fourth viable fold because four
 calicheamicin ADCs have published a usable table where two are approved. What it costs is
 visible in the same row: the observed share falls to 63.0%, because a transcribed cohort's
@@ -1629,12 +1629,12 @@ neurologic.
 
    A fifth corpus stage has since arrived and it corrects the *mechanism* of this result
    while leaving the conclusion. Over all five stages payload identity runs 1.78, 2.20,
-   2.50, 2.13, **2.91** -- a 1.63x gain for a 4x corpus -- so it is not a receding horizon
+   2.50, 2.13, **2.95** -- a 1.66x gain for a 4x corpus -- so it is not a receding horizon
    and `granularity_ratio.py` reports the set of receding levels as empty. It approaches, at
    a rate that needs something over a thousand agents to reach 8:1 against the roughly 370
    that have ever entered the clinic. Unreachable because the field is finite, which is a
    measured claim where the receding horizon was an asserted one. The two coarser levels
-   clear the floor: mechanism at 16.00 and family at **8.00**. See negative result 44.
+   clear the floor: mechanism at 16.25 and family at **8.12**. See negative result 44.
 7. **Fc silencing is not a design lever.** Three primary papers contradict each other on
    the mechanism, no approved ADC uses it, and no training arm carries it. It is not
    offered as a design slot.
@@ -2186,16 +2186,16 @@ neurologic.
     4.3 measured the automated route to a hard stop at 32 agents and the plan called 54 a
     ceiling beyond which "there is no road". A hand-transcribed database arrived covering 99
     ADCs, and at this project's own quality threshold -- a denominator, an organ-specific
-    any-grade row, `min_n = 30` -- it contributes **55 agents of which 32 are new**, for a
-    merged corpus of **66**. The plan's ceiling was exceeded by 12 and this report's by 34.
+    any-grade row, `min_n = 30` -- it contributes **56 agents of which 33 are new**, for a
+    merged corpus of **67**. The plan's ceiling was exceeded by 13 and this report's by 35.
 
     The reason the automated route stopped at 32 is now measurable rather than inferred. It
     was confined to PMC open-access articles that a parser could read, and the binding
     constraint was never the literature: it was that a table image, a non-open-access PDF
     and a conference poster are all invisible to it and all legible to a person. The
     transcription is *better* than the extraction where the two can be compared -- the
-    arithmetic gate, this project's deterministic hallucination detector, passes **99.82%**
-    of the 4,433 verifiable rows at a median gap of **0.0273pp**, against **86.8%** for the
+    arithmetic gate, this project's deterministic hallucination detector, passes **99.77%**
+    of the 4,435 verifiable rows at a median gap of **0.0273pp**, against **86.8%** for the
     automated pipeline, because a human who keeps the source cell beside the number has
     nothing to hallucinate with.
 
@@ -2212,7 +2212,7 @@ neurologic.
     and the payload *family* level reaches it for the first time -- while payload identity
     stays where result 6 says it stays.** The plan set a floor of 8 identifying cells per
     design parameter for a level-by-axis interaction. On the merged corpus the grid holds
-    **64 agents and 896 identifying cells against 100 design parameters: 8.96:1**, and 8.78:1
+    **65 agents and 910 identifying cells against 100 design parameters: 9.10:1**, and 8.92:1
     counting only the agent-axis pairs that actually carry an observation. Both clear the
     floor. Before the merge it was 4.48:1.
 
@@ -2221,27 +2221,27 @@ neurologic.
 
     | level | levels | parameters | ratio | plan's floor |
     |---|---|---|---|---|
-    | payload mechanism | 5 | 56 | **16.00:1** | met |
-    | payload family | 9 | 112 | **8.00:1** | met |
-    | payload identity | 23 | 308 | **2.91:1** | not met |
+    | payload mechanism | 5 | 56 | **16.25:1** | met |
+    | payload family | 9 | 112 | **8.12:1** | met |
+    | payload identity | 23 | 308 | **2.95:1** | not met |
 
     The middle row is new. The plan ruled the family level out on the grounds that it
     "reaches only 6.00:1 even at a 54-agent corpus", and this report has two
-    non-converging family parameterizations on the smaller corpus to go with that. At 64
-    agents in the grid it is exactly at the floor, which makes it a thing to *test* rather
+    non-converging family parameterizations on the smaller corpus to go with that. At 65
+    agents in the grid it is just over the floor, which makes it a thing to *test* rather
     than a thing to rule out -- and the test is a fit, not an arithmetic.
 
     **The bottom row corrects result 6's stated mechanism while leaving its conclusion
     standing, and the correction matters.** This report has said throughout that the payload
     level "recedes as fast as it is approached": each new agent brings a new payload, so the
     ratio stays flat however much data arrives. Measured over all five corpus stages, the
-    payload-level ratio runs **1.78, 2.20, 2.50, 2.13, 2.91** as the agents run 16, 22, 25,
-    32, 64. It does not stay flat. It improves by **1.63x** while the corpus grows **4x**,
+    payload-level ratio runs **1.78, 2.20, 2.50, 2.13, 2.95** as the agents run 16, 22, 25,
+    32, 65. It does not stay flat. It improves by **1.63x** while the corpus grows **4x**,
     and `granularity_ratio.py` now reports the set of receding levels as **empty**.
 
     So the honest claim is weaker in form and no weaker in force. The payload level
     *approaches* its floor, at a rate of roughly 1.6x the ratio for 4x the agents. From
-    2.91 it needs another 2.75x, which at that rate is about **17 times the current corpus,
+    2.95 it needs another 2.71x, which at that rate is about **17 times the current corpus,
     or something over a thousand agents**. Around 370 ADCs have entered the clinic in total
     and the best database anyone has assembled holds 99. **Payload x axis is out of reach
     because the field is finite, not because the ratio refuses to move** -- and that is a
@@ -2356,11 +2356,11 @@ neurologic.
     **-0.3807** and clear of zero where the registry corpus had +0.0456 including it.
 
     `sigma_agent` is three times the registry corpus's **+0.3500**, and result 39 says what
-    that means. Of the 64 agents in the merged grid, **43 have arms from one source only**
-    -- 42 from the transcribed and literature side, 1 from the registry -- and 12 of those
-    rest on a single arm. Only **21 of 64** can tell the source term apart from the agent's
+    that means. Of the 65 agents in the merged grid, **44 have arms from one source only**
+    -- 43 from the transcribed and literature side, 1 from the registry -- and 12 of those
+    rest on a single arm. Only **21 of 65** can tell the source term apart from the agent's
     own intercept. The merge made this *worse*: on the 32-agent corpus it was 15 of 32, 47%,
-    and here it is 67%. So `sigma_agent` on this corpus is a between-agent scale and a
+    and here it is 68%. So `sigma_agent` on this corpus is a between-agent scale and a
     reporting gap added together, and more of it is reporting gap than before.
 
     The magnitudes agree with that reading rather than with a drug-diversity one. The jump
@@ -2374,7 +2374,7 @@ neurologic.
     variance that is mostly an artefact of which document the arm was read from, and the
     product would be reporting reporting-practice as drug uncertainty. **So the two corpora
     are for different things**: the merged corpus is where the design coefficients and the
-    fold validation belong, because that is what 8.96:1 and a fourth viable fold buy, and
+    fold validation belong, because that is what 9.10:1 and a fourth viable fold buy, and
     the registry corpus is where the agent-level residual belongs, because it is the only
     one of the three where every agent has one source and the parameter means what its name
     says. Serving one posterior for both was never a measured choice; it is now a measured
@@ -2389,7 +2389,7 @@ neurologic.
     rests on -- which is the weaker question, since design features are agent-level constants
     and an axis estimated from eighteen agents is estimated from eighteen.
 
-    Measured across the three corpus stages as the agent count goes 22 to 64: haematologic
+    Measured across the three corpus stages as the agent count goes 22 to 65: haematologic
     and gastrointestinal reach **59** agents, constitutional 58, metabolic 57, and the
     thinnest of the growing axes, renal, reaches 32. **Otologic stands at 18 agents and 104
     observed cells at every stage** -- identical on the registry corpus, the
@@ -2403,6 +2403,66 @@ neurologic.
     mention hearing, and a hand transcription of those papers cannot either. So for one
     organ of fourteen the design coefficients rest on **28%** of the agents the other axes
     see, and that is a fact about the literature and not about the ear.
+
+50. **The literature expansion made the model worse on every held-out split and broke the
+    fit, and the second half of that sentence is what settles it.** The 32-agent corpus's
+    full cross-validation finished. Against the registry corpus's 22 agents:
+
+    | split | registry (22 agents) | expanded (32 agents) |
+    |---|---|---|
+    | leave-one-mechanism-out | -0.0200 [-0.029, -0.003] | **-0.161 [-0.262, -0.057]** |
+    | leave-one-family-out | -0.0590 [-0.093, -0.023] | **-0.151 [-0.216, -0.078]** |
+    | leave-one-agent-out | -0.0121 [-0.030, +0.005] | **-0.097 [-0.126, -0.071]** |
+    | seed agreement | acceptable | **0.722, NOT converged** |
+
+    Every delta is negative, every interval excludes zero, and the degradation is eight-fold
+    on the mechanism split. Ten more agents and 2,562 more cells bought a model that loses
+    to a base rate by more than it did before.
+
+    The temptation is to read that as "the expansion degrades prediction", and the fit's own
+    convergence check says not to. A worst standardised seed gap of **0.722** against a
+    threshold of 0.3 means the two seeds landed in different places, so the posterior the
+    cross-validation scored is not a posterior the sampler agreed on, and the fold figures
+    inherit that. The defensible statement is the stronger one anyway: **a corpus that
+    breaks the fit is not usable, whatever it would otherwise have shown.** Result 39 names
+    the mechanism -- 15 of its 32 agents have arms from one source only, so `u_agent` and
+    the source term are collinear for half the corpus -- and result 47 names a second
+    suspect, the reporting-threshold covariate reaching +63.9 where the registry corpus
+    stops at +0.7.
+
+    This is what the ablation was built to answer and the answer is unflattering to the
+    work that produced it. The literature sweep bought 6 agents out of data already on disk
+    at no cost to the observed share (the second row of the section 4.3 table), and then
+    bought 10 more agents at the cost of a fit that does not converge.
+
+51. **The "irreversible" loss was partly recoverable from the same workbook, and verifying
+    that took one comparison.** The ingest discarded 492 organ-specific any-grade rows for
+    having `At risk N` of "NR" -- no denominator, no rate -- and called it the one loss that
+    could not be undone. The `TRIAL` sheet carries a `Sample size` per cohort, and the only
+    question was whether it is the same quantity.
+
+    It is, on **15,899 of the 15,947 rows that carry both, 99.70%**. And the 48 that
+    disagree are the finding rather than the noise: every one is a **sub-population
+    denominator**. `ags-16c3f`'s phase 2 enrolled 66 patients and evaluated **59** for
+    ocular diagnosis; its haematologic and hepatic rows carry the laboratory-evaluable
+    subset. So a printed row-level denominator always wins and the cohort figure is a
+    fallback whose risk is precise -- an enrolment standing in for a smaller evaluable
+    subset, which deflates that row's rate -- and whose rate of occurring is measured at
+    **0.30%** rather than assumed away. The 45 substituted rows carry a
+    `denominator_source` flag so one filter drops them.
+
+    It recovered **2 agents**, one of which brings 8 axes, and 2 arms. Small, free, and
+    correct. 475 rows remain genuinely unrecoverable, having no denominator at the row or
+    the cohort level. **The guard that nearly stopped this is worth more than the data it
+    recovered:** the first version asserted the two columns agreed and raised on any
+    exception, which fired on 48 rows and sent me to look at them -- and they were the
+    reason the fallback needed a flag rather than the reason it needed abandoning.
+
+    One thing it cost, and the cost was mine. Changing the frames landed while a fit was
+    running on them, so an hour of sampling described a corpus that no longer existed on
+    disk. The plan calls the corpus freeze a hard gate and the project has a
+    corpus-mismatch guard for exactly this. **Freeze, then fit** -- and the restart is
+    stamped with the frozen figures so the next one cannot repeat it.
 
 ## 9b. The clean-clone check, run for the first time
 

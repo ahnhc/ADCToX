@@ -39,14 +39,14 @@
   },
   {
    "corpus": "merged",
-   "agents_in_grid": 64,
-   "identifying_cells": 896,
-   "cells_per_design_parameter": 8.96,
+   "agents_in_grid": 65,
+   "identifying_cells": 910,
+   "cells_per_design_parameter": 9.1,
    "identifiability": {
-    "agents": 64,
+    "agents": 65,
     "both_sources": 21,
-    "single_source": 43,
-    "single_source_share": 0.6719,
+    "single_source": 44,
+    "single_source_share": 0.6769,
     "source_term_sampled": true,
     "note": "Source variation exists, so the term is sampled; agents that do not span it absorb the reporting gap into their own intercept."
    },
@@ -87,18 +87,18 @@
    },
    {
     "corpus": "merged",
-    "cells_per_design_parameter": 8.96,
-    "single_source_share": 0.6719,
+    "cells_per_design_parameter": 9.1,
+    "single_source_share": 0.6769,
     "sigma_agent": 1.032645915299654
    }
   ]
  },
  "provenance": {
-  "revision": "7f4c5c143278d44ce36091bef472d0be963bdd34",
+  "revision": "1f6fe40f59a12a1a7b28b812d24af3483fc34280",
   "dirty": true,
-  "snapshot": null,
+  "snapshot": "2026-10-07",
   "script": "posterior_scales.py",
-  "written_utc": "2026-10-09T17:00:57+00:00",
+  "written_utc": "2026-10-09T17:33:56+00:00",
   "inputs": {}
  }
 }

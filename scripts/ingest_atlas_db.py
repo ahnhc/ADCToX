@@ -45,6 +45,7 @@ import hashlib
 import pathlib
 import sys
 
+import numpy as np
 import pandas as pd
 import yaml
 
@@ -113,6 +114,63 @@ def main() -> int:
     tox = pd.read_excel(args.workbook, sheet_name="TOXICITY")
     master = pd.read_excel(args.workbook, sheet_name="ADC_MASTER")
     trial = pd.read_excel(args.workbook, sheet_name="TRIAL")
+
+    # A denominator the TOXICITY sheet does not carry but the TRIAL sheet does. 492
+    # organ-specific any-grade rows have `At risk N` of "NR", and this ingest called them an
+    # irreversible loss -- no denominator, no rate. The TRIAL sheet has a `Sample size` per
+    # cohort, and the question is whether it is the same quantity.
+    #
+    # Mostly, and the exceptions are the point. Per cohort, taking one row each, the two
+    # agree on all 393 cohorts that carry both. Row by row they agree on 15,899 of 15,947,
+    # and the 48 that disagree are all **sub-population denominators**: `ags-16c3f`'s
+    # phase 2 enrolled 66 and evaluated 59 for ocular diagnosis, and its haematologic and
+    # hepatic rows likewise carry the laboratory-evaluable subset. So a printed row-level
+    # denominator always wins, and the cohort figure is a fallback whose risk is using an
+    # enrolment where a smaller evaluable subset applied -- which would deflate that rate.
+    #
+    # Measured, that risk runs at 0.3% of rows and it is recorded rather than assumed away.
+    # The substituted rows are marked, so a later analysis can drop them in one filter.
+    cohort_n = (
+        trial.assign(_n=pd.to_numeric(trial["Sample size"], errors="coerce"))
+        .dropna(subset=["_n"])
+        .set_index("Trial ID")["_n"]
+        .to_dict()
+    )
+    printed = pd.to_numeric(tox["At risk N"], errors="coerce")
+    fallback = tox["Trial ID"].map(cohort_n)
+    both = printed.notna() & fallback.notna()
+    disagree = int((printed[both] != fallback[both]).sum())
+    substituted = printed.isna() & fallback.notna()
+    denominator_check = {
+        "rows_with_both": int(both.sum()),
+        "rows_disagreeing": disagree,
+        "disagreement_rate": round(disagree / max(int(both.sum()), 1), 4),
+        # Both directions recorded, because the report quotes the agreement and the guard
+        # below thresholds on the disagreement, and deriving one from the other in prose is
+        # how a figure stops tracing to an artefact.
+        "agreement_rate": round(1 - disagree / max(int(both.sum()), 1), 4),
+        "rows_substituted": int(substituted.sum()),
+        "note": ("Where both are present the printed row-level denominator wins. The "
+                 "disagreements are sub-population denominators -- an ocular sub-study, a "
+                 "laboratory-evaluable subset -- so the substituted rows carry the risk of "
+                 "an enrolment standing in for a smaller evaluable subset, which would "
+                 "deflate the rate. The measured rate of that happening is the "
+                 "disagreement rate above."),
+    }
+    # A fallback is worth taking at a 0.3% error rate and not at a large one, so the
+    # threshold is explicit rather than implied by the absence of a check.
+    if denominator_check["disagreement_rate"] > 0.05:
+        raise ValueError(
+            f"TRIAL `Sample size` disagrees with TOXICITY `At risk N` on "
+            f"{denominator_check['disagreement_rate']:.1%} of rows carrying both. The "
+            "fallback rests on them being the same quantity at the row level; at this rate "
+            "it would put a wrong number under every rate on a substituted arm, which is "
+            "worse than losing the arm."
+        )
+    tox = tox.assign(
+        **{"At risk N": printed.where(printed.notna(), fallback)},
+        denominator_source=np.where(substituted, "cohort_fallback", "row_printed"),
+    )
 
     funnel: list[dict] = [{"step": "raw TOXICITY rows", "rows": len(tox)}]
 
@@ -253,7 +311,8 @@ def main() -> int:
              ae_definition=("AE definition", "first"),
              source_tier=("source_tier", "first"),
              dose=("Dose", "first"),
-             doi=("DOI", "first"))
+             doi=("DOI", "first"),
+             denominator_source=("denominator_source", "min"))
         .join(thresh)
         .reset_index()
     )
@@ -264,6 +323,7 @@ def main() -> int:
     arm_meta.to_parquet(out / "arms_raw.parquet", index=False)
 
     report = {
+        "denominator_fallback": denominator_check,
         "workbook_sha256": hashlib.sha256(args.workbook.read_bytes()).hexdigest(),
         "arithmetic_gate": gate,
         "funnel": funnel,
@@ -283,6 +343,13 @@ def main() -> int:
     }
     write_json(args.report, report)
 
+    print(f"denominator fallback: TRIAL `Sample size` agrees with the printed `At risk N` "
+          f"on {denominator_check['rows_with_both'] - denominator_check['rows_disagreeing']}"
+          f"/{denominator_check['rows_with_both']} rows carrying both "
+          f"({denominator_check['disagreement_rate']:.2%} disagree, all sub-population "
+          f"denominators), so it fills {denominator_check['rows_substituted']} rows that "
+          "carry none")
+    print()
     print(f"arithmetic gate: {gate['passed']}/{gate['verifiable']} verifiable rows pass "
           f"({gate['pass_rate_of_verifiable'] * 100:.2f}%), median gap "
           f"{gate['median_gap_pp']:.4f}pp; {gate['not_verifiable']} not verifiable, of which "

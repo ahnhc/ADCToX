@@ -6,9 +6,9 @@
   "observations": 41089
  },
  "atlas_added": {
-  "arms": 130,
-  "agents": 54,
-  "observations": 887,
+  "arms": 131,
+  "agents": 55,
+  "observations": 891,
   "new_agents": [
    "a166",
    "abbv_011",
@@ -16,6 +16,7 @@
    "arx788",
    "atg_022",
    "bat_8006",
+   "bat_8008",
    "bms_986148",
    "coltuximab_ravtansine",
    "crb_701",
@@ -45,9 +46,9 @@
   ]
  },
  "merged": {
-  "arms": 2757,
-  "agents": 66,
-  "observations": 41976
+  "arms": 2758,
+  "agents": 67,
+  "observations": 41980
  },
  "dropped_as_already_counted": 10,
  "overlap_exposure": {
@@ -78,16 +79,16 @@
   "registry": 2201,
   "publication": 522,
   "label": 21,
-  "abstract": 8,
+  "abstract": 9,
   "presentation": 5
  },
- "threshold_is_upper_bound_share": 0.17664127675009067,
+ "threshold_is_upper_bound_share": 0.17693981145757795,
  "provenance": {
-  "revision": "91848175da577fc76fb81e653043f900c722f5a1",
+  "revision": "1f6fe40f59a12a1a7b28b812d24af3483fc34280",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "merge_atlas_corpus.py",
-  "written_utc": "2026-10-09T17:19:26+00:00",
+  "written_utc": "2026-10-09T17:33:09+00:00",
   "inputs": {}
  }
 }

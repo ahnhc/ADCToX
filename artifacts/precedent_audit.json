@@ -108,7 +108,7 @@
    "slot": "payload",
    "part": "exatecan",
    "curated": 5,
-   "named_in_corpus": 1,
+   "named_in_corpus": 2,
    "named_in_workbook": 3,
    "named_union": 3,
    "curated_below_named": false,
@@ -296,11 +296,11 @@
   "blocked_on": "free-payload IC50 (C1) and attachment chemistry (C5)"
  },
  "provenance": {
-  "revision": "d0745ee7129fb0a6d2877af8f606719752c87519",
+  "revision": "1f6fe40f59a12a1a7b28b812d24af3483fc34280",
   "dirty": true,
   "snapshot": "2026-10-07",
   "script": "precedent_audit.py",
-  "written_utc": "2026-10-09T16:38:34+00:00",
+  "written_utc": "2026-10-09T17:33:20+00:00",
   "inputs": {}
  }
 }
