@@ -277,9 +277,11 @@ def main() -> int:
     print(
         f"\nParameters: design {acct['design']}, nuisance {acct['nuisance']}; "
         f"identifying cells {acct['identifying_cells']} "
-        f"(ratio {acct['design_ratio_vs_identifying']}:1)"
+        f"(ratio {acct['design_ratio_vs_identifying']}:1)",
+        flush=True,
     )
-    print("\nFolds:"); print(splits.fold_report(data))
+    print("\nFolds:", flush=True)
+    print(splits.fold_report(data), flush=True)
 
     # ---------------------------------------------------------------- full fit
     t0 = time.time()
@@ -358,7 +360,8 @@ def main() -> int:
         (splits.leave_one_family_out(data), "leave_one_family_out"),
         (splits.leave_one_agent_out(data), "leave_one_agent_out"),
     ):
-        print(f"\n{'=' * 74}\n{label}  ({len(fold_set)} folds)\n{'=' * 74}")
+        print(f"\n{'=' * 74}\n{label}  ({len(fold_set)} folds)\n{'=' * 74}",
+              flush=True)
         rows = []
         for fold in fold_set:
             train_data = _masked(data, fold.train_cells)
