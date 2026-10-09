@@ -26,7 +26,7 @@ ART     := artifacts
         dose-mod dose-mod-eval module-b hard-flags fold-difficulty lint sync-report \
         check-report clean \
         fetch snapshot-check target-expression expression design-effects across-agent \
-        pmc-fetch pmc-yield pmc-extract
+        pmc-fetch pmc-yield pmc-extract pmc-validate
 
 # `make all` has to produce every figure the report quotes, or the claim that the report
 # is regenerable is false. It previously omitted the whole of Module B and the censoring
@@ -182,3 +182,7 @@ pmc-extract: snapshot-check ## full extraction funnel -> attributed arm-axis cel
 	$(PY) scripts/extract_pmc_cells.py --raw-dir $(PMC_RAW) \
 	  --out artifacts/pmc_extraction.json \
 	  --cells-out $(PROC)/pmc_cells.jsonl
+
+pmc-validate: ## extracted rates vs the registry's own numbers for the same arms
+	$(PY) scripts/validate_pmc_against_ctgov.py --cells $(PROC)/pmc_cells.jsonl \
+	  --out artifacts/pmc_validation.json
