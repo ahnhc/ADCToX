@@ -141,7 +141,11 @@
 
 <script>
 const API = "/api/v1";
-let ONT = null, PICKED = new Set();
+// `var` and not `let`: these are the page's two pieces of module state, and a `let` at
+// the top level of a script is a lexical binding that is not a property of the global
+// object -- so a test harness running this script in a sandbox cannot set them, and the
+// only way to exercise a function that reads `ONT` would be to fetch over the network.
+var ONT = null, PICKED = new Set();
 
 // Law 1: never more than two significant figures on a probability.
 const pct = v => v == null ? "&mdash;" : (v * 100).toPrecision(2) + "%";
@@ -234,6 +238,16 @@ function axisRow(r) {
   const ruleTag = r.band_source === "rule"
     ? `<span class="tag" title="Raised by a rule read off an approved label. A rule can raise a band, never lower one.">label rule</span>`
     : "";
+  // What kind of event the axis is made of. MedDRA files laboratory abnormalities under
+  // `Investigations` rather than under the organ, so the taxonomy redistributes them -- and
+  // the hepatic axis comes out mostly laboratory rows. A reader weighting it for a liver
+  // condition should know the number is largely transaminase elevation rather than
+  // hepatotoxicity as a clinical event. It changes what the figure means, not whether it is
+  // right, so it is a label on the axis and not a warning.
+  const comp = ((ONT && ONT.organ_axes) || []).find(a => a.id === r.organ_axis) || {};
+  const labTag = comp.mostly_laboratory
+    ? `<span class="tag" title="${pct(comp.lab_share_registry)} of this axis's registry rows and ${pct(comp.lab_share_literature)} of its literature cells are laboratory abnormalities that MedDRA files under Investigations -- transaminase and bilirubin elevations here -- rather than clinical events in the organ. Most axes are under 8%. So this rate is largely a laboratory finding.">mostly laboratory</span>`
+    : "";
   const secondary = (!noEvidence && other != null)
     ? `<span class="alt">${serious ? "any-grade" : "serious"} ${pct(other)}</span>`
     : "";
@@ -278,7 +292,7 @@ removed from both, so a one-place difference is noise and only the extremes mean
 anything.">#${cm.rank} of ${cm.n}</span>`
     : "";
   return `${why}<div class="axis ${r.at_risk_for_patient ? "at-risk" : ""}">
-      <span>${r.label}${r.at_risk_for_patient ? ` <span class="tag">weighted &times;${r.weight_applied.toFixed(1)}</span>` : ""}${basisTag}${ruleTag}</span>
+      <span>${r.label}${r.at_risk_for_patient ? ` <span class="tag">weighted &times;${r.weight_applied.toFixed(1)}</span>` : ""}${basisTag}${ruleTag}${labTag}</span>
       <span class="bar">${fill}</span>
       <span><span class="band b-${r.risk_band}">${r.risk_band.replace("_", " ")}</span>
         <span class="num">${noEvidence ? "" : pct(shown) + interval}</span>${secondary}</span>

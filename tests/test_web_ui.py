@@ -282,3 +282,89 @@ console.log("rendered " + rendered);
             capture_output=True, text=True,
         )
     assert result.returncode == 0, result.stderr[-900:] + result.stdout[-300:]
+
+
+def test_a_laboratory_dominated_axis_says_so_on_the_row() -> None:
+    """The hepatic axis is mostly laboratory abnormalities, and the number means something
+    different because of it.
+
+    MedDRA files laboratory findings under `Investigations` rather than under the organ, so
+    the taxonomy redistributes them -- "alanine aminotransferase increased" to hepatic. The
+    hepatic axis comes out **64% laboratory rows in the registry and 84% in the literature**,
+    against 0-8% for most axes. So "hepatic risk 0.18" is largely transaminase elevation
+    rather than hepatotoxicity as a clinical event, and a patient who declares cirrhosis is
+    up-weighting a laboratory finding.
+
+    That changes what the figure means rather than whether it is right, which is why it is a
+    label on the axis rather than a limitation in a document. The axis has to carry it even
+    when the composition artefact is absent, in which case no claim is made at all --
+    "we have not measured this" and "this axis is not laboratory-dominated" must not render
+    the same way.
+    """
+    import json
+    import tempfile
+
+    if not shutil.which("node"):
+        pytest.skip("node not available")
+
+    from fastapi.testclient import TestClient
+
+    from adctox.api.main import app
+
+    client = TestClient(app)
+    ont = client.get("/api/v1/ontology").json()
+    hepatic = next(a for a in ont["organ_axes"] if a["id"] == "hepatic")
+    if "mostly_laboratory" not in hepatic:
+        pytest.skip("run `make axis-composition`")
+    assert hepatic["mostly_laboratory"] is True, hepatic
+    assert hepatic["lab_share_registry"] > 0.5, hepatic
+    # And it is the exception, not the rule.
+    dominated = [a["id"] for a in ont["organ_axes"] if a.get("mostly_laboratory")]
+    assert dominated == ["hepatic"], dominated
+
+    r = client.post("/api/v1/assess", json={
+        "design": {
+            "target_antigen": "ERBB2", "payload": "DXd", "linker": "GGFG",
+            "conjugation": "interchain_cysteine", "dar": 8.0,
+            "isotype": "IgG1", "masking": "none",
+        },
+        "comorbidity_profile": {"conditions": ["cirrhosis"]},
+    })
+    assert r.status_code == 200, r.text[:200]
+    rows = r.json()["organ_risks"]
+
+    harness = r"""
+const fs = require("fs"), vm = require("vm");
+const js = fs.readFileSync(process.argv[2], "utf8")
+  .match(/<script[^>]*>([\s\S]*?)<\/script>/)[1];
+const ctx = { document: { getElementById: () => null, querySelectorAll: () => [],
+  addEventListener() {} }, window: {},
+  fetch: () => Promise.resolve({ json: () => ({}) }), console };
+vm.createContext(ctx);
+try { vm.runInContext(js, ctx); } catch (e) {}
+const payload = JSON.parse(fs.readFileSync(process.argv[3], "utf8"));
+// Before boot, ONT is null: the row must still render rather than throw.
+const before = ctx.axisRow(payload.rows.find(r => r.organ_axis === "hepatic"));
+if (/undefined|NaN/.test(before)) { console.error("pre-boot row is broken"); process.exit(1); }
+if (/mostly laboratory/.test(before)) {
+  console.error("claimed a composition the page had not been given"); process.exit(1);
+}
+ctx.ONT = payload.ont;
+const hep = ctx.axisRow(payload.rows.find(r => r.organ_axis === "hepatic"));
+if (!/mostly laboratory/.test(hep)) { console.error("hepatic row omits the label"); process.exit(1); }
+const gi = ctx.axisRow(payload.rows.find(r => r.organ_axis === "gastrointestinal"));
+if (/mostly laboratory/.test(gi)) { console.error("labelled an axis that is 2% laboratory"); process.exit(1); }
+console.log("ok");
+"""
+    with tempfile.TemporaryDirectory() as tmp:
+        script = Path(tmp) / "lab.js"
+        data = Path(tmp) / "payload.json"
+        script.write_text(harness, encoding="utf-8")
+        data.write_text(json.dumps({"ont": ont, "rows": rows}), encoding="utf-8")
+        result = subprocess.run(
+            ["node", str(script),
+             str(Path(__file__).resolve().parents[1] / "web" / "index.html"),
+             str(data)],
+            capture_output=True, text=True,
+        )
+    assert result.returncode == 0, result.stderr[-900:] + result.stdout[-300:]

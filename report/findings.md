@@ -38,7 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 36 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 37 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -1732,6 +1732,21 @@ neurologic.
     went in. And every mechanism level appears in both corpora, the smallest cell being two
     arms against two, so the mechanism-by-axis term and the source term are separately
     identified rather than competing for one contrast.
+36. **One organ axis is mostly a laboratory finding, and the number means something
+    different because of it.** MedDRA files laboratory abnormalities under `Investigations`
+    rather than under the organ, so the taxonomy redistributes them -- "alanine
+    aminotransferase increased" to hepatic, "neutrophil count decreased" to haematologic --
+    and without that the hepatic axis would be nearly empty while a quarter of the corpus
+    sat in a bucket with no organ. The redistribution is right and it has a consequence that
+    was never stated: **the hepatic axis is 64% laboratory rows in the registry and 84% in
+    the literature**, against 0-8% for most axes. Haematologic is 35% and 18%, renal 17% and
+    31%, and hepatic is the only axis over half in either source. So "hepatic risk 0.18" is
+    largely transaminase elevation rather than hepatotoxicity as a clinical event, and a
+    patient who declares cirrhosis is up-weighting a laboratory finding. It changes what the
+    figure means rather than whether it is right, so it is a label on the axis in the
+    interface rather than a line in this list -- and where the composition has not been
+    measured the interface says nothing, because "not measured" and "not
+    laboratory-dominated" must not render the same way.
 
 ## 9b. The clean-clone check, run for the first time
 

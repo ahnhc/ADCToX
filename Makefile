@@ -29,7 +29,7 @@ ART     := artifacts
         pmc-fetch pmc-yield pmc-extract pmc-validate pmc-merge pmc-merge-explicit \
         corpus-ablation discover mondo-audit mondo-axes exclusion-holdout \
         rank-resolution dar-gap driver-waterfall row-grade-exposure outcome-tables \
-        granularity-ratio source-axis source-confounding \
+        granularity-ratio source-axis source-confounding axis-composition \
         label-impairment inverse-retrieval comorbidity literature expensive \
         pmc-fetch-discovered pmc-fetch-codenames
 
@@ -40,7 +40,7 @@ all: taxonomy corpus forward censoring-sensitivity expression enrichment module-
      comorbidity literature \
      propose test hard-flags fold-difficulty design-effects across-agent \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
-     granularity-ratio source-axis source-confounding \
+     granularity-ratio source-axis source-confounding axis-composition \
      check-report
 
 # Module B: the dated label-change case series and the dose-modification ordering
@@ -322,6 +322,12 @@ source-axis: ## heterogeneity of the reporting-source gap across organ axes
 # handled; every mechanism level appears in both corpora.
 source-confounding: ## audit every arm-level covariate against the source indicator
 	$(PY) scripts/source_confounding_audit.py
+
+# What kind of event each axis is made of. MedDRA files laboratory abnormalities under
+# `Investigations`, so the taxonomy redistributes them -- and the hepatic axis comes out
+# 64% laboratory rows in the registry, against 0-8% for most axes. The interface says so.
+axis-composition: ## laboratory share of each organ axis, per source
+	$(PY) scripts/axis_composition.py
 
 discover: ## find every ADC that has published, by payload-linker name stem
 	$(PY) scripts/discover_adc_agents.py --out $(ART)/adc_discovery.json --retmax 400

@@ -411,6 +411,31 @@ def _targets() -> list[dict]:
     return [seen[k] for k in sorted(seen)]
 
 
+@lru_cache(maxsize=1)
+def _axis_composition() -> dict[str, dict]:
+    """Per-axis laboratory share, from `make axis-composition`.
+
+    Absent artefact means absent fields rather than a guess: a caller can tell "we have not
+    measured this" from "this axis is not laboratory-dominated", and a default of zero would
+    erase the distinction.
+    """
+    path = ARTIFACTS / "axis_composition.json"
+    if not path.exists():
+        return {}
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    out: dict[str, dict] = {}
+    for row in doc.get("axes", []):
+        reg, lit = row.get("registry_lab_share"), row.get("literature_lab_share")
+        if reg is None and lit is None:
+            continue
+        out[row["axis"]] = {
+            "lab_share_registry": reg,
+            "lab_share_literature": lit,
+            "mostly_laboratory": max(reg or 0.0, lit or 0.0) >= 0.5,
+        }
+    return out
+
+
 @app.get("/api/v1/model-card")
 def model_card() -> PlainTextResponse:
     """The model card, served as written.
@@ -455,7 +480,18 @@ def ontology() -> dict:
     from ..design.constraints import ConstraintEngine
 
     return {
-        "organ_axes": [{"id": a, "label": tax.axes[a]} for a in tax.axis_order],
+        # Each axis carries what kind of event it is mostly made of. MedDRA files
+        # laboratory abnormalities under `Investigations` rather than under the organ, so
+        # the taxonomy redistributes them -- and the hepatic axis comes out 64% laboratory
+        # rows in the registry and 84% in the literature, against 0-8% for most axes. So
+        # "hepatic risk 0.18" is mostly transaminase elevation rather than hepatotoxicity
+        # as a clinical event, and a caller weighting that axis for a cirrhosis patient is
+        # weighting a laboratory finding. That changes what the number means rather than
+        # whether it is right, which is why it travels with the axis.
+        "organ_axes": [
+            {"id": a, "label": tax.axes[a], **_axis_composition().get(a, {})}
+            for a in tax.axis_order
+        ],
         # Which constraints this build can evaluate, and why not where not. A constraint
         # that cannot fire is indistinguishable from one that fires and passes, and the
         # difference decides how much the screen is worth.
