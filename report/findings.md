@@ -779,6 +779,111 @@ harvested only from papers whose *titles* already name the INN, which makes the 
 the evidence for the mapping. Searching them alongside the INN roughly doubled the hit count
 for several agents and recovered two.
 
+## 5h. The comorbidity layer, and the holdout it unlocks
+
+The comorbidity registry maps 41 conditions to organ axes and a severity, both assigned by
+hand. The assignment was defensible and it had one structural problem: the hands that made
+it were reading trial exclusion criteria, so recovering exclusion criteria from it is
+circular. The only non-circular holdout left was about 28 cells of FDA label impairment
+text.
+
+A MONDO `is_a` closure has no such problem. MONDO was curated for disease classification
+rather than for this project and touches no exclusion text, so the same recovery test
+becomes legitimate -- over 3,762 trials instead of 28 cells. That is the whole argument for
+building the layer, and it is the reason to build it even where it is not expected to beat
+the hand map.
+
+### First, it audited the registry, and the registry failed
+
+The plan required all 40 MONDO identifiers to be pinned by hand into a checked-in CSV, with
+no runtime resolution, because a search API had silently mis-resolved 3 of 36 test
+conditions -- returning `brain small vessel disease 1` for `ocular surface disease`, and
+`familial long QT syndrome` for `QT prolongation`. The pinning was done. It did not help:
+**8 of 41 pins named an unrelated disease.**
+
+| condition | pinned identifier named | should name |
+|---|---|---|
+| chronic kidney disease, stage 3 | cardiomyopathy | chronic kidney disease |
+| chronic kidney disease, stage 4-5 | cardiomyopathy | chronic kidney disease |
+| dry eye disease | idiopathic cardiomyopathy | dry eye syndrome |
+| interstitial lung disease | cervix squamous papilloma | interstitial lung disease |
+| immune thrombocytopenia | renal tubular transport disease | thrombocytopenia due to immune destruction |
+| chronic anaemia | familial hyperlipidemia | anemia |
+| QT prolongation | tick-borne encephalitis | nothing -- see below |
+| prior SJS/TEN | secondary intestinal lymphangiectasia | Stevens-Johnson syndrome |
+
+Three further pins were absent from the ontology snapshot and one was an HPO term rather
+than a MONDO one. Nothing had broken, only because nothing read the column: this derivation
+is its first consumer and it failed on contact. Hand-pinning is not a substitute for
+checking what the pin names.
+
+Twelve identifiers were corrected, each verified twice -- the term's own name matches the
+condition, and the organ its closure derives matches the hand-assigned organ. The audit now
+reports zero wrong and zero absent.
+
+QT prolongation stays on the ontology root deliberately. MONDO has `long QT syndrome`, but
+that is a hereditary channelopathy while the trial criterion is a drug-induced ECG finding
+-- the exact mis-resolution the plan flagged. Five other conditions share the root because
+a prior anthracycline, chest radiation, corneal surgery, transplant or bowel resection is
+not a disease, and no disease ontology can place one.
+
+### The holdout: 0.675 non-circularly, against 0.757 circularly
+
+For each condition, find the trials whose eligibility text names it, and ask whether the
+organ axes its MONDO closure derives are the axes those trials express concern about.
+
+| mapping | AUROC | permutation p |
+|---|---|---|
+| MONDO-derived (non-circular) | **0.675** | **0.0010** |
+| hand-assigned (circular, reported as a ceiling) | 0.757 | 0.0005 |
+
+The permutation shuffles axis assignments *within* each condition, holding the number
+assigned fixed, because the eleven cells of one condition are not independent -- their
+shares sum to one -- so a standard error over 293 cells would treat 27 conditions as 293.
+The null sits at 0.495 with a 95th percentile of 0.575.
+
+The hand map wins by 0.082, which bounds what its circularity buys. A small gap is the
+informative outcome: the hand map is not living off the leak.
+
+### Two corrections without which the number is worthless
+
+**Protocol verbosity.** Any protocol detailed enough to name a comorbidity sets thresholds
+on several organs, so raw rates come out enriched on every axis at once. The signature is
+both medians positive: +0.556 for assigned axes and +0.448 for unassigned, with `ocular`
+the top-enriched axis for both cirrhosis and chronic kidney disease. Normalising to each
+trial's share of concern makes protocol length cancel, putting unassigned axes at -0.037
+and raising the AUROC from 0.606 to 0.675. This is the reporting-channel artifact the plan
+names for FAERS, in a different dataset.
+
+**Shared regular expressions.** The organ-concern rules were also written by reading
+exclusion criteria, and several of them *are* condition names -- `cirrhosis` is a hepatic
+rule, `peripheral neuropath` a neurologic one, `inflammatory bowel|crohn` and `pancreatitis`
+gastrointestinal ones, `hepatitis [bc]`, `hiv` and `autoimmune` infectious ones. For those
+seven conditions, "this trial mentions the condition" and "this trial flags the organ" are
+the same regex and the test measures nothing. Each condition's own matching patterns are
+removed before its trials are flagged, which leaves bilirubin, AST/ALT and Child-Pugh
+standing for cirrhosis on the hepatic axis.
+
+### What it does and does not establish
+
+Fourteen of 41 conditions are excluded, each with a reason. Six derive no organ because
+they are prior exposures rather than diseases. A guard drops any condition whose matcher
+hits more than a quarter of the corpus, which is how the root-pinned six announced
+themselves: the root's synonyms were reaching their matchers, each hit about 60% of trials,
+and their enrichments came out identical to three decimal places.
+
+MONDO is an audit of the hand map, not a replacement for it. Of the 21 axes it adds, **12
+are hepatic conditions acquiring `gastrointestinal` and `metabolic_endocrine`** through two
+ancestors, because MONDO files the liver in the digestive and endocrine systems. That is
+upper-ontology placement, not a claim that a cirrhotic patient faces elevated
+gastrointestinal adverse-event risk, and twelve axes from one placement are one piece of
+evidence rather than twelve. The plan's "multiple parents are a feature" is half right: a
+feature when it reflects multi-organ involvement, since hepatitis B is genuinely hepatic
+and immune, and an artifact when it reflects where a curator filed an organ.
+
+This validates the organ mapping. The severity weights are still hand-assigned and
+untested, and the disease-disease coupling term is unbuilt.
+
 ## 6. The exclusion-criteria signal
 
 1,281 ADC trials against 2,481 oncology controls, all with eligibility text. Enrichment
@@ -927,7 +1032,20 @@ neurologic.
     which no downstream check can see, because the arithmetic gate would re-derive both the
     count and the percentage from the same wrong N. Requiring the integer to appear
     independently elsewhere in the article gave 124 of 124 correct and rejected all 19.
-15. **A low row-mapping rate looked like a vocabulary problem and was not.** 59.3% of
+15. **Hand-pinning an ontology identifier does not make it right.** The plan required all
+    40 MONDO identifiers to be pinned by hand rather than resolved at runtime, because a
+    search API had silently mis-resolved 3 of 36 test conditions. The pinning was done and
+    **8 of 41 pins named an unrelated disease** -- chronic kidney disease pinned to
+    cardiomyopathy, interstitial lung disease to cervix squamous papilloma. A higher error
+    rate than the API it was protecting against. Nothing had broken only because nothing
+    read the column until the MONDO derivation became its first consumer. Section 5h.
+16. **The number guard weakens as the artefact pool grows, and says so.** It reports its own
+    measured false-pass rate on fabricated figures every run. With 15,184 artefact values
+    that was 100% at two decimals, 75% at three and 20% at four; at 19,523 values it is
+    100%, **89%** and **26%**. A report figure quoted to three decimals is now barely
+    checked, and the guard is only meaningfully adversarial at four. The rate is printed
+    rather than assumed precisely so this degradation is visible.
+17. **A low row-mapping rate looked like a vocabulary problem and was not.** 59.3% of
     adverse-event rows missed the preferred-term dictionary, and the misses were dominated
     not by unknown medical terms but by labels like `1`, `Yes`, `Grade 3`, `Female` and
     `+` -- the stub column of a cross-tab or an over-caught baseline table. Separating
