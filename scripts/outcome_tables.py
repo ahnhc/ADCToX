@@ -7,11 +7,16 @@ table, `kind="grade3"`. It is literature-only, because the registry has no grade
 all, which makes it the clean form of the question the corpus ablation asks: can literature
 arms support a model with no registry arms mixed in to carry them?
 
-Measured: no. The table reaches 21 agents, more than the registry's 16, and **1.55 observed
-cells per identifying cell** against the any-grade table's 9.97 and the 8:1 the plan set for
-identifying a mechanism-by-axis interaction. More agents, each contributing four or five
-observed axes instead of twelve, because a grade >=3 table lists only the organs that
-reached grade 3.
+Measured: no. The table reaches 21 agents, more than the registry's 16, and **1.43 observed
+cells per identifying cell** against the any-grade table's 9.97 -- a factor of seven. More
+agents, each contributing four observed axes instead of nine, because a grade >=3 table lists
+only the organs that reached grade 3.
+
+The quantity here is observations per identifying cell, which is how much evidence each
+agent-axis coefficient actually has behind it. It is *not* the plan's 8:1 floor: that one is
+identifying cells per design parameter and lives in `granularity_ratio.py`. An earlier
+version of this script applied the plan's threshold to this ratio, which are different
+numbers about different things, and the floor is removed rather than restated here.
 
 That is the mirror image of section 5g's finding. There, more arms bought no agents. Here,
 more agents buy no observations. The table is built and labelled so the set-aside data is
@@ -28,8 +33,11 @@ from adctox.provenance import write_json
 from adctox.taxonomy import default_taxonomy
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-# The ratio the plan set for identifying a mechanism-by-axis interaction.
-IDENTIFICATION_FLOOR = 8.0
+# How much observed evidence an agent-axis coefficient needs before it is worth fitting. Not
+# the plan's 8:1, which is a different ratio over a different denominator -- see the module
+# docstring. Set at the registry corpus's own value, so the question it answers is "does this
+# table have as much evidence per coefficient as the corpus the model was built on".
+REGISTRY_EVIDENCE_PER_CELL = 9.0
 
 
 def main() -> None:
@@ -61,8 +69,8 @@ def main() -> None:
             "identifying_cells": identifying,
             "observed_per_identifying_cell": round(observed / identifying, 2),
             "observed_axes_per_arm": round(observed / data.n_arms, 1),
-            "can_identify_a_mechanism_interaction":
-                observed / identifying >= IDENTIFICATION_FLOOR,
+            "as_much_evidence_as_the_registry_corpus":
+                observed / identifying >= REGISTRY_EVIDENCE_PER_CELL,
         })
 
     print(f"  {'table':8s} {'agents':>7s} {'arms':>5s} {'cells':>6s} {'obs':>5s} "
@@ -75,11 +83,12 @@ def main() -> None:
               f"{r['observed']:5d} {r['observed_share']:6.1%} "
               f"{r['identifying_cells']:6d} {r['observed_per_identifying_cell']:10.2f} "
               f"{r['observed_axes_per_arm']:9.1f}")
-    print(f"\n  identification floor {IDENTIFICATION_FLOOR}:1; tables that clear it: "
+    print(f"\n  evidence per identifying cell, registry level {REGISTRY_EVIDENCE_PER_CELL}"
+          ":1; tables that reach it: "
           + (", ".join(r["kind"] for r in rows
-                       if r.get("can_identify_a_mechanism_interaction")) or "none"))
+                       if r.get("as_much_evidence_as_the_registry_corpus")) or "none"))
     write_json(args.out, {
-        "identification_floor": IDENTIFICATION_FLOOR, "tables": rows,
+        "registry_evidence_per_cell": REGISTRY_EVIDENCE_PER_CELL, "tables": rows,
     })
     print(f"\n-> {args.out}")
 

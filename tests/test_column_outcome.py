@@ -291,3 +291,32 @@ def test_the_severe_tail_becomes_its_own_table_and_cannot_carry_the_model() -> N
         & arms["source"].notna()
     ]
     assert len(low) >= 25, len(low)
+
+
+@pytest.mark.skipif(not PAPER.exists(), reason="run `make pmc-merge`")
+def test_an_arm_key_identifies_one_column() -> None:
+    """The key was the first 40 characters of the column header, and a grade suffix often
+    sits past them.
+
+    "Belamaf 2.5 mg/kg, N = 95: No. of Patients (%) Any Grade" and the same header ending
+    "Grade >=3" agree for 46 characters. 12 keys collapsed 28 distinct columns and 337 cells,
+    5.3% of the corpus. While both halves were `kind="other"` the groupby merged them into
+    one arm and the per-axis maximum took the any-grade value, so the rate survived and the
+    arm carried a mixture. Splitting the severe tail into its own table turned that into two
+    rows sharing one key, which breaks the frame: `build` indexes arms positionally and looks
+    observations up by key.
+    """
+    arms = pd.read_parquet(PAPER)
+    dupes = arms[arms.duplicated("arm_key", keep=False)]
+    assert dupes.empty, dupes["arm_key"].unique()[:5].tolist()
+
+    # The prefix stays readable and the digest only appears where it is needed.
+    short = "Patients, n (%)"
+    assert merge._header_key(short) == short
+    long_a = "Belamaf 2.5 mg/kg, N = 95: No. of Patients (%) Any Grade"
+    long_b = "Belamaf 2.5 mg/kg, N = 95: No. of Patients (%) Grade ≥3"
+    assert long_a[:40] == long_b[:40], "the premise of this test no longer holds"
+    assert merge._header_key(long_a) != merge._header_key(long_b)
+    assert merge._header_key(long_a).startswith(long_a[:40])
+    # Deterministic, so a rebuild does not change every key.
+    assert merge._header_key(long_a) == merge._header_key(long_a)

@@ -35,6 +35,7 @@ where censoring applies and a wrong guess costs width rather than correctness.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import pathlib
 import re
@@ -99,6 +100,32 @@ DESIGN_COLS = (
 # Grade 4, Grade I-II, Grade III-IV. The pattern now matches any grade number, Arabic or
 # Roman, and defers to an explicit all-grade or any-grade claim in the same header, which is
 # how a spanning header split upstream reads.
+def _header_key(header: str) -> str:
+    """A readable but unique fragment of a column header.
+
+    The key was the first 40 characters, and a grade suffix often sits past them:
+    "Belamaf 2.5 mg/kg, N = 95: No. of Patients (%) Any Grade" and the same header ending
+    "Grade >=3" are identical for 46 characters. 12 keys collapsed 28 distinct columns and
+    337 cells, 5.3% of the corpus.
+
+    While both halves were `kind="other"` the groupby merged them into one arm and the
+    per-axis maximum took the any-grade value, so the rate survived and the arm carried a
+    mixture. Splitting the severe tail into its own table turned that into two rows sharing
+    one key, which breaks the frame: `build` indexes arms positionally and looks observations
+    up by key, so the grade-restricted row would find the any-grade row's observations and
+    enter the grid on a fallback denominator.
+
+    So the prefix stays for legibility and a digest of the whole header is appended whenever
+    it was truncated. Keys change, which is why the corpus has to be rebuilt and anything
+    fitted on the old keys refitted.
+    """
+    text = str(header or "")
+    if len(text) <= 40:
+        return text
+    digest = hashlib.sha1(text.encode("utf-8")).hexdigest()[:6]
+    return f"{text[:40]}#{digest}"
+
+
 ANY_GRADE = re.compile(r"all[-\s]*grades?|any[-\s]*grades?|maximum\s+grade", re.I)
 # Grade 3 and above, Arabic or Roman, including the open forms "Grade >=3" and "Grade 3-".
 # This is the half of the grade-restricted set that becomes its own outcome table.
@@ -204,7 +231,7 @@ def main() -> int:
     cells = cells.assign(
         arm_key=lambda d: (
             "PMC" + d["pmcid"].astype(str) + ":" + d["table_label"].astype(str)
-            + ":" + d["column_header"].astype(str).str.slice(0, 40)
+            + ":" + d["column_header"].map(_header_key)
         ),
         kind=lambda d: d["caption_kind"] if "caption_kind" in d else "other",
     )

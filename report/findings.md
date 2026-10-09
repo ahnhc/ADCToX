@@ -1669,10 +1669,10 @@ neurologic.
     literature-only, because ClinicalTrials.gov has no grade split at all, which makes it the
     clean form of the question the ablation asks -- can literature arms support a model with
     no registry arms mixed in to carry them? The table reaches **21 agents**, more than the
-    registry's 16, at **1.55 observed cells per identifying cell** against the any-grade
-    table's 9.97 and the 8:1 the plan set for identifying a mechanism-by-axis interaction.
-    A grade >=3 table lists only the organs that reached grade 3, so each arm contributes
-    four or five observed axes instead of nine. Result 11 found that more arms bought no
+    registry's 16, at **1.43 observed cells per identifying cell** against the any-grade
+    table's 9.97 -- a factor of seven less evidence behind each coefficient. A grade >=3
+    table lists only the organs that reached grade 3, so each arm contributes four observed
+    axes instead of nine. Result 11 found that more arms bought no
     agents; this finds that more agents buy no observations. The table is built and labelled
     so the set-aside data is inspectable rather than invisible, and no fit is run on it.
 

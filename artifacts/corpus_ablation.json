@@ -1,10 +1,10 @@
 {
   "provenance": {
-    "revision": "5834519404fbc76bab2aec93761eaa1103144a52",
+    "revision": "cdfbe035947e40de5cfb5f43b35999cea731e251",
     "dirty": true,
     "snapshot": "2026-10-07",
     "script": "corpus_ablation.py",
-    "written_utc": "2026-10-09T09:12:59+00:00",
+    "written_utc": "2026-10-09T10:07:33+00:00",
     "inputs": {}
   },
   "min_agents_for_fold": 3,
@@ -223,7 +223,7 @@
     {
       "from": "registry_only",
       "to": "plus_literature_arms",
-      "corpus_arms_added": 312,
+      "corpus_arms_added": 318,
       "corpus_arms_dropped": 0,
       "grid_arms_added": 147,
       "is_superset": true
@@ -231,7 +231,7 @@
     {
       "from": "plus_literature_arms",
       "to": "plus_literature_agents",
-      "corpus_arms_added": 102,
+      "corpus_arms_added": 108,
       "corpus_arms_dropped": 0,
       "grid_arms_added": 36,
       "is_superset": true
