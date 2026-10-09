@@ -1,0 +1,707 @@
+{
+  "provenance": {
+    "revision": "1297c7514c87b70d6d4a5b4e871fa916e5d06b81",
+    "dirty": true,
+    "snapshot": null,
+    "script": "measure_table_yield.py",
+    "written_utc": "2026-10-09T02:25:48+00:00",
+    "inputs": {
+      "xml_listing": "sha256:a83aa8e032db99d2ef462316c000932b5b56f3262ee61bfa06b3c7610cb193b7"
+    }
+  },
+  "agents": {
+    "sought": [
+      "anetumab_ravtansine",
+      "camidanlumab_tesirine",
+      "cetuximab_sarotalocan",
+      "cofetuzumab_pelidotin",
+      "coltuximab_ravtansine",
+      "depatuxizumab_mafodotin",
+      "disitamab_vedotin",
+      "enapotamab_vedotin",
+      "farletuzumab_ecteribulin",
+      "ifinatamab_deruxtecan",
+      "indatuximab_ravtansine",
+      "izalontamab_brengitecan",
+      "naratuximab_emtansine",
+      "praluzatamab_ravtansine",
+      "rovalpituzumab_tesirine",
+      "sacituzumab_tirumotecan",
+      "serclutamab_talirine",
+      "telisotuzumab_adizutecan",
+      "trastuzumab_rezetecan",
+      "tusamitamab_ravtansine",
+      "vobramitamab_duocarmazine",
+      "zilovertamab_vedotin"
+    ],
+    "recovered": [
+      "anetumab_ravtansine",
+      "camidanlumab_tesirine",
+      "cofetuzumab_pelidotin",
+      "depatuxizumab_mafodotin",
+      "disitamab_vedotin",
+      "enapotamab_vedotin",
+      "farletuzumab_ecteribulin",
+      "ifinatamab_deruxtecan",
+      "izalontamab_brengitecan",
+      "praluzatamab_ravtansine",
+      "rovalpituzumab_tesirine",
+      "sacituzumab_tirumotecan",
+      "serclutamab_talirine",
+      "telisotuzumab_adizutecan",
+      "tusamitamab_ravtansine",
+      "vobramitamab_duocarmazine"
+    ],
+    "lost_to_image_only": [
+      "coltuximab_ravtansine"
+    ],
+    "no_ae_table_found": [
+      "cetuximab_sarotalocan",
+      "indatuximab_ravtansine",
+      "naratuximab_emtansine",
+      "trastuzumab_rezetecan",
+      "zilovertamab_vedotin"
+    ],
+    "per_agent": {
+      "anetumab_ravtansine": {
+        "articles": 5,
+        "ae_tables": 2,
+        "ae_usable": 2,
+        "usable_cells": 116
+      },
+      "camidanlumab_tesirine": {
+        "articles": 2,
+        "ae_tables": 2,
+        "ae_usable": 2,
+        "usable_cells": 211
+      },
+      "cetuximab_sarotalocan": {
+        "articles": 1
+      },
+      "cofetuzumab_pelidotin": {
+        "articles": 2,
+        "ae_tables": 3,
+        "ae_usable": 1,
+        "usable_cells": 40,
+        "ae_counts_no_denominator": 1
+      },
+      "coltuximab_ravtansine": {
+        "articles": 1,
+        "ae_tables": 2,
+        "ae_image_only": 2
+      },
+      "depatuxizumab_mafodotin": {
+        "articles": 8,
+        "ae_tables": 10,
+        "ae_usable": 8,
+        "usable_cells": 158,
+        "ae_counts_no_denominator": 1
+      },
+      "disitamab_vedotin": {
+        "articles": 71,
+        "ae_tables": 39,
+        "ae_counts_no_denominator": 9,
+        "ae_usable": 23,
+        "usable_cells": 1306,
+        "ae_pct_only": 1
+      },
+      "enapotamab_vedotin": {
+        "articles": 2,
+        "ae_tables": 1,
+        "ae_usable": 1,
+        "usable_cells": 43
+      },
+      "farletuzumab_ecteribulin": {
+        "articles": 4,
+        "ae_tables": 3,
+        "ae_usable": 3,
+        "usable_cells": 142
+      },
+      "ifinatamab_deruxtecan": {
+        "articles": 2,
+        "ae_tables": 2,
+        "ae_usable": 1,
+        "usable_cells": 32
+      },
+      "indatuximab_ravtansine": {
+        "articles": 2
+      },
+      "izalontamab_brengitecan": {
+        "articles": 2,
+        "ae_tables": 2,
+        "ae_usable": 2,
+        "usable_cells": 195
+      },
+      "naratuximab_emtansine": {
+        "articles": 1
+      },
+      "praluzatamab_ravtansine": {
+        "articles": 1,
+        "ae_tables": 2,
+        "ae_usable": 2,
+        "usable_cells": 184
+      },
+      "rovalpituzumab_tesirine": {
+        "articles": 4,
+        "ae_tables": 3,
+        "ae_usable": 3,
+        "usable_cells": 309
+      },
+      "sacituzumab_tirumotecan": {
+        "articles": 15,
+        "ae_tables": 10,
+        "ae_usable": 4,
+        "usable_cells": 158,
+        "ae_counts_no_denominator": 1
+      },
+      "serclutamab_talirine": {
+        "articles": 1,
+        "ae_tables": 1,
+        "ae_usable": 1,
+        "usable_cells": 79
+      },
+      "telisotuzumab_adizutecan": {
+        "articles": 2,
+        "ae_tables": 4,
+        "ae_usable": 4,
+        "usable_cells": 469
+      },
+      "trastuzumab_rezetecan": {
+        "articles": 2
+      },
+      "tusamitamab_ravtansine": {
+        "articles": 7,
+        "ae_tables": 6,
+        "ae_usable": 4,
+        "usable_cells": 157
+      },
+      "vobramitamab_duocarmazine": {
+        "articles": 4,
+        "ae_tables": 2,
+        "ae_usable": 2,
+        "usable_cells": 268
+      },
+      "zilovertamab_vedotin": {
+        "articles": 5
+      }
+    },
+    "journals_per_agent": {
+      "anetumab_ravtansine": {
+        "International Journal of Gynecological Cancer": 1,
+        "Clinical Cancer Research": 1
+      },
+      "camidanlumab_tesirine": {
+        "Blood Advances": 2
+      },
+      "cofetuzumab_pelidotin": {
+        "Clinical Pharmacology and Therapeutics": 1,
+        "Clinical Cancer Research": 2
+      },
+      "coltuximab_ravtansine": {
+        "Haematologica": 2
+      },
+      "depatuxizumab_mafodotin": {
+        "Ophthalmic Research": 3,
+        "Cancer Chemotherapy and Pharmacology": 1,
+        "Cancer": 2,
+        "Neuro-Oncology": 2,
+        "Cancers": 1,
+        "Cancer Science": 1
+      },
+      "disitamab_vedotin": {
+        "Frontiers in Pharmacology": 4,
+        "BMC Cancer": 1,
+        "eClinicalMedicine": 1,
+        "Journal of Clinical Oncology": 1,
+        "Cancer Communications": 1,
+        "Frontiers in Oncology": 6,
+        "Scientific Reports": 1,
+        "Frontiers in Immunology": 4,
+        "MedComm": 2,
+        "Neoplasia (New York, N.Y.)": 1,
+        "The Oncologist": 1,
+        "Future Oncology": 1,
+        "Oncology Research": 1,
+        "Cancer Immunology, Immunotherapy : CII": 1,
+        "Annals of Medicine": 1,
+        "BMC Urology": 1,
+        "NPJ Precision Oncology": 1,
+        "Current Oncology": 1,
+        "Translational Andrology and Urology": 1,
+        "Clinical and Translational Medicine": 1,
+        "Pakistan Journal of Medical Sciences": 1,
+        "Human Vaccines & Immunotherapeutics": 1,
+        "BMJ Open": 1,
+        "Nature Communications": 2,
+        "OncoTargets and therapy": 1,
+        "Drug Delivery": 1
+      },
+      "enapotamab_vedotin": {
+        "Cancer Research Communications": 1
+      },
+      "farletuzumab_ecteribulin": {
+        "JTO Clinical and Research Reports": 2,
+        "International Journal of Gynaecology and Obstetrics": 1
+      },
+      "ifinatamab_deruxtecan": {
+        "Future Oncology": 1,
+        "Journal of Clinical Oncology": 1
+      },
+      "izalontamab_brengitecan": {
+        "Journal of Clinical Oncology": 2
+      },
+      "praluzatamab_ravtansine": {
+        "Clinical Cancer Research": 2
+      },
+      "rovalpituzumab_tesirine": {
+        "Clinical and Translational Science": 1,
+        "NPJ Precision Oncology": 2
+      },
+      "sacituzumab_tirumotecan": {
+        "The BMJ": 1,
+        "Journal of Hematology & Oncology": 2,
+        "The Breast : Official Journal of the European Society of Mastology": 1,
+        "Oncology Reviews": 1,
+        "Current Oncology Reports": 3,
+        "Breast Cancer Research : BCR": 2
+      },
+      "serclutamab_talirine": {
+        "Neuro-Oncology Advances": 1
+      },
+      "telisotuzumab_adizutecan": {
+        "Clinical Cancer Research": 1,
+        "Journal of Clinical Oncology": 3
+      },
+      "tusamitamab_ravtansine": {
+        "Cancer Research Communications": 2,
+        "International Journal of Clinical Oncology": 1,
+        "JTO Clinical and Research Reports": 1,
+        "CPT: Pharmacometrics & Systems Pharmacology": 2
+      },
+      "vobramitamab_duocarmazine": {
+        "Cancer": 2
+      }
+    }
+  },
+  "totals": {
+    "articles": 144,
+    "tables": 351,
+    "ae_tables": 94,
+    "denominator_recovered_tables": 15,
+    "denominator_recovered_columns": 33,
+    "ae_usable": 63,
+    "usable_cells": 3867,
+    "ae_no_rate_cells": 16,
+    "ae_no_parseable_rate_format": 3,
+    "ae_counts_no_denominator": 12,
+    "ae_caption_disclaims_rates": 13,
+    "ae_pct_only": 1,
+    "ae_image_only": 2
+  },
+  "arithmetic": {
+    "cells_checked": 3866,
+    "cells_passed": 3855,
+    "pass_rate": 0.9971546818416969,
+    "plan_claimed_pass_rate": 0.868,
+    "median_delta_pp": 0.03333333333333144
+  },
+  "by_journal": {
+    "ADMET & DMPK": {
+      "articles": 1,
+      "tables": 2
+    },
+    "Annals of Medicine": {
+      "articles": 1,
+      "tables": 4,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "BMC Cancer": {
+      "articles": 4,
+      "tables": 9,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "BMC Urology": {
+      "articles": 2,
+      "tables": 2,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "BMJ Open": {
+      "articles": 2,
+      "tables": 4,
+      "ae_tables": 1
+    },
+    "Blood Advances": {
+      "articles": 2,
+      "tables": 5,
+      "ae_tables": 2,
+      "ae_usable": 2
+    },
+    "Breast Cancer Research : BCR": {
+      "articles": 1,
+      "tables": 2,
+      "ae_tables": 2,
+      "ae_usable": 2
+    },
+    "British Journal of Cancer": {
+      "articles": 1
+    },
+    "CPT: Pharmacometrics & Systems Pharmacology": {
+      "articles": 3,
+      "tables": 4,
+      "ae_tables": 2
+    },
+    "Cancer": {
+      "articles": 2,
+      "tables": 8,
+      "ae_tables": 4,
+      "ae_usable": 4
+    },
+    "Cancer Chemotherapy and Pharmacology": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "Cancer Communications": {
+      "articles": 1,
+      "tables": 4,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "Cancer Immunology, Immunotherapy : CII": {
+      "articles": 1,
+      "tables": 2,
+      "ae_tables": 1
+    },
+    "Cancer Reports": {
+      "articles": 1,
+      "tables": 1
+    },
+    "Cancer Research Communications": {
+      "articles": 3,
+      "tables": 10,
+      "ae_tables": 3,
+      "ae_usable": 3
+    },
+    "Cancer Science": {
+      "articles": 1,
+      "tables": 7,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "Cancers": {
+      "articles": 1,
+      "tables": 6,
+      "ae_tables": 1
+    },
+    "Cell Death & Disease": {
+      "articles": 1,
+      "tables": 1
+    },
+    "Clinical & Experimental Metastasis": {
+      "articles": 1,
+      "tables": 1
+    },
+    "Clinical Cancer Research": {
+      "articles": 5,
+      "tables": 13,
+      "ae_tables": 6,
+      "ae_usable": 5
+    },
+    "Clinical Case Reports": {
+      "articles": 1
+    },
+    "Clinical Pharmacology and Therapeutics": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 1
+    },
+    "Clinical and Translational Medicine": {
+      "articles": 3,
+      "tables": 11,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "Clinical and Translational Science": {
+      "articles": 2,
+      "tables": 7,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "Current Issues in Molecular Biology": {
+      "articles": 1,
+      "tables": 3
+    },
+    "Current Oncology": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "Current Oncology Reports": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 3
+    },
+    "Diagnostics": {
+      "articles": 1,
+      "tables": 4
+    },
+    "Drug Delivery": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 1
+    },
+    "Drugs in R&D": {
+      "articles": 1,
+      "tables": 1
+    },
+    "Frontiers in Immunology": {
+      "articles": 6,
+      "tables": 13,
+      "ae_tables": 4,
+      "ae_usable": 3
+    },
+    "Frontiers in Oncology": {
+      "articles": 13,
+      "tables": 17,
+      "ae_tables": 6,
+      "ae_usable": 4
+    },
+    "Frontiers in Pharmacology": {
+      "articles": 6,
+      "tables": 17,
+      "ae_tables": 4
+    },
+    "Frontiers in Public Health": {
+      "articles": 3,
+      "tables": 15
+    },
+    "Future Oncology": {
+      "articles": 3,
+      "tables": 5,
+      "ae_tables": 2
+    },
+    "Haematologica": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 2,
+      "ae_image_only": 2
+    },
+    "Heliyon": {
+      "articles": 2
+    },
+    "HemaSphere": {
+      "articles": 4,
+      "tables": 2
+    },
+    "Human Vaccines & Immunotherapeutics": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 1
+    },
+    "International Journal of Clinical Oncology": {
+      "articles": 1,
+      "tables": 5,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "International Journal of Gynaecology and Obstetrics": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "International Journal of Gynecological Cancer": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "International Journal of Molecular Sciences": {
+      "articles": 1,
+      "tables": 1
+    },
+    "JCI Insight": {
+      "articles": 1
+    },
+    "JTO Clinical and Research Reports": {
+      "articles": 2,
+      "tables": 7,
+      "ae_tables": 3,
+      "ae_usable": 3
+    },
+    "Journal for Immunotherapy of Cancer": {
+      "articles": 1
+    },
+    "Journal of Clinical Oncology": {
+      "articles": 6,
+      "tables": 34,
+      "ae_tables": 7,
+      "ae_usable": 7
+    },
+    "Journal of Clinical Pharmacology": {
+      "articles": 1,
+      "tables": 3
+    },
+    "Journal of Gastrointestinal Oncology": {
+      "articles": 1,
+      "tables": 1
+    },
+    "Journal of Hematology & Oncology": {
+      "articles": 2,
+      "tables": 5,
+      "ae_tables": 2,
+      "ae_usable": 1
+    },
+    "Journal of Pharmaceutical Health Care and Sciences": {
+      "articles": 1,
+      "tables": 2
+    },
+    "Journal of Pharmacokinetics and Pharmacodynamics": {
+      "articles": 1,
+      "tables": 7
+    },
+    "Kidney International Reports": {
+      "articles": 1,
+      "tables": 2
+    },
+    "MedComm": {
+      "articles": 3,
+      "tables": 6,
+      "ae_tables": 2,
+      "ae_usable": 2
+    },
+    "Medicine": {
+      "articles": 1
+    },
+    "NPJ Precision Oncology": {
+      "articles": 2,
+      "tables": 8,
+      "ae_tables": 3,
+      "ae_usable": 2
+    },
+    "Nature Communications": {
+      "articles": 1,
+      "tables": 4,
+      "ae_tables": 2,
+      "ae_usable": 2
+    },
+    "Neoplasia (New York, N.Y.)": {
+      "articles": 1,
+      "tables": 1,
+      "ae_tables": 1
+    },
+    "Neuro-Oncology": {
+      "articles": 2,
+      "tables": 5,
+      "ae_tables": 2,
+      "ae_usable": 2
+    },
+    "Neuro-Oncology Advances": {
+      "articles": 2,
+      "tables": 3,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "OncoTargets and therapy": {
+      "articles": 1,
+      "tables": 2,
+      "ae_tables": 1
+    },
+    "Oncology Letters": {
+      "articles": 2,
+      "tables": 1
+    },
+    "Oncology Research": {
+      "articles": 1,
+      "tables": 2,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "Oncology Reviews": {
+      "articles": 1,
+      "tables": 1,
+      "ae_tables": 1
+    },
+    "Oncotarget": {
+      "articles": 1,
+      "tables": 3
+    },
+    "Ophthalmic Research": {
+      "articles": 1,
+      "tables": 4,
+      "ae_tables": 3,
+      "ae_usable": 2
+    },
+    "PLOS One": {
+      "articles": 1,
+      "tables": 3
+    },
+    "Pakistan Journal of Medical Sciences": {
+      "articles": 1,
+      "tables": 1,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "Pharmaceutical Research": {
+      "articles": 1,
+      "tables": 6
+    },
+    "Pharmaceutics": {
+      "articles": 1
+    },
+    "Scientific Reports": {
+      "articles": 1,
+      "tables": 4,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "The BMJ": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "The Breast : Official Journal of the European Society of Mastology": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 1
+    },
+    "The Oncologist": {
+      "articles": 3,
+      "tables": 5,
+      "ae_tables": 1
+    },
+    "Translational Andrology and Urology": {
+      "articles": 1,
+      "tables": 4,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "Translational Lung Cancer Research": {
+      "articles": 1,
+      "tables": 2
+    },
+    "Translational Oncology": {
+      "articles": 2,
+      "tables": 3
+    },
+    "World Journal of Clinical Oncology": {
+      "articles": 1
+    },
+    "eClinicalMedicine": {
+      "articles": 1,
+      "tables": 3,
+      "ae_tables": 1,
+      "ae_usable": 1
+    },
+    "iMeta": {
+      "articles": 1
+    }
+  },
+  "unparseable": []
+}

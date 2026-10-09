@@ -130,6 +130,13 @@ def main() -> int:
     ap.add_argument("--retmax", type=int, default=400)
     ap.add_argument("--agents", nargs="*", default=None,
                     help="registry keys; default is every agent with an INN")
+    ap.add_argument("--inns", default=None,
+                    help="comma-separated INNs to fetch instead of registry agents, for "
+                         "a discovery pass. Lets the yield be measured before any design "
+                         "features are curated -- there is no point hand-curating a "
+                         "payload family for an agent whose papers turn out to carry no "
+                         "usable table, and a wrong family propagates into a mechanism "
+                         "coefficient. The INN is its own and only alias.")
     ap.add_argument("--abstract-only", action="store_true",
                     help="also keep papers naming the agent only in the abstract. The "
                          "title requirement was a proxy for attribution; the extractor "
@@ -139,7 +146,16 @@ def main() -> int:
                     help="stop after this many XML downloads (for a bounded first pass)")
     args = ap.parse_args()
 
-    reg = yaml.safe_load((CONF / "adc_registry.yaml").read_text(encoding="utf-8"))["agents"]
+    if args.inns:
+        reg = {
+            inn.strip().lower().replace(" ", "_"): {"inn": inn.strip(), "aliases": []}
+            for inn in args.inns.split(",") if inn.strip()
+        }
+        print(f"discovery mode: {len(reg)} INNs, registry not consulted", flush=True)
+    else:
+        reg = yaml.safe_load(
+            (CONF / "adc_registry.yaml").read_text(encoding="utf-8")
+        )["agents"]
     agents = args.agents or sorted(reg)
     xml_dir = args.out / "xml"
     xml_dir.mkdir(parents=True, exist_ok=True)

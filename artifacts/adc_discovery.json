@@ -1,0 +1,1443 @@
+{
+  "provenance": {
+    "revision": "1297c7514c87b70d6d4a5b4e871fa916e5d06b81",
+    "dirty": null,
+    "snapshot": "2026-10-07",
+    "script": "discover_adc_agents.py",
+    "written_utc": "2026-10-09T02:16:28+00:00",
+    "inputs": {
+      "registry": "sha256:9a5a2d8bb098a42caa825eab6be011a2ab5659b9185fe930279114506c4c2aa9"
+    }
+  },
+  "source": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
+  "retmax": 400,
+  "stems_searched": [
+    "vedotin",
+    "mafodotin",
+    "amadotin",
+    "ledadotin",
+    "pelidotin",
+    "duostatin",
+    "emtansine",
+    "ravtansine",
+    "soravtansine",
+    "mertansine",
+    "botansine",
+    "deruxtecan",
+    "govitecan",
+    "tirumotecan",
+    "rezetecan",
+    "brengitecan",
+    "sesutecan",
+    "samrotecan",
+    "adizutecan",
+    "quilimotecan",
+    "lezutecan",
+    "cabotecan",
+    "tafolecan",
+    "vicotecan",
+    "trimotecan",
+    "iretecan",
+    "exatecan",
+    "tesirine",
+    "talirine",
+    "duocarmazine",
+    "ozogamicin",
+    "nogamicin",
+    "arihecan",
+    "pasudotox",
+    "sudotox",
+    "sunirine",
+    "ecteribulin",
+    "rilsodotin",
+    "clezutoclax",
+    "sarotalocan",
+    "doxorubicin",
+    "paclitaxel",
+    "zotiramab"
+  ],
+  "per_stem": {
+    "vedotin": {
+      "hits": 400,
+      "titles_read": 400,
+      "truncated": true,
+      "names": {
+        "enfortumab vedotin": 81,
+        "disitamab vedotin": 32,
+        "brentuximab vedotin": 32,
+        "tisotumab vedotin": 3,
+        "polatuzumab vedotin": 30,
+        "trastuzumab deruxtecan": 3,
+        "zilovertamab vedotin": 1,
+        "telisotuzumab vedotin": 5,
+        "datopotamab deruxtecan": 1,
+        "trastuzumab emtansine": 1,
+        "camidanlumab tesirine": 1,
+        "enapotamab vedotin": 1
+      }
+    },
+    "mafodotin": {
+      "hits": 182,
+      "titles_read": 182,
+      "truncated": false,
+      "names": {
+        "belantamab mafodotin": 117,
+        "depatuxizumab mafodotin": 10,
+        "losatuxizumab vedotin": 1,
+        "serclutamab talirine": 1
+      }
+    },
+    "amadotin": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "ledadotin": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "pelidotin": {
+      "hits": 5,
+      "titles_read": 5,
+      "truncated": false,
+      "names": {
+        "cofetuzumab pelidotin": 2
+      }
+    },
+    "duostatin": {
+      "hits": 2,
+      "titles_read": 2,
+      "truncated": false,
+      "names": {}
+    },
+    "emtansine": {
+      "hits": 400,
+      "titles_read": 400,
+      "truncated": true,
+      "names": {
+        "trastuzumab emtansine": 117,
+        "trastuzumab deruxtecan": 38,
+        "sacituzumab govitecan": 1,
+        "disitamab vedotin": 5,
+        "naratuximab emtansine": 1,
+        "tratuzumab emtansine": 1
+      }
+    },
+    "ravtansine": {
+      "hits": 38,
+      "titles_read": 38,
+      "truncated": false,
+      "names": {
+        "tusamitamab ravtansine": 7,
+        "anetumab ravtansine": 5,
+        "loncastuximab tesirine": 1,
+        "praluzatamab ravtansine": 1,
+        "coltuximab ravtansine": 1,
+        "indatuximab ravtansine": 2
+      }
+    },
+    "soravtansine": {
+      "hits": 87,
+      "titles_read": 87,
+      "truncated": false,
+      "names": {
+        "mirvetuximab soravtansine": 37
+      }
+    },
+    "mertansine": {
+      "hits": 33,
+      "titles_read": 33,
+      "truncated": false,
+      "names": {}
+    },
+    "botansine": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "deruxtecan": {
+      "hits": 400,
+      "titles_read": 400,
+      "truncated": true,
+      "names": {
+        "trastuzumab deruxtecan": 148,
+        "sacituzumab govitecan": 6,
+        "trastuzumab emtansine": 5,
+        "datopotamab deruxtecan": 22,
+        "disitamab vedotin": 1,
+        "enfortumab vedotin": 1,
+        "ifinatamab deruxtecan": 2,
+        "patritumab deruxtecan": 5
+      }
+    },
+    "govitecan": {
+      "hits": 398,
+      "titles_read": 398,
+      "truncated": false,
+      "names": {
+        "sacituzumab govitecan": 171,
+        "trastuzumab deruxtecan": 10,
+        "trastuzumab emtansine": 1,
+        "sacituzumab tirumotecan": 2,
+        "enfortumab vedotin": 3,
+        "datopotamab deruxtecan": 2,
+        "sacitizumab govitecan": 1,
+        "sacutizumab govitecan": 1
+      }
+    },
+    "tirumotecan": {
+      "hits": 29,
+      "titles_read": 29,
+      "truncated": false,
+      "names": {
+        "sacituzumab tirumotecan": 16
+      }
+    },
+    "rezetecan": {
+      "hits": 5,
+      "titles_read": 5,
+      "truncated": false,
+      "names": {
+        "trastuzumab rezetecan": 2
+      }
+    },
+    "brengitecan": {
+      "hits": 7,
+      "titles_read": 7,
+      "truncated": false,
+      "names": {
+        "izalontamab brengitecan": 2
+      }
+    },
+    "sesutecan": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "samrotecan": {
+      "hits": 3,
+      "titles_read": 3,
+      "truncated": false,
+      "names": {}
+    },
+    "adizutecan": {
+      "hits": 2,
+      "titles_read": 2,
+      "truncated": false,
+      "names": {
+        "telisotuzumab adizutecan": 2
+      }
+    },
+    "quilimotecan": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "lezutecan": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "cabotecan": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "tafolecan": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "vicotecan": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "trimotecan": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "iretecan": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "exatecan": {
+      "hits": 54,
+      "titles_read": 54,
+      "truncated": false,
+      "names": {
+        "trastuzumab deruxtecan": 5,
+        "sacituzumab govitecan": 1,
+        "datopotamab deruxtecan": 1
+      }
+    },
+    "tesirine": {
+      "hits": 77,
+      "titles_read": 77,
+      "truncated": false,
+      "names": {
+        "loncastuximab tesirine": 26,
+        "camidanlumab tesirine": 2,
+        "polatuzumab vedotin": 1,
+        "rovalpituzumab tesirine": 5
+      }
+    },
+    "talirine": {
+      "hits": 3,
+      "titles_read": 3,
+      "truncated": false,
+      "names": {
+        "serclutamab talirine": 2
+      }
+    },
+    "duocarmazine": {
+      "hits": 15,
+      "titles_read": 15,
+      "truncated": false,
+      "names": {
+        "vobramitamab duocarmazine": 4
+      }
+    },
+    "ozogamicin": {
+      "hits": 379,
+      "titles_read": 379,
+      "truncated": false,
+      "names": {
+        "gemtuzumab ozogamicin": 89,
+        "inotuzumab ozogamicin": 101,
+        "gentuzumab ozogamicin": 2
+      }
+    },
+    "nogamicin": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "arihecan": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "pasudotox": {
+      "hits": 22,
+      "titles_read": 22,
+      "truncated": false,
+      "names": {
+        "moxetumomab pasudotox": 6
+      }
+    },
+    "sudotox": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    },
+    "sunirine": {
+      "hits": 9,
+      "titles_read": 9,
+      "truncated": false,
+      "names": {
+        "pivekimab sunirine": 7
+      }
+    },
+    "ecteribulin": {
+      "hits": 5,
+      "titles_read": 5,
+      "truncated": false,
+      "names": {
+        "farletuzumab ecteribulin": 4
+      }
+    },
+    "rilsodotin": {
+      "hits": 2,
+      "titles_read": 2,
+      "truncated": false,
+      "names": {}
+    },
+    "clezutoclax": {
+      "hits": 1,
+      "titles_read": 1,
+      "truncated": false,
+      "names": {}
+    },
+    "sarotalocan": {
+      "hits": 14,
+      "titles_read": 14,
+      "truncated": false,
+      "names": {
+        "cetuximab sarotalocan": 2
+      }
+    },
+    "doxorubicin": {
+      "hits": 400,
+      "titles_read": 400,
+      "truncated": true,
+      "names": {
+        "polatuzumab vedotin": 1,
+        "trastuzumab emtansine": 1,
+        "brentuximab vedotin": 2
+      }
+    },
+    "paclitaxel": {
+      "hits": 400,
+      "titles_read": 400,
+      "truncated": true,
+      "names": {
+        "trastuzumab deruxtecan": 3,
+        "sacituzumab govitecan": 1,
+        "trastuzumab rezetecan": 1,
+        "sacituzumab tirumotecan": 1
+      }
+    },
+    "zotiramab": {
+      "hits": 0,
+      "titles_read": 0,
+      "truncated": false,
+      "names": {}
+    }
+  },
+  "known_in_registry": [
+    "belantamab mafodotin",
+    "brentuximab vedotin",
+    "datopotamab deruxtecan",
+    "enfortumab vedotin",
+    "gemtuzumab ozogamicin",
+    "inotuzumab ozogamicin",
+    "loncastuximab tesirine",
+    "mirvetuximab soravtansine",
+    "moxetumomab pasudotox",
+    "patritumab deruxtecan",
+    "pivekimab sunirine",
+    "polatuzumab vedotin",
+    "sacituzumab govitecan",
+    "telisotuzumab vedotin",
+    "tisotumab vedotin",
+    "trastuzumab deruxtecan",
+    "trastuzumab duocarmazine",
+    "trastuzumab emtansine"
+  ],
+  "discovered": {
+    "trastuzumab deruxtecan": {
+      "n_titles": 188,
+      "pmcids": [
+        "10372550",
+        "10424906",
+        "10622999",
+        "10973002",
+        "10993071",
+        "11039313",
+        "11087844",
+        "11136791",
+        "11145752",
+        "11296372",
+        "11333275",
+        "11337831",
+        "11462951",
+        "11630562",
+        "11788861",
+        "11953750",
+        "12000457",
+        "12065935",
+        "12084944",
+        "12152638",
+        "12187903",
+        "12212133",
+        "12239829",
+        "12265670",
+        "12341277",
+        "12410627",
+        "12451362",
+        "12458746",
+        "12509423",
+        "12520820",
+        "12529297",
+        "12550575",
+        "12554900",
+        "12558769",
+        "12564367",
+        "12570087",
+        "12586046",
+        "12587553",
+        "12588195",
+        "12589357"
+      ],
+      "stems": {
+        "vedotin": 3,
+        "emtansine": 38,
+        "deruxtecan": 148,
+        "govitecan": 10,
+        "exatecan": 5,
+        "paclitaxel": 3
+      },
+      "in_registry": true
+    },
+    "sacituzumab govitecan": {
+      "n_titles": 171,
+      "pmcids": [
+        "10061446",
+        "10113938",
+        "10213649",
+        "10308729",
+        "10378904",
+        "10542232",
+        "10587566",
+        "10667432",
+        "10883684",
+        "10912420",
+        "11002149",
+        "11039313",
+        "11044338",
+        "11045722",
+        "11083716",
+        "11095901",
+        "11106201",
+        "11156627",
+        "11183215",
+        "11185941",
+        "11194191",
+        "11195534",
+        "11233646",
+        "11247314",
+        "11296756",
+        "11296809",
+        "11300917",
+        "11306739",
+        "11328920",
+        "11331244",
+        "11345153",
+        "11357913",
+        "11374285",
+        "11379636",
+        "11393053",
+        "11431578",
+        "11452463",
+        "11458108",
+        "11458109",
+        "11495519"
+      ],
+      "stems": {
+        "emtansine": 1,
+        "deruxtecan": 6,
+        "govitecan": 171,
+        "exatecan": 1,
+        "paclitaxel": 1
+      },
+      "in_registry": true
+    },
+    "trastuzumab emtansine": {
+      "n_titles": 117,
+      "pmcids": [
+        "10056844",
+        "10154558",
+        "10158859",
+        "10225718",
+        "10232689",
+        "10300572",
+        "10398622",
+        "10427558",
+        "10622999",
+        "10686627",
+        "10764576",
+        "10973002",
+        "11036567",
+        "11089149",
+        "11091628",
+        "11093095",
+        "11127282",
+        "11145752",
+        "11152244",
+        "11187841",
+        "11205527",
+        "11230995",
+        "11279561",
+        "11290475",
+        "11333275",
+        "11343769",
+        "11385980",
+        "11457183",
+        "11462951",
+        "11484666",
+        "11527383",
+        "11532178",
+        "11679937",
+        "11743800",
+        "11771080",
+        "11788861",
+        "11792071",
+        "11792074",
+        "11959757",
+        "12007508"
+      ],
+      "stems": {
+        "vedotin": 1,
+        "emtansine": 117,
+        "deruxtecan": 5,
+        "govitecan": 1,
+        "doxorubicin": 1
+      },
+      "in_registry": true
+    },
+    "belantamab mafodotin": {
+      "n_titles": 117,
+      "pmcids": [
+        "10048929",
+        "10091809",
+        "10171581",
+        "10171634",
+        "10171704",
+        "10171737",
+        "10171742",
+        "10171789",
+        "10251850",
+        "10251953",
+        "10258852",
+        "10380484",
+        "10428262",
+        "10428327",
+        "10429247",
+        "10429649",
+        "10429714",
+        "10430908",
+        "10430947",
+        "10430952",
+        "10430953",
+        "10431067",
+        "10431560",
+        "10543185",
+        "10558016",
+        "10583243",
+        "10597720",
+        "10615937",
+        "10691812",
+        "10712739",
+        "10748584",
+        "10802748",
+        "10878971",
+        "11055177",
+        "11182418",
+        "11215350",
+        "11290537",
+        "11306733",
+        "11391083",
+        "11494064"
+      ],
+      "stems": {
+        "mafodotin": 117
+      },
+      "in_registry": true
+    },
+    "inotuzumab ozogamicin": {
+      "n_titles": 101,
+      "pmcids": [
+        "10155451",
+        "10428395",
+        "10428447",
+        "10428469",
+        "10429023",
+        "10430324",
+        "10435844",
+        "10526797",
+        "10710375",
+        "10753260",
+        "10842295",
+        "10945150",
+        "11063861",
+        "11088766",
+        "11225676",
+        "11271359",
+        "11306742",
+        "11367183",
+        "11398766",
+        "11443403",
+        "11503335",
+        "11589369",
+        "11707416",
+        "11756963",
+        "11782362",
+        "11908616",
+        "11929536",
+        "11966346",
+        "12014983",
+        "12106593",
+        "12165494",
+        "12358794",
+        "12417767",
+        "12427359",
+        "12457181",
+        "12482290",
+        "12515342",
+        "12623164",
+        "12706641",
+        "12709031"
+      ],
+      "stems": {
+        "ozogamicin": 101
+      },
+      "in_registry": true
+    },
+    "gemtuzumab ozogamicin": {
+      "n_titles": 89,
+      "pmcids": [
+        "10056876",
+        "10155714",
+        "10428495",
+        "10429479",
+        "10429782",
+        "10430292",
+        "10430557",
+        "10477319",
+        "10542832",
+        "10667325",
+        "10766767",
+        "10813452",
+        "10869147",
+        "11003505",
+        "11141665",
+        "11274629",
+        "11344603",
+        "11532717",
+        "11829133",
+        "11939501",
+        "12014624",
+        "12268538",
+        "12380593",
+        "12460294",
+        "12756534",
+        "12757529",
+        "13052346",
+        "13163365",
+        "13190247",
+        "13346843",
+        "13360726",
+        "13485798",
+        "13528083",
+        "13635508",
+        "1523361",
+        "2685241",
+        "3168467",
+        "3488582",
+        "3539972",
+        "3542629"
+      ],
+      "stems": {
+        "ozogamicin": 89
+      },
+      "in_registry": true
+    },
+    "enfortumab vedotin": {
+      "n_titles": 83,
+      "pmcids": [
+        "12173038",
+        "12574332",
+        "12593203",
+        "12605803",
+        "12617802",
+        "12630326",
+        "12647415",
+        "12684098",
+        "12699218",
+        "12704229",
+        "12723295",
+        "12740398",
+        "12747778",
+        "12755892",
+        "12769575",
+        "12778052",
+        "12811209",
+        "12811469",
+        "12812194",
+        "12831018",
+        "12836633",
+        "12865975",
+        "12875688",
+        "12877637",
+        "12877645",
+        "12920264",
+        "12923106",
+        "12932347",
+        "12935998",
+        "12984957",
+        "12992737",
+        "13013894",
+        "13031760",
+        "13033385",
+        "13033833",
+        "13052301",
+        "13071534",
+        "13088548",
+        "13089039",
+        "13091181"
+      ],
+      "stems": {
+        "vedotin": 81,
+        "deruxtecan": 1,
+        "govitecan": 3
+      },
+      "in_registry": true
+    },
+    "mirvetuximab soravtansine": {
+      "n_titles": 37,
+      "pmcids": [
+        "10150846",
+        "10387675",
+        "11098247",
+        "11347190",
+        "11399687",
+        "11520569",
+        "11543259",
+        "11583603",
+        "11617700",
+        "11676571",
+        "11853988",
+        "11869836",
+        "11887124",
+        "11918762",
+        "11921575",
+        "12013391",
+        "12094874",
+        "12239798",
+        "12612492",
+        "12681900",
+        "12809047",
+        "12986000",
+        "13073349",
+        "13103951",
+        "13136232",
+        "13156552",
+        "13183910",
+        "13194803",
+        "13195477",
+        "13239540",
+        "13361919",
+        "13387748",
+        "13391542",
+        "13401528",
+        "13571410",
+        "5126132",
+        "6893864"
+      ],
+      "stems": {
+        "soravtansine": 37
+      },
+      "in_registry": true
+    },
+    "disitamab vedotin": {
+      "n_titles": 36,
+      "pmcids": [
+        "10398622",
+        "10973002",
+        "11788861",
+        "12587629",
+        "12620218",
+        "12780152",
+        "12795025",
+        "12816211",
+        "12839656",
+        "12944489",
+        "12972018",
+        "12975876",
+        "13059887",
+        "13062832",
+        "13146350",
+        "13168194",
+        "13180562",
+        "13229803",
+        "13238207",
+        "13283919",
+        "13315034",
+        "13368643",
+        "13423685",
+        "13443131",
+        "13454782",
+        "13457732",
+        "13488181",
+        "13488466",
+        "13504887",
+        "13508225",
+        "13565595",
+        "13581653",
+        "13616963",
+        "13617043",
+        "13634177",
+        "9090390"
+      ],
+      "stems": {
+        "vedotin": 32,
+        "emtansine": 5,
+        "deruxtecan": 1
+      },
+      "in_registry": false
+    },
+    "brentuximab vedotin": {
+      "n_titles": 32,
+      "pmcids": [
+        "12619040",
+        "12638574",
+        "12641779",
+        "12710109",
+        "12744279",
+        "12773585",
+        "12781149",
+        "12784681",
+        "12852807",
+        "12907483",
+        "12951133",
+        "12961214",
+        "12965843",
+        "12966866",
+        "13059051",
+        "13077476",
+        "13101698",
+        "13109441",
+        "13159111",
+        "13199610",
+        "13228961",
+        "13234477",
+        "13301599",
+        "13327382",
+        "13340334",
+        "13381218",
+        "13456517",
+        "13486789",
+        "13512761",
+        "13554270",
+        "13558693",
+        "13627086"
+      ],
+      "stems": {
+        "vedotin": 32,
+        "doxorubicin": 2
+      },
+      "in_registry": true
+    },
+    "polatuzumab vedotin": {
+      "n_titles": 30,
+      "pmcids": [
+        "12006240",
+        "12619725",
+        "12640955",
+        "12703129",
+        "12710110",
+        "12711264",
+        "12711268",
+        "12755979",
+        "12793779",
+        "12814615",
+        "12823810",
+        "12885135",
+        "12907483",
+        "12999248",
+        "12999267",
+        "13099801",
+        "13332006",
+        "13343289",
+        "13364794",
+        "13401542",
+        "13423779",
+        "13428363",
+        "13443373",
+        "13490536",
+        "13507983",
+        "13528845",
+        "13575533",
+        "13585584",
+        "13611666",
+        "13620398"
+      ],
+      "stems": {
+        "vedotin": 30,
+        "tesirine": 1,
+        "doxorubicin": 1
+      },
+      "in_registry": true
+    },
+    "loncastuximab tesirine": {
+      "n_titles": 26,
+      "pmcids": [
+        "10431093",
+        "10787240",
+        "10887233",
+        "10985439",
+        "11276998",
+        "11443381",
+        "11474291",
+        "11480243",
+        "11521353",
+        "11604956",
+        "11792824",
+        "11792830",
+        "11873689",
+        "12006240",
+        "12140443",
+        "12150597",
+        "12159156",
+        "13328221",
+        "13455147",
+        "8943462",
+        "9335500",
+        "9429019",
+        "9431201",
+        "9431454",
+        "9431578",
+        "9631657"
+      ],
+      "stems": {
+        "ravtansine": 1,
+        "tesirine": 26
+      },
+      "in_registry": true
+    },
+    "datopotamab deruxtecan": {
+      "n_titles": 25,
+      "pmcids": [
+        "10981107",
+        "11210948",
+        "12445656",
+        "12578065",
+        "12603430",
+        "12706414",
+        "12743830",
+        "12751586",
+        "12752073",
+        "12867380",
+        "12883807",
+        "12906696",
+        "12933643",
+        "13084299",
+        "13187552",
+        "13191115",
+        "13203067",
+        "13293729",
+        "13374750",
+        "13384859",
+        "13448498",
+        "13449377",
+        "13557973",
+        "13572793",
+        "13583573"
+      ],
+      "stems": {
+        "vedotin": 1,
+        "deruxtecan": 22,
+        "govitecan": 2,
+        "exatecan": 1
+      },
+      "in_registry": true
+    },
+    "sacituzumab tirumotecan": {
+      "n_titles": 16,
+      "pmcids": [
+        "12139608",
+        "12142944",
+        "12342494",
+        "12351129",
+        "12916699",
+        "12965532",
+        "13149194",
+        "13190414",
+        "13287214",
+        "13381504",
+        "13432852",
+        "13453752",
+        "13458565",
+        "13535344",
+        "13593920",
+        "13617735"
+      ],
+      "stems": {
+        "govitecan": 2,
+        "tirumotecan": 16,
+        "paclitaxel": 1
+      },
+      "in_registry": false
+    },
+    "depatuxizumab mafodotin": {
+      "n_titles": 10,
+      "pmcids": [
+        "10413800",
+        "12577899",
+        "13043081",
+        "13231147",
+        "5686264",
+        "5969257",
+        "6303422",
+        "8199759",
+        "8645742",
+        "9925712"
+      ],
+      "stems": {
+        "mafodotin": 10
+      },
+      "in_registry": false
+    },
+    "tusamitamab ravtansine": {
+      "n_titles": 7,
+      "pmcids": [
+        "10461573",
+        "12296879",
+        "12478256",
+        "12720031",
+        "12896379",
+        "8923727",
+        "9098589"
+      ],
+      "stems": {
+        "ravtansine": 7
+      },
+      "in_registry": false
+    },
+    "pivekimab sunirine": {
+      "n_titles": 7,
+      "pmcids": [
+        "10428302",
+        "10429871",
+        "11739898",
+        "13011954",
+        "13628004",
+        "13628024",
+        "9431197"
+      ],
+      "stems": {
+        "sunirine": 7
+      },
+      "in_registry": true
+    },
+    "moxetumomab pasudotox": {
+      "n_titles": 6,
+      "pmcids": [
+        "6087717",
+        "6323103",
+        "6338709",
+        "6647181",
+        "7905554",
+        "8269075"
+      ],
+      "stems": {
+        "pasudotox": 6
+      },
+      "in_registry": true
+    },
+    "telisotuzumab vedotin": {
+      "n_titles": 5,
+      "pmcids": [
+        "12580119",
+        "12649284",
+        "12688768",
+        "12945708",
+        "13293683"
+      ],
+      "stems": {
+        "vedotin": 5
+      },
+      "in_registry": true
+    },
+    "anetumab ravtansine": {
+      "n_titles": 5,
+      "pmcids": [
+        "10086500",
+        "11885412",
+        "11911801",
+        "6183338",
+        "7255978"
+      ],
+      "stems": {
+        "ravtansine": 5
+      },
+      "in_registry": false
+    },
+    "patritumab deruxtecan": {
+      "n_titles": 5,
+      "pmcids": [
+        "12532567",
+        "12536771",
+        "12678423",
+        "12716039",
+        "12758208"
+      ],
+      "stems": {
+        "deruxtecan": 5
+      },
+      "in_registry": true
+    },
+    "rovalpituzumab tesirine": {
+      "n_titles": 5,
+      "pmcids": [
+        "6277321",
+        "7921085",
+        "7993269",
+        "8342450",
+        "9648412"
+      ],
+      "stems": {
+        "tesirine": 5
+      },
+      "in_registry": false
+    },
+    "vobramitamab duocarmazine": {
+      "n_titles": 4,
+      "pmcids": [
+        "10546160",
+        "12877178",
+        "13376878",
+        "13392588"
+      ],
+      "stems": {
+        "duocarmazine": 4
+      },
+      "in_registry": false
+    },
+    "farletuzumab ecteribulin": {
+      "n_titles": 4,
+      "pmcids": [
+        "11903193",
+        "12110728",
+        "13081172",
+        "13173608"
+      ],
+      "stems": {
+        "ecteribulin": 4
+      },
+      "in_registry": false
+    },
+    "tisotumab vedotin": {
+      "n_titles": 3,
+      "pmcids": [
+        "13053849",
+        "13510534",
+        "13628103"
+      ],
+      "stems": {
+        "vedotin": 3
+      },
+      "in_registry": true
+    },
+    "camidanlumab tesirine": {
+      "n_titles": 2,
+      "pmcids": [
+        "12745010",
+        "8897307"
+      ],
+      "stems": {
+        "vedotin": 1,
+        "tesirine": 2
+      },
+      "in_registry": false
+    },
+    "serclutamab talirine": {
+      "n_titles": 2,
+      "pmcids": [
+        "9446689",
+        "9940695"
+      ],
+      "stems": {
+        "mafodotin": 1,
+        "talirine": 2
+      },
+      "in_registry": false
+    },
+    "cofetuzumab pelidotin": {
+      "n_titles": 2,
+      "pmcids": [
+        "13473755",
+        "9401513"
+      ],
+      "stems": {
+        "pelidotin": 2
+      },
+      "in_registry": false
+    },
+    "indatuximab ravtansine": {
+      "n_titles": 2,
+      "pmcids": [
+        "5225632",
+        "5904230"
+      ],
+      "stems": {
+        "ravtansine": 2
+      },
+      "in_registry": false
+    },
+    "ifinatamab deruxtecan": {
+      "n_titles": 2,
+      "pmcids": [
+        "12536792",
+        "12834294"
+      ],
+      "stems": {
+        "deruxtecan": 2
+      },
+      "in_registry": false
+    },
+    "trastuzumab rezetecan": {
+      "n_titles": 2,
+      "pmcids": [
+        "13274680",
+        "13623704"
+      ],
+      "stems": {
+        "rezetecan": 2,
+        "paclitaxel": 1
+      },
+      "in_registry": false
+    },
+    "izalontamab brengitecan": {
+      "n_titles": 2,
+      "pmcids": [
+        "13011950",
+        "13623066"
+      ],
+      "stems": {
+        "brengitecan": 2
+      },
+      "in_registry": false
+    },
+    "telisotuzumab adizutecan": {
+      "n_titles": 2,
+      "pmcids": [
+        "13266338",
+        "13340450"
+      ],
+      "stems": {
+        "adizutecan": 2
+      },
+      "in_registry": false
+    },
+    "gentuzumab ozogamicin": {
+      "n_titles": 2,
+      "pmcids": [
+        "3507532",
+        "8268215"
+      ],
+      "stems": {
+        "ozogamicin": 2
+      },
+      "in_registry": false
+    },
+    "cetuximab sarotalocan": {
+      "n_titles": 2,
+      "pmcids": [
+        "12228235",
+        "12275018"
+      ],
+      "stems": {
+        "sarotalocan": 2
+      },
+      "in_registry": false
+    },
+    "zilovertamab vedotin": {
+      "n_titles": 1,
+      "pmcids": [
+        "13390736"
+      ],
+      "stems": {
+        "vedotin": 1
+      },
+      "in_registry": false
+    },
+    "enapotamab vedotin": {
+      "n_titles": 1,
+      "pmcids": [
+        "12648153"
+      ],
+      "stems": {
+        "vedotin": 1
+      },
+      "in_registry": false
+    },
+    "losatuxizumab vedotin": {
+      "n_titles": 1,
+      "pmcids": [
+        "11292202"
+      ],
+      "stems": {
+        "mafodotin": 1
+      },
+      "in_registry": false
+    },
+    "naratuximab emtansine": {
+      "n_titles": 1,
+      "pmcids": [
+        "11699082"
+      ],
+      "stems": {
+        "emtansine": 1
+      },
+      "in_registry": false
+    },
+    "tratuzumab emtansine": {
+      "n_titles": 1,
+      "pmcids": [
+        "10210145"
+      ],
+      "stems": {
+        "emtansine": 1
+      },
+      "in_registry": false
+    },
+    "praluzatamab ravtansine": {
+      "n_titles": 1,
+      "pmcids": [
+        "9365353"
+      ],
+      "stems": {
+        "ravtansine": 1
+      },
+      "in_registry": false
+    },
+    "coltuximab ravtansine": {
+      "n_titles": 1,
+      "pmcids": [
+        "6068033"
+      ],
+      "stems": {
+        "ravtansine": 1
+      },
+      "in_registry": false
+    },
+    "sacitizumab govitecan": {
+      "n_titles": 1,
+      "pmcids": [
+        "10421911"
+      ],
+      "stems": {
+        "govitecan": 1
+      },
+      "in_registry": false
+    },
+    "sacutizumab govitecan": {
+      "n_titles": 1,
+      "pmcids": [
+        "7213261"
+      ],
+      "stems": {
+        "govitecan": 1
+      },
+      "in_registry": false
+    }
+  },
+  "n_discovered": 44,
+  "n_new": 27,
+  "truncated_stems": [
+    "vedotin",
+    "emtansine",
+    "deruxtecan",
+    "doxorubicin",
+    "paclitaxel"
+  ]
+}
