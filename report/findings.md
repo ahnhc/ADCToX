@@ -13,6 +13,35 @@ randomly fabricated four-decimal figures -- so it now measures and prints its ow
 false-pass rate on every run. At three decimals it is still weak, which is why figures are
 quoted to four where traceability is the point.
 
+## Contents, and what each section found
+
+The lettered sections are in the order they were written, not in order of importance. Each
+line says what the section concluded, so a reader can go to the ones that matter to them.
+
+| section | what it found |
+|---|---|
+| 1. What was built | A comorbidity profile and a target antigen in, proposed designs with per-organ rates out. |
+| 2. The corpus | 3,990 cells, but only **224** identify a design coefficient, because design features are agent-level constants. |
+| 3. Results | The model does not beat a base-rate baseline on any evaluation, after two rounds of correction. |
+| 4. Where it fails | The design terms lose to a base rate by a measurable ratio, and the obvious fix is not identifiable at either granularity. |
+| 5. What it does support | The mechanism x axis interaction, linker cleavability, and the censoring treatment. |
+| 5b. Censoring | The censoring treatment recovers signal rather than creating it, and `b_thresh` is a confounder control rather than that correction. |
+| 5c. Two event tables | The common and serious tables rank organs differently; the serious one recovers the boxed warnings. |
+| 5d. Label rules | How much of a band comes from the fit and how much from a label-derived rule, counted. |
+| 5e. Target antigen | It was an inert input. Expression data now changes the bands and the stated reasons, and not which design is proposed. |
+| 5e-b. Ranking | **The product cannot rank its own proposals in any of 192 queries**, and the comorbidity profile's influence is a function of an arbitrary constant. |
+| 5e-c. Ordinal comparison | Every rate now carries its position among the registry chemistries, which recovers a boxed warning on its first use. |
+| 5f. The one positive signal | Across-agent per-axis correlation of +0.17 after adjustment, and why it is not settled. |
+| 5g. Corpus expansion | The ceiling is 32 agents and not the planned 54; the expansion buys the common-events table and not the serious one. |
+| 5h. Comorbidity layer | A non-circular holdout against 1,741 trials' exclusion criteria, at AUROC 0.666 against 0.750 circularly. |
+| 5i. Its primary validation | Misspecified. The FDA labels argue from clearance, not organ toxicity, and point somewhere else. |
+| 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
+| 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
+| 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
+| **9. Measured negative results** | **The strongest section. 26 results, each reproducible.** |
+| 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
+| 10. Limitations | What this must not be used for. |
+
 ## 1. What was built
 
 A system that takes a comorbidity profile and a target antigen and returns proposed ADC
