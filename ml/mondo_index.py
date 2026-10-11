@@ -72,7 +72,7 @@ _IDX = None
 def link(texts):
     global _IDX
     if _IDX is None: _IDX = np.load(C + "mondo_index.npz", allow_pickle=True)
-    Q = _embed(list(texts), "cpu"); S = Q @ _IDX["E"].astype(np.float32).T; out = []
+    Q = _embed(list(texts), "cuda:0" if torch.cuda.is_available() else "cpu"); S = Q @ _IDX["E"].astype(np.float32).T; out = []
     for i in range(len(texts)):
         j = int(S[i].argmax()); sim = float(S[i, j]); ax = _IDX["axes"][j]
         out.append(dict(mondo=str(_IDX["ids"][j]), name=str(_IDX["names"][j]), sim=sim, axes=[AXES[k] for k in np.where(ax > 0)[0]] if sim >= THETA else []))
