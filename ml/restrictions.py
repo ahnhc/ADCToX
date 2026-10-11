@@ -28,9 +28,10 @@ COVERED = ("renal", "hepatic")                       # domains where silence is 
 DOMAIN_AXIS = {"renal": "renal", "hepatic": "hepatic", "cardiac": "cardiovascular", "ocular": "ocular"}
 NEEDS = {"renal": "CLcr (Cockcroft-Gault), dialysis/ESRD status if CLcr < 15", "hepatic": "total bilirubin / AST / ALT (x ULN), Child-Pugh", "cardiac": "baseline LVEF"}
 INF = float("inf")
-KO = {"no_adjustment": "조정 불필요", "monitor": "모니터링", "reduce_dose": "감량 필요", "no_statement": "언급 없음",
-      "insufficient_data": "자료 부족", "avoid": "회피", "contraindicated": "금기"}
-DOMAIN_KO = {"renal": "신장", "hepatic": "간", "cardiac": "심장", "ocular": "눈", "qt": "QT", "genotype": "유전형", "other": "병용"}
+# words for the result table: Clear = the label settles it (no adjustment), Unclear = the label says data are limited/unknown,
+# No data = the label says nothing about this patient's state
+TABLE = {"no_adjustment": "Clear", "monitor": "Monitor", "reduce_dose": "Reduce dose", "no_statement": "No data",
+         "insufficient_data": "Unclear", "avoid": "Avoid", "contraindicated": "Contraindicated"}
 
 
 def load_rules():
@@ -164,11 +165,11 @@ def _top(entries, ko=False):
         if d not in per or TIER[c] > TIER[per[d][0]] or (TIER[c] == TIER[per[d][0]] and CATS.index(c) > CATS.index(per[d][0])): per[d] = (c, s)
     top = max(TIER[c] for c, _ in per.values()); groups = {}
     for d, (c, s) in sorted(per.items()):
-        if TIER[c] == top: groups.setdefault(c, []).append(DOMAIN_KO.get(d, d) if ko else f"{d} {s}".strip())
-    return "; ".join(f"{(KO if ko else SHORT)[c]} ({', '.join(ds)})" for c, ds in sorted(groups.items(), key=lambda kv: -CATS.index(kv[0])))
+        if TIER[c] == top: groups.setdefault(c, []).append(d if ko else f"{d} {s}".strip())
+    return "; ".join(f"{(TABLE if ko else SHORT)[c]} ({', '.join(ds)})" for c, ds in sorted(groups.items(), key=lambda kv: -CATS.index(kv[0])))
 
 
-def summary(v, ko=False):
+def summary(v, ko=False):          # ko: the short table words (TABLE), no section numbers
     """short cell text: the most restrictive known verdict for EVERY domain that reaches it, then what a missing test could
     still make it (again every domain at that tier). A domain the label is silent on counts as 'No label statement'."""
     known = [(c, r["domain"], r["section"]) for c, r in v.known] + [("no_statement", d, "") for d, sure in v.silent if sure]

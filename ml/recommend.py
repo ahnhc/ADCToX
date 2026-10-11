@@ -199,14 +199,11 @@ def _inc_text(o):
     x = o["inc"]; return f"G>=3 {x['pct']:g}% {x['term'].rstrip('*†‡§¶#^±※♦àèðþýßø0123456789, ')}" + (" [combo]" if x["combo"] else "") + (" [lab]" if x["lab"] else "")
 
 
-LEGEND = "Primary = 허가사항의 가장 강한 경고 · Secondary = 그 밖의 경고 · ? = 입력하지 않은 검사 수치에 따라 달라짐 · 다른 장기는 순위에 반영 안 함"
-
-
 def _table(rows, paint=lambda t, c: t):
     """-> (table lines, index of the line of each row)."""
     tone = {4: "31;1", 3: "31", 2: "33", 1: "36", 0: "32", -1: ""}
-    org_txt = lambda xs: ", ".join(ORGAN_KO[a] for a in xs) or "-"
-    head = ["#", "ADC", "허가 제한", "내 장기: Primary", "내 장기: Secondary", "다른 장기: Primary"]
+    org_txt = lambda xs: ", ".join(EN[a] for a in xs) or "-"
+    head = ["#", "ADC", "Label restriction", "Primary", "Secondary", "Primary"]
     cells, prev_rank, starts = [], None, set()
     for i, r in enumerate(rows):
         if r["rank"] != prev_rank and i: starts.add(i)
@@ -214,8 +211,14 @@ def _table(rows, paint=lambda t, c: t):
         cells.append([(rk, ""), (r["name"][:26], ""), (r["restriction_ko"], rc), (org_txt(r["boxed"]), "31" if r["boxed"] else ""),
                       (org_txt(r["warn"]), "33" if r["warn"] else ""), (org_txt(r["elsewhere"]), "90")])
     wd = [max([_width(head[c])] + [_width(row[c][0]) for row in cells]) for c in range(len(head))]
+    wd[5] = max(wd[5], len("Other organs")); span = wd[3] + wd[4] + 3
+    if span < len("Your organs"): wd[4] += len("Your organs") - span; span = len("Your organs")
     line = lambda l, m, rr: l + m.join("─" * (x + 2) for x in wd) + rr
-    out = [line("┌", "┬", "┐"), "│ " + " │ ".join(h + " " * (x - _width(h)) for h, x in zip(head, wd)) + " │", line("├", "┼", "┤")]
+    pad = lambda s, n: s + " " * (n - _width(s))
+    out = ["┌" + "┬".join("─" * (x + 2) for x in wd[:3]) + "┬" + "─" * (span + 2) + "┬" + "─" * (wd[5] + 2) + "┐",
+           "│ " + " │ ".join(" " * x for x in wd[:3]) + " │ " + pad("Your organs", span) + " │ " + pad("Other organs", wd[5]) + " │",
+           "│" + "│".join(" " * (x + 2) for x in wd[:3]) + "├" + "─" * (wd[3] + 2) + "┬" + "─" * (wd[4] + 2) + "┼" + "─" * (wd[5] + 2) + "┤",
+           "│ " + " │ ".join(pad(h, x) for h, x in zip(head, wd)) + " │", line("├", "┼", "┤")]
     thin = "├" + "┼".join("╌" * (x + 2) for x in wd) + "┤"; at = []
     for i, row in enumerate(cells):
         if i in starts: out.append(paint(thin, "90"))
@@ -226,16 +229,16 @@ def _table(rows, paint=lambda t, c: t):
 
 def reasons(r):
     """lines explaining one row: each label restriction with its section and verbatim text, and what is still open."""
-    v = r["verdict"]; out = [f"{r['name']}  —  허가 제한: {r['restriction_ko']}", ""]
+    v = r["verdict"]; out = [f"{r['name']}  —  {r['restriction_ko']}", ""]
     items = [(c, rr, True) for c, rr in v.known] + [(c, rr, False) for c, rr in v.possible]
     items = [x for x in items if x[0] != "no_adjustment" or len(items) == 1]
     for c, rr, sure in sorted(items, key=lambda x: (-RS.TIER[x[0]], not x[2])):
-        out.append(f"{RS.KO[c]}{'' if sure else '?'} ({RS.DOMAIN_KO.get(rr['domain'], rr['domain'])}, 허가사항 {rr['section']}절): \"{rr['quote']}\"")
+        out.append(f"{RS.TABLE[c]}{'' if sure else '?'} ({rr['domain']}, §{rr['section']}): \"{rr['quote']}\"")
     for d, sure in v.silent:
-        out.append(f"언급 없음{'' if sure else '?'} ({RS.DOMAIN_KO.get(d, d)}): 허가사항 8.6/8.7절이 이 환자의 {RS.DOMAIN_KO.get(d, d)} 상태에 대해 말하지 않음")
-    if v.missing: out.append(f"확정하려면 입력: {'; '.join(v.missing)}")
+        out.append(f"No data{'' if sure else '?'} ({d}): 허가사항 8.6/8.7절에 이 환자의 {d} 상태에 대한 언급이 없음")
+    if v.missing: out.append(f"? 를 확정하려면 입력: {'; '.join(v.missing)}")
     if not items and not v.silent: out.append("이 환자에게 해당하는 투여 제한 없음")
-    out.append(""); out.append(f"Primary (환자 장기): {', '.join(ORGAN_KO[a] for a in r['boxed']) or '-'}   Secondary: {', '.join(ORGAN_KO[a] for a in r['warn']) or '-'}")
+    out.append(""); out.append(f"Your organs  Primary: {', '.join(EN[a] for a in r['boxed']) or '-'}   Secondary: {', '.join(EN[a] for a in r['warn']) or '-'}")
     return out
 
 
@@ -243,7 +246,7 @@ def browse(rows):
     """interactive view of the result table (terminal only): pick a row to read why it has its restriction."""
     import tui
     lines, at = _table(rows)
-    tui.browse("결과 · 행을 고르면 아래에 이유가 나옵니다", lines, at, [reasons(r) for r in rows], footer=LEGEND)
+    tui.browse("결과 · 행을 고르면 아래에 이유가 나옵니다", lines, at, [reasons(r) for r in rows])
 
 
 def render(rows, s, notes, checks_, detail=False, color=None):
@@ -264,7 +267,6 @@ def render(rows, s, notes, checks_, detail=False, color=None):
     print()
     lines, _ = _table(rows, paint)
     for ln in lines: print(ln)
-    print(paint("  " + LEGEND, "90"))
     if checks_:
         print("\n투여 전 확인")
         for test, names, src in checks_:
