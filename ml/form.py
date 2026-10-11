@@ -8,6 +8,22 @@ import curses
 from tui import _Screen, _cw, _clip, _wrap, _enter
 
 BACK, QUIT = "back", "quit"
+SAVE = __import__("os").path.expanduser("~/.config/adctox/last_input.json")      # last entries, offered again next time (local only)
+
+
+def load():
+    import json
+    try:
+        d = json.load(open(SAVE)); return dict(picked=set(d.get("picked", [])), free=d.get("free", ""), raw=d.get("raw", {}))
+    except (OSError, ValueError): return dict(picked=set(), free="", raw={})
+
+
+def save(st):
+    import json, os
+    try:
+        os.makedirs(os.path.dirname(SAVE), exist_ok=True)
+        json.dump(dict(picked=sorted(st["picked"]), free=st["free"], raw=st["raw"]), open(SAVE, "w"), ensure_ascii=False)
+    except OSError: pass
 
 
 def _w(s): return sum(_cw(c) for c in s)
@@ -63,7 +79,7 @@ class Form:
             pick_rows = [k for k in shown if items[k][0] != "head"]
             if not pick_rows: pick_rows = [sel[-1]]; shown = pick_rows
             cur = min(cur, len(pick_rows) - 1); at = pick_rows[cur]
-            y0 = self.frame("기저질환", "↑↓ 이동   SPACE 선택   / 검색   ENTER 다음 단계   ESC 나가기")
+            y0 = self.frame("기저질환", "↑↓ 이동   SPACE 선택   / 검색   PgDn 다음 단계   ESC 나가기")
             h, w = self.scr.getmaxyx(); bottom = 3; area = max(3, h - y0 - bottom)
             pos = shown.index(at); top = max(0, min(pos - area // 2, len(shown) - area))
             for r, k in enumerate(shown[top:top + area]):
@@ -98,8 +114,9 @@ class Form:
                 continue
             if k == "UP": cur = max(0, cur - 1)
             elif k == "DOWN": cur = min(len(pick_rows) - 1, cur + 1)
-            elif k == "PGUP": cur = max(0, cur - area)
-            elif k == "PGDN": cur = min(len(pick_rows) - 1, cur + area)
+            elif k == "PGDN":
+                if picked or split_free(free): return picked, free
+                note = "하나 이상 고르세요"
             elif k == "/": query = ""; self._searching = True; cur = 0
             elif k == " ":
                 kind, val, _ = items[at]
@@ -118,7 +135,8 @@ class Form:
     # ------------------------------------------------------------------ step 2
     def labs(self, raw):
         import labs as LB
-        fields = LB.FIELDS; vals = {k: ("" if raw.get(k) is None else (str(raw[k]) if not isinstance(raw[k], bool) else ("y" if raw[k] else "n"))) for k, *_ in fields}
+        fields = LB.FIELDS; show = lambda v: ("y" if v else "n") if isinstance(v, bool) else (f"{v:g}" if isinstance(v, float) else str(v))
+        vals = {k: "" if raw.get(k) is None else show(raw[k]) for k, *_ in fields}
         rows = []                                                      # ("head", group) / ("field", index) / ("done",)
         g = None
         for i, (k, label, unit, grp) in enumerate(fields):
@@ -128,7 +146,7 @@ class Form:
         lw = max(len(l) for _, l, _, _ in fields)
         while True:
             at = pick[cur]
-            y0 = self.frame("검사 수치 (아는 것만)", "↑↓ 이동   값 입력   ENTER 다음 칸   PgDn 완료로   ESC 이전 단계")
+            y0 = self.frame("검사 수치 (아는 것만)", "↑↓ 이동   값 입력   ENTER 다음 칸   PgUp 이전 단계   PgDn 다음 단계")
             h, w = self.scr.getmaxyx(); area = max(3, h - y0 - 2); top = max(0, min(at - area // 2, len(rows) - area))
             for r, x in enumerate(rows[top:top + area]):
                 row = top + r; on = row == at
@@ -137,20 +155,21 @@ class Form:
                 else:
                     k, label, unit, _ = fields[x[1]]; v = vals[k]
                     self.S.put(y0 + r, 0, f" {'→' if on else ' '} {label:<{lw}}  {v + ('_' if on else ''):<10} {unit}", self.S.cur if on else 0)
-            try:
-                parsed = {k: LB.parse(k, v) for k, v in vals.items() if v.strip()}
-                lab, flags, notes = LB.derive(parsed); info = "   ".join(n for n in notes if n.startswith("CLcr"))
-            except ValueError: info = ""
+            parsed = {}
+            for key, v in vals.items():                                 # a value still being typed ("0", "0.") is just left out
+                try:
+                    if v.strip(): parsed[key] = LB.parse(key, v)
+                except ValueError: pass
+            try: info = "   ".join(n for n in LB.derive(parsed)[2] if n.startswith("CLcr"))
+            except Exception: info = ""
             self.S.put(h - 1, 1, note or info, self.S.dim); note = ""
             self.scr.refresh(); k = _key(self.scr)
             x = rows[at]
             if k == "UP": cur = max(0, cur - 1)
             elif k == "DOWN": cur = min(len(pick) - 1, cur + 1)
-            elif k == "PGUP": cur = 0
-            elif k == "PGDN": cur = len(pick) - 1
-            elif k == "ESC": return BACK
-            elif k == "ENTER":
-                if x[0] == "done":
+            elif k in ("PGUP", "ESC"): return BACK
+            elif k == "ENTER" or k == "PGDN":
+                if x[0] == "done" or k == "PGDN":
                     out = {}
                     for key, v in vals.items():
                         if not v.strip(): continue
@@ -170,7 +189,7 @@ class Form:
     def choose(self, title, desc, options, default=0):
         cur = default
         while True:
-            y0 = self.frame(title, "↑↓ 이동   ENTER 선택   ESC 이전 단계")
+            y0 = self.frame(title, "↑↓ 이동   ENTER 선택   PgUp 이전 단계")
             h, w = self.scr.getmaxyx()
             for ln in _wrap(desc, w - 4, "  ") if desc else []: self.S.put(y0, 2, ln, self.S.dim); y0 += 1
             if desc: y0 += 1
@@ -178,13 +197,13 @@ class Form:
             self.scr.refresh(); k = _key(self.scr)
             if k == "UP": cur = max(0, cur - 1)
             elif k == "DOWN": cur = min(len(options) - 1, cur + 1)
-            elif k == "ENTER" or k == " ": return cur
-            elif k == "ESC": return BACK
+            elif k in ("ENTER", " ", "PGDN"): return cur
+            elif k in ("ESC", "PGUP"): return BACK
 
     def order(self, names, details, levels):
         lv = list(levels); n = len(names); it = 0
         while True:
-            y0 = self.frame("어느 질환 쪽 독성을 먼저 피할까요?  (1 = 먼저, 같은 숫자 = 같은 순위)", "↑↓ 이동   ←→ 순위 변경   ENTER 확정   ESC 이전 단계")
+            y0 = self.frame("어느 질환 쪽 독성을 먼저 피할까요?  (1 = 먼저, 같은 숫자 = 같은 순위)", "↑↓ 이동   ←→ 순위 변경   ENTER 확정   PgUp 이전 단계")
             order = sorted(range(n), key=lambda i: (lv[i], i)); pos = order.index(it); w0 = max(_w(x) for x in names)
             for r, i in enumerate(order):
                 on = i == it; self.S.put(y0 + r, 0, f" {'→' if on else ' '} {lv[i]:>2}   {names[i]}{' ' * (w0 - _w(names[i]))}   {details[i]}", self.S.cur if on else 0)
@@ -193,8 +212,8 @@ class Form:
             elif k == "DOWN": it = order[min(n - 1, pos + 1)]
             elif k in ("LEFT", "-"): lv[it] = max(1, lv[it] - 1)
             elif k in ("RIGHT", "+", "="): lv[it] = min(n, lv[it] + 1)
-            elif k == "ENTER": d = {v: j for j, v in enumerate(sorted(set(lv)), 1)}; return [d[v] for v in lv]
-            elif k == "ESC": return BACK
+            elif k in ("ENTER", "PGDN"): d = {v: j for j, v in enumerate(sorted(set(lv)), 1)}; return [d[v] for v in lv]
+            elif k in ("ESC", "PGUP"): return BACK
 
     def loading(self, text):
         y0 = self.frame(text, ""); self.scr.refresh()
@@ -203,7 +222,7 @@ class Form:
 def run(RC):
     """-> (conditions, raw labs) or None."""
     def app(scr):
-        curses.curs_set(0); F = Form(scr, RC); st = dict(picked=set(), free="", raw={}); step = 0
+        curses.curs_set(0); F = Form(scr, RC); st = load(); st["picked"] &= set(RC._reg); step = 0
         while True:
             F.done = []
             if step >= 1: F.done.append(("기저질환", ", ".join([RC._reg[i]["label"] for i in sorted(st["picked"], key=list(RC._reg).index)] + split_free(st["free"]))))
@@ -216,11 +235,11 @@ def run(RC):
             if step == 0:
                 r = F.conditions(st["picked"], st["free"])
                 if r == QUIT: return None
-                st["picked"], st["free"] = r; step = 1
+                st["picked"], st["free"] = r; save(st); step = 1
             elif step == 1:
                 r = F.labs(st["raw"])
                 if r == BACK: step = 0; continue
-                st["raw"] = r; step = 2
+                st["raw"] = r; save(st); step = 2
             elif step == 2:                                       # free text that maps to no organ
                 if split_free(st["free"]): F.loading("질환 해석 모델 불러오는 중 ...")
                 miss = RC.unresolved(conds) if split_free(st["free"]) else []

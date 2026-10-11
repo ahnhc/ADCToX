@@ -19,6 +19,9 @@ FIELDS = [("age", "Age", "years", "Basic"), ("sex", "Sex", "M/F", "Basic"), ("we
           ("amylase", "Amylase", "U/L", "Pancreas"), ("lipase", "Lipase", "U/L", "Pancreas"),
           ("tsh", "TSH", "µIU/mL", "Thyroid"),
           ("lvef", "LVEF", "%", "Other"), ("child_pugh", "Child-Pugh", "A/B/C", "Other"), ("ugt1a1", "UGT1A1*28 homozygous", "y/n", "Other")]
+RANGE = {"age": (1, 120), "weight": (1, 400), "creatinine": (0.05, 30), "egfr": (1, 200), "bilirubin": (0.01, 50), "ast": (1, 10000),
+         "alt": (1, 10000), "albumin": (0.5, 7), "ggt": (1, 10000), "hb": (1, 25), "platelet": (1, 2000), "anc": (0.01, 100),
+         "hba1c": (2, 25), "glucose": (10, 2000), "amylase": (1, 10000), "lipase": (1, 10000), "tsh": (0.001, 500), "lvef": (5, 90)}
 ULN = {"bilirubin": 1.2, "ast": 40.0, "alt": 40.0, "ggt": 60.0, "amylase": 100.0, "lipase": 60.0}
 
 # (key, test, organ, why) -- CTCAE v5.0 grade >= 2 unless stated
@@ -51,7 +54,10 @@ def parse(key, text):
     if key == "ugt1a1":
         if t.lower()[:1] in ("y", "n"): return t.lower()[:1] == "y"
         raise ValueError("y or n")
-    return float(t.replace(",", ""))
+    v = float(t.replace(",", ""))
+    lo, hi = RANGE.get(key, (float("-inf"), float("inf")))
+    if not lo <= v <= hi: raise ValueError(f"{lo:g}–{hi:g}")
+    return v
 
 
 def cockcroft_gault(age, weight, creatinine, sex):
@@ -61,7 +67,7 @@ def cockcroft_gault(age, weight, creatinine, sex):
 def derive(raw, uln=None):
     """raw {key: value} -> (restriction inputs for ml/restrictions.Patient, [(organ, why)], [note lines])."""
     u = {**ULN, **(uln or {})}; lab, flags, notes = {}, [], []
-    if all(raw.get(k) is not None for k in ("age", "weight", "creatinine", "sex")):
+    if all(raw.get(k) is not None for k in ("age", "weight", "creatinine", "sex")) and raw["creatinine"] > 0 and raw["age"] < 140:
         lab["crcl"] = round(cockcroft_gault(raw["age"], raw["weight"], raw["creatinine"], raw["sex"]), 1)
         notes.append(f"CLcr {lab['crcl']:g} mL/min (Cockcroft-Gault)")
     elif raw.get("egfr") is not None:
