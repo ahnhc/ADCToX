@@ -20,7 +20,7 @@ test it did not improve matching (+0.033 [-0.018, +0.087], ml/README.md), and co
 question from ADC toxicity given the comorbidity. --learned F turns it on as s_o = max(own, F * learned).
 
 This orders label evidence for one patient. It is not a probability of an adverse event and has not been validated against
-patient outcomes (docs/validation_plan.md).
+patient outcomes (ml/docs/validation_plan.md).
 """
 import csv, json, os, re, sys, warnings
 import numpy as np

@@ -1803,5 +1803,31 @@
    "signal": true,
    "label": 0
   }
- ]
+ ],
+ "calibration": {
+  "method": "leave-one-ADC-out rate per label level",
+  "auroc": 0.6837221633085896,
+  "brier": 0.14309191315889708,
+  "brier_base_rate": 0.20025413442573203,
+  "calibration_in_the_large": -0.007273421710684314,
+  "calibration_slope": 1.0562052012879588,
+  "slope_intercept": 0.04454347537918417,
+  "by_level": {
+   "none": {
+    "n": 110,
+    "observed": 0.11818181818181818,
+    "predicted": 0.1259590205678155
+   },
+   "W&P": {
+    "n": 48,
+    "observed": 0.4583333333333333,
+    "predicted": 0.4640044690273067
+   },
+   "boxed": {
+    "n": 11,
+    "observed": 1.0,
+    "predicted": 0.9139118457300274
+   }
+  }
+ }
 }

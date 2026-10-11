@@ -63,13 +63,26 @@ def test_the_nonconverged_fit_is_flagged_not_quoted() -> None:
     """Guard 2. The warning has to name the fit, not merely exist."""
     doc = _doc()
     by_split = doc["strongest_figure_from_a_nonconverged_fit_by_split"]
-    assert by_split, (
-        "the strongest across-agent figure in the series comes from the 32-agent default "
-        "fit, which failed its seed-agreement check at 0.7219. If this is now empty, "
-        "either a converged fit overtook it -- which is good news worth checking by hand "
-        "-- or the flag stopped working."
-    )
     corpora = {r["corpus"]: r for r in doc["corpora"] if r["status"] == "present"}
+    # The 32-agent default fit (worst seed gap 0.7219) carried the strongest figure until the
+    # merged 65-agent fits landed; checked by hand on 2026-10-11, converged fits now lead both
+    # splits (+0.2319 / +0.2066 against its +0.1308 on leave-one-agent-out). An empty flag is
+    # then correct -- but only if a converged fit really leads, which is what is checked here,
+    # so a flag that silently stopped working still fails.
+    for split in ("leave_one_agent_out", "leave_one_family_out"):
+        carriers = [r for r in corpora.values()
+                    if r["splits"].get(split, {}).get("across_agent", {}).get("applicable")]
+        if not carriers:
+            continue
+        best = max(carriers, key=lambda r: r["splits"][split]["across_agent"]["model_mean"])
+        if best["converged"]:
+            assert split not in by_split, f"{split}: flagged although a converged fit leads"
+        else:
+            assert split in by_split, (
+                f"{split}: the strongest figure comes from {best['corpus']}, which did not "
+                "converge, and the flag is missing"
+            )
+    assert corpora["expanded 32"]["converged"] is False, "the non-converged fit must stay marked"
     for split, flagged in by_split.items():
         assert flagged["split"] == split
         assert flagged["worst_seed_gap"] > 0.3

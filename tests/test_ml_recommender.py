@@ -1,6 +1,6 @@
 """The ADC recommender (ml/recommend.py) and what it reads: label parsing, restriction rules, evidence, ordering.
 
-Each test pins one defect found in the implementation audit (docs/recommender_technical_report.md, section 8) or one
+Each test pins one defect found in the implementation audit (ml/docs/recommender_technical_report.md, section 8) or one
 property the redesign promises. Tests that need the local label snapshot or the collaborator workbook cache skip
 when those are absent (they are not redistributed).
 """
@@ -206,6 +206,8 @@ def test_outcome_harness_detects_a_real_patient_drug_association():
     rows = _synthetic_cohort(signal=True); res = VO.analyse(rows, VO.features(rows), n_boot=400)
     assert res["auroc"]["tool"]["ci"][0] > 0.5
     assert res["paired"]["tool_minus_label_only"]["adds_patient_information"]
+    c = res["calibration"]
+    assert c["brier"] < c["brier_base_rate"] and 0.5 < c["calibration_slope"] < 1.5      # out-of-fold probabilities are informative and not wildly off
 
 
 @needs_cache

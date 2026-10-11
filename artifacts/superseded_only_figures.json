@@ -1,179 +1,179 @@
 {
- "n_live_values": 31275,
+ "n_live_values": 33959,
  "n_superseded_values": 2266,
  "figures": [
   {
    "figure": "0.1332",
    "document": "findings.md",
-   "line": 163,
+   "line": 164,
    "classification": "declared",
    "reason": "the 16-agent corpus's across-agent rho, quoted in full in the sentence that retracts it and in the paragraph on the false finding it produced"
   },
   {
    "figure": "-0.0265",
    "document": "findings.md",
-   "line": 217,
+   "line": 218,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "-0.0805",
    "document": "findings.md",
-   "line": 218,
+   "line": 219,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "-0.0317",
    "document": "findings.md",
-   "line": 218,
+   "line": 219,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.2177",
    "document": "findings.md",
-   "line": 219,
+   "line": 220,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.2632",
    "document": "findings.md",
-   "line": 219,
+   "line": 220,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.1533",
    "document": "findings.md",
-   "line": 260,
+   "line": 261,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.8437",
    "document": "findings.md",
-   "line": 283,
+   "line": 284,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "1.989",
    "document": "findings.md",
-   "line": 452,
+   "line": 453,
    "classification": "declared",
    "reason": "section 4.0b's agent-by-axis experiment, run on the earlier corpus and kept as a comparison of model structures rather than of corpora"
   },
   {
    "figure": "1.064",
    "document": "findings.md",
-   "line": 452,
+   "line": 453,
    "classification": "declared",
    "reason": "the other cell of that same agent-by-axis table -- the thick cell, against the thin one above it, which is the comparison the experiment was for"
   },
   {
    "figure": "0.0047",
    "document": "findings.md",
-   "line": 586,
+   "line": 587,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.1455",
    "document": "findings.md",
-   "line": 678,
+   "line": 679,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.1332",
    "document": "findings.md",
-   "line": 981,
+   "line": 982,
    "classification": "declared",
    "reason": "the 16-agent corpus's across-agent rho, quoted in full in the sentence that retracts it and in the paragraph on the false finding it produced"
   },
   {
    "figure": "0.1332",
    "document": "findings.md",
-   "line": 992,
+   "line": 993,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.2586",
    "document": "findings.md",
-   "line": 1044,
+   "line": 1078,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "-0.0544",
    "document": "findings.md",
-   "line": 1045,
+   "line": 1079,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.2572",
    "document": "findings.md",
-   "line": 1045,
+   "line": 1079,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.0683",
    "document": "findings.md",
-   "line": 1045,
+   "line": 1079,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.1332",
    "document": "findings.md",
-   "line": 1046,
+   "line": 1080,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.2903",
    "document": "findings.md",
-   "line": 1046,
+   "line": 1080,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.1332",
    "document": "findings.md",
-   "line": 1051,
+   "line": 1085,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.8458",
    "document": "findings.md",
-   "line": 1250,
+   "line": 1287,
    "classification": "paired with a live figure",
    "reason": null
   },
   {
    "figure": "0.1332",
    "document": "findings.md",
-   "line": 3050,
+   "line": 3087,
    "classification": "declared",
    "reason": "the 16-agent corpus's across-agent rho, quoted in full in the sentence that retracts it and in the paragraph on the false finding it produced"
   },
   {
    "figure": "0.2118",
    "document": "findings.md",
-   "line": 3050,
+   "line": 3087,
    "classification": "declared",
    "reason": "the other half of that false finding: the headline the corpus mismatch produced, quoted only to say it was not real"
   },
   {
    "figure": "0.2632",
    "document": "findings.md",
-   "line": 3161,
+   "line": 3198,
    "classification": "paired with a live figure",
    "reason": null
   },
@@ -198,11 +198,11 @@
  "n_undeclared": 0,
  "reading": "A figure here appears in a superseded artefact and in no current one, so the number guard reports it as traced. That is either a deliberate before/after quotation or a figure that went stale and kept its trace, and the guard cannot tell the difference because both do trace.",
  "provenance": {
-  "revision": "b63725eb65f05eb58f2083fa3276418d247c5409",
+  "revision": "bd71b88a15da53a7772cacc33693656875d6d7da",
   "dirty": true,
   "snapshot": null,
   "script": "superseded_only_figures.py",
-  "written_utc": "2026-10-10T01:45:38+00:00",
+  "written_utc": "2026-10-11T09:35:12+00:00",
   "inputs": {}
  }
 }

@@ -115,12 +115,13 @@ is an eGFR stage; the labels use Cockcroft-Gault CLcr): the verdict is the set o
 score = incidence percentile . s (non-circular). Against random weights the learned ones do better (+0.070 [+0.015, +0.123]), but the curated
 own organs do better still (0.644 vs 0.512), and adding the learned weights ON TOP of the own organs, which is how the recommender would use
 them, makes it worse (`ml/eval_learned_addon.py`, pre-declared f = 0.25 / 0.5: -0.035 [-0.054, -0.016] / -0.054 [-0.079, -0.030]).
+With FAERS signals as the positives instead (independent of the label text) the add-on is still worse: -0.025 [-0.046, -0.004] / -0.034 [-0.061, -0.008].
 The recommender therefore runs without them by default (`--learned F` to opt in). Predicting a later disease from a comorbidity is not the same
 question as ADC toxicity given that comorbidity. Inference was also aligned with training: training only ever saw the lag one-hot in the context
 vector (`lab.py`: `cat([eye[lag], eye[nl+dom]])[:, :nl+nd]` keeps the first block), and the first `predict` set the domain bits as well
 (mean |change| in severity 0.005 after the fix). Retraining with the domain actually included would be a new model and was not done.
 
-**Recommender** (`ml/recommend.py`, redesigned 2026-10-11 after an external review; `docs/recommender_changes.md`). Order, most favourable first,
+**Recommender** (`ml/recommend.py`, redesigned 2026-10-11 after an external review; `ml/docs/recommender_changes.md`). Order, most favourable first,
 lexicographic: (1) label restriction for this patient, worst case over missing labs, then whether it is settled; (2) B = sum of s_o over the
 patient's organs with a BOXED warning; (3) Wn = the same for section-5 warnings. s_o = curated severity of the conditions whose own organ it is.
 B and Wn only grow when s grows. The first version's weighted mean 100 * sum w t / sum w (w = 1 + 9 s) could FALL when an organ became more
@@ -129,9 +130,10 @@ as a percentage. Incidence is displayed (absolute, flagged) but not used in the 
 in are listed separately; ties are marked '='. A checklist names the tests the conditions call for (`conf/patient_checks.yaml`).
 This orders label evidence for one patient. External check on real-world reports (FAERS via openFDA, `ml/validate_faers.py`): the label warning level it
 orders by discriminates within-class disproportionality signals with AUROC 0.778 [0.727, 0.837] over 169 ADC x organ cells (shuffled 0.499;
-label-table incidence 0.651); per organ it agrees except renal (rho -0.08). FAERS has no comorbidities, so this validates the drug-side organ evidence,
+label-table incidence 0.651); calibration of P(signal | label level), leave-one-ADC-out: slope 1.06, in-the-large -0.007, Brier 0.143 vs 0.200;
+per organ it agrees except renal (rho -0.08). FAERS has no comorbidities, so this validates the drug-side organ evidence,
 not patient-specific risk; the patient-level analysis is implemented (`ml/validate_outcomes.py`, tested on synthetic cohorts) but no cohort exists here
-(`docs/validation_plan.md`).
+(`ml/docs/validation_plan.md`).
 Conditions outside the 41-entry registry are resolved in this order: a near-identical registry entry (BioLORD cosine >= 0.80) > MONDO hierarchy
 (`ml/mondo_index.py`, name similarity >= 0.75, severity a fixed 0.8) > a loosely similar registry entry (>= 0.60) > not understood (no organ).
 Tests: `tests/test_ml_recommender.py`.

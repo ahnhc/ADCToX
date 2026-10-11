@@ -38,6 +38,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 5i. Its primary validation | Misspecified. The FDA labels argue from clearance, not organ toxicity, and point somewhere else. |
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
+| 7b. Inverse validation | It does not work: given an approved drug's target and label comorbidities, the design matches 8 of 55 informative slots against a chance 8.74, and 6 once precedent comes from other targets; the exact design appears for 0 of 14. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
 | **9. Measured negative results** | **The strongest section. 65 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
@@ -1142,9 +1143,10 @@ axis base rates -- they cancel.
 | explicit agents 27, all arms | 27 | 3.78:1 | 29.3% | -0.0967 | +0.2013 | [+0.122, +0.281] | +0.1859 | positive, excludes zero, below the declared bar |
 | expanded 32 *(did not converge)* | 32 | 4.48:1 | 29.7% | -0.0972 | +0.1308 | [+0.074, +0.191] | -- | positive, excludes zero, below the declared bar |
 | expanded 32, absences dropped | 32 | 4.48:1 | 12.3% | -0.1057 | +0.0472 | [-0.059, +0.145] | +0.0467 | indistinguishable from zero |
+| merged 65 | 65 | 9.10:1 | 33.0% | -0.0580 | +0.2319 | [+0.153, +0.303] | -- | positive, excludes zero, below the declared bar |
 | merged 65, absences dropped | 65 | 9.10:1 | 10.3% | -0.0510 | +0.2066 | [+0.098, +0.303] | +0.1979 | positive, excludes zero, below the declared bar |
 
-Over the 5 converged fits the two metrics move in opposite directions: across-agent rho against corpus size +0.900 (p = 0.0374), within-arm delta AUC against corpus size -0.700 (p = 0.1881). 5 converged fits on the expansion path carry this split. Five points is the fewest this script will attach a p-value to, and it is still five points.
+Over the 6 converged fits the two metrics move in opposite directions: across-agent rho against corpus size +0.928 (p = 0.0077), within-arm delta AUC against corpus size -0.522 (p = 0.2883). 6 converged fits on the expansion path carry this split.
 
 Section 5f's adjusted headline over the same fits gives rho +0.700 on 5 points -- 22 agents at +0.0073, 26 agents at +0.0470, 27 agents at +0.1859, 32 agents at +0.0467, 65 agents at +0.1979. It moves with the unadjusted figure rather than against it.
 
@@ -1152,9 +1154,9 @@ Section 5f's adjusted headline over the same fits gives rho +0.700 on 5 points -
 
 Section 5f's own objection to its old result was that the estimate was smaller than the spread across the five ways of estimating the adjustment. That is no longer the case where it is significant: the spread is 0.0195 on explicit agents 27, all arms and 0.0087 on merged 65, absences dropped, against 0.0517 on registry 22 and 0.1033 on explicit cuts 26 and 0.0289 on expanded 32, absences dropped where it is not. The estimate grows and the estimator choice stops mattering, which is what section 5f said a real effect would do and what its sixteen-to-twenty-two pair did not.
 
-Prediction recorded, not yet scorable: *the merged 65-agent corpus will put leave-one-agent-out across-agent Spearman above zero with a CI excluding zero, and still below +0.3*. Pending: merged 65.
+Prediction recorded before the merged fit landed -- *the merged 65-agent corpus will put leave-one-agent-out across-agent Spearman above zero with a CI excluding zero, and still below +0.3* -- **confirmed** (observed +0.2319, CI [+0.153, +0.303]).
 
-The bar was declared at +0.3 before the metric was first computed, and no row clears it. 2 of the 5 on-path converged rows read *positive, excludes zero, below the declared bar* and the rest read *indistinguishable from zero*, so the unadjusted series carries a direction plus two intervals clear of zero: the comparison the product makes moving up as the corpus grows while the pre-specified one moves down.
+The bar was declared at +0.3 before the metric was first computed, and no row clears it. 3 of the 6 on-path converged rows read *positive, excludes zero, below the declared bar* and the rest read *indistinguishable from zero*, so the unadjusted series carries a direction plus two intervals clear of zero: the comparison the product makes moving up as the corpus grows while the pre-specified one moves down.
 
 <!-- /generated: across-agent-trend -->
 

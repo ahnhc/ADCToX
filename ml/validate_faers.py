@@ -3,7 +3,7 @@
 What it can test: whether the organ evidence the recommender orders by (label boxed / section-5 warning on an organ) points at
 the organs where each ADC is DISPROPORTIONATELY reported in post-marketing practice. What it cannot test: patient-specific
 risk. FAERS has no comorbidity or lab fields and no denominator, so it says nothing about whether a CKD patient does worse on
-drug A than drug B; that needs the patient-level cohort in docs/validation_plan.md (ml/validate_outcomes.py runs it).
+drug A than drug B; that needs the patient-level cohort in ml/docs/validation_plan.md (ml/validate_outcomes.py runs it).
 
 Method (fixed before the first query):
   * reports per ADC from openFDA /drug/event, counted by MedDRA preferred term (top 500 PTs per drug, the maximum without an
@@ -83,6 +83,7 @@ def main():
     res["single_organ_patients"] = per; res["single_organ_mean_spearman"] = float(np.mean([v["spearman"] for v in per.values()])) if per else None
     res["cells"] = [dict(adc=a, organ=o, mentions=int(M[i, k]), ror=round(float(ror[i, k]), 3), ror_lo=round(float(lo[i, k]), 3), signal=bool(signal[i, k]), label=int(lvl[i, k]))
                     for i, a in enumerate(used) for k, o in enumerate(AXES)]
+    res["calibration"] = calibration(lvl, signal, used, rng)
     json.dump(res, open(R + "ml/results/faers_validation.json", "w"), indent=1)
     print(f"FAERS (openFDA, data to {res['last_updated']}): {len(used)} ADCs, skipped {skipped}; {res['n_signals']} signals in {res['n_cells']} ADC x organ cells")
     for k in ("label_level", "incidence_pct"):
@@ -90,6 +91,35 @@ def main():
     print(f"  shuffled label level (mean of 200)     {res['shuffled_level_mean_auroc']:.3f}")
     print(f"  single-organ patients: Spearman(label level on o, log ROR on o), mean over {len(per)} organs = {res['single_organ_mean_spearman']:.3f}")
     for o, v in per.items(): print(f"     {o:20s} rho {v['spearman']:+.2f}  (p {v['p']:.3f})")
+    c = res["calibration"]
+    print(f"  calibration (P(signal | label level), leave-one-ADC-out): AUROC {c['auroc']:.3f}, Brier {c['brier']:.3f} vs base rate {c['brier_base_rate']:.3f}, "
+          f"calibration-in-the-large {c['calibration_in_the_large']:+.3f}, slope {c['calibration_slope']:.2f}")
+    for lab, t in c["by_level"].items(): print(f"     {lab:6s} n={t['n']:3d}  observed {t['observed']:.3f}  predicted {t['predicted']:.3f}")
+
+
+def calibration(lvl, signal, used, rng):
+    """The recommender gives an order, not a probability. To ask the calibration question at all, turn its evidence into one:
+    P(FAERS signal | label level on that organ), estimated from the OTHER ADCs (leave-one-ADC-out, Laplace-smoothed rates per
+    level), then scored on the held-out ADC. Reported: Brier score against the base-rate predictor, calibration intercept and
+    slope (logistic regression of the outcome on logit p), and observed vs predicted per level."""
+    from scipy.special import logit
+    from scipy.optimize import minimize
+    n_adc = len(used); p = np.zeros_like(lvl)
+    for i in range(n_adc):
+        tr = np.ones(n_adc, bool); tr[i] = False; L, Y = lvl[tr].ravel(), signal[tr].ravel()
+        for v in (0, 1, 2): p[i, lvl[i] == v] = (Y[L == v].sum() + 1) / ((L == v).sum() + 2)
+    base = np.array([[(np.delete(signal, i, 0).mean())] * lvl.shape[1] for i in range(n_adc)])
+    y, pr, b = signal.ravel().astype(float), p.ravel(), base.ravel()
+    brier, brier0 = float(np.mean((pr - y) ** 2)), float(np.mean((b - y) ** 2))
+    z = logit(np.clip(pr, 1e-6, 1 - 1e-6))
+    nll = lambda w: -np.sum(y * (w[0] + w[1] * z) - np.log1p(np.exp(w[0] + w[1] * z)))
+    a, sl = minimize(nll, [0.0, 1.0]).x
+    nll0 = lambda w: -np.sum(y * (w[0] + z) - np.log1p(np.exp(w[0] + z)))
+    citl = float(minimize(nll0, [0.0]).x[0])
+    table = {lab: dict(n=int((lvl.ravel() == v).sum()), observed=float(y[lvl.ravel() == v].mean()), predicted=float(pr[lvl.ravel() == v].mean()))
+             for v, lab in ((0, "none"), (1, "W&P"), (2, "boxed")) if (lvl.ravel() == v).any()}
+    return dict(method="leave-one-ADC-out rate per label level", auroc=float(auroc(pr, y.astype(bool))), brier=brier, brier_base_rate=brier0,
+                calibration_in_the_large=citl, calibration_slope=float(sl), slope_intercept=float(a), by_level=table)
 
 
 if __name__ == "__main__":

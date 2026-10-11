@@ -4,11 +4,19 @@
   "made": "the merged 65-agent corpus will put leave-one-agent-out across-agent Spearman above zero with a CI excluding zero, and still below +0.3",
   "because": "leave-one-agent-out has been the more positive split at every corpus; the same posterior's family split is already +0.196 with a CI excluding zero; 65 folds give a tighter interval than 6; and the three converged fits run -0.070, -0.015, +0.047, which does not extrapolate to +0.3",
   "clauses": {
-   "positive": null,
-   "ci_excludes_zero": null,
-   "below_declared_bar": null
+   "positive": true,
+   "ci_excludes_zero": true,
+   "below_declared_bar": true
   },
-  "outcome": null
+  "outcome": "confirmed",
+  "observed": {
+   "model_mean": 0.2319,
+   "model_ci": [
+    0.1534,
+    0.3031
+   ],
+   "converged": true
+  }
  },
  "support_threshold": 0.3,
  "corpora": [
@@ -472,9 +480,72 @@
   },
   {
    "corpus": "merged 65",
-   "status": "pending",
+   "status": "present",
    "artefact": "artifacts/with_atlas",
-   "processed": "data/processed/with_atlas"
+   "processed": "data/processed/with_atlas",
+   "drop_uninformative_absences": false,
+   "n_agents": 65,
+   "identification_ratio": 9.1,
+   "identifying_cells": 910,
+   "censored_share": 0.3301,
+   "converged": true,
+   "worst_seed_gap": 0.2089,
+   "splits": {
+    "leave_one_agent_out": {
+     "delta_auc_mean": -0.058,
+     "delta_auc_ci": [
+      -0.0729,
+      -0.0416
+     ],
+     "n_folds": 65,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": 0.2319,
+      "model_ci": [
+       0.1534,
+       0.3031
+      ],
+      "mech_baseline_mean": -0.045,
+      "global_baseline_mean": -0.0551,
+      "n_folds_contributing": 65,
+      "verdict": "positive, excludes zero, below the declared bar"
+     }
+    },
+    "leave_one_family_out": {
+     "delta_auc_mean": -0.1162,
+     "delta_auc_ci": [
+      -0.1714,
+      -0.0728
+     ],
+     "n_folds": 6,
+     "across_agent": {
+      "applicable": true,
+      "model_mean": 0.1959,
+      "model_ci": [
+       0.0204,
+       0.343
+      ],
+      "mech_baseline_mean": 0.0245,
+      "global_baseline_mean": 0.0122,
+      "n_folds_contributing": 6,
+      "verdict": "positive, excludes zero, below the declared bar"
+     }
+    },
+    "leave_one_mechanism_out": {
+     "delta_auc_mean": -0.1211,
+     "delta_auc_ci": [
+      -0.2235,
+      -0.0392
+     ],
+     "n_folds": 4,
+     "across_agent": {
+      "applicable": false,
+      "reason": "fewer than 6 folds contribute a point per axis, so an across-agent rank correlation is not worth computing on this split"
+     }
+    }
+   },
+   "on_expansion_path": true,
+   "off_path_reason": null
   },
   {
    "corpus": "merged 65, absences dropped",
@@ -559,13 +630,11 @@
    "off_path_reason": null
   }
  ],
- "pending": [
-  "merged 65"
- ],
+ "pending": [],
  "trends": {
   "leave_one_agent_out": {
    "computed": true,
-   "n_points": 5,
+   "n_points": 6,
    "points": [
     {
      "n_agents": 22,
@@ -591,15 +660,20 @@
      "n_agents": 65,
      "across_agent": 0.2066,
      "delta_auc": -0.051
+    },
+    {
+     "n_agents": 65,
+     "across_agent": 0.2319,
+     "delta_auc": -0.058
     }
    ],
    "across_agent_vs_corpus_size": {
-    "rho": 0.9,
-    "p": 0.0374
+    "rho": 0.9276,
+    "p": 0.0077
    },
    "delta_auc_vs_corpus_size": {
-    "rho": -0.7,
-    "p": 0.1881
+    "rho": -0.5218,
+    "p": 0.2883
    },
    "opposite_directions": true,
    "adjusted_vs_corpus_size": {
@@ -628,11 +702,11 @@
      }
     ]
    },
-   "note": "5 converged fits on the expansion path carry this split. Five points is the fewest this script will attach a p-value to, and it is still five points."
+   "note": "6 converged fits on the expansion path carry this split."
   },
   "leave_one_family_out": {
    "computed": true,
-   "n_points": 5,
+   "n_points": 6,
    "points": [
     {
      "n_agents": 22,
@@ -658,15 +732,20 @@
      "n_agents": 65,
      "across_agent": 0.151,
      "delta_auc": -0.1152
+    },
+    {
+     "n_agents": 65,
+     "across_agent": 0.1959,
+     "delta_auc": -0.1162
     }
    ],
    "across_agent_vs_corpus_size": {
-    "rho": 0.8,
-    "p": 0.1041
+    "rho": 0.8697,
+    "p": 0.0244
    },
    "delta_auc_vs_corpus_size": {
-    "rho": -0.6,
-    "p": 0.2848
+    "rho": -0.4638,
+    "p": 0.3542
    },
    "opposite_directions": true,
    "adjusted_vs_corpus_size": {
@@ -695,7 +774,7 @@
      }
     ]
    },
-   "note": "5 converged fits on the expansion path carry this split. Five points is the fewest this script will attach a p-value to, and it is still five points."
+   "note": "6 converged fits on the expansion path carry this split."
   },
   "leave_one_mechanism_out": {
    "computed": false,
@@ -707,11 +786,11 @@
  "strongest_figure_from_a_nonconverged_fit_by_split": {},
  "reading": "The two discrimination metrics answer different questions and need not move together. Within-arm AUC ranks axes inside an arm, a task a design-blind constant scores about 0.84 on; across-agent Spearman ranks agents within an axis, which no constant can do. The product's question is the second one.",
  "provenance": {
-  "revision": "b63725eb65f05eb58f2083fa3276418d247c5409",
+  "revision": "bd71b88a15da53a7772cacc33693656875d6d7da",
   "dirty": true,
-  "snapshot": "2026-10-07",
+  "snapshot": null,
   "script": "across_agent_trend.py",
-  "written_utc": "2026-10-10T01:47:09+00:00",
+  "written_utc": "2026-10-11T09:31:51+00:00",
   "inputs": {}
  }
 }
