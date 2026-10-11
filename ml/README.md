@@ -86,3 +86,31 @@ not correctness -- this project has already shown responsiveness is a function o
    reported, not whether a pair is reportable.
 3. Near-duplicate disease definitions exist; the family and similarity-guarded regimes address, but cannot rule out, leakage.
 4. No end-to-end fine-tuning of SapBERT was attempted. No prospective or clinical validation exists.
+
+---
+
+## Update: BioLORD, a label-based drug side, and the recommender
+
+**Encoder.** Same harness, folds and metrics (`ml/lab.py`; selection seeds 0-2). On unseen ICD families BioLORD-2023 beats SapBERT in the
+paired family bootstrap (organ ranking +0.0187 [+0.0035, +0.0345]; R2 0.655 vs 0.622). PubMedBERT is worse (-0.021 [-0.040, -0.003]),
+Qwen3-Embedding-0.6B and MedCPT tie, BGE-M3 is the weakest. Everything tried after that was **null or worse** against frozen BioLORD:
+precision weighting (-0.0007 [-0.007, +0.005]), MONDO organ axes (+0.0020 [-0.002, +0.007]), MONDO definitions (-0.0022 [-0.007, +0.003]),
+a bilinear head (-0.0079 [-0.0137, -0.0024]). LoRA fine-tuning of the encoder (fresh per fold, one pre-declared setting) raised R2 in all
+three seeds (0.655 -> 0.684) but not organ ranking, the metric the product uses (+0.0032 [-0.0011, +0.0080]), so it was **not adopted**.
+The saved model (`ml/vulnerability_model.py`, `predict(text)`) is frozen BioLORD + MLP head, 5-seed ensemble.
+
+**Drug side.** Rebuilt from the approved labels (`ml/matcher2.py`): label boxed warning 1.0, section-5 warning 0.6, grade >= 3 incidence
+percentile filling at most 0.4 of what a warning leaves open. Incidence alone recovers the label's warned organs with AUROC 0.670
+[0.557, 0.781] over 12 drugs (it misses rare lethal events: T-DXd 0.48). The first version of the combination capped a sum at 1 and let a
+section-5 warning plus a high percentile tie a boxed warning; found when T-DXd ranked 5th for an ILD patient, fixed to the stated intent.
+An earlier attempt on the transcribed trial tables (`ml/matcher.py`) failed for coverage reasons and is kept for the record.
+
+**Does the learned patient weighting help matching?** Positives = ADCs whose label warns on the condition's organ (40 registry conditions,
+12 ADCs). With the warning layer (circular for warned organs): learned 0.808 vs no patient weights 0.660 vs other conditions' weights 0.577.
+Incidence only (non-circular): learned 0.462 vs 0.429 vs 0.438 -- **not distinguishable** (+0.033 [-0.018, +0.087]). The learned weights also carry
+cross-organ risk (ILD -> neurologic) that can bury the condition's own organ, so the recommender gives the condition's own organ priority.
+
+**Recommender** (`ml/recommend.py`): risk % = 100 * sum(w_o * t_o) / sum(w_o), w_o = max(own organ, 0.5 * learned), t_o as above. It is an
+index, not an event probability. Conditions outside the 41-entry registry are resolved in this order: a near-identical registry entry
+(BioLORD cosine >= 0.80) > MONDO hierarchy (`ml/mondo_index.py`, name similarity >= 0.75, organs from the project's ancestor crosswalk,
+severity a fixed 0.8) > a loosely similar registry entry (>= 0.60) > learned vulnerability only.

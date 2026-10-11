@@ -1,0 +1,502 @@
+{
+ "n_adc": 30,
+ "by_payload": {
+  "other": 14,
+  "mmae": 11,
+  "mmaf": 2,
+  "calicheamicin": 2,
+  "dxd_exatecan": 1
+ },
+ "rows": [
+  {
+   "flag": "dxd_prior_ild",
+   "condition": "interstitial_lung_disease",
+   "axis": "pulmonary",
+   "n_pos": 1,
+   "n_adc": 30,
+   "learned": 0.3103448275862069,
+   "hand": 0.5517241379310345,
+   "uniform": 0.3448275862068966,
+   "shuffled_w": 0.2724137931034483,
+   "axis_only": 0.5517241379310345
+  },
+  {
+   "flag": "dxd_prior_ild",
+   "condition": "pulmonary_fibrosis",
+   "axis": "pulmonary",
+   "n_pos": 1,
+   "n_adc": 30,
+   "learned": 0.20689655172413793,
+   "hand": 0.5517241379310345,
+   "uniform": 0.3448275862068966,
+   "shuffled_w": 0.25,
+   "axis_only": 0.5517241379310345
+  },
+  {
+   "flag": "dxd_prior_ild",
+   "condition": "prior_chest_radiation",
+   "axis": "pulmonary",
+   "n_pos": 1,
+   "n_adc": 30,
+   "learned": 0.20689655172413793,
+   "hand": 0.5517241379310345,
+   "uniform": 0.3448275862068966,
+   "shuffled_w": 0.24655172413793106,
+   "axis_only": 0.5517241379310345
+  },
+  {
+   "flag": "calicheamicin_prior_vod",
+   "condition": "hepatic_vod_history",
+   "axis": "hepatic",
+   "n_pos": 2,
+   "n_adc": 30,
+   "learned": 0.5178571428571429,
+   "hand": 0.7321428571428571,
+   "uniform": 0.44642857142857145,
+   "shuffled_w": 0.34017857142857133,
+   "axis_only": 0.7321428571428571
+  },
+  {
+   "flag": "calicheamicin_prior_vod",
+   "condition": "cirrhosis",
+   "axis": "hepatic",
+   "n_pos": 2,
+   "n_adc": 30,
+   "learned": 0.5535714285714286,
+   "hand": 0.7321428571428571,
+   "uniform": 0.44642857142857145,
+   "shuffled_w": 0.35357142857142854,
+   "axis_only": 0.7321428571428571
+  },
+  {
+   "flag": "calicheamicin_prior_vod",
+   "condition": "chronic_liver_disease",
+   "axis": "hepatic",
+   "n_pos": 2,
+   "n_adc": 30,
+   "learned": 0.5178571428571429,
+   "hand": 0.7321428571428571,
+   "uniform": 0.44642857142857145,
+   "shuffled_w": 0.3232142857142857,
+   "axis_only": 0.7321428571428571
+  },
+  {
+   "flag": "vedotin_prior_sjs_ten",
+   "condition": "prior_sjs_ten",
+   "axis": "dermatologic",
+   "n_pos": 11,
+   "n_adc": 30,
+   "learned": 0.4449760765550239,
+   "hand": 0.49760765550239233,
+   "uniform": 0.42105263157894735,
+   "shuffled_w": 0.5846889952153111,
+   "axis_only": 0.49760765550239233
+  },
+  {
+   "flag": "mmaf_prior_keratopathy",
+   "condition": "keratopathy_history",
+   "axis": "ocular",
+   "n_pos": 2,
+   "n_adc": 30,
+   "learned": 0.9285714285714286,
+   "hand": 0.9107142857142857,
+   "uniform": 0.8214285714285714,
+   "shuffled_w": 0.8080357142857142,
+   "axis_only": 0.9107142857142857
+  },
+  {
+   "flag": "mmaf_prior_keratopathy",
+   "condition": "prior_corneal_surgery",
+   "axis": "ocular",
+   "n_pos": 2,
+   "n_adc": 30,
+   "learned": 0.9464285714285714,
+   "hand": 0.9107142857142857,
+   "uniform": 0.8214285714285714,
+   "shuffled_w": 0.84375,
+   "axis_only": 0.9107142857142857
+  },
+  {
+   "flag": "mmaf_prior_keratopathy",
+   "condition": "dry_eye",
+   "axis": "ocular",
+   "n_pos": 2,
+   "n_adc": 30,
+   "learned": 0.8392857142857143,
+   "hand": 0.9107142857142857,
+   "uniform": 0.8214285714285714,
+   "shuffled_w": 0.8151785714285715,
+   "axis_only": 0.9107142857142857
+  },
+  {
+   "flag": "dxd_moderate_renal_pulmonary",
+   "condition": "ckd_stage_3",
+   "axis": "pulmonary",
+   "n_pos": 1,
+   "n_adc": 30,
+   "learned": 0.10344827586206896,
+   "hand": 0.2413793103448276,
+   "uniform": 0.3448275862068966,
+   "shuffled_w": 0.29482758620689653,
+   "axis_only": 0.5517241379310345
+  },
+  {
+   "flag": "dxd_moderate_renal_pulmonary",
+   "condition": "ckd_stage_4_5",
+   "axis": "pulmonary",
+   "n_pos": 1,
+   "n_adc": 30,
+   "learned": 0.06896551724137931,
+   "hand": 0.2413793103448276,
+   "uniform": 0.3448275862068966,
+   "shuffled_w": 0.3,
+   "axis_only": 0.5517241379310345
+  }
+ ],
+ "mean_auroc": {
+  "learned": 0.470424935772032,
+  "hand": 0.630342509879715,
+  "uniform": 0.4957301659320716,
+  "shuffled_w": 0.4527008891743465,
+  "axis_only": 0.6820666478107494
+ },
+ "ci": {
+  "learned": [
+   0.23425280579696792,
+   0.8835557481453438
+  ],
+  "hand": [
+   0.47910377110827307,
+   0.875166888336531
+  ],
+  "uniform": [
+   0.28757782567049806,
+   0.8248411127670835
+  ],
+  "shuffled_w": [
+   0.25602099762982117,
+   0.8026314313081555
+  ],
+  "axis_only": [
+   0.5299253349871546,
+   0.875166888336531
+  ]
+ },
+ "demo": {
+  "interstitial_lung_disease": {
+   "lowest": [
+    {
+     "adc": "PF-06647263",
+     "payload": "calicheamicin",
+     "score": 0.4198523685155651,
+     "patients": 120
+    },
+    {
+     "adc": "ATG-022",
+     "payload": "mmae",
+     "score": 0.43721220357916596,
+     "patients": 111
+    },
+    {
+     "adc": "Sacituzumab tirumotecan",
+     "payload": "other",
+     "score": 0.6013195955901935,
+     "patients": 130
+    },
+    {
+     "adc": "BMS-986148",
+     "payload": "other",
+     "score": 0.8217583796590419,
+     "patients": 195
+    },
+    {
+     "adc": "Enfortumab vedotin",
+     "payload": "mmae",
+     "score": 0.8833355576139348,
+     "patients": 296
+    }
+   ],
+   "highest": [
+    {
+     "adc": "Lifastuzumab vedotin",
+     "payload": "mmae",
+     "score": 1.7754287734613425,
+     "why": [
+      "pulmonary (w 0.92 x burden pct 0.97)",
+      "neurologic (w 0.72 x burden pct 0.70)"
+     ]
+    },
+    {
+     "adc": "Zilovertamab vedotin",
+     "payload": "mmae",
+     "score": 1.7245728617090643,
+     "why": [
+      "pulmonary (w 0.92 x burden pct 0.83)",
+      "neurologic (w 0.72 x burden pct 0.93)"
+     ]
+    },
+    {
+     "adc": "Belantamab mafodotin",
+     "payload": "mmaf",
+     "score": 1.7094391274572036,
+     "why": [
+      "pulmonary (w 0.92 x burden pct 1.00)",
+      "neurologic (w 0.72 x burden pct 0.43)"
+     ]
+    }
+   ]
+  },
+  "cirrhosis": {
+   "lowest": [
+    {
+     "adc": "BMS-986148",
+     "payload": "other",
+     "score": 0.7765906329652722,
+     "patients": 195
+    },
+    {
+     "adc": "Trastuzumab duocarmazine",
+     "payload": "other",
+     "score": 0.8655919249038025,
+     "patients": 185
+    },
+    {
+     "adc": "A166",
+     "payload": "other",
+     "score": 0.8828503393468049,
+     "patients": 159
+    },
+    {
+     "adc": "PF-06647263",
+     "payload": "calicheamicin",
+     "score": 0.8956918731547006,
+     "patients": 120
+    },
+    {
+     "adc": "Tisotumab vedotin",
+     "payload": "mmae",
+     "score": 0.9226527115711324,
+     "patients": 452
+    }
+   ],
+   "highest": [
+    {
+     "adc": "Inotuzumab ozogamicin",
+     "payload": "calicheamicin",
+     "score": 2.007740403284954,
+     "why": [
+      "gastrointestinal (w 0.75 x burden pct 0.97)",
+      "haematologic (w 0.49 x burden pct 1.00)"
+     ]
+    },
+    {
+     "adc": "Camidanlumab tesirine",
+     "payload": "other",
+     "score": 1.9839838134888446,
+     "why": [
+      "gastrointestinal (w 0.75 x burden pct 0.83)",
+      "musculoskeletal (w 0.48 x burden pct 0.90)"
+     ]
+    },
+    {
+     "adc": "Samrotamab vedotin (ABBV-085)",
+     "payload": "mmae",
+     "score": 1.7884368652828555,
+     "why": [
+      "gastrointestinal (w 0.75 x burden pct 0.90)",
+      "musculoskeletal (w 0.48 x burden pct 0.77)"
+     ]
+    }
+   ]
+  },
+  "ckd_stage_4_5": {
+   "lowest": [
+    {
+     "adc": "BMS-986148",
+     "payload": "other",
+     "score": 0.554304400363882,
+     "patients": 195
+    },
+    {
+     "adc": "PF-06647263",
+     "payload": "calicheamicin",
+     "score": 0.6548249526375438,
+     "patients": 120
+    },
+    {
+     "adc": "Trastuzumab deruxtecan",
+     "payload": "dxd_exatecan",
+     "score": 0.8001300867135117,
+     "patients": 1591
+    },
+    {
+     "adc": "Sacituzumab tirumotecan",
+     "payload": "other",
+     "score": 0.9134099695083231,
+     "patients": 130
+    },
+    {
+     "adc": "ATG-022",
+     "payload": "mmae",
+     "score": 1.00173823710723,
+     "patients": 111
+    }
+   ],
+   "highest": [
+    {
+     "adc": "Belantamab mafodotin",
+     "payload": "mmaf",
+     "score": 2.273883057144878,
+     "why": [
+      "renal (w 0.95 x burden pct 0.93)",
+      "ocular (w 0.40 x burden pct 0.97)"
+     ]
+    },
+    {
+     "adc": "Camidanlumab tesirine",
+     "payload": "other",
+     "score": 2.1789645255419137,
+     "why": [
+      "renal (w 0.95 x burden pct 0.97)",
+      "neurologic (w 0.50 x burden pct 0.77)"
+     ]
+    },
+    {
+     "adc": "Loncastuximab tesirine",
+     "payload": "other",
+     "score": 1.918664202334311,
+     "why": [
+      "renal (w 0.95 x burden pct 0.73)",
+      "haematologic (w 0.46 x burden pct 0.87)"
+     ]
+    }
+   ]
+  },
+  "dry_eye": {
+   "lowest": [
+    {
+     "adc": "ATG-022",
+     "payload": "mmae",
+     "score": 0.6903963260610266,
+     "patients": 111
+    },
+    {
+     "adc": "PF-06647263",
+     "payload": "calicheamicin",
+     "score": 0.6903963260610266,
+     "patients": 120
+    },
+    {
+     "adc": "BMS-986148",
+     "payload": "other",
+     "score": 0.6909377005232635,
+     "patients": 195
+    },
+    {
+     "adc": "Trastuzumab rezetecan",
+     "payload": "other",
+     "score": 0.7682576262807664,
+     "patients": 1160
+    },
+    {
+     "adc": "Sacituzumab govitecan",
+     "payload": "other",
+     "score": 0.8834594512740619,
+     "patients": 1573
+    }
+   ],
+   "highest": [
+    {
+     "adc": "A166",
+     "payload": "other",
+     "score": 2.215382353920339,
+     "why": [
+      "ocular (w 1.00 x burden pct 1.00)",
+      "neurologic (w 0.73 x burden pct 0.90)"
+     ]
+    },
+    {
+     "adc": "Belantamab mafodotin",
+     "payload": "mmaf",
+     "score": 2.1638742321437556,
+     "why": [
+      "ocular (w 1.00 x burden pct 0.97)",
+      "dermatologic (w 0.69 x burden pct 0.67)"
+     ]
+    },
+    {
+     "adc": "Glembatumumab vedotin",
+     "payload": "mmae",
+     "score": 2.1318615954395383,
+     "why": [
+      "neurologic (w 0.73 x burden pct 0.97)",
+      "dermatologic (w 0.69 x burden pct 1.00)"
+     ]
+    }
+   ]
+  },
+  "heart_failure+ckd_stage_4_5": {
+   "lowest": [
+    {
+     "adc": "PF-06647263",
+     "payload": "calicheamicin",
+     "score": 1.131237223442008,
+     "patients": 120
+    },
+    {
+     "adc": "BMS-986148",
+     "payload": "other",
+     "score": 1.3722361522394209,
+     "patients": 195
+    },
+    {
+     "adc": "Sacituzumab tirumotecan",
+     "payload": "other",
+     "score": 1.5908102282544114,
+     "patients": 130
+    },
+    {
+     "adc": "Mirvetuximab soravtansine",
+     "payload": "other",
+     "score": 1.6744630703885277,
+     "patients": 542
+    },
+    {
+     "adc": "Trastuzumab deruxtecan",
+     "payload": "dxd_exatecan",
+     "score": 1.7438255116319676,
+     "patients": 1591
+    }
+   ],
+   "highest": [
+    {
+     "adc": "Belantamab mafodotin",
+     "payload": "mmaf",
+     "score": 4.587364940933336,
+     "why": [
+      "cardiovascular (w 1.00 x burden pct 0.97)",
+      "renal (w 0.95 x burden pct 0.93)"
+     ]
+    },
+    {
+     "adc": "Camidanlumab tesirine",
+     "payload": "other",
+     "score": 4.273701790934127,
+     "why": [
+      "renal (w 0.95 x burden pct 0.97)",
+      "metabolic_endocrine (w 0.85 x burden pct 0.97)"
+     ]
+    },
+    {
+     "adc": "Lifastuzumab vedotin",
+     "payload": "mmae",
+     "score": 3.811053962460031,
+     "why": [
+      "metabolic_endocrine (w 0.85 x burden pct 0.90)",
+      "cardiovascular (w 1.00 x burden pct 0.77)"
+     ]
+    }
+   ]
+  }
+ }
+}
