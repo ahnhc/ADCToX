@@ -31,7 +31,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 5e. Target antigen | It was an inert input. Expression data now changes the bands and the stated reasons, and not which design is proposed. |
 | 5e-b. Ranking | **The product cannot rank its own proposals in any of 192 queries**, and the comorbidity profile's influence is a function of an arbitrary constant. |
 | 5e-c. Ordinal comparison | Every rate now carries its position among the registry chemistries, which recovers a boxed warning on its first use. |
-| 5f. The one positive signal | **Gone.** It was +0.13 at p=0.025 on 16 agents and +0.007 at p=0.46 on 22 -- six more agents erased it. |
+| 5f. The one positive signal | **Gone at 22 agents** -- +0.13 at p=0.025 on 16, +0.007 at p=0.46 on 22 -- and **back at 27 and 65**: +0.186 at p=0.0005 and +0.198 at p<0.0001, with the estimator sensitivity collapsing as it grows. |
 | 5f-b. Two metrics, opposite directions | Across three nested corpora the held-out across-agent figure runs -0.015, +0.030, +0.047 while the pre-specified within-arm delta runs -0.012, -0.015, -0.106. Every interval includes zero, so it is a direction and not an effect. |
 | 5g. Corpus expansion | The ceiling is 32 agents and not the planned 54, of which **31** publish an any-grade column; the expansion buys the common-events table and not the serious one. |
 | 5h. Comorbidity layer | A non-circular holdout against 1,741 trials' exclusion criteria, at AUROC 0.666 against 0.750 circularly. |
@@ -39,7 +39,7 @@ line says what the section concluded, so a reader can go to the ones that matter
 | 6. Exclusion criteria | Expert prior encoded at 4.4x to 127x enrichment -- consistency with known warnings, not prediction. |
 | 7. Anticipatory target | Three dated label changes were scorable, mean rank 4.67 of 14, p = 0.51. A case series, not a validation. |
 | 8. Dose modification | 78 orderable axis pairs; the ordering comes out clinically sensible without being told. |
-| **9. Measured negative results** | **The strongest section. 63 results, each reproducible.** |
+| **9. Measured negative results** | **The strongest section. 65 results, each reproducible.** |
 | 9b. Clean-clone check | 429 report figures all trace to a tracked artefact from a fresh clone; `make all` offline is impossible by design. |
 | 10. Limitations | What this must not be used for. |
 
@@ -81,7 +81,7 @@ specifically outside what it can say.
 So what the system is for is the filtering, the intervals, and the refusals: it will not
 rank what it cannot separate, will not price a payload mechanism it has never seen, and
 will not offer a design whose parts have no clinical precedent. Sections 3 and 4 are where
-the prediction fails, section 9 is the sixty-three measured negative results, and section
+the prediction fails, section 9 is the sixty-five measured negative results, and section
 10 is what this must not be used for.
 
 ## 2. The corpus, and the number that governs everything
@@ -1000,11 +1000,44 @@ And the six agents arrived from ClinicalTrials.gov records that were already on 
 there is no reporting-selection story to explain it away: they are the same kind of data as
 the sixteen.
 
-So the report has no positive result, and that is a cleaner position than one marginal
-result reported with caveats. The project's own best demonstration of why a p of 0.025 on
-sixteen units is not a finding is that this one did not survive going to twenty-two. The
-section is kept in full below, because the measurement problem it starts from is real and
-the adjustment it builds is the right one -- the conclusion is what changed.
+So on this corpus the report has no positive result, and that is a cleaner position than one
+marginal result reported with caveats. The project's own best demonstration of why a p of
+0.025 on sixteen units is not a finding is that this one did not survive going to
+twenty-two. The section is kept in full below, because the measurement problem it starts
+from is real and the adjustment it builds is the right one -- the conclusion is what changed.
+
+**And then the corpus grew again, and the same estimator came back.** This paragraph is
+written after section 5f-b, which should be read with it. On the 27-agent corpus the headline
+variant gives rho **+0.1859**, bootstrap [+0.1032, +0.2662], permutation **p = 0.0005**; on
+the 65-agent merged corpus with uninformative absences dropped, **+0.1979**, [+0.0970,
++0.2991], **p < 0.0001**. Both fits converged. The verdict sentence in
+`across_agent_adjusted.json` is computed from its own numbers rather than written beside
+them, and on those two corpora it reads *"A result."* -- from a function written when it
+said *"No signal."*
+
+Three things about that, in the order they matter.
+
+**The objection this section raised against its own old result does not apply to the new
+one.** The objection was precision: *"A real correlation gains precision as n grows -- the
+bootstrap interval should narrow around a stable centre. This one moved its centre to zero
+and kept its width."* Here the centre moves away from zero and the sensitivity to how the
+adjustment is estimated collapses -- the spread across the five estimators is 0.0517 at 22
+agents, 0.0195 at 27 and **0.0087** at 65, against estimates of +0.0073, +0.1859 and
++0.1979. At 22 agents the spread was seven times the estimate; at 65 it is one twentieth of
+it.
+
+**The two significant corpora are nested, so they are not two independent confirmations.**
+The 27-agent grid is a subset of the 65-agent one. What distinguishes both from the 22-agent
+corpus is the literature arms, and section 5f-b's table shows those same arms making the
+*within-arm* metric worse at every step. One body of data moves the two metrics in opposite
+directions, which is the finding, and it means neither metric's movement can be dismissed as
+data quality.
+
+**It still does not clear the +0.3 bar** declared for the unadjusted out-of-fold figure in
+`fit_forward.py`, where the merged corpus reads +0.2066. Two declared criteria exist for two
+related quantities and they disagree about this result: the adjusted metric's own permutation
+test passes, the unadjusted metric's magnitude bar does not. Both are reported, and the
+report does not pick the one that flatters the model.
 
 The artefact states its own verdict now, computed from its numbers rather than written
 beside them. The previous version carried the sentence "beats chance at p = 0.025" in a
@@ -1106,60 +1139,62 @@ axis base rates -- they cancel.
 | literature 17 *(off the expansion path)* | 17 | 2.38:1 | 36.5% | -0.0782 | -0.0695 | [-0.189, +0.065] | -- | indistinguishable from zero |
 | registry 22 | 22 | 3.08:1 | 11.5% | -0.0121 | -0.0152 | [-0.205, +0.161] | +0.0073 | indistinguishable from zero |
 | explicit cuts 26 | 26 | 3.64:1 | 14.6% | -0.0154 | +0.0303 | [-0.103, +0.168] | +0.0470 | indistinguishable from zero |
+| explicit agents 27, all arms | 27 | 3.78:1 | 29.3% | -0.0967 | +0.2013 | [+0.122, +0.281] | +0.1859 | positive, excludes zero, below the declared bar |
 | expanded 32 *(did not converge)* | 32 | 4.48:1 | 29.7% | -0.0972 | +0.1308 | [+0.074, +0.191] | -- | positive, excludes zero, below the declared bar |
 | expanded 32, absences dropped | 32 | 4.48:1 | 12.3% | -0.1057 | +0.0472 | [-0.059, +0.145] | +0.0467 | indistinguishable from zero |
+| merged 65, absences dropped | 65 | 9.10:1 | 10.3% | -0.0510 | +0.2066 | [+0.098, +0.303] | +0.1979 | positive, excludes zero, below the declared bar |
 
-Over the 3 converged fits the two metrics move in opposite directions: across-agent rho against corpus size +1.000, within-arm delta AUC against corpus size -1.000. 3 converged fits carry this split. A rank correlation over 3 points cannot carry a p-value worth quoting; the sign is the claim.
+Over the 5 converged fits the two metrics move in opposite directions: across-agent rho against corpus size +0.900 (p = 0.0374), within-arm delta AUC against corpus size -0.700 (p = 0.1881). 5 converged fits on the expansion path carry this split. Five points is the fewest this script will attach a p-value to, and it is still five points.
 
-Section 5f's adjusted headline over the same fits gives rho +0.500 on 3 points -- 22 agents at +0.0073, 26 agents at +0.0470, 32 agents at +0.0467. It moves with the unadjusted figure rather than against it, and like it reaches no significance at any corpus.
+Section 5f's adjusted headline over the same fits gives rho +0.700 on 5 points -- 22 agents at +0.0073, 26 agents at +0.0470, 27 agents at +0.1859, 32 agents at +0.0467, 65 agents at +0.1979. It moves with the unadjusted figure rather than against it.
 
-The largest across-agent figure in the table, +0.1308 on expanded 32, is **not quotable**: that fit's worst standardised seed gap is 0.7219 against a 0.3 threshold. It is the most attractive number this project has produced and it comes from the one fit that failed its own convergence check.
+**On its own declared criterion it is a result on the larger corpora.** That criterion is not the +0.3 bar above, which was declared for the unadjusted out-of-fold figure: it is the permutation test this artefact's verdict function has applied since before it had anything to report -- p below 0.05 with a bootstrap interval excluding zero -- and **2 of the five fits** now read *A result*: explicit agents 27, all arms at +0.1859, [+0.103, +0.266], permutation p = 0.0005; merged 65, absences dropped at +0.1979, [+0.097, +0.299], permutation p < 0.0001.
 
-Prediction recorded, not yet scorable: *the merged 65-agent corpus will put leave-one-agent-out across-agent Spearman above zero with a CI excluding zero, and still below +0.3*. Pending: explicit agents 27, all arms, merged 65, merged 65, absences dropped.
+Section 5f's own objection to its old result was that the estimate was smaller than the spread across the five ways of estimating the adjustment. That is no longer the case where it is significant: the spread is 0.0195 on explicit agents 27, all arms and 0.0087 on merged 65, absences dropped, against 0.0517 on registry 22 and 0.1033 on explicit cuts 26 and 0.0289 on expanded 32, absences dropped where it is not. The estimate grows and the estimator choice stops mattering, which is what section 5f said a real effect would do and what its sixteen-to-twenty-two pair did not.
 
-The bar was declared at +0.3 before the metric was first computed, and no row clears it. The trend is in the point estimates only: every on-path row reads *indistinguishable from zero* on its own interval, so what the table supports is a direction and not an effect -- the comparison the product makes moves up as the corpus grows while the pre-specified one moves down, and neither has yet reached a figure worth quoting alone.
+Prediction recorded, not yet scorable: *the merged 65-agent corpus will put leave-one-agent-out across-agent Spearman above zero with a CI excluding zero, and still below +0.3*. Pending: merged 65.
+
+The bar was declared at +0.3 before the metric was first computed, and no row clears it. 2 of the 5 on-path converged rows read *positive, excludes zero, below the declared bar* and the rest read *indistinguishable from zero*, so the unadjusted series carries a direction plus two intervals clear of zero: the comparison the product makes moving up as the corpus grows while the pre-specified one moves down.
 
 <!-- /generated: across-agent-trend -->
 
-Four things qualify the table, and together they leave a direction rather than a result.
+Four things qualify the table.
 
-**One row is not on the path.** `artifacts/with_literature` reports 17 agents, and 17 is not
-a smaller value of the 22 beside it. Its grid carries telisotuzumab vedotin, which the
-registry's does not, and lacks six agents that the registry's does -- camidanlumab tesirine,
-depatuxizumab mafodotin, enapotamab vedotin, farletuzumab ecteribulin, rovalpituzumab
-tesirine, vobramitamab duocarmazine. Neither subset nor superset, so its agent count is a
-different quantity with the same name. The script computes this rather than taking it on
-trust: it loads each fit's frames, checks whether the grid contains the registry's, and
-excludes the ones that do not. The remaining four form a proper chain -- registry 22, then
-explicit cuts 26, then expanded 32, then merged 65 -- each a superset of the one before.
+**One row is not on the path, and the script computes that rather than taking it on trust.**
+`artifacts/with_literature` reports 17 agents, and 17 is not a smaller value of the 22 beside
+it: its grid carries telisotuzumab vedotin, which the registry's does not, and lacks six that
+the registry's does. Neither subset nor superset, so its agent count is a different quantity
+with the same name. The script loads each fit's frames, checks whether its grid contains the
+registry's, and excludes the ones that do not. The rest form a proper chain -- 22, 26, 27, 32,
+65 -- each a superset of the one before.
 
-**The censoring is roughly held constant across the three quotable points**, at 11.5%, 14.6%
-and 12.3%, while the fit excluded for non-convergence sits at 29.7%. Without that column the
-series could be measuring the censoring treatment instead of the corpus; with it, the three
-comparable points differ mainly in size.
+**The censoring does not track the corpus size across the quotable points.** The censored
+share runs 11.5%, 14.6%, 29.3%, 12.3% and 10.3% as the agent count rises, so the series is not
+secretly measuring the censoring treatment; and the one fit excluded for non-convergence is
+the one with the heaviest censoring at 29.7%.
 
-**The largest figure is not quotable.** The 32-agent default fit's worst standardised seed
-gap is 0.7219 against a 0.3 threshold, and it holds the best across-agent number in the
-table. It is the most attractive figure this project has produced.
+**The strongest *unquotable* figure is still a trap and still flagged.** The 32-agent default
+fit holds a +0.1308 with an interval excluding zero and a worst standardised seed gap of
+0.7219 against a threshold of 0.3. It is marked in its own row.
 
-**Nothing is significant and nothing clears the bar.** +0.3 was written into
-`fit_forward.py` before the metric was ever computed. Every on-path row's interval includes
-zero. Three points can carry a sign and not a p-value, and the script withholds one: a
-Spearman rho of 1.000 over three points returns p = 0.0 from only six possible orderings,
-which would be this report's most quotable and least meaningful number.
+**Nothing clears the declared bar of +0.3**, written into `fit_forward.py` before the metric
+was first computed. Two of the five rows read *positive, excludes zero, below the declared
+bar*, which is a weaker claim than support and a stronger one than nothing.
 
-The adjusted figure -- section 5f's headline, which removes the between-agent reporting
-conditions -- had never been computed beyond 22 agents, for a mechanical reason that is
-negative result 59. It is in the table now and it moves *with* the unadjusted figure rather
-than against it, which matters: if the two had disagreed, the direction would have been a
-property of the adjustment.
+The adjusted column is the check that matters most, because section 5f's headline is the
+adjusted figure and a trend visible only in the unadjusted one would be a property of the
+adjustment. It is not: the adjusted series runs +0.0073, +0.0470, +0.1859, +0.0467, +0.1979
+over the same five fits, rho +0.700, and at the two largest corpora it sits within two
+hundredths of the unadjusted value. Removing the between-agent reporting conditions does not
+create this and does not remove it.
 
-So section 5f's retraction stands, and this section does not reinstate it. What it changes is
-what the retraction was a verdict on. It was read as a verdict on the model; it is a verdict
-on one of two metrics, and on the other one -- the comparison the product's own question asks
--- the three comparable fits run -0.0152, +0.0303, +0.0472 while the pre-specified metric
-runs -0.0121, -0.0154, -0.1057. A merged fit at 65 agents and 9.10:1 identification is
-running, and the prediction above was recorded before it landed.
+So the position is this. Section 5f retracted the project's one positive result, correctly,
+on the 22-agent corpus. Three corpus expansions later the same comparison -- the one the
+product's own question asks, and the one no design-blind constant can win -- reads +0.2066
+with an interval excluding zero at 65 agents, while the pre-specified within-arm metric has
+moved the other way. **Neither reaches the bar that was set for it in advance, and both are
+reported.** What changed is not that the model works; it is that the retraction was a verdict
+on one of two metrics and had been read as a verdict on the model.
 
 ## 5g. The corpus was agent-limited, and the limit turned out to be measurable
 
@@ -1709,6 +1744,80 @@ different regulatory submissions; granularity is the axis rather than the headin
 second warning on an already-flagged organ is not a prediction target; and three regex
 patterns were hiding real events, found by reading the unmapped-heading list that the
 pipeline reports rather than discards.
+
+## 7b. The inverse validation, which the plan called the most important day
+
+Module A proposes designs. The plan's headline test of whether it can is inverse: give the
+system only an approved ADC's target and a comorbidity profile built from that drug's own
+label, and ask whether the design it proposes is the drug. Fourteen approved ADCs, twelve
+distinct targets, **each scored against a posterior refitted with that agent held out** --
+without which the model has already seen the arms of the trial that approved it.
+
+<!-- generated: inverse-retrieval -->
+
+| slot | informative in | matched top-1 | chance | excess | excess, precedent on other targets |
+|---|---|---|---|---|---|
+| payload | 14 agents | 2 | 1.82 | +0.18 | +0.18 |
+| linker | 14 agents | 3 | 1.17 | +1.83 | -0.17 |
+| conjugation | 11 agents | 3 | 3.86 | -0.86 | -0.86 |
+| **dar** | 14 agents | **0** | 1.71 | -1.71 | -1.71 |
+| isotype | 2 agents | 0 | 0.17 | -0.17 | -0.17 |
+
+| variant | informative slots | matched | chance | excess | permutation p |
+|---|---|---|---|---|---|
+| as the product scores it | 55 | **8** | 8.74 | -0.74 | 0.670 |
+| precedent computed on other targets | 55 | **6** | 8.74 | -2.74 | 0.898 |
+
+14 approved ADCs over 12 distinct targets, each scored against a posterior **refitted with that agent held out** -- 1.4 hours of refitting, without which the model has already seen the answer. The exact design appears in the displayed set for **0 of 14**. Slots whose chance rate exceeds 0.5 are excluded as uninformative, which is why isotype and masking carry almost no rows.
+
+<!-- /generated: inverse-retrieval -->
+
+**It does not work, and the two rows of the second table are why.** As the product scores
+candidates it matches 8 of 55 informative slots against a chance expectation of 8.74 --
+permutation p 0.67, an excess of −0.74. That alone would be "at chance". Recomputing the
+precedent objective on *other* targets takes it to 6 against 8.74, p 0.90, an excess of
+**−2.74**: worse than chance.
+
+The plan anticipated exactly this confound and named it second of four -- *"선례 목적 O3가
+시험을 단락"*, the precedent objective short-circuits the test, because the most precedented
+configuration for a given target is that target's approved drug. What the plan could not say
+in advance was the size, and the size is the whole result. **Linker is the only slot with a
+positive excess, +1.83 with precedent, and it falls to −0.17 without it.** The one thing the
+system appeared to get right, it got right by recognition.
+
+**DAR is matched zero times in fourteen**, against a chance expectation of 1.71. The plan
+called DAR *"가장 잘 정량됨"* -- the best-quantified slot of the seven -- and it is the only
+one scored below its own chance rate on every agent. That is consistent with the forward
+model: `b_dar` includes zero on the registry corpus, because DAR is an agent-level constant
+confounded with agent identity, so there was never a coefficient to carry this slot.
+
+Ten of the fourteen agents match no informative slot at all. The eight matches are
+concentrated in four drugs -- enfortumab vedotin 3 of 4, gemtuzumab and inotuzumab
+ozogamicin 2 of 5 each, trastuzumab emtansine 1 of 3 -- and the two ozogamicins share a
+payload, a linker and a conjugation chemistry, so the effective number of independent
+successes is smaller than four. **The exact design never appears in the displayed set**, for
+any of the fourteen.
+
+### What this does and does not retract
+
+It does not retract the enumerator. The design space is real: 74 to 92 feasible candidates
+per target after the chemistry constraints, from an enumeration the plan measured against a
+435-row corpus where only 135 of 5,822 payload-linker pairs are ever observed. The
+constraints bind, the Pareto front is computed exactly, and the system refuses to rank what
+it cannot separate.
+
+What it retracts is any claim that the ranking inside that space is informative about
+chemistry. The honest statement of Module A is now: *it enumerates a defensible design space,
+filters it with constraints that bind, and orders it by a model whose ordering does not
+recover the designs that were actually built.* The plan's own "정직한 상한" was slot accuracy
+4.1 of 7 at p = 0.003. The measured number is below chance on the variant that controls for
+memorisation, and reporting it is worth more than the hoped-for one would have been.
+
+One thing in the plan's favour. It required this test to be run with leave-one-agent-out
+refitting and said plainly that without it the result is meaningless. That requirement is
+what makes this answer trustworthy -- the block above reports what the refits cost, against
+the plan's four-hour budget -- and a version of this measurement that skipped them would have
+reported a success.
 
 ## 8. Dose-modification ordering
 
@@ -3121,6 +3230,98 @@ between those two.
     because they are rewritten from their artefact on every sync, and the staleness tests
     that fail when regenerating would change the document. **Every figure this section
     retracted was hand-typed prose, and every figure in a generated block was correct.**
+
+63. **The plan's one lever for improving identification without new agents does not work,
+    and it fails on the quantity the product is for.** Every route to a better
+    cells-per-parameter ratio in this project needs more agents, and the ceiling is
+    measured. The plan names one exception: replace the mechanism-by-axis interaction with a
+    **rank-1 factorisation** -- a scale per mechanism times one organ profile shared by all
+    of them. The arithmetic is the most attractive in the report. The interaction is
+    identified as a minority of the design parameters and rank 1 needs a third of those, which
+    against the same identifying cells is the largest single improvement available to this
+    corpus at no collection cost. The block below computes both ratios.
+
+    <!-- generated: rank1 -->
+
+    | mechanism | rank-1 scale | rho(full, rank 1) | worst organ, full | worst organ, rank 1 |
+    |---|---|---|---|---|
+    | dna_alkyl | -2.277 | +0.881 | ocular | ocular |
+    | dna_cleave | +2.063 | +0.956 | haematologic | haematologic |
+    | dna_crosslink | +0.354 | -0.072 | otologic | haematologic **moved** |
+    | topo1 | +0.239 | +0.310 | gastrointestinal | haematologic **moved** |
+    | tubulin | -0.395 | +0.297 | neurologic | ocular **moved** |
+
+    Rank 1 reproduces **67.0%** of the posterior-mean interaction and 54.1% of a typical draw, and would take the identified design parameters from 56 to 18, and the identification ratio from 3.08:1 to **4.97:1**. The worst organ survives for 2 of 5 mechanisms, and 2 need a **negative** scale -- not a scaled copy of the shared profile but its mirror image. Verdict: *not usable: the worst organ moves for 3 of 5 mechanisms and 2 need an inverted profile*.
+
+    <!-- /generated: rank1 -->
+
+    The variance share alone would be arguable: 67% of the interaction is a lot to keep for
+    a third of the parameters, and section 4's own argument is that the design terms are too
+    small to reorder organs anyway. The ordering is not arguable. The factorisation moves
+    the worst organ for **three of five mechanisms**, and one of the three is tubulin, whose
+    worst organ becomes ocular instead of neurologic -- MMAE and peripheral neuropathy being
+    among the best-established organ effects in the field.
+
+    **Two mechanisms need a negative scale**, which is the sharper failure. A negative
+    multiplier does not shrink the shared profile, it inverts it: it says dna_alkyl's organ
+    profile is the mirror image of dna_cleave's. That is not a parsimonious model of ADC
+    toxicity, it is an artefact of forcing five profiles through one direction, and it is
+    visible in the numbers rather than in an opinion about them.
+
+    So the ratio stays at 3.08:1 and the only thing that moves it is agents. That is worth
+    stating plainly because it closes a door the plan left open, and because the usual
+    response to a weak ratio -- simplify the model -- is available here, measurable, and
+    wrong.
+
+64. **The censoring model's central estimator was never scored, and it could only be scored
+    where it is overridden.** Seven AE tables in ten state no frequency cut, and the model is
+    told the cut is *at most* the smallest printed rate. That substitution decides what every
+    absent organ in every paper arm means. Its accuracy had gone unmeasured for a structural
+    reason: the only tables where the truth is known are the tables that stated a cut, and
+    there the stated cut overrides the substitute, so the comparison was being discarded at
+    the moment it became possible. `Threshold` now records the derived bound on every path.
+
+    <!-- generated: threshold-accuracy -->
+
+    | quantity | value |
+    |---|---|
+    | AE tables parsed | 797 |
+    | tables carrying a threshold | 325 |
+    | **tables where both numbers exist** | **26** |
+    | median stated cut | 10% |
+    | median derived bound | 11.05% |
+    | **median overshoot** | **+1.00 pp** |
+    | mean overshoot | +2.86 pp |
+    | 90th percentile | +10.35 pp |
+    | worst | **+14.40 pp** |
+    | within 1 pp | 54% |
+    | within 2 pp | 69% |
+    | **over 5 pp** | **15%** |
+
+    The substitution is tight in the middle and has a tail. It is also the conservative direction -- a bound set too high widens an interval rather than narrowing it -- so the cost is power, not correctness. Whether the tail is predictable: the overshoot against the printed row count gives rho -0.251 and against the stated cut itself +0.287, over 26 tables. Neither is strong enough to correct the bound, so the tail is a limitation rather than a bug.
+
+    <!-- /generated: threshold-accuracy -->
+
+    Read in the direction that matters: the bound is used on the other seven tables in ten,
+    and on the tables where it can be checked it is usually within a point and occasionally
+    out by fourteen. The worst cases are tables with a **high** stated cut -- a 20% cut whose
+    smallest printed rate is 34% -- which is mechanical: a table that prints few events has a
+    high minimum. A cell in such an arm is told "your rate is below 34%" when the truth is
+    "below 20%", and carries almost no information.
+
+    **The direction is the saving grace and the tail is the cost.** An overshoot widens an
+    interval rather than narrowing it, so being wrong here loses power and not correctness,
+    which is why the censored likelihood is kept. But negative result 50 narrows the
+    literature expansion's damage to the upper-bound arms or to six agents, and *a bound set
+    far too high* is the mechanism it suspects. One table in seven overshooting by more than
+    five points is consistent with that, and the overshoot is not predictable from the
+    table's shape, so it cannot be corrected -- only carried.
+
+    Two smaller things came out of the same pass. The caption parser missed `⩾` (U+2A7E),
+    the slanted greater-or-equal, on **1 of 374** AE tables; fixed, and the size is the
+    point. And ASCII `>=` -- the form that prompted the check, since the pattern could not
+    match it -- appears **zero times** in 374 captions, because JATS normalises the symbol.
+    A suspicion that costs two minutes to refute is the cheapest kind.
 
 ## 9b. The clean-clone check, run for the first time
 

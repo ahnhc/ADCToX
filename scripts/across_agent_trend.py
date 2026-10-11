@@ -209,12 +209,29 @@ def _read(label: str, art: str, processed: str, drop: bool) -> dict:
         head = a.get("headline_variant")
         v = (a.get("variants") or {}).get(head) or {}
         if "mean_spearman" in v:
+            pp = (a.get("permutation_p") or {}).get(head)
+            ci = [round(x, 4) for x in v["ci"]]
             row["adjusted"] = {
                 "variant": head,
                 "mean": round(v["mean_spearman"], 4),
-                "ci": [round(x, 4) for x in v["ci"]],
-                "permutation_p": (a.get("permutation_p") or {}).get(head),
+                "ci": ci,
+                "permutation_p": pp,
                 "n_agents": a.get("n_agents"),
+                # The adjusted metric's own declared criterion, which is not the +0.3 bar:
+                # that bar was declared for the unadjusted out-of-fold figure in
+                # `fit_forward.py`. This one is the permutation test the artefact's verdict
+                # function has always applied -- p < 0.05 with a bootstrap interval
+                # excluding zero -- and the function was written when it said "No signal".
+                "significant": bool(pp is not None and pp < 0.05 and ci[0] > 0),
+                # How much the estimate moves across the five ways of removing the
+                # reporting conditions. Section 5f's own objection to its old result was
+                # that the estimate was smaller than this spread.
+                "estimator_spread": round(max(
+                    abs(vv["mean_spearman"] - v["mean_spearman"])
+                    for vv in (a.get("variants") or {}).values()
+                    if "mean_spearman" in vv
+                ), 4),
+                "verdict": (a.get("reading") or "").split(".")[0] + ".",
             }
             # The adjusted artefact records its own agent count. If it disagrees with the
             # fit's, one of the two was produced against a different corpus.
@@ -273,6 +290,8 @@ def _trend(rows: list[dict], split: str) -> dict:
         pts.append((r["n_agents"], aa["model_mean"], e["delta_auc_mean"]))
         if r.get("adjusted"):
             adj_pts.append((r["n_agents"], r["adjusted"]["mean"]))
+    adj_pts.sort()
+    pts.sort()
     if len(pts) < 3:
         return {"computed": False, "n_points": len(pts),
                 "points": [{"n_agents": int(a), "across_agent": float(b),
@@ -322,10 +341,16 @@ def _trend(rows: list[dict], split: str) -> dict:
                         "`make across-agent` has to be run per corpus and the adjusted "
                         "series is therefore shorter than the unadjusted one")}
         ),
+        # The note has to agree with what was actually reported. It said a p-value was
+        # not worth quoting while the p-value sat two lines above it, because the
+        # suppression threshold moved and the sentence did not.
         "note": (
-            f"{len(pts)} converged fits carry this split. A rank correlation over "
-            f"{len(pts)} points cannot carry a p-value worth quoting; the sign is the "
-            "claim."
+            f"{len(pts)} converged fits on the expansion path carry this split."
+            + ("" if len(pts) >= 5 else
+               f" A rank correlation over {len(pts)} points carries no p-value; the sign "
+               "is the claim.")
+            + (" Five points is the fewest this script will attach a p-value to, and it "
+               "is still five points." if len(pts) == 5 else "")
         ),
     }
 

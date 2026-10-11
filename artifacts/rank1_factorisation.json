@@ -1,0 +1,132 @@
+{
+ "mechanisms": [
+  "dna_alkyl",
+  "dna_cleave",
+  "dna_crosslink",
+  "topo1",
+  "tubulin"
+ ],
+ "axes": [
+  "haematologic",
+  "hepatic",
+  "cardiovascular",
+  "pulmonary",
+  "renal",
+  "gastrointestinal",
+  "neurologic",
+  "ocular",
+  "dermatologic",
+  "metabolic_endocrine",
+  "musculoskeletal",
+  "infectious_immune",
+  "otologic",
+  "constitutional"
+ ],
+ "singular_value_share": [
+  0.6702,
+  0.1254,
+  0.119,
+  0.0819,
+  0.0035
+ ],
+ "rank1_share_of_mean_matrix": 0.6702,
+ "rank2_share_of_mean_matrix": 0.7956,
+ "rank1_share_per_draw": {
+  "n_draws_scored": 200,
+  "median": 0.541,
+  "q05": 0.4614,
+  "q95": 0.6263
+ },
+ "parameters": {
+  "full_interaction_identified": 56,
+  "rank1_identified": 18,
+  "saved": 38,
+  "identification_ratio_now": 3.08,
+  "identification_ratio_under_rank1": 4.97
+ },
+ "shared_profile_most_to_least": [
+  "haematologic",
+  "hepatic",
+  "renal",
+  "infectious_immune",
+  "cardiovascular",
+  "gastrointestinal",
+  "metabolic_endocrine",
+  "constitutional",
+  "neurologic",
+  "otologic",
+  "pulmonary",
+  "musculoskeletal",
+  "dermatologic",
+  "ocular"
+ ],
+ "per_mechanism": [
+  {
+   "mechanism": "dna_alkyl",
+   "scale": -2.2768,
+   "scale_is_negative": true,
+   "ordering_spearman": 0.8813,
+   "worst_axis_full": "ocular",
+   "worst_axis_rank1": "ocular",
+   "worst_axis_preserved": true,
+   "top3_preserved": false
+  },
+  {
+   "mechanism": "dna_cleave",
+   "scale": 2.0627,
+   "scale_is_negative": false,
+   "ordering_spearman": 0.956,
+   "worst_axis_full": "haematologic",
+   "worst_axis_rank1": "haematologic",
+   "worst_axis_preserved": true,
+   "top3_preserved": false
+  },
+  {
+   "mechanism": "dna_crosslink",
+   "scale": 0.3539,
+   "scale_is_negative": false,
+   "ordering_spearman": -0.0725,
+   "worst_axis_full": "otologic",
+   "worst_axis_rank1": "haematologic",
+   "worst_axis_preserved": false,
+   "top3_preserved": false
+  },
+  {
+   "mechanism": "topo1",
+   "scale": 0.2392,
+   "scale_is_negative": false,
+   "ordering_spearman": 0.3099,
+   "worst_axis_full": "gastrointestinal",
+   "worst_axis_rank1": "haematologic",
+   "worst_axis_preserved": false,
+   "top3_preserved": false
+  },
+  {
+   "mechanism": "tubulin",
+   "scale": -0.395,
+   "scale_is_negative": true,
+   "ordering_spearman": 0.2967,
+   "worst_axis_full": "neurologic",
+   "worst_axis_rank1": "ocular",
+   "worst_axis_preserved": false,
+   "top3_preserved": false
+  }
+ ],
+ "worst_axis_preserved": 2,
+ "negative_scales": [
+  "dna_alkyl",
+  "tubulin"
+ ],
+ "verdict": "not usable: the worst organ moves for 3 of 5 mechanisms and 2 need an inverted profile",
+ "reading": "A rank-1 interaction says every mechanism shares one organ profile up to a multiplier. The variance share says how much of the fitted matrix that reproduces; the per-mechanism ordering says whether the product's output survives it. A negative multiplier is the sharper failure: it does not scale the shared profile, it inverts it, which as biology says one mechanism's organ profile is the mirror image of another's.",
+ "provenance": {
+  "revision": "b63725eb65f05eb58f2083fa3276418d247c5409",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "rank1_factorisation.py",
+  "written_utc": "2026-10-10T01:40:48+00:00",
+  "inputs": {
+   "posterior": "sha256:3bb9641765dea19af8e50eaaa72d61ee7c8ca41b873251289564f0a79bc7353a"
+  }
+ }
+}

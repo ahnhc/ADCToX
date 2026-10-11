@@ -93,3 +93,46 @@ def test_the_licence_of_every_cited_article_is_recorded() -> None:
         "these articles are cited but absent from every fetch manifest, so their licence "
         f"is unverifiable: {unknown[:10]}"
     )
+
+
+def test_no_finngen_hazard_ratio_is_printed_in_a_published_document() -> None:
+    """FinnGen has no named licence, so its numbers stay out of the published documents.
+
+    Checked on 2026-10-10: `finngen.fi/en/access_results` names no licence -- not CC BY,
+    not CC0 -- gates the download behind a form, and asks only for citation and
+    acknowledgement. No redistribution or derivative terms are stated. That is the same
+    situation as `adctoxicityatlas.org` and `ADCdb`, where this project's standing rule is
+    cite only, never bulk-collect, never redistribute.
+
+    So the comorbidity layer may *use* the hazard ratios as a capped prior and the report
+    may say what the layer changes, but a FinnGen HR must not appear as a figure. The
+    workbook itself is already gitignored with only a hash committed, which the atlas
+    manifest test covers; this covers the published side.
+
+    The check is deliberately crude -- a document that mentions FinnGen must not put a
+    decimal figure in the same sentence -- because the failure it guards against is
+    someone transcribing a table of HRs into a results section, and that is exactly what
+    a crude check catches.
+    """
+    import re
+
+    docs = sorted(
+        [*(ROOT / "report").rglob("*.md"), *(ROOT / "docs").rglob("*.md")]
+    )
+    offenders: list[tuple[str, int, str]] = []
+    decimal = re.compile(r"(?<![\w.])\d+\.\d{2,}(?!\w)")
+    for doc in docs:
+        for lineno, line in enumerate(doc.read_text(encoding="utf-8").splitlines(), 1):
+            if "FinnGen" not in line and "finngen" not in line:
+                continue
+            # A URL carries dots and no hazard ratios.
+            stripped = re.sub(r"\S*finngen\.fi\S*", " ", line, flags=re.I)
+            stripped = re.sub(r"R\d+", " ", stripped)
+            hits = decimal.findall(stripped)
+            if hits:
+                offenders.append((doc.name, lineno, ", ".join(hits)))
+    assert not offenders, (
+        "a decimal figure sits in a sentence about FinnGen, which has no named licence and "
+        "is cite-only in this project: "
+        + "; ".join(f"{d}:{n} ({h})" for d, n, h in offenders)
+    )

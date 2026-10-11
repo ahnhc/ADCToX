@@ -129,3 +129,47 @@ def test_a_block_inside_a_list_item_stays_at_the_list_indent() -> None:
                 "top level and four continues a numbered list item; anything else is a "
                 "markdown code fence, which renders the block as literal text."
             )
+
+
+def test_each_generated_block_holds_its_own_content() -> None:
+    """A block must contain what its name says, not another block's text.
+
+    Two names in the generator were shadowed by a loop variable in the same sitting. The
+    first, `pattern`, made the model card report "has no generated block" while carrying
+    twelve. The second, `block`, wrote the threshold-accuracy table over the
+    fitted-parameter list in both documents -- nine paragraphs of parameter interpretation
+    replaced by a table about reporting cuts, under the heading "Calibration and
+    uncertainty". The idempotence test above did not see it, because the wrong content was
+    written consistently.
+
+    So each block is checked for a string only it would carry.
+    """
+    FINGERPRINT = {
+        "fitted-parameters": ("tau_cleav", "tau_mech", "sigma_agent"),
+        "threshold-accuracy": ("stated cut", "overshoot"),
+        "rank1": ("rank-1 scale", "worst organ"),
+        "across-agent-trend": ("across-agent rho", "identification"),
+        "across-agent-per-axis": ("organ axis", "across-agent rho"),
+        "posterior-choice": ("queries compared",),
+        "objective-label-gap": ("median", "display resolution"),
+        "rank-resolution": ("queries swept",),
+        "corpus-ablation": ("stage",),
+    }
+    for doc in _docs():
+        text = doc.read_text(encoding="utf-8")
+        for name, needles in FINGERPRINT.items():
+            m = re.search(
+                re.escape(f"<!-- generated: {name} -->")
+                + r"(.*?)"
+                + re.escape(f"<!-- /generated: {name} -->"),
+                text, re.S,
+            )
+            if not m:
+                continue
+            body = m.group(1)
+            missing = [n for n in needles if n not in body]
+            assert not missing, (
+                f"{doc.name}: the '{name}' block does not contain {missing}. Another "
+                "block's text was written into it -- check for a shadowed name in "
+                "sync_report_numbers.py."
+            )

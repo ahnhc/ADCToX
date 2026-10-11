@@ -1,0 +1,1179 @@
+{
+  "provenance": {
+    "revision": "b63725eb65f05eb58f2083fa3276418d247c5409",
+    "dirty": false,
+    "snapshot": "2026-10-07",
+    "script": "inverse_retrieval.py",
+    "written_utc": "2026-10-09T21:44:28+00:00",
+    "inputs": {
+      "registry": "sha256:5571a356da5454bfe14511181ffebc1a73ce1948c3db7ad079a3e8ee4cd5ab9c"
+    }
+  },
+  "is_result": true,
+  "why_not_a_result": null,
+  "warmup": 400,
+  "samples": 400,
+  "slots": [
+    "payload",
+    "linker",
+    "conjugation",
+    "dar",
+    "isotype",
+    "masking"
+  ],
+  "uninformative_chance_threshold": 0.5,
+  "summary": {
+    "with_precedent": {
+      "informative_slots_total": 55,
+      "matched": 8,
+      "chance_expected": 8.74,
+      "excess": -0.74,
+      "permutation_p": 0.6696651674162919
+    },
+    "precedent_adjusted": {
+      "informative_slots_total": 55,
+      "matched": 6,
+      "chance_expected": 8.74,
+      "excess": -2.74,
+      "permutation_p": 0.8980509745127436
+    }
+  },
+  "precedent_memorisation_slots": 2,
+  "n_agents": 14,
+  "distinct_targets": 12,
+  "results": [
+    {
+      "agent": "belantamab_mafodotin",
+      "target": "TNFRSF17",
+      "profile": [],
+      "fit_seconds": 431.3,
+      "held_out_corpus": "3,934 cells over 281 arms x 14 axes (3,403 observed, 465 censored, 66 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 57 multi-arm trials (132 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.696,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 5,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 92,
+        "chance": {
+          "payload": 0.06521739130434782,
+          "linker": 0.06521739130434782,
+          "conjugation": 0.391304347826087,
+          "dar": 0.17391304347826086,
+          "isotype": 0.9130434782608695,
+          "masking": 0.8913043478260869
+        },
+        "all_slots_chance_expected": 2.5
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.696,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 5,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 92,
+        "chance": {
+          "payload": 0.06521739130434782,
+          "linker": 0.06521739130434782,
+          "conjugation": 0.391304347826087,
+          "dar": 0.17391304347826086,
+          "isotype": 0.9130434782608695,
+          "masking": 0.8913043478260869
+        },
+        "all_slots_chance_expected": 2.5
+      }
+    },
+    {
+      "agent": "brentuximab_vedotin",
+      "target": "TNFRSF8",
+      "profile": [
+        "chronic_liver_disease",
+        "ckd_stage_3"
+      ],
+      "fit_seconds": 265.0,
+      "held_out_corpus": "3,402 cells over 243 arms x 14 axes (2,978 observed, 364 censored, 60 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 56 multi-arm trials (96 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.784,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 5,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.24324324324324326,
+          "linker": 0.08108108108108109,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.13513513513513514,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.581
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.784,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 5,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.24324324324324326,
+          "linker": 0.08108108108108109,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.13513513513513514,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.581
+      }
+    },
+    {
+      "agent": "datopotamab_deruxtecan",
+      "target": "TACSTD2",
+      "profile": [
+        "chronic_liver_disease",
+        "ckd_stage_3"
+      ],
+      "fit_seconds": 371.6,
+      "held_out_corpus": "4,074 cells over 291 arms x 14 axes (3,523 observed, 474 censored, 77 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 62 multi-arm trials (131 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.486,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.0,
+          "linker": 0.02702702702702703,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.13513513513513514,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.284
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.486,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.0,
+          "linker": 0.02702702702702703,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.13513513513513514,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.284
+      }
+    },
+    {
+      "agent": "enfortumab_vedotin",
+      "target": "NECTIN4",
+      "profile": [
+        "chronic_liver_disease"
+      ],
+      "fit_seconds": 373.3,
+      "held_out_corpus": "4,018 cells over 287 arms x 14 axes (3,471 observed, 470 censored, 77 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 62 multi-arm trials (131 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 3,
+        "informative_chance_expected": 0.784,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 5,
+        "slots_matched_best_of_k": 5,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": true,
+          "linker": true,
+          "conjugation": true,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.24324324324324326,
+          "linker": 0.08108108108108109,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.13513513513513514,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.581
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 3,
+        "informative_chance_expected": 0.784,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 5,
+        "slots_matched_best_of_k": 5,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": true,
+          "linker": true,
+          "conjugation": true,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.24324324324324326,
+          "linker": 0.08108108108108109,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.13513513513513514,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.581
+      }
+    },
+    {
+      "agent": "gemtuzumab_ozogamicin",
+      "target": "CD33",
+      "profile": [],
+      "fit_seconds": 248.3,
+      "held_out_corpus": "3,934 cells over 281 arms x 14 axes (3,454 observed, 416 censored, 64 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 62 multi-arm trials (122 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar",
+          "isotype"
+        ],
+        "informative_matched_top1": 2,
+        "informative_chance_expected": 0.804,
+        "uninformative_slots": [
+          "masking"
+        ],
+        "slots_matched_top1": 3,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": true,
+          "conjugation": true,
+          "dar": false,
+          "isotype": false,
+          "masking": true
+        },
+        "n_feasible": 92,
+        "chance": {
+          "payload": 0.17391304347826086,
+          "linker": 0.10869565217391304,
+          "conjugation": 0.43478260869565216,
+          "dar": 0.0,
+          "isotype": 0.08695652173913043,
+          "masking": 0.8913043478260869
+        },
+        "all_slots_chance_expected": 1.696
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar",
+          "isotype"
+        ],
+        "informative_matched_top1": 1,
+        "informative_chance_expected": 0.804,
+        "uninformative_slots": [
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": true,
+          "dar": false,
+          "isotype": false,
+          "masking": true
+        },
+        "n_feasible": 92,
+        "chance": {
+          "payload": 0.17391304347826086,
+          "linker": 0.10869565217391304,
+          "conjugation": 0.43478260869565216,
+          "dar": 0.0,
+          "isotype": 0.08695652173913043,
+          "masking": 0.8913043478260869
+        },
+        "all_slots_chance_expected": 1.696
+      }
+    },
+    {
+      "agent": "inotuzumab_ozogamicin",
+      "target": "CD22",
+      "profile": [],
+      "fit_seconds": 428.8,
+      "held_out_corpus": "3,892 cells over 278 arms x 14 axes (3,381 observed, 450 censored, 61 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 60 multi-arm trials (123 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar",
+          "isotype"
+        ],
+        "informative_matched_top1": 2,
+        "informative_chance_expected": 0.804,
+        "uninformative_slots": [
+          "masking"
+        ],
+        "slots_matched_top1": 3,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": true,
+          "conjugation": true,
+          "dar": false,
+          "isotype": false,
+          "masking": true
+        },
+        "n_feasible": 92,
+        "chance": {
+          "payload": 0.17391304347826086,
+          "linker": 0.10869565217391304,
+          "conjugation": 0.43478260869565216,
+          "dar": 0.0,
+          "isotype": 0.08695652173913043,
+          "masking": 0.8913043478260869
+        },
+        "all_slots_chance_expected": 1.696
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar",
+          "isotype"
+        ],
+        "informative_matched_top1": 1,
+        "informative_chance_expected": 0.804,
+        "uninformative_slots": [
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": true,
+          "dar": false,
+          "isotype": false,
+          "masking": true
+        },
+        "n_feasible": 92,
+        "chance": {
+          "payload": 0.17391304347826086,
+          "linker": 0.10869565217391304,
+          "conjugation": 0.43478260869565216,
+          "dar": 0.0,
+          "isotype": 0.08695652173913043,
+          "masking": 0.8913043478260869
+        },
+        "all_slots_chance_expected": 1.696
+      }
+    },
+    {
+      "agent": "loncastuximab_tesirine",
+      "target": "CD19",
+      "profile": [
+        "chronic_liver_disease"
+      ],
+      "fit_seconds": 407.9,
+      "held_out_corpus": "4,102 cells over 293 arms x 14 axes (3,548 observed, 477 censored, 77 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 62 multi-arm trials (133 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.486,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.08108108108108109,
+          "linker": 0.08108108108108109,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.0,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.284
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.486,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.08108108108108109,
+          "linker": 0.08108108108108109,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.0,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.284
+      }
+    },
+    {
+      "agent": "mirvetuximab_soravtansine",
+      "target": "FOLR1",
+      "profile": [
+        "chronic_liver_disease"
+      ],
+      "fit_seconds": 483.6,
+      "held_out_corpus": "4,046 cells over 289 arms x 14 axes (3,494 observed, 475 censored, 77 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 62 multi-arm trials (129 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.514,
+        "uninformative_slots": [
+          "conjugation",
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 4,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.10810810810810811,
+          "linker": 0.13513513513513514,
+          "conjugation": 0.5405405405405406,
+          "dar": 0.2702702702702703,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.851
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.514,
+        "uninformative_slots": [
+          "conjugation",
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 4,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.10810810810810811,
+          "linker": 0.13513513513513514,
+          "conjugation": 0.5405405405405406,
+          "dar": 0.2702702702702703,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.851
+      }
+    },
+    {
+      "agent": "pivekimab_sunirine",
+      "target": "IL3RA",
+      "profile": [
+        "chronic_liver_disease",
+        "ckd_stage_3"
+      ],
+      "fit_seconds": 496.4,
+      "held_out_corpus": "4,172 cells over 298 arms x 14 axes (3,612 observed, 483 censored, 77 structural zero) | 21 agents, 5 mechanisms, 7 payload families, 64 multi-arm trials (133 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.243,
+        "uninformative_slots": [
+          "conjugation",
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 3,
+        "slots_matched_best_of_k": 4,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": true,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.10810810810810811,
+          "linker": 0.13513513513513514,
+          "conjugation": 0.5405405405405406,
+          "dar": 0.0,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.581
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.243,
+        "uninformative_slots": [
+          "conjugation",
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 3,
+        "slots_matched_best_of_k": 4,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": true,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.10810810810810811,
+          "linker": 0.13513513513513514,
+          "conjugation": 0.5405405405405406,
+          "dar": 0.0,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.581
+      }
+    },
+    {
+      "agent": "polatuzumab_vedotin",
+      "target": "CD79B",
+      "profile": [
+        "chronic_liver_disease"
+      ],
+      "fit_seconds": 375.3,
+      "held_out_corpus": "3,906 cells over 279 arms x 14 axes (3,354 observed, 475 censored, 77 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 59 multi-arm trials (129 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.919,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 5,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.24324324324324326,
+          "linker": 0.08108108108108109,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.2702702702702703,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.716
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.919,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 5,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.24324324324324326,
+          "linker": 0.08108108108108109,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.2702702702702703,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.716
+      }
+    },
+    {
+      "agent": "sacituzumab_govitecan",
+      "target": "TACSTD2",
+      "profile": [
+        "chronic_liver_disease"
+      ],
+      "fit_seconds": 330.9,
+      "held_out_corpus": "3,892 cells over 278 arms x 14 axes (3,366 observed, 450 censored, 76 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 61 multi-arm trials (125 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.378,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.02702702702702703,
+          "linker": 0.02702702702702703,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.0,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.176
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.378,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.02702702702702703,
+          "linker": 0.02702702702702703,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.0,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.176
+      }
+    },
+    {
+      "agent": "tisotumab_vedotin",
+      "target": "F3",
+      "profile": [
+        "chronic_liver_disease"
+      ],
+      "fit_seconds": 334.1,
+      "held_out_corpus": "4,116 cells over 294 arms x 14 axes (3,559 observed, 480 censored, 77 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 63 multi-arm trials (131 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.784,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 5,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.24324324324324326,
+          "linker": 0.08108108108108109,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.13513513513513514,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.581
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.784,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 5,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.24324324324324326,
+          "linker": 0.08108108108108109,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.13513513513513514,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.581
+      }
+    },
+    {
+      "agent": "trastuzumab_deruxtecan",
+      "target": "ERBB2",
+      "profile": [
+        "chronic_liver_disease",
+        "ckd_stage_3"
+      ],
+      "fit_seconds": 340.0,
+      "held_out_corpus": "3,696 cells over 264 arms x 14 axes (3,185 observed, 434 censored, 77 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 55 multi-arm trials (123 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.541,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.0,
+          "linker": 0.02702702702702703,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.1891891891891892,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.338
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "conjugation",
+          "dar"
+        ],
+        "informative_matched_top1": 0,
+        "informative_chance_expected": 0.541,
+        "uninformative_slots": [
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 2,
+        "slots_matched_best_of_k": 3,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": false,
+          "linker": false,
+          "conjugation": false,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.0,
+          "linker": 0.02702702702702703,
+          "conjugation": 0.32432432432432434,
+          "dar": 0.1891891891891892,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.338
+      }
+    },
+    {
+      "agent": "trastuzumab_emtansine",
+      "target": "ERBB2",
+      "profile": [
+        "chronic_liver_disease",
+        "ckd_stage_3"
+      ],
+      "fit_seconds": 230.0,
+      "held_out_corpus": "3,486 cells over 249 arms x 14 axes (3,038 observed, 390 censored, 58 structural zero) | 21 agents, 5 mechanisms, 8 payload families, 51 multi-arm trials (112 arms from single-arm trials carry no trial effect)",
+      "with_precedent": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "dar"
+        ],
+        "informative_matched_top1": 1,
+        "informative_chance_expected": 0.514,
+        "uninformative_slots": [
+          "conjugation",
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 4,
+        "slots_matched_best_of_k": 4,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": true,
+          "linker": false,
+          "conjugation": true,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.10810810810810811,
+          "linker": 0.13513513513513514,
+          "conjugation": 0.5405405405405406,
+          "dar": 0.2702702702702703,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.851
+      },
+      "precedent_adjusted": {
+        "n_candidates": 6,
+        "informative_slots": [
+          "payload",
+          "linker",
+          "dar"
+        ],
+        "informative_matched_top1": 1,
+        "informative_chance_expected": 0.514,
+        "uninformative_slots": [
+          "conjugation",
+          "isotype",
+          "masking"
+        ],
+        "slots_matched_top1": 4,
+        "slots_matched_best_of_k": 4,
+        "exact_in_top_k": false,
+        "per_slot_top1": {
+          "payload": true,
+          "linker": false,
+          "conjugation": true,
+          "dar": false,
+          "isotype": true,
+          "masking": true
+        },
+        "n_feasible": 74,
+        "chance": {
+          "payload": 0.10810810810810811,
+          "linker": 0.13513513513513514,
+          "conjugation": 0.5405405405405406,
+          "dar": 0.2702702702702703,
+          "isotype": 0.8918918918918919,
+          "masking": 0.9054054054054054
+        },
+        "all_slots_chance_expected": 2.851
+      }
+    }
+  ]
+}

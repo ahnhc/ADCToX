@@ -1,5 +1,5 @@
 {
- "n_live_values": 27633,
+ "n_live_values": 31275,
  "n_superseded_values": 2266,
  "figures": [
   {
@@ -32,13 +32,6 @@
   },
   {
    "figure": "0.2177",
-   "document": "findings.md",
-   "line": 219,
-   "classification": "paired with a live figure",
-   "reason": null
-  },
-  {
-   "figure": "-0.0639",
    "document": "findings.md",
    "line": 219,
    "classification": "paired with a live figure",
@@ -136,13 +129,6 @@
    "reason": null
   },
   {
-   "figure": "0.0482",
-   "document": "findings.md",
-   "line": 1046,
-   "classification": "paired with a live figure",
-   "reason": null
-  },
-  {
    "figure": "0.1332",
    "document": "findings.md",
    "line": 1046,
@@ -173,28 +159,21 @@
   {
    "figure": "0.1332",
    "document": "findings.md",
-   "line": 2976,
+   "line": 3050,
    "classification": "declared",
    "reason": "the 16-agent corpus's across-agent rho, quoted in full in the sentence that retracts it and in the paragraph on the false finding it produced"
   },
   {
    "figure": "0.2118",
    "document": "findings.md",
-   "line": 2976,
+   "line": 3050,
    "classification": "declared",
    "reason": "the other half of that false finding: the headline the corpus mismatch produced, quoted only to say it was not real"
   },
   {
-   "figure": "-0.0639",
-   "document": "findings.md",
-   "line": 3087,
-   "classification": "paired with a live figure",
-   "reason": null
-  },
-  {
    "figure": "0.2632",
    "document": "findings.md",
-   "line": 3087,
+   "line": 3161,
    "classification": "paired with a live figure",
    "reason": null
   },
@@ -213,17 +192,17 @@
    "reason": null
   }
  ],
- "n_superseded_only": 30,
- "n_paired": 24,
+ "n_superseded_only": 27,
+ "n_paired": 21,
  "n_declared": 6,
  "n_undeclared": 0,
  "reading": "A figure here appears in a superseded artefact and in no current one, so the number guard reports it as traced. That is either a deliberate before/after quotation or a figure that went stale and kept its trace, and the guard cannot tell the difference because both do trace.",
  "provenance": {
-  "revision": "ccc3bb2c5df125095eeed3dcb0f51c1ef6b79e79",
+  "revision": "b63725eb65f05eb58f2083fa3276418d247c5409",
   "dirty": true,
   "snapshot": null,
   "script": "superseded_only_figures.py",
-  "written_utc": "2026-10-09T20:42:09+00:00",
+  "written_utc": "2026-10-10T01:45:38+00:00",
   "inputs": {}
  }
 }

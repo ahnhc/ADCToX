@@ -1,0 +1,344 @@
+{
+ "ae_tables": 797,
+ "tables_with_a_threshold": 325,
+ "threshold_sources": {
+  "unconstrained": 20,
+  "min_reported_rate": 217,
+  "min_reported_rate_after_caption_all_grade_only": 10,
+  "min_reported_rate_contradicts_caption": 43,
+  "caption_explicit": 28,
+  "min_reported_rate_after_caption_implied": 5,
+  "caption_no_cut": 2
+ },
+ "n_scorable": 26,
+ "scorable_share_of_ae_tables": 0.0326,
+ "gap": {
+  "median": 1.0,
+  "mean": 2.8615,
+  "p90": 10.35,
+  "max": 14.4,
+  "share_within_1pp": 0.5385,
+  "share_within_2pp": 0.6923,
+  "share_over_5pp": 0.1538,
+  "share_exact": 0.1538
+ },
+ "stated_cut": {
+  "median": 10.0,
+  "values": {
+   "20.0": 5,
+   "10.0": 17,
+   "5.0": 2,
+   "0.0": 1,
+   "15.0": 1
+  }
+ },
+ "derived_bound": {
+  "median": 11.05
+ },
+ "gap_vs_rows": {
+  "spearman": -0.2512,
+  "n": 26,
+  "p_withheld_because": "26 tables; the sign is the claim"
+ },
+ "gap_vs_stated_cut": {
+  "spearman": 0.2868
+ },
+ "negative_gaps": 0,
+ "pairs": [
+  {
+   "n_rows": 11,
+   "pmcid": "10878971",
+   "agent": "belantamab_mafodotin",
+   "journal": "Nature Medicine",
+   "table": "Table 2",
+   "stated": 20.0,
+   "derived": 34.4,
+   "gap": 14.4,
+   "accepted": true
+  },
+  {
+   "n_rows": 38,
+   "pmcid": "11210948",
+   "agent": "datopotamab_deruxtecan",
+   "journal": "Journal of Clinical Oncology",
+   "table": "TABLE 4.",
+   "stated": 10.0,
+   "derived": 11.4,
+   "gap": 1.4,
+   "accepted": true
+  },
+  {
+   "n_rows": 15,
+   "pmcid": "11347190",
+   "agent": "mirvetuximab_soravtansine",
+   "journal": "International Journal of Gynecological Cancer",
+   "table": "Table 2",
+   "stated": 10.0,
+   "derived": 10.0,
+   "gap": 0.0,
+   "accepted": true
+  },
+  {
+   "n_rows": 14,
+   "pmcid": "11391083",
+   "agent": "belantamab_mafodotin",
+   "journal": "Blood Cancer Journal",
+   "table": "Table 3",
+   "stated": 20.0,
+   "derived": 31.7,
+   "gap": 11.7,
+   "accepted": true
+  },
+  {
+   "n_rows": 8,
+   "pmcid": "11873802",
+   "agent": "brentuximab_vedotin",
+   "journal": "Clinical Cancer Research",
+   "table": "Table 4.",
+   "stated": 10.0,
+   "derived": 10.0,
+   "gap": 0.0,
+   "accepted": true
+  },
+  {
+   "n_rows": 9,
+   "pmcid": "11949215",
+   "agent": "datopotamab_deruxtecan",
+   "journal": "Journal of Clinical Oncology",
+   "table": "TABLE 4.",
+   "stated": 10.0,
+   "derived": 10.9,
+   "gap": 0.9,
+   "accepted": true
+  },
+  {
+   "n_rows": 14,
+   "pmcid": "12539070",
+   "agent": "brentuximab_vedotin",
+   "journal": "Hematological Oncology",
+   "table": "TABLE 3",
+   "stated": 5.0,
+   "derived": 5.6,
+   "gap": 0.6,
+   "accepted": true
+  },
+  {
+   "n_rows": 5,
+   "pmcid": "12619725",
+   "agent": "polatuzumab_vedotin",
+   "journal": "Annals of Hematology",
+   "table": "Table 5",
+   "stated": 0.0,
+   "derived": 4.7,
+   "gap": 4.7,
+   "accepted": true
+  },
+  {
+   "n_rows": 30,
+   "pmcid": "13171770",
+   "agent": "belantamab_mafodotin",
+   "journal": "International Journal of Hematology",
+   "table": "Table 3",
+   "stated": 20.0,
+   "derived": 20.0,
+   "gap": 0.0,
+   "accepted": true
+  },
+  {
+   "n_rows": 10,
+   "pmcid": "13176820",
+   "agent": "belantamab_mafodotin",
+   "journal": "Clinical Cancer Research",
+   "table": "Table 3.",
+   "stated": 20.0,
+   "derived": 25.0,
+   "gap": 5.0,
+   "accepted": true
+  },
+  {
+   "n_rows": 29,
+   "pmcid": "13187552",
+   "agent": "datopotamab_deruxtecan",
+   "journal": "Translational Breast Cancer Research",
+   "table": "Table 4",
+   "stated": 10.0,
+   "derived": 10.1,
+   "gap": 0.1,
+   "accepted": true
+  },
+  {
+   "n_rows": 45,
+   "pmcid": "13239540",
+   "agent": "mirvetuximab_soravtansine",
+   "journal": "Cancer Medicine",
+   "table": "TABLE 2",
+   "stated": 10.0,
+   "derived": 10.5,
+   "gap": 0.5,
+   "accepted": true
+  },
+  {
+   "n_rows": 10,
+   "pmcid": "13293683",
+   "agent": "telisotuzumab_vedotin",
+   "journal": "JTO Clinical and Research Reports",
+   "table": "Table 4",
+   "stated": 10.0,
+   "derived": 11.9,
+   "gap": 1.9,
+   "accepted": true
+  },
+  {
+   "n_rows": 20,
+   "pmcid": "13334329",
+   "agent": "sacituzumab_govitecan",
+   "journal": "Japanese Journal of Clinical Oncology",
+   "table": "Table 5",
+   "stated": 20.0,
+   "derived": 29.0,
+   "gap": 9.0,
+   "accepted": true
+  },
+  {
+   "n_rows": 17,
+   "pmcid": "13449377",
+   "agent": "datopotamab_deruxtecan",
+   "journal": "ESMO Open",
+   "table": "Table 1",
+   "stated": 10.0,
+   "derived": 11.4,
+   "gap": 1.4,
+   "accepted": true
+  },
+  {
+   "n_rows": 27,
+   "pmcid": "13583573",
+   "agent": "datopotamab_deruxtecan",
+   "journal": "ESMO Open",
+   "table": "Table 3",
+   "stated": 10.0,
+   "derived": 11.1,
+   "gap": 1.1,
+   "accepted": true
+  },
+  {
+   "n_rows": 13,
+   "pmcid": "5614242",
+   "agent": "inotuzumab_ozogamicin",
+   "journal": "Journal of Drug Assessment",
+   "table": "Table 2.",
+   "stated": 10.0,
+   "derived": 13.0,
+   "gap": 3.0,
+   "accepted": true
+  },
+  {
+   "n_rows": 32,
+   "pmcid": "7760511",
+   "agent": "trastuzumab_emtansine",
+   "journal": "Cancers",
+   "table": "Table 2",
+   "stated": 10.0,
+   "derived": 22.2,
+   "gap": 12.2,
+   "accepted": true
+  },
+  {
+   "n_rows": 17,
+   "pmcid": "9996548",
+   "agent": "gemtuzumab_ozogamicin",
+   "journal": "Cancer Chemotherapy and Pharmacology",
+   "table": "Table 1",
+   "stated": 10.0,
+   "derived": 10.0,
+   "gap": 0.0,
+   "accepted": true
+  },
+  {
+   "n_rows": 31,
+   "pmcid": "10086500",
+   "agent": "anetumab_ravtansine",
+   "journal": "International Journal of Gynecological Cancer",
+   "table": "Table 2",
+   "stated": 10.0,
+   "derived": 10.8,
+   "gap": 0.8,
+   "accepted": true
+  },
+  {
+   "n_rows": 26,
+   "pmcid": "10789637",
+   "agent": "disitamab_vedotin",
+   "journal": "eClinicalMedicine",
+   "table": "Table 2",
+   "stated": 10.0,
+   "derived": 11.0,
+   "gap": 1.0,
+   "accepted": true
+  },
+  {
+   "n_rows": 25,
+   "pmcid": "11095880",
+   "agent": "disitamab_vedotin",
+   "journal": "Journal of Clinical Oncology",
+   "table": "TABLE 3.",
+   "stated": 10.0,
+   "derived": 10.3,
+   "gap": 0.3,
+   "accepted": true
+  },
+  {
+   "n_rows": 31,
+   "pmcid": "11260767",
+   "agent": "disitamab_vedotin",
+   "journal": "Cancer Communications",
+   "table": "TABLE 2",
+   "stated": 10.0,
+   "derived": 10.3,
+   "gap": 0.3,
+   "accepted": true
+  },
+  {
+   "n_rows": 20,
+   "pmcid": "12517412",
+   "agent": "disitamab_vedotin",
+   "journal": "Annals of Medicine",
+   "table": "Table 4.",
+   "stated": 5.0,
+   "derived": 5.6,
+   "gap": 0.6,
+   "accepted": true
+  },
+  {
+   "n_rows": 18,
+   "pmcid": "8342450",
+   "agent": "rovalpituzumab_tesirine",
+   "journal": "NPJ Precision Oncology",
+   "table": "Table 3",
+   "stated": 15.0,
+   "derived": 16.0,
+   "gap": 1.0,
+   "accepted": true
+  },
+  {
+   "n_rows": 12,
+   "pmcid": "9401513",
+   "agent": "cofetuzumab_pelidotin",
+   "journal": "Clinical Cancer Research",
+   "table": "Table 2.",
+   "stated": 10.0,
+   "derived": 12.5,
+   "gap": 2.5,
+   "accepted": true
+  }
+ ],
+ "reading": "The bound is used on the seven tables in ten that state nothing. Here both numbers exist, so the bound can be scored against the truth. A bound close to the stated cut means the substitution costs little; a bound many points above it means every absent organ in those arms is bounded far too loosely, which is the mechanism negative result 50 suspects.",
+ "provenance": {
+  "revision": "b63725eb65f05eb58f2083fa3276418d247c5409",
+  "dirty": true,
+  "snapshot": "2026-10-07",
+  "script": "threshold_estimator_accuracy.py",
+  "written_utc": "2026-10-10T01:34:06+00:00",
+  "inputs": {}
+ }
+}

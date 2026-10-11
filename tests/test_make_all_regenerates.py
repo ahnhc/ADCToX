@@ -41,6 +41,10 @@ EXEMPT = {
     "merged_corpus_scale.py",
     "merge_atlas_corpus.py",
     "precedent_audit.py",
+    # Reads the harvested JATS under data/raw_big/, which is not in a clone: `make all`
+    # has to be runnable, and the measurement is reproducible from the archive by
+    # `make threshold-accuracy`.
+    "threshold_estimator_accuracy.py",
     # Writes a corpus rather than a report figure, and the corpus it writes is an
     # experiment's cell: `make restrict-26` builds it from frames the workbook produced.
     "restrict_corpus_agents.py",
@@ -84,7 +88,7 @@ def test_the_exemption_list_names_only_scripts_that_exist() -> None:
 MEASUREMENT_TARGETS = [
     "residual-scale", "across-agent", "design-effects", "fold-difficulty", "hard-flags",
     "comorbidity-sensitivity", "payload-compression", "across-agent-trend",
-    "objective-label-gap", "superseded-figures",
+    "objective-label-gap", "superseded-figures", "rank1",
 ]
 
 

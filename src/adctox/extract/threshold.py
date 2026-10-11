@@ -35,8 +35,15 @@ from dataclasses import dataclass
 # "occurring in >=10% of patients", "in at least 5%", "reported in >5% of the safety
 # population". The percentage sign is required: a bare ">=10" in a caption is a dose, a
 # grade, or a patient count far more often than a frequency.
+# The character class carries every "greater than or equal" codepoint a JATS caption
+# actually uses, measured rather than guessed. Over 374 AE tables: U+2265 appears 30 times
+# and a bare `>` 9, both already matched; U+2A7E (⩾, the slanted variant) appears once and
+# was not, so one table in 374 was demoted from a stated cut to a bound. ASCII `>=` appears
+# **zero** times -- the suspicion that prompted this count was wrong, which is the cheapest
+# kind of wrong. U+2267 is included for the same reason as U+2A7E and appears zero times.
 EXPLICIT_CUT = re.compile(
-    r"(?:[≥>]\s*|\bat\s+least\s+|\bmore\s+than\s+|\bgreater\s+than\s+|\bover\s+)"
+    r"(?:[\u2265\u2267\u2a7e\u2a86>]\s*=?\s*"
+    r"|\bat\s+least\s+|\bmore\s+than\s+|\bgreater\s+than\s+|\bover\s+)"
     r"(?P<pct>\d+(?:\.\d+)?)\s*%",
     re.I,
 )
@@ -87,6 +94,12 @@ class Threshold:
     source: str                # which rule produced it, for the audit ledger
     evidence: str = ""         # the matched text, for review
     all_grade_claimed: bool = False   # the caption says the table is not grade-filtered
+    # The bound the printed rates alone would have given, recorded even when a stated cut
+    # wins. Seven tables in ten have no stated cut and get this number instead, and until
+    # it was recorded there was no way to ask how good a substitute it is -- the one subset
+    # where the truth is known is exactly the subset where the stated cut overrides it, so
+    # the comparison was being thrown away at the moment it became possible.
+    derived_value: float | None = None
 
 
 def _strip_grade_phrases(text: str) -> str:
@@ -193,6 +206,7 @@ def resolve(caption_text: str, reported_rates: list[float]) -> Threshold:
     stated = from_caption(caption_text)
     derived = from_reported_rates(reported_rates)
     all_grade = bool(stated and stated.all_grade_claimed)
+    dv = derived.value if derived is not None else None
 
     if stated is not None and stated.value is not None:
         if derived is not None and derived.value is not None and (
@@ -208,8 +222,12 @@ def resolve(caption_text: str, reported_rates: list[float]) -> Threshold:
                     f"{derived.value:g}% is printed"
                 ),
                 all_grade_claimed=all_grade,
+                derived_value=dv,
             )
-        return stated
+        # The stated cut wins, and the bound it beat travels with it. This is the only
+        # subset where both numbers exist, so it is the only place the substitute used on
+        # the other seven tables in ten can be scored.
+        return Threshold(**{**stated.__dict__, "derived_value": dv})
 
     if derived is not None:
         # An implied cut plus a derived bound is still just the derived bound, but record
@@ -224,8 +242,10 @@ def resolve(caption_text: str, reported_rates: list[float]) -> Threshold:
                 source=f"min_reported_rate_after_{stated.source}",
                 evidence=stated.evidence,
                 all_grade_claimed=all_grade,
+                derived_value=dv,
             )
-        return Threshold(**{**derived.__dict__, "all_grade_claimed": all_grade})
+        return Threshold(**{**derived.__dict__, "all_grade_claimed": all_grade,
+                            "derived_value": dv})
 
     return Threshold(
         value=None,
@@ -233,5 +253,6 @@ def resolve(caption_text: str, reported_rates: list[float]) -> Threshold:
         is_upper_bound=False,
         source="unconstrained",
         evidence="",
+        derived_value=None,
         all_grade_claimed=all_grade,
     )

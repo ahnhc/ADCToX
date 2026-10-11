@@ -61,7 +61,7 @@ all: taxonomy corpus forward censoring-sensitivity expression enrichment module-
      propose test hard-flags fold-difficulty design-effects across-agent residual-scale \
      comorbidity-sensitivity payload-compression axis-evidence posterior-scales \
      convergence-conditions design-balance fold-comparability across-agent-trend \
-     objective-label-gap superseded-figures \
+     objective-label-gap superseded-figures rank1 \
      design-effects-atlas \
      rank-resolution driver-waterfall outcome-tables row-grade-exposure dar-gap \
      granularity-ratio source-axis source-confounding axis-composition \
@@ -358,6 +358,19 @@ objective-label-gap: $(ART)/posterior_other.npz
 # Which report figures trace only to a *superseded* artefact? The number guard scans
 # `artifacts/superseded/` on purpose, so a figure that goes stale keeps tracing -- to the
 # record of what it used to be. This partitions the pool and fails on an undeclared one.
+# The plan's only lever for improving identification without new agents: replace the
+# mechanism-by-axis interaction with a rank-1 outer product, 56 identified parameters down
+# to 18. Scores the assumption it rests on against the fitted posterior.
+rank1: $(ART)/posterior_other.npz
+	$(PY) scripts/rank1_factorisation.py --out $(ART)/rank1_factorisation.json
+
+# How good a substitute is min(reported %) for a cut nobody stated? Scorable only on the
+# tables that stated one, where it is overridden -- so the comparison was being discarded
+# at the moment it became possible. Reads the harvested JATS, so not in `all`.
+threshold-accuracy:
+	$(PY) scripts/threshold_estimator_accuracy.py \
+	  --out $(ART)/threshold_estimator_accuracy.json
+
 superseded-figures:
 	$(PY) scripts/superseded_only_figures.py \
 	  --out $(ART)/superseded_only_figures.json
