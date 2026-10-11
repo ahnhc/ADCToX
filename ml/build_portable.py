@@ -153,8 +153,10 @@ Data carried in this file: FDA labels via DailyMed (U.S. NLM; public domain); MO
 """
 import importlib.abc, importlib.util, json, sys
 
-if False:   # never runs: lists what the embedded modules import, so a bundler (PyInstaller) packs it
-    import base64, csv, ctypes, curses, dataclasses, difflib, itertools, locale, msvcrt, os, re, select, shutil, termios, textwrap, threading, time, tty, unicodedata, warnings, zlib
+# what the embedded modules import, loaded now (a bundler sees them, and nothing is read from the unpack folder later)
+import base64, csv, dataclasses, difflib, itertools, locale, os, re, shutil, textwrap, threading, time, unicodedata, warnings, zlib
+if False:   # never runs: platform-specific imports, listed for the bundler
+    import ctypes, curses, msvcrt, select, termios, tty
     import numpy
 
 _SRC = json.loads({mods!r})

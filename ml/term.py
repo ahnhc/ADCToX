@@ -33,7 +33,11 @@ def into_windows_terminal():
     wt = shutil.which("wt")
     if not wt: return
     me = [sys.executable] if getattr(sys, "frozen", False) else [sys.executable, os.path.abspath(sys.argv[0])]
-    try: subprocess.Popen([wt, "new-tab", "--title", "ADC Recommender", "--", *me], close_fds=True)
+    # a PyInstaller one-file exe unpacks itself to a temp folder and deletes it when it exits; a child started with the
+    # parent's environment reuses that folder, so it would lose its files when this process ends. Reset tells the child
+    # to unpack its own copy.
+    env = {k: v for k, v in os.environ.items() if not k.startswith(("_PYI", "_MEI"))}; env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
+    try: subprocess.Popen([wt, "new-tab", "--title", "ADC Recommender", "--", *me], close_fds=True, env=env)
     except OSError: return
     sys.exit(0)
 
