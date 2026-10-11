@@ -1,0 +1,117 @@
+{
+ "n_cases": 12973,
+ "n_pairs": 168649,
+ "events": 16680,
+ "vulnerable_pairs": 6479,
+ "vulnerable_auroc_L": 0.6491900755968383,
+ "or_warned_vulnerable": 2.967445141680369,
+ "or_warned_not_vulnerable": 4.589433094272178,
+ "ratio_of_or": 0.646582068139064,
+ "oof_auroc_label_only": 0.8058373567779104,
+ "oof_auroc_with_patient": 0.8094518338043606,
+ "interaction_coef_boxed": -0.46653871887188836,
+ "interaction_coef_warn": -0.13503298287240592,
+ "calibration": {
+  "brier": 0.07615479914871624,
+  "brier_base_rate": 0.08912171007865649,
+  "in_the_large": -1.65824494989104e-05,
+  "slope": 0.9983370717112305
+ },
+ "vulnerable_auroc_L_ci": [
+  0.633653540406139,
+  0.6652999081099723
+ ],
+ "ratio_of_or_ci": [
+  0.5644967392222416,
+  0.7358904196214514
+ ],
+ "patient_info_auroc_diff_ci": [
+  0.002689224750706767,
+  0.0044861412067050965
+ ],
+ "patient_info_auroc_diff": 0.0036144770264502357,
+ "per_organ_drug_order": {
+  "haematologic": {
+   "spearman": 0.3944053188733078,
+   "p": 0.3336010871481368,
+   "n_adc": 8,
+   "n_cases": 366
+  },
+  "hepatic": {
+   "spearman": 0.37796447300922725,
+   "p": 0.35591768374958205,
+   "n_adc": 8,
+   "n_cases": 454
+  },
+  "cardiovascular": {
+   "spearman": 0.5427204202399745,
+   "p": 0.10501884601912945,
+   "n_adc": 10,
+   "n_cases": 1365
+  },
+  "pulmonary": {
+   "spearman": 0.7302967433402215,
+   "p": 0.0396597825076087,
+   "n_adc": 8,
+   "n_cases": 534
+  },
+  "renal": {
+   "spearman": 0.08247860988423225,
+   "p": 0.8460525238666444,
+   "n_adc": 8,
+   "n_cases": 589
+  },
+  "gastrointestinal": {
+   "spearman": 0.25103950552320115,
+   "p": 0.5146886768093603,
+   "n_adc": 9,
+   "n_cases": 566
+  },
+  "neurologic": {
+   "spearman": 0.43727294350170365,
+   "p": 0.23920586079844092,
+   "n_adc": 9,
+   "n_cases": 340
+  },
+  "ocular": {
+   "spearman": 0.8574929257125441,
+   "p": 0.029015363531383804,
+   "n_adc": 6,
+   "n_cases": 75
+  },
+  "dermatologic": {
+   "spearman": 0.8980265101338745,
+   "p": 0.015067698562847337,
+   "n_adc": 6,
+   "n_cases": 131
+  },
+  "metabolic_endocrine": {
+   "spearman": 0.0,
+   "p": 1.0,
+   "n_adc": 10,
+   "n_cases": 1230
+  },
+  "infectious_immune": {
+   "spearman": 0.497468338163091,
+   "p": 0.1434614655950856,
+   "n_adc": 10,
+   "n_cases": 447
+  }
+ },
+ "source": "PMDA JADER (pmdacasereport202609)",
+ "citation": "本解析は医薬品医療機器総合機構（PMDA）の医薬品副作用データベース（JADER）を利用した結果である",
+ "cases_by_adc": {
+  "enfortumab-vedotin": 4411,
+  "polatuzumab-vedotin": 2495,
+  "brentuximab-vedotin": 2029,
+  "trastuzumab-deruxtecan": 1357,
+  "trastuzumab-emtansine": 856,
+  "gemtuzumab-ozogamicin": 711,
+  "sacituzumab-govitecan": 483,
+  "inotuzumab-ozogamicin": 406,
+  "tisotumab-vedotin": 155,
+  "datopotamab-deruxtecan": 69,
+  "telisotuzumab-vedotin": 1
+ },
+ "mapped_share": 0.5613739393234918
+}

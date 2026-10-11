@@ -132,7 +132,12 @@ This orders label evidence for one patient. External check on real-world reports
 orders by discriminates within-class disproportionality signals with AUROC 0.778 [0.727, 0.837] over 169 ADC x organ cells (shuffled 0.499;
 label-table incidence 0.651); calibration of P(signal | label level), leave-one-ADC-out: slope 1.06, in-the-large -0.007, Brier 0.143 vs 0.200;
 per organ it agrees except renal (rho -0.08). FAERS has no comorbidities, so this validates the drug-side organ evidence,
-not patient-specific risk; the patient-level analysis is implemented (`ml/validate_outcomes.py`, tested on synthetic cohorts) but no cohort exists here
+not patient-specific risk. Patient level, JADER (PMDA spontaneous reports WITH each case's medical history; 12,973 single-ADC cases,
+`ml/validate_jader.py`): among case x organ pairs where the history includes that organ, the label level discriminates reported events in it,
+AUROC 0.649 [0.634, 0.665]; out-of-fold calibration slope 1.00, Brier 0.076 vs 0.089; but the warning's
+odds ratio is SMALLER in vulnerable cases (0.65 [0.56, 0.74] of the non-vulnerable one), so vulnerability picks the organ to look at and does
+not amplify the warned toxicity -- which the lexicographic design reflects and the old lambda-weighting did not. A cohort with a denominator
+is still needed; that analysis is implemented (`ml/validate_outcomes.py`, tested on synthetic cohorts) but no cohort exists here
 (`ml/docs/validation_plan.md`).
 Conditions outside the 41-entry registry are resolved in this order: a near-identical registry entry (BioLORD cosine >= 0.80) > MONDO hierarchy
 (`ml/mondo_index.py`, name similarity >= 0.75, severity a fixed 0.8) > a loosely similar registry entry (>= 0.60) > not understood (no organ).

@@ -17,7 +17,7 @@ Pre-declared analyses (fixed before the data were read):
   3. patient information: out-of-fold logistic y ~ L  vs  y ~ L + v + v*L (folds by case), paired AUROC difference
   4. calibration of model 3b out of fold: Brier vs base rate, calibration-in-the-large, slope
   5. per organ, drug order: among cases vulnerable in o, Spearman(L_o, share of cases reporting an o event) over the ADCs
-Bootstrap over cases. Limits, stated with every result: spontaneous reports have no denominator (shares are among REPORTED cases,
+A case's latest report version (報告回数) is used. Bootstrap over cases. Limits, stated with every result: spontaneous reports have no denominator (shares are among REPORTED cases,
 not incidences), reporting is stimulated by warnings, and history fields are incomplete.
 
 Terms are MedDRA/J (Japanese). Organ mapping: kanji-root rules below (auditable; first match wins, malignancy and constitutional
@@ -30,19 +30,20 @@ sys.path[:0] = ["/home/hyeongchanahn/CONI/adctox/ml", "/home/hyeongchanahn/CONI/
 R = "/home/hyeongchanahn/CONI/adctox/"
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular",
         "dermatologic", "metabolic_endocrine", "musculoskeletal", "infectious_immune", "otologic"]
-EXCLUDE = re.compile(r"癌|がん|肉腫|リンパ腫|白血病|骨髄腫|腫瘍|転移|新生物|悪性|死亡|疾患進行|病勢進行|発熱(?!性好中球)|倦怠|疲労|無力")
+EXCLUDE = re.compile(r"癌|がん|肉腫|リンパ腫|白血病|骨髄腫|腫瘍|転移|新生物|悪性|ホジキン|骨髄異形成|死亡|疾患進行|病勢進行|発熱(?!性好中球)|倦怠|疲労|無力")
 RULES = [   # order matters: a term takes the first organ whose pattern it contains
     ("haematologic", r"好中球|血小板|貧血|白血球|汎血球|骨髄抑制|骨髄機能|骨髄不全|リンパ球数減少|リンパ球減少|ヘモグロビン|赤血球|血球減少|播種性血管内凝固|血球貪食"),
     ("hepatic", r"肝|胆|黄疸|ビリルビン|トランスアミナーゼ|アスパラギン酸アミノ|アラニンアミノ|γ－ＧＴＰ|γ-GTP|ＡＳＴ|ＡＬＴ|AST|ALT|静脈閉塞|類洞閉塞"),
-    ("gastrointestinal", r"悪心|嘔吐|下痢|口内炎|大腸炎|腸炎|膵|便秘|腹痛|消化|胃|腸|粘膜の炎症|粘膜炎|食道|口腔|アミラーゼ|リパーゼ"),
+    ("gastrointestinal", r"悪心|嘔吐|下痢|口内炎|大腸炎|腸炎|膵|便秘|腹痛|消化|胃|腸|粘膜の炎症|粘膜炎|食道|口腔|アミラーゼ|リパーゼ|腹水"),
     ("pulmonary", r"間質|肺臓炎|呼吸|胸水|低酸素|咳|喘息|肺塞栓|肺障害|肺線維|器質化肺炎"),
     ("infectious_immune", r"感染|敗血|肺炎|帯状疱疹|ウイルス|真菌|カンジダ|サイトメガロ|菌血|蜂巣炎|膿瘍|過敏|アナフィラキシー|インフュージョン|注入に伴う反応|輸注|免疫"),
     ("pulmonary", r"肺|気管支"),
+    ("metabolic_endocrine", r"糖尿|尿酸|脂質|脂血|コレステロール|トリグリセリド|痛風"),      # before renal: 糖尿病 and 尿酸 contain 尿
     ("renal", r"腎|尿|クレアチニン|ネフ|透析"),
     ("cardiovascular", r"心|駆出率|ＱＴ|QT|不整脈|頻脈|徐脈|血圧|出血|浮腫|血栓|塞栓|静脈炎|毛細血管漏出|血管|動脈"),
     ("neurologic", r"神経|ニューロパチー|脳|痙攣|頭痛|めまい|浮動性|意識|錯感覚|感覚鈍麻|麻痺|味覚"),
     ("ocular", r"眼|角膜|視|結膜|網膜|霧視|ドライアイ|緑内障|白内障|涙"),
-    ("dermatologic", r"皮膚|発疹|皮疹|紅斑|そう痒|脱毛|蕁麻疹|スティーブンス|中毒性表皮|手掌|爪|水疱"),
+    ("dermatologic", r"皮膚|発疹|皮疹|紅斑|そう痒|脱毛|蕁麻疹|スティーブンス|スティーヴンス|中毒性表皮|手掌|爪|水疱"),
     ("metabolic_endocrine", r"糖|ナトリウム|カリウム|カルシウム|マグネシウム|低リン|高リン|電解質|甲状腺|代謝|腫瘍崩壊|食欲|脱水|尿酸"),
     ("musculoskeletal", r"筋|関節|骨|背部痛|四肢痛"),
     ("otologic", r"耳|難聴|聴"),
@@ -107,6 +108,9 @@ def read_jader(d):
         if key in df.columns: return key
         return next(c for c in df.columns if key in c and "連番" not in c)
     drug, reac, hist = load("drug"), load("reac"), load("hist")
+    def latest(df):                         # a case is re-reported (報告回数 01, 02, ...); keep its latest version only
+        k, n = col(df, "識別番号"), col(df, "報告回数"); last = df.groupby(k)[n].transform("max"); return df[df[n] == last]
+    drug, reac, hist = latest(drug), latest(reac), latest(hist)
     D = pd.DataFrame(dict(case=drug[col(drug, "識別番号")], role=drug[col(drug, "関与")], name=drug[col(drug, "一般名")].map(norm)))
     Rr = pd.DataFrame(dict(case=reac[col(reac, "識別番号")], term=reac[col(reac, "有害事象")].astype(str)))
     H = pd.DataFrame(dict(case=hist[col(hist, "識別番号")], term=hist[col(hist, "原疾患等")].astype(str)))
@@ -194,7 +198,7 @@ def main(d):
     print(f"JADER at {d}: {len(cases)} cases with exactly one ADC as suspect drug; by ADC: {cases.value_counts().to_dict()}")
     terms = pd.concat([Rr[Rr.case.isin(cases.index)].term, H[H.case.isin(cases.index)].term]).value_counts()
     print("\nmost frequent terms and their organ (audit):")
-    for t, n in terms.head(60).items(): print(f"   {n:6d}  {t:30s} {mapper.cache.get(t)!s:20s} {mapper.how.get(t)}")
+    for t, n in terms.head(150).items(): print(f"   {n:6d}  {t:30s} {mapper.cache.get(t)!s:20s} {mapper.how.get(t)}")
     cov = sum(n for t, n in terms.items() if mapper.cache.get(t)) / terms.sum(); print(f"   term mentions mapped to an organ: {cov:.1%}")
     res = analyse(P); res.update(source=f"PMDA JADER ({os.path.basename(os.path.normpath(d))})", citation="本解析は医薬品医療機器総合機構（PMDA）の医薬品副作用データベース（JADER）を利用した結果である",
                                 cases_by_adc=cases.value_counts().to_dict(), mapped_share=cov)
