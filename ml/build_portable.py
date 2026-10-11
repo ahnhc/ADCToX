@@ -105,7 +105,7 @@ def main():
                 registry=list(csv.DictReader(open(R / "conf/comorbidity_registry.csv"))),
                 checks=yaml.safe_load(open(R / "conf/patient_checks.yaml"))["checks"], mondo=mondo_terms())
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
-    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui")}
+    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term")}
 
     rc = src["recommend"]
     rc = sub(rc, 'sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")\n', "", "recommend")
@@ -140,7 +140,7 @@ BLOB = "{blob}"
     OUT.write_text(f'''#!/usr/bin/env python3
 """ADC label-based recommender: one file, runs anywhere with Python >= 3.10 and numpy.
 
-    python adc_recommender.py                       interactive (arrow keys; Windows: pip install windows-curses, else plain prompts)
+    python adc_recommender.py                       interactive menus (arrow keys; work in Windows Terminal without extra packages)
     python adc_recommender.py cirrhosis glaucoma --lab bilirubin=2.0 --lab ast=50
     python adc_recommender.py --list                condition ids
 

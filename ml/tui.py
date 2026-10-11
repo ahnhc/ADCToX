@@ -4,7 +4,8 @@ Modelled on the way `hermes setup` asks questions (hermes_cli/curses_ui.py): ful
 " -> (o) item" rows, the default pre-selected, ENTER/SPACE to choose, ESC to fall back to the default, "/" to filter a long list.
 Both functions raise nothing on a normal exit and return the chosen index / indices; the caller prints its own summary afterwards.
 """
-import curses, locale, os, unicodedata
+import locale, os, unicodedata
+from term import curses
 os.environ.setdefault("ESCDELAY", "25")                 # make ESC answer at once instead of waiting for a possible escape sequence
 locale.setlocale(locale.LC_ALL, "")
 
@@ -186,7 +187,8 @@ def browse(title, lines, selectable, details, footer=""):
         while True:
             h, w = scr.getmaxyx(); scr.clear()          # full repaint: the panel height changes with the row
             if title: S.put(0, 1, title, S.title)
-            S.put(0, 1, "↑↓ / 클릭   PgUp 이전   PgDn 다음", S.dim)
+            import term
+            S.put(0, 1, ("↑↓" if term.USE_SHIM else "↑↓ / 클릭") + "   PgUp 이전   PgDn 다음", S.dim)
             out = []
             for ln in details[cur]: out += [ln] if ln[:1] in "┌│├└\x1b" else _wrap(ln, max(20, w - 3))      # table lines are not wrapped
             panel = min(len(out) + 1, max(8, int(h * 0.45))); area = max(3, h - panel - 3); y0 = 2

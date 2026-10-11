@@ -339,12 +339,8 @@ def browse(rows, checks_=()):
     return tui.browse("", lines, at, [reasons(r, checks_) for r in rows])
 
 
-def render(rows, s, notes, checks_, detail=False, color=None):
-    import textwrap, shutil
-    color = (sys.stdout.isatty() or bool(os.environ.get("FORCE_COLOR"))) and not os.environ.get("NO_COLOR") if color is None else color
-    paint = lambda t, c: f"\033[{c}m{t}\033[0m" if color and c else t
-    cols = shutil.get_terminal_size((110, 24)).columns
-    key = min(34, max(len(a) for a, _ in notes)) if notes else 10
+def patient_lines(notes):
+    """[(English name, Korean name or how it was read, or None for a plain note line)] for the Patient block."""
     def names(c, how):
         cid = c if c in _reg else _by_label.get(c.lower())
         if cid: return _reg[cid]["label"], KO.get(cid, "")
@@ -354,7 +350,16 @@ def render(rows, s, notes, checks_, detail=False, color=None):
         m = re.search(r"(?:MONDO|registry) '([^']+)'", how)
         if "not understood" in how: return c, "(장기 미확인)" + ("  FinnGen estimate, not validated" if "FinnGen" in how else "")
         return c, f"({m.group(1)})" if m else ""
-    rowsP = [names(a, b) for a, b in notes]; key = max([_width(a) for a, b in rowsP if b is not None] + [10])
+    return [names(a, b) for a, b in notes]
+
+
+def render(rows, s, notes, checks_, detail=False, color=None):
+    import textwrap, shutil
+    color = (sys.stdout.isatty() or bool(os.environ.get("FORCE_COLOR"))) and not os.environ.get("NO_COLOR") if color is None else color
+    paint = lambda t, c: f"\033[{c}m{t}\033[0m" if color and c else t
+    cols = shutil.get_terminal_size((110, 24)).columns
+    key = min(34, max(len(a) for a, _ in notes)) if notes else 10
+    rowsP = patient_lines(notes); key = max([_width(a) for a, b in rowsP if b is not None] + [10])
     print("Patient")
     for a, b in rowsP: print(f"  {a}" if b is None else f"  {a}{' ' * (key - _width(a) + 3)}{b}".rstrip())
     prio = rows[0]["priority"] if rows else []
@@ -400,9 +405,9 @@ FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 
 FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용 (추정값 × 0.25)", 0.25), ("사용 (추정값 × 0.5)", 0.5)]
 def _tui_ok():
     if "--plain" in sys.argv: return False          # plain prompts and a printed table, no full-screen menus
-    try: import curses  # noqa: F401
+    try: import term                                 # real curses, or the ANSI stand-in on Windows (ml/term.py)
     except ImportError: return False
-    return sys.stdin.isatty() and sys.stdout.isatty() and os.environ.get("TERM", "dumb") != "dumb"
+    return sys.stdin.isatty() and sys.stdout.isatty() and (os.name == "nt" or os.environ.get("TERM", "dumb") != "dumb")   # Windows sets no TERM
 
 
 def _ask_priority_pc(pc):
@@ -493,6 +498,7 @@ def list_conditions():
 
 def main():
     global LEARNED_FRACTION, FALLBACK, PRIORITY
+    import term; term.windows_console()                 # UTF-8 and ANSI colours in a Windows console
     if "--list" in sys.argv: list_conditions(); sys.exit(0)
     args, labs, flags = parse_args(sys.argv[1:])
     if "learned" in flags: LEARNED_FRACTION = flags["learned"]

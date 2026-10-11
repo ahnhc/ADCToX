@@ -4,7 +4,7 @@ Steps: conditions (organ-grouped list; 'Other' at the bottom opens a typing line
 place, units as on a lab report) -> [FinnGen estimate for a condition that maps to no organ] -> [priority between conditions].
 Returns (conditions, raw lab values) and sets recommend.FALLBACK / recommend.PRIORITY, or None if the user quits.
 """
-import curses
+from term import curses
 from tui import _Screen, _cw, _clip, _wrap, _enter
 
 BACK, QUIT = "back", "quit"
