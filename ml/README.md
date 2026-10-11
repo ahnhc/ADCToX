@@ -99,29 +99,35 @@ a bilinear head (-0.0079 [-0.0137, -0.0024]). LoRA fine-tuning of the encoder (f
 three seeds (0.655 -> 0.684) but not organ ranking, the metric the product uses (+0.0032 [-0.0011, +0.0080]), so it was **not adopted**.
 The saved model (`ml/vulnerability_model.py`, `predict(text)`) is frozen BioLORD + MLP head, 5-seed ensemble.
 
-**Drug side.** Rebuilt from the approved labels (`ml/matcher2.py`): label boxed warning 1.0, section-5 warning 0.6, grade >= 3 incidence
-percentile filling at most 0.4 of what a warning leaves open. Incidence alone recovers the label's warned organs with AUROC 0.670
-[0.557, 0.781] over 12 drugs (it misses rare lethal events: T-DXd 0.48). The first version of the combination capped a sum at 1 and let a
-section-5 warning plus a high percentile tie a boxed warning; found when T-DXd ranked 5th for an ILD patient, fixed to the stated intent.
-An earlier attempt on the transcribed trial tables (`ml/matcher.py`) failed for coverage reasons and is kept for the record.
+**Drug side.** From the approved labels (`ml/drug_evidence.py`): boxed / section-5 warnings per organ (every organ a heading names; the
+boxed headline is split case-insensitively, which the first parser did not do and so missed sacituzumab's boxed diarrhoea), plus the
+largest grade >= 3 incidence in the label tables, aggregated within one table (the first version added Grade 3 + Grade 4 across trials),
+monotherapy preferred, combination-only and lab-table values marked, and a missing table or row reported as such, never as 0.
+Incidence alone recovers the label's warned organs with AUROC 0.670 [0.559, 0.780] over 12 drugs (`ml/matcher2.py`; it misses rare lethal
+events: T-DXd 0.48). An earlier attempt on the transcribed trial tables (`ml/matcher.py`) failed for coverage reasons and is kept for the record.
 
-**Does the learned patient weighting help matching?** Positives = ADCs whose label warns on the condition's organ (40 registry conditions,
-12 ADCs). With the warning layer (circular for warned organs): learned 0.808 vs no patient weights 0.660 vs other conditions' weights 0.577.
-Incidence only (non-circular): learned 0.462 vs 0.429 vs 0.438 -- **not distinguishable** (+0.033 [-0.018, +0.087]). The learned weights also carry
-cross-organ risk (ILD -> neurologic) that can bury the condition's own organ, so the recommender gives the condition's own organ priority.
+**Label use restrictions** (`conf/label_restrictions.yaml`, `ml/restrictions.py`): 86 rules from sections 4, 8.6, 8.7, 2 and (where section 8
+is silent) 12.3 of the 14 labels, each with a verbatim quote that a test checks against the label. Categories: contraindicated > avoid >
+insufficient data = no label statement > monitor > no adjustment. Lab values the user did not enter are not guessed from a diagnosis (CKD 3
+is an eGFR stage; the labels use Cockcroft-Gault CLcr): the verdict is the set of categories the label allows over the missing range ("Avoid?").
 
-**Recommender** (`ml/recommend.py`): risk % = 100 * sum(w_o * t_o) / sum(w_o), w_o = 1 + LAMBDA * s_o, s_o = max(own organ, 0.5 * learned), t_o as above.
-Rows print lowest risk first. It is an index, not an event probability. Every organ counts (weight 1): a first version scored only the patient's
-vulnerable organs, which made sacituzumab govitecan (boxed haematologic warning) look like the safest option for an ILD patient. The weight of a fully vulnerable organ is x10 an ordinary one (LAMBDA = 9) -- a
-**stated preference, not a fitted value** (`--lambda N`, N = multiplier - 1): the project's own default of x3 ranked T-DXd 12th of 14 for an ILD patient
-(a boxed pulmonary warning behind drugs with scattered section-5 warnings); it reaches 14th between x6 and x8, x10 leaves margin and gives the same order as x11
-and x15 in the cases checked. At x10: ILD -> T-DXd highest; cirrhosis -> inotuzumab, T-DM1; dry eye -> tisotumab. Mirvetuximab (boxed ocular) is still only
-12th of 14 for dry eye: the ordering depends on this constant, as the project already showed for the comorbidity layer.
-Run with no arguments for a question-by-question mode: arrow-key menus in the style of `hermes setup` (`ml/tui.py`, stdlib `curses`: a searchable
-checklist for the 41 conditions, radio lists for the rest, the default pre-selected, ESC takes it; numbered prompts when the terminal is not interactive): conditions, LAMBDA, the share of learned
-cross-organ vulnerability, organs listed per ADC, the Risk scale and colour. The displayed Risk is rescaled per patient (lowest of these ADCs
-= 0, highest = 100; `--raw` shows the unscaled index). Organ text is coloured by how much that organ drives this ADC's risk for this patient
-(the same yardstick as the Risk column), and the label evidence is written out as (Boxed) / (Warn), never left to bold or colour alone.
-Conditions outside the 41-entry registry are resolved in this order: a near-identical registry entry
-(BioLORD cosine >= 0.80) > MONDO hierarchy (`ml/mondo_index.py`, name similarity >= 0.75, organs from the project's ancestor crosswalk,
-severity a fixed 0.8) > a loosely similar registry entry (>= 0.60) > learned vulnerability only.
+**Does the learned patient weighting help?** Positives = ADCs whose label warns on the condition's organ (40 registry conditions, 12 ADCs),
+score = incidence percentile . s (non-circular). Against random weights the learned ones do better (+0.070 [+0.015, +0.123]), but the curated
+own organs do better still (0.644 vs 0.512), and adding the learned weights ON TOP of the own organs, which is how the recommender would use
+them, makes it worse (`ml/eval_learned_addon.py`, pre-declared f = 0.25 / 0.5: -0.035 [-0.054, -0.016] / -0.054 [-0.079, -0.030]).
+The recommender therefore runs without them by default (`--learned F` to opt in). Predicting a later disease from a comorbidity is not the same
+question as ADC toxicity given that comorbidity. Inference was also aligned with training: training only ever saw the lag one-hot in the context
+vector (`lab.py`: `cat([eye[lag], eye[nl+dom]])[:, :nl+nd]` keeps the first block), and the first `predict` set the domain bits as well
+(mean |change| in severity 0.005 after the fix). Retraining with the domain actually included would be a new model and was not done.
+
+**Recommender** (`ml/recommend.py`, redesigned 2026-10-11 after an external review; `docs/recommender_changes.md`). Order, most favourable first,
+lexicographic: (1) label restriction for this patient, worst case over missing labs, then whether it is settled; (2) B = sum of s_o over the
+patient's organs with a BOXED warning; (3) Wn = the same for section-5 warnings. s_o = curated severity of the conditions whose own organ it is.
+B and Wn only grow when s grows. The first version's weighted mean 100 * sum w t / sum w (w = 1 + 9 s) could FALL when an organ became more
+vulnerable (d/ds_k = 9 (100 t_k - raw) / sum w), and its per-patient min-max always gave the best drug 0%; both are gone, and nothing is shown
+as a percentage. Incidence is displayed (absolute, flagged) but not used in the order; boxed warnings on organs the patient is not vulnerable
+in are listed separately; ties are marked '='. A checklist names the tests the conditions call for (`conf/patient_checks.yaml`).
+This orders label evidence for one patient; it has not been validated against patient outcomes (`docs/validation_plan.md`).
+Conditions outside the 41-entry registry are resolved in this order: a near-identical registry entry (BioLORD cosine >= 0.80) > MONDO hierarchy
+(`ml/mondo_index.py`, name similarity >= 0.75, severity a fixed 0.8) > a loosely similar registry entry (>= 0.60) > not understood (no organ).
+Tests: `tests/test_ml_recommender.py`.
