@@ -8,7 +8,7 @@ import curses
 from tui import _Screen, _cw, _clip, _wrap, _enter
 
 BACK, QUIT = "back", "quit"
-SAVE = __import__("os").path.expanduser("~/.config/adctox/last_input.json")      # last entries, offered again next time (local only)
+SAVE = __import__("os").path.expanduser("~/.config/adctox/last_input.json")      # entries of the run in progress; deleted once results are shown
 
 
 def load():
@@ -16,6 +16,13 @@ def load():
     try:
         d = json.load(open(SAVE)); return dict(picked=set(d.get("picked", [])), free=d.get("free", ""), raw=d.get("raw", {}))
     except (OSError, ValueError): return dict(picked=set(), free="", raw={})
+
+
+def clear():
+    """forget the entries: called as soon as the result table has been shown."""
+    import os
+    try: os.remove(SAVE)
+    except OSError: pass
 
 
 def save(st):

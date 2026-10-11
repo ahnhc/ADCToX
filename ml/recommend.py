@@ -450,6 +450,8 @@ if __name__ == "__main__":
         rows, s, notes, ck = recommend(conds, labs, raw)
         if not args and _tui_ok(): browse(rows)                       # pick a row, read why; then the table stays in the scrollback
         render(rows, s, notes, ck, detail=flags["detail"], color=col)
+        if not args:
+            import form; form.clear()                                     # the next run starts empty
         if args or not sys.stdin.isatty(): break
         try: again = input("\nRun again with different answers? (y = yes, Enter = exit) > ").strip().lower()
         except EOFError: break
