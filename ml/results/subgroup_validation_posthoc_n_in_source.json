@@ -1,0 +1,2068 @@
+{
+ "records": 381,
+ "passed": 311,
+ "dropped": [
+  {
+   "id": "tdxd_fda19_renal_mod_disc",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "tdxd_fda19_renal_mild_disc",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "dato_fda25_renal_mild_ild",
+   "reason": "neither counts nor a ratio"
+  },
+  {
+   "id": "dato_fda25_renal_mod_ild",
+   "reason": "neither counts nor a ratio"
+  },
+  {
+   "id": "dato_fda25_hep_modsev_stomatitis",
+   "reason": "neither counts nor a ratio"
+  },
+  {
+   "id": "sg_fda20_hep_mild_g34",
+   "reason": "neither counts nor a ratio"
+  },
+  {
+   "id": "sg_rugo22_hom_teae_dosered",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "sg_rugo22_het_teae_dosered",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "sg_rugo22_hom_trae_disc",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "sg_rugo22_het_trae_disc",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "sg_wong24_hom_disc_tox",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "sg_wong24_het_disc_tox",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "tdxd_kawakami25_lungcomorb_ild",
+   "reason": "no representative patient"
+  },
+  {
+   "id": "tdxd_tsurutani26_lungcomorb_ild",
+   "reason": "no representative patient"
+  },
+  {
+   "id": "dato_hong26_renal_any_dosered_or",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "tv-fda-hep-mild-g3",
+   "reason": "reference n not in quote"
+  },
+  {
+   "id": "tv-fda-hep-mild-sae",
+   "reason": "reference n not in quote"
+  },
+  {
+   "id": "tv-fda-hep-mild-ocular",
+   "reason": "reference n not in quote"
+  },
+  {
+   "id": "tv-fda-hep-mild-pn",
+   "reason": "reference n not in quote"
+  },
+  {
+   "id": "tv-fda-hep-mild-bleed",
+   "reason": "reference n not in quote"
+  },
+  {
+   "id": "tv-fda-hep-mild-astg3",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "tv-fda-hep-mild-altg3",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "ev-fda-renal-mild-death",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "ev-fda-renal-moderate-death",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "ev-fda-renal-severe-death",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "bv-fda-s108-hep-mild-alt",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "bv-fda-s108-hep-moderate-alt",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "bv-fda-s108-hep-mild-ast",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "bv-fda-s108-hep-moderate-ast",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "bv-fda-s108-hep-mild-bili",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "bv-fda-s108-hep-moderate-bili",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "tdm1_crcl_severe_pivotal_doseadj",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "tdm1_crcl_severe_all_doseadj",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "tdm1_crcl_moderate_pivotal_doseadj",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "tdm1_crcl_moderate_all_doseadj",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "tdm1_crcl_mild_pivotal_doseadj",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "tdm1_crcl_mild_all_doseadj",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "mirv_hep_mild_disc",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "lonca_crcl_mild_dosered",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "lonca_crcl_moderate_dosered",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "lonca_crcl_mild_dosedelay",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "lonca_crcl_moderate_dosedelay",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "lonca_crcl_mild_withdraw",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "lonca_crcl_moderate_withdraw",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "lonca_hep_mild_dosered",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "lonca_hep_mild_dosedelay",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "lonca_hep_mild_withdraw",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "lonca_hep_mild_g3ggt",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "lonca_hep_mild_g3alt",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "lonca_hep_mild_g3ast",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "lonca_hep_mild_g3alp",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "lonca_hep_mild_g3bili",
+   "reason": "liver test outcome defines the hepatic stratum"
+  },
+  {
+   "id": "pivek_crcl_mild_death",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_crcl_moderate_death",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_crcl_mild_dosedelay",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_crcl_moderate_dosedelay",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_crcl_mild_dosered",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_crcl_moderate_dosered",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_crcl_mild_disc",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_crcl_moderate_disc",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_hep_mild_death",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_hep_moderate_death",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_hep_mild_dosedelay",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_hep_moderate_dosedelay",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_hep_mild_dosered",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_hep_moderate_dosered",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_hep_mild_disc",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "pivek_hep_moderate_disc",
+   "reason": "treatment action, not an adverse event"
+  },
+  {
+   "id": "ino_bili_prehsct_vod_1022",
+   "reason": "post-baseline characteristic"
+  },
+  {
+   "id": "go_posthsct_vod_or",
+   "reason": "post-baseline characteristic"
+  }
+ ],
+ "contrasts": [
+  {
+   "id": "tdxd_tsurutani26_renal_lt60_ild",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "crcl",
+   "exposed": "CrCl <60 (moderate + severe + ESRD combined)",
+   "reference": "normal renal function (CrCl >=90)",
+   "outcome": "adjudicated drug-related ILD (any grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+   "ocr": false,
+   "rr": 1.37263339070568,
+   "ci": [
+    1.0033606514343894,
+    1.877811754513852
+   ],
+   "log_rr": 0.31673107780708853,
+   "var": 0.025563451542603262,
+   "key_exposed": [
+    1.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tdxd_park25_54_renal_mildmod_ild_anygrade",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "crcl",
+   "exposed": "mild or moderate renal impairment (CrCl 30-<90) combined",
+   "reference": "renal function within normal range (CrCl >=90)",
+   "outcome": "adjudicated drug-related ILD (any grade; worst grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1093/oncolo/oyaf396 (PMC12743619; supplementary data zip, 'Supplemental Table S10.docx')",
+   "ocr": false,
+   "rr": 1.2569767441860464,
+   "ci": [
+    0.9488449620123166,
+    1.6651724978058582
+   ],
+   "log_rr": 0.2287094283916548,
+   "var": 0.02058628961125573,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "tdxd_fda19_hep_mild_g3",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "hepatic",
+   "exposed": "mild hepatic impairment (NCI-ODWG-like: TBL >ULN-1.5xULN any AST, or TBL<=ULN and AST>ULN)",
+   "reference": "normal hepatic function",
+   "outcome": "Grade>=3 TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761139Orig1s000MultidisciplineR.pdf",
+   "ocr": false,
+   "rr": 0.7777777777777779,
+   "ci": [
+    0.5893999825451465,
+    1.026362893654483
+   ],
+   "log_rr": -0.25131442828090594,
+   "var": 0.020021645021645017,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "sg_label_ugt_hom_g34neut",
+   "adc": "sacituzumab-govitecan",
+   "characteristic": "ugt1a1",
+   "exposed": "UGT1A1*28 homozygous",
+   "reference": "UGT1A1 wild-type homozygous",
+   "outcome": "Grade 3-4 neutropenia",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=57a597d2-03f0-472e-b148-016d7169169d",
+   "ocr": false,
+   "rr": 1.3932565680630005,
+   "ci": [
+    1.167918727623436,
+    1.6620710144794995
+   ],
+   "log_rr": 0.33164386165916054,
+   "var": 0.008101888474289238,
+   "key_exposed": [
+    1.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "sg_label_ugt_het_g34neut",
+   "adc": "sacituzumab-govitecan",
+   "characteristic": "ugt1a1",
+   "exposed": "UGT1A1*28 heterozygous",
+   "reference": "UGT1A1 wild-type homozygous",
+   "outcome": "Grade 3-4 neutropenia",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=57a597d2-03f0-472e-b148-016d7169169d",
+   "ocr": false,
+   "rr": 1.1687691871114207,
+   "ci": [
+    1.0214012917393032,
+    1.3373993393085968
+   ],
+   "log_rr": 0.15595121826583108,
+   "var": 0.004728366893858391,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "tdxd_tsurutani26_priorild_ild",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "condition",
+   "exposed": "medical history and/or comorbidity of ILD",
+   "reference": "without this history/comorbidity",
+   "outcome": "adjudicated drug-related ILD (any grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+   "ocr": false,
+   "rr": 2.251658558160106,
+   "ci": [
+    1.4096582123036674,
+    3.596592577040569
+   ],
+   "log_rr": 0.8116670816243662,
+   "var": 0.05709169193217714,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    1.0,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tdxd_tsurutani26_radpneum_ild",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "condition",
+   "exposed": "medical history and/or comorbidity of radiation pneumonitis",
+   "reference": "without this history/comorbidity",
+   "outcome": "adjudicated drug-related ILD (any grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+   "ocr": false,
+   "rr": 0.977581594435527,
+   "ci": [
+    0.562009727423157,
+    1.7004434748147208
+   ],
+   "log_rr": -0.022673518037943177,
+   "var": 0.07976664801577368,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.8,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tdxd_kawakami25_pulmfib_ild",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "condition",
+   "exposed": "medical history and/or comorbidity of pulmonary fibrosis",
+   "reference": "without this history/comorbidity",
+   "outcome": "adjudicated drug-related ILD (any grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1016/j.esmoop.2025.105914 (PMC12800766; supplementary mmc1.docx)",
+   "ocr": false,
+   "rr": 1.721417069243156,
+   "ci": [
+    0.13617466985187962,
+    21.76085118843998
+   ],
+   "log_rr": 0.5431478290915663,
+   "var": 1.675393048720417,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    1.0,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tdxd_tsurutani26_copd_ild",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "condition",
+   "exposed": "medical history and/or comorbidity of COPD or emphysema",
+   "reference": "without this history/comorbidity",
+   "outcome": "adjudicated drug-related ILD (any grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+   "ocr": false,
+   "rr": 1.2462093862815886,
+   "ci": [
+    0.2151782775337886,
+    7.217447096686915
+   ],
+   "log_rr": 0.22010645302193452,
+   "var": 0.803030734027467,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.6,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tdxd_tsurutani26_asthma_ild",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "condition",
+   "exposed": "medical history and/or comorbidity of asthma",
+   "reference": "without this history/comorbidity",
+   "outcome": "adjudicated drug-related ILD (any grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+   "ocr": false,
+   "rr": 0.6033182503770739,
+   "ci": [
+    0.2605860905694419,
+    1.3968240225049755
+   ],
+   "log_rr": -0.5053104430778805,
+   "var": 0.18345992243051068,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.8,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tdxd_tsurutani26_pleuraleff_ild",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "condition",
+   "exposed": "medical history and/or comorbidity of pleural effusion",
+   "reference": "without this history/comorbidity",
+   "outcome": "adjudicated drug-related ILD (any grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+   "ocr": false,
+   "rr": 1.1289855072463768,
+   "ci": [
+    0.8354761942107854,
+    1.5256069345894288
+   ],
+   "log_rr": 0.12131944827944319,
+   "var": 0.023595604579861807,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.8,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tdxd_tsurutani26_lungsurg_ild",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "condition",
+   "exposed": "history of lung surgery",
+   "reference": "without this history/comorbidity",
+   "outcome": "adjudicated drug-related ILD (any grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+   "ocr": false,
+   "rr": 1.5974903474903477,
+   "ci": [
+    1.0653202570604094,
+    2.395500689498408
+   ],
+   "log_rr": 0.468433864991735,
+   "var": 0.04273045846427942,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "tdxd_tsurutani26_chestrt_any_ild",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "condition",
+   "exposed": "prior chest radiation therapy (any)",
+   "reference": "without this history/comorbidity",
+   "outcome": "adjudicated drug-related ILD (any grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+   "ocr": false,
+   "rr": 1.1627477077787636,
+   "ci": [
+    0.936054179904176,
+    1.4443418564544752
+   ],
+   "log_rr": 0.15078591774086458,
+   "var": 0.01224272670290208,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.7,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tdxd_tsurutani26_hep_modsev_ild",
+   "adc": "trastuzumab-deruxtecan",
+   "characteristic": "hepatic",
+   "exposed": "moderate + severe hepatic dysfunction (TB >2.25 mg/dL)",
+   "reference": "normal hepatic function (TB <=1.5 and AST <=30)",
+   "outcome": "adjudicated drug-related ILD (any grade)",
+   "outcome_rank": 3,
+   "basis": "post_approval",
+   "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+   "ocr": false,
+   "rr": 1.615846338535414,
+   "ci": [
+    0.8059160128524765,
+    3.239741298248955
+   ],
+   "log_rr": 0.47985886803783034,
+   "var": 0.12596509629111674,
+   "key_exposed": [
+    1.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tv-fda-renal-mild-g3",
+   "adc": "tisotumab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "mild renal impairment (CLcr, Cockcroft-Gault)",
+   "reference": "normal renal function (CLcr)",
+   "outcome": "Any Grade 3 and higher TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761208Orig1s000MultidisciplineR.pdf",
+   "ocr": true,
+   "rr": 1.074977416440831,
+   "ci": [
+    0.8759771424302409,
+    1.3191856155651103
+   ],
+   "log_rr": 0.07229965339693813,
+   "var": 0.010909049503023675,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "tv-fda-renal-moderate-g3",
+   "adc": "tisotumab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "moderate renal impairment (CLcr, Cockcroft-Gault)",
+   "reference": "normal renal function (CLcr)",
+   "outcome": "Any Grade 3 and higher TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761208Orig1s000MultidisciplineR.pdf",
+   "ocr": true,
+   "rr": 1.1666666666666667,
+   "ci": [
+    0.8668893177571811,
+    1.570109451380232
+   ],
+   "log_rr": 0.15415067982725836,
+   "var": 0.022960699431287666,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "tl-fda-renal-modsev-ild",
+   "adc": "telisotuzumab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "moderate/severe renal impairment (incl. 1 severe)",
+   "reference": "normal renal function",
+   "outcome": "ILD (broad SMQ) TEAE",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2025/761384Orig1s000MultidisciplineR.pdf",
+   "ocr": false,
+   "rr": 1.967741935483871,
+   "ci": [
+    0.6915064698659263,
+    5.599381196552709
+   ],
+   "log_rr": 0.676886659688165,
+   "var": 0.2846818261942534,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "tl-fda-renal-mild-ild",
+   "adc": "telisotuzumab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "mild renal impairment",
+   "reference": "normal renal function",
+   "outcome": "ILD (broad SMQ) TEAE",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2025/761384Orig1s000MultidisciplineR.pdf",
+   "ocr": false,
+   "rr": 1.6052631578947367,
+   "ci": [
+    0.6395626293097232,
+    4.029112534100665
+   ],
+   "log_rr": 0.4732877044469254,
+   "var": 0.22044866264020707,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "tl-fda-hep-mild-hepdis",
+   "adc": "telisotuzumab-vedotin",
+   "characteristic": "hepatic",
+   "exposed": "mild hepatic impairment",
+   "reference": "normal hepatic function",
+   "outcome": "Drug Related Hepatic Disorders (comprehensive) SMQ TEAE",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2025/761384Orig1s000MultidisciplineR.pdf",
+   "ocr": false,
+   "rr": 2.8108108108108114,
+   "ci": [
+    1.7234406127133772,
+    4.58423536957979
+   ],
+   "log_rr": 1.0334729864971484,
+   "var": 0.06228343728343729,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "pv-fda-renal-mild-g34",
+   "adc": "polatuzumab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "mild renal impairment",
+   "reference": "normal renal function",
+   "outcome": "Grade 3-4 adverse events",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761121Orig1s000ClinPharmR.pdf",
+   "ocr": false,
+   "rr": 1.1083333333333334,
+   "ci": [
+    0.8235290883657319,
+    1.4916325302066806
+   ],
+   "log_rr": 0.10285738543970782,
+   "var": 0.022963659147869672,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "pv-fda-renal-moderate-g34",
+   "adc": "polatuzumab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "moderate renal impairment",
+   "reference": "normal renal function",
+   "outcome": "Grade 3-4 adverse events",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761121Orig1s000ClinPharmR.pdf",
+   "ocr": false,
+   "rr": 1.14,
+   "ci": [
+    0.8354541772886835,
+    1.5555610772306125
+   ],
+   "log_rr": 0.131028262406404,
+   "var": 0.025146198830409347,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "pv-fda-hep-go29365-g34",
+   "adc": "polatuzumab-vedotin",
+   "characteristic": "hepatic",
+   "exposed": "mild hepatic impairment (NCI-ODWG)",
+   "reference": "normal hepatic function",
+   "outcome": "Grade 3-4 adverse events",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761121Orig1s000ClinPharmR.pdf",
+   "ocr": false,
+   "rr": 1.1786666666666665,
+   "ci": [
+    0.9716036948683813,
+    1.4298577891877067
+   ],
+   "log_rr": 0.1643838561072872,
+   "var": 0.009715434891905485,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "ev-tang-pooled-renal-mild-g3",
+   "adc": "enfortumab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "mild renal impairment (CrCl 60 to <90)",
+   "reference": "normal renal function (CrCl >=90)",
+   "outcome": "TEAE with CTCAE grade >=3",
+   "outcome_rank": 1,
+   "basis": "post_approval",
+   "source": "https://static-content.springer.com/esm/art%3A10.1007%2Fs40262-024-01369-0/MediaObjects/40262_2024_1369_MOESM1_ESM.docx",
+   "ocr": false,
+   "rr": 1.0270058708414873,
+   "ci": [
+    0.8738806456891303,
+    1.2069623740335014
+   ],
+   "log_rr": 0.026647647426174884,
+   "var": 0.006785987030963402,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "ev-tang-pooled-renal-moderate-g3",
+   "adc": "enfortumab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "moderate renal impairment (CrCl 30 to <60)",
+   "reference": "normal renal function (CrCl >=90)",
+   "outcome": "TEAE with CTCAE grade >=3",
+   "outcome_rank": 1,
+   "basis": "post_approval",
+   "source": "https://static-content.springer.com/esm/art%3A10.1007%2Fs40262-024-01369-0/MediaObjects/40262_2024_1369_MOESM1_ESM.docx",
+   "ocr": false,
+   "rr": 1.0817738565126538,
+   "ci": [
+    0.9272074185065506,
+    1.262106679990926
+   ],
+   "log_rr": 0.07860215350820153,
+   "var": 0.006187920507632604,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "ev-tang-pooled-renal-severe-g3",
+   "adc": "enfortumab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "severe renal impairment (CrCl 15 to <30)",
+   "reference": "normal renal function (CrCl >=90)",
+   "outcome": "TEAE with CTCAE grade >=3",
+   "outcome_rank": 1,
+   "basis": "post_approval",
+   "source": "https://static-content.springer.com/esm/art%3A10.1007%2Fs40262-024-01369-0/MediaObjects/40262_2024_1369_MOESM1_ESM.docx",
+   "ocr": false,
+   "rr": 1.3881278538812785,
+   "ci": [
+    1.1435052175836695,
+    1.6850810202622044
+   ],
+   "log_rr": 0.32795597158972084,
+   "var": 0.009782590036735674,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "ev-fda-bmi-obese-hyperglycemia",
+   "adc": "enfortumab-vedotin",
+   "characteristic": "condition",
+   "exposed": "obese (baseline BMI >= 30)",
+   "reference": "non-obese (baseline BMI < 30)",
+   "outcome": "treatment-emergent hyperglycemia",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761137Orig1s000MultidisciplineR.pdf",
+   "ocr": false,
+   "rr": 2.4761904761904763,
+   "ci": [
+    1.138804736293929,
+    5.384170858237327
+   ],
+   "log_rr": 0.9067212808580044,
+   "var": 0.15705128205128205,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "ev-tang-pooled-hep-mild-g3",
+   "adc": "enfortumab-vedotin",
+   "characteristic": "hepatic",
+   "exposed": "mild hepatic impairment (NCI-ODWG-type definition)",
+   "reference": "normal hepatic function",
+   "outcome": "TEAE with CTCAE grade >=3",
+   "outcome_rank": 1,
+   "basis": "post_approval",
+   "source": "https://static-content.springer.com/esm/art%3A10.1007%2Fs40262-024-01369-0/MediaObjects/40262_2024_1369_MOESM1_ESM.docx",
+   "ocr": false,
+   "rr": 1.0403726708074534,
+   "ci": [
+    0.8819263812647757,
+    1.2272853121944183
+   ],
+   "log_rr": 0.039578986280658146,
+   "var": 0.007106290493701268,
+   "key_exposed": [
+    2.0,
+    2.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    2.0,
+    2.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "bv-label2014-renal-severe-g3",
+   "adc": "brentuximab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "severe renal impairment (CLcr <30)",
+   "reference": "normal renal function",
+   "outcome": "Grade 3 or worse adverse events",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/125388_S056S078lbl.pdf",
+   "ocr": false,
+   "rr": 2.25,
+   "ci": [
+    0.9158219932408477,
+    5.527820949227452
+   ],
+   "log_rr": 0.8109302162163288,
+   "var": 0.2103174603174603,
+   "key_exposed": [
+    3.0,
+    3.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "bv-label2014-hep-modsev-g3",
+   "adc": "brentuximab-vedotin",
+   "characteristic": "hepatic",
+   "exposed": "moderate or severe hepatic impairment (Child-Pugh B or C)",
+   "reference": "normal hepatic function",
+   "outcome": ">=Grade 3 adverse reactions",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/125388_S056S078lbl.pdf",
+   "ocr": false,
+   "rr": 2.3877551020408165,
+   "ci": [
+    1.0263179290121032,
+    5.5551737586908265
+   ],
+   "log_rr": 0.8703536366871296,
+   "var": 0.1855921855921856,
+   "key_exposed": [
+    3.0,
+    3.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    3.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "bv-zhao-hep-g3",
+   "adc": "brentuximab-vedotin",
+   "characteristic": "hepatic",
+   "exposed": "any hepatic impairment (Child-Pugh A-C)",
+   "reference": "unimpaired (CLcr >80, normal hepatic function)",
+   "outcome": ">= Grade 3 AE (maximum severity)",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5089583/",
+   "ocr": false,
+   "rr": 2.2857142857142856,
+   "ci": [
+    0.8889866537445033,
+    5.876904646332179
+   ],
+   "log_rr": 0.8266785731844679,
+   "var": 0.2321428571428571,
+   "key_exposed": [
+    1.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    3.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "bv-zhao-renal-g3",
+   "adc": "brentuximab-vedotin",
+   "characteristic": "crcl",
+   "exposed": "any renal impairment (CLcr <=80; mild 4, moderate 3, severe 3)",
+   "reference": "unimpaired (CLcr >80, normal hepatic function)",
+   "outcome": ">= Grade 3 AE (maximum severity)",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5089583/",
+   "ocr": false,
+   "rr": 1.5999999999999999,
+   "ci": [
+    0.5724504818034911,
+    4.472002524890507
+   ],
+   "log_rr": 0.47000362924573547,
+   "var": 0.27499999999999997,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "bv-fda-s108-hep-mild-g3tr",
+   "adc": "brentuximab-vedotin",
+   "characteristic": "hepatic",
+   "exposed": "mild hepatic impairment (NCI-ODWG)",
+   "reference": "normal hepatic function",
+   "outcome": "Grade 3 or higher treatment-related TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2026/125388Orig1s108.pdf",
+   "ocr": true,
+   "rr": 1.0680473372781065,
+   "ci": [
+    0.8150248249380926,
+    1.3996200848894391
+   ],
+   "log_rr": 0.06583206284986215,
+   "var": 0.019028340080971658,
+   "key_exposed": [
+    3.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    3.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "bv-fda-s108-hep-moderate-g3tr",
+   "adc": "brentuximab-vedotin",
+   "characteristic": "hepatic",
+   "exposed": "moderate hepatic impairment (NCI-ODWG)",
+   "reference": "normal hepatic function",
+   "outcome": "Grade 3 or higher treatment-related TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2026/125388Orig1s108.pdf",
+   "ocr": true,
+   "rr": 1.099236641221374,
+   "ci": [
+    0.48816060743837203,
+    2.475253379711088
+   ],
+   "log_rr": 0.09461597637484913,
+   "var": 0.17151717557251905,
+   "key_exposed": [
+    3.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    3.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "bv-fda-2011-preexisting-pn",
+   "adc": "brentuximab-vedotin",
+   "characteristic": "condition",
+   "exposed": "pre-existing neuropathy",
+   "reference": "no pre-existing neuropathy",
+   "outcome": "treatment-emergent peripheral neuropathy (any grade)",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2011/125388Orig1s000MedR.pdf",
+   "ocr": true,
+   "rr": 0.7466918714555766,
+   "ci": [
+    0.4519798341040611,
+    1.2335699711095178
+   ],
+   "log_rr": -0.29210266695717746,
+   "var": 0.06560264171711613,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    1.0,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "bv-fda-2011-fpg-pn",
+   "adc": "brentuximab-vedotin",
+   "characteristic": "condition",
+   "exposed": "baseline fasting plasma glucose >=126 mg/dL (hyperglycaemia/diabetes proxy)",
+   "reference": "baseline fasting plasma glucose <126",
+   "outcome": "treatment-emergent peripheral neuropathy (any grade)",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2011/125388Orig1s000MedR.pdf",
+   "ocr": true,
+   "rr": 1.4761904761904763,
+   "ci": [
+    0.9907000210288577,
+    2.1995945046335974
+   ],
+   "log_rr": 0.3894647667617233,
+   "var": 0.04140150683929485,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.6
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tdm1_crcl_severe_all_g3",
+   "adc": "trastuzumab-emtansine",
+   "characteristic": "crcl",
+   "exposed": "Severe (CrCL < 30 mL/min)",
+   "reference": "Normal (CrCL >= 90 mL/min)",
+   "outcome": "Grade>=3 AE (G3+ AEs)",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/125427Orig1s000ClinPharmR.pdf",
+   "ocr": false,
+   "rr": 1.6615384615384614,
+   "ci": [
+    0.7383009276856433,
+    3.739274807395424
+   ],
+   "log_rr": 0.5077439572285825,
+   "var": 0.17127255460588797,
+   "key_exposed": [
+    2.0,
+    2.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "tdm1_crcl_moderate_all_g3",
+   "adc": "trastuzumab-emtansine",
+   "characteristic": "crcl",
+   "exposed": "Moderate (30 mL/min <= CrCL < 60 mL/min)",
+   "reference": "Normal (CrCL >= 90 mL/min)",
+   "outcome": "Grade>=3 AE (G3+ AEs)",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/125427Orig1s000ClinPharmR.pdf",
+   "ocr": false,
+   "rr": 1.1868131868131868,
+   "ci": [
+    0.8414012856554994,
+    1.6740235181556096
+   ],
+   "log_rr": 0.17127172060736964,
+   "var": 0.030796364129697468,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "tdm1_crcl_mild_all_g3",
+   "adc": "trastuzumab-emtansine",
+   "characteristic": "crcl",
+   "exposed": "Mild (60 mL/min <= CrCL < 90 mL/min)",
+   "reference": "Normal (CrCL >= 90 mL/min)",
+   "outcome": "Grade>=3 AE (G3+ AEs)",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/125427Orig1s000ClinPharmR.pdf",
+   "ocr": false,
+   "rr": 1.3156817431495542,
+   "ci": [
+    1.098830922491239,
+    1.5753273900706513
+   ],
+   "log_rr": 0.2743549671434638,
+   "var": 0.00844412374647205,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "mirv_hep_mild_g3teae",
+   "adc": "mirvetuximab-soravtansine",
+   "characteristic": "hepatic",
+   "exposed": "Mild hepatic impairment (NCI-ODWG)",
+   "reference": "Normal hepatic function",
+   "outcome": "Grade>=3 TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2022/761310Orig1s000MultidisciplineR.pdf",
+   "ocr": false,
+   "rr": 1.1608040201005025,
+   "ci": [
+    0.9294236329460173,
+    1.4497866476779717
+   ],
+   "log_rr": 0.14911288579730117,
+   "var": 0.012864133467148542,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "lonca_crcl_mild_g3teae",
+   "adc": "loncastuximab-tesirine",
+   "characteristic": "crcl",
+   "exposed": "Mild RI (60 <= CLcr < 90 mL/min)",
+   "reference": "Normal (CLcr >= 90 mL/min)",
+   "outcome": "Grade>=3 TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761196Orig1s000MultidisciplineR.pdf",
+   "ocr": false,
+   "rr": 0.8600427350427351,
+   "ci": [
+    0.6856587838355273,
+    1.078777846266486
+   ],
+   "log_rr": -0.1507731990590286,
+   "var": 0.01336642423598945,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "lonca_crcl_moderate_g3teae",
+   "adc": "loncastuximab-tesirine",
+   "characteristic": "crcl",
+   "exposed": "Moderate RI (30 <= CLcr < 60 mL/min)",
+   "reference": "Normal (CLcr >= 90 mL/min)",
+   "outcome": "Grade>=3 TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761196Orig1s000MultidisciplineR.pdf",
+   "ocr": false,
+   "rr": 0.8518518518518517,
+   "ci": [
+    0.6253953254114368,
+    1.1603086048429216
+   ],
+   "log_rr": -0.1603426500751795,
+   "var": 0.024859098228663445,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "lonca_hep_mild_g3teae",
+   "adc": "loncastuximab-tesirine",
+   "characteristic": "hepatic",
+   "exposed": "Mild hepatic impairment (NCI-ODWG)",
+   "reference": "Normal hepatic function",
+   "outcome": "Grade>=3 TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761196Orig1s000MultidisciplineR.pdf",
+   "ocr": false,
+   "rr": 1.0082644628099173,
+   "ci": [
+    0.7630565620933559,
+    1.332269817818559
+   ],
+   "log_rr": 0.008230499136515444,
+   "var": 0.0202123695976155,
+   "key_exposed": [
+    1.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    1.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "pivek_crcl_mild_g34teae",
+   "adc": "pivekimab-sunirine",
+   "characteristic": "crcl",
+   "exposed": "Mild renal impairment",
+   "reference": "Normal renal function",
+   "outcome": "Grade 3-4 TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2026/761460Orig1s000MultidisciplineR.pdf",
+   "ocr": true,
+   "rr": 0.9462915601023016,
+   "ci": [
+    0.7601298596012152,
+    1.1780457054938411
+   ],
+   "log_rr": -0.0552045543470958,
+   "var": 0.012491647657888068,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "pivek_crcl_moderate_g34teae",
+   "adc": "pivekimab-sunirine",
+   "characteristic": "crcl",
+   "exposed": "Moderate renal impairment",
+   "reference": "Normal renal function",
+   "outcome": "Grade 3-4 TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2026/761460Orig1s000MultidisciplineR.pdf",
+   "ocr": true,
+   "rr": 1.2040133779264215,
+   "ci": [
+    0.9759263525299813,
+    1.4854073880347005
+   ],
+   "log_rr": 0.18566045805946932,
+   "var": 0.011482720178372343,
+   "key_exposed": [
+    3.0,
+    3.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "pivek_hep_mild_g34teae",
+   "adc": "pivekimab-sunirine",
+   "characteristic": "hepatic",
+   "exposed": "Mild hepatic impairment",
+   "reference": "Normal hepatic function",
+   "outcome": "Grade 3-4 TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2026/761460Orig1s000MultidisciplineR.pdf",
+   "ocr": true,
+   "rr": 1.0303030303030303,
+   "ci": [
+    0.7860671933336151,
+    1.3504244207798721
+   ],
+   "log_rr": 0.02985296314968113,
+   "var": 0.01905610729140141,
+   "key_exposed": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "pivek_hep_moderate_g34teae",
+   "adc": "pivekimab-sunirine",
+   "characteristic": "hepatic",
+   "exposed": "Moderate hepatic impairment",
+   "reference": "Normal hepatic function",
+   "outcome": "Grade 3-4 TEAE",
+   "outcome_rank": 1,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2026/761460Orig1s000MultidisciplineR.pdf",
+   "ocr": true,
+   "rr": 1.1961290322580644,
+   "ci": [
+    0.8751282807110815,
+    1.6348742159813245
+   ],
+   "log_rr": 0.1790905362125081,
+   "var": 0.02541671016459614,
+   "key_exposed": [
+    3.0,
+    3.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "ino_priorhsct_vod_total_1022",
+   "adc": "inotuzumab-ozogamicin",
+   "characteristic": "condition",
+   "exposed": "Pre-study (prior) HSCT",
+   "reference": "No pre-study HSCT",
+   "outcome": "VOD/SOS (total: on/after study or after follow-up HSCT)",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761040Orig1s000MultidisciplineR.pdf",
+   "ocr": true,
+   "rr": 2.1724137931034484,
+   "ci": [
+    0.9737062388995982,
+    4.846822891675795
+   ],
+   "log_rr": 0.7758388964050588,
+   "var": 0.16763364349571244,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.7
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "ino_liverdz_vod_posthsct_1022",
+   "adc": "inotuzumab-ozogamicin",
+   "characteristic": "condition",
+   "exposed": "Prior history of liver disease: yes",
+   "reference": "Prior history of liver disease: no",
+   "outcome": "VOD/SOS after follow-up HSCT",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761040Orig1s000MultidisciplineR.pdf",
+   "ocr": true,
+   "rr": 1.9949999999999999,
+   "ci": [
+    0.8780810655736265,
+    4.532639588806026
+   ],
+   "log_rr": 0.6906440503418267,
+   "var": 0.17531328320802003,
+   "key_exposed": [
+    2.0,
+    1.0,
+    1.0,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  },
+  {
+   "id": "ino_lfts_vod_posthsct_1022",
+   "adc": "inotuzumab-ozogamicin",
+   "characteristic": "hepatic",
+   "exposed": "AST, ALT or bilirubin elevation at baseline: yes",
+   "reference": "AST, ALT or bilirubin elevation at baseline: no",
+   "outcome": "VOD/SOS after follow-up HSCT",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761040Orig1s000MultidisciplineR.pdf",
+   "ocr": true,
+   "rr": 1.626984126984127,
+   "ci": [
+    0.6913119901666048,
+    3.829063269711786
+   ],
+   "log_rr": 0.48672807218693015,
+   "var": 0.19068912117692607,
+   "key_exposed": [
+    2.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    2.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "go_priorhsct_vod_or",
+   "adc": "gemtuzumab-ozogamicin",
+   "characteristic": "condition",
+   "exposed": "HSCT prior to GO",
+   "reference": "No prior HSCT",
+   "outcome": "VOD",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761060Orig1s000Orig1Orig2s000MedR.pdf",
+   "ocr": false,
+   "rr": 2.6,
+   "ci": [
+    1.43264706231559,
+    4.718538276324526
+   ],
+   "log_rr": 0.9555114450274363,
+   "var": 0.09246179780908159,
+   "key_exposed": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    -1.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "flag": false
+  },
+  {
+   "id": "go_hepimp_vod_or",
+   "adc": "gemtuzumab-ozogamicin",
+   "characteristic": "hepatic",
+   "exposed": "Moderate/severe hepatic impairment at baseline",
+   "reference": "None/mild hepatic impairment at baseline",
+   "outcome": "VOD",
+   "outcome_rank": 3,
+   "basis": "label_basis",
+   "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761060Orig1s000Orig1Orig2s000MedR.pdf",
+   "ocr": false,
+   "rr": 8.699999999999998,
+   "ci": [
+    1.8888214961456409,
+    40.07260620151464
+   ],
+   "log_rr": 2.163323025660538,
+   "var": 0.6072623198082692,
+   "key_exposed": [
+    2.0,
+    2.0,
+    0.0,
+    0.0
+   ],
+   "key_reference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "flag": true
+  }
+ ],
+ "all": {
+  "k": 51,
+  "flagged": {
+   "k": 20,
+   "rr": 1.3313969611006256,
+   "ci": [
+    1.1697486141678763,
+    1.5153836017057112
+   ],
+   "tau2": 0.025526583885259788
+  },
+  "not_flagged": {
+   "k": 31,
+   "rr": 1.1479276999674448,
+   "ci": [
+    1.0660973337620734,
+    1.2360391144610392
+   ],
+   "tau2": 0.019008496929747824
+  },
+  "sign_agreement": 0.4117647058823529,
+  "flag_effect": {
+   "ratio_of_rr": 1.153496898763666,
+   "ci": [
+    0.9985843435191375,
+    1.3324413747248935
+   ],
+   "tau2": 0.020369303705528568,
+   "flags_match_excess": false
+  }
+ },
+ "post_approval": {
+  "k": 15,
+  "flagged": {
+   "k": 9,
+   "rr": 1.261928224880756,
+   "ci": [
+    1.044675705754883,
+    1.5243609437629084
+   ],
+   "tau2": 0.022208801061409624
+  },
+  "not_flagged": {
+   "k": 6,
+   "rr": 1.160492152696177,
+   "ci": [
+    1.0304275437197656,
+    1.3069740271186556
+   ],
+   "tau2": 0.01071396703431666
+  },
+  "sign_agreement": 0.4666666666666667,
+  "flag_effect": {
+   "ratio_of_rr": 1.0805956566871473,
+   "ci": [
+    0.8728981054737094,
+    1.337712805113078
+   ],
+   "tau2": 0.0134968541155087,
+   "flags_match_excess": false
+  }
+ },
+ "no_ocr": {
+  "k": 38,
+  "flagged": {
+   "k": 14,
+   "rr": 1.386609411282805,
+   "ci": [
+    1.1675523179786593,
+    1.646766170433135
+   ],
+   "tau2": 0.032533487849975
+  },
+  "not_flagged": {
+   "k": 24,
+   "rr": 1.1801116937939737,
+   "ci": [
+    1.0771502105088975,
+    1.2929149493192047
+   ],
+   "tau2": 0.025621011782080743
+  },
+  "sign_agreement": 0.39473684210526316,
+  "flag_effect": {
+   "ratio_of_rr": 1.1679001130210613,
+   "ci": [
+    0.9676510613421285,
+    1.4095893948617775
+   ],
+   "tau2": 0.02675800689713287,
+   "flags_match_excess": false
+  }
+ },
+ "by_characteristic": {
+  "condition": {
+   "k": 14,
+   "flagged": {
+    "k": 11,
+    "rr": 1.2514673600550719,
+    "ci": [
+     1.0069030736945088,
+     1.5554332827058008
+    ],
+    "tau2": 0.050122703951246544
+   },
+   "not_flagged": null,
+   "sign_agreement": 0.5714285714285714,
+   "flag_effect": null
+  },
+  "crcl": {
+   "k": 20,
+   "flagged": null,
+   "not_flagged": {
+    "k": 16,
+    "rr": 1.109411570169183,
+    "ci": [
+     1.023850730271066,
+     1.2021225317672988
+    ],
+    "tau2": 0.008154834935633444
+   },
+   "sign_agreement": 0.35,
+   "flag_effect": null
+  },
+  "hepatic": {
+   "k": 15,
+   "flagged": null,
+   "not_flagged": {
+    "k": 11,
+    "rr": 1.1366823650003044,
+    "ci": [
+     0.9796870503365951,
+     1.3188362533308688
+    ],
+    "tau2": 0.031795524061293726
+   },
+   "sign_agreement": 0.3333333333333333,
+   "flag_effect": null
+  },
+  "ugt1a1": {
+   "k": 2,
+   "flagged": null,
+   "not_flagged": null,
+   "sign_agreement": 0.5,
+   "flag_effect": null
+  }
+ },
+ "note": "Tool keys are (worst restriction tier, settled tier, B, Wn) from ml/recommend.py. label_basis contrasts are not independent of the label rules."
+}

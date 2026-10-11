@@ -79,6 +79,8 @@ rules:
      quote: "mild or moderate renal impairment (creatinine clearance [CLcr] 30–89 mL/min calculated by the Cockcroft-Gault equation) or mild hepatic impairment had no clinically significant effect on the pharmacokinetics of gemtuzumab ozogamicin."}
   - {adc: gemtuzumab-ozogamicin, domain: hepatic, category: monitor, section: "5.1", when: {condition: [hepatic_vod_history, cirrhosis, chronic_liver_disease]},
      quote: "Patients who had moderate/severe hepatic impairment prior to treatment with MYLOTARG were 8.7 times more likely to develop VOD compared to patients without moderate/severe hepatic impairment at baseline."}
+  - {adc: gemtuzumab-ozogamicin, domain: hepatic, category: monitor, section: "5.1", when: {condition: [prior_hsct]},
+     quote: "Based on an analysis across trials, the risk of VOD was higher in adult patients who received higher doses of MYLOTARG as monotherapy, in patients with moderate or severe hepatic impairment prior to receiving MYLOTARG, in patients treated with MYLOTARG after HSCT, and in patients who underwent HSCT after treatment with MYLOTARG."}
   - {adc: gemtuzumab-ozogamicin, domain: qt, category: monitor, section: "5.4", when: {condition: [qt_prolongation]},
      quote: "When administering MYLOTARG to patients who have a history of or predisposition for QTc prolongation, who are taking medicinal products that are known to prolong QT interval, and in patients with electrolyte disturbances, obtain electrocardiograms (ECGs) and electrolytes prior to the start of treatment and as needed during administration."}
 
@@ -91,6 +93,8 @@ rules:
      quote: "There is limited safety information available in patients with total bilirubin greater than 1.5 × ULN and/or AST/ALT greater than 2.5 × ULN prior to dosing."}
   - {adc: inotuzumab-ozogamicin, domain: hepatic, category: monitor, section: "5.1", when: {condition: [hepatic_vod_history, cirrhosis, chronic_liver_disease]},
      quote: "Patients who have experienced prior VOD or have serious ongoing hepatic liver disease (e.g., cirrhosis, nodular regenerative hyperplasia, active hepatitis) are at an increased risk for worsening of liver disease, including developing VOD, following treatment with BESPONSA."}
+  - {adc: inotuzumab-ozogamicin, domain: hepatic, category: monitor, section: "5.1", when: {condition: [prior_hsct]},
+     quote: "Other risk factors for VOD in patients treated with BESPONSA included ongoing or prior liver disease, prior HSCT, increased age, later salvage lines, and a greater number of BESPONSA treatment cycles."}
   - {adc: inotuzumab-ozogamicin, domain: renal, category: no_adjustment, section: "12.3", when: {crcl_ge: 15, esrd: false},
      quote: "The clearance of inotuzumab ozogamicin in patients with mild renal impairment (creatinine clearance [CLcr; based on the Cockcroft-Gault formula] 60–89 mL/min; n=237), moderate renal impairment (CLcr 30–59 mL/min; n=122), or severe renal impairment (CLcr 15–29 mL/min; n=4) was similar to patients with normal renal function (CLcr ≥ 90 mL/min; n=402)."}
   - {adc: inotuzumab-ozogamicin, domain: renal, category: insufficient_data, section: "12.3", when: {esrd: true},

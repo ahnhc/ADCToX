@@ -41,8 +41,12 @@ def _collapse(s): return re.sub(r"\s+", " ", s).strip()
 def _num_in(x, quote):
     """the stated number appears in the quote as a token (57, 57.0, 57%, (57) ...)."""
     if x is None or x == "": return True
-    v = float(x); forms = {f"{v:g}", f"{v:.1f}", str(x)}
-    return any(re.search(rf"(?<![\d.]){re.escape(f)}(?![\d])", quote) for f in forms)
+    v = float(x); forms = {f"{v:g}", f"{v:.1f}", f"{v:.2f}", f"{v:.3f}", str(x)}       # YAML drops trailing zeros (1.90 -> 1.9)
+    q = re.sub(r"(?<=\d),(?=\d{3}\b)", "", quote)                                       # thousands separators (1,581)
+    return any(re.search(rf"(?<![\d.]){re.escape(f)}(?![\d])", q) for f in forms)
+
+
+N_IN_SOURCE = False       # post hoc (added after the first run): accept an n printed anywhere in the source (table headers), not only in the quote
 
 
 def check(rec):
@@ -60,7 +64,7 @@ def check(rec):
         if not s.get("n"): return f"{side} n missing"
         if s.get("events") in (None, "") and s.get("pct") in (None, ""): return f"{side} events/% missing"
         for k in ("n", "events", "pct"):
-            if not _num_in(s.get(k), q): return f"{side} {k} not in quote"
+            if not _num_in(s.get(k), q) and not (k == "n" and N_IN_SOURCE and _num_in(s.get(k), text)): return f"{side} {k} not in quote"
     return None
 
 
@@ -143,7 +147,7 @@ def main(paths, out=None):
         contrasts.append(dict(id=r["id"], adc=r["adc"], characteristic=r["characteristic"], exposed=r["exposed"]["label"], reference=r["reference"]["label"],
                               outcome=r["outcome"], outcome_rank=r["outcome_rank"], basis=r["basis"], source=r["source_url"], ocr=bool(r.get("ocr")),
                               rr=math.exp(lr), ci=[math.exp(lr - 1.96 * math.sqrt(v)), math.exp(lr + 1.96 * math.sqrt(v))], log_rr=lr, var=v,
-                              key_exposed=list(ke), key_reference=list(kr), flag=ke > kr))
+                              key_exposed=[float(x) for x in ke], key_reference=[float(x) for x in kr], flag=bool(ke > kr)))
     res = dict(records=len(recs), passed=len(ok), dropped=dropped, contrasts=contrasts, all=analyse(contrasts),
                post_approval=analyse([c for c in contrasts if c["basis"] == "post_approval"]),
                no_ocr=analyse([c for c in contrasts if not c["ocr"]]),
@@ -152,7 +156,8 @@ def main(paths, out=None):
     print(f"{len(recs)} records, {len(ok)} pass the quote check, {len(contrasts)} contrasts")
     for c in sorted(contrasts, key=lambda c: (c["adc"], c["characteristic"])):
         print(f"  {'FLAG' if c['flag'] else '    '} {c['adc'][:22]:22s} {c['exposed'][:38]:38s} vs {c['reference'][:24]:24s} {c['outcome'][:28]:28s} RR {c['rr']:.2f} [{c['ci'][0]:.2f}, {c['ci'][1]:.2f}] {c['basis']}")
-    for name, a in [("all", res["all"]), ("post_approval", res["post_approval"]), ("no_ocr", res["no_ocr"])] + list(res["by_characteristic"].items()):; print(f"{name}: k={a['k']}, sign agreement {a['sign_agreement']}")
+    for name, a in [("all", res["all"]), ("post_approval", res["post_approval"]), ("no_ocr", res["no_ocr"])] + list(res["by_characteristic"].items()):
+        print(f"{name}: k={a['k']}, sign agreement {a['sign_agreement']}")
         for g in ("flagged", "not_flagged"):
             if a[g]: print(f"   {g}: pooled RR {a[g]['rr']:.2f} [{a[g]['ci'][0]:.2f}, {a[g]['ci'][1]:.2f}] (k={a[g]['k']})")
         if a["flag_effect"]: e = a["flag_effect"]; print(f"   flagged / not flagged: {e['ratio_of_rr']:.2f} [{e['ci'][0]:.2f}, {e['ci'][1]:.2f}] -> {'flags match excess' if e['flags_match_excess'] else 'not shown'}")
@@ -161,6 +166,8 @@ def main(paths, out=None):
 
 
 if __name__ == "__main__":
-    a = sys.argv[1:]; out = a[a.index("--out") + 1] if "--out" in a else None
+    a = sys.argv[1:]
+    if "--n-in-source" in a: N_IN_SOURCE = True; a.remove("--n-in-source")
+    out = a[a.index("--out") + 1] if "--out" in a else None
     paths = [x for i, x in enumerate(a) if x != "--out" and (i == 0 or a[i - 1] != "--out")] or [R + "conf/subgroup_evidence.yaml"]
     main(paths, out)
