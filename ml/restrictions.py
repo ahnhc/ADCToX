@@ -183,6 +183,24 @@ def _top(entries, ko=False):
     return "; ".join(f"{(TABLE if ko else SHORT)[c]} ({', '.join(ds)})" for c, ds in sorted(groups.items(), key=lambda kv: -CATS.index(kv[0])))
 
 
+def summary_parts(v):
+    """[(category, [domains], settled)] behind summary(): every domain at the top settled tier, then every domain at the top
+    tier a missing value could still reach."""
+    def top(entries):
+        per = {}
+        for c, d in entries:
+            if d not in per or TIER[c] > TIER[per[d]] or (TIER[c] == TIER[per[d]] and CATS.index(c) > CATS.index(per[d])): per[d] = c
+        if not per: return []
+        hi = max(TIER[c] for c in per.values()); g = {}
+        for d, c in sorted(per.items()):
+            if TIER[c] == hi: g.setdefault(c, []).append(d)
+        return sorted(g.items(), key=lambda kv: -CATS.index(kv[0]))
+    known = [(c, r["domain"]) for c, r in v.known] + [("no_statement", d) for d, sure in v.silent if sure]
+    possible = [(c, r["domain"]) for c, r in v.possible if TIER[c] > v.worst_known] + \
+               [("no_statement", d) for d, sure in v.silent if not sure and TIER["no_statement"] > v.worst_known]
+    return [(c, ds, True) for c, ds in top(known)] + [(c, ds, False) for c, ds in top(possible)]
+
+
 def summary(v, ko=False):          # ko: the short table words (TABLE), no section numbers
     """short cell text: the most restrictive known verdict for EVERY domain that reaches it, then what a missing test could
     still make it (again every domain at that tier). A domain the label is silent on counts as 'No label statement'."""

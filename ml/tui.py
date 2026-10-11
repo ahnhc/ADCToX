@@ -182,7 +182,8 @@ def browse(title, lines, selectable, details, footer=""):
         except curses.error: pass
         while True:
             h, w = scr.getmaxyx(); scr.clear()          # full repaint: the panel height changes with the row
-            S.put(0, 1, title, S.title); S.put(1, 1, "↑↓ 또는 클릭: 이유 보기   PgUp 이전 단계   PgDn 다음", S.dim)
+            if title: S.put(0, 1, title, S.title)
+            S.put(0, 1, "↑↓ / 클릭   PgUp 이전   PgDn 다음", S.dim)
             out = []
             for ln in details[cur]: out += [ln] if ln[:1] in "┌│├└\x1b" else _wrap(ln, max(20, w - 3))      # table lines are not wrapped
             panel = min(len(out) + 1, max(8, int(h * 0.45))); area = max(3, h - panel - 3); y0 = 2

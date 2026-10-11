@@ -208,7 +208,7 @@ def checks(ids, E, V):
             names = [E[a]["name"] for a in sorted(E) if c.get("headings") and any(re.search(c["headings"], h.lower()) for o in E[a]["organs"].values() for _, h in o["headings"])]
             out.append((c["test"], names, c["source"]))
     need = sorted({m for v in V.values() for m in v.missing})
-    if need: out.append(("enter " + "; ".join(need) + " to settle the '?' restrictions", [], None))
+    if need: out.append(("enter " + "; ".join(need) + " to settle the restrictions that are not yet certain", [], None))
     return out
 
 
@@ -224,7 +224,21 @@ def _inc_text(o):
     x = o["inc"]; return f"G>=3 {x['pct']:g}% {x['term'].rstrip('*†‡§¶#^±※♦àèðþýßø0123456789, ')}" + (" [combo]" if x["combo"] else "") + (" [lab]" if x["lab"] else "")
 
 
-def _table(rows, paint=lambda t, c: t):
+TONE = {"contraindicated": "31", "avoid": "31", "insufficient_data": "33", "no_statement": "33", "reduce_dose": "36", "monitor": "36", "no_adjustment": "32"}
+
+
+def _restriction_cell(v, paint, color):
+    """-> (plain text, painted text). Settled verdicts bold; ones a missing value could reach plain (with '?' only without colour)."""
+    parts = RS.summary_parts(v)
+    if not parts: return "-", "-"
+    plain, out = [], []
+    for c, ds, sure in parts:
+        txt = f"{RS.TABLE[c]}{'' if sure or color else '?'} ({', '.join(ds)})"
+        plain.append(txt); out.append(paint(txt, TONE[c] + (";1" if sure else "")))
+    return "  ".join(plain), "  ".join(out)
+
+
+def _table(rows, paint=lambda t, c: t, color=False):
     """-> (table lines, index of the line of each row)."""
     tone = {4: "31;1", 3: "31", 2: "33", 1: "36", 0: "32", -1: ""}
     org_txt = lambda xs: ", ".join(EN[a] for a in xs) or "-"
@@ -232,8 +246,8 @@ def _table(rows, paint=lambda t, c: t):
     cells, prev_rank, starts = [], None, set()
     for i, r in enumerate(rows):
         if r["rank"] != prev_rank and i: starts.add(i)
-        rk = "" if prev_rank == r["rank"] else str(r["rank"]); prev_rank = r["rank"]; rc = "33" if "?" in r["restriction"] else tone[max(r["verdict"].worst_known, -1)]
-        cells.append([(rk, ""), (r["name"][:26], ""), (r["restriction_ko"], rc), (org_txt(r["boxed"]), "31" if r["boxed"] else ""),
+        rk = "" if prev_rank == r["rank"] else str(r["rank"]); prev_rank = r["rank"]; rplain, rpaint = _restriction_cell(r["verdict"], paint, color)
+        cells.append([(rk, ""), (r["name"][:26], ""), (rplain, rpaint), (org_txt(r["boxed"]), "31" if r["boxed"] else ""),
                       (org_txt(r["warn"]), "33" if r["warn"] else ""), (org_txt(r["elsewhere"]), "90")])
     wd = [max([_width(head[c])] + [_width(row[c][0]) for row in cells]) for c in range(len(head))]
     wd[5] = max(wd[5], len("Other organs")); span = wd[3] + wd[4] + 3
@@ -247,7 +261,8 @@ def _table(rows, paint=lambda t, c: t):
     thin = "├" + "┼".join("╌" * (x + 2) for x in wd) + "┤"; at = []
     for i, row in enumerate(cells):
         if i in starts: out.append(paint(thin, "90"))
-        at.append(len(out)); out.append("│ " + " │ ".join(paint(pl, c) + " " * (x - _width(pl)) for (pl, c), x in zip(row, wd)) + " │")
+        cell = lambda pl, c, j: (c if j == 2 else paint(pl, c))                       # column 2 arrives already painted
+        at.append(len(out)); out.append("│ " + " │ ".join(cell(pl, c, j) + " " * (x - _width(pl)) for j, ((pl, c), x) in enumerate(zip(row, wd))) + " │")
     out.append(line("└", "┴", "┘"))
     return out, at
 
@@ -278,29 +293,26 @@ def reason_rows(r):
         kn, po = doms.get(d, ([], []))
         top = max([RS.TIER[c] for c, _ in kn] + [-1]); po = [x for x in po if RS.TIER[x[0]] > top]
         if kn:
-            c, rr = max(kn, key=lambda x: RS.TIER[x[0]]); out.append((d, RS.TABLE[c], _when(rr["when"]) or "-"))
-        elif d in silent and silent[d]: out.append((d, "No data", "label says nothing for this patient"))
+            c, rr = max(kn, key=lambda x: RS.TIER[x[0]]); out.append((d, RS.TABLE[c], _when(rr["when"]) or "-", c, True))
+        elif d in silent and silent[d]: out.append((d, "No data", "label says nothing for this patient", "no_statement", True))
         if po or (d in silent and not silent[d]):
             c, rr = max(po, key=lambda x: RS.TIER[x[0]]) if po else ("no_statement", None)
             cond = _when(rr["when"]) if rr else ""
-            out.append((d, RS.TABLE[c] + "?", (f"{cond}이면 {RS.TABLE[c]} · " if cond else "") + f"입력: {RS.NEEDS.get(d, d)}"))
+            out.append((d, RS.TABLE[c], (f"{cond}이면 {RS.TABLE[c]} · " if cond else "") + f"입력: {RS.NEEDS.get(d, d)}", c, False))
     return out
-
-
-STATUS_TONE = {"Contraindicated": "31;1", "Avoid": "31", "Unclear": "33", "No data": "33", "Reduce dose": "36", "Monitor": "36", "Clear": "32"}
 
 
 def reasons(r, checks_=(), color=True):
     """the bottom panel for one row: a small table drawn like the result table (same borders, same colours), then the checks
     that concern this drug."""
-    rows = reason_rows(r); out = [r["name"]]
-    tone = lambda s: "33" if s.endswith("?") else STATUS_TONE.get(s, "")
+    rows = [x[:3] for x in reason_rows(r)]; meta = [x[3:] for x in reason_rows(r)]; out = [r["name"]]
     paint = (lambda s, c: f"\033[{c}m{s}\033[0m" if c else s) if color else (lambda s, c: s)
     if rows:
         head = ("Organ", "Status", "Basis"); wd = [max(_width(x[i]) for x in rows + [head]) for i in range(3)]
         pad = lambda s, n: s + " " * (n - _width(s)); line = lambda l, m, e: l + m.join("─" * (x + 2) for x in wd) + e
         out += [line("┌", "┬", "┐"), "│ " + " │ ".join(pad(h, x) for h, x in zip(head, wd)) + " │", line("├", "┼", "┤")]
-        out += ["│ " + " │ ".join(paint(pad(c, x), tone(c) if i == 1 else "") for i, (c, x) in enumerate(zip(row, wd))) + " │" for row in rows] + [line("└", "┴", "┘")]
+        out += ["│ " + " │ ".join(paint(pad(c, x), (TONE[m[0]] + (";1" if m[1] else "")) if i == 1 else "") for i, (c, x) in enumerate(zip(row, wd))) + " │"
+                for row, m in zip(rows, meta)] + [line("└", "┴", "┘")]
     else: out.append("이 환자에게 해당하는 투여 제한 없음")
     mine = [test for test, names, _ in checks_ if not names or r["name"] in names]
     if mine: out += ["투여 전 확인"] + [f"  - {x}" for x in mine]
@@ -310,8 +322,8 @@ def reasons(r, checks_=(), color=True):
 def browse(rows, checks_=()):
     """interactive view of the result table (terminal only): pick a row to read why it has its restriction."""
     import tui
-    lines, at = _table(rows, lambda t, c: f"\033[{c}m{t}\033[0m" if c else t)
-    return tui.browse("결과 · 행을 고르면 아래에 이유가 나옵니다", lines, at, [reasons(r, checks_) for r in rows])
+    lines, at = _table(rows, lambda t, c: f"\033[{c}m{t}\033[0m" if c else t, color=True)
+    return tui.browse("", lines, at, [reasons(r, checks_) for r in rows])
 
 
 def render(rows, s, notes, checks_, detail=False, color=None):
@@ -330,12 +342,12 @@ def render(rows, s, notes, checks_, detail=False, color=None):
         nm = lambda c: _reg[c]["label"] if c in _reg else c; w = max(len(nm(c)) for _, c, _ in prio)
         for lvl, c, orgs in prio: print(f"  {lvl}  {nm(c):<{w}}  {', '.join(EN[a] for a in orgs)}")
     print()
-    lines, _ = _table(rows, paint)
+    lines, _ = _table(rows, paint, color)
     for ln in lines: print(ln)
     if checks_:
         print("\n투여 전 확인")
         for test, names, src in checks_:
-            print(f"  - {test}" + (f"\n      most relevant: {', '.join(names)}" if names else "") + (f"\n      source: {src}" if src else ""))
+            print(f"  - {test}" + (f"\n      most relevant: {', '.join(names)}" if names else ""))
     if detail:
         print("\nLabel evidence on your organs")
         for r in rows:
