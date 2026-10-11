@@ -20,7 +20,6 @@ import json, re, sys, csv, warnings
 import numpy as np, pandas as pd
 warnings.filterwarnings("ignore")
 sys.path.insert(0, "/home/hyeongchanahn/CONI/src"); sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/src")
-from adctox.validation.label_change import parse_version
 sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")
 import matcher as M
 from matcher import AXES, DOM, auroc, C, R
@@ -28,25 +27,25 @@ DM = "/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07/"
 W_BOXED, W_SEC5, W_INC = 1.0, 0.6, 0.4
 
 def warnings_table():
-    man = json.load(open(DM + "_manifest.json"))["agents"]; rows = {}
-    for agent in man:
-        files = sorted(int(re.search(r"v(\d+)\.html", f).group(1)) for f in __import__("os").listdir(DM + agent) if re.match(r"v\d+\.html", f))
-        v = files[-1]; lv = parse_version(__import__("pathlib").Path(DM + f"{agent}/v{v}.html"), agent, v, None)
+    """(t, kind, version) per ADC from the label headings; every organ a heading names counts (drug_evidence.warnings)."""
+    import drug_evidence as DE
+    rows = {}
+    for adc, w in DE.warnings().items():
         t = np.zeros(len(AXES)); kind = {}
-        for a, heads in lv.axes.items():
-            if a in AXES: t[AXES.index(a)] = max(t[AXES.index(a)], W_SEC5); kind[a] = "W&P"
-        for a in lv.boxed_axes:
-            if a in AXES: t[AXES.index(a)] = W_BOXED; kind[a] = "boxed"
-        rows[agent.replace("_", "-")] = (t, kind, v)
+        for a, e in w["axes"].items():
+            if a in AXES: t[AXES.index(a)] = W_BOXED if e["level"] == "boxed" else W_SEC5; kind[a] = "boxed" if e["level"] == "boxed" else "W&P"
+        rows[adc] = (t, kind, w["version"])
     return rows
 
 def incidence_table():
     t = pd.read_pickle(C + "tox.pkl"); ms = pd.read_pickle(C + "master.pkl").drop_duplicates("ADC ID").set_index("ADC ID")
     L = t[(t["Canonical observation"].astype(str) == "True") & (t["Source type"] == "Regulatory label via DailyMed")].copy()
     L["pct"] = pd.to_numeric(L["Incidence percent"], errors="coerce"); L = L.dropna(subset=["pct"]); L["term"] = L["Raw AE term"].astype(str).str.lower().str.strip()
-    cum = L[L["Grade category"].isin(["Grade 3-4", "Grade >=3"])].groupby(["ADC ID", "term", "Toxicity domain"]).pct.max()
-    part = L[L["Grade category"].isin(["Grade 3", "Grade 4"])].groupby(["ADC ID", "term", "Toxicity domain"]).pct.sum()
-    both = pd.concat([cum, part]).groupby(level=[0, 1, 2]).max().rename("r").reset_index()
+    L["table"] = L["Source table"].astype(str).str.replace(r";\s*row \d+$", "", regex=True)
+    key = ["ADC ID", "table", "term", "Toxicity domain"]                       # Grade 3 + Grade 4 are added only within one table (not across trials)
+    cum = L[L["Grade category"].isin(["Grade 3-4", "Grade >=3"])].groupby(key).pct.max()
+    part = L[L["Grade category"].isin(["Grade 3", "Grade 4"])].groupby(key).pct.sum()
+    both = pd.concat([cum, part]).groupby(level=[0, 1, 2, 3]).max().rename("r").reset_index()
     both["axis"] = both["Toxicity domain"].astype(str).str.split(" / ").str[0].map(DOM)
     inc = both.dropna(subset=["axis"]).groupby(["ADC ID", "axis"]).r.max().unstack().reindex(columns=AXES).fillna(0.0) / 100.0
     return inc, ms

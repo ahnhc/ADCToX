@@ -83,6 +83,7 @@ NOT_AN_ORGAN = re.compile(
 )
 
 _SEC5 = re.compile(r"^\s*5\.(\d+)\s+(.*)$")
+_SEC5_TITLE = re.compile(r"^\s*WARNINGS?\s+AND\s+PRECAUTIONS\b", re.IGNORECASE)
 _WS = re.compile(r"\s+")
 
 
@@ -95,6 +96,22 @@ def axis_for_heading(heading: str) -> str | None:
         if re.search(pattern, text):
             return axis
     return None
+
+
+def axes_for_heading(heading: str) -> list[str]:
+    """Every organ axis a heading names, in table order.
+
+    ``axis_for_heading`` keeps the first match because the label-change diff counts one
+    axis per heading; a scorer that needs every organ a warning touches uses this.
+    """
+    text = _WS.sub(" ", heading).strip().lower()
+    if NOT_AN_ORGAN.search(text):
+        return []
+    out: list[str] = []
+    for pattern, axis in HEADING_TO_AXIS:
+        if axis not in out and re.search(pattern, text):
+            out.append(axis)
+    return out
 
 
 @dataclass
@@ -115,7 +132,9 @@ def parse_version(path: Path, agent: str, version: int, date: str | None) -> Lab
     boxed = None
     for h1 in doc.xpath("//h1"):
         text = _WS.sub(" ", h1.text_content()).strip()
-        if text.upper().startswith("WARNING"):
+        # "WARNINGS AND PRECAUTIONS" is section 5's own heading, not a boxed warning; labels
+        # without a box (datopotamab, loncastuximab, ...) put it in an <h1> too.
+        if text.upper().startswith("WARNING") and not _SEC5_TITLE.match(text):
             boxed = text
             break
 
@@ -140,7 +159,9 @@ def parse_version(path: Path, agent: str, version: int, date: str | None) -> Lab
     if boxed:
         # A boxed warning headline can name several organs at once, e.g.
         # "INTERSTITIAL LUNG DISEASE and EMBRYO-FETAL TOXICITY".
-        for part in re.split(r"\band\b|,|;", boxed[len("WARNING"):].lstrip(": ")):
+        # Case-insensitive: boxed headlines are upper case ("NEUTROPENIA AND DIARRHEA"), and a
+        # case-sensitive split read that headline as neutropenia alone.
+        for part in re.split(r"\band\b|,|;", boxed[len("WARNING"):].lstrip(": "), flags=re.IGNORECASE):
             axis = axis_for_heading(part)
             if axis and axis not in boxed_axes:
                 boxed_axes.append(axis)

@@ -1,0 +1,49 @@
+# Tests a condition calls for before any ADC is chosen. Printed as a checklist; never scored.
+# `headings` (optional) lists the ADCs whose label section-5 / boxed headings match, so the check names
+# the drugs it matters most for. `source` says where the check comes from; label-derived checks cite the
+# label section, the rest cite the guideline.
+checks:
+  - conditions: [hepatitis_b_chronic]
+    test: "HBsAg, anti-HBc, HBV DNA; antiviral prophylaxis during systemic anticancer therapy and for at least 12 months after"
+    source: "ASCO provisional clinical opinion on HBV screening and management (Hwang et al., J Clin Oncol 2020;38:3698-3715)"
+  - conditions: [hepatitis_c_chronic]
+    test: "HCV RNA; hepatology input before hepatotoxic therapy"
+    source: "general practice; no label in this set addresses HCV"
+  - conditions: [itp, thrombocytopenia]
+    test: "current platelet count and bleeding history"
+    headings: "thrombocytopeni|hemorrhage|haemorrhage|bleeding|myelosuppress|hematologic"
+    source: "label section 5 headings of the ADCs listed"
+  - conditions: [neutropenia_chronic, mds, prior_hsct, anaemia_chronic]
+    test: "complete blood count (ANC, haemoglobin, platelets)"
+    headings: "neutropeni|myelosuppress|hematologic|thrombocytopeni"
+    source: "label section 5 headings of the ADCs listed"
+  - conditions: [heart_failure, reduced_lvef, prior_anthracycline, coronary_artery_disease]
+    test: "baseline LVEF (echocardiogram or MUGA)"
+    headings: "left ventricular|cardiac|cardiomyopath"
+    source: "label section 5 headings of the ADCs listed"
+  - conditions: [qt_prolongation]
+    test: "baseline ECG (QTc) and electrolytes; review QT-prolonging co-medication"
+    headings: "qt interval"
+    source: "label section 5 headings of the ADCs listed"
+  - conditions: [ckd_stage_3, ckd_stage_4_5, dialysis]
+    test: "creatinine clearance by Cockcroft-Gault (the labels' measure; eGFR is not the same quantity)"
+    source: "label sections 8.6 / 12.3"
+  - conditions: [chronic_liver_disease, cirrhosis, nafld, hepatitis_b_chronic, hepatitis_c_chronic, hepatic_vod_history]
+    test: "total bilirubin and AST (x ULN); Child-Pugh class if cirrhotic"
+    source: "label sections 8.7 / 8.6 / 12.3"
+  - conditions: [keratopathy_history, dry_eye, glaucoma, prior_corneal_surgery]
+    test: "ophthalmic exam (visual acuity, slit lamp) before starting an ADC with an ocular warning"
+    headings: "ocular|keratopath|corneal|eye|visual"
+    source: "label section 5 headings of the ADCs listed"
+  - conditions: [interstitial_lung_disease, pulmonary_fibrosis, copd, prior_chest_radiation]
+    test: "baseline chest imaging and pulmonary function"
+    headings: "interstitial lung|pneumonitis|pulmonary tox"
+    source: "label section 5 headings of the ADCs listed"
+  - conditions: [peripheral_neuropathy, diabetic_neuropathy]
+    test: "baseline neuropathy grade"
+    headings: "peripheral neuropath|neurotox"
+    source: "label section 5 headings of the ADCs listed"
+  - conditions: [type_2_diabetes, diabetic_neuropathy]
+    test: "HbA1c and glucose"
+    headings: "hyperglyc"
+    source: "label section 5 headings of the ADCs listed"

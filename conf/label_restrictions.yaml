@@ -1,0 +1,234 @@
+# Use restrictions read off the approved US labels (DailyMed snapshot 2026-10-07), kept OUT of the
+# risk score: a restriction is shown next to the score and decides the order first; it is never
+# averaged with organ burdens.
+#
+# One rule = one label sentence. `quote` is verbatim (whitespace collapsed) and
+# tests/test_ml_recommender.py fails if it is not found in that label, so a rule cannot drift from
+# its source. Rules were extracted by hand from sections 4, 8.6, 8.7, 2 (dose modification) and,
+# where section 8 is silent, 12.3; every rule was read against the full label text.
+#
+# category (most to least restrictive):
+#   contraindicated    section 4 says the drug must not be used
+#   avoid              the label says "avoid" / "should be avoided"
+#   insufficient_data  the label says not studied / unknown / not established / limited data /
+#                      no recommendation can be made
+#   monitor            usable, with monitoring or caution the label spells out
+#   no_adjustment      the label says no dose adjustment is needed
+# A renal or hepatic question that no rule answers is reported as "no label statement", which ranks
+# with insufficient_data: silence is not evidence of safety.
+#
+# when: every key must hold. Patient values the user did not enter are unknown; the program then
+# shows every category the rule set allows instead of guessing a value from a diagnosis.
+#   crcl_lt / crcl_ge     Cockcroft-Gault creatinine clearance, mL/min
+#   esrd                  end-stage renal disease (dialysis counts as ESRD)
+#   bili_gt / bili_le     total bilirubin, x ULN
+#   ast_gt / ast_le       AST, x ULN
+#   child_pugh            list of classes (A/B/C)
+#   lvef_lt / lvef_ge     baseline LVEF, %
+#   condition             any of these registry ids is present
+#   ugt1a1_28_homozygous  true
+#   always                applies to every patient (a required test, not a restriction)
+snapshot: dailymed/2026-10-07
+rules:
+  # ------------------------------------------------------------------ brentuximab vedotin (ADCETRIS v38)
+  - {adc: brentuximab-vedotin, domain: renal, category: avoid, section: "8.6", when: {crcl_lt: 30},
+     quote: "Avoid the use of ADCETRIS in patients with severe renal impairment (CrCL <30 mL/min)"}
+  - {adc: brentuximab-vedotin, domain: renal, category: avoid, section: "8.6", when: {esrd: true},
+     quote: "Avoid the use of ADCETRIS in patients with severe renal impairment (CrCL <30 mL/min)"}
+  - {adc: brentuximab-vedotin, domain: renal, category: no_adjustment, section: "8.6", when: {crcl_ge: 30},
+     quote: "No dosage adjustment is required for mild (CrCL >50–80 mL/min) or moderate (CrCL 30–50 mL/min) renal impairment."}
+  - {adc: brentuximab-vedotin, domain: hepatic, category: avoid, section: "8.7", when: {child_pugh: [B, C]},
+     quote: "Avoid the use of ADCETRIS in patients with moderate (Child-Pugh B) or severe (Child-Pugh C) hepatic impairment"}
+  - {adc: brentuximab-vedotin, domain: hepatic, category: monitor, section: "8.7", when: {child_pugh: [A]},
+     quote: "Dosage reduction is required in patients with mild (Child-Pugh A) hepatic impairment"}
+  - {adc: brentuximab-vedotin, domain: other, category: contraindicated, section: "4", when: {condition: [concomitant_bleomycin]},
+     quote: "Concomitant use with bleomycin due to pulmonary toxicity (4)."}
+
+  # ------------------------------------------------------------------ datopotamab deruxtecan (DATROWAY v18)
+  - {adc: datopotamab-deruxtecan, domain: renal, category: monitor, section: "8.6", when: {crcl_ge: 30, crcl_lt: 90},
+     quote: "A higher incidence of ILD/pneumonitis has been observed in patients with creatinine clearance (CLcr) 30 to <90 mL/min (estimated by Cockcroft Gault)"}
+  - {adc: datopotamab-deruxtecan, domain: renal, category: no_adjustment, section: "8.6", when: {crcl_ge: 90},
+     quote: "No dosage adjustment is recommended in patients with CLcr 30 to <90 mL/min"}
+  - {adc: datopotamab-deruxtecan, domain: renal, category: insufficient_data, section: "8.6", when: {crcl_lt: 30},
+     quote: "The pharmacokinetics of datopotamab deruxtecan-dlnk or DXd in patients with CLcr <30 mL/min is unknown."}
+  - {adc: datopotamab-deruxtecan, domain: renal, category: insufficient_data, section: "8.6", when: {esrd: true},
+     quote: "The pharmacokinetics of datopotamab deruxtecan-dlnk or DXd in patients with CLcr <30 mL/min is unknown."}
+  - {adc: datopotamab-deruxtecan, domain: hepatic, category: no_adjustment, section: "8.7", when: {bili_le: 1.5},
+     quote: "No dosage adjustment is recommended in patients with mild hepatic impairment (total bilirubin ≤ULN and any AST >ULN or total bilirubin >1 to 1.5 times ULN and any AST)."}
+  - {adc: datopotamab-deruxtecan, domain: hepatic, category: monitor, section: "8.7", when: {bili_gt: 1.5, bili_le: 3},
+     quote: "Monitor patients with moderate hepatic impairment (total bilirubin >1.5 to 3 times ULN and any AST) for increased adverse reactions"}
+  - {adc: datopotamab-deruxtecan, domain: hepatic, category: insufficient_data, section: "8.7", when: {bili_gt: 3},
+     quote: "The recommended dosage of DATROWAY has not been established for patients with severe hepatic impairment (total bilirubin >3 times ULN and any AST)"}
+
+  # ------------------------------------------------------------------ enfortumab vedotin (PADCEV v18)
+  - {adc: enfortumab-vedotin, domain: hepatic, category: avoid, section: "8.6", when: {bili_gt: 1.5},
+     quote: "Avoid the use of PADCEV in patients with moderate or severe hepatic impairment (total bilirubin >1.5 × ULN and any AST)."}
+  # 12.3 names renal impairment without a severity range and without dialysis; read as no adjustment for
+  # non-dialysis renal impairment only.
+  - {adc: enfortumab-vedotin, domain: renal, category: no_adjustment, section: "12.3", when: {esrd: false},
+     quote: "No clinically significant differences in the pharmacokinetics of the ADC or unconjugated MMAE were identified based on age (24 to 90 years), sex, race (White, Asian, or Black), renal impairment"}
+
+  # ------------------------------------------------------------------ gemtuzumab ozogamicin (MYLOTARG v19): no section 8.6/8.7
+  - {adc: gemtuzumab-ozogamicin, domain: renal, category: no_adjustment, section: "12.3", when: {crcl_ge: 30},
+     quote: "mild or moderate renal impairment (creatinine clearance [CLcr] 30–89 mL/min calculated by the Cockcroft-Gault equation) or mild hepatic impairment had no clinically significant effect on the pharmacokinetics of gemtuzumab ozogamicin."}
+  - {adc: gemtuzumab-ozogamicin, domain: renal, category: insufficient_data, section: "12.3", when: {crcl_lt: 30},
+     quote: "The pharmacokinetics of gemtuzumab ozogamicin in patients with severe renal impairment (CLcr 15–29 mL/min) or moderate (total bilirubin greater than 1.5× to 3.0× ULN) and severe hepatic impairment (total bilirubin greater than 3× ULN) is unknown."}
+  - {adc: gemtuzumab-ozogamicin, domain: hepatic, category: insufficient_data, section: "12.3", when: {bili_gt: 1.5},
+     quote: "The pharmacokinetics of gemtuzumab ozogamicin in patients with severe renal impairment (CLcr 15–29 mL/min) or moderate (total bilirubin greater than 1.5× to 3.0× ULN) and severe hepatic impairment (total bilirubin greater than 3× ULN) is unknown."}
+  - {adc: gemtuzumab-ozogamicin, domain: hepatic, category: no_adjustment, section: "12.3", when: {bili_le: 1.5},
+     quote: "mild or moderate renal impairment (creatinine clearance [CLcr] 30–89 mL/min calculated by the Cockcroft-Gault equation) or mild hepatic impairment had no clinically significant effect on the pharmacokinetics of gemtuzumab ozogamicin."}
+  - {adc: gemtuzumab-ozogamicin, domain: hepatic, category: monitor, section: "5.1", when: {condition: [hepatic_vod_history, cirrhosis, chronic_liver_disease]},
+     quote: "Patients who had moderate/severe hepatic impairment prior to treatment with MYLOTARG were 8.7 times more likely to develop VOD compared to patients without moderate/severe hepatic impairment at baseline."}
+  - {adc: gemtuzumab-ozogamicin, domain: qt, category: monitor, section: "5.4", when: {condition: [qt_prolongation]},
+     quote: "When administering MYLOTARG to patients who have a history of or predisposition for QTc prolongation, who are taking medicinal products that are known to prolong QT interval, and in patients with electrolyte disturbances, obtain electrocardiograms (ECGs) and electrolytes prior to the start of treatment and as needed during administration."}
+
+  # ------------------------------------------------------------------ inotuzumab ozogamicin (BESPONSA v8)
+  - {adc: inotuzumab-ozogamicin, domain: hepatic, category: no_adjustment, section: "8.6", when: {bili_le: 1.5, ast_le: 2.5},
+     quote: "No adjustment to the starting dose is required when administering BESPONSA to patients with total bilirubin less than or equal to 1.5 × ULN and AST/ALT less than or equal to 2.5 × ULN"}
+  - {adc: inotuzumab-ozogamicin, domain: hepatic, category: insufficient_data, section: "8.6", when: {bili_gt: 1.5},
+     quote: "There is limited safety information available in patients with total bilirubin greater than 1.5 × ULN and/or AST/ALT greater than 2.5 × ULN prior to dosing."}
+  - {adc: inotuzumab-ozogamicin, domain: hepatic, category: insufficient_data, section: "8.6", when: {ast_gt: 2.5},
+     quote: "There is limited safety information available in patients with total bilirubin greater than 1.5 × ULN and/or AST/ALT greater than 2.5 × ULN prior to dosing."}
+  - {adc: inotuzumab-ozogamicin, domain: hepatic, category: monitor, section: "5.1", when: {condition: [hepatic_vod_history, cirrhosis, chronic_liver_disease]},
+     quote: "Patients who have experienced prior VOD or have serious ongoing hepatic liver disease (e.g., cirrhosis, nodular regenerative hyperplasia, active hepatitis) are at an increased risk for worsening of liver disease, including developing VOD, following treatment with BESPONSA."}
+  - {adc: inotuzumab-ozogamicin, domain: renal, category: no_adjustment, section: "12.3", when: {crcl_ge: 15, esrd: false},
+     quote: "The clearance of inotuzumab ozogamicin in patients with mild renal impairment (creatinine clearance [CLcr; based on the Cockcroft-Gault formula] 60–89 mL/min; n=237), moderate renal impairment (CLcr 30–59 mL/min; n=122), or severe renal impairment (CLcr 15–29 mL/min; n=4) was similar to patients with normal renal function (CLcr ≥ 90 mL/min; n=402)."}
+  - {adc: inotuzumab-ozogamicin, domain: renal, category: insufficient_data, section: "12.3", when: {esrd: true},
+     quote: "The safety and efficacy of inotuzumab ozogamicin in patients with end stage renal disease with or without hemodialysis is unknown."}
+  - {adc: inotuzumab-ozogamicin, domain: qt, category: monitor, section: "5.5", when: {condition: [qt_prolongation]},
+     quote: "Administer BESPONSA with caution in patients who have a history of or predisposition for QTc prolongation"}
+
+  # ------------------------------------------------------------------ loncastuximab tesirine (ZYNLONTA v15)
+  - {adc: loncastuximab-tesirine, domain: hepatic, category: monitor, section: "8.6", when: {bili_le: 1.5},
+     quote: "Monitor patients with mild hepatic impairment for potential increased incidence of adverse reactions and modify the ZYNLONTA dosage in the event of adverse reactions"}
+  - {adc: loncastuximab-tesirine, domain: hepatic, category: insufficient_data, section: "8.6", when: {bili_gt: 1.5, bili_le: 3},
+     quote: "There is limited safety information available in patients with moderate hepatic impairment."}
+  - {adc: loncastuximab-tesirine, domain: hepatic, category: avoid, section: "8.6", when: {bili_gt: 3},
+     quote: "ZYNLONTA should be avoided in patients with severe hepatic impairment"}
+  - {adc: loncastuximab-tesirine, domain: renal, category: no_adjustment, section: "12.3", when: {crcl_ge: 30},
+     quote: "mild to moderate renal impairment (CLcr 30 to <90 mL/min using the Cockcroft-Gault equation)."}
+  - {adc: loncastuximab-tesirine, domain: renal, category: insufficient_data, section: "12.3", when: {crcl_lt: 30},
+     quote: "The effect of severe renal impairment (CLcr 15 to 29 mL/min), and end-stage renal disease with or without hemodialysis on loncastuximab tesirine-lpyl pharmacokinetics is unknown."}
+  - {adc: loncastuximab-tesirine, domain: renal, category: insufficient_data, section: "12.3", when: {esrd: true},
+     quote: "The effect of severe renal impairment (CLcr 15 to 29 mL/min), and end-stage renal disease with or without hemodialysis on loncastuximab tesirine-lpyl pharmacokinetics is unknown."}
+
+  # ------------------------------------------------------------------ mirvetuximab soravtansine (ELAHERE v14)
+  - {adc: mirvetuximab-soravtansine, domain: renal, category: no_adjustment, section: "8.6", when: {crcl_ge: 30},
+     quote: "No dosage adjustment of ELAHERE is recommended for patients with mild to moderate renal impairment (CLcr 30 to 89 mL/min)."}
+  - {adc: mirvetuximab-soravtansine, domain: renal, category: insufficient_data, section: "8.6", when: {crcl_lt: 30},
+     quote: "The effect of severe renal impairment (CLcr 15 to < 30 mL/min) or end-stage renal disease on ELAHERE is unknown"}
+  - {adc: mirvetuximab-soravtansine, domain: renal, category: insufficient_data, section: "8.6", when: {esrd: true},
+     quote: "The effect of severe renal impairment (CLcr 15 to < 30 mL/min) or end-stage renal disease on ELAHERE is unknown"}
+  - {adc: mirvetuximab-soravtansine, domain: hepatic, category: avoid, section: "8.7", when: {bili_gt: 1.5},
+     quote: "Avoid use of ELAHERE in patients with moderate or severe hepatic impairment (total bilirubin >1.5 ULN)."}
+  - {adc: mirvetuximab-soravtansine, domain: hepatic, category: no_adjustment, section: "8.7", when: {bili_le: 1.5},
+     quote: "No dosage adjustment of ELAHERE is recommended for patients with mild hepatic impairment"}
+  - {adc: mirvetuximab-soravtansine, domain: ocular, category: monitor, section: "2.3", when: {always: true},
+     quote: "Conduct an ophthalmic exam including visual acuity and slit lamp exam prior to initiation of ELAHERE, every other cycle for the first 8 cycles, and as clinically indicated."}
+
+  # ------------------------------------------------------------------ pivekimab sunirine (DECNUPAZ v2)
+  - {adc: pivekimab-sunirine, domain: renal, category: avoid, section: "8.6", when: {crcl_lt: 60},
+     quote: "Avoid use of DECNUPAZ in patients with moderate to severe renal impairment (CLcr <60 mL/min, estimated by Cockcroft-Gault) or patients with end stage renal disease."}
+  - {adc: pivekimab-sunirine, domain: renal, category: avoid, section: "8.6", when: {esrd: true},
+     quote: "Avoid use of DECNUPAZ in patients with moderate to severe renal impairment (CLcr <60 mL/min, estimated by Cockcroft-Gault) or patients with end stage renal disease."}
+  - {adc: pivekimab-sunirine, domain: renal, category: no_adjustment, section: "8.6", when: {crcl_ge: 60},
+     quote: "No dosage adjustment of DECNUPAZ is recommended for patients with mild renal impairment (CLcr 60 to <90 mL/min, estimated by Cockcroft-Gault)"}
+  - {adc: pivekimab-sunirine, domain: hepatic, category: avoid, section: "8.7", when: {bili_gt: 1.5},
+     quote: "Avoid use of DECNUPAZ in patients with moderate to severe hepatic impairment (total bilirubin >1.5 x ULN with any AST)."}
+  - {adc: pivekimab-sunirine, domain: hepatic, category: no_adjustment, section: "8.7", when: {bili_le: 1.5},
+     quote: "No dosage adjustment of DECNUPAZ is recommended for patients with mild hepatic impairment"}
+
+  # ------------------------------------------------------------------ polatuzumab vedotin (POLIVY v15)
+  - {adc: polatuzumab-vedotin, domain: hepatic, category: avoid, section: "8.6", when: {bili_gt: 1.5},
+     quote: "Avoid the administration of POLIVY in patients with moderate or severe hepatic impairment (total bilirubin greater than 1.5 × ULN and any AST)."}
+  - {adc: polatuzumab-vedotin, domain: hepatic, category: no_adjustment, section: "8.6", when: {bili_le: 1.5},
+     quote: "No adjustment in the starting dose is required when administering POLIVY to patients with mild hepatic impairment"}
+  - {adc: polatuzumab-vedotin, domain: renal, category: no_adjustment, section: "12.3", when: {crcl_ge: 30},
+     quote: "mild to moderate renal impairment (CLcr 30 to 89 mL/min)."}
+  - {adc: polatuzumab-vedotin, domain: renal, category: insufficient_data, section: "12.3", when: {crcl_lt: 30},
+     quote: "The effect of severe renal impairment (CLcr 15 to 29 mL/min) or end-stage renal disease with or without dialysis on the pharmacokinetics of acMMAE or unconjugated MMAE is unknown."}
+  - {adc: polatuzumab-vedotin, domain: renal, category: insufficient_data, section: "12.3", when: {esrd: true},
+     quote: "The effect of severe renal impairment (CLcr 15 to 29 mL/min) or end-stage renal disease with or without dialysis on the pharmacokinetics of acMMAE or unconjugated MMAE is unknown."}
+
+  # ------------------------------------------------------------------ sacituzumab govitecan (TRODELVY v20)
+  - {adc: sacituzumab-govitecan, domain: hepatic, category: insufficient_data, section: "8.6", when: {bili_gt: 1.5},
+     quote: "The safety of TRODELVY in patients with moderate (total bilirubin > 1.5 to 3 × ULN) or severe (total bilirubin > 3 × ULN) hepatic impairment has not been established."}
+  - {adc: sacituzumab-govitecan, domain: hepatic, category: no_adjustment, section: "12.3", when: {bili_le: 1.5},
+     quote: "The exposure of sacituzumab govitecan-hziy for patients with mild hepatic impairment (total bilirubin ≤ ULN with AST > ULN, or bilirubin > 1 to ≤ 1.5 ULN with any AST) is within range of that of patients with normal hepatic function"}
+  - {adc: sacituzumab-govitecan, domain: renal, category: no_adjustment, section: "12.3", when: {crcl_ge: 30},
+     quote: "or CLcr 30 to 89 mL/min."}
+  - {adc: sacituzumab-govitecan, domain: renal, category: insufficient_data, section: "12.3", when: {crcl_lt: 30},
+     quote: "There are no data on the pharmacokinetics of sacituzumab govitecan-hziy in patients with CLcr 15 to 29 mL/min, or end-stage renal disease (CLcr < 15 mL/min)."}
+  - {adc: sacituzumab-govitecan, domain: renal, category: insufficient_data, section: "12.3", when: {esrd: true},
+     quote: "There are no data on the pharmacokinetics of sacituzumab govitecan-hziy in patients with CLcr 15 to 29 mL/min, or end-stage renal disease (CLcr < 15 mL/min)."}
+  - {adc: sacituzumab-govitecan, domain: genotype, category: monitor, section: "5.5", when: {ugt1a1_28_homozygous: true},
+     quote: "Individuals who are homozygous for the UGT1A1*28 allele are at increased risk for neutropenia, febrile neutropenia, and anemia following initiation of TRODELVY."}
+
+  # ------------------------------------------------------------------ telisotuzumab vedotin (EMRELIS v3)
+  - {adc: telisotuzumab-vedotin, domain: hepatic, category: avoid, section: "8.6", when: {bili_gt: 1.5},
+     quote: "Avoid use of EMRELIS in patients with moderate or severe hepatic impairment (total bilirubin >1.5 x ULN and any AST)."}
+  - {adc: telisotuzumab-vedotin, domain: hepatic, category: no_adjustment, section: "8.6", when: {bili_le: 1.5},
+     quote: "No dosage adjustment is recommended for patients with mild hepatic impairment"}
+  - {adc: telisotuzumab-vedotin, domain: renal, category: no_adjustment, section: "12.3", when: {crcl_ge: 30},
+     quote: "mild or moderate renal impairment (CLcr 30 to 89 mL/min, estimated by Cockcroft-Gault)"}
+  - {adc: telisotuzumab-vedotin, domain: renal, category: insufficient_data, section: "12.3", when: {crcl_lt: 30},
+     quote: "The effect of severe renal impairment (CLcr <30 mL/min), end-stage renal disease with or without dialysis"}
+  - {adc: telisotuzumab-vedotin, domain: renal, category: insufficient_data, section: "12.3", when: {esrd: true},
+     quote: "The effect of severe renal impairment (CLcr <30 mL/min), end-stage renal disease with or without dialysis"}
+
+  # ------------------------------------------------------------------ tisotumab vedotin (TIVDAK v10)
+  - {adc: tisotumab-vedotin, domain: hepatic, category: avoid, section: "8.6", when: {bili_gt: 1.5},
+     quote: "Avoid use of TIVDAK in patients with moderate or severe hepatic impairment [aspartate aminotransferase (AST) > 3 x upper limit of normal (ULN) or total bilirubin > 1.5 × ULN]"}
+  - {adc: tisotumab-vedotin, domain: hepatic, category: avoid, section: "8.6", when: {ast_gt: 3},
+     quote: "Avoid use of TIVDAK in patients with moderate or severe hepatic impairment [aspartate aminotransferase (AST) > 3 x upper limit of normal (ULN) or total bilirubin > 1.5 × ULN]"}
+  - {adc: tisotumab-vedotin, domain: hepatic, category: monitor, section: "8.6", when: {bili_le: 1.5, ast_le: 3},
+     quote: "closely monitor patients for adverse reactions of TIVDAK, but no dosage adjustment in the starting dose of TIVDAK is recommended."}
+  - {adc: tisotumab-vedotin, domain: renal, category: no_adjustment, section: "12.3", when: {crcl_ge: 30},
+     quote: "No clinically significant differences in exposures of tisotumab vedotin-tftv and unconjugated MMAE were observed in patients with mild to moderate renal impairment (CLcr 30 to < 90 mL/min using the Cockcroft-Gault equation) compared to patients with normal renal function."}
+  - {adc: tisotumab-vedotin, domain: renal, category: insufficient_data, section: "12.3", when: {crcl_lt: 30},
+     quote: "The effect of severe renal impairment (CLcr 15 to < 30 mL/min) or end-stage renal disease with or without dialysis on pharmacokinetics of tisotumab vedotin-tftv and unconjugated MMAE is unknown."}
+  - {adc: tisotumab-vedotin, domain: renal, category: insufficient_data, section: "12.3", when: {esrd: true},
+     quote: "The effect of severe renal impairment (CLcr 15 to < 30 mL/min) or end-stage renal disease with or without dialysis on pharmacokinetics of tisotumab vedotin-tftv and unconjugated MMAE is unknown."}
+  - {adc: tisotumab-vedotin, domain: ocular, category: monitor, section: "2.2", when: {always: true},
+     quote: "Conduct an ophthalmic exam prior to initiation of TIVDAK, prior to every cycle for the first nine cycles, and as clinically indicated."}
+
+  # ------------------------------------------------------------------ trastuzumab deruxtecan (ENHERTU v28)
+  - {adc: trastuzumab-deruxtecan, domain: renal, category: no_adjustment, section: "8.6", when: {crcl_ge: 60},
+     quote: "No dose adjustment of ENHERTU is recommended in patients with mild (creatinine clearance [CLcr] 60 to <90 mL/min) or moderate (CLcr 30 to <60 mL/min) renal impairment"}
+  - {adc: trastuzumab-deruxtecan, domain: renal, category: monitor, section: "8.6", when: {crcl_ge: 30, crcl_lt: 60},
+     quote: "Monitor patients with moderate renal impairment more frequently."}
+  - {adc: trastuzumab-deruxtecan, domain: renal, category: insufficient_data, section: "8.6", when: {crcl_lt: 30},
+     quote: "The recommended dosage of ENHERTU has not been established for patients with severe renal impairment (CLcr <30 mL/min)"}
+  - {adc: trastuzumab-deruxtecan, domain: renal, category: insufficient_data, section: "8.6", when: {esrd: true},
+     quote: "The recommended dosage of ENHERTU has not been established for patients with severe renal impairment (CLcr <30 mL/min)"}
+  - {adc: trastuzumab-deruxtecan, domain: hepatic, category: no_adjustment, section: "8.7", when: {bili_le: 1.5},
+     quote: "No dose adjustment of ENHERTU is recommended in patients with mild (total bilirubin ≤ULN and any AST >ULN or total bilirubin >1 to 1.5 times ULN and any AST)"}
+  - {adc: trastuzumab-deruxtecan, domain: hepatic, category: monitor, section: "8.7", when: {bili_gt: 1.5, bili_le: 3},
+     quote: "In patients with moderate hepatic impairment, due to potentially increased exposure, monitor for increased adverse reactions related to the topoisomerase inhibitor, DXd"}
+  - {adc: trastuzumab-deruxtecan, domain: hepatic, category: insufficient_data, section: "8.7", when: {bili_gt: 3},
+     quote: "The recommended dosage of ENHERTU has not been established for patients with severe hepatic impairment (total bilirubin >3 times ULN and any AST)"}
+  - {adc: trastuzumab-deruxtecan, domain: cardiac, category: insufficient_data, section: "5.3", when: {lvef_lt: 50},
+     quote: "Treatment with ENHERTU has not been studied in patients with a history of clinically significant cardiac disease or LVEF less than 50% prior to initiation of treatment."}
+  - {adc: trastuzumab-deruxtecan, domain: cardiac, category: insufficient_data, section: "5.3", when: {condition: [heart_failure, reduced_lvef, coronary_artery_disease]},
+     quote: "Treatment with ENHERTU has not been studied in patients with a history of clinically significant cardiac disease or LVEF less than 50% prior to initiation of treatment."}
+  - {adc: trastuzumab-deruxtecan, domain: cardiac, category: monitor, section: "5.3", when: {always: true},
+     quote: "Assess LVEF prior to initiation of ENHERTU and at regular intervals during treatment as clinically indicated."}
+
+  # ------------------------------------------------------------------ trastuzumab emtansine (KADCYLA v35)
+  - {adc: trastuzumab-emtansine, domain: renal, category: no_adjustment, section: "8.6", when: {crcl_ge: 30},
+     quote: "dose adjustments of KADCYLA are not needed in patients with mild (creatinine clearance [CLcr] 60 to 89 mL/min) or moderate (CLcr 30 to 59 mL/min) renal impairment."}
+  - {adc: trastuzumab-emtansine, domain: renal, category: insufficient_data, section: "8.6", when: {crcl_lt: 30},
+     quote: "No dose adjustment can be recommended for patients with severe renal impairment (CLcr less than 30 mL/min) because of the limited data available"}
+  - {adc: trastuzumab-emtansine, domain: renal, category: insufficient_data, section: "8.6", when: {esrd: true},
+     quote: "No dose adjustment can be recommended for patients with severe renal impairment (CLcr less than 30 mL/min) because of the limited data available"}
+  - {adc: trastuzumab-emtansine, domain: hepatic, category: monitor, section: "8.7", when: {always: true},
+     quote: "Closely monitor patients with hepatic impairment due to known hepatotoxicity observed with KADCYLA"}
+  # The label does not define mild/moderate here; read as Child-Pugh A/B (an interpretation, stated).
+  - {adc: trastuzumab-emtansine, domain: hepatic, category: no_adjustment, section: "8.7", when: {child_pugh: [A, B]},
+     quote: "No adjustment to the starting dose is required for patients with mild or moderate hepatic impairment"}
+  - {adc: trastuzumab-emtansine, domain: hepatic, category: insufficient_data, section: "8.7", when: {child_pugh: [C]},
+     quote: "KADCYLA was not studied in patients with severe hepatic impairment."}
+  - {adc: trastuzumab-emtansine, domain: cardiac, category: insufficient_data, section: "5.2", when: {lvef_lt: 50},
+     quote: "KADCYLA has not been studied in an adequately controlled study in patients with LVEF < 50%."}
+  - {adc: trastuzumab-emtansine, domain: cardiac, category: monitor, section: "5.2", when: {always: true},
+     quote: "Assess LVEF prior to initiation of KADCYLA and at regular intervals (e.g. every three months) during treatment to ensure the LVEF is within the institution's normal limits."}

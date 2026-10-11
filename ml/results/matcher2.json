@@ -14,18 +14,18 @@
   "trastuzumab-emtansine"
  ],
  "drug_side_auroc": {
-  "mean": 0.6702215608465608,
+  "mean": 0.6698908730158729,
   "ci": [
-   0.5568762400793651,
-   0.7809647817460317
+   0.5587475198412698,
+   0.7801942791005291
   ],
   "n": 12
  },
  "matching": {
   "full": [
-   0.8083920304232806,
-   0.7281293609457672,
-   0.8765619212962964
+   0.8531035052910052,
+   0.78901810515873,
+   0.9052472098214286
   ],
   "full_hand": [
    1.0,
@@ -33,108 +33,108 @@
    1.0
   ],
   "full_uniform": [
-   0.660421626984127,
-   0.584016472387566,
-   0.7292117848875662
+   0.6575520833333333,
+   0.5830333581349206,
+   0.7244184647817461
   ],
   "full_null": [
-   0.5772564672017797,
-   0.5392968129960316,
-   0.6167476706236472
+   0.5695089661495911,
+   0.5347870022772366,
+   0.6041255731609247
   ],
   "inc": [
-   0.4616863576238576,
-   0.404884852994228,
-   0.5186451644420393
+   0.5117636183261183,
+   0.4571672885852574,
+   0.5650823450276575
   ],
   "inc_hand": [
-   0.6457160894660895,
-   0.5820742807539683,
-   0.7107377025462963
+   0.6439303751803751,
+   0.5811955567580567,
+   0.707438113463504
   ],
   "inc_uniform": [
-   0.4285677083333333,
-   0.36823034474206345,
-   0.48664409722222224
+   0.4112115575396825,
+   0.3573877211474868,
+   0.4621811032572751
   ],
   "inc_null": [
-   0.4376007808742184,
-   0.3928244606124489,
-   0.48097988534902597
+   0.44215490470177965,
+   0.40074384253622536,
+   0.48304632945902476
   ]
  },
  "per_condition": [
   {
    "cond": "chronic_liver_disease",
    "n_pos": 5,
-   "full": 0.9428571428571428,
+   "full": 0.9142857142857143,
    "full_hand": 1.0,
-   "full_uniform": 0.9142857142857143,
-   "full_null": 0.6599999999999999,
-   "inc": 0.5714285714285714,
+   "full_uniform": 0.8857142857142857,
+   "full_null": 0.687142857142857,
+   "inc": 0.6,
    "inc_hand": 0.5428571428571428,
-   "inc_uniform": 0.5,
-   "inc_null": 0.51
+   "inc_uniform": 0.44285714285714284,
+   "inc_null": 0.5328571428571428
   },
   {
    "cond": "cirrhosis",
    "n_pos": 5,
    "full": 0.8857142857142857,
    "full_hand": 1.0,
-   "full_uniform": 0.9142857142857143,
-   "full_null": 0.6957142857142857,
+   "full_uniform": 0.8857142857142857,
+   "full_null": 0.7228571428571429,
    "inc": 0.6,
    "inc_hand": 0.5428571428571428,
-   "inc_uniform": 0.5,
-   "inc_null": 0.46714285714285725
+   "inc_uniform": 0.44285714285714284,
+   "inc_null": 0.4671428571428571
   },
   {
    "cond": "hepatitis_b_chronic",
    "n_pos": 7,
-   "full": 0.9714285714285714,
+   "full": 0.8571428571428571,
    "full_hand": 1.0,
    "full_uniform": 0.7428571428571429,
-   "full_null": 0.5157142857142857,
-   "inc": 0.42857142857142855,
+   "full_null": 0.557142857142857,
+   "inc": 0.3142857142857143,
    "inc_hand": 0.4857142857142857,
-   "inc_uniform": 0.38571428571428573,
-   "inc_null": 0.44142857142857145
+   "inc_uniform": 0.35714285714285715,
+   "inc_null": 0.4050000000000001
   },
   {
    "cond": "hepatitis_c_chronic",
    "n_pos": 7,
-   "full": 0.9428571428571428,
+   "full": 0.7714285714285715,
    "full_hand": 1.0,
    "full_uniform": 0.7428571428571429,
-   "full_null": 0.5428571428571428,
-   "inc": 0.37142857142857144,
+   "full_null": 0.5928571428571429,
+   "inc": 0.4,
    "inc_hand": 0.4857142857142857,
-   "inc_uniform": 0.38571428571428573,
-   "inc_null": 0.46428571428571425
+   "inc_uniform": 0.35714285714285715,
+   "inc_null": 0.4685714285714285
   },
   {
    "cond": "hepatic_vod_history",
    "n_pos": 5,
    "full": 0.8285714285714286,
    "full_hand": 1.0,
-   "full_uniform": 0.9142857142857143,
-   "full_null": 0.5985714285714285,
+   "full_uniform": 0.8857142857142857,
+   "full_null": 0.6199999999999999,
    "inc": 0.5428571428571428,
    "inc_hand": 0.5428571428571428,
-   "inc_uniform": 0.5,
-   "inc_null": 0.5042857142857142
+   "inc_uniform": 0.44285714285714284,
+   "inc_null": 0.5157142857142856
   },
   {
    "cond": "nafld",
    "n_pos": 5,
-   "full": 1.0,
+   "full": 0.9428571428571428,
    "full_hand": 1.0,
-   "full_uniform": 0.9142857142857143,
-   "full_null": 0.6171428571428571,
+   "full_uniform": 0.8857142857142857,
+   "full_null": 0.6642857142857141,
    "inc": 0.5142857142857142,
    "inc_hand": 0.5428571428571428,
-   "inc_uniform": 0.5,
-   "inc_null": 0.44714285714285706
+   "inc_uniform": 0.44285714285714284,
+   "inc_null": 0.5014285714285714
   },
   {
    "cond": "ckd_stage_3",
@@ -142,11 +142,11 @@
    "full": 1.0,
    "full_hand": 1.0,
    "full_uniform": 1.0,
-   "full_null": 0.8681818181818182,
-   "inc": 0.18181818181818182,
+   "full_null": 0.790909090909091,
+   "inc": 0.36363636363636365,
    "inc_hand": 0.7272727272727273,
    "inc_uniform": 0.0,
-   "inc_null": 0.1727272727272727
+   "inc_null": 0.16136363636363635
   },
   {
    "cond": "ckd_stage_4_5",
@@ -154,11 +154,11 @@
    "full": 1.0,
    "full_hand": 1.0,
    "full_uniform": 1.0,
-   "full_null": 0.8727272727272727,
-   "inc": 0.36363636363636365,
+   "full_null": 0.7909090909090909,
+   "inc": 0.45454545454545453,
    "inc_hand": 0.7272727272727273,
    "inc_uniform": 0.0,
-   "inc_null": 0.1568181818181818
+   "inc_null": 0.18636363636363637
   },
   {
    "cond": "dialysis",
@@ -166,119 +166,119 @@
    "full": 1.0,
    "full_hand": 1.0,
    "full_uniform": 1.0,
-   "full_null": 0.7818181818181819,
-   "inc": 0.2727272727272727,
+   "full_null": 0.7136363636363636,
+   "inc": 0.45454545454545453,
    "inc_hand": 0.7272727272727273,
    "inc_uniform": 0.0,
-   "inc_null": 0.14999999999999997
+   "inc_null": 0.175
   },
   {
    "cond": "heart_failure",
    "n_pos": 5,
    "full": 0.6571428571428571,
    "full_hand": 1.0,
-   "full_uniform": 0.6857142857142857,
-   "full_null": 0.43571428571428567,
+   "full_uniform": 0.6571428571428571,
+   "full_null": 0.5157142857142858,
    "inc": 0.5428571428571428,
    "inc_hand": 0.6,
-   "inc_uniform": 0.7285714285714285,
-   "inc_null": 0.6357142857142858
+   "inc_uniform": 0.6714285714285714,
+   "inc_null": 0.6542857142857144
   },
   {
    "cond": "reduced_lvef",
    "n_pos": 5,
-   "full": 1.0,
+   "full": 0.7428571428571429,
    "full_hand": 1.0,
-   "full_uniform": 0.6857142857142857,
-   "full_null": 0.5014285714285714,
+   "full_uniform": 0.6571428571428571,
+   "full_null": 0.5414285714285715,
    "inc": 0.6,
    "inc_hand": 0.6,
-   "inc_uniform": 0.7285714285714285,
-   "inc_null": 0.6478571428571428
+   "inc_uniform": 0.6714285714285714,
+   "inc_null": 0.6464285714285714
   },
   {
    "cond": "prior_anthracycline",
    "n_pos": 5,
    "full": 0.4,
    "full_hand": 1.0,
-   "full_uniform": 0.6857142857142857,
-   "full_null": 0.4714285714285714,
-   "inc": 0.5714285714285714,
+   "full_uniform": 0.6571428571428571,
+   "full_null": 0.52,
+   "inc": 0.6285714285714286,
    "inc_hand": 0.6,
-   "inc_uniform": 0.7285714285714285,
-   "inc_null": 0.5964285714285713
+   "inc_uniform": 0.6714285714285714,
+   "inc_null": 0.6349999999999999
   },
   {
    "cond": "coronary_artery_disease",
    "n_pos": 5,
-   "full": 0.8571428571428571,
+   "full": 0.6571428571428571,
    "full_hand": 1.0,
-   "full_uniform": 0.6857142857142857,
-   "full_null": 0.4414285714285714,
+   "full_uniform": 0.6571428571428571,
+   "full_null": 0.5,
    "inc": 0.5428571428571428,
    "inc_hand": 0.6,
-   "inc_uniform": 0.7285714285714285,
-   "inc_null": 0.63
+   "inc_uniform": 0.6714285714285714,
+   "inc_null": 0.6592857142857143
   },
   {
    "cond": "qt_prolongation",
    "n_pos": 5,
    "full": 1.0,
    "full_hand": 1.0,
-   "full_uniform": 0.6857142857142857,
-   "full_null": 0.52,
-   "inc": 0.6,
+   "full_uniform": 0.6571428571428571,
+   "full_null": 0.49714285714285705,
+   "inc": 0.5142857142857142,
    "inc_hand": 0.6,
-   "inc_uniform": 0.7285714285714285,
-   "inc_null": 0.6249999999999999
+   "inc_uniform": 0.6714285714285714,
+   "inc_null": 0.6578571428571428
   },
   {
    "cond": "interstitial_lung_disease",
    "n_pos": 8,
-   "full": 0.96875,
+   "full": 0.9375,
    "full_hand": 1.0,
    "full_uniform": 0.4375,
-   "full_null": 0.6140625,
-   "inc": 0.46875,
+   "full_null": 0.421875,
+   "inc": 0.375,
    "inc_hand": 0.40625,
    "inc_uniform": 0.453125,
-   "inc_null": 0.4625
+   "inc_null": 0.4703125
   },
   {
    "cond": "pulmonary_fibrosis",
    "n_pos": 8,
-   "full": 0.9375,
+   "full": 0.8125,
    "full_hand": 1.0,
    "full_uniform": 0.4375,
-   "full_null": 0.6234375,
-   "inc": 0.40625,
+   "full_null": 0.5125,
+   "inc": 0.34375,
    "inc_hand": 0.40625,
    "inc_uniform": 0.453125,
-   "inc_null": 0.5234375
+   "inc_null": 0.48125
   },
   {
    "cond": "copd",
    "n_pos": 8,
-   "full": 0.9375,
+   "full": 0.84375,
    "full_hand": 1.0,
    "full_uniform": 0.4375,
-   "full_null": 0.6859375,
-   "inc": 0.3125,
+   "full_null": 0.534375,
+   "inc": 0.40625,
    "inc_hand": 0.40625,
    "inc_uniform": 0.453125,
-   "inc_null": 0.46875
+   "inc_null": 0.4484375
   },
   {
    "cond": "prior_chest_radiation",
    "n_pos": 8,
-   "full": 0.9375,
+   "full": 0.65625,
    "full_hand": 1.0,
    "full_uniform": 0.4375,
-   "full_null": 0.640625,
-   "inc": 0.46875,
+   "full_null": 0.5546875,
+   "inc": 0.40625,
    "inc_hand": 0.40625,
    "inc_uniform": 0.453125,
-   "inc_null": 0.4859375
+   "inc_null": 0.4703125
   },
   {
    "cond": "peripheral_neuropathy",
@@ -286,35 +286,35 @@
    "full": 1.0,
    "full_hand": 1.0,
    "full_uniform": 0.6857142857142857,
-   "full_null": 0.7285714285714286,
-   "inc": 0.5714285714285714,
+   "full_null": 0.5385714285714287,
+   "inc": 0.6857142857142857,
    "inc_hand": 0.7714285714285715,
-   "inc_uniform": 0.5,
-   "inc_null": 0.5528571428571427
+   "inc_uniform": 0.4714285714285714,
+   "inc_null": 0.47285714285714286
   },
   {
    "cond": "diabetic_neuropathy",
    "n_pos": 8,
-   "full": 1.0,
+   "full": 0.96875,
    "full_hand": 1.0,
-   "full_uniform": 0.625,
-   "full_null": 0.778125,
-   "inc": 0.6875,
-   "inc_hand": 0.46875,
-   "inc_uniform": 0.390625,
-   "inc_null": 0.44921875
+   "full_uniform": 0.65625,
+   "full_null": 0.6046875,
+   "inc": 0.625,
+   "inc_hand": 0.484375,
+   "inc_uniform": 0.359375,
+   "inc_null": 0.375
   },
   {
    "cond": "multiple_sclerosis",
    "n_pos": 7,
-   "full": 1.0,
+   "full": 0.9142857142857143,
    "full_hand": 1.0,
    "full_uniform": 0.6857142857142857,
-   "full_null": 0.71,
-   "inc": 0.6,
+   "full_null": 0.5385714285714286,
+   "inc": 0.5428571428571428,
    "inc_hand": 0.7714285714285715,
-   "inc_uniform": 0.5,
-   "inc_null": 0.5114285714285713
+   "inc_uniform": 0.4714285714285714,
+   "inc_null": 0.4357142857142858
   },
   {
    "cond": "keratopathy_history",
@@ -322,23 +322,23 @@
    "full": 1.0,
    "full_hand": 1.0,
    "full_uniform": 0.17142857142857143,
-   "full_null": 0.4914285714285714,
-   "inc": 0.6571428571428571,
+   "full_null": 0.3857142857142857,
+   "inc": 0.8,
    "inc_hand": 0.9,
-   "inc_uniform": 0.4857142857142857,
-   "inc_null": 0.49857142857142855
+   "inc_uniform": 0.5428571428571428,
+   "inc_null": 0.45785714285714285
   },
   {
    "cond": "dry_eye",
    "n_pos": 5,
-   "full": 0.9714285714285714,
+   "full": 1.0,
    "full_hand": 1.0,
    "full_uniform": 0.17142857142857143,
-   "full_null": 0.4385714285714286,
-   "inc": 0.7857142857142857,
+   "full_null": 0.2814285714285714,
+   "inc": 0.7714285714285715,
    "inc_hand": 0.9,
-   "inc_uniform": 0.4857142857142857,
-   "inc_null": 0.4714285714285714
+   "inc_uniform": 0.5428571428571428,
+   "inc_null": 0.43428571428571433
   },
   {
    "cond": "glaucoma",
@@ -346,11 +346,11 @@
    "full": 1.0,
    "full_hand": 1.0,
    "full_uniform": 0.17142857142857143,
-   "full_null": 0.48,
-   "inc": 0.8857142857142857,
+   "full_null": 0.36,
+   "inc": 0.8571428571428571,
    "inc_hand": 0.9,
-   "inc_uniform": 0.4857142857142857,
-   "inc_null": 0.5007142857142857
+   "inc_uniform": 0.5428571428571428,
+   "inc_null": 0.4442857142857143
   },
   {
    "cond": "prior_corneal_surgery",
@@ -358,191 +358,191 @@
    "full": 1.0,
    "full_hand": 1.0,
    "full_uniform": 0.17142857142857143,
-   "full_null": 0.4214285714285714,
-   "inc": 0.8,
+   "full_null": 0.3542857142857143,
+   "inc": 0.7714285714285715,
    "inc_hand": 0.9,
-   "inc_uniform": 0.4857142857142857,
-   "inc_null": 0.47714285714285715
+   "inc_uniform": 0.5428571428571428,
+   "inc_null": 0.45999999999999996
   },
   {
    "cond": "thrombocytopenia",
    "n_pos": 7,
-   "full": 0.5428571428571428,
+   "full": 1.0,
    "full_hand": 1.0,
    "full_uniform": 0.8285714285714286,
-   "full_null": 0.42285714285714276,
-   "inc": 0.5428571428571428,
-   "inc_hand": 1.0,
-   "inc_uniform": 0.5142857142857142,
-   "inc_null": 0.47000000000000003
+   "full_null": 0.5614285714285714,
+   "inc": 0.8,
+   "inc_hand": 0.9857142857142858,
+   "inc_uniform": 0.45714285714285713,
+   "inc_null": 0.5185714285714285
   },
   {
    "cond": "itp",
    "n_pos": 8,
-   "full": 0.53125,
+   "full": 0.75,
    "full_hand": 1.0,
    "full_uniform": 0.75,
-   "full_null": 0.6296875,
-   "inc": 0.34375,
-   "inc_hand": 0.84375,
-   "inc_uniform": 0.5,
-   "inc_null": 0.584375
+   "full_null": 0.6625,
+   "inc": 0.5,
+   "inc_hand": 0.828125,
+   "inc_uniform": 0.46875,
+   "inc_null": 0.56875
   },
   {
    "cond": "neutropenia_chronic",
    "n_pos": 7,
-   "full": 0.3142857142857143,
+   "full": 0.9142857142857143,
    "full_hand": 1.0,
    "full_uniform": 0.8285714285714286,
-   "full_null": 0.5985714285714286,
-   "inc": 0.42857142857142855,
-   "inc_hand": 1.0,
-   "inc_uniform": 0.5142857142857142,
-   "inc_null": 0.5128571428571428
+   "full_null": 0.7285714285714286,
+   "inc": 0.5714285714285714,
+   "inc_hand": 0.9857142857142858,
+   "inc_uniform": 0.45714285714285713,
+   "inc_null": 0.5314285714285714
   },
   {
    "cond": "anaemia_chronic",
    "n_pos": 7,
-   "full": 0.8571428571428571,
+   "full": 0.9714285714285714,
    "full_hand": 1.0,
    "full_uniform": 0.8285714285714286,
-   "full_null": 0.45142857142857135,
-   "inc": 0.5714285714285714,
-   "inc_hand": 1.0,
-   "inc_uniform": 0.5142857142857142,
-   "inc_null": 0.5028571428571429
+   "full_null": 0.5885714285714284,
+   "inc": 0.7428571428571429,
+   "inc_hand": 0.9857142857142858,
+   "inc_uniform": 0.45714285714285713,
+   "inc_null": 0.5478571428571428
   },
   {
    "cond": "mds",
    "n_pos": 7,
-   "full": 0.5428571428571428,
+   "full": 0.7428571428571429,
    "full_hand": 1.0,
    "full_uniform": 0.8285714285714286,
-   "full_null": 0.3728571428571429,
-   "inc": 0.45714285714285713,
-   "inc_hand": 1.0,
-   "inc_uniform": 0.5142857142857142,
-   "inc_null": 0.4864285714285714
+   "full_null": 0.5428571428571429,
+   "inc": 0.5142857142857142,
+   "inc_hand": 0.9857142857142858,
+   "inc_uniform": 0.45714285714285713,
+   "inc_null": 0.4828571428571428
   },
   {
    "cond": "prior_hsct",
    "n_pos": 7,
-   "full": 0.11428571428571428,
+   "full": 0.7428571428571429,
    "full_hand": 1.0,
    "full_uniform": 0.8285714285714286,
-   "full_null": 0.5471428571428573,
-   "inc": 0.14285714285714285,
-   "inc_hand": 1.0,
-   "inc_uniform": 0.5142857142857142,
-   "inc_null": 0.45142857142857135
+   "full_null": 0.72,
+   "inc": 0.5142857142857142,
+   "inc_hand": 0.9857142857142858,
+   "inc_uniform": 0.45714285714285713,
+   "inc_null": 0.502142857142857
   },
   {
    "cond": "inflammatory_bowel_disease",
    "n_pos": 3,
-   "full": 0.7777777777777778,
+   "full": 1.0,
    "full_hand": 1.0,
-   "full_uniform": 0.4074074074074074,
-   "full_null": 0.474074074074074,
-   "inc": 0.25925925925925924,
+   "full_uniform": 0.4444444444444444,
+   "full_null": 0.562962962962963,
+   "inc": 0.2962962962962963,
    "inc_hand": 0.37037037037037035,
-   "inc_uniform": 0.1111111111111111,
-   "inc_null": 0.19814814814814813
+   "inc_uniform": 0.14814814814814814,
+   "inc_null": 0.24814814814814815
   },
   {
    "cond": "prior_bowel_resection",
    "n_pos": 3,
-   "full": 0.5925925925925926,
+   "full": 1.0,
    "full_hand": 1.0,
-   "full_uniform": 0.4074074074074074,
-   "full_null": 0.47222222222222215,
-   "inc": 0.18518518518518517,
+   "full_uniform": 0.4444444444444444,
+   "full_null": 0.5203703703703704,
+   "inc": 0.3333333333333333,
    "inc_hand": 0.37037037037037035,
-   "inc_uniform": 0.1111111111111111,
-   "inc_null": 0.25
+   "inc_uniform": 0.14814814814814814,
+   "inc_null": 0.2759259259259259
   },
   {
    "cond": "chronic_pancreatitis",
    "n_pos": 3,
-   "full": 0.7037037037037037,
+   "full": 0.9259259259259259,
    "full_hand": 1.0,
-   "full_uniform": 0.4074074074074074,
-   "full_null": 0.4333333333333333,
-   "inc": 0.18518518518518517,
+   "full_uniform": 0.4444444444444444,
+   "full_null": 0.5314814814814814,
+   "inc": 0.25925925925925924,
    "inc_hand": 0.37037037037037035,
-   "inc_uniform": 0.1111111111111111,
-   "inc_null": 0.20370370370370372
+   "inc_uniform": 0.14814814814814814,
+   "inc_null": 0.25555555555555554
   },
   {
    "cond": "severe_psoriasis",
    "n_pos": 4,
-   "full": 0.90625,
+   "full": 0.96875,
    "full_hand": 1.0,
-   "full_uniform": 0.6875,
-   "full_null": 0.5953125,
-   "inc": 0.25,
+   "full_uniform": 0.65625,
+   "full_null": 0.534375,
+   "inc": 0.3125,
    "inc_hand": 0.40625,
    "inc_uniform": 0.3125,
-   "inc_null": 0.21015625
+   "inc_null": 0.25859375
   },
   {
    "cond": "prior_sjs_ten",
    "n_pos": 4,
    "full": 0.8125,
    "full_hand": 1.0,
-   "full_uniform": 0.6875,
-   "full_null": 0.5953125,
+   "full_uniform": 0.65625,
+   "full_null": 0.5140625,
    "inc": 0.25,
    "inc_hand": 0.40625,
    "inc_uniform": 0.3125,
-   "inc_null": 0.23046875
+   "inc_null": 0.27265625
   },
   {
    "cond": "type_2_diabetes",
    "n_pos": 4,
-   "full": 0.875,
+   "full": 0.78125,
    "full_hand": 1.0,
-   "full_uniform": 0.71875,
-   "full_null": 0.6296875,
+   "full_uniform": 0.75,
+   "full_null": 0.690625,
    "inc": 0.5625,
    "inc_hand": 0.75,
    "inc_uniform": 0.390625,
-   "inc_null": 0.2859375
+   "inc_null": 0.38203125
   },
   {
    "cond": "hypothyroidism",
    "n_pos": 4,
-   "full": 0.8125,
+   "full": 0.78125,
    "full_hand": 1.0,
-   "full_uniform": 0.71875,
-   "full_null": 0.6,
-   "inc": 0.3125,
+   "full_uniform": 0.75,
+   "full_null": 0.6546875,
+   "inc": 0.15625,
    "inc_hand": 0.75,
    "inc_uniform": 0.390625,
-   "inc_null": 0.33828125
+   "inc_null": 0.37578125
   },
   {
    "cond": "hiv_controlled",
    "n_pos": 7,
-   "full": 0.5142857142857142,
+   "full": 0.8857142857142857,
    "full_hand": 1.0,
    "full_uniform": 0.7428571428571429,
-   "full_null": 0.5685714285714285,
-   "inc": 0.42857142857142855,
+   "full_null": 0.592857142857143,
+   "inc": 0.8,
    "inc_hand": 0.5,
-   "inc_uniform": 0.38571428571428573,
-   "inc_null": 0.45785714285714285
+   "inc_uniform": 0.35714285714285715,
+   "inc_null": 0.39428571428571435
   },
   {
    "cond": "active_autoimmune",
    "n_pos": 7,
-   "full": 0.2,
+   "full": 0.05714285714285714,
    "full_hand": 1.0,
    "full_uniform": 0.7428571428571429,
-   "full_null": 0.5642857142857144,
+   "full_null": 0.5742857142857144,
    "inc": 0.2,
    "inc_hand": 0.5,
-   "inc_uniform": 0.38571428571428573,
-   "inc_null": 0.47071428571428564
+   "inc_uniform": 0.35714285714285715,
+   "inc_null": 0.45499999999999996
   }
  ],
  "demo": {
@@ -550,41 +550,41 @@
    "lowest": [
     [
      "loncastuximab-tesirine",
-     0.48
+     0.61
     ],
     [
      "sacituzumab-govitecan",
-     0.53
-    ],
-    [
-     "inotuzumab-ozogamicin",
-     0.81
+     0.63
     ],
     [
      "datopotamab-deruxtecan",
-     0.87
+     0.86
+    ],
+    [
+     "inotuzumab-ozogamicin",
+     0.89
     ]
    ],
    "highest": [
     [
-     "brentuximab-vedotin",
-     1.62,
-     [
-      "neurologic",
-      "pulmonary"
-     ]
-    ],
-    [
-     "telisotuzumab-vedotin",
-     1.44,
+     "trastuzumab-emtansine",
+     1.37,
      [
       "pulmonary",
-      "neurologic"
+      "haematologic"
      ]
     ],
     [
-     "trastuzumab-emtansine",
-     1.44,
+     "trastuzumab-deruxtecan",
+     1.36,
+     [
+      "pulmonary",
+      "haematologic"
+     ]
+    ],
+    [
+     "brentuximab-vedotin",
+     1.26,
      [
       "pulmonary",
       "neurologic"
@@ -596,44 +596,44 @@
    "lowest": [
     [
      "telisotuzumab-vedotin",
-     0.46
+     0.61
     ],
     [
      "mirvetuximab-soravtansine",
-     0.53
+     0.62
     ],
     [
      "tisotumab-vedotin",
-     0.54
+     0.62
     ],
     [
-     "enfortumab-vedotin",
-     0.69
+     "datopotamab-deruxtecan",
+     1.14
     ]
    ],
    "highest": [
     [
-     "brentuximab-vedotin",
-     1.37,
+     "inotuzumab-ozogamicin",
+     2.19,
+     [
+      "hepatic",
+      "haematologic"
+     ]
+    ],
+    [
+     "sacituzumab-govitecan",
+     2.18,
      [
       "gastrointestinal",
       "haematologic"
      ]
     ],
     [
-     "inotuzumab-ozogamicin",
-     1.35,
+     "brentuximab-vedotin",
+     2.09,
      [
-      "hepatic",
-      "haematologic"
-     ]
-    ],
-    [
-     "trastuzumab-emtansine",
-     1.25,
-     [
-      "hepatic",
-      "haematologic"
+      "gastrointestinal",
+      "hepatic"
      ]
     ]
    ]
@@ -642,43 +642,43 @@
    "lowest": [
     [
      "datopotamab-deruxtecan",
-     0.54
-    ],
-    [
-     "loncastuximab-tesirine",
-     0.69
-    ],
-    [
-     "inotuzumab-ozogamicin",
-     0.83
+     0.51
     ],
     [
      "mirvetuximab-soravtansine",
-     0.93
+     0.52
+    ],
+    [
+     "loncastuximab-tesirine",
+     0.55
+    ],
+    [
+     "telisotuzumab-vedotin",
+     0.59
     ]
    ],
    "highest": [
     [
      "brentuximab-vedotin",
-     1.83,
+     1.63,
      [
       "renal",
       "neurologic"
      ]
     ],
     [
-     "polatuzumab-vedotin",
-     1.34,
+     "sacituzumab-govitecan",
+     1.29,
      [
-      "neurologic",
-      "haematologic"
+      "haematologic",
+      "gastrointestinal"
      ]
     ],
     [
-     "enfortumab-vedotin",
-     1.32,
+     "polatuzumab-vedotin",
+     1.14,
      [
-      "renal",
+      "haematologic",
       "neurologic"
      ]
     ]
@@ -688,33 +688,33 @@
    "lowest": [
     [
      "sacituzumab-govitecan",
-     0.45
+     0.48
+    ],
+    [
+     "trastuzumab-emtansine",
+     0.69
     ],
     [
      "trastuzumab-deruxtecan",
-     0.66
+     0.73
     ],
     [
-     "loncastuximab-tesirine",
-     0.81
-    ],
-    [
-     "inotuzumab-ozogamicin",
-     0.88
+     "polatuzumab-vedotin",
+     0.73
     ]
    ],
    "highest": [
     [
      "tisotumab-vedotin",
-     2.18,
+     1.89,
      [
       "ocular",
-      "neurologic"
+      "dermatologic"
      ]
     ],
     [
      "enfortumab-vedotin",
-     1.87,
+     1.62,
      [
       "dermatologic",
       "ocular"
@@ -722,10 +722,10 @@
     ],
     [
      "mirvetuximab-soravtansine",
-     1.75,
+     1.49,
      [
       "ocular",
-      "neurologic"
+      "musculoskeletal"
      ]
     ]
    ]
@@ -733,45 +733,45 @@
   "peripheral_neuropathy": {
    "lowest": [
     [
-     "datopotamab-deruxtecan",
-     0.69
-    ],
-    [
      "loncastuximab-tesirine",
-     0.77
+     0.19
     ],
     [
      "sacituzumab-govitecan",
-     0.83
+     0.21
     ],
     [
-     "inotuzumab-ozogamicin",
-     0.94
+     "trastuzumab-deruxtecan",
+     0.24
+    ],
+    [
+     "datopotamab-deruxtecan",
+     0.27
     ]
    ],
    "highest": [
     [
-     "brentuximab-vedotin",
-     2.0,
-     [
-      "neurologic",
-      "metabolic_endocrine"
-     ]
-    ],
-    [
-     "enfortumab-vedotin",
-     1.78,
-     [
-      "neurologic",
-      "dermatologic"
-     ]
-    ],
-    [
      "tisotumab-vedotin",
-     1.56,
+     0.59,
      [
       "neurologic",
-      "dermatologic"
+      "ocular"
+     ]
+    ],
+    [
+     "mirvetuximab-soravtansine",
+     0.56,
+     [
+      "neurologic",
+      "ocular"
+     ]
+    ],
+    [
+     "brentuximab-vedotin",
+     0.55,
+     [
+      "neurologic",
+      "haematologic"
      ]
     ]
    ]
