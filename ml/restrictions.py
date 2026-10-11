@@ -28,6 +28,9 @@ COVERED = ("renal", "hepatic")                       # domains where silence is 
 DOMAIN_AXIS = {"renal": "renal", "hepatic": "hepatic", "cardiac": "cardiovascular", "ocular": "ocular"}
 NEEDS = {"renal": "CLcr (Cockcroft-Gault), dialysis/ESRD status if CLcr < 15", "hepatic": "total bilirubin / AST / ALT (x ULN), Child-Pugh", "cardiac": "baseline LVEF"}
 INF = float("inf")
+KO = {"no_adjustment": "조정 불필요", "monitor": "모니터링", "reduce_dose": "감량 필요", "no_statement": "언급 없음",
+      "insufficient_data": "자료 부족", "avoid": "회피", "contraindicated": "금기"}
+DOMAIN_KO = {"renal": "신장", "hepatic": "간", "cardiac": "심장", "ocular": "눈", "qt": "QT", "genotype": "유전형", "other": "병용"}
 
 
 def load_rules():
@@ -153,7 +156,7 @@ def judge(p, adcs, rules=None):
     return out
 
 
-def _top(entries):
+def _top(entries, ko=False):
     """entries [(category, domain, section)] -> 'Cat (dom s, dom s); Cat2 (...)' for every domain at the highest tier, worst per domain."""
     if not entries: return None
     per = {}
@@ -161,19 +164,19 @@ def _top(entries):
         if d not in per or TIER[c] > TIER[per[d][0]] or (TIER[c] == TIER[per[d][0]] and CATS.index(c) > CATS.index(per[d][0])): per[d] = (c, s)
     top = max(TIER[c] for c, _ in per.values()); groups = {}
     for d, (c, s) in sorted(per.items()):
-        if TIER[c] == top: groups.setdefault(c, []).append(f"{d} {s}".strip())
-    return "; ".join(f"{SHORT[c]} ({', '.join(ds)})" for c, ds in sorted(groups.items(), key=lambda kv: -CATS.index(kv[0])))
+        if TIER[c] == top: groups.setdefault(c, []).append(DOMAIN_KO.get(d, d) if ko else f"{d} {s}".strip())
+    return "; ".join(f"{(KO if ko else SHORT)[c]} ({', '.join(ds)})" for c, ds in sorted(groups.items(), key=lambda kv: -CATS.index(kv[0])))
 
 
-def summary(v):
+def summary(v, ko=False):
     """short cell text: the most restrictive known verdict for EVERY domain that reaches it, then what a missing test could
     still make it (again every domain at that tier). A domain the label is silent on counts as 'No label statement'."""
     known = [(c, r["domain"], r["section"]) for c, r in v.known] + [("no_statement", d, "") for d, sure in v.silent if sure]
     possible = [(c, r["domain"], r["section"]) for c, r in v.possible if TIER[c] > v.worst_known] + \
                [("no_statement", d, "") for d, sure in v.silent if not sure and TIER["no_statement"] > v.worst_known]
-    k, p = _top(known), _top(possible)
+    k, p = _top(known, ko), _top(possible, ko)
     if p: p = "; ".join(x.replace(" (", "? (", 1) for x in p.split("; "))
-    return "; ".join(x for x in (k, p) if x) or "-"
+    return ("  " if ko else "; ").join(x for x in (k, p) if x) or "-"
 
 
 def verify_quotes(rules=None):

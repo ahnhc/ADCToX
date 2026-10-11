@@ -160,7 +160,7 @@ def recommend(conditions, labs=None):
         warn = [a for a in AXES if s[AXES.index(a)] > 0 and org[a]["level"] == "W&P"]
         B = sum(s[AXES.index(a)] for a in boxed); Wn = sum(s[AXES.index(a)] for a in warn)
         elsewhere = [a for a in AXES if s[AXES.index(a)] == 0 and org[a]["level"] == "boxed"]
-        rows.append(dict(Bl=per_level(boxed), Wl=per_level(warn), priority=prio, adc=adc, name=e["name"], version=e["version"], date=e["date"], verdict=v, restriction=RS.summary(v), tier=v.worst_possible,
+        rows.append(dict(Bl=per_level(boxed), Wl=per_level(warn), priority=prio, adc=adc, name=e["name"], version=e["version"], date=e["date"], verdict=v, restriction=RS.summary(v), restriction_ko=RS.summary(v, ko=True), tier=v.worst_possible,
                          B=round(B, 3), Wn=round(Wn, 3), boxed=boxed, warn=warn, elsewhere=elsewhere, organs=org, has_tables=e["has_tables"]))
     # restriction tier (worst case), settled tier, then boxed warnings on the level-1 organs, level-2 organs, ..., then the other
     # warnings level by level. Within one patient this is the order; B and Wn (severity sums) stay for comparisons across patients.
@@ -216,13 +216,13 @@ def render(rows, s, notes, checks_, detail=False, color=None):
         for lvl, c, orgs in prio: print(f"  {lvl}  {nm(c):<{w}}  {', '.join(EN[a] for a in orgs)}")
     print()
     tone = {4: "31;1", 3: "31", 2: "33", 1: "36", 0: "32", -1: ""}
-    org_txt = lambda xs: ", ".join(EN[a] for a in xs) or "-"
-    head = ["#", "ADC", "Label restriction", "Boxed on your organs", "Warn on your organs", "Boxed elsewhere"]
+    org_txt = lambda xs: ", ".join(ORGAN_KO[a] for a in xs) or "-"
+    head = ["#", "ADC", "허가 제한", "내 장기: 박스경고", "내 장기: 경고", "다른 장기: 박스경고"]
     cells, prev_rank, starts = [], None, set()
     for i, r in enumerate(rows):
         if r["rank"] != prev_rank and i: starts.add(i)
         rk = "" if prev_rank == r["rank"] else str(r["rank"]); prev_rank = r["rank"]; rc = "33" if "?" in r["restriction"] else tone[max(r["verdict"].worst_known, -1)]
-        cells.append([(rk, ""), (r["name"][:26], ""), (r["restriction"], rc), (org_txt(r["boxed"]), "31" if r["boxed"] else ""),
+        cells.append([(rk, ""), (r["name"][:26], ""), (r["restriction_ko"], rc), (org_txt(r["boxed"]), "31" if r["boxed"] else ""),
                       (org_txt(r["warn"]), "33" if r["warn"] else ""), (org_txt(r["elsewhere"]), "90")])
     wd = [max([_width(head[c])] + [_width(row[c][0]) for row in cells]) for c in range(len(head))]
     line = lambda l, m, rr: l + m.join("─" * (x + 2) for x in wd) + rr
@@ -232,17 +232,18 @@ def render(rows, s, notes, checks_, detail=False, color=None):
         if i in starts: print(paint(thin, "90"))
         print("│ " + " │ ".join(paint(pl, c) + " " * (x - _width(pl)) for (pl, c), x in zip(row, wd)) + " │")
     print(line("└", "┴", "┘"))
-    for k, v in LEGEND: print(paint(f"  {k:<21} {v}", "90"))
+    print(paint("  ? = 입력하지 않은 검사 수치에 따라 달라짐 · 박스경고 = 가장 강한 경고 · 다른 장기 박스경고는 순위에 반영 안 함", "90"))
     seen, first = set(), True
     for r in rows:
         for c, rr in r["verdict"].known + r["verdict"].possible:
             if c == "no_adjustment" or (r["name"], rr["quote"]) in seen: continue
-            if first: print("\nWhere each restriction comes from (label text, section)"); first = False
+            if first: print("\n근거: 허가사항 원문"); first = False
             seen.add((r["name"], rr["quote"])); q = rr["quote"] if len(rr["quote"]) <= cols - 52 else rr["quote"][:cols - 55] + "..."
             mark = "" if (c, rr) in r["verdict"].known else "?"
-            print(f"  {r['name'][:26]:<26} {RS.SHORT[c] + mark:<24} §{rr['section']:<5} \"{q}\"")
+            lab = RS.KO[c] + mark + " (" + RS.DOMAIN_KO.get(rr["domain"], rr["domain"]) + ")"
+            print(f"  {r['name'][:26]:<26} {lab}{' ' * max(1, 19 - _width(lab))} §{rr['section']:<5} \"{q}\"")
     if checks_:
-        print("\nChecks before choosing")
+        print("\n투여 전 확인")
         for test, names, src in checks_:
             print(f"  - {test}" + (f"\n      most relevant: {', '.join(names)}" if names else "") + (f"\n      source: {src}" if src else ""))
     if detail:
@@ -275,11 +276,6 @@ LABS_ASK_Q = ("입력할 검사 수치가 있나요?", "")
 LABS_PICK_Q = ("검사 수치 선택", "")
 LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "alt": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
 PRIORITY_MODE_Q = "질환 우선순위"
-LEGEND = [("#", "순위. 같은 번호는 동률"),
-          ("Label restriction", "허가사항이 이 환자의 검사 수치·질환에 대해 정한 투여 제한. '?' = 입력하지 않은 수치에 따라 달라짐"),
-          ("Boxed on your organs", "환자 질환의 장기에 걸린 박스 경고 (가장 강한 경고)"),
-          ("Warn on your organs", "환자 질환의 장기에 걸린 일반 경고 (허가사항 5절)"),
-          ("Boxed elsewhere", "환자 질환과 관계없는 장기의 박스 경고 (참고, 순위에 반영 안 함)")]
 PRIORITY_Q = ("어느 질환 쪽 독성을 먼저 피할까요?", "1 = 가장 먼저. 같은 숫자는 같은 순위. 순위가 높은 질환의 장기에 경고가 있는 약이 뒤로 갑니다.")
 FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
 FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용 (추정값 × 0.25)", 0.25), ("사용 (추정값 × 0.5)", 0.5)]
