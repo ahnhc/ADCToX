@@ -173,6 +173,26 @@ B와 Wn을 boxed와 W&P로 나눈 것은 "boxed 하나가 W&P 몇 개보다 무�
   - 닫으면 일반 표와 "투여 전 확인"이 터미널에 남습니다.
   - 명령행 인자로 실행하거나 출력을 파일로 보낼 때는 일반 표만 나옵니다.
 
+## 입력 화면과 피검사 수치 (2026-10-12)
+
+- **한 화면 입력**(`ml/form.py`)
+  - 단계: 기저질환 → 검사 수치 → (장기를 못 찾은 질환) → (우선순위).
+  - 끝난 단계는 위에 한 줄 요약으로 남고 다음 단계가 아래에 열립니다. ESC를 누르면 이전 단계로 돌아가며, 입력한 값은 유지됩니다.
+  - 기저질환 목록은 장기별(영어 제목)로 묶었습니다. 맨 아래 "Other"를 고르면 같은 화면 아래에 입력 줄이 열립니다. 쉼표로 구분하며 공백은 무시합니다.
+- **피검사 결과지 그대로 입력**(`ml/labs.py`)
+  - 입력 항목: Age/Sex/Weight, Creatinine, eGFR, Bilirubin, AST, ALT, Albumin, GGT, Hb, Platelet, ANC, HbA1c, Glucose, Amylase, Lipase, TSH, LVEF, Child-Pugh, UGT1A1.
+  - CLcr은 Creatinine·나이·성별·체중으로 Cockcroft-Gault를 계산합니다. eGFR만 있으면 CLcr 근사로 쓰고, 결과에 그 사실을 표시합니다.
+  - 빌리루빈, AST, ALT는 기본 ULN(1.2 mg/dL, 40 U/L, 40 U/L)으로 ×ULN을 계산합니다.
+  - 비정상 수치는 그 장기를 취약 장기로 표시합니다. 기준은 CTCAE v5.0 G2 또는 ADA 정의입니다. 값은 목록 외 질환과 같은 고정값 0.8이며, 새 가중치는 없습니다.
+  - 이렇게 표시된 장기는 질환 기반 라벨 규칙을 발동시키지 않습니다.
+  - 어떤 ADC 라벨에도 쓰이지 않는 항목(지질, 요산, ferritin, T3, free T4)은 받지 않습니다.
+- **새 라벨 규칙 5개**(원문 대조 통과, 92 → 97개)
+  - T-DM1: 혈소판 < 100k, Insufficient data (5.7)
+  - Sacituzumab: ANC < 1.5k, Avoid/withhold (Boxed)
+  - Loncastuximab: ANC < 1.0k, 혈소판 < 50k, Avoid/withhold (2.3)
+  - Enfortumab: HbA1c ≥ 8%, Insufficient data (5.2)
+- **결과 화면의 이유 칸**: 원문 인용 대신 장기별 한 줄로 보여 줍니다(예: `hepatic: 현재 입력값으로는 확정할 수 없음 (bilirubin > 1.5×ULN이면 Avoid) → Bilirubin, AST, ALT 입력`).
+
 ## 테스트
 
 - `tests/test_ml_recommender.py`: 28개(하네스 합성 코호트 2개 포함), 모두 통과.

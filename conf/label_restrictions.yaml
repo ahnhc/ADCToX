@@ -244,3 +244,14 @@ rules:
      quote: "KADCYLA has not been studied in an adequately controlled study in patients with LVEF < 50%."}
   - {adc: trastuzumab-emtansine, domain: cardiac, category: monitor, section: "5.2", when: {always: true},
      quote: "Assess LVEF prior to initiation of KADCYLA and at regular intervals (e.g. every three months) during treatment to ensure the LVEF is within the institution's normal limits."}
+  # blood counts and HbA1c (routine labs; added 2026-10-12)
+  - {adc: trastuzumab-emtansine, domain: blood, category: insufficient_data, section: "5.7", when: {platelets_lt: 100},
+     quote: "KADCYLA has not been studied in patients with platelet counts < 100,000/mm3 prior to initiation of treatment."}
+  - {adc: sacituzumab-govitecan, domain: blood, category: avoid, section: "Boxed", when: {anc_lt: 1.5},
+     quote: "Withhold TRODELVY for absolute neutrophil count below 1500/mm3 or neutropenic fever."}
+  - {adc: loncastuximab-tesirine, domain: blood, category: avoid, section: "2.3", when: {anc_lt: 1.0},
+     quote: "Withhold ZYNLONTA until neutrophil counts returns to 1 × 109/L or higher"}
+  - {adc: loncastuximab-tesirine, domain: blood, category: avoid, section: "2.3", when: {platelets_lt: 50},
+     quote: "Withhold ZYNLONTA until platelet count returns to 50,000/mcL or higher"}
+  - {adc: enfortumab-vedotin, domain: metabolic, category: insufficient_data, section: "5.2", when: {hba1c_ge: 8},
+     quote: "Patients with baseline hemoglobin A1C ≥8% were excluded from clinical trials."}

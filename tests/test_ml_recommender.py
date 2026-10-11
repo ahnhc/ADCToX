@@ -148,6 +148,32 @@ def test_priority_order_decides_between_organs():
         RC.PRIORITY = {}
 
 
+def test_lab_report_values_are_converted_to_what_the_labels_read():
+    import labs as LB
+    lab, flags, notes = LB.derive(dict(age=70, sex="F", weight=55, creatinine=1.3, bilirubin=2.4, ast=50, alt=130, hb=9.2, platelet=80, anc=1.2, hba1c=8.4))
+    assert abs(lab["crcl"] - (140 - 70) * 55 / (72 * 1.3) * 0.85) < 0.1               # Cockcroft-Gault, female
+    assert lab["bili"] == 2.0 and lab["ast"] == 1.25 and lab["alt"] == 3.25              # x ULN with 1.2 / 40 / 40
+    assert {o for o, _ in flags} == {"haematologic", "hepatic", "metabolic_endocrine"}    # Hb, ANC; bilirubin, ALT; HbA1c
+    lab, _, notes = LB.derive(dict(egfr=45))
+    assert lab["crcl"] == 45 and any("approximation" in n for n in notes)               # eGFR stands in, and says so
+    assert LB.derive(dict(creatinine=1.3))[0].get("crcl") is None                       # creatinine alone gives no CLcr
+
+
+def test_free_text_is_split_on_commas_whatever_the_spacing():
+    import form
+    assert form.split_free("copd ,   asthma,heart   stop , ,") == ["copd", "asthma", "heart stop"]
+
+
+@needs_labels
+def test_blood_count_and_hba1c_rules():
+    import restrictions as R
+    J = lambda adc, **kw: R.summary(R.judge(R.Patient(**kw), [adc])[adc])
+    assert J("trastuzumab-emtansine", platelets=80).startswith("Insufficient data (blood")
+    assert J("sacituzumab-govitecan", anc=1.2).startswith("Avoid (blood")
+    assert J("sacituzumab-govitecan", anc=2.0) == "-"
+    assert J("enfortumab-vedotin", hba1c=8.5).startswith("Insufficient data (metabolic")
+
+
 @needs_cache
 def test_no_min_max_rescaling_and_no_percentage():
     import recommend as RC

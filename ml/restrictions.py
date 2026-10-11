@@ -25,8 +25,9 @@ TIER = {"no_adjustment": 0, "monitor": 1, "reduce_dose": 1, "no_statement": 2, "
 SHORT = {"no_adjustment": "No adjustment", "monitor": "Monitor", "reduce_dose": "Dose reduction required", "no_statement": "No label statement",
          "insufficient_data": "Insufficient data", "avoid": "Avoid", "contraindicated": "Contraindicated"}
 COVERED = ("renal", "hepatic")                       # domains where silence is reported as "no label statement"
-DOMAIN_AXIS = {"renal": "renal", "hepatic": "hepatic", "cardiac": "cardiovascular", "ocular": "ocular"}
-NEEDS = {"renal": "CLcr (Cockcroft-Gault), dialysis/ESRD status if CLcr < 15", "hepatic": "total bilirubin / AST / ALT (x ULN), Child-Pugh", "cardiac": "baseline LVEF"}
+DOMAIN_AXIS = {"renal": "renal", "hepatic": "hepatic", "cardiac": "cardiovascular", "ocular": "ocular", "blood": "haematologic", "metabolic": "metabolic_endocrine"}
+NEEDS = {"renal": "Creatinine + age/sex/weight or eGFR (dialysis/ESRD status if CLcr < 15)", "hepatic": "Bilirubin, AST, ALT (or Child-Pugh)",
+         "cardiac": "LVEF", "blood": "Platelet, ANC", "metabolic": "HbA1c"}
 INF = float("inf")
 # words for the result table: Clear = the label settles it (no adjustment), Unclear = the label says data are limited/unknown,
 # No data = the label says nothing about this patient's state
@@ -56,6 +57,9 @@ class Patient:
     alt: float | None = None
     child_pugh: str | None = None
     lvef: float | None = None
+    platelets: float | None = None     # x10^3/uL
+    anc: float | None = None           # x10^3/uL
+    hba1c: float | None = None         # %
     ugt1a1_28_homozygous: bool | None = None
 
     def __post_init__(self):
@@ -70,6 +74,8 @@ def _domains(p, rules):
     if p.crcl is not None or p.esrd: on.add("renal")
     if p.bili is not None or p.ast is not None or p.alt is not None or p.child_pugh: on.add("hepatic")
     if p.lvef is not None: on.add("cardiac")
+    if p.platelets is not None or p.anc is not None: on.add("blood")
+    if p.hba1c is not None: on.add("metabolic")
     if p.ugt1a1_28_homozygous is not None: on.add("genotype")
     for r in rules:
         if set(r["when"].get("condition", [])) & p.conditions: on.add(r["domain"])
@@ -90,6 +96,12 @@ def _grid(p, domain):
         ls = [p.alt] if p.alt is not None else [0.8, 2.0, 2.8, 4.0]
         cs = [p.child_pugh] if p.child_pugh else ["A", "B", "C"]
         return [dict(bili=b, ast=a, alt=l, child_pugh=c) for b in bs for a in as_ for l in ls for c in cs]
+    if domain == "blood":
+        ps = [p.platelets] if p.platelets is not None else [40, 60, 90, 150]
+        ns = [p.anc] if p.anc is not None else [0.8, 1.2, 2.0]
+        return [dict(platelets=a, anc=b) for a in ps for b in ns]
+    if domain == "metabolic":
+        return [dict(hba1c=v) for v in ([p.hba1c] if p.hba1c is not None else [6.0, 9.0])]
     if domain == "cardiac":
         return [dict(lvef=v) for v in ([p.lvef] if p.lvef is not None else [35, 45, 55])]
     return [dict()]
@@ -107,12 +119,14 @@ def _holds(when, st, p):
             if p.ugt1a1_28_homozygous != v: return False
             continue
         key = {"crcl_lt": "crcl", "crcl_ge": "crcl", "bili_gt": "bili", "bili_le": "bili", "ast_gt": "ast", "ast_le": "ast", "alt_gt": "alt", "alt_le": "alt",
-               "lvef_lt": "lvef", "lvef_ge": "lvef", "child_pugh": "child_pugh", "esrd": "esrd"}[k]
+               "lvef_lt": "lvef", "lvef_ge": "lvef", "child_pugh": "child_pugh", "esrd": "esrd",
+               "platelets_lt": "platelets", "anc_lt": "anc", "hba1c_ge": "hba1c"}[k]
         x = st.get(key)
         if x is None: return None
         ok = {"crcl_lt": lambda: x < v, "crcl_ge": lambda: x >= v, "bili_gt": lambda: x > v, "bili_le": lambda: x <= v,
               "ast_gt": lambda: x > v, "ast_le": lambda: x <= v, "alt_gt": lambda: x > v, "alt_le": lambda: x <= v, "lvef_lt": lambda: x < v, "lvef_ge": lambda: x >= v,
-              "child_pugh": lambda: x in v, "esrd": lambda: x == v}[k]()
+              "child_pugh": lambda: x in v, "esrd": lambda: x == v,
+              "platelets_lt": lambda: x < v, "anc_lt": lambda: x < v, "hba1c_ge": lambda: x >= v}[k]()
         if not ok: return False
     return True
 

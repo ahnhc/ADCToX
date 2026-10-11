@@ -1,7 +1,8 @@
 """Patient comorbidities (and, optionally, lab values) in; every approved ADC out, ordered by what its label says about THIS patient.
 
     /data/hyeongchanahn/envs/adctox/bin/python -I ml/recommend.py ckd_stage_3 heart_failure --crcl 45 --lvef 48
-    lab flags: --crcl --bili --ast --alt (x ULN) --child-pugh A|B|C --lvef --ugt1a1-28-homozygous
+    lab-report values: --lab creatinine=1.3 --lab age=70 --lab sex=F --lab weight=55 --lab bilirubin=2.0 --lab ast=50 ... (ml/labs.py FIELDS)
+    or already in label form: --crcl --bili --ast --alt (x ULN) --child-pugh A|B|C --lvef --ugt1a1-28-homozygous
 
 Order, most favourable first (a lexicographic key, so nothing below can buy back anything above):
   1. label use restriction for this patient (ml/restrictions.py, conf/label_restrictions.yaml), worst case over the lab
@@ -142,9 +143,33 @@ def unresolved(conditions):
     finally: LEARNED_FRACTION, FALLBACK = keep
 
 
-def recommend(conditions, labs=None):
-    """-> rows (ordered), s {axis: value}, notes, checks"""
-    labs = labs or {}; s, own_axes, ids, notes, pc = resolve(conditions); E = DE.evidence(); adcs = sorted(E)
+def _lab_organs(raw, s, own_axes, notes, pc):
+    """abnormal lab values mark their organ (ml/labs.py FLAGS), in place; -> the restriction inputs derived from raw."""
+    import labs as LB
+    lab, flags, lnotes = LB.derive(raw); by = {}
+    for organ, why in flags: by.setdefault(organ, []).append(why.split(" (")[0])
+    for organ, whys in by.items():
+        name = "Lab: " + ", ".join(whys); k = AXES.index(organ)
+        s[k] = max(s[k], MONDO_SEVERITY); own_axes.add(organ); pc.append((name, {organ}, MONDO_SEVERITY)); notes.append((name, f"lab value -> organ: {organ}"))
+    notes += [("Lab", n) for n in lnotes]
+    return lab
+
+
+def patient_conditions(conditions, raw=None):
+    """[(condition or lab flag, organs, value)] as the priority step sees them."""
+    s, own_axes, ids, notes, pc = resolve(conditions)
+    if raw: _lab_organs(raw, s.copy(), set(own_axes), [], pc)
+    return pc
+
+
+def recommend(conditions, labs=None, raw=None):
+    """-> rows (ordered), s {axis: value}, notes, checks. labs: restriction inputs as the rules read them (x ULN, CLcr);
+    raw: lab-report values (ml/labs.py FIELDS), converted here; an abnormal value also marks its organ."""
+    import labs as LB
+    labs = dict(labs or {}); s, own_axes, ids, notes, pc = resolve(conditions); E = DE.evidence(); adcs = sorted(E)
+    if raw:
+        labs = {**_lab_organs(raw, s, own_axes, notes, pc), **labs}
+        conditions = list(conditions) + [c for c, _, _ in pc if c.startswith("Lab: ")]
     lv = priority(pc); nlev = max(lv.values(), default=0); org_lv = {}
     for c, orgs, _ in pc:
         for a in orgs: org_lv[a] = min(org_lv.get(a, nlev), lv[c])
@@ -227,18 +252,40 @@ def _table(rows, paint=lambda t, c: t):
     return out, at
 
 
+WHEN_TXT = {"crcl_lt": "CLcr < {}", "crcl_ge": "CLcr ≥ {}", "bili_gt": "bilirubin > {}×ULN", "bili_le": "bilirubin ≤ {}×ULN",
+            "ast_gt": "AST > {}×ULN", "ast_le": "AST ≤ {}×ULN", "alt_gt": "ALT > {}×ULN", "alt_le": "ALT ≤ {}×ULN",
+            "lvef_lt": "LVEF < {}%", "platelets_lt": "platelets < {}k", "anc_lt": "ANC < {}k", "hba1c_ge": "HbA1c ≥ {}%"}
+
+
+def _when(w):
+    parts = []
+    for k, v in w.items():
+        if k in WHEN_TXT: parts.append(WHEN_TXT[k].format(v))
+        elif k == "esrd": parts.append("ESRD/dialysis" if v else "not on dialysis")
+        elif k == "child_pugh": parts.append("Child-Pugh " + "/".join(v))
+        elif k == "condition": parts.append(" or ".join(_reg[c]["label"] if c in _reg else c for c in v))
+        elif k == "ugt1a1_28_homozygous": parts.append("UGT1A1*28 homozygous")
+    return ", ".join(parts)
+
+
 def reasons(r):
-    """lines explaining one row: each label restriction with its section and verbatim text, and what is still open."""
-    v = r["verdict"]; out = [f"{r['name']}  —  {r['restriction_ko']}", ""]
-    items = [(c, rr, True) for c, rr in v.known] + [(c, rr, False) for c, rr in v.possible]
-    items = [x for x in items if x[0] != "no_adjustment" or len(items) == 1]
-    for c, rr, sure in sorted(items, key=lambda x: (-RS.TIER[x[0]], not x[2])):
-        out.append(f"{RS.TABLE[c]}{'' if sure else '?'} ({rr['domain']}, §{rr['section']}): \"{rr['quote']}\"")
-    for d, sure in v.silent:
-        out.append(f"No data{'' if sure else '?'} ({d}): 허가사항 8.6/8.7절에 이 환자의 {d} 상태에 대한 언급이 없음")
-    if v.missing: out.append(f"? 를 확정하려면 입력: {'; '.join(v.missing)}")
-    if not items and not v.silent: out.append("이 환자에게 해당하는 투여 제한 없음")
-    out.append(""); out.append(f"Your organs  Primary: {', '.join(EN[a] for a in r['boxed']) or '-'}   Secondary: {', '.join(EN[a] for a in r['warn']) or '-'}")
+    """one plain line per label domain: what is settled and why, or that the entered values cannot settle it yet."""
+    v = r["verdict"]; out = [r["name"]]; doms = {}
+    for c, rr in v.known: doms.setdefault(rr["domain"], {"known": [], "possible": []})["known"].append((c, rr))
+    for c, rr in v.possible: doms.setdefault(rr["domain"], {"known": [], "possible": []})["possible"].append((c, rr))
+    silent = dict(v.silent)
+    for d in sorted(set(doms) | set(silent)):
+        kn = doms.get(d, {}).get("known", []); po = [x for x in doms.get(d, {}).get("possible", []) if RS.TIER[x[0]] > max([RS.TIER[c] for c, _ in kn] + [-1])]
+        if kn:
+            c, rr = max(kn, key=lambda x: RS.TIER[x[0]]); cond = _when(rr["when"])
+            out.append(f"  {d}: {RS.TABLE[c]}" + (f" ({cond})" if cond else ""))
+        elif d in silent and silent[d]:
+            out.append(f"  {d}: No data (the label says nothing for this patient)")
+        if po or (d in silent and not silent[d]):
+            worst = max(po, key=lambda x: RS.TIER[x[0]]) if po else None
+            out.append(f"  {d}: 현재 입력값으로는 확정할 수 없음" + (f" ({_when(worst[1]['when'])}이면 {RS.TABLE[worst[0]]})" if worst and _when(worst[1]['when']) else "")
+                       + f" → {RS.NEEDS.get(d, d)} 입력")
+    if len(out) == 1: out.append("  이 환자에게 해당하는 투여 제한 없음")
     return out
 
 
@@ -297,88 +344,22 @@ KO = {"chronic_liver_disease": "만성 간질환", "cirrhosis": "간경변", "he
       "severe_psoriasis": "중증 건선", "prior_sjs_ten": "스티븐스-존슨 증후군/TEN 병력", "type_2_diabetes": "제2형 당뇨병", "hypothyroidism": "갑상선기능저하증",
       "hiv_controlled": "HIV 감염 (치료 중)", "active_autoimmune": "활동성 자가면역질환", "hearing_loss": "감각신경성 난청"}
 COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)  ·  / 검색  ·  ENTER 확정")
-LABS_ASK_Q = ("입력할 검사 수치가 있나요?", "")
-LABS_PICK_Q = ("검사 수치 선택", "")
-LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "alt": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
-PRIORITY_MODE_Q = "질환 우선순위"
 PRIORITY_Q = ("어느 질환 쪽 독성을 먼저 피할까요?", "1 = 가장 먼저. 같은 숫자는 같은 순위. 순위가 높은 질환의 장기에 경고가 있는 약이 뒤로 갑니다.")
 FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
 FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용 (추정값 × 0.25)", 0.25), ("사용 (추정값 × 0.5)", 0.5)]
-LAB_FIELDS = [("crcl", "CLcr, Cockcroft-Gault (mL/min)", float), ("bili", "total bilirubin (x ULN)", float), ("ast", "AST (x ULN)", float), ("alt", "ALT (x ULN)", float),
-              ("child_pugh", "Child-Pugh class (A/B/C)", lambda x: x.strip().upper() if x.strip().upper() in ("A", "B", "C") else None),
-              ("lvef", "baseline LVEF (%)", float), ("ugt1a1_28_homozygous", "UGT1A1*28 homozygous (y/n)", lambda x: {"y": True, "n": False}.get(x.strip().lower()))]
-
-
-def lab_uses():
-    """lab field -> ADC names whose label restrictions it can change (from conf/label_restrictions.yaml), fields most used first."""
-    keys = {"crcl": ("crcl_lt", "crcl_ge", "esrd"), "bili": ("bili_gt", "bili_le"), "ast": ("ast_gt", "ast_le"), "alt": ("alt_gt", "alt_le"), "child_pugh": ("child_pugh",),
-            "lvef": ("lvef_lt",), "ugt1a1_28_homozygous": ("ugt1a1_28_homozygous",)}
-    E = DE.evidence(); use = {k: sorted({E[r["adc"]]["name"] for r in RS.load_rules() if r["adc"] in E and set(r["when"]) & set(v)}) for k, v in keys.items()}
-    return sorted(((k, q, cast, use[k]) for k, q, cast in LAB_FIELDS), key=lambda x: -len(x[3]))
-
-
-ABBR = {"Trastuzumab deruxtecan": "T-DXd", "Trastuzumab emtansine": "T-DM1", "Datopotamab deruxtecan": "Dato-DXd"}
-def _short(names, n=4):
-    s = [ABBR.get(x, x.split()[0]) for x in names]; return ", ".join(s[:n]) + (f" 외 {len(s) - n}개" if len(s) > n else "")
-
-
-def _ask_labs(tui=None):
-    """first: are there any lab values at all? then: which ones (with why each matters); then only those values."""
-    labs = {}; fields = lab_uses()
-    if tui:
-        if tui.radiolist(LABS_ASK_Q[0], [("없음", ""), ("있음", "")], default=0, description=LABS_ASK_Q[1]) == 0: return labs
-        items = [(q, f"{LABS_WHY[k]} · {_short(u)}") for k, q, _, u in fields]
-        pick = tui.checklist(LABS_PICK_Q[0], items, checked=[], description=LABS_PICK_Q[1], min_one=False) or []
-    else:
-        try: has = input(f"\n{LABS_ASK_Q[0]} (y = 있음, Enter = 없음) > ").strip().lower()
-        except EOFError: has = ""
-        if has != "y": return labs
-        for i, (k, q, _, u) in enumerate(fields, 1): print(f"  {i}) {q:<32} {LABS_WHY[k]} · {_short(u)}")
-        try: raw = input("  번호 (쉼표 구분, Enter = 없음) > ")
-        except EOFError: raw = ""
-        pick = [int(x) - 1 for x in raw.replace(" ", "").split(",") if x.isdigit() and 1 <= int(x) <= len(fields)]
-    if pick: print()
-    for k, q, cast, _ in (fields[i] for i in pick):
-        try: raw = input(f"  {q} (Enter = 건너뜀) > ").strip()
-        except EOFError: break
-        if not raw: continue
-        try:
-            v = cast(raw)
-            if v is not None: labs[k] = v
-        except ValueError: print("    (ignored: not a number)")
-    return labs
-
-
 def _tui_ok():
     try: import curses  # noqa: F401
     except ImportError: return False
     return sys.stdin.isatty() and sys.stdout.isatty() and os.environ.get("TERM", "dumb") != "dumb"
 
 
-def _ask_priority(conds, tui=None):
-    """two or more conditions on different organs: let the user order them (1 = avoid its organs' toxicity first)."""
+def _ask_priority_pc(pc):
     global PRIORITY
-    pc = resolve(conds)[4]
-    if len(pc) < 2 or len({frozenset(o) for _, o, _ in pc}) < 2: return
-    d = default_levels(pc); names = [c for c, _, _ in pc]
-    show = lambda c: _reg[c]["label"] if c in _reg else c
-    det = lambda c, o: " ".join(x for x in (KO.get(c, ""), "(" + ", ".join(ORGAN_KO[a] for a in sorted(o, key=AXES.index)) + ")") if x)
-    auto = "  ".join(f"{d[c]} {KO.get(c, show(c))}" for c in sorted(names, key=lambda c: d[c]))
-    if tui:
-        if tui.radiolist(PRIORITY_MODE_Q, [("자동 (질환 심각도 순)", ""), ("직접 정하기", "")], default=0, description=f"자동: {auto}") == 0:
-            PRIORITY = {}; return
-        w = max(len(show(c)) for c in names)
-        lv = tui.ranklist(PRIORITY_Q[0], [(f"{show(c):<{w}}", det(c, o)) for c, o, _ in pc], [d[c] for c in names], description=PRIORITY_Q[1])
-    else:
-        try: manual = input(f"\n{PRIORITY_MODE_Q} 자동: {auto}\n  직접 정할까요? (y = 직접, Enter = 자동) > ").strip().lower() == "y"
-        except EOFError: manual = False
-        if not manual: PRIORITY = {}; return
-        print(f"\n{PRIORITY_Q[0]} - {PRIORITY_Q[1]}")
-        for i, (c, o, _) in enumerate(pc, 1): print(f"  {i}) {show(c):<34} {det(c, o)}   기본 {d[c]}")
-        try: raw = input("  질환 순서대로 순위 입력 (예: 2 1 1, Enter = 기본) > ").split()
-        except EOFError: raw = []
-        lv = [int(x) for x in raw] if len(raw) == len(pc) and all(x.isdigit() and int(x) >= 1 for x in raw) else [d[c] for c in names]
-    PRIORITY = dict(zip(names, lv))
+    d = default_levels(pc); names = [c for c, _, _ in pc]; show = lambda c: _reg[c]["label"] if c in _reg else c
+    print("\n질환 우선순위  자동: " + "  ".join(f"{d[c]} {show(c)}" for c in sorted(names, key=lambda c: d[c])))
+    try: raw = input("  직접 정하려면 질환 순서대로 순위 입력 (예: 2 1 1), Enter = 자동 > ").split()
+    except EOFError: raw = []
+    PRIORITY = dict(zip(names, [int(x) for x in raw])) if len(raw) == len(names) and all(x.isdigit() and int(x) >= 1 for x in raw) else {}
 
 
 def _ask_fallback(conds, radio=None):
@@ -397,38 +378,34 @@ def _ask_fallback(conds, radio=None):
 
 
 def wizard():
+    """-> (conditions, labs (x ULN form; empty), colour, raw lab values). One curses screen when possible, plain prompts otherwise."""
+    import form, labs as LB
     if _tui_ok():
-        import tui
-        items, slot, heads = [("✎ 직접 입력 (영어)", "")], {0: None}, set(); by = {}
-        for i in _reg: by.setdefault(_reg[i]["organ_axes"].split(";")[0], []).append(i)
-        for organ in AXES:                                              # grouped by the condition's main organ
-            if organ not in by: continue
-            heads.add(len(items)); items.append((f"{EN[organ]} · {ORGAN_KO[organ]}", ""))
-            for i in by[organ]: slot[len(items)] = i; items.append((f"{_reg[i]['label']:<42} {KO.get(i, '')}", ""))
-        pick = tui.checklist(COND_Q[0], items, checked=[], description=COND_Q[1], min_one=True, headers=heads)
-        conds = ["interstitial_lung_disease"] if pick is None else [slot[i] for i in pick if slot.get(i)]
-        if pick and 0 in pick:
-            try: extra = input("\nType other conditions in English (comma separated, Enter to skip) > ").strip()
-            except EOFError: extra = ""
-            conds += [t.strip() for t in extra.split(",") if t.strip()]
-        conds = conds or ["interstitial_lung_disease"]
-        labs = _ask_labs(tui)
-        _ask_fallback(conds, tui.radiolist)
-        _ask_priority(conds, tui)
-        col = None                                                      # colour: on in a terminal, off when piped (NO_COLOR to force off)
-    else:
-        ids = list(_reg)
-        try: raw = input("기저질환 (번호/ID/영어, 쉼표 구분; ? = 목록) > ").strip()
-        except EOFError: raw = ""
-        while raw == "?":
-            for k, i in enumerate(ids, 1): print(f"  {k:>2}) {i:<28} {_reg[i]['label']}")
-            try: raw = input("기저질환 > ").strip()
-            except EOFError: raw = ""
-        conds = [ids[int(t) - 1] if t.strip().isdigit() and 1 <= int(t) <= len(ids) else t.strip() for t in raw.split(",") if t.strip()] or ["interstitial_lung_disease"]
-        labs = _ask_labs(); col = None
-        _ask_fallback(conds)
-        _ask_priority(conds)
-    return conds, labs, col
+        r = form.run(sys.modules[__name__])
+        if r is None: sys.exit(0)
+        conds, raw = r; return conds, {}, None, raw
+    ids = list(_reg)
+    try: text = input("기저질환 (번호/ID/영어, 쉼표 구분; ? = 목록) > ")
+    except EOFError: text = ""
+    while text.strip() == "?":
+        for k, i in enumerate(ids, 1): print(f"  {k:>2}) {i:<28} {_reg[i]['label']}")
+        try: text = input("기저질환 > ")
+        except EOFError: text = ""
+    conds = [ids[int(x) - 1] if x.isdigit() and 1 <= int(x) <= len(ids) else x for x in form.split_free(text)] or ["interstitial_lung_disease"]
+    raw = {}
+    try: has = input("검사 수치가 있나요? (y = 있음, Enter = 없음) > ").strip().lower() == "y"
+    except EOFError: has = False
+    for k, label, unit, _ in (LB.FIELDS if has else []):
+        try: v = input(f"  {label} ({unit}) > ")
+        except EOFError: break
+        try:
+            x = LB.parse(k, v)
+            if x is not None: raw[k] = x
+        except ValueError as err: print(f"    (ignored: {err})")
+    _ask_fallback(conds)
+    pc = patient_conditions(conds, raw)
+    if len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2: _ask_priority_pc(pc)
+    return conds, {}, None, raw
 
 
 def parse_args(argv):
@@ -441,6 +418,9 @@ def parse_args(argv):
         elif a == "--child-pugh": labs["child_pugh"] = argv[i + 1].upper(); i += 1
         elif a == "--learned": flags["learned"] = float(argv[i + 1]); i += 1
         elif a == "--learned-fallback": flags["fallback"] = float(argv[i + 1]); i += 1
+        elif a == "--lab":
+            import labs as LB
+            k, val = argv[i + 1].split("=", 1); flags.setdefault("raw", {})[k.strip().lower()] = LB.parse(k.strip().lower(), val); i += 1
         elif a == "--priority": flags["priority"] = [int(x) for x in argv[i + 1].split(",")]; i += 1
         else: args.append(a)
         i += 1
@@ -462,11 +442,12 @@ if __name__ == "__main__":
     if flags.get("fallback") and args: FALLBACK = {c: flags["fallback"] for c in unresolved(args)}
     if flags.get("priority") and args: PRIORITY = dict(zip(args, flags["priority"]))
     while True:
+        raw = flags.get("raw")
         if args: conds, col = args, None
-        elif sys.stdin.isatty(): conds, labs, col = wizard()
+        elif sys.stdin.isatty(): conds, labs, col, raw = wizard()
         else: conds, col = ["interstitial_lung_disease"], None
         print()
-        rows, s, notes, ck = recommend(conds, labs)
+        rows, s, notes, ck = recommend(conds, labs, raw)
         if not args and _tui_ok(): browse(rows)                       # pick a row, read why; then the table stays in the scrollback
         render(rows, s, notes, ck, detail=flags["detail"], color=col)
         if args or not sys.stdin.isatty(): break
