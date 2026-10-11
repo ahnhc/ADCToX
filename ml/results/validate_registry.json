@@ -1,0 +1,2093 @@
+{
+ "tau_0.8": {
+  "summary": {
+   "mlp": {
+    "mean_auroc": 0.8547671840354768,
+    "lo": 0.7915696600147819,
+    "hi": 0.9113082039911309,
+    "n": 41
+   },
+   "mlp_std": {
+    "mean_auroc": 0.8451589061345158,
+    "lo": 0.778820214338507,
+    "hi": 0.9035522912047302,
+    "n": 41
+   },
+   "knn": {
+    "mean_auroc": 0.8347081930415264,
+    "lo": 0.7395819304152637,
+    "hi": 0.9137205387205386,
+    "n": 36
+   },
+   "raw": {
+    "mean_auroc": 0.7851071692535107,
+    "lo": 0.7025129342202513,
+    "hi": 0.8623429416112341,
+    "n": 41
+   },
+   "mlp_minus_knn": {
+    "delta": 0.0045173961840628335,
+    "lo": -0.1041550925925926,
+    "hi": 0.1203507295173962
+   },
+   "top1_hits_curated": 0.3902439024390244,
+   "top3_hits_curated": 0.8780487804878049
+  },
+  "per_condition": [
+   {
+    "id": "chronic_liver_disease",
+    "n_banned": 0,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.6666666666666666,
+    "knn": 0.9,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "cirrhosis",
+    "n_banned": 2,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.5833333333333334,
+    "knn": 1.0,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "hepatitis_b_chronic",
+    "n_banned": 0,
+    "mlp": 0.6818181818181818,
+    "mlp_std": 0.8181818181818182,
+    "knn": 0.5,
+    "raw": 0.6363636363636364,
+    "top3": [
+     "hepatic",
+     "musculoskeletal",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "hepatitis_c_chronic",
+    "n_banned": 2,
+    "mlp": 0.6818181818181818,
+    "mlp_std": 0.8181818181818182,
+    "knn": 0.5,
+    "raw": 0.6363636363636364,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "hepatic_vod_history",
+    "n_banned": 0,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.5,
+    "knn": 0.8181818181818182,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "nafld",
+    "n_banned": 1,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.75,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "ckd_stage_3",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 0.75,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "renal",
+     "metabolic_endocrine",
+     "neurologic"
+    ],
+    "curated": [
+     "renal"
+    ]
+   },
+   {
+    "id": "ckd_stage_4_5",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "renal",
+     "musculoskeletal",
+     "metabolic_endocrine"
+    ],
+    "curated": [
+     "renal"
+    ]
+   },
+   {
+    "id": "dialysis",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 0.8333333333333334,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "renal",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "renal"
+    ]
+   },
+   {
+    "id": "heart_failure",
+    "n_banned": 1,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "cardiovascular",
+     "metabolic_endocrine",
+     "renal"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "reduced_lvef",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "cardiovascular",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "prior_anthracycline",
+    "n_banned": 0,
+    "mlp": 0.25,
+    "mlp_std": 0.4166666666666667,
+    "knn": 1.0,
+    "raw": 0.4166666666666667,
+    "top3": [
+     "musculoskeletal",
+     "pulmonary",
+     "haematologic"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "coronary_artery_disease",
+    "n_banned": 1,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "metabolic_endocrine",
+     "cardiovascular",
+     "haematologic"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "qt_prolongation",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 0.8333333333333334,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "cardiovascular",
+     "haematologic",
+     "pulmonary"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "interstitial_lung_disease",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "pulmonary",
+     "neurologic",
+     "musculoskeletal"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "pulmonary_fibrosis",
+    "n_banned": 1,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "musculoskeletal",
+     "pulmonary",
+     "haematologic"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "copd",
+    "n_banned": 1,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "pulmonary",
+     "musculoskeletal",
+     "haematologic"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "prior_chest_radiation",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 0.9166666666666666,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "pulmonary",
+     "musculoskeletal",
+     "neurologic"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "peripheral_neuropathy",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "neurologic",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "neurologic"
+    ]
+   },
+   {
+    "id": "diabetic_neuropathy",
+    "n_banned": 1,
+    "mlp": 1.0,
+    "mlp_std": 0.9545454545454546,
+    "knn": 0.8333333333333334,
+    "raw": 1.0,
+    "top3": [
+     "neurologic",
+     "metabolic_endocrine",
+     "renal"
+    ],
+    "curated": [
+     "metabolic_endocrine",
+     "neurologic"
+    ]
+   },
+   {
+    "id": "multiple_sclerosis",
+    "n_banned": 2,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 0.09090909090909091,
+    "raw": 1.0,
+    "top3": [
+     "neurologic",
+     "dermatologic",
+     "haematologic"
+    ],
+    "curated": [
+     "neurologic"
+    ]
+   },
+   {
+    "id": "keratopathy_history",
+    "n_banned": 0,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "musculoskeletal",
+     "ocular",
+     "dermatologic"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "dry_eye",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 1.0,
+    "top3": [
+     "ocular",
+     "dermatologic",
+     "musculoskeletal"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "glaucoma",
+    "n_banned": 1,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "ocular",
+     "otologic",
+     "neurologic"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "prior_corneal_surgery",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 1.0,
+    "top3": [
+     "ocular",
+     "musculoskeletal",
+     "neurologic"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "thrombocytopenia",
+    "n_banned": 1,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.8333333333333334,
+    "knn": 0.9090909090909091,
+    "raw": 0.75,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "itp",
+    "n_banned": 0,
+    "mlp": 0.6818181818181818,
+    "mlp_std": 0.7272727272727273,
+    "knn": 0.6666666666666666,
+    "raw": 0.5,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "neutropenia_chronic",
+    "n_banned": 0,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.75,
+    "knn": 1.0,
+    "raw": 0.75,
+    "top3": [
+     "neurologic",
+     "pulmonary",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "anaemia_chronic",
+    "n_banned": 0,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.75,
+    "top3": [
+     "musculoskeletal",
+     "haematologic",
+     "renal"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "mds",
+    "n_banned": 0,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.9166666666666666,
+    "knn": 1.0,
+    "raw": 0.75,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "prior_hsct",
+    "n_banned": 0,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.5833333333333334,
+    "knn": 0.3333333333333333,
+    "raw": 0.75,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "inflammatory_bowel_disease",
+    "n_banned": 0,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.9166666666666666,
+    "knn": NaN,
+    "raw": 0.5,
+    "top3": [
+     "musculoskeletal",
+     "gastrointestinal",
+     "haematologic"
+    ],
+    "curated": [
+     "gastrointestinal"
+    ]
+   },
+   {
+    "id": "prior_bowel_resection",
+    "n_banned": 0,
+    "mlp": 0.6666666666666666,
+    "mlp_std": 0.8333333333333334,
+    "knn": 1.0,
+    "raw": 0.5,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "gastrointestinal"
+    ]
+   },
+   {
+    "id": "chronic_pancreatitis",
+    "n_banned": 1,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.9166666666666666,
+    "knn": 0.9,
+    "raw": 0.5,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "gastrointestinal"
+    ],
+    "curated": [
+     "gastrointestinal"
+    ]
+   },
+   {
+    "id": "severe_psoriasis",
+    "n_banned": 3,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.8333333333333334,
+    "knn": 0.9090909090909091,
+    "raw": 0.25,
+    "top3": [
+     "musculoskeletal",
+     "dermatologic",
+     "ocular"
+    ],
+    "curated": [
+     "dermatologic"
+    ]
+   },
+   {
+    "id": "prior_sjs_ten",
+    "n_banned": 0,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 0.8333333333333334,
+    "raw": 0.8333333333333334,
+    "top3": [
+     "musculoskeletal",
+     "dermatologic",
+     "ocular"
+    ],
+    "curated": [
+     "dermatologic"
+    ]
+   },
+   {
+    "id": "type_2_diabetes",
+    "n_banned": 3,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 0.0,
+    "raw": 1.0,
+    "top3": [
+     "renal",
+     "metabolic_endocrine",
+     "hepatic"
+    ],
+    "curated": [
+     "metabolic_endocrine"
+    ]
+   },
+   {
+    "id": "hypothyroidism",
+    "n_banned": 1,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.9166666666666666,
+    "knn": 0.2222222222222222,
+    "raw": 1.0,
+    "top3": [
+     "neurologic",
+     "hepatic",
+     "metabolic_endocrine"
+    ],
+    "curated": [
+     "metabolic_endocrine"
+    ]
+   },
+   {
+    "id": "hiv_controlled",
+    "n_banned": 0,
+    "mlp": 0.5,
+    "mlp_std": 0.8333333333333334,
+    "knn": 1.0,
+    "raw": 0.25,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "renal"
+    ],
+    "curated": [
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "active_autoimmune",
+    "n_banned": 1,
+    "mlp": 0.3333333333333333,
+    "mlp_std": 0.5833333333333334,
+    "knn": 0.8,
+    "raw": 0.25,
+    "top3": [
+     "musculoskeletal",
+     "renal",
+     "ocular"
+    ],
+    "curated": [
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "hearing_loss",
+    "n_banned": 1,
+    "mlp": 0.25,
+    "mlp_std": 0.0,
+    "knn": 1.0,
+    "raw": 0.0,
+    "top3": [
+     "ocular",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "otologic"
+    ]
+   }
+  ]
+ },
+ "tau_0.65": {
+  "summary": {
+   "mlp": {
+    "mean_auroc": 0.844789356984479,
+    "lo": 0.7775221729490022,
+    "hi": 0.9065040650406504,
+    "n": 41
+   },
+   "mlp_std": {
+    "mean_auroc": 0.8420177383592018,
+    "lo": 0.774390243902439,
+    "hi": 0.8983739837398375,
+    "n": 41
+   },
+   "knn": {
+    "mean_auroc": 0.8565929565929566,
+    "lo": 0.7788677313677314,
+    "hi": 0.923996723996724,
+    "n": 37
+   },
+   "raw": {
+    "mean_auroc": 0.7729120473022912,
+    "lo": 0.6975101626016259,
+    "hi": 0.8427706947524022,
+    "n": 41
+   },
+   "mlp_minus_knn": {
+    "delta": -0.026330876330876343,
+    "lo": -0.1259316134316134,
+    "hi": 0.07359131859131858
+   },
+   "top1_hits_curated": 0.36585365853658536,
+   "top3_hits_curated": 0.8292682926829268
+  },
+  "per_condition": [
+   {
+    "id": "chronic_liver_disease",
+    "n_banned": 5,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.75,
+    "knn": 1.0,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "cirrhosis",
+    "n_banned": 3,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.6666666666666666,
+    "knn": 1.0,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "renal"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "hepatitis_b_chronic",
+    "n_banned": 2,
+    "mlp": 0.6818181818181818,
+    "mlp_std": 0.7727272727272727,
+    "knn": 0.5,
+    "raw": 0.6363636363636364,
+    "top3": [
+     "hepatic",
+     "musculoskeletal",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "hepatitis_c_chronic",
+    "n_banned": 2,
+    "mlp": 0.6818181818181818,
+    "mlp_std": 0.8181818181818182,
+    "knn": 0.5,
+    "raw": 0.6363636363636364,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "hepatic_vod_history",
+    "n_banned": 0,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.5,
+    "knn": 0.8181818181818182,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "nafld",
+    "n_banned": 2,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "hepatic",
+     "musculoskeletal",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "ckd_stage_3",
+    "n_banned": 1,
+    "mlp": 1.0,
+    "mlp_std": 0.75,
+    "knn": 1.0,
+    "raw": 0.8333333333333334,
+    "top3": [
+     "renal",
+     "neurologic",
+     "musculoskeletal"
+    ],
+    "curated": [
+     "renal"
+    ]
+   },
+   {
+    "id": "ckd_stage_4_5",
+    "n_banned": 1,
+    "mlp": 1.0,
+    "mlp_std": 0.9166666666666666,
+    "knn": 0.9090909090909091,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "renal",
+     "musculoskeletal",
+     "metabolic_endocrine"
+    ],
+    "curated": [
+     "renal"
+    ]
+   },
+   {
+    "id": "dialysis",
+    "n_banned": 1,
+    "mlp": 1.0,
+    "mlp_std": 0.8333333333333334,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "renal",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "renal"
+    ]
+   },
+   {
+    "id": "heart_failure",
+    "n_banned": 6,
+    "mlp": 0.75,
+    "mlp_std": 1.0,
+    "knn": 0.8333333333333334,
+    "raw": 0.6666666666666666,
+    "top3": [
+     "renal",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "reduced_lvef",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "cardiovascular",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "prior_anthracycline",
+    "n_banned": 0,
+    "mlp": 0.25,
+    "mlp_std": 0.4166666666666667,
+    "knn": 1.0,
+    "raw": 0.4166666666666667,
+    "top3": [
+     "musculoskeletal",
+     "pulmonary",
+     "haematologic"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "coronary_artery_disease",
+    "n_banned": 8,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "metabolic_endocrine",
+     "cardiovascular",
+     "haematologic"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "qt_prolongation",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 0.8333333333333334,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "cardiovascular",
+     "haematologic",
+     "pulmonary"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "interstitial_lung_disease",
+    "n_banned": 4,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.9166666666666666,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "musculoskeletal",
+     "pulmonary",
+     "neurologic"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "pulmonary_fibrosis",
+    "n_banned": 3,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "pulmonary",
+     "musculoskeletal",
+     "haematologic"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "copd",
+    "n_banned": 6,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "pulmonary",
+     "musculoskeletal",
+     "cardiovascular"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "prior_chest_radiation",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 0.9166666666666666,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "pulmonary",
+     "musculoskeletal",
+     "neurologic"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "peripheral_neuropathy",
+    "n_banned": 4,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "neurologic",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "neurologic"
+    ]
+   },
+   {
+    "id": "diabetic_neuropathy",
+    "n_banned": 2,
+    "mlp": 0.9545454545454546,
+    "mlp_std": 1.0,
+    "knn": 0.8333333333333334,
+    "raw": 1.0,
+    "top3": [
+     "neurologic",
+     "renal",
+     "metabolic_endocrine"
+    ],
+    "curated": [
+     "metabolic_endocrine",
+     "neurologic"
+    ]
+   },
+   {
+    "id": "multiple_sclerosis",
+    "n_banned": 2,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 0.09090909090909091,
+    "raw": 1.0,
+    "top3": [
+     "neurologic",
+     "dermatologic",
+     "haematologic"
+    ],
+    "curated": [
+     "neurologic"
+    ]
+   },
+   {
+    "id": "keratopathy_history",
+    "n_banned": 1,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "musculoskeletal",
+     "ocular",
+     "dermatologic"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "dry_eye",
+    "n_banned": 2,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 0.75,
+    "top3": [
+     "ocular",
+     "musculoskeletal",
+     "dermatologic"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "glaucoma",
+    "n_banned": 9,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.9166666666666666,
+    "knn": 0.6666666666666666,
+    "raw": 0.5,
+    "top3": [
+     "neurologic",
+     "ocular",
+     "metabolic_endocrine"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "prior_corneal_surgery",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 1.0,
+    "top3": [
+     "ocular",
+     "musculoskeletal",
+     "neurologic"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "thrombocytopenia",
+    "n_banned": 1,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.8333333333333334,
+    "knn": 0.9090909090909091,
+    "raw": 0.75,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "itp",
+    "n_banned": 3,
+    "mlp": 0.8181818181818182,
+    "mlp_std": 0.6818181818181818,
+    "knn": 0.3333333333333333,
+    "raw": 0.5,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "neutropenia_chronic",
+    "n_banned": 1,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.75,
+    "knn": 1.0,
+    "raw": 0.75,
+    "top3": [
+     "neurologic",
+     "haematologic",
+     "pulmonary"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "anaemia_chronic",
+    "n_banned": 3,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.75,
+    "knn": 0.9,
+    "raw": 0.8333333333333334,
+    "top3": [
+     "musculoskeletal",
+     "haematologic",
+     "neurologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "mds",
+    "n_banned": 1,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.75,
+    "knn": 1.0,
+    "raw": 0.75,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "prior_hsct",
+    "n_banned": 0,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.5833333333333334,
+    "knn": 0.3333333333333333,
+    "raw": 0.75,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "inflammatory_bowel_disease",
+    "n_banned": 6,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.5833333333333334,
+    "top3": [
+     "musculoskeletal",
+     "gastrointestinal",
+     "neurologic"
+    ],
+    "curated": [
+     "gastrointestinal"
+    ]
+   },
+   {
+    "id": "prior_bowel_resection",
+    "n_banned": 0,
+    "mlp": 0.6666666666666666,
+    "mlp_std": 0.8333333333333334,
+    "knn": 1.0,
+    "raw": 0.5,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "gastrointestinal"
+    ]
+   },
+   {
+    "id": "chronic_pancreatitis",
+    "n_banned": 3,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.9166666666666666,
+    "knn": 0.9,
+    "raw": 0.5,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "gastrointestinal"
+    ],
+    "curated": [
+     "gastrointestinal"
+    ]
+   },
+   {
+    "id": "severe_psoriasis",
+    "n_banned": 5,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.9166666666666666,
+    "knn": 1.0,
+    "raw": 0.75,
+    "top3": [
+     "musculoskeletal",
+     "dermatologic",
+     "ocular"
+    ],
+    "curated": [
+     "dermatologic"
+    ]
+   },
+   {
+    "id": "prior_sjs_ten",
+    "n_banned": 0,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 0.8333333333333334,
+    "raw": 0.8333333333333334,
+    "top3": [
+     "musculoskeletal",
+     "dermatologic",
+     "ocular"
+    ],
+    "curated": [
+     "dermatologic"
+    ]
+   },
+   {
+    "id": "type_2_diabetes",
+    "n_banned": 7,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 0.8333333333333334,
+    "raw": 1.0,
+    "top3": [
+     "renal",
+     "metabolic_endocrine",
+     "musculoskeletal"
+    ],
+    "curated": [
+     "metabolic_endocrine"
+    ]
+   },
+   {
+    "id": "hypothyroidism",
+    "n_banned": 6,
+    "mlp": 0.6666666666666666,
+    "mlp_std": 0.6666666666666666,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "neurologic"
+    ],
+    "curated": [
+     "metabolic_endocrine"
+    ]
+   },
+   {
+    "id": "hiv_controlled",
+    "n_banned": 1,
+    "mlp": 0.3333333333333333,
+    "mlp_std": 0.8333333333333334,
+    "knn": 1.0,
+    "raw": 0.25,
+    "top3": [
+     "neurologic",
+     "renal",
+     "musculoskeletal"
+    ],
+    "curated": [
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "active_autoimmune",
+    "n_banned": 3,
+    "mlp": 0.5,
+    "mlp_std": 0.8333333333333334,
+    "knn": 0.6666666666666666,
+    "raw": 0.25,
+    "top3": [
+     "musculoskeletal",
+     "renal",
+     "pulmonary"
+    ],
+    "curated": [
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "hearing_loss",
+    "n_banned": 6,
+    "mlp": 0.08333333333333333,
+    "mlp_std": 0.0,
+    "knn": 1.0,
+    "raw": 0.0,
+    "top3": [
+     "neurologic",
+     "ocular",
+     "haematologic"
+    ],
+    "curated": [
+     "otologic"
+    ]
+   }
+  ]
+ },
+ "tau_0.5": {
+  "summary": {
+   "mlp": {
+    "mean_auroc": 0.8037694013303769,
+    "lo": 0.7248567997043607,
+    "hi": 0.8745380635624537,
+    "n": 41
+   },
+   "mlp_std": {
+    "mean_auroc": 0.7954545454545454,
+    "lo": 0.7141537324464154,
+    "hi": 0.8660384331116039,
+    "n": 41
+   },
+   "knn": {
+    "mean_auroc": 0.7482332982332982,
+    "lo": 0.6559215221715221,
+    "hi": 0.836972426972427,
+    "n": 37
+   },
+   "raw": {
+    "mean_auroc": 0.720620842572062,
+    "lo": 0.6413294530672579,
+    "hi": 0.7967479674796747,
+    "n": 41
+   },
+   "mlp_minus_knn": {
+    "delta": 0.06585351585351584,
+    "lo": -0.042533783783783786,
+    "hi": 0.17717049842049842
+   },
+   "top1_hits_curated": 0.2926829268292683,
+   "top3_hits_curated": 0.7073170731707317
+  },
+  "per_condition": [
+   {
+    "id": "chronic_liver_disease",
+    "n_banned": 23,
+    "mlp": 0.5833333333333334,
+    "mlp_std": 0.16666666666666666,
+    "knn": 0.8181818181818182,
+    "raw": 0.5,
+    "top3": [
+     "musculoskeletal",
+     "haematologic",
+     "renal"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "cirrhosis",
+    "n_banned": 16,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.75,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "renal"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "hepatitis_b_chronic",
+    "n_banned": 8,
+    "mlp": 0.5,
+    "mlp_std": 0.5454545454545454,
+    "knn": 0.8888888888888888,
+    "raw": 0.5,
+    "top3": [
+     "neurologic",
+     "renal",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "hepatitis_c_chronic",
+    "n_banned": 12,
+    "mlp": 0.6363636363636364,
+    "mlp_std": 0.6818181818181818,
+    "knn": 0.7222222222222222,
+    "raw": 0.5454545454545454,
+    "top3": [
+     "neurologic",
+     "haematologic",
+     "hepatic"
+    ],
+    "curated": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "hepatic_vod_history",
+    "n_banned": 3,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.25,
+    "knn": 0.8181818181818182,
+    "raw": 0.8333333333333334,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "haematologic"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "nafld",
+    "n_banned": 24,
+    "mlp": 1.0,
+    "mlp_std": 0.9166666666666666,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "hepatic",
+     "haematologic",
+     "neurologic"
+    ],
+    "curated": [
+     "hepatic"
+    ]
+   },
+   {
+    "id": "ckd_stage_3",
+    "n_banned": 9,
+    "mlp": 1.0,
+    "mlp_std": 0.75,
+    "knn": 0.6363636363636364,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "renal",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "renal"
+    ]
+   },
+   {
+    "id": "ckd_stage_4_5",
+    "n_banned": 9,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "renal",
+     "haematologic",
+     "metabolic_endocrine"
+    ],
+    "curated": [
+     "renal"
+    ]
+   },
+   {
+    "id": "dialysis",
+    "n_banned": 6,
+    "mlp": 1.0,
+    "mlp_std": 0.5833333333333334,
+    "knn": 0.8,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "renal",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "renal"
+    ]
+   },
+   {
+    "id": "heart_failure",
+    "n_banned": 28,
+    "mlp": 0.75,
+    "mlp_std": 0.75,
+    "knn": 0.2,
+    "raw": 0.5833333333333334,
+    "top3": [
+     "renal",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "reduced_lvef",
+    "n_banned": 8,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.75,
+    "top3": [
+     "cardiovascular",
+     "metabolic_endocrine",
+     "haematologic"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "prior_anthracycline",
+    "n_banned": 0,
+    "mlp": 0.25,
+    "mlp_std": 0.4166666666666667,
+    "knn": 1.0,
+    "raw": 0.4166666666666667,
+    "top3": [
+     "musculoskeletal",
+     "pulmonary",
+     "haematologic"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "coronary_artery_disease",
+    "n_banned": 29,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 0.5454545454545454,
+    "raw": 0.8333333333333334,
+    "top3": [
+     "cardiovascular",
+     "metabolic_endocrine",
+     "pulmonary"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "qt_prolongation",
+    "n_banned": 5,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 0.8333333333333334,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "cardiovascular",
+     "haematologic",
+     "metabolic_endocrine"
+    ],
+    "curated": [
+     "cardiovascular"
+    ]
+   },
+   {
+    "id": "interstitial_lung_disease",
+    "n_banned": 28,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.75,
+    "knn": 1.0,
+    "raw": 0.8333333333333334,
+    "top3": [
+     "musculoskeletal",
+     "pulmonary",
+     "dermatologic"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "pulmonary_fibrosis",
+    "n_banned": 24,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 0.9166666666666666,
+    "raw": 1.0,
+    "top3": [
+     "musculoskeletal",
+     "pulmonary",
+     "haematologic"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "copd",
+    "n_banned": 35,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.9166666666666666,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "musculoskeletal",
+     "pulmonary",
+     "haematologic"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "prior_chest_radiation",
+    "n_banned": 0,
+    "mlp": 1.0,
+    "mlp_std": 0.9166666666666666,
+    "knn": 1.0,
+    "raw": 1.0,
+    "top3": [
+     "pulmonary",
+     "musculoskeletal",
+     "neurologic"
+    ],
+    "curated": [
+     "pulmonary"
+    ]
+   },
+   {
+    "id": "peripheral_neuropathy",
+    "n_banned": 18,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 0.16666666666666666,
+    "raw": 1.0,
+    "top3": [
+     "neurologic",
+     "musculoskeletal",
+     "metabolic_endocrine"
+    ],
+    "curated": [
+     "neurologic"
+    ]
+   },
+   {
+    "id": "diabetic_neuropathy",
+    "n_banned": 8,
+    "mlp": 1.0,
+    "mlp_std": 0.9545454545454546,
+    "knn": 0.42857142857142855,
+    "raw": 1.0,
+    "top3": [
+     "neurologic",
+     "metabolic_endocrine",
+     "renal"
+    ],
+    "curated": [
+     "metabolic_endocrine",
+     "neurologic"
+    ]
+   },
+   {
+    "id": "multiple_sclerosis",
+    "n_banned": 17,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 1.0,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "neurologic"
+    ]
+   },
+   {
+    "id": "keratopathy_history",
+    "n_banned": 12,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 0.9166666666666666,
+    "top3": [
+     "musculoskeletal",
+     "ocular",
+     "dermatologic"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "dry_eye",
+    "n_banned": 33,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.6666666666666666,
+    "top3": [
+     "musculoskeletal",
+     "ocular",
+     "neurologic"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "glaucoma",
+    "n_banned": 24,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": NaN,
+    "raw": 0.5833333333333334,
+    "top3": [
+     "ocular",
+     "metabolic_endocrine",
+     "neurologic"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "prior_corneal_surgery",
+    "n_banned": 9,
+    "mlp": 1.0,
+    "mlp_std": 1.0,
+    "knn": 1.0,
+    "raw": 0.8333333333333334,
+    "top3": [
+     "ocular",
+     "musculoskeletal",
+     "neurologic"
+    ],
+    "curated": [
+     "ocular"
+    ]
+   },
+   {
+    "id": "thrombocytopenia",
+    "n_banned": 8,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.75,
+    "knn": 0.18181818181818182,
+    "raw": 0.75,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "itp",
+    "n_banned": 11,
+    "mlp": 0.8181818181818182,
+    "mlp_std": 0.6818181818181818,
+    "knn": 0.2222222222222222,
+    "raw": 0.5,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "neutropenia_chronic",
+    "n_banned": 6,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.75,
+    "knn": 0.6666666666666666,
+    "raw": 0.75,
+    "top3": [
+     "neurologic",
+     "musculoskeletal",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "anaemia_chronic",
+    "n_banned": 9,
+    "mlp": 0.75,
+    "mlp_std": 0.75,
+    "knn": 0.9,
+    "raw": 0.5833333333333334,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "renal"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "mds",
+    "n_banned": 6,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.8333333333333334,
+    "knn": 1.0,
+    "raw": 0.6666666666666666,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "prior_hsct",
+    "n_banned": 0,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 0.5833333333333334,
+    "knn": 0.3333333333333333,
+    "raw": 0.75,
+    "top3": [
+     "musculoskeletal",
+     "neurologic",
+     "haematologic"
+    ],
+    "curated": [
+     "haematologic"
+    ]
+   },
+   {
+    "id": "inflammatory_bowel_disease",
+    "n_banned": 50,
+    "mlp": 0.75,
+    "mlp_std": 1.0,
+    "knn": 0.5833333333333334,
+    "raw": 0.4166666666666667,
+    "top3": [
+     "musculoskeletal",
+     "renal",
+     "neurologic"
+    ],
+    "curated": [
+     "gastrointestinal"
+    ]
+   },
+   {
+    "id": "prior_bowel_resection",
+    "n_banned": 4,
+    "mlp": 0.75,
+    "mlp_std": 0.9166666666666666,
+    "knn": 1.0,
+    "raw": 0.5,
+    "top3": [
+     "musculoskeletal",
+     "haematologic",
+     "neurologic"
+    ],
+    "curated": [
+     "gastrointestinal"
+    ]
+   },
+   {
+    "id": "chronic_pancreatitis",
+    "n_banned": 21,
+    "mlp": 0.75,
+    "mlp_std": 1.0,
+    "knn": 0.36363636363636365,
+    "raw": 0.4166666666666667,
+    "top3": [
+     "musculoskeletal",
+     "hepatic",
+     "haematologic"
+    ],
+    "curated": [
+     "gastrointestinal"
+    ]
+   },
+   {
+    "id": "severe_psoriasis",
+    "n_banned": 13,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 0.9166666666666666,
+    "knn": 1.0,
+    "raw": 0.4166666666666667,
+    "top3": [
+     "musculoskeletal",
+     "dermatologic",
+     "ocular"
+    ],
+    "curated": [
+     "dermatologic"
+    ]
+   },
+   {
+    "id": "prior_sjs_ten",
+    "n_banned": 0,
+    "mlp": 0.9166666666666666,
+    "mlp_std": 1.0,
+    "knn": 0.8333333333333334,
+    "raw": 0.8333333333333334,
+    "top3": [
+     "musculoskeletal",
+     "dermatologic",
+     "ocular"
+    ],
+    "curated": [
+     "dermatologic"
+    ]
+   },
+   {
+    "id": "type_2_diabetes",
+    "n_banned": 17,
+    "mlp": 0.8333333333333334,
+    "mlp_std": 1.0,
+    "knn": 0.9090909090909091,
+    "raw": 1.0,
+    "top3": [
+     "musculoskeletal",
+     "renal",
+     "metabolic_endocrine"
+    ],
+    "curated": [
+     "metabolic_endocrine"
+    ]
+   },
+   {
+    "id": "hypothyroidism",
+    "n_banned": 21,
+    "mlp": 0.5833333333333334,
+    "mlp_std": 0.6666666666666666,
+    "knn": 0.5,
+    "raw": 1.0,
+    "top3": [
+     "neurologic",
+     "hepatic",
+     "musculoskeletal"
+    ],
+    "curated": [
+     "metabolic_endocrine"
+    ]
+   },
+   {
+    "id": "hiv_controlled",
+    "n_banned": 1,
+    "mlp": 0.3333333333333333,
+    "mlp_std": 0.8333333333333334,
+    "knn": 1.0,
+    "raw": 0.25,
+    "top3": [
+     "neurologic",
+     "renal",
+     "musculoskeletal"
+    ],
+    "curated": [
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "active_autoimmune",
+    "n_banned": 17,
+    "mlp": 0.16666666666666666,
+    "mlp_std": 0.5833333333333334,
+    "knn": 0.4166666666666667,
+    "raw": 0.16666666666666666,
+    "top3": [
+     "musculoskeletal",
+     "renal",
+     "ocular"
+    ],
+    "curated": [
+     "infectious_immune"
+    ]
+   },
+   {
+    "id": "hearing_loss",
+    "n_banned": 12,
+    "mlp": 0.0,
+    "mlp_std": 0.0,
+    "knn": NaN,
+    "raw": 0.0,
+    "top3": [
+     "neurologic",
+     "ocular",
+     "haematologic"
+    ],
+    "curated": [
+     "otologic"
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,1177 @@
+{
+ "summary": {
+  "queries": 192,
+  "mean_jaccard_shown_set": 0.8080357142857143,
+  "share_queries_identical_set": 0.625,
+  "share_queries_different_lead": 0.25,
+  "profile_changes_set_curated": 0.42857142857142855,
+  "profile_changes_set_learned": 0.8571428571428571,
+  "mean_jaccard_by_profile": {
+   "none": 1.0,
+   "renal + pulmonary": 0.375,
+   "hepatic": 1.0,
+   "cardiac": 0.375,
+   "neuro + ocular": 1.0,
+   "haematologic": 1.0,
+   "dermatologic": 0.7142857142857143,
+   "four organs": 1.0
+  },
+  "learned_top_axis_is_a_curated_axis": 0.5121951219512195,
+  "n_conditions": 41,
+  "at_risk_threshold": 0.5
+ },
+ "rows": [
+  {
+   "target": "ALCAM",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ALCAM",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "ALCAM",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ALCAM",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "ALCAM",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ALCAM",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ALCAM",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "ALCAM",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "AXL",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "AXL",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "AXL",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "AXL",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "AXL",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "AXL",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "AXL",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "AXL",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD19",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD19",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD19",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD19",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD19",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD19",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD19",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "CD19",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD22",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD22",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD22",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD22",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD22",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD22",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD22",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "CD22",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD276",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD276",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD276",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD276",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD276",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD276",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD276",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "CD276",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD33",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD33",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD33",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD33",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD33",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD33",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD33",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "CD33",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD37",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD37",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD37",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD37",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD37",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD37",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD37",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "CD37",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD79B",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD79B",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD79B",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD79B",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CD79B",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD79B",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CD79B",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "CD79B",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "CEACAM5",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "DLL3",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "DLL3",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "DLL3",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "DLL3",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "DLL3",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "DLL3",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "DLL3",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "DLL3",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "EGFR",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "EGFR",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "EGFR",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "EGFR",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "EGFR",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "EGFR",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "EGFR",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "EGFR",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ERBB2",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ERBB2",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "ERBB2",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ERBB2",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "ERBB2",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ERBB2",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ERBB2",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "ERBB2",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ERBB3",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ERBB3",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "ERBB3",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ERBB3",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "ERBB3",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ERBB3",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "ERBB3",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "ERBB3",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "F3",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "F3",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "F3",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "F3",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "F3",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "F3",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "F3",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "F3",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "FOLR1",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "FOLR1",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "FOLR1",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "FOLR1",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "FOLR1",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "FOLR1",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "FOLR1",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "FOLR1",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "IL2RA",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "IL2RA",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "IL2RA",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "IL2RA",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "IL2RA",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "IL2RA",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "IL2RA",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "IL2RA",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "IL3RA",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "IL3RA",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "IL3RA",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "IL3RA",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "IL3RA",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "IL3RA",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "IL3RA",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "IL3RA",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "MET",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "MET",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "MET",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "MET",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "MET",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "MET",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "MET",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "MET",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "MSLN",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "MSLN",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "MSLN",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "MSLN",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "MSLN",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "MSLN",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "MSLN",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "MSLN",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "NECTIN4",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "NECTIN4",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "NECTIN4",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "NECTIN4",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "NECTIN4",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "NECTIN4",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "NECTIN4",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "NECTIN4",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "PTK7",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "PTK7",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "PTK7",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "PTK7",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "PTK7",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "PTK7",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "PTK7",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "PTK7",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TACSTD2",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TACSTD2",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "TACSTD2",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TACSTD2",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "TACSTD2",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TACSTD2",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TACSTD2",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "TACSTD2",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF17",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF17",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "TNFRSF17",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF17",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "TNFRSF17",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF17",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF17",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF17",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF8",
+   "profile": "none",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF8",
+   "profile": "renal + pulmonary",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "TNFRSF8",
+   "profile": "hepatic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF8",
+   "profile": "cardiac",
+   "jaccard": 0.375,
+   "same_head": false
+  },
+  {
+   "target": "TNFRSF8",
+   "profile": "neuro + ocular",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF8",
+   "profile": "haematologic",
+   "jaccard": 1.0,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF8",
+   "profile": "dermatologic",
+   "jaccard": 0.7142857142857143,
+   "same_head": true
+  },
+  {
+   "target": "TNFRSF8",
+   "profile": "four organs",
+   "jaccard": 1.0,
+   "same_head": true
+  }
+ ]
+}
