@@ -229,7 +229,7 @@ class Form:
 def run(RC, back=False):
     """-> (conditions, raw labs) or None. back: reopen at the last step (priority if it applies, else lab values), entries kept."""
     def app(scr):
-        curses.curs_set(0); F = Form(scr, RC); st = load(); st["picked"] &= set(RC._reg); step = 0
+        F = Form(scr, RC); st = load(); st["picked"] &= set(RC._reg); step = 0
         if back:
             conds = [i for i in RC._reg if i in st["picked"]] + split_free(st["free"]); F.loading("불러오는 중 ...")
             pc = RC.patient_conditions(conds, st["raw"])

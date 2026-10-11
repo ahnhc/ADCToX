@@ -18,7 +18,10 @@ def _clip(t, n):
 
 class _Screen:
     def __init__(self, scr):
-        self.s = scr; curses.curs_set(0); scr.keypad(True); self.dim = curses.A_DIM; self.title = curses.A_BOLD; self.cur = curses.A_BOLD
+        self.s = scr; scr.keypad(True)
+        try: curses.curs_set(0)
+        except curses.error: pass                       # some consoles cannot hide the cursor
+        self.dim = curses.A_DIM; self.title = curses.A_BOLD; self.cur = curses.A_BOLD
         if curses.has_colors():
             curses.start_color()
             try: curses.use_default_colors(); bg = -1

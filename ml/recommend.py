@@ -399,6 +399,7 @@ PRIORITY_Q = ("어느 질환 쪽 독성을 먼저 피할까요?", "1 = 가장 �
 FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
 FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용 (추정값 × 0.25)", 0.25), ("사용 (추정값 × 0.5)", 0.5)]
 def _tui_ok():
+    if "--plain" in sys.argv: return False          # plain prompts and a printed table, no full-screen menus
     try: import curses  # noqa: F401
     except ImportError: return False
     return sys.stdin.isatty() and sys.stdout.isatty() and os.environ.get("TERM", "dumb") != "dumb"
@@ -467,6 +468,7 @@ def parse_args(argv):
     while i < len(argv):
         a = argv[i]
         if a == "--detail": flags["detail"] = True
+        elif a == "--plain": pass                              # read by _tui_ok()
         elif a == "--ugt1a1-28-homozygous": labs["ugt1a1_28_homozygous"] = True
         elif a in ("--crcl", "--bili", "--ast", "--alt", "--lvef"): labs[a[2:]] = float(argv[i + 1]); i += 1
         elif a == "--child-pugh": labs["child_pugh"] = argv[i + 1].upper(); i += 1
