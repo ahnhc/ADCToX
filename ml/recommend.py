@@ -1,6 +1,7 @@
 """Patient comorbidities (and, optionally, lab values) in; every approved ADC out, ordered by what its label says about THIS patient.
 
     /data/hyeongchanahn/envs/adctox/bin/python -I ml/recommend.py ckd_stage_3 heart_failure --crcl 45 --lvef 48
+    lab flags: --crcl --bili --ast --alt (x ULN) --child-pugh A|B|C --lvef --ugt1a1-28-homozygous
 
 Order, most favourable first (a lexicographic key, so nothing below can buy back anything above):
   1. label use restriction for this patient (ml/restrictions.py, conf/label_restrictions.yaml), worst case over the lab
@@ -196,7 +197,7 @@ def render(rows, s, notes, checks_, detail=False, color=None):
             if first: print("\nLabel restrictions (verbatim)"); first = False
             seen.add((r["name"], rr["quote"])); q = rr["quote"] if len(rr["quote"]) <= cols - 52 else rr["quote"][:cols - 55] + "..."
             mark = "" if (c, rr) in r["verdict"].known else "?"
-            print(f"  {r['name'][:26]:<26} {RS.SHORT[c] + mark:<18} §{rr['section']:<5} \"{q}\"")
+            print(f"  {r['name'][:26]:<26} {RS.SHORT[c] + mark:<24} §{rr['section']:<5} \"{q}\"")
     if checks_:
         print("\nChecks before choosing")
         for test, names, src in checks_:
@@ -215,21 +216,21 @@ def render(rows, s, notes, checks_, detail=False, color=None):
 COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)  ·  / 검색  ·  ENTER 확정")
 LABS_ASK_Q = ("입력할 검사 수치가 있나요?", "")
 LABS_PICK_Q = ("검사 수치 선택", "")
-LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
+LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "alt": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
 FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
 MONDO_Q = ("목록 외 질환의 장기 심각도", "목록에 없는 질환의 장기에 적용할 심각도입니다.  1 = 간경변 등 가장 심각한 질환 수준")
 COLOUR_Q = ("색 표시", "Auto: 터미널에서만 색 사용")
 FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용, Low 0.25", 0.25), ("사용, Medium 0.5", 0.5)]
 MONDO_OPTS = [("Low 0.5", 0.5), ("Medium 0.8", 0.8), ("High 1.0", 1.0)]
 COLOURS = [("On", True), ("Auto", None), ("Off", False)]
-LAB_FIELDS = [("crcl", "CLcr, Cockcroft-Gault (mL/min)", float), ("bili", "total bilirubin (x ULN)", float), ("ast", "AST (x ULN)", float),
+LAB_FIELDS = [("crcl", "CLcr, Cockcroft-Gault (mL/min)", float), ("bili", "total bilirubin (x ULN)", float), ("ast", "AST (x ULN)", float), ("alt", "ALT (x ULN)", float),
               ("child_pugh", "Child-Pugh class (A/B/C)", lambda x: x.strip().upper() if x.strip().upper() in ("A", "B", "C") else None),
               ("lvef", "baseline LVEF (%)", float), ("ugt1a1_28_homozygous", "UGT1A1*28 homozygous (y/n)", lambda x: {"y": True, "n": False}.get(x.strip().lower()))]
 
 
 def lab_uses():
     """lab field -> ADC names whose label restrictions it can change (from conf/label_restrictions.yaml), fields most used first."""
-    keys = {"crcl": ("crcl_lt", "crcl_ge", "esrd"), "bili": ("bili_gt", "bili_le"), "ast": ("ast_gt", "ast_le"), "child_pugh": ("child_pugh",),
+    keys = {"crcl": ("crcl_lt", "crcl_ge", "esrd"), "bili": ("bili_gt", "bili_le"), "ast": ("ast_gt", "ast_le"), "alt": ("alt_gt", "alt_le"), "child_pugh": ("child_pugh",),
             "lvef": ("lvef_lt",), "ugt1a1_28_homozygous": ("ugt1a1_28_homozygous",)}
     E = DE.evidence(); use = {k: sorted({E[r["adc"]]["name"] for r in RS.load_rules() if r["adc"] in E and set(r["when"]) & set(v)}) for k, v in keys.items()}
     return sorted(((k, q, cast, use[k]) for k, q, cast in LAB_FIELDS), key=lambda x: -len(x[3]))
@@ -325,7 +326,7 @@ def parse_args(argv):
         a = argv[i]
         if a == "--detail": flags["detail"] = True
         elif a == "--ugt1a1-28-homozygous": labs["ugt1a1_28_homozygous"] = True
-        elif a in ("--crcl", "--bili", "--ast", "--lvef"): labs[a[2:]] = float(argv[i + 1]); i += 1
+        elif a in ("--crcl", "--bili", "--ast", "--alt", "--lvef"): labs[a[2:]] = float(argv[i + 1]); i += 1
         elif a == "--child-pugh": labs["child_pugh"] = argv[i + 1].upper(); i += 1
         elif a == "--learned": flags["learned"] = float(argv[i + 1]); i += 1
         elif a == "--learned-fallback": flags["fallback"] = float(argv[i + 1]); i += 1

@@ -19,13 +19,14 @@ import yaml
 
 R = "/home/hyeongchanahn/CONI/adctox/"
 DM = "/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07/"
-CATS = ["no_adjustment", "monitor", "no_statement", "insufficient_data", "avoid", "contraindicated"]
-TIER = {"no_adjustment": 0, "monitor": 1, "no_statement": 2, "insufficient_data": 2, "avoid": 3, "contraindicated": 4}
-SHORT = {"no_adjustment": "No adjustment", "monitor": "Monitor", "no_statement": "No label statement",
+CATS = ["no_adjustment", "monitor", "reduce_dose", "no_statement", "insufficient_data", "avoid", "contraindicated"]
+# reduce_dose ranks with monitor (usable, with an action) but is shown as what the label requires, not as monitoring
+TIER = {"no_adjustment": 0, "monitor": 1, "reduce_dose": 1, "no_statement": 2, "insufficient_data": 2, "avoid": 3, "contraindicated": 4}
+SHORT = {"no_adjustment": "No adjustment", "monitor": "Monitor", "reduce_dose": "Dose reduction required", "no_statement": "No label statement",
          "insufficient_data": "Insufficient data", "avoid": "Avoid", "contraindicated": "Contraindicated"}
 COVERED = ("renal", "hepatic")                       # domains where silence is reported as "no label statement"
 DOMAIN_AXIS = {"renal": "renal", "hepatic": "hepatic", "cardiac": "cardiovascular", "ocular": "ocular"}
-NEEDS = {"renal": "CLcr (Cockcroft-Gault)", "hepatic": "total bilirubin / AST (x ULN), Child-Pugh", "cardiac": "baseline LVEF"}
+NEEDS = {"renal": "CLcr (Cockcroft-Gault), dialysis/ESRD status if CLcr < 15", "hepatic": "total bilirubin / AST / ALT (x ULN), Child-Pugh", "cardiac": "baseline LVEF"}
 INF = float("inf")
 
 
@@ -48,6 +49,7 @@ class Patient:
     esrd: bool | None = None
     bili: float | None = None
     ast: float | None = None
+    alt: float | None = None
     child_pugh: str | None = None
     lvef: float | None = None
     ugt1a1_28_homozygous: bool | None = None
@@ -62,7 +64,7 @@ def _domains(p, rules):
     for d, ax in DOMAIN_AXIS.items():
         if ax in p.organs: on.add(d)
     if p.crcl is not None or p.esrd: on.add("renal")
-    if p.bili is not None or p.ast is not None or p.child_pugh: on.add("hepatic")
+    if p.bili is not None or p.ast is not None or p.alt is not None or p.child_pugh: on.add("hepatic")
     if p.lvef is not None: on.add("cardiac")
     if p.ugt1a1_28_homozygous is not None: on.add("genotype")
     for r in rules:
@@ -74,14 +76,16 @@ def _grid(p, domain):
     """plausible patient states for the values this domain reads; a given value is a single point."""
     if domain == "renal":
         if p.esrd: return [dict(crcl=10, esrd=True)]
-        if p.crcl is not None: return [dict(crcl=p.crcl, esrd=False if p.crcl >= 15 else None)]
+        if p.crcl is not None:                     # below 15 without a dialysis answer it may or may not be ESRD: both states
+            return [dict(crcl=p.crcl, esrd=False)] if p.crcl >= 15 or p.esrd is False else [dict(crcl=p.crcl, esrd=True), dict(crcl=p.crcl, esrd=False)]
         return [dict(crcl=10, esrd=True), dict(crcl=10, esrd=False), dict(crcl=20, esrd=False), dict(crcl=45, esrd=False),
                 dict(crcl=55, esrd=False), dict(crcl=75, esrd=False), dict(crcl=100, esrd=False)]
     if domain == "hepatic":
         bs = [p.bili] if p.bili is not None else [0.8, 1.2, 2.0, 4.0]
         as_ = [p.ast] if p.ast is not None else [0.8, 2.0, 2.8, 4.0]
+        ls = [p.alt] if p.alt is not None else [0.8, 2.0, 2.8, 4.0]
         cs = [p.child_pugh] if p.child_pugh else ["A", "B", "C"]
-        return [dict(bili=b, ast=a, child_pugh=c) for b in bs for a in as_ for c in cs]
+        return [dict(bili=b, ast=a, alt=l, child_pugh=c) for b in bs for a in as_ for l in ls for c in cs]
     if domain == "cardiac":
         return [dict(lvef=v) for v in ([p.lvef] if p.lvef is not None else [35, 45, 55])]
     return [dict()]
@@ -98,12 +102,12 @@ def _holds(when, st, p):
             if p.ugt1a1_28_homozygous is None: return None
             if p.ugt1a1_28_homozygous != v: return False
             continue
-        key = {"crcl_lt": "crcl", "crcl_ge": "crcl", "bili_gt": "bili", "bili_le": "bili", "ast_gt": "ast", "ast_le": "ast",
+        key = {"crcl_lt": "crcl", "crcl_ge": "crcl", "bili_gt": "bili", "bili_le": "bili", "ast_gt": "ast", "ast_le": "ast", "alt_gt": "alt", "alt_le": "alt",
                "lvef_lt": "lvef", "lvef_ge": "lvef", "child_pugh": "child_pugh", "esrd": "esrd"}[k]
         x = st.get(key)
         if x is None: return None
         ok = {"crcl_lt": lambda: x < v, "crcl_ge": lambda: x >= v, "bili_gt": lambda: x > v, "bili_le": lambda: x <= v,
-              "ast_gt": lambda: x > v, "ast_le": lambda: x <= v, "lvef_lt": lambda: x < v, "lvef_ge": lambda: x >= v,
+              "ast_gt": lambda: x > v, "ast_le": lambda: x <= v, "alt_gt": lambda: x > v, "alt_le": lambda: x <= v, "lvef_lt": lambda: x < v, "lvef_ge": lambda: x >= v,
               "child_pugh": lambda: x in v, "esrd": lambda: x == v}[k]()
         if not ok: return False
     return True
@@ -132,32 +136,44 @@ def judge(p, adcs, rules=None):
         for dom in sorted(on):
             drs = [r for r in rs if r["domain"] == dom]; states = _grid(p, dom); hit_sets = []
             for st in states:
-                hits = [r for r in drs if _holds(r["when"], st, p)]; hit_sets.append(hits)
+                res = [(r, _holds(r["when"], st, p)) for r in drs]
+                hit_sets.append([r for r, h in res if h is not False])        # None = a value this state leaves open: may hold
             for r in drs:
-                n = sum(any(h is r for h in hs) for hs in hit_sets)
-                if n == len(states) and n: known.append((r["category"], r))
-                elif n: possible.append((r["category"], r)); missing.add(NEEDS.get(dom, dom))
+                n_true = sum(_holds(r["when"], st, p) is True for st in states); n_any = sum(any(h is r for h in hs) for hs in hit_sets)
+                if n_true == len(states) and n_true: known.append((r["category"], r))
+                elif n_any: possible.append((r["category"], r))
             if dom in COVERED:
                 empty = [not [h for h in hs if "always" not in h["when"]] for hs in hit_sets]
-                if any(empty): silent.append((dom, all(empty)));  missing.update([NEEDS[dom]] if not all(empty) else [])
-        out[adc] = Verdict(adc, known, possible, silent, sorted(missing))
+                if any(empty): silent.append((dom, all(empty)))
+        v = Verdict(adc, known, possible, silent, [])
+        # ask only for tests that could still change the answer: a possible verdict above what is already certain
+        w = v.worst_known
+        need = {r["domain"] for c, r in possible if TIER[c] > w} | {d for d, sure in silent if not sure and TIER["no_statement"] > w}
+        v.missing = sorted({NEEDS.get(d, d) for d in need}); out[adc] = v
     return out
 
 
+def _top(entries):
+    """entries [(category, domain, section)] -> 'Cat (dom s, dom s); Cat2 (...)' for every domain at the highest tier, worst per domain."""
+    if not entries: return None
+    per = {}
+    for c, d, s in entries:
+        if d not in per or TIER[c] > TIER[per[d][0]] or (TIER[c] == TIER[per[d][0]] and CATS.index(c) > CATS.index(per[d][0])): per[d] = (c, s)
+    top = max(TIER[c] for c, _ in per.values()); groups = {}
+    for d, (c, s) in sorted(per.items()):
+        if TIER[c] == top: groups.setdefault(c, []).append(f"{d} {s}".strip())
+    return "; ".join(f"{SHORT[c]} ({', '.join(ds)})" for c, ds in sorted(groups.items(), key=lambda kv: -CATS.index(kv[0])))
+
+
 def summary(v):
-    """short cell text: the most restrictive known verdict, then what a missing test could still make it."""
-    def best(items): return max(items, key=lambda cr: TIER[cr[0]]) if items else None
-    k = best(v.known); parts = []
-    sure_silent = [d for d, sure in v.silent if sure]
-    if k and (not sure_silent or TIER[k[0]] >= TIER["no_statement"]):
-        parts.append(f"{SHORT[k[0]]} ({k[1]['domain']} {k[1]['section']})")
-    elif sure_silent:
-        parts.append(f"No label statement ({'/'.join(sure_silent)})")
-    pw = best([cr for cr in v.possible if TIER[cr[0]] > v.worst_known]); unsure_silent = [d for d, s in v.silent if not s]
-    silent_wins = unsure_silent and v.worst_known < TIER["no_statement"] and (not pw or TIER[pw[0]] < TIER["no_statement"])
-    if silent_wins: parts.append(f"No statement? ({'/'.join(unsure_silent)})")
-    elif pw: parts.append(f"{SHORT[pw[0]]}? ({pw[1]['domain']} {pw[1]['section']})")
-    return "; ".join(parts) if parts else "-"
+    """short cell text: the most restrictive known verdict for EVERY domain that reaches it, then what a missing test could
+    still make it (again every domain at that tier). A domain the label is silent on counts as 'No label statement'."""
+    known = [(c, r["domain"], r["section"]) for c, r in v.known] + [("no_statement", d, "") for d, sure in v.silent if sure]
+    possible = [(c, r["domain"], r["section"]) for c, r in v.possible if TIER[c] > v.worst_known] + \
+               [("no_statement", d, "") for d, sure in v.silent if not sure and TIER["no_statement"] > v.worst_known]
+    k, p = _top(known), _top(possible)
+    if p: p = "; ".join(x.replace(" (", "? (", 1) for x in p.split("; "))
+    return "; ".join(x for x in (k, p) if x) or "-"
 
 
 def verify_quotes(rules=None):

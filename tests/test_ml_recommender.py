@@ -174,6 +174,28 @@ def test_organs_shown_carry_label_evidence():
         for a in r["warn"]: assert r["organs"][a]["level"] == "W&P"
 
 
+@needs_labels
+def test_review_cases_restrictions_are_not_weakened_by_entering_labs():
+    import restrictions as R
+    J = lambda adc, **kw: R.judge(R.Patient(**kw), [adc])[adc]
+    # 1 T-DM1: not studied at bilirubin > 1.5 x ULN (5.1), even with Child-Pugh A
+    v = J("trastuzumab-emtansine", child_pugh="A", bili=2.0, ast=1.0, lvef=60)
+    assert R.summary(v).startswith("Insufficient data (hepatic 5.1)") and v.missing == []
+    # 2 inotuzumab: ALT is part of the label condition; unknown ALT stays open, raised ALT restricts
+    assert "Insufficient data?" in R.summary(J("inotuzumab-ozogamicin", bili=1.0, ast=1.0))
+    assert R.summary(J("inotuzumab-ozogamicin", bili=1.0, ast=1.0, alt=3.0)).startswith("Insufficient data (hepatic")
+    assert R.summary(J("inotuzumab-ozogamicin", bili=1.0, ast=1.0, alt=1.0)).startswith("No adjustment")
+    # 3 brentuximab Child-Pugh A: the label requires a dose reduction, not monitoring
+    assert R.summary(J("brentuximab-vedotin", child_pugh="A")).startswith("Dose reduction required")
+    # 4 CLcr < 15 with dialysis status unknown: the ESRD rule stays possible and the test is asked for
+    v = J("inotuzumab-ozogamicin", crcl=10)
+    assert "Insufficient data?" in R.summary(v) and any("ESRD" in m for m in v.missing)
+    assert J("inotuzumab-ozogamicin", crcl=10, conditions={"dialysis"}).worst_known == R.TIER["insufficient_data"]
+    # 5 every domain at the top tier is named, not one picked arbitrarily
+    s = R.summary(J("trastuzumab-emtansine", conditions={"heart_failure", "chronic_liver_disease"}, organs={"cardiovascular", "hepatic"}))
+    assert "cardiac" in s.split(";")[0] and "hepatic" in s.split(";")[0]
+
+
 @needs_cache
 def test_learned_model_is_off_by_default():
     import recommend as RC

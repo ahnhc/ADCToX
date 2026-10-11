@@ -29,7 +29,7 @@ import numpy as np, yaml
 sys.path[:0] = ["/home/hyeongchanahn/CONI/adctox/ml", "/home/hyeongchanahn/CONI/adctox/src"]
 
 R = "/home/hyeongchanahn/CONI/adctox/"
-LABS = ("crcl", "bili", "ast", "lvef", "child_pugh", "ugt1a1_28_homozygous")
+LABS = ("crcl", "bili", "ast", "alt", "lvef", "child_pugh", "ugt1a1_28_homozygous")
 MIN_GROUP = 5
 ACTION = re.compile(r"leading to|dose adjustment|discontinu|reduction|withdraw|delay|interruption", re.I)   # treatment actions, not adverse events
 LIVER_LAB = re.compile(r"\bALT\b|\bAST\b|\bALP\b|GGT|bilirubin|aminotransferase", re.I)             # part of the definition of a hepatic stratum

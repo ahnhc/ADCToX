@@ -5,7 +5,7 @@ what happened to that patient? Runs the pre-declared analysis of ml/docs/validat
 
 Input CSV, one row per patient x administered ADC:
   patient_id, adc (id as in conf/label_restrictions.yaml, e.g. trastuzumab-deruxtecan), conditions (registry ids, ';'-separated),
-  crcl, bili, ast, child_pugh, lvef        (blank = not measured; the tool then judges the worst case, as in use)
+  crcl, bili, ast, alt, child_pugh, lvef       (blank = not measured; the tool then judges the worst case, as in use)
   outcome                                  (0/1: grade >= 3 adverse event in the patient's vulnerable organs within the window)
   site                                     (optional; bootstrap is clustered by site when present)
 Predictors, all computed by ml/recommend.py exactly as the tool would for that patient:
@@ -25,7 +25,7 @@ import numpy as np
 sys.path[:0] = ["/home/hyeongchanahn/CONI/adctox/ml", "/home/hyeongchanahn/CONI/adctox/src"]
 from matcher import auroc
 
-LABS = ("crcl", "bili", "ast", "lvef")
+LABS = ("crcl", "bili", "ast", "alt", "lvef")
 
 
 def _labs(row):

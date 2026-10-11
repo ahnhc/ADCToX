@@ -123,6 +123,31 @@ B와 Wn을 boxed와 W&P로 나눈 것은 "boxed 하나가 W&P 몇 개보다 무�
   - 모델은 의미 없는 문자열에도 장기를 냅니다(예: 안구 0.48). 그래서 메뉴에 철자 확인 경고를 넣었습니다.
 - **명령행**: `--learned-fallback F`(장기를 못 찾은 질환에만), `--learned F`(전체, 기존과 같음).
 
+## 외부 검토 반영: 판정 규칙 오류 5건 (2026-10-11)
+
+인용문은 모두 원문과 일치했지만, 인용 대조로는 잡히지 않는 조건 누락과 의미 변환 오류가 있었습니다. 특히 검사값을 입력하면 제한이 실제보다 약하게 표시되는 문제였습니다.
+
+1. **T-DM1 간 조건 누락**
+   - 문제: 5.1절의 "serum transaminases > 2.5 × ULN 또는 bilirubin > 1.5 × ULN에서 연구되지 않음"이 빠져 있었습니다. 그래서 Child-Pugh A에 빌리루빈 2×ULN이면 Monitor만 나왔습니다.
+   - 수정: Insufficient data 규칙 3개(빌리루빈, AST, ALT)를 추가했습니다.
+2. **Inotuzumab ALT 누락**
+   - 문제: 라벨 조건은 AST/ALT인데 ALT 입력이 없었습니다. 그래서 ALT를 모르는데도 No adjustment로 확정했습니다.
+   - 수정: ALT 입력(×ULN, `--alt`)을 추가했습니다. No adjustment는 ALT ≤ 2.5까지 확인돼야 성립하고, ALT > 2.5면 Insufficient data입니다.
+3. **필수 감량이 Monitor로 표시됨**
+   - 문제: Brentuximab Child-Pugh A의 "Dosage reduction is required"가 Monitor로 표시됐습니다.
+   - 수정: 새 범주 `reduce_dose`("Dose reduction required")를 만들었습니다. 순위 등급은 Monitor와 같습니다(쓸 수 있지만 조치가 필요). 이 범주를 써야 하는 규칙은 현재 이것 하나입니다.
+4. **CLcr < 15에서 ESRD 미정 조건이 사라짐**
+   - 문제: 투석 여부를 모르면 ESRD 규칙이 "불일치"로 빠졌습니다.
+   - 수정: 투석 여부를 모르면 ESRD/비ESRD 두 상태를 모두 판정하고 투석 여부를 확인 항목으로 요청합니다. 그리고 판정 로직 전체에서 "모르는 값"이 규칙을 탈락시키지 않고 "가능"으로 남도록 바꿨습니다.
+5. **요약에서 같은 등급의 장기가 하나만 표시됨**
+   - 문제: T-DM1에서 심장만 표시되고 간이 빠졌습니다.
+   - 수정: 요약은 최고 등급에 해당하는 모든 장기를 나열합니다. 예: `Monitor (cardiac 5.2, hepatic 8.7); Insufficient data? (cardiac 5.2, hepatic 5.1)`.
+
+- **함께 고친 점**: "추가 검사 필요"는 결론을 실제로 바꿀 수 있는 검사만 요청합니다. 이미 확정된 결론에는 요청하지 않습니다.
+- **규칙 수**: 88 → 92개, 인용 대조 92/92.
+- **테스트**: 다섯 사례를 회귀 테스트로 고정했습니다.
+- **하위군 검증(`validation_plan.md` 0c절)의 수치**는 이 수정 전 도구로 계산한 것입니다.
+
 ## 테스트
 
 - `tests/test_ml_recommender.py`: 28개(하네스 합성 코호트 2개 포함), 모두 통과.

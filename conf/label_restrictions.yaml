@@ -39,7 +39,7 @@ rules:
      quote: "No dosage adjustment is required for mild (CrCL >50–80 mL/min) or moderate (CrCL 30–50 mL/min) renal impairment."}
   - {adc: brentuximab-vedotin, domain: hepatic, category: avoid, section: "8.7", when: {child_pugh: [B, C]},
      quote: "Avoid the use of ADCETRIS in patients with moderate (Child-Pugh B) or severe (Child-Pugh C) hepatic impairment"}
-  - {adc: brentuximab-vedotin, domain: hepatic, category: monitor, section: "8.7", when: {child_pugh: [A]},
+  - {adc: brentuximab-vedotin, domain: hepatic, category: reduce_dose, section: "8.7", when: {child_pugh: [A]},
      quote: "Dosage reduction is required in patients with mild (Child-Pugh A) hepatic impairment"}
   - {adc: brentuximab-vedotin, domain: other, category: contraindicated, section: "4", when: {condition: [concomitant_bleomycin]},
      quote: "Concomitant use with bleomycin due to pulmonary toxicity (4)."}
@@ -85,11 +85,13 @@ rules:
      quote: "When administering MYLOTARG to patients who have a history of or predisposition for QTc prolongation, who are taking medicinal products that are known to prolong QT interval, and in patients with electrolyte disturbances, obtain electrocardiograms (ECGs) and electrolytes prior to the start of treatment and as needed during administration."}
 
   # ------------------------------------------------------------------ inotuzumab ozogamicin (BESPONSA v8)
-  - {adc: inotuzumab-ozogamicin, domain: hepatic, category: no_adjustment, section: "8.6", when: {bili_le: 1.5, ast_le: 2.5},
+  - {adc: inotuzumab-ozogamicin, domain: hepatic, category: no_adjustment, section: "8.6", when: {bili_le: 1.5, ast_le: 2.5, alt_le: 2.5},
      quote: "No adjustment to the starting dose is required when administering BESPONSA to patients with total bilirubin less than or equal to 1.5 × ULN and AST/ALT less than or equal to 2.5 × ULN"}
   - {adc: inotuzumab-ozogamicin, domain: hepatic, category: insufficient_data, section: "8.6", when: {bili_gt: 1.5},
      quote: "There is limited safety information available in patients with total bilirubin greater than 1.5 × ULN and/or AST/ALT greater than 2.5 × ULN prior to dosing."}
   - {adc: inotuzumab-ozogamicin, domain: hepatic, category: insufficient_data, section: "8.6", when: {ast_gt: 2.5},
+     quote: "There is limited safety information available in patients with total bilirubin greater than 1.5 × ULN and/or AST/ALT greater than 2.5 × ULN prior to dosing."}
+  - {adc: inotuzumab-ozogamicin, domain: hepatic, category: insufficient_data, section: "8.6", when: {alt_gt: 2.5},
      quote: "There is limited safety information available in patients with total bilirubin greater than 1.5 × ULN and/or AST/ALT greater than 2.5 × ULN prior to dosing."}
   - {adc: inotuzumab-ozogamicin, domain: hepatic, category: monitor, section: "5.1", when: {condition: [hepatic_vod_history, cirrhosis, chronic_liver_disease]},
      quote: "Patients who have experienced prior VOD or have serious ongoing hepatic liver disease (e.g., cirrhosis, nodular regenerative hyperplasia, active hepatitis) are at an increased risk for worsening of liver disease, including developing VOD, following treatment with BESPONSA."}
@@ -230,6 +232,12 @@ rules:
   # The label does not define mild/moderate here; read as Child-Pugh A/B (an interpretation, stated).
   - {adc: trastuzumab-emtansine, domain: hepatic, category: no_adjustment, section: "8.7", when: {child_pugh: [A, B]},
      quote: "No adjustment to the starting dose is required for patients with mild or moderate hepatic impairment"}
+  - {adc: trastuzumab-emtansine, domain: hepatic, category: insufficient_data, section: "5.1", when: {bili_gt: 1.5},
+     quote: "KADCYLA has not been studied in patients with serum transaminases > 2.5 × ULN or bilirubin > 1.5 × ULN prior to the initiation of treatment."}
+  - {adc: trastuzumab-emtansine, domain: hepatic, category: insufficient_data, section: "5.1", when: {ast_gt: 2.5},
+     quote: "KADCYLA has not been studied in patients with serum transaminases > 2.5 × ULN or bilirubin > 1.5 × ULN prior to the initiation of treatment."}
+  - {adc: trastuzumab-emtansine, domain: hepatic, category: insufficient_data, section: "5.1", when: {alt_gt: 2.5},
+     quote: "KADCYLA has not been studied in patients with serum transaminases > 2.5 × ULN or bilirubin > 1.5 × ULN prior to the initiation of treatment."}
   - {adc: trastuzumab-emtansine, domain: hepatic, category: insufficient_data, section: "8.7", when: {child_pugh: [C]},
      quote: "KADCYLA was not studied in patients with severe hepatic impairment."}
   - {adc: trastuzumab-emtansine, domain: cardiac, category: insufficient_data, section: "5.2", when: {lvef_lt: 50},
