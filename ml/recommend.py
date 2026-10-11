@@ -232,6 +232,7 @@ def render(rows, s, notes, checks_, detail=False, color=None):
         if i in starts: print(paint(thin, "90"))
         print("│ " + " │ ".join(paint(pl, c) + " " * (x - _width(pl)) for (pl, c), x in zip(row, wd)) + " │")
     print(line("└", "┴", "┘"))
+    for k, v in LEGEND: print(paint(f"  {k:<21} {v}", "90"))
     seen, first = set(), True
     for r in rows:
         for c, rr in r["verdict"].known + r["verdict"].possible:
@@ -273,6 +274,12 @@ COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)  ·  / 검색  · 
 LABS_ASK_Q = ("입력할 검사 수치가 있나요?", "")
 LABS_PICK_Q = ("검사 수치 선택", "")
 LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "alt": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
+PRIORITY_MODE_Q = "질환 우선순위"
+LEGEND = [("#", "순위. 같은 번호는 동률"),
+          ("Label restriction", "허가사항이 이 환자의 검사 수치·질환에 대해 정한 투여 제한. '?' = 입력하지 않은 수치에 따라 달라짐"),
+          ("Boxed on your organs", "환자 질환의 장기에 걸린 박스 경고 (가장 강한 경고)"),
+          ("Warn on your organs", "환자 질환의 장기에 걸린 일반 경고 (허가사항 5절)"),
+          ("Boxed elsewhere", "환자 질환과 관계없는 장기의 박스 경고 (참고, 순위에 반영 안 함)")]
 PRIORITY_Q = ("어느 질환 쪽 독성을 먼저 피할까요?", "1 = 가장 먼저. 같은 숫자는 같은 순위. 순위가 높은 질환의 장기에 경고가 있는 약이 뒤로 갑니다.")
 FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
 FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용 (추정값 × 0.25)", 0.25), ("사용 (추정값 × 0.5)", 0.5)]
@@ -335,10 +342,16 @@ def _ask_priority(conds, tui=None):
     d = default_levels(pc); names = [c for c, _, _ in pc]
     show = lambda c: _reg[c]["label"] if c in _reg else c
     det = lambda c, o: " ".join(x for x in (KO.get(c, ""), "(" + ", ".join(ORGAN_KO[a] for a in sorted(o, key=AXES.index)) + ")") if x)
+    auto = "  ".join(f"{d[c]} {KO.get(c, show(c))}" for c in sorted(names, key=lambda c: d[c]))
     if tui:
+        if tui.radiolist(PRIORITY_MODE_Q, [("자동 (질환 심각도 순)", ""), ("직접 정하기", "")], default=0, description=f"자동: {auto}") == 0:
+            PRIORITY = {}; return
         w = max(len(show(c)) for c in names)
         lv = tui.ranklist(PRIORITY_Q[0], [(f"{show(c):<{w}}", det(c, o)) for c, o, _ in pc], [d[c] for c in names], description=PRIORITY_Q[1])
     else:
+        try: manual = input(f"\n{PRIORITY_MODE_Q} 자동: {auto}\n  직접 정할까요? (y = 직접, Enter = 자동) > ").strip().lower() == "y"
+        except EOFError: manual = False
+        if not manual: PRIORITY = {}; return
         print(f"\n{PRIORITY_Q[0]} - {PRIORITY_Q[1]}")
         for i, (c, o, _) in enumerate(pc, 1): print(f"  {i}) {show(c):<34} {det(c, o)}   기본 {d[c]}")
         try: raw = input("  질환 순서대로 순위 입력 (예: 2 1 1, Enter = 기본) > ").split()
