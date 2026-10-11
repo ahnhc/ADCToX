@@ -110,7 +110,18 @@ An earlier attempt on the transcribed trial tables (`ml/matcher.py`) failed for 
 Incidence only (non-circular): learned 0.462 vs 0.429 vs 0.438 -- **not distinguishable** (+0.033 [-0.018, +0.087]). The learned weights also carry
 cross-organ risk (ILD -> neurologic) that can bury the condition's own organ, so the recommender gives the condition's own organ priority.
 
-**Recommender** (`ml/recommend.py`): risk % = 100 * sum(w_o * t_o) / sum(w_o), w_o = max(own organ, 0.5 * learned), t_o as above. It is an
-index, not an event probability. Conditions outside the 41-entry registry are resolved in this order: a near-identical registry entry
+**Recommender** (`ml/recommend.py`): risk % = 100 * sum(w_o * t_o) / sum(w_o), w_o = 1 + LAMBDA * s_o, s_o = max(own organ, 0.5 * learned), t_o as above.
+Rows print lowest risk first. It is an index, not an event probability. Every organ counts (weight 1): a first version scored only the patient's
+vulnerable organs, which made sacituzumab govitecan (boxed haematologic warning) look like the safest option for an ILD patient. The weight of a fully vulnerable organ is x10 an ordinary one (LAMBDA = 9) -- a
+**stated preference, not a fitted value** (`--lambda N`, N = multiplier - 1): the project's own default of x3 ranked T-DXd 12th of 14 for an ILD patient
+(a boxed pulmonary warning behind drugs with scattered section-5 warnings); it reaches 14th between x6 and x8, x10 leaves margin and gives the same order as x11
+and x15 in the cases checked. At x10: ILD -> T-DXd highest; cirrhosis -> inotuzumab, T-DM1; dry eye -> tisotumab. Mirvetuximab (boxed ocular) is still only
+12th of 14 for dry eye: the ordering depends on this constant, as the project already showed for the comorbidity layer.
+Run with no arguments for a question-by-question mode: arrow-key menus in the style of `hermes setup` (`ml/tui.py`, stdlib `curses`: a searchable
+checklist for the 41 conditions, radio lists for the rest, the default pre-selected, ESC takes it; numbered prompts when the terminal is not interactive): conditions, LAMBDA, the share of learned
+cross-organ vulnerability, organs listed per ADC, the Risk scale and colour. The displayed Risk is rescaled per patient (lowest of these ADCs
+= 0, highest = 100; `--raw` shows the unscaled index). Organ text is coloured by how much that organ drives this ADC's risk for this patient
+(the same yardstick as the Risk column), and the label evidence is written out as (Boxed) / (Warn), never left to bold or colour alone.
+Conditions outside the 41-entry registry are resolved in this order: a near-identical registry entry
 (BioLORD cosine >= 0.80) > MONDO hierarchy (`ml/mondo_index.py`, name similarity >= 0.75, organs from the project's ancestor crosswalk,
 severity a fixed 0.8) > a loosely similar registry entry (>= 0.60) > learned vulnerability only.
