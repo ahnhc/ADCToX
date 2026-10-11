@@ -25,6 +25,19 @@ def windows_console():
         except Exception: pass
 
 
+def into_windows_terminal():
+    """started by double-click in the old console (conhost) on Windows: reopen in Windows Terminal if it is installed,
+    and end this process. Not when Windows Terminal already runs us (WT_SESSION), with command-line arguments, or --no-wt."""
+    import shutil, subprocess
+    if os.name != "nt" or os.environ.get("WT_SESSION") or len(sys.argv) > 1 or not sys.stdin.isatty(): return
+    wt = shutil.which("wt")
+    if not wt: return
+    me = [sys.executable] if getattr(sys, "frozen", False) else [sys.executable, os.path.abspath(sys.argv[0])]
+    try: subprocess.Popen([wt, "new-tab", "--title", "ADC Recommender", "--", *me], close_fds=True)
+    except OSError: return
+    sys.exit(0)
+
+
 def _cw(c): return 2 if unicodedata.east_asian_width(c) in "WF" else 1
 
 

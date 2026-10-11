@@ -498,7 +498,10 @@ def list_conditions():
 
 def main():
     global LEARNED_FRACTION, FALLBACK, PRIORITY
-    import term; term.windows_console()                 # UTF-8 and ANSI colours in a Windows console
+    import term
+    if "--no-wt" in sys.argv: sys.argv.remove("--no-wt")
+    else: term.into_windows_terminal()                 # double-clicked on Windows: reopen in Windows Terminal when there is one
+    term.windows_console()                              # UTF-8 and ANSI colours in a Windows console
     if "--list" in sys.argv: list_conditions(); sys.exit(0)
     args, labs, flags = parse_args(sys.argv[1:])
     if "learned" in flags: LEARNED_FRACTION = flags["learned"]
