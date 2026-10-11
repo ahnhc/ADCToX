@@ -1,0 +1,1807 @@
+{
+ "source": "openFDA /drug/event",
+ "last_updated": "2026-07-30",
+ "adcs": [
+  "brentuximab-vedotin",
+  "datopotamab-deruxtecan",
+  "enfortumab-vedotin",
+  "gemtuzumab-ozogamicin",
+  "inotuzumab-ozogamicin",
+  "loncastuximab-tesirine",
+  "mirvetuximab-soravtansine",
+  "polatuzumab-vedotin",
+  "sacituzumab-govitecan",
+  "telisotuzumab-vedotin",
+  "tisotumab-vedotin",
+  "trastuzumab-deruxtecan",
+  "trastuzumab-emtansine"
+ ],
+ "skipped_lt50_reports": {
+  "pivekimab-sunirine": 0
+ },
+ "n_reports": {
+  "brentuximab-vedotin": 10190,
+  "datopotamab-deruxtecan": 639,
+  "enfortumab-vedotin": 7224,
+  "gemtuzumab-ozogamicin": 3635,
+  "inotuzumab-ozogamicin": 2937,
+  "loncastuximab-tesirine": 393,
+  "mirvetuximab-soravtansine": 1651,
+  "polatuzumab-vedotin": 9702,
+  "sacituzumab-govitecan": 4518,
+  "telisotuzumab-vedotin": 64,
+  "tisotumab-vedotin": 912,
+  "trastuzumab-deruxtecan": 10021,
+  "trastuzumab-emtansine": 8382
+ },
+ "unmapped_mentions": {
+  "__unmapped__": 18911,
+  "constitutional": 29018,
+  "__excluded__": 13699
+ },
+ "n_cells": 169,
+ "n_signals": 46,
+ "label_level": {
+  "auroc": 0.7782785436550018,
+  "ci": [
+   0.7274750143301206,
+   0.8369877013404434
+  ],
+  "n": 169
+ },
+ "incidence_pct": {
+  "auroc": 0.6510074231177094,
+  "ci": [
+   0.5913101693528809,
+   0.7273799984737485
+  ],
+  "n": 156
+ },
+ "shuffled_level_mean_auroc": 0.4989422057264052,
+ "single_organ_patients": {
+  "haematologic": {
+   "spearman": 0.6358270174447849,
+   "p": 0.01950143332281454,
+   "n_adc": 13,
+   "levels": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    0.0,
+    1.0,
+    2.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0
+   ]
+  },
+  "hepatic": {
+   "spearman": 0.8170571691028833,
+   "p": 0.0006500406040652726,
+   "n_adc": 13,
+   "levels": [
+    1.0,
+    0.0,
+    0.0,
+    2.0,
+    2.0,
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0
+   ]
+  },
+  "cardiovascular": {
+   "spearman": 0.3891558912470781,
+   "p": 0.188750469702042,
+   "n_adc": 13,
+   "levels": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    2.0
+   ]
+  },
+  "pulmonary": {
+   "spearman": 0.5188745216627709,
+   "p": 0.06922959763778243,
+   "n_adc": 13,
+   "levels": [
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    2.0,
+    1.0
+   ]
+  },
+  "renal": {
+   "spearman": -0.07715167498104596,
+   "p": 0.8021872773938725,
+   "n_adc": 13,
+   "levels": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "gastrointestinal": {
+   "spearman": 0.4469901562676742,
+   "p": 0.12567877544277814,
+   "n_adc": 13,
+   "levels": [
+    1.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "neurologic": {
+   "spearman": 0.6877936486782529,
+   "p": 0.009366726611942438,
+   "n_adc": 13,
+   "levels": [
+    2.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    0.0,
+    1.0,
+    1.0,
+    0.0,
+    1.0
+   ]
+  },
+  "ocular": {
+   "spearman": 0.8344241944381386,
+   "p": 0.000389113309521928,
+   "n_adc": 13,
+   "levels": [
+    0.0,
+    1.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    1.0,
+    2.0,
+    0.0,
+    0.0
+   ]
+  },
+  "dermatologic": {
+   "spearman": 0.7307981486470352,
+   "p": 0.004545326640897171,
+   "n_adc": 13,
+   "levels": [
+    1.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  "metabolic_endocrine": {
+   "spearman": 0.4899789435061114,
+   "p": 0.08918310303320728,
+   "n_adc": 13,
+   "levels": [
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "infectious_immune": {
+   "spearman": 0.8451542547285166,
+   "p": 0.00027510106288928057,
+   "n_adc": 13,
+   "levels": [
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "single_organ_mean_spearman": 0.5744456609765636,
+ "cells": [
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "haematologic",
+   "mentions": 4197,
+   "ror": 1.404,
+   "ror_lo": 1.351,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "hepatic",
+   "mentions": 1140,
+   "ror": 0.824,
+   "ror_lo": 0.772,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "cardiovascular",
+   "mentions": 1034,
+   "ror": 0.925,
+   "ror_lo": 0.864,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "pulmonary",
+   "mentions": 1519,
+   "ror": 0.87,
+   "ror_lo": 0.822,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "renal",
+   "mentions": 451,
+   "ror": 0.901,
+   "ror_lo": 0.814,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "gastrointestinal",
+   "mentions": 2383,
+   "ror": 0.804,
+   "ror_lo": 0.768,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "neurologic",
+   "mentions": 2030,
+   "ror": 1.176,
+   "ror_lo": 1.118,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "ocular",
+   "mentions": 110,
+   "ror": 0.249,
+   "ror_lo": 0.206,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "dermatologic",
+   "mentions": 1289,
+   "ror": 0.865,
+   "ror_lo": 0.814,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "metabolic_endocrine",
+   "mentions": 1214,
+   "ror": 0.941,
+   "ror_lo": 0.883,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "musculoskeletal",
+   "mentions": 460,
+   "ror": 0.823,
+   "ror_lo": 0.745,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "infectious_immune",
+   "mentions": 3136,
+   "ror": 1.222,
+   "ror_lo": 1.172,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "brentuximab-vedotin",
+   "organ": "otologic",
+   "mentions": 0,
+   "ror": 0.014,
+   "ror_lo": 0.001,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "haematologic",
+   "mentions": 44,
+   "ror": 0.295,
+   "ror_lo": 0.218,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "hepatic",
+   "mentions": 12,
+   "ror": 0.226,
+   "ror_lo": 0.129,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "cardiovascular",
+   "mentions": 22,
+   "ror": 0.506,
+   "ror_lo": 0.332,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "pulmonary",
+   "mentions": 124,
+   "ror": 2.072,
+   "ror_lo": 1.707,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "renal",
+   "mentions": 9,
+   "ror": 0.485,
+   "ror_lo": 0.256,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "gastrointestinal",
+   "mentions": 197,
+   "ror": 2.111,
+   "ror_lo": 1.793,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "neurologic",
+   "mentions": 58,
+   "ror": 0.815,
+   "ror_lo": 0.624,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "ocular",
+   "mentions": 99,
+   "ror": 7.804,
+   "ror_lo": 6.293,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "dermatologic",
+   "mentions": 68,
+   "ror": 1.235,
+   "ror_lo": 0.963,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "metabolic_endocrine",
+   "mentions": 21,
+   "ror": 0.413,
+   "ror_lo": 0.269,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "musculoskeletal",
+   "mentions": 17,
+   "ror": 0.822,
+   "ror_lo": 0.511,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "infectious_immune",
+   "mentions": 68,
+   "ror": 0.604,
+   "ror_lo": 0.471,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "datopotamab-deruxtecan",
+   "organ": "otologic",
+   "mentions": 2,
+   "ror": 2.119,
+   "ror_lo": 0.607,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "haematologic",
+   "mentions": 1108,
+   "ror": 0.323,
+   "ror_lo": 0.303,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "hepatic",
+   "mentions": 741,
+   "ror": 0.635,
+   "ror_lo": 0.588,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "cardiovascular",
+   "mentions": 646,
+   "ror": 0.678,
+   "ror_lo": 0.624,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "pulmonary",
+   "mentions": 971,
+   "ror": 0.653,
+   "ror_lo": 0.61,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "renal",
+   "mentions": 631,
+   "ror": 1.76,
+   "ror_lo": 1.61,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "gastrointestinal",
+   "mentions": 1952,
+   "ror": 0.816,
+   "ror_lo": 0.776,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "neurologic",
+   "mentions": 2065,
+   "ror": 1.582,
+   "ror_lo": 1.503,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "ocular",
+   "mentions": 330,
+   "ror": 1.071,
+   "ror_lo": 0.952,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "dermatologic",
+   "mentions": 3967,
+   "ror": 6.798,
+   "ror_lo": 6.491,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "metabolic_endocrine",
+   "mentions": 1555,
+   "ror": 1.693,
+   "ror_lo": 1.597,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "musculoskeletal",
+   "mentions": 371,
+   "ror": 0.819,
+   "ror_lo": 0.734,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "infectious_immune",
+   "mentions": 1096,
+   "ror": 0.417,
+   "ror_lo": 0.391,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "enfortumab-vedotin",
+   "organ": "otologic",
+   "mentions": 10,
+   "ror": 0.389,
+   "ror_lo": 0.209,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "haematologic",
+   "mentions": 2565,
+   "ror": 1.614,
+   "ror_lo": 1.539,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "hepatic",
+   "mentions": 1379,
+   "ror": 2.258,
+   "ror_lo": 2.123,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "cardiovascular",
+   "mentions": 976,
+   "ror": 1.813,
+   "ror_lo": 1.689,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "pulmonary",
+   "mentions": 941,
+   "ror": 1.027,
+   "ror_lo": 0.958,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "renal",
+   "mentions": 420,
+   "ror": 1.691,
+   "ror_lo": 1.522,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "gastrointestinal",
+   "mentions": 906,
+   "ror": 0.532,
+   "ror_lo": 0.496,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "neurologic",
+   "mentions": 384,
+   "ror": 0.346,
+   "ror_lo": 0.312,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "ocular",
+   "mentions": 20,
+   "ror": 0.089,
+   "ror_lo": 0.057,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "dermatologic",
+   "mentions": 160,
+   "ror": 0.177,
+   "ror_lo": 0.151,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "metabolic_endocrine",
+   "mentions": 549,
+   "ror": 0.764,
+   "ror_lo": 0.699,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "musculoskeletal",
+   "mentions": 102,
+   "ror": 0.321,
+   "ror_lo": 0.263,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "infectious_immune",
+   "mentions": 1920,
+   "ror": 1.409,
+   "ror_lo": 1.337,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "gemtuzumab-ozogamicin",
+   "organ": "otologic",
+   "mentions": 0,
+   "ror": 0.028,
+   "ror_lo": 0.002,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "haematologic",
+   "mentions": 1291,
+   "ror": 1.282,
+   "ror_lo": 1.203,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "hepatic",
+   "mentions": 906,
+   "ror": 2.51,
+   "ror_lo": 2.33,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "cardiovascular",
+   "mentions": 376,
+   "ror": 1.083,
+   "ror_lo": 0.973,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "pulmonary",
+   "mentions": 245,
+   "ror": 0.419,
+   "ror_lo": 0.368,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "renal",
+   "mentions": 184,
+   "ror": 1.195,
+   "ror_lo": 1.027,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "gastrointestinal",
+   "mentions": 573,
+   "ror": 0.593,
+   "ror_lo": 0.544,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "neurologic",
+   "mentions": 509,
+   "ror": 0.873,
+   "ror_lo": 0.795,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "ocular",
+   "mentions": 21,
+   "ror": 0.166,
+   "ror_lo": 0.108,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "dermatologic",
+   "mentions": 47,
+   "ror": 0.091,
+   "ror_lo": 0.069,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "metabolic_endocrine",
+   "mentions": 437,
+   "ror": 1.089,
+   "ror_lo": 0.986,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "musculoskeletal",
+   "mentions": 101,
+   "ror": 0.569,
+   "ror_lo": 0.466,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "infectious_immune",
+   "mentions": 1348,
+   "ror": 1.775,
+   "ror_lo": 1.667,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "inotuzumab-ozogamicin",
+   "organ": "otologic",
+   "mentions": 0,
+   "ror": 0.049,
+   "ror_lo": 0.003,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "haematologic",
+   "mentions": 100,
+   "ror": 1.014,
+   "ror_lo": 0.817,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "hepatic",
+   "mentions": 50,
+   "ror": 1.313,
+   "ror_lo": 0.983,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "cardiovascular",
+   "mentions": 22,
+   "ror": 0.677,
+   "ror_lo": 0.444,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "pulmonary",
+   "mentions": 59,
+   "ror": 1.213,
+   "ror_lo": 0.926,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "renal",
+   "mentions": 21,
+   "ror": 1.5,
+   "ror_lo": 0.973,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "gastrointestinal",
+   "mentions": 40,
+   "ror": 0.449,
+   "ror_lo": 0.326,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "neurologic",
+   "mentions": 26,
+   "ror": 0.472,
+   "ror_lo": 0.319,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "ocular",
+   "mentions": 8,
+   "ror": 0.746,
+   "ror_lo": 0.378,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "dermatologic",
+   "mentions": 96,
+   "ror": 2.537,
+   "ror_lo": 2.035,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "metabolic_endocrine",
+   "mentions": 30,
+   "ror": 0.797,
+   "ror_lo": 0.553,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "musculoskeletal",
+   "mentions": 6,
+   "ror": 0.398,
+   "ror_lo": 0.184,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "infectious_immune",
+   "mentions": 102,
+   "ror": 1.334,
+   "ror_lo": 1.076,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "loncastuximab-tesirine",
+   "organ": "otologic",
+   "mentions": 0,
+   "ror": 0.554,
+   "ror_lo": 0.034,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "haematologic",
+   "mentions": 172,
+   "ror": 0.346,
+   "ror_lo": 0.296,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "hepatic",
+   "mentions": 76,
+   "ror": 0.421,
+   "ror_lo": 0.335,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "cardiovascular",
+   "mentions": 77,
+   "ror": 0.524,
+   "ror_lo": 0.417,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "pulmonary",
+   "mentions": 237,
+   "ror": 1.097,
+   "ror_lo": 0.958,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "renal",
+   "mentions": 36,
+   "ror": 0.562,
+   "ror_lo": 0.404,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "gastrointestinal",
+   "mentions": 578,
+   "ror": 1.813,
+   "ror_lo": 1.649,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "neurologic",
+   "mentions": 267,
+   "ror": 1.172,
+   "ror_lo": 1.03,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "ocular",
+   "mentions": 691,
+   "ror": 26.617,
+   "ror_lo": 24.072,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "dermatologic",
+   "mentions": 62,
+   "ror": 0.312,
+   "ror_lo": 0.243,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "metabolic_endocrine",
+   "mentions": 57,
+   "ror": 0.328,
+   "ror_lo": 0.252,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "musculoskeletal",
+   "mentions": 80,
+   "ror": 1.16,
+   "ror_lo": 0.926,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "infectious_immune",
+   "mentions": 115,
+   "ror": 0.289,
+   "ror_lo": 0.24,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "mirvetuximab-soravtansine",
+   "organ": "otologic",
+   "mentions": 4,
+   "ror": 1.147,
+   "ror_lo": 0.45,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "haematologic",
+   "mentions": 5047,
+   "ror": 2.111,
+   "ror_lo": 2.034,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "hepatic",
+   "mentions": 887,
+   "ror": 0.658,
+   "ror_lo": 0.612,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "cardiovascular",
+   "mentions": 857,
+   "ror": 0.794,
+   "ror_lo": 0.738,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "pulmonary",
+   "mentions": 719,
+   "ror": 0.387,
+   "ror_lo": 0.358,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "renal",
+   "mentions": 620,
+   "ror": 1.447,
+   "ror_lo": 1.323,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "gastrointestinal",
+   "mentions": 1666,
+   "ror": 0.554,
+   "ror_lo": 0.525,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "neurologic",
+   "mentions": 1187,
+   "ror": 0.643,
+   "ror_lo": 0.604,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "ocular",
+   "mentions": 48,
+   "ror": 0.114,
+   "ror_lo": 0.086,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "dermatologic",
+   "mentions": 319,
+   "ror": 0.192,
+   "ror_lo": 0.172,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "metabolic_endocrine",
+   "mentions": 1556,
+   "ror": 1.411,
+   "ror_lo": 1.332,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "musculoskeletal",
+   "mentions": 244,
+   "ror": 0.432,
+   "ror_lo": 0.379,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "infectious_immune",
+   "mentions": 4604,
+   "ror": 2.487,
+   "ror_lo": 2.393,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "polatuzumab-vedotin",
+   "organ": "otologic",
+   "mentions": 59,
+   "ror": 2.596,
+   "ror_lo": 1.907,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "haematologic",
+   "mentions": 1574,
+   "ror": 1.471,
+   "ror_lo": 1.387,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "hepatic",
+   "mentions": 321,
+   "ror": 0.657,
+   "ror_lo": 0.586,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "cardiovascular",
+   "mentions": 388,
+   "ror": 1.003,
+   "ror_lo": 0.903,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "pulmonary",
+   "mentions": 513,
+   "ror": 0.843,
+   "ror_lo": 0.769,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "renal",
+   "mentions": 116,
+   "ror": 0.654,
+   "ror_lo": 0.542,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "gastrointestinal",
+   "mentions": 1698,
+   "ror": 2.082,
+   "ror_lo": 1.966,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "neurologic",
+   "mentions": 454,
+   "ror": 0.684,
+   "ror_lo": 0.62,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "ocular",
+   "mentions": 42,
+   "ror": 0.298,
+   "ror_lo": 0.22,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "dermatologic",
+   "mentions": 412,
+   "ror": 0.789,
+   "ror_lo": 0.713,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "metabolic_endocrine",
+   "mentions": 342,
+   "ror": 0.74,
+   "ror_lo": 0.662,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "musculoskeletal",
+   "mentions": 169,
+   "ror": 0.881,
+   "ror_lo": 0.754,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "infectious_immune",
+   "mentions": 631,
+   "ror": 0.608,
+   "ror_lo": 0.559,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "sacituzumab-govitecan",
+   "organ": "otologic",
+   "mentions": 13,
+   "ror": 1.282,
+   "ror_lo": 0.736,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "haematologic",
+   "mentions": 6,
+   "ror": 0.544,
+   "ror_lo": 0.241,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "hepatic",
+   "mentions": 5,
+   "ror": 1.291,
+   "ror_lo": 0.538,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "cardiovascular",
+   "mentions": 1,
+   "ror": 0.402,
+   "ror_lo": 0.08,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "pulmonary",
+   "mentions": 11,
+   "ror": 2.327,
+   "ror_lo": 1.226,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "renal",
+   "mentions": 1,
+   "ror": 0.931,
+   "ror_lo": 0.184,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "gastrointestinal",
+   "mentions": 5,
+   "ror": 0.563,
+   "ror_lo": 0.235,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "neurologic",
+   "mentions": 8,
+   "ror": 1.516,
+   "ror_lo": 0.735,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "ocular",
+   "mentions": 11,
+   "ror": 11.1,
+   "ror_lo": 5.843,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "dermatologic",
+   "mentions": 1,
+   "ror": 0.301,
+   "ror_lo": 0.059,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "metabolic_endocrine",
+   "mentions": 0,
+   "ror": 0.113,
+   "ror_lo": 0.007,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "musculoskeletal",
+   "mentions": 1,
+   "ror": 0.844,
+   "ror_lo": 0.167,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "infectious_immune",
+   "mentions": 11,
+   "ror": 1.357,
+   "ror_lo": 0.715,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "telisotuzumab-vedotin",
+   "organ": "otologic",
+   "mentions": 0,
+   "ror": 5.071,
+   "ror_lo": 0.312,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "haematologic",
+   "mentions": 100,
+   "ror": 0.347,
+   "ror_lo": 0.283,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "hepatic",
+   "mentions": 35,
+   "ror": 0.334,
+   "ror_lo": 0.239,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "cardiovascular",
+   "mentions": 37,
+   "ror": 0.433,
+   "ror_lo": 0.312,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "pulmonary",
+   "mentions": 77,
+   "ror": 0.58,
+   "ror_lo": 0.461,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "renal",
+   "mentions": 60,
+   "ror": 1.667,
+   "ror_lo": 1.285,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "gastrointestinal",
+   "mentions": 270,
+   "ror": 1.351,
+   "ror_lo": 1.182,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "neurologic",
+   "mentions": 140,
+   "ror": 1.036,
+   "ror_lo": 0.87,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "ocular",
+   "mentions": 321,
+   "ror": 16.097,
+   "ror_lo": 14.111,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "dermatologic",
+   "mentions": 136,
+   "ror": 1.28,
+   "ror_lo": 1.072,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "metabolic_endocrine",
+   "mentions": 78,
+   "ror": 0.802,
+   "ror_lo": 0.638,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "musculoskeletal",
+   "mentions": 48,
+   "ror": 1.195,
+   "ror_lo": 0.896,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "infectious_immune",
+   "mentions": 128,
+   "ror": 0.583,
+   "ror_lo": 0.486,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "tisotumab-vedotin",
+   "organ": "otologic",
+   "mentions": 3,
+   "ror": 1.533,
+   "ror_lo": 0.532,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "haematologic",
+   "mentions": 1911,
+   "ror": 0.651,
+   "ror_lo": 0.619,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "hepatic",
+   "mentions": 746,
+   "ror": 0.668,
+   "ror_lo": 0.618,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "cardiovascular",
+   "mentions": 675,
+   "ror": 0.744,
+   "ror_lo": 0.686,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "pulmonary",
+   "mentions": 2900,
+   "ror": 3.037,
+   "ror_lo": 2.898,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "renal",
+   "mentions": 205,
+   "ror": 0.49,
+   "ror_lo": 0.425,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "gastrointestinal",
+   "mentions": 3619,
+   "ror": 2.084,
+   "ror_lo": 1.999,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "neurologic",
+   "mentions": 1212,
+   "ror": 0.825,
+   "ror_lo": 0.775,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "ocular",
+   "mentions": 192,
+   "ror": 0.602,
+   "ror_lo": 0.519,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "dermatologic",
+   "mentions": 701,
+   "ror": 0.564,
+   "ror_lo": 0.521,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "metabolic_endocrine",
+   "mentions": 959,
+   "ror": 0.948,
+   "ror_lo": 0.884,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "musculoskeletal",
+   "mentions": 427,
+   "ror": 1.006,
+   "ror_lo": 0.907,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "infectious_immune",
+   "mentions": 1343,
+   "ror": 0.554,
+   "ror_lo": 0.522,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-deruxtecan",
+   "organ": "otologic",
+   "mentions": 22,
+   "ror": 0.932,
+   "ror_lo": 0.6,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "haematologic",
+   "mentions": 2414,
+   "ror": 0.569,
+   "ror_lo": 0.543,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "hepatic",
+   "mentions": 1833,
+   "ror": 1.387,
+   "ror_lo": 1.314,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "cardiovascular",
+   "mentions": 1619,
+   "ror": 1.513,
+   "ror_lo": 1.427,
+   "signal": true,
+   "label": 2
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "pulmonary",
+   "mentions": 2025,
+   "ror": 1.146,
+   "ror_lo": 1.089,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "renal",
+   "mentions": 253,
+   "ror": 0.421,
+   "ror_lo": 0.369,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "gastrointestinal",
+   "mentions": 3200,
+   "ror": 1.084,
+   "ror_lo": 1.04,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "neurologic",
+   "mentions": 2662,
+   "ror": 1.555,
+   "ror_lo": 1.485,
+   "signal": true,
+   "label": 1
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "ocular",
+   "mentions": 447,
+   "ror": 1.1,
+   "ror_lo": 0.992,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "dermatologic",
+   "mentions": 1572,
+   "ror": 1.007,
+   "ror_lo": 0.952,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "metabolic_endocrine",
+   "mentions": 991,
+   "ror": 0.661,
+   "ror_lo": 0.618,
+   "signal": false,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "musculoskeletal",
+   "mentions": 1280,
+   "ror": 3.065,
+   "ror_lo": 2.853,
+   "signal": true,
+   "label": 0
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "infectious_immune",
+   "mentions": 2163,
+   "ror": 0.657,
+   "ror_lo": 0.626,
+   "signal": false,
+   "label": 1
+  },
+  {
+   "adc": "trastuzumab-emtansine",
+   "organ": "otologic",
+   "mentions": 72,
+   "ror": 2.975,
+   "ror_lo": 2.215,
+   "signal": true,
+   "label": 0
+  }
+ ]
+}

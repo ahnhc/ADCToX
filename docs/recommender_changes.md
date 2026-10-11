@@ -65,7 +65,15 @@ B와 Wn을 boxed와 W&P로 나눈 것은 "boxed 하나가 W&P 몇 개보다 무�
 
 ## 단계 5 — 실제 결과로 검증
 
-수행할 데이터가 없어서 하지 못했습니다. 필요한 데이터, 사전 등록할 분석, 통과 기준을 `docs/validation_plan.md`에 정리했습니다.
+- **실행함: FAERS 외부 검증**(`ml/validate_faers.py`)
+  - 13개 ADC × 13개 장기에서 ADC 계열 안의 보고 오즈비를 구했습니다.
+  - 추천기가 쓰는 라벨 경고 수준이 FAERS 신호를 판별한 AUROC는 0.778 [0.727, 0.837]입니다(무작위 섞기 0.499, 발생률 0.651).
+  - 단일 장기 환자 순서와 FAERS ROR의 Spearman 평균은 0.574입니다.
+  - **신장만 일치하지 않았습니다(ρ -0.08).**
+- **구현함: 환자 단위 검증 하네스**(`ml/validate_outcomes.py`)
+  - 사전 등록 분석을 고정했습니다: 투여한 ADC의 도구 등급 → 결과 AUROC, 라벨만 쓴 기준선과의 paired 차이, 환자/기관 군집 부트스트랩.
+  - 합성 코호트 테스트 2개를 통과했습니다.
+- **못 한 것**: 실제 환자 코호트에서 판별력 측정. 저장소에 환자 단위 결과 데이터가 없습니다. 데이터 요건은 `docs/validation_plan.md`에 있습니다.
 
 ## 사례 비교 (같은 입력, 이전 구현 → 개정 구현)
 
@@ -87,5 +95,5 @@ B와 Wn을 boxed와 W&P로 나눈 것은 "boxed 하나가 W&P 몇 개보다 무�
 
 ## 테스트
 
-- `tests/test_ml_recommender.py`: 26개, 모두 통과.
+- `tests/test_ml_recommender.py`: 28개(하네스 합성 코호트 2개 포함), 모두 통과.
 - 전체 스위트: 700 통과, 6 실패. 실패 6개(across_agent_trend, generated_blocks, regex_hygiene ×2, report_contents ×2)는 이번 작업 전 기준선에서도 같았습니다.

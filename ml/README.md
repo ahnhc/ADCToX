@@ -127,7 +127,11 @@ B and Wn only grow when s grows. The first version's weighted mean 100 * sum w t
 vulnerable (d/ds_k = 9 (100 t_k - raw) / sum w), and its per-patient min-max always gave the best drug 0%; both are gone, and nothing is shown
 as a percentage. Incidence is displayed (absolute, flagged) but not used in the order; boxed warnings on organs the patient is not vulnerable
 in are listed separately; ties are marked '='. A checklist names the tests the conditions call for (`conf/patient_checks.yaml`).
-This orders label evidence for one patient; it has not been validated against patient outcomes (`docs/validation_plan.md`).
+This orders label evidence for one patient. External check on real-world reports (FAERS via openFDA, `ml/validate_faers.py`): the label warning level it
+orders by discriminates within-class disproportionality signals with AUROC 0.778 [0.727, 0.837] over 169 ADC x organ cells (shuffled 0.499;
+label-table incidence 0.651); per organ it agrees except renal (rho -0.08). FAERS has no comorbidities, so this validates the drug-side organ evidence,
+not patient-specific risk; the patient-level analysis is implemented (`ml/validate_outcomes.py`, tested on synthetic cohorts) but no cohort exists here
+(`docs/validation_plan.md`).
 Conditions outside the 41-entry registry are resolved in this order: a near-identical registry entry (BioLORD cosine >= 0.80) > MONDO hierarchy
 (`ml/mondo_index.py`, name similarity >= 0.75, severity a fixed 0.8) > a loosely similar registry entry (>= 0.60) > not understood (no organ).
 Tests: `tests/test_ml_recommender.py`.

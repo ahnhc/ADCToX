@@ -181,3 +181,37 @@ def test_vulnerability_inference_does_not_set_context_bits_training_never_saw():
     src = (ROOT / "ml" / "vulnerability_model.py").read_text()
     pred = src[src.index("def predict"):]
     assert "meta[\"nl\"] + k] = 1" not in pred
+
+
+# ------------------------------------------------------------------ stage-5 patient-level harness (ml/validate_outcomes.py)
+def _synthetic_cohort(signal: bool, n=480, seed=1):
+    """Each patient has one condition and gets a random ADC. With signal=True the event rate is high exactly when that ADC's
+    label warns on the patient's organ (a patient x drug interaction), so a tool that uses patient information must win."""
+    import numpy as np
+    import drug_evidence as DE
+    E = DE.evidence(); rng = np.random.default_rng(seed)
+    conds = {"interstitial_lung_disease": "pulmonary", "keratopathy_history": "ocular", "cirrhosis": "hepatic", "peripheral_neuropathy": "neurologic"}
+    adcs = [a for a in sorted(E) if a != "pivekimab-sunirine"]; rows = []
+    for i in range(n):
+        c = list(conds)[i % len(conds)]; a = adcs[rng.integers(len(adcs))]
+        hit = E[a]["organs"][conds[c]]["level"] != "none"
+        p = (0.55 if hit else 0.08) if signal else 0.25
+        rows.append(dict(patient_id=str(i), adc=a, conditions=c, crcl="", bili="1.0", ast="1.0", child_pugh="A", lvef="", outcome=str(int(rng.random() < p)), site=""))
+    return rows
+
+
+@needs_cache
+def test_outcome_harness_detects_a_real_patient_drug_association():
+    import validate_outcomes as VO
+    rows = _synthetic_cohort(signal=True); res = VO.analyse(rows, VO.features(rows), n_boot=400)
+    assert res["auroc"]["tool"]["ci"][0] > 0.5
+    assert res["paired"]["tool_minus_label_only"]["adds_patient_information"]
+
+
+@needs_cache
+def test_outcome_harness_does_not_invent_an_association():
+    import validate_outcomes as VO
+    rows = _synthetic_cohort(signal=False); res = VO.analyse(rows, VO.features(rows), n_boot=400)
+    lo, hi = res["auroc"]["tool"]["ci"]
+    assert lo < 0.5 < hi
+    assert not res["paired"]["tool_minus_label_only"]["adds_patient_information"]
