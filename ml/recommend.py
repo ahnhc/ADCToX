@@ -26,6 +26,8 @@ This orders label evidence for one patient. It is not a probability of an advers
 patient outcomes (ml/docs/validation_plan.md).
 """
 import csv, json, os, re, sys, warnings
+for _k, _v in (("HF_HUB_DISABLE_PROGRESS_BARS", "1"), ("TRANSFORMERS_VERBOSITY", "error"), ("TQDM_DISABLE", "1"), ("HF_HUB_VERBOSITY", "error")):
+    os.environ.setdefault(_k, _v)     # model loading bars and hub warnings are noise in a clinical table
 import numpy as np
 warnings.filterwarnings("ignore")
 sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")
@@ -108,8 +110,8 @@ def recommend(conditions, labs=None):
                          B=round(B, 3), Wn=round(Wn, 3), boxed=boxed, warn=warn, elsewhere=elsewhere, organs=org, has_tables=e["has_tables"]))
     rows.sort(key=lambda r: (r["tier"], r["verdict"].worst_known, r["B"], r["Wn"], r["name"]))     # a settled restriction ranks behind a possible one of the same tier
     prev = None
-    for i, r in enumerate(rows, 1):
-        k = (r["tier"], r["verdict"].worst_known, r["B"], r["Wn"]); r["tie"] = bool(prev and k == prev["key"]); r["rank"] = prev["rank"] if r["tie"] else i
+    for r in rows:
+        k = (r["tier"], r["verdict"].worst_known, r["B"], r["Wn"]); r["tie"] = bool(prev and k == prev["key"]); r["rank"] = prev["rank"] if r["tie"] else (prev["rank"] + 1 if prev else 1)
         r["key"] = k; prev = r
     for i in range(len(rows) - 1):
         if rows[i + 1]["tie"]: rows[i]["tie"] = True
@@ -167,7 +169,8 @@ def render(rows, s, notes, checks_, detail=False, color=None):
     print(line("┌", "┬", "┐")); print("│ " + " │ ".join(h + " " * (x - _width(h)) for h, x in zip(head, wd)) + " │"); print(line("├", "┼", "┤"))
     for row in cells: print("│ " + " │ ".join(paint(pl, c) + " " * (x - _width(pl)) for (pl, c), x in zip(row, wd)) + " │")
     print(line("└", "┴", "┘"))
-    print("Order: label restriction (worst case over missing labs), then boxed, then section-5 warnings on your organs; '=' marks a tie.")
+    print("Order: label restriction (worst case over missing labs), then boxed, then section-5 warnings on your organs.\n"
+          "'#' numbers the groups: drugs with the same number and '=' are tied (the label gives no reason to prefer one).")
     seen, first = set(), True
     for r in rows:
         for c, rr in r["verdict"].known + r["verdict"].possible:
@@ -192,7 +195,10 @@ def render(rows, s, notes, checks_, detail=False, color=None):
 
 # ------------------------------------------------------------------------------------------------ input
 COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)  ·  / 검색  ·  ENTER 확정")
-LABS_Q = ("검사 수치 입력", "투여 제한 판정에 쓰입니다. 비워 두면 가능한 모든 경우를 표시합니다.")
+LABS_ASK_Q = ("검사 수치", "허가사항(8.6/8.7절 등)의 투여 제한은 검사 수치로 정해집니다 (예: CLcr < 60이면 Pivekimab 투여 회피).\n"
+              "수치가 없으면 가능한 모든 경우를 따져 'Avoid?'처럼 물음표로 표시하고, 어떤 검사가 결론을 내줄지 알려 줍니다.")
+LABS_PICK_Q = ("가지고 있는 검사 수치 선택", "많은 약의 판정에 쓰이는 순서입니다. 오른쪽은 그 수치로 투여 제한이 갈리는 약입니다.")
+LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
 FALLBACK_Q = ("관련 장기를 찾지 못한 질환", "{conds}: 레지스트리·MONDO 어디에서도 관련 장기를 불러오지 못했습니다. 이대로면 이 질환은 순위에 반영되지 않습니다.\n"
               "이 질환에만 FinnGen 학습 모델의 추정 장기를 쓸까요? 독립 평가에서 평균적으로 개선이 확인되지 않은 추정이며, 결과에 '검증 안 됨'으로 표시됩니다.\n"
               "주의: 모델은 오타나 의미 없는 입력에도 장기를 추정합니다. 먼저 철자를 확인하세요.")
@@ -206,10 +212,38 @@ LAB_FIELDS = [("crcl", "CLcr, Cockcroft-Gault (mL/min)", float), ("bili", "total
               ("lvef", "baseline LVEF (%)", float), ("ugt1a1_28_homozygous", "UGT1A1*28 homozygous (y/n)", lambda x: {"y": True, "n": False}.get(x.strip().lower()))]
 
 
-def _ask_labs():
-    labs = {}
-    print(f"\n{LABS_Q[0]} - {LABS_Q[1]}")
-    for k, q, cast in LAB_FIELDS:
+def lab_uses():
+    """lab field -> ADC names whose label restrictions it can change (from conf/label_restrictions.yaml), fields most used first."""
+    keys = {"crcl": ("crcl_lt", "crcl_ge", "esrd"), "bili": ("bili_gt", "bili_le"), "ast": ("ast_gt", "ast_le"), "child_pugh": ("child_pugh",),
+            "lvef": ("lvef_lt",), "ugt1a1_28_homozygous": ("ugt1a1_28_homozygous",)}
+    E = DE.evidence(); use = {k: sorted({E[r["adc"]]["name"] for r in RS.load_rules() if r["adc"] in E and set(r["when"]) & set(v)}) for k, v in keys.items()}
+    return sorted(((k, q, cast, use[k]) for k, q, cast in LAB_FIELDS), key=lambda x: -len(x[3]))
+
+
+ABBR = {"Trastuzumab deruxtecan": "T-DXd", "Trastuzumab emtansine": "T-DM1", "Datopotamab deruxtecan": "Dato-DXd"}
+def _short(names, n=4):
+    s = [ABBR.get(x, x.split()[0]) for x in names]; return ", ".join(s[:n]) + (f" 외 {len(s) - n}개" if len(s) > n else "")
+
+
+def _ask_labs(tui=None):
+    """first: are there any lab values at all? then: which ones (with why each matters); then only those values."""
+    labs = {}; fields = lab_uses()
+    if tui:
+        if tui.radiolist(LABS_ASK_Q[0], [("없음 / 모름 (가능한 모든 경우 표시)", ""), ("있음 (고르기)", "")], default=0, description=LABS_ASK_Q[1]) == 0: return labs
+        items = [(q, f"{LABS_WHY[k]} · {len(u)}개 약: {_short(u)}") for k, q, _, u in fields]
+        pick = tui.checklist(LABS_PICK_Q[0], items, checked=[], description=LABS_PICK_Q[1], min_one=False) or []
+    else:
+        print(f"\n{LABS_ASK_Q[0]}\n  " + LABS_ASK_Q[1].replace("\n", "\n  "))
+        try: has = input("  입력할 검사 수치가 있나요? (y = 있음, Enter = 없음) > ").strip().lower()
+        except EOFError: has = ""
+        if has != "y": return labs
+        print(f"\n{LABS_PICK_Q[0]} - {LABS_PICK_Q[1]}")
+        for i, (k, q, _, u) in enumerate(fields, 1): print(f"  {i}) {q:<32} {LABS_WHY[k]} · {len(u)}개 약: {_short(u)}")
+        try: raw = input("  번호 (쉼표 구분, Enter = 없음) > ")
+        except EOFError: raw = ""
+        pick = [int(x) - 1 for x in raw.replace(" ", "").split(",") if x.isdigit() and 1 <= int(x) <= len(fields)]
+    if pick: print()
+    for k, q, cast, _ in (fields[i] for i in pick):
         try: raw = input(f"  {q} (Enter = unknown) > ").strip()
         except EOFError: break
         if not raw: continue
@@ -253,7 +287,7 @@ def wizard():
             except EOFError: extra = ""
             conds += [t.strip() for t in extra.split(",") if t.strip()]
         conds = conds or ["interstitial_lung_disease"]
-        labs = _ask_labs()
+        labs = _ask_labs(tui)
         _ask_fallback(conds, tui.radiolist)
         if any(c not in _reg and c.lower() not in _by_label and c not in CONTEXT for c in conds):
             MONDO_SEVERITY = MONDO_OPTS[tui.radiolist(MONDO_Q[0], [(n, "") for n, _ in MONDO_OPTS], default=1, description=MONDO_Q[1])][1]
