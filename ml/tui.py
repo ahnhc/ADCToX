@@ -37,6 +37,19 @@ class _Screen:
 
 def _enter(k): return k in (10, 13, curses.KEY_ENTER)
 
+def _wrap(text, width, indent="    "):
+    """wrap by display width (Hangul counts 2), breaking at spaces where possible."""
+    out, line = [], ""
+    for word in text.split(" "):
+        cand = (line + " " + word) if line else word
+        if sum(_cw(c) for c in cand) <= width: line = cand; continue
+        if line: out.append(line); line = indent + word
+        else: line = word
+        while sum(_cw(c) for c in line) > width:
+            cut = _clip(line, width); out.append(cut); line = indent + line[len(cut):]
+    if line or not out: out.append(line)
+    return out
+
 def radiolist(title, items, default=0, description=""):
     """items: [(label, detail)]. Returns the chosen index (ESC / q -> default)."""
     def run(scr):
@@ -133,3 +146,40 @@ def ranklist(title, items, levels, description=""):
                 d = {v: k for k, v in enumerate(sorted(set(lv)), 1)}; return [d[v] for v in lv]      # 1, 3 -> 1, 2
             elif key in (27, ord("q")): return list(levels)
     return curses.wrapper(run)
+
+
+def browse(title, lines, selectable, details, footer=""):
+    """read-only result viewer. lines: the table as text; selectable: indices of lines that are rows; details[k]: text lines
+    shown in the bottom panel for selectable row k. UP/DOWN or a mouse click selects a row; q / ENTER / ESC closes."""
+    import textwrap
+    def run(scr):
+        S = _Screen(scr); cur = 0; top = 0
+        try: curses.mousemask(curses.BUTTON1_CLICKED | curses.BUTTON1_PRESSED | curses.BUTTON1_RELEASED); curses.mouseinterval(0)
+        except curses.error: pass
+        while True:
+            h, w = scr.getmaxyx(); scr.clear()          # full repaint: the panel height changes with the row
+            S.put(0, 1, title, S.title); S.put(1, 1, "↑↓ 또는 클릭: 이유 보기   q / ENTER: 닫기", S.dim)
+            out = []
+            for ln in details[cur]: out += _wrap(ln, max(20, w - 3))
+            panel = min(len(out) + 1, max(8, int(h * 0.45))); area = max(3, h - panel - 3); y0 = 2
+            sel = selectable[cur]
+            if sel < top + 3: top = max(0, sel - 3)
+            if sel >= top + area: top = sel - area + 1
+            shown = {}
+            for k in range(area):
+                i = top + k
+                if i >= len(lines): break
+                S.put(y0 + k, 0, lines[i], curses.A_REVERSE if i == sel else 0); shown[y0 + k] = i
+            yb = y0 + area; S.put(yb, 0, "─" * (w - 1), S.dim)
+            for k, ln in enumerate(out[:h - yb - 2]): S.put(yb + 1 + k, 1, ln)
+            if footer: S.put(h - 1, 1, footer, S.dim)
+            scr.refresh(); key = scr.getch()
+            if key in (curses.KEY_UP, ord("k")): cur = max(0, cur - 1)
+            elif key in (curses.KEY_DOWN, ord("j")): cur = min(len(selectable) - 1, cur + 1)
+            elif key == curses.KEY_MOUSE:
+                try:
+                    _, mx, my, _, _ = curses.getmouse()
+                    if my in shown and shown[my] in selectable: cur = selectable.index(shown[my])
+                except curses.error: pass
+            elif key in (ord("q"), 27, 10, 13, curses.KEY_ENTER): return
+    curses.wrapper(run)

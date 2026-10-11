@@ -199,6 +199,53 @@ def _inc_text(o):
     x = o["inc"]; return f"G>=3 {x['pct']:g}% {x['term'].rstrip('*†‡§¶#^±※♦àèðþýßø0123456789, ')}" + (" [combo]" if x["combo"] else "") + (" [lab]" if x["lab"] else "")
 
 
+LEGEND = "Primary = 허가사항의 가장 강한 경고 · Secondary = 그 밖의 경고 · ? = 입력하지 않은 검사 수치에 따라 달라짐 · 다른 장기는 순위에 반영 안 함"
+
+
+def _table(rows, paint=lambda t, c: t):
+    """-> (table lines, index of the line of each row)."""
+    tone = {4: "31;1", 3: "31", 2: "33", 1: "36", 0: "32", -1: ""}
+    org_txt = lambda xs: ", ".join(ORGAN_KO[a] for a in xs) or "-"
+    head = ["#", "ADC", "허가 제한", "내 장기: Primary", "내 장기: Secondary", "다른 장기: Primary"]
+    cells, prev_rank, starts = [], None, set()
+    for i, r in enumerate(rows):
+        if r["rank"] != prev_rank and i: starts.add(i)
+        rk = "" if prev_rank == r["rank"] else str(r["rank"]); prev_rank = r["rank"]; rc = "33" if "?" in r["restriction"] else tone[max(r["verdict"].worst_known, -1)]
+        cells.append([(rk, ""), (r["name"][:26], ""), (r["restriction_ko"], rc), (org_txt(r["boxed"]), "31" if r["boxed"] else ""),
+                      (org_txt(r["warn"]), "33" if r["warn"] else ""), (org_txt(r["elsewhere"]), "90")])
+    wd = [max([_width(head[c])] + [_width(row[c][0]) for row in cells]) for c in range(len(head))]
+    line = lambda l, m, rr: l + m.join("─" * (x + 2) for x in wd) + rr
+    out = [line("┌", "┬", "┐"), "│ " + " │ ".join(h + " " * (x - _width(h)) for h, x in zip(head, wd)) + " │", line("├", "┼", "┤")]
+    thin = "├" + "┼".join("╌" * (x + 2) for x in wd) + "┤"; at = []
+    for i, row in enumerate(cells):
+        if i in starts: out.append(paint(thin, "90"))
+        at.append(len(out)); out.append("│ " + " │ ".join(paint(pl, c) + " " * (x - _width(pl)) for (pl, c), x in zip(row, wd)) + " │")
+    out.append(line("└", "┴", "┘"))
+    return out, at
+
+
+def reasons(r):
+    """lines explaining one row: each label restriction with its section and verbatim text, and what is still open."""
+    v = r["verdict"]; out = [f"{r['name']}  —  허가 제한: {r['restriction_ko']}", ""]
+    items = [(c, rr, True) for c, rr in v.known] + [(c, rr, False) for c, rr in v.possible]
+    items = [x for x in items if x[0] != "no_adjustment" or len(items) == 1]
+    for c, rr, sure in sorted(items, key=lambda x: (-RS.TIER[x[0]], not x[2])):
+        out.append(f"{RS.KO[c]}{'' if sure else '?'} ({RS.DOMAIN_KO.get(rr['domain'], rr['domain'])}, 허가사항 {rr['section']}절): \"{rr['quote']}\"")
+    for d, sure in v.silent:
+        out.append(f"언급 없음{'' if sure else '?'} ({RS.DOMAIN_KO.get(d, d)}): 허가사항 8.6/8.7절이 이 환자의 {RS.DOMAIN_KO.get(d, d)} 상태에 대해 말하지 않음")
+    if v.missing: out.append(f"확정하려면 입력: {'; '.join(v.missing)}")
+    if not items and not v.silent: out.append("이 환자에게 해당하는 투여 제한 없음")
+    out.append(""); out.append(f"Primary (환자 장기): {', '.join(ORGAN_KO[a] for a in r['boxed']) or '-'}   Secondary: {', '.join(ORGAN_KO[a] for a in r['warn']) or '-'}")
+    return out
+
+
+def browse(rows):
+    """interactive view of the result table (terminal only): pick a row to read why it has its restriction."""
+    import tui
+    lines, at = _table(rows)
+    tui.browse("결과 · 행을 고르면 아래에 이유가 나옵니다", lines, at, [reasons(r) for r in rows], footer=LEGEND)
+
+
 def render(rows, s, notes, checks_, detail=False, color=None):
     import textwrap, shutil
     color = (sys.stdout.isatty() or bool(os.environ.get("FORCE_COLOR"))) and not os.environ.get("NO_COLOR") if color is None else color
@@ -215,33 +262,9 @@ def render(rows, s, notes, checks_, detail=False, color=None):
         nm = lambda c: _reg[c]["label"] if c in _reg else c; w = max(len(nm(c)) for _, c, _ in prio)
         for lvl, c, orgs in prio: print(f"  {lvl}  {nm(c):<{w}}  {', '.join(EN[a] for a in orgs)}")
     print()
-    tone = {4: "31;1", 3: "31", 2: "33", 1: "36", 0: "32", -1: ""}
-    org_txt = lambda xs: ", ".join(ORGAN_KO[a] for a in xs) or "-"
-    head = ["#", "ADC", "허가 제한", "내 장기: 박스경고", "내 장기: 경고", "다른 장기: 박스경고"]
-    cells, prev_rank, starts = [], None, set()
-    for i, r in enumerate(rows):
-        if r["rank"] != prev_rank and i: starts.add(i)
-        rk = "" if prev_rank == r["rank"] else str(r["rank"]); prev_rank = r["rank"]; rc = "33" if "?" in r["restriction"] else tone[max(r["verdict"].worst_known, -1)]
-        cells.append([(rk, ""), (r["name"][:26], ""), (r["restriction_ko"], rc), (org_txt(r["boxed"]), "31" if r["boxed"] else ""),
-                      (org_txt(r["warn"]), "33" if r["warn"] else ""), (org_txt(r["elsewhere"]), "90")])
-    wd = [max([_width(head[c])] + [_width(row[c][0]) for row in cells]) for c in range(len(head))]
-    line = lambda l, m, rr: l + m.join("─" * (x + 2) for x in wd) + rr
-    print(line("┌", "┬", "┐")); print("│ " + " │ ".join(h + " " * (x - _width(h)) for h, x in zip(head, wd)) + " │"); print(line("├", "┼", "┤"))
-    thin = "├" + "┼".join("╌" * (x + 2) for x in wd) + "┤"
-    for i, row in enumerate(cells):
-        if i in starts: print(paint(thin, "90"))
-        print("│ " + " │ ".join(paint(pl, c) + " " * (x - _width(pl)) for (pl, c), x in zip(row, wd)) + " │")
-    print(line("└", "┴", "┘"))
-    print(paint("  ? = 입력하지 않은 검사 수치에 따라 달라짐 · 박스경고 = 가장 강한 경고 · 다른 장기 박스경고는 순위에 반영 안 함", "90"))
-    seen, first = set(), True
-    for r in rows:
-        for c, rr in r["verdict"].known + r["verdict"].possible:
-            if c == "no_adjustment" or (r["name"], rr["quote"]) in seen: continue
-            if first: print("\n근거: 허가사항 원문"); first = False
-            seen.add((r["name"], rr["quote"])); q = rr["quote"] if len(rr["quote"]) <= cols - 52 else rr["quote"][:cols - 55] + "..."
-            mark = "" if (c, rr) in r["verdict"].known else "?"
-            lab = RS.KO[c] + mark + " (" + RS.DOMAIN_KO.get(rr["domain"], rr["domain"]) + ")"
-            print(f"  {r['name'][:26]:<26} {lab}{' ' * max(1, 19 - _width(lab))} §{rr['section']:<5} \"{q}\"")
+    lines, _ = _table(rows, paint)
+    for ln in lines: print(ln)
+    print(paint("  " + LEGEND, "90"))
     if checks_:
         print("\n투여 전 확인")
         for test, names, src in checks_:
@@ -441,7 +464,9 @@ if __name__ == "__main__":
         elif sys.stdin.isatty(): conds, labs, col = wizard()
         else: conds, col = ["interstitial_lung_disease"], None
         print()
-        rows, s, notes, ck = recommend(conds, labs); render(rows, s, notes, ck, detail=flags["detail"], color=col)
+        rows, s, notes, ck = recommend(conds, labs)
+        if not args and _tui_ok(): browse(rows)                       # pick a row, read why; then the table stays in the scrollback
+        render(rows, s, notes, ck, detail=flags["detail"], color=col)
         if args or not sys.stdin.isatty(): break
         try: again = input("\nRun again with different answers? (y = yes, Enter = exit) > ").strip().lower()
         except EOFError: break
