@@ -47,6 +47,24 @@ _reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.c
 _by_label = {r["label"].lower(): r["id"] for r in _reg.values()}
 
 
+class _Loading:
+    """one-line spinner while the text encoders load (terminal only); replaces the libraries' progress bars."""
+    def __init__(self, text, done): self.text, self.done = text, done
+    def __enter__(self):
+        import threading, time
+        self.t0 = time.time(); self.on = sys.stderr.isatty(); self.stop = threading.Event()
+        def spin():
+            for ch in __import__("itertools").cycle("⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"):
+                if self.stop.wait(0.1): break
+                sys.stderr.write(f"\r  {ch} {self.text}"); sys.stderr.flush()
+        if self.on: self.th = threading.Thread(target=spin, daemon=True); self.th.start()
+        return self
+    def __exit__(self, *exc):
+        import time
+        if self.on:
+            self.stop.set(); self.th.join(); sys.stderr.write(f"\r\033[K  ✓ {self.done} ({time.time() - self.t0:.1f}s)\n"); sys.stderr.flush()
+
+
 def own_vec(cid):
     v = np.zeros(len(AXES))
     for a in _reg[cid]["organ_axes"].split(";"):
@@ -59,9 +77,10 @@ def resolve(conditions):
     ws, notes, ids, own_axes = [np.zeros(len(AXES))], [], set(), set()
     free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
     if free:
-        import vulnerability_model as VM, mondo_index as MI
-        reg_ids = list(_reg); E = VM._st(free + [_reg[i]["label"] for i in reg_ids]); Ef, Er = E[:len(free)], E[len(free):]
-        links = MI.link(free); learned_free = VM.predict(free) if LEARNED_FRACTION > 0 or FALLBACK else None
+        with _Loading("Loading weights · 질환 해석 모델 (BioLORD · MONDO)", "질환 해석 모델 준비 완료"):
+            import vulnerability_model as VM, mondo_index as MI
+            reg_ids = list(_reg); E = VM._st(free + [_reg[i]["label"] for i in reg_ids]); Ef, Er = E[:len(free)], E[len(free):]
+            links = MI.link(free); learned_free = VM.predict(free) if LEARNED_FRACTION > 0 or FALLBACK else None
     L = json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"] if LEARNED_FRACTION > 0 else None
     fi = 0
     for c in conditions:
@@ -169,8 +188,7 @@ def render(rows, s, notes, checks_, detail=False, color=None):
     print(line("┌", "┬", "┐")); print("│ " + " │ ".join(h + " " * (x - _width(h)) for h, x in zip(head, wd)) + " │"); print(line("├", "┼", "┤"))
     for row in cells: print("│ " + " │ ".join(paint(pl, c) + " " * (x - _width(pl)) for (pl, c), x in zip(row, wd)) + " │")
     print(line("└", "┴", "┘"))
-    print("Order: label restriction (worst case over missing labs), then boxed, then section-5 warnings on your organs.\n"
-          "'#' numbers the groups: drugs with the same number and '=' are tied (the label gives no reason to prefer one).")
+    print("Order: label restriction > boxed on your organs > warnings on your organs. Same number with '=' = tie.")
     seen, first = set(), True
     for r in rows:
         for c, rr in r["verdict"].known + r["verdict"].possible:
@@ -195,16 +213,13 @@ def render(rows, s, notes, checks_, detail=False, color=None):
 
 # ------------------------------------------------------------------------------------------------ input
 COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)  ·  / 검색  ·  ENTER 확정")
-LABS_ASK_Q = ("검사 수치", "허가사항(8.6/8.7절 등)의 투여 제한은 검사 수치로 정해집니다 (예: CLcr < 60이면 Pivekimab 투여 회피).\n"
-              "수치가 없으면 가능한 모든 경우를 따져 'Avoid?'처럼 물음표로 표시하고, 어떤 검사가 결론을 내줄지 알려 줍니다.")
-LABS_PICK_Q = ("가지고 있는 검사 수치 선택", "많은 약의 판정에 쓰이는 순서입니다. 오른쪽은 그 수치로 투여 제한이 갈리는 약입니다.")
+LABS_ASK_Q = ("입력할 검사 수치가 있나요?", "")
+LABS_PICK_Q = ("검사 수치 선택", "")
 LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
-FALLBACK_Q = ("관련 장기를 찾지 못한 질환", "{conds}: 레지스트리·MONDO 어디에서도 관련 장기를 불러오지 못했습니다. 이대로면 이 질환은 순위에 반영되지 않습니다.\n"
-              "이 질환에만 FinnGen 학습 모델의 추정 장기를 쓸까요? 독립 평가에서 평균적으로 개선이 확인되지 않은 추정이며, 결과에 '검증 안 됨'으로 표시됩니다.\n"
-              "주의: 모델은 오타나 의미 없는 입력에도 장기를 추정합니다. 먼저 철자를 확인하세요.")
+FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
 MONDO_Q = ("목록 외 질환의 장기 심각도", "목록에 없는 질환의 장기에 적용할 심각도입니다.  1 = 간경변 등 가장 심각한 질환 수준")
 COLOUR_Q = ("색 표시", "Auto: 터미널에서만 색 사용")
-FALLBACK_OPTS = [("사용 안 함 (이 질환 제외)", 0.0), ("사용, Low 0.25", 0.25), ("사용, Medium 0.5", 0.5)]
+FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용, Low 0.25", 0.25), ("사용, Medium 0.5", 0.5)]
 MONDO_OPTS = [("Low 0.5", 0.5), ("Medium 0.8", 0.8), ("High 1.0", 1.0)]
 COLOURS = [("On", True), ("Auto", None), ("Off", False)]
 LAB_FIELDS = [("crcl", "CLcr, Cockcroft-Gault (mL/min)", float), ("bili", "total bilirubin (x ULN)", float), ("ast", "AST (x ULN)", float),
@@ -229,22 +244,20 @@ def _ask_labs(tui=None):
     """first: are there any lab values at all? then: which ones (with why each matters); then only those values."""
     labs = {}; fields = lab_uses()
     if tui:
-        if tui.radiolist(LABS_ASK_Q[0], [("없음 / 모름 (가능한 모든 경우 표시)", ""), ("있음 (고르기)", "")], default=0, description=LABS_ASK_Q[1]) == 0: return labs
-        items = [(q, f"{LABS_WHY[k]} · {len(u)}개 약: {_short(u)}") for k, q, _, u in fields]
+        if tui.radiolist(LABS_ASK_Q[0], [("없음", ""), ("있음", "")], default=0, description=LABS_ASK_Q[1]) == 0: return labs
+        items = [(q, f"{LABS_WHY[k]} · {_short(u)}") for k, q, _, u in fields]
         pick = tui.checklist(LABS_PICK_Q[0], items, checked=[], description=LABS_PICK_Q[1], min_one=False) or []
     else:
-        print(f"\n{LABS_ASK_Q[0]}\n  " + LABS_ASK_Q[1].replace("\n", "\n  "))
-        try: has = input("  입력할 검사 수치가 있나요? (y = 있음, Enter = 없음) > ").strip().lower()
+        try: has = input(f"\n{LABS_ASK_Q[0]} (y = 있음, Enter = 없음) > ").strip().lower()
         except EOFError: has = ""
         if has != "y": return labs
-        print(f"\n{LABS_PICK_Q[0]} - {LABS_PICK_Q[1]}")
-        for i, (k, q, _, u) in enumerate(fields, 1): print(f"  {i}) {q:<32} {LABS_WHY[k]} · {len(u)}개 약: {_short(u)}")
+        for i, (k, q, _, u) in enumerate(fields, 1): print(f"  {i}) {q:<32} {LABS_WHY[k]} · {_short(u)}")
         try: raw = input("  번호 (쉼표 구분, Enter = 없음) > ")
         except EOFError: raw = ""
         pick = [int(x) - 1 for x in raw.replace(" ", "").split(",") if x.isdigit() and 1 <= int(x) <= len(fields)]
     if pick: print()
     for k, q, cast, _ in (fields[i] for i in pick):
-        try: raw = input(f"  {q} (Enter = unknown) > ").strip()
+        try: raw = input(f"  {q} (Enter = 건너뜀) > ").strip()
         except EOFError: break
         if not raw: continue
         try:
@@ -265,7 +278,7 @@ def _ask_fallback(conds, radio=None):
     global FALLBACK
     miss = unresolved(conds)
     if not miss: return
-    title, desc = FALLBACK_Q[0], FALLBACK_Q[1].format(conds=", ".join(miss))
+    title, desc = FALLBACK_Q[0].format(conds=", ".join(miss)), FALLBACK_Q[1]
     if radio: k = radio(title, [(n, "") for n, _ in FALLBACK_OPTS], default=0, description=desc)
     else:
         print(f"\n{title}\n  " + desc.replace("\n", "\n  ")); [print(f"  {i}) {n}") for i, (n, _) in enumerate(FALLBACK_OPTS, 1)]
@@ -303,8 +316,6 @@ def wizard():
         conds = [ids[int(t) - 1] if t.strip().isdigit() and 1 <= int(t) <= len(ids) else t.strip() for t in raw.split(",") if t.strip()] or ["interstitial_lung_disease"]
         labs = _ask_labs(); col = None
         _ask_fallback(conds)
-    print(f"\n  {'learned organs':<16} " + (f"all conditions x{LEARNED_FRACTION:g}" if LEARNED_FRACTION else
-          f"only for {', '.join(FALLBACK)} x{max(FALLBACK.values()):g}" if FALLBACK else "off"))
     return conds, labs, col
 
 
