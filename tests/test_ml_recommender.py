@@ -217,3 +217,17 @@ def test_outcome_harness_does_not_invent_an_association():
     lo, hi = res["auroc"]["tool"]["ci"]
     assert lo < 0.5 < hi
     assert not res["paired"]["tool_minus_label_only"]["adds_patient_information"]
+
+
+# ------------------------------------------------------------------ JADER (ml/validate_jader.py): Japanese term -> organ rules
+@pytest.mark.parametrize("term,organ", [
+    ("間質性肺疾患", "pulmonary"), ("好中球減少症", "haematologic"), ("発熱性好中球減少症", "haematologic"), ("下痢", "gastrointestinal"),
+    ("悪心", "gastrointestinal"), ("角膜症", "ocular"), ("末梢性ニューロパチー", "neurologic"), ("駆出率減少", "cardiovascular"),
+    ("心不全", "cardiovascular"), ("急性腎障害", "renal"), ("慢性腎臓病", "renal"), ("肝毒性", "hepatic"), ("静脈閉塞性肝疾患", "hepatic"),
+    ("肺炎", "infectious_immune"), ("スティーブンス・ジョンソン症候群", "dermatologic"), ("高血糖", "metabolic_endocrine"), ("ＱＴ延長", "cardiovascular"),
+    ("ドライアイ", "ocular"), ("緑内障", "ocular"), ("Ｂ型肝炎", "hepatic"),
+    ("乳癌", None), ("肝転移", None), ("急性骨髄性白血病", None), ("死亡", None), ("発熱", None),
+])
+def test_jader_organ_rules(term, organ):
+    import validate_jader as VJ
+    assert VJ.OrganMapper(use_embedding=False).map([term])[term] == organ
