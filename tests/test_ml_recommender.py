@@ -17,6 +17,12 @@ DM = pathlib.Path("/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07")
 CACHE = pathlib.Path("/data/hyeongchanahn/adctox/ml_cache/tox.pkl")
 needs_labels = pytest.mark.skipif(not DM.exists(), reason="DailyMed snapshot not present")
 needs_cache = pytest.mark.skipif(not (DM.exists() and CACHE.exists()), reason="label snapshot or workbook cache not present")
+try:
+    import torch  # noqa: F401
+    HAS_TORCH = True
+except ImportError:
+    HAS_TORCH = False
+needs_encoder = pytest.mark.skipif(not HAS_TORCH, reason="free-text conditions need the ML env (torch); run with /data/hyeongchanahn/envs/adctox/bin/python")
 
 
 # ------------------------------------------------------------------ label parsing (src/adctox/validation/label_change.py)
@@ -174,6 +180,26 @@ def test_learned_model_is_off_by_default():
     assert RC.LEARNED_FRACTION == 0.0
     s = RC.resolve(["interstitial_lung_disease"])[0]
     assert (s > 0).sum() == 1                                # only the condition's own organ
+
+
+@needs_cache
+@needs_encoder
+def test_learned_fallback_touches_only_conditions_with_no_organ():
+    import numpy as np
+    import recommend as RC
+    conds = ["obesity", "alzheimer", "ckd_stage_3"]
+    assert RC.unresolved(conds) == ["obesity"]                 # alzheimer has a MONDO organ, ckd is in the registry
+    base = RC.resolve(["alzheimer", "ckd_stage_3"])[0]
+    try:
+        RC.FALLBACK = {"obesity": 0.5}
+        s, _, _, notes = RC.resolve(conds)
+        assert "not validated" in dict(notes)["obesity"] and "not validated" not in dict(notes)["alzheimer"]
+        assert (s >= base).all() and (s > 0).sum() > (base > 0).sum()
+        RC.FALLBACK = {"obesity": 0.5}
+        assert np.array_equal(RC.resolve(["alzheimer", "ckd_stage_3"])[0], base)   # understood conditions never change
+        assert RC.unresolved(conds) == ["obesity"] and RC.FALLBACK == {"obesity": 0.5}
+    finally:
+        RC.FALLBACK = {}
 
 
 # ------------------------------------------------------------------ learned model inference matches training

@@ -116,7 +116,7 @@ score = incidence percentile . s (non-circular). Against random weights the lear
 own organs do better still (0.644 vs 0.512), and adding the learned weights ON TOP of the own organs, which is how the recommender would use
 them, makes it worse (`ml/eval_learned_addon.py`, pre-declared f = 0.25 / 0.5: -0.035 [-0.054, -0.016] / -0.054 [-0.079, -0.030]).
 With FAERS signals as the positives instead (independent of the label text) the add-on is still worse: -0.025 [-0.046, -0.004] / -0.034 [-0.061, -0.008].
-The recommender therefore runs without them by default (`--learned F` to opt in). Predicting a later disease from a comorbidity is not the same
+The recommender therefore runs without them by default (`--learned F` to opt in for every condition). The one exception is offered, not applied: when a typed condition maps to no organ at all, the wizard says so and asks whether to use the learned estimate for that condition only (`--learned-fallback F`); understood conditions are never changed by it, the patient line marks it 'not validated', and the model returns organs even for typos or nonsense, so the prompt asks to check the spelling first. Predicting a later disease from a comorbidity is not the same
 question as ADC toxicity given that comorbidity. Inference was also aligned with training: training only ever saw the lag one-hot in the context
 vector (`lab.py`: `cat([eye[lag], eye[nl+dom]])[:, :nl+nd]` keeps the first block), and the first `predict` set the domain bits as well
 (mean |change| in severity 0.005 after the fix). Retraining with the domain actually included would be a new model and was not done.

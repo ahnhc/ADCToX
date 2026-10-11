@@ -17,7 +17,10 @@ reported' written out, never read as 0), and boxed warnings on organs the patien
 
 The learned cross-organ vulnerability (FinnGen model, ml/vulnerability_model.py) is OFF by default: in the only non-circular
 test it did not improve matching (+0.033 [-0.018, +0.087], ml/README.md), and comorbidity -> later disease is a different
-question from ADC toxicity given the comorbidity. --learned F turns it on as s_o = max(own, F * learned).
+question from ADC toxicity given the comorbidity. --learned F turns it on for every condition as s_o = max(own, F * learned).
+When a typed condition maps to no organ at all (not in the registry, no MONDO organ, no similar registry condition), the
+wizard says so and offers the learned estimate for THAT condition only (--learned-fallback F on the command line); conditions
+that were understood are never changed by it, and the patient line marks the estimate as not validated.
 
 This orders label evidence for one patient. It is not a probability of an adverse event and has not been validated against
 patient outcomes (ml/docs/validation_plan.md).
@@ -29,6 +32,7 @@ sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")
 import drug_evidence as DE, restrictions as RS
 AXES = DE.AXES; R = RS.R
 LEARNED_FRACTION = 0.0      # off by default; see the module docstring
+FALLBACK = {}               # condition text -> learned fraction, only for conditions that map to no organ (asked in the wizard)
 REG_NEAR = 0.80             # a free-text condition is 'the same as' a registry condition at this BioLORD cosine -> its curated organs
 MONDO_SEVERITY = 0.80       # organs read off the MONDO hierarchy have no curated severity; one fixed value, not fitted
 MATCH_COS = 0.60            # last resort: borrow the organs of a loosely similar registry condition
@@ -55,7 +59,7 @@ def resolve(conditions):
     if free:
         import vulnerability_model as VM, mondo_index as MI
         reg_ids = list(_reg); E = VM._st(free + [_reg[i]["label"] for i in reg_ids]); Ef, Er = E[:len(free)], E[len(free):]
-        links = MI.link(free); learned_free = VM.predict(free) if LEARNED_FRACTION > 0 else None
+        links = MI.link(free); learned_free = VM.predict(free) if LEARNED_FRACTION > 0 or FALLBACK else None
     L = json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"] if LEARNED_FRACTION > 0 else None
     fi = 0
     for c in conditions:
@@ -71,11 +75,23 @@ def resolve(conditions):
                 own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in lk["axes"]]
                 how = f"free text; MONDO '{lk['name']}' (sim {lk['sim']:.2f}) -> organs: {', '.join(lk['axes'])}"
             elif sims[k] >= MATCH_COS: own, how = own_vec(reg_ids[k]), f"free text; organs borrowed from registry '{rl}' (cos {sims[k]:.2f})"
-            else: own, how = np.zeros(len(AXES)), "free text; not understood (no organ)"
+            else:
+                own, how = np.zeros(len(AXES)), "free text; not understood (no organ)"
+                if FALLBACK.get(c) and lv is not None:
+                    f = max(FALLBACK[c], LEARNED_FRACTION); top = [EN[AXES[k]] for k in np.argsort(-lv)[:3] if f * lv[k] >= 0.01]
+                    ws.append(f * lv); how += f"; FinnGen learned estimate x{f:g} used (not validated): {', '.join(top) or 'no organ'}"
             fi += 1
         own_axes |= {AXES[k] for k in np.where(own > 0)[0]}
-        ws.append(np.maximum(own, LEARNED_FRACTION * lv) if lv is not None else own); notes.append((c, how))
+        ws.append(np.maximum(own, LEARNED_FRACTION * lv) if lv is not None and LEARNED_FRACTION > 0 else own); notes.append((c, how))
     return np.maximum.reduce(ws), own_axes, ids, notes
+
+
+def unresolved(conditions):
+    """typed conditions that map to no organ (what the wizard asks about); learned estimates play no part in this."""
+    global LEARNED_FRACTION, FALLBACK
+    keep = LEARNED_FRACTION, FALLBACK; LEARNED_FRACTION, FALLBACK = 0.0, {}
+    try: return [c for c, how in resolve(conditions)[3] if how.startswith("free text; not understood")]
+    finally: LEARNED_FRACTION, FALLBACK = keep
 
 
 def recommend(conditions, labs=None):
@@ -177,10 +193,12 @@ def render(rows, s, notes, checks_, detail=False, color=None):
 # ------------------------------------------------------------------------------------------------ input
 COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)  ·  / 검색  ·  ENTER 확정")
 LABS_Q = ("검사 수치 입력", "투여 제한 판정에 쓰입니다. 비워 두면 가능한 모든 경우를 표시합니다.")
-LEARNED_Q = ("연관 장기(학습 모델) 반영", "FinnGen 학습 모델의 연관 장기 취약도. 독립 평가에서 개선 효과가 확인되지 않아 기본은 Off입니다.")
+FALLBACK_Q = ("관련 장기를 찾지 못한 질환", "{conds}: 레지스트리·MONDO 어디에서도 관련 장기를 불러오지 못했습니다. 이대로면 이 질환은 순위에 반영되지 않습니다.\n"
+              "이 질환에만 FinnGen 학습 모델의 추정 장기를 쓸까요? 독립 평가에서 평균적으로 개선이 확인되지 않은 추정이며, 결과에 '검증 안 됨'으로 표시됩니다.\n"
+              "주의: 모델은 오타나 의미 없는 입력에도 장기를 추정합니다. 먼저 철자를 확인하세요.")
 MONDO_Q = ("목록 외 질환의 장기 심각도", "목록에 없는 질환의 장기에 적용할 심각도입니다.  1 = 간경변 등 가장 심각한 질환 수준")
 COLOUR_Q = ("색 표시", "Auto: 터미널에서만 색 사용")
-LEARNED = [("Off", 0.0), ("Low 0.25", 0.25), ("Medium 0.5", 0.5)]
+FALLBACK_OPTS = [("사용 안 함 (이 질환 제외)", 0.0), ("사용, Low 0.25", 0.25), ("사용, Medium 0.5", 0.5)]
 MONDO_OPTS = [("Low 0.5", 0.5), ("Medium 0.8", 0.8), ("High 1.0", 1.0)]
 COLOURS = [("On", True), ("Auto", None), ("Off", False)]
 LAB_FIELDS = [("crcl", "CLcr, Cockcroft-Gault (mL/min)", float), ("bili", "total bilirubin (x ULN)", float), ("ast", "AST (x ULN)", float),
@@ -208,8 +226,23 @@ def _tui_ok():
     return sys.stdin.isatty() and sys.stdout.isatty() and os.environ.get("TERM", "dumb") != "dumb"
 
 
+def _ask_fallback(conds, radio=None):
+    """ask only when some typed condition maps to no organ; the answer applies to those conditions alone."""
+    global FALLBACK
+    miss = unresolved(conds)
+    if not miss: return
+    title, desc = FALLBACK_Q[0], FALLBACK_Q[1].format(conds=", ".join(miss))
+    if radio: k = radio(title, [(n, "") for n, _ in FALLBACK_OPTS], default=0, description=desc)
+    else:
+        print(f"\n{title}\n  " + desc.replace("\n", "\n  ")); [print(f"  {i}) {n}") for i, (n, _) in enumerate(FALLBACK_OPTS, 1)]
+        try: raw = input("  선택 (Enter = 1) > ").strip()
+        except EOFError: raw = ""
+        k = int(raw) - 1 if raw.isdigit() and 1 <= int(raw) <= len(FALLBACK_OPTS) else 0
+    f = FALLBACK_OPTS[k][1]; FALLBACK = {c: f for c in miss} if f > 0 else {}
+
+
 def wizard():
-    global LEARNED_FRACTION, MONDO_SEVERITY
+    global MONDO_SEVERITY
     if _tui_ok():
         import tui
         ids = list(_reg); items = [("✎ Other (type your own)", "")] + [(f"{i:<28} {_reg[i]['label']}", _reg[i]["organ_axes"]) for i in ids]
@@ -221,7 +254,7 @@ def wizard():
             conds += [t.strip() for t in extra.split(",") if t.strip()]
         conds = conds or ["interstitial_lung_disease"]
         labs = _ask_labs()
-        LEARNED_FRACTION = LEARNED[tui.radiolist(LEARNED_Q[0], [(n, "") for n, _ in LEARNED], default=0, description=LEARNED_Q[1])][1]
+        _ask_fallback(conds, tui.radiolist)
         if any(c not in _reg and c.lower() not in _by_label and c not in CONTEXT for c in conds):
             MONDO_SEVERITY = MONDO_OPTS[tui.radiolist(MONDO_Q[0], [(n, "") for n, _ in MONDO_OPTS], default=1, description=MONDO_Q[1])][1]
         col = COLOURS[tui.radiolist(COLOUR_Q[0], [(n, "") for n, _ in COLOURS], default=1, description=COLOUR_Q[1])][1]
@@ -235,7 +268,9 @@ def wizard():
             except EOFError: raw = ""
         conds = [ids[int(t) - 1] if t.strip().isdigit() and 1 <= int(t) <= len(ids) else t.strip() for t in raw.split(",") if t.strip()] or ["interstitial_lung_disease"]
         labs = _ask_labs(); col = None
-    print(f"\n  {'learned organs':<16} {'off' if LEARNED_FRACTION == 0 else LEARNED_FRACTION}")
+        _ask_fallback(conds)
+    print(f"\n  {'learned organs':<16} " + (f"all conditions x{LEARNED_FRACTION:g}" if LEARNED_FRACTION else
+          f"only for {', '.join(FALLBACK)} x{max(FALLBACK.values()):g}" if FALLBACK else "off"))
     return conds, labs, col
 
 
@@ -248,6 +283,7 @@ def parse_args(argv):
         elif a in ("--crcl", "--bili", "--ast", "--lvef"): labs[a[2:]] = float(argv[i + 1]); i += 1
         elif a == "--child-pugh": labs["child_pugh"] = argv[i + 1].upper(); i += 1
         elif a == "--learned": flags["learned"] = float(argv[i + 1]); i += 1
+        elif a == "--learned-fallback": flags["fallback"] = float(argv[i + 1]); i += 1
         else: args.append(a)
         i += 1
     return args, labs, flags
@@ -265,6 +301,7 @@ if __name__ == "__main__":
     if "--list" in sys.argv: list_conditions(); sys.exit(0)
     args, labs, flags = parse_args(sys.argv[1:])
     if "learned" in flags: LEARNED_FRACTION = flags["learned"]
+    if flags.get("fallback") and args: FALLBACK = {c: flags["fallback"] for c in unresolved(args)}
     while True:
         if args: conds, col = args, None
         elif sys.stdin.isatty(): conds, labs, col = wizard()
