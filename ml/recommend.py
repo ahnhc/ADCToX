@@ -73,15 +73,21 @@ def own_vec(cid):
     return v
 
 
+_FREE = {}                  # free-text conditions -> (embeddings, registry embeddings, MONDO links), per process
+
+
 def resolve(conditions):
     """-> (s over AXES, own-organ set, registry ids present, [(input, how it was read)])"""
     ws, notes, ids, own_axes = [np.zeros(len(AXES))], [], set(), set()
     free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
     if free:
-        with _Loading("Loading weights · 질환 해석 모델 (BioLORD · MONDO)", "질환 해석 모델 준비 완료"):
-            import vulnerability_model as VM, mondo_index as MI
-            reg_ids = list(_reg); E = VM._st(free + [_reg[i]["label"] for i in reg_ids]); Ef, Er = E[:len(free)], E[len(free):]
-            links = MI.link(free); learned_free = VM.predict(free) if LEARNED_FRACTION > 0 or FALLBACK else None
+        key = tuple(free)
+        if key not in _FREE:
+            with _Loading("Loading weights · 질환 해석 모델 (BioLORD · MONDO)", "질환 해석 모델 준비 완료"):
+                import vulnerability_model as VM, mondo_index as MI
+                E = VM._st(free + [_reg[i]["label"] for i in _reg]); _FREE[key] = (E[:len(free)], E[len(free):], MI.link(free))
+        import vulnerability_model as VM
+        reg_ids = list(_reg); Ef, Er, links = _FREE[key]; learned_free = VM.predict(free) if LEARNED_FRACTION > 0 or FALLBACK else None
     L = json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"] if LEARNED_FRACTION > 0 else None
     fi = 0
     for c in conditions:
@@ -147,7 +153,7 @@ def checks(ids, E, V):
             names = [E[a]["name"] for a in sorted(E) if c.get("headings") and any(re.search(c["headings"], h.lower()) for o in E[a]["organs"].values() for _, h in o["headings"])]
             out.append((c["test"], names, c["source"]))
     need = sorted({m for v in V.values() for m in v.missing})
-    if need: out.append(("enter " + "; ".join(need) + " to settle the restrictions marked '?'", [], "ml/restrictions.py"))
+    if need: out.append(("enter " + "; ".join(need) + " to settle the '?' restrictions", [], None))
     return out
 
 
@@ -179,29 +185,32 @@ def render(rows, s, notes, checks_, detail=False, color=None):
     tone = {4: "31;1", 3: "31", 2: "33", 1: "36", 0: "32", -1: ""}
     org_txt = lambda xs: ", ".join(EN[a] for a in xs) or "-"
     head = ["#", "ADC", "Label restriction", "Boxed on your organs", "Warn on your organs", "Boxed elsewhere"]
-    cells = []
-    for r in rows:
-        rk = f"{r['rank']}{'=' if r['tie'] else ''}"; rc = "33" if "?" in r["restriction"] else tone[max(r["verdict"].worst_known, -1)]
+    cells, prev_rank, starts = [], None, set()
+    for i, r in enumerate(rows):
+        if r["rank"] != prev_rank and i: starts.add(i)
+        rk = "" if prev_rank == r["rank"] else str(r["rank"]); prev_rank = r["rank"]; rc = "33" if "?" in r["restriction"] else tone[max(r["verdict"].worst_known, -1)]
         cells.append([(rk, ""), (r["name"][:26], ""), (r["restriction"], rc), (org_txt(r["boxed"]), "31" if r["boxed"] else ""),
                       (org_txt(r["warn"]), "33" if r["warn"] else ""), (org_txt(r["elsewhere"]), "90")])
     wd = [max([_width(head[c])] + [_width(row[c][0]) for row in cells]) for c in range(len(head))]
     line = lambda l, m, rr: l + m.join("─" * (x + 2) for x in wd) + rr
     print(line("┌", "┬", "┐")); print("│ " + " │ ".join(h + " " * (x - _width(h)) for h, x in zip(head, wd)) + " │"); print(line("├", "┼", "┤"))
-    for row in cells: print("│ " + " │ ".join(paint(pl, c) + " " * (x - _width(pl)) for (pl, c), x in zip(row, wd)) + " │")
+    thin = "├" + "┼".join("╌" * (x + 2) for x in wd) + "┤"
+    for i, row in enumerate(cells):
+        if i in starts: print(paint(thin, "90"))
+        print("│ " + " │ ".join(paint(pl, c) + " " * (x - _width(pl)) for (pl, c), x in zip(row, wd)) + " │")
     print(line("└", "┴", "┘"))
-    print("Order: label restriction > boxed on your organs > warnings on your organs. Same number with '=' = tie.")
     seen, first = set(), True
     for r in rows:
         for c, rr in r["verdict"].known + r["verdict"].possible:
             if c == "no_adjustment" or (r["name"], rr["quote"]) in seen: continue
-            if first: print("\nLabel restrictions (verbatim)"); first = False
+            if first: print("\nWhere each restriction comes from (label text, section)"); first = False
             seen.add((r["name"], rr["quote"])); q = rr["quote"] if len(rr["quote"]) <= cols - 52 else rr["quote"][:cols - 55] + "..."
             mark = "" if (c, rr) in r["verdict"].known else "?"
             print(f"  {r['name'][:26]:<26} {RS.SHORT[c] + mark:<24} §{rr['section']:<5} \"{q}\"")
     if checks_:
         print("\nChecks before choosing")
         for test, names, src in checks_:
-            print(f"  - {test}" + (f"\n      most relevant: {', '.join(names)}" if names else "") + f"\n      source: {src}")
+            print(f"  - {test}" + (f"\n      most relevant: {', '.join(names)}" if names else "") + (f"\n      source: {src}" if src else ""))
     if detail:
         print("\nLabel evidence on your organs")
         for r in rows:
@@ -218,11 +227,9 @@ LABS_ASK_Q = ("입력할 검사 수치가 있나요?", "")
 LABS_PICK_Q = ("검사 수치 선택", "")
 LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "alt": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
 FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
-MONDO_Q = ("목록 외 질환의 장기 심각도", "목록에 없는 질환의 장기에 적용할 심각도입니다.  1 = 간경변 등 가장 심각한 질환 수준")
-COLOUR_Q = ("색 표시", "Auto: 터미널에서만 색 사용")
+MONDO_Q = ("직접 입력한 질환을 얼마나 무겁게 볼까요?", "목록에 있는 질환은 미리 정한 심각도가 있지만, 직접 입력한 질환은 없습니다.")
 FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용, Low 0.25", 0.25), ("사용, Medium 0.5", 0.5)]
-MONDO_OPTS = [("Low 0.5", 0.5), ("Medium 0.8", 0.8), ("High 1.0", 1.0)]
-COLOURS = [("On", True), ("Auto", None), ("Off", False)]
+MONDO_OPTS = [("가볍게", 0.5), ("보통", 0.8), ("무겁게 (간경변·투석 수준)", 1.0)]
 LAB_FIELDS = [("crcl", "CLcr, Cockcroft-Gault (mL/min)", float), ("bili", "total bilirubin (x ULN)", float), ("ast", "AST (x ULN)", float), ("alt", "ALT (x ULN)", float),
               ("child_pugh", "Child-Pugh class (A/B/C)", lambda x: x.strip().upper() if x.strip().upper() in ("A", "B", "C") else None),
               ("lvef", "baseline LVEF (%)", float), ("ugt1a1_28_homozygous", "UGT1A1*28 homozygous (y/n)", lambda x: {"y": True, "n": False}.get(x.strip().lower()))]
@@ -305,7 +312,7 @@ def wizard():
         _ask_fallback(conds, tui.radiolist)
         if any(c not in _reg and c.lower() not in _by_label and c not in CONTEXT for c in conds):
             MONDO_SEVERITY = MONDO_OPTS[tui.radiolist(MONDO_Q[0], [(n, "") for n, _ in MONDO_OPTS], default=1, description=MONDO_Q[1])][1]
-        col = COLOURS[tui.radiolist(COLOUR_Q[0], [(n, "") for n, _ in COLOURS], default=1, description=COLOUR_Q[1])][1]
+        col = None                                                      # colour: on in a terminal, off when piped (NO_COLOR to force off)
     else:
         ids = list(_reg)
         try: raw = input("기저질환 (번호/ID/영어, 쉼표 구분; ? = 목록) > ").strip()
