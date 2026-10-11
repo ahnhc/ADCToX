@@ -1,4 +1,4 @@
-"""Run by build_full.bat inside its private venv: makes the ADC_Recommender folder.
+r"""Run by build_full.bat inside its private venv: makes the ADC_Recommender folder.
 
     ADC_Recommender\
         ADC Recommender.exe        double-click this: opens the program in Windows Terminal (windowless launcher)
