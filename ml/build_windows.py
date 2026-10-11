@@ -14,6 +14,21 @@ WHEELS = ["numpy-2.5.4-cp312-cp312-win_amd64.whl"]          # menus are drawn by
 OUT = R / "dist/ADC_Recommender_Windows"
 
 BAT = '@echo off\r\nchcp 65001 >nul\r\nset PYTHONUTF8=1\r\nset PYTHONIOENCODING=utf-8\r\ncd /d "%~dp0"\r\n"%~dp0python\\python.exe" "%~dp0adc_recommender.py" {args}\r\npause\r\n'
+# Run once on a Windows PC that has Python 3.10+: makes dist\ADC_Recommender.exe, which then runs on any 64-bit Windows
+# without Python. A private venv keeps the PC's own Python untouched.
+EXE_BAT = (
+    '@echo off\r\n'
+    'cd /d "%~dp0"\r\n'
+    'echo Building ADC_Recommender.exe (needs internet once for PyInstaller and numpy) ...\r\n'
+    'py -3 -m venv .buildenv 2>nul || python -m venv .buildenv\r\n'
+    'if errorlevel 1 (echo Python 3.10+ is needed to build. & pause & exit /b 1)\r\n'
+    '".buildenv\\Scripts\\python.exe" -m pip install --quiet --upgrade pip pyinstaller numpy\r\n'
+    '".buildenv\\Scripts\\pyinstaller.exe" --onefile --console --name ADC_Recommender --noconfirm --clean adc_recommender.py\r\n'
+    'if errorlevel 1 (echo Build failed. & pause & exit /b 1)\r\n'
+    'echo.\r\n'
+    'echo Done: %~dp0dist\\ADC_Recommender.exe  (copy this one file to any Windows PC)\r\n'
+    'pause\r\n')
+
 README = """ADC 추천 프로그램 (Windows)
 
 실행
@@ -52,6 +67,13 @@ def main():
     (py / "python312._pth").write_text("python312.zip\r\n.\r\nLib\\site-packages\r\n")
     shutil.copy(R / "dist/adc_recommender.py", OUT / "adc_recommender.py")
     (OUT / "ADC Recommender.bat").write_bytes(BAT.format(args="").encode("ascii"))
+    exe = R / "dist/build_exe_on_windows"; shutil.rmtree(exe, ignore_errors=True); exe.mkdir()
+    shutil.copy(R / "dist/adc_recommender.py", exe / "adc_recommender.py")
+    (exe / "build_exe.bat").write_bytes(EXE_BAT.encode("ascii"))
+    z2 = R / "dist/ADC_build_exe_on_windows.zip"; z2.unlink(missing_ok=True)
+    with zipfile.ZipFile(z2, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as f:
+        for p in sorted(exe.iterdir()): f.write(p, pathlib.Path("ADC_build_exe") / p.name)
+    print(f"wrote {z2}")
     (OUT / "README_사용법.txt").write_bytes(README.replace("\n", "\r\n").encode("utf-8-sig"))
     z = R / "dist/ADC_Recommender_Windows.zip"; z.unlink(missing_ok=True)
     with zipfile.ZipFile(z, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as f:
