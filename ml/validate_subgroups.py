@@ -20,7 +20,9 @@ Steps, all fixed before the numbers were seen:
   4. flag = the tool's order key for the ADC (worst restriction tier, settled tier, B, Wn) is larger for the exposed patient.
   5. DerSimonian-Laird random-effects meta-regression of log RR on flag; the decision statistic is the flag coefficient (the
      difference in pooled log RR, flagged - not flagged): the tool's flags match real excess incidence if its 95% CI is above 0.
-     Pooled estimates are not given for a group with fewer than 5 contrasts. Reported for all contrasts and for post_approval only.
+     Pooled estimates are not given for a group with fewer than 5 contrasts. Reported for all contrasts, for post_approval only,
+     without OCR-read sources, and by characteristic (descriptive).
+  Dropped before step 2: treatment actions (dose reduction, discontinuation ...) and, for hepatic strata, liver-test outcomes.
 """
 import json, math, re, sys
 import numpy as np, yaml
@@ -29,6 +31,8 @@ sys.path[:0] = ["/home/hyeongchanahn/CONI/adctox/ml", "/home/hyeongchanahn/CONI/
 R = "/home/hyeongchanahn/CONI/adctox/"
 LABS = ("crcl", "bili", "ast", "lvef", "child_pugh", "ugt1a1_28_homozygous")
 MIN_GROUP = 5
+ACTION = re.compile(r"leading to|dose adjustment|discontinu|reduction|withdraw|delay|interruption", re.I)   # treatment actions, not adverse events
+LIVER_LAB = re.compile(r"\bALT\b|\bAST\b|\bALP\b|GGT|bilirubin|aminotransferase", re.I)             # part of the definition of a hepatic stratum
 
 
 def _collapse(s): return re.sub(r"\s+", " ", s).strip()
@@ -129,23 +133,26 @@ def main(paths, out=None):
     recs = [r for p in paths for r in (yaml.safe_load(open(p)) or {}).get("evidence", [])]
     dropped = []; ok = []
     for r in recs:
-        why = "post-baseline characteristic" if r.get("characteristic") == "post_baseline" else ("no representative patient" if not (r.get("exposed", {}).get("patient") is not None and r.get("reference", {}).get("patient") is not None) else check(r))
+        why = ("treatment action, not an adverse event" if ACTION.search(r.get("outcome", "")) else
+               "liver test outcome defines the hepatic stratum" if r.get("characteristic") == "hepatic" and LIVER_LAB.search(r.get("outcome", "")) else None)
+        why = why or ("post-baseline characteristic" if r.get("characteristic") == "post_baseline" else ("no representative patient" if not (r.get("exposed", {}).get("patient") is not None and r.get("reference", {}).get("patient") is not None) else check(r)))
         (dropped.append(dict(id=r.get("id"), reason=why)) if why else ok.append(r))
     contrasts = []
     for r in choose(ok):
         ke, kr = tool_key(r["adc"], r["exposed"]["patient"]), tool_key(r["adc"], r["reference"]["patient"]); lr, v = log_rr(r)
         contrasts.append(dict(id=r["id"], adc=r["adc"], characteristic=r["characteristic"], exposed=r["exposed"]["label"], reference=r["reference"]["label"],
-                              outcome=r["outcome"], outcome_rank=r["outcome_rank"], basis=r["basis"], source=r["source_url"],
+                              outcome=r["outcome"], outcome_rank=r["outcome_rank"], basis=r["basis"], source=r["source_url"], ocr=bool(r.get("ocr")),
                               rr=math.exp(lr), ci=[math.exp(lr - 1.96 * math.sqrt(v)), math.exp(lr + 1.96 * math.sqrt(v))], log_rr=lr, var=v,
                               key_exposed=list(ke), key_reference=list(kr), flag=ke > kr))
     res = dict(records=len(recs), passed=len(ok), dropped=dropped, contrasts=contrasts, all=analyse(contrasts),
                post_approval=analyse([c for c in contrasts if c["basis"] == "post_approval"]),
+               no_ocr=analyse([c for c in contrasts if not c["ocr"]]),
+               by_characteristic={ch: analyse([c for c in contrasts if c["characteristic"] == ch]) for ch in sorted({c["characteristic"] for c in contrasts})},
                note="Tool keys are (worst restriction tier, settled tier, B, Wn) from ml/recommend.py. label_basis contrasts are not independent of the label rules.")
     print(f"{len(recs)} records, {len(ok)} pass the quote check, {len(contrasts)} contrasts")
     for c in sorted(contrasts, key=lambda c: (c["adc"], c["characteristic"])):
         print(f"  {'FLAG' if c['flag'] else '    '} {c['adc'][:22]:22s} {c['exposed'][:38]:38s} vs {c['reference'][:24]:24s} {c['outcome'][:28]:28s} RR {c['rr']:.2f} [{c['ci'][0]:.2f}, {c['ci'][1]:.2f}] {c['basis']}")
-    for name in ("all", "post_approval"):
-        a = res[name]; print(f"{name}: k={a['k']}, sign agreement {a['sign_agreement']}")
+    for name, a in [("all", res["all"]), ("post_approval", res["post_approval"]), ("no_ocr", res["no_ocr"])] + list(res["by_characteristic"].items()):; print(f"{name}: k={a['k']}, sign agreement {a['sign_agreement']}")
         for g in ("flagged", "not_flagged"):
             if a[g]: print(f"   {g}: pooled RR {a[g]['rr']:.2f} [{a[g]['ci'][0]:.2f}, {a[g]['ci'][1]:.2f}] (k={a[g]['k']})")
         if a["flag_effect"]: e = a["flag_effect"]; print(f"   flagged / not flagged: {e['ratio_of_rr']:.2f} [{e['ci'][0]:.2f}, {e['ci'][1]:.2f}] -> {'flags match excess' if e['flags_match_excess'] else 'not shown'}")
