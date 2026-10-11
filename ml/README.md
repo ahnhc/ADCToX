@@ -142,3 +142,12 @@ is still needed; that analysis is implemented (`ml/validate_outcomes.py`, tested
 Conditions outside the 41-entry registry are resolved in this order: a near-identical registry entry (BioLORD cosine >= 0.80) > MONDO hierarchy
 (`ml/mondo_index.py`, name similarity >= 0.75, severity a fixed 0.8) > a loosely similar registry entry (>= 0.60) > not understood (no organ).
 Tests: `tests/test_ml_recommender.py`.
+
+**Running it off this server.** `ml/build_portable.py` makes one-file versions of the program. The light one (`dist/adc_recommender.py`;
+Python + numpy) matches typed diseases by spelling only. The full one (`--full`, `dist/adc_recommender_full.py`) is the server program with its
+language models: the model code is copied function by function from `ml/vulnerability_model.py`, `ml/mondo_index.py` and `ml/lab.py`, only file
+locations change (a `models` folder next to the program, or `ADC_MODEL_DIR`), and the GPU is used when torch sees one, else the CPU.
+A test checks that it prints exactly what `ml/recommend.py` prints for typed diseases. For Windows, `ml/build_windows.py --full` writes
+`dist/ADC_full_build_on_windows.zip`; `build_full.bat` in it builds a folder (`ml/win/make_folder.py`: PyInstaller one-folder app, CPU PyTorch,
+BioLORD-2023 and SapBERT at pinned revisions, a windowless launcher that opens Windows Terminal) that runs without Python or internet.
+The folder carries `vuln_biolord.pt` (trained on FinnGen summary statistics; the program prints no FinnGen numbers) by the project owner's decision.

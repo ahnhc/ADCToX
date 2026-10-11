@@ -1,6 +1,13 @@
 """Build dist/adc_recommender.py: the recommender as ONE file that runs off this server (Python >= 3.10 + numpy).
 
-    /data/hyeongchanahn/envs/adctox/bin/python -I ml/build_portable.py
+    /data/hyeongchanahn/envs/adctox/bin/python -I ml/build_portable.py            -> dist/adc_recommender.py (light)
+    /data/hyeongchanahn/envs/adctox/bin/python -I ml/build_portable.py --full     -> dist/adc_recommender_full.py
+
+--full keeps the server's language models: free text goes through BioLORD / SapBERT to MONDO and the FinnGen-trained head
+is offered when MONDO finds no organ, exactly as ml/recommend.py does here. It needs torch, transformers and
+sentence-transformers, and a models folder (BioLORD-2023, SapBERT, mondo_index.npz, vuln_biolord.pt) next to the program or
+in ADC_MODEL_DIR. The model code is the server's own (ml/vulnerability_model.py, ml/mondo_index.py, ml/lab.py), copied
+function by function; only file locations change. GPU when torch sees one, else CPU.
 
 What goes in:
   * the program modules as they are here (recommend, restrictions, labs, form, tui), served from the file by an importer;
@@ -19,7 +26,9 @@ import yaml
 R = pathlib.Path("/home/hyeongchanahn/CONI/adctox")
 sys.path[:0] = [str(R / "ml"), str(R / "src")]
 OBO = R / "data/raw_big/mondo/2026-10-07/mondo.obo"
-OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else R / "dist/adc_recommender.py"
+FULL = "--full" in sys.argv
+_pos = [a for a in sys.argv[1:] if a != "--full"]
+OUT = pathlib.Path(_pos[0]) if _pos else R / ("dist/adc_recommender_full.py" if FULL else "dist/adc_recommender.py")
 
 
 def mondo_terms():
@@ -93,6 +102,43 @@ def evidence():
 '''
 
 
+RT_HEAD = '''"""full build: the server's model code, reading its files from the models folder."""
+import os, sys, time, warnings
+import numpy as np, torch, torch.nn as nn
+warnings.filterwarnings("ignore")
+for _k, _v in (("HF_HUB_OFFLINE", "1"), ("TRANSFORMERS_OFFLINE", "1"), ("TOKENIZERS_PARALLELISM", "false"), ("TRANSFORMERS_VERBOSITY", "error")):
+    os.environ.setdefault(_k, _v)
+_HERE = os.path.dirname(sys.executable if getattr(sys, "frozen", False) else os.path.abspath(sys.argv[0]))
+_BASE = os.environ.get("ADC_MODEL_DIR") or os.path.join(_HERE, "models")
+AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular", "dermatologic", "metabolic_endocrine", "musculoskeletal", "infectious_immune", "otologic"]
+'''
+
+
+def extract(path, names):
+    """verbatim source of these top-level functions / classes (with decorators), in file order."""
+    import ast
+    text = path.read_text(); lines = text.splitlines(keepends=True); out, seen = [], set()
+    for n in ast.parse(text).body:
+        if isinstance(n, (ast.FunctionDef, ast.ClassDef)) and n.name in names:
+            start = min([d.lineno for d in n.decorator_list] + [n.lineno]) - 1
+            out.append("".join(lines[start:n.end_lineno])); seen.add(n.name)
+    assert seen == set(names), f"{path.name}: missing {set(names) - seen}"
+    return "\n\n".join(out) + "\n"
+
+
+def runtime_modules():
+    """vulnerability_model and mondo_index for the full build: server functions, local file locations."""
+    vm = extract(R / "ml/lab.py", ["TwoTower"]) + "\n" + extract(R / "ml/vulnerability_model.py", ["_st", "predict"])
+    vm = sub(vm, '"FremyCompany/BioLORD-2023"', 'os.path.join(_BASE, "BioLORD-2023")', "vulnerability_model")
+    vm = vm.replace("lab.TwoTower", "TwoTower"); assert not re.search(r"\blab\.(?!py)", vm)
+    vm = RT_HEAD + 'DEV = "cuda:0" if torch.cuda.is_available() else "cpu"; PT = os.path.join(_BASE, "vuln_biolord.pt")\n\n' + vm
+    mi = extract(R / "ml/mondo_index.py", ["_embed", "link"])
+    mi = RT_HEAD + 'THETA = 0.75; NAME = os.path.join(_BASE, "SapBERT"); C = _BASE + os.sep\n_IDX = None\n\n' + mi
+    src = (R / "ml/mondo_index.py").read_text()
+    assert "THETA = 0.75;" in src and "_IDX = None" in src and 'C + "mondo_index.npz"' in mi       # constants above match the server
+    return vm, mi
+
+
 def sub(src, old, new, name):
     assert old in src, f"{name}: expected text not found: {old[:70]!r}"
     return src.replace(old, new, 1)
@@ -103,7 +149,8 @@ def main():
     E = json.loads(json.dumps(DE.evidence(), default=lambda x: x.item() if hasattr(x, "item") else list(x) if isinstance(x, (set, tuple)) else str(x)))
     data = dict(evidence=E, rules=yaml.safe_load(open(R / "conf/label_restrictions.yaml"))["rules"],
                 registry=list(csv.DictReader(open(R / "conf/comorbidity_registry.csv"))),
-                checks=yaml.safe_load(open(R / "conf/patient_checks.yaml"))["checks"], mondo=mondo_terms())
+                checks=yaml.safe_load(open(R / "conf/patient_checks.yaml"))["checks"], mondo={} if FULL else mondo_terms())
+    if FULL: data["learned"] = json.load(open(R / "ml/results/learned_vulnerability.json"))["severity"]
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
     src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term")}
 
@@ -111,21 +158,25 @@ def main():
     rc = sub(rc, 'sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")\n', "", "recommend")
     rc = sub(rc, '_reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv"))}',
              '_reg = {r["id"]: r for r in _portable_data()["registry"]}', "recommend")
-    rc = sub(rc, 'HAS_LEARNED = True ', 'HAS_LEARNED = False', "recommend")
-    i = rc.index("def _free_info(free):"); j = rc.index("\ndef ", i + 10)
-    rc = rc[:i] + PORTABLE_FREE.strip() + "\n\n" + rc[j:]
+    if not FULL:
+        rc = sub(rc, 'HAS_LEARNED = True ', 'HAS_LEARNED = False', "recommend")
+        i = rc.index("def _free_info(free):"); j = rc.index("\ndef ", i + 10)
+        rc = rc[:i] + PORTABLE_FREE.strip() + "\n\n" + rc[j:]
     rc = sub(rc, '    import yaml\n    out = []\n', '    out = []\n', "recommend")
     rc = sub(rc, 'for c in yaml.safe_load(open(R + "conf/patient_checks.yaml"))["checks"]:', 'for c in _portable_data()["checks"]:', "recommend")
     rc = sub(rc, 'L = json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"] if LEARNED_FRACTION > 0 else None',
-             'L = None', "recommend")
-    rc = sub(rc, 'MATCH_COS = 0.60 ', 'MATCH_COS = 9.99 ', "recommend")          # no loose 'borrowing' of organs by spelling
-    rc = sub(rc, 'REG_NEAR = 0.80 ', 'REG_NEAR = 0.90 ', "recommend")
+             '_portable_data()["learned"] if LEARNED_FRACTION > 0 else None' if FULL else 'L = None', "recommend")
+    if FULL: rc = rc.replace('_portable_data()["learned"] if LEARNED', 'L = _portable_data()["learned"] if LEARNED', 1)
+    else:
+        rc = sub(rc, 'MATCH_COS = 0.60 ', 'MATCH_COS = 9.99 ', "recommend")          # no loose 'borrowing' of organs by spelling
+        rc = sub(rc, 'REG_NEAR = 0.80 ', 'REG_NEAR = 0.90 ', "recommend")
     rc = rc.replace("import drug_evidence as DE, restrictions as RS", "import drug_evidence as DE, restrictions as RS\nfrom __adc_data__ import _portable_data")
     rs = src["restrictions"]
     rs = sub(rs, "import yaml\n", "", "restrictions")
     rs = sub(rs, '    return yaml.safe_load(open(R + "conf/label_restrictions.yaml"))["rules"]',
              '    from __adc_data__ import _portable_data\n    return _portable_data()["rules"]', "restrictions")
     src["recommend"], src["restrictions"], src["drug_evidence"] = rc, rs, DE_STUB
+    if FULL: src["vulnerability_model"], src["mondo_index"] = runtime_modules()
     src["__adc_data__"] = f'''import base64, json, zlib
 _D = None
 def _portable_data():
@@ -138,18 +189,18 @@ BLOB = "{blob}"
     mods = json.dumps({k: v for k, v in src.items()}, ensure_ascii=False)
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(f'''#!/usr/bin/env python3
-"""ADC label-based recommender: one file, runs anywhere with Python >= 3.10 and numpy.
+{{HEAD}}
 
     python adc_recommender.py                       interactive menus (arrow keys; work in Windows Terminal without extra packages)
     python adc_recommender.py cirrhosis glaucoma --lab bilirubin=2.0 --lab ast=50
     python adc_recommender.py --list                condition ids
 
 Built from the project repository on {__import__("datetime").date.today()} (DailyMed label snapshot 2026-10-07, {len(data["rules"])} label rules).
-Free text is matched by spelling against MONDO names and synonyms (the server version uses a language model).
+{{FREE}}
 This orders label evidence for one patient; it is not a probability of an adverse event.
 
 Data carried in this file: FDA labels via DailyMed (U.S. NLM; public domain); MONDO Disease Ontology names and synonyms
-(Monarch Initiative, CC BY 4.0, https://mondo.monarchinitiative.org). No patient-level or FinnGen data are included.
+(Monarch Initiative, CC BY 4.0, https://mondo.monarchinitiative.org).{{DATA}}
 """
 import importlib.abc, importlib.util, json, sys
 
@@ -157,7 +208,7 @@ import importlib.abc, importlib.util, json, sys
 import base64, csv, dataclasses, difflib, itertools, locale, os, re, shutil, textwrap, threading, time, unicodedata, warnings, zlib
 if False:   # never runs: platform-specific imports, listed for the bundler
     import ctypes, curses, msvcrt, select, termios, tty
-    import numpy
+    import numpy{{TORCH}}
 
 _SRC = json.loads({mods!r})
 
@@ -176,6 +227,18 @@ if __name__ == "__main__":
     import recommend
     recommend.main()
 ''')
+    text = OUT.read_text()
+    if FULL:
+        text = text.replace("{HEAD}", '"""ADC label-based recommender, full version: the server program with its language models.', 1)
+        text = text.replace("{FREE}", "Free text goes through BioLORD / SapBERT to MONDO (GPU if available, else CPU); needs the models folder.", 1)
+        text = text.replace("{DATA}", "\nThe models folder holds BioLORD-2023, SapBERT, a MONDO name index and a head trained on FinnGen summary\nstatistics; the program prints no FinnGen numbers.", 1)
+        text = text.replace("{TORCH}", "\n    import torch, transformers, sentence_transformers", 1)
+    else:
+        text = text.replace("{HEAD}", '"""ADC label-based recommender: one file, runs anywhere with Python >= 3.10 and numpy.', 1)
+        text = text.replace("{FREE}", "Free text is matched by spelling against MONDO names and synonyms (the server version uses a language model).", 1)
+        text = text.replace("{DATA}", " No patient-level or FinnGen data are included.", 1)
+        text = text.replace("{TORCH}", "", 1)
+    OUT.write_text(text)
     print(f"wrote {OUT}  ({OUT.stat().st_size / 1e6:.1f} MB; {len(data['mondo'])} MONDO strings)")
 
 

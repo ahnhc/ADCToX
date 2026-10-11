@@ -172,6 +172,30 @@ def test_portable_build_gives_the_server_result(tmp_path):
     assert "Label restriction" in server and portable == server
 
 
+_HF = pathlib.Path.home() / ".cache/huggingface/hub"
+_FULL_MODELS = {"BioLORD-2023": _HF / "models--FremyCompany--BioLORD-2023/snapshots/167aab527b238a50ca65224e6319215d2ff4fc9f",
+                "SapBERT": _HF / "models--cambridgeltl--SapBERT-from-PubMedBERT-fulltext/snapshots/090663c3ae57bf35ffe4d0d468a2a88d03051a4d",
+                "mondo_index.npz": pathlib.Path("/data/hyeongchanahn/adctox/ml_cache/mondo_index.npz"),
+                "vuln_biolord.pt": pathlib.Path("/data/hyeongchanahn/adctox/ml_cache/vuln_biolord.pt")}
+
+
+_MODEL_PY = "/data/hyeongchanahn/envs/adctox/bin/python"          # the environment with torch / transformers
+
+
+@pytest.mark.skipif(not (all(p.exists() for p in _FULL_MODELS.values()) and pathlib.Path(_MODEL_PY).exists()), reason="models not on this machine")
+def test_full_build_gives_the_server_result_for_typed_diseases(tmp_path):
+    """the full one-file build (server language models, FinnGen fallback) prints what the repository version prints."""
+    import subprocess
+    out, m = tmp_path / "adc_recommender_full.py", tmp_path / "models"; m.mkdir()
+    for k, p in _FULL_MODELS.items(): (m / k).symlink_to(p)
+    subprocess.run([_MODEL_PY, "-I", str(ROOT / "ml/build_portable.py"), "--full", str(out)], check=True, capture_output=True)
+    args = ["alzheimer", "adhd", "heart stop", "cirrhosis", "--learned-fallback", "0.25", "--lab", "bilirubin=2.0"]
+    env = {"PATH": "/usr/bin:/bin", "NO_COLOR": "1", "HOME": str(tmp_path), "CUDA_VISIBLE_DEVICES": ""}
+    server = subprocess.run([_MODEL_PY, "-I", str(ROOT / "ml/recommend.py"), *args], capture_output=True, text=True, env=env, cwd=ROOT).stdout
+    full = subprocess.run([_MODEL_PY, "-I", str(out), *args], capture_output=True, text=True, env={**env, "ADC_MODEL_DIR": str(m)}, cwd=tmp_path).stdout
+    assert "Alzheimer disease" in server and full == server
+
+
 def test_free_text_is_split_on_commas_whatever_the_spacing():
     import form
     assert form.split_free("copd ,   asthma,heart   stop , ,") == ["copd", "asthma", "heart stop"]
