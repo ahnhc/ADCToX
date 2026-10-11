@@ -24,12 +24,35 @@ class _Screen:
             try: curses.use_default_colors(); bg = -1
             except curses.error: bg = curses.COLOR_BLACK
             curses.init_pair(1, curses.COLOR_YELLOW, bg); curses.init_pair(2, curses.COLOR_GREEN, bg)
+            for n, c in ((3, curses.COLOR_RED), (4, curses.COLOR_YELLOW), (5, curses.COLOR_CYAN), (6, curses.COLOR_GREEN), (7, curses.COLOR_WHITE)):
+                curses.init_pair(n, c, bg)
             self.title = curses.color_pair(1) | curses.A_BOLD; self.cur = curses.color_pair(2) | curses.A_BOLD
     def put(self, y, x, text, attr=0):
         h, w = self.s.getmaxyx()
         if 0 <= y < h - 0 and x < w - 1:
             try: self.s.addstr(y, x, _clip(text, w - x - 1), attr)
             except curses.error: pass
+    def put_ansi(self, y, x, text, attr=0):
+        """text carrying the same ANSI colour codes the printed table uses (31 red, 33 yellow, 36 cyan, 32 green, 90 grey, ;1 bold)."""
+        import re
+        h, w = self.s.getmaxyx(); col = x
+        for seg in re.split(r"(\x1b\[[\d;]*m)", text):
+            if not seg: continue
+            m = re.fullmatch(r"\x1b\[([\d;]*)m", seg)
+            if m:
+                codes = m.group(1).split(";"); a = 0
+                for c in codes:
+                    if c in ("31", "33", "36", "32") and curses.has_colors(): a |= curses.color_pair({"31": 3, "33": 4, "36": 5, "32": 6}[c])
+                    elif c == "90": a |= curses.A_DIM
+                    elif c == "1": a |= curses.A_BOLD
+                cur_attr = a; self._ca = a; continue
+            if col >= w - 1: break
+            part = _clip(seg, w - 1 - col)
+            try: self.s.addstr(y, col, part, attr | getattr(self, "_ca", 0))
+            except curses.error: pass
+            col += sum(_cw(c) for c in part)
+        self._ca = 0
+
     def header(self, title, description, hint):
         self.s.clear(); y = 1; self.put(y, 2, title, self.title); y += 1
         for line in (description or "").splitlines(): self.put(y, 2, line, self.dim); y += 1
@@ -161,7 +184,7 @@ def browse(title, lines, selectable, details, footer=""):
             h, w = scr.getmaxyx(); scr.clear()          # full repaint: the panel height changes with the row
             S.put(0, 1, title, S.title); S.put(1, 1, "↑↓ 또는 클릭: 이유 보기   PgUp 이전 단계   PgDn 다음", S.dim)
             out = []
-            for ln in details[cur]: out += _wrap(ln, max(20, w - 3))
+            for ln in details[cur]: out += [ln] if ln[:1] in "┌│├└\x1b" else _wrap(ln, max(20, w - 3))      # table lines are not wrapped
             panel = min(len(out) + 1, max(8, int(h * 0.45))); area = max(3, h - panel - 3); y0 = 2
             sel = selectable[cur]
             if sel < top + 3: top = max(0, sel - 3)
@@ -170,9 +193,9 @@ def browse(title, lines, selectable, details, footer=""):
             for k in range(area):
                 i = top + k
                 if i >= len(lines): break
-                S.put(y0 + k, 0, lines[i], curses.A_REVERSE if i == sel else 0); shown[y0 + k] = i
+                S.put_ansi(y0 + k, 0, lines[i], curses.A_REVERSE if i == sel else 0); shown[y0 + k] = i
             yb = y0 + area; S.put(yb, 0, "─" * (w - 1), S.dim)
-            for k, ln in enumerate(out[:h - yb - 2]): S.put(yb + 1 + k, 1, ln)
+            for k, ln in enumerate(out[:h - yb - 2]): S.put_ansi(yb + 1 + k, 1, ln, S.title if k == 0 else 0)
             if footer: S.put(h - 1, 1, footer, S.dim)
             scr.refresh(); key = scr.getch()
             if key in (curses.KEY_UP, ord("k")): cur = max(0, cur - 1)

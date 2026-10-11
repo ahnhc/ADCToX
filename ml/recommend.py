@@ -268,32 +268,50 @@ def _when(w):
     return ", ".join(parts)
 
 
-def reasons(r):
-    """one plain line per label domain: what is settled and why, or that the entered values cannot settle it yet."""
-    v = r["verdict"]; out = [r["name"]]; doms = {}
-    for c, rr in v.known: doms.setdefault(rr["domain"], {"known": [], "possible": []})["known"].append((c, rr))
-    for c, rr in v.possible: doms.setdefault(rr["domain"], {"known": [], "possible": []})["possible"].append((c, rr))
+def reason_rows(r):
+    """[(organ, status, basis)] per label domain: what is settled and on what, or what would settle it."""
+    v = r["verdict"]; doms = {}; out = []
+    for c, rr in v.known: doms.setdefault(rr["domain"], ([], []))[0].append((c, rr))
+    for c, rr in v.possible: doms.setdefault(rr["domain"], ([], []))[1].append((c, rr))
     silent = dict(v.silent)
     for d in sorted(set(doms) | set(silent)):
-        kn = doms.get(d, {}).get("known", []); po = [x for x in doms.get(d, {}).get("possible", []) if RS.TIER[x[0]] > max([RS.TIER[c] for c, _ in kn] + [-1])]
+        kn, po = doms.get(d, ([], []))
+        top = max([RS.TIER[c] for c, _ in kn] + [-1]); po = [x for x in po if RS.TIER[x[0]] > top]
         if kn:
-            c, rr = max(kn, key=lambda x: RS.TIER[x[0]]); cond = _when(rr["when"])
-            out.append(f"  {d}: {RS.TABLE[c]}" + (f" ({cond})" if cond else ""))
-        elif d in silent and silent[d]:
-            out.append(f"  {d}: No data (the label says nothing for this patient)")
+            c, rr = max(kn, key=lambda x: RS.TIER[x[0]]); out.append((d, RS.TABLE[c], _when(rr["when"]) or "-"))
+        elif d in silent and silent[d]: out.append((d, "No data", "label says nothing for this patient"))
         if po or (d in silent and not silent[d]):
-            worst = max(po, key=lambda x: RS.TIER[x[0]]) if po else None
-            out.append(f"  {d}: 현재 입력값으로는 확정할 수 없음" + (f" ({_when(worst[1]['when'])}이면 {RS.TABLE[worst[0]]})" if worst and _when(worst[1]['when']) else "")
-                       + f" → {RS.NEEDS.get(d, d)} 입력")
-    if len(out) == 1: out.append("  이 환자에게 해당하는 투여 제한 없음")
+            c, rr = max(po, key=lambda x: RS.TIER[x[0]]) if po else ("no_statement", None)
+            cond = _when(rr["when"]) if rr else ""
+            out.append((d, RS.TABLE[c] + "?", (f"{cond}이면 {RS.TABLE[c]} · " if cond else "") + f"입력: {RS.NEEDS.get(d, d)}"))
     return out
 
 
-def browse(rows):
+STATUS_TONE = {"Contraindicated": "31;1", "Avoid": "31", "Unclear": "33", "No data": "33", "Reduce dose": "36", "Monitor": "36", "Clear": "32"}
+
+
+def reasons(r, checks_=(), color=True):
+    """the bottom panel for one row: a small table drawn like the result table (same borders, same colours), then the checks
+    that concern this drug."""
+    rows = reason_rows(r); out = [r["name"]]
+    tone = lambda s: "33" if s.endswith("?") else STATUS_TONE.get(s, "")
+    paint = (lambda s, c: f"\033[{c}m{s}\033[0m" if c else s) if color else (lambda s, c: s)
+    if rows:
+        head = ("Organ", "Status", "Basis"); wd = [max(_width(x[i]) for x in rows + [head]) for i in range(3)]
+        pad = lambda s, n: s + " " * (n - _width(s)); line = lambda l, m, e: l + m.join("─" * (x + 2) for x in wd) + e
+        out += [line("┌", "┬", "┐"), "│ " + " │ ".join(pad(h, x) for h, x in zip(head, wd)) + " │", line("├", "┼", "┤")]
+        out += ["│ " + " │ ".join(paint(pad(c, x), tone(c) if i == 1 else "") for i, (c, x) in enumerate(zip(row, wd))) + " │" for row in rows] + [line("└", "┴", "┘")]
+    else: out.append("이 환자에게 해당하는 투여 제한 없음")
+    mine = [test for test, names, _ in checks_ if not names or r["name"] in names]
+    if mine: out += ["투여 전 확인"] + [f"  - {x}" for x in mine]
+    return out
+
+
+def browse(rows, checks_=()):
     """interactive view of the result table (terminal only): pick a row to read why it has its restriction."""
     import tui
-    lines, at = _table(rows)
-    return tui.browse("결과 · 행을 고르면 아래에 이유가 나옵니다", lines, at, [reasons(r) for r in rows])
+    lines, at = _table(rows, lambda t, c: f"\033[{c}m{t}\033[0m" if c else t)
+    return tui.browse("결과 · 행을 고르면 아래에 이유가 나옵니다", lines, at, [reasons(r, checks_) for r in rows])
 
 
 def render(rows, s, notes, checks_, detail=False, color=None):
@@ -450,7 +468,7 @@ if __name__ == "__main__":
         else: conds, col = ["interstitial_lung_disease"], None
         print()
         rows, s, notes, ck = recommend(conds, labs, raw)
-        if not args and _tui_ok() and browse(rows) == "back": back = True; continue      # PgUp on the result screen
+        if not args and _tui_ok() and browse(rows, ck) == "back": back = True; continue      # PgUp on the result screen
         back = False
         render(rows, s, notes, ck, detail=flags["detail"], color=col)
         if not args:
