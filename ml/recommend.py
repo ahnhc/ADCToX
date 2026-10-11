@@ -7,8 +7,12 @@ Order, most favourable first (a lexicographic key, so nothing below can buy back
   1. label use restriction for this patient (ml/restrictions.py, conf/label_restrictions.yaml), worst case over the lab
      values that were not entered: contraindicated > avoid > insufficient data = no label statement > monitor > none;
      within a tier, a restriction that holds whatever the missing values are ranks behind one that only might.
-  2. B = sum of s_o over the patient's organs o that carry a BOXED warning on the label.
-  3. Wn = sum of s_o over the patient's organs o that carry a section-5 warning (and no boxed one).
+  2. boxed warnings on the patient's organs, compared priority level by level: the organs of the level-1 condition(s) first,
+     then level 2, ... (a count per level, so one hit on a higher level outweighs any number on lower ones).
+  3. section-5 warnings (no boxed one) on the patient's organs, level by level in the same way.
+  Levels: with two or more conditions on different organs the wizard asks the user to order them (--priority 2,1 on the
+  command line, aligned with the conditions); by default the curated severity order, equal severities sharing a level.
+  B / Wn (sums of s_o) are still returned: they compare different patients (ml/validate_outcomes.py, validate_subgroups.py).
   s_o = the patient's vulnerability of organ o, 0-1: the curated severity of the conditions whose own organ it is
   (max over conditions). B and Wn can only grow when any s_o grows, so a more vulnerable patient never gets a lower
   concern for a drug that warns on that organ. There is no weighted mean and no per-patient min-max: the first version
@@ -36,6 +40,7 @@ import drug_evidence as DE, restrictions as RS
 AXES = DE.AXES; R = RS.R
 LEARNED_FRACTION = 0.0      # off by default; see the module docstring
 FALLBACK = {}               # condition text -> learned fraction, only for conditions that map to no organ (asked in the wizard)
+PRIORITY = {}               # condition text -> level the user set (1 = avoid its organs' toxicity first); default = severity order
 REG_NEAR = 0.80             # a free-text condition is 'the same as' a registry condition at this BioLORD cosine -> its curated organs
 MONDO_SEVERITY = 0.80       # organs read off the MONDO hierarchy have no curated severity; one fixed value, not fitted
 MATCH_COS = 0.60            # last resort: borrow the organs of a loosely similar registry condition
@@ -77,8 +82,8 @@ _FREE = {}                  # free-text conditions -> (embeddings, registry embe
 
 
 def resolve(conditions):
-    """-> (s over AXES, own-organ set, registry ids present, [(input, how it was read)])"""
-    ws, notes, ids, own_axes = [np.zeros(len(AXES))], [], set(), set()
+    """-> (s over AXES, own-organ set, registry ids present, [(input, how it was read)], [(input, its organs, its value)])"""
+    ws, notes, ids, own_axes, pc = [np.zeros(len(AXES))], [], set(), set(), []
     free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
     if free:
         key = tuple(free)
@@ -106,12 +111,27 @@ def resolve(conditions):
             else:
                 own, how = np.zeros(len(AXES)), "free text; not understood (no organ)"
                 if FALLBACK.get(c) and lv is not None:
-                    f = max(FALLBACK[c], LEARNED_FRACTION); top = [EN[AXES[k]] for k in np.argsort(-lv)[:3] if f * lv[k] >= 0.01]
-                    ws.append(f * lv); how += f"; FinnGen learned estimate x{f:g} used (not validated): {', '.join(top) or 'no organ'}"
+                    f = max(FALLBACK[c], LEARNED_FRACTION); top = [AXES[k] for k in np.argsort(-lv)[:3] if f * lv[k] >= 0.01]
+                    ws.append(f * lv); how += f"; FinnGen learned estimate x{f:g} used (not validated): {', '.join(EN[a] for a in top) or 'no organ'}"
+                    if top: pc.append((c, set(top), float(f * lv.max())))
             fi += 1
         own_axes |= {AXES[k] for k in np.where(own > 0)[0]}
+        if own.max() > 0: pc.append((c, {AXES[k] for k in np.where(own > 0)[0]}, float(own.max())))
         ws.append(np.maximum(own, LEARNED_FRACTION * lv) if lv is not None and LEARNED_FRACTION > 0 else own); notes.append((c, how))
-    return np.maximum.reduce(ws), own_axes, ids, notes
+    return np.maximum.reduce(ws), own_axes, ids, notes, pc
+
+
+def default_levels(pc):
+    """condition -> priority level (1 = avoid first): the registry severity order, equal severities share a level."""
+    vals = sorted({round(v, 3) for _, _, v in pc}, reverse=True)
+    return {c: vals.index(round(v, 3)) + 1 for c, _, v in pc}
+
+
+def priority(pc):
+    """-> {condition: level}, from PRIORITY (set in the wizard or by --priority) over the defaults, renumbered 1, 2, 3 ..."""
+    lv = {**default_levels(pc), **{c: v for c, v in PRIORITY.items() if c in {x for x, _, _ in pc}}}
+    d = {v: k for k, v in enumerate(sorted(set(lv.values())), 1)}
+    return {c: d[v] for c, v in lv.items()}
 
 
 def unresolved(conditions):
@@ -124,7 +144,15 @@ def unresolved(conditions):
 
 def recommend(conditions, labs=None):
     """-> rows (ordered), s {axis: value}, notes, checks"""
-    labs = labs or {}; s, own_axes, ids, notes = resolve(conditions); E = DE.evidence(); adcs = sorted(E)
+    labs = labs or {}; s, own_axes, ids, notes, pc = resolve(conditions); E = DE.evidence(); adcs = sorted(E)
+    lv = priority(pc); nlev = max(lv.values(), default=0); org_lv = {}
+    for c, orgs, _ in pc:
+        for a in orgs: org_lv[a] = min(org_lv.get(a, nlev), lv[c])
+    for k, a in enumerate(AXES):                       # organs only a learned estimate put there come after every listed condition
+        if s[k] > 0 and a not in org_lv: org_lv[a] = nlev + 1
+    L = max(org_lv.values(), default=0)
+    per_level = lambda organs: tuple(sum(org_lv[a] == k for a in organs) for k in range(1, L + 1))
+    prio = sorted(((lv[c], c, sorted(orgs, key=AXES.index)) for c, orgs, _ in pc), key=lambda x: (x[0], conditions.index(x[1])))
     p = RS.Patient(conditions=ids, organs=own_axes, **labs); V = RS.judge(p, adcs); rows = []
     for adc in adcs:
         e = E[adc]; org = e["organs"]; v = V[adc]
@@ -132,12 +160,14 @@ def recommend(conditions, labs=None):
         warn = [a for a in AXES if s[AXES.index(a)] > 0 and org[a]["level"] == "W&P"]
         B = sum(s[AXES.index(a)] for a in boxed); Wn = sum(s[AXES.index(a)] for a in warn)
         elsewhere = [a for a in AXES if s[AXES.index(a)] == 0 and org[a]["level"] == "boxed"]
-        rows.append(dict(adc=adc, name=e["name"], version=e["version"], date=e["date"], verdict=v, restriction=RS.summary(v), tier=v.worst_possible,
+        rows.append(dict(Bl=per_level(boxed), Wl=per_level(warn), priority=prio, adc=adc, name=e["name"], version=e["version"], date=e["date"], verdict=v, restriction=RS.summary(v), tier=v.worst_possible,
                          B=round(B, 3), Wn=round(Wn, 3), boxed=boxed, warn=warn, elsewhere=elsewhere, organs=org, has_tables=e["has_tables"]))
-    rows.sort(key=lambda r: (r["tier"], r["verdict"].worst_known, r["B"], r["Wn"], r["name"]))     # a settled restriction ranks behind a possible one of the same tier
+    # restriction tier (worst case), settled tier, then boxed warnings on the level-1 organs, level-2 organs, ..., then the other
+    # warnings level by level. Within one patient this is the order; B and Wn (severity sums) stay for comparisons across patients.
+    rows.sort(key=lambda r: (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"], r["name"]))
     prev = None
     for r in rows:
-        k = (r["tier"], r["verdict"].worst_known, r["B"], r["Wn"]); r["tie"] = bool(prev and k == prev["key"]); r["rank"] = prev["rank"] if r["tie"] else (prev["rank"] + 1 if prev else 1)
+        k = (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"]); r["tie"] = bool(prev and k == prev["key"]); r["rank"] = prev["rank"] if r["tie"] else (prev["rank"] + 1 if prev else 1)
         r["key"] = k; prev = r
     for i in range(len(rows) - 1):
         if rows[i + 1]["tie"]: rows[i]["tie"] = True
@@ -179,8 +209,11 @@ def render(rows, s, notes, checks_, detail=False, color=None):
     for a, b in notes:
         lines = textwrap.wrap(b, width=max(30, cols - key - 6)) or [""]
         print(f"  {a:<{key}}  {lines[0]}"); [print(f"  {'':<{key}}  {x}") for x in lines[1:]]
-    if s:
-        kw = max(len(EN[a]) for a in s); print("\nOrgan vulnerability (s)"); [print(f"  {EN[a]:<{kw}}  {v:.2f}") for a, v in sorted(s.items(), key=lambda kv: -kv[1])]
+    prio = rows[0]["priority"] if rows else []
+    if len(prio) > 1:
+        print("\nPriority (1 = avoid first)")
+        nm = lambda c: _reg[c]["label"] if c in _reg else c; w = max(len(nm(c)) for _, c, _ in prio)
+        for lvl, c, orgs in prio: print(f"  {lvl}  {nm(c):<{w}}  {', '.join(EN[a] for a in orgs)}")
     print()
     tone = {4: "31;1", 3: "31", 2: "33", 1: "36", 0: "32", -1: ""}
     org_txt = lambda xs: ", ".join(EN[a] for a in xs) or "-"
@@ -240,9 +273,8 @@ COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)  ·  / 검색  · 
 LABS_ASK_Q = ("입력할 검사 수치가 있나요?", "")
 LABS_PICK_Q = ("검사 수치 선택", "")
 LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "alt": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
+PRIORITY_Q = ("어느 질환 쪽 독성을 먼저 피할까요?", "1 = 가장 먼저. 같은 숫자는 같은 순위. 순위가 높은 질환의 장기에 경고가 있는 약이 뒤로 갑니다.")
 FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
-MONDO_Q = ("'{f}' 쪽 독성을 다른 질환과 비교해 얼마나 피해야 하나요?",
-           "목록에 없는 질환이라 비중이 정해져 있지 않습니다. 순위는 비중이 큰 질환의 장기에 경고가 있는 약을 더 뒤로 보냅니다.")
 FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용 (추정값 × 0.25)", 0.25), ("사용 (추정값 × 0.5)", 0.5)]
 LAB_FIELDS = [("crcl", "CLcr, Cockcroft-Gault (mL/min)", float), ("bili", "total bilirubin (x ULN)", float), ("ast", "AST (x ULN)", float), ("alt", "ALT (x ULN)", float),
               ("child_pugh", "Child-Pugh class (A/B/C)", lambda x: x.strip().upper() if x.strip().upper() in ("A", "B", "C") else None),
@@ -295,48 +327,24 @@ def _tui_ok():
     return sys.stdin.isatty() and sys.stdout.isatty() and os.environ.get("TERM", "dumb") != "dumb"
 
 
-def _wa(w):
-    """Korean particle 와/과 after w (과 after a final consonant)."""
-    c = w[-1] if w else ""
-    return "과" if "가" <= c <= "힣" and (ord(c) - 0xAC00) % 28 else "와"
-
-
-def mondo_choices(conds):
-    """-> (free-text names, their organs, [(option label, value)], default index), or None when the value cannot change the order:
-    only conditions read off MONDO take this value, and it matters only next to a listed condition on another organ."""
-    global LEARNED_FRACTION, FALLBACK
-    keep = LEARNED_FRACTION, FALLBACK; LEARNED_FRACTION, FALLBACK = 0.0, {}
-    try: _, _, ids, notes = resolve(conds)
-    finally: LEARNED_FRACTION, FALLBACK = keep
-    free = [(c, how.split("organs: ")[1].split(", ")) for c, how in notes if how.startswith("free text; MONDO")]
-    organs = {a for _, ax in free for a in ax}
-    other = [i for i in ids if i in _reg and set(_reg[i]["organ_axes"].split(";")) - organs]
-    if not free or not other: return None
-    by = {}
-    for i in other: by.setdefault(float(_reg[i]["severity"]), []).append(re.sub(r"\s*\(.*?\)", "", KO.get(i, _reg[i]["label"])))
-    vs = sorted(by, reverse=True); nm = lambda v: "·".join(by[v]); opts = []
-    if vs[0] < 1.0: opts.append((f"{nm(vs[0])}보다 더", round((vs[0] + 1.0) / 2, 2)))
-    for k, v in enumerate(vs):
-        opts.append((f"{nm(v)}{_wa(nm(v))} 같게", v))
-        opts.append((f"{nm(v)}보다 덜" + (f", {nm(vs[k + 1])}보다 더" if k + 1 < len(vs) else ""), round((v + vs[k + 1]) / 2 if k + 1 < len(vs) else v / 2, 2)))
-    default = min(range(len(opts)), key=lambda k: (abs(opts[k][1] - 0.8), k))
-    return [c for c, _ in free], sorted(organs, key=AXES.index), opts, default
-
-
-def _ask_mondo(conds, radio=None):
-    global MONDO_SEVERITY
-    ch = mondo_choices(conds)
-    if not ch: return
-    names, organs, opts, default = ch
-    title = MONDO_Q[0].format(f=", ".join(names))
-    desc = f"{', '.join(names)} → {', '.join(ORGAN_KO[a] for a in organs)}.  " + MONDO_Q[1]
-    if radio: k = radio(title, [(n, "") for n, _ in opts], default=default, description=desc)
+def _ask_priority(conds, tui=None):
+    """two or more conditions on different organs: let the user order them (1 = avoid its organs' toxicity first)."""
+    global PRIORITY
+    pc = resolve(conds)[4]
+    if len(pc) < 2 or len({frozenset(o) for _, o, _ in pc}) < 2: return
+    d = default_levels(pc); names = [c for c, _, _ in pc]
+    show = lambda c: _reg[c]["label"] if c in _reg else c
+    det = lambda c, o: " ".join(x for x in (KO.get(c, ""), "(" + ", ".join(ORGAN_KO[a] for a in sorted(o, key=AXES.index)) + ")") if x)
+    if tui:
+        w = max(len(show(c)) for c in names)
+        lv = tui.ranklist(PRIORITY_Q[0], [(f"{show(c):<{w}}", det(c, o)) for c, o, _ in pc], [d[c] for c in names], description=PRIORITY_Q[1])
     else:
-        print(f"\n{title}\n  {desc}"); [print(f"  {i}) {n}" + ("  (Enter)" if i - 1 == default else "")) for i, (n, _) in enumerate(opts, 1)]
-        try: raw = input("  선택 > ").strip()
-        except EOFError: raw = ""
-        k = int(raw) - 1 if raw.isdigit() and 1 <= int(raw) <= len(opts) else default
-    MONDO_SEVERITY = opts[k][1]
+        print(f"\n{PRIORITY_Q[0]} - {PRIORITY_Q[1]}")
+        for i, (c, o, _) in enumerate(pc, 1): print(f"  {i}) {show(c):<34} {det(c, o)}   기본 {d[c]}")
+        try: raw = input("  질환 순서대로 순위 입력 (예: 2 1 1, Enter = 기본) > ").split()
+        except EOFError: raw = []
+        lv = [int(x) for x in raw] if len(raw) == len(pc) and all(x.isdigit() and int(x) >= 1 for x in raw) else [d[c] for c in names]
+    PRIORITY = dict(zip(names, lv))
 
 
 def _ask_fallback(conds, radio=None):
@@ -372,7 +380,7 @@ def wizard():
         conds = conds or ["interstitial_lung_disease"]
         labs = _ask_labs(tui)
         _ask_fallback(conds, tui.radiolist)
-        _ask_mondo(conds, tui.radiolist)
+        _ask_priority(conds, tui)
         col = None                                                      # colour: on in a terminal, off when piped (NO_COLOR to force off)
     else:
         ids = list(_reg)
@@ -385,7 +393,7 @@ def wizard():
         conds = [ids[int(t) - 1] if t.strip().isdigit() and 1 <= int(t) <= len(ids) else t.strip() for t in raw.split(",") if t.strip()] or ["interstitial_lung_disease"]
         labs = _ask_labs(); col = None
         _ask_fallback(conds)
-        _ask_mondo(conds)
+        _ask_priority(conds)
     return conds, labs, col
 
 
@@ -399,6 +407,7 @@ def parse_args(argv):
         elif a == "--child-pugh": labs["child_pugh"] = argv[i + 1].upper(); i += 1
         elif a == "--learned": flags["learned"] = float(argv[i + 1]); i += 1
         elif a == "--learned-fallback": flags["fallback"] = float(argv[i + 1]); i += 1
+        elif a == "--priority": flags["priority"] = [int(x) for x in argv[i + 1].split(",")]; i += 1
         else: args.append(a)
         i += 1
     return args, labs, flags
@@ -417,6 +426,7 @@ if __name__ == "__main__":
     args, labs, flags = parse_args(sys.argv[1:])
     if "learned" in flags: LEARNED_FRACTION = flags["learned"]
     if flags.get("fallback") and args: FALLBACK = {c: flags["fallback"] for c in unresolved(args)}
+    if flags.get("priority") and args: PRIORITY = dict(zip(args, flags["priority"]))
     while True:
         if args: conds, col = args, None
         elif sys.stdin.isatty(): conds, labs, col = wizard()

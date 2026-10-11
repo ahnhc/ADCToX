@@ -100,7 +100,7 @@ def checklist(title, items, checked=(), description="", min_one=True, headers=()
             elif key in (curses.KEY_DOWN, ord("j")): cur = min(len(shown) - 1, cur + 1); step = 1
             elif key == curses.KEY_PPAGE: cur = max(0, cur - vis); step = -1
             elif key == curses.KEY_NPAGE: cur = min(len(shown) - 1, cur + vis); step = 1
-            elif key == ord("/"): searching = True
+            elif key == ord("/"): searching = True; query = ""; cur = top = 0       # a new search starts empty
             elif key == ord(" ") and shown and shown[cur] not in headers: i = shown[cur]; on.symmetric_difference_update({i})
             elif _enter(key):
                 if on or not min_one: return sorted(on)
@@ -108,4 +108,28 @@ def checklist(title, items, checked=(), description="", min_one=True, headers=()
             elif key == 27:
                 if query: query = ""
                 else: return None
+    return curses.wrapper(run)
+
+
+def ranklist(title, items, levels, description=""):
+    """items: [(label, detail)], levels: starting level per item (1 = first). UP/DOWN move, LEFT/RIGHT (or -/+) change the
+    level of the item under the cursor, the list re-sorts by level and the cursor stays on that item. ENTER confirms,
+    ESC returns the starting levels. Equal numbers are equal ranks."""
+    def run(scr):
+        S = _Screen(scr); lv = list(levels); n = len(items); cur_item = 0
+        while True:
+            order = sorted(range(n), key=lambda i: (lv[i], i)); cur = order.index(cur_item)
+            y0 = S.header(title, description, "↑↓ 이동   ←→ 순위 변경   ENTER 확정   ESC 기본값")
+            for k, i in enumerate(order):
+                label, detail = items[i]; on = i == cur_item
+                S.put(y0 + k, 0, f" {'→' if on else ' '} {lv[i]:>2}   {label}", S.cur if on else 0)
+                S.put(y0 + k, 9 + sum(_cw(c) for c in label), f"  {detail}", S.cur if on else S.dim)
+            scr.refresh(); key = scr.getch()
+            if key in (curses.KEY_UP, ord("k")): cur_item = order[max(0, cur - 1)]
+            elif key in (curses.KEY_DOWN, ord("j")): cur_item = order[min(n - 1, cur + 1)]
+            elif key in (curses.KEY_LEFT, ord("-"), ord("h")): lv[cur_item] = max(1, lv[cur_item] - 1)
+            elif key in (curses.KEY_RIGHT, ord("+"), ord("="), ord("l")): lv[cur_item] = min(n, lv[cur_item] + 1)
+            elif _enter(key):
+                d = {v: k for k, v in enumerate(sorted(set(lv)), 1)}; return [d[v] for v in lv]      # 1, 3 -> 1, 2
+            elif key in (27, ord("q")): return list(levels)
     return curses.wrapper(run)

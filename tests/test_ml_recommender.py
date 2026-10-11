@@ -129,6 +129,26 @@ def test_more_vulnerability_never_lowers_concern_for_a_drug_that_warns_on_that_o
 
 
 @needs_cache
+def test_priority_order_decides_between_organs():
+    """two conditions on different organs: the drug warning on the level-1 condition's organ goes last, whatever the severities."""
+    import recommend as RC
+    try:
+        RC.PRIORITY = {}
+        d = {r["adc"]: r for r in RC.recommend(["cirrhosis", "glaucoma"])[0]}            # default: cirrhosis (1.0) before glaucoma (0.5)
+        assert d["mirvetuximab-soravtansine"]["Bl"] == (0, 1)                          # ocular boxed sits on level 2
+        RC.PRIORITY = {"glaucoma": 1, "cirrhosis": 2}
+        rows = RC.recommend(["cirrhosis", "glaucoma"])[0]; d = {r["adc"]: r for r in rows}
+        assert d["mirvetuximab-soravtansine"]["Bl"] == (1, 0)
+        ocular_boxed = [r["rank"] for r in rows if "ocular" in r["boxed"]]
+        hepatic_only = [r["rank"] for r in rows if "hepatic" in r["boxed"] and "ocular" not in r["boxed"] and r["tier"] == d["mirvetuximab-soravtansine"]["tier"]]
+        assert all(o > h for o in ocular_boxed for h in hepatic_only)
+        RC.PRIORITY = {"glaucoma": 1, "cirrhosis": 1}                                   # equal ranks: counted together
+        assert {r["adc"]: r for r in RC.recommend(["cirrhosis", "glaucoma"])[0]}["mirvetuximab-soravtansine"]["Bl"] == (1,)
+    finally:
+        RC.PRIORITY = {}
+
+
+@needs_cache
 def test_no_min_max_rescaling_and_no_percentage():
     import recommend as RC
     rows, *_ = RC.recommend(["interstitial_lung_disease"])
@@ -214,7 +234,7 @@ def test_learned_fallback_touches_only_conditions_with_no_organ():
     base = RC.resolve(["alzheimer", "ckd_stage_3"])[0]
     try:
         RC.FALLBACK = {"obesity": 0.5}
-        s, _, _, notes = RC.resolve(conds)
+        s, _, _, notes, _ = RC.resolve(conds)
         assert "not validated" in dict(notes)["obesity"] and "not validated" not in dict(notes)["alzheimer"]
         assert (s >= base).all() and (s > 0).sum() > (base > 0).sum()
         RC.FALLBACK = {"obesity": 0.5}
@@ -222,17 +242,6 @@ def test_learned_fallback_touches_only_conditions_with_no_organ():
         assert RC.unresolved(conds) == ["obesity"] and RC.FALLBACK == {"obesity": 0.5}
     finally:
         RC.FALLBACK = {}
-
-
-@needs_cache
-@needs_encoder
-def test_free_text_weight_is_asked_only_when_it_can_change_the_order():
-    import recommend as RC
-    assert RC.mondo_choices(["heart stop"]) is None                      # alone: any value gives the same order
-    assert RC.mondo_choices(["heart stop", "heart_failure"]) is None     # same organ as the listed condition
-    names, organs, opts, default = RC.mondo_choices(["heart stop", "glaucoma"])
-    assert names == ["heart stop"] and organs == ["cardiovascular"]
-    assert [v for _, v in opts] == sorted([v for _, v in opts], reverse=True) and 0.5 in [v for _, v in opts]   # 'same as glaucoma' = its value
 
 
 # ------------------------------------------------------------------ learned model inference matches training
