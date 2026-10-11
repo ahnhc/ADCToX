@@ -26,7 +26,7 @@ checks:
     headings: "qt interval"
     source: "label section 5 headings of the ADCs listed"
   - conditions: [ckd_stage_3, ckd_stage_4_5, dialysis]
-    test: "creatinine clearance by Cockcroft-Gault (the labels' measure; eGFR is not the same quantity)"
+    test: "creatinine clearance (CLcr)"
     source: "label sections 8.6 / 12.3"
   - conditions: [chronic_liver_disease, cirrhosis, nafld, hepatitis_b_chronic, hepatitis_c_chronic, hepatic_vod_history]
     test: "total bilirubin and AST (x ULN); Child-Pugh class if cirrhotic"
