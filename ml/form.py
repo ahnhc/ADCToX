@@ -255,7 +255,7 @@ def run(RC, back=False):
                 if split_free(st["free"]): F.loading("질환 해석 모델 불러오는 중 ...")
                 miss = RC.unresolved(conds) if split_free(st["free"]) else []
                 RC.FALLBACK = {}
-                if miss:
+                if miss and RC.HAS_LEARNED:
                     k = F.choose(f"관련 장기를 찾지 못함: {', '.join(miss)}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)",
                                  [n for n, _ in RC.FALLBACK_OPTS])
                     if k == BACK: step = 1; continue

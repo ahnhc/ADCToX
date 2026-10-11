@@ -13,3 +13,4 @@ artifacts/**/*.nc
 # PT->SOC dictionary stays local: MedDRA PT/SOC strings are licensed terminology, so
 # only scripts/build_taxonomy.py (which regenerates it from public-domain CTGov) ships.
 data/processed/pt_soc_dictionary.json
+dist/

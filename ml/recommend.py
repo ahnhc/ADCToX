@@ -79,21 +79,34 @@ def own_vec(cid):
     return v
 
 
-_FREE = {}                  # free-text conditions -> (embeddings, registry embeddings, MONDO links), per process
+_FREE = {}                  # free-text conditions -> (nearest registry condition per text, MONDO links), per process
+HAS_LEARNED = True          # the FinnGen estimate is available (not in the portable build)
+
+
+def _free_info(free):
+    """per typed text: (nearest registry id, similarity), its MONDO link {name, sim, axes}, and the learned vector (or None).
+    The portable build replaces this function with string matching on MONDO names and synonyms."""
+    key = tuple(free)
+    if key not in _FREE:
+        with _Loading("Loading weights · 질환 해석 모델 (BioLORD · MONDO)", "질환 해석 모델 준비 완료"):
+            import vulnerability_model as VM, mondo_index as MI
+            E = VM._st(free + [_reg[i]["label"] for i in _reg]); Ef, Er = E[:len(free)], E[len(free):]; ids = list(_reg); best = []
+            for i in range(len(free)):
+                sims = Er @ Ef[i]; k = int(sims.argmax()); best.append((ids[k], float(sims[k])))
+            _FREE[key] = (best, MI.link(free))
+    best, links = _FREE[key]
+    learned = None
+    if LEARNED_FRACTION > 0 or FALLBACK:
+        import vulnerability_model as VM
+        learned = VM.predict(free)
+    return best, links, learned
 
 
 def resolve(conditions):
     """-> (s over AXES, own-organ set, registry ids present, [(input, how it was read)], [(input, its organs, its value)])"""
     ws, notes, ids, own_axes, pc = [np.zeros(len(AXES))], [], set(), set(), []
     free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
-    if free:
-        key = tuple(free)
-        if key not in _FREE:
-            with _Loading("Loading weights · 질환 해석 모델 (BioLORD · MONDO)", "질환 해석 모델 준비 완료"):
-                import vulnerability_model as VM, mondo_index as MI
-                E = VM._st(free + [_reg[i]["label"] for i in _reg]); _FREE[key] = (E[:len(free)], E[len(free):], MI.link(free))
-        import vulnerability_model as VM
-        reg_ids = list(_reg); Ef, Er, links = _FREE[key]; learned_free = VM.predict(free) if LEARNED_FRACTION > 0 or FALLBACK else None
+    if free: best, links, learned_free = _free_info(free)
     L = json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"] if LEARNED_FRACTION > 0 else None
     fi = 0
     for c in conditions:
@@ -102,13 +115,13 @@ def resolve(conditions):
         if cid:
             own, how = own_vec(cid), f"registry: {_reg[cid]['label']}"; ids.add(cid); lv = np.array([L[cid][a] for a in AXES]) if L else None
         else:
-            sims = Er @ Ef[fi]; k = int(sims.argmax()); lk = links[fi]; rl = _reg[reg_ids[k]]["label"]
+            near, sim = best[fi]; lk = links[fi]; rl = _reg[near]["label"]
             lv = np.array([learned_free[fi][a] for a in AXES]) if learned_free else None
-            if sims[k] >= REG_NEAR: own, how = own_vec(reg_ids[k]), f"free text; same as registry '{rl}' (cos {sims[k]:.2f})"; ids.add(reg_ids[k])
+            if sim >= REG_NEAR: own, how = own_vec(near), f"free text; same as registry '{rl}' (cos {sim:.2f})"; ids.add(near)
             elif lk["axes"]:
                 own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in lk["axes"]]
                 how = f"free text; MONDO '{lk['name']}' (sim {lk['sim']:.2f}) -> organs: {', '.join(lk['axes'])}"
-            elif sims[k] >= MATCH_COS: own, how = own_vec(reg_ids[k]), f"free text; organs borrowed from registry '{rl}' (cos {sims[k]:.2f})"
+            elif sim >= MATCH_COS: own, how = own_vec(near), f"free text; organs borrowed from registry '{rl}' (cos {sim:.2f})"
             else:
                 own, how = np.zeros(len(AXES)), "free text; not understood (no organ)"
                 if FALLBACK.get(c) and lv is not None:
@@ -418,8 +431,9 @@ def _ask_fallback(conds, radio=None):
 def wizard(back=False):
     """-> (conditions, labs (x ULN form; empty), colour, raw lab values). One curses screen when possible, plain prompts otherwise.
     back: return from the result screen to the last input step, entries kept."""
-    import form, labs as LB
+    import labs as LB
     if _tui_ok():
+        import form
         r = form.run(sys.modules[__name__], back=back)
         if r is None: sys.exit(0)
         conds, raw = r; return conds, {}, None, raw
@@ -430,7 +444,8 @@ def wizard(back=False):
         for k, i in enumerate(ids, 1): print(f"  {k:>2}) {i:<28} {_reg[i]['label']}")
         try: text = input("기저질환 > ")
         except EOFError: text = ""
-    conds = [ids[int(x) - 1] if x.isdigit() and 1 <= int(x) <= len(ids) else x for x in form.split_free(text)] or ["interstitial_lung_disease"]
+    split = [" ".join(x.split()) for x in text.split(",") if x.strip()]
+    conds = [ids[int(x) - 1] if x.isdigit() and 1 <= int(x) <= len(ids) else x for x in split] or ["interstitial_lung_disease"]
     raw = {}
     try: has = input("검사 수치가 있나요? (y = 있음, Enter = 없음) > ").strip().lower() == "y"
     except EOFError: has = False
@@ -441,7 +456,7 @@ def wizard(back=False):
             x = LB.parse(k, v)
             if x is not None: raw[k] = x
         except ValueError as err: print(f"    (ignored: {err})")
-    _ask_fallback(conds)
+    if HAS_LEARNED: _ask_fallback(conds)
     pc = patient_conditions(conds, raw)
     if len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2: _ask_priority_pc(pc)
     return conds, {}, None, raw
@@ -474,7 +489,8 @@ def list_conditions():
     print("\n[context]"); [print(f"  {k:<28} {v}") for k, v in CONTEXT.items()]
 
 
-if __name__ == "__main__":
+def main():
+    global LEARNED_FRACTION, FALLBACK, PRIORITY
     if "--list" in sys.argv: list_conditions(); sys.exit(0)
     args, labs, flags = parse_args(sys.argv[1:])
     if "learned" in flags: LEARNED_FRACTION = flags["learned"]
@@ -491,9 +507,13 @@ if __name__ == "__main__":
         if not args and _tui_ok() and browse(rows, ck) == "back": back = True; continue      # PgUp on the result screen
         back = False
         render(rows, s, notes, ck, detail=flags["detail"], color=col)
-        if not args:
+        if not args and _tui_ok():
             import form; form.clear()                                     # the next run starts empty
         if args or not sys.stdin.isatty(): break
         try: again = input("\nRun again with different answers? (y = yes, Enter = exit) > ").strip().lower()
         except EOFError: break
         if again != "y": break
+
+
+if __name__ == "__main__":
+    main()

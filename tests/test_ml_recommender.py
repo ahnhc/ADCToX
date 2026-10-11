@@ -159,6 +159,19 @@ def test_lab_report_values_are_converted_to_what_the_labels_read():
     assert LB.derive(dict(creatinine=1.3))[0].get("crcl") is None                       # creatinine alone gives no CLcr
 
 
+@needs_labels
+def test_portable_build_gives_the_server_result(tmp_path):
+    """the one-file build must print the same table as the repository version for listed conditions and lab values."""
+    import subprocess
+    out = tmp_path / "adc_recommender.py"
+    subprocess.run([sys.executable, "-I", str(ROOT / "ml/build_portable.py"), str(out)], check=True, capture_output=True)
+    args = ["cirrhosis", "glaucoma", "dialysis", "--lab", "bilirubin=2.0", "--lab", "platelet=80", "--lab", "anc=1.2", "--priority", "2,1,1"]
+    env = {"PATH": "/usr/bin:/bin", "NO_COLOR": "1", "HOME": str(tmp_path)}
+    server = subprocess.run([sys.executable, "-I", str(ROOT / "ml/recommend.py"), *args], capture_output=True, text=True, env=env, cwd=ROOT).stdout
+    portable = subprocess.run([sys.executable, "-I", str(out), *args], capture_output=True, text=True, env=env, cwd=tmp_path).stdout
+    assert "Label restriction" in server and portable == server
+
+
 def test_free_text_is_split_on_commas_whatever_the_spacing():
     import form
     assert form.split_free("copd ,   asthma,heart   stop , ,") == ["copd", "asthma", "heart stop"]
