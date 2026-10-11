@@ -241,9 +241,9 @@ LABS_ASK_Q = ("입력할 검사 수치가 있나요?", "")
 LABS_PICK_Q = ("검사 수치 선택", "")
 LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "alt": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
 FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
-MONDO_Q = ("직접 입력한 질환에 쓸 심각도 값", "목록 질환의 값을 기준으로 고르세요.\n  0.5 = 녹내장, 감각신경성 난청\n  0.8 = 염증성 장질환, 활동성 자가면역질환\n  1.0 = 간경변, 투석, 심부전")
+MONDO_Q = ("'{f}' 쪽 독성을 다른 질환과 비교해 얼마나 피해야 하나요?",
+           "목록에 없는 질환이라 비중이 정해져 있지 않습니다. 순위는 비중이 큰 질환의 장기에 경고가 있는 약을 더 뒤로 보냅니다.")
 FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용 (추정값 × 0.25)", 0.25), ("사용 (추정값 × 0.5)", 0.5)]
-MONDO_OPTS = [("0.5", 0.5), ("0.8", 0.8), ("1.0", 1.0)]
 LAB_FIELDS = [("crcl", "CLcr, Cockcroft-Gault (mL/min)", float), ("bili", "total bilirubin (x ULN)", float), ("ast", "AST (x ULN)", float), ("alt", "ALT (x ULN)", float),
               ("child_pugh", "Child-Pugh class (A/B/C)", lambda x: x.strip().upper() if x.strip().upper() in ("A", "B", "C") else None),
               ("lvef", "baseline LVEF (%)", float), ("ugt1a1_28_homozygous", "UGT1A1*28 homozygous (y/n)", lambda x: {"y": True, "n": False}.get(x.strip().lower()))]
@@ -295,6 +295,50 @@ def _tui_ok():
     return sys.stdin.isatty() and sys.stdout.isatty() and os.environ.get("TERM", "dumb") != "dumb"
 
 
+def _wa(w):
+    """Korean particle 와/과 after w (과 after a final consonant)."""
+    c = w[-1] if w else ""
+    return "과" if "가" <= c <= "힣" and (ord(c) - 0xAC00) % 28 else "와"
+
+
+def mondo_choices(conds):
+    """-> (free-text names, their organs, [(option label, value)], default index), or None when the value cannot change the order:
+    only conditions read off MONDO take this value, and it matters only next to a listed condition on another organ."""
+    global LEARNED_FRACTION, FALLBACK
+    keep = LEARNED_FRACTION, FALLBACK; LEARNED_FRACTION, FALLBACK = 0.0, {}
+    try: _, _, ids, notes = resolve(conds)
+    finally: LEARNED_FRACTION, FALLBACK = keep
+    free = [(c, how.split("organs: ")[1].split(", ")) for c, how in notes if how.startswith("free text; MONDO")]
+    organs = {a for _, ax in free for a in ax}
+    other = [i for i in ids if i in _reg and set(_reg[i]["organ_axes"].split(";")) - organs]
+    if not free or not other: return None
+    by = {}
+    for i in other: by.setdefault(float(_reg[i]["severity"]), []).append(re.sub(r"\s*\(.*?\)", "", KO.get(i, _reg[i]["label"])))
+    vs = sorted(by, reverse=True); nm = lambda v: "·".join(by[v]); opts = []
+    if vs[0] < 1.0: opts.append((f"{nm(vs[0])}보다 더", round((vs[0] + 1.0) / 2, 2)))
+    for k, v in enumerate(vs):
+        opts.append((f"{nm(v)}{_wa(nm(v))} 같게", v))
+        opts.append((f"{nm(v)}보다 덜" + (f", {nm(vs[k + 1])}보다 더" if k + 1 < len(vs) else ""), round((v + vs[k + 1]) / 2 if k + 1 < len(vs) else v / 2, 2)))
+    default = min(range(len(opts)), key=lambda k: (abs(opts[k][1] - 0.8), k))
+    return [c for c, _ in free], sorted(organs, key=AXES.index), opts, default
+
+
+def _ask_mondo(conds, radio=None):
+    global MONDO_SEVERITY
+    ch = mondo_choices(conds)
+    if not ch: return
+    names, organs, opts, default = ch
+    title = MONDO_Q[0].format(f=", ".join(names))
+    desc = f"{', '.join(names)} → {', '.join(ORGAN_KO[a] for a in organs)}.  " + MONDO_Q[1]
+    if radio: k = radio(title, [(n, "") for n, _ in opts], default=default, description=desc)
+    else:
+        print(f"\n{title}\n  {desc}"); [print(f"  {i}) {n}" + ("  (Enter)" if i - 1 == default else "")) for i, (n, _) in enumerate(opts, 1)]
+        try: raw = input("  선택 > ").strip()
+        except EOFError: raw = ""
+        k = int(raw) - 1 if raw.isdigit() and 1 <= int(raw) <= len(opts) else default
+    MONDO_SEVERITY = opts[k][1]
+
+
 def _ask_fallback(conds, radio=None):
     """ask only when some typed condition maps to no organ; the answer applies to those conditions alone."""
     global FALLBACK
@@ -311,7 +355,6 @@ def _ask_fallback(conds, radio=None):
 
 
 def wizard():
-    global MONDO_SEVERITY
     if _tui_ok():
         import tui
         items, slot, heads = [("✎ 직접 입력 (영어)", "")], {0: None}, set(); by = {}
@@ -329,8 +372,7 @@ def wizard():
         conds = conds or ["interstitial_lung_disease"]
         labs = _ask_labs(tui)
         _ask_fallback(conds, tui.radiolist)
-        if any(c not in _reg and c.lower() not in _by_label and c not in CONTEXT for c in conds):
-            MONDO_SEVERITY = MONDO_OPTS[tui.radiolist(MONDO_Q[0], [(n, "") for n, _ in MONDO_OPTS], default=1, description=MONDO_Q[1])][1]
+        _ask_mondo(conds, tui.radiolist)
         col = None                                                      # colour: on in a terminal, off when piped (NO_COLOR to force off)
     else:
         ids = list(_reg)
@@ -343,6 +385,7 @@ def wizard():
         conds = [ids[int(t) - 1] if t.strip().isdigit() and 1 <= int(t) <= len(ids) else t.strip() for t in raw.split(",") if t.strip()] or ["interstitial_lung_disease"]
         labs = _ask_labs(); col = None
         _ask_fallback(conds)
+        _ask_mondo(conds)
     return conds, labs, col
 
 

@@ -224,6 +224,17 @@ def test_learned_fallback_touches_only_conditions_with_no_organ():
         RC.FALLBACK = {}
 
 
+@needs_cache
+@needs_encoder
+def test_free_text_weight_is_asked_only_when_it_can_change_the_order():
+    import recommend as RC
+    assert RC.mondo_choices(["heart stop"]) is None                      # alone: any value gives the same order
+    assert RC.mondo_choices(["heart stop", "heart_failure"]) is None     # same organ as the listed condition
+    names, organs, opts, default = RC.mondo_choices(["heart stop", "glaucoma"])
+    assert names == ["heart stop"] and organs == ["cardiovascular"]
+    assert [v for _, v in opts] == sorted([v for _, v in opts], reverse=True) and 0.5 in [v for _, v in opts]   # 'same as glaucoma' = its value
+
+
 # ------------------------------------------------------------------ learned model inference matches training
 def test_vulnerability_inference_does_not_set_context_bits_training_never_saw():
     src = (ROOT / "ml" / "vulnerability_model.py").read_text()
