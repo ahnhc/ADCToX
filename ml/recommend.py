@@ -293,7 +293,7 @@ def browse(rows):
     """interactive view of the result table (terminal only): pick a row to read why it has its restriction."""
     import tui
     lines, at = _table(rows)
-    tui.browse("결과 · 행을 고르면 아래에 이유가 나옵니다", lines, at, [reasons(r) for r in rows])
+    return tui.browse("결과 · 행을 고르면 아래에 이유가 나옵니다", lines, at, [reasons(r) for r in rows])
 
 
 def render(rows, s, notes, checks_, detail=False, color=None):
@@ -377,11 +377,12 @@ def _ask_fallback(conds, radio=None):
     f = FALLBACK_OPTS[k][1]; FALLBACK = {c: f for c in miss} if f > 0 else {}
 
 
-def wizard():
-    """-> (conditions, labs (x ULN form; empty), colour, raw lab values). One curses screen when possible, plain prompts otherwise."""
+def wizard(back=False):
+    """-> (conditions, labs (x ULN form; empty), colour, raw lab values). One curses screen when possible, plain prompts otherwise.
+    back: return from the result screen to the last input step, entries kept."""
     import form, labs as LB
     if _tui_ok():
-        r = form.run(sys.modules[__name__])
+        r = form.run(sys.modules[__name__], back=back)
         if r is None: sys.exit(0)
         conds, raw = r; return conds, {}, None, raw
     ids = list(_reg)
@@ -441,14 +442,16 @@ if __name__ == "__main__":
     if "learned" in flags: LEARNED_FRACTION = flags["learned"]
     if flags.get("fallback") and args: FALLBACK = {c: flags["fallback"] for c in unresolved(args)}
     if flags.get("priority") and args: PRIORITY = dict(zip(args, flags["priority"]))
+    back = False
     while True:
         raw = flags.get("raw")
         if args: conds, col = args, None
-        elif sys.stdin.isatty(): conds, labs, col, raw = wizard()
+        elif sys.stdin.isatty(): conds, labs, col, raw = wizard(back)
         else: conds, col = ["interstitial_lung_disease"], None
         print()
         rows, s, notes, ck = recommend(conds, labs, raw)
-        if not args and _tui_ok(): browse(rows)                       # pick a row, read why; then the table stays in the scrollback
+        if not args and _tui_ok() and browse(rows) == "back": back = True; continue      # PgUp on the result screen
+        back = False
         render(rows, s, notes, ck, detail=flags["detail"], color=col)
         if not args:
             import form; form.clear()                                     # the next run starts empty

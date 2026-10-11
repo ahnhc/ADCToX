@@ -150,7 +150,8 @@ def ranklist(title, items, levels, description=""):
 
 def browse(title, lines, selectable, details, footer=""):
     """read-only result viewer. lines: the table as text; selectable: indices of lines that are rows; details[k]: text lines
-    shown in the bottom panel for selectable row k. UP/DOWN or a mouse click selects a row; q / ENTER / ESC closes."""
+    shown in the bottom panel for selectable row k. UP/DOWN or a mouse click selects a row; PgUp -> "back" (to the input
+    steps), PgDn / q / ENTER / ESC -> "next"."""
     import textwrap
     def run(scr):
         S = _Screen(scr); cur = 0; top = 0
@@ -158,7 +159,7 @@ def browse(title, lines, selectable, details, footer=""):
         except curses.error: pass
         while True:
             h, w = scr.getmaxyx(); scr.clear()          # full repaint: the panel height changes with the row
-            S.put(0, 1, title, S.title); S.put(1, 1, "↑↓ 또는 클릭: 이유 보기   q / ENTER: 닫기", S.dim)
+            S.put(0, 1, title, S.title); S.put(1, 1, "↑↓ 또는 클릭: 이유 보기   PgUp 이전 단계   PgDn 다음", S.dim)
             out = []
             for ln in details[cur]: out += _wrap(ln, max(20, w - 3))
             panel = min(len(out) + 1, max(8, int(h * 0.45))); area = max(3, h - panel - 3); y0 = 2
@@ -181,5 +182,6 @@ def browse(title, lines, selectable, details, footer=""):
                     _, mx, my, _, _ = curses.getmouse()
                     if my in shown and shown[my] in selectable: cur = selectable.index(shown[my])
                 except curses.error: pass
-            elif key in (ord("q"), 27, 10, 13, curses.KEY_ENTER): return
-    curses.wrapper(run)
+            elif key == curses.KEY_PPAGE: return "back"
+            elif key in (ord("q"), 27, 10, 13, curses.KEY_ENTER, curses.KEY_NPAGE): return "next"
+    return curses.wrapper(run)

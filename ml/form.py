@@ -196,7 +196,7 @@ class Form:
     def choose(self, title, desc, options, default=0):
         cur = default
         while True:
-            y0 = self.frame(title, "↑↓ 이동   ENTER 선택   PgUp 이전 단계")
+            y0 = self.frame(title, "↑↓ 이동   ENTER 선택   PgUp 이전 단계   PgDn 다음 단계")
             h, w = self.scr.getmaxyx()
             for ln in _wrap(desc, w - 4, "  ") if desc else []: self.S.put(y0, 2, ln, self.S.dim); y0 += 1
             if desc: y0 += 1
@@ -210,7 +210,7 @@ class Form:
     def order(self, names, details, levels):
         lv = list(levels); n = len(names); it = 0
         while True:
-            y0 = self.frame("어느 질환 쪽 독성을 먼저 피할까요?  (1 = 먼저, 같은 숫자 = 같은 순위)", "↑↓ 이동   ←→ 순위 변경   ENTER 확정   PgUp 이전 단계")
+            y0 = self.frame("어느 질환 쪽 독성을 먼저 피할까요?  (1 = 먼저, 같은 숫자 = 같은 순위)", "↑↓ 이동   ←→ 순위 변경   PgUp 이전 단계   PgDn 다음 단계")
             order = sorted(range(n), key=lambda i: (lv[i], i)); pos = order.index(it); w0 = max(_w(x) for x in names)
             for r, i in enumerate(order):
                 on = i == it; self.S.put(y0 + r, 0, f" {'→' if on else ' '} {lv[i]:>2}   {names[i]}{' ' * (w0 - _w(names[i]))}   {details[i]}", self.S.cur if on else 0)
@@ -226,10 +226,14 @@ class Form:
         y0 = self.frame(text, ""); self.scr.refresh()
 
 
-def run(RC):
-    """-> (conditions, raw labs) or None."""
+def run(RC, back=False):
+    """-> (conditions, raw labs) or None. back: reopen at the last step (priority if it applies, else lab values), entries kept."""
     def app(scr):
         curses.curs_set(0); F = Form(scr, RC); st = load(); st["picked"] &= set(RC._reg); step = 0
+        if back:
+            conds = [i for i in RC._reg if i in st["picked"]] + split_free(st["free"]); F.loading("불러오는 중 ...")
+            pc = RC.patient_conditions(conds, st["raw"])
+            step = 3 if len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2 else 1
         while True:
             F.done = []
             if step >= 1: F.done.append(("기저질환", ", ".join([RC._reg[i]["label"] for i in sorted(st["picked"], key=list(RC._reg).index)] + split_free(st["free"]))))
