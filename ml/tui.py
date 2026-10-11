@@ -61,21 +61,30 @@ def radiolist(title, items, default=0, description=""):
             elif key in (27, ord("q")): return default
     return curses.wrapper(run)
 
-def checklist(title, items, checked=(), description="", min_one=True):
-    """items: [(label, detail)]. SPACE toggles, '/' filters, ENTER confirms. Returns the checked indices, or None on ESC."""
+def checklist(title, items, checked=(), description="", min_one=True, headers=()):
+    """items: [(label, detail)]. SPACE toggles, '/' filters, ENTER confirms. Returns the checked indices, or None on ESC.
+    headers: indices of group titles (shown, never selectable; hidden while a search filter is on)."""
+    headers = set(headers)
     def run(scr):
-        S = _Screen(scr); on = set(checked); cur = top = 0; query = ""; searching = False; note = ""
+        S = _Screen(scr); on = set(checked); cur = top = 0; query = ""; searching = False; note = ""; step = 1
         while True:
-            shown = [i for i, (l, d) in enumerate(items) if query.lower() in (l + " " + d).lower()]
+            shown = [i for i, (l, d) in enumerate(items) if not query or (i not in headers and query.lower() in (l + " " + d).lower())]
             cur = min(cur, max(0, len(shown) - 1))
+            if shown and all(i in headers for i in shown): shown = []
+            while shown and shown[cur] in headers:                      # the cursor never rests on a group title
+                nxt = cur + step
+                if not 0 <= nxt < len(shown): step = -step; nxt = cur + step
+                cur = nxt
             hint = f"/{query}_   (ESC clears, ENTER keeps the filter)" if searching else "↑↓ move   SPACE toggle   / search   ENTER confirm   ESC cancel"
             y0 = S.header(title, description, hint); h, _ = scr.getmaxyx(); vis = max(1, h - y0 - 2)
             if cur < top: top = cur
+            if cur and shown[cur - 1] in headers and cur - 1 < top: top = cur - 1      # keep a group's title in view
             if cur >= top + vis: top = cur - vis + 1
             for k, p in enumerate(range(top, min(len(shown), top + vis))):
                 i = shown[p]; label, detail = items[i]; is_c = p == cur
+                if i in headers: S.put(y0 + k, 2, label, S.title); continue
                 S.put(y0 + k, 0, f" {'→' if is_c else ' '} [{'x' if i in on else ' '}] {label}", S.cur if is_c else 0)
-                S.put(y0 + k, 8 + sum(_cw(c) for c in label), f"  {detail}", S.cur if is_c else S.dim)
+                S.put(y0 + k, 8 + sum(_cw(c) for c in label), f"  {detail}", S.cur if is_c else 0)
             if not shown: S.put(y0, 2, "(no match)", S.dim)
             S.put(h - 1, 2, f"{len(on)} selected" + (f"   {note}" if note else "") + (f"   filter: {query}" if query and not searching else ""), S.dim)
             scr.refresh(); key = scr.getch(); note = ""
@@ -87,12 +96,12 @@ def checklist(title, items, checked=(), description="", min_one=True):
                 elif key == curses.KEY_UP: cur = max(0, cur - 1)
                 elif key == curses.KEY_DOWN: cur = min(len(shown) - 1, cur + 1)
                 continue
-            if key in (curses.KEY_UP, ord("k")): cur = max(0, cur - 1)
-            elif key in (curses.KEY_DOWN, ord("j")): cur = min(len(shown) - 1, cur + 1)
-            elif key == curses.KEY_PPAGE: cur = max(0, cur - vis)
-            elif key == curses.KEY_NPAGE: cur = min(len(shown) - 1, cur + vis)
+            if key in (curses.KEY_UP, ord("k")): cur = max(0, cur - 1); step = -1
+            elif key in (curses.KEY_DOWN, ord("j")): cur = min(len(shown) - 1, cur + 1); step = 1
+            elif key == curses.KEY_PPAGE: cur = max(0, cur - vis); step = -1
+            elif key == curses.KEY_NPAGE: cur = min(len(shown) - 1, cur + vis); step = 1
             elif key == ord("/"): searching = True
-            elif key == ord(" ") and shown: i = shown[cur]; on.symmetric_difference_update({i})
+            elif key == ord(" ") and shown and shown[cur] not in headers: i = shown[cur]; on.symmetric_difference_update({i})
             elif _enter(key):
                 if on or not min_one: return sorted(on)
                 note = "choose at least one (SPACE)"

@@ -222,14 +222,28 @@ def render(rows, s, notes, checks_, detail=False, color=None):
 
 
 # ------------------------------------------------------------------------------------------------ input
+ORGAN_KO = {"haematologic": "혈액", "hepatic": "간", "cardiovascular": "심혈관", "pulmonary": "폐", "renal": "신장", "gastrointestinal": "위장관",
+            "neurologic": "신경", "ocular": "눈", "dermatologic": "피부", "metabolic_endocrine": "대사·내분비", "musculoskeletal": "근골격",
+            "infectious_immune": "감염·면역", "otologic": "귀"}
+KO = {"chronic_liver_disease": "만성 간질환", "cirrhosis": "간경변", "hepatitis_b_chronic": "만성 B형 간염", "hepatitis_c_chronic": "만성 C형 간염",
+      "hepatic_vod_history": "간정맥폐쇄병 병력", "nafld": "비알코올성 지방간", "ckd_stage_3": "만성 콩팥병 3기", "ckd_stage_4_5": "만성 콩팥병 4–5기",
+      "dialysis": "투석 중", "heart_failure": "심부전", "reduced_lvef": "좌심실 박출률 저하 (LVEF < 50%)", "prior_anthracycline": "안트라사이클린 치료 경험",
+      "coronary_artery_disease": "관상동맥질환", "qt_prolongation": "QT 연장", "interstitial_lung_disease": "간질성 폐질환", "pulmonary_fibrosis": "폐섬유증",
+      "copd": "만성 폐쇄성 폐질환", "prior_chest_radiation": "흉부 방사선 치료 경험", "peripheral_neuropathy": "말초신경병증",
+      "diabetic_neuropathy": "당뇨병성 말초신경병증", "multiple_sclerosis": "다발성 경화증", "keratopathy_history": "각막병증 병력", "dry_eye": "안구건조증",
+      "glaucoma": "녹내장", "prior_corneal_surgery": "각막 수술 경험", "thrombocytopenia": "혈소판감소증", "itp": "면역 혈소판감소증",
+      "neutropenia_chronic": "만성 호중구감소증", "anaemia_chronic": "만성 빈혈", "mds": "골수형성이상증후군", "prior_hsct": "조혈모세포이식 경험",
+      "inflammatory_bowel_disease": "염증성 장질환", "prior_bowel_resection": "장 절제술 경험", "chronic_pancreatitis": "만성 췌장염",
+      "severe_psoriasis": "중증 건선", "prior_sjs_ten": "스티븐스-존슨 증후군/TEN 병력", "type_2_diabetes": "제2형 당뇨병", "hypothyroidism": "갑상선기능저하증",
+      "hiv_controlled": "HIV 감염 (치료 중)", "active_autoimmune": "활동성 자가면역질환", "hearing_loss": "감각신경성 난청"}
 COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)  ·  / 검색  ·  ENTER 확정")
 LABS_ASK_Q = ("입력할 검사 수치가 있나요?", "")
 LABS_PICK_Q = ("검사 수치 선택", "")
 LABS_WHY = {"crcl": "신기능", "bili": "간기능", "ast": "간기능", "alt": "간기능", "child_pugh": "간경변 중증도", "lvef": "심기능", "ugt1a1_28_homozygous": "약물 대사 유전형"}
 FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
-MONDO_Q = ("직접 입력한 질환을 얼마나 무겁게 볼까요?", "목록에 있는 질환은 미리 정한 심각도가 있지만, 직접 입력한 질환은 없습니다.")
-FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용, Low 0.25", 0.25), ("사용, Medium 0.5", 0.5)]
-MONDO_OPTS = [("가볍게", 0.5), ("보통", 0.8), ("무겁게 (간경변·투석 수준)", 1.0)]
+MONDO_Q = ("직접 입력한 질환에 쓸 심각도 값", "목록 질환의 값을 기준으로 고르세요.\n  0.5 = 녹내장, 감각신경성 난청\n  0.8 = 염증성 장질환, 활동성 자가면역질환\n  1.0 = 간경변, 투석, 심부전")
+FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용 (추정값 × 0.25)", 0.25), ("사용 (추정값 × 0.5)", 0.5)]
+MONDO_OPTS = [("0.5", 0.5), ("0.8", 0.8), ("1.0", 1.0)]
 LAB_FIELDS = [("crcl", "CLcr, Cockcroft-Gault (mL/min)", float), ("bili", "total bilirubin (x ULN)", float), ("ast", "AST (x ULN)", float), ("alt", "ALT (x ULN)", float),
               ("child_pugh", "Child-Pugh class (A/B/C)", lambda x: x.strip().upper() if x.strip().upper() in ("A", "B", "C") else None),
               ("lvef", "baseline LVEF (%)", float), ("ugt1a1_28_homozygous", "UGT1A1*28 homozygous (y/n)", lambda x: {"y": True, "n": False}.get(x.strip().lower()))]
@@ -300,9 +314,14 @@ def wizard():
     global MONDO_SEVERITY
     if _tui_ok():
         import tui
-        ids = list(_reg); items = [("✎ Other (type your own)", "")] + [(f"{i:<28} {_reg[i]['label']}", _reg[i]["organ_axes"]) for i in ids]
-        pick = tui.checklist(COND_Q[0], items, checked=[], description=COND_Q[1], min_one=True)
-        conds = ["interstitial_lung_disease"] if pick is None else [ids[i - 1] for i in pick if i > 0]
+        items, slot, heads = [("✎ 직접 입력 (영어)", "")], {0: None}, set(); by = {}
+        for i in _reg: by.setdefault(_reg[i]["organ_axes"].split(";")[0], []).append(i)
+        for organ in AXES:                                              # grouped by the condition's main organ
+            if organ not in by: continue
+            heads.add(len(items)); items.append((f"{EN[organ]} · {ORGAN_KO[organ]}", ""))
+            for i in by[organ]: slot[len(items)] = i; items.append((f"{_reg[i]['label']:<42} {KO.get(i, '')}", ""))
+        pick = tui.checklist(COND_Q[0], items, checked=[], description=COND_Q[1], min_one=True, headers=heads)
+        conds = ["interstitial_lung_disease"] if pick is None else [slot[i] for i in pick if slot.get(i)]
         if pick and 0 in pick:
             try: extra = input("\nType other conditions in English (comma separated, Enter to skip) > ").strip()
             except EOFError: extra = ""
