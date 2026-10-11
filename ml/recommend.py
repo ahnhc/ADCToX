@@ -336,7 +336,7 @@ def browse(rows, checks_=()):
     """interactive view of the result table (terminal only): pick a row to read why it has its restriction."""
     import tui
     lines, at = _table(rows, lambda t, c: f"\033[{c}m{t}\033[0m" if c else t, color=True)
-    return tui.browse("", lines, at, [reasons(r, checks_) for r in rows])
+    return tui.browse("ADC 추천 결과", lines, at, [reasons(r, checks_) for r in rows])
 
 
 def patient_lines(notes):
@@ -360,6 +360,7 @@ def render(rows, s, notes, checks_, detail=False, color=None):
     cols = shutil.get_terminal_size((110, 24)).columns
     key = min(34, max(len(a) for a, _ in notes)) if notes else 10
     rowsP = patient_lines(notes); key = max([_width(a) for a, b in rowsP if b is not None] + [10])
+    print(paint("ADC 추천 결과", "1;33") + "\n")
     print("Patient")
     for a, b in rowsP: print(f"  {a}" if b is None else f"  {a}{' ' * (key - _width(a) + 3)}{b}".rstrip())
     prio = rows[0]["priority"] if rows else []
