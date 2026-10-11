@@ -298,7 +298,7 @@ def reason_rows(r):
         if po or (d in silent and not silent[d]):
             c, rr = max(po, key=lambda x: RS.TIER[x[0]]) if po else ("no_statement", None)
             cond = _when(rr["when"]) if rr else ""
-            out.append((d, RS.TABLE[c], (f"{cond}이면 {RS.TABLE[c]} · " if cond else "") + f"입력: {RS.NEEDS.get(d, d)}", c, False))
+            out.append((d, RS.TABLE[c], f"if {cond}" if cond else f"depends on {RS.NEEDS.get(d, d)}", c, False))
     return out
 
 
@@ -332,10 +332,18 @@ def render(rows, s, notes, checks_, detail=False, color=None):
     paint = lambda t, c: f"\033[{c}m{t}\033[0m" if color and c else t
     cols = shutil.get_terminal_size((110, 24)).columns
     key = min(34, max(len(a) for a, _ in notes)) if notes else 10
+    def names(c, how):
+        cid = c if c in _reg else _by_label.get(c.lower())
+        if cid: return _reg[cid]["label"], KO.get(cid, "")
+        if c in CONTEXT: return CONTEXT[c], ""
+        if c == "Lab": return how, None
+        if c.startswith("Lab: "): return c[5:], "(" + EN[how.rsplit(": ", 1)[-1]] + ")"
+        m = re.search(r"(?:MONDO|registry) '([^']+)'", how)
+        if "not understood" in how: return c, "(장기 미확인)" + ("  FinnGen estimate, not validated" if "FinnGen" in how else "")
+        return c, f"({m.group(1)})" if m else ""
+    rowsP = [names(a, b) for a, b in notes]; key = max([_width(a) for a, b in rowsP if b is not None] + [10])
     print("Patient")
-    for a, b in notes:
-        lines = textwrap.wrap(b, width=max(30, cols - key - 6)) or [""]
-        print(f"  {a:<{key}}  {lines[0]}"); [print(f"  {'':<{key}}  {x}") for x in lines[1:]]
+    for a, b in rowsP: print(f"  {a}" if b is None else f"  {a}{' ' * (key - _width(a) + 3)}{b}".rstrip())
     prio = rows[0]["priority"] if rows else []
     if len(prio) > 1:
         print("\nPriority (1 = avoid first)")
