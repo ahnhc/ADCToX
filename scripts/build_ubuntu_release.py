@@ -78,6 +78,11 @@ def model_assets(output, version, cache):
     print(f"Model {version}: {len(files)} files, {sum(f['size'] for f in files) / 1024**2:.1f} MiB total; encoders use pinned Hugging Face URLs.")
 
 
+def release_tag():
+    """v0.2 -> v0.2.0, v0.2.1 -> v0.2.1: the Git tag of the app release."""
+    return "v" + APP_VERSION + (".0" if APP_VERSION.count(".") == 1 else "")
+
+
 def app_assets(output):
     output.mkdir(parents=True, exist_ok=True)
     snapshot = ROOT / "ml/data/label_evidence.json"
@@ -98,7 +103,7 @@ def app_assets(output):
         tar.add(ROOT / "releases/requirements-cpu.txt", arcname="requirements-cpu.txt")
         tar.add(output / "bundle-info.json", arcname="bundle-info.json")
     manifest = {"schema_version": 1, "app_version": APP_VERSION, "runtime_api": RUNTIME_API,
-                "url": f"https://github.com/{REPOSITORY}/releases/download/v{APP_VERSION}.0/{archive.name}",
+                "url": f"https://github.com/{REPOSITORY}/releases/download/{release_tag()}/{archive.name}",
                 "size": archive.stat().st_size, "sha256": digest(archive), "torch_version": "2.11.0"}
     write(output / "app.json", manifest)
     write(ROOT / "releases/app/stable.json", manifest)

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 — Screen flicker
+
+- Redraws update only the changed cells instead of clearing the whole terminal: the model update and analysis screens redrew about 20 times per second with a full clear and flickered.
+
 ## 0.2 — Disease input and model 0.2
 
 - Typed text that reads as several diseases (abbreviations such as `asd`, near-tie names) is confirmed on one screen with every candidate, its organs, `모름`, and PgUp to edit the input.

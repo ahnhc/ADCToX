@@ -4,7 +4,7 @@
 
 | 대상 | 버전과 위치 | 배포 방식 |
 |---|---|---|
-| 앱 | `ml/adc_version.py`, 현재 0.2 | Git tag `v0.2.0`, GitHub Release의 `adctox-ubuntu.tar.gz` |
+| 앱 | `ml/adc_version.py`, 현재 0.2.1 | Git tag `v0.2.1`, GitHub Release의 `adctox-ubuntu.tar.gz` |
 | 모델 묶음 | `releases/models/stable.json`, 현재 0.2 | 별도 tag `models-0.2`, MLP 및 MONDO index assets |
 | 기본 encoder | manifest에 고정한 HF revision | 원본 Hugging Face에서 파일별 다운로드 |
 | 연구 자료 | `ml/docs`, `ml/results`, `report`, `docs` | Git 이력 및 README 링크 |

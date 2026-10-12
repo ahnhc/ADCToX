@@ -1,4 +1,4 @@
-ADCTOX 0.2: disease input and model comparison.
+ADCTOX 0.2.1: fixes screen flicker on the model update and analysis screens (full clears on every redraw). Includes everything in 0.2:
 
 - Typed text with several meanings (for example `asd`) is confirmed on one screen with each candidate and its organs.
 - Symptoms such as `amnesia` link to the Human Phenotype Ontology; diseases outside the 13 organs show as `MONDO (no organ axis)`.
