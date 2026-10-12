@@ -1,0 +1,105 @@
+{
+ "frozen": {
+  "theta": 0.5700000000000001,
+  "test": {
+   "macro_f1": 0.6801515363093921,
+   "micro_f1": 0.6906474820143885,
+   "exact_set": 0.4811715481171548,
+   "concept_acc": 0.7033898305084746,
+   "coverage": 0.9205020920502092,
+   "false_accept_invalid": 0.6,
+   "accept_ambiguous": 1.0,
+   "n_valid": 239,
+   "n_invalid": 15,
+   "n_ambiguous": 17,
+   "per_organ_f1": {
+    "haematologic": 0.6206896551724138,
+    "hepatic": 0.7777777777777778,
+    "cardiovascular": 0.8380952380952381,
+    "pulmonary": 0.5454545454545454,
+    "renal": 0.7586206896551724,
+    "gastrointestinal": 0.6923076923076923,
+    "neurologic": 0.4583333333333333,
+    "ocular": 0.7692307692307693,
+    "dermatologic": 0.6511627906976745,
+    "metabolic_endocrine": 0.7012987012987013,
+    "musculoskeletal": 0.46153846153846156,
+    "infectious_immune": 0.6785714285714286,
+    "otologic": 0.8888888888888888
+   }
+  },
+  "gold_test_recall": {
+   "1": 0.7076271186440678,
+   "5": 0.8177966101694916,
+   "10": 0.864406779661017
+  },
+  "ncbi_test_recall": {
+   "1": 0.529482551143201,
+   "5": 0.7051744885679904,
+   "10": 0.7352587244283996
+  }
+ },
+ "finetuned_v2": {
+  "theta": 0.6000000000000001,
+  "test": {
+   "macro_f1": 0.7000878012916077,
+   "micro_f1": 0.7169811320754716,
+   "exact_set": 0.497907949790795,
+   "concept_acc": 0.7372881355932204,
+   "coverage": 0.9079497907949791,
+   "false_accept_invalid": 0.5333333333333333,
+   "accept_ambiguous": 1.0,
+   "n_valid": 239,
+   "n_invalid": 15,
+   "n_ambiguous": 17,
+   "per_organ_f1": {
+    "haematologic": 0.6451612903225806,
+    "hepatic": 0.7777777777777778,
+    "cardiovascular": 0.8571428571428571,
+    "pulmonary": 0.5833333333333334,
+    "renal": 0.8421052631578947,
+    "gastrointestinal": 0.7058823529411765,
+    "neurologic": 0.5,
+    "ocular": 0.8076923076923077,
+    "dermatologic": 0.7142857142857143,
+    "metabolic_endocrine": 0.72,
+    "musculoskeletal": 0.4897959183673469,
+    "infectious_immune": 0.7079646017699115,
+    "otologic": 0.75
+   }
+  },
+  "gold_test_recall": {
+   "1": 0.7415254237288136,
+   "5": 0.826271186440678,
+   "10": 0.885593220338983
+  },
+  "ncbi_test_recall": {
+   "1": 0.542719614921781,
+   "5": 0.7220216606498195,
+   "10": 0.7569193742478941
+  }
+ },
+ "paired_gold_test_macro_f1": {
+  "delta": 0.01993626498221568,
+  "lo": -0.007980350736662978,
+  "hi": 0.04962222180022368
+ },
+ "paired_gold_test_concept_acc": {
+  "delta": 0.03389830508474578,
+  "lo": -0.00465393133997784,
+  "hi": 0.07424037778003448
+ },
+ "paired_ncbi_test_recall1": {
+  "delta": 0.013237063778580024,
+  "lo": 0.0,
+  "hi": 0.02834008097165992,
+  "n": 831,
+  "abstracts": 100
+ },
+ "config": {
+  "pairs": 93920,
+  "reviewed_queries": 1783,
+  "ncbi_mentions": 3376,
+  "steps": 354
+ }
+}

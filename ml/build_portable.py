@@ -129,12 +129,12 @@ def extract(path, names):
 
 def runtime_modules():
     """vulnerability_model and mondo_index for the full build: server functions, local file locations."""
-    vm = extract(R / "ml/lab.py", ["TwoTower"]) + "\n" + extract(R / "ml/vulnerability_model.py", ["_st", "predict"])
+    vm = extract(R / "ml/lab.py", ["TwoTower"]) + "\n" + extract(R / "ml/vulnerability_model.py", ["close", "_encoder", "_st", "_ensemble", "axis_net", "predict", "predict_models", "agreement"])
     vm = sub(vm, '"FremyCompany/BioLORD-2023"', 'os.path.join(_BASE, "BioLORD-2023")', "vulnerability_model")
     vm = vm.replace("lab.TwoTower", "TwoTower"); assert not re.search(r"\blab\.(?!py)", vm)
-    vm = RT_HEAD + 'DEV = "cuda:0" if torch.cuda.is_available() else "cpu"; PT = os.path.join(_BASE, "vuln_biolord.pt")\n\n' + vm
-    mi = extract(R / "ml/mondo_index.py", ["_embed", "link"])
-    mi = RT_HEAD + 'THETA = 0.75; NAME = os.path.join(_BASE, "SapBERT"); C = _BASE + os.sep\n_IDX = None\n\n' + mi
+    vm = RT_HEAD + 'DEV = "cuda:0" if torch.cuda.is_available() else "cpu"; PT = os.path.join(_BASE, "vuln_biolord.pt")\n_ST, _EMB, _CK, _EMB_MAX, _CK_AXIS, _CK_HIDDEN, _CK_ALT, _CK_OPT = {}, {}, {}, 4096, [], set(), [], {"agree_min": 1}\n\n' + vm
+    mi = extract(R / "ml/mondo_index.py", ["_encoder", "_embed", "close", "_char_feats", "gate_inputs", "link", "concept", "readings", "phenotype", "_ko_norm", "korean"])
+    mi = RT_HEAD + 'THETA = 0.75; NAME = os.path.join(_BASE, "SapBERT"); C = _BASE + os.sep\n_ENC = {}; _IDX = None; _IDX_E = None; TIE = 0.02; HPO_THETA = 0.85; import re; ABBREV = re.compile(r"^[A-Za-z][A-Za-z0-9]{1,5}$"); HANGUL = re.compile("[가-힣]")\n\n' + mi
     src = (R / "ml/mondo_index.py").read_text()
     assert "THETA = 0.75;" in src and "_IDX = None" in src and 'C + "mondo_index.npz"' in mi       # constants above match the server
     return vm, mi
@@ -235,7 +235,7 @@ if __name__ == "__main__":
     if FULL:
         text = text.replace("{HEAD}", '"""ADC label-based recommender, full version: the server program with its language models.', 1)
         text = text.replace("{FREE}", "Free text goes through BioLORD / SapBERT to MONDO (GPU if available, else CPU); needs the models folder.", 1)
-        text = text.replace("{DATA}", "\nThe models folder holds BioLORD-2023, SapBERT, a MONDO name index and a head trained on FinnGen summary\nstatistics; the program prints no FinnGen numbers.", 1)
+        text = text.replace("{DATA}", "\nThe models folder holds BioLORD-2023, SapBERT, a MONDO name index and a head trained on FinnGen summary\nstatistics and published Danish disease trajectories (Siggaard et al. 2020); the program prints no FinnGen numbers.", 1)
         text = text.replace("{TORCH}", "\n    import torch, transformers, sentence_transformers", 1)
     else:
         text = text.replace("{HEAD}", '"""ADC label-based recommender: one file, runs anywhere with Python >= 3.10 and numpy.', 1)

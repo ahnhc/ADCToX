@@ -1,0 +1,45 @@
+# Korean lay disease words -> English disease name. Overrides the HIRA KCD table, where the formal name differs from everyday
+# use (KCD '당뇨' is R81 Glycosuria, but people typing 당뇨 mean diabetes). Keep to unambiguous everyday words.
+당뇨	diabetes mellitus
+고지혈증	hyperlipidemia
+고콜레스테롤	hypercholesterolemia
+간경화	cirrhosis of liver
+중풍	stroke
+뇌경색	cerebral infarction
+뇌출혈	intracerebral haemorrhage
+건망증	memory impairment
+기억력저하	memory impairment
+치매	dementia
+간질	epilepsy
+신부전	kidney failure
+콩팥병	chronic kidney disease
+만성콩팥병	chronic kidney disease
+만성신부전	chronic kidney disease
+심근경색	myocardial infarction
+심장마비	myocardial infarction
+부정맥	cardiac arrhythmia
+갑상샘기능저하증	hypothyroidism
+갑상샘기능항진증	hyperthyroidism
+갑상선항진증	hyperthyroidism
+갑상선저하증	hypothyroidism
+지방간	fatty liver disease
+아토피	atopic dermatitis
+비염	rhinitis
+축농증	sinusitis
+우울증	depression
+조울증	bipolar disorder
+공황장애	panic disorder
+결핵	tuberculosis
+B형간염	chronic hepatitis B
+C형간염	chronic hepatitis C
+골관절염	osteoarthritis
+퇴행성관절염	osteoarthritis
+디스크	intervertebral disc disorder
+허리디스크	lumbar disc herniation
+루푸스	systemic lupus erythematosus
+빈혈	anaemia
+백혈병	leukaemia
+에이즈	HIV infection
+난청	hearing loss
+간경변증	cirrhosis of liver
+간경변	cirrhosis of liver

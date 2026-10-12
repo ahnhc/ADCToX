@@ -1,0 +1,39 @@
+{
+ "v2_test": {
+  "macro_f1": 0.6603946750123662,
+  "micro_f1": 0.6678383128295254,
+  "exact_set": 0.4686192468619247,
+  "concept_acc": null,
+  "coverage": 0.7280334728033473,
+  "false_accept_invalid": 0.0,
+  "accept_ambiguous": 0.5882352941176471,
+  "n_valid": 239,
+  "n_invalid": 15,
+  "n_ambiguous": 17,
+  "per_organ_f1": {
+   "haematologic": 0.8,
+   "hepatic": 0.7777777777777778,
+   "cardiovascular": 0.7045454545454546,
+   "pulmonary": 0.6086956521739131,
+   "renal": 0.7407407407407407,
+   "gastrointestinal": 0.5,
+   "neurologic": 0.4827586206896552,
+   "ocular": 0.75,
+   "dermatologic": 0.6285714285714286,
+   "metabolic_endocrine": 0.6551724137931034,
+   "musculoskeletal": 0.5,
+   "infectious_immune": 0.6868686868686869,
+   "otologic": 0.75
+  }
+ },
+ "v2_minus_v1": {
+  "delta": 0.00980178596854131,
+  "lo": -0.029978100039141326,
+  "hi": 0.028447155793268203
+ },
+ "flagged": {
+  "ambiguous": 23,
+  "valid": 44,
+  "invalid": 1
+ }
+}

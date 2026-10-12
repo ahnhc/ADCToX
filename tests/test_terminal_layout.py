@@ -306,3 +306,62 @@ def test_automatic_fallback_uses_the_low_weight_and_opt_out_stays_available(monk
     assert R.FALLBACK == {"lung hole": 0.25}
     R._ask_fallback(["lung hole"], radio=lambda *args, **kwargs: 2)
     assert R.FALLBACK == {}
+
+
+def test_meaning_choice_is_one_screen_starts_on_the_applied_reading_and_returns_every_pick(monkeypatch):
+    import types
+    import form
+    console = term._Shim()
+    monkeypatch.setattr(tui, "curses", console)
+    monkeypatch.setattr(form, "curses", console)
+    monkeypatch.setattr(term, "USE_SHIM", True)
+    monkeypatch.setattr(term._Screen, "_size", lambda self: (40, 100))
+    screen = term._Screen(console)
+    frames = []
+    keys = iter([console.KEY_DOWN, console.KEY_DOWN, "\n", "\n"])
+    screen.refresh = lambda: frames.append("\n".join("".join(ch for ch, _ in line) for line in screen.buf))
+    screen.get_wch = lambda: next(keys)
+    RC = types.SimpleNamespace(ORGAN_SHORT={"cardiovascular": "Cardio", "neurologic": "Neuro"})
+    groups = [("asd", [dict(mondo="M:1", name="atrial septal defect", organs=["cardiovascular"]),
+                       dict(mondo="M:2", name="Alzheimer disease", organs=["neurologic"]),
+                       dict(mondo="M:3", name="autism spectrum disorder", organs=["neurologic"])]),
+              ("amnesia", [dict(mondo="M:4", name="dissociative amnesia", organs=[]),
+                           dict(mondo="HP:0002354", name="Memory impairment", organs=["neurologic"])])]
+    pick = form.Form(screen, RC).meanings(groups, {"amnesia": "HP:0002354"})
+    # ENTER on autism moves to amnesia's current pick (the applied phenotype); ENTER there finishes
+    assert pick == {"asd": "M:3", "amnesia": "HP:0002354"}
+    first = frames[0]
+    assert "Atrial septal defect" in first and "장기 없음" in first and "증상" in first and "모름" in first
+    assert "●" in next(l for l in first.splitlines() if "Memory impairment" in l)
+    assert all(len(line) <= 100 for frame in frames for line in frame.splitlines())
+
+
+def test_every_model_is_shown_and_only_agreed_organs_are_applied_automatically(monkeypatch):
+    import types
+    import recommend as R
+    zero = {a: 0.0 for a in R.AXES}
+    by = {"main": {**zero, "pulmonary": 0.8, "hepatic": 0.4, "renal": 0.3},
+          "combined": {**zero, "pulmonary": 0.9, "renal": 0.2, "ocular": 0.1},
+          "previous": {**zero, "pulmonary": 0.7, "renal": 0.5, "otologic": 0.2}}
+    def agreement(models):
+        n = {}
+        for s in models.values():
+            for a, v in sorted(s.items(), key=lambda x: -x[1])[:3]:
+                if v > 0: n[a] = n.get(a, 0) + 1
+        return n
+    VM = types.SimpleNamespace(predict_models=lambda texts: [by for _ in texts], agreement=agreement, _CK_OPT={"agree_min": 2})
+    monkeypatch.setitem(sys.modules, "vulnerability_model", VM)
+    for name in ("_FREE_PREDICTIONS", "_FREE_MODELS", "_ANALYSES"): monkeypatch.setattr(R, name, {})
+    monkeypatch.setattr(R, "LEARNED_FRACTION", 0.0)
+    monkeypatch.setattr(R, "FALLBACK", {})
+    linked = lambda free, progress=None: ([("copd", 0.1)], [{"name": "disease", "sim": 0.1, "axes": []}],
+                                         R._predict_free(free) if R.FALLBACK else None)
+    monkeypatch.setattr(R, "_free_info", linked)
+    report = R.analyze_conditions(["lung hole"])[0]
+    assert report["models"] == ["Den", "Both", "Fin"]
+    assert [a for a, _ in report["estimates"]] == ["pulmonary", "renal", "hepatic"]      # most agreed first
+    assert report["agree"] == {"pulmonary": 3, "renal": 3, "hepatic": 1} and report["by_model"]["hepatic"] == [0.4, 0.0, 0.0]
+    monkeypatch.setattr(R, "FALLBACK", {"lung hole": 0.25})
+    s = R.resolve(["lung hole"])[0]
+    applied = {a for a, v in zip(R.AXES, s) if v > 0}
+    assert applied == {"pulmonary", "renal"}                                            # hepatic: one model only

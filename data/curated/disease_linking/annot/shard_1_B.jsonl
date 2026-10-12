@@ -1,0 +1,150 @@
+{"qid": "q0002", "validity": "valid", "concepts": ["MONDO:0001356"], "best": "MONDO:0001356", "pool_miss": false, "organs": ["haematologic"], "confidence": "high", "note": "sideropenic = iron deficiency"}
+{"qid": "q0004", "validity": "valid", "concepts": ["MONDO:0001356"], "best": "MONDO:0001356", "pool_miss": false, "organs": ["haematologic"], "confidence": "high", "note": "typos"}
+{"qid": "q0008", "validity": "valid", "concepts": ["MONDO:0005399"], "best": "MONDO:0005399", "pool_miss": false, "organs": ["cardiovascular"], "confidence": "medium", "note": "history of DVT; VTE broader parent only option"}
+{"qid": "q0010", "validity": "valid", "concepts": ["MONDO:0005399", "MONDO:0000831"], "best": "MONDO:0005399", "pool_miss": false, "organs": ["cardiovascular"], "confidence": "medium", "note": "lay DVT"}
+{"qid": "q0013", "validity": "valid", "concepts": ["MONDO:0010602"], "best": "MONDO:0010602", "pool_miss": false, "organs": ["haematologic"], "confidence": "high", "note": "factor VIII deficiency = hemophilia A"}
+{"qid": "q0015", "validity": "valid", "concepts": ["MONDO:0010602", "MONDO:0002243"], "best": "MONDO:0010602", "pool_miss": false, "organs": ["haematologic"], "confidence": "medium", "note": "lay term for hemophilia"}
+{"qid": "q0016", "validity": "valid", "concepts": ["MONDO:0011382"], "best": "MONDO:0011382", "pool_miss": false, "organs": ["haematologic"], "confidence": "high", "note": ""}
+{"qid": "q0018", "validity": "ambiguous", "concepts": ["MONDO:0011382", "MONDO:0054866"], "best": null, "pool_miss": false, "organs": [], "confidence": "medium", "note": "sickle cell disease vs sudden cardiac death etc"}
+{"qid": "q0020", "validity": "valid", "concepts": ["MONDO:0011382"], "best": "MONDO:0011382", "pool_miss": false, "organs": ["haematologic"], "confidence": "medium", "note": "lay sickle cell"}
+{"qid": "q0025", "validity": "valid", "concepts": ["MONDO:0002048"], "best": "MONDO:0002048", "pool_miss": false, "organs": ["haematologic", "infectious_immune"], "confidence": "high", "note": "ITP"}
+{"qid": "q0031", "validity": "valid", "concepts": ["MONDO:0005155"], "best": "MONDO:0005155", "pool_miss": false, "organs": ["hepatic"], "confidence": "high", "note": "CP class is severity"}
+{"qid": "q0033", "validity": "valid", "concepts": ["MONDO:0005155"], "best": "MONDO:0005155", "pool_miss": false, "organs": ["hepatic"], "confidence": "medium", "note": "abbrev"}
+{"qid": "q0035", "validity": "valid", "concepts": ["MONDO:0005155"], "best": "MONDO:0005155", "pool_miss": false, "organs": ["hepatic"], "confidence": "medium", "note": "lay cirrhosis"}
+{"qid": "q0037", "validity": "valid", "concepts": ["MONDO:0001505"], "best": "MONDO:0001505", "pool_miss": false, "organs": ["hepatic"], "confidence": "high", "note": ""}
+{"qid": "q0039", "validity": "valid", "concepts": ["MONDO:0001505"], "best": "MONDO:0001505", "pool_miss": false, "organs": ["hepatic"], "confidence": "high", "note": ""}
+{"qid": "q0040", "validity": "valid", "concepts": ["MONDO:0001505"], "best": "MONDO:0001505", "pool_miss": false, "organs": ["hepatic"], "confidence": "medium", "note": "lay"}
+{"qid": "q0043", "validity": "ambiguous", "concepts": ["MONDO:0006507", "MONDO:0019180"], "best": null, "pool_miss": false, "organs": [], "confidence": "medium", "note": "hemochromatosis vs HHT"}
+{"qid": "q0045", "validity": "valid", "concepts": ["MONDO:0006507", "MONDO:0021001"], "best": "MONDO:0006507", "pool_miss": false, "organs": ["hepatic", "metabolic_endocrine"], "confidence": "medium", "note": "lay hereditary hemochromatosis"}
+{"qid": "q0047", "validity": "valid", "concepts": ["MONDO:0005388"], "best": "MONDO:0005388", "pool_miss": false, "organs": ["hepatic", "infectious_immune"], "confidence": "high", "note": "old name of PBC"}
+{"qid": "q0049", "validity": "valid", "concepts": ["MONDO:0005388"], "best": "MONDO:0005388", "pool_miss": false, "organs": ["hepatic", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0052", "validity": "valid", "concepts": ["MONDO:0005366"], "best": "MONDO:0005366", "pool_miss": false, "organs": ["hepatic", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0060", "validity": "valid", "concepts": ["MONDO:0006698", "MONDO:0005346", "MONDO:0012672"], "best": "MONDO:0006698", "pool_miss": false, "organs": ["gastrointestinal"], "confidence": "medium", "note": ""}
+{"qid": "q0062", "validity": "valid", "concepts": ["MONDO:0005009", "MONDO:0005252"], "best": "MONDO:0005009", "pool_miss": false, "organs": ["cardiovascular"], "confidence": "high", "note": ""}
+{"qid": "q0066", "validity": "valid", "concepts": ["MONDO:0004981"], "best": "MONDO:0004981", "pool_miss": false, "organs": ["cardiovascular"], "confidence": "high", "note": ""}
+{"qid": "q0074", "validity": "valid", "concepts": ["MONDO:0005044", "MONDO:0001134"], "best": "MONDO:0005044", "pool_miss": false, "organs": ["cardiovascular"], "confidence": "medium", "note": "generic hypertension"}
+{"qid": "q0076", "validity": "valid", "concepts": ["MONDO:0021187"], "best": "MONDO:0021187", "pool_miss": false, "organs": ["metabolic_endocrine"], "confidence": "high", "note": ""}
+{"qid": "q0079", "validity": "valid", "concepts": ["MONDO:0021187"], "best": "MONDO:0021187", "pool_miss": false, "organs": ["metabolic_endocrine"], "confidence": "high", "note": ""}
+{"qid": "q0081", "validity": "valid", "concepts": ["MONDO:0005068", "MONDO:0004781"], "best": "MONDO:0005068", "pool_miss": false, "organs": ["cardiovascular"], "confidence": "high", "note": ""}
+{"qid": "q0086", "validity": "valid", "concepts": ["MONDO:0005021"], "best": "MONDO:0005021", "pool_miss": false, "organs": ["cardiovascular"], "confidence": "high", "note": ""}
+{"qid": "q0088", "validity": "valid", "concepts": ["MONDO:0005021"], "best": "MONDO:0005021", "pool_miss": false, "organs": ["cardiovascular"], "confidence": "medium", "note": "DCM dominant meaning"}
+{"qid": "q0100", "validity": "valid", "concepts": ["MONDO:0001370"], "best": "MONDO:0001370", "pool_miss": false, "organs": ["cardiovascular"], "confidence": "high", "note": "pericardial effusion"}
+{"qid": "q0108", "validity": "ambiguous", "concepts": ["MONDO:0004979", "MONDO:0002959"], "best": null, "pool_miss": false, "organs": [], "confidence": "low", "note": "RAD ambiguous"}
+{"qid": "q0109", "validity": "valid", "concepts": ["MONDO:0004979"], "best": "MONDO:0004979", "pool_miss": false, "organs": ["pulmonary"], "confidence": "high", "note": ""}
+{"qid": "q0111", "validity": "valid", "concepts": ["MONDO:0005279"], "best": "MONDO:0005279", "pool_miss": false, "organs": ["pulmonary", "cardiovascular"], "confidence": "high", "note": ""}
+{"qid": "q0112", "validity": "valid", "concepts": ["MONDO:0005279"], "best": "MONDO:0005279", "pool_miss": false, "organs": ["pulmonary", "cardiovascular"], "confidence": "high", "note": ""}
+{"qid": "q0114", "validity": "valid", "concepts": ["MONDO:0005279"], "best": "MONDO:0005279", "pool_miss": false, "organs": ["pulmonary", "cardiovascular"], "confidence": "high", "note": ""}
+{"qid": "q0117", "validity": "valid", "concepts": [], "best": null, "pool_miss": true, "organs": ["pulmonary"], "confidence": "medium", "note": "pleural effusion not in pool; pleural disorder too broad"}
+{"qid": "q0134", "validity": "valid", "concepts": ["MONDO:0005002"], "best": "MONDO:0005002", "pool_miss": false, "organs": ["pulmonary"], "confidence": "high", "note": ""}
+{"qid": "q0143", "validity": "valid", "concepts": ["MONDO:0008171"], "best": "MONDO:0008171", "pool_miss": false, "organs": ["renal"], "confidence": "medium", "note": "kidney stones"}
+{"qid": "q0149", "validity": "valid", "concepts": ["MONDO:0020642"], "best": "MONDO:0020642", "pool_miss": false, "organs": ["renal"], "confidence": "high", "note": ""}
+{"qid": "q0157", "validity": "valid", "concepts": ["MONDO:0002492"], "best": "MONDO:0002492", "pool_miss": false, "organs": ["renal"], "confidence": "high", "note": ""}
+{"qid": "q0163", "validity": "ambiguous", "concepts": ["MONDO:0005510", "MONDO:0001150", "MONDO:0004920"], "best": null, "pool_miss": false, "organs": [], "confidence": "low", "note": "hydro- prefix"}
+{"qid": "q0164", "validity": "valid", "concepts": ["MONDO:0005510"], "best": "MONDO:0005510", "pool_miss": false, "organs": ["renal"], "confidence": "high", "note": ""}
+{"qid": "q0169", "validity": "valid", "concepts": ["MONDO:0005011"], "best": "MONDO:0005011", "pool_miss": false, "organs": ["gastrointestinal", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0171", "validity": "valid", "concepts": ["MONDO:0005101"], "best": "MONDO:0005101", "pool_miss": false, "organs": ["gastrointestinal", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0173", "validity": "valid", "concepts": ["MONDO:0005101"], "best": "MONDO:0005101", "pool_miss": false, "organs": ["gastrointestinal", "infectious_immune"], "confidence": "medium", "note": "UC abbrev"}
+{"qid": "q0177", "validity": "valid", "concepts": ["MONDO:0006896", "MONDO:0007186"], "best": "MONDO:0006896", "pool_miss": false, "organs": ["gastrointestinal"], "confidence": "medium", "note": ""}
+{"qid": "q0178", "validity": "valid", "concepts": ["MONDO:0007186"], "best": "MONDO:0007186", "pool_miss": false, "organs": ["gastrointestinal"], "confidence": "high", "note": ""}
+{"qid": "q0184", "validity": "valid", "concepts": ["MONDO:0005130"], "best": "MONDO:0005130", "pool_miss": false, "organs": ["gastrointestinal", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0190", "validity": "valid", "concepts": ["MONDO:0001126"], "best": "MONDO:0001126", "pool_miss": false, "organs": ["gastrointestinal"], "confidence": "high", "note": ""}
+{"qid": "q0193", "validity": "valid", "concepts": ["MONDO:0000705"], "best": "MONDO:0000705", "pool_miss": false, "organs": ["gastrointestinal", "infectious_immune"], "confidence": "medium", "note": "C diff colitis"}
+{"qid": "q0197", "validity": "valid", "concepts": ["MONDO:0001221"], "best": "MONDO:0001221", "pool_miss": false, "organs": ["gastrointestinal"], "confidence": "high", "note": ""}
+{"qid": "q0208", "validity": "valid", "concepts": ["MONDO:0005180"], "best": "MONDO:0005180", "pool_miss": false, "organs": ["neurologic"], "confidence": "medium", "note": "PD = Parkinson"}
+{"qid": "q0210", "validity": "ambiguous", "concepts": ["MONDO:0005180", "MONDO:0003233"], "best": null, "pool_miss": false, "organs": ["neurologic"], "confidence": "medium", "note": "symptoms; PD vs essential tremor"}
+{"qid": "q0215", "validity": "valid", "concepts": ["MONDO:0001627", "MONDO:0004975"], "best": "MONDO:0001627", "pool_miss": false, "organs": ["neurologic"], "confidence": "medium", "note": "lay dementia"}
+{"qid": "q0216", "validity": "valid", "concepts": ["MONDO:1060198"], "best": "MONDO:1060198", "pool_miss": false, "organs": ["neurologic", "cardiovascular"], "confidence": "high", "note": ""}
+{"qid": "q0218", "validity": "valid", "concepts": ["MONDO:0005098", "MONDO:1060198", "MONDO:0002679"], "best": "MONDO:0005098", "pool_miss": false, "organs": ["neurologic", "cardiovascular"], "confidence": "medium", "note": "CVA = stroke"}
+{"qid": "q0219", "validity": "valid", "concepts": ["MONDO:1060198"], "best": "MONDO:1060198", "pool_miss": false, "organs": ["neurologic", "cardiovascular"], "confidence": "high", "note": ""}
+{"qid": "q0223", "validity": "valid", "concepts": ["MONDO:0005277"], "best": "MONDO:0005277", "pool_miss": false, "organs": ["neurologic"], "confidence": "low", "note": "truncated migraine"}
+{"qid": "q0228", "validity": "valid", "concepts": ["MONDO:1060006", "MONDO:0009688"], "best": "MONDO:0009688", "pool_miss": false, "organs": ["neurologic", "infectious_immune"], "confidence": "medium", "note": "MG"}
+{"qid": "q0234", "validity": "valid", "concepts": ["MONDO:0016218"], "best": "MONDO:0016218", "pool_miss": false, "organs": ["neurologic", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0235", "validity": "ambiguous", "concepts": ["MONDO:0016218", "MONDO:0019383", "MONDO:0020347"], "best": null, "pool_miss": false, "organs": ["neurologic"], "confidence": "low", "note": "GBS vs ADEM etc"}
+{"qid": "q0239", "validity": "valid", "concepts": ["MONDO:0005391"], "best": "MONDO:0005391", "pool_miss": false, "organs": ["neurologic"], "confidence": "high", "note": ""}
+{"qid": "q0241", "validity": "valid", "concepts": ["MONDO:0005129"], "best": "MONDO:0005129", "pool_miss": false, "organs": ["ocular"], "confidence": "high", "note": ""}
+{"qid": "q0242", "validity": "valid", "concepts": ["MONDO:0005129"], "best": "MONDO:0005129", "pool_miss": false, "organs": ["ocular"], "confidence": "medium", "note": ""}
+{"qid": "q0244", "validity": "valid", "concepts": ["MONDO:0005129"], "best": "MONDO:0005129", "pool_miss": false, "organs": ["ocular"], "confidence": "high", "note": ""}
+{"qid": "q0245", "validity": "valid", "concepts": ["MONDO:0005129"], "best": "MONDO:0005129", "pool_miss": false, "organs": ["ocular"], "confidence": "medium", "note": ""}
+{"qid": "q0250", "validity": "valid", "concepts": ["MONDO:0005150"], "best": "MONDO:0005150", "pool_miss": false, "organs": ["ocular"], "confidence": "medium", "note": "AMD"}
+{"qid": "q0256", "validity": "valid", "concepts": ["MONDO:0008375"], "best": "MONDO:0008375", "pool_miss": false, "organs": ["ocular"], "confidence": "high", "note": ""}
+{"qid": "q0264", "validity": "valid", "concepts": ["MONDO:0004785"], "best": "MONDO:0004785", "pool_miss": false, "organs": ["ocular"], "confidence": "high", "note": ""}
+{"qid": "q0281", "validity": "valid", "concepts": ["MONDO:0006604"], "best": "MONDO:0006604", "pool_miss": false, "organs": ["dermatologic"], "confidence": "high", "note": ""}
+{"qid": "q0286", "validity": "valid", "concepts": ["MONDO:0008661"], "best": "MONDO:0008661", "pool_miss": false, "organs": ["dermatologic", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0287", "validity": "valid", "concepts": ["MONDO:0019290", "MONDO:0008661"], "best": "MONDO:0019290", "pool_miss": false, "organs": ["dermatologic"], "confidence": "medium", "note": "leukoderma = depigmentation"}
+{"qid": "q0288", "validity": "valid", "concepts": ["MONDO:0008661"], "best": "MONDO:0008661", "pool_miss": false, "organs": ["dermatologic", "infectious_immune"], "confidence": "medium", "note": "truncated vitiligo"}
+{"qid": "q0292", "validity": "valid", "concepts": ["MONDO:0006559"], "best": "MONDO:0006559", "pool_miss": false, "organs": ["dermatologic"], "confidence": "high", "note": "synonym of HS"}
+{"qid": "q0293", "validity": "ambiguous", "concepts": ["MONDO:0006559", "MONDO:0008447"], "best": null, "pool_miss": false, "organs": [], "confidence": "medium", "note": "hidradenitis vs spherocytosis vs herpes simplex"}
+{"qid": "q0294", "validity": "valid", "concepts": ["MONDO:0006559"], "best": "MONDO:0006559", "pool_miss": false, "organs": ["dermatologic"], "confidence": "high", "note": ""}
+{"qid": "q0296", "validity": "valid", "concepts": ["MONDO:0005340"], "best": "MONDO:0005340", "pool_miss": false, "organs": ["dermatologic", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0297", "validity": "valid", "concepts": ["MONDO:0005340"], "best": "MONDO:0005340", "pool_miss": false, "organs": ["dermatologic", "infectious_immune"], "confidence": "medium", "note": "lay alopecia areata"}
+{"qid": "q0302", "validity": "valid", "concepts": ["MONDO:0005147"], "best": "MONDO:0005147", "pool_miss": false, "organs": ["metabolic_endocrine", "infectious_immune"], "confidence": "high", "note": "IDDM=T1D"}
+{"qid": "q0303", "validity": "valid", "concepts": ["MONDO:0005147"], "best": "MONDO:0005147", "pool_miss": false, "organs": ["metabolic_endocrine", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0311", "validity": "valid", "concepts": ["MONDO:0007699"], "best": "MONDO:0007699", "pool_miss": false, "organs": ["metabolic_endocrine", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0315", "validity": "valid", "concepts": ["MONDO:0005623", "MONDO:0007699"], "best": "MONDO:0005623", "pool_miss": false, "organs": ["metabolic_endocrine", "infectious_immune"], "confidence": "medium", "note": "autoimmune thyroid disease"}
+{"qid": "q0319", "validity": "valid", "concepts": ["MONDO:0011122"], "best": "MONDO:0011122", "pool_miss": false, "organs": ["metabolic_endocrine"], "confidence": "high", "note": ""}
+{"qid": "q0323", "validity": "valid", "concepts": [], "best": null, "pool_miss": true, "organs": ["metabolic_endocrine"], "confidence": "medium", "note": "hyponatremia not in pool"}
+{"qid": "q0329", "validity": "valid", "concepts": ["MONDO:0001566"], "best": "MONDO:0001566", "pool_miss": false, "organs": ["metabolic_endocrine"], "confidence": "high", "note": ""}
+{"qid": "q0333", "validity": "valid", "concepts": ["MONDO:0000004"], "best": "MONDO:0000004", "pool_miss": false, "organs": ["metabolic_endocrine"], "confidence": "medium", "note": ""}
+{"qid": "q0335", "validity": "valid", "concepts": ["MONDO:0000004"], "best": "MONDO:0000004", "pool_miss": false, "organs": ["metabolic_endocrine"], "confidence": "medium", "note": "lay adrenal insufficiency"}
+{"qid": "q0339", "validity": "valid", "concepts": ["MONDO:0018912"], "best": "MONDO:0018912", "pool_miss": false, "organs": ["metabolic_endocrine"], "confidence": "high", "note": ""}
+{"qid": "q0341", "validity": "valid", "concepts": ["MONDO:0005298"], "best": "MONDO:0005298", "pool_miss": false, "organs": ["musculoskeletal"], "confidence": "high", "note": ""}
+{"qid": "q0342", "validity": "valid", "concepts": ["MONDO:0005298"], "best": "MONDO:0005298", "pool_miss": false, "organs": ["musculoskeletal"], "confidence": "medium", "note": "age-related bone loss ~ osteoporosis"}
+{"qid": "q0352", "validity": "valid", "concepts": ["MONDO:0005178"], "best": "MONDO:0005178", "pool_miss": false, "organs": ["musculoskeletal"], "confidence": "medium", "note": "DJD=osteoarthritis"}
+{"qid": "q0356", "validity": "valid", "concepts": ["MONDO:0008383"], "best": "MONDO:0008383", "pool_miss": false, "organs": ["musculoskeletal", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0363", "validity": "valid", "concepts": ["MONDO:0005546"], "best": "MONDO:0005546", "pool_miss": false, "organs": ["musculoskeletal"], "confidence": "medium", "note": "FM = fibromyalgia"}
+{"qid": "q0365", "validity": "ambiguous", "concepts": ["MONDO:0005546", "MONDO:0024317"], "best": null, "pool_miss": false, "organs": [], "confidence": "low", "note": "symptom"}
+{"qid": "q0366", "validity": "valid", "concepts": ["MONDO:0005380"], "best": "MONDO:0005380", "pool_miss": false, "organs": ["musculoskeletal"], "confidence": "high", "note": ""}
+{"qid": "q0367", "validity": "valid", "concepts": ["MONDO:0018373", "MONDO:0005380"], "best": "MONDO:0018373", "pool_miss": false, "organs": ["musculoskeletal"], "confidence": "high", "note": ""}
+{"qid": "q0371", "validity": "valid", "concepts": ["MONDO:0018076"], "best": "MONDO:0018076", "pool_miss": false, "organs": ["pulmonary", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0377", "validity": "valid", "concepts": ["MONDO:0005609"], "best": "MONDO:0005609", "pool_miss": false, "organs": ["dermatologic", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0392", "validity": "valid", "concepts": ["MONDO:0006032", "MONDO:0005247"], "best": "MONDO:0006032", "pool_miss": false, "organs": ["renal", "infectious_immune"], "confidence": "medium", "note": ""}
+{"qid": "q0396", "validity": "valid", "concepts": ["MONDO:0005230"], "best": "MONDO:0005230", "pool_miss": false, "organs": ["dermatologic", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0401", "validity": "valid", "concepts": ["MONDO:1040015", "MONDO:0005229"], "best": "MONDO:1040015", "pool_miss": false, "organs": ["infectious_immune"], "confidence": "medium", "note": ""}
+{"qid": "q0408", "validity": "valid", "concepts": ["MONDO:0007972"], "best": "MONDO:0007972", "pool_miss": false, "organs": ["otologic"], "confidence": "medium", "note": "MD ear = Meniere"}
+{"qid": "q0409", "validity": "valid", "concepts": ["MONDO:0007972"], "best": "MONDO:0007972", "pool_miss": false, "organs": ["otologic"], "confidence": "high", "note": ""}
+{"qid": "q0417", "validity": "valid", "concepts": ["MONDO:0700322"], "best": "MONDO:0700322", "pool_miss": false, "organs": ["otologic"], "confidence": "high", "note": ""}
+{"qid": "q0424", "validity": "valid", "concepts": ["MONDO:0005349"], "best": "MONDO:0005349", "pool_miss": false, "organs": ["otologic"], "confidence": "high", "note": ""}
+{"qid": "q0425", "validity": "valid", "concepts": ["MONDO:0005349"], "best": "MONDO:0005349", "pool_miss": false, "organs": ["otologic"], "confidence": "medium", "note": ""}
+{"qid": "q0433", "validity": "ambiguous", "concepts": ["MONDO:0005556", "MONDO:0004928"], "best": null, "pool_miss": false, "organs": [], "confidence": "low", "note": "LN ambiguous"}
+{"qid": "q0441", "validity": "valid", "concepts": ["MONDO:0044079"], "best": "MONDO:0044079", "pool_miss": false, "organs": ["cardiovascular", "renal"], "confidence": "high", "note": ""}
+{"qid": "q0443", "validity": "ambiguous", "concepts": ["MONDO:0044079", "MONDO:0600008", "MONDO:0017361"], "best": null, "pool_miss": false, "organs": [], "confidence": "low", "note": "CRS ambiguous"}
+{"qid": "q0451", "validity": "valid", "concepts": ["MONDO:0005266"], "best": "MONDO:0005266", "pool_miss": false, "organs": ["ocular", "metabolic_endocrine"], "confidence": "high", "note": ""}
+{"qid": "q0459", "validity": "valid", "concepts": ["MONDO:0007915"], "best": "MONDO:0007915", "pool_miss": false, "organs": ["infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0462", "validity": "valid", "concepts": ["MONDO:0019340", "MONDO:0005100"], "best": "MONDO:0019340", "pool_miss": false, "organs": ["dermatologic", "infectious_immune"], "confidence": "medium", "note": ""}
+{"qid": "q0465", "validity": "valid", "concepts": ["MONDO:0005100"], "best": "MONDO:0005100", "pool_miss": false, "organs": ["dermatologic", "infectious_immune"], "confidence": "medium", "note": "lay systemic sclerosis"}
+{"qid": "q0466", "validity": "valid", "concepts": ["MONDO:0011849"], "best": "MONDO:0011849", "pool_miss": false, "organs": ["musculoskeletal", "dermatologic", "infectious_immune"], "confidence": "high", "note": ""}
+{"qid": "q0475", "validity": "valid", "concepts": ["MONDO:0012105", "MONDO:0015492"], "best": "MONDO:0012105", "pool_miss": false, "organs": ["pulmonary", "renal", "cardiovascular", "infectious_immune"], "confidence": "medium", "note": "GPA"}
+{"qid": "q0478", "validity": "valid", "concepts": ["MONDO:0009061"], "best": "MONDO:0009061", "pool_miss": false, "organs": ["pulmonary", "gastrointestinal"], "confidence": "medium", "note": "CF abbrev"}
+{"qid": "q0484", "validity": "valid", "concepts": ["MONDO:0007039"], "best": "MONDO:0007039", "pool_miss": false, "organs": ["neurologic", "otologic"], "confidence": "medium", "note": "NF2"}
+{"qid": "q0495", "validity": "valid", "concepts": ["MONDO:0001509", "MONDO:0001511", "MONDO:0018756"], "best": "MONDO:0001509", "pool_miss": false, "organs": ["ocular", "metabolic_endocrine", "infectious_immune"], "confidence": "medium", "note": "thyroid eye disease"}
+{"qid": "q0503", "validity": "ambiguous", "concepts": ["MONDO:0005570"], "best": null, "pool_miss": false, "organs": ["haematologic"], "confidence": "low", "note": "vague"}
+{"qid": "q0507", "validity": "ambiguous", "concepts": ["MONDO:0005267"], "best": null, "pool_miss": false, "organs": ["cardiovascular"], "confidence": "medium", "note": "vague"}
+{"qid": "q0510", "validity": "valid", "concepts": ["MONDO:0005068"], "best": "MONDO:0005068", "pool_miss": false, "organs": ["cardiovascular"], "confidence": "medium", "note": "MI"}
+{"qid": "q0515", "validity": "valid", "concepts": ["MONDO:0019121"], "best": "MONDO:0019121", "pool_miss": false, "organs": ["pulmonary", "infectious_immune"], "confidence": "medium", "note": "PCP pneumonia"}
+{"qid": "q0518", "validity": "ambiguous", "concepts": ["MONDO:0019754", "MONDO:0018353"], "best": null, "pool_miss": false, "organs": [], "confidence": "low", "note": "CD ambiguous"}
+{"qid": "q0521", "validity": "ambiguous", "concepts": ["MONDO:0002251"], "best": null, "pool_miss": false, "organs": ["hepatic"], "confidence": "low", "note": "hep"}
+{"qid": "q0524", "validity": "valid", "concepts": ["MONDO:0005101"], "best": "MONDO:0005101", "pool_miss": false, "organs": ["gastrointestinal", "infectious_immune"], "confidence": "medium", "note": "UC"}
+{"qid": "q0528", "validity": "ambiguous", "concepts": ["MONDO:0005093"], "best": null, "pool_miss": false, "organs": ["dermatologic"], "confidence": "medium", "note": "vague skin"}
+{"qid": "q0530", "validity": "ambiguous", "concepts": ["MONDO:0005071"], "best": null, "pool_miss": false, "organs": ["neurologic"], "confidence": "medium", "note": "vague nerve"}
+{"qid": "q0531", "validity": "ambiguous", "concepts": ["MONDO:0005381"], "best": null, "pool_miss": false, "organs": ["musculoskeletal"], "confidence": "medium", "note": "vague bone"}
+{"qid": "q0532", "validity": "ambiguous", "concepts": ["MONDO:0005087"], "best": null, "pool_miss": false, "organs": ["pulmonary"], "confidence": "medium", "note": "vague"}
+{"qid": "q0536", "validity": "ambiguous", "concepts": ["MONDO:0005570"], "best": null, "pool_miss": false, "organs": [], "confidence": "low", "note": "vague"}
+{"qid": "q0538", "validity": "valid", "concepts": ["MONDO:0015925"], "best": "MONDO:0015925", "pool_miss": false, "organs": ["pulmonary"], "confidence": "high", "note": ""}
+{"qid": "q0539", "validity": "ambiguous", "concepts": ["MONDO:0006502"], "best": null, "pool_miss": false, "organs": ["pulmonary"], "confidence": "low", "note": "ARDS vs pneumonia; both pulmonary"}
+{"qid": "q0542", "validity": "non_disease", "concepts": [], "best": null, "pool_miss": false, "organs": ["renal"], "confidence": "medium", "note": "lab finding"}
+{"qid": "q0546", "validity": "non_disease", "concepts": [], "best": null, "pool_miss": false, "organs": ["hepatic"], "confidence": "medium", "note": "lab finding"}
+{"qid": "q0547", "validity": "non_disease", "concepts": [], "best": null, "pool_miss": false, "organs": ["gastrointestinal"], "confidence": "medium", "note": "procedure history"}
+{"qid": "q0549", "validity": "non_disease", "concepts": [], "best": null, "pool_miss": false, "organs": [], "confidence": "medium", "note": "symptom"}
+{"qid": "q0557", "validity": "valid", "concepts": ["MONDO:0021146"], "best": "MONDO:0021146", "pool_miss": false, "organs": ["neurologic"], "confidence": "medium", "note": "headache disorder"}
+{"qid": "q0559", "validity": "non_disease", "concepts": [], "best": null, "pool_miss": false, "organs": ["gastrointestinal"], "confidence": "medium", "note": "procedure history"}
+{"qid": "q0561", "validity": "non_disease", "concepts": [], "best": null, "pool_miss": false, "organs": ["haematologic"], "confidence": "medium", "note": "history item"}
+{"qid": "q0567", "validity": "non_disease", "concepts": [], "best": null, "pool_miss": false, "organs": ["renal"], "confidence": "medium", "note": "lab value, renal impairment"}
+{"qid": "q0571", "validity": "invalid", "concepts": [], "best": null, "pool_miss": false, "organs": [], "confidence": "high", "note": ""}
+{"qid": "q0572", "validity": "invalid", "concepts": [], "best": null, "pool_miss": false, "organs": [], "confidence": "high", "note": ""}
+{"qid": "q0573", "validity": "invalid", "concepts": [], "best": null, "pool_miss": false, "organs": [], "confidence": "high", "note": ""}
+{"qid": "q0574", "validity": "invalid", "concepts": [], "best": null, "pool_miss": false, "organs": [], "confidence": "high", "note": ""}
+{"qid": "q0575", "validity": "invalid", "concepts": [], "best": null, "pool_miss": false, "organs": [], "confidence": "high", "note": ""}
+{"qid": "q0576", "validity": "invalid", "concepts": [], "best": null, "pool_miss": false, "organs": [], "confidence": "high", "note": ""}
+{"qid": "q0591", "validity": "invalid", "concepts": [], "best": null, "pool_miss": false, "organs": [], "confidence": "high", "note": ""}
+{"qid": "q0597", "validity": "invalid", "concepts": [], "best": null, "pool_miss": false, "organs": [], "confidence": "high", "note": ""}
+{"qid": "q0600", "validity": "invalid", "concepts": [], "best": null, "pool_miss": false, "organs": [], "confidence": "high", "note": ""}

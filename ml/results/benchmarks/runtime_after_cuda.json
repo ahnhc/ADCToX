@@ -1,0 +1,3400 @@
+{
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "threads": 24,
+ "gpu": "NVIDIA GeForce RTX 4090",
+ "cold": {
+  "runs": [
+   {
+    "import_s": 0.640503266826272,
+    "first_query_s": 8.279120690189302,
+    "total_s": 8.919623957015574,
+    "peak_rss_mb": 2296.97265625,
+    "peak_vram_mb": 984.0556640625
+   },
+   {
+    "import_s": 0.5771831320598722,
+    "first_query_s": 7.374056875705719,
+    "total_s": 7.951240007765591,
+    "peak_rss_mb": 2298.28125,
+    "peak_vram_mb": 984.0556640625
+   },
+   {
+    "import_s": 0.6263974709436297,
+    "first_query_s": 7.657531996257603,
+    "total_s": 8.283929467201233,
+    "peak_rss_mb": 2306.21484375,
+    "peak_vram_mb": 984.0556640625
+   }
+  ],
+  "first_query_p50": 7.657531996257603,
+  "total_p50": 8.283929467201233
+ },
+ "warmup_s": 8.213912160135806,
+ "warm_miss": {
+  "p50": 0.03614171175286174,
+  "p95": 0.042491245502605884,
+  "mean": 0.0391920852009207,
+  "n": 40
+ },
+ "warm_hit": {
+  "p50": 0.009988703764975071,
+  "p95": 0.01687554046511636,
+  "mean": 0.013097774935886264,
+  "n": 40
+ },
+ "peak_rss_mb": 2314.12890625,
+ "peak_vram_mb": 984.0556640625,
+ "outputs": [
+  {
+   "query": "lung hole",
+   "source": "Unmapped",
+   "name": "",
+   "organs": [],
+   "estimates": [
+    [
+     "pulmonary",
+     0.7191
+    ],
+    [
+     "neurologic",
+     0.281
+    ],
+    [
+     "haematologic",
+     0.2478
+    ]
+   ],
+   "s": {
+    "haematologic": 0.06,
+    "pulmonary": 0.18,
+    "neurologic": 0.07
+   },
+   "order": [
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     3,
+     "enfortumab-vedotin"
+    ],
+    [
+     3,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     3,
+     "polatuzumab-vedotin"
+    ],
+    [
+     3,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     3,
+     "tisotumab-vedotin"
+    ],
+    [
+     4,
+     "trastuzumab-emtansine"
+    ],
+    [
+     5,
+     "sacituzumab-govitecan"
+    ],
+    [
+     6,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     7,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "xqzv blorp",
+   "source": "Unmapped",
+   "name": "",
+   "organs": [],
+   "estimates": [
+    [
+     "ocular",
+     0.7159
+    ],
+    [
+     "dermatologic",
+     0.4211
+    ],
+    [
+     "otologic",
+     0.2525
+    ]
+   ],
+   "s": {
+    "ocular": 0.18,
+    "dermatologic": 0.11,
+    "otologic": 0.06
+   },
+   "order": [
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     3,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     4,
+     "enfortumab-vedotin"
+    ],
+    [
+     4,
+     "tisotumab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "diabetic nephropathy",
+   "source": "MONDO",
+   "name": "diabetic kidney disease",
+   "organs": [
+    "renal",
+    "metabolic_endocrine"
+   ],
+   "estimates": [
+    [
+     "renal",
+     0.9689
+    ],
+    [
+     "haematologic",
+     0.4563
+    ],
+    [
+     "ocular",
+     0.3746
+    ]
+   ],
+   "s": {
+    "renal": 0.8,
+    "metabolic_endocrine": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "sacituzumab-govitecan"
+    ],
+    [
+     3,
+     "pivekimab-sunirine"
+    ],
+    [
+     4,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "asthma",
+   "source": "MONDO",
+   "name": "asthma",
+   "organs": [
+    "pulmonary"
+   ],
+   "estimates": [
+    [
+     "pulmonary",
+     0.6273
+    ],
+    [
+     "dermatologic",
+     0.6081
+    ],
+    [
+     "otologic",
+     0.4958
+    ]
+   ],
+   "s": {
+    "pulmonary": 0.8
+   },
+   "order": [
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "trastuzumab-deruxtecan"
+    ]
+   ]
+  },
+  {
+   "query": "atrial fibrillation",
+   "source": "MONDO",
+   "name": "atrial fibrillation",
+   "organs": [
+    "cardiovascular"
+   ],
+   "estimates": [
+    [
+     "cardiovascular",
+     1.0
+    ],
+    [
+     "haematologic",
+     0.8133
+    ],
+    [
+     "metabolic_endocrine",
+     0.735
+    ]
+   ],
+   "s": {
+    "cardiovascular": 0.8
+   },
+   "order": [
+    [
+     1,
+     "brentuximab-vedotin"
+    ],
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     3,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     4,
+     "trastuzumab-emtansine"
+    ]
+   ]
+  },
+  {
+   "query": "hypertension",
+   "source": "MONDO",
+   "name": "hypertensive disorder",
+   "organs": [
+    "cardiovascular"
+   ],
+   "estimates": [
+    [
+     "renal",
+     0.7856
+    ],
+    [
+     "metabolic_endocrine",
+     0.7256
+    ],
+    [
+     "cardiovascular",
+     0.5192
+    ]
+   ],
+   "s": {
+    "cardiovascular": 0.8
+   },
+   "order": [
+    [
+     1,
+     "brentuximab-vedotin"
+    ],
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     3,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     4,
+     "trastuzumab-emtansine"
+    ]
+   ]
+  },
+  {
+   "query": "rheumatoid arthritis",
+   "source": "MONDO",
+   "name": "rheumatoid arthritis",
+   "organs": [
+    "musculoskeletal",
+    "infectious_immune"
+   ],
+   "estimates": [
+    [
+     "musculoskeletal",
+     1.0
+    ],
+    [
+     "otologic",
+     0.5104
+    ],
+    [
+     "ocular",
+     0.2718
+    ]
+   ],
+   "s": {
+    "musculoskeletal": 0.8,
+    "infectious_immune": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "sacituzumab-govitecan"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ]
+   ]
+  },
+  {
+   "query": "lupus nephritis",
+   "source": "MONDO",
+   "name": "lupus nephritis",
+   "organs": [
+    "renal"
+   ],
+   "estimates": [
+    [
+     "otologic",
+     0.8841
+    ],
+    [
+     "musculoskeletal",
+     0.8044
+    ],
+    [
+     "renal",
+     0.495
+    ]
+   ],
+   "s": {
+    "renal": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "chronic kidney disease stage 4",
+   "source": "Registry match",
+   "name": "Chronic kidney disease stage 4-5",
+   "organs": [
+    "renal"
+   ],
+   "estimates": [
+    [
+     "neurologic",
+     0.5347
+    ],
+    [
+     "renal",
+     0.5201
+    ],
+    [
+     "haematologic",
+     0.4813
+    ]
+   ],
+   "s": {
+    "renal": 1.0
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "epilepsy",
+   "source": "MONDO",
+   "name": "epilepsy",
+   "organs": [
+    "neurologic"
+   ],
+   "estimates": [
+    [
+     "neurologic",
+     0.9994
+    ],
+    [
+     "metabolic_endocrine",
+     0.4788
+    ],
+    [
+     "dermatologic",
+     0.2357
+    ]
+   ],
+   "s": {
+    "neurologic": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "parkinson disease",
+   "source": "MONDO",
+   "name": "Parkinson disease",
+   "organs": [
+    "neurologic"
+   ],
+   "estimates": [
+    [
+     "neurologic",
+     0.7014
+    ],
+    [
+     "metabolic_endocrine",
+     0.4991
+    ],
+    [
+     "haematologic",
+     0.1811
+    ]
+   ],
+   "s": {
+    "neurologic": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "psoriatic arthritis",
+   "source": "MONDO",
+   "name": "psoriatic arthritis",
+   "organs": [
+    "musculoskeletal",
+    "infectious_immune"
+   ],
+   "estimates": [
+    [
+     "dermatologic",
+     1.0
+    ],
+    [
+     "musculoskeletal",
+     1.0
+    ],
+    [
+     "otologic",
+     0.944
+    ]
+   ],
+   "s": {
+    "musculoskeletal": 0.8,
+    "infectious_immune": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "sacituzumab-govitecan"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ]
+   ]
+  },
+  {
+   "query": "gout",
+   "source": "MONDO",
+   "name": "gout",
+   "organs": [
+    "metabolic_endocrine"
+   ],
+   "estimates": [
+    [
+     "renal",
+     0.5275
+    ],
+    [
+     "haematologic",
+     0.4091
+    ],
+    [
+     "musculoskeletal",
+     0.1719
+    ]
+   ],
+   "s": {
+    "metabolic_endocrine": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "sacituzumab-govitecan"
+    ],
+    [
+     3,
+     "enfortumab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "hepatitis b",
+   "source": "Registry match",
+   "name": "Chronic hepatitis B",
+   "organs": [
+    "hepatic",
+    "infectious_immune"
+   ],
+   "estimates": [
+    [
+     "musculoskeletal",
+     1.0
+    ],
+    [
+     "hepatic",
+     0.9662
+    ],
+    [
+     "gastrointestinal",
+     0.6768
+    ]
+   ],
+   "s": {
+    "hepatic": 0.6,
+    "infectious_immune": 0.6
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "sacituzumab-govitecan"
+    ],
+    [
+     3,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     3,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     4,
+     "trastuzumab-emtansine"
+    ],
+    [
+     5,
+     "enfortumab-vedotin"
+    ],
+    [
+     5,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     5,
+     "tisotumab-vedotin"
+    ],
+    [
+     6,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     7,
+     "brentuximab-vedotin"
+    ],
+    [
+     7,
+     "loncastuximab-tesirine"
+    ],
+    [
+     7,
+     "polatuzumab-vedotin"
+    ],
+    [
+     8,
+     "pivekimab-sunirine"
+    ]
+   ]
+  },
+  {
+   "query": "alcoholic liver disease",
+   "source": "MONDO",
+   "name": "alcoholic liver disease",
+   "organs": [
+    "hepatic",
+    "gastrointestinal",
+    "metabolic_endocrine"
+   ],
+   "estimates": [
+    [
+     "hepatic",
+     1.0
+    ],
+    [
+     "gastrointestinal",
+     1.0
+    ],
+    [
+     "musculoskeletal",
+     0.8903
+    ]
+   ],
+   "s": {
+    "hepatic": 0.8,
+    "gastrointestinal": 0.8,
+    "metabolic_endocrine": 0.8
+   },
+   "order": [
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     3,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     3,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     4,
+     "sacituzumab-govitecan"
+    ],
+    [
+     5,
+     "trastuzumab-emtansine"
+    ],
+    [
+     6,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     6,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     6,
+     "tisotumab-vedotin"
+    ],
+    [
+     7,
+     "enfortumab-vedotin"
+    ],
+    [
+     7,
+     "loncastuximab-tesirine"
+    ],
+    [
+     8,
+     "polatuzumab-vedotin"
+    ],
+    [
+     9,
+     "brentuximab-vedotin"
+    ],
+    [
+     10,
+     "pivekimab-sunirine"
+    ]
+   ]
+  },
+  {
+   "query": "crohn disease",
+   "source": "MONDO",
+   "name": "Crohn disease",
+   "organs": [
+    "gastrointestinal",
+    "infectious_immune"
+   ],
+   "estimates": [
+    [
+     "gastrointestinal",
+     1.0
+    ],
+    [
+     "musculoskeletal",
+     1.0
+    ],
+    [
+     "haematologic",
+     0.382
+    ]
+   ],
+   "s": {
+    "gastrointestinal": 0.8,
+    "infectious_immune": 0.8
+   },
+   "order": [
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ],
+    [
+     4,
+     "sacituzumab-govitecan"
+    ]
+   ]
+  },
+  {
+   "query": "celiac disease",
+   "source": "MONDO",
+   "name": "celiac disease",
+   "organs": [
+    "gastrointestinal",
+    "infectious_immune"
+   ],
+   "estimates": [
+    [
+     "otologic",
+     0.532
+    ],
+    [
+     "gastrointestinal",
+     0.4988
+    ],
+    [
+     "dermatologic",
+     0.4549
+    ]
+   ],
+   "s": {
+    "gastrointestinal": 0.8,
+    "infectious_immune": 0.8
+   },
+   "order": [
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ],
+    [
+     4,
+     "sacituzumab-govitecan"
+    ]
+   ]
+  },
+  {
+   "query": "macular degeneration",
+   "source": "MONDO",
+   "name": "macular degeneration",
+   "organs": [
+    "neurologic",
+    "ocular"
+   ],
+   "estimates": [
+    [
+     "ocular",
+     1.0
+    ],
+    [
+     "neurologic",
+     0.3991
+    ],
+    [
+     "metabolic_endocrine",
+     0.3508
+    ]
+   ],
+   "s": {
+    "neurologic": 0.8,
+    "ocular": 0.8
+   },
+   "order": [
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "enfortumab-vedotin"
+    ],
+    [
+     3,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     4,
+     "brentuximab-vedotin"
+    ],
+    [
+     5,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     5,
+     "tisotumab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "uveitis",
+   "source": "MONDO",
+   "name": "uveitis",
+   "organs": [
+    "ocular"
+   ],
+   "estimates": [
+    [
+     "ocular",
+     1.0
+    ],
+    [
+     "musculoskeletal",
+     0.5532
+    ],
+    [
+     "otologic",
+     0.5285
+    ]
+   ],
+   "s": {
+    "ocular": 0.8
+   },
+   "order": [
+    [
+     1,
+     "brentuximab-vedotin"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     3,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     3,
+     "tisotumab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "tinnitus",
+   "source": "MONDO",
+   "name": "tinnitus",
+   "organs": [
+    "neurologic",
+    "otologic"
+   ],
+   "estimates": [
+    [
+     "otologic",
+     0.5988
+    ],
+    [
+     "musculoskeletal",
+     0.3955
+    ],
+    [
+     "dermatologic",
+     0.3694
+    ]
+   ],
+   "s": {
+    "neurologic": 0.8,
+    "otologic": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "osteoporosis",
+   "source": "MONDO",
+   "name": "osteoporosis",
+   "organs": [
+    "musculoskeletal"
+   ],
+   "estimates": [
+    [
+     "neurologic",
+     0.5218
+    ],
+    [
+     "ocular",
+     0.4203
+    ],
+    [
+     "metabolic_endocrine",
+     0.3979
+    ]
+   ],
+   "s": {
+    "musculoskeletal": 0.8
+   },
+   "order": [
+    [
+     1,
+     "brentuximab-vedotin"
+    ],
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ]
+   ]
+  },
+  {
+   "query": "sarcoidosis",
+   "source": "MONDO",
+   "name": "sarcoidosis",
+   "organs": [
+    "musculoskeletal"
+   ],
+   "estimates": [
+    [
+     "musculoskeletal",
+     0.7904
+    ],
+    [
+     "ocular",
+     0.54
+    ],
+    [
+     "otologic",
+     0.4425
+    ]
+   ],
+   "s": {
+    "musculoskeletal": 0.8
+   },
+   "order": [
+    [
+     1,
+     "brentuximab-vedotin"
+    ],
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ]
+   ]
+  },
+  {
+   "query": "pulmonary hypertension",
+   "source": "MONDO",
+   "name": "pulmonary hypertension",
+   "organs": [
+    "cardiovascular"
+   ],
+   "estimates": [
+    [
+     "cardiovascular",
+     1.0
+    ],
+    [
+     "pulmonary",
+     1.0
+    ],
+    [
+     "metabolic_endocrine",
+     0.8713
+    ]
+   ],
+   "s": {
+    "cardiovascular": 0.8
+   },
+   "order": [
+    [
+     1,
+     "brentuximab-vedotin"
+    ],
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     3,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     4,
+     "trastuzumab-emtansine"
+    ]
+   ]
+  },
+  {
+   "query": "deep vein thrombosis",
+   "source": "Unmapped",
+   "name": "",
+   "organs": [],
+   "estimates": [
+    [
+     "neurologic",
+     0.8968
+    ],
+    [
+     "haematologic",
+     0.4336
+    ],
+    [
+     "pulmonary",
+     0.1831
+    ]
+   ],
+   "s": {
+    "haematologic": 0.11,
+    "pulmonary": 0.05,
+    "neurologic": 0.22
+   },
+   "order": [
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     3,
+     "enfortumab-vedotin"
+    ],
+    [
+     3,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     3,
+     "polatuzumab-vedotin"
+    ],
+    [
+     3,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     3,
+     "tisotumab-vedotin"
+    ],
+    [
+     4,
+     "trastuzumab-emtansine"
+    ],
+    [
+     5,
+     "sacituzumab-govitecan"
+    ],
+    [
+     6,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     7,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "stroke",
+   "source": "MONDO",
+   "name": "stroke disorder",
+   "organs": [
+    "cardiovascular",
+    "neurologic"
+   ],
+   "estimates": [
+    [
+     "neurologic",
+     1.0
+    ],
+    [
+     "metabolic_endocrine",
+     0.5509
+    ],
+    [
+     "haematologic",
+     0.3599
+    ]
+   ],
+   "s": {
+    "cardiovascular": 0.8,
+    "neurologic": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     3,
+     "tisotumab-vedotin"
+    ],
+    [
+     4,
+     "brentuximab-vedotin"
+    ],
+    [
+     5,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     6,
+     "trastuzumab-emtansine"
+    ]
+   ]
+  },
+  {
+   "query": "migraine",
+   "source": "MONDO",
+   "name": "migraine disorder",
+   "organs": [
+    "cardiovascular",
+    "neurologic"
+   ],
+   "estimates": [
+    [
+     "neurologic",
+     0.693
+    ],
+    [
+     "musculoskeletal",
+     0.4423
+    ],
+    [
+     "ocular",
+     0.4236
+    ]
+   ],
+   "s": {
+    "cardiovascular": 0.8,
+    "neurologic": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     3,
+     "tisotumab-vedotin"
+    ],
+    [
+     4,
+     "brentuximab-vedotin"
+    ],
+    [
+     5,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     6,
+     "trastuzumab-emtansine"
+    ]
+   ]
+  },
+  {
+   "query": "hyperthyroidism",
+   "source": "MONDO",
+   "name": "hyperthyroidism",
+   "organs": [
+    "metabolic_endocrine"
+   ],
+   "estimates": [
+    [
+     "musculoskeletal",
+     0.3114
+    ],
+    [
+     "neurologic",
+     0.1938
+    ],
+    [
+     "otologic",
+     0.0869
+    ]
+   ],
+   "s": {
+    "metabolic_endocrine": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "sacituzumab-govitecan"
+    ],
+    [
+     3,
+     "enfortumab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "cushing syndrome",
+   "source": "Unmapped",
+   "name": "",
+   "organs": [],
+   "estimates": [
+    [
+     "musculoskeletal",
+     0.5772
+    ],
+    [
+     "otologic",
+     0.3287
+    ],
+    [
+     "neurologic",
+     0.2983
+    ]
+   ],
+   "s": {
+    "neurologic": 0.07,
+    "musculoskeletal": 0.14,
+    "otologic": 0.08
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "sickle cell disease",
+   "source": "MONDO",
+   "name": "sickle cell disease",
+   "organs": [
+    "haematologic"
+   ],
+   "estimates": [
+    [
+     "neurologic",
+     0.3541
+    ],
+    [
+     "haematologic",
+     0.326
+    ],
+    [
+     "gastrointestinal",
+     0.2795
+    ]
+   ],
+   "s": {
+    "haematologic": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     3,
+     "trastuzumab-emtansine"
+    ],
+    [
+     4,
+     "loncastuximab-tesirine"
+    ],
+    [
+     5,
+     "sacituzumab-govitecan"
+    ]
+   ]
+  },
+  {
+   "query": "hemophilia",
+   "source": "MONDO",
+   "name": "hemophilia",
+   "organs": [
+    "haematologic"
+   ],
+   "estimates": [
+    [
+     "neurologic",
+     0.449
+    ],
+    [
+     "haematologic",
+     0.2743
+    ],
+    [
+     "pulmonary",
+     0.1634
+    ]
+   ],
+   "s": {
+    "haematologic": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     3,
+     "trastuzumab-emtansine"
+    ],
+    [
+     4,
+     "loncastuximab-tesirine"
+    ],
+    [
+     5,
+     "sacituzumab-govitecan"
+    ]
+   ]
+  },
+  {
+   "query": "myasthenia gravis",
+   "source": "MONDO",
+   "name": "myasthenia gravis",
+   "organs": [
+    "neurologic",
+    "infectious_immune"
+   ],
+   "estimates": [
+    [
+     "ocular",
+     0.7889
+    ],
+    [
+     "neurologic",
+     0.4977
+    ],
+    [
+     "dermatologic",
+     0.2252
+    ]
+   ],
+   "s": {
+    "neurologic": 0.8,
+    "infectious_immune": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "sacituzumab-govitecan"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     3,
+     "polatuzumab-vedotin"
+    ],
+    [
+     3,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     3,
+     "trastuzumab-emtansine"
+    ],
+    [
+     4,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "bronchiectasis",
+   "source": "MONDO",
+   "name": "bronchiectasis",
+   "organs": [
+    "pulmonary"
+   ],
+   "estimates": [
+    [
+     "otologic",
+     0.4639
+    ],
+    [
+     "pulmonary",
+     0.4285
+    ],
+    [
+     "gastrointestinal",
+     0.3563
+    ]
+   ],
+   "s": {
+    "pulmonary": 0.8
+   },
+   "order": [
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "trastuzumab-deruxtecan"
+    ]
+   ]
+  },
+  {
+   "query": "sleep apnea",
+   "source": "MONDO",
+   "name": "sleep apnea syndrome",
+   "organs": [
+    "pulmonary"
+   ],
+   "estimates": [
+    [
+     "neurologic",
+     0.6014
+    ],
+    [
+     "metabolic_endocrine",
+     0.5126
+    ],
+    [
+     "pulmonary",
+     0.3252
+    ]
+   ],
+   "s": {
+    "pulmonary": 0.8
+   },
+   "order": [
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     2,
+     "enfortumab-vedotin"
+    ],
+    [
+     2,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "trastuzumab-deruxtecan"
+    ]
+   ]
+  },
+  {
+   "query": "eczema",
+   "source": "MONDO",
+   "name": "atopic eczema",
+   "organs": [
+    "dermatologic",
+    "infectious_immune"
+   ],
+   "estimates": [
+    [
+     "ocular",
+     1.0
+    ],
+    [
+     "dermatologic",
+     1.0
+    ],
+    [
+     "otologic",
+     1.0
+    ]
+   ],
+   "s": {
+    "dermatologic": 0.8,
+    "infectious_immune": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "sacituzumab-govitecan"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ],
+    [
+     3,
+     "loncastuximab-tesirine"
+    ],
+    [
+     4,
+     "enfortumab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "vitiligo",
+   "source": "MONDO",
+   "name": "vitiligo",
+   "organs": [
+    "dermatologic",
+    "infectious_immune"
+   ],
+   "estimates": [
+    [
+     "ocular",
+     1.0
+    ],
+    [
+     "dermatologic",
+     1.0
+    ],
+    [
+     "otologic",
+     0.978
+    ]
+   ],
+   "s": {
+    "dermatologic": 0.8,
+    "infectious_immune": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "sacituzumab-govitecan"
+    ],
+    [
+     2,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     2,
+     "trastuzumab-emtansine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ],
+    [
+     3,
+     "loncastuximab-tesirine"
+    ],
+    [
+     4,
+     "enfortumab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "glomerulonephritis",
+   "source": "MONDO",
+   "name": "glomerulonephritis",
+   "organs": [
+    "renal"
+   ],
+   "estimates": [
+    [
+     "renal",
+     0.7095
+    ],
+    [
+     "ocular",
+     0.4419
+    ],
+    [
+     "haematologic",
+     0.2196
+    ]
+   ],
+   "s": {
+    "renal": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "polycystic kidney",
+   "source": "MONDO",
+   "name": "polycystic kidney disease",
+   "organs": [
+    "renal"
+   ],
+   "estimates": [
+    [
+     "renal",
+     0.5329
+    ],
+    [
+     "otologic",
+     0.4022
+    ],
+    [
+     "musculoskeletal",
+     0.34
+    ]
+   ],
+   "s": {
+    "renal": 0.8
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     3,
+     "brentuximab-vedotin"
+    ]
+   ]
+  },
+  {
+   "query": "heart attack",
+   "source": "MONDO",
+   "name": "myocardial infarction",
+   "organs": [
+    "cardiovascular"
+   ],
+   "estimates": [
+    [
+     "cardiovascular",
+     1.0
+    ],
+    [
+     "metabolic_endocrine",
+     0.9011
+    ],
+    [
+     "haematologic",
+     0.6654
+    ]
+   ],
+   "s": {
+    "cardiovascular": 0.8
+   },
+   "order": [
+    [
+     1,
+     "brentuximab-vedotin"
+    ],
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     3,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     4,
+     "trastuzumab-emtansine"
+    ]
+   ]
+  },
+  {
+   "query": "weak heart",
+   "source": "Registry match",
+   "name": "Heart failure",
+   "organs": [
+    "cardiovascular"
+   ],
+   "estimates": [
+    [
+     "cardiovascular",
+     1.0
+    ],
+    [
+     "metabolic_endocrine",
+     0.8042
+    ],
+    [
+     "haematologic",
+     0.7565
+    ]
+   ],
+   "s": {
+    "cardiovascular": 1.0
+   },
+   "order": [
+    [
+     1,
+     "brentuximab-vedotin"
+    ],
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "enfortumab-vedotin"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "polatuzumab-vedotin"
+    ],
+    [
+     1,
+     "sacituzumab-govitecan"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     2,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     2,
+     "loncastuximab-tesirine"
+    ],
+    [
+     2,
+     "pivekimab-sunirine"
+    ],
+    [
+     2,
+     "tisotumab-vedotin"
+    ],
+    [
+     3,
+     "trastuzumab-emtansine"
+    ],
+    [
+     4,
+     "trastuzumab-deruxtecan"
+    ]
+   ]
+  },
+  {
+   "query": "sugar diabetes",
+   "source": "Registry match",
+   "name": "Type 2 diabetes",
+   "organs": [
+    "metabolic_endocrine"
+   ],
+   "estimates": [
+    [
+     "neurologic",
+     0.3173
+    ],
+    [
+     "haematologic",
+     0.2976
+    ],
+    [
+     "metabolic_endocrine",
+     0.2547
+    ]
+   ],
+   "s": {
+    "metabolic_endocrine": 0.6
+   },
+   "order": [
+    [
+     1,
+     "datopotamab-deruxtecan"
+    ],
+    [
+     1,
+     "gemtuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "inotuzumab-ozogamicin"
+    ],
+    [
+     1,
+     "loncastuximab-tesirine"
+    ],
+    [
+     1,
+     "mirvetuximab-soravtansine"
+    ],
+    [
+     1,
+     "pivekimab-sunirine"
+    ],
+    [
+     1,
+     "telisotuzumab-vedotin"
+    ],
+    [
+     1,
+     "tisotumab-vedotin"
+    ],
+    [
+     1,
+     "trastuzumab-deruxtecan"
+    ],
+    [
+     1,
+     "trastuzumab-emtansine"
+    ],
+    [
+     2,
+     "brentuximab-vedotin"
+    ],
+    [
+     2,
+     "polatuzumab-vedotin"
+    ],
+    [
+     2,
+     "sacituzumab-govitecan"
+    ],
+    [
+     3,
+     "enfortumab-vedotin"
+    ]
+   ]
+  }
+ ]
+}

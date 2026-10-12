@@ -1,7 +1,7 @@
 """One-screen input for ml/recommend.py: each step opens below the finished ones, ESC goes back a step.
 
 Steps: conditions (organ-grouped list; 'Other' at the bottom opens a typing line on the same screen) -> lab values (typed in
-place, units as on a lab report) -> [FinnGen estimate for a condition that maps to no organ] -> [priority between conditions].
+place, units as on a lab report) -> [learned estimate for a condition that maps to no organ] -> [priority between conditions].
 Returns (conditions, raw lab values) and sets recommend.FALLBACK / recommend.PRIORITY, or None if the user quits.
 """
 from term import curses
@@ -175,7 +175,7 @@ class Form:
         """Update from a dedicated screen without changing the patient's current input."""
         import adc_updates as updates
         import threading
-        state = {"phase": "idle", "message": "", "manifest": None, "changed": False}
+        state = {"phase": "idle", "message": "", "manifest": None, "changed": False, "plan": None}
         cancel = threading.Event()
         selection = 0
         busy = ("checking", "downloading", "restoring")
@@ -186,15 +186,17 @@ class Form:
             def worker():
                 try:
                     if action == "check":
-                        state["manifest"] = updates.fetch_manifest()
-                        state["message"] = "변경된 파일만 다운로드합니다."
+                        state["manifest"] = updates.fetch_manifest(); todo = updates.plan(state["manifest"]); state["plan"] = todo
+                        state["message"] = ("최신 상태입니다. 다운로드할 파일이 없습니다." if todo["up_to_date"] else
+                                            f"변경 파일 {len(todo['download'])}개 ({todo['download_bytes'] / 1024**2:.1f} MiB)만 다운로드합니다. 그대로 쓰는 파일 {len(todo['reuse'])}개")
                     elif action == "update":
                         def progress(name, done, total):
                             if cancel.is_set(): raise updates.UpdateError("업데이트를 취소했습니다.")
                             state["message"] = f"{name}   {done / 1024**2:.1f} / {total / 1024**2:.1f} MiB"
                         result = updates.install(state["manifest"], progress=progress, cancelled=cancel.is_set)
-                        state["message"] = f"{len(result['downloaded'])} files updated   {len(result['reused'])} unchanged"
-                        state["changed"] = True
+                        state["message"] = "최신 상태입니다." if result.get("up_to_date") else f"{len(result['downloaded'])} files updated   {len(result['reused'])} unchanged"
+                        state["changed"] = not result.get("up_to_date")
+                        state["plan"] = updates.plan(state["manifest"])
                     else:
                         version = updates.rollback()
                         state["message"] = f"이전 모델 {version} 복원 완료"
@@ -219,7 +221,8 @@ class Form:
                 self.S.put(y, 2, f"Installed   {current}", self.S.title)
                 self.S.put(y + 1, 2, f"Available   {latest}", self.S.dim)
                 phase = state["phase"]
-                labels = ("업데이트", "이전 모델로 복원", "돌아가기") if state["manifest"] else ("다시 확인", "이전 모델로 복원", "돌아가기")
+                latest_ok = bool(state.get("plan") and state["plan"]["up_to_date"])
+                labels = (("다시 확인" if latest_ok else "업데이트"), "이전 모델로 복원", "돌아가기") if state["manifest"] else ("다시 확인", "이전 모델로 복원", "돌아가기")
                 for i, label in enumerate(labels): self.S.row(y + 3 + i, f" {'>' if i == selection else ' '} {label}", i == selection)
                 message = {"checking": "업데이트 확인 중 ...", "downloading": "다운로드 및 검증 중 ...", "restoring": "이전 모델 확인 중 ..."}.get(phase, "")
                 for i, line in enumerate(_wrap(message + ("\n" if message else "") + state["message"], max(2, self.scr.getmaxyx()[1] - 5))):
@@ -233,7 +236,7 @@ class Form:
                 if key == "UP": selection = max(0, selection - 1)
                 elif key == "DOWN": selection = min(2, selection + 1)
                 elif key == "ESC" or (key == "ENTER" and selection == 2): return
-                elif key == "ENTER": start("rollback" if selection == 1 else ("update" if state["manifest"] else "check"))
+                elif key == "ENTER": start("rollback" if selection == 1 else ("update" if state["manifest"] and not latest_ok else "check"))
         finally:
             self.scr.timeout(-1)
 
@@ -306,6 +309,44 @@ class Form:
             elif k in ("ENTER", " ", "PGDN"): return cur
             elif k in ("ESC", "PGUP"): return BACK
 
+    def meanings(self, groups, chosen):
+        """one screen for every typed text that reads as several diseases. groups: [(text, readings)]; chosen: {text: id or None}.
+        -> {text: id or None (unknown)} or BACK."""
+        RC = self.RC; pick = {}; rows = []                      # ("head", text) / ("opt", text, id, label, organs, tag)
+        for g, (text, opts) in enumerate(groups):
+            if g: rows.append(("gap",))
+            rows.append(("head", text))
+            for r in opts:
+                name = r["name"][:1].upper() + r["name"][1:]
+                rows.append(("opt", text, r["mondo"], name, ", ".join(RC.ORGAN_SHORT[a] for a in r["organs"]) or "장기 없음", "증상" if str(r["mondo"]).startswith("HP:") else ""))
+            rows.append(("opt", text, None, "모름", "", ""))
+            ids = [r["mondo"] for r in opts]; pick[text] = chosen.get(text, ids[0]) if chosen.get(text, ids[0]) in ids + [None] else ids[0]
+        sel = [i for i, x in enumerate(rows) if x[0] == "opt"]; cur = 0
+        nw = max(_w(x[3]) + (_w(x[5]) + 3 if x[5] else 0) for x in rows if x[0] == "opt")
+        while True:
+            y0 = self.frame("입력하신 질환 확인", "↑↓ 이동   ENTER 선택   PgUp 질환 수정   PgDn 다음 단계")
+            h, w = self.scr.getmaxyx()
+            self.S.put(y0, 2, "여러 질환으로 읽히는 입력이 있습니다. 의도한 질환을 골라 주세요.", self.S.dim); y0 += 2
+            at = sel[cur]; area = max(3, h - y0 - 1); top = max(0, min(at - area // 2, len(rows) - area))
+            for r, x in enumerate(rows[top:top + area]):
+                y = y0 + r
+                if x[0] == "gap": continue
+                if x[0] == "head":
+                    self.S.put(y, 2, x[1], self.S.title); continue
+                on = top + r == at; mark = "●" if pick[x[1]] == x[2] else "○"
+                name = x[3] + (f"   {x[5]}" if x[5] else "")
+                self.S.row(y, f" {'→' if on else ' '}  {mark}  {name}{' ' * (nw - _w(name))}   {x[4]}", on)
+            self.scr.refresh(); k = _key(self.scr)
+            if k == "UP": cur = max(0, cur - 1)
+            elif k == "DOWN": cur = min(len(sel) - 1, cur + 1)
+            elif k in ("ENTER", " "):
+                x = rows[at]; pick[x[1]] = x[2]
+                nxt = [j for j, i in enumerate(sel) if i > at and rows[i][1] != x[1]]   # jump to the next question's current pick, or finish
+                if nxt: g = rows[sel[nxt[0]]][1]; cur = next((j for j in nxt if rows[sel[j]][1] == g and rows[sel[j]][2] == pick[g]), nxt[0])
+                elif k == "ENTER": return pick
+            elif k == "PGDN": return pick
+            elif k in ("ESC", "PGUP"): return BACK
+
     def order(self, names, details, levels):
         lv = list(levels); n = len(names); it = 0
         while True:
@@ -336,7 +377,7 @@ class Form:
             except Exception as error: errors.append(error)
         stages = [("embedding", "Disease embedding", "BioLORD-2023"),
                   ("linking", "Disease linking", "SapBERT / MONDO"),
-                  ("inference", "Organ inference", "FinnGen MLP / 5 models")]
+                  ("inference", "Organ inference", "Disease-pair MLP")]
         current = 0; started = time.monotonic()
         worker = threading.Thread(target=work, daemon=True); worker.start()
         timeout = getattr(self.scr, "timeout", None)
@@ -382,7 +423,7 @@ class Form:
         while True:
             y0 = self.frame("AI 장기 분석 결과", "↑↓ 스크롤   PgUp 질환 수정   PgDn 다음 단계")
             h, w = self.scr.getmaxyx(); width = max(2, w - 5)
-            model_name = "BioLORD + FinnGen MLP" if any(r["model"] for r in reports) else "Disease name matching"
+            model_name = "BioLORD + disease-pair MLP" if any(r["model"] for r in reports) else "Disease name matching"
             duration = "Cached" if self.analysis_cached else f"{elapsed:.1f} s"
             self.S.put(y0, 2, f"{model_name}   {duration}", self.S.dim); y0 += 2
             lines = []
@@ -391,11 +432,22 @@ class Form:
                 organs = ", ".join(self.RC.ORGAN_SHORT[a] for a in report["organs"]) or "Unmapped"
                 lines.append(f"  Mapped organs   {organs}")
                 if report["name"]: lines.append(f"\033[90m  {report['source']} / {report['name']}\033[0m")
+                if report.get("ambiguous"):
+                    lines.append("  \033[33m직접 고른 의미, 다음 화면에서 바꿀 수 있음\033[0m" if report["condition"] in self.RC.CHOICE else
+                                 f"  \033[33m다른 의미 {len(report['readings']) - 1}개, 다음 화면에서 선택\033[0m")
                 if report["model"]:
-                    lines.append("  Estimated organs" if not report["organs"] else "  Model signal")
+                    models = report.get("models") or []; head = "  Estimated organs" if not report["organs"] else "  Model signal"
+                    if models:                                     # every model's value, the bar is the main model's
+                        lines.append(head + " " * max(1, 30 - len(head)) + "".join(f"{m:>6}" for m in models))
+                    else: lines.append(head)
                     for organ, score in report["estimates"]:
-                        bars = round(score * 12)
-                        lines.append(f"    {self.RC.ORGAN_SHORT[organ]:<11} \033[33m{'=' * bars}{'-' * (12 - bars)}\033[0m  {score:.2f}")
+                        bars = round(score * 12); row = f"    {self.RC.ORGAN_SHORT[organ]:<11} \033[33m{'=' * bars}{'-' * (12 - bars)}\033[0m"
+                        if models:
+                            n = report["agree"].get(organ, 0)
+                            vals = "".join(f"{v:6.2f}" if v > 0 else "     -" for v in report["by_model"][organ])
+                            row += f"  {vals}   " + (f"{n}/{len(models)}" if n >= 2 else f"\033[90m{n}/{len(models)}\033[0m")
+                        else: row += f"  {score:.2f}"
+                        lines.append(row)
                 lines.append("")
             wrapped = [ln for line in lines for ln in tui._wrap_ansi(line, width)]
             area = max(1, h - y0 - 3); top = max(0, min(top, len(wrapped) - area))
@@ -439,10 +491,19 @@ def run(RC, back=False):
                     if analysis == BACK: step = 0; continue
                     reports, elapsed = analysis
                     if F.analysis_review(reports, elapsed) == BACK: step = 0; continue
+                    groups = RC.ambiguous_conditions(conds)              # typed texts with readings on different organs: the user picks
+                    if groups:
+                        applied = {r["condition"]: o["mondo"] for r in reports for o in r.get("readings", []) if o["name"] == r["name"]}
+                        pick = F.meanings(groups, {**applied, **RC.CHOICE})
+                        if pick == BACK: step = 0; continue
+                        RC.CHOICE.update(pick)
+                        F.done.append(("질환 확인", ", ".join(f"{c} → {next((r['name'] for r in o if r['mondo'] == pick[c]), '모름')}" for c, o in groups)))
                 miss = RC.unresolved(conds) if split_free(st["free"]) else []
                 if miss and RC.HAS_LEARNED:
-                    estimates = [f"{r['condition']}: {', '.join(RC.ORGAN_SHORT[a] for a, _ in r['estimates'])}" for r in reports if r['condition'] in miss]
-                    k = F.choose(f"추정 장기 반영: {', '.join(miss)}", "학습 모델 추정\n" + "\n".join("  " + s for s in estimates) + "\n자동은 낮은 가중치로 반영합니다.",
+                    label = lambda r, a: RC.ORGAN_SHORT[a] + (f" {r['agree'][a]}/{len(r['models'])}" if r.get("models") else "")
+                    estimates = [f"{r['condition']}: {', '.join(label(r, a) for a, _ in r['estimates'])}" for r in reports if r['condition'] in miss]
+                    agreed = any(r.get("models") for r in reports if r["condition"] in miss)
+                    k = F.choose(f"추정 장기 반영: {', '.join(miss)}", "학습 모델 추정\n" + "\n".join("  " + s for s in estimates) + "\n자동은 질환으로 인식된 입력에만 반영합니다." + ("\n모델 2개 이상이 고른 장기만 반영합니다." if agreed else ""),
                                  [n for n, _ in RC.FALLBACK_OPTS])
                     if k == BACK: step = 1; continue
                     f = RC.FALLBACK_OPTS[k][1]; RC.FALLBACK = {c: f for c in miss} if f > 0 else {}

@@ -21,7 +21,7 @@ Order, most favourable first (a lexicographic key, so nothing below can buy back
 Not in the order, shown for reading: grade >= 3 incidence on the patient's organs (absolute %, with 'no data' / 'not
 reported' written out, never read as 0), and boxed warnings on organs the patient is not vulnerable in.
 
-The learned cross-organ vulnerability (FinnGen model, ml/vulnerability_model.py) is OFF by default: in the only non-circular
+The learned cross-organ vulnerability (disease-pair model, ml/vulnerability_model.py; axis heads trained on the Danish DTB since model 0.2) is OFF by default: in the only non-circular
 test it did not improve matching (+0.033 [-0.018, +0.087], ml/README.md), and comorbidity -> later disease is a different
 question from ADC toxicity given the comorbidity. --learned F turns it on for every condition as s_o = max(own, F * learned).
 When a typed condition maps to no organ at all (not in the registry, no MONDO organ, no similar registry condition), the
@@ -42,9 +42,14 @@ AXES = DE.AXES; R = RS.R
 LEARNED_FRACTION = 0.0      # off by default; see the module docstring
 FALLBACK = {}               # condition text -> learned fraction, only for conditions that map to no organ (asked in the wizard)
 PRIORITY = {}               # condition text -> level the user set (1 = avoid its organs' toxicity first); default = severity order
+CHOICE = {}                 # condition text -> MONDO id the user picked among its readings (None = 'not sure'); see mondo_index.readings
 REG_NEAR = 0.80             # a free-text condition is 'the same as' a registry condition at this BioLORD cosine -> its curated organs
 MONDO_SEVERITY = 0.80       # organs read off the MONDO hierarchy have no curated severity; one fixed value, not fitted
 MATCH_COS = 0.60            # last resort: borrow the organs of a loosely similar registry condition
+LINK_THETA = 0.75           # = mondo_index.THETA: a MONDO match this close is 'understood' even when the concept has no organ axis
+AUTO_FALLBACK = 0.25        # the wizard's '자동': the learned estimate is used only when the validity gate says the text names a disease
+GATE_MONDO = True           # also require the validity gate for a MONDO link / borrowed registry organs (chosen on the gold dev split,
+GATE_BORROW = False         # ml/docs/model_review_2026-10-12.md); an index without a gate (before v1) behaves as before
 CONTEXT = {"concomitant_bleomycin": "Concomitant bleomycin (co-medication, no organ)"}     # inputs that are not diseases but a label rule names
 EN = {"haematologic": "Haematologic", "hepatic": "Hepatic", "cardiovascular": "Cardiovascular", "pulmonary": "Pulmonary", "renal": "Renal",
       "gastrointestinal": "GI", "neurologic": "Neurologic", "ocular": "Ocular", "dermatologic": "Dermatologic", "metabolic_endocrine": "Metabolic",
@@ -80,20 +85,34 @@ def own_vec(cid):
 
 
 _FREE = {}                  # free-text conditions -> (nearest registry condition per text, MONDO links), per process
-_FREE_PREDICTIONS = {}       # actual saved FinnGen-MLP predictions, cached per typed condition
+_FREE_PREDICTIONS = {}       # actual saved disease-pair MLP predictions, cached per typed condition
+_FREE_MODELS = {}            # typed condition -> (severity per model, agreement per axis, models needed for automatic use)
+MODEL_NAMES = {"main": "Den", "combined": "Both", "previous": "Fin"}   # model 0.2 v1 names; later checkpoints store their own
 _ANALYSES = {}              # mapping and model estimates shown in the input review
 _REGISTRY_LEARNED = {}
-HAS_LEARNED = True          # the FinnGen estimate is available (not in the portable build)
+HAS_LEARNED = True          # the learned estimate is available (not in the portable build)
 
 
 def clear_model_cache():
     """A completed model update must invalidate both linking and inference results."""
-    _FREE.clear(); _FREE_PREDICTIONS.clear(); _ANALYSES.clear(); _REGISTRY_LEARNED.clear()
+    _FREE.clear(); _FREE_PREDICTIONS.clear(); _FREE_MODELS.clear(); _ANALYSES.clear(); _REGISTRY_LEARNED.clear()
     module = sys.modules.get("mondo_index")
     if module is not None:
         index = getattr(module, "_IDX", None)
         if index is not None and hasattr(index, "close"): index.close()
         module._IDX = None
+    for name in ("mondo_index", "vulnerability_model"):          # loaded encoders, the index matrix and the ensemble are per bundle too
+        module = sys.modules.get(name)
+        if module is not None and hasattr(module, "close"): module.close()
+
+
+_EVIDENCE = []              # label evidence and rules parsed once per process: the label snapshot does not change while it runs
+
+
+def _evidence():
+    import copy
+    if not _EVIDENCE: _EVIDENCE.extend([DE.evidence(), RS.load_rules()])
+    return copy.deepcopy(_EVIDENCE[0]), _EVIDENCE[1]
 
 
 def _learned_values():
@@ -115,16 +134,26 @@ def _free_info(free, progress=None):
         with _Loading("Loading weights / 질환 해석 모델 (BioLORD, MONDO)", "질환 해석 모델 준비 완료", enabled=progress is None):
             import vulnerability_model as VM, mondo_index as MI
             if progress: progress("embedding")
-            E = VM._st(free + [_reg[i]["label"] for i in _reg]); Ef, Er = E[:len(free)], E[len(free):]; ids = list(_reg); best = []
+            # typed text and registry labels in separate batches: the registry is embedded once per process, and the typed
+            # text gets the same (fp16, unpadded-by-the-registry) embedding the MLP reuses below
+            text = english(free)                                   # Korean names go to the models as their English KCD name
+            Ef, Er = VM._st(text), VM._st([_reg[i]["label"] for i in _reg]); ids = list(_reg); best = []
             for i in range(len(free)):
                 sims = Er @ Ef[i]; k = int(sims.argmax()); best.append((ids[k], float(sims[k])))
             if progress: progress("linking")
-            _FREE[key] = (best, MI.link(free))
+            _FREE[key] = (best, MI.link(text))
     best, links = _FREE[key]
     learned = None
     if LEARNED_FRACTION > 0 or FALLBACK:
         learned = _predict_free(free, progress)
     return best, links, learned
+
+
+def english(texts):
+    """typed texts with Korean disease names replaced by their English KCD name (index v3+); other texts unchanged."""
+    if not any(re.search("[가-힣]", t) for t in texts): return list(texts)
+    import mondo_index as MI
+    return [(MI.korean(t) if hasattr(MI, "korean") else None) or t for t in texts]
 
 
 def _predict_free(free, progress=None):
@@ -133,12 +162,18 @@ def _predict_free(free, progress=None):
     missing = list(dict.fromkeys(c for c in free if c not in _FREE_PREDICTIONS))
     if missing:
         import vulnerability_model as VM
-        _FREE_PREDICTIONS.update(zip(missing, VM.predict(missing)))
+        if hasattr(VM, "predict_models"):                          # main estimate plus the comparison heads (model 0.2+)
+            for c, by in zip(missing, VM.predict_models(english(missing))):
+                _FREE_PREDICTIONS[c] = by["main"]
+                if len(by) > 1:                                    # display names: the checkpoint's own (Both, Den, Fin)
+                    label = VM._CK_OPT.get("label", "main"); by = {(label if k == "main" else k): v for k, v in by.items()}
+                    _FREE_MODELS[c] = (by, VM.agreement(by), VM._CK_OPT["agree_min"])
+        else: _FREE_PREDICTIONS.update(zip(missing, VM.predict(english(missing))))
     return [_FREE_PREDICTIONS[c] for c in free]
 
 
 def analyze_conditions(conditions, progress=None):
-    """Review typed conditions using both disease linking and our trained FinnGen MLP.
+    """Review typed conditions using both disease linking and our trained disease-pair MLP.
 
     A model's natural-disease vulnerability estimate is displayed separately from the linked disease's organs.
     Running inference does not silently turn on cross-organ weighting or invent a label diagnosis.
@@ -152,12 +187,20 @@ def analyze_conditions(conditions, progress=None):
     reports = []
     for c, (near, sim), link, prediction in zip(free, best, links, learned):
         how = dict(notes)[c]
-        source = "MONDO" if "; MONDO '" in how else ("Registry match" if "same as registry" in how else
-                 "Similar condition" if "borrowed from registry" in how else "Unmapped")
-        name = link["name"] if source == "MONDO" else (_reg[near]["label"] if source != "Unmapped" else "")
+        source = ("Chosen" if "chosen reading" in how else "MONDO (no organ axis)" if "no organ axis" in how else "MONDO" if "; MONDO '" in how else "Phenotype (HPO)" if "phenotype HPO" in how else
+                  "Registry match" if "same as registry" in how else "Similar condition" if "borrowed from registry" in how else "Unmapped")
+        name = (link["name"] if source.startswith("MONDO") else re.search(r"chosen reading (?:MONDO|HPO) '(.*?)'", how).group(1) if source == "Chosen" else
+                link["hpo"]["name"] if source == "Phenotype (HPO)" else _reg[near]["label"] if source != "Unmapped" else "")
         estimates = sorted(((a, float(v)) for a, v in (prediction or {}).items() if v > 0), key=lambda x: (-x[1], AXES.index(x[0])))[:3]
+        models, by_model, agree = [], {}, {}
+        if c in _FREE_MODELS:                                       # most agreed organs first, then the main score
+            by, agree, _ = _FREE_MODELS[c]; models = [MODEL_NAMES.get(k, k) for k in by]
+            estimates.sort(key=lambda x: (-agree.get(x[0], 0), -x[1], AXES.index(x[0])))
+            by_model = {a: [float(by[k][a]) for k in by] for a, _ in estimates}
         report = dict(condition=c, source=source, name=name, organs=[] if source == "Unmapped" else organs.get(c, []), estimates=estimates,
-                      model="BioLORD + FinnGen MLP" if prediction is not None else None)
+                      model="BioLORD + disease-pair MLP" if prediction is not None else None,
+                      readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")),
+                      models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates})
         _ANALYSES[c] = report; reports.append(report)
     if progress: progress("done")
     return reports
@@ -178,24 +221,57 @@ def resolve(conditions):
         else:
             near, sim = best[fi]; lk = links[fi]; rl = _reg[near]["label"]
             lv = np.array([learned_free[fi][a] for a in AXES]) if learned_free else None
-            if sim >= REG_NEAR: own, how = own_vec(near), f"free text; same as registry '{rl}' (cos {sim:.2f})"; ids.add(near)
-            elif lk["axes"]:
+            rejected = lk.get("gate") is False; hp = lk.get("hpo"); picked = CHOICE.get(c, "-")
+            chosen = _chosen(picked) if c in CHOICE and picked else None
+            if chosen:
+                own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in chosen[1]]
+                how = f"free text; chosen reading {'HPO' if picked.startswith('HP:') else 'MONDO'} '{chosen[0]}' -> organs: {', '.join(chosen[1]) or 'none'}"
+            elif c in CHOICE and picked is None: own, how = np.zeros(len(AXES)), "free text; not understood (no organ); reading left open by the user"
+            elif sim >= REG_NEAR: own, how = own_vec(near), f"free text; same as registry '{rl}' (cos {sim:.2f})"; ids.add(near)
+            elif lk["axes"] and not (GATE_MONDO and rejected):
                 own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in lk["axes"]]
                 how = f"free text; MONDO '{lk['name']}' (sim {lk['sim']:.2f}) -> organs: {', '.join(lk['axes'])}"
-            elif sim >= MATCH_COS: own, how = own_vec(near), f"free text; organs borrowed from registry '{rl}' (cos {sim:.2f})"
+            elif lk["axes"] == [] and lk.get("sim", 0) >= LINK_THETA and not rejected and not lk.get("ambiguous"):
+                own, how = np.zeros(len(AXES)), f"free text; MONDO '{lk['name']}' (sim {lk['sim']:.2f}) -> no organ axis"
+            elif hp:
+                own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in hp["organs"]]
+                how = f"free text; phenotype HPO '{hp['name']}' (sim {hp['sim']:.2f}) -> organs: {', '.join(hp['organs'])}"
+            elif sim >= MATCH_COS and not (GATE_BORROW and rejected): own, how = own_vec(near), f"free text; organs borrowed from registry '{rl}' (cos {sim:.2f})"
             else:
                 own, how = np.zeros(len(AXES)), "free text; not understood (no organ)"
-                if FALLBACK.get(c) and lv is not None:
+                if FALLBACK.get(c) == AUTO_FALLBACK and rejected:
+                    how += "; validity gate: not read as a disease, learned estimate not used"
+                elif FALLBACK.get(c) and lv is not None:
                     f = max(FALLBACK[c], LEARNED_FRACTION); top = [AXES[k] for k in np.argsort(-lv)[:3] if f * lv[k] >= 0.01]
+                    if c in _FREE_MODELS:                           # organs too few models agree on are shown, not applied
+                        _, agree, need = _FREE_MODELS[c]; top = [a for a in top if agree.get(a, 0) >= need]
                     estimate = np.zeros_like(lv)
                     for a in top: estimate[AXES.index(a)] = f * lv[AXES.index(a)]
-                    ws.append(estimate); how += f"; FinnGen learned estimate x{f:g} used (not validated): {', '.join(EN[a] for a in top) or 'no organ'}"
+                    ws.append(estimate); how += f"; learned estimate x{f:g} used (not validated): {', '.join(EN[a] for a in top) or 'no organ'}"
                     if top: pc.append((c, set(top), float(f * lv.max())))
+            if lk.get("ambiguous") and c not in CHOICE:
+                applied = hp["name"] if hp and "phenotype HPO" in how else lk.get("name")
+                how += "; other readings: " + "; ".join(f"{r['name']} ({', '.join(EN[a] for a in r['organs']) or 'no organ'})" for r in lk["readings"] if r["name"] != applied)
             fi += 1
         own_axes |= {AXES[k] for k in np.where(own > 0)[0]}
         if own.max() > 0: pc.append((c, {AXES[k] for k in np.where(own > 0)[0]}, float(own.max())))
         ws.append(np.maximum(own, LEARNED_FRACTION * lv) if lv is not None and LEARNED_FRACTION > 0 else own); notes.append((c, how))
     return np.maximum.reduce(ws), own_axes, ids, notes, pc
+
+
+def _chosen(mondo):
+    import mondo_index as MI
+    if MI._IDX is None: MI.link(["x"])                          # loads the index of the active bundle
+    name, organs = MI.concept(mondo)
+    return (name, organs) if name else None
+
+
+def ambiguous_conditions(conditions):
+    """[(typed text, readings)] for free text whose readings point at different organs and that the user has not settled."""
+    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
+    if not free: return []
+    _, links, _ = _free_info(free)
+    return [(c, lk["readings"]) for c, lk in zip(free, links) if lk.get("ambiguous")]
 
 
 def default_levels(pc):
@@ -242,7 +318,7 @@ def recommend(conditions, labs=None, raw=None):
     """-> rows (ordered), s {axis: value}, notes, checks. labs: restriction inputs as the rules read them (x ULN, CLcr);
     raw: lab-report values (ml/labs.py FIELDS), converted here; an abnormal value also marks its organ."""
     import labs as LB
-    labs = dict(labs or {}); s, own_axes, ids, notes, pc = resolve(conditions); E = DE.evidence(); adcs = sorted(E)
+    labs = dict(labs or {}); s, own_axes, ids, notes, pc = resolve(conditions); E, rules = _evidence(); adcs = sorted(E)
     if raw:
         labs = {**_lab_organs(raw, s, own_axes, notes, pc), **labs}
         conditions = list(conditions) + [c for c, _, _ in pc if c.startswith("Lab: ")]
@@ -254,7 +330,7 @@ def recommend(conditions, labs=None, raw=None):
     L = max(org_lv.values(), default=0)
     per_level = lambda organs: tuple(sum(org_lv[a] == k for a in organs) for k in range(1, L + 1))
     prio = sorted(((lv[c], c, sorted(orgs, key=AXES.index)) for c, orgs, _ in pc), key=lambda x: (x[0], conditions.index(x[1])))
-    p = RS.Patient(conditions=ids, organs=own_axes, **labs); V = RS.judge(p, adcs); rows = []
+    p = RS.Patient(conditions=ids, organs=own_axes, **labs); V = RS.judge(p, adcs, rules); rows = []
     for adc in adcs:
         e = E[adc]; org = e["organs"]; v = V[adc]
         boxed = [a for a in AXES if s[AXES.index(a)] > 0 and org[a]["level"] == "boxed"]
@@ -557,7 +633,7 @@ def _result_context(rows, notes, width, values=None, selected=0):
             out.append(a + " " * padding + "\033[90m │ \033[0m" + b)
     unmapped = [c for c, how in notes if "not understood" in how]
     if unmapped:
-        estimated = any("FinnGen learned estimate" in how for _, how in notes)
+        estimated = any("learned estimate" in how for _, how in notes)
         out.append(_compact_line(("Unvalidated estimate: " if estimated else "Unmapped: ") + ", ".join(unmapped), width))
     return out
 
@@ -581,7 +657,7 @@ def patient_lines(notes):
         if c == "Lab": return how, None
         if c.startswith("Lab: "): return c[5:], "(" + EN[how.rsplit(": ", 1)[-1]] + ")"
         m = re.search(r"(?:MONDO|registry) '([^']+)'", how)
-        if "not understood" in how: return c, "(장기 미확인)" + ("  FinnGen estimate, not validated" if "FinnGen" in how else "")
+        if "not understood" in how: return c, "(장기 미확인)" + ("  learned estimate, not validated" if "learned estimate" in how else "")
         return c, f"({m.group(1)})" if m else ""
     return [names(a, b) for a, b in notes]
 
@@ -619,7 +695,8 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
             source = f" / {report['source']}{match}" if report["name"] else ""
             emit(f"{report['condition']} → {organs}{source}")
             if report["model"]:
-                emit(paint("  FinnGen MLP signal: " + ", ".join(f"{ORGAN_SHORT[a]} {score:.2f}" for a, score in report["estimates"]), "90"))
+                n = len(report.get("models") or [])
+                emit(paint("  Learned signal: " + ", ".join(f"{ORGAN_SHORT[a]} {score:.2f}" + (f" ({report['agree'][a]}/{n})" if n else "") for a, score in report["estimates"]), "90"))
     missing = list(dict.fromkeys(need for row in rows for need in _missing_inputs(row["verdict"])))
     if missing:
         emit(); emit(paint("─" * width, "90")); emit(paint("Missing inputs", "33;1"))
@@ -668,7 +745,7 @@ def priority_lines(pc):
     return [f"  {level}. {', '.join(names)}" for level, names in groups.items()]
 COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)    / 검색    ENTER 확정")
 PRIORITY_Q = ("어느 질환 쪽 독성을 먼저 피할까요?", "1 = 가장 먼저. 같은 숫자는 같은 순위. 순위가 높은 질환의 장기에 경고가 있는 약이 뒤로 갑니다.")
-FALLBACK_Q = ("추정 장기 반영: {conds}", "질환명과 추정 장기를 확인해 주세요. 자동은 낮은 가중치로 반영합니다.")
+FALLBACK_Q = ("추정 장기 반영: {conds}", "질환명과 추정 장기를 확인해 주세요. 자동은 질환으로 인식된 입력에만 반영합니다.")
 FALLBACK_OPTS = [("자동", 0.25), ("반영", 0.5), ("반영 안함", 0.0)]
 def _tui_ok():
     if "--plain" in sys.argv: return False          # plain prompts and a printed table, no full-screen menus
@@ -772,12 +849,12 @@ def main():
     arguments = sys.argv[1:]
     if arguments == ["--version"]:
         print(APP_VERSION); return
-    actions = {"--update-models": "update", "--check-models": "check", "--model-version": "version", "--rollback-models": "rollback"}
+    actions = {"--update-models": "update", "--check-models": "check", "--model-version": "version", "--rollback-models": "rollback", "--verify-models": "verify"}
     if len(arguments) == 1 and arguments[0] in actions:
         import adc_updates
         raise SystemExit(adc_updates.cli(actions[arguments[0]]))
     if arguments == ["--help"]:
-        print("ADCTOX " + APP_VERSION + "\n\nadctox                       Interactive recommender\nadctox --list                Condition IDs\nadctox --update-models       Download changed model files\nadctox --check-models        Check model updates\nadctox --model-version       Installed model version\nadctox --rollback-models     Restore previous model\nadctox --version             App version\n\nIn the condition picker, press U for model updates.")
+        print("ADCTOX " + APP_VERSION + "\n\nadctox                       Interactive recommender\nadctox --list                Condition IDs\nadctox --update-models       Download changed model files\nadctox --check-models        Check model updates\nadctox --model-version       Installed model version\nadctox --rollback-models     Restore previous model\nadctox --verify-models       Re-hash installed model files\nadctox --version             App version\n\nIn the condition picker, press U for model updates.")
         return
     import term
     if "--no-wt" in sys.argv: sys.argv.remove("--no-wt")

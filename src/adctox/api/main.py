@@ -292,7 +292,7 @@ app = FastAPI(
         "Research prototype: proposes ADC designs and estimates organ-system toxicity. "
         "Not a clinical decision tool."
     ),
-    version="0.1.0",
+    version="0.2.0",
 )
 
 

@@ -105,6 +105,63 @@ def _valid(path, item):
     return path.is_file() and path.stat().st_size == item["size"] and digest(path) == item["sha256"]
 
 
+# Blobs are content-addressed and every one was hashed when it was downloaded. Re-hashing ~1 GB on each update only to learn
+# that nothing changed is wasted work, so a verified blob is remembered by (size, mtime) and trusted while both are unchanged.
+# `adctox --verify-models` still re-hashes everything.
+def _verified_path(root):
+    return Path(root) / "blobs" / "verified.json"
+
+
+def _load_verified(root):
+    try:
+        data = json.loads(_verified_path(root).read_text())
+        return data if isinstance(data, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def _remember(root, verified, sha, path):
+    stat = path.stat(); verified[sha] = {"size": stat.st_size, "mtime_ns": stat.st_mtime_ns}
+    tmp = _verified_path(root).with_suffix(".tmp"); tmp.write_text(json.dumps(verified)); os.replace(tmp, _verified_path(root))
+
+
+def _trusted(root, verified, item):
+    blob = Path(root) / "blobs" / item["sha256"]
+    try: stat = blob.stat()
+    except OSError: return False
+    seen = verified.get(item["sha256"])
+    return stat.st_size == item["size"] and bool(seen) and seen.get("size") == stat.st_size and seen.get("mtime_ns") == stat.st_mtime_ns
+
+
+def plan(manifest, home=None):
+    """-> dict(up_to_date, download=[paths], reuse=[paths], download_bytes): what an update would fetch, without hashing.
+    A blob of the installed bundle that predates the verified list is adopted once by size (it was hashed when downloaded)."""
+    root = Path(home) if home else model_home(); verified = _load_verified(root); current = current_info(root)
+    installed = {f["sha256"] for f in (current or {}).get("manifest", {}).get("files", [])}
+    download, reuse = [], []
+    for item in manifest["files"]:
+        blob = root / "blobs" / item["sha256"]
+        legacy = item["sha256"] not in verified                              # installed before the verified list existed
+        if legacy and item["sha256"] in installed and blob.is_file() and blob.stat().st_size == item["size"]:
+            _verified_path(root).parent.mkdir(parents=True, exist_ok=True); _remember(root, verified, item["sha256"], blob)
+        (reuse if _trusted(root, verified, item) else download).append(item)
+    return dict(up_to_date=bool(current) and current.get("bundle_id") == bundle_id(manifest) and not download,
+                download=[i["path"] for i in download], reuse=[i["path"] for i in reuse], download_bytes=sum(i["size"] for i in download))
+
+
+def verify(home=None):
+    """re-hash every file of the active bundle; -> list of corrupted paths (their blobs are forgotten, so the next update refetches)."""
+    root = Path(home) if home else model_home(); current = current_info(root)
+    if not current: raise UpdateError("No installed model bundle.")
+    verified = _load_verified(root); bad = []
+    for item in current["manifest"]["files"]:
+        blob = root / "blobs" / item["sha256"]
+        if _valid(blob, item): _remember(root, verified, item["sha256"], blob)
+        else: bad.append(item["path"]); verified.pop(item["sha256"], None)
+    tmp = _verified_path(root).with_suffix(".tmp"); tmp.write_text(json.dumps(verified)); os.replace(tmp, _verified_path(root))
+    return bad
+
+
 def current_info(home=None):
     root = Path(home) if home else model_home()
     try:
@@ -179,16 +236,21 @@ def install(manifest, home=None, progress=None, allow_local=False, cancelled=Non
             versions.mkdir(exist_ok=True)
             blobs.mkdir(exist_ok=True)
             previous = current_info(root)
+            todo = plan(manifest, root)
+            if todo["up_to_date"]:
+                return {"model_version": manifest["model_version"], "downloaded": [], "reused": todo["reuse"], "bundle_id": identity, "up_to_date": True}
+            verified = _load_verified(root)
             with tempfile.TemporaryDirectory(prefix=".staging-", dir=root) as temporary:
                 staged = Path(temporary) / "bundle"
                 staged.mkdir()
                 for item in manifest["files"]:
                     check_cancelled()
                     blob = blobs / item["sha256"]
-                    if _valid(blob, item):
+                    if _trusted(root, verified, item):
                         reused.append(item["path"])
                     else:
                         _download(item, blob, progress, allow_local)
+                        _remember(root, verified, item["sha256"], blob)
                         downloaded.append(item["path"])
                     path = staged / item["path"]
                     path.parent.mkdir(parents=True, exist_ok=True)
@@ -204,7 +266,7 @@ def install(manifest, home=None, progress=None, allow_local=False, cancelled=Non
                     (root / "previous.json").write_text(json.dumps(previous) + "\n")
                 check_cancelled()
                 _switch(root, destination)
-            return {"model_version": manifest["model_version"], "downloaded": downloaded, "reused": reused, "bundle_id": identity}
+            return {"model_version": manifest["model_version"], "downloaded": downloaded, "reused": reused, "bundle_id": identity, "up_to_date": False}
     except (OSError, ValueError) as error:
         raise UpdateError(f"Model update failed. Existing models remain selected: {error}") from error
 
@@ -239,10 +301,18 @@ def cli(action="update"):
         if action == "version":
             print(info["model_version"] if info else "research-cache / not installed")
             return 0
+        if action == "verify":
+            bad = verify()
+            print("All model files verified." if not bad else "Corrupted (will be downloaded again on update): " + ", ".join(bad))
+            return 0 if not bad else 1
         manifest = fetch_manifest()
         print(f"Model {info['model_version'] if info else 'not installed'} -> {manifest['model_version']}")
+        todo = plan(manifest)
         if action == "check":
-            print("Up to date" if info and info["bundle_id"] == bundle_id(manifest) else "Update available")
+            print("Up to date" if todo["up_to_date"] else f"Update available: {len(todo['download'])} files to download ({todo['download_bytes'] / 1024**2:.1f} MiB), {len(todo['reuse'])} unchanged")
+            return 0
+        if todo["up_to_date"]:
+            print("Up to date; nothing downloaded.")
             return 0
         last = {}
         def progress(name, done, total):

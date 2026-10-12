@@ -1,0 +1,4202 @@
+[
+ {
+  "qid": "q0001",
+  "query": "Iron deficiency anemia",
+  "category": "canonical",
+  "intended": "Iron deficiency anemia",
+  "group": "iron_deficiency_anemia"
+ },
+ {
+  "qid": "q0002",
+  "query": "Sideropenic anemia",
+  "category": "synonym",
+  "intended": "Iron deficiency anemia",
+  "group": "iron_deficiency_anemia"
+ },
+ {
+  "qid": "q0003",
+  "query": "IDA",
+  "category": "abbrev",
+  "intended": "Iron deficiency anemia",
+  "group": "iron_deficiency_anemia"
+ },
+ {
+  "qid": "q0004",
+  "query": "iron defficiency anaemia",
+  "category": "typo",
+  "intended": "Iron deficiency anemia",
+  "group": "iron_deficiency_anemia"
+ },
+ {
+  "qid": "q0005",
+  "query": "low iron blood",
+  "category": "lay",
+  "intended": "Iron deficiency anemia",
+  "group": "iron_deficiency_anemia"
+ },
+ {
+  "qid": "q0006",
+  "query": "deep vein thrombosis",
+  "category": "canonical",
+  "intended": "Deep vein thrombosis",
+  "group": "deep_vein_thrombosis"
+ },
+ {
+  "qid": "q0007",
+  "query": "Lower limb venous thromboembolism",
+  "category": "synonym",
+  "intended": "Deep vein thrombosis",
+  "group": "deep_vein_thrombosis"
+ },
+ {
+  "qid": "q0008",
+  "query": "hx of dvt",
+  "category": "abbrev",
+  "intended": "Deep vein thrombosis",
+  "group": "deep_vein_thrombosis"
+ },
+ {
+  "qid": "q0009",
+  "query": "deep vien thrombosis",
+  "category": "typo",
+  "intended": "Deep vein thrombosis",
+  "group": "deep_vein_thrombosis"
+ },
+ {
+  "qid": "q0010",
+  "query": "blood clot in leg",
+  "category": "lay",
+  "intended": "Deep vein thrombosis",
+  "group": "deep_vein_thrombosis"
+ },
+ {
+  "qid": "q0011",
+  "query": "HEMOPHILIA A",
+  "category": "canonical",
+  "intended": "Hemophilia A",
+  "group": "hemophilia_a"
+ },
+ {
+  "qid": "q0012",
+  "query": "Classic hemophilia",
+  "category": "synonym",
+  "intended": "Hemophilia A",
+  "group": "hemophilia_a"
+ },
+ {
+  "qid": "q0013",
+  "query": "fviii deficiency",
+  "category": "abbrev",
+  "intended": "Hemophilia A",
+  "group": "hemophilia_a"
+ },
+ {
+  "qid": "q0014",
+  "query": "haemophelia A",
+  "category": "typo",
+  "intended": "Hemophilia A",
+  "group": "hemophilia_a"
+ },
+ {
+  "qid": "q0015",
+  "query": "bleeder disease",
+  "category": "lay",
+  "intended": "Hemophilia A",
+  "group": "hemophilia_a"
+ },
+ {
+  "qid": "q0016",
+  "query": "Sickle cell disease",
+  "category": "canonical",
+  "intended": "Sickle cell disease",
+  "group": "sickle_cell_disease"
+ },
+ {
+  "qid": "q0017",
+  "query": "Drepanocytosis",
+  "category": "synonym",
+  "intended": "Sickle cell disease",
+  "group": "sickle_cell_disease"
+ },
+ {
+  "qid": "q0018",
+  "query": "SCD",
+  "category": "abbrev",
+  "intended": "Sickle cell disease",
+  "group": "sickle_cell_disease"
+ },
+ {
+  "qid": "q0019",
+  "query": "sickel cell disease",
+  "category": "typo",
+  "intended": "Sickle cell disease",
+  "group": "sickle_cell_disease"
+ },
+ {
+  "qid": "q0020",
+  "query": "sickle blood",
+  "category": "lay",
+  "intended": "Sickle cell disease",
+  "group": "sickle_cell_disease"
+ },
+ {
+  "qid": "q0021",
+  "query": "Immune thrombocytopenia",
+  "category": "canonical",
+  "intended": "Immune thrombocytopenia",
+  "group": "immune_thrombocytopenia"
+ },
+ {
+  "qid": "q0022",
+  "query": "Idiopathic thrombocytopenic purpura",
+  "category": "synonym",
+  "intended": "Immune thrombocytopenia",
+  "group": "immune_thrombocytopenia"
+ },
+ {
+  "qid": "q0023",
+  "query": "ITP",
+  "category": "abbrev",
+  "intended": "Immune thrombocytopenia",
+  "group": "immune_thrombocytopenia"
+ },
+ {
+  "qid": "q0024",
+  "query": "immune thrombocytopina",
+  "category": "typo",
+  "intended": "Immune thrombocytopenia",
+  "group": "immune_thrombocytopenia"
+ },
+ {
+  "qid": "q0025",
+  "query": "platelets low because immune system kills them",
+  "category": "lay",
+  "intended": "Immune thrombocytopenia",
+  "group": "immune_thrombocytopenia"
+ },
+ {
+  "qid": "q0026",
+  "query": "polycythemia vera",
+  "category": "canonical",
+  "intended": "Polycythemia vera",
+  "group": "polycythemia_vera"
+ },
+ {
+  "qid": "q0027",
+  "query": "Primary polycythemia",
+  "category": "synonym",
+  "intended": "Polycythemia vera",
+  "group": "polycythemia_vera"
+ },
+ {
+  "qid": "q0028",
+  "query": "PV",
+  "category": "abbrev",
+  "intended": "Polycythemia vera",
+  "group": "polycythemia_vera"
+ },
+ {
+  "qid": "q0029",
+  "query": "polycythemia vara",
+  "category": "typo",
+  "intended": "Polycythemia vera",
+  "group": "polycythemia_vera"
+ },
+ {
+  "qid": "q0030",
+  "query": "too many red blood cells",
+  "category": "lay",
+  "intended": "Polycythemia vera",
+  "group": "polycythemia_vera"
+ },
+ {
+  "qid": "q0031",
+  "query": "Child-Pugh class B cirrhosis",
+  "category": "canonical",
+  "intended": "Child-Pugh class B cirrhosis",
+  "group": "cirrhosis_child_pugh_b"
+ },
+ {
+  "qid": "q0032",
+  "query": "Decompensated cirrhosis Child-Pugh B",
+  "category": "synonym",
+  "intended": "Child-Pugh class B cirrhosis",
+  "group": "cirrhosis_child_pugh_b"
+ },
+ {
+  "qid": "q0033",
+  "query": "CP-B cirrhosis",
+  "category": "abbrev",
+  "intended": "Child-Pugh class B cirrhosis",
+  "group": "cirrhosis_child_pugh_b"
+ },
+ {
+  "qid": "q0034",
+  "query": "child pugh B cirrhossis",
+  "category": "typo",
+  "intended": "Child-Pugh class B cirrhosis",
+  "group": "cirrhosis_child_pugh_b"
+ },
+ {
+  "qid": "q0035",
+  "query": "scarred liver, moderately bad",
+  "category": "lay",
+  "intended": "Child-Pugh class B cirrhosis",
+  "group": "cirrhosis_child_pugh_b"
+ },
+ {
+  "qid": "q0036",
+  "query": "Alcoholic hepatitis",
+  "category": "canonical",
+  "intended": "Alcoholic hepatitis",
+  "group": "alcoholic_hepatitis"
+ },
+ {
+  "qid": "q0037",
+  "query": "Alcohol-associated hepatitis",
+  "category": "synonym",
+  "intended": "Alcoholic hepatitis",
+  "group": "alcoholic_hepatitis"
+ },
+ {
+  "qid": "q0038",
+  "query": "AH",
+  "category": "abbrev",
+  "intended": "Alcoholic hepatitis",
+  "group": "alcoholic_hepatitis"
+ },
+ {
+  "qid": "q0039",
+  "query": "alcholic hepatitis",
+  "category": "typo",
+  "intended": "Alcoholic hepatitis",
+  "group": "alcoholic_hepatitis"
+ },
+ {
+  "qid": "q0040",
+  "query": "liver inflamed from drinking",
+  "category": "lay",
+  "intended": "Alcoholic hepatitis",
+  "group": "alcoholic_hepatitis"
+ },
+ {
+  "qid": "q0041",
+  "query": "Hereditary hemochromatosis",
+  "category": "canonical",
+  "intended": "Hereditary hemochromatosis",
+  "group": "hemochromatosis"
+ },
+ {
+  "qid": "q0042",
+  "query": "HFE-related iron overload",
+  "category": "synonym",
+  "intended": "Hereditary hemochromatosis",
+  "group": "hemochromatosis"
+ },
+ {
+  "qid": "q0043",
+  "query": "HH",
+  "category": "abbrev",
+  "intended": "Hereditary hemochromatosis",
+  "group": "hemochromatosis"
+ },
+ {
+  "qid": "q0044",
+  "query": "hemochromatosus",
+  "category": "typo",
+  "intended": "Hereditary hemochromatosis",
+  "group": "hemochromatosis"
+ },
+ {
+  "qid": "q0045",
+  "query": "iron overload gene problem",
+  "category": "lay",
+  "intended": "Hereditary hemochromatosis",
+  "group": "hemochromatosis"
+ },
+ {
+  "qid": "q0046",
+  "query": "primary biliary cholangitis",
+  "category": "canonical",
+  "intended": "Primary biliary cholangitis",
+  "group": "primary_biliary_cholangitis"
+ },
+ {
+  "qid": "q0047",
+  "query": "Primary biliary cirrhosis",
+  "category": "synonym",
+  "intended": "Primary biliary cholangitis",
+  "group": "primary_biliary_cholangitis"
+ },
+ {
+  "qid": "q0048",
+  "query": "PBC",
+  "category": "abbrev",
+  "intended": "Primary biliary cholangitis",
+  "group": "primary_biliary_cholangitis"
+ },
+ {
+  "qid": "q0049",
+  "query": "primary bilary cholangitis",
+  "category": "typo",
+  "intended": "Primary biliary cholangitis",
+  "group": "primary_biliary_cholangitis"
+ },
+ {
+  "qid": "q0050",
+  "query": "autoimmune bile duct liver itch",
+  "category": "lay",
+  "intended": "Primary biliary cholangitis",
+  "group": "primary_biliary_cholangitis"
+ },
+ {
+  "qid": "q0051",
+  "query": "Chronic hepatitis B",
+  "category": "canonical",
+  "intended": "Chronic hepatitis B",
+  "group": "chronic_hepatitis_b"
+ },
+ {
+  "qid": "q0052",
+  "query": "Chronic HBV infection",
+  "category": "synonym",
+  "intended": "Chronic hepatitis B",
+  "group": "chronic_hepatitis_b"
+ },
+ {
+  "qid": "q0053",
+  "query": "CHB",
+  "category": "abbrev",
+  "intended": "Chronic hepatitis B",
+  "group": "chronic_hepatitis_b"
+ },
+ {
+  "qid": "q0054",
+  "query": "chronic hepatits B",
+  "category": "typo",
+  "intended": "Chronic hepatitis B",
+  "group": "chronic_hepatitis_b"
+ },
+ {
+  "qid": "q0055",
+  "query": "long-term hep B",
+  "category": "lay",
+  "intended": "Chronic hepatitis B",
+  "group": "chronic_hepatitis_b"
+ },
+ {
+  "qid": "q0056",
+  "query": "Cholelithiasis",
+  "category": "canonical",
+  "intended": "Cholelithiasis",
+  "group": "cholelithiasis"
+ },
+ {
+  "qid": "q0057",
+  "query": "Gallstone disease",
+  "category": "synonym",
+  "intended": "Cholelithiasis",
+  "group": "cholelithiasis"
+ },
+ {
+  "qid": "q0058",
+  "query": "cholelith",
+  "category": "abbrev",
+  "intended": "Cholelithiasis",
+  "group": "cholelithiasis"
+ },
+ {
+  "qid": "q0059",
+  "query": "choleithiasis",
+  "category": "typo",
+  "intended": "Cholelithiasis",
+  "group": "cholelithiasis"
+ },
+ {
+  "qid": "q0060",
+  "query": "stones in the gallbladder",
+  "category": "lay",
+  "intended": "Cholelithiasis",
+  "group": "cholelithiasis"
+ },
+ {
+  "qid": "q0061",
+  "query": "Heart failure NYHA class III",
+  "category": "canonical",
+  "intended": "Heart failure NYHA class III",
+  "group": "heart_failure_nyha3"
+ },
+ {
+  "qid": "q0062",
+  "query": "Class III congestive heart failure",
+  "category": "synonym",
+  "intended": "Heart failure NYHA class III",
+  "group": "heart_failure_nyha3"
+ },
+ {
+  "qid": "q0063",
+  "query": "CHF NYHA III",
+  "category": "abbrev",
+  "intended": "Heart failure NYHA class III",
+  "group": "heart_failure_nyha3"
+ },
+ {
+  "qid": "q0064",
+  "query": "heart failer NYHA class 3",
+  "category": "typo",
+  "intended": "Heart failure NYHA class III",
+  "group": "heart_failure_nyha3"
+ },
+ {
+  "qid": "q0065",
+  "query": "heart pump too weak, breathless walking",
+  "category": "lay",
+  "intended": "Heart failure NYHA class III",
+  "group": "heart_failure_nyha3"
+ },
+ {
+  "qid": "q0066",
+  "query": "atrial fibrillation",
+  "category": "canonical",
+  "intended": "Atrial fibrillation",
+  "group": "atrial_fibrillation"
+ },
+ {
+  "qid": "q0067",
+  "query": "Auricular fibrillation",
+  "category": "synonym",
+  "intended": "Atrial fibrillation",
+  "group": "atrial_fibrillation"
+ },
+ {
+  "qid": "q0068",
+  "query": "afib",
+  "category": "abbrev",
+  "intended": "Atrial fibrillation",
+  "group": "atrial_fibrillation"
+ },
+ {
+  "qid": "q0069",
+  "query": "atrial fibrilation",
+  "category": "typo",
+  "intended": "Atrial fibrillation",
+  "group": "atrial_fibrillation"
+ },
+ {
+  "qid": "q0070",
+  "query": "irregular heartbeat",
+  "category": "lay",
+  "intended": "Atrial fibrillation",
+  "group": "atrial_fibrillation"
+ },
+ {
+  "qid": "q0071",
+  "query": "Essential hypertension",
+  "category": "canonical",
+  "intended": "Essential hypertension",
+  "group": "hypertension"
+ },
+ {
+  "qid": "q0072",
+  "query": "Arterial hypertension",
+  "category": "synonym",
+  "intended": "Essential hypertension",
+  "group": "hypertension"
+ },
+ {
+  "qid": "q0073",
+  "query": "HTN",
+  "category": "abbrev",
+  "intended": "Essential hypertension",
+  "group": "hypertension"
+ },
+ {
+  "qid": "q0074",
+  "query": "hypertention",
+  "category": "typo",
+  "intended": "Essential hypertension",
+  "group": "hypertension"
+ },
+ {
+  "qid": "q0075",
+  "query": "my pressure runs high",
+  "category": "lay",
+  "intended": "Essential hypertension",
+  "group": "hypertension"
+ },
+ {
+  "qid": "q0076",
+  "query": "Hyperlipidemia",
+  "category": "canonical",
+  "intended": "Hyperlipidemia",
+  "group": "hyperlipidemia"
+ },
+ {
+  "qid": "q0077",
+  "query": "Dyslipidemia",
+  "category": "synonym",
+  "intended": "Hyperlipidemia",
+  "group": "hyperlipidemia"
+ },
+ {
+  "qid": "q0078",
+  "query": "HLD",
+  "category": "abbrev",
+  "intended": "Hyperlipidemia",
+  "group": "hyperlipidemia"
+ },
+ {
+  "qid": "q0079",
+  "query": "hyperlipidimia",
+  "category": "typo",
+  "intended": "Hyperlipidemia",
+  "group": "hyperlipidemia"
+ },
+ {
+  "qid": "q0080",
+  "query": "high cholesterol",
+  "category": "lay",
+  "intended": "Hyperlipidemia",
+  "group": "hyperlipidemia"
+ },
+ {
+  "qid": "q0081",
+  "query": "Myocardial infarction",
+  "category": "canonical",
+  "intended": "Myocardial infarction",
+  "group": "myocardial_infarction"
+ },
+ {
+  "qid": "q0082",
+  "query": "Cardiac infarction",
+  "category": "synonym",
+  "intended": "Myocardial infarction",
+  "group": "myocardial_infarction"
+ },
+ {
+  "qid": "q0083",
+  "query": "MI hx",
+  "category": "abbrev",
+  "intended": "Myocardial infarction",
+  "group": "myocardial_infarction"
+ },
+ {
+  "qid": "q0084",
+  "query": "myocardial infartion",
+  "category": "typo",
+  "intended": "Myocardial infarction",
+  "group": "myocardial_infarction"
+ },
+ {
+  "qid": "q0085",
+  "query": "heart attack",
+  "category": "lay",
+  "intended": "Myocardial infarction",
+  "group": "myocardial_infarction"
+ },
+ {
+  "qid": "q0086",
+  "query": "dilated cardiomyopathy",
+  "category": "canonical",
+  "intended": "Dilated cardiomyopathy",
+  "group": "dilated_cardiomyopathy"
+ },
+ {
+  "qid": "q0087",
+  "query": "Congestive cardiomyopathy",
+  "category": "synonym",
+  "intended": "Dilated cardiomyopathy",
+  "group": "dilated_cardiomyopathy"
+ },
+ {
+  "qid": "q0088",
+  "query": "DCM",
+  "category": "abbrev",
+  "intended": "Dilated cardiomyopathy",
+  "group": "dilated_cardiomyopathy"
+ },
+ {
+  "qid": "q0089",
+  "query": "dilated cardiomyopathi",
+  "category": "typo",
+  "intended": "Dilated cardiomyopathy",
+  "group": "dilated_cardiomyopathy"
+ },
+ {
+  "qid": "q0090",
+  "query": "enlarged floppy heart",
+  "category": "lay",
+  "intended": "Dilated cardiomyopathy",
+  "group": "dilated_cardiomyopathy"
+ },
+ {
+  "qid": "q0091",
+  "query": "Aortic stenosis",
+  "category": "canonical",
+  "intended": "Aortic stenosis",
+  "group": "aortic_stenosis"
+ },
+ {
+  "qid": "q0092",
+  "query": "Aortic valve stenosis",
+  "category": "synonym",
+  "intended": "Aortic stenosis",
+  "group": "aortic_stenosis"
+ },
+ {
+  "qid": "q0093",
+  "query": "AS valve",
+  "category": "abbrev",
+  "intended": "Aortic stenosis",
+  "group": "aortic_stenosis"
+ },
+ {
+  "qid": "q0094",
+  "query": "aortic stenosys",
+  "category": "typo",
+  "intended": "Aortic stenosis",
+  "group": "aortic_stenosis"
+ },
+ {
+  "qid": "q0095",
+  "query": "narrow heart valve",
+  "category": "lay",
+  "intended": "Aortic stenosis",
+  "group": "aortic_stenosis"
+ },
+ {
+  "qid": "q0096",
+  "query": "Pericardial effusion",
+  "category": "canonical",
+  "intended": "Pericardial effusion",
+  "group": "pericardial_effusion"
+ },
+ {
+  "qid": "q0097",
+  "query": "Hydropericardium",
+  "category": "synonym",
+  "intended": "Pericardial effusion",
+  "group": "pericardial_effusion"
+ },
+ {
+  "qid": "q0098",
+  "query": "peric eff",
+  "category": "abbrev",
+  "intended": "Pericardial effusion",
+  "group": "pericardial_effusion"
+ },
+ {
+  "qid": "q0099",
+  "query": "pericardial effussion",
+  "category": "typo",
+  "intended": "Pericardial effusion",
+  "group": "pericardial_effusion"
+ },
+ {
+  "qid": "q0100",
+  "query": "water around the heart",
+  "category": "lay",
+  "intended": "Pericardial effusion",
+  "group": "pericardial_effusion"
+ },
+ {
+  "qid": "q0101",
+  "query": "Peripheral arterial disease",
+  "category": "canonical",
+  "intended": "Peripheral arterial disease",
+  "group": "peripheral_artery_disease"
+ },
+ {
+  "qid": "q0102",
+  "query": "Peripheral vascular disease",
+  "category": "synonym",
+  "intended": "Peripheral arterial disease",
+  "group": "peripheral_artery_disease"
+ },
+ {
+  "qid": "q0103",
+  "query": "PAD",
+  "category": "abbrev",
+  "intended": "Peripheral arterial disease",
+  "group": "peripheral_artery_disease"
+ },
+ {
+  "qid": "q0104",
+  "query": "peripheral artery diesase",
+  "category": "typo",
+  "intended": "Peripheral arterial disease",
+  "group": "peripheral_artery_disease"
+ },
+ {
+  "qid": "q0105",
+  "query": "poor circulation in legs",
+  "category": "lay",
+  "intended": "Peripheral arterial disease",
+  "group": "peripheral_artery_disease"
+ },
+ {
+  "qid": "q0106",
+  "query": "asthma",
+  "category": "canonical",
+  "intended": "Asthma",
+  "group": "asthma"
+ },
+ {
+  "qid": "q0107",
+  "query": "Bronchial asthma",
+  "category": "synonym",
+  "intended": "Asthma",
+  "group": "asthma"
+ },
+ {
+  "qid": "q0108",
+  "query": "RAD",
+  "category": "abbrev",
+  "intended": "Asthma",
+  "group": "asthma"
+ },
+ {
+  "qid": "q0109",
+  "query": "asthama",
+  "category": "typo",
+  "intended": "Asthma",
+  "group": "asthma"
+ },
+ {
+  "qid": "q0110",
+  "query": "wheezy chest since childhood",
+  "category": "lay",
+  "intended": "Asthma",
+  "group": "asthma"
+ },
+ {
+  "qid": "q0111",
+  "query": "Pulmonary embolism",
+  "category": "canonical",
+  "intended": "Pulmonary embolism",
+  "group": "pulmonary_embolism"
+ },
+ {
+  "qid": "q0112",
+  "query": "Pulmonary thromboembolism",
+  "category": "synonym",
+  "intended": "Pulmonary embolism",
+  "group": "pulmonary_embolism"
+ },
+ {
+  "qid": "q0113",
+  "query": "PE hx",
+  "category": "abbrev",
+  "intended": "Pulmonary embolism",
+  "group": "pulmonary_embolism"
+ },
+ {
+  "qid": "q0114",
+  "query": "pulmonry embolism",
+  "category": "typo",
+  "intended": "Pulmonary embolism",
+  "group": "pulmonary_embolism"
+ },
+ {
+  "qid": "q0115",
+  "query": "clot in lung",
+  "category": "lay",
+  "intended": "Pulmonary embolism",
+  "group": "pulmonary_embolism"
+ },
+ {
+  "qid": "q0116",
+  "query": "Pleural effusion",
+  "category": "canonical",
+  "intended": "Pleural effusion",
+  "group": "pleural_effusion"
+ },
+ {
+  "qid": "q0117",
+  "query": "Fluid in the pleural space",
+  "category": "synonym",
+  "intended": "Pleural effusion",
+  "group": "pleural_effusion"
+ },
+ {
+  "qid": "q0118",
+  "query": "pl eff",
+  "category": "abbrev",
+  "intended": "Pleural effusion",
+  "group": "pleural_effusion"
+ },
+ {
+  "qid": "q0119",
+  "query": "pleural efusion",
+  "category": "typo",
+  "intended": "Pleural effusion",
+  "group": "pleural_effusion"
+ },
+ {
+  "qid": "q0120",
+  "query": "water on the lung",
+  "category": "lay",
+  "intended": "Pleural effusion",
+  "group": "pleural_effusion"
+ },
+ {
+  "qid": "q0121",
+  "query": "Obstructive sleep apnea",
+  "category": "canonical",
+  "intended": "Obstructive sleep apnea",
+  "group": "obstructive_sleep_apnea"
+ },
+ {
+  "qid": "q0122",
+  "query": "Obstructive sleep-disordered breathing",
+  "category": "synonym",
+  "intended": "Obstructive sleep apnea",
+  "group": "obstructive_sleep_apnea"
+ },
+ {
+  "qid": "q0123",
+  "query": "OSA",
+  "category": "abbrev",
+  "intended": "Obstructive sleep apnea",
+  "group": "obstructive_sleep_apnea"
+ },
+ {
+  "qid": "q0124",
+  "query": "obstructve sleep apnea",
+  "category": "typo",
+  "intended": "Obstructive sleep apnea",
+  "group": "obstructive_sleep_apnea"
+ },
+ {
+  "qid": "q0125",
+  "query": "stops breathing while asleep",
+  "category": "lay",
+  "intended": "Obstructive sleep apnea",
+  "group": "obstructive_sleep_apnea"
+ },
+ {
+  "qid": "q0126",
+  "query": "pulmonary arterial hypertension",
+  "category": "canonical",
+  "intended": "Pulmonary arterial hypertension",
+  "group": "pulmonary_arterial_hypertension"
+ },
+ {
+  "qid": "q0127",
+  "query": "Pulmonary hypertension",
+  "category": "synonym",
+  "intended": "Pulmonary arterial hypertension",
+  "group": "pulmonary_arterial_hypertension"
+ },
+ {
+  "qid": "q0128",
+  "query": "PAH",
+  "category": "abbrev",
+  "intended": "Pulmonary arterial hypertension",
+  "group": "pulmonary_arterial_hypertension"
+ },
+ {
+  "qid": "q0129",
+  "query": "pulmonary hypertention",
+  "category": "typo",
+  "intended": "Pulmonary arterial hypertension",
+  "group": "pulmonary_arterial_hypertension"
+ },
+ {
+  "qid": "q0130",
+  "query": "high pressure in lung vessels",
+  "category": "lay",
+  "intended": "Pulmonary arterial hypertension",
+  "group": "pulmonary_arterial_hypertension"
+ },
+ {
+  "qid": "q0131",
+  "query": "Chronic obstructive pulmonary disease",
+  "category": "canonical",
+  "intended": "Chronic obstructive pulmonary disease",
+  "group": "copd"
+ },
+ {
+  "qid": "q0132",
+  "query": "Chronic obstructive airway disease",
+  "category": "synonym",
+  "intended": "Chronic obstructive pulmonary disease",
+  "group": "copd"
+ },
+ {
+  "qid": "q0133",
+  "query": "COPD",
+  "category": "abbrev",
+  "intended": "Chronic obstructive pulmonary disease",
+  "group": "copd"
+ },
+ {
+  "qid": "q0134",
+  "query": "chronic obstuctive pulmonary disease",
+  "category": "typo",
+  "intended": "Chronic obstructive pulmonary disease",
+  "group": "copd"
+ },
+ {
+  "qid": "q0135",
+  "query": "smoker's lungs",
+  "category": "lay",
+  "intended": "Chronic obstructive pulmonary disease",
+  "group": "copd"
+ },
+ {
+  "qid": "q0136",
+  "query": "Chronic kidney disease stage 4",
+  "category": "canonical",
+  "intended": "Chronic kidney disease stage 4",
+  "group": "ckd_stage_4"
+ },
+ {
+  "qid": "q0137",
+  "query": "Severe chronic renal insufficiency (CKD G4)",
+  "category": "synonym",
+  "intended": "Chronic kidney disease stage 4",
+  "group": "ckd_stage_4"
+ },
+ {
+  "qid": "q0138",
+  "query": "CKD4",
+  "category": "abbrev",
+  "intended": "Chronic kidney disease stage 4",
+  "group": "ckd_stage_4"
+ },
+ {
+  "qid": "q0139",
+  "query": "chronic kidny disease stage 4",
+  "category": "typo",
+  "intended": "Chronic kidney disease stage 4",
+  "group": "ckd_stage_4"
+ },
+ {
+  "qid": "q0140",
+  "query": "kidneys working at about 20 percent",
+  "category": "lay",
+  "intended": "Chronic kidney disease stage 4",
+  "group": "ckd_stage_4"
+ },
+ {
+  "qid": "q0141",
+  "query": "Nephrolithiasis",
+  "category": "canonical",
+  "intended": "Nephrolithiasis",
+  "group": "nephrolithiasis"
+ },
+ {
+  "qid": "q0142",
+  "query": "Renal calculi",
+  "category": "synonym",
+  "intended": "Nephrolithiasis",
+  "group": "nephrolithiasis"
+ },
+ {
+  "qid": "q0143",
+  "query": "neph stones",
+  "category": "abbrev",
+  "intended": "Nephrolithiasis",
+  "group": "nephrolithiasis"
+ },
+ {
+  "qid": "q0144",
+  "query": "nephrolithiasus",
+  "category": "typo",
+  "intended": "Nephrolithiasis",
+  "group": "nephrolithiasis"
+ },
+ {
+  "qid": "q0145",
+  "query": "kidney stones",
+  "category": "lay",
+  "intended": "Nephrolithiasis",
+  "group": "nephrolithiasis"
+ },
+ {
+  "qid": "q0146",
+  "query": "autosomal dominant polycystic kidney disease",
+  "category": "canonical",
+  "intended": "Autosomal dominant polycystic kidney disease",
+  "group": "adpkd"
+ },
+ {
+  "qid": "q0147",
+  "query": "Polycystic kidney disease",
+  "category": "synonym",
+  "intended": "Autosomal dominant polycystic kidney disease",
+  "group": "adpkd"
+ },
+ {
+  "qid": "q0148",
+  "query": "ADPKD",
+  "category": "abbrev",
+  "intended": "Autosomal dominant polycystic kidney disease",
+  "group": "adpkd"
+ },
+ {
+  "qid": "q0149",
+  "query": "polycystic kidny disease",
+  "category": "typo",
+  "intended": "Autosomal dominant polycystic kidney disease",
+  "group": "adpkd"
+ },
+ {
+  "qid": "q0150",
+  "query": "cysts all over the kidneys",
+  "category": "lay",
+  "intended": "Autosomal dominant polycystic kidney disease",
+  "group": "adpkd"
+ },
+ {
+  "qid": "q0151",
+  "query": "Nephrotic syndrome",
+  "category": "canonical",
+  "intended": "Nephrotic syndrome",
+  "group": "nephrotic_syndrome"
+ },
+ {
+  "qid": "q0152",
+  "query": "Nephrosis",
+  "category": "synonym",
+  "intended": "Nephrotic syndrome",
+  "group": "nephrotic_syndrome"
+ },
+ {
+  "qid": "q0153",
+  "query": "NS renal",
+  "category": "abbrev",
+  "intended": "Nephrotic syndrome",
+  "group": "nephrotic_syndrome"
+ },
+ {
+  "qid": "q0154",
+  "query": "nephrotic syndrom",
+  "category": "typo",
+  "intended": "Nephrotic syndrome",
+  "group": "nephrotic_syndrome"
+ },
+ {
+  "qid": "q0155",
+  "query": "protein leaking out of kidneys",
+  "category": "lay",
+  "intended": "Nephrotic syndrome",
+  "group": "nephrotic_syndrome"
+ },
+ {
+  "qid": "q0156",
+  "query": "Acute kidney injury",
+  "category": "canonical",
+  "intended": "Acute kidney injury",
+  "group": "acute_kidney_injury"
+ },
+ {
+  "qid": "q0157",
+  "query": "Acute renal failure",
+  "category": "synonym",
+  "intended": "Acute kidney injury",
+  "group": "acute_kidney_injury"
+ },
+ {
+  "qid": "q0158",
+  "query": "AKI",
+  "category": "abbrev",
+  "intended": "Acute kidney injury",
+  "group": "acute_kidney_injury"
+ },
+ {
+  "qid": "q0159",
+  "query": "acute kidny injury",
+  "category": "typo",
+  "intended": "Acute kidney injury",
+  "group": "acute_kidney_injury"
+ },
+ {
+  "qid": "q0160",
+  "query": "kidneys suddenly shut down",
+  "category": "lay",
+  "intended": "Acute kidney injury",
+  "group": "acute_kidney_injury"
+ },
+ {
+  "qid": "q0161",
+  "query": "Hydronephrosis",
+  "category": "canonical",
+  "intended": "Hydronephrosis",
+  "group": "hydronephrosis"
+ },
+ {
+  "qid": "q0162",
+  "query": "Dilatation of the renal collecting system",
+  "category": "synonym",
+  "intended": "Hydronephrosis",
+  "group": "hydronephrosis"
+ },
+ {
+  "qid": "q0163",
+  "query": "hydro",
+  "category": "abbrev",
+  "intended": "Hydronephrosis",
+  "group": "hydronephrosis"
+ },
+ {
+  "qid": "q0164",
+  "query": "hydronefrosis",
+  "category": "typo",
+  "intended": "Hydronephrosis",
+  "group": "hydronephrosis"
+ },
+ {
+  "qid": "q0165",
+  "query": "swollen kidney from backed-up urine",
+  "category": "lay",
+  "intended": "Hydronephrosis",
+  "group": "hydronephrosis"
+ },
+ {
+  "qid": "q0166",
+  "query": "crohn's disease",
+  "category": "canonical",
+  "intended": "Crohn's disease",
+  "group": "crohn_disease"
+ },
+ {
+  "qid": "q0167",
+  "query": "Regional enteritis",
+  "category": "synonym",
+  "intended": "Crohn's disease",
+  "group": "crohn_disease"
+ },
+ {
+  "qid": "q0168",
+  "query": "CD gut",
+  "category": "abbrev",
+  "intended": "Crohn's disease",
+  "group": "crohn_disease"
+ },
+ {
+  "qid": "q0169",
+  "query": "crohns diesase",
+  "category": "typo",
+  "intended": "Crohn's disease",
+  "group": "crohn_disease"
+ },
+ {
+  "qid": "q0170",
+  "query": "bowel flare-ups that never go away",
+  "category": "lay",
+  "intended": "Crohn's disease",
+  "group": "crohn_disease"
+ },
+ {
+  "qid": "q0171",
+  "query": "Ulcerative colitis",
+  "category": "canonical",
+  "intended": "Ulcerative colitis",
+  "group": "ulcerative_colitis"
+ },
+ {
+  "qid": "q0172",
+  "query": "Idiopathic proctocolitis",
+  "category": "synonym",
+  "intended": "Ulcerative colitis",
+  "group": "ulcerative_colitis"
+ },
+ {
+  "qid": "q0173",
+  "query": "UC",
+  "category": "abbrev",
+  "intended": "Ulcerative colitis",
+  "group": "ulcerative_colitis"
+ },
+ {
+  "qid": "q0174",
+  "query": "ulcerative colits",
+  "category": "typo",
+  "intended": "Ulcerative colitis",
+  "group": "ulcerative_colitis"
+ },
+ {
+  "qid": "q0175",
+  "query": "bloody colon inflammation",
+  "category": "lay",
+  "intended": "Ulcerative colitis",
+  "group": "ulcerative_colitis"
+ },
+ {
+  "qid": "q0176",
+  "query": "Gastroesophageal reflux disease",
+  "category": "canonical",
+  "intended": "Gastroesophageal reflux disease",
+  "group": "gerd"
+ },
+ {
+  "qid": "q0177",
+  "query": "Reflux esophagitis",
+  "category": "synonym",
+  "intended": "Gastroesophageal reflux disease",
+  "group": "gerd"
+ },
+ {
+  "qid": "q0178",
+  "query": "GERD",
+  "category": "abbrev",
+  "intended": "Gastroesophageal reflux disease",
+  "group": "gerd"
+ },
+ {
+  "qid": "q0179",
+  "query": "gastroesophogeal reflux disease",
+  "category": "typo",
+  "intended": "Gastroesophageal reflux disease",
+  "group": "gerd"
+ },
+ {
+  "qid": "q0180",
+  "query": "acid reflux",
+  "category": "lay",
+  "intended": "Gastroesophageal reflux disease",
+  "group": "gerd"
+ },
+ {
+  "qid": "q0181",
+  "query": "Celiac disease",
+  "category": "canonical",
+  "intended": "Celiac disease",
+  "group": "celiac_disease"
+ },
+ {
+  "qid": "q0182",
+  "query": "Gluten-sensitive enteropathy",
+  "category": "synonym",
+  "intended": "Celiac disease",
+  "group": "celiac_disease"
+ },
+ {
+  "qid": "q0183",
+  "query": "CeD",
+  "category": "abbrev",
+  "intended": "Celiac disease",
+  "group": "celiac_disease"
+ },
+ {
+  "qid": "q0184",
+  "query": "celiac dissease",
+  "category": "typo",
+  "intended": "Celiac disease",
+  "group": "celiac_disease"
+ },
+ {
+  "qid": "q0185",
+  "query": "can't eat gluten",
+  "category": "lay",
+  "intended": "Celiac disease",
+  "group": "celiac_disease"
+ },
+ {
+  "qid": "q0186",
+  "query": "peptic ulcer disease",
+  "category": "canonical",
+  "intended": "Peptic ulcer disease",
+  "group": "peptic_ulcer_disease"
+ },
+ {
+  "qid": "q0187",
+  "query": "Gastroduodenal ulcer",
+  "category": "synonym",
+  "intended": "Peptic ulcer disease",
+  "group": "peptic_ulcer_disease"
+ },
+ {
+  "qid": "q0188",
+  "query": "PUD",
+  "category": "abbrev",
+  "intended": "Peptic ulcer disease",
+  "group": "peptic_ulcer_disease"
+ },
+ {
+  "qid": "q0189",
+  "query": "pepic ulcer disease",
+  "category": "typo",
+  "intended": "Peptic ulcer disease",
+  "group": "peptic_ulcer_disease"
+ },
+ {
+  "qid": "q0190",
+  "query": "stomach ulcer",
+  "category": "lay",
+  "intended": "Peptic ulcer disease",
+  "group": "peptic_ulcer_disease"
+ },
+ {
+  "qid": "q0191",
+  "query": "Clostridioides difficile infection",
+  "category": "canonical",
+  "intended": "Clostridioides difficile infection",
+  "group": "c_difficile_infection"
+ },
+ {
+  "qid": "q0192",
+  "query": "Pseudomembranous colitis",
+  "category": "synonym",
+  "intended": "Clostridioides difficile infection",
+  "group": "c_difficile_infection"
+ },
+ {
+  "qid": "q0193",
+  "query": "C diff",
+  "category": "abbrev",
+  "intended": "Clostridioides difficile infection",
+  "group": "c_difficile_infection"
+ },
+ {
+  "qid": "q0194",
+  "query": "clostridium dificile infection",
+  "category": "typo",
+  "intended": "Clostridioides difficile infection",
+  "group": "c_difficile_infection"
+ },
+ {
+  "qid": "q0195",
+  "query": "antibiotic diarrhea bug",
+  "category": "lay",
+  "intended": "Clostridioides difficile infection",
+  "group": "c_difficile_infection"
+ },
+ {
+  "qid": "q0196",
+  "query": "Esophageal varices",
+  "category": "canonical",
+  "intended": "Esophageal varices",
+  "group": "esophageal_varices"
+ },
+ {
+  "qid": "q0197",
+  "query": "Oesophageal varices",
+  "category": "synonym",
+  "intended": "Esophageal varices",
+  "group": "esophageal_varices"
+ },
+ {
+  "qid": "q0198",
+  "query": "EV",
+  "category": "abbrev",
+  "intended": "Esophageal varices",
+  "group": "esophageal_varices"
+ },
+ {
+  "qid": "q0199",
+  "query": "esophogeal varices",
+  "category": "typo",
+  "intended": "Esophageal varices",
+  "group": "esophageal_varices"
+ },
+ {
+  "qid": "q0200",
+  "query": "swollen veins in the food pipe",
+  "category": "lay",
+  "intended": "Esophageal varices",
+  "group": "esophageal_varices"
+ },
+ {
+  "qid": "q0201",
+  "query": "Epilepsy",
+  "category": "canonical",
+  "intended": "Epilepsy",
+  "group": "epilepsy"
+ },
+ {
+  "qid": "q0202",
+  "query": "Seizure disorder",
+  "category": "synonym",
+  "intended": "Epilepsy",
+  "group": "epilepsy"
+ },
+ {
+  "qid": "q0203",
+  "query": "sz d/o",
+  "category": "abbrev",
+  "intended": "Epilepsy",
+  "group": "epilepsy"
+ },
+ {
+  "qid": "q0204",
+  "query": "epilpsy",
+  "category": "typo",
+  "intended": "Epilepsy",
+  "group": "epilepsy"
+ },
+ {
+  "qid": "q0205",
+  "query": "fits",
+  "category": "lay",
+  "intended": "Epilepsy",
+  "group": "epilepsy"
+ },
+ {
+  "qid": "q0206",
+  "query": "parkinson disease",
+  "category": "canonical",
+  "intended": "Parkinson disease",
+  "group": "parkinson_disease"
+ },
+ {
+  "qid": "q0207",
+  "query": "Paralysis agitans",
+  "category": "synonym",
+  "intended": "Parkinson disease",
+  "group": "parkinson_disease"
+ },
+ {
+  "qid": "q0208",
+  "query": "PD dx",
+  "category": "abbrev",
+  "intended": "Parkinson disease",
+  "group": "parkinson_disease"
+ },
+ {
+  "qid": "q0209",
+  "query": "parkinsons diesase",
+  "category": "typo",
+  "intended": "Parkinson disease",
+  "group": "parkinson_disease"
+ },
+ {
+  "qid": "q0210",
+  "query": "shaky hands and slow movement",
+  "category": "lay",
+  "intended": "Parkinson disease",
+  "group": "parkinson_disease"
+ },
+ {
+  "qid": "q0211",
+  "query": "Alzheimer disease",
+  "category": "canonical",
+  "intended": "Alzheimer disease",
+  "group": "alzheimer_disease"
+ },
+ {
+  "qid": "q0212",
+  "query": "Senile dementia of Alzheimer type",
+  "category": "synonym",
+  "intended": "Alzheimer disease",
+  "group": "alzheimer_disease"
+ },
+ {
+  "qid": "q0213",
+  "query": "AD dementia",
+  "category": "abbrev",
+  "intended": "Alzheimer disease",
+  "group": "alzheimer_disease"
+ },
+ {
+  "qid": "q0214",
+  "query": "alzheimers diesase",
+  "category": "typo",
+  "intended": "Alzheimer disease",
+  "group": "alzheimer_disease"
+ },
+ {
+  "qid": "q0215",
+  "query": "forgetting everything in old age",
+  "category": "lay",
+  "intended": "Alzheimer disease",
+  "group": "alzheimer_disease"
+ },
+ {
+  "qid": "q0216",
+  "query": "Ischemic stroke",
+  "category": "canonical",
+  "intended": "Ischemic stroke",
+  "group": "ischemic_stroke"
+ },
+ {
+  "qid": "q0217",
+  "query": "Cerebral infarction",
+  "category": "synonym",
+  "intended": "Ischemic stroke",
+  "group": "ischemic_stroke"
+ },
+ {
+  "qid": "q0218",
+  "query": "CVA",
+  "category": "abbrev",
+  "intended": "Ischemic stroke",
+  "group": "ischemic_stroke"
+ },
+ {
+  "qid": "q0219",
+  "query": "ischemic stoke",
+  "category": "typo",
+  "intended": "Ischemic stroke",
+  "group": "ischemic_stroke"
+ },
+ {
+  "qid": "q0220",
+  "query": "blood stopped flowing to part of my brain",
+  "category": "lay",
+  "intended": "Ischemic stroke",
+  "group": "ischemic_stroke"
+ },
+ {
+  "qid": "q0221",
+  "query": "Migraine",
+  "category": "canonical",
+  "intended": "Migraine",
+  "group": "migraine"
+ },
+ {
+  "qid": "q0222",
+  "query": "Hemicrania",
+  "category": "synonym",
+  "intended": "Migraine",
+  "group": "migraine"
+ },
+ {
+  "qid": "q0223",
+  "query": "migr",
+  "category": "abbrev",
+  "intended": "Migraine",
+  "group": "migraine"
+ },
+ {
+  "qid": "q0224",
+  "query": "migrane",
+  "category": "typo",
+  "intended": "Migraine",
+  "group": "migraine"
+ },
+ {
+  "qid": "q0225",
+  "query": "splitting headaches with light sensitivity",
+  "category": "lay",
+  "intended": "Migraine",
+  "group": "migraine"
+ },
+ {
+  "qid": "q0226",
+  "query": "myasthenia gravis",
+  "category": "canonical",
+  "intended": "Myasthenia gravis",
+  "group": "myasthenia_gravis"
+ },
+ {
+  "qid": "q0227",
+  "query": "Erb-Goldflam disease",
+  "category": "synonym",
+  "intended": "Myasthenia gravis",
+  "group": "myasthenia_gravis"
+ },
+ {
+  "qid": "q0228",
+  "query": "MG dx",
+  "category": "abbrev",
+  "intended": "Myasthenia gravis",
+  "group": "myasthenia_gravis"
+ },
+ {
+  "qid": "q0229",
+  "query": "myasthenea gravis",
+  "category": "typo",
+  "intended": "Myasthenia gravis",
+  "group": "myasthenia_gravis"
+ },
+ {
+  "qid": "q0230",
+  "query": "muscles tire and eyelids droop",
+  "category": "lay",
+  "intended": "Myasthenia gravis",
+  "group": "myasthenia_gravis"
+ },
+ {
+  "qid": "q0231",
+  "query": "Guillain-Barre syndrome",
+  "category": "canonical",
+  "intended": "Guillain-Barre syndrome",
+  "group": "guillain_barre_syndrome"
+ },
+ {
+  "qid": "q0232",
+  "query": "Acute inflammatory demyelinating polyradiculoneuropathy",
+  "category": "synonym",
+  "intended": "Guillain-Barre syndrome",
+  "group": "guillain_barre_syndrome"
+ },
+ {
+  "qid": "q0233",
+  "query": "GBS",
+  "category": "abbrev",
+  "intended": "Guillain-Barre syndrome",
+  "group": "guillain_barre_syndrome"
+ },
+ {
+  "qid": "q0234",
+  "query": "guilain barre syndrome",
+  "category": "typo",
+  "intended": "Guillain-Barre syndrome",
+  "group": "guillain_barre_syndrome"
+ },
+ {
+  "qid": "q0235",
+  "query": "sudden paralysis after an infection",
+  "category": "lay",
+  "intended": "Guillain-Barre syndrome",
+  "group": "guillain_barre_syndrome"
+ },
+ {
+  "qid": "q0236",
+  "query": "Restless legs syndrome",
+  "category": "canonical",
+  "intended": "Restless legs syndrome",
+  "group": "restless_legs_syndrome"
+ },
+ {
+  "qid": "q0237",
+  "query": "Willis-Ekbom disease",
+  "category": "synonym",
+  "intended": "Restless legs syndrome",
+  "group": "restless_legs_syndrome"
+ },
+ {
+  "qid": "q0238",
+  "query": "RLS",
+  "category": "abbrev",
+  "intended": "Restless legs syndrome",
+  "group": "restless_legs_syndrome"
+ },
+ {
+  "qid": "q0239",
+  "query": "restless legs sydrome",
+  "category": "typo",
+  "intended": "Restless legs syndrome",
+  "group": "restless_legs_syndrome"
+ },
+ {
+  "qid": "q0240",
+  "query": "legs that won't keep still at night",
+  "category": "lay",
+  "intended": "Restless legs syndrome",
+  "group": "restless_legs_syndrome"
+ },
+ {
+  "qid": "q0241",
+  "query": "Cataract",
+  "category": "canonical",
+  "intended": "Cataract",
+  "group": "cataract"
+ },
+ {
+  "qid": "q0242",
+  "query": "Lens opacity",
+  "category": "synonym",
+  "intended": "Cataract",
+  "group": "cataract"
+ },
+ {
+  "qid": "q0243",
+  "query": "cat OU",
+  "category": "abbrev",
+  "intended": "Cataract",
+  "group": "cataract"
+ },
+ {
+  "qid": "q0244",
+  "query": "catarct",
+  "category": "typo",
+  "intended": "Cataract",
+  "group": "cataract"
+ },
+ {
+  "qid": "q0245",
+  "query": "cloudy eye lens",
+  "category": "lay",
+  "intended": "Cataract",
+  "group": "cataract"
+ },
+ {
+  "qid": "q0246",
+  "query": "age-related macular degeneration",
+  "category": "canonical",
+  "intended": "Age-related macular degeneration",
+  "group": "age_related_macular_degeneration"
+ },
+ {
+  "qid": "q0247",
+  "query": "Senile macular degeneration",
+  "category": "synonym",
+  "intended": "Age-related macular degeneration",
+  "group": "age_related_macular_degeneration"
+ },
+ {
+  "qid": "q0248",
+  "query": "AMD",
+  "category": "abbrev",
+  "intended": "Age-related macular degeneration",
+  "group": "age_related_macular_degeneration"
+ },
+ {
+  "qid": "q0249",
+  "query": "age related macular degenaration",
+  "category": "typo",
+  "intended": "Age-related macular degeneration",
+  "group": "age_related_macular_degeneration"
+ },
+ {
+  "qid": "q0250",
+  "query": "central vision going blurry with age",
+  "category": "lay",
+  "intended": "Age-related macular degeneration",
+  "group": "age_related_macular_degeneration"
+ },
+ {
+  "qid": "q0251",
+  "query": "Anterior uveitis",
+  "category": "canonical",
+  "intended": "Anterior uveitis",
+  "group": "anterior_uveitis"
+ },
+ {
+  "qid": "q0252",
+  "query": "Iridocyclitis",
+  "category": "synonym",
+  "intended": "Anterior uveitis",
+  "group": "anterior_uveitis"
+ },
+ {
+  "qid": "q0253",
+  "query": "AAU",
+  "category": "abbrev",
+  "intended": "Anterior uveitis",
+  "group": "anterior_uveitis"
+ },
+ {
+  "qid": "q0254",
+  "query": "anterior uveits",
+  "category": "typo",
+  "intended": "Anterior uveitis",
+  "group": "anterior_uveitis"
+ },
+ {
+  "qid": "q0255",
+  "query": "red painful eye inflamed inside",
+  "category": "lay",
+  "intended": "Anterior uveitis",
+  "group": "anterior_uveitis"
+ },
+ {
+  "qid": "q0256",
+  "query": "Retinal detachment",
+  "category": "canonical",
+  "intended": "Retinal detachment",
+  "group": "retinal_detachment"
+ },
+ {
+  "qid": "q0257",
+  "query": "Detached retina",
+  "category": "synonym",
+  "intended": "Retinal detachment",
+  "group": "retinal_detachment"
+ },
+ {
+  "qid": "q0258",
+  "query": "RD",
+  "category": "abbrev",
+  "intended": "Retinal detachment",
+  "group": "retinal_detachment"
+ },
+ {
+  "qid": "q0259",
+  "query": "retinal detatchment",
+  "category": "typo",
+  "intended": "Retinal detachment",
+  "group": "retinal_detachment"
+ },
+ {
+  "qid": "q0260",
+  "query": "curtain coming down over my vision",
+  "category": "lay",
+  "intended": "Retinal detachment",
+  "group": "retinal_detachment"
+ },
+ {
+  "qid": "q0261",
+  "query": "Blepharitis",
+  "category": "canonical",
+  "intended": "Blepharitis",
+  "group": "blepharitis"
+ },
+ {
+  "qid": "q0262",
+  "query": "Eyelid margin inflammation",
+  "category": "synonym",
+  "intended": "Blepharitis",
+  "group": "blepharitis"
+ },
+ {
+  "qid": "q0263",
+  "query": "blephar",
+  "category": "abbrev",
+  "intended": "Blepharitis",
+  "group": "blepharitis"
+ },
+ {
+  "qid": "q0264",
+  "query": "blepharits",
+  "category": "typo",
+  "intended": "Blepharitis",
+  "group": "blepharitis"
+ },
+ {
+  "qid": "q0265",
+  "query": "crusty itchy eyelids",
+  "category": "lay",
+  "intended": "Blepharitis",
+  "group": "blepharitis"
+ },
+ {
+  "qid": "q0266",
+  "query": "glaucoma",
+  "category": "canonical",
+  "intended": "Glaucoma",
+  "group": "glaucoma"
+ },
+ {
+  "qid": "q0267",
+  "query": "Primary open-angle glaucoma",
+  "category": "synonym",
+  "intended": "Glaucoma",
+  "group": "glaucoma"
+ },
+ {
+  "qid": "q0268",
+  "query": "POAG",
+  "category": "abbrev",
+  "intended": "Glaucoma",
+  "group": "glaucoma"
+ },
+ {
+  "qid": "q0269",
+  "query": "glaucomma",
+  "category": "typo",
+  "intended": "Glaucoma",
+  "group": "glaucoma"
+ },
+ {
+  "qid": "q0270",
+  "query": "high eye pressure",
+  "category": "lay",
+  "intended": "Glaucoma",
+  "group": "glaucoma"
+ },
+ {
+  "qid": "q0271",
+  "query": "Atopic dermatitis",
+  "category": "canonical",
+  "intended": "Atopic dermatitis",
+  "group": "atopic_dermatitis"
+ },
+ {
+  "qid": "q0272",
+  "query": "Atopic eczema",
+  "category": "synonym",
+  "intended": "Atopic dermatitis",
+  "group": "atopic_dermatitis"
+ },
+ {
+  "qid": "q0273",
+  "query": "atopic derm",
+  "category": "abbrev",
+  "intended": "Atopic dermatitis",
+  "group": "atopic_dermatitis"
+ },
+ {
+  "qid": "q0274",
+  "query": "atopic dermatits",
+  "category": "typo",
+  "intended": "Atopic dermatitis",
+  "group": "atopic_dermatitis"
+ },
+ {
+  "qid": "q0275",
+  "query": "itchy dry rashy skin",
+  "category": "lay",
+  "intended": "Atopic dermatitis",
+  "group": "atopic_dermatitis"
+ },
+ {
+  "qid": "q0276",
+  "query": "Acne vulgaris",
+  "category": "canonical",
+  "intended": "Acne vulgaris",
+  "group": "acne_vulgaris"
+ },
+ {
+  "qid": "q0277",
+  "query": "Common acne",
+  "category": "synonym",
+  "intended": "Acne vulgaris",
+  "group": "acne_vulgaris"
+ },
+ {
+  "qid": "q0278",
+  "query": "acne vulg",
+  "category": "abbrev",
+  "intended": "Acne vulgaris",
+  "group": "acne_vulgaris"
+ },
+ {
+  "qid": "q0279",
+  "query": "acne vulgarus",
+  "category": "typo",
+  "intended": "Acne vulgaris",
+  "group": "acne_vulgaris"
+ },
+ {
+  "qid": "q0280",
+  "query": "zits",
+  "category": "lay",
+  "intended": "Acne vulgaris",
+  "group": "acne_vulgaris"
+ },
+ {
+  "qid": "q0281",
+  "query": "Rosacea",
+  "category": "canonical",
+  "intended": "Rosacea",
+  "group": "rosacea"
+ },
+ {
+  "qid": "q0282",
+  "query": "Acne rosacea",
+  "category": "synonym",
+  "intended": "Rosacea",
+  "group": "rosacea"
+ },
+ {
+  "qid": "q0283",
+  "query": "rosac",
+  "category": "abbrev",
+  "intended": "Rosacea",
+  "group": "rosacea"
+ },
+ {
+  "qid": "q0284",
+  "query": "rosacia",
+  "category": "typo",
+  "intended": "Rosacea",
+  "group": "rosacea"
+ },
+ {
+  "qid": "q0285",
+  "query": "red flushed cheeks",
+  "category": "lay",
+  "intended": "Rosacea",
+  "group": "rosacea"
+ },
+ {
+  "qid": "q0286",
+  "query": "vitiligo",
+  "category": "canonical",
+  "intended": "Vitiligo",
+  "group": "vitiligo"
+ },
+ {
+  "qid": "q0287",
+  "query": "Leukoderma",
+  "category": "synonym",
+  "intended": "Vitiligo",
+  "group": "vitiligo"
+ },
+ {
+  "qid": "q0288",
+  "query": "vitil",
+  "category": "abbrev",
+  "intended": "Vitiligo",
+  "group": "vitiligo"
+ },
+ {
+  "qid": "q0289",
+  "query": "vitiglio",
+  "category": "typo",
+  "intended": "Vitiligo",
+  "group": "vitiligo"
+ },
+ {
+  "qid": "q0290",
+  "query": "white patches on skin",
+  "category": "lay",
+  "intended": "Vitiligo",
+  "group": "vitiligo"
+ },
+ {
+  "qid": "q0291",
+  "query": "Hidradenitis suppurativa",
+  "category": "canonical",
+  "intended": "Hidradenitis suppurativa",
+  "group": "hidradenitis_suppurativa"
+ },
+ {
+  "qid": "q0292",
+  "query": "Acne inversa",
+  "category": "synonym",
+  "intended": "Hidradenitis suppurativa",
+  "group": "hidradenitis_suppurativa"
+ },
+ {
+  "qid": "q0293",
+  "query": "HS",
+  "category": "abbrev",
+  "intended": "Hidradenitis suppurativa",
+  "group": "hidradenitis_suppurativa"
+ },
+ {
+  "qid": "q0294",
+  "query": "hidradenitis supurativa",
+  "category": "typo",
+  "intended": "Hidradenitis suppurativa",
+  "group": "hidradenitis_suppurativa"
+ },
+ {
+  "qid": "q0295",
+  "query": "painful boils in armpits and groin",
+  "category": "lay",
+  "intended": "Hidradenitis suppurativa",
+  "group": "hidradenitis_suppurativa"
+ },
+ {
+  "qid": "q0296",
+  "query": "Alopecia areata",
+  "category": "canonical",
+  "intended": "Alopecia areata",
+  "group": "alopecia_areata"
+ },
+ {
+  "qid": "q0297",
+  "query": "Patchy autoimmune hair loss",
+  "category": "synonym",
+  "intended": "Alopecia areata",
+  "group": "alopecia_areata"
+ },
+ {
+  "qid": "q0298",
+  "query": "AA hair",
+  "category": "abbrev",
+  "intended": "Alopecia areata",
+  "group": "alopecia_areata"
+ },
+ {
+  "qid": "q0299",
+  "query": "alopecia aereata",
+  "category": "typo",
+  "intended": "Alopecia areata",
+  "group": "alopecia_areata"
+ },
+ {
+  "qid": "q0300",
+  "query": "bald patches",
+  "category": "lay",
+  "intended": "Alopecia areata",
+  "group": "alopecia_areata"
+ },
+ {
+  "qid": "q0301",
+  "query": "Type 1 diabetes mellitus",
+  "category": "canonical",
+  "intended": "Type 1 diabetes mellitus",
+  "group": "type_1_diabetes"
+ },
+ {
+  "qid": "q0302",
+  "query": "Insulin-dependent diabetes mellitus",
+  "category": "synonym",
+  "intended": "Type 1 diabetes mellitus",
+  "group": "type_1_diabetes"
+ },
+ {
+  "qid": "q0303",
+  "query": "T1DM",
+  "category": "abbrev",
+  "intended": "Type 1 diabetes mellitus",
+  "group": "type_1_diabetes"
+ },
+ {
+  "qid": "q0304",
+  "query": "type 1 diabtes",
+  "category": "typo",
+  "intended": "Type 1 diabetes mellitus",
+  "group": "type_1_diabetes"
+ },
+ {
+  "qid": "q0305",
+  "query": "childhood-onset diabetes",
+  "category": "lay",
+  "intended": "Type 1 diabetes mellitus",
+  "group": "type_1_diabetes"
+ },
+ {
+  "qid": "q0306",
+  "query": "graves disease",
+  "category": "canonical",
+  "intended": "Graves disease",
+  "group": "graves_disease"
+ },
+ {
+  "qid": "q0307",
+  "query": "Toxic diffuse goiter",
+  "category": "synonym",
+  "intended": "Graves disease",
+  "group": "graves_disease"
+ },
+ {
+  "qid": "q0308",
+  "query": "GD thyroid",
+  "category": "abbrev",
+  "intended": "Graves disease",
+  "group": "graves_disease"
+ },
+ {
+  "qid": "q0309",
+  "query": "graves diesase",
+  "category": "typo",
+  "intended": "Graves disease",
+  "group": "graves_disease"
+ },
+ {
+  "qid": "q0310",
+  "query": "overactive thyroid, racing heart",
+  "category": "lay",
+  "intended": "Graves disease",
+  "group": "graves_disease"
+ },
+ {
+  "qid": "q0311",
+  "query": "Hashimoto thyroiditis",
+  "category": "canonical",
+  "intended": "Hashimoto thyroiditis",
+  "group": "hashimoto_thyroiditis"
+ },
+ {
+  "qid": "q0312",
+  "query": "Chronic lymphocytic thyroiditis",
+  "category": "synonym",
+  "intended": "Hashimoto thyroiditis",
+  "group": "hashimoto_thyroiditis"
+ },
+ {
+  "qid": "q0313",
+  "query": "HT",
+  "category": "abbrev",
+  "intended": "Hashimoto thyroiditis",
+  "group": "hashimoto_thyroiditis"
+ },
+ {
+  "qid": "q0314",
+  "query": "hashimotos thyroidits",
+  "category": "typo",
+  "intended": "Hashimoto thyroiditis",
+  "group": "hashimoto_thyroiditis"
+ },
+ {
+  "qid": "q0315",
+  "query": "thyroid attacked by my own body",
+  "category": "lay",
+  "intended": "Hashimoto thyroiditis",
+  "group": "hashimoto_thyroiditis"
+ },
+ {
+  "qid": "q0316",
+  "query": "Obesity",
+  "category": "canonical",
+  "intended": "Obesity",
+  "group": "obesity"
+ },
+ {
+  "qid": "q0317",
+  "query": "Adiposity",
+  "category": "synonym",
+  "intended": "Obesity",
+  "group": "obesity"
+ },
+ {
+  "qid": "q0318",
+  "query": "obese",
+  "category": "abbrev",
+  "intended": "Obesity",
+  "group": "obesity"
+ },
+ {
+  "qid": "q0319",
+  "query": "obessity",
+  "category": "typo",
+  "intended": "Obesity",
+  "group": "obesity"
+ },
+ {
+  "qid": "q0320",
+  "query": "very overweight",
+  "category": "lay",
+  "intended": "Obesity",
+  "group": "obesity"
+ },
+ {
+  "qid": "q0321",
+  "query": "Hyponatremia",
+  "category": "canonical",
+  "intended": "Hyponatremia",
+  "group": "hyponatremia"
+ },
+ {
+  "qid": "q0322",
+  "query": "Low serum sodium",
+  "category": "synonym",
+  "intended": "Hyponatremia",
+  "group": "hyponatremia"
+ },
+ {
+  "qid": "q0323",
+  "query": "hypoNa",
+  "category": "abbrev",
+  "intended": "Hyponatremia",
+  "group": "hyponatremia"
+ },
+ {
+  "qid": "q0324",
+  "query": "hyponatremea",
+  "category": "typo",
+  "intended": "Hyponatremia",
+  "group": "hyponatremia"
+ },
+ {
+  "qid": "q0325",
+  "query": "low salt in blood",
+  "category": "lay",
+  "intended": "Hyponatremia",
+  "group": "hyponatremia"
+ },
+ {
+  "qid": "q0326",
+  "query": "hypercalcemia",
+  "category": "canonical",
+  "intended": "Hypercalcemia",
+  "group": "hypercalcemia"
+ },
+ {
+  "qid": "q0327",
+  "query": "Elevated serum calcium",
+  "category": "synonym",
+  "intended": "Hypercalcemia",
+  "group": "hypercalcemia"
+ },
+ {
+  "qid": "q0328",
+  "query": "high Ca",
+  "category": "abbrev",
+  "intended": "Hypercalcemia",
+  "group": "hypercalcemia"
+ },
+ {
+  "qid": "q0329",
+  "query": "hypercalcemai",
+  "category": "typo",
+  "intended": "Hypercalcemia",
+  "group": "hypercalcemia"
+ },
+ {
+  "qid": "q0330",
+  "query": "too much calcium in blood",
+  "category": "lay",
+  "intended": "Hypercalcemia",
+  "group": "hypercalcemia"
+ },
+ {
+  "qid": "q0331",
+  "query": "Adrenal insufficiency",
+  "category": "canonical",
+  "intended": "Adrenal insufficiency",
+  "group": "adrenal_insufficiency"
+ },
+ {
+  "qid": "q0332",
+  "query": "Addison disease",
+  "category": "synonym",
+  "intended": "Adrenal insufficiency",
+  "group": "adrenal_insufficiency"
+ },
+ {
+  "qid": "q0333",
+  "query": "adrenal insuff",
+  "category": "abbrev",
+  "intended": "Adrenal insufficiency",
+  "group": "adrenal_insufficiency"
+ },
+ {
+  "qid": "q0334",
+  "query": "adrenal insufficency",
+  "category": "typo",
+  "intended": "Adrenal insufficiency",
+  "group": "adrenal_insufficiency"
+ },
+ {
+  "qid": "q0335",
+  "query": "worn out adrenal glands",
+  "category": "lay",
+  "intended": "Adrenal insufficiency",
+  "group": "adrenal_insufficiency"
+ },
+ {
+  "qid": "q0336",
+  "query": "Cushing syndrome",
+  "category": "canonical",
+  "intended": "Cushing syndrome",
+  "group": "cushing_syndrome"
+ },
+ {
+  "qid": "q0337",
+  "query": "Hypercortisolism",
+  "category": "synonym",
+  "intended": "Cushing syndrome",
+  "group": "cushing_syndrome"
+ },
+ {
+  "qid": "q0338",
+  "query": "cushings",
+  "category": "abbrev",
+  "intended": "Cushing syndrome",
+  "group": "cushing_syndrome"
+ },
+ {
+  "qid": "q0339",
+  "query": "cushing sydrome",
+  "category": "typo",
+  "intended": "Cushing syndrome",
+  "group": "cushing_syndrome"
+ },
+ {
+  "qid": "q0340",
+  "query": "round face and belly from stress hormone",
+  "category": "lay",
+  "intended": "Cushing syndrome",
+  "group": "cushing_syndrome"
+ },
+ {
+  "qid": "q0341",
+  "query": "Osteoporosis",
+  "category": "canonical",
+  "intended": "Osteoporosis",
+  "group": "osteoporosis"
+ },
+ {
+  "qid": "q0342",
+  "query": "Age-related bone loss",
+  "category": "synonym",
+  "intended": "Osteoporosis",
+  "group": "osteoporosis"
+ },
+ {
+  "qid": "q0343",
+  "query": "osteopor",
+  "category": "abbrev",
+  "intended": "Osteoporosis",
+  "group": "osteoporosis"
+ },
+ {
+  "qid": "q0344",
+  "query": "osteoperosis",
+  "category": "typo",
+  "intended": "Osteoporosis",
+  "group": "osteoporosis"
+ },
+ {
+  "qid": "q0345",
+  "query": "brittle bones",
+  "category": "lay",
+  "intended": "Osteoporosis",
+  "group": "osteoporosis"
+ },
+ {
+  "qid": "q0346",
+  "query": "gout",
+  "category": "canonical",
+  "intended": "Gout",
+  "group": "gout"
+ },
+ {
+  "qid": "q0347",
+  "query": "Gouty arthritis",
+  "category": "synonym",
+  "intended": "Gout",
+  "group": "gout"
+ },
+ {
+  "qid": "q0348",
+  "query": "hx gout",
+  "category": "abbrev",
+  "intended": "Gout",
+  "group": "gout"
+ },
+ {
+  "qid": "q0349",
+  "query": "gouty arthritus",
+  "category": "typo",
+  "intended": "Gout",
+  "group": "gout"
+ },
+ {
+  "qid": "q0350",
+  "query": "big toe swelling uric acid attacks",
+  "category": "lay",
+  "intended": "Gout",
+  "group": "gout"
+ },
+ {
+  "qid": "q0351",
+  "query": "Osteoarthritis",
+  "category": "canonical",
+  "intended": "Osteoarthritis",
+  "group": "osteoarthritis"
+ },
+ {
+  "qid": "q0352",
+  "query": "Degenerative joint disease",
+  "category": "synonym",
+  "intended": "Osteoarthritis",
+  "group": "osteoarthritis"
+ },
+ {
+  "qid": "q0353",
+  "query": "OA",
+  "category": "abbrev",
+  "intended": "Osteoarthritis",
+  "group": "osteoarthritis"
+ },
+ {
+  "qid": "q0354",
+  "query": "osteoarthrits",
+  "category": "typo",
+  "intended": "Osteoarthritis",
+  "group": "osteoarthritis"
+ },
+ {
+  "qid": "q0355",
+  "query": "worn out joints",
+  "category": "lay",
+  "intended": "Osteoarthritis",
+  "group": "osteoarthritis"
+ },
+ {
+  "qid": "q0356",
+  "query": "Rheumatoid arthritis",
+  "category": "canonical",
+  "intended": "Rheumatoid arthritis",
+  "group": "rheumatoid_arthritis"
+ },
+ {
+  "qid": "q0357",
+  "query": "Atrophic arthritis",
+  "category": "synonym",
+  "intended": "Rheumatoid arthritis",
+  "group": "rheumatoid_arthritis"
+ },
+ {
+  "qid": "q0358",
+  "query": "RA",
+  "category": "abbrev",
+  "intended": "Rheumatoid arthritis",
+  "group": "rheumatoid_arthritis"
+ },
+ {
+  "qid": "q0359",
+  "query": "rheumatiod arthritis",
+  "category": "typo",
+  "intended": "Rheumatoid arthritis",
+  "group": "rheumatoid_arthritis"
+ },
+ {
+  "qid": "q0360",
+  "query": "swollen painful hand joints, stiff mornings",
+  "category": "lay",
+  "intended": "Rheumatoid arthritis",
+  "group": "rheumatoid_arthritis"
+ },
+ {
+  "qid": "q0361",
+  "query": "Fibromyalgia",
+  "category": "canonical",
+  "intended": "Fibromyalgia",
+  "group": "fibromyalgia"
+ },
+ {
+  "qid": "q0362",
+  "query": "Fibrositis",
+  "category": "synonym",
+  "intended": "Fibromyalgia",
+  "group": "fibromyalgia"
+ },
+ {
+  "qid": "q0363",
+  "query": "FM",
+  "category": "abbrev",
+  "intended": "Fibromyalgia",
+  "group": "fibromyalgia"
+ },
+ {
+  "qid": "q0364",
+  "query": "fibromyalga",
+  "category": "typo",
+  "intended": "Fibromyalgia",
+  "group": "fibromyalgia"
+ },
+ {
+  "qid": "q0365",
+  "query": "pain all over the body",
+  "category": "lay",
+  "intended": "Fibromyalgia",
+  "group": "fibromyalgia"
+ },
+ {
+  "qid": "q0366",
+  "query": "osteonecrosis",
+  "category": "canonical",
+  "intended": "Osteonecrosis",
+  "group": "osteonecrosis"
+ },
+ {
+  "qid": "q0367",
+  "query": "Avascular necrosis of bone",
+  "category": "synonym",
+  "intended": "Osteonecrosis",
+  "group": "osteonecrosis"
+ },
+ {
+  "qid": "q0368",
+  "query": "AVN",
+  "category": "abbrev",
+  "intended": "Osteonecrosis",
+  "group": "osteonecrosis"
+ },
+ {
+  "qid": "q0369",
+  "query": "osteonecrosus",
+  "category": "typo",
+  "intended": "Osteonecrosis",
+  "group": "osteonecrosis"
+ },
+ {
+  "qid": "q0370",
+  "query": "dead bone in the hip",
+  "category": "lay",
+  "intended": "Osteonecrosis",
+  "group": "osteonecrosis"
+ },
+ {
+  "qid": "q0371",
+  "query": "TUBERCULOSIS",
+  "category": "canonical",
+  "intended": "Tuberculosis",
+  "group": "tuberculosis"
+ },
+ {
+  "qid": "q0372",
+  "query": "Koch disease",
+  "category": "synonym",
+  "intended": "Tuberculosis",
+  "group": "tuberculosis"
+ },
+ {
+  "qid": "q0373",
+  "query": "TB",
+  "category": "abbrev",
+  "intended": "Tuberculosis",
+  "group": "tuberculosis"
+ },
+ {
+  "qid": "q0374",
+  "query": "tuberclosis",
+  "category": "typo",
+  "intended": "Tuberculosis",
+  "group": "tuberculosis"
+ },
+ {
+  "qid": "q0375",
+  "query": "consumption",
+  "category": "lay",
+  "intended": "Tuberculosis",
+  "group": "tuberculosis"
+ },
+ {
+  "qid": "q0376",
+  "query": "Herpes zoster",
+  "category": "canonical",
+  "intended": "Herpes zoster",
+  "group": "herpes_zoster"
+ },
+ {
+  "qid": "q0377",
+  "query": "Zoster",
+  "category": "synonym",
+  "intended": "Herpes zoster",
+  "group": "herpes_zoster"
+ },
+ {
+  "qid": "q0378",
+  "query": "HZ",
+  "category": "abbrev",
+  "intended": "Herpes zoster",
+  "group": "herpes_zoster"
+ },
+ {
+  "qid": "q0379",
+  "query": "herpes zoser",
+  "category": "typo",
+  "intended": "Herpes zoster",
+  "group": "herpes_zoster"
+ },
+ {
+  "qid": "q0380",
+  "query": "shingles",
+  "category": "lay",
+  "intended": "Herpes zoster",
+  "group": "herpes_zoster"
+ },
+ {
+  "qid": "q0381",
+  "query": "Cytomegalovirus infection",
+  "category": "canonical",
+  "intended": "Cytomegalovirus infection",
+  "group": "cmv_infection"
+ },
+ {
+  "qid": "q0382",
+  "query": "CMV disease",
+  "category": "synonym",
+  "intended": "Cytomegalovirus infection",
+  "group": "cmv_infection"
+ },
+ {
+  "qid": "q0383",
+  "query": "CMV",
+  "category": "abbrev",
+  "intended": "Cytomegalovirus infection",
+  "group": "cmv_infection"
+ },
+ {
+  "qid": "q0384",
+  "query": "cytomegalovirus infecton",
+  "category": "typo",
+  "intended": "Cytomegalovirus infection",
+  "group": "cmv_infection"
+ },
+ {
+  "qid": "q0385",
+  "query": "virus that reactivates after transplant",
+  "category": "lay",
+  "intended": "Cytomegalovirus infection",
+  "group": "cmv_infection"
+ },
+ {
+  "qid": "q0386",
+  "query": "common variable immunodeficiency",
+  "category": "canonical",
+  "intended": "Common variable immunodeficiency",
+  "group": "cvid"
+ },
+ {
+  "qid": "q0387",
+  "query": "Acquired hypogammaglobulinemia",
+  "category": "synonym",
+  "intended": "Common variable immunodeficiency",
+  "group": "cvid"
+ },
+ {
+  "qid": "q0388",
+  "query": "CVID",
+  "category": "abbrev",
+  "intended": "Common variable immunodeficiency",
+  "group": "cvid"
+ },
+ {
+  "qid": "q0389",
+  "query": "comon variable immunodeficiency",
+  "category": "typo",
+  "intended": "Common variable immunodeficiency",
+  "group": "cvid"
+ },
+ {
+  "qid": "q0390",
+  "query": "antibodies missing, weak immune system",
+  "category": "lay",
+  "intended": "Common variable immunodeficiency",
+  "group": "cvid"
+ },
+ {
+  "qid": "q0391",
+  "query": "Urinary tract infection",
+  "category": "canonical",
+  "intended": "Urinary tract infection",
+  "group": "urinary_tract_infection"
+ },
+ {
+  "qid": "q0392",
+  "query": "Bacterial cystitis",
+  "category": "synonym",
+  "intended": "Urinary tract infection",
+  "group": "urinary_tract_infection"
+ },
+ {
+  "qid": "q0393",
+  "query": "UTI",
+  "category": "abbrev",
+  "intended": "Urinary tract infection",
+  "group": "urinary_tract_infection"
+ },
+ {
+  "qid": "q0394",
+  "query": "urinay tract infection",
+  "category": "typo",
+  "intended": "Urinary tract infection",
+  "group": "urinary_tract_infection"
+ },
+ {
+  "qid": "q0395",
+  "query": "bladder infection",
+  "category": "lay",
+  "intended": "Urinary tract infection",
+  "group": "urinary_tract_infection"
+ },
+ {
+  "qid": "q0396",
+  "query": "Cellulitis",
+  "category": "canonical",
+  "intended": "Cellulitis",
+  "group": "cellulitis"
+ },
+ {
+  "qid": "q0397",
+  "query": "Skin and soft tissue infection",
+  "category": "synonym",
+  "intended": "Cellulitis",
+  "group": "cellulitis"
+ },
+ {
+  "qid": "q0398",
+  "query": "SSTI",
+  "category": "abbrev",
+  "intended": "Cellulitis",
+  "group": "cellulitis"
+ },
+ {
+  "qid": "q0399",
+  "query": "cellulits",
+  "category": "typo",
+  "intended": "Cellulitis",
+  "group": "cellulitis"
+ },
+ {
+  "qid": "q0400",
+  "query": "red hot swollen infected skin on leg",
+  "category": "lay",
+  "intended": "Cellulitis",
+  "group": "cellulitis"
+ },
+ {
+  "qid": "q0401",
+  "query": "Sepsis",
+  "category": "canonical",
+  "intended": "Sepsis",
+  "group": "sepsis"
+ },
+ {
+  "qid": "q0402",
+  "query": "Septicemia",
+  "category": "synonym",
+  "intended": "Sepsis",
+  "group": "sepsis"
+ },
+ {
+  "qid": "q0403",
+  "query": "sepsis hx",
+  "category": "abbrev",
+  "intended": "Sepsis",
+  "group": "sepsis"
+ },
+ {
+  "qid": "q0404",
+  "query": "sepis",
+  "category": "typo",
+  "intended": "Sepsis",
+  "group": "sepsis"
+ },
+ {
+  "qid": "q0405",
+  "query": "blood poisoning",
+  "category": "lay",
+  "intended": "Sepsis",
+  "group": "sepsis"
+ },
+ {
+  "qid": "q0406",
+  "query": "meniere disease",
+  "category": "canonical",
+  "intended": "Meniere disease",
+  "group": "menieres_disease"
+ },
+ {
+  "qid": "q0407",
+  "query": "Endolymphatic hydrops",
+  "category": "synonym",
+  "intended": "Meniere disease",
+  "group": "menieres_disease"
+ },
+ {
+  "qid": "q0408",
+  "query": "MD ear",
+  "category": "abbrev",
+  "intended": "Meniere disease",
+  "group": "menieres_disease"
+ },
+ {
+  "qid": "q0409",
+  "query": "meniers disease",
+  "category": "typo",
+  "intended": "Meniere disease",
+  "group": "menieres_disease"
+ },
+ {
+  "qid": "q0410",
+  "query": "dizzy spells with ringing in ear",
+  "category": "lay",
+  "intended": "Meniere disease",
+  "group": "menieres_disease"
+ },
+ {
+  "qid": "q0411",
+  "query": "Chronic otitis media",
+  "category": "canonical",
+  "intended": "Chronic otitis media",
+  "group": "chronic_otitis_media"
+ },
+ {
+  "qid": "q0412",
+  "query": "Chronic middle ear infection",
+  "category": "synonym",
+  "intended": "Chronic otitis media",
+  "group": "chronic_otitis_media"
+ },
+ {
+  "qid": "q0413",
+  "query": "COM",
+  "category": "abbrev",
+  "intended": "Chronic otitis media",
+  "group": "chronic_otitis_media"
+ },
+ {
+  "qid": "q0414",
+  "query": "chronic otitis meida",
+  "category": "typo",
+  "intended": "Chronic otitis media",
+  "group": "chronic_otitis_media"
+ },
+ {
+  "qid": "q0415",
+  "query": "ear keeps running and infected",
+  "category": "lay",
+  "intended": "Chronic otitis media",
+  "group": "chronic_otitis_media"
+ },
+ {
+  "qid": "q0416",
+  "query": "Tinnitus",
+  "category": "canonical",
+  "intended": "Tinnitus",
+  "group": "tinnitus"
+ },
+ {
+  "qid": "q0417",
+  "query": "Tinnitus aurium",
+  "category": "synonym",
+  "intended": "Tinnitus",
+  "group": "tinnitus"
+ },
+ {
+  "qid": "q0418",
+  "query": "tinn",
+  "category": "abbrev",
+  "intended": "Tinnitus",
+  "group": "tinnitus"
+ },
+ {
+  "qid": "q0419",
+  "query": "tinnitis",
+  "category": "typo",
+  "intended": "Tinnitus",
+  "group": "tinnitus"
+ },
+ {
+  "qid": "q0420",
+  "query": "constant ringing in head",
+  "category": "lay",
+  "intended": "Tinnitus",
+  "group": "tinnitus"
+ },
+ {
+  "qid": "q0421",
+  "query": "Otosclerosis",
+  "category": "canonical",
+  "intended": "Otosclerosis",
+  "group": "otosclerosis"
+ },
+ {
+  "qid": "q0422",
+  "query": "Otospongiosis",
+  "category": "synonym",
+  "intended": "Otosclerosis",
+  "group": "otosclerosis"
+ },
+ {
+  "qid": "q0423",
+  "query": "otoscl",
+  "category": "abbrev",
+  "intended": "Otosclerosis",
+  "group": "otosclerosis"
+ },
+ {
+  "qid": "q0424",
+  "query": "otosclerosus",
+  "category": "typo",
+  "intended": "Otosclerosis",
+  "group": "otosclerosis"
+ },
+ {
+  "qid": "q0425",
+  "query": "stiff ear bones causing hearing loss",
+  "category": "lay",
+  "intended": "Otosclerosis",
+  "group": "otosclerosis"
+ },
+ {
+  "qid": "q0426",
+  "query": "diabetic nephropathy",
+  "category": "canonical",
+  "intended": "Diabetic nephropathy",
+  "group": "diabetic_nephropathy"
+ },
+ {
+  "qid": "q0427",
+  "query": "Diabetic kidney disease",
+  "category": "synonym",
+  "intended": "Diabetic nephropathy",
+  "group": "diabetic_nephropathy"
+ },
+ {
+  "qid": "q0428",
+  "query": "DKD",
+  "category": "abbrev",
+  "intended": "Diabetic nephropathy",
+  "group": "diabetic_nephropathy"
+ },
+ {
+  "qid": "q0429",
+  "query": "diabetic nephropathi",
+  "category": "typo",
+  "intended": "Diabetic nephropathy",
+  "group": "diabetic_nephropathy"
+ },
+ {
+  "qid": "q0430",
+  "query": "diabetes wrecked my kidneys",
+  "category": "lay",
+  "intended": "Diabetic nephropathy",
+  "group": "diabetic_nephropathy"
+ },
+ {
+  "qid": "q0431",
+  "query": "Lupus nephritis",
+  "category": "canonical",
+  "intended": "Lupus nephritis",
+  "group": "lupus_nephritis"
+ },
+ {
+  "qid": "q0432",
+  "query": "SLE glomerulonephritis",
+  "category": "synonym",
+  "intended": "Lupus nephritis",
+  "group": "lupus_nephritis"
+ },
+ {
+  "qid": "q0433",
+  "query": "LN",
+  "category": "abbrev",
+  "intended": "Lupus nephritis",
+  "group": "lupus_nephritis"
+ },
+ {
+  "qid": "q0434",
+  "query": "lupus nephritus",
+  "category": "typo",
+  "intended": "Lupus nephritis",
+  "group": "lupus_nephritis"
+ },
+ {
+  "qid": "q0435",
+  "query": "lupus attacking kidneys",
+  "category": "lay",
+  "intended": "Lupus nephritis",
+  "group": "lupus_nephritis"
+ },
+ {
+  "qid": "q0436",
+  "query": "Hepatorenal syndrome",
+  "category": "canonical",
+  "intended": "Hepatorenal syndrome",
+  "group": "hepatorenal_syndrome"
+ },
+ {
+  "qid": "q0437",
+  "query": "Functional renal failure of cirrhosis",
+  "category": "synonym",
+  "intended": "Hepatorenal syndrome",
+  "group": "hepatorenal_syndrome"
+ },
+ {
+  "qid": "q0438",
+  "query": "HRS",
+  "category": "abbrev",
+  "intended": "Hepatorenal syndrome",
+  "group": "hepatorenal_syndrome"
+ },
+ {
+  "qid": "q0439",
+  "query": "hepatorenel syndrome",
+  "category": "typo",
+  "intended": "Hepatorenal syndrome",
+  "group": "hepatorenal_syndrome"
+ },
+ {
+  "qid": "q0440",
+  "query": "liver failure causing kidney failure",
+  "category": "lay",
+  "intended": "Hepatorenal syndrome",
+  "group": "hepatorenal_syndrome"
+ },
+ {
+  "qid": "q0441",
+  "query": "Cardiorenal syndrome",
+  "category": "canonical",
+  "intended": "Cardiorenal syndrome",
+  "group": "cardiorenal_syndrome"
+ },
+ {
+  "qid": "q0442",
+  "query": "Combined cardiac and renal failure",
+  "category": "synonym",
+  "intended": "Cardiorenal syndrome",
+  "group": "cardiorenal_syndrome"
+ },
+ {
+  "qid": "q0443",
+  "query": "CRS",
+  "category": "abbrev",
+  "intended": "Cardiorenal syndrome",
+  "group": "cardiorenal_syndrome"
+ },
+ {
+  "qid": "q0444",
+  "query": "cardiorenal sydrome",
+  "category": "typo",
+  "intended": "Cardiorenal syndrome",
+  "group": "cardiorenal_syndrome"
+ },
+ {
+  "qid": "q0445",
+  "query": "heart and kidneys both failing",
+  "category": "lay",
+  "intended": "Cardiorenal syndrome",
+  "group": "cardiorenal_syndrome"
+ },
+ {
+  "qid": "q0446",
+  "query": "sarcoidosis",
+  "category": "canonical",
+  "intended": "Sarcoidosis",
+  "group": "sarcoidosis"
+ },
+ {
+  "qid": "q0447",
+  "query": "Besnier-Boeck-Schaumann disease",
+  "category": "synonym",
+  "intended": "Sarcoidosis",
+  "group": "sarcoidosis"
+ },
+ {
+  "qid": "q0448",
+  "query": "sarc",
+  "category": "abbrev",
+  "intended": "Sarcoidosis",
+  "group": "sarcoidosis"
+ },
+ {
+  "qid": "q0449",
+  "query": "sarcoidois",
+  "category": "typo",
+  "intended": "Sarcoidosis",
+  "group": "sarcoidosis"
+ },
+ {
+  "qid": "q0450",
+  "query": "lumpy inflammation in lungs and lymph nodes",
+  "category": "lay",
+  "intended": "Sarcoidosis",
+  "group": "sarcoidosis"
+ },
+ {
+  "qid": "q0451",
+  "query": "Diabetic retinopathy",
+  "category": "canonical",
+  "intended": "Diabetic retinopathy",
+  "group": "diabetic_retinopathy"
+ },
+ {
+  "qid": "q0452",
+  "query": "Diabetic retinal disease",
+  "category": "synonym",
+  "intended": "Diabetic retinopathy",
+  "group": "diabetic_retinopathy"
+ },
+ {
+  "qid": "q0453",
+  "query": "DR",
+  "category": "abbrev",
+  "intended": "Diabetic retinopathy",
+  "group": "diabetic_retinopathy"
+ },
+ {
+  "qid": "q0454",
+  "query": "diabetic retinopahy",
+  "category": "typo",
+  "intended": "Diabetic retinopathy",
+  "group": "diabetic_retinopathy"
+ },
+ {
+  "qid": "q0455",
+  "query": "diabetes eye damage",
+  "category": "lay",
+  "intended": "Diabetic retinopathy",
+  "group": "diabetic_retinopathy"
+ },
+ {
+  "qid": "q0456",
+  "query": "Systemic lupus erythematosus",
+  "category": "canonical",
+  "intended": "Systemic lupus erythematosus",
+  "group": "systemic_lupus_erythematosus"
+ },
+ {
+  "qid": "q0457",
+  "query": "Disseminated lupus erythematosus",
+  "category": "synonym",
+  "intended": "Systemic lupus erythematosus",
+  "group": "systemic_lupus_erythematosus"
+ },
+ {
+  "qid": "q0458",
+  "query": "SLE",
+  "category": "abbrev",
+  "intended": "Systemic lupus erythematosus",
+  "group": "systemic_lupus_erythematosus"
+ },
+ {
+  "qid": "q0459",
+  "query": "systemic lupus erythematosis",
+  "category": "typo",
+  "intended": "Systemic lupus erythematosus",
+  "group": "systemic_lupus_erythematosus"
+ },
+ {
+  "qid": "q0460",
+  "query": "lupus",
+  "category": "lay",
+  "intended": "Systemic lupus erythematosus",
+  "group": "systemic_lupus_erythematosus"
+ },
+ {
+  "qid": "q0461",
+  "query": "Systemic sclerosis",
+  "category": "canonical",
+  "intended": "Systemic sclerosis",
+  "group": "systemic_sclerosis"
+ },
+ {
+  "qid": "q0462",
+  "query": "Scleroderma",
+  "category": "synonym",
+  "intended": "Systemic sclerosis",
+  "group": "systemic_sclerosis"
+ },
+ {
+  "qid": "q0463",
+  "query": "SSc",
+  "category": "abbrev",
+  "intended": "Systemic sclerosis",
+  "group": "systemic_sclerosis"
+ },
+ {
+  "qid": "q0464",
+  "query": "systmic sclerosis",
+  "category": "typo",
+  "intended": "Systemic sclerosis",
+  "group": "systemic_sclerosis"
+ },
+ {
+  "qid": "q0465",
+  "query": "hard tight skin and organs",
+  "category": "lay",
+  "intended": "Systemic sclerosis",
+  "group": "systemic_sclerosis"
+ },
+ {
+  "qid": "q0466",
+  "query": "psoriatic arthritis",
+  "category": "canonical",
+  "intended": "Psoriatic arthritis",
+  "group": "psoriatic_arthritis"
+ },
+ {
+  "qid": "q0467",
+  "query": "Arthritis psoriatica",
+  "category": "synonym",
+  "intended": "Psoriatic arthritis",
+  "group": "psoriatic_arthritis"
+ },
+ {
+  "qid": "q0468",
+  "query": "PsA",
+  "category": "abbrev",
+  "intended": "Psoriatic arthritis",
+  "group": "psoriatic_arthritis"
+ },
+ {
+  "qid": "q0469",
+  "query": "psoriatic arthrits",
+  "category": "typo",
+  "intended": "Psoriatic arthritis",
+  "group": "psoriatic_arthritis"
+ },
+ {
+  "qid": "q0470",
+  "query": "psoriasis with sore swollen joints",
+  "category": "lay",
+  "intended": "Psoriatic arthritis",
+  "group": "psoriatic_arthritis"
+ },
+ {
+  "qid": "q0471",
+  "query": "Granulomatosis with polyangiitis",
+  "category": "canonical",
+  "intended": "Granulomatosis with polyangiitis",
+  "group": "granulomatosis_with_polyangiitis"
+ },
+ {
+  "qid": "q0472",
+  "query": "Wegener granulomatosis",
+  "category": "synonym",
+  "intended": "Granulomatosis with polyangiitis",
+  "group": "granulomatosis_with_polyangiitis"
+ },
+ {
+  "qid": "q0473",
+  "query": "GPA",
+  "category": "abbrev",
+  "intended": "Granulomatosis with polyangiitis",
+  "group": "granulomatosis_with_polyangiitis"
+ },
+ {
+  "qid": "q0474",
+  "query": "granulomatosis with polyangitis",
+  "category": "typo",
+  "intended": "Granulomatosis with polyangiitis",
+  "group": "granulomatosis_with_polyangiitis"
+ },
+ {
+  "qid": "q0475",
+  "query": "vasculitis hitting nose, lungs and kidneys",
+  "category": "lay",
+  "intended": "Granulomatosis with polyangiitis",
+  "group": "granulomatosis_with_polyangiitis"
+ },
+ {
+  "qid": "q0476",
+  "query": "Cystic fibrosis",
+  "category": "canonical",
+  "intended": "Cystic fibrosis",
+  "group": "cystic_fibrosis"
+ },
+ {
+  "qid": "q0477",
+  "query": "Mucoviscidosis",
+  "category": "synonym",
+  "intended": "Cystic fibrosis",
+  "group": "cystic_fibrosis"
+ },
+ {
+  "qid": "q0478",
+  "query": "CF",
+  "category": "abbrev",
+  "intended": "Cystic fibrosis",
+  "group": "cystic_fibrosis"
+ },
+ {
+  "qid": "q0479",
+  "query": "cystic fibrosus",
+  "category": "typo",
+  "intended": "Cystic fibrosis",
+  "group": "cystic_fibrosis"
+ },
+ {
+  "qid": "q0480",
+  "query": "salty sweat and thick mucus since birth",
+  "category": "lay",
+  "intended": "Cystic fibrosis",
+  "group": "cystic_fibrosis"
+ },
+ {
+  "qid": "q0481",
+  "query": "Neurofibromatosis type 2",
+  "category": "canonical",
+  "intended": "Neurofibromatosis type 2",
+  "group": "neurofibromatosis_type_2"
+ },
+ {
+  "qid": "q0482",
+  "query": "Bilateral acoustic neuroma syndrome",
+  "category": "synonym",
+  "intended": "Neurofibromatosis type 2",
+  "group": "neurofibromatosis_type_2"
+ },
+ {
+  "qid": "q0483",
+  "query": "NF2",
+  "category": "abbrev",
+  "intended": "Neurofibromatosis type 2",
+  "group": "neurofibromatosis_type_2"
+ },
+ {
+  "qid": "q0484",
+  "query": "neurofibromatosis tpye 2",
+  "category": "typo",
+  "intended": "Neurofibromatosis type 2",
+  "group": "neurofibromatosis_type_2"
+ },
+ {
+  "qid": "q0485",
+  "query": "inherited tumors on the hearing nerves",
+  "category": "lay",
+  "intended": "Neurofibromatosis type 2",
+  "group": "neurofibromatosis_type_2"
+ },
+ {
+  "qid": "q0486",
+  "query": "al amyloidosis",
+  "category": "canonical",
+  "intended": "AL amyloidosis",
+  "group": "al_amyloidosis"
+ },
+ {
+  "qid": "q0487",
+  "query": "Primary systemic amyloidosis",
+  "category": "synonym",
+  "intended": "AL amyloidosis",
+  "group": "al_amyloidosis"
+ },
+ {
+  "qid": "q0488",
+  "query": "AL amyloid",
+  "category": "abbrev",
+  "intended": "AL amyloidosis",
+  "group": "al_amyloidosis"
+ },
+ {
+  "qid": "q0489",
+  "query": "AL amyloidoss",
+  "category": "typo",
+  "intended": "AL amyloidosis",
+  "group": "al_amyloidosis"
+ },
+ {
+  "qid": "q0490",
+  "query": "protein deposits building up in organs",
+  "category": "lay",
+  "intended": "AL amyloidosis",
+  "group": "al_amyloidosis"
+ },
+ {
+  "qid": "q0491",
+  "query": "Thyroid eye disease",
+  "category": "canonical",
+  "intended": "Thyroid eye disease",
+  "group": "thyroid_eye_disease"
+ },
+ {
+  "qid": "q0492",
+  "query": "Graves ophthalmopathy",
+  "category": "synonym",
+  "intended": "Thyroid eye disease",
+  "group": "thyroid_eye_disease"
+ },
+ {
+  "qid": "q0493",
+  "query": "TED",
+  "category": "abbrev",
+  "intended": "Thyroid eye disease",
+  "group": "thyroid_eye_disease"
+ },
+ {
+  "qid": "q0494",
+  "query": "thyroid eye diesase",
+  "category": "typo",
+  "intended": "Thyroid eye disease",
+  "group": "thyroid_eye_disease"
+ },
+ {
+  "qid": "q0495",
+  "query": "bulging eyes from thyroid",
+  "category": "lay",
+  "intended": "Thyroid eye disease",
+  "group": "thyroid_eye_disease"
+ },
+ {
+  "qid": "q0496",
+  "query": "Sjogren syndrome",
+  "category": "canonical",
+  "intended": "Sjogren syndrome",
+  "group": "sjogren_syndrome"
+ },
+ {
+  "qid": "q0497",
+  "query": "Sicca syndrome",
+  "category": "synonym",
+  "intended": "Sjogren syndrome",
+  "group": "sjogren_syndrome"
+ },
+ {
+  "qid": "q0498",
+  "query": "SS dry",
+  "category": "abbrev",
+  "intended": "Sjogren syndrome",
+  "group": "sjogren_syndrome"
+ },
+ {
+  "qid": "q0499",
+  "query": "sjogrens sydrome",
+  "category": "typo",
+  "intended": "Sjogren syndrome",
+  "group": "sjogren_syndrome"
+ },
+ {
+  "qid": "q0500",
+  "query": "dry eyes and dry mouth autoimmune",
+  "category": "lay",
+  "intended": "Sjogren syndrome",
+  "group": "sjogren_syndrome"
+ },
+ {
+  "qid": "q0501",
+  "query": "lung hole",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0502",
+  "query": "ms",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0503",
+  "query": "bad blood",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0504",
+  "query": "kidney stuff",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0505",
+  "query": "pe",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0506",
+  "query": "ra",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0507",
+  "query": "bad heart",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0508",
+  "query": "cp",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0509",
+  "query": "as",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0510",
+  "query": "mi",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0511",
+  "query": "ca",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0512",
+  "query": "hf",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0513",
+  "query": "ad",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0514",
+  "query": "pd",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0515",
+  "query": "pcp",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0516",
+  "query": "ar",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0517",
+  "query": "ps",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0518",
+  "query": "cd",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0519",
+  "query": "hd",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0520",
+  "query": "dm",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0521",
+  "query": "hep",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0522",
+  "query": "mg",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0523",
+  "query": "ss",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0524",
+  "query": "uc",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0525",
+  "query": "liver problem",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0526",
+  "query": "stomach issues",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0527",
+  "query": "eye problem",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0528",
+  "query": "skin condition",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0529",
+  "query": "sugar problem",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0530",
+  "query": "nerve problem",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0531",
+  "query": "bone thing",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0532",
+  "query": "breathing problem",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0533",
+  "query": "thyroid issue",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0534",
+  "query": "blood disorder",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0535",
+  "query": "immune problem",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0536",
+  "query": "low blood",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0537",
+  "query": "water in the brain",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0538",
+  "query": "ild",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0539",
+  "query": "ards? or pna",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0540",
+  "query": "mets",
+  "category": "ambiguous",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0541",
+  "query": "prior chest radiation",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0542",
+  "query": "high creatinine",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0543",
+  "query": "s/p splenectomy",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0544",
+  "query": "smoker 30 pack years",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0545",
+  "query": "shortness of breath",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0546",
+  "query": "elevated ALT",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0547",
+  "query": "s/p cholecystectomy",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0548",
+  "query": "chronic cough",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0549",
+  "query": "fatigue",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0550",
+  "query": "anthracycline exposure",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0551",
+  "query": "alcohol 4 drinks daily",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0552",
+  "query": "platelets 40",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0553",
+  "query": "prior cisplatin",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0554",
+  "query": "s/p nephrectomy",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0555",
+  "query": "BMI 38",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0556",
+  "query": "family history of breast cancer",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0557",
+  "query": "headache",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0558",
+  "query": "hemoglobin 8.2",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0559",
+  "query": "s/p appendectomy",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0560",
+  "query": "on warfarin",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0561",
+  "query": "history of blood transfusion",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0562",
+  "query": "ejection fraction 40%",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0563",
+  "query": "nausea",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0564",
+  "query": "pacemaker in situ",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0565",
+  "query": "asbestos exposure",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0566",
+  "query": "hearing aid user",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0567",
+  "query": "eGFR 35",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0568",
+  "query": "s/p knee replacement",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0569",
+  "query": "night sweats",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0570",
+  "query": "central line in place",
+  "category": "non_disease",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0571",
+  "query": "banana",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0572",
+  "query": "xqzv blorp",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0573",
+  "query": "none",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0574",
+  "query": "n/a",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0575",
+  "query": "asdf",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0576",
+  "query": "my cat",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0577",
+  "query": "test",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0578",
+  "query": "???",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0579",
+  "query": "lorem ipsum",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0580",
+  "query": "12345",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0581",
+  "query": "tbd",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0582",
+  "query": "unknown",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0583",
+  "query": "pizza friday",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0584",
+  "query": "qwerty",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0585",
+  "query": "null",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0586",
+  "query": "-",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0587",
+  "query": "hello",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0588",
+  "query": "blah blah",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0589",
+  "query": "zzzz",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0590",
+  "query": "football score",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0591",
+  "query": "john smith",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0592",
+  "query": "red car",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0593",
+  "query": "nil",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0594",
+  "query": "see above",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0595",
+  "query": ".",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0596",
+  "query": "xxxxx",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0597",
+  "query": "rain tomorrow",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0598",
+  "query": "lkjhg",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0599",
+  "query": "asdfgh jkl",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ },
+ {
+  "qid": "q0600",
+  "query": "refused",
+  "category": "invalid",
+  "intended": null,
+  "group": null
+ }
+]

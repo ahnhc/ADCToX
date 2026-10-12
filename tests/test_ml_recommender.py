@@ -189,11 +189,11 @@ def test_full_build_gives_the_server_result_for_typed_diseases(tmp_path):
     out, m = tmp_path / "adc_recommender_full.py", tmp_path / "models"; m.mkdir()
     for k, p in _FULL_MODELS.items(): (m / k).symlink_to(p)
     subprocess.run([_MODEL_PY, "-I", str(ROOT / "ml/build_portable.py"), "--full", str(out)], check=True, capture_output=True)
-    args = ["alzheimer", "adhd", "heart stop", "cirrhosis", "--learned-fallback", "0.25", "--lab", "bilirubin=2.0"]
+    args = ["alzheimer", "adhd", "heart stop", "cirrhosis", "자폐증", "--learned-fallback", "0.25", "--lab", "bilirubin=2.0"]
     env = {"PATH": "/usr/bin:/bin", "NO_COLOR": "1", "HOME": str(tmp_path), "CUDA_VISIBLE_DEVICES": ""}
     server = subprocess.run([_MODEL_PY, "-I", str(ROOT / "ml/recommend.py"), *args], capture_output=True, text=True, env=env, cwd=ROOT).stdout
     full = subprocess.run([_MODEL_PY, "-I", str(out), *args], capture_output=True, text=True, env={**env, "ADC_MODEL_DIR": str(m)}, cwd=tmp_path).stdout
-    assert "Alzheimer disease" in server and full == server
+    assert "Alzheimer disease" in server and "autism" in server.lower() and full == server
 
 
 def test_free_text_is_split_on_commas_whatever_the_spacing():

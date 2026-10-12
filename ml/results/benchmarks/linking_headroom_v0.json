@@ -1,0 +1,75 @@
+{
+ "A2": {
+  "macro_f1": 0.6190679250068464,
+  "micro_f1": 0.6203554119547657,
+  "exact_set": 0.3723849372384937,
+  "concept_acc": 0.6186440677966102,
+  "coverage": 0.6820083682008368
+ },
+ "crosswalk": {
+  "macro_f1": 0.7853587328467152,
+  "micro_f1": 0.7850162866449512,
+  "exact_set": 0.6359832635983264,
+  "concept_acc": 0.6186440677966102,
+  "coverage": 0.7154811715481172
+ },
+ "rerank10": {
+  "macro_f1": 0.6211231569934549,
+  "micro_f1": 0.6272577996715928,
+  "exact_set": 0.3723849372384937,
+  "concept_acc": 0.6610169491525424,
+  "coverage": 0.6527196652719666
+ },
+ "theta": {
+  "macro_f1": 0.6485794705149353,
+  "micro_f1": 0.656298600311042,
+  "exact_set": 0.41841004184100417,
+  "concept_acc": 0.6864406779661016,
+  "coverage": 0.7489539748953975
+ },
+ "rerank10+theta": {
+  "macro_f1": 0.7053357751442283,
+  "micro_f1": 0.7166416791604198,
+  "exact_set": 0.49372384937238495,
+  "concept_acc": 0.8516949152542372,
+  "coverage": 0.8326359832635983
+ },
+ "combined": {
+  "macro_f1": 0.9080153756821439,
+  "micro_f1": 0.918918918918919,
+  "exact_set": 0.8451882845188284,
+  "concept_acc": 0.8516949152542372,
+  "coverage": 0.8744769874476988
+ },
+ "crosswalk_errors_on_right_concepts": {
+  "n_right": 318,
+  "missing": {
+   "pulmonary": 20,
+   "infectious_immune": 18,
+   "metabolic_endocrine": 9,
+   "renal": 9,
+   "musculoskeletal": 5,
+   "gastrointestinal": 5,
+   "dermatologic": 5,
+   "otologic": 4,
+   "haematologic": 4,
+   "neurologic": 3,
+   "ocular": 3,
+   "hepatic": 2,
+   "cardiovascular": 2
+  },
+  "extra": {
+   "gastrointestinal": 22,
+   "metabolic_endocrine": 22,
+   "musculoskeletal": 21,
+   "neurologic": 17,
+   "cardiovascular": 13,
+   "infectious_immune": 7,
+   "dermatologic": 4,
+   "hepatic": 2,
+   "haematologic": 2
+  },
+  "empty_crosswalk": 9
+ },
+ "nonhuman_top1_valid": 0.03734439834024896
+}

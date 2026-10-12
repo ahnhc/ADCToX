@@ -13,11 +13,17 @@ C = "/data/hyeongchanahn/adctox/ml_cache/"; OBO = "/home/hyeongchanahn/CONI/adct
 THETA = 0.75; NAME = "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular", "dermatologic", "metabolic_endocrine", "musculoskeletal", "infectious_immune", "otologic"]
 
-def _embed(strs, device, bs=512):
+_ENC = {}                   # (model path, device) -> (tokenizer, model): load SapBERT once per process, not once per query
+def _encoder(device):
     from transformers import AutoTokenizer, AutoModel
-    name = adc_runtime.encoder_path("SapBERT", NAME)
-    tok = AutoTokenizer.from_pretrained(name); mod = AutoModel.from_pretrained(name).to(device).eval(); half = device != "cpu"
-    if half: mod = mod.half()
+    name = adc_runtime.encoder_path("SapBERT", NAME); key = (name, device)
+    if key not in _ENC:
+        _ENC.clear(); mod = AutoModel.from_pretrained(name).to(device).eval()
+        _ENC[key] = (AutoTokenizer.from_pretrained(name), mod.half() if device != "cpu" else mod)
+    return _ENC[key]
+
+def _embed(strs, device, bs=512):
+    tok, mod = _encoder(device); half = device != "cpu"
     out = []
     with torch.no_grad():
         for i in range(0, len(strs), bs):
@@ -71,14 +77,121 @@ def build():
     print("saved", E.shape)
 
 _IDX = None
+_IDX_E = None               # the index matrix as float32 on the query device, converted once (it was converted for every query)
+def close():
+    global _IDX, _IDX_E
+    _IDX = _IDX_E = None; _ENC.clear()
+
+def _char_feats(s):
+    s2 = s.strip(); letters = sum(c.isalpha() for c in s2); vow = sum(c in "aeiouAEIOU" for c in s2)
+    return [len(s2) / 30, letters / max(1, len(s2)), vow / max(1, letters), len(s2.split()) / 5, any(c.isdigit() for c in s2), len(s2) <= 3]
+
+def gate_inputs(texts, Q, top_v, top_j, ids):
+    """validity-gate features: SapBERT query embedding, top-1 similarity, top-1 minus the best other concept, character stats."""
+    rows = []
+    for i, t in enumerate(texts):
+        jj, vv = top_j[i], top_v[i]; c1 = ids[jj[0]]; s2 = next((v for j, v in zip(jj, vv) if ids[j] != c1), vv[-1])
+        rows.append([vv[0], vv[0] - s2] + _char_feats(t))
+    return np.c_[Q, np.array(rows, np.float32)]
+
 def link(texts):
-    global _IDX
-    if _IDX is None: _IDX = np.load(adc_runtime.model_path("mondo_index.npz", C + "mondo_index.npz"), allow_pickle=not adc_runtime.restricted_bundle())
-    Q = _embed(list(texts), "cuda:0" if torch.cuda.is_available() else "cpu"); S = Q @ _IDX["E"].astype(np.float32).T; out = []
+    """-> per text {mondo, name, sim, axes, valid}; valid = P(the text names a disease) from the index's validity gate (index v1+),
+    None for an older index. axes stay empty below THETA."""
+    global _IDX, _IDX_E
+    device = "cuda:0" if torch.cuda.is_available() else "cpu"
+    if _IDX is None:
+        _IDX = dict(np.load(adc_runtime.model_path("mondo_index.npz", C + "mondo_index.npz"), allow_pickle=not adc_runtime.restricted_bundle())); _IDX_E = None
+        _IDX["_ids"] = [str(x) for x in _IDX["ids"]]
+    if _IDX_E is None or _IDX_E.device != torch.device(device): _IDX_E = torch.from_numpy(_IDX["E"].astype(np.float32)).to(device)
+    texts = list(texts); Qn = _embed(texts, device).astype(np.float32); Q = torch.from_numpy(Qn).to(device)
+    with torch.no_grad(): v, j = (Q @ _IDX_E.T).topk(64, dim=1)
+    v, j = v.cpu().numpy(), j.cpu().numpy(); valid = [None] * len(texts)
+    if "gate_w" in _IDX:
+        X = gate_inputs(texts, Qn, v, j, _IDX["_ids"]); z = ((X - _IDX["gate_mu"]) / _IDX["gate_sd"]) @ _IDX["gate_w"] + _IDX["gate_b"]
+        valid = (1 / (1 + np.exp(-z))).tolist()
+    out = []
     for i in range(len(texts)):
-        j = int(S[i].argmax()); sim = float(S[i, j]); ax = _IDX["axes"][j]
-        out.append(dict(mondo=str(_IDX["ids"][j]), name=str(_IDX["names"][j]), sim=sim, axes=[AXES[k] for k in np.where(ax > 0)[0]] if sim >= THETA else []))
+        k, sim = int(j[i, 0]), float(v[i, 0]); ax = _IDX["axes"][k]
+        top = []
+        for jj, vv in zip(j[i].tolist(), v[i].tolist()):
+            if _IDX["_ids"][jj] not in {t for t, _ in top}: top.append((_IDX["_ids"][jj], float(vv)))
+            if len(top) == 5: break
+        row = dict(mondo=_IDX["_ids"][k], name=str(_IDX["names"][k]), sim=sim, axes=[AXES[a] for a in np.where(ax > 0)[0]] if sim >= THETA else [],
+                   valid=valid[i], gate=None if valid[i] is None else bool(valid[i] >= float(_IDX["gate_threshold"])))
+        row["readings"] = readings(texts[i], top)
+        row["hpo"] = None if row["axes"] else phenotype(texts[i], Qn[i])
+        if row["hpo"] and sim >= THETA:                       # a disease without organ axis vs a symptom with one (amnesia): both readings
+            row["readings"].append(dict(mondo=row["hpo"]["hpo"], name=row["hpo"]["name"], organs=row["hpo"]["organs"], why="phenotype"))
+        row["ambiguous"] = len({frozenset(r["organs"]) for r in row["readings"]}) >= 2
+        out.append(row)
     return out
+
+
+# ------------------------------------------------------------------ readings of one typed text
+TIE = 0.02                  # concepts within this similarity of the top-1 are also readings of the text
+ABBREV = re.compile(r"^[A-Za-z][A-Za-z0-9]{1,5}$")
+
+def concept(mondo):
+    """-> (name, organs) of a MONDO concept (or an HPO term of the index's phenotype block) in the active index."""
+    if mondo.startswith("HP:") and "hp_ids" in _IDX:
+        if "_hp_first" not in _IDX: _IDX["_hp_first"] = {t: k for k, t in reversed(list(enumerate(str(x) for x in _IDX["hp_ids"])))}
+        k = _IDX["_hp_first"].get(mondo)
+        return (None, []) if k is None else (str(_IDX["hp_names"][k]), [AXES[a] for a in np.where(_IDX["hp_axes"][k] > 0)[0]])
+    if "_first" not in _IDX: _IDX["_first"] = {t: k for k, t in reversed(list(enumerate(_IDX["_ids"])))}
+    k = _IDX["_first"].get(mondo)
+    if k is None: return None, []
+    return str(_IDX["names"][k]), [AXES[a] for a in np.where(_IDX["axes"][k] > 0)[0]]
+
+def readings(text, top):
+    """possible diseases a typed text may mean: expansions of a known abbreviation (index v2+: NLM SPECIALIST Lexicon LRABR,
+    expansions linked to MONDO offline) and near-ties of the SapBERT search. -> [{mondo, name, organs, why}] (at most 6)."""
+    out, seen = [], set()
+    def add(t, why):
+        if t in seen: return
+        name, organs = concept(t)
+        if name is None: return
+        seen.add(t); out.append(dict(mondo=t, name=name, organs=organs, why=why))
+    if top and top[0][1] >= THETA: add(top[0][0], "closest name")
+    if "abbr_keys" in _IDX and ABBREV.match(text.strip()):
+        if "_abbr" not in _IDX: _IDX["_abbr"] = dict(zip([str(x) for x in _IDX["abbr_keys"]], [str(x) for x in _IDX["abbr_vals"]]))
+        for t in filter(None, _IDX["_abbr"].get(text.strip().lower(), "").split(";")): add(t, "abbreviation")
+    if top and top[0][1] >= THETA:
+        for t, sim in top[1:]:
+            if sim >= top[0][1] - TIE: add(t, "similar name")
+    return out[:6]
+
+
+# ------------------------------------------------------------------ phenotypes (symptoms, findings) when no disease matches
+HPO_THETA = 0.85            # a phenotype (HPO term) is accepted only on a close name match
+
+def phenotype(text, q):
+    """-> {hpo, name, sim, organs} from the index's HPO block (index v2+), or None. Organs come from the HPO top-level branch."""
+    if "hp_E" not in _IDX: return None
+    if "_hpE" not in _IDX: _IDX["_hpE"] = _IDX["hp_E"].astype(np.float32)
+    s = _IDX["_hpE"] @ q; k = int(s.argmax()); sim = float(s[k])
+    if sim < HPO_THETA: return None
+    organs = [AXES[a] for a in np.where(_IDX["hp_axes"][k] > 0)[0]]
+    return dict(hpo=str(_IDX["hp_ids"][k]), name=str(_IDX["hp_names"][k]), sim=sim, organs=organs) if organs else None
+
+# ------------------------------------------------------------------ Korean disease names (index v3+: HIRA KCD master, Korean -> English)
+HANGUL = re.compile("[가-힣]")
+
+def _ko_norm(s): return re.sub(r"[\s·]", "", re.sub(r"\([^)]*[A-Z][0-9][^)]*\)", "", s)).lower()
+
+def korean(text):
+    """English name for a Korean disease name, or None: a curated everyday word or an exact KCD name ('상세불명의 X' counts as X),
+    else the most general KCD code whose name ends with the typed words (Korean puts the head noun last: 자폐증 -> 소아기 자폐증). Never a name merely containing them."""
+    global _IDX
+    if not HANGUL.search(text): return None
+    if _IDX is None:
+        _IDX = dict(np.load(adc_runtime.model_path("mondo_index.npz", C + "mondo_index.npz"), allow_pickle=not adc_runtime.restricted_bundle()))
+        _IDX["_ids"] = [str(x) for x in _IDX["ids"]]
+    if "ko_keys" not in _IDX: return None
+    if "_ko" not in _IDX: _IDX["_ko"] = {str(k): (str(v), int(r)) for k, v, r in zip(_IDX["ko_keys"], _IDX["ko_vals"], _IDX["ko_rank"])}
+    q = _ko_norm(text); hit = _IDX["_ko"].get(q)
+    if hit or len(q) < 2: return hit[0] if hit else None
+    ends = [k for k in _IDX["_ko"] if k.endswith(q)]                 # the most general code first, then the shortest name
+    return _IDX["_ko"][min(ends, key=lambda k: (_IDX["_ko"][k][1], len(k), k))][0] if ends else None
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build": os.environ["ADC_RESEARCH_MODE"] = "1"; build()

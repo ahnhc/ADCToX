@@ -20,3 +20,6 @@ dist/
 *.partial
 .env
 .env.*
+
+# Third-party mention corpora mapped to MONDO (COMETA etc.); rebuilt by ml/build_external_linking.py from data/raw
+data/curated/external/

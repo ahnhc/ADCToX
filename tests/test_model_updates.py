@@ -189,3 +189,24 @@ def test_managed_runtime_does_not_mix_missing_files_with_research_cache(monkeypa
         adc_runtime.model_path("missing", "research-cache-file")
     monkeypatch.setenv("ADC_RESEARCH_MODE", "1")
     assert adc_runtime.model_path("missing", "research-cache-file") == "research-cache-file"
+
+
+def test_unchanged_bundle_is_not_rehashed_or_reinstalled(server, tmp_path, monkeypatch):
+    manifest = make_manifest(server)
+    updates.install(manifest, tmp_path, allow_local=True)
+    active = (tmp_path / "current").resolve()
+    hashed = []
+    monkeypatch.setattr(updates, "digest", lambda path: hashed.append(path) or "x")
+    assert updates.plan(manifest, tmp_path)["up_to_date"]
+    result = updates.install(manifest, tmp_path, allow_local=True)
+    assert result["up_to_date"] and result["downloaded"] == [] and hashed == []
+    assert (tmp_path / "current").resolve() == active
+
+
+def test_plan_lists_only_changed_files_and_verify_finds_corruption(server, tmp_path):
+    manifest = make_manifest(server)
+    updates.install(manifest, tmp_path, allow_local=True)
+    (tmp_path / "current" / "vuln_biolord.pt").write_bytes(b"broken")
+    todo = updates.plan(manifest, tmp_path)
+    assert todo["download"] == ["vuln_biolord.pt"] and not todo["up_to_date"]
+    assert updates.verify(tmp_path) == ["vuln_biolord.pt"]

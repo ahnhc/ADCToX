@@ -47,10 +47,15 @@ def model_assets(output, version, cache):
     for key in ("O", "base", "spread"): meta[key] = torch.from_numpy(np.asarray(meta[key]).copy())
     for key in ("out_axis", "out_dom"): meta[key] = [str(v) if v is not None else None for v in meta[key]]
     safe = {"format_version": 1, "ens": original["ens"], "meta": meta}
+    if original.get("axis"): safe["axis"] = original["axis"]          # axis heads (model 0.1+); older apps ignore the key
+    if original.get("axis_hidden"): safe["axis_hidden"] = [str(x) for x in original["axis_hidden"]]   # axes left blank (model 0.2+)
+    if original.get("axis_models"):                                  # comparison heads and the agreement gate (model 0.2+)
+        safe["axis_models"] = [{"name": str(x["name"]), "axis": x["axis"]} for x in original["axis_models"]]; safe["agree_min"] = int(original.get("agree_min", 1)); safe["axis_label"] = str(original.get("axis_label", "main"))
     torch.save(safe, output / "vuln_biolord.pt")
     torch.load(output / "vuln_biolord.pt", weights_only=True, map_location="cpu")
     with np.load(cache / "mondo_index.npz", allow_pickle=True) as source:
-        np.savez_compressed(output / "mondo_index.npz", E=source["E"], ids=source["ids"].astype(str), names=source["names"].astype(str), axes=source["axes"])
+        extra = {k: source[k] for k in source.files if k not in ("E", "ids", "names", "axes")}   # v1+: validity gate; v2+: abbreviations, HPO
+        np.savez_compressed(output / "mondo_index.npz", E=source["E"], ids=source["ids"].astype(str), names=source["names"].astype(str), axes=source["axes"], **extra)
     with np.load(output / "mondo_index.npz", allow_pickle=False) as safe_index:
         for key in safe_index.files: safe_index[key]
     files = []

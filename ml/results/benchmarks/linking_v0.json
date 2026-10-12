@@ -1,0 +1,636 @@
+{
+ "thresholds": {
+  "A1": 0.6500000000000004,
+  "A3": 0.8250000000000004,
+  "A5": [
+   0.8000000000000002,
+   0.0
+  ]
+ },
+ "n": {
+  "dev": 304,
+  "test": 296
+ },
+ "test": {
+  "A0": {
+   "macro_f1": 0.42418311786032936,
+   "micro_f1": 0.43209876543209874,
+   "exact_set": 0.2217573221757322,
+   "concept_acc": 0.3644067796610169,
+   "coverage": 0.34309623430962344,
+   "false_accept_invalid": 0.0,
+   "accept_ambiguous": 0.11764705882352941,
+   "n_valid": 239,
+   "n_invalid": 15,
+   "n_ambiguous": 17,
+   "per_organ_f1": {
+    "haematologic": 0.5,
+    "hepatic": 0.36363636363636365,
+    "cardiovascular": 0.5205479452054794,
+    "pulmonary": 0.47619047619047616,
+    "renal": 0.46511627906976744,
+    "gastrointestinal": 0.35294117647058826,
+    "neurologic": 0.45161290322580644,
+    "ocular": 0.43243243243243246,
+    "dermatologic": 0.4,
+    "metabolic_endocrine": 0.38461538461538464,
+    "musculoskeletal": 0.3125,
+    "infectious_immune": 0.43373493975903615,
+    "otologic": 0.42105263157894735
+   }
+  },
+  "A1": {
+   "macro_f1": 0.5964125577124684,
+   "micro_f1": 0.6143790849673203,
+   "exact_set": 0.3723849372384937,
+   "concept_acc": 0.5889830508474576,
+   "coverage": 0.6652719665271967,
+   "false_accept_invalid": 0.26666666666666666,
+   "accept_ambiguous": 0.17647058823529413,
+   "n_valid": 239,
+   "n_invalid": 15,
+   "n_ambiguous": 17,
+   "per_organ_f1": {
+    "haematologic": 0.5925925925925926,
+    "hepatic": 0.5,
+    "cardiovascular": 0.7446808510638298,
+    "pulmonary": 0.6086956521739131,
+    "renal": 0.6530612244897959,
+    "gastrointestinal": 0.6818181818181818,
+    "neurologic": 0.45,
+    "ocular": 0.723404255319149,
+    "dermatologic": 0.5789473684210527,
+    "metabolic_endocrine": 0.6176470588235294,
+    "musculoskeletal": 0.37209302325581395,
+    "infectious_immune": 0.594059405940594,
+    "otologic": 0.6363636363636364
+   }
+  },
+  "A2": {
+   "macro_f1": 0.6190679250068464,
+   "micro_f1": 0.6203554119547657,
+   "exact_set": 0.3723849372384937,
+   "concept_acc": 0.6186440677966102,
+   "coverage": 0.6820083682008368,
+   "false_accept_invalid": 0.2,
+   "accept_ambiguous": 0.5294117647058824,
+   "n_valid": 239,
+   "n_invalid": 15,
+   "n_ambiguous": 17,
+   "per_organ_f1": {
+    "haematologic": 0.6153846153846154,
+    "hepatic": 0.7777777777777778,
+    "cardiovascular": 0.6813186813186813,
+    "pulmonary": 0.5454545454545454,
+    "renal": 0.7307692307692307,
+    "gastrointestinal": 0.6938775510204082,
+    "neurologic": 0.4,
+    "ocular": 0.6808510638297872,
+    "dermatologic": 0.6111111111111112,
+    "metabolic_endocrine": 0.5882352941176471,
+    "musculoskeletal": 0.4,
+    "infectious_immune": 0.6274509803921569,
+    "otologic": 0.6956521739130435
+   }
+  },
+  "A3": {
+   "macro_f1": 0.6006818647462284,
+   "micro_f1": 0.6166666666666667,
+   "exact_set": 0.3682008368200837,
+   "concept_acc": 0.597457627118644,
+   "coverage": 0.6276150627615062,
+   "false_accept_invalid": 0.0,
+   "accept_ambiguous": 0.5294117647058824,
+   "n_valid": 239,
+   "n_invalid": 15,
+   "n_ambiguous": 17,
+   "per_organ_f1": {
+    "haematologic": 0.72,
+    "hepatic": 0.625,
+    "cardiovascular": 0.6741573033707865,
+    "pulmonary": 0.5454545454545454,
+    "renal": 0.7547169811320755,
+    "gastrointestinal": 0.6511627906976745,
+    "neurologic": 0.35,
+    "ocular": 0.75,
+    "dermatologic": 0.6486486486486487,
+    "metabolic_endocrine": 0.6060606060606061,
+    "musculoskeletal": 0.35,
+    "infectious_immune": 0.6336633663366337,
+    "otologic": 0.5
+   }
+  },
+  "A4": {
+   "macro_f1": 0.6372122225720241,
+   "micro_f1": 0.6432,
+   "exact_set": 0.39748953974895396,
+   "concept_acc": null,
+   "coverage": 0.7071129707112971,
+   "false_accept_invalid": 0.2,
+   "accept_ambiguous": 0.5882352941176471,
+   "n_valid": 239,
+   "n_invalid": 15,
+   "n_ambiguous": 17,
+   "per_organ_f1": {
+    "haematologic": 0.6666666666666666,
+    "hepatic": 0.7777777777777778,
+    "cardiovascular": 0.7096774193548387,
+    "pulmonary": 0.5454545454545454,
+    "renal": 0.7307692307692307,
+    "gastrointestinal": 0.6938775510204082,
+    "neurologic": 0.4,
+    "ocular": 0.7346938775510204,
+    "dermatologic": 0.6285714285714286,
+    "metabolic_endocrine": 0.6376811594202898,
+    "musculoskeletal": 0.4090909090909091,
+    "infectious_immune": 0.6538461538461539,
+    "otologic": 0.6956521739130435
+   }
+  },
+  "A4f": {
+   "macro_f1": 0.5872650346344269,
+   "micro_f1": 0.5940119760479042,
+   "exact_set": 0.39748953974895396,
+   "concept_acc": null,
+   "coverage": 1.0,
+   "false_accept_invalid": 1.0,
+   "accept_ambiguous": 1.0,
+   "n_valid": 239,
+   "n_invalid": 15,
+   "n_ambiguous": 17,
+   "per_organ_f1": {
+    "haematologic": 0.37735849056603776,
+    "hepatic": 0.6666666666666666,
+    "cardiovascular": 0.7619047619047619,
+    "pulmonary": 0.56,
+    "renal": 0.7419354838709677,
+    "gastrointestinal": 0.6129032258064516,
+    "neurologic": 0.3287671232876712,
+    "ocular": 0.7647058823529411,
+    "dermatologic": 0.7083333333333334,
+    "metabolic_endocrine": 0.6588235294117647,
+    "musculoskeletal": 0.33766233766233766,
+    "infectious_immune": 0.6538461538461539,
+    "otologic": 0.46153846153846156
+   }
+  },
+  "A5": {
+   "macro_f1": 0.5842492346259681,
+   "micro_f1": 0.5902192242833052,
+   "exact_set": 0.34309623430962344,
+   "concept_acc": 0.5805084745762712,
+   "coverage": 0.6108786610878661,
+   "false_accept_invalid": 0.13333333333333333,
+   "accept_ambiguous": 0.47058823529411764,
+   "n_valid": 239,
+   "n_invalid": 15,
+   "n_ambiguous": 17,
+   "per_organ_f1": {
+    "haematologic": 0.6153846153846154,
+    "hepatic": 0.7777777777777778,
+    "cardiovascular": 0.6896551724137931,
+    "pulmonary": 0.5454545454545454,
+    "renal": 0.7058823529411765,
+    "gastrointestinal": 0.6521739130434783,
+    "neurologic": 0.3684210526315789,
+    "ocular": 0.6363636363636364,
+    "dermatologic": 0.5714285714285714,
+    "metabolic_endocrine": 0.5079365079365079,
+    "musculoskeletal": 0.3333333333333333,
+    "infectious_immune": 0.62,
+    "otologic": 0.5714285714285714
+   }
+  }
+ },
+ "all": {
+  "A0": {
+   "macro_f1": 0.3979632697585049,
+   "micro_f1": 0.41343126967471144,
+   "exact_set": 0.2053941908713693,
+   "concept_acc": 0.34120171673819744,
+   "coverage": 0.32987551867219916,
+   "false_accept_invalid": 0.0,
+   "accept_ambiguous": 0.19607843137254902,
+   "n_valid": 482,
+   "n_invalid": 30,
+   "n_ambiguous": 51,
+   "per_organ_f1": {
+    "haematologic": 0.41025641025641024,
+    "hepatic": 0.358974358974359,
+    "cardiovascular": 0.45544554455445546,
+    "pulmonary": 0.3050847457627119,
+    "renal": 0.4878048780487805,
+    "gastrointestinal": 0.3333333333333333,
+    "neurologic": 0.43243243243243246,
+    "ocular": 0.43636363636363634,
+    "dermatologic": 0.46875,
+    "metabolic_endocrine": 0.37362637362637363,
+    "musculoskeletal": 0.3050847457627119,
+    "infectious_immune": 0.46153846153846156,
+    "otologic": 0.3448275862068966
+   }
+  },
+  "A1": {
+   "macro_f1": 0.595018417763011,
+   "micro_f1": 0.6059574468085106,
+   "exact_set": 0.36929460580912865,
+   "concept_acc": 0.5665236051502146,
+   "coverage": 0.6286307053941909,
+   "false_accept_invalid": 0.13333333333333333,
+   "accept_ambiguous": 0.29411764705882354,
+   "n_valid": 482,
+   "n_invalid": 30,
+   "n_ambiguous": 51,
+   "per_organ_f1": {
+    "haematologic": 0.6,
+    "hepatic": 0.5306122448979592,
+    "cardiovascular": 0.6821705426356589,
+    "pulmonary": 0.48484848484848486,
+    "renal": 0.7083333333333334,
+    "gastrointestinal": 0.5348837209302325,
+    "neurologic": 0.5591397849462365,
+    "ocular": 0.7246376811594203,
+    "dermatologic": 0.6410256410256411,
+    "metabolic_endocrine": 0.5882352941176471,
+    "musculoskeletal": 0.46153846153846156,
+    "infectious_immune": 0.631578947368421,
+    "otologic": 0.5882352941176471
+   }
+  },
+  "A2": {
+   "macro_f1": 0.6380486117542147,
+   "micro_f1": 0.6445880452342488,
+   "exact_set": 0.3983402489626556,
+   "concept_acc": 0.6266094420600858,
+   "coverage": 0.7033195020746889,
+   "false_accept_invalid": 0.16666666666666666,
+   "accept_ambiguous": 0.5294117647058824,
+   "n_valid": 482,
+   "n_invalid": 30,
+   "n_ambiguous": 51,
+   "per_organ_f1": {
+    "haematologic": 0.6923076923076923,
+    "hepatic": 0.7857142857142857,
+    "cardiovascular": 0.676923076923077,
+    "pulmonary": 0.5294117647058824,
+    "renal": 0.7346938775510204,
+    "gastrointestinal": 0.5686274509803921,
+    "neurologic": 0.5684210526315789,
+    "ocular": 0.6944444444444444,
+    "dermatologic": 0.6666666666666666,
+    "metabolic_endocrine": 0.5846153846153846,
+    "musculoskeletal": 0.49382716049382713,
+    "infectious_immune": 0.7107438016528925,
+    "otologic": 0.5882352941176471
+   }
+  },
+  "A3": {
+   "macro_f1": 0.6066420862155293,
+   "micro_f1": 0.6166807076663858,
+   "exact_set": 0.37344398340248963,
+   "concept_acc": 0.592274678111588,
+   "coverage": 0.6369294605809128,
+   "false_accept_invalid": 0.0,
+   "accept_ambiguous": 0.45098039215686275,
+   "n_valid": 482,
+   "n_invalid": 30,
+   "n_ambiguous": 51,
+   "per_organ_f1": {
+    "haematologic": 0.76,
+    "hepatic": 0.6923076923076923,
+    "cardiovascular": 0.6129032258064516,
+    "pulmonary": 0.48484848484848486,
+    "renal": 0.7346938775510204,
+    "gastrointestinal": 0.5434782608695652,
+    "neurologic": 0.5376344086021505,
+    "ocular": 0.72,
+    "dermatologic": 0.6493506493506493,
+    "metabolic_endocrine": 0.5737704918032787,
+    "musculoskeletal": 0.4533333333333333,
+    "infectious_immune": 0.6724137931034483,
+    "otologic": 0.45161290322580644
+   }
+  },
+  "A4": {
+   "macro_f1": 0.6593381385212269,
+   "micro_f1": 0.6666666666666666,
+   "exact_set": 0.42738589211618255,
+   "concept_acc": null,
+   "coverage": 0.7282157676348547,
+   "false_accept_invalid": 0.16666666666666666,
+   "accept_ambiguous": 0.5490196078431373,
+   "n_valid": 482,
+   "n_invalid": 30,
+   "n_ambiguous": 51,
+   "per_organ_f1": {
+    "haematologic": 0.7169811320754716,
+    "hepatic": 0.8275862068965517,
+    "cardiovascular": 0.706766917293233,
+    "pulmonary": 0.5294117647058824,
+    "renal": 0.7474747474747475,
+    "gastrointestinal": 0.6185567010309279,
+    "neurologic": 0.5684210526315789,
+    "ocular": 0.7466666666666667,
+    "dermatologic": 0.6753246753246753,
+    "metabolic_endocrine": 0.6299212598425197,
+    "musculoskeletal": 0.5,
+    "infectious_immune": 0.7160493827160493,
+    "otologic": 0.5882352941176471
+   }
+  },
+  "A4f": {
+   "macro_f1": 0.6047063558565813,
+   "micro_f1": 0.6102941176470589,
+   "exact_set": 0.42738589211618255,
+   "concept_acc": null,
+   "coverage": 1.0,
+   "false_accept_invalid": 1.0,
+   "accept_ambiguous": 1.0,
+   "n_valid": 482,
+   "n_invalid": 30,
+   "n_ambiguous": 51,
+   "per_organ_f1": {
+    "haematologic": 0.44660194174757284,
+    "hepatic": 0.78125,
+    "cardiovascular": 0.7581699346405228,
+    "pulmonary": 0.6075949367088608,
+    "renal": 0.7521367521367521,
+    "gastrointestinal": 0.5648854961832062,
+    "neurologic": 0.4864864864864865,
+    "ocular": 0.6548672566371682,
+    "dermatologic": 0.7058823529411765,
+    "metabolic_endocrine": 0.6357615894039735,
+    "musculoskeletal": 0.36363636363636365,
+    "infectious_immune": 0.7183673469387755,
+    "otologic": 0.3855421686746988
+   }
+  },
+  "A5": {
+   "macro_f1": 0.5900139450982799,
+   "micro_f1": 0.6030664395229983,
+   "exact_set": 0.35892116182572614,
+   "concept_acc": 0.5836909871244635,
+   "coverage": 0.6161825726141079,
+   "false_accept_invalid": 0.06666666666666667,
+   "accept_ambiguous": 0.4117647058823529,
+   "n_valid": 482,
+   "n_invalid": 30,
+   "n_ambiguous": 51,
+   "per_organ_f1": {
+    "haematologic": 0.6666666666666666,
+    "hepatic": 0.6923076923076923,
+    "cardiovascular": 0.628099173553719,
+    "pulmonary": 0.46153846153846156,
+    "renal": 0.7083333333333334,
+    "gastrointestinal": 0.5531914893617021,
+    "neurologic": 0.5274725274725275,
+    "ocular": 0.6567164179104478,
+    "dermatologic": 0.631578947368421,
+    "metabolic_endocrine": 0.5423728813559322,
+    "musculoskeletal": 0.42105263157894735,
+    "infectious_immune": 0.6808510638297872,
+    "otologic": 0.5
+   }
+  }
+ },
+ "paired_test": {
+  "A2-A4:macro_f1": {
+   "delta": -0.01814429756517777,
+   "lo": -0.03403396310450068,
+   "hi": -0.005485642021211985
+  },
+  "A5-A4:macro_f1": {
+   "delta": -0.05296298794605603,
+   "lo": -0.07716792490709928,
+   "hi": -0.02854984135799533
+  },
+  "A5-A2:macro_f1": {
+   "delta": -0.03481869038087826,
+   "lo": -0.054053661740214934,
+   "hi": -0.01579913952378945
+  },
+  "A4f-A4:macro_f1": {
+   "delta": -0.049947187937597226,
+   "lo": -0.11609591673178386,
+   "hi": -0.008662892130652728
+  },
+  "A3-A2:macro_f1": {
+   "delta": -0.018386060260617954,
+   "lo": -0.04772105318943181,
+   "hi": 0.013336542381400926
+  },
+  "A0-A4:macro_f1": {
+   "delta": -0.21302910471169478,
+   "lo": -0.2666854032603997,
+   "hi": -0.16491828343526854
+  }
+ },
+ "sapbert_precision_coverage": [
+  {
+   "theta": 0.5,
+   "coverage": 1.0,
+   "concept_precision": 0.6931330472103004,
+   "hard_input_accept": 1.0
+  },
+  {
+   "theta": 0.525,
+   "coverage": 1.0,
+   "concept_precision": 0.6931330472103004,
+   "hard_input_accept": 0.9876543209876543
+  },
+  {
+   "theta": 0.55,
+   "coverage": 1.0,
+   "concept_precision": 0.6931330472103004,
+   "hard_input_accept": 0.9506172839506173
+  },
+  {
+   "theta": 0.575,
+   "coverage": 0.9892703862660944,
+   "concept_precision": 0.6984815618221258,
+   "hard_input_accept": 0.8888888888888888
+  },
+  {
+   "theta": 0.6,
+   "coverage": 0.9785407725321889,
+   "concept_precision": 0.706140350877193,
+   "hard_input_accept": 0.8518518518518519
+  },
+  {
+   "theta": 0.625,
+   "coverage": 0.9570815450643777,
+   "concept_precision": 0.7197309417040358,
+   "hard_input_accept": 0.8024691358024691
+  },
+  {
+   "theta": 0.65,
+   "coverage": 0.9334763948497854,
+   "concept_precision": 0.735632183908046,
+   "hard_input_accept": 0.7407407407407407
+  },
+  {
+   "theta": 0.675,
+   "coverage": 0.8991416309012875,
+   "concept_precision": 0.7589498806682577,
+   "hard_input_accept": 0.7283950617283951
+  },
+  {
+   "theta": 0.7,
+   "coverage": 0.8433476394849786,
+   "concept_precision": 0.7938931297709924,
+   "hard_input_accept": 0.6666666666666666
+  },
+  {
+   "theta": 0.725,
+   "coverage": 0.8004291845493562,
+   "concept_precision": 0.8123324396782842,
+   "hard_input_accept": 0.5555555555555556
+  },
+  {
+   "theta": 0.75,
+   "coverage": 0.7575107296137339,
+   "concept_precision": 0.8328611898016998,
+   "hard_input_accept": 0.4444444444444444
+  },
+  {
+   "theta": 0.775,
+   "coverage": 0.7060085836909872,
+   "concept_precision": 0.8632218844984803,
+   "hard_input_accept": 0.35802469135802467
+  },
+  {
+   "theta": 0.8,
+   "coverage": 0.6545064377682404,
+   "concept_precision": 0.8918032786885246,
+   "hard_input_accept": 0.32098765432098764
+  },
+  {
+   "theta": 0.825,
+   "coverage": 0.6201716738197425,
+   "concept_precision": 0.9100346020761245,
+   "hard_input_accept": 0.25925925925925924
+  },
+  {
+   "theta": 0.85,
+   "coverage": 0.5686695278969958,
+   "concept_precision": 0.9283018867924528,
+   "hard_input_accept": 0.2222222222222222
+  },
+  {
+   "theta": 0.875,
+   "coverage": 0.5171673819742489,
+   "concept_precision": 0.9377593360995851,
+   "hard_input_accept": 0.1728395061728395
+  },
+  {
+   "theta": 0.9,
+   "coverage": 0.48068669527896996,
+   "concept_precision": 0.9464285714285714,
+   "hard_input_accept": 0.1728395061728395
+  },
+  {
+   "theta": 0.925,
+   "coverage": 0.44206008583690987,
+   "concept_precision": 0.9466019417475728,
+   "hard_input_accept": 0.14814814814814814
+  },
+  {
+   "theta": 0.95,
+   "coverage": 0.4012875536480687,
+   "concept_precision": 0.9572192513368984,
+   "hard_input_accept": 0.14814814814814814
+  },
+  {
+   "theta": 0.975,
+   "coverage": 0.37339055793991416,
+   "concept_precision": 0.9597701149425287,
+   "hard_input_accept": 0.14814814814814814
+  }
+ ],
+ "recall_at_k": {
+  "sapbert": {
+   "1": 0.6824034334763949,
+   "5": 0.8090128755364807,
+   "10": 0.8497854077253219
+  },
+  "sapbert_h": {
+   "1": 0.6931330472103004,
+   "5": 0.8133047210300429,
+   "10": 0.8583690987124464
+  },
+  "biolord": {
+   "1": 0.6781115879828327,
+   "5": 0.7982832618025751,
+   "10": 0.8283261802575107
+  },
+  "tfidf": {
+   "1": 0.6416309012875536,
+   "5": 0.7167381974248928,
+   "10": 0.7360515021459227
+  }
+ },
+ "errors_sapbert_all": {
+  "counts": {
+   "top1_right": 318,
+   "gold_in_2_10": 78,
+   "gold_not_in_top10": 70,
+   "no_gold_concept": 16,
+   "right_concept_wrong_organs": 117,
+   "right_concept_below_theta": 26,
+   "nonhuman_top1": 18
+  },
+  "by_category": {
+   "canonical": {
+    "top1_right": 95,
+    "gold_in_2_10": 2
+   },
+   "synonym": {
+    "gold_in_2_10": 13,
+    "top1_right": 76,
+    "gold_not_in_top10": 5
+   },
+   "abbrev": {
+    "gold_not_in_top10": 21,
+    "top1_right": 44,
+    "gold_in_2_10": 13
+   },
+   "typo": {
+    "top1_right": 58,
+    "gold_not_in_top10": 14,
+    "gold_in_2_10": 25
+   },
+   "lay": {
+    "top1_right": 39,
+    "gold_in_2_10": 21,
+    "gold_not_in_top10": 30
+   },
+   "ambiguous": {
+    "gold_in_2_10": 4,
+    "top1_right": 6
+   }
+  }
+ },
+ "by_category_test_macro_f1": {
+  "A2": {
+   "canonical": 0.7726551226551227,
+   "synonym": 0.7108476993092376,
+   "abbrev": 0.5017094017094018,
+   "typo": 0.5028527028527028,
+   "lay": 0.367483798253029
+  },
+  "A4": {
+   "canonical": 0.7762054185131109,
+   "synonym": 0.7108476993092376,
+   "abbrev": 0.5142968142968143,
+   "typo": 0.5382839382839383,
+   "lay": 0.40182445759368834
+  },
+  "A5": {
+   "canonical": 0.7726551226551227,
+   "synonym": 0.6996588881204265,
+   "abbrev": 0.4786935286935287,
+   "typo": 0.4165996396765627,
+   "lay": 0.23040293040293042
+  }
+ }
+}

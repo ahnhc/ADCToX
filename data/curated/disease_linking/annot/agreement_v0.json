@@ -1,0 +1,21 @@
+{
+ "n": 600,
+ "validity_kappa": 0.9168927672264183,
+ "validity_agree": 0.9716666666666667,
+ "concept_compatible_both_valid": 0.989451476793249,
+ "organ_exact_both_valid": 0.9556962025316456,
+ "organ_jaccard_both_valid": 0.9783755274261603,
+ "n_disagreements": 45,
+ "validity_A": {
+  "valid": 483,
+  "ambiguous": 51,
+  "non_disease": 36,
+  "invalid": 30
+ },
+ "validity_B": {
+  "valid": 481,
+  "ambiguous": 56,
+  "non_disease": 33,
+  "invalid": 30
+ }
+}
