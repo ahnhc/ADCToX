@@ -1,0 +1,110 @@
+{
+  "verified_at": "2026-10-12T05:22:29.767004+00:00",
+  "release_commit": "68585e72105802aad35079d0695734c5a8409e3f",
+  "repository": "https://github.com/ahnhc/ADCToX",
+  "app": {
+    "schema_version": 1,
+    "app_version": "0.1",
+    "runtime_api": 1,
+    "url": "https://github.com/ahnhc/ADCToX/releases/download/v0.1.0/adctox-ubuntu.tar.gz",
+    "size": 65278,
+    "sha256": "1511f9f027a09f88e4df62f9969a2ac917158d1e0474e46ee0c484db67cc6afc",
+    "torch_version": "2.11.0"
+  },
+  "model": {
+    "version": "0.0",
+    "files": 17,
+    "bytes": 1018895361,
+    "manifest_sha256": "7eeda0cf84f9ba26ea742aedceceeae70704d7040f98d062a2f4292c566a8f6c"
+  },
+  "environment": {
+    "device": "cpu",
+    "dependencies": {
+      "torch": "2.11.0+cpu",
+      "numpy": "2.5.3",
+      "transformers": "5.19.0",
+      "sentence-transformers": "6.1.0",
+      "huggingface-hub": "1.33.0"
+    }
+  },
+  "local_regression": {
+    "passed": 125,
+    "skipped": 1,
+    "deselected": 1,
+    "full_portable_parity_test_passed": true
+  },
+  "github_actions": {
+    "url": "https://github.com/ahnhc/ADCToX/actions/runs/38207349579",
+    "conclusion": "success",
+    "passed": 96,
+    "skipped": 30,
+    "deselected": 1,
+    "note": "Private DailyMed/workbook caches and heavyweight models are absent in CI; raw-data-free app build also passed."
+  },
+  "export_parity": {
+    "inputs": [
+      "lung hole",
+      "asthma",
+      "diabetic nephropathy"
+    ],
+    "device": "cpu",
+    "max_absolute_error": 0.0,
+    "mondo_links_identical": true,
+    "links": [
+      {
+        "mondo": "MONDO:0002076",
+        "name": "pneumothorax",
+        "sim": 0.6806293725967407,
+        "axes": []
+      },
+      {
+        "mondo": "MONDO:0004979",
+        "name": "asthma",
+        "sim": 1.000038743019104,
+        "axes": [
+          "pulmonary"
+        ]
+      },
+      {
+        "mondo": "MONDO:0005016",
+        "name": "diabetic kidney disease",
+        "sim": 1.000032901763916,
+        "axes": [
+          "renal",
+          "metabolic_endocrine"
+        ]
+      }
+    ]
+  },
+  "published_install": {
+    "installer": "https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh",
+    "exit_code": 0,
+    "downloaded_files": 17,
+    "reused_files": 0,
+    "note": "Separate new CPU venv prepared from the same pinned requirements; the published installer reran normal dependency installation with no skip flags, then downloaded all models to an empty model home."
+  },
+  "repeat_update": {
+    "downloaded": 0,
+    "unchanged": 17
+  },
+  "inference": {
+    "inputs": [
+      "lung hole",
+      "asthma"
+    ],
+    "learned_fallback": 0.25,
+    "exit_code": 0,
+    "output_matches_prepublication_cpu_bundle": true
+  },
+  "installed_terminal_update": {
+    "events": [
+      "U 모델 업데이트",
+      "Installed",
+      "변경된 파일만",
+      "17 unchanged",
+      "U 모델 업데이트"
+    ],
+    "exit_code": 0
+  },
+  "changed_head_only_update": "Local HTTP integration test changed only the head; exactly one file GET occurred; rollback restored the old head. No trained model was modified for this test."
+}
