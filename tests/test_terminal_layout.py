@@ -184,9 +184,12 @@ def test_condition_names_are_shortened_only_for_display_and_priorities_group_tie
 
 @pytest.mark.parametrize("columns", [40, 70, 100, 120])
 def test_final_output_fits_terminal_and_preserves_dose_actions_and_check_names(monkeypatch, capsys, columns):
+    import json
     import os
     import shutil
     import recommend as R
+    evidence = json.loads((pathlib.Path(__file__).resolve().parents[1] / "ml/data/label_evidence.json").read_text())["evidence"]
+    monkeypatch.setattr(R.DE, "evidence", lambda: evidence)
     monkeypatch.setattr(shutil, "get_terminal_size", lambda fallback: os.terminal_size((columns, 36)))
     monkeypatch.setattr(R, "_ANALYSES", {})
     rows, s, notes, checks = R.recommend(["heart_failure", "interstitial_lung_disease", "ckd_stage_3"],
