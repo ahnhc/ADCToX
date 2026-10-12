@@ -1,0 +1,3231 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-12",
+  "generated_at_utc": "2026-10-12T04:35:35.224102+00:00",
+  "purpose": "Read-only audit of existing results and current working-tree source. No training or new benchmark run.",
+  "git_head": "71cafe1d6f12c05e1ac8d8ac5b3c21c22066aef1",
+  "git_status_at_snapshot": [
+    " M ml/README.md",
+    " M ml/build_portable.py",
+    " M ml/form.py",
+    " M ml/recommend.py",
+    " M ml/term.py",
+    " M ml/tui.py",
+    " M ml/win/launcher.py",
+    "?? artifacts/terminal-captures/",
+    "?? artifacts/ui-review/",
+    "?? tests/test_terminal_layout.py"
+  ],
+  "environment": {
+    "python": "3.12.13",
+    "torch": "2.11.0+cu128",
+    "cuda_visible": true
+  },
+  "source_sha256": {
+    "ml/recommend.py": "4995b23db5fca920bd90856c078353448c9a8a15873e2f932899d4f760398130",
+    "ml/form.py": "39cb57b3afc5c46365a50f8378da3f8bf608bd0f69fd36d49e4b43c8dc12edc1",
+    "ml/tui.py": "9e9fd68dd2b5b2ed4062f675e214f8acc1262a7c44e597ccdc1e8a1dc2c34af3",
+    "ml/term.py": "a4e319e1ab21e4660f2c1bf3fb303b16da4b0f6a01b1fc87e1fc20339263db87",
+    "ml/vulnerability_model.py": "56f8e24a8d4ea7aea8236355b07ccccd29543c91efde037973ead7d630152d3d",
+    "ml/mondo_index.py": "8e62b677899067e82ff65a5989676a82f84ee58387e1a0b89a4c47a90e5bd82a",
+    "ml/lab.py": "20a0d586fcdeb7c9336ca46f6dd439f47d0e74e6c0a4a874fcb0a1c53467c2d0",
+    "ml/lab_ft.py": "06693ee5eefa970ca976fd6b9bdec883801388733ffdde61b71e7a6ac891e9ac",
+    "ml/restrictions.py": "3d46bb8ed63866821c28b709eeadf172783bfe0de4d3114409f5ef07678822a3",
+    "ml/drug_evidence.py": "4b235a1fd59a207cf3f6611c73c2c5e67a123636d93519ad32d19e9a8ecd715c",
+    "ml/labs.py": "201b339add8699535caa52ba0bb39e3a9b41e13fc3619a01ae34d0f1ec2eabb6",
+    "conf/comorbidity_registry.csv": "d52b151a9a9a70b7db80438e957af674fb98c6aa1b2d717ec2a5751b65f5db95",
+    "conf/label_restrictions.yaml": "e4a94409e6ebf426b3942088c177e11d6bfb2392c0e7adaa9e28af4cded4f125",
+    "conf/ontology/mondo_organ_axis.yaml": "4831f8a1d1c6f9b40015992f60818520347a9dda6f29ba504d2155312ebf24e9",
+    "conf/design_space.yaml": "4765128a241c00522155fda8d1e4f80f17af8d978c2bb417807c63d04a42ab71",
+    "tests/test_terminal_layout.py": "07df8b0d32e7157b8dfa00647e65b8e1124b268d82fb6e4ce8b28037ed440d6a",
+    "tests/test_ml_recommender.py": "28d85f4336eb6aad6d047500edbd342b823cad38a669a32831766a14caab12c6",
+    "ml/results/lab/e_both.json": "0d47d3f72fd6debda7daa92e2fbe72e2796e8672d24597fd5d0ffd915d71b44a",
+    "ml/results/lab/e_defs.json": "5c05af746c4dcf93cb24970e7a915ab165145d6f4e5899ce73c16dee2b5e943e",
+    "ml/results/lab/bake_sapbert.json": "92b2cff5608a4d3cba582d6a63228dbb6f4ab498b4feb12a476c4cf34fc12b15",
+    "ml/results/lab/e_weight.json": "f61879bcf22fcae14f8da2f18bd601f3dac884b964db85e38d1bbe4d293f0ce9",
+    "ml/results/lab/e_bilinear.json": "d4f211ed6b6916d77eecf64d5548b9ccbdd1975478c021d5ac0a2dc9d4a8327b",
+    "ml/results/lab/e_lora.json": "2511ace0cc92619595d0d882343f8f625c5d3d96c6bc902d06e5a2153d2305cd",
+    "ml/results/lab/bake_medcpt.json": "053cce0ac12a78154b44a900af5538d83f55655039229cdcf10a16f37f302426",
+    "ml/results/lab/bake_pubmedbert.json": "9c53939d65908f6800228e3789e197a492c0245de2e92cd4eea4d1ea181c85e5",
+    "ml/results/lab/bake_bge_m3.json": "690d27e6178589438bc802e82b45550c8c7c4a5f0a542f4fd258f0df42c24e33",
+    "ml/results/lab/bake_qwen3.json": "b12a8a9063935799e8f232419aa496fdcd00f73941e3b128235398a1f4da031a",
+    "ml/results/lab/e_onto.json": "b4ffe646a8ed71b38d8f7f4bb461c38acc943f5eb72df2aade020805a2c91d0d",
+    "ml/results/lab/bake_biolord.json": "8a9ca9866a24dbf7a8b58473c5169eb03d443e688d2e20a65b3ff069fa788ca2",
+    "ml/results/task_a_sapbert.json": "55bf91822551b1ea8ff61a7aac1493c9ba7d14551ac3e9eb41851b5f3bbdec93",
+    "ml/results/validate_registry.json": "2cd9fad6ed4fb25939134e6762c77935acb868610a10e9d343bab33aa56b41fd",
+    "ml/results/learned_addon.json": "9e4e349d955c8cfc22e5120dbd7aa422256a81c1c09a5c9c8c17744e8220a021",
+    "ml/results/task_d.json": "b4f103334cd68ac4e2bbca68c99b7f087ec42af87e6cfd3c62d1b9ccb125fd66",
+    "ml/results/task_d2.json": "67d615fdf2531e4a1f8f64c7af0f0f603ab86fec25651efb3b15d4c5f0eadc2d",
+    "ml/results/faers_validation.json": "bc76b4d404c02e2f94ca8199050f2e57a25f12e5ee110a851487783bf1a8ebf9",
+    "ml/results/jader_validation.json": "3528cf4c94f1165f74bdb7e6f6aa7d47ee0a55b8bb6cb1ed2ab9e4824543c211",
+    "ml/results/subgroup_validation.json": "3f6205fa008493ef60669d1f0bda2a16b49cd7608df9229985eb44a7677ad898",
+    "src/adctox/design/enumerate.py": "a861656f1f97346da6c799185c96441290a73da9f8bef74ca39da6a82684eaf5",
+    "src/adctox/design/constraints.py": "f4c92fc645fec7b9ec0c668d525ad9ea786d2dff7ac7c55a764f5c0e9b026ae4",
+    "artifacts/terminal-captures/lung-hole-verification.json": "43e708531fb68edf2a2fba02e6923cbc4ac9b032cc5cb13745dd0ce7aeb3f284",
+    "artifacts/terminal-captures/ui-v0.0/capture-info.json": "54c4c143da331c59348a53a5f3639831bb8573585118f7148abcdf8f9323c42a"
+  },
+  "checkpoint": {
+    "path": "/data/hyeongchanahn/adctox/ml_cache/vuln_biolord.pt",
+    "bytes": 12827345,
+    "sha256": "fe8c45f424bbf9b7c927d8f2066271cbf7766f08107bdc3c74291199052881c3",
+    "ensemble_members": 5,
+    "encoder": "FremyCompany/BioLORD-2023 (frozen)"
+  },
+  "data": {
+    "finngen_cache": "/data/hyeongchanahn/adctox/ml_cache/finngen.parquet",
+    "finngen_cache_sha256": "6812e678cd617b341c3080f2bddde72280840f4672fab6acb4903e40c6382bc2",
+    "raw_rows": 75129,
+    "filtered_rows": 59157,
+    "filter": "qc_flag == OK and 0 < hr <= 100",
+    "priors": 1616,
+    "outcomes": 193,
+    "lags": [
+      0,
+      1,
+      5,
+      15
+    ],
+    "share_hr_gt_1": 0.8820426999340737,
+    "domain_rows": {
+      "Cardiac": 12864,
+      "Pulmonary": 6882,
+      "Hematologic": 6793,
+      "Metabolic": 6098,
+      "Skin": 5567,
+      "Renal": 5450,
+      "Vascular": 4823,
+      "Ocular": 3202,
+      "GI": 3105,
+      "Hepatic": 2700,
+      "Reproductive": 625,
+      "Neurologic": 446,
+      "Infection": 431,
+      "Ear": 105,
+      "Immune": 41,
+      "Musculoskeletal": 25
+    },
+    "registry_entries": 41,
+    "axes": 13,
+    "label_rules": 97,
+    "label_entries": 14,
+    "raw_lab_fields": 21
+  },
+  "mondo_index": {
+    "path": "/data/hyeongchanahn/adctox/ml_cache/mondo_index.npz",
+    "sha256": "ac6c0412b826db642f5f23b04b46294295deaf27183799ee17dd59dbab259a48",
+    "string_embedding_shape": [
+      101012,
+      768
+    ],
+    "dtype": "float16",
+    "unique_ids": 31583,
+    "strings_with_axes": 76282
+  },
+  "existing_lab_results": {
+    "ml/results/lab/e_both.json": {
+      "config": {
+        "name": "e_both",
+        "emb": "biolord",
+        "arch": "twotower",
+        "weighted": 0,
+        "extra": "extra_both.npz",
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.7364073419669638,
+            "spearman": 0.8406000506962501,
+            "organ": 0.8111665625221613
+          },
+          "model": {
+            "r2": 0.7552734563044181,
+            "spearman": 0.854873043633131,
+            "organ": 0.7992460622232688
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.0318450708533501,
+            "lo": 0.015979363307129887,
+            "hi": 0.04971773444529502,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.04376557115224258,
+            "lo": 0.03130629828516767,
+            "hi": 0.058295828435444605,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.011920500298892491,
+            "lo": -0.018943664360004987,
+            "hi": -0.004319583076084591,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.6457759398210996,
+            "spearman": 0.7830522176712225,
+            "organ": 0.7489144315931765
+          },
+          "model": {
+            "r2": 0.6468459313130809,
+            "spearman": 0.7898142049068442,
+            "organ": 0.740796752862987
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.057963509860837,
+            "lo": 0.033765840886014975,
+            "hi": 0.08644574337201494,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.06608118859102659,
+            "lo": 0.044359062088941394,
+            "hi": 0.09148777959513954,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.00811767873018959,
+            "lo": -0.01851921480793155,
+            "hi": 0.0018263525091563283,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/e_defs.json": {
+      "config": {
+        "name": "e_defs",
+        "emb": "biolord",
+        "arch": "twotower",
+        "weighted": 0,
+        "extra": "extra_defs.npz",
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.7364073419669638,
+            "spearman": 0.8406000506962501,
+            "organ": 0.8111665625221613
+          },
+          "model": {
+            "r2": 0.7563308146581912,
+            "spearman": 0.8570664166337715,
+            "organ": 0.8035378873013667
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.03613689593144799,
+            "lo": 0.02074155830705761,
+            "hi": 0.053575969884734224,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.04376557115224258,
+            "lo": 0.03130629828516767,
+            "hi": 0.058295828435444605,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.007628675220794603,
+            "lo": -0.014622634857381278,
+            "hi": -0.0001309655808405424,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.6457759398210996,
+            "spearman": 0.7830522176712225,
+            "organ": 0.7489144315931765
+          },
+          "model": {
+            "r2": 0.6403153439218684,
+            "spearman": 0.7852151063740077,
+            "organ": 0.7376719851473265
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.05483874214517644,
+            "lo": 0.03234504675770578,
+            "hi": 0.08175839973079857,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.06608118859102659,
+            "lo": 0.044359062088941394,
+            "hi": 0.09148777959513954,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.011242446445850138,
+            "lo": -0.020864144932549594,
+            "hi": -0.0022733786394166368,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/bake_sapbert.json": {
+      "config": {
+        "name": "bake_sapbert",
+        "emb": "sapbert",
+        "arch": "twotower",
+        "weighted": 0,
+        "extra": null,
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.7221913492628068,
+            "spearman": 0.8351916337897828,
+            "organ": 0.7992016400548625
+          },
+          "model": {
+            "r2": 0.734731833096467,
+            "spearman": 0.8405765849237268,
+            "organ": 0.7932371701766603
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.025836178806741487,
+            "lo": 0.011650896664317794,
+            "hi": 0.04098250500991927,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.03180064868494367,
+            "lo": 0.018386539428489362,
+            "hi": 0.046154592311485956,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.005964469878202182,
+            "lo": -0.011897565199595584,
+            "hi": -0.00046915688622909096,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.6273480699801925,
+            "spearman": 0.7712321669106451,
+            "organ": 0.7221342540527904
+          },
+          "model": {
+            "r2": 0.6217932090069506,
+            "spearman": 0.7663307142170415,
+            "organ": 0.7212179759900413
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.03838473298789137,
+            "lo": 0.022203932989058442,
+            "hi": 0.05889050211740359,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.03930101105064054,
+            "lo": 0.02416368018945943,
+            "hi": 0.05852184447225521,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.0009162780627491633,
+            "lo": -0.009292044145379897,
+            "hi": 0.008604001239754118,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/e_weight.json": {
+      "config": {
+        "name": "e_weight",
+        "emb": "biolord",
+        "arch": "twotower",
+        "weighted": 1,
+        "extra": null,
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.7364073419669638,
+            "spearman": 0.8406000506962501,
+            "organ": 0.8111665625221613
+          },
+          "model": {
+            "r2": 0.7594531580221721,
+            "spearman": 0.8562270045987243,
+            "organ": 0.7990352696541688
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.031634278284250174,
+            "lo": 0.014184446294392215,
+            "hi": 0.049064419886084086,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.04376557115224258,
+            "lo": 0.03130629828516767,
+            "hi": 0.058295828435444605,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.012131292867992418,
+            "lo": -0.020838677720456607,
+            "hi": -0.004389465005554664,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.6457759398210996,
+            "spearman": 0.7830522176712225,
+            "organ": 0.7489144315931765
+          },
+          "model": {
+            "r2": 0.6570481249164107,
+            "spearman": 0.7937472349962619,
+            "organ": 0.7391781502030902
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.05634490720094031,
+            "lo": 0.03293894122862127,
+            "hi": 0.0856542502227708,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.06608118859102659,
+            "lo": 0.044359062088941394,
+            "hi": 0.09148777959513954,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.009736281390086265,
+            "lo": -0.022317766835121784,
+            "hi": 0.0026865661935729108,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/e_bilinear.json": {
+      "config": {
+        "name": "e_bilinear",
+        "emb": "biolord",
+        "arch": "bilinear",
+        "weighted": 0,
+        "extra": null,
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.7364073419669638,
+            "spearman": 0.8406000506962501,
+            "organ": 0.8111665625221613
+          },
+          "model": {
+            "r2": 0.755034335898206,
+            "spearman": 0.8508981595424302,
+            "organ": 0.7970569400106376
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.029655948640718913,
+            "lo": 0.012244342666811514,
+            "hi": 0.04860458404873966,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.04376557115224258,
+            "lo": 0.03130629828516767,
+            "hi": 0.058295828435444605,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.014109622511523673,
+            "lo": -0.023352256416704353,
+            "hi": -0.005433267486794509,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.6457759398210996,
+            "spearman": 0.7830522176712225,
+            "organ": 0.7489144315931765
+          },
+          "model": {
+            "r2": 0.647558963379557,
+            "spearman": 0.7808034574538003,
+            "organ": 0.7319761913299502
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.04914294832780037,
+            "lo": 0.025042477695478897,
+            "hi": 0.07665287127196273,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.06608118859102659,
+            "lo": 0.044359062088941394,
+            "hi": 0.09148777959513954,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.016938240263226212,
+            "lo": -0.028312936390387403,
+            "hi": -0.0069436210335503505,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/e_lora.json": {
+      "config": {
+        "name": "e_lora",
+        "emb": "biolord",
+        "arch": "twotower",
+        "weighted": 0,
+        "extra": null,
+        "regimes": "cluster",
+        "seeds": "0,1,2"
+      },
+      "regimes": {
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.6457759398210996,
+            "spearman": 0.7830522176712225,
+            "organ": 0.7489144315931765
+          },
+          "model": {
+            "r2": 0.6837199990869575,
+            "spearman": 0.8070725569529612,
+            "organ": 0.7430967157803158
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.060263472778165884,
+            "lo": 0.036781277913523376,
+            "hi": 0.0891561925566392,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.06608118859102659,
+            "lo": 0.044359062088941394,
+            "hi": 0.09148777959513954,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.005817715812860701,
+            "lo": -0.017356472943207607,
+            "hi": 0.00540186383481266,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/bake_medcpt.json": {
+      "config": {
+        "name": "bake_medcpt",
+        "emb": "medcpt",
+        "arch": "twotower",
+        "weighted": 0,
+        "extra": null,
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.7074313894004534,
+            "spearman": 0.8253451697342747,
+            "organ": 0.791177843269375
+          },
+          "model": {
+            "r2": 0.7413055581120637,
+            "spearman": 0.8434003916765261,
+            "organ": 0.7927305824786277
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.025329591108709013,
+            "lo": 0.011938267026885958,
+            "hi": 0.03908192209690718,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.02377685189945629,
+            "lo": 0.008094598640833853,
+            "hi": 0.040587039802109044,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": 0.0015527392092527265,
+            "lo": -0.008437862538800052,
+            "hi": 0.01053336730676144,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.622118122782234,
+            "spearman": 0.7669655751022747,
+            "organ": 0.7204215195603759
+          },
+          "model": {
+            "r2": 0.6348043069842912,
+            "spearman": 0.7739003084492637,
+            "organ": 0.7261841382299298
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.04335089522777978,
+            "lo": 0.027548952962886335,
+            "hi": 0.06183170475516055,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.03758827655822597,
+            "lo": 0.021163142937804035,
+            "hi": 0.057562044024925506,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": 0.005762618669553812,
+            "lo": -0.005069290416165332,
+            "hi": 0.015511004918245676,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/bake_pubmedbert.json": {
+      "config": {
+        "name": "bake_pubmedbert",
+        "emb": "pubmedbert",
+        "arch": "twotower",
+        "weighted": 0,
+        "extra": null,
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.6694421584985658,
+            "spearman": 0.801827167302799,
+            "organ": 0.7692824171563887
+          },
+          "model": {
+            "r2": 0.6931955184076953,
+            "spearman": 0.815878563361296,
+            "organ": 0.7662679227213903
+          },
+          "model_gain_over_lookup": {
+            "delta": -0.0011330686485283565,
+            "lo": -0.019464735725389176,
+            "hi": 0.01499686374787708,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.0018814257864699885,
+            "lo": -0.011637227419614316,
+            "hi": 0.015881820937463226,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.0030144944349983433,
+            "lo": -0.014627177911600184,
+            "hi": 0.006173646162679924,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.5887504492708883,
+            "spearman": 0.7463109880514565,
+            "organ": 0.7079320547711206
+          },
+          "model": {
+            "r2": 0.6136696367743831,
+            "spearman": 0.7621103412632925,
+            "organ": 0.7191489879829943
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.03631574498084438,
+            "lo": 0.025512784215686066,
+            "hi": 0.049514571661544736,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.025098811768970712,
+            "lo": 0.010852351510262835,
+            "hi": 0.04187522779331726,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": 0.011216933211873666,
+            "lo": 0.0029045675512268916,
+            "hi": 0.01876997036581485,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/bake_bge_m3.json": {
+      "config": {
+        "name": "bake_bge_m3",
+        "emb": "bge_m3",
+        "arch": "twotower",
+        "weighted": 0,
+        "extra": null,
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.6691731952903804,
+            "spearman": 0.8007674267935236,
+            "organ": 0.7643471943466834
+          },
+          "model": {
+            "r2": 0.671746339801809,
+            "spearman": 0.804700635350421,
+            "organ": 0.7608354155001572
+          },
+          "model_gain_over_lookup": {
+            "delta": -0.006565575869761489,
+            "lo": -0.021255218199546694,
+            "hi": 0.008973888669079748,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": -0.0030537970232353637,
+            "lo": -0.01881049557176899,
+            "hi": 0.012850100206130846,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.0035117788465261262,
+            "lo": -0.011541812316672789,
+            "hi": 0.005523821984855619,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.5873705160919542,
+            "spearman": 0.7461681992941891,
+            "organ": 0.6989985215377459
+          },
+          "model": {
+            "r2": 0.5605378969561706,
+            "spearman": 0.7307109156931907,
+            "organ": 0.6950034345534424
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.012170191551292385,
+            "lo": 0.0006175518469453175,
+            "hi": 0.029798051729600424,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.01616527853559591,
+            "lo": 0.004880268506456889,
+            "hi": 0.031754849204245254,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.003995086984303523,
+            "lo": -0.011932162966757046,
+            "hi": 0.0035122893627632648,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/bake_qwen3.json": {
+      "config": {
+        "name": "bake_qwen3",
+        "emb": "qwen3_0.6b",
+        "arch": "twotower",
+        "weighted": 0,
+        "extra": null,
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.7296410190838616,
+            "spearman": 0.8404752503595786,
+            "organ": 0.7997099999425344
+          },
+          "model": {
+            "r2": 0.7678433625991979,
+            "spearman": 0.8615011237623995,
+            "organ": 0.7960349630891871
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.028633971719268392,
+            "lo": 0.015606104008178356,
+            "hi": 0.04185925164757115,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.03230900857261566,
+            "lo": 0.01904679296883213,
+            "hi": 0.048176884770200726,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.0036750368533472744,
+            "lo": -0.011257648494513335,
+            "hi": 0.0037714118136033454,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.6438679841485438,
+            "spearman": 0.7851792994583137,
+            "organ": 0.7352104697571556
+          },
+          "model": {
+            "r2": 0.6765046791772988,
+            "spearman": 0.8042126475693229,
+            "organ": 0.7374880742387259
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.054654831236576024,
+            "lo": 0.036790640996226684,
+            "hi": 0.0752530716467386,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.052377226755005675,
+            "lo": 0.03436761898347965,
+            "hi": 0.0740828095527504,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": 0.002277604481570342,
+            "lo": -0.004440832026010116,
+            "hi": 0.008308252963468613,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/e_onto.json": {
+      "config": {
+        "name": "e_onto",
+        "emb": "biolord",
+        "arch": "twotower",
+        "weighted": 0,
+        "extra": "extra_onto.npz",
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.7364073419669638,
+            "spearman": 0.8406000506962501,
+            "organ": 0.8111665625221613
+          },
+          "model": {
+            "r2": 0.7641312802163709,
+            "spearman": 0.8577686254335721,
+            "organ": 0.8030489823572565
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.03564799098733785,
+            "lo": 0.020161173014128567,
+            "hi": 0.051495593789531655,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.04376557115224258,
+            "lo": 0.03130629828516767,
+            "hi": 0.058295828435444605,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.008117580164904744,
+            "lo": -0.015449156587395464,
+            "hi": -0.0010374340478427572,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.6457759398210996,
+            "spearman": 0.7830522176712225,
+            "organ": 0.7489144315931765
+          },
+          "model": {
+            "r2": 0.6623385548359809,
+            "spearman": 0.7939650471611425,
+            "organ": 0.741871869095
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.05903862609285005,
+            "lo": 0.03449914244764132,
+            "hi": 0.08897727400100479,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.06608118859102659,
+            "lo": 0.044359062088941394,
+            "hi": 0.09148777959513954,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.007042562498176541,
+            "lo": -0.019712347543640638,
+            "hi": 0.005617699356475679,
+            "n": 1151
+          }
+        }
+      }
+    },
+    "ml/results/lab/bake_biolord.json": {
+      "config": {
+        "name": "bake_biolord",
+        "emb": "biolord",
+        "arch": "twotower",
+        "weighted": 0,
+        "extra": null,
+        "regimes": "prior,cluster",
+        "seeds": "0,1,2",
+        "reps": 1
+      },
+      "regimes": {
+        "prior": {
+          "lookup": {
+            "r2": 0.6465985208772648,
+            "spearman": 0.7925145003629184,
+            "organ": 0.7674009913699188
+          },
+          "knn": {
+            "r2": 0.7364073419669638,
+            "spearman": 0.8406000506962501,
+            "organ": 0.8111665625221613
+          },
+          "model": {
+            "r2": 0.7571485542715019,
+            "spearman": 0.8540460238595186,
+            "organ": 0.8003513187266447
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.032950327356725886,
+            "lo": 0.016883288145262916,
+            "hi": 0.049939522985202094,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.04376557115224258,
+            "lo": 0.03130629828516767,
+            "hi": 0.058295828435444605,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.010815243795516705,
+            "lo": -0.018613539663321996,
+            "hi": -0.002915896497780195,
+            "n": 1151
+          }
+        },
+        "cluster": {
+          "lookup": {
+            "r2": 0.5703151989764369,
+            "spearman": 0.7296006178091057,
+            "organ": 0.68283324300215
+          },
+          "knn": {
+            "r2": 0.6457759398210996,
+            "spearman": 0.7830522176712225,
+            "organ": 0.7489144315931765
+          },
+          "model": {
+            "r2": 0.6548744062399581,
+            "spearman": 0.7927826568508785,
+            "organ": 0.739877429912949
+          },
+          "model_gain_over_lookup": {
+            "delta": 0.057044186910799065,
+            "lo": 0.03265788598268928,
+            "hi": 0.08547444723268084,
+            "n": 1151
+          },
+          "knn_gain_over_lookup": {
+            "delta": 0.06608118859102659,
+            "lo": 0.044359062088941394,
+            "hi": 0.09148777959513954,
+            "n": 1151
+          },
+          "model_minus_knn": {
+            "delta": -0.009037001680227521,
+            "lo": -0.02095642104992038,
+            "hi": 0.0023978523490510925,
+            "n": 1151
+          }
+        }
+      }
+    }
+  },
+  "paired_cluster_recomputed_from_existing_per_prior_cache": [
+    {
+      "a": "bake_biolord",
+      "b": "bake_sapbert",
+      "regime": "cluster",
+      "metric": "organ_rho_a_minus_b",
+      "delta": 0.018659453922907694,
+      "lo": 0.0034833035215966423,
+      "hi": 0.03448416199060369,
+      "n": 1151
+    },
+    {
+      "a": "e_lora",
+      "b": "bake_biolord",
+      "regime": "cluster",
+      "metric": "organ_rho_a_minus_b",
+      "delta": 0.0032192858673668213,
+      "lo": -0.0010930830247613244,
+      "hi": 0.008027686827208228,
+      "n": 1151
+    },
+    {
+      "a": "e_onto",
+      "b": "bake_biolord",
+      "regime": "cluster",
+      "metric": "organ_rho_a_minus_b",
+      "delta": 0.0019944391820509817,
+      "lo": -0.0018700424313350104,
+      "hi": 0.00701984301955544,
+      "n": 1151
+    }
+  ],
+  "legacy_task_a_sapbert": {
+    "pair": {
+      "lookup": {
+        "r2": 0.3519178952841555,
+        "spearman": 0.6459582958834181,
+        "organ_rho": 0.5496375175848268,
+        "organ_top3": 0.6788300028960323
+      },
+      "mlp": {
+        "r2": 0.8656969031526414,
+        "spearman": 0.9181721558656116,
+        "organ_rho": 0.7901147632059372,
+        "organ_top3": 0.7924510087846316,
+        "organ_rho_vs_lookup": {
+          "delta": 0.2404772456211103,
+          "lo": 0.19164841897190463,
+          "hi": 0.3114271803177662,
+          "n_priors": 1151,
+          "n_families": 120
+        },
+        "organ_top3_vs_lookup": {
+          "delta": 0.11362100588859927,
+          "lo": 0.08812533689352522,
+          "hi": 0.15000413869464324,
+          "n_priors": 1151,
+          "n_families": 120
+        }
+      },
+      "lightgbm": {
+        "r2": 0.8344623145016531,
+        "spearman": 0.9059807619717851,
+        "organ_rho": 0.7634290533291402,
+        "organ_top3": 0.7774881745342216,
+        "organ_rho_vs_lookup": {
+          "delta": 0.2137915357443134,
+          "lo": 0.16976719735814672,
+          "hi": 0.27780978822833213,
+          "n_priors": 1151,
+          "n_families": 120
+        },
+        "organ_top3_vs_lookup": {
+          "delta": 0.09865817163818903,
+          "lo": 0.07511092398095105,
+          "hi": 0.13259088241048722,
+          "n_priors": 1151,
+          "n_families": 120
+        }
+      }
+    },
+    "prior": {
+      "lookup": {
+        "r2": 0.6465985208772648,
+        "spearman": 0.7925145003629184,
+        "organ_rho": 0.7674009913699188,
+        "organ_top3": 0.7810599478714161
+      },
+      "mlp": {
+        "r2": 0.7365807241094259,
+        "spearman": 0.8417722928919158,
+        "organ_rho": 0.7966181927417683,
+        "organ_top3": 0.7919683367120379,
+        "organ_rho_vs_lookup": {
+          "delta": 0.029217201371849504,
+          "lo": 0.016521989915189994,
+          "hi": 0.04322511363969406,
+          "n_priors": 1151,
+          "n_families": 120
+        },
+        "organ_top3_vs_lookup": {
+          "delta": 0.010908388840621674,
+          "lo": -2.017267812483799e-06,
+          "hi": 0.022409966106974395,
+          "n_priors": 1151,
+          "n_families": 120
+        }
+      },
+      "lightgbm": {
+        "r2": 0.7099728426123288,
+        "spearman": 0.8260274600944132,
+        "organ_rho": 0.7796134698393605,
+        "organ_top3": 0.7825079640891978,
+        "organ_rho_vs_lookup": {
+          "delta": 0.012212478469441722,
+          "lo": -0.0011085645688735325,
+          "hi": 0.02668692510537278,
+          "n_priors": 1151,
+          "n_families": 120
+        },
+        "organ_top3_vs_lookup": {
+          "delta": 0.0014480162177816325,
+          "lo": -0.012136040851735846,
+          "hi": 0.016457214139417954,
+          "n_priors": 1151,
+          "n_families": 120
+        }
+      }
+    },
+    "cluster": {
+      "lookup": {
+        "r2": 0.5703151989764369,
+        "spearman": 0.7296006178091057,
+        "organ_rho": 0.68283324300215,
+        "organ_top3": 0.7326962061975095
+      },
+      "mlp": {
+        "r2": 0.6311222239121174,
+        "spearman": 0.7729560710010448,
+        "organ_rho": 0.722811582919162,
+        "organ_top3": 0.7507481417125206,
+        "organ_rho_vs_lookup": {
+          "delta": 0.039978339917012176,
+          "lo": 0.023394963487821406,
+          "hi": 0.05930716499057961,
+          "n_priors": 1151,
+          "n_families": 120
+        },
+        "organ_top3_vs_lookup": {
+          "delta": 0.018051935515011094,
+          "lo": 0.0033065670712729422,
+          "hi": 0.035110958330733105,
+          "n_priors": 1151,
+          "n_families": 120
+        }
+      },
+      "lightgbm": {
+        "r2": 0.6196906227837186,
+        "spearman": 0.7641609677854125,
+        "organ_rho": 0.7162180805968817,
+        "organ_top3": 0.7511342793705955,
+        "organ_rho_vs_lookup": {
+          "delta": 0.033384837594731806,
+          "lo": 0.02118109817648479,
+          "hi": 0.04880312250821879,
+          "n_priors": 1151,
+          "n_families": 120
+        },
+        "organ_top3_vs_lookup": {
+          "delta": 0.018438073173086194,
+          "lo": 0.008563859028493475,
+          "hi": 0.029302167780428646,
+          "n_priors": 1151,
+          "n_families": 120
+        }
+      }
+    }
+  },
+  "registry_sanity": {
+    "tau_0.8": {
+      "mlp": {
+        "mean_auroc": 0.8547671840354768,
+        "lo": 0.7915696600147819,
+        "hi": 0.9113082039911309,
+        "n": 41
+      },
+      "mlp_std": {
+        "mean_auroc": 0.8451589061345158,
+        "lo": 0.778820214338507,
+        "hi": 0.9035522912047302,
+        "n": 41
+      },
+      "knn": {
+        "mean_auroc": 0.8347081930415264,
+        "lo": 0.7395819304152637,
+        "hi": 0.9137205387205386,
+        "n": 36
+      },
+      "raw": {
+        "mean_auroc": 0.7851071692535107,
+        "lo": 0.7025129342202513,
+        "hi": 0.8623429416112341,
+        "n": 41
+      },
+      "mlp_minus_knn": {
+        "delta": 0.0045173961840628335,
+        "lo": -0.1041550925925926,
+        "hi": 0.1203507295173962
+      },
+      "top1_hits_curated": 0.3902439024390244,
+      "top3_hits_curated": 0.8780487804878049
+    },
+    "tau_0.65": {
+      "mlp": {
+        "mean_auroc": 0.844789356984479,
+        "lo": 0.7775221729490022,
+        "hi": 0.9065040650406504,
+        "n": 41
+      },
+      "mlp_std": {
+        "mean_auroc": 0.8420177383592018,
+        "lo": 0.774390243902439,
+        "hi": 0.8983739837398375,
+        "n": 41
+      },
+      "knn": {
+        "mean_auroc": 0.8565929565929566,
+        "lo": 0.7788677313677314,
+        "hi": 0.923996723996724,
+        "n": 37
+      },
+      "raw": {
+        "mean_auroc": 0.7729120473022912,
+        "lo": 0.6975101626016259,
+        "hi": 0.8427706947524022,
+        "n": 41
+      },
+      "mlp_minus_knn": {
+        "delta": -0.026330876330876343,
+        "lo": -0.1259316134316134,
+        "hi": 0.07359131859131858
+      },
+      "top1_hits_curated": 0.36585365853658536,
+      "top3_hits_curated": 0.8292682926829268
+    },
+    "tau_0.5": {
+      "mlp": {
+        "mean_auroc": 0.8037694013303769,
+        "lo": 0.7248567997043607,
+        "hi": 0.8745380635624537,
+        "n": 41
+      },
+      "mlp_std": {
+        "mean_auroc": 0.7954545454545454,
+        "lo": 0.7141537324464154,
+        "hi": 0.8660384331116039,
+        "n": 41
+      },
+      "knn": {
+        "mean_auroc": 0.7482332982332982,
+        "lo": 0.6559215221715221,
+        "hi": 0.836972426972427,
+        "n": 37
+      },
+      "raw": {
+        "mean_auroc": 0.720620842572062,
+        "lo": 0.6413294530672579,
+        "hi": 0.7967479674796747,
+        "n": 41
+      },
+      "mlp_minus_knn": {
+        "delta": 0.06585351585351584,
+        "lo": -0.042533783783783786,
+        "hi": 0.17717049842049842
+      },
+      "top1_hits_curated": 0.2926829268292683,
+      "top3_hits_curated": 0.7073170731707317
+    }
+  },
+  "learned_addon": {
+    "n_conditions": 40,
+    "n_adcs": 12,
+    "mean": {
+      "own": 0.6439303751803751,
+      "own_L0.25": 0.6092213804713804,
+      "own_L0.5": 0.5896312830687831
+    },
+    "paired": {
+      "0.25": {
+        "mean": -0.034708994708994724,
+        "ci": [
+          -0.05377421254960318,
+          -0.015835668816137592
+        ],
+        "helps": false,
+        "hurts": true
+      },
+      "0.5": {
+        "mean": -0.05429909211159213,
+        "ci": [
+          -0.07855200441919193,
+          -0.02986463970057721
+        ],
+        "helps": false,
+        "hurts": true
+      }
+    },
+    "faers": {
+      "n_conditions": 41,
+      "n_adcs": 12,
+      "mean": {
+        "own": 0.714542822240993,
+        "own_L0.25": 0.6893591108530133,
+        "own_L0.5": 0.6807124306362111
+      },
+      "paired": {
+        "0.25": {
+          "mean": -0.025183711387979684,
+          "ci": [
+            -0.04648766171441476,
+            -0.004039156628714559
+          ],
+          "helps": false,
+          "hurts": true
+        },
+        "0.5": {
+          "mean": -0.033830391604781844,
+          "ci": [
+            -0.06090593159381269,
+            -0.007626696149943098
+          ],
+          "helps": false,
+          "hurts": true
+        }
+      }
+    }
+  },
+  "task_d": {
+    "adc": {
+      "lookup": {
+        "r2": 0.467521088554983,
+        "spearman": 0.679049361465894
+      },
+      "lightgbm:no_structure": {
+        "r2": 0.5274513389821006,
+        "spearman": 0.7268820983182848
+      },
+      "lightgbm:payload": {
+        "r2": 0.5143834750890997,
+        "spearman": 0.7127564662753371,
+        "vs_no_structure": {
+          "delta_r2": -0.013067863893000846,
+          "lo": -0.0223988175313064,
+          "hi": -0.003993842237705422
+        }
+      },
+      "lightgbm:payload+linker": {
+        "r2": 0.4347658499868459,
+        "spearman": 0.6732271272318284,
+        "vs_no_structure": {
+          "delta_r2": -0.0926854889952546,
+          "lo": -0.15244700064168,
+          "hi": -0.03717385627498726
+        }
+      },
+      "lightgbm:all_structure": {
+        "r2": 0.470593936405238,
+        "spearman": 0.6941585362053325,
+        "vs_no_structure": {
+          "delta_r2": -0.05685740257686275,
+          "lo": -0.09428872088818695,
+          "hi": -0.021021309918983416
+        }
+      },
+      "mlp:no_structure": {
+        "r2": 0.5247726198490419,
+        "spearman": 0.7268213586041764
+      },
+      "mlp:payload": {
+        "r2": 0.4939346546860512,
+        "spearman": 0.700707833208679,
+        "vs_no_structure": {
+          "delta_r2": -0.030837965162990776,
+          "lo": -0.04656368745292962,
+          "hi": -0.01536544468581577
+        }
+      },
+      "mlp:payload+linker": {
+        "r2": 0.4950829622806004,
+        "spearman": 0.7040147060854526,
+        "vs_no_structure": {
+          "delta_r2": -0.029689657568441552,
+          "lo": -0.053597388269585225,
+          "hi": -0.008741345480690953
+        }
+      },
+      "mlp:all_structure": {
+        "r2": 0.5004514544807237,
+        "spearman": 0.7067264317626892,
+        "vs_no_structure": {
+          "delta_r2": -0.02432116536831833,
+          "lo": -0.04759092549757814,
+          "hi": -0.0034735611135907362
+        },
+        "vs_lookup": {
+          "delta_r2": 0.03293036592574089,
+          "lo": -0.0010013460351039121,
+          "hi": 0.06517009296539496
+        }
+      }
+    },
+    "payload": {
+      "lookup": {
+        "r2": 0.46280174360673504,
+        "spearman": 0.6780672135846455
+      },
+      "lightgbm:no_structure": {
+        "r2": 0.514034507941224,
+        "spearman": 0.7207312639618042
+      },
+      "lightgbm:payload": {
+        "r2": 0.5046469849811254,
+        "spearman": 0.7065895045262153,
+        "vs_no_structure": {
+          "delta_r2": -0.009387522960098683,
+          "lo": -0.03294467460760464,
+          "hi": 0.015181620938678055
+        }
+      },
+      "lightgbm:payload+linker": {
+        "r2": 0.4335206503805487,
+        "spearman": 0.6734471409342434,
+        "vs_no_structure": {
+          "delta_r2": -0.08051385756067526,
+          "lo": -0.14119001566757527,
+          "hi": -0.022354024224611316
+        }
+      },
+      "lightgbm:all_structure": {
+        "r2": 0.4559622032875725,
+        "spearman": 0.6834530362022261,
+        "vs_no_structure": {
+          "delta_r2": -0.058072304653651596,
+          "lo": -0.10990384950106802,
+          "hi": -0.008794022576302412
+        }
+      },
+      "mlp:no_structure": {
+        "r2": 0.5243900196290717,
+        "spearman": 0.7275914188910376
+      },
+      "mlp:payload": {
+        "r2": 0.5077417847554312,
+        "spearman": 0.709967560316194,
+        "vs_no_structure": {
+          "delta_r2": -0.016648234873640446,
+          "lo": -0.03606139136986818,
+          "hi": 0.0009484424185080628
+        }
+      },
+      "mlp:payload+linker": {
+        "r2": 0.4951328969956686,
+        "spearman": 0.7022640300076937,
+        "vs_no_structure": {
+          "delta_r2": -0.029257122633403073,
+          "lo": -0.0611627064710682,
+          "hi": -0.0044493820793955864
+        }
+      },
+      "mlp:all_structure": {
+        "r2": 0.4884132503314094,
+        "spearman": 0.6981930761483651,
+        "vs_no_structure": {
+          "delta_r2": -0.035976769297662206,
+          "lo": -0.06502524419163079,
+          "hi": -0.011655972662367124
+        },
+        "vs_lookup": {
+          "delta_r2": 0.025611506724674563,
+          "lo": -0.014223272285870212,
+          "hi": 0.06078769839508189
+        }
+      }
+    }
+  },
+  "task_d2": {
+    "adc": {
+      "p0": {
+        "r2": 0.513526076246425,
+        "spearman": 0.7217045499252898
+      },
+      "payload_class": {
+        "r2": 0.5155874001552379,
+        "spearman": 0.7218125142668067,
+        "vs_p0": {
+          "delta_r2": 0.002061323908812775,
+          "lo": -0.0028119750611784403,
+          "hi": 0.007073840938871088
+        },
+        "median_alpha": 1000.0
+      },
+      "payload_class+moa": {
+        "r2": 0.5154000630318725,
+        "spearman": 0.7217763330884317,
+        "vs_p0": {
+          "delta_r2": 0.0018739867854475195,
+          "lo": -0.0029481599688736143,
+          "hi": 0.006792865883170237
+        },
+        "median_alpha": 1000.0
+      },
+      "payload+linker": {
+        "r2": 0.5155986763579132,
+        "spearman": 0.7217785987764641,
+        "vs_p0": {
+          "delta_r2": 0.0020726001114882153,
+          "lo": -0.002719412239202441,
+          "hi": 0.0070459048780269215
+        },
+        "median_alpha": 1000.0
+      },
+      "all_levels": {
+        "r2": 0.515221765928268,
+        "spearman": 0.7217617691578645,
+        "vs_p0": {
+          "delta_r2": 0.001695689681842824,
+          "lo": -0.003032082351475836,
+          "hi": 0.006538019705988634
+        },
+        "median_alpha": 1000.0
+      }
+    },
+    "payload": {
+      "p0": {
+        "r2": 0.5128649545313219,
+        "spearman": 0.7226417306896553
+      },
+      "payload_class": {
+        "r2": 0.5149544065839203,
+        "spearman": 0.7222464853372136,
+        "vs_p0": {
+          "delta_r2": 0.002089452052598444,
+          "lo": -0.003274925816543208,
+          "hi": 0.007475119808699672
+        },
+        "median_alpha": 1000.0
+      },
+      "payload_class+moa": {
+        "r2": 0.514631886069069,
+        "spearman": 0.7220857283593712,
+        "vs_p0": {
+          "delta_r2": 0.0017669315377470333,
+          "lo": -0.0036711204366396293,
+          "hi": 0.00710956461960056
+        },
+        "median_alpha": 1000.0
+      },
+      "payload+linker": {
+        "r2": 0.5147645127994536,
+        "spearman": 0.7221603551540207,
+        "vs_p0": {
+          "delta_r2": 0.0018995582681316367,
+          "lo": -0.0033732797181385225,
+          "hi": 0.007069787054846523
+        },
+        "median_alpha": 1000.0
+      },
+      "all_levels": {
+        "r2": 0.5142963170845105,
+        "spearman": 0.7220019763277089,
+        "vs_p0": {
+          "delta_r2": 0.0014313625531886562,
+          "lo": -0.00390472848848753,
+          "hi": 0.006657072761267769
+        },
+        "median_alpha": 1000.0
+      }
+    }
+  },
+  "faers": {
+    "source": "openFDA /drug/event",
+    "last_updated": "2026-07-30",
+    "adcs": [
+      "brentuximab-vedotin",
+      "datopotamab-deruxtecan",
+      "enfortumab-vedotin",
+      "gemtuzumab-ozogamicin",
+      "inotuzumab-ozogamicin",
+      "loncastuximab-tesirine",
+      "mirvetuximab-soravtansine",
+      "polatuzumab-vedotin",
+      "sacituzumab-govitecan",
+      "telisotuzumab-vedotin",
+      "tisotumab-vedotin",
+      "trastuzumab-deruxtecan",
+      "trastuzumab-emtansine"
+    ],
+    "skipped_lt50_reports": {
+      "pivekimab-sunirine": 0
+    },
+    "n_reports": {
+      "brentuximab-vedotin": 10190,
+      "datopotamab-deruxtecan": 639,
+      "enfortumab-vedotin": 7224,
+      "gemtuzumab-ozogamicin": 3635,
+      "inotuzumab-ozogamicin": 2937,
+      "loncastuximab-tesirine": 393,
+      "mirvetuximab-soravtansine": 1651,
+      "polatuzumab-vedotin": 9702,
+      "sacituzumab-govitecan": 4518,
+      "telisotuzumab-vedotin": 64,
+      "tisotumab-vedotin": 912,
+      "trastuzumab-deruxtecan": 10021,
+      "trastuzumab-emtansine": 8382
+    },
+    "unmapped_mentions": {
+      "__unmapped__": 18911,
+      "constitutional": 29018,
+      "__excluded__": 13699
+    },
+    "n_cells": 169,
+    "n_signals": 46,
+    "label_level": {
+      "auroc": 0.7782785436550018,
+      "ci": [
+        0.7274750143301206,
+        0.8369877013404434
+      ],
+      "n": 169
+    },
+    "incidence_pct": {
+      "auroc": 0.6510074231177094,
+      "ci": [
+        0.5913101693528809,
+        0.7273799984737485
+      ],
+      "n": 156
+    },
+    "shuffled_level_mean_auroc": 0.4989422057264052,
+    "single_organ_patients": {
+      "haematologic": {
+        "spearman": 0.6358270174447849,
+        "p": 0.01950143332281454,
+        "n_adc": 13,
+        "levels": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          2.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ]
+      },
+      "hepatic": {
+        "spearman": 0.8170571691028833,
+        "p": 0.0006500406040652726,
+        "n_adc": 13,
+        "levels": [
+          1.0,
+          0.0,
+          0.0,
+          2.0,
+          2.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      "cardiovascular": {
+        "spearman": 0.3891558912470781,
+        "p": 0.188750469702042,
+        "n_adc": 13,
+        "levels": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          2.0
+        ]
+      },
+      "pulmonary": {
+        "spearman": 0.5188745216627709,
+        "p": 0.06922959763778243,
+        "n_adc": 13,
+        "levels": [
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          2.0,
+          1.0
+        ]
+      },
+      "renal": {
+        "spearman": -0.07715167498104596,
+        "p": 0.8021872773938725,
+        "n_adc": 13,
+        "levels": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gastrointestinal": {
+        "spearman": 0.4469901562676742,
+        "p": 0.12567877544277814,
+        "n_adc": 13,
+        "levels": [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "neurologic": {
+        "spearman": 0.6877936486782529,
+        "p": 0.009366726611942438,
+        "n_adc": 13,
+        "levels": [
+          2.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0
+        ]
+      },
+      "ocular": {
+        "spearman": 0.8344241944381386,
+        "p": 0.000389113309521928,
+        "n_adc": 13,
+        "levels": [
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          2.0,
+          0.0,
+          0.0,
+          1.0,
+          2.0,
+          0.0,
+          0.0
+        ]
+      },
+      "dermatologic": {
+        "spearman": 0.7307981486470352,
+        "p": 0.004545326640897171,
+        "n_adc": 13,
+        "levels": [
+          1.0,
+          0.0,
+          2.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "metabolic_endocrine": {
+        "spearman": 0.4899789435061114,
+        "p": 0.08918310303320728,
+        "n_adc": 13,
+        "levels": [
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "infectious_immune": {
+        "spearman": 0.8451542547285166,
+        "p": 0.00027510106288928057,
+        "n_adc": 13,
+        "levels": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    "single_organ_mean_spearman": 0.5744456609765636,
+    "calibration": {
+      "method": "leave-one-ADC-out rate per label level",
+      "auroc": 0.6837221633085896,
+      "brier": 0.14309191315889708,
+      "brier_base_rate": 0.20025413442573203,
+      "calibration_in_the_large": -0.007273421710684314,
+      "calibration_slope": 1.0562052012879588,
+      "slope_intercept": 0.04454347537918417,
+      "by_level": {
+        "none": {
+          "n": 110,
+          "observed": 0.11818181818181818,
+          "predicted": 0.1259590205678155
+        },
+        "W&P": {
+          "n": 48,
+          "observed": 0.4583333333333333,
+          "predicted": 0.4640044690273067
+        },
+        "boxed": {
+          "n": 11,
+          "observed": 1.0,
+          "predicted": 0.9139118457300274
+        }
+      }
+    }
+  },
+  "jader": {
+    "n_cases": 12973,
+    "n_pairs": 168649,
+    "events": 16680,
+    "vulnerable_pairs": 6479,
+    "vulnerable_auroc_L": 0.6491900755968383,
+    "or_warned_vulnerable": 2.967445141680369,
+    "or_warned_not_vulnerable": 4.589433094272178,
+    "ratio_of_or": 0.646582068139064,
+    "oof_auroc_label_only": 0.8058373567779104,
+    "oof_auroc_with_patient": 0.8094518338043606,
+    "interaction_coef_boxed": -0.46653871887188836,
+    "interaction_coef_warn": -0.13503298287240592,
+    "calibration": {
+      "brier": 0.07615479914871624,
+      "brier_base_rate": 0.08912171007865649,
+      "in_the_large": -1.65824494989104e-05,
+      "slope": 0.9983370717112305
+    },
+    "vulnerable_auroc_L_ci": [
+      0.633653540406139,
+      0.6652999081099723
+    ],
+    "ratio_of_or_ci": [
+      0.5644967392222416,
+      0.7358904196214514
+    ],
+    "patient_info_auroc_diff_ci": [
+      0.002689224750706767,
+      0.0044861412067050965
+    ],
+    "patient_info_auroc_diff": 0.0036144770264502357,
+    "source": "PMDA JADER (pmdacasereport202609)",
+    "citation": "本解析は医薬品医療機器総合機構（PMDA）の医薬品副作用データベース（JADER）を利用した結果である",
+    "mapped_share": 0.5613739393234918
+  },
+  "subgroup": {
+    "passed": 102,
+    "contrasts": [
+      {
+        "id": "tdxd_tsurutani26_renal_lt60_ild",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "crcl",
+        "exposed": "CrCl <60 (moderate + severe + ESRD combined)",
+        "reference": "normal renal function (CrCl >=90)",
+        "outcome": "adjudicated drug-related ILD (any grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+        "ocr": false,
+        "rr": 1.37263339070568,
+        "ci": [
+          1.0033606514343894,
+          1.877811754513852
+        ],
+        "log_rr": 0.31673107780708853,
+        "var": 0.025563451542603262,
+        "key_exposed": [
+          1.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "tdxd_park25_54_renal_mildmod_ild_anygrade",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "crcl",
+        "exposed": "mild or moderate renal impairment (CrCl 30-<90) combined",
+        "reference": "renal function within normal range (CrCl >=90)",
+        "outcome": "adjudicated drug-related ILD (any grade; worst grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1093/oncolo/oyaf396 (PMC12743619; supplementary data zip, 'Supplemental Table S10.docx')",
+        "ocr": false,
+        "rr": 1.2569767441860464,
+        "ci": [
+          0.9488449620123166,
+          1.6651724978058582
+        ],
+        "log_rr": 0.2287094283916548,
+        "var": 0.02058628961125573,
+        "key_exposed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "tdxd_fda19_hep_mild_g3",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "hepatic",
+        "exposed": "mild hepatic impairment (NCI-ODWG-like: TBL >ULN-1.5xULN any AST, or TBL<=ULN and AST>ULN)",
+        "reference": "normal hepatic function",
+        "outcome": "Grade>=3 TEAE",
+        "outcome_rank": 1,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761139Orig1s000MultidisciplineR.pdf",
+        "ocr": false,
+        "rr": 0.7777777777777779,
+        "ci": [
+          0.5893999825451465,
+          1.026362893654483
+        ],
+        "log_rr": -0.25131442828090594,
+        "var": 0.020021645021645017,
+        "key_exposed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "sg_label_ugt_hom_g34neut",
+        "adc": "sacituzumab-govitecan",
+        "characteristic": "ugt1a1",
+        "exposed": "UGT1A1*28 homozygous",
+        "reference": "UGT1A1 wild-type homozygous",
+        "outcome": "Grade 3-4 neutropenia",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=57a597d2-03f0-472e-b148-016d7169169d",
+        "ocr": false,
+        "rr": 1.3932565680630005,
+        "ci": [
+          1.167918727623436,
+          1.6620710144794995
+        ],
+        "log_rr": 0.33164386165916054,
+        "var": 0.008101888474289238,
+        "key_exposed": [
+          1.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "sg_label_ugt_het_g34neut",
+        "adc": "sacituzumab-govitecan",
+        "characteristic": "ugt1a1",
+        "exposed": "UGT1A1*28 heterozygous",
+        "reference": "UGT1A1 wild-type homozygous",
+        "outcome": "Grade 3-4 neutropenia",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=57a597d2-03f0-472e-b148-016d7169169d",
+        "ocr": false,
+        "rr": 1.1687691871114207,
+        "ci": [
+          1.0214012917393032,
+          1.3373993393085968
+        ],
+        "log_rr": 0.15595121826583108,
+        "var": 0.004728366893858391,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "tdxd_tsurutani26_priorild_ild",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "condition",
+        "exposed": "medical history and/or comorbidity of ILD",
+        "reference": "without this history/comorbidity",
+        "outcome": "adjudicated drug-related ILD (any grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+        "ocr": false,
+        "rr": 2.251658558160106,
+        "ci": [
+          1.4096582123036674,
+          3.596592577040569
+        ],
+        "log_rr": 0.8116670816243662,
+        "var": 0.05709169193217714,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          1.0,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "tdxd_tsurutani26_radpneum_ild",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "condition",
+        "exposed": "medical history and/or comorbidity of radiation pneumonitis",
+        "reference": "without this history/comorbidity",
+        "outcome": "adjudicated drug-related ILD (any grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+        "ocr": false,
+        "rr": 0.977581594435527,
+        "ci": [
+          0.562009727423157,
+          1.7004434748147208
+        ],
+        "log_rr": -0.022673518037943177,
+        "var": 0.07976664801577368,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.8,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "tdxd_kawakami25_pulmfib_ild",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "condition",
+        "exposed": "medical history and/or comorbidity of pulmonary fibrosis",
+        "reference": "without this history/comorbidity",
+        "outcome": "adjudicated drug-related ILD (any grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1016/j.esmoop.2025.105914 (PMC12800766; supplementary mmc1.docx)",
+        "ocr": false,
+        "rr": 1.721417069243156,
+        "ci": [
+          0.13617466985187962,
+          21.76085118843998
+        ],
+        "log_rr": 0.5431478290915663,
+        "var": 1.675393048720417,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          1.0,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "tdxd_tsurutani26_copd_ild",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "condition",
+        "exposed": "medical history and/or comorbidity of COPD or emphysema",
+        "reference": "without this history/comorbidity",
+        "outcome": "adjudicated drug-related ILD (any grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+        "ocr": false,
+        "rr": 1.2462093862815886,
+        "ci": [
+          0.2151782775337886,
+          7.217447096686915
+        ],
+        "log_rr": 0.22010645302193452,
+        "var": 0.803030734027467,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.6,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "tdxd_tsurutani26_asthma_ild",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "condition",
+        "exposed": "medical history and/or comorbidity of asthma",
+        "reference": "without this history/comorbidity",
+        "outcome": "adjudicated drug-related ILD (any grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+        "ocr": false,
+        "rr": 0.6033182503770739,
+        "ci": [
+          0.2605860905694419,
+          1.3968240225049755
+        ],
+        "log_rr": -0.5053104430778805,
+        "var": 0.18345992243051068,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.8,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "tdxd_tsurutani26_pleuraleff_ild",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "condition",
+        "exposed": "medical history and/or comorbidity of pleural effusion",
+        "reference": "without this history/comorbidity",
+        "outcome": "adjudicated drug-related ILD (any grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+        "ocr": false,
+        "rr": 1.1289855072463768,
+        "ci": [
+          0.8354761942107854,
+          1.5256069345894288
+        ],
+        "log_rr": 0.12131944827944319,
+        "var": 0.023595604579861807,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.8,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "tdxd_tsurutani26_lungsurg_ild",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "condition",
+        "exposed": "history of lung surgery",
+        "reference": "without this history/comorbidity",
+        "outcome": "adjudicated drug-related ILD (any grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+        "ocr": false,
+        "rr": 1.5974903474903477,
+        "ci": [
+          1.0653202570604094,
+          2.395500689498408
+        ],
+        "log_rr": 0.468433864991735,
+        "var": 0.04273045846427942,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "tdxd_tsurutani26_chestrt_any_ild",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "condition",
+        "exposed": "prior chest radiation therapy (any)",
+        "reference": "without this history/comorbidity",
+        "outcome": "adjudicated drug-related ILD (any grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+        "ocr": false,
+        "rr": 1.1627477077787636,
+        "ci": [
+          0.936054179904176,
+          1.4443418564544752
+        ],
+        "log_rr": 0.15078591774086458,
+        "var": 0.01224272670290208,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.7,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "tdxd_tsurutani26_hep_modsev_ild",
+        "adc": "trastuzumab-deruxtecan",
+        "characteristic": "hepatic",
+        "exposed": "moderate + severe hepatic dysfunction (TB >2.25 mg/dL)",
+        "reference": "normal hepatic function (TB <=1.5 and AST <=30)",
+        "outcome": "adjudicated drug-related ILD (any grade)",
+        "outcome_rank": 3,
+        "basis": "post_approval",
+        "source": "https://doi.org/10.1007/s12282-025-01814-3 (PMC12960362; supplementary MOESM1)",
+        "ocr": false,
+        "rr": 1.615846338535414,
+        "ci": [
+          0.8059160128524765,
+          3.239741298248955
+        ],
+        "log_rr": 0.47985886803783034,
+        "var": 0.12596509629111674,
+        "key_exposed": [
+          1.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "pv-fda-renal-mild-g34",
+        "adc": "polatuzumab-vedotin",
+        "characteristic": "crcl",
+        "exposed": "mild renal impairment",
+        "reference": "normal renal function",
+        "outcome": "Grade 3-4 adverse events",
+        "outcome_rank": 1,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761121Orig1s000ClinPharmR.pdf",
+        "ocr": false,
+        "rr": 1.1083333333333334,
+        "ci": [
+          0.8235290883657319,
+          1.4916325302066806
+        ],
+        "log_rr": 0.10285738543970782,
+        "var": 0.022963659147869672,
+        "key_exposed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "pv-fda-renal-moderate-g34",
+        "adc": "polatuzumab-vedotin",
+        "characteristic": "crcl",
+        "exposed": "moderate renal impairment",
+        "reference": "normal renal function",
+        "outcome": "Grade 3-4 adverse events",
+        "outcome_rank": 1,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761121Orig1s000ClinPharmR.pdf",
+        "ocr": false,
+        "rr": 1.14,
+        "ci": [
+          0.8354541772886835,
+          1.5555610772306125
+        ],
+        "log_rr": 0.131028262406404,
+        "var": 0.025146198830409347,
+        "key_exposed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "ev-fda-renal-mild-sae",
+        "adc": "enfortumab-vedotin",
+        "characteristic": "crcl",
+        "exposed": "mild renal impairment (CrCl >60 to <90)",
+        "reference": "normal renal function (CrCl >=90)",
+        "outcome": "Serious TEAE",
+        "outcome_rank": 2,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761137Orig1s000MultidisciplineR.pdf",
+        "ocr": false,
+        "rr": 0.9791666666666667,
+        "ci": [
+          0.6688255206501106,
+          1.4335089369484164
+        ],
+        "log_rr": -0.021053409197832267,
+        "var": 0.037822043711101455,
+        "key_exposed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "ev-fda-renal-moderate-sae",
+        "adc": "enfortumab-vedotin",
+        "characteristic": "crcl",
+        "exposed": "moderate renal impairment (CrCl 30 to <60)",
+        "reference": "normal renal function (CrCl >=90)",
+        "outcome": "Serious TEAE",
+        "outcome_rank": 2,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761137Orig1s000MultidisciplineR.pdf",
+        "ocr": false,
+        "rr": 0.9769463340891913,
+        "ci": [
+          0.6715069304382203,
+          1.4213168865844166
+        ],
+        "log_rr": -0.023323557732371426,
+        "var": 0.036587762119677014,
+        "key_exposed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "ev-fda-renal-severe-sae",
+        "adc": "enfortumab-vedotin",
+        "characteristic": "crcl",
+        "exposed": "severe renal impairment (CrCl <30)",
+        "reference": "normal renal function (CrCl >=90)",
+        "outcome": "Serious TEAE",
+        "outcome_rank": 2,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761137Orig1s000MultidisciplineR.pdf",
+        "ocr": false,
+        "rr": 0.5968253968253968,
+        "ci": [
+          0.243260620116233,
+          1.4642754512653764
+        ],
+        "log_rr": -0.5161306759956839,
+        "var": 0.2096757852077001,
+        "key_exposed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "ev-fda-bmi-obese-hyperglycemia",
+        "adc": "enfortumab-vedotin",
+        "characteristic": "condition",
+        "exposed": "obese (baseline BMI >= 30)",
+        "reference": "non-obese (baseline BMI < 30)",
+        "outcome": "treatment-emergent hyperglycemia",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761137Orig1s000MultidisciplineR.pdf",
+        "ocr": false,
+        "rr": 2.4761904761904763,
+        "ci": [
+          1.138804736293929,
+          5.384170858237327
+        ],
+        "log_rr": 0.9067212808580044,
+        "var": 0.15705128205128205,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "bv-label2014-renal-severe-g3",
+        "adc": "brentuximab-vedotin",
+        "characteristic": "crcl",
+        "exposed": "severe renal impairment (CLcr <30)",
+        "reference": "normal renal function",
+        "outcome": "Grade 3 or worse adverse events",
+        "outcome_rank": 1,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/125388_S056S078lbl.pdf",
+        "ocr": false,
+        "rr": 2.25,
+        "ci": [
+          0.9158219932408477,
+          5.527820949227452
+        ],
+        "log_rr": 0.8109302162163288,
+        "var": 0.2103174603174603,
+        "key_exposed": [
+          3.0,
+          3.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "bv-label2014-hep-modsev-g3",
+        "adc": "brentuximab-vedotin",
+        "characteristic": "hepatic",
+        "exposed": "moderate or severe hepatic impairment (Child-Pugh B or C)",
+        "reference": "normal hepatic function",
+        "outcome": ">=Grade 3 adverse reactions",
+        "outcome_rank": 1,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/125388_S056S078lbl.pdf",
+        "ocr": false,
+        "rr": 2.3877551020408165,
+        "ci": [
+          1.0263179290121032,
+          5.5551737586908265
+        ],
+        "log_rr": 0.8703536366871296,
+        "var": 0.1855921855921856,
+        "key_exposed": [
+          3.0,
+          3.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          3.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "bv-fda-2011-preexisting-pn",
+        "adc": "brentuximab-vedotin",
+        "characteristic": "condition",
+        "exposed": "pre-existing neuropathy",
+        "reference": "no pre-existing neuropathy",
+        "outcome": "treatment-emergent peripheral neuropathy (any grade)",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2011/125388Orig1s000MedR.pdf",
+        "ocr": true,
+        "rr": 0.7466918714555766,
+        "ci": [
+          0.4519798341040611,
+          1.2335699711095178
+        ],
+        "log_rr": -0.29210266695717746,
+        "var": 0.06560264171711613,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          1.0,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "bv-fda-2011-fpg-pn",
+        "adc": "brentuximab-vedotin",
+        "characteristic": "condition",
+        "exposed": "baseline fasting plasma glucose >=126 mg/dL (hyperglycaemia/diabetes proxy)",
+        "reference": "baseline fasting plasma glucose <126",
+        "outcome": "treatment-emergent peripheral neuropathy (any grade)",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2011/125388Orig1s000MedR.pdf",
+        "ocr": true,
+        "rr": 1.4761904761904763,
+        "ci": [
+          0.9907000210288577,
+          2.1995945046335974
+        ],
+        "log_rr": 0.3894647667617233,
+        "var": 0.04140150683929485,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.6
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "tdm1_crcl_severe_all_g3",
+        "adc": "trastuzumab-emtansine",
+        "characteristic": "crcl",
+        "exposed": "Severe (CrCL < 30 mL/min)",
+        "reference": "Normal (CrCL >= 90 mL/min)",
+        "outcome": "Grade>=3 AE (G3+ AEs)",
+        "outcome_rank": 1,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/125427Orig1s000ClinPharmR.pdf",
+        "ocr": false,
+        "rr": 1.6615384615384614,
+        "ci": [
+          0.7383009276856433,
+          3.739274807395424
+        ],
+        "log_rr": 0.5077439572285825,
+        "var": 0.17127255460588797,
+        "key_exposed": [
+          2.0,
+          2.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "tdm1_crcl_moderate_all_g3",
+        "adc": "trastuzumab-emtansine",
+        "characteristic": "crcl",
+        "exposed": "Moderate (30 mL/min <= CrCL < 60 mL/min)",
+        "reference": "Normal (CrCL >= 90 mL/min)",
+        "outcome": "Grade>=3 AE (G3+ AEs)",
+        "outcome_rank": 1,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/125427Orig1s000ClinPharmR.pdf",
+        "ocr": false,
+        "rr": 1.1868131868131868,
+        "ci": [
+          0.8414012856554994,
+          1.6740235181556096
+        ],
+        "log_rr": 0.17127172060736964,
+        "var": 0.030796364129697468,
+        "key_exposed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "tdm1_crcl_mild_all_g3",
+        "adc": "trastuzumab-emtansine",
+        "characteristic": "crcl",
+        "exposed": "Mild (60 mL/min <= CrCL < 90 mL/min)",
+        "reference": "Normal (CrCL >= 90 mL/min)",
+        "outcome": "Grade>=3 AE (G3+ AEs)",
+        "outcome_rank": 1,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/125427Orig1s000ClinPharmR.pdf",
+        "ocr": false,
+        "rr": 1.3156817431495542,
+        "ci": [
+          1.098830922491239,
+          1.5753273900706513
+        ],
+        "log_rr": 0.2743549671434638,
+        "var": 0.00844412374647205,
+        "key_exposed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "pivek_crcl_moderate_anyteae",
+        "adc": "pivekimab-sunirine",
+        "characteristic": "crcl",
+        "exposed": "Moderate renal impairment",
+        "reference": "Normal renal function",
+        "outcome": "TEAE (any grade)",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2026/761460Orig1s000MultidisciplineR.pdf",
+        "ocr": true,
+        "rr": 0.9722550177095632,
+        "ci": [
+          0.8767811639782137,
+          1.0781251449020768
+        ],
+        "log_rr": -0.028137145034359302,
+        "var": 0.002780985642386536,
+        "key_exposed": [
+          3.0,
+          3.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "ino_priorhsct_vod_total_1022",
+        "adc": "inotuzumab-ozogamicin",
+        "characteristic": "condition",
+        "exposed": "Pre-study (prior) HSCT",
+        "reference": "No pre-study HSCT",
+        "outcome": "VOD/SOS (total: on/after study or after follow-up HSCT)",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761040Orig1s000MultidisciplineR.pdf",
+        "ocr": true,
+        "rr": 2.1724137931034484,
+        "ci": [
+          0.9737062388995982,
+          4.846822891675795
+        ],
+        "log_rr": 0.7758388964050588,
+        "var": 0.16763364349571244,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.7
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "ino_liverdz_vod_posthsct_1022",
+        "adc": "inotuzumab-ozogamicin",
+        "characteristic": "condition",
+        "exposed": "Prior history of liver disease: yes",
+        "reference": "Prior history of liver disease: no",
+        "outcome": "VOD/SOS after follow-up HSCT",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761040Orig1s000MultidisciplineR.pdf",
+        "ocr": true,
+        "rr": 1.9949999999999999,
+        "ci": [
+          0.8780810655736265,
+          4.532639588806026
+        ],
+        "log_rr": 0.6906440503418267,
+        "var": 0.17531328320802003,
+        "key_exposed": [
+          2.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      },
+      {
+        "id": "ino_lfts_vod_posthsct_1022",
+        "adc": "inotuzumab-ozogamicin",
+        "characteristic": "hepatic",
+        "exposed": "AST, ALT or bilirubin elevation at baseline: yes",
+        "reference": "AST, ALT or bilirubin elevation at baseline: no",
+        "outcome": "VOD/SOS after follow-up HSCT",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761040Orig1s000MultidisciplineR.pdf",
+        "ocr": true,
+        "rr": 1.626984126984127,
+        "ci": [
+          0.6913119901666048,
+          3.829063269711786
+        ],
+        "log_rr": 0.48672807218693015,
+        "var": 0.19068912117692607,
+        "key_exposed": [
+          2.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          2.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "go_priorhsct_vod_or",
+        "adc": "gemtuzumab-ozogamicin",
+        "characteristic": "condition",
+        "exposed": "HSCT prior to GO",
+        "reference": "No prior HSCT",
+        "outcome": "VOD",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761060Orig1s000Orig1Orig2s000MedR.pdf",
+        "ocr": false,
+        "rr": 2.6,
+        "ci": [
+          1.43264706231559,
+          4.718538276324526
+        ],
+        "log_rr": 0.9555114450274363,
+        "var": 0.09246179780908159,
+        "key_exposed": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          -1.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "flag": false
+      },
+      {
+        "id": "go_hepimp_vod_or",
+        "adc": "gemtuzumab-ozogamicin",
+        "characteristic": "hepatic",
+        "exposed": "Moderate/severe hepatic impairment at baseline",
+        "reference": "None/mild hepatic impairment at baseline",
+        "outcome": "VOD",
+        "outcome_rank": 3,
+        "basis": "label_basis",
+        "source": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761060Orig1s000Orig1Orig2s000MedR.pdf",
+        "ocr": false,
+        "rr": 8.699999999999998,
+        "ci": [
+          1.8888214961456409,
+          40.07260620151464
+        ],
+        "log_rr": 2.163323025660538,
+        "var": 0.6072623198082692,
+        "key_exposed": [
+          2.0,
+          2.0,
+          0.0,
+          0.0
+        ],
+        "key_reference": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "flag": true
+      }
+    ],
+    "all": {
+      "k": 33,
+      "flagged": {
+        "k": 19,
+        "rr": 1.3333574535173154,
+        "ci": [
+          1.1313695857851815,
+          1.5714070107482516
+        ],
+        "tau2": 0.054973424997059255
+      },
+      "not_flagged": {
+        "k": 14,
+        "rr": 1.1859683874842322,
+        "ci": [
+          1.0412629589843778,
+          1.3507836843479342
+        ],
+        "tau2": 0.02694478356165387
+      },
+      "sign_agreement": 0.5757575757575758,
+      "flag_effect": {
+        "ratio_of_rr": 1.10486334037064,
+        "ci": [
+          0.8948003197940534,
+          1.3642406846433959
+        ],
+        "tau2": 0.04114759508989842,
+        "flags_match_excess": false
+      }
+    },
+    "post_approval": {
+      "k": 11,
+      "flagged": {
+        "k": 9,
+        "rr": 1.261928224880756,
+        "ci": [
+          1.044675705754883,
+          1.5243609437629084
+        ],
+        "tau2": 0.022208801061409624
+      },
+      "not_flagged": null,
+      "sign_agreement": 0.6363636363636364,
+      "flag_effect": null
+    },
+    "no_ocr": {
+      "k": 27,
+      "flagged": {
+        "k": 14,
+        "rr": 1.386609411282805,
+        "ci": [
+          1.1675523179786593,
+          1.646766170433135
+        ],
+        "tau2": 0.032533487849975
+      },
+      "not_flagged": {
+        "k": 13,
+        "rr": 1.178703064189242,
+        "ci": [
+          1.0319259355931736,
+          1.346357200267948
+        ],
+        "tau2": 0.02808213607130615
+      },
+      "sign_agreement": 0.5925925925925926,
+      "flag_effect": {
+        "ratio_of_rr": 1.1729445745383331,
+        "ci": [
+          0.945637641331906,
+          1.4548902399878396
+        ],
+        "tau2": 0.02959689119170299,
+        "flags_match_excess": false
+      }
+    },
+    "by_characteristic": {
+      "condition": {
+        "k": 14,
+        "flagged": {
+          "k": 11,
+          "rr": 1.2514673600550719,
+          "ci": [
+            1.0069030736945088,
+            1.5554332827058008
+          ],
+          "tau2": 0.050122703951246544
+        },
+        "not_flagged": null,
+        "sign_agreement": 0.5714285714285714,
+        "flag_effect": null
+      },
+      "crcl": {
+        "k": 12,
+        "flagged": null,
+        "not_flagged": {
+          "k": 8,
+          "rr": 1.1755187663233968,
+          "ci": [
+            1.0571964980551378,
+            1.3070837564450681
+          ],
+          "tau2": 0.0
+        },
+        "sign_agreement": 0.5,
+        "flag_effect": null
+      },
+      "hepatic": {
+        "k": 5,
+        "flagged": null,
+        "not_flagged": null,
+        "sign_agreement": 0.8,
+        "flag_effect": null
+      },
+      "ugt1a1": {
+        "k": 2,
+        "flagged": null,
+        "not_flagged": null,
+        "sign_agreement": 0.5,
+        "flag_effect": null
+      }
+    },
+    "note": "Tool keys are (worst restriction tier, settled tier, B, Wn) from ml/recommend.py. label_basis contrasts are not independent of the label rules."
+  },
+  "checks_performed_now": {
+    "label_rule_quotes_missing_verbatim": []
+  },
+  "checks_confirmed_before_documentation": {
+    "terminal_and_core_pytest": {
+      "passed": 101,
+      "skipped": 1,
+      "deselected": 1,
+      "command": ".venv/bin/python -m pytest tests/test_terminal_layout.py tests/test_ml_recommender.py -k 'not full_build' -q",
+      "note": "Prior UI implementation validation; not rerun solely for documentation."
+    }
+  },
+  "limitations": [
+    "Saved lab figures use development selection seeds 0,1,2, not a new untouched holdout.",
+    "Organ rho in lab.py averages raw log-HR by domain; production transforms scores differently.",
+    "Clinical recommendation accuracy and new ADC safety are not established."
+  ],
+  "design_enumerator": {
+    "target": "HER2",
+    "tier": 1,
+    "candidates": 106,
+    "actual_antibody_identity_in_design": false
+  }
+}

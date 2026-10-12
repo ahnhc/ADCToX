@@ -1,0 +1,26 @@
+{
+  "terminal": "Ubuntu / native curses / xterm-256color",
+  "columns": 120,
+  "rows": 42,
+  "screens": [
+    "01-ai-running",
+    "02-ai-review",
+    "02b-ai-cached",
+    "03-auto-choice",
+    "04-results",
+    "05-details",
+    "06-details-bottom",
+    "07-next-adc",
+    "08-final"
+  ],
+  "version": "0.0",
+  "input": "lung hole + eight registered conditions; no labs",
+  "fallback": "Auto / 0.25",
+  "verified": [
+    "real model inference",
+    "cached review",
+    "detail scrolling to final check",
+    "PgDn final output"
+  ],
+  "renderer": "xterm.js 6.0.0 / Chromium / recorded native PTY output"
+}

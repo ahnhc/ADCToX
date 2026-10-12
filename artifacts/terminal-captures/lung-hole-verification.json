@@ -1,0 +1,73 @@
+{
+  "reports": [
+    {
+      "condition": "lung hole",
+      "source": "Unmapped",
+      "name": "",
+      "organs": [],
+      "estimates": [
+        [
+          "pulmonary",
+          0.7191436891983608
+        ],
+        [
+          "neurologic",
+          0.2809743038759811
+        ],
+        [
+          "haematologic",
+          0.24777207783208843
+        ]
+      ],
+      "model": "BioLORD + FinnGen MLP"
+    }
+  ],
+  "nearest_registry": [
+    [
+      "interstitial_lung_disease",
+      0.4983454942703247
+    ]
+  ],
+  "mondo": [
+    {
+      "mondo": "MONDO:0002076",
+      "name": "pneumothorax",
+      "sim": 0.6807307004928589,
+      "axes": []
+    }
+  ],
+  "stages": [
+    "embedding",
+    "linking",
+    "inference",
+    "done"
+  ],
+  "elapsed": 7.725992547348142,
+  "usage": "CPU 174.1%   RAM 1.96 GiB",
+  "fallback_options": [
+    [
+      "\uc790\ub3d9",
+      0.25
+    ],
+    [
+      "\ubc18\uc601",
+      0.5
+    ],
+    [
+      "\ubc18\uc601 \uc548\ud568",
+      0.0
+    ]
+  ],
+  "auto_applied": {
+    "haematologic": 0.06194301945802211,
+    "pulmonary": 0.1797859222995902,
+    "neurologic": 0.07024357596899528
+  },
+  "confirmed_organs": [],
+  "notes": [
+    [
+      "lung hole",
+      "free text; not understood (no organ); FinnGen learned estimate x0.25 used (not validated): Pulmonary, Neurologic, Haematologic"
+    ]
+  ]
+}

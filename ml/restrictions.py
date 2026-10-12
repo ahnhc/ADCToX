@@ -15,9 +15,10 @@ rule names; genotype when it was entered. Renal and hepatic questions that no ru
 """
 import re, os, json
 from dataclasses import dataclass, field
+from pathlib import Path
 import yaml
 
-R = "/home/hyeongchanahn/CONI/adctox/"
+R = str(Path(__file__).resolve().parents[1]) + os.sep
 DM = "/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07/"
 CATS = ["no_adjustment", "monitor", "reduce_dose", "no_statement", "insufficient_data", "avoid", "contraindicated"]
 # reduce_dose ranks with monitor (usable, with an action) but is shown as what the label requires, not as monitoring

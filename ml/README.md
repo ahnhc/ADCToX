@@ -1,5 +1,17 @@
 # ml/ -- what can actually be learned here, and what cannot
 
+## Review handoff (2026-10-12)
+
+The current implementation, numerical evidence, and proposed next experiments are documented separately:
+
+- [Current system, UI changes, operation, research results, and limitations](docs/research_status_2026-10-12.md)
+- [Model accuracy, fine-tuning, baseline, and runtime evaluation plan](docs/model_accuracy_plan_2026-10-12.md)
+- [Claude Fable review request and rubric](docs/fable_review_2026-10-12.md)
+- [Audited result snapshot and source hashes](results/review_snapshot_2026-10-12.json)
+
+The sections below record the research as it developed. Use the dated status document for current terminal behavior,
+including priority-based sorting, the 97 label rules, and discrepancies between older prose and saved result JSON.
+
 Every number below is printed by `ml/summarize.py` from `ml/results/*.json`. Environment:
 `/data/hyeongchanahn/envs/adctox` (torch 2.11 + CUDA 12.8). Caches: `python -I ml/prepare_data.py`, then
 `python -I ml/embed_terms.py`. The collaborator workbooks and these caches are not redistributed
@@ -142,6 +154,19 @@ is still needed; that analysis is implemented (`ml/validate_outcomes.py`, tested
 Conditions outside the 41-entry registry are resolved in this order: a near-identical registry entry (BioLORD cosine >= 0.80) > MONDO hierarchy
 (`ml/mondo_index.py`, name similarity >= 0.75, severity a fixed 0.8) > a loosely similar registry entry (>= 0.60) > not understood (no organ).
 Tests: `tests/test_ml_recommender.py`.
+
+**Ubuntu terminal update.** Directly typed conditions now run both the disease-linking path and the saved FinnGen-trained MLP ensemble
+(`vuln_biolord.pt`); the UI shows actual embedding, linking and inference stages, then reviews mapped organs and the model's top-three
+signals separately. These signals are vulnerability estimates, not probabilities or a diagnosis. Linked organs enter the recommendation
+by default; for unmapped inputs, the choice is Auto (0.25, the default), Apply (0.5), or Do not apply (0). This applies exactly the three organs
+shown in the priority list, rather than silently including additional positive model outputs. Repeated input reuses cached predictions.
+The final printed results share the interactive screen's responsive table, with wrapped checks and explicit dose-reduction or
+contraindication notes. The condition picker uses shortened display labels without changing model inputs or label rules.
+The terminal UI starts at version 0.0, shown at the right of the ADCTOX header. On the results screen, Tab or Enter switches
+between ADC selection and detail scrolling; arrows scroll the complete restriction reasons and pre-treatment checks, Home/End
+reach the ends, and PgDn still prints the results. Missing inputs have a separate ruled section. The AI screens show live CPU
+and resident RAM usage for the entire application process (including the model runtime); CPU uses the usual one-core 100% scale,
+so parallel threads can exceed 100%. These are process totals, not per-model or GPU memory measurements. Reused analysis is marked Cached.
 
 **Running it off this server.** `ml/build_portable.py` makes one-file versions of the program. The light one (`dist/adc_recommender.py`;
 Python + numpy) matches typed diseases by spelling only. The full one (`--full`, `dist/adc_recommender_full.py`) is the server program with its

@@ -1,0 +1,42 @@
+
+  ADCTOX    ADC 추천
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  ✓ 기저질환: asthma, diabetic nephropathy
+  ✓ 검사 수치: 21개 입력
+
+  AI 장기 분석
+  직접 입력한 질환의 관련 장기를 분석하고 있습니다
+
+  asthma, diabetic nephropathy
+
+  [OK] Disease embedding    BioLORD-2023
+
+  [OK] Disease linking      SapBERT / MONDO
+
+  [/ ] Organ inference      FinnGen MLP / 5 models
+
+
+  Running   7.7 s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

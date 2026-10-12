@@ -8,6 +8,6 @@ env = {k: v for k, v in os.environ.items() if not k.startswith(("_PYI", "_MEI"))
 wt = shutil.which("wt")
 try:
     if not wt: raise OSError
-    subprocess.Popen([wt, "new-tab", "--title", "ADC Recommender", "--", app, "--no-wt"], env=env, close_fds=True)
+    subprocess.Popen([wt, "--size", "120,42", "new-tab", "--title", "ADC Recommender", "--", app, "--no-wt"], env=env, close_fds=True)
 except OSError:
     subprocess.Popen([app, "--no-wt"], env=env, close_fds=True, creationflags=getattr(subprocess, "CREATE_NEW_CONSOLE", 0))

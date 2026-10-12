@@ -1,0 +1,42 @@
+
+  ADCTOX                                                                                                          0.0
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Key values                                               │ Organ priority
+    Not entered                                            │   1. Blood, Liver, Cardio, Neuro, Immune
+                                                           │   2. Kidney, GI
+                                                           │   4. Lung
+  Unvalidated estimate: lung hole
+
+    #   ADC                         Label restriction                Relevant warnings                 Other warnings
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    1   Datopotamab deruxtecan      Unclear                           ! GI             ! Lung           ! Eye
+    2   Gemtuzumab ozogamicin       Unclear                          !! Liver          ! Cardio+       -
+    3   Inotuzumab ozogamicin       Unclear                          !! Liver          ! Blood+        -
+    4   Trastuzumab emtansine       Unclear                          !! Liver         !! Cardio+       -             
+    5   Trastuzumab deruxtecan      Unclear                          !! Lung           ! Blood+        -
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Trastuzumab emtansine
+    Blood     Unclear   if platelets < 100k
+    Cardiac   Unclear   if LVEF < 50%
+    Hepatic   Unclear   if bilirubin > 1.5×ULN
+    Renal     Unclear   if CLcr < 30
+    Cardiac   Monitor   -
+    Hepatic   Monitor   -
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Missing inputs
+    Bilirubin / AST / ALT / Child-Pugh
+    CLcr / dialysis status
+    LVEF
+    Platelets / ANC
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Pre-treatment checks
+    - current platelet count and bleeding history
+    - complete blood count (ANC, haemoglobin, platelets)
+    - baseline LVEF (echocardiogram or MUGA)
+    - creatinine clearance (CLcr)
+    - total bilirubin and AST (x ULN); Child-Pugh class if cirrhotic
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ↑↓ 상세 스크롤   Tab 목록   PgUp 이전   PgDn 결과 출력   1-20/21
+  !! Label emphasis   ! Warning   + More organs

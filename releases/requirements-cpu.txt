@@ -1,0 +1,4 @@
+# Ubuntu release runtime. Training dependencies are separate.
+numpy==2.5.3
+transformers==5.19.0
+sentence-transformers==6.1.0

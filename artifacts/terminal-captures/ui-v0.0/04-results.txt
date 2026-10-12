@@ -1,0 +1,42 @@
+
+  ADCTOX                                                                                                          0.0
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Key values                                               │ Organ priority
+    Not entered                                            │   1. Blood, Liver, Cardio, Neuro, Immune
+                                                           │   2. Kidney, GI
+                                                           │   4. Lung
+  Unvalidated estimate: lung hole
+
+    #   ADC                         Label restriction                Relevant warnings                 Other warnings
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    1   Datopotamab deruxtecan      Unclear                           ! GI             ! Lung           ! Eye        
+    2   Gemtuzumab ozogamicin       Unclear                          !! Liver          ! Cardio+       -
+    3   Inotuzumab ozogamicin       Unclear                          !! Liver          ! Blood+        -
+    4   Trastuzumab emtansine       Unclear                          !! Liver         !! Cardio+       -
+    5   Trastuzumab deruxtecan      Unclear                          !! Lung           ! Blood+        -
+    6   Enfortumab vedotin          Avoid                             ! Neuro          ! Lung          !! Skin+
+        Mirvetuximab soravtansine   Avoid                             ! Neuro          ! Lung          !! Eye
+    7   Telisotuzumab vedotin       Avoid                             ! Neuro          ! Immune+        ! Eye
+        Tisotumab vedotin           Avoid                             ! Cardio         ! Neuro+        !! Eye+
+    8   Loncastuximab tesirine      Avoid                             ! Blood          ! Liver+         ! Skin
+        Polatuzumab vedotin         Avoid                             ! Blood          ! Liver+         ! Metabolic
+    9   Pivekimab sunirine          Avoid                            !! Liver          ! Cardio+       -
+   10   Brentuximab vedotin         Avoid                            !! Neuro          ! Blood+         ! Skin+
+   11   Sacituzumab govitecan       Avoid                            !! Blood         !! GI+            ! Metabolic
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Datopotamab deruxtecan
+    Hepatic   Unclear   if bilirubin > 3×ULN
+    Renal     Unclear   if CLcr < 30
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Missing inputs
+    Bilirubin / AST / ALT / Child-Pugh
+    CLcr / dialysis status
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Pre-treatment checks
+    - creatinine clearance (CLcr)
+    - total bilirubin and AST (x ULN); Child-Pugh class if cirrhotic
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ↑↓ / 클릭 이동   Tab 상세   PgUp 이전   PgDn 결과 출력
+  !! Label emphasis   ! Warning   + More organs

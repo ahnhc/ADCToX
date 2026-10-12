@@ -1,0 +1,41 @@
+
+  ADCTOX                                                                                                          0.0
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  ✓ 기저질환: Cirrhosis, Chronic kidney disease stage 3, Heart failure, Peripheral neuropathy, Thrombocytopenia,
+      Immune thrombocytopenia, Chronic anaemia, Chronic pancreatitis, lung hole
+  ✓ 검사 수치: 입력 없음
+
+  AI 장기 분석
+  직접 입력한 질환의 관련 장기를 분석하고 있습니다
+
+  lung hole
+
+  [/ ] Disease embedding    BioLORD-2023
+
+  [  ] Disease linking      SapBERT / MONDO
+
+  [  ] Organ inference      FinnGen MLP / 5 models
+
+
+  Running   0.2 s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  AI process   CPU 100.6%   RAM 0.35 GiB

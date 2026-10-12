@@ -1,0 +1,48 @@
+{
+  "environment": "Ubuntu / native curses / xterm-256color",
+  "columns": 120,
+  "rows": 36,
+  "conditions": [
+    "ckd_stage_3",
+    "heart_failure",
+    "interstitial_lung_disease"
+  ],
+  "stages": [
+    {
+      "stem": "01-start",
+      "title": "처음 실행 / 기저질환 선택"
+    },
+    {
+      "stem": "02-conditions",
+      "title": "기저질환 3개 선택"
+    },
+    {
+      "stem": "03-labs-top",
+      "title": "검사 수치 입력 / 상단"
+    },
+    {
+      "stem": "04-labs-bottom",
+      "title": "검사 수치 입력 / 하단"
+    },
+    {
+      "stem": "05-priority-choice",
+      "title": "질환 우선순위 방식 선택"
+    },
+    {
+      "stem": "06-priority-order",
+      "title": "직접 우선순위 확인 / 기본 순위 유지"
+    },
+    {
+      "stem": "07-results",
+      "title": "추천 결과 / 첫 번째 ADC"
+    },
+    {
+      "stem": "08-result-detail",
+      "title": "추천 결과 / Trastuzumab deruxtecan 선택"
+    },
+    {
+      "stem": "09-after-pgdn",
+      "title": "PgDn 이후 / 최종 출력 마지막 화면"
+    }
+  ]
+}

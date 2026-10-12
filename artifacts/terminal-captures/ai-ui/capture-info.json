@@ -1,0 +1,17 @@
+{
+  "terminal": "Ubuntu / native curses / xterm-256color",
+  "columns": 120,
+  "rows": 42,
+  "screens": [
+    "01-condition-labels",
+    "02-grouped-priority",
+    "03-final-output",
+    "04-direct-input",
+    "05-ai-running",
+    "06-ai-review",
+    "07-ai-results",
+    "08-ai-final",
+    "09-mlp-fallback",
+    "10-mlp-applied"
+  ]
+}

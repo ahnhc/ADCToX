@@ -56,10 +56,10 @@ _by_label = {r["label"].lower(): r["id"] for r in _reg.values()}
 
 class _Loading:
     """one-line spinner while the text encoders load (terminal only); replaces the libraries' progress bars."""
-    def __init__(self, text, done): self.text, self.done = text, done
+    def __init__(self, text, done, enabled=True): self.text, self.done, self.enabled = text, done, enabled
     def __enter__(self):
         import threading, time
-        self.t0 = time.time(); self.on = sys.stderr.isatty(); self.stop = threading.Event()
+        self.t0 = time.time(); self.on = self.enabled and sys.stderr.isatty(); self.stop = threading.Event()
         def spin():
             for ch in __import__("itertools").cycle("⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"):
                 if self.stop.wait(0.1): break
@@ -80,26 +80,87 @@ def own_vec(cid):
 
 
 _FREE = {}                  # free-text conditions -> (nearest registry condition per text, MONDO links), per process
+_FREE_PREDICTIONS = {}       # actual saved FinnGen-MLP predictions, cached per typed condition
+_ANALYSES = {}              # mapping and model estimates shown in the input review
+_REGISTRY_LEARNED = {}
 HAS_LEARNED = True          # the FinnGen estimate is available (not in the portable build)
 
 
-def _free_info(free):
+def clear_model_cache():
+    """A completed model update must invalidate both linking and inference results."""
+    _FREE.clear(); _FREE_PREDICTIONS.clear(); _ANALYSES.clear(); _REGISTRY_LEARNED.clear()
+    module = sys.modules.get("mondo_index")
+    if module is not None:
+        index = getattr(module, "_IDX", None)
+        if index is not None and hasattr(index, "close"): index.close()
+        module._IDX = None
+
+
+def _learned_values():
+    import adc_runtime
+    if adc_runtime.active_directory() is not None:
+        identity = adc_runtime.bundle_identity()
+        if identity not in _REGISTRY_LEARNED:
+            import vulnerability_model as VM
+            _REGISTRY_LEARNED[identity] = dict(zip(_reg, VM.predict([r["label"] for r in _reg.values()])))
+        return _REGISTRY_LEARNED[identity]
+    return json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"]
+
+
+def _free_info(free, progress=None):
     """per typed text: (nearest registry id, similarity), its MONDO link {name, sim, axes}, and the learned vector (or None).
     The portable build replaces this function with string matching on MONDO names and synonyms."""
     key = tuple(free)
     if key not in _FREE:
-        with _Loading("Loading weights · 질환 해석 모델 (BioLORD · MONDO)", "질환 해석 모델 준비 완료"):
+        with _Loading("Loading weights / 질환 해석 모델 (BioLORD, MONDO)", "질환 해석 모델 준비 완료", enabled=progress is None):
             import vulnerability_model as VM, mondo_index as MI
+            if progress: progress("embedding")
             E = VM._st(free + [_reg[i]["label"] for i in _reg]); Ef, Er = E[:len(free)], E[len(free):]; ids = list(_reg); best = []
             for i in range(len(free)):
                 sims = Er @ Ef[i]; k = int(sims.argmax()); best.append((ids[k], float(sims[k])))
+            if progress: progress("linking")
             _FREE[key] = (best, MI.link(free))
     best, links = _FREE[key]
     learned = None
     if LEARNED_FRACTION > 0 or FALLBACK:
-        import vulnerability_model as VM
-        learned = VM.predict(free)
+        learned = _predict_free(free, progress)
     return best, links, learned
+
+
+def _predict_free(free, progress=None):
+    """Run our saved trained head, once per new text; these scores are not probabilities."""
+    if progress: progress("inference")
+    missing = list(dict.fromkeys(c for c in free if c not in _FREE_PREDICTIONS))
+    if missing:
+        import vulnerability_model as VM
+        _FREE_PREDICTIONS.update(zip(missing, VM.predict(missing)))
+    return [_FREE_PREDICTIONS[c] for c in free]
+
+
+def analyze_conditions(conditions, progress=None):
+    """Review typed conditions using both disease linking and our trained FinnGen MLP.
+
+    A model's natural-disease vulnerability estimate is displayed separately from the linked disease's organs.
+    Running inference does not silently turn on cross-organ weighting or invent a label diagnosis.
+    """
+    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
+    if not free: return []
+    best, links, _ = _free_info(free, progress)
+    learned = _predict_free(free, progress) if HAS_LEARNED else [None] * len(free)
+    _, _, _, notes, pc = resolve(conditions)
+    organs = {c: sorted(axes, key=AXES.index) for c, axes, _ in pc}
+    reports = []
+    for c, (near, sim), link, prediction in zip(free, best, links, learned):
+        how = dict(notes)[c]
+        source = "MONDO" if "; MONDO '" in how else ("Registry match" if "same as registry" in how else
+                 "Similar condition" if "borrowed from registry" in how else "Unmapped")
+        name = link["name"] if source == "MONDO" else (_reg[near]["label"] if source != "Unmapped" else "")
+        estimates = sorted(((a, float(v)) for a, v in (prediction or {}).items() if v > 0), key=lambda x: (-x[1], AXES.index(x[0])))[:3]
+        report = dict(condition=c, source=source, name=name, organs=[] if source == "Unmapped" else organs.get(c, []), estimates=estimates,
+                      model="BioLORD + FinnGen MLP" if prediction is not None else None)
+        _ANALYSES[c] = report; reports.append(report)
+    if progress: progress("done")
+    return reports
 
 
 def resolve(conditions):
@@ -107,7 +168,7 @@ def resolve(conditions):
     ws, notes, ids, own_axes, pc = [np.zeros(len(AXES))], [], set(), set(), []
     free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
     if free: best, links, learned_free = _free_info(free)
-    L = json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"] if LEARNED_FRACTION > 0 else None
+    L = _learned_values() if LEARNED_FRACTION > 0 else None
     fi = 0
     for c in conditions:
         if c in CONTEXT: ids.add(c); notes.append((c, CONTEXT[c])); continue
@@ -126,7 +187,9 @@ def resolve(conditions):
                 own, how = np.zeros(len(AXES)), "free text; not understood (no organ)"
                 if FALLBACK.get(c) and lv is not None:
                     f = max(FALLBACK[c], LEARNED_FRACTION); top = [AXES[k] for k in np.argsort(-lv)[:3] if f * lv[k] >= 0.01]
-                    ws.append(f * lv); how += f"; FinnGen learned estimate x{f:g} used (not validated): {', '.join(EN[a] for a in top) or 'no organ'}"
+                    estimate = np.zeros_like(lv)
+                    for a in top: estimate[AXES.index(a)] = f * lv[AXES.index(a)]
+                    ws.append(estimate); how += f"; FinnGen learned estimate x{f:g} used (not validated): {', '.join(EN[a] for a in top) or 'no organ'}"
                     if top: pc.append((c, set(top), float(f * lv.max())))
             fi += 1
         own_axes |= {AXES[k] for k in np.where(own > 0)[0]}
@@ -241,12 +304,12 @@ TONE = {"contraindicated": "31", "avoid": "31", "insufficient_data": "33", "no_s
 
 
 def _restriction_cell(v, paint, color):
-    """-> (plain text, painted text). Settled verdicts bold; ones a missing value could reach plain (with '?' only without colour)."""
+    """-> (plain text, painted text). Conditional rules name their missing input explicitly."""
     parts = RS.summary_parts(v)
     if not parts: return "-", "-"
     plain, out = [], []
     for c, ds, sure in parts:
-        txt = f"{RS.TABLE[c]}{'' if sure or color else '?'} ({', '.join(ds)})"
+        txt = f"{RS.TABLE[c]} ({', '.join(ds)})" + (" / Needs input" if not sure else "")
         plain.append(txt); out.append(paint(txt, TONE[c] + (";1" if sure else "")))
     return "  ".join(plain), "  ".join(out)
 
@@ -332,11 +395,181 @@ def reasons(r, checks_=(), color=True):
     return out
 
 
-def browse(rows, checks_=()):
-    """interactive view of the result table (terminal only): pick a row to read why it has its restriction."""
+ORGAN_SHORT = {"haematologic": "Blood", "hepatic": "Liver", "cardiovascular": "Cardio", "pulmonary": "Lung", "renal": "Kidney",
+               "gastrointestinal": "GI", "neurologic": "Neuro", "ocular": "Eye", "dermatologic": "Skin", "metabolic_endocrine": "Metabolic",
+               "musculoskeletal": "MSK", "infectious_immune": "Immune", "otologic": "Ear"}
+
+
+def _organ_preview(row):
+    """Display up to two patient warning organs and one other warning organ. Does not affect ADC ordering.
+
+    Boxed warnings precede section-5 warnings. Within a warning tier, use the patient's existing organ priority;
+    equal-priority organs retain the axis order. '+' means additional organs have a label warning.
+    """
+    priorities = {}
+    for level, _, organs in row["priority"]:
+        for organ in organs: priorities[organ] = min(level, priorities.get(organ, level))
+    patient = set(priorities) | set(row["boxed"]) | set(row["warn"])
+    strength = {"boxed": 0, "W&P": 1}
+    key = lambda organ: (strength[row["organs"][organ]["level"]], priorities.get(organ, 999), AXES.index(organ))
+    own = sorted(set(row["boxed"]) | set(row["warn"]), key=key)
+    other = sorted((organ for organ in AXES if organ not in patient and row["organs"][organ]["level"] in strength),
+                   key=lambda organ: (strength[row["organs"][organ]["level"]], AXES.index(organ)))
+    def cell(organ, more=False):
+        if not organ: return "\033[90m-\033[0m"
+        boxed = row["organs"][organ]["level"] == "boxed"
+        marker = "!!" if boxed else "!"
+        return f"\033[{31 if boxed else 33}m{marker:>2} {ORGAN_SHORT[organ]}{'+' if more else ''}\033[0m"
+    return [cell(own[0] if own else None), cell(own[1] if len(own) > 1 else None, len(own) > 2),
+            cell(other[0] if other else None, len(other) > 1)]
+
+
+def _result_list(rows, width):
+    """Responsive result list with the warning organs visible alongside each ADC's restriction."""
     import tui
-    lines, at = _table(rows, lambda t, c: f"\033[{c}m{t}\033[0m" if c else t, color=True)
-    return tui.browse("ADC 추천 결과", lines, at, [reasons(r, checks_) for r in rows])
+    paint = lambda t, c: f"\033[{c}m{t}\033[0m" if c else t
+    strip = lambda text: re.sub(r"\x1b\[[\d;]*m", "", text)
+    name_w = max([_width(r["name"]) for r in rows] + [3])
+    wide = width >= 96
+    stacked = width < 64
+    name_w = min(name_w, 28 if wide else max(12, width // 2))
+    organ_w = 14
+    if wide: name_w = min(name_w, width - 9 - 3 * (organ_w + 3) - len("Label restriction"))
+    status_w = max(2, width - name_w - 9 - (3 * (organ_w + 3) if wide else 0))
+    widths = [name_w, status_w] + ([organ_w] * 3 if wide else [])
+    def line(rank, cells):
+        return rank + "   " + "   ".join(text + " " * max(0, size - _width(strip(text))) for text, size in zip(cells, widths))
+    if wide:
+        out = [line("  #", ["ADC", "Label restriction"]) + "   " + "Relevant warnings".ljust(2 * organ_w + 3) + "   " + "Other warnings"]
+    else:
+        out = ["  #   ADC"] if stacked else [line("  #", ["ADC", "Label restriction"])]
+    out.append("\033[90m" + "─" * width + "\033[0m")
+    at = []; previous_rank = None
+    for row in rows:
+        at.append(len(out))
+        rank_text = f"{row['rank']:>3}" if row["rank"] != previous_rank else "   "
+        previous_rank = row["rank"]
+        verdict = row["verdict"]
+        # Four display groups only. Exact label actions (including dose reduction / contraindication)
+        # and whether a rule is still conditional remain explicit in the selected row's reasons.
+        tier = verdict.worst_possible
+        state, tone = {0: ("Clear", "32"), 1: ("Monitor", "36"), 2: ("Unclear", "33"),
+                       3: ("Avoid", "31"), 4: ("Avoid", "31")}.get(tier, ("-", "90"))
+        status = paint(state, tone + (";1" if verdict.worst_known == tier else ""))
+        organs = _organ_preview(row)
+        if stacked:
+            names = tui._wrap(row["name"], max(2, width - 6), "")
+            out.append(rank_text + "   " + names[0])
+            out.extend("      " + ln for ln in names[1:])
+            out.extend("      " + ln for ln in tui._wrap_ansi(status, max(2, width - 6)))
+        else:
+            names = tui._wrap(row["name"], name_w, "")
+            columns = [names, tui._wrap_ansi(status, status_w)]
+            if wide: columns += [tui._wrap_ansi(organ, organ_w) for organ in organs]
+            for i in range(max(map(len, columns))):
+                rank = rank_text if i == 0 else "   "
+                out.append(line(rank, [column[i] if i < len(column) else "" for column in columns]))
+        if not wide:
+            summary = "Relevant: " + " / ".join(organs[:2]) + "   Other: " + organs[2]
+            out.extend("      " + ln for ln in tui._wrap_ansi(summary, max(2, width - 6)))
+    return out, at
+
+
+def _compact_line(text, width):
+    """Keep a summary on one terminal line; an ellipsis explicitly marks shortened text."""
+    import tui
+    if _width(re.sub(r"\x1b\[[\d;]*m", "", text)) <= width: return text
+    return tui._wrap_ansi(text, max(2, width - 1))[0] + "\033[90m…\033[0m"
+
+
+def _missing_inputs(verdict):
+    short = {"renal": "CLcr / dialysis status", "hepatic": "Bilirubin / AST / ALT / Child-Pugh", "cardiac": "LVEF",
+             "blood": "Platelets / ANC", "metabolic": "HbA1c"}
+    return [short.get(next((d for d, text in RS.NEEDS.items() if text == need), ""), need) for need in verdict.missing]
+
+
+def _result_details(row, checks_, width):
+    """Complete restriction reasons and checks; the viewer wraps and scrolls this panel."""
+    paint = lambda t, c: f"\033[{c}m{t}\033[0m" if c else t
+    out = [paint(row["name"], "33;1")]
+    evidence = reason_rows(row)
+    evidence = [reason for reason in evidence if reason[3] != "no_adjustment"] or evidence
+    evidence.sort(key=lambda reason: (-RS.TIER[reason[3]], not reason[4], reason[0]))
+    for organ, status, basis, code, sure in evidence:
+        out.append(f"  {organ.capitalize():<9} " + paint(status, TONE[code] + (";1" if sure else "")) + f"   {basis}")
+    if not evidence: out.append("  No applicable label restriction")
+    if row["verdict"].missing:
+        out.append(paint("─" * width, "90"))
+        out.append(paint("Missing inputs", "33;1"))
+        out.extend("  " + need for need in _missing_inputs(row["verdict"]))
+    mine = [test for test, names, _ in checks_ if (not names or row["name"] in names) and not test.startswith("enter ")]
+    if mine:
+        out.append(paint("─" * width, "90"))
+        out.append(paint("Pre-treatment checks", "33;1"))
+        out.extend("  - " + test for test in mine)
+    return out
+
+
+VALUE_LABELS = {"crcl": ("CLcr", " mL/min"), "bili": ("Bilirubin", "×ULN"), "ast": ("AST", "×ULN"), "alt": ("ALT", "×ULN"),
+                "lvef": ("LVEF", "%"), "platelets": ("Platelets", " ×10³/µL"), "anc": ("ANC", " ×10³/µL"), "hba1c": ("HbA1c", "%"),
+                "child_pugh": ("Child-Pugh", ""), "esrd": ("Dialysis/ESRD", ""), "ugt1a1_28_homozygous": ("UGT1A1*28 hom.", "")}
+DOMAIN_VALUES = {"renal": ("crcl", "esrd"), "hepatic": ("bili", "ast", "alt", "child_pugh"), "cardiac": ("lvef",),
+                 "blood": ("platelets", "anc"), "metabolic": ("hba1c",), "genotype": ("ugt1a1_28_homozygous",)}
+
+
+def _result_context(rows, notes, width, values=None, selected=0):
+    """Bounded key values and organ priority, without repeating diagnoses from the input screen."""
+    values = values or {}
+    prio = rows[0]["priority"] if rows else []
+    reasons_ = sorted(reason_rows(rows[selected]), key=lambda reason: (-RS.TIER[reason[3]], not reason[4])) if rows else []
+    relevant = list(dict.fromkeys(key for domain, *_ in reasons_ for key in DOMAIN_VALUES.get(domain, ())))
+    ordered = sorted((key for key in VALUE_LABELS if values.get(key) is not None),
+                     key=lambda key: relevant.index(key) if key in relevant else len(relevant))
+    inputs = []
+    for key in ordered:
+        label, unit = VALUE_LABELS[key]; value = values[key]
+        text = ("yes" if value else "no") if isinstance(value, bool) else (f"{value:g}" if isinstance(value, (int, float)) else str(value))
+        if key == "crcl" and any(a == "Lab" and "CLcr ≈ eGFR" in b for a, b in notes):
+            inputs.append(f"CLcr ≈ {text} mL/min (eGFR)")
+        else: inputs.append(f"{label} {text}{unit}")
+    organ_levels = {}
+    for level, _, organs in prio:
+        for organ in organs: organ_levels[organ] = min(level, organ_levels.get(organ, level))
+    grouped = {}
+    for organ, level in sorted(organ_levels.items(), key=lambda item: (item[1], AXES.index(item[0]))):
+        grouped.setdefault(level, []).append(ORGAN_SHORT[organ])
+    priorities = [f"{level}. {', '.join(organs)}" for level, organs in grouped.items()]
+    def block(title, items, empty):
+        body = items[:3] + ([f"+ {len(items) - 3} more"] if len(items) > 3 else [])
+        return [f"\033[33;1m{title}\033[0m"] + ["  " + text for text in body or [empty]]
+    left = block("Key values", inputs, "Not entered")
+    right = block("Organ priority", priorities, "None specified")
+    if width < 72:
+        out = [_compact_line(text, width) for text in left + [""] + right]
+    else:
+        half = (width - 3) // 2
+        left = [_compact_line(text, half) for text in left]
+        right = [_compact_line(text, width - half - 3) for text in right]
+        out = []
+        for i in range(max(len(left), len(right))):
+            a = left[i] if i < len(left) else ""; b = right[i] if i < len(right) else ""
+            padding = half - _width(re.sub(r"\x1b\[[\d;]*m", "", a))
+            out.append(a + " " * padding + "\033[90m │ \033[0m" + b)
+    unmapped = [c for c, how in notes if "not understood" in how]
+    if unmapped:
+        estimated = any("FinnGen learned estimate" in how for _, how in notes)
+        out.append(_compact_line(("Unvalidated estimate: " if estimated else "Unmapped: ") + ", ".join(unmapped), width))
+    return out
+
+
+def browse(rows, checks_=(), notes=(), labs=None, raw=None):
+    """interactive view of the result table (terminal only): pick a row to read why it has its restriction."""
+    import tui, labs as LB
+    values = {**(LB.derive(raw)[0] if raw else {}), **(labs or {})}
+    return tui.browse("ADC 추천 결과", lambda w: _result_list(rows, w), [],
+                      lambda i, w: _result_details(rows[i], checks_, w),
+                      footer="!! Label emphasis   ! Warning   + More organs",
+                      context=lambda i, w: _result_context(rows, notes, w, values, i))
 
 
 def patient_lines(notes):
@@ -353,45 +586,67 @@ def patient_lines(notes):
     return [names(a, b) for a, b in notes]
 
 
-def render(rows, s, notes, checks_, detail=False, color=None):
-    import textwrap, shutil
+def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=None):
+    """Print the same responsive list as the interactive view, followed by bounded-width checks."""
+    import shutil, tui, labs as LB
     color = (sys.stdout.isatty() or bool(os.environ.get("FORCE_COLOR"))) and not os.environ.get("NO_COLOR") if color is None else color
     paint = lambda t, c: f"\033[{c}m{t}\033[0m" if color and c else t
-    cols = shutil.get_terminal_size((110, 24)).columns
-    key = min(34, max(len(a) for a, _ in notes)) if notes else 10
-    rowsP = patient_lines(notes); key = max([_width(a) for a, b in rowsP if b is not None] + [10])
-    print(paint("ADC 추천 결과", "1;33") + "\n")
-    print("Patient")
-    for a, b in rowsP: print(f"  {a}" if b is None else f"  {a}{' ' * (key - _width(a) + 3)}{b}".rstrip())
-    prio = rows[0]["priority"] if rows else []
-    if len(prio) > 1:
-        print("\nPriority (1 = avoid first)")
-        nm = lambda c: _reg[c]["label"] if c in _reg else c; w = max(len(nm(c)) for _, c, _ in prio)
-        for lvl, c, orgs in prio: print(f"  {lvl}  {nm(c):<{w}}  {', '.join(EN[a] for a in orgs)}")
-    print()
-    lines, _ = _table(rows, paint, color)
-    for ln in lines: print(ln)
-    if checks_:
-        print("\n투여 전 확인")
-        for test, names, src in checks_:
-            print(f"  - {test}" + (f"\n      most relevant: {', '.join(names)}" if names else ""))
+    width = max(10, shutil.get_terminal_size((110, 24)).columns - 5)
+    strip = lambda text: re.sub(r"\x1b\[[\d;]*m", "", text)
+    def emit(text=""):
+        for line in tui._wrap_ansi(text, width): print("  " + (line if color else strip(line)).rstrip())
+    def heading(text):
+        emit(); emit(paint(text, "33;1"))
+    emit(paint("ADCTOX", "33;1") + " " * max(1, width - 6 - len(tui.UI_VERSION)) + paint(tui.UI_VERSION, "90"))
+    emit(paint("─" * width, "90")); emit()
+    values = {**(LB.derive(raw)[0] if raw else {}), **(labs or {})}
+    for line in _result_context(rows, notes, width, values): emit(line)
+    emit()
+    for line in _result_list(rows, width)[0]: emit(line)
+    emit(paint("!! Label emphasis   ! Warning   + More organs", "90"))
+    actions = [(r, reason) for r in rows for reason in reason_rows(r) if reason[3] in ("reduce_dose", "contraindicated")]
+    if actions:
+        heading("Label actions")
+        for row, (organ, status, basis, code, certain) in actions:
+            emit(f"{row['name']} / {organ.capitalize()}")
+            emit("  " + paint(status, TONE[code]) + f"   {basis}")
+    analyses = [_ANALYSES[c] for c, _ in notes if c in _ANALYSES]
+    if analyses:
+        heading("AI organ analysis")
+        for report in analyses:
+            organs = ", ".join(ORGAN_SHORT[a] for a in report["organs"]) or "Unmapped"
+            match = f": {report['name']}" if report["name"] else ""
+            source = f" / {report['source']}{match}" if report["name"] else ""
+            emit(f"{report['condition']} → {organs}{source}")
+            if report["model"]:
+                emit(paint("  FinnGen MLP signal: " + ", ".join(f"{ORGAN_SHORT[a]} {score:.2f}" for a, score in report["estimates"]), "90"))
+    missing = list(dict.fromkeys(need for row in rows for need in _missing_inputs(row["verdict"])))
+    if missing:
+        emit(); emit(paint("─" * width, "90")); emit(paint("Missing inputs", "33;1"))
+        for need in missing: emit("  " + need)
+    clinical_checks = [(test, names, src) for test, names, src in checks_ if not test.startswith("enter ")]
+    if clinical_checks:
+        heading("Pre-treatment checks")
+        for test, names, src in clinical_checks:
+            emit(f"- {test}")
+            if names: emit(paint("  ADCs: " + ", ".join(names), "90"))
     if detail:
-        print("\nLabel evidence on your organs")
+        heading("Label evidence on your organs")
         for r in rows:
-            print(f"  {r['name']}  (label v{r['version']}, {r['date']})")
+            emit(r["name"])
             for a in AXES:
                 if a in s:
                     o = r["organs"][a]; hd = "; ".join(f"{sec} {h}" for sec, h in o["headings"]) or "no warning"
-                    print(f"      {EN[a]:<15} {o['level']:<5} {hd[:70]:<70}  {_inc_text(o)}")
+                    emit(f"  {EN[a]} / {o['level']} / {hd} / {_inc_text(o)}")
 
 
 # ------------------------------------------------------------------------------------------------ input
 ORGAN_KO = {"haematologic": "혈액", "hepatic": "간", "cardiovascular": "심혈관", "pulmonary": "폐", "renal": "신장", "gastrointestinal": "위장관",
-            "neurologic": "신경", "ocular": "눈", "dermatologic": "피부", "metabolic_endocrine": "대사·내분비", "musculoskeletal": "근골격",
-            "infectious_immune": "감염·면역", "otologic": "귀"}
+            "neurologic": "신경", "ocular": "눈", "dermatologic": "피부", "metabolic_endocrine": "대사/내분비", "musculoskeletal": "근골격",
+            "infectious_immune": "감염/면역", "otologic": "귀"}
 KO = {"chronic_liver_disease": "만성 간질환", "cirrhosis": "간경변", "hepatitis_b_chronic": "만성 B형 간염", "hepatitis_c_chronic": "만성 C형 간염",
       "hepatic_vod_history": "간정맥폐쇄병 병력", "nafld": "비알코올성 지방간", "ckd_stage_3": "만성 콩팥병 3기", "ckd_stage_4_5": "만성 콩팥병 4–5기",
-      "dialysis": "투석 중", "heart_failure": "심부전", "reduced_lvef": "좌심실 박출률 저하 (LVEF < 50%)", "prior_anthracycline": "안트라사이클린 치료 경험",
+      "dialysis": "투석 중", "heart_failure": "심부전", "reduced_lvef": "좌심실 박출률 저하", "prior_anthracycline": "안트라사이클린 치료 경험",
       "coronary_artery_disease": "관상동맥질환", "qt_prolongation": "QT 연장", "interstitial_lung_disease": "간질성 폐질환", "pulmonary_fibrosis": "폐섬유증",
       "copd": "만성 폐쇄성 폐질환", "prior_chest_radiation": "흉부 방사선 치료 경험", "peripheral_neuropathy": "말초신경병증",
       "diabetic_neuropathy": "당뇨병성 말초신경병증", "multiple_sclerosis": "다발성 경화증", "keratopathy_history": "각막병증 병력", "dry_eye": "안구건조증",
@@ -399,11 +654,22 @@ KO = {"chronic_liver_disease": "만성 간질환", "cirrhosis": "간경변", "he
       "neutropenia_chronic": "만성 호중구감소증", "anaemia_chronic": "만성 빈혈", "mds": "골수형성이상증후군", "prior_hsct": "조혈모세포이식 경험",
       "inflammatory_bowel_disease": "염증성 장질환", "prior_bowel_resection": "장 절제술 경험", "chronic_pancreatitis": "만성 췌장염",
       "severe_psoriasis": "중증 건선", "prior_sjs_ten": "스티븐스-존슨 증후군/TEN 병력", "type_2_diabetes": "제2형 당뇨병", "hypothyroidism": "갑상선기능저하증",
-      "hiv_controlled": "HIV 감염 (치료 중)", "active_autoimmune": "활동성 자가면역질환", "hearing_loss": "감각신경성 난청"}
-COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)  ·  / 검색  ·  ENTER 확정")
+      "hiv_controlled": "치료 중인 HIV 감염", "active_autoimmune": "활동성 자가면역질환", "hearing_loss": "감각신경성 난청"}
+
+
+def condition_name(condition):
+    """Short UI label only; model inputs and clinical rules retain the complete registry label."""
+    return re.sub(r"\s*\([^)]*\)", "", _reg[condition]["label"]) if condition in _reg else condition
+
+
+def priority_lines(pc):
+    levels = default_levels(pc); groups = {}
+    for c, _, _ in sorted(pc, key=lambda item: levels[item[0]]): groups.setdefault(levels[c], []).append(condition_name(c))
+    return [f"  {level}. {', '.join(names)}" for level, names in groups.items()]
+COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)    / 검색    ENTER 확정")
 PRIORITY_Q = ("어느 질환 쪽 독성을 먼저 피할까요?", "1 = 가장 먼저. 같은 숫자는 같은 순위. 순위가 높은 질환의 장기에 경고가 있는 약이 뒤로 갑니다.")
-FALLBACK_Q = ("관련 장기를 찾지 못함: {conds}", "FinnGen 모델 추정 장기를 쓸까요? (검증 안 됨, 오타에도 값이 나오니 철자 확인)")
-FALLBACK_OPTS = [("사용 안 함", 0.0), ("사용 (추정값 × 0.25)", 0.25), ("사용 (추정값 × 0.5)", 0.5)]
+FALLBACK_Q = ("추정 장기 반영: {conds}", "질환명과 추정 장기를 확인해 주세요. 자동은 낮은 가중치로 반영합니다.")
+FALLBACK_OPTS = [("자동", 0.25), ("반영", 0.5), ("반영 안함", 0.0)]
 def _tui_ok():
     if "--plain" in sys.argv: return False          # plain prompts and a printed table, no full-screen menus
     try: import term                                 # real curses, or the ANSI stand-in on Windows (ml/term.py)
@@ -413,8 +679,9 @@ def _tui_ok():
 
 def _ask_priority_pc(pc):
     global PRIORITY
-    d = default_levels(pc); names = [c for c, _, _ in pc]; show = lambda c: _reg[c]["label"] if c in _reg else c
-    print("\n질환 우선순위  자동: " + "  ".join(f"{d[c]} {show(c)}" for c in sorted(names, key=lambda c: d[c])))
+    names = [c for c, _, _ in pc]
+    print("\n자동 우선순위")
+    for line in priority_lines(pc): print(line)
     try: raw = input("  직접 정하려면 질환 순서대로 순위 입력 (예: 2 1 1), Enter = 자동 > ").split()
     except EOFError: raw = []
     PRIORITY = dict(zip(names, [int(x) for x in raw])) if len(raw) == len(names) and all(x.isdigit() and int(x) >= 1 for x in raw) else {}
@@ -463,7 +730,9 @@ def wizard(back=False):
             x = LB.parse(k, v)
             if x is not None: raw[k] = x
         except ValueError as err: print(f"    (ignored: {err})")
-    if HAS_LEARNED: _ask_fallback(conds)
+    if HAS_LEARNED:
+        analyze_conditions(conds)
+        _ask_fallback(conds)
     pc = patient_conditions(conds, raw)
     if len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2: _ask_priority_pc(pc)
     return conds, {}, None, raw
@@ -499,6 +768,17 @@ def list_conditions():
 
 def main():
     global LEARNED_FRACTION, FALLBACK, PRIORITY
+    from adc_version import APP_VERSION
+    arguments = sys.argv[1:]
+    if arguments == ["--version"]:
+        print(APP_VERSION); return
+    actions = {"--update-models": "update", "--check-models": "check", "--model-version": "version", "--rollback-models": "rollback"}
+    if len(arguments) == 1 and arguments[0] in actions:
+        import adc_updates
+        raise SystemExit(adc_updates.cli(actions[arguments[0]]))
+    if arguments == ["--help"]:
+        print("ADCTOX " + APP_VERSION + "\n\nadctox                       Interactive recommender\nadctox --list                Condition IDs\nadctox --update-models       Download changed model files\nadctox --check-models        Check model updates\nadctox --model-version       Installed model version\nadctox --rollback-models     Restore previous model\nadctox --version             App version\n\nIn the condition picker, press U for model updates.")
+        return
     import term
     if "--no-wt" in sys.argv: sys.argv.remove("--no-wt")
     else: term.into_windows_terminal()                 # double-clicked on Windows: reopen in Windows Terminal when there is one
@@ -508,6 +788,7 @@ def main():
     if "learned" in flags: LEARNED_FRACTION = flags["learned"]
     if flags.get("fallback") and args: FALLBACK = {c: flags["fallback"] for c in unresolved(args)}
     if flags.get("priority") and args: PRIORITY = dict(zip(args, flags["priority"]))
+    if args and HAS_LEARNED: analyze_conditions(args)
     back = False
     while True:
         raw = flags.get("raw")
@@ -516,9 +797,9 @@ def main():
         else: conds, col = ["interstitial_lung_disease"], None
         print()
         rows, s, notes, ck = recommend(conds, labs, raw)
-        if not args and _tui_ok() and browse(rows, ck) == "back": back = True; continue      # PgUp on the result screen
+        if not args and _tui_ok() and browse(rows, ck, notes, labs, raw) == "back": back = True; continue      # PgUp on the result screen
         back = False
-        render(rows, s, notes, ck, detail=flags["detail"], color=col)
+        render(rows, s, notes, ck, detail=flags["detail"], color=col, labs=labs, raw=raw)
         if not args and _tui_ok():
             import form; form.clear()                                     # the next run starts empty
         if args or not sys.stdin.isatty(): break

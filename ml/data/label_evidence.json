@@ -1,0 +1,2273 @@
+{
+  "source": "DailyMed label snapshot 2026-10-07; factual evidence derived by ml/drug_evidence.py",
+  "evidence": {
+    "brentuximab-vedotin": {
+      "name": "Brentuximab vedotin",
+      "version": 38,
+      "date": "Nov 17, 2025",
+      "brand": "ADCETRIS",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Hematologic Toxicities"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 49.0,
+            "term": "neutrophils decreased",
+            "grade": "Grade 3-4",
+            "table": "Table 12: Select Laboratory Abnormalities (≥20%) that Worsened from Baseline in Patients Who Received ADCETRIS + Lenalidomide + Rituximab-Treated Patients in Relapsed or Refractory LBCL (Study 8: ECHELON-3)",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.7",
+              "Increased Toxicity in the Presence of Moderate or Severe Hepatic Impairment"
+            ],
+            [
+              "5.8",
+              "Hepatotoxicity"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.9,
+            "term": "alanine aminotransferase increased",
+            "grade": "Grade 3-4",
+            "table": "Table 12: Select Laboratory Abnormalities (≥20%) that Worsened from Baseline in Patients Who Received ADCETRIS + Lenalidomide + Rituximab-Treated Patients in Relapsed or Refractory LBCL (Study 8: ECHELON-3)",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.10",
+              "Pulmonary Toxicity"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "renal": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.6",
+              "Increased Toxicity in the Presence of Severe Renal Impairment"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.8,
+            "term": "creatinine increased",
+            "grade": "Grade 3-4",
+            "table": "Table 12: Select Laboratory Abnormalities (≥20%) that Worsened from Baseline in Patients Who Received ADCETRIS + Lenalidomide + Rituximab-Treated Patients in Relapsed or Refractory LBCL (Study 8: ECHELON-3)",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "gastrointestinal": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.12",
+              "Gastrointestinal Complications"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "neurologic": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "PROGRESSIVE MULTIFOCAL LEUKOENCEPHALOPATHY (PML)"
+            ],
+            [
+              "5.1",
+              "Peripheral Neuropathy"
+            ],
+            [
+              "5.9",
+              "Progressive Multifocal Leukoencephalopathy"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "ocular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "dermatologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.11",
+              "Serious Dermatologic Reactions"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "metabolic_endocrine": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.5",
+              "Tumor Lysis Syndrome"
+            ],
+            [
+              "5.13",
+              "Hyperglycemia"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 7.0,
+            "term": "potassium decreased",
+            "grade": "Grade 3-4",
+            "table": "Table 12: Select Laboratory Abnormalities (≥20%) that Worsened from Baseline in Patients Who Received ADCETRIS + Lenalidomide + Rituximab-Treated Patients in Relapsed or Refractory LBCL (Study 8: ECHELON-3)",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "infectious_immune": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Anaphylaxis and Infusion Reactions"
+            ],
+            [
+              "5.4",
+              "Serious Infections and Opportunistic Infections"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "datopotamab-deruxtecan": {
+      "name": "Datopotamab deruxtecan",
+      "version": 18,
+      "date": "Jun 03, 2026",
+      "brand": "DATROWAY",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 11.0,
+            "term": "decreased lymphocytes",
+            "grade": "Grade 3-4",
+            "table": "Table 5: Select Laboratory Abnormalities (≥20%) that Worsened from Baseline in Patients with Locally Advanced or Metastatic EGFR-Mutated NSCLC Who Received DATROWAY in TROPION-Lung05, TROPION-Lung01, and TROPION-PanTumor01",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.4,
+            "term": "increased alt",
+            "grade": "Grade 3-4",
+            "table": "Table 5: Select Laboratory Abnormalities (≥20%) that Worsened from Baseline in Patients with Locally Advanced or Metastatic EGFR-Mutated NSCLC Who Received DATROWAY in TROPION-Lung05, TROPION-Lung01, and TROPION-PanTumor01",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.1",
+              "Interstitial Lung Disease/Pneumonitis"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.0,
+            "term": "cough *",
+            "grade": "Grade 3-4",
+            "table": "Table 6: Adverse Reactions (≥10%) in Patients Who Received DATROWAY in TROPION-Breast02",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "gastrointestinal": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Stomatitis"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 38.0,
+            "term": "increased amylase",
+            "grade": "Grade 3-4",
+            "table": "Table 7: Select Laboratory Abnormalities (≥20%) in Patients Who Received DATROWAY in TROPION-Breast02",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "neurologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "ocular": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Ocular Adverse Reactions"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 6.0,
+            "term": "keratitis §",
+            "grade": "Grade 3-4",
+            "table": "Table 6: Adverse Reactions (≥10%) in Patients Who Received DATROWAY in TROPION-Breast02",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.6,
+            "term": "rash †",
+            "grade": "Grade 3-4",
+            "table": "Table 6: Adverse Reactions (≥10%) in Patients Who Received DATROWAY in TROPION-Breast02",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 3.5,
+            "term": "decreased sodium",
+            "grade": "Grade 3-4",
+            "table": "Table 7: Select Laboratory Abnormalities (≥20%) in Patients Who Received DATROWAY in TROPION-Breast02",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.6,
+            "term": "musculoskeletal pain *",
+            "grade": "Grade 3-4",
+            "table": "Table 6: Adverse Reactions (≥10%) in Patients Who Received DATROWAY in TROPION-Breast02",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "infectious_immune": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.4,
+            "term": "covid-19 *",
+            "grade": "Grade 3-4",
+            "table": "Table 8: Adverse Reactions (≥10%) in Patients Who Received DATROWAY in TROPION-Breast01",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "enfortumab-vedotin": {
+      "name": "Enfortumab vedotin",
+      "version": 18,
+      "date": "Aug 17, 2026",
+      "brand": "PADCEV",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 15.0,
+            "term": "decreased lymphocytes",
+            "grade": "Grade 3-4",
+            "table": "Table 18. Selected Laboratory Abnormalities Reported in ≥15% (Grades 2-4) or ≥5% (Grades 3-4) of Patients Treated with PADCEV in EV-201, Cohort 2",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 9.0,
+            "term": "increased aspartate aminotransferase",
+            "grade": "Grade 3-4",
+            "table": "Table 12. Selected Laboratory Abnormalities ≥20% (All Grades) in Patients Treated with PADCEV in Combination with Intravenous Pembrolizumab in EV-103",
+            "combo": true,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Pneumonitis/Interstitial Lung Disease (ILD)"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 3.0,
+            "term": "increased creatinine",
+            "grade": "Grade 3-4",
+            "table": "Table 18. Selected Laboratory Abnormalities Reported in ≥15% (Grades 2-4) or ≥5% (Grades 3-4) of Patients Treated with PADCEV in EV-201, Cohort 2",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 11.0,
+            "term": "increased lipase",
+            "grade": "Grade 3-4",
+            "table": "Table 18. Selected Laboratory Abnormalities Reported in ≥15% (Grades 2-4) or ≥5% (Grades 3-4) of Patients Treated with PADCEV in EV-201, Cohort 2",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "neurologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.4",
+              "Peripheral Neuropathy"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "ocular": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.5",
+              "Ocular Disorders"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "dermatologic": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "SERIOUS SKIN REACTIONS"
+            ],
+            [
+              "5.1",
+              "Skin Reactions"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "metabolic_endocrine": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Hyperglycemia"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 13.0,
+            "term": "increased glucose (non-fasting)",
+            "grade": "Grade 3-4",
+            "table": "Table 18. Selected Laboratory Abnormalities Reported in ≥15% (Grades 2-4) or ≥5% (Grades 3-4) of Patients Treated with PADCEV in EV-201, Cohort 2",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "infectious_immune": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "gemtuzumab-ozogamicin": {
+      "name": "Gemtuzumab ozogamicin",
+      "version": 19,
+      "date": "Dec 22, 2025",
+      "brand": "MYLOTARG",
+      "has_tables": false,
+      "organs": {
+        "haematologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "hepatic": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "HEPATOTOXICITY"
+            ],
+            [
+              "5.1",
+              "Hepatotoxicity, Including Veno-occlusive Liver Disease (VOD)"
+            ]
+          ],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "cardiovascular": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Hemorrhage"
+            ],
+            [
+              "5.4",
+              "QT Interval Prolongation"
+            ]
+          ],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "neurologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "ocular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "infectious_immune": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Infusion-Related Reactions (Including Anaphylaxis)"
+            ]
+          ],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        }
+      }
+    },
+    "inotuzumab-ozogamicin": {
+      "name": "Inotuzumab ozogamicin",
+      "version": 8,
+      "date": "Feb 09, 2026",
+      "brand": "BESPONSA",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Myelosuppression"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 96.0,
+            "term": "neutrophil count decreased",
+            "grade": "Grade 3-4",
+            "table": "Table 10. Select Laboratory Abnormalities in Pediatric Patients with CD22-positive Relapsed/Refractory ALL after receiving BESPONSA Monotherapy in Study WI203581 (ITCC-059)",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "INCLUDING HEPATIC VENO-OCCLUSIVE DISEASE (VOD) (ALSO KNOWN AS SINUSOIDAL OBSTRUCTION SYNDROME)"
+            ],
+            [
+              "Boxed",
+              "HEPATOTOXICITY"
+            ],
+            [
+              "5.1",
+              "Hepatotoxicity, Including Hepatic Veno-occlusive Disease (VOD) (also known as Sinusoidal Obstruction Syndrome)"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 27.0,
+            "term": "ggt increased",
+            "grade": "Grade 3-4",
+            "table": "Table 10. Select Laboratory Abnormalities in Pediatric Patients with CD22-positive Relapsed/Refractory ALL after receiving BESPONSA Monotherapy in Study WI203581 (ITCC-059)",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.5",
+              "QT Interval Prolongation"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 4.0,
+            "term": "hypotension",
+            "grade": "Grade >=3",
+            "table": "Table 9. Adverse Reactions (≥ 5%) in Pediatric Patients (N=53) With CD22-Positive Relapsed or Refractory ALL in Study WI203581 (ITCC-059)",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "pulmonary": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 4.0,
+            "term": "hypoxia",
+            "grade": "Grade >=3",
+            "table": "Table 9. Adverse Reactions (≥ 5%) in Pediatric Patients (N=53) With CD22-Positive Relapsed or Refractory ALL in Study WI203581 (ITCC-059)",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 13.0,
+            "term": "lipase increased",
+            "grade": "Grade 3-4",
+            "table": "Table 8. Laboratory Abnormalities in Patients With Relapsed or Refractory B-Cell Precursor ALL Who Received BESPONSA or Investigator's Choice of Chemotherapy (FLAG, MXN/Ara-C, or HIDAC)",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "neurologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.0,
+            "term": "headacheà",
+            "grade": "Grade >=3",
+            "table": "Table 7. Adverse Reactions With ≥ 10% Incidence * in Adult Patients With Relapsed or Refractory B-Cell Precursor ALL Who Received BESPONSA or Investigator's Choice of Chemotherapy (FLAG, MXN/Ara-C, or HIDAC)",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "ocular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 4.0,
+            "term": "rash*",
+            "grade": "Grade >=3",
+            "table": "Table 9. Adverse Reactions (≥ 5%) in Pediatric Patients (N=53) With CD22-Positive Relapsed or Refractory ALL in Study WI203581 (ITCC-059)",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 11.0,
+            "term": "tumor lysis syndrome",
+            "grade": "Grade >=3",
+            "table": "Table 9. Adverse Reactions (≥ 5%) in Pediatric Patients (N=53) With CD22-Positive Relapsed or Refractory ALL in Study WI203581 (ITCC-059)",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.0,
+            "term": "pain in extremity",
+            "grade": "Grade >=3",
+            "table": "Table 9. Adverse Reactions (≥ 5%) in Pediatric Patients (N=53) With CD22-Positive Relapsed or Refractory ALL in Study WI203581 (ITCC-059)",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "infectious_immune": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.4",
+              "Infusion Related Reactions"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 28.0,
+            "term": "infection‡",
+            "grade": "Grade >=3",
+            "table": "Table 7. Adverse Reactions With ≥ 10% Incidence * in Adult Patients With Relapsed or Refractory B-Cell Precursor ALL Who Received BESPONSA or Investigator's Choice of Chemotherapy (FLAG, MXN/Ara-C, or HIDAC)",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "loncastuximab-tesirine": {
+      "name": "Loncastuximab tesirine",
+      "version": 15,
+      "date": "Jun 17, 2026",
+      "brand": "ZYNLONTA",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Myelosuppression"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 30.0,
+            "term": "neutrophils decreased",
+            "grade": "Grade 3-4",
+            "table": "Table 3: Select Laboratory Abnormalities (≥10%) That Worsened from Baseline in Patients with Relapsed or Refractory DLBCL Who Received ZYNLONTA in LOTIS-2",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.4",
+              "Hepatotoxicity, Including Drug-Induced Liver Injury"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 21.0,
+            "term": "ggt increased",
+            "grade": "Grade 3-4",
+            "table": "Table 3: Select Laboratory Abnormalities (≥10%) That Worsened from Baseline in Patients with Relapsed or Refractory DLBCL Who Received ZYNLONTA in LOTIS-2",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.1",
+              "Effusion and Edema, Including Capillary Leak Syndrome"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "neurologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "ocular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "dermatologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.5",
+              "Cutaneous Reactions"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 8.0,
+            "term": "glucose increased",
+            "grade": "Grade 3-4",
+            "table": "Table 3: Select Laboratory Abnormalities (≥10%) That Worsened from Baseline in Patients with Relapsed or Refractory DLBCL Who Received ZYNLONTA in LOTIS-2",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "infectious_immune": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Infections"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "mirvetuximab-soravtansine": {
+      "name": "Mirvetuximab soravtansine",
+      "version": 14,
+      "date": "Feb 16, 2026",
+      "brand": "ELAHERE",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 7.0,
+            "term": "decreased lymphocytes",
+            "grade": "Grade 3-4",
+            "table": "Table 7: Select Laboratory Abnormalities ≥10% for All Grades, or ≥2% for Grades 3-4 in Patients Who Received ELAHERE",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.0,
+            "term": "increased aspartate aminotransferase",
+            "grade": "Grade 3-4",
+            "table": "Table 7: Select Laboratory Abnormalities ≥10% for All Grades, or ≥2% for Grades 3-4 in Patients Who Received ELAHERE",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Pneumonitis"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.5,
+            "term": "pneumonitis±",
+            "grade": "Grade 3-4",
+            "table": "Table 4: Adverse Reactions Occurring in ≥10% of Patients with Epithelial Ovarian, Fallopian Tube, or Primary Peritoneal Cancer Who Received ELAHERE in Study 0416",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.0,
+            "term": "increased creatinine",
+            "grade": "Grade 3-4",
+            "table": "Table 5: Select Laboratory Abnormalities ≥10% for All Grades, in Patients Who Received ELAHERE in Study 0416",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 7.0,
+            "term": "abdominal pain*",
+            "grade": "Grade 3-4",
+            "table": "Table 6: Adverse Reactions (≥10%) in Patients with Epithelial Ovarian, Fallopian Tube, or Primary Peritoneal Cancer Who Received ELAHERE in Study 0417",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "neurologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Peripheral Neuropathy"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 4.0,
+            "term": "peripheral neuropathy¶",
+            "grade": "Grade 3-4",
+            "table": "Table 4: Adverse Reactions Occurring in ≥10% of Patients with Epithelial Ovarian, Fallopian Tube, or Primary Peritoneal Cancer Who Received ELAHERE in Study 0416",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "ocular": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "OCULAR TOXICITY"
+            ],
+            [
+              "5.1",
+              "Ocular Disorders"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 11.0,
+            "term": "keratopathy†",
+            "grade": "Grade 3-4",
+            "table": "Table 4: Adverse Reactions Occurring in ≥10% of Patients with Epithelial Ovarian, Fallopian Tube, or Primary Peritoneal Cancer Who Received ELAHERE in Study 0416",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 4.0,
+            "term": "decreased potassium",
+            "grade": "Grade 3-4",
+            "table": "Table 7: Select Laboratory Abnormalities ≥10% for All Grades, or ≥2% for Grades 3-4 in Patients Who Received ELAHERE",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.0,
+            "term": "musculoskeletal pain♦",
+            "grade": "Grade 3-4",
+            "table": "Table 4: Adverse Reactions Occurring in ≥10% of Patients with Epithelial Ovarian, Fallopian Tube, or Primary Peritoneal Cancer Who Received ELAHERE in Study 0416",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "infectious_immune": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "pivekimab-sunirine": {
+      "name": "Pivekimab sunirine",
+      "version": 2,
+      "date": "Jun 01, 2026",
+      "brand": "DECNUPAZ",
+      "has_tables": false,
+      "organs": {
+        "haematologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "hepatic": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "INCLUDING HEPATIC VENO-OCCLUSIVE DISEASE (VOD) (ALSO KNOWN AS SINUSOIDAL OBSTRUCTION SYNDROME)"
+            ],
+            [
+              "Boxed",
+              "HEPATOTOXICITY"
+            ],
+            [
+              "5.1",
+              "Hepatotoxicity, Including Hepatic Veno-occlusive Disease (VOD) (also known as Sinusoidal Obstruction Syndrome)"
+            ]
+          ],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "cardiovascular": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Edema"
+            ]
+          ],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "neurologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "ocular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "infectious_immune": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Infusion-Related Reactions"
+            ],
+            [
+              "5.4",
+              "Sulfite Allergic Reactions"
+            ]
+          ],
+          "inc_status": "no data",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "no data",
+          "inc": null
+        }
+      }
+    },
+    "polatuzumab-vedotin": {
+      "name": "Polatuzumab vedotin",
+      "version": 15,
+      "date": "Aug 28, 2026",
+      "brand": "POLIVY",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Myelosuppression"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 87.0,
+            "term": "lymphocyte count decreased",
+            "grade": "Grade 3-4",
+            "table": "Table 9 Select Laboratory Abnormalities Worsening from Baseline in Patients with Relapsed or Refractory DLBCL and ≥5% More in the POLIVY Plus Bendamustine and Rituximab Product Group",
+            "combo": true,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.7",
+              "Hepatotoxicity"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.4,
+            "term": "alanine aminotransferase increased",
+            "grade": "Grade 3-4",
+            "table": "Table 7 Select Adverse Reactions Occurring in ≥10% of Patients Treated with POLIVY Plus R-CHP in POLARIX",
+            "combo": true,
+            "lab": false
+          }
+        },
+        "cardiovascular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 16.0,
+            "term": "pneumonia",
+            "grade": "Grade >=3",
+            "table": "Table 8 Adverse Reactions Occurring in >10% of Patients with Relapsed or Refractory DLBCL and ≥5% More in the POLIVY Plus Bendamustine and Rituximab Product Group in Study GO29365",
+            "combo": true,
+            "lab": false
+          }
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 4.4,
+            "term": "creatinine increased",
+            "grade": "Grade 3-4",
+            "table": "Table 9 Select Laboratory Abnormalities Worsening from Baseline in Patients with Relapsed or Refractory DLBCL and ≥5% More in the POLIVY Plus Bendamustine and Rituximab Product Group",
+            "combo": true,
+            "lab": true
+          }
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 9.0,
+            "term": "lipase increased",
+            "grade": "Grade 3-4",
+            "table": "Table 9 Select Laboratory Abnormalities Worsening from Baseline in Patients with Relapsed or Refractory DLBCL and ≥5% More in the POLIVY Plus Bendamustine and Rituximab Product Group",
+            "combo": true,
+            "lab": true
+          }
+        },
+        "neurologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.1",
+              "Peripheral Neuropathy"
+            ],
+            [
+              "5.5",
+              "Progressive Multifocal Leukoencephalopathy (PML)"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.6,
+            "term": "peripheral neuropathy‡,§",
+            "grade": "Grade 3-4",
+            "table": "Table 7 Select Adverse Reactions Occurring in ≥10% of Patients Treated with POLIVY Plus R-CHP in POLARIX",
+            "combo": true,
+            "lab": false
+          }
+        },
+        "ocular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.7,
+            "term": "rashà",
+            "grade": "Grade 3-4",
+            "table": "Table 7 Select Adverse Reactions Occurring in ≥10% of Patients Treated with POLIVY Plus R-CHP in POLARIX",
+            "combo": true,
+            "lab": false
+          }
+        },
+        "metabolic_endocrine": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.6",
+              "Tumor Lysis Syndrome"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 18.0,
+            "term": "uric acid increased",
+            "grade": "Grade 3-4",
+            "table": "Table 7 Select Adverse Reactions Occurring in ≥10% of Patients Treated with POLIVY Plus R-CHP in POLARIX",
+            "combo": true,
+            "lab": false
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.5,
+            "term": "musculoskeletal painè",
+            "grade": "Grade 3-4",
+            "table": "Table 7 Select Adverse Reactions Occurring in ≥10% of Patients Treated with POLIVY Plus R-CHP in POLARIX",
+            "combo": true,
+            "lab": false
+          }
+        },
+        "infectious_immune": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Infusion-Related Reactions"
+            ],
+            [
+              "5.4",
+              "Serious and Opportunistic Infections"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.2,
+            "term": "infusion-related reaction",
+            "grade": "Grade >=3",
+            "table": "Table 8 Adverse Reactions Occurring in >10% of Patients with Relapsed or Refractory DLBCL and ≥5% More in the POLIVY Plus Bendamustine and Rituximab Product Group in Study GO29365",
+            "combo": true,
+            "lab": false
+          }
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "sacituzumab-govitecan": {
+      "name": "Sacituzumab govitecan",
+      "version": 20,
+      "date": "Jun 29, 2026",
+      "brand": "TRODELVY",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "NEUTROPENIA"
+            ],
+            [
+              "5.1",
+              "Neutropenia"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 53.0,
+            "term": "decreased neutrophil count",
+            "grade": "Grade 3-4",
+            "table": "Table 12: Laboratory Abnormalities in > 10% of Patients with Metastatic HR+/HER2- Breast Cancer in TROPiCS-02",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 4.1,
+            "term": "increased alanine aminotransferase",
+            "grade": "Grade 3-4",
+            "table": "Table 6: Laboratory Abnormalities in > 10% of Patients Receiving TRODELVY in Combination with Intravenous Pembrolizumab with Metastatic TNBC in ASCENT-04",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.3,
+            "term": "decreased creatinine clearance",
+            "grade": "Grade 3-4",
+            "table": "Table 12: Laboratory Abnormalities in > 10% of Patients with Metastatic HR+/HER2- Breast Cancer in TROPiCS-02",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "gastrointestinal": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "DIARRHEA"
+            ],
+            [
+              "5.2",
+              "Diarrhea"
+            ],
+            [
+              "5.4",
+              "Nausea and Vomiting"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "neurologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "ocular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "metabolic_endocrine": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.5",
+              "Increased Risk of Adverse Reactions in Patients with Reduced UGT1A1 Activity"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 7.8,
+            "term": "decreased phosphate",
+            "grade": "Grade 3-4",
+            "table": "Table 8: Laboratory Abnormalities in > 10% of Patients with Metastatic TNBC in ASCENT",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "infectious_immune": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Hypersensitivity and Infusion-Related Reactions"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "telisotuzumab-vedotin": {
+      "name": "Telisotuzumab vedotin",
+      "version": 3,
+      "date": "Jul 10, 2025",
+      "brand": "EMRELIS",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 10.0,
+            "term": "lymphocytes decreased",
+            "grade": "Grade 3-4",
+            "table": "Table 6. Select Laboratory Abnormalities (≥10%) that Worsened from Baseline in Patients with EGFR Wild-Type Non-squamous NSCLC with c-Met Protein Overexpression in LUMINOSITY",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 4.8,
+            "term": "alanine transaminase increased",
+            "grade": "Grade 3-4",
+            "table": "Table 6. Select Laboratory Abnormalities (≥10%) that Worsened from Baseline in Patients with EGFR Wild-Type Non-squamous NSCLC with c-Met Protein Overexpression in LUMINOSITY",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Interstitial Lung Disease/Pneumonitis"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 6.0,
+            "term": "pneumonia2",
+            "grade": "Grade 3-4",
+            "table": "Table 5. Adverse Reactions (≥10%) in Patients with EGFR Wild-Type Non-squamous NSCLC with c-Met Protein Overexpression in LUMINOSITY",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.2,
+            "term": "creatinine increased",
+            "grade": "Grade 3-4",
+            "table": "Table 6. Select Laboratory Abnormalities (≥10%) that Worsened from Baseline in Patients with EGFR Wild-Type Non-squamous NSCLC with c-Met Protein Overexpression in LUMINOSITY",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.6,
+            "term": "constipation",
+            "grade": "Grade 3-4",
+            "table": "Table 5. Adverse Reactions (≥10%) in Patients with EGFR Wild-Type Non-squamous NSCLC with c-Met Protein Overexpression in LUMINOSITY",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "neurologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.1",
+              "Peripheral Neuropathy"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 11.0,
+            "term": "peripheral neuropathy2",
+            "grade": "Grade 3-4",
+            "table": "Table 5. Adverse Reactions (≥10%) in Patients with EGFR Wild-Type Non-squamous NSCLC with c-Met Protein Overexpression in LUMINOSITY",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "ocular": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Ocular Surface Disorders"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.2,
+            "term": "blurred vision3",
+            "grade": "Grade 3-4",
+            "table": "Table 5. Adverse Reactions (≥10%) in Patients with EGFR Wild-Type Non-squamous NSCLC with c-Met Protein Overexpression in LUMINOSITY",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 4.8,
+            "term": "glucose increased",
+            "grade": "Grade 3-4",
+            "table": "Table 6. Select Laboratory Abnormalities (≥10%) that Worsened from Baseline in Patients with EGFR Wild-Type Non-squamous NSCLC with c-Met Protein Overexpression in LUMINOSITY",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "infectious_immune": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.4",
+              "Infusion-Related Reactions"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "tisotumab-vedotin": {
+      "name": "Tisotumab vedotin",
+      "version": 10,
+      "date": "Nov 21, 2025",
+      "brand": "TIVDAK",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 7.0,
+            "term": "hemoglobin decreased",
+            "grade": "Grade 3-4",
+            "table": "Table 5: Select Laboratory Abnormalities (≥10%) That Worsened from Baseline In Patients Who Received TIVDAK in innovaTV 301",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 3.3,
+            "term": "alanine aminotransferase increased",
+            "grade": "Grade 3-4",
+            "table": "Table 5: Select Laboratory Abnormalities (≥10%) That Worsened from Baseline In Patients Who Received TIVDAK in innovaTV 301",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Hemorrhage"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.4",
+              "Pneumonitis"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.0,
+            "term": "epistaxis",
+            "grade": "Grade 3-4",
+            "table": "Table 4: Adverse Reactions (≥10%) in Patients Who Received TIVDAK in innovaTV 301",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 5.0,
+            "term": "urinary tract infectionð",
+            "grade": "Grade 3-4",
+            "table": "Table 4: Adverse Reactions (≥10%) in Patients Who Received TIVDAK in innovaTV 301",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 4.0,
+            "term": "abdominal painþ",
+            "grade": "Grade 3-4",
+            "table": "Table 4: Adverse Reactions (≥10%) in Patients Who Received TIVDAK in innovaTV 301",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "neurologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Peripheral Neuropathy"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 7.0,
+            "term": "peripheral neuropathy¶",
+            "grade": "Grade 3-4",
+            "table": "Table 6: Adverse Reactions (≥10%) in Patients Who Received TIVDAK in innovaTV 204",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "ocular": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "OCULAR TOXICITY"
+            ],
+            [
+              "5.1",
+              "Ocular Adverse Reactions"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 3.2,
+            "term": "corneal adverse reactions‡",
+            "grade": "Grade 3-4",
+            "table": "Table 4: Adverse Reactions (≥10%) in Patients Who Received TIVDAK in innovaTV 301",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "dermatologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.5",
+              "Severe Cutaneous Adverse Reactions"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.6,
+            "term": "rashè",
+            "grade": "Grade 3-4",
+            "table": "Table 4: Adverse Reactions (≥10%) in Patients Who Received TIVDAK in innovaTV 301",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.1,
+            "term": "magnesium decreased",
+            "grade": "Grade 3-4",
+            "table": "Table 7: Select Laboratory Abnormalities (≥10%) That Worsened from Baseline In Patients Who Received TIVDAK in innovaTV 204",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.0,
+            "term": "pain in extremityý",
+            "grade": "Grade 3-4",
+            "table": "Table 6: Adverse Reactions (≥10%) in Patients Who Received TIVDAK in innovaTV 204",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "infectious_immune": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "trastuzumab-deruxtecan": {
+      "name": "Trastuzumab deruxtecan",
+      "version": 28,
+      "date": "May 28, 2026",
+      "brand": "ENHERTU",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.2",
+              "Neutropenia"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 51.0,
+            "term": "decreased neutrophil count",
+            "grade": "Grade 3-4",
+            "table": "Table 23: Selected Laboratory Abnormalities Occurring in Patients Receiving ENHERTU in DESTINY-Gastric01",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 9.0,
+            "term": "increased aspartate aminotransferase",
+            "grade": "Grade 3-4",
+            "table": "Table 23: Selected Laboratory Abnormalities Occurring in Patients Receiving ENHERTU in DESTINY-Gastric01",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Left Ventricular Dysfunction"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "INTERSTITIAL LUNG DISEASE"
+            ],
+            [
+              "5.1",
+              "Interstitial Lung Disease/Pneumonitis"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.4,
+            "term": "interstitial lung disease§",
+            "grade": "Grade 3-4",
+            "table": "Table 22: Adverse Reactions in ≥10% All Grades or ≥2% Grades 3 or 4 of Patients Receiving ENHERTU in DESTINY-Gastric01",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.9,
+            "term": "increased blood creatinine",
+            "grade": "Grade 3-4",
+            "table": "Table 17: Selected Laboratory Abnormalities in Patients in DESTINY-Breast06",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 7.0,
+            "term": "nausea",
+            "grade": "Grade 3-4",
+            "table": "Table 10: Common Adverse Reactions (≥10% All Grades or ≥2% Grades 3-4) in Patients Treated with ENHERTU in DESTINY-Breast03",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "neurologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.5,
+            "term": "headacheß",
+            "grade": "Grade 3-4",
+            "table": "Table 16: Common Adverse Reactions (≥10% All Grades or ≥2% Grades 3 or 4) in Patients Treated with ENHERTU in DESTINY-Breast06",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "ocular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.0,
+            "term": "dry eye",
+            "grade": "Grade 3-4",
+            "table": "Table 8: Common Adverse Reactions (≥10% All Grades or ≥2% Grades 3 or 4) in Patients Treated with ENHERTU in Combination with Pertuzumab in DESTINY-Breast09",
+            "combo": true,
+            "lab": false
+          }
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.6,
+            "term": "rash¶",
+            "grade": "Grade 3-4",
+            "table": "Table 24: Common Adverse Reactions (≥10% All Grades or ≥2% Grades 3 or 4) in HER2-positive (IHC 3+) Patients Treated with ENHERTU in DESTINY-Breast01, DESTINY-PanTumor02, DESTINY-Lung01, and DESTINY-CRC02",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 17.0,
+            "term": "decreased appetite",
+            "grade": "Grade 3-4",
+            "table": "Table 22: Adverse Reactions in ≥10% All Grades or ≥2% Grades 3 or 4 of Patients Receiving ENHERTU in DESTINY-Gastric01",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.3,
+            "term": "musculoskeletal pain¶",
+            "grade": "Grade 3-4",
+            "table": "Table 18: Common Adverse Reactions (≥10% All Grades or ≥2% Grades 3 or 4) in Patients Treated with ENHERTU in DESTINY-Breast04",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "infectious_immune": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.9,
+            "term": "covid-19¶",
+            "grade": "Grade 3-4",
+            "table": "Table 16: Common Adverse Reactions (≥10% All Grades or ≥2% Grades 3 or 4) in Patients Treated with ENHERTU in DESTINY-Breast06",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
+    "trastuzumab-emtansine": {
+      "name": "Trastuzumab emtansine",
+      "version": 35,
+      "date": "Apr 03, 2026",
+      "brand": "KADCYLA",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.7",
+              "Thrombocytopenia"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 17.0,
+            "term": "decreased platelet count",
+            "grade": "Grade 3/Grade 4",
+            "table": "Table 4 Selected Laboratory Abnormalities (EMILIA)",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "HEPATOTOXICITY"
+            ],
+            [
+              "5.1",
+              "Hepatotoxicity"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 8.0,
+            "term": "transaminases increased",
+            "grade": "Grade 3-4",
+            "table": "Table 3 Adverse Reactions Occurring in ≥ 10% of Patients on the KADCYLA Treatment Arm in the EMILIA Trial *",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "cardiovascular": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "CARDIAC TOXICITY"
+            ],
+            [
+              "5.2",
+              "Left Ventricular Dysfunction"
+            ],
+            [
+              "5.6",
+              "Hemorrhage"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.4",
+              "Pulmonary Toxicity"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.8,
+            "term": "dyspnea",
+            "grade": "Grade 3-4",
+            "table": "Table 3 Adverse Reactions Occurring in ≥ 10% of Patients on the KADCYLA Treatment Arm in the EMILIA Trial *",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.3,
+            "term": "urinary tract infection",
+            "grade": "Grade 3-4",
+            "table": "Table 5 Adverse Reactions Occurring in ≥ 10% of Patients in the KATHERINE Trial *",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.6,
+            "term": "diarrhea",
+            "grade": "Grade 3-4",
+            "table": "Table 3 Adverse Reactions Occurring in ≥ 10% of Patients on the KADCYLA Treatment Arm in the EMILIA Trial *",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "neurologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.8",
+              "Neurotoxicity"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.2,
+            "term": "peripheral neuropathy",
+            "grade": "Grade 3-4",
+            "table": "Table 3 Adverse Reactions Occurring in ≥ 10% of Patients on the KADCYLA Treatment Arm in the EMILIA Trial *",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "ocular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 0.0,
+            "term": "rash",
+            "grade": "Grade 3-4",
+            "table": "Table 3 Adverse Reactions Occurring in ≥ 10% of Patients on the KADCYLA Treatment Arm in the EMILIA Trial *",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 3.0,
+            "term": "decreased potassium",
+            "grade": "Grade 3/Grade 4",
+            "table": "Table 4 Selected Laboratory Abnormalities (EMILIA)",
+            "combo": false,
+            "lab": true
+          }
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 1.8,
+            "term": "musculoskeletal pain",
+            "grade": "Grade 3-4",
+            "table": "Table 3 Adverse Reactions Occurring in ≥ 10% of Patients on the KADCYLA Treatment Arm in the EMILIA Trial *",
+            "combo": false,
+            "lab": false
+          }
+        },
+        "infectious_immune": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.5",
+              "Infusion-Related Reactions, Hypersensitivity Reactions"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    }
+  }
+}

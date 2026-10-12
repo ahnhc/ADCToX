@@ -37,7 +37,7 @@ def into_windows_terminal():
     # parent's environment reuses that folder, so it would lose its files when this process ends. Reset tells the child
     # to unpack its own copy.
     env = {k: v for k, v in os.environ.items() if not k.startswith(("_PYI", "_MEI"))}; env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
-    try: subprocess.Popen([wt, "new-tab", "--title", "ADC Recommender", "--", *me], close_fds=True, env=env)
+    try: subprocess.Popen([wt, "--size", "120,42", "new-tab", "--title", "ADC Recommender", "--", *me], close_fds=True, env=env)
     except OSError: return
     sys.exit(0)
 
@@ -53,13 +53,18 @@ class _Shim:
     KEY_NPAGE, KEY_PPAGE, KEY_ENTER, KEY_END, KEY_MOUSE = 338, 339, 343, 360, 409
     BUTTON1_CLICKED = BUTTON1_PRESSED = BUTTON1_RELEASED = 0
 
+    # App-local colours: the alternate buffer is painted explicitly, without changing the user's Terminal profile.
+    PALETTE = {0: (23, 24, 21), 1: (237, 150, 144), 2: (154, 193, 145), 3: (226, 184, 114),
+               4: (143, 174, 214), 5: (190, 163, 210), 6: (129, 195, 203), 7: (233, 231, 220),
+               236: (44, 46, 38), 238: (57, 59, 49), 244: (170, 169, 155)}
+
     def __init__(self): self._pairs = {}
 
     # ---- module-level curses functions
     def has_colors(self): return True
     def start_color(self): pass
     def use_default_colors(self): pass
-    def init_pair(self, n, fg, bg): self._pairs[n] = fg
+    def init_pair(self, n, fg, bg): self._pairs[n] = (fg, bg)
     def color_pair(self, n): return n << 8
     def curs_set(self, v): sys.stdout.write("\x1b[?25h" if v else "\x1b[?25l"); sys.stdout.flush()
     def mousemask(self, m): raise self.error("no mouse")
@@ -76,10 +81,14 @@ class _Shim:
     def _sgr(self, attr):
         codes = ["0"]
         if attr & self.A_BOLD: codes.append("1")
-        if attr & self.A_DIM: codes.append("2")
-        if attr & self.A_REVERSE: codes.append("7")
         pair = (attr >> 8) & 0xFF
-        if pair in self._pairs: codes.append(str(30 + self._pairs[pair]))
+        fg, bg = self._pairs.get(pair, (self.COLOR_WHITE, self.COLOR_BLACK))
+        if bg < 0: bg = self.COLOR_BLACK
+        if attr & self.A_DIM: fg = 244
+        if attr & self.A_REVERSE: bg = 236
+        for prefix, value in ((38, fg), (48, bg)):
+            if value in self.PALETTE: codes.append(f"{prefix};2;" + ";".join(map(str, self.PALETTE[value])))
+            else: codes.append(f"{prefix};5;{value}")
         return "\x1b[" + ";".join(codes) + "m"
 
 
@@ -92,7 +101,7 @@ class _Screen:
         except OSError: return 30, 120
 
     def keypad(self, flag): pass
-    def getmaxyx(self): return self.h, self.w
+    def getmaxyx(self): return self._size()
 
     def erase(self):
         self.h, self.w = self._size(); self.buf = [[(" ", 0) for _ in range(self.w)] for _ in range(self.h)]
@@ -109,14 +118,15 @@ class _Screen:
             x += n
 
     def refresh(self):
-        C = self.C; out = ["\x1b[H"]; cur = None
+        C = self.C; out = ["\x1b[?2026h", "\x1b[H"]; cur = None
         for y, row in enumerate(self.buf):
             out.append(f"\x1b[{y + 1};1H")
             for ch, attr in row:
                 if ch == "": continue
                 if attr != cur: out.append(C._sgr(attr)); cur = attr
                 out.append(ch)
-        out.append("\x1b[0m"); sys.stdout.write("".join(out)); sys.stdout.flush()
+        # Synchronized output keeps the full repaint from flashing in Windows Terminal.
+        out.append("\x1b[0m\x1b[?2026l"); sys.stdout.write("".join(out)); sys.stdout.flush()
 
     # ---- keys
     def _raw(self, on):

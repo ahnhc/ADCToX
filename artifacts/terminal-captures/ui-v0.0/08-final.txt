@@ -1,0 +1,42 @@
+    2   Gemtuzumab ozogamicin       Unclear                          !! Liver          ! Cardio+       -             
+    3   Inotuzumab ozogamicin       Unclear                          !! Liver          ! Blood+        -             
+    4   Trastuzumab emtansine       Unclear                          !! Liver         !! Cardio+       -             
+    5   Trastuzumab deruxtecan      Unclear                          !! Lung           ! Blood+        -             
+    6   Enfortumab vedotin          Avoid                             ! Neuro          ! Lung          !! Skin+      
+        Mirvetuximab soravtansine   Avoid                             ! Neuro          ! Lung          !! Eye        
+    7   Telisotuzumab vedotin       Avoid                             ! Neuro          ! Immune+        ! Eye        
+        Tisotumab vedotin           Avoid                             ! Cardio         ! Neuro+        !! Eye+       
+    8   Loncastuximab tesirine      Avoid                             ! Blood          ! Liver+         ! Skin       
+        Polatuzumab vedotin         Avoid                             ! Blood          ! Liver+         ! Metabolic  
+    9   Pivekimab sunirine          Avoid                            !! Liver          ! Cardio+       -             
+   10   Brentuximab vedotin         Avoid                            !! Neuro          ! Blood+         ! Skin+      
+   11   Sacituzumab govitecan       Avoid                            !! Blood         !! GI+            ! Metabolic  
+  !! Label emphasis   ! Warning   + More organs
+  
+  AI organ analysis
+  lung hole → Unmapped
+    FinnGen MLP signal: Lung 0.72, Neuro 0.28, Blood 0.25
+  
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Missing inputs
+    Bilirubin / AST / ALT / Child-Pugh
+    CLcr / dialysis status
+    LVEF
+    Platelets / ANC
+  
+  Pre-treatment checks
+  - current platelet count and bleeding history
+    ADCs: Brentuximab vedotin, Gemtuzumab ozogamicin, Inotuzumab ozogamicin, Loncastuximab tesirine, Polatuzumab 
+  vedotin, Tisotumab vedotin, Trastuzumab emtansine
+  - complete blood count (ANC, haemoglobin, platelets)
+    ADCs: Brentuximab vedotin, Inotuzumab ozogamicin, Loncastuximab tesirine, Polatuzumab vedotin, Sacituzumab 
+  govitecan, Trastuzumab deruxtecan, Trastuzumab emtansine
+  - baseline LVEF (echocardiogram or MUGA)
+    ADCs: Trastuzumab deruxtecan, Trastuzumab emtansine
+  - creatinine clearance (CLcr)
+  - total bilirubin and AST (x ULN); Child-Pugh class if cirrhotic
+  - baseline neuropathy grade
+    ADCs: Brentuximab vedotin, Enfortumab vedotin, Mirvetuximab soravtansine, Polatuzumab vedotin, Telisotuzumab 
+  vedotin, Tisotumab vedotin, Trastuzumab emtansine
+
+Run again with different answers? (y = yes, Enter = exit) > 

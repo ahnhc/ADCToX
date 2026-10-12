@@ -4,10 +4,11 @@ Modelled on the way `hermes setup` asks questions (hermes_cli/curses_ui.py): ful
 " -> (o) item" rows, the default pre-selected, ENTER/SPACE to choose, ESC to fall back to the default, "/" to filter a long list.
 Both functions raise nothing on a normal exit and return the chosen index / indices; the caller prints its own summary afterwards.
 """
-import locale, os, unicodedata
+import locale, os, re, unicodedata
 from term import curses
 os.environ.setdefault("ESCDELAY", "25")                 # make ESC answer at once instead of waiting for a possible escape sequence
 locale.setlocale(locale.LC_ALL, "")
+from adc_version import APP_VERSION as UI_VERSION
 
 def _cw(c): return 2 if unicodedata.east_asian_width(c) in "WF" else 1
 def _clip(t, n):
@@ -22,40 +23,59 @@ class _Screen:
         self.s = scr; scr.keypad(True)
         try: curses.curs_set(0)
         except curses.error: pass                       # some consoles cannot hide the cursor
-        self.dim = curses.A_DIM; self.title = curses.A_BOLD; self.cur = curses.A_BOLD
+        self.dim = curses.A_DIM; self.title = curses.A_BOLD; self.cur = curses.A_REVERSE
         if curses.has_colors():
             curses.start_color()
             try: curses.use_default_colors(); bg = -1
             except curses.error: bg = curses.COLOR_BLACK
-            curses.init_pair(1, curses.COLOR_YELLOW, bg); curses.init_pair(2, curses.COLOR_GREEN, bg)
+            curses.init_pair(1, curses.COLOR_YELLOW, bg)
+            import term
+            selected_bg = 236 if term.USE_SHIM or getattr(curses, "COLORS", 0) >= 256 else curses.COLOR_BLUE
+            curses.init_pair(2, curses.COLOR_WHITE, selected_bg)
             for n, c in ((3, curses.COLOR_RED), (4, curses.COLOR_YELLOW), (5, curses.COLOR_CYAN), (6, curses.COLOR_GREEN), (7, curses.COLOR_WHITE)):
                 curses.init_pair(n, c, bg)
-            self.title = curses.color_pair(1) | curses.A_BOLD; self.cur = curses.color_pair(2) | curses.A_BOLD
+                curses.init_pair(n + 10, c, selected_bg)
+            self.title = curses.color_pair(1) | curses.A_BOLD; self.cur = curses.color_pair(2)
     def put(self, y, x, text, attr=0):
         h, w = self.s.getmaxyx()
         if 0 <= y < h - 0 and x < w - 1:
             try: self.s.addstr(y, x, _clip(text, w - x - 1), attr)
             except curses.error: pass
-    def put_ansi(self, y, x, text, attr=0):
+    def put_ansi(self, y, x, text, attr=0, selected=False):
         """text carrying the same ANSI colour codes the printed table uses (31 red, 33 yellow, 36 cyan, 32 green, 90 grey, ;1 bold)."""
         import re
-        h, w = self.s.getmaxyx(); col = x
+        h, w = self.s.getmaxyx(); col = x; self._ca = self.cur if selected else 0
         for seg in re.split(r"(\x1b\[[\d;]*m)", text):
             if not seg: continue
             m = re.fullmatch(r"\x1b\[([\d;]*)m", seg)
             if m:
-                codes = m.group(1).split(";"); a = 0
+                codes = m.group(1).split(";"); a = 0; pair = self.cur if selected else 0
                 for c in codes:
-                    if c in ("31", "33", "36", "32") and curses.has_colors(): a |= curses.color_pair({"31": 3, "33": 4, "36": 5, "32": 6}[c])
+                    if c in ("31", "33", "36", "32") and curses.has_colors(): pair = curses.color_pair({"31": 3, "33": 4, "36": 5, "32": 6}[c] + (10 if selected else 0))
                     elif c == "90": a |= curses.A_DIM
                     elif c == "1": a |= curses.A_BOLD
-                cur_attr = a; self._ca = a; continue
+                self._ca = pair | a; continue
             if col >= w - 1: break
             part = _clip(seg, w - 1 - col)
             try: self.s.addstr(y, col, part, attr | getattr(self, "_ca", 0))
             except curses.error: pass
             col += sum(_cw(c) for c in part)
         self._ca = 0
+
+    def rule(self, y):
+        _, w = self.s.getmaxyx()
+        self.put(y, 2, "─" * max(0, w - 5), self.dim)
+
+    def row(self, y, text, selected=False):
+        _, w = self.s.getmaxyx()
+        if selected: self.put(y, 2, " " * max(0, w - 5), self.cur)
+        self.put_ansi(y, 2, text, selected=selected)
+
+    def brand(self, title=""):
+        _, w = self.s.getmaxyx()
+        self.put(1, 2, "ADCTOX", self.title)
+        self.put(1, max(10, w - 3 - len(UI_VERSION)), UI_VERSION, self.dim)
+        self.rule(3)
 
     def header(self, title, description, hint):
         self.s.clear(); y = 1; self.put(y, 2, title, self.title); y += 1
@@ -66,6 +86,7 @@ def _enter(k): return k in (10, 13, curses.KEY_ENTER)
 
 def _wrap(text, width, indent="    "):
     """wrap by display width (Hangul counts 2), breaking at spaces where possible."""
+    width = max(2, width); indent = _clip(indent, max(0, width - 2))
     out, line = [], ""
     for word in text.split(" "):
         cand = (line + " " + word) if line else word
@@ -75,6 +96,28 @@ def _wrap(text, width, indent="    "):
         while sum(_cw(c) for c in line) > width:
             cut = _clip(line, width); out.append(cut); line = indent + line[len(cut):]
     if line or not out: out.append(line)
+    return out
+
+
+def _wrap_ansi(text, width):
+    """Wrap coloured cells without counting escape sequences as terminal columns."""
+    width = max(2, width); out, line, active, used = [], [], "", 0
+    for token in re.findall(r"\x1b\[[\d;]*m|[^\x1b]", text):
+        if token.startswith("\x1b"):
+            active = token; line.append(token); continue
+        n = _cw(token)
+        if used + n > width:
+            spaces = [i for i, value in enumerate(line) if value == " "]
+            cut = spaces[-1] + 1 if spaces else 0
+            if cut and any(value.strip() and not value.startswith("\x1b") for value in line[:cut]):
+                head, tail = line[:cut], line[cut:]
+                carry = next((value for value in reversed(head) if value.startswith("\x1b")), "")
+                out.append("".join(head) + "\x1b[0m"); line = ([carry] if carry else []) + tail
+                used = sum(_cw(value) for value in tail if not value.startswith("\x1b"))
+            else:
+                out.append("".join(line) + "\x1b[0m"); line = [active] if active else []; used = 0
+        line.append(token); used += n
+    if line or not out: out.append("".join(line) + ("\x1b[0m" if active else ""))
     return out
 
 def radiolist(title, items, default=0, description=""):
@@ -175,42 +218,87 @@ def ranklist(title, items, levels, description=""):
     return curses.wrapper(run)
 
 
-def browse(title, lines, selectable, details, footer=""):
+def browse(title, lines, selectable, details, footer="", context=()):
     """read-only result viewer. lines: the table as text; selectable: indices of lines that are rows; details[k]: text lines
     shown in the bottom panel for selectable row k. UP/DOWN or a mouse click selects a row; PgUp -> "back" (to the input
-    steps), PgDn / q / ENTER / ESC -> "next"."""
-    import textwrap
+    steps), PgDn / q / ESC -> "next". TAB / ENTER switches between the table and scrollable details.
+    lines may be a width -> (lines, selectable) renderer; details may be
+    a (row, width) -> lines renderer, so the same content reflows when the terminal is resized.
+    context may also be a (row, width) -> lines renderer for a bounded input summary."""
     def run(scr):
-        S = _Screen(scr); cur = 0; top = 0
+        S = _Screen(scr); cur = 0; top = 0; detail_top = 0; detail_focus = False
         try: curses.mousemask(curses.BUTTON1_CLICKED | curses.BUTTON1_PRESSED | curses.BUTTON1_RELEASED); curses.mouseinterval(0)
         except curses.error: pass
         while True:
-            h, w = scr.getmaxyx(); scr.clear()          # full repaint: the panel height changes with the row
+            scr.clear(); h, w = scr.getmaxyx()
             import term
-            if title: S.put(0, 1, title, S.title)
-            S.put(1 if title else 0, 1, ("↑↓" if term.USE_SHIM else "↑↓ / 클릭") + "   PgUp 이전   PgDn 다음", S.dim)
+            width = max(2, w - 5)
+            S.brand(title); y0 = 5
+            header = context(cur, width) if callable(context) else [ln for text in context for ln in _wrap(text, width, "")]
+            budget = max(1, h - 20)
+            for ln in header[:budget]:
+                S.put_ansi(y0, 2, ln); y0 += 1
+            if len(header) > budget:
+                S.put(y0, 2, f"그 외 {len(header) - budget}줄 (창을 늘리면 모두 표시)", S.dim); y0 += 1
+            if context: y0 += 1
+            table, choices = lines(width) if callable(lines) else (lines, selectable)
+            if not choices: return "next"
+            cur = min(cur, len(choices) - 1)
             out = []
-            for ln in details[cur]: out += [ln] if ln[:1] in "┌│├└\x1b" else _wrap(ln, max(20, w - 3))      # table lines are not wrapped
-            panel = min(len(out) + 1, max(8, int(h * 0.45))); area = max(3, h - panel - 3); y0 = 2
-            sel = selectable[cur]
-            if sel < top + 3: top = max(0, sel - 3)
+            for ln in (details(cur, width) if callable(details) else details[cur]):
+                out += _wrap_ansi(ln, width)
+            available = max(4, h - y0 - 3)
+            panel = min(len(out) + 1, max(3, int(available * (0.75 if detail_focus else 0.55))))
+            area = min(len(table), max(1, available - panel))
+            sel = choices[cur]
+            top = min(top, max(0, len(table) - area))
+            if sel < top: top = sel
             if sel >= top + area: top = sel - area + 1
             shown = {}
             for k in range(area):
                 i = top + k
-                if i >= len(lines): break
-                S.put_ansi(y0 + k, 0, lines[i], curses.A_REVERSE if i == sel else 0); shown[y0 + k] = i
-            yb = y0 + area; S.put(yb, 0, "─" * (w - 1), S.dim)
-            for k, ln in enumerate(out[:h - yb - 2]): S.put_ansi(yb + 1 + k, 1, ln, S.title if k == 0 else 0)
-            if footer: S.put(h - 1, 1, footer, S.dim)
+                if i >= len(table): break
+                end = choices[cur + 1] if cur + 1 < len(choices) else len(table)
+                S.row(y0 + k, table[i], sel <= i < end); shown[y0 + k] = i
+            yb = y0 + area; S.rule(yb)
+            detail_area = max(1, h - yb - 4)
+            detail_top = max(0, min(detail_top, len(out) - detail_area))
+            for k, ln in enumerate(out[detail_top:detail_top + detail_area]):
+                S.put_ansi(yb + 1 + k, 2, ln, curses.A_BOLD if detail_top + k == 0 else 0)
+            S.rule(h - 3)
+            if detail_focus:
+                hint = "↑↓ 상세 스크롤   Tab 목록   PgUp 이전   PgDn 결과 출력"
+            else:
+                hint = ("↑↓" if term.USE_SHIM else "↑↓ / 클릭") + " 이동   Tab 상세   PgUp 이전   PgDn 결과 출력"
+            if len(out) > detail_area:
+                hint += f"   {detail_top + 1}-{min(detail_top + detail_area, len(out))}/{len(out)}"
+            S.put(h - 2, 2, hint, S.dim)
+            if footer: S.put(h - 1, 2, footer, S.dim)
             scr.refresh(); key = scr.getch()
-            if key in (curses.KEY_UP, ord("k")): cur = max(0, cur - 1)
-            elif key in (curses.KEY_DOWN, ord("j")): cur = min(len(selectable) - 1, cur + 1)
+            previous = cur
+            if key in (curses.KEY_UP, ord("k")):
+                if detail_focus: detail_top = max(0, detail_top - 1)
+                else: cur = max(0, cur - 1)
+            elif key in (curses.KEY_DOWN, ord("j")):
+                if detail_focus: detail_top = min(max(0, len(out) - detail_area), detail_top + 1)
+                else: cur = min(len(choices) - 1, cur + 1)
+            elif key in (9, 10, 13, curses.KEY_ENTER): detail_focus = not detail_focus
+            elif key == curses.KEY_RIGHT: detail_focus = True
+            elif key == curses.KEY_LEFT: detail_focus = False
+            elif key == curses.KEY_HOME:
+                if detail_focus: detail_top = 0
+                else: cur = 0
+            elif key == curses.KEY_END:
+                if detail_focus: detail_top = max(0, len(out) - detail_area)
+                else: cur = len(choices) - 1
             elif key == curses.KEY_MOUSE:
                 try:
                     _, mx, my, _, _ = curses.getmouse()
-                    if my in shown and shown[my] in selectable: cur = selectable.index(shown[my])
+                    if my in shown:
+                        hits = [i for i, at in enumerate(choices) if at <= shown[my]]
+                        if hits: cur = hits[-1]; detail_focus = False
                 except curses.error: pass
             elif key == curses.KEY_PPAGE: return "back"
-            elif key in (ord("q"), 27, 10, 13, curses.KEY_ENTER, curses.KEY_NPAGE): return "next"
+            elif key in (ord("q"), 27, curses.KEY_NPAGE): return "next"
+            if cur != previous: detail_top = 0
     return curses.wrapper(run)

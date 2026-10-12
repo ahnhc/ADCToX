@@ -1,0 +1,36 @@
+                                                                                                                        
+  ADCTOX    ADC 추천 결과                                                                                               
+                                                                                                                        
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────   
+                                                                                                                        
+  Key values                                               │ Organ priority                                             
+    LVEF 48%                                               │   1. Cardio, Lung                                          
+    CLcr 45.6 mL/min                                       │   2. Kidney                                                
+    Bilirubin 0.92×ULN                                     │                                                            
+    + 7 more                                               │                                                            
+                                                                                                                        
+    #   ADC                         Label restriction                Relevant warnings                 Other warnings   
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────   
+    1   Polatuzumab vedotin         Clear                            -                -                 ! Blood+        
+        Sacituzumab govitecan       Clear                            -                -                !! Blood+        
+    2   Gemtuzumab ozogamicin       Clear                             ! Cardio        -                !! Liver+        
+        Inotuzumab ozogamicin       Clear                             ! Cardio        -                !! Liver+        
+        Mirvetuximab soravtansine   Clear                             ! Lung          -                !! Eye+          
+        Telisotuzumab vedotin       Clear                             ! Lung          -                 ! Neuro+        
+    3   Datopotamab deruxtecan      Monitor                           ! Lung          -                 ! GI+           
+        Loncastuximab tesirine      Monitor                           ! Cardio        -                 ! Blood+        
+    4   Brentuximab vedotin         Monitor                           ! Lung           ! Kidney        !! Neuro+        
+    5   Tisotumab vedotin           Monitor                           ! Cardio         ! Lung          !! Eye+          
+    6   Enfortumab vedotin          Unclear                           ! Lung          -                !! Skin+         
+    7   Trastuzumab deruxtecan      Unclear                          !! Lung           ! Cardio         ! Blood         
+        Trastuzumab emtansine       Unclear                          !! Cardio         ! Lung          !! Liver+        
+    8   Pivekimab sunirine          Avoid                             ! Cardio        -                !! Liver+        
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────   
+  Trastuzumab deruxtecan   Label v28 / May 28, 2026                                                                     
+    Cardiac   Unclear   LVEF < 50%                                                                                      
+    Renal     Monitor   CLcr ≥ 30, CLcr < 60                                                                            
+    3 pre-treatment checks                                                                                              
+                                                                                                                        
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────   
+  ↑↓ / 클릭 이동   PgUp 이전   PgDn 결과 출력                                                                           
+  !! Label emphasis   ! Warning   + More organs                                                                         

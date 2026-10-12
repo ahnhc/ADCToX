@@ -1,0 +1,21 @@
+{
+  "input": "obesity",
+  "fallback_fraction": 0.25,
+  "applied_organs": [
+    "cardiovascular",
+    "metabolic_endocrine",
+    "neurologic"
+  ],
+  "priority_organs": [
+    "cardiovascular",
+    "metabolic_endocrine",
+    "neurologic"
+  ],
+  "notes": [
+    [
+      "obesity",
+      "free text; not understood (no organ); FinnGen learned estimate x0.25 used (not validated): Cardiovascular, Neurologic, Metabolic"
+    ]
+  ],
+  "recognized_conditions_unchanged": true
+}

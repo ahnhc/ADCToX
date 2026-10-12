@@ -1,0 +1,101 @@
+{
+  "checkpoint": "/data/hyeongchanahn/adctox/ml_cache/vuln_biolord.pt",
+  "checkpoint_sha256": "fe8c45f424bbf9b7c927d8f2066271cbf7766f08107bdc3c74291199052881c3",
+  "ensemble_models": 5,
+  "elapsed_seconds": 7.16,
+  "stages": [
+    "embedding",
+    "linking",
+    "inference",
+    "done"
+  ],
+  "reports": [
+    {
+      "condition": "asthma",
+      "source": "MONDO",
+      "name": "asthma",
+      "organs": [
+        "pulmonary"
+      ],
+      "estimates": [
+        [
+          "pulmonary",
+          0.6274794930302456
+        ],
+        [
+          "dermatologic",
+          0.6076001871567125
+        ],
+        [
+          "otologic",
+          0.4955672464025606
+        ]
+      ],
+      "model": "BioLORD + FinnGen MLP"
+    },
+    {
+      "condition": "diabetic nephropathy",
+      "source": "MONDO",
+      "name": "diabetic kidney disease",
+      "organs": [
+        "renal",
+        "metabolic_endocrine"
+      ],
+      "estimates": [
+        [
+          "renal",
+          0.9678064313668342
+        ],
+        [
+          "haematologic",
+          0.4559831084676289
+        ],
+        [
+          "ocular",
+          0.37439550204205285
+        ]
+      ],
+      "model": "BioLORD + FinnGen MLP"
+    },
+    {
+      "condition": "banana spaceship",
+      "source": "Unmapped",
+      "name": "",
+      "organs": [],
+      "estimates": [
+        [
+          "musculoskeletal",
+          0.3527232690465877
+        ],
+        [
+          "gastrointestinal",
+          0.2728335822554616
+        ],
+        [
+          "haematologic",
+          0.2555071328770724
+        ]
+      ],
+      "model": "BioLORD + FinnGen MLP"
+    }
+  ],
+  "applied_conditions": [
+    [
+      "asthma",
+      [
+        "pulmonary"
+      ],
+      0.8
+    ],
+    [
+      "diabetic nephropathy",
+      [
+        "metabolic_endocrine",
+        "renal"
+      ],
+      0.8
+    ]
+  ],
+  "unmapped_not_applied": "banana spaceship",
+  "ensemble_count_verified_from_checkpoint": true
+}

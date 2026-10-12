@@ -5,8 +5,9 @@
 
 Organs come from the project's own ancestor -> axis crosswalk (conf/ontology/mondo_organ_axis.yaml) over the is_a closure.
 THETA = 0.75 was fixed before any result existed (ml/link_mondo.py); below it nothing is returned rather than a wrong link."""
-import re, sys, time, warnings
+import os, re, sys, time, warnings
 import numpy as np, torch, yaml
+import adc_runtime
 warnings.filterwarnings("ignore")
 C = "/data/hyeongchanahn/adctox/ml_cache/"; OBO = "/home/hyeongchanahn/CONI/adctox/data/raw_big/mondo/2026-10-07/mondo.obo"
 THETA = 0.75; NAME = "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
@@ -14,7 +15,8 @@ AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gast
 
 def _embed(strs, device, bs=512):
     from transformers import AutoTokenizer, AutoModel
-    tok = AutoTokenizer.from_pretrained(NAME); mod = AutoModel.from_pretrained(NAME).to(device).eval(); half = device != "cpu"
+    name = adc_runtime.encoder_path("SapBERT", NAME)
+    tok = AutoTokenizer.from_pretrained(name); mod = AutoModel.from_pretrained(name).to(device).eval(); half = device != "cpu"
     if half: mod = mod.half()
     out = []
     with torch.no_grad():
@@ -71,7 +73,7 @@ def build():
 _IDX = None
 def link(texts):
     global _IDX
-    if _IDX is None: _IDX = np.load(C + "mondo_index.npz", allow_pickle=True)
+    if _IDX is None: _IDX = np.load(adc_runtime.model_path("mondo_index.npz", C + "mondo_index.npz"), allow_pickle=not adc_runtime.restricted_bundle())
     Q = _embed(list(texts), "cuda:0" if torch.cuda.is_available() else "cpu"); S = Q @ _IDX["E"].astype(np.float32).T; out = []
     for i in range(len(texts)):
         j = int(S[i].argmax()); sim = float(S[i, j]); ax = _IDX["axes"][j]
@@ -79,5 +81,5 @@ def link(texts):
     return out
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == "build": build()
+    if len(sys.argv) > 1 and sys.argv[1] == "build": os.environ["ADC_RESEARCH_MODE"] = "1"; build()
     else: [print(r) for r in link(sys.argv[1:] or ["asthma", "hypertension", "rheumatoid arthritis"])]

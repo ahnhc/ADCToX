@@ -1,0 +1,42 @@
+
+  ADCTOX    ADC 추천 결과
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  
+  Key values                                               │ Organ priority
+    Bilirubin 0.92×ULN                                     │   1. Lung, Kidney, Metabolic
+    AST 0.8×ULN                                            │ 
+    ALT 0.7×ULN                                            │ 
+    + 7 more                                               │ 
+  
+    #   ADC                         Label restriction                Relevant warnings                 Other warnings
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    1   Gemtuzumab ozogamicin       Clear                            -                -                !! Liver+     
+        Inotuzumab ozogamicin       Clear                            -                -                !! Liver+     
+    2   Mirvetuximab soravtansine   Clear                             ! Lung          -                !! Eye+       
+        Polatuzumab vedotin         Clear                             ! Metabolic     -                 ! Blood+     
+        Sacituzumab govitecan       Clear                             ! Metabolic     -                !! Blood+     
+        Telisotuzumab vedotin       Clear                             ! Lung          -                 ! Neuro+     
+    3   Loncastuximab tesirine      Monitor                          -                -                 ! Blood+     
+    4   Datopotamab deruxtecan      Monitor                           ! Lung          -                 ! GI+        
+        Tisotumab vedotin           Monitor                           ! Lung          -                !! Eye+       
+    5   Brentuximab vedotin         Monitor                           ! Lung           ! Kidney+       !! Neuro+     
+    6   Trastuzumab emtansine       Unclear                           ! Lung          -                !! Liver+     
+    7   Enfortumab vedotin          Unclear                           ! Lung           ! Metabolic     !! Skin+      
+    8   Trastuzumab deruxtecan      Unclear                          !! Lung          -                 ! Blood+     
+    9   Pivekimab sunirine          Avoid                            -                -                !! Liver+     
+  !! Label emphasis   ! Warning   + More organs
+  
+  Label actions
+  Brentuximab vedotin / Hepatic
+    Reduce dose   Child-Pugh A
+  
+  AI organ analysis
+  asthma → Lung / MONDO: asthma
+    FinnGen MLP signal: Lung 0.63, Skin 0.61, Ear 0.50
+  diabetic nephropathy → Kidney, Metabolic / MONDO: diabetic kidney disease
+    FinnGen MLP signal: Kidney 0.97, Blood 0.46, Eye 0.37
+
+Run again with different answers? (y = yes, Enter = exit) > 
+
+
+

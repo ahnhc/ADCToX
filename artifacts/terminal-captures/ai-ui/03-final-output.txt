@@ -1,0 +1,42 @@
+
+  ADCTOX    ADC 추천 결과
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  
+  Key values                                               │ Organ priority
+    Bilirubin 0.92×ULN                                     │   1. Cardio, Lung
+    AST 0.8×ULN                                            │   2. Kidney
+    ALT 0.7×ULN                                            │ 
+    + 7 more                                               │ 
+  
+    #   ADC                         Label restriction                Relevant warnings                 Other warnings
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    1   Polatuzumab vedotin         Clear                            -                -                 ! Blood+     
+        Sacituzumab govitecan       Clear                            -                -                !! Blood+     
+    2   Gemtuzumab ozogamicin       Clear                             ! Cardio        -                !! Liver+     
+        Inotuzumab ozogamicin       Clear                             ! Cardio        -                !! Liver+     
+        Mirvetuximab soravtansine   Clear                             ! Lung          -                !! Eye+       
+        Telisotuzumab vedotin       Clear                             ! Lung          -                 ! Neuro+     
+    3   Datopotamab deruxtecan      Monitor                           ! Lung          -                 ! GI+        
+        Loncastuximab tesirine      Monitor                           ! Cardio        -                 ! Blood+     
+    4   Brentuximab vedotin         Monitor                           ! Lung           ! Kidney        !! Neuro+     
+    5   Tisotumab vedotin           Monitor                           ! Cardio         ! Lung          !! Eye+       
+    6   Enfortumab vedotin          Unclear                           ! Lung          -                !! Skin+      
+    7   Trastuzumab deruxtecan      Unclear                          !! Lung           ! Cardio         ! Blood      
+        Trastuzumab emtansine       Unclear                          !! Cardio         ! Lung          !! Liver+     
+    8   Pivekimab sunirine          Avoid                             ! Cardio        -                !! Liver+     
+  !! Label emphasis   ! Warning   + More organs
+  
+  Label actions
+  Brentuximab vedotin / Hepatic
+    Reduce dose   Child-Pugh A
+  
+  Pre-treatment checks
+  - baseline LVEF (echocardiogram or MUGA)
+    ADCs: Trastuzumab deruxtecan, Trastuzumab emtansine
+  - creatinine clearance (CLcr)
+  - baseline chest imaging and pulmonary function
+    ADCs: Brentuximab vedotin, Datopotamab deruxtecan, Enfortumab vedotin, Mirvetuximab soravtansine, Telisotuzumab 
+  vedotin, Tisotumab vedotin, Trastuzumab deruxtecan, Trastuzumab emtansine
+
+Run again with different answers? (y = yes, Enter = exit) > 
+

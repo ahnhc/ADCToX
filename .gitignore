@@ -14,3 +14,9 @@ artifacts/**/*.nc
 # only scripts/build_taxonomy.py (which regenerates it from public-domain CTGov) ships.
 data/processed/pt_soc_dictionary.json
 dist/
+# Runtime downloads and local model artifacts belong in Releases, not Git.
+*.pt
+*.safetensors
+*.partial
+.env
+.env.*

@@ -1,0 +1,42 @@
+
+  ADCTOX    ADC 추천
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  ✓ 기저질환: asthma, diabetic nephropathy
+  ✓ 검사 수치: 21개 입력
+
+  AI 장기 분석 결과
+  ↑↓ 스크롤   PgUp 질환 수정   PgDn 다음 단계
+
+  BioLORD + FinnGen MLP   8.0 s
+
+  asthma
+    Mapped organs   Lung
+    MONDO / asthma
+    Model signal
+      Lung        ========----  0.63
+      Skin        =======-----  0.61
+      Ear         ======------  0.50
+
+  diabetic nephropathy
+    Mapped organs   Kidney, Metabolic
+    MONDO / diabetic kidney disease
+    Model signal
+      Kidney      ============  0.97
+      Blood       =====-------  0.46
+      Eye         ====--------  0.37
+
+
+
+
+
+
+
+
+
+
+
+
+  Mapped organs → 추천 반영   Model signal → 확률이 아닌 취약성 추정값
+

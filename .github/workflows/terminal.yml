@@ -1,0 +1,25 @@
+name: Ubuntu terminal
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pytest numpy pandas scipy pyyaml lxml
+      - run: python -m pytest tests/test_model_updates.py tests/test_terminal_layout.py tests/test_ml_recommender.py -k 'not full_build' -q
+      - run: bash -n install.sh
+      - name: Build the app from factual label evidence
+        env:
+          ADCTOX_EVIDENCE_SNAPSHOT: ml/data/label_evidence.json
+        run: |
+          python -I scripts/build_ubuntu_release.py --out dist/ci-release
+          python -I dist/ci-release/app/adc_recommender_full.py --version
+          python -I dist/ci-release/app/adc_recommender_full.py --help

@@ -1,0 +1,115 @@
+{
+  "elapsed_seconds": 8.04,
+  "checkpoint": "/data/hyeongchanahn/adctox/ml_cache/vuln_biolord.pt",
+  "default_learned_fraction": 0.0,
+  "cases": [
+    {
+      "condition": "asthma",
+      "trained_head_top3": [
+        [
+          "pulmonary",
+          0.6277648925380134
+        ],
+        [
+          "dermatologic",
+          0.6077586720541298
+        ],
+        [
+          "otologic",
+          0.4955594151263164
+        ]
+      ],
+      "resolution": "free text; MONDO 'asthma' (sim 1.00) -> organs: pulmonary"
+    },
+    {
+      "condition": "autoimmune hepatitis",
+      "trained_head_top3": [
+        [
+          "musculoskeletal",
+          1.0
+        ],
+        [
+          "gastrointestinal",
+          0.7299942913242976
+        ],
+        [
+          "hepatic",
+          0.44593804921304336
+        ]
+      ],
+      "resolution": "free text; MONDO 'autoimmune hepatitis' (sim 1.00) -> organs: hepatic, gastrointestinal, metabolic_endocrine, infectious_immune"
+    },
+    {
+      "condition": "diabetic nephropathy",
+      "trained_head_top3": [
+        [
+          "renal",
+          0.9687368166697987
+        ],
+        [
+          "haematologic",
+          0.45628706907955197
+        ],
+        [
+          "ocular",
+          0.374283071167516
+        ]
+      ],
+      "resolution": "free text; MONDO 'diabetic kidney disease' (sim 1.00) -> organs: renal, metabolic_endocrine"
+    },
+    {
+      "condition": "alzheimer disease",
+      "trained_head_top3": [
+        [
+          "metabolic_endocrine",
+          0.9934640615692987
+        ],
+        [
+          "neurologic",
+          0.7770131185628426
+        ],
+        [
+          "pulmonary",
+          0.7621145049791321
+        ]
+      ],
+      "resolution": "free text; MONDO 'Alzheimer disease' (sim 1.00) -> organs: neurologic"
+    },
+    {
+      "condition": "obesity",
+      "trained_head_top3": [
+        [
+          "cardiovascular",
+          0.5895170679653124
+        ],
+        [
+          "neurologic",
+          0.5088221005517192
+        ],
+        [
+          "metabolic_endocrine",
+          0.49792830918701514
+        ]
+      ],
+      "resolution": "free text; not understood (no organ)"
+    },
+    {
+      "condition": "banana spaceship",
+      "trained_head_top3": [
+        [
+          "musculoskeletal",
+          0.3526864961526134
+        ],
+        [
+          "gastrointestinal",
+          0.27434777541025934
+        ],
+        [
+          "haematologic",
+          0.2565273816275182
+        ]
+      ],
+      "resolution": "free text; not understood (no organ)"
+    }
+  ]
+}

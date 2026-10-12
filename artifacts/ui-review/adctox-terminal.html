@@ -1,0 +1,137 @@
+<style>
+#adctox-ui-preview { --at-bg:light-dark(#faf8f2,#171815); --at-fg:light-dark(#292c27,#e9e7dc); --at-muted:light-dark(#62665b,#aaa99b); --at-line:light-dark(#d8d7ca,#393b31); --at-accent:light-dark(#80571b,#e2b872); --at-selected:light-dark(#e9e7dd,#2c2e26); --at-cyan:light-dark(#146977,#81c3cb); --at-amber:light-dark(#926310,#e8bf72); --at-red:light-dark(#a53637,#ed9690); --at-pad:10px; color:var(--at-fg); }
+#adctox-ui-preview .at-terminal { font:13px/1.7 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono","Noto Sans Mono CJK KR",monospace; background:var(--at-bg); padding:22px 24px 16px; min-height:880px; box-sizing:border-box; display:flex; flex-direction:column; }
+#adctox-ui-preview .at-terminal * { box-sizing:border-box; }
+#adctox-ui-preview [hidden] { display:none !important; }
+#adctox-ui-preview button,#adctox-ui-preview input,#adctox-ui-preview select { font:inherit; color:inherit; }
+#adctox-ui-preview button { border:0; background:transparent; padding:5px 8px; text-align:left; }
+#adctox-ui-preview button:hover { background:var(--at-selected); }
+#adctox-ui-preview .at-brand { display:flex; align-items:baseline; flex-wrap:wrap; gap:8px 16px; padding-right:80px; margin-bottom:16px; }
+#adctox-ui-preview .at-brand strong { font-size:18px; font-weight:500; letter-spacing:3px; color:var(--at-accent); }
+#adctox-ui-preview .at-muted { color:var(--at-muted); }
+#adctox-ui-preview .at-nav { display:flex; flex-wrap:wrap; gap:4px 14px; border-bottom:1px solid var(--at-line); margin-bottom:14px; padding-bottom:8px; }
+#adctox-ui-preview .at-nav button { color:var(--at-muted); }
+#adctox-ui-preview .at-nav button[aria-pressed="true"] { color:var(--at-accent); background:var(--at-selected); }
+#adctox-ui-preview .at-context { display:flex; flex-wrap:wrap; gap:4px 18px; margin-bottom:5px; }
+#adctox-ui-preview .at-priority { color:var(--at-muted); margin-bottom:20px; }
+#adctox-ui-preview .at-content { flex:1; }
+#adctox-ui-preview .at-compare { display:grid; grid-template-columns:minmax(0,1fr); gap:20px; }
+#adctox-ui-preview .at-workbench .at-compare { grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:26px; }
+#adctox-ui-preview .at-section-heading { font-weight:500; margin:0 0 12px; color:var(--at-accent); font-size:13px; }
+#adctox-ui-preview .at-table-heading,#adctox-ui-preview .at-row { display:grid; grid-template-columns:48px minmax(0,1fr) 128px; gap:10px; align-items:center; }
+#adctox-ui-preview .at-table-heading { color:var(--at-muted); padding:0 10px 8px; border-bottom:1px solid var(--at-line); }
+#adctox-ui-preview .at-row { width:100%; padding:var(--at-pad) 10px; }
+#adctox-ui-preview .at-row[aria-pressed="true"] { background:var(--at-selected); }
+#adctox-ui-preview .at-row[aria-pressed="true"] .at-rank { color:var(--at-accent); }
+#adctox-ui-preview .at-name { overflow-wrap:anywhere; }
+#adctox-ui-preview .at-status { font-size:12px; color:var(--at-cyan); word-break:keep-all; }
+#adctox-ui-preview .at-status[data-tone="neutral"] { color:var(--at-muted); }
+#adctox-ui-preview .at-status[data-tone="amber"] { color:var(--at-amber); }
+#adctox-ui-preview .at-status[data-tone="red"] { color:var(--at-red); }
+#adctox-ui-preview .at-list-note { font-size:12px; color:var(--at-muted); margin:10px 0 0; }
+#adctox-ui-preview .at-details { border-top:1px solid var(--at-line); padding-top:14px; }
+#adctox-ui-preview .at-workbench .at-details { border-top:0; border-left:1px solid var(--at-line); padding:0 0 0 24px; }
+#adctox-ui-preview .at-detail-title { margin:0 0 10px; font-size:14px; font-weight:500; overflow-wrap:anywhere; }
+#adctox-ui-preview .at-evidence { display:grid; grid-template-columns:62px minmax(0,1fr); gap:7px 12px; margin:0; }
+#adctox-ui-preview dt { color:var(--at-muted); }
+#adctox-ui-preview dd { margin:0; }
+#adctox-ui-preview .at-actions { display:flex; flex-wrap:wrap; gap:6px 12px; margin-top:16px; }
+#adctox-ui-preview .at-primary { color:var(--at-accent); background:var(--at-selected); }
+#adctox-ui-preview .at-source { font-size:12px; color:var(--at-muted); margin-top:15px; }
+#adctox-ui-preview .at-footer { border-top:1px solid var(--at-line); padding-top:12px; margin-top:22px; color:var(--at-muted); display:flex; flex-wrap:wrap; gap:4px 18px; font-size:12px; }
+#adctox-ui-preview kbd { color:var(--at-fg); font:inherit; }
+#adctox-ui-preview .at-workbench .at-table-heading,#adctox-ui-preview .at-workbench .at-row { grid-template-columns:34px minmax(0,1fr) 84px; gap:8px; }
+#adctox-ui-preview .at-field-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px 24px; max-width:700px; }
+#adctox-ui-preview label { display:block; color:var(--at-muted); }
+#adctox-ui-preview input,#adctox-ui-preview select { display:block; width:100%; background:var(--at-selected); border:1px solid var(--at-line); border-radius:0; padding:7px 9px; margin-top:5px; min-width:0; }
+#adctox-ui-preview .at-pipeline { display:flex; flex-wrap:wrap; gap:5px 14px; color:var(--at-muted); border-bottom:1px solid var(--at-line); padding-bottom:12px; margin-bottom:18px; }
+#adctox-ui-preview .at-inline-status { color:var(--at-amber); margin:16px 0; }
+#adctox-ui-preview .at-checks { display:grid; gap:10px; padding:0; margin:18px 0; list-style:none; }
+#adctox-ui-preview .at-checks li { display:grid; grid-template-columns:16px minmax(0,1fr); gap:8px; }
+#adctox-ui-preview .at-empty { border-top:1px solid var(--at-line); margin-top:18px; padding-top:16px; color:var(--at-muted); }
+#adctox-ui-preview .at-patient-detail { border-top:1px solid var(--at-line); padding-top:15px; max-width:700px; }
+@media(max-width:780px) { #adctox-ui-preview .at-workbench .at-compare { grid-template-columns:minmax(0,1fr); } #adctox-ui-preview .at-workbench .at-details { border-left:0; border-top:1px solid var(--at-line); padding:14px 0 0; } #adctox-ui-preview .at-workbench .at-table-heading,#adctox-ui-preview .at-workbench .at-row { grid-template-columns:40px minmax(0,1fr) 112px; } #adctox-ui-preview .at-terminal { min-height:760px; } }
+@media(max-width:480px) { #adctox-ui-preview .at-terminal { padding:18px 12px 14px; min-height:940px; } #adctox-ui-preview .at-table-heading,#adctox-ui-preview .at-row,#adctox-ui-preview .at-workbench .at-table-heading,#adctox-ui-preview .at-workbench .at-row { grid-template-columns:28px minmax(0,1fr) 79px; gap:6px; } #adctox-ui-preview .at-field-grid { grid-template-columns:minmax(0,1fr); } #adctox-ui-preview .at-nav { gap:4px; } #adctox-ui-preview .at-brand { padding-right:70px; } }
+@media(pointer:coarse) { #adctox-ui-preview button { min-height:44px; } #adctox-ui-preview input,#adctox-ui-preview select { font-size:16px; min-height:44px; } }
+</style>
+<div id="adctox-ui-preview" class="viz-carousel" aria-label="ADCTOX 터미널 화면 배치" data-previous-label="이전" data-next-label="다음">
+  <section data-variant="집중형" aria-label="아래쪽 상세 패널">
+    <div class="at-terminal" data-layout="focus" aria-label="집중형 터미널 시안"></div>
+  </section>
+  <section data-variant="작업대형" aria-label="오른쪽 상세 패널" hidden>
+    <div class="at-terminal at-workbench" data-layout="workbench" aria-label="작업대형 터미널 시안"></div>
+  </section>
+</div>
+<script>
+(() => {
+  const root = document.getElementById('adctox-ui-preview');
+  const candidates = [
+    {name:'Enfortumab vedotin',rank:1,status:'조건상 제한 없음',tone:'neutral',organ:'신장',basis:'비투석 조건',warning:'선택한 환자 장기의 박스경고·주의사항 없음',version:18,date:'2026-08-17'},
+    {name:'Mirvetuximab soravtansine',rank:1,status:'조건상 제한 없음',tone:'neutral',organ:'신장',basis:'CLcr ≥ 30 mL/min',warning:'선택한 환자 장기의 박스경고·주의사항 없음',version:14,date:'2026-02-16'},
+    {name:'Brentuximab vedotin',rank:2,status:'조건상 제한 없음',tone:'neutral',organ:'신장',basis:'CLcr ≥ 30 mL/min',warning:'환자 장기 주의사항: 신장',version:38,date:'2025-11-17'},
+    {name:'Datopotamab deruxtecan',rank:4,status:'모니터링',tone:'cyan',organ:'신장',basis:'30 ≤ CLcr < 90 mL/min',warning:'선택한 환자 장기의 박스경고·주의사항 없음',version:18,date:'2026-06-03'},
+    {name:'Trastuzumab deruxtecan',rank:5,status:'자료 불충분',tone:'amber',organ:'심장 / 신장',basis:'LVEF < 50%: 자료 불충분 · 30 ≤ CLcr < 60: 모니터링',warning:'환자 장기 주의사항: 심혈관',version:28,date:'2026-05-28'},
+    {name:'Pivekimab sunirine',rank:7,status:'사용 회피',tone:'red',organ:'신장',basis:'CLcr < 60 mL/min',warning:'환자 장기 주의사항: 심혈관',version:2,date:'2026-06-01'}
+  ];
+  const escape = value => String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const instances = [];
+  const controllers = [];
+  const stored = window.openai?.widgetState?.privateContent?.terminalMock;
+  root.querySelectorAll('.at-terminal').forEach((terminal, index) => {
+    const saved = stored?.[index];
+    const state = {selected:Number.isInteger(saved?.selected) && candidates[saved.selected] ? saved.selected : 4, view:['compare','design','structure','patient'].includes(saved?.view) ? saved.view : 'compare', density:'standard', antibody:'',linker:'기존 링커 유지',payload:'기존 payload 유지',dar:'4',site:'',source:false};
+    instances.push(state);
+    function persist() {
+      if (window.openai?.setWidgetState) window.openai.setWidgetState({modelContent:{mockup:'ADCTOX 터미널 배치',selected:candidates[state.selected].name,view:state.view},privateContent:{terminalMock:instances.map(item=>({selected:item.selected,view:item.view}))}}).catch(()=>{});
+    }
+    function detail() {
+      const c = candidates[state.selected];
+      return `<section class="at-details" aria-label="선택 후보 상세" aria-live="polite"><h2 class="at-section-heading">선택 후보 / 근거</h2><h3 class="at-detail-title">${escape(c.name)}</h3><dl class="at-evidence"><dt>라벨 판정</dt><dd class="at-status" data-tone="${c.tone}">${c.status}</dd><dt>해당 장기</dt><dd>${c.organ}</dd><dt>판정 조건</dt><dd>${c.basis}</dd><dt>추가 경고</dt><dd>${c.warning}</dd></dl><div class="at-actions"><button type="button" class="at-primary cursor-interaction" data-action="design">[d] 조합 설계로 →</button><button type="button" class="cursor-interaction" data-action="source">[e] 라벨 출처</button></div><div class="at-source" ${state.source ? '' : 'hidden'}>DailyMed · version ${c.version} · ${c.date}<br>로컬 스냅샷: 2026-10-07</div></section>`;
+    }
+    function compare() {
+      return `<div class="at-compare"><section aria-label="ADC 후보 목록"><h2 class="at-section-heading">ADC 비교 <span class="at-muted">/ 라벨 근거 순서</span></h2><div class="at-table-heading"><span>군</span><span>ADC</span><span>라벨 판정</span></div><div class="at-list">${candidates.map((c,i)=>`<button type="button" class="at-row cursor-interaction" data-candidate="${i}" aria-pressed="${i===state.selected}" aria-label="${c.name}, 동점군 ${c.rank}, ${c.status}"><span class="at-rank">${i===state.selected?'›':' '} ${c.rank}</span><span class="at-name">${c.name}</span><span class="at-status" data-tone="${c.tone}">${c.status}</span></button>`).join('')}</div><p class="at-list-note">14개 중 6개 표시 · 배치 예시<br>같은 군 = 현재 정렬 기준으로 동점</p></section>${detail()}</div>`;
+    }
+    function design() {
+      return `<section aria-label="조합 설계 시안"><h2 class="at-section-heading">조합 설계 <span class="at-muted">/ 연구 후보</span></h2><div class="at-pipeline"><span>입력 지정</span><span>→ 조합 후보</span><span>→ 구조 검토</span></div><p class="at-muted">출발 ADC: ${escape(candidates[state.selected].name)}</p><div class="at-field-grid"><label>항체 ID / 서열 연결<input data-field="antibody" value="${escape(state.antibody)}" placeholder="항체를 명시적으로 지정" aria-label="항체 ID"></label><label>접합 위치<input data-field="site" value="${escape(state.site)}" placeholder="잔기 번호 또는 접합 방식" aria-label="접합 위치"></label><label>링커<select data-field="linker">${['기존 링커 유지','대체 링커 선택 필요'].map(x=>`<option ${x===state.linker?'selected':''}>${x}</option>`).join('')}</select></label><label>Payload<select data-field="payload">${['기존 payload 유지','대체 payload 선택 필요'].map(x=>`<option ${x===state.payload?'selected':''}>${x}</option>`).join('')}</select></label><label>DAR<select data-field="dar">${['2','4','8'].map(x=>`<option ${x===state.dar?'selected':''}>${x}</option>`).join('')}</select></label></div><p class="at-inline-status">조합 생성 미실행 · 입력 화면 시안</p><div class="at-actions"><button type="button" class="at-primary cursor-interaction" data-action="structure">구조 검토 화면 →</button><button type="button" class="cursor-interaction" data-action="compare">← ADC 비교</button></div></section>`;
+    }
+    function structure() {
+      return `<section aria-label="구조 검토 시안"><h2 class="at-section-heading">구조 검토 <span class="at-muted">/ 연구 후보</span></h2><div class="at-pipeline"><span>조합 지정</span><span>→ 결합 정의</span><span>→ 구조·충돌 확인</span></div><dl class="at-evidence"><dt>기준 ADC</dt><dd>${escape(candidates[state.selected].name)}</dd><dt>항체</dt><dd>${escape(state.antibody || '미지정')}</dd><dt>접합 위치</dt><dd>${escape(state.site || '미지정')}</dd><dt>DAR</dt><dd>${escape(state.dar)}</dd></dl><p class="at-inline-status">구조 계산 미실행</p><ul class="at-checks"><li><span>·</span><span>공유결합·접합 위치 정의</span></li><li><span>·</span><span>항체 구조 변화와 입체 충돌</span></li><li><span>·</span><span>항원 결합면 접근성</span></li><li><span>·</span><span>예측 신뢰도와 해석 범위</span></li></ul><div class="at-empty">계산 결과와 근거 파일이 여기에 표시됩니다.</div><div class="at-actions"><button type="button" class="at-primary cursor-interaction" data-action="design">← 조합 설계 수정</button></div></section>`;
+    }
+    function patient() {
+      return `<section class="at-patient-detail" aria-label="환자 조건 예시"><h2 class="at-section-heading">환자 조건 <span class="at-muted">/ 예시 입력</span></h2><dl class="at-evidence"><dt>동반 질환</dt><dd>CKD 3 · 심부전</dd><dt>검사</dt><dd>CLcr 45 mL/min · LVEF 48%</dd><dt>우선순위</dt><dd>심혈관 → 신장</dd></dl><div class="at-actions"><button type="button" class="at-primary cursor-interaction" data-action="compare">ADC 비교로 →</button></div></section>`;
+    }
+    function render() {
+      const nav=[['patient','환자 조건'],['compare','ADC 비교'],['design','조합 설계'],['structure','구조 검토']];
+      terminal.style.setProperty('--at-pad',state.density==='compact'?'6px':'10px');
+      terminal.innerHTML=`<header><div class="at-brand"><strong>ADCTOX</strong><span class="at-muted">UI 시안 · ${index===0?'집중형':'작업대형'}</span></div><nav class="at-nav" aria-label="작업 선택">${nav.map(([key,text])=>`<button type="button" class="cursor-interaction" data-action="${key}" aria-pressed="${state.view===key}">${text}</button>`).join('')}</nav><div class="at-context"><span>CKD 3 · 심부전</span><span>CLcr <b>45</b> · LVEF <b>48%</b></span></div><div class="at-priority">우선: 심혈관 → 신장 <span>│</span> 연구용 근거 탐색</div></header><main class="at-content">${state.view==='compare'?compare():state.view==='design'?design():state.view==='structure'?structure():patient()}</main><footer class="at-footer"><span><kbd>↑↓</kbd> 후보 선택</span><span><kbd>e</kbd> 근거</span><span><kbd>d</kbd> 설계</span><span><kbd>Esc</kbd> 비교로</span><span>입력값 · 배치 예시</span></footer>`;
+      terminal.querySelectorAll('[data-candidate]').forEach(button=>button.addEventListener('click',()=>{state.selected=Number(button.dataset.candidate);state.source=false;render();persist();}));
+      terminal.querySelectorAll('[data-action]').forEach(button=>button.addEventListener('click',()=>{const action=button.dataset.action;if(action==='source')state.source=!state.source;else state.view=action;render();persist();}));
+      terminal.querySelectorAll('[data-field]').forEach(field=>field.addEventListener('change',()=>{state[field.dataset.field]=field.value;}));
+    }
+    terminal.addEventListener('keydown',event=>{
+      if(event.target.matches('input,select,textarea'))return;
+      let handled=true;
+      if(state.view==='compare' && ['ArrowDown','ArrowUp'].includes(event.key)) {state.selected=(state.selected+(event.key==='ArrowDown'?1:candidates.length-1))%candidates.length;state.source=false;render();terminal.querySelector(`[data-candidate="${state.selected}"]`).focus();}
+      else if(state.view==='compare' && event.key==='e') {state.source=!state.source;render();terminal.querySelector('[data-action="source"]').focus();}
+      else if(state.view==='compare' && event.key==='d') {state.view='design';render();terminal.querySelector('input').focus();}
+      else if(event.key==='Escape') {state.view='compare';render();terminal.querySelector(`[data-candidate="${state.selected}"]`).focus();}
+      else handled=false;
+      if(handled){event.preventDefault();persist();}
+    });
+    controllers.push({state,render});
+    render();
+    if(globalThis.Tweak){const tweak=new Tweak({container:terminal,onChange:render});tweak.addSelect(state,'density',{label:'목록 밀도',options:[{label:'보통',value:'standard'},{label:'촘촘하게',value:'compact'}]});}
+  });
+  window.addEventListener('openai:set_globals',event=>{
+    const saved = event.detail?.globals?.widgetState?.privateContent?.terminalMock;
+    if(!Array.isArray(saved))return;
+    controllers.forEach(({state,render},index)=>{
+      const item=saved[index];
+      if(!item)return;
+      if(Number.isInteger(item.selected) && candidates[item.selected])state.selected=item.selected;
+      if(['compare','design','structure','patient'].includes(item.view))state.view=item.view;
+      render();
+    });
+  });
+})();
+</script>

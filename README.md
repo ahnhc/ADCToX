@@ -1,92 +1,81 @@
-# ADCTox
+# ADCTOX
 
-Research prototype: given a patient comorbidity profile and a target antigen, propose
-ADC designs and predict their organ-system toxicity.
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04%2B-E95420?logo=ubuntu&logoColor=white)](docs/INSTALL.md)
+[![Release](https://img.shields.io/github/v/release/ahnhc/ADCToX)](https://github.com/ahnhc/ADCToX/releases)
+[![Checks](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml/badge.svg)](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml)
 
-**Not a clinical decision tool.** The request schema contains no free-text patient field,
-comorbidities come from a closed list, and nothing is persisted. `tests/test_schemas.py`
-asserts those properties.
+기저질환과 검사값을 입력하고, AI 장기 분석과 의약품 라벨 근거로 기존 ADC를 비교하는 터미널 애플리케이션입니다.
 
-## Status
+BioLORD와 SapBERT로 질환을 해석하고, FinnGen 자료로 학습한 MLP ensemble로 장기 취약성을 추정합니다. 결과에서는 환자의 장기 우선순위, 라벨 사용 제한, 관련 경고와 필요한 검사값을 확인할 수 있습니다.
 
-**The forward model does not beat a base-rate baseline on any of six evaluations.** Five
-are in the model card's results table; the sixth is the one anticipatory test -- did a
-model fit only on data public before a given date rank the organ FDA was about to warn
-about -- and at three scorable events it reaches p = 0.515. On the three within-arm splits
-the deficit excludes zero, which it did not on leave-one-agent-out until the
-cross-validation folds were corrected; fixing them made the verdict stronger, not weaker.
+연구용 프로토타입입니다. 장기 추정값은 독성 발생 확률이 아니며, 새로운 ADC 조합의 안전성은 검증되지 않았습니다.
 
-The cut order below has fired, so this ships as a constraint-based design enumerator that
-annotates candidates with organ-toxicity estimates, not as a ranking engine. See
-`docs/MODEL_CARD.md` first and `report/findings.md` for the full account.
+<p align="center">
+  <img src="artifacts/terminal-captures/ui-v0.0/04-results.png" alt="ADCTOX terminal results" width="850">
+</p>
 
-| gate | check | result |
-|---|---|---|
-| 1a | >=85% of AE mass maps to a real organ axis | **99.94%** of eligible mass |
-| 1b | Mechanism fingerprints reproduce known pharmacology | **pass** — calicheamicin tops hepatic, topo-I tops pulmonary and GI, tubulin puts neurologic in its top three |
-| 1c | Attribution loss inside ADC-bearing trials | **0 of 948** event groups |
-| 2 | Two inputs in, fourteen organ numbers out, end to end | **pass** |
-| 3 | Model beats its strongest baseline | **fail** — delta -0.019 to -0.078, excluding zero on all three splits |
+## Get started
 
-Corpus: **285 arms / 16 agents / 3,990 (arm x axis) cells**, of which **224 cells
-(16 agents x 14 axes) identify the design coefficients**, because design features are
-agent-level constants. Arms do not multiply design information, and an earlier draft of
-this project proposed 420 design parameters against those 224 cells.
-
-What the data does support: the mechanism-by-axis interaction is real
-(`tau_mech` 0.58 [0.49, 0.69]), the mechanism fingerprints reproduce the boxed warnings
-unprompted, and trial exclusion criteria encode organ concern at 4x to 18x enrichment over
-an oncology base rate. What it does not support is ranking one candidate design above
-another.
-
-Organ risks come from **two event tables, because they rank organs differently** (mean
-Spearman +0.15 across five mechanisms). Any-grade events recover the high-frequency label
-sections; serious events recover the boxed warnings -- topoisomerase-I payloads sit 10th
-of 14 on pulmonary in the first table and 2nd in the second, and the second is the one
-that matches ENHERTU's interstitial-lung-disease warning. A declared comorbidity is a
-question about serious harm, so axes the patient is vulnerable on are banded on the
-serious table and the rest on any-grade, each row stating its basis. Band edges are
-measured per table from its own observed rates; they differ by an order of magnitude, so
-bands are not comparable across bases.
-
-## Quickstart
+Ubuntu 24.04 이상, Python 3.12 이상에서 설치합니다.
 
 ```bash
-uv venv .venv && uv pip install -e .
-.venv/bin/python scripts/build_taxonomy.py --studies <ctgov-studies-dir> --out data/processed
-.venv/bin/python scripts/build_arms.py     --studies <ctgov-studies-dir> --out data/processed
+curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
 ```
 
-`make all` reproduces every figure in the report, and reads one pinned raw snapshot --
-`SNAPSHOT`, currently 2026-10-07. The pin is the point: these directories are meant to be
-immutable, and the variable used to be `date -u +%Y-%m-%d`, so from the day after the
-snapshot was taken every analysis target pointed at a directory that did not exist, and a
-fetch would have written a *new* snapshot underneath a report whose numbers came from the
-old one.
+설치가 끝나면 실행합니다.
 
 ```bash
-make all                        # analyse the pinned snapshot
-make fetch                      # re-fetch into today's directory (hits live services)
-make all SNAPSHOT=2026-11-01    # analyse a different snapshot, deliberately
+adctox
 ```
 
-Fetches are not part of `make all`. If a snapshot is missing, `make` stops with the
-directory it wanted and the command to run, rather than failing inside a script or
-returning an empty result.
+처음에는 CPU 추론 환경과 약 972 MiB의 모델 파일을 받습니다. 설치 후 질환 분석은 로컬에서 실행됩니다. 모델 업데이트를 확인하거나 다운로드할 때만 인터넷이 필요합니다.
 
-## Cut order — decided up front, not renegotiated late
+`adctox` 명령이 보이지 않으면 `~/.local/bin`을 PATH에 추가합니다. 설치 경로 변경, GPU 환경, 삭제 방법은 [설치 안내](docs/INSTALL.md)를 참고하세요.
 
-1. Roll unjoinable arms up to drug level rather than discarding them.
-2. Restrict SPL/label table parsing to the case-study agents.
-3. Collapse 14 axes to the 6 best-populated (last resort).
-4. Literature evidence tier -> labels and trials only.
-5. Public URL -> local demo plus screencast.
-6. **Never cut**: the four case studies, the censored likelihood, the novelty tiering,
-   `source: model/rule` separation, and the measured negative results.
+Windows에서는 Ubuntu용 파일을 다운로드할 수 있습니다. 실행은 WSL의 Ubuntu에서 위 설치 명령을 사용합니다.
 
-## Hard gates
+```powershell
+curl.exe -fL https://github.com/ahnhc/ADCToX/releases/latest/download/adctox-ubuntu.tar.gz -o adctox-ubuntu.tar.gz
+```
 
-- Mechanism taxonomy frozen before any extraction (`conf/mechanism_taxonomy.yaml`).
-- Corpus frozen end of week 5 regardless of agent count.
-- Forward-model underperformance is defined in advance: macro AUC < 0.65 across the 14
-  axes on held-out agents triggers the cut order.
+## Model updates
+
+기저질환 선택 화면에서 **U**를 누르고 **업데이트**를 선택합니다. 터미널 명령으로도 가능합니다.
+
+```bash
+adctox --check-models
+adctox --update-models
+```
+
+앱과 모델은 별도 버전으로 관리합니다. MLP 가중치만 바뀌면 그 파일만 받고, 변하지 않은 BioLORD, SapBERT, MONDO 파일은 재사용합니다. SHA256과 호환성을 확인한 뒤 전체 모델 묶음을 전환하며 이전 모델로 복원할 수 있습니다.
+
+```bash
+adctox --version
+adctox --model-version
+adctox --rollback-models
+```
+
+앱 자체를 업데이트할 때는 설치 명령을 다시 실행합니다. [변경 기록](CHANGELOG.md)과 [배포 구조](docs/DISTRIBUTION.md)에서 자세한 내용을 확인할 수 있습니다.
+
+## Research
+
+질환의 관련 장기를 찾는 일, 미래 장기 취약성을 추정하는 일, ADC 독성을 예측하는 일을 구분해 평가합니다. 기존 baseline 비교와 성공하지 못한 실험도 함께 공개합니다.
+
+- [현재 구현과 연구 결과](ml/docs/research_status_2026-10-12.md)
+- [모델 정확도 개선 및 fine-tuning 계획](ml/docs/model_accuracy_plan_2026-10-12.md)
+- [Fable 검토 요청서](ml/docs/fable_review_2026-10-12.md)
+- [실험 결과](ml/results/), [기존 구조 모델 카드](docs/MODEL_CARD.md)
+- [초기 설계 연구 개요](docs/LEGACY_RESEARCH_OVERVIEW.md)
+
+향후 기존 항체, 링커, payload의 새로운 조합을 탐색하는 단계를 연결할 계획입니다. 현재 배포의 중심은 기존 ADC의 라벨 근거 비교입니다.
+
+## Development
+
+```bash
+git clone https://github.com/ahnhc/ADCToX.git
+cd ADCToX
+```
+
+모델 업데이트와 터미널 테스트, 배포 준비 방법은 [개발 및 배포 안내](docs/DISTRIBUTION.md)에 있습니다. 원본 워크북, 학습 캐시, 모델 가중치는 Git 이력에 넣지 않습니다. 기본 encoder와 MONDO의 출처 및 조건은 [Third-party notices](THIRD_PARTY_NOTICES.md)에 정리했습니다.
+
+문제는 [GitHub Issues](https://github.com/ahnhc/ADCToX/issues)에 남겨주세요.

@@ -1,0 +1,42 @@
+
+  ADCTOX    ADC 추천 결과
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Key values                                               │ Organ priority
+    Bilirubin 0.92×ULN                                     │   1. Cardio, Neuro, Metabolic
+    AST 0.8×ULN                                            │ 
+    ALT 0.7×ULN                                            │ 
+    + 7 more                                               │ 
+  Unvalidated estimate: obesity
+
+    #   ADC                         Label restriction                Relevant warnings                 Other warnings
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    1   Gemtuzumab ozogamicin       Clear                             ! Cardio        -                !! Liver+     
+        Inotuzumab ozogamicin       Clear                             ! Cardio        -                !! Liver+
+        Mirvetuximab soravtansine   Clear                             ! Neuro         -                !! Eye+
+        Sacituzumab govitecan       Clear                             ! Metabolic     -                !! Blood+
+        Telisotuzumab vedotin       Clear                             ! Neuro         -                 ! Lung+
+    2   Polatuzumab vedotin         Clear                             ! Neuro          ! Metabolic      ! Blood+
+    3   Datopotamab deruxtecan      Monitor                          -                -                 ! Lung+
+    4   Loncastuximab tesirine      Monitor                           ! Cardio        -                 ! Blood+
+    5   Tisotumab vedotin           Monitor                           ! Cardio         ! Neuro         !! Eye+
+    6   Brentuximab vedotin         Monitor                          !! Neuro          ! Metabolic      ! Blood+
+    7   Trastuzumab deruxtecan      Unclear                           ! Cardio        -                !! Lung+
+    8   Enfortumab vedotin          Unclear                           ! Neuro          ! Metabolic     !! Skin+
+    9   Trastuzumab emtansine       Unclear                          !! Cardio         ! Neuro         !! Liver+
+   10   Pivekimab sunirine          Avoid                             ! Cardio        -                !! Liver+
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Gemtuzumab ozogamicin   Label v19 / Dec 22, 2025
+    Hepatic   Clear   bilirubin ≤ 1.5×ULN
+    Renal     Clear   CLcr ≥ 30
+
+
+
+
+
+
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ↑↓ / 클릭 이동   PgUp 이전   PgDn 결과 출력
+  !! Label emphasis   ! Warning   + More organs
