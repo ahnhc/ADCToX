@@ -78,7 +78,7 @@ class _Screen:
         self.rule(3)
 
     def header(self, title, description, hint):
-        self.s.clear(); y = 1; self.put(y, 2, title, self.title); y += 1
+        self.s.erase(); y = 1; self.put(y, 2, title, self.title); y += 1
         for line in (description or "").splitlines(): self.put(y, 2, line, self.dim); y += 1
         self.put(y, 2, hint, self.dim); return y + 2
 
@@ -230,7 +230,7 @@ def browse(title, lines, selectable, details, footer="", context=()):
         try: curses.mousemask(curses.BUTTON1_CLICKED | curses.BUTTON1_PRESSED | curses.BUTTON1_RELEASED); curses.mouseinterval(0)
         except curses.error: pass
         while True:
-            scr.clear(); h, w = scr.getmaxyx()
+            scr.erase(); h, w = scr.getmaxyx()
             import term
             width = max(2, w - 5)
             S.brand(title); y0 = 5

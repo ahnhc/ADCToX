@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "model_version": "0.0",
+  "model_version": "0.2",
   "runtime_api": 1,
   "architecture": "biolord-twotower-v1",
   "axes": [
@@ -35,15 +35,15 @@
   "files": [
     {
       "path": "vuln_biolord.pt",
-      "size": 12534807,
-      "sha256": "8378f9741529fcee685c9b79a91236b45db9e7efeb39cc5fa2b87020dafcfc83",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.0/vuln_biolord.pt"
+      "size": 24258148,
+      "sha256": "69225d5518b1bf50fcb99437168fec063c4fe4645b8d616032124d4126b921d5",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.2/vuln_biolord.pt"
     },
     {
       "path": "mondo_index.npz",
-      "size": 129259905,
-      "sha256": "44de4cd8584de4df1537e26f5de894d178913c9754d83d4b8ccdca00f694fbe5",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.0/mondo_index.npz"
+      "size": 182288810,
+      "sha256": "443e59989202498879e2a1a68b56393a0ca5d3769b7fdeead114583afe44be71",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.2/mondo_index.npz"
     },
     {
       "path": "BioLORD-2023/1_Pooling/config.json",

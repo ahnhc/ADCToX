@@ -84,7 +84,7 @@ class Form:
 
     def frame(self, title, hint):
         """draw the finished steps and the current step's title; -> first free row."""
-        self.scr.clear(); h, w = self.scr.getmaxyx(); y = 5
+        self.scr.erase(); h, w = self.scr.getmaxyx(); y = 5
         self.S.brand()
         for t, s in self.done:
             for k, ln in enumerate(_wrap(f"✓ {t}: {s}", w - 5, "    ")[:2]): self.S.put(y, 2, ln, self.S.dim); y += 1
