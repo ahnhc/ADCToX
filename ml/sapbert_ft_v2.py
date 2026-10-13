@@ -14,10 +14,11 @@ paper authors rather than patients).
 import glob, json, os, random, sys
 import numpy as np, torch
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import adc_paths as P
 os.environ.setdefault("ADC_RESEARCH_MODE", "1")
 import eval_linking as EL, mondo_index as MI, sapbert_ft_pilot as FP
 from build_linking_pools import read_obo
-OUTDIR = "/data/hyeongchanahn/adctox/ml_cache/sapbert_ft_v2/"; R = "/home/hyeongchanahn/CONI/adctox/data/curated/"
+OUTDIR = P.CACHE + "sapbert_ft_v2/"; R = P.REPO + "data/curated/"
 
 
 def extra_pairs(T, held):

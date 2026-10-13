@@ -14,11 +14,14 @@ Pre-declared protocol (written before the bake-off ran):
 Per-prior results go to the cache (FinnGen disease codes), only summaries to ml/results/lab/.
 """
 import argparse, json, os, pickle, time, warnings
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import adc_paths as P
 import numpy as np, pandas as pd, torch, torch.nn as nn
 from scipy.stats import spearmanr
 warnings.filterwarnings("ignore")
 
-C = "/data/hyeongchanahn/adctox/ml_cache/"; RES = "/home/hyeongchanahn/CONI/adctox/ml/results/lab/"; FOLDS = 5
+C = P.CACHE; RES = P.REPO + "ml/results/lab/"; FOLDS = 5
 DEV = "cuda:0"
 TAU_SE = 0.25      # precision weights: w = 1 / (se^2 + TAU_SE^2), so a few tiny-se rows cannot dominate; then clipped at W_MAX x mean
 W_MAX = 5.0

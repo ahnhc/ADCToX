@@ -3,8 +3,27 @@ import os
 from pathlib import Path
 
 
+def pointer_mode():
+    """Windows records the active bundle in current.txt: directory symlinks need admin rights there and cannot be replaced
+    atomically. ADC_POINTER_SWITCH=1 selects the same mode elsewhere (tests)."""
+    return os.name == "nt" or os.environ.get("ADC_POINTER_SWITCH") == "1"
+
+
 def model_home():
-    return Path(os.environ.get("ADC_MODEL_HOME") or Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local/share")) / "adctox/models").expanduser()
+    if os.environ.get("ADC_MODEL_HOME"): return Path(os.environ["ADC_MODEL_HOME"]).expanduser()
+    if os.name == "nt": return Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData/Local")) / "adctox/models"
+    return Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local/share")).expanduser() / "adctox/models"
+
+
+def current_directory(root):
+    """the active bundle directory under a model home: the 'current' symlink, or the version named in current.txt."""
+    root = Path(root); link = root / "current"
+    if link.is_dir(): return link
+    try: name = (root / "current.txt").read_text().strip()
+    except OSError: return None
+    if not name or "/" in name or "\\" in name or name.startswith("."): return None
+    path = root / "versions" / name
+    return path if path.is_dir() else None
 
 
 def active_directory():
@@ -13,8 +32,7 @@ def active_directory():
     explicit = os.environ.get("ADC_MODEL_DIR")
     if explicit:
         return Path(explicit).expanduser()
-    current = model_home() / "current"
-    return current if current.is_dir() else None
+    return current_directory(model_home())
 
 
 def model_path(name, fallback):

@@ -1,16 +1,14 @@
-ADCTOX 0.2.1: fixes screen flicker on the model update and analysis screens (full clears on every redraw). Includes everything in 0.2:
+ADCTOX 0.3: app updates and a Windows package.
 
-- Typed text with several meanings (for example `asd`) is confirmed on one screen with each candidate and its organs.
-- Symptoms such as `amnesia` link to the Human Phenotype Ontology; diseases outside the 13 organs show as `MONDO (no organ axis)`.
-- Korean disease names are understood (당뇨, 치매, 자폐증, 중풍, 고지혈증 and formal KCD names).
-- The analysis review shows the learned estimate of three models (Both, Den, Fin) with how many agree on each organ; automatic use keeps organs at least two agree on.
-- Model updates download only changed files; `adctox --verify-models` re-hashes on request.
+- The app checks for a newer app once a day and shows it in the condition picker. `adctox --update-app` installs it (from this version on).
+- Windows: download `ADCTOX-windows.zip`, unzip anywhere, double-click `ADCTOX.bat`. No installer and no admin rights; the first start downloads the models (about 1 GB). If the PC lacks the Microsoft Visual C++ Redistributable (x64), the program says so and links the official installer.
+- Includes 0.2 and 0.2.1: one-screen confirmation for inputs with several meanings, symptoms and Korean disease names, three-model organ estimate (Both, Den, Fin), delta model updates, no screen flicker.
 
-Install or update the app:
+Ubuntu install or update:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
 adctox
 ```
 
-Requires Ubuntu 24.04+ and Python 3.12+. Press U in the condition picker for model updates. App and model versions are independent; app 0.2 works with model 0.0 to 0.2, and app 0.1 can read model 0.2 without the new screens. Native Windows packaging is not included; use Ubuntu in WSL.
+Ubuntu needs 24.04+ and Python 3.12+. Windows needs 64-bit Windows 10 or 11. Press U in the condition picker for model updates. App 0.2.1 and older have no `--update-app`; run the installer (or unzip the Windows package) once to reach 0.3.

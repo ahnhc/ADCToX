@@ -75,8 +75,20 @@ class _ProcessUsage:
         return f"CPU {self.percent:.1f}%   RAM {ram}"
 
 
+APP_CHECK = {}                              # the published app version, read once a day in the background (installed apps only)
+
+
+def _check_app():
+    try:
+        import adc_updates
+        if adc_updates.app_layout() is not None: APP_CHECK.update(adc_updates.check_app() or {})
+    except Exception:
+        pass
+
+
 class Form:
     def __init__(self, scr, RC):
+        if not APP_CHECK and RC.HAS_LEARNED: APP_CHECK["started"] = True; __import__("threading").Thread(target=_check_app, daemon=True).start()
         self.S, self.scr, self.RC = _Screen(scr), scr, RC
         self.done = []                      # [(step title, summary)] shown above the current step
         self.usage = _ProcessUsage()
@@ -132,6 +144,7 @@ class Form:
                 self.S.put(yb + 1, 1, f"/{query}_   (ENTER 검색 유지, ESC 지우기)", self.S.dim)
             n = len(picked) + len(split_free(free))
             update_hint = "   U 모델 업데이트" if RC.HAS_LEARNED else ""
+            if APP_CHECK.get("newer"): update_hint += f"   새 앱 {APP_CHECK['latest']}: adctox --update-app"
             self.S.put(h - 1, 1, f"{n} selected" + update_hint + (f"   {note}" if note else ""), self.S.dim); note = ""
             self.scr.refresh(); k = _key(self.scr)
             if typing:

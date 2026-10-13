@@ -853,8 +853,11 @@ def main():
     if len(arguments) == 1 and arguments[0] in actions:
         import adc_updates
         raise SystemExit(adc_updates.cli(actions[arguments[0]]))
+    if len(arguments) == 1 and arguments[0] in ("--update-app", "--check-app"):
+        import adc_updates
+        raise SystemExit(adc_updates.app_cli("update" if arguments[0] == "--update-app" else "check"))
     if arguments == ["--help"]:
-        print("ADCTOX " + APP_VERSION + "\n\nadctox                       Interactive recommender\nadctox --list                Condition IDs\nadctox --update-models       Download changed model files\nadctox --check-models        Check model updates\nadctox --model-version       Installed model version\nadctox --rollback-models     Restore previous model\nadctox --verify-models       Re-hash installed model files\nadctox --version             App version\n\nIn the condition picker, press U for model updates.")
+        print("ADCTOX " + APP_VERSION + "\n\nadctox                       Interactive recommender\nadctox --list                Condition IDs\nadctox --update-models       Download changed model files\nadctox --check-models        Check model updates\nadctox --model-version       Installed model version\nadctox --rollback-models     Restore previous model\nadctox --verify-models       Re-hash installed model files\nadctox --version             App version\nadctox --check-app           Check for a newer app\nadctox --update-app          Install the newer app (same Python packages)\n\nIn the condition picker, press U for model updates.")
         return
     import term
     if "--no-wt" in sys.argv: sys.argv.remove("--no-wt")

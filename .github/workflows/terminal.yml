@@ -23,3 +23,53 @@ jobs:
           python -I scripts/build_ubuntu_release.py --out dist/ci-release
           python -I dist/ci-release/app/adc_recommender_full.py --version
           python -I dist/ci-release/app/adc_recommender_full.py --help
+
+  windows-package:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pandas scipy pyyaml lxml uv
+      - name: Build the app and the Windows package
+        env:
+          ADCTOX_EVIDENCE_SNAPSHOT: ml/data/label_evidence.json
+          ADCTOX_WIN_CACHE: ${{ runner.temp }}/win-cache
+        run: |
+          python -I scripts/build_ubuntu_release.py --out dist/releases
+          python -I scripts/build_windows_release.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: adctox-windows
+          path: dist/releases/windows/ADCTOX-windows.zip
+          retention-days: 7
+
+  windows-smoke:
+    needs: windows-package
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Updater on real Windows (current.txt switch, msvcrt lock, file replace semantics)
+        run: |
+          python -m pip install pytest numpy pandas scipy pyyaml lxml
+          python -m pytest tests/test_model_updates.py -q
+      - uses: actions/download-artifact@v4
+        with:
+          name: adctox-windows
+      - name: Unzip and run the package as a user would (no system Python involved)
+        shell: pwsh
+        env:
+          ADC_MODEL_HOME: ${{ runner.temp }}\adctox-models
+        run: |
+          Expand-Archive ADCTOX-windows.zip -DestinationPath pkg
+          $py = "pkg\ADCTOX\python\python.exe"
+          & $py -I pkg\ADCTOX\launcher.py --version
+          & $py -I pkg\ADCTOX\launcher.py --help
+          & $py -I pkg\ADCTOX\launcher.py --update-models
+          if ($LASTEXITCODE -ne 0) { throw "model download failed" }
+          & $py -I pkg\ADCTOX\launcher.py alzheimer cirrhosis 치매 | Tee-Object out.txt
+          if (-not (Select-String -Path out.txt -Pattern "ADC" -Quiet)) { throw "no recommendation table" }
