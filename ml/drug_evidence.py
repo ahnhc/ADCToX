@@ -13,7 +13,7 @@ incidence()  axis -> the largest grade >= 3 incidence in the label's adverse-rea
 """
 import json, os, re, sys, pathlib
 import numpy as np, pandas as pd
-sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/src")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "src"))
 from adctox.validation.label_change import parse_version, axes_for_heading
 
 C = "/data/hyeongchanahn/adctox/ml_cache/"; DM = "/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07/"

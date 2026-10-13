@@ -159,7 +159,7 @@ def main():
     src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "adc_version", "adc_runtime", "adc_updates")}
 
     rc = src["recommend"]
-    rc = sub(rc, 'sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")\n', "", "recommend")
+    rc = sub(rc, 'sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))\n', "", "recommend")
     rc = sub(rc, '_reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv"))}',
              '_reg = {r["id"]: r for r in _portable_data()["registry"]}', "recommend")
     if not FULL:
