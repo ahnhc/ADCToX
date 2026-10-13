@@ -11,8 +11,9 @@ Writes raw/pools_v0.json and annot/shard_<k>.txt (the files annotators read).
 import json, os, re, sys
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import adc_paths as P
 os.environ.setdefault("ADC_RESEARCH_MODE", "1")
-D = "/home/hyeongchanahn/CONI/adctox/data/curated/disease_linking/"; OBO = "/home/hyeongchanahn/CONI/adctox/data/raw_big/mondo/2026-10-07/mondo.obo"
+D = P.REPO + "data/curated/disease_linking/"; OBO = P.REPO + "data/raw_big/mondo/2026-10-07/mondo.obo"
 SHARDS = 4
 
 

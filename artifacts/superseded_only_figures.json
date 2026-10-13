@@ -1,5 +1,5 @@
 {
- "n_live_values": 33959,
+ "n_live_values": 34103,
  "n_superseded_values": 2266,
  "figures": [
   {
@@ -198,11 +198,11 @@
  "n_undeclared": 0,
  "reading": "A figure here appears in a superseded artefact and in no current one, so the number guard reports it as traced. That is either a deliberate before/after quotation or a figure that went stale and kept its trace, and the guard cannot tell the difference because both do trace.",
  "provenance": {
-  "revision": "bd71b88a15da53a7772cacc33693656875d6d7da",
+  "revision": "5346dfc582eb45be83aed448b72d414ed3d08239",
   "dirty": true,
   "snapshot": null,
   "script": "superseded_only_figures.py",
-  "written_utc": "2026-10-11T09:35:12+00:00",
+  "written_utc": "2026-10-13T03:36:41+00:00",
   "inputs": {}
  }
 }

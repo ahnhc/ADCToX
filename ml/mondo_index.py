@@ -6,10 +6,12 @@
 Organs come from the project's own ancestor -> axis crosswalk (conf/ontology/mondo_organ_axis.yaml) over the is_a closure.
 THETA = 0.75 was fixed before any result existed (ml/link_mondo.py); below it nothing is returned rather than a wrong link."""
 import os, re, sys, time, warnings
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import adc_paths as P
 import numpy as np, torch, yaml
 import adc_runtime
 warnings.filterwarnings("ignore")
-C = "/data/hyeongchanahn/adctox/ml_cache/"; OBO = "/home/hyeongchanahn/CONI/adctox/data/raw_big/mondo/2026-10-07/mondo.obo"
+C = P.CACHE; OBO = P.REPO + "data/raw_big/mondo/2026-10-07/mondo.obo"
 THETA = 0.75; NAME = "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular", "dermatologic", "metabolic_endocrine", "musculoskeletal", "infectious_immune", "otologic"]
 
@@ -55,7 +57,7 @@ def build():
             if n in seen: continue
             seen.add(n); st.extend(T[n]["parents"] if n in T else ())
         memo[t] = seen; return seen
-    cross = {k.lower(): v for k, v in yaml.safe_load(open("/home/hyeongchanahn/CONI/adctox/conf/ontology/mondo_organ_axis.yaml"))["ancestor_to_axis"].items()}
+    cross = {k.lower(): v for k, v in yaml.safe_load(open(P.REPO + "conf/ontology/mondo_organ_axis.yaml"))["ancestor_to_axis"].items()}
     dis = [t for t in T if t.startswith("MONDO:") and not T[t]["obs"] and T[t]["name"] and (t == "MONDO:0000001" or "MONDO:0000001" in anc(t))]
     strs, ids = [], []
     for t in dis:

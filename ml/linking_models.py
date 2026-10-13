@@ -9,7 +9,8 @@ that carries both to the terminal.
 
 Concept -> organs. Training labels: Claude Haiku labels of human MONDO concepts (data/curated/concept_organs/). Batches that
 were labelled by keyword scripts are excluded by a quality rule fixed before training (calibration exact-set match >= 0.9 against
-the Sonnet gold), except concepts where two independent labels agree; the strict hand-labelled 'relabel' round is always used.
+the Sonnet gold), except concepts where two independent labels agree; the strict hand-labelled 'relabel' round is always used;
+clinician-reviewed labels in labels/expert_*.jsonl override all of them.
 No gold concept, parent or child is a training concept. Features: SapBERT embedding of the concept name, the existing crosswalk
 axes, and a multi-hot of the concept's is_a ancestors. One L2 logistic regression per axis. The decision rule (learned alone, or
 combined with the crosswalk) and the probability threshold are chosen on the gold dev split, then frozen for test.
@@ -23,10 +24,11 @@ The gold (Sonnet-written queries) is never used for fitting, only for choosing t
 import glob, json, os, random, re, sys
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import adc_paths as P
 os.environ.setdefault("ADC_RESEARCH_MODE", "1")
 import eval_linking as EL, mondo_index as MI
 from build_linking_pools import read_obo
-R = "/home/hyeongchanahn/CONI/adctox/data/curated/"; C = MI.C; OUT = EL.OUT; AXES = MI.AXES; DEV = "cuda:0"
+R = P.REPO + "data/curated/"; C = MI.C; OUT = EL.OUT; AXES = MI.AXES; DEV = "cuda:0"
 norm = lambda s: re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
 
 
@@ -66,8 +68,13 @@ def load_organ_labels():
             if x["id"] in cal or x.get("scope") == "unclear": continue
             strict_per.setdefault(x["id"], []).append(frozenset(x["organs"])); strict[x["id"]] = frozenset(x["organs"])
     labels.update(strict)
+    expert = {}
+    for f in sorted(glob.glob(R + "concept_organs/labels/expert_*.jsonl")):          # human (clinician) review: always wins
+        for x in map(json.loads, open(f)):
+            if x.get("scope") != "unclear": expert[x["id"]] = frozenset(x["organs"])
+    labels.update(expert)
     agree = [v[0] == v[1] for v in strict_per.values() if len(v) >= 2]
-    stats = dict(n_labels=len(labels), n_strict=len(strict), relabel_calibration_exact=rq, relabel_overlap_exact=float(np.mean(agree)) if agree else None, n_relabel_overlap=len(agree))
+    stats = dict(n_labels=len(labels), n_strict=len(strict), n_expert=len(expert), relabel_calibration_exact=rq, relabel_overlap_exact=float(np.mean(agree)) if agree else None, n_relabel_overlap=len(agree))
     return labels, stats
 
 
@@ -84,10 +91,19 @@ def concept_features(T, idx, ids, concepts, anc_vocab):
     return np.c_[E, Ax * 3.0, A]
 
 
+def gold_held(T):
+    """gold concepts plus their parents and children: never training concepts (the gold is for evaluation only)."""
+    held = {c for g in map(json.loads, open(EL.D + "gold_v0.jsonl")) for c in g["concepts"]}; children = {}
+    for t, e in T.items():
+        for p in e.get("parents", []): children.setdefault(p, set()).add(t)
+    return held | {p for c in held for p in T.get(c, {}).get("parents", [])} | {k for c in held for k in children.get(c, ())}
+
+
 def organ_model():
     from sklearn.linear_model import LogisticRegression
     T = read_obo(); idx, ids, keep = human_index(T); labels, stats = load_organ_labels()
-    concepts = sorted(labels); from collections import Counter
+    held = gold_held(T); stats["n_dropped_gold_related"] = len(set(labels) & held)
+    concepts = sorted(set(labels) - held); from collections import Counter
     cnt = Counter(a for t in dict.fromkeys(ids[keep]) for a in ancestors_all(T, t)); anc_vocab = sorted(a for a, n in cnt.items() if n >= 20)
     X = concept_features(T, idx, ids, concepts, anc_vocab); Y = np.array([[a in labels[t] for a in AXES] for t in concepts], np.int64)
     models = []
@@ -215,8 +231,8 @@ def cmd_index():
 
 
 # ------------------------------------------------------------------ index v2: abbreviations (LRABR) + phenotypes (HPO)
-MONDO_OBO = "/home/hyeongchanahn/CONI/adctox/data/raw_big/mondo/2026-10-07/mondo.obo"
-LRABR = "/home/hyeongchanahn/CONI/adctox/data/raw/specialist_lrabr/LRABR"; HPO = "/home/hyeongchanahn/CONI/adctox/data/raw/hpo/hp.obo"
+MONDO_OBO = P.REPO + "data/raw_big/mondo/2026-10-07/mondo.obo"
+LRABR = P.REPO + "data/raw/specialist_lrabr/LRABR"; HPO = P.REPO + "data/raw/hpo/hp.obo"
 ABBR_SIM = 0.92             # an expansion counts only if it IS a MONDO disease name/synonym (near-exact SapBERT match)
 HPO_BRANCH = {"HP:0000707": "neurologic", "HP:0001626": "cardiovascular", "HP:0002086": "pulmonary", "HP:0000478": "ocular",
               "HP:0000598": "otologic", "HP:0025031": "gastrointestinal", "HP:0001392": "hepatic", "HP:0000077": "renal",
@@ -241,7 +257,7 @@ def mention_counts():
             k = line[6:].split()[0]
             if k.startswith(("UMLS:", "MESH:", "OMIM:")): x.setdefault(k, set()).add(cur)
     n = Counter()
-    mm = "/home/hyeongchanahn/CONI/adctox/data/raw/medmentions/st21pv_corpus_pubtator.txt.gz"
+    mm = P.REPO + "data/raw/medmentions/st21pv_corpus_pubtator.txt.gz"
     if os.path.exists(mm):
         for line in gzip.open(mm, "rt", encoding="utf-8"):
             p = line.rstrip("\n").split("\t")
@@ -260,6 +276,10 @@ def abbreviation_table(ids, E, T):
         p = line.rstrip("\n").split("|")
         if len(p) < 5 or p[2] not in ("acronym", "abbreviation") or not MI.ABBREV.match(p[1]): continue
         pairs.setdefault(p[1].lower(), set()).add(p[4])
+    team = R + "abbreviations/team.tsv"                                 # abbreviations teammates added (ml/team_sheets.py abbrev)
+    if os.path.exists(team):
+        for line in open(team, encoding="utf-8"):
+            if "\t" in line: a, e = line.rstrip("\n").split("\t", 1); pairs.setdefault(a.strip().lower(), set()).add(e.strip())
     exps = sorted({e for v in pairs.values() for e in v}); print("LRABR abbreviations", len(pairs), "expansions", len(exps), flush=True)
     Et = torch.from_numpy(E).to(DEV); best = {}
     for i in range(0, len(exps), 4096):
@@ -322,7 +342,7 @@ def cmd_index_v2():
 
 
 # ------------------------------------------------------------------ index v3: Korean names (HIRA KCD master)
-KCD = "/home/hyeongchanahn/CONI/adctox/data/raw/kcd/hira_sangbyeong_master_2025.9_utf8.csv"
+KCD = P.REPO + "data/raw/kcd/hira_sangbyeong_master_2025.9_utf8.csv"
 
 def korean_table():
     """normalised Korean name -> (English name, code length; 0 = curated everyday word). Korean-medicine-only and U codes are left out; '상세불명의 X' / '기타 X' / 'X(진성)'

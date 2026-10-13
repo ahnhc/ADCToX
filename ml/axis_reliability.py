@@ -18,10 +18,11 @@ import argparse, csv, json, os, sys
 import numpy as np, torch
 from scipy.stats import spearmanr
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import adc_paths as P
 os.environ.setdefault("ADC_RESEARCH_MODE", "1")
 import lab, vulnerability_model as VM
 from vulnerability_model import AXES
-RAW = "/home/hyeongchanahn/CONI/adctox/data/raw/"; RES = "/home/hyeongchanahn/CONI/adctox/ml/results/benchmarks/"
+RAW = P.REPO + "data/raw/"; RES = P.REPO + "ml/results/benchmarks/"
 ICD_AXIS = [("A00", "B99", "infectious_immune"), ("D50", "D79", "haematologic"), ("D80", "D89", "infectious_immune"),
             ("E00", "E90", "metabolic_endocrine"), ("G00", "G99", "neurologic"), ("H00", "H59", "ocular"), ("H60", "H95", "otologic"),
             ("I00", "I99", "cardiovascular"), ("J00", "J99", "pulmonary"), ("K00", "K69", "gastrointestinal"), ("K70", "K77", "hepatic"),

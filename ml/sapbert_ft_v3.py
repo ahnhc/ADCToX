@@ -21,10 +21,11 @@ documents (external), 2000 draws.
 import json, os, random, shutil, sys
 import numpy as np, torch
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import adc_paths as P
 os.environ.setdefault("ADC_RESEARCH_MODE", "1")
 import eval_linking as EL, mondo_index as MI, sapbert_ft_pilot as FP, sapbert_ft_v2 as V2
 from build_linking_pools import read_obo
-OUTDIR = "/data/hyeongchanahn/adctox/ml_cache/sapbert_ft_v3/"; R = "/home/hyeongchanahn/CONI/adctox/data/curated/"
+OUTDIR = P.CACHE + "sapbert_ft_v3/"; R = P.REPO + "data/curated/"
 SOURCES = ("ncbi", "bc5cdr", "medmentions", "cometa")
 VARIANTS = [("full", 1), ("full", 2), ("top4", 1), ("top4", 2)]
 

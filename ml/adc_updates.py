@@ -13,8 +13,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from adc_version import MODEL_MANIFEST_URL, RUNTIME_API
-from adc_runtime import model_home
+from adc_version import APP_MANIFEST_URL, APP_VERSION, MODEL_MANIFEST_URL, RUNTIME_API
+from adc_runtime import model_home, current_directory, pointer_mode
 
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular", "dermatologic", "metabolic_endocrine", "musculoskeletal", "infectious_immune", "otologic"]
 MAX_MANIFEST_BYTES = 2 * 1024 * 1024
@@ -164,8 +164,9 @@ def verify(home=None):
 
 def current_info(home=None):
     root = Path(home) if home else model_home()
+    directory = current_directory(root)
     try:
-        return json.loads((root / "current/bundle.json").read_text())
+        return json.loads((directory / "bundle.json").read_text()) if directory else None
     except (OSError, ValueError):
         return None
 
@@ -199,9 +200,20 @@ def _download(item, target, progress, allow_local):
 
 @contextlib.contextmanager
 def _locked(root):
-    import fcntl
     root.mkdir(parents=True, exist_ok=True)
-    with (root / ".update.lock").open("a") as stream:
+    with (root / ".update.lock").open("a+") as stream:
+        if os.name == "nt":
+            import msvcrt
+            try:
+                stream.seek(0); msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
+            except OSError as error:
+                raise UpdateError("Another model update is already running.") from error
+            try:
+                yield
+            finally:
+                stream.seek(0); msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK, 1)
+            return
+        import fcntl
         try:
             fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as error:
@@ -213,10 +225,23 @@ def _locked(root):
 
 
 def _switch(root, destination):
+    if pointer_mode():                                       # Windows: replace a small file, never a directory link
+        temporary = root / ".current-next.txt"
+        temporary.write_text(destination.name + "\n")
+        os.replace(temporary, root / "current.txt")
+        return
     temporary = root / ".current-next"
     temporary.unlink(missing_ok=True)
     temporary.symlink_to(destination.relative_to(root), target_is_directory=True)
     os.replace(temporary, root / "current")
+
+
+def _place(blob, path):
+    """hard link the verified blob into the bundle; copy where the file system has no hard links (FAT, other volume)."""
+    try:
+        os.link(blob, path)
+    except OSError:
+        shutil.copy2(blob, path)
 
 
 def install(manifest, home=None, progress=None, allow_local=False, cancelled=None):
@@ -254,7 +279,7 @@ def install(manifest, home=None, progress=None, allow_local=False, cancelled=Non
                         downloaded.append(item["path"])
                     path = staged / item["path"]
                     path.parent.mkdir(parents=True, exist_ok=True)
-                    os.link(blob, path)
+                    _place(blob, path)
                 destination = versions / identity
                 if destination.exists():
                     # Never mutate a directory another running process may be using.
@@ -290,6 +315,117 @@ def rollback(home=None, allow_local=False):
             return previous["model_version"]
     except (OSError, ValueError, KeyError) as error:
         raise UpdateError("No verified previous model bundle is available.") from error
+
+
+# ------------------------------------------------------------------ the app itself (models above)
+def _version(v):
+    return tuple(int(x) for x in re.findall(r"\d+", v))
+
+
+def app_manifest_url():
+    return os.environ.get("ADCTOX_APP_MANIFEST", APP_MANIFEST_URL)
+
+
+def fetch_app_manifest(url=None, allow_local=False):
+    try:
+        with _open(url or app_manifest_url(), allow_local) as stream:
+            data = json.loads(stream.read(MAX_MANIFEST_BYTES + 1))
+    except (OSError, ValueError, urllib.error.URLError) as error:
+        raise UpdateError(f"Could not read the app release manifest: {error}") from error
+    if data.get("schema_version") != 1 or not re.fullmatch(r"\d+\.\d+(?:\.\d+)?", str(data.get("app_version", ""))) \
+            or not re.fullmatch(r"[0-9a-f]{64}", str(data.get("sha256", ""))) or not isinstance(data.get("size"), int) or not 0 < data["size"] < 50 * 1024**2:
+        raise UpdateError("Invalid app release manifest.")
+    _url(data.get("url", ""), allow_local)
+    return data
+
+
+def check_app(max_age_hours=24, home=None, allow_local=False):
+    """-> {latest, newer} from the published app manifest, read at most once a day (cached next to the models); None offline."""
+    import time
+    cache = (Path(home) if home else model_home()).parent / "app_check.json"
+    try:
+        c = json.loads(cache.read_text())
+        if time.time() - c["checked"] < max_age_hours * 3600 and c.get("current") == APP_VERSION: return c
+    except (OSError, ValueError, KeyError):
+        pass
+    try:
+        latest = fetch_app_manifest(allow_local=allow_local)["app_version"]
+    except UpdateError:
+        return None
+    c = {"checked": time.time(), "current": APP_VERSION, "latest": latest, "newer": _version(latest) > _version(APP_VERSION)}
+    try:
+        cache.parent.mkdir(parents=True, exist_ok=True); cache.write_text(json.dumps(c))
+    except OSError:
+        pass
+    return c
+
+
+def app_layout(program=None):
+    """(install prefix, the running app directory) when this app runs from an installed layout (prefix/apps/<release>/),
+    else None (a repository checkout or a copied file)."""
+    import sys
+    path = Path(program or sys.argv[0]).resolve()
+    if path.parent.parent.name == "apps": return path.parent.parent.parent, path.parent
+    return None
+
+
+def update_app(manifest=None, program=None, allow_local=False, torch_version=None):
+    """Download the newer app archive, verify it, unpack it beside the current release and switch to it (prefix/current link
+    on Linux, prefix/app.txt on Windows). The runtime (Python packages) is not changed: when the release needs other packages,
+    nothing is switched and the installer has to be run again. -> message."""
+    import io, sys, tarfile
+    layout = app_layout(program)
+    if layout is None:
+        raise UpdateError("This copy is not an installed app (run from a repository or a copied file); update it with git pull or the installer.")
+    prefix, running = layout
+    manifest = manifest or fetch_app_manifest(allow_local=allow_local)
+    if _version(manifest["app_version"]) <= _version(APP_VERSION):
+        return f"App {APP_VERSION} is up to date."
+    body = b""
+    with _open(manifest["url"], allow_local) as stream:
+        body = stream.read(manifest["size"] + 1)
+    if len(body) != manifest["size"] or hashlib.sha256(body).hexdigest() != manifest["sha256"]:
+        raise UpdateError("App download failed verification; nothing was changed.")
+    names = {"adc_recommender_full.py", "requirements-cpu.txt", "bundle-info.json"}
+    with tarfile.open(fileobj=io.BytesIO(body)) as archive:
+        members = archive.getmembers()
+        if {m.name for m in members} != names or not all(m.isfile() for m in members):
+            raise UpdateError("Unexpected app archive contents; nothing was changed.")
+        new_req = archive.extractfile("requirements-cpu.txt").read()
+        try: old_req = (running / "requirements-cpu.txt").read_bytes()
+        except OSError: old_req = None
+        if torch_version is None:
+            try: torch_version = __import__("torch").__version__.split("+")[0]
+            except ImportError: torch_version = None
+        if new_req != old_req or (manifest.get("torch_version") and torch_version and manifest["torch_version"] != torch_version):
+            raise UpdateError(f"App {manifest['app_version']} needs different Python packages; run the installer again (see the release notes).")
+        release = prefix / "apps" / f"{manifest['app_version']}-{manifest['sha256'][:12]}"
+        if not release.exists():
+            staged = Path(tempfile.mkdtemp(prefix=".app-", dir=prefix / "apps"))
+            try:
+                archive.extractall(staged, filter="data")
+                os.replace(staged, release)
+            finally:
+                shutil.rmtree(staged, ignore_errors=True)
+    if pointer_mode():
+        temporary = prefix / ".app-next.txt"; temporary.write_text(release.name + "\n"); os.replace(temporary, prefix / "app.txt")
+    else:
+        temporary = prefix / ".app-next"; temporary.unlink(missing_ok=True)
+        temporary.symlink_to(release.relative_to(prefix), target_is_directory=True); os.replace(temporary, prefix / "current")
+    return f"App {manifest['app_version']} installed; it starts next time you open ADCTOX."
+
+
+def app_cli(action):
+    try:
+        if action == "check":
+            m = fetch_app_manifest()
+            print(f"App {APP_VERSION} -> {m['app_version']}: " + ("update available (adctox --update-app)" if _version(m["app_version"]) > _version(APP_VERSION) else "up to date"))
+        else:
+            print(update_app())
+        return 0
+    except UpdateError as error:
+        print(str(error), file=__import__("sys").stderr)
+        return 1
 
 
 def cli(action="update"):

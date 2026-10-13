@@ -14,9 +14,12 @@ map to at least one MONDO concept are written to mentions_mondo.jsonl, which als
 COMETA terms (drugs, procedures, symptoms without a MONDO equivalent). Several MONDO ids may share one xref; all are kept.
 """
 import csv, gzip, json, os, re
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import adc_paths as P
 from collections import Counter
-RAW = "/home/hyeongchanahn/CONI/adctox/data/raw/"; OUT = "/home/hyeongchanahn/CONI/adctox/data/curated/external/"
-OBO = "/home/hyeongchanahn/CONI/adctox/data/raw_big/mondo/2026-10-07/mondo.obo"
+RAW = P.REPO + "data/raw/"; OUT = P.REPO + "data/curated/external/"
+OBO = P.REPO + "data/raw_big/mondo/2026-10-07/mondo.obo"
 
 
 def xrefs():

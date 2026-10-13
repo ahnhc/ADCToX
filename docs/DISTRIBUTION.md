@@ -4,7 +4,7 @@
 
 | 대상 | 버전과 위치 | 배포 방식 |
 |---|---|---|
-| 앱 | `ml/adc_version.py`, 현재 0.2.1 | Git tag `v0.2.1`, GitHub Release의 `adctox-ubuntu.tar.gz` |
+| 앱 | `ml/adc_version.py`, 현재 0.3 | Git tag `v0.3.0`, GitHub Release의 `adctox-ubuntu.tar.gz`, `ADCTOX-windows.zip` |
 | 모델 묶음 | `releases/models/stable.json`, 현재 0.2 | 별도 tag `models-0.2`, MLP 및 MONDO index assets |
 | 기본 encoder | manifest에 고정한 HF revision | 원본 Hugging Face에서 파일별 다운로드 |
 | 연구 자료 | `ml/docs`, `ml/results`, `report`, `docs` | Git 이력 및 README 링크 |
@@ -69,6 +69,21 @@ GitHub Actions는 새 push/PR에서 updater, 터미널 및 추천기 테스트�
 이전 모델의 파일이 온전하면 `--rollback-models`로 복원할 수 있다. 오래된 version 및 blob은 자동 삭제하지 않아 업데이트 횟수에 따라 저장 공간이 늘 수 있다. 모델 파일이 로컬에서 손상되면 재검증 후 다시 다운로드한다.
 
 개발 서버의 기존 NumPy pickle checkpoint는 연구 재현을 위해 남아 있다. manifest가 있는 배포 bundle에서는 제한된 loader를 사용한다. 학습 스크립트를 직접 실행할 때는 `ADC_RESEARCH_MODE=1`로 설치 모델과 분리한다. `vulnerability_model.py`의 직접 학습/export 경로는 이를 자동 설정한다.
+
+## Windows 패키지 (0.3부터)
+
+```bash
+/data/hyeongchanahn/envs/adctox/bin/python -I scripts/build_ubuntu_release.py           # 앱 archive 먼저
+/data/hyeongchanahn/envs/adctox/bin/python -I scripts/build_windows_release.py          # dist/releases/windows/ADCTOX-windows.zip
+```
+
+- Linux에서 만든다. 공식 embeddable CPython 3.12.10(SHA256 고정)에 win_amd64 wheel을 풀어 넣는다. 의존성은 uv가 Windows 기준으로 풀고(`pip download --platform`은 빌드 머신의 marker를 적용해 Linux 전용 CUDA 패키지를 끌어온다), pip가 고정된 wheel을 받는다. 잠금 목록은 cache의 `windows-lock.txt`.
+- 앱 파일은 Ubuntu와 같은 archive를 `apps/<release>/`에 풀고 `app.txt`로 선택한다. 그래서 `--update-app`이 두 OS에서 같게 동작한다.
+- 모델은 첫 실행 때 `%LOCALAPPDATA%\adctox\models`로 받는다. Windows에서는 디렉터리 symlink 대신 `current.txt`로 현재 bundle을 가리키고, lock은 `msvcrt`를 쓴다.
+- Microsoft Visual C++ 런타임은 기본으로 넣지 않는다. 없는 PC에서는 launcher가 공식 설치 링크를 안내한다. Visual Studio 라이선스(Community 포함)가 있으면 `--bundle-vc-runtime`으로 넣을 수 있다.
+- 실제 Windows 검증은 GitHub Actions의 `windows-smoke` job이 한다: updater 테스트, 압축 해제, 모델 다운로드, 질환 분석 실행.
+
+Release에는 `ADCTOX-windows.zip`을 앱 Release의 asset으로 함께 올린다.
 
 ## Oracle mirror가 필요한 경우
 

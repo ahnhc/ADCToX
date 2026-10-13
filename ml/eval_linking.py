@@ -20,7 +20,8 @@ CIs: bootstrap over concept groups (each hard input is its own group), paired be
 import argparse, hashlib, json, os, re, sys
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-D = "/home/hyeongchanahn/CONI/adctox/data/curated/disease_linking/"; OUT = "/home/hyeongchanahn/CONI/adctox/ml/results/benchmarks/"
+import adc_paths as P
+D = P.REPO + "data/curated/disease_linking/"; OUT = P.REPO + "ml/results/benchmarks/"
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular", "dermatologic", "metabolic_endocrine", "musculoskeletal", "infectious_immune", "otologic"]
 norm = lambda s: re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
 
@@ -142,8 +143,8 @@ def error_analysis(sysout, gold, ix):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--refresh", action="store_true"); ap.add_argument("--gold", default=D + "gold_v0.jsonl"); ap.add_argument("--tag", default="v0"); a = ap.parse_args()
-    queries = json.load(open(D + "raw/queries_v0.json")); qi = {q["qid"]: q for q in queries}
+    ap = argparse.ArgumentParser(); ap.add_argument("--refresh", action="store_true"); ap.add_argument("--gold", default=D + "gold_v0.jsonl"); ap.add_argument("--tag", default="v0"); ap.add_argument("--queries", default=D + "raw/queries_v0.json"); a = ap.parse_args()
+    queries = json.load(open(a.queries)); qi = {q["qid"]: q for q in queries}
     G = {g["qid"]: g for g in map(json.loads, open(a.gold))}; gold = [dict(G[q["qid"]], category=q["category"]) for q in queries]
     groups = [q["group"] or q["qid"] for q in queries]; split = [split_of(g) for g in groups]
     sysout = system_outputs(queries, a.refresh, a.tag)
