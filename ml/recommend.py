@@ -36,7 +36,7 @@ for _k, _v in (("HF_HUB_DISABLE_PROGRESS_BARS", "1"), ("TRANSFORMERS_VERBOSITY",
     os.environ.setdefault(_k, _v)     # model loading bars and hub warnings are noise in a clinical table
 import numpy as np
 warnings.filterwarnings("ignore")
-sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import drug_evidence as DE, restrictions as RS
 AXES = DE.AXES; R = RS.R
 LEARNED_FRACTION = 0.0      # off by default; see the module docstring

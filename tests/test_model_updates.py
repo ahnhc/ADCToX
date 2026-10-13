@@ -59,9 +59,9 @@ def test_only_changed_head_is_downloaded_and_rollback_restores_it(server, tmp_pa
     assert result["downloaded"] == ["vuln_biolord.pt"]
     assert len(result["reused"]) == 5
     assert server[2] == ["/0.1/vuln_biolord.pt"]
-    assert (tmp_path / "current/vuln_biolord.pt").read_bytes() == b"head-2"
+    assert (selected_bundle(tmp_path) / "vuln_biolord.pt").read_bytes() == b"head-2"
     assert updates.rollback(tmp_path, allow_local=True) == "0.0"
-    assert (tmp_path / "current/vuln_biolord.pt").read_bytes() == b"head-1"
+    assert (selected_bundle(tmp_path) / "vuln_biolord.pt").read_bytes() == b"head-1"
 
 
 @pytest.mark.parametrize("failure", ["checksum", "missing", "size"])
@@ -75,7 +75,7 @@ def test_failed_download_preserves_all_active_files(server, tmp_path, failure):
     else: server[1][path] = b"too many bytes"
     with pytest.raises(updates.UpdateError): updates.install(second, tmp_path, allow_local=True)
     assert selected_bundle(tmp_path) == selected
-    assert (tmp_path / "current/vuln_biolord.pt").read_bytes() == b"head-1"
+    assert (selected_bundle(tmp_path) / "vuln_biolord.pt").read_bytes() == b"head-1"
     assert not list(tmp_path.glob(".staging-*"))
     assert not list((tmp_path / "blobs").glob("*.partial"))
 
@@ -107,7 +107,7 @@ def test_corrupted_local_model_is_repaired_in_a_new_directory(server, tmp_path):
     result = updates.install(manifest, tmp_path, allow_local=True)
     assert result["downloaded"] == ["vuln_biolord.pt"]
     assert selected_bundle(tmp_path) != old
-    assert (tmp_path / "current/vuln_biolord.pt").read_bytes() == b"head-1"
+    assert (selected_bundle(tmp_path) / "vuln_biolord.pt").read_bytes() == b"head-1"
 
 
 @pytest.mark.parametrize("change", ["schema", "runtime", "axes", "architecture", "missing", "duplicate", "traversal", "absolute", "backslash", "http", "size"])
