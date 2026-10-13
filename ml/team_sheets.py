@@ -130,6 +130,14 @@ def organs(paths):
             if a: ans[r["질환 ID (수정 금지)"]] = (a, r.get("검토자", ""), r)
         sheets.append(ans)
     if errors: print("\n".join(errors)); sys.exit("고친 뒤 다시 실행하세요. 아무것도 저장하지 않았습니다.")
+    if len(sheets) == 1:                     # one reviewer: every answered row is a label; no agreement to measure
+        out = [dict(id=t, organs=a[1], scope=a[0], confidence="single", reviewer=who, note=r.get("메모", "") or "")
+               for t, (a, who, r) in sorted(sheets[0].items()) if a[0] != "unclear"]
+        dest = CUR / f"concept_organs/labels/expert_team_{TODAY}.jsonl"
+        with open(dest, "w", encoding="utf-8") as f:
+            for x in out: f.write(json.dumps(x, ensure_ascii=False) + "\n")
+        print(f"one reviewer: reviewed {len(sheets[0])}, labels written {len(out)} -> {dest} (no second reviewer, so no agreement check)")
+        return
     A, B = sheets[0], sheets[1]; C = sheets[2] if len(sheets) > 2 else {}
     out, conflicts = [], []
     for t in sorted(set(A) & set(B)):

@@ -10,7 +10,7 @@
 
 | 받은 파일 | 명령 | 결과 | 다음 단계 |
 |---|---|---|---|
-| 1번 두 사람 것 (+ 불일치 파일을 채운 셋째 것) | `team_sheets.py organs A.csv B.csv [C.csv]` | `concept_organs/labels/expert_team_<날짜>.jsonl`, 불일치는 `team_sheets/1_장기판정_불일치_<날짜>.csv` | 과제 1-6 재빌드와 평가 |
+| 1번 한 사람 것, 또는 두 사람 것 (+ 불일치 파일을 채운 셋째 것) | `team_sheets.py organs A.csv [B.csv [C.csv]]` | `concept_organs/labels/expert_team_<날짜>.jsonl`, 불일치는 `team_sheets/1_장기판정_불일치_<날짜>.csv` | 과제 1-6 재빌드와 평가 |
 | 2번 (두 사람이면 둘 다) | `team_sheets.py picks A.csv [B.csv]` | `train_queries/human_picks_<날짜>.jsonl` | 과제 2 재정렬 학습 자료 |
 | 3번 | `team_sheets.py real-inputs F.csv` | `disease_linking/raw/queries_real_v1.json`, 정답 고르기 양식 `team_sheets/3b_실제입력_정답고르기.csv` | 3b를 두 사람에게 보냄 |
 | 3b 두 사람 것 (+ 셋째) | `team_sheets.py real-gold A.csv B.csv [C.csv]` | `disease_linking/gold_real_v1.jsonl` | 과제 3-5 평가 |
@@ -19,7 +19,7 @@
 | 6번 | (자동 없음) | `data/raw/<출처>/`에 저장 | 과제 4-5 loader 작성 |
 
 - 값이 잘못된 파일은 아무것도 저장하지 않고 "파일 몇 행: 무엇이 문제"를 출력한다. 그 줄만 팀원에게 돌려보낸다.
-- 두 사람의 답이 같은 줄만 라벨이 된다. 일치율이 출력되니 기록해 둔다(1번은 0.7 미만이면 장기 정의를 다시 설명하고 일부를 다시 받는 것이 좋다).
+- 한 사람 파일만 있으면 채운 줄이 모두 라벨이 된다(`confidence: single`, 일치율 없음). 두 사람이면 답이 같은 줄만 라벨이 된다. 일치율이 출력되니 기록해 둔다(1번은 0.7 미만이면 장기 정의를 다시 설명하고 일부를 다시 받는 것이 좋다).
 - 엑셀의 일반 "CSV"(CP949)로 저장된 파일도 읽는다.
 - 1번 양식은 모델의 현재 답을 보여주지 않는다(검토자가 그 답에 끌리지 않게). 후보 순서는 섞어 두었다.
 
