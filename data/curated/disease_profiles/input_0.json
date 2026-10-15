@@ -1,0 +1,1233 @@
+[
+{
+"id": "MONDO:0005154",
+"name": "liver disorder",
+"syn": [
+"disease of liver",
+"disease or disorder of liver",
+"disorder of liver",
+"hepatic disease"
+],
+"finngen": "Diseases of liver"
+},
+{
+"id": "MONDO:0005300",
+"name": "chronic kidney disease",
+"syn": [
+"chronic kidney disease",
+"chronic renal disease",
+"CKD - chronic kidney disease",
+"kidney disease, chronic"
+],
+"finngen": "Chronic kidney disease"
+},
+{
+"id": "MONDO:0015925",
+"name": "interstitial lung disease",
+"syn": [
+"ILD",
+"interstitial lung disease"
+],
+"finngen": null
+},
+{
+"id": "MONDO:0002261",
+"name": "keratopathy",
+"syn": [],
+"finngen": null
+},
+{
+"id": "MONDO:0018881",
+"name": "myelodysplastic syndrome",
+"syn": [
+"dysmyelopoietic syndrome",
+"hematopoeitic - myelodysplastic syndrome (MDS)",
+"MDS",
+"MDS, unclassifiable"
+],
+"finngen": null
+},
+{
+"id": "MONDO:0005420",
+"name": "hypothyroidism",
+"syn": [
+"hypothyroidism",
+"underactive thyroid"
+],
+"finngen": "Hypothyroidism, other/unspecified"
+},
+{
+"id": "MONDO:0000744",
+"name": "lung abscess",
+"syn": [
+"lung abscess",
+"lung abscess (disease)"
+],
+"finngen": "Abscess of lung"
+},
+{
+"id": "MONDO:0017634",
+"name": "non-infectious anterior uveitis",
+"syn": [
+"non-infectious iridocyclitis"
+],
+"finngen": "Acute and subacute iridocyclitis"
+},
+{
+"id": "MONDO:0005709",
+"name": "common cold",
+"syn": [
+"acute nasopharyngitis",
+"acute nasopharyngitis [common cold]",
+"acute rhinitis"
+],
+"finngen": "Acute nasopharyngitis(common cold)"
+},
+{
+"id": "MONDO:0017373",
+"name": "poliomyelitis",
+"syn": [
+"acute poliomyelitis",
+"Polia",
+"polio",
+"poliomyelitis"
+],
+"finngen": "Acute poliomyelitis"
+},
+{
+"id": "MONDO:0006763",
+"name": "frozen shoulder",
+"syn": [
+"adhesive capsulitis",
+"adhesive capsulitis of shoulder"
+],
+"finngen": "Adhesive capsulitis of shoulder"
+},
+{
+"id": "MONDO:0007079",
+"name": "alcohol dependence",
+"syn": [
+"alcohol dependence",
+"alcoholism"
+],
+"finngen": "Alcohol dependence"
+},
+{
+"id": "MONDO:0019369",
+"name": "complex regional pain syndrome",
+"syn": [
+"algoneurodystrophy",
+"CRPS"
+],
+"finngen": "Algoneurodystrophy"
+},
+{
+"id": "MONDO:0006525",
+"name": "allergic contact dermatitis",
+"syn": [
+"allergic contact dermatitis",
+"allergic form of contact dermatitis"
+],
+"finngen": "Allergic contact dermatitis"
+},
+{
+"id": "MONDO:0007089",
+"name": "Alzheimer disease 2",
+"syn": [
+"AD2",
+"Alzheimer disease 2",
+"Alzheimer disease associated with APOE E4",
+"Alzheimer disease associated with APOE4"
+],
+"finngen": "Alzheimer’s disease (Late onset) (more control exclusions)"
+},
+{
+"id": "MONDO:0005306",
+"name": "ankylosing spondylitis",
+"syn": [
+"ankylosing spondylarthritis"
+],
+"finngen": "Ankylosing spondylitis"
+},
+{
+"id": "MONDO:0002027",
+"name": "avoidant personality disorder",
+"syn": [
+"anxious personality disorder"
+],
+"finngen": "Anxious personality disorder"
+},
+{
+"id": "MONDO:0005578",
+"name": "arthritic joint disease",
+"syn": [
+"arthritis",
+"inflammation of skeletal joint",
+"skeletal joint inflammation"
+],
+"finngen": "Arthrosis"
+},
+{
+"id": "MONDO:0006664",
+"name": "atrial septal defect",
+"syn": [
+"ASD",
+"atrial septal defect",
+"Atrial Septal Defects",
+"atrial septum defect"
+],
+"finngen": "Atrial septal defect"
+},
+{
+"id": "MONDO:0005113",
+"name": "bacterial infectious disease",
+"syn": [
+"Bacteria caused disease or disorder",
+"Bacteria disease or disorder",
+"Bacteria infectious disease",
+"bacterial disease"
+],
+"finngen": "Bacterial infection, other or unspecified"
+},
+{
+"id": "MONDO:0004808",
+"name": "benign mammary dysplasia",
+"syn": [
+"benign mammary dysplasia"
+],
+"finngen": "Benign mammary dysplasia"
+},
+{
+"id": "MONDO:0021492",
+"name": "benign neoplasm of major salivary gland",
+"syn": [
+"benign Major salivary gland neoplasm",
+"benign Major salivary gland tumor",
+"benign Major salivary gland tumour",
+"benign neoplasm of the Major salivary gland"
+],
+"finngen": "Benign neoplasm of major salivary glands"
+},
+{
+"id": "MONDO:0000646",
+"name": "ovarian benign neoplasm",
+"syn": [
+"benign neoplasm of ovary",
+"benign neoplasm of the ovary",
+"benign ovarian neoplasm",
+"benign ovarian tumor"
+],
+"finngen": "Benign neoplasm of ovary"
+},
+{
+"id": "MONDO:0021487",
+"name": "benign neoplasm of choroid",
+"syn": [
+"benign choroid neoplasm",
+"benign choroid tumor",
+"benign choroid tumour",
+"benign neoplasm of the choroid"
+],
+"finngen": "Benign neoplasm: Choroid"
+},
+{
+"id": "MONDO:0859689",
+"name": "hepatobiliary benign neoplasm",
+"syn": [],
+"finngen": "Benign neoplasm: Liver"
+},
+{
+"id": "MONDO:0002423",
+"name": "rectosigmoid junction neoplasm",
+"syn": [
+"neoplasm of rectosigmoid junction",
+"neoplasm of the rectosigmoid junction",
+"rectosigmoid junction neoplasm (disease)",
+"rectosigmoid junction tumor"
+],
+"finngen": "Benign neoplasm: Rectosigmoid junction"
+},
+{
+"id": "MONDO:0000647",
+"name": "benign vaginal neoplasm",
+"syn": [
+"benign neoplasm of the vagina",
+"benign neoplasm of vagina",
+"benign tumor of the vagina",
+"benign tumor of vagina"
+],
+"finngen": "Benign neoplasm: Vagina"
+},
+{
+"id": "MONDO:0002660",
+"name": "blepharochalasis",
+"syn": [
+"blepharochalasis",
+"blepharochalasis (disease)"
+],
+"finngen": "Blepharochalasis"
+},
+{
+"id": "MONDO:0019082",
+"name": "bullous pemphigoid",
+"syn": [
+"bullous pemphigoid"
+],
+"finngen": "Bullous pemphigoid"
+},
+{
+"id": "MONDO:0005688",
+"name": "campylobacteriosis",
+"syn": [],
+"finngen": "Campylobacter enteritis"
+},
+{
+"id": "MONDO:0000745",
+"name": "cardiac arrest",
+"syn": [
+"circulatory arrest"
+],
+"finngen": "Cardiac arrest"
+},
+{
+"id": "MONDO:0020572",
+"name": "complex regional pain syndrome type 2",
+"syn": [
+"causalgia",
+"Complex regional pain syndrome II",
+"CRPS II"
+],
+"finngen": "Causalgia"
+},
+{
+"id": "MONDO:0044343",
+"name": "cervical disk degenerative disorder",
+"syn": [
+"cervical Disc Degeneration",
+"cervical Disc degenerative disease",
+"cervical Disc degenerative disorder",
+"cervical region of vertebral column intervertebral disc degenerative disorder"
+],
+"finngen": "Cervical disc disorders"
+},
+{
+"id": "MONDO:0015766",
+"name": "cholera",
+"syn": [
+"cholera due to Vibrio cholerae",
+"Vibrio cholerae caused disease or disorder",
+"Vibrio cholerae disease or disorder",
+"Vibrio cholerae infectious disease"
+],
+"finngen": "Cholera"
+},
+{
+"id": "MONDO:0002314",
+"name": "chronic conjunctivitis",
+"syn": [
+"chronic conjunctivitis",
+"chronic conjunctivitis (disease)",
+"chronic conjunctivitis, unspecified",
+"conjunctivitis (disease), chronic"
+],
+"finngen": "Chronic conjunctivitis"
+},
+{
+"id": "MONDO:0001251",
+"name": "chronic apical periodontitis",
+"syn": [
+"chronic periapical periodontitis",
+"periapical periodontitis, chronic"
+],
+"finngen": "Chronic periapical parodontitis"
+},
+{
+"id": "MONDO:0004605",
+"name": "chronic ulcer of skin",
+"syn": [
+"callous ulcer (morphologic abnormality)",
+"indolent ulcer (morphologic abnormality)"
+],
+"finngen": "Chronic ulcer of skin, not elsewhere classified"
+},
+{
+"id": "MONDO:0005008",
+"name": "colorectal adenocarcinoma",
+"syn": [
+"adenocarcinoma of large bowel",
+"adenocarcinoma of large intestine",
+"adenocarcinoma of the large bowel",
+"adenocarcinoma of the large intestine"
+],
+"finngen": "Colorectal adenocarcinoma (controls excluding all cancers)"
+},
+{
+"id": "MONDO:0020679",
+"name": "conductive hearing loss disorder",
+"syn": [
+"conductive deafness",
+"conductive hearing loss"
+],
+"finngen": "Conductive hearing loss, unspecified"
+},
+{
+"id": "MONDO:0020001",
+"name": "respiratory or thoracic malformation",
+"syn": [],
+"finngen": "Congenital malformations of the respiratory system"
+},
+{
+"id": "MONDO:0022823",
+"name": "congenital contractures",
+"syn": [],
+"finngen": "Contracture of joint"
+},
+{
+"id": "MONDO:0005532",
+"name": "Crohn's colitis",
+"syn": [
+"Crohn colitis"
+],
+"finngen": "Crohn's disease NAS"
+},
+{
+"id": "MONDO:0004646",
+"name": "decubitus ulcer",
+"syn": [
+"decubitus ulcer",
+"decubitus ulcer, elbow",
+"decubitus ulcer, lower back",
+"decubitus ulcer, other site"
+],
+"finngen": "Decubitus ulcer and pressure area"
+},
+{
+"id": "MONDO:0001442",
+"name": "dysthymic disorder",
+"syn": [
+"dysthymia"
+],
+"finngen": "Depression or dysthymia"
+},
+{
+"id": "MONDO:0004782",
+"name": "diabetes insipidus",
+"syn": [],
+"finngen": "Diabetes insipidus"
+},
+{
+"id": "MONDO:8000000",
+"name": "infectious discitis",
+"syn": [],
+"finngen": "Discitis, unspecified"
+},
+{
+"id": "MONDO:0003394",
+"name": "dental pulp disorder",
+"syn": [
+"dental pulp disease",
+"dental pulp disease or disorder",
+"dental pulp disorder",
+"disease of dental pulp"
+],
+"finngen": "Diseases of pulp and periapical tissues"
+},
+{
+"id": "MONDO:0005560",
+"name": "brain disorder",
+"syn": [
+"brain disease",
+"brain disease or disorder",
+"disease of brain",
+"disease or disorder of brain"
+],
+"finngen": "Disorders of brain, other and unspecified"
+},
+{
+"id": "MONDO:0015905",
+"name": "syndromic dyslipidemia",
+"syn": [
+"complex dyslipidaemia",
+"complex dyslipidemia",
+"syndrome associated with inherited lipid metabolism disorder",
+"syndromic inherited lipid metabolism disorder"
+],
+"finngen": "Disorders of lipoprotein metabolism and other lipidaemias"
+},
+{
+"id": "MONDO:0001223",
+"name": "parathyroid gland disorder",
+"syn": [
+"disease of parathyroid gland",
+"disease or disorder of parathyroid gland",
+"disorder of parathyroid gland",
+"parathyroid disease"
+],
+"finngen": "Disorders of parathyroid gland"
+},
+{
+"id": "MONDO:0044137",
+"name": "vitreous body disorder",
+"syn": [
+"disease of vitreous body",
+"disease or disorder of vitreous body",
+"disorder of vitreous body",
+"vitreous body disease"
+],
+"finngen": "Disorders of vitreous body"
+},
+{
+"id": "MONDO:0100114",
+"name": "dry age related macular degeneration",
+"syn": [
+"dry AMD",
+"dry ARMD"
+],
+"finngen": "Dry age-related macular degeneration (includes geographic atrophy)"
+},
+{
+"id": "MONDO:0010629",
+"name": "impacted teeth, multiple",
+"syn": [
+"impacted teeth, multiple"
+],
+"finngen": "Embedded and impacted teeth"
+},
+{
+"id": "MONDO:0001285",
+"name": "endometriosis of pelvic peritoneum",
+"syn": [],
+"finngen": "Endometriosis of pelvic peritoneum"
+},
+{
+"id": "MONDO:0001793",
+"name": "excessive tearing",
+"syn": [
+"epiphora"
+],
+"finngen": "Epiphora"
+},
+{
+"id": "MONDO:0850231",
+"name": "erythema nodosum",
+"syn": [],
+"finngen": "Erythema nodosum"
+},
+{
+"id": "MONDO:0018328",
+"name": "homozygous familial hypercholesterolemia",
+"syn": [
+"HoFH",
+"homozygous familial hypercholesterolemia"
+],
+"finngen": "Familial hypercholesterolemia, with ischemic heart disease"
+},
+{
+"id": "MONDO:0005384",
+"name": "focal epilepsy",
+"syn": [
+"focal epilepsy",
+"partial epilepsy"
+],
+"finngen": "Focal epilepsy"
+},
+{
+"id": "MONDO:0001942",
+"name": "generalized anxiety disorder",
+"syn": [
+"GAD"
+],
+"finngen": "Generalized anxiety disorder"
+},
+{
+"id": "MONDO:0002021",
+"name": "gingival disorder",
+"syn": [
+"disease of gingiva",
+"disease or disorder of gingiva",
+"disorder of gingiva",
+"gingiva disease"
+],
+"finngen": "Gingivitis and periodontal diseases"
+},
+{
+"id": "MONDO:0006555",
+"name": "granulomatous dermatitis",
+"syn": [],
+"finngen": "Granulomatous disorders of skin and subcutaneous tissue"
+},
+{
+"id": "MONDO:0001162",
+"name": "impulse control disorder",
+"syn": [
+"ICD",
+"impulse-control disorder"
+],
+"finngen": "Habit and impulse disorders"
+},
+{
+"id": "MONDO:0100192",
+"name": "liver failure",
+"syn": [
+"hepatic failure"
+],
+"finngen": "Hepatic failure, not elsewhere classified"
+},
+{
+"id": "MONDO:0006559",
+"name": "hidradenitis suppurativa",
+"syn": [
+"acne inversa",
+"ectopic acne",
+"fox den disease",
+"hidradenitis suppurativa"
+],
+"finngen": "Hidradenitis suppurativa"
+},
+{
+"id": "MONDO:0019162",
+"name": "pseudohypoaldosteronism type 2",
+"syn": [
+"chloride shunt syndrome",
+"familial hyperkalemic hypertension",
+"Gordon hyperkalemia-hypertension syndrome",
+"hyperkalemia-hypertension syndrome, Gordon type"
+],
+"finngen": "Hyperkalaemia"
+},
+{
+"id": "MONDO:0005804",
+"name": "hyperprolactinemia",
+"syn": [
+"hyperprolactinaemia",
+"hyperprolactinemia",
+"hyperprolactinemia (disease)"
+],
+"finngen": "Hyperprolactinaemia"
+},
+{
+"id": "MONDO:0001100",
+"name": "hypertrophy of breast",
+"syn": [
+"breast Hypertrophy",
+"gigantomastia",
+"hypertrophy of the breast",
+"macromastia"
+],
+"finngen": "Hypertrophy of breast"
+},
+{
+"id": "MONDO:0007699",
+"name": "Hashimoto thyroiditis",
+"syn": [
+"chronic lymphocytic thyroiditis",
+"Hashimoto disease",
+"Hashimoto hypothyroidism",
+"Hashimoto thyroiditis"
+],
+"finngen": "Hypothyroidism, strict autoimmune"
+},
+{
+"id": "MONDO:0010386",
+"name": "immunodeficiency 33",
+"syn": [
+"IKBKG invasive pneumococcal disease, recurrent isolated",
+"IKBKG X-linked mendelian susceptibility to mycobacterial diseases",
+"IMD33",
+"immunodeficiency 33, Mycobacteriosis, X-linked"
+],
+"finngen": "Immunodeficiency with predominantly antibody defects"
+},
+{
+"id": "MONDO:0005810",
+"name": "infectious mononucleosis",
+"syn": [
+"Gammaherpesviral mononucleosis",
+"glandular fever",
+"Mono"
+],
+"finngen": "Infectious mononucleosis"
+},
+{
+"id": "MONDO:0005156",
+"name": "encephalomyelitis",
+"syn": [
+"central nervous system inflammation",
+"encephalitis and/or myelitis",
+"inflammation of central nervous system"
+],
+"finngen": "Inflammatory diseases of the central nervous system"
+},
+{
+"id": "MONDO:0100429",
+"name": "intrahepatic cholestasis of pregnancy",
+"syn": [
+"gravidic intrahepatic cholestasis",
+"intrahepatic cholestasis of pregnancy",
+"pregnancy related cholestasis",
+"pregnancy-related cholestasis"
+],
+"finngen": "Intrahepatic Cholestasis of Pregnancy (ICP)"
+},
+{
+"id": "MONDO:0018381",
+"name": "osteochondrosis",
+"syn": [
+"osteochondrosis not specified as adult or juvenile, of unspecified site"
+],
+"finngen": "Juvenile osteochondrosis"
+},
+{
+"id": "MONDO:0001875",
+"name": "epicondylitis",
+"syn": [
+"ectepicondyle of humerus inflammation",
+"inflammation of ectepicondyle of humerus",
+"lateral epicondylitis"
+],
+"finngen": "Lateral epicondylitis"
+},
+{
+"id": "MONDO:0001458",
+"name": "ulnar nerve lesion",
+"syn": [
+"lesion of ulnar nerve",
+"peripheral nerve lesion of ulnar nerve",
+"ulnar nerve peripheral nerve lesion"
+],
+"finngen": "Lesion of ulnar nerve"
+},
+{
+"id": "MONDO:0019632",
+"name": "Lyme disease",
+"syn": [
+"Borrelia",
+"Borrelia burgdorferi infection",
+"Borreliella burgdorferi caused disease or disorder",
+"Borreliella burgdorferi disease or disorder"
+],
+"finngen": "Lyme disease"
+},
+{
+"id": "MONDO:0005105",
+"name": "melanoma",
+"syn": [
+"malignant melanoma",
+"melanoma",
+"melanoma (disease)",
+"melanoma, malignant"
+],
+"finngen": "Malignant melanoma (controls excluding all cancers)"
+},
+{
+"id": "MONDO:0001672",
+"name": "bronchus cancer",
+"syn": [
+"bronchus cancer",
+"cancer of bronchus",
+"malignant bronchus neoplasm",
+"malignant neoplasm of bronchus"
+],
+"finngen": "Malignant neoplasm of bronchus and lung"
+},
+{
+"id": "MONDO:0007576",
+"name": "esophageal cancer",
+"syn": [
+"cancer of esophagus",
+"cancer of oesophagus",
+"esophageal cancer",
+"esophageal cancer, somatic"
+],
+"finngen": "Malignant neoplasm of oesophagus (controls excluding all cancers)"
+},
+{
+"id": "MONDO:0002898",
+"name": "skin cancer",
+"syn": [
+"cancer of zone of skin",
+"malignant neoplasm of skin",
+"malignant neoplasm of the skin",
+"malignant neoplasm of zone of skin"
+],
+"finngen": "Malignant neoplasm of skin (controls excluding all cancers)"
+},
+{
+"id": "MONDO:0006873",
+"name": "nutritional deficiency disease",
+"syn": [
+"malnourished",
+"malnutrition"
+],
+"finngen": "Malnutrition"
+},
+{
+"id": "MONDO:0005066",
+"name": "metabolic disease",
+"syn": [
+"disorder of metabolic process",
+"metabolic disease",
+"metabolic disorder",
+"metabolic process disease"
+],
+"finngen": "Metabolic disorders"
+},
+{
+"id": "MONDO:0044001",
+"name": "hearing loss, mixed conductive-sensorineural",
+"syn": [
+"mixed conductive and sensorineural deafness",
+"mixed conductive and sensorineural hearing loss",
+"mixed hearing loss"
+],
+"finngen": "Mixed conductive and sensorineural hearing loss"
+},
+{
+"id": "MONDO:0000989",
+"name": "mumps infectious disease",
+"syn": [
+"epidemic parotitis",
+"Mumps",
+"mumps",
+"Mumps virus caused disease or disorder"
+],
+"finngen": "Mumps"
+},
+{
+"id": "MONDO:0001384",
+"name": "myopia",
+"syn": [
+"myopia",
+"myopia (disease)",
+"near-sightedness"
+],
+"finngen": "Myopia"
+},
+{
+"id": "MONDO:0005377",
+"name": "nephrotic syndrome",
+"syn": [
+"nephrotic syndrome",
+"nephrotic syndromes",
+"syndrome, nephrotic",
+"syndromes, nephrotic"
+],
+"finngen": "Nephrotic syndrome"
+},
+{
+"id": "MONDO:0005233",
+"name": "non-small cell lung carcinoma",
+"syn": [
+"non-small cell cancer of lung",
+"non-small cell cancer of the lung",
+"non-small cell carcinoma of lung",
+"non-small cell carcinoma of the lung"
+],
+"finngen": "Non-small cell lung cancer (controls excluding all cancers)"
+},
+{
+"id": "MONDO:0001658",
+"name": "nontoxic goiter",
+"syn": [
+"euthyroid goiter",
+"euthyroid goitre",
+"non-toxic goiter",
+"non-toxic simple goiter"
+],
+"finngen": "Nontoxic diffuse goitre"
+},
+{
+"id": "MONDO:0001896",
+"name": "obstructive hydrocephalus",
+"syn": [
+"non-communicating hydrocephalus"
+],
+"finngen": "Obstructive hydrocephalus"
+},
+{
+"id": "MONDO:0005885",
+"name": "optic neuritis",
+"syn": [],
+"finngen": "Optic neuritis"
+},
+{
+"id": "MONDO:0005298",
+"name": "osteoporosis",
+"syn": [
+"bone mineral density quantitative trait locus",
+"osteoporosis, involutional",
+"osteoporosis, postmenopausal"
+],
+"finngen": "Osteoporosis"
+},
+{
+"id": "MONDO:0021440",
+"name": "benign neoplasm of skin",
+"syn": [
+"benign cutaneous neoplasm",
+"benign cutaneous tumor",
+"benign cutaneous tumour",
+"benign neoplasm of the skin"
+],
+"finngen": "Other benign neoplasms of skin"
+},
+{
+"id": "MONDO:0005020",
+"name": "intestinal disorder",
+"syn": [
+"disease of intestine",
+"disease or disorder of intestine",
+"disorder of intestine",
+"intestinal disease"
+],
+"finngen": "Other diseases of intestine"
+},
+{
+"id": "MONDO:0004867",
+"name": "upper respiratory tract disorder",
+"syn": [
+"disease of upper respiratory tract",
+"disease or disorder of upper respiratory tract",
+"disorder of upper respiratory tract",
+"upper respiratory tract disease"
+],
+"finngen": "Other diseases of upper respiratory tract"
+},
+{
+"id": "MONDO:0002036",
+"name": "penile disorder",
+"syn": [
+"disease of penis",
+"disease or disorder of penis",
+"disorder of penis",
+"penile disease"
+],
+"finngen": "Other disorders of penis"
+},
+{
+"id": "MONDO:0002183",
+"name": "enthesopathy",
+"syn": [
+"disease of enthesis",
+"disease or disorder of enthesis",
+"disorder of enthesis",
+"enthesis disease"
+],
+"finngen": "Other enthesopathies"
+},
+{
+"id": "MONDO:0005294",
+"name": "peripheral vascular disease",
+"syn": [
+"disease, peripheral vascular",
+"peripheral vascular disorder",
+"vascular disease, peripheral"
+],
+"finngen": "Other peripheral vascular diseases"
+},
+{
+"id": "MONDO:0021839",
+"name": "spirochaetales infections",
+"syn": [],
+"finngen": "Other spirochaetal diseases"
+},
+{
+"id": "MONDO:0005349",
+"name": "otosclerosis",
+"syn": [
+"otosclerosis",
+"otosclerosis (disease)"
+],
+"finngen": "Otosclerosis"
+},
+{
+"id": "MONDO:0004568",
+"name": "paralytic ileus",
+"syn": [
+"paralytic ileus",
+"paralytic ileus (disease)"
+],
+"finngen": "Paralytic ileus"
+},
+{
+"id": "MONDO:0001670",
+"name": "tooth resorption",
+"syn": [],
+"finngen": "Pathological resorption of teeth"
+},
+{
+"id": "MONDO:0002028",
+"name": "personality disorder",
+"syn": [
+"personality disorder",
+"personality disorder (disease)"
+],
+"finngen": "Personality disorders (more control exclusions)"
+},
+{
+"id": "MONDO:0005114",
+"name": "pneumococcal infection",
+"syn": [
+"pneumococcal infection",
+"Streptococcus pneumoniae caused disease or disorder",
+"Streptococcus pneumoniae disease or disorder",
+"Streptococcus pneumoniae infectious disease"
+],
+"finngen": "Pneumococcal septicemia"
+},
+{
+"id": "MONDO:0008487",
+"name": "polycystic ovary syndrome",
+"syn": [
+"PCOS",
+"polycystic ovarian disease",
+"polycystic ovaries",
+"polycystic ovary syndrome"
+],
+"finngen": "Polycystic ovarian syndrome"
+},
+{
+"id": "MONDO:0005146",
+"name": "post-traumatic stress disorder",
+"syn": [
+"post-traumatic stress disorder",
+"PTSD",
+"traumatic neurosis"
+],
+"finngen": "Post-traumatic stress disorder"
+},
+{
+"id": "MONDO:0004846",
+"name": "placental abruption",
+"syn": [
+"abruptio placentae",
+"Abruptio placentae, premature separation of placenta",
+"placental abruption",
+"placental abruption (disease)"
+],
+"finngen": "Premature separation of placenta [abruptio placentae]"
+},
+{
+"id": "MONDO:0030038",
+"name": "hereditary glaucoma, primary closed-angle",
+"syn": [
+"glaucoma, primary closed-angle",
+"GLCC",
+"hereditary primary angle-closure glaucoma"
+],
+"finngen": "Primary open-angle glaucoma, strict"
+},
+{
+"id": "MONDO:0011849",
+"name": "psoriatic arthritis",
+"syn": [
+"arthritis psoriatica",
+"arthropathic psoriasis"
+],
+"finngen": "Psoriatic arthropathies"
+},
+{
+"id": "MONDO:0015597",
+"name": "palmoplantar pustulosis",
+"syn": [
+"localised pustular psoriasis",
+"localized pustular psoriasis",
+"LPP",
+"Palmoplantar Pustulosis"
+],
+"finngen": "Pustulosis palmaris et plantaris"
+},
+{
+"id": "MONDO:0008208",
+"name": "patella, familial recurrent dislocation of",
+"syn": [
+"patella, familial recurrent dislocation of"
+],
+"finngen": "Recurrent dislocation of patella"
+},
+{
+"id": "MONDO:0008375",
+"name": "retinal detachment",
+"syn": [
+"detached retina",
+"retina, detached",
+"retinal detachment"
+],
+"finngen": "Retinal detachment with retinal break"
+},
+{
+"id": "MONDO:0008383",
+"name": "rheumatoid arthritis",
+"syn": [
+"RA",
+"rheumatoid arthritis"
+],
+"finngen": "Rheumatoid arthritis"
+},
+{
+"id": "MONDO:0001172",
+"name": "salpingo-oophoritis",
+"syn": [
+"tubo ovarian abscess",
+"tubo-ovarian abscess",
+"tubo-ovarian abscess (disorder)",
+"Tubo-ovarian inflammatory disease"
+],
+"finngen": "Salpingitis and oophoritis"
+},
+{
+"id": "MONDO:0001087",
+"name": "schizotypal personality disorder",
+"syn": [],
+"finngen": "Schizotypal disorder"
+},
+{
+"id": "MONDO:0020115",
+"name": "secondary polycythemia",
+"syn": [
+"secondary erythrocytosis",
+"secondary polycythemia"
+],
+"finngen": "Secondary polycythaemia"
+},
+{
+"id": "MONDO:0005211",
+"name": "ovarian serous adenocarcinoma",
+"syn": [
+"ovarian serous adenocarcinoma",
+"ovarian serous carcinoma",
+"ovary serous adenocarcinoma",
+"serous adenocarcinoma of ovary"
+],
+"finngen": "Serous carcinoma of ovary (controls excluding all cancers)"
+},
+{
+"id": "MONDO:0005296",
+"name": "sleep apnea syndrome",
+"syn": [
+"SDB",
+"sleep apnea",
+"sleep apnea syndrome",
+"sleep apneas"
+],
+"finngen": "Sleep apnoea"
+},
+{
+"id": "MONDO:0016226",
+"name": "specific language disorder",
+"syn": [
+"dysphasia",
+"specific language disorder"
+],
+"finngen": "Specific development disorders of speech and language"
+},
+{
+"id": "MONDO:0006774",
+"name": "habitual spontaneous abortion",
+"syn": [],
+"finngen": "Spontaneous abortion"
+},
+{
+"id": "MONDO:0005099",
+"name": "subarachnoid hemorrhage",
+"syn": [
+"subarachnoid haemorrhage (disease)",
+"subarachnoid hemorrhage",
+"subarachnoid hemorrhage (disease)"
+],
+"finngen": "Subarachnoid haemmorrhage"
+},
+{
+"id": "MONDO:0003900",
+"name": "connective tissue disorder",
+"syn": [
+"connective tissue disease",
+"connective tissue disease or disorder",
+"connective tissue diseases",
+"connective tissue disorder"
+],
+"finngen": "Systemic connective tissue disorders"
+},
+{
+"id": "MONDO:0005396",
+"name": "thoracic aortic aneurysm",
+"syn": [],
+"finngen": "Thoracic aortic aneurysm"
+},
+{
+"id": "MONDO:0001165",
+"name": "tongue disorder",
+"syn": [
+"disease of tongue",
+"disease or disorder of tongue",
+"disorder of tongue",
+"tongue disease"
+],
+"finngen": "Tongue abnormality"
+},
+{
+"id": "MONDO:0018076",
+"name": "tuberculosis",
+"syn": [
+"tuberculosis disease"
+],
+"finngen": "Tuberculosis"
+},
+{
+"id": "MONDO:0044782",
+"name": "esophageal ulcer",
+"syn": [
+"esophageal ulcer",
+"esophagus ulcer",
+"esophagus ulcer disease",
+"oesophagus ulcer"
+],
+"finngen": "Ulcer of oesophagus"
+},
+{
+"id": "MONDO:0005492",
+"name": "urticaria",
+"syn": [
+"hives",
+"urticaria",
+"urticaria (disease)"
+],
+"finngen": "Urticaria"
+},
+{
+"id": "MONDO:0011057",
+"name": "cerebrovascular disorder",
+"syn": [
+"cerebrovascular disease",
+"cerebrovascular disorder"
+],
+"finngen": "Vascular syndromes of brain in cerebrovascular disorders"
+},
+{
+"id": "MONDO:0006009",
+"name": "viral encephalitis",
+"syn": [
+"viral encephalitis",
+"Viruses caused encephalitis",
+"Viruses encephalitis"
+],
+"finngen": "Viral encephalitis, not elsewhere classified/unspecified"
+},
+{
+"id": "MONDO:0001209",
+"name": "common wart",
+"syn": [
+"common wart",
+"verruca vulgaris"
+],
+"finngen": "Viral warts"
+},
+{
+"id": "MONDO:0004570",
+"name": "intestinal volvulus",
+"syn": [
+"volvulus"
+],
+"finngen": "Volvulus"
+}
+]

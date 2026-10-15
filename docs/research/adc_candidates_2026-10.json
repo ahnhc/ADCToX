@@ -1,0 +1,1490 @@
+[
+  {
+    "inn": "belantamab mafodotin",
+    "brand": "BLENREP",
+    "code_names": [
+      "GSK2857916",
+      "belantamab mafodotin-blmf"
+    ],
+    "target": "BCMA (TNFRSF17)",
+    "payload": "MMAF (cys-mcMMAF)",
+    "payload_family": "auristatin",
+    "linker": "maleimidocaproyl (mc)",
+    "linker_cleavable": false,
+    "dar": 4.0,
+    "dar_note": "literature; matches conf/adc_registry.yaml",
+    "category": "approved",
+    "approvals": [
+      {
+        "region": "US-FDA",
+        "status": "approved (re-approval after 2022 withdrawal)",
+        "date": "2025-10-23",
+        "indication": "with bortezomib + dexamethasone, adult RRMM after >=2 prior lines incl. a PI and an IMiD; REMS for ocular toxicity",
+        "source": "DailyMed SPL v2 (2026-10-06) indication text; date per chemexpress 2026H1 landscape"
+      },
+      {
+        "region": "US-FDA",
+        "status": "original accelerated approval withdrawn",
+        "date": "2020-08 approved / 2022-11 withdrawn",
+        "indication": "monotherapy RRMM (DREAMM-2)",
+        "source": "chemexpress 2026H1 landscape"
+      },
+      {
+        "region": "EU-EMA",
+        "status": "approved",
+        "date": "2025-07-23",
+        "indication": "RRMM with bortezomib+dexamethasone (>=1 prior therapy) or pomalidomide+dexamethasone (>=1 prior incl. lenalidomide)",
+        "source": "EMA SmPC section 9 'Date of first authorisation: 23 July 2025'"
+      },
+      {
+        "region": "JP-MHLW/PMDA",
+        "status": "approved",
+        "date": "2025-05 (report dated 2025-05-20; exact decision day UNVERIFIED)",
+        "indication": "RRMM with BorDex or PomDex",
+        "source": "thepharmaletter.com report"
+      }
+    ],
+    "us_label": {
+      "has_us_label": true,
+      "set_id": "aef7c34c-fef8-407c-99c0-a68aded53c60",
+      "set_id_resolves": true,
+      "spl_versions": [
+        "v1 2025-11-17",
+        "v2 2026-10-06"
+      ],
+      "verified_at": "2026-10-15",
+      "note": "New set id issued after the 2025 re-approval; history.json lists only 2 versions, so the 2020-2022 label history is not under this set id."
+    },
+    "boxed_warning": "WARNING: OCULAR TOXICITY - changes in the corneal epithelium resulting in changes in vision, including severe visual impairment ... corneal ulcers, including cases with infection ... 83% of patients required a dosage modification due to ocular toxicity ... available only through the BLENREP REMS.",
+    "warnings_precautions": [
+      "5.1 Ocular Toxicity",
+      "5.2 BLENREP REMS",
+      "5.3 Thrombocytopenia",
+      "5.4 Embryo-fetal Toxicity"
+    ],
+    "eu_smpc_4_4_headings": [
+      "Ocular adverse reactions",
+      "Thrombocytopenia",
+      "Infusion-related reactions",
+      "Pneumonitis",
+      "Hepatitis B virus reactivation"
+    ],
+    "renal_impairment": {
+      "us": "No section 8 renal subsection. 12.3: 'No clinically significant differences in the pharmacokinetics of belantamab mafodotin-blmf were observed based on ... mild to severe renal impairment and kidney failure (eGFR <30 mL/min) ...'",
+      "eu_smpc_4_2": "No dose adjustment is recommended in patients with mild (eGFR 60-89 mL/min), moderate (eGFR 30-59 mL/min), severe renal impairment (eGFR < 30 mL/min not requiring dialysis), or end-stage renal disease (eGFR < 15 mL/min requiring dialysis) (see section 5.2)."
+    },
+    "hepatic_impairment": {
+      "us_8_6": "No dose adjustment is recommended for patients with mild hepatic impairment (total bilirubin > upper limit of normal [ULN] to <=1.5 x ULN and any aspartate aminotransferase [AST] or total bilirubin <=ULN with AST >ULN). The recommended dose of BLENREP has not been established in patients with moderate or severe hepatic impairment [see Clinical Pharmacology (12.3)].",
+      "eu_smpc_4_2": "No dose adjustment is recommended in patients with mild hepatic impairment ... There are limited data in patients with moderate ... or severe hepatic impairment ... to support a dose recommendation; Blenrep should only be used in these patients if the potential benefits outweigh any potential risks (see section 5.2)."
+    },
+    "grade3_by_organ": {
+      "ocular": [
+        "reduction in BCVA 57% (G3-4)",
+        "corneal exam findings 72%",
+        "blurred vision 22%",
+        "cataract 8%",
+        "dry eye 7%",
+        "eye irritation 5%",
+        "visual impairment 5%",
+        "ocular toxicity overall G3-4 77% (5.1)"
+      ],
+      "haematologic": [
+        "thrombocytopenia G3 29% + G4 45% (5.3)",
+        "platelets decreased (lab) 74%",
+        "lymphocytes decreased 53%",
+        "neutrophils decreased 17%",
+        "leukocytes decreased 11%"
+      ],
+      "hepatic": [
+        "hepatotoxicity (grouped) 14%",
+        "GGT increased among G3-4 lab abnormalities >=10% (rate not extracted)"
+      ],
+      "infectious_immune": [
+        "pneumonia 16%",
+        "COVID-19 5%",
+        "upper respiratory tract infection 2%"
+      ],
+      "gastrointestinal": [
+        "diarrhea 4%",
+        "nausea 0.8%"
+      ],
+      "constitutional": [
+        "fatigue 6%",
+        "pyrexia 0.4%"
+      ],
+      "pulmonary": [
+        "pneumonitis listed only as clinically relevant <10% (no G3 rate in US label); EU 4.4 has a Pneumonitis heading"
+      ]
+    },
+    "grade3_source": "BLENREP USPI Table 4/5, DREAMM-7 BVd arm (n=242), DailyMed SPL v2",
+    "organ_warnings": [
+      "ocular",
+      "haematologic",
+      "hepatic",
+      "infectious_immune",
+      "pulmonary (EU only)"
+    ],
+    "evidence_source": "US label (DailyMed) + EU SmPC",
+    "sources": [
+      "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=aef7c34c-fef8-407c-99c0-a68aded53c60",
+      "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/aef7c34c-fef8-407c-99c0-a68aded53c60/history.json",
+      "https://www.ema.europa.eu/en/documents/product-information/blenrep-epar-product-information_en.pdf",
+      "https://www.gsk.com/en-gb/media/press-releases/european-commission-approves-blenrep-belantamab-mafodotin-for-the-treatment-of-patients-with-relapsed-and-refractory-multiple-myeloma/",
+      "https://www.thepharmaletter.com/gsks-blenrep-combination-approved-by-japan-mhlw",
+      "https://pubmed.ncbi.nlm.nih.gov/38828951/"
+    ],
+    "unverified": [
+      "Japan exact approval day",
+      "US re-approval date 2025-10-23 taken from secondary source (DailyMed v1 is 2025-11-17)"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "moxetumomab pasudotox",
+    "brand": "LUMOXITI",
+    "code_names": [
+      "CAT-8015",
+      "HA22",
+      "moxetumomab pasudotox-tdfk"
+    ],
+    "target": "CD22",
+    "payload": "PE38 (truncated Pseudomonas exotoxin A) - recombinant immunotoxin, not a chemical ADC",
+    "payload_family": "bacterial_toxin",
+    "linker": "genetic fusion (no chemical linker)",
+    "linker_cleavable": false,
+    "dar": 1.0,
+    "dar_note": "structural (1 toxin per Fv); conf/adc_registry.yaml already carries it",
+    "category": "withdrawn",
+    "approvals": [
+      {
+        "region": "US-FDA",
+        "status": "approved 2018-09-13; permanently discontinued by AstraZeneca (market exit 2023)",
+        "date": "2018-09-13",
+        "indication": "adult relapsed/refractory hairy cell leukemia after >=2 prior systemic therapies incl. a purine nucleoside analog",
+        "source": "DailyMed SPL (last published 2020-09-08); chemexpress 2026H1 'withdrawn 2023'"
+      },
+      {
+        "region": "EU-EMA",
+        "status": "authorised 2021 then withdrawn",
+        "date": "UNVERIFIED",
+        "indication": "HCL",
+        "source": "UNVERIFIED"
+      }
+    ],
+    "us_label": {
+      "has_us_label": true,
+      "set_id": "8ddffb08-aab1-41f5-bbc6-09457e4e80ca",
+      "set_id_resolves": true,
+      "spl_versions": [
+        "latest published 2020-09-08"
+      ],
+      "verified_at": "2026-10-15",
+      "note": "Set id still resolves on DailyMed, but the product is off the market; not a current label."
+    },
+    "boxed_warning": "WARNING: CAPILLARY LEAK SYNDROME and HEMOLYTIC UREMIC SYNDROME",
+    "warnings_precautions": [
+      "5.1 Capillary Leak Syndrome",
+      "5.2 Hemolytic Uremic Syndrome",
+      "5.3 Renal Toxicity",
+      "5.4 Infusion Related Reactions",
+      "5.5 Electrolyte Abnormalities"
+    ],
+    "renal_impairment": {
+      "us": "Limitations of Use: 'LUMOXITI is not recommended in patients with severe renal impairment (CrCl <= 29 mL/min)'. 5.3: 'In the combined safety database of HCL patients treated with LUMOXITI, 26% (34/129) reported adverse events of renal toxicity ... Grade 3 acute kidney injury occurred in 1.6% (2/129) of patients.' 8.5: renal toxicity 40% vs 20% in patients >=65 vs <65."
+    },
+    "hepatic_impairment": {
+      "us": "No section 8 hepatic subsection. 12.3: PK in moderate to severe hepatic impairment (total bilirubin > 1.5 ULN) 'is unknown'."
+    },
+    "grade3_by_organ": {
+      "renal": [
+        "acute kidney injury G3 1.6%",
+        "creatinine increase G3 1.6%",
+        "HUS G3 3% + G4 0.8%"
+      ],
+      "cardiovascular": [
+        "capillary leak syndrome: G>=3 rate in 5.1 not extracted (CLS any grade 34%)"
+      ],
+      "infectious_immune": [
+        "infusion related reactions G3 3.8%"
+      ]
+    },
+    "grade3_source": "LUMOXITI USPI sections 5.1-5.4",
+    "organ_warnings": [
+      "renal",
+      "cardiovascular (CLS)",
+      "haematologic (HUS)",
+      "metabolic_endocrine (electrolytes)"
+    ],
+    "evidence_source": "US label (historical)",
+    "sources": [
+      "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8ddffb08-aab1-41f5-bbc6-09457e4e80ca",
+      "https://www.chemexpress.com/news-and-events/news/adc-global-landscape-2026H1"
+    ],
+    "unverified": [
+      "EU authorisation/withdrawal dates",
+      "exact US withdrawal date"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "disitamab vedotin",
+    "brand": "AIDIXI (爱地希)",
+    "code_names": [
+      "RC48",
+      "RC48-ADC",
+      "hertuzumab vedotin"
+    ],
+    "target": "HER2",
+    "payload": "MMAE",
+    "payload_family": "auristatin",
+    "linker": "mc-vc-PABC (valine-citrulline)",
+    "linker_cleavable": true,
+    "dar": 4.0,
+    "dar_note": "literature; matches conf/adc_registry.yaml",
+    "category": "approved",
+    "approvals": [
+      {
+        "region": "CN-NMPA",
+        "status": "conditional approval",
+        "date": "2021-06-09",
+        "indication": "HER2-overexpressing (IHC 2+/3+) locally advanced or metastatic gastric/GEJ cancer after >=2 systemic chemotherapies",
+        "source": "1stoncology / hemonc.org"
+      },
+      {
+        "region": "CN-NMPA",
+        "status": "conditional approval",
+        "date": "2021-12-31",
+        "indication": "HER2-expressing locally advanced or metastatic urothelial carcinoma after platinum chemotherapy",
+        "source": "hemonc.org"
+      },
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "UNVERIFIED",
+        "indication": "HER2-positive advanced breast cancer with liver metastases",
+        "source": "RemeGen news via itiger; date UNVERIFIED"
+      },
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "2026-03 (announced 2026-03-23)",
+        "indication": "HER2-low breast cancer with liver metastases",
+        "source": "allsci.com"
+      },
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "2026-04",
+        "indication": "1L HER2-expressing (IHC 1+/2+/3+) la/mUC with toripalimab (RC48-C016)",
+        "source": "allsci.com"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null,
+      "note": "Pfizer (ex-Seagen) holds ex-China rights; no US BLA found."
+    },
+    "boxed_warning": "UNVERIFIED (Chinese label not retrieved)",
+    "warnings_precautions": [
+      "UNVERIFIED"
+    ],
+    "renal_impairment": {
+      "note": "UNVERIFIED - Chinese label not retrieved"
+    },
+    "hepatic_impairment": {
+      "note": "UNVERIFIED - Chinese label not retrieved"
+    },
+    "grade3_by_organ": {
+      "overall": [
+        "G>=3 TRAE 55.1% (DV+toripalimab) vs 86.9% chemo, RC48-C016 (NEJM 2025)"
+      ],
+      "pulmonary": [
+        "1 treatment-related ILD death and 1 acute respiratory failure death of 243 (1.2% TR deaths total)"
+      ],
+      "hepatic": [
+        "GGT increase most common TRAE (organ G>=3 split not in abstract)"
+      ],
+      "neurologic": [
+        "peripheral neuropathy / hypoesthesia among most common (G>=3 rate not in abstract)"
+      ]
+    },
+    "grade3_source": "Sheng X et al. NEJM 2025;393:2324 (PMID 41124210)",
+    "organ_warnings": [
+      "neurologic (MMAE class)",
+      "haematologic",
+      "hepatic",
+      "pulmonary"
+    ],
+    "evidence_source": "trial publication only",
+    "sources": [
+      "https://pubmed.ncbi.nlm.nih.gov/41124210/",
+      "https://hemonc.org/wiki/Disitamab_vedotin_(Aidixi)",
+      "https://allsci.com/news/approvals/remegen-adds-5th-china-indication-for-her2-adc-in-urothelial-carcinoma/",
+      "https://allsci.com/news/pfizer-partner-remegen-takes-4th-china-indication-for-her2-adc-disitamab-vedotin-in-her2-low-breast-cancer/"
+    ],
+    "unverified": [
+      "HER2+ breast liver-mets approval date",
+      "Chinese label warnings/renal/hepatic text",
+      "organ-level G>=3 rates"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "sacituzumab tirumotecan",
+    "brand": "JIATAILAI (佳泰莱)",
+    "code_names": [
+      "sac-TMT",
+      "SKB264",
+      "MK-2870"
+    ],
+    "target": "TROP2",
+    "payload": "KL610023 (belotecan-derived topoisomerase I inhibitor)",
+    "payload_family": "camptothecin",
+    "linker": "sulfonyl-pyrimidine/CL2A-like, pH-sensitive, lysosome-cleavable",
+    "linker_cleavable": true,
+    "dar": 7.4,
+    "dar_note": "Kelun press release",
+    "category": "approved (CN); US BLA expected late 2026",
+    "approvals": [
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "2024-11 (reported)",
+        "indication": "unresectable la/m TNBC after >=2 prior systemic therapies (>=1 in advanced setting)",
+        "source": "Kelun press release 2026-07-30; fiercepharma"
+      },
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "2025 (database date 2025-03-04 UNVERIFIED)",
+        "indication": "EGFR-mutant la/m non-squamous NSCLC after EGFR-TKI and platinum chemotherapy",
+        "source": "Kelun press release 2026-07-30"
+      },
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "2025 (database date 2025-09-30 UNVERIFIED)",
+        "indication": "EGFR-mutant la/m non-squamous NSCLC after EGFR-TKI",
+        "source": "Kelun press release 2026-07-30"
+      },
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "2026-02-06",
+        "indication": "HR+/HER2- (IHC 0, 1+, 2+/ISH-) unresectable/metastatic breast cancer after endocrine therapy and >=1 chemo line",
+        "source": "allsci.com / Kelun"
+      },
+      {
+        "region": "CN-NMPA",
+        "status": "sNDA accepted, priority review",
+        "date": "2026-05 and 2026-07-30",
+        "indication": "1L NSCLC with pembrolizumab (PD-L1 TPS>=1%); 1L TNBC",
+        "source": "Kelun press release"
+      },
+      {
+        "region": "US-FDA",
+        "status": "not filed; BTD Dec 2024; national priority voucher Dec 2025; submission expected Oct-Nov 2026",
+        "date": null,
+        "indication": "EGFR-mutant NSCLC (Merck program)",
+        "source": "Merck / Reuters via search"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null,
+      "note": "DailyMed search for 'tirumotecan' returns nothing (2026-10-15)."
+    },
+    "boxed_warning": "UNVERIFIED",
+    "warnings_precautions": [
+      "UNVERIFIED"
+    ],
+    "renal_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "hepatic_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "grade3_by_organ": {
+      "overall": [
+        "OptiTROP-Lung04: TR G>=3 AE 58.0% vs 53.8% chemo; TR SAE 9.0% vs 17.6%"
+      ],
+      "haematologic": [
+        "neutrophil count decreased 39.9% (Lung04)",
+        "OptiTROP-Breast01: neutrophils 32.3%, anemia 27.7%, WBC 25.4% (conference data)"
+      ],
+      "pulmonary": [
+        "no drug-related ILD/pneumonitis reported in Lung04 (secondary reports)"
+      ],
+      "gastrointestinal": [
+        "stomatitis G>=3 rate not found"
+      ]
+    },
+    "grade3_source": "Fang W et al. NEJM 2026;394:13 (PMID 41124220); Xu B et al. Nat Med 2025 (PMID 40217078)",
+    "organ_warnings": [
+      "haematologic",
+      "gastrointestinal (stomatitis, class)",
+      "ocular? (UNVERIFIED)"
+    ],
+    "evidence_source": "trial publication only",
+    "sources": [
+      "https://pubmed.ncbi.nlm.nih.gov/41124220/",
+      "https://pubmed.ncbi.nlm.nih.gov/40217078/",
+      "https://www.biospace.com/press-releases/nmpa-accepts-new-indication-application-for-sacituzumab-tirumotecan-sac-tmt-as-first-line-treatment-for-advanced-tnbc",
+      "https://allsci.com/news/merck-partner-kelun-biotech-gets-new-indication-in-china-for-trop-2-adc-sac-tmt-in-hr-her2-mbc/",
+      "https://www.merck.com/news/fda-grants-breakthrough-therapy-designation-to-sacituzumab-tirumotecan-sac-tmt-for-the-treatment-of-certain-patients-with-previously-treated-advanced-or-metastatic-nonsquamous-non-small-cell-lung-ca/"
+    ],
+    "unverified": [
+      "exact NMPA dates for NSCLC indications",
+      "label warnings",
+      "organ-level G>=3 except haematologic"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "trastuzumab rezetecan",
+    "brand": "AIWEIDA (艾维达)",
+    "code_names": [
+      "SHR-A1811"
+    ],
+    "target": "HER2",
+    "payload": "SHR9265 (camptothecin-derived topoisomerase I inhibitor)",
+    "payload_family": "camptothecin",
+    "linker": "cleavable peptide linker (UNVERIFIED detail)",
+    "linker_cleavable": true,
+    "dar": null,
+    "dar_note": "~6 reported in literature, UNVERIFIED",
+    "category": "approved",
+    "approvals": [
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "2025-05-29",
+        "indication": "adult HER2 (ERBB2)-activating-mutation unresectable la/m NSCLC after >=1 prior systemic therapy",
+        "source": "precisionmedicineonline; chemexpress"
+      },
+      {
+        "region": "CN-NMPA",
+        "status": "sNDA accepted with priority review",
+        "date": "2025-09",
+        "indication": "HER2-positive breast cancer (HORIZON-Breast01); approval not confirmed",
+        "source": "search summary"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null,
+      "note": "Glenmark licensed ex-China rights (Sep 2025); no US filing found."
+    },
+    "boxed_warning": "UNVERIFIED",
+    "warnings_precautions": [
+      "UNVERIFIED"
+    ],
+    "renal_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "hepatic_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "grade3_by_organ": {
+      "haematologic": [
+        "HORIZON-Lung (n=94) G3-4 TRAE: neutrophils 40%, WBC 27%, anaemia 23%, platelets 11%, lymphocytes 7%",
+        "HORIZON-Breast01 (n=142) G>=3 TRAE: neutrophils 54%, WBC 20%, platelets 11%"
+      ],
+      "pulmonary": [
+        "HORIZON-Lung: ILD as treatment-related SAE 5%",
+        "HORIZON-Breast01: ILD 3% any grade (1 G3)"
+      ]
+    },
+    "grade3_source": "Lancet Oncol 2025;26:437 (PMID 40020696); Lancet Oncol 2026;27:929 (PMID 42385760)",
+    "organ_warnings": [
+      "haematologic",
+      "pulmonary (ILD)"
+    ],
+    "evidence_source": "trial publication only",
+    "sources": [
+      "https://pubmed.ncbi.nlm.nih.gov/40020696/",
+      "https://pubmed.ncbi.nlm.nih.gov/42385760/",
+      "https://precisionmedicineonline.com/precision-oncology/nmpa-approves-hengrui-pharmas-trastuzumab-rezetecan-her2-mutant-nsclc"
+    ],
+    "unverified": [
+      "linker chemistry and DAR",
+      "breast indication approval",
+      "label text"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "trastuzumab botidotin",
+    "brand": "SHUTAILAI (舒泰莱)",
+    "code_names": [
+      "A166",
+      "KL166"
+    ],
+    "target": "HER2",
+    "payload": "Duo-5 (Duostatin-5, MMAF-derived auristatin)",
+    "payload_family": "auristatin",
+    "linker": "stable enzyme-cleavable linker (site-specific)",
+    "linker_cleavable": true,
+    "dar": 2.0,
+    "dar_note": "Kelun HKEX announcement 2025-10-17",
+    "category": "approved",
+    "approvals": [
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "2025-10-17",
+        "indication": "adult unresectable or metastatic HER2-positive breast cancer after >=1 prior anti-HER2 therapy",
+        "source": "Kelun HKEX announcement; thepharmaletter"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": "UNVERIFIED",
+    "warnings_precautions": [
+      "UNVERIFIED"
+    ],
+    "renal_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "hepatic_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "grade3_by_organ": {
+      "overall": [
+        "G>=3 TEAE 69.8% vs 63.7% T-DM1 (KL166-III-06, n=182)"
+      ],
+      "ocular": [
+        "corneal disorders 92.9% any grade, dry eye 61.5%; G>=3 ocular rate not in abstract; ocular AEs most common reason for dose reduction"
+      ],
+      "pulmonary/haematologic/hepatic/GI": [
+        "'low incidences' per JCO abstract (no numbers)"
+      ]
+    },
+    "grade3_source": "J Clin Oncol 2026 (PMID 42727044)",
+    "organ_warnings": [
+      "ocular (dominant, MMAF class)"
+    ],
+    "evidence_source": "trial publication only",
+    "sources": [
+      "https://pubmed.ncbi.nlm.nih.gov/42727044/",
+      "https://www.hkexnews.hk/listedco/listconews/sehk/2025/1017/2025101700358.pdf",
+      "https://www.thepharmaletter.com/biotech-news/kelun-secures-china-approval-for-first-homegrown-her2-breast-cancer-adc"
+    ],
+    "unverified": [
+      "G>=3 keratopathy rate",
+      "label text"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "becotatug vedotin",
+    "brand": "MEIYOUHENG (美佑恒)",
+    "code_names": [
+      "MRG003"
+    ],
+    "target": "EGFR",
+    "payload": "MMAE",
+    "payload_family": "auristatin",
+    "linker": "valine-citrulline (lysosomal protease-cleavable)",
+    "linker_cleavable": true,
+    "dar": null,
+    "dar_note": "~3.8 in literature, UNVERIFIED",
+    "category": "approved",
+    "approvals": [
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "2025-10-30 (announcement date)",
+        "indication": "R/M nasopharyngeal carcinoma after >=2 lines of systemic chemotherapy and PD-(L)1 inhibitor",
+        "source": "Lepu HKEX announcement 2025-10-30"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": "UNVERIFIED",
+    "warnings_precautions": [
+      "UNVERIFIED"
+    ],
+    "renal_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "hepatic_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "grade3_by_organ": {
+      "overall": [
+        "phase 3 (ASCO 2025 LBA6005) G>=3 TRAE 50.6% (secondary report)",
+        "phase IIa (n=61) G>=3 TRAE 39%"
+      ],
+      "haematologic": [
+        "HNSCC phase 2: WBC decreased 6.5%, anaemia 4.8%"
+      ],
+      "dermatologic": [
+        "rash/pruritus very common (mostly G1-2); EGFR class effect"
+      ],
+      "neurologic": [
+        "hypoesthesia common (G1-2) in combination study"
+      ]
+    },
+    "grade3_source": "Med 2026;7:101029 (PMID 41720100); JCO 2026 (PMID 42641116); DelveInsight ASCO summary",
+    "organ_warnings": [
+      "dermatologic",
+      "neurologic",
+      "haematologic"
+    ],
+    "evidence_source": "trial publication only",
+    "sources": [
+      "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1030/2025103001194.pdf",
+      "https://pubmed.ncbi.nlm.nih.gov/41720100/",
+      "https://pubmed.ncbi.nlm.nih.gov/42641116/",
+      "https://www.delveinsight.com/asco-conference/article/becotatug-vedotin-for-nasopharyngeal-carcinoma"
+    ],
+    "unverified": [
+      "DAR",
+      "phase 3 per-organ G>=3",
+      "label text"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "izalontamab brengitecan",
+    "brand": "YIZEKANG (Chinese brand per chemexpress)",
+    "code_names": [
+      "iza-bren",
+      "BL-B01D1",
+      "BMS-986507"
+    ],
+    "target": "EGFR x HER3 (bispecific)",
+    "payload": "Ed-04 (camptothecin-derived topoisomerase I inhibitor)",
+    "payload_family": "camptothecin",
+    "linker": "cleavable tetrapeptide-based (UNVERIFIED detail)",
+    "linker_cleavable": true,
+    "dar": 8.0,
+    "dar_note": "conf/adc_registry.yaml (PMC13011950)",
+    "category": "approved",
+    "approvals": [
+      {
+        "region": "CN-NMPA",
+        "status": "conditional approval, priority review",
+        "date": "2026-06-22",
+        "indication": "R/M nasopharyngeal carcinoma after platinum chemotherapy (>=2 lines) and PD-1/PD-L1 inhibitor",
+        "source": "biopharminternational; onclive"
+      },
+      {
+        "region": "CN-NMPA",
+        "status": "approved",
+        "date": "2026-07-17",
+        "indication": "R/M ESCC after platinum chemotherapy and PD-1/PD-L1 inhibitor",
+        "source": "onclive; SystImmune release"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null,
+      "note": "First approved bispecific ADC worldwide; BMS partnered ex-China."
+    },
+    "boxed_warning": "UNVERIFIED",
+    "warnings_precautions": [
+      "UNVERIFIED"
+    ],
+    "renal_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "hepatic_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "grade3_by_organ": {
+      "overall": [
+        "G>=3 TRAE 80% vs 62% chemo; serious TRAE 43%; 4 (2%) TR deaths (BL-B01D1-303, NPC)"
+      ],
+      "haematologic": [
+        "anaemia 50%",
+        "WBC decreased 43%",
+        "platelets decreased 43%",
+        "neutrophils decreased 38%"
+      ],
+      "non-haematologic": [
+        "mostly G1-2 per abstract"
+      ]
+    },
+    "grade3_source": "Lancet 2025;406:2235 (PMID 41125110)",
+    "organ_warnings": [
+      "haematologic (dominant)"
+    ],
+    "evidence_source": "trial publication only",
+    "sources": [
+      "https://pubmed.ncbi.nlm.nih.gov/41125110/",
+      "https://www.biopharminternational.com/view/china-nmpa-approves-iza-bren-for-nasopharyngeal-carcinoma-marking-first-global-bispecific-adc-approval",
+      "https://www.onclive.com/view/china-s-nmpa-approves-iza-bren-for-pretreated-recurrent-metastatic-escc"
+    ],
+    "unverified": [
+      "brand romanisation",
+      "linker detail",
+      "label text"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "cetuximab sarotalocan",
+    "brand": "AKALUX",
+    "code_names": [
+      "RM-1929",
+      "ASP-1929"
+    ],
+    "target": "EGFR",
+    "payload": "IR700 photoabsorber (activated by 690 nm light; photoimmunotherapy, not a cytotoxic payload)",
+    "payload_family": "photoabsorber",
+    "linker": "non-cleavable covalent (UNVERIFIED)",
+    "linker_cleavable": false,
+    "dar": null,
+    "dar_note": "UNVERIFIED",
+    "category": "approved (JP, conditional)",
+    "approvals": [
+      {
+        "region": "JP-MHLW/PMDA",
+        "status": "conditional early approval (Sakigake)",
+        "date": "2020-09",
+        "indication": "unresectable locally advanced or locally recurrent head and neck cancer",
+        "source": "reviews (iv.iiarjournals; PMC)"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": "UNVERIFIED",
+    "warnings_precautions": [
+      "PMDA label not retrieved; reported risks: tumor/carotid hemorrhage, laryngeal edema, tongue swelling, infusion reactions, photosensitivity, pain, hypomagnesemia"
+    ],
+    "renal_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "hepatic_impairment": {
+      "note": "UNVERIFIED"
+    },
+    "grade3_by_organ": {
+      "local": [
+        "pain 97.9%, mucositis 70.8%, laryngeal edema 58.3% any grade (retrospective n=48)"
+      ]
+    },
+    "grade3_source": "retrospective Japanese series",
+    "organ_warnings": [
+      "local/airway",
+      "dermatologic (photosensitivity)"
+    ],
+    "evidence_source": "Japanese label (not retrieved) / retrospective series",
+    "sources": [
+      "https://iv.iiarjournals.org/content/40/5/3014.full.txt",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12384706/"
+    ],
+    "unverified": [
+      "exact approval day",
+      "PMDA label text"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "ifinatamab deruxtecan",
+    "brand": null,
+    "code_names": [
+      "I-DXd",
+      "DS-7300",
+      "MK-2400"
+    ],
+    "target": "B7-H3 (CD276)",
+    "payload": "DXd (deruxtecan, topoisomerase I inhibitor)",
+    "payload_family": "camptothecin",
+    "linker": "GGFG tetrapeptide (cleavable)",
+    "linker_cleavable": true,
+    "dar": 4.0,
+    "dar_note": "literature ~4, UNVERIFIED (registry has None)",
+    "category": "BLA withdrawn; phase 3 ongoing",
+    "approvals": [
+      {
+        "region": "US-FDA",
+        "status": "BLA accepted 2026-04-13 (priority review, PDUFA 2026-10-10) then voluntarily withdrawn ~2026-09-25 after FDA said IDeate-Lung01 did not support accelerated approval",
+        "date": "2026-09-25",
+        "indication": "ES-SCLC after platinum chemotherapy",
+        "source": "targetedonc; biopharminternational; cancernetwork"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {
+      "overall": [
+        "G>=3 TRAE 36.5% (12 mg/kg, n=137)"
+      ],
+      "pulmonary": [
+        "adjudicated TR ILD 12.4%, G>=3 4.4%; TR deaths 4.4%"
+      ],
+      "haematologic": [
+        "anaemia 34.3%, neutropenia 34.3% any grade"
+      ]
+    },
+    "grade3_source": "IDeate-Lung01, JCO 2026;44:261 (PMID 41086386)",
+    "organ_warnings": [
+      "pulmonary (ILD, DXd class)",
+      "haematologic"
+    ],
+    "evidence_source": "trial publication only",
+    "sources": [
+      "https://pubmed.ncbi.nlm.nih.gov/41086386/",
+      "https://www.targetedonc.com/view/fda-application-withdrawn-for-i-dxd-in-small-cell-lung-cancer",
+      "https://www.biopharminternational.com/view/daiichi-sankyo-merck-pull-ifinatamab-deruxtecan-bla-sclc",
+      "https://www.daiichisankyo.com/files/news/pressrelease/pdf/202604/20260413_E.pdf"
+    ],
+    "unverified": [
+      "exact withdrawal date (2026-09-25 vs 26 by outlet)"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "patritumab deruxtecan",
+    "brand": null,
+    "code_names": [
+      "HER3-DXd",
+      "U3-1402",
+      "MK-1022"
+    ],
+    "target": "HER3 (ERBB3)",
+    "payload": "DXd",
+    "payload_family": "camptothecin",
+    "linker": "GGFG tetrapeptide (cleavable)",
+    "linker_cleavable": true,
+    "dar": 8.0,
+    "dar_note": "literature; matches registry",
+    "category": "BLA withdrawn",
+    "approvals": [
+      {
+        "region": "US-FDA",
+        "status": "CRL 2024-06 (manufacturing inspection); BLA withdrawn 2025-05-29 after HERTHENA-Lung02 OS not significant",
+        "date": "2025-05-29",
+        "indication": "EGFR-mutated NSCLC after EGFR-TKI and platinum",
+        "source": "thepharmaletter; onclive"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {
+      "overall": [
+        "HERTHENA-Lung02 TR G>=3 AE 57.9% vs 46.1%"
+      ],
+      "pulmonary": [
+        "adjudicated ILD 5.2%, 2 grade 5"
+      ]
+    },
+    "grade3_source": "HERTHENA-Lung02 via OncLive/Daiichi release (secondary)",
+    "organ_warnings": [
+      "pulmonary (ILD)",
+      "haematologic"
+    ],
+    "evidence_source": "trial publication only",
+    "sources": [
+      "https://www.thepharmaletter.com/biotechnology/daiichi-and-merck-pull-patritumab-deruxtecan-bla",
+      "https://www.onclive.com/view/patritumab-deruxtecan-does-not-improve-overall-survival-in-egfr-mutated-nsclc",
+      "https://daiichisankyo.com/files/news/pressrelease/pdf/202409/20240917_E.pdf"
+    ],
+    "unverified": [
+      "safety numbers from secondary reports"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "trastuzumab pamirtecan",
+    "brand": null,
+    "code_names": [
+      "DB-1303",
+      "BNT323"
+    ],
+    "target": "HER2",
+    "payload": "P1003 (topoisomerase I inhibitor, UNVERIFIED)",
+    "payload_family": "camptothecin",
+    "linker": "cleavable (UNVERIFIED)",
+    "linker_cleavable": true,
+    "dar": 8.0,
+    "dar_note": "UNVERIFIED",
+    "category": "filed (CN)",
+    "approvals": [
+      {
+        "region": "CN-NMPA",
+        "status": "BLA accepted",
+        "date": "2026-04-09",
+        "indication": "unresectable/metastatic HER2-positive breast cancer",
+        "source": "DualityBio/BioNTech"
+      },
+      {
+        "region": "US-FDA",
+        "status": "BLA planned 2026 (endometrial); BTD 2023; Fern-EC-01 phase 3 ongoing",
+        "date": null,
+        "indication": "HER2-expressing endometrial cancer",
+        "source": "BioNTech 2026-04 release"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "not collected",
+    "organ_warnings": [
+      "pulmonary (ILD, class) UNVERIFIED"
+    ],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://www.biontech.com/int/en/home/mediaroom/news/press-releases/2026/04/biontech-and-dualitybios-antibody-drug-conjugate-trastuzumab.html",
+      "https://www.pearceip.law/2026/04/11/biontech-and-dualitybio-report-phase-2-success-as-trastuzumab-pamirtecan-bla-advances-in-china/"
+    ],
+    "unverified": [
+      "payload/linker/DAR",
+      "US filing status after April 2026"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "arcotatug tavatecan",
+    "brand": null,
+    "code_names": [
+      "IBI343",
+      "TAK-921"
+    ],
+    "target": "CLDN18.2",
+    "payload": "exatecan-derived topoisomerase I inhibitor (UNVERIFIED)",
+    "payload_family": "camptothecin",
+    "linker": "UNVERIFIED",
+    "linker_cleavable": true,
+    "dar": null,
+    "dar_note": "UNVERIFIED",
+    "category": "filed (CN)",
+    "approvals": [
+      {
+        "region": "CN-NMPA",
+        "status": "NDA accepted, priority review",
+        "date": "2026-06-04",
+        "indication": "CLDN18.2+ HER2- G/GEJ adenocarcinoma after >=2 prior systemic therapies (G-HOPE-001)",
+        "source": "Innovent release"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "phase 3 data pending (ESMO 2026 LBA)",
+    "organ_warnings": [
+      "gastrointestinal (CLDN18.2 class) UNVERIFIED"
+    ],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://www.biospace.com/press-releases/worlds-first-cldn18-2-adc-for-regulatory-review-innovent-biologics-announces-ibi343-arcotatug-tavatecan-met-primary-endpoint-in-international-phase-3-study-in-advanced-refractory-gastric-cancer-and-nda-accepted-by-china-nmpa",
+      "https://clinicaltrials.gov/study/NCT06238843"
+    ],
+    "unverified": [
+      "payload/linker/DAR"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "tecotabart vedotin",
+    "brand": null,
+    "code_names": [
+      "LM-302",
+      "TPX-4589"
+    ],
+    "target": "CLDN18.2",
+    "payload": "MMAE",
+    "payload_family": "auristatin",
+    "linker": "vc (UNVERIFIED)",
+    "linker_cleavable": true,
+    "dar": null,
+    "dar_note": "UNVERIFIED",
+    "category": "filed (CN)",
+    "approvals": [
+      {
+        "region": "CN-NMPA",
+        "status": "marketing application accepted",
+        "date": "2026-06-23 (single Chinese-language source)",
+        "indication": "CLDN18.2+ la/m G/GEJ cancer after >=2 (3L+) lines",
+        "source": "10jqka.com.cn"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "data expected early 2027",
+    "organ_warnings": [
+      "neurologic (MMAE class) UNVERIFIED"
+    ],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://stock.10jqka.com.cn/20260623/c677649925.shtml",
+      "https://clinicaltrials.gov/study/NCT05934331"
+    ],
+    "unverified": [
+      "acceptance confirmed only by one source",
+      "INN-to-code mapping"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "raludotatug deruxtecan",
+    "brand": null,
+    "code_names": [
+      "R-DXd",
+      "DS-6000",
+      "MK-5909"
+    ],
+    "target": "CDH6",
+    "payload": "DXd",
+    "payload_family": "camptothecin",
+    "linker": "GGFG (cleavable)",
+    "linker_cleavable": true,
+    "dar": 8.0,
+    "dar_note": "literature, UNVERIFIED",
+    "category": "phase 3",
+    "approvals": [
+      {
+        "region": "none",
+        "status": "phase 2/3 REJOICE-Ovarian01 (NCT06161025) recruiting; FDA BTD 2025-09 (CDH6+ platinum-resistant ovarian); no BLA found",
+        "date": null,
+        "indication": null,
+        "source": "https://clinicaltrials.gov/study/NCT06161025"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "not collected (no label; trial data immature or program stopped)",
+    "organ_warnings": [],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://clinicaltrials.gov/study/NCT06161025",
+      "https://www.onclive.com/view/fda-grants-breakthrough-therapy-designation-to-r-dxd-in-cdh6-expressing-ovarian-cancer"
+    ],
+    "unverified": [
+      "design details marked UNVERIFIED"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "telisotuzumab adizutecan",
+    "brand": null,
+    "code_names": [
+      "Temab-A",
+      "ABBV-400"
+    ],
+    "target": "c-Met",
+    "payload": "adizutecan (topoisomerase I inhibitor)",
+    "payload_family": "camptothecin",
+    "linker": "cleavable (UNVERIFIED)",
+    "linker_cleavable": true,
+    "dar": null,
+    "dar_note": "UNVERIFIED",
+    "category": "phase 3",
+    "approvals": [
+      {
+        "region": "none",
+        "status": "phase 3 in mCRC: AndroMETa-CRC-064 (NCT06614192, active not recruiting), NCT07525206 (recruiting, start 2026-05), NCT06820463; FIH GEA: G>=3 TEAE 88% (n=42)",
+        "date": null,
+        "indication": null,
+        "source": "https://clinicaltrials.gov/study/NCT07525206"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "not collected (no label; trial data immature or program stopped)",
+    "organ_warnings": [],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://clinicaltrials.gov/study/NCT07525206",
+      "https://clinicaltrials.gov/study/NCT06820463",
+      "https://pubmed.ncbi.nlm.nih.gov/41910595/"
+    ],
+    "unverified": [
+      "design details marked UNVERIFIED"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "zilovertamab vedotin",
+    "brand": null,
+    "code_names": [
+      "MK-2140",
+      "VLS-101"
+    ],
+    "target": "ROR1",
+    "payload": "MMAE",
+    "payload_family": "auristatin",
+    "linker": "vc (cleavable)",
+    "linker_cleavable": true,
+    "dar": null,
+    "dar_note": "UNVERIFIED",
+    "category": "phase 3",
+    "approvals": [
+      {
+        "region": "none",
+        "status": "phase 3 waveLINE-010 (NCT06717347, ZV+R-CHP vs R-CHOP, 1L DLBCL) recruiting; solid-tumor phase 2 negative",
+        "date": null,
+        "indication": null,
+        "source": "https://www.merck.com/news/merck-announces-phase-3-waveline-010-trial-initiation-evaluating-zilovertamab-vedotin-an-investigational-antibody-drug-conjugate-for-the-treatment-of-patients-with-previously-untreated-diffuse-large/"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "not collected (no label; trial data immature or program stopped)",
+    "organ_warnings": [],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://www.merck.com/news/merck-announces-phase-3-waveline-010-trial-initiation-evaluating-zilovertamab-vedotin-an-investigational-antibody-drug-conjugate-for-the-treatment-of-patients-with-previously-untreated-diffuse-large/",
+      "https://pubmed.ncbi.nlm.nih.gov/40762544/"
+    ],
+    "unverified": [
+      "design details marked UNVERIFIED"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "sigvotatug vedotin",
+    "brand": null,
+    "code_names": [
+      "SGN-B6A",
+      "PF-08046047"
+    ],
+    "target": "integrin beta-6",
+    "payload": "MMAE",
+    "payload_family": "auristatin",
+    "linker": "vc (cleavable)",
+    "linker_cleavable": true,
+    "dar": null,
+    "dar_note": "UNVERIFIED",
+    "category": "phase 3",
+    "approvals": [
+      {
+        "region": "none",
+        "status": "phase 3 Be6A LUNG-01 / SigVie-002 (NCT06012435) missed OS primary endpoint vs docetaxel (Pfizer topline); 1L combo phase 3 ongoing",
+        "date": null,
+        "indication": null,
+        "source": "https://www.barchart.com/story/news/2590154/pfizer-announces-topline-phase-3-results-for-sigvotatug-vedotin-in-previously-treated-metastatic-non-squamous-non-small-cell-lung-cancer"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "not collected (no label; trial data immature or program stopped)",
+    "organ_warnings": [],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://www.barchart.com/story/news/2590154/pfizer-announces-topline-phase-3-results-for-sigvotatug-vedotin-in-previously-treated-metastatic-non-squamous-non-small-cell-lung-cancer",
+      "https://clinicaltrials.ucsf.edu/trial/NCT06012435"
+    ],
+    "unverified": [
+      "design details marked UNVERIFIED"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "rinatabart sesutecan",
+    "brand": null,
+    "code_names": [
+      "Rina-S",
+      "PRO1184",
+      "GEN1184"
+    ],
+    "target": "FRalpha",
+    "payload": "exatecan",
+    "payload_family": "camptothecin",
+    "linker": "hydrophilic cleavable (UNVERIFIED)",
+    "linker_cleavable": true,
+    "dar": 8.0,
+    "dar_note": "literature, UNVERIFIED",
+    "category": "phase 3",
+    "approvals": [
+      {
+        "region": "none",
+        "status": "phase 3 RAINFOL-02 (NCT06619236, PROC) and RAINFOL-10 (NCT07859215, 1L maintenance)",
+        "date": null,
+        "indication": null,
+        "source": "https://clinicaltrials.gov/study/NCT06619236"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "not collected (no label; trial data immature or program stopped)",
+    "organ_warnings": [],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://clinicaltrials.gov/study/NCT06619236",
+      "https://clinicaltrials.gov/study/NCT07859215"
+    ],
+    "unverified": [
+      "design details marked UNVERIFIED"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "puxitatug samrotecan",
+    "brand": null,
+    "code_names": [
+      "AZD8205",
+      "puxita-S"
+    ],
+    "target": "B7-H4",
+    "payload": "topoisomerase I inhibitor (AZ14170133)",
+    "payload_family": "camptothecin",
+    "linker": "cleavable (UNVERIFIED)",
+    "linker_cleavable": true,
+    "dar": 8.0,
+    "dar_note": "literature, UNVERIFIED",
+    "category": "phase 3",
+    "approvals": [
+      {
+        "region": "none",
+        "status": "phase 3 Bluestar-Endometrial01 vs chemotherapy",
+        "date": null,
+        "indication": null,
+        "source": "https://www.tipranks.com/news/company-announcements/astrazenecas-new-hope-puxitatug-samrotecan-vs-chemotherapy-in-endometrial-cancer"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "not collected (no label; trial data immature or program stopped)",
+    "organ_warnings": [],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://www.tipranks.com/news/company-announcements/astrazenecas-new-hope-puxitatug-samrotecan-vs-chemotherapy-in-endometrial-cancer"
+    ],
+    "unverified": [
+      "design details marked UNVERIFIED"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "tusamitamab ravtansine",
+    "brand": null,
+    "code_names": [
+      "SAR408701"
+    ],
+    "target": "CEACAM5",
+    "payload": "DM4",
+    "payload_family": "maytansinoid",
+    "linker": "SPDB (cleavable disulfide)",
+    "linker_cleavable": true,
+    "dar": 3.8,
+    "dar_note": "literature, UNVERIFIED",
+    "category": "discontinued",
+    "approvals": [
+      {
+        "region": "none",
+        "status": "DISCONTINUED Dec 2023: phase 3 CARMEN-LC03 missed PFS vs docetaxel",
+        "date": null,
+        "indication": null,
+        "source": "https://www.fiercebiotech.com/biotech/sanofis-oncology-strategy-suffers-another-blow-adc-scrapped-over-phase-3-lung-cancer-fail"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "not collected (no label; trial data immature or program stopped)",
+    "organ_warnings": [],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://www.fiercebiotech.com/biotech/sanofis-oncology-strategy-suffers-another-blow-adc-scrapped-over-phase-3-lung-cancer-fail"
+    ],
+    "unverified": [
+      "design details marked UNVERIFIED"
+    ],
+    "checked_at": "2026-10-15"
+  },
+  {
+    "inn": "upifitamab rilsodotin",
+    "brand": null,
+    "code_names": [
+      "UpRi",
+      "XMT-1536"
+    ],
+    "target": "NaPi2b (SLC34A2)",
+    "payload": "AF-HPA (auristatin)",
+    "payload_family": "auristatin",
+    "linker": "Dolaflexin polymer (cleavable)",
+    "linker_cleavable": true,
+    "dar": 10.0,
+    "dar_note": "literature, UNVERIFIED",
+    "category": "discontinued",
+    "approvals": [
+      {
+        "region": "none",
+        "status": "DISCONTINUED Jul 2023: UPLIFT missed primary endpoint; FDA partial hold for fatal bleeding (5 G5 events)",
+        "date": null,
+        "indication": null,
+        "source": "https://www.sec.gov/Archives/edgar/data/1442836/000110465923084538/tm2322196d1_8k.htm"
+      }
+    ],
+    "us_label": {
+      "has_us_label": false,
+      "set_id": null,
+      "set_id_resolves": null
+    },
+    "boxed_warning": null,
+    "warnings_precautions": [],
+    "renal_impairment": {
+      "note": "no label"
+    },
+    "hepatic_impairment": {
+      "note": "no label"
+    },
+    "grade3_by_organ": {},
+    "grade3_source": "not collected (no label; trial data immature or program stopped)",
+    "organ_warnings": [],
+    "evidence_source": "none yet",
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/1442836/000110465923084538/tm2322196d1_8k.htm",
+      "https://www.fiercebiotech.com/biotech/mersana-halves-workforce-shares-plummet-75-wake-lead-cancer-drugs-fail"
+    ],
+    "unverified": [
+      "design details marked UNVERIFIED"
+    ],
+    "checked_at": "2026-10-15"
+  }
+]

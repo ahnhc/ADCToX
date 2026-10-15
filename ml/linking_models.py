@@ -68,13 +68,17 @@ def load_organ_labels():
             if x["id"] in cal or x.get("scope") == "unclear": continue
             strict_per.setdefault(x["id"], []).append(frozenset(x["organs"])); strict[x["id"]] = frozenset(x["organs"])
     labels.update(strict)
+    verified = {}
+    if os.path.exists(R + "concept_organs/labels/verified_v2.jsonl"):                # second round (Haiku 5.5, majority of 2-3 votes)
+        for x in map(json.loads, open(R + "concept_organs/labels/verified_v2.jsonl")): verified[x["id"]] = frozenset(x["organs"])
+    labels.update(verified)
     expert = {}
     for f in sorted(glob.glob(R + "concept_organs/labels/expert_*.jsonl")):          # human (clinician) review: always wins
         for x in map(json.loads, open(f)):
             if x.get("scope") != "unclear": expert[x["id"]] = frozenset(x["organs"])
     labels.update(expert)
     agree = [v[0] == v[1] for v in strict_per.values() if len(v) >= 2]
-    stats = dict(n_labels=len(labels), n_strict=len(strict), n_expert=len(expert), relabel_calibration_exact=rq, relabel_overlap_exact=float(np.mean(agree)) if agree else None, n_relabel_overlap=len(agree))
+    stats = dict(n_labels=len(labels), n_strict=len(strict), n_verified=len(verified), n_expert=len(expert), relabel_calibration_exact=rq, relabel_overlap_exact=float(np.mean(agree)) if agree else None, n_relabel_overlap=len(agree))
     return labels, stats
 
 
