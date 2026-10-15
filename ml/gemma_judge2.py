@@ -166,7 +166,8 @@ def main():
         tb = max(np.arange(0.2, 0.81, 0.05), key=lambda t_: 2 * ((p >= t_) & y).sum() / max(1, (p >= t_).sum() + y.sum())); temp.append(float(tz)); thr.append(float(tb))
     temp, thr = np.array(temp, np.float32), np.array(thr, np.float32)
     _, zj, _, _ = predict(model, tok, junk_val); pr = 1 / (1 + np.exp(-np.concatenate([zv, zj]))); yl = np.r_[np.ones(len(zv)), np.zeros(len(zj))]
-    vthr = float(min((t_ for t_ in np.arange(0.05, 0.96, 0.05) if (pr[yl == 0] >= t_).mean() == 0), default=0.95))     # lowest threshold that rejects every held-out junk text
+    grid = list(np.arange(0.05, 0.96, 0.05)) + [0.97, 0.98, 0.99, 0.995]
+    vthr = float(min((t_ for t_ in grid if (pr[yl == 0] >= t_).mean() == 0), default=0.995))     # lowest threshold that rejects every held-out junk text
     valid_info = dict(threshold=vthr, real_accepted=float((pr[yl == 1] >= vthr).mean()), junk_accepted=float((pr[yl == 0] >= vthr).mean()))
     ma = [k for k, x in enumerate(val) if x[4] is not None and x[1] in row]
     va_top = (torch.from_numpy(va[ma]).to(DEV) @ torch.from_numpy(E).to(DEV).T).argmax(1).cpu().numpy()

@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.3.10 — One search box, a plain analysis screen, a Korean result table
+
+- **One search box on the first screen.** The name / symptom tabs are gone.
+  - Names are suggested while typing.
+  - Two or more words (a sentence or symptoms) also list diseases found from the symptoms, under their own heading, after a short pause.
+- **Suggestion rows:** Korean name, organs, then the English name in grey.
+  - Picked diseases keep their Korean name in the list, the step summary and the priority screen.
+- **AI organ analysis screen:** one line per typed condition with input, organs and what it was read as (MONDO, AI 판정, 직접 고름, 판정 못 함).
+  - The yellow learned-model guesses are no longer shown there.
+  - The question "학습 모델 추정을 쓸까요?" is gone: unmapped inputs use the automatic rule (only text read as a disease).
+- **Result table and printed output in Korean:**
+  - Column headings: 라벨 제한, 이 환자 장기 경고, 다른 장기 경고.
+  - Restriction states: 없음, 모니터링, 자료 부족, 피하기. An ADC with no label statement shows 없음 instead of `-`.
+  - Organ names: 간, 폐, 신장 ...
+  - Panels: 검사 수치, 장기 우선순위, 치료 전 확인, 라벨 조치, AI 장기 분석.
+  - An empty second organ cell is left blank.
+- "검증 안 된 추정" is shown only when a learned estimate was actually applied.
+
 ## 0.3.9 — Natural disease names and organ words
 
 - **Suggestions show the Korean name first:**

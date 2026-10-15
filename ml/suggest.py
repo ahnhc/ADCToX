@@ -146,6 +146,7 @@ class Index:
                                 self._add(k, 2.5, ("mondo", t, first[t][:1].upper() + first[t][1:], ko.get(t, k), organs.get(t, [])))
                                 self.ko.setdefault(t, ko.get(t, k))
                             elif len(k) <= 10: self._add(k, 0.5, ("text", k, k, v, None))      # no MONDO concept: short names only, after the linked ones
+                        for t, k in ko.items(): self.ko[t] = k        # the curated profile name (spaced, everyday) wins over the KCD one
                         for t in self.ko:                         # a disease with a Korean (KCD) name is a common one: its English name ranks like a profile
                             self._add(first[t], 2, ("mondo", t, first[t][:1].upper() + first[t][1:], self.ko[t], organs.get(t, [])))
                 mondo = self.rows; self.organs = organs

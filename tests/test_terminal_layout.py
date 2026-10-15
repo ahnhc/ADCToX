@@ -119,8 +119,7 @@ def test_organ_preview_uses_patient_warnings_and_excludes_patient_organs_from_ot
     row["organs"]["pulmonary"]["level"] = "boxed"
     row["organs"]["haematologic"]["level"] = "W&P"
     preview = list(map(plain, R._organ_preview(row)))
-    assert preview == ["!! Liver", " ! Cardio+", "!! Lung+"]
-    assert all(cell.isascii() for cell in preview)
+    assert preview == ["!! 간", " ! 심장+", "!! 폐+"]
     row["boxed"].clear()
     row["warn"].clear()
     for organ in R.AXES: row["organs"][organ]["level"] = "none"
@@ -140,7 +139,7 @@ def test_header_bounds_values_and_priorities_without_repeating_diagnoses(width):
     assert all(R._width(line) <= width and "·" not in line for line in lines)
     assert len(lines) <= (6 if width >= 72 else 12)
     text = "\n".join(lines)
-    for label in ("Key values", "Organ priority", "1. Cardio", "2. Kidney", "+ 4 more", "Unmapped:"):
+    for label in ("검사 수치", "장기 우선순위", "1. 심장", "2. 신장", "+ 4개 더", "장기 미확인:"):
         assert "".join(label.split()) in "".join(text.split())
     assert "심부전" not in text and "만성 콩팥병" not in text
     assert "Heart failure" not in text and "Chronic kidney disease" not in text
@@ -158,16 +157,16 @@ def test_selected_drug_values_come_first_and_egfr_approximation_remains_visible(
     assert "CLcr ≈ 45 mL/min (eGFR)" in "\n".join(lines)
 
 
-@pytest.mark.parametrize("category, state", [("no_adjustment", "Clear"), ("monitor", "Monitor"),
-    ("reduce_dose", "Monitor"), ("insufficient_data", "Unclear"), ("no_statement", "Unclear"),
-    ("avoid", "Avoid"), ("contraindicated", "Avoid")])
+@pytest.mark.parametrize("category, state", [("no_adjustment", "없음"), ("monitor", "모니터링"),
+    ("reduce_dose", "모니터링"), ("insufficient_data", "자료 부족"), ("no_statement", "자료 부족"),
+    ("avoid", "피하기"), ("contraindicated", "피하기")])
 def test_restriction_column_is_one_word_with_exact_action_in_the_details(category, state):
     import recommend as R
     row = {"name": "Sample ADC", "rank": 1, "priority": [], "boxed": [], "warn": [], "version": 1, "date": "2026-01-01",
            "organs": {a: {"level": "none"} for a in R.AXES},
            "verdict": R.RS.Verdict("sample", [(category, {"domain": "renal", "when": {"crcl_lt": 30}})], [], [], [])}
     lines, starts = R._result_list([row], 115)
-    assert plain(lines[starts[0]]).split() == ["1", "Sample", "ADC", state, "-", "-", "-"]
+    assert plain(lines[starts[0]]).split() == ["1", "Sample", "ADC", *state.split(), "-", "-", "-"]
     assert R.RS.TABLE[category] in "\n".join(map(plain, R._result_details(row, [], 115)))
 
 
@@ -198,8 +197,8 @@ def test_final_output_fits_terminal_and_preserves_dose_actions_and_check_names(m
     output = capsys.readouterr().out
     assert all(R._width(line) < columns for line in output.splitlines())
     assert "\x1b" not in output
-    assert "Label actions" in output and R.RS.TABLE["reduce_dose"] in output
-    assert "Pre-treatment checks" in output
+    assert "라벨 조치" in output and R.RS.TABLE["reduce_dose"] in output
+    assert "치료 전 확인" in output
     normalized = " ".join(output.split())
     assert "CLcr ≈ 45 mL/min (eGFR)" in normalized
     for row in rows:
@@ -271,10 +270,10 @@ def test_detail_scroll_reaches_every_reason_and_check_without_changing_candidate
     def detail(index, width):
         selected.append(index)
         return [f"Candidate {index}"] + [f"Restriction reason {i:02}" for i in range(20)] + [
-            "─" * width, "Missing inputs", "LVEF", "─" * width, "Pre-treatment checks",
+            "─" * width, "입력하면 더 정확해지는 값", "LVEF", "─" * width, "치료 전 확인",
             "First full check", "Last full check"]
     assert tui.browse("unused", ["ADC", "Candidate 0", "Candidate 1"], [1, 2], detail) == "next"
-    for text in [f"Restriction reason {i:02}" for i in range(20)] + ["Missing inputs", "First full check", "Last full check"]:
+    for text in [f"Restriction reason {i:02}" for i in range(20)] + ["입력하면 더 정확해지는 값", "First full check", "Last full check"]:
         assert any(text in frame for frame in frames)
     assert selected[:-1] == [0] * (len(selected) - 1) and selected[-1] == 1
     assert "↑↓ 상세 스크롤" in frames[1]
@@ -290,7 +289,7 @@ def test_missing_inputs_are_separate_and_all_restriction_reasons_are_available(m
     row = {"name": "Sample ADC", "verdict": verdict}
     details = list(map(plain, R._result_details(row, [("A full check", ["Sample ADC"], None)], 75)))
     assert all(f"Reason {i}" in "\n".join(details) for i in range(7))
-    missing_at = details.index("Missing inputs")
+    missing_at = details.index("입력하면 더 정확해지는 값")
     assert details[missing_at - 1] == "─" * 75
     assert details[missing_at + 1] == "  CLcr / dialysis status"
     assert "A full check" in "\n".join(details)

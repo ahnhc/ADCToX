@@ -181,20 +181,20 @@ class Form:
 
     # ------------------------------------------------------------------ step 1
     def conditions(self, picked, free, choice=None):
-        """disease input: names are suggested while typing (TAB switches to a search by symptoms or a sentence).
-        -> (registry ids, free text 'a, b', {free text: chosen MONDO id}) or QUIT."""
+        """disease input in one box: names are suggested while typing; a sentence or symptoms (two or more words) also gets
+        diseases found from the symptoms after a short pause. -> (registry ids, free text 'a, b', {free text: MONDO id}) or QUIT."""
         import threading, time, suggest as SG
         RC = self.RC; choice = dict(choice or {})
         sel = [("reg", i, RC.condition_name(i), RC._reg[i]["organ_axes"].split(";")) for i in RC._reg if i in picked]
         sel += [("mondo" if f in choice else "text", choice.get(f, f), f, []) for f in split_free(free)]
-        mode, query, cur, note, kept = "name", "", 0, "", {}
+        query, cur, note = "", 0, ""
         found, ai, sym = [], dict(q=None, res=[], busy=False), dict(q=None, res=None, busy=False, error="")
         typed_at = 0.0; ai_on = RC.HAS_LEARNED; dirty = False; searched_at = 0.0
         def search():                                              # spelling suggestions; during fast typing at most every 0.15 s
             nonlocal found, dirty, searched_at
             found = SG.names(RC, query); dirty = False; searched_at = time.monotonic()
         threading.Thread(target=SG.index(RC).load_mondo, daemon=True).start()       # MONDO and KCD names, about 2 s
-        organ = lambda org: ", ".join(RC.ORGAN_KO.get(a, a) for a in org)
+        sentence = lambda q: len(q) >= 4 and len(q.split()) >= 2 and not SG.parts(RC, q)     # symptoms or a sentence, not 'asd adhd'
 
         def run_ai(q):
             try: res = SG.semantic(RC, q)
@@ -203,92 +203,98 @@ class Form:
             ai["busy"] = False
 
         def run_sym(q):
-            try: sym["res"] = SG.symptoms(RC, q, semantic=RC.HAS_LEARNED); sym["error"] = ""
-            except Exception as e: sym["res"] = []; sym["error"] = f"{type(e).__name__}: {str(e)[:80]}"
+            try: res = SG.symptoms(RC, q, semantic=RC.HAS_LEARNED); err = ""
+            except Exception as e: res, err = [], f"{type(e).__name__}: {str(e)[:80]}"
+            if sym["q"] == q: sym["res"], sym["error"] = res, err
             sym["busy"] = False
 
         def add(s):
-            kind, val, label, _, org = s[:5]
+            kind, val, label, detail, org = s[:5]
+            if kind == "mondo" and detail and HANGUL.search(detail) and not detail.startswith("약어 "): label = detail    # the Korean name
             if any((x[0], x[1]) == (kind, val) or x[2].lower() == label.lower() for x in sel): return f"이미 선택됨: {label}"
             sel.append((kind, val, label, org)); return f"추가: {label}"
+
+        I = SG.index(RC)
+        def names_of(kind, s):                                     # (main name, second name): the Korean name first when there is one
+            if kind == "sel": return (I.ko.get(s[1]) or s[2]) if s[0] == "mondo" else s[2], ""
+            a, b = s[2], (s[3] if kind in ("s", "sym") and s[3] and s[3] != s[2] else "")
+            if b and HANGUL.search(b) and not HANGUL.search(a) and not b.startswith("약어 "): a, b = b, a
+            return a, b
 
         self.timeout(100)
         try:
             while True:
-                if mode == "name":
-                    rows = [("s", s, "") for s in found]
-                    if ai["q"] == query.strip() and ai["res"]:
-                        have = {(s[0], s[1]) for s in found}
-                        rows += [("s", s, "AI") for s in ai["res"] if (s[0], s[1]) not in have]
-                    split = SG.parts(RC, query)
-                    if split: rows.insert(0, ("split", ("text", split, "각각 따로 추가: " + ", ".join(split), "", []), ""))
-                    if query.strip(): rows.append(("raw", ("text", query.strip(), query.strip(), "", []), ""))
-                else:
-                    rows = [("s", s, why) for s, why in (sym["res"] or [])] if sym["q"] == query.strip() else []
+                q = query.strip()
+                rows = [("s", s, "") for s in found]
+                have = {(s[0], s[1]) for s in found}
+                if ai["q"] == q and ai["res"]:
+                    rows += [("s", s, "AI") for s in ai["res"] if (s[0], s[1]) not in have]; have |= {(s[0], s[1]) for s in ai["res"]}
+                split = SG.parts(RC, query)
+                if split: rows.insert(0, ("split", ("text", split, "각각 따로 추가: " + ", ".join(split), "", []), ""))
+                if q: rows.append(("raw", ("text", q, q, "", []), ""))
+                if sym["q"] == q and sym["res"]:
+                    rows += [("sym", s, why) for s, why in sym["res"] if (s[0], s[1]) not in have]
                 rows += [("sel", x, "") for x in sel]
                 cur = max(0, min(cur, len(rows) - 1))
-                y = self.frame("기저질환", "", nav=("PGDN",))
+                y = self.frame("기저질환", "질환명·약어·증상을 입력하고 Enter로 추가 (↑↓ 또는 클릭으로 선택)", nav=("PGDN",))
                 h, w = self.scr.getmaxyx()
-                x = 2
-                for m, t in (("name", "질환명으로 찾기"), ("symptom", "증상·문장으로 찾기")):
-                    x += self.button(y, x, t, "TAB" if m != mode else "NOOP", on=m == mode) + 1
-                self.S.put(y, x + 1, "TAB", self.S.dim); y += 2
                 self.S.put(y, 2, "> ", self.S.title)
                 if query: self.S.put(y, 4, query + "_", self.S.title)
-                else: self.S.put(y, 4, "_  당뇨, ckd, heart failure, ㄱㅎㅇ" if mode == "name" else "_  숨이 차고 다리가 부어요, 투석 중  → ENTER", self.S.dim)
+                else: self.S.put(y, 4, "_  당뇨, ckd, 심부전, 숨이 차고 다리가 부어요", self.S.dim)
                 y += 2
                 status = ""
-                if mode == "name" and ai["busy"]: status = "AI 추천 찾는 중 ..."
-                if mode == "symptom" and sym["busy"]: status = "증상으로 질환 찾는 중 ... (처음 한 번은 모델을 불러 10초 정도 걸립니다)"
-                if mode == "symptom" and sym["error"]: status = "검색 실패: " + sym["error"]
-                if mode == "symptom" and not sym["busy"] and sym["q"] == query.strip() and query.strip() and not sym["res"]: status = "맞는 질환을 찾지 못했습니다. 다르게 써 보거나 질환명으로 찾기를 쓰세요."
-                def two(kind, s):                                          # (main name, second name): the Korean name first when there is one
-                    a, b = s[2], (s[3] if kind == "s" and s[3] and s[3] != s[2] else "")
-                    if b and HANGUL.search(b) and not HANGUL.search(a) and not b.startswith("약어 "): a, b = b, a
-                    return a, b
-                lw = max([_w(two(r[0], r[1])[0]) for r in rows] + [10]); lw = min(lw, max(10, w // 2 - 6))
-                ow = 26
-                area = max(3, h - y - 3); top = max(0, min(cur - area // 2, len(rows) - area)); shown_sel_head = False
-                lines = []
+                if ai["busy"]: status = "AI 추천 찾는 중 ..."
+                if sym["busy"]: status = "증상으로 질환 찾는 중 ... (처음 한 번은 모델을 불러 10초 정도 걸립니다)"
+                if sym["error"]: status = "증상 검색 실패: " + sym["error"]
+                shown = [names_of(r[0], r[1]) for r in rows if r[0] in ("s", "sym", "sel")]
+                lw = min(max([_w(a) for a, _ in shown] + [10]), 26)
+                orgs = {}
                 for k, (kind, s, tag) in enumerate(rows):
-                    if kind == "sel" and not shown_sel_head:
-                        lines.append(("head", f"선택한 질환 {len(sel)}개")); shown_sel_head = True
+                    if kind in ("s", "sym", "sel"):
+                        ax = (s[3] or (I.organs.get(s[1], []) if s[0] == "mondo" else [])) if kind == "sel" else s[4]
+                        orgs[k] = strip(RC.AXES, ax) if ax else "\033[90m" + ("13개 장기 밖" if s[0] in ("mondo", "reg") and (I.mondo_loaded or s[0] == "reg") else "분석 때 판정") + "\033[0m"
+                ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for o in orgs.values()] + [6]), 16)
+                lines, heads = [], {"s": "추천", "sym": "증상·문장으로 찾은 질환", "sel": f"선택한 질환 {len(sel)}개"}
+                last = None
+                for k, (kind, s, tag) in enumerate(rows):
+                    group = {"split": "s", "raw": "s"}.get(kind, kind)
+                    if group != last:
+                        if lines: lines.append(("head", ""))
+                        lines.append(("head", heads[group])); last = group
                     lines.append((k, kind, s, tag))
-                if rows and rows[0][0] != "sel": lines.insert(0, ("head", "추천" if mode == "name" else "추천 (증상·문장)"))
-                at = next(i for i, l in enumerate(lines) if l[0] == cur) if rows else 0
+                area = max(3, h - y - 3)
+                at = next((i for i, l in enumerate(lines) if l[0] == cur), 0)
                 top = max(0, min(at - area // 2, len(lines) - area))
                 for r, l in enumerate(lines[top:top + area]):
                     yy = y + r
                     if l[0] == "head": self.S.put(yy, 2, l[1], self.S.title); continue
-                    k, kind, s, tag = l; on = k == cur; main, extra = two(kind, s); label = _clip(main, lw)
-                    if kind == "raw": text = f"입력한 그대로 추가: {s[2]}"
+                    k, kind, s, tag = l; on = k == cur
+                    if kind == "raw": text = f"\033[90m+\033[0m 입력한 그대로 추가: {s[2]}"
                     elif kind == "split": text = s[2]
                     else:
-                        ax = s[3] if kind == "sel" else s[4]
-                        org = strip(RC.AXES, ax) if ax else "\033[90m" + ("13개 장기 밖" if s[0] in ("mondo", "reg") else "분석 때 판정") + "\033[0m"
-                        ex = _clip(extra, 28)
-                        if kind == "sel": text = f"✓ {label}{' ' * (lw - _w(label))}   {org}"
-                        else: text = f"{label}{' ' * (lw - _w(label))}   \033[90m{ex}\033[0m{' ' * (28 - _w(ex))}  {org}" + (f"   \033[90m{tag}\033[0m" if tag else "")
+                        mark = "✓ " if kind == "sel" else ""
+                        main, sub = names_of(kind, s); label = _clip(main, lw - len(mark) * 1); org = orgs[k]
+                        plain = re.sub(r"\x1b\[[\d;]*m", "", org)
+                        rest = max(0, w - 12 - lw - ow)
+                        tail = _clip(tag if kind == "sym" else sub, rest)
+                        text = f"{mark}{label}{' ' * (lw - len(mark) - _w(label))}   {org}{' ' * max(0, ow - _w(plain))}   \033[90m{tail}\033[0m" + (f" \033[90m{tag}\033[0m" if tag == "AI" else "")
                     self.row(yy, f" {'→' if on else ' '} {text}", on, k)
-                n = len(sel)
                 update_hint = "   Ctrl+U 모델 업데이트" if RC.HAS_LEARNED else ""
                 if APP_CHECK.get("newer"): update_hint += f"   새 앱 {APP_CHECK['latest']}: adctox --update-app"
                 self.S.put(h - 2, 1, status, self.S.dim)
-                self.S.put(h - 1, 1, f"{n}개 선택" + update_hint + (f"   {note}" if note else ""), self.S.dim)
+                self.S.put(h - 1, 1, f"{len(sel)}개 선택   다음 ▶ / PgDn 다음 단계" + update_hint + (f"   {note}" if note else ""), self.S.dim)
                 self.scr.refresh(); k = self.key(tab=True)
                 if isinstance(k, tuple) and k[0] == "ROW": cur = k[1]; k = "ENTER"     # a click on a row picks it
-                if k == "NOOP": continue
-                if k is None:                                              # no key within 0.1 s: start the AI search after a pause
-                    if dirty and mode == "name": search()
-                    q = query.strip()
-                    if mode == "name" and ai_on and len(q) >= 2 and ai["q"] != q and not ai["busy"] and time.monotonic() - typed_at > 0.35:
+                if k in ("NOOP", "TAB"): continue
+                if k is None:                                              # no key within 0.1 s: searches that wait for a pause
+                    if dirty: search()
+                    idle = time.monotonic() - typed_at
+                    if ai_on and len(q) >= 2 and ai["q"] != q and not ai["busy"] and idle > 0.35 and not sentence(q):
                         ai.update(q=q, res=[], busy=True); threading.Thread(target=run_ai, args=(q,), daemon=True).start()
+                    if sentence(q) and sym["q"] != q and not sym["busy"] and idle > 0.6:
+                        sym.update(q=q, res=None, busy=True, error=""); threading.Thread(target=run_sym, args=(q,), daemon=True).start()
                     continue
                 note = ""
-                if k == "TAB":                                             # each mode keeps its own text
-                    kept[mode] = query; mode = "symptom" if mode == "name" else "name"; query = kept.get(mode, ""); cur = 0
-                    if mode == "name": search()
-                    continue
                 if k == "UP": cur = max(0, cur - 1)
                 elif k == "DOWN": cur = min(len(rows) - 1, cur + 1)
                 elif k == "PGDN":
@@ -299,19 +305,16 @@ class Form:
                     else: return QUIT
                 elif k == "\x15" and RC.HAS_LEARNED: self.model_updates()
                 elif k == "ENTER":
-                    if mode == "symptom" and query.strip() and sym["q"] != query.strip() and not sym["busy"]:
-                        sym.update(q=query.strip(), res=None, busy=True); threading.Thread(target=run_sym, args=(query.strip(),), daemon=True).start(); cur = 0; continue
-                    if not rows: note = "질환명을 입력하세요" if mode == "name" else "증상이나 문장을 입력하세요"; continue
+                    if not rows: note = "질환명이나 증상을 입력하세요"; continue
                     kind, s, _ = rows[cur]
                     if kind == "sel": sel.remove(s); note = f"뺌: {s[2]}"
                     elif kind == "split":
-                        note = "   ".join(add(("text", w, w, "", [])) for w in s[1]); query, found, cur = "", [], 0
+                        note = "   ".join(add(("text", w_, w_, "", [])) for w_ in s[1]); query, found, cur = "", [], 0
                     else:
-                        note = add(s)
-                        if mode == "name": query, found, cur = "", [], 0
+                        note = add(s); query, found, cur = "", [], 0
                 elif k == "BS" or (isinstance(k, str) and len(k) == 1 and k.isprintable()):
                     query = query[:-1] if k == "BS" else query + k; typed_at = time.monotonic(); cur = 0; dirty = True
-                    if mode == "name" and (not query or time.monotonic() - searched_at > 0.15): search()
+                    if not query or time.monotonic() - searched_at > 0.15: search()
         finally:
             self.timeout(-1)
 
@@ -586,26 +589,33 @@ class Form:
             if timeout: timeout(-1)
 
     def _analysis_review(self, reports, elapsed):
-        """per typed condition: its linked disease and one organ strip (green = linked organs, yellow = organs the learned
-        models agree on, shown not applied); the per-model numbers moved to the printed output."""
-        import tui
-        top = 0; RC = self.RC
+        """per typed condition: what it was read as and its organs (the ones the recommendation uses), one line each."""
+        import tui, suggest as SG
+        top = 0; RC = self.RC; ko = SG.index(RC).ko
+        SOURCE = {"AI judgment": "AI 판정 (Gemma)", "Registry match": "등록 질환", "Similar condition": "비슷한 등록 질환", "Phenotype (HPO)": "증상(HPO)",
+                  "Chosen": "직접 고름", "Unmapped": "판정 못 함"}
         while True:
-            y0 = self.frame("AI 장기 분석 결과", "")
+            y0 = self.frame("AI 장기 분석 결과", "입력한 질환을 무엇으로 읽었고 어느 장기로 보는지입니다. 이 장기들로 ADC 경고를 비교합니다.")
             h, w = self.scr.getmaxyx(); width = max(2, w - 5)
-            duration = "cached" if self.analysis_cached else f"{elapsed:.1f} s"
-            self.S.put_ansi(y0, 2, f"\033[32;1m■\033[0m 연결된 장기   \033[33m■?\033[0m 학습 모델 추정   \033[90m{duration}\033[0m"); y0 += 2
-            nw = min(28, max(_w(r["condition"]) for r in reports))
-            lines = []
-            for report in reports:
-                agree = report.get("agree") or {}; need = 2 if report.get("models") else 1
-                maybe = [a for a, _ in report["estimates"] if agree.get(a, need) >= need and a not in report["organs"]]
-                name = _clip(report["condition"], nw)
+            nw = min(24, max(_w(ko.get(RC.CHOICE.get(r["condition"]) or "") or r["condition"]) for r in reports))
+            rows = []
+            for r in reports:
+                picked = RC.CHOICE.get(r["condition"]) or ""
+                read = (ko.get(r.get("mondo") or "") or r["name"]) if r["source"].startswith("MONDO") else (ko.get(picked) or r["name"] or "")
+                how = "MONDO" if r["source"].startswith("MONDO") else SOURCE.get(r["source"], r["source"])
+                org = strip(RC.AXES, r["organs"]) if r["organs"] else "\033[90m" + ("13개 장기 밖" if r["source"].startswith("MONDO") else "없음") + "\033[0m"
                 tag = ""
-                if report.get("ambiguous"): tag = "  \033[33m뜻 " + str(len(report["readings"])) + "개 → 다음 화면\033[0m" if report["condition"] not in RC.CHOICE else ""
-                what = report["name"] or ("AI 판정" if report["source"] == "AI judgment" else "13개 장기 밖" if report["source"].startswith("MONDO") else "모름")
-                if report["source"].startswith("MONDO (no organ") and report["name"]: what += " · 13개 장기 밖"
-                lines.append(f"\033[1m{name}\033[0m{' ' * (nw - _w(name))}   {strip(RC.AXES, report['organs'], maybe)}   \033[90m{what}\033[0m{tag}")
+                if r.get("ambiguous") and r["condition"] not in RC.CHOICE: tag = f"   \033[33m뜻 {len(r['readings'])}개: 다음 화면에서 고르기\033[0m"
+                if read == (ko.get(picked) or r["condition"]): read = ""
+                rows.append((ko.get(picked) or r["condition"], org, (f"{read}  " if read else "") + f"\033[90m{how}\033[0m" + tag))
+            ow = min(max(_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for _, o, _ in rows), 18)
+            head = f"\033[1m{'입력':<{nw - 2}}\033[0m   \033[1m{'장기':<{ow - 2}}\033[0m   \033[1m읽은 질환\033[0m"
+            lines = [head, "\033[90m" + "─" * min(width, nw + ow + 40) + "\033[0m"]
+            for c, org, what in rows:
+                name = _clip(c, nw); plain = re.sub(r"\x1b\[[\d;]*m", "", org)
+                lines.append(f"{name}{' ' * (nw - _w(name))}   {org}{' ' * max(0, ow - _w(plain))}   {what}")
+            duration = "이전 결과" if self.analysis_cached else f"{elapsed:.1f}초"
+            lines += ["", f"\033[90m분석 {duration}   Enter / 다음 ▶ 계속   ◀ 이전 / Esc 질환 고치기\033[0m"]
             wrapped = [ln for line in lines for ln in tui._wrap_ansi(line, width)]
             area = max(1, h - y0 - 3); top = max(0, min(top, len(wrapped) - area))
             for i, ln in enumerate(wrapped[top:top + area]): self.S.put_ansi(y0 + i, 2, ln)
@@ -621,7 +631,9 @@ class Form:
 def run(RC, back=False):
     """-> (conditions, raw labs) or None. back: reopen at the last step (priority if it applies, else lab values), entries kept."""
     def app(scr):
+        import suggest as SG
         F = Form(scr, RC); st = load(); st["picked"] &= set(RC._reg); step = 0
+        kn = lambda c: SG.index(RC).ko.get(RC.CHOICE.get(c) or "") or RC.condition_name(c)      # the Korean name of a picked disease
         RC.CHOICE.update(st["choice"])
         if back:
             conds = [i for i in RC._reg if i in st["picked"]] + split_free(st["free"]); F.loading("불러오는 중 ...")
@@ -629,7 +641,7 @@ def run(RC, back=False):
             step = 3 if len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2 else 1
         while True:
             F.done = []
-            if step >= 1: F.done.append(("기저질환", ", ".join([RC.condition_name(i) for i in sorted(st["picked"], key=list(RC._reg).index)] + split_free(st["free"]))))
+            if step >= 1: F.done.append(("기저질환", ", ".join([RC.condition_name(i) for i in sorted(st["picked"], key=list(RC._reg).index)] + [kn(c) for c in split_free(st["free"])])))
             if step >= 2:
                 F.done.append(("검사 수치", f"{len(st['raw'])}개 입력" if st["raw"] else "입력 없음"))
             conds = [i for i in RC._reg if i in st["picked"]] + split_free(st["free"])
@@ -658,22 +670,16 @@ def run(RC, back=False):
                         RC.CHOICE.update(pick)
                         F.done.append(("질환 확인", ", ".join(f"{c} → {next((r['name'] for r in o if r['mondo'] == pick[c]), '모름')}" for c, o in groups)))
                 miss = RC.unresolved(conds) if split_free(st["free"]) else []
-                if miss and RC.HAS_LEARNED:
-                    rs = [r for r in reports if r["condition"] in miss]; nw = max(_w(r["condition"]) for r in rs)
-                    pics = [f"  {r['condition']}{' ' * (nw - _w(r['condition']))}   " + strip(RC.AXES, maybe=[a for a, _ in r["estimates"] if (r.get("agree") or {}).get(a, 2) >= 2]) for r in rs]
-                    k = F.choose("장기를 찾지 못한 입력: 학습 모델 추정을 쓸까요?", "\n".join(pics) + "\n자동 = 질환으로 인식된 입력만, 모델 2개 이상이 고른 장기만",
-                                 [n for n, _ in RC.FALLBACK_OPTS])
-                    if k == BACK: step = 1; continue
-                    f = RC.FALLBACK_OPTS[k][1]; RC.FALLBACK = {c: f for c in miss} if f > 0 else {}
-                    F.done.append(("추정 장기", RC.FALLBACK_OPTS[k][0]))
+                if miss and RC.HAS_LEARNED:                       # no organ found: the learned estimate on the 'auto' terms, without asking
+                    RC.FALLBACK = {c: RC.AUTO_FALLBACK for c in miss}
                 step = 3; st["miss"] = bool(miss)
             elif step == 3:                                       # priority between conditions on different organs
                 pc = RC.patient_conditions(conds, st["raw"]); RC.PRIORITY = {}
                 if len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2:
                     d = RC.default_levels(pc); names = [c for c, _, _ in pc]
-                    show = RC.condition_name
-                    lv0 = RC.default_levels(pc); nw = max(_w(RC.condition_name(c)) for c, _, _ in pc)
-                    auto = "\n".join(f"  \033[1m{lv0[c]}\033[0m   {RC.condition_name(c)}{' ' * (nw - _w(RC.condition_name(c)))}   {strip(RC.AXES, o)}" for c, o, _ in sorted(pc, key=lambda x: lv0[x[0]]))
+                    show = kn
+                    lv0 = RC.default_levels(pc); nw = max(_w(kn(c)) for c, _, _ in pc)
+                    auto = "\n".join(f"  \033[1m{lv0[c]}\033[0m   {kn(c)}{' ' * (nw - _w(kn(c)))}   {strip(RC.AXES, o)}" for c, o, _ in sorted(pc, key=lambda x: lv0[x[0]]))
                     k = F.choose("질환 우선순위", auto, ["자동 / 질환 심각도 순", "직접 정하기"])
                     if k == BACK: step = 2 if st.get("miss") else 1; continue
                     if k == 1:

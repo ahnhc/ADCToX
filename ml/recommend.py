@@ -226,7 +226,7 @@ def analyze_conditions(conditions, progress=None):
             by, agree, _ = _FREE_MODELS[c]; models = [MODEL_NAMES.get(k, k) for k in by]
             estimates.sort(key=lambda x: (-agree.get(x[0], 0), -x[1], AXES.index(x[0])))
             by_model = {a: [float(by[k][a]) for k in by] for a, _ in estimates}
-        report = dict(condition=c, source=source, name=name, organs=[] if source == "Unmapped" else organs.get(c, []), estimates=estimates,
+        report = dict(condition=c, source=source, name=name, mondo=link.get("mondo") if source.startswith("MONDO") else None, organs=[] if source == "Unmapped" else organs.get(c, []), estimates=estimates,
                       model="BioLORD + disease-pair MLP" if prediction is not None else None,
                       readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")),
                       models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates})
@@ -503,6 +503,9 @@ def reasons(r, checks_=(), color=True):
     return out
 
 
+ORGAN_WORD = {"haematologic": "혈액", "hepatic": "간", "cardiovascular": "심장", "pulmonary": "폐", "renal": "신장", "gastrointestinal": "위장",
+              "neurologic": "신경", "ocular": "눈", "dermatologic": "피부", "metabolic_endocrine": "대사", "musculoskeletal": "근골격",
+              "infectious_immune": "면역", "otologic": "귀"}     # short Korean organ names of the screens (tui.GLYPH)
 ORGAN_SHORT = {"haematologic": "Blood", "hepatic": "Liver", "cardiovascular": "Cardio", "pulmonary": "Lung", "renal": "Kidney",
                "gastrointestinal": "GI", "neurologic": "Neuro", "ocular": "Eye", "dermatologic": "Skin", "metabolic_endocrine": "Metabolic",
                "musculoskeletal": "MSK", "infectious_immune": "Immune", "otologic": "Ear"}
@@ -523,13 +526,16 @@ def _organ_preview(row):
     own = sorted(set(row["boxed"]) | set(row["warn"]), key=key)
     other = sorted((organ for organ in AXES if organ not in patient and row["organs"][organ]["level"] in strength),
                    key=lambda organ: (strength[row["organs"][organ]["level"]], AXES.index(organ)))
-    def cell(organ, more=False):
-        if not organ: return "\033[90m-\033[0m"
+    def cell(organ, more=False, blank=False):
+        if not organ: return "" if blank else "\033[90m-\033[0m"
         boxed = row["organs"][organ]["level"] == "boxed"
         marker = "!!" if boxed else "!"
-        return f"\033[{31 if boxed else 33}m{marker:>2} {ORGAN_SHORT[organ]}{'+' if more else ''}\033[0m"
-    return [cell(own[0] if own else None), cell(own[1] if len(own) > 1 else None, len(own) > 2),
+        return f"\033[{31 if boxed else 33}m{marker:>2} {ORGAN_WORD[organ]}{'+' if more else ''}\033[0m"
+    return [cell(own[0] if own else None), cell(own[1] if len(own) > 1 else None, len(own) > 2, blank=bool(own)),
             cell(other[0] if other else None, len(other) > 1)]
+
+
+def _ljust(text, size): return text + " " * max(0, size - _width(text))
 
 
 def _result_list(rows, width):
@@ -542,15 +548,15 @@ def _result_list(rows, width):
     stacked = width < 64
     name_w = min(name_w, 28 if wide else max(12, width // 2))
     organ_w = 14
-    if wide: name_w = min(name_w, width - 9 - 3 * (organ_w + 3) - len("Label restriction"))
+    if wide: name_w = min(name_w, width - 9 - 3 * (organ_w + 3) - 10)
     status_w = max(2, width - name_w - 9 - (3 * (organ_w + 3) if wide else 0))
     widths = [name_w, status_w] + ([organ_w] * 3 if wide else [])
     def line(rank, cells):
         return rank + "   " + "   ".join(text + " " * max(0, size - _width(strip(text))) for text, size in zip(cells, widths))
     if wide:
-        out = [line("  #", ["ADC", "Label restriction"]) + "   " + "Relevant warnings".ljust(2 * organ_w + 3) + "   " + "Other warnings"]
+        out = [line("  #", ["ADC", "라벨 제한"]) + "   " + _ljust("이 환자 장기 경고", 2 * organ_w + 3) + "   " + "다른 장기 경고"]
     else:
-        out = ["  #   ADC"] if stacked else [line("  #", ["ADC", "Label restriction"])]
+        out = ["  #   ADC"] if stacked else [line("  #", ["ADC", "라벨 제한"])]
     out.append("\033[90m" + "─" * width + "\033[0m")
     at = []; previous_rank = None
     for row in rows:
@@ -561,8 +567,8 @@ def _result_list(rows, width):
         # Four display groups only. Exact label actions (including dose reduction / contraindication)
         # and whether a rule is still conditional remain explicit in the selected row's reasons.
         tier = verdict.worst_possible
-        state, tone = {0: ("Clear", "32"), 1: ("Monitor", "36"), 2: ("Unclear", "33"),
-                       3: ("Avoid", "31"), 4: ("Avoid", "31")}.get(tier, ("-", "90"))
+        state, tone = {0: ("없음", "32"), 1: ("모니터링", "36"), 2: ("자료 부족", "33"),
+                       3: ("피하기", "31"), 4: ("피하기", "31")}.get(tier, ("없음", "90"))
         status = paint(state, tone + (";1" if verdict.worst_known == tier else ""))
         organs = _organ_preview(row)
         if stacked:
@@ -578,7 +584,7 @@ def _result_list(rows, width):
                 rank = rank_text if i == 0 else "   "
                 out.append(line(rank, [column[i] if i < len(column) else "" for column in columns]))
         if not wide:
-            summary = "Relevant: " + " / ".join(organs[:2]) + "   Other: " + organs[2]
+            summary = "이 환자: " + " ".join(o for o in organs[:2] if o) + "   다른 장기: " + organs[2]
             out.extend("      " + ln for ln in tui._wrap_ansi(summary, max(2, width - 6)))
     return out, at
 
@@ -605,15 +611,15 @@ def _result_details(row, checks_, width):
     evidence.sort(key=lambda reason: (-RS.TIER[reason[3]], not reason[4], reason[0]))
     for organ, status, basis, code, sure in evidence:
         out.append(f"  {organ.capitalize():<9} " + paint(status, TONE[code] + (";1" if sure else "")) + f"   {basis}")
-    if not evidence: out.append("  No applicable label restriction")
+    if not evidence: out.append("  해당하는 라벨 제한 없음")
     if row["verdict"].missing:
         out.append(paint("─" * width, "90"))
-        out.append(paint("Missing inputs", "33;1"))
+        out.append(paint("입력하면 더 정확해지는 값", "33;1"))
         out.extend("  " + need for need in _missing_inputs(row["verdict"]))
     mine = [test for test, names, _ in checks_ if (not names or row["name"] in names) and not test.startswith("enter ")]
     if mine:
         out.append(paint("─" * width, "90"))
-        out.append(paint("Pre-treatment checks", "33;1"))
+        out.append(paint("치료 전 확인", "33;1"))
         out.extend("  - " + test for test in mine)
     return out
 
@@ -649,12 +655,12 @@ def _result_context(rows, notes, width, values=None, selected=0, graphic=False):
     if graphic:                                                # the result screen: one organ strip per level (green = that level's organs)
         import tui
         priorities = [f"{level}  {tui.strip(AXES, organs)}" for level, organs in grouped.items()]
-    else: priorities = [f"{level}. {', '.join(ORGAN_SHORT[o] for o in organs)}" for level, organs in grouped.items()]
+    else: priorities = [f"{level}. {', '.join(ORGAN_WORD[o] for o in organs)}" for level, organs in grouped.items()]
     def block(title, items, empty):
-        body = items[:3] + ([f"+ {len(items) - 3} more"] if len(items) > 3 else [])
+        body = items[:3] + ([f"+ {len(items) - 3}개 더"] if len(items) > 3 else [])
         return [f"\033[33;1m{title}\033[0m"] + ["  " + text for text in body or [empty]]
-    left = block("Key values", inputs, "Not entered")
-    right = block("Organ priority", priorities, "None specified")
+    left = block("검사 수치", inputs, "입력 없음")
+    right = block("장기 우선순위", priorities, "지정 없음")
     if width < 72:
         out = [_compact_line(text, width) for text in left + [""] + right]
     else:
@@ -668,8 +674,8 @@ def _result_context(rows, notes, width, values=None, selected=0, graphic=False):
             out.append(a + " " * padding + "\033[90m │ \033[0m" + b)
     unmapped = [c for c, how in notes if "not understood" in how]
     if unmapped:
-        estimated = any("learned estimate" in how for _, how in notes)
-        out.append(_compact_line(("Unvalidated estimate: " if estimated else "Unmapped: ") + ", ".join(unmapped), width))
+        estimated = any("learned estimate x" in how for _, how in notes)
+        out.append(_compact_line(("검증 안 된 추정: " if estimated else "장기 미확인: ") + ", ".join(unmapped), width))
     return out
 
 
@@ -679,7 +685,7 @@ def browse(rows, checks_=(), notes=(), labs=None, raw=None):
     values = {**(LB.derive(raw)[0] if raw else {}), **(labs or {})}
     return tui.browse("ADC 추천 결과", lambda w: _result_list(rows, w), [],
                       lambda i, w: _result_details(rows[i], checks_, w),
-                      footer="!! Label emphasis   ! Warning   + More organs",
+                      footer="!! 박스 경고   ! 경고   + 경고 장기 더 있음",
                       context=lambda i, w: _result_context(rows, notes, w, values, i, graphic=True))
 
 
@@ -714,16 +720,16 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
     for line in _result_context(rows, notes, width, values): emit(line)
     emit()
     for line in _result_list(rows, width)[0]: emit(line)
-    emit(paint("!! Label emphasis   ! Warning   + More organs", "90"))
+    emit(paint("!! 박스 경고   ! 경고   + 경고 장기 더 있음", "90"))
     actions = [(r, reason) for r in rows for reason in reason_rows(r) if reason[3] in ("reduce_dose", "contraindicated")]
     if actions:
-        heading("Label actions")
+        heading("라벨 조치")
         for row, (organ, status, basis, code, certain) in actions:
             emit(f"{row['name']} / {organ.capitalize()}")
             emit("  " + paint(status, TONE[code]) + f"   {basis}")
     analyses = [_ANALYSES[c] for c, _ in notes if c in _ANALYSES]
     if analyses:
-        heading("AI organ analysis")
+        heading("AI 장기 분석")
         for report in analyses:
             organs = ", ".join(ORGAN_SHORT[a] for a in report["organs"]) or no_organ_text(report)
             match = f": {report['name']}" if report["name"] else ""
@@ -738,12 +744,12 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
         for need in missing: emit("  " + need)
     clinical_checks = [(test, names, src) for test, names, src in checks_ if not test.startswith("enter ")]
     if clinical_checks:
-        heading("Pre-treatment checks")
+        heading("치료 전 확인")
         for test, names, src in clinical_checks:
             emit(f"- {test}")
             if names: emit(paint("  ADCs: " + ", ".join(names), "90"))
     if detail:
-        heading("Label evidence on your organs")
+        heading("환자 장기에 대한 라벨 근거")
         for r in rows:
             emit(r["name"])
             for a in AXES:
