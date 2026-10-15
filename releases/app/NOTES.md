@@ -1,14 +1,19 @@
-ADCTOX 0.3: app updates and a Windows package.
+ADCTOX 0.3.1: search as you type, symptom search, macOS, one-line installers.
 
-- The app checks for a newer app once a day and shows it in the condition picker. `adctox --update-app` installs it (from this version on).
-- Windows: download `ADCTOX-windows.zip`, unzip anywhere, double-click `ADCTOX.bat`. No installer and no admin rights; the first start downloads the models (about 1 GB). If the PC lacks the Microsoft Visual C++ Redistributable (x64), the program says so and links the official installer.
-- Includes 0.2 and 0.2.1: one-screen confirmation for inputs with several meanings, symptoms and Korean disease names, three-model organ estimate (Both, Den, Fin), delta model updates, no screen flicker.
-
-Ubuntu install or update:
+- **입력 즉시 추천:** 첫 화면에 질환 목록이 없다.
+  - 질환명을 입력하면 아래에 추천이 바로 뜨고, 한 글자마다 바뀐다.
+  - 한국어, 영어, 약어, 초성(ㄷㄴ), 오타(diabetis) 모두 된다.
+  - 입력을 잠시 멈추면 AI(SapBERT) 추천을 덧붙인다.
+- **증상·문장으로 찾기:** TAB을 누르면 증상, 치료, 문장으로 질환을 찾는다. 예: `투석 중이고 숨이 차요`.
+- **모델 업데이트 키:** 글자가 검색창에 입력되므로 `U`에서 `Ctrl+U`로 바꿨다.
+- **macOS (Apple silicon) 지원**과 운영체제별 한 줄 설치:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
-adctox
+curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash      # Linux, macOS
 ```
 
-Ubuntu needs 24.04+ and Python 3.12+. Windows needs 64-bit Windows 10 or 11. Press U in the condition picker for model updates. App 0.2.1 and older have no `--update-app`; run the installer (or unzip the Windows package) once to reach 0.3.
+```powershell
+irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex             # Windows (PowerShell)
+```
+
+이미 설치했다면 `adctox --update-app`. 모델 묶음은 0.2 그대로다.

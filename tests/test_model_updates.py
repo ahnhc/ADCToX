@@ -177,14 +177,14 @@ def test_update_button_returns_to_condition_selection_without_losing_input(monke
     monkeypatch.setattr(form, "curses", console)
     monkeypatch.setattr(term, "USE_SHIM", True)
     screen = term._Screen(console)
-    keys = iter([" ", "U", "PGDN"])
-    monkeypatch.setattr(form, "_key", lambda scr: next(keys))
+    keys = iter(["c", "i", "r", "ENTER", "\x15", "PGDN"])               # type, add the first suggestion, Ctrl+U, next step
+    monkeypatch.setattr(form, "_key", lambda scr, tab=False: next(keys))
     opened = []
     monkeypatch.setattr(form.Form, "model_updates", lambda self: opened.append(True))
-    rc = SimpleNamespace(_reg={"cirrhosis": {"organ_axes": "hepatic"}}, AXES=["hepatic"], EN={"hepatic": "Hepatic"},
-                         KO={"cirrhosis": "간경변"}, condition_name=lambda c: "Cirrhosis", HAS_LEARNED=True)
-    selected, free = form.Form(screen, rc).conditions(set(), "asthma")
-    assert opened == [True] and selected == {"cirrhosis"} and free == "asthma"
+    rc = SimpleNamespace(_reg={"cirrhosis": {"organ_axes": "hepatic", "label": "Cirrhosis"}}, AXES=["hepatic"], EN={"hepatic": "Hepatic"},
+                         KO={"cirrhosis": "간경변"}, ORGAN_KO={"hepatic": "간"}, condition_name=lambda c: "Cirrhosis", HAS_LEARNED=True)
+    selected, free, choice = form.Form(screen, rc).conditions(set(), "asthma")
+    assert opened == [True] and selected == {"cirrhosis"} and free == "asthma" and choice == {}
 
 
 def test_managed_runtime_does_not_mix_missing_files_with_research_cache(monkeypatch, tmp_path):

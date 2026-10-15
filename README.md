@@ -1,6 +1,8 @@
 # ADCTOX
 
-[![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04%2B-E95420?logo=ubuntu&logoColor=white)](docs/INSTALL.md)
+[![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-E95420?logo=linux&logoColor=white)](docs/INSTALL.md)
+[![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-000000?logo=apple&logoColor=white)](docs/INSTALL.md)
+[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?logo=windows&logoColor=white)](docs/INSTALL.md)
 [![Release](https://img.shields.io/github/v/release/ahnhc/ADCToX)](https://github.com/ahnhc/ADCToX/releases)
 [![Checks](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml/badge.svg)](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml)
 
@@ -16,31 +18,38 @@ BioLORD와 SapBERT로 질환을 해석하고, FinnGen 자료로 학습한 MLP en
 
 ## Get started
 
-Ubuntu 24.04 이상, Python 3.12 이상에서 설치합니다.
+운영체제마다 한 줄로 설치합니다. 관리자 권한은 필요 없습니다.
+
+**Linux, macOS (Apple silicon)** — 터미널에서:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
 ```
 
-설치가 끝나면 실행합니다.
+**Windows 10, 11** — PowerShell에서:
+
+```powershell
+irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
+```
+
+설치가 끝나면 `adctox`를 실행합니다. Windows는 시작 메뉴나 바탕화면의 ADCTOX를 눌러도 됩니다.
 
 ```bash
 adctox
 ```
 
-처음에는 CPU 추론 환경과 약 972 MiB의 모델 파일을 받습니다. 설치 후 질환 분석은 로컬에서 실행됩니다. 모델 업데이트를 확인하거나 다운로드할 때만 인터넷이 필요합니다.
+- Python 3.12 이상이 없으면 설치기가 Python 3.12를 설치 폴더 안에 따로 받습니다. 시스템 Python은 바꾸지 않습니다.
+- 처음 설치할 때 CPU 추론 환경과 모델 파일(약 972 MiB)을 받습니다.
+- 질환 분석은 로컬에서 실행됩니다. 인터넷은 설치와 업데이트에만 씁니다.
+- Intel Mac은 지원하지 않습니다(PyTorch가 macOS Intel용 빌드를 더 내지 않음).
+- `adctox` 명령이 보이지 않으면 설치기가 마지막에 알려 주는 PATH 줄을 추가합니다.
+- 설치 경로 변경, GPU 환경, 삭제 방법은 [설치 안내](docs/INSTALL.md)를 참고하세요.
 
-`adctox` 명령이 보이지 않으면 `~/.local/bin`을 PATH에 추가합니다. 설치 경로 변경, GPU 환경, 삭제 방법은 [설치 안내](docs/INSTALL.md)를 참고하세요.
-
-Windows에서는 Ubuntu용 파일을 다운로드할 수 있습니다. 실행은 WSL의 Ubuntu에서 위 설치 명령을 사용합니다.
-
-```powershell
-curl.exe -fL https://github.com/ahnhc/ADCToX/releases/latest/download/adctox-ubuntu.tar.gz -o adctox-ubuntu.tar.gz
-```
+첫 화면에는 질환 목록이 없습니다. 질환명을 입력하면 아래에 바로 추천이 뜨고, 한 글자를 쓰거나 지울 때마다 바뀝니다(한국어, 영어, 약어, 초성, 오타). **TAB**을 누르면 증상이나 문장으로 찾는 메뉴로 바뀝니다(예: `투석 중이고 숨이 차요`).
 
 ## Model updates
 
-기저질환 선택 화면에서 **U**를 누르고 **업데이트**를 선택합니다. 터미널 명령으로도 가능합니다.
+기저질환 입력 화면에서 **Ctrl+U**를 누르고 **업데이트**를 선택합니다. 터미널 명령으로도 가능합니다.
 
 ```bash
 adctox --check-models
@@ -55,7 +64,7 @@ adctox --model-version
 adctox --rollback-models
 ```
 
-앱 자체를 업데이트할 때는 설치 명령을 다시 실행합니다. [변경 기록](CHANGELOG.md)과 [배포 구조](docs/DISTRIBUTION.md)에서 자세한 내용을 확인할 수 있습니다.
+앱 자체는 `adctox --update-app`으로 업데이트하거나 설치 명령을 다시 실행합니다. [변경 기록](CHANGELOG.md)과 [배포 구조](docs/DISTRIBUTION.md)에서 자세한 내용을 확인할 수 있습니다.
 
 ## Research
 

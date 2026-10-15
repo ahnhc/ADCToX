@@ -1,0 +1,45 @@
+name: One-line install
+# Runs the published installers exactly as users do, after a release is published (or by hand).
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unix:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-24.04, uv: '0'}
+          - {os: ubuntu-22.04, uv: '1'}       # Python 3.10 only: the installer fetches Python 3.12 with uv
+          - {os: macos-14, uv: '0'}           # Apple silicon
+          - {os: macos-15, uv: '1'}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Install with the one-line command
+        env:
+          ADCTOX_FORCE_UV: ${{ matrix.uv }}
+        run: curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
+      - name: Run the installed app
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          adctox --version
+          adctox alzheimer cirrhosis 치매 | tee out.txt
+          grep -q ADC out.txt
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - name: Install with the one-line command
+        shell: pwsh
+        run: irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
+      - name: Run the installed app
+        shell: pwsh
+        run: |
+          $app = Join-Path $env:LOCALAPPDATA 'adctox\app'
+          & "$app\python\python.exe" -I "$app\launcher.py" --version
+          & "$app\python\python.exe" -I "$app\launcher.py" alzheimer cirrhosis 치매 | Tee-Object out.txt
+          if (-not (Select-String -Path out.txt -Pattern "ADC" -Quiet)) { throw "no recommendation table" }
+          if (-not (Test-Path (Join-Path $env:LOCALAPPDATA 'adctox\bin\adctox.cmd'))) { throw "adctox command missing" }

@@ -1,18 +1,22 @@
-# Ubuntu 설치
+# 설치 (Linux, ## 기본 설치
 
-## 기본 설치
+| 운영체제 | 명령 | 조건 |
+|---|---|---|
+| Linux (x86_64, arm64) | `curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh \| bash` | glibc 기반 배포판(Ubuntu 22.04 이상 확인), `curl` |
+| macOS (Apple silicon) | 위와 같은 명령 | macOS 11 이상. Intel Mac은 PyTorch 2.11 빌드가 없어 지원하지 않는다 |
+| Windows 10, 11 (64비트) | PowerShell에서 `irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 \| iex` | 관리자 권한 불필요 |
 
-Ubuntu 24.04 이상, Python 3.12 이상, `curl`, Python의 `venv` 모듈이 필요하다. Ubuntu 22.04에서는 별도로 준비한 Python 3.12 이상의 경로를 `ADCTOX_PYTHON`으로 지정한다.
+- Python 3.12 이상(venv 포함)이 있으면 그것을 쓴다.
+- 없으면 고정 버전 uv(0.12.17, SHA256 확인)를 임시로 받는다. 그 uv가 Python 3.12를 `~/.local/share/adctox/python`에 설치한다. 시스템 Python과 패키지는 건드리지 않는다.
+- 특정 Python을 쓰려면 `ADCTOX_PYTHON=/path/to/python3.12`를 지정한다.
+- Windows 설치기가 하는 일:
+  - 공식 embeddable Python이 든 패키지를 받아 SHA256을 확인한다.
+  - `%LOCALAPPDATA%\adctox\app`에 푼다.
+  - 시작 메뉴와 바탕화면 바로가기, `adctox` 명령(사용자 PATH)을 만든다.
+  - 모델을 받는다.
+- 다시 실행하면 앱을 새 버전으로 바꾼다.
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
-adctox
-```
-
-`venv`가 없다는 메시지가 나오면 다음 패키지를 설치하고 다시 실행한다.
-
-```bash
-sudo apt install python3-venv
+ython3-venv
 ```
 
 설치기는 sudo를 사용하지 않는다. 기본 CPU PyTorch와 추론 의존성, 약 972 MiB의 모델 파일을 설치한다. BioLORD와 SapBERT는 원본 Hugging Face 저장소의 고정 revision에서 받는다. upstream 이용 조건은 [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md)를 참고한다.
@@ -49,7 +53,7 @@ ADCTOX_INSTALL_DIR="$HOME/apps/adctox" ADCTOX_BIN_DIR="$HOME/.local/bin" bash /t
 
 ## 업데이트
 
-기저질환 선택 화면의 `U 모델 업데이트`를 사용한다. 입력하던 조건은 유지된다. 다운로드가 완료되면 질환 연결 및 예측 캐시를 비우고 다음 분석에서 새 모델을 사용한다.
+기저질환 입력 화면에서 `Ctrl+U`(모델 업데이트)를 누른다. 입력하던 조건은 유지된다. 다운로드가 완료되면 질환 연결 및 예측 캐시를 비우고 다음 분석에서 새 모델을 사용한다.
 
 ```bash
 adctox --check-models
@@ -60,19 +64,15 @@ adctox --rollback-models
 
 업데이트는 변경된 파일을 통째로 받는 방식이다. 동일한 encoder와 index는 재사용하지만 변경된 가중치 파일 내부의 byte patch를 받는 것은 아니다. 연결이 끊기거나 검증에 실패하면 현재 모델을 계속 선택한다. 받은 파일은 다음 시도에서 검증 후 재사용된다. 중단된 파일의 부분 다운로드 재개는 현재 지원하지 않는다.
 
-앱 코드는 설치 명령을 다시 실행해 업데이트한다. 모델 업데이트만으로는 Python 의존성을 변경하지 않는다. 새로운 모델 구조가 runtime API를 바꾸면 먼저 앱 업데이트를 요구한다.
+앱 코드는 `adctox --update-app`으로 업데이트하거나 설치 명령을 다시 실행한다. 모델 업데이트만으로는 Python 의존성을 변경하지 않는다. 새로운 모델 구조가 runtime API를 바꾸면 먼저 앱 업데이트를 요구한다.
 
 `ADC_MODEL_DIR`은 개발자가 특정 모델 디렉터리를 직접 고정하는 기존 옵션이다. 이 옵션을 설정한 상태에서는 기본 설치 경로의 새 모델보다 지정한 경로가 우선하므로 일반 사용에서는 설정하지 않는다.
 
 ## Windows
 
-현재 배포는 Ubuntu용이다. PowerShell의 `curl.exe`로 파일을 받을 수 있다.
+설치 위치는 `%LOCALAPPDATA%\adctox\app`(앱과 Python), `%LOCALAPPDATA%\adctox\models`(모델), `%LOCALAPPDATA%\adctox\bin\adctox.cmd`(명령)이다. 설치기 없이 쓰려면 Release의 `ADCTOX-windows.zip`을 아무 곳에 풀고 `ADCTOX.bat`을 실행해도 된다. PC에 Microsoft Visual C++ 재배포 패키지(x64)가 없으면 프로그램이 공식 설치 링크를 알려 준다.
 
-```powershell
-curl.exe -fL https://github.com/ahnhc/ADCToX/releases/latest/download/adctox-ubuntu.tar.gz -o adctox-ubuntu.tar.gz
-```
-
-Windows에서 실행하려면 WSL의 Ubuntu를 열고 기본 설치 명령을 실행한다. Windows용 exe 포팅 및 새 패키징은 이번 배포에 포함하지 않는다.
+삭제: `%LOCALAPPDATA%\adctox` 폴더와 바로가기를 지우고, 사용자 PATH에서 `%LOCALAPPDATA%\adctox\bin`을 뺀다.
 
 ## GPU 환경
 
@@ -84,7 +84,7 @@ Windows에서 실행하려면 WSL의 Ubuntu를 열고 기본 설치 명령을 �
 
 ```bash
 rm "$HOME/.local/bin/adctox"
-rm -r "$HOME/.local/share/adctox"
+rm -r "$HOME/.local/share/adctox"          # 앱, 모델, uv로 받은 Python 모두
 ```
 
 남은 입력 상태도 지우려면 `~/.config/adctox/last_input.json`을 삭제한다.

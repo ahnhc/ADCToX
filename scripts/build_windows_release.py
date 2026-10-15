@@ -251,6 +251,7 @@ def main():
             "size": out.stat().st_size, "sha256": hashlib.sha256(out.read_bytes()).hexdigest(), "python": "3.12.10 embeddable",
             "torch_version": manifest["torch_version"], "wheels": [w.name for w in found]}
     (a.out / "windows.json").write_text(json.dumps(info, indent=2) + "\n")
+    (ROOT / "releases/app/windows.json").write_text(json.dumps(info, indent=2) + "\n")       # read by install.ps1
     print(f"Windows {APP_VERSION}: {out.stat().st_size / 1024**2:.0f} MiB, {len(found)} wheels; models download on first start.")
 
 

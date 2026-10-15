@@ -1,10 +1,10 @@
-# GitHub 버전 관리와 Ubuntu 배포
+# GitHub 버전 관리와 배포 (Linux, macOS, Windows)
 
 ## 구분
 
 | 대상 | 버전과 위치 | 배포 방식 |
 |---|---|---|
-| 앱 | `ml/adc_version.py`, 현재 0.3 | Git tag `v0.3.0`, GitHub Release의 `adctox-ubuntu.tar.gz`, `ADCTOX-windows.zip` |
+| 앱 | `ml/adc_version.py`, 현재 0.3.1 | Git tag `v0.3.1`, GitHub Release의 `adctox-ubuntu.tar.gz`(Linux, macOS 공용), `ADCTOX-windows.zip` |
 | 모델 묶음 | `releases/models/stable.json`, 현재 0.2 | 별도 tag `models-0.2`, MLP 및 MONDO index assets |
 | 기본 encoder | manifest에 고정한 HF revision | 원본 Hugging Face에서 파일별 다운로드 |
 | 연구 자료 | `ml/docs`, `ml/results`, `report`, `docs` | Git 이력 및 README 링크 |
@@ -83,7 +83,16 @@ GitHub Actions는 새 push/PR에서 updater, 터미널 및 추천기 테스트�
 - Microsoft Visual C++ 런타임은 기본으로 넣지 않는다. 없는 PC에서는 launcher가 공식 설치 링크를 안내한다. Visual Studio 라이선스(Community 포함)가 있으면 `--bundle-vc-runtime`으로 넣을 수 있다.
 - 실제 Windows 검증은 GitHub Actions의 `windows-smoke` job이 한다: updater 테스트, 압축 해제, 모델 다운로드, 질환 분석 실행.
 
-Release에는 `ADCTOX-windows.zip`을 앱 Release의 asset으로 함께 올린다.
+Release에는 `ADCTOX-windows.zip`을 앱 Release의 asset으로 함께 올린다. 빌드는 `releases/app/windows.json`(크기, SHA256, URL)도 갱신하는데, Windows 한 줄 설치기 `install.ps1`이 이 파일을 읽는다.
+
+## 한 줄 설치기 (0.3.1부터)
+
+| 파일 | 대상 | 읽는 manifest |
+|---|---|---|
+| `install.sh` | Linux x86_64/arm64, macOS Apple silicon | `releases/app/stable.json` |
+| `install.ps1` | Windows 10/11 64비트 | `releases/app/windows.json` |
+
+`install.sh`는 Python 3.12+가 없으면 고정 버전 uv(0.12.17, 플랫폼별 SHA256을 스크립트에 고정)로 Python 3.12를 설치 폴더 안에 받는다. uv 버전을 바꿀 때는 세 플랫폼의 `.sha256`을 함께 갱신한다. 배포 후 `.github/workflows/install.yml`이 Release 게시 시점에 Ubuntu 22.04/24.04, macOS 14/15, Windows에서 공개 설치 명령을 그대로 실행하고 앱을 돌려 본다.
 
 ## Oracle mirror가 필요한 경우
 

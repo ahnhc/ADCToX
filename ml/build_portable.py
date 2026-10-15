@@ -153,10 +153,11 @@ def main():
         E = json.loads(json.dumps(DE.evidence(), default=lambda x: x.item() if hasattr(x, "item") else list(x) if isinstance(x, (set, tuple)) else str(x)))
     data = dict(evidence=E, rules=yaml.safe_load(open(R / "conf/label_restrictions.yaml"))["rules"],
                 registry=list(csv.DictReader(open(R / "conf/comorbidity_registry.csv"))),
-                checks=yaml.safe_load(open(R / "conf/patient_checks.yaml"))["checks"], mondo={} if FULL else mondo_terms())
+                checks=yaml.safe_load(open(R / "conf/patient_checks.yaml"))["checks"], mondo={} if FULL else mondo_terms(),
+                profiles=__import__("suggest").read_profiles(R / "data/curated/disease_profiles"))
     if FULL: data["learned"] = json.load(open(R / "ml/results/learned_vulnerability.json"))["severity"]
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
-    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "adc_version", "adc_runtime", "adc_updates")}
+    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "adc_version", "adc_runtime", "adc_updates")}
 
     rc = src["recommend"]
     rc = sub(rc, 'sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))\n', "", "recommend")
@@ -204,7 +205,8 @@ Built from the project repository on {__import__("datetime").date.today()} (Dail
 This orders label evidence for one patient; it is not a probability of an adverse event.
 
 Data carried in this file: FDA labels via DailyMed (U.S. NLM; public domain); MONDO Disease Ontology names and synonyms
-(Monarch Initiative, CC BY 4.0, https://mondo.monarchinitiative.org).{{DATA}}
+(Monarch Initiative, CC BY 4.0, https://mondo.monarchinitiative.org); disease profiles for the search (names, everyday words,
+symptoms, treatments in English and Korean) written for this project by Claude and not yet reviewed by clinicians.{{DATA}}
 """
 import importlib.abc, importlib.util, json, sys
 

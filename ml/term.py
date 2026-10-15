@@ -160,7 +160,26 @@ class _Screen:
         while len(b) < n: b += os.read(fd, 1)
         return b.decode("utf-8", "replace")
 
+    def timeout(self, ms):
+        """like curses: get_wch waits at most ms milliseconds (negative: forever) and then raises error."""
+        self._wait = ms
+
+    def _ready(self):
+        ms = getattr(self, "_wait", -1)
+        if ms < 0: return True
+        import time
+        end = time.monotonic() + ms / 1000
+        if os.name == "nt":
+            import msvcrt
+            while not msvcrt.kbhit():
+                if time.monotonic() >= end: return False
+                time.sleep(0.01)
+            return True
+        import select
+        return bool(select.select([sys.stdin.fileno()], [], [], ms / 1000)[0])
+
     def get_wch(self):
+        if not self._ready(): raise self.C.error("no input")
         k = self._read()
         if k == -1: return self.get_wch()
         return k
