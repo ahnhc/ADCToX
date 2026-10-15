@@ -1,0 +1,60 @@
+{
+ "tag": "full",
+ "layers": 35,
+ "rank": 16,
+ "epochs_best": 2,
+ "val_loss": 0.10017960518598557,
+ "val_macro_f1": 0.8175522261031944,
+ "n_train": 62296,
+ "gold_dev": {
+  "linker": {
+   "macro_f1": 0.7952254214705773,
+   "false_accept_invalid": 0.13333333333333333,
+   "coverage": 0.8065843621399177
+  },
+  "fill_head": {
+   "macro_f1": 0.8352168861554665,
+   "false_accept_invalid": 0.13333333333333333,
+   "coverage": 0.934156378600823
+  },
+  "judge": {
+   "macro_f1": 0.8787184816967777,
+   "false_accept_invalid": 0.0,
+   "coverage": 0.9012345679012346
+  },
+  "fill_judge": {
+   "macro_f1": 0.8730549954021962,
+   "false_accept_invalid": 0.13333333333333333,
+   "coverage": 0.9465020576131687
+  }
+ },
+ "korean_examples": {
+  "당뇨": [
+   "metabolic_endocrine"
+  ],
+  "콩팥병": [
+   "renal"
+  ],
+  "치매": [
+   "neurologic"
+  ],
+  "간경화": [
+   "hepatic"
+  ],
+  "천식": [
+   "pulmonary"
+  ],
+  "녹내장": [
+   "ocular"
+  ],
+  "중풍": [
+   "cardiovascular",
+   "neurologic"
+  ],
+  "통풍": [
+   "metabolic_endocrine",
+   "musculoskeletal"
+  ]
+ },
+ "minutes": 28.1
+}
