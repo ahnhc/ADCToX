@@ -1,14 +1,14 @@
-ADCTOX 0.3.3: belantamab mafodotin (BLENREP) added as the 15th ADC.
+ADCTOX 0.3.4: `adctox --help`.
 
-- **Label:** the current US label (version 2, 2026-10-06), read the same way as the other 14.
-- **Evidence:** boxed ocular toxicity, thrombocytopenia.
-- **Rules:**
-  - Hepatic: mild impairment no adjustment; moderate or severe not established.
-  - Renal: no adjustment outside dialysis.
-  - Eye exam before every dose.
-  - Withhold below 25,000/mcL platelets.
+- **새 도움말:** `adctox --help`(또는 `-h`, `help`)가 다음을 한국어로 보여 준다.
+  - 프로그램이 무엇을 하는지, 순서를 정하는 기준
+  - 화면 없이 바로 실행하는 법과 예시
+  - 검사 수치 옵션
+  - 입력 화면 키
+  - 업데이트·관리 명령 전체
+- **0.3.3 포함:** belantamab mafodotin(BLENREP)이 15번째 ADC로 들어갔다.
 
-Update: `adctox --update-app`. New install:
+업데이트: `adctox --update-app`. 새 설치:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash      # Linux, macOS
@@ -17,5 +17,3 @@ curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
 ```powershell
 irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex             # Windows (PowerShell)
 ```
-
-Models stay at 0.3.

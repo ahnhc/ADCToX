@@ -843,6 +843,48 @@ def list_conditions():
     print("\n[context]"); [print(f"  {k:<28} {v}") for k, v in CONTEXT.items()]
 
 
+HELP = """ADCTOX {version}
+
+기저질환(과 검사 수치)을 넣으면 미국 FDA 라벨이 있는 ADC {n}개를 이 환자에게 맞는 순서로 보여 줍니다.
+순서 기준: 라벨의 사용 제한(금기, 피하라, 자료 없음) > 환자 장기에 걸린 boxed 경고 > 그 밖의 경고.
+질환은 BioLORD와 SapBERT로 MONDO 질환과 장기에 연결하고, 분석은 이 컴퓨터 안에서만 합니다.
+연구용 도구입니다. 독성 발생 확률이 아니며 처방 결정을 대신하지 않습니다.
+
+사용
+  adctox                         입력 화면으로 시작 (질환 → 검사 수치 → 결과)
+  adctox 질환 [질환 ...] [옵션]   화면 없이 바로 결과 표 출력
+      예) adctox cirrhosis 당뇨 "heart failure" --lab creatinine=1.3 --lab age=70 --lab sex=F --lab weight=55
+  adctox --list                  미리 등록된 질환 ID 목록
+
+결과 표 옵션
+  --lab 이름=값                  검사 수치 (creatinine, age, sex, weight, bilirubin, ast, alt, platelet, anc, hb, hba1c, lvef ...)
+  --crcl 45 --bili 2.0 --ast 3   라벨 단위로 직접 입력 (CLcr mL/min, 정상 상한의 배수)
+  --child-pugh A|B|C             간기능 등급
+  --priority 2,1                 질환 순서대로 우선순위 (1 = 그 장기 독성을 먼저 피함)
+  --detail                       근거 문장까지 출력
+
+입력 화면 키
+  글자 입력       질환명 추천 (한국어, 영어, 약어, 초성, 오타)
+  TAB             증상·문장으로 찾기 (예: 투석 중이고 숨이 차요)
+  ↑↓ ENTER        추천 고르기 / 고른 질환 빼기
+  PgDn / PgUp     다음 단계 / 이전 단계
+  Ctrl+U          모델 업데이트
+  ESC             입력 지우기, 빈 칸에서 누르면 종료
+
+업데이트와 관리
+  adctox --update-app            새 앱 설치
+  adctox --check-app             새 앱이 있는지 확인
+  adctox --update-models         바뀐 모델 파일만 받기
+  adctox --check-models          모델 업데이트 확인
+  adctox --model-version         설치된 모델 버전
+  adctox --rollback-models       이전 모델로 되돌리기
+  adctox --verify-models         모델 파일 무결성 검사
+  adctox --version               앱 버전
+  adctox --help                  이 설명
+
+자세히: https://github.com/ahnhc/ADCToX"""
+
+
 def main():
     global LEARNED_FRACTION, FALLBACK, PRIORITY
     from adc_version import APP_VERSION
@@ -856,9 +898,8 @@ def main():
     if len(arguments) == 1 and arguments[0] in ("--update-app", "--check-app"):
         import adc_updates
         raise SystemExit(adc_updates.app_cli("update" if arguments[0] == "--update-app" else "check"))
-    if arguments == ["--help"]:
-        print("ADCTOX " + APP_VERSION + "\n\nadctox                       Interactive recommender\nadctox --list                Condition IDs\nadctox --update-models       Download changed model files\nadctox --check-models        Check model updates\nadctox --model-version       Installed model version\nadctox --rollback-models     Restore previous model\nadctox --verify-models       Re-hash installed model files\nadctox --version             App version\nadctox --check-app           Check for a newer app\nadctox --update-app          Install the newer app (same Python packages)\n\nIn the condition picker, press U for model updates.")
-        return
+    if arguments in (["--help"], ["-h"], ["help"]):
+        print(HELP.format(version=APP_VERSION, n=len(_evidence()[0]))); return
     import term
     if "--no-wt" in sys.argv: sys.argv.remove("--no-wt")
     else: term.into_windows_terminal()                 # double-clicked on Windows: reopen in Windows Terminal when there is one

@@ -371,3 +371,13 @@ def test_outcome_harness_does_not_invent_an_association():
 def test_jader_organ_rules(term, organ):
     import validate_jader as VJ
     assert VJ.OrganMapper(use_embedding=False).map([term])[term] == organ
+
+
+@pytest.mark.parametrize("arg", ["--help", "-h", "help"])
+def test_help_explains_the_program_and_lists_every_command(arg, monkeypatch, capsys):
+    import recommend as RC
+    monkeypatch.setattr(sys, "argv", ["adctox", arg])
+    RC.main(); out = capsys.readouterr().out
+    assert "ADC" in out and "연구용" in out and "TAB" in out and "Ctrl+U" in out
+    for c in ("--update-app", "--check-app", "--update-models", "--check-models", "--model-version", "--rollback-models", "--verify-models", "--version", "--list", "--lab"):
+        assert c in out

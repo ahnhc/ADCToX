@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.4 — Help
+
+- `adctox --help` (also `-h`, `help`) explains in Korean what the program does and how it orders the ADCs, then lists:
+  - direct-run usage with an example;
+  - result-table options (`--lab`, `--crcl`, `--child-pugh`, `--priority`, `--detail`);
+  - the input-screen keys;
+  - every update and maintenance command.
+
 ## 0.3.3 — Belantamab mafodotin (BLENREP)
 
 - The 15th ADC: belantamab mafodotin (BLENREP; BCMA, MMAF). Its current US label (version 2, 2026-10-06) is fetched into a separate DailyMed snapshot dated 2026-10-15; the other 14 labels stay on the 2026-10-07 snapshot, and their evidence is unchanged.
