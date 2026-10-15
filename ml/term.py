@@ -4,9 +4,10 @@
     from term import curses       # real curses on Linux / macOS; this stand-in on Windows (or with ADC_TERM_SHIM=1)
 
 The stand-in keeps a cell buffer (a Hangul syllable takes two cells, as terminals draw it), repaints the whole screen on
-refresh() in the alternate screen buffer, and reads keys with msvcrt on Windows or a raw tty elsewhere. No mouse.
+refresh() in the alternate screen buffer, and reads keys with msvcrt on Windows or a raw tty elsewhere. Mouse clicks and the
+wheel arrive as xterm SGR reports (ESC [ < b ; x ; y M), which Windows Terminal sends once virtual-terminal input is on.
 """
-import os, sys, unicodedata
+import os, re, sys, unicodedata
 
 USE_SHIM = os.name == "nt" or os.environ.get("ADC_TERM_SHIM") == "1"
 
@@ -23,6 +24,23 @@ def windows_console():
     for s in (sys.stdout, sys.stderr):
         try: s.reconfigure(encoding="utf-8", errors="replace")
         except Exception: pass
+
+
+def _vt_input(on, restore=None):
+    """Windows: turn on virtual-terminal input (mouse reports, ESC sequences for keys) and off quick-edit (which would take
+    the clicks); -> the previous console mode, restored when the screen closes. Nothing elsewhere."""
+    if os.name != "nt": return None
+    try:
+        import ctypes
+        k = ctypes.windll.kernel32; h = k.GetStdHandle(-10); mode = ctypes.c_uint32()
+        if not on:
+            if restore is not None: k.SetConsoleMode(h, restore)
+            return None
+        if not k.GetConsoleMode(h, ctypes.byref(mode)): return None
+        k.SetConsoleMode(h, (mode.value | 0x0200 | 0x0080) & ~0x0040)       # VIRTUAL_TERMINAL_INPUT | EXTENDED_FLAGS, no QUICK_EDIT
+        return mode.value
+    except Exception:
+        return None
 
 
 def into_windows_terminal():
@@ -51,14 +69,14 @@ class _Shim:
     COLOR_BLACK, COLOR_RED, COLOR_GREEN, COLOR_YELLOW, COLOR_BLUE, COLOR_MAGENTA, COLOR_CYAN, COLOR_WHITE = range(8)
     KEY_DOWN, KEY_UP, KEY_LEFT, KEY_RIGHT, KEY_HOME, KEY_BACKSPACE = 258, 259, 260, 261, 262, 263
     KEY_NPAGE, KEY_PPAGE, KEY_ENTER, KEY_END, KEY_MOUSE = 338, 339, 343, 360, 409
-    BUTTON1_CLICKED = BUTTON1_PRESSED = BUTTON1_RELEASED = 0
+    BUTTON1_RELEASED, BUTTON1_PRESSED, BUTTON1_CLICKED, BUTTON4_PRESSED, BUTTON5_PRESSED = 0x1, 0x2, 0x4, 0x10000, 0x200000
 
     # App-local colours: the alternate buffer is painted explicitly, without changing the user's Terminal profile.
     PALETTE = {0: (23, 24, 21), 1: (237, 150, 144), 2: (154, 193, 145), 3: (226, 184, 114),
                4: (143, 174, 214), 5: (190, 163, 210), 6: (129, 195, 203), 7: (233, 231, 220),
                236: (44, 46, 38), 238: (57, 59, 49), 244: (170, 169, 155)}
 
-    def __init__(self): self._pairs = {}
+    def __init__(self): self._pairs = {}; self._mouse = (0, 0, 0, 0, 0)
 
     # ---- module-level curses functions
     def has_colors(self): return True
@@ -67,16 +85,16 @@ class _Shim:
     def init_pair(self, n, fg, bg): self._pairs[n] = (fg, bg)
     def color_pair(self, n): return n << 8
     def curs_set(self, v): sys.stdout.write("\x1b[?25h" if v else "\x1b[?25l"); sys.stdout.flush()
-    def mousemask(self, m): raise self.error("no mouse")
+    def mousemask(self, m): return m, 0
     def mouseinterval(self, n): pass
-    def getmouse(self): raise self.error("no mouse")
+    def getmouse(self): return self._mouse
 
     def wrapper(self, func, *a, **k):
-        windows_console(); scr = _Screen(self); out = sys.stdout
-        out.write("\x1b[?1049h\x1b[?25l"); out.flush(); scr._raw(True)
+        windows_console(); scr = _Screen(self); out = sys.stdout; restore = _vt_input(True)
+        out.write("\x1b[?1049h\x1b[?25l\x1b[?1000h\x1b[?1006h"); out.flush(); scr._raw(True)
         try: return func(scr, *a, **k)
         finally:
-            scr._raw(False); out.write("\x1b[0m\x1b[?25h\x1b[?1049l"); out.flush()
+            scr._raw(False); out.write("\x1b[?1006l\x1b[?1000l\x1b[0m\x1b[?25h\x1b[?1049l"); out.flush(); _vt_input(False, restore)
 
     def _sgr(self, attr):
         codes = ["0"]
@@ -136,15 +154,39 @@ class _Screen:
         if on: self._tty = termios.tcgetattr(fd); tty.setraw(fd)
         elif self._tty: termios.tcsetattr(fd, termios.TCSADRAIN, self._tty)
 
+    SEQ = {"[A": "KEY_UP", "OA": "KEY_UP", "[B": "KEY_DOWN", "OB": "KEY_DOWN", "[C": "KEY_RIGHT", "OC": "KEY_RIGHT", "[D": "KEY_LEFT",
+           "OD": "KEY_LEFT", "[5~": "KEY_PPAGE", "[6~": "KEY_NPAGE", "[H": "KEY_HOME", "[F": "KEY_END", "[1~": "KEY_HOME", "[4~": "KEY_END"}
+
+    def _escape(self, seq):
+        """an escape sequence (without ESC) -> KEY_ constant; SGR mouse reports set getmouse() and give KEY_MOUSE."""
+        C = self.C
+        m = re.fullmatch(r"\[<(\d+);(\d+);(\d+)([Mm])", seq)
+        if m:
+            b, x, y, kind = int(m.group(1)), int(m.group(2)) - 1, int(m.group(3)) - 1, m.group(4)
+            if b == 64: return C.KEY_UP
+            if b == 65: return C.KEY_DOWN
+            if b & 3 == 0 and not b & 32 and kind == "M":
+                C._mouse = (0, x, y, 0, C.BUTTON1_PRESSED); return C.KEY_MOUSE
+            return -1                                              # releases, drags, other buttons
+        return getattr(C, self.SEQ[seq]) if seq in self.SEQ else -1
+
     def _read(self):
         """-> str (a character) or int (a KEY_ constant)."""
         C = self.C
         if os.name == "nt":
-            import msvcrt
+            import msvcrt, time
             c = msvcrt.getwch()
             if c in ("\x00", "\xe0"):
                 return {"H": C.KEY_UP, "P": C.KEY_DOWN, "K": C.KEY_LEFT, "M": C.KEY_RIGHT, "I": C.KEY_PPAGE, "Q": C.KEY_NPAGE,
                         "G": C.KEY_HOME, "O": C.KEY_END}.get(msvcrt.getwch(), -1)
+            if c == "\x1b":                                           # virtual-terminal input: keys and mouse as sequences
+                seq, end = "", time.monotonic() + 0.03
+                while time.monotonic() < end:
+                    if msvcrt.kbhit():
+                        seq += msvcrt.getwch()
+                        if seq[-1:].isalpha() or seq[-1:] == "~": break
+                    else: time.sleep(0.002)
+                return self._escape(seq) if seq else "\x1b"
             return c
         import select
         fd = sys.stdin.fileno(); b = os.read(fd, 1)
@@ -154,8 +196,7 @@ class _Screen:
                 seq += os.read(fd, 1)
                 if seq[-1:].isalpha() or seq[-1:] == b"~": break
             if not seq: return "\x1b"
-            return {b"[A": C.KEY_UP, b"OA": C.KEY_UP, b"[B": C.KEY_DOWN, b"OB": C.KEY_DOWN, b"[C": C.KEY_RIGHT, b"OC": C.KEY_RIGHT,
-                    b"[D": C.KEY_LEFT, b"OD": C.KEY_LEFT, b"[5~": C.KEY_PPAGE, b"[6~": C.KEY_NPAGE, b"[H": C.KEY_HOME, b"[F": C.KEY_END}.get(seq, -1)
+            return self._escape(seq.decode("ascii", "replace"))
         n = 1 if b[0] < 0x80 else 2 if b[0] >> 5 == 6 else 3 if b[0] >> 4 == 14 else 4
         while len(b) < n: b += os.read(fd, 1)
         return b.decode("utf-8", "replace")

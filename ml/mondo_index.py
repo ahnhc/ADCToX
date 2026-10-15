@@ -123,6 +123,7 @@ def link(texts):
         row = dict(mondo=t0, name=name, sim=sim, axes=organs if accept else [],
                    valid=valid[i], gate=None if valid[i] is None else bool(valid[i] >= float(_IDX["gate_threshold"])))
         row["readings"] = readings(texts[i], top, accept)
+        row["judged"] = judged_organs(Qn[i]) if "oh_w1" in _IDX else []     # fast organ judgment of the text itself (index v5+)
         row["hpo"] = None if row["axes"] else phenotype(texts[i], Qn[i])
         if row["hpo"] and sim >= THETA:                       # a disease without organ axis vs a symptom with one (amnesia): both readings
             row["readings"].append(dict(mondo=row["hpo"]["hpo"], name=row["hpo"]["name"], organs=row["hpo"]["organs"], why="phenotype"))
@@ -209,6 +210,12 @@ def rr_features(text, cands):
 def rerank_scores(text, cands):
     X = rr_features(text, cands)
     return (((X - _IDX["rr_mu"]) / _IDX["rr_sd"]) @ _IDX["rr_w"] + float(_IDX["rr_b"])).tolist()
+
+
+def judged_organs(q):
+    """organs a small network reads off the text's SapBERT vector (trained on the Haiku concept-organ labels, ml/organ_head.py)."""
+    h = np.maximum(q @ _IDX["oh_w1"] + _IDX["oh_b1"], 0); p = 1 / (1 + np.exp(-(h @ _IDX["oh_w2"] + _IDX["oh_b2"])))
+    return [AXES[k] for k in np.where(p >= _IDX["oh_thr"])[0]]
 
 
 # ------------------------------------------------------------------ phenotypes (symptoms, findings) when no disease matches

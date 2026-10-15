@@ -187,9 +187,9 @@ def analyze_conditions(conditions, progress=None):
     reports = []
     for c, (near, sim), link, prediction in zip(free, best, links, learned):
         how = dict(notes)[c]
-        source = ("Chosen" if "chosen reading" in how else "MONDO (no organ axis)" if "no organ axis" in how else "MONDO" if "; MONDO '" in how else "Phenotype (HPO)" if "phenotype HPO" in how else
+        source = ("Chosen" if "chosen reading" in how else "AI judgment" if "AI judgment" in how else "MONDO (no organ axis)" if "no organ axis" in how else "MONDO" if "; MONDO '" in how else "Phenotype (HPO)" if "phenotype HPO" in how else
                   "Registry match" if "same as registry" in how else "Similar condition" if "borrowed from registry" in how else "Unmapped")
-        name = (link["name"] if source.startswith("MONDO") else re.search(r"chosen reading (?:MONDO|HPO) '(.*?)'", how).group(1) if source == "Chosen" else
+        name = ("" if source == "AI judgment" else link["name"] if source.startswith("MONDO") else re.search(r"chosen reading (?:MONDO|HPO) '(.*?)'", how).group(1) if source == "Chosen" else
                 link["hpo"]["name"] if source == "Phenotype (HPO)" else _reg[near]["label"] if source != "Unmapped" else "")
         estimates = sorted(((a, float(v)) for a, v in (prediction or {}).items() if v > 0), key=lambda x: (-x[1], AXES.index(x[0])))[:3]
         models, by_model, agree = [], {}, {}
@@ -231,6 +231,9 @@ def resolve(conditions):
             elif lk["axes"] and not (GATE_MONDO and rejected):
                 own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in lk["axes"]]
                 how = f"free text; MONDO '{lk['name']}' (sim {lk['sim']:.2f}) -> organs: {', '.join(lk['axes'])}"
+            elif lk.get("judged") and not rejected:                 # index v5+: no linked organ, the fast organ judgment of the text
+                own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in lk["judged"]]
+                how = f"free text; AI judgment -> organs: {', '.join(lk['judged'])}"
             elif lk["axes"] == [] and lk.get("sim", 0) >= LINK_THETA and not rejected and not lk.get("ambiguous"):
                 own, how = np.zeros(len(AXES)), f"free text; MONDO '{lk['name']}' (sim {lk['sim']:.2f}) -> no organ axis"
             elif hp:
@@ -271,7 +274,7 @@ def ambiguous_conditions(conditions):
     free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
     if not free: return []
     _, links, _ = _free_info(free)
-    return [(c, lk["readings"]) for c, lk in zip(free, links) if lk.get("ambiguous")]
+    return [(c, lk["readings"]) for c, lk in zip(free, links) if lk.get("ambiguous") and lk.get("gate") is not False]   # not a disease name: nothing to choose
 
 
 def default_levels(pc):
@@ -593,7 +596,7 @@ DOMAIN_VALUES = {"renal": ("crcl", "esrd"), "hepatic": ("bili", "ast", "alt", "c
                  "blood": ("platelets", "anc"), "metabolic": ("hba1c",), "genotype": ("ugt1a1_28_homozygous",)}
 
 
-def _result_context(rows, notes, width, values=None, selected=0):
+def _result_context(rows, notes, width, values=None, selected=0, graphic=False):
     """Bounded key values and organ priority, without repeating diagnoses from the input screen."""
     values = values or {}
     prio = rows[0]["priority"] if rows else []
@@ -613,8 +616,11 @@ def _result_context(rows, notes, width, values=None, selected=0):
         for organ in organs: organ_levels[organ] = min(level, organ_levels.get(organ, level))
     grouped = {}
     for organ, level in sorted(organ_levels.items(), key=lambda item: (item[1], AXES.index(item[0]))):
-        grouped.setdefault(level, []).append(ORGAN_SHORT[organ])
-    priorities = [f"{level}. {', '.join(organs)}" for level, organs in grouped.items()]
+        grouped.setdefault(level, []).append(organ)
+    if graphic:                                                # the result screen: one organ strip per level (green = that level's organs)
+        import tui
+        priorities = [f"{level}  {tui.strip(AXES, organs)}" for level, organs in grouped.items()]
+    else: priorities = [f"{level}. {', '.join(ORGAN_SHORT[o] for o in organs)}" for level, organs in grouped.items()]
     def block(title, items, empty):
         body = items[:3] + ([f"+ {len(items) - 3} more"] if len(items) > 3 else [])
         return [f"\033[33;1m{title}\033[0m"] + ["  " + text for text in body or [empty]]
@@ -645,7 +651,7 @@ def browse(rows, checks_=(), notes=(), labs=None, raw=None):
     return tui.browse("ADC 추천 결과", lambda w: _result_list(rows, w), [],
                       lambda i, w: _result_details(rows[i], checks_, w),
                       footer="!! Label emphasis   ! Warning   + More organs",
-                      context=lambda i, w: _result_context(rows, notes, w, values, i))
+                      context=lambda i, w: _result_context(rows, notes, w, values, i, graphic=True))
 
 
 def patient_lines(notes):

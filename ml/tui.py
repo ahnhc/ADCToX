@@ -82,6 +82,16 @@ class _Screen:
         for line in (description or "").splitlines(): self.put(y, 2, line, self.dim); y += 1
         self.put(y, 2, hint, self.dim); return y + 2
 
+GLYPH = {"haematologic": "혈", "hepatic": "간", "cardiovascular": "심", "pulmonary": "폐", "renal": "콩", "gastrointestinal": "위",
+         "neurologic": "뇌", "ocular": "눈", "dermatologic": "피", "metabolic_endocrine": "대", "musculoskeletal": "뼈",
+         "infectious_immune": "면", "otologic": "귀"}           # 혈액 간 심혈관 폐 콩팥 위장관 뇌신경 눈 피부 대사내분비 뼈근육 면역감염 귀
+
+
+def strip(axes, on=(), maybe=()):
+    """the 13 organs as one line of initials (26 columns): organs in `on` green, in `maybe` yellow, the rest grey."""
+    return "".join((f"\033[32;1m{GLYPH[a]}\033[0m" if a in on else f"\033[33m{GLYPH[a]}\033[0m" if a in maybe else f"\033[90m{GLYPH[a]}\033[0m") for a in axes)
+
+
 def _enter(k): return k in (10, 13, curses.KEY_ENTER)
 
 def _wrap(text, width, indent="    "):
@@ -269,7 +279,7 @@ def browse(title, lines, selectable, details, footer="", context=()):
             if detail_focus:
                 hint = "↑↓ 상세 스크롤   Tab 목록   PgUp 이전   PgDn 결과 출력"
             else:
-                hint = ("↑↓" if term.USE_SHIM else "↑↓ / 클릭") + " 이동   Tab 상세   PgUp 이전   PgDn 결과 출력"
+                hint = "↑↓ / 클릭 이동   Tab 상세   PgUp 이전   PgDn 결과 출력"
             if len(out) > detail_area:
                 hint += f"   {detail_top + 1}-{min(detail_top + detail_area, len(out))}/{len(out)}"
             S.put(h - 2, 2, hint, S.dim)

@@ -189,10 +189,14 @@ def _ranked(I, q):
 def _correct(I, q):
     """each word of a misspelt English query replaced by the closest word of the searchable names ('diabetis' -> 'diabetes')."""
     import difflib
-    if I.words is None: I.words = sorted({w for r in I.rows for w in r[0].split() if len(w) >= 4 and w.isascii()})
+    if getattr(I, "_words_n", -1) != len(I.rows):               # words by first letter: a typo rarely changes the first letter
+        I.words = {}
+        for w in {w for r in I.rows for w in r[0].split() if len(w) >= 4 and w.isascii()}: I.words.setdefault(w[0], set()).add(w)
+        I._words_n = len(I.rows)
     out = []
     for w in q.split():
-        m = difflib.get_close_matches(w, I.words, n=1, cutoff=0.8) if len(w) >= 4 and w not in I.words else []
+        pool = [x for x in I.words.get(w[:1], ()) if abs(len(x) - len(w)) <= 2]
+        m = difflib.get_close_matches(w, pool, n=1, cutoff=0.8) if len(w) >= 4 and w not in I.words.get(w[:1], ()) else []
         out.append(m[0] if m else w)
     return " ".join(out)
 
@@ -223,7 +227,9 @@ def parts(RC, text):
     [] when the input is one name ('heart failure') or a word is unknown. The form offers to add them separately."""
     words = norm(text.split(",")[-1]).split()
     if len(words) < 2: return []
-    I = index(RC); keys = {r[0] for r in I.rows}
+    I = index(RC)
+    if getattr(I, "_keys_n", -1) != len(I.rows): I._keys, I._keys_n = {r[0] for r in I.rows}, len(I.rows)    # rebuilt once the MONDO names arrive
+    keys = I._keys
     if " ".join(words) in keys: return []
     return words if all(w in keys for w in words) else []
 
@@ -242,6 +248,7 @@ def semantic(RC, text, k=5):
         import mondo_index as MI
         en = RC.english([q])[0]
         lk = MI.link([en])[0]
+        if lk.get("gate") is False: return []                      # the validity gate says this is not a disease name
         out, seen = [], set()
         for r in [dict(mondo=lk["mondo"], name=lk["name"], organs=lk["axes"], sim=lk["sim"])] + lk.get("readings", []):
             if r["mondo"] in seen or r["mondo"] in nonhuman() or r.get("sim", 1) < 0.75: continue        # = mondo_index.THETA

@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.3.7 and models 0.4 — Clicks, organ strips, every concept labelled, fast organ judgment
+
+- **Mouse:** every screen can be used with the mouse.
+  - Suggestion and selected rows, the mode tabs, lab fields, choices, meanings, and the priority `−` / `+`.
+  - `◀ 이전` / `다음 ▶` buttons sit at the top right, and the wheel scrolls.
+  - Works in curses (Linux, macOS) and in the Windows terminal stand-in, which now turns on virtual-terminal input and reads SGR mouse reports.
+- **Organ strip:** long organ text is replaced by the 13 organ initials `혈간심폐콩위뇌눈피대뼈면귀`. Green marks linked organs and yellow marks organs the learned models estimate.
+  - Shown in the suggestion list, the analysis result, the meaning choice, the priority screens and the result header.
+  - Printed output keeps the words.
+- **Typing:** suggestions update when typing pauses (or every 0.15 s), so fast typing no longer lags. Text the disease gate rejects is not offered as a meaning to pick.
+- **Organ labels:** 100 Claude Haiku 5.5 agents labelled every remaining human MONDO concept of the index. That adds 16,831 labels (gold calibration 0.89), about 21,000 in total, under new guide rules (`GUIDE.md` v3 additions):
+  - dementia and neurodevelopmental disorders → neurologic;
+  - mouth and teeth → gastrointestinal;
+  - smell and taste → neurologic;
+  - endocrine syndromes → metabolic/endocrine;
+  - skin cancers → skin.
+- **Fast organ judgment:** a 768→512→13 network reads organs straight from the SapBERT vector the linker already computes. It is a student of the Haiku labels, trained on 65k texts, and adds no download or noticeable time. It is used when the linked disease gives no organ (`AI 판정`).
+- **Gold test, full app pipeline:** macro-F1 0.747 (models 0.3) → **0.811**, +0.064 [+0.023, +0.117]. Against 0.660 before any of this work: +0.151 [+0.090, +0.215]. Invalid inputs accepted: 0.000.
+  - Everyday words 0.543 → 0.745; synonyms 0.769 → 0.842; typos 0.715 → 0.770.
+  - External corpora unchanged or better; CPU time unchanged.
+
 ## 0.3.6 — Cleaner name suggestions
 
 - Gene-numbered subtypes (`Alzheimer disease 2` … `8`, `Parkinson disease 12`) no longer fill the suggestion list.

@@ -321,7 +321,7 @@ def test_meaning_choice_is_one_screen_starts_on_the_applied_reading_and_returns_
     keys = iter([console.KEY_DOWN, console.KEY_DOWN, "\n", "\n"])
     screen.refresh = lambda: frames.append("\n".join("".join(ch for ch, _ in line) for line in screen.buf))
     screen.get_wch = lambda: next(keys)
-    RC = types.SimpleNamespace(ORGAN_SHORT={"cardiovascular": "Cardio", "neurologic": "Neuro"})
+    RC = types.SimpleNamespace(ORGAN_SHORT={"cardiovascular": "Cardio", "neurologic": "Neuro"}, AXES=list(form.GLYPH))
     groups = [("asd", [dict(mondo="M:1", name="atrial septal defect", organs=["cardiovascular"]),
                        dict(mondo="M:2", name="Alzheimer disease", organs=["neurologic"]),
                        dict(mondo="M:3", name="autism spectrum disorder", organs=["neurologic"])]),
@@ -331,7 +331,7 @@ def test_meaning_choice_is_one_screen_starts_on_the_applied_reading_and_returns_
     # ENTER on autism moves to amnesia's current pick (the applied phenotype); ENTER there finishes
     assert pick == {"asd": "M:3", "amnesia": "HP:0002354"}
     first = frames[0]
-    assert "Atrial septal defect" in first and "장기 없음" in first and "증상" in first and "모름" in first
+    assert "Atrial septal defect" in first and "13개 장기 밖" in first and "증상" in first and "모름" in first
     assert "●" in next(l for l in first.splitlines() if "Memory impairment" in l)
     assert all(len(line) <= 100 for frame in frames for line in frame.splitlines())
 
@@ -365,3 +365,30 @@ def test_every_model_is_shown_and_only_agreed_organs_are_applied_automatically(m
     s = R.resolve(["lung hole"])[0]
     applied = {a for a, v in zip(R.AXES, s) if v > 0}
     assert applied == {"pulmonary", "renal"}                                            # hepatic: one model only
+
+
+def test_mouse_reports_become_clicks_and_wheel_scrolls():
+    console = term._Shim(); screen = term._Screen(console)
+    assert screen._escape("[<0;12;5M") == console.KEY_MOUSE and console.getmouse()[1:3] == (11, 4)
+    assert screen._escape("[<0;12;5m") == -1                                         # the release is ignored
+    assert screen._escape("[<64;1;1M") == console.KEY_UP and screen._escape("[<65;1;1M") == console.KEY_DOWN
+    assert screen._escape("[A") == console.KEY_UP and screen._escape("[6~") == console.KEY_NPAGE
+
+
+def test_a_click_presses_the_row_or_button_under_it(monkeypatch):
+    import types, form
+    console = term._Shim()
+    monkeypatch.setattr(tui, "curses", console); monkeypatch.setattr(form, "curses", console); monkeypatch.setattr(term, "USE_SHIM", True)
+    monkeypatch.setattr(term._Screen, "_size", lambda self: (30, 100))
+    screen = term._Screen(console); screen.refresh = lambda: None
+    F = form.Form(screen, types.SimpleNamespace(HAS_LEARNED=False))
+    F.frame("t", ""); F.row(10, "a row", False, 3)
+    clicks = iter([("CLICK", 10, 40), ("CLICK", 2, 97 - 3), ("CLICK", 25, 5)])
+    monkeypatch.setattr(form, "_key", lambda scr, tab=False: next(clicks))
+    assert F.key() == ("ROW", 3) and F.key() == "PGDN" and F.key() == "NOOP"           # row, the top-right 다음 ▶, empty space
+
+
+def test_organ_strip_marks_linked_and_estimated_organs():
+    import form
+    s = form.strip(list(form.GLYPH), on=["hepatic"], maybe=["renal"])
+    assert plain(s) == "혈간심폐콩위뇌눈피대뼈면귀" and "\x1b[32;1m간" in s and "\x1b[33m콩" in s
