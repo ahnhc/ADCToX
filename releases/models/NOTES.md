@@ -1,7 +1,10 @@
-Model bundle 0.2.
+Model bundle 0.3.
 
-- Learned organ estimate: axis heads trained on FinnGen endpoint summaries together with the published Danish disease trajectories (Siggaard et al. 2020, CC BY 4.0). Two comparison heads (Danish only, FinnGen only) ship alongside; the app shows all three and applies automatically only organs at least two models place in their top three. Metabolic/endocrine is left blank because it failed the per-axis check on an independent US cohort (HuDiNe).
-- MONDO index v3: validity gate for typed text, abbreviation readings from the NLM SPECIALIST Lexicon (LRABR), a Human Phenotype Ontology block for symptoms, and Korean disease names from the HIRA KCD master (공공누리 제1유형, attribution).
-- Unchanged: BioLORD-2023 and SapBERT at the same pinned Hugging Face revisions. SapBERT fine-tuning was evaluated three times and not adopted.
+- **MONDO index v4 adds a learned reranker.** It reorders the 10 nearest concepts and decides acceptance.
+  - Gold test, full app pipeline: macro-F1 0.660 → 0.747, +0.087 [95% CI +0.037, +0.133]. Invalid inputs accepted: 0.000.
+  - No external test corpus got worse.
+  - Details: `ml/docs/release_0.3.1_evaluation.md` §4.
+- **Organ labels re-checked by Claude Haiku 5.5 agents** (majority of 2–3 votes, 4,465 concepts), with organ votes from ICD, MeSH, DOID and HPO cross-references as low-weight features. These are machine labels; clinician labels will override them when they arrive.
+- **Unchanged:** the organ-estimate head (same SHA256), BioLORD-2023 and SapBERT at the same pinned revisions.
 
-Update through the app with `U` in the condition picker or `adctox --update-models`. Only the head and the index are downloaded; the encoders are reused by SHA256. No FinnGen rows, collaborator workbooks, or Danish source rows are included.
+Update with `Ctrl+U` in the app or `adctox --update-models`. Only `mondo_index.npz` is downloaded. App 0.3.2 is needed to use the reranker; app 0.3.1 reads the new index and ignores the reranker.

@@ -133,8 +133,8 @@ def runtime_modules():
     vm = sub(vm, '"FremyCompany/BioLORD-2023"', 'os.path.join(_BASE, "BioLORD-2023")', "vulnerability_model")
     vm = vm.replace("lab.TwoTower", "TwoTower"); assert not re.search(r"\blab\.(?!py)", vm)
     vm = RT_HEAD + 'DEV = "cuda:0" if torch.cuda.is_available() else "cpu"; PT = os.path.join(_BASE, "vuln_biolord.pt")\n_ST, _EMB, _CK, _EMB_MAX, _CK_AXIS, _CK_HIDDEN, _CK_ALT, _CK_OPT = {}, {}, {}, 4096, [], set(), [], {"agree_min": 1}\n\n' + vm
-    mi = extract(R / "ml/mondo_index.py", ["_encoder", "_embed", "close", "_char_feats", "gate_inputs", "link", "concept", "readings", "phenotype", "_ko_norm", "korean"])
-    mi = RT_HEAD + 'THETA = 0.75; NAME = os.path.join(_BASE, "SapBERT"); C = _BASE + os.sep\n_ENC = {}; _IDX = None; _IDX_E = None; TIE = 0.02; HPO_THETA = 0.85; import re; ABBREV = re.compile(r"^[A-Za-z][A-Za-z0-9]{1,5}$"); HANGUL = re.compile("[가-힣]")\n\n' + mi
+    mi = extract(R / "ml/mondo_index.py", ["_encoder", "_embed", "close", "_char_feats", "gate_inputs", "link", "concept", "readings", "abbreviations", "concept_candidates", "_tri", "rr_features", "rerank_scores", "phenotype", "_ko_norm", "korean"])
+    mi = RT_HEAD + 'THETA = 0.75; NAME = os.path.join(_BASE, "SapBERT"); C = _BASE + os.sep\n_ENC = {}; _IDX = None; _IDX_E = None; TIE = 0.02; HPO_THETA = 0.85; RR_K = 10; import re; ABBREV = re.compile(r"^[A-Za-z][A-Za-z0-9]{1,5}$"); HANGUL = re.compile("[가-힣]")\n\n' + mi
     src = (R / "ml/mondo_index.py").read_text()
     assert "THETA = 0.75;" in src and "_IDX = None" in src and 'C + "mondo_index.npz"' in mi       # constants above match the server
     return vm, mi

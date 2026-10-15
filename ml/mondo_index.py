@@ -113,14 +113,16 @@ def link(texts):
         valid = (1 / (1 + np.exp(-z))).tolist()
     out = []
     for i in range(len(texts)):
-        k, sim = int(j[i, 0]), float(v[i, 0]); ax = _IDX["axes"][k]
-        top = []
-        for jj, vv in zip(j[i].tolist(), v[i].tolist()):
-            if _IDX["_ids"][jj] not in {t for t, _ in top}: top.append((_IDX["_ids"][jj], float(vv)))
-            if len(top) == 5: break
-        row = dict(mondo=_IDX["_ids"][k], name=str(_IDX["names"][k]), sim=sim, axes=[AXES[a] for a in np.where(ax > 0)[0]] if sim >= THETA else [],
+        cands = concept_candidates(j[i].tolist(), v[i].tolist())
+        accept = cands[0][1] >= THETA
+        if "rr_w" in _IDX:                                     # learned reranker (index v4+): reorders the 10 nearest concepts
+            z = rerank_scores(texts[i], cands); order = sorted(range(len(cands)), key=lambda o: -z[o])
+            cands = [cands[o] for o in order]; accept = bool(z[order[0]] >= float(_IDX["rr_threshold"]))
+        t0, sim = cands[0][0], cands[0][1]; name, organs = concept(t0)
+        top = [(t, s) for t, s, _ in cands[:5]]
+        row = dict(mondo=t0, name=name, sim=sim, axes=organs if accept else [],
                    valid=valid[i], gate=None if valid[i] is None else bool(valid[i] >= float(_IDX["gate_threshold"])))
-        row["readings"] = readings(texts[i], top)
+        row["readings"] = readings(texts[i], top, accept)
         row["hpo"] = None if row["axes"] else phenotype(texts[i], Qn[i])
         if row["hpo"] and sim >= THETA:                       # a disease without organ axis vs a symptom with one (amnesia): both readings
             row["readings"].append(dict(mondo=row["hpo"]["hpo"], name=row["hpo"]["name"], organs=row["hpo"]["organs"], why="phenotype"))
@@ -144,23 +146,69 @@ def concept(mondo):
     if k is None: return None, []
     return str(_IDX["names"][k]), [AXES[a] for a in np.where(_IDX["axes"][k] > 0)[0]]
 
-def readings(text, top):
+def readings(text, top, accepted=None):
     """possible diseases a typed text may mean: expansions of a known abbreviation (index v2+: NLM SPECIALIST Lexicon LRABR,
-    expansions linked to MONDO offline) and near-ties of the SapBERT search. -> [{mondo, name, organs, why}] (at most 6)."""
+    expansions linked to MONDO offline) and near-ties of the SapBERT search. -> [{mondo, name, organs, why}] (at most 6).
+    accepted: whether the first of top is taken (the reranker decides it in index v4+); default: similarity >= THETA."""
     out, seen = [], set()
+    ok = (top[0][1] >= THETA) if accepted is None else accepted
     def add(t, why):
         if t in seen: return
         name, organs = concept(t)
         if name is None: return
         seen.add(t); out.append(dict(mondo=t, name=name, organs=organs, why=why))
-    if top and top[0][1] >= THETA: add(top[0][0], "closest name")
+    if top and ok: add(top[0][0], "closest name")
     if "abbr_keys" in _IDX and ABBREV.match(text.strip()):
-        if "_abbr" not in _IDX: _IDX["_abbr"] = dict(zip([str(x) for x in _IDX["abbr_keys"]], [str(x) for x in _IDX["abbr_vals"]]))
-        for t in filter(None, _IDX["_abbr"].get(text.strip().lower(), "").split(";")): add(t, "abbreviation")
-    if top and top[0][1] >= THETA:
+        for t in abbreviations(text): add(t, "abbreviation")
+    if top and ok:
         for t, sim in top[1:]:
             if sim >= top[0][1] - TIE: add(t, "similar name")
     return out[:6]
+
+
+def abbreviations(text):
+    """MONDO ids an abbreviation may stand for (index v2+), most established first; [] for other text."""
+    if "abbr_keys" not in _IDX or not ABBREV.match(text.strip()): return []
+    if "_abbr" not in _IDX: _IDX["_abbr"] = dict(zip([str(x) for x in _IDX["abbr_keys"]], [str(x) for x in _IDX["abbr_vals"]]))
+    return [t for t in _IDX["_abbr"].get(text.strip().lower(), "").split(";") if t]
+
+
+# ------------------------------------------------------------------ reranker (index v4+)
+RR_K = 10                   # concepts reranked: the 10 nearest among the 64 nearest strings
+
+
+def concept_candidates(jj, vv):
+    """-> [(MONDO id, best string similarity, strings of it among the 64 nearest)] for the RR_K nearest concepts."""
+    best, cnt = {}, {}
+    for j, s in zip(jj, vv):
+        t = _IDX["_ids"][j]; cnt[t] = cnt.get(t, 0) + 1
+        if t not in best: best[t] = float(s)
+    return [(t, best[t], cnt[t]) for t in sorted(best, key=lambda t: -best[t])[:RR_K]]
+
+
+def _tri(s):
+    s = " " + " ".join(re.findall(r"[a-z0-9]+", s.lower())) + " "
+    return {s[i:i + 3] for i in range(len(s) - 2)}
+
+
+def rr_features(text, cands):
+    """one row per candidate: similarity, gap to the first, rank, strings hit, spelling overlap with the concept name, how
+    common the concept is in the literature, abbreviation-table hit and the shape of the typed text (a BioLORD similarity was
+    tried and lowered dev F1: ml/results/benchmarks/rerank_v1.json notes)."""
+    q = text.strip(); qw = set(re.findall(r"[a-z0-9]+", q.lower())); qt = _tri(q); ab = set(abbreviations(q)); is_ab = float(bool(ABBREV.match(q)))
+    if "_prior" not in _IDX: _IDX["_prior"] = dict(zip([str(x) for x in _IDX.get("rr_prior_ids", [])], [float(x) for x in _IDX.get("rr_prior", [])]))
+    top = cands[0][1]; rows = []
+    for r, (t, s, c) in enumerate(cands):
+        name, organs = concept(t); name = name or ""; nw = set(re.findall(r"[a-z0-9]+", name.lower())); nt = _tri(name); hit = float(t in ab)
+        rows.append([s, top - s, r / RR_K, float(r == 0), np.log1p(c), len(qt & nt) / max(1, len(qt | nt)), len(qw & nw) / max(1, len(qw)),
+                     len(qw & nw) / max(1, len(nw)), len(nw) / 10, _IDX["_prior"].get(t, 0.0), hit, is_ab, is_ab * hit, is_ab * s,
+                     float(bool(organs)), len(q) / 30, float(any(ch.isdigit() for ch in q))])
+    return np.array(rows, np.float32)
+
+
+def rerank_scores(text, cands):
+    X = rr_features(text, cands)
+    return (((X - _IDX["rr_mu"]) / _IDX["rr_sd"]) @ _IDX["rr_w"] + float(_IDX["rr_b"])).tolist()
 
 
 # ------------------------------------------------------------------ phenotypes (symptoms, findings) when no disease matches

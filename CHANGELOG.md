@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.2 and models 0.3 — Learned reranker
+
+- Model bundle 0.3 adds a learned reranker to the MONDO index and organ labels re-checked by Haiku 5.5 agents. Only the index changes (about 180 MB); the encoders and the organ-estimate head are reused.
+  - The reranker reorders the 10 nearest concepts with 17 features (similarity, gap, rank, spelling overlap, literature frequency, abbreviation table, input shape), and its score decides acceptance.
+  - Trained on about 12k inputs: external corpora, two rounds of reviewed Claude-written queries, synthetic typos and abbreviations. Gold concepts and their relatives are never used.
+- Gold test, full app pipeline: macro-F1 0.660 → 0.747, +0.087 [+0.037, +0.133]; invalid inputs accepted 0.000 (unchanged).
+  - Abbreviations 0.514 → 0.671; typos 0.525 → 0.715.
+  - External test corpora all improve (MedMentions +0.024, NCBI +0.013, BC5CDR +0.015, COMETA +0.039).
+  - CPU time per query is unchanged within noise.
+- App 0.3.2 runs the reranker when the index has one. App 0.3.1 also works with models 0.3, using the new organ labels without the reranker.
+
 ## 0.3.1 — Search as you type, symptoms, macOS and one-line installers
 
 - The first screen no longer lists conditions. Typing a disease name shows suggestions below the input and updates them on every key press.
