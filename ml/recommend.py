@@ -690,7 +690,7 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
     if analyses:
         heading("AI organ analysis")
         for report in analyses:
-            organs = ", ".join(ORGAN_SHORT[a] for a in report["organs"]) or "Unmapped"
+            organs = ", ".join(ORGAN_SHORT[a] for a in report["organs"]) or no_organ_text(report)
             match = f": {report['name']}" if report["name"] else ""
             source = f" / {report['source']}{match}" if report["name"] else ""
             emit(f"{report['condition']} → {organs}{source}")
@@ -732,6 +732,13 @@ KO = {"chronic_liver_disease": "만성 간질환", "cirrhosis": "간경변", "he
       "inflammatory_bowel_disease": "염증성 장질환", "prior_bowel_resection": "장 절제술 경험", "chronic_pancreatitis": "만성 췌장염",
       "severe_psoriasis": "중증 건선", "prior_sjs_ten": "스티븐스-존슨 증후군/TEN 병력", "type_2_diabetes": "제2형 당뇨병", "hypothyroidism": "갑상선기능저하증",
       "hiv_controlled": "치료 중인 HIV 감염", "active_autoimmune": "활동성 자가면역질환", "hearing_loss": "감각신경성 난청"}
+
+
+def no_organ_text(report):
+    """what an empty organ list means: a recognised disease outside the 13 organs, or text that was not understood."""
+    if report.get("source") in ("MONDO (no organ axis)", "Chosen") and report.get("name"):
+        return "None of the 13 organs (e.g. psychiatric, developmental, reproductive)"
+    return "Unmapped"
 
 
 def condition_name(condition):

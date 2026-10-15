@@ -151,6 +151,8 @@ class Form:
                     if ai["q"] == query.strip() and ai["res"]:
                         have = {(s[0], s[1]) for s in found}
                         rows += [("s", s, "AI") for s in ai["res"] if (s[0], s[1]) not in have]
+                    split = SG.parts(RC, query)
+                    if split: rows.insert(0, ("split", ("text", split, "각각 따로 추가: " + ", ".join(split), "", []), ""))
                     if query.strip(): rows.append(("raw", ("text", query.strip(), query.strip(), "", []), ""))
                 else:
                     rows = [("s", s, why) for s, why in (sym["res"] or [])] if sym["q"] == query.strip() else []
@@ -172,7 +174,7 @@ class Form:
                 if mode == "symptom" and sym["error"]: status = "검색 실패: " + sym["error"]
                 if mode == "symptom" and not sym["busy"] and sym["q"] == query.strip() and query.strip() and not sym["res"]: status = "맞는 질환을 찾지 못했습니다. 다르게 써 보거나 질환명으로 찾기를 쓰세요."
                 lw = max([_w(r[1][2]) for r in rows] + [10]); lw = min(lw, max(10, w // 2 - 6))
-                ow = max([_w(organ(r[1][3] if r[0] == "sel" else r[1][4])) for r in rows if r[0] != "raw"] + [4])
+                ow = max([_w(organ(r[1][3] if r[0] == "sel" else r[1][4])) for r in rows if r[0] not in ("raw", "split")] + [4])
                 area = max(3, h - y - 3); top = max(0, min(cur - area // 2, len(rows) - area)); shown_sel_head = False
                 lines = []
                 for k, (kind, s, tag) in enumerate(rows):
@@ -187,6 +189,7 @@ class Form:
                     if l[0] == "head": self.S.put(yy, 2, l[1], self.S.title); continue
                     k, kind, s, tag = l; on = k == cur; label = _clip(s[2], lw)
                     if kind == "raw": text = f"입력한 그대로 추가: {s[2]}"
+                    elif kind == "split": text = s[2]
                     else:
                         extra = s[3] if kind == "s" and s[3] and s[3] != s[2] else ""
                         org = organ(s[3] if kind == "sel" else s[4])
@@ -225,6 +228,8 @@ class Form:
                     if not rows: note = "질환명을 입력하세요" if mode == "name" else "증상이나 문장을 입력하세요"; continue
                     kind, s, _ = rows[cur]
                     if kind == "sel": sel.remove(s); note = f"뺌: {s[2]}"
+                    elif kind == "split":
+                        note = "   ".join(add(("text", w, w, "", [])) for w in s[1]); query, found, cur = "", [], 0
                     else:
                         note = add(s)
                         if mode == "name": query, found, cur = "", [], 0
@@ -501,7 +506,7 @@ class Form:
             lines = []
             for report in reports:
                 lines.append(f"\033[33;1m{report['condition']}\033[0m")
-                organs = ", ".join(self.RC.ORGAN_SHORT[a] for a in report["organs"]) or "Unmapped"
+                organs = ", ".join(self.RC.ORGAN_SHORT[a] for a in report["organs"]) or self.RC.no_organ_text(report)
                 lines.append(f"  Mapped organs   {organs}")
                 if report["name"]: lines.append(f"\033[90m  {report['source']} / {report['name']}\033[0m")
                 if report.get("ambiguous"):

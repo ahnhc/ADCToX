@@ -42,3 +42,8 @@ def test_profiles_are_complete():
     assert len(P) >= 700 and len({p["id"] for p in P}) == len(P)
     for p in P:
         assert p["id"].startswith("MONDO:") and p["ko"] and p["symptoms_en"] and p["symptoms_ko"]
+
+
+def test_words_that_are_each_a_name_are_offered_separately():
+    assert SG.parts(RC, "copd cirrhosis") == ["copd", "cirrhosis"]
+    assert SG.parts(RC, "heart failure") == [] and SG.parts(RC, "asthma") == []

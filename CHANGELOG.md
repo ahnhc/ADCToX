@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.5 — Abbreviations and several names on one line
+
+- Typing several names on one line separated by spaces (`asd adhd`, `copd htn`) offers `각각 따로 추가`. Each one is then read on its own; before, the whole line was linked as one disease.
+- Name suggestions include every disease an abbreviation may mean (NLM LRABR):
+  - `adhd` now has a suggestion;
+  - `asd` lists atrial septal defect, autism spectrum disorder and the others, marked `약어 ASD`.
+- A recognised disease outside the 13 organs (psychiatric, developmental, reproductive) is shown as `None of the 13 organs (...)` instead of `Unmapped`.
+
 ## 0.3.4 — Help
 
 - `adctox --help` (also `-h`, `help`) explains in Korean what the program does and how it orders the ADCs, then lists:

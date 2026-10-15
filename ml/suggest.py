@@ -100,6 +100,12 @@ class Index:
                         if t in organs: continue
                         organs[t] = [axn[k] for k in np.flatnonzero(axes[j])]
                         if not n.startswith("obsolete") and not ANIMAL.search(n): self._add(n, 0, ("mondo", t, n[:1].upper() + n[1:], "", organs[t]))
+                    if "abbr_keys" in d.files:                    # NLM LRABR abbreviations: every disease an abbreviation may mean
+                        first = {}
+                        for t, n in zip(ids, names): first.setdefault(t, n)
+                        for k, v in zip(d["abbr_keys"].tolist(), d["abbr_vals"].tolist()):
+                            for t in v.split(";")[:6]:
+                                if t in first: self._add(k, 1, ("mondo", t, first[t][:1].upper() + first[t][1:], f"약어 {k.upper()}", organs.get(t, [])))
                     if "ko_keys" in d.files:
                         for k, v in zip(d["ko_keys"].tolist(), d["ko_vals"].tolist()):
                             if re.search(r"nos|[(),\[\]]", k) or len(k) > 20: continue
@@ -172,6 +178,16 @@ def names(RC, text, limit=8):
         seen.add(k1); seen.add(norm(s[3])) if s[3] else None; keep.append(s)
         if len(keep) == limit: break
     return [_with_organs(RC, s) for s in keep]
+
+
+def parts(RC, text):
+    """words of a space-separated input that are each a known name or abbreviation by themselves ('asd adhd' -> ['asd', 'adhd']);
+    [] when the input is one name ('heart failure') or a word is unknown. The form offers to add them separately."""
+    words = norm(text.split(",")[-1]).split()
+    if len(words) < 2: return []
+    I = index(RC); keys = {r[0] for r in I.rows}
+    if " ".join(words) in keys: return []
+    return words if all(w in keys for w in words) else []
 
 
 def _with_organs(RC, s):
