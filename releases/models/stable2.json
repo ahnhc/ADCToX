@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "model_version": "0.5",
+  "runtime_api": 1,
+  "architecture": "biolord-twotower-v1",
+  "axes": [
+    "haematologic",
+    "hepatic",
+    "cardiovascular",
+    "pulmonary",
+    "renal",
+    "gastrointestinal",
+    "neurologic",
+    "ocular",
+    "dermatologic",
+    "metabolic_endocrine",
+    "musculoskeletal",
+    "infectious_immune",
+    "otologic"
+  ],
+  "encoders": [
+    {
+      "repository": "FremyCompany/BioLORD-2023",
+      "revision": "167aab527b238a50ca65224e6319215d2ff4fc9f",
+      "directory": "BioLORD-2023"
+    },
+    {
+      "repository": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+      "revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d",
+      "directory": "SapBERT"
+    }
+  ],
+  "score_definition": "clip(axis-standardized excess log-HR minus within-disease median, 0, 1)",
+  "context": "legacy-lag-only",
+  "files": [
+    {
+      "path": "vuln_biolord.pt",
+      "size": 24258148,
+      "sha256": "69225d5518b1bf50fcb99437168fec063c4fe4645b8d616032124d4126b921d5",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/vuln_biolord.pt"
+    },
+    {
+      "path": "mondo_index.npz",
+      "size": 183798944,
+      "sha256": "b0e2e2d85454db28ae1145fbb02545d9d02e8601b5658cc8e7688d6176ee5aea",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/mondo_index.npz"
+    },
+    {
+      "path": "GemmaJudge/config.json",
+      "size": 2434,
+      "sha256": "e93a7aa931de96ee5ec61f304b58977ead0c3019780c2e0868b20e1f1cd0bb62",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-config.json"
+    },
+    {
+      "path": "GemmaJudge/judge.json",
+      "size": 855,
+      "sha256": "7515d462a5299eba9eef31fa72d09d89d8aa42b2c5fbc9db2f5e75a16006a06e",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-judge.json"
+    },
+    {
+      "path": "GemmaJudge/tokenizer.json",
+      "size": 32170225,
+      "sha256": "a768fce2beb2bf55336ba0aa5fa9fa5bcb03ca47c94b10a93335e61bcebbeb36",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-tokenizer.json"
+    },
+    {
+      "path": "GemmaJudge/tokenizer_config.json",
+      "size": 1528,
+      "sha256": "adba82b4cf1946aa59382f37e7c40e8904e628ec671bdbdde8d997f4f1a6ed79",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-tokenizer_config.json"
+    },
+    {
+      "path": "GemmaJudge/weights-1.safetensors",
+      "size": 1208484128,
+      "sha256": "8e24c6ce06677e173b75dc94580b7ec9145fcf816a60304fbb63d1d6608ea32d",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-weights-1.safetensors"
+    },
+    {
+      "path": "GemmaJudge/weights-2.safetensors",
+      "size": 1167570908,
+      "sha256": "d4b9088626985d0ad8d79aa9736ecb65949417c495956dc7a4afc4f202a6f655",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-weights-2.safetensors"
+    },
+    {
+      "path": "BioLORD-2023/1_Pooling/config.json",
+      "size": 190,
+      "sha256": "a37f83ada23e7887be6b88f4998927dbeac0038af301553c7cd5461413bf1a56",
+      "url": "https://huggingface.co/FremyCompany/BioLORD-2023/resolve/167aab527b238a50ca65224e6319215d2ff4fc9f/1_Pooling/config.json"
+    },
+    {
+      "path": "BioLORD-2023/config.json",
+      "size": 649,
+      "sha256": "11e8f12f4e21c3e98381d89f06f26444a7c8988ea69a05080bdd87cbf25bb67c",
+      "url": "https://huggingface.co/FremyCompany/BioLORD-2023/resolve/167aab527b238a50ca65224e6319215d2ff4fc9f/config.json"
+    },
+    {
+      "path": "BioLORD-2023/config_sentence_transformers.json",
+      "size": 124,
+      "sha256": "69b09462ade8e34aa152a72971d728c5f00fb515b984043f475a7f40d44c9349",
+      "url": "https://huggingface.co/FremyCompany/BioLORD-2023/resolve/167aab527b238a50ca65224e6319215d2ff4fc9f/config_sentence_transformers.json"
+    },
+    {
+      "path": "BioLORD-2023/model.safetensors",
+      "size": 437971872,
+      "sha256": "f8c969586cc6b0fd393faa7d879de93d6cc532123956041fefd3474194322050",
+      "url": "https://huggingface.co/FremyCompany/BioLORD-2023/resolve/167aab527b238a50ca65224e6319215d2ff4fc9f/model.safetensors"
+    },
+    {
+      "path": "BioLORD-2023/modules.json",
+      "size": 229,
+      "sha256": "8f4b264b80206c830bebbdcae377e137925650a433b689343a63bdc9b3145460",
+      "url": "https://huggingface.co/FremyCompany/BioLORD-2023/resolve/167aab527b238a50ca65224e6319215d2ff4fc9f/modules.json"
+    },
+    {
+      "path": "BioLORD-2023/sentence_bert_config.json",
+      "size": 53,
+      "sha256": "70f4448f31320443fe3557cacea5abf2dcc4915dda8c80646bec9f3bb0aa5a1f",
+      "url": "https://huggingface.co/FremyCompany/BioLORD-2023/resolve/167aab527b238a50ca65224e6319215d2ff4fc9f/sentence_bert_config.json"
+    },
+    {
+      "path": "BioLORD-2023/special_tokens_map.json",
+      "size": 280,
+      "sha256": "15a9b70f6a5defe4feac823a82e6412e5d5bfd8eab09d8dbcf5ac241f14a7756",
+      "url": "https://huggingface.co/FremyCompany/BioLORD-2023/resolve/167aab527b238a50ca65224e6319215d2ff4fc9f/special_tokens_map.json"
+    },
+    {
+      "path": "BioLORD-2023/tokenizer.json",
+      "size": 711831,
+      "sha256": "7b286b2f33574928f512b6756b3693930f6c31d0b6260c27c782524ff4c02e05",
+      "url": "https://huggingface.co/FremyCompany/BioLORD-2023/resolve/167aab527b238a50ca65224e6319215d2ff4fc9f/tokenizer.json"
+    },
+    {
+      "path": "BioLORD-2023/tokenizer_config.json",
+      "size": 1455,
+      "sha256": "287dafbe59b35d6a95ca812914d5d6c13576abd9e1bc844dc28d7cddddb1024b",
+      "url": "https://huggingface.co/FremyCompany/BioLORD-2023/resolve/167aab527b238a50ca65224e6319215d2ff4fc9f/tokenizer_config.json"
+    },
+    {
+      "path": "BioLORD-2023/vocab.txt",
+      "size": 231536,
+      "sha256": "dbd90cb94e2247bd4d4ccaecbf616d2290e66691d7d5e5bb81f063c2d0649ada",
+      "url": "https://huggingface.co/FremyCompany/BioLORD-2023/resolve/167aab527b238a50ca65224e6319215d2ff4fc9f/vocab.txt"
+    },
+    {
+      "path": "SapBERT/config.json",
+      "size": 462,
+      "sha256": "c0fa35def52bf7d81865d23dba0417fdbb67d416fdde70cae5c7beab476b584e",
+      "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/resolve/090663c3ae57bf35ffe4d0d468a2a88d03051a4d/config.json"
+    },
+    {
+      "path": "SapBERT/model.safetensors",
+      "size": 437955508,
+      "sha256": "a4696930afef9aab296196d3d2142216c44cba24f21b4f285ceca7af21025614",
+      "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/resolve/090663c3ae57bf35ffe4d0d468a2a88d03051a4d/model.safetensors"
+    },
+    {
+      "path": "SapBERT/special_tokens_map.json",
+      "size": 112,
+      "sha256": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+      "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/resolve/090663c3ae57bf35ffe4d0d468a2a88d03051a4d/special_tokens_map.json"
+    },
+    {
+      "path": "SapBERT/tokenizer_config.json",
+      "size": 198,
+      "sha256": "76eb84b4b5b0d1bdba02906d7fae249be541c41d72e2024094aea513f98f2be7",
+      "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/resolve/090663c3ae57bf35ffe4d0d468a2a88d03051a4d/tokenizer_config.json"
+    },
+    {
+      "path": "SapBERT/vocab.txt",
+      "size": 226150,
+      "sha256": "79489a52be45e6fa033521e8ce8e4f62aedc0a742ee2aa6fc04667e5b0b1454d",
+      "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/resolve/090663c3ae57bf35ffe4d0d468a2a88d03051a4d/vocab.txt"
+    }
+  ]
+}

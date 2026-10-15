@@ -141,7 +141,15 @@ def _free_info(free, progress=None):
             for i in range(len(free)):
                 sims = Er @ Ef[i]; k = int(sims.argmax()); best.append((ids[k], float(sims[k])))
             if progress: progress("linking")
-            _FREE[key] = (best, MI.link(text))
+            links = MI.link(text)
+            try:
+                import gemma_runtime as GR
+                if GR.available():                             # model 0.5+: the Gemma organ judge reads the typed text itself (Korean too)
+                    if progress: progress("judging")
+                    for lk, organs in zip(links, GR.judge(list(free))): lk["judged"] = organs
+            except Exception as error:
+                warnings.warn(f"Gemma organ judge unavailable: {error}")
+            _FREE[key] = (best, links)
     best, links = _FREE[key]
     learned = None
     if LEARNED_FRACTION > 0 or FALLBACK:

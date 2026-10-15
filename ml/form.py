@@ -537,6 +537,7 @@ class Form:
             except Exception as error: errors.append(error)
         stages = [("embedding", "Disease embedding", "BioLORD-2023"),
                   ("linking", "Disease linking", "SapBERT / MONDO"),
+                  ("judging", "Organ judgment", "Gemma 4 E2B (int8)"),
                   ("inference", "Organ inference", "Disease-pair MLP")]
         current = 0; started = time.monotonic()
         worker = threading.Thread(target=work, daemon=True); worker.start()

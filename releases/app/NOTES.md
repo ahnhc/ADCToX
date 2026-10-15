@@ -1,15 +1,12 @@
-ADCTOX 0.3.7: clicks, organ strips, fast organ judgment (with models 0.4).
+ADCTOX 0.3.8: Gemma 장기 판정 (모델 0.5).
 
-- **마우스:** 모든 화면을 마우스로 쓸 수 있다.
-  - 추천, 선택 목록, 탭, 검사 칸, 선택지, 우선순위 − / +를 클릭한다.
-  - 오른쪽 위 `◀ 이전` / `다음 ▶` 버튼, 휠 스크롤.
-- **장기 표시:** 장기 글자 설명 대신 `혈간심폐콩위뇌눈피대뼈면귀` 한 줄을 쓴다(초록 = 연결된 장기, 노랑 = 모델 추정).
-- **입력:** 빠르게 쳐도 밀리지 않는다.
-- **AI 판정 (모델 0.4):** 질환을 정확히 못 찾아도 입력 문장에서 장기를 바로 판정한다.
-  - 전체 정확도(gold test macro-F1): 0.747 → 0.811
-  - 일상 표현: 0.54 → 0.75
+- **Gemma 장기 판정 모델(Gemma 4 E2B, int8)이 들어갔다.**
+  - 입력 문장(한국어 포함)을 직접 읽고 장기를 판정한다.
+  - 전체 정확도(gold test macro-F1): 0.811 → 0.832
+  - 일상 표현: 0.75 → 0.81
+- **비용:** 모델 다운로드 약 2.4 GB 추가, 실행 메모리 약 3 GB, 판정 약 0.1초.
 
-업데이트:
+업데이트(순서대로):
 
 ```bash
 adctox --update-app
@@ -19,12 +16,4 @@ adctox --update-app
 adctox --update-models
 ```
 
-새 설치:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash      # Linux, macOS
-```
-
-```powershell
-irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex             # Windows (PowerShell)
-```
+0.3.7 이하 앱은 모델 0.4에 머문다(앱을 먼저 올려야 0.5를 받는다).

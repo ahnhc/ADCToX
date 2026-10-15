@@ -287,3 +287,17 @@ def test_app_check_is_cached_and_a_repository_copy_is_not_self_updated(server, t
     assert updates.check_app(home=tmp_path / "models", allow_local=True)["latest"] == "9.0" and len(requests) == count
     with pytest.raises(updates.UpdateError, match="not an installed app"):
         updates.update_app(program=tmp_path / "adc_recommender_full.py", allow_local=True)
+
+
+def test_gemma_judge_folder_installs_and_the_old_manifest_stays_for_old_apps(server, tmp_path):
+    import adc_version
+    manifest = make_manifest(server, "0.5"); base, bodies, _ = server
+    for name, body in (("GemmaJudge/judge.json", b"{}"), ("GemmaJudge/weights-1.safetensors", b"w1")):
+        bodies["/0.5/" + name] = body
+        manifest["files"].append({"path": name, "url": base + "/0.5/" + name, "size": len(body), "sha256": hashlib.sha256(body).hexdigest()})
+    updates.validate_manifest(manifest, allow_local=True)
+    updates.install(manifest, tmp_path, allow_local=True)
+    assert (selected_bundle(tmp_path) / "GemmaJudge" / "weights-1.safetensors").read_bytes() == b"w1"
+    assert adc_version.MODEL_MANIFEST_URL.endswith("/releases/models/stable2.json")
+    old = json.loads((Path(__file__).resolve().parents[1] / "releases/models/stable.json").read_text())
+    assert not any(f["path"].startswith("GemmaJudge/") for f in old["files"])            # apps <= 0.3.7 still read this one

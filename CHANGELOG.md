@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.8 and models 0.5 — Gemma organ judge
+
+- **Gemma organ judge (`GemmaJudge/`):** a Jev-style decision model on Gemma 4 E2B (Apache-2.0).
+  - Built from the first 18 of 35 layers with LoRA and a 13-organ probability head. It is distilled from the Haiku labels on 69k texts, including Korean names, everyday words and symptoms.
+  - It returns calibrated probabilities with a temperature and threshold per organ; it generates no text.
+  - It reads the typed text itself, Korean too, and decides the organs when the linked disease gives none.
+- **Quantization:** int8 weights with bf16 activations through PyTorch's weight-only int8 kernel.
+  - 2.38 GB in two files, about 3 GB RAM, about 0.1 s per input on 8 CPU threads.
+  - Same organ set as the trained model on 97% of gold queries.
+  - Dynamic int8, which also quantizes the activations, and 4-bit tables lost too much and are not used.
+- **Gold test, full app pipeline:** macro-F1 0.811 (models 0.4) → **0.832**, +0.021 [+0.005, +0.037]; against the start, +0.172 [+0.107, +0.236]. Invalid inputs accepted: 0.000.
+  - Everyday words 0.745 → 0.808; abbreviations 0.714 → 0.759.
+- **New model manifest (`releases/models/stable2.json`), read from app 0.3.8.** Apps up to 0.3.7 cannot accept a `GemmaJudge/` folder; they keep reading `stable.json`, which stays at models 0.4.
+- **Update:** run `adctox --update-app`, then `adctox --update-models`. Only `mondo_index.npz` is unchanged; the judge adds 2.4 GB.
+
 ## 0.3.7 and models 0.4 — Clicks, organ strips, every concept labelled, fast organ judgment
 
 - **Mouse:** every screen can be used with the mouse.

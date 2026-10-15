@@ -157,7 +157,7 @@ def main():
                 profiles=__import__("suggest").read_profiles(R / "data/curated/disease_profiles"), nonhuman=sorted(__import__("suggest").nonhuman_ids(OBO)))
     if FULL: data["learned"] = json.load(open(R / "ml/results/learned_vulnerability.json"))["severity"]
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
-    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "adc_version", "adc_runtime", "adc_updates")}
+    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "gemma_runtime", "adc_version", "adc_runtime", "adc_updates")}
 
     rc = src["recommend"]
     rc = sub(rc, 'sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))\n', "", "recommend")
