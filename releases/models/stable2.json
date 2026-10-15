@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "model_version": "0.5",
+  "model_version": "0.6",
   "runtime_api": 1,
   "architecture": "biolord-twotower-v1",
   "axes": [
@@ -37,49 +37,49 @@
       "path": "vuln_biolord.pt",
       "size": 24258148,
       "sha256": "69225d5518b1bf50fcb99437168fec063c4fe4645b8d616032124d4126b921d5",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/vuln_biolord.pt"
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/vuln_biolord.pt"
     },
     {
       "path": "mondo_index.npz",
       "size": 183798944,
       "sha256": "b0e2e2d85454db28ae1145fbb02545d9d02e8601b5658cc8e7688d6176ee5aea",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/mondo_index.npz"
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/mondo_index.npz"
     },
     {
       "path": "GemmaJudge/config.json",
       "size": 2434,
       "sha256": "e93a7aa931de96ee5ec61f304b58977ead0c3019780c2e0868b20e1f1cd0bb62",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-config.json"
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-config.json"
     },
     {
       "path": "GemmaJudge/judge.json",
-      "size": 855,
-      "sha256": "7515d462a5299eba9eef31fa72d09d89d8aa42b2c5fbc9db2f5e75a16006a06e",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-judge.json"
+      "size": 15906,
+      "sha256": "4f8260064a69cb796423f1f57c0fec53fa05263fbf144fb7c3a3a5ecf2373f55",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-judge.json"
     },
     {
       "path": "GemmaJudge/tokenizer.json",
       "size": 32170225,
       "sha256": "a768fce2beb2bf55336ba0aa5fa9fa5bcb03ca47c94b10a93335e61bcebbeb36",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-tokenizer.json"
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-tokenizer.json"
     },
     {
       "path": "GemmaJudge/tokenizer_config.json",
       "size": 1528,
       "sha256": "adba82b4cf1946aa59382f37e7c40e8904e628ec671bdbdde8d997f4f1a6ed79",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-tokenizer_config.json"
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-tokenizer_config.json"
     },
     {
       "path": "GemmaJudge/weights-1.safetensors",
       "size": 1208484128,
       "sha256": "8e24c6ce06677e173b75dc94580b7ec9145fcf816a60304fbb63d1d6608ea32d",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-weights-1.safetensors"
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-weights-1.safetensors"
     },
     {
       "path": "GemmaJudge/weights-2.safetensors",
-      "size": 1167570908,
-      "sha256": "d4b9088626985d0ad8d79aa9736ecb65949417c495956dc7a4afc4f202a6f655",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.5/GemmaJudge-weights-2.safetensors"
+      "size": 1177156912,
+      "sha256": "bb825141f525e7b303e95f32e1b6ab3cce41658fe3c9cfe34002d342f3f92a7e",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-weights-2.safetensors"
     },
     {
       "path": "BioLORD-2023/1_Pooling/config.json",

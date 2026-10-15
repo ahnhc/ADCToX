@@ -1,8 +1,17 @@
-Model bundle 0.5: Gemma organ judge.
+ADCTOX 모델 0.6: Gemma 판정 모델 출력 4종.
 
-- **What it is:** `GemmaJudge/` is Gemma 4 E2B (Apache-2.0).
-  - Only the text decoder is kept, using the first 18 layers, LoRA fine-tuned and merged, with a 13-organ probability head and int8 weights (2.38 GB in two files).
-  - It reads the typed text, English or Korean, and gives the organs where the linked disease gives none.
-- **Gold test, full app pipeline:** macro-F1 0.832 (models 0.4: 0.811; +0.021 [+0.005, +0.037]). Invalid inputs accepted: 0.000.
-- **Needs app 0.3.8 or newer.** It is published in `releases/models/stable2.json`; older apps keep models 0.4.
-- **Unchanged:** the MONDO index (with reranker and small organ head), the organ-estimate head, BioLORD-2023 and SapBERT.
+- **같은 Gemma 4 E2B(int8)에서 네 가지를 판정한다:** 장기, 실제 입력인지, 한국어 → MONDO 연결, 증상 → 질환.
+- **한국어 입력 장기 판정** (gold test, 앱 전체 macro-F1): 0.429 → 0.733 (+0.304, 95% CI [+0.229, +0.384]). 무효 입력 통과 0.
+- **영어:** 0.832 → 0.841 (+0.009, [−0.002, +0.022]). 무효 입력 통과 0.
+- **증상 검색:** top-3 0.763 → 0.839, top-1 0.415 → 0.661 (증상 평가 test).
+- 바뀐 파일은 `GemmaJudge/`뿐이다. 나머지는 그대로 다시 쓴다.
+
+앱 0.3.11 이상에서 네 출력을 모두 쓴다. 0.3.8–0.3.10은 장기 판정만 쓴다.
+
+```bash
+adctox --update-app
+```
+
+```bash
+adctox --update-models
+```

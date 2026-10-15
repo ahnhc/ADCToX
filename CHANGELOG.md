@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.3.11 and models 0.6 — Four-output Gemma judge
+
+- **One Gemma 4 E2B judge (int8, `GemmaJudge/`) with four outputs:**
+  - **organs:** 13 organs, as before.
+  - **validity:** a real input or filler.
+    - Trained against 2,500 Haiku-written non-inputs, 1,500 of them Korean.
+    - Threshold 0.995: the lowest that rejects every held-out non-input.
+  - **align:** a SapBERT-space vector. It links Korean text the KCD names miss through the existing MONDO index, at cosine ≥ 0.6.
+  - **sym:** symptom description → one of 790 disease profiles. Added to the symptom search with weight 4, chosen on the dev half.
+  - Trained on 95k texts. The new ones, all written by Haiku 5.5, are 7,900 symptom sentences, 4,983 Korean disease expressions and the 2,500 non-inputs. 16k HIRA KCD names were also added.
+  - Gold concepts and their relatives are excluded.
+- **Validity decision:** with models 0.6 the judge's validity output replaces the SapBERT gate (`ADC_JUDGE_GATE`). Korean text is no longer rejected because SapBERT cannot read it.
+- **Test results, full app pipeline:**
+  - Korean gold: 0.429 → **0.733** (+0.304 [+0.229, +0.384]). The Korean queries were written by Sonnet from the gold set and are used for evaluation only.
+  - English gold: 0.832 → 0.841 (+0.009 [−0.002, +0.022]).
+  - Invalid inputs accepted: 0 in both languages.
+  - Symptom search: top-3 0.763 → 0.839, top-1 0.415 → 0.661.
+- **Size and agreement:** 2.39 GB; the int8 judge gives the same organ set as the float one on 97.2% of gold queries.
+  - Only the `GemmaJudge/` files change.
+  - Apps 0.3.8–0.3.10 read models 0.6 too, but use only its organ output.
+- **What was trained:** `ml/docs/gemma_judge.md`.
+
 ## 0.3.10 — One search box, a plain analysis screen, a Korean result table
 
 - **One search box on the first screen.** The name / symptom tabs are gone.

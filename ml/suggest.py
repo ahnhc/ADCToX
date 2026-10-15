@@ -286,7 +286,7 @@ def _grams(s, ns=(2, 3)):
     return out
 
 
-GEMMA_W = float(os.environ.get("ADC_GEMMA_SYM_W", 8.0))   # weight of the Gemma symptom output (chosen on the symptom eval dev half)
+GEMMA_W = float(os.environ.get("ADC_GEMMA_SYM_W", 4.0))   # weight of the Gemma symptom output (chosen on the symptom eval dev half)
 
 
 class Symptoms:
