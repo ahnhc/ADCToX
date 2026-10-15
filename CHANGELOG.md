@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.12 — The four-output judge actually runs in the installed app
+
+- **Fix:** in 0.3.11 the installed (full portable) app left `mondo_index.nearest` out. The Gemma judge then failed quietly and every free text went back to the old path, so Korean sentences stayed unmapped.
+  - The full build now includes `nearest`.
+  - The build stops when the app calls a `mondo_index` function the build leaves out.
+- **Printed AI section in Korean, one line per input:** e.g. `콩팥이 안좋아요 → 신장 (MONDO: kidney failure)`.
+  - The "Learned signal" numbers are no longer printed.
+  - "Missing inputs" → 입력하면 더 정확해지는 값.
+
 ## 0.3.11 and models 0.6 — Four-output Gemma judge
 
 - **One Gemma 4 E2B judge (int8, `GemmaJudge/`) with four outputs:**

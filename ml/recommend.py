@@ -730,17 +730,15 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
     analyses = [_ANALYSES[c] for c, _ in notes if c in _ANALYSES]
     if analyses:
         heading("AI 장기 분석")
+        how = {"AI judgment": "AI 판정", "Registry match": "등록 질환", "Similar condition": "비슷한 등록 질환", "Phenotype (HPO)": "증상(HPO)", "Chosen": "직접 고름"}
         for report in analyses:
-            organs = ", ".join(ORGAN_SHORT[a] for a in report["organs"]) or no_organ_text(report)
-            match = f": {report['name']}" if report["name"] else ""
-            source = f" / {report['source']}{match}" if report["name"] else ""
-            emit(f"{report['condition']} → {organs}{source}")
-            if report["model"]:
-                n = len(report.get("models") or [])
-                emit(paint("  Learned signal: " + ", ".join(f"{ORGAN_SHORT[a]} {score:.2f}" + (f" ({report['agree'][a]}/{n})" if n else "") for a, score in report["estimates"]), "90"))
+            organs = ", ".join(ORGAN_WORD[a] for a in report["organs"]) or ("13개 장기 밖" if report.get("name") and report["source"] != "Unmapped" else "장기 미확인")
+            src = "MONDO" if report["source"].startswith("MONDO") else how.get(report["source"], "")
+            read = f"   ({src}: {report['name']})" if report["name"] else (f"   ({src})" if src else "")
+            emit(f"{report['condition']} → {organs}" + paint(read, "90"))
     missing = list(dict.fromkeys(need for row in rows for need in _missing_inputs(row["verdict"])))
     if missing:
-        emit(); emit(paint("─" * width, "90")); emit(paint("Missing inputs", "33;1"))
+        emit(); emit(paint("─" * width, "90")); emit(paint("입력하면 더 정확해지는 값", "33;1"))
         for need in missing: emit("  " + need)
     clinical_checks = [(test, names, src) for test, names, src in checks_ if not test.startswith("enter ")]
     if clinical_checks:
