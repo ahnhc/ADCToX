@@ -92,7 +92,23 @@ def concept_features(T, idx, ids, concepts, anc_vocab):
     for i, t in enumerate(concepts):
         for a in ancestors_all(T, t) | {t}:
             if a in av: A[i, av[a]] = 1
-    return np.c_[E, Ax * 3.0, A]
+    V = vote_features(T, concepts)
+    return np.c_[E, Ax * 3.0, A] if V is None else np.c_[E, Ax * 3.0, A, V * VOTES_W]
+
+
+VOTES_W = 0.3               # organ votes from ICD / MeSH / DOID / HPO (ml/organ_votes.py), scaled like the crosswalk; ADC_ORGAN_VOTES=0 turns them off
+_VOTES = {}
+
+
+def vote_features(T, concepts):
+    """per concept: its own votes (4 sources x 13 axes) and the largest vote among its direct parents; None without the votes file."""
+    if os.environ.get("ADC_ORGAN_VOTES") == "0" or not os.path.exists(C + "organ_votes.npz"): return None
+    if not _VOTES:
+        d = np.load(C + "organ_votes.npz"); _VOTES.update(zip([str(x) for x in d["ids"]], d["V"].reshape(len(d["ids"]), -1)))
+    z = np.zeros(next(iter(_VOTES.values())).shape, np.float32)
+    own = np.stack([_VOTES.get(t, z) for t in concepts])
+    par = np.stack([np.max([_VOTES.get(p, z) for p in T.get(t, {}).get("parents", [])] or [z], 0) for t in concepts])
+    return np.c_[own, par]
 
 
 def gold_held(T):

@@ -1,0 +1,58 @@
+{
+ "pairs": {
+  "external_ncbi": 992,
+  "external_bc5cdr": 506,
+  "external_medmentions": 1735,
+  "external_cometa": 431,
+  "haiku": 1783,
+  "haiku2_synonym": 1120,
+  "haiku2_abbrev": 752,
+  "haiku2_typo": 1171,
+  "haiku2_lay": 319,
+  "typo": 4000,
+  "abbrev": 1866
+ },
+ "kept": {
+  "external_ncbi": 794,
+  "external_bc5cdr": 408,
+  "external_medmentions": 1456,
+  "external_cometa": 392,
+  "haiku": 1271,
+  "haiku2_abbrev": 539,
+  "haiku2_synonym": 1088,
+  "haiku2_typo": 1055,
+  "haiku2_lay": 259,
+  "typo": 3262,
+  "abbrev": 897
+ },
+ "weights": {
+  "sim": 0.017482422292232513,
+  "gap": -2.0081560611724854,
+  "rank": -0.3026171326637268,
+  "first": 0.713509738445282,
+  "log_strings": 0.15655562281608582,
+  "tri_jaccard": 0.9201923608779907,
+  "query_words_in_name": -0.18916329741477966,
+  "name_words_in_query": -0.17966869473457336,
+  "name_len": -0.029756484553217888,
+  "prior": 0.5502271056175232,
+  "abbr_hit": 0.39588433504104614,
+  "is_abbrev": -0.026239000260829926,
+  "abbrev_x_hit": 0.39588433504104614,
+  "abbrev_x_sim": -0.19489043951034546,
+  "has_organ": 0.05190839245915413,
+  "query_len": -0.05076250061392784,
+  "has_digit": -0.0026876642368733883
+ },
+ "threshold": -0.09999999999999742,
+ "dev_base": {
+  "macro_f1": 0.7130113998155352,
+  "false_accept_invalid": 0.06666666666666667,
+  "concept_acc": 0.6391304347826087
+ },
+ "dev_rerank": {
+  "macro_f1": 0.7882182490128395,
+  "false_accept_invalid": 0.06666666666666667,
+  "concept_acc": 0.6739130434782609
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "medmentions": {
+  "n": 2791,
+  "sapbert_top1": 0.748,
+  "reranked_top1": 0.771,
+  "delta": 0.024,
+  "lo": 0.01,
+  "hi": 0.041
+ },
+ "ncbi": {
+  "n": 831,
+  "sapbert_top1": 0.529,
+  "reranked_top1": 0.543,
+  "delta": 0.013,
+  "lo": 0.0,
+  "hi": 0.035
+ },
+ "bc5cdr": {
+  "n": 3047,
+  "sapbert_top1": 0.614,
+  "reranked_top1": 0.629,
+  "delta": 0.015,
+  "lo": 0.005,
+  "hi": 0.026
+ },
+ "cometa": {
+  "n": 610,
+  "sapbert_top1": 0.72,
+  "reranked_top1": 0.759,
+  "delta": 0.039,
+  "lo": 0.025,
+  "hi": 0.054
+ }
+}
