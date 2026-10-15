@@ -1,0 +1,30 @@
+{
+ "medmentions": {
+  "n": 2791,
+  "sapbert": 0.748,
+  "reranked": 0.771,
+  "lo": 0.01,
+  "hi": 0.041
+ },
+ "ncbi": {
+  "n": 831,
+  "sapbert": 0.529,
+  "reranked": 0.543,
+  "lo": 0.0,
+  "hi": 0.035
+ },
+ "bc5cdr": {
+  "n": 3047,
+  "sapbert": 0.614,
+  "reranked": 0.629,
+  "lo": 0.005,
+  "hi": 0.026
+ },
+ "cometa": {
+  "n": 610,
+  "sapbert": 0.72,
+  "reranked": 0.759,
+  "lo": 0.025,
+  "hi": 0.054
+ }
+}

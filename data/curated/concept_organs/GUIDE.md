@@ -66,3 +66,15 @@ Reference examples (from the pilot gold conventions):
 1. One line per input concept, same IDs, valid JSON.
 2. Only the 13 axis names in `organs`.
 3. Re-read the low-confidence lines once.
+
+## v3 additions (2026-10-15, Haiku 5.5 fill round)
+
+These override the rules above where they differ.
+
+- **Neurocognitive and neurodevelopmental disorders are `neurologic`.** This covers dementia of any cause, delirium, amnesia, autism spectrum disorder, ADHD, intellectual disability and tic disorders. Mood, anxiety, personality, psychotic, eating and substance-use disorders stay `organs: []`, `scope: no_axis` unless another organ is involved (alcoholic liver disease → hepatic).
+- **Mouth, teeth, gums, salivary glands and oral mucosa are `gastrointestinal`.**
+- **Smell and taste disorders are `neurologic`.**
+- **Endocrine syndromes are `metabolic_endocrine`** (Cushing syndrome, hyperaldosteronism, pituitary tumours; a pituitary tumour is also `neurologic`).
+- **Tumours take the organ they arise in, including skin cancers** (basal cell carcinoma → dermatologic). Breast, ovary, uterus, cervix, prostate and testis tumours have no axis; add an axis only when the disease itself involves another organ.
+- **Hernias:** abdominal-wall hernias → `gastrointestinal`; hiatal hernia → `gastrointestinal`.
+- **Genetic syndromes:** label the organs the syndrome damages in most patients, at most 4. Do not answer `unclear` only because the disease is rare; use the definition and the ancestors.

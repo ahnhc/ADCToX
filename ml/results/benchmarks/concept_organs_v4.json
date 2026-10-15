@@ -1,0 +1,90 @@
+{
+ "label_stats": {
+  "n_labels": 21032,
+  "n_strict": 600,
+  "n_verified": 4465,
+  "n_filled": 16831,
+  "n_expert": 0,
+  "relabel_calibration_exact": {
+   "relabel_0.jsonl": 0.8,
+   "relabel_1.jsonl": 1.0,
+   "relabel_2.jsonl": 0.9,
+   "relabel_3.jsonl": 0.9,
+   "relabel_4.jsonl": 0.9
+  },
+  "relabel_overlap_exact": 0.8686868686868687,
+  "n_relabel_overlap": 99,
+  "n_dropped_gold_related": 1
+ },
+ "n_anc_features": 1266,
+ "chosen": {
+  "rule": "learned",
+  "threshold": 0.44999999999999996,
+  "dev_macro_f1": 0.7254040403548441
+ },
+ "dev": {
+  "crosswalk": 0.6441977207807121,
+  "learned": 0.7254040403548441,
+  "union": 0.6634644399724736,
+  "hybrid": 0.7014685263084854
+ },
+ "test_crosswalk": {
+  "macro_f1": 0.6254743015542222,
+  "micro_f1": 0.6272,
+  "exact_set": 0.3807531380753138,
+  "concept_acc": 0.6228813559322034,
+  "coverage": 0.702928870292887,
+  "false_accept_invalid": 0.2,
+  "accept_ambiguous": 0.5294117647058824,
+  "n_valid": 239,
+  "n_invalid": 15,
+  "n_ambiguous": 17,
+  "per_organ_f1": {
+   "haematologic": 0.6153846153846154,
+   "hepatic": 0.7777777777777778,
+   "cardiovascular": 0.6956521739130435,
+   "pulmonary": 0.5454545454545454,
+   "renal": 0.7407407407407407,
+   "gastrointestinal": 0.6938775510204082,
+   "neurologic": 0.4,
+   "ocular": 0.6808510638297872,
+   "dermatologic": 0.6111111111111112,
+   "metabolic_endocrine": 0.5882352941176471,
+   "musculoskeletal": 0.391304347826087,
+   "infectious_immune": 0.6407766990291263,
+   "otologic": 0.75
+  }
+ },
+ "test_chosen": {
+  "macro_f1": 0.7191156019556281,
+  "micro_f1": 0.718381112984823,
+  "exact_set": 0.5188284518828452,
+  "concept_acc": 0.6228813559322034,
+  "coverage": 0.7364016736401674,
+  "false_accept_invalid": 0.2,
+  "accept_ambiguous": 0.5294117647058824,
+  "n_valid": 239,
+  "n_invalid": 15,
+  "n_ambiguous": 17,
+  "per_organ_f1": {
+   "haematologic": 0.7272727272727273,
+   "hepatic": 0.7777777777777778,
+   "cardiovascular": 0.7191011235955056,
+   "pulmonary": 0.7692307692307693,
+   "renal": 0.7407407407407407,
+   "gastrointestinal": 0.7083333333333334,
+   "neurologic": 0.6153846153846154,
+   "ocular": 0.76,
+   "dermatologic": 0.7804878048780488,
+   "metabolic_endocrine": 0.78125,
+   "musculoskeletal": 0.5454545454545454,
+   "infectious_immune": 0.673469387755102,
+   "otologic": 0.75
+  }
+ },
+ "paired_test": {
+  "delta": 0.09364130040140584,
+  "lo": 0.04528972574354794,
+  "hi": 0.15407892548385796
+ }
+}

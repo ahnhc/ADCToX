@@ -1,0 +1,42 @@
+{
+ "label_stats": {
+  "n_labels": 21032,
+  "n_strict": 600,
+  "n_verified": 4465,
+  "n_filled": 16831,
+  "n_expert": 0,
+  "n_relabel_overlap": 99
+ },
+ "n_texts": 65618,
+ "train": {
+  "epochs": 28,
+  "val_loss": 0.11441505700349808,
+  "val_macro_f1": 0.7790059886635003,
+  "n_train": 59045,
+  "n_val": 6573
+ },
+ "dev": {
+  "linker": {
+   "macro_f1": 0.7952254214705773,
+   "false_accept_invalid": 0.13333333333333333,
+   "coverage": 0.8065843621399177
+  },
+  "head": {
+   "macro_f1": 0.803014900103528,
+   "false_accept_invalid": 0.0,
+   "coverage": 0.8724279835390947
+  },
+  "fill": {
+   "macro_f1": 0.8352168861554665,
+   "false_accept_invalid": 0.13333333333333333,
+   "coverage": 0.934156378600823
+  },
+  "union": {
+   "macro_f1": 0.8378389081388568,
+   "false_accept_invalid": 0.13333333333333333,
+   "coverage": 0.934156378600823
+  }
+ },
+ "chosen_rule": "fill",
+ "note": "dev also scored 'union' 0.838 vs 'fill' 0.835; only 'linker' and 'fill' exist in the app, so 'fill' is used (ml/organ_head.py now chooses between those two)"
+}
