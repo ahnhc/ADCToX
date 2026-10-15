@@ -8,6 +8,7 @@ permissions:
   contents: read
 jobs:
   unix:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'v')    # app releases; a models-* release alone may precede its app
     strategy:
       fail-fast: false
       matrix:
@@ -30,6 +31,7 @@ jobs:
           grep -q ADC out.txt
 
   windows:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'v')
     runs-on: windows-latest
     steps:
       - name: Install with the one-line command
