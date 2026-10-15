@@ -47,3 +47,11 @@ def test_profiles_are_complete():
 def test_words_that_are_each_a_name_are_offered_separately():
     assert SG.parts(RC, "copd cirrhosis") == ["copd", "cirrhosis"]
     assert SG.parts(RC, "heart failure") == [] and SG.parts(RC, "asthma") == []
+
+
+def test_numbered_genetic_subtypes_and_animal_diseases_stay_out_of_the_way():
+    assert SG.NUMBERED.match("Alzheimer disease 5") and SG.NUMBERED.match("Parkinson disease 19B, early-onset")
+    assert not SG.NUMBERED.match("Type 2 diabetes mellitus") and not SG.NUMBERED.match("Alzheimer disease")
+    names = labels(SG.names(RC, "alzheimer"))
+    assert names[0] == "alzheimer disease" and not any(SG.NUMBERED.match(n) for n in names)
+    assert not any(w in n for n in labels(SG.names(RC, "diabetes")) for w in ("domestic cat", "koala", "hamster"))

@@ -1,9 +1,11 @@
-ADCTOX 0.3.5: abbreviations and several names on one line.
+ADCTOX 0.3.6: 질환명 추천 정리.
 
-- **한 줄에 여러 질환:** `asd adhd`처럼 띄어 써서 넣으면 `각각 따로 추가`가 나온다. 전에는 한 질환으로 읽었다.
-- **약어 추천:** 약어가 뜻할 수 있는 질환을 모두 추천한다.
-  - `asd`: 심방중격결손, 자폐 스펙트럼 장애 등
-  - `adhd`도 이제 추천이 나온다.
-- **장기 없음 표시:** 13개 장기에 속하지 않는 질환(정신, 발달, 생식 등)은 `Unmapped` 대신 `None of the 13 organs`로 표시한다.
+- **유전 아형 정리:** `Alzheimer disease 2~8`, `Parkinson disease 12`처럼 번호가 붙은 유전 아형이 추천 목록을 채우지 않는다.
+  - 일반 질환이 이미 보이면 숨긴다.
+  - 숫자를 입력하면(`alzheimer disease 2`) 다시 나온다.
+- **동물 질환 제외:** `..., domestic cat`, `..., koala` 같은 동물 질환은 추천에서 뺀다.
+- **0.3.5 포함:**
+  - `asd adhd`처럼 띄어 쓴 여러 질환을 각각 추가할 수 있다.
+  - 약어 추천이 나온다.
 
 업데이트: `adctox --update-app`

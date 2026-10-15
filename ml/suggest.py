@@ -14,7 +14,7 @@ A suggestion is (kind, value, label, detail, organs): kind 'reg' (registry id), 
 import glob, json, math, os, re, sys, threading, unicodedata
 
 HANGUL = re.compile("[가-힣]")
-ANIMAL = re.compile(r"\b(cattle|dog|horse|sheep|goat|pig|swine|chicken|poultry|rabbit|cervid|bovine|canine|feline|equine|non-human)\b", re.I)
+ANIMAL = re.compile(r"\b(cattle|dog|horse|sheep|goat|pig|swine|chicken|poultry|rabbit|cervid|bovine|canine|feline|equine|medaka|zebrafish|non-human)\b", re.I)
 CHO = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ"
 TOKW = 4.0                      # weight of the content-word overlap (chosen on the dev half of symptom_eval_v0)
 KO_END = sorted("습니다 었어요 았어요 했어요 이에요 에서 으로 이랑 하고 해서 어서 아서 어요 아요 해요 에요 예요 이고 이며 지만 는데 은데 인데 니다 을 를 이 가 은 는 에 도 만 과 와 랑 로 요 고 서 며 의".split(), key=len, reverse=True)
@@ -66,6 +66,36 @@ def read_profiles(root):
     return [dict(p, care_en=care.get(p["id"], {}).get("care_en", p.get("care_en", [])), care_ko=care.get(p["id"], {}).get("care_ko", p.get("care_ko", []))) for p in rows("profiles_*.jsonl")]
 
 
+_NH = []
+
+
+def nonhuman():
+    """MONDO ids under 'non-human animal disease' (MONDO:0005583): veterinary concepts the index still holds ('Alzheimer disease,
+    domestic cat'). From the app file, or computed from the MONDO file in the repository."""
+    if not _NH:
+        try:
+            from __adc_data__ import _portable_data
+            _NH.append(set(_portable_data().get("nonhuman", [])))
+        except ImportError:
+            _NH.append(nonhuman_ids(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "raw_big", "mondo", "2026-10-07", "mondo.obo")))
+    return _NH[0]
+
+
+def nonhuman_ids(obo):
+    children, cur = {}, None
+    try:
+        for line in open(obo, encoding="utf-8"):
+            if line.startswith("id: "): cur = line[4:].strip()
+            elif line.startswith("is_a: ") and cur: children.setdefault(line[6:].split()[0], []).append(cur)
+    except OSError:
+        return set()
+    seen, st = set(), ["MONDO:0005583"]
+    while st:
+        n = st.pop()
+        if n not in seen: seen.add(n); st += children.get(n, [])
+    return seen
+
+
 class Index:
     """every searchable string once: (normalized key, nospace key, choseong key, priority, suggestion)."""
     def __init__(self, RC):
@@ -92,20 +122,20 @@ class Index:
             if self.mondo_loaded: return
             try:
                 import numpy as np, adc_runtime, mondo_index as MI
-                keep, organs = self.rows, {}
+                keep, organs, nh = self.rows, {}, nonhuman()
                 self.rows = []
                 with np.load(adc_runtime.model_path("mondo_index.npz", MI.C + "mondo_index.npz"), allow_pickle=False) as d:
                     ids, names, axes = d["ids"].tolist(), d["names"].tolist(), d["axes"] > 0; axn = MI.AXES
                     for j, (t, n) in enumerate(zip(ids, names)):
                         if t in organs: continue
                         organs[t] = [axn[k] for k in np.flatnonzero(axes[j])]
-                        if not n.startswith("obsolete") and not ANIMAL.search(n): self._add(n, 0, ("mondo", t, n[:1].upper() + n[1:], "", organs[t]))
+                        if not n.startswith("obsolete") and t not in nh and not ANIMAL.search(n): self._add(n, 0, ("mondo", t, n[:1].upper() + n[1:], "", organs[t]))
                     if "abbr_keys" in d.files:                    # NLM LRABR abbreviations: every disease an abbreviation may mean
                         first = {}
                         for t, n in zip(ids, names): first.setdefault(t, n)
                         for k, v in zip(d["abbr_keys"].tolist(), d["abbr_vals"].tolist()):
                             for t in v.split(";")[:6]:
-                                if t in first: self._add(k, 1, ("mondo", t, first[t][:1].upper() + first[t][1:], f"약어 {k.upper()}", organs.get(t, [])))
+                                if t in first and t not in nh: self._add(k, 1, ("mondo", t, first[t][:1].upper() + first[t][1:], f"약어 {k.upper()}", organs.get(t, [])))
                     if "ko_keys" in d.files:
                         for k, v in zip(d["ko_keys"].tolist(), d["ko_vals"].tolist()):
                             if re.search(r"nos|[(),\[\]]", k) or len(k) > 20: continue
@@ -141,12 +171,17 @@ def _score(q, qn, qc, row):
     return 0
 
 
+NUMBERED = re.compile(r"^(.+?),?\s+(?:type\s+)?\d+[a-z]?(?:,.*)?$", re.I)     # gene-numbered subtypes: 'Alzheimer disease 5', 'Parkinson disease 12'
+
+
 def _ranked(I, q):
     qn = _nospace(q) if HANGUL.search(q) else ""; qc = _nospace(q) if _is_cho(q) else ""; best = {}
+    digits = any(c.isdigit() for c in q)
     for row in I.rows:
         s = _score(q, qn, qc, row)
         if s:
             s += row[3] * 6; v = (row[4][0], row[4][1])
+            if not digits and NUMBERED.match(row[4][2]): s -= 30          # rare genetic subtypes only when a number is typed
             if s > best.get(v, (0,))[0]: best[v] = (s, -len(row[0]), row[4])
     return [x[2] for x in sorted(best.values(), key=lambda x: (-x[0], -x[1]))]
 
@@ -172,9 +207,12 @@ def names(RC, text, limit=8):
         c = _correct(I, q)
         if c != q: out += [s for s in _ranked(I, c) if all((x[0], x[1]) != (s[0], s[1]) for x in out)]
     seen, keep = set(), []
+    shown = {norm(s[2]) for s in out}
     for s in out:
         k1, k2 = norm(s[2]), norm(s[3]) if s[0] == "text" else None
         if k1 in seen or (k2 and k2 in seen): continue
+        m = NUMBERED.match(s[2])
+        if m and not any(c.isdigit() for c in q) and norm(m.group(1)) in shown: continue    # the base disease is listed: hide its subtypes
         seen.add(k1); seen.add(norm(s[3])) if s[3] else None; keep.append(s)
         if len(keep) == limit: break
     return [_with_organs(RC, s) for s in keep]
@@ -206,7 +244,7 @@ def semantic(RC, text, k=5):
         lk = MI.link([en])[0]
         out, seen = [], set()
         for r in [dict(mondo=lk["mondo"], name=lk["name"], organs=lk["axes"], sim=lk["sim"])] + lk.get("readings", []):
-            if r["mondo"] in seen or r.get("sim", 1) < 0.75: continue        # = mondo_index.THETA
+            if r["mondo"] in seen or r["mondo"] in nonhuman() or r.get("sim", 1) < 0.75: continue        # = mondo_index.THETA
             seen.add(r["mondo"]); name = r["name"]
             out.append(("mondo", r["mondo"], name[:1].upper() + name[1:], "", r.get("organs") or MI.concept(r["mondo"])[1]))
         if lk.get("hpo"):

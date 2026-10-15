@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.6 — Cleaner name suggestions
+
+- Gene-numbered subtypes (`Alzheimer disease 2` … `8`, `Parkinson disease 12`) no longer fill the suggestion list.
+  - They rank low, and are hidden when the general disease is already listed.
+  - They come back when a number is typed (`alzheimer disease 2`).
+- Veterinary diseases are excluded from suggestions (`Alzheimer disease, domestic cat`, `Diabetes mellitus, koala`).
+  - These are the 8,319 MONDO concepts under `non-human animal disease`, still present in the index.
+  - The list ships inside the app file.
+
 ## 0.3.5 — Abbreviations and several names on one line
 
 - Typing several names on one line separated by spaces (`asd adhd`, `copd htn`) offers `각각 따로 추가`. Each one is then read on its own; before, the whole line was linked as one disease.
