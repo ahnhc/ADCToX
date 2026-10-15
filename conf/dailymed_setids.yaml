@@ -30,3 +30,5 @@ agents:
   datopotamab_deruxtecan:   {brand: DATROWAY,  set_id: "2950227c-6230-4ca4-a135-46e44d9424a0"}
   telisotuzumab_vedotin:    {brand: EMRELIS,   set_id: "bc04f980-3957-4e35-ab81-8ec2ffe87215"}
   pivekimab_sunirine:       {brand: DECNUPAZ,  set_id: "508b6ff8-601d-4901-a7a5-816141134054"}
+  # added 2026-10-15 (FDA re-approval 2025-10-23); fetched into the 2026-10-15 snapshot, the others stay on 2026-10-07
+  belantamab_mafodotin:     {brand: BLENREP,   set_id: "aef7c34c-fef8-407c-99c0-a68aded53c60"}

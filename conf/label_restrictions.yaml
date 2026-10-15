@@ -1,4 +1,4 @@
-# Use restrictions read off the approved US labels (DailyMed snapshot 2026-10-07), kept OUT of the
+# Use restrictions read off the approved US labels (DailyMed snapshot 2026-10-07; BLENREP from the 2026-10-15 snapshot), kept OUT of the
 # risk score: a restriction is shown next to the score and decides the order first; it is never
 # averaged with organ burdens.
 #
@@ -255,3 +255,16 @@ rules:
      quote: "Withhold ZYNLONTA until platelet count returns to 50,000/mcL or higher"}
   - {adc: enfortumab-vedotin, domain: metabolic, category: insufficient_data, section: "5.2", when: {hba1c_ge: 8},
      quote: "Patients with baseline hemoglobin A1C ≥8% were excluded from clinical trials."}
+
+  # ------------------------------------------------------------------ belantamab mafodotin (BLENREP v2, DailyMed snapshot 2026-10-15)
+  - {adc: belantamab-mafodotin, domain: hepatic, category: no_adjustment, section: "8.6", when: {bili_le: 1.5},
+     quote: "No dose adjustment is recommended for patients with mild hepatic impairment"}
+  - {adc: belantamab-mafodotin, domain: hepatic, category: insufficient_data, section: "8.6", when: {bili_gt: 1.5},
+     quote: "The recommended dose of BLENREP has not been established in patients with moderate or severe hepatic impairment"}
+  # no section 8 renal subsection; 12.3 names mild to severe renal impairment and kidney failure (eGFR <30), not dialysis
+  - {adc: belantamab-mafodotin, domain: renal, category: no_adjustment, section: "12.3", when: {esrd: false},
+     quote: "mild to severe renal impairment and kidney failure (eGFR <30 mL/min)"}
+  - {adc: belantamab-mafodotin, domain: ocular, category: monitor, section: "Boxed", when: {always: true},
+     quote: "Conduct ophthalmic exams at baseline, before each dose, promptly for new or worsening symptoms, and as clinically indicated."}
+  - {adc: belantamab-mafodotin, domain: blood, category: avoid, section: "2.3", when: {platelets_lt: 25},
+     quote: "Withhold BLENREP until platelet count recovers to 25,000/mcL or higher."}

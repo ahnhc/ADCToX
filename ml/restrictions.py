@@ -20,6 +20,7 @@ import yaml
 
 R = str(Path(__file__).resolve().parents[1]) + os.sep
 DM = "/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07/"
+DM_ADDED = ["/data/hyeongchanahn/adctox/raw/dailymed/2026-10-15/"]     # agents added later (BLENREP)
 CATS = ["no_adjustment", "monitor", "reduce_dose", "no_statement", "insufficient_data", "avoid", "contraindicated"]
 # reduce_dose ranks with monitor (usable, with an action) but is shown as what the label requires, not as monitoring
 TIER = {"no_adjustment": 0, "monitor": 1, "reduce_dose": 1, "no_statement": 2, "insufficient_data": 2, "avoid": 3, "contraindicated": 4}
@@ -43,7 +44,7 @@ def load_rules():
 def label_text(adc):
     """whitespace-collapsed text of the latest label version for an ADC id like 'pivekimab-sunirine'."""
     from lxml import html
-    d = DM + adc.replace("-", "_"); v = max(int(m.group(1)) for f in os.listdir(d) if (m := re.match(r"v(\d+)\.html$", f)))
+    d = next((x + adc.replace("-", "_") for x in [DM] + DM_ADDED if os.path.isdir(x + adc.replace("-", "_"))), DM + adc.replace("-", "_")); v = max(int(m.group(1)) for f in os.listdir(d) if (m := re.match(r"v(\d+)\.html$", f)))
     return re.sub(r"\s+", " ", html.parse(f"{d}/v{v}.html").getroot().text_content()), v
 
 

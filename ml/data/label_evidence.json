@@ -1,6 +1,128 @@
 {
-  "source": "DailyMed label snapshot 2026-10-07; factual evidence derived by ml/drug_evidence.py",
+  "source": "DailyMed label snapshot 2026-10-07 (BLENREP: 2026-10-15); factual evidence derived by ml/drug_evidence.py",
   "evidence": {
+    "belantamab-mafodotin": {
+      "name": "Belantamab mafodotin",
+      "version": 2,
+      "date": "Oct 06, 2026",
+      "brand": "BLENREP",
+      "has_tables": true,
+      "organs": {
+        "haematologic": {
+          "level": "W&P",
+          "headings": [
+            [
+              "5.3",
+              "Thrombocytopenia"
+            ]
+          ],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 74.0,
+            "term": "platelets decreased",
+            "grade": "Grade 3-4",
+            "table": "Table 5. Select Laboratory Abnormalities (>10%) That Worsened from Baseline in Patients with Relapsed or Refractory Multiple Myeloma Who Received BLENREP in DREAMM-7",
+            "combo": true,
+            "lab": true
+          }
+        },
+        "hepatic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 15.0,
+            "term": "gamma glutamyltransferase increased",
+            "grade": "Grade 3-4",
+            "table": "Table 5. Select Laboratory Abnormalities (>10%) That Worsened from Baseline in Patients with Relapsed or Refractory Multiple Myeloma Who Received BLENREP in DREAMM-7",
+            "combo": true,
+            "lab": true
+          }
+        },
+        "cardiovascular": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "pulmonary": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "renal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "reported",
+          "inc": {
+            "pct": 2.0,
+            "term": "creatinine increased",
+            "grade": "Grade 3-4",
+            "table": "Table 5. Select Laboratory Abnormalities (>10%) That Worsened from Baseline in Patients with Relapsed or Refractory Multiple Myeloma Who Received BLENREP in DREAMM-7",
+            "combo": true,
+            "lab": true
+          }
+        },
+        "gastrointestinal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "neurologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "ocular": {
+          "level": "boxed",
+          "headings": [
+            [
+              "Boxed",
+              "OCULAR TOXICITY"
+            ],
+            [
+              "5.1",
+              "Ocular Toxicity"
+            ]
+          ],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "dermatologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "metabolic_endocrine": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "musculoskeletal": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "infectious_immune": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        },
+        "otologic": {
+          "level": "none",
+          "headings": [],
+          "inc_status": "not reported",
+          "inc": null
+        }
+      }
+    },
     "brentuximab-vedotin": {
       "name": "Brentuximab vedotin",
       "version": 38,

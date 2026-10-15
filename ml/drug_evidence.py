@@ -17,6 +17,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "src"))
 from adctox.validation.label_change import parse_version, axes_for_heading
 
 C = "/data/hyeongchanahn/adctox/ml_cache/"; DM = "/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07/"
+DM_ADDED = ["/data/hyeongchanahn/adctox/raw/dailymed/2026-10-15/"]     # agents added later (BLENREP), each in the snapshot it was fetched in
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular",
         "dermatologic", "metabolic_endocrine", "musculoskeletal", "infectious_immune", "otologic"]
 DOM = {"Cardiac": "cardiovascular", "Vascular": "cardiovascular", "Skin": "dermatologic", "Metabolic": "metabolic_endocrine", "Endocrine": "metabolic_endocrine",
@@ -27,10 +28,15 @@ SEVERE_CUM, SEVERE_PART = ["Grade 3-4", "Grade >=3"], ["Grade 3", "Grade 4"]
 
 def warnings():
     """{adc: dict(version, date, brand, axes={axis: dict(level, headings=[(section, text)])})} for every ADC in the snapshot."""
-    man = json.load(open(DM + "_manifest.json"))["agents"]; out = {}
+    man, where = {}, {}
+    for d in [DM] + DM_ADDED:
+        if not os.path.exists(d + "_manifest.json"): continue
+        for agent, m in json.load(open(d + "_manifest.json"))["agents"].items(): man.setdefault(agent, m); where.setdefault(agent, d)
+    out = {}
     for agent in sorted(man):
-        vs = sorted(int(m.group(1)) for f in os.listdir(DM + agent) if (m := re.match(r"v(\d+)\.html$", f))); v = vs[-1]
-        lv = parse_version(pathlib.Path(DM + f"{agent}/v{v}.html"), agent, v, None); ax = {}
+        base = where[agent]
+        vs = sorted(int(m.group(1)) for f in os.listdir(base + agent) if (m := re.match(r"v(\d+)\.html$", f))); v = vs[-1]
+        lv = parse_version(pathlib.Path(base + f"{agent}/v{v}.html"), agent, v, None); ax = {}
         for sec, head in lv.sec5.items():
             for a in axes_for_heading(head):
                 if a in AXES: ax.setdefault(a, dict(level="W&P", headings=[]))["headings"].append((sec, head))

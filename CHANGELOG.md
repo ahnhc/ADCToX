@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.3 — Belantamab mafodotin (BLENREP)
+
+- The 15th ADC: belantamab mafodotin (BLENREP; BCMA, MMAF). Its current US label (version 2, 2026-10-06) is fetched into a separate DailyMed snapshot dated 2026-10-15; the other 14 labels stay on the 2026-10-07 snapshot, and their evidence is unchanged.
+- Label evidence:
+  - Boxed warning: ocular toxicity.
+  - Section 5 warning: thrombocytopenia.
+  - Grade 3+ laboratory rates come from the combination-therapy tables (marked combo).
+- Five label rules, each with a verbatim quote:
+  - Hepatic: mild impairment no adjustment; moderate or severe not established.
+  - Renal: no adjustment outside dialysis (section 12.3).
+  - Ocular: eye exam before every dose.
+  - Blood: withhold below 25,000/mcL platelets.
+- Two existing tests were tightened. They were exposed by the new drug, and the app logic is unchanged.
+  - The priority test now compares ranks within one restriction tier on both sides.
+  - The null outcome test now judges the false-positive rate over 8 simulated cohorts instead of one draw.
+- Other ADCs approved outside the US or still in trials are listed in `docs/research/adc_candidates_2026-10.md`; they have no US label to read.
+
 ## 0.3.2 and models 0.3 — Learned reranker
 
 - Model bundle 0.3 adds a learned reranker to the MONDO index and organ labels re-checked by Haiku 5.5 agents. Only the index changes (about 180 MB); the encoders and the organ-estimate head are reused.
