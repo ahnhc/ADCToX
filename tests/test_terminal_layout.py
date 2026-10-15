@@ -391,4 +391,5 @@ def test_a_click_presses_the_row_or_button_under_it(monkeypatch):
 def test_organ_strip_marks_linked_and_estimated_organs():
     import form
     s = form.strip(list(form.GLYPH), on=["hepatic"], maybe=["renal"])
-    assert plain(s) == "혈간심폐콩위뇌눈피대뼈면귀" and "\x1b[32;1m간" in s and "\x1b[33m콩" in s
+    assert plain(s) == "간 신장?" and "\x1b[32;1m간" in s and "\x1b[33m신장?" in s
+    assert plain(form.strip(list(form.GLYPH))) == "-"

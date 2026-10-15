@@ -136,6 +136,13 @@ def link(texts):
 TIE = 0.02                  # concepts within this similarity of the top-1 are also readings of the text
 ABBREV = re.compile(r"^[A-Za-z][A-Za-z0-9]{1,5}$")
 
+def nearest(vecs):
+    """-> [(MONDO id, cosine)] of the index row nearest to each unit vector in SapBERT space (the Gemma judge's 'align' output)."""
+    if _IDX is None: link(["x"])
+    E = _IDX_E if _IDX_E is not None else torch.from_numpy(_IDX["E"].astype(np.float32))
+    with torch.no_grad(): v, j = (torch.from_numpy(np.asarray(vecs, np.float32)).to(E.device) @ E.T).max(1)
+    return [(_IDX["_ids"][int(k)], float(x)) for x, k in zip(v.cpu().numpy(), j.cpu().numpy())]
+
 def concept(mondo):
     """-> (name, organs) of a MONDO concept (or an HPO term of the index's phenotype block) in the active index."""
     if mondo.startswith("HP:") and "hp_ids" in _IDX:

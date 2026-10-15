@@ -99,7 +99,7 @@ def nonhuman_ids(obo):
 class Index:
     """every searchable string once: (normalized key, nospace key, choseong key, priority, suggestion)."""
     def __init__(self, RC):
-        self.RC, self.rows, self.mondo_loaded, self.organs, self.words = RC, [], False, {}, None
+        self.RC, self.rows, self.mondo_loaded, self.organs, self.words, self.ko = RC, [], False, {}, None, {}
         for i, r in RC._reg.items():
             org = r["organ_axes"].split(";")
             s = ("reg", i, r["label"], RC.KO.get(i, ""), org)
@@ -130,16 +130,24 @@ class Index:
                         if t in organs: continue
                         organs[t] = [axn[k] for k in np.flatnonzero(axes[j])]
                         if not n.startswith("obsolete") and t not in nh and not ANIMAL.search(n): self._add(n, 0, ("mondo", t, n[:1].upper() + n[1:], "", organs[t]))
+                    first = {}
+                    for t, n in zip(ids, names): first.setdefault(t, n)
                     if "abbr_keys" in d.files:                    # NLM LRABR abbreviations: every disease an abbreviation may mean
-                        first = {}
-                        for t, n in zip(ids, names): first.setdefault(t, n)
                         for k, v in zip(d["abbr_keys"].tolist(), d["abbr_vals"].tolist()):
                             for t in v.split(";")[:6]:
                                 if t in first and t not in nh: self._add(k, 1, ("mondo", t, first[t][:1].upper() + first[t][1:], f"약어 {k.upper()}", organs.get(t, [])))
-                    if "ko_keys" in d.files:
+                    if "ko_keys" in d.files:                      # a KCD name whose English name is a MONDO name: that concept
+                        exact, ko = {}, {p["id"]: p["ko"][0] for p in profiles() if p.get("ko")}
+                        for t, n in zip(ids, names): exact.setdefault(norm(n), t)
                         for k, v in zip(d["ko_keys"].tolist(), d["ko_vals"].tolist()):
-                            if re.search(r"nos|[(),\[\]]", k) or len(k) > 20: continue
-                            self._add(k, 1, ("text", k, k, v, None))
+                            if re.search(r"[a-z0-9(),\[\]]", k) or len(k) > 20: continue      # code notes ('f54와j45이분류항목...') and long names
+                            t = exact.get(norm(v))
+                            if t and t not in nh:
+                                self._add(k, 2.5, ("mondo", t, first[t][:1].upper() + first[t][1:], ko.get(t, k), organs.get(t, [])))
+                                self.ko.setdefault(t, ko.get(t, k))
+                            elif len(k) <= 10: self._add(k, 0.5, ("text", k, k, v, None))      # no MONDO concept: short names only, after the linked ones
+                        for t in self.ko:                         # a disease with a Korean (KCD) name is a common one: its English name ranks like a profile
+                            self._add(first[t], 2, ("mondo", t, first[t][:1].upper() + first[t][1:], self.ko[t], organs.get(t, [])))
                 mondo = self.rows; self.organs = organs
                 self.rows = [r[:4] + ((r[4][:4] + (organs.get(r[4][1], []),)) if r[4][0] == "mondo" and r[4][4] is None else r[4],) for r in keep] + mondo
                 self.by_id = {t: s[:4] + (organs.get(t, []),) for t, s in self.by_id.items()}
@@ -211,15 +219,16 @@ def names(RC, text, limit=8):
         c = _correct(I, q)
         if c != q: out += [s for s in _ranked(I, c) if all((x[0], x[1]) != (s[0], s[1]) for x in out)]
     seen, keep = set(), []
+    out = [_with_organs(RC, s) for s in out]
     shown = {norm(s[2]) for s in out}
     for s in out:
-        k1, k2 = norm(s[2]), norm(s[3]) if s[0] == "text" else None
+        k1, k2 = norm(s[2]), _nospace(norm(s[3])) if s[3] and not s[3].startswith("약어 ") else None     # the same Korean name is shown once
         if k1 in seen or (k2 and k2 in seen): continue
         m = NUMBERED.match(s[2])
         if m and not any(c.isdigit() for c in q) and norm(m.group(1)) in shown: continue    # the base disease is listed: hide its subtypes
-        seen.add(k1); seen.add(norm(s[3])) if s[3] else None; keep.append(s)
+        seen.add(k1); seen.add(k2) if k2 else None; seen.add(_nospace(k1)); keep.append(s)
         if len(keep) == limit: break
-    return [_with_organs(RC, s) for s in keep]
+    return keep
 
 
 def parts(RC, text):
@@ -237,6 +246,7 @@ def parts(RC, text):
 def _with_organs(RC, s):
     kind, val, label, detail, org = s
     if org is None and kind == "mondo": org = index(RC).organs.get(val)
+    if kind == "mondo" and not detail: detail = index(RC).ko.get(val, "")       # the Korean name, when the KCD has one
     return (kind, val, label, detail, org or [])
 
 
@@ -273,6 +283,9 @@ def _grams(s, ns=(2, 3)):
     for n in ns:
         for i in range(max(0, len(s) - n + 1)): out[s[i:i + n]] = out.get(s[i:i + n], 0) + 1
     return out
+
+
+GEMMA_W = float(os.environ.get("ADC_GEMMA_SYM_W", 8.0))   # weight of the Gemma symptom output (chosen on the symptom eval dev half)
 
 
 class Symptoms:
@@ -365,6 +378,18 @@ class Symptoms:
                 import numpy as np, vulnerability_model as VM
                 with _LOCK: q = VM._st([en])[0]; sims = self.embeddings() @ q
                 for i, s in enumerate(sims.tolist()): score[i] += SYMPTOM_W * max(0.0, s - 0.3) / 0.7
+            except Exception:
+                pass
+        if semantic and GEMMA_W:                                    # models 0.6+: the Gemma judge's symptom -> disease output (Korean too)
+            try:
+                import gemma_runtime as GR
+                if GR.has_extra():
+                    o = GR.outputs([text]); col = {t: k for k, t in enumerate(o["profiles"])}
+                    for i, p in enumerate(self.P):
+                        k = col.get(p["id"])
+                        if k is not None and o["sym"][0][k] >= 0.02:
+                            score[i] += GEMMA_W * float(o["sym"][0][k])
+                            if o["sym"][0][k] >= 0.2: why[i] = ["AI"] + why[i]
             except Exception:
                 pass
         order = sorted(range(len(self.P)), key=lambda i: -score[i])

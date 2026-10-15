@@ -146,7 +146,9 @@ def _free_info(free, progress=None):
                 import gemma_runtime as GR
                 if GR.available():                             # model 0.5+: the Gemma organ judge reads the typed text itself (Korean too)
                     if progress: progress("judging")
-                    for lk, organs in zip(links, GR.judge(list(free))): lk["judged"] = organs
+                    if GR.has_extra(): _judge_extra(free, links, GR, MI)
+                    else:
+                        for lk, organs in zip(links, GR.judge(list(free))): lk["judged"] = organs
             except Exception as error:
                 warnings.warn(f"Gemma organ judge unavailable: {error}")
             _FREE[key] = (best, links)
@@ -155,6 +157,25 @@ def _free_info(free, progress=None):
     if LEARNED_FRACTION > 0 or FALLBACK:
         learned = _predict_free(free, progress)
     return best, links, learned
+
+
+JUDGE_GATE = os.environ.get("ADC_JUDGE_GATE", "judge")   # models 0.6+: whose validity decision counts ("judge", "either", "linker")
+KO_ALIGN = 0.6              # Korean text the linker could not place: the judge's SapBERT-space vector links it when this close (gold dev, Korean)
+
+
+def _judge_extra(free, links, GR, MI):
+    """the four-output judge (models 0.6+): organs, validity, and for Korean text the linker missed, a MONDO link through the
+    judge's SapBERT-space vector."""
+    o = GR.outputs(list(free)); _, _, (_, _, _, thr, _) = GR.load()
+    vecs = [k for k, (c, lk) in enumerate(zip(free, links)) if re.search("[가-힣]", c) and not lk["axes"] and o["valid_ok"][k]]
+    near = dict(zip(vecs, MI.nearest(o["vec"][vecs]))) if vecs else {}
+    for k, lk in enumerate(links):
+        lk["judged"] = [GR.AXES[a] for a in np.where(o["organ"][k] >= thr)[0]]; ok = bool(o["valid_ok"][k])
+        if JUDGE_GATE == "judge": lk["gate"] = ok
+        elif JUDGE_GATE == "either": lk["gate"] = ok or lk.get("gate") is not False
+        if k in near and near[k][1] >= KO_ALIGN:
+            name, organs = MI.concept(near[k][0])
+            if organs: lk.update(mondo=near[k][0], name=name, sim=near[k][1], axes=organs, via="judge vector")
 
 
 def english(texts):

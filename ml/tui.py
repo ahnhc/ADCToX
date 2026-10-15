@@ -82,14 +82,16 @@ class _Screen:
         for line in (description or "").splitlines(): self.put(y, 2, line, self.dim); y += 1
         self.put(y, 2, hint, self.dim); return y + 2
 
-GLYPH = {"haematologic": "혈", "hepatic": "간", "cardiovascular": "심", "pulmonary": "폐", "renal": "콩", "gastrointestinal": "위",
-         "neurologic": "뇌", "ocular": "눈", "dermatologic": "피", "metabolic_endocrine": "대", "musculoskeletal": "뼈",
-         "infectious_immune": "면", "otologic": "귀"}           # 혈액 간 심혈관 폐 콩팥 위장관 뇌신경 눈 피부 대사내분비 뼈근육 면역감염 귀
+GLYPH = {"haematologic": "혈액", "hepatic": "간", "cardiovascular": "심장", "pulmonary": "폐", "renal": "신장", "gastrointestinal": "위장",
+         "neurologic": "신경", "ocular": "눈", "dermatologic": "피부", "metabolic_endocrine": "대사", "musculoskeletal": "근골격",
+         "infectious_immune": "면역", "otologic": "귀"}           # short Korean organ names for the screens (13 axes)
 
 
 def strip(axes, on=(), maybe=()):
-    """the 13 organs as one line of initials (26 columns): organs in `on` green, in `maybe` yellow, the rest grey."""
-    return "".join((f"\033[32;1m{GLYPH[a]}\033[0m" if a in on else f"\033[33m{GLYPH[a]}\033[0m" if a in maybe else f"\033[90m{GLYPH[a]}\033[0m") for a in axes)
+    """the organs of a condition as short Korean words in axis order: `on` (linked) green, `maybe` (estimated) yellow with '?';
+    none -> a grey dash."""
+    parts = [f"\033[32;1m{GLYPH[a]}\033[0m" for a in axes if a in on] + [f"\033[33m{GLYPH[a]}?\033[0m" for a in axes if a in maybe and a not in on]
+    return " ".join(parts) if parts else "\033[90m-\033[0m"
 
 
 def _enter(k): return k in (10, 13, curses.KEY_ENTER)

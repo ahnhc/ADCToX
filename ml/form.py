@@ -4,8 +4,11 @@ Steps: conditions (organ-grouped list; 'Other' at the bottom opens a typing line
 place, units as on a lab report) -> [learned estimate for a condition that maps to no organ] -> [priority between conditions].
 Returns (conditions, raw lab values) and sets recommend.FALLBACK / recommend.PRIORITY, or None if the user quits.
 """
+import re
 from term import curses
 from tui import _Screen, _cw, _clip, _wrap, _enter, GLYPH, strip
+
+HANGUL = re.compile("[가-힣]")
 
 BACK, QUIT = "back", "quit"
 SAVE = __import__("os").path.expanduser("~/.config/adctox/last_input.json")      # entries of the run in progress; deleted once results are shown
@@ -239,7 +242,11 @@ class Form:
                 if mode == "symptom" and sym["busy"]: status = "증상으로 질환 찾는 중 ... (처음 한 번은 모델을 불러 10초 정도 걸립니다)"
                 if mode == "symptom" and sym["error"]: status = "검색 실패: " + sym["error"]
                 if mode == "symptom" and not sym["busy"] and sym["q"] == query.strip() and query.strip() and not sym["res"]: status = "맞는 질환을 찾지 못했습니다. 다르게 써 보거나 질환명으로 찾기를 쓰세요."
-                lw = max([_w(r[1][2]) for r in rows] + [10]); lw = min(lw, max(10, w // 2 - 6))
+                def two(kind, s):                                          # (main name, second name): the Korean name first when there is one
+                    a, b = s[2], (s[3] if kind == "s" and s[3] and s[3] != s[2] else "")
+                    if b and HANGUL.search(b) and not HANGUL.search(a) and not b.startswith("약어 "): a, b = b, a
+                    return a, b
+                lw = max([_w(two(r[0], r[1])[0]) for r in rows] + [10]); lw = min(lw, max(10, w // 2 - 6))
                 ow = 26
                 area = max(3, h - y - 3); top = max(0, min(cur - area // 2, len(rows) - area)); shown_sel_head = False
                 lines = []
@@ -253,15 +260,15 @@ class Form:
                 for r, l in enumerate(lines[top:top + area]):
                     yy = y + r
                     if l[0] == "head": self.S.put(yy, 2, l[1], self.S.title); continue
-                    k, kind, s, tag = l; on = k == cur; label = _clip(s[2], lw)
+                    k, kind, s, tag = l; on = k == cur; main, extra = two(kind, s); label = _clip(main, lw)
                     if kind == "raw": text = f"입력한 그대로 추가: {s[2]}"
                     elif kind == "split": text = s[2]
                     else:
-                        extra = s[3] if kind == "s" and s[3] and s[3] != s[2] else ""
-                        org = strip(RC.AXES, s[3] if kind == "sel" else s[4])
-                        ex = _clip(extra, 24)
+                        ax = s[3] if kind == "sel" else s[4]
+                        org = strip(RC.AXES, ax) if ax else "\033[90m" + ("13개 장기 밖" if s[0] in ("mondo", "reg") else "분석 때 판정") + "\033[0m"
+                        ex = _clip(extra, 28)
                         if kind == "sel": text = f"✓ {label}{' ' * (lw - _w(label))}   {org}"
-                        else: text = f"{label}{' ' * (lw - _w(label))}   {ex}{' ' * (24 - _w(ex))}  {org}" + (f"   \033[90m{tag}\033[0m" if tag else "")
+                        else: text = f"{label}{' ' * (lw - _w(label))}   \033[90m{ex}\033[0m{' ' * (28 - _w(ex))}  {org}" + (f"   \033[90m{tag}\033[0m" if tag else "")
                     self.row(yy, f" {'→' if on else ' '} {text}", on, k)
                 n = len(sel)
                 update_hint = "   Ctrl+U 모델 업데이트" if RC.HAS_LEARNED else ""
@@ -587,7 +594,7 @@ class Form:
             y0 = self.frame("AI 장기 분석 결과", "")
             h, w = self.scr.getmaxyx(); width = max(2, w - 5)
             duration = "cached" if self.analysis_cached else f"{elapsed:.1f} s"
-            self.S.put_ansi(y0, 2, f"{strip(RC.AXES, RC.AXES[:0])}   \033[32;1m■\033[0m 연결된 장기   \033[33m■\033[0m 학습 모델 추정   \033[90m{duration}\033[0m"); y0 += 2
+            self.S.put_ansi(y0, 2, f"\033[32;1m■\033[0m 연결된 장기   \033[33m■?\033[0m 학습 모델 추정   \033[90m{duration}\033[0m"); y0 += 2
             nw = min(28, max(_w(r["condition"]) for r in reports))
             lines = []
             for report in reports:

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.9 — Natural disease names and organ words
+
+- **Suggestions show the Korean name first:**
+  - The English MONDO name follows in grey, e.g. `당뇨 | Diabetes mellitus | 대사`.
+  - A HIRA KCD Korean name whose English name is a MONDO name or synonym now suggests that concept, with its organs.
+  - The same Korean name is shown once.
+  - KCD rows with code notes are dropped, e.g. `천식f54와j45이분류항목이쓰인예`. So are unlinked KCD names longer than 10 characters.
+- **Organs as short Korean words instead of the 13-initial strip:**
+  - e.g. `신장`, `대사`, `폐 면역`: green when linked, yellow with `?` when estimated.
+  - A row without organs says `13개 장기 밖` (a disease outside the 13 axes) or `분석 때 판정` (decided at analysis).
+- **Ranking:** a disease with a KCD Korean name ranks like a curated everyday disease, so `diabetes` lists diabetes mellitus before diabetes insipidus.
+- **Prepared for a later model bundle** (not released yet):
+  - The app can read a Gemma judge with four outputs (organs, validity, a SapBERT-space vector for Korean, symptom → disease).
+  - With models 0.5 nothing changes.
+
 ## 0.3.8 and models 0.5 — Gemma organ judge
 
 - **Gemma organ judge (`GemmaJudge/`):** a Jev-style decision model on Gemma 4 E2B (Apache-2.0).

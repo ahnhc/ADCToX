@@ -41,12 +41,17 @@ def cut_layers(model, L):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--tag", default="half"); ap.add_argument("--layers", type=int, default=18); ap.add_argument("--rank", type=int, default=16)
-    a = ap.parse_args(); src = P.CACHE + f"gemma_judge_{a.tag}/"; out = P.CACHE + "GemmaJudge/"; os.makedirs(out, exist_ok=True)
+    ap.add_argument("--v2", action="store_true", help="the four-output judge of ml/gemma_judge2.py"); ap.add_argument("--out", default=None)
+    a = ap.parse_args(); src = P.CACHE + (f"gemma_judge2_{a.tag}/" if a.v2 else f"gemma_judge_{a.tag}/"); out = (a.out or P.CACHE + "GemmaJudge").rstrip("/") + "/"; os.makedirs(out, exist_ok=True)
     from peft import LoraConfig, get_peft_model
     from safetensors.torch import save_file
     tok, lm, path = GJ.load_backbone(a.layers); lm.gradient_checkpointing_disable()
     lm = get_peft_model(lm, LoraConfig(r=a.rank, lora_alpha=2 * a.rank, lora_dropout=0.05, target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]))
-    judge = GJ.Judge(lm, lm.config.hidden_size); judge.load_state_dict(torch.load(src + "adapter_head.pt"), strict=False)
+    if a.v2:
+        import gemma_judge2 as GJ2; info = json.load(open(src + "info.json"))
+        judge = GJ2.Judge2(lm, lm.config.hidden_size, len(info["profiles"]))
+    else: judge = GJ.Judge(lm, lm.config.hidden_size)
+    judge.load_state_dict(torch.load(src + "adapter_head.pt"), strict=False)
     merged = judge.lm.merge_and_unload().float().eval(); head = judge.head.float()
     L = a.layers; cfg = merged.config
     texts = ["chronic kidney disease stage 3", "당뇨", "water on the lungs", "asd", "banana spaceship", "치매가 있어요"]
@@ -74,13 +79,17 @@ def main():
         if not any(k.startswith(x) for x in [n for n, m in cut.named_modules() if isinstance(m, (torch.nn.Linear, torch.nn.Embedding))]): W[k] = v.float()
     for n, b in cut.named_buffers(): W["buffer." + n] = b.float().clone()
     W["judge.head.weight"], W["judge.head.bias"] = head.weight.data.float(), head.bias.data.float()
+    extra = {}
+    if a.v2:                                                       # validity, SapBERT-space vector, symptom -> profile disease
+        for n in ("valid", "align", "sym"): W[f"judge.{n}.weight"], W[f"judge.{n}.bias"] = getattr(judge, n).weight.data.float(), getattr(judge, n).bias.data.float()
+        extra = dict(outputs=["organ", "valid", "align", "sym"], profiles=info["profiles"], vthr=float(np.load(src + "calibration.npz")["vthr"]))
     cal = np.load(src + "calibration.npz")
     for f in os.listdir(out):
         if f.startswith("weights"): os.remove(out + f)
     ple = {k: v.contiguous() for k, v in W.items() if k.startswith("embed_tokens_per_layer.")}     # two files: a GitHub release file must be < 2 GiB
     save_file(ple, out + "weights-1.safetensors"); save_file({k: v.contiguous() for k, v in W.items() if k not in ple}, out + "weights-2.safetensors")
     json.dump(dict(prompt=GJ.PROMPT, temp=cal["temp"].tolist(), thr=cal["thr"].tolist(), embed_scale=scales, layers=L, config_layers=35, backbone=GJ.GEMMA, revision=GJ.REV,
-                   licence="Gemma 4: Apache-2.0"), open(out + "judge.json", "w"), indent=1, ensure_ascii=False)
+                   licence="Gemma 4: Apache-2.0", **extra), open(out + "judge.json", "w"), indent=1, ensure_ascii=False)
     size = sum(os.path.getsize(out + f) for f in os.listdir(out) if f.startswith("weights")); print("written", out, round(size / 1e9, 2), "GB", flush=True)
     # quantized vs float decisions
     Q = json.load(open(EL.D + "raw/queries_v0.json")); qs = [q["query"] for q in Q]

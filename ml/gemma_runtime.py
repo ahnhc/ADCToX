@@ -14,6 +14,7 @@ import numpy as np
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular", "dermatologic",
         "metabolic_endocrine", "musculoskeletal", "infectious_immune", "otologic"]
 _M = {}
+_X = {}                                                                 # the extra outputs of a four-output judge (models 0.6+)
 _LOCK = threading.Lock()
 
 
@@ -127,20 +128,47 @@ def load(path=None):
         model.eval()
         tok = T.AutoTokenizer.from_pretrained(path); tok.padding_side = "right"
         head = (W["judge.head.weight"].float(), W["judge.head.bias"].float(), np.array(J["temp"], np.float32), np.array(J["thr"], np.float32), J["prompt"])
+        _X[path] = {n: (W[f"judge.{n}.weight"].float(), W[f"judge.{n}.bias"].float()) for n in ("valid", "align", "sym") if f"judge.{n}.weight" in W}
+        _X[path]["info"] = dict(vthr=J.get("vthr"), profiles=J.get("profiles", []))
         _M[path] = (tok, model, head)
         return _M[path]
 
 
-def probs(texts, path=None):
-    """-> array (texts x 13) of calibrated organ probabilities."""
+def _last(texts, path):
     import torch
-    tok, model, (hw, hb, temp, thr, prompt) = load(path)
-    enc = tok([prompt.format(t) for t in texts], return_tensors="pt", padding=True, truncation=True, max_length=48)
+    tok, model, head = load(path)
+    enc = tok([head[4].format(t) for t in texts], return_tensors="pt", padding=True, truncation=True, max_length=64 if has_extra(path) else 48)
     with _LOCK, torch.no_grad():
         h = model(input_ids=enc["input_ids"], attention_mask=enc["attention_mask"]).last_hidden_state
-    last = enc["attention_mask"].sum(1) - 1
-    z = (h[torch.arange(len(texts)), last].float() @ hw.T + hb).numpy()
+    return h[torch.arange(len(texts)), enc["attention_mask"].sum(1) - 1].float()
+
+
+def has_extra(path=None):
+    """whether the judge also gives validity, a SapBERT-space vector and symptom -> profile scores."""
+    path = path or folder()
+    if path is None: return False
+    try: return "align" in json.load(open(os.path.join(path, "judge.json"))).get("outputs", [])     # without loading the model
+    except (OSError, ValueError): return False
+
+
+def probs(texts, path=None):
+    """-> array (texts x 13) of calibrated organ probabilities."""
+    _, _, (hw, hb, temp, thr, prompt) = load(path)
+    z = (_last(texts, path) @ hw.T + hb).numpy()
     return 1 / (1 + np.exp(-z / temp))
+
+
+def outputs(texts, path=None):
+    """-> dict organ (n x 13 probabilities), and with a four-output judge: valid (n, probability of a real input), valid_ok
+    (n bools), vec (n x 768, unit vectors in SapBERT space), sym (n x profiles probabilities), profiles (ids)."""
+    import torch
+    path = path or folder(); _, _, (hw, hb, temp, thr, prompt) = load(path); h = _last(texts, path); X = _X.get(path, {})
+    out = dict(organ=1 / (1 + np.exp(-(h @ hw.T + hb).numpy() / temp)))
+    if "align" in X:
+        v = 1 / (1 + np.exp(-(h @ X["valid"][0].T + X["valid"][1]).numpy()[:, 0])); out.update(valid=v, valid_ok=v >= X["info"]["vthr"])
+        out["vec"] = torch.nn.functional.normalize(h @ X["align"][0].T + X["align"][1], dim=-1).numpy()
+        out["sym"] = torch.softmax(h @ X["sym"][0].T + X["sym"][1], -1).numpy(); out["profiles"] = X["info"]["profiles"]
+    return out
 
 
 def judge(texts, path=None):
