@@ -1,0 +1,2062 @@
+[
+{
+"id": "MONDO:0021386",
+"name": "neoplasm of mediastinum",
+"syn": [
+"mediastinal neoplasm",
+"mediastinal tumor",
+"mediastinal tumour"
+],
+"parent": "neoplasm of thorax",
+"defn": "A neoplasm (disease) that involves the mediastinum."
+},
+{
+"id": "MONDO:0021388",
+"name": "neoplasm of chest wall",
+"syn": [
+"chest wall neoplasm",
+"chest wall neoplasm (disease)",
+"chest wall tumor"
+],
+"parent": "neoplasm of thorax",
+"defn": "A neoplasm (disease) that involves the chest wall."
+},
+{
+"id": "MONDO:0021389",
+"name": "neoplasm of aortic body",
+"syn": [
+"aortic body neoplasm",
+"aortic body neoplasm (disease)",
+"aortic body paraganglioma"
+],
+"parent": "aortic disorder",
+"defn": "A benign or malignant extra-adrenal parasympathetic paraganglioma that arises from paraganglia adjacent to the base of the heart and great vessels."
+},
+{
+"id": "MONDO:0021390",
+"name": "polyp of ureter",
+"syn": [
+"polyp of the ureter",
+"ureter polyp",
+"ureteral polyp"
+],
+"parent": "polyp",
+"defn": "A polyp that involves the ureter."
+},
+{
+"id": "MONDO:0021392",
+"name": "polyp of large intestine",
+"syn": [
+"colorectal polyp",
+"large bowel polyp",
+"large intestine polyp"
+],
+"parent": "polyp",
+"defn": "A polyp that involves the large intestine."
+},
+{
+"id": "MONDO:0021394",
+"name": "polyp of vagina",
+"syn": [
+"polyp of the vagina",
+"polyp, vaginal, benign",
+"vagina polyp"
+],
+"parent": "vaginal disorder",
+"defn": "A polyp that involves the vagina."
+},
+{
+"id": "MONDO:0021396",
+"name": "polyp of vulva",
+"syn": [
+"mammalian vulva polyp",
+"polyp of the vulva",
+"vulva polyp"
+],
+"parent": "female reproductive system disorder",
+"defn": "A polyp that involves the mammalian vulva."
+},
+{
+"id": "MONDO:0021398",
+"name": "polyp of rectum",
+"syn": [
+"polyp of the rectum",
+"rectal polyp",
+"rectum polyp"
+],
+"parent": "rectal disorder",
+"defn": "A polyp that involves the rectum."
+},
+{
+"id": "MONDO:0021400",
+"name": "polyp of colon",
+"syn": [
+"colon polyp",
+"colonic polyp",
+"polyp of the colon"
+],
+"parent": "colonic disorder",
+"defn": "A polyp that involves the colon."
+},
+{
+"id": "MONDO:0021402",
+"name": "polyp of external auditory canal",
+"syn": [
+"external acoustic meatus polyp",
+"external auditory canal polyp",
+"external Ear polyp"
+],
+"parent": "polyp",
+"defn": "A polyp that involves the external acoustic meatus."
+},
+{
+"id": "MONDO:0021404",
+"name": "polyp of sphenoidal sinus",
+"syn": [
+"polyp of sphenoid sinus",
+"polyp of the sphenoid sinus",
+"polyp of the sphenoidal sinus"
+],
+"parent": "paranasal sinus disorder",
+"defn": "A polyp that involves the sphenoidal sinus."
+},
+{
+"id": "MONDO:0021408",
+"name": "polyp of frontal sinus",
+"syn": [
+"frontal sinus polyp",
+"polyp of the frontal sinus"
+],
+"parent": "paranasal sinus disorder",
+"defn": "A polyp that involves the frontal sinus."
+},
+{
+"id": "MONDO:0021412",
+"name": "polyp of maxillary sinus",
+"syn": [
+"maxillary antral polyp",
+"maxillary sinus polyp",
+"polyp of the maxillary sinus"
+],
+"parent": "paranasal sinus disorder",
+"defn": "A polyp that involves the maxillary sinus."
+},
+{
+"id": "MONDO:0021416",
+"name": "polyp of gallbladder",
+"syn": [
+"gall bladder polyp",
+"gallbladder polyp",
+"polyp of the gallbladder"
+],
+"parent": "polyp",
+"defn": "A polyp that involves the gall bladder."
+},
+{
+"id": "MONDO:0021418",
+"name": "polyp of ethmoidal sinus",
+"syn": [
+"ethmoid sinus polyp",
+"ethmoidal polyp",
+"ethmoidal sinus polyp"
+],
+"parent": "paranasal sinus disorder",
+"defn": "A polyp that involves the ethmoid sinus."
+},
+{
+"id": "MONDO:0021420",
+"name": "polyp of vocal cord",
+"syn": [
+"laryngeal vocal fold polyp",
+"polyp of the vocal cord",
+"vocal cord polyp"
+],
+"parent": "laryngeal disorder",
+"defn": "A non-neoplastic polypoid swelling of the vocal cord mucosa. It is usually unilateral and caused by excessive use of the voice."
+},
+{
+"id": "MONDO:0021424",
+"name": "hemangiopericytoma of skin",
+"syn": [
+"hemangiopericytoma of the skin",
+"skin hemangiopericytoma",
+"zone of skin hemangiopericytoma"
+],
+"parent": "skin neoplasm",
+"defn": "A hemangiopericytoma that involves the zone of skin."
+},
+{
+"id": "MONDO:0021427",
+"name": "squamous cell carcinoma of lip",
+"syn": [
+"lip scc",
+"lip squamous cell carcinoma",
+"scc of Lip"
+],
+"parent": "oral cavity squamous cell carcinoma",
+"defn": "A squamous cell carcinoma that involves the lip."
+},
+{
+"id": "MONDO:0021429",
+"name": "squamous cell carcinoma of floor of mouth",
+"syn": [
+"floor of mouth scc",
+"floor of mouth squamous cell carcinoma",
+"mouth floor squamous cell carcinoma"
+],
+"parent": "oral cavity squamous cell carcinoma",
+"defn": "A squamous cell carcinoma that involves the mouth floor."
+},
+{
+"id": "MONDO:0021431",
+"name": "squamous cell carcinoma of buccal mucosa",
+"syn": [
+"buccal mucosa squamous cell carcinoma",
+"scc of buccal mucosa",
+"scc of the buccal mucosa"
+],
+"parent": "cheek mucosa cancer",
+"defn": "A squamous cell carcinoma that involves the buccal mucosa."
+},
+{
+"id": "MONDO:0021437",
+"name": "lipoma of stomach",
+"syn": [
+"gastric lipoma",
+"lipoma of the stomach",
+"stomach lipoma"
+],
+"parent": "lipoma",
+"defn": "A lipoma that involves the stomach."
+},
+{
+"id": "MONDO:0021439",
+"name": "benign neoplasm of pituitary gland",
+"syn": [
+"benign neoplasm of pituitary",
+"benign neoplasm of the pituitary",
+"benign neoplasm of the pituitary gland"
+],
+"parent": "benign reproductive system neoplasm",
+"defn": "A benign neoplasm that involves the pituitary gland."
+},
+{
+"id": "MONDO:0021440",
+"name": "benign neoplasm of skin",
+"syn": [
+"benign cutaneous neoplasm",
+"benign cutaneous tumor",
+"benign cutaneous tumour"
+],
+"parent": "integumentary system benign neoplasm",
+"defn": "A benign neoplasm that involves the zone of skin."
+},
+{
+"id": "MONDO:0021441",
+"name": "benign neoplasm of exocrine pancreas",
+"syn": [
+"benign exocrine pancreas tumor",
+"benign exocrine pancreas tumour",
+"benign exocrine pancreatic neoplasm"
+],
+"parent": "pancreatic exocrine neoplasm",
+"defn": "A benign neoplasm that involves the exocrine pancreas."
+},
+{
+"id": "MONDO:0021443",
+"name": "benign neoplasm of lymph node",
+"syn": [
+"benign lymph node neoplasm",
+"benign lymph node tumor",
+"benign lymph node tumour"
+],
+"parent": "immune system organ benign neoplasm",
+"defn": "A benign neoplasm that involves the lymph node."
+},
+{
+"id": "MONDO:0021444",
+"name": "benign neoplasm of large intestine",
+"syn": [
+"benign colorectal neoplasm",
+"benign colorectal neoplasms",
+"benign colorectal tumor"
+],
+"parent": "intestinal benign neoplasm",
+"defn": "A benign neoplasm that involves the large intestine."
+},
+{
+"id": "MONDO:0021445",
+"name": "benign neoplasm of oral cavity",
+"syn": [
+"benign mouth neoplasm",
+"benign mouth tumor",
+"benign mouth tumour"
+],
+"parent": "benign neoplasm",
+"defn": "A benign neoplasm that involves the oral cavity."
+},
+{
+"id": "MONDO:0021446",
+"name": "benign neoplasm of epiglottis",
+"syn": [
+"benign epiglottic neoplasm",
+"benign epiglottic tumor",
+"benign epiglottic tumour"
+],
+"parent": "benign laryngeal neoplasm",
+"defn": "A benign neoplasm that involves the epiglottis."
+},
+{
+"id": "MONDO:0021447",
+"name": "benign neoplasm of testis",
+"syn": [
+"benign neoplasm of the testis",
+"benign testicular neoplasm",
+"benign testicular tumor"
+],
+"parent": "benign male reproductive system neoplasm",
+"defn": "A benign neoplasm that involves the testis."
+},
+{
+"id": "MONDO:0021449",
+"name": "benign neoplasm of stomach",
+"syn": [
+"benign gastric neoplasm",
+"benign gastric tumor",
+"benign gastric tumors"
+],
+"parent": "benign digestive system neoplasm",
+"defn": "A benign neoplasm that involves the stomach."
+},
+{
+"id": "MONDO:0021450",
+"name": "benign neoplasm of heart",
+"syn": [
+"benign Cardiac neoplasm",
+"benign Cardiac tumor",
+"benign Cardiac tumour"
+],
+"parent": "cardiovascular organ benign neoplasm",
+"defn": "A benign neoplasm that involves the heart."
+},
+{
+"id": "MONDO:0021451",
+"name": "benign neoplasm of brain",
+"syn": [
+"benign brain neoplasm",
+"benign brain tumor",
+"benign brain tumour"
+],
+"parent": "central nervous system organ benign neoplasm",
+"defn": "A benign neoplasm that involves the brain."
+},
+{
+"id": "MONDO:0021452",
+"name": "benign neoplasm of cornea",
+"syn": [
+"benign cornea neoplasm",
+"benign cornea tumor",
+"benign cornea tumour"
+],
+"parent": "cornea neoplasm",
+"defn": "A benign neoplasm that involves the cornea."
+},
+{
+"id": "MONDO:0021453",
+"name": "benign neoplasm of retina",
+"syn": [
+"benign neoplasm of the retina",
+"benign retina neoplasm",
+"benign retina tumor"
+],
+"parent": "retina neoplasm",
+"defn": "A benign neoplasm that involves the retina."
+},
+{
+"id": "MONDO:0021454",
+"name": "benign neoplasm of eye",
+"syn": [
+"benign eye neoplasm",
+"benign eye tumor",
+"benign eye tumour"
+],
+"parent": "sensory organ benign neoplasm",
+"defn": "A benign neoplasm that involves the eye."
+},
+{
+"id": "MONDO:0021455",
+"name": "benign neoplasm of neck",
+"syn": [
+"benign neck neoplasm",
+"benign neck tumor",
+"benign neck tumour"
+],
+"parent": "benign neoplasm",
+"defn": "A benign neoplasm that involves the neck."
+},
+{
+"id": "MONDO:0021456",
+"name": "benign neoplasm of sternum",
+"syn": [
+"benign neoplasm of the sternum",
+"benign sternal neoplasm",
+"benign sternal tumor"
+],
+"parent": "thoracic benign neoplasm",
+"defn": "A benign neoplasm that involves the sternum."
+},
+{
+"id": "MONDO:0021457",
+"name": "benign neoplasm of pleura",
+"syn": [
+"benign neoplasm of the pleura",
+"benign pleural neoplasm",
+"benign pleural tumor"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A benign neoplasm that involves the pleura."
+},
+{
+"id": "MONDO:0021458",
+"name": "benign neoplasm of penis",
+"syn": [
+"benign neoplasm of the penis",
+"benign penile neoplasm",
+"benign penile tumor"
+],
+"parent": "benign male reproductive system neoplasm",
+"defn": "A benign neoplasm that involves the penis."
+},
+{
+"id": "MONDO:0021459",
+"name": "benign neoplasm of esophagus",
+"syn": [
+"benign esophageal neoplasm",
+"benign esophageal tumor",
+"benign esophageal tumour"
+],
+"parent": "benign digestive system neoplasm",
+"defn": "A benign neoplasm that involves the esophagus."
+},
+{
+"id": "MONDO:0021460",
+"name": "benign neoplasm of salivary gland",
+"syn": [
+"benign neoplasm of the salivary gland",
+"benign salivary gland neoplasm",
+"benign salivary gland tumor"
+],
+"parent": "benign neoplasm",
+"defn": "A benign neoplasm that involves the saliva-secreting gland."
+},
+{
+"id": "MONDO:0021461",
+"name": "benign neoplasm of hypopharynx",
+"syn": [
+"benign hypopharyngeal neoplasm",
+"benign hypopharyngeal tumor",
+"benign hypopharyngeal tumour"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A benign neoplasm that involves the hypopharynx."
+},
+{
+"id": "MONDO:0021462",
+"name": "benign neoplasm of rectum",
+"syn": [
+"benign neoplasm of the rectum",
+"benign rectal neoplasm",
+"benign rectal neoplasms"
+],
+"parent": "rectal neoplasm",
+"defn": "A benign neoplasm that involves the rectum."
+},
+{
+"id": "MONDO:0021463",
+"name": "benign neoplasm of parathyroid gland",
+"syn": [
+"benign neoplasm of parathyroid",
+"benign neoplasm of the parathyroid",
+"benign neoplasm of the parathyroid gland"
+],
+"parent": "benign endocrine neoplasm",
+"defn": "A benign neoplasm that involves the parathyroid gland."
+},
+{
+"id": "MONDO:0021464",
+"name": "benign neoplasm of cecum",
+"syn": [
+"benign cecum neoplasm",
+"benign cecum tumor",
+"benign cecum tumour"
+],
+"parent": "benign colon neoplasm",
+"defn": "A benign neoplasm that involves the caecum."
+},
+{
+"id": "MONDO:0021465",
+"name": "benign neoplasm of appendix",
+"syn": [
+"benign appendix neoplasm",
+"benign appendix tumor",
+"benign appendix tumour"
+],
+"parent": "appendiceal neoplasm",
+"defn": "A benign neoplasm that involves the vermiform appendix."
+},
+{
+"id": "MONDO:0021467",
+"name": "benign neoplasm of renal pelvis",
+"syn": [
+"benign kidney pelvis neoplasm",
+"benign neoplasm of the renal pelvis",
+"benign renal pelvis neoplasm"
+],
+"parent": "kidney benign neoplasm",
+"defn": "A benign neoplasm that involves the renal pelvis."
+},
+{
+"id": "MONDO:0021468",
+"name": "benign neoplasm of adrenal medulla",
+"syn": [
+"adrenal medulla benign neoplasm",
+"benign adrenal medulla neoplasm",
+"benign adrenal medulla tumor"
+],
+"parent": "adrenal medulla neoplasm",
+"defn": "A benign neoplasm that involves the adrenal medulla."
+},
+{
+"id": "MONDO:0021469",
+"name": "benign neoplasm of anus",
+"syn": [
+"anus benign neoplasm",
+"benign anal neoplasm",
+"benign anal tumor"
+],
+"parent": "anus neoplasm",
+"defn": "A benign neoplasm that involves the anus."
+},
+{
+"id": "MONDO:0021470",
+"name": "benign neoplasm of pancreas",
+"syn": [
+"benign neoplasm of the pancreas",
+"benign pancreas neoplasm",
+"benign pancreas tumor"
+],
+"parent": "benign digestive system neoplasm",
+"defn": "A benign neoplasm that involves the pancreas."
+},
+{
+"id": "MONDO:0021471",
+"name": "benign neoplasm of endometrium",
+"syn": [
+"benign endometrial neoplasm",
+"benign endometrial tumor",
+"benign endometrial tumour"
+],
+"parent": "uterine benign neoplasm",
+"defn": "A benign neoplasm that involves the endometrium."
+},
+{
+"id": "MONDO:0021472",
+"name": "benign neoplasm of scrotum",
+"syn": [
+"benign neoplasm of the scrotum",
+"benign scrotal neoplasm",
+"benign scrotal tumor"
+],
+"parent": "benign male reproductive system neoplasm",
+"defn": "A benign neoplasm that involves the scrotum."
+},
+{
+"id": "MONDO:0021473",
+"name": "benign neoplasm of epididymis",
+"syn": [
+"benign epididymal neoplasm",
+"benign epididymal tumor",
+"benign epididymal tumour"
+],
+"parent": "benign male reproductive system neoplasm",
+"defn": "A benign neoplasm that involves the epididymis."
+},
+{
+"id": "MONDO:0021474",
+"name": "benign neoplasm of ear",
+"syn": [
+"aural neoplasms, benign",
+"benign Ear neoplasm",
+"benign Ear tumor"
+],
+"parent": "sensory organ benign neoplasm",
+"defn": "A benign neoplasm that involves the ear."
+},
+{
+"id": "MONDO:0021475",
+"name": "benign neoplasm of nasal cavity",
+"syn": [
+"benign nasal cavity neoplasm",
+"benign nasal cavity tumor",
+"benign nasal cavity tumour"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A benign neoplasm that involves the nasal cavity."
+},
+{
+"id": "MONDO:0021476",
+"name": "benign neoplasm of tongue",
+"syn": [
+"benign neoplasm of the tongue",
+"benign tongue neoplasm",
+"benign tongue tumor"
+],
+"parent": "sensory organ benign neoplasm",
+"defn": "A benign neoplasm that involves the tongue."
+},
+{
+"id": "MONDO:0021477",
+"name": "benign neoplasm of sphenoidal sinus",
+"syn": [
+"benign neoplasm of sphenoid sinus",
+"benign neoplasm of the sphenoid sinus",
+"benign neoplasm of the sphenoidal sinus"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A non-metastasizing neoplasm that arises from the sphenoid sinus."
+},
+{
+"id": "MONDO:0021478",
+"name": "benign neoplasm of nasopharynx",
+"syn": [
+"benign nasopharyngeal neoplasm",
+"benign nasopharyngeal tumor",
+"benign nasopharyngeal tumour"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A benign neoplasm that involves the nasopharynx."
+},
+{
+"id": "MONDO:0021479",
+"name": "benign neoplasm of oropharynx",
+"syn": [
+"benign neoplasm of the oropharynx",
+"benign oropharyngeal neoplasm",
+"benign oropharyngeal tumor"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A benign neoplasm that involves the oropharynx."
+},
+{
+"id": "MONDO:0021480",
+"name": "benign neoplasm of soft palate",
+"syn": [
+"benign neoplasm of the soft palate",
+"benign soft palate neoplasm",
+"benign soft palate tumor"
+],
+"parent": "palatal neoplasm",
+"defn": "A benign neoplasm that involves the soft palate."
+},
+{
+"id": "MONDO:0021481",
+"name": "benign neoplasm of submandibular gland",
+"syn": [
+"benign neoplasm of the submandibular gland",
+"benign submandibular gland neoplasm",
+"benign submandibular gland tumor"
+],
+"parent": "submandibular gland neoplasm",
+"defn": "A benign neoplasm that involves the submandibular gland."
+},
+{
+"id": "MONDO:0021482",
+"name": "benign neoplasm of middle ear",
+"syn": [
+"benign middle Ear neoplasm",
+"benign middle Ear tumor",
+"benign middle Ear tumour"
+],
+"parent": "neoplasm of middle ear",
+"defn": "A benign neoplasm that involves the middle ear."
+},
+{
+"id": "MONDO:0021483",
+"name": "benign neoplasm of frontal sinus",
+"syn": [
+"benign frontal sinus neoplasm",
+"benign frontal sinus tumor",
+"benign frontal sinus tumour"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A benign neoplasm that involves the frontal sinus."
+},
+{
+"id": "MONDO:0021484",
+"name": "benign neoplasm of maxillary sinus",
+"syn": [
+"benign maxillary antrum neoplasm",
+"benign maxillary antrum tumor",
+"benign maxillary antrum tumour"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A benign neoplasm that involves the maxillary sinus."
+},
+{
+"id": "MONDO:0021485",
+"name": "benign neoplasm of iris",
+"syn": [
+"benign iris neoplasm",
+"benign iris tumor",
+"benign iris tumour"
+],
+"parent": "iris neoplasm",
+"defn": "A benign neoplasm that involves the iris."
+},
+{
+"id": "MONDO:0021486",
+"name": "benign neoplasm of ciliary body",
+"syn": [
+"benign ciliary body neoplasm",
+"benign ciliary body tumor",
+"benign ciliary body tumour"
+],
+"parent": "ciliary body neoplasm",
+"defn": "A benign neoplasm that involves the ciliary body."
+},
+{
+"id": "MONDO:0021487",
+"name": "benign neoplasm of choroid",
+"syn": [
+"benign choroid neoplasm",
+"benign choroid tumor",
+"benign choroid tumour"
+],
+"parent": "cardiovascular organ benign neoplasm",
+"defn": "A benign neoplasm that involves the optic choroid."
+},
+{
+"id": "MONDO:0021488",
+"name": "benign neoplasm of lacrimal gland",
+"syn": [
+"benign lacrimal gland neoplasm",
+"benign lacrimal gland tumor",
+"benign lacrimal gland tumour"
+],
+"parent": "lacrimal gland neoplasm",
+"defn": "A benign neoplasm that involves the lacrimal gland."
+},
+{
+"id": "MONDO:0021489",
+"name": "benign neoplasm of sweat gland",
+"syn": [
+"benign neoplasm of the sweat gland",
+"benign sweat gland neoplasm",
+"benign sweat gland tumor"
+],
+"parent": "sweat gland neoplasm",
+"defn": "A benign neoplasm that involves the sweat gland."
+},
+{
+"id": "MONDO:0021490",
+"name": "benign neoplasm of sebaceous gland",
+"syn": [
+"benign neoplasm of the sebaceous gland",
+"benign sebaceous gland neoplasm",
+"benign sebaceous gland tumor"
+],
+"parent": "sebaceous gland neoplasm",
+"defn": "A benign neoplasm that involves the sebaceous gland."
+},
+{
+"id": "MONDO:0021491",
+"name": "benign neoplasm of gum",
+"syn": [
+"benign gingival neoplasm",
+"benign gingival tumor",
+"benign gingival tumour"
+],
+"parent": "musculoskeletal system benign neoplasm",
+"defn": "A benign neoplasm that involves the gingiva."
+},
+{
+"id": "MONDO:0021492",
+"name": "benign neoplasm of major salivary gland",
+"syn": [
+"benign Major salivary gland neoplasm",
+"benign Major salivary gland tumor",
+"benign Major salivary gland tumour"
+],
+"parent": "neoplasm of major salivary gland",
+"defn": "A benign neoplasm that involves the major salivary gland."
+},
+{
+"id": "MONDO:0021493",
+"name": "benign neoplasm of minor salivary gland",
+"syn": [
+"benign minor salivary gland neoplasm",
+"benign minor salivary gland tumor",
+"benign minor salivary gland tumour"
+],
+"parent": "neoplasm of minor salivary gland",
+"defn": "A benign neoplasm that involves the minor salivary gland."
+},
+{
+"id": "MONDO:0021494",
+"name": "benign neoplasm of parotid gland",
+"syn": [
+"benign neoplasm of parotid",
+"benign neoplasm of the parotid",
+"benign neoplasm of the parotid gland"
+],
+"parent": "parotid gland neoplasm",
+"defn": "A benign neoplasm that involves the parotid gland."
+},
+{
+"id": "MONDO:0021495",
+"name": "benign neoplasm of sublingual gland",
+"syn": [
+"benign neoplasm of the sublingual gland",
+"benign sublingual gland neoplasm",
+"benign sublingual gland tumor"
+],
+"parent": "sublingual gland neoplasm",
+"defn": "A benign neoplasm that involves the sublingual gland."
+},
+{
+"id": "MONDO:0021496",
+"name": "benign neoplasm of lip",
+"syn": [
+"benign Lip neoplasm",
+"benign Lip tumor",
+"benign Lip tumour"
+],
+"parent": "benign neoplasm",
+"defn": "A benign neoplasm that involves the lip."
+},
+{
+"id": "MONDO:0021497",
+"name": "benign neoplasm of cerebrum",
+"syn": [
+"benign cerebral hemispheric neoplasm",
+"benign cerebral hemispheric tumor",
+"benign cerebral hemispheric tumour"
+],
+"parent": "neoplasm of cerebral hemisphere",
+"defn": "A benign neoplasm that involves the telencephalon."
+},
+{
+"id": "MONDO:0021498",
+"name": "benign neoplasm of placenta",
+"syn": [
+"benign neoplasm of the placenta",
+"benign placenta neoplasm",
+"benign placenta tumor"
+],
+"parent": "uterine benign neoplasm",
+"defn": "A benign neoplasm that involves the placenta."
+},
+{
+"id": "MONDO:0021499",
+"name": "benign neoplasm of cerebellum",
+"syn": [
+"benign cerebellar neoplasm",
+"benign cerebellar neoplasms",
+"benign cerebellar tumor"
+],
+"parent": "cerebellar neoplasm",
+"defn": "A benign neoplasm that involves the cerebellum."
+},
+{
+"id": "MONDO:0021500",
+"name": "benign neoplasm of spleen",
+"syn": [
+"benign neoplasm of the spleen",
+"benign splenic neoplasm",
+"spleen benign neoplasm"
+],
+"parent": "immune system organ benign neoplasm",
+"defn": "A benign neoplasm that involves the spleen."
+},
+{
+"id": "MONDO:0021501",
+"name": "benign neoplasm of small intestine",
+"syn": [
+"benign neoplasm of the small intestine",
+"benign small intestinal neoplasm",
+"benign small intestinal tumor"
+],
+"parent": "intestinal benign neoplasm",
+"defn": "A benign neoplasm that involves the small intestine."
+},
+{
+"id": "MONDO:0021503",
+"name": "benign neoplasm of gallbladder",
+"syn": [
+"benign gallbladder neoplasm",
+"benign gallbladder tumor",
+"benign gallbladder tumour"
+],
+"parent": "benign digestive system neoplasm",
+"defn": "A benign neoplasm that involves the gall bladder."
+},
+{
+"id": "MONDO:0021505",
+"name": "benign neoplasm of endocardium",
+"syn": [
+"benign endocardial neoplasm",
+"benign endocardial tumor",
+"benign endocardial tumour"
+],
+"parent": "neoplasm of endocardium",
+"defn": "A benign neoplasm that involves the endocardium."
+},
+{
+"id": "MONDO:0021506",
+"name": "benign neoplasm of spinal cord",
+"syn": [
+"benign neoplasm of the spinal cord",
+"benign spinal cord neoplasm",
+"benign spinal cord tumor"
+],
+"parent": "central nervous system organ benign neoplasm",
+"defn": "A benign neoplasm that involves the spinal cord."
+},
+{
+"id": "MONDO:0021507",
+"name": "benign neoplasm of brain stem",
+"syn": [
+"benign brain stem neoplasm",
+"benign brain stem neoplasms",
+"benign brain stem tumor"
+],
+"parent": "brainstem neoplasm",
+"defn": "A benign neoplasm that involves the brainstem."
+},
+{
+"id": "MONDO:0021508",
+"name": "benign neoplasm of epicardium",
+"syn": [
+"benign epicardial neoplasm",
+"benign epicardial tumor",
+"benign epicardial tumour"
+],
+"parent": "neoplasm of epicardium",
+"defn": "A benign neoplasm that involves the epicardium."
+},
+{
+"id": "MONDO:0021509",
+"name": "benign neoplasm of myocardium",
+"syn": [
+"benign myocardial neoplasm",
+"benign myocardial tumor",
+"benign myocardial tumour"
+],
+"parent": "neoplasm of myocardium",
+"defn": "A benign neoplasm that involves the myocardium."
+},
+{
+"id": "MONDO:0021510",
+"name": "benign neoplasm of prostate",
+"syn": [
+"benign neoplasm of the prostate",
+"benign prostate neoplasm",
+"benign prostate tumor"
+],
+"parent": "benign male reproductive system neoplasm",
+"defn": "A benign neoplasm that involves the prostate gland."
+},
+{
+"id": "MONDO:0021511",
+"name": "benign neoplasm of adrenal gland",
+"syn": [
+"adrenal gland benign neoplasm",
+"benign adrenal gland neoplasm",
+"benign adrenal gland tumor"
+],
+"parent": "benign endocrine neoplasm",
+"defn": "A benign neoplasm that involves the adrenal gland."
+},
+{
+"id": "MONDO:0021512",
+"name": "benign neoplasm of thymus",
+"syn": [
+"benign neoplasm of the Thymus",
+"benign thymic neoplasm",
+"benign thymic tumor"
+],
+"parent": "benign endocrine neoplasm",
+"defn": "A benign neoplasm that involves the thymus."
+},
+{
+"id": "MONDO:0021513",
+"name": "benign neoplasm of tonsil",
+"syn": [
+"benign neoplasm of the tonsil",
+"benign tonsil neoplasm",
+"benign tonsil tumor"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A benign neoplasm that involves the tonsil."
+},
+{
+"id": "MONDO:0021514",
+"name": "benign neoplasm of pericardium",
+"syn": [
+"benign neoplasm of the pericardium",
+"benign pericardial neoplasm",
+"benign pericardial tumor"
+],
+"parent": "cardiovascular organ benign neoplasm",
+"defn": "A benign neoplasm that involves the pericardium."
+},
+{
+"id": "MONDO:0021515",
+"name": "benign neoplasm of ethmoidal sinus",
+"syn": [
+"benign ethmoid sinus neoplasm",
+"benign ethmoid sinus tumor",
+"benign ethmoid sinus tumour"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A benign neoplasm that involves the ethmoid sinus."
+},
+{
+"id": "MONDO:0021516",
+"name": "benign neoplasm of glottis",
+"syn": [
+"benign glottis neoplasm",
+"benign glottis tumor",
+"benign glottis tumour"
+],
+"parent": "glottis neoplasm",
+"defn": "A benign neoplasm that involves the glottis."
+},
+{
+"id": "MONDO:0021517",
+"name": "benign neoplasm of trachea",
+"syn": [
+"benign neoplasm of the trachea",
+"benign trachea neoplasm",
+"benign trachea tumor"
+],
+"parent": "respiratory system benign neoplasm",
+"defn": "A benign neoplasm that involves the trachea."
+},
+{
+"id": "MONDO:0021518",
+"name": "benign neoplasm of hard palate",
+"syn": [
+"benign hard palate neoplasm",
+"benign hard palate tumor",
+"benign hard palate tumour"
+],
+"parent": "palatal neoplasm",
+"defn": "A benign neoplasm that involves the hard palate."
+},
+{
+"id": "MONDO:0021520",
+"name": "benign neoplasm of floor of mouth",
+"syn": [
+"benign floor of mouth neoplasm",
+"benign floor of mouth tumor",
+"benign floor of mouth tumour"
+],
+"parent": "benign neoplasm",
+"defn": "A benign neoplasm that involves the mouth floor."
+},
+{
+"id": "MONDO:0021521",
+"name": "benign neoplasm of mediastinum",
+"syn": [
+"benign mediastinal neoplasm",
+"benign mediastinal tumor",
+"benign mediastinal tumour"
+],
+"parent": "thoracic benign neoplasm",
+"defn": "A benign neoplasm that involves the mediastinum."
+},
+{
+"id": "MONDO:0021522",
+"name": "benign neoplasm of lower jaw bone",
+"syn": [
+"bone of lower jaw benign neoplasm"
+],
+"parent": "bone benign neoplasm",
+"defn": "A benign neoplasm that involves the bone of lower jaw."
+},
+{
+"id": "MONDO:0021523",
+"name": "benign neoplasm of pharynx",
+"syn": [
+"benign neoplasm of the pharynx",
+"benign pharyngeal neoplasm",
+"benign pharyngeal tumor"
+],
+"parent": "benign neoplasm",
+"defn": "A benign neoplasm that involves the pharynx."
+},
+{
+"id": "MONDO:0021524",
+"name": "benign neoplasm of buccal mucosa",
+"syn": [
+"benign buccal mucosa neoplasm",
+"benign buccal mucosa tumor",
+"benign buccal mucosa tumour"
+],
+"parent": "benign neoplasm",
+"defn": "A benign neoplasm that involves the buccal mucosa."
+},
+{
+"id": "MONDO:0021525",
+"name": "benign neoplasm of corpus uteri",
+"syn": [
+"benign corpus uteri neoplasm",
+"benign corpus uteri tumor",
+"benign corpus uteri tumour"
+],
+"parent": "uterine benign neoplasm",
+"defn": "A benign neoplasm that involves the body of uterus."
+},
+{
+"id": "MONDO:0021527",
+"name": "benign neoplasm of meninges",
+"syn": [
+"benign meningeal neoplasm",
+"benign meningeal neoplasms",
+"benign meningeal tumor"
+],
+"parent": "central nervous system organ benign neoplasm",
+"defn": "A benign neoplasm that involves the meningeal cluster."
+},
+{
+"id": "MONDO:0021528",
+"name": "benign neoplasm of male breast",
+"syn": [
+"benign Male breast neoplasm",
+"benign Male breast tumor",
+"benign Male breast tumour"
+],
+"parent": "breast benign neoplasm",
+"defn": "A non-metastasizing neoplasm that arises from the breast parenchyma in males."
+},
+{
+"id": "MONDO:0021529",
+"name": "benign neoplasm of chest wall",
+"syn": [
+"benign chest wall neoplasm",
+"benign chest wall tumor",
+"benign chest wall tumour"
+],
+"parent": "thoracic benign neoplasm",
+"defn": "A benign neoplasm that involves the chest wall."
+},
+{
+"id": "MONDO:0021530",
+"name": "benign neoplasm of subglottis",
+"syn": [
+"benign neoplasm of the subglottis",
+"benign subglottic neoplasm",
+"benign subglottic tumor"
+],
+"parent": "subglottis neoplasm",
+"defn": "A benign neoplasm that involves the subglottis."
+},
+{
+"id": "MONDO:0021531",
+"name": "fibroma of lung",
+"syn": [
+"fibroma of the lung",
+"lung fibroma",
+"pulmonary fibroma"
+],
+"parent": "fibroma",
+"defn": "A fibroma that involves the lung."
+},
+{
+"id": "MONDO:0021532",
+"name": "fibroma of prostate",
+"syn": [
+"fibroma of the prostate",
+"prostate fibroma",
+"prostate gland fibroma"
+],
+"parent": "fibroma",
+"defn": "A fibroma that involves the prostate gland."
+},
+{
+"id": "MONDO:0021533",
+"name": "intestinal neuroendocrine tumor G1",
+"syn": [
+"carcinoid tumor of intestine",
+"carcinoid tumor of the intestine",
+"carcinoid tumour of intestine"
+],
+"parent": "digestive system neuroendocrine tumor, grade 1/2",
+"defn": "A well differentiated, low grade neuroendocrine tumor (carcinoid tumor) that arises from the small or large intestine. The mitotic count is less than 2 per 10 H"
+},
+{
+"id": "MONDO:0021534",
+"name": "rectal neuroendocrine tumor G1",
+"syn": [
+"carcinoid of rectum",
+"carcinoid of the rectum",
+"carcinoid tumor of rectum"
+],
+"parent": "colorectal neuroendocrine tumor G1",
+"defn": "A well differentiated, low grade neuroendocrine tumor (carcinoid tumor) that arises from the rectum. The mitotic count is less than 2 per 10 HPF and/or the Ki67"
+},
+{
+"id": "MONDO:0021535",
+"name": "pancreatic neuroendocrine tumor G1",
+"syn": [
+"grade 1 neuroendocrine neoplasm of pancreas",
+"pancreas carcinoid tumor",
+"pancreas carcinoid tumour"
+],
+"parent": "carcinoid tumor",
+"defn": "A low grade well differentiated tumor with neuroendocrine differentiation that arises from the pancreas. The mitotic count is less than 2 per 10 HPF and/or the "
+},
+{
+"id": "MONDO:0021537",
+"name": "undifferentiated carcinoma of nasopharynx",
+"syn": [
+"lymphoepithelioma of nasopharynx",
+"lymphoepithelioma of the nasopharynx",
+"nasopharyngeal lymphoepithelioma"
+],
+"parent": "undifferentiated carcinoma",
+"defn": "A undifferentiated carcinoma that involves the nasopharynx."
+},
+{
+"id": "MONDO:0021538",
+"name": "verrucous carcinoma of oral cavity",
+"syn": [
+"mouth verrucous carcinoma",
+"oral cavity verrucous cancer",
+"oral cavity verrucous carcinoma"
+],
+"parent": "oral cavity squamous cell carcinoma",
+"defn": "A verrucous carcinoma that involves the oral cavity."
+},
+{
+"id": "MONDO:0021539",
+"name": "hamartoma of skin appendage",
+"syn": [
+"cutaneous appendage hamartoma (disease)",
+"skin appendage hamartoma"
+],
+"parent": "epidermal appendage tumor",
+"defn": "A hamartoma (disease) that involves the cutaneous appendage."
+},
+{
+"id": "MONDO:0021540",
+"name": "hamartoma of lung",
+"syn": [
+"hamartoma of the lung",
+"lung chondroid hamartoma",
+"lung hamartoma"
+],
+"parent": "hamartoma",
+"defn": "A hamartoma (disease) that involves the lung."
+},
+{
+"id": "MONDO:0021541",
+"name": "hemangioma of retina",
+"syn": [
+"angioma of retina",
+"angioma of the retina",
+"hemangioma of the retina"
+],
+"parent": "hemangioma",
+"defn": "A hemangioma that involves the retina."
+},
+{
+"id": "MONDO:0021542",
+"name": "hemangioma of choroid",
+"syn": [
+"angioma of choroid",
+"angioma of the choroid",
+"benign angioma of choroid"
+],
+"parent": "hemangioma",
+"defn": "A hemangioma that involves the optic choroid."
+},
+{
+"id": "MONDO:0021543",
+"name": "hemangioma of gingiva",
+"syn": [
+"angioma of gingiva",
+"angioma of gum",
+"angioma of the gingiva"
+],
+"parent": "hemangioma",
+"defn": "A hemangioma that involves the gingiva."
+},
+{
+"id": "MONDO:0021545",
+"name": "myomatous neoplasm",
+"syn": [
+"muscle neoplasm",
+"muscle tumor",
+"muscle tumour"
+],
+"parent": "mesenchymal cell neoplasm",
+"defn": "A benign or malignant mesenchymal neoplasm arising from smooth, skeletal, or cardiac muscle."
+},
+{
+"id": "MONDO:0021546",
+"name": "ependymal tumor of spinal cord",
+"syn": [
+"spinal cord ependymal tumor",
+"spinal cord ependymal tumour"
+],
+"parent": "spinal cord glioma",
+"defn": "An ependymal tumor that arises from the spinal cord."
+},
+{
+"id": "MONDO:0021547",
+"name": "amelogenesis imperfecta type 3B",
+"syn": [
+"AI3B",
+"amelogenesis imperfecta, type 3B",
+"amelogenesis imperfecta, type IIIB"
+],
+"parent": "hypocalcified amelogenesis imperfecta",
+"defn": ""
+},
+{
+"id": "MONDO:0021548",
+"name": "total early-onset cataract",
+"syn": [],
+"parent": "early-onset non-syndromic cataract",
+"defn": ""
+},
+{
+"id": "MONDO:0021553",
+"name": "transverse myelitis",
+"syn": [
+"transverse myelopathy syndrome"
+],
+"parent": "myelitis",
+"defn": ""
+},
+{
+"id": "MONDO:0021559",
+"name": "non-autoimmune hemolytic anemia",
+"syn": [],
+"parent": "hemolytic anemia",
+"defn": "Hemolytic anemia that is not mediated by immune mechanisms."
+},
+{
+"id": "MONDO:0021562",
+"name": "omphalitis",
+"syn": [],
+"parent": "inflammatory disease",
+"defn": "Inflammation of the umbilical cord stump in newborns."
+},
+{
+"id": "MONDO:0021568",
+"name": "renal tubule disorder",
+"syn": [
+"disease of renal tubule",
+"disease or disorder of renal tubule",
+"disorder of renal tubule"
+],
+"parent": "kidney disorder",
+"defn": "A disease that involves the renal tubule."
+},
+{
+"id": "MONDO:0021569",
+"name": "Emery-Dreifuss muscular dystrophy 2, autosomal dominant",
+"syn": [
+"autosomal dominant limb-girdle muscular dystrophy caused by mutation in LMNA",
+"EDMD2",
+"EMD2"
+],
+"parent": "muscular dystrophy, limb-girdle, autosomal dominant",
+"defn": "Emery-Dreifuss muscular dystrophy inherited in an autosomal dominant pattern and caused by mutations in the LMNA gene."
+},
+{
+"id": "MONDO:0021573",
+"name": "oocyte maturation defect 2",
+"syn": [
+"inherited oocyte maturation defect caused by mutation in TUBB8",
+"OOMD2",
+"TUBB8 inherited oocyte maturation defect"
+],
+"parent": "inherited oocyte maturation defect",
+"defn": "Any inherited oocyte maturation defect in which the cause of the disease is a mutation in the TUBB8 gene."
+},
+{
+"id": "MONDO:0021574",
+"name": "oocyte maturation defect 3",
+"syn": [
+"OOMD3"
+],
+"parent": "inherited oocyte maturation defect",
+"defn": ""
+},
+{
+"id": "MONDO:0021575",
+"name": "oocyte maturation defect 4",
+"syn": [
+"OOMD4"
+],
+"parent": "inherited oocyte maturation defect",
+"defn": ""
+},
+{
+"id": "MONDO:0021576",
+"name": "fallopian tube endometrioid tumor",
+"syn": [
+"endometrium neoplasm of fallopian tube",
+"fallopian tube endometrioid neoplasm",
+"fallopian tube endometrium neoplasm"
+],
+"parent": "fallopian tube neoplasm",
+"defn": "A benign, borderline, or malignant epithelial tumor of the fallopian tube that is characterized by the presence of glands and/or cysts lined by neoplastic cells"
+},
+{
+"id": "MONDO:0021577",
+"name": "malignant mediastinal neural neoplasm",
+"syn": [
+"malignant neuroma of mediastinum"
+],
+"parent": "mediastinal neural neoplasm",
+"defn": ""
+},
+{
+"id": "MONDO:0021578",
+"name": "sternal neoplasm",
+"syn": [
+"neoplasm of sternum",
+"neoplasm of sternum (disease)",
+"neoplasm of sternum (disorder)"
+],
+"parent": "skeletal system disorder",
+"defn": "A benign or malignant neoplasm that affects the sternum."
+},
+{
+"id": "MONDO:0021579",
+"name": "neoplasm of femur",
+"syn": [
+"femur neoplasm",
+"femur neoplasm (disease)",
+"femur tumor"
+],
+"parent": "bone neoplasm",
+"defn": "A neoplasm (disease) that involves the femur."
+},
+{
+"id": "MONDO:0021580",
+"name": "neoplasm of jaw",
+"syn": [
+"jaw skeleton neoplasm",
+"jaw skeleton neoplasm (disease)",
+"jaw skeleton tumor"
+],
+"parent": "mouth disorder",
+"defn": "A neoplasm (disease) that involves the jaw skeleton."
+},
+{
+"id": "MONDO:0021581",
+"name": "connective tissue neoplasm",
+"syn": [
+"connective tissue neoplasm (disease)",
+"connective tissue tumor",
+"connective tissue tumour"
+],
+"parent": "connective tissue disorder",
+"defn": "Neoplasms composed of connective tissue, including elastic, mucous, reticular, osseous, and cartilaginous tissue. The concept does not refer to neoplasms locate"
+},
+{
+"id": "MONDO:0021582",
+"name": "lentigo",
+"syn": [
+"lentigines",
+"lentiginosis"
+],
+"parent": "hereditary skin disorder",
+"defn": "A flat, benign, pigmented spot on the skin caused by excessive deposition of melanin from an increased number of melanocytes in the cell layer directly above th"
+},
+{
+"id": "MONDO:0021583",
+"name": "melanocytic skin neoplasm",
+"syn": [
+"cutaneous melanocytic neoplasm",
+"melanocytic neoplasm of skin",
+"melanocytic neoplasm of zone of skin"
+],
+"parent": "skin neoplasm",
+"defn": "A melanocytic neoplasm that involves the zone of skin."
+},
+{
+"id": "MONDO:0021588",
+"name": "eyelid sebaceous gland carcinoma",
+"syn": [
+"carcinoma of sebaceous gland of eyelid",
+"eyelid SGC",
+"sebaceous gland carcinoma of the eyelid"
+],
+"parent": "eyelid carcinoma",
+"defn": "A sebaceous gland carcinoma affecting the eyelid. It arises from the meibomian glands, glands of Zeis, or glands associated with the caruncle. It usually affect"
+},
+{
+"id": "MONDO:0021605",
+"name": "benign eyelid neoplasm",
+"syn": [
+"benign eyelid tumor",
+"benign eyelid tumour",
+"benign neoplasm of eyelid"
+],
+"parent": "eyelid neoplasm",
+"defn": "A non-metastasizing neoplasm that arises from the upper or lower eyelid."
+},
+{
+"id": "MONDO:0021607",
+"name": "eyelid seborrheic keratosis",
+"syn": [
+"basal cell papilloma of eyelid",
+"basal cell papilloma of the eyelid",
+"eyelid basal cell papilloma"
+],
+"parent": "eyelid disorder",
+"defn": "A seborrheic keratosis that involves the eyelid."
+},
+{
+"id": "MONDO:0021627",
+"name": "eyelid capillary hemangioma",
+"syn": [
+"capillary angioma of eyelid",
+"capillary angioma of lid",
+"capillary angioma of the eyelid"
+],
+"parent": "capillary hemangioma",
+"defn": "A capillary hemangioma arising from the eyelid."
+},
+{
+"id": "MONDO:0021629",
+"name": "uterine ligament neoplasm",
+"syn": [
+"neoplasm of the uterine ligament",
+"neoplasm of uterine ligament",
+"tumor of the uterine ligament"
+],
+"parent": "uterine cervix neoplasm",
+"defn": "A benign, borderline, or malignant neoplasm that affects the uterine ligaments. Representative examples include Wolffian adnexal tumor, papillary cystadenoma, a"
+},
+{
+"id": "MONDO:0021630",
+"name": "lipoma of face",
+"syn": [
+"face lipoma"
+],
+"parent": "lipoma",
+"defn": "A lipoma that involves the face."
+},
+{
+"id": "MONDO:0021631",
+"name": "brain astrocytoma",
+"syn": [
+"astrocytoma (excluding glioblastoma) of brain",
+"brain astrocytoma (excluding glioblastoma)"
+],
+"parent": "astrocytoma (excluding glioblastoma)",
+"defn": "A astrocytoma (excluding glioblastoma) that involves the brain."
+},
+{
+"id": "MONDO:0021632",
+"name": "primary brain neoplasm",
+"syn": [
+"primary brain tumor",
+"primary brain tumour"
+],
+"parent": "brain neoplasm",
+"defn": ""
+},
+{
+"id": "MONDO:0021633",
+"name": "cerebral astrocytoma",
+"syn": [
+"astrocytoma (excluding glioblastoma) of cerebral hemisphere",
+"astrocytoma of cerebral hemispheres",
+"astrocytoma of cerebrum"
+],
+"parent": "neoplasm of cerebral hemisphere",
+"defn": "An astrocytoma that arises from the cerebral hemispheres."
+},
+{
+"id": "MONDO:0021634",
+"name": "epithelial skin neoplasm",
+"syn": [
+"epithelial skin tumor",
+"epithelial skin tumour",
+"skin epithelium neoplasm"
+],
+"parent": "skin neoplasm",
+"defn": "A epithelial neoplasm that involves the zone of skin."
+},
+{
+"id": "MONDO:0021635",
+"name": "neurocristopathy",
+"syn": [
+"disorder of neural crest cell development",
+"disorder of neural crest development",
+"neural crest cell development disease"
+],
+"parent": "disorder of development or morphogenesis",
+"defn": "That disease that arises from defects in the development of tissues containing cells commonly derived from the embryonic neural crest cell lineage."
+},
+{
+"id": "MONDO:0021636",
+"name": "astrocytic tumor",
+"syn": [
+"astrocytic neoplasm",
+"astrocytoma, no ICD-O subtype",
+"astroglioma"
+],
+"parent": "glioma",
+"defn": "A glial tumor of the brain or spinal cord showing astrocytic differentiation. It includes the following clinicopathological entities: pilocytic astrocytoma, dif"
+},
+{
+"id": "MONDO:0021637",
+"name": "low grade glioma",
+"syn": [
+"benign glioma",
+"glioma, benign",
+"low-grade glioma"
+],
+"parent": "glioma",
+"defn": "A grade I or grade II glioma arising from the central nervous system. This category includes pilocytic astrocytoma, diffuse astrocytoma, subependymal giant cell"
+},
+{
+"id": "MONDO:0021638",
+"name": "low grade astrocytic tumor",
+"syn": [
+"low grade astrocytic neoplasm",
+"low-grade astrocytic neoplasm",
+"low-grade astrocytic tumor"
+],
+"parent": "astrocytic tumor",
+"defn": "A grade I or grade II astrocytic tumor. This category includes pilocytic astrocytoma (grade I), subependymal giant cell astrocytoma (grade I), and diffuse astro"
+},
+{
+"id": "MONDO:0021639",
+"name": "grade II glioma",
+"syn": [
+"WHO grade II glioma"
+],
+"parent": "low grade glioma",
+"defn": "A glioma arising from the central nervous system. This category includes diffuse astrocytoma, ependymoma, oligodendroglioma, and oligoastrocytoma."
+},
+{
+"id": "MONDO:0021640",
+"name": "grade III glioma",
+"syn": [
+"anaplastic glioma",
+"WHO grade III glioma"
+],
+"parent": "malignant glioma",
+"defn": "A group of malignant gliomas that includes anaplastic astrocytoma, anaplastic oligodendroglioma, anaplastic oligoastrocytoma, and anaplastic ependymoma."
+},
+{
+"id": "MONDO:0021641",
+"name": "Bunyaviridae infectious disease",
+"syn": [
+"Bunyaviridae caused disease or disorder",
+"Bunyaviridae disease or disorder",
+"disease due to Bunyaviridae"
+],
+"parent": "primary viral infectious disease",
+"defn": "Virus diseases caused by the bunyaviridae."
+},
+{
+"id": "MONDO:0021642",
+"name": "vulval varices",
+"syn": [
+"mammalian vulva varicose disease",
+"varicose disease of mammalian vulva"
+],
+"parent": "female reproductive system disorder",
+"defn": "A varicose disease that involves the mammalian vulva."
+},
+{
+"id": "MONDO:0021643",
+"name": "mesenteric varices",
+"syn": [
+"mesentery varicose disease",
+"varicose disease of mesentery"
+],
+"parent": "varicose disease",
+"defn": "A varicose disease that involves the mesentery."
+},
+{
+"id": "MONDO:0021644",
+"name": "esophageal varices without bleeding",
+"syn": [],
+"parent": "esophageal varices",
+"defn": ""
+},
+{
+"id": "MONDO:0021645",
+"name": "esophageal varices with bleeding",
+"syn": [],
+"parent": "esophageal varices",
+"defn": ""
+},
+{
+"id": "MONDO:0021650",
+"name": "uterine corpus neuroendocrine neoplasm",
+"syn": [
+"body of uterus NET",
+"body of uterus neuroendocrine neoplasm",
+"body of uterus neuroendocrine tumor"
+],
+"parent": "neuroendocrine neoplasm",
+"defn": "An epithelial neoplasm with neuroendocrine differentiation that arises from the uterine corpus. It includes carcinoid tumor, small cell carcinoma pulmonary type"
+},
+{
+"id": "MONDO:0021651",
+"name": "synpolydactyly",
+"syn": [
+"polysyndactyly",
+"syndactyly type 2"
+],
+"parent": "skeletal dysplasia",
+"defn": "A joint presentation of syndactyly (fusion of digits) and polydactyly (production of supernumerary digits)."
+},
+{
+"id": "MONDO:0021652",
+"name": "diffuse type adenocarcinoma",
+"syn": [
+"diffuse type carcinoma"
+],
+"parent": "adenocarcinoma",
+"defn": "An adenocarcinoma characterized by the presence of a diffuse cellular infiltrate which is composed of poorly cohesive cells with minimal or no glandular formati"
+},
+{
+"id": "MONDO:0021653",
+"name": "cutaneous focal mucinosis",
+"syn": [],
+"parent": "cutaneous mucinosis",
+"defn": ""
+},
+{
+"id": "MONDO:0021654",
+"name": "diffuse cutaneous mucinosis",
+"syn": [],
+"parent": "cutaneous mucinosis",
+"defn": ""
+},
+{
+"id": "MONDO:0021655",
+"name": "secondary catabolic mucinosis of skin",
+"syn": [],
+"parent": "cutaneous mucinosis",
+"defn": ""
+},
+{
+"id": "MONDO:0021656",
+"name": "nongerminomatous germ cell tumor",
+"syn": [
+"non-dysgerminomatous germ cell tumor",
+"non-dysgerminomatous germ cell tumour",
+"non-germinomatous germ cell tumor"
+],
+"parent": "germ cell tumor",
+"defn": "A term that refers to teratoma, embryonal carcinoma, yolk sac tumor, choriocarcinoma, or mixed forms of these tumors."
+},
+{
+"id": "MONDO:0021657",
+"name": "ovarian sex cord-stromal tumor",
+"syn": [
+"ovarian Sex cord-stromal neoplasm",
+"ovarian Sex cord-stromal tumour",
+"ovary sex cord-stromal tumor"
+],
+"parent": "sex cord-stromal tumor",
+"defn": "A benign or malignant neoplasm that arises from the ovary and is composed of granulosa cells, Sertoli cells, Leydig cells, theca cells, and fibroblasts. Represe"
+},
+{
+"id": "MONDO:0021658",
+"name": "vascular ectasia",
+"syn": [],
+"parent": "vascular disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0021659",
+"name": "combined carcinoid and adenocarcinoma",
+"syn": [
+"adenocarcinoid neoplasm",
+"adenocarcinoid tumor",
+"adenocarcinoid tumour"
+],
+"parent": "carcinoma",
+"defn": "A malignant epithelial neoplasm composed of a mixture of neuroendocrine cells with morphologic and immunohistochemical characteristics of carcinoid tumor and ma"
+},
+{
+"id": "MONDO:0021660",
+"name": "deep seated dermatophytosis",
+"syn": [
+"deep dermatophytosis",
+"disseminated granulomatous dermatophytosis"
+],
+"parent": "tinea infection",
+"defn": "A deep folliculitis due to a cutaneous dermatophyte infection, usually on the legs. It is most commonly caused by trichophyton rubrum and is characterized by th"
+},
+{
+"id": "MONDO:0021661",
+"name": "coronary atherosclerosis",
+"syn": [
+"arteriosclerosis disorder of coronary artery",
+"coronary artery arteriosclerosis (disease)",
+"coronary artery arteriosclerosis disorder"
+],
+"parent": "coronary artery disorder",
+"defn": "Atherosclerosis of the coronary vasculature."
+},
+{
+"id": "MONDO:0021662",
+"name": "bile duct neoplasm",
+"syn": [
+"bile duct neoplasm (disease)",
+"bile duct tumor",
+"bile duct tumour"
+],
+"parent": "bile duct disorder",
+"defn": "A benign or malignant neoplasm that affects the intrahepatic or extrahepatic bile ducts. Representative examples of benign neoplasms include bile duct adenoma a"
+},
+{
+"id": "MONDO:0021663",
+"name": "sarcomatoid squamous cell carcinoma",
+"syn": [
+"epidermoid spindle cell carcinoma",
+"spindle cell (sarcomatoid) squamous cell carcinoma",
+"squamous cell carcinoma, sarcomatoid"
+],
+"parent": "squamous cell carcinoma",
+"defn": "A poorly differentiated squamous cell carcinoma characterized by the presence of malignant cells with spindle cell features."
+},
+{
+"id": "MONDO:0021666",
+"name": "ear infection",
+"syn": [
+"otitis"
+],
+"parent": "infectious disease",
+"defn": "A viral or bacterial infection that affects the external, middle, or inner ear. It may follow an upper respiratory infection. Signs and symptoms include pain, e"
+},
+{
+"id": "MONDO:0021667",
+"name": "neuralgia",
+"syn": [],
+"parent": "peripheral neuropathy",
+"defn": "A pain disorder characterize by pain in the distribution of a nerve or nerves"
+},
+{
+"id": "MONDO:0021669",
+"name": "post-infectious disorder",
+"syn": [
+"sequela of infectious disorder"
+],
+"parent": "disease of primarily extrinsic mechanism",
+"defn": "A disorder that follows infection but is distinct from the infection itself and its usual manifestations."
+},
+{
+"id": "MONDO:0021670",
+"name": "post-infectious syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0021673",
+"name": "post-bacterial disorder",
+"syn": [],
+"parent": "post-infectious disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0021674",
+"name": "post-viral disorder",
+"syn": [
+"sequela of viral disease"
+],
+"parent": "post-infectious disorder",
+"defn": "A post-infectious disorder that follows viral infection but is distinct from the viral infection itself and its usual manifestations."
+},
+{
+"id": "MONDO:0021677",
+"name": "post-infectious neuralgia",
+"syn": [
+"postinfectious neuralgia"
+],
+"parent": "neuralgia",
+"defn": ""
+},
+{
+"id": "MONDO:0021678",
+"name": "gram-negative bacterial infections",
+"syn": [],
+"parent": "bacterial infectious disease",
+"defn": "Infections caused by bacteria that show up as pink (negative) when treated by the gram-staining method."
+},
+{
+"id": "MONDO:0021679",
+"name": "gram-positive bacterial infections",
+"syn": [],
+"parent": "bacterial infectious disease",
+"defn": "Infections caused by bacteria that retain the crystal violet stain (positive) when treated by the gram-staining method."
+},
+{
+"id": "MONDO:0021680",
+"name": "streptococcal infection",
+"syn": [
+"Streptococcus caused disease or disorder",
+"Streptococcus disease or disorder",
+"Streptococcus infectious disease"
+],
+"parent": "gram-positive bacterial infections",
+"defn": "Any of the several infectious disorders caused by members of streptococcus, a genus of gram positive bacteria belonging to the family Streptococcaceae. Streptoc"
+},
+{
+"id": "MONDO:0021681",
+"name": "sexually transmitted disease",
+"syn": [
+"disease (VD), venereal",
+"sexually Transmitted disorder",
+"STD"
+],
+"parent": "reproductive system disorder",
+"defn": "A Disease due to or propagated by sexual contact."
+},
+{
+"id": "MONDO:0021682",
+"name": "viral sexually transmitted disease",
+"syn": [],
+"parent": "sexually transmitted disease",
+"defn": "Viral diseases which are potentially transmitted or propagated by sexual conduct."
+},
+{
+"id": "MONDO:0021697",
+"name": "chlamydia infectious disease",
+"syn": [
+"Chlamydia caused disease or disorder",
+"Chlamydia disease or disorder",
+"Chlamydophila caused disease or disorder"
+],
+"parent": "bacterial sexually transmitted disease",
+"defn": "Infections with bacteria of the genus CHLAMYDIA."
+},
+{
+"id": "MONDO:0021698",
+"name": "alcohol-related disorders",
+"syn": [],
+"parent": "substance-related disorder",
+"defn": "Disorders related to or resulting from abuse or mis-use of alcohol."
+},
+{
+"id": "MONDO:0021699",
+"name": "alcohol-induced disorders",
+"syn": [],
+"parent": "alcohol-related disorders",
+"defn": "Disorders stemming from the misuse and abuse of alcohol."
+},
+{
+"id": "MONDO:0021702",
+"name": "alcohol amnestic disorder",
+"syn": [],
+"parent": "amnestic disorder",
+"defn": "A mental disorder associated with chronic ethanol abuse (ALCOHOLISM) and nutritional deficiencies characterized by short term memory loss, confabulations, and d"
+},
+{
+"id": "MONDO:0021718",
+"name": "polyneuritis",
+"syn": [],
+"parent": "polyneuropathy",
+"defn": "Inflammation of several peripheral nerves."
+},
+{
+"id": "MONDO:0021722",
+"name": "vulvodynia",
+"syn": [],
+"parent": "female reproductive system disorder",
+"defn": "Vulvodynia is a chronic pain syndrome that affects the vulvar area and occurs without an identifiable cause. Symptoms typically include a feeling of burning or "
+},
+{
+"id": "MONDO:0021723",
+"name": "vaginismus",
+"syn": [
+"myalgia of pelvic floor"
+],
+"parent": "vaginal disorder",
+"defn": "Tightness of the vaginal wall during vaginal penetration including sexual intercourse. It is caused by involuntary spasm of the pelvic floor muscles, and result"
+},
+{
+"id": "MONDO:0021726",
+"name": "abdominal cystic lymphangioma",
+"syn": [
+"abdomen cystic lymphangioma"
+],
+"parent": "cystic hygroma",
+"defn": "Abdominal cystic lymphangioma is a benign (noncancerous) malformation of the lymphatic vessels in the abdomen. These vessels carry lymph, a fluid that contains "
+},
+{
+"id": "MONDO:0021727",
+"name": "aberrant subclavian artery",
+"syn": [
+"congenital malposition of subclavian artery"
+],
+"parent": "arterial disorder",
+"defn": "Aberrant subclavian artery is a rare vascular anomaly that is present from birth. It usually causes no symptoms and is oftendiscovered as an incidental finding "
+},
+{
+"id": "MONDO:0021736",
+"name": "proctosigmoiditis",
+"syn": [],
+"parent": "proctocolitis",
+"defn": "Inflammation of the sigmoid colon and rectum."
+},
+{
+"id": "MONDO:0021739",
+"name": "prurigo",
+"syn": [
+"pruritic rash"
+],
+"parent": "exanthem",
+"defn": "A name applied to several itchy skin eruptions of unknown cause. The characteristic course is the formation of a dome-shaped papule with a small transient vesic"
+},
+{
+"id": "MONDO:0021742",
+"name": "puerperal infection",
+"syn": [],
+"parent": "infectious disease",
+"defn": "An infection occurring in puerperium, the period of 6-8 weeks after giving birth."
+},
+{
+"id": "MONDO:0021745",
+"name": "psychosocial short stature",
+"syn": [],
+"parent": "developmental disability",
+"defn": "A growth disorder that is observed between the ages of 2 and 15, caused by extreme emotional deprivation or stress."
+},
+{
+"id": "MONDO:0021746",
+"name": "pyelocystitis",
+"syn": [],
+"parent": "cystitis",
+"defn": ""
+},
+{
+"id": "MONDO:0021747",
+"name": "Acanthamoeba infectious disease",
+"syn": [
+"Acanthamoeba infection",
+"infection by Acanthamoeba"
+],
+"parent": "infectious disease",
+"defn": "An infectious disease involving the Acanthamoeba."
+}
+]

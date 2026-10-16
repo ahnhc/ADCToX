@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.18 — Korean names for every human MONDO disease
+
+- **Korean names for 23,258 of the 23,264 human MONDO concepts in the index** (`data/curated/korean/mondo_ko.jsonl`):
+  - Written by 117 Claude Sonnet agents under `data/curated/korean/TRANSLATE.md`, which follows 대한의학회 / KCD style; eponyms are transliterated and gene symbols kept.
+  - The 1,514 low-confidence or missing names had a second Sonnet pass; 648 of them were changed. 524 remain low confidence.
+  - Where the app already had a name (KCD names whose English is the MONDO name, curated profile names), that name is kept. On those 1,842 concepts the new names are the same in 57% of cases and mostly equivalent spellings otherwise (가성/거짓, 지주막/거미막).
+- **English search now shows the Korean name next to every result.**
+  - When it does not fit, the highlighted row's two full names are shown under the list.
+- **Korean search finds any disease by its Korean name**, e.g. 안검하수, 인슐린 저항.
+- **Labels use the preferred MONDO name.** The index's first row was sometimes a synonym.
+- **A KCD name now names a concept only when its English is that concept's preferred name.** A KCD name that matches only a synonym still finds the concept, but does not rename it.
+- The app file grows from 242 KiB to 896 KiB.
+
 ## 0.3.17 — Finer logo, page keys only, scrolling names
 
 - **Logo in braille cells:** 2 × 4 dots per cell, so pixels are square and twice as fine as the half blocks.

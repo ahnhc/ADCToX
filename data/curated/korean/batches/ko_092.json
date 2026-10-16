@@ -1,0 +1,1816 @@
+[
+{
+"id": "MONDO:0024649",
+"name": "optic tract astrocytoma",
+"syn": [
+"astrocytoma (excluding glioblastoma) of optic tract",
+"optic tract astrocytoma (excluding glioblastoma)",
+"visual pathway astrocytoma"
+],
+"parent": "sensory system cancer",
+"defn": "An astrocytoma that affects the optic tract. This condition can be seen in association with neurofibromatosis 1. It is most commonly seen in the pediatric age g"
+},
+{
+"id": "MONDO:0024650",
+"name": "drug-induced osteoporosis",
+"syn": [],
+"parent": "osteoporosis",
+"defn": ""
+},
+{
+"id": "MONDO:0024651",
+"name": "corticosteroid-induced osteoporosis",
+"syn": [
+"osteoporosis due to corticosteroid"
+],
+"parent": "drug-induced osteoporosis",
+"defn": ""
+},
+{
+"id": "MONDO:0024652",
+"name": "embryonic cyst of fallopian tube",
+"syn": [],
+"parent": "fallopian tube disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0024653",
+"name": "skull neoplasm",
+"syn": [
+"neoplasm of skull",
+"neoplasm of the skull",
+"skull tumor"
+],
+"parent": "head and neck neoplasm",
+"defn": "A benign or malignant neoplasm that affects the bones and structures of the skull."
+},
+{
+"id": "MONDO:0024654",
+"name": "skull disorder",
+"syn": [
+"disease of skull",
+"disease or disorder of skull",
+"disorder of skull"
+],
+"parent": "bone disorder",
+"defn": "A non-neoplastic or neoplastic disorder that affects structures of the skull."
+},
+{
+"id": "MONDO:0024655",
+"name": "rheumatic pericarditis",
+"syn": [],
+"parent": "pericarditis",
+"defn": ""
+},
+{
+"id": "MONDO:0024656",
+"name": "colorectal lymphoma",
+"syn": [
+"large intestinal lymphoma",
+"large intestine lymphoma",
+"lymphoma of large intestine"
+],
+"parent": "gastrointestinal lymphoma",
+"defn": "An extranodal lymphoma that arises from the colon or rectum. The majority are B-cell non-Hodgkin lymphomas."
+},
+{
+"id": "MONDO:0024658",
+"name": "extrahepatic bile duct sarcoma",
+"syn": [
+"sarcoma of extrahepatic bile duct",
+"sarcoma of the extrahepatic bile duct"
+],
+"parent": "bile duct sarcoma",
+"defn": "A malignant soft tissue neoplasm that arises from the extrahepatic bile ducts. Representative examples include Kaposi sarcoma, leiomyosarcoma, and rhabdomyosarc"
+},
+{
+"id": "MONDO:0024659",
+"name": "colorectal Kaposi sarcoma",
+"syn": [
+"Kaposi's sarcoma (disease) of large intestine",
+"large intestinal Kaposi sarcoma",
+"large intestine Kaposi's sarcoma (disease)"
+],
+"parent": "Kaposi's sarcoma",
+"defn": "A Kaposi sarcoma that arises from the colon or rectum."
+},
+{
+"id": "MONDO:0024660",
+"name": "tubular adenoma",
+"syn": [
+"adenoma, tubular cell, benign"
+],
+"parent": "adenoma",
+"defn": "A usually polypoid neoplasm arising from the glandular epithelium. It is characterized by a tubular architectural pattern. The neoplastic glandular cells have d"
+},
+{
+"id": "MONDO:0024661",
+"name": "tubulovillous adenoma",
+"syn": [],
+"parent": "adenoma",
+"defn": "An epithelial neoplasm morphologically characterized by the presence of a villous and a tubular architectural pattern. Most often it occurs in the large intesti"
+},
+{
+"id": "MONDO:0024662",
+"name": "colorectal tubulovillous adenoma",
+"syn": [
+"large bowel tubulovillous adenoma",
+"tubulovillous adenoma of large bowel",
+"tubulovillous adenoma of the large bowel"
+],
+"parent": "colorectal adenoma",
+"defn": "A neoplasm that arises from the glandular epithelium of the colonic and rectal mucosa. It is characterized by tubular and villous architectural patterns. The ne"
+},
+{
+"id": "MONDO:0024663",
+"name": "primary skin meningioma",
+"syn": [
+"primary cutaneous meningioma",
+"primary meningioma of skin",
+"primary meningioma of the skin"
+],
+"parent": "malignant dermis tumor",
+"defn": ""
+},
+{
+"id": "MONDO:0024664",
+"name": "hypertension, pregnancy-induced",
+"syn": [
+"hypertension associated disorders of pregnancy",
+"hypertension-associated pregnancy disorder",
+"pregnancy-induced hypertension"
+],
+"parent": "hypertensive disorder",
+"defn": "A hypertensive disorder that develops during pregnancy."
+},
+{
+"id": "MONDO:0024665",
+"name": "indeterminate sex and/or pseudohermaphroditism",
+"syn": [],
+"parent": "disorder of sexual differentiation",
+"defn": ""
+},
+{
+"id": "MONDO:0024666",
+"name": "benign epithelial skin neoplasm",
+"syn": [
+"benign epithelial skin tumor",
+"benign epithelial skin tumour",
+"benign skin epithelium neoplasm"
+],
+"parent": "benign neoplasm of skin",
+"defn": "A form of epithelial skin neoplasm without malignant characteristics."
+},
+{
+"id": "MONDO:0024673",
+"name": "skin lymphangioma",
+"syn": [
+"cutaneous lymphangioma"
+],
+"parent": "lymphangioma",
+"defn": "A lymphangioma arising from the skin."
+},
+{
+"id": "MONDO:0024674",
+"name": "Pancoast syndrome",
+"syn": [
+"Pancoast's syndrome"
+],
+"parent": "neoplastic syndrome",
+"defn": "A rare neoplastic syndrome characterized by obstruction of the thoracic outlet leading to compression of the brachial plexus and vessels within. It is usually c"
+},
+{
+"id": "MONDO:0024675",
+"name": "adult kidney Wilms tumor",
+"syn": [
+"adenosarcoma of adult kidney",
+"adenosarcoma of the adult kidney",
+"adult kidney adenosarcoma"
+],
+"parent": "kidney Wilms tumor",
+"defn": "Wilms tumor of the kidney which occurs in adults."
+},
+{
+"id": "MONDO:0024676",
+"name": "childhood kidney Wilms tumor",
+"syn": [
+"childhood renal Wilms tumor",
+"childhood renal Wilms tumour",
+"childhood renal Wilms' tumor"
+],
+"parent": "kidney Wilms tumor",
+"defn": "A Wilms tumor of the kidney which occurs in children."
+},
+{
+"id": "MONDO:0024677",
+"name": "pancreatic insulinoma",
+"syn": [
+"insulinoma"
+],
+"parent": "pancreatic insulin-producing neuroendocrine tumor",
+"defn": "An insulin-producing neuroendocrine tumor arising from the beta cells of the pancreas. Patients exhibit symptoms related to hypoglycemia due to inappropriate se"
+},
+{
+"id": "MONDO:0024685",
+"name": "Philadelphia-positive myelogenous leukemia",
+"syn": [
+"Ph1-positive granulocytic leukaemia",
+"Ph1-positive granulocytic leukemia",
+"Ph1-positive myelocytic leukaemia"
+],
+"parent": "myeloid leukemia",
+"defn": ""
+},
+{
+"id": "MONDO:0024686",
+"name": "tenosynovial giant cell tumor, diffuse type",
+"syn": [
+"diffuse giant cell neoplasm of tendon sheath",
+"diffuse giant cell neoplasm of Tenosynovium",
+"diffuse giant cell neoplasm of the Tenosynovium"
+],
+"parent": "tenosynovial giant cell tumor",
+"defn": "A locally aggressive, diffusely infiltrating tumor, arising in the tendon sheath. It is composed of synovial-like mononuclear cells, hemosiderin-laden macrophag"
+},
+{
+"id": "MONDO:0024711",
+"name": "malignant mixed epithelial stromal tumor of the kidney",
+"syn": [
+"malignant MEST",
+"mixed epithelial stromal tumor of the kidney, malignant",
+"mixed epithelial stromal tumour of the kidney, malignant"
+],
+"parent": "kidney cancer",
+"defn": "A mixed epithelial stromal tumor of the kidney with malignant stromal features."
+},
+{
+"id": "MONDO:0024715",
+"name": "benign synovial neoplasm",
+"syn": [
+"benign neoplasm of synovium",
+"benign neoplasm of the synovium",
+"benign synovial tumor"
+],
+"parent": "synovium neoplasm",
+"defn": "A benign neoplasm arising from the synovial membrane. Examples include the diffuse giant cell tumor of tendon sheath and localized giant cell tumor of tendon sh"
+},
+{
+"id": "MONDO:0024744",
+"name": "childhood choroid plexus neoplasm",
+"syn": [
+"choroid plexus neoplasm of childhood",
+"paediatric choroid plexus neoplasm",
+"pediatric choroid plexus neoplasm"
+],
+"parent": "choroid plexus neoplasm",
+"defn": "A neoplasm that arises from the choroid plexus in the brain and occurs during childhood."
+},
+{
+"id": "MONDO:0024746",
+"name": "immature teratoma",
+"syn": [
+"embryonal teratoma",
+"hrade 2 Teratoma"
+],
+"parent": "teratoma",
+"defn": "A teratoma composed of immature, fetal-type tissues."
+},
+{
+"id": "MONDO:0024757",
+"name": "cardiovascular neoplasm",
+"syn": [
+"cardiovascular system neoplasm",
+"cardiovascular system tumor",
+"cardiovascular system tumour"
+],
+"parent": "cardiovascular disorder",
+"defn": "A benign or malignant neoplasm that affects the heart and/or vessels. Representative examples of benign neoplasms include atrial myxoma, hemangioma, and lymphan"
+},
+{
+"id": "MONDO:0024770",
+"name": "autoinflammatory syndrome, familial, X-linked, Behcet-like 2",
+"syn": [
+"AIFBL2",
+"deficiency 1n ELF4, X-linked"
+],
+"parent": "autoinflammatory syndrome, familial, Behcet-like",
+"defn": ""
+},
+{
+"id": "MONDO:0024771",
+"name": "myopathy, distal, 7, adult-onset, X-linked",
+"syn": [
+"MPD7"
+],
+"parent": "distal myopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0024772",
+"name": "intellectual developmental disorder, X-linked, syndromic, Pilorge type",
+"syn": [
+"MRXSP"
+],
+"parent": "X-linked syndromic intellectual disability",
+"defn": ""
+},
+{
+"id": "MONDO:0024773",
+"name": "spermatogenic failure, X-linked, 4",
+"syn": [
+"SPGFX4"
+],
+"parent": "spermatogenic failure",
+"defn": ""
+},
+{
+"id": "MONDO:0024777",
+"name": "immunodeficiency 98 with autoinflammation, X-linked",
+"syn": [
+"IMD98",
+"inflammation, neutropenia, bone marrow failure, and lymphoproliferation caused by TLR8",
+"X-linked immunodeficiency with autoinflammation"
+],
+"parent": "immunodeficiency disease",
+"defn": "An immunodeficiency disease characterized by onset of recurrent infections associated with lymphoproliferation and autoinflammation in the first decade of life."
+},
+{
+"id": "MONDO:0024781",
+"name": "immunodeficiency 102",
+"syn": [
+"IMD102",
+"SASH3 deficiency",
+"X-linked CID due to SASH3 deficiency"
+],
+"parent": "immunodeficiency disease",
+"defn": "An X-linked recessive immunologic disorder characterized by the onset of recurrent sinopulmonary, mucosal, and other infections in early childhood, usually acco"
+},
+{
+"id": "MONDO:0024797",
+"name": "adult brain stem neoplasm",
+"syn": [
+"adult brain stem tumor",
+"adult brain stem tumour",
+"adult brainstem neoplasm"
+],
+"parent": "brainstem neoplasm",
+"defn": "A brainstem neoplasm that occurs in an adult."
+},
+{
+"id": "MONDO:0024813",
+"name": "pulmonary sulcus neoplasm",
+"syn": [
+"pulmonary sulcus tumor",
+"pulmonary sulcus tumour"
+],
+"parent": "lung neoplasm",
+"defn": "A neoplasm originating from the apical lung. Most superior sulcus neoplasms are bronchogenic carcinomas. This tumor may be associated with Pancoast syndrome. It"
+},
+{
+"id": "MONDO:0024857",
+"name": "immature extragonadal teratoma",
+"syn": [
+"extragonadal primary malignant teratoma",
+"malignant extragonadal teratoma",
+"primary malignant extragonadal teratoma"
+],
+"parent": "malignant teratoma",
+"defn": "An immature teratoma that develops as a primary tumor in an anatomic site other than the testis or ovary."
+},
+{
+"id": "MONDO:0024861",
+"name": "mixed teratoma and seminoma",
+"syn": [],
+"parent": "mixed germ cell tumor",
+"defn": ""
+},
+{
+"id": "MONDO:0024863",
+"name": "small size posterior uveal melanoma",
+"syn": [],
+"parent": "posterior uveal melanoma",
+"defn": ""
+},
+{
+"id": "MONDO:0024864",
+"name": "medium/large size posterior uveal melanoma",
+"syn": [],
+"parent": "posterior uveal melanoma",
+"defn": ""
+},
+{
+"id": "MONDO:0024868",
+"name": "metastatic carcinoma in the adrenal medulla",
+"syn": [
+"metastatic carcinoma to the adrenal medulla"
+],
+"parent": "adrenal medulla carcinoma",
+"defn": "A carcinoma that has spread to the adrenal medulla from an adjacent or distant anatomic site."
+},
+{
+"id": "MONDO:0024873",
+"name": "clitoral carcinoma",
+"syn": [
+"carcinoma of clitoris",
+"carcinoma of the clitoris",
+"clitoris carcinoma"
+],
+"parent": "clitoris cancer",
+"defn": "A carcinoma that arises from the clitoris."
+},
+{
+"id": "MONDO:0024876",
+"name": "tendon sheath disorder",
+"syn": [
+"disease of tendon sheath",
+"disease or disorder of tendon sheath",
+"disorder of tendon sheath"
+],
+"parent": "disease of the tendon",
+"defn": "A disease that involves the tendon sheath."
+},
+{
+"id": "MONDO:0024877",
+"name": "clitoris neoplasm",
+"syn": [
+"clitoral neoplasm",
+"clitoris tumor",
+"clitoris tumour"
+],
+"parent": "vulvar neoplasm",
+"defn": "A neoplasm involving a clitoris."
+},
+{
+"id": "MONDO:0024878",
+"name": "secondary carcinoma",
+"syn": [],
+"parent": "carcinoma",
+"defn": "A carcinoma that arises from a pre-existing lower grade epithelial lesion, or as a result of a primary carcinoma that has spread to secondary sites, or due to a"
+},
+{
+"id": "MONDO:0024879",
+"name": "metastatic carcinoma",
+"syn": [],
+"parent": "secondary carcinoma",
+"defn": "A carcinoma which has spread from the original site of growth to another anatomic site."
+},
+{
+"id": "MONDO:0024880",
+"name": "metastatic malignant neoplasm",
+"syn": [
+"malignant metastatic neoplasm",
+"metastatic cancer",
+"metastatic neoplasm, malignant"
+],
+"parent": "secondary malignant neoplasm",
+"defn": "A malignant tumor that has spread from its original (primary) site of growth to another site close to or distant from the primary site."
+},
+{
+"id": "MONDO:0024881",
+"name": "secondary malignant neoplasm",
+"syn": [
+"secondary cancer",
+"secondary malignancy"
+],
+"parent": "cancer",
+"defn": "A malignant neoplasm that arises from a pre-existing lower grade lesion, or as a result of a primary lesion that has spread to secondary sites, or due to a comp"
+},
+{
+"id": "MONDO:0024882",
+"name": "secondary neoplasm",
+"syn": [
+"secondary tumor",
+"secondary tumour"
+],
+"parent": "neoplastic disease or syndrome",
+"defn": "A neoplasm that arises from a pre-existing lower grade lesion, or as a result of a primary lesion that has spread to secondary sites, or due to a complication o"
+},
+{
+"id": "MONDO:0024883",
+"name": "metastatic neoplasm",
+"syn": [
+"metastatic disease",
+"metastatic tumor",
+"metastatic tumour"
+],
+"parent": "secondary neoplasm",
+"defn": "A tumor that has spread from its original (primary) site of growth to another site, close to or distant from the primary site. Metastasis is characteristic of a"
+},
+{
+"id": "MONDO:0024884",
+"name": "metastatic carcinoma in the bone",
+"syn": [
+"metastatic carcinoma to the bone"
+],
+"parent": "bone carcinoma",
+"defn": "A carcinoma that has spread to the bone from another, primary anatomic site. Bone is one of the most frequent sites of metastatic carcinoma. Common sites of ori"
+},
+{
+"id": "MONDO:0024885",
+"name": "malignant ovarian serous tumor",
+"syn": [
+"ovarian serous tumor, malignant"
+],
+"parent": "malignant epithelial tumor of ovary",
+"defn": "An invasive malignant neoplasm that arises from the ovary and is characterized by the presence of malignant epithelial cells that, in well differentiated tumors"
+},
+{
+"id": "MONDO:0024886",
+"name": "serous adenofibroma",
+"syn": [],
+"parent": "adenofibroma",
+"defn": "A benign adenofibroma characterized by the presence of serous secretory cells and minute cystic spaces filled with watery fluid. A representative example is the"
+},
+{
+"id": "MONDO:0024888",
+"name": "mesonephric neoplasm",
+"syn": [
+"mesonephric duct neoplasm",
+"mesonephric duct tumor",
+"mesonephric duct tumour"
+],
+"parent": "epithelial neoplasm",
+"defn": "An epithelial neoplasm of the female reproductive system arising from mesonephric remnants."
+},
+{
+"id": "MONDO:0024889",
+"name": "benign mesonephroma",
+"syn": [
+"benign mesonephric neoplasm",
+"mesonephric duct adenoma",
+"mesonephric neoplasm, benign"
+],
+"parent": "kidney benign neoplasm",
+"defn": "A benign epithelial neoplasm of the female reproductive system arising from mesonephric remnants."
+},
+{
+"id": "MONDO:0024890",
+"name": "pineal parenchymal cell neoplasm",
+"syn": [
+"neoplasm of pineal gland",
+"neoplasm of the pineal gland",
+"pineal gland neoplasm"
+],
+"parent": "neuroepithelial neoplasm",
+"defn": "A neoplasm arising from the pineocyte, a cell with photosensory and neuroendocrine functions. It may be composed of mature elements or primitive, immature cells"
+},
+{
+"id": "MONDO:0024891",
+"name": "non-infectious meningitis",
+"syn": [
+"non-infective meningitis"
+],
+"parent": "meningitis",
+"defn": ""
+},
+{
+"id": "MONDO:0024892",
+"name": "soft tissue amyloid neoplasm",
+"syn": [
+"amyloid tumor (morphologic abnormality)",
+"amyloid tumour (morphologic abnormality)",
+"soft tissue amyloid tumor"
+],
+"parent": "soft tissue neoplasm",
+"defn": "A soft tissue neoplasm composed of acellular amyloid material."
+},
+{
+"id": "MONDO:0024893",
+"name": "toxocara canis infection (canine roundworms)",
+"syn": [],
+"parent": "toxocariasis",
+"defn": ""
+},
+{
+"id": "MONDO:0024954",
+"name": "larva migrans, visceral",
+"syn": [],
+"parent": "toxocariasis",
+"defn": "A condition produced in humans by the prolonged migration of animal nematode larvae in extraintestinal tissues other than skin; characterized by persistent hype"
+},
+{
+"id": "MONDO:0024988",
+"name": "sex cord-stromal benign neoplasm",
+"syn": [],
+"parent": "benign reproductive system neoplasm",
+"defn": "A reproductive organ benign neoplasm that arises in the ovary or testis and that is composed of granulosa cells, Leydig cells, Sertoli cells, and/or fibroblasts"
+},
+{
+"id": "MONDO:0025193",
+"name": "oculopharyngodistal myopathy",
+"syn": [
+"oculopharyngeal distal myopathy",
+"OPDM"
+],
+"parent": "progressive muscular dystrophy",
+"defn": "Oculopharyngodistal myopathy (OPDM) is a rare, adult-onset hereditary muscle disease. People with OPDM present with progressive eye and throat (pharyngeal) prob"
+},
+{
+"id": "MONDO:0025294",
+"name": "tick-borne infectious disease",
+"syn": [],
+"parent": "vector-borne disease",
+"defn": "Bacterial, viral, or parasitic diseases transmitted to humans and animals by the bite of infected ticks. The families Ixodidae and Argasidae contain many bloods"
+},
+{
+"id": "MONDO:0025351",
+"name": "multiple congenital anomalies-neurodevelopmental syndrome, X-linked",
+"syn": [
+"Linked syndrome",
+"MCAND",
+"multiple congenital anomalies-neurodevelopmental syndrome, X-linked, X-linked recessive"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0025353",
+"name": "developmental and epileptic encephalopathy, 90",
+"syn": [
+"DEE90",
+"developmental and epileptic encephalopathy 90",
+"developmental and epileptic encephalopathy 90, X-linked recessive, X-linked dominant"
+],
+"parent": "genetic developmental and epileptic encephalopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0025354",
+"name": "spermatogenic failure, X-linked, 3",
+"syn": [
+"spermatogenic failure, X-linked, 3, X-linked recessive",
+"SPGFX3"
+],
+"parent": "spermatogenic failure",
+"defn": ""
+},
+{
+"id": "MONDO:0025356",
+"name": "azoospermia, obstructive, with nephrolithiasis",
+"syn": [
+"azoospermia, obstructive, with nephrolithiasis, X-linked recessive",
+"OAZON"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0025371",
+"name": "Parvoviridae infectious disease",
+"syn": [
+"disease due to Parvoviridae",
+"Parvoviridae caused disease or disorder",
+"Parvoviridae disease or disorder"
+],
+"parent": "viral infectious disease",
+"defn": "Virus infections caused by the parvoviridae."
+},
+{
+"id": "MONDO:0025445",
+"name": "Wieacker-Wolff syndrome (spectrum)",
+"syn": [
+"ZARD",
+"ZC4H2-associated disorder",
+"ZC4H2-associated rare disorders"
+],
+"parent": "arthrogryposis multiplex congenita",
+"defn": ""
+},
+{
+"id": "MONDO:0025512",
+"name": "type II hypersensitivity reaction disease",
+"syn": [
+"disorder of type II hypersensitivity",
+"type II hypersensitivity disease"
+],
+"parent": "hypersensitivity reaction disease",
+"defn": "A disease that has its basis in the disruption of type II hypersensitivity."
+},
+{
+"id": "MONDO:0025513",
+"name": "autoimmune urticaria",
+"syn": [
+"autoimmune urticaria (disease)"
+],
+"parent": "urticaria",
+"defn": "An autoimmune form of urticaria (disease)."
+},
+{
+"id": "MONDO:0025514",
+"name": "livedoid vasculopathy",
+"syn": [
+"livedoid vasculitis"
+],
+"parent": "skin disorder",
+"defn": "Livedoid vasculopathy is a blood vessel disorder that causes painful ulcers and scarring (atrophie blanche) on the feet and lower legs. These symptoms can persi"
+},
+{
+"id": "MONDO:0025556",
+"name": "isocyanate induced asthma",
+"syn": [],
+"parent": "allergic asthma",
+"defn": ""
+},
+{
+"id": "MONDO:0025598",
+"name": "pneumonia caused by chlamydia",
+"syn": [
+"Chlamydia caused pneumonia",
+"chlamydial pneumonia"
+],
+"parent": "chlamydia trachomatis infectious disease",
+"defn": "An pneumonia caused by infection with Chlamydia."
+},
+{
+"id": "MONDO:0025622",
+"name": "Charcot-Marie-Tooth disease, axonal, mitochondrial form, 1",
+"syn": [
+"CMTMA1"
+],
+"parent": "Charcot-Marie-Tooth disease",
+"defn": ""
+},
+{
+"id": "MONDO:0025667",
+"name": "limbal stem cell deficiency",
+"syn": [],
+"parent": "corneal disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0025690",
+"name": "microcephaly, epilepsy, and diabetes syndrome 2",
+"syn": [
+"MEDS2"
+],
+"parent": "microcephaly, epilepsy, and diabetes syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0025691",
+"name": "dystonia 30",
+"syn": [
+"DYT30"
+],
+"parent": "inherited dystonia",
+"defn": ""
+},
+{
+"id": "MONDO:0025699",
+"name": "Coffin-Siris syndrome 12",
+"syn": [
+"CSS12"
+],
+"parent": "Coffin-Siris syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0025701",
+"name": "leukodystrophy, hypomyelinating, 22",
+"syn": [
+"HLD22"
+],
+"parent": "leukodystrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0025708",
+"name": "megacystis-microcolon-intestinal hypoperistalsis syndrome 2",
+"syn": [
+"MMIHS2"
+],
+"parent": "megacystis-microcolon-intestinal hypoperistalsis syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0025712",
+"name": "angioedema, hereditary, 4",
+"syn": [
+"HAE4"
+],
+"parent": "hereditary angioedema",
+"defn": ""
+},
+{
+"id": "MONDO:0025713",
+"name": "angioedema, hereditary, 7",
+"syn": [
+"HAE7"
+],
+"parent": "hereditary angioedema",
+"defn": ""
+},
+{
+"id": "MONDO:0025956",
+"name": "ovarian remnant syndrome",
+"syn": [],
+"parent": "ovarian disorder",
+"defn": "Ovarian remnant syndrome (ORS) is characterized by the presence of residual ovarian tissue after a woman has had surgery to remove one ovary or both ovaries (oo"
+},
+{
+"id": "MONDO:0025986",
+"name": "megacystis-microcolon-intestinal hypoperistalsis syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0026045",
+"name": "prurigo nodularis",
+"syn": [],
+"parent": "skin disorder",
+"defn": "Prurigonodularis (PN) is a skin disease in which hard crusty lumps are formed on the skin that itches intensely. Repetitive rubbing, scratching, and touching re"
+},
+{
+"id": "MONDO:0026404",
+"name": "X inactivation, familial skewed, 1",
+"syn": [
+"X-inactivation, familial skewed",
+"X-inactivation, familial skewed, 1"
+],
+"parent": "X inactivation, familial skewed",
+"defn": ""
+},
+{
+"id": "MONDO:0026426",
+"name": "X inactivation, familial skewed, 2",
+"syn": [
+"X-inactivation, familial skewed, 2"
+],
+"parent": "X inactivation, familial skewed",
+"defn": ""
+},
+{
+"id": "MONDO:0026720",
+"name": "mitochondrial complex I deficiency, nuclear type 12",
+"syn": [
+"mitochondrial complex i deficiency, nuclear type 12, X-linked recessive"
+],
+"parent": "mitochondrial complex I deficiency, nuclear type",
+"defn": ""
+},
+{
+"id": "MONDO:0026721",
+"name": "mitochondrial complex I deficiency, nuclear type 30",
+"syn": [],
+"parent": "mitochondrial complex I deficiency, nuclear type",
+"defn": ""
+},
+{
+"id": "MONDO:0026722",
+"name": "Mullegama-Klein-Martinez syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0026723",
+"name": "intellectual developmental disorder, X-linked 108",
+"syn": [
+"intellectual developmental disorder, X-linked 108, X-linked recessive"
+],
+"parent": "non-syndromic X-linked intellectual disability",
+"defn": ""
+},
+{
+"id": "MONDO:0026724",
+"name": "Paganini-Miozzo syndrome",
+"syn": [
+"mental retardation, X-Linked, syndromic, Paganini-Miozzo type",
+"Paganini-Miozzo syndrome, X-linked recessive"
+],
+"parent": "X-linked syndromic intellectual disability",
+"defn": ""
+},
+{
+"id": "MONDO:0026726",
+"name": "nephrotic syndrome, type 20",
+"syn": [],
+"parent": "familial nephrotic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0026727",
+"name": "Shukla-Vernon syndrome",
+"syn": [
+"Shukla-Vernon syndrome, X-linked recessive"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0026729",
+"name": "congenital disorder of glycosylation, type ICC",
+"syn": [
+"congenital disorder of glycosylation, type Icc, X-linked recessive"
+],
+"parent": "congenital disorder of glycosylation type I",
+"defn": ""
+},
+{
+"id": "MONDO:0026730",
+"name": "Basilicata-Akhtar syndrome",
+"syn": [
+"Basilicata-Akhtar syndrome, X-linked dominant"
+],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0026731",
+"name": "hypothyroidism, congenital, nongoitrous, 8",
+"syn": [],
+"parent": "hypothyroidism, congenital, nongoitrous",
+"defn": ""
+},
+{
+"id": "MONDO:0026732",
+"name": "hypothyroidism, congenital, nongoitrous, 9",
+"syn": [
+"hypothyroidism, congenital, nongoitrous, 9, X-linked recessive"
+],
+"parent": "hypothyroidism, congenital, nongoitrous",
+"defn": ""
+},
+{
+"id": "MONDO:0026733",
+"name": "intellectual developmental disorder, X-linked, syndromic, Hackmann-Di Donato type",
+"syn": [
+"intellectual developmental disorder, X-linked, syndromic, Hackman-Di Donato type, X-linked recessive"
+],
+"parent": "X-linked syndromic intellectual disability",
+"defn": ""
+},
+{
+"id": "MONDO:0026762",
+"name": "Wieacker-Wolff syndrome, female-restricted",
+"syn": [
+"Wieacker-Wolff syndrome, female-restricted, X-linked dominant"
+],
+"parent": "Wieacker-Wolff syndrome (spectrum)",
+"defn": ""
+},
+{
+"id": "MONDO:0026763",
+"name": "holoprosencephaly 13, X-linked",
+"syn": [
+"holoprosencephaly 13, X-linked, X-linked recessive, X-linked dominant"
+],
+"parent": "holoprosencephaly",
+"defn": ""
+},
+{
+"id": "MONDO:0026765",
+"name": "congenital disorder of glycosylation, type IIr",
+"syn": [
+"congenital disorder of glycosylation, type IIr, X-linked recessive"
+],
+"parent": "congenital disorder of glycosylation type II",
+"defn": ""
+},
+{
+"id": "MONDO:0026767",
+"name": "immunodeficiency 74, COVID-19-related, X-linked",
+"syn": [
+"immunodeficiency 74, COVID19-related, X-linked, X-linked recessive"
+],
+"parent": "immunodeficiency disease",
+"defn": ""
+},
+{
+"id": "MONDO:0026771",
+"name": "developmental and epileptic encephalopathy, 85, with or without midline brain defects",
+"syn": [
+"DEE85, with or without midline brain defects",
+"developmental and epileptic encephalopathy 85, with or without midline brain defects, X-linked dominant",
+"EIEE85"
+],
+"parent": "genetic developmental and epileptic encephalopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0026777",
+"name": "VEXAS syndrome",
+"syn": [
+"vacuoles, E1 enzyme, X-linked, autoinflammatory, somatic syndrome",
+"VEXAS",
+"VEXAS syndrome, somatic"
+],
+"parent": "autoinflammatory syndrome",
+"defn": "An adult-onset inflammatory disease that affects only males and is caused by somatic, not germline, mutations. The disorder is characterized by adult onset of r"
+},
+{
+"id": "MONDO:0027026",
+"name": "Buschke Lowenstein tumor",
+"syn": [],
+"parent": "reproductive system cancer",
+"defn": "A verrucous carcinoma of the skin or mucosa that occurs in the anogenital region."
+},
+{
+"id": "MONDO:0027029",
+"name": "HHV-6 encephalitis",
+"syn": [],
+"parent": "roseolovirus infectious disease",
+"defn": "HHV-6 encephalitis refers to inflammation of the brain due to an infection with human herpesvirus 6. People who have undergone allogeneic hematopoietic cell tra"
+},
+{
+"id": "MONDO:0027048",
+"name": "deafness, Y-linked 2",
+"syn": [
+"DFNY2"
+],
+"parent": "nonsyndromic deafness, Y-linked",
+"defn": ""
+},
+{
+"id": "MONDO:0027068",
+"name": "mitochondrial complex I deficiency, mitochondrial type 1",
+"syn": [
+"MC1DM1"
+],
+"parent": "mitochondrial complex I deficiency, mitochondrial type",
+"defn": "Any mitochondrial complex I deficiency, mitochondrial type, in which the cause of the disease is a mutation in the MTND3 gene."
+},
+{
+"id": "MONDO:0027069",
+"name": "mitochondrial complex 5 (ATP synthase) deficiency, mitochondrial type 1",
+"syn": [
+"MC5DM1",
+"mitochondrial complex V (ATP synthase) deficiency, mitochondrial type 1"
+],
+"parent": "mitochondrial proton-transporting ATP synthase complex deficiency",
+"defn": ""
+},
+{
+"id": "MONDO:0027091",
+"name": "xanthogranulomatous sialadenitis",
+"syn": [
+"sialadenitis, xanthogranulomatous"
+],
+"parent": "sialadenitis",
+"defn": ""
+},
+{
+"id": "MONDO:0027353",
+"name": "autosomal recessive dyskeratosis congenita 4",
+"syn": [
+"dyskeratosis congenita, autosomal recessive 4"
+],
+"parent": "dyskeratosis congenita",
+"defn": "A dyskeratosis congenita that has material basis in an autosomal recessive mutation of TERT on chromosome 5p15.33."
+},
+{
+"id": "MONDO:0027407",
+"name": "Kleefstra syndrome 1",
+"syn": [],
+"parent": "congenital nervous system disorder",
+"defn": "An autosomal dominant non-syndromic intellectual disability that has material basis in an autosomal dominant mutation of EHMT1 on chromosome 9q34.3."
+},
+{
+"id": "MONDO:0027451",
+"name": "autosomal recessive cutis laxa type 2D",
+"syn": [
+"ARCL2D"
+],
+"parent": "autosomal recessive cutis laxa type 2",
+"defn": "An autosomal recessive cutis laxa type II classic type characterized by cardiovascular and neurologic involvement and that has material basis in homozygous muta"
+},
+{
+"id": "MONDO:0027462",
+"name": "autosomal recessive cutis laxa type 2C",
+"syn": [],
+"parent": "autosomal recessive cutis laxa type 2",
+"defn": "An autosomal recessive cutis laxa type II classic type characterized by cardiovascular involvement that has material basis in homozygous mutation in the ATP6V1E"
+},
+{
+"id": "MONDO:0027652",
+"name": "5-fluorouracil toxicity",
+"syn": [],
+"parent": "chemotherapy-induced toxicity",
+"defn": ""
+},
+{
+"id": "MONDO:0027653",
+"name": "abacavir toxicity",
+"syn": [],
+"parent": "poisoning",
+"defn": ""
+},
+{
+"id": "MONDO:0027655",
+"name": "allopurinol toxicity",
+"syn": [],
+"parent": "poisoning",
+"defn": ""
+},
+{
+"id": "MONDO:0027664",
+"name": "cisplatin toxicity",
+"syn": [],
+"parent": "chemotherapy-induced toxicity",
+"defn": ""
+},
+{
+"id": "MONDO:0027666",
+"name": "codeine toxicity",
+"syn": [],
+"parent": "poisoning",
+"defn": ""
+},
+{
+"id": "MONDO:0027667",
+"name": "efavirenz toxicity",
+"syn": [],
+"parent": "poisoning",
+"defn": ""
+},
+{
+"id": "MONDO:0027668",
+"name": "flucloxacilline toxicity",
+"syn": [],
+"parent": "poisoning",
+"defn": ""
+},
+{
+"id": "MONDO:0027675",
+"name": "irinotecan toxicity",
+"syn": [],
+"parent": "chemotherapy-induced toxicity",
+"defn": ""
+},
+{
+"id": "MONDO:0027676",
+"name": "congenital anomalies of kidney and urinary tract 2",
+"syn": [
+"congenital anomalies of kidney and urinary tract type 2",
+"congenital anomaly of kidney and urinary tract caused by mutation in TBX18",
+"TBX18 congenital anomaly of kidney and urinary tract"
+],
+"parent": "congenital anomaly of kidney and urinary tract",
+"defn": "Any congenital anomaly of kidney and urinary tract in which the cause of the disease is a mutation in the TBX18 gene."
+},
+{
+"id": "MONDO:0027677",
+"name": "isoniazid toxicity",
+"syn": [],
+"parent": "poisoning",
+"defn": ""
+},
+{
+"id": "MONDO:0027687",
+"name": "raltegravir toxicity",
+"syn": [],
+"parent": "poisoning",
+"defn": ""
+},
+{
+"id": "MONDO:0027694",
+"name": "amyotrophic lateral sclerosis type 23",
+"syn": [
+"ALS23"
+],
+"parent": "familial amyotrophic lateral sclerosis",
+"defn": ""
+},
+{
+"id": "MONDO:0027696",
+"name": "voriconazole toxicity",
+"syn": [],
+"parent": "poisoning",
+"defn": ""
+},
+{
+"id": "MONDO:0027749",
+"name": "serpinopathy",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "Hereditary disease by a qualitative or quantitative deficiencies or overexpression and/or abnormal accumulation of SERPIN; SERPINs are members of the serpin (se"
+},
+{
+"id": "MONDO:0027766",
+"name": "generalized lipodystrophy",
+"syn": [
+"complete generalised lipodystrophy",
+"complete generalized lipodystrophy"
+],
+"parent": "lipodystrophy",
+"defn": "Almost complete absence of subcutaneous and/or visceral adipose tissue."
+},
+{
+"id": "MONDO:0027767",
+"name": "partial lipodystrophy",
+"syn": [],
+"parent": "lipodystrophy",
+"defn": "Loss and redistribution of subcutaneous and/or visceral adipose tissue from specific regions of the body."
+},
+{
+"id": "MONDO:0027772",
+"name": "lung colloid adenocarcinoma",
+"syn": [
+"lung mucinous cystadenocarcinoma",
+"lung mucinous cystic tumor of borderline malignancy",
+"lung mucinous cystic tumour of borderline malignancy"
+],
+"parent": "mucinous adenocarcinoma",
+"defn": "A morphologic variant of lung adenocarcinoma characterized by the presence of mucin pools containing islands of well differentiated adenocarcinoma cells."
+},
+{
+"id": "MONDO:0028226",
+"name": "autosomal recessive severe congenital neutropenia",
+"syn": [],
+"parent": "autosomal recessive disease",
+"defn": ""
+},
+{
+"id": "MONDO:0029000",
+"name": "poisoning",
+"syn": [],
+"parent": "disease of primarily extrinsic mechanism",
+"defn": "A condition or physical state produced by the ingestion, injection, inhalation of or exposure to a deleterious agent."
+},
+{
+"id": "MONDO:0029130",
+"name": "polydactyly, postaxial, type A8",
+"syn": [],
+"parent": "postaxial polydactyly type A",
+"defn": ""
+},
+{
+"id": "MONDO:0029131",
+"name": "peripheral neuropathy, autosomal recessive, with or without impaired intellectual development",
+"syn": [],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0029132",
+"name": "Liddle syndrome 3",
+"syn": [],
+"parent": "Liddle syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0029133",
+"name": "muscular dystrophy, limb-girdle, autosomal dominant 4",
+"syn": [
+"calpain-3-related LGMD D4",
+"calpain-3-related limb-girdle muscular dystrophy D4",
+"LGMD type D4"
+],
+"parent": "muscular dystrophy, limb-girdle, autosomal dominant",
+"defn": ""
+},
+{
+"id": "MONDO:0029134",
+"name": "severe combined immunodeficiency due to CARMIL2 deficiency",
+"syn": [
+"immunodeficiency 58"
+],
+"parent": "autosomal recessive disease",
+"defn": ""
+},
+{
+"id": "MONDO:0029135",
+"name": "muscular dystrophy-dystroglycanopathy (limb-girdle), type C, 8",
+"syn": [
+"LGMD-POMGNT2 related myopathy"
+],
+"parent": "muscular dystrophy-dystroglycanopathy, type C",
+"defn": ""
+},
+{
+"id": "MONDO:0029136",
+"name": "muscular dystrophy, limb-girdle, autosomal recessive 23",
+"syn": [
+"laminin subunit alpha 2-related limb-girdle muscular dystrophy R23"
+],
+"parent": "autosomal recessive limb-girdle muscular dystrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0029137",
+"name": "hearing loss, autosomal dominant 74",
+"syn": [],
+"parent": "autosomal dominant nonsyndromic hearing loss",
+"defn": ""
+},
+{
+"id": "MONDO:0029138",
+"name": "developmental and epileptic encephalopathy, 67",
+"syn": [
+"DEE67",
+"developmental and epileptic encephalopathy 67",
+"EIEE67"
+],
+"parent": "genetic developmental and epileptic encephalopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0029140",
+"name": "glycosylphosphatidylinositol biosynthesis defect 18",
+"syn": [
+"developmental and epileptic encephalopathy 95"
+],
+"parent": "inherited lipid metabolism disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0029141",
+"name": "Usher syndrome, type 4",
+"syn": [
+"Usher syndrome, type IV"
+],
+"parent": "Usher syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0029142",
+"name": "hearing loss, autosomal recessive 111",
+"syn": [],
+"parent": "hearing loss, autosomal recessive",
+"defn": ""
+},
+{
+"id": "MONDO:0029143",
+"name": "intellectual developmental disorder with hypertelorism and distinctive facies",
+"syn": [],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0029144",
+"name": "extraoral halitosis due to methanethiol oxidase deficiency",
+"syn": [
+"autosomal recessive extra-oral halitosis"
+],
+"parent": "autosomal recessive disease",
+"defn": ""
+},
+{
+"id": "MONDO:0029145",
+"name": "orofacial cleft 8",
+"syn": [],
+"parent": "orofacial cleft",
+"defn": ""
+},
+{
+"id": "MONDO:0029147",
+"name": "spermatogenic failure 33",
+"syn": [],
+"parent": "spermatogenic failure",
+"defn": ""
+},
+{
+"id": "MONDO:0029148",
+"name": "spermatogenic failure 34",
+"syn": [],
+"parent": "spermatogenic failure",
+"defn": ""
+},
+{
+"id": "MONDO:0029465",
+"name": "intellectual developmental disorder, autosomal dominant 69",
+"syn": [
+"mental retardation, autosomal dominant 69",
+"MRD69"
+],
+"parent": "intellectual disability, autosomal dominant",
+"defn": ""
+},
+{
+"id": "MONDO:0030005",
+"name": "epilepsy, early-onset, with or without developmental delay",
+"syn": [
+"EPEDD"
+],
+"parent": "epilepsy, early-onset",
+"defn": ""
+},
+{
+"id": "MONDO:0030006",
+"name": "combined oxidative phosphorylation deficiency 40",
+"syn": [
+"COXPD40"
+],
+"parent": "combined oxidative phosphorylation deficiency",
+"defn": ""
+},
+{
+"id": "MONDO:0030007",
+"name": "combined oxidative phosphorylation deficiency 41",
+"syn": [
+"COXPD41"
+],
+"parent": "combined oxidative phosphorylation deficiency",
+"defn": ""
+},
+{
+"id": "MONDO:0030008",
+"name": "combined oxidative phosphorylation deficiency 42",
+"syn": [
+"COXPD42"
+],
+"parent": "combined oxidative phosphorylation deficiency",
+"defn": ""
+},
+{
+"id": "MONDO:0030009",
+"name": "alopecia-intellectual disability syndrome 4",
+"syn": [
+"ALOPECIA-MENTAL RETARDATION SYNDROME 4",
+"alopecia-mental retardation syndrome 4",
+"APMR4"
+],
+"parent": "alopecia - intellectual disability syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0030010",
+"name": "hypogonadotropic hypogonadism 25 with anosmia",
+"syn": [
+"HH25"
+],
+"parent": "hypogonadotropic hypogonadism",
+"defn": ""
+},
+{
+"id": "MONDO:0030012",
+"name": "Diets-Jongmans syndrome",
+"syn": [
+"DIJOS",
+"Intellectual Developmental Disorder With Distinctive Facial Dysmorphism"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030013",
+"name": "immunodeficiency 66",
+"syn": [
+"IMD66"
+],
+"parent": "immunodeficiency disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030014",
+"name": "muscular dystrophy, limb-girdle, autosomal recessive 26",
+"syn": [
+"LGMDR26"
+],
+"parent": "autosomal recessive limb-girdle muscular dystrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0030015",
+"name": "bone marrow failure syndrome 6",
+"syn": [
+"BMFS6"
+],
+"parent": "bone marrow failure syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0030017",
+"name": "combined oxidative phosphorylation deficiency 43",
+"syn": [
+"COXPD43"
+],
+"parent": "combined oxidative phosphorylation deficiency",
+"defn": ""
+},
+{
+"id": "MONDO:0030018",
+"name": "autoinflammation with episodic fever and lymphadenopathy",
+"syn": [
+"AIEFL",
+"Cleavage-Resistant Ripk1-Induced Autoinflammatory Syndrome",
+"Cria Syndrome"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030019",
+"name": "anauxetic dysplasia 3",
+"syn": [
+"ANXD3"
+],
+"parent": "anauxetic dysplasia",
+"defn": ""
+},
+{
+"id": "MONDO:0030020",
+"name": "combined oxidative phosphorylation deficiency 44",
+"syn": [
+"COXPD44"
+],
+"parent": "combined oxidative phosphorylation deficiency",
+"defn": ""
+},
+{
+"id": "MONDO:0030024",
+"name": "neurodevelopmental disorder with or without autistic features and/or structural brain abnormalities",
+"syn": [
+"NEDASB"
+],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0030025",
+"name": "neurodevelopmental disorder with hypotonia, microcephaly, and seizures",
+"syn": [
+"NEDHYMS"
+],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0030026",
+"name": "retinal dystrophy with leukodystrophy",
+"syn": [
+"RDLKD"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030027",
+"name": "tremor, hereditary essential, 6",
+"syn": [
+"ETM6"
+],
+"parent": "essential tremor",
+"defn": ""
+},
+{
+"id": "MONDO:0030028",
+"name": "neurodegeneration, childhood-onset, with ataxia, tremor, optic atrophy, and cognitive decline",
+"syn": [
+"CONATOC"
+],
+"parent": "inherited neurodegenerative disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0030029",
+"name": "skeletal dysplasia, mild, with joint laxity and advanced bone age",
+"syn": [
+"SDJLABA"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030030",
+"name": "Nizon-Isidor syndrome",
+"syn": [
+"NIZIDS"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030031",
+"name": "lissencephaly 10",
+"syn": [
+"LIS10"
+],
+"parent": "lissencephaly spectrum disorders",
+"defn": ""
+},
+{
+"id": "MONDO:0030033",
+"name": "seizures, early-onset, with neurodegeneration and brain calcifications",
+"syn": [
+"seizures, early-onset, with neurodegeneration and brain calcification",
+"SENEBAC"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030034",
+"name": "epilepsy, progressive myoclonic, 11",
+"syn": [
+"EPM11"
+],
+"parent": "progressive myoclonus epilepsy",
+"defn": ""
+},
+{
+"id": "MONDO:0030035",
+"name": "leukoencephalopathy, developmental delay, and episodic neurologic regression syndrome",
+"syn": [
+"LEUDEN",
+"Leuden Syndrome"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030036",
+"name": "leukoencephalopathy, motor delay, spasticity, and dysarthria syndrome",
+"syn": [
+"LEMSPAD",
+"Lemspad Syndrome"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030037",
+"name": "neurodevelopmental disorder with hypotonia and cerebellar atrophy, with or without seizures",
+"syn": [
+"Glycosylphosphatidylinositol Biosynthesis Defect 22",
+"NEDHCAS"
+],
+"parent": "inherited lipid metabolism disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0030038",
+"name": "hereditary glaucoma, primary closed-angle",
+"syn": [
+"glaucoma, primary closed-angle",
+"GLCC",
+"hereditary primary angle-closure glaucoma"
+],
+"parent": "primary angle-closure glaucoma",
+"defn": ""
+},
+{
+"id": "MONDO:0030042",
+"name": "proteinuria, chronic benign",
+"syn": [
+"PROCHOB"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030043",
+"name": "congenital disorder of glycosylation, type iit",
+"syn": [
+"Cdg Iit",
+"CDG2T",
+"GALNT2-CDG"
+],
+"parent": "congenital disorder of glycosylation type II",
+"defn": ""
+},
+{
+"id": "MONDO:0030044",
+"name": "pseudo-TORCH syndrome 3",
+"syn": [
+"PTORCH3"
+],
+"parent": "pseudo-TORCH syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0030045",
+"name": "Liberfarb syndrome",
+"syn": [
+"LIBF",
+"short stature-skeletal dysplasia-retinal degeneration-intellectual disability-sensorineural hearing loss syndrome",
+"spondyloepimetaphyseal dysplasia, Liberfarb Type"
+],
+"parent": "syndromic disease",
+"defn": "A progressive disorder involving connective tissue, bone, retina, ear, and brain, characterized by early-onset retinal degeneration, sensorineural hearing loss,"
+},
+{
+"id": "MONDO:0030046",
+"name": "neurodevelopmental disorder and structural brain anomalies with or without seizures and spasticity",
+"syn": [
+"NEDBASS"
+],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0030047",
+"name": "microcephaly, developmental delay, and brittle hair syndrome",
+"syn": [
+"MDBH"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030048",
+"name": "harderoporphyria",
+"syn": [
+"HARPO"
+],
+"parent": "CPOX-related hereditary coproporphyria",
+"defn": ""
+},
+{
+"id": "MONDO:0030049",
+"name": "46,xx sex reversal 5",
+"syn": [
+"SRXX5"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030051",
+"name": "intellectual developmental disorder with autistic features and language delay, with or without seizures",
+"syn": [
+"IDDALDS"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030054",
+"name": "developmental and epileptic encephalopathy, 86",
+"syn": [
+"DEE86",
+"developmental and epileptic encephalopathy 86",
+"EIEE86"
+],
+"parent": "genetic developmental and epileptic encephalopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0030055",
+"name": "neuronopathy, distal hereditary motor, autosomal recessive 8",
+"syn": [
+"sorbitol dehydrogenase deficiency",
+"sorbitol dehydrogenase deficiency with peripheral neuropathy",
+"SORDD"
+],
+"parent": "neuronopathy, distal hereditary motor, autosomal recessive",
+"defn": ""
+},
+{
+"id": "MONDO:0030056",
+"name": "Fanconi renotubular syndrome 5",
+"syn": [
+"Fanconi Renotubular Syndrome, Acadian Variant",
+"FRTS5"
+],
+"parent": "inherited Fanconi renotubular syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0030057",
+"name": "neurodevelopmental, jaw, eye, and digital syndrome",
+"syn": [
+"NEDJED"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0030058",
+"name": "hearing loss, autosomal dominant 77",
+"syn": [],
+"parent": "autosomal dominant nonsyndromic hearing loss",
+"defn": ""
+},
+{
+"id": "MONDO:0030059",
+"name": "developmental and epileptic encephalopathy, 87",
+"syn": [
+"DEE87",
+"developmental and epileptic encephalopathy 87",
+"EIEE87"
+],
+"parent": "genetic developmental and epileptic encephalopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0030060",
+"name": "neurodevelopmental disorder with language impairment and behavioral abnormalities",
+"syn": [
+"GRIA2-related complex neurodevelopmental disorder",
+"NEDLIB"
+],
+"parent": "complex neurodevelopmental disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0030061",
+"name": "periventricular nodular heterotopia 9",
+"syn": [
+"PVNH9"
+],
+"parent": "periventricular nodular heterotopia",
+"defn": ""
+},
+{
+"id": "MONDO:0030062",
+"name": "arrhythmogenic right ventricular dysplasia, familial, 14",
+"syn": [
+"Arrhythmogenic Right Ventricular Cardiomyopathy 14",
+"ARVD14"
+],
+"parent": "familial isolated arrhythmogenic right ventricular dysplasia",
+"defn": ""
+}
+]

@@ -1,0 +1,1662 @@
+[
+{
+"id": "MONDO:0042458",
+"name": "Trichinella spiralis infectious disease",
+"syn": [
+"infection by larvae of Trichinella spiralis",
+"Trichinella spiralis caused disease or disorder",
+"Trichinella spiralis disease or disorder"
+],
+"parent": "trichinellosis",
+"defn": "An disease or disorder caused by infection with Trichinella spiralis."
+},
+{
+"id": "MONDO:0042484",
+"name": "disseminated sporotrichosis",
+"syn": [],
+"parent": "systemic mycosis",
+"defn": ""
+},
+{
+"id": "MONDO:0042485",
+"name": "infective arthritis",
+"syn": [],
+"parent": "infectious disease",
+"defn": "The inflammation of one or more joints caused by any infectious pathogen within the joint space. Symptoms include pain, stiffness, and decreased range of motion"
+},
+{
+"id": "MONDO:0042486",
+"name": "polyposis syndrome, hereditary mixed, 1",
+"syn": [
+"polyposis syndrome, hereditary mixed 1"
+],
+"parent": "hereditary mixed polyposis syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0042487",
+"name": "uterine cervix carcinoma in situ",
+"syn": [
+"carcinoma in situ of cervix aJCC v6",
+"carcinoma in situ of cervix uteri aJCC v6",
+"carcinoma in situ of the cervix aJCC v6"
+],
+"parent": "uterus carcinoma in situ",
+"defn": "Stage 0 includes: (Tis, N0, M0). Tis: Carcinoma in situ. N0: No regional lymph node metastasis. M0: No distant metastasis. (AJCC 6th ed.) - 2003"
+},
+{
+"id": "MONDO:0042488",
+"name": "Cestode infectious disease",
+"syn": [
+"Cestoda caused disease or disorder",
+"Cestoda disease or disorder",
+"Cestoda infectious disease"
+],
+"parent": "helminthiasis",
+"defn": "Infections with true tapeworms of the helminth subclass Cestoda."
+},
+{
+"id": "MONDO:0042490",
+"name": "neutropenia, severe congenital, 1, autosomal dominant",
+"syn": [
+"neutropenia, severe congenital 1, autosomal dominant"
+],
+"parent": "autosomal dominant severe congenital neutropenia",
+"defn": ""
+},
+{
+"id": "MONDO:0042491",
+"name": "cervical squamous intraepithelial neoplasia",
+"syn": [
+"cervical sil",
+"cervical squamous intraepithelial lesion",
+"cervix squamous intraepithelial lesion"
+],
+"parent": "uterine cervix neoplasm",
+"defn": "A neoplastic process that affects the squamous epithelium of the cervix. It is classified as cervical squamous intraepithelial neoplasia 1, 2, or 3, according t"
+},
+{
+"id": "MONDO:0042493",
+"name": "gastric non-hodgkin lymphoma",
+"syn": [
+"gastric non-Hodgkin's lymphoma",
+"non-Hodgkin lymphoma of stomach",
+"non-Hodgkin's lymphoma of stomach"
+],
+"parent": "gastric lymphoma",
+"defn": "An extranodal non-Hodgkin lymphoma that arises from the stomach with the bulk of the mass located in the stomach. The vast majority of cases are diffuse large B"
+},
+{
+"id": "MONDO:0042494",
+"name": "childhood malignant melanoma",
+"syn": [
+"childhood melanoma",
+"childhood melanoma (disease)",
+"melanoma (disease) of childhood"
+],
+"parent": "melanoma",
+"defn": "A melanoma that occurs during childhood."
+},
+{
+"id": "MONDO:0042495",
+"name": "arteriosclerotic retinopathy",
+"syn": [
+"arteriosclerosis disorder of retina",
+"retina arteriosclerosis disorder"
+],
+"parent": "arteriosclerosis disorder",
+"defn": "A arteriosclerosis disorder that involves the retina."
+},
+{
+"id": "MONDO:0042496",
+"name": "ergotism",
+"syn": [],
+"parent": "mycotoxicosis",
+"defn": "Poisoning caused by ingesting ergotized grain or by the misdirected or excessive use of ergot as a medicine."
+},
+{
+"id": "MONDO:0042497",
+"name": "mycotoxicosis",
+"syn": [
+"Fungi caused poisoning",
+"Fungi poisoning"
+],
+"parent": "fungal infectious disease",
+"defn": "Poisoning caused by the ingestion of mycotoxins (toxins of fungal origin)."
+},
+{
+"id": "MONDO:0042498",
+"name": "Ruzicka-Goerz-Anton syndrome",
+"syn": [
+"Ruzicka Goerz Anton syndrome"
+],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042499",
+"name": "benign familial neonatal-infantile seizures 1",
+"syn": [],
+"parent": "benign familial infantile epilepsy",
+"defn": ""
+},
+{
+"id": "MONDO:0042600",
+"name": "Sammartino-Decreccio syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042601",
+"name": "Samson-Gardner syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042602",
+"name": "Samson-Viljoen syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042603",
+"name": "Sanderson-Fraser syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042604",
+"name": "Sandhaus-Ben-Ami syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042605",
+"name": "Y chromosome infertility due to DAZ1 deletion",
+"syn": [],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042705",
+"name": "prostatic malacoplakia associated with prostatic abscess",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042717",
+"name": "Saul-Wilkes-Stevenson syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042726",
+"name": "macrogyria, pseudobulbar palsy and intellectual disability",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042727",
+"name": "sacrococcygeal teratoma",
+"syn": [
+"pre-sacral teratoma",
+"presacral teratoma"
+],
+"parent": "vertebral column disorder",
+"defn": "A teratoma that is found at the base of the coccyx. It is the most commonly seen tumor in newborns."
+},
+{
+"id": "MONDO:0042911",
+"name": "Schwartz-Cohen-addad-Lambert syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042912",
+"name": "Schlegelberger-Grote syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042913",
+"name": "Schrander-stumpel-Theunissen-Hulsmans syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042956",
+"name": "Saal-Bulas syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042960",
+"name": "Sackey-Sakati-Aur syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042961",
+"name": "sacral hemangiomas multiple congenital abnormalities",
+"syn": [],
+"parent": "Cowden disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042962",
+"name": "Slti-Salem syndrome",
+"syn": [],
+"parent": "hypogonadism",
+"defn": ""
+},
+{
+"id": "MONDO:0042963",
+"name": "wandering spleen",
+"syn": [],
+"parent": "splenic disorder",
+"defn": "A condition characterized by an abnormal spleen position due to loss, weakness, or malformation of one or more of the ligaments that hold the spleen in its norm"
+},
+{
+"id": "MONDO:0042964",
+"name": "Machado-Joseph disease type 4",
+"syn": [
+"azorean disease, type iv"
+],
+"parent": "Machado-Joseph disease",
+"defn": "A subtype of Machado-Joseph disease characterized by Parkinsonian symptoms that respond particularly well to levodopa treatment."
+},
+{
+"id": "MONDO:0042966",
+"name": "inherited mitral valve disease",
+"syn": [
+"congenital anomaly of mitral valve",
+"hereditary mitral valve disease"
+],
+"parent": "mitral valve disorder",
+"defn": "An instance of mitral valve disease that is caused by an inherited modification of the individual's genome."
+},
+{
+"id": "MONDO:0042967",
+"name": "rheumatic disease of mitral valve",
+"syn": [
+"mitral valve rheumatologic disorder",
+"rheumatologic disorder of mitral valve"
+],
+"parent": "mitral valve disorder",
+"defn": "A rheumatologic disorder that involves the mitral valve."
+},
+{
+"id": "MONDO:0042968",
+"name": "partial duplication of chromosome 12",
+"syn": [],
+"parent": "syndrome caused by partial chromosomal duplication",
+"defn": ""
+},
+{
+"id": "MONDO:0042969",
+"name": "partial duplication of the long arm of chromosome 12",
+"syn": [],
+"parent": "partial duplication of chromosome 12",
+"defn": "Chromosome 12q duplication is a chromosome abnormality that occurs when there is an extra copy of genetic material on the long arm (q) of chromosome 12. The sev"
+},
+{
+"id": "MONDO:0042970",
+"name": "disorder of glutamate decarboxylase",
+"syn": [
+"deficiency of glutamate decarboxylase",
+"disorder of glutamate decarboxylase activity",
+"glutamate decarboxylase activity disease"
+],
+"parent": "metabolic disease",
+"defn": "A disease that has its basis in the disruption of glutamate decarboxylase activity."
+},
+{
+"id": "MONDO:0042971",
+"name": "congenital herpes virus infection",
+"syn": [
+"congenital infection caused by herpes virus",
+"Herpesviridae caused infectious embryofetopathy",
+"Herpesviridae infectious embryofetopathy"
+],
+"parent": "Herpesviridae infectious disease",
+"defn": "An infectious embryofetopathy caused by infection with Herpesviridae."
+},
+{
+"id": "MONDO:0042972",
+"name": "meningococcemia",
+"syn": [],
+"parent": "bacterial infectious disease with sepsis",
+"defn": ""
+},
+{
+"id": "MONDO:0042973",
+"name": "familial osteosclerosis",
+"syn": [
+"hereditary osteosclerosis"
+],
+"parent": "osteosclerosis",
+"defn": "An instance of osteosclerosis that is caused by an inherited modification of the individual's genome."
+},
+{
+"id": "MONDO:0042974",
+"name": "parainfluenza virus type 3 infectious disease",
+"syn": [
+"human respirovirus 3 caused disease or disorder",
+"human respirovirus 3 disease or disorder",
+"human respirovirus 3 infectious disease"
+],
+"parent": "respirovirus infectious disease",
+"defn": "Parainfluenza virus type 3 is one of a group of common viruses known as human parainfluenza viruses (HPIV) that cause a variety of respiratory illnesses. Sympto"
+},
+{
+"id": "MONDO:0042976",
+"name": "vitamin B deficiency",
+"syn": [],
+"parent": "vitamin deficiency disorder",
+"defn": "A condition due to deficiency in any member of the vitamin B complex. These B vitamins are water-soluble and must be obtained from the diet because they are eas"
+},
+{
+"id": "MONDO:0042977",
+"name": "trichoepithelioma, multiple familial, 1",
+"syn": [],
+"parent": "familial multiple trichoepithelioma",
+"defn": ""
+},
+{
+"id": "MONDO:0042979",
+"name": "hypokalemic periodic paralysis, type 1",
+"syn": [],
+"parent": "hypokalemic periodic paralysis",
+"defn": ""
+},
+{
+"id": "MONDO:0042980",
+"name": "Westphal disease",
+"syn": [],
+"parent": "Huntington disease",
+"defn": ""
+},
+{
+"id": "MONDO:0042981",
+"name": "aortic valve stenosis",
+"syn": [
+"aortic stenosis",
+"AS"
+],
+"parent": "aortic valve disorder",
+"defn": "Aortic valve stenosis (AVS) is a condition characterized by narrowing of the heart's aortic valve opening. This narrowing prevents the valve from opening fully,"
+},
+{
+"id": "MONDO:0042982",
+"name": "GATA2 deficiency with susceptibility to MDS/AML",
+"syn": [
+"GATA2 deficiency"
+],
+"parent": "immunodeficiency disease",
+"defn": "A disorder arising from deficiency in the GATA2 with a wide spectrum of phenotypes. Autosomal dominant mutations of GATA2 cause a haploinsufficiency, which, in "
+},
+{
+"id": "MONDO:0042983",
+"name": "neurocutaneous syndrome",
+"syn": [],
+"parent": "nervous system disorder",
+"defn": "A group of disorders characterized by ectodermal-based malformations and neoplastic growths in the skin, nervous system, and other organs."
+},
+{
+"id": "MONDO:0043003",
+"name": "familial acanthosis nigricans",
+"syn": [
+"hereditary acanthosis nigricans (disease)"
+],
+"parent": "acanthosis nigricans",
+"defn": "An instance of acanthosis nigricans (disease) that is caused by an inherited modification of the individual's genome."
+},
+{
+"id": "MONDO:0043004",
+"name": "Weil's disease",
+"syn": [],
+"parent": "leptospirosis",
+"defn": "A jauncice caused by severe leptospirosis."
+},
+{
+"id": "MONDO:0043009",
+"name": "hereditary lethal multiple congenital anomalies/dysmorphic syndrome",
+"syn": [
+"genetic lethal multiple congenital anomalies/dysmorphic syndrome"
+],
+"parent": "disorder of development or morphogenesis",
+"defn": "An instance of lethal multiple congenital anomalies/dysmorphic syndrome that is caused by an inherited modification of the individual's genome."
+},
+{
+"id": "MONDO:0043069",
+"name": "Zerres Rietschel Majewski syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043071",
+"name": "Zazam Sheriff Phillips syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043073",
+"name": "Zadik-Barak-Levin syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043075",
+"name": "neuroaxonal dystrophy renal tubular acidosis",
+"syn": [],
+"parent": "renal tubular acidosis",
+"defn": ""
+},
+{
+"id": "MONDO:0043077",
+"name": "weinstein kliman scully syndrome",
+"syn": [],
+"parent": "hypogonadism",
+"defn": ""
+},
+{
+"id": "MONDO:0043083",
+"name": "coronal synostosis, syndactyly and jejunal atresia",
+"syn": [],
+"parent": "synostosis",
+"defn": ""
+},
+{
+"id": "MONDO:0043085",
+"name": "chromosome 1, uniparental disomy 1q12 q21",
+"syn": [],
+"parent": "chromosome 1 disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0043087",
+"name": "thickened earlobes with conductive deafness from incus-stapes abnormalities",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043089",
+"name": "acute posterior multifocal placoid pigment epitheliopathy",
+"syn": [
+"Epitheliopathy, Acute Posterior Multifocal Placoid Pigment"
+],
+"parent": "acute disease",
+"defn": "Acute posterior multifocal placoid pigment epitheliopathy (APMPPE) is an acquired, inflammatory eye condition affecting the retina, retinal pigment epithelium ("
+},
+{
+"id": "MONDO:0043094",
+"name": "ichthyosis, follicular",
+"syn": [
+"follicular ichthyosis"
+],
+"parent": "ichthyosis",
+"defn": ""
+},
+{
+"id": "MONDO:0043096",
+"name": "holoacardius amorphus",
+"syn": [],
+"parent": "congenital acardia",
+"defn": ""
+},
+{
+"id": "MONDO:0043099",
+"name": "Hordnes Engebretsen Knudtson syndrome",
+"syn": [],
+"parent": "pulmonary valve stenosis",
+"defn": ""
+},
+{
+"id": "MONDO:0043101",
+"name": "hypothalamic dysfunction",
+"syn": [
+"hypothalamic syndrome"
+],
+"parent": "hypothalamic disorder",
+"defn": "Hypothalamic dysfunction refers to a condition in which the hypothalamus is not working properly. The hypothalamus produces hormones that control body temperatu"
+},
+{
+"id": "MONDO:0043103",
+"name": "hypothyroidism due to iodide transport defect",
+"syn": [
+"iodide Transport defect",
+"iodide transport defect"
+],
+"parent": "congenital hypothyroidism",
+"defn": "A condition associated with reduced active import of iodide across the basolateral membrane of the follicular cells of the thyroid gland. Inactivating mutations"
+},
+{
+"id": "MONDO:0043106",
+"name": "ichthyosis linearis circumflexa",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043108",
+"name": "infantile striato thalamic degeneration",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043110",
+"name": "jones hersh yusk syndrome",
+"syn": [],
+"parent": "ectodermal dysplasia syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0043112",
+"name": "lachiewicz sibley syndrome",
+"syn": [],
+"parent": "kidney disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0043114",
+"name": "Landy-Donnai syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043116",
+"name": "Iida Kannari syndrome",
+"syn": [],
+"parent": "craniosynostosis",
+"defn": ""
+},
+{
+"id": "MONDO:0043120",
+"name": "male pseudohermaphroditism due to defective lh molecule",
+"syn": [],
+"parent": "46 XY differences of sex development",
+"defn": ""
+},
+{
+"id": "MONDO:0043123",
+"name": "massa casaer ceulemans syndrome",
+"syn": [],
+"parent": "arthrogryposis",
+"defn": ""
+},
+{
+"id": "MONDO:0043125",
+"name": "mcpherson robertson cammarano syndrome",
+"syn": [],
+"parent": "ptosis",
+"defn": ""
+},
+{
+"id": "MONDO:0043127",
+"name": "mehta lewis patton syndrome",
+"syn": [],
+"parent": "ptosis",
+"defn": ""
+},
+{
+"id": "MONDO:0043129",
+"name": "merlob grunebaum reisner syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043131",
+"name": "Michels Caskey syndrome",
+"syn": [],
+"parent": "46,XX disorder of sex development",
+"defn": ""
+},
+{
+"id": "MONDO:0043133",
+"name": "microcephaly micropenis convulsions",
+"syn": [],
+"parent": "visual epilepsy",
+"defn": ""
+},
+{
+"id": "MONDO:0043135",
+"name": "microcephaly microphthalmos blindness",
+"syn": [],
+"parent": "blindness (disorder)",
+"defn": ""
+},
+{
+"id": "MONDO:0043137",
+"name": "isolated microcephaly",
+"syn": [],
+"parent": "microcephaly",
+"defn": ""
+},
+{
+"id": "MONDO:0043139",
+"name": "microcephaly sparse hair intellectual disability seizures",
+"syn": [],
+"parent": "visual epilepsy",
+"defn": ""
+},
+{
+"id": "MONDO:0043141",
+"name": "microdontia hypodontia short stature",
+"syn": [],
+"parent": "anodontia",
+"defn": ""
+},
+{
+"id": "MONDO:0043143",
+"name": "microphthalmia microtia fetal akinesia",
+"syn": [],
+"parent": "arthrogryposis multiplex congenita",
+"defn": ""
+},
+{
+"id": "MONDO:0043152",
+"name": "negative rheumatoid factor polyarthritis",
+"syn": [],
+"parent": "arthritic joint disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043154",
+"name": "neonatal ovarian cyst",
+"syn": [],
+"parent": "ovarian cyst",
+"defn": ""
+},
+{
+"id": "MONDO:0043156",
+"name": "nephrotic syndrome ocular anomalies",
+"syn": [],
+"parent": "nephrotic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0043162",
+"name": "pagon stephan syndrome",
+"syn": [],
+"parent": "septooptic dysplasia",
+"defn": ""
+},
+{
+"id": "MONDO:0043164",
+"name": "palmer pagon syndrome",
+"syn": [],
+"parent": "hydrocephalus",
+"defn": ""
+},
+{
+"id": "MONDO:0043166",
+"name": "pancreatic lipomatosis duodenal stenosis",
+"syn": [],
+"parent": "duodenal obstruction",
+"defn": ""
+},
+{
+"id": "MONDO:0043168",
+"name": "panostotic fibrous dysplasia",
+"syn": [],
+"parent": "fibrous dysplasia",
+"defn": ""
+},
+{
+"id": "MONDO:0043170",
+"name": "Pavone Fiumara Rizzo syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043172",
+"name": "pfeiffer rockelein syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043174",
+"name": "Pfeiffer Tietze Welte syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043176",
+"name": "phosphoribosylpyrophosphate synthetase deficiency",
+"syn": [
+"deafness hyperuricemia neurologic ataxia"
+],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043179",
+"name": "piepkorn karp hickok syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043183",
+"name": "podder-tolmie syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043185",
+"name": "pointer syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043191",
+"name": "radial defect robin sequence",
+"syn": [],
+"parent": "isolated Pierre-Robin syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0043193",
+"name": "richieri-costa guion-almeida cohen syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043195",
+"name": "Rubinstein Taybi like syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043197",
+"name": "ruvalcaba churesigaew myhre syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043199",
+"name": "short limb dwarf lethal colavita kozlowski type",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0043206",
+"name": "trichostasis spinulosa",
+"syn": [],
+"parent": "disorder of pilosebaceous unit",
+"defn": "Trichostasis spinulosa (TS) is a condition where instead of one hair protruding from a hair follicle, a bundle or bush of hair come out of a single follicle. Th"
+},
+{
+"id": "MONDO:0043207",
+"name": "urethral obstruction sequence",
+"syn": [
+"early urethral obstruction sequence"
+],
+"parent": "urethral obstruction",
+"defn": ""
+},
+{
+"id": "MONDO:0043209",
+"name": "albinism",
+"syn": [],
+"parent": "inborn disorder of amino acid metabolism",
+"defn": "A congenital disorder characterized by partial or complete absence of melanin pigment in the eyes, hair, or skin."
+},
+{
+"id": "MONDO:0043218",
+"name": "neurovascular disorder",
+"syn": [
+"disease of nervous system vasculature",
+"nervous system disorder of vasculature",
+"vasculature nervous system disorder"
+],
+"parent": "nervous system disorder",
+"defn": "A disorder of the nervous system related to a vascular etiology."
+},
+{
+"id": "MONDO:0043219",
+"name": "migraine with brainstem aura",
+"syn": [
+"basilar artery migraine with aura",
+"basilar migraine",
+"basilar-type migraine"
+],
+"parent": "migraine with aura",
+"defn": "A migraine disorder characterized by episodes that are preceded by focal neurological symptoms originating in the brainstem."
+},
+{
+"id": "MONDO:0043224",
+"name": "multi-infarct dementia",
+"syn": [
+"multi infarct dementia"
+],
+"parent": "cerebral infarction",
+"defn": "A common form of dementia caused by multiple cortical or subcortical cerebral infarctions."
+},
+{
+"id": "MONDO:0043226",
+"name": "postpartum amenorrhea-galactorrhea syndrome",
+"syn": [
+"Chiari Frommel Syndrome",
+"Chiari-Frommel syndrome"
+],
+"parent": "galactorrhea",
+"defn": "A postpartum condition consists of persistent lactation and amenorrhea in patients not breast feeding."
+},
+{
+"id": "MONDO:0043230",
+"name": "ciguatera fish poisoning",
+"syn": [
+"ciguatoxin causing toxic effect"
+],
+"parent": "poisoning",
+"defn": "Poisoning caused by ingestion of seafood containing microgram levels of ciguatoxins. The poisoning is characterized by gastrointestinal, neurological and cardio"
+},
+{
+"id": "MONDO:0043233",
+"name": "exfoliative dermatitis",
+"syn": [],
+"parent": "dermatitis",
+"defn": "The widespread involvement of the skin by a scaly, erythematous dermatitis occurring either as a secondary or reactive process to an underlying cutaneous disord"
+},
+{
+"id": "MONDO:0043237",
+"name": "glossodynia",
+"syn": [],
+"parent": "tongue disorder",
+"defn": "Painful sensations in the tongue, including a sensation of burning."
+},
+{
+"id": "MONDO:0043240",
+"name": "hemophilic arthropathy",
+"syn": [
+"hemophilic arthritis"
+],
+"parent": "arthritic joint disease",
+"defn": "A form of arthritis that affects hemophiliacs, which is characterized by bleeding into the joint space."
+},
+{
+"id": "MONDO:0043243",
+"name": "leukoplakia",
+"syn": [
+"keratotic plaque"
+],
+"parent": "precancerous condition",
+"defn": "A white patch or plaque on a mucous membrane that cannot be characterized clinically or pathologically as any other disease. The diagnosis of leukoplakia is one"
+},
+{
+"id": "MONDO:0043247",
+"name": "Mallory-Weiss syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "A disorder characterized by upper gastrointestinal tract bleeding caused by longitudinal mucosal tears in the gastroesophageal junction. The tears result from r"
+},
+{
+"id": "MONDO:0043251",
+"name": "odontoma",
+"syn": [
+"fibro-odontoma",
+"fibroodontoma",
+"odontoma, benign"
+],
+"parent": "hamartoma",
+"defn": "A benign, slow growing, and painless hamartomatous tumor occurring in tooth-bearing areas of the jaws. According to the presence or absence of tooth-like struct"
+},
+{
+"id": "MONDO:0043254",
+"name": "papular urticaria",
+"syn": [
+"prurigo simplex"
+],
+"parent": "urticaria",
+"defn": ""
+},
+{
+"id": "MONDO:0043257",
+"name": "pemphigus and fogo selvagem",
+"syn": [
+"Brazilian pemphigus foliaceus"
+],
+"parent": "pemphigus foliaceus",
+"defn": ""
+},
+{
+"id": "MONDO:0043264",
+"name": "post-traumatic epilepsy",
+"syn": [],
+"parent": "epilepsy",
+"defn": "Recurrent seizures causally related to CRANIOCEREBRAL TRAUMA. Seizure onset may be immediate but is typically delayed for several days after the injury and may "
+},
+{
+"id": "MONDO:0043267",
+"name": "rheumatoid vasculitis",
+"syn": [],
+"parent": "rheumatoid arthritis",
+"defn": "Necrotizing VASCULITIS of small and medium size vessels, developing as a complication in RHEUMATOID ARTHRITIS patients. It is characterized by peripheral vascul"
+},
+{
+"id": "MONDO:0043275",
+"name": "TORCH syndrome",
+"syn": [
+"TORCH infection",
+"toxoplasmosis, Other infections, Rubella, Cytomegalovirus, and Herpes simplex Virus (TORCH) syndrome"
+],
+"parent": "post-infectious syndrome",
+"defn": "A syndrome that results from a group of infections that affect the fetus or the newborn. The group of infections includes Toxoplasma gondii, rubella, cytomegalo"
+},
+{
+"id": "MONDO:0043277",
+"name": "mosaic trisomy 6",
+"syn": [],
+"parent": "chromosome 6 disorder",
+"defn": "Trisomy 6 is a rare prenatal finding. Trisomy 6 conceptions have not been observed in the large case reports of chromosomal mosaicism detected during chorionic "
+},
+{
+"id": "MONDO:0043280",
+"name": "Wallerian degeneration",
+"syn": [],
+"parent": "nervous system disorder",
+"defn": "A condition caused by degeneration, atrophy, and destruction of the distal part of a nerve fiber's axon and myelin, when continuity with the neural cell nucleus"
+},
+{
+"id": "MONDO:0043283",
+"name": "silicosiderosis",
+"syn": [
+"siderosilicosis"
+],
+"parent": "silicosis",
+"defn": ""
+},
+{
+"id": "MONDO:0043287",
+"name": "superior vena cava syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "Obstruction of the blood flow in the superior vena cava caused by a malignant neoplasm, thrombosis, or aneurysm. It is a medical emergency requiring immediate t"
+},
+{
+"id": "MONDO:0043291",
+"name": "Rokitansky-Aschoff sinuses of the gallbladder",
+"syn": [
+"Aschoff-Rokitansky sinuses"
+],
+"parent": "biliary tract disorder",
+"defn": "An abnormality characterized by macroscopic or microscopic outpouchings of gallbladder mucosa into the muscle of the gallbladder wall. It may be associated with"
+},
+{
+"id": "MONDO:0043294",
+"name": "linear scleroderma",
+"syn": [],
+"parent": "localized scleroderma",
+"defn": "A type of localized scleroderma characterized by a long strip of indurated skin, which is typically found unilaterally on an arm or leg, and sometimes on the fo"
+},
+{
+"id": "MONDO:0043297",
+"name": "vibrio vulnificus infectious disease",
+"syn": [
+"Vibrio vulnificus caused disease or disorder",
+"Vibrio vulnificus disease or disorder",
+"vibrio vulnificus infection"
+],
+"parent": "vibrio infectious disease",
+"defn": "An disease or disorder caused by infection with Vibrio vulnificus."
+},
+{
+"id": "MONDO:0043300",
+"name": "actinic cheilitis",
+"syn": [],
+"parent": "cheilitis",
+"defn": ""
+},
+{
+"id": "MONDO:0043303",
+"name": "hyperacusis",
+"syn": [],
+"parent": "disorder of ear",
+"defn": "A disorder in which an individual has an abnormally low noise tolerance, and increased sensitivity to sounds."
+},
+{
+"id": "MONDO:0043310",
+"name": "amaurosis fugax",
+"syn": [],
+"parent": "blindness (disorder)",
+"defn": "Transient complete or partial monocular blindness due to retinal ischemia. This may be caused by emboli from the CAROTID ARTERY (usually in association with CAR"
+},
+{
+"id": "MONDO:0043314",
+"name": "aquarium granuloma",
+"syn": [
+"fish tank granuloma",
+"Mycobacterium marinum caused skin disease",
+"Mycobacterium marinum skin disease"
+],
+"parent": "mycobacterial infectious disease",
+"defn": "A skin condition caused by Mycobacterium marinum, characterized by a skin lesion that presents roughly three weeks after exposure."
+},
+{
+"id": "MONDO:0043317",
+"name": "amyopathic dermatomyositis",
+"syn": [
+"dermatomyositis sine myositis"
+],
+"parent": "clinically amyopathic dermatomyositis",
+"defn": "A form of dermatomyositis characterized by the presence of typical skin finding swithout muscle weakness. Some of the skin changes that suggest dermatomyositis "
+},
+{
+"id": "MONDO:0043320",
+"name": "piriformis syndrome",
+"syn": [
+"piriformis muscle syndrome"
+],
+"parent": "syndromic disease",
+"defn": "A condition referring to irritation or compression of the proximal sciatic nerve, secondary to contraction of the piriformis muscle. It results in pain in the h"
+},
+{
+"id": "MONDO:0043327",
+"name": "cerebrospinal fluid leak",
+"syn": [],
+"parent": "central nervous system disorder",
+"defn": "Discharge of cerebrospinal fluid through a hole through the skull bone most commonly draining from the nose (CEREBROSPINAL FLUID RHINORRHEA) or the ear (CEREBRO"
+},
+{
+"id": "MONDO:0043330",
+"name": "Mirizzi syndrome",
+"syn": [
+"mirizzi's syndrome"
+],
+"parent": "extrahepatic cholestasis",
+"defn": "Complication of cholelithiasis characterized by obstructive jaundice; abdominal pain, and fever."
+},
+{
+"id": "MONDO:0043339",
+"name": "lathyrism",
+"syn": [
+"Lathyrus species poisoning"
+],
+"parent": "poisoning",
+"defn": "A paralytic condition of the legs caused by ingestion of lathyrogens, especially beta-aminopropionitrile or beta-N-oxalyl amino-L-alanine, which are found in th"
+},
+{
+"id": "MONDO:0043343",
+"name": "Chilaiditi syndrome",
+"syn": [
+"subphrenic interposition syndrome"
+],
+"parent": "colonic disorder",
+"defn": "Interposition of a portion of the colon (e.g., sigmoid colon) between the liver and the diaphragm. It is associated with abdominal pain, vomiting, constipation,"
+},
+{
+"id": "MONDO:0043346",
+"name": "progressive transformation of germinal centers",
+"syn": [
+"progressive transformation of Germinal centres"
+],
+"parent": "lymphoma",
+"defn": "Progressive transformation of germinal centers is a condition in which a lymph node becomes very enlarged (lymphadenopathy). Typically, only one lymph node is a"
+},
+{
+"id": "MONDO:0043349",
+"name": "intravascular papillary endothelial hyperplasia",
+"syn": [
+"Masson lesion",
+"Masson pseudotumor",
+"Masson's pseudosarcoma"
+],
+"parent": "angiomatosis",
+"defn": "A reactive, well-circumscribed vascular lesion. It is characterized by the formation of thin papillae projecting within the lumen of blood vessels. The papillae"
+},
+{
+"id": "MONDO:0043352",
+"name": "fournier gangrene",
+"syn": [
+"fournier's gangrene"
+],
+"parent": "male reproductive system disorder",
+"defn": "An acute necrotic infection of the SCROTUM; PENIS; or PERINEUM. It is characterized by scrotum pain and redness with rapid progression to gangrene and sloughing"
+},
+{
+"id": "MONDO:0043355",
+"name": "collagenous gastritis",
+"syn": [],
+"parent": "gastritis",
+"defn": "A rare type of gastritis characterized by gastric subepithelial collagen deposition and inflammatory infiltrates in the lamina propria. The pathogenesis of this"
+},
+{
+"id": "MONDO:0043358",
+"name": "engraftment syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "A toxicity of hematopoietic stem cell transplantation that manifests as fever, rash and pulmonary deterioration which becomes evident at marrow engraftment. It "
+},
+{
+"id": "MONDO:0043361",
+"name": "May-Thurner syndrome",
+"syn": [
+"iliac vein compression syndrome"
+],
+"parent": "peripheral vascular disease",
+"defn": "A compression of ILIAC VEIN that results in a decreased flow in the vein and in the left LOWER EXTREMITY due to a vascular malformation. It may result in left l"
+},
+{
+"id": "MONDO:0043364",
+"name": "eosinophil peroxidase deficiency",
+"syn": [],
+"parent": "leukocyte disorder",
+"defn": "A rare abnormality of eosinophil granulocytes characterized by decreased or absent peroxidase activity and decreased volume of the granule matrix."
+},
+{
+"id": "MONDO:0043370",
+"name": "secondary adrenal insufficiency",
+"syn": [
+"central adrenal insufficiency",
+"central Hypoadrenalism",
+"hypocortisolism secondary to another disorder"
+],
+"parent": "adrenocortical insufficiency",
+"defn": "A hormonal disorder that occurs when lack of corticotropin-releasing hormone (CRH) secretion from the hypothalamus or adrenocorticotropic hormone (ACTH) secreti"
+},
+{
+"id": "MONDO:0043373",
+"name": "sudden sensorineural hearing loss",
+"syn": [],
+"parent": "sudden hearing loss disorder",
+"defn": "Sensorineural hearing loss which develops suddenly over a period of hours or a few days. It varies in severity from mild to total deafness. Sudden deafness can "
+},
+{
+"id": "MONDO:0043377",
+"name": "juvenile spondyloarthropathy",
+"syn": [
+"JSpA",
+"juvenile Spondyloarthritis"
+],
+"parent": "ankylosing spondylitis",
+"defn": "A group of chronic, inflammatory childhood diseases characterized by arthritis and enthesitis. This disorder can affect the axial skeleton in late childhood or "
+},
+{
+"id": "MONDO:0043424",
+"name": "digestive system infectious disorder",
+"syn": [
+"digestive system infection",
+"gastrointestinal infection",
+"gastrointestinal system infection"
+],
+"parent": "digestive system disorder",
+"defn": "A viral, bacterial, fungal, or parasitic infectious process that affects the digestive system."
+},
+{
+"id": "MONDO:0043452",
+"name": "chromosome 8, trisomy",
+"syn": [],
+"parent": "chromosome 8 disorder",
+"defn": "A chromosomal abnormality consisting of the presence of a third copy of chromosome 8 in somatic cells."
+},
+{
+"id": "MONDO:0043455",
+"name": "humoral hypercalcemia of malignancy",
+"syn": [
+"hypercalcemia of malignancy"
+],
+"parent": "hypercalcemia disease",
+"defn": "Hypercalcemia generally develops as a late complication of malignancy; its appearance has grave prognostic significance. It remains unclear, however, whether de"
+},
+{
+"id": "MONDO:0043459",
+"name": "radiation-induced disorder",
+"syn": [
+"Radiation sickness",
+"radiation-induced abnormalities",
+"radiation-induced Abnormality"
+],
+"parent": "disease of primarily extrinsic mechanism",
+"defn": "A non-neoplastic or neoplastic disorder which results from exposure to radiation. Examples of non-neoplastic disorders include dermatitis, enteritis, stomatitis"
+},
+{
+"id": "MONDO:0043465",
+"name": "achlorhydria",
+"syn": [],
+"parent": "stomach disorder",
+"defn": "Absence of hydrochloric acid in the gastric juice."
+},
+{
+"id": "MONDO:0043468",
+"name": "acne keloid",
+"syn": [
+"keloidal folliculitis"
+],
+"parent": "keloid",
+"defn": "A chronic eruption of fibrous papules that develop and fuse to form a thick sclerotic, hypertrophic band at a site of deep folliculitis, usually along the poste"
+},
+{
+"id": "MONDO:0043472",
+"name": "ectopic ACTH secretion syndrome",
+"syn": [
+"ectopic ACTH secretion",
+"ectopic ACTH syndrome",
+"hypercortisolism due to nonpituitary tumor"
+],
+"parent": "adrenal gland disorder",
+"defn": "A syndrome characterized by abnormal secretion of adrenocorticotrophic hormone in conjunction with neoplastic growth occurring anywhere in the body. The most co"
+},
+{
+"id": "MONDO:0043475",
+"name": "Adams-Stokes syndrome",
+"syn": [
+"Stokes-Adams syndrome"
+],
+"parent": "syndromic disease",
+"defn": "An episode of sudden and transient loss of consciousness sometimes associated with seizures. It is caused by a sudden decrease of the cardiac output that result"
+},
+{
+"id": "MONDO:0043479",
+"name": "adenoviridae infectious disease",
+"syn": [
+"Adenoviridae caused disease or disorder",
+"Adenoviridae disease or disorder",
+"adenovirus infection"
+],
+"parent": "primary viral infectious disease",
+"defn": "An infectious process caused by adenovirus. The virus may cause respiratory illness, conjunctivitis, gastroenteritis, and cystitis."
+},
+{
+"id": "MONDO:0043494",
+"name": "arteritis",
+"syn": [
+"artery inflammation",
+"inflammation of artery"
+],
+"parent": "arterial disorder",
+"defn": "An inflammatory process affecting an artery."
+},
+{
+"id": "MONDO:0043510",
+"name": "brain injury",
+"syn": [
+"injury of brain"
+],
+"parent": "brain disorder",
+"defn": "Acute and chronic (see also brain INJURIES, CHRONIC) injuries to the brain, including the cerebral hemispheres, CEREBELLUM, and brain STEM. Clinical manifestati"
+},
+{
+"id": "MONDO:0043512",
+"name": "traumatic encephalopathy",
+"syn": [],
+"parent": "brain disorder",
+"defn": "Encephalopathy resulting from trauma."
+},
+{
+"id": "MONDO:0043523",
+"name": "cadmium poisoning",
+"syn": [],
+"parent": "poisoning",
+"defn": "Poisoning occurring after exposure to cadmium compounds or fumes. It may cause gastrointestinal syndromes, anemia, or pneumonitis."
+},
+{
+"id": "MONDO:0043529",
+"name": "carcinoid heart disease",
+"syn": [],
+"parent": "heart disorder",
+"defn": "Cardiac manifestation of gastrointestinal CARCINOID TUMOR that metastasizes to the liver. Substances secreted by the tumor cells, including SEROTONIN, promote f"
+},
+{
+"id": "MONDO:0043537",
+"name": "cluster headache syndrome",
+"syn": [
+"Cephalgia, histamine",
+"Cephalgias, histamine",
+"ciliary neuralgia"
+],
+"parent": "brain disorder",
+"defn": "A headache disorder that is characterized by periodic severe, unilateral orbital, supraorbital, and/or temporal pain, and is associated with ipsilateral cranial"
+},
+{
+"id": "MONDO:0043541",
+"name": "viral conjunctivitis",
+"syn": [
+"Viruses caused conjunctivitis (disease)",
+"Viruses conjunctivitis (disease)"
+],
+"parent": "conjunctivitis",
+"defn": "Conjunctivitis resulting from viral infection."
+},
+{
+"id": "MONDO:0043543",
+"name": "iatrogenic disease",
+"syn": [
+"iatrogenic disorder"
+],
+"parent": "disease of primarily extrinsic mechanism",
+"defn": "Any adverse condition in a patient occurring as the result of treatment by a physician, surgeon, or other health professional, especially infections acquired by"
+},
+{
+"id": "MONDO:0043544",
+"name": "nosocomial infection",
+"syn": [
+"Healthcare-associated infection",
+"hospital-acquired infection",
+"hospital-onset infection"
+],
+"parent": "infectious disease",
+"defn": "An infection acquired in a hospital or other healthcare setting."
+},
+{
+"id": "MONDO:0043549",
+"name": "crush syndrome",
+"syn": [],
+"parent": "kidney disorder",
+"defn": "A medical condition characterized by major shock and renal failure after a crushing injury to skeletal muscle."
+},
+{
+"id": "MONDO:0043555",
+"name": "infantile diarrhea",
+"syn": [
+"diarrheal disease of infancy",
+"infantile diarrheal disease",
+"infantile onset diarrheal disease"
+],
+"parent": "dysentery",
+"defn": "Diarrhea occurring in infants from newborn to 24-months old."
+},
+{
+"id": "MONDO:0043576",
+"name": "endarteritis",
+"syn": [
+"inflammation of tunica intima of artery",
+"tunica intima of artery inflammation"
+],
+"parent": "arteritis",
+"defn": "Inflammation of the arterial intima."
+},
+{
+"id": "MONDO:0043579",
+"name": "enteritis",
+"syn": [
+"enteritis of small intestine",
+"inflammation of small intestine",
+"small intestine inflammation"
+],
+"parent": "gastroenteritis",
+"defn": "Inflammation of the small intestine."
+},
+{
+"id": "MONDO:0043653",
+"name": "herpes labialis",
+"syn": [
+"cold sore",
+"cold sores"
+],
+"parent": "herpes simplex infectious disease",
+"defn": "A lesion caused by type 1 or type 2 herpes simplex virus, typically involving the oralfacial region."
+},
+{
+"id": "MONDO:0043678",
+"name": "chromosome inversion disorder",
+"syn": [],
+"parent": "chromosomal disorder",
+"defn": "Chromosomal disorder consisting of the presence a chromosome rearrangement in which a segment has been turned through 180 degrees (inverted), and inserted back "
+},
+{
+"id": "MONDO:0043683",
+"name": "Leriche syndrome",
+"syn": [
+"leriche's syndrome"
+],
+"parent": "syndromic disease",
+"defn": "An atherosclerotic disorder of the peripheral vascular system affecting mostly males in their later decades. It is caused by thrombotic occlusion of the abdomin"
+},
+{
+"id": "MONDO:0043693",
+"name": "alcoholic liver disease",
+"syn": [
+"alcoholic liver diseases"
+],
+"parent": "liver disorder",
+"defn": "A disorder caused by damage to the liver parenchyma due to alcohol consumption. It may present with an acute onset or follow a chronic course, leading to cirrho"
+},
+{
+"id": "MONDO:0043726",
+"name": "multiple organ dysfunction syndrome",
+"syn": [
+"multiorgan failure",
+"multiple organ failure",
+"multiple organ system failure"
+],
+"parent": "syndromic disease",
+"defn": "The development of potentially reversible physiologic derangement involving two or more organ systems not involved in the disorder that resulted in intensive ca"
+},
+{
+"id": "MONDO:0043731",
+"name": "lytic metastatic bone lesion",
+"syn": [
+"osteolysis",
+"osteolytic lesion"
+],
+"parent": "bone resorption disease",
+"defn": "Dissolution of bone that particularly involves the removal or loss of calcium."
+},
+{
+"id": "MONDO:0043735",
+"name": "osteoradionecrosis",
+"syn": [],
+"parent": "osteonecrosis",
+"defn": "Necrosis of bone following radiation injury."
+},
+{
+"id": "MONDO:0043759",
+"name": "abdominal ectopic pregnancy",
+"syn": [
+"abdomen ectopic pregnancy",
+"abdominal pregnancy",
+"ectopic pregnancy of abdomen"
+],
+"parent": "ectopic pregnancy",
+"defn": "Ectopic pregnancy characterized by the implantation of the embryo in the peritoneal cavity or abdominal organs."
+},
+{
+"id": "MONDO:0043762",
+"name": "tubal pregnancy",
+"syn": [
+"ectopic pregnancy of fallopian tube",
+"fallopian tube ectopic pregnancy"
+],
+"parent": "ectopic pregnancy",
+"defn": "An abnormal pregnancy in which the conception is implanted in the fallopian tube."
+},
+{
+"id": "MONDO:0043765",
+"name": "presbycusis",
+"syn": [
+"age-related hearing impairment",
+"ARHI"
+],
+"parent": "sensorineural hearing loss disorder",
+"defn": "Bilateral hearing loss caused by progressive degeneration of cochlear structures and central auditory pathways, typically associated with the aging process."
+},
+{
+"id": "MONDO:0043768",
+"name": "thrombocytopenic purpura",
+"syn": [],
+"parent": "thrombocytopenia",
+"defn": "Purpura associated with a reduction in circulating blood platelets which can result from a variety of factors."
+},
+{
+"id": "MONDO:0043771",
+"name": "radiodermatitis",
+"syn": [
+"dermatitis radiation",
+"radiation dermatitis",
+"radiation-induced dermatitis"
+],
+"parent": "dermatitis",
+"defn": "A cutaneous inflammatory reaction occurring as a result of exposure to biologically effective levels of ionizing radiation."
+},
+{
+"id": "MONDO:0043775",
+"name": "respiratory paralysis",
+"syn": [
+"paralysis of diaphragm"
+],
+"parent": "diaphragm disorder",
+"defn": "Complete or severe weakness of the muscles of respiration. This condition may be associated with motor neuron diseases; peripheral nerve diseases; neuromuscular"
+},
+{
+"id": "MONDO:0043777",
+"name": "rhinophyma",
+"syn": [],
+"parent": "rosacea",
+"defn": "Progressive enlargement of the nose due to hypertrophy of the sebaceous glands of the tip of the nose and fibrosis. It usually affects older men and is associat"
+},
+{
+"id": "MONDO:0043783",
+"name": "sclerema neonatorum",
+"syn": [],
+"parent": "skin disorder",
+"defn": "A diffuse hardening of skin and subcutaneous adipose tissue, associated with minimal inflammation without fat necrosis, that typically affects critically ill pr"
+},
+{
+"id": "MONDO:0043786",
+"name": "serositis",
+"syn": [
+"inflammation of serous membrane",
+"serous membrane inflammation"
+],
+"parent": "inflammatory disease",
+"defn": "Inflammation of a serous membrane."
+},
+{
+"id": "MONDO:0043789",
+"name": "serum sickness",
+"syn": [
+"transfusion reaction due to serum protein reaction"
+],
+"parent": "type IV hypersensitivity disease",
+"defn": "Delayed-type hypersensitivity reaction to foreign proteins derived from an animal serum. It occurs approximately six to twenty one days following the administra"
+},
+{
+"id": "MONDO:0043797",
+"name": "spinal cord injury",
+"syn": [
+"injury of spinal cord"
+],
+"parent": "vertebral column disorder",
+"defn": "Penetrating and non-penetrating injuries to the spinal cord resulting from traumatic external forces (e.g., WOUNDS, GUNSHOT; WHIPLASH INJURIES; etc.)."
+},
+{
+"id": "MONDO:0043836",
+"name": "tuberculosis, spinal",
+"syn": [
+"pott disease",
+"pott's disease",
+"tuberculosis of vertebral column"
+],
+"parent": "vertebral column disorder",
+"defn": "Tuberculosis of the vertebrae."
+},
+{
+"id": "MONDO:0043839",
+"name": "ulcer disease",
+"syn": [
+"ulcer",
+"ulcers"
+],
+"parent": "disease by developmental or physiological process",
+"defn": "A lesion on the surface of the skin or a mucous surface, produced by the sloughing of inflammatory necrotic tissue."
+},
+{
+"id": "MONDO:0043862",
+"name": "voice disorders",
+"syn": [
+"neurologic voice disorder",
+"voice disorder"
+],
+"parent": "laryngeal disorder",
+"defn": "A pathologic process in the larynx that affects the production of speech. Causes include vocal cord paresis, vocal cord nodule, vocal cord polyp, and laryngitis"
+},
+{
+"id": "MONDO:0043875",
+"name": "tumor lysis syndrome",
+"syn": [],
+"parent": "metabolic disease",
+"defn": "A condition of metabolic abnormalities that result from a spontaneous or therapy-related cytolysis of tumor cells. Tumor lysis syndrome typically occurs in aggr"
+},
+{
+"id": "MONDO:0043878",
+"name": "hereditary optic atrophy",
+"syn": [],
+"parent": "primary optic atrophy",
+"defn": "A family of inherited disorders characterized by progressive loss of vision secondary to death of the retinal ganglion cell axons that comprise the optic nerve."
+},
+{
+"id": "MONDO:0043885",
+"name": "eye infectious disorder",
+"syn": [
+"eye infection"
+],
+"parent": "eye disorder",
+"defn": "An infectious process affecting any part of the eye. Causes include viruses and bacteria. Symptoms include itching and discomfort in the eye, watery eyes, eye p"
+},
+{
+"id": "MONDO:0043892",
+"name": "prosthesis-related infectious disease",
+"syn": [
+"device related infection",
+"prosthesis-related infection"
+],
+"parent": "infectious disease",
+"defn": "A bacterial infection related to a device used to replace a missing body part. The infection may occur during the operation from direct contamination or post-op"
+},
+{
+"id": "MONDO:0043904",
+"name": "leishmaniasis, diffuse cutaneous",
+"syn": [
+"diffuse cutaneous leishmaniasis"
+],
+"parent": "cutaneous leishmaniasis",
+"defn": "A form of LEISHMANIASIS, CUTANEOUS caused by Leishmania aethiopica in Ethiopia and Kenya, L. pifanoi in Venezuela, L. braziliensis in South America, and L. mexi"
+},
+{
+"id": "MONDO:0043905",
+"name": "pneumonitis",
+"syn": [
+"inflammation of lung parenchyma",
+"lung parenchyma inflammation"
+],
+"parent": "lung disorder",
+"defn": "An inflammatory process affecting the lung parenchyma. It is a milder form of lung inflammation compared to pneumonia."
+},
+{
+"id": "MONDO:0043919",
+"name": "radiation pneumonitis",
+"syn": [],
+"parent": "interstitial lung disease",
+"defn": "Inflammation of the lung due to harmful effects of ionizing or non-ionizing radiation."
+}
+]

@@ -1,0 +1,1785 @@
+[
+{
+"id": "MONDO:0020049",
+"name": "autosomal anomaly",
+"syn": [
+"autosome chromosomal anomaly",
+"chromosomal anomaly of autosome"
+],
+"parent": "chromosomal disorder",
+"defn": "Chromosomal disorder in which the chromosomal anomaly involves an autosome."
+},
+{
+"id": "MONDO:0020058",
+"name": "gonosome anomaly",
+"syn": [
+"Sex-chromosome anomaly"
+],
+"parent": "chromosomal disorder",
+"defn": "Chromosomal disorder in which the chromosomal anomaly involves an gonosome. A gonosome is a chromosome responsible for sex determination. In humans and most ani"
+},
+{
+"id": "MONDO:0020064",
+"name": "pulmonary valve agenesis",
+"syn": [
+"absent pulmonary valve syndrome",
+"congenital absence of the pulmonary valve",
+"PVA"
+],
+"parent": "conotruncal heart malformations",
+"defn": "Pulmonary valve agenesis is a rare congenital heart malformation characterized by a total or partial absence of the pulmonary valve leaflets associated with ste"
+},
+{
+"id": "MONDO:0020065",
+"name": "combined dystonia",
+"syn": [
+"dystonia-plus syndrome"
+],
+"parent": "inherited dystonia",
+"defn": "A dystonia that is combined with another movement disorder (e.g., myoclonus, parkinsonism)."
+},
+{
+"id": "MONDO:0020066",
+"name": "Ehlers-Danlos syndrome",
+"syn": [
+"Danlos disease",
+"Danlos Disease, Ehlers",
+"danlos ehlers syndrome"
+],
+"parent": "syndromic disease",
+"defn": "The Ehlers–Danlos syndromes (EDS) are a clinically and genetically heterogeneous group of heritable connective tissue disorders (HCTDs) characterized by joint h"
+},
+{
+"id": "MONDO:0020067",
+"name": "infectious encephalitis",
+"syn": [
+"encephalitis infection"
+],
+"parent": "encephalitis",
+"defn": "An acute infectious process that affects the brain tissue. It is usually caused by viruses and less often by bacteria, parasites, and fungi."
+},
+{
+"id": "MONDO:0020068",
+"name": "postinfectious encephalitis",
+"syn": [],
+"parent": "infectious encephalitis",
+"defn": ""
+},
+{
+"id": "MONDO:0020070",
+"name": "neonatal epilepsy syndrome",
+"syn": [],
+"parent": "epilepsy syndrome",
+"defn": "An epilepsy syndrome that has an onset during the neonatal stage of life."
+},
+{
+"id": "MONDO:0020071",
+"name": "infantile epilepsy syndrome",
+"syn": [
+"epilepsy syndrome of infancy",
+"infantile onset epilepsy syndrome"
+],
+"parent": "epilepsy syndrome",
+"defn": "An epilepsy syndrome that occurs between 28 days to one year of life."
+},
+{
+"id": "MONDO:0020072",
+"name": "childhood-onset epilepsy syndrome",
+"syn": [
+"childhood epilepsy syndrome",
+"epilepsy syndrome of childhood",
+"paediatric epilepsy syndrome"
+],
+"parent": "epilepsy syndrome",
+"defn": "A epilepsy syndrome that occurs during childhood."
+},
+{
+"id": "MONDO:0020074",
+"name": "progressive myoclonus epilepsy",
+"syn": [
+"epilepsy, progressive myoclonic",
+"PME",
+"progressive myoclonic epilepsy"
+],
+"parent": "hereditary neurological disease",
+"defn": "A rare group of disorders characterized by the development of myoclonic and tonic-clonic epileptic seizures associated with progressive degeneration of the nerv"
+},
+{
+"id": "MONDO:0020076",
+"name": "myeloproliferative neoplasm",
+"syn": [
+"chronic myeloproliferative disease",
+"chronic myeloproliferative disorder",
+"chronic myeloproliferative neoplasm"
+],
+"parent": "myeloid neoplasm",
+"defn": "A clonal hematopoietic stem cell disorder, characterized by proliferation in the bone marrow of one or more of the myeloid (i.e., granulocytic, erythroid, megak"
+},
+{
+"id": "MONDO:0020077",
+"name": "myelodysplastic/myeloproliferative disease",
+"syn": [],
+"parent": "myeloid hemopathy",
+"defn": "Clonal myeloid disorders that possess both dysplastic and proliferative features but are not properly classified as either MYELODYSPLASTIC SYNDROMES or MYELOPRO"
+},
+{
+"id": "MONDO:0020082",
+"name": "dendritic cell tumor",
+"syn": [],
+"parent": "histiocytic and dendritic cell neoplasm",
+"defn": "A dendritic cell tumor develops from the cells of the immune system. This condition typically begins in the lymph system and may spread to nearby organs or dist"
+},
+{
+"id": "MONDO:0020083",
+"name": "immunodeficiency-associated lymphoproliferative disease",
+"syn": [],
+"parent": "lymphoid hemopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0020087",
+"name": "hereditary lipodystrophy",
+"syn": [
+"genetic lipodystrophy",
+"genetic lipodystrophy (disease)"
+],
+"parent": "lipodystrophy",
+"defn": "An instance of lipodystrophy that is caused by an inherited genomic modification in an individual."
+},
+{
+"id": "MONDO:0020088",
+"name": "familial partial lipodystrophy",
+"syn": [
+"congenital partial lipodystrophy",
+"FPLD",
+"genetic partial lipodystrophy"
+],
+"parent": "hereditary lipodystrophy",
+"defn": "Familial partial lipodystrophy (FPLD) is a group of rare genetic lipodystrophic syndromes characterized, in most cases, by fat loss from the limbs and buttocks,"
+},
+{
+"id": "MONDO:0020089",
+"name": "acquired lipodystrophy",
+"syn": [
+"acquired lipodystrophy (disease)"
+],
+"parent": "acquired metabolic disease",
+"defn": "An instance of lipodystrophy (disease) that is acquired during the lifetime of the individual."
+},
+{
+"id": "MONDO:0020099",
+"name": "inherited sideroblastic anemia",
+"syn": [
+"constitutional sideroblastic anaemia",
+"constitutional sideroblastic anemia"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0020102",
+"name": "hereditary stomatocytosis",
+"syn": [
+"hereditary stomatocytic disease"
+],
+"parent": "hemolytic anemia",
+"defn": ""
+},
+{
+"id": "MONDO:0020108",
+"name": "autoimmune hemolytic anemia",
+"syn": [
+"AHA",
+"AIHA",
+"Anemia, Hemolytic, Acquired Autoimmune"
+],
+"parent": "autoimmune disorder of blood",
+"defn": "Autoimmune hemolytic anemia (AIHA) is an autoimmune disorder in which various types of auto-antibodies are directed against red blood cells causing their surviv"
+},
+{
+"id": "MONDO:0020110",
+"name": "pulmonary agenesis",
+"syn": [
+"congenital absence of lung"
+],
+"parent": "respiratory system disorder",
+"defn": "An uncommon congenital abnormality characterized by either lethal complete absence of the lungs or varying degrees of underdevelopment of the lung parenchyma. I"
+},
+{
+"id": "MONDO:0020112",
+"name": "vitamin B12- and folate-independent constitutional megaloblastic anemia",
+"syn": [],
+"parent": "megaloblastic anemia",
+"defn": ""
+},
+{
+"id": "MONDO:0020113",
+"name": "primary acquired red cell aplasia",
+"syn": [
+"primary autoimmune red cell aplasia"
+],
+"parent": "acquired aplastic anemia",
+"defn": ""
+},
+{
+"id": "MONDO:0020115",
+"name": "secondary polycythemia",
+"syn": [
+"secondary erythrocytosis"
+],
+"parent": "polycythemia",
+"defn": "Secondary polycythemia is an elevated absolute red blood cell mass caused by enhanced stimulation of red blood cell production by an otherwise normal erythroid "
+},
+{
+"id": "MONDO:0020117",
+"name": "alpha granule disease",
+"syn": [],
+"parent": "inherited thrombocytopenia",
+"defn": ""
+},
+{
+"id": "MONDO:0020119",
+"name": "X-linked syndromic intellectual disability",
+"syn": [
+"intellectual disability, X-linked syndromic",
+"mental retardation, X-linked syndromic",
+"syndromic intellectual disability, X-linked"
+],
+"parent": "syndromic intellectual disability",
+"defn": "A syndromic intellectual disability with an X-linked mode of inheritance."
+},
+{
+"id": "MONDO:0020120",
+"name": "skeletal muscle disorder",
+"syn": [
+"disease of skeletal muscle tissue",
+"disease or disorder of skeletal muscle tissue",
+"disorder of skeletal muscle tissue"
+],
+"parent": "muscle tissue disorder",
+"defn": "A disease involving the skeletal muscle tissue."
+},
+{
+"id": "MONDO:0020121",
+"name": "muscular dystrophy",
+"syn": [],
+"parent": "myopathy",
+"defn": "Muscular dystrophy (MD) refers to a group of more than 30 genetic diseases characterized by progressive weakness and degeneration of the skeletal muscles that c"
+},
+{
+"id": "MONDO:0020122",
+"name": "acquired idiopathic inflammatory myopathy",
+"syn": [
+"idiopathic inflammatory myopathies",
+"idiopathic inflammatory myositis",
+"IIm"
+],
+"parent": "acquired skeletal muscle disease",
+"defn": "An umbrella term for diseases which have chronic muscle inflammation and weakness of unknown etiology. The types of idiopathic inflammatory myopathy are further"
+},
+{
+"id": "MONDO:0020123",
+"name": "metabolic myopathy",
+"syn": [],
+"parent": "myopathy",
+"defn": "A group of rare inherited disorders characterized by a deficiency of enzymes that are involved in metabolic pathways that affect muscles. The disorders are char"
+},
+{
+"id": "MONDO:0020124",
+"name": "neuromuscular junction disease",
+"syn": [],
+"parent": "neuromuscular disease",
+"defn": "Conditions characterized by impaired transmission of impulses at the neuromuscular junction. This may result from disorders that affect receptor function, pre- "
+},
+{
+"id": "MONDO:0020127",
+"name": "hereditary peripheral neuropathy",
+"syn": [
+"genetic peripheral neuropathy"
+],
+"parent": "peripheral neuropathy",
+"defn": "An instance of peripheral neuropathy that is caused by an inherited genomic modification in an individual."
+},
+{
+"id": "MONDO:0020128",
+"name": "motor neuron disorder",
+"syn": [
+"anterior horn cell disease",
+"disease of motor neuron",
+"disease or disorder of motor neuron"
+],
+"parent": "neurodegenerative disease",
+"defn": "Neurological disease involving the motor neuron."
+},
+{
+"id": "MONDO:0020129",
+"name": "acquired motor neuron disease",
+"syn": [
+"acquired anterior horn cell disease"
+],
+"parent": "motor neuron disorder",
+"defn": "An instance of motor neuron disease that is acquired during the lifetime of the individual."
+},
+{
+"id": "MONDO:0020134",
+"name": "cystic malformation of the posterior fossa",
+"syn": [],
+"parent": "central nervous system malformation",
+"defn": ""
+},
+{
+"id": "MONDO:0020135",
+"name": "pontocerebellar hypoplasia",
+"syn": [
+"PCH",
+"pontoneocerebellar atrophy",
+"pontoneocerebllar hypoplasia"
+],
+"parent": "central nervous system malformation",
+"defn": "Pontocerebellar hypoplasias (PCH) are a rare heterogeneous group of diseases characterized by hypoplasia and atrophy and/or early neurodegeneration of the cereb"
+},
+{
+"id": "MONDO:0020143",
+"name": "cerebral lipidosis with dementia",
+"syn": [
+"cerebral lipidosis"
+],
+"parent": "brain disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0020153",
+"name": "cryptophthalmia",
+"syn": [
+"cryptophthalmos"
+],
+"parent": "eyelid disorder",
+"defn": "A congenital abnormality characterized by the presence of a continuous layer of skin extending over the eyeballs and the absence of eyelids and the palpebral fi"
+},
+{
+"id": "MONDO:0020159",
+"name": "congenital entropion",
+"syn": [],
+"parent": "entropion",
+"defn": ""
+},
+{
+"id": "MONDO:0020161",
+"name": "congenital ectropion",
+"syn": [],
+"parent": "ectropion",
+"defn": ""
+},
+{
+"id": "MONDO:0020172",
+"name": "palpebral epidermal tumor",
+"syn": [
+"neoplasm of skin of eyelid",
+"skin of eyelid neoplasm",
+"skin of eyelid neoplasm (disease)"
+],
+"parent": "eyelid neoplasm",
+"defn": "A neoplasm (disease) that involves the skin of eyelid."
+},
+{
+"id": "MONDO:0020173",
+"name": "benign tumor of palpebral epidermis",
+"syn": [
+"skin of eyelid benign neoplasm"
+],
+"parent": "palpebral epidermal tumor",
+"defn": "A benign neoplasm that involves the skin of eyelid."
+},
+{
+"id": "MONDO:0020179",
+"name": "palpebral nevus",
+"syn": [
+"eyelid nevus",
+"melanocytic nevus of skin of eyelid",
+"nevus of eyelid"
+],
+"parent": "melanocytic nevus",
+"defn": "A melanocytic nevus that involves the skin of eyelid."
+},
+{
+"id": "MONDO:0020183",
+"name": "neurogenic palpebral tumor",
+"syn": [],
+"parent": "eyelid neoplasm",
+"defn": ""
+},
+{
+"id": "MONDO:0020204",
+"name": "conjunctival tumor",
+"syn": [
+"conjunctiva neoplasm",
+"conjunctiva neoplasm (disease)",
+"conjunctiva tumor"
+],
+"parent": "conjunctival disorder",
+"defn": "A benign or malignant neoplasm that affects the conjunctiva. Representative examples include papilloma, squamous cell carcinoma, and melanoma."
+},
+{
+"id": "MONDO:0020212",
+"name": "superficial corneal dystrophy",
+"syn": [
+"anterior corneal dystrophy",
+"corneal epithelium corneal dystrophy (disease)",
+"dystrophy of anterior cornea"
+],
+"parent": "corneal dystrophy",
+"defn": "The superficial corneal dystrophies refer to a group of rare genetically determined corneal dystrophies (CDs) characterized by lesions affecting the corneal epi"
+},
+{
+"id": "MONDO:0020213",
+"name": "stromal corneal dystrophy",
+"syn": [
+"corneal dystrophy (disease) of substantia propria of cornea",
+"corneal stromal dystrophy",
+"substantia propria of cornea corneal dystrophy (disease)"
+],
+"parent": "corneal dystrophy",
+"defn": "The stromal corneal dystrophies refer to a group of rare genetically determined corneal dystrophies (CDs) characterized by lesions affecting the corneal stroma,"
+},
+{
+"id": "MONDO:0020214",
+"name": "posterior corneal dystrophy",
+"syn": [],
+"parent": "corneal dystrophy",
+"defn": "Posterior corneal dystrophies refers to a group of rare genetically determined corneal dystrophies (CDs) characterized by lesions affecting the corneal endothel"
+},
+{
+"id": "MONDO:0020242",
+"name": "hereditary macular dystrophy",
+"syn": [
+"genetic macular dystrophy",
+"genetic macular dystrophy (disease)"
+],
+"parent": "inherited retinal dystrophy",
+"defn": "Macular dystrophy that is related to a change in a gene."
+},
+{
+"id": "MONDO:0020246",
+"name": "inherited vitreoretinopathy",
+"syn": [],
+"parent": "retinal disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0020247",
+"name": "congenital vitreoretinal dysplasia",
+"syn": [
+"vitreoretinal dysplasia"
+],
+"parent": "congenital nervous system disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0020248",
+"name": "vitreoretinal degeneration",
+"syn": [
+"degenerative vitreoretinopathy"
+],
+"parent": "vitreous syneresis",
+"defn": ""
+},
+{
+"id": "MONDO:0020249",
+"name": "hereditary optic neuropathy",
+"syn": [],
+"parent": "eye disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0020252",
+"name": "essential strabismus",
+"syn": [],
+"parent": "eye disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0020257",
+"name": "supranuclear oculomotor palsy",
+"syn": [
+"supranuclear eye movement disorder"
+],
+"parent": "oculomotor nerve paralysis",
+"defn": "Oculomotor palsy that arises from lesions in the supranuclear pathways controlling extraocular movement."
+},
+{
+"id": "MONDO:0020283",
+"name": "uveitis",
+"syn": [
+"inflammation of uvea",
+"uvea inflammation",
+"uveitis (disease)"
+],
+"parent": "uveal disorder",
+"defn": "An inflammatory process affecting a part of or the entire uvea. Causes include inflammatory agents (e.g., herpes simplex, herpes zoster, leptospirosis) and syst"
+},
+{
+"id": "MONDO:0020289",
+"name": "congenital tricuspid malformation",
+"syn": [],
+"parent": "tricuspid valve disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0020290",
+"name": "familial atrioventricular septal defect",
+"syn": [
+"Atrioventricular Septal Defect"
+],
+"parent": "heart septal defect",
+"defn": "A spectrum of septal defects involving the atrial septum; ventricular septum; and the atrioventricular valves (tricuspid valve; bicuspid valve). These defects a"
+},
+{
+"id": "MONDO:0020291",
+"name": "hypoplastic right heart syndrome",
+"syn": [
+"right hypoplastic heart syndrome"
+],
+"parent": "syndromic disease",
+"defn": "Hypoplastic right-heart syndrome (HRHS) is a rare, cyanotic congenital heart malformation caused by underdevelopment of the right-sided heart structures (tricus"
+},
+{
+"id": "MONDO:0020292",
+"name": "congenital anomaly of the great arteries",
+"syn": [
+"congenital aorta, aortic arch or pulmonary arteries anomaly"
+],
+"parent": "congenital heart malformation",
+"defn": ""
+},
+{
+"id": "MONDO:0020295",
+"name": "congenital pulmonary veins anomaly",
+"syn": [
+"congenital anomaly of pulmonary veins"
+],
+"parent": "congenital heart disease",
+"defn": "Aberrant drainage of one or more of the pulmonary veins which causes the return of oxygen-rich blood to the right atrium."
+},
+{
+"id": "MONDO:0020296",
+"name": "congenital arteriovenous fistula",
+"syn": [
+"congenital arteriovenous shunt"
+],
+"parent": "congenital anomaly of cardiovascular system",
+"defn": "A congenital vascular disorder characterized byan abnormal connection between an artery and a vein, appearing as varicose veins with port wine discoloration, le"
+},
+{
+"id": "MONDO:0020297",
+"name": "Noonan syndrome and Noonan-related syndrome",
+"syn": [],
+"parent": "RASopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0020298",
+"name": "Prader-Willi syndrome due to maternal uniparental disomy of chromosome 15",
+"syn": [
+"Prader-Willi syndrome due to maternal uniparental disomy of chromosome type 15",
+"UPD(15)mat"
+],
+"parent": "Prader-Willi syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0020301",
+"name": "Prader-Willi syndrome due to paternal 15q11q13 deletion",
+"syn": [],
+"parent": "Prader-Willi syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0020302",
+"name": "Angelman syndrome due to maternal 15q11q13 deletion",
+"syn": [
+"Angelman syndrome due to maternal monosomy 15q11q13"
+],
+"parent": "Angelman syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0020303",
+"name": "Angelman syndrome due to paternal uniparental disomy of chromosome 15",
+"syn": [
+"Angelman syndrome due to paternal uniparental disomy of chromosome type 15",
+"UPD(15)pat"
+],
+"parent": "Angelman syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0020304",
+"name": "isochromosomy Yp",
+"syn": [],
+"parent": "isochromosome Y",
+"defn": "Isochromosomy Yp is a rare gonosome anomaly characterized by various clinical presentations including normal healthy fertile males, male phenotype with infertil"
+},
+{
+"id": "MONDO:0020305",
+"name": "isochromosomy Yq",
+"syn": [],
+"parent": "isochromosome Y",
+"defn": "Isochromosomy Yq is a rare gonosomy anomaly with a variable phenotype including a female phenotype with sexual development delay, streak gonads, short stature a"
+},
+{
+"id": "MONDO:0020307",
+"name": "self-limited epilepsy with autonomic seizures",
+"syn": [
+"benign childhood occipital epilepsy, Panayiotopoulos type",
+"early onset benign occipital epilepsy",
+"early-onset benign childhood occipital epilepsy"
+],
+"parent": "self-limited childhood occipital epilepsy",
+"defn": "A childhood-onset self-limited focal epilepsy syndrome characterized by the onset in early childhood of focal autonomic seizures that are often prolonged. The E"
+},
+{
+"id": "MONDO:0020308",
+"name": "childhood occipital visual epilepsy",
+"syn": [
+"benign childhood occipital epilepsy, Gastaut type",
+"childhood occipital epilepsy (Gastaut type)",
+"COVE"
+],
+"parent": "self-limited childhood occipital epilepsy",
+"defn": "A rare, genetic neurological disorder characterized by childhood to mid-adolescence onset of frequent, brief, diurnal simple partial seizures which usually begi"
+},
+{
+"id": "MONDO:0020310",
+"name": "familial focal epilepsy with variable foci",
+"syn": [
+"epilepsy, familial focal, with variable foci",
+"familial partial epilepsy with variable foci",
+"FFEVF"
+],
+"parent": "familial partial epilepsy",
+"defn": "Familial focal epilepsy with variable foci is a rare genetic epilepsy disorder characterized by autosomal dominant lesional and nonlesional focal epilepsy with "
+},
+{
+"id": "MONDO:0020311",
+"name": "chronic myelomonocytic leukemia",
+"syn": [
+"chronic myelomonocytic leukaemia (CMML)",
+"chronic myelomonocytic leukemia (CMML)",
+"CMML"
+],
+"parent": "chronic leukemia",
+"defn": "A myelodysplastic/myeloproliferative neoplasm which is characterized by persistent monocytosis, absence of a Philadelphia chromosome and BCR/ABL fusion gene, fe"
+},
+{
+"id": "MONDO:0020316",
+"name": "acute myeloid leukemia with abnormal bone marrow eosinophils inv(16)(p13q22) or t(16;16)(p13;q22)",
+"syn": [
+"AML with abnormal bone marrow eosinophils inv(16)(p13q22) or t(16;16)(p13;q22)"
+],
+"parent": "acute myeloid leukemia",
+"defn": "Acute myelomonocytic leukemia (AMML) is a cancer that typically develops in the bone marrow and blood of older individuals.AMML is one type of acute myeloid leu"
+},
+{
+"id": "MONDO:0020317",
+"name": "acute myeloid leukemia with 11q23 abnormalities",
+"syn": [
+"acute myeloid leukaemia with 11q23 (MLL) abnormalities",
+"acute myeloid leukaemia with MLL abnormalities",
+"acute myeloid Leukaemia with t(9;11)(p21.3;q23.3); MLLT3-KMT2A"
+],
+"parent": "acute myeloid leukemia",
+"defn": "An acute myeloid leukemia associated with t(9;11)(p22.3;q23.3) and MLLT3-KMT2A fusion protein expression. Morphologically it usually has monocytic features. It "
+},
+{
+"id": "MONDO:0020320",
+"name": "acute myeloblastic leukemia with maturation",
+"syn": [
+"acute M2 myeloid leukaemia",
+"acute M2 myeloid leukemia",
+"acute myeloblastic leukaemia M2"
+],
+"parent": "acute myeloid leukemia by FAB classification",
+"defn": "An acute myeloid leukemia (AML) characterized by blasts with evidence of maturation to more mature neutrophils. (WHO, 2001)"
+},
+{
+"id": "MONDO:0020321",
+"name": "acute undifferentiated leukemia",
+"syn": [
+"acute myeloid leukemia, minimal differentiation, FAB M0",
+"leukaemia stem cell",
+"leukemia stem cell"
+],
+"parent": "acute leukemia of ambiguous lineage",
+"defn": "A rare acute leukemia of ambiguous lineage in which the blasts do not express markers specific to myeloid or lymphoid lineage."
+},
+{
+"id": "MONDO:0020322",
+"name": "acute biphenotypic leukemia",
+"syn": [
+"B- and T-cell mixed leukaemia",
+"B- and T-cell mixed leukemia"
+],
+"parent": "acute lymphoblastic leukemia",
+"defn": "An acute leukemia of ambiguous lineage characterized by blasts which coexpress myeloid and T or B lineage antigens or concurrent B and T lineage antigens. (WHO,"
+},
+{
+"id": "MONDO:0020323",
+"name": "primary mediastinal large B-cell lymphoma",
+"syn": [
+"B-cell diffuse large cell lymphoma of mediastinum",
+"B-cell diffuse large cell lymphoma of the mediastinum",
+"large cell lymphoma of the mediastinum"
+],
+"parent": "thymus lymphoma",
+"defn": "A large B-cell non-Hodgkin lymphoma arising in the mediastinum. Morphologically it is characterized by a massive diffuse lymphocytic proliferation associated wi"
+},
+{
+"id": "MONDO:0020324",
+"name": "intravascular large B-cell lymphoma",
+"syn": [
+"angioendotheliomatosis proliferans systemisata",
+"angiotropic large cell lymphoma",
+"angiotropic lymphoma"
+],
+"parent": "diffuse large B-cell lymphoma",
+"defn": "Intravascular large B-cell lymphoma (IVLBCL) is a very rare form of diffuse large B-cell lymphoma characterized by the selective growth of lymphoma cells within"
+},
+{
+"id": "MONDO:0020325",
+"name": "anaplastic large cell lymphoma",
+"syn": [
+"ALCL",
+"CD30 Positive anaplastic large cell lymphoma",
+"CD30 positive anaplastic large cell lymphoma"
+],
+"parent": "mature T-cell and NK-cell non-Hodgkin lymphoma",
+"defn": "Anaplastic large cell lymphoma (ALCL) is a rare and aggressive peripheral T-cell non-Hodgkin lymphoma, belonging to the group of CD30-positive lymphoproliferati"
+},
+{
+"id": "MONDO:0020326",
+"name": "lymphomatoid papulosis",
+"syn": [
+"LyP"
+],
+"parent": "primary cutaneous CD30+ T-cell lymphoproliferative disease",
+"defn": "Lymphomatoid papulosis (LyP) is a rare cutaneous condition characterized by chronic, recurrent, and self-regressing papulonodular skin eruptions. It belongs to "
+},
+{
+"id": "MONDO:0020331",
+"name": "indolent systemic mastocytosis",
+"syn": [
+"indolent systemic mastocytosis (morphologic abnormality)",
+"ISM",
+"ism"
+],
+"parent": "systemic mastocytosis",
+"defn": "Indolent systemic mastocytosis (ISM) is a benign form of systemic mastocytosis (SM) characterized by an abnormal proliferation of mast cells either only in bone"
+},
+{
+"id": "MONDO:0020332",
+"name": "systemic mastocytosis with an associated clonal hematologic non-mast cell lineage disease",
+"syn": [
+"SM-AHN",
+"SM-AHNMD",
+"SMAHN"
+],
+"parent": "systemic mastocytosis",
+"defn": "Systemic mastocytosis with an associated clonal hematological non-mast cell lineage disease is a form of systemic mastocytosis (SM) associated with malignancy ("
+},
+{
+"id": "MONDO:0020333",
+"name": "aggressive systemic mastocytosis",
+"syn": [
+"aggressive systemic mastocytosis (morphologic abnormality)",
+"ASM"
+],
+"parent": "systemic mastocytosis",
+"defn": "Aggressive systemic mastocytosis (ASM) is a severe and rare form of systemic mastocytosis (SM) characterized by considerable infiltration of mast cells in diffe"
+},
+{
+"id": "MONDO:0020334",
+"name": "mast cell leukemia",
+"syn": [
+"aleukemic mast cell leukaemia",
+"aleukemic mast cell leukemia",
+"Mast cell leukaemia"
+],
+"parent": "leukemia",
+"defn": "Mast cell leukemia is a malignant form of systemic mastocytosis (SM) characterized, most of the time, by the presence of circulating mast cells."
+},
+{
+"id": "MONDO:0020336",
+"name": "autosomal dominant Emery-Dreifuss muscular dystrophy",
+"syn": [
+"Emery-Dreifuss muscular dystrophy, autosomal dominant"
+],
+"parent": "autosomal dominant disease",
+"defn": "Autosomal dominant form of Emery-Dreifuss muscular dystrophy."
+},
+{
+"id": "MONDO:0020337",
+"name": "congenital dyserythropoietic anemia type 1",
+"syn": [
+"CDA I",
+"CDA type 1",
+"CDA type I"
+],
+"parent": "congenital anemia",
+"defn": "Congenital dyserythropoietic anemiatype I (CDA I) is a hematologic disorder of erythropoiesis characterized by moderate to severe macrocytic anemia occasionally"
+},
+{
+"id": "MONDO:0020338",
+"name": "adult pure red cell aplasia",
+"syn": [
+"adult pure red-cell aplasia",
+"pure red-cell aplasia of adults"
+],
+"parent": "pure red-cell aplasia",
+"defn": "Adult pure red cell aplasia is a rare acquired aplastic anemia characterized by a severe normocytic anemia with normal peripheral leukocyte and platelet counts,"
+},
+{
+"id": "MONDO:0020340",
+"name": "bilateral perisylvian polymicrogyria",
+"syn": [
+"Congenital Bilateral perisylvian polymicrogyria"
+],
+"parent": "bilateral polymicrogyria",
+"defn": ""
+},
+{
+"id": "MONDO:0020341",
+"name": "periventricular nodular heterotopia",
+"syn": [],
+"parent": "congenital nervous system disorder",
+"defn": "Periventricular nodular heterotopia (PNH) is a brain malformation, due to abnormal neuronal migration, in which a subset of neurons fails to migrate into the de"
+},
+{
+"id": "MONDO:0020344",
+"name": "postsynaptic congenital myasthenic syndrome",
+"syn": [],
+"parent": "congenital nervous system disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0020347",
+"name": "acute inflammatory demyelinating polyradiculoneuropathy",
+"syn": [
+"acute idiopathic demyelinating polyneuropathy",
+"acute inflammatory demyelinating polyradiculopathy",
+"acute inflammatory polyneuropathy"
+],
+"parent": "Guillain-Barre syndrome",
+"defn": "An inflammatory neuropathy belonging to the clinical spectrum of Guillain-Barre syndrome (GBS)."
+},
+{
+"id": "MONDO:0020348",
+"name": "acute motor and sensory axonal neuropathy",
+"syn": [
+"acute motor-sensory axonal GBS",
+"acute motor-sensory axonal Guillain-Barre syndrome",
+"acute motor-sensory axonal Guillain-Barré syndrome"
+],
+"parent": "Guillain-Barre syndrome",
+"defn": "Acute motor-sensory axonal neuropathy (AMSAN) is a motor-sensory, axonal form of Guillain-Barre syndrome (GBS)."
+},
+{
+"id": "MONDO:0020349",
+"name": "acute motor axonal neuropathy",
+"syn": [
+"acute pure motor GBS",
+"acute pure motor Guillain-Barre syndrome",
+"acute pure motor Guillain-Barré syndrome"
+],
+"parent": "Guillain-Barre syndrome",
+"defn": "Acute motor axonal neuropathy (AMAN) is a pure motor axonal form of Guillain-Barre syndrome (GBS)."
+},
+{
+"id": "MONDO:0020351",
+"name": "Blake pouch cyst",
+"syn": [],
+"parent": "cystic malformation of the posterior fossa",
+"defn": "Blake pouch cyst is a non-syndromic, usually benign, cystic malformation of the posterior fossa characterized by a midline outpouching of the superior medullary"
+},
+{
+"id": "MONDO:0020352",
+"name": "multiple system atrophy, parkinsonian type",
+"syn": [
+"MSA, parkinsonian type",
+"MSA-p"
+],
+"parent": "multiple system atrophy",
+"defn": "Multiple system atrophy, parkinsonian type (MSA-p) is a form of multiple system atrophy (MSA) with predominant parkinsonian features (bradykinesia, rigidity, ir"
+},
+{
+"id": "MONDO:0020353",
+"name": "von Hippel anomaly",
+"syn": [],
+"parent": "Peters anomaly",
+"defn": ""
+},
+{
+"id": "MONDO:0020354",
+"name": "coloboma of choroid and retina",
+"syn": [],
+"parent": "coloboma, ocular, autosomal dominant",
+"defn": "Coloboma of choroid and retina is a rare, genetic developmental defect during embryogenesis characterized by the partial absence of retinal pigment epithelium a"
+},
+{
+"id": "MONDO:0020355",
+"name": "coloboma of eye lens",
+"syn": [],
+"parent": "coloboma",
+"defn": ""
+},
+{
+"id": "MONDO:0020356",
+"name": "coloboma of iris",
+"syn": [
+"coloboma of iris (disease)",
+"coloboma of the iris"
+],
+"parent": "coloboma, ocular, autosomal dominant",
+"defn": "A congenital or acquired defect characterized by the presence of a hole in or adjacent to the iris."
+},
+{
+"id": "MONDO:0020357",
+"name": "coloboma of eyelid",
+"syn": [
+"coloboma of the eyelid"
+],
+"parent": "coloboma",
+"defn": "A congenital abnormality in which a part of the upper or lower eyelid tissue is missing."
+},
+{
+"id": "MONDO:0020359",
+"name": "congenital symblepharon",
+"syn": [],
+"parent": "isolated cryptophthalmia",
+"defn": ""
+},
+{
+"id": "MONDO:0020360",
+"name": "complete cryptophthalmia",
+"syn": [],
+"parent": "isolated cryptophthalmia",
+"defn": ""
+},
+{
+"id": "MONDO:0020361",
+"name": "partial cryptophthalmia",
+"syn": [],
+"parent": "isolated cryptophthalmia",
+"defn": ""
+},
+{
+"id": "MONDO:0020362",
+"name": "inverse Marcus-Gunn phenomenon",
+"syn": [],
+"parent": "jaw-winking syndrome",
+"defn": "Inverse Marcus-Gunn phenomenon is a rare congenital synkinesis where jaw opening by the pterygoid muscle (during eating or yawning) causes eyelid drooping from "
+},
+{
+"id": "MONDO:0020363",
+"name": "honey-droplet corneal dystrophy",
+"syn": [],
+"parent": "superficial corneal dystrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0020364",
+"name": "posterior polymorphous corneal dystrophy",
+"syn": [
+"corneal dystrophy, posterior polymorphous",
+"posterior polymorphous dystrophy",
+"PPCD"
+],
+"parent": "corneal endothelial dystrophy",
+"defn": "Posterior polymorphous corneal dystrophy (PPCD) is a rare mild subtype of posterior corneal dystrophy characterized by small aggregates of apparent vesicles bor"
+},
+{
+"id": "MONDO:0020365",
+"name": "congenital hereditary endothelial dystrophy type I",
+"syn": [
+"autosomal dominant CHED",
+"autosomal dominant congenital hereditary endothelial dystrophy",
+"CHED1"
+],
+"parent": "posterior corneal dystrophy",
+"defn": "Congenital hereditary endothelial dystrophy I (CHED I) is a rare subtype of posterior corneal dystrophy characterized by a diffuse ground-glass appearance of th"
+},
+{
+"id": "MONDO:0020366",
+"name": "congenital glaucoma",
+"syn": [
+"buphthalmia",
+"buphthalmos",
+"Buphthalmus"
+],
+"parent": "hereditary glaucoma",
+"defn": "A developmental glaucoma that results from the abnormal development of the aqueous drainage structure, characterized by an elevated intra-ocular pressure, enlar"
+},
+{
+"id": "MONDO:0020367",
+"name": "juvenile open angle glaucoma",
+"syn": [
+"childhood glaucoma (disease)",
+"glaucoma (disease) of childhood",
+"glaucoma of childhood"
+],
+"parent": "open-angle glaucoma",
+"defn": "Juvenile glaucoma (JG) is a rare autosomal dominant open angle glaucoma, characterized by early onset, severe elevation of intra ocular pressure of rapid progre"
+},
+{
+"id": "MONDO:0020368",
+"name": "Axenfeld anomaly",
+"syn": [],
+"parent": "eye disorder",
+"defn": "Axenfeld's anomaly is a rare congenital ocular defect caused by anterior segment dysgenesis and is characterized by anteriorly displaced Schwalbe's line and iri"
+},
+{
+"id": "MONDO:0020369",
+"name": "Chandler syndrome",
+"syn": [
+"Chandler's Syndrome",
+"Chandler's syndrome",
+"endothelial corneal dystrophy"
+],
+"parent": "corneal dystrophy",
+"defn": "Chandler syndrome, the most frequent clinical variant of iridocorneal endothelial (ICE) syndrome, is characterized by very few iris abnormalities but more sever"
+},
+{
+"id": "MONDO:0020370",
+"name": "Cogan-Reese syndrome",
+"syn": [],
+"parent": "iridocorneal endothelial syndrome",
+"defn": "Cogan-Reese syndrome is a clinical variant of iridocorneal endothelial (ICE) syndrome characterized by variable iris atrophy, pigmented and pedunculated nodules"
+},
+{
+"id": "MONDO:0020371",
+"name": "essential iris atrophy",
+"syn": [],
+"parent": "iridocorneal endothelial syndrome",
+"defn": "Essential iris atrophy is a clinical variant of iridocorneal endothelial (ICE) syndrome, characterized by progressive iris atrophy and holes present on the surf"
+},
+{
+"id": "MONDO:0020372",
+"name": "early-onset sutural cataract",
+"syn": [
+"early-onset cataract with Y-shaped suture opacities"
+],
+"parent": "early-onset zonular cataract",
+"defn": ""
+},
+{
+"id": "MONDO:0020373",
+"name": "early-onset anterior polar cataract",
+"syn": [
+"early-onset anterior subcapsular cataract"
+],
+"parent": "early-onset partial cataract",
+"defn": ""
+},
+{
+"id": "MONDO:0020374",
+"name": "cerulean cataract",
+"syn": [
+"blue-dot cataract"
+],
+"parent": "early-onset partial cataract",
+"defn": "Cerulean cataract is a type of hereditary congenital cataract distinguished by bluish and white opacifications in the superficial layers of the fetal lens nucle"
+},
+{
+"id": "MONDO:0020376",
+"name": "early-onset nuclear cataract",
+"syn": [],
+"parent": "early-onset zonular cataract",
+"defn": ""
+},
+{
+"id": "MONDO:0020377",
+"name": "early-onset partial cataract",
+"syn": [],
+"parent": "early-onset non-syndromic cataract",
+"defn": ""
+},
+{
+"id": "MONDO:0020378",
+"name": "early-onset posterior polar cataract",
+"syn": [],
+"parent": "cataract 16 multiple types",
+"defn": ""
+},
+{
+"id": "MONDO:0020379",
+"name": "early-onset zonular cataract",
+"syn": [],
+"parent": "early-onset partial cataract",
+"defn": ""
+},
+{
+"id": "MONDO:0020380",
+"name": "autosomal dominant cerebellar ataxia",
+"syn": [
+"ADCA",
+"Autosomal Dominant Hereditary Ataxia",
+"autosomal dominant spinocerebellar ataxia"
+],
+"parent": "autosomal dominant disease",
+"defn": "A clinically and genetically heterogeneous group of neurodegenerative diseases characterized by a slowly progressive ataxia of gait, stance and limbs, dysarthri"
+},
+{
+"id": "MONDO:0020381",
+"name": "patterned macular dystrophy",
+"syn": [
+"macular dystrophy, patterned"
+],
+"parent": "macular degeneration",
+"defn": "A macular degeneration characterized by abnormal accumulation of lipofuscin in the retinal pigment epithelium in a distinct pattern, patterns include; reticular"
+},
+{
+"id": "MONDO:0020382",
+"name": "multifocal pattern dystrophy simulating fundus flavimaculatus",
+"syn": [
+"multifocal pattern dystrophy simulating Stargardt disease"
+],
+"parent": "patterned dystrophy of the retinal pigment epithelium",
+"defn": "Multifocal pattern dystrophy simulating fundus flavimaculatus is a patterned dystrophy of the retinal pigment epithelium characterized by multiple yellowish irr"
+},
+{
+"id": "MONDO:0020383",
+"name": "fundus pulverulentus",
+"syn": [],
+"parent": "patterned dystrophy of the retinal pigment epithelium",
+"defn": "Fundus pulverulentus is a rare form of patterned dystrophy of the retinal pigment epithelium characterized by a granular appearance in the macula, with coarse a"
+},
+{
+"id": "MONDO:0020384",
+"name": "Niemann-Pick disease type E",
+"syn": [],
+"parent": "Niemann-Pick disease",
+"defn": "Niemann-Pick disease, type E is a poorly defined adult-onset and non-neuronopathic form of Niemann-Pick disease."
+},
+{
+"id": "MONDO:0020385",
+"name": "congenitally uncorrected transposition of the great arteries with coarctation",
+"syn": [
+"congenitally uncorrected transposition of the great vessels with coarctation",
+"TGA with coarctation"
+],
+"parent": "dextro-looped transposition of the great arteries",
+"defn": ""
+},
+{
+"id": "MONDO:0020386",
+"name": "double outlet right ventricle with subaortic or doubly committed ventricular septal defect with pulmonary stenosis",
+"syn": [
+"DORV with subaortic or doubly committed VSD with pulmonary stenosis",
+"DORV, Fallot type",
+"double outlet right ventricle, Fallot type"
+],
+"parent": "double outlet right ventricle",
+"defn": ""
+},
+{
+"id": "MONDO:0020387",
+"name": "double outlet right ventricle with subpulmonary ventricular septal defect",
+"syn": [
+"DORV with subpulmonary VSD",
+"DORV-TGA",
+"Double outlet right ventricle with transposition of the great arteries"
+],
+"parent": "double outlet right ventricle",
+"defn": ""
+},
+{
+"id": "MONDO:0020388",
+"name": "double outlet right ventricle with non-committed subpulmonary ventricular septal defect",
+"syn": [
+"DORV with non-committed subpulmonary VSD"
+],
+"parent": "double outlet right ventricle",
+"defn": ""
+},
+{
+"id": "MONDO:0020389",
+"name": "pulmonary valve agenesis-ventricular septal defect-persistent ductus arteriosus syndrome",
+"syn": [
+"absence of pulmonary valve-ventricular septal defect-persistent ductus arteriosus syndrome",
+"APV/PDA, non-Fallot type",
+"PVA/PDA, non-Fallot type"
+],
+"parent": "pulmonary valve agenesis",
+"defn": ""
+},
+{
+"id": "MONDO:0020390",
+"name": "pulmonary artery coming from patent ductus arteriosus",
+"syn": [],
+"parent": "abnormal origin of the pulmonary artery",
+"defn": ""
+},
+{
+"id": "MONDO:0020391",
+"name": "pulmonary artery coming from the aorta",
+"syn": [
+"abnormal origin of right or left pulmonary artery from the aorta",
+"hemitruncus arteriosus"
+],
+"parent": "abnormal origin of the pulmonary artery",
+"defn": "Pulmonary artery coming from the aorta (PACA) is a cardiac malformation characterized by anomalous origin of one branch of the pulmonary arteries from the ascen"
+},
+{
+"id": "MONDO:0020393",
+"name": "discrete fibromuscular subaortic stenosis",
+"syn": [],
+"parent": "fixed subaortic stenosis",
+"defn": ""
+},
+{
+"id": "MONDO:0020394",
+"name": "tunnel subaortic stenosis",
+"syn": [],
+"parent": "fixed subaortic stenosis",
+"defn": ""
+},
+{
+"id": "MONDO:0020395",
+"name": "valvar pulmonary stenosis",
+"syn": [],
+"parent": "congenital pulmonary valve stenosis",
+"defn": "A congenital cardiovascular malformation of the pulmonary valve in which there is narrowing or stricture (obstruction to flow)."
+},
+{
+"id": "MONDO:0020396",
+"name": "anomaly of the tricuspid valve chordae",
+"syn": [],
+"parent": "congenital tricuspid malformation",
+"defn": "Anomaly of the tricuspid valve chordae is a rare, congenital anomaly of the tricuspid subvalvular apparatus characterized by aberrant tendinous chords, which in"
+},
+{
+"id": "MONDO:0020397",
+"name": "parachute tricuspid valve",
+"syn": [],
+"parent": "congenital tricuspid malformation",
+"defn": "Parachute tricuspid valve is a rare congenital heart malformation defined as an insertion of the chordal apparatus into a single papillary muscle or a muscle gr"
+},
+{
+"id": "MONDO:0020398",
+"name": "congenital mitral stenosis",
+"syn": [
+"congenital mitral stenosis (disease)",
+"congenital mitral valve stenosis",
+"hereditary mitral valve stenosis"
+],
+"parent": "mitral valve stenosis",
+"defn": "Congenital mitral stenosis is a congenital heart malformation comprising a spectrum of morphologically heterogeneous developmental anomalies that result in func"
+},
+{
+"id": "MONDO:0020399",
+"name": "congenital hypoplasia of the mitral valve annulus",
+"syn": [],
+"parent": "congenital mitral valve insufficiency and/or stenosis",
+"defn": "Hypoplasia of the mitral valve annulus is a rare, congenital, mitral valve malformation characterized by hypoplastic annulus which usually appears within a comp"
+},
+{
+"id": "MONDO:0020400",
+"name": "congenital supravalvular mitral ring",
+"syn": [],
+"parent": "congenital mitral valve insufficiency and/or stenosis",
+"defn": "Congenital supravalvular mitral ring is a rare, congenital, mitral valve malformation characterized by an abnormal ridge of the connective tissue on the atrial "
+},
+{
+"id": "MONDO:0020401",
+"name": "congenital unguarded mitral orifice",
+"syn": [],
+"parent": "congenital mitral valve insufficiency and/or stenosis",
+"defn": "Congenital unguarded mitral orifice is a rare, congenital, mitral valve malformation characterized by complete absence of mitral valve leaflets and tensor appar"
+},
+{
+"id": "MONDO:0020402",
+"name": "congenital accessory mitral valve tissue",
+"syn": [],
+"parent": "congenital mitral valve insufficiency and/or stenosis",
+"defn": "Accessory mitral valve tissue is a congenital non-syndromic heart malformation defined as an accessory mitral valve leaflet or various accessory mitral valve st"
+},
+{
+"id": "MONDO:0020403",
+"name": "congenital mitral valve agenesis",
+"syn": [],
+"parent": "congenital mitral valve insufficiency and/or stenosis",
+"defn": "Mitral valve agenesis is a rare congenital heart malformation defined as an agenesis or severe hypoplasia of both mitral valve leaflets (complete agenesis) or o"
+},
+{
+"id": "MONDO:0020404",
+"name": "shone complex",
+"syn": [
+"shone syndrome",
+"shone's syndrome (greater than 3 sites)"
+],
+"parent": "syndromic disease",
+"defn": "A congenital cardiovascular abnormality characterized by the presence of subvalvar left ventricular outflow tract obstruction, coarctation of the aorta, and mit"
+},
+{
+"id": "MONDO:0020405",
+"name": "straddling and/or overriding mitral valve",
+"syn": [],
+"parent": "cleft mitral valve",
+"defn": ""
+},
+{
+"id": "MONDO:0020406",
+"name": "complete atrioventricular canal-left heart obstruction syndrome",
+"syn": [
+"CAVC type A",
+"CAVC-left heart obstruction syndrome",
+"complete atrioventricular canal type A"
+],
+"parent": "complete atrioventricular canal",
+"defn": ""
+},
+{
+"id": "MONDO:0020407",
+"name": "complete atrioventricular canal-ventricle hypoplasia syndrome",
+"syn": [
+"CAVC type B",
+"CAVC-ventricle hypoplasia syndrome",
+"complete atrioventricular canal type B"
+],
+"parent": "complete atrioventricular canal",
+"defn": ""
+},
+{
+"id": "MONDO:0020408",
+"name": "complete atrioventricular canal-tetralogy of fallot syndrome",
+"syn": [
+"CAVC type C",
+"CAVC-Fallot tetralogy syndrome",
+"complete atrioventricular canal type C"
+],
+"parent": "complete atrioventricular canal",
+"defn": ""
+},
+{
+"id": "MONDO:0020409",
+"name": "univentricular heart with single atrio-ventricular valve",
+"syn": [],
+"parent": "univentricular heart",
+"defn": ""
+},
+{
+"id": "MONDO:0020410",
+"name": "aorto-right ventricular tunnel",
+"syn": [],
+"parent": "aorto-ventricular tunnel",
+"defn": ""
+},
+{
+"id": "MONDO:0020411",
+"name": "aorto-left ventricular tunnel",
+"syn": [],
+"parent": "aorto-ventricular tunnel",
+"defn": ""
+},
+{
+"id": "MONDO:0020412",
+"name": "congenital patent ductus arteriosus aneurysm",
+"syn": [],
+"parent": "congenital anomaly of the great arteries",
+"defn": "Congenital patent ductus arteriosus aneurysm is a rare, congenital, arterial duct anomaly characterized by a saccular dilatation of the ductus arteriosus. It is"
+},
+{
+"id": "MONDO:0020413",
+"name": "encircling double aortic arch",
+"syn": [],
+"parent": "aortic arch defects",
+"defn": "Encircling double aortic arch is a very rare congenital anomaly of the great arteries characterized by the presence of two aortic arches (right and left) which "
+},
+{
+"id": "MONDO:0020414",
+"name": "persistent fifth aortic arch",
+"syn": [],
+"parent": "aortic arch defects",
+"defn": ""
+},
+{
+"id": "MONDO:0020415",
+"name": "Kommerell diverticulum",
+"syn": [],
+"parent": "aortic arch defects",
+"defn": "Kommerell diverticulum (KD) is a developmental anomaly of the aortic arch characterized by a diverticulum at the proximal descending aorta of left or right arch"
+},
+{
+"id": "MONDO:0020416",
+"name": "Neuhauser anomaly",
+"syn": [],
+"parent": "aortic arch defects",
+"defn": "Neuhauser anomaly is a rare cardiovascular morphological anomaly due to maldevelopment of embryonal aorta resulting in right aortic arch and left ligamentum art"
+},
+{
+"id": "MONDO:0020417",
+"name": "right aortic arch",
+"syn": [
+"right aortic arch (disease)"
+],
+"parent": "aortic arch defects",
+"defn": "An anatomic abnormality that occurs during embryonic development, in which the aortic arch is right-sided."
+},
+{
+"id": "MONDO:0020418",
+"name": "dysphagia lusoria",
+"syn": [],
+"parent": "aortic arch defects",
+"defn": ""
+},
+{
+"id": "MONDO:0020419",
+"name": "pulmonary artery hypoplasia",
+"syn": [
+"pulmonary artery hypoplasia (disease)"
+],
+"parent": "congenital anomaly of the great arteries",
+"defn": ""
+},
+{
+"id": "MONDO:0020420",
+"name": "pulmonary branch stenosis",
+"syn": [
+"branch pulmonary artery stenosis",
+"pulmonary artery stenosis, branch (not PPS)"
+],
+"parent": "congenital anomaly of the great arteries",
+"defn": "Narrowing of the lumen of the right or left pulmonary artery branch."
+},
+{
+"id": "MONDO:0020421",
+"name": "coronary artery intramyocardial course",
+"syn": [],
+"parent": "coronary artery congenital malformation",
+"defn": ""
+},
+{
+"id": "MONDO:0020422",
+"name": "aortopulmonary coronary arterial course",
+"syn": [],
+"parent": "coronary artery congenital malformation",
+"defn": "Aortopulmonary coronary arterial course is a rare coronary artery congenital malformation characterized by anomalous origin of the coronary artery from the cont"
+},
+{
+"id": "MONDO:0020423",
+"name": "stenosis or atrophy of the coronary ostium",
+"syn": [
+"coronary ostial stenosis or atresia"
+],
+"parent": "coronary artery congenital malformation",
+"defn": ""
+},
+{
+"id": "MONDO:0020424",
+"name": "intramural coronary arterial course",
+"syn": [],
+"parent": "coronary artery congenital malformation",
+"defn": "Intramural coronary arterial course is a rare coronary artery congenital malformation disorder characterized by an atypical course of a coronary artery (usually"
+},
+{
+"id": "MONDO:0020425",
+"name": "abnormal number of coronary ostia",
+"syn": [],
+"parent": "coronary artery congenital malformation",
+"defn": ""
+},
+{
+"id": "MONDO:0020426",
+"name": "malposition of the coronary ostium",
+"syn": [],
+"parent": "coronary artery congenital malformation",
+"defn": "Malposition of the coronary ostium is a rare coronary artery congenital malformation characterized by displacement of one of the coronary arteries, originating "
+},
+{
+"id": "MONDO:0020427",
+"name": "Laubry-Pezzi syndrome",
+"syn": [
+"ventricular septal defect with aortic insufficiency",
+"VSD with aortic insufficiency"
+],
+"parent": "congenital heart malformation",
+"defn": "Laubry-Pezzi syndrome is a rare, non-syndromic, congenital heart malformation characterized by the prolapse of an aortic valve cusp into a subjacent ventricular"
+},
+{
+"id": "MONDO:0020428",
+"name": "congenital Gerbode defect",
+"syn": [
+"Gerbode defect",
+"left ventricular-to-right atrial communication"
+],
+"parent": "congenital heart malformation",
+"defn": ""
+},
+{
+"id": "MONDO:0020429",
+"name": "cor triatriatum dexter",
+"syn": [
+"cor triatriatum dexter (disease)",
+"cor triatriatum dextrum",
+"divided right atrium"
+],
+"parent": "triatrial heart",
+"defn": ""
+},
+{
+"id": "MONDO:0020430",
+"name": "cor triatriatum sinister",
+"syn": [
+"cor triatriatum sinistrum",
+"divided left atrium"
+],
+"parent": "triatrial heart",
+"defn": "Cor triatriatum sinister (CTS) results when the left atrium is divided into two compartments by a membrane. The membrane can vary in size and shape and may have"
+},
+{
+"id": "MONDO:0020431",
+"name": "juxtaposition of the atrial appendages",
+"syn": [
+"juxtaposition of the atrial auricles"
+],
+"parent": "congenital heart malformation",
+"defn": "Juxtaposition of the atrial appendages is a rare atrial appendage anomaly when both appendages are located on the left or the right side of the great arteries. "
+},
+{
+"id": "MONDO:0020432",
+"name": "ectasia of the right atrial appendage",
+"syn": [
+"dilatation of the right atrial appendage",
+"dilatation of the right atrial auricle",
+"ectasia of the right atrial auricle"
+],
+"parent": "congenital heart malformation",
+"defn": "Ectasia of the right atrial appendage is a rare cardiac malformation characterized by the enlargement of the right auricle without any other associated cardiac "
+},
+{
+"id": "MONDO:0020433",
+"name": "ectasia of the left appendage",
+"syn": [
+"dilatation of the left appendage",
+"dilatation of the left atrial appendage",
+"dilatation of the left auricle"
+],
+"parent": "congenital heart malformation",
+"defn": "Ectasia of the left atrial appendage is a rare cardiac malformation characterized by the enlargement of the left auricle without any other associated cardiac le"
+},
+{
+"id": "MONDO:0020434",
+"name": "atrial septal defect, ostium secundum type",
+"syn": [
+"ASD, ostium secundum type"
+],
+"parent": "atrial septal defect",
+"defn": ""
+},
+{
+"id": "MONDO:0020435",
+"name": "atrial septal defect, coronary sinus type",
+"syn": [
+"ASD, coronary sinus type",
+"atrial septal defect coronary sinus",
+"unroofed coronary sinus"
+],
+"parent": "atrial septal defect",
+"defn": ""
+},
+{
+"id": "MONDO:0020436",
+"name": "atrial septal defect, sinus venosus type",
+"syn": [
+"ASD, sinus venosus type"
+],
+"parent": "atrial septal defect",
+"defn": ""
+},
+{
+"id": "MONDO:0020437",
+"name": "atrial septal defect, ostium primum type",
+"syn": [
+"ASD ostium primum type",
+"ASD, ostium primum type",
+"atrial septal defect ostium primum"
+],
+"parent": "atrial septal defect",
+"defn": "Atrioventricular septal defect with communication at the atrial level only."
+},
+{
+"id": "MONDO:0020438",
+"name": "atrial septal aneurysm",
+"syn": [],
+"parent": "congenital heart malformation",
+"defn": ""
+},
+{
+"id": "MONDO:0020439",
+"name": "patent foramen ovale",
+"syn": [
+"ostium secundum type atrial septal defect",
+"patent foramen ovale (disease)"
+],
+"parent": "atrial septal defect",
+"defn": "A persistent opening in the atrial septum after birth. While a normal part of fetal circulation, the foramen ovale should close once the newborn begins breathin"
+},
+{
+"id": "MONDO:0020440",
+"name": "persistent left superior vena cava connecting to the left-sided atrium",
+"syn": [
+"left superior caval vein persisting to the left-sided atrium",
+"persistent left superior caval vein connecting to the left-sided atrium",
+"persistent left SVC connecting to the left-sided atrium"
+],
+"parent": "congenital anomaly of superior vena cava",
+"defn": "Persistent left superior vena cava connecting to the left-sided atrium is a rare, congenital vascular malformation of the major vessels characterized by a persi"
+},
+{
+"id": "MONDO:0020441",
+"name": "right superior vena cava connecting to left-sided atrium",
+"syn": [
+"right superior caval vein connecting to left-sided atrium",
+"right SVC connecting to left-sided atrium"
+],
+"parent": "congenital anomaly of superior vena cava",
+"defn": "Right superior vena cava connecting to the left-sided atrium is a rare, congenital vascular malformation of the major vessels characterized by the right SVC pas"
+},
+{
+"id": "MONDO:0020442",
+"name": "left superior vena cava persisting to left-sided atrium",
+"syn": [
+"left superior caval vein persisting to left-sided atrium",
+"left SVC persisting to left-sided atrium"
+],
+"parent": "congenital anomaly of superior vena cava",
+"defn": ""
+},
+{
+"id": "MONDO:0020443",
+"name": "absence of innominate vein",
+"syn": [
+"absence of brachiocephalic vein"
+],
+"parent": "congenital anomaly of superior vena cava",
+"defn": "Absence of innominate vein is a rare congenital anomaly of the great veins characterized by absence of the left brachiocephalic vein (or innominate vein), resul"
+},
+{
+"id": "MONDO:0020444",
+"name": "subaortic course of innominate vein",
+"syn": [
+"subaortic course of brachiocephalic vein"
+],
+"parent": "congenital anomaly of superior vena cava",
+"defn": "Subaortic course of innominate vein is a rare congential anomaly of the great veins characterized by an anomalous course of the left brachiocephalic vein, passi"
+},
+{
+"id": "MONDO:0020445",
+"name": "agenesis of the superior vena cava",
+"syn": [
+"absence of the superior caval vein",
+"absence of the superior vena cava",
+"absence of the SVC"
+],
+"parent": "congenital anomaly of superior vena cava",
+"defn": "Agenesis of the superior vena cava (SVC) is a rare congenital anomaly of the great veins characterized by unilateral or bilateral complete absence of the SVC. U"
+},
+{
+"id": "MONDO:0020446",
+"name": "coronary sinus stenosis",
+"syn": [],
+"parent": "vascular disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0020447",
+"name": "coronary sinus atresia",
+"syn": [],
+"parent": "vascular disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0020448",
+"name": "right inferior vena cava connecting to left-sided atrium",
+"syn": [
+"right inferior caval vein connecting to left-sided atrium",
+"right IVC connecting to left-sided atrium"
+],
+"parent": "congenital anomaly of the inferior vena cava",
+"defn": ""
+},
+{
+"id": "MONDO:0020449",
+"name": "persistent eustachian valve",
+"syn": [],
+"parent": "congenital anomaly of the inferior vena cava",
+"defn": ""
+},
+{
+"id": "MONDO:0020450",
+"name": "azygos continuation of the inferior vena cava",
+"syn": [
+"azygos continuation of the inferior caval vein",
+"azygos continuation of the IVC"
+],
+"parent": "congenital anomaly of the inferior vena cava",
+"defn": ""
+},
+{
+"id": "MONDO:0020451",
+"name": "congenital stenosis of the inferior vena cava",
+"syn": [
+"congenital stenosis of the inferior caval vein",
+"congenital stenosis of the IVC"
+],
+"parent": "congenital anomaly of the inferior vena cava",
+"defn": ""
+},
+{
+"id": "MONDO:0020452",
+"name": "inferior vena cava interruption",
+"syn": [
+"Inferior caval vein interruption",
+"IVC interruption"
+],
+"parent": "congenital anomaly of the inferior vena cava",
+"defn": ""
+},
+{
+"id": "MONDO:0020453",
+"name": "congenital partial pulmonary venous return anomaly",
+"syn": [
+"Partial anomalous pulmonary Venous connection",
+"Partial anomalous pulmonary Venous return"
+],
+"parent": "congenital pulmonary venous return anomaly",
+"defn": "Partial pulmonary venous return (PAPVR) is a form of congenital pulmonary venous return where one or a few of the pulmonary veins drain into the right atrium or"
+},
+{
+"id": "MONDO:0020454",
+"name": "congenital complete agenesis of pericardium",
+"syn": [],
+"parent": "congenital pericardium anomaly",
+"defn": "Congenital complete agenesis of pericardium is a rare, mostly asymptomatic, congenital heart malformation characterized by the complete absence of the entire pe"
+},
+{
+"id": "MONDO:0020455",
+"name": "congenital partial agenesis of pericardium",
+"syn": [],
+"parent": "congenital pericardium anomaly",
+"defn": "Congenital partial agenesis of pericardium is a rare, mostly asymptomatic, congenital heart malformation mainly characterized by the partial absence of the left"
+},
+{
+"id": "MONDO:0020456",
+"name": "pleuro-pericardial cyst",
+"syn": [],
+"parent": "congenital pericardium anomaly",
+"defn": "Pleuro-pericardial cyst is a rare, mostly congenital, pericardium anomaly characterized by the presence of, usually asymptomatic, cysts which are typically loca"
+},
+{
+"id": "MONDO:0020457",
+"name": "6-phosphogluconate dehydrogenase deficiency",
+"syn": [],
+"parent": "hemolytic anemia",
+"defn": ""
+}
+]

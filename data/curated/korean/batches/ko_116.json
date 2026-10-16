@@ -1,0 +1,551 @@
+[
+{
+"id": "MONDO:1060259",
+"name": "phenylalanine hydroxylase deficiency",
+"syn": [
+"PAH deficiency"
+],
+"parent": "disorder of phenylalanine metabolism",
+"defn": "A disorder of phenylalanine metabolism caused by biallelic variants in the PAH gene, encompassing the full spectrum of phenylalanine hydroxylase deficiency from"
+},
+{
+"id": "MONDO:1060260",
+"name": "juvenile ossifying fibroma",
+"syn": [
+"aggressive ossifying fibroma",
+"JOF",
+"juvenile aggressive ossifying fibroma"
+],
+"parent": "ossifying fibroma",
+"defn": "An ossifying fibroma arising predominantly in children and young adults, comprising two histological variants: juvenile trabecular ossifying fibroma and psammom"
+},
+{
+"id": "MONDO:1060261",
+"name": "juvenile trabecular ossifying fibroma",
+"syn": [
+"JTOF",
+"trabecular juvenile ossifying fibroma",
+"trabecular ossifying fibroma"
+],
+"parent": "juvenile ossifying fibroma",
+"defn": "A juvenile ossifying fibroma predominantly arises in children and adolescents. It is characterized by prominent osteoid formation rimmed by osteoblasts in a fib"
+},
+{
+"id": "MONDO:1060262",
+"name": "psammomatoid ossifying fibroma",
+"syn": [
+"JPOF",
+"juvenile psammomatoid ossifying fibroma",
+"PsOF"
+],
+"parent": "juvenile ossifying fibroma",
+"defn": "A juvenile ossifying fibroma arises usually affects individuals in their second to fourth decades with no sex predilection. It is characterized by the presence "
+},
+{
+"id": "MONDO:1060263",
+"name": "SMARCB1-related tumor predisposition",
+"syn": [],
+"parent": "hereditary neoplastic syndrome",
+"defn": "Hereditary tumor predisposition due to variation(s) in the SMARCB1 gene. Pathogenic germline loss-of-function variants confer autosomal dominant predisposition "
+},
+{
+"id": "MONDO:1060264",
+"name": "severe chronic neutropenia",
+"syn": [
+"neutropenia, severe chronic"
+],
+"parent": "neutropenia",
+"defn": "A neutropenia characterized by persistent absolute neutrophil count below 0.5 x 10^9/L lasting for at least 3 months, not explained by medication use, infection"
+},
+{
+"id": "MONDO:1060265",
+"name": "severe idiopathic neutropenia",
+"syn": [],
+"parent": "idiopathic disease",
+"defn": "An idiopathic form of severe chronic neutropenia that cannot be classified as congenital, cyclic or autoimmune neutropenia, and is not explained by drug exposur"
+},
+{
+"id": "MONDO:1060266",
+"name": "severe autoimmune neutropenia",
+"syn": [],
+"parent": "autoimmune disease",
+"defn": "An autoimmune form of severe chronic neutropenia in which neutrophil-specific antibodies increase the destruction of circulating neutrophils, in the absence of "
+},
+{
+"id": "MONDO:1060267",
+"name": "fibrous dysplasia/McCune-Albright syndrome",
+"syn": [
+"FD/MAS",
+"FD/MAS spectrum",
+"FD/MAS syndrome"
+],
+"parent": "skeletal system disorder",
+"defn": "A skeletal system disorder caused by a variation in the GNAS gene, characterized by involvement of the skin, skeleton and certain endocrine organs. Fibrous dysp"
+},
+{
+"id": "MONDO:1060269",
+"name": "posterior ischemic optic neuropathy",
+"syn": [
+"PION"
+],
+"parent": "optic nerve disorder",
+"defn": "An optic nerve disorder characterized by ischemic injury to the retrobulbar (posterior) portion of the optic nerve, presenting with sudden visual loss and an in"
+},
+{
+"id": "MONDO:1060270",
+"name": "traumatic optic neuropathy",
+"syn": [
+"optic nerve injury",
+"TON"
+],
+"parent": "optic nerve disorder",
+"defn": "An optic nerve disorder caused by closed or penetrating trauma to the face or head that injures the optic nerve, resulting in visual loss, often with an afferen"
+},
+{
+"id": "MONDO:1060271",
+"name": "radiation-induced optic neuropathy",
+"syn": [
+"RION"
+],
+"parent": "optic nerve disorder",
+"defn": "An optic nerve disorder caused by radiation necrosis of the anterior visual pathway, occurring as a late complication of radiotherapy for head and neck or intra"
+},
+{
+"id": "MONDO:1060272",
+"name": "compressive optic neuropathy",
+"syn": [],
+"parent": "optic nerve disorder",
+"defn": "An optic nerve disorder caused by mechanical compression of the optic nerve or chiasm along its course, for example by orbital or intracranial tumours, sinus mu"
+},
+{
+"id": "MONDO:1060273",
+"name": "ophthalmic artery occlusion",
+"syn": [
+"OAO"
+],
+"parent": "ocular vascular disorder",
+"defn": "An ocular vascular disorder characterized by acute complete obstruction of the ophthalmic artery, a branch of the internal carotid artery, leading to severe isc"
+},
+{
+"id": "MONDO:1060274",
+"name": "vitreomacular traction syndrome",
+"syn": [
+"vitreomacular traction",
+"VMT"
+],
+"parent": "vitreous disorder",
+"defn": "A vitreous and retinal disorder characterized by incomplete posterior vitreous detachment with persistent focal adhesion to the macula. This exerts anteroposter"
+},
+{
+"id": "MONDO:1060275",
+"name": "traumatic macular hole",
+"syn": [],
+"parent": "macular holes",
+"defn": "A full-thickness macular hole that results from trauma, such as closed-globe or open-globe ocular injury, laser injury, surgical trauma, lightning strike or ele"
+},
+{
+"id": "MONDO:1060276",
+"name": "juvenile idiopathic arthritis-associated uveitis",
+"syn": [
+"JIA-associated uveitis"
+],
+"parent": "uveitis",
+"defn": "A uveitis occurring in individuals with juvenile idiopathic arthritis, and its most frequent extra-articular manifestation. The most common form is chronic ante"
+},
+{
+"id": "MONDO:1060277",
+"name": "secondary glaucoma",
+"syn": [],
+"parent": "glaucoma",
+"defn": "A glaucoma in which elevation of intraocular pressure results from an identifiable pathophysiological mechanism, such as intraocular inflammation, pigment dispe"
+},
+{
+"id": "MONDO:1060278",
+"name": "pigmentary glaucoma",
+"syn": [],
+"parent": "open-angle glaucoma",
+"defn": "A secondary glaucoma that can develop in pigment dispersion syndrome, in which pigment released from the iris is deposited in the trabecular meshwork, reducing "
+},
+{
+"id": "MONDO:1060279",
+"name": "uveitic glaucoma",
+"syn": [],
+"parent": "secondary glaucoma",
+"defn": "A secondary glaucoma in which optic nerve damage results from elevated intraocular pressure secondary to intraocular inflammation via trabecular inflammation/ob"
+},
+{
+"id": "MONDO:1060280",
+"name": "ghost cell glaucoma",
+"syn": [],
+"parent": "open-angle glaucoma",
+"defn": "A secondary glaucoma in which degenerated red blood cells (ghost cells), formed in the vitreous cavity after hemorrhage, pass forward into the anterior chamber "
+},
+{
+"id": "MONDO:1060281",
+"name": "hemolytic glaucoma",
+"syn": [],
+"parent": "open-angle glaucoma",
+"defn": "A secondary glaucoma following intraocular hemorrhage, in which the trabecular meshwork is obstructed by fragments of hemolyzed red blood cells and hemoglobin-l"
+},
+{
+"id": "MONDO:1060282",
+"name": "aniridia-associated glaucoma",
+"syn": [],
+"parent": "secondary glaucoma",
+"defn": "A secondary glaucoma occurring in individuals with aniridia. Most affected eyes have open anterior chamber angles, and a minority have partial or complete angle"
+},
+{
+"id": "MONDO:1060283",
+"name": "plateau iris syndrome",
+"syn": [],
+"parent": "primary angle-closure glaucoma",
+"defn": "A form of primary angle-closure glaucoma caused by a large or anteriorly positioned ciliary body that leads to mechanical obstruction of the trabecular meshwork"
+},
+{
+"id": "MONDO:1060284",
+"name": "exfoliation glaucoma",
+"syn": [
+"pseudoexfoliation glaucoma",
+"XFG"
+],
+"parent": "open-angle glaucoma",
+"defn": "A secondary open-angle glaucoma that develops in individuals with exfoliation syndrome. Exfoliation syndrome is associated with raised intraocular pressure in u"
+},
+{
+"id": "MONDO:1060285",
+"name": "FBN1-related geleophysic and acromelic dysplasia",
+"syn": [],
+"parent": "skeletal dysplasia",
+"defn": "Any skeletal dysplasia in which the cause of the disease is a variation in the FBN1 gene. This condition is characterized by short stature, delayed bone age, st"
+},
+{
+"id": "MONDO:1060286",
+"name": "CAMK2A-related neurodevelopmental disorder",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "Any neurodevelopmental disorder in which the cause of the disease is a variation in the CAMK2A gene."
+},
+{
+"id": "MONDO:1060287",
+"name": "NUS1-related disorder",
+"syn": [
+"NUS1 related disorders",
+"NUS1-related disorders"
+],
+"parent": "hereditary disease",
+"defn": "Any hereditary disease in which the cause of the disease is a variation in the NUS1 gene. Biallelic variants cause a congenital disorder of glycosylation. Heter"
+},
+{
+"id": "MONDO:1060290",
+"name": "human ABL1 deficiency syndrome",
+"syn": [
+"HADS"
+],
+"parent": "hereditary disease",
+"defn": "A multiple congenital anomalies/dysmorphic syndrome caused by homozygous loss-of-function variants in the ABL1 gene. It is characterized by multiple congenital "
+},
+{
+"id": "MONDO:1061000",
+"name": "TUBB-related tubulinopathy",
+"syn": [],
+"parent": "tubulinopathy",
+"defn": "Any tubulinopathy in which the cause of the disease is a mutation in the TUBB gene. Heterozygous TUBB variants cause two overlapping developmental disorders, co"
+},
+{
+"id": "MONDO:1061001",
+"name": "Gianotti-Crosti syndrome",
+"syn": [
+"Crosti-Gianotti syndrome",
+"Gianotti Crosti syndrome",
+"infantile papular acrodermatitis"
+],
+"parent": "acrodermatitis",
+"defn": "An acrodermatitis characterized by the acute onset of a self-limited, symmetrical, monomorphic papular or papulovesicular eruption predominantly on the cheeks, "
+},
+{
+"id": "MONDO:1061002",
+"name": "polymorphous adenocarcinoma",
+"syn": [
+"PAC",
+"PLGA",
+"polymorphous low-grade adenocarcinoma"
+],
+"parent": "salivary gland carcinoma",
+"defn": "A salivary gland adenocarcinoma that arises predominantly from the minor salivary glands, most often in the palate, and rarely from the major salivary glands. I"
+},
+{
+"id": "MONDO:7770002",
+"name": "avoidant/restrictive food intake disorder",
+"syn": [
+"ARFID",
+"selective eating disorder"
+],
+"parent": "eating disorder",
+"defn": "An eating disorder characterized by avoidance or restriction of food intake due to one or more of the following: lack of interest in eating or food, sensitivity"
+},
+{
+"id": "MONDO:7770003",
+"name": "cystic fibrosis-related diabetes",
+"syn": [
+"CF-related diabetes",
+"CFRD"
+],
+"parent": "diabetes mellitus",
+"defn": "A form of diabetes mellitus unique to individuals with cystic fibrosis (CF), arising primarily from progressive fibrotic destruction of the pancreas leading to "
+},
+{
+"id": "MONDO:7770004",
+"name": "CFTR-related disorder",
+"syn": [
+"CFTR-RD"
+],
+"parent": "hereditary disease",
+"defn": "A disease associated with CFTR (cystic fibrosis transmembrane conductance regulator) dysfunction that does not fulfill the diagnostic criteria for cystic fibros"
+},
+{
+"id": "MONDO:7770005",
+"name": "cystic fibrosis-related liver disease",
+"syn": [
+"CF liver disease",
+"CF-related liver disease",
+"CFLD"
+],
+"parent": "liver disorder",
+"defn": "A liver disorder that arises as a consequence of cystic fibrosis. Cystic fibrosis-related liver disease encompasses a spectrum of hepatobiliary abnormalities ca"
+},
+{
+"id": "MONDO:7770006",
+"name": "disease by body system or component",
+"syn": [],
+"parent": "human disease",
+"defn": "A grouping class for human diseases classified by the body system or anatomical component primarily affected."
+},
+{
+"id": "MONDO:7770007",
+"name": "disease by developmental or physiological process",
+"syn": [],
+"parent": "human disease",
+"defn": "A grouping class for human diseases classified by the molecular, biochemical, cellular, anatomic, developmental or physiological process that is disrupted."
+},
+{
+"id": "MONDO:7770008",
+"name": "disease by etiologic mechanism",
+"syn": [],
+"parent": "human disease",
+"defn": "A grouping class for human diseases classified by their etiologic mechanism, encompassing primarily intrinsic (genetic, genomic), primarily extrinsic (e.g., inf"
+},
+{
+"id": "MONDO:7770009",
+"name": "disease of genetic or genomic mechanism",
+"syn": [],
+"parent": "disease by etiologic mechanism",
+"defn": "A grouping class for human diseases caused by genetic or genomic alterations, including chromosomal abnormalities and heritable mutations."
+},
+{
+"id": "MONDO:7770010",
+"name": "disease of primarily extrinsic mechanism",
+"syn": [],
+"parent": "disease by etiologic mechanism",
+"defn": "A grouping class for human diseases caused primarily by extrinsic factors, including infections, toxins, nutritional deficiencies, iatrogenic causes, and enviro"
+},
+{
+"id": "MONDO:7770011",
+"name": "disease by molecular mechanism",
+"syn": [],
+"parent": "disease by developmental or physiological process",
+"defn": "A grouping class for human diseases classified by their underlying molecular or pathophysiological mechanism, such as protein aggregation, ion channel dysfuncti"
+},
+{
+"id": "MONDO:7770747",
+"name": "hepatic fibrinogen storage disease",
+"syn": [
+"hepatocellular fibrinogen storage disease",
+"hereditary hypofibrinogenemia with hepatic storage",
+"HFSD"
+],
+"parent": "familial hypofibrinogenemia",
+"defn": "An autosomal dominant disorder characterized by hypofibrinogenemia and variable liver disease (ranging from asymptomatic transaminase elevation to cirrhosis), c"
+},
+{
+"id": "MONDO:7770748",
+"name": "classical-like Ehlers-Danlos syndrome",
+"syn": [
+"classical-like EDS",
+"clEDS"
+],
+"parent": "Ehlers-Danlos syndrome",
+"defn": "An Ehlers-Danlos syndrome characterized by skin hyperextensibility with velvety skin texture and absence of atrophic scarring, generalized joint hypermobility w"
+},
+{
+"id": "MONDO:7770749",
+"name": "kyphoscoliotic Ehlers-Danlos syndrome",
+"syn": [
+"kEDS",
+"kyphoscoliotic EDS"
+],
+"parent": "Ehlers-Danlos syndrome",
+"defn": "A rare systemic disease for which two subtypes exist, either related to the gene PLOD1 or FKBP14, and for which the clinically overlapping characteristics inclu"
+},
+{
+"id": "MONDO:7770750",
+"name": "Athabaskan brainstem dysgenesis syndrome",
+"syn": [
+"ABDS",
+"ABSD",
+"Athabascan brainstem dysgenesis syndrome"
+],
+"parent": "HOXA1-related syndrome",
+"defn": "A HOXA1-related syndrome characterized by horizontal gaze palsy, sensorineural deafness, central hypoventilation, developmental delay, and intellectual disabili"
+},
+{
+"id": "MONDO:8000000",
+"name": "infectious discitis",
+"syn": [],
+"parent": "vertebral joint disorder",
+"defn": "An infection of the intervertebral disk space."
+},
+{
+"id": "MONDO:8000001",
+"name": "staphylococcus discitis",
+"syn": [],
+"parent": "bacterial arthritis",
+"defn": "Discitis caused by infection with Staphylococcus."
+},
+{
+"id": "MONDO:8000002",
+"name": "escherichia coli discitis",
+"syn": [],
+"parent": "bacterial arthritis",
+"defn": "Discitis caused by infection with Escherichia coli."
+},
+{
+"id": "MONDO:8000003",
+"name": "streptococcus pneumoniae discitis",
+"syn": [],
+"parent": "bacterial arthritis",
+"defn": "Discitis caused by infection with Streptococcus pneumoniae."
+},
+{
+"id": "MONDO:8000004",
+"name": "salmonella discitis",
+"syn": [],
+"parent": "salmonellosis",
+"defn": "Discitis caused by infection with Salmonella."
+},
+{
+"id": "MONDO:8000005",
+"name": "fungal discitis",
+"syn": [],
+"parent": "fungal infectious disease",
+"defn": "Discitis caused by infection with fungi."
+},
+{
+"id": "MONDO:8000006",
+"name": "WHIM syndrome 1",
+"syn": [],
+"parent": "constitutional neutropenia",
+"defn": "A congenital autosomal dominant immune deficiency characterized by abnormal retention of mature neutrophils in the bone marrow (myelokathexis) and occasional hy"
+},
+{
+"id": "MONDO:8000008",
+"name": "Martsolf syndrome 1",
+"syn": [
+"cataract-intellectual disability-hypogonadism syndrome",
+"cataract-mental retardation-hypogonadism"
+],
+"parent": "multiple congenital anomalies/dysmorphic syndrome-intellectual disability",
+"defn": "This syndrome is characterized by the association of intellectual deficit, congenital cataract, and hypogonadotropic hypogonadism."
+},
+{
+"id": "MONDO:8000010",
+"name": "antiphospholipid syndrome",
+"syn": [
+"antiphospholipid antibody syndrome",
+"familial lupus anticoagulant",
+"Hughes syndrome"
+],
+"parent": "syndromic disease",
+"defn": "A disorder caused by the presence of autoantibodies directed against phospholipids, causing a hypercoaguable state, which may result in blood clots, stroke, hea"
+},
+{
+"id": "MONDO:8000011",
+"name": "visceral neuropathy, familial, 1, autosomal recessive",
+"syn": [],
+"parent": "neuronal intestinal dysplasia",
+"defn": "A form of chronic intestinal pseudoobstruction caused by a developmental failure of the enteric neurons to differentiate or migrate properly and manifests as a "
+},
+{
+"id": "MONDO:8000012",
+"name": "neurologic, endocrine, and pancreatic disease, multisystem, infantile-onset 1",
+"syn": [
+"IMNEPD",
+"infantile-onset multisystem neurologic, endocrine, and pancreatic disease"
+],
+"parent": "neurologic, endocrine, and pancreatic disease, multisystem, infantile-onset",
+"defn": ""
+},
+{
+"id": "MONDO:8000013",
+"name": "portal hypertension, noncirrhotic, 1",
+"syn": [
+"NCPH",
+"portal hypertension, noncirrhotic; NCPH"
+],
+"parent": "portal hypertension, noncirrhotic",
+"defn": ""
+},
+{
+"id": "MONDO:8000014",
+"name": "familial antiphospholipid syndrome",
+"syn": [
+"antiphospholipid syndrome, familial"
+],
+"parent": "autosomal dominant disease",
+"defn": "Autosomal dominant form of antiphospholipid syndrome."
+},
+{
+"id": "MONDO:8000015",
+"name": "46,XY sex reversal 11",
+"syn": [
+"46, XY sex reversal 11",
+"embryonic testicular regression syndrome",
+"ETRS"
+],
+"parent": "46,XY complete gonadal dysgenesis",
+"defn": "Any 46,XY complete gonadal dysgenesis in which the cause of the disease is a mutation in the DHX37 gene."
+},
+{
+"id": "MONDO:8000018",
+"name": "benign paroxysmal positional vertigo",
+"syn": [
+"BPPV",
+"BRV",
+"familial benign recurrent vertigo"
+],
+"parent": "peripheral vertigo",
+"defn": "Idiopathic recurrent vertigo associated with positional nystagmus. It is associated with a vestibular loss without other neurological or auditory signs. Unlike "
+},
+{
+"id": "MONDO:8000019",
+"name": "vertigo, benign recurrent, 1",
+"syn": [
+"BRV1"
+],
+"parent": "peripheral vertigo",
+"defn": ""
+},
+{
+"id": "MONDO:8000023",
+"name": "type 3 autoimmune lymphoproliferative syndrome",
+"syn": [],
+"parent": "autoimmune lymphoproliferative syndrome",
+"defn": "A rare, primary immunodeficiency. It is caused by a currently undetermined defect in the Fas-induced apoptosis pathway. No mutations in Fas, FASLG or CASP10 are"
+},
+{
+"id": "MONDO:8000024",
+"name": "autoimmune lymphoproliferative syndrome, type III caused by mutation in PRKCD",
+"syn": [],
+"parent": "autoimmune lymphoproliferative syndrome",
+"defn": "Any autoimmune lymphoproliferative syndrome in which the cause of the disease is a mutation in the PRKCD gene."
+}
+]

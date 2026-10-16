@@ -59,6 +59,26 @@ def profiles():
     return _P
 
 
+_KO = []
+
+
+def mondo_ko():
+    """{MONDO id: (Korean name, [other Korean names], MONDO preferred English name)} for the human concepts of the index, from the app file or the
+    repository (data/curated/korean/mondo_ko.jsonl, written by ml/mondo_ko_batches.py)."""
+    if not _KO:
+        try:
+            from __adc_data__ import _portable_data
+            _KO.append({t: (v[0], v[2:], v[1]) for t, v in _portable_data().get("mondo_ko", {}).items()})
+        except ImportError:
+            _KO.append(read_mondo_ko(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "curated", "korean", "mondo_ko.jsonl")))
+    return _KO[0]
+
+
+def read_mondo_ko(path):
+    try: return {x["id"]: (x["ko"], x.get("alt", []), x.get("en", "")) for x in map(json.loads, open(path, encoding="utf-8")) if x.get("ko")}
+    except OSError: return {}
+
+
 def read_profiles(root):
     """profiles_*.jsonl with the treatment cues of care_*.jsonl (care_en, care_ko) merged in by id."""
     rows = lambda pat: [json.loads(l) for f in sorted(glob.glob(os.path.join(str(root), pat))) for l in open(f, encoding="utf-8") if l.strip()]
@@ -126,29 +146,37 @@ class Index:
                 self.rows = []
                 with np.load(adc_runtime.model_path("mondo_index.npz", MI.C + "mondo_index.npz"), allow_pickle=False) as d:
                     ids, names, axes = d["ids"].tolist(), d["names"].tolist(), d["axes"] > 0; axn = MI.AXES
+                    pref = {t: v[2] for t, v in mondo_ko().items() if v[2]}      # the preferred MONDO name (the first index row can be a synonym)
                     for j, (t, n) in enumerate(zip(ids, names)):
                         if t in organs: continue
-                        organs[t] = [axn[k] for k in np.flatnonzero(axes[j])]
-                        if not n.startswith("obsolete") and t not in nh and not ANIMAL.search(n): self._add(n, 0, ("mondo", t, n[:1].upper() + n[1:], "", organs[t]))
+                        organs[t] = [axn[k] for k in np.flatnonzero(axes[j])]; p = pref.get(t, n)
+                        if not n.startswith("obsolete") and t not in nh and not ANIMAL.search(n):
+                            for key in dict.fromkeys([n, p]): self._add(key, 0, ("mondo", t, p[:1].upper() + p[1:], "", organs[t]))
                     first = {}
-                    for t, n in zip(ids, names): first.setdefault(t, n)
+                    for t, n in zip(ids, names): first.setdefault(t, pref.get(t, n))
                     if "abbr_keys" in d.files:                    # NLM LRABR abbreviations: every disease an abbreviation may mean
                         for k, v in zip(d["abbr_keys"].tolist(), d["abbr_vals"].tolist()):
                             for t in v.split(";")[:6]:
                                 if t in first and t not in nh: self._add(k, 1, ("mondo", t, first[t][:1].upper() + first[t][1:], f"약어 {k.upper()}", organs.get(t, [])))
                     if "ko_keys" in d.files:                      # a KCD name whose English name is a MONDO name: that concept
-                        exact, ko = {}, {p["id"]: p["ko"][0] for p in profiles() if p.get("ko")}
-                        for t, n in zip(ids, names): exact.setdefault(norm(n), t)
+                        exact, ko = {norm(n): t for t, n in first.items()}, {p["id"]: p["ko"][0] for p in profiles() if p.get("ko")}
+                        main = set(exact)                         # KCD English = the preferred MONDO name: the KCD name is that concept's Korean name
+                        for t, n in zip(ids, names): exact.setdefault(norm(n), t)        # = a synonym: still found, but not named by it
                         for k, v in zip(d["ko_keys"].tolist(), d["ko_vals"].tolist()):
                             if re.search(r"[a-z0-9(),\[\]]", k) or len(k) > 20: continue      # code notes ('f54와j45이분류항목...') and long names
                             t = exact.get(norm(v))
                             if t and t not in nh:
-                                self._add(k, 2.5, ("mondo", t, first[t][:1].upper() + first[t][1:], ko.get(t, k), organs.get(t, [])))
-                                self.ko.setdefault(t, ko.get(t, k))
+                                named = norm(v) in main
+                                self._add(k, 2.5 if named else 1, ("mondo", t, first[t][:1].upper() + first[t][1:], ko.get(t, k if named else ""), organs.get(t, [])))
+                                if named: self.ko.setdefault(t, ko.get(t, k))
                             elif len(k) <= 10: self._add(k, 0.5, ("text", k, k, v, None))      # no MONDO concept: short names only, after the linked ones
                         for t, k in ko.items(): self.ko[t] = k        # the curated profile name (spaced, everyday) wins over the KCD one
                         for t in self.ko:                         # a disease with a Korean (KCD) name is a common one: its English name ranks like a profile
                             self._add(first[t], 2, ("mondo", t, first[t][:1].upper() + first[t][1:], self.ko[t], organs.get(t, [])))
+                    for t, (k, alt, _) in mondo_ko().items():     # translated names for every other concept; searchable, ranked after the rest
+                        if t in first and t not in nh and not first[t].startswith("obsolete"):
+                            self.ko.setdefault(t, k)
+                            for name in [k] + list(alt): self._add(name, 0.5, ("mondo", t, first[t][:1].upper() + first[t][1:], self.ko[t], organs.get(t, [])))
                 mondo = self.rows; self.organs = organs
                 self.rows = [r[:4] + ((r[4][:4] + (organs.get(r[4][1], []),)) if r[4][0] == "mondo" and r[4][4] is None else r[4],) for r in keep] + mondo
                 self.by_id = {t: s[:4] + (organs.get(t, []),) for t, s in self.by_id.items()}

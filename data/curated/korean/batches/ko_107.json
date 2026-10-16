@@ -1,0 +1,1656 @@
+[
+{
+"id": "MONDO:0800113",
+"name": "necrotizing vasculitis",
+"syn": [
+"systemic vasculitis"
+],
+"parent": "vasculitis",
+"defn": "A type of vasculitis that is comprised of vasculitides that present with necrosis."
+},
+{
+"id": "MONDO:0800114",
+"name": "follicular bronchiolits",
+"syn": [],
+"parent": "idiopathic interstitial pneumonia",
+"defn": "A polyclonal hyperplasia of bronchiolar associated lymphoid tissue characterized by the development of lymphoid follicles with germinal centers in walls of the "
+},
+{
+"id": "MONDO:0800117",
+"name": "cutaneous botryomycosis",
+"syn": [],
+"parent": "botryomycosis",
+"defn": "A botromycosis that involves the skin and subcutaneous tissue (it is a more common type)."
+},
+{
+"id": "MONDO:0800118",
+"name": "visceral botryomycosis",
+"syn": [
+"pulmonary botromycosis"
+],
+"parent": "botryomycosis",
+"defn": "A botryomycosis that involves internal organs such as lungs, liver, or brain. It is a rare disease and has been described mainly in patients with underlying dis"
+},
+{
+"id": "MONDO:0800119",
+"name": "postinfectious bronchiolitis obliterans",
+"syn": [
+"PIBO"
+],
+"parent": "bronchiolitis",
+"defn": "An irreversible obstructive lung disease characterized by subepithelial inflammation and fibrotic narrowing of the bronchioles after lower respiratory tract inf"
+},
+{
+"id": "MONDO:0800120",
+"name": "Mac-Leod-Swyer-James-Syndrome",
+"syn": [
+"SJS",
+"Swyer-James-(Macleod)-Syndrome"
+],
+"parent": "bronchiolitis",
+"defn": "A rare lung condition characterized by often predominantly unilateral lung hyperlucency and air trapping. The condition is a post-infectious form of bronchiolit"
+},
+{
+"id": "MONDO:0800121",
+"name": "cellular interstitial pneumonitis",
+"syn": [],
+"parent": "interstitial lung disease specific to infancy",
+"defn": "An interstitial lung disease specific to infancy that is characterized by tachypnea at birth and persistent disease, diffuse interstitial thickening due to pale"
+},
+{
+"id": "MONDO:0800123",
+"name": "bronchiolocentric pattern of interstitial pneumonia",
+"syn": [
+"BPIP"
+],
+"parent": "pneumonia",
+"defn": "An interstitial lung disease characterized histologically by fibrosis and/or inflammation confined to the alveolar interstitium around bronchovascular bundles, "
+},
+{
+"id": "MONDO:0800124",
+"name": "Lane Hamilton syndrome",
+"syn": [],
+"parent": "celiac disease",
+"defn": "A rare concurrent association of idiopathic pulmonary hemosiderosis and celiac disease, and is typically seen in children under the age of 15."
+},
+{
+"id": "MONDO:0800125",
+"name": "disseminated visceral giant cell angiitis",
+"syn": [
+"disseminated visceral giant cell arteristic",
+"disseminated visceral giant cell arteritis"
+],
+"parent": "necrotizing vasculitis",
+"defn": "A necrotizing vasculitis characterized by widespread small-vessel giant cell angitis and extravascular granulomas."
+},
+{
+"id": "MONDO:0800126",
+"name": "dystrophic pulmonary ossification",
+"syn": [],
+"parent": "lung disorder",
+"defn": "A rare lung disorder characterized by ectopic bone formation within lung parenchyma. DPO can be idiopathic or associated with a variety of cardiovascular, respi"
+},
+{
+"id": "MONDO:0800127",
+"name": "pulmonary amyloidosis",
+"syn": [],
+"parent": "hereditary amyloidosis",
+"defn": "A rare hereditary amyloidosis that incorporates deposition of amyloid microfibril material in the lung parenchyma."
+},
+{
+"id": "MONDO:0800128",
+"name": "combined immunodeficiency due to POLE2 deficiency",
+"syn": [],
+"parent": "combined immunodeficiency",
+"defn": "Any combined immunodeficiency due to a deficiency in the POLE2 gene."
+},
+{
+"id": "MONDO:0800129",
+"name": "autoinflammatory disease, X-linked",
+"syn": [
+"autoinflammatory syndrome, X-linked",
+"NEMO deleted exon 5 syndrome"
+],
+"parent": "autoinflammatory syndrome",
+"defn": "An autoinflammatory syndrome characterized by the onset of systemic autoinflammation in the first months of life. Features include lymphadenopathy, hepatospleno"
+},
+{
+"id": "MONDO:0800130",
+"name": "autoinflammatory syndrome with immunodeficiency",
+"syn": [],
+"parent": "autoinflammatory syndrome",
+"defn": "An autoinflammatory syndrome characterized by onset of various autoimmune features usually in the first decades of life, although later onset has been reported."
+},
+{
+"id": "MONDO:0800131",
+"name": "hyper-IgE recurrent infection syndrome 4A, autosomal dominant",
+"syn": [],
+"parent": "hyper-IgE syndrome",
+"defn": "An immunologic disorder characterized by recurrent mainly sinopulmonary infections associated with increased serum IgE. The phenotype is variable, even within f"
+},
+{
+"id": "MONDO:0800132",
+"name": "autoinflammatory-pancytopenia syndrome due to DNASE2 deficiency",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "An autosomal recessive disorder characterized by severe anemia and thrombocytopenia apparent from early infancy, hepatosplenomegaly, and recurrent fevers associ"
+},
+{
+"id": "MONDO:0800133",
+"name": "pulmonary hypoplasia",
+"syn": [],
+"parent": "respiratory system disorder",
+"defn": "A respiratory malformation characterized by the presence of both bronchi (albeit rudimentary) and alveoli in an under-developed lobe. Both the size and the weig"
+},
+{
+"id": "MONDO:0800134",
+"name": "primary immunodeficiency due to calcium channel deficiency",
+"syn": [],
+"parent": "immunodeficiency disease",
+"defn": "An immunodeficiency disease caused by a variation in the CRACR2A gene."
+},
+{
+"id": "MONDO:0800135",
+"name": "congenital emphysematous lung disease due to Filamin A loss-of-function variant",
+"syn": [],
+"parent": "interstitial lung disease specific to childhood",
+"defn": "Any interstitial lung disease specific to childhood caused by a loss-of-function variation in the FLNA gene. Female children are reported more often. Rare male "
+},
+{
+"id": "MONDO:0800136",
+"name": "non-severe combined immunodeficiency due to COPG1 deficiency",
+"syn": [
+"IMD128",
+"immunodeficiency 128"
+],
+"parent": "non-SCID combined immunodeficiency",
+"defn": "Any non-severe combined immunodeficiency caused by a deficiency in the COPG1 gene."
+},
+{
+"id": "MONDO:0800137",
+"name": "early-onset pulmonary and cutaneous vasculitis",
+"syn": [],
+"parent": "autoinflammatory syndrome",
+"defn": "A monogenic autoinflammatory disorder caused by a de novo activating mutation, p.Tyr515∗, in hematopoietic cell kinase (HCK). The disease is characterized by cu"
+},
+{
+"id": "MONDO:0800138",
+"name": "multisystem autoimmune disease due to IKAROS gain of function",
+"syn": [],
+"parent": "autoimmune disease",
+"defn": "An autoimmune disease caused by a loss-of-function variation in the IKZF1/IKAROSgene. Leukocytes of patients exhibited specific defects including impaired IL-2 "
+},
+{
+"id": "MONDO:0800139",
+"name": "HELIOS deficiency",
+"syn": [],
+"parent": "non-SCID combined immunodeficiency",
+"defn": "A non-severe combined immunodeficiency caused by a loss-of-function variation in the IKZF2 gene that is characterized by recurrent upper respiratory infections,"
+},
+{
+"id": "MONDO:0800140",
+"name": "ITPKB deficiency",
+"syn": [],
+"parent": "non-SCID combined immunodeficiency",
+"defn": "Any non-severe combined immunodeficiency in which the cause of the disease is variation in the ITPKB gene."
+},
+{
+"id": "MONDO:0800141",
+"name": "MAN2B2 deficiency",
+"syn": [],
+"parent": "non-SCID combined immunodeficiency",
+"defn": "Any non-severe combined immunodeficiency in which the cause of the disease is variation in the MAN2B2 gene."
+},
+{
+"id": "MONDO:0800142",
+"name": "chronic mucocutaneous candidiasis and connective tissue disease due to JNK1 haploinsufficiency",
+"syn": [
+"JNK1 haploinsufficiency (causing combination of chronic mucocutaneous candidiasis and connective tissue disease)"
+],
+"parent": "immunodeficiency disease",
+"defn": "An immunodeficiency disease caused by a variation in MAPK8, the gene encoding c-Jun N-terminal kinase 1 (JNK1), that is characterized by chronic mucocutaneous c"
+},
+{
+"id": "MONDO:0800143",
+"name": "cytomegalovirus pneumonia due to NOS2 deficiency",
+"syn": [],
+"parent": "cytomegalovirus pneumonia",
+"defn": "Cytomegalovirus pneumonia due to variant in the NOS2 gene."
+},
+{
+"id": "MONDO:0800144",
+"name": "autoimmune pulmonary disease due to PD-1 deficiency",
+"syn": [],
+"parent": "autoimmune disease",
+"defn": "An autoimmune disease that is characterized by a lack of PD-1 on patient peripheral blood mononuclear cells (PBMCs) and reduced IFN production in response to my"
+},
+{
+"id": "MONDO:0800145",
+"name": "non-severe combined immunodeficiency due to polymerase delta deficiency",
+"syn": [],
+"parent": "non-SCID combined immunodeficiency",
+"defn": "Any non-severe combined immunodeficiency in which the cause of the disease is variation in the POLD1/POLD2 gene."
+},
+{
+"id": "MONDO:0800146",
+"name": "agammaglobulinemia, autosomal recessive, due to BOB1 deficiency",
+"syn": [],
+"parent": "agammaglobulinemia",
+"defn": "Any agammaglobulinemia in which the cause of the disease is autosomal recessive deficiency in the BOB1 gene."
+},
+{
+"id": "MONDO:0800147",
+"name": "hemophagocytic lymphohistiocytosis due to RhoG deficiency",
+"syn": [],
+"parent": "hereditary hemophagocytic lymphohistiocytosis",
+"defn": "Any genetic hemophagocytic lymphohistiocytosis in which the cause of the disease is an autosomal recessive variation in the RHOG gene."
+},
+{
+"id": "MONDO:0800148",
+"name": "autoinflammatory syndrome due to TBK1 deficiency",
+"syn": [],
+"parent": "autoinflammatory syndrome",
+"defn": "Any autoinflammatory syndrome in which the cause of the disease is an autosomal recessive variation in the TBK1 gene."
+},
+{
+"id": "MONDO:0800149",
+"name": "immunodeficiency, common variable, due to APRIL deficiency",
+"syn": [],
+"parent": "common variable immunodeficiency",
+"defn": "Any common variable immunodeficiency in which the cause of the disease is an autosomal recessive variation in the TNFSF13 gene."
+},
+{
+"id": "MONDO:0800152",
+"name": "disorder of galactose and fructose metabolism",
+"syn": [],
+"parent": "inborn carbohydrate metabolic disorder",
+"defn": "An inherited disorder of carbohydrate metabolism that is has its basis in the disruption of galactose and/or fructose metabolic process."
+},
+{
+"id": "MONDO:0800153",
+"name": "urea cycle disorder or inherited hyperammonemia",
+"syn": [],
+"parent": "urea cycle disorder",
+"defn": "A disorder of amino acid metabolism that has its basis in the disruption of the urea cycle or an inherited hyperammonemia (any specific disease which causes an "
+},
+{
+"id": "MONDO:0800154",
+"name": "inborn disorder of the metabolism of sulfur-containing amino acids and hydrogen sulfide",
+"syn": [],
+"parent": "inborn disorder of amino acid metabolism",
+"defn": "A disorder of amino acid metabolism that has its basis in the disruption of the metabolism of sulfur-containing amino acids and/or hydrogen sulfide."
+},
+{
+"id": "MONDO:0800155",
+"name": "inborn disorder of glycine and serine metabolism",
+"syn": [],
+"parent": "inborn disorder of amino acid metabolism",
+"defn": "A disorder of amino acid metabolism that has its basis in the disruption of the metabolism of glycine and/or serine."
+},
+{
+"id": "MONDO:0800156",
+"name": "inborn disorder of ornithine, proline and hydroxyproline metabolism",
+"syn": [],
+"parent": "inborn disorder of amino acid metabolism",
+"defn": "A disorder of amino acid metabolism that has its basis in the disruption of the metabolism of ornithine, proline and/or hydroxyproline."
+},
+{
+"id": "MONDO:0800157",
+"name": "inborn disorder of lysine, hydroxylysine, and tryptophan metabolism",
+"syn": [],
+"parent": "inborn disorder of tryptophan metabolism",
+"defn": "A disorder of amino acid metabolism that has its basis in the disruption of the metabolism of lysine, hydroxylysine, and/or tryptophan."
+},
+{
+"id": "MONDO:0800158",
+"name": "inborn disorder of glutamate/glutamine and aspartate/asparagine metabolism",
+"syn": [],
+"parent": "inborn disorder of amino acid metabolism",
+"defn": "A disorder of amino acid metabolism that has its basis in the disruption of the metabolism of glutamate/glutamine and aspartate/asparagine."
+},
+{
+"id": "MONDO:0800159",
+"name": "disorder of polyamine metabolism",
+"syn": [],
+"parent": "disorder of peptide and amine metabolism",
+"defn": "An inherited metabolic disease that has its basis in the disruption of the polyamine metabolic process."
+},
+{
+"id": "MONDO:0800166",
+"name": "Knobloch syndrome",
+"syn": [],
+"parent": "vitreoretinal degeneration",
+"defn": ""
+},
+{
+"id": "MONDO:0800167",
+"name": "Knobloch syndrome 1",
+"syn": [
+"KNO1",
+"Knobloch syndrome type 1",
+"Knobloch syndrome, type 1"
+],
+"parent": "Knobloch syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800175",
+"name": "cardiogenic shock",
+"syn": [],
+"parent": "heart disorder",
+"defn": "A rare, cardiac condition characterized by severely decreased cardiac output, hypoperfusion and end-organ dysfunction, in the presence of adequate intravascular"
+},
+{
+"id": "MONDO:0800176",
+"name": "black widow spider envenomation",
+"syn": [
+"black widow envenomation",
+"latrodectism",
+"poisoning caused by black widow venom"
+],
+"parent": "poisoning",
+"defn": "Local and/or systemic toxicity resulting from a bite from a black widow spider (Latrodectus species)."
+},
+{
+"id": "MONDO:0800178",
+"name": "platinum-induced ototoxicity",
+"syn": [
+"deafness, platinum-induced",
+"platinum-related ototoxicity"
+],
+"parent": "sensorineural hearing loss disorder",
+"defn": "Progressive, bilateral, and irreversible sensorineural hearing loss as a frequently encountered side effect of platinum-based chemotherapy such as cisplatin and"
+},
+{
+"id": "MONDO:0800179",
+"name": "periprosthetic joint infection",
+"syn": [],
+"parent": "bacterial arthritis",
+"defn": "A bacterial infection of the joint that is a complication occurring in 1% to 2% of primary arthroplasties."
+},
+{
+"id": "MONDO:0800180",
+"name": "CPOX-related hereditary coproporphyria",
+"syn": [
+"CPOX-related hepatic porphyria"
+],
+"parent": "inherited porphyria",
+"defn": "A porphyria caused by monoallelic and biallelic variants in CPOX and presenting as a spectrum of disease (a semidominant inheritance pattern). Monoallelic varia"
+},
+{
+"id": "MONDO:0800181",
+"name": "OPA1-related optic atrophy with or without extraocular features",
+"syn": [],
+"parent": "inborn mitochondrial metabolism disorder",
+"defn": "Any primary mitochondrial disease in which the cause of the disease is monoallelic or biallelic variants in the OPA1 gene. While optic atrophy is present in mos"
+},
+{
+"id": "MONDO:0800182",
+"name": "TEK-related primary glaucoma",
+"syn": [],
+"parent": "hereditary glaucoma",
+"defn": "Any primary hereditary glaucoma in which the cause of the disease is a mutation in the TEK gene."
+},
+{
+"id": "MONDO:0800183",
+"name": "PAX6-related ocular dysgenesis",
+"syn": [],
+"parent": "eye carcinoma",
+"defn": "Any eye disorder in which the cause of the disease is a mutation in the PAX6 gene."
+},
+{
+"id": "MONDO:0800195",
+"name": "achalasia-alacrima syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0800196",
+"name": "achromatopsia 5",
+"syn": [
+"ACHM5"
+],
+"parent": "cone dystrophy 4",
+"defn": ""
+},
+{
+"id": "MONDO:0800198",
+"name": "alopecia universalis",
+"syn": [
+"AU"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0800200",
+"name": "arthrogryposis, distal, type 2B4",
+"syn": [
+"DA2B4"
+],
+"parent": "distal arthrogryposis",
+"defn": ""
+},
+{
+"id": "MONDO:0800201",
+"name": "baldness, male pattern",
+"syn": [
+"MPB"
+],
+"parent": "androgenetic alopecia",
+"defn": ""
+},
+{
+"id": "MONDO:0800204",
+"name": "calvarial doughnut lesions with bone fragility and spondylometaphyseal dysplasia",
+"syn": [
+"CDLSMD"
+],
+"parent": "skeletal dysplasia",
+"defn": ""
+},
+{
+"id": "MONDO:0800206",
+"name": "epidermolysis bullosa dystrophica with subcorneal cleavage",
+"syn": [
+"EBDSC"
+],
+"parent": "epidermolysis bullosa dystrophica",
+"defn": ""
+},
+{
+"id": "MONDO:0800207",
+"name": "neuropathy, small fiber",
+"syn": [
+"SFNP"
+],
+"parent": "peripheral neuropathy",
+"defn": ""
+},
+{
+"id": "MONDO:0800209",
+"name": "fibrosis of extraocular muscles, congenital, 3b",
+"syn": [
+"CFEOM3B"
+],
+"parent": "congenital fibrosis of extraocular muscles",
+"defn": ""
+},
+{
+"id": "MONDO:0800210",
+"name": "glaucoma 1, open angle, l",
+"syn": [
+"GLC1L"
+],
+"parent": "juvenile open angle glaucoma",
+"defn": ""
+},
+{
+"id": "MONDO:0800290",
+"name": "Li-fraumeni-like syndrome",
+"syn": [
+"LFL"
+],
+"parent": "hereditary neoplastic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800291",
+"name": "crossed polydactyly, type I",
+"syn": [
+"CP1"
+],
+"parent": "polydactyly-syndactyly-triphalangism",
+"defn": ""
+},
+{
+"id": "MONDO:0800296",
+"name": "microcornea, rod-cone dystrophy, cataract, and posterior staphyloma 2",
+"syn": [
+"MRCS2"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0800298",
+"name": "peroxisome biogenesis disorder, complementation group 2",
+"syn": [
+"CG2"
+],
+"parent": "Zellweger spectrum disorders",
+"defn": ""
+},
+{
+"id": "MONDO:0800299",
+"name": "myopathy, congenital, with excess of muscle spindles",
+"syn": [
+"CMEMS"
+],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0800300",
+"name": "black locks with albinism and deafness syndrome",
+"syn": [
+"BADS"
+],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0800301",
+"name": "Friedreich ataxia with retained reflexes",
+"syn": [
+"FARR"
+],
+"parent": "Friedreich ataxia",
+"defn": ""
+},
+{
+"id": "MONDO:0800302",
+"name": "glycogen storage disease Id",
+"syn": [
+"GSD1D"
+],
+"parent": "glycogen storage disease I",
+"defn": ""
+},
+{
+"id": "MONDO:0800304",
+"name": "neuropathy, hereditary sensory and autonomic, type IId",
+"syn": [
+"HSAN2D"
+],
+"parent": "hereditary peripheral neuropathy",
+"defn": ""
+},
+{
+"id": "MONDO:0800305",
+"name": "myelofibrosis with myeloid metaplasia",
+"syn": [
+"MMM"
+],
+"parent": "primary myelofibrosis",
+"defn": ""
+},
+{
+"id": "MONDO:0800306",
+"name": "myoclonic epilepsy of Lafora 2",
+"syn": [
+"epilepsy, progressive myoclonic, 2B",
+"EPM2B",
+"Lafora disease 2"
+],
+"parent": "Lafora disease",
+"defn": "Any Lafora disease in which the cause of the disease is a variation in the NHLRC1 gene."
+},
+{
+"id": "MONDO:0800307",
+"name": "de la Chapelle dysplasia",
+"syn": [
+"DLCD"
+],
+"parent": "skeletal dysplasia",
+"defn": ""
+},
+{
+"id": "MONDO:0800308",
+"name": "orotic aciduria without megaloblastic anemia",
+"syn": [
+"OAWA"
+],
+"parent": "orotic aciduria",
+"defn": ""
+},
+{
+"id": "MONDO:0800310",
+"name": "pregnancy loss, recurrent, 4",
+"syn": [
+"RPRGL4"
+],
+"parent": "pregnancy loss, recurrent, susceptibility",
+"defn": ""
+},
+{
+"id": "MONDO:0800311",
+"name": "vas deferens, congenital unilateral aplasia of",
+"syn": [
+"CUAVD"
+],
+"parent": "congenital bilateral absence of vas deferens",
+"defn": ""
+},
+{
+"id": "MONDO:0800312",
+"name": "wooly hair, autosomal recessive 1, with or without hypotrichosis",
+"syn": [
+"ARWH1"
+],
+"parent": "isolated familial wooly hair disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0800313",
+"name": "xeroderma pigmentosum, type F/Cockayne syndrome",
+"syn": [
+"XPF/CS"
+],
+"parent": "xeroderma pigmentosum-Cockayne syndrome complex",
+"defn": ""
+},
+{
+"id": "MONDO:0800314",
+"name": "xeroderma pigmentosum, type G/Cockayne syndrome",
+"syn": [
+"XPG/CS"
+],
+"parent": "xeroderma pigmentosum-Cockayne syndrome complex",
+"defn": ""
+},
+{
+"id": "MONDO:0800317",
+"name": "premature ovarian failure 4",
+"syn": [
+"POF4"
+],
+"parent": "inherited primary ovarian failure",
+"defn": ""
+},
+{
+"id": "MONDO:0800318",
+"name": "Emery-Dreifuss muscular dystrophy 6, X-linked",
+"syn": [
+"EDMD6"
+],
+"parent": "X-linked Emery-Dreifuss muscular dystrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0800319",
+"name": "cone dystrophy 5, X-linked",
+"syn": [
+"COD5"
+],
+"parent": "retinal degeneration",
+"defn": ""
+},
+{
+"id": "MONDO:0800320",
+"name": "cone dystrophy 1, X-linked",
+"syn": [
+"COD1"
+],
+"parent": "retinal degeneration",
+"defn": ""
+},
+{
+"id": "MONDO:0800321",
+"name": "congenital heart defects, multiple types, 1, X-linked",
+"syn": [
+"CHTD1"
+],
+"parent": "congenital heart malformation",
+"defn": ""
+},
+{
+"id": "MONDO:0800322",
+"name": "membranous obstruction of inferior vena cava",
+"syn": [
+"MOVC"
+],
+"parent": "liver disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0800323",
+"name": "long QT syndrome 4",
+"syn": [
+"LQT4"
+],
+"parent": "familial long QT syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800324",
+"name": "microphthalmia, isolated, with coloboma 8",
+"syn": [
+"MCOPCB8"
+],
+"parent": "microphthalmia, isolated, with coloboma",
+"defn": ""
+},
+{
+"id": "MONDO:0800326",
+"name": "cone-rod dystrophy 14",
+"syn": [
+"CORD14"
+],
+"parent": "cone-rod dystrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0800328",
+"name": "retinitis pigmentosa 94, variable age at onset",
+"syn": [
+"RP94"
+],
+"parent": "retinitis pigmentosa",
+"defn": ""
+},
+{
+"id": "MONDO:0800329",
+"name": "febrile seizures, familial, 3a",
+"syn": [
+"FEB3A"
+],
+"parent": "febrile seizures, familial",
+"defn": ""
+},
+{
+"id": "MONDO:0800330",
+"name": "myoclonic epilepsy, juvenile, 2",
+"syn": [
+"EJM2"
+],
+"parent": "juvenile myoclonic epilepsy",
+"defn": ""
+},
+{
+"id": "MONDO:0800331",
+"name": "hyperglycinemia, transient neonatal",
+"syn": [
+"TNH"
+],
+"parent": "inborn disorder of amino acid metabolism",
+"defn": ""
+},
+{
+"id": "MONDO:0800335",
+"name": "migraine, familial hemiplegic, 4",
+"syn": [
+"FHM4"
+],
+"parent": "familial hemiplegic migraine",
+"defn": ""
+},
+{
+"id": "MONDO:0800337",
+"name": "acute tubulointerstitial nephritis",
+"syn": [
+"ATIN"
+],
+"parent": "kidney disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0800339",
+"name": "laryngospasm, severe neonatal episodic",
+"syn": [
+"SNEL"
+],
+"parent": "myotonic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800341",
+"name": "congenital myopathy 4A, autosomal dominant",
+"syn": [
+"cap myopathy 1",
+"CAPM1",
+"CFTD"
+],
+"parent": "autosomal dominant disease",
+"defn": "Any congenital myopathy in which the cause of the disease is a mutation in the TPM3 gene, and has autosomal dominant inheritance."
+},
+{
+"id": "MONDO:0800344",
+"name": "brachydactyly-syndactyly-oligodactyly syndrome",
+"syn": [
+"BDSDO"
+],
+"parent": "skeletal system disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0800345",
+"name": "atrial fibrillation, familial, 17",
+"syn": [
+"ATFB17"
+],
+"parent": "familial atrial fibrillation",
+"defn": ""
+},
+{
+"id": "MONDO:0800346",
+"name": "left ventricular noncompaction 9",
+"syn": [
+"LVNC9"
+],
+"parent": "left ventricular noncompaction",
+"defn": ""
+},
+{
+"id": "MONDO:0800347",
+"name": "cardiomyopathy, familial hypertrophic, 23, with or without ventricular noncompaction",
+"syn": [
+"CMH23"
+],
+"parent": "familial hypertrophic cardiomyopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0800348",
+"name": "retinitis pigmentosa 53",
+"syn": [
+"RP53"
+],
+"parent": "retinitis pigmentosa",
+"defn": ""
+},
+{
+"id": "MONDO:0800349",
+"name": "atrial fibrillation, familial, 16",
+"syn": [
+"ATFB16"
+],
+"parent": "familial atrial fibrillation",
+"defn": ""
+},
+{
+"id": "MONDO:0800350",
+"name": "left ventricular noncompaction 4",
+"syn": [
+"LVNC4"
+],
+"parent": "left ventricular noncompaction",
+"defn": ""
+},
+{
+"id": "MONDO:0800351",
+"name": "left ventricular noncompaction 5",
+"syn": [
+"LVNC5"
+],
+"parent": "left ventricular noncompaction",
+"defn": ""
+},
+{
+"id": "MONDO:0800352",
+"name": "retinitis pigmentosa 65",
+"syn": [
+"RP65"
+],
+"parent": "retinitis pigmentosa",
+"defn": ""
+},
+{
+"id": "MONDO:0800353",
+"name": "congenital disorder of glycosylation, type Ibb",
+"syn": [
+"CDG1BB"
+],
+"parent": "congenital disorder of glycosylation",
+"defn": ""
+},
+{
+"id": "MONDO:0800354",
+"name": "febrile seizures, familial, 3b",
+"syn": [
+"FEB3B"
+],
+"parent": "febrile seizures, familial",
+"defn": ""
+},
+{
+"id": "MONDO:0800355",
+"name": "parasomnia, sleep terrors type",
+"syn": [
+"PSMNST"
+],
+"parent": "sleep disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0800356",
+"name": "short-rib thoracic dysplasia 7/20 with polydactyly, digenic",
+"syn": [
+"SRTD7/20"
+],
+"parent": "short rib dysplasia",
+"defn": ""
+},
+{
+"id": "MONDO:0800357",
+"name": "hyperpigmentation, progressive cribriform and zosteriform",
+"syn": [
+"PCZH"
+],
+"parent": "hyperpigmentation of the skin",
+"defn": ""
+},
+{
+"id": "MONDO:0800358",
+"name": "schizophrenia 17",
+"syn": [
+"SCZD17"
+],
+"parent": "schizophrenia",
+"defn": ""
+},
+{
+"id": "MONDO:0800359",
+"name": "retinitis pigmentosa 64",
+"syn": [
+"RP64"
+],
+"parent": "retinitis pigmentosa",
+"defn": ""
+},
+{
+"id": "MONDO:0800363",
+"name": "Joubert syndrome 19",
+"syn": [
+"JBTS19"
+],
+"parent": "Joubert syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800364",
+"name": "peroxisome biogenesis disorder, complementation group 3",
+"syn": [
+"CG3"
+],
+"parent": "peroxisome biogenesis disorder due to PEX12 defect",
+"defn": ""
+},
+{
+"id": "MONDO:0800365",
+"name": "peroxisome biogenesis disorder, complementation group K",
+"syn": [
+"CGK"
+],
+"parent": "peroxisome biogenesis disorder due to PEX14 defect",
+"defn": ""
+},
+{
+"id": "MONDO:0800366",
+"name": "dyskeratosis congenita, autosomal dominant 4",
+"syn": [],
+"parent": "dyskeratosis congenita",
+"defn": ""
+},
+{
+"id": "MONDO:0800367",
+"name": "cardiomyopathy, dilated, 1LL",
+"syn": [
+"CMD1LL"
+],
+"parent": "familial dilated cardiomyopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0800368",
+"name": "cardiomyopathy, dilated, 1MM",
+"syn": [
+"CMD1MM"
+],
+"parent": "familial dilated cardiomyopathy",
+"defn": "A dilated cardiomyopathy that has material basis in heterozygous mutation in the MYBPC3 gene on chromosome 11p11."
+},
+{
+"id": "MONDO:0800369",
+"name": "Parkinson disease 19B, early-onset",
+"syn": [
+"PARK19B"
+],
+"parent": "juvenile-onset Parkinson disease",
+"defn": ""
+},
+{
+"id": "MONDO:0800370",
+"name": "dyskeratosis congenita, autosomal recessive 7",
+"syn": [
+"DKCB7"
+],
+"parent": "dyskeratosis congenita",
+"defn": ""
+},
+{
+"id": "MONDO:0800371",
+"name": "cardiomyopathy, familial restrictive, 5",
+"syn": [
+"RCM5"
+],
+"parent": "familial hypertrophic cardiomyopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0800372",
+"name": "Joubert syndrome 29",
+"syn": [
+"JBTS29"
+],
+"parent": "Joubert syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800373",
+"name": "carbon monoxide poisoning",
+"syn": [
+"CO Poisoning"
+],
+"parent": "poisoning",
+"defn": "A poisoning that is caused by exposure to carbon monoxide."
+},
+{
+"id": "MONDO:0800374",
+"name": "ventricular tachycardia, catecholaminergic polymorphic 6",
+"syn": [
+"CPVT6"
+],
+"parent": "catecholaminergic polymorphic ventricular tachycardia",
+"defn": ""
+},
+{
+"id": "MONDO:0800375",
+"name": "developmental delay, epilepsy, and neonatal diabetes 1",
+"syn": [
+"DEND1"
+],
+"parent": "DEND syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800376",
+"name": "developmental delay, epilepsy, and neonatal diabetes 2",
+"syn": [
+"DEND2"
+],
+"parent": "DEND syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800377",
+"name": "ACTH-independent adrenal Cushing syndrome, somatic",
+"syn": [],
+"parent": "ACTH-independent Cushing syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800378",
+"name": "17,20-lyase deficiency, isolated",
+"syn": [],
+"parent": "endocrine system disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0800379",
+"name": "17-alpha-hydroxylase/17,20-lyase deficiency, combined complete",
+"syn": [],
+"parent": "endocrine system disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0800380",
+"name": "17-alpha-hydroxylase/17,20-lyase deficiency, combined partial",
+"syn": [],
+"parent": "endocrine system disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0800381",
+"name": "46,XX true hermaphroditism, SRY-positive",
+"syn": [],
+"parent": "46,XX disorder of sex development",
+"defn": ""
+},
+{
+"id": "MONDO:0800382",
+"name": "Joubert syndrome 11",
+"syn": [
+"JBTS11"
+],
+"parent": "Joubert syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800383",
+"name": "Joubert syndrome 34",
+"syn": [
+"JBTS34"
+],
+"parent": "Joubert syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800384",
+"name": "cesium poisoning",
+"syn": [],
+"parent": "heavy metal poisoning",
+"defn": "A heavy metal poisoning that is caused by exposure to cesium."
+},
+{
+"id": "MONDO:0800385",
+"name": "iron poisoning",
+"syn": [
+"iron overload",
+"iron toxicity"
+],
+"parent": "heavy metal poisoning",
+"defn": "A heavy metal poisoning that is caused by exposure to iron. Iron toxicity is classified as corrosive or cellular. Ingested iron can cause direct caustic injury "
+},
+{
+"id": "MONDO:0800386",
+"name": "organophosphate poisoning",
+"syn": [
+"insecticide poisoning",
+"organophosphate exposure"
+],
+"parent": "poisoning",
+"defn": "A poisoning that is caused by exposure to organophosphate."
+},
+{
+"id": "MONDO:0800387",
+"name": "sulfur mustard poisoning",
+"syn": [
+"mustard agent poisoning",
+"mustard gas poisoning"
+],
+"parent": "poisoning",
+"defn": "A poisoning that is caused by exposure to sulfur mustard. The effects of mustard poisoning may be local, systemic, or both, depending on environmental condition"
+},
+{
+"id": "MONDO:0800388",
+"name": "cardiac glycoside intoxication",
+"syn": [
+"cardiac glycoside poisoning"
+],
+"parent": "poisoning",
+"defn": "A poisoning that is caused by exposure to cardiac glycoside."
+},
+{
+"id": "MONDO:0800389",
+"name": "monochloroacetic acid poisoning",
+"syn": [],
+"parent": "poisoning",
+"defn": "A poisoning that is caused by exposure to monochloroacetic acid."
+},
+{
+"id": "MONDO:0800390",
+"name": "chemotherapy-induced toxicity",
+"syn": [],
+"parent": "poisoning",
+"defn": "Toxicities following administration of chemotherapeutic agents"
+},
+{
+"id": "MONDO:0800391",
+"name": "EYS-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the EYS gene."
+},
+{
+"id": "MONDO:0800392",
+"name": "GNAT2-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the GNAT2 gene."
+},
+{
+"id": "MONDO:0800393",
+"name": "IDH3B-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the IDH3B gene."
+},
+{
+"id": "MONDO:0800394",
+"name": "MERTK-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the MERTK gene."
+},
+{
+"id": "MONDO:0800395",
+"name": "PRPF31-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by variants in the PRPF31 gene."
+},
+{
+"id": "MONDO:0800396",
+"name": "GPR179-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the GPR179 gene."
+},
+{
+"id": "MONDO:0800397",
+"name": "GRM6-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the GRM6 gene."
+},
+{
+"id": "MONDO:0800398",
+"name": "ADAM9-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the ADAM9 gene."
+},
+{
+"id": "MONDO:0800399",
+"name": "RP1-related recessive retinopathy",
+"syn": [],
+"parent": "autosomal recessive disease",
+"defn": "An autosomal dominant retinopathy caused by variants in the RP1 gene."
+},
+{
+"id": "MONDO:0800400",
+"name": "RP1-related dominant retinopathy",
+"syn": [],
+"parent": "autosomal dominant disease",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the RP1 gene."
+},
+{
+"id": "MONDO:0800401",
+"name": "CERKL-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the CERKL gene."
+},
+{
+"id": "MONDO:0800402",
+"name": "TRPM1-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the TRPM1 gene."
+},
+{
+"id": "MONDO:0800403",
+"name": "CNGB1-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the CNGB1 gene."
+},
+{
+"id": "MONDO:0800404",
+"name": "PCARE-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the PCARE gene."
+},
+{
+"id": "MONDO:0800405",
+"name": "CNGA1-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the CNGA1 gene."
+},
+{
+"id": "MONDO:0800406",
+"name": "ABCA4-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An inherited retinopathy caused by bi-allelic variants in the ABCA4 gene."
+},
+{
+"id": "MONDO:0800407",
+"name": "NYX-related retinopathy",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "An X-linked retinopathy caused by variants in the NYX gene."
+},
+{
+"id": "MONDO:0800408",
+"name": "urogenital adysplasia",
+"syn": [],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0800412",
+"name": "yakut short stature syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0800418",
+"name": "breast cancer, familial, susceptibility to, 1",
+"syn": [],
+"parent": "hereditary neoplastic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800419",
+"name": "breast cancer, familial, susceptibility to, 2",
+"syn": [],
+"parent": "hereditary neoplastic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800420",
+"name": "breast cancer, familial, susceptibility to, 3",
+"syn": [],
+"parent": "hereditary neoplastic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800423",
+"name": "colorectal cancer, susceptibility to, 4",
+"syn": [
+"CRCS4"
+],
+"parent": "hereditary neoplastic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800424",
+"name": "colorectal cancer, susceptibility to, on chromosome 15",
+"syn": [],
+"parent": "hereditary neoplastic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800433",
+"name": "ovarian cancer, familial, susceptibility to, 1",
+"syn": [],
+"parent": "hereditary neoplastic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800434",
+"name": "ovarian cancer, familial, susceptibility to, 2",
+"syn": [],
+"parent": "hereditary neoplastic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800435",
+"name": "ovarian cancer, familial, susceptibility to, 3",
+"syn": [],
+"parent": "hereditary neoplastic syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0800436",
+"name": "craniofacial dysmorphism, skeletal anomalies, and impaired intellectual development 1",
+"syn": [
+"cerebrofaciothoracic dysplasia",
+"CFSMR1",
+"pascual-Castroviejo syndrome type 1"
+],
+"parent": "craniofacial dysmorphism, skeletal anomalies, and impaired intellectual development syndrome",
+"defn": "Any craniofacial dysmorphism, skeletal anomalies, and impaired intellectual development in which the cause of the disease is a variation in the TMCO1 gene."
+},
+{
+"id": "MONDO:0800437",
+"name": "Carey-Fineman-Ziter syndrome 1",
+"syn": [
+"CFZS1",
+"myopathy, congenital nonprogressive, with Moebius sequence and Robin sequence",
+"myopathy-Moebius-Robin syndrome"
+],
+"parent": "Carey-Fineman-Ziter syndrome",
+"defn": "A rare condition characterized by the association of hypotonia, Moebius sequence (bilateral congenital facial palsy with impairment of ocular abduction), Pierre"
+},
+{
+"id": "MONDO:0800438",
+"name": "developmental delay with short stature, dysmorphic facial features, and sparse hair 1",
+"syn": [
+"DEDSSH1",
+"developmental delay with short stature, dysmorphic features, and sparse hair 1",
+"diphtamide deficiency syndrome"
+],
+"parent": "developmental delay with short stature, dysmorphic facial features, and sparse hair",
+"defn": "Any developmental delay with short stature, dysmorphic facial features, and sparse hair in which the cause of the disease is a mutation in the DPH1 gene."
+},
+{
+"id": "MONDO:0800439",
+"name": "syndromic complex neurodevelopmental disorder",
+"syn": [],
+"parent": "complex neurodevelopmental disorder",
+"defn": "A disorder that involves more than one phenotype associated with the central nervous system, including but not limited to intellectual disability, autism, and s"
+},
+{
+"id": "MONDO:0800440",
+"name": "HAND1 related congenital heart defect",
+"syn": [
+"HAND1-related congenital heart defect"
+],
+"parent": "congenital heart disease",
+"defn": "A heart disease that is present at birth caused by a variation in HAND1. Representative examples include ventricular septal defect, tetralogy of Fallot, and dou"
+},
+{
+"id": "MONDO:0800441",
+"name": "NKX2.5-related congenital, conduction and myopathic heart disease",
+"syn": [
+"NKX2-5-related congenital, conduction and myopathic heart disease"
+],
+"parent": "heart conduction disease",
+"defn": "A heart disease that includes congenital heart defects, abnormal cardiac conduction or myopathy. Congenital heart defects consists of any heart disease that is "
+},
+{
+"id": "MONDO:0800442",
+"name": "MYH-6 related congenital heart defects",
+"syn": [
+"MYH6 related congenital heart defects"
+],
+"parent": "congenital heart defects, multiple types",
+"defn": "A heart disease that is present at birth that is caused by a variation in MYH-6. Representative examples include atrial septal defect, ventricular septal defect"
+},
+{
+"id": "MONDO:0800443",
+"name": "DEAF1-associated neurodevelopmental disorder",
+"syn": [],
+"parent": "complex neurodevelopmental disorder",
+"defn": "A neurodevelopmental disorder characterized predominantly by intellectual disability, speech delay, motor delay, autism, sleep disturbances, and a high pain thr"
+},
+{
+"id": "MONDO:0800444",
+"name": "Birt-Hogg-Dube syndrome",
+"syn": [
+"BHD",
+"Birt-Hogg-Dubé Syndrome"
+],
+"parent": "autosomal dominant disease",
+"defn": ""
+},
+{
+"id": "MONDO:0800445",
+"name": "Birt-Hogg-Dube syndrome 1",
+"syn": [
+"fibrofolliculomas with trichodiscomas and acrochordons",
+"Hornstein-Knickenberg syndrome"
+],
+"parent": "Birt-Hogg-Dube syndrome",
+"defn": "Any Birt-Hogg-Dube (BHD) syndrome in which the cause of the disease is a variation in the FLCN gene."
+},
+{
+"id": "MONDO:0800446",
+"name": "bleeding diathesis due to thromboxane A2 receptor variants",
+"syn": [
+"bleeding diathesis due to TBXA2R variants",
+"bleeding diathesis due to thromboxane synthesis deficiency",
+"TBXA2R-related platelet disorder"
+],
+"parent": "inherited bleeding disorder, platelet-type",
+"defn": "A bleeding platelet disorder caused by a variation in the TBXA2R gene, which impairs thromboxane A2 receptor signaling and leads to impaired platelet aggregatio"
+},
+{
+"id": "MONDO:0800448",
+"name": "leukoencephalopathy with vanishing white matter",
+"syn": [
+"childhood ataxia with diffuse central nervous system hypomyelination",
+"myelinosis centralis diffusa"
+],
+"parent": "leukodystrophy",
+"defn": "A new leukoencephalopathy, the CACH syndrome (Childhood Ataxia with Central nervous system Hypomyelination) or VWM (Vanishing White Matter) was identified on cl"
+},
+{
+"id": "MONDO:0800449",
+"name": "lysosomal acid lipase deficiency",
+"syn": [
+"LAL deficiency"
+],
+"parent": "syndromic dyslipidemia",
+"defn": ""
+},
+{
+"id": "MONDO:0800450",
+"name": "microcephaly, short stature, and impaired glucose metabolism",
+"syn": [],
+"parent": "hereditary disease",
+"defn": ""
+},
+{
+"id": "MONDO:0800451",
+"name": "congenital amegakaryocytic thrombocytopenia",
+"syn": [],
+"parent": "inherited thrombocytopenia",
+"defn": ""
+},
+{
+"id": "MONDO:0800452",
+"name": "congenital amegakaryocytic thrombocytopenia 1",
+"syn": [
+"CAMT1",
+"MPL-related congenital amegakaryocytic thrombocytopenia"
+],
+"parent": "congenital hematological disorder",
+"defn": "Any congenital amegakaryocytic thrombocytopenia in which the cause of the disease is a variation in the MPL gene. It is characterized by severe decrease in the "
+},
+{
+"id": "MONDO:0800453",
+"name": "juvenile absence epilepsy",
+"syn": [
+"JAE"
+],
+"parent": "variable-age onset idiopathic generalized epilepsy syndrome",
+"defn": "A genetic epilepsy with onset occurring around puberty. Juvenile absence epilepsy is characterized by sporadic occurrence of absence seizures, frequently associ"
+},
+{
+"id": "MONDO:0800455",
+"name": "Birt-Hogg-Dube syndrome 2",
+"syn": [
+"BHD2"
+],
+"parent": "Birt-Hogg-Dube syndrome",
+"defn": "Birt-Hogg-Dube syndrome caused by the mutations in PRDM10."
+},
+{
+"id": "MONDO:0800456",
+"name": "SYNCRIP-related neurodevelopmental disorder",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "Any neurodevelopmental disorder in which the cause of the disease is a variation in the SYNCRIP gene. It is characterized by a neurologic and developmental diso"
+},
+{
+"id": "MONDO:0800457",
+"name": "HNRNPC-related neurodevelopmental disorder",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "Any neurodevelopmental disorder in which the cause of the disease is a variation in the HNRNPC gene. It is characterized by global developmental delay, intellec"
+},
+{
+"id": "MONDO:0800458",
+"name": "NR2F2 related multiple congenital anomalies/dysmorphic syndrome",
+"syn": [
+"ARP1-related multiple congenital anomalies/dysmorphic syndrome",
+"COUPTFII-related multiple congenital anomalies/dysmorphic syndrome",
+"TCOUP2-related multiple congenital anomalies/dysmorphic syndrome"
+],
+"parent": "hereditary disease",
+"defn": "A heart disease that is present at birth. Representative examples include atrial, ventricular, and atrioventricular septal defects, double-outlet right ventricl"
+},
+{
+"id": "MONDO:0800459",
+"name": "noxacusis",
+"syn": [
+"auditory nociception",
+"noise-induced pain",
+"pain hyperacusis"
+],
+"parent": "hyperacusis",
+"defn": "Noxacusis/pain hyperacusis is characterized by individuals who experience otalgia or pain (e.g., dull ache, burning, sharp, stabbing pain and throbbing pain) in"
+},
+{
+"id": "MONDO:0800461",
+"name": "COL4A1-related disorder",
+"syn": [
+"COL4A1-related disorders"
+],
+"parent": "COL4A1/A2-related disorder",
+"defn": "The spectrum of COL4A1-related disorders includes small-vessel brain disease of varying severity including porencephaly, variably associated with eye defects (r"
+},
+{
+"id": "MONDO:0800462",
+"name": "FHL1-related myopathy",
+"syn": [],
+"parent": "myopathy",
+"defn": "A group of myopathies that includes Emery-Dreifuss muscular dystrophy (EDMD), and two allelic disorders characterized by the presence of reducing body on histop"
+},
+{
+"id": "MONDO:0800463",
+"name": "KIF7-related ciliopathy",
+"syn": [],
+"parent": "ciliopathy",
+"defn": "A spectrum of ciliopathy disorders that typically show autosomal recessive inheritance and includes Al-Gazali-Bakalinova syndrome, hydrolethalus syndrome 2, acr"
+},
+{
+"id": "MONDO:0800464",
+"name": "SQSTM1-related multisystem proteinopathy",
+"syn": [],
+"parent": "inborn errors of metabolism",
+"defn": "A group of disorders including Paget disease of bone (PBD), inclusion body myopathy (IBM), and less frequently frontotemporal dementia (FTD) and amyotrophic lat"
+},
+{
+"id": "MONDO:0800465",
+"name": "CTSC-related disorder",
+"syn": [],
+"parent": "ectodermal dysplasia syndrome",
+"defn": "Any ectodermal dysplasia syndrome in which the cause of the disease is a variation in the CTSC gene. Variations in the CTSC gene can result in (1) Papillon-Lefe"
+},
+{
+"id": "MONDO:0800466",
+"name": "disorder of GNAS inactivation",
+"syn": [],
+"parent": "endocrine system disorder",
+"defn": "Any endocrine system disorder in which the cause of the disease is inactivation of the GNAS gene. Phenotypes include pseudohypoparathyroidism Ia, Ib, and Ic (PH"
+},
+{
+"id": "MONDO:0800467",
+"name": "dyskeratosis congenita and related telomere biology disorder",
+"syn": [],
+"parent": "dyskeratosis congenita",
+"defn": "A dyskeratosis congenita caused by impaired telomere maintenance resulting in short or very short telomeres. The phenotypic spectrum includes individuals with c"
+},
+{
+"id": "MONDO:0800468",
+"name": "SCN4A-related channelopathy",
+"syn": [],
+"parent": "muscular channelopathy",
+"defn": "Any muscular channelopathy in which the cause of the disease is a variation in the SCN4 gene. This is characteristic of a continuum in the clinical spectrum tha"
+},
+{
+"id": "MONDO:0800469",
+"name": "ACD-related telomere biology disorder",
+"syn": [
+"ACD-related telomeropathy"
+],
+"parent": "hereditary disease",
+"defn": "A complex set of inherited conditions caused by a pathogenic variant(s) in the ACD gene that results in aberrant telomere biology."
+},
+{
+"id": "MONDO:0800470",
+"name": "TUBB4A-related neurologic disorder",
+"syn": [],
+"parent": "inherited neurodegenerative disorder",
+"defn": "Any neurologic condition in which the cause of the disease is a mutation in the TUBB4A gene."
+}
+]

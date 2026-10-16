@@ -1,0 +1,1958 @@
+[
+{
+"id": "MONDO:0003614",
+"name": "intravenous leiomyomatosis",
+"syn": [],
+"parent": "leiomyomatosis",
+"defn": "A rare benign neoplasm characterized by the presence of smooth muscle cells growing within veins."
+},
+{
+"id": "MONDO:0003615",
+"name": "nerve compression syndrome",
+"syn": [
+"entrapment neuropathy"
+],
+"parent": "peripheral neuropathy",
+"defn": "Any nerve disorder caused by the entrapment and compression of a nerve."
+},
+{
+"id": "MONDO:0003616",
+"name": "salpingitis isthmica nodosa",
+"syn": [],
+"parent": "chronic salpingitis",
+"defn": "Formation of nodules in the isthmus of the fallopian tube due to fallopian tube diverticulosis. It may cause infertility or ectopic pregnancy."
+},
+{
+"id": "MONDO:0003617",
+"name": "chronic salpingitis",
+"syn": [
+"salpingitis, chronic"
+],
+"parent": "salpingitis",
+"defn": "Chronic inflammation of the fallopian tube. It usually follows an acute inflammatory attack."
+},
+{
+"id": "MONDO:0003618",
+"name": "pyosalpinx",
+"syn": [],
+"parent": "salpingitis",
+"defn": "The presence of pus in the fallopian tube. It is usually caused by acute salpingitis. The fallopian tube is distended and filled with pus. Histologic examinatio"
+},
+{
+"id": "MONDO:0003619",
+"name": "salpingitis",
+"syn": [
+"fallopian tube inflammation",
+"inflammation of fallopian tube"
+],
+"parent": "pelvic inflammatory disease",
+"defn": "Acute or chronic inflammation of the fallopian tube. It is most often caused by Neisseria gonorrhoeae and Chlamydia trachomatis infections. The infections usual"
+},
+{
+"id": "MONDO:0003620",
+"name": "peripheral nervous system disorder",
+"syn": [
+"disease of peripheral nervous system",
+"disease or disorder of peripheral nervous system",
+"disorder of peripheral nervous system"
+],
+"parent": "nervous system disorder",
+"defn": "A disease involving the peripheral nervous system."
+},
+{
+"id": "MONDO:0003621",
+"name": "small intestinal vasoactive intestinal peptide producing tumor",
+"syn": [
+"small intestinal VIP-producing NET",
+"small intestinal VIP-producing neuroendocrine tumor",
+"small intestinal VIP-producing neuroendocrine tumour"
+],
+"parent": "small intestine neuroendocrine tumor, well differentiated, low or intermediate grade",
+"defn": "A neuroendocrine tumor that arises from the small intestine and produces vasoactive intestinal peptide."
+},
+{
+"id": "MONDO:0003622",
+"name": "pancreatic vasoactive intestinal peptide producing tumor",
+"syn": [
+"pancreatic vasoactive intestinal peptide producing neoplasm",
+"pancreatic VIP producing neoplasm",
+"pancreatic VIP producing NET"
+],
+"parent": "VIPoma",
+"defn": "A usually malignant pancreatic neuroendocrine tumor producing vasoactive intestinal peptide (VIP). It may or may not be associated with inappropriate secretion "
+},
+{
+"id": "MONDO:0003624",
+"name": "acinic cell breast carcinoma",
+"syn": [
+"acinar cell breast carcinoma",
+"breast carcinoma of acinar cell"
+],
+"parent": "invasive ductal breast carcinoma",
+"defn": "A breast adenocarcinoma characterized by the presence of serous (acinic cell) differentiation."
+},
+{
+"id": "MONDO:0003626",
+"name": "uterine ligament serous adenocarcinoma",
+"syn": [],
+"parent": "uterine ligament adenocarcinoma",
+"defn": "A rare serous adenocarcinoma that arises from the uterine ligament."
+},
+{
+"id": "MONDO:0003627",
+"name": "rheumatic pulmonary valve disease",
+"syn": [
+"pulmonary valve rheumatologic disorder",
+"rheumatic disease of pulmonary valve",
+"rheumatologic disorder of pulmonary valve"
+],
+"parent": "autoimmune disorder of cardiovascular system",
+"defn": "A rheumatologic disorder that involves the pulmonary valve."
+},
+{
+"id": "MONDO:0003628",
+"name": "pulmonary valve disorder",
+"syn": [
+"disease of pulmonary valve",
+"disease or disorder of pulmonary valve",
+"disorder of pulmonary valve"
+],
+"parent": "heart valve disorder",
+"defn": "A disease involving the pulmonary valve."
+},
+{
+"id": "MONDO:0003630",
+"name": "pancreatic serous cystadenocarcinoma",
+"syn": [
+"pancreas serous adenocarcinoma",
+"serous cystadenocarcinoma of pancreas",
+"serous cystadenocarcinoma of the pancreas"
+],
+"parent": "pancreatic serous cystic neoplasm",
+"defn": "A metastasizing, slow-growing malignant epithelial neoplasm that arises from the exocrine pancreas. It is characterized by the presence of cysts and is composed"
+},
+{
+"id": "MONDO:0003631",
+"name": "cervical serous adenocarcinoma",
+"syn": [],
+"parent": "cervical adenocarcinoma",
+"defn": "A rare adenocarcinoma that arises from the cervix. It is characterized by the presence of papillary patterns and cellular budding. Psammoma bodies are often see"
+},
+{
+"id": "MONDO:0003632",
+"name": "endocervicitis",
+"syn": [
+"endocervix inflammation",
+"inflammation of endocervix"
+],
+"parent": "cervicitis",
+"defn": "Inflammation of the endocervix."
+},
+{
+"id": "MONDO:0003633",
+"name": "malignant mesenchymoma",
+"syn": [
+"mesenchymoma, malignant",
+"mesenchymoma, malignant (morphologic abnormality)"
+],
+"parent": "cancer",
+"defn": "A term describing a malignant soft tissue tumor which consists of two or more mesenchymal lines of differentiation, excluding a fibroblastic line of differentia"
+},
+{
+"id": "MONDO:0003634",
+"name": "proteinuria",
+"syn": [],
+"parent": "kidney disorder",
+"defn": "The presence of abnormal amounts of protein in the urine."
+},
+{
+"id": "MONDO:0003635",
+"name": "sebaceous breast carcinoma",
+"syn": [
+"breast sebaceous adenocarcinoma",
+"sebaceous adenocarcinoma of breast"
+],
+"parent": "breast adenocarcinoma",
+"defn": "A very rare breast adenocarcinoma with sebaceous differentiation."
+},
+{
+"id": "MONDO:0003636",
+"name": "vulvar sebaceous carcinoma",
+"syn": [
+"mammalian vulva sebaceous adenocarcinoma",
+"sebaceous adenocarcinoma of mammalian vulva"
+],
+"parent": "sebaceous adenocarcinoma",
+"defn": "A carcinoma that arises from the vulva. It is characterized by the presence of malignant basaloid glandular epithelial cells that resemble sebaceous epithelium "
+},
+{
+"id": "MONDO:0003637",
+"name": "clear cell-sugar-tumor of the lung",
+"syn": [
+"CCSTL",
+"clear cell-Sugar-tumor of lung",
+"lung clear cell tumor"
+],
+"parent": "lung benign neoplasm",
+"defn": "A rare benign lung tumor with perivascular epithelioid cell differentiation. It is composed of round or oval cells with abundant clear or eosinophilic cytoplasm"
+},
+{
+"id": "MONDO:0003638",
+"name": "lung meningioma",
+"syn": [
+"lung meningioma (disease)",
+"meningioma (disease) of lung",
+"meningioma of lung"
+],
+"parent": "lung cancer",
+"defn": "A primary or metastatic meningioma that is present in the lung. The lung is the most frequent site of metastasis of meningiomas."
+},
+{
+"id": "MONDO:0003639",
+"name": "lung hilum neoplasm",
+"syn": [
+"hilar lung neoplasm",
+"hilar lung tumor",
+"hilar lung tumour"
+],
+"parent": "lung neoplasm",
+"defn": "A benign or malignant neoplasm that arises from the hilar region of the lung."
+},
+{
+"id": "MONDO:0003640",
+"name": "verruciform xanthoma of skin",
+"syn": [
+"cutaneous verruciform xanthoma",
+"skin verruciform xanthoma",
+"verruciform xanthoma"
+],
+"parent": "xanthoma",
+"defn": "A rare, benign wart-like skin lesion of unknown etiology that is usually found in the genital or perianal area and consists of hyperkeratosis and aggregates of "
+},
+{
+"id": "MONDO:0003641",
+"name": "central nervous system hematopoietic neoplasm",
+"syn": [
+"central nervous system haematopoietic and lymphoid system neoplasm",
+"central nervous system haematopoietic neoplasms",
+"central nervous system haematopoietic tumour"
+],
+"parent": "central nervous system neoplasm",
+"defn": "A primary or metastatic neoplasm of hematopoietic origin that affects the brain, meninges, or spinal cord. Representative examples include Hodgkin and non-Hodgk"
+},
+{
+"id": "MONDO:0003643",
+"name": "giant hemangioma",
+"syn": [],
+"parent": "cavernous hemangioma",
+"defn": "A cavernous hemangioma characterized by the presence of hylanized vascular channels and is often associated with the presence of calcifications, fibrosis, and h"
+},
+{
+"id": "MONDO:0003644",
+"name": "cavernous hemangioma of colon",
+"syn": [
+"cavernous angioma of colon",
+"cavernous angioma of the colon",
+"cavernous hemangioma of the colon"
+],
+"parent": "benign colon neoplasm",
+"defn": "A cavernous hemangioma arising from the colon."
+},
+{
+"id": "MONDO:0003645",
+"name": "cavernous hemangioma of face",
+"syn": [
+"cavernous hemangioma of the Face",
+"face cavernous hemangioma"
+],
+"parent": "cavernous hemangioma",
+"defn": "A cavernous hemangioma arising from the face."
+},
+{
+"id": "MONDO:0003646",
+"name": "rectum neuroendocrine neoplasm",
+"syn": [
+"neuroendocrine neoplasm of rectum",
+"neuroendocrine neoplasm of the rectum",
+"rectal neuroendocrine neoplasm"
+],
+"parent": "intestinal neuroendocrine neoplasm",
+"defn": "A neoplasm with neuroendocrine differentiation that arises from the rectum. It includes well differentiated neuroendocrine tumors (low and intermediate grade) a"
+},
+{
+"id": "MONDO:0003647",
+"name": "atrophic flaccid tympanic membrane",
+"syn": [],
+"parent": "tympanic membrane disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0003648",
+"name": "tympanic membrane disorder",
+"syn": [
+"disease of tympanic membrane",
+"disease or disorder of tympanic membrane",
+"disorder of tympanic membrane"
+],
+"parent": "middle ear disorder",
+"defn": "A disease involving the tympanic membrane."
+},
+{
+"id": "MONDO:0003649",
+"name": "esophageal neuroendocrine tumor",
+"syn": [
+"esophageal NEN",
+"esophageal NET",
+"esophageal neuroendocrine neoplasm"
+],
+"parent": "digestive system neuroendocrine tumor, grade 1/2",
+"defn": "A well differentiated, low or intermediate grade tumor with neuroendocrine differentiation that arises from the esophagus."
+},
+{
+"id": "MONDO:0003650",
+"name": "mixed hepatoblastoma",
+"syn": [
+"mixed epithelial and mesenchymal hepatoblastoma"
+],
+"parent": "hepatoblastoma",
+"defn": "A hepatoblastoma characterized by the presence of fetal and embryonal epithelial components and a mesenchymal component."
+},
+{
+"id": "MONDO:0003651",
+"name": "macrotrabecular hepatoblastoma",
+"syn": [],
+"parent": "hepatoblastoma",
+"defn": "A pure fetal or fetal and embryonal epithelial hepatoblastoma characterized by the presence of broad trabeculae."
+},
+{
+"id": "MONDO:0003652",
+"name": "acute urate nephropathy",
+"syn": [
+"uric acid nephrolithiasis",
+"uric acid urolithiasis"
+],
+"parent": "nephrolithiasis",
+"defn": "Urolithiasis in which the composition of the stones is predominantly urate."
+},
+{
+"id": "MONDO:0003653",
+"name": "stork bite",
+"syn": [],
+"parent": "capillary malformation",
+"defn": ""
+},
+{
+"id": "MONDO:0003654",
+"name": "childhood parosteal osteosarcoma",
+"syn": [
+"childhood parosteal osteogenic sarcoma"
+],
+"parent": "pediatric osteosarcoma",
+"defn": "A low grade malignant bone-forming mesenchymal neoplasm arising from the surface of the bone. It occurs in childhood and usually affects the distal posterior fe"
+},
+{
+"id": "MONDO:0003655",
+"name": "cerebral lymphoma",
+"syn": [
+"primary lymphoma of the cerebrum",
+"primary lymphoma, brain"
+],
+"parent": "primary central nervous system lymphoma",
+"defn": "A non-Hodgkin or Hodgkin lymphoma that arises in the cerebral hemispheres as a primary lesion."
+},
+{
+"id": "MONDO:0003656",
+"name": "hemoglobinuria",
+"syn": [],
+"parent": "proteinuria",
+"defn": "A laboratory test result which indicates free hemoglobin in the urine."
+},
+{
+"id": "MONDO:0003658",
+"name": "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large b-cell lymphoma and classical Hodgkin lymphoma",
+"syn": [
+"B-cell lymphoma, unclassifiable, with features Intermediate between diffuse large B-cell lymphoma and Classic Hodgkin lymphoma",
+"Gray zone lymphoma",
+"Grey zone lymphoma"
+],
+"parent": "lymphoma",
+"defn": "A group of lymphomas displaying molecular, morphologic, immunophenotypic, and clinical overlap between classical Hodgkin lymphoma and diffuse large B-cell lymph"
+},
+{
+"id": "MONDO:0003659",
+"name": "pediatric lymphoma",
+"syn": [
+"childhood lymphoma"
+],
+"parent": "lymphoma",
+"defn": "A Hodgkin or non-Hodgkin lymphoma that occurs during childhood."
+},
+{
+"id": "MONDO:0003660",
+"name": "adult lymphoma",
+"syn": [
+"lymphoma of adults"
+],
+"parent": "lymphoma",
+"defn": "A lymphoma that occurs in an adult."
+},
+{
+"id": "MONDO:0003661",
+"name": "breast lymphoma",
+"syn": [
+"lymphoma of breast",
+"lymphoma of the breast",
+"primary breast lymphoma"
+],
+"parent": "lymphoma",
+"defn": "A lymphoma that arises from the breast. There is no history of extramammary breast lymphoma and ipsilateral axillary lymph node involvement does not exclude the"
+},
+{
+"id": "MONDO:0003663",
+"name": "uterine ligament endometrioid adenocarcinoma",
+"syn": [
+"endometrioid adenocarcinoma of uterine ligament"
+],
+"parent": "uterine ligament adenocarcinoma",
+"defn": "A rare endometrioid adenocarcinoma that arises from the uterine ligament. Some of the reported cases were associated with endometriosis."
+},
+{
+"id": "MONDO:0003664",
+"name": "hemolytic anemia",
+"syn": [
+"anaemia hemolytic",
+"anemia hemolytic",
+"anemia, hemolytic"
+],
+"parent": "normocytic anemia",
+"defn": "Anemia resulting from the premature destruction of the peripheral blood red cells. It may be congenital or it may be caused by infections, medications, or malig"
+},
+{
+"id": "MONDO:0003665",
+"name": "cervical endometrioid adenocarcinoma",
+"syn": [
+"cervical endometrioid carcinoma",
+"cervix endometrioid adenocarcinoma",
+"cervix endometrioid carcinoma"
+],
+"parent": "endometrioid adenocarcinoma",
+"defn": "A cervical adenocarcinoma with the histologic characteristics of the endometrioid adenocarcinoma of the endometrium."
+},
+{
+"id": "MONDO:0003666",
+"name": "fallopian tube endometrioid adenocarcinoma",
+"syn": [
+"endometrioid adenocarcinoma of fallopian tube",
+"endometrioid adenocarcinoma of the fallopian tube",
+"endometrioid carcinoma of fallopian tube"
+],
+"parent": "fallopian tube adenocarcinoma",
+"defn": "An adenocarcinoma that arises from the fallopian tube and resembles the endometrioid adenocarcinoma of the uterus. It usually has a favorable prognosis."
+},
+{
+"id": "MONDO:0003668",
+"name": "extragonadal seminoma",
+"syn": [
+"extragonadal primary seminoma",
+"primary extragonadal seminoma"
+],
+"parent": "seminoma",
+"defn": ""
+},
+{
+"id": "MONDO:0003669",
+"name": "testicular seminoma",
+"syn": [
+"seminoma of testis",
+"seminoma of the testis",
+"seminomatous germ cell tumor of testis"
+],
+"parent": "testicular pure germ cell tumor",
+"defn": "A malignant germ cell tumor arising from the testis. It is believed that it is derived from the sexually undifferentiated embryonic gonad. Treatment with radiot"
+},
+{
+"id": "MONDO:0003670",
+"name": "posteroinferior myocardial infarction",
+"syn": [
+"posteroinferior myocardial infarction by ECG finding",
+"posteroinferior myocardial infarction by EKG finding"
+],
+"parent": "myocardial infarction",
+"defn": "An electrocardiographic finding of an injury in leads corresponding to the anatomic region of the posteroinferior wall of the heart."
+},
+{
+"id": "MONDO:0003671",
+"name": "septal myocardial infarction",
+"syn": [
+"cardiac septum myocardial infarction (disease)",
+"myocardial infarction (disease) of cardiac septum"
+],
+"parent": "muscle tissue disorder",
+"defn": "A myocardial infarction (disease) that involves the cardiac septum."
+},
+{
+"id": "MONDO:0003672",
+"name": "posterior myocardial infarction",
+"syn": [
+"true posterior myocardial infarction"
+],
+"parent": "myocardial infarction",
+"defn": ""
+},
+{
+"id": "MONDO:0003673",
+"name": "apical myocardial infarction",
+"syn": [],
+"parent": "myocardial infarction",
+"defn": "An electrocardiographic finding of an injury in leads corresponding to the anatomic region of the apex of the heart."
+},
+{
+"id": "MONDO:0003674",
+"name": "subendocardial myocardial infarction",
+"syn": [
+"myocardial infarction (disease) of subendocardium layer",
+"subendocardium layer myocardial infarction (disease)"
+],
+"parent": "myocardial infarction",
+"defn": "An electrocardiographic finding of an injury in leads corresponding to the anatomic region of the subendocardial layer of the wall of the heart."
+},
+{
+"id": "MONDO:0003675",
+"name": "posterolateral myocardial infarction",
+"syn": [],
+"parent": "myocardial infarction",
+"defn": "An electrocardiographic finding of an injury in leads corresponding to the anatomic region of the posterolateral wall of the heart."
+},
+{
+"id": "MONDO:0003676",
+"name": "inferolateral myocardial infarct",
+"syn": [],
+"parent": "myocardial infarction",
+"defn": "An electrocardiographic finding of an injury in leads corresponding to the anatomic region of the inferolateral wall of the heart."
+},
+{
+"id": "MONDO:0003677",
+"name": "lateral myocardial infarction",
+"syn": [],
+"parent": "myocardial infarction",
+"defn": ""
+},
+{
+"id": "MONDO:0003678",
+"name": "silent myocardial infarction",
+"syn": [],
+"parent": "myocardial infarction",
+"defn": "A history of myocardial infarction in the absence of clinical symptoms and positive electrocardiographic findings."
+},
+{
+"id": "MONDO:0003679",
+"name": "anteroseptal myocardial infarction",
+"syn": [],
+"parent": "myocardial infarction",
+"defn": ""
+},
+{
+"id": "MONDO:0003680",
+"name": "periosteal chondrosarcoma",
+"syn": [
+"chondrosarcoma (disease) of periosteum",
+"juxtacortical chondrosarcoma",
+"juxtacortical chondrosarcoma (morphologic abnormality)"
+],
+"parent": "bone chondrosarcoma",
+"defn": "A chondrosarcoma arising from the surface of bone. It is characterized by a lobulated growth pattern, high mitotic activity, myxoid stroma formation, and necrot"
+},
+{
+"id": "MONDO:0003681",
+"name": "myxoid chondrosarcoma",
+"syn": [],
+"parent": "chondrosarcoma",
+"defn": "A chondrosarcoma characterized by the presence of myxoid changes."
+},
+{
+"id": "MONDO:0003682",
+"name": "localized chondrosarcoma",
+"syn": [
+"chondrosarcoma, localised",
+"chondrosarcoma, localized"
+],
+"parent": "chondrosarcoma",
+"defn": "A non-disseminated skeletal or extraskeletal chondrosarcoma."
+},
+{
+"id": "MONDO:0003684",
+"name": "clear cell chondrosarcoma",
+"syn": [
+"clear cell chondrosarcoma (morphologic abnormality)"
+],
+"parent": "bone chondrosarcoma",
+"defn": "A rare, usually low grade chondrosarcoma characterized by the presence of tumor cells with clear cytoplasm. It usually arises in the epiphyseal ends of long bon"
+},
+{
+"id": "MONDO:0003685",
+"name": "retroperitoneal germ cell neoplasm",
+"syn": [
+"germ cell neoplasm of retroperitoneum",
+"germ cell neoplasm of the retroperitoneum",
+"germ cell tumor of retroperitoneum"
+],
+"parent": "germ cell tumor",
+"defn": "A germ cell tumor that involves the retroperitoneal space."
+},
+{
+"id": "MONDO:0003686",
+"name": "apocrine sweat gland neoplasm",
+"syn": [
+"apocrine neoplasm",
+"apocrine neoplasm of skin",
+"apocrine neoplasm of the skin"
+],
+"parent": "sweat gland neoplasm",
+"defn": "A benign or malignant sweat gland neoplasm with apocrine differentiation. Representative examples include apocrine adenoma, ceruminous adenocarcinoma, and apocr"
+},
+{
+"id": "MONDO:0003687",
+"name": "endocardium cancer",
+"syn": [
+"cancer of endocardium",
+"malignant endocardial neoplasm",
+"malignant endocardial tumor"
+],
+"parent": "heart cancer",
+"defn": "A malignant neoplasm involving the endocardium."
+},
+{
+"id": "MONDO:0003688",
+"name": "well differentiated papillary mesothelioma",
+"syn": [
+"benign/Intermediate mesothelioma",
+"WDPM",
+"well-differentiated mesothelial papillary neoplasm"
+],
+"parent": "mesothelioma",
+"defn": "A localized or multifocal mesothelioma arising from the peritoneum and less often the pleura. Cases arising from the peritoneum predominantly occur in women. It"
+},
+{
+"id": "MONDO:0003689",
+"name": "familial hemolytic anemia",
+"syn": [
+"congenital hemolytic anemia",
+"hereditary hemolytic anemia"
+],
+"parent": "hemolytic anemia",
+"defn": "A congenital hemolytic anemia caused by defects of the erythrocyte membrane, enzyme deficiencies, or hemoglobinopathies."
+},
+{
+"id": "MONDO:0003690",
+"name": "adult anaplastic ependymoma",
+"syn": [
+"adult malignant ependymoma",
+"anaplastic ependymoma of adults",
+"malignant adult ependymoma"
+],
+"parent": "anaplastic ependymoma",
+"defn": "An anaplastic ependymoma occurring in adults."
+},
+{
+"id": "MONDO:0003691",
+"name": "childhood malignant mesenchymoma",
+"syn": [
+"malignant mesenchymoma of childhood",
+"paediatric malignant mesenchymoma",
+"pediatric malignant mesenchymoma"
+],
+"parent": "malignant mesenchymoma",
+"defn": "A malignant mesenchymoma occurring in children."
+},
+{
+"id": "MONDO:0003692",
+"name": "adult malignant mesenchymoma",
+"syn": [
+"malignant mesenchymoma of adults"
+],
+"parent": "malignant mesenchymoma",
+"defn": "A malignant mesenchymoma occurring in adults."
+},
+{
+"id": "MONDO:0003693",
+"name": "clear cell cystadenofibroma",
+"syn": [],
+"parent": "clear cell adenofibroma",
+"defn": "A benign neoplasm characterized by the presence of cystic glandular and fibrous tissues and clear cells."
+},
+{
+"id": "MONDO:0003694",
+"name": "ovarian clear cell cystadenofibroma",
+"syn": [
+"clear cell cystadenofibroma of ovary",
+"ovary clear cell cystadenofibroma"
+],
+"parent": "clear cell cystadenofibroma",
+"defn": "A benign neoplasm of glandular epithelium characterized by the presence of clear or hobnail cells within a dense fibrous stroma and cystic structures."
+},
+{
+"id": "MONDO:0003695",
+"name": "ovarian clear cell adenofibroma",
+"syn": [
+"clear cell adenofibroma of ovary",
+"ovary clear cell adenofibroma"
+],
+"parent": "ovarian benign neoplasm",
+"defn": "An uncommon benign neoplasm of glandular epithelium characterized by the presence of clear or hobnail cells within a dense fibrous stroma."
+},
+{
+"id": "MONDO:0003697",
+"name": "non-invasive verrucous carcinoma of the penis",
+"syn": [
+"non-invasive verrucous carcinoma of penis"
+],
+"parent": "penis verrucous carcinoma",
+"defn": ""
+},
+{
+"id": "MONDO:0003698",
+"name": "penis verrucous carcinoma",
+"syn": [
+"squamous carcinoma of penis, verrucous type",
+"squamous carcinoma of the penis, verrucous type",
+"verrucous carcinoma of penis"
+],
+"parent": "papillary carcinoma of the penis",
+"defn": "A slow growing, locally recurring, very well differentiated papillary squamous cell carcinoma that arises from the penis. It is characterized by the presence of"
+},
+{
+"id": "MONDO:0003699",
+"name": "phobic disorder",
+"syn": [
+"phobia"
+],
+"parent": "anxiety disorder",
+"defn": "An anxiety disorder characterized by an intense, irrational fear of an object, activity, or situation. The individual seeks to avoid the object, activity, or si"
+},
+{
+"id": "MONDO:0003700",
+"name": "brachial plexus neoplasm",
+"syn": [
+"brachial nerve plexus neoplasm",
+"brachial nerve plexus neoplasm (disease)",
+"brachial nerve plexus tumor"
+],
+"parent": "nerve plexus neoplasm",
+"defn": "A neoplasm (disease) that involves the brachial nerve plexus."
+},
+{
+"id": "MONDO:0003701",
+"name": "thyroid gland diffuse sclerosing papillary carcinoma",
+"syn": [
+"nonencapsulated sclerosing adenocarcinoma",
+"nonencapsulated sclerosing carcinoma",
+"nonencapsulated sclerosing neoplasm"
+],
+"parent": "thyroid gland papillary carcinoma",
+"defn": "A morphologic variant of papillary carcinoma of the thyroid gland that more often affects young patients and commonly metastasizing to the lungs. It is characte"
+},
+{
+"id": "MONDO:0003702",
+"name": "uterus intravascular leiomyomatosis",
+"syn": [
+"intravascular leiomyomatosis of the uterus",
+"intravascular leiomyomatosis of uterus",
+"intravenous leiomyomatosis of the uterus"
+],
+"parent": "uterine benign neoplasm",
+"defn": "A rare benign neoplasm characterized by the presence of smooth muscle cells growing within the veins of the uterine corpus. The intravascular neoplasm growth oc"
+},
+{
+"id": "MONDO:0003704",
+"name": "uterine corpus diffuse leiomyomatosis",
+"syn": [
+"body of uterus leiomyomatosis",
+"leiomyomatosis of body of uterus",
+"uterine corpus leiomyomatosis"
+],
+"parent": "leiomyomatosis",
+"defn": "An unusual condition characterized by the presence of numerous small benign smooth muscle neoplasms located throughout the body of the uterus."
+},
+{
+"id": "MONDO:0003705",
+"name": "adult brainstem mixed glioma",
+"syn": [
+"adult brain stem mixed glioma"
+],
+"parent": "adult brainstem glioma",
+"defn": ""
+},
+{
+"id": "MONDO:0003706",
+"name": "adult brainstem astrocytoma",
+"syn": [
+"adult brain stem astrocytoma"
+],
+"parent": "adult astrocytic tumor",
+"defn": ""
+},
+{
+"id": "MONDO:0003707",
+"name": "distal cholangiocarcinoma",
+"syn": [
+"dCCA",
+"distal bile duct carcinoma",
+"distal biliary tract carcinoma"
+],
+"parent": "extrahepatic bile duct adenocarcinoma",
+"defn": "A carcinoma that arises from the common bile duct distal to the insertion of the cystic duct."
+},
+{
+"id": "MONDO:0003708",
+"name": "extrahepatic bile duct small cell adenocarcinoma",
+"syn": [
+"extrahepatic bile duct small cell NEC",
+"extrahepatic bile duct small cell neuroendocrine carcinoma",
+"Oat cell carcinoma of extrahepatic bile duct"
+],
+"parent": "small cell carcinoma",
+"defn": "An aggressive, high-grade and poorly differentiated carcinoma with neuroendocrine differentiation that arises from the extrahepatic bile ducts. It is characteri"
+},
+{
+"id": "MONDO:0003709",
+"name": "agoraphobia",
+"syn": [
+"fear of open spaces (finding)"
+],
+"parent": "phobic disorder",
+"defn": "An anxiety disorder characterized by an intense, irrational fear of venturing out into open places or situations in which help (or escape) might not be availabl"
+},
+{
+"id": "MONDO:0003710",
+"name": "ovarian mixed germ cell neoplasm",
+"syn": [
+"mixed germ cell neoplasm of ovary",
+"mixed germ cell neoplasm of the ovary",
+"mixed germ cell tumor of ovary"
+],
+"parent": "ovarian primitive germ cell tumor",
+"defn": "An ovarian malignant germ cell tumor characterized by the presence of at least two different germ cell components. At least one of the germ cell components is p"
+},
+{
+"id": "MONDO:0003712",
+"name": "angiokeratoma of mibelli",
+"syn": [],
+"parent": "angiokeratoma",
+"defn": ""
+},
+{
+"id": "MONDO:0003713",
+"name": "angiokeratoma circumscriptum",
+"syn": [],
+"parent": "angiokeratoma",
+"defn": ""
+},
+{
+"id": "MONDO:0003714",
+"name": "bladder urachal squamous cell carcinoma",
+"syn": [],
+"parent": "bladder squamous cell carcinoma",
+"defn": ""
+},
+{
+"id": "MONDO:0003715",
+"name": "bladder urachal carcinoma",
+"syn": [
+"bladder urachal cancer",
+"urachal carcinoma"
+],
+"parent": "urinary bladder carcinoma",
+"defn": "Urachal cancer is a type of bladder cancer, making up less than 1% of all bladder cancers. The urachus is a structure normally only present during development i"
+},
+{
+"id": "MONDO:0003716",
+"name": "renal pelvis papillary urothelial carcinoma",
+"syn": [
+"kidney pelvis papillary carcinoma",
+"papillary carcinoma of kidney pelvis",
+"papillary carcinoma of renal pelvis"
+],
+"parent": "renal pelvis papillary tumor",
+"defn": "A papillary transitional cell carcinoma that arises from the renal pelvis."
+},
+{
+"id": "MONDO:0003717",
+"name": "renal pelvis papillary tumor",
+"syn": [
+"papillary neoplasm of renal pelvis",
+"papillary neoplasm of the renal pelvis",
+"papillary tumor of renal pelvis"
+],
+"parent": "papillary urothelial neoplasm",
+"defn": "A papillary tumor originating in the renal pelvis."
+},
+{
+"id": "MONDO:0003718",
+"name": "occlusion precerebral artery",
+"syn": [],
+"parent": "cerebrovascular disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0003719",
+"name": "renal pelvis neoplasm",
+"syn": [
+"kidney pelvis neoplasm",
+"kidney pelvis tumor",
+"kidney pelvis tumour"
+],
+"parent": "kidney neoplasm",
+"defn": "A neoplasm (disease) that involves the renal pelvis."
+},
+{
+"id": "MONDO:0003720",
+"name": "kidney fibrosarcoma",
+"syn": [
+"fibrosarcoma of kidney",
+"fibrosarcoma of the kidney",
+"kidney fibrosarcoma (disease)"
+],
+"parent": "kidney sarcoma",
+"defn": "A usually aggressive malignant neoplasm arising from the kidney. It is characterized by the presence of spindle-shaped fibroblasts and collagenous stroma format"
+},
+{
+"id": "MONDO:0003721",
+"name": "kidney osteogenic sarcoma",
+"syn": [
+"kidney extraskeletal osteosarcoma",
+"kidney osteosarcoma",
+"kidney osteosarcoma (disease)"
+],
+"parent": "extraosseous osteosarcoma",
+"defn": "An osteosarcoma arising from the kidney."
+},
+{
+"id": "MONDO:0003722",
+"name": "internal auditory canal meningioma",
+"syn": [
+"internal acoustic meatus meningioma (disease)",
+"meningioma (disease) of internal acoustic meatus",
+"meningioma of internal auditory canal"
+],
+"parent": "middle cranial fossa meningioma",
+"defn": "A meningioma that affects the internal auditory canal."
+},
+{
+"id": "MONDO:0003724",
+"name": "non-proliferative fibrocystic change of the breast",
+"syn": [
+"breast fibrocystic change, non-proliferative type",
+"non-proliferative fibrocystic change",
+"non-proliferative fibrocystic change of breast"
+],
+"parent": "breast fibrocystic disease",
+"defn": "Breast fibrocystic change characterized by the absence of epithelial cell hyperplasia."
+},
+{
+"id": "MONDO:0003725",
+"name": "breast adenosis",
+"syn": [
+"adenosis of breast",
+"adenosis of the breast"
+],
+"parent": "breast disorder",
+"defn": "A non-neoplastic disorder characterized by epithelial and/or myoepithelial tissue growth in the breast lobules. It may be associated with apocrine changes or sc"
+},
+{
+"id": "MONDO:0003726",
+"name": "apocrine adenosis of breast",
+"syn": [
+"apocrine adenosis of the breast",
+"breast apocrine adenosis"
+],
+"parent": "non-proliferative fibrocystic change of the breast",
+"defn": "Breast adenosis characterized by the presence of extensive apocrine metaplasia."
+},
+{
+"id": "MONDO:0003727",
+"name": "animal phobia",
+"syn": [
+"fear of animals (finding)",
+"zoophobia (finding)"
+],
+"parent": "specific phobia",
+"defn": "An overwhelming, irrational, and persistent fear of animals."
+},
+{
+"id": "MONDO:0003728",
+"name": "breast fibrosarcoma",
+"syn": [
+"breast fibrosarcoma (disease)",
+"fibrosarcoma of breast",
+"fibrosarcoma of the breast"
+],
+"parent": "breast sarcoma",
+"defn": "A usually aggressive malignant neoplasm arising from the breast. It is characterized by the presence of spindle-shaped fibroblasts and collagenous stroma format"
+},
+{
+"id": "MONDO:0003729",
+"name": "aleukemic leukemia cutis",
+"syn": [],
+"parent": "aleukemic leukemia",
+"defn": "Infiltration of the skin and subcutaneous tissue by leukemic cells without evidence of leukemia in the bone marrow and peripheral blood. It results in clinicall"
+},
+{
+"id": "MONDO:0003730",
+"name": "aleukemic leukemia",
+"syn": [],
+"parent": "leukemia",
+"defn": "A leukemia characterized by the absence of leukemic cells in the peripheral blood."
+},
+{
+"id": "MONDO:0003731",
+"name": "adult central nervous system teratoma",
+"syn": [
+"adult CNS teratoma",
+"central nervous system teratoma of adults",
+"teratoma of adult central nervous system"
+],
+"parent": "central nervous system teratoma",
+"defn": "A mature or immature teratoma affecting the central nervous system and occurring in adults."
+},
+{
+"id": "MONDO:0003732",
+"name": "adult central nervous system mature teratoma",
+"syn": [
+"central nervous system mature teratoma of adults"
+],
+"parent": "adult central nervous system teratoma",
+"defn": "A central nervous system mature teratoma that occurs in an adult."
+},
+{
+"id": "MONDO:0003733",
+"name": "central nervous system mature teratoma",
+"syn": [
+"CNS mature teratoma",
+"mature teratoma of central nervous system",
+"mature teratoma of CNS"
+],
+"parent": "central nervous system teratoma",
+"defn": "A teratoma composed exclusively of fully differentiated, 'adult-type' tissue elements that are sometimes arranged in a pattern resembling normal tissue relation"
+},
+{
+"id": "MONDO:0003734",
+"name": "adult central nervous system immature teratoma",
+"syn": [],
+"parent": "adult central nervous system teratoma",
+"defn": ""
+},
+{
+"id": "MONDO:0003735",
+"name": "central nervous system immature teratoma",
+"syn": [
+"CNS immature teratoma",
+"immature teratoma of central nervous system",
+"immature teratoma of CNS"
+],
+"parent": "central nervous system teratoma",
+"defn": "A variant of teratoma composed of incompletely differentiated components resembling fetal tissues. Even if the immature component is only a minor element of an "
+},
+{
+"id": "MONDO:0003736",
+"name": "cancerophobia",
+"syn": [
+"Cancerphobia",
+"fear of getting cancer (finding)"
+],
+"parent": "nosophobia",
+"defn": "An overwhelming, irrational, and persistent fear of being diagnosed with cancer."
+},
+{
+"id": "MONDO:0003737",
+"name": "malignant testicular Leydig cell tumor",
+"syn": [
+"testicular Leydig cell tumor, malignant"
+],
+"parent": "malignant Leydig cell tumor",
+"defn": "A Leydig cell tumor characterized by a large size, cellular atypia, high mitotic activity, vascular invasion and necrotic changes. The prognosis is usually poor"
+},
+{
+"id": "MONDO:0003738",
+"name": "selective IgE deficiency disease",
+"syn": [
+"selective IgE immunodeficiency"
+],
+"parent": "dysgammaglobulinemia",
+"defn": "A rare dysgammaglobulinemia characterized by low or undetectable serum levels of immunoglobulin class E (IgE). It is an uncommon primary antibody deficiency. It"
+},
+{
+"id": "MONDO:0003739",
+"name": "selective immunoglobulin deficiency disease",
+"syn": [
+"selective Immunoglobulin isotype deficiency"
+],
+"parent": "B cell deficiency",
+"defn": "A broad classification of dysgammaglobulinemias characterized by low or undetectable serum levels of one of the five immunoglobulin classes. Deficiencies of imm"
+},
+{
+"id": "MONDO:0003740",
+"name": "AIDS phobia",
+"syn": [],
+"parent": "nosophobia",
+"defn": "An overwhelming, irrational, and persistent fear of contracting Acquired Immune Deficiency Syndrome."
+},
+{
+"id": "MONDO:0003741",
+"name": "juvenile type testicular granulosa cell tumor",
+"syn": [],
+"parent": "testicular granulosa cell tumor",
+"defn": "A rare sex cord-stromal tumor that arises from the testis. It is the most frequent congenital testicular neoplasm and is usually diagnosed during the perinatal "
+},
+{
+"id": "MONDO:0003742",
+"name": "heart fibrosarcoma",
+"syn": [
+"Cardiac fibrosarcoma",
+"cardiac fibrosarcoma",
+"fibrosarcoma of heart"
+],
+"parent": "heart sarcoma",
+"defn": "A usually aggressive malignant neoplasm arising from the heart. It is characterized by the presence of spindle-shaped fibroblasts and collagenous stroma formati"
+},
+{
+"id": "MONDO:0003743",
+"name": "heart malignant hemangiopericytoma",
+"syn": [
+"heart hemangiopericytoma",
+"heart spindle cell tumor",
+"heart spindle cell tumour"
+],
+"parent": "hemangiopericytoma",
+"defn": "A malignant hemangiopericytoma arising in the heart."
+},
+{
+"id": "MONDO:0003744",
+"name": "spindle cell intraocular melanoma",
+"syn": [
+"spindle cell melanoma of the uvea",
+"spindle cell melanoma of uvea",
+"spindle cell uveal melanoma"
+],
+"parent": "spindle cell melanoma",
+"defn": "A melanoma arising from the choroid, ciliary body, or the iris. It is characterized by the presence of spindle-shaped melanocytes."
+},
+{
+"id": "MONDO:0003745",
+"name": "choroid spindle cell melanoma",
+"syn": [
+"optic choroid spindle cell melanoma",
+"spindle cell melanoma of choroid",
+"spindle cell melanoma of optic choroid"
+],
+"parent": "spindle cell intraocular melanoma",
+"defn": "A spindle cell melanoma that involves the optic choroid."
+},
+{
+"id": "MONDO:0003746",
+"name": "ciliary body spindle cell melanoma",
+"syn": [
+"spindle cell melanoma of ciliary body",
+"spindle cell melanoma of the ciliary body"
+],
+"parent": "malignant ciliary body melanoma",
+"defn": "A spindle cell melanoma that involves the ciliary body."
+},
+{
+"id": "MONDO:0003747",
+"name": "telangiectatic glomangioma",
+"syn": [],
+"parent": "cutaneous glomangioma",
+"defn": "A glomus tumor characterized by huge vascular channel formations."
+},
+{
+"id": "MONDO:0003748",
+"name": "flying phobia",
+"syn": [],
+"parent": "specific phobia",
+"defn": "An overwhelming, irrational, and persistent fear of traveling in an aircraft."
+},
+{
+"id": "MONDO:0003749",
+"name": "esophageal disorder",
+"syn": [
+"disease of esophagus",
+"disease of oesophagus",
+"disease or disorder of esophagus"
+],
+"parent": "upper digestive tract disorder",
+"defn": "A non-neoplastic or neoplastic disorder that affects the esophagus. Representative examples of non-neoplastic disorders include esophagitis and esophageal ulcer"
+},
+{
+"id": "MONDO:0003750",
+"name": "childhood central nervous system germ cell tumor",
+"syn": [
+"central nervous system childhood germ cell tumor",
+"central nervous system paediatric germ cell cancer",
+"central nervous system pediatric germ cell cancer"
+],
+"parent": "central nervous system germ cell tumor",
+"defn": "A germ cell tumor of the central nervous system occurring in children."
+},
+{
+"id": "MONDO:0003751",
+"name": "childhood germ cell tumor",
+"syn": [
+"childhood germ cell neoplasm",
+"paediatric germ cell tumour",
+"pediatric germ cell neoplasm"
+],
+"parent": "germ cell tumor",
+"defn": "A germ cell tumor that occurs during childhood."
+},
+{
+"id": "MONDO:0003752",
+"name": "frontal sinus Schneiderian papilloma",
+"syn": [
+"Schneiderian papilloma of the frontal sinus"
+],
+"parent": "paranasal sinus Schneiderian papilloma",
+"defn": "A papilloma that arises from the ciliated respiratory mucosa that lines the frontal sinus. It is classified as inverted papilloma and oncocytic papilloma."
+},
+{
+"id": "MONDO:0003753",
+"name": "nasal vestibule squamous papilloma",
+"syn": [
+"nasal vestibule papilloma",
+"papilloma of nasal vestibule",
+"papilloma of the nasal vestibule"
+],
+"parent": "squamous papilloma",
+"defn": "A benign exophytic squamous cell neoplasm with papillary growth that arises from the nasal vestibule."
+},
+{
+"id": "MONDO:0003754",
+"name": "Brown-Sequard syndrome",
+"syn": [
+"Brown Séquard Syndrome"
+],
+"parent": "syndromic disease",
+"defn": "Brown-Sequard syndrome is a rare neurological condition that results from an injury or damage to one side of the spinal cord. This condition results in weakness"
+},
+{
+"id": "MONDO:0003755",
+"name": "urinary tract non-invasive transitional cell neoplasm",
+"syn": [
+"non-invasive transitional cell neoplasm of the urinary tract",
+"non-invasive urothelial neoplasm"
+],
+"parent": "urothelial neoplasm",
+"defn": ""
+},
+{
+"id": "MONDO:0003756",
+"name": "ovarian mucinous neoplasm",
+"syn": [
+"mucinous neoplasm of ovary",
+"mucinous neoplasm of the ovary",
+"mucinous tumor of ovary"
+],
+"parent": "ovarian epithelial tumor",
+"defn": "A benign, borderline, or malignant epithelial tumor of the ovary characterized by the presence of neoplastic epithelial cells that contain intracytoplasmic muci"
+},
+{
+"id": "MONDO:0003757",
+"name": "paraplegia",
+"syn": [],
+"parent": "palsy",
+"defn": "Complete paralysis of the lower half of the body including both legs, often caused by damage to the spinal cord."
+},
+{
+"id": "MONDO:0003758",
+"name": "childhood testicular germ cell tumor",
+"syn": [
+"childhood testicular germ cell neoplasm",
+"pediatric testicular germ cell neoplasm",
+"pediatric testicular germ cell tumor"
+],
+"parent": "testicular germ cell tumor",
+"defn": "A germ cell tumor that arises from the testis during childhood."
+},
+{
+"id": "MONDO:0003759",
+"name": "childhood ovarian yolk sac tumor",
+"syn": [
+"childhood ovarian endodermal sinus neoplasm",
+"ovary childhood endodermal sinus tumor",
+"ovary childhood endodermal sinus tumour"
+],
+"parent": "childhood endodermal sinus tumor",
+"defn": "A yolk sac tumor that arises from the ovary and occurs in children."
+},
+{
+"id": "MONDO:0003760",
+"name": "pediatric ovarian germ cell tumor",
+"syn": [
+"childhood ovarian germ cell neoplasm",
+"childhood ovarian germ cell tumor",
+"childhood ovarian germ cell tumour"
+],
+"parent": "childhood germ cell tumor",
+"defn": "A germ cell tumor that arises from the ovary and occurs in children."
+},
+{
+"id": "MONDO:0003761",
+"name": "leptomeningeal melanoma",
+"syn": [
+"leptomeninx melanoma",
+"leptomeninx melanoma (disease)",
+"malignant melanoma of meninges"
+],
+"parent": "malignant leptomeningeal tumor",
+"defn": "A melanoma that arises from leptomeningeal melanocytes."
+},
+{
+"id": "MONDO:0003762",
+"name": "malignant leptomeningeal tumor",
+"syn": [
+"cancer of leptomeninx",
+"leptomeninx cancer",
+"malignant leptomeningeal neoplasm"
+],
+"parent": "meningioma",
+"defn": "A primary or metastatic malignant tumor involving the leptomeninges."
+},
+{
+"id": "MONDO:0003763",
+"name": "acute stress disorder",
+"syn": [
+"acute stress reaction"
+],
+"parent": "anxiety disorder",
+"defn": "An anxiety disorder precipitated by an experience of intense fear or horror while exposed to a traumatic (especially life-threatening) event. The disorder is ch"
+},
+{
+"id": "MONDO:0003764",
+"name": "pediatric leptomeningeal melanoma",
+"syn": [
+"childhood leptomeningeal melanoma",
+"childhood meningeal melanoma",
+"paediatric meningeal melanoma"
+],
+"parent": "pediatric meningioma",
+"defn": "A melanoma that arises from leptomeningeal melanocytes and occurs in childhood."
+},
+{
+"id": "MONDO:0003765",
+"name": "adult leptomeningeal melanoma",
+"syn": [
+"adult meningeal melanoma"
+],
+"parent": "leptomeningeal melanoma",
+"defn": "A melanoma that arises from leptomeningeal melanocytes and occurs in adulthood."
+},
+{
+"id": "MONDO:0003766",
+"name": "thalamic cancer",
+"syn": [
+"cancer of dorsal plus ventral thalamus",
+"dorsal plus ventral thalamus cancer",
+"malignant dorsal plus ventral thalamus neoplasm"
+],
+"parent": "diencephalic cancer",
+"defn": "A cancer involving a dorsal plus ventral thalamus."
+},
+{
+"id": "MONDO:0003767",
+"name": "mitral valve disorder",
+"syn": [
+"disease of mitral valve",
+"disease or disorder of mitral valve",
+"disorder of mitral valve"
+],
+"parent": "heart valve disorder",
+"defn": "A disease involving the mitral valve."
+},
+{
+"id": "MONDO:0003768",
+"name": "signet ring cell variant cervical mucinous adenocarcinoma",
+"syn": [
+"cervical mucinous adenocarcinoma, signet Ring cell type",
+"cervical mucinous adenocarcinoma, signet Ring cell variant"
+],
+"parent": "cervical mucinous adenocarcinoma",
+"defn": "A rare cervical mucinous adenocarcinoma characterized by the presence of signet ring cells."
+},
+{
+"id": "MONDO:0003769",
+"name": "herpetic gastritis",
+"syn": [
+"Herpesviridae caused viral gastritis",
+"Herpesviridae viral gastritis"
+],
+"parent": "viral gastritis",
+"defn": "Gastritis resulting from herpes virus."
+},
+{
+"id": "MONDO:0003770",
+"name": "thoracic spinal canal and spinal cord meningioma",
+"syn": [
+"meningioma of thoracic spinal canal and spinal cord",
+"thoracic intraspinal meningioma"
+],
+"parent": "intraspinal meningioma",
+"defn": "A meningioma that arises from the meninges of the thoracic region of the spinal cord."
+},
+{
+"id": "MONDO:0003771",
+"name": "jugular foramen meningioma",
+"syn": [
+"jugular foramen meningioma (disease)",
+"meningioma (disease) of jugular foramen",
+"meningioma of jugular Foramen"
+],
+"parent": "meningioma",
+"defn": "A meningioma that affects the jugular foramen."
+},
+{
+"id": "MONDO:0003772",
+"name": "cerebral meningioma",
+"syn": [
+"cerebral hemispheric meningioma",
+"meningioma (disease) of telencephalon",
+"meningioma of cerebral hemispheres"
+],
+"parent": "cerebral hemisphere cancer",
+"defn": "A meningioma that affects the cerebral hemispheres."
+},
+{
+"id": "MONDO:0003773",
+"name": "intracerebral cystic meningioma",
+"syn": [],
+"parent": "cerebral meningioma",
+"defn": "A cystic meningioma that grows within the cerebral hemispheres."
+},
+{
+"id": "MONDO:0003774",
+"name": "cerebral convexity meningioma",
+"syn": [
+"cerebral hemispheric convexity meningioma"
+],
+"parent": "cerebral meningioma",
+"defn": "A meningioma that affects the cerebral sulcus."
+},
+{
+"id": "MONDO:0003775",
+"name": "lateral ventricle meningioma",
+"syn": [
+"meningioma (disease) of telencephalic ventricle",
+"meningioma of lateral ventricle",
+"meningioma of the lateral ventricle"
+],
+"parent": "intraventricular meningioma",
+"defn": "A meningioma that affects the lateral ventricle of the brain."
+},
+{
+"id": "MONDO:0003776",
+"name": "renal pelvis inverted papilloma",
+"syn": [
+"inverted papilloma of kidney pelvis",
+"inverted papilloma of renal pelvis",
+"inverted papilloma of the kidney pelvis"
+],
+"parent": "renal pelvis urothelial papilloma",
+"defn": "A neoplasm of the renal pelvis in which the epithelial cells grow downward into the underlying supportive tissue."
+},
+{
+"id": "MONDO:0003777",
+"name": "renal pelvis urothelial papilloma",
+"syn": [],
+"parent": "renal pelvis papillary tumor",
+"defn": "A benign neoplasm of the renal pelvis that involves the transitional epithelium projecting above the surrounding epithelial surface and consisting of villous or"
+},
+{
+"id": "MONDO:0003778",
+"name": "inborn error of immunity",
+"syn": [
+"IEI",
+"inborn errors of immunity",
+"primary immunodeficiency disease"
+],
+"parent": "immune system disorder",
+"defn": "A disorder in which the immune system is unable to mount an adequate immune response."
+},
+{
+"id": "MONDO:0003780",
+"name": "T-cell immunodeficiency",
+"syn": [
+"T-lymphocyte deficiency (finding)",
+"T-lymphocyte immunodeficiency"
+],
+"parent": "immunodeficiency disease",
+"defn": "A broad classification of disorders that affect the cell-mediated aspect of the immune response. Circulating numbers of T lymphocytes are decreased or ineffecti"
+},
+{
+"id": "MONDO:0003781",
+"name": "bronchitis",
+"syn": [
+"bronchial infection",
+"bronchus inflammation",
+"inflammation of bronchus"
+],
+"parent": "bronchial disorder",
+"defn": "An acute or chronic inflammatory process affecting the bronchi."
+},
+{
+"id": "MONDO:0003782",
+"name": "uterine corpus epithelioid leiomyosarcoma",
+"syn": [
+"body of uterus epithelioid leiomyosarcoma",
+"epithelioid leiomyosarcoma of body of uterus"
+],
+"parent": "epithelioid leiomyosarcoma",
+"defn": "A morphologic variant of leiomyosarcoma arising from the uterine corpus. It is characterized by the presence of epithelioid round cells with eosinophilic to cle"
+},
+{
+"id": "MONDO:0003783",
+"name": "lymphopenia",
+"syn": [
+"lymphocytopenia",
+"lymphopenia (disease)"
+],
+"parent": "leukopenia",
+"defn": "Reduction in the number of lymphocytes."
+},
+{
+"id": "MONDO:0003784",
+"name": "nasal cavity carcinoma in situ",
+"syn": [
+"carcinoma in situ of nasal cavity",
+"carcinoma in situ of the nasal cavity",
+"nasal cavity in situ carcinoma"
+],
+"parent": "nasal cavity carcinoma",
+"defn": "A in situ carcinoma that involves the nasal cavity."
+},
+{
+"id": "MONDO:0003785",
+"name": "leukopenia",
+"syn": [
+"leukocytopenia",
+"White blood cell decreased"
+],
+"parent": "leukocyte disorder",
+"defn": "A laboratory test result indicating a decreased number of white blood cells in the peripheral blood."
+},
+{
+"id": "MONDO:0003786",
+"name": "childhood testicular choriocarcinoma",
+"syn": [
+"childhood choriocarcinoma of testis",
+"childhood choriocarcinoma of the testis",
+"choriocarcinoma of testis of childhood"
+],
+"parent": "choriocarcinoma of testis",
+"defn": "A choriocarcinoma that arises from the testis during childhood."
+},
+{
+"id": "MONDO:0003787",
+"name": "childhood testicular mixed germ cell cancer",
+"syn": [
+"childhood mixed testicular germ cell cancer",
+"mixed testicular germ cell cancer of childhood",
+"paediatric mixed testicular germ cell cancer"
+],
+"parent": "mixed testicular germ cell cancer",
+"defn": "A malignant mixed germ cell neoplasm that arises from the testis during childhood."
+},
+{
+"id": "MONDO:0003788",
+"name": "childhood embryonal testis carcinoma",
+"syn": [
+"childhood embryonal carcinoma of testis",
+"childhood embryonal carcinoma of the testis",
+"childhood testicular embryonal carcinoma"
+],
+"parent": "childhood testicular germ cell tumor",
+"defn": "An embryonal carcinoma that arises from the testis during childhood."
+},
+{
+"id": "MONDO:0003789",
+"name": "hereditary papillary renal cell carcinoma",
+"syn": [
+"familial renal papillary carcinoma",
+"hereditary kidney papillary carcinoma",
+"hereditary papillary carcinoma of kidney"
+],
+"parent": "hereditary renal cell carcinoma",
+"defn": "A familial carcinoma inherited in an autosomal dominant trait. It is characterized by the development of multiple, bilateral papillary renal cell carcinomas. Th"
+},
+{
+"id": "MONDO:0003790",
+"name": "prostatic urethra urothelial carcinoma",
+"syn": [],
+"parent": "primary prostate urothelial carcinoma",
+"defn": "An urothelial carcinoma that arises from the urothelial lining of the prostatic urethra."
+},
+{
+"id": "MONDO:0003791",
+"name": "prostatic urethral cancer",
+"syn": [
+"male urethral cancer of prostatic urethra",
+"prostatic urethra male urethral cancer",
+"prostatic urethral malignant neoplasm"
+],
+"parent": "male urethral cancer",
+"defn": "A male urethral cancer that involves the prostatic urethra."
+},
+{
+"id": "MONDO:0003792",
+"name": "ovarian carcinosarcoma",
+"syn": [
+"carcinosarcoma of ovary",
+"carcinosarcoma of the ovary",
+"malignant mixed mesodermal Mullerian neoplasm of ovary"
+],
+"parent": "carcinosarcoma",
+"defn": "A highly aggressive malignant neoplasm arising from the ovary. Morphologically, it is a high grade tumor, composed of carcinomatous and sarcomatous elements."
+},
+{
+"id": "MONDO:0003795",
+"name": "ovarian small cell carcinoma",
+"syn": [
+"ovarian small cell cancer",
+"ovarian small cell NEC",
+"ovarian small cell neuroendocrine carcinoma"
+],
+"parent": "small cell carcinoma",
+"defn": "A carcinoma that arises from the ovary and is characterized by the presence of small malignant cells. It includes small cell carcinoma, hypercalcemic type and s"
+},
+{
+"id": "MONDO:0003796",
+"name": "rectum Kaposi sarcoma",
+"syn": [
+"Kaposi's sarcoma (disease) of rectum",
+"Kaposi's sarcoma of rectum",
+"Kaposi's sarcoma of the rectum"
+],
+"parent": "rectum sarcoma",
+"defn": "A Kaposi sarcoma arising from the rectum."
+},
+{
+"id": "MONDO:0003799",
+"name": "conjunctivitis",
+"syn": [
+"conjunctiva inflammation",
+"conjunctivitis (disease)",
+"inflammation of conjunctiva"
+],
+"parent": "conjunctival disorder",
+"defn": "Inflammation of the conjunctiva of the eye."
+},
+{
+"id": "MONDO:0003800",
+"name": "conventional malignant hemangiopericytoma",
+"syn": [],
+"parent": "hemangiopericytoma, malignant",
+"defn": "A malignant hemangiopericytoma characterized by the presence of necrotic changes and in some cases high mitotic activity."
+},
+{
+"id": "MONDO:0003801",
+"name": "corneal intraepithelial neoplasm",
+"syn": [
+"cornea intraepithelial neoplasia",
+"cornea squamous cell intraepithelial neoplasia",
+"corneal intraepithelial neoplasia"
+],
+"parent": "cornea neoplasm",
+"defn": "A squamous cell intraepithelial neoplasia that involves the cornea."
+},
+{
+"id": "MONDO:0003802",
+"name": "cornea cancer",
+"syn": [
+"cancer of cornea",
+"malignant cornea neoplasm",
+"malignant cornea tumor"
+],
+"parent": "ocular cancer",
+"defn": "A malignant neoplasm involving the cornea."
+},
+{
+"id": "MONDO:0003803",
+"name": "aortic valve disorder",
+"syn": [
+"aortic valve disease",
+"aortic valve disease or disorder",
+"disease of aortic valve"
+],
+"parent": "heart valve disorder",
+"defn": "A disease involving the aortic valve."
+},
+{
+"id": "MONDO:0003805",
+"name": "malignant pericardial mesothelioma",
+"syn": [
+"malignant mesothelioma (disease) of pericardium",
+"malignant mesothelioma of pericardium",
+"malignant mesothelioma of the pericardium"
+],
+"parent": "pericardium cancer",
+"defn": "A rare neoplasm of mesothelial origin that arises from the pericardium."
+},
+{
+"id": "MONDO:0003806",
+"name": "thyroid hyalinizing trabecular adenoma",
+"syn": [
+"hyalinizing trabecular adenoma of the thyroid",
+"hyalinizing trabecular adenoma of thyroid",
+"hyalinizing trabecular tumor"
+],
+"parent": "epithelial neoplasm",
+"defn": "A rare, circumscribed or encapsulated tumor arising from the follicular cells of the thyroid gland. It is characterized by a trabecular growth pattern and hyali"
+},
+{
+"id": "MONDO:0003808",
+"name": "mediastinal extraskeletal osteosarcoma",
+"syn": [
+"mediastinal osteogenic sarcoma",
+"mediastinal osteosarcoma",
+"mediastinum osteosarcoma (disease)"
+],
+"parent": "extraosseous osteosarcoma",
+"defn": "An osteosarcoma arising from the mediastinum."
+},
+{
+"id": "MONDO:0003809",
+"name": "malignant mediastinum hemangiopericytoma",
+"syn": [
+"malignant hemangiopericytoma of mediastinum",
+"malignant hemangiopericytoma of the mediastinum",
+"malignant mediastinal hemangiopericytoma"
+],
+"parent": "hemangiopericytoma, malignant",
+"defn": "A malignant hemangiopericytoma arising in the mediastinum."
+},
+{
+"id": "MONDO:0003810",
+"name": "bladder diffuse clear cell adenocarcinoma",
+"syn": [],
+"parent": "bladder clear cell adenocarcinoma",
+"defn": "A rare morphologic variant of bladder adenocarcinoma characterized by the presence of malignant glandular epithelial cells and clear cells forming a diffuse pat"
+},
+{
+"id": "MONDO:0003811",
+"name": "ovarian seromucinous tumor",
+"syn": [
+"mixed epithelial neoplasm of ovary",
+"mixed epithelial neoplasm of the ovary",
+"mixed epithelial tumor of the ovary"
+],
+"parent": "ovarian epithelial tumor",
+"defn": "A benign, borderline, or malignant mixed epithelial tumor of the ovary. It is characterized by the presence of more than one epithelial cell type, most often se"
+},
+{
+"id": "MONDO:0003812",
+"name": "ovarian endometrial cancer",
+"syn": [
+"endometrioid tumor of ovary",
+"endometrioid tumour of ovary",
+"malignant ovarian endometrioid tumor"
+],
+"parent": "endometrioid tumor",
+"defn": "A benign, borderline, or malignant epithelial tumor of the ovary characterized by the presence of glands and/or cysts lined by neoplastic cells that resemble en"
+},
+{
+"id": "MONDO:0003813",
+"name": "ovarian papillary tumor",
+"syn": [
+"ovarian papillary neoplasm",
+"ovarian papillary tumor (morphologic abnormality)",
+"ovarian papillary tumour (morphologic abnormality)"
+],
+"parent": "ovarian epithelial tumor",
+"defn": "A benign, borderline, or malignant epithelial tumor that arises from the ovary and is characterized by the presence of papillary proliferations. Representative "
+},
+{
+"id": "MONDO:0003816",
+"name": "articular cartilage disorder",
+"syn": [
+"articular cartilage of joint disease",
+"articular cartilage of joint disease or disorder",
+"disease of articular cartilage of joint"
+],
+"parent": "arthropathy",
+"defn": "A disease involving the articular cartilage of joint."
+},
+{
+"id": "MONDO:0003818",
+"name": "childhood mature teratoma of the ovary",
+"syn": [
+"childhood mature ovarian teratoma",
+"childhood mature teratoma of ovary",
+"childhood ovarian mature teratoma"
+],
+"parent": "childhood teratoma of the ovary",
+"defn": "A mature teratoma that arises from the ovary and occurs in children."
+},
+{
+"id": "MONDO:0003819",
+"name": "childhood teratoma of the ovary",
+"syn": [
+"childhood ovarian teratoma",
+"childhood teratoma of ovary",
+"ovarian teratoma of childhood"
+],
+"parent": "pediatric ovarian germ cell tumor",
+"defn": "A mature or immature teratoma that arises from the ovary and occurs in children."
+},
+{
+"id": "MONDO:0003820",
+"name": "mature ovarian teratoma",
+"syn": [
+"mature teratoma of ovary",
+"ovary mature teratoma"
+],
+"parent": "mature teratoma",
+"defn": "An ovarian teratoma which may be cystic, composed entirely of well differentiated, adult-type tissues, without evidence of fetal-type tissues."
+},
+{
+"id": "MONDO:0003821",
+"name": "ovarian biphasic or triphasic teratoma",
+"syn": [],
+"parent": "ovarian teratoma",
+"defn": "A germ cell tumor that arises from the ovary and is composed of tissues that originate from two or three of the following germ layers, endoderm, ectoderm, or me"
+},
+{
+"id": "MONDO:0003822",
+"name": "non-invasive bladder papillary urothelial neoplasm",
+"syn": [],
+"parent": "bladder papillary urothelial neoplasm",
+"defn": "A papillary neoplasm of the urinary bladder in which the transitional cells form papillae. The papillary structures exhibit minimal architectural distortion and"
+},
+{
+"id": "MONDO:0003824",
+"name": "hereditary kidney oncocytoma",
+"syn": [
+"familial renal oncocytoma",
+"hereditary renal oncocytoma"
+],
+"parent": "kidney oncocytoma",
+"defn": "An inherited condition characterized by the development of kidney oncocytomas which are often bilateral and multifocal. This condition may be connected to Birt-"
+},
+{
+"id": "MONDO:0003825",
+"name": "kidney oncocytoma",
+"syn": [
+"kidney oncocytic neoplasm",
+"oncocytoma of kidney",
+"oncocytoma of the kidney"
+],
+"parent": "kidney benign neoplasm",
+"defn": "A benign tumor of the kidney, characterized by the presence of large cells with abundant eosinophilic granular cytoplasm. The majority of these tumors are disco"
+},
+{
+"id": "MONDO:0003826",
+"name": "mediastinum seminoma",
+"syn": [
+"mediastinal seminoma",
+"seminoma of mediastinum",
+"seminoma of the mediastinum"
+],
+"parent": "extragonadal seminoma",
+"defn": "An extragonadal malignant germ cell tumor that arises from the mediastinum. It is characterized by the presence of uniform cells with clear or eosinophilic cyto"
+},
+{
+"id": "MONDO:0003827",
+"name": "transient hypogammaglobulinemia",
+"syn": [],
+"parent": "syndromic agammaglobulinemia",
+"defn": "A broad classification for humoral immunodeficiencies. These disorders may be caused by inadequate activation of progenitor B cells, defective class-switching o"
+},
+{
+"id": "MONDO:0003828",
+"name": "growth hormone-producing pituitary gland carcinoma",
+"syn": [
+"Growth hormone producing pituitary gland carcinoma",
+"malignant Growth hormone producing neoplasm of pituitary",
+"malignant Growth hormone producing neoplasm of pituitary gland"
+],
+"parent": "head and neck carcinoma",
+"defn": "A rare, hormonally functioning or non-functioning pituitary gland adenocarcinoma that produces growth hormone. It may be associated with acromegaly."
+},
+{
+"id": "MONDO:0003829",
+"name": "chromophil adenoma of the kidney",
+"syn": [
+"papillary adenoma of the kidney",
+"renal papillary adenoma"
+],
+"parent": "renal adenoma",
+"defn": "A controversial term, used for renal papillary lesions which measure 1cm or less in diameter and contain small, regular nuclei."
+},
+{
+"id": "MONDO:0003830",
+"name": "type 1 papillary adenoma of the kidney",
+"syn": [
+"type 1 renal papillary adenoma"
+],
+"parent": "chromophil adenoma of the kidney",
+"defn": ""
+},
+{
+"id": "MONDO:0003831",
+"name": "type 2 papillary adenoma of the kidney",
+"syn": [
+"type 2 renal papillary adenoma"
+],
+"parent": "chromophil adenoma of the kidney",
+"defn": ""
+},
+{
+"id": "MONDO:0003832",
+"name": "complement deficiency",
+"syn": [
+"complement activation disease",
+"disorder of complement activation",
+"immunodeficiency due to a complement cascade component deficiency"
+],
+"parent": "inborn error of immunity",
+"defn": "A genetic deficiency of any of the component of the complement system (including the classical, alternative, and terminal pathway components), that can either b"
+},
+{
+"id": "MONDO:0003834",
+"name": "gastric cardia carcinoma",
+"syn": [
+"cancer of gastric cardia",
+"cancer of the gastric cardia",
+"carcinoma of cardia of stomach"
+],
+"parent": "cardia cancer",
+"defn": "A carcinoma that arises from epithelial cells of the cardia of stomach."
+},
+{
+"id": "MONDO:0003835",
+"name": "gastric cardia adenocarcinoma",
+"syn": [
+"adenocarcinoma of cardia of stomach",
+"adenocarcinoma of the cardia of the stomach",
+"adenocarcinoma of the gastric cardia"
+],
+"parent": "gastric cardia carcinoma",
+"defn": "A carcinoma that arises from glandular epithelial cells of the cardia of stomach."
+},
+{
+"id": "MONDO:0003836",
+"name": "malignant thyroid stimulating hormone producing neoplasm of pituitary gland",
+"syn": [
+"malignant pituitary gland thyrotropinoma",
+"malignant pituitary thyrotropinoma",
+"malignant thyroid stimulating hormone producing neoplasm of pituitary"
+],
+"parent": "TSH producing pituitary tumor",
+"defn": "A rare, hormonally functioning or non-functioning pituitary gland adenocarcinoma that produces thyrotropin."
+},
+{
+"id": "MONDO:0003837",
+"name": "TSH producing pituitary tumor",
+"syn": [
+"TSH-producing pituitary gland tumor"
+],
+"parent": "functioning pituitary gland adenoma",
+"defn": "An adenoma or carcinoma of the anterior lobe of the pituitary gland that produces thyrotropin."
+}
+]

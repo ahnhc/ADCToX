@@ -1,0 +1,1906 @@
+[
+{
+"id": "MONDO:0019254",
+"name": "inborn disorder of purine or pyrimidine metabolism",
+"syn": [
+"inborn purine-pyrimidine metabolic disorder"
+],
+"parent": "inborn errors of metabolism",
+"defn": ""
+},
+{
+"id": "MONDO:0019255",
+"name": "sphingolipidosis",
+"syn": [],
+"parent": "lysosomal lipid storage disorder",
+"defn": "An inherited metabolic disorder that affects the lysosomal degradation of the spinhgolipids. Representative examples include Gaucher disease, Tay-Sachs disease,"
+},
+{
+"id": "MONDO:0019256",
+"name": "sterol metabolism disorder",
+"syn": [
+"inborn error of sterol metabolic process",
+"inborn sterol metabolic process disorder",
+"rare inborn error of sterol metabolic process"
+],
+"parent": "inherited lipid metabolism disorder",
+"defn": "An inherited metabolic disease that is has its basis in the disruption of sterol metabolic process."
+},
+{
+"id": "MONDO:0019257",
+"name": "hemochromatosis type 2",
+"syn": [
+"Juvenile Hemochromatosis",
+"juvenile hemochromatosis"
+],
+"parent": "hereditary hemochromatosis",
+"defn": "Hemochromatosis type 2 (juvenile) is the early-onset and most severe form of rare hereditary hemochromatosis (HH), a group of diseases characterized by excessiv"
+},
+{
+"id": "MONDO:0019258",
+"name": "mild phenylketonuria",
+"syn": [
+"mild PKU",
+"mPKU",
+"variant phenylketonuria"
+],
+"parent": "phenylketonuria",
+"defn": "A phenylketonuria characterized by untreated blood phenylalanine concentrations of approximately 600-1200 umol/L, intermediate between classic phenylketonuria a"
+},
+{
+"id": "MONDO:0019259",
+"name": "classic phenylketonuria",
+"syn": [
+"classic PKU"
+],
+"parent": "phenylketonuria",
+"defn": "A phenylketonuria characterized by untreated blood phenylalanine concentrations above approximately 1200 umol/L, the most severe end of the phenylalanine hydrox"
+},
+{
+"id": "MONDO:0019260",
+"name": "adult neuronal ceroid lipofuscinosis",
+"syn": [
+"adult NCL",
+"ANCL",
+"Kufs disease"
+],
+"parent": "neuronal ceroid lipofuscinosis",
+"defn": "A genetically heterogeneous group of neuronal ceroid lipofuscinoses (NCLs) with onset during the third decade of life, characterized by dementia, seizures and l"
+},
+{
+"id": "MONDO:0019261",
+"name": "infantile neuronal ceroid lipofuscinosis",
+"syn": [
+"Classic Infantile CLN1 Disease",
+"Hagberg-Santavuori disease",
+"INCL"
+],
+"parent": "neuronal ceroid lipofuscinosis",
+"defn": "A form of neuronal ceroid lipofuscinosis (NCL) characterized by onset during the second half of the first year of life and rapid mental and motor deterioration "
+},
+{
+"id": "MONDO:0019262",
+"name": "juvenile neuronal ceroid lipofuscinosis",
+"syn": [
+"batten disease",
+"JNCL",
+"juvenile NCL"
+],
+"parent": "neuronal ceroid lipofuscinosis",
+"defn": "A genetically heterogeneous group of neuronal ceroid lipofuscinoses (NCLs) typically characterized by onset at early school age with vision loss due to retinopa"
+},
+{
+"id": "MONDO:0019263",
+"name": "autosomal erythropoietic protoporphyria",
+"syn": [
+"EPP"
+],
+"parent": "erythropoietic protoporphyria",
+"defn": "Erythropoietic protoporphyria (EPP) is an inherited disorder of the heme metabolic pathway characterized by accumulation of protoporphyrin in blood, erythrocyte"
+},
+{
+"id": "MONDO:0019264",
+"name": "alpha-N-acetylgalactosaminidase deficiency type 3",
+"syn": [
+"NAGA deficiency type 3",
+"Schindler disease type 3"
+],
+"parent": "alpha-N-acetylgalactosaminidase deficiency",
+"defn": "Alpha-N-acetylgalactosaminidase (NAGA) deficiency type 3 is a rare clinically heterogeneous type of NAGA deficiency with developmental, neurologic and psychiatr"
+},
+{
+"id": "MONDO:0019265",
+"name": "diazoxide-resistant focal hyperinsulinism",
+"syn": [
+"hyperinsulinemic hypoglycemia, diazoxide-resistant focal form"
+],
+"parent": "diazoxide-resistant hyperinsulinism",
+"defn": "Diazoxide-resistant focal hyperinsulism (DRFH) is a form of diazoxide-resistant hyperinsulinism characterized by recurrent episodes of profound hypoglycemia cau"
+},
+{
+"id": "MONDO:0019266",
+"name": "SAPHO syndrome",
+"syn": [
+"PPHS",
+"Pustulo-psoriatic hyperostotic Spondyloarthritis",
+"synovitis, acne, pustulosis, hyperostosis, and osteitis syndrome"
+],
+"parent": "autoinflammatory syndrome",
+"defn": "SAPHO syndrome (acronym for Synovitis, Acne, Pustulosis, Hyperostosis and Osteitis) is an auto-inflammatory disease, mainly characterized by the association of "
+},
+{
+"id": "MONDO:0019267",
+"name": "vitamin B12-unresponsive methylmalonic acidemia type mut-",
+"syn": [
+"partial deficiency of methylmalonyl-CoA mutase",
+"vitamin B12-unresponsive methylmalonic aciduria type mut-"
+],
+"parent": "methylmalonic aciduria due to methylmalonyl-CoA mutase deficiency",
+"defn": "Vitamin B12-unresponsive methylmalonic acidemia type mut- is an inborn error of metabolism characterized by recurrent ketoacidotic comas or transient vomiting, "
+},
+{
+"id": "MONDO:0019268",
+"name": "epidermal disease",
+"syn": [
+"rare epidermal disease"
+],
+"parent": "skin disorder",
+"defn": "A skin disease that involves the epidermis."
+},
+{
+"id": "MONDO:0019269",
+"name": "ichthyosis",
+"syn": [
+"disorder of cornification",
+"DOC",
+"fish scale disease"
+],
+"parent": "epidermal disease",
+"defn": "Disorders of cornification that are characterized by visible scaling and/or hyperkeratosis of most or all of the skin. Inherited ichthyoses, defined as the gene"
+},
+{
+"id": "MONDO:0019270",
+"name": "erythrokeratoderma",
+"syn": [],
+"parent": "epidermal disease",
+"defn": "An umbrella term for a group of rare genetic skin disorders characterized by well-demarcated plaques of reddened, dry and thickened skin. Typically, these lesio"
+},
+{
+"id": "MONDO:0019272",
+"name": "hereditary palmoplantar keratoderma",
+"syn": [
+"hereditary keratosis palmoplantaris",
+"hereditary palmoplantar hyperkeratosis",
+"hereditary palmoplantar keratosis"
+],
+"parent": "palmoplantar keratosis",
+"defn": "An instance of palmoplantar keratosis that is caused by an inherited modification of the individual's genome."
+},
+{
+"id": "MONDO:0019276",
+"name": "inherited epidermolysis bullosa",
+"syn": [
+"epidermolysis bullosa hereditaria",
+"hereditary epidermolysis bullosa"
+],
+"parent": "epidermolysis bullosa",
+"defn": "Inherited epidermolysis bullosa (EB) encompasses a number of disorders characterized by recurrent blister formation as the result of structural fragility within"
+},
+{
+"id": "MONDO:0019278",
+"name": "hair anomaly",
+"syn": [],
+"parent": "disorder of pilosebaceous unit",
+"defn": ""
+},
+{
+"id": "MONDO:0019280",
+"name": "hypertrichosis",
+"syn": [
+"hypertrichosis (disease)"
+],
+"parent": "disorder of pilosebaceous unit",
+"defn": "Excessive hair growth anywhere on the body."
+},
+{
+"id": "MONDO:0019283",
+"name": "nail anomaly",
+"syn": [
+"epidermal appendage anomaly of nail",
+"nail epidermal appendage anomaly"
+],
+"parent": "nail disorder",
+"defn": "A epidermal appendage anomaly that involves the nail."
+},
+{
+"id": "MONDO:0019284",
+"name": "inherited isolated nail anomaly",
+"syn": [
+"nail disorder, nonsyndromic congenital",
+"nonsyndromic nail anomaly"
+],
+"parent": "nail disorder",
+"defn": "A nail anomaly that is not part of a larger syndrome."
+},
+{
+"id": "MONDO:0019287",
+"name": "ectodermal dysplasia syndrome",
+"syn": [
+"ectodermal dysplasia",
+"ectodermal dysplasia (select examples)",
+"Ectodermal Dysplasias"
+],
+"parent": "syndromic disease",
+"defn": "The term ''ectodermal dysplasia'' defines a heterogeneous group of heritable disorders of the skin and its appendages characterized by the defective development"
+},
+{
+"id": "MONDO:0019288",
+"name": "skin pigmentation disorder",
+"syn": [
+"pigmentation anomaly of the skin",
+"pigmentation disease of zone of skin",
+"zone of skin pigmentation disease"
+],
+"parent": "skin disorder",
+"defn": "A pigmentation disease that involves the zone of skin."
+},
+{
+"id": "MONDO:0019289",
+"name": "hyperpigmentation of the skin",
+"syn": [],
+"parent": "skin pigmentation disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0019290",
+"name": "hypopigmentation of the skin",
+"syn": [
+"hypopigmentation of the skin (disease)"
+],
+"parent": "skin pigmentation disorder",
+"defn": "A condition caused by a deficiency or a loss of melanin pigmentation in the epidermis, also known as hypomelanosis. Hypopigmentation can be localized or general"
+},
+{
+"id": "MONDO:0019293",
+"name": "skin vascular disease",
+"syn": [
+"skin vascular disorder",
+"superficial vasculature disease",
+"vascular disease of the skin"
+],
+"parent": "skin disorder",
+"defn": "A disease that involves the superficial vasculature."
+},
+{
+"id": "MONDO:0019294",
+"name": "mixed dermis disorder",
+"syn": [],
+"parent": "dermis disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0019296",
+"name": "subcutaneous tissue disorder",
+"syn": [
+"disease of superficial fascia",
+"disease or disorder of superficial fascia",
+"disorder of superficial fascia"
+],
+"parent": "integumentary system disorder",
+"defn": "A disease involving the superficial fascia."
+},
+{
+"id": "MONDO:0019297",
+"name": "lymphedema",
+"syn": [
+"lymphatic edema (morphologic abnormality)",
+"lymphatic oedema",
+"lymphatic oedema (morphologic abnormality)"
+],
+"parent": "lymphatic system disorder",
+"defn": "Excess fluid collection in tissues, causing swelling. It is the result of obstruction of lymphatic vessels or lymph nodes."
+},
+{
+"id": "MONDO:0019303",
+"name": "premature aging syndrome",
+"syn": [],
+"parent": "disease by developmental or physiological process",
+"defn": "Changes in the organism associated with senescence, occurring at an accelerated rate."
+},
+{
+"id": "MONDO:0019306",
+"name": "congenital non-bullous ichthyosiform erythroderma",
+"syn": [
+"alligator skin",
+"CIE",
+"congenital ichthyosiform erythroderma"
+],
+"parent": "autosomal recessive disease",
+"defn": "A variant of autosomal recessive congenital ichthyosis (ARCI), a rare epidermal disease, characterized by fine, whitish scales on a background of erythematous s"
+},
+{
+"id": "MONDO:0019307",
+"name": "generalized junctional epidermolysis bullosa non-Herlitz type",
+"syn": [
+"generalised atrophic benign epidermolysis bullosa",
+"generalised junctional epidermolysis bullosa, non-Herlitz type",
+"generalized atrophic benign epidermolysis bullosa"
+],
+"parent": "junctional epidermolysis bullosa, non-Herlitz type",
+"defn": "Generalized non-Herlitz-type junctional epidermolysis bullosa is a form of non-Herlitz-type junctional epidermolysis bullosa (JEB-nH) characterized by generaliz"
+},
+{
+"id": "MONDO:0019308",
+"name": "junctional epidermolysis bullosa inversa",
+"syn": [
+"EBJ-I",
+"inverse JEB",
+"JEB-I"
+],
+"parent": "junctional epidermolysis bullosa",
+"defn": "Junctional epidermolysis bullosa inversa is a rare severe subtype of junctional epidermolysis bullosa (JEB) characterized by blistering and erosions confined to"
+},
+{
+"id": "MONDO:0019309",
+"name": "late-onset junctional epidermolysis bullosa",
+"syn": [
+"EB progressive",
+"JEB-lo"
+],
+"parent": "junctional epidermolysis bullosa",
+"defn": "Late-onset junctional epidermolysis bullosa is a subtype of junctional epidermolysis bullosa (JEB) occurring in childhood or young adulthood."
+},
+{
+"id": "MONDO:0019310",
+"name": "recessive dystrophic epidermolysis bullosa inversa",
+"syn": [
+"dystrophic epidermolysis bullosa inversa",
+"inverse RDEB",
+"inverse recessive dystrophic epidermolysis bullosa"
+],
+"parent": "recessive dystrophic epidermolysis bullosa",
+"defn": "Recessive dystrophic epidermolysis bullosa inversa (RDEB-I) is rare subtype of dystrophic epidermolysis bullosa (DEB) characterized by blisters and erosions whi"
+},
+{
+"id": "MONDO:0019311",
+"name": "wooly hair nevus",
+"syn": [],
+"parent": "nevus, epidermal",
+"defn": "Woolly hair nevus (WHN) is a rare non-familial hair anomaly characterized by kinky, tightly coiled, and hypopigmented fine hair with an average diameter of 0.5 "
+},
+{
+"id": "MONDO:0019312",
+"name": "Hermansky-Pudlak syndrome",
+"syn": [
+"HPS"
+],
+"parent": "syndromic oculocutaneous albinism",
+"defn": "Hermansky-Pudlak syndrome (HSP) is a multi-system disorder characterized by oculocutaneous albinism, bleeding diathesis and, in some cases, neutropenia, pulmona"
+},
+{
+"id": "MONDO:0019313",
+"name": "lymphatic malformation",
+"syn": [
+"hereditary lymphedema",
+"lymphedema, hereditary"
+],
+"parent": "hereditary disease",
+"defn": "Primary lymphedema is caused by anatomic or functional defects in the lymphatic system, resulting in chronic swelling of body parts and lymphatic-system malform"
+},
+{
+"id": "MONDO:0019314",
+"name": "cutaneous mastocytoma",
+"syn": [
+"cutaneous local mastocytoma",
+"multiple mastocytoma",
+"solitary mastocytoma"
+],
+"parent": "cutaneous mastocytosis",
+"defn": "Cutaneous mastocytoma is a form of cutaneous mastocytosis (CM) generally characterized by the presence of a solitary or multiple hyperpigmented macules, plaques"
+},
+{
+"id": "MONDO:0019315",
+"name": "diffuse cutaneous mastocytosis",
+"syn": [
+"diffuse cutaneous maculopapulous mastocytosis"
+],
+"parent": "cutaneous mastocytosis",
+"defn": "Diffuse cutaneous mastocytosis (DCM) is a rare form of cutaneous mastocytosis (CM) characterized by generalized erythroderma, various degrees of blistering, ski"
+},
+{
+"id": "MONDO:0019316",
+"name": "maculopapular cutaneous mastocytosis",
+"syn": [
+"UP/MPCM",
+"urticaria pigmentosa",
+"urticaria pigmentosa/maculopapular cutaneous mastocytosis"
+],
+"parent": "cutaneous mastocytosis",
+"defn": "Maculopapular cutaneous mastocytosis (MCM) is a form of cutaneous mastocytosis (CM) characterized by the presence of multiple hyperpigmented macules, papules or"
+},
+{
+"id": "MONDO:0019317",
+"name": "follicular atrophoderma-basal cell carcinoma",
+"syn": [],
+"parent": "skin basal cell carcinoma",
+"defn": ""
+},
+{
+"id": "MONDO:0019318",
+"name": "inflammatory linear verrucous epidermal nevus",
+"syn": [
+"ILVEN"
+],
+"parent": "linear verrucous nevus syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0019319",
+"name": "verrucous nevus",
+"syn": [
+"verrucous Epidermal Nevus"
+],
+"parent": "linear verrucous nevus syndrome",
+"defn": "A benign wart-like, pigmented skin lesion appearing on various parts of the body at birth or early in childhood, usually in linear groupings."
+},
+{
+"id": "MONDO:0019320",
+"name": "acanthokeratolytic verrucous nevus",
+"syn": [],
+"parent": "linear verrucous nevus syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0019321",
+"name": "atypical Werner syndrome",
+"syn": [
+"atypical progeroid syndrome"
+],
+"parent": "laminopathy",
+"defn": "A heterogeneous group of cases that are clinically diagnosed as Werner syndrome (WS) but do not carry WRN gene mutations. Similar to classical WS caused by WRN "
+},
+{
+"id": "MONDO:0019322",
+"name": "pemphigus vegetans",
+"syn": [],
+"parent": "pemphigus vulgaris",
+"defn": ""
+},
+{
+"id": "MONDO:0019323",
+"name": "pemphigus erythematosus",
+"syn": [
+"seborrheic pemphigus",
+"Senear-Usher syndrome"
+],
+"parent": "pemphigus",
+"defn": "Pemphigus erythematosus is a rare superficial pemphigus disease characterized clinically by well-demarcated, localized, erythematous, scaly, hyperkeratotic, cru"
+},
+{
+"id": "MONDO:0019324",
+"name": "pemphigus foliaceus",
+"syn": [],
+"parent": "pemphigus",
+"defn": "Pemphigus foliaceous is a rare superficial pemphigus disease characterized by multiple, pruritic, scaly, crusted cutaneous erosions, with flaky circumscribed pa"
+},
+{
+"id": "MONDO:0019325",
+"name": "phakomatosis cesioflammea",
+"syn": [
+"phakomatosis pigmentovascularis type 2"
+],
+"parent": "phakomatosis pigmentovascularis",
+"defn": ""
+},
+{
+"id": "MONDO:0019326",
+"name": "phakomatosis cesiomarmorata",
+"syn": [
+"phakomatosis caesiomarmorata",
+"phakomatosis pigmentovascularis type 5"
+],
+"parent": "phakomatosis pigmentovascularis",
+"defn": ""
+},
+{
+"id": "MONDO:0019327",
+"name": "phakomatosis spilorosea",
+"syn": [
+"phakomatosis pigmentovascularis type 3"
+],
+"parent": "phakomatosis pigmentovascularis",
+"defn": ""
+},
+{
+"id": "MONDO:0019328",
+"name": "macrocystic lymphatic malformation",
+"syn": [
+"cavernous lymphangioma",
+"cavernous lymphatic malformation",
+"macrocystic lymphangioma"
+],
+"parent": "lymphangioma",
+"defn": "A lymphangioma characterized by the presence of thin-walled cavernous lymphatic spaces."
+},
+{
+"id": "MONDO:0019329",
+"name": "microcystic lymphatic malformation",
+"syn": [
+"capillary lymphatic malformation",
+"cutaneous lymphangioma circumscriptum",
+"microcystic infiltrating lymphatic malformation"
+],
+"parent": "lymphangioma",
+"defn": ""
+},
+{
+"id": "MONDO:0019330",
+"name": "pili gemini",
+"syn": [
+"pili multigemini"
+],
+"parent": "hair anomaly",
+"defn": "Pili gemini defines a situation where the papilla's tip of a hair follicle splits during the anagen phase and consequently grows two hair shafts emerging throug"
+},
+{
+"id": "MONDO:0019332",
+"name": "punctate palmoplantar keratoderma type 1",
+"syn": [
+"Buschke-Fischer-Brauer syndrome",
+"keratodermia palmoplantaris papulosa, Buschke-Fischer-Brauer type",
+"PPKP1"
+],
+"parent": "punctate palmoplantar keratoderma",
+"defn": "Punctate palmoplantar keratoderma type I (PPKP1), also known as Buschke-Fischer-Brauer syndrome, is a very rare hereditary skin disease characterized by irregul"
+},
+{
+"id": "MONDO:0019333",
+"name": "autosomal recessive hyperinsulinism due to SUR1 deficiency",
+"syn": [
+"autosomal recessive hyperinsulinemic hypoglycemia due to SUR1 deficiency"
+],
+"parent": "hyperinsulinemic hypoglycemia, familial, 1",
+"defn": ""
+},
+{
+"id": "MONDO:0019334",
+"name": "autosomal recessive hyperinsulinism due to Kir6.2 deficiency",
+"syn": [
+"autosomal recessive hyperinsulinemic hypoglycemia due to Kir6.2 deficiency"
+],
+"parent": "hyperinsulinemic hypoglycemia, familial, 2",
+"defn": ""
+},
+{
+"id": "MONDO:0019335",
+"name": "mild hyperphenylalaninemia",
+"syn": [
+"mHPA",
+"mild HPA",
+"non-PKU HPA"
+],
+"parent": "autosomal recessive disease",
+"defn": "A phenylalanine hydroxylase deficiency characterized by mildly elevated untreated blood phenylalanine concentrations below the threshold at which phenylalanine-"
+},
+{
+"id": "MONDO:0019336",
+"name": "Gardner syndrome",
+"syn": [
+"Gardner's syndrome"
+],
+"parent": "eye disorder",
+"defn": "Gardner syndrome is a severe form of familial adenomatous polyposis characterized by multiple adenomas in the colon and rectum associated with prominent extraco"
+},
+{
+"id": "MONDO:0019337",
+"name": "autoimmune bullous skin disease",
+"syn": [],
+"parent": "dermatitis",
+"defn": "An autoimmune disease characterized by blisters on the skin."
+},
+{
+"id": "MONDO:0019338",
+"name": "sarcoidosis",
+"syn": [
+"Besnier-Boeck-Schaumann disease",
+"besnier-Boeck-Schaumann syndrome",
+"Boeck sarcoid"
+],
+"parent": "autoinflammatory syndrome",
+"defn": "Sarcoidosis is a multisystemic disorder of unknown cause characterized by the formation of immune granulomas in involved organs."
+},
+{
+"id": "MONDO:0019339",
+"name": "47,XYY syndrome",
+"syn": [
+"47,XYY",
+"disomy Y",
+"Double Y"
+],
+"parent": "chromosome Y disorder",
+"defn": "47, XYY syndrome is a sex chromosome aneuploidy where males receive an additional Y chromosome, and is characterized clinically by tall stature evident from chi"
+},
+{
+"id": "MONDO:0019340",
+"name": "scleroderma",
+"syn": [
+"scleroderma (disease)"
+],
+"parent": "rheumatic disorder",
+"defn": "Scleroderma is a rare autoimmune connective tissue disorder characterized by abnormal hardening of the skin and, sometimes, other organs. It is classified into "
+},
+{
+"id": "MONDO:0019342",
+"name": "Seckel syndrome",
+"syn": [
+"bird-headed dwarfism",
+"nanocephalic Dwarfism",
+"SCKL"
+],
+"parent": "syndromic disease",
+"defn": "A rare autosomal recessive inherited syndrome caused by mutations in the ATR gene, RBBP8 gene, CENPJ gene, CEP152 gene, CEP63 gene, NIN gene, DNA2 gene, or TRAI"
+},
+{
+"id": "MONDO:0019344",
+"name": "antisynthetase syndrome",
+"syn": [
+"anti-Jo1 syndrome",
+"AS syndrome"
+],
+"parent": "acquired idiopathic inflammatory myopathy",
+"defn": "Antisynthetase (AS) syndrome is a clinically heterogeneous form of idiopathic inflammatory myopathy characterized by myositis, arthralgia, Raynaud phenomenon, m"
+},
+{
+"id": "MONDO:0019345",
+"name": "shigellosis",
+"syn": [],
+"parent": "primary bacterial infectious disease",
+"defn": "Shigellosis is a bacterial infection leading to dysentery and is caused by Shigella, which are small, ubiquitous Gram-negative bacteria belonging to the enterob"
+},
+{
+"id": "MONDO:0019346",
+"name": "sialidosis type 1",
+"syn": [
+"cherry-red spot-myoclonus syndrome",
+"lipomucopolysaccharidosis",
+"Normomorphic sialidosis"
+],
+"parent": "sialidosis",
+"defn": "Sialidosis type 1 (ST-1) is a very rare lysosomal storage disease, and is the normosomatic form of sialidosis, characterized by gait abnormalities, progressive "
+},
+{
+"id": "MONDO:0019347",
+"name": "peeling skin syndrome",
+"syn": [
+"deciduous skin",
+"familial continuous skin peeling syndrome",
+"idiopathic deciduous skin"
+],
+"parent": "inherited ichthyosis",
+"defn": "Peeling skin syndrome (PSS) refers to a group of rare autosomal recessive forms of ichthyosis that is characterized clinically by superficial, asymptomatic, spo"
+},
+{
+"id": "MONDO:0019349",
+"name": "Sotos syndrome",
+"syn": [
+"cerebral gigantism",
+"cerebral gigantism syndrome",
+"chromosome 5q35 deletion syndrome"
+],
+"parent": "syndromic disease",
+"defn": "Sotos syndrome is a rare multisystemic genetic disorder characterized by a typical facial appearance, overgrowth of the body in early life with macrocephaly, an"
+},
+{
+"id": "MONDO:0019350",
+"name": "hereditary spherocytosis",
+"syn": [
+"congenital spherocytic hemolytic anaemia",
+"Minkowski-Chauffard disease",
+"spherocytic anaemia"
+],
+"parent": "familial hemolytic anemia",
+"defn": "Hereditary spherocytosis is a congenital hemolytic anemia with a wide clinical spectrum (from symptom-free carriers to severe hemolysis) characterized by anemia"
+},
+{
+"id": "MONDO:0019351",
+"name": "isolated spina bifida",
+"syn": [
+"isolated spina bifida (disease)",
+"nonsyndromic spina bifida (disease)"
+],
+"parent": "spina bifida",
+"defn": "A spina bifida (disease) that is not part of a larger syndrome."
+},
+{
+"id": "MONDO:0019353",
+"name": "Stargardt disease",
+"syn": [
+"fundus flavimaculatus",
+"Stargardt 1"
+],
+"parent": "macular degeneration",
+"defn": "Stargardt disease, also known as Stargardt 1 (STGD1), is an autosomal recessive form of retinal dystrophy that is usually characterized by a progressive loss of"
+},
+{
+"id": "MONDO:0019354",
+"name": "Stickler syndrome",
+"syn": [
+"hereditary progressive arthroophthalmopathy"
+],
+"parent": "syndromic disease",
+"defn": "Stickler syndrome is an inherited vitreoretinopathy characterized by the association of ocular signs with more or less complete forms of Pierre-Robin sequence, "
+},
+{
+"id": "MONDO:0019355",
+"name": "adult-onset Still disease",
+"syn": [
+"Adult-Onset Still's Disease",
+"adult-onset Still's disease",
+"AOSD"
+],
+"parent": "arthritic joint disease",
+"defn": "A rare inflammatory multisystem disorder characterized clinically by fever of unknown origin, arthralgia or arthritis, hyperleucocytosis, and typical skin rash."
+},
+{
+"id": "MONDO:0019356",
+"name": "urogenital tract malformation",
+"syn": [],
+"parent": "developmental defect during embryogenesis",
+"defn": ""
+},
+{
+"id": "MONDO:0019357",
+"name": "congenital narrowing of cervical spinal canal",
+"syn": [
+"congenital stenosis of the cervical spine"
+],
+"parent": "central nervous system disorder",
+"defn": "Congenital cervical spinal stenosis is a rare neurological disease characterized by a congenital narrowing of the bony anatomy of the cervical spinal canal (sag"
+},
+{
+"id": "MONDO:0019358",
+"name": "encephalopathy due to sulfite oxidase deficiency",
+"syn": [],
+"parent": "lens disorder",
+"defn": "Encephalopathy due to sulfite oxidase deficiency is a rare neurometabolic disorder characterized by seizures, progressive encephalopathy and lens dislocation."
+},
+{
+"id": "MONDO:0019359",
+"name": "Rocky mountain spotted fever",
+"syn": [],
+"parent": "spotted fever",
+"defn": "Rocky Mountain spotted fever refers to an infection caused by the bacterium Rickettsia rickettsia. This particular bacterium is carried by certain species of ti"
+},
+{
+"id": "MONDO:0019360",
+"name": "rickettsialpox",
+"syn": [
+"vesicular rickettsiosis"
+],
+"parent": "spotted fever",
+"defn": ""
+},
+{
+"id": "MONDO:0019362",
+"name": "epidemic louse-borne typhus",
+"syn": [
+"epidemic typhus",
+"epidemic typhus fever"
+],
+"parent": "typhus",
+"defn": "A gram-negative bacterial infection caused by Rickettsia prowazekii. It is spread by lice infected with the bacteria. Signs and symptoms include sudden headache"
+},
+{
+"id": "MONDO:0019364",
+"name": "pseudotyphus of California",
+"syn": [],
+"parent": "spotted fever",
+"defn": "Pseudotyphus of California is a rare, flea-borne Rickettsial disease caused by a Rickettsia felis infection. Patients can be asymptomatic or can present with un"
+},
+{
+"id": "MONDO:0019365",
+"name": "scrub typhus",
+"syn": [
+"Japanese river fever",
+"Kedani fever",
+"scrub mite-borne typhus"
+],
+"parent": "typhus",
+"defn": "Scrub typhus is a rare dust mite-borne infectious disease caused by the Orientia tsutsugamushi bacterium and characterized clinically by an eruptive fever which"
+},
+{
+"id": "MONDO:0019366",
+"name": "free sialic acid storage disease",
+"syn": [],
+"parent": "inborn disorder of lysosomal amino acid transport",
+"defn": "Free sialic acid storage disease (free SASD), is a group of lysosomal storage diseases characterized by a spectrum of clinical manifestations including neurolog"
+},
+{
+"id": "MONDO:0019367",
+"name": "regional odontodysplasia",
+"syn": [
+"ghost teeth"
+],
+"parent": "periodontal disorder",
+"defn": "Regional odontodysplasia (ROD) is a localized developmental anomaly of the dental tissues."
+},
+{
+"id": "MONDO:0019368",
+"name": "florid cemento-osseous dysplasia",
+"syn": [
+"florid osseous dysplasia",
+"focal cemento-osseous dysplasia"
+],
+"parent": "mouth disorder",
+"defn": "Florid cemento-osseous dysplasia (FCOD) is a rare fibro-osseous lesion in the jaw that predominantly affects middle-aged women of African descent. It is general"
+},
+{
+"id": "MONDO:0019369",
+"name": "complex regional pain syndrome",
+"syn": [
+"algoneurodystrophy",
+"CRPS"
+],
+"parent": "chronic pain syndrome",
+"defn": "A chronic pain syndrome characterized by a disproportionate spontaneous or stimulus-induced pain, accompanied by a variably mixed myriad of autonomic and motor "
+},
+{
+"id": "MONDO:0019370",
+"name": "vulvovaginal gingival syndrome",
+"syn": [],
+"parent": "female reproductive system disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0019371",
+"name": "narcolepsy without cataplexy",
+"syn": [
+"narcolepsy type 2"
+],
+"parent": "brain disorder",
+"defn": "A type of narcolepsy characterized by excessive day-time sleepiness associated with uncontrollable sleep urges and sometimes paralysis at sleep, hypnagogic hall"
+},
+{
+"id": "MONDO:0019372",
+"name": "solitary bone cyst",
+"syn": [
+"bone cyst",
+"cyst of bone",
+"cyst of the bone"
+],
+"parent": "bone neoplasm",
+"defn": "A solitary bone cyst is a benign non-epithelial bone cavity that is asymptomatic and that is found most commonly in the second decade of life by chance. The lon"
+},
+{
+"id": "MONDO:0019373",
+"name": "desmoplastic small round cell tumor",
+"syn": [
+"Desmoplas. small round cell tumor",
+"Desmoplas. small round cell tumour",
+"Desmoplastic small round cell tumour"
+],
+"parent": "small cell sarcoma",
+"defn": "Desmoplastic small round cell tumor (DSRCT) is an aggressive soft tissue cancer that typically arises in serous lined surfaces of the abdominal or pelvic perito"
+},
+{
+"id": "MONDO:0019374",
+"name": "CAMOS syndrome",
+"syn": [
+"cerebellar ataxia-intellectual disability-optic atrophy-skin abnormalities syndrome",
+"SCAR5"
+],
+"parent": "autosomal recessive congenital cerebellar ataxia",
+"defn": "CAMOS syndrome is characterized by the association of a non-progressive congenital ataxia, severe intellectual deficit, optic atrophy and structural anomalies o"
+},
+{
+"id": "MONDO:0019375",
+"name": "megalencephaly-polymicrogyria-postaxial polydactyly-hydrocephalus syndrome",
+"syn": [
+"MPPH syndrome"
+],
+"parent": "hydrocephalus",
+"defn": "Megalencephaly-polymicrogyria-postaxial polydactyly-hydrocephalus syndrome is characterized by megalencephaly, polymicrogyria, and hydrocephalus with variable p"
+},
+{
+"id": "MONDO:0019376",
+"name": "West-Nile encephalitis",
+"syn": [
+"West Nile Encephalitis",
+"West Nile encephalitis",
+"West Nile fever with encephalitis"
+],
+"parent": "West Nile fever",
+"defn": "An acute arboviral infection caused by a virus of the Flaviviridae family transmitted by an infected mosquito, that is asymptomatic in the majority of cases but"
+},
+{
+"id": "MONDO:0019377",
+"name": "Mycoplasma encephalitis",
+"syn": [
+"Mycoplasma pneumoniae caused infectious encephalitis",
+"Mycoplasma pneumoniae infectious encephalitis"
+],
+"parent": "infectious encephalitis",
+"defn": "Mycoplasma encephalitis is a rare infectious encephalitis characterized by an acute onset of neurological signs and symptoms (e.g. altered consciousness, seizur"
+},
+{
+"id": "MONDO:0019378",
+"name": "la Crosse encephalitis",
+"syn": [
+"Californian encephalitis",
+"La Crosse virus caused infectious encephalitis",
+"La Crosse virus infectious encephalitis"
+],
+"parent": "mosquito-borne viral encephalitis",
+"defn": "La Crosse encephalitis (CE) is an acute arboviral infection caused by the La Crosse bunyavirus transmitted by an infected mosquito, usually observed in infants,"
+},
+{
+"id": "MONDO:0019380",
+"name": "western equine encephalitis",
+"syn": [
+"Western equine encephalitis virus caused infectious encephalitis",
+"Western equine encephalitis virus infectious encephalitis",
+"Western equine encephalomyelitis"
+],
+"parent": "Alphavirus infectious disease",
+"defn": "An acute arboviral infection caused by an alphavirus of the Togaviridae family transmitted by an infected mosquito, that more frequently affects children and th"
+},
+{
+"id": "MONDO:0019383",
+"name": "acute disseminated encephalomyelitis",
+"syn": [
+"acute disseminated encephalitis",
+"ADEM",
+"post-infectious encephalomyelitis"
+],
+"parent": "demyelinating disease",
+"defn": "Acute disseminated encephalomyelitis (ADEM) is a demyelinating disorder of the central nervous system."
+},
+{
+"id": "MONDO:0019384",
+"name": "encephalitis lethargica",
+"syn": [
+"epidemic encephalitis",
+"lethargic encephalitis",
+"Von Economo encephalitis"
+],
+"parent": "viral encephalitis",
+"defn": "A form of encephalitis, the etiology of which is uncertain, that is characterized by lethargy and headache."
+},
+{
+"id": "MONDO:0019385",
+"name": "steroid-responsive encephalopathy associated with autoimmune thyroiditis",
+"syn": [
+"SREAT"
+],
+"parent": "postinfectious encephalitis",
+"defn": "Steroid-responsive encephalopathy associated with autoimmune thyroiditis (SREAT) is a rare, acquired, neurological disease characterized by encephalopathy assoc"
+},
+{
+"id": "MONDO:0019386",
+"name": "progressive rubella panencephalitis",
+"syn": [],
+"parent": "rubella encephalitis",
+"defn": "A neurological disorder arising from primary rubella infection of the brain, characterized by chronic encephalitis. It is believed to be due to a persistence or"
+},
+{
+"id": "MONDO:0019387",
+"name": "macrostomia-preauricular tags-external ophthalmoplegia syndrome",
+"syn": [],
+"parent": "multiple congenital anomalies/dysmorphic syndrome without intellectual disability",
+"defn": "Macrostomia-preauricular tags-external ophthalmoplegia syndrome combines macrostomia or abnormal mouth contour, preauricular tags, uni- or bilateral ptosis and "
+},
+{
+"id": "MONDO:0019388",
+"name": "pelvis syndrome",
+"syn": [
+"Lower body hemangioma-urogenital anomalies-myelopathy-bony deformities-anorectal and arterial malformations-renal anomalies syndrome",
+"LUMBAR syndrome",
+"perineal hemangioma-external genitalia malformations-lipomyelomeningocele-vesicorenal abnormalities-imperforate anus syndrome"
+],
+"parent": "syndromic disease",
+"defn": "PELVIS is an acronym defining the association of Perineal hemangioma, External genitalia malformations, Lipomyelomeningocele, Vesicorenal abnormalities, Imperfo"
+},
+{
+"id": "MONDO:0019390",
+"name": "Susac syndrome",
+"syn": [
+"RED-M",
+"Retinocochleocerebral vasculopathy",
+"retinopathy-encephalopathy-deafness associated with microangiopathy"
+],
+"parent": "syndromic disease",
+"defn": "Susac syndrome (SS) is a rare disorder characterized by the triad of central nervous system (CNS) dysfunction, branch retinal artery occlusions (BRAOs) and sens"
+},
+{
+"id": "MONDO:0019391",
+"name": "Fanconi anemia",
+"syn": [
+"Fanconi pancytopenia",
+"Fanconi's anemia",
+"pancytopenia, congenital"
+],
+"parent": "congenital anemia",
+"defn": "Fanconi anemia (FA) is a hereditary DNA repair disorder characterized by progressive pancytopenia with bone marrow failure, variable congenital malformations an"
+},
+{
+"id": "MONDO:0019392",
+"name": "syringocystadenoma papilliferum",
+"syn": [
+"fistulous vegetative verrucous hydradenoma",
+"naevus syringocystadenomatosus papilliferus",
+"papillary Syringadenoma"
+],
+"parent": "sweat gland adenoma",
+"defn": "A benign adnexal neoplasm occurring during childhood or adolescence. It usually presents as a papular lesion or a plaque on the head and neck. It may arise in a"
+},
+{
+"id": "MONDO:0019393",
+"name": "idiopathic malabsorption due to bile acid synthesis defects",
+"syn": [
+"idiopathic bile acid malabsorption"
+],
+"parent": "inborn disorder of bile acid synthesis",
+"defn": "Idiopathic malabsorption due to increased acid bile synthesis is an intestinal disease of unknown etiology characterized by an overproduction of bile acids whic"
+},
+{
+"id": "MONDO:0019394",
+"name": "Senior-Boichis syndrome",
+"syn": [
+"Boichis disease",
+"nephronophthisis-hepatic fibrosis syndrome"
+],
+"parent": "inherited renal tubular disease",
+"defn": "Boichis syndrome consists of the association of congenital nephronophthisis leading to renal failure, and hepatic fibrosis. It has been described in five member"
+},
+{
+"id": "MONDO:0019395",
+"name": "Hinman syndrome",
+"syn": [
+"HAS",
+"Hinman-Allen syndrome",
+"HS"
+],
+"parent": "urinary bladder disorder",
+"defn": "Hinman syndrome (HS) or non-neurogenic neurogenic bladder is a voiding dysfunction of the bladder of neuropsychological origin that is characterized by function"
+},
+{
+"id": "MONDO:0019396",
+"name": "collagen type III glomerulopathy",
+"syn": [
+"Collagenofibrotic glomerulopathy"
+],
+"parent": "glomerular disorder",
+"defn": "A rare glomerular disease characterized by abnormal accumulation of type III collagen within the mesangium and subendothelial space of the glomerulus. Clinicall"
+},
+{
+"id": "MONDO:0019397",
+"name": "unknown leukodystrophy",
+"syn": [],
+"parent": "leukodystrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0019399",
+"name": "Isaac syndrome",
+"syn": [
+"acquired neuromyotonia",
+"continuous muscle fiber activity syndrome",
+"continuous muscle fibre activity syndrome"
+],
+"parent": "muscular channelopathy",
+"defn": "Isaac's syndrome is an immune-mediated peripheral motor neuron disorder characterized by continuous muscle fiber activity at rest resulting in muscle stiffness,"
+},
+{
+"id": "MONDO:0019401",
+"name": "sporadic idiopathic steroid-resistant nephrotic syndrome",
+"syn": [
+"sporadic idiopathic nephrosis"
+],
+"parent": "idiopathic nephrotic syndrome",
+"defn": "Steroid-resistant, sporadic idiopathic nephrotic syndrome, is a heterogeneous entity. Nephrotic syndrome is characterized by marked proteinuria, with reduced pl"
+},
+{
+"id": "MONDO:0019402",
+"name": "beta thalassemia",
+"syn": [],
+"parent": "thalassemia",
+"defn": "Beta-thalassemia (BT) is characterized by deficiency (Beta+) or absence (Beta0) of synthesis of the beta globin chains of hemoglobin (Hb)."
+},
+{
+"id": "MONDO:0019403",
+"name": "congenital dyserythropoietic anemia",
+"syn": [
+"anemia, congenital dyserythropoietic",
+"CDA",
+"congenital dyshaematopoietic anaemia"
+],
+"parent": "familial hemolytic anemia",
+"defn": "Congenital dyserythropoietic anemia (CDA) is a heterogenous group of hematological disorders of late erythropoiesis and red cell abnormalities that lead to anem"
+},
+{
+"id": "MONDO:0019404",
+"name": "perineurioma",
+"syn": [],
+"parent": "nerve sheath neoplasm",
+"defn": "A usually benign perineurioma not associated with a nerve, arising from the soft tissues."
+},
+{
+"id": "MONDO:0019405",
+"name": "facial onset sensory and motor neuronopathy",
+"syn": [
+"FOSMN syndrome"
+],
+"parent": "inherited neurodegenerative disorder",
+"defn": "Facial onset sensory and motor neuronopathy is characterized initially by paraesthesia and numbness in the region of the trigeminal nerve distribution, which la"
+},
+{
+"id": "MONDO:0019406",
+"name": "craniofacial conodysplasia",
+"syn": [],
+"parent": "acromelic dysplasia",
+"defn": "Craniofacial conodysplasia is characterized by craniofacial dysplasia, cone-shaped physes of the hands and feet, and neurological manifestations resembling cere"
+},
+{
+"id": "MONDO:0019407",
+"name": "microcephalic osteodysplastic dysplasia, Saul-Wilson type",
+"syn": [
+"microcephalic osteodysplastic dysplasia",
+"Saul-Wilson syndrome",
+"SWILS"
+],
+"parent": "autosomal dominant disease",
+"defn": "A bone development disease characterized by early developmental delay primarily involving speech, distinct facial features, short stature, brachydactyly, clubfo"
+},
+{
+"id": "MONDO:0019408",
+"name": "Astley-Kendall dysplasia",
+"syn": [],
+"parent": "chondrodysplasia punctata",
+"defn": "Astley-Kendall dysplasia is a lethal skeletal dysplasia characterized by short limbed dwarfism, osteogenesis imperfecta, and punctate calcification within carti"
+},
+{
+"id": "MONDO:0019409",
+"name": "idiopathic juvenile osteoporosis",
+"syn": [
+"IJO",
+"Ijo",
+"juvenile osteoporosis"
+],
+"parent": "osteoporosis",
+"defn": "Idiopathic juvenile osteoporosis (IJO) is a primary condition of bone demineralization childhood or adolescence that presents with pain in the back and extremit"
+},
+{
+"id": "MONDO:0019411",
+"name": "genochondromatosis type 1",
+"syn": [],
+"parent": "genochondromatosis",
+"defn": "Genochondromatosis is characterized by chondromatosis, typically involving the clavicles, upper end of the humerus, and lower end of the femur. Lesions are bila"
+},
+{
+"id": "MONDO:0019412",
+"name": "dysspondyloenchondromatosis",
+"syn": [],
+"parent": "skeletal dysplasia",
+"defn": "Dysspondyloenchondromatosis is a rare skeletal dysplasia characterized by anisospondyly and multiple enchondromas in vertebrae and the metaphyseal and diaphysea"
+},
+{
+"id": "MONDO:0019413",
+"name": "ischio-vertebral syndrome",
+"syn": [
+"ischio-spinal dysostosis",
+"ischio-vertebral dysplasia"
+],
+"parent": "syndromic disease",
+"defn": "Ischio-vertebral syndrome is a very rare, poorly-defined bone disease characterized by ischial aplasia or hypoplasia, vertebral anomalies (vertebral malsegmenta"
+},
+{
+"id": "MONDO:0019414",
+"name": "BRESEK syndrome",
+"syn": [
+"BRESHECK syndrome"
+],
+"parent": "syndromic disease",
+"defn": "A syndrome characterized by Brain anomalies, severe mental Retardation, Ectodermal dysplasia, Skeletal deformities (vertebral anomalies, scoliosis, polydactyly)"
+},
+{
+"id": "MONDO:0019415",
+"name": "fetal and neonatal alloimmune thrombocytopenia",
+"syn": [
+"NAIT"
+],
+"parent": "hemorrhagic disease",
+"defn": "A rare hematological disease characterized by maternal alloimmunisation against fetal platelet antigens that are inherited from the father and different from th"
+},
+{
+"id": "MONDO:0019416",
+"name": "X-linked intellectual disability-hypogammaglobulinemia-progressive neurological deterioration syndrome",
+"syn": [],
+"parent": "congenital nervous system disorder",
+"defn": "X-linked intellectual disability-hypogammaglobulinemia-progressive neurological deterioration syndrome is characterized by moderate intellectual deficit, bilate"
+},
+{
+"id": "MONDO:0019417",
+"name": "X-linked intellectual disability-precocious puberty-obesity syndrome",
+"syn": [],
+"parent": "X-linked syndromic intellectual disability",
+"defn": "X-linked intellectual disability-precocious puberty-obesity syndrome is characterized by moderate intellectual deficit and precocious puberty. It has been descr"
+},
+{
+"id": "MONDO:0019418",
+"name": "X-linked intellectual disability-epilepsy-progressive joint contractures-dysmorphism syndrome",
+"syn": [],
+"parent": "congenital nervous system disorder",
+"defn": "X-linked intellectual disability-epilepsy-progressive joint contractures-dysmorphism syndrome is characterized by intellectual deficit, epilepsy, facial dysmorp"
+},
+{
+"id": "MONDO:0019419",
+"name": "X-linked intellectual disability-macrocephaly-macroorchidism syndrome",
+"syn": [
+"Johnson syndrome"
+],
+"parent": "X-linked syndromic intellectual disability",
+"defn": "X-linked intellectual disability-macrocephaly-macroorchidism syndrome is characterized by intellectual deficit affecting both sexes, macrocephaly, and macroorch"
+},
+{
+"id": "MONDO:0019420",
+"name": "X-linked intellectual disability, Pai type",
+"syn": [],
+"parent": "congenital nervous system disorder",
+"defn": "X-linked intellectual disability, Pai type is characterized by the association of dysmorphism with intellectual deficit. It has been described in four generatio"
+},
+{
+"id": "MONDO:0019421",
+"name": "X-linked intellectual disability, Seemanova type",
+"syn": [],
+"parent": "X-linked syndromic intellectual disability",
+"defn": "X-linked intellectual disability, Seemanova type is characterized by microcephaly, intellectual deficit, growth retardation and hypogenitalism. It has been desc"
+},
+{
+"id": "MONDO:0019422",
+"name": "X-linked intellectual disability, Stevenson type",
+"syn": [],
+"parent": "congenital nervous system disorder",
+"defn": "An X-linked syndromic intellectual disability characterized by intellectual deficit, hypotonia, absent deep tendon reflexes, tapered fingers and excessive finge"
+},
+{
+"id": "MONDO:0019423",
+"name": "X-linked intellectual disability, Stoll type",
+"syn": [],
+"parent": "congenital nervous system disorder",
+"defn": "X-linked intellectual disability, Stoll type is characterized by intellectual deficit, short stature and characteristic facies (hypertelorism, prominent forehea"
+},
+{
+"id": "MONDO:0019424",
+"name": "X-linked intellectual disability-acromegaly-hyperactivity syndrome",
+"syn": [],
+"parent": "X-linked syndromic intellectual disability",
+"defn": "X-linked intellectual disability-acromegaly-hyperactivity syndrome is characterized by severe intellectual deficit, acromegaly and hyperactivity. The syndrome h"
+},
+{
+"id": "MONDO:0019426",
+"name": "X-linked intellectual disability-corpus callosum agenesis-spastic quadriparesis syndrome",
+"syn": [],
+"parent": "X-linked syndromic intellectual disability",
+"defn": "X-linked intellectual disability-corpus callosum agenesis-spastic quadriparesis syndrome is characterized by intellectual and motor deficit, spastic quadripares"
+},
+{
+"id": "MONDO:0019427",
+"name": "X-linked neurodegenerative syndrome, Bertini type",
+"syn": [],
+"parent": "inherited neurodegenerative disorder",
+"defn": "X-linked neurodegenerative syndrome, Bertini type is characterized by generalized hypotonia, psychomotor deficit, congenital ataxia and recurrent bronchopulmona"
+},
+{
+"id": "MONDO:0019428",
+"name": "fried syndrome",
+"syn": [],
+"parent": "X-linked syndromic intellectual disability",
+"defn": "A rare X-linked syndrome characterized by psychomotor delay, intellectual deficit, hydrocephalus, and mild facial anomalies."
+},
+{
+"id": "MONDO:0019429",
+"name": "X-linked neurodegenerative syndrome, Hamel type",
+"syn": [],
+"parent": "inherited neurodegenerative disorder",
+"defn": "An X-linked neurodegenerative disorder characterized by intellectual deficit, blindness, convulsions, spasticity, mild hypomyelination and early death. It has b"
+},
+{
+"id": "MONDO:0019430",
+"name": "X-linked intellectual disability-ataxia-apraxia syndrome",
+"syn": [],
+"parent": "X-linked cerebellar ataxia",
+"defn": "X-linked intellectual disability-ataxia-apraxia syndrome is characterized by ataxia, apraxia, intellectual deficit and/or seizures. It has been described in nin"
+},
+{
+"id": "MONDO:0019431",
+"name": "primitive portal vein thrombosis",
+"syn": [
+"non-cirrhotic portal vein thrombosis"
+],
+"parent": "liver disorder",
+"defn": "Portal vein thrombosis (PVT) is associated with acute (recent) or chronic (long-standing) thrombosis of the portal system."
+},
+{
+"id": "MONDO:0019432",
+"name": "rheumatoid factor-negative juvenile idiopathic arthritis",
+"syn": [
+"juvenile rheumatoid factor-negative polyarthritis",
+"polyarthritis without rheumatoid factor",
+"rheumatoid factor-negative JIA"
+],
+"parent": "polyarticular juvenile idiopathic arthritis",
+"defn": "Rheumatoid factor-negative polyarthritis is a term used to describe a group of poorly defined heterogenous conditions that incorporates forms of rheumatoid fact"
+},
+{
+"id": "MONDO:0019433",
+"name": "oligoarticular juvenile idiopathic arthritis",
+"syn": [
+"Oligoarticular JIA",
+"Pauciarticular chronic arthritis",
+"Pauciarticular JIA"
+],
+"parent": "juvenile idiopathic arthritis",
+"defn": "Oligoarticular juvenile arthritis is the most common form of juvenile idiopathic arthritis (JIA), representing nearly 50% of cases."
+},
+{
+"id": "MONDO:0019434",
+"name": "systemic-onset juvenile idiopathic arthritis",
+"syn": [
+"sJIA",
+"SoJIA",
+"Still disease"
+],
+"parent": "juvenile idiopathic arthritis",
+"defn": "Systemic-onset juvenile idiopathic arthritis is marked by the severity of the extra-articular manifestations (fever, cutaneous eruptions) and by an equal sex ra"
+},
+{
+"id": "MONDO:0019435",
+"name": "rheumatoid factor-positive polyarticular juvenile idiopathic arthritis",
+"syn": [
+"juvenile idiopathic rheumatoid factor-positive polyarthritis",
+"polyarthritis with rheumatoid factor",
+"polyarticular JIA, RF+"
+],
+"parent": "polyarticular juvenile idiopathic arthritis",
+"defn": "A category of juvenile idiopathic arthritis defined by the presence of arthritis affecting five or more separate joints during the first six months of disease, "
+},
+{
+"id": "MONDO:0019436",
+"name": "psoriasis-related juvenile idiopathic arthritis",
+"syn": [
+"JPsA",
+"juvenile psoriatic arthritis",
+"psoriasis-related JIA"
+],
+"parent": "juvenile idiopathic arthritis",
+"defn": "Childhood arthritis typically associated with psoriasis."
+},
+{
+"id": "MONDO:0019437",
+"name": "enthesitis-related juvenile idiopathic arthritis",
+"syn": [
+"enthesitis-related JIA",
+"ERA",
+"era"
+],
+"parent": "juvenile idiopathic arthritis",
+"defn": "Enthesitis-related juvenile idiopathic arthritis is a subtype of juvenile idiopathic arthritis that is characterized by both arthritis and inflammation of an en"
+},
+{
+"id": "MONDO:0019438",
+"name": "AL amyloidosis",
+"syn": [
+"Light-chain amyloidosis",
+"primary amyloidosis"
+],
+"parent": "nervous system disorder",
+"defn": "AL Amyloidosis is a plasma cell disorder characterized by the aggregation and deposition of insoluble amyloid fibrils derived from misfolding of monoclonal immu"
+},
+{
+"id": "MONDO:0019439",
+"name": "AA amyloidosis",
+"syn": [
+"inflammatory amyloidosis",
+"reactive amyloidosis",
+"secondary amyloidosis"
+],
+"parent": "nervous system disorder",
+"defn": "Secondary amyloidosis is a form of amyloidosis, that complicates chronic inflammatory disorders (mainly rheumatoid arthritis) and is characterized by the aggreg"
+},
+{
+"id": "MONDO:0019440",
+"name": "wild type ABeta2M amyloidosis",
+"syn": [
+"ABeta2Mwt amyloidosis",
+"dialysis-related amyloidosis",
+"dialysis-related arthropathy"
+],
+"parent": "ABeta2M amyloidosis",
+"defn": ""
+},
+{
+"id": "MONDO:0019441",
+"name": "ATTRV122I amyloidosis",
+"syn": [
+"ATTRV122I-related amyloidosis"
+],
+"parent": "familial restrictive cardiomyopathy",
+"defn": "A rare hereditary Transthyretin (TTR)-related systemic amyloidosis (ATTR) with predominant cardiac involvement resulting from myocardial infiltration of abnorma"
+},
+{
+"id": "MONDO:0019443",
+"name": "dextro-looped transposition of the great arteries",
+"syn": [
+"congenitally uncorrected transposition of the great arteries",
+"congenitally uncorrected transposition of the great vessels",
+"DTGA"
+],
+"parent": "transposition of the great arteries",
+"defn": "Congenitally uncorrected transposition of the great arteries (congenitally uncorrected TGA), also referred to as complete transposition, is a congenital cardiac"
+},
+{
+"id": "MONDO:0019444",
+"name": "trichinellosis",
+"syn": [
+"Trichinella caused disease or disorder",
+"Trichinella disease or disorder",
+"Trichinella infectious disease"
+],
+"parent": "Enoplea infectious disease",
+"defn": "A zoonotic parasitic disease caused by the consumption of raw or undercooked meat (pork and wild game) infected by nematodes of the genus Trichinella and that i"
+},
+{
+"id": "MONDO:0019445",
+"name": "trichofolliculoma",
+"syn": [],
+"parent": "hamartoma of skin appendage",
+"defn": "Trichofolliculoma is a rare benign follicular hamartoma that develops primarily on the face of adults, with a particular predilection for the back of the nose, "
+},
+{
+"id": "MONDO:0019446",
+"name": "localized lichen myxedematosus",
+"syn": [
+"papular mucinosis"
+],
+"parent": "lichen myxedematosus",
+"defn": "Localized lichen myxedematosus is a group of skin diseases characterized by the development of papules, nodules and/or plaques with mucin deposits and a variabl"
+},
+{
+"id": "MONDO:0019447",
+"name": "atypical lichen myxedematosus",
+"syn": [
+"Intermediate lichen myxedematosus"
+],
+"parent": "lichen myxedematosus",
+"defn": "Atypical lichen myxedematosus is an intermediate form of lichen myxedematosus (LM) (a form of mucin dermal deposit) which does not meet the criteria for either "
+},
+{
+"id": "MONDO:0019448",
+"name": "benign adult familial myoclonic epilepsy",
+"syn": [
+"ADCME",
+"autosomal dominant cortical myoclonus and epilepsy",
+"BAFME"
+],
+"parent": "epilepsy, familial adult myoclonic",
+"defn": "Benign adult familial myoclonic epilepsy (BAFME) is an inherited epileptic syndrome characterized by cortical hand tremors, myoclonic jerks and occasional gener"
+},
+{
+"id": "MONDO:0019449",
+"name": "lissencephaly type 3-familial fetal akinesia sequence syndrome",
+"syn": [],
+"parent": "lissencephaly type 3",
+"defn": "Lissencephaly type 3-familial fetal akinesia sequence syndrome is characterized by the association of microencephaly, agenesis of the corpus callosum, brainstem"
+},
+{
+"id": "MONDO:0019450",
+"name": "lissencephaly with cerebellar hypoplasia",
+"syn": [
+"LCH"
+],
+"parent": "lissencephaly spectrum disorders",
+"defn": "Lissencephaly with cerebellar hypoplasia (LCH) is a variant form of lissencephaly and involves a heterogeneous group of cortical malformations without severe co"
+},
+{
+"id": "MONDO:0019451",
+"name": "chronic neutrophilic leukemia",
+"syn": [
+"neutrophilic leukaemia",
+"neutrophilic leukemia"
+],
+"parent": "chronic leukemia",
+"defn": "A rare chronic myeloproliferative neoplasm characterized by neutrophilic leukocytosis. There is no detectable Philadelphia chromosome or BCR/ABL fusion gene."
+},
+{
+"id": "MONDO:0019452",
+"name": "myeloproliferative neoplasm, unclassifiable",
+"syn": [
+"chronic myeloproliferative disease, unclassifiable",
+"chronic myeloproliferative disorder, unclassifiable",
+"CMPD, U"
+],
+"parent": "myeloproliferative neoplasm",
+"defn": "This subgroup of myeloproliferative neoplasms includes cases which do not meet the morphologic criteria of any of the defined myeloproliferative neoplasms, or w"
+},
+{
+"id": "MONDO:0019453",
+"name": "myelodysplastic syndrome with multilineage dysplasia",
+"syn": [
+"MDS-MLD",
+"RCMD",
+"refractory cytopenia with multilineage dysplasia"
+],
+"parent": "refractory hematologic cancer",
+"defn": "Refractory cytopenias with multilineage dysplasia (RCMD) is a frequent subtype of myelodysplastic syndrome (MDS) characterized by 1 or more cytopenias in the pe"
+},
+{
+"id": "MONDO:0019454",
+"name": "myelodysplastic syndrome with excess blasts",
+"syn": [
+"MDS-EB",
+"RAEB",
+"refractory Anaemia with an Excess of blasts"
+],
+"parent": "myelodysplastic syndrome",
+"defn": "A myelodysplastic syndrome characterized by the presence of 5-19% myeloblasts in the bone marrow or 2-19% blasts in the peripheral blood. It includes two catego"
+},
+{
+"id": "MONDO:0019455",
+"name": "acute panmyelosis with myelofibrosis",
+"syn": [
+"acute (malignant) myelofibrosis",
+"acute (malignant) myelosclerosis",
+"acute myelodysplasia with myelofibrosis"
+],
+"parent": "acute myeloid leukemia by FAB classification",
+"defn": "An acute myeloid leukemia characterized by bone marrow fibrosis without preexisting primary myelofibrosis."
+},
+{
+"id": "MONDO:0019456",
+"name": "acute myeloid leukemia with multilineage dysplasia",
+"syn": [
+"AML with multilineage dysplasia",
+"AML with myelodysplasia-related features",
+"De novo acute myeloid leukaemia with multilineage dysplasia"
+],
+"parent": "acute myeloid leukemia",
+"defn": "An acute myeloid leukemia arising de novo and not as a result of treatment. It is characterized by the presence of myelodysplastic features in at least 50% of t"
+},
+{
+"id": "MONDO:0019457",
+"name": "therapy related acute myeloid leukemia and myelodysplastic syndrome",
+"syn": [
+"Secondary Acute granulocytic Leukaemia",
+"Secondary Acute granulocytic Leukemia",
+"Secondary Acute myeloblastic Leukaemia"
+],
+"parent": "acute myeloid leukemia",
+"defn": "An acute myeloid leukemia secondary to a myelodysplastic syndrome or therapy-related. (WHO, 2001)"
+},
+{
+"id": "MONDO:0019458",
+"name": "acute basophilic leukemia",
+"syn": [
+"basophilic leukaemia",
+"basophilic leukemia",
+"leukaemia basophilic"
+],
+"parent": "acute myeloid leukemia by FAB classification",
+"defn": "A rare acute myeloid leukemia in which the immature cells differentiate towards basophils."
+},
+{
+"id": "MONDO:0019460",
+"name": "acute leukemia of ambiguous lineage",
+"syn": [
+"acute leukaemia of indeterminate lineage",
+"acute leukemia of indeterminate lineage",
+"hybrid acute leukaemia"
+],
+"parent": "acute myeloid leukemia",
+"defn": "An acute leukemia in which the blasts lack sufficient evidence to classify as myeloid or lymphoid or they have morphologic and/or immunophenotypic characteristi"
+},
+{
+"id": "MONDO:0019461",
+"name": "B-cell prolymphocytic leukemia",
+"syn": [
+"B prolymphocytic leukaemia",
+"B prolymphocytic leukemia",
+"B-PLL"
+],
+"parent": "prolymphocytic leukemia",
+"defn": "A neoplasm of prolymphocytes affecting the blood, bone marrow, and spleen. It is characterized by prolymphocytes exceeding 55% of the lymphoid cells in the bloo"
+},
+{
+"id": "MONDO:0019462",
+"name": "splenic marginal zone lymphoma",
+"syn": [
+"marginal zone lymphoma of spleen",
+"marginal zone lymphoma of the spleen",
+"SLVL"
+],
+"parent": "marginal zone lymphoma",
+"defn": "Splenic marginal zone lymphoma is a rare, indolent B-cell non-Hodgkin lymphoma characterized by abnormal clonal proliferation of mature B-lymphocytes with invol"
+},
+{
+"id": "MONDO:0019463",
+"name": "non-amyloid monoclonal immunoglobulin deposition disease",
+"syn": [
+"non-amyloid MIDD",
+"Randall disease"
+],
+"parent": "plasma cell neoplasm",
+"defn": ""
+},
+{
+"id": "MONDO:0019464",
+"name": "heavy chain disease",
+"syn": [
+"HCD"
+],
+"parent": "plasma cell neoplasm",
+"defn": "Heavy-chain diseases (HCDs) are rare monoclonal lymphoplasma-cell proliferative disorders involving B cells and are characterized by the synthesis of truncated "
+},
+{
+"id": "MONDO:0019465",
+"name": "nodal marginal zone B-cell lymphoma",
+"syn": [
+"Monocytoid B-cell lymphoma",
+"NMZL",
+"nodal marginal zone B-cell lymph."
+],
+"parent": "marginal zone lymphoma",
+"defn": "Nodal marginal zone B-cell lymphoma is a rare, indolent B-cell non-Hodgkin lymphoma, characterized by abnormal clonal proliferation of mature B-lymphocytes with"
+},
+{
+"id": "MONDO:0019466",
+"name": "lymphomatoid granulomatosis",
+"syn": [
+"LYG"
+],
+"parent": "Epstein-Barr virus-associated lymphoproliferative disorder",
+"defn": "A very rare Epstein-Barr virus (EBV)-driven lymphoproliferative disease most commonly occurring in adults (in the fourth to sixth decade of life) and commonly a"
+},
+{
+"id": "MONDO:0019467",
+"name": "CD4+/CD56+ hematodermic neoplasm",
+"syn": [
+"agranular CD4+ CD56+ hematodermic neoplasm/tumor",
+"agranular CD4+ natural Killer cell leukaemia",
+"agranular CD4+ natural Killer cell leukemia"
+],
+"parent": "skin cancer",
+"defn": "An aggressive immature hematologic neoplasm formerly known as blastic NK cell lymphoma, composed of cells with a lymphoblast-like morphology. Recent evidence su"
+},
+{
+"id": "MONDO:0019468",
+"name": "T-cell prolymphocytic leukemia",
+"syn": [
+"CLL, T-cell",
+"T cell chronic lymphocytic leukaemia",
+"T cell chronic lymphocytic leukemia"
+],
+"parent": "mature T-cell and NK-cell non-Hodgkin lymphoma",
+"defn": "A slow-growing type of leukemia (blood cancer) in which too many lymphocytes are found in the bone marrow and/or blood. The T-cell is specified as the defective"
+},
+{
+"id": "MONDO:0019469",
+"name": "T-cell large granular lymphocyte leukemia",
+"syn": [
+"large cell granular lymphogenous leukaemia",
+"large cell granular lymphogenous leukemia",
+"large cell granular lymphoid leukaemia"
+],
+"parent": "mature T-cell and NK-cell non-Hodgkin lymphoma",
+"defn": "T-cell large granular lymphocyte leukemia (T-cell LGL leukemia) is a lymphoproliferative malignancy that arises from the mature T-cell (CD3+) lineage."
+},
+{
+"id": "MONDO:0019470",
+"name": "aggressive NK-cell leukemia",
+"syn": [
+"aggressive NK-cell leukaemia (morphologic abnormality)",
+"aggressive NK-cell leukemia (morphologic abnormality)",
+"aggressive NK-cell leukemia/lymphoma"
+],
+"parent": "mature T-cell and NK-cell non-Hodgkin lymphoma",
+"defn": "A rare, highly aggressive, Epstein-Barr virus-associated leukemia, also known as aggressive NK-cell leukemia/lymphoma; it may represent the leukemic counterpart"
+},
+{
+"id": "MONDO:0019471",
+"name": "adult T-cell leukemia/lymphoma",
+"syn": [
+"adult T-cell leukaemia",
+"adult T-cell leukemia",
+"ATLL"
+],
+"parent": "mature T-cell and NK-cell non-Hodgkin lymphoma",
+"defn": "A peripheral (mature) T-cell neoplasm linked to the human T-cell leukemia virus type 1 (HTLV-1), adult T-cell leukemia/lymphoma is endemic in several regions of"
+},
+{
+"id": "MONDO:0019472",
+"name": "extranodal nasal NK/T cell lymphoma",
+"syn": [
+"angiocentric T-cell lymphoma",
+"extranodal NK/T lymphoma-nasal",
+"extranodal NK/T-cell lymphoma, nasal type"
+],
+"parent": "mature T-cell and NK-cell non-Hodgkin lymphoma",
+"defn": "A rare, malignant neoplasm mainly affecting men in the fifth decade of life, that usually arises in the nose, paranasal sinuses, orbits or upper airway, and tha"
+},
+{
+"id": "MONDO:0019473",
+"name": "enteropathy-associated T-cell lymphoma",
+"syn": [
+"EATL",
+"EATL, type I",
+"enteropathy associated T-cell lymphoma"
+],
+"parent": "mature T-cell and NK-cell non-Hodgkin lymphoma",
+"defn": "An uncommon mature T-cell lymphoma of intraepithelial lymphocytes. It usually arises from the small intestine, most commonly the jejunum or ileum. Other less fr"
+},
+{
+"id": "MONDO:0019474",
+"name": "hepatosplenic T-cell lymphoma",
+"syn": [
+"Hepatosplenic gamma/Delta T-cell lymphoma"
+],
+"parent": "mature T-cell and NK-cell non-Hodgkin lymphoma",
+"defn": "An extranodal, mature T-cell non-Hodgkin lymphoma that originates from cytotoxic T-cells, usually of gamma/delta T-cell type. It is characterized by the presenc"
+},
+{
+"id": "MONDO:0019475",
+"name": "subcutaneous panniculitis-like T-cell lymphoma",
+"syn": [
+"SPTCL",
+"subcutaneous panniculitic T-cell lymphoma",
+"subcutaneous panniculitis-like T-cell lymphoma (Alpha/Beta type)"
+],
+"parent": "mature T-cell and NK-cell non-Hodgkin lymphoma",
+"defn": "Subcutaneous panniculitis-like T-cell lymphoma (SPTCL) is a rare cytotoxic cutaneous lymphoma that has been recognized as a distinct subset of peripheral T-cell"
+},
+{
+"id": "MONDO:0019476",
+"name": "primary cutaneous peripheral T-cell lymphoma not otherwise specified",
+"syn": [
+"primary cutaneous unspecified peripheral T-cell lymphoma"
+],
+"parent": "mature T-cell and NK-cell non-Hodgkin lymphoma",
+"defn": ""
+},
+{
+"id": "MONDO:0019478",
+"name": "adult nodular lymphocyte predominant Hodgkin lymphoma",
+"syn": [
+"adult NLPHD",
+"adult nodular lymphocyte predominant Hodgkin's disease",
+"adult nodular lymphocyte predominant Hodgkin's lymphoma"
+],
+"parent": "adult lymphoma",
+"defn": "A nodular lymphocyte predominant Hodgkin lymphoma occurring in adults."
+},
+{
+"id": "MONDO:0019479",
+"name": "histiocytic sarcoma",
+"syn": [
+"sarcoma, histiocytic, malignant"
+],
+"parent": "histiocytic and dendritic cell neoplasm",
+"defn": "An aggressive malignant neoplasm with a poor response to therapy, usually presenting as stage III/IV disease. It is characterized by the presence of neoplastic "
+},
+{
+"id": "MONDO:0019480",
+"name": "Langerhans cell sarcoma",
+"syn": [
+"sarcoma of Langerhans cell"
+],
+"parent": "dendritic cell sarcoma",
+"defn": "A neoplastic proliferation of Langerhans cells with overtly malignant cytologic features. It can be considered a higher grade variant of Langerhans cell histioc"
+},
+{
+"id": "MONDO:0019483",
+"name": "methotrexate-associated lymphoproliferative disorders",
+"syn": [
+"methotrexate-associated lymphoproliferation",
+"methotrexate-associated lymphoproliferative disorder",
+"MTX-associated lymphoproliferative disorders"
+],
+"parent": "lymphoma",
+"defn": "Methotrexate-associated lymphoproliferative disorders are rare immunodeficiency-associated lymphoproliferative diseases characterized by lymphoid proliferation "
+},
+{
+"id": "MONDO:0019484",
+"name": "hypothalamic hamartomas with gelastic seizures",
+"syn": [],
+"parent": "brain disorder",
+"defn": "A rare cerebral malformation with epilepsy syndrome characterized by early-onset gelastic (i.e. ictal laughter) or dacrystic (i.e., ictal crying) seizures due t"
+},
+{
+"id": "MONDO:0019485",
+"name": "idiopathic hemiconvulsion-hemiplegia syndrome",
+"syn": [
+"hemiconvulsion-hemiplegia-epilepsy syndrome",
+"HHE syndrome",
+"IHHS"
+],
+"parent": "infantile epilepsy syndrome",
+"defn": "A rare acute encephalopathy with inflammation-mediated status epilepticus characterized by infancy-onset of refractory unilateral, mainly clonic status epilepti"
+},
+{
+"id": "MONDO:0019487",
+"name": "epilepsy with myoclonic absences",
+"syn": [
+"EMA"
+],
+"parent": "movement disorder",
+"defn": "A rare childhood-onset epilepsy characterized by sudden onset, short lasting absence associated with rhythmical myoclonia of head and shoulders."
+},
+{
+"id": "MONDO:0019488",
+"name": "myoclonic epilepsy in non-progressive encephalopathies",
+"syn": [
+"myoclonic status in non-progressive encephalopathies",
+"myoclonus epilepsy in non-progressive encephalopathies"
+],
+"parent": "myoclonic epilepsy",
+"defn": "A rare epilepsy syndrome characterized by recurrent, long-lasting myoclonic status in infants and young children with a non-progressive encephalopathy, associat"
+},
+{
+"id": "MONDO:0019489",
+"name": "diffuse palmoplantar keratoderma - acrocyanosis syndrome",
+"syn": [
+"diffuse palmoplantar hyperkeratosis-acrocyanosis syndrome"
+],
+"parent": "diffuse palmoplantar keratoderma",
+"defn": "Diffuse palmoplantar keratoderma-acrocyanosis syndrome is characterized by the association of diffuse palmoplantar keratoderma and acrocyanosis. It has been des"
+},
+{
+"id": "MONDO:0019490",
+"name": "progressive familial heart block",
+"syn": [
+"familial Lenègre disease",
+"familial Lev-Lenègre disease",
+"familial progressive heart block"
+],
+"parent": "heart conduction disease",
+"defn": "A hereditary cardiac conduction disorder that may progress to complete atrioventricular (AV) block. The disease is either asymptomatic or manifests as dyspnea, "
+},
+{
+"id": "MONDO:0019493",
+"name": "primary adult heart tumor",
+"syn": [
+"adult cardiac tumor",
+"adult cardiac tumour",
+"adult heart tumor"
+],
+"parent": "heart neoplasm",
+"defn": "Adult heart tumor refers to neoplasms of the heart that manifest in adults and generally present with a variety of non-specific manifestations (depending on tum"
+},
+{
+"id": "MONDO:0019494",
+"name": "primary pediatric heart tumor",
+"syn": [
+"Cardiac tumor of child",
+"Cardiac tumour of child",
+"heart tumor of child"
+],
+"parent": "heart neoplasm",
+"defn": "Cardiac tumors are benign or malignant neoplasms arising primarily in the inner lining, muscle layer, or the surrounding pericardium of the heart. They can be p"
+},
+{
+"id": "MONDO:0019496",
+"name": "neuroendocrine neoplasm",
+"syn": [
+"APUDoma",
+"neuroendocrine tumor",
+"neuroendocrine tumour"
+],
+"parent": "endocrine gland neoplasm",
+"defn": "Endocrine tumors, also referred to as neuroendocrine tumors (NETs), are defined by a common phenotype which is characterized by the expression of general marker"
+},
+{
+"id": "MONDO:0019497",
+"name": "nonsyndromic genetic hearing loss",
+"syn": [],
+"parent": "hearing loss disorder",
+"defn": "A disease characterized by hearing loss that is not part of a larger syndrome."
+}
+]

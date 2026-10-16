@@ -1,0 +1,1531 @@
+[
+{
+"id": "MONDO:0700255",
+"name": "paraneoplastic renal syndrome",
+"syn": [],
+"parent": "urinary system disorder",
+"defn": "Paraneoplastic syndrome that involves the renal system.",
+"draft": "부종양 신장 증후군"
+},
+{
+"id": "MONDO:0700265",
+"name": "paraneoplastic rheumatic syndrome",
+"syn": [],
+"parent": "paraneoplastic syndrome",
+"defn": "Paraneoplastic syndrome that involves the joints, bones, muscles, and/or connective tissue.",
+"draft": "부종양 류마티스 증후군"
+},
+{
+"id": "MONDO:0700266",
+"name": "paraneoplastic cutaneous syndrome",
+"syn": [],
+"parent": "integumentary system disorder",
+"defn": "Paraneoplastic syndrome that involves the integumental system.",
+"draft": "부종양 피부 증후군"
+},
+{
+"id": "MONDO:0700300",
+"name": "achalasia-progeroid syndrome",
+"syn": [],
+"parent": "progeroid syndrome",
+"defn": "",
+"draft": "이완불능증-조로 증후군"
+},
+{
+"id": "MONDO:0700301",
+"name": "Fischer-Zirnsak progeroid syndrome",
+"syn": [],
+"parent": "progeroid syndrome",
+"defn": "",
+"draft": "피셔-지르나크 조로 증후군"
+},
+{
+"id": "MONDO:0700338",
+"name": "autoinflammation, panniculitis, and dermatosis syndrome, autosomal dominant",
+"syn": [],
+"parent": "autoinflammation, panniculitis, and dermatosis syndrome",
+"defn": "",
+"draft": "자가염증, 지방층염, 피부병 증후군, 상염색체 우성"
+},
+{
+"id": "MONDO:0700391",
+"name": "autoinflammation and autoimmunity with immune dysregulation 1",
+"syn": [],
+"parent": "autoimmune interstitial lung disease-arthritis syndrome",
+"defn": "",
+"draft": "면역 조절이상을 동반한 자가염증 및 자가면역 1"
+},
+{
+"id": "MONDO:0700392",
+"name": "autoinflammation and autoimmunity with immune dysregulation 2",
+"syn": [],
+"parent": "autoimmune interstitial lung disease-arthritis syndrome",
+"defn": "",
+"draft": "면역 조절이상을 동반한 자가염증 및 자가면역 2"
+},
+{
+"id": "MONDO:0800025",
+"name": "Teebi hypertelorism syndrome 1",
+"syn": [
+"Brachycephalofrontonasal dysplasia",
+"craniofrontonasal dysplasia, Teebi type"
+],
+"parent": "Teebi hypertelorism syndrome",
+"defn": "A rare genetic disease characterized by hypertelorism with facial features that can closely resemble craniofrontonasal dysplasia, such as prominent forehead, wi",
+"draft": "티비 눈사이멀어짐 증후군 1"
+},
+{
+"id": "MONDO:0800030",
+"name": "gastrointestinal defects and immunodeficiency syndrome 1",
+"syn": [
+"familial intestinal polyatresia syndrome",
+"FIPA",
+"MINAT"
+],
+"parent": "syndromic disease",
+"defn": "A rare genetic disease characterized by multiple intestinal atresia in association with combined immunodeficiency and inflammatory bowel disease. Clinical featu",
+"draft": "위장관 결손 및 면역결핍 증후군 1"
+},
+{
+"id": "MONDO:0800063",
+"name": "primordial dwarfism and slender bone disorder",
+"syn": [],
+"parent": "skeletal dysplasia",
+"defn": "A skeletal dysplsia characterized by primordial dwarfism, an extreme growth deficiency disorder that has its onset during embryonic development and persists thr",
+"draft": "원시 왜소증 및 가는뼈 질환"
+},
+{
+"id": "MONDO:0800066",
+"name": "polydactyly-syndactyly-triphalangism",
+"syn": [],
+"parent": "skeletal dysplasia",
+"defn": "Any skeletal dysplasia that is characterizedby polydactyly, syndactyly and triphalangism, where a digit has three phalanges instead of two.",
+"draft": "다지증-합지증-삼지골증"
+},
+{
+"id": "MONDO:0800080",
+"name": "severe spondylodysplastic dysplasia",
+"syn": [],
+"parent": "spondylodysplastic dysplasia",
+"defn": "An instance of spondylodysplastic dysplasia that has a high degree of severity.",
+"draft": "중증 척추이형성 이형성증"
+},
+{
+"id": "MONDO:0800107",
+"name": "anterior deviation infundibular septum",
+"syn": [],
+"parent": "ventricular septal defect",
+"defn": "",
+"draft": "전방 편위 깔때기중격"
+},
+{
+"id": "MONDO:0800117",
+"name": "cutaneous botryomycosis",
+"syn": [],
+"parent": "botryomycosis",
+"defn": "A botromycosis that involves the skin and subcutaneous tissue (it is a more common type).",
+"draft": "피부 보트리오마이코시스"
+},
+{
+"id": "MONDO:0800118",
+"name": "visceral botryomycosis",
+"syn": [
+"pulmonary botromycosis"
+],
+"parent": "botryomycosis",
+"defn": "A botryomycosis that involves internal organs such as lungs, liver, or brain. It is a rare disease and has been described mainly in patients with underlying dis",
+"draft": "내장 보트리오마이코시스"
+},
+{
+"id": "MONDO:0800124",
+"name": "Lane Hamilton syndrome",
+"syn": [],
+"parent": "celiac disease",
+"defn": "A rare concurrent association of idiopathic pulmonary hemosiderosis and celiac disease, and is typically seen in children under the age of 15.",
+"draft": "레인 해밀턴 증후군"
+},
+{
+"id": "MONDO:0800204",
+"name": "calvarial doughnut lesions with bone fragility and spondylometaphyseal dysplasia",
+"syn": [
+"CDLSMD"
+],
+"parent": "skeletal dysplasia",
+"defn": "",
+"draft": "골 취약성 및 척추골간단이형성증을 동반한 두개관 도넛 병변"
+},
+{
+"id": "MONDO:0800296",
+"name": "microcornea, rod-cone dystrophy, cataract, and posterior staphyloma 2",
+"syn": [
+"MRCS2"
+],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "소각막, 막대-원뿔 이영양증, 백내장 및 후부 포도종 2"
+},
+{
+"id": "MONDO:0800300",
+"name": "black locks with albinism and deafness syndrome",
+"syn": [
+"BADS"
+],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "알비니즘 및 난청을 동반한 검은 머리 증후군"
+},
+{
+"id": "MONDO:0800357",
+"name": "hyperpigmentation, progressive cribriform and zosteriform",
+"syn": [
+"PCZH"
+],
+"parent": "hyperpigmentation of the skin",
+"defn": "",
+"draft": "진행성 사상 및 대상포진양 과색소침착"
+},
+{
+"id": "MONDO:0800412",
+"name": "yakut short stature syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "야쿠트 저신장 증후군"
+},
+{
+"id": "MONDO:0800459",
+"name": "noxacusis",
+"syn": [
+"auditory nociception",
+"noise-induced pain",
+"pain hyperacusis"
+],
+"parent": "hyperacusis",
+"defn": "Noxacusis/pain hyperacusis is characterized by individuals who experience otalgia or pain (e.g., dull ache, burning, sharp, stabbing pain and throbbing pain) in",
+"draft": "소음통증"
+},
+{
+"id": "MONDO:0850010",
+"name": "congenital optic disk excavation",
+"syn": [],
+"parent": "eye disorder",
+"defn": "",
+"draft": "선천성 시신경유두 함몰"
+},
+{
+"id": "MONDO:0850030",
+"name": "complete hemimelia",
+"syn": [],
+"parent": "hemimelia",
+"defn": "",
+"draft": "완전 반지증"
+},
+{
+"id": "MONDO:0850070",
+"name": "CADINS disease",
+"syn": [],
+"parent": "immune system disorder",
+"defn": "",
+"draft": "CADINS병"
+},
+{
+"id": "MONDO:0850104",
+"name": "paraneoplastic isolated brainstem encephalitis",
+"syn": [],
+"parent": "encephalitis",
+"defn": "",
+"draft": "부종양성 고립성 뇌줄기 뇌염"
+},
+{
+"id": "MONDO:0850149",
+"name": "nephroma",
+"syn": [],
+"parent": "kidney benign neoplasm",
+"defn": "A kidney benign neoplasm that is located in the kidney cortex.",
+"draft": "신종"
+},
+{
+"id": "MONDO:0850368",
+"name": "immunoglobulin heavy-and-light chain",
+"syn": [],
+"parent": "amyloidosis",
+"defn": "An amyloidosis that is characterized by both Ig heavy chains and LC contribute to the amyloid fibrils.",
+"draft": "면역글로불린 중쇄 및 경쇄 아밀로이드증"
+},
+{
+"id": "MONDO:0851095",
+"name": "KINSSHIP syndrome",
+"syn": [],
+"parent": "autosomal dominant disease",
+"defn": "A syndrome characterized by developmental delay, impaired intellectual development, seizures, mesomelic dysplasia, dysmorphic facial features, horseshoe or hypo",
+"draft": "KINSSHIP 증후군"
+},
+{
+"id": "MONDO:0858926",
+"name": "developmental delay, hypotrophy, and dysmorphic features without moebius syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "A syndrome that is characterized by developmental delay, hypotrophy, and dysmorphic features and that has material basis in homozygous ultra-rare REV3L variant ",
+"draft": "뫼비우스 증후군을 동반하지 않는 발달지연, 저성장 및 이형 소견"
+},
+{
+"id": "MONDO:0859005",
+"name": "preaxial digit brachydactyly-webbed fingers",
+"syn": [],
+"parent": "dysostosis",
+"defn": "",
+"draft": "전축성 단지증-물갈퀴손가락"
+},
+{
+"id": "MONDO:0859136",
+"name": "Alzahrani-Kuwahara syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "알자흐라니-쿠와하라 증후군"
+},
+{
+"id": "MONDO:0859142",
+"name": "Hiatt-Neu-Cooper neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "히아트-뉴-쿠퍼 신경발달 증후군"
+},
+{
+"id": "MONDO:0859143",
+"name": "Radio-Tartaglia syndrome",
+"syn": [
+"SPEN-related neurodevelopmental disorder"
+],
+"parent": "hereditary disease",
+"defn": "A syndrome that is caused by a variation in the SPEN gene and is characterized by developmental delay/intellectual disability, autism spectrum disorder, anxiety",
+"draft": "라디오-타르탈리아 증후군"
+},
+{
+"id": "MONDO:0859144",
+"name": "Buratti-Harel syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "부라티-하렐 증후군"
+},
+{
+"id": "MONDO:0859147",
+"name": "Marbach-Rustad progeroid syndrome",
+"syn": [
+"LEMD2-associated nuclear envelopathy with early progeroid appearance",
+"Wormian bones-micrognathia-abnormal dentition-progeroid syndrome"
+],
+"parent": "progeroid syndrome",
+"defn": "",
+"draft": "마르바흐-루스타드 조로 증후군"
+},
+{
+"id": "MONDO:0859156",
+"name": "dysostosis multiplex, Ain-Naz type",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "다발성 이골증, 아인-나즈형"
+},
+{
+"id": "MONDO:0859163",
+"name": "Faundes-Banka syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "파운데스-반카 증후군"
+},
+{
+"id": "MONDO:0859164",
+"name": "osteootohepatoenteric syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "골-귀-간-장 증후군"
+},
+{
+"id": "MONDO:0859169",
+"name": "White-Kernohan syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "화이트-커노한 증후군"
+},
+{
+"id": "MONDO:0859171",
+"name": "Luo-Schoch-Yamamoto syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "루오-쇼흐-야마모토 증후군"
+},
+{
+"id": "MONDO:0859174",
+"name": "Usmani-Riazuddin syndrome, autosomal dominant",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "우스마니-리아주딘 증후군, 상염색체 우성"
+},
+{
+"id": "MONDO:0859177",
+"name": "VISS syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "VISS 증후군"
+},
+{
+"id": "MONDO:0859181",
+"name": "DEGCAGS syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "DEGCAGS 증후군"
+},
+{
+"id": "MONDO:0859182",
+"name": "Short stature, Dauber-Argente type",
+"syn": [],
+"parent": "musculoskeletal system disorder",
+"defn": "",
+"draft": "저신장, 다우버-아르젠트형"
+},
+{
+"id": "MONDO:0859186",
+"name": "Chopra-Amiel-Gordon syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "초프라-아미엘-고든 증후군"
+},
+{
+"id": "MONDO:0859194",
+"name": "Boudin-Mortier syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "부댕-모르티에 증후군"
+},
+{
+"id": "MONDO:0859196",
+"name": "Usmani-Riazuddin syndrome, autosomal recessive",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "우스마니-리아주딘 증후군, 상염색체 열성"
+},
+{
+"id": "MONDO:0859203",
+"name": "rhizomelic dysplasia, Ain-Naz type",
+"syn": [],
+"parent": "skeletal dysplasia",
+"defn": "",
+"draft": "근위지단축 이형성증, 아인-나즈형"
+},
+{
+"id": "MONDO:0859208",
+"name": "Hengel-Maroofian-Schols syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "헹겔-마루피안-숄스 증후군"
+},
+{
+"id": "MONDO:0859209",
+"name": "Zaki syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "자키 증후군"
+},
+{
+"id": "MONDO:0859214",
+"name": "Marbach-Schaaf neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "마르바흐-샤프 신경발달 증후군"
+},
+{
+"id": "MONDO:0859217",
+"name": "Brunet-Wagner neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "브뤼네-바그너 신경발달 증후군"
+},
+{
+"id": "MONDO:0859219",
+"name": "Rauch-Steindl syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "라우흐-슈타인들 증후군"
+},
+{
+"id": "MONDO:0859220",
+"name": "Ferguson-Bonni neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "퍼거슨-보니 신경발달 증후군"
+},
+{
+"id": "MONDO:0859221",
+"name": "Yoon-Bellen neurodevelopmental syndrome",
+"syn": [],
+"parent": "neurodevelopmental disorder",
+"defn": "",
+"draft": "윤-벨렌 신경발달 증후군"
+},
+{
+"id": "MONDO:0859226",
+"name": "craniotubular dysplasia, Ikegawa type",
+"syn": [],
+"parent": "skeletal dysplasia",
+"defn": "",
+"draft": "두개관상골 이형성증, 이케가와형"
+},
+{
+"id": "MONDO:0859230",
+"name": "Kury-Isidor syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "쿠리-이시도르 증후군"
+},
+{
+"id": "MONDO:0859239",
+"name": "Chilton-Okur-Chung neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "칠턴-오쿠르-청 신경발달 증후군"
+},
+{
+"id": "MONDO:0859247",
+"name": "neurocardiofaciodigital syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "신경심장안면손가락 증후군"
+},
+{
+"id": "MONDO:0859249",
+"name": "parenti-mignot neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "파렌티-미뇨 신경발달 증후군"
+},
+{
+"id": "MONDO:0859251",
+"name": "Dentici-Novelli neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "덴티치-노벨리 신경발달 증후군"
+},
+{
+"id": "MONDO:0859254",
+"name": "hepatorenocardiac degenerative fibrosis",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "간-콩팥-심장 퇴행성 섬유증"
+},
+{
+"id": "MONDO:0859260",
+"name": "Dworschak-Punetha neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "드보르작-푸네타 신경발달 증후군"
+},
+{
+"id": "MONDO:0859298",
+"name": "neurodevelopmental disorder with facial dysmorphism, absent language, and pseudo-pelger-huet anomaly",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "얼굴 이형증, 언어 소실, 가성 펠거-휘에트 이상을 동반한 신경발달장애"
+},
+{
+"id": "MONDO:0859331",
+"name": "Rabin-Pappas syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "라빈-파파스 증후군"
+},
+{
+"id": "MONDO:0859336",
+"name": "muscular dystrophy, congenital, with or without seizures",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "선천근육퇴행위축, 경련 동반 또는 비동반"
+},
+{
+"id": "MONDO:0859346",
+"name": "mosaic variegated aneuploidy syndrome 7 with inflammation and tumor predisposition",
+"syn": [],
+"parent": "mosaic variegated aneuploidy syndrome",
+"defn": "",
+"draft": "염증 및 종양 소인을 동반한 모자이크 다양 이수성 증후군 7형"
+},
+{
+"id": "MONDO:0859351",
+"name": "obesity and hypopigmentation",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "비만 및 저색소증"
+},
+{
+"id": "MONDO:0859355",
+"name": "inflammatory poikiloderma with hair abnormalities and acral keratoses",
+"syn": [],
+"parent": "hereditary poikiloderma",
+"defn": "",
+"draft": "모발 이상 및 말단 각화증을 동반한 염증성 피부위축색소침착증"
+},
+{
+"id": "MONDO:0859393",
+"name": "Atelis syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "아텔리스 증후군"
+},
+{
+"id": "MONDO:0859530",
+"name": "myopathy, sarcoplasmic body",
+"syn": [],
+"parent": "myopathy",
+"defn": "",
+"draft": "근형질체 근병증"
+},
+{
+"id": "MONDO:0859573",
+"name": "bent bone dysplasia syndrome 2",
+"syn": [],
+"parent": "familial bent bone dysplasia syndrome",
+"defn": "",
+"draft": "굽은뼈 이형성 증후군 2형"
+},
+{
+"id": "MONDO:0859575",
+"name": "Atelis syndrome 1",
+"syn": [],
+"parent": "mosaic variegated aneuploidy syndrome",
+"defn": "",
+"draft": "아텔리스 증후군 1형"
+},
+{
+"id": "MONDO:0859576",
+"name": "Atelis syndrome 2",
+"syn": [],
+"parent": "mosaic variegated aneuploidy syndrome",
+"defn": "",
+"draft": "아텔리스 증후군 2형"
+},
+{
+"id": "MONDO:0956985",
+"name": "lipofibromatosis-like neural tumor",
+"syn": [],
+"parent": "connective tissue neoplasm",
+"defn": "A connective tissue cancer that has material basis in LMNA-NTRK1 gene fusion.",
+"draft": "지방섬유종증 유사 신경 종양"
+},
+{
+"id": "MONDO:0957210",
+"name": "neurooculorenal syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "신경안신장 증후군"
+},
+{
+"id": "MONDO:0957229",
+"name": "hatipoglu immunodeficiency syndrome",
+"syn": [],
+"parent": "immunodeficiency disease",
+"defn": "",
+"draft": "하티폴루 면역결핍 증후군"
+},
+{
+"id": "MONDO:0957260",
+"name": "combined low LDL and fibrinogen",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "저LDL 및 저피브리노겐 복합"
+},
+{
+"id": "MONDO:0957268",
+"name": "hypersulfaturia",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "고황산뇨증"
+},
+{
+"id": "MONDO:0957307",
+"name": "woolly hair-skin fragility syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "양모 피부취약 증후군"
+},
+{
+"id": "MONDO:0957400",
+"name": "cataracts, hearing impairment, nephrotic syndrome, and enterocolitis",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "백내장, 청력 손상, 신증후군 및 장대장염"
+},
+{
+"id": "MONDO:0957451",
+"name": "non-terminal myelocystocele",
+"syn": [],
+"parent": "myelocystocele",
+"defn": "A rare closed spinal dysraphism characterized by myelocystocele located above the conus region. Also considered as a form of saccular limited dorsal myeloschisi",
+"draft": "비말단성 척수낭류"
+},
+{
+"id": "MONDO:0957454",
+"name": "hemi-myelomeningocele",
+"syn": [],
+"parent": "myelomeningocele",
+"defn": "A very rare form of composite dysraphism characterized by the presence of a split cord malformation and a myelomeningocele on one of the two hemicords. Hemicord",
+"draft": "반측 척수수막류"
+},
+{
+"id": "MONDO:0957458",
+"name": "adermatopathic dermatomyositis",
+"syn": [],
+"parent": "dermatomyositis",
+"defn": "",
+"draft": "무피부병변 피부근염"
+},
+{
+"id": "MONDO:0957495",
+"name": "hemolytic uremic syndrome, atypical, 8, with rhizomelic short stature",
+"syn": [],
+"parent": "hereditary hemolytic uremic syndrome",
+"defn": "",
+"draft": "비정형 용혈요독 증후군 8, 근위지단축 저신장 동반"
+},
+{
+"id": "MONDO:0957497",
+"name": "disabling pansclerotic morphea of childhood",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "소아기 장애성 범경화성 국소경피증"
+},
+{
+"id": "MONDO:0957543",
+"name": "auriculocondylar syndrome 4",
+"syn": [],
+"parent": "auriculocondylar syndrome",
+"defn": "",
+"draft": "이개과두 증후군 4"
+},
+{
+"id": "MONDO:0957544",
+"name": "auriculocondylar syndrome 2B",
+"syn": [],
+"parent": "auriculocondylar syndrome",
+"defn": "",
+"draft": "이개과두 증후군 2B"
+},
+{
+"id": "MONDO:0957595",
+"name": "Ziegler-Huang syndrome",
+"syn": [],
+"parent": "bone marrow failure syndrome",
+"defn": "",
+"draft": "지글러-황 증후군"
+},
+{
+"id": "MONDO:0957832",
+"name": "craniometadiaphyseal osteosclerosis with hip dysplasia",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "고관절 이형성을 동반한 두개골-골간단-골간 골경화증"
+},
+{
+"id": "MONDO:0957919",
+"name": "Lui-Jee-Baron syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "루이-지-배런 증후군"
+},
+{
+"id": "MONDO:0957953",
+"name": "Garg-Mishra progeroid syndrome",
+"syn": [],
+"parent": "progeroid syndrome",
+"defn": "",
+"draft": "가르그-미슈라 조로 증후군"
+},
+{
+"id": "MONDO:0957960",
+"name": "Long-Olsen-Distelmaier syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "롱-올슨-디스텔마이어 증후군"
+},
+{
+"id": "MONDO:0957990",
+"name": "Tan-Almurshedi syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "탄-알무르셰디 증후군"
+},
+{
+"id": "MONDO:0958001",
+"name": "Alfadhel syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "알파델 증후군"
+},
+{
+"id": "MONDO:0958005",
+"name": "Hoxha-Aliu syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "호샤-알리우 증후군"
+},
+{
+"id": "MONDO:0958006",
+"name": "spondyloepimetaphyseal dysplasia, Guo-Campeau type",
+"syn": [],
+"parent": "spondyloepimetaphyseal dysplasia",
+"defn": "",
+"draft": "척추골단골간단 이형성증, 궈-캠포형"
+},
+{
+"id": "MONDO:0958075",
+"name": "intramedullary non-dysraphic spinal cord lipoma",
+"syn": [],
+"parent": "spinal cord lipoma",
+"defn": "A very rare non-dysraphic spinal cord lipoma characterized by being located within the spinal cord. There is no defect in the overlying dura.",
+"draft": "수내 비이분척추성 척수 지방종"
+},
+{
+"id": "MONDO:0958076",
+"name": "myeloschisis",
+"syn": [],
+"parent": "spina bifida aperta",
+"defn": "A rare form of spina bifida/open neural tube defect (NTD) chacterized by absence of a cystic component, dysplastic meninges and neural placode exposed through a",
+"draft": "척수피열"
+},
+{
+"id": "MONDO:0958093",
+"name": "non-syndromic supernumerary kidneys",
+"syn": [],
+"parent": "kidney disorder",
+"defn": "",
+"draft": "비증후군성 잉여 신장"
+},
+{
+"id": "MONDO:0958097",
+"name": "primary superior vena cava aneurysm",
+"syn": [],
+"parent": "congenital anomaly of superior vena cava",
+"defn": "",
+"draft": "원발성 상대정맥 동맥류"
+},
+{
+"id": "MONDO:0958098",
+"name": "primary inferior vena cava aneurysm",
+"syn": [],
+"parent": "congenital anomaly of the inferior vena cava",
+"defn": "",
+"draft": "원발성 하대정맥 동맥류"
+},
+{
+"id": "MONDO:0958130",
+"name": "Greig cephalopolysyndactyly-contiguous gene syndrome",
+"syn": [],
+"parent": "Greig cephalopolysyndactyly syndrome",
+"defn": "",
+"draft": "그레이그 두다지증 인접유전자 증후군"
+},
+{
+"id": "MONDO:0958175",
+"name": "craniofacial microsomia 1",
+"syn": [],
+"parent": "craniofacial microsomia",
+"defn": "",
+"draft": "두개안면 소악증 1"
+},
+{
+"id": "MONDO:0958180",
+"name": "prolonged electroretinal response suppression 1",
+"syn": [],
+"parent": "bradyopsia",
+"defn": "",
+"draft": "장기 망막전위 반응 억제 1"
+},
+{
+"id": "MONDO:0958190",
+"name": "prolonged electroretinal response suppression 2",
+"syn": [],
+"parent": "bradyopsia",
+"defn": "",
+"draft": "장기 망막전위 반응 억제 2"
+},
+{
+"id": "MONDO:0958194",
+"name": "craniofacial microsomia 2",
+"syn": [],
+"parent": "craniofacial microsomia",
+"defn": "",
+"draft": "두개안면 소악증 2"
+},
+{
+"id": "MONDO:0958205",
+"name": "Yuksel-Vogel-Bauer syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "육셀-포겔-바우어 증후군"
+},
+{
+"id": "MONDO:0958259",
+"name": "dysraphism with stalk",
+"syn": [],
+"parent": "spina bifida occulta",
+"defn": "A rare group of closed spinal dysraphisms characterized by the presence of a stalk connecting the skin to the underlying spinal cord. The stalk contains variabl",
+"draft": "줄기를 동반한 이분척추 이형성"
+},
+{
+"id": "MONDO:0958260",
+"name": "dysraphic spinal cord lipoma",
+"syn": [],
+"parent": "spina bifida occulta",
+"defn": "A rare group of spinal cord lipoma characterized by the presence of extramedullary lipomatous mass located at any point along the spinal cord with or without a ",
+"draft": "이분척추성 척수 지방종"
+},
+{
+"id": "MONDO:0958267",
+"name": "non-syndromic bridging bronchus",
+"syn": [],
+"parent": "bronchial disorder",
+"defn": "",
+"draft": "비증후군성 교상 기관지"
+},
+{
+"id": "MONDO:0958269",
+"name": "isolated left bronchial isomerism",
+"syn": [],
+"parent": "respiratory system disorder",
+"defn": "",
+"draft": "단독 좌측 기관지 동형성"
+},
+{
+"id": "MONDO:0958275",
+"name": "segmental spinal dysgenesis",
+"syn": [],
+"parent": "congenital nervous system disorder",
+"defn": "",
+"draft": "분절성 척추 이형성증"
+},
+{
+"id": "MONDO:0958329",
+"name": "Jeffries-Lakhani neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "제프리스-라크하니 신경발달 증후군"
+},
+{
+"id": "MONDO:0958345",
+"name": "limited dorsal myeloschisis",
+"syn": [],
+"parent": "dysraphism with stalk",
+"defn": "A rare dysraphic abnormality characterized by a persistent connection between the neural tissue and overlying skin. The stalk-like connection consists of a fibr",
+"draft": "제한적 배측 척수파열증"
+},
+{
+"id": "MONDO:0958346",
+"name": "isolated transitional filum lipoma",
+"syn": [],
+"parent": "dysraphic spinal cord lipoma",
+"defn": "A rare dysraphic abnormality characterized by the infiltration of fatty tissue localized in the filum terminale, with abnormal conus shape. The spinal cord is t",
+"draft": "단독 이행부 종말사 지방종"
+},
+{
+"id": "MONDO:0958347",
+"name": "isolated filum lipoma",
+"syn": [],
+"parent": "dysraphic spinal cord lipoma",
+"defn": "A rare dysraphic abnormality characterized by the infiltration of fatty tissue localized in the filum terminale, thickens and loses its flexibility, with normal",
+"draft": "단독 종말사 지방종"
+},
+{
+"id": "MONDO:0958348",
+"name": "retained medullary cord",
+"syn": [],
+"parent": "dysraphism with stalk",
+"defn": "A rare closed dysraphism with terminal stalk characterized by persistent rudimentary spinal cord below conus. It contains non-functional neural tissue and is ty",
+"draft": "잔존 수질삭"
+},
+{
+"id": "MONDO:0958351",
+"name": "hemi-myeloschisis",
+"syn": [],
+"parent": "myeloschisis",
+"defn": "A very rare form of composite dysraphism characterized by the presence of a split cord malformation and a myeloschisis on one of the two hemicords. Hemicords ca",
+"draft": "반측 척수파열증"
+},
+{
+"id": "MONDO:0958352",
+"name": "true myeloschisis",
+"syn": [],
+"parent": "myeloschisis",
+"defn": "A rare open neural tube defect characterized by no other malformation than myeloschisis (spina bifida with a neural placode exposed at or below the skin plane a",
+"draft": "진성 척수파열증"
+},
+{
+"id": "MONDO:0968959",
+"name": "isolated arhinencephaly",
+"syn": [],
+"parent": "central nervous system malformation",
+"defn": "Isolated arhinencephaly is a rare non-syndromic central nervous system malformation defined by the agenesis of the olfactory bulbs and tracts and characterized ",
+"draft": "단독 후뇌 무형성증"
+},
+{
+"id": "MONDO:0968986",
+"name": "chaotic conus spinal cord lipoma",
+"syn": [],
+"parent": "conus spinal cord lipoma",
+"defn": "A rare dysraphic spinal cord lipoma characterized by the lipomatous mass extending ventrally to the dorsal root entry zone, indicating a more severe malformatio",
+"draft": "혼돈형 원뿔부 척수 지방종"
+},
+{
+"id": "MONDO:0968987",
+"name": "extramedullary conus spinal cord lipoma",
+"syn": [],
+"parent": "conus spinal cord lipoma",
+"defn": "A rare closed lipomatous, dysraphic malformation of the lower spinal cord characterized by extramedullary lipomatous mass attached to the conus region. The conu",
+"draft": "수질외 원뿔부 척수 지방종"
+},
+{
+"id": "MONDO:0968988",
+"name": "saccular spinal dysraphism with a stalk to the dome",
+"syn": [],
+"parent": "spina bifida cystica",
+"defn": "A rare spinal dysraphism characterized by a meningocele, containing a stalk, that is attached to the inner surface of the meningocele. The stalk can be posterio",
+"draft": "돔까지 줄기를 가진 낭성 척추 피열증"
+},
+{
+"id": "MONDO:0968989",
+"name": "non-saccular limited dorsal myeloschisis",
+"syn": [],
+"parent": "limited dorsal myeloschisis",
+"defn": "A rare form of limited dorsal myeloschisis (LDM), characterized by a non saccular cutaneous stigmata (midline skin abnormality classically dimple, pit or someti",
+"draft": "비낭성 제한적 배측 척수파열증"
+},
+{
+"id": "MONDO:0970951",
+"name": "El Hayek-Chahrour neurodevelopmental disorder",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "엘 하예크-샤흐루르 신경발달장애"
+},
+{
+"id": "MONDO:0970957",
+"name": "terminal extramedullary conus spinal cord lipoma",
+"syn": [],
+"parent": "extramedullary conus spinal cord lipoma",
+"defn": "A rare form of extramedullary conus region spinal cord lipoma characterized by its location, extending from the poorly delineated tip of the conus.",
+"draft": "말단 수질외 원뿔부 척수 지방종"
+},
+{
+"id": "MONDO:0970958",
+"name": "transitional extramedullary conus spinal cord lipoma",
+"syn": [],
+"parent": "extramedullary conus spinal cord lipoma",
+"defn": "A rare form of extramedullary conus region spinal cord lipoma characterized by a location at the posterior surface of the conus and its tip. i.e-\\\"transitional\\",
+"draft": "이행부 수질외 원뿔부 척수 지방종"
+},
+{
+"id": "MONDO:0970959",
+"name": "posterior extramedullary conus spinal cord lipoma",
+"syn": [],
+"parent": "extramedullary conus spinal cord lipoma",
+"defn": "A rare form of conus region spinal cord lipoma characterized by its location where the interface between the lipoma and the spinal cord is strictcly above the l",
+"draft": "후방 수질외 원뿔부 척수 지방종"
+},
+{
+"id": "MONDO:0970960",
+"name": "lipomatous non-saccular limited dorsal myeloschisis",
+"syn": [],
+"parent": "non-saccular limited dorsal myeloschisis",
+"defn": "A rare non-saccular limited dorsal myeloschisis histologically characterized by skin tissue with a jagged depression of squamous epithelium continued to subcuta",
+"draft": "지방종성 비낭성 제한적 배측 척수파열증"
+},
+{
+"id": "MONDO:0970961",
+"name": "fibroneural non-saccular limited dorsal myeloschisis",
+"syn": [],
+"parent": "non-saccular limited dorsal myeloschisis",
+"defn": "A rare non-saccular limited dorsal myeloschisis, in which the stalk histology is characterized by skin tissue with dermo-epidermal epithelium in continuity with",
+"draft": "섬유신경성 비낭성 제한적 배측 척수파열증"
+},
+{
+"id": "MONDO:0970962",
+"name": "terminal myelocystocele",
+"syn": [],
+"parent": "myelocystocele",
+"defn": "A rare closed spinal dysraphism characterized by a myelocystocele at the termination of the spinal cord. It may be an isolated anomaly or be associated with oth",
+"draft": "말단 척수수막류"
+},
+{
+"id": "MONDO:0970963",
+"name": "saccular limited dorsal myeloschisis",
+"syn": [],
+"parent": "saccular spinal dysraphism with a stalk to the dome",
+"defn": "A rare form of limited dorsal myeloschisis (LDM), characterized by the stalk attached to the apex of a fully epithelialized meningocele. Chiari II malformation ",
+"draft": "낭성 제한적 배측 척수파열증"
+},
+{
+"id": "MONDO:0970964",
+"name": "myelic limited dorsal malformation",
+"syn": [],
+"parent": "saccular spinal dysraphism with a stalk to the dome",
+"defn": "A rare intermediate form of open dysraphism between myelomeningocele and saccular limited dorsal myeloschisis without fulfilling the characteristics of one of t",
+"draft": "수질성 제한적 배측 기형"
+},
+{
+"id": "MONDO:0970998",
+"name": "auroneurodental syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "아우로신경치아 증후군"
+},
+{
+"id": "MONDO:0971007",
+"name": "neuroocular syndrome 1",
+"syn": [
+"multiple congenital anomalies-neurodevelopmental delay-ocular abnormalities syndrome"
+],
+"parent": "neuroocular syndrome",
+"defn": "A neuroocular syndrome caused by a mutation in PRR12 gene. It encompasses a broad spectrum of overlapping anomalies, with developmental delay or impaired intell",
+"draft": "신경안구 증후군 1형"
+},
+{
+"id": "MONDO:0971034",
+"name": "thyroid gland cribriform morular carcinoma",
+"syn": [],
+"parent": "thyroid gland carcinoma",
+"defn": "A thyroid gland carcinoma that is characterized by the presence of cribriform, trabecular, follicular, papillary, and solid growth patterns and squamoid morulae",
+"draft": "갑상선 사상-유상피 암종"
+},
+{
+"id": "MONDO:0971077",
+"name": "episodic memory defect leukoencephalopathy",
+"syn": [],
+"parent": "leukodystrophy",
+"defn": "",
+"draft": "삽화기억 결손 백질뇌병증"
+},
+{
+"id": "MONDO:0971109",
+"name": "isolated congenital femoral bifurcation",
+"syn": [],
+"parent": "disorder of development or morphogenesis",
+"defn": "",
+"draft": "단독 선천성 대퇴골 분지"
+},
+{
+"id": "MONDO:0971123",
+"name": "isolated retinal racemose hemangioma",
+"syn": [],
+"parent": "retinal hemangioblastoma",
+"defn": "",
+"draft": "단독 망막 총상 혈관종"
+},
+{
+"id": "MONDO:0971129",
+"name": "stellate multiform amelanotic choroidopathy",
+"syn": [],
+"parent": "eye disorder",
+"defn": "",
+"draft": "성상 다형 무색소성 맥락막병증"
+},
+{
+"id": "MONDO:0971137",
+"name": "severe congenital myelofibrosis-pancytopenia-intellectual disability-neurologic and ophthalmic abnormalities syndrome",
+"syn": [],
+"parent": "multiple congenital anomalies/dysmorphic syndrome-intellectual disability",
+"defn": "",
+"draft": "중증 선천성 골수섬유증-범혈구감소증-지적장애-신경 및 안과 이상 증후군"
+},
+{
+"id": "MONDO:0971138",
+"name": "progressive hypotonia-intellectual disability-facial dysmorphism syndrome due to FYVE-defective RBSN",
+"syn": [],
+"parent": "multiple congenital anomalies/dysmorphic syndrome-intellectual disability",
+"defn": "",
+"draft": "FYVE 결함 RBSN에 의한 진행성 근긴장저하-지적장애-안면 이형 증후군"
+},
+{
+"id": "MONDO:0971154",
+"name": "hepatic cutaneous porphyria",
+"syn": [],
+"parent": "hepatic porphyria",
+"defn": "",
+"draft": "간성 피부 포르피린증"
+},
+{
+"id": "MONDO:0975705",
+"name": "otofacial neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "이안면 신경발달 증후군"
+},
+{
+"id": "MONDO:0975848",
+"name": "Morimoto-Ryu-Malicdan neuromuscular syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "모리모토-류-말리캔 신경근육 증후군"
+},
+{
+"id": "MONDO:0975877",
+"name": "neurodevelopmental disorder with variable familial hypercholanemia",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "가변적 가족성 고담즙산혈증을 동반한 신경발달장애"
+},
+{
+"id": "MONDO:0975953",
+"name": "Pan-Chung-Bellen syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "판-청-벨렌 증후군"
+},
+{
+"id": "MONDO:0976127",
+"name": "Muggenthaler-Chowdhury-Chioza syndrome",
+"syn": [
+"cleft lip and palate-craniofacial dysmorphism-congenital heart defect-deafness syndrome",
+"cleft lip and palate-craniofacial dysmorphism-congenital heart defect-hearing loss syndrome",
+"hyaluronidase 2 deficiency"
+],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "뮈겐탈러-초두리-치오자 증후군"
+},
+{
+"id": "MONDO:0976133",
+"name": "myopathy, myofibrillar, 13, with rimmed vacuoles",
+"syn": [
+"autosomal dominant distal axonal motor neuropathy-myofibrillar myopathy syndrome",
+"HSPB8-associated autosomal dominant rimmed vacuolar myopathy",
+"HSPB8-related autosomal dominant distal axonal motor neuropathy-myofibrillar myopathy syndrome"
+],
+"parent": "congenital nervous system disorder",
+"defn": "A rare genetic neuromuscular disease caused by a mutation in HSPB8 gene, characterized by length-dependent axonal motor neuropathy predominantly affecting the l",
+"draft": "테두리 공포를 동반한 근원섬유성 근병증 13"
+},
+{
+"id": "MONDO:0976136",
+"name": "ocular pterygium-digital keloid dysplasia syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "눈 날개살-손가락 켈로이드 이형성 증후군"
+},
+{
+"id": "MONDO:0976286",
+"name": "Tayoun-Maawali syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "타유운-마알리 증후군"
+},
+{
+"id": "MONDO:0976294",
+"name": "ragopathy",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "A syndrome caused by a variation in heterodimeric Ras-related small GTP-binding proteins (Rag-GTPases), which bind mTORC1 in an amino acid-dependent manner and ",
+"draft": ""
+},
+{
+"id": "MONDO:0978292",
+"name": "retinal dystrophy, X-linked, Gardner-Hardcastle type",
+"syn": [],
+"parent": "inherited retinal dystrophy",
+"defn": "",
+"draft": "망막이영양증, X연관, 가드너-하드캐슬형"
+},
+{
+"id": "MONDO:0978293",
+"name": "Houge-Janssens syndrome 4",
+"syn": [],
+"parent": "Houge-Janssens syndrome",
+"defn": "",
+"draft": "허게-얀센스 증후군 4"
+},
+{
+"id": "MONDO:0978295",
+"name": "craniofaciocardiohepatic syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "두개안면심장간 증후군"
+},
+{
+"id": "MONDO:0978296",
+"name": "FICUS syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "FICUS 증후군"
+},
+{
+"id": "MONDO:0978303",
+"name": "Li-Takada-Miyake syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "리-다카다-미야케 증후군"
+},
+{
+"id": "MONDO:0979227",
+"name": "Guillouet-Gordon syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "기유에-고든 증후군"
+},
+{
+"id": "MONDO:0979234",
+"name": "ICHAD syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "ICHAD 증후군"
+},
+{
+"id": "MONDO:0979246",
+"name": "Nil-Deshwar neurodevelopmental syndrome",
+"syn": [],
+"parent": "Mendelian neurodevelopmental disorder",
+"defn": "",
+"draft": "닐-데슈와르 신경발달 증후군"
+},
+{
+"id": "MONDO:0979281",
+"name": "giant omphalocele",
+"syn": [],
+"parent": "omphalocele",
+"defn": "",
+"draft": "거대 배꼽탈장"
+},
+{
+"id": "MONDO:0979282",
+"name": "small omphalocele",
+"syn": [],
+"parent": "omphalocele",
+"defn": "",
+"draft": "소형 배꼽탈장"
+},
+{
+"id": "MONDO:0979307",
+"name": "emergomycosis",
+"syn": [],
+"parent": "fungal infectious disease",
+"defn": "",
+"draft": "에머고마이코시스"
+},
+{
+"id": "MONDO:0979323",
+"name": "carotid web",
+"syn": [],
+"parent": "arterial disorder",
+"defn": "",
+"draft": "경동맥 웹"
+},
+{
+"id": "MONDO:0979360",
+"name": "ADNP-related blepharophimosis-intellectual disability syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "ADNP 관련 안검열소축소-지적장애 증후군"
+},
+{
+"id": "MONDO:0980737",
+"name": "arterionephrosclerosis",
+"syn": [],
+"parent": "chronic kidney disease",
+"defn": "A chronic kidney disease that is characterized by arteriosclerosis, global glomerulosclerosis, and cortical fibrosis with tubular atrophy and loss.",
+"draft": "세동맥 신경화증"
+},
+{
+"id": "MONDO:0980973",
+"name": "STAD syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "",
+"draft": "STAD 증후군"
+},
+{
+"id": "MONDO:0981004",
+"name": "sickle cell S-Lepore disease",
+"syn": [],
+"parent": "sickle cell disease due to hemoglobin S and a non-S/non-C hemoglobin variant",
+"defn": "",
+"draft": "겸상적혈구 S-레포르병"
+},
+{
+"id": "MONDO:1010029",
+"name": "aleutian mink disease, human",
+"syn": [],
+"parent": "Parvoviridae infectious disease",
+"defn": "A human disease caused by infection with Aleutian mink disease parvovirus.",
+"draft": "인간 알류샨 밍크병"
+},
+{
+"id": "MONDO:1010200",
+"name": "oocyte/zygote/embryo maturation arrest 16",
+"syn": [
+"PADI6 preimplantation embryonic lethality",
+"PADI6-related oocyte/zygote/embryo maturation arrest 16 and maternal-effect disorder",
+"preimplantation embryonic lethality type 2"
+],
+"parent": "inherited oocyte maturation defect",
+"defn": "Any inherited oocyte maturation defect marked by early embryonic arrest and female infertility due to a varition in the PADI6 gene.",
+"draft": "난모세포/접합자/배아 성숙 정지 16"
+},
+{
+"id": "MONDO:1040022",
+"name": "linkeropathy",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "Group of rare heritable connective tissue disorders, characterized by a variable degree of short stature, skeletal dysplasia, joint laxity, cutaneous anomalies,",
+"draft": "링커병증"
+},
+{
+"id": "MONDO:1040029",
+"name": "Sharpin-related autoinflammatory syndrome",
+"syn": [
+"sharpenia"
+],
+"parent": "autoinflammatory syndrome",
+"defn": "An autoinflammatory disease in which the cause of the disease is a variation in the Sharpin gene.",
+"draft": "샤르핀 관련 자가염증 증후군"
+},
+{
+"id": "MONDO:1040031",
+"name": "dyneinopathy",
+"syn": [],
+"parent": "syndromic intellectual disability",
+"defn": "A spectrum of diseases related to monoallelic variants in DYNC1H1 and characterized by variable neuromuscular and/or neurodevelopmental presentations. While not",
+"draft": "다이네인병증"
+},
+{
+"id": "MONDO:1040032",
+"name": "EN1-related dorsoventral syndrome",
+"syn": [
+"ENDOVE syndrome",
+"ENDOVES"
+],
+"parent": "hereditary disease",
+"defn": "A human mesomelic and rhizo-mesomelic dysplasia characterized by marked mesomelic shortening of the lower limbs, cutaneous syndactyly and nail abnormalities (pl",
+"draft": "EN1 관련 배복측 증후군"
+},
+{
+"id": "MONDO:1040054",
+"name": "DHDDS-CDG",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "Any congenital disorder of glycosylation caused by variants in the DHDDS gene.",
+"draft": ""
+},
+{
+"id": "MONDO:1060213",
+"name": "reticular pseudodrusen",
+"syn": [
+"RPD",
+"SDD",
+"subretinal drusenoid deposit"
+],
+"parent": "retinal drusen",
+"defn": "A retinal drusen characterized by subretinal deposits located internal to the retinal pigment epithelium, composed of material aggregations in the subretinal sp",
+"draft": "망상 거짓드루젠"
+},
+{
+"id": "MONDO:1060225",
+"name": "TTN-related myopathy, dominant-negative TTNsv",
+"syn": [],
+"parent": "autosomal dominant titinopathy",
+"defn": "A skeletal muscle disorder caused by heterozygous multi-exon in-frame structural variants of TTN (TTNsv) that escape nonsense-mediated decay and result in expre",
+"draft": "TTN 관련 근병증, 우성 음성 TTNsv"
+},
+{
+"id": "MONDO:1060253",
+"name": "desmoplastic myxoid tumor of the pineal region, SMARCB1-mutant",
+"syn": [
+"desmoplastic myxoid tumor, SMARCB1-mutant"
+],
+"parent": "pineal body neoplasm",
+"defn": "A pineal body neoplasm that is a SMARCB1-deficient tumor of the brain, characterized by the presence of spindled and epithelioid cells with low-grade morphology",
+"draft": "송과체부 결합조직형 점액종양, SMARCB1 변이형"
+},
+{
+"id": "MONDO:1060254",
+"name": "cribriform neuroepithelial tumor",
+"syn": [
+"CRINET"
+],
+"parent": "central nervous system cancer",
+"defn": "A very rare, nonrhabdoid, intraventricular tumor with relatively favorable prognosis. It is characterized by the presence of neuroepithelial cells forming cribr",
+"draft": "체상 신경상피종양"
+},
+{
+"id": "MONDO:1060285",
+"name": "FBN1-related geleophysic and acromelic dysplasia",
+"syn": [],
+"parent": "skeletal dysplasia",
+"defn": "Any skeletal dysplasia in which the cause of the disease is a variation in the FBN1 gene. This condition is characterized by short stature, delayed bone age, st",
+"draft": "FBN1 관련 젤레오피직 및 말단이형성증"
+},
+{
+"id": "MONDO:7770750",
+"name": "Athabaskan brainstem dysgenesis syndrome",
+"syn": [
+"ABDS",
+"ABSD",
+"Athabascan brainstem dysgenesis syndrome"
+],
+"parent": "HOXA1-related syndrome",
+"defn": "A HOXA1-related syndrome characterized by horizontal gaze palsy, sensorineural deafness, central hypoventilation, developmental delay, and intellectual disabili",
+"draft": "아타바스칸 뇌줄기 발생이상 증후군"
+}
+]

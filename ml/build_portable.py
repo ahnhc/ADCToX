@@ -157,7 +157,8 @@ def main():
     data = dict(evidence=E, rules=yaml.safe_load(open(R / "conf/label_restrictions.yaml"))["rules"],
                 registry=list(csv.DictReader(open(R / "conf/comorbidity_registry.csv"))),
                 checks=yaml.safe_load(open(R / "conf/patient_checks.yaml"))["checks"], mondo={} if FULL else mondo_terms(),
-                profiles=__import__("suggest").read_profiles(R / "data/curated/disease_profiles"), nonhuman=sorted(__import__("suggest").nonhuman_ids(OBO)))
+                profiles=__import__("suggest").read_profiles(R / "data/curated/disease_profiles"), nonhuman=sorted(__import__("suggest").nonhuman_ids(OBO)),
+                mondo_ko={t: [k, en] + list(alt) for t, (k, alt, en) in __import__("suggest").read_mondo_ko(R / "data/curated/korean/mondo_ko.jsonl").items()})
     if FULL: data["learned"] = json.load(open(R / "ml/results/learned_vulnerability.json"))["severity"]
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
     src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "gemma_runtime", "adc_version", "adc_runtime", "adc_updates")}

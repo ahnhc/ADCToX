@@ -1,0 +1,1963 @@
+[
+{
+"id": "MONDO:0005941",
+"name": "retroperitoneal cancer",
+"syn": [
+"cancer of retroperitoneal space",
+"malignant neoplasm of retroperitoneal space",
+"malignant neoplasm of retroperitoneum and peritoneum"
+],
+"parent": "cancer",
+"defn": "A primary or metastatic malignant neoplasm involving the retroperitoneum. The vast majority of cases are carcinomas, lymphomas, or sarcomas."
+},
+{
+"id": "MONDO:0005942",
+"name": "Reye syndrome",
+"syn": [
+"Reye's syndrome"
+],
+"parent": "syndromic disease",
+"defn": "An acute and potentially fatal metabolic disorder characterized by cerebral edema, fatty liver and hypoglycemia. It occurs primarily in children and has been as"
+},
+{
+"id": "MONDO:0005943",
+"name": "Rhabditida infectious disease",
+"syn": [],
+"parent": "Nematoda infectious disease",
+"defn": "Infections with nematodes of the order rhabditida."
+},
+{
+"id": "MONDO:0005944",
+"name": "Rhabdoviridae infectious disease",
+"syn": [],
+"parent": "Mononegavirales infectious disease",
+"defn": "Virus diseases caused by rhabdoviridae. Important infections include rabies; ephemeral fever; and vesicular stomatitis."
+},
+{
+"id": "MONDO:0005945",
+"name": "rhinoscleroma",
+"syn": [],
+"parent": "primary bacterial infectious disease",
+"defn": "A granulomatous disease caused by klebsiella rhinoscleromatis infection. Despite its name, this disease is not limited to the nose and nasopharynx but may affec"
+},
+{
+"id": "MONDO:0005946",
+"name": "rhinosporidiosis",
+"syn": [
+"Rhinosporidium seeberi caused disease or disorder",
+"Rhinosporidium seeberi disease or disorder",
+"Rhinosporidium seeberi infectious disease"
+],
+"parent": "parasitic Ichthyosporea infectious disease",
+"defn": "Chronic, localized granulomatous infection of mucocutaneous tissues, especially the nose, and characterized by hyperplasia and the development of polyps. It is "
+},
+{
+"id": "MONDO:0005947",
+"name": "rickettsial pneumonia",
+"syn": [
+"Rickettsiaceae caused pneumonia",
+"Rickettsiaceae pneumonia"
+],
+"parent": "Rickettsiaceae infectious disease",
+"defn": "Pneumonia caused by infection with bacteria of the family rickettsiaceae."
+},
+{
+"id": "MONDO:0005949",
+"name": "roseolovirus infectious disease",
+"syn": [
+"Roseolovirus caused disease or disorder",
+"Roseolovirus disease or disorder"
+],
+"parent": "Herpesviridae infectious disease",
+"defn": "Infection with roseolovirus, the most common in humans being exanthema subitum, a benign disease of infants and young children."
+},
+{
+"id": "MONDO:0005950",
+"name": "Salmonella gastroenteritis",
+"syn": [
+"Salmonella caused gastroenteritis"
+],
+"parent": "salmonellosis",
+"defn": "Poisoning caused by ingestion of food harboring species of salmonella. Conditions of raising, shipping, slaughtering, and marketing of domestic animals contribu"
+},
+{
+"id": "MONDO:0005952",
+"name": "scarlet fever",
+"syn": [
+"scarlatina"
+],
+"parent": "streptococcal infection",
+"defn": "A streptococcal infection, mainly occurring among children, that is characterized by a red skin rash, sore throat, and fever."
+},
+{
+"id": "MONDO:0005953",
+"name": "scirrhous adenocarcinoma",
+"syn": [
+"adenocarcinoma with productive fibrosis",
+"FIBROADENOCARCINOMA, malignant",
+"fibrocarcinoma"
+],
+"parent": "adenocarcinoma",
+"defn": "An infiltrating adenocarcinoma characterized by the presence of desmoplastic stromal reaction."
+},
+{
+"id": "MONDO:0005954",
+"name": "screw worm infectious disease",
+"syn": [
+"Cochliomyia hominivorax caused disease or disorder",
+"Cochliomyia hominivorax disease or disorder",
+"Cochliomyia hominivorax infectious disease"
+],
+"parent": "myiasis",
+"defn": "Infection with larvae of the blow fly Cochliomyia hominivorax (Callitroga americanum), a common cause of disease in livestock in the southern and southwestern U"
+},
+{
+"id": "MONDO:0005956",
+"name": "septicemic plague",
+"syn": [],
+"parent": "hematologic disorder",
+"defn": "A plague in which the bacteria have entered the bloodstream."
+},
+{
+"id": "MONDO:0005957",
+"name": "setariasis",
+"syn": [
+"Setaria <nematode> caused disease or disorder",
+"Setaria <nematode> disease or disorder",
+"Setaria <nematode> infectious disease"
+],
+"parent": "Rhabditida infectious disease",
+"defn": "Infection with nematodes of the genus Setaria. This condition is usually seen in cattle and equines and is of little pathogenic significance, although migration"
+},
+{
+"id": "MONDO:0005959",
+"name": "sick building syndrome",
+"syn": [],
+"parent": "hypersensitivity pneumonitis",
+"defn": "A group of symptoms that are two- to three-fold more common in those who work in large, energy-efficient buildings, associated with an increased frequency of he"
+},
+{
+"id": "MONDO:0005960",
+"name": "silicosis",
+"syn": [
+"pneumoconiosis due to silica"
+],
+"parent": "pneumoconiosis",
+"defn": "Silicosis is a respiratory disease caused by breathing in (inhaling) silica dust. There are three types of silicosis: Simple chronic silicosis, the most common "
+},
+{
+"id": "MONDO:0005961",
+"name": "sinusitis",
+"syn": [],
+"parent": "paranasal sinus disorder",
+"defn": "An acute or chronic inflammatory process affecting the mucous membranes of any sinus cavity."
+},
+{
+"id": "MONDO:0005962",
+"name": "skeletal tuberculosis",
+"syn": [],
+"parent": "extrapulmonary tuberculosis",
+"defn": "Tuberculosis of the bones or joints."
+},
+{
+"id": "MONDO:0005963",
+"name": "sparganosis",
+"syn": [
+"infection by sparganum",
+"sparganosis [larval diphyllobothriasis]",
+"Spirometra caused disease or disorder"
+],
+"parent": "Cestode infectious disease",
+"defn": "A condition resulting from infection with the second stage larvae of the parasite Spirometra."
+},
+{
+"id": "MONDO:0005964",
+"name": "sphenoid sinusitis",
+"syn": [
+"sinusitis of sphenoid bone",
+"sphenoid bone sinusitis",
+"sphenoidal sinusitis"
+],
+"parent": "sinusitis",
+"defn": "An acute or chronic inflammatory process affecting the mucous membrane of the sphenoid sinus."
+},
+{
+"id": "MONDO:0005965",
+"name": "spinal stenosis",
+"syn": [],
+"parent": "vertebral column disorder",
+"defn": "Narrowing of the spinal canal."
+},
+{
+"id": "MONDO:0005966",
+"name": "spleen cancer",
+"syn": [
+"cancer of spleen",
+"cancer of the spleen",
+"malignant neoplasm of spleen"
+],
+"parent": "lymphatic system cancer",
+"defn": "A malignant neoplasm involving the spleen"
+},
+{
+"id": "MONDO:0005967",
+"name": "splenic tuberculosis",
+"syn": [],
+"parent": "abdominal tuberculosis",
+"defn": "Infection of the spleen with species of mycobacterium."
+},
+{
+"id": "MONDO:0005968",
+"name": "sporotrichosis",
+"syn": [],
+"parent": "fungal infectious disease",
+"defn": "The commonest and least serious of the deep mycoses, characterized by nodular lesions of the cutaneous and subcutaneous tissues. It is caused by inhalation of c"
+},
+{
+"id": "MONDO:0005969",
+"name": "st. Louis encephalitis",
+"syn": [
+"Neuroinvasive St. Louis encephalitis virus infection",
+"Saint Louis encephalitis",
+"St. Louis encephalitis virus caused infectious encephalitis"
+],
+"parent": "Flaviviridae infectious disease",
+"defn": "A viral encephalitis caused by the St. Louis encephalitis virus (encephalitis virus, st. louis), a flavivirus. It is transmitted to humans and other vertebrates"
+},
+{
+"id": "MONDO:0005970",
+"name": "staphylococcal pneumonia",
+"syn": [
+"Staphylococcus caused pneumonia",
+"Staphylococcus pneumonia"
+],
+"parent": "bacterial pneumonia",
+"defn": "Pneumonia caused by infections with bacteria of the genus staphylococcus, usually with staphylococcus aureus."
+},
+{
+"id": "MONDO:0005971",
+"name": "staphyloenterotoxemia",
+"syn": [
+"staphylococcal food poisoning",
+"staphylococcal toxemia due to food"
+],
+"parent": "primary bacterial infectious disease",
+"defn": "Food poisoning that is caused by Staphylococcal infection."
+},
+{
+"id": "MONDO:0005972",
+"name": "streptococcal pneumonia",
+"syn": [
+"pneumococcal pneumonia",
+"pneumonia due to streptococcus",
+"Streptococcus pneumoniae caused pneumonia"
+],
+"parent": "bacterial pneumonia",
+"defn": "A febrile disease caused by streptococcus pneumoniae."
+},
+{
+"id": "MONDO:0005973",
+"name": "Strongylida infectious disease",
+"syn": [],
+"parent": "parasitic infectious disease",
+"defn": "Infections with nematodes of the order strongylida."
+},
+{
+"id": "MONDO:0005974",
+"name": "strongyloidiasis",
+"syn": [
+"Anguilluliasis",
+"Anguillulosis"
+],
+"parent": "Rhabditida infectious disease",
+"defn": "An infection that is caused by nematodes of the genus Strongyloides, most commonly Strongyloides stercoralis, which is a soil-transmitted helminth, and which is"
+},
+{
+"id": "MONDO:0005975",
+"name": "suppurative otitis media",
+"syn": [],
+"parent": "otitis media",
+"defn": "Inflammation of the middle ear with purulent discharge."
+},
+{
+"id": "MONDO:0005976",
+"name": "syphilis",
+"syn": [
+"Treponema pallidum caused disease or disorder",
+"Treponema pallidum disease or disorder",
+"Treponema pallidum infectious disease"
+],
+"parent": "primary bacterial infectious disease",
+"defn": "A contagious bacterial infection caused by the spirochete Treponema pallidum. It is a sexually transmitted disorder, although it can also be transmitted from th"
+},
+{
+"id": "MONDO:0005977",
+"name": "tabes dorsalis",
+"syn": [],
+"parent": "neurosyphilis",
+"defn": "A form of neurosyphilis characterized by slowly progressive degeneration of the spinal cord. Signs and symptoms include pain, ataxia, loss of coordination, pers"
+},
+{
+"id": "MONDO:0005978",
+"name": "theileriasis",
+"syn": [],
+"parent": "protozoa infectious disease",
+"defn": "Infection of cattle, sheep, or goats with protozoa of the genus theileria. This infection results in an acute or chronic febrile condition."
+},
+{
+"id": "MONDO:0005979",
+"name": "thoracic outlet syndrome",
+"syn": [
+"thoracic outlet compression syndrome",
+"TOS"
+],
+"parent": "syndromic disease",
+"defn": "A syndrome resulting from the compression of the blood vessels or nerves in the space between the clavicle and first rib (thoracic outlet). It is caused by car "
+},
+{
+"id": "MONDO:0005980",
+"name": "tick infestation",
+"syn": [
+"Ixodoidea caused disease or disorder",
+"Ixodoidea disease or disorder",
+"Ixodoidea infectious disease"
+],
+"parent": "parasitic ectoparasitic infectious disease",
+"defn": "Infestations with soft-bodied (Argasidae) or hard-bodied (Ixodidae) ticks."
+},
+{
+"id": "MONDO:0005981",
+"name": "tick paralysis",
+"syn": [],
+"parent": "tick infestation",
+"defn": "Paralysis caused by a neurotropic toxin secreted by the salivary glands of ticks."
+},
+{
+"id": "MONDO:0005982",
+"name": "tinea infection",
+"syn": [
+"Tinea",
+"Tinea caused disease or disorder",
+"Tinea disease or disorder"
+],
+"parent": "cutaneous mycosis",
+"defn": "A skin infection caused by a fungus."
+},
+{
+"id": "MONDO:0005983",
+"name": "tinea favosa",
+"syn": [
+"favus"
+],
+"parent": "tinea infection",
+"defn": "A severe, chronic fungal skin infection, usually of the scalp, characterized by the development of thick, yellow cup-shaped crusts and scarring over hair follic"
+},
+{
+"id": "MONDO:0005984",
+"name": "tinea pedis",
+"syn": [
+"athlete's foot",
+"dermatophytosis of foot",
+"dermatophytosis of pes"
+],
+"parent": "dermatophytosis",
+"defn": "Dermatological pruritic lesion in the feet, caused by Trichophyton rubrum, T. mentagrophytes, or Epidermophyton floccosum."
+},
+{
+"id": "MONDO:0005985",
+"name": "Togaviridae infectious disease",
+"syn": [
+"Togaviridae caused disease or disorder",
+"Togaviridae disease or disorder"
+],
+"parent": "primary viral infectious disease",
+"defn": "Virus diseases caused by the togaviridae."
+},
+{
+"id": "MONDO:0005986",
+"name": "torovirus infectious disease",
+"syn": [
+"Torovirus caused disease or disorder",
+"Torovirus disease or disorder"
+],
+"parent": "Nidovirales infectious disease",
+"defn": "Infections with viruses of the genus torovirus, family coronaviridae."
+},
+{
+"id": "MONDO:0005987",
+"name": "toxascariasis",
+"syn": [
+"Toxascaris caused disease or disorder",
+"Toxascaris disease or disorder",
+"Toxascaris infectious disease"
+],
+"parent": "Ascaridida infectious disease",
+"defn": "Infections with nematodes of the genus toxascaris."
+},
+{
+"id": "MONDO:0005988",
+"name": "toxocariasis",
+"syn": [
+"Toxocara caused disease or disorder",
+"Toxocara disease or disorder",
+"Toxocara infection"
+],
+"parent": "Ascaridida infectious disease",
+"defn": "A parasitic infection caused by worms found in domestic animals. In humans nematode larvae enter the portal system from the small intestine and disseminate in v"
+},
+{
+"id": "MONDO:0005989",
+"name": "toxoplasmosis",
+"syn": [
+"Toxoplasma gondii caused disease or disorder",
+"Toxoplasma gondii disease or disorder",
+"Toxoplasma gondii infectious disease"
+],
+"parent": "coccidiosis",
+"defn": "A parasitic disease contracted by the ingestion or fetal transmission of toxoplasma gondii."
+},
+{
+"id": "MONDO:0005990",
+"name": "tracheitis",
+"syn": [
+"acute tracheitis",
+"inflammation of tracheal mucosa",
+"tracheal Inflammation"
+],
+"parent": "tracheal disorder",
+"defn": "A tracheal disease which involves bacterial infection of the trachea often caused by Staphylococcus aureus and streptococci that follows a recent viral upper re"
+},
+{
+"id": "MONDO:0005991",
+"name": "trench fever",
+"syn": [
+"Bartonella quintana caused disease or disorder",
+"Bartonella quintana disease or disorder",
+"Bartonella quintana infectious disease"
+],
+"parent": "bartonellosis",
+"defn": "An intermittent fever characterized by intervals of chills, fever, and splenomegaly each of which may last as long as 40 hours. It is caused by bartonella quint"
+},
+{
+"id": "MONDO:0005993",
+"name": "Trichomonas vaginitis urogenital infection",
+"syn": [
+"Trichomonas vaginalis caused disease of genitourinary system",
+"Trichomonas vaginalis disease of genitourinary system",
+"Trichomonas vaginitis"
+],
+"parent": "trichomoniasis",
+"defn": "A sexually transmitted parasitic infection caused by Trichomonas vaginalis. Symptoms include vaginal discharge, vaginal odor, vaginal itching, and discomfort du"
+},
+{
+"id": "MONDO:0005994",
+"name": "trichostrongyloidiasis",
+"syn": [
+"Trichostrongyloidea caused disease or disorder",
+"Trichostrongyloidea disease or disorder",
+"Trichostrongyloidea infectious disease"
+],
+"parent": "Rhabditida infectious disease",
+"defn": "Infection by roundworms of the superfamily trichostrongyloidea, including the genera trichostrongylus; ostertagia; Cooperia, haemonchus; Nematodirus, Hyostrongy"
+},
+{
+"id": "MONDO:0005995",
+"name": "trichostrongylosis",
+"syn": [
+"Trichostrongyliasis",
+"Trichostrongylus caused disease or disorder",
+"Trichostrongylus disease or disorder"
+],
+"parent": "trichostrongyloidiasis",
+"defn": "Infestation with nematode worms of the genus trichostrongylus. Humans become infected by swallowing larvae, usually with contaminated food or drink, although th"
+},
+{
+"id": "MONDO:0005996",
+"name": "trichuriasis",
+"syn": [
+"trichuriasis infection",
+"Trichuris trichiura caused disease or disorder",
+"Trichuris trichiura disease or disorder"
+],
+"parent": "Enoplea infectious disease",
+"defn": "An infection that is caused by the nematode Trichuris trichiura, a soil-transmitted helminth, which is transmitted via food and/or water contaminated with the e"
+},
+{
+"id": "MONDO:0005997",
+"name": "tricuspid valve stenosis",
+"syn": [
+"tricuspid stenosis"
+],
+"parent": "tricuspid valve disorder",
+"defn": "Narrowing or stricture of the tricuspid orifice of the heart."
+},
+{
+"id": "MONDO:0005998",
+"name": "trombiculiasis",
+"syn": [
+"Trombiculidae caused disease or disorder",
+"Trombiculidae disease or disorder",
+"Trombiculidae infectious disease"
+],
+"parent": "mite infestation",
+"defn": "Infestation with mites of the genus Trombiculidae, whose larvae carry the rickettsial agent of scrub typhus."
+},
+{
+"id": "MONDO:0005999",
+"name": "tuberculous empyema",
+"syn": [
+"tuberculous empyema (& pleural)"
+],
+"parent": "empyema",
+"defn": "An empyema resulting from infection by Mycobacterium tuberculosis."
+},
+{
+"id": "MONDO:0006000",
+"name": "tuberculous peritonitis",
+"syn": [
+"Mycobacterium tuberculosis caused peritonitis",
+"Mycobacterium tuberculosis peritonitis"
+],
+"parent": "abdominal tuberculosis",
+"defn": "A form of peritonitis seen in patients with tuberculosis, characterized by lesion either as a miliary form or as a pelvic mass on the peritoneal surfaces. Most "
+},
+{
+"id": "MONDO:0006001",
+"name": "urinary schistosomiasis",
+"syn": [
+"Schistosoma haematobium (& vesical schistosomiasis)",
+"Schistosoma hematobium infection",
+"schistosomiasis due to Schistosoma haematobium"
+],
+"parent": "urinary bladder disorder",
+"defn": "A bladder infection that occurs as a manifetation of a systemic infection with one or more species of the parasitic worms of the Schistosoma type; this can prog"
+},
+{
+"id": "MONDO:0006002",
+"name": "urogenital tuberculosis",
+"syn": [
+"genitourinary system tuberculosis"
+],
+"parent": "extrapulmonary tuberculosis",
+"defn": "A general term for mycobacterium infections of any part of the urogenital system in either the male or the female."
+},
+{
+"id": "MONDO:0006003",
+"name": "uterine corpus cancer",
+"syn": [
+"body of uterus cancer",
+"cancer of body of uterus",
+"cancer of the corpus uteri"
+],
+"parent": "uterine cancer",
+"defn": "A malignant neoplasm involving the body of uterus."
+},
+{
+"id": "MONDO:0006004",
+"name": "vasomotor rhinitis",
+"syn": [],
+"parent": "allergic rhinitis",
+"defn": "Inflammation in the nasal cavity mucosa that results from the abnormal regulation of the blood flow in the nose. It may be caused by temperature fluctuations, a"
+},
+{
+"id": "MONDO:0006005",
+"name": "Venezuelan equine encephalitis",
+"syn": [
+"Venezuelan equine encephalitis virus caused disease or disorder",
+"Venezuelan equine encephalitis virus disease or disorder",
+"Venezuelan equine encephalitis virus infectious disease"
+],
+"parent": "encephalomyelitis",
+"defn": "A condition caused by infection by the Venezuelan equine encephalitis virus, which is characterized by headache, fever, myalgia, nausea, and vomiting."
+},
+{
+"id": "MONDO:0006006",
+"name": "verrucous carcinoma",
+"syn": [
+"verrucous carcinoma NOS (morphologic abnormality)",
+"verrucous epidermoid carcinoma",
+"verrucous epidermoid cell carcinoma"
+],
+"parent": "papillary squamous carcinoma",
+"defn": "A well differentiated squamous cell carcinoma characterized by a papillary growth pattern, acanthosis, mild cytologic atypia, and pushing tumor margins. The mos"
+},
+{
+"id": "MONDO:0006007",
+"name": "vesicoureteral reflux",
+"syn": [
+"vesicoureteral reflux (disease)"
+],
+"parent": "ureteral disorder",
+"defn": "Abnormal flow of urine from the urinary bladder back into the ureters."
+},
+{
+"id": "MONDO:0006008",
+"name": "vestibular neuronitis",
+"syn": [],
+"parent": "vestibulocochlear nerve disorder",
+"defn": "Idiopathic inflammation of the vestibular nerve, characterized clinically by the acute or subacute onset of vertigo; nausea; and imbalance. The cochlear nerve i"
+},
+{
+"id": "MONDO:0006009",
+"name": "viral encephalitis",
+"syn": [
+"Viruses caused encephalitis",
+"Viruses encephalitis"
+],
+"parent": "infectious encephalitis",
+"defn": "Encephalitis resulting from viral infection."
+},
+{
+"id": "MONDO:0006011",
+"name": "viral hepatitis",
+"syn": [
+"Hepatitis viral",
+"viral human hepatitis",
+"Viruses caused hepatitis"
+],
+"parent": "hepatitis",
+"defn": "An acute or chronic inflammation of the liver parenchyma caused by viruses. Representative examples include hepatitis A, B, and C, cytomegalovirus hepatitis, an"
+},
+{
+"id": "MONDO:0006012",
+"name": "viral pneumonia",
+"syn": [
+"Viruses caused pneumonia",
+"Viruses pneumonia"
+],
+"parent": "pneumonia",
+"defn": "Inflammation of the lung parenchyma that is caused by a viral infection."
+},
+{
+"id": "MONDO:0006014",
+"name": "vulvovaginal candidiasis",
+"syn": [
+"candidal vulvovaginitis",
+"candidal: [vulvovaginitis NOS] or [cervix]",
+"candidal: cervix"
+],
+"parent": "cutaneous candidiasis",
+"defn": "Infection of the vulva and vagina with a fungus of the genus CANDIDA. It is a disease associated with HIV infection."
+},
+{
+"id": "MONDO:0006015",
+"name": "Waterhouse-Friderichsen syndrome",
+"syn": [
+"meningococcal hemorrhagic adrenalitis",
+"WFS"
+],
+"parent": "syndromic disease",
+"defn": "A serious disorder characterized by massive adrenal gland hemorrhage secondary to a bacterial infection, most often Neisseria meningitidis infection. It is mani"
+},
+{
+"id": "MONDO:0006018",
+"name": "Wissler syndrome",
+"syn": [
+"Wissler's syndrome",
+"Wissler-Fanconi syndrome (finding)"
+],
+"parent": "syndromic disease",
+"defn": "A rheumatic syndrome of possibly allergic origin, usually affecting children and adolescents, and characterized by high fever, exanthema, arthralgia, leukocytos"
+},
+{
+"id": "MONDO:0006019",
+"name": "yaws",
+"syn": [
+"Bouba",
+"frambesia",
+"frambesia tropica"
+],
+"parent": "syphilis",
+"defn": "An endemic, infectious, nonvenereal disease in humans that presents mainly in children younger than 15 years. The disease occurs primarily in warm, humid, tropi"
+},
+{
+"id": "MONDO:0006021",
+"name": "Prinzmetal angina",
+"syn": [
+"angina inversa",
+"variant angina"
+],
+"parent": "coronary vasospasm",
+"defn": "A syndrome typically consisting of angina (cardiac chest pain) at rest that occurs in cycles. It is caused by vasospasm, a narrowing of the coronary arteries ca"
+},
+{
+"id": "MONDO:0006022",
+"name": "acidosis disorder",
+"syn": [
+"acidosis"
+],
+"parent": "disorder of acid-base balance",
+"defn": "An abnormally high acidity of the blood and other body tissues. Acidosis can be either respiratory or metabolic."
+},
+{
+"id": "MONDO:0006025",
+"name": "autosomal recessive disease",
+"syn": [
+"autosomal recessive disease or disorder",
+"autosomal recessive hereditary disease",
+"autosomal recessive hereditary disorder"
+],
+"parent": "autosomal genetic disease",
+"defn": "Autosomal recessive form of disease."
+},
+{
+"id": "MONDO:0006026",
+"name": "urinary bladder disorder",
+"syn": [
+"bladder disease",
+"bladder disorder",
+"disease of urinary bladder"
+],
+"parent": "urinary system disorder",
+"defn": "A disease involving the urinary bladder."
+},
+{
+"id": "MONDO:0006027",
+"name": "breast synovial sarcoma",
+"syn": [
+"breast synovial sarcoma (disease)"
+],
+"parent": "breast sarcoma",
+"defn": "A synovial sarcoma (disease) that involves the breast."
+},
+{
+"id": "MONDO:0006028",
+"name": "cecum adenocarcinoma",
+"syn": [
+"adenocarcinoma of cecum",
+"adenocarcinoma of the cecum",
+"caecum adenocarcinoma"
+],
+"parent": "colon adenocarcinoma",
+"defn": "A carcinoma that arises from glandular epithelial cells of the caecum"
+},
+{
+"id": "MONDO:0006029",
+"name": "cecum carcinoma",
+"syn": [
+"caecum carcinoma",
+"carcinoma of caecum",
+"carcinoma of cecum"
+],
+"parent": "colon carcinoma",
+"defn": "A carcinoma that arises from epithelial cells of the caecum"
+},
+{
+"id": "MONDO:0006030",
+"name": "chronic cystitis",
+"syn": [
+"cystitis, chronic"
+],
+"parent": "cystitis",
+"defn": "Recurrent infections of the urinary bladder."
+},
+{
+"id": "MONDO:0006031",
+"name": "chronic rhinosinusitis",
+"syn": [
+"chronic sinusitis",
+"sinusitis, chronic"
+],
+"parent": "sinusitis",
+"defn": "Chronic form of sinusitis."
+},
+{
+"id": "MONDO:0006032",
+"name": "cystitis",
+"syn": [
+"bladder infection",
+"inflammation of urinary bladder",
+"urinary bladder inflammation"
+],
+"parent": "urinary bladder disorder",
+"defn": "Inflammation of the urinary bladder."
+},
+{
+"id": "MONDO:0006033",
+"name": "diffuse intrinsic pontine glioma",
+"syn": [
+"DIPG"
+],
+"parent": "childhood brain stem glioma",
+"defn": "A neuroglial tumor that arises from the middle portion of the brain stem. It usually affects children and has a poor prognosis."
+},
+{
+"id": "MONDO:0006034",
+"name": "gastric adenosquamous carcinoma",
+"syn": [
+"adenosquamous carcinoma of stomach",
+"adenosquamous carcinoma of the stomach",
+"gastric (stomach) adenosquamous cancer"
+],
+"parent": "adenosquamous carcinoma",
+"defn": "A carcinoma that arises from the stomach and is characterized by the presence of malignant cells with glandular and squamous differentiation."
+},
+{
+"id": "MONDO:0006035",
+"name": "gastric tubular adenocarcinoma",
+"syn": [
+"stomach tubular adenocarcinoma",
+"tubular adenocarcinoma of stomach",
+"tubular adenocarcinoma of the stomach"
+],
+"parent": "gastric adenocarcinoma",
+"defn": "A variant of gastric adenocarcinoma characterized by prominent dilated or slit-like tubules."
+},
+{
+"id": "MONDO:0006036",
+"name": "granulosa cell tumor",
+"syn": [
+"granulosa cell neoplasm",
+"granulosa cell neoplasm (disease)",
+"granulosa cell tumor, adult type (morphologic abnormality)"
+],
+"parent": "endocrine gland neoplasm",
+"defn": "A slow-growing, malignant tumor, characterize by the presence of granulosa-like cells and Call-Exner bodies, that is almost always found in the ovary. In rare c"
+},
+{
+"id": "MONDO:0006037",
+"name": "hydrolethalus syndrome",
+"syn": [],
+"parent": "autosomal recessive disease",
+"defn": "Hydrolethalus (HLS) is a severe fetal malformation syndrome characterized by craniofacial dysmorphic features, central nervous system, cardiac, respiratory trac"
+},
+{
+"id": "MONDO:0006038",
+"name": "indeterminate colitis",
+"syn": [
+"colitis of indeterminate type"
+],
+"parent": "colitis",
+"defn": "It describes patients in whom a diagnosis of ulcerative colitis or Crohn's disease cannot be made based on standard clinical testing, including colonoscopy, ima"
+},
+{
+"id": "MONDO:0006039",
+"name": "infectious colitis",
+"syn": [],
+"parent": "colitis",
+"defn": "A viral or bacterial infectious process affecting the large intestine."
+},
+{
+"id": "MONDO:0006040",
+"name": "lactic acidosis",
+"syn": [],
+"parent": "metabolic disease",
+"defn": "Metabolic acidosis characterized by the accumulation of lactate in the body. It is caused by tissue hypoxia."
+},
+{
+"id": "MONDO:0006041",
+"name": "lung carcinoid tumor",
+"syn": [
+"carcinoid tumor (disease) of lung",
+"carcinoid tumor of lung",
+"carcinoid tumor of the lung"
+],
+"parent": "carcinoid tumor",
+"defn": "A neuroendocrine neoplasm that arises from the lung. It is characterized by the presence of uniform polygonal cells with small or moderate amount of cytoplasm a"
+},
+{
+"id": "MONDO:0006042",
+"name": "meningeal tuberculosis",
+"syn": [
+"Meningitis, Tuberculous",
+"TB meningitis",
+"TBM"
+],
+"parent": "tuberculous salpingitis",
+"defn": "A bacterial infection of the membranes covering the brain and the spinal cord caused by Mycobacterium tuberculosis."
+},
+{
+"id": "MONDO:0006043",
+"name": "metaplastic breast carcinoma",
+"syn": [
+"metaplastic carcinoma of breast",
+"metaplastic carcinoma of the breast"
+],
+"parent": "invasive breast carcinoma",
+"defn": "A group of invasive breast carcinomas characterized by the presence of an adenocarcinomatous component which is admixed with a dominant component that is compos"
+},
+{
+"id": "MONDO:0006044",
+"name": "nephrosclerosis",
+"syn": [],
+"parent": "renal artery disease",
+"defn": "Hardening of the kidney due to infiltration by fibrous connective tissue (fibrosis), usually caused by renovascular diseases or chronic hypertension. Nephroscle"
+},
+{
+"id": "MONDO:0006045",
+"name": "ovarian clear cell adenocarcinoma",
+"syn": [
+"clear cell adenocarcinoma of ovary",
+"ovary clear cell adenocarcinoma"
+],
+"parent": "ovarian clear cell cancer",
+"defn": "A malignant glandular epithelial neoplasm characterized by the presence of clear and hobnail cells. It is highly associated with ovarian endometriosis, pelvic e"
+},
+{
+"id": "MONDO:0006046",
+"name": "ovarian serous cystadenocarcinoma",
+"syn": [],
+"parent": "ovarian cystadenocarcinoma",
+"defn": "A malignant serous cystic epithelial neoplasm arising from the ovary. It is characterized by the presence of glandular, papillary, or solid structures. Psammoma"
+},
+{
+"id": "MONDO:0006047",
+"name": "pancreatic adenocarcinoma",
+"syn": [
+"adenocarcinoma - pancreas",
+"adenocarcinoma of pancreas",
+"adenocarcinoma of the pancreas"
+],
+"parent": "adenocarcinoma",
+"defn": "A carcinoma that arises from glandular epithelial cells of the pancreas"
+},
+{
+"id": "MONDO:0006049",
+"name": "papillary lung adenocarcinoma",
+"syn": [
+"lung papillary adenocarcinoma",
+"lung papillary-adenocarcinoma",
+"papillary adenocarcinoma of lung"
+],
+"parent": "papillary adenocarcinoma",
+"defn": "A morphologic variant of lung adenocarcinoma characterized by the presence of papillary structures."
+},
+{
+"id": "MONDO:0006050",
+"name": "pleomorphic breast carcinoma",
+"syn": [
+"anaplastic breast carcinoma"
+],
+"parent": "invasive ductal breast carcinoma",
+"defn": "A rare, aggressive, high grade invasive ductal carcinoma, not otherwise specified. It is characterized by the presence of pleomorphic and bizarre malignant cell"
+},
+{
+"id": "MONDO:0006052",
+"name": "pulmonary tuberculosis",
+"syn": [
+"lung TB",
+"lung tuberculosis",
+"pulmonary TB"
+],
+"parent": "respiratory system disorder",
+"defn": "A bacterial infection that affects the lungs and is caused by Mycobacterium tuberculosis. Most patients with tuberculosis do not have symptoms (latent tuberculo"
+},
+{
+"id": "MONDO:0006053",
+"name": "renal leiomyoma",
+"syn": [
+"kidney leiomyoma",
+"leiomyoma of kidney"
+],
+"parent": "leiomyoma",
+"defn": "A leiomyoma that involves the kidney."
+},
+{
+"id": "MONDO:0006054",
+"name": "reproductive system neoplasm",
+"syn": [
+"neoplasm of reproductive system",
+"neoplasm of the reproductive system",
+"reproductive neoplasm"
+],
+"parent": "reproductive system disorder",
+"defn": "A benign or malignant, primary or metastatic neoplasm affecting the male and female reproductive system."
+},
+{
+"id": "MONDO:0006055",
+"name": "sex cord-stromal tumor",
+"syn": [
+"neoplasm of sex cord",
+"sex cord neoplasm",
+"Sex cord stromal tumor"
+],
+"parent": "reproductive system neoplasm",
+"defn": "A neoplasm involving a sex cord."
+},
+{
+"id": "MONDO:0006056",
+"name": "squamous cell breast carcinoma",
+"syn": [
+"breast squamous cell carcinoma",
+"primary squamous cell breast carcinoma",
+"primary squamous cell carcinoma of breast"
+],
+"parent": "squamous cell carcinoma",
+"defn": "A rare carcinoma that arises from the breast parenchyma and is entirely composed of squamous cells."
+},
+{
+"id": "MONDO:0006058",
+"name": "Wilms tumor",
+"syn": [
+"Wilms' tumor",
+"Wilms' tumour"
+],
+"parent": "embryonal neoplasm",
+"defn": "An embryonal neoplasm characterized by the presence of epithelial, mesenchymal, and blastema components. The vast majority of cases arise from the kidney. A sma"
+},
+{
+"id": "MONDO:0006059",
+"name": "nasal cavity squamous cell carcinoma",
+"syn": [
+"squamous cell carcinoma of nasal cavity",
+"squamous cell carcinoma of the nasal cavity"
+],
+"parent": "nasal cavity carcinoma",
+"defn": "A squamous cell carcinoma that arises from the nasal cavity mucosa. Signs and symptoms include nasal fullness and obstruction, pain, epistaxis, and the presence"
+},
+{
+"id": "MONDO:0006060",
+"name": "nasopharyngeal squamous cell carcinoma",
+"syn": [],
+"parent": "head and neck squamous cell carcinoma",
+"defn": "A squamous cell carcinoma that arises from the nasopharynx."
+},
+{
+"id": "MONDO:0006061",
+"name": "cervical artery dissection",
+"syn": [],
+"parent": "arterial disorder",
+"defn": "A tear within the wall of any of the arteries of the neck (carotid artery or vertebral artery) and that allows blood to separate the wall layers. By separating "
+},
+{
+"id": "MONDO:0006065",
+"name": "lactose intolerance adult type",
+"syn": [
+"adult lactase deficiency",
+"disaccharide intolerance 3",
+"hypolactasia, adult type"
+],
+"parent": "lactose intolerance",
+"defn": "Adult onset lactose intolerance"
+},
+{
+"id": "MONDO:0006066",
+"name": "acinar prostate adenocarcinoma, foamy gland variant",
+"syn": [],
+"parent": "prostatic acinar adenocarcinoma",
+"defn": "A variant of acinar prostate adenocarcinoma characterized by the presence of malignant cells with abundant xanthomatous appearing cytoplasm."
+},
+{
+"id": "MONDO:0006067",
+"name": "acinar prostate mucinous adenocarcinoma",
+"syn": [
+"acinar colloid prostate adenocarcinoma",
+"colloid adenocarcinoma of prostate",
+"colloid adenocarcinoma of the prostate"
+],
+"parent": "prostatic acinar adenocarcinoma",
+"defn": "A usually aggressive morphologic variant of acinar adenocarcinoma of the prostate gland characterized by the presence of lakes of extracellular mucin. This diag"
+},
+{
+"id": "MONDO:0006068",
+"name": "ACTH-producing pituitary gland adenoma",
+"syn": [
+"ACTH producing pituitary gland adenoma",
+"ACTH secreting adenoma of pituitary",
+"ACTH secreting adenoma of the pituitary"
+],
+"parent": "pituitary gland adenoma",
+"defn": "An adenoma of the pituitary gland that produces corticotropin. The vast majority of cases are associated with Cushing disease. Clinical manifestations include t"
+},
+{
+"id": "MONDO:0006069",
+"name": "ACTH-producing pituitary gland carcinoma",
+"syn": [
+"ACTH producing pituitary gland carcinoma",
+"malignant ACTH producing neoplasm of pituitary",
+"malignant ACTH producing neoplasm of pituitary gland"
+],
+"parent": "pituitary adenocarcinoma",
+"defn": "A rare, hormonally functioning or non-functioning pituitary gland adenocarcinoma that produces corticotropin. It may be associated with Cushing disease."
+},
+{
+"id": "MONDO:0006071",
+"name": "adenofibroma",
+"syn": [
+"adenofibroma, benign",
+"adenofibroma, no ICD-O subtype",
+"adenofibroma, no ICD-O subtype (morphologic abnormality)"
+],
+"parent": "benign female reproductive system neoplasm",
+"defn": "A benign neoplasm characterized by the presence of connective tissue stroma and epithelial structures. It occurs in the ovary, fallopian tube, uterine corpus, a"
+},
+{
+"id": "MONDO:0006073",
+"name": "adenomatoid odontogenic tumor",
+"syn": [
+"adenomatoid odontogenic neoplasm"
+],
+"parent": "benign neoplasm of oral cavity",
+"defn": "A benign, slow growing neoplasm arising from tooth-forming tissues. The vast majority of cases are intraosseous and most often grow in the maxilla. It is charac"
+},
+{
+"id": "MONDO:0006074",
+"name": "adenosquamous carcinoma",
+"syn": [
+"adenosquamous carcinoma (morphologic abnormality)",
+"carcinoma, adenosquamous, malignant",
+"mixed adenocarcinoma and epidermoid carcinoma"
+],
+"parent": "squamous cell carcinoma",
+"defn": "A carcinoma composed of malignant glandular cells and malignant squamous cells."
+},
+{
+"id": "MONDO:0006075",
+"name": "adrenal gland myelolipoma",
+"syn": [
+"Myelolipoma",
+"MYELOLIPOMA, benign"
+],
+"parent": "benign neoplasm of adrenal gland",
+"defn": "A benign soft tissue lesion arising from the adrenal gland. It is composed of mature adipose and hematopoietic/lymphoid tissues."
+},
+{
+"id": "MONDO:0006076",
+"name": "adrenal gland neuroblastoma",
+"syn": [
+"adrenal neuroblastoma",
+"neuroblastoma of adrenal",
+"neuroblastoma of adrenal gland"
+],
+"parent": "retroperitoneal neuroblastoma",
+"defn": "A neuroblastoma arising from the adrenal gland."
+},
+{
+"id": "MONDO:0006077",
+"name": "adrenal medullary hyperplasia",
+"syn": [
+"adrenal medulla hyperplasia"
+],
+"parent": "hyperplasia",
+"defn": "A hyperplasia that involves the adrenal medulla."
+},
+{
+"id": "MONDO:0006078",
+"name": "AIDS-related primary central nervous system lymphoma",
+"syn": [
+"AIDS related lymphoma of primary central nervous system",
+"AIDS related lymphoma of the primary central nervous system",
+"AIDS related primary central nervous system lymphoma"
+],
+"parent": "lymphoma",
+"defn": "A lymphoma (non-Hodgkin or Hodgkin) arising from the central nervous system and occurring in HIV-positive patients."
+},
+{
+"id": "MONDO:0006079",
+"name": "ameloblastic carcinoma",
+"syn": [
+"odontoma, ameloblastic, malignant"
+],
+"parent": "musculoskeletal system cancer",
+"defn": "A rare, cytologically malignant ameloblastoma that may metastasize."
+},
+{
+"id": "MONDO:0006081",
+"name": "anal melanoma",
+"syn": [
+"anal malignant melanoma",
+"anus melanoma",
+"anus melanoma (disease)"
+],
+"parent": "anus cancer",
+"defn": "A melanoma arising from the anus. Clinical presentation includes rectal bleeding, tenesmus, pain, and change in bowel habit. The prognosis is usually poor."
+},
+{
+"id": "MONDO:0006082",
+"name": "anal squamous cell carcinoma",
+"syn": [
+"anal squamous cell cancer",
+"anus squamous cell carcinoma",
+"epidermoid anal carcinoma"
+],
+"parent": "anal carcinoma",
+"defn": "A squamous cell carcinoma (SCC) arising from the anal canal or the anal margin (perianal skin). Human papillomavirus is detected in the majority of cases. Homos"
+},
+{
+"id": "MONDO:0006085",
+"name": "angiolipoma",
+"syn": [
+"angiolipoma, benign"
+],
+"parent": "lipoma",
+"defn": "A lipoma with prominent vascularity. The vascular tissue is more abundant at the periphery of the tumor and contains fibrin thrombi. It occurs more frequently i"
+},
+{
+"id": "MONDO:0006086",
+"name": "angiomyxoma",
+"syn": [],
+"parent": "connective tissue neoplasm",
+"defn": "A benign soft tissue neoplasm characterized by the presence of neoplastic spindle and stellate cells, and vascular proliferation in a myxoid stroma."
+},
+{
+"id": "MONDO:0006087",
+"name": "appendix adenocarcinoma",
+"syn": [
+"adenocarcinoma of appendix",
+"adenocarcinoma of the appendix",
+"appendiceal adenocarcinoma"
+],
+"parent": "appendix carcinoma",
+"defn": "A carcinoma that arises from glandular epithelial cells of the vermiform appendix."
+},
+{
+"id": "MONDO:0006088",
+"name": "appendix adenoma",
+"syn": [
+"vermiform appendix adenoma"
+],
+"parent": "colon adenoma",
+"defn": "A circumscribed neoplasm arising from the glandular epithelium of the appendix. Morphologically, it is characterized by a proliferation of neoplastic glandular "
+},
+{
+"id": "MONDO:0006090",
+"name": "appendix hyperplastic polyp",
+"syn": [
+"appendix metaplastic polyp",
+"vermiform appendix hyperplastic polyp"
+],
+"parent": "hyperplastic polyp",
+"defn": "A non-neoplastic polyp that arises from the appendix. It is characterized by the presence of elongated serrated crypts and the absence of atypia or dysplasia."
+},
+{
+"id": "MONDO:0006091",
+"name": "appendix neuroendocrine tumor G1",
+"syn": [
+"appendiceal carcinoid tumor",
+"appendiceal carcinoid tumour",
+"appendix carcinoid tumor"
+],
+"parent": "cecum neuroendocrine tumor G1",
+"defn": "A well differentiated, low grade tumor with neuroendocrine differentiation that arises from the appendix. The mitotic count is less than 2 per 10 HPF and/or the"
+},
+{
+"id": "MONDO:0006092",
+"name": "appendix villous adenoma",
+"syn": [
+"vermiform appendix villous adenoma",
+"villous adenoma of appendix",
+"villous adenoma of the appendix"
+],
+"parent": "cecum villous adenoma",
+"defn": "An adenoma arising from the appendix. It is characterized by the presence of villous epithelial structures and it is associated with dysplasia."
+},
+{
+"id": "MONDO:0006093",
+"name": "ascending colon neuroendocrine tumor G1",
+"syn": [
+"ascending colon carcinoid tumor",
+"ascending colon carcinoid tumor (disease)",
+"ascending colon carcinoid tumour"
+],
+"parent": "colon neuroendocrine tumor G1",
+"defn": "A well differentiated, low grade neuroendocrine tumor (carcinoid tumor) that arises from the ascending colon. The mitotic count is less than 2 per 10 HPF and/or"
+},
+{
+"id": "MONDO:0006094",
+"name": "Askin tumor",
+"syn": [
+"Askin's tumor",
+"peripheral neuroectodermal tumor of thoracopulmonary region",
+"peripheral neuroectodermal tumour of thoracopulmonary region"
+],
+"parent": "thoracic cancer",
+"defn": "A primitive neuroectodermal tumor (small round blue cell tumor) of the thorax which can involve the periosteum, thoracic wall and/or pleura though it spares the"
+},
+{
+"id": "MONDO:0006095",
+"name": "atypical carcinoid tumor",
+"syn": [
+"malignant carcinoid tumor",
+"malignant carcinoid tumour"
+],
+"parent": "carcinoid tumor",
+"defn": "A carcinoid tumor characterized by a high mitotic rate, often associated with the presence of necrosis and nuclear pleomorphism."
+},
+{
+"id": "MONDO:0006096",
+"name": "atypical endometrial hyperplasia",
+"syn": [
+"atypical hyperplasia of endometrium",
+"atypical hyperplasia of the endometrium",
+"endometrial hyperplasia with atypia"
+],
+"parent": "endometrial disorder",
+"defn": "An endometrial hyperplasia characterized by cytologic and architectural changes which may lead to endometrial carcinoma. Despite the atypical features and possi"
+},
+{
+"id": "MONDO:0006097",
+"name": "atypical lipomatous tumor",
+"syn": [
+"ALT",
+"Atypical lipoma",
+"lipoma-like liposarcoma"
+],
+"parent": "tumor of adipose tissue",
+"defn": "An intermediate, locally aggressive lipomatous neoplasm. Microscopically, the adipose tissue contains large and pleomorphic lipoblasts, and is dissected by fibr"
+},
+{
+"id": "MONDO:0006098",
+"name": "atypical lobular breast hyperplasia",
+"syn": [
+"ALH",
+"atypical breast lobular hyperplasia",
+"atypical lobular hyperplasia"
+],
+"parent": "integumentary system cancer",
+"defn": "Lobular neoplasia characterized by lobular epithelial proliferation that does not completely fill the lobular unit of the breast."
+},
+{
+"id": "MONDO:0006102",
+"name": "basaloid carcinoma",
+"syn": [],
+"parent": "carcinoma",
+"defn": "A malignant epithelial neoplasm characterized by the presence of neoplastic cells with hyperchromatic nuclei, small amount of cytoplasm, and peripheral nuclear "
+},
+{
+"id": "MONDO:0006103",
+"name": "benign adrenal gland pheochromocytoma",
+"syn": [
+"adrenal gland pheochromocytoma, benign",
+"pheochromocytoma, benign"
+],
+"parent": "adrenal gland pheochromocytoma",
+"defn": "A sporadic or familial pheochromocytoma that is confined to the adrenal gland and does not have any metastatic potential. The majority of cases are sporadic, an"
+},
+{
+"id": "MONDO:0006104",
+"name": "benign carotid body paraganglioma",
+"syn": [
+"carotid body paraganglioma, benign"
+],
+"parent": "benign endocrine neoplasm",
+"defn": "A carotid body paraganglioma that is confined to the site of origin, without metastatic potential."
+},
+{
+"id": "MONDO:0006105",
+"name": "benign conjunctival neoplasm",
+"syn": [
+"benign conjunctiva neoplasm",
+"benign conjunctiva tumor",
+"benign conjunctiva tumour"
+],
+"parent": "conjunctival tumor",
+"defn": "Abnormal growth of the cells of the conjunctiva without malignant characteristics."
+},
+{
+"id": "MONDO:0006106",
+"name": "benign smooth muscle neoplasm",
+"syn": [
+"benign neoplasm of smooth muscle",
+"benign neoplasm of the smooth muscle",
+"benign smooth muscle tumor"
+],
+"parent": "benign muscle neoplasm",
+"defn": "A benign mesenchymal neoplasm arising from smooth muscle tissue."
+},
+{
+"id": "MONDO:0006107",
+"name": "benign thyroid gland neoplasm",
+"syn": [
+"benign neoplasm of the thyroid",
+"benign neoplasm of the thyroid gland",
+"benign neoplasm of thyroid"
+],
+"parent": "benign endocrine neoplasm",
+"defn": "A benign neoplasm arising from the thyroid gland."
+},
+{
+"id": "MONDO:0006108",
+"name": "bile duct adenoma",
+"syn": [
+"adenoma of bile duct",
+"adenoma of the bile duct",
+"bile duct adenoma (morphologic abnormality)"
+],
+"parent": "digestive system adenoma",
+"defn": "A benign, well-demarcated polypoid neoplasm arising from the bile duct epithelium. According to the growth pattern, it is classified as tubular, papillary, or t"
+},
+{
+"id": "MONDO:0006109",
+"name": "malignant biphasic mesothelioma",
+"syn": [
+"biphasic mesothelioma",
+"malignant biphasic mesothelioma, malignant",
+"malignant mixed mesothelioma"
+],
+"parent": "malignant mesothelioma",
+"defn": "A malignant neoplasm arising from mesothelial cells in the pleura. It is characterized by the presence of neoplastic epithelioid cells and sarcomatoid features."
+},
+{
+"id": "MONDO:0006111",
+"name": "bladder flat intraepithelial lesion",
+"syn": [
+"flat intraepithelial lesion of the bladder",
+"flat intraepithelial lesion of the urinary bladder",
+"urinary bladder flat intraepithelial lesion"
+],
+"parent": "urinary bladder neoplasm",
+"defn": "A non-papillary neoplasm of the urinary bladder, whose classification categories include low-grade intraurothelial neoplasia and urothelial carcinoma in situ."
+},
+{
+"id": "MONDO:0006112",
+"name": "bladder inflammatory myofibroblastic tumor",
+"syn": [
+"bladder inflammatory myofibroblastic neoplasm",
+"inflammatory myofibroblastic neoplasm of bladder",
+"inflammatory myofibroblastic neoplasm of the bladder"
+],
+"parent": "urinary bladder neoplasm",
+"defn": "A multinodular intermediate fibroblastic neoplasm arising from the bladder. It is characterized by the presence of spindle-shaped fibroblasts and myofibroblasts"
+},
+{
+"id": "MONDO:0006115",
+"name": "blast phase chronic myelogenous leukemia, BCR-ABL1 positive",
+"syn": [
+"blast crisis",
+"blast phase chronic granulocytic leukaemia",
+"blast phase chronic granulocytic leukemia"
+],
+"parent": "chronic myeloid leukemia",
+"defn": "An advanced phase of chronic myelogenous leukemia. It is characterized by: 1. the presence of blasts in the peripheral blood or bone marrow that are at least 20"
+},
+{
+"id": "MONDO:0006116",
+"name": "breast carcinoma by gene expression profile",
+"syn": [],
+"parent": "breast carcinoma",
+"defn": "A header term that includes the following breast carcinoma subtypes determined by gene expression profiling: luminal A breast carcinoma, luminal B breast carcin"
+},
+{
+"id": "MONDO:0006117",
+"name": "breast diffuse large B-cell lymphoma",
+"syn": [
+"breast DLBCL",
+"diffuse large B-cell lymphoma of breast"
+],
+"parent": "immune system cancer",
+"defn": "A diffuse large B-cell lymphoma that arises from the breast. It is the most common type of primary breast lymphoma."
+},
+{
+"id": "MONDO:0006118",
+"name": "breast fibrosis",
+"syn": [
+"breast fibrosclerosis",
+"fibrosclerosis of breast",
+"fibrosclerosis of the breast"
+],
+"parent": "integumentary system disorder",
+"defn": "Breast fibrocystic change characterized by the prominence of fibrotic changes in the parenchyma."
+},
+{
+"id": "MONDO:0006119",
+"name": "breast mucosa-associated lymphoid tissue lymphoma",
+"syn": [
+"breast MALT lymphoma"
+],
+"parent": "integumentary system disorder",
+"defn": "An extranodal marginal zone B-cell lymphoma of mucosa associated lymphoid tissue that arises from the breast as a primary tumor."
+},
+{
+"id": "MONDO:0006120",
+"name": "C-cell hyperplasia",
+"syn": [],
+"parent": "thyroid gland disorder",
+"defn": "Neoplastic or reactive proliferation of the C-cells in the thyroid gland. The neoplastic C-cell hyperplasia is associated with familial medullary thyroid gland "
+},
+{
+"id": "MONDO:0006121",
+"name": "calcifying fibrous tumor",
+"syn": [
+"calcifying fibrous pseudotumor",
+"CFT"
+],
+"parent": "benign neoplasm",
+"defn": "A benign well-circumscribed paucicellular lesion arising from the soft tissues. It is characterized by the presence of fibroblasts, lymphoplasmacytic infiltrate"
+},
+{
+"id": "MONDO:0006122",
+"name": "calcifying nested epithelial stromal tumor of the liver",
+"syn": [],
+"parent": "liver cancer",
+"defn": "A rare malignant tumor that arises from the liver and occurs in children. It is characterized by the presence of nested epithelioid and spindle cells. Desmoplas"
+},
+{
+"id": "MONDO:0006123",
+"name": "cardiac rhabdomyoma",
+"syn": [
+"cardiac rhabdomyoma (disease)",
+"heart rhabdomyoma",
+"rhabdomyoma of heart"
+],
+"parent": "benign neoplasm of heart",
+"defn": "A well circumscribed benign tumor arising from cardiac muscle. It usually affects children and may be present in the fetus. Depending on tumor location and size"
+},
+{
+"id": "MONDO:0006126",
+"name": "cecum neuroendocrine tumor G1",
+"syn": [
+"caecal carcinoid tumor",
+"caecal carcinoid tumour",
+"caecum carcinoid tumor"
+],
+"parent": "cecal neoplasm",
+"defn": "A well differentiated, low grade neuroendocrine tumor (carcinoid tumor) that arises from the cecum. The mitotic count is less than 2 per 10 HPF and/or the Ki67 "
+},
+{
+"id": "MONDO:0006128",
+"name": "central nervous system anaplastic large cell lymphoma",
+"syn": [
+"anaplastic central nervous system large cell lymphoma",
+"anaplastic CNS large cell lymphoma",
+"anaplastic large cell lymphoma of central nervous system"
+],
+"parent": "anaplastic large cell lymphoma",
+"defn": "An anaplastic large cell lymphoma that affects the brain, meninges, or spinal cord."
+},
+{
+"id": "MONDO:0006130",
+"name": "central nervous system neoplasm",
+"syn": [
+"brain/spinal cord tumor",
+"brain/spinal cord tumour",
+"central nervous system neoplasm (disease)"
+],
+"parent": "central nervous system disorder",
+"defn": "A benign or malignant, primary or metastatic neoplasm that affects the brain, meninges, or spinal cord. Representative examples of primary neoplasms include ast"
+},
+{
+"id": "MONDO:0006131",
+"name": "cerebellar liponeurocytoma",
+"syn": [
+"cerebellar liponeurocytoma (WHO grade II)",
+"lipomatous medulloblastoma"
+],
+"parent": "cerebellar neoplasm",
+"defn": "A rare, WHO grade II cerebellar neoplasm which shows consistent neuronal, variable astrocytic and focal lipomatous differentiation. It occurs in adults, has a l"
+},
+{
+"id": "MONDO:0006132",
+"name": "cervical adenoid basal carcinoma",
+"syn": [
+"adenoid basal carcinoma of the cervix uteri",
+"cervical adenoid basal cancer",
+"skin adenoid basal cell carcinoma of uterine cervix"
+],
+"parent": "skin adenoid basal cell carcinoma",
+"defn": "A rare low grade carcinoma that arises from the cervix. It is characterized by the presence of nests of basaloid cells with focal glandular formations."
+},
+{
+"id": "MONDO:0006133",
+"name": "cervical adenoid cystic carcinoma",
+"syn": [
+"adenoid cystic carcinoma of cervix",
+"adenoid cystic carcinoma of cervix uteri",
+"adenoid cystic carcinoma of the cervix"
+],
+"parent": "adenoid cystic carcinoma",
+"defn": "A rare carcinoma that arises from the cervix. It is characterized by the presence of cystic spaces surrounded by palisaded epithelial cells. The cystic spaces c"
+},
+{
+"id": "MONDO:0006134",
+"name": "cervical adenosquamous carcinoma",
+"syn": [
+"adenosquamous cell carcinoma of cervix",
+"adenosquamous cell carcinoma of cervix uteri",
+"adenosquamous cell carcinoma of the cervix"
+],
+"parent": "cervical adenocarcinoma",
+"defn": "An uncommon carcinoma arising from the cervix. It is composed of malignant glandular epithelial cells and malignant squamous epithelial cells."
+},
+{
+"id": "MONDO:0006135",
+"name": "cervical clear cell adenocarcinoma",
+"syn": [
+"cervical clear cell carcinoma",
+"cervix clear cell adenocarcinoma",
+"cervix clear cell carcinoma"
+],
+"parent": "clear cell adenocarcinoma",
+"defn": "A rare morphologic variant of cervical adenocarcinoma composed of clear and hobnail cells. It is associated with in utero exposure to diethylstilbestrol (DES)."
+},
+{
+"id": "MONDO:0006137",
+"name": "cervical intraepithelial neoplasia grade 2/3",
+"syn": [
+"CIN 2/3"
+],
+"parent": "cervical intraepithelial neoplasia",
+"defn": "A neoplastic process in the cervix characterized by morphologic features of both moderate and severe intraepithelial neoplasia."
+},
+{
+"id": "MONDO:0006138",
+"name": "cervical large cell neuroendocrine carcinoma",
+"syn": [],
+"parent": "large cell neuroendocrine carcinoma",
+"defn": "A rare, aggressive neuroendocrine carcinoma that arises from the cervix and is characterized by the presence of malignant cells with abundant cytoplasm, large n"
+},
+{
+"id": "MONDO:0006139",
+"name": "cervical metaplasia",
+"syn": [],
+"parent": "cervix disorder",
+"defn": "Metaplastic changes in the cervical glandular or squamous epithelium."
+},
+{
+"id": "MONDO:0006140",
+"name": "cervical mucinous adenocarcinoma, minimal deviation variant",
+"syn": [
+"cervical adenoma malignum",
+"cervical mucinous adenocarcinoma, minimal deviation type"
+],
+"parent": "cervical mucinous adenocarcinoma",
+"defn": "A rare, extremely well differentiated cervical mucinous adenocarcinoma in which most of the neoplastic glands cannot be distinguished from the normal endocervic"
+},
+{
+"id": "MONDO:0006141",
+"name": "cervical villoglandular adenocarcinoma",
+"syn": [
+"cervical adenocarcinoma, villoglandular variant",
+"cervical villoglandular carcinoma",
+"villoglandular variant cervical mucinous adenocarcinoma"
+],
+"parent": "cervical mucinous adenocarcinoma",
+"defn": "A cervical adenocarcinoma characterized by the presence of a prominent villoglandular pattern."
+},
+{
+"id": "MONDO:0006142",
+"name": "cervical small cell carcinoma",
+"syn": [
+"Cervical small cell cancer",
+"cervix small cell carcinoma",
+"cervix uteri small cell carcinoma"
+],
+"parent": "small cell carcinoma",
+"defn": "A small cell carcinoma arising from the cervix."
+},
+{
+"id": "MONDO:0006143",
+"name": "cervical squamous cell carcinoma",
+"syn": [
+"cervical squamous cell cancer",
+"cervix squamous cell carcinoma",
+"cervix uteri squamous cell carcinoma"
+],
+"parent": "squamous cell carcinoma",
+"defn": "A squamous cell carcinoma arising from the cervical epithelium. It usually evolves from a precancerous cervical lesion. Increased numbers of sexual partners and"
+},
+{
+"id": "MONDO:0006144",
+"name": "cervical Wilms tumor",
+"syn": [
+"cervical Wilms' tumour"
+],
+"parent": "cervical cancer",
+"defn": "An embryonal neoplasm arising from the cervix with morphologic features resembling Wilms tumor of the kidney."
+},
+{
+"id": "MONDO:0006145",
+"name": "chondroid chordoma",
+"syn": [
+"chondroid chordoma (morphologic abnormality)"
+],
+"parent": "chordoma",
+"defn": "A slow-growing malignant bone tumor arising from the remnants of the notochord and occurring in the base of the skull. The tumor is characterized by a lobulated"
+},
+{
+"id": "MONDO:0006146",
+"name": "chondroid hamartoma",
+"syn": [],
+"parent": "hamartoma",
+"defn": "A hamartoma that is characterized by the presence of chondroid elements."
+},
+{
+"id": "MONDO:0006149",
+"name": "clear cell papillary cystadenoma",
+"syn": [],
+"parent": "papillary cystadenoma",
+"defn": "A benign cystic glandular epithelial neoplasm characterized by the presence of neoplastic clear or hobnail cells which form papillary structures. There is no ev"
+},
+{
+"id": "MONDO:0006150",
+"name": "colon Burkitt lymphoma",
+"syn": [
+"Burkitt lymphoma of colon",
+"Burkitts lymphoma of colon",
+"colon Burkitt's lymphoma"
+],
+"parent": "immune system cancer",
+"defn": "A rare Burkitt lymphoma that arises from the colon."
+},
+{
+"id": "MONDO:0006151",
+"name": "colon dysplasia",
+"syn": [
+"colonic dysplasia",
+"dysplasia of colon",
+"dysplasia of the colon"
+],
+"parent": "colonic disorder",
+"defn": "A morphologic finding indicating the presence of dysplastic glandular epithelial cells in the colonic mucosa. There is no evidence of invasion."
+},
+{
+"id": "MONDO:0006152",
+"name": "colon inflammatory polyp",
+"syn": [
+"colonic inflammatory polyp",
+"inflammatory polyp of colon",
+"inflammatory polyp of the colon"
+],
+"parent": "colonic neoplasm",
+"defn": "A non-neoplastic polypoid lesion in the colon. It may arise in a background of inflammatory bowel disease or colitis. It is characterized by the presence of a d"
+},
+{
+"id": "MONDO:0006153",
+"name": "colon juvenile polyp",
+"syn": [
+"colon retention polyp",
+"colonic juvenile polyp",
+"colonic retention polyp"
+],
+"parent": "colonic neoplasm",
+"defn": "A non-neoplastic hamartomatous polyp that arises from the colon. It is characterized by the presence of tortuous and cystically dilated glands, edematous change"
+},
+{
+"id": "MONDO:0006154",
+"name": "colon mucosa-associated lymphoid tissue lymphoma",
+"syn": [
+"colon MALT lymphoma",
+"colon MALToma",
+"colonic MALT lymphoma"
+],
+"parent": "colon lymphoma",
+"defn": "An extranodal marginal zone lymphoma of mucosa-associated lymphoid tissue that arises from the colon."
+},
+{
+"id": "MONDO:0006155",
+"name": "colon neuroendocrine tumor G1",
+"syn": [
+"carcinoid tumor of colon",
+"carcinoid tumor of the colon",
+"carcinoid tumour of colon"
+],
+"parent": "colorectal neuroendocrine tumor G1",
+"defn": "A well differentiated, low grade neuroendocrine tumor (carcinoid tumor) that arises from the colon. The mitotic count is less than 2 per 10 HPF and/or the Ki67 "
+},
+{
+"id": "MONDO:0006156",
+"name": "colon sessile serrated adenoma/polyp",
+"syn": [
+"colon sessile serrated adenoma",
+"colon sessile serrated polyp",
+"colon SSA"
+],
+"parent": "colon adenoma",
+"defn": "A polyp that arises from the colon. It is characterized by the presence of serrated glands and the absence of generalized dysplasia. Some authors have suggested"
+},
+{
+"id": "MONDO:0006157",
+"name": "colorectal adenosquamous carcinoma",
+"syn": [
+"colorectal (colon or rectal) adenosquamous cancer",
+"colorectal adenosquamous cancer",
+"colorectum adenosquamous carcinoma"
+],
+"parent": "adenosquamous carcinoma",
+"defn": "An unusual colorectal carcinoma characterized by the presence of glandular and squamous carcinomatous components. The two carcinomatous components may be admixe"
+},
+{
+"id": "MONDO:0006158",
+"name": "colorectal diffuse large B-cell lymphoma",
+"syn": [
+"colorectal DLBCL",
+"colorectum diffuse large B-cell lymphoma",
+"diffuse large B-cell lymphoma of colorectum"
+],
+"parent": "immune system cancer",
+"defn": "A diffuse large B-cell lymphoma that arises from the colon or rectum."
+},
+{
+"id": "MONDO:0006159",
+"name": "colorectal gastrointestinal stromal tumor",
+"syn": [
+"colorectal (colon or rectal) gastrointestinal stromal tumor (gist)",
+"colorectal (colon or rectal) gastrointestinal stromal tumour (gist)",
+"colorectal gastrointestinal stromal tumor (gist)"
+],
+"parent": "colorectal neoplasm",
+"defn": "A gastrointestinal stromal tumor that arises from the colon or rectum. The majority of cases have spindle cell morphology. Gastrointestinal stromal tumors of th"
+},
+{
+"id": "MONDO:0006160",
+"name": "colorectal hamartoma",
+"syn": [
+"colorectum hamartoma (disease)",
+"large intestinal hamartoma"
+],
+"parent": "colorectal neoplasm",
+"defn": "A non-neoplastic, hamartomatous polyp that arises from the colon and rectum. This group includes the juvenile polyp, Peutz-Jeghers polyp, and Cowden-associated "
+},
+{
+"id": "MONDO:0006161",
+"name": "colorectal juvenile polyp",
+"syn": [
+"colorectal retention polyp",
+"juvenile polyp of large bowel",
+"juvenile polyp of the large bowel"
+],
+"parent": "colorectal hamartoma",
+"defn": "A non-neoplastic hamartomatous polyp that arises from the colon and rectum. It is characterized by the presence of tortuous and cystically dilated glands, edema"
+},
+{
+"id": "MONDO:0006162",
+"name": "colorectal neuroendocrine tumor G1",
+"syn": [
+"colorectal carcinoid tumor",
+"colorectal carcinoid tumour",
+"colorectal NET G1"
+],
+"parent": "colorectal neoplasm",
+"defn": "A well differentiated, low grade neuroendocrine tumor (carcinoid tumor) that arises from the colon or rectum. The mitotic count is less than 2 per 10 HPF and/or"
+},
+{
+"id": "MONDO:0006163",
+"name": "colorectal serrated adenocarcinoma",
+"syn": [],
+"parent": "colorectal adenocarcinoma",
+"defn": "A rare, invasive colorectal adenocarcinoma characterized by the presence of a malignant infiltrate with serrated glandular architecture."
+},
+{
+"id": "MONDO:0006164",
+"name": "colorectal sessile serrated adenoma/polyp",
+"syn": [
+"colorectal mixed hyperplastic adenomatous polyp",
+"colorectal mixed hyperplastic adenomatous polyp/serrated adenoma",
+"colorectal sessile serrated adenoma"
+],
+"parent": "colorectal adenoma",
+"defn": "A polyp that arises from the colon or rectum. It is characterized by the presence of serrated glands and the absence of generalized dysplasia. Some authors have"
+},
+{
+"id": "MONDO:0006165",
+"name": "colorectal squamous cell carcinoma",
+"syn": [
+"colorectal (colon or rectal) squamous cell cancer",
+"colorectal squamous cell cancer",
+"colorectum squamous cell carcinoma"
+],
+"parent": "squamous cell carcinoma",
+"defn": "A very rare colorectal carcinoma characterized by the presence of a malignant squamous cell infiltrate."
+},
+{
+"id": "MONDO:0006166",
+"name": "columnar cell hyperplasia of the breast",
+"syn": [
+"CCH",
+"columnar cell hyperplasia of breast"
+],
+"parent": "hyperplasia",
+"defn": "A columnar cell lesion characterized by the presence of enlarged terminal ductal lobular units with dilated acini. The acini are lined by more than two layers o"
+},
+{
+"id": "MONDO:0006167",
+"name": "combined lung carcinoma",
+"syn": [
+"combined carcinoma of lung",
+"combined carcinoma of the lung",
+"combined lung cancer"
+],
+"parent": "neuroendocrine carcinoma",
+"defn": "A lung carcinoma characterized by the presence of large or small neuroendocrine carcinoma cells in combination with malignant glandular or squamous epithelial c"
+},
+{
+"id": "MONDO:0006169",
+"name": "complex endometrial hyperplasia",
+"syn": [],
+"parent": "hyperplasia",
+"defn": "A hyperplasia characterized by excessive proliferation of endometrial cells, resulting in the formation of complex epithelial structures. Epithelial atypia may "
+},
+{
+"id": "MONDO:0006170",
+"name": "conjunctival disorder",
+"syn": [
+"conjunctiva disease",
+"conjunctiva disease or disorder",
+"conjunctival disease"
+],
+"parent": "eye adnexa disorder",
+"defn": "Any disorder of the conjunctiva."
+},
+{
+"id": "MONDO:0006172",
+"name": "conjunctival nevus",
+"syn": [
+"Nevus of conjunctiva",
+"Nevus of the conjunctiva"
+],
+"parent": "melanocytic nevus",
+"defn": "A benign melanocytic neoplasm that arises from the conjunctiva."
+},
+{
+"id": "MONDO:0006173",
+"name": "conjunctival squamous cell carcinoma",
+"syn": [
+"conjunctiva epidermoid carcinoma",
+"conjunctiva squamous cell carcinoma",
+"conjunctival epidermoid carcinoma"
+],
+"parent": "eye carcinoma",
+"defn": "A low-grade squamous cell carcinoma that arises from the conjunctiva. It is the most common primary malignant tumor that arises from the conjunctiva. It usually"
+},
+{
+"id": "MONDO:0006174",
+"name": "cortisol-producing adrenal cortex adenoma",
+"syn": [
+"cortisol producing adrenal cortex adenoma",
+"cortisol producing adrenal cortical adenoma"
+],
+"parent": "adrenal cortex adenoma",
+"defn": "An adenoma of the adrenal cortex that produces cortisol. It may be associated with Cushing syndrome. Clinical presentation includes weight gain, round face, eas"
+},
+{
+"id": "MONDO:0006176",
+"name": "cribriform carcinoma",
+"syn": [],
+"parent": "carcinoma",
+"defn": "A carcinoma characterized by the presence of a cribriform architectural pattern. Representative examples include the intraductal cribriform breast carcinoma and"
+},
+{
+"id": "MONDO:0006178",
+"name": "dedifferentiated solitary fibrous tumor",
+"syn": [],
+"parent": "solitary fibrous tumor",
+"defn": "A solitary fibrous tumor characterized by the presence of areas of abrupt transition to high grade sarcoma."
+},
+{
+"id": "MONDO:0006179",
+"name": "desmoplastic ameloblastoma",
+"syn": [],
+"parent": "ameloblastoma",
+"defn": "An ameloblastoma with prominent desmoplastic stroma that causes compression of the neoplastic epithelial islands."
+},
+{
+"id": "MONDO:0006180",
+"name": "digestive system adenoma",
+"syn": [
+"digestive tract adenoma",
+"gastrointestinal adenoma"
+],
+"parent": "adenoma",
+"defn": "A sporadic or less frequently familial neoplasm, arising from the glandular epithelium of the stomach, small intestine, biliary tract, colon, and rectum. It is "
+},
+{
+"id": "MONDO:0006181",
+"name": "digestive system carcinoma",
+"syn": [
+"carcinoma of digestive system",
+"carcinoma of the gastrointestinal system",
+"gastrointestinal carcinoma"
+],
+"parent": "digestive system cancer",
+"defn": "A malignant neoplasm that arises from the epithelium of any part of the digestive system. Representative examples include colorectal carcinoma, esophageal carci"
+}
+]

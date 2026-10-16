@@ -1,0 +1,1786 @@
+[
+{
+"id": "MONDO:0000078",
+"name": "acrocephalopolysyndactyly",
+"syn": [
+"ACPS"
+],
+"parent": "acrocephalosyndactyly",
+"defn": "A common presentation of craniosynostosis and polysyndactyly.",
+"draft": "첨두다지증"
+},
+{
+"id": "MONDO:0000111",
+"name": "camptodactyly syndrome, Guadalajara",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "수지굴곡 증후군, 과달라하라형"
+},
+{
+"id": "MONDO:0000114",
+"name": "cerebelloparenchymal disorder",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "소뇌실질 장애"
+},
+{
+"id": "MONDO:0000231",
+"name": "Far eastern spotted fever",
+"syn": [],
+"parent": "Rickettsia conorii infectious disease",
+"defn": "",
+"draft": "극동 홍반열"
+},
+{
+"id": "MONDO:0000232",
+"name": "Flinders island spotted fever",
+"syn": [],
+"parent": "spotted fever",
+"defn": "A spotted fever that has material basis in Rickettsia honei, which is transmitted by cayenne ticks (Amblyomma cajennense). The infection has symptom mild spotte",
+"draft": "플린더스섬 홍반열"
+},
+{
+"id": "MONDO:0000234",
+"name": "Rickettsia parkeri spotted fever",
+"syn": [],
+"parent": "spotted fever",
+"defn": "A spotted fever that has material basis in Rickettsia parkeri, which is transmitted by Gulf Coast tick (Amblyomma maculatum). The infection has symptom fever, h",
+"draft": "리케차 파르케리 홍반열"
+},
+{
+"id": "MONDO:0000239",
+"name": "adiaspiromycosis",
+"syn": [
+"adiaspirosis",
+"haplosporangiosis",
+"pulmonary adiaspiromycosis"
+],
+"parent": "primary systemic mycosis",
+"defn": "Adiaspiromycosis is a rare fungal infection in the lung and is caused by inhalation of spores of the saprophytic soil fungus Chrysosporium parvum var crescens (",
+"draft": "아디아스피로진균증"
+},
+{
+"id": "MONDO:0000243",
+"name": "ectothrix infectious disease",
+"syn": [],
+"parent": "dermatophytosis",
+"defn": "A dermatophyte infection of the hair that infects the hair surface.",
+"draft": "모발외 감염증"
+},
+{
+"id": "MONDO:0000244",
+"name": "endothrix infectious disease",
+"syn": [],
+"parent": "piedra",
+"defn": "A dermatophyte infection of the hair that nvade the hair shaft and internalize into the hair cell.",
+"draft": "모발내 감염증"
+},
+{
+"id": "MONDO:0000245",
+"name": "tinea imbricata",
+"syn": [],
+"parent": "tinea corporis",
+"defn": "A tinea corporis that results in fungal infection located in skin, has material basis in Trichophyton concentricum, which is characterized by ring-like growth i",
+"draft": "백선 임브리카타"
+},
+{
+"id": "MONDO:0000253",
+"name": "piedra",
+"syn": [
+"hair shaft fungal infectious disease"
+],
+"parent": "disorder of pilosebaceous unit",
+"defn": "Either of two diseases resulting from fungal infection of the hair shafts. Black piedra occurs mainly in and on the hairs of the scalp and is caused by Piedraia",
+"draft": "결절사진균증"
+},
+{
+"id": "MONDO:0000292",
+"name": "philophthalmiasis",
+"syn": [
+"Philophthalmus caused disease or disorder",
+"Philophthalmus disease or disorder",
+"Philophthalmus infectious disease"
+],
+"parent": "echinostomiasis",
+"defn": "A disease caused by infection with Philophthalmus.",
+"draft": "필로프탈무스증"
+},
+{
+"id": "MONDO:0000294",
+"name": "mesocestoidiasis",
+"syn": [
+"infection by Mesocestoides",
+"Mesocestoides caused disease or disorder",
+"Mesocestoides disease or disorder"
+],
+"parent": "Cestode infectious disease",
+"defn": "An disease or disorder caused by infection with Mesocestoides.",
+"draft": "메소세스토이데스증"
+},
+{
+"id": "MONDO:0000297",
+"name": "baylisascariasis",
+"syn": [
+"Baylisascaris procyonis caused disease or disorder",
+"Baylisascaris procyonis disease or disorder",
+"Baylisascaris procyonis infectious disease"
+],
+"parent": "Ascaridida infectious disease",
+"defn": "An infection that is caused by the raccoon nematode Baylisascaris procyonis, which is transmitted by the ingestion of embryonated eggs in contaminated soil; sym",
+"draft": "베일리사스카리스증"
+},
+{
+"id": "MONDO:0000298",
+"name": "dioctophymiasis",
+"syn": [
+"Dioctophyme renale caused disease or disorder",
+"Dioctophyme renale disease or disorder",
+"Dioctophyme renale infection"
+],
+"parent": "Enoplea infectious disease",
+"defn": "A disease caused by infection with Dioctophyme renale.",
+"draft": "디옥토피마증"
+},
+{
+"id": "MONDO:0000302",
+"name": "basidiobolomycosis",
+"syn": [
+"Basidiobolus caused disease or disorder",
+"Basidiobolus disease or disorder",
+"Basidiobolus infectious disease"
+],
+"parent": "Zygomycosis",
+"defn": "A disease caused by infection with Basidiobolus.",
+"draft": "바시디오볼루스 진균증"
+},
+{
+"id": "MONDO:0000303",
+"name": "conidiobolomycosis",
+"syn": [
+"Conidiobolus infectious disease",
+"infection by Conidiobolus"
+],
+"parent": "subcutaneous mycosis",
+"defn": "",
+"draft": "코니디오볼루스 진균증"
+},
+{
+"id": "MONDO:0000307",
+"name": "parasitic Ichthyosporea infectious disease",
+"syn": [
+"Ichthyosporea caused disease or disorder",
+"Ichthyosporea disease or disorder",
+"Ichthyosporea infectious disease"
+],
+"parent": "parasitic infectious disease",
+"defn": "A disease caused by infection with Ichthyosporea.",
+"draft": "기생성 이크티오스포레아 감염증"
+},
+{
+"id": "MONDO:0000331",
+"name": "Rickettsia helvetica spotted fever",
+"syn": [
+"aneruptive fever",
+"Rickettsia helvetica aneruptive fever",
+"Rickettsia helvetica caused disease or disorder"
+],
+"parent": "spotted fever",
+"defn": "A disease caused by infection with Rickettsia helvetica.",
+"draft": "리케차 헬베티카 홍반열"
+},
+{
+"id": "MONDO:0000389",
+"name": "atelosteogenesis",
+"syn": [],
+"parent": "osteochondrodysplasia",
+"defn": "",
+"draft": "아텔로스테오제네시스"
+},
+{
+"id": "MONDO:0000407",
+"name": "malignant pleural solitary fibrous tumor",
+"syn": [
+"pleural solitary fibrous tumor, malignant"
+],
+"parent": "pleural cancer",
+"defn": "A malignant form of pleural solitary fibrous tumor.",
+"draft": "악성 흉막 고립성 섬유종"
+},
+{
+"id": "MONDO:0000415",
+"name": "adolescence-adult electroclinical syndrome",
+"syn": [],
+"parent": "epilepsy syndrome",
+"defn": "An electroclinical syndrome with onset in adolescence and adulthood.",
+"draft": "청소년-성인 전기임상 증후군"
+},
+{
+"id": "MONDO:0000480",
+"name": "anismus",
+"syn": [
+"anal region skeletal muscle focal dystonia",
+"focal dystonia of anal region skeletal muscle"
+],
+"parent": "focal dystonia",
+"defn": "A focal dystonia of the pelvic floor muscles during attempted defecation.",
+"draft": "항문경련"
+},
+{
+"id": "MONDO:0000497",
+"name": "pyometritis",
+"syn": [
+"inflammation of myometrium",
+"myometrium inflammation",
+"pyometra"
+],
+"parent": "uterine disorder",
+"defn": "Inflammation of uterine musculature associated with pus in the uterine cavity.",
+"draft": "자궁근층 화농증"
+},
+{
+"id": "MONDO:0000539",
+"name": "striated muscle rhabdoid tumor",
+"syn": [
+"striated muscle tissue rhabdoid tumor",
+"striated muscle tissue rhabdoid tumour"
+],
+"parent": "rhabdoid tumor",
+"defn": "A rhabdoid tumor that involves the striated muscle tissue.",
+"draft": "가로무늬근 횡문근양 종양"
+},
+{
+"id": "MONDO:0000849",
+"name": "fibrogenesis imperfecta ossium",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "A syndrome that involves abnormality of collagen synthesis in lamellar bones, with manifestations limited to the skeleton. The initial symptom is frequently spo",
+"draft": "불완전 섬유형성 골증"
+},
+{
+"id": "MONDO:0001215",
+"name": "allescheriosis",
+"syn": [],
+"parent": "primary systemic mycosis",
+"defn": "A primary systemic mycosis that results in systemic fungal infection, has material basis in Pseudallescheria boydii, which results in formation of abscesses.",
+"draft": "알레스케리아증"
+},
+{
+"id": "MONDO:0001283",
+"name": "endosalpingiosis",
+"syn": [],
+"parent": "female reproductive system disorder",
+"defn": "A benign pathologic process characterized by the transformation of the mesothelium into fallopian tube epithelium. It occurs in the peritoneum and may affect th",
+"draft": "난관내막증"
+},
+{
+"id": "MONDO:0001320",
+"name": "ring staphyloma",
+"syn": [],
+"parent": "scleral disorder",
+"defn": "",
+"draft": "고리 포도막종"
+},
+{
+"id": "MONDO:0001349",
+"name": "odontoclasia",
+"syn": [],
+"parent": "dental caries",
+"defn": "",
+"draft": "치아 흡수"
+},
+{
+"id": "MONDO:0001360",
+"name": "blind hypotensive eye",
+"syn": [],
+"parent": "ocular hypotension",
+"defn": "",
+"draft": "실명 저안압안"
+},
+{
+"id": "MONDO:0001363",
+"name": "blind hypertensive eye",
+"syn": [],
+"parent": "eye degenerative disorder",
+"defn": "",
+"draft": "실명 고안압안"
+},
+{
+"id": "MONDO:0001368",
+"name": "phthisical cornea",
+"syn": [],
+"parent": "corneal degeneration",
+"defn": "",
+"draft": "안구로 각막"
+},
+{
+"id": "MONDO:0001394",
+"name": "chronic erythremia",
+"syn": [],
+"parent": "leukemia",
+"defn": "",
+"draft": "만성 적혈구증가증"
+},
+{
+"id": "MONDO:0001607",
+"name": "intrapelvic lymph node leukemic reticuloendotheliosis",
+"syn": [
+"leukemic reticuloendotheliosis involving intrapelvic lymph nodes"
+],
+"parent": "lymph node cancer",
+"defn": "",
+"draft": "골반내 림프절 백혈병성 세망내피증"
+},
+{
+"id": "MONDO:0001663",
+"name": "hole retinal cyst",
+"syn": [
+"macular cyst, hole, or pseudohole of retina"
+],
+"parent": "degeneration of macula and posterior pole",
+"defn": "",
+"draft": "망막 구멍 낭종"
+},
+{
+"id": "MONDO:0001816",
+"name": "scleroperikeratitis",
+"syn": [
+"scleritis with corneal involvement"
+],
+"parent": "scleritis",
+"defn": "",
+"draft": "공막각막주위염"
+},
+{
+"id": "MONDO:0001897",
+"name": "bilateral hyperactive labyrinth",
+"syn": [
+"hyperactive labyrinth, bilateral"
+],
+"parent": "inner ear disorder",
+"defn": "",
+"draft": "양측 과활동 미로"
+},
+{
+"id": "MONDO:0001936",
+"name": "brawny scleritis",
+"syn": [],
+"parent": "anterior scleritis",
+"defn": "",
+"draft": "갈색 공막염"
+},
+{
+"id": "MONDO:0001959",
+"name": "labyrinthine bilateral reactive loss",
+"syn": [
+"loss of labyrinthine reactivity, bilateral"
+],
+"parent": "inner ear disorder",
+"defn": "",
+"draft": "양측 미로 반응 소실"
+},
+{
+"id": "MONDO:0001988",
+"name": "external pathological resorption",
+"syn": [],
+"parent": "tooth resorption",
+"defn": "",
+"draft": "외부 병적 흡수"
+},
+{
+"id": "MONDO:0002106",
+"name": "labyrinthine unilateral reactive loss",
+"syn": [
+"loss of labyrinthine reactivity, unilateral"
+],
+"parent": "inner ear disorder",
+"defn": "",
+"draft": "일측 미로 반응 소실"
+},
+{
+"id": "MONDO:0002107",
+"name": "unilateral hyperactive labyrinth",
+"syn": [
+"hyperactive labyrinth, unilateral"
+],
+"parent": "inner ear disorder",
+"defn": "",
+"draft": "일측 미로 과반응"
+},
+{
+"id": "MONDO:0002255",
+"name": "hypertrophic elongation of cervix",
+"syn": [],
+"parent": "cervix disorder",
+"defn": "",
+"draft": "자궁경부 비대성 신장"
+},
+{
+"id": "MONDO:0002422",
+"name": "adamantinoma",
+"syn": [
+"adamantinoma of long bones",
+"adamantinoma of long bones (morphologic abnormality)",
+"adamantinoma, malignant"
+],
+"parent": "bone carcinoma",
+"defn": "A low grade malignant neoplasm arising from the long bones. The tibia is the most frequently affected bone site. Patients present with swelling which may or may",
+"draft": "사랑뼈종"
+},
+{
+"id": "MONDO:0002526",
+"name": "dermal unilateral segmental cavernous angioma",
+"syn": [],
+"parent": "cavernous hemangioma",
+"defn": "",
+"draft": "진피 편측 분절성 해면 혈관종"
+},
+{
+"id": "MONDO:0002813",
+"name": "lipomatous cancer",
+"syn": [
+"adipose tissue cancer",
+"cancer of adipose tissue",
+"malignant adipose tissue neoplasm"
+],
+"parent": "cancer",
+"defn": "A malignant mesenchymal neoplasm arising from adipocytes.",
+"draft": "지방성 암"
+},
+{
+"id": "MONDO:0002821",
+"name": "trabecular follicular adenocarcinoma",
+"syn": [
+"follicular adenocarcinoma, trabecular (morphologic abnormality)"
+],
+"parent": "thyroid gland follicular carcinoma",
+"defn": "",
+"draft": "소주형 여포 선암"
+},
+{
+"id": "MONDO:0002822",
+"name": "trabecular adenocarcinoma",
+"syn": [
+"trabecula adenocarcinoma",
+"trabecular adenocarcinoma (morphologic abnormality)",
+"trabecular carcinoma"
+],
+"parent": "adenocarcinoma",
+"defn": "A malignant epithelial neoplasm characterized by the presence of a trabecular glandular architectural pattern.",
+"draft": "소주형 선암"
+},
+{
+"id": "MONDO:0002855",
+"name": "ectomesenchymoma",
+"syn": [
+"malignant ectomesenchymoma",
+"rhabdomyosarcoma with ganglionic differentiation (morphologic abnormality)",
+"sarcoma with ganglionic or neuroectodermal differentiation"
+],
+"parent": "sarcoma",
+"defn": "An aggressive malignant mesenchymal neoplasm of the nervous system or soft tissues. It is characterized by the presence of a sarcomatous component (most often r",
+"draft": "외배엽간엽종"
+},
+{
+"id": "MONDO:0002875",
+"name": "parasitic ectoparasitic infectious disease",
+"syn": [],
+"parent": "parasitic skin disorder",
+"defn": "Infestations by parasites which live on, or burrow into, the surface of their host's epidermis. Most ectoparasites are arthropods.",
+"draft": "기생충성 외부기생충 감염병"
+},
+{
+"id": "MONDO:0002917",
+"name": "disorder of pilosebaceous unit",
+"syn": [
+"disease of pilosebaceous unit",
+"disease or disorder of pilosebaceous unit",
+"hair and hair follicle diseases"
+],
+"parent": "integumentary system disorder",
+"defn": "A disease that involves the pilosebaceous unit.",
+"draft": "털피지샘단위 질환"
+},
+{
+"id": "MONDO:0002938",
+"name": "metatypical basal cell carcinoma",
+"syn": [],
+"parent": "skin basal cell carcinoma",
+"defn": "A skin carcinoma displaying cytological characteristics intermediate to nodular basal cell carcinoma and squamous cell carcinoma.",
+"draft": "메타티픽 기저세포암종"
+},
+{
+"id": "MONDO:0002946",
+"name": "gynatresia",
+"syn": [],
+"parent": "female reproductive system disorder",
+"defn": "A congenital or acquired occlusion of an opening in any part of the female genital tract.",
+"draft": "여성생식기 폐쇄증"
+},
+{
+"id": "MONDO:0002947",
+"name": "adamantinoid basal cell epithelioma",
+"syn": [
+"adamantinoid basal cell carcinoma",
+"skin adamantinoid basal cell carcinoma"
+],
+"parent": "skin basal cell carcinoma",
+"defn": "",
+"draft": "법랑모세포양 기저세포상피종"
+},
+{
+"id": "MONDO:0002948",
+"name": "skin fibroepithelial basal cell carcinoma",
+"syn": [
+"fibroepithelioma of Pinkus",
+"fibroepithelioma of Pinkus type",
+"Pinkus tumor"
+],
+"parent": "skin basal cell carcinoma",
+"defn": "A variant of basal cell carcinoma presenting as an elevated or erythematous nodular lesion usually in the back. Morphologically, it is characterized by the pres",
+"draft": "피부 섬유상피성 기저세포암종"
+},
+{
+"id": "MONDO:0002963",
+"name": "acantholytic acanthoma",
+"syn": [],
+"parent": "acanthoma",
+"defn": "A benign epithelial neoplasm of the skin. It presents as a papular or nodular lesion. Morphologically, it is characterized by the presence of hyperkeratosis, ac",
+"draft": "가시세포융해성 극세포종"
+},
+{
+"id": "MONDO:0002991",
+"name": "adenocarcinofibroma",
+"syn": [
+"adenofibroma, malignant",
+"malignant adenofibroma"
+],
+"parent": "female reproductive organ cancer",
+"defn": "A carcinoma arising from the ovary. It is characterized by the presence of malignant epithelial cells in a fibrotic stroma. Histologic variants include clear ce",
+"draft": "샘암섬유종"
+},
+{
+"id": "MONDO:0003157",
+"name": "disappearing bone disease",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "Syndromes of bone destruction where the cause is not obvious such as neoplasia, infection, or trauma. The destruction follows various patterns: massive (Gorham ",
+"draft": "소실성 골질환"
+},
+{
+"id": "MONDO:0003159",
+"name": "vascular hemostatic disease",
+"syn": [
+"disorder, vascular hemostatic",
+"disorders, vascular hemostatic",
+"hemostatic disorder"
+],
+"parent": "hemorrhagic disease",
+"defn": "Pathological processes involving the integrity of blood circulation. Hemostasis depends on the integrity of blood vessels, blood fluidity, and blood coagulation",
+"draft": "혈관성 지혈 질환"
+},
+{
+"id": "MONDO:0003170",
+"name": "gliofibroma",
+"syn": [
+"gliofibroma (morphologic abnormality)"
+],
+"parent": "astrocytic tumor",
+"defn": "An astrocytic tumor affecting young people. Morphologically, it is characterized by the presence of collagenous tissue surrounding neoplastic astrocytes. In som",
+"draft": "신경아교섬유종"
+},
+{
+"id": "MONDO:0003191",
+"name": "rete ovarii adenocarcinoma",
+"syn": [],
+"parent": "ovarian adenocarcinoma",
+"defn": "An exceptionally rare adenocarcinoma that arises from the rete ovarii.",
+"draft": "난소그물 선암"
+},
+{
+"id": "MONDO:0003192",
+"name": "rete ovarii neoplasm",
+"syn": [
+"neoplasm of rete ovarii",
+"rete ovarii neoplasm (disease)",
+"rete ovarii tumor"
+],
+"parent": "ovarian neoplasm",
+"defn": "A benign or malignant neoplasm that arises from the rete ovarii which is located in the ovarian hilus. It includes adenoma, cystadenoma, cystadenofibroma, and a",
+"draft": "난소그물 신생물"
+},
+{
+"id": "MONDO:0003446",
+"name": "papillary hidradenoma",
+"syn": [
+"hidradenoma papilliferum"
+],
+"parent": "hidradenoma",
+"defn": "A benign neoplasm arising from the sweat glands. It presents as a slow growing cystic nodular lesion most often in the skin of the vulva and the perianal region",
+"draft": "유두 땀샘종"
+},
+{
+"id": "MONDO:0003447",
+"name": "clear cell hidradenoma",
+"syn": [
+"clear cell hidradenoma (morphologic abnormality)"
+],
+"parent": "hidradenoma",
+"defn": "An uncommon benign neoplasm of the sweat glands characterized by the presence of clear cells.",
+"draft": "투명세포 땀샘종"
+},
+{
+"id": "MONDO:0003448",
+"name": "benign spiradenoma",
+"syn": [
+"spiradenoma"
+],
+"parent": "benign neoplasm of sweat gland",
+"defn": "A benign epithelial neoplasm with eccrine or apocrine differentiation, arising from the sweat glands. It usually presents as a solitary, well circumscribed, fir",
+"draft": "양성 나선샘종"
+},
+{
+"id": "MONDO:0003474",
+"name": "tanycytic ependymoma",
+"syn": [],
+"parent": "ependymoma",
+"defn": "A variant of ependymoma, often found in the spinal cord, with tumor cells arranged in fascicles of variable width and cell density. Ependymal rosettes are gener",
+"draft": "신장세포성 상의세포종"
+},
+{
+"id": "MONDO:0003567",
+"name": "bilateral hypoactive labyrinth",
+"syn": [
+"hypoactive labyrinth, bilateral"
+],
+"parent": "inner ear disorder",
+"defn": "",
+"draft": "양측 저활동성 미로"
+},
+{
+"id": "MONDO:0003729",
+"name": "aleukemic leukemia cutis",
+"syn": [],
+"parent": "aleukemic leukemia",
+"defn": "Infiltration of the skin and subcutaneous tissue by leukemic cells without evidence of leukemia in the bone marrow and peripheral blood. It results in clinicall",
+"draft": "백혈구 비증가성 백혈병 피부침윤"
+},
+{
+"id": "MONDO:0003849",
+"name": "clivus chordoma",
+"syn": [
+"chordoma (disease) of clivus of occipital bone",
+"chordoma of clivus",
+"chordoma of the clivus"
+],
+"parent": "skull base chordoma",
+"defn": "A slow-growing malignant bone tumor arising from the remnants of the notochord and occurring in the clivus. It is characterized by a lobulated growth pattern, m",
+"draft": "사골 사대 척삭종"
+},
+{
+"id": "MONDO:0003850",
+"name": "clivus chondroid chordoma",
+"syn": [
+"chondroid chordoma of clivus",
+"chondroid chordoma of clivus of occipital bone",
+"chondroid chordoma of the clivus"
+],
+"parent": "clivus chordoma",
+"defn": "A slow-growing malignant bone tumor arising from the remnants of the notochord and occurring in the clivus. It is characterized by a lobulated growth pattern, m",
+"draft": "사대 연골모양 척삭종"
+},
+{
+"id": "MONDO:0004005",
+"name": "rete ovarii adenoma",
+"syn": [
+"adenoma, rete ovarii, benign"
+],
+"parent": "rete ovarii neoplasm",
+"defn": "An adenoma that arises from the rete ovarii. It is composed of elongated tubules. The clinical course is benign.",
+"draft": "난소그물 샘종"
+},
+{
+"id": "MONDO:0004006",
+"name": "rete ovarii cystadenofibroma",
+"syn": [
+"cystadenofibroma of rete ovarii"
+],
+"parent": "ovarian benign neoplasm",
+"defn": "An exceptionally rare cystadenofibroma that arises from the rete ovarii.",
+"draft": "난소그물 낭샘섬유종"
+},
+{
+"id": "MONDO:0004049",
+"name": "combat disorder",
+"syn": [
+"combat neurosis"
+],
+"parent": "acute stress disorder",
+"defn": "Neurotic reactions to unusual, severe, or overwhelming military stress.",
+"draft": "전투 신경증"
+},
+{
+"id": "MONDO:0004051",
+"name": "aleukemic monocytic leukemia cutis",
+"syn": [],
+"parent": "aleukemic leukemia cutis",
+"defn": "",
+"draft": "백혈구감소성 단핵구성 백혈병 피부침범"
+},
+{
+"id": "MONDO:0004052",
+"name": "rectal cloacogenic carcinoma",
+"syn": [
+"cloacogenic carcinoma of rectum",
+"cloacogenic carcinoma of the rectum",
+"rectal transition zone carcinoma"
+],
+"parent": "squamous cell carcinoma of rectum",
+"defn": "A carcinoma that arises from the transitional zone at the junction of the rectum and anus.",
+"draft": "직장 총배설강 암종"
+},
+{
+"id": "MONDO:0004083",
+"name": "Borst-Jadassohn intraepidermal carcinoma",
+"syn": [
+"intraepidermal epithelioma of Jadassohn"
+],
+"parent": "skin carcinoma",
+"defn": "A rare cutaneous lesion presenting as a scaly verrucous plaque. Morphologically, the plaque contains nests of basaloid cells.",
+"draft": "보르스트-야다손 표피내 암종"
+},
+{
+"id": "MONDO:0004129",
+"name": "cloacogenic carcinoma",
+"syn": [
+"anal canal cloacogenic cancer",
+"anal canal cloacogenic carcinoma",
+"anal cloacogenic carcinoma"
+],
+"parent": "anal canal carcinoma",
+"defn": "An anal carcinoma arising from the transitional zone of the anal canal.",
+"draft": "총배설강성 암종"
+},
+{
+"id": "MONDO:0004478",
+"name": "pregerminal center chronic lymphocytic leukemia/small lymphocytic lymphoma",
+"syn": [
+"chronic lymphocytic leukemia/small lymphocytic lymphoma with unmutated Immunoglobulin heavy chain variable-region Gene",
+"CLL/SLL with unmutated IGVH"
+],
+"parent": "chronic lymphocytic leukemia/small lymphocytic lymphoma",
+"defn": "A recently recognized variant of chronic lymphocytic leukemia/small lymphocytic lymphoma (CLL/SLL) that lacks somatic hypermutations of the Immunoglobulin heavy",
+"draft": "배중심 전 만성 림프구성 백혈병/소림프구성 림프종"
+},
+{
+"id": "MONDO:0004528",
+"name": "lymph node palisaded myofibroblastoma",
+"syn": [
+"palisaded lymph node myofibroblastoma",
+"palisaded myofibroblastoma of lymph node",
+"palisaded myofibroblastoma of the lymph node"
+],
+"parent": "lymph node neoplasm",
+"defn": "A myofibroblastoma arising from the inguinal lymph nodes. It is characterized by the presence of nuclear palisading.",
+"draft": "림프절 울타리형 근섬유모세포종"
+},
+{
+"id": "MONDO:0004559",
+"name": "malignant glandular tumor of peripheral nerve sheath",
+"syn": [
+"glandular malignant peripheral nerve sheath tumor",
+"glandular malignant peripheral nerve sheath tumour",
+"glandular MPNST"
+],
+"parent": "malignant peripheral nerve sheath tumor",
+"defn": "A variant of malignant peripheral nerve sheath tumor characterized by the presence of glandular epithelium.",
+"draft": "말초신경초 악성 샘종양"
+},
+{
+"id": "MONDO:0004751",
+"name": "disease of orbital part of eye adnexa",
+"syn": [],
+"parent": "eye adnexa disorder",
+"defn": "Diseases of the bony orbit and contents except the eyeball.",
+"draft": "눈확부 눈부속기 질환"
+},
+{
+"id": "MONDO:0004803",
+"name": "disseminated eosinophilic collagen disease",
+"syn": [],
+"parent": "collagenopathy",
+"defn": "",
+"draft": "파종성 호산구성 교원병"
+},
+{
+"id": "MONDO:0004932",
+"name": "null-cell leukemia",
+"syn": [],
+"parent": "acute lymphoblastic leukemia",
+"defn": "",
+"draft": "무세포 백혈병"
+},
+{
+"id": "MONDO:0005122",
+"name": "Pectobacterium carotovorum infection",
+"syn": [
+"Pectobacterium caused disease or disorder",
+"Pectobacterium disease or disorder",
+"Pectobacterium infectious disease"
+],
+"parent": "bacterial infectious disease",
+"defn": "A bacterial infection induced by Pectobacterium carotovorum which is is a bacterium of the family Enterobacteriaceae. This bacterius is a ubiquitous plant patho",
+"draft": "Pectobacterium carotovorum 감염"
+},
+{
+"id": "MONDO:0005142",
+"name": "Pseudomonas aeruginosa CF5 infection",
+"syn": [],
+"parent": "Pseudomonas aeruginosa infectious disease",
+"defn": "A Pseudomonas aeruginosa CF5 infection is a Pseudomonas infection of strain CF5.",
+"draft": "Pseudomonas aeruginosa CF5 감염"
+},
+{
+"id": "MONDO:0005143",
+"name": "Pseudomonas aeruginosa PA14 infection",
+"syn": [],
+"parent": "Pseudomonas aeruginosa infectious disease",
+"defn": "A Pseudomonas aeruginosa PA14 infection is a Pseudomonas infection of strain PA14.",
+"draft": "Pseudomonas aeruginosa PA14 감염"
+},
+{
+"id": "MONDO:0005503",
+"name": "developmental disorder of mental health",
+"syn": [],
+"parent": "mental disorder",
+"defn": "A disease of mental health that occur during a child's developmental period between birth and age 18 resulting in retarding of the child's psychological or phys",
+"draft": "정신건강 발달 장애"
+},
+{
+"id": "MONDO:0005655",
+"name": "ascaridiasis",
+"syn": [
+"Ascaridia caused disease or disorder",
+"Ascaridia disease or disorder",
+"Ascaridia infectious disease"
+],
+"parent": "Ascaridida infectious disease",
+"defn": "Infection with nematodes of the genus ascaridia. This condition usually occurs in fowl, often manifesting diarrhea.",
+"draft": "아스카리디아증"
+},
+{
+"id": "MONDO:0005704",
+"name": "Ciliophora infectious disease",
+"syn": [
+"Ciliophora caused disease or disorder",
+"Ciliophora disease or disorder"
+],
+"parent": "infectious disease",
+"defn": "Infections with protozoa of the phylum ciliophora.",
+"draft": "섬모충문 감염병"
+},
+{
+"id": "MONDO:0005743",
+"name": "encephalitozoonosis",
+"syn": [],
+"parent": "microsporidiosis",
+"defn": "Infection with fungi of the genus encephalitozoon. Lesions commonly occur in the brain and kidney tubules. Other sites of infection in mammals are the liver; ad",
+"draft": "뇌원충증"
+},
+{
+"id": "MONDO:0005745",
+"name": "Enoplea infectious disease",
+"syn": [
+"Enoplea caused disease or disorder",
+"Enoplea disease or disorder"
+],
+"parent": "Nematoda infectious disease",
+"defn": "Infections with nematodes of the order enoplida.",
+"draft": "에노플레아강 감염병"
+},
+{
+"id": "MONDO:0005759",
+"name": "fascioloidiasis",
+"syn": [],
+"parent": "helminthiasis",
+"defn": "Infection of cattle and other herbivores with the giant liver fluke Fascioloides magna. It is characterized by extensive destruction of the liver parenchyma.",
+"draft": "파시올로이데스증"
+},
+{
+"id": "MONDO:0005805",
+"name": "hypodermyiasis",
+"syn": [
+"Oestridae caused disease or disorder",
+"Oestridae disease or disorder",
+"Oestridae infectious disease"
+],
+"parent": "myiasis",
+"defn": "Infestation with larvae of the genus Hypoderma, the warble fly.",
+"draft": "피하파리유충증"
+},
+{
+"id": "MONDO:0005880",
+"name": "oesophagostomiasis",
+"syn": [
+"Oesophagostomum caused disease or disorder",
+"Oesophagostomum disease or disorder",
+"Oesophagostomum infectious disease"
+],
+"parent": "trichostrongyloidiasis",
+"defn": "Infection of the intestinal tract with worms of the genus oesophagostomum. This condition occurs mainly in animals other than humans.",
+"draft": "식도결절충증"
+},
+{
+"id": "MONDO:0005891",
+"name": "ostertagiasis",
+"syn": [],
+"parent": "trichostrongyloidiasis",
+"defn": "A disease of herbivorous mammals, particularly cattle and sheep, caused by stomach worms of the genus ostertagia.",
+"draft": "오스테르타그증"
+},
+{
+"id": "MONDO:0005925",
+"name": "pneumonic pasteurellosis",
+"syn": [],
+"parent": "bacterial infectious disease",
+"defn": "Bovine respiratory disease found in animals that have been shipped or exposed to cattle recently transported. The major agent responsible for the disease is man",
+"draft": "폐렴성 파스퇴렐라증"
+},
+{
+"id": "MONDO:0005943",
+"name": "Rhabditida infectious disease",
+"syn": [],
+"parent": "Nematoda infectious disease",
+"defn": "Infections with nematodes of the order rhabditida.",
+"draft": "랍디티다목 감염병"
+},
+{
+"id": "MONDO:0005944",
+"name": "Rhabdoviridae infectious disease",
+"syn": [],
+"parent": "Mononegavirales infectious disease",
+"defn": "Virus diseases caused by rhabdoviridae. Important infections include rabies; ephemeral fever; and vesicular stomatitis.",
+"draft": "랍도바이러스과 감염병"
+},
+{
+"id": "MONDO:0005949",
+"name": "roseolovirus infectious disease",
+"syn": [
+"Roseolovirus caused disease or disorder",
+"Roseolovirus disease or disorder"
+],
+"parent": "Herpesviridae infectious disease",
+"defn": "Infection with roseolovirus, the most common in humans being exanthema subitum, a benign disease of infants and young children.",
+"draft": "로제올로바이러스 감염병"
+},
+{
+"id": "MONDO:0005954",
+"name": "screw worm infectious disease",
+"syn": [
+"Cochliomyia hominivorax caused disease or disorder",
+"Cochliomyia hominivorax disease or disorder",
+"Cochliomyia hominivorax infectious disease"
+],
+"parent": "myiasis",
+"defn": "Infection with larvae of the blow fly Cochliomyia hominivorax (Callitroga americanum), a common cause of disease in livestock in the southern and southwestern U",
+"draft": "나사벌레 감염증"
+},
+{
+"id": "MONDO:0005957",
+"name": "setariasis",
+"syn": [
+"Setaria <nematode> caused disease or disorder",
+"Setaria <nematode> disease or disorder",
+"Setaria <nematode> infectious disease"
+],
+"parent": "Rhabditida infectious disease",
+"defn": "Infection with nematodes of the genus Setaria. This condition is usually seen in cattle and equines and is of little pathogenic significance, although migration",
+"draft": "세타리아증"
+},
+{
+"id": "MONDO:0005973",
+"name": "Strongylida infectious disease",
+"syn": [],
+"parent": "parasitic infectious disease",
+"defn": "Infections with nematodes of the order strongylida.",
+"draft": "스트롱길리다목 감염병"
+},
+{
+"id": "MONDO:0005986",
+"name": "torovirus infectious disease",
+"syn": [
+"Torovirus caused disease or disorder",
+"Torovirus disease or disorder"
+],
+"parent": "Nidovirales infectious disease",
+"defn": "Infections with viruses of the genus torovirus, family coronaviridae.",
+"draft": "토로바이러스 감염병"
+},
+{
+"id": "MONDO:0005987",
+"name": "toxascariasis",
+"syn": [
+"Toxascaris caused disease or disorder",
+"Toxascaris disease or disorder",
+"Toxascaris infectious disease"
+],
+"parent": "Ascaridida infectious disease",
+"defn": "Infections with nematodes of the genus toxascaris.",
+"draft": "톡사스카리스증"
+},
+{
+"id": "MONDO:0005994",
+"name": "trichostrongyloidiasis",
+"syn": [
+"Trichostrongyloidea caused disease or disorder",
+"Trichostrongyloidea disease or disorder",
+"Trichostrongyloidea infectious disease"
+],
+"parent": "Rhabditida infectious disease",
+"defn": "Infection by roundworms of the superfamily trichostrongyloidea, including the genera trichostrongylus; ostertagia; Cooperia, haemonchus; Nematodirus, Hyostrongy",
+"draft": "트리코스트롱길루스상과 감염증"
+},
+{
+"id": "MONDO:0006018",
+"name": "Wissler syndrome",
+"syn": [
+"Wissler's syndrome",
+"Wissler-Fanconi syndrome (finding)"
+],
+"parent": "syndromic disease",
+"defn": "A rheumatic syndrome of possibly allergic origin, usually affecting children and adolescents, and characterized by high fever, exanthema, arthralgia, leukocytos",
+"draft": "비슬러 증후군"
+},
+{
+"id": "MONDO:0006037",
+"name": "hydrolethalus syndrome",
+"syn": [],
+"parent": "autosomal recessive disease",
+"defn": "Hydrolethalus (HLS) is a severe fetal malformation syndrome characterized by craniofacial dysmorphic features, central nervous system, cardiac, respiratory trac",
+"draft": "히드롤레탈루스 증후군"
+},
+{
+"id": "MONDO:0006116",
+"name": "breast carcinoma by gene expression profile",
+"syn": [],
+"parent": "breast carcinoma",
+"defn": "A header term that includes the following breast carcinoma subtypes determined by gene expression profiling: luminal A breast carcinoma, luminal B breast carcin",
+"draft": "유전자 발현 프로파일에 따른 유방암종"
+},
+{
+"id": "MONDO:0006122",
+"name": "calcifying nested epithelial stromal tumor of the liver",
+"syn": [],
+"parent": "liver cancer",
+"defn": "A rare malignant tumor that arises from the liver and occurs in children. It is characterized by the presence of nested epithelioid and spindle cells. Desmoplas",
+"draft": "간 석회화 둥지 상피 간질 종양"
+},
+{
+"id": "MONDO:0006245",
+"name": "hidradenocarcinoma",
+"syn": [
+"clear cell eccrine carcinoma"
+],
+"parent": "clear cell adenocarcinoma",
+"defn": "A carcinoma with apocrine and less often eccrine differentiation, arising from the sweat glands. It usually presents as a solitary slow growing nodule in the de",
+"draft": "땀샘암종"
+},
+{
+"id": "MONDO:0006317",
+"name": "neurothekeoma",
+"syn": [
+"nerve sheath Myxoma"
+],
+"parent": "nerve sheath neoplasm",
+"defn": "A benign neoplasm arising from nerve sheaths. It is characterized by the presence of a myxoid stroma.",
+"draft": "신경초집종"
+},
+{
+"id": "MONDO:0006351",
+"name": "parachordoma",
+"syn": [],
+"parent": "myoepithelial tumor",
+"defn": "A rare, usually benign myoepithelial tumor characterized by the presence of epithelioid, often vacuolated neoplastic cells. Most patients present with painless ",
+"draft": "척삭양종"
+},
+{
+"id": "MONDO:0006381",
+"name": "plexiform ameloblastoma",
+"syn": [],
+"parent": "ameloblastoma",
+"defn": "A histologic variant of solid/multicystic ameloblastoma characterized by the presence of basal cells forming anastomosing strands and cords in a delicate stroma",
+"draft": "얼기형 법랑모세포종"
+},
+{
+"id": "MONDO:0006469",
+"name": "tibial adamantinoma",
+"syn": [
+"adamantinoma of tibia",
+"tibia adamantinoma",
+"tibia long bone adamantinoma"
+],
+"parent": "cancer of long bone of lower limb",
+"defn": "An adamantinoma arising from the tibia. The tibia is the site which is more frequently involved by adamantinoma (80-90% of cases).",
+"draft": "경골 법랑상피종"
+},
+{
+"id": "MONDO:0006579",
+"name": "melanoacanthoma",
+"syn": [],
+"parent": "seborrheic keratosis",
+"defn": "A benign, darkly pigmented skin lesion characterized by proliferation of keratinocytes and melanocytes.",
+"draft": "멜라노아칸토마"
+},
+{
+"id": "MONDO:0006583",
+"name": "necrobiosis lipoidica",
+"syn": [],
+"parent": "dermis disorder",
+"defn": "Necrobiosis lipoidica is a rare skin disorder of collagen degeneration. It is characterized by a rash that occurs on the lower legs. It is more common in women,",
+"draft": "지방유사괴사증"
+},
+{
+"id": "MONDO:0006739",
+"name": "Ehrlich tumor carcinoma",
+"syn": [],
+"parent": "breast carcinoma",
+"defn": "A transplantable, poorly differentiated malignant tumor which appeared originally as a spontaneous breast carcinoma in a mouse. It grows in both solid and ascit",
+"draft": "에를리히 종양 암종"
+},
+{
+"id": "MONDO:0006752",
+"name": "Erysipelothrix rhusiopathiae infectious disease",
+"syn": [
+"erysipeloid",
+"Erysipelothrix rhusiopathiae caused disease or disorder",
+"Erysipelothrix rhusiopathiae disease or disorder"
+],
+"parent": "Erysipelothrix infectious disease",
+"defn": "A disease caused by infection with Erysipelothrix rhusiopathiae.",
+"draft": "에리시펠로트릭스 루시오파티애 감염증"
+},
+{
+"id": "MONDO:0006824",
+"name": "Krebs 2 carcinoma",
+"syn": [],
+"parent": "carcinoma",
+"defn": "Carcinoma having known association to krebs2 gene mutation",
+"draft": "크렙스 2 암종"
+},
+{
+"id": "MONDO:0006907",
+"name": "pilar sheath acanthoma",
+"syn": [
+"acanthoma of Pilar sheath",
+"acanthoma of the Pilar sheath",
+"Infundibuloisthmicoma"
+],
+"parent": "acanthoma",
+"defn": "A benign, small, papular or nodular skin neoplasm that usually arises above the upper lip. It is characterized by an epithelial proliferation with a central cav",
+"draft": "털집초 극세포종"
+},
+{
+"id": "MONDO:0007049",
+"name": "acroleukopathy, symmetric",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "대칭성 말단백질증"
+},
+{
+"id": "MONDO:0007050",
+"name": "acromegaloid changes, cutis verticis gyrata, and corneal leukoma",
+"syn": [
+"acromegaly-cutis verticis gyrata-corneal leukoma syndrome"
+],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "말단비대양 변화-뇌회상 피부-각막백반 증후군"
+},
+{
+"id": "MONDO:0007054",
+"name": "acromial dimples",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "견봉 보조개"
+},
+{
+"id": "MONDO:0007057",
+"name": "acroosteolysis dominant type",
+"syn": [
+"acrodentoosteodysplasia",
+"acroosteolysis with osteoporosis and changes in skull and mandible",
+"Arthrodentoosteodysplasia"
+],
+"parent": "autosomal dominant disease",
+"defn": "A rare genetic osteolysis syndrome resulting from protein-truncating variants in exon 34 of the NOTCH2 gene. These variants disrupt only the PEST domain, escape",
+"draft": "우성 말단골용해증"
+},
+{
+"id": "MONDO:0007058",
+"name": "Acropectorovertebral dysplasia",
+"syn": [
+"F syndrome"
+],
+"parent": "thoracic malformation",
+"defn": "A skeletal dysplasia characterized by fusion of the carpal and tarsal bones, with complex anomalies of the fingers and toes (preaxial polydactyly of the hands a",
+"draft": "말단흉추 이형성증"
+},
+{
+"id": "MONDO:0007095",
+"name": "ameloonychohypohidrotic syndrome",
+"syn": [],
+"parent": "ectodermal dysplasia syndrome",
+"defn": "",
+"draft": "법랑질-손발톱-저땀증 증후군"
+},
+{
+"id": "MONDO:0007133",
+"name": "anonychia-onychodystrophy with brachydactyly type b and ectrodactyly",
+"syn": [
+"Kumar-Levick syndrome"
+],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "무조갑증-조갑이영양증, B형 단지증 및 결지증 동반"
+},
+{
+"id": "MONDO:0007177",
+"name": "auriculoosteodysplasia",
+"syn": [],
+"parent": "musculoskeletal system disorder",
+"defn": "Auriculoosteodysplasia is a very rare condition characterized by multiple osseous dysplasia, characteristic ear shape (elongation of the lobe that is attached a",
+"draft": "이개골이형성증"
+},
+{
+"id": "MONDO:0007178",
+"name": "aurocephalosyndactyly",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "이개두합지증"
+},
+{
+"id": "MONDO:0007185",
+"name": "Banki syndrome",
+"syn": [],
+"parent": "synostosis",
+"defn": "Banki syndrome is a synostosis syndrome, reported in a single Hungarian family in which members of 3 generations showed lunotriquetral synostosis, clinodactyly,",
+"draft": "방키 증후군"
+},
+{
+"id": "MONDO:0007210",
+"name": "Brachmann-de Lange-like facial changes with microcephaly, metatarsus adductus, and developmental delay",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "브라흐만-드 랑게 유사 안면 변화, 소두증, 내전중족, 발달지연 동반"
+},
+{
+"id": "MONDO:0007213",
+"name": "Ballard syndrome",
+"syn": [
+"brachydactyly types B and E combined",
+"Pitt-Williams brachydactyly"
+],
+"parent": "brachydactyly",
+"defn": "Ballard syndrome is characterized by hypoplasia of the distal phalanges of the ulnar side of the hand and shortening of one or more metacarpals. In contrast to ",
+"draft": "발라드 증후군"
+},
+{
+"id": "MONDO:0007227",
+"name": "Sillence syndrome",
+"syn": [
+"brachydactyly-symphalangism syndrome"
+],
+"parent": "syndromic disease",
+"defn": "Sillence syndrome (brachydactyly-symphalangism syndrome) resembles type A1 brachydactyly (variable shortening of the middle phalanges of all digits) with associ",
+"draft": "실런스 증후군"
+},
+{
+"id": "MONDO:0007228",
+"name": "brachymesomelia-renal syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "단중간지증-신장 증후군"
+},
+{
+"id": "MONDO:0007230",
+"name": "Brachymorphism-onychodysplasia-dysphalangism syndrome",
+"syn": [
+"bod syndrome",
+"Senior syndrome"
+],
+"parent": "syndromic disease",
+"defn": "Brachymorphism-onychodysplasia-dysphalangism (BOD) is a very rare malformation syndrome that is characterized by short stature, hypoplastic fifth digits with ti",
+"draft": "단신형-조갑이형성-지골이상 증후군"
+},
+{
+"id": "MONDO:0007232",
+"name": "autosomal dominant brachyolmia",
+"syn": [
+"brachyolmia type 3",
+"brachyolmia, autosomal dominant"
+],
+"parent": "autosomal dominant disease",
+"defn": "Autosomal dominant brachyolmia is a relatively severe form of brachyolmia, a group of rare genetic skeletal disorders, characterized by short-trunked short stat",
+"draft": "상염색체 우성 단체증"
+},
+{
+"id": "MONDO:0007234",
+"name": "branchial myoclonus with spastic paraparesis and cerebellar ataxia",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "새열성 근간대경련, 경직성 하반신 부전마비 및 소뇌운동실조 동반"
+},
+{
+"id": "MONDO:0007242",
+"name": "butyrylesterase 1",
+"syn": [
+"Butyrylesterase type 1"
+],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "부티릴에스터라아제 1"
+},
+{
+"id": "MONDO:0007249",
+"name": "camptobrachydactyly",
+"syn": [],
+"parent": "brachydactyly",
+"defn": "Camptobrachydactyly is an extremely rare brachydactyly syndrome, characterized by short broad hands and feet with brachydactyly associated with congenital flexi",
+"draft": "굽은단지증"
+},
+{
+"id": "MONDO:0007253",
+"name": "cancer, familial, with in vitro Radioresistance",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "시험관 내 방사선 저항성 동반 가족성 암"
+},
+{
+"id": "MONDO:0007260",
+"name": "Car factor deficiency",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "카 인자 결핍증"
+},
+{
+"id": "MONDO:0007302",
+"name": "cervical hypertrichosis with underlying kyphoscoliosis",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "경추부 다모증, 후측만증 동반"
+},
+{
+"id": "MONDO:0007304",
+"name": "cervical vertebral Bridge",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "경추 가교"
+},
+{
+"id": "MONDO:0007310",
+"name": "Charcot-Marie-Tooth disease, Guadalajara neuronal type",
+"syn": [],
+"parent": "Charcot-Marie-Tooth disease",
+"defn": "",
+"draft": "샤르코-마리-투스병, 과달라하라 신경형"
+},
+{
+"id": "MONDO:0007314",
+"name": "chemodectoma, intraabdominal, with cutaneous angiolipomas",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "복강내 화학수용체종, 피부 혈관지방종 동반"
+},
+{
+"id": "MONDO:0007323",
+"name": "Chondronectin",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "콘드로넥틴"
+},
+{
+"id": "MONDO:0007325",
+"name": "choreoathetosis, familial inverted",
+"syn": [],
+"parent": "choreatic disease",
+"defn": "",
+"draft": "가족성 역위 무도무정위운동"
+},
+{
+"id": "MONDO:0007327",
+"name": "chylomicronemia, familial, due to circulating inhibitor of lipoprotein lipase",
+"syn": [],
+"parent": "familial chylomicronemia syndrome",
+"defn": "",
+"draft": "가족성 킬로미크론혈증, 지단백 지질분해효소 순환 억제인자에 의한"
+},
+{
+"id": "MONDO:0007341",
+"name": "cleidorhizomelic syndrome",
+"syn": [
+"rhizomelic shortness with clavicular defect",
+"Wallis-Zieff-Goldblatt syndrome"
+],
+"parent": "syndromic disease",
+"defn": "Cleidorhizomelic syndrome is a rhizo-mesomelic dysplasia characterized by rhizomelic short stature/dwarfism in combination with lateral clavicular defects. Addi",
+"draft": "쇄골근위사지단축 증후군"
+},
+{
+"id": "MONDO:0007358",
+"name": "comedones, familial Dyskeratotic",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "가족성 이상각화성 면포"
+},
+{
+"id": "MONDO:0007359",
+"name": "commissural lip pits",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "입술 교련 함몰"
+},
+{
+"id": "MONDO:0007370",
+"name": "coracoclavicular joint, anomalous",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "비정상 오구쇄골 관절"
+},
+{
+"id": "MONDO:0007371",
+"name": "cornea guttata with anterior polar cataracts",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "전극성 백내장을 동반한 각막 구타타"
+},
+{
+"id": "MONDO:0007383",
+"name": "Stern-Lubinsky-Durrie syndrome",
+"syn": [
+"corneo-dermato-osseous syndrome"
+],
+"parent": "ectodermal dysplasia syndrome",
+"defn": "Stern-Lubinsky-Durrie syndrome is characterized by corneal epithelial changes (associated with photophobia and burning and watering of the eyes), diffuse palmop",
+"draft": "스턴-루빈스키-더리 증후군"
+},
+{
+"id": "MONDO:0007388",
+"name": "congenitally short costocoracoid ligament",
+"syn": [],
+"parent": "thoracic malformation",
+"defn": "Congenital shortness of the costocoracoid ligament is a rare anomaly characterized by fixation of the scapula to the first rib, resulting in a cosmetic deformit",
+"draft": "선천성 짧은 늑골오훼인대"
+},
+{
+"id": "MONDO:0007392",
+"name": "coxoauricular syndrome",
+"syn": [],
+"parent": "bone disorder",
+"defn": "Coxoauricular syndrome is an extremely rare primary bone defect, described only in a mother and her three daughters to date, characterized by short stature, hip",
+"draft": "고관절-귀 증후군"
+},
+{
+"id": "MONDO:0007393",
+"name": "cranioacrofacial syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "두개말단안면 증후군"
+},
+{
+"id": "MONDO:0007397",
+"name": "craniometaphyseal dysplasia, autosomal dominant",
+"syn": [],
+"parent": "craniometaphyseal dysplasia",
+"defn": "",
+"draft": "상염색체 우성 두개간단 이형성증"
+},
+{
+"id": "MONDO:0007398",
+"name": "craniorhiny",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "두개비증"
+},
+{
+"id": "MONDO:0007409",
+"name": "cryptomicrotia-brachydactyly-excess fingertip arch syndrome",
+"syn": [
+"Cryptomicrotia-brachydactyly syndrome",
+"Tonoki-Ohura-Niikawa syndrome"
+],
+"parent": "multiple congenital anomalies/dysmorphic syndrome without intellectual disability",
+"defn": "Cryptomicrotia - brachydactyly - excess fingertip arch syndrome describes a combination of malformations that include bilateral cryptomicrotia, brachytelomesoph",
+"draft": "잠복소이증-단지증-과다 지문 궁상문 증후군"
+},
+{
+"id": "MONDO:0007430",
+"name": "dens evaginatus",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "치아 외번 융기"
+},
+{
+"id": "MONDO:0007431",
+"name": "dens in dente and palatal invaginations",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "치내치 및 구개 함입"
+},
+{
+"id": "MONDO:0007444",
+"name": "dermal Ridges, patternless",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "무문양 피부 융선"
+},
+{
+"id": "MONDO:0007445",
+"name": "dermatopathia pigmentosa reticularis",
+"syn": [],
+"parent": "diffuse palmoplantar keratoderma",
+"defn": "",
+"draft": "망상 색소성 피부병증"
+},
+{
+"id": "MONDO:0007458",
+"name": "digitotalar dysmorphism; ulnar drift, hereditary",
+"syn": [],
+"parent": "digitotalar dysmorphism",
+"defn": "",
+"draft": "손발가락 거골 이형성증; 유전성 척측 편위"
+},
+{
+"id": "MONDO:0007459",
+"name": "dilution, pigmentary",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "색소 희석"
+},
+{
+"id": "MONDO:0007460",
+"name": "discrimination, Two-point, reduction 1N",
+"syn": [
+"discrimination, Two-point, reduction type 1N"
+],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "두점 식별력 감소 1N형"
+},
+{
+"id": "MONDO:0007466",
+"name": "DNA, satellite, 3",
+"syn": [
+"DNA, satellite, type 3"
+],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "위성 DNA 3형"
+},
+{
+"id": "MONDO:0007467",
+"name": "DNA, low-repetitive sequences of",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "저반복 서열 DNA"
+},
+{
+"id": "MONDO:0007479",
+"name": "dwarfism, Levi type",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "레비형 왜소증"
+},
+{
+"id": "MONDO:0007491",
+"name": "dystelephalangy",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "말단지골 이상"
+},
+{
+"id": "MONDO:0007497",
+"name": "ear antitragus, tag at base of",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "대이륜 기저부 이개 피부 돌기"
+},
+{
+"id": "MONDO:0007502",
+"name": "ear pits, posterior helical",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "후방 이륜 귀 함몰"
+},
+{
+"id": "MONDO:0007581",
+"name": "exchondrosis of pinna, posterior",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "후이개 외골증"
+},
+{
+"id": "MONDO:0007584",
+"name": "exostoses-anetodermia-brachydactyly type E syndrome",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "Exostoses-anetodermia-brachydactyly type E syndrome is an association reported in a single kindred characterized by the variable presence of the following featu",
+"draft": "외골종-피부위축증-단지증 E형 증후군"
+},
+{
+"id": "MONDO:0007587",
+"name": "external auditory canal atresia-vertical talus-hypertelorism syndrome",
+"syn": [
+"Rasmussen-Johnsen-Thomsen syndrome"
+],
+"parent": "multiple congenital anomalies/dysmorphic syndrome without intellectual disability",
+"defn": "",
+"draft": "외이도 폐쇄-수직거골-눈사이거리증가 증후군"
+},
+{
+"id": "MONDO:0007588",
+"name": "extrasystoles-short stature-hyperpigmentation-microcephaly syndrome",
+"syn": [
+"Char-Douglas-Dungan syndrome"
+],
+"parent": "multiple congenital anomalies/dysmorphic syndrome-intellectual disability",
+"defn": "Extrasystoles-short stature-hyperpigmentation-microcephaly syndrome is a rare, genetic, malformation syndrome with short stature characterized by microcephaly, ",
+"draft": "기외수축-저신장-과색소침착-소두증 증후군"
+},
+{
+"id": "MONDO:0007594",
+"name": "factor 5 excess with spontaneous thrombosis",
+"syn": [
+"Proaccelerin Excess"
+],
+"parent": "inherited thrombophilia",
+"defn": "",
+"draft": "자발성 혈전증을 동반한 제5인자 과다"
+},
+{
+"id": "MONDO:0007618",
+"name": "Eng-Strom syndrome",
+"syn": [
+"short stature-locking fingers syndrome"
+],
+"parent": "disorder of development or morphogenesis",
+"defn": "Eng-Strom syndrome is characterized by intrauterine growth retardation and intermittent locking of the finger joints. It has been described in two individuals: ",
+"draft": "엥-스트룀 증후군"
+},
+{
+"id": "MONDO:0007623",
+"name": "flushing of ears and somnolence",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "귀 홍조 및 졸림"
+},
+{
+"id": "MONDO:0007629",
+"name": "fragile site 10Q23",
+"syn": [
+"fragile site type 10Q23"
+],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "취약 부위 10Q23"
+},
+{
+"id": "MONDO:0007636",
+"name": "frontorhiny",
+"syn": [
+"ALX3-related frontonasal dysplasia",
+"frontonasal dysplasia type 1",
+"isolated median cleft face syndrome"
+],
+"parent": "frontonasal dysplasia",
+"defn": "Frontorhiny is a distinct syndromic type of frontonasal malformation characterized by hypertelorism, wide nasal bridge, broad columella, widened philtrum, widel",
+"draft": "전두비(frontorhiny)"
+},
+{
+"id": "MONDO:0007643",
+"name": "gamma-A-globulin, defect in assembly of",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "감마-A-글로불린 조립 결함"
+},
+{
+"id": "MONDO:0007644",
+"name": "IgAD1",
+"syn": [
+"immunoglobulin A deficiency, autosomal recessive, autosomal dominant, isolated cases"
+],
+"parent": "selective IgA deficiency disease",
+"defn": "Decreased or absent levels of serum immunoglobulin A, with normal serum levels of immunoglobulin G and immunoglobulin M in a patient who is older than 4 years o",
+"draft": ""
+},
+{
+"id": "MONDO:0007651",
+"name": "gastrocutaneous syndrome",
+"syn": [],
+"parent": "hyperpigmentation of the skin",
+"defn": "",
+"draft": "위피부 증후군"
+},
+{
+"id": "MONDO:0007653",
+"name": "genochondromatosis",
+"syn": [],
+"parent": "skeletal dysplasia",
+"defn": "",
+"draft": "유전성 연골종증"
+},
+{
+"id": "MONDO:0007668",
+"name": "globulin anomaly involving beta (2A)-globulin",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "베타(2A)-글로불린 관련 글로불린 이상"
+},
+{
+"id": "MONDO:0007674",
+"name": "glucose-6-phosphate dehydrogenase-like",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "포도당-6-인산탈수소효소 유사"
+},
+{
+"id": "MONDO:0007675",
+"name": "glutamic acid decarboxylase, brain, membrane form",
+"syn": [],
+"parent": "hereditary disease",
+"defn": "",
+"draft": "글루탐산 탈탄산효소, 뇌, 막형"
+}
+]

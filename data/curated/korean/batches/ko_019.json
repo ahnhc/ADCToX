@@ -1,0 +1,1778 @@
+[
+{
+"id": "MONDO:0004730",
+"name": "speech disorder",
+"syn": [
+"speech impediment or impairment"
+],
+"parent": "communication disorder",
+"defn": "A term referring to disorders characterized by the disruption of normal speech. It includes stuttering, lisps, dysarthria and voice disorders."
+},
+{
+"id": "MONDO:0004731",
+"name": "central sleep apnea syndrome",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "A broad classification of disorders which includes 6 subtypes (primary central sleep apnea, central sleep apnea due to Cheyne-Stokes breathing pattern, central "
+},
+{
+"id": "MONDO:0004732",
+"name": "kidney carcinoma in situ",
+"syn": [
+"carcinoma in situ of kidney",
+"kidney in situ carcinoma",
+"stage 0 kidney carcinoma"
+],
+"parent": "in situ carcinoma",
+"defn": "A carcinoma in situ involving a kidney."
+},
+{
+"id": "MONDO:0004733",
+"name": "pyriform sinus cancer",
+"syn": [
+"malignant neoplasm of pyriform fossa",
+"malignant neoplasm of pyriform sinus",
+"malignant neoplasm of the pyriform fossa"
+],
+"parent": "hypopharynx cancer",
+"defn": "A primary or metastatic malignant neoplasm that affects the pyriform sinus."
+},
+{
+"id": "MONDO:0004736",
+"name": "inborn disorder of amino acid metabolism",
+"syn": [
+"inborn cellular amino acid metabolic process disorder",
+"inborn error of amino acid metabolism",
+"inborn error of cellular amino acid metabolic process"
+],
+"parent": "inborn disorder of amino acid and other organic acid metabolism",
+"defn": "An inherited disorder that affects the metabolism of the amino acids. Representative examples include alkaptonuria, homocystinuria, tyrosinemia, and phenylketon"
+},
+{
+"id": "MONDO:0004737",
+"name": "homocystinuria",
+"syn": [
+"homocystinuria (disease)"
+],
+"parent": "inborn disorder of amino acid metabolism",
+"defn": "An autosomal recessive inherited metabolic disorder caused by mutations in the CBS, MTHFR, MTR, and MTRR genes. It is characterized by abnormalities in the meth"
+},
+{
+"id": "MONDO:0004739",
+"name": "urea cycle disorder",
+"syn": [
+"disorder of urea cycle metabolism",
+"inborn disorder of urea cycle metabolism and ammonia detoxification",
+"inborn urea cycle disorder"
+],
+"parent": "inborn disorder of amino acid metabolism",
+"defn": "A genetic inborn error of metabolism characterized by the deficiency of one of the enzymes necessary for the urea cycle. It results in accumulation of ammonia i"
+},
+{
+"id": "MONDO:0004741",
+"name": "tyrosinemia",
+"syn": [],
+"parent": "disorder of tyrosine metabolism",
+"defn": "An autosomal recessive inherited metabolic disorder caused by mutations in the FAH, HPD, and TAT genes. It is characterized by deficiency of one of the enzymes "
+},
+{
+"id": "MONDO:0004743",
+"name": "hyperhomocysteinemia",
+"syn": [
+"homocysteinemia"
+],
+"parent": "homocystinuria",
+"defn": "A serious metabolic condition caused by mutations in the MTHFR gene, medications, or nutritional deficiency. It results in increased levels of homocysteine in t"
+},
+{
+"id": "MONDO:0004744",
+"name": "borderline glaucoma",
+"syn": [],
+"parent": "glaucoma",
+"defn": ""
+},
+{
+"id": "MONDO:0004745",
+"name": "priapism",
+"syn": [
+"mentulagra"
+],
+"parent": "peripheral vascular disease",
+"defn": "Persistent and usually painful erection that lasts for at least four hours in the absence of physical or psychological stimulation, which can be caused by hemat"
+},
+{
+"id": "MONDO:0004746",
+"name": "myopathy of extraocular muscle",
+"syn": [
+"extra-ocular muscle myopathy",
+"myopathy of extra-ocular muscle",
+"myopathy of extraocular muscles"
+],
+"parent": "eye adnexa disorder",
+"defn": "A myopathy that involves the extra-ocular muscle."
+},
+{
+"id": "MONDO:0004747",
+"name": "cleft lip",
+"syn": [
+"cheiloschisis",
+"cleft lip (disease)",
+"cleft lip, unilateral, complete"
+],
+"parent": "orofacial cleft",
+"defn": "A congenital abnormality consisting of one or more clefts (splits) in the upper lip, which may be accompanied by a cleft palate; it is the result of the failure"
+},
+{
+"id": "MONDO:0004748",
+"name": "lip disorder",
+"syn": [
+"disease of lip",
+"disease of lips",
+"disease or disorder of lip"
+],
+"parent": "mouth disorder",
+"defn": "A disease involving the lip."
+},
+{
+"id": "MONDO:0004749",
+"name": "myocardium cancer",
+"syn": [
+"cancer of myocardium",
+"malignant myocardial neoplasm",
+"malignant myocardial tumor"
+],
+"parent": "heart cancer",
+"defn": "A malignant neoplasm involving the myocardium."
+},
+{
+"id": "MONDO:0004750",
+"name": "language disorder",
+"syn": [],
+"parent": "communication disorder",
+"defn": "A category of disorders characterized by an impairment in the development of an individual's language capabilities, which is in contrast to his/her non-verbal i"
+},
+{
+"id": "MONDO:0004751",
+"name": "disease of orbital part of eye adnexa",
+"syn": [],
+"parent": "eye adnexa disorder",
+"defn": "Diseases of the bony orbit and contents except the eyeball."
+},
+{
+"id": "MONDO:0004752",
+"name": "neurofibroma of the heart",
+"syn": [
+"Cardiac neurofibroma",
+"heart neurofibroma",
+"neurofibroma of heart"
+],
+"parent": "heart cancer",
+"defn": "A rare neurofibroma that affects the heart."
+},
+{
+"id": "MONDO:0004753",
+"name": "mechanical strabismus",
+"syn": [],
+"parent": "strabismus",
+"defn": ""
+},
+{
+"id": "MONDO:0004754",
+"name": "rectal prolapse",
+"syn": [
+"rectal prolapse (disease)"
+],
+"parent": "rectal disorder",
+"defn": "Protrusion of the rectum through the anus."
+},
+{
+"id": "MONDO:0004755",
+"name": "monieziasis",
+"syn": [],
+"parent": "helminthiasis",
+"defn": "Infection of ruminants with tapeworms of the genus Moniezia."
+},
+{
+"id": "MONDO:0004756",
+"name": "nasal cavity neoplasm",
+"syn": [
+"nasal cavity neoplasm (disease)",
+"nasal cavity tumor",
+"nasal cavity tumour"
+],
+"parent": "nasal cavity disorder",
+"defn": "A benign or malignant neoplasm that affects the nasal cavity. Representative examples of benign neoplasms include Schneiderian papilloma and salivary gland-type"
+},
+{
+"id": "MONDO:0004757",
+"name": "chronic ethmoidal sinusitis",
+"syn": [
+"ethmoid sinusitis, chronic"
+],
+"parent": "ethmoid sinusitis",
+"defn": "Inflammation of the ethmoid sinus that typically lasts beyond eight weeks. It is caused by infections, allergies, and the presence of sinus polyps or a deviated"
+},
+{
+"id": "MONDO:0004758",
+"name": "scotoma",
+"syn": [
+"enlarged blind spot",
+"generalised visual field contraction or constriction",
+"scotoma (disease)"
+],
+"parent": "eye disorder",
+"defn": "A localized defect in the visual field bordered by an area of normal vision. This occurs with a variety of eye diseases (e.g., retinal diseases and glaucoma); o"
+},
+{
+"id": "MONDO:0004759",
+"name": "zoophilia",
+"syn": [],
+"parent": "paraphilic disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004760",
+"name": "urethral false passage",
+"syn": [],
+"parent": "urethral disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004762",
+"name": "pelvic congestion syndrome",
+"syn": [
+"congestion-fibrosis syndrome",
+"female varicocele",
+"PCS"
+],
+"parent": "uterine disorder",
+"defn": "A uterine disorder characterised by chronic pelvic pain caused by reflux or obstruction of the ovarian or pelvic veins, often associated with pelvic or vulvar v"
+},
+{
+"id": "MONDO:0004763",
+"name": "carotid artery dissection",
+"syn": [
+"dissection of carotid artery"
+],
+"parent": "carotid artery disorder",
+"defn": "Spontaneous or traumatic separation of the layers of the carotid artery wall. It manifests with headache, neck pain, temporary vision loss, and/or ischemic stro"
+},
+{
+"id": "MONDO:0004764",
+"name": "fibular collateral ligament bursitis",
+"syn": [],
+"parent": "enthesopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0004765",
+"name": "intrinsic asthma",
+"syn": [
+"non-allergic asthma"
+],
+"parent": "asthma",
+"defn": "An asthma that is triggered by factors not related to allergies such as anxiety, stress, exercise, cold air, dry air, hyperventilation, smoke, viruses, chemical"
+},
+{
+"id": "MONDO:0004766",
+"name": "status asthmaticus",
+"syn": [],
+"parent": "asthma",
+"defn": "An acute exacerbation of asthma, characterized by inadequate response to initial bronchodilators."
+},
+{
+"id": "MONDO:0004767",
+"name": "vesiculitis",
+"syn": [
+"gland, seminal vesicle",
+"inflammation of seminal vesicle",
+"seminal Sacs"
+],
+"parent": "orchitis",
+"defn": "An inflammatory disease involving a pathogenic inflammatory response in the seminal vesicle."
+},
+{
+"id": "MONDO:0004768",
+"name": "keratoconjunctivitis",
+"syn": [],
+"parent": "keratitis",
+"defn": "Inflammation of both the cornea and the conjunctiva."
+},
+{
+"id": "MONDO:0004769",
+"name": "orbital pseudotumor",
+"syn": [
+"granuloma, plasma cell, orbital",
+"inflammatory pseudotumor of orbit",
+"inflammatory pseudotumor of orbit proper"
+],
+"parent": "chronic orbital inflammation",
+"defn": "A nonspecific tumor-like inflammatory lesion in the orbit of the eye. It is usually composed of mature lymphocytes; plasma cells; macrophages; leukocytes with v"
+},
+{
+"id": "MONDO:0004770",
+"name": "exophthalmos",
+"syn": [
+"exophthalmos (disease)",
+"proptosis"
+],
+"parent": "eye disorder",
+"defn": "The anterior displacement of the eye within the orbit, giving a bulging appearance."
+},
+{
+"id": "MONDO:0004772",
+"name": "glaucomatocyclitic crisis",
+"syn": [
+"glaucomatocyclitic crisis disease",
+"Posner-Schlossman syndrome"
+],
+"parent": "iridocyclitis",
+"defn": ""
+},
+{
+"id": "MONDO:0004773",
+"name": "iridocyclitis",
+"syn": [
+"iridocyclitis (disease)"
+],
+"parent": "ciliary body disorder",
+"defn": "An inflammation of the iris and the ciliary body"
+},
+{
+"id": "MONDO:0004774",
+"name": "gonococcal iridocyclitis",
+"syn": [
+"Neisseria gonorrhoeae caused iridocyclitis (disease)",
+"Neisseria gonorrhoeae iridocyclitis (disease)"
+],
+"parent": "gonococcal endophthalmia",
+"defn": "An iridocyclitis (disease) caused by infection with Neisseria gonorrhoeae."
+},
+{
+"id": "MONDO:0004775",
+"name": "lens-induced iridocyclitis",
+"syn": [],
+"parent": "iridocyclitis",
+"defn": ""
+},
+{
+"id": "MONDO:0004777",
+"name": "acute laryngitis",
+"syn": [
+"laryngitis, acute"
+],
+"parent": "laryngitis",
+"defn": "An acute inflammatory process affecting the larynx. It is caused by bacteria, viruses, or vocal strain. Signs and symptoms include sore throat, cough, swallowin"
+},
+{
+"id": "MONDO:0004778",
+"name": "epididymo-orchitis",
+"syn": [],
+"parent": "epididymitis",
+"defn": "A disorder involving inflammation of the epididymis and testes."
+},
+{
+"id": "MONDO:0004779",
+"name": "epididymitis",
+"syn": [
+"epididymal",
+"epididymis",
+"epididymitis (disease)"
+],
+"parent": "male reproductive system disorder",
+"defn": "Inflammation of the epididymis. Its clinical features include enlarged epididymis, a swollen scrotum; pain; pyuria; and fever. It is usually related to infectio"
+},
+{
+"id": "MONDO:0004780",
+"name": "strictly posterior acute myocardial infarction",
+"syn": [],
+"parent": "acute myocardial infarction",
+"defn": ""
+},
+{
+"id": "MONDO:0004781",
+"name": "acute myocardial infarction",
+"syn": [
+"acute myocardial infarction (disease)",
+"myocardial infarction (disease), acute"
+],
+"parent": "myocardial infarction",
+"defn": "Necrosis of the myocardium, as a result of interruption of the blood supply to the area. It is characterized by a severe and rapid onset of symptoms that may in"
+},
+{
+"id": "MONDO:0004782",
+"name": "diabetes insipidus",
+"syn": [],
+"parent": "kidney disorder",
+"defn": "A disorder characterized by excretion of large amounts of urine, accompanied by excessive thirst. Causes include deficiency of antidiuretic hormone or failure o"
+},
+{
+"id": "MONDO:0004784",
+"name": "allergic asthma",
+"syn": [
+"allergic form of asthma"
+],
+"parent": "allergic respiratory disease",
+"defn": "A asthma with a basis in a pathological type I hypersensitivity reaction."
+},
+{
+"id": "MONDO:0004785",
+"name": "blepharitis",
+"syn": [
+"eyelid inflammation",
+"inflammation of eyelid"
+],
+"parent": "eyelid disorder",
+"defn": "Inflammation of the eyelids near the eyelashes."
+},
+{
+"id": "MONDO:0004786",
+"name": "chronic cholangitis",
+"syn": [
+"cholangitis, chronic"
+],
+"parent": "cholangitis",
+"defn": "Cholangitis that is persistent and long-standing."
+},
+{
+"id": "MONDO:0004787",
+"name": "cervical mullerian papilloma",
+"syn": [
+"cervical Müllerian papilloma"
+],
+"parent": "cervical benign neoplasm",
+"defn": "A rare, benign, papillary neoplasm that arises from the cervix. It is characterized by the presence of a fibrovascular core covered by mucinous epithelial cells"
+},
+{
+"id": "MONDO:0004788",
+"name": "cervix squamous papilloma",
+"syn": [
+"cervical squamous papilloma",
+"cervix uteri squamous papilloma",
+"squamous papilloma of cervix"
+],
+"parent": "cervical benign neoplasm",
+"defn": "A papilloma that arises from the squamous epithelium of the cervix."
+},
+{
+"id": "MONDO:0004789",
+"name": "cholangitis",
+"syn": [
+"biliary tract infection",
+"biliary tree inflammation",
+"inflammation of biliary tree"
+],
+"parent": "non-neoplastic bile duct disorder",
+"defn": "An acute or chronic inflammatory process affecting the biliary tract."
+},
+{
+"id": "MONDO:0004790",
+"name": "fatty liver disease",
+"syn": [
+"fatty liver"
+],
+"parent": "liver disorder",
+"defn": "A reversible condition wherein large vacuoles of triglyceride fat accumulate in liver cells via the process of steatosis."
+},
+{
+"id": "MONDO:0004792",
+"name": "cancer of isthmus of fallopian tube",
+"syn": [
+"isthmus of fallopian tube cancer",
+"malignant isthmus of fallopian tube neoplasm",
+"malignant neoplasm of isthmus of fallopian tube"
+],
+"parent": "fallopian tube cancer",
+"defn": "A cancer that involves the UBERON:0016632."
+},
+{
+"id": "MONDO:0004794",
+"name": "exposure keratitis",
+"syn": [
+"exposure keratoconjunctivitis"
+],
+"parent": "keratoconjunctivitis",
+"defn": ""
+},
+{
+"id": "MONDO:0004795",
+"name": "otitis externa",
+"syn": [
+"external Ear infection",
+"infectious otitis externa",
+"outer Ear infection"
+],
+"parent": "external ear disorder",
+"defn": "Inflammation of the anatomical structures of the outer ear and ear canal secondary to an infectious process. Bacterial etiology is most common, but fungal infec"
+},
+{
+"id": "MONDO:0004796",
+"name": "infectious meningitis",
+"syn": [
+"infective meningitis"
+],
+"parent": "meningitis",
+"defn": "Inflammation of the meninges of the brain and/or spinal cord caused by an infectious agent (viral, bacterial, or fungal). Symptoms include headache, fever, vomi"
+},
+{
+"id": "MONDO:0004797",
+"name": "mononeuritis of lower limb",
+"syn": [
+"hindlimb mononeuritis simplex",
+"mononeuritis simplex of hindlimb"
+],
+"parent": "mononeuritis simplex",
+"defn": "A mononeuritis simplex that involves the hindlimb."
+},
+{
+"id": "MONDO:0004799",
+"name": "ulcerative blepharitis",
+"syn": [],
+"parent": "blepharitis",
+"defn": ""
+},
+{
+"id": "MONDO:0004800",
+"name": "chronic dacryoadenitis",
+"syn": [
+"dacryoadenitis, chronic"
+],
+"parent": "dacryoadenitis",
+"defn": "Chronic form of dacryoadenitis."
+},
+{
+"id": "MONDO:0004801",
+"name": "unilateral hypoactive labyrinth",
+"syn": [],
+"parent": "inner ear disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004802",
+"name": "pulmonary eosinophilia",
+"syn": [],
+"parent": "hypereosinophilic syndrome",
+"defn": "A condition characterized by infiltration of the lung with eosinophils due to inflammation or other disease processes. Major eosinophilic lung diseases are the "
+},
+{
+"id": "MONDO:0004803",
+"name": "disseminated eosinophilic collagen disease",
+"syn": [],
+"parent": "collagenopathy",
+"defn": ""
+},
+{
+"id": "MONDO:0004804",
+"name": "dacryoadenitis",
+"syn": [
+"inflammation of lacrimal gland",
+"lacrimal gland inflammation"
+],
+"parent": "inflammatory disease",
+"defn": "Inflammation and enlargement of the lacrimal gland."
+},
+{
+"id": "MONDO:0004805",
+"name": "leukocyte disorder",
+"syn": [
+"disease of leukocyte",
+"disease or disorder of leukocyte",
+"disorder of leukocyte"
+],
+"parent": "immune system disorder",
+"defn": "A disease involving leukocytes."
+},
+{
+"id": "MONDO:0004806",
+"name": "chronic eosinophilic pneumonia",
+"syn": [
+"eosinophilic pneumonia, chronic"
+],
+"parent": "eosinophilic pneumonia",
+"defn": "Chronic inflammatory disorder of the lungs characterized by the presence of eosinophils in the interalveolar septa and alveolar spaces and peripheral blood eosi"
+},
+{
+"id": "MONDO:0004808",
+"name": "benign mammary dysplasia",
+"syn": [],
+"parent": "integumentary system disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004810",
+"name": "acute ethmoiditis",
+"syn": [
+"acute ethmoidal sinusitis",
+"ethmoid sinusitis, acute"
+],
+"parent": "ethmoid sinusitis",
+"defn": "Acute form of ethmoid sinusitis."
+},
+{
+"id": "MONDO:0004811",
+"name": "simple chronic conjunctivitis",
+"syn": [],
+"parent": "chronic conjunctivitis",
+"defn": ""
+},
+{
+"id": "MONDO:0004812",
+"name": "acute dacryoadenitis",
+"syn": [
+"dacryoadenitis, acute"
+],
+"parent": "dacryoadenitis",
+"defn": "Acute form of dacryoadenitis."
+},
+{
+"id": "MONDO:0004813",
+"name": "tuberculous pneumothorax",
+"syn": [],
+"parent": "pneumothorax",
+"defn": "A pneumothorax caused by tuberculosis infection, typically resulting from rupture of a cavitary tuberculous lesion into the pleural space."
+},
+{
+"id": "MONDO:0004815",
+"name": "osteosclerotic plasma cell myeloma",
+"syn": [
+"osteosclerotic multiple myeloma"
+],
+"parent": "plasma cell myeloma",
+"defn": "A plasma cell neoplasm associated with osteosclerotic and fibrotic changes in the bone trabeculae. Often, the lymph nodes show changes resembling the plasma cel"
+},
+{
+"id": "MONDO:0004816",
+"name": "refractory plasma cell neoplasm",
+"syn": [],
+"parent": "refractory hematologic cancer",
+"defn": "A plasma cell neoplasm that is resistant to treatment."
+},
+{
+"id": "MONDO:0004817",
+"name": "non-secretory plasma cell myeloma",
+"syn": [
+"non-secretory multiple myeloma"
+],
+"parent": "plasma cell myeloma",
+"defn": "A rare type of multiple myeloma in which the plasma cells synthesize but do not secrete immunoglobulins. As a result, none of the immunoglobulins appear out of "
+},
+{
+"id": "MONDO:0004819",
+"name": "indolent plasma cell myeloma",
+"syn": [
+"indolent multiple myeloma",
+"indolent myeloma"
+],
+"parent": "smoldering plasma cell myeloma",
+"defn": ""
+},
+{
+"id": "MONDO:0004820",
+"name": "peripheral nerve schwannoma",
+"syn": [],
+"parent": "schwannoma",
+"defn": "A benign, usually encapsulated slow growing tumor of the peripheral nervous system composed of Schwann cells. It recurs infrequently and only rare cases associa"
+},
+{
+"id": "MONDO:0004821",
+"name": "nasopharyngeal disorder",
+"syn": [
+"disease of nasopharynx",
+"disease or disorder of nasopharynx",
+"disorder of nasopharynx"
+],
+"parent": "upper respiratory tract disorder",
+"defn": "A non-neoplastic or neoplastic disorder that affects the nasopharynx. Representative examples include nasopharyngitis, angiofibroma, and carcinoma."
+},
+{
+"id": "MONDO:0004822",
+"name": "bronchiectasis",
+"syn": [],
+"parent": "bronchial disorder",
+"defn": "Segmental, irreversible dilation of the bronchial tree resulting in the accumulation of secretions which leads to obstruction. The most common cause is bacteria"
+},
+{
+"id": "MONDO:0004824",
+"name": "neonatal candidiasis",
+"syn": [
+"neonatal Candida infection"
+],
+"parent": "candidiasis",
+"defn": "A fungal infection by any of the Candida species in a newborn infant up to 28 days old."
+},
+{
+"id": "MONDO:0004826",
+"name": "urethral calculus",
+"syn": [
+"urethra urolithiasis",
+"urolithiasis of urethra"
+],
+"parent": "urethral disorder",
+"defn": "A concretion in the urethra."
+},
+{
+"id": "MONDO:0004827",
+"name": "esophagus squamous cell papilloma",
+"syn": [
+"esophageal squamous papilloma",
+"esophagus squamous papilloma",
+"oesophagus squamous papilloma"
+],
+"parent": "squamous papilloma",
+"defn": "A rare neoplasm arising from the distal third of the esophagus. Morphologically, it is characterized by the presence of fibrovascular cores covered by mature st"
+},
+{
+"id": "MONDO:0004828",
+"name": "lower urinary tract calculus",
+"syn": [
+"lower urinary tract urolithiasis",
+"urolithiasis of lower urinary tract"
+],
+"parent": "urolithiasis",
+"defn": "A urolithiasis that involves the lower urinary tract."
+},
+{
+"id": "MONDO:0004829",
+"name": "Krukenberg carcinoma",
+"syn": [
+"Krukenberg neoplasm",
+"Krukenberg tumor",
+"Krukenberg tumour"
+],
+"parent": "ovarian adenocarcinoma",
+"defn": "Metastatic signet-ring cell carcinoma to the ovary. The primary site is the gastrointestinal tract or breast."
+},
+{
+"id": "MONDO:0004830",
+"name": "fasciitis",
+"syn": [
+"fascia inflammation",
+"fasciitis (disease)",
+"Fascitis"
+],
+"parent": "musculoskeletal system disorder",
+"defn": "Inflammation process in fascia."
+},
+{
+"id": "MONDO:0004831",
+"name": "proliferative fasciitis",
+"syn": [],
+"parent": "fasciitis",
+"defn": "A rapidly growing, poorly circumscribed, mass-forming proliferation that arises from the subcutaneous tissues. It is characterized by the presence of spindle-sh"
+},
+{
+"id": "MONDO:0004832",
+"name": "esophagus leiomyoma",
+"syn": [
+"esophageal leiomyoma",
+"leiomyoma of esophagus",
+"leiomyoma of oesophagus"
+],
+"parent": "leiomyoma",
+"defn": "A benign smooth muscle neoplasm arising from the lower part of the esophagus. It is the most common mesenchymal neoplasm of the esophagus. Dysphagia is a freque"
+},
+{
+"id": "MONDO:0004833",
+"name": "plantar fasciitis",
+"syn": [],
+"parent": "fasciitis",
+"defn": "Inflammation of the thick tissue on the bottom of the foot (plantar fascia) causing heel pain. The plantar fascia (also called plantar aponeurosis) are bands of"
+},
+{
+"id": "MONDO:0004834",
+"name": "ischemic fasciitis",
+"syn": [
+"atypical decubital fibroplasia"
+],
+"parent": "fasciitis",
+"defn": "A reactive, painless lesion which is characterized by a pseudosarcomatous proliferation of fibroblasts and myofibroblasts usually in the deep subcutaneous tissu"
+},
+{
+"id": "MONDO:0004835",
+"name": "necrotizing fasciitis",
+"syn": [],
+"parent": "fasciitis",
+"defn": "Necrotizing fasciitis is a serious infection of the skin, the tissue just beneath the skin (subcutaneous tissue), and the tissue that covers internal organs (fa"
+},
+{
+"id": "MONDO:0004836",
+"name": "intravascular fasciitis",
+"syn": [
+"intravascular nodular fasciitis",
+"intravascular pseudosarcomatous fasciitis"
+],
+"parent": "nodular fasciitis",
+"defn": "A rare self-limiting, rapidly growing, non-encapsulated benign neoplasm that arises from the vessels. It is characterized by the presence of plump spindle-shape"
+},
+{
+"id": "MONDO:0004837",
+"name": "neurofibroma of the esophagus",
+"syn": [
+"esophageal neurofibroma",
+"esophagus neurofibroma",
+"neurofibroma of esophagus"
+],
+"parent": "neurofibroma",
+"defn": "A non-metastasizing encapsulated neoplasm arising from nerves in the esophagus. Morphologically, it is characterized by the presence of fibroblasts and Schwann "
+},
+{
+"id": "MONDO:0004838",
+"name": "orthostatic proteinuria",
+"syn": [
+"postural albuminuria"
+],
+"parent": "kidney disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004840",
+"name": "non-congenital cyst of kidney",
+"syn": [],
+"parent": "cystic kidney disease",
+"defn": ""
+},
+{
+"id": "MONDO:0004841",
+"name": "kidney hypertrophy",
+"syn": [
+"hypertrophy of the kidney",
+"renal Hypertrophy"
+],
+"parent": "kidney disorder",
+"defn": "Global enlargement of the renal parenchyma in one or both kidneys."
+},
+{
+"id": "MONDO:0004842",
+"name": "stomatitis",
+"syn": [
+"inflammation of mouth mucosa",
+"mouth mucosa inflammation",
+"mucositis oral"
+],
+"parent": "mucositis",
+"defn": "Inflammation of the oral mucosa due to local or systemic factors."
+},
+{
+"id": "MONDO:0004843",
+"name": "pathologic nystagmus",
+"syn": [],
+"parent": "ocular motility disease",
+"defn": "Involuntary movements of the eyeballs. The presence or absence of nystagmus is often used in the diagnosis of a variety of neurological and visual disorders."
+},
+{
+"id": "MONDO:0004844",
+"name": "oral mucosa leukoplakia",
+"syn": [
+"leukokeratosis of oral mucosa",
+"leukoplakia of oral mucosa",
+"leukoplakia of the oral mucosa"
+],
+"parent": "leukoplakia",
+"defn": "A white patch or plaque on the oral mucosa that cannot be characterized clinically or pathologically as any other disease. The diagnosis of leukoplakia is one o"
+},
+{
+"id": "MONDO:0004845",
+"name": "aphthous stomatitis",
+"syn": [
+"oral aphthae"
+],
+"parent": "stomatitis",
+"defn": "A recurrent disease of the oral mucosa of unknown etiology. It is characterized by small white ulcerative lesions, single or multiple, round or oval, lasting fo"
+},
+{
+"id": "MONDO:0004846",
+"name": "placental abruption",
+"syn": [
+"abruptio placentae",
+"Abruptio placentae, premature separation of placenta",
+"placental abruption (disease)"
+],
+"parent": "placenta disorder",
+"defn": "Vaginal bleeding preceding the 20th week of gestation."
+},
+{
+"id": "MONDO:0004847",
+"name": "senile cataract",
+"syn": [],
+"parent": "cataract",
+"defn": "A cataract with no obvious cause occurring in persons over 50 years old."
+},
+{
+"id": "MONDO:0004848",
+"name": "ulcerative stomatitis",
+"syn": [],
+"parent": "stomatitis",
+"defn": "Inflammation of the mouth mucosa associated with the presence of ulcers."
+},
+{
+"id": "MONDO:0004849",
+"name": "pulmonary emphysema",
+"syn": [
+"emphysema",
+"emphysema, pulmonary"
+],
+"parent": "chronic obstructive pulmonary disease",
+"defn": "A subcategory of chronic obstructive pulmonary disease (COPD). It occurs in people who smoke and suffer from chronic bronchitis. It is characterized by inflatio"
+},
+{
+"id": "MONDO:0004851",
+"name": "toxic myocarditis",
+"syn": [],
+"parent": "acute myocarditis",
+"defn": ""
+},
+{
+"id": "MONDO:0004852",
+"name": "gonococcal keratitis",
+"syn": [],
+"parent": "gonococcal endophthalmia",
+"defn": ""
+},
+{
+"id": "MONDO:0004853",
+"name": "gonococcal endophthalmia",
+"syn": [],
+"parent": "gonorrhea",
+"defn": ""
+},
+{
+"id": "MONDO:0004854",
+"name": "ophthalmia neonatorum",
+"syn": [
+"gonococcal conjunctivitis (neonatorum)",
+"neonatal conjunctivitis"
+],
+"parent": "gonococcal conjunctivitis",
+"defn": "Inflammation of the conjunctiva in a newborn due to chemical or infectious causes. Aseptic conjunctivitis is often related to the use of prophylactic medication"
+},
+{
+"id": "MONDO:0004855",
+"name": "tenosynovitis",
+"syn": [
+"tendon sheath inflammation",
+"Tenosynovitides"
+],
+"parent": "tendinitis",
+"defn": "Inflammation of the synovial lining of a tendon sheath. Causes include trauma, tendon stress, bacterial disease (gonorrhea, tuberculosis), rheumatic disease, an"
+},
+{
+"id": "MONDO:0004856",
+"name": "rosacea conjunctivitis",
+"syn": [],
+"parent": "conjunctivitis",
+"defn": ""
+},
+{
+"id": "MONDO:0004857",
+"name": "tendinitis",
+"syn": [
+"inflammation of tendon",
+"tendon inflammation",
+"tendonitis"
+],
+"parent": "myositis disease",
+"defn": "Inflammation of a tendon, usually resulting from an overuse injury. It is characterized by swelling of the tendon, tenderness around the inflamed tendon, and pa"
+},
+{
+"id": "MONDO:0004858",
+"name": "occlusion of gallbladder",
+"syn": [
+"obstruction of gallbladder"
+],
+"parent": "gallbladder disorder",
+"defn": "Blockage of the normal flow of the contents of the gallbladder."
+},
+{
+"id": "MONDO:0004859",
+"name": "hydrops of gallbladder",
+"syn": [],
+"parent": "gallbladder disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004860",
+"name": "vitreous disorder",
+"syn": [
+"disease of vitreous humor",
+"disease of vitreous humour",
+"disease or disorder of vitreous humor"
+],
+"parent": "vitreous body disorder",
+"defn": "A disease involving the vitreous humor."
+},
+{
+"id": "MONDO:0004861",
+"name": "ophthalmia nodosa",
+"syn": [],
+"parent": "eye disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004862",
+"name": "vitreous abscess",
+"syn": [],
+"parent": "vitreous disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004863",
+"name": "purulent endophthalmitis",
+"syn": [],
+"parent": "endophthalmitis",
+"defn": ""
+},
+{
+"id": "MONDO:0004864",
+"name": "acute allergic mucoid otitis media",
+"syn": [],
+"parent": "blue drum syndrome",
+"defn": "A blue drum syndrome caused by an allergen."
+},
+{
+"id": "MONDO:0004865",
+"name": "blue drum syndrome",
+"syn": [
+"acute mucoid otitis media"
+],
+"parent": "acute transudative otitis media",
+"defn": "A acute transudative otitis media involving thick, viscid and mucuslike fluid effusion due to which the drum appears blue in color."
+},
+{
+"id": "MONDO:0004866",
+"name": "eustachian tube disorder",
+"syn": [
+"disease of pharyngotympanic tube",
+"disease or disorder of pharyngotympanic tube",
+"disorder of pharyngotympanic tube"
+],
+"parent": "middle ear disorder",
+"defn": "A disease involving the pharyngotympanic tube."
+},
+{
+"id": "MONDO:0004867",
+"name": "upper respiratory tract disorder",
+"syn": [
+"disease of upper respiratory tract",
+"disease or disorder of upper respiratory tract",
+"disorder of upper respiratory tract"
+],
+"parent": "respiratory system disorder",
+"defn": "A disease involving the upper respiratory tract."
+},
+{
+"id": "MONDO:0004868",
+"name": "biliary tract disorder",
+"syn": [
+"biliary tree disease",
+"biliary tree disease or disorder",
+"disease of biliary tree"
+],
+"parent": "hepatobiliary disorder",
+"defn": "A disease involving the biliary tree."
+},
+{
+"id": "MONDO:0004869",
+"name": "pelvic varices",
+"syn": [
+"pelvic region of trunk varicose disease",
+"varicose disease of pelvic region of trunk"
+],
+"parent": "varicose disease",
+"defn": "A varicose disease that involves the pelvic region of trunk."
+},
+{
+"id": "MONDO:0004871",
+"name": "perianal hematoma",
+"syn": [
+"external thrombosed hemorrhoids",
+"Thrombosed external haemorrhoids"
+],
+"parent": "hemorrhoid",
+"defn": ""
+},
+{
+"id": "MONDO:0004872",
+"name": "hemorrhoid",
+"syn": [
+"Haemorrhoids",
+"Hemorrhoids"
+],
+"parent": "pelvic varices",
+"defn": "Dilated veins in the anal canal."
+},
+{
+"id": "MONDO:0004873",
+"name": "internal hemorrhoid",
+"syn": [],
+"parent": "hemorrhoid",
+"defn": "A hemorrhoid which originates above the dentate line."
+},
+{
+"id": "MONDO:0004874",
+"name": "ganglion or cyst of synovium/tendon/bursa",
+"syn": [],
+"parent": "arthropathy",
+"defn": ""
+},
+{
+"id": "MONDO:0004875",
+"name": "xanthogranulomatous cholecystitis",
+"syn": [],
+"parent": "cholecystitis",
+"defn": "Cholecystitis that is characterized by nodules containing lipid."
+},
+{
+"id": "MONDO:0004876",
+"name": "myocardial stunning",
+"syn": [],
+"parent": "myocardial infarction",
+"defn": "Prolonged dysfunction of the myocardium after a brief episode of severe ischemia, with gradual return of contractile activity."
+},
+{
+"id": "MONDO:0004877",
+"name": "transient neonatal thrombocytopenia",
+"syn": [],
+"parent": "neonatal thrombocytopenia",
+"defn": ""
+},
+{
+"id": "MONDO:0004878",
+"name": "female breast upper-outer quadrant cancer",
+"syn": [],
+"parent": "female breast carcinoma",
+"defn": ""
+},
+{
+"id": "MONDO:0004879",
+"name": "senile atrophy of choroid",
+"syn": [],
+"parent": "choroidal sclerosis",
+"defn": ""
+},
+{
+"id": "MONDO:0004880",
+"name": "bowel dysfunction",
+"syn": [
+"disease of lower digestive tract",
+"lower digestive tract disease"
+],
+"parent": "intestinal disorder",
+"defn": "Any disease in which the causes of the disease is a perturbation of the lower digestive tract leading to its dysfunction."
+},
+{
+"id": "MONDO:0004881",
+"name": "myositis fibrosa",
+"syn": [
+"interstitial myositis"
+],
+"parent": "myositis disease",
+"defn": "A form of myositis that is characterized by the formation of connective tissue within the muscle."
+},
+{
+"id": "MONDO:0004882",
+"name": "angioid streaks of choroid",
+"syn": [
+"angioid streaks of optic choroid",
+"optic choroid angioid streaks"
+],
+"parent": "choroidal sclerosis",
+"defn": "A angioid streaks that involves the optic choroid."
+},
+{
+"id": "MONDO:0004883",
+"name": "hereditary choroidal atrophy",
+"syn": [],
+"parent": "choroidal sclerosis",
+"defn": ""
+},
+{
+"id": "MONDO:0004884",
+"name": "eye degenerative disorder",
+"syn": [
+"degenerative disorder of eye",
+"eye neurodegenerative disease",
+"eyeball of camera-type eye neurodegenerative disease"
+],
+"parent": "eye disorder",
+"defn": "A neurodegenerative disease that involves the eye."
+},
+{
+"id": "MONDO:0004885",
+"name": "choroidal sclerosis",
+"syn": [
+"choroidal degenerations",
+"neurodegenerative disease of optic choroid",
+"optic choroid neurodegenerative disease"
+],
+"parent": "optic choroid disorder",
+"defn": "A neurodegenerative disease that involves the optic choroid."
+},
+{
+"id": "MONDO:0004886",
+"name": "diffuse secondary choroid atrophy",
+"syn": [],
+"parent": "choroidal sclerosis",
+"defn": ""
+},
+{
+"id": "MONDO:0004888",
+"name": "partial circumpapillary choroid dystrophy",
+"syn": [],
+"parent": "hereditary choroidal atrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0004889",
+"name": "total central choroidal atrophy",
+"syn": [],
+"parent": "central areolar choroidal dystrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0004890",
+"name": "partial central choroid dystrophy",
+"syn": [],
+"parent": "central areolar choroidal dystrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0004891",
+"name": "hyperopia",
+"syn": [
+"hypermetropia"
+],
+"parent": "refractive error",
+"defn": "A refractive error in which rays of light entering the eye parallel to the optic axis are brought to a focus behind the retina, as a result of the eyeball being"
+},
+{
+"id": "MONDO:0004892",
+"name": "refractive error",
+"syn": [],
+"parent": "eye disorder",
+"defn": "A defect in the focusing of light on the retina as in astigmatism, myopia, or hyperopia."
+},
+{
+"id": "MONDO:0004893",
+"name": "hypertropia",
+"syn": [],
+"parent": "strabismus",
+"defn": "Vertical strabismus in which there is permanent upward deviation of the visual axis of one eye."
+},
+{
+"id": "MONDO:0004894",
+"name": "cyclotropia",
+"syn": [],
+"parent": "strabismus",
+"defn": ""
+},
+{
+"id": "MONDO:0004895",
+"name": "accommodative esotropia",
+"syn": [],
+"parent": "esotropia",
+"defn": ""
+},
+{
+"id": "MONDO:0004896",
+"name": "esotropia",
+"syn": [
+"internal strabismus"
+],
+"parent": "strabismus",
+"defn": "A form of strabismus in which one or both eyes are deviated medially."
+},
+{
+"id": "MONDO:0004897",
+"name": "hypotropia",
+"syn": [
+"downward ocular deviation",
+"sunset sign"
+],
+"parent": "strabismus",
+"defn": "Vertical strabismus in which there is permanent downward deviation of the visual axis of one eye."
+},
+{
+"id": "MONDO:0004898",
+"name": "total circumpapillary dystrophy of choroid",
+"syn": [
+"circumpapillary dystrophy of choroid, total"
+],
+"parent": "hereditary choroidal atrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0004899",
+"name": "monofixation syndrome",
+"syn": [
+"microstrabismus",
+"microtropia"
+],
+"parent": "strabismus",
+"defn": ""
+},
+{
+"id": "MONDO:0004900",
+"name": "peripheral vertigo",
+"syn": [],
+"parent": "vestibular disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004901",
+"name": "lingual-facial-buccal dyskinesia",
+"syn": [],
+"parent": "movement disorder",
+"defn": "Syndromes which feature dyskinesias as a cardinal manifestation of the disease process. Included in this category are degenerative, hereditary, post-infectious,"
+},
+{
+"id": "MONDO:0004902",
+"name": "interstitial keratitis",
+"syn": [],
+"parent": "connective tissue disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004903",
+"name": "deep keratitis",
+"syn": [],
+"parent": "keratitis",
+"defn": ""
+},
+{
+"id": "MONDO:0004904",
+"name": "toxic maculopathy",
+"syn": [
+"toxic maculopathy of retina"
+],
+"parent": "degeneration of macula and posterior pole",
+"defn": ""
+},
+{
+"id": "MONDO:0004905",
+"name": "intestinal disaccharidase deficiency",
+"syn": [
+"intestinal disaccharidase deficiency and disaccharide malabsorption"
+],
+"parent": "malabsorption syndrome",
+"defn": "Inherited or acquired disorders of sugar metabolism. Deficiencies of lactase, maltase or sucrase-isomaltase usually occur irreversibly and independent of one an"
+},
+{
+"id": "MONDO:0004907",
+"name": "alopecia",
+"syn": [
+"hair loss",
+"loss Of hair"
+],
+"parent": "hair anomaly",
+"defn": "Hair loss usually from the scalp. It may result in bald spots or spread to the entire scalp or the entire epidermis. It may be androgenetic or caused by chemoth"
+},
+{
+"id": "MONDO:0004909",
+"name": "urethral gland abscess",
+"syn": [],
+"parent": "urethral disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004910",
+"name": "mitral valve prolapse",
+"syn": [
+"barlow's syndrome",
+"floppy mitral valve",
+"mitral valve prolapse (disease)"
+],
+"parent": "mitral valve disorder",
+"defn": "A fairly common and often benign valvular heart disorder characterized by redundancy or hooding of mitral valve leaflets so that they prolapse into the left atr"
+},
+{
+"id": "MONDO:0004911",
+"name": "cardiovascular syphilis",
+"syn": [],
+"parent": "tertiary syphilis",
+"defn": "A tertiary syphilis that is manifested as aneurysm formation in the ascending aorta, caused by chronic inflammatory destruction of the vasa vasorum, insufficien"
+},
+{
+"id": "MONDO:0004913",
+"name": "alternating esotropia",
+"syn": [],
+"parent": "esotropia",
+"defn": ""
+},
+{
+"id": "MONDO:0004917",
+"name": "internal hordeolum",
+"syn": [
+"hordeolum of tarsal gland",
+"tarsal gland hordeolum"
+],
+"parent": "hordeolum",
+"defn": "A hordeolum that results from infection of a meibomian gland."
+},
+{
+"id": "MONDO:0004918",
+"name": "central corneal ulcer",
+"syn": [],
+"parent": "corneal ulcer",
+"defn": ""
+},
+{
+"id": "MONDO:0004919",
+"name": "infected hydrocele",
+"syn": [],
+"parent": "hydrocele",
+"defn": "A hydrocele that has active infection and inflammation of the fluid-filled sac surrounding a testicle, caused by microbial invasion, with clinical features such"
+},
+{
+"id": "MONDO:0004920",
+"name": "hydrocele",
+"syn": [],
+"parent": "male reproductive system disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004922",
+"name": "developmental coordination disorder",
+"syn": [
+"clumsy child syndrome",
+"development coordination disorder",
+"developmental dyspraxia"
+],
+"parent": "specific developmental disorder",
+"defn": "A disorder characterized by an impairment in the development of an individual's motor coordination skills; this impairment in motor development is not due to a "
+},
+{
+"id": "MONDO:0004923",
+"name": "chronic inflammation of lacrimal passage",
+"syn": [],
+"parent": "lacrimal apparatus disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0004924",
+"name": "chronic canaliculitis",
+"syn": [
+"actinomycosis, chronic",
+"chronic actinomycosis"
+],
+"parent": "chronic inflammation of lacrimal passage",
+"defn": "Chronic form of actinomycosis."
+},
+{
+"id": "MONDO:0004925",
+"name": "chronic dacryocystitis",
+"syn": [
+"dacryocystitis, chronic"
+],
+"parent": "chronic inflammation of lacrimal passage",
+"defn": "Chronic form of dacryocystitis."
+},
+{
+"id": "MONDO:0004926",
+"name": "dacryocystitis",
+"syn": [
+"Dacryoadenitides",
+"Dacryocystitides",
+"inflammation of lacrimal sac"
+],
+"parent": "inflammatory disease",
+"defn": "Inflammation of the lacrimal sac."
+},
+{
+"id": "MONDO:0004927",
+"name": "dacryocystocele",
+"syn": [
+"lacrimal mucocele"
+],
+"parent": "chronic inflammation of lacrimal passage",
+"defn": "A congenital or acquired mucocele that develops in the lacrimal sac. It is usually the result of nasolacrimal duct abnormalities or obstruction."
+},
+{
+"id": "MONDO:0004928",
+"name": "lymph node disorder",
+"syn": [
+"disease of lymph node",
+"disease or disorder of lymph node",
+"disorder of lymph node"
+],
+"parent": "lymphatic system disorder",
+"defn": "Any disorder of the lymph nodes."
+},
+{
+"id": "MONDO:0004929",
+"name": "constant exophthalmos",
+"syn": [],
+"parent": "disease of orbital part of eye adnexa",
+"defn": ""
+},
+{
+"id": "MONDO:0004930",
+"name": "steroid-induced glaucoma",
+"syn": [
+"corticosteroid-induced glaucoma"
+],
+"parent": "open-angle glaucoma",
+"defn": ""
+},
+{
+"id": "MONDO:0004931",
+"name": "residual stage corticosteroid-induced glaucoma",
+"syn": [],
+"parent": "steroid-induced glaucoma",
+"defn": ""
+},
+{
+"id": "MONDO:0004932",
+"name": "null-cell leukemia",
+"syn": [],
+"parent": "acute lymphoblastic leukemia",
+"defn": ""
+},
+{
+"id": "MONDO:0004933",
+"name": "hypoplastic left heart syndrome",
+"syn": [
+"HLHS"
+],
+"parent": "congenital left-sided heart lesions",
+"defn": "Hypoplastic left heart syndrome (HLHS) refers to the abnormal development of the left-sided cardiac structures, resulting in obstruction to blood flow from the "
+},
+{
+"id": "MONDO:0004934",
+"name": "periostitis",
+"syn": [
+"periosteum inflammation",
+"periostitis (disease)"
+],
+"parent": "connective tissue disorder",
+"defn": "Inflammation of the periosteum. The condition is generally chronic, and is marked by tenderness and swelling of the bone and an aching pain. Acute periostitis i"
+},
+{
+"id": "MONDO:0004936",
+"name": "uterine inversion",
+"syn": [],
+"parent": "uterine disorder",
+"defn": "A complication of obstetric labor in which the corpus of the uterus is forced completely or partially through the uterine cervix. This can occur during the late"
+},
+{
+"id": "MONDO:0004937",
+"name": "hypervitaminosis D",
+"syn": [
+"hypervitaminosis type D"
+],
+"parent": "overnutrition",
+"defn": ""
+},
+{
+"id": "MONDO:0004938",
+"name": "substance dependence",
+"syn": [
+"dependence"
+],
+"parent": "substance-related disorder",
+"defn": "The psychological or physiological need to take a substance in order to experience its effects or to avoid the effects of its absence."
+},
+{
+"id": "MONDO:0004939",
+"name": "hallucinogen dependence",
+"syn": [],
+"parent": "drug dependence",
+"defn": "A drug dependence for a hallucinogenic substance."
+},
+{
+"id": "MONDO:0004940",
+"name": "acute female pelvic peritonitis",
+"syn": [],
+"parent": "pelvic inflammatory disease",
+"defn": ""
+},
+{
+"id": "MONDO:0004941",
+"name": "eosinophilia-myalgia syndrome",
+"syn": [
+"eosinophilia myalgia syndrome"
+],
+"parent": "hypereosinophilic syndrome",
+"defn": "A complex systemic syndrome with inflammatory and autoimmune components that affect the skin, fascia, muscle, nerve, blood vessels, lung, and heart. Diagnostic "
+},
+{
+"id": "MONDO:0004942",
+"name": "orbit lymphoma",
+"syn": [
+"lymphoma of orbit",
+"lymphoma of the orbit",
+"primary orbit lymphoma"
+],
+"parent": "orbital cancer",
+"defn": "A lymphoma that arises from the structures of the orbit. Representative examples include mucosa-associated lymphoid tissue lymphoma, follicular lymphoma, and di"
+},
+{
+"id": "MONDO:0004943",
+"name": "orbit sarcoma",
+"syn": [
+"orbit of skull sarcoma",
+"orbital sarcoma",
+"sarcoma of orbit"
+],
+"parent": "orbital cancer",
+"defn": "A malignant soft tissue neoplasm that arises from the structures of the orbit. The majority of the cases are rhabdomyosarcomas."
+},
+{
+"id": "MONDO:0004944",
+"name": "neurosyphilis",
+"syn": [],
+"parent": "tertiary syphilis",
+"defn": "Infection of the brain or spinal cord by Treponema pallidum. It occurs many years following the original infection which remained untreated. Signs and symptoms "
+},
+{
+"id": "MONDO:0004946",
+"name": "hypoglycemia",
+"syn": [
+"blood glucose, Low",
+"glucose, Low blood",
+"low blood glucose"
+],
+"parent": "glucose metabolism disease",
+"defn": "Abnormally low level of glucose in the blood."
+},
+{
+"id": "MONDO:0004947",
+"name": "B-cell acute lymphoblastic leukemia",
+"syn": [
+"B lymphoblastic leukemia/lymphoma",
+"precursor B lymphoblastic leukemia/lymphoma",
+"precursor B-lymphoblastic lymphoma/leukemia"
+],
+"parent": "acute lymphoblastic leukemia",
+"defn": "A neoplasm of lymphoblasts committed to the B-cell lineage, typically composed of small to medium-sized blast cells. When the neoplasm involves predominantly th"
+},
+{
+"id": "MONDO:0004948",
+"name": "B-cell chronic lymphocytic leukemia",
+"syn": [
+"B cell chronic lymphocytic leukaemia",
+"B cell chronic lymphocytic leukemia",
+"B cell CLL"
+],
+"parent": "chronic leukemia",
+"defn": "B-cell chronic lymphocytic leukemia (B-CLL) is a type of B-cell non-Hodgkin lymphoma, and the most common form of leukemia in Western countries, affecting elder"
+},
+{
+"id": "MONDO:0004949",
+"name": "neoplasm of mature B-cells",
+"syn": [
+"mature B-cell lymphocytic neoplasm",
+"mature B-cell neoplasm"
+],
+"parent": "B-cell neoplasm",
+"defn": "A neoplasm of follicle center B cells which has at least a partial follicular pattern. Follicular lymphomas comprise about 35% of adult non-Hodgkin lymphomas in"
+},
+{
+"id": "MONDO:0004950",
+"name": "gastric carcinoma",
+"syn": [
+"carcinoma of stomach",
+"carcinoma of the stomach",
+"stomach carcinoma"
+],
+"parent": "gastric cancer",
+"defn": "A carcinoma that arises from epithelial cells of the stomach."
+},
+{
+"id": "MONDO:0004952",
+"name": "Hodgkins lymphoma",
+"syn": [
+"HL",
+"Hodgkin disease",
+"Hodgkin lymphoma"
+],
+"parent": "lymphoma",
+"defn": "A heterogeneous group of malignant lymphoid neoplasms of B-cell origin characterized histologically by the presence of Hodgkin and Reed-Sternberg (HRS) cells in"
+},
+{
+"id": "MONDO:0004953",
+"name": "invasive ductal breast carcinoma",
+"syn": [
+"infiltrating ductal adenocarcinoma",
+"infiltrating ductal breast carcinoma",
+"infiltrating ductal carcinoma"
+],
+"parent": "breast ductal adenocarcinoma",
+"defn": "The most common type of invasive breast carcinoma, accounting for approximately 70% of breast carcinomas. The gross appearance is usually typical with an irregu"
+},
+{
+"id": "MONDO:0004956",
+"name": "metastatic prostate carcinoma",
+"syn": [
+"metastatic prostate cancer",
+"prostate cancer metastatic",
+"prostate carcinoma metastatic"
+],
+"parent": "prostate carcinoma",
+"defn": "A carcinoma that arises from the prostate gland and has spread to other anatomic sites."
+},
+{
+"id": "MONDO:0004957",
+"name": "mucinous adenocarcinoma",
+"syn": [
+"adenocarcinoma, mucinous, malignant",
+"colloid adenocarcinoma",
+"colloid carcinoma"
+],
+"parent": "adenocarcinoma",
+"defn": "An invasive adenocarcinoma composed of malignant glandular cells which contain intracytoplasmic mucin. Often, the infiltrating glandular structures are associat"
+},
+{
+"id": "MONDO:0004958",
+"name": "oral cavity squamous cell carcinoma",
+"syn": [
+"mouth scc",
+"mouth squamous cell carcinoma",
+"oral cavity scc"
+],
+"parent": "lip and oral cavity squamous cell carcinoma",
+"defn": "A squamous cell carcinoma arising from the oral cavity. It affects predominantly adults in their fifth and sixth decades of life and is associated with alcohol "
+},
+{
+"id": "MONDO:0004959",
+"name": "plasma cell neoplasm",
+"syn": [
+"plasma cell dyscrasia",
+"plasma cell tumor",
+"plasma cell tumor, malignant"
+],
+"parent": "neoplasm of mature B-cells",
+"defn": "A clonal proliferation of immunoglobulin-secreting plasma cells. This category includes plasma cell myeloma, plasma cell leukemia, plasmacytoma, monoclonal immu"
+},
+{
+"id": "MONDO:0004960",
+"name": "monoclonal gammopathy",
+"syn": [],
+"parent": "hematologic disorder",
+"defn": "A condition characterized by the abnormal presence of monoclonal immunoglobulins in the blood or urine."
+},
+{
+"id": "MONDO:0004961",
+"name": "stage I endometrioid carcinoma",
+"syn": [],
+"parent": "endometrioid adenocarcinoma",
+"defn": "Endometrial cancer is a cancer that arises from the endometrium (the lining of the uterus or womb).It is the result of the abnormal growth of cells that have th"
+},
+{
+"id": "MONDO:0004962",
+"name": "stage II endometrioid carcinoma",
+"syn": [],
+"parent": "endometrioid adenocarcinoma",
+"defn": "Endometrial carcinoma is a carcinoma that arises from the endometrium (the lining of the uterus or womb). It is the result of the abnormal growth of cells that "
+},
+{
+"id": "MONDO:0004963",
+"name": "T-cell acute lymphoblastic leukemia",
+"syn": [
+"acute T cell leukemia",
+"acute T cell lymphoblastic leukaemia",
+"acute T cell lymphoblastic leukemia"
+],
+"parent": "acute lymphoblastic leukemia",
+"defn": "Acute lymphoblastic leukemia of T-cell origin. It comprises about 15% of childhood cases and 25% of adult cases. It is more common in males than females. (WHO, "
+}
+]

@@ -1,0 +1,1859 @@
+[
+{
+"id": "MONDO:0000723",
+"name": "stutter disorder",
+"syn": [
+"stutter"
+],
+"parent": "speech disorder",
+"defn": "A speech disorder characterized by frequent sound or syllable repetitions, sound prolongations, or other dysfluencies that are inappropriate for the individual'"
+},
+{
+"id": "MONDO:0000724",
+"name": "specific language impairment",
+"syn": [
+"language impairment (disease)"
+],
+"parent": "language disorder",
+"defn": "A language disorder characterized by difficulty in language acquisition despite otherwise normal development and in the absence of any obvious explanatory facto"
+},
+{
+"id": "MONDO:0000726",
+"name": "idiopathic scoliosis",
+"syn": [],
+"parent": "scoliosis",
+"defn": "A scoliosis with no known cause."
+},
+{
+"id": "MONDO:0000727",
+"name": "scapuloperoneal myopathy",
+"syn": [
+"Myopathy, Scapuloperoneal"
+],
+"parent": "Emery-Dreifuss muscular dystrophy",
+"defn": "A muscular dystrophy which begins at the lower legs and affects the shoulder region earlier and more severely than distal arm."
+},
+{
+"id": "MONDO:0000728",
+"name": "ptosis",
+"syn": [
+"blepharoptosis",
+"drooping eyelid",
+"eyelid ptosis"
+],
+"parent": "eye disorder",
+"defn": "The drooping of the upper eyelid."
+},
+{
+"id": "MONDO:0000732",
+"name": "combined oxidative phosphorylation deficiency",
+"syn": [],
+"parent": "mitochondrial oxidative phosphorylation disorder",
+"defn": "A mitochondrial oxidative phosphorylation disorder in which multiple mitochondrial respiratory chain complexes are affected."
+},
+{
+"id": "MONDO:0000733",
+"name": "cornea plana",
+"syn": [
+"congenital cornea plana",
+"flat cornea"
+],
+"parent": "corneal disorder",
+"defn": "A rare developmental defect of the eye characterized by usually bilateral absence of the normal protrusion of the cornea from the sclera, the corneal curvature "
+},
+{
+"id": "MONDO:0000734",
+"name": "Ohdo syndrome and variants",
+"syn": [],
+"parent": "blepharophimosis - intellectual disability syndrome",
+"defn": ""
+},
+{
+"id": "MONDO:0000736",
+"name": "dyschromatosis universalis hereditaria",
+"syn": [
+"dyschromatosis universalis"
+],
+"parent": "hyperpigmentation of the skin",
+"defn": "A pigmentation disease characterized by reticulate hyper- and hypo-pigmentated macules in a generalized distribution."
+},
+{
+"id": "MONDO:0000739",
+"name": "uvulitis",
+"syn": [
+"inflammation of palatine uvula",
+"palatine uvula inflammation"
+],
+"parent": "upper respiratory tract disorder",
+"defn": "Inflammation of the uvula."
+},
+{
+"id": "MONDO:0000740",
+"name": "adenoid hypertrophy",
+"syn": [
+"adenoidal hypertrophy",
+"enlarged adenoids"
+],
+"parent": "upper respiratory tract disorder",
+"defn": "An upper respiratory tract disease characterized by the unusual growth of the adenoid tonsil; has symptom snoring, has symptom hyponasality, has symptom otitis "
+},
+{
+"id": "MONDO:0000741",
+"name": "angular cheilitis",
+"syn": [
+"angle of oral opening cheilitis",
+"angular stomatitis",
+"cheilitis of angle of oral opening"
+],
+"parent": "cheilitis",
+"defn": "Inflammation of the skin at the corners of the mouth characterized by redness, fissures or crusts."
+},
+{
+"id": "MONDO:0000743",
+"name": "oral hairy leukoplakia",
+"syn": [
+"hairy leukoplakia of mouth",
+"hairy leukoplakia of oral mucosa",
+"hairy leukoplakia of the mouth"
+],
+"parent": "mouth disorder",
+"defn": "An epithelial hyperplasia of the oral cavity mucosa associated with Epstein-Barr virus and found almost exclusively in persons with HIV infection. The lesion co"
+},
+{
+"id": "MONDO:0000744",
+"name": "lung abscess",
+"syn": [
+"lung abscess (disease)"
+],
+"parent": "abscess",
+"defn": "A bacterial, fungal or parasitic abscess that develops in the lung parenchyma. Causes include aspiration pneumonia, necrotizing pneumonia, necrotizing malignant"
+},
+{
+"id": "MONDO:0000745",
+"name": "cardiac arrest",
+"syn": [
+"circulatory arrest"
+],
+"parent": "cardiac rhythm disease",
+"defn": "Cessation of breathing and/or cardiac function."
+},
+{
+"id": "MONDO:0000748",
+"name": "mastoiditis",
+"syn": [
+"inflammation of mastoid process of temporal bone",
+"mastoid process of temporal bone inflammation",
+"mastoid process of temporal boneitis"
+],
+"parent": "bone inflammation disease",
+"defn": "Inflammation of the mucosal lining of the mastoid antrum and mastoid air cell system of the mastoid process."
+},
+{
+"id": "MONDO:0000749",
+"name": "breast abscess",
+"syn": [],
+"parent": "breast disorder",
+"defn": "A breast disease characterized by a collection of pus in the breast."
+},
+{
+"id": "MONDO:0000750",
+"name": "dental abscess",
+"syn": [],
+"parent": "tooth disorder",
+"defn": "A tooth disease characterized by a localized collection of pus associated with a tooth."
+},
+{
+"id": "MONDO:0000751",
+"name": "cervical polyp",
+"syn": [
+"adenomatous polyp of cervix",
+"adenomatous polyp of the cervix",
+"adenomatous polyp of the uterine cervix"
+],
+"parent": "cervix disorder",
+"defn": "A polyp that arises from the surface of the cervix."
+},
+{
+"id": "MONDO:0000754",
+"name": "anal fistula",
+"syn": [
+"anal fistula (disease)",
+"anorectal fistula"
+],
+"parent": "rectal disorder",
+"defn": "An intestinal disorder characterized by an opening in the anal canal to the perianal skin. In the vast majority of cases there is a history of perianal abscess."
+},
+{
+"id": "MONDO:0000755",
+"name": "ectopic pregnancy",
+"syn": [
+"extrauterine pregnancy",
+"pregnancy, ectopic"
+],
+"parent": "female reproductive system disorder",
+"defn": "An abnormal pregnancy in which the conception is implanted outside the endometrial cavity."
+},
+{
+"id": "MONDO:0000756",
+"name": "parameningeal embryonal rhabdomyosarcoma",
+"syn": [],
+"parent": "embryonal rhabdomyosarcoma",
+"defn": "An embryonal rhabdomyosarcoma located in the parameningeal region."
+},
+{
+"id": "MONDO:0000757",
+"name": "glucocorticoid-induced osteoporosis",
+"syn": [],
+"parent": "corticosteroid-induced osteoporosis",
+"defn": "An osteoporosis caused by chronic glucocorticoid use. Glucocorticoids impair the replication, differentiation and function of osteoblasts and induce the apoptos"
+},
+{
+"id": "MONDO:0000758",
+"name": "bacillary angiomatosis",
+"syn": [
+"bacillary epithelioid angiomatosis",
+"Bartonella angiomatosis",
+"Bartonella caused angiomatosis"
+],
+"parent": "bartonellosis",
+"defn": "A condition that is caused by infection with Bartonella, and which is characterized by vascular proliferation, usually in immunocompromised individuals."
+},
+{
+"id": "MONDO:0000761",
+"name": "syndrome caused by partial chromosomal deletion",
+"syn": [
+"microdeletion syndrome"
+],
+"parent": "chromosomal disorder",
+"defn": "A chromosomal disorder consisting of the absence of a part of a chromosome."
+},
+{
+"id": "MONDO:0000762",
+"name": "syndrome caused by partial chromosomal duplication",
+"syn": [
+"microduplication sydrome"
+],
+"parent": "chromosomal disorder",
+"defn": "A chromosomal disorder consisting of the presence of a part of a chromosome in more copies than in a regular genome."
+},
+{
+"id": "MONDO:0000763",
+"name": "epithelial and subepithelial corneal dystrophy",
+"syn": [],
+"parent": "corneal dystrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0000764",
+"name": "epithelial-stromal TGFBI dystrophy",
+"syn": [
+"corneal dystrophy (disease) caused by mutation in TGFBI",
+"TGFBI corneal dystrophy (disease)"
+],
+"parent": "hereditary disease",
+"defn": "Any corneal dystrophy (disease) in which the cause of the disease is a mutation in the TGFBI gene."
+},
+{
+"id": "MONDO:0000766",
+"name": "corneal endothelial dystrophy",
+"syn": [
+"corneal dystrophy (disease) of corneal epithelium"
+],
+"parent": "corneal dystrophy",
+"defn": "A corneal dystrophy (disease) that involves the corneal epithelium."
+},
+{
+"id": "MONDO:0000771",
+"name": "allergic respiratory disease",
+"syn": [
+"allergic form of respiratory system disease",
+"allergic respiratory system disease"
+],
+"parent": "respiratory system disorder",
+"defn": "A respiratory system disease with a basis in a pathological type I hypersensitivity reaction."
+},
+{
+"id": "MONDO:0000774",
+"name": "autoimmune neuropathy",
+"syn": [],
+"parent": "autoimmune disorder of peripheral nervous system",
+"defn": "An autoimmune form of peripheral neuropathy."
+},
+{
+"id": "MONDO:0000775",
+"name": "drug allergy",
+"syn": [
+"allergy of exposure to drug",
+"exposure to drug allergic disease"
+],
+"parent": "allergic disease",
+"defn": "Immunologically mediated adverse reactions to medicinal substances used legally or illegally."
+},
+{
+"id": "MONDO:0000777",
+"name": "gastrointestinal allergy",
+"syn": [
+"allergic disease of digestive tract",
+"digestive tract allergic disease"
+],
+"parent": "allergic disease",
+"defn": "A allergic disease that involves the digestive tract."
+},
+{
+"id": "MONDO:0000807",
+"name": "latex allergy",
+"syn": [],
+"parent": "allergic disease",
+"defn": "Allergic reaction to products containing processed natural rubber latex such as rubber gloves, condoms, catheters, dental dams, balloons, and sporting equipment"
+},
+{
+"id": "MONDO:0000809",
+"name": "purpura fulminans",
+"syn": [],
+"parent": "disseminated intravascular coagulation",
+"defn": "A severe, rapidly fatal reaction occurring most commonly in children following an infectious illness. It is characterized by large, rapidly spreading skin hemor"
+},
+{
+"id": "MONDO:0000811",
+"name": "anomalous left coronary artery from the pulmonary artery",
+"syn": [
+"ALCAPA disorder",
+"Bland-White-Garland syndrome",
+"BWGS"
+],
+"parent": "coronary artery congenital malformation",
+"defn": "A congenital coronary vessel anomaly in which the left main coronary artery originates from the pulmonary artery instead of from aorta. The congenital heart def"
+},
+{
+"id": "MONDO:0000812",
+"name": "vertebral column disorder",
+"syn": [
+"disease of spine",
+"disease of vertebral column",
+"disease or disorder of vertebral column"
+],
+"parent": "skeletal system disorder",
+"defn": "A disease involving the vertebral column."
+},
+{
+"id": "MONDO:0000813",
+"name": "cardiac tuberculosis",
+"syn": [],
+"parent": "extrapulmonary tuberculosis",
+"defn": "Pathological conditions of the cardiovascular system caused by infection of mycobacterium tuberculosis. Tuberculosis involvement may include the heart; the bloo"
+},
+{
+"id": "MONDO:0000814",
+"name": "B-cell adult acute lymphocytic leukemia",
+"syn": [
+"adult B acute lymphoblastic leukemia",
+"adult B cell acute lymphoblastic leukaemia",
+"adult B cell acute lymphoblastic leukemia"
+],
+"parent": "adult acute lymphoblastic leukemia",
+"defn": "An acute B-lymphoblastic leukemia occurring in adults."
+},
+{
+"id": "MONDO:0000815",
+"name": "fetal nicotine spectrum disorder",
+"syn": [],
+"parent": "specific developmental disorder",
+"defn": "A specific developmental disorder that is characterized by physical, behavioral and learning birth defects resulting from maternal ingestion of nicotine during "
+},
+{
+"id": "MONDO:0000816",
+"name": "abdominal obesity-metabolic syndrome",
+"syn": [
+"metabolic syndrome"
+],
+"parent": "syndromic disease",
+"defn": ""
+},
+{
+"id": "MONDO:0000819",
+"name": "anencephaly",
+"syn": [
+"anencephalus"
+],
+"parent": "congenital nervous system disorder",
+"defn": "A rare neural tube defect during pregnancy, resulting in the absence of a large portion of the brain and skull in the fetus."
+},
+{
+"id": "MONDO:0000820",
+"name": "cerebral cavernous malformation",
+"syn": [
+"brain cavernous hemangioma",
+"CCM"
+],
+"parent": "congenital nervous system disorder",
+"defn": "A disorder characterized by malformations in the structure of the capillaries in the brain. It is caused by mutations in the CCM2, KRIT1 and PDCD10 genes. The c"
+},
+{
+"id": "MONDO:0000824",
+"name": "congenital diarrhea",
+"syn": [
+"diarrhea, congenital"
+],
+"parent": "diarrheal disease",
+"defn": ""
+},
+{
+"id": "MONDO:0000827",
+"name": "salmonellosis",
+"syn": [
+"rare form of salmonellosis",
+"Salmonella infection"
+],
+"parent": "primary bacterial infectious disease",
+"defn": "Infections with bacteria of the genus salmonella."
+},
+{
+"id": "MONDO:0000828",
+"name": "juvenile-onset Parkinson disease",
+"syn": [],
+"parent": "young-onset Parkinson disease",
+"defn": ""
+},
+{
+"id": "MONDO:0000831",
+"name": "thrombotic disease",
+"syn": [
+"blood clot",
+"blood Clots",
+"clot, blood"
+],
+"parent": "vascular disorder",
+"defn": "The formation of a blood clot in the lumen of a vessel or heart chamber; causes include coagulation disorders and vascular endothelial injury."
+},
+{
+"id": "MONDO:0000833",
+"name": "bone remodeling disease",
+"syn": [],
+"parent": "bone disorder",
+"defn": "A bone disease that results in formation or resorption abnormalities located in bone."
+},
+{
+"id": "MONDO:0000836",
+"name": "disease of bone structure",
+"syn": [],
+"parent": "bone disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0000837",
+"name": "bone resorption disease",
+"syn": [],
+"parent": "bone remodeling disease",
+"defn": "A disease that has its basis in the disruption of bone resorption. Bone resorption is a process in which specialized cells known as osteoclasts degrade the orga"
+},
+{
+"id": "MONDO:0000840",
+"name": "dysbaric osteonecrosis",
+"syn": [],
+"parent": "avascular necrosis",
+"defn": "A form of avascular necrosis where there is death of a portion of the bone that is thought to be caused by nitrogen embolism."
+},
+{
+"id": "MONDO:0000845",
+"name": "fibrous dysplasia",
+"syn": [
+"fibrous dysplasia of bone"
+],
+"parent": "bone remodeling disease",
+"defn": "A genetic, non-inheritable disorder caused by osteoblastic differentiation defects that result in the replacement of bone marrow and trabecular bone by fibrous "
+},
+{
+"id": "MONDO:0000849",
+"name": "fibrogenesis imperfecta ossium",
+"syn": [],
+"parent": "syndromic disease",
+"defn": "A syndrome that involves abnormality of collagen synthesis in lamellar bones, with manifestations limited to the skeleton. The initial symptom is frequently spo"
+},
+{
+"id": "MONDO:0000858",
+"name": "neuronal intestinal dysplasia",
+"syn": [],
+"parent": "colonic disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0000859",
+"name": "spina bifida occulta",
+"syn": [
+"closed spinal dysraphism",
+"spina bifida occulta (disease)"
+],
+"parent": "spina bifida",
+"defn": "The mildest form of spina bifida, characterized by any of several neural tube defects which may go undetected until an x-ray is performed. Treatment is symptoma"
+},
+{
+"id": "MONDO:0000863",
+"name": "myopathy, lactic acidosis, and sideroblastic anemia",
+"syn": [
+"mitochondrial myopathy and sideroblastic anaemia",
+"mitochondrial myopathy and sideroblastic anemia",
+"MLASA"
+],
+"parent": "congenital anemia",
+"defn": "Mitochondrial myopathy and sideroblastic anemia belongs to the heterogeneous family of metabolic myopathies. It is characterized by progressive exercise intoler"
+},
+{
+"id": "MONDO:0000870",
+"name": "childhood acute lymphoblastic leukemia",
+"syn": [
+"childhood acute lymphocytic leukaemia",
+"childhood acute lymphocytic leukemia",
+"childhood acute lymphogenous leukaemia"
+],
+"parent": "pediatric lymphoma",
+"defn": "An acute lymphoblastic leukemia occurring during childhood. The majority of cases are B-acute lymphoblastic leukemias. Approximately 15% of the cases are T-acut"
+},
+{
+"id": "MONDO:0000871",
+"name": "T-cell childhood acute lymphocytic leukemia",
+"syn": [
+"childhood precursor T-lymphoblastic leukaemia",
+"childhood precursor T-lymphoblastic leukemia",
+"childhood T acute lymphoblastic leukaemia"
+],
+"parent": "immune system cancer",
+"defn": "An acute lymphoblastic leukemia of T-cell origin occurring in children."
+},
+{
+"id": "MONDO:0000872",
+"name": "B-cell childhood acute lymphoblastic leukemia",
+"syn": [
+"B cell childhood acute lymphoblastic leukaemia",
+"B cell childhood acute lymphoblastic leukemia",
+"B cell childhood acute lymphocytic leukaemia"
+],
+"parent": "immune system cancer",
+"defn": "An acute B-lymphoblastic leukemia occurring in children."
+},
+{
+"id": "MONDO:0000873",
+"name": "lymphoblastic lymphoma",
+"syn": [
+"lymphoma, lymphoblastic, malignant",
+"precursor cell lymphoblastic lymphoma",
+"precursor lymphoblastic lymphoma"
+],
+"parent": "precursor lymphoblastic lymphoma/leukemia",
+"defn": "A lymphoma composed of immature small to medium-sized precursor lymphoid cells (lymphoblasts). It includes the B- and T-cell lymphoblastic lymphoma."
+},
+{
+"id": "MONDO:0000874",
+"name": "T-cell childhood lymphoblastic lymphoma",
+"syn": [
+"childhood precursor T-lymphoblastic lymphoma",
+"childhood T lymphoblastic lymphoma"
+],
+"parent": "lymphoblastic lymphoma",
+"defn": "A T lymphoblastic lymphoma that occurs during childhood."
+},
+{
+"id": "MONDO:0000875",
+"name": "adult acute monocytic leukemia",
+"syn": [
+"acute monocytic leukaemia of adults",
+"acute monocytic leukemia of adults",
+"adult acute differentiated monocytic leukaemia (M5b)"
+],
+"parent": "acute monocytic leukemia",
+"defn": "A acute monocytic leukemia that occurs in an adult."
+},
+{
+"id": "MONDO:0000878",
+"name": "cytomegalovirus retinitis",
+"syn": [
+"Cytomegaloviral Retinitis",
+"Cytomegalovirus caused retinitis",
+"Retinitis, Cytomegaloviral"
+],
+"parent": "retinitis",
+"defn": "Infection of the retina by cytomegalovirus characterized by retinal necrosis, hemorrhage, vessel sheathing, and retinal edema. Cytomegalovirus retinitis is a ma"
+},
+{
+"id": "MONDO:0000879",
+"name": "cutaneous candidiasis",
+"syn": [
+"zone of skin candidiasis"
+],
+"parent": "candidiasis",
+"defn": "Candidiasis of the skin manifested as eczema-like lesions of the interdigital spaces, perleche, or chronic paronychia. (Dorland, 27th ed)"
+},
+{
+"id": "MONDO:0000888",
+"name": "gastrointestinal mucositis",
+"syn": [
+"gastrointestinal system mucosa inflammation",
+"gastrointestinal system mucosaitis",
+"inflammation of gastrointestinal system mucosa"
+],
+"parent": "digestive system disorder",
+"defn": "Inflammation of the mucous membranes lining the gastrointestinal tract."
+},
+{
+"id": "MONDO:0000889",
+"name": "haemophilus meningitis",
+"syn": [
+"Haemophilus influenzae bacterial meningitis",
+"Haemophilus influenzae caused bacterial meningitis"
+],
+"parent": "bacterial meningitis",
+"defn": "Infections of the nervous system caused by bacteria of the genus haemophilus, and marked by prominent inflammation of the meninges. haemophilus influenzae type "
+},
+{
+"id": "MONDO:0000890",
+"name": "Zika virus congenital syndrome",
+"syn": [
+"congenital Zika syndrome",
+"congenital Zika virus infection"
+],
+"parent": "viral infectious disease",
+"defn": "A congenital birth syndrome that arises from materal Zika infection."
+},
+{
+"id": "MONDO:0000891",
+"name": "mixed fibrolamellar hepatocellular carcinoma",
+"syn": [],
+"parent": "fibrolamellar hepatocellular carcinoma",
+"defn": "A fibrolamellar carcinoma that is characterized by the presence of both pure fibrolamellar hepatocellular carcinoma and and conventional hepatocellular carcinom"
+},
+{
+"id": "MONDO:0000892",
+"name": "colon medullary carcinoma",
+"syn": [],
+"parent": "colon adenocarcinoma",
+"defn": "A rare, invasive colon adenocarcinoma characterized by the presence of sheets of malignant epithelial cells with vesicular nuclei, prominent nucleoli, and abund"
+},
+{
+"id": "MONDO:0000893",
+"name": "mixed mucinous and nonmucinous bronchioloalveolar adenocarcinoma",
+"syn": [
+"indeterminate bronchioloalveolar carcinoma",
+"mixed mucinous and non-mucinous bronchioloalveolar carcinoma",
+"mixed mucinous and non-mucinous bronchioloalveolar lung carcinoma"
+],
+"parent": "minimally invasive lung adenocarcinoma",
+"defn": "A rare morphologic variant of bronchiolo-alveolar lung carcinoma characterized by the presence of both mucin and non-mucin producing cells."
+},
+{
+"id": "MONDO:0000894",
+"name": "mucinous bronchioloalveolar adenocarcinoma",
+"syn": [],
+"parent": "minimally invasive lung adenocarcinoma",
+"defn": "A bronchiolo-alveolar adenocarcinoma that is characterized by a tumor cells containing abundant mucin in their cytoplasm and composed of tall columnar cells gro"
+},
+{
+"id": "MONDO:0000895",
+"name": "nonmucinous bronchioloalveolar adenocarcinoma",
+"syn": [],
+"parent": "minimally invasive lung adenocarcinoma",
+"defn": "A bronchiolo-alveolar adenocarcinoma that is characterized by cells with cuboidal or columnar morphology with eosinophilic or clear cytoplasm and shows Clara ce"
+},
+{
+"id": "MONDO:0000898",
+"name": "malignant hemangioma",
+"syn": [
+"hemangioma, malignant"
+],
+"parent": "hemangioma",
+"defn": "A malignant form of hemangioma."
+},
+{
+"id": "MONDO:0000901",
+"name": "relapsed/refractory diffuse large B-cell lymphoma",
+"syn": [],
+"parent": "diffuse large B-cell lymphoma",
+"defn": "A diffuse large B-cell lymphoma characterized by less than 50 percent decrease in lesion size with induction therapy or the appearance of new lesions or the app"
+},
+{
+"id": "MONDO:0000902",
+"name": "agenesis of the corpus callosum with peripheral neuropathy",
+"syn": [
+"Andermann syndrome",
+"Charlevoix disease",
+"corpus callosum agenesis-neuronopathy syndrome"
+],
+"parent": "inherited neurodegenerative disorder",
+"defn": "Corpus callosum agenesis-neuropathy is a neurodegenerative disorder characterized by severe progressive sensorimotor neuropathy beginning in infancy with result"
+},
+{
+"id": "MONDO:0000903",
+"name": "myoclonus-dystonia syndrome",
+"syn": [
+"dystonia with myoclonus",
+"DYT-SGCE",
+"hereditary essential myoclonus"
+],
+"parent": "combined dystonia",
+"defn": "Myoclonus-dystonia syndrome (MDS) is a rare movement disorder characterized by mild to moderate dystonia along with 'lightning-like' myoclonic jerks."
+},
+{
+"id": "MONDO:0000904",
+"name": "complex cortical dysplasia with other brain malformations",
+"syn": [
+"cortical dysplasia, complex, with other brain malformations"
+],
+"parent": "brain disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0000908",
+"name": "arrhythmogenic right ventricular dysplasia 13",
+"syn": [
+"arrhythmogenic right ventricular cardiomyopathy 13",
+"arrhythmogenic right ventricular cardiomyopathy caused by mutation in CTNNA3",
+"arrhythmogenic right ventricular dysplasia type 13"
+],
+"parent": "familial isolated arrhythmogenic right ventricular dysplasia",
+"defn": "Any arrhythmogenic right ventricular cardiomyopathy in which the cause of the disease is a mutation in the CTNNA3 gene."
+},
+{
+"id": "MONDO:0000909",
+"name": "Bartter disease type 4B",
+"syn": [
+"BARTS4B",
+"Bartter syndrome, type 4B"
+],
+"parent": "Bartter syndrome type 4",
+"defn": "A Bartter disease that has material basis in simultaneous mutation in both the CLCNKA and CLCNKB genes."
+},
+{
+"id": "MONDO:0000910",
+"name": "retinitis pigmentosa 6",
+"syn": [
+"retinitis pigmentosa type 6",
+"RP6"
+],
+"parent": "retinitis pigmentosa",
+"defn": "A retinitis pigmentosa that has material basis in variation in the chromosome region Xp21.3-p21.2."
+},
+{
+"id": "MONDO:0000912",
+"name": "autosomal recessive nonsyndromic hearing loss 5",
+"syn": [],
+"parent": "hearing loss, autosomal recessive",
+"defn": "An autosomal recessive nonsyndromic deafness that has material basis in variation in the chromosome region 14q12."
+},
+{
+"id": "MONDO:0000913",
+"name": "hereditary spherocytosis type 2",
+"syn": [
+"hereditary spherocytosis caused by mutation in SPTB",
+"HS2",
+"SPH2"
+],
+"parent": "hereditary spherocytosis",
+"defn": "Any hereditary spherocytosis in which the cause of the disease is a mutation in the SPTB gene."
+},
+{
+"id": "MONDO:0000914",
+"name": "cerebral arteriopathy, autosomal dominant, with subcortical infarcts and leukoencephalopathy, type 1",
+"syn": [
+"autosomal dominant cerebral arteriopathy with subcortical infarcts and leukoencephalopathy type 1",
+"CADASIL",
+"CADASIL syndrome"
+],
+"parent": "autosomal dominant disease",
+"defn": "A CADASIL characterized by migraine, strokes, and white matter lesions that has material basis in heterozygous mutation in the NOTCH3 gene on chromosome 19p13."
+},
+{
+"id": "MONDO:0000916",
+"name": "intestinal infectious disease",
+"syn": [],
+"parent": "gastrointestinal mucositis",
+"defn": "An infectious disease involving a pathogenic inflammatory response in the intestinal mucosa."
+},
+{
+"id": "MONDO:0000918",
+"name": "endometritis",
+"syn": [
+"endometrium inflammation",
+"inflammation of endometrium",
+"uterine infection"
+],
+"parent": "endometrial disorder",
+"defn": "An acute or chronic, usually bacterial infectious process affecting the endometrium. It may extend to the myometrium and parametrial tissues. Symptoms include l"
+},
+{
+"id": "MONDO:0000919",
+"name": "ampulla of vater cancer",
+"syn": [
+"cancer of hepatopancreatic ampulla",
+"hepatopancreatic ampulla cancer",
+"malignant ampulla of Vater neoplasm"
+],
+"parent": "duodenum cancer",
+"defn": "A primary or metastatic malignant neoplasm involving the ampulla of Vater."
+},
+{
+"id": "MONDO:0000920",
+"name": "duodenum cancer",
+"syn": [
+"cancer of duodenum",
+"malignant duodenal neoplasm",
+"malignant duodenal tumor"
+],
+"parent": "small intestine cancer",
+"defn": "A primary or metastatic malignant neoplasm that affects the duodenum. Representative examples include carcinoma, lymphoma, and sarcoma."
+},
+{
+"id": "MONDO:0000921",
+"name": "ampulla of vater neoplasm",
+"syn": [
+"ampulla of Vater tumor",
+"ampulla of Vater tumour",
+"hepatopancreatic ampulla neoplasm"
+],
+"parent": "common bile duct neoplasm",
+"defn": "A benign or malignant neoplasm involving the ampulla of Vater."
+},
+{
+"id": "MONDO:0000922",
+"name": "pelvic inflammatory disease",
+"syn": [
+"PID"
+],
+"parent": "female reproductive system disorder",
+"defn": "Pelvic inflammatory disease (PID) is an acute or chronic inflammation in the pelvic cavity. It is most commonly caused by sexually transmitted diseases, includi"
+},
+{
+"id": "MONDO:0000923",
+"name": "interstitial emphysema",
+"syn": [
+"interstitial emphysema of lung",
+"PIE",
+"pie"
+],
+"parent": "pulmonary emphysema",
+"defn": "Pathologic accumulation of air in the interstitium of the lungs, which is caused by the rupture of alveoli and terminal bronchioles, and is most often seen in p"
+},
+{
+"id": "MONDO:0000924",
+"name": "compensatory emphysema",
+"syn": [],
+"parent": "pulmonary emphysema",
+"defn": ""
+},
+{
+"id": "MONDO:0000925",
+"name": "hyperlucent lung",
+"syn": [],
+"parent": "pulmonary emphysema",
+"defn": "A lung with reduced markings on its chest radiograph and increased areas of transradiancy (hyperlucency). A hyperlucent lung is usually associated with pulmonar"
+},
+{
+"id": "MONDO:0000926",
+"name": "eye accommodation disease",
+"syn": [
+"disorder of accommodation"
+],
+"parent": "eye disorder",
+"defn": "Disease that disrupts the process by which the vertebrate eye changes optical power to maintain a clear image or focus on an object as its distance varies."
+},
+{
+"id": "MONDO:0000927",
+"name": "asymptomatic neurosyphilis",
+"syn": [],
+"parent": "neurosyphilis",
+"defn": ""
+},
+{
+"id": "MONDO:0000928",
+"name": "eyelid melanoma",
+"syn": [
+"eyelid melanoma (disease)",
+"malignant eyelid melanoma",
+"malignant melanoma of eyelid"
+],
+"parent": "cutaneous melanoma",
+"defn": "A melanoma that arises from the upper or lower eyelid."
+},
+{
+"id": "MONDO:0000929",
+"name": "balloon cell malignant melanoma",
+"syn": [
+"balloon cell cutaneous (skin) melanoma",
+"balloon cell malignant melanoma of skin",
+"balloon cell malignant melanoma of the skin"
+],
+"parent": "cutaneous melanoma",
+"defn": "A rare variant of melanoma with a vertical growth phase. It presents as a nodular or polypoid skin lesion. It is characterized by the presence of nodules which "
+},
+{
+"id": "MONDO:0000930",
+"name": "nodular malignant melanoma",
+"syn": [
+"nodular cutaneous (skin) melanoma",
+"nodular malignant melanoma of skin",
+"nodular malignant melanoma of the skin"
+],
+"parent": "cutaneous melanoma",
+"defn": "An aggressive form of melanoma, frequently metastasizing to the lymph nodes. It presents as a papular or nodular raised skin lesion. It comprises approximately "
+},
+{
+"id": "MONDO:0000931",
+"name": "endometrial disorder",
+"syn": [
+"disease of endometrium",
+"disease or disorder of endometrium",
+"disorder of endometrium"
+],
+"parent": "uterine disorder",
+"defn": "A non-neoplastic or neoplastic disorder that affects the endometrium. Representative examples include endometritis, endometrial hyperplasia, and endometrial car"
+},
+{
+"id": "MONDO:0000933",
+"name": "subglottis neoplasm",
+"syn": [
+"neoplasm of subglottis",
+"neoplasm of the subglottis",
+"subglottic neoplasm"
+],
+"parent": "laryngeal neoplasm",
+"defn": "A benign or malignant neoplasm that affects the subglottic area of the larynx."
+},
+{
+"id": "MONDO:0000934",
+"name": "laryngeal leiomyoma",
+"syn": [
+"larynx leiomyoma",
+"leiomyoma of larynx",
+"leiomyoma of the larynx"
+],
+"parent": "leiomyoma",
+"defn": "A benign smooth muscle neoplasm arising from the larynx. It is characterized by the presence of spindle cells with cigar-shaped nuclei, interlacing fascicles, a"
+},
+{
+"id": "MONDO:0000935",
+"name": "larynx squamous papilloma",
+"syn": [
+"laryngeal papilloma",
+"larynx papilloma",
+"papilloma of larynx"
+],
+"parent": "squamous papilloma",
+"defn": "A benign exophytic neoplasm that arises from the larynx, usually the true vocal cords. It is related to human papillomavirus infection and may arise as a single"
+},
+{
+"id": "MONDO:0000936",
+"name": "syphilitic meningitis",
+"syn": [
+"Treponema caused infectious meningitis",
+"Treponema infectious meningitis"
+],
+"parent": "Treponema infectious disease",
+"defn": "An infectious meningitis caused by infection with Treponema."
+},
+{
+"id": "MONDO:0000937",
+"name": "syphilitic encephalitis",
+"syn": [
+"Treponema caused encephalitis",
+"Treponema encephalitis"
+],
+"parent": "Treponema infectious disease",
+"defn": "An encephalitis caused by infection with Treponema."
+},
+{
+"id": "MONDO:0000938",
+"name": "gastric leiomyoma",
+"syn": [
+"leiomyoma of stomach",
+"leiomyoma of the stomach",
+"stomach leiomyoma"
+],
+"parent": "leiomyoma",
+"defn": "A rare benign smooth muscle neoplasm arising from the wall of the stomach. It is characterized by the presence of spindle cells with cigar-shaped nuclei, interl"
+},
+{
+"id": "MONDO:0000939",
+"name": "intracranial abscess",
+"syn": [],
+"parent": "abscess",
+"defn": "An abscess that is located in the intracranial space."
+},
+{
+"id": "MONDO:0000940",
+"name": "trypanosomiasis",
+"syn": [
+"Trypanosoma caused disease or disorder",
+"Trypanosoma disease or disorder",
+"Trypanosoma infectious disease"
+],
+"parent": "protozoa infectious disease",
+"defn": "Infection with protozoa of the genus trypanosoma."
+},
+{
+"id": "MONDO:0000941",
+"name": "eyelid degenerative disorder",
+"syn": [
+"eyelid neurodegenerative disease",
+"neurodegenerative disease of eyelid"
+],
+"parent": "eyelid disorder",
+"defn": "A neurodegenerative disease that involves the eyelid."
+},
+{
+"id": "MONDO:0000942",
+"name": "corneal disorder",
+"syn": [
+"cornea disease",
+"cornea disease or disorder",
+"corneal disease"
+],
+"parent": "eye disorder",
+"defn": "A non-neoplastic or neoplastic disorder that affects the cornea. Representative examples include keratitis, bullous keratopathy, and squamous cell carcinoma."
+},
+{
+"id": "MONDO:0000943",
+"name": "acute hydrops keratoconus",
+"syn": [
+"keratoconus, acute hydrops"
+],
+"parent": "keratoconus",
+"defn": ""
+},
+{
+"id": "MONDO:0000944",
+"name": "cerebral artery occlusion",
+"syn": [],
+"parent": "arterial occlusion",
+"defn": ""
+},
+{
+"id": "MONDO:0000945",
+"name": "venous insufficiency",
+"syn": [
+"venous insufficiency (disease)"
+],
+"parent": "vein disorder",
+"defn": "Impaired venous blood flow or venous return (venous stasis), usually caused by inadequate venous valves. Venous insufficiency often occurs in the legs, and is a"
+},
+{
+"id": "MONDO:0000946",
+"name": "psychologic vaginismus",
+"syn": [
+"psychogenic vaginismus"
+],
+"parent": "psychosexual disorder",
+"defn": "Involuntary spasm of the outer muscles of the vagina during penetration that results from a psychological cause."
+},
+{
+"id": "MONDO:0000947",
+"name": "psychosexual disorder",
+"syn": [],
+"parent": "sexual disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0000948",
+"name": "xerophthalmia",
+"syn": [
+"conjunctival xerosis"
+],
+"parent": "dry eye syndrome",
+"defn": "Dryness of the eye due to inadequate production of tears. Causes include vitamin A deficiency, Sjogren syndrome, rheumatoid arthritis, systemic lupus erythemato"
+},
+{
+"id": "MONDO:0000949",
+"name": "conjunctival degeneration",
+"syn": [],
+"parent": "conjunctival disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0000950",
+"name": "asthenopia",
+"syn": [
+"accommodative strain"
+],
+"parent": "eye disorder",
+"defn": "Term generally used to describe complaints related to refractive error, ocular muscle imbalance, including pain or aching around the eyes, burning and itchiness"
+},
+{
+"id": "MONDO:0000951",
+"name": "thymus lymphoma",
+"syn": [
+"lymphoma of the Thymus",
+"lymphoma of Thymus",
+"lymphoma of thymus"
+],
+"parent": "thymus cancer",
+"defn": "A lymphoma that arises from the thymus. Representative examples include mediastinal (thymic) large B-cell lymphoma and Hodgkin lymphoma."
+},
+{
+"id": "MONDO:0000952",
+"name": "cancer of long bone of lower limb",
+"syn": [
+"cancer of hindlimb long bone",
+"hindlimb long bone cancer",
+"malignant hindlimb long bone neoplasm"
+],
+"parent": "cancer affecting bone of limb skeleton",
+"defn": "A cancer that involves the hindlimb long bone."
+},
+{
+"id": "MONDO:0000953",
+"name": "cancer of short bone of lower limb",
+"syn": [],
+"parent": "cancer affecting bone of limb skeleton",
+"defn": ""
+},
+{
+"id": "MONDO:0000954",
+"name": "Meckel diverticulum cancer",
+"syn": [
+"cancer of Meckel's diverticulum",
+"malignant Meckel's diverticulum neoplasm",
+"malignant neoplasm of Meckel's diverticulum"
+],
+"parent": "ileum cancer",
+"defn": "A cancer involving a Meckel's diverticulum."
+},
+{
+"id": "MONDO:0000955",
+"name": "ileum cancer",
+"syn": [
+"cancer of ileum",
+"malignant ileum neoplasm",
+"malignant neoplasm of ileum"
+],
+"parent": "small intestine cancer",
+"defn": "A malignant neoplasm involving the ileum"
+},
+{
+"id": "MONDO:0000956",
+"name": "small intestine cancer",
+"syn": [
+"cancer of small intestine",
+"malignant neoplasm of small bowel",
+"malignant neoplasm of small intestine"
+],
+"parent": "small intestine neoplasm",
+"defn": "A primary or metastatic malignant neoplasm involving the small intestine."
+},
+{
+"id": "MONDO:0000957",
+"name": "lacrimal passage granuloma",
+"syn": [
+"granuloma of lacrimal passages"
+],
+"parent": "lacrimal apparatus disorder",
+"defn": ""
+},
+{
+"id": "MONDO:0000958",
+"name": "neuroretinitis",
+"syn": [],
+"parent": "neuritis",
+"defn": "Neuroretinitis is an inflammation of the neural retina and optic nerve. Pathology: Direct invasion or autoimmune activation against the optic nerve may cause op"
+},
+{
+"id": "MONDO:0000959",
+"name": "malignant hypertensive renal disease",
+"syn": [],
+"parent": "malignant hypertension",
+"defn": ""
+},
+{
+"id": "MONDO:0000960",
+"name": "diabetic peripheral angiopathy",
+"syn": [
+"diabetic angiopathy",
+"diabetic vascular disorder"
+],
+"parent": "peripheral vascular disease",
+"defn": "Diabetic angiopathy is a form of angiopathy associated with diabetic complications."
+},
+{
+"id": "MONDO:0000961",
+"name": "endobronchial lipoma",
+"syn": [],
+"parent": "respiratory system benign neoplasm",
+"defn": "A rare benign adipose tissue neoplasm located within the lumen of a bronchus. It is predominantly found in males and usually originates within the fatty tissue "
+},
+{
+"id": "MONDO:0000962",
+"name": "spindle cell lipoma",
+"syn": [
+"spindle cell lipoma (morphologic abnormality)"
+],
+"parent": "lipoma",
+"defn": "A benign circumscribed tumor composed of spindled cells, adipocytes, and collagen bundles. There is no evidence of nuclear hyperchromasia or mitotic activity."
+},
+{
+"id": "MONDO:0000963",
+"name": "esophageal lipoma",
+"syn": [
+"esophagus lipoma",
+"lipoma of esophagus",
+"lipoma of oesophagus"
+],
+"parent": "lipoma",
+"defn": "A benign adipose tissue neoplasm of the esophagus. Clinical presentation includes obstruction, dysphagia, regurgitation, vomiting and reflux. It may be associat"
+},
+{
+"id": "MONDO:0000964",
+"name": "skin lipoma",
+"syn": [
+"cutaneous lipoma",
+"cutaneous lipomatous tumour",
+"lipoma of skin"
+],
+"parent": "lipoma",
+"defn": "A benign or malignant adipose tissue neoplasm of the skin."
+},
+{
+"id": "MONDO:0000965",
+"name": "liver lipoma",
+"syn": [
+"hepatic lipoma",
+"lipoma of liver",
+"lipoma of the liver"
+],
+"parent": "benign endocrine neoplasm",
+"defn": "A rare benign adipose tissue neoplasm of the liver."
+},
+{
+"id": "MONDO:0000966",
+"name": "pleomorphic lipoma",
+"syn": [
+"pleomorphic lipoma (morphologic abnormality)"
+],
+"parent": "lipoma",
+"defn": "A benign circumscribed tumor characterized by small spindle cells, rounded hyperchromatic cells and multinucleated giant cells with radially arranged nuclei."
+},
+{
+"id": "MONDO:0000967",
+"name": "conventional lipoma",
+"syn": [
+"classic type lipoma"
+],
+"parent": "lipoma",
+"defn": "A benign well-circumscribed tumor, composed of lobules of mature adipocytes, that arises within subcutaneous tissue, deep soft tissues or on the surface of bone"
+},
+{
+"id": "MONDO:0000968",
+"name": "kidney lipoma",
+"syn": [
+"lipoma of kidney",
+"lipoma of the kidney",
+"renal lipoma"
+],
+"parent": "kidney benign neoplasm",
+"defn": "A rare benign adipose tissue neoplasm of the kidney. It predominantly affects middle-aged females. It may originate from renal parenchymal fat or fat cells with"
+},
+{
+"id": "MONDO:0000969",
+"name": "pleural lipoma",
+"syn": [
+"lipoma of pleura",
+"lipoma of the pleura",
+"pleura lipoma"
+],
+"parent": "lipoma",
+"defn": "A benign adipose tissue neoplasm of the pleural cavity. It may be purely intra-thoracic or extend to the chest wall."
+},
+{
+"id": "MONDO:0000970",
+"name": "breast lipoma",
+"syn": [
+"lipoma of breast",
+"lipoma of the breast"
+],
+"parent": "breast benign neoplasm",
+"defn": "A benign, mesenchymal neoplasm that arises from the breast. It is surrounded by a thin capsule and composed of mature adipose tissue cells. Atypia is absent."
+},
+{
+"id": "MONDO:0000971",
+"name": "chest wall lipoma",
+"syn": [
+"lipoma of chest wall",
+"lipoma of the chest wall"
+],
+"parent": "lipoma",
+"defn": "A benign adipose tissue neoplasm of the chest wall."
+},
+{
+"id": "MONDO:0000972",
+"name": "gallbladder lipoma",
+"syn": [
+"gall bladder lipoma",
+"lipoma of gall bladder",
+"lipoma of gallbladder"
+],
+"parent": "lipoma",
+"defn": "A benign adipose tissue neoplasm involving the gallbladder wall."
+},
+{
+"id": "MONDO:0000973",
+"name": "external ear lipoma",
+"syn": [
+"lipoma of external Ear",
+"lipoma of external ear",
+"lipoma of the external auditory meatus"
+],
+"parent": "lipoma",
+"defn": "A benign adipose tissue neoplasm of the external ear."
+},
+{
+"id": "MONDO:0000974",
+"name": "axillary lipoma",
+"syn": [
+"axilla lipoma",
+"lipoma of axilla"
+],
+"parent": "lipoma",
+"defn": "A benign adipose tissue neoplasm of the axilla."
+},
+{
+"id": "MONDO:0000975",
+"name": "lipoma of spermatic cord",
+"syn": [
+"lipoma of the spermatic cord",
+"spermatic cord lipoma"
+],
+"parent": "benign male reproductive system neoplasm",
+"defn": "A benign adipose tissue neoplasm of the spermatic cord. This is the most common tumor amongst the benign paratesticular lesions."
+},
+{
+"id": "MONDO:0000976",
+"name": "paratesticular lipoma",
+"syn": [],
+"parent": "benign reproductive system neoplasm",
+"defn": "A rare benign adipose tissue neoplasm of the paratesticular tissues. It is incidentally discovered and presents as a non-tender scrotal mass. It affects patient"
+},
+{
+"id": "MONDO:0000977",
+"name": "chondroid lipoma",
+"syn": [],
+"parent": "lipoma",
+"defn": "A rare benign adipose tissue neoplasm characterized by nests and cord of abundant univacuolated and multivacuolated lipoblasts and mature adipocytes in a promin"
+},
+{
+"id": "MONDO:0000978",
+"name": "extrahepatic bile duct lipoma",
+"syn": [
+"lipoma of extrahepatic bile duct",
+"lipoma of the extrahepatic bile duct"
+],
+"parent": "benign digestive system neoplasm",
+"defn": "A rare benign adipose tissue neoplasm of the extrahepatic bile duct."
+},
+{
+"id": "MONDO:0000979",
+"name": "pinta disease",
+"syn": [
+"Pinta",
+"pinta"
+],
+"parent": "primary bacterial infectious disease",
+"defn": "An endemic bacterial infection caused by Treponema carateum. It is manifested with chronic cutaneous lesions. The early lesions consist of papules and erythemat"
+},
+{
+"id": "MONDO:0000980",
+"name": "aortic atherosclerosis",
+"syn": [
+"aorta atherosclerosis",
+"aortic atherosclerosis (disease)",
+"atherosclerosis of aorta"
+],
+"parent": "atherosclerosis",
+"defn": "A atherosclerosis that involves the aorta."
+},
+{
+"id": "MONDO:0000981",
+"name": "Histoplasma pericarditis",
+"syn": [
+"Histoplasma caused pericarditis (disease)",
+"Histoplasma pericarditis (disease)"
+],
+"parent": "pericarditis",
+"defn": "An pericarditis (disease) caused by infection with Histoplasma."
+},
+{
+"id": "MONDO:0000983",
+"name": "exhibitionism",
+"syn": [],
+"parent": "paraphilic disorder",
+"defn": "A disorder characterized by recurrent sexual urges, fantasies, or behaviors involving the exposure of one's genitals to an unsuspecting stranger."
+},
+{
+"id": "MONDO:0000984",
+"name": "thalassemia",
+"syn": [
+"sickle-cell thalassemia with crisis",
+"sickle-cell thalassemia without crisis"
+],
+"parent": "inherited hemoglobinopathy",
+"defn": "An inherited blood disorder characterized by a decreased synthesis of one of the polypeptide chains that form hemoglobin. Anemia results from this abnormal hemo"
+},
+{
+"id": "MONDO:0000986",
+"name": "pleurisy",
+"syn": [
+"inflammation of pleura",
+"pleura inflammation",
+"pleuritis"
+],
+"parent": "pleural disorder",
+"defn": "Inflammation of the pleura. It is usually caused by infections. Chest pain while breathing or coughing is the presenting symptom."
+},
+{
+"id": "MONDO:0000987",
+"name": "cholesterolosis of gallbladder",
+"syn": [
+"strawberry gallbladder"
+],
+"parent": "gallbladder disorder",
+"defn": "A disorder characterized by a change in the gallbladder wall due to excess cholesterol."
+},
+{
+"id": "MONDO:0000988",
+"name": "discharging ear",
+"syn": [],
+"parent": "auditory system disorder",
+"defn": "Discharge or drainage of fluid from the ear."
+},
+{
+"id": "MONDO:0000989",
+"name": "mumps infectious disease",
+"syn": [
+"epidemic parotitis",
+"Mumps",
+"mumps"
+],
+"parent": "Paramyxoviridae infectious disease",
+"defn": "A contagious viral infection caused by the mumps virus. Symptoms include swollen and tender parotid glands, fever, muscle aches and fatigue. Due to vaccination "
+},
+{
+"id": "MONDO:0000990",
+"name": "acute subendocardial myocardial infarction",
+"syn": [
+"acute subendocardial infarction",
+"subendocardial myocardial infarction, acute"
+],
+"parent": "subendocardial myocardial infarction",
+"defn": "Acute form of subendocardial myocardial infarction."
+},
+{
+"id": "MONDO:0000992",
+"name": "heart conduction disease",
+"syn": [
+"cardiac conduction disease",
+"cardiac conduction disorder",
+"conduction disease of heart"
+],
+"parent": "heart disorder",
+"defn": "A disease that has its basis in the disruption of the heart's electrical conduction system."
+},
+{
+"id": "MONDO:0000993",
+"name": "prostate squamous cell carcinoma",
+"syn": [
+"prostate gland squamous cell carcinoma",
+"squamous cell carcinoma of prostate",
+"squamous cell carcinoma of the prostate"
+],
+"parent": "squamous cell carcinoma",
+"defn": "An invasive prostate carcinoma characterized by the presence of squamous differentiation of the malignant cellular infiltrate. There is no evidence of glandular"
+},
+{
+"id": "MONDO:0000994",
+"name": "malignant prostate phyllodes tumor",
+"syn": [
+"malignant phyllodes neoplasm of prostate",
+"malignant phyllodes neoplasm of the prostate",
+"malignant phyllodes tumor of prostate"
+],
+"parent": "malignant urinary system neoplasm",
+"defn": "An unusual malignant tumor that arises from the prostate gland. It is characterized by the presence of glandular elements and a cellular stroma that exhibits mi"
+},
+{
+"id": "MONDO:0000995",
+"name": "familial periodic paralysis",
+"syn": [
+"hereditary periodic paralysis (disease)"
+],
+"parent": "inborn metal metabolism disorder",
+"defn": "A group of genetic neurological disorders caused by mutations in genes involved in the sodium and calcium channels in nerve cells. It is characterized by episod"
+},
+{
+"id": "MONDO:0000996",
+"name": "prostate lymphoma",
+"syn": [
+"lymphoma of prostate",
+"lymphoma of prostate gland",
+"lymphoma of the prostate"
+],
+"parent": "lymphoma",
+"defn": "A rare non-Hodgkin or Hodgkin lymphoma that arises from the prostate gland."
+},
+{
+"id": "MONDO:0000997",
+"name": "monocular esotropia",
+"syn": [],
+"parent": "esotropia",
+"defn": "A form of ocular misalignment characterized by an excessive convergence of the visual axes, resulting in a 'cross-eye' appearance. An example of this condition "
+},
+{
+"id": "MONDO:0001000",
+"name": "mixed mineral dust pneumoconiosis",
+"syn": [
+"mineral dust pneumoconiosis",
+"pneumoconiosis from mineral dust"
+],
+"parent": "pneumoconiosis",
+"defn": "Pneumoconiosis caused by the inhalation of mixed mineral dust particles."
+},
+{
+"id": "MONDO:0001001",
+"name": "baritosis",
+"syn": [],
+"parent": "pneumoconiosis",
+"defn": "A rare type of pneumoconiosis caused by long standing exposure to barium dust. It is characterized by the formation of fine dense lesions in the lung parenchyma"
+},
+{
+"id": "MONDO:0001003",
+"name": "pneumoconiosis due to talc",
+"syn": [
+"talc pneumoconiosis"
+],
+"parent": "pneumoconiosis",
+"defn": "Pneumoconiosis caused by exposure to talc. It is characterized by fibrosis and granulomatous changes in the lung parenchyma. Chest x-rays reveal diffuse lung op"
+},
+{
+"id": "MONDO:0001004",
+"name": "slate pneumoconiosis",
+"syn": [],
+"parent": "pneumoconiosis",
+"defn": "Pneumoconiosis caused by exposure to slate dust."
+},
+{
+"id": "MONDO:0001005",
+"name": "kaolin pneumoconiosis",
+"syn": [],
+"parent": "mixed mineral dust pneumoconiosis",
+"defn": "Pneumoconiosis caused by inhalation of kaolin dust."
+},
+{
+"id": "MONDO:0001006",
+"name": "glaucomatous atrophy of optic disk",
+"syn": [
+"glaucomatous atrophy [cupping] of optic disk"
+],
+"parent": "optic atrophy",
+"defn": ""
+},
+{
+"id": "MONDO:0001007",
+"name": "chronic meningitis",
+"syn": [
+"chronic meningitis (disease)",
+"meningitis (disease), chronic"
+],
+"parent": "meningitis",
+"defn": "Chronic form of meningitis (disease)."
+},
+{
+"id": "MONDO:0001008",
+"name": "blepharophimosis",
+"syn": [
+"blepharophimosis (disease)"
+],
+"parent": "eyelid disorder",
+"defn": "The abnormal narrowness of the palpebral fissure in the horizontal direction caused by the lateral displacement of the medial canthi of the eyelids. (Dorland, 2"
+},
+{
+"id": "MONDO:0001009",
+"name": "solitary cyst of breast",
+"syn": [],
+"parent": "breast cyst",
+"defn": "A single, fluid-filled cyst in the breast parenchyma."
+},
+{
+"id": "MONDO:0001011",
+"name": "breast cyst",
+"syn": [],
+"parent": "breast benign neoplasm",
+"defn": "A cystic lesion located in breast tissue."
+},
+{
+"id": "MONDO:0001014",
+"name": "chronic leukemia",
+"syn": [
+"chronic leukaemia (disease)",
+"chronic leukemia (disease)",
+"leukaemia (disease), chronic"
+],
+"parent": "leukemia",
+"defn": "A slowly progressing leukemia characterized by a clonal (malignant) proliferation of maturing and mature myeloid cells or mature lymphocytes. When the clonal ce"
+},
+{
+"id": "MONDO:0001015",
+"name": "eosinophilic meningitis",
+"syn": [],
+"parent": "chronic meningitis",
+"defn": "Meningitis in which eosinophils predominate in the cerebrospinal fluid."
+},
+{
+"id": "MONDO:0001016",
+"name": "epididymis cancer",
+"syn": [
+"cancer of epididymis",
+"malignant epididymal neoplasm",
+"malignant epididymal tumor"
+],
+"parent": "epididymal neoplasm",
+"defn": "A primary or metastatic malignant neoplasm that affects the epididymis. Representative examples include primary epididymal adenocarcinoma and metastatic carcino"
+},
+{
+"id": "MONDO:0001017",
+"name": "epididymal adenocarcinoma",
+"syn": [
+"adenocarcinoma of the epididymis",
+"epididymis adenocarcinoma"
+],
+"parent": "epididymis cancer",
+"defn": "A rare adenocarcinoma that arises from the epididymis. It usually presents as a scrotal mass and may be associated with testicular pain."
+},
+{
+"id": "MONDO:0001019",
+"name": "suppression amblyopia",
+"syn": [
+"strabismic amblyopia"
+],
+"parent": "amblyopia",
+"defn": "A nonspecific term referring to impaired vision. Major subcategories include stimulus deprivation-induced amblyopia and toxic amblyopia. Stimulus deprivation-in"
+},
+{
+"id": "MONDO:0001020",
+"name": "amblyopia",
+"syn": [
+"amblyopia (disease)"
+],
+"parent": "vision disorder",
+"defn": "Decreased vision that results from abnormal visual development."
+},
+{
+"id": "MONDO:0001021",
+"name": "ametropic amblyopia",
+"syn": [
+"refractive amblyopia"
+],
+"parent": "amblyopia",
+"defn": ""
+},
+{
+"id": "MONDO:0001022",
+"name": "disuse amblyopia",
+"syn": [
+"deprivation amblyopia"
+],
+"parent": "amblyopia",
+"defn": ""
+},
+{
+"id": "MONDO:0001023",
+"name": "prolymphocytic leukemia",
+"syn": [
+"prolymphocytic leukaemia (B or T)",
+"prolymphocytic leukaemia (B or T-cell)",
+"prolymphocytic leukemia (B or T)"
+],
+"parent": "chronic leukemia",
+"defn": "A mature B- or T- cell leukemia with progressive clinical course. It is characterized by the presence of medium-sized lymphocytes with visible nucleoli (prolymp"
+},
+{
+"id": "MONDO:0001024",
+"name": "pneumonic plague",
+"syn": [],
+"parent": "lung disorder",
+"defn": "A plague in which the bacteria have infected the lungs."
+},
+{
+"id": "MONDO:0001025",
+"name": "seminal vesicle chronic gonorrhea",
+"syn": [
+"chronic gonococcal seminal vesiculitis",
+"gonococcal seminal vesiculitis, chronic"
+],
+"parent": "gonococcal seminal vesiculitis",
+"defn": "Chronic form of gonococcal seminal vesiculitis."
+},
+{
+"id": "MONDO:0001027",
+"name": "gonococcal seminal vesiculitis",
+"syn": [
+"gonococcal seminal vesiculitis (acute)",
+"gonorrhoea of seminal vesicle",
+"seminal vesicle gonorrhea"
+],
+"parent": "gonorrhea",
+"defn": "A gonorrhea that involves the seminal vesicle."
+},
+{
+"id": "MONDO:0001028",
+"name": "acute pericementitis",
+"syn": [
+"acute periodontitis",
+"periodontitis, acute"
+],
+"parent": "periodontitis",
+"defn": "An acute inflammatory process that affects the tissues that surround and support the teeth."
+},
+{
+"id": "MONDO:0001029",
+"name": "Klippel-Feil syndrome",
+"syn": [
+"Klippel-Feil Sequence"
+],
+"parent": "musculoskeletal system disorder",
+"defn": "A congenital, musculoskeletal condition characterized by the fusion of at least two vertebrae of the neck. Common symptoms include a short neck, low hairline at"
+},
+{
+"id": "MONDO:0001030",
+"name": "keratoconus, stable condition",
+"syn": [],
+"parent": "keratoconus",
+"defn": ""
+},
+{
+"id": "MONDO:0001031",
+"name": "purulent acute otitis media",
+"syn": [
+"acute suppurative otitis media",
+"suppurative otitis media, acute"
+],
+"parent": "suppurative otitis media",
+"defn": "Acute form of suppurative otitis media."
+},
+{
+"id": "MONDO:0001032",
+"name": "Mooren ulcer",
+"syn": [],
+"parent": "corneal ulcer",
+"defn": ""
+},
+{
+"id": "MONDO:0001033",
+"name": "mycotic corneal ulcer",
+"syn": [],
+"parent": "corneal ulcer",
+"defn": ""
+},
+{
+"id": "MONDO:0001034",
+"name": "marginal corneal ulcer",
+"syn": [],
+"parent": "corneal ulcer",
+"defn": ""
+},
+{
+"id": "MONDO:0001035",
+"name": "hypopyon ulcer",
+"syn": [],
+"parent": "hypopyon",
+"defn": ""
+},
+{
+"id": "MONDO:0001036",
+"name": "hypopyon",
+"syn": [],
+"parent": "infectious anterior uveitis",
+"defn": "An accumulation of pus in the anterior chamber of the eye."
+},
+{
+"id": "MONDO:0001037",
+"name": "ring corneal ulcer",
+"syn": [],
+"parent": "corneal ulcer",
+"defn": ""
+},
+{
+"id": "MONDO:0001038",
+"name": "perforated corneal ulcer",
+"syn": [],
+"parent": "corneal ulcer",
+"defn": ""
+},
+{
+"id": "MONDO:0001039",
+"name": "tonsillitis",
+"syn": [
+"chronic tonsillitis",
+"inflammation of tonsil",
+"tonsil inflammation"
+],
+"parent": "upper respiratory tract disorder",
+"defn": "Inflammation of the tonsillar tissue."
+},
+{
+"id": "MONDO:0001040",
+"name": "nasopharyngitis",
+"syn": [
+"inflammation of nasopharynx",
+"nasopharynx inflammation"
+],
+"parent": "nasopharyngeal disorder",
+"defn": "An inflammatory process that affects the nasopharynx."
+},
+{
+"id": "MONDO:0001041",
+"name": "dentin caries",
+"syn": [
+"dental caries extending into dentine",
+"dental caries of dentine",
+"dentine dental caries"
+],
+"parent": "dental caries",
+"defn": "A dental caries that involves the dentine."
+},
+{
+"id": "MONDO:0001042",
+"name": "patellar tendinitis",
+"syn": [
+"patella tendinitis",
+"patellar tendonitis",
+"tendinitis of patella"
+],
+"parent": "tendinitis",
+"defn": "A tendinitis that involves the patella."
+},
+{
+"id": "MONDO:0001044",
+"name": "esophageal atresia",
+"syn": [
+"congenital atresia of esophagus",
+"congenital atresia of oesophagus",
+"congenital esophageal atresia"
+],
+"parent": "esophageal disorder",
+"defn": "A congenital abnormality of the esophagus in which the upper esophagus ends as a blind pouch and does not connect with the lower esophagus; it is often accompan"
+},
+{
+"id": "MONDO:0001045",
+"name": "intestinal atresia",
+"syn": [
+"atresia of the intestine",
+"congenital intestinal atresia",
+"intestinal atresia (disease)"
+],
+"parent": "intestinal disorder",
+"defn": "A congenital malformation characterized by the absence of a normal opening in a part of the intestine. It can occur either in the small or the large intestine."
+},
+{
+"id": "MONDO:0001046",
+"name": "imperforate anus",
+"syn": [
+"anal atresia",
+"anus, imperforate",
+"congenital atresia of anus"
+],
+"parent": "anus disorder",
+"defn": "A congenital birth defect characterized by the absence of a normal anal opening. It may be associated with other congenital abnormalities."
+}
+]

@@ -284,7 +284,7 @@ class Form:
                     if kind in ("s", "sym"):
                         orgs[k] = strip(RC.AXES, s[4]) if s[4] else "\033[90m" + ("none of 13" if s[0] in ("mondo", "reg") and (I.mondo_loaded or s[0] == "reg") else "분석 때 판정") + "\033[0m"
                 ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for o in orgs.values()] + [6]), 16)
-                lines = []
+                lines = []; tip = ""
                 for k, (kind, s, tag) in enumerate(rows):
                     if kind == "sym" and not any(l[0] == "head" for l in lines): lines += [("head", ""), ("head", "증상·문장으로 찾은 질환")] if k else [("head", "증상·문장으로 찾은 질환")]
                     lines.append((k, kind, s, tag))
@@ -302,13 +302,14 @@ class Form:
                         label = _clip(marquee(main, lw, time.monotonic() - rested[1]) if on else main, lw)
                         plain = re.sub(r"\x1b\[[\d;]*m", "", org)
                         room = max(0, bw - 10 - lw - ow); tail = tag if kind == "sym" else sub
+                        if on and kind != "sym" and sub and (_w(sub) > room or _w(main) > lw): tip = f"{main}  ·  {sub}"     # the whole names, under the list
                         tail = tail if _w(tail) <= room else (_clip(tail, room) if kind == "sym" else "")   # a second name is shown whole or not at all
                         text = f"{label}{' ' * (lw - _w(label))}   {org}{' ' * max(0, ow - _w(plain))}   \033[90m{tail}\033[0m" + (f" \033[90m{tag}\033[0m" if tag == "AI" else "")
                     if on: self.S.put(yy, bx, " " * bw, self.S.cur)
                     self.S.put_ansi(yy, bx + 1, f"{'→' if on else ' '} {text}", selected=on); self.hit(yy, bx, bx + bw, ("ROW", k))
                 foot = "Enter 추가   ↑↓ 선택   " + ("× 또는 Backspace 빼기   PgDn 다음" if sel else "Esc 종료")
                 if APP_CHECK.get("newer"): foot += f"   새 앱 {APP_CHECK['latest']}: adctox --update-app"
-                for yy, t in ((h - 3, note), (h - 2, status), (h - 1, foot)):
+                for yy, t in ((h - 4, tip), (h - 3, note), (h - 2, status), (h - 1, foot)):
                     if t: self.S.put(yy, max(1, (w - _w(t)) // 2), _clip(t, w - 2), self.S.dim)
                 if rested[0] != (cur, q): rested[:] = [(cur, q), time.monotonic()]
                 self.scr.refresh(); k = self.key(tab=True)
