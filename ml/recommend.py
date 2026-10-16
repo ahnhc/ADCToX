@@ -168,12 +168,15 @@ def _judge_extra(free, links, GR, MI):
     judge's SapBERT-space vector."""
     o = GR.outputs(list(free)); _, _, (_, _, _, thr, _) = GR.load()
     vecs = [k for k, (c, lk) in enumerate(zip(free, links)) if re.search("[가-힣]", c) and not lk["axes"] and o["valid_ok"][k]]
-    near = dict(zip(vecs, MI.nearest(o["vec"][vecs]))) if vecs else {}
+    near = MI.nearest(o["vec"])                                     # every text, for the analysis screen; applied only to `vecs`
     for k, lk in enumerate(links):
         lk["judged"] = [GR.AXES[a] for a in np.where(o["organ"][k] >= thr)[0]]; ok = bool(o["valid_ok"][k])
         if JUDGE_GATE == "judge": lk["gate"] = ok
         elif JUDGE_GATE == "either": lk["gate"] = ok or lk.get("gate") is not False
-        if k in near and near[k][1] >= KO_ALIGN:
+        top = np.argsort(-o["organ"][k])[:3]; s = int(np.argmax(o["sym"][k]))
+        lk["gemma"] = dict(valid=float(o["valid"][k]), vthr=o["vthr"], ok=ok, organ=[(GR.AXES[a], float(o["organ"][k][a]), float(thr[a])) for a in top],
+                           near=(near[k][0], MI.concept(near[k][0])[0] or "", float(near[k][1])), sym=(o["profiles"][s], float(o["sym"][k][s])))
+        if k in vecs and near[k][1] >= KO_ALIGN:
             name, organs = MI.concept(near[k][0])
             if organs: lk.update(mondo=near[k][0], name=name, sim=near[k][1], axes=organs, via="judge vector")
 
@@ -229,7 +232,7 @@ def analyze_conditions(conditions, progress=None):
         report = dict(condition=c, source=source, name=name, mondo=link.get("mondo") if source.startswith("MONDO") else None, organs=[] if source == "Unmapped" else organs.get(c, []), estimates=estimates,
                       model="BioLORD + disease-pair MLP" if prediction is not None else None,
                       readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")),
-                      models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates})
+                      models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates}, gemma=link.get("gemma"), via=link.get("via"))
         _ANALYSES[c] = report; reports.append(report)
     if progress: progress("done")
     return reports

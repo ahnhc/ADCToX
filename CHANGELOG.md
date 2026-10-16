@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.20 — Gemma judge panel on the AI organ screen
+
+- **The AI organ analysis screen shows what the Gemma judge's four outputs said** for the highlighted input (↑↓ picks the input), as a boxed flow picture:
+  - `valid` with its score and the threshold, `organ` with the top three organ probabilities, `align` with the nearest MONDO disease and its cosine, `sym` with the top disease profile.
+  - A green ● marks the output that decided something for this input, a grey ○ one that was only computed.
+  - The last line shows the final organs and the step that set them: Gemma align, Gemma organ, a chosen disease, the MONDO link, the registry or HPO.
+- Hints and labels without parentheses: result-screen keys, the lab-value title, the priority option and the symptom-search status line.
+
 ## 0.3.19 — AI organ screen without the explanation line
 
 - The AI organ analysis screen no longer shows the explanation line under its title or the "cached" label. The run time is still shown when the analysis actually ran.

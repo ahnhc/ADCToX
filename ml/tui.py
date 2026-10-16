@@ -275,7 +275,7 @@ def browse(title, lines, selectable, details, footer="", context=()):
             for ln in header[:budget]:
                 S.put_ansi(y0, 2, ln); y0 += 1
             if len(header) > budget:
-                S.put(y0, 2, f"그 외 {len(header) - budget}줄 (창을 늘리면 모두 표시)", S.dim); y0 += 1
+                S.put(y0, 2, f"그 외 {len(header) - budget}줄 · 창을 늘리면 모두 표시", S.dim); y0 += 1
             if context: y0 += 1
             table, choices = lines(width) if callable(lines) else (lines, selectable)
             if not choices: return "next"
@@ -303,9 +303,9 @@ def browse(title, lines, selectable, details, footer="", context=()):
                 S.put_ansi(yb + 1 + k, 2, ln, curses.A_BOLD if detail_top + k == 0 else 0)
             S.rule(h - 3)
             if detail_focus:
-                hint = "↑↓ 상세 내용 스크롤   Tab ADC 목록으로   PgUp 이전 단계   PgDn 끝내고 결과 출력"
+                hint = "↑↓ 이유 스크롤   Tab ADC 목록   PgUp 이전 단계   PgDn 결과 출력"
             else:
-                hint = "↑↓ 또는 클릭: ADC 고르기 (아래에 이유)   Tab 이유 스크롤   PgUp 이전 단계   PgDn 끝내고 결과 출력"
+                hint = "↑↓ ADC 고르기   Tab 이유 스크롤   PgUp 이전 단계   PgDn 결과 출력"
             if len(out) > detail_area:
                 hint += f"   {detail_top + 1}-{min(detail_top + detail_area, len(out))}/{len(out)}"
             S.put(h - 2, 2, hint, S.dim)

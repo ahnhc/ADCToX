@@ -276,7 +276,7 @@ class Form:
                 self.S.put(y + 1, bx, "─" * bw, self.S.dim); y += 2
                 status = ""
                 if ai["busy"]: status = "AI 추천 찾는 중 ..."
-                if sym["busy"]: status = "증상으로 질환 찾는 중 ... (처음 한 번은 모델을 불러 10초 정도 걸립니다)"
+                if sym["busy"]: status = "증상으로 질환 찾는 중 ...   처음 한 번은 모델을 불러 10초쯤 걸립니다"
                 if sym["error"]: status = "증상 검색 실패: " + sym["error"]
                 lw = min(max([_w(names_of(r[0], r[1])[0]) for r in rows if r[0] in ("s", "sym")] + [10]), max(16, bw // 2 + 2))
                 orgs = {}
@@ -369,7 +369,7 @@ class Form:
         lw = max(len(l) for _, l, _, _ in fields)
         while True:
             at = pick[cur]
-            y0 = self.frame("검사 수치 (아는 것만)", "")
+            y0 = self.frame("검사 수치", "아는 것만 입력하세요")
             h, w = self.scr.getmaxyx(); area = max(3, h - y0 - 2); top = max(0, min(at - area // 2, len(rows) - area))
             for r, x in enumerate(rows[top:top + area]):
                 row = top + r; on = row == at
@@ -550,9 +550,10 @@ class Form:
             if timeout: timeout(-1)
 
     def _analysis_review(self, reports, elapsed):
-        """per typed condition: what it was read as and its organs (the ones the recommendation uses), one line each."""
+        """per typed condition: what it was read as and its organs (the ones the recommendation uses), one line each; under it, for
+        the highlighted input, what each Gemma judge output said and which step set the organs."""
         import tui, suggest as SG
-        top = 0; RC = self.RC; ko = SG.index(RC).ko
+        top = cur = 0; RC = self.RC; ko = SG.index(RC).ko
         SOURCE = {"AI judgment": "AI judgment (Gemma)", "Registry match": "Registry", "Similar condition": "Similar registry condition",
                   "Phenotype (HPO)": "HPO phenotype", "Chosen": "Chosen", "Unmapped": "Not understood"}
         while True:
@@ -571,23 +572,68 @@ class Form:
                 if read.lower() == r["condition"].lower(): read = ""
                 rows.append((r["condition"], org, (f"{read}  " if read else "") + f"\033[90m{how}\033[0m" + tag))
             ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for _, o, _ in rows] + [6]), 24)
-            head = f"\033[1m{'Input':<{nw}}\033[0m   \033[1m{'Organs':<{ow}}\033[0m   \033[1mRead as\033[0m"
-            lines = [head, "\033[90m" + "─" * min(width, nw + ow + 40) + "\033[0m"]
-            for c, org, what in rows:
+            head = f"  \033[1m{'Input':<{nw}}\033[0m   \033[1m{'Organs':<{ow}}\033[0m   \033[1mRead as\033[0m"
+            lines = [head, "\033[90m" + "─" * min(width, nw + ow + 42) + "\033[0m"]
+            for k, (c, org, what) in enumerate(rows):
                 name = _clip(c, nw); plain = re.sub(r"\x1b\[[\d;]*m", "", org)
-                lines.append(f"{name}{' ' * (nw - _w(name))}   {org}{' ' * max(0, ow - _w(plain))}   {what}")
+                lines.append(("\033[36;1m› \033[0m" if k == cur else "  ") + f"{name}{' ' * (nw - _w(name))}   {org}{' ' * max(0, ow - _w(plain))}   {what}")
             if not self.analysis_cached: lines += ["", f"\033[90m{elapsed:.1f} s\033[0m"]
+            panel = gemma_panel(reports[cur], RC, ko, width) if reports[cur].get("gemma") else []
             wrapped = [ln for line in lines for ln in tui._wrap_ansi(line, width)]
-            area = max(1, h - y0 - 3); top = max(0, min(top, len(wrapped) - area))
+            if h - y0 - 4 - len(wrapped) < len(panel) + 1: panel = []            # the panel only when the whole table still fits
+            area = max(1, h - y0 - 3 - (len(panel) + 1 if panel else 0)); top = max(0, min(top, len(wrapped) - area))
             for i, ln in enumerate(wrapped[top:top + area]): self.S.put_ansi(y0 + i, 2, ln)
+            for i, ln in enumerate(panel): self.S.put_ansi(y0 + min(area, len(wrapped)) + 1 + i, 2, ln)
             self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
-            if len(wrapped) > area: self.S.put(h - 1, 2, f"{top + 1}–{min(top + area, len(wrapped))} / {len(wrapped)}", self.S.dim)
+            if len(reports) > 1: self.S.put(h - 1, 2, "↑↓ 입력 고르기", self.S.dim)
+            elif len(wrapped) > area: self.S.put(h - 1, 2, f"{top + 1}–{min(top + area, len(wrapped))} / {len(wrapped)}", self.S.dim)
             self.scr.refresh(); key = self.key()
-            if key == "UP": top = max(0, top - 1)
-            elif key == "DOWN": top = min(max(0, len(wrapped) - area), top + 1)
+            if key == "UP":
+                if len(reports) > 1: cur = max(0, cur - 1)
+                else: top = max(0, top - 1)
+            elif key == "DOWN":
+                if len(reports) > 1: cur = min(len(reports) - 1, cur + 1)
+                else: top = min(max(0, len(wrapped) - area), top + 1)
             elif key == "PGUP": return BACK
             elif key == "PGDN": return None
 
+
+def gemma_panel(r, RC, ko, width):
+    """a boxed flow picture of the Gemma judge's four outputs for one typed condition and the step that set its organs.
+    Green ● = this output decided something here, grey ○ = computed and shown only."""
+    g = r["gemma"]; kr = bool(HANGUL.search(r["condition"])); G, D, E = "\033[32;1m", "\033[90m", "\033[0m"
+    nm = lambda t, en: (ko.get(t) if kr else "") or en
+    bar = lambda p, n: "█" * int(round(p * n)) + D + "░" * (n - int(round(p * n))) + E
+    used = dict(valid=True, organ=r["source"] == "AI judgment", align=r.get("via") == "judge vector", sym=False)
+    dot = lambda k: (G + "●" + E) if used[k] else (D + "○" + E)
+    ok = (G + "✓ 질환 입력" + E) if g["ok"] else ("\033[31m✗ 질환 아님" + E)
+    organs = "  ".join((G if p >= t else D) + f"{GLYPH[a]} {p:.2f}" + E for a, p, t in g["organ"])
+    near_id, near_en, cos = g["near"]; sym_id, sym_p = g["sym"]
+    import suggest as SG
+    pname = {p["id"]: p["name"] for p in SG.profiles()}
+    heads = [("valid", f"{bar(g['valid'], 10)} {g['valid']:.3f}  {D}기준 {g['vthr']:.3f}{E}  {ok}", "입력 검사"),
+             ("organ", organs, "13개 장기 확률"),
+             ("align", f"{_clip(nm(near_id, near_en), 26)}  {D}cos {cos:.2f}{E}", "MONDO 질환 연결"),
+             ("sym", f"{_clip(nm(sym_id, pname.get(sym_id, sym_id)), 26)}  {D}{sym_p:.2f}{E}", "증상 → 질환, 검색 화면에서 씀")]
+    src = r["source"]; read = nm(r.get("mondo") or "", r["name"]) if src.startswith("MONDO") else r["name"]
+    by = ("Gemma align 연결" if used["align"] else "Gemma organ 판정" if used["organ"] else "직접 고른 질환" if src == "Chosen" else
+          "MONDO 연결" if src.startswith("MONDO") else "Registry" if src in ("Registry match", "Similar condition") else
+          "HPO phenotype" if src.startswith("Phenotype") else "판정 못함")
+    final = (strip(RC.AXES, r["organs"]) if r["organs"] else D + "-" + E) + f"   {D}정한 곳{E} {by}" + (f"  {read}" if read and not used["organ"] else "")
+    name = _clip(r["condition"], 14); pad = " " * (_w(name) + 1)
+    vis = lambda t: _w(re.sub(r"\x1b\[[\d;]*m", "", t))
+    tw = max(vis(t) for _, t, _ in heads); body = [""]
+    for k, (key, text, role) in enumerate(heads):
+        lead = (name + " ─┬─" if k == 0 else pad + (" ├─" if k < 3 else " └─"))
+        body.append(f"{lead}{dot(key)} {key:<6}{text}" + (" " * (tw - vis(text)) + f"   {D}{role}{E}" if width >= 100 else ""))
+    body += ["", f"{pad} ▶ {final}"]
+    iw = max(30, min(width - 4, max(vis(b) for b in body) + 2))
+    title = f" Gemma judge · {name} "
+    out = [D + "┌─" + E + title + D + "─" * max(0, iw - _w(title) - 1) + "┐" + E]
+    for b in body:
+        plain = vis(b)
+        out.append(D + "│ " + E + b + " " * max(0, iw - 2 - plain) + D + " │" + E)
+    return out + [D + "└" + "─" * iw + "┘" + E]
 
 def run(RC, back=False):
     """-> (conditions, raw labs) or None. back: reopen at the last step (priority if it applies, else lab values), entries kept."""
@@ -641,7 +687,7 @@ def run(RC, back=False):
                     lv0 = RC.default_levels(pc); nw = max(_w(kn(c)) for c, _, _ in pc)
                     auto = "\n".join(f"  \033[1m{lv0[c]}\033[0m   {kn(c)}{' ' * (nw - _w(kn(c)))}   {strip(RC.AXES, o)}" for c, o, _ in sorted(pc, key=lambda x: lv0[x[0]]))
                     k = F.choose("질환 우선순위", "장기가 다른 질환이 여럿입니다. ADC 경고를 비교할 때 어느 질환의 장기를 먼저 볼지 정합니다.\n\n" + auto,
-                                 ["자동 (질환 심각도 순, 위 순서)", "직접 정하기"])
+                                 ["자동 · 질환 심각도 순", "직접 정하기"])
                     if k == BACK: step = 2 if st.get("miss") else 1; continue
                     if k == 1:
                         lv = F.order([show(c) for c in names], [", ".join(RC.EN[a] for a in sorted(o, key=RC.AXES.index)) for _, o, _ in pc], [d[c] for c in names], [o for _, o, _ in pc])

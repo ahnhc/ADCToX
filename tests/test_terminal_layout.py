@@ -276,7 +276,7 @@ def test_detail_scroll_reaches_every_reason_and_check_without_changing_candidate
     for text in [f"Restriction reason {i:02}" for i in range(20)] + ["Missing inputs", "First full check", "Last full check"]:
         assert any(text in frame for frame in frames)
     assert selected[:-1] == [0] * (len(selected) - 1) and selected[-1] == 1
-    assert "↑↓ 상세 내용 스크롤" in frames[1]
+    assert "↑↓ 이유 스크롤" in frames[1]
     assert "Candidate 1" in frames[-1] and "Restriction reason 00" in frames[-1]
     assert all("ADCTOX" in frame and tui.UI_VERSION in frame for frame in frames)
 
@@ -419,3 +419,16 @@ def test_only_page_keys_leave_a_screen(monkeypatch):
     F.scr = type("S", (), {"getmaxyx": lambda self: (30, 100), "refresh": lambda self: None})()
     F.S = type("P", (), {"put": lambda *a, **k: None, "put_ansi": lambda *a, **k: None, "dim": 0})()
     assert F.choose("t", "", ["a", "b"]) == 0                   # Enter, Esc and Space stay; PgDn goes on
+
+
+def test_gemma_panel_marks_the_step_that_set_the_organs():
+    import types, form
+    RC = types.SimpleNamespace(AXES=list(tui.GLYPH))
+    g = dict(valid=0.999, vthr=0.995, ok=True, organ=[("neurologic", 0.9, 0.5), ("ocular", 0.1, 0.5)], near=("MONDO:0007739", "Huntington disease", 0.81),
+             sym=("MONDO:0005154", 0.2))
+    r = dict(condition="헌팅톤무도병", source="MONDO", name="Huntington disease", mondo="MONDO:0007739", organs=["neurologic"], gemma=g, via="judge vector")
+    lines = [re.sub(r"\x1b\[[\d;]*m", "", ln) for ln in form.gemma_panel(r, RC, {"MONDO:0007739": "헌팅턴병"}, 120)]
+    assert lines[0].startswith("┌─ Gemma judge · 헌팅톤무도병") and lines[-1].startswith("└")
+    assert any("● align 헌팅턴병" in ln for ln in lines) and any("○ organ" in ln for ln in lines)
+    assert any("▶ Neuro" in ln and "Gemma align 연결" in ln for ln in lines)
+    assert len({form._w(ln) for ln in lines}) == 1                  # the right border lines up

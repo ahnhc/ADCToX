@@ -165,7 +165,7 @@ def outputs(texts, path=None):
     path = path or folder(); _, _, (hw, hb, temp, thr, prompt) = load(path); h = _last(texts, path); X = _X.get(path, {})
     out = dict(organ=1 / (1 + np.exp(-(h @ hw.T + hb).numpy() / temp)))
     if "align" in X:
-        v = 1 / (1 + np.exp(-(h @ X["valid"][0].T + X["valid"][1]).numpy()[:, 0])); out.update(valid=v, valid_ok=v >= X["info"]["vthr"])
+        v = 1 / (1 + np.exp(-(h @ X["valid"][0].T + X["valid"][1]).numpy()[:, 0])); out.update(valid=v, valid_ok=v >= X["info"]["vthr"], vthr=float(X["info"]["vthr"]))
         out["vec"] = torch.nn.functional.normalize(h @ X["align"][0].T + X["align"][1], dim=-1).numpy()
         out["sym"] = torch.softmax(h @ X["sym"][0].T + X["sym"][1], -1).numpy(); out["profiles"] = X["info"]["profiles"]
     return out
