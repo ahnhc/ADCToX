@@ -87,6 +87,30 @@ GLYPH = {"haematologic": "Blood", "hepatic": "Liver", "cardiovascular": "Cardio"
          "musculoskeletal": "MSK", "infectious_immune": "Immune", "otologic": "Ear"}     # short organ names of the screens (recommend.ORGAN_SHORT)
 
 
+LOGO = {                                                       # the logo letters, 6 rows each: blocks plus a box-line shadow
+    "A": [" █████╗ ", "██╔══██╗", "███████║", "██╔══██║", "██║  ██║", "╚═╝  ╚═╝"],
+    "D": ["██████╗ ", "██╔══██╗", "██║  ██║", "██║  ██║", "██████╔╝", "╚═════╝ "],
+    "C": [" ██████╗", "██╔════╝", "██║     ", "██║     ", "╚██████╗", " ╚═════╝"],
+    "T": ["████████╗", "╚══██╔══╝", "   ██║   ", "   ██║   ", "   ██║   ", "   ╚═╝   "],
+    "o": ["         ", " ██████╗ ", "██╔═══██╗", "██║   ██║", "╚██████╔╝", " ╚═════╝ "],
+    "X": ["██╗  ██╗", "╚██╗██╔╝", " ╚███╔╝ ", " ██╔██╗ ", "██╔╝ ██╗", "╚═╝  ╚═╝"]}
+
+
+def logo(word="ADCToX", colors=("36", "36", "36", "31", "31", "31")):
+    """the word in block letters: lines of ANSI text, blocks coloured per letter (ADC cyan, ToX red), the shadow grey."""
+    out = []
+    for r in range(6):
+        line = ""
+        for ch, col in zip(word, colors):
+            for px in LOGO[ch][r]:
+                line += f"\033[{col};1m█\033[0m" if px == "█" else (f"\033[90m{px}\033[0m" if px != " " else " ")
+        out.append(line)
+    return out
+
+
+def logo_width(word="ADCToX"): return sum(len(LOGO[ch][0]) for ch in word)
+
+
 def strip(axes, on=(), maybe=()):
     """the organs of a condition as short names in axis order: `on` (linked) green, `maybe` (estimated) yellow with '?';
     none -> a grey dash."""

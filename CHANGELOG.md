@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.15 — Logo and a calmer first screen
+
+- **Block-letter `ADCToX` logo:** ADC in cyan, ToX in red, grey box-line shadow, 50 columns. Below 54 columns or 24 rows it falls back to one coloured word.
+- **Calmer first screen:**
+  - The empty page is centred vertically, with one example line under the box.
+  - The box is at most 66 columns.
+  - `다음 ▶` appears only once a disease is picked.
+  - The footer has three hints.
+  - A second name that does not fit is left out instead of cut mid-word.
+
 ## 0.3.14 — A search page first; no model updates inside the app
 
 - **The first screen is a search page:**

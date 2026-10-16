@@ -6,7 +6,7 @@ Returns (conditions, raw lab values) and sets recommend.FALLBACK / recommend.PRI
 """
 import re
 from term import curses
-from tui import _Screen, _cw, _clip, _wrap, _enter, GLYPH, strip, UI_VERSION
+from tui import _Screen, _cw, _clip, _wrap, _enter, GLYPH, strip, UI_VERSION, logo, logo_width
 
 HANGUL = re.compile("[가-힣]")
 
@@ -238,12 +238,16 @@ class Form:
                 cur = max(0, min(cur, len(rows) - 1))
                 # ---- a search page: title, the picked diseases as chips, one box, suggestions under it
                 self.scr.erase(); self.hits = []; h, w = self.scr.getmaxyx()
-                bw = max(20, min(w - 6, 76)); bx = (w - bw) // 2
-                self.S.put(1, max(2, w - 3 - len(UI_VERSION)), UI_VERSION, self.S.dim)
-                self.button(1, max(2, w - 4 - len(UI_VERSION) - _w("[ 다음 ▶ ]") - 2), "다음 ▶", "PGDN")
-                y = 3 if (rows or sel) else max(3, h // 4)
-                title = "A D C T O X"; self.S.put(y, (w - len(title)) // 2, title, self.S.title); y += 1
-                sub = "기저질환을 입력하면 ADC 라벨 경고를 환자 장기 기준으로 정렬합니다"
+                bw = max(20, min(w - 6, 66)); bx = (w - bw) // 2
+                self.S.put(0, max(2, w - 2 - len(UI_VERSION)), UI_VERSION, self.S.dim)
+                if sel: self.button(1, max(2, w - 3 - _w("[ 다음 ▶ ]")), "다음 ▶", "PGDN")
+                big = w >= logo_width() + 4 and h >= 24
+                block = (7 if big else 1) + 2 + 3 + (2 if not (rows or sel) else 0)
+                y = 2 if (rows or sel) else max(1, (h - block) // 2 - 1)
+                if big:
+                    for ln in logo(): self.S.put_ansi(y, (w - logo_width()) // 2, ln); y += 1
+                else: self.S.put_ansi(y, (w - 6) // 2, "\033[36;1mADC\033[0m\033[31;1mToX\033[0m"); y += 1
+                sub = "기저질환으로 ADC 독성 경고를 환자에 맞게 정렬합니다"
                 self.S.put(y, max(2, (w - _w(sub)) // 2), _clip(sub, w - 4), self.S.dim); y += 2
                 if sel:                                                    # chips; a click or Backspace on an empty box takes one off
                     x = bx
@@ -258,13 +262,16 @@ class Form:
                 self.S.put(y, bx, "╭" + "─" * (bw - 2) + "╮", self.S.dim)
                 self.S.put(y + 1, bx, "│", self.S.dim); self.S.put(y + 1, bx + bw - 1, "│", self.S.dim)
                 if query: self.S.put(y + 1, bx + 2, "› " + _clip(query, bw - 7)[-(bw - 7):] + "_", self.S.title)
-                else: self.S.put(y + 1, bx + 2, "› " + _clip("질환명, 약어, 증상이나 문장  (예: 당뇨, ckd, 숨이 차고 다리가 부어요)", bw - 6), self.S.dim)
+                else: self.S.put(y + 1, bx + 2, "› " + _clip("질환명이나 증상을 입력하세요", bw - 6), self.S.dim)
                 self.S.put(y + 2, bx, "╰" + "─" * (bw - 2) + "╯", self.S.dim); y += 3
+                if not (rows or sel):
+                    ex = "예)  당뇨   ckd   heart failure   숨이 차고 다리가 부어요"
+                    self.S.put(y + 1, max(2, (w - _w(ex)) // 2), _clip(ex, w - 4), self.S.dim)
                 status = ""
                 if ai["busy"]: status = "AI 추천 찾는 중 ..."
                 if sym["busy"]: status = "증상으로 질환 찾는 중 ... (처음 한 번은 모델을 불러 10초 정도 걸립니다)"
                 if sym["error"]: status = "증상 검색 실패: " + sym["error"]
-                lw = min(max([_w(names_of(r[0], r[1])[0]) for r in rows if r[0] in ("s", "sym")] + [10]), 26)
+                lw = min(max([_w(names_of(r[0], r[1])[0]) for r in rows if r[0] in ("s", "sym")] + [10]), max(16, bw // 2 + 2))
                 orgs = {}
                 for k, (kind, s, tag) in enumerate(rows):
                     if kind in ("s", "sym"):
@@ -286,11 +293,12 @@ class Form:
                     else:
                         main, sub = names_of(kind, s); label = _clip(main, lw); org = orgs[k]
                         plain = re.sub(r"\x1b\[[\d;]*m", "", org)
-                        tail = _clip(tag if kind == "sym" else sub, max(0, bw - 12 - lw - ow))
+                        room = max(0, bw - 10 - lw - ow); tail = tag if kind == "sym" else sub
+                        tail = tail if _w(tail) <= room else (_clip(tail, room) if kind == "sym" else "")   # a second name is shown whole or not at all
                         text = f"{label}{' ' * (lw - _w(label))}   {org}{' ' * max(0, ow - _w(plain))}   \033[90m{tail}\033[0m" + (f" \033[90m{tag}\033[0m" if tag == "AI" else "")
                     if on: self.S.put(yy, bx, " " * bw, self.S.cur)
                     self.S.put_ansi(yy, bx + 1, f"{'→' if on else ' '} {text}", selected=on); self.hit(yy, bx, bx + bw, ("ROW", k))
-                foot = "Enter 추가   ↑↓ 선택   빈 칸에서 Backspace = 마지막 질환 빼기   다음 ▶ / PgDn"
+                foot = "Enter 추가   ↑↓ 선택   " + ("× 또는 Backspace 빼기   PgDn 다음" if sel else "Esc 종료")
                 if APP_CHECK.get("newer"): foot += f"   새 앱 {APP_CHECK['latest']}: adctox --update-app"
                 for yy, t in ((h - 3, note), (h - 2, status), (h - 1, foot)):
                     if t: self.S.put(yy, max(1, (w - _w(t)) // 2), _clip(t, w - 2), self.S.dim)
