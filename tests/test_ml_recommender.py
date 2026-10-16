@@ -173,7 +173,7 @@ def test_portable_build_gives_the_server_result(tmp_path):
     env = {"PATH": "/usr/bin:/bin", "NO_COLOR": "1", "HOME": str(tmp_path)}
     server = subprocess.run([sys.executable, "-I", str(ROOT / "ml/recommend.py"), *args], capture_output=True, text=True, env=env, cwd=ROOT).stdout
     portable = subprocess.run([sys.executable, "-I", str(out), *args], capture_output=True, text=True, env=env, cwd=tmp_path).stdout
-    assert "라벨 제한" in server and portable == server
+    assert "Label restriction" in server and portable == server
 
 
 _HF = pathlib.Path.home() / ".cache/huggingface/hub"

@@ -82,13 +82,13 @@ class _Screen:
         for line in (description or "").splitlines(): self.put(y, 2, line, self.dim); y += 1
         self.put(y, 2, hint, self.dim); return y + 2
 
-GLYPH = {"haematologic": "혈액", "hepatic": "간", "cardiovascular": "심장", "pulmonary": "폐", "renal": "신장", "gastrointestinal": "위장",
-         "neurologic": "신경", "ocular": "눈", "dermatologic": "피부", "metabolic_endocrine": "대사", "musculoskeletal": "근골격",
-         "infectious_immune": "면역", "otologic": "귀"}           # short Korean organ names for the screens (13 axes)
+GLYPH = {"haematologic": "Blood", "hepatic": "Liver", "cardiovascular": "Cardio", "pulmonary": "Lung", "renal": "Kidney",
+         "gastrointestinal": "GI", "neurologic": "Neuro", "ocular": "Eye", "dermatologic": "Skin", "metabolic_endocrine": "Metabolic",
+         "musculoskeletal": "MSK", "infectious_immune": "Immune", "otologic": "Ear"}     # short organ names of the screens (recommend.ORGAN_SHORT)
 
 
 def strip(axes, on=(), maybe=()):
-    """the organs of a condition as short Korean words in axis order: `on` (linked) green, `maybe` (estimated) yellow with '?';
+    """the organs of a condition as short names in axis order: `on` (linked) green, `maybe` (estimated) yellow with '?';
     none -> a grey dash."""
     parts = [f"\033[32;1m{GLYPH[a]}\033[0m" for a in axes if a in on] + [f"\033[33m{GLYPH[a]}?\033[0m" for a in axes if a in maybe and a not in on]
     return " ".join(parts) if parts else "\033[90m-\033[0m"
@@ -279,9 +279,9 @@ def browse(title, lines, selectable, details, footer="", context=()):
                 S.put_ansi(yb + 1 + k, 2, ln, curses.A_BOLD if detail_top + k == 0 else 0)
             S.rule(h - 3)
             if detail_focus:
-                hint = "↑↓ 상세 스크롤   Tab 목록   PgUp 이전   PgDn 결과 출력"
+                hint = "↑↓ 상세 내용 스크롤   Tab ADC 목록으로   PgUp 이전 단계   PgDn 끝내고 결과 출력"
             else:
-                hint = "↑↓ / 클릭 이동   Tab 상세   PgUp 이전   PgDn 결과 출력"
+                hint = "↑↓ 또는 클릭: ADC 고르기 (아래에 이유)   Tab 이유 스크롤   PgUp 이전 단계   PgDn 끝내고 결과 출력"
             if len(out) > detail_area:
                 hint += f"   {detail_top + 1}-{min(detail_top + detail_area, len(out))}/{len(out)}"
             S.put(h - 2, 2, hint, S.dim)

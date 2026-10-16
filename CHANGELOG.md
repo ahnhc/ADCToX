@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.13 — Clinical terms back in English; clearer screens
+
+- **English again for terms that read fine in English:**
+  - Result table: Label restriction / Patient organs / Other; None, Monitor, Unclear, Avoid.
+  - Organ names everywhere: Liver, Kidney, Cardio ...
+  - Panels: Key values, Organ priority, Missing inputs, Pre-treatment checks.
+  - Printed headings and `!! Boxed warning   ! Warning   + more organs`.
+  - Korean stays only in the guidance lines.
+- **First screen:**
+  - Disease names follow the typed language: Korean main name for Korean input, English for English.
+  - The other language is shown in grey.
+  - Diseases found from symptoms come before "입력한 그대로 추가", so Enter takes the best suggestion.
+  - Selected rows are no longer cut short.
+- **AI organ analysis:** columns Input / Organs / Read as, with the source in grey (MONDO, AI judgment (Gemma), Chosen, Not understood).
+- **Priority screen:** one line says why it is asked; the option reads "자동 (질환 심각도 순, 위 순서)".
+- **Result screen:**
+  - The three-column table is used from 90 columns; narrower terminals show one `Patient: … Other: …` line.
+  - The key hints say what each key does.
+
 ## 0.3.12 — The four-output judge actually runs in the installed app
 
 - **Fix:** in 0.3.11 the installed (full portable) app left `mondo_index.nearest` out. The Gemma judge then failed quietly and every free text went back to the old path, so Korean sentences stayed unmapped.
