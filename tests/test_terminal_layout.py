@@ -384,7 +384,7 @@ def test_a_click_presses_the_row_or_button_under_it(monkeypatch):
     F.frame("t", ""); F.row(10, "a row", False, 3)
     clicks = iter([("CLICK", 10, 40), ("CLICK", 2, 97 - 3), ("CLICK", 25, 5)])
     monkeypatch.setattr(form, "_key", lambda scr, tab=False: next(clicks))
-    assert F.key() == ("ROW", 3) and F.key() == "PGDN" and F.key() == "NOOP"           # row, the top-right 다음 ▶, empty space
+    assert F.key() == ("ROW", 3) and F.key() == "NOOP" and F.key() == "NOOP"           # row; the top right has no buttons any more
 
 
 def test_organ_strip_marks_linked_and_estimated_organs():

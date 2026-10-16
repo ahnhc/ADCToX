@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1 — Analysis animation; no step slide, no ◀ ▶ buttons
+
+- **The analysis screen shows the work as a data stream.** Under the stage line, braille dots flow to the right and thin out: inputs gathered (cyan), sorted (yellow), one answer picked (green ●). Finished stages turn green with heavy connectors; the running stage carries a small wave. When the analysis ends, the table builds up under the same stage line as before.
+- **No slide between steps.** Screens change at once; the logo draw-in, the table and judge-panel cascades, the caret blink and the chip flash stay.
+- **The clickable `[ ◀ 이전 ] [ 다음 ▶ ]` buttons are gone**, as is `[ 다음 ▶ ]` on the search page. PgUp / PgDn move between screens; the hint at the bottom right stays.
+
 ## 0.4.0 — One session, five steps, motion
 
 - **One terminal session from the search page to the result screen.** The result screen used to open in a second curses session after the input steps, with a flash of the shell in between; PgUp on it then restarted the wizard. Now `form.run` owns the whole flow and returns the results; PgUp on the result screen goes back to the priority or lab-value step in place.

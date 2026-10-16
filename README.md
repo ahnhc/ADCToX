@@ -62,7 +62,7 @@ irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 | 우선순위 | 장기가 다른 질환이 여럿일 때, 어느 질환의 독성을 먼저 피할지 정합니다. 기본은 질환 심각도 순입니다. |
 | 결과 | ↑↓로 ADC를 고르면 아래에 이유가 나옵니다. PgDn으로 표를 출력하고 끝냅니다. |
 
-화면 전환과 표가 나타나는 모션은 `ADC_MOTION=0`으로 끌 수 있습니다.
+분석 화면의 애니메이션과 표가 나타나는 모션은 `ADC_MOTION=0`으로 끌 수 있습니다.
 
 ## 업데이트
 

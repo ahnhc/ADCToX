@@ -188,12 +188,9 @@ class Form:
             self.S.put(y, x, name, self.S.title if on else self.S.dim); x += _w(name)
 
     def frame(self, title, hint, nav=("PGUP", "PGDN")):
-        """draw the finished steps and the current step's title, with clickable ◀ 이전 / 다음 ▶ at the top right; -> first free row."""
+        """draw the finished steps and the current step's title; the PgUp / PgDn hint at the bottom right -> first free row."""
         self.scr.erase(); h, w = self.scr.getmaxyx(); y = 5; self.hits = []
         self.S.brand(); self.crumbs(1)
-        bx = w - 3
-        for label, value in reversed([(l, v) for l, v in (("◀ 이전", "PGUP"), ("다음 ▶", "PGDN")) if v in nav]):
-            bx -= _w(f"[ {label} ]") + 1; self.button(2, bx, label, value)
         nav_hint = "   ".join(t for t, v in (("PgUp ◀ 이전", "PGUP"), ("PgDn 다음 ▶", "PGDN")) if v in nav)
         self.S.put(h - 1, max(1, w - 2 - _w(nav_hint)), nav_hint, self.S.dim)
         for t, s in self.done:
@@ -280,7 +277,6 @@ class Form:
                 self.scr.erase(); self.hits = []; h, w = self.scr.getmaxyx()
                 bw = max(20, min(w - 6, 66)); bx = (w - bw) // 2
                 self.S.put(0, max(2, w - 2 - len(UI_VERSION)), UI_VERSION, self.S.dim); self.crumbs(0)
-                if sel: self.button(1, max(2, w - 3 - _w("[ 다음 ▶ ]")), "다음 ▶", "PGDN")
                 big = w >= logo_width() + 4 and h >= 20
                 block = (5 if big else 1) + 2 + 2
                 y = 2 if (rows or sel) else max(1, (h - block) // 2 - 1)
@@ -367,7 +363,7 @@ class Form:
                     if query: query, found, cur = "", [], 0
                     else: return QUIT
                 elif k == "ENTER":
-                    if not rows: note = "질환명이나 증상을 입력하세요" if not sel else "다음 단계는 다음 ▶ 또는 PgDn"; continue
+                    if not rows: note = "질환명이나 증상을 입력하세요" if not sel else "다음 단계는 PgDn"; continue
                     kind, s, _ = rows[cur]
                     if kind == "split":
                         note = "   ".join(add(("text", w_, w_, "", [])) for w_ in s[1]); query, found, cur = "", [], 0
@@ -548,7 +544,8 @@ class Form:
                     current = next((i for i, (key, _) in enumerate(stages) if key == event), len(stages))
                 y = self.frame("AI 장기 분석", "")
                 h, w = self.scr.getmaxyx()
-                self.S.put_ansi(y, 2, pipeline(current, time.monotonic() - started)); y += 2
+                for ln in running(current, time.monotonic() - started, min(w - 6, 72)): self.S.put_ansi(y, 2, ln); y += 1
+                y += 1
                 names = ", ".join(c for c in conditions if c not in self.RC._reg and c.lower() not in self.RC._by_label and c not in self.RC.CONTEXT)
                 for ln in _wrap(names, w - 5, "  ")[:2]: self.S.put(y, 2, ln, self.S.dim); y += 1
                 self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
@@ -629,6 +626,30 @@ STAGES = [("embedding", "BioLORD"), ("linking", "SapBERT · MONDO"), ("judging",
 SPIN = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
 
 
+_BRAILLE = [chr(0x2800 + ((i * 2654435761) >> 7 & 0xFF) or 0x2800 + 1) for i in range(64)]     # fixed pseudo-random dot patterns
+
+
+def running(current, t, width):
+    """the analysis while it runs, two lines: the stage line with the finished stages lit and a wave on the running one, and under
+    it a stream of braille dots flowing right and thinning out: inputs are gathered (cyan), sorted (yellow) and one answer is
+    picked (green ●). Time-based, so any redraw rate works."""
+    C, Y, G, D, E = "\033[36m", "\033[33;1m", "\033[32;1m", "\033[90m", "\033[0m"
+    wave = "⠁⠂⠄⡀⢀⠠⠐⠈"; k = int(t * 12)
+    parts = []
+    for i, (_, name) in enumerate(STAGES):
+        if i: parts.append((G + " ━━━ " + E) if i <= current - 1 else (D + " ─" + E + Y + "".join(wave[(k + j) % 8] for j in range(3)) + E + D + "─ " + E) if i == current else (D + " ─── " + E))
+        parts.append((G + name + E) if i < current else (Y + name + E) if i == current else (D + name + E))
+    stage = "".join(parts)
+    n = max(24, width - 8); out = []
+    for x in range(n):
+        g = _BRAILLE[(x - k) % len(_BRAILLE)]; f = x / n
+        if f < 0.45: out.append(C + g + E)                                              # gathered: full patterns
+        elif f < 0.8: out.append(Y + chr(0x2800 + (ord(g) - 0x2800) & 0b00100100 | 0x2800) + E)   # sorted: the middle rows only
+        else: out.append(D + ("⠒" if (x + k) % 3 else "⠐") + E)                         # narrowing to one line
+    stream = "".join(out) + f" {G}{'●' if k % 2 else '◉'}{E}   {D}{t:.1f} s{E}"
+    return [stage, stream]
+
+
 def pipeline(current, elapsed):
     """the analysis stages in one line: done stages green, the running one lit with a spinner, the rest grey; the time at the end.
     current = len(STAGES) means finished; elapsed None shows no time (a cached analysis)."""
@@ -677,12 +698,11 @@ def run(RC, back=False):
     """-> (conditions, raw labs, (rows, s, notes, checks)) or None. One curses session: the five steps and the result screen;
     PgUp on the result screen returns to the last input step with the entries kept. `back` is accepted for older callers."""
     def app(scr):
-        F = Form(scr, RC); st = load(); st["picked"] &= set(RC._reg); step = 0; last = None; has_priority = False
+        F = Form(scr, RC); st = load(); st["picked"] &= set(RC._reg); step = 0; has_priority = False
         kn = RC.condition_name                                       # a picked disease keeps the name it was picked by
         RC.CHOICE.update(st["choice"])
         while True:
-            if last is not None and step != last and hasattr(F.scr, "transition"): F.scr.transition("slide", dir=1 if step > last else -1)
-            last = step; F.step = min(step, 4); F.done = []
+            F.step = min(step, 4); F.done = []
             if step >= 1: F.done.append(("기저질환", ", ".join([RC.condition_name(i) for i in sorted(st["picked"], key=list(RC._reg).index)] + [kn(c) for c in split_free(st["free"])])))
             if step >= 2:
                 F.done.append(("검사 수치", f"{len(st['raw'])}개 입력" if st["raw"] else "입력 없음"))
