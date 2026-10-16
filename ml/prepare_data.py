@@ -1,7 +1,7 @@
 """Rebuild the persistent caches the ML scripts read, from the collaborator workbooks in data/raw/atlas.
 
 Run once:  /data/hyeongchanahn/envs/adctox/bin/python -I ml/prepare_data.py
-The workbooks are not redistributed (docs/TEAMMATE_DATA_USE.md); neither are these caches.
+The workbooks are not redistributed (docs/archive/team/TEAMMATE_DATA_USE.md); neither are these caches.
 """
 import pandas as pd, warnings
 import os, sys

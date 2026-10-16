@@ -1,4 +1,4 @@
-"""Learned reranker of the 10 nearest MONDO concepts (task 2 of docs/TEAM_HANDOFF.md), written into the index (v4).
+"""Learned reranker of the 10 nearest MONDO concepts (task 2 of docs/archive/team/TEAM_HANDOFF.md), written into the index (v4).
 
     CUDA_VISIBLE_DEVICES=1 ADC_RESEARCH_MODE=1 ADCTOX_CACHE=<copy of the cache> python ml/rerank_train.py [--dry]
 

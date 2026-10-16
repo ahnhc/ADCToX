@@ -1,29 +1,15 @@
 # Changelog
 
-## 0.4.3 — A loading bar on the analysis screen
-
-- The analysis screen shows the four stage names over one thin bar. The bar fills a quarter per finished stage and eases towards the next quarter while a stage runs, so it keeps moving without claiming a stage is done. Finished stages are green. The wave of 0.4.2 is gone.
-
-## 0.4.2 — A single wave on the analysis screen
-
-- The random braille dots of 0.4.1 are replaced by one smooth sine wave of braille dots that flows right and settles into a straight line ending in a green ●: the inputs settle into one answer. Grey, with the running stage name and the ● breathing about once a second. Finished stages are green with heavy connectors.
-
-## 0.4.1 — Analysis animation; no step slide, no ◀ ▶ buttons
-
-- **The analysis screen shows the work as a data stream.** Under the stage line, braille dots flow to the right and thin out: inputs gathered (cyan), sorted (yellow), one answer picked (green ●). Finished stages turn green with heavy connectors; the running stage carries a small wave. When the analysis ends, the table builds up under the same stage line as before.
-- **No slide between steps.** Screens change at once; the logo draw-in, the table and judge-panel cascades, the caret blink and the chip flash stay.
-- **The clickable `[ ◀ 이전 ] [ 다음 ▶ ]` buttons are gone**, as is `[ 다음 ▶ ]` on the search page. PgUp / PgDn move between screens; the hint at the bottom right stays.
-
-## 0.4.0 — One session, five steps, motion
+## 0.4.0 – 0.4.3 — One session, five steps
 
 - **One terminal session from the search page to the result screen.** The result screen used to open in a second curses session after the input steps, with a flash of the shell in between; PgUp on it then restarted the wizard. Now `form.run` owns the whole flow and returns the results; PgUp on the result screen goes back to the priority or lab-value step in place.
 - **Five steps, shown as a breadcrumb at the top** (질환 · 검사 수치 · AI 장기 분석 · 우선순위 · 결과), the current one lit.
-  - The analysis progress and the review are one screen: a pipeline line `BioLORD ── SapBERT · MONDO ── Gemma ── MLP` with the running stage lit and a spinner, then the table under it with `✓ 3.5 s`.
+  - The analysis progress and the review are one screen. While it runs, the four stage names stand over one thin bar that fills a quarter per finished stage and eases towards the next quarter meanwhile (0.4.3; the stage spinner of 0.4.0, the braille stream of 0.4.1 and the wave of 0.4.2 were replaced). When it ends, the table builds up under `BioLORD ── SapBERT · MONDO ── Gemma ── MLP   ✓ 3.5 s`.
   - Priority is one screen: the default order is shown at once and can be changed with ←→ or the − / + buttons; PgDn keeps it. The separate "자동 / 직접 정하기" question is gone.
-  - After the result screen, the table is printed and the app exits. The `Run again? (y/Enter)` prompt is gone (the plain `--plain` path keeps it).
-- **Motion** (`ml/motion.py`): a window wrapper records each frame and plays a short transition before showing it. Steps slide in from the right (back: from the left, 160 ms); the logo is drawn in from the left on the first screen (420 ms); the analysis table and the Gemma judge panel build up row by row (220 ms); so do the reasons when another ADC is selected. The search caret blinks and a newly added disease chip is lit for 0.4 s. `ADC_MOTION=0` turns all of it off; it is off when stdout is not a terminal.
-  - Rows 0-3 (brand, buttons, rule) never move, so the frame stays still while the content moves.
-- The priority rows have room between the − / + buttons, the level and the name.
+  - After the result screen, the table is printed and the app exits. The `Run again? (y/Enter)` prompt is gone (the `--plain` path keeps it).
+- **The clickable `[ ◀ 이전 ] [ 다음 ▶ ]` buttons are gone** (0.4.1). PgUp / PgDn move between screens; the hint at the bottom right stays.
+- **Motion** (`ml/motion.py`): a window wrapper records each frame and can play a short transition before showing it. In use: the logo is drawn in from the left on the first screen (420 ms); the analysis table, the Gemma judge panel and the reasons for a newly selected ADC build up row by row (220 ms); the search caret blinks; a newly added disease chip is lit for 0.4 s. The slide between steps (0.4.0) was removed in 0.4.1. `ADC_MOTION=0` turns all of it off; it is off when stdout is not a terminal.
+- The portable build embeds `motion` and checks that the screen modules import only embedded modules.
 
 ## 0.3.23 — Validity threshold 0.95; each disease listed once
 

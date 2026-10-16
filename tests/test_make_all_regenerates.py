@@ -36,7 +36,7 @@ EXEMPT = {
     # gitignored and only the hash is recorded, the same posture the MedDRA dictionary uses.
     # `make all` has to be runnable from a clone, so these cannot be in it. The ingest is
     # reproducible from the workbook by `make atlas-ingest merged-scale`, and
-    # docs/TEAMMATE_DATA_USE.md records what it does.
+    # docs/archive/team/TEAMMATE_DATA_USE.md records what it does.
     "ingest_atlas_db.py",
     "merged_corpus_scale.py",
     "merge_atlas_corpus.py",
