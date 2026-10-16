@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.0 — One session, five steps, motion
+
+- **One terminal session from the search page to the result screen.** The result screen used to open in a second curses session after the input steps, with a flash of the shell in between; PgUp on it then restarted the wizard. Now `form.run` owns the whole flow and returns the results; PgUp on the result screen goes back to the priority or lab-value step in place.
+- **Five steps, shown as a breadcrumb at the top** (질환 · 검사 수치 · AI 장기 분석 · 우선순위 · 결과), the current one lit.
+  - The analysis progress and the review are one screen: a pipeline line `BioLORD ── SapBERT · MONDO ── Gemma ── MLP` with the running stage lit and a spinner, then the table under it with `✓ 3.5 s`.
+  - Priority is one screen: the default order is shown at once and can be changed with ←→ or the − / + buttons; PgDn keeps it. The separate "자동 / 직접 정하기" question is gone.
+  - After the result screen, the table is printed and the app exits. The `Run again? (y/Enter)` prompt is gone (the plain `--plain` path keeps it).
+- **Motion** (`ml/motion.py`): a window wrapper records each frame and plays a short transition before showing it. Steps slide in from the right (back: from the left, 160 ms); the logo is drawn in from the left on the first screen (420 ms); the analysis table and the Gemma judge panel build up row by row (220 ms); so do the reasons when another ADC is selected. The search caret blinks and a newly added disease chip is lit for 0.4 s. `ADC_MOTION=0` turns all of it off; it is off when stdout is not a terminal.
+  - Rows 0-3 (brand, buttons, rule) never move, so the frame stays still while the content moves.
+- The priority rows have room between the − / + buttons, the level and the name.
+
 ## 0.3.23 — Validity threshold 0.95; each disease listed once
 
 - **The app accepts an input as real when the Gemma judge's validity score is 0.95 or more** (`gemma_runtime.VALID_THR`). The model's own threshold, 0.995, rejected common complaints such as "간이 안좋아요" (0.992). `ADC_VALID_THR=model` restores it.

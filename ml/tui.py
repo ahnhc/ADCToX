@@ -254,15 +254,16 @@ def ranklist(title, items, levels, description=""):
     return curses.wrapper(run)
 
 
-def browse(title, lines, selectable, details, footer="", context=()):
+def browse(title, lines, selectable, details, footer="", context=(), scr=None, crumbs=None):
     """read-only result viewer. lines: the table as text; selectable: indices of lines that are rows; details[k]: text lines
     shown in the bottom panel for selectable row k. UP/DOWN or a mouse click selects a row; PgUp -> "back" (to the input
     steps), PgDn -> "next" (PgUp / PgDn are the only keys that leave a screen). TAB / ENTER switches between the table and scrollable details.
     lines may be a width -> (lines, selectable) renderer; details may be
     a (row, width) -> lines renderer, so the same content reflows when the terminal is resized.
-    context may also be a (row, width) -> lines renderer for a bounded input summary."""
+    context may also be a (row, width) -> lines renderer for a bounded input summary.
+    scr: draw in this window instead of a new curses session; crumbs(): drawn on the brand line (the step breadcrumb)."""
     def run(scr):
-        S = _Screen(scr); cur = 0; top = 0; detail_top = 0; detail_focus = False
+        S = _Screen(scr); cur = 0; top = 0; detail_top = 0; detail_focus = False; last = None
         try: curses.mousemask(curses.BUTTON1_CLICKED | curses.BUTTON1_PRESSED | curses.BUTTON1_RELEASED); curses.mouseinterval(0)
         except curses.error: pass
         while True:
@@ -270,6 +271,7 @@ def browse(title, lines, selectable, details, footer="", context=()):
             import term
             width = max(2, w - 5)
             S.brand(title); y0 = 5
+            if crumbs: crumbs()
             header = context(cur, width) if callable(context) else [ln for text in context for ln in _wrap(text, width, "")]
             budget = max(1, h - 20)
             for ln in header[:budget]:
@@ -310,6 +312,8 @@ def browse(title, lines, selectable, details, footer="", context=()):
                 hint += f"   {detail_top + 1}-{min(detail_top + detail_area, len(out))}/{len(out)}"
             S.put(h - 2, 2, hint, S.dim)
             if footer: S.put(h - 1, 2, footer, S.dim)
+            if last is not None and cur != last and hasattr(scr, "transition"): scr.transition("cascade", y_from=yb + 1)   # the reasons unfold
+            last = cur
             scr.refresh(); key = scr.getch()
             previous = cur
             if key in (curses.KEY_UP, ord("k")):
@@ -337,4 +341,4 @@ def browse(title, lines, selectable, details, footer="", context=()):
             elif key == curses.KEY_PPAGE: return "back"
             elif key == curses.KEY_NPAGE: return "next"
             if cur != previous: detail_top = 0
-    return curses.wrapper(run)
+    return run(scr) if scr is not None else curses.wrapper(run)

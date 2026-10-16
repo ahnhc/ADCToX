@@ -680,14 +680,15 @@ def _result_context(rows, notes, width, values=None, selected=0, graphic=False):
     return out
 
 
-def browse(rows, checks_=(), notes=(), labs=None, raw=None):
-    """interactive view of the result table (terminal only): pick a row to read why it has its restriction."""
+def browse(rows, checks_=(), notes=(), labs=None, raw=None, scr=None, crumbs=None):
+    """interactive view of the result table (terminal only): pick a row to read why it has its restriction.
+    scr / crumbs: draw inside the wizard's session (form.run) instead of a session of its own."""
     import tui, labs as LB
     values = {**(LB.derive(raw)[0] if raw else {}), **(labs or {})}
     return tui.browse("ADC 추천 결과", lambda w: _result_list(rows, w), [],
                       lambda i, w: _result_details(rows[i], checks_, w),
                       footer="!! Boxed warning   ! Warning   + more organs",
-                      context=lambda i, w: _result_context(rows, notes, w, values, i, graphic=True))
+                      context=lambda i, w: _result_context(rows, notes, w, values, i, graphic=True), scr=scr, crumbs=crumbs)
 
 
 def patient_lines(notes):
@@ -826,14 +827,9 @@ def _ask_fallback(conds, radio=None):
 
 
 def wizard(back=False):
-    """-> (conditions, labs (x ULN form; empty), colour, raw lab values). One curses screen when possible, plain prompts otherwise.
-    back: return from the result screen to the last input step, entries kept."""
+    """plain prompts (--plain, or no full-screen terminal) -> (conditions, labs (x ULN form; empty), colour, raw lab values).
+    The terminal session is form.run."""
     import labs as LB
-    if _tui_ok():
-        import form
-        r = form.run(sys.modules[__name__], back=back)
-        if r is None: sys.exit(0)
-        conds, raw = r; return conds, {}, None, raw
     ids = list(_reg)
     try: text = input("기저질환 (번호/ID/영어, 쉼표 구분; ? = 목록) > ")
     except EOFError: text = ""
@@ -955,19 +951,20 @@ def main():
     if flags.get("fallback") and args: FALLBACK = {c: flags["fallback"] for c in unresolved(args)}
     if flags.get("priority") and args: PRIORITY = dict(zip(args, flags["priority"]))
     if args and HAS_LEARNED: analyze_conditions(args)
-    back = False
+    if not args and sys.stdin.isatty() and _tui_ok():                   # the terminal session: five steps and the result screen
+        import form
+        r = form.run(sys.modules[__name__])
+        if r is None: sys.exit(0)
+        conds, raw, (rows, s, notes, ck) = r
+        print(); render(rows, s, notes, ck, detail=flags["detail"], labs={}, raw=raw); form.clear(); return
     while True:
         raw = flags.get("raw")
         if args: conds, col = args, None
-        elif sys.stdin.isatty(): conds, labs, col, raw = wizard(back)
+        elif sys.stdin.isatty(): conds, labs, col, raw = wizard()
         else: conds, col = ["interstitial_lung_disease"], None
         print()
         rows, s, notes, ck = recommend(conds, labs, raw)
-        if not args and _tui_ok() and browse(rows, ck, notes, labs, raw) == "back": back = True; continue      # PgUp on the result screen
-        back = False
         render(rows, s, notes, ck, detail=flags["detail"], color=col, labs=labs, raw=raw)
-        if not args and _tui_ok():
-            import form; form.clear()                                     # the next run starts empty
         if args or not sys.stdin.isatty(): break
         try: again = input("\nRun again with different answers? (y = yes, Enter = exit) > ").strip().lower()
         except EOFError: break

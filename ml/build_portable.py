@@ -161,7 +161,11 @@ def main():
                 mondo_ko={t: [k, en] + list(alt) for t, (k, alt, en) in __import__("suggest").read_mondo_ko(R / "data/curated/korean/mondo_ko.jsonl").items()})
     if FULL: data["learned"] = json.load(open(R / "ml/results/learned_vulnerability.json"))["severity"]
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
-    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "gemma_runtime", "adc_version", "adc_runtime", "adc_updates")}
+    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "gemma_runtime", "adc_version", "adc_runtime", "adc_updates", "motion")}
+    local = {q.stem for q in (R / "ml").glob("*.py")}                      # the screen modules import only embedded modules (0.4.0: motion)
+    for m in ("form", "tui", "term", "motion"):
+        for name in set(re.findall(r"^\s*(?:import|from)\s+(\w+)", src[m], re.M)):
+            assert name not in local or name in src, f"{m} imports ml/{name}.py, which the portable build does not embed"
 
     rc = src["recommend"]
     rc = sub(rc, 'sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))\n', "", "recommend")

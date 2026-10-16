@@ -440,3 +440,27 @@ def test_the_app_sets_the_validity_threshold_over_the_models(monkeypatch):
     monkeypatch.delenv("ADC_VALID_THR", raising=False)
     assert GR.valid_threshold(0.995) == 0.95
     monkeypatch.setenv("ADC_VALID_THR", "model"); assert GR.valid_threshold(0.995) == 0.995
+
+
+def test_motion_replays_the_frame_and_lands_on_the_drawn_screen(monkeypatch):
+    """a transition plays the recorded frame in intermediate frames and then shows exactly what the screen drew."""
+    import motion
+    monkeypatch.setattr(motion, "enabled", lambda: True)
+    monkeypatch.setattr(motion.time, "sleep", lambda s: None)
+    class Fake:
+        def __init__(self): self.rows = {}; self.frames = []
+        def getmaxyx(self): return (20, 60)
+        def erase(self): self.rows = {}
+        def addstr(self, y, x, s, attr=0): self.rows.setdefault(y, []).append((x, s))
+        def refresh(self): self.frames.append({y: "".join(s for _, s in sorted(v)) for y, v in self.rows.items()})
+    fake = Fake(); win = motion.Win(fake)
+    win.erase(); win.addstr(1, 2, "ADCTOX", 1); win.addstr(5, 2, "Heart failure  Cardio  심부전"); win.addstr(6, 2, "Cirrhosis")
+    win.transition("slide", dir=1); win.refresh()
+    assert len(fake.frames) > 2 and fake.frames[-1] == {1: "ADCTOX", 5: "Heart failure  Cardio  심부전", 6: "Cirrhosis"}
+    assert all(f.get(1) == "ADCTOX" for f in fake.frames)                                       # the brand row never moves
+    assert any(f.get(5) != "Heart failure  Cardio  심부전" for f in fake.frames[:-1])         # on the way in, the row is still cut
+    n = len(fake.frames); win.erase(); win.addstr(4, 2, "a"); win.addstr(5, 2, "b"); win.addstr(6, 2, "c"); win.transition("cascade"); win.refresh()
+    assert fake.frames[-1] == {4: "a", 5: "b", 6: "c"} and any(len(f) < 3 for f in fake.frames[n:-1])   # rows arrive one by one
+    monkeypatch.setattr(motion, "enabled", lambda: False)
+    before = len(fake.frames); win.erase(); win.addstr(4, 2, "x"); win.transition("wipe"); win.refresh()
+    assert len(fake.frames) == before + 1                                                        # off: one frame, no replay
