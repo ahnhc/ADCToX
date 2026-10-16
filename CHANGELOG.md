@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.19 — AI organ screen without the explanation line
+
+- The AI organ analysis screen no longer shows the explanation line under its title or the "cached" label. The run time is still shown when the analysis actually ran.
+
 ## 0.3.18 — Korean names for every human MONDO disease
 
 - **Korean names for 23,258 of the 23,264 human MONDO concepts in the index** (`data/curated/korean/mondo_ko.jsonl`):

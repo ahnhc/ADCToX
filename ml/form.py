@@ -556,7 +556,7 @@ class Form:
         SOURCE = {"AI judgment": "AI judgment (Gemma)", "Registry match": "Registry", "Similar condition": "Similar registry condition",
                   "Phenotype (HPO)": "HPO phenotype", "Chosen": "Chosen", "Unmapped": "Not understood"}
         while True:
-            y0 = self.frame("AI 장기 분석", "입력을 어떤 질환으로 읽었고 어느 장기로 보는지입니다. 이 장기로 ADC 경고를 비교합니다.")
+            y0 = self.frame("AI 장기 분석", "")
             h, w = self.scr.getmaxyx(); width = max(2, w - 5)
             nw = min(24, max(_w(r["condition"]) for r in reports))
             rows = []
@@ -576,8 +576,7 @@ class Form:
             for c, org, what in rows:
                 name = _clip(c, nw); plain = re.sub(r"\x1b\[[\d;]*m", "", org)
                 lines.append(f"{name}{' ' * (nw - _w(name))}   {org}{' ' * max(0, ow - _w(plain))}   {what}")
-            duration = "cached" if self.analysis_cached else f"{elapsed:.1f} s"
-            lines += ["", f"\033[90m{duration}\033[0m"]
+            if not self.analysis_cached: lines += ["", f"\033[90m{elapsed:.1f} s\033[0m"]
             wrapped = [ln for line in lines for ln in tui._wrap_ansi(line, width)]
             area = max(1, h - y0 - 3); top = max(0, min(top, len(wrapped) - area))
             for i, ln in enumerate(wrapped[top:top + area]): self.S.put_ansi(y0 + i, 2, ln)
