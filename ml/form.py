@@ -533,7 +533,7 @@ class Form:
         def work():
             try: result.extend(self.RC.analyze_conditions(conditions, progress=events.put))
             except Exception as error: errors.append(error)
-        stages = STAGES; current = 0; started = time.monotonic()
+        stages = STAGES; current = 0; started = stage_at = time.monotonic()
         worker = threading.Thread(target=work, daemon=True); worker.start()
         timeout = getattr(self.scr, "timeout", None)
         if timeout: timeout(100)
@@ -541,10 +541,12 @@ class Form:
             while worker.is_alive():
                 while not events.empty():
                     event = events.get()
-                    current = next((i for i, (key, _) in enumerate(stages) if key == event), len(stages))
+                    was = current; current = next((i for i, (key, _) in enumerate(stages) if key == event), len(stages))
+                    if current != was: stage_at = time.monotonic()
                 y = self.frame("AI 장기 분석", "")
                 h, w = self.scr.getmaxyx()
-                for ln in running(current, time.monotonic() - started, min(w - 6, 72)): self.S.put_ansi(y, 2, ln); y += 1
+                now = time.monotonic()
+                for ln in running(current, now - started, now - stage_at, min(w - 6, 72)): self.S.put_ansi(y, 2, ln); y += 1
                 y += 1
                 names = ", ".join(c for c in conditions if c not in self.RC._reg and c.lower() not in self.RC._by_label and c not in self.RC.CONTEXT)
                 for ln in _wrap(names, w - 5, "  ")[:2]: self.S.put(y, 2, ln, self.S.dim); y += 1
@@ -626,36 +628,19 @@ STAGES = [("embedding", "BioLORD"), ("linking", "SapBERT · MONDO"), ("judging",
 SPIN = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
 
 
-def wave(n, t, speed=10.0, period=14.0):
-    """a smooth sine wave of braille dots, n cells wide, flowing right and narrowing to a straight line: the inputs settle into
-    one answer. Each braille cell has 2 columns x 4 rows of dots; one dot per column follows the wave."""
+def running(current, t, since, width):
+    """the analysis while it runs: the stage names (done green, running normal, waiting grey) over one thin bar. The bar fills
+    a quarter per stage; inside a stage it eases towards the next quarter (since = seconds in the running stage) so it keeps
+    moving without ever claiming a stage is done."""
     import math
-    L = (0x01, 0x02, 0x04, 0x40); R = (0x08, 0x10, 0x20, 0x80)                 # dot bits by row, left and right column
-    out = []
-    for x in range(n):
-        bits = 0
-        for col, B in ((0, L), (1, R)):
-            sx = 2 * x + col; f = sx / (2 * n)
-            amp = 1.5 * max(0.0, 1 - f * 1.5)                                   # a full wave on the left, a straight line past 2/3
-            y = 1.5 + amp * math.sin(2 * math.pi * (sx / period) - t * speed / period * 2 * math.pi)
-            bits |= B[1] if amp < 0.5 else B[min(3, max(0, int(round(y))))]
-        out.append(chr(0x2800 + bits))
-    return "".join(out)
-
-
-def running(current, t, width):
-    """the analysis while it runs: the stage line (finished stages green with heavy links, the running one breathing, the rest
-    grey) and under it a single wave flowing into one point."""
-    import math
-    G, Y, D, E = "\033[32;1m", "\033[33;1m", "\033[90m", "\033[0m"
-    bright = (math.sin(t * 2.5) + 1) / 2 > 0.5                                   # the running stage breathes, about once a second
-    parts = []
+    G, D, E = "\033[32;1m", "\033[90m", "\033[0m"
+    n = len(STAGES); names = []
     for i, (_, name) in enumerate(STAGES):
-        if i: parts.append((G + " ━━━ " + E) if i < current else (D + " ─── " + E))
-        parts.append((G + name + E) if i < current else ((Y if bright else "\033[33m") + name + E) if i == current else (D + name + E))
-    n = max(24, width - 10)
-    stream = D + wave(n, t) + E + (G if bright else "\033[32m") + "●" + E + f"   {D}{t:.1f} s{E}"
-    return ["".join(parts), stream]
+        names.append((G + name + E) if i < current else name if i == current else (D + name + E))
+    p = min(1.0, current / n + (1 / n) * 0.92 * (1 - math.exp(-since / 2.5))) if current < n else 1.0
+    bw = max(24, width - 10); k = int(p * bw)
+    bar = G + "━" * k + ("╸" if k < bw else "") + E + D + "─" * max(0, bw - k - 1) + E
+    return ["      ".join(names), bar + f"   {D}{t:.1f} s{E}"]
 
 
 def pipeline(current, elapsed):

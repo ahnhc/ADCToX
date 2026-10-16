@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.3 — A loading bar on the analysis screen
+
+- The analysis screen shows the four stage names over one thin bar. The bar fills a quarter per finished stage and eases towards the next quarter while a stage runs, so it keeps moving without claiming a stage is done. Finished stages are green. The wave of 0.4.2 is gone.
+
 ## 0.4.2 — A single wave on the analysis screen
 
 - The random braille dots of 0.4.1 are replaced by one smooth sine wave of braille dots that flows right and settles into a straight line ending in a green ●: the inputs settle into one answer. Grey, with the running stage name and the ● breathing about once a second. Finished stages are green with heavy connectors.
