@@ -317,7 +317,7 @@ def test_meaning_choice_is_one_screen_starts_on_the_applied_reading_and_returns_
     monkeypatch.setattr(term._Screen, "_size", lambda self: (40, 100))
     screen = term._Screen(console)
     frames = []
-    keys = iter([console.KEY_DOWN, console.KEY_DOWN, "\n", "\n"])
+    keys = iter([console.KEY_DOWN, console.KEY_DOWN, "\n", "\n", console.KEY_NPAGE])
     screen.refresh = lambda: frames.append("\n".join("".join(ch for ch, _ in line) for line in screen.buf))
     screen.get_wch = lambda: next(keys)
     RC = types.SimpleNamespace(ORGAN_SHORT={"cardiovascular": "Cardio", "neurologic": "Neuro"}, AXES=list(form.GLYPH))
@@ -327,7 +327,7 @@ def test_meaning_choice_is_one_screen_starts_on_the_applied_reading_and_returns_
               ("amnesia", [dict(mondo="M:4", name="dissociative amnesia", organs=[]),
                            dict(mondo="HP:0002354", name="Memory impairment", organs=["neurologic"])])]
     pick = form.Form(screen, RC).meanings(groups, {"amnesia": "HP:0002354"})
-    # ENTER on autism moves to amnesia's current pick (the applied phenotype); ENTER there finishes
+    # ENTER on autism moves to amnesia's current pick (the applied phenotype); ENTER there keeps it; PgDn finishes
     assert pick == {"asd": "M:3", "amnesia": "HP:0002354"}
     first = frames[0]
     assert "Atrial septal defect" in first and "13개 장기 밖" in first and "증상" in first and "모름" in first
@@ -394,11 +394,28 @@ def test_organ_strip_marks_linked_and_estimated_organs():
     assert plain(form.strip(list(form.GLYPH))) == "-"
 
 
-def test_logo_letters_fit_and_never_need_two_colours_in_one_cell():
+def test_logo_lines_and_colours_line_up():
     import tui
-    lines = tui.logo()
-    assert len(lines) == 5 and max(len(plain(l)) for l in lines) == tui.logo_width()
-    for ch, rows in tui.LOGO.items():
-        assert len(rows) == 10 and len({len(r) for r in rows}) == 1, ch
-        for r in range(0, 10, 2):
-            assert all(a == "." or b == "." or a == b for a, b in zip(rows[r], rows[r + 1])), ch    # half blocks carry one colour
+    assert len(tui.logo()) == 5 and max(len(plain(l)) for l in tui.logo()) <= tui.logo_width()
+    for chars, cols in tui.LOGO:
+        assert len(chars) == len(cols) and all((c == " ") == (k == " ") for c, k in zip(chars, cols)) and set(cols) <= {" ", "c", "y", "r"}
+
+
+def test_a_long_highlighted_name_scrolls_after_a_pause():
+    import form
+    t = "Familial juvenile hyperuricemic nephropathy type 1"
+    assert form.marquee(t, 26, 0.5) == t and form.marquee("Asthma", 26, 9) == "Asthma"
+    shown = {form._clip(form.marquee(t, 26, r / 10), 26) for r in range(0, 200)}
+    assert any(x.endswith("type 1") for x in shown) and form._clip(t, 26) in shown
+
+
+def test_only_page_keys_leave_a_screen(monkeypatch):
+    import form
+    F = form.Form.__new__(form.Form)
+    keys = iter(["ENTER", "ESC", " ", "PGDN"])
+    monkeypatch.setattr(F, "frame", lambda *a, **k: 2, raising=False)
+    monkeypatch.setattr(F, "row", lambda *a, **k: None, raising=False)
+    monkeypatch.setattr(F, "key", lambda *a, **k: next(keys), raising=False)
+    F.scr = type("S", (), {"getmaxyx": lambda self: (30, 100), "refresh": lambda self: None})()
+    F.S = type("P", (), {"put": lambda *a, **k: None, "put_ansi": lambda *a, **k: None, "dim": 0})()
+    assert F.choose("t", "", ["a", "b"]) == 0                   # Enter, Esc and Space stay; PgDn goes on

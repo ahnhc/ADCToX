@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.17 — Finer logo, page keys only, scrolling names
+
+- **Logo in braille cells:** 2 × 4 dots per cell, so pixels are square and twice as fine as the half blocks.
+  - The flask has bubbles in its drug and the syringe has marks.
+  - The art is drawn from shapes by `scripts/logo_art.py` and stored as text in `ml/tui.py`.
+- **Only PgUp and PgDn move between screens** (or the ◀ 이전 / 다음 ▶ buttons):
+  - Enter, Space and clicks now only pick within a screen: a choice, a meaning, a priority or a lab field.
+  - Esc clears a lab field or the search text. On an empty search line it still quits.
+  - The result viewer no longer closes on q or Esc.
+  - The lab screen's `[ 완료 ]` row is gone.
+  - Every step shows `PgUp ◀ 이전   PgDn 다음 ▶` at the bottom right.
+- **A long name under the cursor scrolls by itself:** after 1 s it moves 5 characters a second, holds at the end, then starts again.
+
 ## 0.3.16 — A drawn logo and a bare search line
 
 - **Logo drawn as objects in 10-pixel letters:**

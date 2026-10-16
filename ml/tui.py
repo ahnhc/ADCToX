@@ -87,32 +87,28 @@ GLYPH = {"haematologic": "Blood", "hepatic": "Liver", "cardiovascular": "Cardio"
          "musculoskeletal": "MSK", "infectious_immune": "Immune", "otologic": "Ear"}     # short organ names of the screens (recommend.ORGAN_SHORT)
 
 
-LOGO = {                       # 10-pixel-high letters drawn as objects: A a flask of drug, T a syringe, o a toxic drop, X crossed bones
-    "A": ["...ccccc...", "....c.c....", "....c.c....", "...c...c...", "..c.....c..", ".c.......c.", "cyyyyyyyyyc", "cyyyyyyyyyc", "cyyyyyyyyyc", "cyyyyyyyyyc"],
-    "D": ["ccccccc..", "cc....cc.", "cc.....cc", "cc.....cc", "cc.....cc", "cc.....cc", "cc.....cc", "cc.....cc", "cc....cc.", "ccccccc.."],
-    "C": ["..cccccc", ".cc.....", "cc......", "cc......", "cc......", "cc......", "cc......", "cc......", ".cc.....", "..cccccc"],
-    "T": ["rrrrrrrrr", "....r....", "...rrr...", "...r.r...", "...ryr...", "...ryr...", "...ryr...", "...ryr...", "...rrr...", "....r...."],
-    "o": [".......", ".......", ".......", "...r...", "..rrr..", ".rrrrr.", "rrrrrrr", "rrrrrrr", ".rrrrr.", "..rrr.."],
-    "X": [".r.......r.", "rrr.....rrr", ".rrr...rrr.", "...rr.rr...", "....rrr....", "....rrr....", "...rr.rr...", ".rrr...rrr.", "rrr.....rrr", ".r.......r."]}
+LOGO = [                       # drawn by scripts/logo_art.py: A a flask of drug, T a syringe, o a toxic drop, X crossed bones
+    ('   ⠙⢻⠛⡟⠋    ⢸⣿⠛⠻⠿⣶⣄⡀   ⢀⣴⠿⠛⠛⠻⢿⡆ ⠛⠛⠛⠛⡟⠛⠛⠛⠃         ⠠⣾⣿⡀    ⢀⣿⣷⠄',
+     '   ccccc    cccccccc   cccccccc rrrrrrrrr         rrrr    rrrr'),
+    ('    ⣸ ⣇     ⢸⣿    ⠙⣿⣄ ⢰⣿⠃     ⠁   ⢲⠒⠓⢲⡂     ⢀⣶⡀     ⠈⠻⣦⡀⢀⣴⠟⠁  ',
+     '    c c     cc    ccc ccc     c   rrrrr     rrr     rrrrrrrr  '),
+    ('   ⣼⣁⣀⣈⣧    ⢸⣿     ⢸⣿ ⢸⣿          ⢸⣶⣶⣾⡂    ⢀⡾⣿⣷⡀      ⢈⣿⣿⡁    ',
+     '   cyyyc    cc     cc cc          ryyrr    rrrrr      rrrr    '),
+    (' ⢠⣾⣿⣽⣿⢿⣿⣷⡄  ⢸⣿    ⣠⣿⠋ ⠸⣿⡄     ⡀   ⢸⣿⣿⣿⠂   ⠠⣿⣼⣿⣿⣿⠄   ⢀⣴⠟⠁⠈⠻⣦⡀  ',
+     ' cyyyyyyyc  cc    ccc ccc     c   ryyrr   rrrrrrr   rrrrrrrr  '),
+    ('⢰⣿⣿⣿⣿⣽⣿⣿⣿⣿⡆ ⢸⣿⣤⣴⣶⠿⠋⠁   ⠙⢿⣶⣤⣤⣴⡾⠃     ⡇      ⠻⢿⣿⡿⠟  ⠐⢿⣿⠁    ⠈⣿⡿⠂',
+     'cyyyyyyyyyc cccccccc   cccccccc     r      rrrrr  rrrr    rrrr'),
+]
 LOGO_COLOR = {"c": "36", "y": "33", "r": "31"}                  # cyan glass and letters, yellow drug, red toxicity
 
 
-def logo(word="ADCToX", gap=2):
-    """the logo as lines of ANSI text: two pixel rows per line with half blocks (a cell is about twice as tall as wide, so the
-    pixels come out square). The letters are drawn so a cell never holds two colours."""
-    rows = ["".join(LOGO[ch][r] + ("." * gap if i < len(word) - 1 else "") for i, ch in enumerate(word)) for r in range(10)]
-    out = []
-    for r in range(0, 10, 2):
-        line = ""
-        for a, b in zip(rows[r], rows[r + 1]):
-            if a == "." and b == ".": line += " "; continue
-            ch = "█" if a != "." and b != "." else "▀" if a != "." else "▄"
-            line += f"\033[{LOGO_COLOR[a if a != '.' else b]};1m{ch}\033[0m"
-        out.append(line.rstrip())
-    return out
+def logo():
+    """the logo as lines of ANSI text: braille cells (2 x 4 dots each, so the dots are square and twice as fine as half
+    blocks), one colour per cell."""
+    return ["".join(f"\033[{LOGO_COLOR[k]};1m{ch}\033[0m" if k != " " else ch for ch, k in zip(chars, cols)).rstrip() for chars, cols in LOGO]
 
 
-def logo_width(word="ADCToX", gap=2): return sum(len(LOGO[ch][0]) for ch in word) + gap * (len(word) - 1)
+def logo_width(): return max(len(chars) for chars, _ in LOGO)
 
 
 def strip(axes, on=(), maybe=()):
@@ -261,7 +257,7 @@ def ranklist(title, items, levels, description=""):
 def browse(title, lines, selectable, details, footer="", context=()):
     """read-only result viewer. lines: the table as text; selectable: indices of lines that are rows; details[k]: text lines
     shown in the bottom panel for selectable row k. UP/DOWN or a mouse click selects a row; PgUp -> "back" (to the input
-    steps), PgDn / q / ESC -> "next". TAB / ENTER switches between the table and scrollable details.
+    steps), PgDn -> "next" (PgUp / PgDn are the only keys that leave a screen). TAB / ENTER switches between the table and scrollable details.
     lines may be a width -> (lines, selectable) renderer; details may be
     a (row, width) -> lines renderer, so the same content reflows when the terminal is resized.
     context may also be a (row, width) -> lines renderer for a bounded input summary."""
@@ -339,6 +335,6 @@ def browse(title, lines, selectable, details, footer="", context=()):
                         if hits: cur = hits[-1]; detail_focus = False
                 except curses.error: pass
             elif key == curses.KEY_PPAGE: return "back"
-            elif key in (ord("q"), 27, curses.KEY_NPAGE): return "next"
+            elif key == curses.KEY_NPAGE: return "next"
             if cur != previous: detail_top = 0
     return curses.wrapper(run)

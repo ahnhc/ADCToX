@@ -11,6 +11,16 @@ from tui import _Screen, _cw, _clip, _wrap, _enter, GLYPH, strip, UI_VERSION, lo
 HANGUL = re.compile("[가-힣]")
 
 BACK, QUIT = "back", "quit"
+
+
+def marquee(text, width, rest, wait=1.0, speed=5.0, hold=1.2):
+    """text that does not fit in width, shifted left once the cursor has rested on it for `wait` seconds: `speed` characters a
+    second, a pause of `hold` seconds at the end, then again from the start. Text that fits comes back unchanged."""
+    if _w(text) <= width or rest < wait: return text
+    over = next(i for i in range(len(text) + 1) if _w(text[i:]) <= width)     # the first start that shows the end
+    steps = int((rest - wait) * speed); cycle = over + int(hold * speed) * 2
+    start = min(over, max(0, steps % cycle - int(hold * speed)))     # held at the start, moving, held at the end
+    return text[start:]
 SAVE = __import__("os").path.expanduser("~/.config/adctox/last_input.json")      # entries of the run in progress; deleted once results are shown
 
 
@@ -169,6 +179,8 @@ class Form:
         bx = w - 3
         for label, value in reversed([(l, v) for l, v in (("◀ 이전", "PGUP"), ("다음 ▶", "PGDN")) if v in nav]):
             bx -= _w(f"[ {label} ]") + 1; self.button(2, bx, label, value)
+        nav_hint = "   ".join(t for t, v in (("PgUp ◀ 이전", "PGUP"), ("PgDn 다음 ▶", "PGDN")) if v in nav)
+        self.S.put(h - 1, max(1, w - 2 - _w(nav_hint)), nav_hint, self.S.dim)
         for t, s in self.done:
             for k, ln in enumerate(_wrap(f"✓ {t}: {s}", w - 5, "    ")[:2]): self.S.put(y, 2, ln, self.S.dim); y += 1
         if self.done: y += 1
@@ -223,6 +235,7 @@ class Form:
             return a, b
 
         self.timeout(100)
+        rested = [None, 0.0]                                       # (row, query) under the cursor and since when, for the scrolling name
         try:
             while True:
                 q = query.strip()
@@ -285,7 +298,8 @@ class Form:
                     if kind == "raw": text = f"\033[90m+ 입력한 그대로 추가:\033[0m {s[2]}"
                     elif kind == "split": text = s[2]
                     else:
-                        main, sub = names_of(kind, s); label = _clip(main, lw); org = orgs[k]
+                        main, sub = names_of(kind, s); org = orgs[k]
+                        label = _clip(marquee(main, lw, time.monotonic() - rested[1]) if on else main, lw)
                         plain = re.sub(r"\x1b\[[\d;]*m", "", org)
                         room = max(0, bw - 10 - lw - ow); tail = tag if kind == "sym" else sub
                         tail = tail if _w(tail) <= room else (_clip(tail, room) if kind == "sym" else "")   # a second name is shown whole or not at all
@@ -296,6 +310,7 @@ class Form:
                 if APP_CHECK.get("newer"): foot += f"   새 앱 {APP_CHECK['latest']}: adctox --update-app"
                 for yy, t in ((h - 3, note), (h - 2, status), (h - 1, foot)):
                     if t: self.S.put(yy, max(1, (w - _w(t)) // 2), _clip(t, w - 2), self.S.dim)
+                if rested[0] != (cur, q): rested[:] = [(cur, q), time.monotonic()]
                 self.scr.refresh(); k = self.key(tab=True)
                 if isinstance(k, tuple) and k[0] == "ROW": cur = k[1]; k = "ENTER"     # a click on a row picks it
                 if isinstance(k, tuple) and k[0] == "CHIP":
@@ -349,7 +364,7 @@ class Form:
         for i, (k, label, unit, grp) in enumerate(fields):
             if grp != g: rows.append(("head", grp)); g = grp
             rows.append(("field", i))
-        rows.append(("done",)); pick = [r for r, x in enumerate(rows) if x[0] != "head"]; cur = 0; note = ""
+        pick = [r for r, x in enumerate(rows) if x[0] != "head"]; cur = 0; note = ""
         lw = max(len(l) for _, l, _, _ in fields)
         while True:
             at = pick[cur]
@@ -372,13 +387,14 @@ class Form:
             self.S.put(h - 1, 1, note or info, self.S.dim); note = ""
             self.scr.refresh(); k = self.key()
             if isinstance(k, tuple):                                       # a click moves to the field (or finishes on 완료)
-                cur = pick.index(k[1]) if k[1] in pick else cur; at = pick[cur]; k = "ENTER" if rows[at][0] == "done" else "NOOP"
+                cur = pick.index(k[1]) if k[1] in pick else cur; at = pick[cur]; k = "NOOP"
             x = rows[at]
             if k == "UP": cur = max(0, cur - 1)
             elif k == "DOWN": cur = min(len(pick) - 1, cur + 1)
-            elif k in ("PGUP", "ESC"): return BACK
+            elif k == "PGUP": return BACK
+            elif k == "ESC" and x[0] == "field": vals[fields[x[1]][0]] = ""
             elif k == "ENTER" or k == "PGDN":
-                if x[0] == "done" or k == "PGDN":
+                if k == "PGDN":
                     out = {}
                     for key, v in vals.items():
                         if not v.strip(): continue
@@ -406,11 +422,11 @@ class Form:
             if desc: y0 += 1
             for i, o in enumerate(options): self.row(y0 + i, f" {'→' if i == cur else ' '} ({'●' if i == cur else '○'}) {o}", i == cur, i)
             self.scr.refresh(); k = self.key()
-            if isinstance(k, tuple): return k[1]
+            if isinstance(k, tuple): cur = k[1]; continue                  # a click picks; PgDn goes on
             if k == "UP": cur = max(0, cur - 1)
             elif k == "DOWN": cur = min(len(options) - 1, cur + 1)
-            elif k in ("ENTER", " ", "PGDN"): return cur
-            elif k in ("ESC", "PGUP"): return BACK
+            elif k == "PGDN": return cur
+            elif k == "PGUP": return BACK
 
     def meanings(self, groups, chosen):
         """one screen for every typed text that reads as several diseases. groups: [(text, readings)]; chosen: {text: id or None}.
@@ -449,9 +465,8 @@ class Form:
                 x = rows[at]; pick[x[1]] = x[2]
                 nxt = [j for j, i in enumerate(sel) if i > at and rows[i][1] != x[1]]   # jump to the next question's current pick, or finish
                 if nxt: g = rows[sel[nxt[0]]][1]; cur = next((j for j in nxt if rows[sel[j]][1] == g and rows[sel[j]][2] == pick[g]), nxt[0])
-                elif k == "ENTER": return pick
             elif k == "PGDN": return pick
-            elif k in ("ESC", "PGUP"): return BACK
+            elif k == "PGUP": return BACK
 
     def order(self, names, details, levels, organs=None):
         """priority between conditions: 1 = avoid its organs' toxicity first. ←→ or the clickable − / + change a level."""
@@ -474,8 +489,8 @@ class Form:
             elif k == "DOWN": it = order[min(n - 1, pos + 1)]
             elif k in ("LEFT", "-"): lv[it] = max(1, lv[it] - 1)
             elif k in ("RIGHT", "+", "="): lv[it] = min(n, lv[it] + 1)
-            elif k in ("ENTER", "PGDN"): d = {v: j for j, v in enumerate(sorted(set(lv)), 1)}; return [d[v] for v in lv]
-            elif k in ("ESC", "PGUP"): return BACK
+            elif k == "PGDN": d = {v: j for j, v in enumerate(sorted(set(lv)), 1)}; return [d[v] for v in lv]
+            elif k == "PGUP": return BACK
 
     def loading(self, text):
         y0 = self.frame(text, ""); self.scr.refresh()
@@ -561,7 +576,7 @@ class Form:
                 name = _clip(c, nw); plain = re.sub(r"\x1b\[[\d;]*m", "", org)
                 lines.append(f"{name}{' ' * (nw - _w(name))}   {org}{' ' * max(0, ow - _w(plain))}   {what}")
             duration = "cached" if self.analysis_cached else f"{elapsed:.1f} s"
-            lines += ["", f"\033[90m{duration}   Enter / 다음 ▶ 계속   Esc / ◀ 이전 질환 고치기\033[0m"]
+            lines += ["", f"\033[90m{duration}\033[0m"]
             wrapped = [ln for line in lines for ln in tui._wrap_ansi(line, width)]
             area = max(1, h - y0 - 3); top = max(0, min(top, len(wrapped) - area))
             for i, ln in enumerate(wrapped[top:top + area]): self.S.put_ansi(y0 + i, 2, ln)
@@ -570,8 +585,8 @@ class Form:
             self.scr.refresh(); key = self.key()
             if key == "UP": top = max(0, top - 1)
             elif key == "DOWN": top = min(max(0, len(wrapped) - area), top + 1)
-            elif key in ("PGUP", "ESC"): return BACK
-            elif key in ("PGDN", "ENTER"): return None
+            elif key == "PGUP": return BACK
+            elif key == "PGDN": return None
 
 
 def run(RC, back=False):
