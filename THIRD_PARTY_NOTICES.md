@@ -1,6 +1,6 @@
 # Third-party models and evidence
 
-The application, the trained models, and the upstream encoders are separate artifacts.
+The application, the trained models, and the upstream encoders are separate artifacts. The project's own code and data are under the Apache License 2.0 (`LICENSE`); the components below keep their own terms.
 Raw collaborator workbooks and FinnGen row-level caches are not included in downloads.
 
 | Component | Source and terms |

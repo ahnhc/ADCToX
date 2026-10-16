@@ -101,4 +101,4 @@ python -m pytest -q
 - 이전 단계 문서: [docs/archive/](docs/archive/)
 - 데이터와 모델의 출처, 이용 조건: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
 
-원본 워크북, 학습 캐시, 모델 가중치는 저장소에 넣지 않습니다. 문제는 [Issues](https://github.com/ahnhc/ADCToX/issues)에 남겨 주세요.
+원본 워크북, 학습 캐시, 모델 가중치는 저장소에 넣지 않습니다. 코드와 이 프로젝트가 만든 데이터는 [Apache License 2.0](LICENSE)입니다. 문제는 [Issues](https://github.com/ahnhc/ADCToX/issues)에 남겨 주세요.
