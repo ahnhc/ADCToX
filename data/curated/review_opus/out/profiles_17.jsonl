@@ -1,0 +1,40 @@
+{"id": "MONDO:0020076", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0006736", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0700058", "verdict": "fix", "fields": {"symptoms_ko": ["발 앞쪽이 아파요", "발가락 사이가 화끈거려요", "발가락이 저려요", "신발 속에 돌이 있는 것 같아요"]}, "reason": "앞발 reads as an animal's forepaw"}
+{"id": "MONDO:0005885", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0005351", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0020292", "verdict": "fix", "fields": {"ko": ["큰동맥의 선천기형", "큰혈관 선천기형"]}, "reason": "ko[0] was Hashimoto thyroiditis; KCD Q25 name 큰동맥의 선천기형"}
+{"id": "MONDO:0005665", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0003699", "verdict": "fix", "fields": {"symptoms_ko": ["특정 대상이나 상황이 극도로 무서워요", "그 상황을 피하게 돼요", "공황이 와요", "땀이 나요", "심장이 빨리 뛰어요"]}, "reason": "피해요 alone is not a complaint"}
+{"id": "MONDO:0004802", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0007699", "verdict": "keep", "fields": {}}
+{"id": "MONDO:1040015", "verdict": "fix", "fields": {"ko": ["패혈증"]}, "reason": "기타 패혈증 is the KCD residual category, not a display name"}
+{"id": "MONDO:0006982", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0008538", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0002022", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0002275", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0008599", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0006526", "verdict": "fix", "fields": {"ko": ["알레르기성 두드러기", "두드러기"]}, "reason": "ko[0] was lacrimal duct stenosis, not urticaria"}
+{"id": "MONDO:0005100", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0002268", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0008583", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0005155", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0016226", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0006968", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0005023", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0000728", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0003441", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0007448", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0005384", "verdict": "fix", "fields": {"ko_lay": ["간질"]}, "reason": "지랄병 is a derogatory slur"}
+{"id": "MONDO:0001285", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0005364", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0007720", "verdict": "fix", "fields": {"symptoms_ko": ["사타구니가 튀어나와요", "힘을 줄 때 사타구니가 아파요", "사타구니가 묵직해요", "양쪽이 모두 튀어나와요"]}, "reason": "힘줄(tendon) misspelling of 힘을 줄"}
+{"id": "MONDO:0006009", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0001768", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0007972", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0002045", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0021476", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0002898", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0006314", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0005071", "verdict": "fix", "fields": {"ko": ["신경계 질환"]}, "reason": "ko[0] was DCIS (관상피내암), not nervous system disorder"}
+{"id": "MONDO:0019719", "verdict": "keep", "fields": {}}

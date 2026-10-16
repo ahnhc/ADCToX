@@ -1,0 +1,2327 @@
+{
+ "sets": {
+  "junk": {
+   "batches": 7,
+   "passed": 7,
+   "items": 2498,
+   "verdicts": {
+    "junk": 2482,
+    "real": 16
+   },
+   "control_mean": 1.0
+  },
+  "ko": {
+   "batches": 20,
+   "passed": 20,
+   "items": 4983,
+   "verdicts": {
+    "keep": 4459,
+    "fix": 378,
+    "drop": 146
+   },
+   "control_mean": 1.0
+  },
+  "mondo_ko": {
+   "batches": 15,
+   "passed": 15,
+   "items": 4410,
+   "verdicts": {
+    "keep": 4224,
+    "fix": 174,
+    "unsure": 12
+   },
+   "control_mean": 1.0
+  },
+  "organ": {
+   "batches": 106,
+   "passed": 106,
+   "items": 21031,
+   "verdicts": {
+    "keep": 20574,
+    "change": 429,
+    "unclear": 28
+   },
+   "control_mean": 1.0
+  },
+  "profiles": {
+   "batches": 20,
+   "passed": 20,
+   "items": 730,
+   "verdicts": {
+    "keep": 609,
+    "fix": 121
+   },
+   "control_mean": 1.0
+  },
+  "sym": {
+   "batches": 32,
+   "passed": 32,
+   "items": 7900,
+   "verdicts": {
+    "keep": 7326,
+    "fix": 564,
+    "drop": 10
+   },
+   "control_mean": 1.0
+  }
+ },
+ "queued_from_failed_batches": 0,
+ "missing_outputs": [],
+ "applied": true,
+ "per_batch": {
+  "junk_00": {
+   "items": 357,
+   "lines": 363,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "junk": 355,
+    "real": 2
+   }
+  },
+  "junk_01": {
+   "items": 357,
+   "lines": 363,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "junk": 357
+   }
+  },
+  "junk_02": {
+   "items": 357,
+   "lines": 363,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "junk": 354,
+    "real": 3
+   }
+  },
+  "junk_03": {
+   "items": 357,
+   "lines": 363,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "junk": 352,
+    "real": 5
+   }
+  },
+  "junk_04": {
+   "items": 357,
+   "lines": 363,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "junk": 355,
+    "real": 2
+   }
+  },
+  "junk_05": {
+   "items": 357,
+   "lines": 363,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "junk": 353,
+    "real": 4
+   }
+  },
+  "junk_06": {
+   "items": 356,
+   "lines": 362,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "junk": 356
+   }
+  },
+  "ko_00": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 220,
+    "fix": 28,
+    "drop": 2
+   }
+  },
+  "ko_01": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 228,
+    "fix": 18,
+    "drop": 4
+   }
+  },
+  "ko_02": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 220,
+    "drop": 12,
+    "fix": 18
+   }
+  },
+  "ko_03": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 231,
+    "fix": 12,
+    "drop": 7
+   }
+  },
+  "ko_04": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 228,
+    "fix": 15,
+    "drop": 7
+   }
+  },
+  "ko_05": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 220,
+    "fix": 26,
+    "drop": 4
+   }
+  },
+  "ko_06": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 228,
+    "fix": 18,
+    "drop": 4
+   }
+  },
+  "ko_07": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 229,
+    "fix": 13,
+    "drop": 8
+   }
+  },
+  "ko_08": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 225,
+    "fix": 25
+   }
+  },
+  "ko_09": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 224,
+    "fix": 20,
+    "drop": 6
+   }
+  },
+  "ko_10": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 225,
+    "drop": 6,
+    "fix": 19
+   }
+  },
+  "ko_11": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 228,
+    "fix": 21,
+    "drop": 1
+   }
+  },
+  "ko_12": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 222,
+    "drop": 11,
+    "fix": 17
+   }
+  },
+  "ko_13": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 234,
+    "fix": 7,
+    "drop": 9
+   }
+  },
+  "ko_14": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 211,
+    "fix": 20,
+    "drop": 19
+   }
+  },
+  "ko_15": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 211,
+    "fix": 19,
+    "drop": 20
+   }
+  },
+  "ko_16": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 229,
+    "drop": 9,
+    "fix": 12
+   }
+  },
+  "ko_17": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 224,
+    "fix": 26
+   }
+  },
+  "ko_18": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 215,
+    "drop": 15,
+    "fix": 20
+   }
+  },
+  "ko_19": {
+   "items": 233,
+   "lines": 238,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 207,
+    "fix": 24,
+    "drop": 2
+   }
+  },
+  "mondo_ko_00": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 282,
+    "fix": 11,
+    "unsure": 1
+   }
+  },
+  "mondo_ko_01": {
+   "items": 294,
+   "lines": 299,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 276,
+    "fix": 18
+   }
+  },
+  "mondo_ko_02": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 285,
+    "fix": 8,
+    "unsure": 1
+   }
+  },
+  "mondo_ko_03": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 278,
+    "fix": 16
+   }
+  },
+  "mondo_ko_04": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 283,
+    "fix": 10,
+    "unsure": 1
+   }
+  },
+  "mondo_ko_05": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 279,
+    "fix": 12,
+    "unsure": 3
+   }
+  },
+  "mondo_ko_06": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 285,
+    "fix": 9
+   }
+  },
+  "mondo_ko_07": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 280,
+    "fix": 14
+   }
+  },
+  "mondo_ko_08": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 274,
+    "fix": 19,
+    "unsure": 1
+   }
+  },
+  "mondo_ko_09": {
+   "items": 294,
+   "lines": 299,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 283,
+    "fix": 10,
+    "unsure": 1
+   }
+  },
+  "mondo_ko_10": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 287,
+    "fix": 7
+   }
+  },
+  "mondo_ko_11": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 284,
+    "unsure": 2,
+    "fix": 8
+   }
+  },
+  "mondo_ko_12": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 280,
+    "unsure": 1,
+    "fix": 13
+   }
+  },
+  "mondo_ko_13": {
+   "items": 294,
+   "lines": 300,
+   "controls": 1.0,
+   "n_controls": 6,
+   "passed": true,
+   "verdicts": {
+    "keep": 287,
+    "fix": 7
+   }
+  },
+  "mondo_ko_14": {
+   "items": 294,
+   "lines": 299,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 281,
+    "fix": 12,
+    "unsure": 1
+   }
+  },
+  "organ_000": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_001": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 189,
+    "change": 11
+   }
+  },
+  "organ_002": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 4,
+    "unclear": 2
+   }
+  },
+  "organ_003": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 193,
+    "change": 7
+   }
+  },
+  "organ_004": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_005": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 5,
+    "unclear": 1
+   }
+  },
+  "organ_006": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_007": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_008": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_009": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 192,
+    "change": 7,
+    "unclear": 1
+   }
+  },
+  "organ_010": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_011": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 193,
+    "change": 6,
+    "unclear": 1
+   }
+  },
+  "organ_012": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 6
+   }
+  },
+  "organ_013": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_014": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 6
+   }
+  },
+  "organ_015": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 192,
+    "unclear": 1,
+    "change": 7
+   }
+  },
+  "organ_016": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 199,
+    "change": 1
+   }
+  },
+  "organ_017": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_018": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 3,
+    "unclear": 1
+   }
+  },
+  "organ_019": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_020": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 4,
+    "unclear": 1
+   }
+  },
+  "organ_021": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 6
+   }
+  },
+  "organ_022": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 199,
+    "change": 1
+   }
+  },
+  "organ_023": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_024": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 6
+   }
+  },
+  "organ_025": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_026": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_027": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_028": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_029": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 199,
+    "change": 1
+   }
+  },
+  "organ_030": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_031": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 200
+   }
+  },
+  "organ_032": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_033": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 2,
+    "unclear": 1
+   }
+  },
+  "organ_034": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 199,
+    "change": 1
+   }
+  },
+  "organ_035": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_036": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_037": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_038": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_039": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_040": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 199,
+    "change": 1
+   }
+  },
+  "organ_041": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 3,
+    "unclear": 1
+   }
+  },
+  "organ_042": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 199,
+    "change": 1
+   }
+  },
+  "organ_043": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_044": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 199,
+    "change": 1
+   }
+  },
+  "organ_045": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 193,
+    "change": 6,
+    "unclear": 1
+   }
+  },
+  "organ_046": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 6
+   }
+  },
+  "organ_047": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_048": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_049": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 193,
+    "change": 6,
+    "unclear": 1
+   }
+  },
+  "organ_050": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 6
+   }
+  },
+  "organ_051": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 191,
+    "change": 9
+   }
+  },
+  "organ_052": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_053": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_054": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_055": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_056": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 193,
+    "unclear": 1,
+    "change": 6
+   }
+  },
+  "organ_057": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "unclear": 1,
+    "change": 4
+   }
+  },
+  "organ_058": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 4,
+    "unclear": 1
+   }
+  },
+  "organ_059": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_060": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_061": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_062": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 191,
+    "change": 8,
+    "unclear": 1
+   }
+  },
+  "organ_063": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 200
+   }
+  },
+  "organ_064": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_065": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_066": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_067": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_068": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_069": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 6
+   }
+  },
+  "organ_070": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 192,
+    "change": 8
+   }
+  },
+  "organ_071": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "unclear": 1,
+    "change": 1
+   }
+  },
+  "organ_072": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 6
+   }
+  },
+  "organ_073": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 191,
+    "change": 9
+   }
+  },
+  "organ_074": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 192,
+    "change": 5,
+    "unclear": 3
+   }
+  },
+  "organ_075": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_076": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_077": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_078": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_079": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_080": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 6
+   }
+  },
+  "organ_081": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 190,
+    "change": 9,
+    "unclear": 1
+   }
+  },
+  "organ_082": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 200
+   }
+  },
+  "organ_083": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 191,
+    "change": 8,
+    "unclear": 1
+   }
+  },
+  "organ_084": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 199,
+    "change": 1
+   }
+  },
+  "organ_085": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_086": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 194,
+    "change": 6
+   }
+  },
+  "organ_087": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_088": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 192,
+    "change": 8
+   }
+  },
+  "organ_089": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 193,
+    "change": 6,
+    "unclear": 1
+   }
+  },
+  "organ_090": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_091": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 3,
+    "unclear": 2
+   }
+  },
+  "organ_092": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_093": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_094": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 195,
+    "change": 5
+   }
+  },
+  "organ_095": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "change": 3
+   }
+  },
+  "organ_096": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_097": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_098": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 197,
+    "unclear": 1,
+    "change": 2
+   }
+  },
+  "organ_099": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 192,
+    "change": 8
+   }
+  },
+  "organ_100": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 2
+   }
+  },
+  "organ_101": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "change": 4,
+    "keep": 196
+   }
+  },
+  "organ_102": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 193,
+    "change": 6,
+    "unclear": 1
+   }
+  },
+  "organ_103": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 196,
+    "change": 4
+   }
+  },
+  "organ_104": {
+   "items": 200,
+   "lines": 208,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 198,
+    "change": 1,
+    "unclear": 1
+   }
+  },
+  "organ_105": {
+   "items": 31,
+   "lines": 39,
+   "controls": 1.0,
+   "n_controls": 8,
+   "passed": true,
+   "verdicts": {
+    "keep": 31
+   }
+  },
+  "profiles_00": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 35,
+    "fix": 2
+   }
+  },
+  "profiles_01": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 23,
+    "fix": 14
+   }
+  },
+  "profiles_02": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "fix": 10,
+    "keep": 27
+   }
+  },
+  "profiles_03": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 34,
+    "fix": 3
+   }
+  },
+  "profiles_04": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 32,
+    "fix": 5
+   }
+  },
+  "profiles_05": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 33,
+    "fix": 4
+   }
+  },
+  "profiles_06": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 31,
+    "fix": 6
+   }
+  },
+  "profiles_07": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 34,
+    "fix": 3
+   }
+  },
+  "profiles_08": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 32,
+    "fix": 5
+   }
+  },
+  "profiles_09": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "fix": 8,
+    "keep": 29
+   }
+  },
+  "profiles_10": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 31,
+    "fix": 6
+   }
+  },
+  "profiles_11": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 30,
+    "fix": 7
+   }
+  },
+  "profiles_12": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "fix": 8,
+    "keep": 29
+   }
+  },
+  "profiles_13": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 30,
+    "fix": 7
+   }
+  },
+  "profiles_14": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 31,
+    "fix": 6
+   }
+  },
+  "profiles_15": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 32,
+    "fix": 5
+   }
+  },
+  "profiles_16": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 31,
+    "fix": 6
+   }
+  },
+  "profiles_17": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 32,
+    "fix": 5
+   }
+  },
+  "profiles_18": {
+   "items": 37,
+   "lines": 40,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 28,
+    "fix": 9
+   }
+  },
+  "profiles_19": {
+   "items": 27,
+   "lines": 30,
+   "controls": 1.0,
+   "n_controls": 3,
+   "passed": true,
+   "verdicts": {
+    "keep": 25,
+    "fix": 2
+   }
+  },
+  "sym_00": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 235,
+    "fix": 15
+   }
+  },
+  "sym_01": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 227,
+    "fix": 22,
+    "drop": 1
+   }
+  },
+  "sym_02": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 229,
+    "fix": 21
+   }
+  },
+  "sym_03": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 231,
+    "fix": 19
+   }
+  },
+  "sym_04": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 227,
+    "fix": 22,
+    "drop": 1
+   }
+  },
+  "sym_05": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 237,
+    "fix": 13
+   }
+  },
+  "sym_06": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 236,
+    "fix": 14
+   }
+  },
+  "sym_07": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "fix": 24,
+    "keep": 226
+   }
+  },
+  "sym_08": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 237,
+    "fix": 12,
+    "drop": 1
+   }
+  },
+  "sym_09": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 234,
+    "fix": 16
+   }
+  },
+  "sym_10": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 228,
+    "fix": 21,
+    "drop": 1
+   }
+  },
+  "sym_11": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 235,
+    "fix": 15
+   }
+  },
+  "sym_12": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 235,
+    "fix": 15
+   }
+  },
+  "sym_13": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 230,
+    "fix": 19,
+    "drop": 1
+   }
+  },
+  "sym_14": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 235,
+    "fix": 15
+   }
+  },
+  "sym_15": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 230,
+    "fix": 19,
+    "drop": 1
+   }
+  },
+  "sym_16": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 234,
+    "fix": 16
+   }
+  },
+  "sym_17": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 235,
+    "fix": 15
+   }
+  },
+  "sym_18": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 226,
+    "fix": 24
+   }
+  },
+  "sym_19": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 226,
+    "fix": 24
+   }
+  },
+  "sym_20": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 225,
+    "fix": 25
+   }
+  },
+  "sym_21": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 220,
+    "fix": 30
+   }
+  },
+  "sym_22": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 228,
+    "fix": 22
+   }
+  },
+  "sym_23": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 238,
+    "fix": 12
+   }
+  },
+  "sym_24": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 228,
+    "fix": 20,
+    "drop": 2
+   }
+  },
+  "sym_25": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 233,
+    "fix": 17
+   }
+  },
+  "sym_26": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 228,
+    "fix": 22
+   }
+  },
+  "sym_27": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 232,
+    "fix": 17,
+    "drop": 1
+   }
+  },
+  "sym_28": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 236,
+    "fix": 13,
+    "drop": 1
+   }
+  },
+  "sym_29": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 241,
+    "fix": 9
+   }
+  },
+  "sym_30": {
+   "items": 250,
+   "lines": 255,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 240,
+    "fix": 10
+   }
+  },
+  "sym_31": {
+   "items": 150,
+   "lines": 155,
+   "controls": 1.0,
+   "n_controls": 5,
+   "passed": true,
+   "verdicts": {
+    "keep": 144,
+    "fix": 6
+   }
+  }
+ }
+}

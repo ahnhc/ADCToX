@@ -1,0 +1,87 @@
+{
+ "verify": {
+  "pairs": 1258,
+  "kept": 1226,
+  "same": 12,
+  "reverted": 20,
+  "controls": 1.0,
+  "by_set": {
+   "organ": {
+    "kept": 425,
+    "reverted": 5,
+    "same": 0
+   },
+   "ko": {
+    "kept": 505,
+    "reverted": 14,
+    "same": 5
+   },
+   "mondo_ko": {
+    "kept": 168,
+    "reverted": 1,
+    "same": 4
+   },
+   "profiles": {
+    "kept": 118,
+    "reverted": 0,
+    "same": 3
+   },
+   "sym": {
+    "kept": 10,
+    "reverted": 0,
+    "same": 0
+   }
+  }
+ },
+ "mondo_ko2": {
+  "batches": 64,
+  "passed": 64,
+  "verdicts": {
+   "keep": 18189,
+   "fix": 591,
+   "unsure": 5
+  },
+  "fixes": 591
+ },
+ "blind": {
+  "n": 1985,
+  "unclear": 15,
+  "by_label_size": {
+   "0": {
+    "n": 395,
+    "exact": 0.901,
+    "superset": 1.0,
+    "jaccard": 0.901
+   },
+   "1": {
+    "n": 791,
+    "exact": 0.881,
+    "superset": 0.981,
+    "jaccard": 0.928
+   },
+   "2": {
+    "n": 499,
+    "exact": 0.729,
+    "superset": 0.858,
+    "jaccard": 0.878
+   },
+   "3": {
+    "n": 300,
+    "exact": 0.623,
+    "superset": 0.787,
+    "jaccard": 0.868
+   }
+  },
+  "disagreements": 381,
+  "controls_superset": 1.0
+ },
+ "reverted": {
+  "organ": 5,
+  "ko_restored": 12,
+  "sym_restored": 0,
+  "ko_unfixed": 2,
+  "profiles": 0,
+  "mondo_ko": 1
+ },
+ "adjudication_batches": 3
+}

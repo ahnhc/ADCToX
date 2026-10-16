@@ -1,0 +1,255 @@
+{"i": 7260, "verdict": "keep", "text": "오른쪽 가슴에 단단한 멍울이 만져져요. 누르면 아프지 않고 딱딱하고 울퉁불퉁해요.", "reason": ""}
+{"i": 7261, "verdict": "keep", "text": "겨드랑이에 콩알만 한 것이 잡혀요. 가슴 피부가 오렌지 껍질처럼 보여요.", "reason": ""}
+{"i": 7262, "verdict": "keep", "text": "젖꼭지에서 피 같은 분비물이 나오고 한쪽 젖꼭지가 안으로 들어갔어요.", "reason": ""}
+{"i": 7263, "verdict": "fix", "text": "어머니가 유방암으로 항암 치료를 받으셨는데 제 가슴에도 혹이 만져지는 것 같아 불안해요. 45살이에요.", "reason": "unnatural phrase '가슴 쪽으로 항암 치료'"}
+{"i": 7264, "verdict": "keep", "text": "50세 여성, 좌측 유방 상외측 4cm 경계불명 종괴, 겨드랑이 림프절 종대. 유방촬영 BI-RADS 5, 조직검사 침윤성 관암 의심.", "reason": ""}
+{"i": 7265, "verdict": "fix", "text": "우측 유방 2.5cm 종괴, 조직검사상 침윤성 관암, ER 양성 PR 양성 HER2 음성. 전이 평가 CT 예정.", "reason": "receptor status cannot precede the biopsy ordered to confirm it"}
+{"i": 7266, "verdict": "keep", "text": "There's a hard lump in my left breast that doesn't hurt, and my nipple has pulled inward recently.", "reason": ""}
+{"i": 7267, "verdict": "keep", "text": "My mom had a lump in her chest years ago and now I found one myself. The skin over it looks dimpled.", "reason": ""}
+{"i": 7268, "verdict": "keep", "text": "F 58, 3cm irregular mass upper outer quadrant left breast, enlarged axillary node, mammogram BI-RADS 5, core biopsy invasive ductal pattern.", "reason": ""}
+{"i": 7269, "verdict": "keep", "text": "Right breast mass with skin retraction, nipple inversion, ultrasound 2.1 cm hypoechoic spiculated lesion, sentinel node planned.", "reason": ""}
+{"i": 6830, "verdict": "keep", "text": "한쪽 눈이 흐릿하고 직선이 물결처럼 휘어 보여요. 눈이 빨갛지는 않은데 떠다니는 게 보여요.", "reason": ""}
+{"i": 6831, "verdict": "keep", "text": "눈앞에 검은 점들이 날아다니고 시야 한쪽이 어두워졌어요. 이틀째 불빛이 번쩍거려요.", "reason": ""}
+{"i": 6832, "verdict": "fix", "text": "감기 앓고 난 뒤부터 오른쪽 눈이 뿌옇고 날파리 같은 게 떠다녀요. 시력도 떨어졌어요.", "reason": "old-glasses wording points to refractive change; add floaters"}
+{"i": 6833, "verdict": "drop", "text": "당뇨 있는 쉰 살 남자인데 두 눈 시야가 점점 가려져요. 눈 통증은 없어요.", "reason": "diabetic with gradual bilateral painless vision loss = diabetic retinopathy"}
+{"i": 6834, "verdict": "keep", "text": "우안 교정시력 0.5, 유리체 세포 2+, 안저 후극부 황백색 침윤 병변, 전안방 조용함. 톡소플라즈마 IgG 양성.", "reason": ""}
+{"i": 6835, "verdict": "keep", "text": "후극부 망막하 황백색 병변 2개, 유리체 혼탁, ACE 상승 및 흉부 CT에서 양측 종격동 림프절 종대. 고열 없음.", "reason": ""}
+{"i": 6836, "verdict": "keep", "text": "My vision in one eye is blurry and straight lines look wavy. There's no real redness, but I see floaters and flashes.", "reason": ""}
+{"i": 6837, "verdict": "keep", "text": "Over the last week my central vision got worse in my left eye, and there is a dark spot in the middle. I'm 34 and healthy otherwise.", "reason": ""}
+{"i": 6838, "verdict": "keep", "text": "Vitreous cells 2+, creamy yellow-white lesions at posterior pole, anterior chamber quiet, VA 20/200 right eye, toxoplasma IgG positive.", "reason": ""}
+{"i": 6839, "verdict": "keep", "text": "Vitreous haze, subretinal lesions, chest CT hilar lymphadenopathy, ACE elevated, anterior chamber quiet, on systemic steroids.", "reason": ""}
+{"i": 4070, "verdict": "fix", "text": "걷다 보면 종아리가 당기고 쉬면 나아요. 혈압약과 당뇨약 먹고 있어요.", "reason": "double subject '다리가 ... 종아리가'"}
+{"i": 4071, "verdict": "fix", "text": "요즘 발이 차갑고 발가락 색이 창백해요. 피가 잘 안 통하는 느낌이에요.", "reason": "episodic white fingers/toes is Raynaud's hallmark"}
+{"i": 4072, "verdict": "keep", "text": "건강검진 때 혈관이 굳었다는 말을 들었어요. 콜레스테롤이 높고 담배를 피워요.", "reason": ""}
+{"i": 4073, "verdict": "fix", "text": "걸으면 엉덩이와 허벅지가 조이듯 아파서 자주 멈춰야 하고, 쉬면 나아져요. 60대 남성이에요.", "reason": "buttock-to-toe numbness reads as spinal stenosis; make it vascular claudication"}
+{"i": 4074, "verdict": "keep", "text": "63세 남성, 양측 발목상완지수 0.7, 경동맥 초음파 내중막두께 1.4 mm, LDL 165 mg/dL, 간헐적 파행, 스타틴 시작.", "reason": ""}
+{"i": 4075, "verdict": "keep", "text": "58세 여성, 간헐적 파행 200 m, 대퇴동맥 협착 확인, 혈청 중성지방 280, 고혈압 조절 불량, 항혈소판제 투여.", "reason": ""}
+{"i": 4076, "verdict": "keep", "text": "My legs cramp when I walk and I have to stop, then it eases after resting. My cholesterol is high and I smoked for 30 years.", "reason": ""}
+{"i": 4077, "verdict": "keep", "text": "My hands and feet get cold and numb easily. My blood pressure and sugar are high and my doctor says my arteries are hardening.", "reason": ""}
+{"i": 4078, "verdict": "keep", "text": "67-year-old male, ankle-brachial index 0.6 bilaterally, carotid intima-media thickness 1.3 mm, LDL 150 mg/dL, claudication at 150 m.", "reason": ""}
+{"i": 4079, "verdict": "keep", "text": "Diffuse plaque burden on CT angiography in carotid, aortic and iliac segments, hypertensive and diabetic, on statin and antiplatelet therapy.", "reason": ""}
+{"i": 7640, "verdict": "keep", "text": "손가락 마디가 양쪽으로 똑같이 붓고 아침에 한 시간씩 뻣뻣해요. 혈액검사는 깨끗하다는데 아파요.", "reason": ""}
+{"i": 7641, "verdict": "keep", "text": "발목이랑 무릎이 번갈아 붓고 계단 오르기가 힘들어요. 엄마가 관절이 안 좋으셨어요.", "reason": ""}
+{"i": 7642, "verdict": "keep", "text": "손목이 대칭으로 붓고 아침에 일어나면 손이 오므라들어 있어서 펴는 데 한참 걸려요.", "reason": ""}
+{"i": 7643, "verdict": "keep", "text": "오후엔 좀 괜찮은데 아침만 되면 관절이 뻑뻑하고 피곤해요. 입맛도 없어요.", "reason": ""}
+{"i": 7644, "verdict": "fix", "text": "55세 여성, 조조강직 45분, 양측 MCP 2-3 및 PIP 부종, RF 음성 및 항CCP 음성, 초음파상 활막염, ESR 38.", "reason": "standard term 조조강직"}
+{"i": 7645, "verdict": "keep", "text": "말초 다발관절염, 골밀도 저하 없음, 항CCP 음성, RF 음성 상태에서 CRP 2.1 mg/dL, 메토트렉세이트 시작 예정.", "reason": ""}
+{"i": 7646, "verdict": "keep", "text": "My fingers and wrists swell on both sides and it takes forever for them to loosen in the morning. My blood tests came back normal though.", "reason": ""}
+{"i": 7647, "verdict": "keep", "text": "Joint pain in my hands has been getting worse over the last few months, and the stiffness first thing after waking is the worst part.", "reason": ""}
+{"i": 7648, "verdict": "keep", "text": "Fifty-five-year-old woman, symmetric small-joint polyarthritis with morning stiffness over 45 minutes, RF and anti-CCP both negative, synovitis on ultrasound.", "reason": ""}
+{"i": 7649, "verdict": "keep", "text": "Seronegative inflammatory polyarthritis, CRP 2.1 mg/dL, ESR 38, no radiographic erosions, initiating methotrexate.", "reason": ""}
+{"i": 4200, "verdict": "keep", "text": "계단 오르면 숨이 차고 가슴이 두근거려요. 어지러워서 쓰러질 뻔한 적도 있어요.", "reason": ""}
+{"i": 4201, "verdict": "fix", "text": "운동하다가 갑자기 가슴이 답답하고 의식이 흐려졌어요. 아직 20대인데요.", "reason": "'젊은 사람이 그랬어요' unnatural for self-report"}
+{"i": 4202, "verdict": "keep", "text": "아버지가 젊을 때 심장이 두껍다고 하셨는데, 요즘 저도 숨이 차요. 20대 남자예요.", "reason": ""}
+{"i": 4203, "verdict": "keep", "text": "밤에 가만히 있을 때도 심장이 빠르게 뛰고 가슴이 묵직해요. 피곤하고 어지러워요.", "reason": ""}
+{"i": 4204, "verdict": "keep", "text": "32세 남성, 심초음파 좌심실 중격 두께 22 mm, 유출로 압력차 60 mmHg, 가족력 양성, 부정맥 없음, 베타차단제 시작.", "reason": ""}
+{"i": 4205, "verdict": "keep", "text": "28세 여성, 심장 MRI 비대칭성 심근 두께 분포, 운동 시 실신 1회, 홀터 심전도 심실 빈맥 1건, 이식형 제세동기 고려.", "reason": ""}
+{"i": 4206, "verdict": "keep", "text": "I get short of breath climbing stairs and my heart pounds at times. My cousin died suddenly while playing sports.", "reason": ""}
+{"i": 4207, "verdict": "keep", "text": "I feel faint when I exercise and sometimes my chest feels heavy. My dad had a thick heart too.", "reason": ""}
+{"i": 4208, "verdict": "keep", "text": "45-year-old male, septal thickness 19 mm on echo, dynamic LVOT gradient 45 mmHg with Valsalva, ECG with deep Q waves, family history positive.", "reason": ""}
+{"i": 4209, "verdict": "keep", "text": "Asymmetric septal thickening on cardiac MRI, syncope on exertion, nonsustained VT on Holter, 24-year-old female, sudden death risk stratification.", "reason": ""}
+{"i": 840, "verdict": "keep", "text": "칠판 글씨가 잘 안 보여서 자꾸 눈을 찡그려요. 안경 도수가 해마다 올라가요.", "reason": ""}
+{"i": 841, "verdict": "keep", "text": "요즘 먼 데 간판이 흐릿하게 보여요. 가까운 책은 잘 보여서 신기해요.", "reason": ""}
+{"i": 842, "verdict": "keep", "text": "TV를 가까이서 보고 잠깐 멀리 보면 눈이 뿌옇게 흐려져요.", "reason": ""}
+{"i": 843, "verdict": "keep", "text": "가족들 모두 안경을 썼는데 저도 점점 눈이 나빠지는 것 같아요.", "reason": ""}
+{"i": 844, "verdict": "keep", "text": "초등 4학년 여아, 조절마비 후 굴절검사 -3.25 D, 안축장 증가, 1년간 -1.0 D 진행, 안저 이상 없음.", "reason": ""}
+{"i": 845, "verdict": "keep", "text": "25세 남성, 양안 구면대응 -4.50 D, 안저검사상 황반 이상 없음, 장기간 근거리 작업력.", "reason": ""}
+{"i": 846, "verdict": "keep", "text": "I can't read the board from my seat anymore and squint at street signs, my glasses prescription keeps getting stronger.", "reason": ""}
+{"i": 847, "verdict": "keep", "text": "Far away things look blurry but close up is fine, my eye doctor says my eyes are growing longer.", "reason": ""}
+{"i": 848, "verdict": "keep", "text": "Cycloplegic refraction -3.00 D OU, axial length 25.8 mm, progressive by 0.75 D over 12 months, no retinal lesions.", "reason": ""}
+{"i": 849, "verdict": "keep", "text": "Child 10F, spherical equivalent -2.25 D, minus shift on autorefraction over 6 months, orthokeratology considered.", "reason": ""}
+{"i": 4230, "verdict": "keep", "text": "무릎 앞쪽이 계단 내려갈 때 아프고 무릎에서 우두둑 소리가 나요. 10대 여학생이에요.", "reason": ""}
+{"i": 4231, "verdict": "fix", "text": "무릎뼈 주위가 오래 앉아 있으면 욱신거려요. 달리기를 많이 해요.", "reason": "below the kneecap is patellar tendon, not cartilage"}
+{"i": 4232, "verdict": "keep", "text": "무릎을 굽힐 때 뭔가 갈리는 느낌이 있고 가끔 붓기도 해요. 운동 후 더 아파요.", "reason": ""}
+{"i": 4233, "verdict": "keep", "text": "쪼그려 앉으면 무릎 앞이 찌릿하고 계단 내려갈 때 뭔가 빠질 듯해요.", "reason": ""}
+{"i": 4234, "verdict": "keep", "text": "19세 남성, 전방 무릎 통증 양상, 슬개골 연골 표면 연화 MRI T2 고신호, 쪼그려 앉기 통증, 대퇴사두근 약화.", "reason": ""}
+{"i": 4235, "verdict": "keep", "text": "24세 여성, 무릎 전방 통증 6개월, 슬개골 외측 편위 경향, 연골 표면 거칠음, 물리치료 및 근력 강화 운동 계획.", "reason": ""}
+{"i": 4236, "verdict": "keep", "text": "My kneecap hurts when I walk down stairs and the knee makes grinding noises. I run a lot.", "reason": ""}
+{"i": 4237, "verdict": "keep", "text": "Sitting with bent knees for a long time makes the front of my knee ache, and I hear a crunch when I stand up.", "reason": ""}
+{"i": 4238, "verdict": "fix", "text": "22-year-old female, anterior knee pain with squatting, MRI shows patellar cartilage softening, weak quadriceps, positive patellar grind test.", "reason": "apprehension test is for patellar instability; grind test fits"}
+{"i": 4239, "verdict": "keep", "text": "Patellofemoral pain in a 17-year-old, cartilage surface irregularity on MRI, lateral patellar tracking, physical therapy initiated.", "reason": ""}
+{"i": 560, "verdict": "keep", "text": "아기 때부터 혈액 콜레스테롤이 엄청 높다고 했어요. 엄마 아빠 모두 콜레스테롤이 높고 발뒤꿈치가 두꺼워요.", "reason": ""}
+{"i": 561, "verdict": "keep", "text": "열두 살 아들 눈꺼풀에 노란 덩어리가 있고 피검사 콜레스테롤이 600 넘어요. 약 먹는데도 잘 안 떨어져요.", "reason": ""}
+{"i": 562, "verdict": "keep", "text": "스무 살인데 가족 중 젊어서 심장마비 온 사람이 여럿이고 힘줄이 두껍게 만져져요.", "reason": ""}
+{"i": 563, "verdict": "keep", "text": "몇 년 전부터 무릎과 손등에 노란 혹이 생겼어요. 이미 심장 스텐트 시술도 받았어요.", "reason": ""}
+{"i": 564, "verdict": "keep", "text": "소아, 총 콜레스테롤 620 mg/dL, LDL-C 540 mg/dL, 양쪽 부모 LDL 상승. 아킬레스건 비후, 황색종 관찰. 스타틴 고용량 치료 중.", "reason": ""}
+{"i": 565, "verdict": "keep", "text": "16세 청소년, LDL 현저 상승 및 조기 관상동맥질환 가족력. 신생아기 이후 지속 고콜레스테롤 혈증. LDLR 유전자 검사 의뢰.", "reason": ""}
+{"i": 566, "verdict": "keep", "text": "My son is ten and his cholesterol has been over 500 since he was a baby, and his eyelids have yellow bumps.", "reason": ""}
+{"i": 567, "verdict": "keep", "text": "Both my parents had high cholesterol and heart attacks early, and I have thick lumps on my tendons and knees.", "reason": ""}
+{"i": 568, "verdict": "keep", "text": "Child with total cholesterol 640 mg/dL, LDL-C 560 mg/dL on maximal statin and ezetimibe; thickened Achilles tendons and planar xanthomas on the palms.", "reason": ""}
+{"i": 569, "verdict": "keep", "text": "Teenager with extreme LDL elevation since infancy, thickened aortic valve on echocardiogram, and parental early coronary disease; genetic testing pending.", "reason": ""}
+{"i": 2821, "verdict": "fix", "text": "소변을 자주 보고 가끔 피가 비쳐요. 방광경 검사에서 작은 혹이 있다고 했어요.", "reason": "thin urinary stream is a prostate (BPH) hallmark"}
+{"i": 2829, "verdict": "keep", "text": "Hematuria workup negative for malignancy; pedunculated urothelial lesion on cystoscopy, resected, histology shows no atypia.", "reason": ""}
+{"i": 2825, "verdict": "keep", "text": "남성 58세, 무통성 혈뇨 2회 발생, 방광경 소견상 단발성 유두상 병변, 세포학 음성.", "reason": ""}
+{"i": 2827, "verdict": "keep", "text": "I keep having to pee urgently and sometimes see red in the toilet, but the biopsy said it wasn't cancer.", "reason": ""}
+{"i": 2820, "verdict": "keep", "text": "소변 볼 때 피가 섞여 나와요. 아프진 않은데 색이 붉어서 놀랐어요.", "reason": ""}
+{"i": 2823, "verdict": "keep", "text": "밤에 두세 번 깨서 소변을 봐요. 방광 안에 작은 돌기가 있다고 들었어요.", "reason": ""}
+{"i": 2822, "verdict": "keep", "text": "요즘 소변에 가끔 핏기가 보여요. 검사해 보니 악성은 아니라는데 계속 신경 쓰여요.", "reason": ""}
+{"i": -10003, "verdict": "drop", "text": "아이가 구토를 여러 번 하고 빛을 못 보겠다고 울어요. 손발에 빨간 점이 몇 개 있어요.", "reason": "meningitis sentence, not a urinary neoplasm"}
+{"i": 2828, "verdict": "keep", "text": "63M with intermittent painless gross hematuria; cystoscopy shows solitary papillary lesion 8 mm at bladder neck; cytology negative; resection pathology benign.", "reason": ""}
+{"i": 2826, "verdict": "keep", "text": "Painless blood in my urine came and went for a few weeks, and the doctor found a small growth when they looked inside my bladder.", "reason": ""}
+{"i": 2824, "verdict": "fix", "text": "육안적 혈뇨 반복, 요세포검사 음성, 방광내시경상 유경성 병변 8mm 관찰, 조직검사상 양성 종양.", "reason": "'조직검사 양성' reads as positive; gross hematuria is not a urinalysis finding"}
+{"i": 6430, "verdict": "keep", "text": "스무 살을 막 넘었는데 소변을 자주 보고 목이 자주 말라요. 아버지도 젊을 때 혈당 때문에 약을 드셨어요.", "reason": ""}
+{"i": 6431, "verdict": "keep", "text": "마른 편인데 식후 혈당이 자주 높게 나와요. 가족 여러 명이 20대에 혈당 문제로 진단받았대요.", "reason": ""}
+{"i": 6432, "verdict": "keep", "text": "살이 찌지도 않았는데 건강검진에서 혈당이 높다고 나왔어요. 할머니도 젊을 때 혈당이 높으셨대요.", "reason": ""}
+{"i": 6433, "verdict": "keep", "text": "스물다섯인데 피곤하고, 체중은 그대로인데 공복 혈당이 계속 높아요. 집안 내력이 있어요.", "reason": ""}
+{"i": 6434, "verdict": "keep", "text": "28세 남성, 공복혈당 152mg/dL, HbA1c 7.1%, BMI 22.3. 3대에 걸친 상염색체 우성 유전 양상, HNF4A 유전자 변이 확인, 설포닐우레아 반응 양호.", "reason": ""}
+{"i": 6435, "verdict": "keep", "text": "25세 여성, 비만 없음, C-펩타이드 정상, 자가항체 음성. 모친과 외조모에게 젊은 나이 혈당 상승 이력.", "reason": ""}
+{"i": 6436, "verdict": "keep", "text": "My mom and uncle both had high blood sugar before they turned 30. I'm 26 and not overweight, but my numbers are high too.", "reason": ""}
+{"i": 6437, "verdict": "keep", "text": "Blood tests show high sugar even though I eat healthy and exercise. Several relatives in my family had high sugar in their twenties.", "reason": ""}
+{"i": 6438, "verdict": "keep", "text": "24-year-old asymptomatic male, fasting glucose 130 mg/dL, HbA1c 6.8%, BMI 21, negative GAD and islet antibodies, three-generation autosomal dominant pattern.", "reason": ""}
+{"i": 6439, "verdict": "keep", "text": "Young adult with early-onset hyperglycemia, normal C-peptide, no autoimmunity, responsive to low-dose sulfonylurea; HNF4A variant identified on sequencing.", "reason": ""}
+{"i": 6350, "verdict": "keep", "text": "겨울마다 2-3달씩 가래 섞인 기침이 나고 아침에 특히 심해요. 담배를 30년 피웠어요.", "reason": ""}
+{"i": 6351, "verdict": "keep", "text": "매일 아침 가래를 뱉어야 기침이 멈춰요. 계단 오르면 숨이 차요.", "reason": ""}
+{"i": 6352, "verdict": "keep", "text": "요즘 가래 색이 누렇고 기침이 더 심해졌어요. 숨쉬기가 예전보다 힘들어요.", "reason": ""}
+{"i": 6353, "verdict": "keep", "text": "하루 한 갑씩 피웠는데 몇 년째 기침과 누런 가래가 계속돼요. 조금만 걸어도 숨이 차요.", "reason": ""}
+{"i": 6354, "verdict": "keep", "text": "58세 남성, 흡연 40갑년, 연간 가래 동반 기침 3개월 이상 2년 연속, FEV1/FVC 0.62, 폐기능 검사상 기류 제한.", "reason": ""}
+{"i": 6355, "verdict": "keep", "text": "기관지 확장제 반응 불충분, 흉부 X선 음영 증가, 혈중 산소포화도 93%, 흡입 스테로이드 및 장시간 작용성 확장제 투여.", "reason": ""}
+{"i": 6356, "verdict": "keep", "text": "Every winter I get a chesty cough with phlegm for months, and I've been smoking for decades.", "reason": ""}
+{"i": 6357, "verdict": "keep", "text": "I cough up thick yellow mucus most mornings and get winded just walking to the bus stop.", "reason": ""}
+{"i": 6358, "verdict": "keep", "text": "Former smoker with 45 pack-years; productive cough most days for 3 months over 2 consecutive years; spirometry shows post-bronchodilator FEV1/FVC 0.66.", "reason": ""}
+{"i": 6359, "verdict": "keep", "text": "Chronic productive cough, reduced airflow on PFT, mild hypoxemia at rest; long-acting bronchodilator and inhaled corticosteroid started.", "reason": ""}
+{"i": 3370, "verdict": "keep", "text": "변에 피가 섞여 나오고 배변 습관이 바뀌었어요. 설사랑 변비가 번갈아 와요.", "reason": ""}
+{"i": 3371, "verdict": "keep", "text": "변이 가늘어지고 배가 자주 아파요. 빈혈도 생겼대요. 50대 남자입니다.", "reason": ""}
+{"i": 3372, "verdict": "keep", "text": "요즘 화장실 가는 횟수가 늘었고 변이 시커멓게 나와요. 체중도 빠졌어요.", "reason": ""}
+{"i": 3373, "verdict": "keep", "text": "가족 중에 같은 병으로 돌아가신 분이 계세요. 검진에서 잠혈 양성 나왔어요.", "reason": ""}
+{"i": 3374, "verdict": "fix", "text": "대변잠혈검사 양성, 헤모글로빈 9.2 g/dL, 복부 CT에서 하행결장 벽 비후 및 협착 소견. 내시경 조직검사 예정.", "reason": "'하행 부위' missing 결장"}
+{"i": 3375, "verdict": "fix", "text": "직장수지검사에서 종괴 촉지, 혈청 CEA 상승, 배변 습관 변화 3개월. MSI 검사 의뢰.", "reason": "standard term 직장수지검사"}
+{"i": 3376, "verdict": "keep", "text": "My stool has blood mixed in and my bowel habits changed, going from constipation to diarrhea and back.", "reason": ""}
+{"i": 3377, "verdict": "keep", "text": "I've been losing weight and my poop is thin and dark, and I have cramps in my lower left belly.", "reason": ""}
+{"i": 3378, "verdict": "keep", "text": "FIT positive, Hb 9.4 with microcytosis; CT shows annular thickening of the sigmoid with luminal narrowing; colonoscopy with biopsy pending.", "reason": ""}
+{"i": 3379, "verdict": "keep", "text": "Female 58, iron deficiency pattern anemia with positive occult blood; colonoscopy shows fungating mass in the ascending segment; CEA 12.", "reason": ""}
+{"i": 6360, "verdict": "keep", "text": "사람들 앞에서 발표하려고 하면 얼굴이 빨개지고 목소리가 떨려요. 다들 날 보는 것 같아요.", "reason": ""}
+{"i": 6361, "verdict": "keep", "text": "회식 자리에서 누가 나한테 말을 걸면 머리가 하얘지고 말이 안 나와요. 그래서 자꾸 피해요.", "reason": ""}
+{"i": 6362, "verdict": "keep", "text": "식당에서 주문하기도 무서워요. 사람들이 나를 볼까 봐 밥도 밖에서 잘 안 먹어요.", "reason": ""}
+{"i": 6363, "verdict": "keep", "text": "학교 발표 전날부터 배가 아프고 잠이 안 와요. 발표가 끝나도 한참 동안 떨려요.", "reason": ""}
+{"i": 6364, "verdict": "keep", "text": "23세 남성, 타인의 평가에 대한 두려움, 공개 장면 회피, 발표 전 예기불안, 얼굴 홍조 및 발한 동반, 일상 기능 저하 6개월 이상.", "reason": ""}
+{"i": 6365, "verdict": "keep", "text": "대인 상황 회피 행동 확인, 자기 평가 부정적, 집단 상황에서 극심한 불안, 항우울제 및 노출 기반 인지행동치료 계획.", "reason": ""}
+{"i": 6366, "verdict": "keep", "text": "Whenever I have to speak in front of a group, my face gets red and my hands shake, and I feel everyone judging me.", "reason": ""}
+{"i": 6367, "verdict": "keep", "text": "I avoid parties and meetings because I'm terrified people will notice me blushing or say something stupid.", "reason": ""}
+{"i": 6368, "verdict": "keep", "text": "Persistent fear of scrutiny by others in performance situations, avoidance of group settings, blushing and tremor; symptoms cause significant occupational impairment.", "reason": ""}
+{"i": 6369, "verdict": "keep", "text": "Excessive anticipatory anxiety before presentations, avoidance of eating in public, negative self-evaluation; sertraline and exposure-based CBT recommended.", "reason": ""}
+{"i": 670, "verdict": "keep", "text": "요즘 살이 찌고 추위를 많이 타요. 머리카락이 많이 빠지고 변비도 심해졌어요.", "reason": ""}
+{"i": 671, "verdict": "keep", "text": "목 앞쪽이 약간 부어 있고 삼키기가 불편해요. 피곤하고 피부가 건조해요.", "reason": ""}
+{"i": 672, "verdict": "keep", "text": "엄마가 갑상선 기능이 떨어졌다고 하셨는데 목이 뻐근하고 눈도 잘 붓는 것 같아요.", "reason": ""}
+{"i": 673, "verdict": "keep", "text": "아이가 집중을 못하고 성장이 느리고 피곤해 해요. 목 앞쪽이 약간 단단해요.", "reason": ""}
+{"i": 674, "verdict": "keep", "text": "여성 45세, 갑상선 종대 및 기능 저하 증상. TSH 12.4 uIU/mL, free T4 저하. 항TPO 항체 양성 620 IU/mL. 초음파상 불균질 실질.", "reason": ""}
+{"i": 675, "verdict": "keep", "text": "38세 여성, 피로, 체중 증가, 피부 건조, 항TPO 항체 양성. 초음파에서 저에코 실질 확인, 갑상선 기능저하 소견.", "reason": ""}
+{"i": 676, "verdict": "keep", "text": "I've gained weight without changing how I eat, I'm freezing all the time, and my hair is coming out in clumps.", "reason": ""}
+{"i": 677, "verdict": "keep", "text": "My neck feels full and tight in front, and swallowing is uncomfortable. My mom had a thyroid problem too.", "reason": ""}
+{"i": 678, "verdict": "keep", "text": "Forty-two-year-old woman with diffuse goiter, TSH 9.8 mIU/L, free T4 low-normal, anti-TPO antibodies positive at 480 IU/mL; ultrasound shows heterogeneous parenchyma.", "reason": ""}
+{"i": 679, "verdict": "keep", "text": "Woman with fatigue, constipation and dry skin, TSH elevated, thyroid peroxidase antibodies strongly positive, bradycardia on exam; levothyroxine started.", "reason": ""}
+{"i": 3650, "verdict": "keep", "text": "나이 드니까 TV 소리를 자꾸 크게 틀게 돼요. 특히 여자 목소리가 잘 안 들려요.", "reason": ""}
+{"i": 3651, "verdict": "keep", "text": "70 넘고 나서 대화할 때 상대방이 웅얼거리는 것 같고 식당에서는 더 안 들려요.", "reason": ""}
+{"i": 3652, "verdict": "keep", "text": "양쪽 귀가 점점 멀어지는 느낌인데 통증은 없어요. 몇 년 됐어요.", "reason": ""}
+{"i": 3653, "verdict": "keep", "text": "요즘 전화 통화가 힘들어요. 고음이 잘 안 들리고 이명도 조금 있어요.", "reason": ""}
+{"i": 3654, "verdict": "keep", "text": "74세 남성, 양측 고음역 청력 저하(4kHz 이상 45dB 손실), 어음명료도 78%, 소음 노출력 없음, 보청기 상담 의뢰.", "reason": ""}
+{"i": 3655, "verdict": "fix", "text": "65세 여성, 점진적 양측 고음역 청력 감소, 중이 이상 없음, 고혈압약 복용 중, 보청기 적합 계획.", "reason": "'고혈압 복용', '증폭기 적합' unnatural"}
+{"i": 3656, "verdict": "keep", "text": "My wife says I keep asking her to repeat herself. High-pitched voices are the hardest, and it has crept up over the last decade.", "reason": ""}
+{"i": 3657, "verdict": "keep", "text": "At 78, conversations in noisy restaurants are impossible for me now. Doorbells and phone rings barely register.", "reason": ""}
+{"i": 3658, "verdict": "keep", "text": "81F, bilateral symmetric high-frequency threshold loss over 4 kHz, speech discrimination 72%, no noise exposure, normal tympanometry, referred for aural rehabilitation.", "reason": ""}
+{"i": 3659, "verdict": "keep", "text": "67M, gradual bilateral decline, sloping high-frequency audiogram pattern, hypertension on lisinopril, no tinnitus, amplification fitting planned.", "reason": ""}
+{"i": 4547, "verdict": "keep", "text": "My knees and elbows go too far and I get achy joints and tiredness; my whole family is bendy.", "reason": ""}
+{"i": 4548, "verdict": "keep", "text": "24-year-old female, Beighton score 7 of 9, recurrent subluxations of shoulder and patella, chronic musculoskeletal pain, normal skin stretch.", "reason": ""}
+{"i": 4549, "verdict": "keep", "text": "Generalized joint laxity with thumb-to-forearm contact, orthostatic tachycardia, GI dysmotility; genetic testing negative for EDS subtypes.", "reason": ""}
+{"i": 4544, "verdict": "fix", "text": "26세 여성, Beighton 점수 7점, 양 엄지 손목 접촉, 어깨와 슬개골 반복성 아탈구, 만성 근골격 통증, 피부 신축성 정상.", "reason": "misspelt Beighton as 베이토"}
+{"i": -10002, "verdict": "drop", "text": "요즘 가래 색이 누렇고 기침이 더 심해졌어요. 숨쉬기가 예전보다 힘들어요.", "reason": "chronic bronchitis sentence, not hypermobility"}
+{"i": 4542, "verdict": "keep", "text": "달리기만 해도 발목이 꺾여요. 팔꿈치도 펴지는 각도가 너무 커요.", "reason": ""}
+{"i": 4543, "verdict": "keep", "text": "몸이 너무 유연해서 어릴 때부터 자주 아팠어요. 허리랑 어깨도 자주 빠져요.", "reason": ""}
+{"i": 4545, "verdict": "keep", "text": "19세 남성, 여러 관절 과신전, 탈구 반복, 만성 근골격 통증, 피로 및 기립성 빈맥 동반, 유전자 검사 음성.", "reason": ""}
+{"i": 4546, "verdict": "keep", "text": "My fingers bend way backward and my joints pop out easily; I've sprained my ankles so many times.", "reason": ""}
+{"i": 4541, "verdict": "keep", "text": "무릎과 발목이 쉽게 돌아가서 자주 시큰거려요. 가족들도 다 유연해요.", "reason": ""}
+{"i": 4540, "verdict": "keep", "text": "손가락이 뒤로 너무 많이 젖혀져요. 어릴 때부터 관절이 잘 빠지고 자주 삐끗해요.", "reason": ""}
+{"i": 5460, "verdict": "keep", "text": "한 달은 잠을 세 시간만 자도 괜찮은데, 그다음 달은 하루 종일 누워만 있어요.", "reason": ""}
+{"i": 5461, "verdict": "keep", "text": "기분이 하늘을 찌를 듯 좋았다가 갑자기 바닥을 쳐요. 사업을 막 벌였다가 그만뒀어요.", "reason": ""}
+{"i": 5462, "verdict": "keep", "text": "아내가 요즘 말이 엄청 빨라지고 돈을 막 쓴다고 걱정해요. 그다음엔 완전히 무기력해져요.", "reason": ""}
+{"i": 5463, "verdict": "keep", "text": "몇 주 동안 잠도 안 자고 생각이 너무 많았어요. 지금은 다시 우울해서 일을 못 나가요.", "reason": ""}
+{"i": 5464, "verdict": "keep", "text": "조증 삽화 1주 이상, 수면 욕구 감소, 과대 사고, 이후 주요 우울 삽화 반복, 리튬 치료 고려.", "reason": ""}
+{"i": 5465, "verdict": "keep", "text": "혼합 양상 기분 변동, 자살 사고 1회 보고, 쿠에티아핀 복용 중, 정신건강의학과 진료 중.", "reason": ""}
+{"i": 5466, "verdict": "keep", "text": "My mood swings between being super hyper and sleeping all day. I spent a lot of money during the high times.", "reason": ""}
+{"i": 5467, "verdict": "keep", "text": "My partner says I talk super fast and don't sleep, and then I crash into depression for weeks.", "reason": ""}
+{"i": 5468, "verdict": "keep", "text": "Recurrent episodes of hypomania with decreased need for sleep followed by major depressive episodes; lithium trough 0.7 mmol/L.", "reason": ""}
+{"i": 5469, "verdict": "keep", "text": "Mixed features with grandiosity, racing thoughts, and two prior depressive episodes requiring hospitalization; on valproate.", "reason": ""}
+{"i": 5110, "verdict": "keep", "text": "요즘 살이 빠지는데 밥은 더 많이 먹어요. 가슴이 두근거리고 손이 떨리고 더위를 많이 타요.", "reason": ""}
+{"i": 5111, "verdict": "keep", "text": "눈이 튀어나온 것처럼 보인다는 얘기를 들었어요. 잠을 못 자고 심장이 빨리 뛰어요.", "reason": ""}
+{"i": 5112, "verdict": "keep", "text": "땀이 비 오듯 나고 더운 날이 아닌데도 덥고 설사도 자주 해요.", "reason": ""}
+{"i": 5113, "verdict": "keep", "text": "손가락이 떨려서 글씨가 삐뚤어져요. 생리도 불규칙해졌어요.", "reason": ""}
+{"i": 5114, "verdict": "keep", "text": "34세 여자, 3개월간 체중 6kg 감소, 안정 시 심박수 112, 손떨림, TSH 0.01 mIU/L 미만, 유리 T4 상승. 미만성 종대 및 안구돌출 소견.", "reason": ""}
+{"i": 5115, "verdict": "keep", "text": "51세 남자, 새로 생긴 심방세동, 혈청 T3 상승, TRAb 양성, 방사성요오드 섭취율 증가.", "reason": ""}
+{"i": 5116, "verdict": "keep", "text": "I've been losing weight even though I'm eating more. My heart races, my hands shake, and I'm always too hot.", "reason": ""}
+{"i": 5117, "verdict": "keep", "text": "People say my eyes look bulgy and I can't sleep. My heart pounds all day.", "reason": ""}
+{"i": 5118, "verdict": "keep", "text": "34 y/o female, 6 kg weight loss over 3 months, resting HR 112, low TSH below 0.01 mIU/L with elevated free T4, diffuse goiter and proptosis, TRAb positive.", "reason": ""}
+{"i": 5119, "verdict": "keep", "text": "51 y/o male with new atrial fibrillation, elevated T3, TRAb positive, radioiodine uptake increased on scan.", "reason": ""}
+{"i": 5820, "verdict": "keep", "text": "어두운 데서 잘 안 보이고 밤에 걸을 때 자꾸 넘어져요.", "reason": ""}
+{"i": 5821, "verdict": "keep", "text": "시야가 점점 좁아져서 터널 속에서 보는 것 같아요, 고등학생 때부터요.", "reason": ""}
+{"i": 5822, "verdict": "keep", "text": "우리 집안에 시력 나쁜 사람이 많고 요즘 빛이 눈부시고 잘 안 보여요.", "reason": ""}
+{"i": 5823, "verdict": "keep", "text": "빛을 보면 눈앞에 반짝이는 게 떠다니고, 낮에는 그나마 잘 보여요.", "reason": ""}
+{"i": 5824, "verdict": "keep", "text": "안저 검사에서 주변부 골침상 침착, 전기생리 검사 반응 소실, 야간 시력 저하, 시야 중심 20도 이내 축소, 상염색체 열성 의심.", "reason": ""}
+{"i": 5825, "verdict": "keep", "text": "유전자 검사 의뢰, 암순응 검사 지연, 양안 시야 고리형 결손, 만 22세 남성.", "reason": ""}
+{"i": 5826, "verdict": "keep", "text": "I can't see well at night and I trip over things in dim light, and it started in my teens.", "reason": ""}
+{"i": 5827, "verdict": "keep", "text": "My side vision is closing in and I feel like I'm looking through a tunnel, and my family has it too.", "reason": ""}
+{"i": 5828, "verdict": "keep", "text": "Fundus exam with bone-spicule deposits in mid periphery, electrophysiology testing shows reduced rod and cone responses, visual field constricted to 15 degrees, 34-year-old male.", "reason": ""}
+{"i": 5829, "verdict": "keep", "text": "Genetic panel ordered for USH2A, prolonged dark adaptation, waxy optic disc pallor, best corrected acuity 20/40 both eyes.", "reason": ""}
+{"i": -10005, "verdict": "drop", "text": "50세 여성, 좌측 유방 상외측 4cm 경계불명 종괴, 겨드랑이 림프절 종대. 유방촬영 BI-RADS 5, 조직검사 침윤성 관암 의심.", "reason": "breast cancer sentence, not a bleeding disorder"}
+{"i": 6769, "verdict": "keep", "text": "Adult with recurrent melena, prolonged PT with INR 2.6, low vitamin K intake, hemoglobin dropped to 8.1, source unclear.", "reason": ""}
+{"i": 6767, "verdict": "keep", "text": "Nosebleeds that won't stop, and my family members all bruise easily. We were told it runs in our family.", "reason": ""}
+{"i": 6766, "verdict": "keep", "text": "I bruise from light touches and my gums bleed when I brush. My periods have been much heavier than normal.", "reason": ""}
+{"i": 6764, "verdict": "keep", "text": "29세 여성, 혈소판 42,000/μL, 피부 점상 병변 다발, 월경과다 병력, 응고 검사 중 PT 정상, 약물 노출 없음.", "reason": ""}
+{"i": 6768, "verdict": "fix", "text": "34-year-old female, platelet count 35 x10^9/L, prolonged bleeding time, petechiae on legs, menorrhagia, normal coagulation panel.", "reason": "'skin closure time' is not a test"}
+{"i": 6761, "verdict": "keep", "text": "작은 상처에도 피가 계속 흐르고 코피가 자주 나요. 가족도 비슷하대요.", "reason": ""}
+{"i": 6762, "verdict": "keep", "text": "팔다리에 보라색 멍이 저절로 생기고 오줌에 붉은 기가 보여요.", "reason": ""}
+{"i": 6765, "verdict": "keep", "text": "63세 남성, 간질환 동반, 프로트롬빈 시간 연장, INR 2.4, 비타민K 결핍 가능성, 반복적 흑색변, 헤모글로빈 하락.", "reason": ""}
+{"i": 6760, "verdict": "fix", "text": "멍이 쉽게 들고 잇몸에서 피가 자주 나요. 생리량도 많아요.", "reason": "spelling 생리량"}
+{"i": 6763, "verdict": "keep", "text": "치과에서 발치 후 피가 한참 멎지 않았어요. 혈액검사에서 혈소판이 낮아요.", "reason": ""}
+{"i": 4000, "verdict": "keep", "text": "요즘 자꾸 가운데가 찌그러져 보여요. 책 읽을 때 글자 중간이 안 보여요. 60대 중반인데 원래 눈은 괜찮았어요.", "reason": ""}
+{"i": 4001, "verdict": "keep", "text": "오른쪽 눈 시야 가운데가 까맣게 보이고 직선이 휘어 보여서 병원 왔어요. 1년 전부터 조금씩 그랬어요.", "reason": ""}
+{"i": 4002, "verdict": "keep", "text": "아버지가 나이 드시고 나서 눈이 흐려지셨는데, 요즘 저도 가운데가 안 보여요. 흡연 경력이 있어요.", "reason": ""}
+{"i": 4003, "verdict": "keep", "text": "아침에 일어나면 한쪽 눈 가운데가 뿌옇고 안 보여요. 지난달부터 점점 심해졌어요.", "reason": ""}
+{"i": 4004, "verdict": "keep", "text": "72세 여성, 양안 연성 드루젠, 우안 황반부 망막하 액체 OCT 확인, 교정시력 0.1, 흡연력 30갑년, 항VEGF 주사 예정.", "reason": ""}
+{"i": 4005, "verdict": "keep", "text": "68세 남성, 시력 우안 0.4 좌안 0.5, 양안 다발성 드루젠과 색소 변화, 안저에서 맥락막 신생혈관 의심, 고혈압 복용 중.", "reason": ""}
+{"i": 4006, "verdict": "keep", "text": "Straight lines look wavy and there is a dark spot in the center of my vision when I read. I am 70 and it is getting worse in one eye.", "reason": ""}
+{"i": 4007, "verdict": "keep", "text": "I cannot see faces clearly anymore, the center of my vision is blurry while the side vision is fine. My mom had the same thing when she got old.", "reason": ""}
+{"i": 4008, "verdict": "keep", "text": "74-year-old woman, bilateral soft drusen, OCT showing subretinal fluid in the right macula, best corrected VA 20/80, 30 pack-year smoker.", "reason": ""}
+{"i": 4009, "verdict": "keep", "text": "Metamorphopsia OS with central scotoma, fundus shows geographic atrophy, no supplements taken, family history positive, age 77.", "reason": ""}
+{"i": 2245, "verdict": "fix", "text": "목과 겨드랑이 흑색가시세포증, 인슐린 저항성 동반, 당화혈색소 6.2%, 피부 생검상 표피 유두종증 소견.", "reason": "'검은 극세포 침착' is not a term; acanthosis nigricans = 흑색가시세포증"}
+{"i": -10001, "verdict": "drop", "text": "63세 남성, 양측 발목상완지수 0.7, 경동맥 초음파 내중막두께 1.4 mm, LDL 165 mg/dL, 간헐적 파행, 스타틴 시작.", "reason": "atherosclerosis sentence, not pigmentation"}
+{"i": 2243, "verdict": "keep", "text": "피부가 군데군데 하얗게 되고 검게 얼룩져서 신경 쓰여요", "reason": ""}
+{"i": 2240, "verdict": "keep", "text": "얼굴 볼에 갈색 얼룩이 점점 진해지고 햇볕 쬐면 더 짙어져요", "reason": ""}
+{"i": 2246, "verdict": "keep", "text": "I have dark brown patches on my cheeks that get darker in the sun.", "reason": ""}
+{"i": 2249, "verdict": "keep", "text": "Velvety pigmented plaques in intertriginous areas, insulin resistance HbA1c 6.1, acanthosis on histology.", "reason": ""}
+{"i": 2244, "verdict": "fix", "text": "안면 및 전완부 갈색 과색소 침착, 우드등 검사상 색소 강조, 갑상선 기능 정상, 피부 생검 의뢰.", "reason": "'울드 램프 하 형광 발현' misspelt and wrong"}
+{"i": -10004, "verdict": "drop", "text": "변이 가늘어지고 배가 자주 아파요. 빈혈도 생겼대요. 50대 남자입니다.", "reason": "colon cancer sentence, not pigmentation"}
+{"i": 2241, "verdict": "keep", "text": "배와 겨드랑이 피부가 검게 변했고 목 뒤에도 거뭇하게 주름이 졌어요", "reason": ""}
+{"i": 2247, "verdict": "keep", "text": "My armpits and neck look dark and velvety, and I have gained weight.", "reason": ""}
+{"i": 2242, "verdict": "keep", "text": "손등과 무릎이 거무튀튀해졌어요. 임신 이후부터 생겼어요", "reason": ""}
+{"i": 2248, "verdict": "keep", "text": "Diffuse brown macular discoloration on the forearms and face; Wood lamp enhancement; no inflammatory history; skin biopsy requested.", "reason": ""}
+{"i": 200, "verdict": "keep", "text": "가슴에 멍울이 여러 개 만져지고 생리 전에 욱신거리고 아파요.", "reason": ""}
+{"i": 201, "verdict": "keep", "text": "생리 주기에 맞춰서 가슴이 뭉치고 따갑고 만지면 말랑한 혹이 느껴져요.", "reason": ""}
+{"i": 202, "verdict": "keep", "text": "유방이 자주 당기고 기분이 나빠지기 전에 가슴이 먼저 아파요.", "reason": ""}
+{"i": 203, "verdict": "keep", "text": "검사 받았더니 종양은 아니라는데 자꾸 가슴에 덩어리가 만져져서 걱정돼요.", "reason": ""}
+{"i": 204, "verdict": "fix", "text": "양측 유방 다발성 낭종 및 치밀 유선 조직, 주기성 유방통, 초음파상 다발 결절. 세침흡인 검사 음성.", "reason": "pain is not an ultrasound finding"}
+{"i": 205, "verdict": "keep", "text": "월경 전 유방 압통 및 종괴, 유두 분비 없음. 조직검사상 비정형 유관 증식 소견, 악성 없음.", "reason": ""}
+{"i": 206, "verdict": "keep", "text": "I feel lumps in both breasts that get sore right before my period, and then they ease up after.", "reason": ""}
+{"i": 207, "verdict": "keep", "text": "My breasts feel tender and lumpy every month, and sometimes they ache when I wear a bra.", "reason": ""}
+{"i": 208, "verdict": "keep", "text": "Bilateral cyclical mastalgia with multiple palpable rubbery nodules; ultrasound shows cysts and dense stroma; no nipple discharge; FNA benign.", "reason": ""}
+{"i": 209, "verdict": "keep", "text": "Premenstrual breast pain and multiple cystic lesions, core biopsy showed nonatypical ductal hyperplasia without malignancy.", "reason": ""}
+{"i": 1990, "verdict": "keep", "text": "눈 안쪽 코 쪽이 빨갛고 부어서 누르면 아파요. 눈물이 줄줄 나요.", "reason": ""}
+{"i": 1991, "verdict": "keep", "text": "눈 밑 코 옆 부위가 붓고 고름이 차요. 열도 조금 나요.", "reason": ""}
+{"i": 1992, "verdict": "keep", "text": "눈물이 자꾸 흐르고 고름 같은 게 나와요. 눈 안쪽이 뜨겁게 아파요.", "reason": ""}
+{"i": 1993, "verdict": "keep", "text": "코 옆 눈 안쪽이 부어서 딱딱하게 만져져요. 눈곱이 많이 끼어요.", "reason": ""}
+{"i": 1994, "verdict": "keep", "text": "우측 내안각 부위 발적, 압통성 종창, 누소관 주변 농 분비. 체온 37.9도, CT에서 누낭 확장 및 주변 연조직 부종. 항생제 정맥 투여.", "reason": ""}
+{"i": 1995, "verdict": "keep", "text": "누낭 팽창 및 압통, 누관 폐쇄 의심. 세균 배양 시 황색포도알균 및 연쇄구균. 국소 및 경구 항생제 치료 시작.", "reason": ""}
+{"i": 1996, "verdict": "keep", "text": "The inner corner of my eye near my nose is red, swollen and painful when I press on it, and it keeps tearing.", "reason": ""}
+{"i": 1997, "verdict": "keep", "text": "My eye is watering nonstop and there's pus near the inner corner, plus I have a slight fever.", "reason": ""}
+{"i": 1998, "verdict": "keep", "text": "Right medial canthus erythema and tender swelling with purulent regurgitation on lacrimal sac pressure; CT shows distended lacrimal sac.", "reason": ""}
+{"i": 1999, "verdict": "keep", "text": "Acute lacrimal sac infection with tender swelling and epiphora; cultures grew Staph aureus; IV antibiotics started.", "reason": ""}
+{"i": 1490, "verdict": "keep", "text": "갑자기 열이 40도 가까이 나고 목이 너무 뻣뻣해요. 고개를 숙이면 머리가 쪼개질 것 같아요.", "reason": ""}
+{"i": 1491, "verdict": "keep", "text": "아이가 구토를 여러 번 하고 빛을 못 보겠다고 울어요. 손발에 빨간 점이 몇 개 있어요.", "reason": ""}
+{"i": 1492, "verdict": "keep", "text": "머리가 엄청 아프고 햇빛이 눈부셔요. 어제부터 헛소리까지 해요.", "reason": ""}
+{"i": 1493, "verdict": "keep", "text": "열이랑 두통이 이틀째예요. 목이 굳어서 고개가 안 돌아가고 자꾸 눕고 싶어 해요.", "reason": ""}
+{"i": 1494, "verdict": "keep", "text": "발열 39.8도, 목 강직 및 케르니그 징후 양성, 요추천자상 CSF 호중구 우세 백혈구 증가, 당 감소.", "reason": ""}
+{"i": 1495, "verdict": "keep", "text": "CSF 단백 180 mg/dL, 당 22 mg/dL, 그람 염색상 그람양성 쌍구균 관찰, 항생제 투여 시작.", "reason": ""}
+{"i": 1496, "verdict": "keep", "text": "My daughter has a high fever and her neck is so stiff she can't touch her chin to her chest.", "reason": ""}
+{"i": 1497, "verdict": "keep", "text": "He's vomiting, hates bright lights and has a rash of tiny purple spots on his legs.", "reason": ""}
+{"i": 1498, "verdict": "keep", "text": "Fever 39.6 with nuchal rigidity and positive Brudzinski sign; CSF neutrophilic pleocytosis, glucose 18 mg/dL.", "reason": ""}
+{"i": 1499, "verdict": "keep", "text": "Gram stain showing gram-positive diplococci in CSF, CSF protein 210, lactate 6.2 mmol/L, ceftriaxone plus vancomycin started.", "reason": ""}

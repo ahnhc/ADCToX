@@ -1,0 +1,40 @@
+{"id": "MONDO:0016462", "verdict": "fix", "fields": {"en": ["isolated agammaglobulinemia", "isolated hypogammaglobulinemia"], "ko": ["무감마글로불린혈증", "저감마글로불린혈증"]}, "reason": "concept is an inborn (primary) immunodeficiency; 'acquired'/'비유전성' names the opposite"}
+{"id": "MONDO:0013433", "verdict": "keep"}
+{"id": "MONDO:0002027", "verdict": "keep"}
+{"id": "MONDO:0004038", "verdict": "keep"}
+{"id": "MONDO:0006004", "verdict": "fix", "fields": {"ko_lay": ["비염"]}, "reason": "코감기 is the common cold (infection), not vasomotor rhinitis"}
+{"id": "MONDO:0850123", "verdict": "fix", "fields": {"en": ["autonomic nervous system benign neoplasm", "ganglioneuroma"], "ko": ["자율신경계 양성 신생물", "신경절신경종"], "symptoms_en": ["often no symptoms", "mass found on imaging", "abdominal or chest pain", "palpable lump"], "symptoms_ko": ["증상이 없을 때가 많아요", "검사에서 혹이 발견됐어요", "배나 가슴이 아파요", "혹이 만져져요"]}, "reason": "names and symptoms described peripheral nerve sheath tumours (neurofibroma, schwannoma), not autonomic ones"}
+{"id": "MONDO:0003150", "verdict": "keep"}
+{"id": "MONDO:0013600", "verdict": "fix", "fields": {"ko": ["불면증"]}, "reason": "ko[0] 담석증 is cholelithiasis, not insomnia"}
+{"id": "MONDO:0003009", "verdict": "fix", "fields": {"ko": ["고알도스테론증", "원발성 알도스테론증"]}, "reason": "ko[0] 회피성 성격장애 is avoidant personality disorder"}
+{"id": "MONDO:0005025", "verdict": "keep"}
+{"id": "MONDO:0007241", "verdict": "keep"}
+{"id": "MONDO:0002317", "verdict": "fix", "fields": {"en": ["central vertigo", "vertigo of central origin"], "ko": ["중추성 현훈", "중추성 어지럼증"], "symptoms_en": ["spinning sensation", "nausea and vomiting", "severe imbalance, unable to walk", "double vision", "slurred speech"], "symptoms_ko": ["세상이 빙빙 돌아요", "메스꺼워서 토해요", "몸의 균형을 못 잡아 걷기 힘들어요", "물체가 두 개로 보여요", "말이 어눌해요"]}, "reason": "names were generic vertigo/vestibular dysfunction; positional worsening and tinnitus are peripheral (inner ear) signs"}
+{"id": "MONDO:0004867", "verdict": "fix", "fields": {"abbr": []}, "reason": "URTI means upper respiratory tract infection, not the disorder class"}
+{"id": "MONDO:0018362", "verdict": "keep"}
+{"id": "MONDO:0005388", "verdict": "keep"}
+{"id": "MONDO:0850231", "verdict": "keep"}
+{"id": "MONDO:0001085", "verdict": "keep"}
+{"id": "MONDO:0001384", "verdict": "keep"}
+{"id": "MONDO:0001451", "verdict": "keep"}
+{"id": "MONDO:0002261", "verdict": "keep"}
+{"id": "MONDO:0021154", "verdict": "keep"}
+{"id": "MONDO:0003240", "verdict": "keep"}
+{"id": "MONDO:0007452", "verdict": "fix", "fields": {"abbr": ["MODY1"], "ko": ["MODY 1형", "청년기 발병 성인형 당뇨병 1형"]}, "reason": "MODY alone is the whole group; standard Korean is 청년기 발병 성인형 당뇨병"}
+{"id": "MONDO:0000620", "verdict": "keep"}
+{"id": "MONDO:0006670", "verdict": "keep"}
+{"id": "MONDO:0005328", "verdict": "keep"}
+{"id": "MONDO:0018102", "verdict": "keep"}
+{"id": "MONDO:0005623", "verdict": "fix", "fields": {"en": ["autoimmune thyroid disease", "Graves disease", "autoimmune hyperthyroidism"], "ko": ["자가면역 갑상선질환", "자가면역 갑상선기능항진증", "그레이브스병"]}, "reason": "ko[0] named the narrower autoimmune hyperthyroidism; the concept is autoimmune thyroid disease"}
+{"id": "MONDO:0005918", "verdict": "keep"}
+{"id": "MONDO:0004846", "verdict": "keep"}
+{"id": "MONDO:0007028", "verdict": "fix", "fields": {"ko": ["회전근개 증후군", "회전근개 파열"]}, "reason": "ko[0] 협심증 is angina, not rotator cuff syndrome"}
+{"id": "MONDO:0006879", "verdict": "keep"}
+{"id": "MONDO:0004592", "verdict": "keep"}
+{"id": "MONDO:0002172", "verdict": "keep"}
+{"id": "MONDO:0015925", "verdict": "keep"}
+{"id": "MONDO:0002529", "verdict": "keep"}
+{"id": "MONDO:0006805", "verdict": "fix", "fields": {"en": ["unstable angina", "preinfarction angina", "angina at rest"], "ko": ["불안정 협심증", "중간관상증후군"], "symptoms_en": ["chest pain at rest", "chest tightness", "pain radiating to left arm or jaw", "angina more frequent or longer than before", "shortness of breath"], "symptoms_ko": ["가만히 있어도 가슴이 아파요", "가슴이 답답하고 조여요", "왼팔이나 턱으로 뻗쳐요", "가슴 통증이 전보다 잦고 오래가요", "숨이 차요"]}, "reason": "concept is unstable/rest angina; ko[0] 협심증 and exertional pain relieved by rest describe stable angina"}
+{"id": "MONDO:0004891", "verdict": "keep"}
+{"id": "MONDO:0000430", "verdict": "keep"}
+{"id": "MONDO:0012672", "verdict": "keep"}

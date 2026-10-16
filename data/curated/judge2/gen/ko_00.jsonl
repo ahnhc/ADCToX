@@ -10,7 +10,7 @@
 {"id": "MONDO:0010679", "text": "DMD", "kind": "short"}
 {"id": "MONDO:0010679", "text": "뒤센 근이영양증이 있어요", "kind": "spoken"}
 {"id": "MONDO:0001386", "text": "시각 유발 뇌전증", "kind": "formal"}
-{"id": "MONDO:0001386", "text": "시각 유발 간질", "kind": "formal"}
+{"id": "MONDO:0001386", "text": "시각 유발 뇌전증", "kind": "formal"}
 {"id": "MONDO:0001386", "text": "빛이나 화면을 보면 발작이 있어요", "kind": "spoken"}
 {"id": "MONDO:0008300", "text": "프래더-윌리 증후군", "kind": "formal"}
 {"id": "MONDO:0008300", "text": "PWS", "kind": "short"}
@@ -35,7 +35,7 @@
 {"id": "MONDO:0007256", "text": "간암", "kind": "everyday"}
 {"id": "MONDO:0007256", "text": "HCC", "kind": "short"}
 {"id": "MONDO:0007256", "text": "간암 진단받았어요", "kind": "spoken"}
-{"id": "MONDO:0005109", "text": "후천성 면역결핍증 (HIV 감염증)", "kind": "formal"}
+{"id": "MONDO:0005109", "text": "HIV 감염증", "kind": "formal"}
 {"id": "MONDO:0005109", "text": "에이즈", "kind": "everyday"}
 {"id": "MONDO:0005109", "text": "HIV", "kind": "short"}
 {"id": "MONDO:0005109", "text": "HIV 감염이 있어요", "kind": "spoken"}
@@ -45,7 +45,7 @@
 {"id": "MONDO:0005084", "text": "정신질환", "kind": "everyday"}
 {"id": "MONDO:0005084", "text": "정신질환이 있어요", "kind": "spoken"}
 {"id": "MONDO:0005233", "text": "비소세포폐암", "kind": "formal"}
-{"id": "MONDO:0005233", "text": "폐암", "kind": "everyday"}
+{"id": "MONDO:0005233", "text": "비소세포 폐암", "kind": "everyday"}
 {"id": "MONDO:0005233", "text": "NSCLC", "kind": "short"}
 {"id": "MONDO:0005233", "text": "비소세포폐암 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0021100", "text": "유방 종양", "kind": "formal"}
@@ -109,12 +109,12 @@
 {"id": "MONDO:0005502", "text": "뎅기열에 걸렸어요", "kind": "spoken"}
 {"id": "MONDO:0010714", "text": "펠리차에우스-메르츠바허 스펙트럼 장애", "kind": "formal"}
 {"id": "MONDO:0010714", "text": "PMD", "kind": "short"}
-{"id": "MONDO:0010714", "text": "펠리차에우스-메르츠바허 장애가 있어요", "kind": "spoken"}
+{"id": "MONDO:0010714", "text": "펠리체우스-메르츠바허병이 있어요", "kind": "spoken"}
 {"id": "MONDO:0005086", "text": "신세포암", "kind": "formal"}
 {"id": "MONDO:0005086", "text": "콩팥암", "kind": "everyday"}
 {"id": "MONDO:0005086", "text": "RCC", "kind": "short"}
 {"id": "MONDO:0005086", "text": "신장암 진단받았어요", "kind": "spoken"}
-{"id": "MONDO:0005335", "text": "대장·직장 종양", "kind": "formal"}
+{"id": "MONDO:0005335", "text": "결장직장 종양", "kind": "formal"}
 {"id": "MONDO:0005335", "text": "대장에 종양이 있어요", "kind": "spoken"}
 {"id": "MONDO:0010557", "text": "맥락막결핍증", "kind": "formal"}
 {"id": "MONDO:0010557", "text": "맥락막결핍증이 있어요", "kind": "spoken"}
@@ -139,7 +139,7 @@
 {"id": "MONDO:0013792", "text": "뇌출혈", "kind": "everyday"}
 {"id": "MONDO:0013792", "text": "ICH", "kind": "short"}
 {"id": "MONDO:0013792", "text": "뇌출혈이 있었어요", "kind": "spoken"}
-{"id": "MONDO:0013209", "text": "대사기능장애 연관 지방간질환", "kind": "formal"}
+{"id": "MONDO:0013209", "text": "대사이상 지방간질환", "kind": "formal"}
 {"id": "MONDO:0013209", "text": "지방간", "kind": "everyday"}
 {"id": "MONDO:0013209", "text": "MASLD", "kind": "short"}
 {"id": "MONDO:0013209", "text": "지방간이 있어요", "kind": "spoken"}
@@ -202,8 +202,6 @@
 {"id": "MONDO:0008114", "text": "OCD", "kind": "short"}
 {"id": "MONDO:0008114", "text": "강박장애가 있어요", "kind": "spoken"}
 {"id": "MONDO:0005099", "text": "지주막하출혈", "kind": "formal"}
-{"id": "MONDO:0005099", "text": "뇌출혈", "kind": "everyday"}
-{"id": "MONDO:0005099", "text": "SAH", "kind": "short"}
 {"id": "MONDO:0005099", "text": "지주막하출혈이 있었어요", "kind": "spoken"}
 {"id": "MONDO:0100471", "text": "비타민 D 결핍증", "kind": "formal"}
 {"id": "MONDO:0100471", "text": "비타민D 부족", "kind": "everyday"}

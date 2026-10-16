@@ -1,0 +1,40 @@
+{"id": "MONDO:0001292", "verdict": "fix", "fields": {"ko": ["자율신경계 질환", "자율신경 이상", "자율신경병증"]}, "reason": "ko[0] was hypopituitarism, not this disease"}
+{"id": "MONDO:0005108", "verdict": "keep"}
+{"id": "MONDO:0005002", "verdict": "keep"}
+{"id": "MONDO:0001458", "verdict": "keep"}
+{"id": "MONDO:0010793", "verdict": "keep"}
+{"id": "MONDO:0005975", "verdict": "keep"}
+{"id": "MONDO:0001159", "verdict": "fix", "fields": {"en": ["dissociative identity disorder", "multiple personality disorder"], "ko": ["해리성 정체성 장애", "다중인격장애"], "ko_lay": ["다중인격"], "symptoms_en": ["memory gaps", "switching between identities", "losing time", "feeling detached from oneself", "told of actions not remembered"], "symptoms_ko": ["기억이 자주 끊겨요", "내 안에 다른 사람이 있는 것 같아요", "시간이 사라진 것 같아요", "내가 내가 아닌 것 같아요", "기억에 없는 행동을 했대요"]}, "reason": "profile described generic personality disorder; concept is dissociative identity disorder"}
+{"id": "MONDO:0000226", "verdict": "keep"}
+{"id": "MONDO:0005244", "verdict": "keep"}
+{"id": "MONDO:0002922", "verdict": "keep"}
+{"id": "MONDO:0002246", "verdict": "keep"}
+{"id": "MONDO:0005173", "verdict": "keep"}
+{"id": "MONDO:0024575", "verdict": "fix", "fields": {"en": ["pregnancy disorder", "complication of pregnancy"], "ko": ["임신 합병증", "임신 관련 질환"], "ko_lay": ["임신 중 문제"], "symptoms_en": ["bleeding in pregnancy", "high blood pressure in pregnancy", "severe vomiting in pregnancy", "swelling in pregnancy"], "symptoms_ko": ["임신 중에 피가 비쳐요", "임신 중에 혈압이 높아요", "임신 중에 심하게 토해요", "임신 중에 많이 부어요"]}, "reason": "profile covered only labour/delivery complications; concept is pregnancy disorder in general"}
+{"id": "MONDO:0000744", "verdict": "keep"}
+{"id": "MONDO:0001165", "verdict": "keep"}
+{"id": "MONDO:0005231", "verdict": "keep"}
+{"id": "MONDO:0002513", "verdict": "keep"}
+{"id": "MONDO:0006966", "verdict": "keep"}
+{"id": "MONDO:0002186", "verdict": "keep"}
+{"id": "MONDO:0000745", "verdict": "fix", "fields": {"abbr": []}, "reason": "CA usually means cancer/carcinoma or calcium, not cardiac arrest"}
+{"id": "MONDO:0004335", "verdict": "keep"}
+{"id": "MONDO:0001920", "verdict": "keep"}
+{"id": "MONDO:0001087", "verdict": "keep"}
+{"id": "MONDO:0001142", "verdict": "keep"}
+{"id": "MONDO:0011284", "verdict": "keep"}
+{"id": "MONDO:0005152", "verdict": "keep"}
+{"id": "MONDO:0100505", "verdict": "keep"}
+{"id": "MONDO:0005296", "verdict": "keep"}
+{"id": "MONDO:0018850", "verdict": "fix", "fields": {"everyday": false, "en": ["proliferating trichilemmal cyst", "proliferating trichilemmal tumor", "proliferating pilar tumor"], "ko": ["증식성 모근초낭종", "증식성 외모근초종양"], "ko_lay": ["두피 혹"], "symptoms_en": ["slowly growing scalp lump", "large nodular scalp mass", "ulcerated lump", "usually painless"], "symptoms_ko": ["두피에 혹이 점점 커져요", "머리에 큰 덩어리가 만져져요", "혹이 헐었어요", "아프지는 않아요"]}, "reason": "profile described pilonidal cyst; concept is proliferating trichilemmal (pilar) tumour of the scalp"}
+{"id": "MONDO:0015614", "verdict": "keep"}
+{"id": "MONDO:0001637", "verdict": "fix", "fields": {"en": ["cicatricial entropion", "entropion", "trichiasis"], "ko": ["반흔성 안검내반증", "안검내반증", "안검 내반증 및 첩모난생"]}, "reason": "ko[0] should name cicatricial entropion; 속눈썹증 is not a standard term"}
+{"id": "MONDO:0005066", "verdict": "keep"}
+{"id": "MONDO:0004585", "verdict": "keep"}
+{"id": "MONDO:0006733", "verdict": "fix", "fields": {"ko": ["안구건조증", "건성안"]}, "reason": "ko[0] was mineral metabolism disorder, not dry eye"}
+{"id": "MONDO:0015349", "verdict": "keep"}
+{"id": "MONDO:0004572", "verdict": "keep"}
+{"id": "MONDO:0004777", "verdict": "fix", "fields": {"en": ["acute laryngitis"], "ko": ["급성 후두염"]}, "reason": "acute tracheitis / 급성 기관염 is a different disease"}
+{"id": "MONDO:0020124", "verdict": "fix", "fields": {"en": ["neuromuscular junction disease", "neuromuscular junction disorder", "myoneural junction disorder"], "ko": ["신경근접합부 질환", "근신경접합부 질환"]}, "reason": "근신경접합부 및 근육질환 is the broader KCD block including muscle disease"}
+{"id": "MONDO:0005095", "verdict": "keep"}
+{"id": "MONDO:0004055", "verdict": "fix", "fields": {"ko": ["급성 누낭염", "누도의 급성 염증"]}, "reason": "ko[0] was tongue disorder, not lacrimal passage inflammation"}

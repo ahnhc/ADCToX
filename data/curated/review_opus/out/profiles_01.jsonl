@@ -1,0 +1,40 @@
+{"id": "MONDO:0004992", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0015486", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005306", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001663", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:1060209", "verdict": "fix", "fields": {"en": ["secondary amenorrhea", "absence of menstruation"], "ko": ["속발성 무월경", "이차성 무월경"], "ko_lay": ["무월경", "생리 끊김"]}, "reason": "oligomenorrhea/희발월경/생리불순 are a different concept (infrequent or irregular periods), not absent periods"}
+{"id": "MONDO:0005016", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002089", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001475", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0008171", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0006849", "verdict": "fix", "fields": {"ko": ["유방염", "산욕성 유방염", "수유 유방염"]}, "reason": "ko[0] shown by the app should be the general name 유방염, not the puerperal subtype"}
+{"id": "MONDO:0001875", "verdict": "fix", "fields": {"ko_lay": ["테니스엘보"]}, "reason": "골프엘보 is medial epicondylitis; this concept is lateral epicondylitis"}
+{"id": "MONDO:0001905", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0100429", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004805", "verdict": "fix", "fields": {"en": ["leukocyte disorder", "white blood cell disorder"], "ko_lay": ["백혈구 수치 이상"]}, "reason": "leukopenia / 백혈구가 낮다 is a narrower child concept, not a synonym"}
+{"id": "MONDO:0005265", "verdict": "fix", "fields": {"ko_lay": ["궤양성 대장염과 크론병"]}, "reason": "장염 means (usually infectious) enteritis, not IBD"}
+{"id": "MONDO:0005649", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0100130", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005073", "verdict": "fix", "fields": {"symptoms_en": ["brown or black spot", "flat or raised mole", "changing mole"], "symptoms_ko": ["갈색이나 검은 점", "편평하거나 볼록한 점", "점이 변했어요"]}, "reason": "'usually harmless' is not a presenting complaint"}
+{"id": "MONDO:0003472", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004822", "verdict": "fix", "fields": {"ko": ["기관지확장증"]}, "reason": "ko was 강직성 척추염 (ankylosing spondylitis), a different disease"}
+{"id": "MONDO:0010528", "verdict": "fix", "fields": {"ko": ["무후각증", "후각 소실"]}, "reason": "비알레르기성 천식 (non-allergic asthma) is a different disease and was ko[0]"}
+{"id": "MONDO:0020679", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005371", "verdict": "fix", "fields": {"symptoms_ko": ["우울해요", "기분이 들떠요", "짜증이 나요", "잠을 못 자거나 너무 많이 자요", "흥미가 없어요", "기운이 없거나 넘쳐요"]}, "reason": "잠이 변했어요 / 기운이 변해요 are unnatural Korean"}
+{"id": "MONDO:0002076", "verdict": "fix", "fields": {"symptoms_en": ["sudden chest pain", "shortness of breath", "cough", "rapid breathing"]}, "reason": "'tall thin young male' is a risk profile, not a symptom (and had no Korean counterpart)"}
+{"id": "MONDO:0005114", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0024268", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004577", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005090", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0009763", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0044013", "verdict": "fix", "fields": {"ko": ["산욕기 질환", "산후 합병증"]}, "reason": "산후기 is non-standard; standard term 산욕기 should be ko[0]"}
+{"id": "MONDO:0002342", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0019065", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001633", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004625", "verdict": "fix", "fields": {"ko_lay": ["핏줄 염증"]}, "reason": "혈관염 means vasculitis, a different (broader) disease"}
+{"id": "MONDO:0007453", "verdict": "fix", "fields": {"abbr": ["MODY2", "GCK-MODY"]}, "reason": "MODY alone means the whole MODY group, not type 2"}
+{"id": "MONDO:0005804", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0021445", "verdict": "fix", "fields": {"en": ["benign neoplasm of oral cavity", "benign mouth tumor"], "ko": ["구강 양성 신생물", "입안 양성 종양"], "symptoms_en": ["painless lump in mouth", "difficulty swallowing"], "symptoms_ko": ["입안에 아프지 않은 혹이 있어요", "삼키기 불편해요"]}, "reason": "names included the pharynx (broader concept); hoarseness is a laryngeal sign, not oral cavity"}
+{"id": "MONDO:0004765", "verdict": "fix", "fields": {"en": ["non-allergic asthma", "intrinsic asthma"], "ko": ["비알레르기성 천식", "내인성 천식"], "ko_lay": ["비알레르기 천식"]}, "reason": "plain asthma / 천식 is the parent concept and would capture all asthma searches"}
+{"id": "MONDO:0024278", "verdict": "fix", "fields": {"en": ["proctocolitis", "mucosal proctocolitis"], "ko_lay": ["직장과 대장 염증"]}, "reason": "ulcerative proctitis / 직장 염증 denote proctitis only, a narrower concept"}
+{"id": "MONDO:0005541", "verdict": "fix", "fields": {"en": ["spondylolysis"], "ko": ["척추분리증"], "ko_lay": ["척추뼈 분리"]}, "reason": "ko[0] was 구강 및 인두 양성 신생물 (oral tumour); spondylolisthesis / 척추전방전위증 / 척추 미끄럼증 are a different disease"}

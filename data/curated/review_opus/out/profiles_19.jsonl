@@ -1,0 +1,30 @@
+{"id": "MONDO:0043541", "verdict": "fix", "fields": {"ko": ["바이러스 결막염", "바이러스성 결막염"]}, "reason": "ko[0] was 다발골수종 (multiple myeloma), not this disease"}
+{"id": "MONDO:0003085", "verdict": "keep"}
+{"id": "MONDO:0010030", "verdict": "keep"}
+{"id": "MONDO:0005503", "verdict": "keep"}
+{"id": "MONDO:0006545", "verdict": "fix", "fields": {"ko_lay": []}, "reason": "약 알레르기 피부병 misleads: EM is mostly herpes-triggered and drug allergy rashes are other diseases"}
+{"id": "MONDO:0004496", "verdict": "keep"}
+{"id": "MONDO:0001542", "verdict": "keep"}
+{"id": "MONDO:0019514", "verdict": "keep"}
+{"id": "MONDO:0006515", "verdict": "keep"}
+{"id": "MONDO:0009693", "verdict": "keep"}
+{"id": "MONDO:0005046", "verdict": "keep"}
+{"id": "MONDO:0000465", "verdict": "keep"}
+{"id": "MONDO:0024298", "verdict": "keep"}
+{"id": "MONDO:0004985", "verdict": "keep"}
+{"id": "MONDO:0005575", "verdict": "keep"}
+{"id": "MONDO:0006955", "verdict": "fix", "fields": {"ko": ["류마티스 심장병", "류마티스성 심장질환"], "en": ["rheumatic heart disease", "rheumatic carditis"]}, "reason": "ko[0] was 방실차단 (AV block); 류마티스열/rheumatic fever is a different disease"}
+{"id": "MONDO:0011122", "verdict": "keep"}
+{"id": "MONDO:0024574", "verdict": "keep"}
+{"id": "MONDO:0005344", "verdict": "keep"}
+{"id": "MONDO:0100114", "verdict": "keep"}
+{"id": "MONDO:0004845", "verdict": "fix", "fields": {"ko": ["아프타성 구내염", "구내염"]}, "reason": "ko[0] was 선천성 심혈관기형, not this disease"}
+{"id": "MONDO:0010602", "verdict": "keep"}
+{"id": "MONDO:0005618", "verdict": "keep"}
+{"id": "MONDO:0002271", "verdict": "keep"}
+{"id": "MONDO:0001161", "verdict": "keep"}
+{"id": "MONDO:0001214", "verdict": "keep"}
+{"id": "MONDO:0024239", "verdict": "keep"}
+{"id": "MONDO:0002220", "verdict": "fix", "fields": {"ko": ["치아 경조직 질환", "치아 마모증", "치아 침식증"]}, "reason": "dental erosion is 치아 침식증, not 치아 부식"}
+{"id": "MONDO:0021839", "verdict": "keep"}
+{"id": "MONDO:0006052", "verdict": "keep"}

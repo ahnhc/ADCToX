@@ -78,3 +78,14 @@ These override the rules above where they differ.
 - **Tumours take the organ they arise in, including skin cancers** (basal cell carcinoma → dermatologic). Breast, ovary, uterus, cervix, prostate and testis tumours have no axis; add an axis only when the disease itself involves another organ.
 - **Hernias:** abdominal-wall hernias → `gastrointestinal`; hiatal hernia → `gastrointestinal`.
 - **Genetic syndromes:** label the organs the syndrome damages in most patients, at most 4. Do not answer `unclear` only because the disease is rare; use the definition and the ancestors.
+
+## v4 additions (2026-10-17, Opus review and adjudication)
+
+Conventions the adjudicators applied where the rules above were silent. They hold for new labels and for future reviews.
+
+- **Non-human animal diseases are not training concepts.** MONDO's non-human branch and names with a species (dog, cattle, pig, macaque ...) are left out of the labels entirely (`linking_models.load_organ_labels` drops them).
+- **Neuromuscular:** primary myopathies, muscular dystrophies and muscle channelopathies → `musculoskeletal`; neuropathies, motor neuron disease and neuromuscular-junction disease → `neurologic`. A myopathy with cardiomyopathy in most patients adds `cardiovascular`.
+- **Inborn errors of metabolism** (lysosomal, peroxisomal, mitochondrial, glycosylation): `metabolic_endocrine` plus the organs the disease damages in most patients.
+- **Gonadal failure and hormone resistance** (premature ovarian failure, androgen insensitivity) → `metabolic_endocrine`; purely anatomical reproductive conditions stay `no_axis`.
+- **Upper airway** (nose, sinuses, pharynx, larynx) → `pulmonary`. Mouth, teeth and salivary glands stay `gastrointestinal` (v3).
+- **Multi-system autoimmune disease** (SLE, Sjögren, sarcoidosis, vasculitis): `infectious_immune` plus the organs involved in most patients, at most 4 in all.

@@ -1,0 +1,40 @@
+{"id": "MONDO:0002974", "verdict": "fix", "fields": {"ko": ["자궁경부암", "자궁목암"]}, "reason": "ko[0] '망막질환' is retinal disease, not cervical cancer"}
+{"id": "MONDO:0001056", "verdict": "keep"}
+{"id": "MONDO:0009891", "verdict": "keep"}
+{"id": "MONDO:0001309", "verdict": "keep"}
+{"id": "MONDO:0001657", "verdict": "keep"}
+{"id": "MONDO:0043537", "verdict": "keep"}
+{"id": "MONDO:0003709", "verdict": "keep"}
+{"id": "MONDO:0021680", "verdict": "fix", "fields": {"ko": ["연쇄구균 감염", "연쇄구균 패혈증"]}, "reason": "ko[0] named the narrower streptococcal sepsis; shown name should be the infection"}
+{"id": "MONDO:0006683", "verdict": "keep"}
+{"id": "MONDO:0005279", "verdict": "keep"}
+{"id": "MONDO:0004844", "verdict": "keep"}
+{"id": "MONDO:0005110", "verdict": "fix", "fields": {"ko": ["특발성 심근병증", "확장성 심근병증", "비허혈성 심근병증"]}, "reason": "shown name should match idiopathic cardiomyopathy; non-ischemic CM is broader"}
+{"id": "MONDO:0024573", "verdict": "fix", "fields": {"en": ["hypertrophic cardiomyopathy", "familial hypertrophic cardiomyopathy"], "ko": ["비후성 심근병증", "비대심근병증"]}, "reason": "ko '구강 백반증', '심부전' are other diseases; en[0] was heart failure phrasing"}
+{"id": "MONDO:0005393", "verdict": "keep"}
+{"id": "MONDO:0004235", "verdict": "keep"}
+{"id": "MONDO:0042491", "verdict": "keep"}
+{"id": "MONDO:0005283", "verdict": "fix", "fields": {"ko": ["망막질환", "망막장애"]}, "reason": "'기타 망막장애' is a KCD residual-category label, not a name"}
+{"id": "MONDO:0001143", "verdict": "keep"}
+{"id": "MONDO:0000705", "verdict": "keep"}
+{"id": "MONDO:0002174", "verdict": "keep"}
+{"id": "MONDO:0001594", "verdict": "keep"}
+{"id": "MONDO:0020800", "verdict": "fix", "fields": {"en": ["demyelinating disease of the central nervous system", "CNS demyelinating disease"], "abbr": [], "ko_lay": []}, "reason": "MS/NMO name specific child diseases, not the group; '신경 질환' far too broad"}
+{"id": "MONDO:0003117", "verdict": "keep"}
+{"id": "MONDO:0011786", "verdict": "keep"}
+{"id": "MONDO:0003939", "verdict": "keep"}
+{"id": "MONDO:0000654", "verdict": "keep"}
+{"id": "MONDO:0021108", "verdict": "keep"}
+{"id": "MONDO:0043693", "verdict": "keep"}
+{"id": "MONDO:0005452", "verdict": "keep"}
+{"id": "MONDO:0005154", "verdict": "keep"}
+{"id": "MONDO:0005030", "verdict": "keep"}
+{"id": "MONDO:0021201", "verdict": "keep"}
+{"id": "MONDO:0001658", "verdict": "keep"}
+{"id": "MONDO:0001160", "verdict": "fix", "fields": {"ko_lay": ["히스테리"]}, "reason": "'신체화' is somatization (somatoform disorder), not dissociative"}
+{"id": "MONDO:0044782", "verdict": "keep"}
+{"id": "MONDO:0016367", "verdict": "fix", "fields": {"en": ["dermatomyositis"], "ko": ["피부근염"]}, "reason": "polymyositis/다발성근염 is a separate myopathy without the skin rash"}
+{"id": "MONDO:0002041", "verdict": "keep"}
+{"id": "MONDO:0001187", "verdict": "keep"}
+{"id": "MONDO:0001212", "verdict": "fix", "fields": {"ko": ["삼출성 중이염", "장액성 중이염"]}, "reason": "ko[0] '군발두통' is cluster headache, not otitis media"}
+{"id": "MONDO:0005156", "verdict": "keep"}

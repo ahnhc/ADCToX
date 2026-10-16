@@ -1,0 +1,255 @@
+{"i": 4409, "verdict": "keep", "text": "간질성 방광염", "reason": "correct"}
+{"i": 1421, "verdict": "keep", "text": "섬유모세포성 종양", "reason": "correct"}
+{"i": 270, "verdict": "keep", "text": "갑상선 미분화암", "reason": "correct"}
+{"i": 343, "verdict": "keep", "text": "말초신경병증이 있어요", "reason": "correct"}
+{"i": 924, "verdict": "keep", "text": "B세포 신생물", "reason": "correct"}
+{"i": 3825, "verdict": "keep", "text": "유방·난소암 감수성 3형", "reason": "correct"}
+{"i": 4769, "verdict": "keep", "text": "척수 손상", "reason": "correct"}
+{"i": 1255, "verdict": "keep", "text": "활막 육종", "reason": "correct"}
+{"i": 2861, "verdict": "keep", "text": "부분 운동발작 간질", "reason": "correct"}
+{"i": 2269, "verdict": "keep", "text": "갑상선 암종", "reason": "correct"}
+{"i": -15005, "verdict": "drop", "text": "무좀", "reason": "tinea pedis term, not GIST"}
+{"i": 13, "verdict": "keep", "text": "빛이나 화면을 보면 발작이 있어요", "reason": "correct"}
+{"i": 645, "verdict": "keep", "text": "MLS", "reason": "correct"}
+{"i": 2279, "verdict": "keep", "text": "방광암 진단받았어요", "reason": "correct"}
+{"i": 1327, "verdict": "keep", "text": "림프증식장애", "reason": "correct"}
+{"i": 4802, "verdict": "keep", "text": "음경 질환", "reason": "correct"}
+{"i": 4269, "verdict": "keep", "text": "낸스-호란 증후군", "reason": "correct"}
+{"i": 446, "verdict": "fix", "text": "저베타지단백혈증", "reason": "standard spelling uses 베타, not β"}
+{"i": 3623, "verdict": "keep", "text": "항문암", "reason": "correct"}
+{"i": 2456, "verdict": "keep", "text": "브루턴형 무감마글로불린혈증", "reason": "correct"}
+{"i": 4819, "verdict": "keep", "text": "구내염이 있어요", "reason": "correct"}
+{"i": 376, "verdict": "keep", "text": "편두통 감수성 1형", "reason": "correct"}
+{"i": 1240, "verdict": "fix", "text": "히르슈슈프룽병", "reason": "standard transliteration of Hirschsprung"}
+{"i": 4092, "verdict": "keep", "text": "혈소판증가증", "reason": "correct"}
+{"i": 1456, "verdict": "keep", "text": "섬유낭성 유방 변화", "reason": "correct"}
+{"i": 35, "verdict": "keep", "text": "HCC", "reason": "correct"}
+{"i": 3291, "verdict": "keep", "text": "희소정자증", "reason": "correct"}
+{"i": 1603, "verdict": "keep", "text": "유전성 용혈성 빈혈", "reason": "correct"}
+{"i": 3625, "verdict": "keep", "text": "항문암 진단받았어요", "reason": "correct"}
+{"i": 3025, "verdict": "keep", "text": "피부 림프종 진단받았어요", "reason": "correct"}
+{"i": 2336, "verdict": "keep", "text": "질염 진단받았어요", "reason": "correct"}
+{"i": 677, "verdict": "fix", "text": "유비저에 걸렸어요", "reason": "melioidosis is 유비저 in Korean"}
+{"i": 3605, "verdict": "fix", "text": "에스트로겐 수용체 양성 유방암", "reason": "concept is ER+, HR+ is wider"}
+{"i": 1163, "verdict": "keep", "text": "신경통이 있어요", "reason": "correct"}
+{"i": -15001, "verdict": "drop", "text": "CPFE", "reason": "CPFE is a lung syndrome, not seminoma"}
+{"i": 728, "verdict": "keep", "text": "호중구감소증", "reason": "correct"}
+{"i": 4530, "verdict": "fix", "text": "암치질", "reason": "치질 alone is the parent hemorrhoid; 암치질 is internal"}
+{"i": 4746, "verdict": "keep", "text": "양성 발작성 체위성 현훈", "reason": "correct"}
+{"i": 2337, "verdict": "drop", "text": "자폐 스펙트럼 장애", "reason": "parent autism spectrum disorder, concept is ASD 1 (Asperger)"}
+{"i": 2867, "verdict": "keep", "text": "복막으로 암이 퍼졌대요", "reason": "correct"}
+{"i": 1344, "verdict": "keep", "text": "횡문근양종양 진단받았어요", "reason": "correct"}
+{"i": 2530, "verdict": "keep", "text": "중성지방이 높다", "reason": "correct"}
+{"i": 2386, "verdict": "keep", "text": "마그네슘 결핍", "reason": "correct"}
+{"i": 1505, "verdict": "fix", "text": "20번 고리염색체 증후군", "reason": "ring chromosome is 고리염색체"}
+{"i": 4275, "verdict": "keep", "text": "대장 양성종양", "reason": "correct"}
+{"i": 3642, "verdict": "keep", "text": "어깨충돌증후군이 있어요", "reason": "correct"}
+{"i": 2553, "verdict": "drop", "text": "난청", "reason": "generic hearing loss, concept is X-linked type 1"}
+{"i": 3199, "verdict": "keep", "text": "양극성 장애 2형 진단받았어요", "reason": "correct"}
+{"i": -15002, "verdict": "drop", "text": "태아알코올스펙트럼장애 진단받았어요", "reason": "fetal alcohol spectrum disorder, not C4B deficiency"}
+{"i": 3155, "verdict": "keep", "text": "HCA", "reason": "correct"}
+{"i": 3613, "verdict": "keep", "text": "척추전방전위증", "reason": "correct"}
+{"i": 1749, "verdict": "keep", "text": "뇌하수체 혹", "reason": "correct"}
+{"i": 925, "verdict": "keep", "text": "B세포 종양", "reason": "correct"}
+{"i": 734, "verdict": "keep", "text": "뇌부종", "reason": "correct"}
+{"i": -15003, "verdict": "drop", "text": "낭포황반부종이 있어요", "reason": "cystoid macular edema, not Curry-Jones syndrome"}
+{"i": 1362, "verdict": "keep", "text": "섬유형성 소원형세포종양", "reason": "correct"}
+{"i": 498, "verdict": "keep", "text": "선천성 대사질환이 있어요", "reason": "correct"}
+{"i": 1357, "verdict": "fix", "text": "악센펠트-리거 증후군이 있어요", "reason": "standard transliteration 악센펠트"}
+{"i": 2488, "verdict": "keep", "text": "난관에 종양이 있어요", "reason": "correct"}
+{"i": 3834, "verdict": "keep", "text": "COIF", "reason": "correct"}
+{"i": 3869, "verdict": "keep", "text": "전신 비만세포증", "reason": "correct"}
+{"i": 447, "verdict": "keep", "text": "저베타지단백혈증이 있어요", "reason": "correct"}
+{"i": 4077, "verdict": "keep", "text": "후기 영아형 신경세로이드 리포푸신증", "reason": "correct"}
+{"i": 2287, "verdict": "keep", "text": "결막 악성 흑색종", "reason": "correct"}
+{"i": -15004, "verdict": "drop", "text": "ARBD", "reason": "alcohol-related birth defect, not interstitial cystitis"}
+{"i": 3858, "verdict": "keep", "text": "사춘기가 너무 일찍 왔어요", "reason": "correct"}
+{"i": 4480, "verdict": "drop", "text": "담즙정체가 있대요", "reason": "generic cholestasis, concept is intrahepatic"}
+{"i": 748, "verdict": "drop", "text": "혈관종", "reason": "generic hemangioma, concept is cavernous"}
+{"i": 3250, "verdict": "keep", "text": "곰팡이 감염이 있어요", "reason": "correct"}
+{"i": 4606, "verdict": "keep", "text": "젖산 산증", "reason": "correct"}
+{"i": 4602, "verdict": "keep", "text": "만성 설사증", "reason": "correct"}
+{"i": 4405, "verdict": "fix", "text": "세균성 질증", "reason": "vaginosis is 질증, not 질염"}
+{"i": 1614, "verdict": "keep", "text": "프롤리다아제 결핍증", "reason": "correct"}
+{"i": 2941, "verdict": "keep", "text": "보웬병", "reason": "correct"}
+{"i": 3655, "verdict": "keep", "text": "방광 요막관 선암", "reason": "correct"}
+{"i": 844, "verdict": "keep", "text": "삼차신경통", "reason": "correct"}
+{"i": 911, "verdict": "keep", "text": "CPFE", "reason": "correct"}
+{"i": 3375, "verdict": "keep", "text": "외음부 악성종양", "reason": "correct"}
+{"i": 2044, "verdict": "keep", "text": "베타 지중해빈혈", "reason": "correct"}
+{"i": 1430, "verdict": "keep", "text": "인두염", "reason": "correct"}
+{"i": 510, "verdict": "drop", "text": "선천성 용혈성 빈혈이 있어요", "reason": "parent congenital hemolytic anemia, concept is nonspherocytic"}
+{"i": 1841, "verdict": "keep", "text": "반지세포암 진단받았어요", "reason": "correct"}
+{"i": 2068, "verdict": "keep", "text": "ILC", "reason": "correct"}
+{"i": 3877, "verdict": "keep", "text": "자궁경부 편평상피내 병변", "reason": "correct"}
+{"i": 545, "verdict": "keep", "text": "점액다당증 4A형", "reason": "correct"}
+{"i": 4877, "verdict": "keep", "text": "안검내반증", "reason": "correct"}
+{"i": 1777, "verdict": "keep", "text": "세기관지염", "reason": "correct"}
+{"i": 391, "verdict": "keep", "text": "동정맥 기형이 있어요", "reason": "correct"}
+{"i": 4918, "verdict": "keep", "text": "혈전성 혈소판감소성 자반증", "reason": "correct"}
+{"i": 4066, "verdict": "keep", "text": "각막확장증", "reason": "correct"}
+{"i": 4928, "verdict": "drop", "text": "콩팥병", "reason": "generic kidney disease, concept is nephrosclerosis"}
+{"i": 759, "verdict": "keep", "text": "아르기니노숙신산뇨증 진단받았어요", "reason": "correct"}
+{"i": 4511, "verdict": "drop", "text": "두경부암", "reason": "head and neck cancer is narrower than head and neck neoplasm"}
+{"i": 1514, "verdict": "keep", "text": "담관 유두상 종양", "reason": "correct"}
+{"i": 2541, "verdict": "keep", "text": "얼굴 중앙 기형이 있어요", "reason": "correct"}
+{"i": 862, "verdict": "keep", "text": "양성 종양", "reason": "correct"}
+{"i": 4799, "verdict": "fix", "text": "스포로트릭스증", "reason": "standard term for sporotrichosis"}
+{"i": 800, "verdict": "keep", "text": "BDD", "reason": "correct"}
+{"i": 4107, "verdict": "keep", "text": "선모충 감염", "reason": "correct"}
+{"i": 3486, "verdict": "keep", "text": "분열형 성격장애", "reason": "correct"}
+{"i": 2451, "verdict": "keep", "text": "달팽이관 질환", "reason": "correct"}
+{"i": 3885, "verdict": "keep", "text": "소장 세균 과증식이 있어요", "reason": "correct"}
+{"i": 2699, "verdict": "drop", "text": "입안에 혹이 생겼어요", "reason": "any oral lump, concept is oral fibroma"}
+{"i": 318, "verdict": "keep", "text": "NTD", "reason": "correct"}
+{"i": 2301, "verdict": "keep", "text": "간질세포종양", "reason": "correct"}
+{"i": 2760, "verdict": "keep", "text": "BHD", "reason": "correct"}
+{"i": 4451, "verdict": "keep", "text": "AIHA", "reason": "correct"}
+{"i": 3775, "verdict": "fix", "text": "고환 정모세포성 정상피종이 있어요", "reason": "spermatocytic seminoma; 정모세포종 is ambiguous"}
+{"i": 161, "verdict": "keep", "text": "에머리-드레이푸스 근이영양증", "reason": "correct"}
+{"i": 1022, "verdict": "drop", "text": "어린선증이 있어요", "reason": "generic ichthyosis, concept is recessive X-linked"}
+{"i": 4011, "verdict": "keep", "text": "음경 보웬병", "reason": "correct"}
+{"i": 3654, "verdict": "keep", "text": "태아알코올스펙트럼장애 진단받았어요", "reason": "correct"}
+{"i": 23, "verdict": "keep", "text": "G6PD 결핍이 있어요", "reason": "correct"}
+{"i": 831, "verdict": "keep", "text": "재생불량성 빈혈 진단받았어요", "reason": "correct"}
+{"i": 1256, "verdict": "keep", "text": "활막육종 진단받았어요", "reason": "correct"}
+{"i": 203, "verdict": "keep", "text": "지주막하출혈", "reason": "correct"}
+{"i": 4093, "verdict": "keep", "text": "혈소판 증다증", "reason": "correct"}
+{"i": 1386, "verdict": "keep", "text": "시각장애", "reason": "correct"}
+{"i": 4594, "verdict": "keep", "text": "말기 신장질환", "reason": "correct"}
+{"i": 2225, "verdict": "keep", "text": "미만성 큰 B세포 림프종", "reason": "correct"}
+{"i": 325, "verdict": "keep", "text": "폐암 진단받았어요", "reason": "correct"}
+{"i": 4888, "verdict": "fix", "text": "장병성 말단피부염이 있어요", "reason": "acrodermatitis enteropathica is 장병성 말단피부염"}
+{"i": 172, "verdict": "keep", "text": "치주염", "reason": "correct"}
+{"i": 4333, "verdict": "keep", "text": "광선각화증", "reason": "correct"}
+{"i": 873, "verdict": "keep", "text": "Xq28 중복 증후군", "reason": "correct"}
+{"i": 3310, "verdict": "keep", "text": "ARBD", "reason": "correct"}
+{"i": 4552, "verdict": "fix", "text": "치수염", "reason": "standard formal term"}
+{"i": 2080, "verdict": "keep", "text": "C3G", "reason": "correct"}
+{"i": 3355, "verdict": "keep", "text": "보체 C4B 결핍이 있어요", "reason": "correct"}
+{"i": 4040, "verdict": "keep", "text": "무좀", "reason": "correct"}
+{"i": 3848, "verdict": "keep", "text": "위장관 간질종양", "reason": "correct"}
+{"i": 1383, "verdict": "fix", "text": "모발코지골 증후군 1형이 있어요", "reason": "transliteration unnatural; Korean term 모발코지골 증후군"}
+{"i": 4536, "verdict": "keep", "text": "다중인격장애", "reason": "correct"}
+{"i": 777, "verdict": "keep", "text": "육아종성 전립선염 진단받았어요", "reason": "correct"}
+{"i": 1561, "verdict": "keep", "text": "분리불안", "reason": "correct"}
+{"i": 1136, "verdict": "keep", "text": "태아 성장 제한", "reason": "correct"}
+{"i": 2544, "verdict": "fix", "text": "뮌케 증후군 진단받았어요", "reason": "standard transliteration 뮌케"}
+{"i": 3800, "verdict": "keep", "text": "림프부종-이중속눈썹 증후군", "reason": "correct"}
+{"i": 3456, "verdict": "keep", "text": "MRSA에 감염됐어요", "reason": "correct"}
+{"i": 3646, "verdict": "fix", "text": "진드기에 물렸어요", "reason": "awkward wording"}
+{"i": 2743, "verdict": "keep", "text": "기생충에 감염됐어요", "reason": "correct"}
+{"i": 3120, "verdict": "drop", "text": "위암", "reason": "generic gastric cancer, concept is gastric squamous cell carcinoma"}
+{"i": 1391, "verdict": "keep", "text": "공황장애", "reason": "correct"}
+{"i": 3828, "verdict": "keep", "text": "간헐적 폭발성 장애", "reason": "correct"}
+{"i": 3418, "verdict": "drop", "text": "염색체 수가 정상보다 많다고 해요", "reason": "includes aneuploidy, not specific to polyploidy"}
+{"i": 2899, "verdict": "keep", "text": "고인슐린성 저혈당증이 있어요", "reason": "correct"}
+{"i": 4578, "verdict": "keep", "text": "특발성 측만증", "reason": "correct"}
+{"i": 2620, "verdict": "keep", "text": "약 먹고 정신병 증상이 생겼어요", "reason": "correct"}
+{"i": 640, "verdict": "keep", "text": "발달성 협응장애가 있어요", "reason": "correct"}
+{"i": 1292, "verdict": "keep", "text": "칸디다", "reason": "correct"}
+{"i": 3190, "verdict": "keep", "text": "각막 부종 진단받았어요", "reason": "correct"}
+{"i": 1066, "verdict": "keep", "text": "잇몸에 염증이 있어요", "reason": "correct"}
+{"i": 9, "verdict": "keep", "text": "DMD", "reason": "correct"}
+{"i": 3158, "verdict": "keep", "text": "FNH", "reason": "correct"}
+{"i": 2434, "verdict": "drop", "text": "다발성 골단 이형성증 진단받았어요", "reason": "parent MED, concept is type 2"}
+{"i": 36, "verdict": "keep", "text": "간암 진단받았어요", "reason": "correct"}
+{"i": 465, "verdict": "keep", "text": "골절 진단받았어요", "reason": "correct"}
+{"i": 3458, "verdict": "keep", "text": "타르살 킹크 증후군", "reason": "correct"}
+{"i": 1419, "verdict": "keep", "text": "MODS", "reason": "correct"}
+{"i": 2852, "verdict": "keep", "text": "방사선 때문에 후유증이 생겼어요", "reason": "correct"}
+{"i": 4878, "verdict": "keep", "text": "안검내반증 진단받았어요", "reason": "correct"}
+{"i": 278, "verdict": "fix", "text": "파필롱-르페브르 증후군", "reason": "standard transliteration"}
+{"i": 735, "verdict": "keep", "text": "뇌가 붓다", "reason": "correct"}
+{"i": 2420, "verdict": "keep", "text": "치은 비대", "reason": "correct"}
+{"i": 3862, "verdict": "keep", "text": "생식세포종양", "reason": "correct"}
+{"i": 2075, "verdict": "keep", "text": "살모넬라 식중독", "reason": "correct"}
+{"i": 4022, "verdict": "keep", "text": "의미성 치매", "reason": "correct"}
+{"i": 2447, "verdict": "keep", "text": "망막 패턴 이영양증 진단받았어요", "reason": "correct"}
+{"i": 3748, "verdict": "keep", "text": "장 꼬임 진단받았어요", "reason": "correct"}
+{"i": 3766, "verdict": "keep", "text": "바베시아 감염이 있어요", "reason": "correct"}
+{"i": 867, "verdict": "keep", "text": "여성 유방암", "reason": "correct"}
+{"i": 502, "verdict": "drop", "text": "트리코리노팔랑게알 증후군이 있어요", "reason": "no type; concept is TRPS type II (Langer-Giedion)"}
+{"i": 1515, "verdict": "keep", "text": "담관 유두종증", "reason": "correct"}
+{"i": 4754, "verdict": "keep", "text": "동결견", "reason": "correct"}
+{"i": 3783, "verdict": "keep", "text": "바터팽대부암", "reason": "correct"}
+{"i": 2777, "verdict": "keep", "text": "융모선종이 있대요", "reason": "correct"}
+{"i": 2309, "verdict": "keep", "text": "설암", "reason": "correct"}
+{"i": 2065, "verdict": "keep", "text": "침윤성 소엽암", "reason": "correct"}
+{"i": 4823, "verdict": "fix", "text": "동기능부전 증후군 진단받았어요", "reason": "sick sinus syndrome is 동기능부전 증후군"}
+{"i": 2449, "verdict": "drop", "text": "망막 원추세포 이영양증 진단받았어요", "reason": "parent cone dystrophy, concept is type 1"}
+{"i": 1110, "verdict": "keep", "text": "소뇌 실조증", "reason": "correct"}
+{"i": 4410, "verdict": "drop", "text": "방광염", "reason": "generic cystitis, concept is interstitial"}
+{"i": 1081, "verdict": "keep", "text": "유전성 신생물 증후군", "reason": "correct"}
+{"i": 2032, "verdict": "keep", "text": "C형 간염", "reason": "correct"}
+{"i": 2998, "verdict": "keep", "text": "염증성 근섬유모세포종 진단받았어요", "reason": "correct"}
+{"i": 3285, "verdict": "keep", "text": "NF1", "reason": "correct"}
+{"i": 1818, "verdict": "keep", "text": "선천성 장 폐쇄증", "reason": "correct"}
+{"i": 607, "verdict": "keep", "text": "급성 골수성 백혈병", "reason": "correct"}
+{"i": 1853, "verdict": "keep", "text": "팔다리 기형", "reason": "correct"}
+{"i": 2969, "verdict": "keep", "text": "경정맥고실 부신경절종이 있대요", "reason": "correct"}
+{"i": 1297, "verdict": "keep", "text": "모기질종", "reason": "correct"}
+{"i": 4561, "verdict": "keep", "text": "음부 통증", "reason": "correct"}
+{"i": 4690, "verdict": "keep", "text": "연성 섬유종", "reason": "correct"}
+{"i": 3205, "verdict": "keep", "text": "문맥고혈압", "reason": "correct"}
+{"i": 4843, "verdict": "keep", "text": "맨틀세포 림프종", "reason": "correct"}
+{"i": 2308, "verdict": "keep", "text": "유미성 복수가 있어요", "reason": "correct"}
+{"i": 1852, "verdict": "keep", "text": "선천성 팔다리 기형", "reason": "correct"}
+{"i": 693, "verdict": "fix", "text": "무베타지단백혈증이 있어요", "reason": "standard term uses 지단백"}
+{"i": 3942, "verdict": "keep", "text": "호산구성 위장염", "reason": "correct"}
+{"i": 1539, "verdict": "drop", "text": "심내막염", "reason": "parent endocarditis and not an abbreviation"}
+{"i": 4230, "verdict": "keep", "text": "전립선에 결석이 있어요", "reason": "correct"}
+{"i": 3123, "verdict": "keep", "text": "다형성 심실빈맥이 있어요", "reason": "correct"}
+{"i": 4669, "verdict": "keep", "text": "청년기 발병 성인형 당뇨병", "reason": "correct"}
+{"i": 2442, "verdict": "keep", "text": "마이오스타틴 관련 근비대가 있어요", "reason": "correct"}
+{"i": 4903, "verdict": "keep", "text": "최소 침윤성 폐선암", "reason": "correct"}
+{"i": 2245, "verdict": "keep", "text": "근육에 병이 있어요", "reason": "correct"}
+{"i": 1866, "verdict": "keep", "text": "칼만 증후군", "reason": "correct"}
+{"i": 3561, "verdict": "keep", "text": "낭포황반부종이 있어요", "reason": "correct"}
+{"i": 1050, "verdict": "keep", "text": "양쪽 유방암", "reason": "correct"}
+{"i": 4515, "verdict": "keep", "text": "침윤성 유관암", "reason": "correct"}
+{"i": 4003, "verdict": "drop", "text": "위암이라고 진단받았어요", "reason": "generic gastric cancer, concept is intestinal-type adenocarcinoma"}
+{"i": 2385, "verdict": "keep", "text": "생식기 HPV 감염이 있어요", "reason": "correct"}
+{"i": 2783, "verdict": "keep", "text": "대장에 무경성 톱니형 용종이 있대요", "reason": "correct"}
+{"i": 3222, "verdict": "keep", "text": "루미날 A형 유방암", "reason": "correct"}
+{"i": 2395, "verdict": "keep", "text": "고환 염전 진단받았어요", "reason": "correct"}
+{"i": 3455, "verdict": "keep", "text": "MRSA", "reason": "correct"}
+{"i": 1296, "verdict": "keep", "text": "반사회성 인격장애 진단받았어요", "reason": "correct"}
+{"i": 2320, "verdict": "keep", "text": "자궁내 태아사망", "reason": "correct"}
+{"i": 2471, "verdict": "drop", "text": "직장암 진단받았어요", "reason": "rectal cancer is narrower than rectal neoplasm"}
+{"i": 4495, "verdict": "keep", "text": "각막염이 있어요", "reason": "correct"}
+{"i": 174, "verdict": "keep", "text": "잇몸병이 있어요", "reason": "correct"}
+{"i": 2524, "verdict": "keep", "text": "신생아 혈소판감소증", "reason": "correct"}
+{"i": 1647, "verdict": "fix", "text": "합지증", "reason": "syndactyly covers fingers and toes; 수지 유합증 is fingers only"}
+{"i": 731, "verdict": "keep", "text": "간질성 신염", "reason": "correct"}
+{"i": 4691, "verdict": "keep", "text": "피부 연성 섬유종", "reason": "correct"}
+{"i": 212, "verdict": "keep", "text": "치아우식증", "reason": "correct"}
+{"i": 3389, "verdict": "keep", "text": "말소리장애", "reason": "correct"}
+{"i": 3761, "verdict": "keep", "text": "커리-존스 증후군", "reason": "correct"}
+{"i": 4335, "verdict": "keep", "text": "광선각화증이 있대요", "reason": "correct"}
+{"i": 4880, "verdict": "keep", "text": "간외 담즙정체증", "reason": "correct"}
+{"i": 667, "verdict": "keep", "text": "담낭암", "reason": "correct"}
+{"i": 3972, "verdict": "keep", "text": "뇌들보가 태어날 때부터 없어요", "reason": "correct"}
+{"i": 335, "verdict": "keep", "text": "혈소판감소증 1형", "reason": "correct"}
+{"i": 3590, "verdict": "drop", "text": "비듬", "reason": "dandruff is a neighbour, not seborrheic dermatitis"}
+{"i": 4548, "verdict": "keep", "text": "기분저하증", "reason": "correct"}
+{"i": 1046, "verdict": "keep", "text": "재영양 증후군", "reason": "correct"}
+{"i": 2567, "verdict": "keep", "text": "HE", "reason": "correct"}
+{"i": 2572, "verdict": "keep", "text": "폐렴구균성 수막염", "reason": "correct"}
+{"i": 4184, "verdict": "keep", "text": "그람음성균에 감염됐어요", "reason": "correct"}
+{"i": 2914, "verdict": "keep", "text": "망막에 염증이 있대요", "reason": "correct"}
+{"i": 1596, "verdict": "keep", "text": "선천성 아미노산 대사 장애", "reason": "correct"}
+{"i": 2028, "verdict": "keep", "text": "VOD", "reason": "correct"}
+{"i": 846, "verdict": "keep", "text": "자가면역 갑상선염 관련 스테로이드 반응성 뇌병증", "reason": "correct"}
+{"i": 2752, "verdict": "keep", "text": "백내장 수술 중에 동공이 좁아졌대요", "reason": "correct"}
+{"i": 2535, "verdict": "drop", "text": "피가 잘 굳지 않는 선천성 질환이 있어요", "reason": "any congenital bleeding disorder, concept is afibrinogenemia"}
+{"i": 1229, "verdict": "keep", "text": "선천성 렙틴 결핍증", "reason": "correct"}
+{"i": 4807, "verdict": "keep", "text": "막성 사구체신염", "reason": "correct"}
+{"i": 2963, "verdict": "keep", "text": "구루병이래요", "reason": "correct"}
+{"i": 3657, "verdict": "keep", "text": "요막관 선암이 있어요", "reason": "correct"}
+{"i": 4678, "verdict": "keep", "text": "직장암 진단받았어요", "reason": "correct"}
+{"i": 3004, "verdict": "keep", "text": "정중 마름모혀염", "reason": "correct"}
+{"i": 4768, "verdict": "keep", "text": "외골증이 있어요", "reason": "correct"}
+{"i": 4390, "verdict": "keep", "text": "소섬유 신경병증", "reason": "correct"}
+{"i": 4558, "verdict": "keep", "text": "클라미디아에 감염됐어요", "reason": "correct"}
+{"i": 3507, "verdict": "keep", "text": "동공 이소증", "reason": "correct"}

@@ -1,0 +1,255 @@
+{"i": 710, "verdict": "keep", "text": "중학생 아들이 무릎 바로 아래 뼈가 튀어나와 있고 운동만 하면 아프다고 해요. 계단을 올라갈 때도 아파요.", "reason": "fits"}
+{"i": 711, "verdict": "keep", "text": "초등학생 딸이 달리기만 하면 무릎이 뻐근하고 앉았다 일어날 때도 아프다고 해요. 무릎 앞쪽이 부어 있어요.", "reason": "fits"}
+{"i": 712, "verdict": "keep", "text": "농구를 많이 하는 열두 살 아이인데 무릎 밑 뼈가 솟아 있고 꿇어앉기가 힘들다고 해요.", "reason": "fits"}
+{"i": 713, "verdict": "keep", "text": "발뒤꿈치가 뒤꿈치 뼈 쪽에서 쑤시고 걸으면 아파요. 성장기라서 그런 건지 걱정돼요.", "reason": "fits"}
+{"i": 714, "verdict": "keep", "text": "11세 남아, 경골 조면부 압통 및 종대, 슬관절 신전 시 통증. X선상 조면 골편 분절화 소견. 운동 제한 및 냉찜질 권고.", "reason": "fits"}
+{"i": 715, "verdict": "keep", "text": "9세 여아, 발뒤꿈치 골단 압통, 보행 시 통증, 종골 골단 밀도 변화. 활동 조절 및 깔창 처방.", "reason": "fits"}
+{"i": 716, "verdict": "keep", "text": "My 13-year-old son has a painful hard bump below his kneecap that gets worse every time he runs or jumps for basketball.", "reason": "fits"}
+{"i": 717, "verdict": "keep", "text": "My daughter's heel hurts when she walks and runs, the bone there looks swollen, and she's a very active nine-year-old.", "reason": "fits"}
+{"i": 718, "verdict": "keep", "text": "Twelve-year-old boy with tibial tubercle tenderness and swelling, pain with resisted knee extension; radiograph shows fragmentation of the apophysis.", "reason": "fits"}
+{"i": 719, "verdict": "keep", "text": "Nine-year-old girl with calcaneal apophysis tenderness and pain on heel compression after increased sport training; radiograph shows increased density and irregular growth plate.", "reason": "fits"}
+{"i": 2635, "verdict": "keep", "text": "양안 안압 상승 소견, 전방각 협소, 시야검사에서 부채꼴 결손, 가족력 양성.", "reason": "fits"}
+{"i": 2639, "verdict": "keep", "text": "Bilateral elevated IOP, open angle on gonioscopy, peripheral field loss, family history of visual loss.", "reason": "fits"}
+{"i": 2637, "verdict": "fix", "text": "My eye pressure was high at a checkup and my mom went blind from glaucoma. I'm 60 now.", "reason": "unnatural 'went blind from her eyes'"}
+{"i": 2638, "verdict": "keep", "text": "62-year-old with IOP 32 mmHg OD, cup-to-disc 0.85, arcuate scotoma on Humphrey field, optic nerve thinning on OCT.", "reason": "fits"}
+{"i": 2632, "verdict": "fix", "text": "앞은 잘 보이는데 옆으로 보이는 게 점점 안 보여요. 오십 대 여자예요.", "reason": "irrelevant hearing clause made the sentence odd"}
+{"i": -21004, "verdict": "drop", "text": "몇 년째 한곳을 긁는 습관이 있는데 피부가 돌처럼 딱딱해졌어요.", "reason": "neurodermatitis sentence, not glaucoma"}
+{"i": 2631, "verdict": "keep", "text": "가끔 밤에 불빛 주위에 무지개가 보여요. 눈이 쑤시고 머리가 아파요.", "reason": "fits"}
+{"i": 2633, "verdict": "keep", "text": "아버지도 눈이 나빠서 수술을 받으셨다고 해요. 검사에서 안압이 높다고 했어요.", "reason": "fits"}
+{"i": 2636, "verdict": "keep", "text": "My peripheral vision keeps getting narrower and I bump into things on one side.", "reason": "fits"}
+{"i": 2634, "verdict": "fix", "text": "58세 여성, 안압 28 mmHg, 시신경 유두 함몰 확대(cup-to-disc ratio 0.8), 상측 궁상 시야 결손 확인.", "reason": "반맹 is a neurologic term; glaucoma gives arcuate defect"}
+{"i": 2630, "verdict": "keep", "text": "눈이 아프거나 두통이 있는 건 아닌데 시야 한쪽이 자꾸 좁아 보여요.", "reason": "fits"}
+{"i": 5220, "verdict": "keep", "text": "요즘 물을 하루에 몇 리터씩 마셔요. 밤에도 화장실을 자꾸 가서 잠을 설쳐요.", "reason": "fits"}
+{"i": 5221, "verdict": "keep", "text": "아이가 열 살인데 두 달 사이에 살이 6kg 빠졌어요. 먹는 양은 그대로인데 왜 그런지 모르겠어요.", "reason": "fits"}
+{"i": 5222, "verdict": "keep", "text": "피곤하고 손발이 저려요. 입에서 과일 냄새가 난다고 학교 선생님이 얘기했어요.", "reason": "fits"}
+{"i": 5223, "verdict": "keep", "text": "혈당을 재보니 300이 넘어서 응급실에 왔어요. 할아버지가 혈당약을 드세요.", "reason": "fits"}
+{"i": 5224, "verdict": "keep", "text": "신규 진단 소아, 다뇨·다음·체중감소 2개월, 랜덤 혈당 412 mg/dL, 요케톤 양성, HbA1c 10.8%.", "reason": "fits"}
+{"i": 5225, "verdict": "keep", "text": "체중 감소 6kg 동반, 혈당 298, 케톤산증 의심, 항GAD 항체 양성 및 인슐린 분비능 저하 소견.", "reason": "fits"}
+{"i": 5226, "verdict": "keep", "text": "My son is nine and he's drinking water nonstop and peeing all the time. He lost a lot of weight even though he eats normally.", "reason": "fits"}
+{"i": 5227, "verdict": "keep", "text": "I'm 22 and I've been so thirsty lately, waking up at night to pee, and I'm exhausted. My blood sugar meter said over 300.", "reason": "fits"}
+{"i": 5228, "verdict": "keep", "text": "New-onset polyuria, polydipsia, and 6 kg weight loss in a 12-year-old; glucose 380 mg/dL, urine ketones positive, anti-GAD65 antibodies detected.", "reason": "fits"}
+{"i": 5229, "verdict": "keep", "text": "Adolescent with HbA1c 11.2%, ketoacidosis at presentation, low C-peptide, and islet autoantibody positivity on screening.", "reason": "fits"}
+{"i": 4620, "verdict": "keep", "text": "외음부에 작은 하얀 반점이 생겼는데 가렵고 따가워요. 생검 받으라고 했어요.", "reason": "fits"}
+{"i": 4621, "verdict": "fix", "text": "외음부 피부가 두꺼워지고 색이 달라졌어요. 몇 달째 낫지 않고 조금 아파요.", "reason": "vague '여기' gave no site"}
+{"i": 4622, "verdict": "keep", "text": "사타구니 부근에 작은 혹이 여러 개 있고 긁으면 쓰라려요. 산부인과에서 조직 검사 받았어요.", "reason": "fits"}
+{"i": 4623, "verdict": "keep", "text": "외음부가 붉고 거칠어졌어요. 관계할 때 따갑고 HPV 양성이라고 들었어요.", "reason": "fits"}
+{"i": 4624, "verdict": "keep", "text": "37세 여성, 외음부 백색 병변, 아세트산 도포 후 백색 변화, 생검에서 HPV 16형 양성, 세포 이형성 1단계, 질 점막 정상.", "reason": "fits"}
+{"i": 4625, "verdict": "keep", "text": "44세 여성, 외음부 색소 침착 및 가려움, 조직 생검 결과 상피 세포 이형성 경도, 침윤 소견 없음, 재검 계획.", "reason": "fits"}
+{"i": 4626, "verdict": "keep", "text": "I found a white patch on my vulva that itches and stings; the biopsy came back with some early changes.", "reason": "fits"}
+{"i": 4627, "verdict": "keep", "text": "My vulva skin looks rough and thick in one area and it's been sore for months.", "reason": "fits"}
+{"i": 4628, "verdict": "fix", "text": "36-year-old female with acetowhite vulvar lesion, biopsy shows mild dysplasia with koilocytosis, p16 non-block staining, HPV positive.", "reason": "block p16 positivity points to HSIL, not LSIL"}
+{"i": 4629, "verdict": "keep", "text": "Vulvar lesion with mild atypia on punch biopsy, no invasion, cytology unremarkable, follow-up colposcopy planned.", "reason": "fits"}
+{"i": 3450, "verdict": "keep", "text": "얼굴 한쪽이 번개 맞은 것처럼 찌릿찌릿 아파요. 세수하거나 말할 때 더 심해요.", "reason": "fits"}
+{"i": 3451, "verdict": "keep", "text": "갈비뼈 쪽이 칼로 찌르듯 아프고 옷이 스쳐도 따가워요. 한쪽만이에요.", "reason": "fits"}
+{"i": 3452, "verdict": "keep", "text": "허리 옆에서 다리까지 저릿하고 찌르는 통증이 와요. 기침하면 더 아파요.", "reason": "fits"}
+{"i": 3453, "verdict": "keep", "text": "목 뒤에서 귀 쪽까지 쥐어짜듯 아파요. 가끔 발작처럼 와요.", "reason": "fits"}
+{"i": 3454, "verdict": "fix", "text": "삼차신경 분포 편측 발작성 찌르는 통증, 촉발점 존재, 신경학적 검사 이상 없음. 카르바마제핀 복용 시작.", "reason": "'삼차 분포' missing 신경"}
+{"i": 3455, "verdict": "keep", "text": "대상포진 후 피부 감각 이상 및 작열감, 접촉 자극에 의한 통각과민, 항우울제 병용 중.", "reason": "fits"}
+{"i": 3456, "verdict": "keep", "text": "A sharp shooting pain runs down my arm every time I move it, and even a light touch feels electric.", "reason": "fits"}
+{"i": 3457, "verdict": "keep", "text": "The spot where my shingles rash healed still burns and stings, and cold air makes it worse.", "reason": "fits"}
+{"i": 3458, "verdict": "keep", "text": "Persistent burning and allodynia over left T5 dermatome 4 months after herpes zoster; no motor deficit; gabapentin titrated.", "reason": "fits"}
+{"i": 3459, "verdict": "keep", "text": "Male 62, paroxysmal stabbing pain along the lateral thigh, sensory loss in dermatome, normal lumbar MRI.", "reason": "fits"}
+{"i": 3160, "verdict": "keep", "text": "결혼하고 1년 넘게 임신이 안 돼요. 생리 주기가 들쭉날쭉하고 살도 많이 쪘어요.", "reason": "fits"}
+{"i": 3161, "verdict": "keep", "text": "아기를 가지려고 노력하는데 임신이 잘 안 돼요. 나팔관에 문제가 있다는 말을 들었어요.", "reason": "fits"}
+{"i": 3162, "verdict": "keep", "text": "생리가 45일마다 와서 배란이 되는지 모르겠어요. 임신 준비를 한 지 2년이 됐어요.", "reason": "fits"}
+{"i": 3163, "verdict": "keep", "text": "남편하고 2년째 아기를 기다리는데 소식이 없어요. 병원에서 난소 기능이 떨어졌다고 했어요.", "reason": "fits"}
+{"i": 3164, "verdict": "keep", "text": "35세 여성, 불임 기간 18개월, 자궁난관 조영술상 우측 나팔관 폐쇄, AMH 저하, 배란 장애 의심.", "reason": "fits"}
+{"i": 3165, "verdict": "keep", "text": "29세 여성, 무배란 주기, 혈청 프로락틴 상승, 남편 정액 검사 정상, 배란 유도 치료 고려.", "reason": "fits"}
+{"i": 3166, "verdict": "keep", "text": "We've been trying to have a baby for over a year, and my periods are really irregular.", "reason": "fits"}
+{"i": 3167, "verdict": "keep", "text": "It's hard for me to get pregnant; my cycles come every 45 days and the doctor mentioned low egg reserve.", "reason": "fits"}
+{"i": 3168, "verdict": "keep", "text": "Primary infertility 2 years; irregular ovulation, AMH 0.8; HSG shows bilateral tubal patency; partner semen normal; ovulation induction started.", "reason": "fits"}
+{"i": 3169, "verdict": "keep", "text": "Anovulatory cycles on day 21 progesterone check; prolactin elevated; ultrasound shows polycystic ovaries; infertility workup in progress.", "reason": "fits"}
+{"i": 100, "verdict": "keep", "text": "어깨를 위로 올리기가 너무 아파요. 옷 입을 때 특히 힘들어요.", "reason": "fits"}
+{"i": 101, "verdict": "keep", "text": "몇 달째 어깨가 굳어서 뒤로 손 돌리기가 안 돼요. 밤에 아파서 잠을 설쳐요.", "reason": "fits"}
+{"i": 102, "verdict": "keep", "text": "당뇨가 있는데 한쪽 어깨가 점점 뻣뻣해지고 움직임이 제한돼요.", "reason": "fits"}
+{"i": 103, "verdict": "keep", "text": "어깨를 다친 적은 없는데 갑자기 어깨가 아프고 움직여도 아파요.", "reason": "fits"}
+{"i": 104, "verdict": "keep", "text": "능동 및 수동 외회전 제한, 외회전 15도로 감소. 당뇨 병력, HbA1c 8.1%. X선상 골 이상 없음.", "reason": "fits"}
+{"i": 105, "verdict": "keep", "text": "견관절 관절낭 두꺼워짐 MRI 소견, 전반적 운동 범위 감소 확인. 물리치료 진행 중.", "reason": "fits"}
+{"i": 106, "verdict": "keep", "text": "My shoulder is so stiff I can't lift my arm or reach behind my back. It hurts badly at night.", "reason": "fits"}
+{"i": 107, "verdict": "keep", "text": "I've got a shoulder that just won't move, and it's getting worse over the last few months.", "reason": "fits"}
+{"i": 108, "verdict": "keep", "text": "Limited active and passive external rotation to 15 degrees; diabetic with HbA1c 8.2%; plain film unremarkable; capsular thickening on MRI.", "reason": "fits"}
+{"i": 109, "verdict": "keep", "text": "Progressive loss of glenohumeral range of motion over 8 months, night pain, no trauma history, steroid injection planned.", "reason": "fits"}
+{"i": 577, "verdict": "keep", "text": "Mid-meal my daughter suddenly goes blank, smacks her lips, fumbles with her hands, and doesn't remember it afterward.", "reason": "fits"}
+{"i": 570, "verdict": "keep", "text": "가끔 한쪽 손이 저절로 떨리고 의식은 또렷한데 말이 안 나와요. 1분 정도 지나면 괜찮아져요.", "reason": "fits"}
+{"i": 576, "verdict": "keep", "text": "Sometimes my right hand jerks on its own and I can't talk for a minute, but I stay aware of what's happening around me.", "reason": "fits"}
+{"i": 573, "verdict": "fix", "text": "아이가 멍한 눈으로 2분쯤 있다가 괜찮아져요. 뭘 물어보면 대답을 못 하고 나중에 그때 일을 기억 못 해요.", "reason": "remembering afterwards contradicts impaired-awareness seizure"}
+{"i": -21003, "verdict": "drop", "text": "Platelets 9,000/µL with normal hemoglobin and WBC; smear shows large platelets; bone marrow shows increased megakaryocytes; no drug exposure.", "reason": "ITP lab findings, not focal epilepsy"}
+{"i": 572, "verdict": "keep", "text": "잠자다가 얼굴 왼쪽이 씰룩거리고 팔이 뻣뻣해진 다음 한참 졸려해요.", "reason": "fits"}
+{"i": 574, "verdict": "fix", "text": "26세 남성, 우측 상지 간헐적 불수의 운동 및 의식 유지 상태의 짧은 실어 삽화. MRI상 구조적 이상 없음. EEG상 좌측 측두부 국소 극파 확인.", "reason": "'양측 측두엽 결손 없음' was meaningless"}
+{"i": 579, "verdict": "keep", "text": "Child with brief unresponsive episodes with automatisms, nocturnal clusters; interictal EEG shows frontal spike-wave discharges; no febrile history.", "reason": "fits"}
+{"i": 578, "verdict": "keep", "text": "Thirty-four-year-old with recurrent left hemifacial clonic movements preserving awareness; EEG shows sharp waves over the right temporal region; MRI unremarkable.", "reason": "fits"}
+{"i": 575, "verdict": "fix", "text": "12세 소아, 반복적 의식 저하 삽화 및 구강자동증, 야간 발생 다수. 자기공명영상 음성, EEG상 전두부 극서파.", "reason": "'공백성' implies absence (generalized) epilepsy"}
+{"i": 571, "verdict": "keep", "text": "식사 중에 갑자기 멍해지고 입을 쩝쩝 거리며 손을 계속 비벼요. 본인은 기억을 못 해요.", "reason": "fits"}
+{"i": 5940, "verdict": "keep", "text": "가슴에 동그란 자국이 생겼는데 피부가 딱딱하고 하얗게 변했어요.", "reason": "fits"}
+{"i": 5941, "verdict": "keep", "text": "팔에 보라색 테두리가 있는 얼룩이 생기고 만지면 단단해요.", "reason": "fits"}
+{"i": 5942, "verdict": "keep", "text": "아이가 다리에 갈색 띠 같은 자국이 있고 피부가 점점 당겨져요.", "reason": "fits"}
+{"i": 5943, "verdict": "keep", "text": "얼굴 한쪽 피부가 쪼그라들고 움푹 파여서 거울 보기 싫어요.", "reason": "fits"}
+{"i": 5944, "verdict": "keep", "text": "체간부 경계 명확한 백색 단단한 반 1 cm, 보라색 테두리, 조직검사에서 진피 콜라겐 증가, 항핵항체 양성 저역가, 관절 가동 범위 정상.", "reason": "fits"}
+{"i": 5945, "verdict": "keep", "text": "소아 선형 병변 우측 하지, 근육 위축과 성장 장애 우려, 소아 류마티스 협진.", "reason": "fits"}
+{"i": 5946, "verdict": "keep", "text": "There's a patch on my belly that's gone hard, white and smooth, with a purple border.", "reason": "fits"}
+{"i": 5947, "verdict": "keep", "text": "My son has a band-like brown patch on his leg and the skin looks tight.", "reason": "fits"}
+{"i": 5948, "verdict": "keep", "text": "Indurated ivory plaque with lilac border on the trunk, dermal collagen thickening on biopsy, ANA positive low titer, 38-year-old female.", "reason": "fits"}
+{"i": 5949, "verdict": "keep", "text": "Linear band-like lesion on the right leg with underlying muscle atrophy in a 7-year-old, rheumatology referral for growth concern.", "reason": "fits"}
+{"i": 180, "verdict": "keep", "text": "아기가 숨이 차고 젖 먹을 때 힘들어해요. 자주 감기에 걸려요.", "reason": "fits"}
+{"i": 181, "verdict": "keep", "text": "건강검진에서 심장에 구멍이 있다고 들었어요. 어릴 때부터 운동을 잘 못했어요.", "reason": "fits"}
+{"i": 182, "verdict": "keep", "text": "아이가 자주 땀을 흘리고 얼굴이 창백해요. 숨이 차서 쉬어야 해요.", "reason": "fits"}
+{"i": 183, "verdict": "keep", "text": "심장 소리가 이상하다고 해서 검사했더니 큰 문제는 없다고 했는데 가끔 숨이 차요.", "reason": "fits"}
+{"i": 184, "verdict": "keep", "text": "심잡음 청진, 우심실 확장 및 좌에서 우로의 단락 소견 심초음파 확인. 폐동맥 혈류 증가, 흉부 X선 상 심장 음영 확대.", "reason": "fits"}
+{"i": 185, "verdict": "keep", "text": "성인 여성, 피로 및 운동 내성 저하, 심전도상 불완전 우각 블록. 중격 결손 크기 18mm, 카테터 시술 고려.", "reason": "fits"}
+{"i": 186, "verdict": "keep", "text": "My daughter gets tired out quickly and the doctor heard a heart murmur when she was checked.", "reason": "fits"}
+{"i": 187, "verdict": "fix", "text": "I was told as a kid that I have a small opening between the upper chambers of my heart. Now I get winded on stairs.", "reason": "ASD is between the atria"}
+{"i": 188, "verdict": "keep", "text": "Fixed splitting of S2 with systolic ejection murmur; echo shows left-to-right shunt with right ventricular dilation; ostium secundum 17 mm.", "reason": "fits"}
+{"i": 189, "verdict": "keep", "text": "Adult female with exertional dyspnea, incomplete right bundle branch block on ECG, pulmonary to systemic flow ratio 2.1.", "reason": "fits"}
+{"i": 2660, "verdict": "keep", "text": "뒤꿈치 위쪽이 아프고 뛰거나 계단 오르면 더 욱신거려요.", "reason": "fits"}
+{"i": 2661, "verdict": "fix", "text": "아침에 일어나서 첫걸음 뗄 때 발뒤꿈치 뒤쪽 힘줄이 뻐근하게 아파요. 달리기를 시작하고 나서예요.", "reason": "plain first-step heel pain is the plantar fasciitis hallmark; located at the Achilles"}
+{"i": 2662, "verdict": "keep", "text": "발뒤꿈치 뒤쪽이 붓고 만지면 아파요. 등산 다녀온 뒤로 더 심해졌어요.", "reason": "fits"}
+{"i": 2663, "verdict": "fix", "text": "운동 연습을 갑자기 늘렸더니 뒤꿈치 위쪽이 아프고 걸을 때 삐걱거리는 느낌이 나요. 마흔두 살이에요.", "reason": "'쩍쩍해요' unnatural"}
+{"i": 2664, "verdict": "fix", "text": "42세 남성, 달리기 훈련 후 발생한 아킬레스건 부위 통증, 종골 후상방 압통, 촉진 시 부종, 저항 족저굴곡 시 통증 유발.", "reason": "'뒤꿈치 힘줄', '힐 위쪽' not chart style"}
+{"i": 2665, "verdict": "keep", "text": "초음파상 힘줄 주위 액체 저류, 건 두께 증가, 도플러에서 혈류 신호 증가 소견, 뒤꿈치 들기 시 통증.", "reason": "fits"}
+{"i": 2666, "verdict": "fix", "text": "The back of my heel where the tendon attaches hurts, especially when I start walking in the morning.", "reason": "'above where it meets my calf' was anatomically confusing"}
+{"i": 2667, "verdict": "keep", "text": "I started running more and now the back of my ankle is swollen and tender when I press on it.", "reason": "fits"}
+{"i": 2668, "verdict": "keep", "text": "38-year-old runner with retrocalcaneal pain, tender posterior heel swelling, painful resisted plantar flexion, Thompson test negative.", "reason": "fits"}
+{"i": 2669, "verdict": "keep", "text": "Ultrasound shows peritendinous fluid and thickened tendon with increased Doppler flow, pain with heel rise.", "reason": "fits"}
+{"i": 7387, "verdict": "keep", "text": "My daughter keeps saying her ears feel full and she can't hear well. No pain or fever.", "reason": "fits"}
+{"i": 7385, "verdict": "keep", "text": "성인 여성, 우측 이충만감 및 청력 감소 2개월, 고막 내측 기액면 소견, 이관 기능 저하, 고막 천공 없음.", "reason": "fits"}
+{"i": 7389, "verdict": "keep", "text": "F 45, unilateral aural fullness 2 months, eustachian tube dysfunction, hearing loss 20 dB air-bone gap, no perforation, watchful waiting.", "reason": "fits"}
+{"i": 7386, "verdict": "keep", "text": "My ears feel stuffed up after my cold and I hear muffled sounds. It doesn't hurt but it's been weeks.", "reason": "fits"}
+{"i": 7383, "verdict": "keep", "text": "어린이집 다니는 아이가 감기 후 자꾸 귀가 이상하다고 해요. 열은 없어요.", "reason": "fits"}
+{"i": 7381, "verdict": "keep", "text": "아이가 귀가 답답하다고 하고 말소리를 잘 못 알아들어요. 고름은 없어요.", "reason": "fits"}
+{"i": 7388, "verdict": "keep", "text": "M 6, bilateral middle ear effusion 6 weeks after URTI, tympanogram type B, hearing 30 dB conductive loss, tympanic membrane intact, no antibiotics.", "reason": "fits"}
+{"i": 7382, "verdict": "keep", "text": "비행기 탄 뒤로 귀가 계속 먹먹하고 물 들어간 것 같아요. 한 달째예요.", "reason": "fits"}
+{"i": 7380, "verdict": "keep", "text": "감기 끝나고 귀가 꽉 막힌 것처럼 먹먹해요. 소리가 웅웅 울려요. 아프지는 않아요.", "reason": "fits"}
+{"i": 7384, "verdict": "keep", "text": "만 4세 남아, 상기도 감염 후 양측 고막 뒤 장액성 삼출 3개월, 청력검사 전음성 난청 35dB, 고막 내 기포 관찰, 항생제 미사용.", "reason": "fits"}
+{"i": -21001, "verdict": "drop", "text": "아기를 가지려고 노력하는데 임신이 잘 안 돼요. 나팔관에 문제가 있다는 말을 들었어요.", "reason": "female infertility sentence, not otitis media"}
+{"i": 4047, "verdict": "keep", "text": "I had tight pressure in my chest and jaw for about 25 minutes this morning while doing dishes. I am 61 and have high cholesterol.", "reason": "fits"}
+{"i": 4041, "verdict": "keep", "text": "계단 두 층만 올라가도 가슴 중앙이 묵직하게 누르고 왼쪽 팔이 저려요. 60대 후반이에요.", "reason": "fits"}
+{"i": 4049, "verdict": "keep", "text": "Exertional chest discomfort for 3 weeks, positive treadmill stress test at 6 METs, prior PCI, diabetes, LDL 130 mg/dL, angiography scheduled.", "reason": "fits"}
+{"i": 4044, "verdict": "keep", "text": "66세 남성, 안정 시 흉통 20분, 고감도 트로포닌 T 상승 경향, 심전도 비특이적 ST 저하, 아스피린 및 헤파린 투여, 흡연 경력 있음.", "reason": "fits"}
+{"i": 4042, "verdict": "keep", "text": "식사와 상관없이 가슴이 답답하고 땀이 나요. 당뇨랑 고혈압 약 먹고 있어요.", "reason": "fits"}
+{"i": 4040, "verdict": "keep", "text": "걷다가 가슴이 쥐어짜듯 아프고 숨이 막혀요. 쉬면 좀 나아지는데 요즘은 더 자주 와요.", "reason": "fits"}
+{"i": 4048, "verdict": "keep", "text": "70-year-old male, rest chest pain 15 minutes, hs-troponin elevated but not diagnostic, ECG with nonspecific ST depression, on aspirin and atorvastatin.", "reason": "fits"}
+{"i": -21005, "verdict": "drop", "text": "성인 여성, 우측 이충만감 및 청력 감소 2개월, 고막 내측 기액면 소견, 이관 기능 저하, 고막 천공 없음.", "reason": "otitis media with effusion findings, not angina"}
+{"i": 4043, "verdict": "keep", "text": "어제 밤부터 가슴이 조이는 느낌이 30분 넘게 계속돼서 응급실 왔어요.", "reason": "fits"}
+{"i": 4046, "verdict": "keep", "text": "My chest feels like someone is squeezing it when I walk uphill, and it goes away when I rest. It is happening more often now.", "reason": "fits"}
+{"i": 4045, "verdict": "keep", "text": "58세 여성, 운동 시 흉부 압박감 2주 진행, 심초음파 좌심실 벽운동 정상, 관상동맥조영술 예정, LDL 160 mg/dL.", "reason": "fits"}
+{"i": 4640, "verdict": "keep", "text": "목 뒤랑 팔꿈치가 두껍게 올라오고 긁으면 시원한데 멈출 수 없어요. 밤에 특히 가려워요.", "reason": "fits"}
+{"i": 4641, "verdict": "keep", "text": "스트레스 받으면 같은 부위를 계속 긁어서 피부가 거칠고 가죽처럼 됐어요.", "reason": "fits"}
+{"i": 4642, "verdict": "keep", "text": "종아리 안쪽이 가렵고 두꺼워졌어요. 긁다 보니 색소가 변했어요.", "reason": "fits"}
+{"i": 4643, "verdict": "fix", "text": "몇 년째 한곳을 긁는 습관이 있는데 피부가 가죽처럼 두껍고 딱딱해졌어요.", "reason": "'돌처럼' suggests sclerosis, LSC is leathery"}
+{"i": 4644, "verdict": "keep", "text": "41세 여성, 후경부 태선화 병변, 반복적 긁기 행동, 피부 생검상 과각화증 및 표피 과형성, 아토피 병력 없음.", "reason": "fits"}
+{"i": 4645, "verdict": "keep", "text": "36세 남성, 장딴지 국소 태선화, 가려움 6개월, 피부 병리 검사에서 표피 두꺼워짐, 스테로이드 외용 반응 저조.", "reason": "fits"}
+{"i": 4646, "verdict": "keep", "text": "The skin on my neck is thick and leathery and I can't stop scratching it, especially at night.", "reason": "fits"}
+{"i": 4647, "verdict": "keep", "text": "I scratch the same spot on my shin over and over and now the patch is dark and rough.", "reason": "fits"}
+{"i": 4648, "verdict": "keep", "text": "45-year-old female with thickened, lichenified plaques on the nape, chronic pruritus, biopsy showing hyperkeratosis and acanthosis.", "reason": "fits"}
+{"i": 4649, "verdict": "keep", "text": "Well-demarcated lichenified plaques on bilateral wrists, pruritus with scratching cycle, topical steroid partial response.", "reason": "fits"}
+{"i": 6490, "verdict": "keep", "text": "왼쪽 옆구리에 띠처럼 따갑고 찌릿한 통증이 며칠 전부터 있어요. 어제부터 작은 물집이 올라왔어요.", "reason": "fits"}
+{"i": 6491, "verdict": "keep", "text": "등 한쪽에 찌릿찌릿 통증이 먼저 오고, 나중에 붉은 물집이 줄을 지어 나왔어요.", "reason": "fits"}
+{"i": 6492, "verdict": "fix", "text": "어릴 때 수두 앓았다고 들었어요. 요즘 스트레스가 심했는데 허리 한쪽이 욱신거리더니 물집이 생겼어요.", "reason": "recurrent blisters with stress is herpes simplex, not zoster"}
+{"i": 6493, "verdict": "keep", "text": "예순 넘어서 얼굴 한쪽에 따끔거림이 있더니 눈 주변에 물집이 생겼어요. 눈이 걱정돼요.", "reason": "fits"}
+{"i": 6494, "verdict": "keep", "text": "71세 남성, 우측 흉추 피부분절 따라 군집성 수포, 발생 3일 전 작열통 선행, 면역억제제 복용 없음, 당뇨 조절 양호.", "reason": "fits"}
+{"i": 6495, "verdict": "keep", "text": "55세 여성, 좌측 삼차신경 1지 분포 수포성 발진 및 신경통, 혈청 VZV IgM 양성, 고혈압 병력.", "reason": "fits"}
+{"i": 6496, "verdict": "keep", "text": "I have burning, stabbing pain on one side of my belly and now a cluster of small blisters wrapped around that spot.", "reason": "fits"}
+{"i": 6497, "verdict": "keep", "text": "Painful red rash with blisters on just one side of my chest. Even touching my shirt hurts and I'm exhausted.", "reason": "fits"}
+{"i": 6498, "verdict": "keep", "text": "68-year-old with unilateral vesicular eruption along the L3 dermatome preceded by two days of neuropathic pain; no immunosuppression; antiviral therapy started.", "reason": "fits"}
+{"i": 6499, "verdict": "keep", "text": "Grouped vesicles on an erythematous base in V1 distribution, prodromal burning pain, ophthalmic involvement suspected; age 74 with diabetes mellitus.", "reason": "fits"}
+{"i": 7190, "verdict": "keep", "text": "회음부가 묵직하고 소변 볼 때 따갑고 사정하면 아파요. 몇 주째 낫질 않아요.", "reason": "fits"}
+{"i": 7191, "verdict": "fix", "text": "서른다섯 살 남자인데 고환과 항문 사이가 욱신거리고 열이 조금씩 나요. 소변이 자주 마려워요.", "reason": "perineum is between scrotum and anus"}
+{"i": 7192, "verdict": "keep", "text": "항생제 먹고 좀 나았다가 다시 아파요. 배뇨하고 나면 찔끔거리고 허리까지 아파요.", "reason": "fits"}
+{"i": 7193, "verdict": "keep", "text": "앉아 있으면 엉덩이 쪽이 묵직하고 아파요. 밤에 소변을 두세 번 깨고 기운이 없어요.", "reason": "fits"}
+{"i": 7194, "verdict": "keep", "text": "직장 수지검사 시 골반저 압통, 배뇨 후 잔뇨 증가, 요도 분비물 소량, 요검사 백혈구 다수, 소변 세균 배양 음성.", "reason": "fits"}
+{"i": 7195, "verdict": "keep", "text": "발열 38.2, 배뇨 곤란, 회음부 통증, 요 백혈구 다수, 요배양 대장균 양성, CRP 45, 퀴놀론계 항생제 투여 중.", "reason": "fits"}
+{"i": 7196, "verdict": "keep", "text": "I have pain between my testicles and my back passage, and it hurts when I pee and when I ejaculate.", "reason": "fits"}
+{"i": 7197, "verdict": "keep", "text": "I've had a burning feeling when I pee for a month, and my groin aches. I'm 40 and I have a little fever on and off.", "reason": "fits"}
+{"i": 7198, "verdict": "keep", "text": "Perineal tenderness on digital rectal exam, dysuria, leukocytes in expressed secretion, urine culture grew E coli, afebrile 37.4.", "reason": "fits"}
+{"i": 7199, "verdict": "keep", "text": "Chronic pelvic pain features, IPSS 14, leukocytes in urine after gland massage, culture negative for typical organisms, on doxycycline.", "reason": "fits"}
+{"i": 4466, "verdict": "keep", "text": "My whole body aches all the time, I wake up exhausted even after sleeping, and my muscles feel like they've been beaten.", "reason": "fits"}
+{"i": 4462, "verdict": "keep", "text": "오래 앉아 있으면 허벅지가 욱신거리고 잠도 자주 깨요. 피곤해서 일을 못 하겠어요.", "reason": "fits"}
+{"i": 4469, "verdict": "keep", "text": "Chronic widespread musculoskeletal pain with fatigue and cognitive difficulties, no synovitis on exam, TSH normal, sleep study mild disruption.", "reason": "fits"}
+{"i": 4464, "verdict": "keep", "text": "45세 여성, 전신 통증 3개월 이상, 압통점 18개 중 11개 양성, 비회복성 수면, 류마티스 인자 음성, ESR 및 CK 정상.", "reason": "fits"}
+{"i": 4468, "verdict": "keep", "text": "48-year-old woman, widespread pain for over 3 months, 14 of 18 tender points positive, unrefreshing sleep, normal CK and ESR, RF negative.", "reason": "fits"}
+{"i": 4465, "verdict": "fix", "text": "52세 여성, 광범위 근골격계 통증, 피로 및 인지 저하(브레인 포그), TSH 정상, CK 정상, 진통제 간헐 복용.", "reason": "'뇌무리' is not a word"}
+{"i": 4467, "verdict": "keep", "text": "Pain everywhere and my sleep is terrible, brain fog too. Doctors say my blood tests are normal.", "reason": "fits"}
+{"i": 4460, "verdict": "keep", "text": "온몸이 쑤시고 아파요. 자고 일어나도 개운하지 않고 손끝까지 저려요.", "reason": "fits"}
+{"i": -21002, "verdict": "drop", "text": "대상포진 치료 후 6주째 지속 통증, 감각 저하와 이질통 동반, 아미트립틸린 및 리도카인 패치 처방.", "reason": "postherpetic neuralgia sentence, not fibromyalgia"}
+{"i": 4461, "verdict": "keep", "text": "어깨, 허리, 목 여기저기가 아픈데 검사에서는 이상이 없대요. 날씨 따라 더 심해요.", "reason": "fits"}
+{"i": 4463, "verdict": "keep", "text": "3년째 온몸이 욱신거리는데 정형외과를 여러 군데 다녔어요. 우울한 기분도 같이 있어요.", "reason": "fits"}
+{"i": 1920, "verdict": "keep", "text": "간 쪽이 자꾸 아프고 살이 빠졌어요. 배가 볼록해졌어요.", "reason": "fits"}
+{"i": 1921, "verdict": "keep", "text": "B형 간염 오래 앓았는데 요즘 배에 물이 차고 피곤해요.", "reason": "fits"}
+{"i": 1922, "verdict": "keep", "text": "우측 윗배가 묵직하게 아프고 눈이 노래졌어요.", "reason": "fits"}
+{"i": 1923, "verdict": "keep", "text": "갑자기 체중이 줄고 식욕이 없어요. 간수치가 높다고 들었어요.", "reason": "fits"}
+{"i": 1924, "verdict": "keep", "text": "간 우엽 종양 5.6 cm, 조영 CT 동맥기 과조영 및 세척 소견. AFP 812 ng/mL. 바이러스성 간염 기왕력, 간경화 동반.", "reason": "fits"}
+{"i": 1925, "verdict": "keep", "text": "간 우엽 3.2 cm 결절, 동맥기 과혈관화. 혈소판 78,000, 빌리루빈 2.1. Child-Pugh B. 간 절제술 검토.", "reason": "fits"}
+{"i": 1926, "verdict": "keep", "text": "My upper belly on the right side hurts, I've lost weight, and my skin and eyes look yellow.", "reason": "fits"}
+{"i": 1927, "verdict": "keep", "text": "I had hepatitis B for years and now my belly is swollen with fluid and I'm exhausted.", "reason": "fits"}
+{"i": 1928, "verdict": "keep", "text": "5.6 cm arterially enhancing lesion in segment 8 with washout on CT; AFP 812 ng/mL; cirrhosis background, Child-Pugh A.", "reason": "fits"}
+{"i": 1929, "verdict": "keep", "text": "Multifocal liver lesions on MRI, dynamic enhancement, AFP elevated; hepatitis B surface antigen positive; Child-Pugh B.", "reason": "fits"}
+{"i": 1890, "verdict": "fix", "text": "눈이 자주 아프고 시야가 좁아지는 것 같아요. 눈 안에 흰 가루 같은 게 있대요.", "reason": "patient cannot see the material; doctor found it"}
+{"i": 1891, "verdict": "fix", "text": "한쪽 눈이 흐릿하고 두통도 와요. 안압이 높다고 들었어요.", "reason": "'something fell off the eye' is not a symptom"}
+{"i": 1892, "verdict": "fix", "text": "눈 압이 높다고 들었어요. 시야 가장자리가 안 보여요. 안약 넣고 있어요.", "reason": "eye drops are instilled, not eaten"}
+{"i": 1893, "verdict": "keep", "text": "정기검진에서 안압이 높다고 해서 왔어요. 눈 속에 하얀 비듬 같은 것이 있대요.", "reason": "fits"}
+{"i": 1894, "verdict": "keep", "text": "안압 32 mmHg, 전방 내 백색 비듬 같은 침착물, 동공 부위 하얀 물질 확인. 시신경 유두 함몰 비율 0.7, 상방 시야 결손.", "reason": "fits"}
+{"i": 1895, "verdict": "fix", "text": "우안 안압 상승, 세극등 검사에서 수정체 전낭 낙설 물질 침착. 상방 시야 손실 및 광범위 신경 손상 의심. 프로스타글란딘 점안 시작.", "reason": "'수락 세포막' garbled"}
+{"i": 1896, "verdict": "fix", "text": "My eye pressure is high, the doctor saw white flaky material inside my eye, and my vision is narrowing around the edges.", "reason": "patient cannot see the material himself"}
+{"i": 1897, "verdict": "fix", "text": "The doctor found flaky white material in my eye, I get headaches, and part of my vision seems blurry.", "reason": "patient cannot see the material himself"}
+{"i": 1898, "verdict": "keep", "text": "IOP 34 mmHg, white flaky material on anterior lens capsule and pupillary margin; cup-to-disc 0.8; visual field defects superiorly.", "reason": "fits"}
+{"i": 1899, "verdict": "keep", "text": "Pseudoexfoliation material on iris and trabecular meshwork; pigment dispersion present; IOP elevated; latanoprost started.", "reason": "fits"}
+{"i": 3640, "verdict": "keep", "text": "작년에 등에 물집이 띠처럼 올라왔었는데 나은 지 석 달인데도 옆구리가 찌릿찌릿 아파요.", "reason": "fits"}
+{"i": 3641, "verdict": "keep", "text": "물집은 다 말랐는데 옷이 스치기만 해도 너무 아파서 잠을 못 자요.", "reason": "fits"}
+{"i": 3642, "verdict": "keep", "text": "70대인데 피부는 다 나았지만 등 한쪽이 칼로 찌르는 것처럼 아파요.", "reason": "fits"}
+{"i": 3643, "verdict": "keep", "text": "예전에 물집이 나고 나았는데 흔적 부위가 아직도 타는 듯 아파요.", "reason": "fits"}
+{"i": 3644, "verdict": "keep", "text": "70대 남성, 흉추 T6-T8 피부 분포 지속성 작열통, 대상포진 수포 치유 후 4개월 경과, 접촉통 양성, 가바펜틴 300mg 시작.", "reason": "fits"}
+{"i": 3645, "verdict": "keep", "text": "대상포진 치료 후 6주째 지속 통증, 감각 저하와 이질통 동반, 아미트립틸린 및 리도카인 패치 처방.", "reason": "fits"}
+{"i": 3646, "verdict": "keep", "text": "The rash cleared up two months ago but the skin where it was still burns and stings. Even a shirt touching it hurts.", "reason": "fits"}
+{"i": 3647, "verdict": "keep", "text": "The blisters are gone but I have constant stabbing pain on one side, and I can't sleep.", "reason": "fits"}
+{"i": 3648, "verdict": "keep", "text": "72M, dermatomal allodynia left T5 distribution four months after acute vesicular eruption resolved, pinprick hyperalgesia, gabapentin titrated to 900 mg/day.", "reason": "fits"}
+{"i": 3649, "verdict": "keep", "text": "Persistent burning pain, dysesthesia and cold allodynia six weeks after acute episode, no active lesions, amitriptyline 25 mg nightly prescribed.", "reason": "fits"}
+{"i": 7420, "verdict": "keep", "text": "등에 말랑한 덩어리가 만져지는데 아프지 않고 천천히 커졌어요. 손으로 밀면 움직여요.", "reason": "fits"}
+{"i": 7421, "verdict": "keep", "text": "팔뚝에 콩알만 하고 말랑한 혹이 있어요. 몇 년째 그대로예요.", "reason": "fits"}
+{"i": 7422, "verdict": "keep", "text": "허벅지에 커다란 혹이 생겼는데 통증은 없고 피부 밑에서 움직여요.", "reason": "fits"}
+{"i": 7423, "verdict": "keep", "text": "어깨 쪽에 혹이 있는데 자꾸 커지는 것 같아서 병원에 왔어요. 나이는 마흔이에요.", "reason": "fits"}
+{"i": 7424, "verdict": "keep", "text": "41세 여성, 우측 상완부 피하 종괴 4cm, 경계 명확, 압통 없음, 초음파상 지방성 음영, 성장 속도 완만.", "reason": "fits"}
+{"i": 7425, "verdict": "fix", "text": "좌측 대퇴부 연부조직 종괴 8cm, MRI T1 고신호, 지방억제 시 신호 저하. 악성 소견 낮음, 절제 여부 상의.", "reason": "no fat-suppression signal loss contradicts a benign fatty mass"}
+{"i": 7426, "verdict": "keep", "text": "There's a soft squishy lump under my skin on my back that doesn't hurt and moves when I push it.", "reason": "fits"}
+{"i": 7427, "verdict": "keep", "text": "I found a lump on my arm that's been there for years and hasn't changed much. It feels like fat.", "reason": "fits"}
+{"i": 7428, "verdict": "keep", "text": "F 44, subcutaneous mass right forearm 3cm, well circumscribed, nontender, ultrasound hyperechoic fatty pattern, slow growth over 2 years.", "reason": "fits"}
+{"i": 7429, "verdict": "fix", "text": "M 56, soft tissue mass left thigh 8 cm, MRI T1 hyperintense with signal loss on fat-suppressed sequence, excision elective.", "reason": "no fat-suppression signal loss contradicts a benign fatty mass"}
+{"i": 3270, "verdict": "keep", "text": "온몸에 멍이 쉽게 들고 잇몸에서 피가 나요. 코피도 자주 나요.", "reason": "fits"}
+{"i": 3271, "verdict": "keep", "text": "다리에 작은 빨간 반점이 많이 생겼어요. 아이가 감기 후에 생겼어요.", "reason": "fits"}
+{"i": 3272, "verdict": "keep", "text": "생리 양이 갑자기 많아지고 멍이 여기저기 들어요. 몇 주째 그래요.", "reason": "fits"}
+{"i": 3273, "verdict": "keep", "text": "피가 잘 안 멎어서 면도할 때도 조심해요. 최근 독감 앓고 나서 이래요.", "reason": "fits"}
+{"i": 3274, "verdict": "keep", "text": "말초혈액검사에서 혈소판 12,000/µL, 헤모글로빈과 백혈구 정상. 말초혈액도말상 거대혈소판 다수.", "reason": "fits"}
+{"i": 3275, "verdict": "keep", "text": "IgG 자가항체 양성, 골수검사에서 거핵구 증가 소견. 스테로이드 치료 시작.", "reason": "fits"}
+{"i": 3276, "verdict": "keep", "text": "I bruise really easily now, my gums bleed when I brush, and I get little red dots on my legs.", "reason": "fits"}
+{"i": 3277, "verdict": "keep", "text": "My nosebleeds have been constant for two weeks and my period got much heavier. I didn't have any injury.", "reason": "fits"}
+{"i": 3278, "verdict": "keep", "text": "Platelets 9,000/µL with normal hemoglobin and WBC; smear shows large platelets; bone marrow shows increased megakaryocytes; no drug exposure.", "reason": "fits"}
+{"i": 3279, "verdict": "keep", "text": "Child 6 years old after viral illness, petechiae and mucosal bleeding, platelet count 14 k; prednisone started, no splenomegaly.", "reason": "fits"}
+{"i": 690, "verdict": "keep", "text": "목이 엄청 아프고 열이 나고 목 뒤 림프절이 붓고 말랑하게 만져져요. 피곤해서 누워만 있어요.", "reason": "fits"}
+{"i": 691, "verdict": "keep", "text": "고등학생 딸인데 2주째 열이 나고 목구멍이 아파요. 비장이 부은 것 같아서 운동을 금지당했어요.", "reason": "fits"}
+{"i": 692, "verdict": "keep", "text": "몸살처럼 시작해서 목이 붓고 편도에 하얀 막이 생겼어요. 온몸이 나른하고 식욕이 없어요.", "reason": "fits"}
+{"i": 693, "verdict": "keep", "text": "2주째 기운이 없고 열이 떨어졌다 올랐다 해요. 배 왼쪽 위가 살짝 아파요.", "reason": "fits"}
+{"i": 694, "verdict": "keep", "text": "18세 남성, 발열 5일, 전경부 림프절 종대, 삼출성 인두편도염 소견. 말초혈액 비정형 림프구 20% 이상. 간효소 상승 동반.", "reason": "fits"}
+{"i": 695, "verdict": "keep", "text": "22세 여성, 피로감, 발열, 인두통, 간 비대. 항 VCA IgM 양성, 이종 항체 양성 소견. 혈소판 감소 경미.", "reason": "fits"}
+{"i": 696, "verdict": "keep", "text": "I have a sore throat that won't go away, a fever, and swollen glands in my neck. I'm exhausted and can't get out of bed.", "reason": "fits"}
+{"i": 697, "verdict": "keep", "text": "My college son has been tired for three weeks with fever, sore throat, and his belly hurts on the upper left side.", "reason": "fits"}
+{"i": 698, "verdict": "keep", "text": "Twenty-year-old with 6 days of fever, exudative pharyngitis, posterior cervical lymphadenopathy, splenomegaly; peripheral smear shows 30 percent atypical lymphocytes.", "reason": "fits"}
+{"i": 699, "verdict": "keep", "text": "Adolescent with fatigue, fever, palatal petechiae, hepatomegaly; positive heterophile antibody test; ALT elevated to 180 U/L.", "reason": "fits"}
+{"i": 470, "verdict": "keep", "text": "요즘 자꾸 말이 어눌해지고 잊어버리는 게 많아졌어요. 가족 이름도 가끔 헷갈리세요.", "reason": "fits"}
+{"i": 471, "verdict": "keep", "text": "갑자기 손발이 저리고 말이 잘 안 나와서 응급실에 갔어요. 몇 시간 뒤 좀 괜찮아졌지만 불안해요.", "reason": "fits"}
+{"i": 472, "verdict": "keep", "text": "간이 나빠서 입원 중이신데 낮과 밤이 바뀌고 헛것이 보인다고 하세요. 손이 자꾸 떨려요.", "reason": "fits"}
+{"i": 473, "verdict": "keep", "text": "아이가 두통이 심하고 자꾸 토하고 경련이 한 번 있었어요. 눈이 자꾸 한쪽으로 쏠려요.", "reason": "fits"}
+{"i": 474, "verdict": "keep", "text": "간경화 환자, 가역적 의식 변화 West Haven 2단계, 날개떨림 양성. 혈중 암모니아 98 umol/L, 락툴로오스 시작. 벤조디아제핀 용량 재검토 필요.", "reason": "fits"}
+{"i": 475, "verdict": "fix", "text": "60세 남성, 4주간 진행하는 인지 저하, 근간대 경련 및 보행 실조. 혈청 나트륨 118 mmol/L. EEG상 전반적 서파 확인.", "reason": "'서파 서서파' duplicated"}
+{"i": 476, "verdict": "keep", "text": "My mother keeps getting confused about the day and what she said a minute ago, and last week she could not remember how to use the phone.", "reason": "fits"}
+{"i": 477, "verdict": "keep", "text": "Since the surgery he has been sleepy and then agitated, mixing up words, and the nurses say he sometimes does not know where he is.", "reason": "fits"}
+{"i": 478, "verdict": "keep", "text": "Cirrhosis patient with West Haven grade 2 mental status changes, asterixis, ammonia 98 umol/L; lactulose started and benzodiazepine dosing reviewed.", "reason": "fits"}
+{"i": 479, "verdict": "keep", "text": "Sixty-year-old with 4 weeks of subacute cognitive decline, myoclonus and gait ataxia; serum sodium 118 mmol/L; EEG with generalized slowing.", "reason": "fits"}
+{"i": 1840, "verdict": "keep", "text": "눈 흰자위에 빨간 덩어리가 생겼어요. 만지면 조금 아프고 눈이 시려요.", "reason": "fits"}
+{"i": 1841, "verdict": "fix", "text": "한쪽 눈이 충혈되고 뭔가 튀어나온 것처럼 볼록해요. 조금 아파요.", "reason": "'통증은 적당해요' unnatural"}
+{"i": 1842, "verdict": "keep", "text": "눈이 빨갛게 부어서 불편해요. 눈곱은 없고 시린 느낌이 있어요.", "reason": "fits"}
+{"i": 1843, "verdict": "keep", "text": "오른쪽 눈 흰자가 부풀어 오르고 빛이 들어오면 눈이 불편해요.", "reason": "fits"}
+{"i": 1844, "verdict": "keep", "text": "우안 공막 표층 결절성 염증, 경계 명확 3 mm 종괴, 압통 및 충혈 소견. 시력 1.0, 각막 정상. 스테로이드 점안 시작.", "reason": "fits"}
+{"i": 1845, "verdict": "fix", "text": "좌안 결절성 상공막 발적, 동통 경도, 안구 운동 시 불편감. 세극등 검사에서 상공막 부종 소견, 공막 침범 없음.", "reason": "scleral wording described scleritis, not episcleritis"}
+{"i": 1846, "verdict": "keep", "text": "There's a red bump on the white of my eye that is tender when I touch it and makes my eye feel gritty.", "reason": "fits"}
+{"i": 1847, "verdict": "keep", "text": "My eye is red and puffy in one spot on the white and it's a little sore, but my vision is fine.", "reason": "fits"}
+{"i": 1848, "verdict": "keep", "text": "Right eye: 3 mm nodular inflammation of superficial sclera with blanching on phenylephrine test; mild tenderness; VA 20/20.", "reason": "fits"}
+{"i": 1849, "verdict": "fix", "text": "Left eye nodular episcleral injection with mild discomfort on eye movement; slit lamp shows episcleral edema, sclera uninvolved; cornea clear.", "reason": "scleral wording described scleritis, not episcleritis"}

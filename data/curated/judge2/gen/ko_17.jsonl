@@ -7,7 +7,7 @@
 {"id": "MONDO:0001243", "text": "DIC 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0008779", "text": "다발성 관절구축증", "kind": "formal"}
 {"id": "MONDO:0008779", "text": "선천성 관절구축증", "kind": "formal"}
-{"id": "MONDO:0008779", "text": "관절구축증 진단받았어요", "kind": "spoken"}
+{"id": "MONDO:0008779", "text": "무증상 전신 비만세포증 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0004910", "text": "승모판 탈출증", "kind": "formal"}
 {"id": "MONDO:0004910", "text": "승모판막 탈출증", "kind": "formal"}
 {"id": "MONDO:0004910", "text": "승모판 탈출", "kind": "everyday"}
@@ -16,14 +16,14 @@
 {"id": "MONDO:0000485", "text": "연축성 근긴장이상증", "kind": "formal"}
 {"id": "MONDO:0000485", "text": "연축성 발성장애", "kind": "formal"}
 {"id": "MONDO:0000485", "text": "연축성 발성장애 진단받았어요", "kind": "spoken"}
-{"id": "MONDO:0020806", "text": "동방결절 차단", "kind": "formal"}
-{"id": "MONDO:0020806", "text": "동방결절 블록", "kind": "formal"}
+{"id": "MONDO:0020806", "text": "동방차단", "kind": "formal"}
+{"id": "MONDO:0020806", "text": "동방차단", "kind": "formal"}
 {"id": "MONDO:0020806", "text": "동방결절 차단이 있대요", "kind": "spoken"}
 {"id": "MONDO:0008685", "text": "울프-파킨슨-화이트 증후군", "kind": "formal"}
 {"id": "MONDO:0008685", "text": "WPW 증후군", "kind": "short"}
 {"id": "MONDO:0008685", "text": "WPW 증후군 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0005492", "text": "두드러기", "kind": "formal"}
-{"id": "MONDO:0005492", "text": "담마진", "kind": "everyday"}
+{"id": "MONDO:0005492", "text": "두드러기", "kind": "everyday"}
 {"id": "MONDO:0005492", "text": "두드러기가 났어요", "kind": "spoken"}
 {"id": "MONDO:0002960", "text": "다발성 신경근병증", "kind": "formal"}
 {"id": "MONDO:0002960", "text": "다발신경근병증", "kind": "formal"}
@@ -31,10 +31,10 @@
 {"id": "MONDO:0002367", "text": "신장암", "kind": "formal"}
 {"id": "MONDO:0002367", "text": "콩팥암", "kind": "everyday"}
 {"id": "MONDO:0002367", "text": "신장암 진단받았어요", "kind": "spoken"}
-{"id": "MONDO:0003781", "text": "기관지염", "kind": "formal"}
+{"id": "MONDO:0003781", "text": "길버트 증후군", "kind": "formal"}
 {"id": "MONDO:0003781", "text": "기관지염이래요", "kind": "spoken"}
 {"id": "MONDO:0006759", "text": "대퇴신경병증", "kind": "formal"}
-{"id": "MONDO:0006759", "text": "대퇴신경병증 진단받았어요", "kind": "spoken"}
+{"id": "MONDO:0006759", "text": "네젤로프 증후군", "kind": "spoken"}
 {"id": "MONDO:8000010", "text": "항인지질항체 증후군", "kind": "formal"}
 {"id": "MONDO:8000010", "text": "항인지질 증후군", "kind": "formal"}
 {"id": "MONDO:8000010", "text": "APS", "kind": "short"}
@@ -43,7 +43,7 @@
 {"id": "MONDO:0043303", "text": "소리과민증", "kind": "formal"}
 {"id": "MONDO:0043303", "text": "청각과민증 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0005202", "text": "아토피성 IgE 매개 알레르기 질환", "kind": "formal"}
-{"id": "MONDO:0005202", "text": "알레르기", "kind": "everyday"}
+{"id": "MONDO:0005202", "text": "알레르기 체질", "kind": "everyday"}
 {"id": "MONDO:0005202", "text": "알레르기 질환이 있어요", "kind": "spoken"}
 {"id": "MONDO:0005173", "text": "광선각화증", "kind": "formal"}
 {"id": "MONDO:0005173", "text": "AK", "kind": "short"}
@@ -57,47 +57,42 @@
 {"id": "MONDO:0013662", "text": "바렛", "kind": "short"}
 {"id": "MONDO:0013662", "text": "바렛식도 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0006022", "text": "산증", "kind": "formal"}
-{"id": "MONDO:0006022", "text": "산혈증", "kind": "formal"}
+{"id": "MONDO:0006022", "text": "산증", "kind": "formal"}
 {"id": "MONDO:0006022", "text": "산증이 있대요", "kind": "spoken"}
 {"id": "MONDO:0007576", "text": "식도암", "kind": "formal"}
 {"id": "MONDO:0007576", "text": "식도암 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0015486", "text": "원추각막증", "kind": "formal"}
 {"id": "MONDO:0015486", "text": "원추각막", "kind": "formal"}
 {"id": "MONDO:0015486", "text": "원추각막증이 있어요", "kind": "spoken"}
+{"id": "MONDO:0001339", "text": "디프테리아", "kind": "formal"}
 {"id": "MONDO:0001339", "text": "문맥 혈전증", "kind": "formal"}
-{"id": "MONDO:0001339", "text": "문맥정맥 혈전증", "kind": "formal"}
 {"id": "MONDO:0001339", "text": "문맥 혈전증 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0005001", "text": "만성 위염", "kind": "formal"}
 {"id": "MONDO:0005001", "text": "위염", "kind": "everyday"}
 {"id": "MONDO:0005001", "text": "만성 위염 진단받았어요", "kind": "spoken"}
-{"id": "MONDO:0004597", "text": "폐색전증", "kind": "formal"}
+{"id": "MONDO:0004597", "text": "폐색전증 및 폐경색", "kind": "formal"}
 {"id": "MONDO:0004597", "text": "폐경색", "kind": "formal"}
 {"id": "MONDO:0004597", "text": "PE", "kind": "short"}
-{"id": "MONDO:0004597", "text": "폐색전증 진단받았어요", "kind": "spoken"}
+{"id": "MONDO:0004597", "text": "유방 소엽상피내암", "kind": "spoken"}
 {"id": "MONDO:0004643", "text": "골수성 백혈병", "kind": "formal"}
-{"id": "MONDO:0004643", "text": "백혈병", "kind": "everyday"}
 {"id": "MONDO:0004643", "text": "골수성 백혈병이래요", "kind": "spoken"}
 {"id": "MONDO:0016367", "text": "피부근염", "kind": "formal"}
-{"id": "MONDO:0016367", "text": "DM", "kind": "short"}
 {"id": "MONDO:0016367", "text": "피부근염 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0001793", "text": "유루증", "kind": "formal"}
 {"id": "MONDO:0001793", "text": "눈물흘림증", "kind": "formal"}
-{"id": "MONDO:0001793", "text": "눈물흘림", "kind": "everyday"}
+{"id": "MONDO:0001793", "text": "이질", "kind": "everyday"}
 {"id": "MONDO:0001793", "text": "눈물이 계속 흘러요", "kind": "spoken"}
 {"id": "MONDO:0005810", "text": "전염성 단핵구증가증", "kind": "formal"}
-{"id": "MONDO:0005810", "text": "키스병", "kind": "everyday"}
-{"id": "MONDO:0005810", "text": "단핵구증 진단받았어요", "kind": "spoken"}
+{"id": "MONDO:0005810", "text": "척수수막류가 있어요", "kind": "spoken"}
 {"id": "MONDO:0001292", "text": "자율신경계 질환", "kind": "formal"}
 {"id": "MONDO:0001292", "text": "자율신경 장애", "kind": "formal"}
 {"id": "MONDO:0001292", "text": "자율신경에 문제가 있대요", "kind": "spoken"}
 {"id": "MONDO:0002471", "text": "활액낭염", "kind": "formal"}
 {"id": "MONDO:0002471", "text": "점액낭염", "kind": "formal"}
 {"id": "MONDO:0002471", "text": "활액낭염이 있대요", "kind": "spoken"}
-{"id": "MONDO:0005961", "text": "부비동염", "kind": "formal"}
 {"id": "MONDO:0005961", "text": "축농증", "kind": "everyday"}
 {"id": "MONDO:0005961", "text": "축농증 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0005835", "text": "린치 증후군", "kind": "formal"}
-{"id": "MONDO:0005835", "text": "유전성 비용종성 대장암", "kind": "formal"}
 {"id": "MONDO:0005835", "text": "린치 증후군이 있어요", "kind": "spoken"}
 {"id": "MONDO:0000741", "text": "구각염", "kind": "formal"}
 {"id": "MONDO:0000741", "text": "입꼬리염", "kind": "everyday"}
@@ -107,32 +102,29 @@
 {"id": "MONDO:0800207", "text": "소섬유 신경병증 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0020696", "text": "비타민 B12 결핍증", "kind": "formal"}
 {"id": "MONDO:0020696", "text": "비타민 B12 결핍", "kind": "formal"}
-{"id": "MONDO:0020696", "text": "B12 결핍", "kind": "short"}
+{"id": "MONDO:0020696", "text": "후두 종양", "kind": "short"}
 {"id": "MONDO:0020696", "text": "비타민 B12가 부족하대요", "kind": "spoken"}
 {"id": "MONDO:0007886", "text": "자궁 평활근종", "kind": "formal"}
 {"id": "MONDO:0007886", "text": "자궁근종", "kind": "formal"}
 {"id": "MONDO:0007886", "text": "근종", "kind": "short"}
 {"id": "MONDO:0007886", "text": "자궁근종이 있대요", "kind": "spoken"}
-{"id": "MONDO:0011479", "text": "체위성 기립 빈맥 증후군", "kind": "formal"}
+{"id": "MONDO:0011479", "text": "노르에피네프린 수송체 결핍에 의한 체위성 기립 빈맥 증후군", "kind": "formal"}
 {"id": "MONDO:0011479", "text": "NET 결핍에 의한 체위성 기립 빈맥 증후군", "kind": "formal"}
-{"id": "MONDO:0011479", "text": "POTS", "kind": "short"}
-{"id": "MONDO:0011479", "text": "POTS 진단받았어요", "kind": "spoken"}
-{"id": "MONDO:0005316", "text": "세균성 질염", "kind": "formal"}
-{"id": "MONDO:0005316", "text": "질염", "kind": "everyday"}
+{"id": "MONDO:0005316", "text": "세균성 질증", "kind": "formal"}
+{"id": "MONDO:0005316", "text": "세균성 질염", "kind": "everyday"}
 {"id": "MONDO:0005316", "text": "BV", "kind": "short"}
-{"id": "MONDO:0005316", "text": "세균성 질염 진단받았어요", "kind": "spoken"}
+{"id": "MONDO:0005316", "text": "세균성 뇌수막염", "kind": "spoken"}
 {"id": "MONDO:0018301", "text": "간질성 방광염", "kind": "formal"}
-{"id": "MONDO:0018301", "text": "방광염", "kind": "everyday"}
-{"id": "MONDO:0018301", "text": "IC", "kind": "short"}
+{"id": "MONDO:0018301", "text": "IC/BPS", "kind": "short"}
 {"id": "MONDO:0018301", "text": "간질성 방광염이 있어요", "kind": "spoken"}
-{"id": "MONDO:0001161", "text": "분열성 성격장애", "kind": "formal"}
+{"id": "MONDO:0001161", "text": "조현성 성격장애", "kind": "formal"}
 {"id": "MONDO:0001161", "text": "분열성 성격장애 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0021783", "text": "연쇄상구균 인두염", "kind": "formal"}
 {"id": "MONDO:0021783", "text": "A군 연쇄상구균 인두염", "kind": "formal"}
 {"id": "MONDO:0021783", "text": "연쇄상구균 인두염이래요", "kind": "spoken"}
 {"id": "MONDO:0003282", "text": "난소낭종", "kind": "formal"}
 {"id": "MONDO:0003282", "text": "난소 혹", "kind": "everyday"}
-{"id": "MONDO:0003282", "text": "난소에 혹이 있대요", "kind": "spoken"}
+{"id": "MONDO:0003282", "text": "난소에 물혹이 있대요", "kind": "spoken"}
 {"id": "MONDO:0002411", "text": "자기애성 성격장애", "kind": "formal"}
 {"id": "MONDO:0002411", "text": "자기애성 성격장애 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0004857", "text": "건염", "kind": "formal"}
@@ -141,14 +133,14 @@
 {"id": "MONDO:0002154", "text": "트리코모나스증", "kind": "formal"}
 {"id": "MONDO:0002154", "text": "트리코모나스 감염", "kind": "formal"}
 {"id": "MONDO:0002154", "text": "트리코모나스 감염이래요", "kind": "spoken"}
-{"id": "MONDO:0006672", "text": "귀두염", "kind": "formal"}
-{"id": "MONDO:0006672", "text": "귀두염이 있대요", "kind": "spoken"}
+{"id": "MONDO:0006672", "text": "동방차단", "kind": "formal"}
+{"id": "MONDO:0006672", "text": "동방차단", "kind": "spoken"}
 {"id": "MONDO:0001875", "text": "상과염", "kind": "formal"}
 {"id": "MONDO:0001875", "text": "테니스 엘보", "kind": "everyday"}
 {"id": "MONDO:0001875", "text": "상과염 진단받았어요", "kind": "spoken"}
-{"id": "MONDO:0008249", "text": "필로니달 동", "kind": "formal"}
+{"id": "MONDO:0008249", "text": "모소동", "kind": "formal"}
 {"id": "MONDO:0008249", "text": "꼬리뼈 낭종", "kind": "everyday"}
-{"id": "MONDO:0008249", "text": "필로니달 동이 있어요", "kind": "spoken"}
+{"id": "MONDO:0008249", "text": "두드러기", "kind": "spoken"}
 {"id": "MONDO:0004833", "text": "족저근막염", "kind": "formal"}
 {"id": "MONDO:0004833", "text": "발바닥 근막염", "kind": "everyday"}
 {"id": "MONDO:0004833", "text": "족저근막염 진단받았어요", "kind": "spoken"}
@@ -168,14 +160,13 @@
 {"id": "MONDO:0021124", "text": "여성 불임증", "kind": "formal"}
 {"id": "MONDO:0021124", "text": "여성 불임", "kind": "formal"}
 {"id": "MONDO:0021124", "text": "난임", "kind": "everyday"}
-{"id": "MONDO:0021124", "text": "불임", "kind": "everyday"}
+{"id": "MONDO:0021124", "text": "알레르기 체질", "kind": "everyday"}
 {"id": "MONDO:0021124", "text": "난임 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0007345", "text": "대동맥 축착증", "kind": "formal"}
-{"id": "MONDO:0007345", "text": "대동맥 협착증", "kind": "formal"}
+{"id": "MONDO:0007345", "text": "대동맥 축착증", "kind": "formal"}
 {"id": "MONDO:0007345", "text": "대동맥 축착증이래요", "kind": "spoken"}
 {"id": "MONDO:0002070", "text": "심실중격결손증", "kind": "formal"}
 {"id": "MONDO:0002070", "text": "심실중격결손", "kind": "formal"}
-{"id": "MONDO:0002070", "text": "심장 구멍", "kind": "everyday"}
 {"id": "MONDO:0002070", "text": "VSD", "kind": "short"}
 {"id": "MONDO:0002070", "text": "심실중격결손이 있대요", "kind": "spoken"}
 {"id": "MONDO:0019781", "text": "성상세포종", "kind": "formal"}
@@ -183,7 +174,7 @@
 {"id": "MONDO:0019781", "text": "성상세포종 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0006945", "text": "신동맥 폐쇄", "kind": "formal"}
 {"id": "MONDO:0006945", "text": "신동맥 폐색", "kind": "formal"}
-{"id": "MONDO:0006945", "text": "신동맥이 막혔대요", "kind": "spoken"}
+{"id": "MONDO:0006945", "text": "산증", "kind": "spoken"}
 {"id": "MONDO:0043510", "text": "뇌손상", "kind": "formal"}
 {"id": "MONDO:0043510", "text": "뇌 손상", "kind": "formal"}
 {"id": "MONDO:0043510", "text": "뇌를 다쳤어요", "kind": "spoken"}
@@ -191,41 +182,37 @@
 {"id": "MONDO:0006682", "text": "상완신경총염", "kind": "formal"}
 {"id": "MONDO:0006682", "text": "상완신경얼기염 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0019072", "text": "간내 담즙정체", "kind": "formal"}
-{"id": "MONDO:0019072", "text": "간내 담즙정체증", "kind": "formal"}
-{"id": "MONDO:0019072", "text": "담즙정체가 있대요", "kind": "spoken"}
+{"id": "MONDO:0019072", "text": "문맥 혈전증", "kind": "formal"}
 {"id": "MONDO:0020579", "text": "점막염", "kind": "formal"}
 {"id": "MONDO:0020579", "text": "점막염이 있어요", "kind": "spoken"}
 {"id": "MONDO:0006829", "text": "백혈병양 반응", "kind": "formal"}
 {"id": "MONDO:0006829", "text": "유사백혈병 반응", "kind": "formal"}
-{"id": "MONDO:0006829", "text": "백혈병양 반응이 있대요", "kind": "spoken"}
+{"id": "MONDO:0006829", "text": "폐색전증 및 폐경색", "kind": "spoken"}
 {"id": "MONDO:0043233", "text": "박탈성 피부염", "kind": "formal"}
 {"id": "MONDO:0043233", "text": "박탈성 피부염 진단받았어요", "kind": "spoken"}
-{"id": "MONDO:0001170", "text": "편마비", "kind": "formal"}
+{"id": "MONDO:0001170", "text": "폐경색 진단받았어요", "kind": "formal"}
 {"id": "MONDO:0001170", "text": "반신마비", "kind": "everyday"}
-{"id": "MONDO:0001170", "text": "한쪽 몸이 마비됐어요", "kind": "spoken"}
 {"id": "MONDO:0000989", "text": "유행성 이하선염", "kind": "formal"}
 {"id": "MONDO:0000989", "text": "볼거리", "kind": "everyday"}
-{"id": "MONDO:0000989", "text": "볼거리에 걸렸어요", "kind": "spoken"}
 {"id": "MONDO:0003085", "text": "각막염", "kind": "formal"}
 {"id": "MONDO:0003085", "text": "각막염이 있어요", "kind": "spoken"}
-{"id": "MONDO:0001657", "text": "뇌종양", "kind": "formal"}
+{"id": "MONDO:0001657", "text": "악성 뇌종양", "kind": "formal"}
 {"id": "MONDO:0001657", "text": "뇌암", "kind": "everyday"}
-{"id": "MONDO:0001657", "text": "뇌종양 진단받았어요", "kind": "spoken"}
+{"id": "MONDO:0001657", "text": "뇌암 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0001160", "text": "해리성 장애", "kind": "formal"}
 {"id": "MONDO:0001160", "text": "해리장애 진단받았어요", "kind": "spoken"}
-{"id": "MONDO:0021205", "text": "귀 질환", "kind": "formal"}
+{"id": "MONDO:0021205", "text": "전염성 단핵구증 진단받았어요", "kind": "formal"}
 {"id": "MONDO:0021205", "text": "이과 질환", "kind": "formal"}
 {"id": "MONDO:0021205", "text": "귓병", "kind": "everyday"}
 {"id": "MONDO:0021205", "text": "귀 질환이 있어요", "kind": "spoken"}
-{"id": "MONDO:0002271", "text": "대장 선암종", "kind": "formal"}
+{"id": "MONDO:0002271", "text": "결장 선암종", "kind": "formal"}
 {"id": "MONDO:0002271", "text": "결장 선암", "kind": "formal"}
 {"id": "MONDO:0002271", "text": "대장암", "kind": "everyday"}
 {"id": "MONDO:0002271", "text": "대장암 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0005586", "text": "두경부 종양", "kind": "formal"}
 {"id": "MONDO:0005586", "text": "두경부 신생물", "kind": "formal"}
-{"id": "MONDO:0005586", "text": "두경부암", "kind": "everyday"}
-{"id": "MONDO:0005586", "text": "두경부암 진단받았어요", "kind": "spoken"}
-{"id": "MONDO:0002105", "text": "중독성 거대결장증", "kind": "formal"}
+{"id": "MONDO:0005586", "text": "두경부 종양 진단받았어요", "kind": "spoken"}
+{"id": "MONDO:0002105", "text": "독성 거대결장", "kind": "formal"}
 {"id": "MONDO:0002105", "text": "중독성 거대결장이 있대요", "kind": "spoken"}
 {"id": "MONDO:0004953", "text": "침윤성 유관암", "kind": "formal"}
 {"id": "MONDO:0004953", "text": "침윤성 유방 유관암종", "kind": "formal"}
@@ -234,16 +221,14 @@
 {"id": "MONDO:0004953", "text": "유방 침윤성 유관암 진단받았어요", "kind": "spoken"}
 {"id": "MONDO:0007015", "text": "바이러스성 수막염", "kind": "formal"}
 {"id": "MONDO:0007015", "text": "바이러스성 뇌수막염", "kind": "formal"}
-{"id": "MONDO:0007015", "text": "수막염", "kind": "everyday"}
+{"id": "MONDO:0007015", "text": "바이러스성 뇌수막염", "kind": "everyday"}
 {"id": "MONDO:0007015", "text": "바이러스성 수막염이래요", "kind": "spoken"}
 {"id": "MONDO:0024313", "text": "포도상구균 감염", "kind": "formal"}
 {"id": "MONDO:0024313", "text": "포도상구균 감염증", "kind": "formal"}
 {"id": "MONDO:0024313", "text": "포도구균 감염", "kind": "short"}
 {"id": "MONDO:0024313", "text": "포도상구균 감염이래요", "kind": "spoken"}
 {"id": "MONDO:0004873", "text": "내치핵", "kind": "formal"}
-{"id": "MONDO:0004873", "text": "내부 치질", "kind": "formal"}
-{"id": "MONDO:0004873", "text": "치질", "kind": "everyday"}
-{"id": "MONDO:0004873", "text": "내치핵이 있대요", "kind": "spoken"}
-{"id": "MONDO:0022792", "text": "미골통", "kind": "formal"}
-{"id": "MONDO:0022792", "text": "꼬리뼈 통증", "kind": "everyday"}
-{"id": "MONDO:0022792", "text": "꼬리뼈 통증이 있어요", "kind": "spoken"}
+{"id": "MONDO:0004873", "text": "노르에피네프린 수송체 결핍에 의한 체위성 기립 빈맥 증후군", "kind": "formal"}
+{"id": "MONDO:0004873", "text": "암치질", "kind": "everyday"}
+{"id": "MONDO:0022792", "text": "세균성 질증", "kind": "everyday"}
+{"id": "MONDO:0022792", "text": "세균성 질염", "kind": "spoken"}

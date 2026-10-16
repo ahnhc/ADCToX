@@ -1,0 +1,40 @@
+{"id": "MONDO:0004601", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0000956", "verdict": "fix", "fields": {"ko": ["소장암"]}, "reason": "ko '하지 궤양' is leg ulcer, not small intestine cancer"}
+{"id": "MONDO:0007256", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0030038", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0011429", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001854", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005420", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005441", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0007275", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001858", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0100345", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005447", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0015766", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0021667", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005130", "verdict": "fix", "fields": {"ko_lay": ["글루텐 불내증"]}, "reason": "'글루텐 알레르기' points to wheat allergy (IgE), a different disease; celiac is gluten intolerance"}
+{"id": "MONDO:0005642", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002443", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005087", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0008383", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0006032", "verdict": "fix", "fields": {"ko": ["방광염"]}, "reason": "ko '갑상선 눈병증' is thyroid eye disease, not cystitis"}
+{"id": "MONDO:0011057", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0006608", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005554", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001509", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004778", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001786", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0021742", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004522", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004634", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001515", "verdict": "fix", "fields": {"en": ["corneal degeneration"]}, "reason": "corneal dystrophy is a distinct hereditary concept, not a synonym of degeneration"}
+{"id": "MONDO:0006837", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0003004", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0008170", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0008487", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0007886", "verdict": "fix", "fields": {"ko": ["자궁근종", "자궁 평활근종"]}, "reason": "ko[0] '소장암' is small intestine cancer, not uterine fibroid"}
+{"id": "MONDO:0015687", "verdict": "fix", "fields": {"ko": ["만성 호산구성 백혈병", "과호산구증후군"]}, "reason": "ko[0] '호산구증가증' is plain eosinophilia, broader than CEL/HES"}
+{"id": "MONDO:0005009", "verdict": "fix", "fields": {"symptoms_ko": ["숨이 차요", "다리가 부어요", "누우면 숨이 차요", "쉽게 피곤해요", "체중이 늘었어요", "밤에 숨이 차서 깨요"]}, "reason": "symptoms_ko missed the Korean for nocturnal dyspnea (5 vs 6 items)"}
+{"id": "MONDO:0004609", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0019735", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0020115", "verdict": "keep", "fields": {}, "reason": ""}

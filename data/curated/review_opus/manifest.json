@@ -1,0 +1,8630 @@
+{
+ "organ_000": {
+  "n": 208,
+  "controls": {
+   "MONDO:0008171": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005386": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0042981": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0006559": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:1040015": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005155": {
+    "expect": "change",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0001370": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005016": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_001": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005002": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005041": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0011122": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009891": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0008375": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0019438": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "haematologic",
+     "renal"
+    ]
+   },
+   "MONDO:0009061": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0010602": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   }
+  }
+ },
+ "organ_002": {
+  "n": 208,
+  "controls": {
+   "MONDO:0004785": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005180": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0005510": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0000705": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0006651": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005277": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0044079": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "renal"
+    ]
+   },
+   "MONDO:0006507": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "metabolic_endocrine"
+    ]
+   }
+  }
+ },
+ "organ_003": {
+  "n": 208,
+  "controls": {
+   "MONDO:0004980": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005100": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "gastrointestinal",
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005364": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004979": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005147": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0002492": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0001505": {
+    "expect": "keep",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0004247": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   }
+  }
+ },
+ "organ_004": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005377": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005388": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001134": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0015924": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005129": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0001356": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0016218": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0005068": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   }
+  }
+ },
+ "organ_005": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005556": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0005609": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0011849": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005279": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0001509": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0018076": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005132": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0007039": {
+    "expect": "change",
+    "organs": [
+     "neurologic",
+     "otologic"
+    ]
+   }
+  }
+ },
+ "organ_006": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005178": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005298": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005101": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005150": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0007186": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0012672": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "hepatic"
+    ]
+   },
+   "MONDO:0006604": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0007915": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_007": {
+  "n": 208,
+  "controls": {
+   "MONDO:0001566": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0019338": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005130": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005011": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0015517": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005266": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0011438": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0100338": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_008": {
+  "n": 208,
+  "controls": {
+   "MONDO:0007972": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0021187": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005546": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0008661": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:1060198": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "neurologic"
+    ]
+   },
+   "MONDO:0007147": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0004691": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005027": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   }
+  }
+ },
+ "organ_009": {
+  "n": 208,
+  "controls": {
+   "MONDO:0018912": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009688": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0008558": {
+    "expect": "keep",
+    "organs": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005230": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0004975": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0010030": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "ocular"
+    ]
+   },
+   "MONDO:0005021": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005349": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   }
+  }
+ },
+ "organ_010": {
+  "n": 208,
+  "controls": {
+   "MONDO:0004981": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0011382": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0005380": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0021204": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "otologic"
+    ]
+   },
+   "MONDO:0005393": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0012105": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary",
+     "renal"
+    ]
+   },
+   "MONDO:0005399": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0007699": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   }
+  }
+ },
+ "organ_011": {
+  "n": 208,
+  "controls": {
+   "MONDO:0001221": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005256": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0001382": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "renal"
+    ]
+   },
+   "MONDO:0000004": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005366": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0008383": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005340": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0700322": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   }
+  }
+ },
+ "organ_012": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005391": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0008171": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005386": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0042981": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0006559": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:1040015": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005155": {
+    "expect": "keep",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0001370": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   }
+  }
+ },
+ "organ_013": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005016": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "renal"
+    ]
+   },
+   "MONDO:0005002": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005041": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0011122": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009891": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0008375": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0019438": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "haematologic",
+     "renal"
+    ]
+   },
+   "MONDO:0009061": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "pulmonary"
+    ]
+   }
+  }
+ },
+ "organ_014": {
+  "n": 208,
+  "controls": {
+   "MONDO:0010602": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0004785": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005180": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0005510": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0000705": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0006651": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005277": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0044079": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_015": {
+  "n": 208,
+  "controls": {
+   "MONDO:0006507": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004980": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005100": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "gastrointestinal",
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005364": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004979": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005147": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0002492": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0001505": {
+    "expect": "change",
+    "organs": [
+     "hepatic"
+    ]
+   }
+  }
+ },
+ "organ_016": {
+  "n": 208,
+  "controls": {
+   "MONDO:0004247": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005377": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005388": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001134": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0015924": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005129": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0001356": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0016218": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   }
+  }
+ },
+ "organ_017": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005068": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005556": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0005609": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0011849": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005279": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0001509": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0018076": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005132": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_018": {
+  "n": 208,
+  "controls": {
+   "MONDO:0007039": {
+    "expect": "keep",
+    "organs": [
+     "neurologic",
+     "otologic"
+    ]
+   },
+   "MONDO:0005178": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005298": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005101": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005150": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0007186": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0012672": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "hepatic"
+    ]
+   },
+   "MONDO:0006604": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   }
+  }
+ },
+ "organ_019": {
+  "n": 208,
+  "controls": {
+   "MONDO:0007915": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001566": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0019338": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005130": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005011": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0015517": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005266": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0011438": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   }
+  }
+ },
+ "organ_020": {
+  "n": 208,
+  "controls": {
+   "MONDO:0100338": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0007972": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0021187": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005546": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0008661": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:1060198": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "neurologic"
+    ]
+   },
+   "MONDO:0007147": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0004691": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_021": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005027": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0018912": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009688": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0008558": {
+    "expect": "change",
+    "organs": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005230": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0004975": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0010030": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "ocular"
+    ]
+   },
+   "MONDO:0005021": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   }
+  }
+ },
+ "organ_022": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005349": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0004981": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0011382": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0005380": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0021204": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "otologic"
+    ]
+   },
+   "MONDO:0005393": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0012105": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary",
+     "renal"
+    ]
+   },
+   "MONDO:0005399": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   }
+  }
+ },
+ "organ_023": {
+  "n": 208,
+  "controls": {
+   "MONDO:0007699": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0001221": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005256": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0001382": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "renal"
+    ]
+   },
+   "MONDO:0000004": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005366": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0008383": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005340": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_024": {
+  "n": 208,
+  "controls": {
+   "MONDO:0700322": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0005391": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0008171": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005386": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0042981": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0006559": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:1040015": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005155": {
+    "expect": "change",
+    "organs": [
+     "hepatic"
+    ]
+   }
+  }
+ },
+ "organ_025": {
+  "n": 208,
+  "controls": {
+   "MONDO:0001370": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005016": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "renal"
+    ]
+   },
+   "MONDO:0005002": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005041": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0011122": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009891": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0008375": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0019438": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "haematologic",
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_026": {
+  "n": 208,
+  "controls": {
+   "MONDO:0009061": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0010602": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0004785": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005180": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0005510": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0000705": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0006651": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005277": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   }
+  }
+ },
+ "organ_027": {
+  "n": 208,
+  "controls": {
+   "MONDO:0044079": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "renal"
+    ]
+   },
+   "MONDO:0006507": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004980": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005100": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "gastrointestinal",
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005364": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004979": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005147": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0002492": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_028": {
+  "n": 208,
+  "controls": {
+   "MONDO:0001505": {
+    "expect": "keep",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0004247": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005377": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005388": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001134": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0015924": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005129": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0001356": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   }
+  }
+ },
+ "organ_029": {
+  "n": 208,
+  "controls": {
+   "MONDO:0016218": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0005068": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005556": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0005609": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0011849": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005279": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0001509": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0018076": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   }
+  }
+ },
+ "organ_030": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005132": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0007039": {
+    "expect": "change",
+    "organs": [
+     "neurologic",
+     "otologic"
+    ]
+   },
+   "MONDO:0005178": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005298": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005101": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005150": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0007186": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0012672": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "hepatic"
+    ]
+   }
+  }
+ },
+ "organ_031": {
+  "n": 208,
+  "controls": {
+   "MONDO:0006604": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0007915": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001566": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0019338": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005130": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005011": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0015517": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005266": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   }
+  }
+ },
+ "organ_032": {
+  "n": 208,
+  "controls": {
+   "MONDO:0011438": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0100338": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0007972": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0021187": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005546": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0008661": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:1060198": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "neurologic"
+    ]
+   },
+   "MONDO:0007147": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   }
+  }
+ },
+ "organ_033": {
+  "n": 208,
+  "controls": {
+   "MONDO:0004691": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005027": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0018912": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009688": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0008558": {
+    "expect": "keep",
+    "organs": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005230": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0004975": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0010030": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "ocular"
+    ]
+   }
+  }
+ },
+ "organ_034": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005021": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005349": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0004981": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0011382": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0005380": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0021204": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "otologic"
+    ]
+   },
+   "MONDO:0005393": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0012105": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary",
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_035": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005399": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0007699": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0001221": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005256": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0001382": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "renal"
+    ]
+   },
+   "MONDO:0000004": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005366": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0008383": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   }
+  }
+ },
+ "organ_036": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005340": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0700322": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0005391": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0008171": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005386": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0042981": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0006559": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:1040015": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_037": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005155": {
+    "expect": "keep",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0001370": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005016": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "renal"
+    ]
+   },
+   "MONDO:0005002": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005041": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0011122": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009891": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0008375": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   }
+  }
+ },
+ "organ_038": {
+  "n": 208,
+  "controls": {
+   "MONDO:0019438": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "haematologic",
+     "renal"
+    ]
+   },
+   "MONDO:0009061": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0010602": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0004785": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005180": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0005510": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0000705": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0006651": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   }
+  }
+ },
+ "organ_039": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005277": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0044079": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "renal"
+    ]
+   },
+   "MONDO:0006507": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004980": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005100": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "gastrointestinal",
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005364": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004979": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005147": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   }
+  }
+ },
+ "organ_040": {
+  "n": 208,
+  "controls": {
+   "MONDO:0002492": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0001505": {
+    "expect": "change",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0004247": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005377": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005388": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001134": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0015924": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005129": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   }
+  }
+ },
+ "organ_041": {
+  "n": 208,
+  "controls": {
+   "MONDO:0001356": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0016218": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0005068": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005556": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0005609": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0011849": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005279": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0001509": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   }
+  }
+ },
+ "organ_042": {
+  "n": 208,
+  "controls": {
+   "MONDO:0018076": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005132": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0007039": {
+    "expect": "keep",
+    "organs": [
+     "neurologic",
+     "otologic"
+    ]
+   },
+   "MONDO:0005178": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005298": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005101": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005150": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0007186": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   }
+  }
+ },
+ "organ_043": {
+  "n": 208,
+  "controls": {
+   "MONDO:0012672": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "hepatic"
+    ]
+   },
+   "MONDO:0006604": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0007915": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001566": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0019338": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005130": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005011": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0015517": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_044": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005266": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0011438": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0100338": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0007972": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0021187": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005546": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0008661": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:1060198": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "neurologic"
+    ]
+   }
+  }
+ },
+ "organ_045": {
+  "n": 208,
+  "controls": {
+   "MONDO:0007147": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0004691": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005027": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0018912": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009688": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0008558": {
+    "expect": "change",
+    "organs": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005230": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0004975": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   }
+  }
+ },
+ "organ_046": {
+  "n": 208,
+  "controls": {
+   "MONDO:0010030": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "ocular"
+    ]
+   },
+   "MONDO:0005021": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005349": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0004981": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0011382": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0005380": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0021204": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "otologic"
+    ]
+   },
+   "MONDO:0005393": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "musculoskeletal"
+    ]
+   }
+  }
+ },
+ "organ_047": {
+  "n": 208,
+  "controls": {
+   "MONDO:0012105": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary",
+     "renal"
+    ]
+   },
+   "MONDO:0005399": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0007699": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0001221": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005256": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0001382": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "renal"
+    ]
+   },
+   "MONDO:0000004": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005366": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_048": {
+  "n": 208,
+  "controls": {
+   "MONDO:0008383": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005340": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0700322": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0005391": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0008171": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005386": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0042981": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0006559": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   }
+  }
+ },
+ "organ_049": {
+  "n": 208,
+  "controls": {
+   "MONDO:1040015": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005155": {
+    "expect": "change",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0001370": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005016": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "renal"
+    ]
+   },
+   "MONDO:0005002": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005041": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0011122": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009891": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   }
+  }
+ },
+ "organ_050": {
+  "n": 208,
+  "controls": {
+   "MONDO:0008375": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0019438": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "haematologic",
+     "renal"
+    ]
+   },
+   "MONDO:0009061": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0010602": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0004785": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005180": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0005510": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0000705": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_051": {
+  "n": 208,
+  "controls": {
+   "MONDO:0006651": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005277": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0044079": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "renal"
+    ]
+   },
+   "MONDO:0006507": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004980": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005100": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "gastrointestinal",
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005364": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004979": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   }
+  }
+ },
+ "organ_052": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005147": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0002492": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0001505": {
+    "expect": "keep",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0004247": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005377": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005388": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001134": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0015924": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   }
+  }
+ },
+ "organ_053": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005129": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0001356": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0016218": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0005068": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005556": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0005609": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0011849": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005279": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   }
+  }
+ },
+ "organ_054": {
+  "n": 208,
+  "controls": {
+   "MONDO:0001509": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0018076": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005132": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0007039": {
+    "expect": "change",
+    "organs": [
+     "neurologic",
+     "otologic"
+    ]
+   },
+   "MONDO:0005178": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005298": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005101": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005150": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   }
+  }
+ },
+ "organ_055": {
+  "n": 208,
+  "controls": {
+   "MONDO:0007186": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0012672": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "hepatic"
+    ]
+   },
+   "MONDO:0006604": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0007915": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001566": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0019338": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005130": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005011": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_056": {
+  "n": 208,
+  "controls": {
+   "MONDO:0015517": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005266": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0011438": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0100338": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0007972": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0021187": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005546": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0008661": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_057": {
+  "n": 208,
+  "controls": {
+   "MONDO:1060198": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "neurologic"
+    ]
+   },
+   "MONDO:0007147": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0004691": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005027": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0018912": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009688": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0008558": {
+    "expect": "keep",
+    "organs": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005230": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_058": {
+  "n": 208,
+  "controls": {
+   "MONDO:0004975": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0010030": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "ocular"
+    ]
+   },
+   "MONDO:0005021": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005349": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0004981": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0011382": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0005380": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0021204": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "otologic"
+    ]
+   }
+  }
+ },
+ "organ_059": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005393": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0012105": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary",
+     "renal"
+    ]
+   },
+   "MONDO:0005399": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0007699": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0001221": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005256": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0001382": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "renal"
+    ]
+   },
+   "MONDO:0000004": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   }
+  }
+ },
+ "organ_060": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005366": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0008383": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005340": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0700322": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0005391": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0008171": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005386": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0042981": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   }
+  }
+ },
+ "organ_061": {
+  "n": 208,
+  "controls": {
+   "MONDO:0006559": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:1040015": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005155": {
+    "expect": "keep",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0001370": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005016": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "renal"
+    ]
+   },
+   "MONDO:0005002": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005041": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0011122": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   }
+  }
+ },
+ "organ_062": {
+  "n": 208,
+  "controls": {
+   "MONDO:0009891": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0008375": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0019438": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "haematologic",
+     "renal"
+    ]
+   },
+   "MONDO:0009061": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0010602": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0004785": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005180": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0005510": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_063": {
+  "n": 208,
+  "controls": {
+   "MONDO:0000705": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0006651": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005277": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0044079": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "renal"
+    ]
+   },
+   "MONDO:0006507": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004980": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005100": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "gastrointestinal",
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005364": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   }
+  }
+ },
+ "organ_064": {
+  "n": 208,
+  "controls": {
+   "MONDO:0004979": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005147": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0002492": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0001505": {
+    "expect": "change",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0004247": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005377": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005388": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001134": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   }
+  }
+ },
+ "organ_065": {
+  "n": 208,
+  "controls": {
+   "MONDO:0015924": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005129": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0001356": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0016218": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0005068": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005556": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0005609": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0011849": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   }
+  }
+ },
+ "organ_066": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005279": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0001509": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0018076": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005132": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0007039": {
+    "expect": "keep",
+    "organs": [
+     "neurologic",
+     "otologic"
+    ]
+   },
+   "MONDO:0005178": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005298": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005101": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_067": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005150": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0007186": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0012672": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "hepatic"
+    ]
+   },
+   "MONDO:0006604": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0007915": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001566": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0019338": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005130": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_068": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005011": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0015517": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005266": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0011438": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0100338": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0007972": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0021187": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005546": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   }
+  }
+ },
+ "organ_069": {
+  "n": 208,
+  "controls": {
+   "MONDO:0008661": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:1060198": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "neurologic"
+    ]
+   },
+   "MONDO:0007147": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0004691": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005027": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0018912": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009688": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0008558": {
+    "expect": "change",
+    "organs": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_070": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005230": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0004975": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0010030": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "ocular"
+    ]
+   },
+   "MONDO:0005021": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005349": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0004981": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0011382": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0005380": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   }
+  }
+ },
+ "organ_071": {
+  "n": 208,
+  "controls": {
+   "MONDO:0021204": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "otologic"
+    ]
+   },
+   "MONDO:0005393": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0012105": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary",
+     "renal"
+    ]
+   },
+   "MONDO:0005399": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0007699": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0001221": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005256": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0001382": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_072": {
+  "n": 208,
+  "controls": {
+   "MONDO:0000004": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005366": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0008383": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005340": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0700322": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0005391": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0008171": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005386": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   }
+  }
+ },
+ "organ_073": {
+  "n": 208,
+  "controls": {
+   "MONDO:0042981": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0006559": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:1040015": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005155": {
+    "expect": "change",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0001370": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005016": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "renal"
+    ]
+   },
+   "MONDO:0005002": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005041": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   }
+  }
+ },
+ "organ_074": {
+  "n": 208,
+  "controls": {
+   "MONDO:0011122": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009891": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0008375": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0019438": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "haematologic",
+     "renal"
+    ]
+   },
+   "MONDO:0009061": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0010602": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0004785": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005180": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   }
+  }
+ },
+ "organ_075": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005510": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0000705": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0006651": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005277": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0044079": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "renal"
+    ]
+   },
+   "MONDO:0006507": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004980": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005100": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "gastrointestinal",
+     "infectious_immune",
+     "pulmonary"
+    ]
+   }
+  }
+ },
+ "organ_076": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005364": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004979": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005147": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0002492": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0001505": {
+    "expect": "keep",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0004247": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005377": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005388": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_077": {
+  "n": 208,
+  "controls": {
+   "MONDO:0001134": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0015924": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005129": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0001356": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0016218": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0005068": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005556": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0005609": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "neurologic"
+    ]
+   }
+  }
+ },
+ "organ_078": {
+  "n": 208,
+  "controls": {
+   "MONDO:0011849": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005279": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0001509": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0018076": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005132": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0007039": {
+    "expect": "change",
+    "organs": [
+     "neurologic",
+     "otologic"
+    ]
+   },
+   "MONDO:0005178": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005298": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   }
+  }
+ },
+ "organ_079": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005101": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005150": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0007186": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0012672": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "hepatic"
+    ]
+   },
+   "MONDO:0006604": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0007915": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001566": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0019338": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   }
+  }
+ },
+ "organ_080": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005130": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005011": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0015517": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005266": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0011438": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0100338": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0007972": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0021187": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   }
+  }
+ },
+ "organ_081": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005546": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0008661": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:1060198": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "neurologic"
+    ]
+   },
+   "MONDO:0007147": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0004691": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005027": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0018912": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009688": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   }
+  }
+ },
+ "organ_082": {
+  "n": 208,
+  "controls": {
+   "MONDO:0008558": {
+    "expect": "keep",
+    "organs": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005230": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0004975": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0010030": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "ocular"
+    ]
+   },
+   "MONDO:0005021": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005349": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0004981": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0011382": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   }
+  }
+ },
+ "organ_083": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005380": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0021204": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "otologic"
+    ]
+   },
+   "MONDO:0005393": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0012105": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary",
+     "renal"
+    ]
+   },
+   "MONDO:0005399": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0007699": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0001221": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005256": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   }
+  }
+ },
+ "organ_084": {
+  "n": 208,
+  "controls": {
+   "MONDO:0001382": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "renal"
+    ]
+   },
+   "MONDO:0000004": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005366": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0008383": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005340": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0700322": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0005391": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0008171": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_085": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005386": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0042981": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0006559": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:1040015": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005155": {
+    "expect": "keep",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0001370": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005016": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "renal"
+    ]
+   },
+   "MONDO:0005002": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   }
+  }
+ },
+ "organ_086": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005041": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0011122": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009891": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0008375": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0019438": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "haematologic",
+     "renal"
+    ]
+   },
+   "MONDO:0009061": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0010602": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0004785": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   }
+  }
+ },
+ "organ_087": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005180": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0005510": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0000705": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0006651": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005277": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0044079": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "renal"
+    ]
+   },
+   "MONDO:0006507": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004980": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_088": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005100": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "gastrointestinal",
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005364": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004979": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005147": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0002492": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0001505": {
+    "expect": "change",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0004247": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0005377": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_089": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005388": {
+    "expect": "keep",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001134": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0015924": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005129": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0001356": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0016218": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0005068": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005556": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_090": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005609": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0011849": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005279": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0001509": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0018076": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005132": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0007039": {
+    "expect": "keep",
+    "organs": [
+     "neurologic",
+     "otologic"
+    ]
+   },
+   "MONDO:0005178": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   }
+  }
+ },
+ "organ_091": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005298": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005101": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005150": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0007186": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0012672": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "hepatic"
+    ]
+   },
+   "MONDO:0006604": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0007915": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001566": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   }
+  }
+ },
+ "organ_092": {
+  "n": 208,
+  "controls": {
+   "MONDO:0019338": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005130": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005011": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0015517": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005266": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0011438": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0100338": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0007972": {
+    "expect": "change",
+    "organs": [
+     "otologic"
+    ]
+   }
+  }
+ },
+ "organ_093": {
+  "n": 208,
+  "controls": {
+   "MONDO:0021187": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005546": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0008661": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:1060198": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "neurologic"
+    ]
+   },
+   "MONDO:0007147": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0004691": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005027": {
+    "expect": "keep",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0018912": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   }
+  }
+ },
+ "organ_094": {
+  "n": 208,
+  "controls": {
+   "MONDO:0009688": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0008558": {
+    "expect": "change",
+    "organs": [
+     "haematologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005230": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0004975": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0010030": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "ocular"
+    ]
+   },
+   "MONDO:0005021": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005349": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0004981": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   }
+  }
+ },
+ "organ_095": {
+  "n": 208,
+  "controls": {
+   "MONDO:0011382": {
+    "expect": "keep",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0005380": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0021204": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "otologic"
+    ]
+   },
+   "MONDO:0005393": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0012105": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "pulmonary",
+     "renal"
+    ]
+   },
+   "MONDO:0005399": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0007699": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0001221": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   }
+  }
+ },
+ "organ_096": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005256": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0001382": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "renal"
+    ]
+   },
+   "MONDO:0000004": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005366": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0008383": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005340": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0700322": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0005391": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   }
+  }
+ },
+ "organ_097": {
+  "n": 208,
+  "controls": {
+   "MONDO:0008171": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005386": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0042981": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0006559": {
+    "expect": "change",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:1040015": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005155": {
+    "expect": "change",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0001370": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0005016": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_098": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005002": {
+    "expect": "keep",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005041": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0011122": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0009891": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0008375": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0019438": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "haematologic",
+     "renal"
+    ]
+   },
+   "MONDO:0009061": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0010602": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   }
+  }
+ },
+ "organ_099": {
+  "n": 208,
+  "controls": {
+   "MONDO:0004785": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005180": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0005510": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0000705": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0006651": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0005277": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   },
+   "MONDO:0044079": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "renal"
+    ]
+   },
+   "MONDO:0006507": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "metabolic_endocrine"
+    ]
+   }
+  }
+ },
+ "organ_100": {
+  "n": 208,
+  "controls": {
+   "MONDO:0004980": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005100": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "gastrointestinal",
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005364": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0004979": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005147": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0002492": {
+    "expect": "change",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0001505": {
+    "expect": "keep",
+    "organs": [
+     "hepatic"
+    ]
+   },
+   "MONDO:0004247": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal"
+    ]
+   }
+  }
+ },
+ "organ_101": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005377": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005388": {
+    "expect": "change",
+    "organs": [
+     "hepatic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0001134": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular"
+    ]
+   },
+   "MONDO:0015924": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005129": {
+    "expect": "keep",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0001356": {
+    "expect": "change",
+    "organs": [
+     "haematologic"
+    ]
+   },
+   "MONDO:0016218": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0005068": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular"
+    ]
+   }
+  }
+ },
+ "organ_102": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005556": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   },
+   "MONDO:0005609": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "neurologic"
+    ]
+   },
+   "MONDO:0011849": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic",
+     "infectious_immune",
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005279": {
+    "expect": "change",
+    "organs": [
+     "cardiovascular",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0001509": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune",
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0018076": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005132": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0007039": {
+    "expect": "change",
+    "organs": [
+     "neurologic",
+     "otologic"
+    ]
+   }
+  }
+ },
+ "organ_103": {
+  "n": 208,
+  "controls": {
+   "MONDO:0005178": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005298": {
+    "expect": "change",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0005101": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005150": {
+    "expect": "change",
+    "organs": [
+     "ocular"
+    ]
+   },
+   "MONDO:0007186": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal"
+    ]
+   },
+   "MONDO:0012672": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "hepatic"
+    ]
+   },
+   "MONDO:0006604": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0007915": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune"
+    ]
+   }
+  }
+ },
+ "organ_104": {
+  "n": 208,
+  "controls": {
+   "MONDO:0001566": {
+    "expect": "keep",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0019338": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "pulmonary"
+    ]
+   },
+   "MONDO:0005130": {
+    "expect": "keep",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005011": {
+    "expect": "change",
+    "organs": [
+     "gastrointestinal",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0015517": {
+    "expect": "keep",
+    "organs": [
+     "infectious_immune"
+    ]
+   },
+   "MONDO:0005266": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine",
+     "ocular"
+    ]
+   },
+   "MONDO:0011438": {
+    "expect": "keep",
+    "organs": [
+     "dermatologic"
+    ]
+   },
+   "MONDO:0100338": {
+    "expect": "change",
+    "organs": [
+     "infectious_immune",
+     "renal"
+    ]
+   }
+  }
+ },
+ "organ_105": {
+  "n": 39,
+  "controls": {
+   "MONDO:0007972": {
+    "expect": "keep",
+    "organs": [
+     "otologic"
+    ]
+   },
+   "MONDO:0021187": {
+    "expect": "change",
+    "organs": [
+     "metabolic_endocrine"
+    ]
+   },
+   "MONDO:0005546": {
+    "expect": "keep",
+    "organs": [
+     "musculoskeletal"
+    ]
+   },
+   "MONDO:0008661": {
+    "expect": "change",
+    "organs": [
+     "dermatologic",
+     "infectious_immune"
+    ]
+   },
+   "MONDO:1060198": {
+    "expect": "keep",
+    "organs": [
+     "cardiovascular",
+     "neurologic"
+    ]
+   },
+   "MONDO:0007147": {
+    "expect": "change",
+    "organs": [
+     "pulmonary"
+    ]
+   },
+   "MONDO:0004691": {
+    "expect": "keep",
+    "organs": [
+     "renal"
+    ]
+   },
+   "MONDO:0005027": {
+    "expect": "change",
+    "organs": [
+     "neurologic"
+    ]
+   }
+  }
+ },
+ "sym_00": {
+  "n": 25,
+  "controls": {
+   "-1": {
+    "expect": "drop",
+    "from_id": "MONDO:0017373",
+    "under": "MONDO:0017376"
+   },
+   "-2": {
+    "expect": "drop",
+    "from_id": "MONDO:0005541",
+    "under": "MONDO:0005283"
+   },
+   "-3": {
+    "expect": "drop",
+    "from_id": "MONDO:0002127",
+    "under": "MONDO:0003816"
+   },
+   "-4": {
+    "expect": "drop",
+    "from_id": "MONDO:0001150",
+    "under": "MONDO:0001442"
+   },
+   "-5": {
+    "expect": "drop",
+    "from_id": "MONDO:0018912",
+    "under": "MONDO:0005541"
+   }
+  }
+ },
+ "sym_01": {
+  "n": 25,
+  "controls": {
+   "-1001": {
+    "expect": "drop",
+    "from_id": "MONDO:0001100",
+    "under": "MONDO:0004846"
+   },
+   "-1002": {
+    "expect": "drop",
+    "from_id": "MONDO:0001214",
+    "under": "MONDO:0002776"
+   },
+   "-1003": {
+    "expect": "drop",
+    "from_id": "MONDO:0001670",
+    "under": "MONDO:0004640"
+   },
+   "-1004": {
+    "expect": "drop",
+    "from_id": "MONDO:0003282",
+    "under": "MONDO:0005173"
+   },
+   "-1005": {
+    "expect": "drop",
+    "from_id": "MONDO:0001170",
+    "under": "MONDO:0004277"
+   }
+  }
+ },
+ "sym_02": {
+  "n": 25,
+  "controls": {
+   "-2001": {
+    "expect": "drop",
+    "from_id": "MONDO:0002278",
+    "under": "MONDO:0002492"
+   },
+   "-2002": {
+    "expect": "drop",
+    "from_id": "MONDO:0007033",
+    "under": "MONDO:0100130"
+   },
+   "-2003": {
+    "expect": "drop",
+    "from_id": "MONDO:0005130",
+    "under": "MONDO:0021669"
+   },
+   "-2004": {
+    "expect": "drop",
+    "from_id": "MONDO:0002278",
+    "under": "MONDO:0002317"
+   },
+   "-2005": {
+    "expect": "drop",
+    "from_id": "MONDO:0005130",
+    "under": "MONDO:0006545"
+   }
+  }
+ },
+ "sym_03": {
+  "n": 25,
+  "controls": {
+   "-3001": {
+    "expect": "drop",
+    "from_id": "MONDO:0005090",
+    "under": "MONDO:0006721"
+   },
+   "-3002": {
+    "expect": "drop",
+    "from_id": "MONDO:0003664",
+    "under": "MONDO:0003939"
+   },
+   "-3003": {
+    "expect": "drop",
+    "from_id": "MONDO:0019338",
+    "under": "MONDO:0016581"
+   },
+   "-3004": {
+    "expect": "drop",
+    "from_id": "MONDO:0019338",
+    "under": "MONDO:0003781"
+   },
+   "-3005": {
+    "expect": "drop",
+    "from_id": "MONDO:0005090",
+    "under": "MONDO:0003781"
+   }
+  }
+ },
+ "sym_04": {
+  "n": 25,
+  "controls": {
+   "-4001": {
+    "expect": "drop",
+    "from_id": "MONDO:0005451",
+    "under": "MONDO:0008541"
+   },
+   "-4002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005146",
+    "under": "MONDO:0006734"
+   },
+   "-4003": {
+    "expect": "drop",
+    "from_id": "MONDO:0016466",
+    "under": "MONDO:0007576"
+   },
+   "-4004": {
+    "expect": "drop",
+    "from_id": "MONDO:0016466",
+    "under": "MONDO:0004514"
+   },
+   "-4005": {
+    "expect": "drop",
+    "from_id": "MONDO:0002036",
+    "under": "MONDO:0008420"
+   }
+  }
+ },
+ "sym_05": {
+  "n": 25,
+  "controls": {
+   "-5001": {
+    "expect": "drop",
+    "from_id": "MONDO:0002048",
+    "under": "MONDO:0000004"
+   },
+   "-5002": {
+    "expect": "drop",
+    "from_id": "MONDO:0006873",
+    "under": "MONDO:0021108"
+   },
+   "-5003": {
+    "expect": "drop",
+    "from_id": "MONDO:0000004",
+    "under": "MONDO:0005510"
+   },
+   "-5004": {
+    "expect": "drop",
+    "from_id": "MONDO:0002048",
+    "under": "MONDO:0022823"
+   },
+   "-5005": {
+    "expect": "drop",
+    "from_id": "MONDO:0012105",
+    "under": "MONDO:0002529"
+   }
+  }
+ },
+ "sym_06": {
+  "n": 25,
+  "controls": {
+   "-6001": {
+    "expect": "drop",
+    "from_id": "MONDO:0002320",
+    "under": "MONDO:0001557"
+   },
+   "-6002": {
+    "expect": "drop",
+    "from_id": "MONDO:0016218",
+    "under": "MONDO:0000627"
+   },
+   "-6003": {
+    "expect": "drop",
+    "from_id": "MONDO:0005570",
+    "under": "MONDO:0001557"
+   },
+   "-6004": {
+    "expect": "drop",
+    "from_id": "MONDO:0021440",
+    "under": "MONDO:0001657"
+   },
+   "-6005": {
+    "expect": "drop",
+    "from_id": "MONDO:0008599",
+    "under": "MONDO:0000627"
+   }
+  }
+ },
+ "sym_07": {
+  "n": 25,
+  "controls": {
+   "-7001": {
+    "expect": "drop",
+    "from_id": "MONDO:0001160",
+    "under": "MONDO:0005364"
+   },
+   "-7002": {
+    "expect": "drop",
+    "from_id": "MONDO:0041526",
+    "under": "MONDO:0005377"
+   },
+   "-7003": {
+    "expect": "drop",
+    "from_id": "MONDO:0002169",
+    "under": "MONDO:0013209"
+   },
+   "-7004": {
+    "expect": "drop",
+    "from_id": "MONDO:0008171",
+    "under": "MONDO:0005100"
+   },
+   "-7005": {
+    "expect": "drop",
+    "from_id": "MONDO:0008171",
+    "under": "MONDO:0005252"
+   }
+  }
+ },
+ "sym_08": {
+  "n": 25,
+  "controls": {
+   "-8001": {
+    "expect": "drop",
+    "from_id": "MONDO:0002869",
+    "under": "MONDO:0001786"
+   },
+   "-8002": {
+    "expect": "drop",
+    "from_id": "MONDO:0019735",
+    "under": "MONDO:0100431"
+   },
+   "-8003": {
+    "expect": "drop",
+    "from_id": "MONDO:0002354",
+    "under": "MONDO:0006608"
+   },
+   "-8004": {
+    "expect": "drop",
+    "from_id": "MONDO:0005084",
+    "under": "MONDO:0000647"
+   },
+   "-8005": {
+    "expect": "drop",
+    "from_id": "MONDO:0002354",
+    "under": "MONDO:0019735"
+   }
+  }
+ },
+ "sym_09": {
+  "n": 25,
+  "controls": {
+   "-9001": {
+    "expect": "drop",
+    "from_id": "MONDO:0006592",
+    "under": "MONDO:0005081"
+   },
+   "-9002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005240",
+    "under": "MONDO:0004843"
+   },
+   "-9003": {
+    "expect": "drop",
+    "from_id": "MONDO:0004843",
+    "under": "MONDO:0005008"
+   },
+   "-9004": {
+    "expect": "drop",
+    "from_id": "MONDO:0021469",
+    "under": "MONDO:0005240"
+   },
+   "-9005": {
+    "expect": "drop",
+    "from_id": "MONDO:0016675",
+    "under": "MONDO:0006932"
+   }
+  }
+ },
+ "sym_10": {
+  "n": 25,
+  "controls": {
+   "-10001": {
+    "expect": "drop",
+    "from_id": "MONDO:0002275",
+    "under": "MONDO:0019288"
+   },
+   "-10002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005607",
+    "under": "MONDO:0001798"
+   },
+   "-10003": {
+    "expect": "drop",
+    "from_id": "MONDO:0006670",
+    "under": "MONDO:0004180"
+   },
+   "-10004": {
+    "expect": "drop",
+    "from_id": "MONDO:0021063",
+    "under": "MONDO:0019288"
+   },
+   "-10005": {
+    "expect": "drop",
+    "from_id": "MONDO:0007254",
+    "under": "MONDO:0002243"
+   }
+  }
+ },
+ "sym_11": {
+  "n": 25,
+  "controls": {
+   "-11001": {
+    "expect": "drop",
+    "from_id": "MONDO:0007263",
+    "under": "MONDO:0000462"
+   },
+   "-11002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005052",
+    "under": "MONDO:0006940"
+   },
+   "-11003": {
+    "expect": "drop",
+    "from_id": "MONDO:0001369",
+    "under": "MONDO:0021501"
+   },
+   "-11004": {
+    "expect": "drop",
+    "from_id": "MONDO:0008698",
+    "under": "MONDO:0005267"
+   },
+   "-11005": {
+    "expect": "drop",
+    "from_id": "MONDO:0850123",
+    "under": "MONDO:0043541"
+   }
+  }
+ },
+ "sym_12": {
+  "n": 25,
+  "controls": {
+   "-12001": {
+    "expect": "drop",
+    "from_id": "MONDO:0002261",
+    "under": "MONDO:0001041"
+   },
+   "-12002": {
+    "expect": "drop",
+    "from_id": "MONDO:0002332",
+    "under": "MONDO:0005296"
+   },
+   "-12003": {
+    "expect": "drop",
+    "from_id": "MONDO:0018362",
+    "under": "MONDO:0019162"
+   },
+   "-12004": {
+    "expect": "drop",
+    "from_id": "MONDO:0005003",
+    "under": "MONDO:0005296"
+   },
+   "-12005": {
+    "expect": "drop",
+    "from_id": "MONDO:0018362",
+    "under": "MONDO:0008383"
+   }
+  }
+ },
+ "sym_13": {
+  "n": 25,
+  "controls": {
+   "-13001": {
+    "expect": "drop",
+    "from_id": "MONDO:0000705",
+    "under": "MONDO:0005023"
+   },
+   "-13002": {
+    "expect": "drop",
+    "from_id": "MONDO:0020679",
+    "under": "MONDO:0004778"
+   },
+   "-13003": {
+    "expect": "drop",
+    "from_id": "MONDO:0002220",
+    "under": "MONDO:0005593"
+   },
+   "-13004": {
+    "expect": "drop",
+    "from_id": "MONDO:0002220",
+    "under": "MONDO:0021154"
+   },
+   "-13005": {
+    "expect": "drop",
+    "from_id": "MONDO:0021154",
+    "under": "MONDO:0004572"
+   }
+  }
+ },
+ "sym_14": {
+  "n": 25,
+  "controls": {
+   "-14001": {
+    "expect": "drop",
+    "from_id": "MONDO:0010030",
+    "under": "MONDO:0000625"
+   },
+   "-14002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005109",
+    "under": "MONDO:0005642"
+   },
+   "-14003": {
+    "expect": "drop",
+    "from_id": "MONDO:0005392",
+    "under": "MONDO:0006533"
+   },
+   "-14004": {
+    "expect": "drop",
+    "from_id": "MONDO:0005025",
+    "under": "MONDO:0001920"
+   },
+   "-14005": {
+    "expect": "drop",
+    "from_id": "MONDO:0001903",
+    "under": "MONDO:0005371"
+   }
+  }
+ },
+ "sym_15": {
+  "n": 25,
+  "controls": {
+   "-15001": {
+    "expect": "drop",
+    "from_id": "MONDO:0019167",
+    "under": "MONDO:0006295"
+   },
+   "-15002": {
+    "expect": "drop",
+    "from_id": "MONDO:0006295",
+    "under": "MONDO:0024470"
+   },
+   "-15003": {
+    "expect": "drop",
+    "from_id": "MONDO:0005391",
+    "under": "MONDO:0000748"
+   },
+   "-15004": {
+    "expect": "drop",
+    "from_id": "MONDO:0006295",
+    "under": "MONDO:0003150"
+   },
+   "-15005": {
+    "expect": "drop",
+    "from_id": "MONDO:0003150",
+    "under": "MONDO:0005417"
+   }
+  }
+ },
+ "sym_16": {
+  "n": 25,
+  "controls": {
+   "-16001": {
+    "expect": "drop",
+    "from_id": "MONDO:0800504",
+    "under": "MONDO:0007241"
+   },
+   "-16002": {
+    "expect": "drop",
+    "from_id": "MONDO:0003608",
+    "under": "MONDO:0001889"
+   },
+   "-16003": {
+    "expect": "drop",
+    "from_id": "MONDO:0004849",
+    "under": "MONDO:0005554"
+   },
+   "-16004": {
+    "expect": "drop",
+    "from_id": "MONDO:0002028",
+    "under": "MONDO:0006966"
+   },
+   "-16005": {
+    "expect": "drop",
+    "from_id": "MONDO:0006849",
+    "under": "MONDO:0007241"
+   }
+  }
+ },
+ "sym_17": {
+  "n": 25,
+  "controls": {
+   "-17001": {
+    "expect": "drop",
+    "from_id": "MONDO:0100192",
+    "under": "MONDO:0002311"
+   },
+   "-17002": {
+    "expect": "drop",
+    "from_id": "MONDO:0100192",
+    "under": "MONDO:0020572"
+   },
+   "-17003": {
+    "expect": "drop",
+    "from_id": "MONDO:0002172",
+    "under": "MONDO:0004920"
+   },
+   "-17004": {
+    "expect": "drop",
+    "from_id": "MONDO:0002172",
+    "under": "MONDO:0008575"
+   },
+   "-17005": {
+    "expect": "drop",
+    "from_id": "MONDO:0002172",
+    "under": "MONDO:0004867"
+   }
+  }
+ },
+ "sym_18": {
+  "n": 25,
+  "controls": {
+   "-18001": {
+    "expect": "drop",
+    "from_id": "MONDO:0001741",
+    "under": "MONDO:0024573"
+   },
+   "-18002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005061",
+    "under": "MONDO:0002050"
+   },
+   "-18003": {
+    "expect": "drop",
+    "from_id": "MONDO:0005061",
+    "under": "MONDO:0010793"
+   },
+   "-18004": {
+    "expect": "drop",
+    "from_id": "MONDO:0044343",
+    "under": "MONDO:0021201"
+   },
+   "-18005": {
+    "expect": "drop",
+    "from_id": "MONDO:0001541",
+    "under": "MONDO:0004605"
+   }
+  }
+ },
+ "sym_19": {
+  "n": 25,
+  "controls": {
+   "-19001": {
+    "expect": "drop",
+    "from_id": "MONDO:0002026",
+    "under": "MONDO:0021445"
+   },
+   "-19002": {
+    "expect": "drop",
+    "from_id": "MONDO:0021445",
+    "under": "MONDO:0005770"
+   },
+   "-19003": {
+    "expect": "drop",
+    "from_id": "MONDO:0006526",
+    "under": "MONDO:0021739"
+   },
+   "-19004": {
+    "expect": "drop",
+    "from_id": "MONDO:0005770",
+    "under": "MONDO:0005351"
+   },
+   "-19005": {
+    "expect": "drop",
+    "from_id": "MONDO:0005083",
+    "under": "MONDO:0005812"
+   }
+  }
+ },
+ "sym_20": {
+  "n": 25,
+  "controls": {
+   "-20001": {
+    "expect": "drop",
+    "from_id": "MONDO:0005277",
+    "under": "MONDO:0021895"
+   },
+   "-20002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005663",
+    "under": "MONDO:0002186"
+   },
+   "-20003": {
+    "expect": "drop",
+    "from_id": "MONDO:0015597",
+    "under": "MONDO:0005020"
+   },
+   "-20004": {
+    "expect": "drop",
+    "from_id": "MONDO:0006107",
+    "under": "MONDO:0005663"
+   },
+   "-20005": {
+    "expect": "drop",
+    "from_id": "MONDO:0005073",
+    "under": "MONDO:0005277"
+   }
+  }
+ },
+ "sym_21": {
+  "n": 25,
+  "controls": {
+   "-21001": {
+    "expect": "drop",
+    "from_id": "MONDO:0021124",
+    "under": "MONDO:0001212"
+   },
+   "-21002": {
+    "expect": "drop",
+    "from_id": "MONDO:0041052",
+    "under": "MONDO:0005546"
+   },
+   "-21003": {
+    "expect": "drop",
+    "from_id": "MONDO:0008558",
+    "under": "MONDO:0005384"
+   },
+   "-21004": {
+    "expect": "drop",
+    "from_id": "MONDO:0006585",
+    "under": "MONDO:0005041"
+   },
+   "-21005": {
+    "expect": "drop",
+    "from_id": "MONDO:0001212",
+    "under": "MONDO:0006805"
+   }
+  }
+ },
+ "sym_22": {
+  "n": 25,
+  "controls": {
+   "-22001": {
+    "expect": "drop",
+    "from_id": "MONDO:0011122",
+    "under": "MONDO:0005665"
+   },
+   "-22002": {
+    "expect": "drop",
+    "from_id": "MONDO:0006105",
+    "under": "MONDO:1040015"
+   },
+   "-22003": {
+    "expect": "drop",
+    "from_id": "MONDO:0006052",
+    "under": "MONDO:0011122"
+   },
+   "-22004": {
+    "expect": "drop",
+    "from_id": "MONDO:0005155",
+    "under": "MONDO:0006052"
+   },
+   "-22005": {
+    "expect": "drop",
+    "from_id": "MONDO:0021464",
+    "under": "MONDO:0005354"
+   }
+  }
+ },
+ "sym_23": {
+  "n": 25,
+  "controls": {
+   "-23001": {
+    "expect": "drop",
+    "from_id": "MONDO:0001627",
+    "under": "MONDO:0005011"
+   },
+   "-23002": {
+    "expect": "drop",
+    "from_id": "MONDO:0020600",
+    "under": "MONDO:0000646"
+   },
+   "-23003": {
+    "expect": "drop",
+    "from_id": "MONDO:0002271",
+    "under": "MONDO:0005487"
+   },
+   "-23004": {
+    "expect": "drop",
+    "from_id": "MONDO:0019082",
+    "under": "MONDO:0002471"
+   },
+   "-23005": {
+    "expect": "drop",
+    "from_id": "MONDO:0004609",
+    "under": "MONDO:0002268"
+   }
+  }
+ },
+ "sym_24": {
+  "n": 25,
+  "controls": {
+   "-24001": {
+    "expect": "drop",
+    "from_id": "MONDO:0007972",
+    "under": "MONDO:0001356"
+   },
+   "-24002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005294",
+    "under": "MONDO:0002037"
+   },
+   "-24003": {
+    "expect": "drop",
+    "from_id": "MONDO:0007972",
+    "under": "MONDO:0850302"
+   },
+   "-24004": {
+    "expect": "drop",
+    "from_id": "MONDO:0001875",
+    "under": "MONDO:0001356"
+   },
+   "-24005": {
+    "expect": "drop",
+    "from_id": "MONDO:0024318",
+    "under": "MONDO:0001051"
+   }
+  }
+ },
+ "sym_25": {
+  "n": 25,
+  "controls": {
+   "-25001": {
+    "expect": "drop",
+    "from_id": "MONDO:0007886",
+    "under": "MONDO:0002545"
+   },
+   "-25002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005452",
+    "under": "MONDO:0022208"
+   },
+   "-25003": {
+    "expect": "drop",
+    "from_id": "MONDO:0005066",
+    "under": "MONDO:0020598"
+   },
+   "-25004": {
+    "expect": "drop",
+    "from_id": "MONDO:0003749",
+    "under": "MONDO:0005452"
+   },
+   "-25005": {
+    "expect": "drop",
+    "from_id": "MONDO:0005211",
+    "under": "MONDO:0005010"
+   }
+  }
+ },
+ "sym_26": {
+  "n": 25,
+  "controls": {
+   "-26001": {
+    "expect": "drop",
+    "from_id": "MONDO:0005468",
+    "under": "MONDO:0018756"
+   },
+   "-26002": {
+    "expect": "drop",
+    "from_id": "MONDO:0006009",
+    "under": "MONDO:0005328"
+   },
+   "-26003": {
+    "expect": "drop",
+    "from_id": "MONDO:0018756",
+    "under": "MONDO:0000620"
+   },
+   "-26004": {
+    "expect": "drop",
+    "from_id": "MONDO:0001056",
+    "under": "MONDO:0002078"
+   },
+   "-26005": {
+    "expect": "drop",
+    "from_id": "MONDO:0006009",
+    "under": "MONDO:0005688"
+   }
+  }
+ },
+ "sym_27": {
+  "n": 25,
+  "controls": {
+   "-27001": {
+    "expect": "drop",
+    "from_id": "MONDO:0006642",
+    "under": "MONDO:0004847"
+   },
+   "-27002": {
+    "expect": "drop",
+    "from_id": "MONDO:0003394",
+    "under": "MONDO:0006642"
+   },
+   "-27003": {
+    "expect": "drop",
+    "from_id": "MONDO:0005180",
+    "under": "MONDO:0002052"
+   },
+   "-27004": {
+    "expect": "drop",
+    "from_id": "MONDO:0005534",
+    "under": "MONDO:0000816"
+   },
+   "-27005": {
+    "expect": "drop",
+    "from_id": "MONDO:0002183",
+    "under": "MONDO:0008583"
+   }
+  }
+ },
+ "sym_28": {
+  "n": 25,
+  "controls": {
+   "-28001": {
+    "expect": "drop",
+    "from_id": "MONDO:0021506",
+    "under": "MONDO:0001303"
+   },
+   "-28002": {
+    "expect": "drop",
+    "from_id": "MONDO:0001303",
+    "under": "MONDO:0002513"
+   },
+   "-28003": {
+    "expect": "drop",
+    "from_id": "MONDO:0008382",
+    "under": "MONDO:0007079"
+   },
+   "-28004": {
+    "expect": "drop",
+    "from_id": "MONDO:0004822",
+    "under": "MONDO:0000744"
+   },
+   "-28005": {
+    "expect": "drop",
+    "from_id": "MONDO:0100574",
+    "under": "MONDO:0004891"
+   }
+  }
+ },
+ "sym_29": {
+  "n": 25,
+  "controls": {
+   "-29001": {
+    "expect": "drop",
+    "from_id": "MONDO:0012456",
+    "under": "MONDO:0023757"
+   },
+   "-29002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005402",
+    "under": "MONDO:0002771"
+   },
+   "-29003": {
+    "expect": "drop",
+    "from_id": "MONDO:0004975",
+    "under": "MONDO:0010888"
+   },
+   "-29004": {
+    "expect": "drop",
+    "from_id": "MONDO:0012456",
+    "under": "MONDO:0004648"
+   },
+   "-29005": {
+    "expect": "drop",
+    "from_id": "MONDO:0004872",
+    "under": "MONDO:0018612"
+   }
+  }
+ },
+ "sym_30": {
+  "n": 25,
+  "controls": {
+   "-30001": {
+    "expect": "drop",
+    "from_id": "MONDO:0006837",
+    "under": "MONDO:0010604"
+   },
+   "-30002": {
+    "expect": "drop",
+    "from_id": "MONDO:0005029",
+    "under": "MONDO:0042491"
+   },
+   "-30003": {
+    "expect": "drop",
+    "from_id": "MONDO:0015349",
+    "under": "MONDO:0006843"
+   },
+   "-30004": {
+    "expect": "drop",
+    "from_id": "MONDO:0002049",
+    "under": "MONDO:0005029"
+   },
+   "-30005": {
+    "expect": "drop",
+    "from_id": "MONDO:0002155",
+    "under": "MONDO:0020696"
+   }
+  }
+ },
+ "sym_31": {
+  "n": 15,
+  "controls": {
+   "-31001": {
+    "expect": "drop",
+    "from_id": "MONDO:0008288",
+    "under": "MONDO:0013433"
+   },
+   "-31002": {
+    "expect": "drop",
+    "from_id": "MONDO:0004471",
+    "under": "MONDO:0002473"
+   },
+   "-31003": {
+    "expect": "drop",
+    "from_id": "MONDO:0006572",
+    "under": "MONDO:0004782"
+   },
+   "-31004": {
+    "expect": "drop",
+    "from_id": "MONDO:0005012",
+    "under": "MONDO:0024575"
+   },
+   "-31005": {
+    "expect": "drop",
+    "from_id": "MONDO:0013433",
+    "under": "MONDO:0004782"
+   }
+  }
+ },
+ "ko_00": {
+  "n": 255,
+  "controls": {
+   "-1": {
+    "expect": "drop",
+    "text_of": "MONDO:0011472"
+   },
+   "-2": {
+    "expect": "drop",
+    "text_of": "MONDO:0018695"
+   },
+   "-3": {
+    "expect": "drop",
+    "text_of": "MONDO:0002715"
+   },
+   "-4": {
+    "expect": "drop",
+    "text_of": "MONDO:0004379"
+   },
+   "-5": {
+    "expect": "drop",
+    "text_of": "MONDO:0005345"
+   }
+  }
+ },
+ "ko_01": {
+  "n": 255,
+  "controls": {
+   "-1001": {
+    "expect": "drop",
+    "text_of": "MONDO:0001979"
+   },
+   "-1002": {
+    "expect": "drop",
+    "text_of": "MONDO:0000694"
+   },
+   "-1003": {
+    "expect": "drop",
+    "text_of": "MONDO:0024475"
+   },
+   "-1004": {
+    "expect": "drop",
+    "text_of": "MONDO:0000654"
+   },
+   "-1005": {
+    "expect": "drop",
+    "text_of": "MONDO:0700336"
+   }
+  }
+ },
+ "ko_02": {
+  "n": 255,
+  "controls": {
+   "-2001": {
+    "expect": "drop",
+    "text_of": "MONDO:0004601"
+   },
+   "-2002": {
+    "expect": "drop",
+    "text_of": "MONDO:0006164"
+   },
+   "-2003": {
+    "expect": "drop",
+    "text_of": "MONDO:0002314"
+   },
+   "-2004": {
+    "expect": "drop",
+    "text_of": "MONDO:0006164"
+   },
+   "-2005": {
+    "expect": "drop",
+    "text_of": "MONDO:0021400"
+   }
+  }
+ },
+ "ko_03": {
+  "n": 255,
+  "controls": {
+   "-3001": {
+    "expect": "drop",
+    "text_of": "MONDO:0004608"
+   },
+   "-3002": {
+    "expect": "drop",
+    "text_of": "MONDO:0019964"
+   },
+   "-3003": {
+    "expect": "drop",
+    "text_of": "MONDO:0007450"
+   },
+   "-3004": {
+    "expect": "drop",
+    "text_of": "MONDO:0009323"
+   },
+   "-3005": {
+    "expect": "drop",
+    "text_of": "MONDO:0800043"
+   }
+  }
+ },
+ "ko_04": {
+  "n": 255,
+  "controls": {
+   "-4001": {
+    "expect": "drop",
+    "text_of": "MONDO:0005447"
+   },
+   "-4002": {
+    "expect": "drop",
+    "text_of": "MONDO:0006812"
+   },
+   "-4003": {
+    "expect": "drop",
+    "text_of": "MONDO:0018271"
+   },
+   "-4004": {
+    "expect": "drop",
+    "text_of": "MONDO:0010622"
+   },
+   "-4005": {
+    "expect": "drop",
+    "text_of": "MONDO:0021124"
+   }
+  }
+ },
+ "ko_05": {
+  "n": 255,
+  "controls": {
+   "-5001": {
+    "expect": "drop",
+    "text_of": "MONDO:0005543"
+   },
+   "-5002": {
+    "expect": "drop",
+    "text_of": "MONDO:0001158"
+   },
+   "-5003": {
+    "expect": "drop",
+    "text_of": "MONDO:0006552"
+   },
+   "-5004": {
+    "expect": "drop",
+    "text_of": "MONDO:0009727"
+   },
+   "-5005": {
+    "expect": "drop",
+    "text_of": "MONDO:0021581"
+   }
+  }
+ },
+ "ko_06": {
+  "n": 255,
+  "controls": {
+   "-6001": {
+    "expect": "drop",
+    "text_of": "MONDO:0006880"
+   },
+   "-6002": {
+    "expect": "drop",
+    "text_of": "MONDO:0008797"
+   },
+   "-6003": {
+    "expect": "drop",
+    "text_of": "MONDO:0013209"
+   },
+   "-6004": {
+    "expect": "drop",
+    "text_of": "MONDO:0001824"
+   },
+   "-6005": {
+    "expect": "drop",
+    "text_of": "MONDO:0008797"
+   }
+  }
+ },
+ "ko_07": {
+  "n": 255,
+  "controls": {
+   "-7001": {
+    "expect": "drop",
+    "text_of": "MONDO:0003329"
+   },
+   "-7002": {
+    "expect": "drop",
+    "text_of": "MONDO:0019088"
+   },
+   "-7003": {
+    "expect": "drop",
+    "text_of": "MONDO:0017349"
+   },
+   "-7004": {
+    "expect": "drop",
+    "text_of": "MONDO:0012933"
+   },
+   "-7005": {
+    "expect": "drop",
+    "text_of": "MONDO:0005112"
+   }
+  }
+ },
+ "ko_08": {
+  "n": 255,
+  "controls": {
+   "-8001": {
+    "expect": "drop",
+    "text_of": "MONDO:0021193"
+   },
+   "-8002": {
+    "expect": "drop",
+    "text_of": "MONDO:0008903"
+   },
+   "-8003": {
+    "expect": "drop",
+    "text_of": "MONDO:0004985"
+   },
+   "-8004": {
+    "expect": "drop",
+    "text_of": "MONDO:0006672"
+   },
+   "-8005": {
+    "expect": "drop",
+    "text_of": "MONDO:0006729"
+   }
+  }
+ },
+ "ko_09": {
+  "n": 255,
+  "controls": {
+   "-9001": {
+    "expect": "drop",
+    "text_of": "MONDO:0011385"
+   },
+   "-9002": {
+    "expect": "drop",
+    "text_of": "MONDO:0005469"
+   },
+   "-9003": {
+    "expect": "drop",
+    "text_of": "MONDO:0019087"
+   },
+   "-9004": {
+    "expect": "drop",
+    "text_of": "MONDO:0024298"
+   },
+   "-9005": {
+    "expect": "drop",
+    "text_of": "MONDO:0017215"
+   }
+  }
+ },
+ "ko_10": {
+  "n": 255,
+  "controls": {
+   "-10001": {
+    "expect": "drop",
+    "text_of": "MONDO:0005515"
+   },
+   "-10002": {
+    "expect": "drop",
+    "text_of": "MONDO:0002561"
+   },
+   "-10003": {
+    "expect": "drop",
+    "text_of": "MONDO:0004608"
+   },
+   "-10004": {
+    "expect": "drop",
+    "text_of": "MONDO:0001517"
+   },
+   "-10005": {
+    "expect": "drop",
+    "text_of": "MONDO:0005433"
+   }
+  }
+ },
+ "ko_11": {
+  "n": 255,
+  "controls": {
+   "-11001": {
+    "expect": "drop",
+    "text_of": "MONDO:0005683"
+   },
+   "-11002": {
+    "expect": "drop",
+    "text_of": "MONDO:0001905"
+   },
+   "-11003": {
+    "expect": "drop",
+    "text_of": "MONDO:0005961"
+   },
+   "-11004": {
+    "expect": "drop",
+    "text_of": "MONDO:0016830"
+   },
+   "-11005": {
+    "expect": "drop",
+    "text_of": "MONDO:0000807"
+   }
+  }
+ },
+ "ko_12": {
+  "n": 255,
+  "controls": {
+   "-12001": {
+    "expect": "drop",
+    "text_of": "MONDO:0005579"
+   },
+   "-12002": {
+    "expect": "drop",
+    "text_of": "MONDO:0021108"
+   },
+   "-12003": {
+    "expect": "drop",
+    "text_of": "MONDO:0003233"
+   },
+   "-12004": {
+    "expect": "drop",
+    "text_of": "MONDO:0100471"
+   },
+   "-12005": {
+    "expect": "drop",
+    "text_of": "MONDO:0016362"
+   }
+  }
+ },
+ "ko_13": {
+  "n": 255,
+  "controls": {
+   "-13001": {
+    "expect": "drop",
+    "text_of": "MONDO:0017795"
+   },
+   "-13002": {
+    "expect": "drop",
+    "text_of": "MONDO:0021104"
+   },
+   "-13003": {
+    "expect": "drop",
+    "text_of": "MONDO:0016971"
+   },
+   "-13004": {
+    "expect": "drop",
+    "text_of": "MONDO:0001416"
+   },
+   "-13005": {
+    "expect": "drop",
+    "text_of": "MONDO:0002279"
+   }
+  }
+ },
+ "ko_14": {
+  "n": 255,
+  "controls": {
+   "-14001": {
+    "expect": "drop",
+    "text_of": "MONDO:0002369"
+   },
+   "-14002": {
+    "expect": "drop",
+    "text_of": "MONDO:0012198"
+   },
+   "-14003": {
+    "expect": "drop",
+    "text_of": "MONDO:0018544"
+   },
+   "-14004": {
+    "expect": "drop",
+    "text_of": "MONDO:0006999"
+   },
+   "-14005": {
+    "expect": "drop",
+    "text_of": "MONDO:0015727"
+   }
+  }
+ },
+ "ko_15": {
+  "n": 255,
+  "controls": {
+   "-15001": {
+    "expect": "drop",
+    "text_of": "MONDO:0017591"
+   },
+   "-15002": {
+    "expect": "drop",
+    "text_of": "MONDO:0000408"
+   },
+   "-15003": {
+    "expect": "drop",
+    "text_of": "MONDO:0007935"
+   },
+   "-15004": {
+    "expect": "drop",
+    "text_of": "MONDO:0000395"
+   },
+   "-15005": {
+    "expect": "drop",
+    "text_of": "MONDO:0005984"
+   }
+  }
+ },
+ "ko_16": {
+  "n": 255,
+  "controls": {
+   "-16001": {
+    "expect": "drop",
+    "text_of": "MONDO:0007450"
+   },
+   "-16002": {
+    "expect": "drop",
+    "text_of": "MONDO:0010130"
+   },
+   "-16003": {
+    "expect": "drop",
+    "text_of": "MONDO:0000755"
+   },
+   "-16004": {
+    "expect": "drop",
+    "text_of": "MONDO:0850419"
+   },
+   "-16005": {
+    "expect": "drop",
+    "text_of": "MONDO:0024573"
+   }
+  }
+ },
+ "ko_17": {
+  "n": 255,
+  "controls": {
+   "-17001": {
+    "expect": "drop",
+    "text_of": "MONDO:0019737"
+   },
+   "-17002": {
+    "expect": "drop",
+    "text_of": "MONDO:0004646"
+   },
+   "-17003": {
+    "expect": "drop",
+    "text_of": "MONDO:0004989"
+   },
+   "-17004": {
+    "expect": "drop",
+    "text_of": "MONDO:0041052"
+   },
+   "-17005": {
+    "expect": "drop",
+    "text_of": "MONDO:0005495"
+   }
+  }
+ },
+ "ko_18": {
+  "n": 255,
+  "controls": {
+   "-18001": {
+    "expect": "drop",
+    "text_of": "MONDO:0011472"
+   },
+   "-18002": {
+    "expect": "drop",
+    "text_of": "MONDO:0009876"
+   },
+   "-18003": {
+    "expect": "drop",
+    "text_of": "MONDO:0007032"
+   },
+   "-18004": {
+    "expect": "drop",
+    "text_of": "MONDO:0006670"
+   },
+   "-18005": {
+    "expect": "drop",
+    "text_of": "MONDO:0007032"
+   }
+  }
+ },
+ "ko_19": {
+  "n": 238,
+  "controls": {
+   "-19001": {
+    "expect": "drop",
+    "text_of": "MONDO:0006044"
+   },
+   "-19002": {
+    "expect": "drop",
+    "text_of": "MONDO:0018982"
+   },
+   "-19003": {
+    "expect": "drop",
+    "text_of": "MONDO:0005486"
+   },
+   "-19004": {
+    "expect": "drop",
+    "text_of": "MONDO:0017987"
+   },
+   "-19005": {
+    "expect": "drop",
+    "text_of": "MONDO:0006534"
+   }
+  }
+ },
+ "junk_00": {
+  "n": 363,
+  "controls": {
+   "-1": {
+    "expect": "real"
+   },
+   "-2": {
+    "expect": "real"
+   },
+   "-3": {
+    "expect": "real"
+   },
+   "-4": {
+    "expect": "real"
+   },
+   "-5": {
+    "expect": "real"
+   },
+   "-6": {
+    "expect": "real"
+   }
+  }
+ },
+ "junk_01": {
+  "n": 363,
+  "controls": {
+   "-1001": {
+    "expect": "real"
+   },
+   "-1002": {
+    "expect": "real"
+   },
+   "-1003": {
+    "expect": "real"
+   },
+   "-1004": {
+    "expect": "real"
+   },
+   "-1005": {
+    "expect": "real"
+   },
+   "-1006": {
+    "expect": "real"
+   }
+  }
+ },
+ "junk_02": {
+  "n": 363,
+  "controls": {
+   "-2001": {
+    "expect": "real"
+   },
+   "-2002": {
+    "expect": "real"
+   },
+   "-2003": {
+    "expect": "real"
+   },
+   "-2004": {
+    "expect": "real"
+   },
+   "-2005": {
+    "expect": "real"
+   },
+   "-2006": {
+    "expect": "real"
+   }
+  }
+ },
+ "junk_03": {
+  "n": 363,
+  "controls": {
+   "-3001": {
+    "expect": "real"
+   },
+   "-3002": {
+    "expect": "real"
+   },
+   "-3003": {
+    "expect": "real"
+   },
+   "-3004": {
+    "expect": "real"
+   },
+   "-3005": {
+    "expect": "real"
+   },
+   "-3006": {
+    "expect": "real"
+   }
+  }
+ },
+ "junk_04": {
+  "n": 363,
+  "controls": {
+   "-4001": {
+    "expect": "real"
+   },
+   "-4002": {
+    "expect": "real"
+   },
+   "-4003": {
+    "expect": "real"
+   },
+   "-4004": {
+    "expect": "real"
+   },
+   "-4005": {
+    "expect": "real"
+   },
+   "-4006": {
+    "expect": "real"
+   }
+  }
+ },
+ "junk_05": {
+  "n": 363,
+  "controls": {
+   "-5001": {
+    "expect": "real"
+   },
+   "-5002": {
+    "expect": "real"
+   },
+   "-5003": {
+    "expect": "real"
+   },
+   "-5004": {
+    "expect": "real"
+   },
+   "-5005": {
+    "expect": "real"
+   },
+   "-5006": {
+    "expect": "real"
+   }
+  }
+ },
+ "junk_06": {
+  "n": 362,
+  "controls": {
+   "-6001": {
+    "expect": "real"
+   },
+   "-6002": {
+    "expect": "real"
+   },
+   "-6003": {
+    "expect": "real"
+   },
+   "-6004": {
+    "expect": "real"
+   },
+   "-6005": {
+    "expect": "real"
+   },
+   "-6006": {
+    "expect": "real"
+   }
+  }
+ },
+ "profiles_00": {
+  "n": 40,
+  "controls": {
+   "MONDO:0002491": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "정상압 수두증",
+    "right": "약물 남용"
+   },
+   "MONDO:0005392": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "골수형성이상증후군",
+    "right": "척추측만증"
+   },
+   "MONDO:0004994": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "비타민 D 결핍",
+    "right": "심근병증"
+   }
+  }
+ },
+ "profiles_01": {
+  "n": 40,
+  "controls": {
+   "MONDO:0010528": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "비알레르기성 천식",
+    "right": "후각상실증"
+   },
+   "MONDO:0005541": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "구강 및 인두 양성 신생물",
+    "right": "척추분리증"
+   },
+   "MONDO:0004822": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "강직성 척추염",
+    "right": "기관지확장증"
+   }
+  }
+ },
+ "profiles_02": {
+  "n": 40,
+  "controls": {
+   "MONDO:0021698": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "결정성 관절병증",
+    "right": "알코올 관련 장애"
+   },
+   "MONDO:0002471": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "육아종성 피부염",
+    "right": "점액낭염"
+   },
+   "MONDO:0002473": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "만성 피부궤양",
+    "right": "신장 낭종"
+   }
+  }
+ },
+ "profiles_03": {
+  "n": 40,
+  "controls": {
+   "MONDO:0001051": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "황반변성",
+    "right": "급성 외이도염"
+   },
+   "MONDO:0021462": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "입술 양성 신생물",
+    "right": "직장 양성 종양"
+   },
+   "MONDO:0002175": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "급성 외이도염",
+    "right": "황반변성"
+   }
+  }
+ },
+ "profiles_04": {
+  "n": 40,
+  "controls": {
+   "MONDO:0006105": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "만성 치근단 치주염",
+    "right": "결막 양성 종양"
+   },
+   "MONDO:0001592": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "췌장암",
+    "right": "여성 생식기 탈출증"
+   },
+   "MONDO:0018612": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "결막 양성 종양",
+    "right": "선천성 갑상선기능저하증"
+   }
+  }
+ },
+ "profiles_05": {
+  "n": 40,
+  "controls": {
+   "MONDO:0006032": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "갑상선 눈병증",
+    "right": "방광염"
+   },
+   "MONDO:0000956": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "하지 궤양",
+    "right": "소장암"
+   },
+   "MONDO:0007886": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "소장암",
+    "right": "자궁근종"
+   }
+  }
+ },
+ "profiles_06": {
+  "n": 40,
+  "controls": {
+   "MONDO:0003749": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "소장 양성 종양",
+    "right": "식도 위 십이지장 질환"
+   },
+   "MONDO:0000816": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "혼합성 난청",
+    "right": "대사증후군"
+   },
+   "MONDO:0024644": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "추체외로 및 운동질환",
+    "right": "허혈성 심장질환"
+   }
+  }
+ },
+ "profiles_07": {
+  "n": 40,
+  "controls": {
+   "MONDO:0001798": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "다발경색치매",
+    "right": "관절과운동성 증후군"
+   },
+   "MONDO:0006497": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "실명",
+    "right": "뇌성마비"
+   },
+   "MONDO:0005473": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "위축성 질염",
+    "right": "턱관절 장애"
+   }
+  }
+ },
+ "profiles_08": {
+  "n": 40,
+  "controls": {
+   "MONDO:0005451": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "내측 측부인대 점액낭염",
+    "right": "섭식장애"
+   },
+   "MONDO:0002037": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "부신 양성종양",
+    "right": "흉막 질환"
+   },
+   "MONDO:0006031": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "뇌염",
+    "right": "만성 부비동염"
+   }
+  }
+ },
+ "profiles_09": {
+  "n": 40,
+  "controls": {
+   "MONDO:0013600": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "담석증",
+    "right": "불면증"
+   },
+   "MONDO:0003009": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "회피성 성격장애",
+    "right": "고알도스테론증"
+   },
+   "MONDO:0007028": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "협심증",
+    "right": "회전근개 증후군"
+   }
+  }
+ },
+ "profiles_10": {
+  "n": 40,
+  "controls": {
+   "MONDO:0002974": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "망막질환",
+    "right": "자궁경부암"
+   },
+   "MONDO:0024573": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "구강 백반증",
+    "right": "비후성 심근병증"
+   },
+   "MONDO:0001212": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "군발두통",
+    "right": "비화농성 중이염"
+   }
+  }
+ },
+ "profiles_11": {
+  "n": 40,
+  "controls": {
+   "MONDO:0004055": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "혀 질환",
+    "right": "급성 눈물길 염증"
+   },
+   "MONDO:0001292": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "뇌하수체기능저하증",
+    "right": "자율신경계 장애"
+   },
+   "MONDO:0006733": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "무기질 대사 장애",
+    "right": "안구건조증"
+   }
+  }
+ },
+ "profiles_12": {
+  "n": 40,
+  "controls": {
+   "MONDO:0001100": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "바렛 식도",
+    "right": "유방 비대증"
+   },
+   "MONDO:0006816": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "나이관련 황반변성",
+    "right": "관절병증"
+   },
+   "MONDO:0017634": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "단순태선",
+    "right": "비감염성 전방 포도막염"
+   }
+  }
+ },
+ "profiles_13": {
+  "n": 40,
+  "controls": {
+   "MONDO:0004525": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "자궁경부 상피내암",
+    "right": "옴"
+   },
+   "MONDO:0005709": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "구강 편평태선",
+    "right": "급성 비인두염"
+   },
+   "MONDO:0010386": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "손발톱 질환",
+    "right": "면역결핍 33"
+   }
+  }
+ },
+ "profiles_14": {
+  "n": 40,
+  "controls": {
+   "MONDO:0006008": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "베이커낭종",
+    "right": "전정신경염"
+   },
+   "MONDO:0005593": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "요로계 양성 종양",
+    "right": "만성 치주염"
+   },
+   "MONDO:0018756": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "쿠싱증후군",
+    "right": "그레이브스 안병증"
+   }
+  }
+ },
+ "profiles_15": {
+  "n": 40,
+  "controls": {
+   "MONDO:0022096": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "구강, 침샘 및 턱뼈 질환",
+    "right": "화농성 육아종"
+   },
+   "MONDO:0020696": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "영양실조",
+    "right": "비타민 B12 결핍"
+   },
+   "MONDO:0018087": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "석면폐증",
+    "right": "바이러스성 출혈열"
+   }
+  }
+ },
+ "profiles_16": {
+  "n": 40,
+  "controls": {
+   "MONDO:0002545": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "외사시",
+    "right": "척수질환"
+   },
+   "MONDO:0850302": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "노인성 백내장",
+    "right": "두개내 수막종"
+   },
+   "MONDO:0003397": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "비결핵항산균 폐질환",
+    "right": "치은 증식증"
+   }
+  }
+ },
+ "profiles_17": {
+  "n": 40,
+  "controls": {
+   "MONDO:0005071": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "관상피내암",
+    "right": "신경계 장애"
+   },
+   "MONDO:0020292": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "하시모토 갑상선염",
+    "right": "대동맥 선천기형"
+   },
+   "MONDO:0006526": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "눈물길 협착",
+    "right": "알레르기성 두드러기"
+   }
+  }
+ },
+ "profiles_18": {
+  "n": 40,
+  "controls": {
+   "MONDO:0006592": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "만성 위염",
+    "right": "유건선"
+   },
+   "MONDO:0000158": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "식도암",
+    "right": "발달성 고관절 이형성증"
+   },
+   "MONDO:0044211": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "심혈관질환",
+    "right": "특발성 두드러기"
+   }
+  }
+ },
+ "profiles_19": {
+  "n": 30,
+  "controls": {
+   "MONDO:0004845": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "선천성 심혈관기형",
+    "right": "아프타성 구내염"
+   },
+   "MONDO:0006955": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "방실차단",
+    "right": "류마티스 심장병"
+   },
+   "MONDO:0043541": {
+    "expect": "fix",
+    "field": "ko",
+    "wrong": "다발골수종",
+    "right": "바이러스성 결막염"
+   }
+  }
+ },
+ "mondo_ko_00": {
+  "n": 300,
+  "controls": {
+   "MONDO:0008111": {
+    "expect": "fix",
+    "wrong": "사일로 충전자병",
+    "right": "안구치아손가락 이형성증"
+   },
+   "MONDO:0003594": {
+    "expect": "fix",
+    "wrong": "이노신 삼인산 가수분해효소 결핍증",
+    "right": "혼합형 지방육종"
+   },
+   "MONDO:0000863": {
+    "expect": "fix",
+    "wrong": "t(9;22)(q34.1;q11.2)를 동반한 B림프모구 백혈병/림프종",
+    "right": "근병증, 젖산산증 및 철적아구성 빈혈"
+   },
+   "MONDO:0020497": {
+    "expect": "fix",
+    "wrong": "PEX2 결핍에 의한 상염색체 열성 운동실조",
+    "right": "용종증을 동반한 터코트 증후군"
+   },
+   "MONDO:0100394": {
+    "expect": "fix",
+    "wrong": "PLD1 관련 선천성 심장병",
+    "right": "급성 골수성 백혈병, t(1;22)"
+   },
+   "MONDO:0022812": {
+    "expect": "fix",
+    "wrong": "태선 질환",
+    "right": "보체 수용체 결핍증"
+   }
+  }
+ },
+ "mondo_ko_01": {
+  "n": 299,
+  "controls": {
+   "MONDO:0100041": {
+    "expect": "fix",
+    "wrong": "성장호르몬 분비 뇌하수체 신생물",
+    "right": "이차성 트리메틸아민뇨증"
+   },
+   "MONDO:0014893": {
+    "expect": "fix",
+    "wrong": "선천성 판막상 승모판 링",
+    "right": "오쿠르-청 신경발달 증후군"
+   },
+   "MONDO:0007483": {
+    "expect": "fix",
+    "wrong": "팔꿈치 탈구, 휜 정강뼈, 척추측만증, 난청, 백내장, 소두증 및 지적장애",
+    "right": "유전성 대칭성 색소이상증"
+   },
+   "MONDO:0004886": {
+    "expect": "fix",
+    "wrong": "손발바닥 각화증, 보트니아형",
+    "right": "미만성 이차성 맥락막 위축"
+   },
+   "MONDO:0033366": {
+    "expect": "fix",
+    "wrong": "IRF4 관련 복합 면역결핍증",
+    "right": "발달 및 뇌전증성 뇌병증 57"
+   }
+  }
+ },
+ "mondo_ko_02": {
+  "n": 300,
+  "controls": {
+   "MONDO:0015744": {
+    "expect": "fix",
+    "wrong": "막안정화 작용 약물에 의한 급성 중독",
+    "right": "원위부 19q 삼염색체증"
+   },
+   "MONDO:0006115": {
+    "expect": "fix",
+    "wrong": "중추신경계·눈 침범이 없는 쇠그렌-라손 유사 어린선",
+    "right": "BCR-ABL1 양성 만성 골수성 백혈병 모세포기"
+   },
+   "MONDO:0022780": {
+    "expect": "fix",
+    "wrong": "11번 염색체 모계 단친 이염색체에 의한 실버-러셀 증후군",
+    "right": "구순구개열 뇌하수체 결핍"
+   },
+   "MONDO:0011987": {
+    "expect": "fix",
+    "wrong": "미토콘드리아 복합체 I 결핍증 핵형 4",
+    "right": "원추-막대 이영양증 13형"
+   },
+   "MONDO:0800478": {
+    "expect": "fix",
+    "wrong": "폐문부 암",
+    "right": "삼차신경 영양 증후군"
+   },
+   "MONDO:0958350": {
+    "expect": "fix",
+    "wrong": "난소 형성부전 3형",
+    "right": "원뿔부 척수 지방종"
+   }
+  }
+ },
+ "mondo_ko_03": {
+  "n": 300,
+  "controls": {
+   "MONDO:0011327": {
+    "expect": "fix",
+    "wrong": "질 융모성 샘종",
+    "right": "신경세포 핵내 봉입체병"
+   },
+   "MONDO:0010749": {
+    "expect": "fix",
+    "wrong": "전정와우신경 신생물",
+    "right": "삼각두증-저신장-발달지연 증후군"
+   },
+   "MONDO:0957870": {
+    "expect": "fix",
+    "wrong": "Kir6.2 결핍에 의한 상염색체 우성 고인슐린혈증",
+    "right": "백질소실을 동반한 백질뇌병증 2"
+   },
+   "MONDO:0100123": {
+    "expect": "fix",
+    "wrong": "수지상세포 결핍증",
+    "right": "독성 세기관지염"
+   },
+   "MONDO:0033683": {
+    "expect": "fix",
+    "wrong": "섬유성 근육염",
+    "right": "선천성 진행성 골수부전-B세포 면역결핍-골격 이형성 증후군"
+   },
+   "MONDO:0007168": {
+    "expect": "fix",
+    "wrong": "결손지증-다지증 증후군",
+    "right": "아텔로골형성부전 III형"
+   }
+  }
+ },
+ "mondo_ko_04": {
+  "n": 300,
+  "controls": {
+   "MONDO:0957572": {
+    "expect": "fix",
+    "wrong": "상염색체 우성 비증후군성 난청 51",
+    "right": "혈소판감소증 9"
+   },
+   "MONDO:0033620": {
+    "expect": "fix",
+    "wrong": "맥락막 침범 동반 망막색소변성 87",
+    "right": "근원섬유 근병증 10형"
+   },
+   "MONDO:0016103": {
+    "expect": "fix",
+    "wrong": "만성 딸꾹질",
+    "right": "무증상 크레아틴 인산활성효소 단독 상승"
+   },
+   "MONDO:0002919": {
+    "expect": "fix",
+    "wrong": "뇌교소뇌 저형성증",
+    "right": "뒤두개오목 수막종"
+   },
+   "MONDO:0030428": {
+    "expect": "fix",
+    "wrong": "엘러스-단로스/골형성부전 증후군",
+    "right": "면역결핍 85형, 자가면역 동반"
+   },
+   "MONDO:0033853": {
+    "expect": "fix",
+    "wrong": "가족성 척수 신경섬유종증",
+    "right": "선천성 백내장-중증 신생아 간병증-전반적 발달 지연 증후군"
+   }
+  }
+ },
+ "mondo_ko_05": {
+  "n": 300,
+  "controls": {
+   "MONDO:0002752": {
+    "expect": "fix",
+    "wrong": "근긴장저하 및 발작을 동반한 신경발달장애",
+    "right": "난소 선암"
+   },
+   "MONDO:0800355": {
+    "expect": "fix",
+    "wrong": "윤-벨렌 신경발달 증후군",
+    "right": "사건수면, 야경증형"
+   },
+   "MONDO:0006603": {
+    "expect": "fix",
+    "wrong": "아포지단백 A-II 결핍증",
+    "right": "반응성 피부 섬유성 병변"
+   },
+   "MONDO:0016673": {
+    "expect": "fix",
+    "wrong": "후두부 뇌회 비후 및 다소뇌회증",
+    "right": "국소 접합부 수포성 표피박리증, 비헤를리츠형"
+   },
+   "MONDO:0700346": {
+    "expect": "fix",
+    "wrong": "종양성 수막염",
+    "right": "MAX 관련 종양 소인"
+   },
+   "MONDO:0014442": {
+    "expect": "fix",
+    "wrong": "정신운동 지연, 뇌전증 및 두개안면 이형증",
+    "right": "바르데-비들 증후군 14형"
+   }
+  }
+ },
+ "mondo_ko_06": {
+  "n": 300,
+  "controls": {
+   "MONDO:0006751": {
+    "expect": "fix",
+    "wrong": "X연관 증후군성 지적장애, 터너형",
+    "right": "에리시펠로트릭스 감염증"
+   },
+   "MONDO:0012789": {
+    "expect": "fix",
+    "wrong": "관절구축증 척수성 근위축증",
+    "right": "근육긴장이상증 16"
+   },
+   "MONDO:0009622": {
+    "expect": "fix",
+    "wrong": "엘사히-워터스 증후군",
+    "right": "자와드 증후군"
+   },
+   "MONDO:0012238": {
+    "expect": "fix",
+    "wrong": "압박시신경병증",
+    "right": "미토콘드리아 DNA 결손을 동반한 진행성 외안근마비, 상염색체 우성 2형"
+   },
+   "MONDO:0981005": {
+    "expect": "fix",
+    "wrong": "치아연골이형성증 2, 난청 및 당뇨병 동반",
+    "right": "겸상적혈구 S-O 아랍병"
+   },
+   "MONDO:0002353": {
+    "expect": "fix",
+    "wrong": "난소부전을 동반한 진행성 백질뇌병증",
+    "right": "성문 신생물"
+   }
+  }
+ },
+ "mondo_ko_07": {
+  "n": 300,
+  "controls": {
+   "MONDO:0008853": {
+    "expect": "fix",
+    "wrong": "직장 관상 샘종",
+    "right": "바버-세이 증후군"
+   },
+   "MONDO:0001750": {
+    "expect": "fix",
+    "wrong": "선천성 백내장-소두증-단순 화염상 모반-중증 지적장애 증후군",
+    "right": "비신성 이차성 부갑상선기능항진증"
+   },
+   "MONDO:0016825": {
+    "expect": "fix",
+    "wrong": "선천성 거바드 결손",
+    "right": "미토콘드리아 근병증-젖산산증-난청 증후군"
+   },
+   "MONDO:0000732": {
+    "expect": "fix",
+    "wrong": "치사성 크니스트 유사 이형성증",
+    "right": "복합 산화적 인산화 결핍증"
+   },
+   "MONDO:0958091": {
+    "expect": "fix",
+    "wrong": "유문샘 샘종",
+    "right": "구개열-선천성 심장 결손-지적장애 증후군"
+   },
+   "MONDO:0001067": {
+    "expect": "fix",
+    "wrong": "후기 영아 CACH 증후군",
+    "right": "조기 프람베시아"
+   }
+  }
+ },
+ "mondo_ko_08": {
+  "n": 300,
+  "controls": {
+   "MONDO:0017748": {
+    "expect": "fix",
+    "wrong": "긴사슬 지방산 수송 결함",
+    "right": "당스핑고지질 및 GPI 고정체 당화의 선천성 장애"
+   },
+   "MONDO:0015830": {
+    "expect": "fix",
+    "wrong": "소아 호산구성 식도염",
+    "right": "뮐러관 부분 양측 무형성"
+   },
+   "MONDO:0011819": {
+    "expect": "fix",
+    "wrong": "갤러웨이-모왓 증후군 6",
+    "right": "척수소뇌실조 19/22형"
+   },
+   "MONDO:1060220": {
+    "expect": "fix",
+    "wrong": "듀안 이상-근병증-척추측만증 증후군",
+    "right": "척수 분열 기형 1형"
+   },
+   "MONDO:0014068": {
+    "expect": "fix",
+    "wrong": "전형적 색소성 두드러기",
+    "right": "원뿔막대 이영양증 17형"
+   },
+   "MONDO:0017410": {
+    "expect": "fix",
+    "wrong": "당단백질 및 글리코사미노글리칸 저장 근병증",
+    "right": "뇌공증"
+   }
+  }
+ },
+ "mondo_ko_09": {
+  "n": 299,
+  "controls": {
+   "MONDO:0014310": {
+    "expect": "fix",
+    "wrong": "과다 자가포식을 동반한 X연관 근병증",
+    "right": "힘줄 및 폐 침범을 동반한 유전성 경화성 포이킬로더마"
+   },
+   "MONDO:0850102": {
+    "expect": "fix",
+    "wrong": "알츠하이머병 14형",
+    "right": "특징적 항체를 동반한 비특이적 자가면역 천막상부 뇌염"
+   },
+   "MONDO:0800403": {
+    "expect": "fix",
+    "wrong": "X연관 요도하열 4",
+    "right": "CNGB1 관련 망막병증"
+   },
+   "MONDO:0008595": {
+    "expect": "fix",
+    "wrong": "10p13-p14 결실 증후군",
+    "right": "다발성 결합조직형성 털상피종"
+   },
+   "MONDO:0032916": {
+    "expect": "fix",
+    "wrong": "국소분절 사구체경화증 8형",
+    "right": "이마가와-마쓰모토 증후군"
+   }
+  }
+ },
+ "mondo_ko_10": {
+  "n": 300,
+  "controls": {
+   "MONDO:0009703": {
+    "expect": "fix",
+    "wrong": "선천성 펩타이드 대사 장애",
+    "right": "지질 대사 이상을 동반한 근병증"
+   },
+   "MONDO:0033558": {
+    "expect": "fix",
+    "wrong": "미만성 거대 B세포 림프종과 고전적 호지킨 림프종의 중간 특징을 보이는 분류불능 B세포 림프종",
+    "right": "자가염증, 면역조절이상, 호산구증가증"
+   },
+   "MONDO:0014161": {
+    "expect": "fix",
+    "wrong": "일차 섬모운동이상증 40",
+    "right": "방광요관역류 7형"
+   },
+   "MONDO:0003462": {
+    "expect": "fix",
+    "wrong": "무릎뼈 무형성/저형성",
+    "right": "유두상 선섬유종"
+   },
+   "MONDO:0011762": {
+    "expect": "fix",
+    "wrong": "비인두 디프테리아",
+    "right": "상염색체 열성 비증후군성 난청 22형"
+   },
+   "MONDO:0800353": {
+    "expect": "fix",
+    "wrong": "소치증, 치수석 및 좁은 광대활 동반 원위부 지절유합증",
+    "right": "선천성 당화 장애 Ibb형"
+   }
+  }
+ },
+ "mondo_ko_11": {
+  "n": 300,
+  "controls": {
+   "MONDO:0032726": {
+    "expect": "fix",
+    "wrong": "인슐린유사성장인자 1형 결핍에 의한 성장 지연",
+    "right": "복합 산화적 인산화 결핍증 39"
+   },
+   "MONDO:0010743": {
+    "expect": "fix",
+    "wrong": "상염색체 우성 지적발달장애 67",
+    "right": "혈소판감소증 1형"
+   },
+   "MONDO:0033485": {
+    "expect": "fix",
+    "wrong": "구개 이상-치아 간격 벌어짐-안면 이형-발달지연 증후군",
+    "right": "다지증 동반 또는 비동반 짧은갈비뼈 흉곽 이형성증 19형"
+   },
+   "MONDO:0009103": {
+    "expect": "fix",
+    "wrong": "C1S 관련 전신홍반루푸스",
+    "right": "가로막탈장 2"
+   },
+   "MONDO:0003033": {
+    "expect": "fix",
+    "wrong": "주베르 증후군 22형",
+    "right": "전립선 혈관육종"
+   },
+   "MONDO:0800442": {
+    "expect": "fix",
+    "wrong": "자궁내막 이행세포암종",
+    "right": "MYH6 관련 선천 심장 결손"
+   }
+  }
+ },
+ "mondo_ko_12": {
+  "n": 300,
+  "controls": {
+   "MONDO:0015552": {
+    "expect": "fix",
+    "wrong": "침습성 인슐린염",
+    "right": "말단 이영양성 표피박리수포증"
+   },
+   "MONDO:0976269": {
+    "expect": "fix",
+    "wrong": "원위부 유전운동신경병증, 상염색체 열성 9",
+    "right": "두개외배엽 이형성증 5"
+   },
+   "MONDO:0010140": {
+    "expect": "fix",
+    "wrong": "두개안면전두수지 증후군",
+    "right": "단독 갑상선자극호르몬분비호르몬 결핍증"
+   },
+   "MONDO:0014679": {
+    "expect": "fix",
+    "wrong": "깔때기낭성 기저세포암",
+    "right": "소뇌저형성 및 관절구축을 동반한 실비우스주위 다소뇌회증"
+   },
+   "MONDO:0009522": {
+    "expect": "fix",
+    "wrong": "분절성 척수성 근위축증",
+    "right": "백색흑색피부증-유치증-지적장애-치아저형성-모발저형성 증후군"
+   },
+   "MONDO:0054813": {
+    "expect": "fix",
+    "wrong": "바르톨린샘 양성 신생물",
+    "right": "엘러스-단로스 증후군 고전형 유사 2형"
+   }
+  }
+ },
+ "mondo_ko_13": {
+  "n": 300,
+  "controls": {
+   "MONDO:0026733": {
+    "expect": "fix",
+    "wrong": "간뇌-중뇌 접합부 이형성증",
+    "right": "X연관 증후군성 지적 발달 장애, 하크만-디도나토형"
+   },
+   "MONDO:0013094": {
+    "expect": "fix",
+    "wrong": "피부 미만성 점액증",
+    "right": "신경교종 감수성 5형"
+   },
+   "MONDO:0014720": {
+    "expect": "fix",
+    "wrong": "백내장 21형, 다양한 유형",
+    "right": "상염색체 우성 시신경위축 플러스 증후군"
+   },
+   "MONDO:0000155": {
+    "expect": "fix",
+    "wrong": "미토콘드리아 DNA 고갈 증후군 14B형(심장뇌근병증형)",
+    "right": "중성지방 축적병"
+   },
+   "MONDO:0979354": {
+    "expect": "fix",
+    "wrong": "알파-사코글리칸 질적·양적 결함",
+    "right": "헤모글로빈 S와 비S/비C 헤모글로빈 변이에 의한 겸상적혈구병"
+   },
+   "MONDO:0016062": {
+    "expect": "fix",
+    "wrong": "스테로이드 대사 질환",
+    "right": "정중 구순/하악 열"
+   }
+  }
+ },
+ "mondo_ko_14": {
+  "n": 299,
+  "controls": {
+   "MONDO:0060640": {
+    "expect": "fix",
+    "wrong": "미분화 다형성 육종, 염증형",
+    "right": "소두증, 뇌전증, 뇌 위축을 동반한 신경발달장애"
+   },
+   "MONDO:0002107": {
+    "expect": "fix",
+    "wrong": "카우덴 증후군 4형",
+    "right": "일측 미로 과반응"
+   },
+   "MONDO:0002331": {
+    "expect": "fix",
+    "wrong": "다양한 정도의 지적장애와 이형 얼굴을 동반한 발달지연",
+    "right": "신증"
+   },
+   "MONDO:0011808": {
+    "expect": "fix",
+    "wrong": "얼기형 법랑모세포종",
+    "right": "백내장 27형"
+   },
+   "MONDO:0010312": {
+    "expect": "fix",
+    "wrong": "원위 16q 삼염색체증",
+    "right": "X연관 요골선 결손"
+   }
+  }
+ }
+}

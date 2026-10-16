@@ -1,0 +1,40 @@
+{"id": "MONDO:0008208", "verdict": "keep"}
+{"id": "MONDO:0001836", "verdict": "keep"}
+{"id": "MONDO:0005113", "verdict": "keep"}
+{"id": "MONDO:0005264", "verdict": "fix", "fields": {"ko_lay": ["미니 뇌졸중"]}, "reason": "중풍 means stroke, not TIA"}
+{"id": "MONDO:0010138", "verdict": "fix", "fields": {"en": ["thyrotoxicosis", "hyperthyroidism"]}, "reason": "Graves disease is a specific cause, a narrower concept"}
+{"id": "MONDO:0001356", "verdict": "keep"}
+{"id": "MONDO:0044211", "verdict": "fix", "fields": {"ko": ["특발성 두드러기", "만성 특발성 두드러기"]}, "reason": "ko[0] 심혈관질환 is another disease"}
+{"id": "MONDO:0005098", "verdict": "fix", "fields": {"ko": ["뇌졸중", "뇌경색", "뇌출혈"]}, "reason": "뇌혈관질환 is the much broader cerebrovascular disease"}
+{"id": "MONDO:0018077", "verdict": "keep"}
+{"id": "MONDO:0000643", "verdict": "keep"}
+{"id": "MONDO:0010629", "verdict": "keep"}
+{"id": "MONDO:0001146", "verdict": "keep"}
+{"id": "MONDO:0004843", "verdict": "keep"}
+{"id": "MONDO:0005402", "verdict": "fix", "fields": {"ko_lay": ["백혈병", "혈액암"]}, "reason": "피 속 암 is unnatural Korean"}
+{"id": "MONDO:0000922", "verdict": "keep"}
+{"id": "MONDO:0001209", "verdict": "keep"}
+{"id": "MONDO:0005380", "verdict": "keep"}
+{"id": "MONDO:0003276", "verdict": "fix", "fields": {"ko": ["중이질환", "중이 질환"]}, "reason": "꼬리돌기 is a misspelling of 꼭지돌기 and 'middle ear and mastoid' is broader"}
+{"id": "MONDO:0000608", "verdict": "fix", "fields": {"en": ["familial juvenile hyperuricemic nephropathy", "familial juvenile gouty nephropathy"], "ko": ["가족성 청소년 고요산혈증 신병증", "가족성 청소년 통풍성 신병증"], "symptoms_en": ["elevated uric acid", "gout at a young age", "elevated creatinine", "polyuria"], "symptoms_ko": ["요산 수치가 높아요", "젊은 나이에 통풍이 왔어요", "신장 수치가 올랐어요", "소변이 많아요"]}, "reason": "names were generic tubulointerstitial kidney disease, not this hereditary hyperuricemic nephropathy"}
+{"id": "MONDO:0001617", "verdict": "fix", "fields": {"ko": ["일과성 전반 기억상실", "일과성 완전 기억상실"]}, "reason": "일과성 전기억상실 is not the standard term"}
+{"id": "MONDO:0000158", "verdict": "fix", "fields": {"ko": ["발달성 고관절 이형성증", "선천성 고관절 탈구"]}, "reason": "ko[0] 식도암 is another disease"}
+{"id": "MONDO:0020804", "verdict": "fix", "fields": {"symptoms_ko": ["진주 같은 혹이 생겼어요", "상처가 낫지 않아요", "피부에서 피가 나요", "얼굴에 궤양이 생겼어요"]}, "reason": "점이 커져요 is a melanoma hallmark"}
+{"id": "MONDO:0005001", "verdict": "keep"}
+{"id": "MONDO:0008575", "verdict": "fix", "fields": {"ko_lay": ["담배 중독"]}, "reason": "담배 alone names an object, not the dependence"}
+{"id": "MONDO:0020598", "verdict": "keep"}
+{"id": "MONDO:0006592", "verdict": "fix", "fields": {"ko": ["유사건선", "준건선"]}, "reason": "ko[0] 만성 위염 is another disease; standard term is 유사건선"}
+{"id": "MONDO:0002776", "verdict": "keep"}
+{"id": "MONDO:0020680", "verdict": "keep"}
+{"id": "MONDO:0017376", "verdict": "keep"}
+{"id": "MONDO:0004995", "verdict": "keep"}
+{"id": "MONDO:0007576", "verdict": "keep"}
+{"id": "MONDO:0001150", "verdict": "keep"}
+{"id": "MONDO:0002048", "verdict": "keep"}
+{"id": "MONDO:0002135", "verdict": "keep"}
+{"id": "MONDO:0006486", "verdict": "keep"}
+{"id": "MONDO:0005510", "verdict": "keep"}
+{"id": "MONDO:0005045", "verdict": "keep"}
+{"id": "MONDO:0005246", "verdict": "keep"}
+{"id": "MONDO:0018906", "verdict": "keep"}
+{"id": "MONDO:0001896", "verdict": "keep"}

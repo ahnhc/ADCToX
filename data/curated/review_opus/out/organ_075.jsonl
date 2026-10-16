@@ -1,0 +1,208 @@
+{"id": "MONDO:0006208", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0013485", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0013168", "verdict": "keep", "organs": ["cardiovascular"], "confidence": "high"}
+{"id": "MONDO:0011435", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0800480", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0012885", "verdict": "keep", "organs": ["metabolic_endocrine", "neurologic", "ocular"], "confidence": "high"}
+{"id": "MONDO:0020971", "verdict": "keep", "organs": ["infectious_immune", "renal"], "confidence": "high"}
+{"id": "MONDO:0000554", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0004075", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0030958", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0014599", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0009324", "verdict": "keep", "organs": ["gastrointestinal", "metabolic_endocrine", "renal"], "confidence": "high"}
+{"id": "MONDO:0024673", "verdict": "keep", "organs": ["dermatologic"], "confidence": "high"}
+{"id": "MONDO:0013869", "verdict": "keep", "organs": ["metabolic_endocrine", "renal"], "confidence": "high"}
+{"id": "MONDO:0001737", "verdict": "keep", "organs": ["infectious_immune", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0032896", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0957874", "verdict": "keep", "organs": ["musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0002317", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0006897", "verdict": "keep", "organs": ["gastrointestinal", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0012272", "verdict": "keep", "organs": ["cardiovascular", "neurologic", "ocular"], "confidence": "high"}
+{"id": "MONDO:0003926", "verdict": "keep", "organs": ["pulmonary"], "confidence": "high"}
+{"id": "MONDO:0001304", "verdict": "keep", "organs": ["cardiovascular", "renal"], "confidence": "high"}
+{"id": "MONDO:0000758", "verdict": "keep", "organs": ["dermatologic", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0011663", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0000895", "verdict": "keep", "organs": ["pulmonary"], "confidence": "high"}
+{"id": "MONDO:0006651", "verdict": "keep", "organs": ["ocular"], "confidence": "high"}
+{"id": "MONDO:0044079", "verdict": "keep", "organs": ["cardiovascular", "renal"], "confidence": "high"}
+{"id": "MONDO:0002429", "verdict": "keep", "organs": ["pulmonary"], "confidence": "high"}
+{"id": "MONDO:0024279", "verdict": "keep", "organs": ["infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0009318", "verdict": "keep", "organs": ["musculoskeletal", "ocular"], "confidence": "high"}
+{"id": "MONDO:0016113", "verdict": "keep", "organs": ["musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0006507", "verdict": "change", "organs": ["hepatic", "metabolic_endocrine"], "confidence": "high", "reason": "Iron overload damages liver and pancreas (diabetes); not an immune disease, so infectious_immune is wrong and hepatic is missing"}
+{"id": "MONDO:0002000", "verdict": "keep", "organs": ["infectious_immune", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0010473", "verdict": "keep", "organs": ["cardiovascular", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0011904", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0003007", "verdict": "keep", "organs": ["renal"], "confidence": "high"}
+{"id": "MONDO:0016889", "verdict": "keep", "organs": ["musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0006060", "verdict": "keep", "organs": ["pulmonary"], "confidence": "high"}
+{"id": "MONDO:0003719", "verdict": "keep", "organs": ["renal"], "confidence": "high"}
+{"id": "MONDO:0009046", "verdict": "keep", "organs": ["musculoskeletal", "ocular", "renal"], "confidence": "high"}
+{"id": "MONDO:0008873", "verdict": "change", "organs": ["musculoskeletal", "neurologic"], "confidence": "medium", "reason": "MOPD type 3 is skeletal dysplasia with microcephaly and brain malformation; primordial dwarfism is not endocrine"}
+{"id": "MONDO:0008219", "verdict": "keep", "organs": ["dermatologic", "gastrointestinal", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0013330", "verdict": "keep", "organs": ["cardiovascular", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0012271", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0017316", "verdict": "keep", "organs": ["haematologic", "infectious_immune", "otologic"], "confidence": "high"}
+{"id": "MONDO:0017909", "verdict": "keep", "organs": ["haematologic", "metabolic_endocrine", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0005277", "verdict": "change", "organs": ["neurologic"], "confidence": "high", "reason": "Migraine is a primary brain/neurovascular headache disorder; hepatic is wrong"}
+{"id": "MONDO:0014267", "verdict": "keep", "organs": ["infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0021811", "verdict": "keep", "organs": ["neurologic", "pulmonary"], "confidence": "high"}
+{"id": "MONDO:0850129", "verdict": "keep", "organs": ["gastrointestinal"], "confidence": "high"}
+{"id": "MONDO:0001902", "verdict": "keep", "organs": ["haematologic", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0002357", "verdict": "keep", "organs": ["gastrointestinal"], "confidence": "high"}
+{"id": "MONDO:0020305", "verdict": "keep", "organs": ["metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0011571", "verdict": "keep", "organs": ["gastrointestinal", "otologic"], "confidence": "high"}
+{"id": "MONDO:0015844", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0014451", "verdict": "keep", "organs": ["renal"], "confidence": "high"}
+{"id": "MONDO:0023119", "verdict": "keep", "organs": ["haematologic"], "confidence": "high"}
+{"id": "MONDO:0015367", "verdict": "keep", "organs": ["gastrointestinal", "musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0100157", "verdict": "keep", "organs": ["gastrointestinal", "haematologic"], "confidence": "high"}
+{"id": "MONDO:0019084", "verdict": "keep", "organs": ["gastrointestinal"], "confidence": "high"}
+{"id": "MONDO:0015978", "verdict": "keep", "organs": ["haematologic", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0014770", "verdict": "keep", "organs": ["neurologic", "ocular"], "confidence": "high"}
+{"id": "MONDO:0100217", "verdict": "keep", "organs": ["dermatologic", "musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0020394", "verdict": "keep", "organs": ["cardiovascular"], "confidence": "high"}
+{"id": "MONDO:0013442", "verdict": "keep", "organs": ["renal"], "confidence": "high"}
+{"id": "MONDO:0018160", "verdict": "keep", "organs": ["ocular"], "confidence": "high"}
+{"id": "MONDO:0008713", "verdict": "keep", "organs": ["dermatologic", "gastrointestinal", "metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0018137", "verdict": "keep", "organs": ["dermatologic", "ocular"], "confidence": "high"}
+{"id": "MONDO:0006696", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0005260", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0002687", "verdict": "keep", "organs": ["gastrointestinal"], "confidence": "high"}
+{"id": "MONDO:0009976", "verdict": "keep", "organs": ["neurologic", "ocular"], "confidence": "high"}
+{"id": "MONDO:0007017", "verdict": "keep", "organs": ["ocular"], "confidence": "high"}
+{"id": "MONDO:0010356", "verdict": "keep", "organs": ["metabolic_endocrine", "renal"], "confidence": "high"}
+{"id": "MONDO:0017545", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0002732", "verdict": "keep", "organs": ["pulmonary"], "confidence": "high"}
+{"id": "MONDO:0001112", "verdict": "keep", "organs": ["infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0000497", "verdict": "keep", "organs": ["infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0009774", "verdict": "keep", "organs": ["gastrointestinal", "neurologic", "renal"], "confidence": "high"}
+{"id": "MONDO:0018494", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0850065", "verdict": "keep", "organs": ["dermatologic", "infectious_immune", "musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0006278", "verdict": "keep", "organs": ["pulmonary"], "confidence": "high"}
+{"id": "MONDO:0013117", "verdict": "keep", "organs": ["neurologic", "ocular"], "confidence": "high"}
+{"id": "MONDO:0015036", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0032811", "verdict": "keep", "organs": ["ocular"], "confidence": "high"}
+{"id": "MONDO:0009515", "verdict": "keep", "organs": ["haematologic", "metabolic_endocrine", "ocular", "renal"], "confidence": "high"}
+{"id": "MONDO:0004184", "verdict": "keep", "organs": ["renal"], "confidence": "high"}
+{"id": "MONDO:0000674", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0970958", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0010452", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0018017", "verdict": "keep", "organs": ["gastrointestinal"], "confidence": "high"}
+{"id": "MONDO:0003012", "verdict": "keep", "organs": ["renal"], "confidence": "high"}
+{"id": "MONDO:0020159", "verdict": "keep", "organs": ["ocular"], "confidence": "high"}
+{"id": "MONDO:0001507", "verdict": "keep", "organs": ["infectious_immune", "otologic"], "confidence": "high"}
+{"id": "MONDO:0800317", "verdict": "keep", "organs": ["metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0978310", "verdict": "keep", "organs": ["gastrointestinal"], "confidence": "high"}
+{"id": "MONDO:0859155", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0850048", "verdict": "keep", "organs": ["dermatologic"], "confidence": "high"}
+{"id": "MONDO:0000705", "verdict": "change", "organs": ["gastrointestinal", "infectious_immune"], "confidence": "high", "reason": "C. difficile infects the colon; gastrointestinal missing and neurologic wrong"}
+{"id": "MONDO:0014421", "verdict": "keep", "organs": ["metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0043087", "verdict": "keep", "organs": ["otologic"], "confidence": "high"}
+{"id": "MONDO:1060231", "verdict": "change", "organs": ["metabolic_endocrine", "neurologic"], "confidence": "medium", "reason": "Guide v3: a pituitary tumour is metabolic_endocrine and also neurologic"}
+{"id": "MONDO:0008270", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0004980", "verdict": "keep", "organs": ["dermatologic", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0017636", "verdict": "keep", "organs": ["musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0014902", "verdict": "keep", "organs": ["gastrointestinal"], "confidence": "high"}
+{"id": "MONDO:0033558", "verdict": "keep", "organs": ["haematologic", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0016539", "verdict": "keep", "organs": ["neurologic", "renal"], "confidence": "high"}
+{"id": "MONDO:0022500", "verdict": "keep", "organs": ["musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0007070", "verdict": "keep", "organs": ["dermatologic", "metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0001719", "verdict": "keep", "organs": ["infectious_immune", "musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0024659", "verdict": "keep", "organs": ["gastrointestinal", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0018542", "verdict": "keep", "organs": ["haematologic", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0010717", "verdict": "keep", "organs": ["metabolic_endocrine", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0007397", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0008482", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0958006", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0859233", "verdict": "keep", "organs": ["dermatologic", "gastrointestinal"], "confidence": "high"}
+{"id": "MONDO:0004501", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0859290", "verdict": "keep", "organs": ["metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0001073", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0009817", "verdict": "change", "organs": ["haematologic", "musculoskeletal", "neurologic"], "confidence": "medium", "reason": "OSTM1 osteopetrosis is the neuroaxonal dysplasia form with primary CNS neurodegeneration in most patients"}
+{"id": "MONDO:0002062", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0012248", "verdict": "keep", "organs": ["musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0022812", "verdict": "keep", "organs": ["infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0032648", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0008137", "verdict": "change", "organs": ["gastrointestinal", "musculoskeletal"], "confidence": "medium", "reason": "OFD syndromes are defined by oral anomalies (cleft palate, oral malformations); mouth is gastrointestinal per guide v3"}
+{"id": "MONDO:0006830", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0021120", "verdict": "keep", "organs": ["metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0000871", "verdict": "keep", "organs": ["haematologic"], "confidence": "high"}
+{"id": "MONDO:0002641", "verdict": "keep", "organs": ["cardiovascular"], "confidence": "high"}
+{"id": "MONDO:0031000", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0012980", "verdict": "keep", "organs": ["metabolic_endocrine", "musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0013376", "verdict": "keep", "organs": ["ocular"], "confidence": "high"}
+{"id": "MONDO:0004634", "verdict": "keep", "organs": ["cardiovascular"], "confidence": "high"}
+{"id": "MONDO:0011686", "verdict": "keep", "organs": ["infectious_immune", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0002625", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0004856", "verdict": "keep", "organs": ["dermatologic", "ocular"], "confidence": "high"}
+{"id": "MONDO:0008099", "verdict": "keep", "organs": ["ocular"], "confidence": "high"}
+{"id": "MONDO:0007123", "verdict": "keep", "organs": ["gastrointestinal", "ocular"], "confidence": "high"}
+{"id": "MONDO:0005007", "verdict": "keep", "organs": ["gastrointestinal"], "confidence": "high"}
+{"id": "MONDO:0005100", "verdict": "change", "organs": ["dermatologic", "gastrointestinal", "infectious_immune", "pulmonary"], "confidence": "high", "reason": "Guide reference for systemic sclerosis; skin is the defining organ, hepatic is not a main organ"}
+{"id": "MONDO:0100184", "verdict": "keep", "organs": ["metabolic_endocrine", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0019007", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0017382", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0009718", "verdict": "keep", "organs": ["metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0035639", "verdict": "keep", "organs": ["haematologic"], "confidence": "high"}
+{"id": "MONDO:0023642", "verdict": "keep", "organs": ["neurologic", "ocular"], "confidence": "high"}
+{"id": "MONDO:0015590", "verdict": "keep", "organs": ["infectious_immune", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0008157", "verdict": "keep", "organs": ["dermatologic", "musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0016922", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0005510", "verdict": "keep", "organs": ["renal"], "confidence": "high"}
+{"id": "MONDO:0007176", "verdict": "keep", "organs": ["ocular"], "confidence": "high"}
+{"id": "MONDO:0012031", "verdict": "keep", "organs": ["haematologic"], "confidence": "high"}
+{"id": "MONDO:0011576", "verdict": "keep", "organs": ["cardiovascular", "metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0005814", "verdict": "keep", "organs": ["gastrointestinal"], "confidence": "high"}
+{"id": "MONDO:0005525", "verdict": "keep", "organs": ["haematologic"], "confidence": "high"}
+{"id": "MONDO:0013640", "verdict": "keep", "organs": ["cardiovascular", "ocular"], "confidence": "high"}
+{"id": "MONDO:0014957", "verdict": "keep", "organs": ["cardiovascular", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0850286", "verdict": "keep", "organs": ["pulmonary"], "confidence": "high"}
+{"id": "MONDO:0017095", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0056795", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0021488", "verdict": "keep", "organs": ["ocular"], "confidence": "high"}
+{"id": "MONDO:0020572", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0002360", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0013371", "verdict": "keep", "organs": ["cardiovascular"], "confidence": "high"}
+{"id": "MONDO:0024432", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0035534", "verdict": "keep", "organs": ["musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0008704", "verdict": "keep", "organs": ["infectious_immune", "musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0013707", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0012593", "verdict": "keep", "organs": ["metabolic_endocrine", "neurologic", "pulmonary"], "confidence": "high"}
+{"id": "MONDO:0003009", "verdict": "keep", "organs": ["cardiovascular", "metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0011470", "verdict": "keep", "organs": ["metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0000408", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0004937", "verdict": "keep", "organs": ["metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0009948", "verdict": "keep", "organs": ["haematologic"], "confidence": "high"}
+{"id": "MONDO:0013066", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0030750", "verdict": "keep", "organs": ["dermatologic"], "confidence": "high"}
+{"id": "MONDO:0014168", "verdict": "keep", "organs": ["infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0060777", "verdict": "keep", "organs": [], "confidence": "high"}
+{"id": "MONDO:0033653", "verdict": "keep", "organs": ["cardiovascular", "metabolic_endocrine", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0024525", "verdict": "keep", "organs": ["metabolic_endocrine", "renal"], "confidence": "high"}
+{"id": "MONDO:0850519", "verdict": "keep", "organs": ["metabolic_endocrine", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0022587", "verdict": "keep", "organs": ["musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0010610", "verdict": "keep", "organs": ["musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0009425", "verdict": "keep", "organs": ["musculoskeletal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0007956", "verdict": "keep", "organs": ["dermatologic", "gastrointestinal", "neurologic"], "confidence": "high"}
+{"id": "MONDO:0019880", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0023142", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0100370", "verdict": "keep", "organs": ["hepatic", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0022655", "verdict": "keep", "organs": ["cardiovascular", "metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0003164", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:1060262", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0016439", "verdict": "keep", "organs": ["dermatologic"], "confidence": "high"}
+{"id": "MONDO:0859362", "verdict": "keep", "organs": ["metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0015420", "verdict": "keep", "organs": ["gastrointestinal", "musculoskeletal"], "confidence": "high"}
+{"id": "MONDO:0003293", "verdict": "keep", "organs": ["pulmonary"], "confidence": "high"}
+{"id": "MONDO:0035940", "verdict": "keep", "organs": ["haematologic"], "confidence": "high"}
+{"id": "MONDO:0009836", "verdict": "keep", "organs": ["gastrointestinal", "hepatic", "infectious_immune"], "confidence": "high"}
+{"id": "MONDO:0000032", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0009625", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0013923", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0000148", "verdict": "keep", "organs": ["haematologic", "pulmonary"], "confidence": "high"}
+{"id": "MONDO:0100165", "verdict": "keep", "organs": ["metabolic_endocrine"], "confidence": "high"}
+{"id": "MONDO:0005559", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0032665", "verdict": "keep", "organs": ["neurologic"], "confidence": "high"}
+{"id": "MONDO:0007908", "verdict": "keep", "organs": ["dermatologic"], "confidence": "high"}
+{"id": "MONDO:0021142", "verdict": "keep", "organs": ["musculoskeletal"], "confidence": "high"}

@@ -1,0 +1,40 @@
+{"id": "MONDO:0021895", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0005515", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0004975", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0018612", "verdict": "fix", "fields": {"ko": ["선천성 갑상선기능저하증"]}, "reason": "ko was 결막 양성 종양, another disease"}
+{"id": "MONDO:0021459", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0008382", "verdict": "fix", "fields": {"en": ["autosomal dominant retinoschisis", "retinoschisis"], "ko": ["상염색체 우성 망막층간분리증", "망막층간분리증"]}, "reason": "retinal cyst/망막낭종 is a different lesion; ko[0] made specific to the AD form"}
+{"id": "MONDO:0006105", "verdict": "fix", "fields": {"ko": ["결막 양성 종양"]}, "reason": "ko was 만성 치근단 치주염, another disease"}
+{"id": "MONDO:0005350", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0002657", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0005534", "verdict": "fix", "fields": {"ko_lay": []}, "reason": "장염 means gastroenteritis in general, far broader than Crohn ileocolitis"}
+{"id": "MONDO:0002311", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0006940", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0001592", "verdict": "fix", "fields": {"ko": ["여성 생식기 탈출증", "자궁탈출증", "골반장기탈출증"]}, "reason": "ko[0] was 췌장암, another disease"}
+{"id": "MONDO:0006843", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0005266", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0004656", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0005277", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0006533", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0041526", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0001247", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0006107", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0018328", "verdict": "fix", "fields": {"en": ["homozygous familial hypercholesterolemia"], "abbr": ["HoFH"], "ko": ["동형접합 가족성 고콜레스테롤혈증"]}, "reason": "FH / 가족성 고콜레스테롤혈증 is the parent; most FH is heterozygous"}
+{"id": "MONDO:0009688", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0001303", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0002183", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0008638", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0021661", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0010604", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0009831", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0024481", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0001672", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0001269", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0043765", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0004900", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0001251", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0019562", "verdict": "keep", "fields": {}}
+{"id": "MONDO:1030008", "verdict": "fix", "fields": {"ko_lay": []}, "reason": "판막 질환 is any valve disease, not mitral regurgitation"}
+{"id": "MONDO:0005029", "verdict": "keep", "fields": {}}
+{"id": "MONDO:0004170", "verdict": "fix", "fields": {"ko_lay": []}, "reason": "눈이 빨갛다 is a symptom (red eye), not a lay name for the disease"}
+{"id": "MONDO:0005233", "verdict": "keep", "fields": {}}

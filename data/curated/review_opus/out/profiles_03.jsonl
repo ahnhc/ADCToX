@@ -1,0 +1,40 @@
+{"id": "MONDO:0001898", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005160", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0037748", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001741", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005020", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002310", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0021462", "verdict": "fix", "fields": {"ko": ["직장 양성 신생물", "직장 용종"]}, "reason": "ko[0] '입술 양성 신생물' is benign lip neoplasm, not rectum"}
+{"id": "MONDO:0021449", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0007089", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0006626", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001170", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0019082", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002492", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005081", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0010870", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0020590", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005027", "verdict": "fix", "fields": {"ko": ["뇌전증", "간질"]}, "reason": "standard Korean term (KCD, 의학용어집) is 뇌전증; 간질 is the outdated name and should not be the displayed ko[0]"}
+{"id": "MONDO:0005340", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005240", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0007127", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001051", "verdict": "fix", "fields": {"ko": ["급성 외이도염"]}, "reason": "ko '황반변성' is macular degeneration, not acute otitis externa"}
+{"id": "MONDO:0004701", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002354", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0000627", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004126", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0020128", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001889", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005976", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002314", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005688", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0030987", "verdict": "fix", "fields": {"en": ["VCTERL syndrome", "vertebral, cardiac, tracheoesophageal, renal, and limb defects"], "ko": ["척추, 심장, 기관식도, 신장, 사지 결손", "VCTERL 증후군"], "symptoms_en": ["vertebral anomalies", "tracheoesophageal fistula", "heart defects", "kidney anomalies", "limb defects"], "symptoms_ko": ["척추 기형이 있어요", "식도가 막혀 있어요", "심장 기형이 있어요", "신장 기형이 있어요", "팔다리 기형이 있어요"]}, "reason": "concept is VCTERL (no anal atresia), a distinct entity from VACTERL association; names and anal-atresia symptom belonged to VACTERL"}
+{"id": "MONDO:0019288", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002152", "verdict": "fix", "fields": {"ko": ["간헐성 사시", "간헐성 외사시"]}, "reason": "concept is intermittent heterotropia (any direction); ko[0] '간헐성 외사시' is the narrower exotropia child"}
+{"id": "MONDO:0024650", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005101", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002127", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0021496", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002175", "verdict": "fix", "fields": {"ko": ["황반 및 후극부 변성", "황반변성"]}, "reason": "ko[0] '급성 외이도염' is acute otitis externa, not macular degeneration"}
+{"id": "MONDO:0005005", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005349", "verdict": "keep", "fields": {}, "reason": ""}

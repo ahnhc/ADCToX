@@ -1,6 +1,5 @@
 {"text": "이거 어떻게 써요?", "kind": "chatbot_question"}
 {"text": "날씨 어때", "kind": "chatbot_question"}
-{"text": "오늘 점심 뭐 먹지", "kind": "chatbot_question"}
 {"text": "내일 서울 비 와요?", "kind": "chatbot_question"}
 {"text": "노래 추천해 줄래", "kind": "chatbot_question"}
 {"text": "자기소개 좀 해봐", "kind": "chatbot_question"}
@@ -273,7 +272,6 @@
 {"text": "매주 수요일 오후 두 시 회의", "kind": "date"}
 {"text": "2027년 3월 셋째 목요일", "kind": "date"}
 {"text": "장마가 끝나는 날", "kind": "date"}
-{"text": "안녕하세요", "kind": "greeting"}
 {"text": "좋은 아침입니다", "kind": "greeting"}
 {"text": "잘 지내지?", "kind": "greeting"}
 {"text": "오랜만이에요", "kind": "greeting"}
@@ -470,11 +468,9 @@
 {"text": "올해 겨울 많이 추울까", "kind": "chatbot_question"}
 {"text": "빨간 우산 어디 뒀더라", "kind": "chatbot_question"}
 {"text": "열쇠를 잃어버렸어", "kind": "chatbot_question"}
-{"text": "아 진짜 짜증나", "kind": "fragment"}
 {"text": "헐 대박", "kind": "fragment"}
 {"text": "그냥 심심해서 써봄", "kind": "fragment"}
 {"text": "테스트 입력입니다", "kind": "fragment"}
-{"text": "가나다라마바사", "kind": "fragment"}
 {"text": "아무거나 말해봐", "kind": "fragment"}
 {"text": "뭐라고 대답하지", "kind": "fragment"}
 {"text": "응 알겠어", "kind": "fragment"}
@@ -486,7 +482,6 @@
 {"text": "축구 경기 몇 대 몇이야", "kind": "sports_question"}
 {"text": "야구 결과 알려줘", "kind": "sports_question"}
 {"text": "농구 경기 일정", "kind": "sports_question"}
-{"text": "배구팀 응원가 만들어줘", "kind": "sports_question"}
 {"text": "롤 시즌 티어 올리는 법", "kind": "game_request"}
 {"text": "마인크래프트 씨앗 값 추천", "kind": "game_request"}
 {"text": "리그 오브 레전드 챔피언 추천", "kind": "game_request"}

@@ -1,0 +1,40 @@
+{"id": "MONDO:0005068", "verdict": "keep"}
+{"id": "MONDO:0018469", "verdict": "keep"}
+{"id": "MONDO:0006642", "verdict": "keep"}
+{"id": "MONDO:0021494", "verdict": "keep"}
+{"id": "MONDO:0005010", "verdict": "fix", "fields": {"en": ["coronary artery disease", "coronary heart disease", "ischemic heart disease"], "symptoms_en": ["chest pain on exertion", "shortness of breath", "fatigue", "prior heart attack or stent"], "symptoms_ko": ["운동하면 가슴이 아파요", "숨이 차요", "피곤해요", "심근경색이나 스텐트 시술 병력"]}, "reason": "'heart failure with coronary heart disease' is a different (HF) concept; leg swelling is a heart-failure sign, not CAD"}
+{"id": "MONDO:0002021", "verdict": "keep"}
+{"id": "MONDO:0002155", "verdict": "keep"}
+{"id": "MONDO:0001903", "verdict": "keep"}
+{"id": "MONDO:0700322", "verdict": "keep"}
+{"id": "MONDO:0004640", "verdict": "keep"}
+{"id": "MONDO:0024664", "verdict": "keep"}
+{"id": "MONDO:0005396", "verdict": "fix", "fields": {"en": ["thoracic aortic aneurysm"], "ko": ["흉부 대동맥류", "흉부대동맥류"]}, "reason": "'aortic aneurysm' is the parent concept; '흉부대동맥 동맥류' is a redundant misspelling of 흉부대동맥류"}
+{"id": "MONDO:0002545", "verdict": "fix", "fields": {"ko": ["척수질환", "척수병증"]}, "reason": "ko[0] '외사시' (exotropia) is another disease; spinal cord disorder = 척수질환"}
+{"id": "MONDO:0001223", "verdict": "keep"}
+{"id": "MONDO:0002278", "verdict": "keep"}
+{"id": "MONDO:0006295", "verdict": "keep"}
+{"id": "MONDO:0011385", "verdict": "keep"}
+{"id": "MONDO:0005267", "verdict": "keep"}
+{"id": "MONDO:0003397", "verdict": "fix", "fields": {"ko": ["치은 비대", "잇몸 증식"]}, "reason": "ko[0] '비결핵항산균 폐질환' (NTM lung disease) is another disease"}
+{"id": "MONDO:0000748", "verdict": "fix", "fields": {"ko": ["유양돌기염", "만성 유양돌기염"]}, "reason": "only Korean name was the narrower '만성 유양돌기염'; concept is mastoiditis (유양돌기염)"}
+{"id": "MONDO:0012105", "verdict": "keep"}
+{"id": "MONDO:0005391", "verdict": "keep"}
+{"id": "MONDO:0005085", "verdict": "keep"}
+{"id": "MONDO:0006012", "verdict": "keep"}
+{"id": "MONDO:0005406", "verdict": "keep"}
+{"id": "MONDO:0850302", "verdict": "fix", "fields": {"ko": ["뇌수막종", "두개내 수막종"]}, "reason": "ko[0] '노인성 백내장' (senile cataract) is another disease"}
+{"id": "MONDO:0005417", "verdict": "keep"}
+{"id": "MONDO:0003900", "verdict": "keep"}
+{"id": "MONDO:0100192", "verdict": "keep"}
+{"id": "MONDO:0005151", "verdict": "fix", "fields": {"ko": ["내분비 질환", "기타 내분비샘 장애"]}, "reason": "ko[0] '기타 내분비샘 장애' is an ICD residual category, not the concept endocrine system disorder (내분비 질환)"}
+{"id": "MONDO:0100309", "verdict": "keep"}
+{"id": "MONDO:0019015", "verdict": "fix", "fields": {"en": ["omphalocele", "exomphalos", "congenital omphalocele"], "ko": ["배꼽내장탈출증", "제대류"], "ko_lay": ["태어날 때 배꼽으로 장이 나옴"], "symptoms_en": ["abdominal organs protruding through the navel at birth", "membrane-covered sac at the umbilicus", "found on prenatal ultrasound", "abdominal wall repair in infancy"], "symptoms_ko": ["태어날 때 배꼽으로 장이 나와 있었어요", "배꼽에 막으로 덮인 주머니가 있었어요", "산전 초음파에서 발견됐어요", "아기 때 복벽 수술을 받았어요"]}, "reason": "profile described acquired umbilical hernia (배꼽탈장/제대탈장), a different disease from congenital omphalocele (배꼽내장탈출증); rewritten to the concept - consider remapping the umbilical-hernia profile to its own MONDO id"}
+{"id": "MONDO:0004849", "verdict": "keep"}
+{"id": "MONDO:0002320", "verdict": "keep"}
+{"id": "MONDO:0010888", "verdict": "keep"}
+{"id": "MONDO:0001339", "verdict": "keep"}
+{"id": "MONDO:0001286", "verdict": "fix", "fields": {"ko_lay": ["사시"]}, "reason": "'짝눈' means unequal eyes/vision (anisometropia), not strabismus"}
+{"id": "MONDO:0004782", "verdict": "keep"}
+{"id": "MONDO:0006721", "verdict": "keep"}
+{"id": "MONDO:0004847", "verdict": "keep"}

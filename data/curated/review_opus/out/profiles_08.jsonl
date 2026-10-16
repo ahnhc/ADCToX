@@ -1,0 +1,40 @@
+{"id": "MONDO:0000001", "verdict": "keep"}
+{"id": "MONDO:8000018", "verdict": "keep"}
+{"id": "MONDO:0004618", "verdict": "fix", "fields": {"en": ["diplegia of upper limbs", "upper limb paraplegia"], "ko": ["상지 양측마비", "양측 상지마비"]}, "reason": "quadriplegia/사지마비 is all four limbs, not upper-limb diplegia"}
+{"id": "MONDO:0001793", "verdict": "keep"}
+{"id": "MONDO:0019338", "verdict": "keep"}
+{"id": "MONDO:0001288", "verdict": "keep"}
+{"id": "MONDO:0005844", "verdict": "keep"}
+{"id": "MONDO:0005480", "verdict": "keep"}
+{"id": "MONDO:0011751", "verdict": "keep"}
+{"id": "MONDO:0004795", "verdict": "keep"}
+{"id": "MONDO:0005546", "verdict": "keep"}
+{"id": "MONDO:0013209", "verdict": "keep"}
+{"id": "MONDO:0006977", "verdict": "fix", "fields": {"ko": ["정액류", "정액낭종"]}, "reason": "정낭종 refers to the seminal vesicle, not an epididymal spermatocele"}
+{"id": "MONDO:0005365", "verdict": "keep"}
+{"id": "MONDO:0003282", "verdict": "keep"}
+{"id": "MONDO:0005342", "verdict": "keep"}
+{"id": "MONDO:0001747", "verdict": "fix", "fields": {"en": ["tibial collateral ligament bursitis", "medial collateral ligament bursitis"], "ko": ["내측 측부인대 점액낭염"], "symptoms_en": ["medial knee pain", "tenderness over inner knee joint line", "pain climbing stairs", "swelling"], "symptoms_ko": ["무릎 안쪽이 아파요", "무릎 안쪽을 누르면 아파요", "계단 오를 때 아파요", "부었어요"]}, "reason": "pes anserine bursitis is a separate bursa (neighbour concept); tenderness is at the medial joint line"}
+{"id": "MONDO:0001557", "verdict": "keep"}
+{"id": "MONDO:0002037", "verdict": "fix", "fields": {"ko": ["흉막 질환", "흉막 장애"]}, "reason": "ko[0] 부신 양성종양 is an adrenal tumour, not pleural disorder"}
+{"id": "MONDO:0001609", "verdict": "fix", "fields": {"ko": ["무과립구증", "중증 호중구감소증"]}, "reason": "duplicate 무과립구증 removed"}
+{"id": "MONDO:0006559", "verdict": "keep"}
+{"id": "MONDO:0006031", "verdict": "fix", "fields": {"ko": ["만성 비부비동염", "만성 축농증"]}, "reason": "ko[0] 뇌염 (encephalitis) is another disease"}
+{"id": "MONDO:0019167", "verdict": "keep"}
+{"id": "MONDO:0004773", "verdict": "keep"}
+{"id": "MONDO:0005810", "verdict": "keep"}
+{"id": "MONDO:0019722", "verdict": "keep"}
+{"id": "MONDO:0004570", "verdict": "keep"}
+{"id": "MONDO:0010811", "verdict": "keep"}
+{"id": "MONDO:0005451", "verdict": "fix", "fields": {"ko": ["섭식장애", "식이장애"]}, "reason": "ko[0] 내측 측부인대 점액낭염 is another disease; 폭식장애 is a narrower child"}
+{"id": "MONDO:0100430", "verdict": "keep"}
+{"id": "MONDO:0002036", "verdict": "keep"}
+{"id": "MONDO:0021511", "verdict": "keep"}
+{"id": "MONDO:0006774", "verdict": "fix", "fields": {"en": ["recurrent miscarriage", "habitual abortion", "recurrent pregnancy loss"], "ko": ["습관성 유산", "반복성 자연유산"]}, "reason": "single spontaneous abortion/자연 유산 is broader than habitual (recurrent) abortion"}
+{"id": "MONDO:0041052", "verdict": "keep"}
+{"id": "MONDO:0019402", "verdict": "keep"}
+{"id": "MONDO:0019956", "verdict": "keep"}
+{"id": "MONDO:0016581", "verdict": "keep"}
+{"id": "MONDO:0001302", "verdict": "keep"}
+{"id": "MONDO:0006918", "verdict": "keep"}
+{"id": "MONDO:0005083", "verdict": "keep"}

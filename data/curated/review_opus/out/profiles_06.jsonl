@@ -1,0 +1,40 @@
+{"id": "MONDO:0006525", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0000949", "verdict": "fix", "fields": {"ko": ["결막 변성", "결막 침착물", "결막 변성 및 침착", "검열반", "익상편"]}, "reason": "pinguecula is 검열반 in Korean; 결막황반 is not a standard term"}
+{"id": "MONDO:0002209", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005487", "verdict": "fix", "fields": {"ko": ["조현정동장애", "분열정동장애"], "ko_lay": []}, "reason": "조현정동장애 is the current standard name; 정신분열 denotes schizophrenia, not schizoaffective disorder"}
+{"id": "MONDO:0024633", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0000816", "verdict": "fix", "fields": {"ko": ["대사증후군"]}, "reason": "ko was 혼합성 난청 (mixed hearing loss), another disease"}
+{"id": "MONDO:0005627", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005252", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005904", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0000942", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0008558", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0000647", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005377", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002098", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005609", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0021501", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0016044", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004375", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001200", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0003749", "verdict": "fix", "fields": {"ko": ["식도 질환", "상부위장관 질환"], "en": ["esophageal disease", "esophageal, gastric and duodenal disease", "upper GI disease"]}, "reason": "ko[0] was 소장 양성 종양 (benign small intestine neoplasm); en lacked the concept's own name"}
+{"id": "MONDO:0005280", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001815", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0000989", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005449", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0000474", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005607", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001164", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005298", "verdict": "fix", "fields": {"abbr": []}, "reason": "OP in clinical use means operation (or organophosphate), not osteoporosis"}
+{"id": "MONDO:0006500", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0011438", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005965", "verdict": "fix", "fields": {"ko_lay": ["허리 협착"]}, "reason": "디스크 denotes disc herniation, a different disease"}
+{"id": "MONDO:0005770", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0026045", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0024644", "verdict": "fix", "fields": {"ko": ["허혈성 심장질환", "관상동맥심장질환"]}, "reason": "ko[0] was 추체외로 및 운동질환 (extrapyramidal disease), another disease"}
+{"id": "MONDO:0044001", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0012511", "verdict": "fix", "fields": {"ko": ["만삭전 조기양막파수", "조기 양막파수"]}, "reason": "PPROM is 만삭전 조기양막파수; 미성숙 조기양막파수 is not a standard term; preterm form first"}
+{"id": "MONDO:0002028", "verdict": "fix", "fields": {"abbr": []}, "reason": "PD means Parkinson disease / peritoneal dialysis / progressive disease, not personality disorder"}
+{"id": "MONDO:0008433", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004808", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0006003", "verdict": "keep", "fields": {}, "reason": ""}

@@ -2,17 +2,14 @@
 {"text": "응답 거부", "kind": "refusal"}
 {"text": "말하기 싫어요", "kind": "refusal"}
 {"text": "비밀입니다", "kind": "refusal"}
-{"text": "패스", "kind": "refusal"}
 {"text": "넘어갈게요", "kind": "refusal"}
 {"text": "답변 안 할래요", "kind": "refusal"}
 {"text": "대답 거부합니다", "kind": "refusal"}
 {"text": "그냥 패스할게요", "kind": "refusal"}
 {"text": "굳이 말 안 할게요", "kind": "refusal"}
 {"text": "알려주기 싫어요", "kind": "refusal"}
-{"text": "말 못 해요", "kind": "refusal"}
 {"text": "개인정보라 안 씀", "kind": "refusal"}
 {"text": "비공개", "kind": "refusal"}
-{"text": "말씀 안 드릴게요", "kind": "refusal"}
 {"text": "그건 비밀이에요", "kind": "refusal"}
 {"text": "다음 질문으로", "kind": "refusal"}
 {"text": "생략할게요", "kind": "refusal"}
@@ -36,11 +33,9 @@
 {"text": "넘기기", "kind": "refusal"}
 {"text": "패쓰", "kind": "refusal"}
 {"text": "비밀 유지", "kind": "refusal"}
-{"text": "말하기 곤란합니다", "kind": "refusal"}
 {"text": "답변 보류", "kind": "refusal"}
 {"text": "응답 안 할게", "kind": "refusal"}
 {"text": "그냥 둘게요", "kind": "refusal"}
-{"text": "아니요 답 안 함", "kind": "refusal"}
 {"text": "그건 모름 패스", "kind": "refusal"}
 {"text": "대답 유보", "kind": "refusal"}
 {"text": "말 아낄게요", "kind": "refusal"}
@@ -83,12 +78,10 @@
 {"text": "이건 그냥 넘김", "kind": "refusal"}
 {"text": "정보 제공 거부", "kind": "refusal"}
 {"text": "제공하지 않겠습니다", "kind": "refusal"}
-{"text": "말할 수 없음", "kind": "refusal"}
 {"text": "안 밝힐래요", "kind": "refusal"}
 {"text": "그건 빼고 할게요", "kind": "refusal"}
 {"text": "여기는 패스", "kind": "refusal"}
 {"text": "쓰기 싫은데요", "kind": "refusal"}
-{"text": "말하기 귀찮아요", "kind": "refusal"}
 {"text": "그냥 넘어갈래", "kind": "refusal"}
 {"text": "응답 보류합니다", "kind": "refusal"}
 {"text": "입 닫을게요", "kind": "refusal"}
@@ -98,35 +91,25 @@
 {"text": "답할 수 없어요", "kind": "refusal"}
 {"text": "말하지 않을래요", "kind": "refusal"}
 {"text": "무응답", "kind": "refusal"}
-{"text": "모르겠음", "kind": "unknown_memory"}
 {"text": "모르겠어요", "kind": "unknown_memory"}
 {"text": "기억 안 남", "kind": "unknown_memory"}
 {"text": "기억 안 나요", "kind": "unknown_memory"}
-{"text": "잘 모르겠어요", "kind": "unknown_memory"}
 {"text": "생각 안 남", "kind": "unknown_memory"}
 {"text": "까먹었어요", "kind": "unknown_memory"}
-{"text": "기억이 안 나네요", "kind": "unknown_memory"}
-{"text": "모름", "kind": "unknown_memory"}
-{"text": "몰라요", "kind": "unknown_memory"}
 {"text": "확실하지 않음", "kind": "unknown_memory"}
 {"text": "잘 기억 안 나요", "kind": "unknown_memory"}
 {"text": "아무리 생각해도 모르겠음", "kind": "unknown_memory"}
-{"text": "들은 적이 없어요", "kind": "unknown_memory"}
-{"text": "잊어버림", "kind": "unknown_memory"}
 {"text": "예전 일이라 모르겠어요", "kind": "unknown_memory"}
 {"text": "전혀 모르겠음", "kind": "unknown_memory"}
 {"text": "그건 잘 모름", "kind": "unknown_memory"}
 {"text": "알 길 없음", "kind": "unknown_memory"}
 {"text": "기억 가물가물", "kind": "unknown_memory"}
-{"text": "기억 흐릿함", "kind": "unknown_memory"}
 {"text": "어디서 들었는지 모름", "kind": "unknown_memory"}
-{"text": "모르는 일", "kind": "unknown_memory"}
 {"text": "확인 못 함", "kind": "unknown_memory"}
 {"text": "알아본 적 없음", "kind": "unknown_memory"}
 {"text": "정확히 기억 안 남", "kind": "unknown_memory"}
 {"text": "그런 건 몰라요", "kind": "unknown_memory"}
 {"text": "떠오르지 않아요", "kind": "unknown_memory"}
-{"text": "생각나지 않음", "kind": "unknown_memory"}
 {"text": "그건 몰라서요", "kind": "unknown_memory"}
 {"text": "까맣게 모름", "kind": "unknown_memory"}
 {"text": "전혀 기억 없음", "kind": "unknown_memory"}
@@ -143,7 +126,6 @@
 {"text": "모르겠습니다", "kind": "unknown_memory"}
 {"text": "아는 게 없어요", "kind": "unknown_memory"}
 {"text": "감이 안 옴", "kind": "unknown_memory"}
-{"text": "기억 자체가 없음", "kind": "unknown_memory"}
 {"text": "확인해 봐야 함", "kind": "unknown_memory"}
 {"text": "알아보지 못함", "kind": "unknown_memory"}
 {"text": "그건 기억이 안 나요", "kind": "unknown_memory"}
@@ -152,13 +134,9 @@
 {"text": "몰랐어요", "kind": "unknown_memory"}
 {"text": "전혀 모르는 내용", "kind": "unknown_memory"}
 {"text": "기억이 나지 않습니다", "kind": "unknown_memory"}
-{"text": "떠올릴 수 없어요", "kind": "unknown_memory"}
 {"text": "헷갈려서 모르겠음", "kind": "unknown_memory"}
 {"text": "헷갈려요", "kind": "unknown_memory"}
-{"text": "잘 생각이 안 나요", "kind": "unknown_memory"}
-{"text": "머리가 하얘짐", "kind": "unknown_memory"}
 {"text": "생각이 안 나서요", "kind": "unknown_memory"}
-{"text": "기억력이 없어요", "kind": "unknown_memory"}
 {"text": "뭐였는지 모르겠음", "kind": "unknown_memory"}
 {"text": "이름을 모르겠어요", "kind": "unknown_memory"}
 {"text": "제목을 모르겠음", "kind": "unknown_memory"}
@@ -167,11 +145,7 @@
 {"text": "아무 기억 없음", "kind": "unknown_memory"}
 {"text": "모르쇠", "kind": "unknown_memory"}
 {"text": "그게 뭔지 모르겠어요", "kind": "unknown_memory"}
-{"text": "들어본 기억이 없어요", "kind": "unknown_memory"}
-{"text": "기억이 희미해요", "kind": "unknown_memory"}
-{"text": "기억 없음", "kind": "unknown_memory"}
 {"text": "몰?", "kind": "unknown_memory"}
-{"text": "음... 모르겠어요", "kind": "unknown_memory"}
 {"text": "글쎄요 모르겠네요", "kind": "unknown_memory"}
 {"text": "잘 모르는 분야", "kind": "unknown_memory"}
 {"text": "아리송함", "kind": "unknown_memory"}
@@ -181,37 +155,28 @@
 {"text": "그것도 모르겠음", "kind": "unknown_memory"}
 {"text": "몰라서 못 씀", "kind": "unknown_memory"}
 {"text": "모르는 용어", "kind": "unknown_memory"}
-{"text": "들은 적 있는 것 같기도", "kind": "unknown_memory"}
 {"text": "기억하는 게 없음", "kind": "unknown_memory"}
 {"text": "기억 나는 게 없어요", "kind": "unknown_memory"}
 {"text": "확신이 없음", "kind": "unknown_memory"}
 {"text": "뭐라고 해야 할지 모르겠음", "kind": "unknown_memory"}
-{"text": "생각 정리가 안 됨", "kind": "unknown_memory"}
 {"text": "알쏭달쏭", "kind": "unknown_memory"}
 {"text": "헷갈리는데 모름", "kind": "unknown_memory"}
 {"text": "이해가 안 가요", "kind": "unknown_memory"}
 {"text": "잘 모르는 얘기", "kind": "unknown_memory"}
 {"text": "모르니까 패스", "kind": "unknown_memory"}
-{"text": "흐릿한 기억", "kind": "unknown_memory"}
 {"text": "기억을 못 하겠음", "kind": "unknown_memory"}
 {"text": "아무튼 모름", "kind": "unknown_memory"}
 {"text": "잊음", "kind": "unknown_memory"}
 {"text": "생각해 봐도 모름", "kind": "unknown_memory"}
 {"text": "모름이요", "kind": "unknown_memory"}
 {"text": "해당 사항 없음", "kind": "form_filler"}
-{"text": "해당 없음", "kind": "form_filler"}
-{"text": "기타", "kind": "form_filler"}
-{"text": "기타 사항", "kind": "form_filler"}
 {"text": "미기재", "kind": "form_filler"}
 {"text": "미기재 사항 없음", "kind": "form_filler"}
 {"text": "입력 안 함", "kind": "form_filler"}
 {"text": "입력 안함", "kind": "form_filler"}
 {"text": "나중에", "kind": "form_filler"}
-{"text": "나중에 입력", "kind": "form_filler"}
-{"text": "없음", "kind": "form_filler"}
 {"text": "없습니다", "kind": "form_filler"}
 {"text": "공란", "kind": "form_filler"}
-{"text": "빈칸", "kind": "form_filler"}
 {"text": "작성 안 함", "kind": "form_filler"}
 {"text": "작성하지 않음", "kind": "form_filler"}
 {"text": "해당 없는 항목", "kind": "form_filler"}
@@ -220,7 +185,6 @@
 {"text": "선택 안 함", "kind": "form_filler"}
 {"text": "선택 없음", "kind": "form_filler"}
 {"text": "해당 무", "kind": "form_filler"}
-{"text": "N/A", "kind": "form_filler"}
 {"text": "무", "kind": "form_filler"}
 {"text": "상동", "kind": "form_filler"}
 {"text": "동일", "kind": "form_filler"}
@@ -229,7 +193,6 @@
 {"text": "추후 입력 예정", "kind": "form_filler"}
 {"text": "차후 작성", "kind": "form_filler"}
 {"text": "기입 생략", "kind": "form_filler"}
-{"text": "생략", "kind": "form_filler"}
 {"text": "해당 항목 없음 기타", "kind": "form_filler"}
 {"text": "기재 사항 없음", "kind": "form_filler"}
 {"text": "입력 보류", "kind": "form_filler"}
@@ -238,7 +201,6 @@
 {"text": "확인 후 입력", "kind": "form_filler"}
 {"text": "확인 중", "kind": "form_filler"}
 {"text": "확인 필요", "kind": "form_filler"}
-{"text": "미정", "kind": "form_filler"}
 {"text": "미확정", "kind": "form_filler"}
 {"text": "추가 예정", "kind": "form_filler"}
 {"text": "별도 기재", "kind": "form_filler"}
@@ -280,8 +242,6 @@
 {"text": "여백", "kind": "form_filler"}
 {"text": "빈 값", "kind": "form_filler"}
 {"text": "빈 칸 그대로", "kind": "form_filler"}
-{"text": "null", "kind": "form_filler"}
-{"text": "undefined", "kind": "form_filler"}
 {"text": "값 없음", "kind": "form_filler"}
 {"text": "입력값 없음", "kind": "form_filler"}
 {"text": "입력 대기", "kind": "form_filler"}
@@ -396,40 +356,19 @@
 {"text": "폭스 트롯 쏘", "kind": "transliterated_filler"}
 {"text": "펀치 카드 무", "kind": "transliterated_filler"}
 {"text": "블록 체인 아님", "kind": "transliterated_filler"}
-{"text": "ㅇㅇ", "kind": "keyboard_slip"}
 {"text": "ㅇㅇㅇ", "kind": "keyboard_slip"}
-{"text": "ㅎㅎ", "kind": "keyboard_slip"}
-{"text": "ㅎㅎㅎ", "kind": "keyboard_slip"}
-{"text": "ㅋㅋ", "kind": "keyboard_slip"}
 {"text": "ㅋㅋㅋㅋ", "kind": "keyboard_slip"}
 {"text": "ㅁㄴㅇ", "kind": "keyboard_slip"}
-{"text": "ㅁㄴㅇㄹ", "kind": "keyboard_slip"}
 {"text": "뮤ㅑ", "kind": "keyboard_slip"}
 {"text": "뮤ㅑㅑ", "kind": "keyboard_slip"}
-{"text": "ㅂㅈㄷㄱ", "kind": "keyboard_slip"}
 {"text": "ㅅㅅ", "kind": "keyboard_slip"}
-{"text": "ㄱㄱ", "kind": "keyboard_slip"}
-{"text": "ㄴㄴ", "kind": "keyboard_slip"}
-{"text": "ㅠㅠ", "kind": "keyboard_slip"}
-{"text": "ㅜㅜ", "kind": "keyboard_slip"}
-{"text": "ㅡㅡ", "kind": "keyboard_slip"}
-{"text": "ㅎ", "kind": "keyboard_slip"}
-{"text": "ㅇ", "kind": "keyboard_slip"}
-{"text": "ㅋ", "kind": "keyboard_slip"}
-{"text": "ㄷㄷ", "kind": "keyboard_slip"}
-{"text": "ㅈㅅ", "kind": "keyboard_slip"}
 {"text": "ㄱㅅ", "kind": "keyboard_slip"}
-{"text": "ㅇㅋ", "kind": "keyboard_slip"}
-{"text": "ㅇㅎ", "kind": "keyboard_slip"}
-{"text": "ㅁㅁ", "kind": "keyboard_slip"}
 {"text": "ㅊㅊ", "kind": "keyboard_slip"}
 {"text": "ㅏㅏ", "kind": "keyboard_slip"}
 {"text": "ㅓㅓ", "kind": "keyboard_slip"}
-{"text": "ㅗㅗ", "kind": "keyboard_slip"}
 {"text": "ㅑㅑ", "kind": "keyboard_slip"}
 {"text": "ㅕㅕ", "kind": "keyboard_slip"}
 {"text": "ㄴㅇㄹ", "kind": "keyboard_slip"}
-{"text": "ㅂㅂ", "kind": "keyboard_slip"}
 {"text": "ㅃㅃ", "kind": "keyboard_slip"}
 {"text": "ㅅㄴㅁ", "kind": "keyboard_slip"}
 {"text": "쿠ㅑ", "kind": "keyboard_slip"}
@@ -451,11 +390,9 @@
 {"text": "ㅎㅇ", "kind": "keyboard_slip"}
 {"text": "ㅎㄷㄷ", "kind": "keyboard_slip"}
 {"text": "ㅇㅅㅇ", "kind": "keyboard_slip"}
-{"text": "ㅠ", "kind": "keyboard_slip"}
 {"text": "ㅜ", "kind": "keyboard_slip"}
 {"text": "ㅅ", "kind": "keyboard_slip"}
 {"text": "ㅁ", "kind": "keyboard_slip"}
-{"text": "ㄴ", "kind": "keyboard_slip"}
 {"text": "ㅓ", "kind": "keyboard_slip"}
 {"text": "ㅏ", "kind": "keyboard_slip"}
 {"text": "ㅑ", "kind": "keyboard_slip"}
@@ -493,6 +430,5 @@
 {"text": "ㅅㄷ", "kind": "keyboard_slip"}
 {"text": "ㅇㅏㅇ", "kind": "keyboard_slip"}
 {"text": "ㅁㄴㅁㄴ", "kind": "keyboard_slip"}
-{"text": "ㅊㅋ", "kind": "keyboard_slip"}
 {"text": "ㅎㅎㅇㅇ", "kind": "keyboard_slip"}
 {"text": "ㅇㅇㅎㅎ", "kind": "keyboard_slip"}

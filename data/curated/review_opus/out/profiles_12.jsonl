@@ -1,0 +1,40 @@
+{"id": "MONDO:0000462", "verdict": "fix", "fields": {"en": ["ocular adnexa disease", "disorder of ocular adnexa"], "ko": ["눈부속기 질환"], "symptoms_en": ["eye pain", "watery eyes", "eye redness", "eyelid swelling"], "symptoms_ko": ["눈이 아파요", "눈물이 나요", "눈이 빨개요", "눈꺼풀이 부었어요"]}, "reason": "en/ko named eye and adnexa (broader); adnexa spare the globe, so blurred vision swapped for tearing"}
+{"id": "MONDO:0002959", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001627", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0017634", "verdict": "fix", "fields": {"ko": ["비감염성 앞포도막염", "홍채섬모체염"]}, "reason": "ko[0] 단순태선 is lichen simplex, not uveitis"}
+{"id": "MONDO:0004641", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005439", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005109", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004646", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0007254", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0006816", "verdict": "fix", "fields": {"ko": ["관절병증", "관절병", "관절염"]}, "reason": "ko[0] 나이관련 황반변성 is AMD, not arthropathy"}
+{"id": "MONDO:0021063", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005150", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0000625", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0005146", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0008114", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0800207", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002660", "verdict": "fix", "fields": {"ko": ["안검이완증", "눈꺼풀피부이완증"]}, "reason": "눈꺼풀처짐 denotes ptosis, a different disease"}
+{"id": "MONDO:0004648", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0007179", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0006337", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002253", "verdict": "fix", "fields": {"ko": ["척추증", "경추증"]}, "reason": "duplicate 척추증 removed"}
+{"id": "MONDO:0002026", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004568", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0013662", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0044137", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0001478", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0006932", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0003799", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0021440", "verdict": "fix", "fields": {"en": ["benign neoplasm of skin", "benign skin tumor"]}, "reason": "'skin lesion' is far broader than a benign neoplasm"}
+{"id": "MONDO:0006585", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0015905", "verdict": "fix", "fields": {"en": ["syndromic dyslipidemia", "complex dyslipidemia"], "ko": ["증후군성 이상지질혈증"]}, "reason": "lipid metabolism disorder / 지질대사 장애 are much broader concepts"}
+{"id": "MONDO:0100574", "verdict": "fix", "fields": {"ko": ["전신 뇌전증"]}, "reason": "전신 발작 is a seizure type, not the epilepsy"}
+{"id": "MONDO:0015597", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0004678", "verdict": "fix", "fields": {"ko_lay": ["무좀", "버짐"]}, "reason": "어루러기 is tinea versicolor (Malassezia), not dermatophytosis"}
+{"id": "MONDO:0001100", "verdict": "fix", "fields": {"ko": ["유방비대증", "거대유방증"]}, "reason": "ko[0] 바렛 식도 is Barrett esophagus, not breast hypertrophy"}
+{"id": "MONDO:0004784", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0018381", "verdict": "fix", "fields": {"ko": ["골연골증", "뼈연골증"], "ko_lay": []}, "reason": "성장통 is growing pains (another entity); 연골증 vague"}
+{"id": "MONDO:0004684", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0002052", "verdict": "keep", "fields": {}, "reason": ""}
+{"id": "MONDO:0000646", "verdict": "keep", "fields": {}, "reason": ""}

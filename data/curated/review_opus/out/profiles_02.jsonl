@@ -1,0 +1,40 @@
+{"id": "MONDO:0003781", "verdict": "fix", "fields": {"ko": ["기관지염", "급성 기관지염"]}, "reason": "concept is bronchitis (acute or chronic); ko[0] showed the narrower acute form"}
+{"id": "MONDO:0041366", "verdict": "fix", "fields": {"symptoms_ko": ["목이 너무 아파요", "삼키기 힘들어요", "목소리가 먹먹해요", "침을 흘려요", "숨 쉴 때 거친 소리가 나요", "열이 나요"]}, "reason": "noisy breathing here is stridor, not wheezing (쌕쌕)"}
+{"id": "MONDO:0005052", "verdict": "keep"}
+{"id": "MONDO:0021527", "verdict": "keep"}
+{"id": "MONDO:0002134", "verdict": "keep"}
+{"id": "MONDO:0006555", "verdict": "fix", "fields": {"en": ["granulomatous dermatitis", "granulomatous skin disease"]}, "reason": "granuloma annulare is a specific child disease, not a synonym"}
+{"id": "MONDO:0005387", "verdict": "keep"}
+{"id": "MONDO:0005972", "verdict": "keep"}
+{"id": "MONDO:0002049", "verdict": "keep"}
+{"id": "MONDO:0006610", "verdict": "keep"}
+{"id": "MONDO:0022208", "verdict": "keep"}
+{"id": "MONDO:0002471", "verdict": "fix", "fields": {"ko": ["점액낭염"]}, "reason": "ko was 육아종성 피부염 (another profile's name); bursitis is 점액낭염"}
+{"id": "MONDO:0007015", "verdict": "keep"}
+{"id": "MONDO:0006948", "verdict": "keep"}
+{"id": "MONDO:0007263", "verdict": "keep"}
+{"id": "MONDO:0005700", "verdict": "keep"}
+{"id": "MONDO:0005008", "verdict": "fix", "fields": {"symptoms_ko": ["혈변을 봐요", "배변 습관이 바뀌었어요", "배가 아파요", "체중이 줄었어요", "빈혈이 있어요", "변이 가늘어요"]}, "reason": "변이 바뀌었어요 is vague; change in bowel habits = 배변 습관 변화"}
+{"id": "MONDO:0005105", "verdict": "keep"}
+{"id": "MONDO:0020779", "verdict": "fix", "fields": {"en": ["cartilage development disorder", "chondrodystrophy"], "ko": ["연골 발육 장애", "연골이영양증"], "ko_lay": ["연골 성장 문제"], "symptoms_en": ["short stature", "short or bowed limbs", "skeletal deformity", "joint pain"], "symptoms_ko": ["키가 작아요", "팔다리가 짧거나 휘었어요", "뼈 모양이 변형됐어요", "관절이 아파요"]}, "reason": "concept is a developmental cartilage growth disorder; names and symptoms described degenerative chondropathy (crepitus, stiffness)"}
+{"id": "MONDO:0002043", "verdict": "keep"}
+{"id": "MONDO:0005148", "verdict": "keep"}
+{"id": "MONDO:0002462", "verdict": "fix", "fields": {"ko": ["사구체신염", "토리콩팥염"]}, "reason": "콩팥염 = nephritis (broader); standard alternative for glomerulonephritis is 토리콩팥염"}
+{"id": "MONDO:0004605", "verdict": "keep"}
+{"id": "MONDO:0005711", "verdict": "fix", "fields": {"en": ["congenital diaphragmatic hernia", "diaphragmatic hernia"], "ko": ["선천성 횡격막 탈장", "횡격막 탈장"], "symptoms_en": ["difficulty breathing in newborn", "bluish skin in newborn", "fast breathing", "sunken abdomen"], "symptoms_ko": ["신생아가 숨쉬기 힘들어해요", "아기 피부가 파래요", "숨을 빨리 쉬어요", "배가 꺼져 보여요"]}, "reason": "hiatal hernia is a different disease; heartburn/regurgitation are its symptoms, not CDH; ko[0] should name the congenital form"}
+{"id": "MONDO:0005399", "verdict": "keep"}
+{"id": "MONDO:0021698", "verdict": "fix", "fields": {"ko": ["알코올 관련 장애", "알코올 사용장애"]}, "reason": "ko[0] was 결정성 관절병증 (another profile's name)"}
+{"id": "MONDO:0001041", "verdict": "keep"}
+{"id": "MONDO:0002473", "verdict": "fix", "fields": {"ko": ["낭성 신장질환", "콩팥 낭종", "다낭성 신장질환"]}, "reason": "ko[0] was 만성 피부궤양 (another profile's name)"}
+{"id": "MONDO:0012456", "verdict": "fix", "fields": {"en": ["congenital primary aphakia", "congenital aphakia"], "ko": ["선천성 무수정체증", "무수정체증"], "symptoms_en": ["poor vision from birth", "small eyes", "nystagmus", "cloudy-looking eye"], "symptoms_ko": ["태어날 때부터 잘 안 보여요", "눈이 작아요", "눈이 떨려요", "눈이 뿌옇게 보여요"]}, "reason": "symptoms described surgical aphakia after cataract surgery, which contradicts the congenital concept"}
+{"id": "MONDO:0007835", "verdict": "keep"}
+{"id": "MONDO:0023757", "verdict": "keep"}
+{"id": "MONDO:0021487", "verdict": "keep"}
+{"id": "MONDO:0006274", "verdict": "fix", "fields": {"abbr": ["VIN 1"], "ko": ["저등급 외음부 상피내병변", "외음부 상피내종양 1등급"]}, "reason": "bare LSIL usually means cervical LSIL; 외음부 상피내종양 alone is the all-grade parent"}
+{"id": "MONDO:0001126", "verdict": "keep"}
+{"id": "MONDO:0007033", "verdict": "keep"}
+{"id": "MONDO:0000755", "verdict": "keep"}
+{"id": "MONDO:0005301", "verdict": "keep"}
+{"id": "MONDO:0000004", "verdict": "fix", "fields": {"abbr": []}, "reason": "AI in clinical notes means aortic insufficiency"}
+{"id": "MONDO:0018229", "verdict": "keep"}
+{"id": "MONDO:0005293", "verdict": "keep"}

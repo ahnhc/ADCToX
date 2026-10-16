@@ -76,13 +76,20 @@ def load_organ_labels():
     if os.path.exists(R + "concept_organs/labels/verified_v3.jsonl"):                # third round: every other human concept, v3 rules
         for x in map(json.loads, open(R + "concept_organs/labels/verified_v3.jsonl")): filled[x["id"]] = frozenset(x["organs"])
     labels.update(filled)
+    reviewed = {}
+    if os.path.exists(R + "concept_organs/labels/verified_v4.jsonl"):                # Opus review of every training label (2026-10-17)
+        for x in map(json.loads, open(R + "concept_organs/labels/verified_v4.jsonl")):
+            if x.get("scope") != "unclear": reviewed[x["id"]] = frozenset(x["organs"])
+    labels.update(reviewed)
     expert = {}
     for f in sorted(glob.glob(R + "concept_organs/labels/expert_*.jsonl")):          # human (clinician) review: always wins
         for x in map(json.loads, open(f)):
             if x.get("scope") != "unclear": expert[x["id"]] = frozenset(x["organs"])
     labels.update(expert)
+    nonhuman = _nonhuman(labels)                                                   # 215 animal concepts had labels (2026-10-17 review)
+    for t in nonhuman: labels.pop(t, None)
     agree = [v[0] == v[1] for v in strict_per.values() if len(v) >= 2]
-    stats = dict(n_labels=len(labels), n_strict=len(strict), n_verified=len(verified), n_filled=len(filled), n_expert=len(expert), relabel_calibration_exact=rq, relabel_overlap_exact=float(np.mean(agree)) if agree else None, n_relabel_overlap=len(agree))
+    stats = dict(n_labels=len(labels), n_strict=len(strict), n_verified=len(verified), n_filled=len(filled), n_reviewed=len(reviewed), n_expert=len(expert), n_nonhuman_dropped=len(nonhuman), relabel_calibration_exact=rq, relabel_overlap_exact=float(np.mean(agree)) if agree else None, n_relabel_overlap=len(agree))
     return labels, stats
 
 
@@ -113,6 +120,18 @@ def vote_features(T, concepts):
     own = np.stack([_VOTES.get(t, z) for t in concepts])
     par = np.stack([np.max([_VOTES.get(p, z) for p in T.get(t, {}).get("parents", [])] or [z], 0) for t in concepts])
     return np.c_[own, par]
+
+
+def _nonhuman(labels):
+    """labelled concepts that are animal diseases (MONDO's non-human branch, or a species in the name): not training concepts."""
+    import re
+    from build_linking_pools import read_obo, OBO
+    try:
+        import suggest as SG; nh = SG.nonhuman_ids(OBO); animal = SG.ANIMAL
+    except Exception:
+        nh = set(); animal = re.compile(r"\b(cattle|dog|horse|sheep|goat|pig|swine|chicken|poultry|rabbit|cervid|bovine|canine|feline|equine|medaka|zebrafish|non-human)\b")
+    T = read_obo()
+    return {t for t in labels if t in nh or (t in T and animal.search(T[t]["name"]))}
 
 
 def gold_held(T):

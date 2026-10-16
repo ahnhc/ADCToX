@@ -1,0 +1,40 @@
+{"id": "MONDO:0003019", "verdict": "keep"}
+{"id": "MONDO:0003664", "verdict": "keep"}
+{"id": "MONDO:0021568", "verdict": "keep"}
+{"id": "MONDO:0011382", "verdict": "keep"}
+{"id": "MONDO:0002869", "verdict": "fix", "fields": {"ko": ["심장판막질환", "판막증"]}, "reason": "비류마티스성 판막질환 is a narrower child, not the general valve disorder"}
+{"id": "MONDO:0002884", "verdict": "keep"}
+{"id": "MONDO:0005372", "verdict": "keep"}
+{"id": "MONDO:0024312", "verdict": "fix", "fields": {"en": ["bone cancer of hand", "cancer of short bone of upper limb"]}, "reason": "upper limb only; 'hand or foot' wrongly includes the foot"}
+{"id": "MONDO:0005570", "verdict": "fix", "fields": {"ko_lay": ["혈액병"]}, "reason": "'피 병' is unnatural; 혈액병 is the everyday word"}
+{"id": "MONDO:0021482", "verdict": "fix", "fields": {"en": ["benign neoplasm of middle ear", "benign middle ear tumor"], "ko": ["중이 양성 신생물", "중이 양성 종양"], "ko_lay": ["귀 양성 종양"], "symptoms_en": ["hearing loss", "ear fullness", "tinnitus", "incidental finding on imaging"], "symptoms_ko": ["잘 안 들려요", "귀가 먹먹해요", "귀에서 소리가 나요", "검사에서 우연히 발견됐어요"]}, "reason": "concept is middle ear only; names and nasal obstruction came from the ICD 'middle ear and respiratory system' grouping"}
+{"id": "MONDO:0042487", "verdict": "keep"}
+{"id": "MONDO:0004703", "verdict": "keep"}
+{"id": "MONDO:0002332", "verdict": "keep"}
+{"id": "MONDO:0004980", "verdict": "keep"}
+{"id": "MONDO:0004525", "verdict": "fix", "fields": {"ko": ["옴", "개선"]}, "reason": "ko[0] was 자궁경부 상피내암 (another disease); scabies is 옴"}
+{"id": "MONDO:0001730", "verdict": "fix", "fields": {"en": ["urethral syndrome"], "ko": ["요도 증후군"], "ko_lay": [], "symptoms_en": ["burning urination", "frequent urination", "urgency", "urethral discomfort"], "symptoms_ko": ["소변 볼 때 따가워요", "소변을 자주 봐요", "소변이 급해요", "요도가 불편해요"]}, "reason": "urethral syndrome is non-infectious; urethritis/요도염 and urethral discharge belong to urethritis (separate MONDO concept)"}
+{"id": "MONDO:0001543", "verdict": "keep"}
+{"id": "MONDO:0001031", "verdict": "keep"}
+{"id": "MONDO:0043923", "verdict": "keep"}
+{"id": "MONDO:0003382", "verdict": "keep"}
+{"id": "MONDO:0004497", "verdict": "keep"}
+{"id": "MONDO:0004872", "verdict": "keep"}
+{"id": "MONDO:0010386", "verdict": "fix", "fields": {"ko": ["면역결핍증 33"]}, "reason": "ko was 손발톱 질환 (another disease)"}
+{"id": "MONDO:0005709", "verdict": "fix", "fields": {"ko": ["감기", "급성 비인두염"]}, "reason": "ko[0] was 구강 편평태선 (another disease)"}
+{"id": "MONDO:0005041", "verdict": "keep"}
+{"id": "MONDO:0005468", "verdict": "keep"}
+{"id": "MONDO:0004948", "verdict": "fix", "fields": {"symptoms_ko": ["림프절이 부었어요", "피곤해요", "밤에 식은땀이 나요", "감염이 자주 생겨요", "체중이 빠져요", "비장이 커졌대요"]}, "reason": "'배가 불러요' reads as satiety, not enlarged spleen"}
+{"id": "MONDO:0001172", "verdict": "keep"}
+{"id": "MONDO:0020677", "verdict": "keep"}
+{"id": "MONDO:0004842", "verdict": "fix", "fields": {"ko_lay": ["입병"]}, "reason": "'입안이 헐음' is an unnatural nominal; 입병 is the everyday word"}
+{"id": "MONDO:0003432", "verdict": "keep"}
+{"id": "MONDO:0001134", "verdict": "keep"}
+{"id": "MONDO:0005262", "verdict": "keep"}
+{"id": "MONDO:0024280", "verdict": "keep"}
+{"id": "MONDO:0000628", "verdict": "keep"}
+{"id": "MONDO:0001163", "verdict": "keep"}
+{"id": "MONDO:0005492", "verdict": "keep"}
+{"id": "MONDO:0003816", "verdict": "keep"}
+{"id": "MONDO:0006519", "verdict": "keep"}
+{"id": "MONDO:0044983", "verdict": "keep"}

@@ -1,0 +1,40 @@
+{"id": "MONDO:0005539", "verdict": "keep"}
+{"id": "MONDO:0005354", "verdict": "keep"}
+{"id": "MONDO:0021464", "verdict": "keep"}
+{"id": "MONDO:0002203", "verdict": "keep"}
+{"id": "MONDO:0005593", "verdict": "fix", "fields": {"ko": ["만성 치주염"]}, "reason": "ko[0] was 요로계 양성 종양, another disease; chronic periodontitis is 만성 치주염"}
+{"id": "MONDO:0004593", "verdict": "keep"}
+{"id": "MONDO:0006734", "verdict": "keep"}
+{"id": "MONDO:0056799", "verdict": "keep"}
+{"id": "MONDO:0018912", "verdict": "keep"}
+{"id": "MONDO:0008288", "verdict": "keep"}
+{"id": "MONDO:0004471", "verdict": "keep"}
+{"id": "MONDO:0004180", "verdict": "keep"}
+{"id": "MONDO:0001442", "verdict": "fix", "fields": {"en": ["dysthymia", "persistent depressive disorder"], "ko": ["기분부전증", "지속성 우울장애"]}, "reason": "depression / 우울증 name the broader depressive disorder (its own profile), not dysthymia"}
+{"id": "MONDO:0005532", "verdict": "fix", "fields": {"en": ["Crohn colitis", "Crohn's colitis"], "abbr": [], "ko": ["크론 결장염"]}, "reason": "Crohn disease, IBD, 크론병, 염증성 장질환 are parent concepts; ko[0] shown must be 크론 결장염"}
+{"id": "MONDO:0001266", "verdict": "fix", "fields": {"en": ["erysipelas"], "ko": ["단독"]}, "reason": "cellulitis / 연조직염 / 봉와직염 is a different (deeper) skin infection, not erysipelas"}
+{"id": "MONDO:0005180", "verdict": "keep"}
+{"id": "MONDO:0018756", "verdict": "fix", "fields": {"ko": ["정상갑상선 그레이브스 안병증", "갑상선 안병증"]}, "reason": "ko[0] was 쿠싱증후군, another disease"}
+{"id": "MONDO:0004664", "verdict": "keep"}
+{"id": "MONDO:0005044", "verdict": "keep"}
+{"id": "MONDO:0005147", "verdict": "keep"}
+{"id": "MONDO:0006664", "verdict": "keep"}
+{"id": "MONDO:0008420", "verdict": "keep"}
+{"id": "MONDO:0800504", "verdict": "keep"}
+{"id": "MONDO:0003394", "verdict": "keep"}
+{"id": "MONDO:0002050", "verdict": "keep"}
+{"id": "MONDO:0001157", "verdict": "keep"}
+{"id": "MONDO:0021506", "verdict": "keep"}
+{"id": "MONDO:0000632", "verdict": "keep"}
+{"id": "MONDO:0021205", "verdict": "keep"}
+{"id": "MONDO:0006022", "verdict": "keep"}
+{"id": "MONDO:0005099", "verdict": "keep"}
+{"id": "MONDO:0006008", "verdict": "fix", "fields": {"ko": ["전정신경염", "전정신경원염"]}, "reason": "ko[0] was 베이커낭종 (popliteal cyst), another disease"}
+{"id": "MONDO:0005310", "verdict": "fix", "fields": {"en": ["atrial flutter"], "abbr": ["AFL"], "ko": ["심방조동"]}, "reason": "atrial fibrillation / AF / AFib / 심방세동 is a different arrhythmia; ko[0] must be 심방조동"}
+{"id": "MONDO:0005084", "verdict": "keep"}
+{"id": "MONDO:0011849", "verdict": "keep"}
+{"id": "MONDO:0004979", "verdict": "keep"}
+{"id": "MONDO:0002423", "verdict": "fix", "fields": {"en": ["rectosigmoid junction neoplasm"]}, "reason": "concept covers benign and malignant; benign neoplasm of rectosigmoid junction is a narrower child"}
+{"id": "MONDO:0019118", "verdict": "fix", "fields": {"en": ["inherited retinal dystrophy"], "ko": ["유전성 망막이영양증", "유전성 망막질환"]}, "reason": "retinitis pigmentosa / 망막색소변성 is a narrower child concept with its own entry"}
+{"id": "MONDO:0002169", "verdict": "keep"}
+{"id": "MONDO:0006011", "verdict": "keep"}
