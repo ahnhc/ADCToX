@@ -234,19 +234,30 @@ class Form:
             if b and bool(HANGUL.search(b)) == ko_typed and bool(HANGUL.search(a)) != ko_typed: a, b = b, a
             return a, b
 
+        def keys(x):                                               # what makes two rows the same disease: id, MONDO id, either name
+            mondo = RC._reg[x[1]].get("mondo_id") if x[0] in ("reg", "sel") and x[1] in RC._reg else x[1] if str(x[1]).startswith("MONDO:") else None
+            k = {(x[0] if x[0] != "sel" else "reg", str(x[1])), ("name", re.sub(r"\W", "", str(x[2]).lower()))}
+            if mondo: k.add(("mondo", mondo))
+            if len(x) > 3 and x[3] and HANGUL.search(str(x[3])): k.add(("name", re.sub(r"\W", "", str(x[3]))))
+            return k
+        def fresh(x, have):
+            k = keys(x)
+            if k & have: return False
+            have |= k; return True
+
         self.timeout(100)
         rested = [None, 0.0]                                       # (row, query) under the cursor and since when, for the scrolling name
         try:
             while True:
                 q = query.strip()
-                rows = [("s", s, "") for s in found]
-                have = {(s[0], s[1]) for s in found}
+                have = set().union(*[keys(x) for x in sel]) if sel else set()       # a disease once: picked, or in any section
+                rows = [("s", x, "") for x in found if fresh(x, have)]
                 if ai["q"] == q and ai["res"]:
-                    rows += [("s", s, "AI") for s in ai["res"] if (s[0], s[1]) not in have]; have |= {(s[0], s[1]) for s in ai["res"]}
+                    rows += [("s", x, "AI") for x in ai["res"] if fresh(x, have)]
                 split = SG.parts(RC, query)
                 if split: rows.insert(0, ("split", ("text", split, "각각 따로 추가: " + ", ".join(split), "", []), ""))
                 if sym["q"] == q and sym["res"]:
-                    rows += [("sym", s, why) for s, why in sym["res"] if (s[0], s[1]) not in have]
+                    rows += [("sym", x, why) for x, why in sym["res"] if fresh(x, have)]
                 if q: rows.append(("raw", ("text", q, q, "", []), ""))       # last: Enter first takes the best suggestion
                 cur = max(0, min(cur, len(rows) - 1))
                 # ---- a search page: title, the picked diseases as chips, one box, suggestions under it

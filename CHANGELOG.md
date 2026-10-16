@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.23 — Validity threshold 0.95; each disease listed once
+
+- **The app accepts an input as real when the Gemma judge's validity score is 0.95 or more** (`gemma_runtime.VALID_THR`). The model's own threshold, 0.995, rejected common complaints such as "간이 안좋아요" (0.992). `ADC_VALID_THR=model` restores it.
+  - Dev, full pipeline: Korean macro-F1 0.705 → 0.743 (+0.038 [−0.029, +0.058]); English 0.886 → 0.890. Korean coverage went from 0.864 to 0.947. Invalid inputs accepted: 0 in both languages, as before.
+  - Cost: 6 of the 2,498 generated invalid inputs now pass (0 before). Some get organs, e.g. 심통 → Cardio and 뇌절 → Neuro.
+- **The search list shows each disease once.** A registry disease and its MONDO concept (Heart failure / `heart_failure` and `MONDO:0005252`) are the same row. A disease already listed above is left out of the symptom section, and a disease already added as a chip is left out of the list. Rows match on id, MONDO id, English name or Korean name.
+
 ## 0.3.22 — Simpler Gemma panel; repository tidied
 
 - **The Gemma judge panel is a plain tree.** It has no bars, dots, role column or threshold text. These glyphs have different widths in some terminal fonts, so the tree and the right border no longer break or shift. The output that set the organs is green; the others are grey. The last line gives the organs and the step that set them (Gemma align, Gemma organ, Chosen, MONDO, Registry, HPO).

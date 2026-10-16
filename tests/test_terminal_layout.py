@@ -433,3 +433,10 @@ def test_gemma_panel_marks_the_step_that_set_the_organs():
     assert any("→ Neuro" in ln and "Gemma align" in ln for ln in lines)
     assert not any(c in "".join(lines) for c in "●○█░▶·")              # glyphs whose width differs between fonts
     assert len({form._w(ln) for ln in lines}) == 1                  # the right border lines up
+
+
+def test_the_app_sets_the_validity_threshold_over_the_models(monkeypatch):
+    import gemma_runtime as GR
+    monkeypatch.delenv("ADC_VALID_THR", raising=False)
+    assert GR.valid_threshold(0.995) == 0.95
+    monkeypatch.setenv("ADC_VALID_THR", "model"); assert GR.valid_threshold(0.995) == 0.995

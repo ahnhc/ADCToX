@@ -158,6 +158,15 @@ def probs(texts, path=None):
     return 1 / (1 + np.exp(-z / temp))
 
 
+VALID_THR = 0.95       # app setting over the model's own validity threshold (0.995 for models 0.6, which rejected everyday Korean
+                       # complaints such as '간이 안좋아요'); ADC_VALID_THR overrides it, 'model' uses the model's value
+
+
+def valid_threshold(model_value):
+    v = os.environ.get("ADC_VALID_THR", VALID_THR)
+    return float(model_value) if v == "model" else float(v)
+
+
 def outputs(texts, path=None):
     """-> dict organ (n x 13 probabilities), and with a four-output judge: valid (n, probability of a real input), valid_ok
     (n bools), vec (n x 768, unit vectors in SapBERT space), sym (n x profiles probabilities), profiles (ids)."""
@@ -165,7 +174,8 @@ def outputs(texts, path=None):
     path = path or folder(); _, _, (hw, hb, temp, thr, prompt) = load(path); h = _last(texts, path); X = _X.get(path, {})
     out = dict(organ=1 / (1 + np.exp(-(h @ hw.T + hb).numpy() / temp)))
     if "align" in X:
-        v = 1 / (1 + np.exp(-(h @ X["valid"][0].T + X["valid"][1]).numpy()[:, 0])); out.update(valid=v, valid_ok=v >= X["info"]["vthr"], vthr=float(X["info"]["vthr"]))
+        vt = valid_threshold(X["info"]["vthr"])
+        v = 1 / (1 + np.exp(-(h @ X["valid"][0].T + X["valid"][1]).numpy()[:, 0])); out.update(valid=v, valid_ok=v >= vt, vthr=vt)
         out["vec"] = torch.nn.functional.normalize(h @ X["align"][0].T + X["align"][1], dim=-1).numpy()
         out["sym"] = torch.softmax(h @ X["sym"][0].T + X["sym"][1], -1).numpy(); out["profiles"] = X["info"]["profiles"]
     return out
