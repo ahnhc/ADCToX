@@ -169,7 +169,8 @@ def test_successful_update_invalidates_linking_and_inference_caches(monkeypatch)
     assert index.closed and module._IDX is None
 
 
-def test_update_button_returns_to_condition_selection_without_losing_input(monkeypatch):
+def test_condition_page_has_no_update_screen_and_keeps_input(monkeypatch):
+    """models are updated with adctox --update-models only; Ctrl+U on the search page does nothing."""
     import form, term, tui
     from types import SimpleNamespace
     console = term._Shim()
@@ -179,12 +180,11 @@ def test_update_button_returns_to_condition_selection_without_losing_input(monke
     screen = term._Screen(console)
     keys = iter(["c", "i", "r", "ENTER", "\x15", "PGDN"])               # type, add the first suggestion, Ctrl+U, next step
     monkeypatch.setattr(form, "_key", lambda scr, tab=False: next(keys))
-    opened = []
-    monkeypatch.setattr(form.Form, "model_updates", lambda self: opened.append(True))
+    assert not hasattr(form.Form, "model_updates")
     rc = SimpleNamespace(_reg={"cirrhosis": {"organ_axes": "hepatic", "label": "Cirrhosis"}}, AXES=["hepatic"], EN={"hepatic": "Hepatic"},
                          KO={"cirrhosis": "간경변"}, ORGAN_KO={"hepatic": "간"}, condition_name=lambda c: "Cirrhosis", HAS_LEARNED=True)
     selected, free, choice = form.Form(screen, rc).conditions(set(), "asthma")
-    assert opened == [True] and selected == {"cirrhosis"} and free == "asthma" and choice == {}
+    assert selected == {"cirrhosis"} and free == "asthma" and choice == {}
 
 
 def test_managed_runtime_does_not_mix_missing_files_with_research_cache(monkeypatch, tmp_path):

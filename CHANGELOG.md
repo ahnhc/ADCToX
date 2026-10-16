@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.14 — A search page first; no model updates inside the app
+
+- **The first screen is a search page:**
+  - A centred title and a framed search box.
+  - Suggestions open right under the box. Diseases found from symptoms appear under their own heading.
+  - Picked diseases sit above the box as chips with their organs (`[ 심부전  Cardio × ]`).
+  - Clicking × or pressing Backspace in the empty box takes a disease off.
+- **The model update screen (Ctrl+U) is removed from the app.** Models are updated with `adctox --update-models`; `--check-models`, `--rollback-models` and `--verify-models` stay.
+- `adctox --help` lists the new keys.
+
 ## 0.3.13 — Clinical terms back in English; clearer screens
 
 - **English again for terms that read fine in English:**

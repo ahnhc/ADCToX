@@ -378,6 +378,6 @@ def test_help_explains_the_program_and_lists_every_command(arg, monkeypatch, cap
     import recommend as RC
     monkeypatch.setattr(sys, "argv", ["adctox", arg])
     RC.main(); out = capsys.readouterr().out
-    assert "ADC" in out and "연구용" in out and "TAB" in out and "Ctrl+U" in out
+    assert "ADC" in out and "연구용" in out and "Backspace" in out and "Ctrl+U" not in out
     for c in ("--update-app", "--check-app", "--update-models", "--check-models", "--model-version", "--rollback-models", "--verify-models", "--version", "--list", "--lab"):
         assert c in out
