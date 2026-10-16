@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.2 — A single wave on the analysis screen
+
+- The random braille dots of 0.4.1 are replaced by one smooth sine wave of braille dots that flows right and settles into a straight line ending in a green ●: the inputs settle into one answer. Grey, with the running stage name and the ● breathing about once a second. Finished stages are green with heavy connectors.
+
 ## 0.4.1 — Analysis animation; no step slide, no ◀ ▶ buttons
 
 - **The analysis screen shows the work as a data stream.** Under the stage line, braille dots flow to the right and thin out: inputs gathered (cyan), sorted (yellow), one answer picked (green ●). Finished stages turn green with heavy connectors; the running stage carries a small wave. When the analysis ends, the table builds up under the same stage line as before.
