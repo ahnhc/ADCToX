@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.16 — A drawn logo and a bare search line
+
+- **Logo drawn as objects in 10-pixel letters:**
+  - A is a flask holding a yellow drug, T a syringe, o a red toxic drop and X crossed bones. D and C are plain.
+  - ADC is cyan, ToX red, 65 columns, 5 lines.
+  - Half blocks give square pixels. The letters are drawn so a cell never needs two colours; a test checks this.
+- **First screen:**
+  - The tagline and the example line are gone.
+  - The search box is one line with an underline, with no frame.
+
 ## 0.3.15 — Logo and a calmer first screen
 
 - **Block-letter `ADCToX` logo:** ADC in cyan, ToX in red, grey box-line shadow, 50 columns. Below 54 columns or 24 rows it falls back to one coloured word.

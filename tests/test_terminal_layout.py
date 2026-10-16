@@ -392,3 +392,13 @@ def test_organ_strip_marks_linked_and_estimated_organs():
     s = form.strip(list(form.GLYPH), on=["hepatic"], maybe=["renal"])
     assert plain(s) == "Liver Kidney?" and "\x1b[32;1mLiver" in s and "\x1b[33mKidney?" in s
     assert plain(form.strip(list(form.GLYPH))) == "-"
+
+
+def test_logo_letters_fit_and_never_need_two_colours_in_one_cell():
+    import tui
+    lines = tui.logo()
+    assert len(lines) == 5 and max(len(plain(l)) for l in lines) == tui.logo_width()
+    for ch, rows in tui.LOGO.items():
+        assert len(rows) == 10 and len({len(r) for r in rows}) == 1, ch
+        for r in range(0, 10, 2):
+            assert all(a == "." or b == "." or a == b for a, b in zip(rows[r], rows[r + 1])), ch    # half blocks carry one colour

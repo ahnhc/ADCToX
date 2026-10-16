@@ -241,14 +241,13 @@ class Form:
                 bw = max(20, min(w - 6, 66)); bx = (w - bw) // 2
                 self.S.put(0, max(2, w - 2 - len(UI_VERSION)), UI_VERSION, self.S.dim)
                 if sel: self.button(1, max(2, w - 3 - _w("[ 다음 ▶ ]")), "다음 ▶", "PGDN")
-                big = w >= logo_width() + 4 and h >= 24
-                block = (7 if big else 1) + 2 + 3 + (2 if not (rows or sel) else 0)
+                big = w >= logo_width() + 4 and h >= 20
+                block = (5 if big else 1) + 2 + 2
                 y = 2 if (rows or sel) else max(1, (h - block) // 2 - 1)
                 if big:
                     for ln in logo(): self.S.put_ansi(y, (w - logo_width()) // 2, ln); y += 1
                 else: self.S.put_ansi(y, (w - 6) // 2, "\033[36;1mADC\033[0m\033[31;1mToX\033[0m"); y += 1
-                sub = "기저질환으로 ADC 독성 경고를 환자에 맞게 정렬합니다"
-                self.S.put(y, max(2, (w - _w(sub)) // 2), _clip(sub, w - 4), self.S.dim); y += 2
+                y += 2
                 if sel:                                                    # chips; a click or Backspace on an empty box takes one off
                     x = bx
                     for n, item in enumerate(sel):
@@ -259,14 +258,9 @@ class Form:
                         self.S.put_ansi(y, x, f"\033[32;1m[\033[0m {_clip(item[2], bw - 12)}" + (f"  \033[90m{org}\033[0m" if org else "") + " \033[31m×\033[0m \033[32;1m]\033[0m")
                         self.hit(y, x, x + _w(chip), ("CHIP", n)); x += _w(chip) + 2
                     y += 1
-                self.S.put(y, bx, "╭" + "─" * (bw - 2) + "╮", self.S.dim)
-                self.S.put(y + 1, bx, "│", self.S.dim); self.S.put(y + 1, bx + bw - 1, "│", self.S.dim)
-                if query: self.S.put(y + 1, bx + 2, "› " + _clip(query, bw - 7)[-(bw - 7):] + "_", self.S.title)
-                else: self.S.put(y + 1, bx + 2, "› " + _clip("질환명이나 증상을 입력하세요", bw - 6), self.S.dim)
-                self.S.put(y + 2, bx, "╰" + "─" * (bw - 2) + "╯", self.S.dim); y += 3
-                if not (rows or sel):
-                    ex = "예)  당뇨   ckd   heart failure   숨이 차고 다리가 부어요"
-                    self.S.put(y + 1, max(2, (w - _w(ex)) // 2), _clip(ex, w - 4), self.S.dim)
+                if query: self.S.put(y, bx + 1, "› " + _clip(query, bw - 6)[-(bw - 6):] + "_", self.S.title)    # the box: one line and an underline
+                else: self.S.put(y, bx + 1, "› " + _clip("질환명이나 증상을 입력하세요", bw - 5), self.S.dim)
+                self.S.put(y + 1, bx, "─" * bw, self.S.dim); y += 2
                 status = ""
                 if ai["busy"]: status = "AI 추천 찾는 중 ..."
                 if sym["busy"]: status = "증상으로 질환 찾는 중 ... (처음 한 번은 모델을 불러 10초 정도 걸립니다)"

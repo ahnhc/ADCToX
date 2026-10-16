@@ -87,28 +87,32 @@ GLYPH = {"haematologic": "Blood", "hepatic": "Liver", "cardiovascular": "Cardio"
          "musculoskeletal": "MSK", "infectious_immune": "Immune", "otologic": "Ear"}     # short organ names of the screens (recommend.ORGAN_SHORT)
 
 
-LOGO = {                                                       # the logo letters, 6 rows each: blocks plus a box-line shadow
-    "A": [" █████╗ ", "██╔══██╗", "███████║", "██╔══██║", "██║  ██║", "╚═╝  ╚═╝"],
-    "D": ["██████╗ ", "██╔══██╗", "██║  ██║", "██║  ██║", "██████╔╝", "╚═════╝ "],
-    "C": [" ██████╗", "██╔════╝", "██║     ", "██║     ", "╚██████╗", " ╚═════╝"],
-    "T": ["████████╗", "╚══██╔══╝", "   ██║   ", "   ██║   ", "   ██║   ", "   ╚═╝   "],
-    "o": ["         ", " ██████╗ ", "██╔═══██╗", "██║   ██║", "╚██████╔╝", " ╚═════╝ "],
-    "X": ["██╗  ██╗", "╚██╗██╔╝", " ╚███╔╝ ", " ██╔██╗ ", "██╔╝ ██╗", "╚═╝  ╚═╝"]}
+LOGO = {                       # 10-pixel-high letters drawn as objects: A a flask of drug, T a syringe, o a toxic drop, X crossed bones
+    "A": ["...ccccc...", "....c.c....", "....c.c....", "...c...c...", "..c.....c..", ".c.......c.", "cyyyyyyyyyc", "cyyyyyyyyyc", "cyyyyyyyyyc", "cyyyyyyyyyc"],
+    "D": ["ccccccc..", "cc....cc.", "cc.....cc", "cc.....cc", "cc.....cc", "cc.....cc", "cc.....cc", "cc.....cc", "cc....cc.", "ccccccc.."],
+    "C": ["..cccccc", ".cc.....", "cc......", "cc......", "cc......", "cc......", "cc......", "cc......", ".cc.....", "..cccccc"],
+    "T": ["rrrrrrrrr", "....r....", "...rrr...", "...r.r...", "...ryr...", "...ryr...", "...ryr...", "...ryr...", "...rrr...", "....r...."],
+    "o": [".......", ".......", ".......", "...r...", "..rrr..", ".rrrrr.", "rrrrrrr", "rrrrrrr", ".rrrrr.", "..rrr.."],
+    "X": [".r.......r.", "rrr.....rrr", ".rrr...rrr.", "...rr.rr...", "....rrr....", "....rrr....", "...rr.rr...", ".rrr...rrr.", "rrr.....rrr", ".r.......r."]}
+LOGO_COLOR = {"c": "36", "y": "33", "r": "31"}                  # cyan glass and letters, yellow drug, red toxicity
 
 
-def logo(word="ADCToX", colors=("36", "36", "36", "31", "31", "31")):
-    """the word in block letters: lines of ANSI text, blocks coloured per letter (ADC cyan, ToX red), the shadow grey."""
+def logo(word="ADCToX", gap=2):
+    """the logo as lines of ANSI text: two pixel rows per line with half blocks (a cell is about twice as tall as wide, so the
+    pixels come out square). The letters are drawn so a cell never holds two colours."""
+    rows = ["".join(LOGO[ch][r] + ("." * gap if i < len(word) - 1 else "") for i, ch in enumerate(word)) for r in range(10)]
     out = []
-    for r in range(6):
+    for r in range(0, 10, 2):
         line = ""
-        for ch, col in zip(word, colors):
-            for px in LOGO[ch][r]:
-                line += f"\033[{col};1m█\033[0m" if px == "█" else (f"\033[90m{px}\033[0m" if px != " " else " ")
-        out.append(line)
+        for a, b in zip(rows[r], rows[r + 1]):
+            if a == "." and b == ".": line += " "; continue
+            ch = "█" if a != "." and b != "." else "▀" if a != "." else "▄"
+            line += f"\033[{LOGO_COLOR[a if a != '.' else b]};1m{ch}\033[0m"
+        out.append(line.rstrip())
     return out
 
 
-def logo_width(word="ADCToX"): return sum(len(LOGO[ch][0]) for ch in word)
+def logo_width(word="ADCToX", gap=2): return sum(len(LOGO[ch][0]) for ch in word) + gap * (len(word) - 1)
 
 
 def strip(axes, on=(), maybe=()):
