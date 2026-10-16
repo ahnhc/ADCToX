@@ -157,7 +157,7 @@ class Index:
                     if "abbr_keys" in d.files:                    # NLM LRABR abbreviations: every disease an abbreviation may mean
                         for k, v in zip(d["abbr_keys"].tolist(), d["abbr_vals"].tolist()):
                             for t in v.split(";")[:6]:
-                                if t in first and t not in nh: self._add(k, 1, ("mondo", t, first[t][:1].upper() + first[t][1:], f"약어 {k.upper()}", organs.get(t, [])))
+                                if t in first and t not in nh: self._add(k, 1, ("mondo", t, first[t][:1].upper() + first[t][1:], "", organs.get(t, [])))
                     if "ko_keys" in d.files:                      # a KCD name whose English name is a MONDO name: that concept
                         exact, ko = {norm(n): t for t, n in first.items()}, {p["id"]: p["ko"][0] for p in profiles() if p.get("ko")}
                         main = set(exact)                         # KCD English = the preferred MONDO name: the KCD name is that concept's Korean name
@@ -251,7 +251,7 @@ def names(RC, text, limit=8):
     out = [_with_organs(RC, s) for s in out]
     shown = {norm(s[2]) for s in out}
     for s in out:
-        k1, k2 = norm(s[2]), _nospace(norm(s[3])) if s[3] and not s[3].startswith("약어 ") else None     # the same Korean name is shown once
+        k1, k2 = norm(s[2]), _nospace(norm(s[3])) if s[3] else None     # the same Korean name is shown once
         if k1 in seen or (k2 and k2 in seen): continue
         m = NUMBERED.match(s[2])
         if m and not any(c.isdigit() for c in q) and norm(m.group(1)) in shown: continue    # the base disease is listed: hide its subtypes

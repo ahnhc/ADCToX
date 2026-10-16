@@ -44,9 +44,12 @@ def merge():
     norm = lambda s: re.sub(r"[\s·\-,()'\[\]]", "", s)
     out, bad = {}, 0
     for f in sorted(glob.glob(R + "labels/ko_*.jsonl")) + sorted(glob.glob(R + "review/rv_*.jsonl")):     # the review pass wins
-        for line in open(f, encoding="utf-8"):
+        seen = set()                                              # within a file the first line per id: an agent once rewrote its
+        for line in open(f, encoding="utf-8"):                    # batch with other diseases' names under these ids
             try: x = json.loads(line)
             except ValueError: bad += 1; continue
+            if x.get("id") in seen: bad += 1; continue
+            seen.add(x.get("id"))
             ko = str(x.get("ko", "")).strip()
             if not x.get("id") or not re.search("[가-힣]", ko) or len(ko) > 60: bad += 1; continue
             out[x["id"]] = dict(id=x["id"], ko=ko, alt=[a for a in x.get("alt", []) if isinstance(a, str) and re.search("[가-힣]", a)][:3], conf=x.get("conf", ""))

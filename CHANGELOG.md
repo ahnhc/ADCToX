@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.21 — Korean names on abbreviation hits; one translation batch repaired
+
+- **An abbreviation hit shows the disease's Korean name** in the grey column, as every other result does. It showed `약어 ASD`.
+- **Translation batch 48 repaired.** Its agent wrote the batch four times. The later passes put other diseases' names on items 100–199, and the merge kept the last pass. An example is `중증 조기 발병 COPD` on an Alzheimer disease concept. The first pass, which matches the batch, is kept.
+  - The merge now keeps the first line per disease within a file.
+  - An audit of every name for gene symbols or abbreviations absent from the English name finds no other shifted rows.
+
 ## 0.3.20 — Gemma judge panel on the AI organ screen
 
 - **The AI organ analysis screen shows what the Gemma judge's four outputs said** for the highlighted input (↑↓ picks the input), as a boxed flow picture:

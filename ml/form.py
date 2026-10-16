@@ -231,7 +231,7 @@ class Form:
             if kind == "sel": return s[2], ""
             a, b = s[2], (s[3] if kind in ("s", "sym") and s[3] and s[3] != s[2] else "")
             ko_typed = bool(HANGUL.search(query))
-            if b and not b.startswith("약어 ") and bool(HANGUL.search(b)) == ko_typed and bool(HANGUL.search(a)) != ko_typed: a, b = b, a
+            if b and bool(HANGUL.search(b)) == ko_typed and bool(HANGUL.search(a)) != ko_typed: a, b = b, a
             return a, b
 
         self.timeout(100)

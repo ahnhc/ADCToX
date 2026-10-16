@@ -55,3 +55,11 @@ def test_numbered_genetic_subtypes_and_animal_diseases_stay_out_of_the_way():
     names = labels(SG.names(RC, "alzheimer"))
     assert names[0] == "alzheimer disease" and not any(SG.NUMBERED.match(n) for n in names)
     assert not any(w in n for n in labels(SG.names(RC, "diabetes")) for w in ("domestic cat", "koala", "hamster"))
+
+
+def test_an_abbreviation_hit_shows_the_korean_name_not_the_abbreviation():
+    rows = SG.names(RC, "asd")
+    asd = [r for r in rows if r[2] == "Atrial septal defect"]
+    assert asd and asd[0][3] == "심방중격결손" and not any(r[3].startswith("약어") for r in rows)
+    copd = {r[1]: r[3] for r in SG.names(RC, "copd")}
+    assert "MONDO:0011513" not in copd or "COPD" not in copd["MONDO:0011513"]      # batch 48's rewritten names are gone
