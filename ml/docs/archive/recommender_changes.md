@@ -1,6 +1,6 @@
 # 추천기 개정 내역 — 검토 의견 반영 (2026-10-11)
 
-`ml/docs/recommender_technical_report.md`(이전 구현, 커밋 `2dfcf7f`)에 대한 외부 검토 의견을 단계별로 반영한 기록입니다.
+`docs/archive/recommender_technical_report.md`(이전 구현, 커밋 `2dfcf7f`)에 대한 외부 검토 의견을 단계별로 반영한 기록입니다.
 각 항목마다 변경 내용, 위치, 확인 방법을 적었습니다. 이전 보고서는 비교용으로 남겨 둡니다.
 
 ## 단계 1 — 투여 제한을 점수와 분리

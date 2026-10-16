@@ -10,7 +10,7 @@
 
 `linking_models.load_organ_labels`는 1차 파일 다음, 전문가 라벨(`expert_*`) 전에 `verified_v2.jsonl`을 읽는다. 사람 라벨이 들어오면 여전히 우선한다. 모두 기계 라벨이며 전문가 라벨이 아니다.
 
-### 다시 학습한 결과 (cache 복사본 `/data/hyeongchanahn/adctox/work/ml_cache_v2`, 배포 cache는 그대로)
+### 다시 학습한 결과 (cache 복사본 `<cache copy>`, 배포 cache는 그대로)
 
 | 측정 (gold test) | 이전 | 이번 | 차이 [95% CI] |
 |---|---|---|---|
@@ -99,7 +99,7 @@
 
 **CPU 지연:** 질의당 약 80~100 ms로 재정렬 유무 차이가 잡음 안이다(+30 ms 기준 통과).
 
-**판정:** `docs/TEAM_HANDOFF.md` 과제 2의 채택 기준 네 가지를 모두 통과했다. 모델 0.3으로 배포한다.
+**판정:** `docs/archive/team/TEAM_HANDOFF.md` 과제 2의 채택 기준 네 가지를 모두 통과했다. 모델 0.3으로 배포한다.
 
 **주의:**
 - gold test는 이번 세션에서 두 번 봤다. 한 번은 라벨 재검증 판정(§1, A4 +0.030), 한 번은 이번 판정이다. 기준값과 설정은 모두 dev에서 골랐다.

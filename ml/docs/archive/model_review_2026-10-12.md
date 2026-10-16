@@ -38,15 +38,15 @@ Pilot gold 평가(§5)에서 A4f(현재 기본 동작인 auto fallback)는 다�
 
 → 권고: 미매핑 입력의 기본값을 `반영 안함`으로 둔다. 선택지는 `포함 / 미포함`으로 정리하고, 학습 prior와의 유사도 같은 validity gate를 통과한 경우에만 포함을 제안한다. 계수 비교 실험(계획 §3C)은 삭제한다.
 
-### P0-2. FinnGen 학습 자료는 선택된 7%이고, 제품은 나머지 93%로 외삽한다
+### P0-2. FinnGen 학습 자료는 선택된 일부 쌍이고, 제품은 나머지로 외삽한다
 
-- 311,888개 prior–outcome 쌍 중 21,797개(7.0%)만 자료가 있고, prior당 outcome은 중앙값 8개, 78%가 p < 0.05다.
-- `vulnerability_model.predict()`는 193개 outcome **전체** 평균으로 장기 값을 만든다.
+- 자료에는 가능한 prior–outcome 쌍 중 일부만 있고, 대부분 유의한 쌍이다. 구체적인 수는 FinnGen 이용 조건 때문에 적지 않는다.
+- `vulnerability_model.predict()`는 outcome **전체** 평균으로 장기 값을 만든다.
 - §6의 재평가로 이 차이가 실제 성능 차이임을 확인했다.
 
 ### P0-3. "미관측 ICD family"는 FinnGen endpoint 접두어다
 
-- `lab.load_rows()`의 정규식 `^([A-Za-z]+\d*)`가 147개 그룹을 만든다. M13(prior 158개), K11(130개)처럼 장 단위 그룹이 있는가 하면, `TRAUMBRAIN`, `KRA`처럼 접두어가 없는 endpoint는 단독 그룹이 된다.
+- `lab.load_rows()`의 정규식 `^([A-Za-z]+\d*)`가 endpoint 접두어로 그룹을 만든다. 장 단위 그룹도 있고, 접두어가 없는 endpoint는 단독 그룹이 된다.
 - 발표에서는 "FinnGen 범주 접두어 holdout"이라고 써야 한다.
 - 개념 기준 split(ICD-10/MONDO 매핑 또는 임베딩 클러스터)을 추가해야 한다.
 
@@ -169,7 +169,7 @@ Crosswalk가 맞는 개념에 **추가로 붙이는** 장기는 GI 22, metabolic
 
 ## 6. Task B 결과: FinnGen 장기 취약성
 
-`ml/eval_vulnerability.py`는 각 방법이 test prior의 **전체 grid**(prior × 193 outcome × 4 lag)를 out-of-fold로 예측하게 한다. 접두어 family 5-fold, fold seed 0/1/2이며, baseline과 spread는 fold의 training 자료로만 계산한다. CI는 family bootstrap이다.
+`ml/eval_vulnerability.py`는 각 방법이 test prior의 **전체 grid**(prior × outcome × lag)를 out-of-fold로 예측하게 한다. 접두어 family 5-fold, fold seed 0/1/2이며, baseline과 spread는 fold의 training 자료로만 계산한다. CI는 family bootstrap이다.
 
 | 방법 | 관측 칸 organ ρ (lab.py 지표) | **제품 severity ρ** | 제품 top-3 일치 | null-fill ρ | presence AUROC |
 |---|---:|---:|---:|---:|---:|
@@ -190,7 +190,7 @@ Crosswalk가 맞는 개념에 **추가로 붙이는** 장기는 GI 22, metabolic
 
 ### 해석
 
-1. **연구 지표와 제품 출력의 괴리가 핵심 병목이다.** "organ ρ 0.74"는 관측된 8개 안팎의 outcome 안에서의 순위다. 제품처럼 193개 전체로 집계하면 같은 정답과의 일치가 0.25로 떨어진다. 문서와 발표의 0.74를 제품 정확도로 쓰면 안 된다.
+1. **연구 지표와 제품 출력의 괴리가 핵심 병목이다.** "organ ρ 0.74"는 관측된 8개 안팎의 outcome 안에서의 순위다. 제품처럼 outcome 전체로 집계하면 같은 정답과의 일치가 0.25로 떨어진다. 문서와 발표의 0.74를 제품 정확도로 쓰면 안 된다.
 2. **제품 지표에서는 MLP가 kNN보다 낫다**(+0.100 [+0.054, +0.139]). 관측 칸 지표에서는 반대였다. 어느 방법을 쓸지는 어떤 지표를 일차로 쓰느냐에 달려 있다.
 3. **제품의 축별 목표를 직접 학습하면 +0.099 [+0.067, +0.129]**다(축 MLP − 배포 MLP). 축 MLP는 축 kNN보다도 +0.035 [+0.015, +0.060] 높다. top-3 일치는 +0.026 [−0.007, +0.054]로 불확실하다.
 4. **hurdle**은 어떤 outcome에 연관이 있는지는 잘 맞히지만(AUROC 0.90), 제품의 현재 정답 정의(관측 칸의 excess)에서는 나빠진다. "연관 여부까지 포함한 위험"을 제품 목표로 삼을지는 연구 질문의 선택이다. 목표를 바꾸면 hurdle 계열이 유리하다.
@@ -220,7 +220,7 @@ Crosswalk가 맞는 개념에 **추가로 붙이는** 장기는 GI 22, metabolic
 ## 9. 재현 명령
 
 ```bash
-cd /home/hyeongchanahn/CONI/adctox; PY=/data/hyeongchanahn/envs/adctox/bin/python
+cd <repo>; PY=<python env>/bin/python
 export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 # 속도: 변경 전 수치는 이 문서와 함께 저장된 runtime_before_*.json
 CUDA_VISIBLE_DEVICES=1 $PY -I ml/benchmark_runtime.py --device cuda --out ml/results/benchmarks/runtime_after_cuda.json
@@ -235,7 +235,7 @@ CUDA_VISIBLE_DEVICES=3 $PY -I ml/sapbert_ft_pilot.py
 CUDA_VISIBLE_DEVICES=2 $PY -I ml/eval_vulnerability.py --name sel_v1 --seeds 0,1,2
 ```
 
-SapBERT 파인튜닝 체크포인트는 `/data/hyeongchanahn/adctox/ml_cache/sapbert_ft_pilot/`에 있으며 배포 경로와 연결하지 않았다.
+SapBERT 파인튜닝 체크포인트는 `$ADCTOX_CACHE/sapbert_ft_pilot/`에 있으며 배포 경로와 연결하지 않았다.
 
 ## 10. 확인하지 못한 것
 
@@ -309,13 +309,13 @@ axis head는 질의당 forward 1회로 끝나므로, 기존 TwoTower(질의당 7
   - `ml/sapbert_ft_v2.py`
 - 테스트: `tests/test_terminal_layout.py`, `test_ml_recommender.py`(full build 포함), `test_model_updates.py` → 126 passed, 1 skipped.
 
-**배포 상태:** 연구 캐시(`/data/hyeongchanahn/adctox/ml_cache/`)와 이 저장소의 터미널에는 반영되었다. GitHub Release(모델 0.1)는 **공개 배포라서 실행하지 않았다.** `scripts/build_ubuntu_release.py --models --model-version 0.1`로 만들 수 있다. 되돌리려면 `vuln_biolord.pre_axis_2026-10-12.pt`, `mondo_index.pre_v1.npz`를 원래 이름으로 복사한다.
+**배포 상태:** 연구 캐시(`$ADCTOX_CACHE/`)와 이 저장소의 터미널에는 반영되었다. GitHub Release(모델 0.1)는 **공개 배포라서 실행하지 않았다.** `scripts/build_ubuntu_release.py --models --model-version 0.1`로 만들 수 있다. 되돌리려면 `vuln_biolord.pre_axis_2026-10-12.pt`, `mondo_index.pre_v1.npz`를 원래 이름으로 복사한다.
 
 ## 추가 데이터로 더 학습할 수 있는 것
 
 | 데이터 | 해결하는 문제 | 접근 | 승인 필요 |
 |---|---|---|---|
-| **FinnGen/Risteys 전체 endpoint 쌍(선택 전) 결과** | Task B 최대 병목(학습 자료가 선택된 7%). 유의하지 않은 쌍까지 있으면 hurdle 없이 제품 목표를 직접 학습 가능 | 협업자 워크북의 원 추출 또는 Risteys R12 다운로드 | 협업자 확인, FinnGen 이용 조건 |
+| **FinnGen/Risteys 전체 endpoint 쌍(선택 전) 결과** | Task B 최대 병목(학습 자료가 선택된 일부 쌍). 유의하지 않은 쌍까지 있으면 hurdle 없이 제품 목표를 직접 학습 가능 | 협업자 워크북의 원 추출 또는 Risteys R12 다운로드 | 협업자 확인, FinnGen 이용 조건 |
 | **덴마크 disease trajectory(Jensen et al. 2014, 620만 명, ICD-10 쌍 RR)** | Task B의 **독립 코호트 외부 검증**. 현재는 같은 자료의 재분할뿐 | 논문 보충자료(공개) | 다운로드 승인 |
 | HuDiNe(Hidalgo et al. 2009, Medicare ICD-9 쌍 RR/φ) | 전체 쌍이 있는 comorbidity network. selection 없는 사전학습 또는 검증 | 공개 | 다운로드 승인 |
 | UK Biobank | 개인 단위 생존분석으로 목표값 자체를 새로 정의 | 기관 신청과 비용 | 신청 필요 |
@@ -408,14 +408,7 @@ axis head는 질의당 forward 1회로 끝나므로, 기존 TwoTower(질의당 7
 
 ## 7. 주의: 자료가 적은 장기 축에서는 학습 추정을 믿기 어렵다
 
-사용자 테스트에서 `amnesia`의 학습 추정이 이전 모델(Neuro 0.50)과 axis head(Ear 0.26, MSK 0.23)에서 크게 달랐다. FinnGen 학습 자료에서 각 축이 관측된 prior 질환 수는 다음과 같다.
-
-| 축 | prior 수(1,616개 중) | 행 수 |
-|---|---:|---:|
-| cardiovascular / metabolic / haematologic / renal / dermatologic / pulmonary | 1,022–1,580 | 5,450–17,687 |
-| hepatic | 531 | 2,700 |
-| gastrointestinal / ocular | 112 / 106 | 3,105 / 3,202 |
-| **neurologic / infectious_immune / otologic / musculoskeletal** | **92 / 89 / 46 / 19** | **446 / 472 / 105 / 25** |
+사용자 테스트에서 `amnesia`의 학습 추정이 이전 모델(Neuro 0.50)과 axis head(Ear 0.26, MSK 0.23)에서 크게 달랐다. FinnGen 학습 자료에서 neurologic, infectious_immune, otologic, musculoskeletal 축은 관측된 prior 질환이 다른 축보다 훨씬 적다. 구체적인 수는 원자료 이용 조건 때문에 적지 않는다.
 
 해석:
 - axis head의 개선(+0.107)은 주로 자료가 많은 축에서 나왔다. 신경, 면역, 귀, 근골격 축의 값은 사실상 학습 근거가 거의 없다.
@@ -514,10 +507,10 @@ axis head는 질의당 forward 1회로 끝나므로, 기존 TwoTower(질의당 7
 
 ## 1. 왜 처음에 FinnGen을 썼나
 
-- 팀원이 2026-10-09에 준 `finngen_outcome_mapping.xlsx`(`data/raw/atlas/2026-10-10/`)가 출발점이다. 내용은 FinnGen R10의 질환 → 질환 hazard ratio 요약(lag 0/1/5/15년)이고, 팀원은 각 결과 질환을 CTCAE SOC에 맞춘 독성 도메인으로 매핑했다(`mapped_toxicity_domain`).
-- 원래 계획(`docs/TEAMMATE_DATA_USE.md`)은 점수식의 `Coupling` 항(FAERS 적응증 동시발생 자리)을 이 자료로 채우는 것이었다. 분모, 시간 방향, 불확실성(CI, p, N)이 있어서 FAERS보다 낫다고 판단했다. 이 계획은 `src/`에 구현되지 않았다.
+- 팀원이 2026-10-09에 준 `finngen_outcome_mapping.xlsx`(`data/raw/atlas/2026-10-10/`)가 출발점이다. 내용은 FinnGen R10의 질환 → 질환 hazard ratio 요약(lag별)이고, 팀원은 각 결과 질환을 CTCAE SOC에 맞춘 독성 도메인으로 매핑했다(`mapped_toxicity_domain`).
+- 원래 계획(`docs/archive/team/TEAMMATE_DATA_USE.md`)은 점수식의 `Coupling` 항(FAERS 적응증 동시발생 자리)을 이 자료로 채우는 것이었다. 분모, 시간 방향, 불확실성(CI, p, N)이 있어서 FAERS보다 낫다고 판단했다. 이 계획은 `src/`에 구현되지 않았다.
 - 대신 ML 쪽에서 "기저질환 X가 있으면 어느 장기가 이미 취약한가"를 학습하는 모델(`ml/task_a_comorbidity_risk.py`, `vulnerability_model.py`)로 쓰였다. 앱에서는 기본 꺼짐이고, 장기를 못 찾은 입력의 보조 추정으로만 쓴다.
-- 한계: 쌍의 7%만 들어 있고 대부분 유의한 쌍이다(선택 기준은 제공자 확인 필요). 결과 질환 193개에 한정된다.
+- 한계: 일부 쌍만 들어 있고 대부분 유의한 쌍이다(선택 기준은 제공자 확인 필요). 결과 질환 종류도 한정된다.
 
 ## 2. 비교 (`ml/axis_source_compare.py`, 규칙 사전 고정)
 
@@ -525,7 +518,7 @@ axis head는 질의당 forward 1회로 끝나므로, 기존 TwoTower(질의당 7
 
 | 모델 | 미국 심판(HuDiNe) | FinnGen 보류 | 덴마크 보류 |
 |---|---|---|---|
-| FinnGen만(기존) | 0.212 | **0.360** | 0.182 |
+| Fin만(기존) | 0.212 | **0.360** | 0.182 |
 | **덴마크만** | **0.404** | 0.224 | **0.418** |
 | 둘 다(가중치 1) | 0.360 | 0.334 | 0.394 |
 | 둘 다(덴마크 0.5) | 0.344 | 0.351 | 0.369 |

@@ -599,40 +599,34 @@ class Form:
 
 
 def gemma_panel(r, RC, ko, width):
-    """a boxed flow picture of the Gemma judge's four outputs for one typed condition and the step that set its organs.
-    Green ● = this output decided something here, grey ○ = computed and shown only."""
+    """a boxed tree of the Gemma judge's four outputs for one typed condition, and the step that set its organs. The output that
+    decided something here is green; the others were computed and are grey. Plain box lines only: no bars or dots, whose width
+    differs between terminal fonts."""
     g = r["gemma"]; kr = bool(HANGUL.search(r["condition"])); G, D, E = "\033[32;1m", "\033[90m", "\033[0m"
     nm = lambda t, en: (ko.get(t) if kr else "") or en
-    bar = lambda p, n: "█" * int(round(p * n)) + D + "░" * (n - int(round(p * n))) + E
-    used = dict(valid=True, organ=r["source"] == "AI judgment", align=r.get("via") == "judge vector", sym=False)
-    dot = lambda k: (G + "●" + E) if used[k] else (D + "○" + E)
-    ok = (G + "✓ 질환 입력" + E) if g["ok"] else ("\033[31m✗ 질환 아님" + E)
-    organs = "  ".join((G if p >= t else D) + f"{GLYPH[a]} {p:.2f}" + E for a, p, t in g["organ"])
-    near_id, near_en, cos = g["near"]; sym_id, sym_p = g["sym"]
+    vis = lambda t: _w(re.sub(r"\x1b\[[\d;]*m", "", t))
     import suggest as SG
     pname = {p["id"]: p["name"] for p in SG.profiles()}
-    heads = [("valid", f"{bar(g['valid'], 10)} {g['valid']:.3f}  {D}기준 {g['vthr']:.3f}{E}  {ok}", "입력 검사"),
-             ("organ", organs, "13개 장기 확률"),
-             ("align", f"{_clip(nm(near_id, near_en), 26)}  {D}cos {cos:.2f}{E}", "MONDO 질환 연결"),
-             ("sym", f"{_clip(nm(sym_id, pname.get(sym_id, sym_id)), 26)}  {D}{sym_p:.2f}{E}", "증상 → 질환, 검색 화면에서 씀")]
-    src = r["source"]; read = nm(r.get("mondo") or "", r["name"]) if src.startswith("MONDO") else r["name"]
-    by = ("Gemma align 연결" if used["align"] else "Gemma organ 판정" if used["organ"] else "직접 고른 질환" if src == "Chosen" else
-          "MONDO 연결" if src.startswith("MONDO") else "Registry" if src in ("Registry match", "Similar condition") else
-          "HPO phenotype" if src.startswith("Phenotype") else "판정 못함")
-    final = (strip(RC.AXES, r["organs"]) if r["organs"] else D + "-" + E) + f"   {D}정한 곳{E} {by}" + (f"  {read}" if read and not used["organ"] else "")
-    name = _clip(r["condition"], 14); pad = " " * (_w(name) + 1)
-    vis = lambda t: _w(re.sub(r"\x1b\[[\d;]*m", "", t))
-    tw = max(vis(t) for _, t, _ in heads); body = [""]
-    for k, (key, text, role) in enumerate(heads):
-        lead = (name + " ─┬─" if k == 0 else pad + (" ├─" if k < 3 else " └─"))
-        body.append(f"{lead}{dot(key)} {key:<6}{text}" + (" " * (tw - vis(text)) + f"   {D}{role}{E}" if width >= 100 else ""))
-    body += ["", f"{pad} ▶ {final}"]
-    iw = max(30, min(width - 4, max(vis(b) for b in body) + 2))
-    title = f" Gemma judge · {name} "
+    used = dict(valid=True, organ=r["source"] == "AI judgment", align=r.get("via") == "judge vector", sym=False)
+    iw = max(30, min(width - 4, 72)); room = iw - 16                 # inside width; room for a value after "  ├─ organ   "
+    near_id, near_en, cos = g["near"]; sym_id, sym_p = g["sym"]
+    organs = "  ".join((G if p >= t else D) + f"{GLYPH[a]} {p:.2f}" + E for a, p, t in g["organ"])
+    named = lambda n, x: f"{_clip(n, max(4, room - 6 - len(x)))}  {D}{x}{E}"
+    heads = [("valid", f"{g['valid']:.3f}  " + ((G + "✓" + E) if g["ok"] else ("\033[31m✗" + E))),
+             ("organ", organs),
+             ("align", named(nm(near_id, near_en), f"cos {cos:.2f}")),
+             ("sym", named(nm(sym_id, pname.get(sym_id, sym_id)), f"{sym_p:.2f}"))]
+    src = r["source"]
+    by = ("Gemma align" if used["align"] else "Gemma organ" if used["organ"] else "Chosen" if src == "Chosen" else
+          "MONDO" if src.startswith("MONDO") else "Registry" if src in ("Registry match", "Similar condition") else
+          "HPO" if src.startswith("Phenotype") else "Not understood")
+    body = ["", _clip(r["condition"], iw - 2)]
+    for k, (key, text) in enumerate(heads):
+        body.append(("  └─ " if k == 3 else "  ├─ ") + ((G if used[key] else D) + f"{key:<7}" + E) + text)
+    body += ["", "→ " + (strip(RC.AXES, r["organs"]) if r["organs"] else D + "-" + E) + f"   {D}{by}{E}", ""]
+    title = " Gemma judge "; iw = max(_w(title) + 4, min(iw, max(vis(ln) for ln in body) + 3))       # as wide as its content
     out = [D + "┌─" + E + title + D + "─" * max(0, iw - _w(title) - 1) + "┐" + E]
-    for b in body:
-        plain = vis(b)
-        out.append(D + "│ " + E + b + " " * max(0, iw - 2 - plain) + D + " │" + E)
+    for ln in body: out.append(D + "│" + E + " " + ln + " " * max(0, iw - 1 - vis(ln)) + D + "│" + E)
     return out + [D + "└" + "─" * iw + "┘" + E]
 
 def run(RC, back=False):

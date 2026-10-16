@@ -1,13 +1,13 @@
 # ADC 독성 위험 추천기 (`ml/recommend.py`) — 구현 기술 보고서
 
-> **이 보고서는 개정 전 구현(커밋 `2dfcf7f`)을 기술합니다.** 외부 검토 의견을 반영한 개정(투여 제한 분리, 데이터 정비, 점수 재설계, 학습 모델 기본 Off)은 `ml/docs/recommender_changes.md`에 있습니다. 아래 수식과 수치는 비교용 기록입니다.
+> **이 보고서는 개정 전 구현(커밋 `2dfcf7f`)을 기술합니다.** 외부 검토 의견을 반영한 개정(투여 제한 분리, 데이터 정비, 점수 재설계, 학습 모델 기본 Off)은 `docs/archive/recommender_changes.md`에 있습니다. 아래 수식과 수치는 비교용 기록입니다.
 
 작성일: 2026-10-11 · 대상 커밋: `2dfcf7f` + 작업 트리의 미커밋 변경(`ml/recommend.py`의 `render()`/`_summary()` 표시 부분만; 점수 계산 코드는 `2dfcf7f`와 동일)
 
 이 문서는 **구현된 사실만** 기술한다. 코드는 수정하지 않았다. 모든 수치는 아래 스크래치 스크립트(읽기 전용)로 실제 코드·데이터에서 재계산했다.
 원래 의도와 구현이 다르면 「의도 ≠ 구현」으로, 코드로 확인할 수 없는 것은 「확인 불가」로, 코드 밖의 의학 지식은 「의학적 관찰(코드와 무관)」로 표시한다.
 
-> 재현 방법: 프로젝트 환경 `/data/hyeongchanahn/envs/adctox/bin/python`에서 `import recommend as RC; RC.recommend([...])`를 호출하면 아래 표의 숫자가 그대로 나온다. 중간값은 `RC.drug_table()`, `RC.patient_weights()`로 얻을 수 있다.
+> 재현 방법: 프로젝트 환경 `<python env>/bin/python`에서 `import recommend as RC; RC.recommend([...])`를 호출하면 아래 표의 숫자가 그대로 나온다. 중간값은 `RC.drug_table()`, `RC.patient_weights()`로 얻을 수 있다.
 
 ---
 
@@ -25,14 +25,14 @@
 | 목록에 없는 질환 | 임베딩 유사도(BioLORD 코사인) + MONDO 온톨로지 링크(SapBERT 코사인) + 고정 심각도 | `ml/recommend.py:57-81`, `ml/mondo_index.py` |
 | 결합·점수·정렬 | **고정 수식**(가중 평균 → 환자별 min-max 정규화 → 오름차순 정렬) | `ml/recommend.py:83-95` |
 
-ADC의 구조(항체·링커·페이로드)는 점수에 **전혀 쓰이지 않는다.** 구조로 독성을 예측하는 과제는 이 데이터에서 학습되지 않는다는 결과가 나와서(`ml/README.md` Result 3) 약물 쪽은 '예측'이 아니라 '라벨 기록'으로 처리했다.
+ADC의 구조(항체·링커·페이로드)는 점수에 **전혀 쓰이지 않는다.** 구조로 독성을 예측하는 과제는 이 데이터에서 학습되지 않는다는 결과가 나와서(`docs/archive/ml_research_log.md` Result 3) 약물 쪽은 '예측'이 아니라 '라벨 기록'으로 처리했다.
 
 ### 1.2 데이터 흐름 다이어그램
 
 ```mermaid
 flowchart TD
   subgraph DrugSide[약물 측: 규칙 기반]
-    DM[DailyMed 라벨 HTML 스냅샷<br>/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07/<agent>/v*.html<br>14개 ADC, 각 최신 버전] --> LC[label_change.parse_version<br>h1 'WARNING...' → boxed 장기<br>h2 '5.x 제목' → section-5 장기]
+    DM[DailyMed 라벨 HTML 스냅샷<br><data root>/raw/dailymed/2026-10-07/<agent>/v*.html<br>14개 ADC, 각 최신 버전] --> LC[label_change.parse_version<br>h1 'WARNING...' → boxed 장기<br>h2 '5.x 제목' → section-5 장기]
     LC --> W[W(d,o) ∈ {0, 0.6, 1.0}]
     XL[팀원 제공 워크북 adc_db.xlsx<br>시트 TOXICITY → ml_cache/tox.pkl] --> INC[matcher2.incidence_table<br>Source type = 'Regulatory label via DailyMed'<br>Grade 3-4 / ≥3 / 3 / 4 행만]
     INC --> R[r(d,o) = 장기별 최대 Grade≥3 %]
@@ -87,17 +87,17 @@ flowchart TD
 
 ### 1.5 학습 모델 상세 (질환 → 장기 취약도)
 
-- **학습 데이터**: FinnGen 선행질환→결과질환 위험비(hazard ratio) 워크북(`data/raw/atlas/2026-10-10/finngen_outcome_mapping.xlsx`, 시트 `Mapped_Data`, 팀원 제공, 2026-10-09 수령, sha256은 `_manifest.json`에 있음). 필터는 `qc_flag == "OK"`, `0 < HR ≤ 100`이고 남는 행은 59,157개다(`lab.load_rows`, `ml/lab.py:37-44`). 라이선스 방침상 HR 값은 이 보고서에 싣지 않는다(`docs/TEAMMATE_DATA_USE.md`).
+- **학습 데이터**: FinnGen 선행질환→결과질환 위험비(hazard ratio) 워크북(`data/raw/atlas/2026-10-10/finngen_outcome_mapping.xlsx`, 시트 `Mapped_Data`, 팀원 제공, 2026-10-09 수령, sha256은 `_manifest.json`에 있음). 필터는 `qc_flag == "OK"`, `0 < HR ≤ 100`이고 남는 행 수는 FinnGen 이용 조건 때문에 적지 않는다(`lab.load_rows`, `ml/lab.py:37-44`). 라이선스 방침상 HR 값은 이 보고서에 싣지 않는다(`docs/archive/team/TEAMMATE_DATA_USE.md`).
 - **목표변수**: `y = log(HR)` (선행질환 p, 결과질환 o, lag 구간 l 한 행마다).
 - **입력**: 선행질환 이름과 결과질환 이름을 BioLORD-2023으로 임베딩한 768차원 벡터(정규화), 그리고 context one-hot.
 - **구조**(`lab.TwoTower`): `a = GELU(Linear(768→256))(p)`, `b = GELU(Linear(768→256))(o)`(각각 dropout 0.25). 여기에 `head = Linear(3·256 + d_ctx → 256) → GELU → Dropout → Linear(256→1)`을 `[a, b, a⊙b, ctx]`에 적용한다.
 - **학습**: Huber loss, AdamW(lr 3e-3, wd 1e-2), 배치 8192, 최대 200 epoch, 조기 종료(patience 15)를 쓴다. 검증셋은 선행질환 10%를 seed별로 무작위로 뗀다. y는 표준화한다. seed 0-4로 5개 모델을 만들고 평균한다(`vulnerability_model._train`, 36-54행). 최종 모델은 **전체 데이터로 학습**하며 별도 test set이 없다. 성능 수치는 `ml/lab.py`의 교차검증 실험에서 온다.
 - **추론 → 장기 취약도**(`predict`, 67-85행):
-  1. 질환 텍스트 x에 대해 193개 결과질환 o마다 모든 lag one-hot의 예측 평균과 5개 모델 평균을 낸다: `ŷ(x,o)`.
+  1. 질환 텍스트 x에 대해 모든 결과질환 o마다 모든 lag one-hot의 예측 평균과 5개 모델 평균을 낸다: `ŷ(x,o)`.
   2. `ex(x,o) = ŷ(x,o) − base(o)`. 여기서 `base(o)`는 학습 데이터에서 결과질환 o의 평균 log HR이다(59행).
   3. 장기 a에 대해 `z(x,a) = mean_{o∈a} ex(x,o) / spread(a)`. `spread(a)`는 학습 데이터에서 '(선행질환, 장기)별 평균 초과 log HR'이 선행질환들 사이에서 갖는 표준편차다(61행).
   4. `severity(x,a) = clip(z(x,a) − median_a z(x,·), 0, 1)` (83행). 질환마다 중앙값을 빼므로, 질환이 모든 장기 위험을 올리는 효과는 지워지고 상대적으로 튀는 장기만 남는다. 1 SD를 꽉 찬 값(1.0)으로 보는 것은 선택이며 적합한 값이 아니다.
-- **검증 결과**(`ml/README.md`, `ml/results/*.json`): 이 수치는 `lab.py` 교차검증에서 온 것이다.
+- **검증 결과**(`docs/archive/ml_research_log.md`, `ml/results/*.json`): 이 수치는 `lab.py` 교차검증에서 온 것이다.
   - unseen ICD family 기준 BioLORD 동결: R² 0.655, 장기 순위 이득(lookup 대비) +0.057 [+0.033, +0.085](비교: SapBERT 0.622).
   - 학습 없는 kNN이 장기 순위 지표에서 MLP와 차이가 없다.
   - registry 41개 sanity check AUROC는 0.80-0.86이다. 단, 이는 '자기 장기 회복'을 본 것이고 교차 장기 취약도를 검증한 것이 아니다.
@@ -112,7 +112,7 @@ flowchart TD
 
 | 데이터 | 실제 파일 | 출처 | 수동/자동 | 날짜 추적 |
 |---|---|---|---|---|
-| 라벨 경고(boxed, section 5) | `/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07/<agent>/v<N>.html` + `_manifest.json` | DailyMed SPL(setid, 버전, 날짜, sha256이 manifest에 있음). fetched_at 2026-10-07T07:56:57Z | **자동 파싱**(정규식) | manifest에는 버전 날짜가 있지만 **추천기는 날짜를 사용하거나 출력하지 않는다**(`matcher2.py:34`가 `date=None`으로 호출). 경로의 스냅샷 날짜(2026-10-07)는 하드코딩되어 있다 |
+| 라벨 경고(boxed, section 5) | `<data root>/raw/dailymed/2026-10-07/<agent>/v<N>.html` + `_manifest.json` | DailyMed SPL(setid, 버전, 날짜, sha256이 manifest에 있음). fetched_at 2026-10-07T07:56:57Z | **자동 파싱**(정규식) | manifest에는 버전 날짜가 있지만 **추천기는 날짜를 사용하거나 출력하지 않는다**(`matcher2.py:34`가 `date=None`으로 호출). 경로의 스냅샷 날짜(2026-10-07)는 하드코딩되어 있다 |
 | 라벨 이상반응 표 Grade≥3 % | `data/raw/atlas/2026-10-10/adc_db.xlsx` 시트 TOXICITY → `ml_cache/tox.pkl` | 팀원 제공 워크북(2026-10-09 수령). 행마다 `Source`(DailyMed setid URL), `Source table`(표 이름과 행 번호), `Source cell verbatim`이 있다 | 워크북 **작성 방식은 확인 불가**(수동 전사인지 자동 추출인지 코드로 알 수 없다). 우리 코드는 필터·집계만 한다 | 행에 setid는 있지만 **라벨 버전/날짜가 없다**. 경고에 쓴 라벨 버전과 같은 버전에서 전사됐는지는 확인 불가 |
 | ADC 이름 | 같은 워크북 시트 ADC_MASTER → `ml_cache/master.pkl` | 팀원 워크북 | – | – |
 | 질환 → 장기, 심각도 | `conf/comorbidity_registry.csv` | 프로젝트 저장소. 커밋 `25d48e9`(2026-10-07)에 추가됐고 `5eb2f6d`에서 MONDO 핀을 수정했다. `severity_basis` 열에 근거가 자유 텍스트로 적혀 있다(예: "Child-Pugh B/C excluded", "CrCl < 30 excluded") | **수동** | 문헌 인용이 없다. 근거 문장의 출처는 확인 불가 |
@@ -772,7 +772,7 @@ renal과 cardio가 각각 Σw의 15.8%, hepatic이 8.7%를 차지한다. 나머�
 
 | 항목 | 상태 | 근거 |
 |---|---|---|
-| FinnGen 질환→결과 log HR 예측(교차검증) | 검증됨(통계적) | `ml/README.md`, `ml/results/lab/` |
+| FinnGen 질환→결과 log HR 예측(교차검증) | 검증됨(통계적) | `docs/archive/ml_research_log.md`, `ml/results/lab/` |
 | 학습 취약도가 registry 자기 장기를 회복 | sanity check(AUROC 0.80-0.86) | `ml/results/validate_registry.json` |
 | 발생률 층이 라벨 경고 장기를 회복 | AUROC 0.670 [0.557, 0.781], 12개 약물 | `ml/results/matcher2.json` |
 | 학습 가중치가 매칭을 개선 | **유의하지 않음**(비순환 +0.033 [−0.018, +0.087]) | 같음 |

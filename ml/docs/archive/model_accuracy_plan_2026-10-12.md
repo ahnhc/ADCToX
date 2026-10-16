@@ -32,7 +32,7 @@ MONDO 자체나 FinnGen 데이터 자체를 파인튜닝하는 것은 아니다.
 | BioLORD kNN | 0.6458 | 0.7489 |
 | BioLORD LoRA + MLP | 0.6837 | 0.7431 |
 
-근거는 [bake_biolord.json](../results/lab/bake_biolord.json), [bake_sapbert.json](../results/lab/bake_sapbert.json), [e_lora.json](../results/lab/e_lora.json)이다. LoRA − frozen의 장기 순위 차이는 +0.0032 [−0.0011, +0.0080]다. MLP가 kNN보다 장기 순위에서 낫다는 증거도 없다.
+근거는 [bake_biolord.json](../../results/lab/bake_biolord.json), [bake_sapbert.json](../../results/lab/bake_sapbert.json), [e_lora.json](../../results/lab/e_lora.json)이다. LoRA − frozen의 장기 순위 차이는 +0.0032 [−0.0011, +0.0080]다. MLP가 kNN보다 장기 순위에서 낫다는 증거도 없다.
 
 따라서 다음 순서로 진행한다.
 
@@ -82,13 +82,13 @@ encoder를 더 붙이는 실험부터 시작하면 이미 수행한 bake-off를 
 - 학습 및 튜닝 설정, parameter 수, precision, 장비와 소프트웨어 버전.
 - raw OOF 예측, 후처리 예측, 질환별 지표, 실패 및 거절 사례.
 
-현재 스냅샷은 [review_snapshot_2026-10-12.json](../results/review_snapshot_2026-10-12.json)에 있다. 실험 환경의 절대 경로는 config 또는 환경변수로 옮기는 것을 재현성 작업에 포함한다.
+현재 스냅샷은 [review_snapshot_2026-10-12.json](../../results/review_snapshot_2026-10-12.json)에 있다. 실험 환경의 절대 경로는 config 또는 환경변수로 옮기는 것을 재현성 작업에 포함한다.
 
 ### 4.2 FinnGen 품질 및 누수 점검
 
 동일 prior–outcome–lag의 중복, outcome 매핑 근거, QC 제외 사유, HR 및 CI 이상치, 관계 방향, lag 정의, 질환 family 추출 규칙을 점검한다. 현재 family는 코드 prefix 정규식으로 만들어지므로 의미적으로 가까운 parent/child와 동의 질환이 서로 다른 fold에 들어가는지도 확인한다.
 
-59,157행의 88.20%가 HR > 1이며 장기별 표본 불균형이 크다. 이 선택된 표본 밖의 일반 질환쌍까지 성능이 유지된다고 주장하지 않는다. 실험별 장기 및 family 표본 수와 제외율을 같이 낸다.
+대부분의 행이 HR > 1이며 장기별 표본 불균형이 크다. 이 선택된 표본 밖의 일반 질환쌍까지 성능이 유지된다고 주장하지 않는다. 실험별 장기 및 family 표본 수와 제외율을 같이 낸다.
 
 학습 평균, scaling, precision weight clipping, baseline, spread, PCA 및 threshold는 모두 해당 fold의 training 자료에서만 계산한다. test 데이터의 HR 또는 정답 장기를 계산에 사용해 학습 입력을 만들지 않는다.
 

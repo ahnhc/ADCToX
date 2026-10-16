@@ -235,7 +235,7 @@ residual-scale: $(FORWARD_METRICS)
 
 # The teammate-supplied ADC database. The workbook is not redistributed -- see
 # data/raw/atlas/*/_manifest.json for its hash -- so these two targets are skipped rather
-# than failed where it is absent. docs/TEAMMATE_DATA_USE.md is the hand-off note.
+# than failed where it is absent. docs/archive/team/TEAMMATE_DATA_USE.md is the hand-off note.
 atlas-ingest:
 	$(PY) scripts/ingest_atlas_db.py
 

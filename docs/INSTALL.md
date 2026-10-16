@@ -1,4 +1,6 @@
-# 설치 (Linux, ## 기본 설치
+# 설치 (Linux, macOS, Windows)
+
+## 기본 설치
 
 | 운영체제 | 명령 | 조건 |
 |---|---|---|
@@ -6,7 +8,7 @@
 | macOS (Apple silicon) | 위와 같은 명령 | macOS 11 이상. Intel Mac은 PyTorch 2.11 빌드가 없어 지원하지 않는다 |
 | Windows 10, 11 (64비트) | PowerShell에서 `irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 \| iex` | 관리자 권한 불필요 |
 
-- Python 3.12 이상(venv 포함)이 있으면 그것을 쓴다.
+- `Python 3.12` 이상(venv 포함)이 있으면 그것을 쓴다.
 - 없으면 고정 버전 uv(0.12.17, SHA256 확인)를 임시로 받는다. 그 uv가 Python 3.12를 `~/.local/share/adctox/python`에 설치한다. 시스템 Python과 패키지는 건드리지 않는다.
 - 특정 Python을 쓰려면 `ADCTOX_PYTHON=/path/to/python3.12`를 지정한다.
 - Windows 설치기가 하는 일:
@@ -16,10 +18,13 @@
   - 모델을 받는다.
 - 다시 실행하면 앱을 새 버전으로 바꾼다.
 
-ython3-venv
+Linux에서 `venv`가 없다는 메시지가 나오면 다음 패키지를 설치하고 다시 실행한다.
+
+```bash
+sudo apt install python3-venv
 ```
 
-설치기는 sudo를 사용하지 않는다. 기본 CPU PyTorch와 추론 의존성, 약 972 MiB의 모델 파일을 설치한다. BioLORD와 SapBERT는 원본 Hugging Face 저장소의 고정 revision에서 받는다. upstream 이용 조건은 [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md)를 참고한다.
+설치기는 sudo를 사용하지 않는다. 기본 CPU PyTorch와 추론 의존성, 약 3.3 GiB의 모델 파일(Gemma 판정 모델 2.4 GB 포함)을 설치한다. BioLORD와 SapBERT는 원본 Hugging Face 저장소의 고정 revision에서 받는다. upstream 이용 조건은 [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md)를 참고한다.
 
 설치 후 분석은 로컬에서 실행하며 입력한 질환이나 검사값을 업데이트 서버로 전송하지 않는다. 인터넷 연결은 설치 및 사용자가 요청한 업데이트에 사용한다. 입력 중 상태 파일은 기존 터미널 동작에 따라 `~/.config/adctox/last_input.json`에 저장될 수 있다.
 
@@ -53,7 +58,7 @@ ADCTOX_INSTALL_DIR="$HOME/apps/adctox" ADCTOX_BIN_DIR="$HOME/.local/bin" bash /t
 
 ## 업데이트
 
-기저질환 입력 화면에서 `Ctrl+U`(모델 업데이트)를 누른다. 입력하던 조건은 유지된다. 다운로드가 완료되면 질환 연결 및 예측 캐시를 비우고 다음 분석에서 새 모델을 사용한다.
+모델 업데이트는 터미널 명령으로 한다. 다운로드가 끝나면 다음 실행부터 새 모델을 쓴다.
 
 ```bash
 adctox --check-models

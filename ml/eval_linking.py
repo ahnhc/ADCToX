@@ -2,7 +2,7 @@
 
     CUDA_VISIBLE_DEVICES=1 python -I ml/eval_linking.py [--refresh]
 
-Systems (ml/docs/model_accuracy_plan_2026-10-12.md section 6.1):
+Systems (ml/docs/archive/model_accuracy_plan_2026-10-12.md section 6.1):
   A0  exact alias: registry label, else a MONDO name / exact synonym after case and punctuation folding
   A1  character TF-IDF top-1 over MONDO strings, acceptance threshold tuned on dev
   A2  SapBERT top-1, THETA = 0.75 (the shipped linker on its own)

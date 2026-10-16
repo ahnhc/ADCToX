@@ -6,8 +6,8 @@
 
 1. [연구 및 구현 현황](research_status_2026-10-12.md): 실제 프로젝트, 실행 방법, UI 변경, 연구 결과와 한계.
 2. [모델 정확도 개선 계획](model_accuracy_plan_2026-10-12.md): 앞으로 할 benchmark와 학습 실험, 설계 단계 연결안.
-3. [수치 및 소스 스냅샷](../results/review_snapshot_2026-10-12.json): 기존 결과의 정확한 값, paired CI, 데이터 수, 체크포인트 및 파일 해시.
-4. [최신 화면 캡처](../../artifacts/terminal-captures/ui-v0.0/): 실제 실행 화면. 같은 폴더의 txt 및 ANSI 기록도 확인 가능.
+3. [수치 및 소스 스냅샷](../../results/review_snapshot_2026-10-12.json): 기존 결과의 정확한 값, paired CI, 데이터 수, 체크포인트 및 파일 해시.
+4. [최신 화면 캡처](../../../artifacts/terminal-captures/ui-v0.0/): 실제 실행 화면. 같은 폴더의 txt 및 ANSI 기록도 확인 가능.
 
 저장소에 접근할 수 있으면 아래 요청을 그대로 전달한다. 문서만 전달할 경우 원본 코드를 확인하지 못한 판단은 추론으로 표시하도록 요청한다.
 
@@ -17,8 +17,8 @@
 ADCTOX 프로젝트의 현재 연구와 다음 실험 계획을 검토해줘.
 
 먼저 다음 세 파일을 읽어줘.
-- ml/docs/research_status_2026-10-12.md
-- ml/docs/model_accuracy_plan_2026-10-12.md
+- docs/archive/research_status_2026-10-12.md
+- docs/archive/model_accuracy_plan_2026-10-12.md
 - ml/results/review_snapshot_2026-10-12.json
 
 지금 중심 제품은 Ubuntu 터미널 ADC 비교 추천기야. 기존 Fable 디자인은

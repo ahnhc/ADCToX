@@ -428,7 +428,8 @@ def test_gemma_panel_marks_the_step_that_set_the_organs():
              sym=("MONDO:0005154", 0.2))
     r = dict(condition="헌팅톤무도병", source="MONDO", name="Huntington disease", mondo="MONDO:0007739", organs=["neurologic"], gemma=g, via="judge vector")
     lines = [re.sub(r"\x1b\[[\d;]*m", "", ln) for ln in form.gemma_panel(r, RC, {"MONDO:0007739": "헌팅턴병"}, 120)]
-    assert lines[0].startswith("┌─ Gemma judge · 헌팅톤무도병") and lines[-1].startswith("└")
-    assert any("● align 헌팅턴병" in ln for ln in lines) and any("○ organ" in ln for ln in lines)
-    assert any("▶ Neuro" in ln and "Gemma align 연결" in ln for ln in lines)
+    assert lines[0].startswith("┌─ Gemma judge") and lines[-1].startswith("└") and any("헌팅톤무도병" in ln for ln in lines)
+    assert any("├─ align  헌팅턴병" in ln for ln in lines) and any("└─ sym" in ln for ln in lines)
+    assert any("→ Neuro" in ln and "Gemma align" in ln for ln in lines)
+    assert not any(c in "".join(lines) for c in "●○█░▶·")              # glyphs whose width differs between fonts
     assert len({form._w(ln) for ln in lines}) == 1                  # the right border lines up

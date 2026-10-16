@@ -4,8 +4,8 @@
 
 | 대상 | 버전과 위치 | 배포 방식 |
 |---|---|---|
-| 앱 | `ml/adc_version.py`, 현재 0.3.1 | Git tag `v0.3.1`, GitHub Release의 `adctox-ubuntu.tar.gz`(Linux, macOS 공용), `ADCTOX-windows.zip` |
-| 모델 묶음 | `releases/models/stable.json`, 현재 0.2 | 별도 tag `models-0.2`, MLP 및 MONDO index assets |
+| 앱 | `ml/adc_version.py` (`APP_VERSION`) | Git tag `v<버전>`, GitHub Release의 `adctox-ubuntu.tar.gz`(Linux, macOS 공용), `ADCTOX-windows.zip` |
+| 모델 묶음 | `releases/models/stable2.json` (앱 0.3.8 이상), `stable.json` (앱 0.3.7 이하, 모델 0.4에 고정) | 별도 tag `models-<버전>`. Gemma 판정 모델, MLP, MONDO index assets |
 | 기본 encoder | manifest에 고정한 HF revision | 원본 Hugging Face에서 파일별 다운로드 |
 | 연구 자료 | `ml/docs`, `ml/results`, `report`, `docs` | Git 이력 및 README 링크 |
 | 학습 원본 | 원본 워크북과 로컬 cache | Git 및 앱 archive에 포함하지 않음 |
@@ -37,7 +37,7 @@ bundle-info.json
 현재 학습 환경에서 실행한다.
 
 ```bash
-/data/hyeongchanahn/envs/adctox/bin/python -I scripts/build_ubuntu_release.py --models --model-version 0.0
+<python> -I scripts/build_ubuntu_release.py --models --model-version <버전>
 ```
 
 로컬 cache의 학습 head와 MONDO index를 export한다. 학습을 다시 수행하는 명령은 아니다. 배포 checkpoint는 tensor와 기본형 metadata만 포함해 `torch.load(weights_only=True)`로 읽으며, 배포 MONDO index는 object array 대신 문자열 array를 사용해 `allow_pickle=False`로 읽는다. 수치 및 모델 구조는 기존 구현과 동일하다.
@@ -53,12 +53,13 @@ bundle-info.json
 로컬에서 확인한 뒤 Git 이력을 push하고, 모델 Release를 먼저 준비한다. 두 tag 모두 main의 정확한 commit을 가리키게 한다.
 
 ```bash
-git push -u origin main
-gh release create models-0.0 --target main --latest=false --title 'Models 0.0' --notes-file releases/models/NOTES.md dist/releases/models/vuln_biolord.pt dist/releases/models/mondo_index.npz dist/releases/models/models.json
-gh release create v0.1.0 --target main --latest --title 'ADCTOX 0.1' --notes-file releases/app/NOTES.md dist/releases/app/adctox-ubuntu.tar.gz dist/releases/app/app.json
+git push
+gh release create models-<버전> --target <commit> --latest=false --title 'Models <버전>' --notes-file releases/models/NOTES.md dist/releases/models/*
+gh release create v<버전> --target <commit> --latest --title 'ADCTOX <버전>' --notes-file releases/app/NOTES.md \
+    dist/releases/app/adctox-ubuntu.tar.gz dist/releases/app/app.json dist/releases/windows/ADCTOX-windows.zip dist/releases/windows/windows.json
 ```
 
-최초 공개 준비 중에는 채널과 asset 게시 사이에 짧은 불일치가 생길 수 있으므로 설치 명령을 공유하기 전에 실제 URL에서 새 설치를 확인한다. 이후 업데이트는 새 asset을 먼저 올리고 검증한 다음 stable manifest를 가리키게 한다. 위 예시는 첫 공개 버전용이며 다음 배포에는 새로운 버전과 tag를 사용한다.
+최초 공개 준비 중에는 채널과 asset 게시 사이에 짧은 불일치가 생길 수 있으므로 설치 명령을 공유하기 전에 실제 URL에서 새 설치를 확인한다. 이후 업데이트는 새 asset을 먼저 올리고 검증한 다음 stable manifest를 가리키게 한다.
 
 GitHub Actions는 새 push/PR에서 updater, 터미널 및 추천기 테스트와 raw 데이터 없는 앱 빌드를 확인한다. 전체 임상 연구 suite나 모델 정확도를 검증했다는 의미는 아니다. 원본 cache가 필요한 일부 테스트는 CI에서 skip된다.
 
@@ -73,11 +74,11 @@ GitHub Actions는 새 push/PR에서 updater, 터미널 및 추천기 테스트�
 ## Windows 패키지 (0.3부터)
 
 ```bash
-/data/hyeongchanahn/envs/adctox/bin/python -I scripts/build_ubuntu_release.py           # 앱 archive 먼저
-/data/hyeongchanahn/envs/adctox/bin/python -I scripts/build_windows_release.py          # dist/releases/windows/ADCTOX-windows.zip
+<python> -I scripts/build_ubuntu_release.py           # 앱 archive 먼저
+<python> -I scripts/build_windows_release.py          # dist/releases/windows/ADCTOX-windows.zip
 ```
 
-- Linux에서 만든다. 공식 embeddable CPython 3.12.10(SHA256 고정)에 win_amd64 wheel을 풀어 넣는다. 의존성은 uv가 Windows 기준으로 풀고(`pip download --platform`은 빌드 머신의 marker를 적용해 Linux 전용 CUDA 패키지를 끌어온다), pip가 고정된 wheel을 받는다. 잠금 목록은 cache의 `windows-lock.txt`.
+- Linux에서 만든다. 공식 embeddable `CPython 3.12.10`(SHA256 고정)에 win_amd64 wheel을 풀어 넣는다. 의존성은 uv가 Windows 기준으로 풀고(`pip download --platform`은 빌드 머신의 marker를 적용해 Linux 전용 CUDA 패키지를 끌어온다), pip가 고정된 wheel을 받는다. 잠금 목록은 cache의 `windows-lock.txt`.
 - 앱 파일은 Ubuntu와 같은 archive를 `apps/<release>/`에 풀고 `app.txt`로 선택한다. 그래서 `--update-app`이 두 OS에서 같게 동작한다.
 - 모델은 첫 실행 때 `%LOCALAPPDATA%\adctox\models`로 받는다. Windows에서는 디렉터리 symlink 대신 `current.txt`로 현재 bundle을 가리키고, lock은 `msvcrt`를 쓴다.
 - Microsoft Visual C++ 런타임은 기본으로 넣지 않는다. 없는 PC에서는 launcher가 공식 설치 링크를 안내한다. Visual Studio 라이선스(Community 포함)가 있으면 `--bundle-vc-runtime`으로 넣을 수 있다.
@@ -92,7 +93,7 @@ Release에는 `ADCTOX-windows.zip`을 앱 Release의 asset으로 함께 올린�
 | `install.sh` | Linux x86_64/arm64, macOS Apple silicon | `releases/app/stable.json` |
 | `install.ps1` | Windows 10/11 64비트 | `releases/app/windows.json` |
 
-`install.sh`는 Python 3.12+가 없으면 고정 버전 uv(0.12.17, 플랫폼별 SHA256을 스크립트에 고정)로 Python 3.12를 설치 폴더 안에 받는다. uv 버전을 바꿀 때는 세 플랫폼의 `.sha256`을 함께 갱신한다. 배포 후 `.github/workflows/install.yml`이 Release 게시 시점에 Ubuntu 22.04/24.04, macOS 14/15, Windows에서 공개 설치 명령을 그대로 실행하고 앱을 돌려 본다.
+`install.sh`는 `Python 3.12`+가 없으면 고정 버전 uv(0.12.17, 플랫폼별 SHA256을 스크립트에 고정)로 Python 3.12를 설치 폴더 안에 받는다. uv 버전을 바꿀 때는 세 플랫폼의 `.sha256`을 함께 갱신한다. 배포 후 `.github/workflows/install.yml`이 Release 게시 시점에 Ubuntu 22.04/24.04, macOS 14/15, Windows에서 공개 설치 명령을 그대로 실행하고 앱을 돌려 본다.
 
 ## Oracle mirror가 필요한 경우
 
@@ -117,9 +118,9 @@ ADC_RESEARCH_MODE=1    설치 모델 대신 연구 cache 사용
 bash -n install.sh
 ```
 
-모델 export는 별도로 legacy checkpoint와 동일 입력의 예측을 비교한다. 실제 공개 후에는 임시 설치 경로에서 설치, 캐시 재사용, 모델 업데이트 및 실행을 확인한다. Windows native 패키징은 이번 범위에 포함하지 않는다.
+모델 export는 별도로 legacy checkpoint와 동일 입력의 예측을 비교한다. 실제 공개 후에는 임시 설치 경로에서 설치, 캐시 재사용, 모델 업데이트 및 실행을 확인한다.
 
-### 0.1 공개 검증
+### 0.1 공개 검증 (기록)
 
 [검증 기록](../artifacts/distribution/verification-2026-10-12.json)에 실제 Release와 설치 결과를 기록했다. GitHub Actions에서 96개가 통과했고, 비공개 원본 및 모델 환경이 필요한 30개는 skip됐다. 로컬 회귀 검사는 125개와 별도 full portable parity 검사 1개가 통과했다.
 

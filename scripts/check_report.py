@@ -194,7 +194,10 @@ def main() -> int:
     # of the report the guard actually verified.
     verified: list[tuple[str, int, str, int]] = []
     checked = 0
-    docs = sorted(d for root in args.report for d in root.rglob("*.md"))
+    # docs/archive/ holds superseded documents kept for the record; their figures come from
+    # experiments whose outputs are not in artifacts/, so they are not checked here.
+    docs = sorted(d for root in args.report for d in root.rglob("*.md")
+                  if "archive" not in d.relative_to(root).parts)
     for doc in docs:
         text = _normalize_signs(FENCE.sub(" ", doc.read_text(encoding="utf-8")))
         for lineno, line in enumerate(text.splitlines(), 1):

@@ -2,7 +2,7 @@
 
 기준: 2026-10-12, 앱 0.3(배포 준비), 모델 0.2(배포됨).
 
-팀원은 CSV 칸만 채운다(안내문: `docs/TEAM_GUIDE.md`). 이 문서는 받은 파일을 검사해 학습과 평가 형식으로 바꾸고, 모델을 다시 만들고, 채택을 판정하는 사람을 위한 것이다.
+팀원은 CSV 칸만 채운다(안내문: `docs/archive/team/TEAM_GUIDE.md`). 이 문서는 받은 파일을 검사해 학습과 평가 형식으로 바꾸고, 모델을 다시 만들고, 채택을 판정하는 사람을 위한 것이다.
 
 ## 팀원 파일 가져오기 (`ml/team_sheets.py`)
 
@@ -43,13 +43,13 @@ git clone https://github.com/ahnhc/ADCToX.git && cd ADCToX
 git checkout -b task1-organs          # 과제별 브랜치. main에 직접 push하지 않는다.
 ```
 
-- 연구실 서버에서 작업하면 연구 환경 Python이 이미 있다: `/data/hyeongchanahn/envs/adctox/bin/python` (torch, transformers, sentence-transformers, scikit-learn).
+- 연구실 서버에서 작업하면 연구 환경 Python이 이미 있다: `<python env>/bin/python` (torch, transformers, sentence-transformers, scikit-learn).
 - 다른 컴퓨터에서는 Python 3.12에 `torch==2.11.0 transformers==5.19.0 sentence-transformers==6.1.0 numpy pandas scipy scikit-learn pyyaml pyarrow`를 설치한다. GPU가 있으면 빠르지만 없어도 된다(평가 1회 수 분 ~ 수십 분).
 - GPU를 고를 때는 `CUDA_VISIBLE_DEVICES=1` 처럼 지정한다. 서버 GPU는 공용이다.
 
 ### 0-2. 데이터 받기
 
-묶음은 서버의 `/data/hyeongchanahn/adctox/team_handoff_0.2/`에 있다.
+묶음은 서버의 `<handoff folder>/`에 있다.
 
 | 파일 | 내용 | 풀 위치 |
 |---|---|---|
@@ -65,10 +65,10 @@ export ADCTOX_CACHE=/path/to/ml_cache           # 풀어 둔 cache 폴더
 export ADC_RESEARCH_MODE=1                      # 설치된 앱 모델 대신 연구 cache 사용
 ```
 
-**연구실 서버에서도 cache는 반드시 복사해서 쓴다.** 기본 cache(`/data/hyeongchanahn/adctox/ml_cache`)는 배포 모델을 만드는 원본이다. 색인을 다시 만드는 명령은 cache 안의 파일을 덮어쓴다.
+**연구실 서버에서도 cache는 반드시 복사해서 쓴다.** 서버의 기본 cache(`<server ml_cache>`)는 배포 모델을 만드는 원본이다. 색인을 다시 만드는 명령은 cache 안의 파일을 덮어쓴다.
 
 ```bash
-mkdir -p ~/adctox_cache && tar xzf /data/hyeongchanahn/adctox/team_handoff_0.2/adctox-team-cache.tar.gz -C ~/adctox_cache
+mkdir -p ~/adctox_cache && tar xzf <handoff folder>/adctox-team-cache.tar.gz -C ~/adctox_cache
 export ADCTOX_CACHE=~/adctox_cache/ml_cache
 ```
 
@@ -238,7 +238,7 @@ CUDA_VISIBLE_DEVICES=1 $PY -I ml/eval_linking.py --tag task1_v1
 
 **평가:** `eval_linking.py --tag task2_v1`(gold), 그리고 외부 test recall@1(`ml/sapbert_ft_v3.py`의 외부 평가 부분을 재사용). **채택 기준(제안):** A4 test macro-F1 CI 하한 > 0, 무효 입력 통과율 유지, 외부 corpus 중 유의하게 나빠지는 곳 없음, CPU 지연 질의당 +30 ms 이하.
 
-참고: SapBERT 자체를 다시 학습하는 시도는 3번 모두 기준 미달이었다(`ml/docs/model_review_2026-10-12.md` 4차 §2). encoder보다 재정렬 쪽이 여지가 크다.
+참고: SapBERT 자체를 다시 학습하는 시도는 3번 모두 기준 미달이었다(`ml/ml/docs/archive/model_review_2026-10-12.md` 4차 §2). encoder보다 재정렬 쪽이 여지가 크다.
 
 ---
 
@@ -313,7 +313,7 @@ CUDA_VISIBLE_DEVICES=1 $PY -I ml/eval_linking.py --queries data/curated/disease_
 | Den | 덴마크 DTB |
 | Fin | FinnGen |
 
-세 모델의 검증 점수(독립 미국 자료 HuDiNe와 각 보류 자료에서, 질환 하나 안의 장기 순위가 실제와 맞는 정도인 Spearman의 평균)는 `ml/docs/model_review_2026-10-12.md`와 `ml/results/benchmarks/axis_ensemble_v2.json`에 있다. FinnGen이 들어간 수치는 `docs/`, `report/`의 문서에 옮기지 않는다(`tests/test_licence_posture.py`). 세 모델 중 2개 이상이 고른 장기만 자동 반영한다. Metabolic 장기는 검증을 통과하지 못해 빈칸이다.
+세 모델의 검증 점수(독립 미국 자료 HuDiNe와 각 보류 자료에서, 질환 하나 안의 장기 순위가 실제와 맞는 정도인 Spearman의 평균)는 `ml/ml/docs/archive/model_review_2026-10-12.md`와 `ml/results/benchmarks/axis_ensemble_v2.json`에 있다. FinnGen이 들어간 수치는 `docs/`, `report/`의 문서에 옮기지 않는다(`tests/test_licence_posture.py`). 세 모델 중 2개 이상이 고른 장기만 자동 반영한다. Metabolic 장기는 검증을 통과하지 못해 빈칸이다.
 
 관련 파일: `ml/vulnerability_model.py`(목표값 `axis_targets`, 학습 `_train_axis`), `ml/axis_dtb_augment.py`(`dtb_targets`: 덴마크 자료 loader), `ml/axis_source_compare.py`(`hudine_targets`, 모델 비교), `ml/axis_ensemble.py`(동의 규칙), `ml/axis_reliability.py`(ICD-10 → 장기 매핑 `ICD_AXIS`).
 
@@ -321,9 +321,9 @@ CUDA_VISIBLE_DEVICES=1 $PY -I ml/eval_linking.py --queries data/curated/disease_
 
 `finngen_outcome_mapping.xlsx`(2026-10-09 수령)에 대해 다음을 확인해 문서로 받는다.
 1. FinnGen 릴리스(R10이 맞는가)와 추출 경로(Risteys 생존분석 결과인가, 다른 분석인가).
-2. **어떤 쌍을 골랐는가.** 지금 표에는 가능한 질환 쌍의 7%만 있고 78%가 p < 0.05다. 유의한 쌍만 고른 것인지, 상위 N개인지, 다른 기준인지.
+2. **어떤 쌍을 골랐는가.** 지금 표에는 가능한 질환 쌍의 일부만 있고 대부분 유의한 쌍이다. 유의한 쌍만 고른 것인지, 상위 N개인지, 다른 기준인지.
 3. **고르기 전 전체 쌍**(유의하지 않은 쌍 포함)을 받을 수 있는가. 받을 수 있으면 아래 4-4 형식으로.
-4. 각 쌍의 환자 수(N), lag(0/1/5/15년) 정의, 성별/연령 층화 여부.
+4. 각 쌍의 환자 수(N), lag 정의, 성별/연령 층화 여부.
 
 전체 쌍이 있으면 "선별된 쌍만 배운다"는 지금의 가장 큰 편향을 없앨 수 있다.
 

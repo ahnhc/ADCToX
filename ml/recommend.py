@@ -49,7 +49,7 @@ MATCH_COS = 0.60            # last resort: borrow the organs of a loosely simila
 LINK_THETA = 0.75           # = mondo_index.THETA: a MONDO match this close is 'understood' even when the concept has no organ axis
 AUTO_FALLBACK = 0.25        # the wizard's '자동': the learned estimate is used only when the validity gate says the text names a disease
 GATE_MONDO = True           # also require the validity gate for a MONDO link / borrowed registry organs (chosen on the gold dev split,
-GATE_BORROW = False         # ml/docs/model_review_2026-10-12.md); an index without a gate (before v1) behaves as before
+GATE_BORROW = False         # ml/docs/archive/model_review_2026-10-12.md); an index without a gate (before v1) behaves as before
 CONTEXT = {"concomitant_bleomycin": "Concomitant bleomycin (co-medication, no organ)"}     # inputs that are not diseases but a label rule names
 EN = {"haematologic": "Haematologic", "hepatic": "Hepatic", "cardiovascular": "Cardiovascular", "pulmonary": "Pulmonary", "renal": "Renal",
       "gastrointestinal": "GI", "neurologic": "Neurologic", "ocular": "Ocular", "dermatologic": "Dermatologic", "metabolic_endocrine": "Metabolic",

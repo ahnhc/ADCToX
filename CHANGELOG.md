@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.22 — Simpler Gemma panel; repository tidied
+
+- **The Gemma judge panel is a plain tree.** It has no bars, dots, role column or threshold text. These glyphs have different widths in some terminal fonts, so the tree and the right border no longer break or shift. The output that set the organs is green; the others are grey. The last line gives the organs and the step that set them (Gemma align, Gemma organ, Chosen, MONDO, Registry, HPO).
+- **Repository:**
+  - README rewritten for the current app: search page, PgUp/PgDn, the Gemma judge, the model size (about 3.3 GiB), and screenshots of the current screens (`docs/images/*.svg`, made with `scripts/capture_svg.py`).
+  - `docs/INSTALL.md` repaired; its first section was garbled. The in-app model update text that no longer applies is removed. `docs/DISTRIBUTION.md` describes `stable2.json` and the current release commands.
+  - Superseded and team documents moved to `docs/archive/`. Private server paths removed from documents. `ml/README.md` is now a short guide to the modules.
+  - Old capture images and logs removed. `.gitignore` covers `.pytest_cache/`, `*.log` and `*.pre-centering-bug`.
+  - `THIRD_PARTY_NOTICES.md` updated. The Gemma judge's Apache-2.0 text and list of changes (`GemmaJudge-LICENSE.txt`) are attached to the models-0.6 release.
+
 ## 0.3.21 — Korean names on abbreviation hits; one translation batch repaired
 
 - **An abbreviation hit shows the disease's Korean name** in the grey column, as every other result does. It showed `약어 ASD`.

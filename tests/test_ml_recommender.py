@@ -1,6 +1,6 @@
 """The ADC recommender (ml/recommend.py) and what it reads: label parsing, restriction rules, evidence, ordering.
 
-Each test pins one defect found in the implementation audit (ml/docs/recommender_technical_report.md, section 8) or one
+Each test pins one defect found in the implementation audit (ml/docs/archive/recommender_technical_report.md, section 8) or one
 property the redesign promises. Tests that need the local label snapshot or the collaborator workbook cache skip
 when those are absent (they are not redistributed).
 """

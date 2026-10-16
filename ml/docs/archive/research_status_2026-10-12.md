@@ -1,10 +1,10 @@
 # ADCTOX 구현 및 연구 현황
 
-작성 기준: 2026-10-12, Ubuntu 작업 디렉터리 `/home/hyeongchanahn/CONI/adctox`.
+작성 기준: 2026-10-12, Ubuntu 작업 디렉터리 `<repo>`.
 
-이 문서는 같은 날 GitHub 배포 및 모델 업데이트 기능을 추가하기 **전** 상태의 연구 스냅샷이다. 이후 앱 버전은 0.1로 변경되었고 모델 파일 경로와 배포 loader, CLI 및 업데이트 화면이 추가되었다. 최신 설치 및 배포 동작은 [설치 안내](../../docs/INSTALL.md)와 [배포 안내](../../docs/DISTRIBUTION.md)를 기준으로 한다. 아래 소스 해시는 당시 상태를 식별하며 이후 코드와 같다고 가정하지 않는다.
+이 문서는 같은 날 GitHub 배포 및 모델 업데이트 기능을 추가하기 **전** 상태의 연구 스냅샷이다. 이후 앱 버전은 0.1로 변경되었고 모델 파일 경로와 배포 loader, CLI 및 업데이트 화면이 추가되었다. 최신 설치 및 배포 동작은 [설치 안내](../../../docs/INSTALL.md)와 [배포 안내](../../../docs/DISTRIBUTION.md)를 기준으로 한다. 아래 소스 해시는 당시 상태를 식별하며 이후 코드와 같다고 가정하지 않는다.
 
-이 문서는 현재 코드, 저장된 실험 결과, 최근 대화에서 반영한 변경을 함께 정리한 검토 자료다. 새로운 학습 실험의 결과를 보고하는 문서는 아니다. 향후 계획은 [모델 개선 계획](model_accuracy_plan_2026-10-12.md), Fable에게 전달할 검토 요청은 [검토 지침](fable_review_2026-10-12.md)에 있다. 수치와 소스 해시는 [검토 스냅샷](../results/review_snapshot_2026-10-12.json)에 모았다.
+이 문서는 현재 코드, 저장된 실험 결과, 최근 대화에서 반영한 변경을 함께 정리한 검토 자료다. 새로운 학습 실험의 결과를 보고하는 문서는 아니다. 향후 계획은 [모델 개선 계획](model_accuracy_plan_2026-10-12.md), Fable에게 전달할 검토 요청은 [검토 지침](fable_review_2026-10-12.md)에 있다. 수치와 소스 해시는 [검토 스냅샷](../../results/review_snapshot_2026-10-12.json)에 모았다.
 
 ## 1. 현재 프로젝트의 중심
 
@@ -26,14 +26,14 @@
 ### 기본 실행
 
 ```bash
-cd /home/hyeongchanahn/CONI/adctox
-/data/hyeongchanahn/envs/adctox/bin/python -I ml/recommend.py
+cd <repo>
+<python env>/bin/python -I ml/recommend.py
 ```
 
 어느 디렉터리에서든 실행하려면 다음 명령을 사용한다.
 
 ```bash
-/data/hyeongchanahn/envs/adctox/bin/python -I /home/hyeongchanahn/CONI/adctox/ml/recommend.py
+<python env>/bin/python -I <repo>/ml/recommend.py
 ```
 
 `recommend.py` 경로만 직접 실행했을 때의 `Permission denied`는 Python 인터프리터를 거치지 않았기 때문이다. 현재 파일은 실행용 shebang과 실행 권한을 갖춘 독립 실행 파일이 아니다. 위 명령으로 실행하면 된다.
@@ -41,29 +41,29 @@ cd /home/hyeongchanahn/CONI/adctox
 등록된 조건 목록은 다음과 같이 확인한다.
 
 ```bash
-/data/hyeongchanahn/envs/adctox/bin/python -I ml/recommend.py --list
+<python env>/bin/python -I ml/recommend.py --list
 ```
 
 일반 텍스트 출력 예시는 다음과 같다. 숫자 단위는 해당 옵션의 입력 계약을 따라야 한다.
 
 ```bash
-/data/hyeongchanahn/envs/adctox/bin/python -I ml/recommend.py --plain cirrhosis ckd_stage_3 --crcl 45 --bili 1.2
+<python env>/bin/python -I ml/recommend.py --plain cirrhosis ckd_stage_3 --crcl 45 --bili 1.2
 ```
 
-`--crcl`은 mL/min, `--bili`는 정상 상한 대비 배수다. 원검사값은 `--lab key=value` 경로도 지원한다. `--detail`, `--priority`, `--learned`, `--learned-fallback` 등은 [parse_args](../recommend.py)에 구현되어 있다. **현재 `--help`는 구현되어 있지 않아 질환 문자열처럼 처리될 수 있다.** 실행 안내에 `--help`를 사용하면 안 된다.
+`--crcl`은 mL/min, `--bili`는 정상 상한 대비 배수다. 원검사값은 `--lab key=value` 경로도 지원한다. `--detail`, `--priority`, `--learned`, `--learned-fallback` 등은 [parse_args](../../recommend.py)에 구현되어 있다. **현재 `--help`는 구현되어 있지 않아 질환 문자열처럼 처리될 수 있다.** 실행 안내에 `--help`를 사용하면 안 된다.
 
 ### 의존 파일
 
 | 위치 | 내용 |
 |---|---|
-| `/data/hyeongchanahn/envs/adctox/` | PyTorch, Transformers, Sentence Transformers 등이 설치된 실제 추론 환경 |
+| `<python env>/` | PyTorch, Transformers, Sentence Transformers 등이 설치된 실제 추론 환경 |
 | 저장소 `.venv/` | pytest 및 가벼운 데이터 처리 도구. 전체 AI 추론 의존성이 모두 있지는 않음 |
-| `/data/hyeongchanahn/adctox/ml_cache/` | FinnGen 캐시, 임베딩, MONDO 인덱스, 학습된 체크포인트, 실험별 예측 캐시 |
+| `$ADCTOX_CACHE/` | FinnGen 캐시, 임베딩, MONDO 인덱스, 학습된 체크포인트, 실험별 예측 캐시 |
 | `data/raw/atlas/2026-10-10/` | 협업자가 제공한 원본 워크북 |
 | `data/raw_big/mondo/2026-10-07/mondo.obo` | 현재 인덱스 구축에 사용한 MONDO 스냅샷 |
-| `/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07/` | ADC 라벨 HTML 및 버전 manifest |
+| `<data root>/raw/dailymed/2026-10-07/` | ADC 라벨 HTML 및 버전 manifest |
 
-현재 ML 스크립트 여러 곳에 절대 경로가 들어 있다. 다른 컴퓨터에서는 코드만 복사해도 같은 상태가 재현되지 않는다. 원본 워크북과 캐시의 취급 기준은 [TEAMMATE_DATA_USE](../../docs/TEAMMATE_DATA_USE.md)를 따른다.
+현재 ML 스크립트 여러 곳에 절대 경로가 들어 있다. 다른 컴퓨터에서는 코드만 복사해도 같은 상태가 재현되지 않는다. 원본 워크북과 캐시의 취급 기준은 [TEAMMATE_DATA_USE](../../../docs/archive/team/TEAMMATE_DATA_USE.md)를 따른다.
 
 현재 환경의 PyTorch는 `2.11.0+cu128`이며 GPU가 보이면 GPU, 그렇지 않으면 CPU 추론을 사용한다. 조사 당시 서버에는 RTX 4090 4장이 보였지만 공유 장비이므로 벤치마크에서 가용 자원이 일정하다고 가정하면 안 된다. HF 모델이 로컬 캐시에 있으면 `HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1`로 네트워크 없이 실행을 확인할 수 있다.
 
@@ -124,12 +124,12 @@ MONDO는 질환 이름과 계층 관계를 정리한 온톨로지다. 학습시�
 
 최종 장기 값은 다음 과정으로 만든다.
 
-1. 193개 outcome 및 lag에 대한 예측을 ensemble 평균한다.
+1. 모든 outcome 및 lag에 대한 예측을 ensemble 평균한다.
 2. outcome별 평균 log(HR)를 빼서 상대적인 초과 값을 구한다.
 3. 13개 장기로 묶고 학습 자료의 장기별 변동 크기로 나눈다.
 4. 해당 질환의 장기 값 중앙값을 빼고 0~1로 자른다.
 
-따라서 화면의 `0.72`는 폐 독성이 72%라는 뜻이 아니다. 질환별 상대적인 장기 취약성 추정값이다. 관련 코드는 [vulnerability_model.py](../vulnerability_model.py)에 있다.
+따라서 화면의 `0.72`는 폐 독성이 72%라는 뜻이 아니다. 질환별 상대적인 장기 취약성 추정값이다. 관련 코드는 [vulnerability_model.py](../../vulnerability_model.py)에 있다.
 
 현재 학습 코드의 context 구성에는 domain one-hot을 잘라내는 문제가 있다. 기존 체크포인트는 lag one-hot만 본 상태로 학습되었다. 추론은 이 학습 입력에 맞추도록 수정되어 있다. domain을 정상적으로 넣는 개선은 **재학습해서 비교할 새 실험**이며 추론 입력만 바꾸면 안 된다.
 
@@ -167,11 +167,11 @@ MONDO는 질환 이름과 계층 관계를 정리한 온톨로지다. 학습시�
 → ADC 이름
 ```
 
-`B`, `Wn`이라는 severity 합산 값은 코드에 남아 있으나 **현재 같은 환자 안에서 ADC를 정렬하는 키가 아니다.** 과거 설명의 점수 합산 공식과 구분해야 한다. 직접 근거는 [recommend()](../recommend.py)다.
+`B`, `Wn`이라는 severity 합산 값은 코드에 남아 있으나 **현재 같은 환자 안에서 ADC를 정렬하는 키가 아니다.** 과거 설명의 점수 합산 공식과 구분해야 한다. 직접 근거는 [recommend()](../../recommend.py)다.
 
 ### 3.5 약물 측 근거
 
-[drug_evidence.py](../drug_evidence.py)는 라벨의 강한 경고와 section 5 경고를 장기에 연결하고, 라벨 표에서 grade 3 이상 발생률을 읽는다. Grade 3과 Grade 4는 같은 표 안에서만 합산한다. 단독요법 표를 우선하며 병용요법이나 검사 이상 표에서 가져온 값은 표시한다. 표나 장기 항목이 없으면 `no data` 또는 `not reported`로 남기며 0%로 바꾸지 않는다.
+[drug_evidence.py](../../drug_evidence.py)는 라벨의 강한 경고와 section 5 경고를 장기에 연결하고, 라벨 표에서 grade 3 이상 발생률을 읽는다. Grade 3과 Grade 4는 같은 표 안에서만 합산한다. 단독요법 표를 우선하며 병용요법이나 검사 이상 표에서 가져온 값은 표시한다. 표나 장기 항목이 없으면 `no data` 또는 `not reported`로 남기며 0%로 바꾸지 않는다.
 
 현재 터미널 정렬은 라벨 제한과 경고를 우선한다. 발생률 수치가 존재한다는 사실만으로 새로운 ADC 구조의 발생률까지 예측할 수 있는 것은 아니다.
 
@@ -208,7 +208,7 @@ CPU/RAM 표시는 모델 하나만의 비용이 아니라 모델을 포함한 **
 
 ### `lung hole` 예시
 
-이 입력은 정확한 진단명으로 확정되지 않았다. 저장된 [검증 기록](../../artifacts/terminal-captures/lung-hole-verification.json)의 값은 다음과 같다.
+이 입력은 정확한 진단명으로 확정되지 않았다. 저장된 [검증 기록](../../../artifacts/terminal-captures/lung-hole-verification.json)의 값은 다음과 같다.
 
 | 처리 | 결과 | 해석 |
 |---|---|---|
@@ -221,17 +221,17 @@ CPU/RAM 표시는 모델 하나만의 비용이 아니라 모델을 포함한 **
 
 ### 화면과 기능 테스트
 
-최신 캡처는 [ui-v0.0 폴더](../../artifacts/terminal-captures/ui-v0.0/)에 있다. Ubuntu native PTY에서 실제 curses 화면과 실제 모델을 실행한 ANSI 기록을 xterm.js/Chromium으로 재생해 캡처했다. 120열 × 42행 조건이다.
+최신 캡처는 [ui-v0.0 폴더](../../../artifacts/terminal-captures/ui-v0.0/)에 있다. Ubuntu native PTY에서 실제 curses 화면과 실제 모델을 실행한 ANSI 기록을 xterm.js/Chromium으로 재생해 캡처했다. 120열 × 42행 조건이다.
 
 | 화면 | 파일 |
 |---|---|
-| 모델 분석 중 | [01-ai-running.png](../../artifacts/terminal-captures/ui-v0.0/01-ai-running.png) |
-| AI 분석 결과 | [02-ai-review.png](../../artifacts/terminal-captures/ui-v0.0/02-ai-review.png) |
-| 캐시 재사용 | [02b-ai-cached.png](../../artifacts/terminal-captures/ui-v0.0/02b-ai-cached.png) |
-| 자동 반영 선택 | [03-auto-choice.png](../../artifacts/terminal-captures/ui-v0.0/03-auto-choice.png) |
-| 결과 표 | [04-results.png](../../artifacts/terminal-captures/ui-v0.0/04-results.png) |
-| 상세 및 맨 아래 내용 | [05-details.png](../../artifacts/terminal-captures/ui-v0.0/05-details.png), [06-details-bottom.png](../../artifacts/terminal-captures/ui-v0.0/06-details-bottom.png) |
-| 다음 ADC 및 최종 출력 | [07-next-adc.png](../../artifacts/terminal-captures/ui-v0.0/07-next-adc.png), [08-final.png](../../artifacts/terminal-captures/ui-v0.0/08-final.png) |
+| 모델 분석 중 | [01-ai-running.png](../../../artifacts/terminal-captures/ui-v0.0/01-ai-running.png) |
+| AI 분석 결과 | [02-ai-review.png](../../../artifacts/terminal-captures/ui-v0.0/02-ai-review.png) |
+| 캐시 재사용 | [02b-ai-cached.png](../../../artifacts/terminal-captures/ui-v0.0/02b-ai-cached.png) |
+| 자동 반영 선택 | [03-auto-choice.png](../../../artifacts/terminal-captures/ui-v0.0/03-auto-choice.png) |
+| 결과 표 | [04-results.png](../../../artifacts/terminal-captures/ui-v0.0/04-results.png) |
+| 상세 및 맨 아래 내용 | [05-details.png](../../../artifacts/terminal-captures/ui-v0.0/05-details.png), [06-details-bottom.png](../../../artifacts/terminal-captures/ui-v0.0/06-details-bottom.png) |
+| 다음 ADC 및 최종 출력 | [07-next-adc.png](../../../artifacts/terminal-captures/ui-v0.0/07-next-adc.png), [08-final.png](../../../artifacts/terminal-captures/ui-v0.0/08-final.png) |
 
 최근 UI 구현 검증은 아래 명령으로 **101 passed, 1 skipped, 1 deselected**였다. 가벼운 `.venv`에 torch가 없어 자유 입력 통합 테스트 하나는 skip되었으며, 실제 모델 추론은 별도로 확인했다. 패키징을 수행하는 `full_build`는 Ubuntu UI 작업에서 제외했다. 이 테스트는 모델 정확도 평가와 별개다.
 
@@ -245,12 +245,7 @@ CPU/RAM 표시는 모델 하나만의 비용이 아니라 모델을 포함한 **
 
 | 항목 | 현재 확인한 수 |
 |---|---:|
-| FinnGen 캐시 원본 행 | 75,129 |
-| `qc_flag == OK`, `0 < HR <= 100` 통과 행 | 59,157 |
-| 학습 prior 질환 코드 | 1,616 |
-| outcome 코드 | 193 |
-| lag | 0, 1, 5, 15 |
-| 필터 통과 행 중 HR > 1 | 88.20% |
+| FinnGen 자료 규모 | 이용 조건 때문에 적지 않음 |
 | Registry 조건 | 41 |
 | 터미널 및 취약성 모델 장기 축 | 13 |
 | 라벨 항목 / 사용 제한 규칙 | 14 / 97 |
@@ -258,7 +253,7 @@ CPU/RAM 표시는 모델 하나만의 비용이 아니라 모델을 포함한 **
 | 인덱스의 서로 다른 MONDO ID | 31,583 |
 | 장기 crosswalk가 있는 인덱스 문자열 | 76,282 |
 
-FinnGen 행은 독립적인 환자 59,157명이 아니다. 같은 질환쌍의 lag별 요약 연관성 자료다. 원자료는 협업자 워크북에서 왔으며, Risteys endpoint 간 생존분석은 질환 발생의 연관성을 다룬다. GWAS 모델이나 ADC 투여 후 독성 모델로 설명하면 안 된다. 원본의 정확한 release와 추출 provenance는 워크북 기준으로 추가 확정해야 한다. [Risteys R10 방법 문서](https://r10.risteys.finngen.fi/documentation#survival-analyses-between-endpoints).
+FinnGen 행은 독립적인 환자가 아니다. 같은 질환쌍의 lag별 요약 연관성 자료다. 원자료는 협업자 워크북에서 왔으며, Risteys endpoint 간 생존분석은 질환 발생의 연관성을 다룬다. GWAS 모델이나 ADC 투여 후 독성 모델로 설명하면 안 된다. 원본의 정확한 release와 추출 provenance는 워크북 기준으로 추가 확정해야 한다. [Risteys R10 방법 문서](https://r10.risteys.finngen.fi/documentation#survival-analyses-between-endpoints).
 
 장기별 행 수 편차가 크다. Cardiac 12,864행에 비해 Neurologic 446, Ear 105, Immune 41, Musculoskeletal 25행이다. Cardiac/Vascular와 Immune/Infection은 각각 같은 최종 축으로 묶인다. Reproductive는 현재 13축 예측에 대응하지 않는다. 인덱스 문자열의 장기 매핑 비율을 모든 질환의 매핑 정확도나 질환 단위 coverage라고 부르면 안 된다.
 
@@ -296,19 +291,19 @@ FinnGen 행은 독립적인 환자 59,157명이 아니다. 같은 질환쌍의 l
 
 미관측 prior 질환 평가에서도 BioLORD MLP의 organ ρ는 0.8004, kNN은 0.8112였다. MLP − kNN 차이는 **−0.0108 [−0.0186, −0.0029]**로 kNN 쪽이 높았다. 따라서 새 계획에서 kNN을 빼고 lookup만 이겼다고 주장하면 비교가 불충분하다.
 
-LoRA 실험은 이미 수행했다. 질환 encoder를 fold마다 새로 불러와 r=8, alpha=16, dropout=0.1의 한 설정으로 학습했다. outcome 임베딩은 고정했다. R² 개선은 관측되었지만 장기 순위 개선의 CI가 0을 포함해 배포하지 않았다. 직접 근거는 [lab_ft.py](../lab_ft.py), [e_lora.json](../results/lab/e_lora.json)이다.
+LoRA 실험은 이미 수행했다. 질환 encoder를 fold마다 새로 불러와 r=8, alpha=16, dropout=0.1의 한 설정으로 학습했다. outcome 임베딩은 고정했다. R² 개선은 관측되었지만 장기 순위 개선의 CI가 0을 포함해 배포하지 않았다. 직접 근거는 [lab_ft.py](../../lab_ft.py), [e_lora.json](../../results/lab/e_lora.json)이다.
 
 ### 7.2 기존 Task A 결과와 registry 확인
 
-과거 [task_a_sapbert.json](../results/task_a_sapbert.json)의 SapBERT MLP R²는 pair 0.8657, prior 0.7366, family 0.6311이다. 이 결과와 위 encoder 비교의 family 0.6218은 반복 및 seed 구성에 따른 별도 결과이므로 같은 수치처럼 취급하지 않는다. 임베딩 없는 TF-IDF 및 random identity control은 일반화 성능이 좋지 않았다. SapBERT kNN도 organ ranking에서 MLP에 근접했다.
+과거 [task_a_sapbert.json](../../results/task_a_sapbert.json)의 SapBERT MLP R²는 pair 0.8657, prior 0.7366, family 0.6311이다. 이 결과와 위 encoder 비교의 family 0.6218은 반복 및 seed 구성에 따른 별도 결과이므로 같은 수치처럼 취급하지 않는다. 임베딩 없는 TF-IDF 및 random identity control은 일반화 성능이 좋지 않았다. SapBERT kNN도 organ ranking에서 MLP에 근접했다.
 
-41개 registry 조건의 수동 장기를 이용한 [sanity check](../results/validate_registry.json)에서 τ=0.80 조건의 MLP AUROC는 0.8548 [0.7916, 0.9113], top-3 hit는 87.8%였다. **같은 JSON의 top-1 hit는 39.0%다.** 기존 README의 51%와 불일치하므로 현재 검토에서는 JSON을 기준으로 한다. 더 강하게 유사 질환을 제외한 τ=0.50에서는 AUROC 0.8038, top-3 70.7%였다.
+41개 registry 조건의 수동 장기를 이용한 [sanity check](../../results/validate_registry.json)에서 τ=0.80 조건의 MLP AUROC는 0.8548 [0.7916, 0.9113], top-3 hit는 87.8%였다. **같은 JSON의 top-1 hit는 39.0%다.** 기존 README의 51%와 불일치하므로 현재 검토에서는 JSON을 기준으로 한다. 더 강하게 유사 질환을 제외한 τ=0.50에서는 AUROC 0.8038, top-3 70.7%였다.
 
 이 평가는 질환이 속한 장기를 다시 찾는 작은 sanity check다. 장기 간 미래 취약성이나 ADC 추천 정답을 검증한 것이 아니다. τ별 kNN과의 비교 CI도 우수성을 확정하지 못한다.
 
 ### 7.3 학습 값을 섞으면 ADC 비교가 좋아지는가
 
-[learned_addon.json](../results/learned_addon.json)의 알려진 조건 평가에서는 수동 장기만 사용한 방법에 비해 학습 값을 추가한 방법이 낮았다.
+[learned_addon.json](../../results/learned_addon.json)의 알려진 조건 평가에서는 수동 장기만 사용한 방법에 비해 학습 값을 추가한 방법이 낮았다.
 
 | 기준 | 수동 장기 | 학습값 0.25 추가 | 차이 [95% CI] |
 |---|---:|---:|---|
@@ -319,11 +314,11 @@ LoRA 실험은 이미 수행했다. 질환 encoder를 fold마다 새로 불러�
 
 ### 7.4 구조에서 ADC 독성을 예측하는 연구
 
-기존 Task D는 75개 ADC, 33개 payload, 906개 AE term의 15,210행을 사용했다. 미관측 ADC에서 LightGBM의 구조 없는 모델 R²는 0.5275, payload 특징 추가는 0.5144, payload와 linker 추가는 0.4348이었다. 모든 구조 특징 추가도 0.4706으로 낮았다. 강한 ridge 보정의 개선은 +0.0021 [−0.0028, +0.0071]로 불확실했다. [task_d.json](../results/task_d.json), [task_d2.json](../results/task_d2.json).
+기존 Task D는 75개 ADC, 33개 payload, 906개 AE term의 15,210행을 사용했다. 미관측 ADC에서 LightGBM의 구조 없는 모델 R²는 0.5275, payload 특징 추가는 0.5144, payload와 linker 추가는 0.4348이었다. 모든 구조 특징 추가도 0.4706으로 낮았다. 강한 ridge 보정의 개선은 +0.0021 [−0.0028, +0.0071]로 불확실했다. [task_d.json](../../results/task_d.json), [task_d2.json](../../results/task_d2.json).
 
-`src/adctox/`의 과거 axis 수준 forward model도 강한 baseline을 일관되게 넘지 못했다. 현재 [MODEL_CARD](../../docs/MODEL_CARD.md)에는 leave-mechanism delta AUC −0.0200 [−0.0294, −0.0031], leave-family −0.0590 [−0.0929, −0.0233] 등이 기록되어 있다. 이 결과는 새 구조를 더 안전하다고 순위 매길 근거가 부족하다는 뜻이다.
+`src/adctox/`의 과거 axis 수준 forward model도 강한 baseline을 일관되게 넘지 못했다. 현재 [MODEL_CARD](../../../docs/MODEL_CARD.md)에는 leave-mechanism delta AUC −0.0200 [−0.0294, −0.0031], leave-family −0.0590 [−0.0929, −0.0233] 등이 기록되어 있다. 이 결과는 새 구조를 더 안전하다고 순위 매길 근거가 부족하다는 뜻이다.
 
-따라서 현재 재사용 가능한 설계 기능의 중심은 **제약 조건에 맞는 조합 열거와 근거 표시**다. 구조 독성 예측의 성공을 전제로 다음 단계를 설계하면 안 된다. 추가 실패 결과와 데이터 식별성 문제는 [findings.md](../../report/findings.md)에 있다.
+따라서 현재 재사용 가능한 설계 기능의 중심은 **제약 조건에 맞는 조합 열거와 근거 표시**다. 구조 독성 예측의 성공을 전제로 다음 단계를 설계하면 안 된다. 추가 실패 결과와 데이터 식별성 문제는 [findings.md](../../../report/findings.md)에 있다.
 
 ### 7.5 외부 확인 결과
 
@@ -334,7 +329,7 @@ LoRA 실험은 이미 수행했다. 질환 encoder를 fold마다 새로 불러�
 | JADER patient info 추가 | OOF AUROC 차이 +0.0036 [0.0027, 0.0045] | 해당 보고 분류 모델의 작은 증가 |
 | 사전 정의 subgroup 평가 | 33 contrasts. 경고 표시군/비표시군의 RR 비 1.1049 [0.8948, 1.3642] | 환자 특이 경고가 더 큰 위험 차이를 포착한다는 확실한 증거 없음 |
 
-근거: [faers_validation.json](../results/faers_validation.json), [jader_validation.json](../results/jader_validation.json), [subgroup_validation.json](../results/subgroup_validation.json). 사후에 포함 기준을 넓힌 subgroup 결과는 별도 JSON으로 남아 있으며 일차 결과를 대체하지 않는다.
+근거: [faers_validation.json](../../results/faers_validation.json), [jader_validation.json](../../results/jader_validation.json), [subgroup_validation.json](../../results/subgroup_validation.json). 사후에 포함 기준을 넓힌 subgroup 결과는 별도 JSON으로 남아 있으며 일차 결과를 대체하지 않는다.
 
 자발 보고 자료에는 ADC를 투여받고도 보고되지 않은 전체 환자 분모가 없다. 따라서 환자별 독성 발생 확률, 인과적 위해 감소, 추천으로 인한 임상적 이득을 입증한 결과로 표현할 수 없다. 보정된 보고 분류의 Brier score 역시 실제 치료 환자 위험 확률의 calibration과 구분해야 한다.
 
@@ -351,7 +346,7 @@ LoRA 실험은 이미 수행했다. 질환 encoder를 fold마다 새로 불러�
 
 ## 9. 새 ADC 설계와 연결 가능한 기존 코드
 
-[DesignSpace](../../src/adctox/design/enumerate.py)는 임상 선례가 있는 payload, linker, conjugation, DAR 등의 제약을 적용한다. 현재 기본 설정에서 한 target에 대해 106개 Tier 1 후보가 열거된다. 이는 화학적 성공이나 안정성이 확인된 106개 분자라는 뜻이 아니라 **코드의 제약 규칙을 통과한 조합 수**다.
+[DesignSpace](../../../src/adctox/design/enumerate.py)는 임상 선례가 있는 payload, linker, conjugation, DAR 등의 제약을 적용한다. 현재 기본 설정에서 한 target에 대해 106개 Tier 1 후보가 열거된다. 이는 화학적 성공이나 안정성이 확인된 106개 분자라는 뜻이 아니라 **코드의 제약 규칙을 통과한 조합 수**다.
 
 현재 `Design`에는 target과 isotype이 있지만 실제 항체의 이름, 서열, 결합 부위가 없다. 사용자가 원하는 기존 항체와 linker, payload 조합을 다루려면 항체 catalog와 결합 부위 및 화학 정보를 추가해야 한다. label restriction이 `Unclear`인 상황을 이 열거기로 바로 넘겨도 새로운 후보의 불확실성이 해소되는 것은 아니다.
 
@@ -377,12 +372,12 @@ AlphaFold 계열은 향후 후보의 구조적 검토에 사용할 수 있다. �
 
 | 검토 대상 | 우선 읽을 파일 |
 |---|---|
-| UI와 정렬 | [recommend.py](../recommend.py), [form.py](../form.py), [tui.py](../tui.py), [term.py](../term.py) |
-| AI 연결과 추론 | [mondo_index.py](../mondo_index.py), [vulnerability_model.py](../vulnerability_model.py) |
-| 학습과 통계 | [lab.py](../lab.py), [lab_ft.py](../lab_ft.py), [paired.py](../paired.py) |
-| 라벨 근거와 검사값 | [drug_evidence.py](../drug_evidence.py), [restrictions.py](../restrictions.py), [labs.py](../labs.py) |
-| 설정 | [comorbidity_registry.csv](../../conf/comorbidity_registry.csv), [mondo_organ_axis.yaml](../../conf/ontology/mondo_organ_axis.yaml), [label_restrictions.yaml](../../conf/label_restrictions.yaml) |
-| 이전 연구 기록 | [recommender_changes.md](recommender_changes.md), [recommender_technical_report.md](recommender_technical_report.md), [validation_plan.md](validation_plan.md) |
-| 구조 설계 연구 | [MODEL_CARD.md](../../docs/MODEL_CARD.md), [findings.md](../../report/findings.md), [design_space.yaml](../../conf/design_space.yaml) |
+| UI와 정렬 | [recommend.py](../../recommend.py), [form.py](../../form.py), [tui.py](../../tui.py), [term.py](../../term.py) |
+| AI 연결과 추론 | [mondo_index.py](../../mondo_index.py), [vulnerability_model.py](../../vulnerability_model.py) |
+| 학습과 통계 | [lab.py](../../lab.py), [lab_ft.py](../../lab_ft.py), [paired.py](../../paired.py) |
+| 라벨 근거와 검사값 | [drug_evidence.py](../../drug_evidence.py), [restrictions.py](../../restrictions.py), [labs.py](../../labs.py) |
+| 설정 | [comorbidity_registry.csv](../../../conf/comorbidity_registry.csv), [mondo_organ_axis.yaml](../../../conf/ontology/mondo_organ_axis.yaml), [label_restrictions.yaml](../../../conf/label_restrictions.yaml) |
+| 이전 연구 기록 | [recommender_changes.md](recommender_changes.md), [recommender_technical_report.md](recommender_technical_report.md), [validation_plan.md](../../docs/validation_plan.md) |
+| 구조 설계 연구 | [MODEL_CARD.md](../../../docs/MODEL_CARD.md), [findings.md](../../../report/findings.md), [design_space.yaml](../../../conf/design_space.yaml) |
 
 이후 계획은 [모델 정확도 개선 계획](model_accuracy_plan_2026-10-12.md)에서 이어진다.

@@ -382,7 +382,7 @@ East-Asian source.
   users are Korean.
 
 **Taiwan NHIRD** **[v paper]**
-- Jiang et al. 2018, *Sci Rep* 8:4557 (doi 10.1038/s41598-018-21779-y), an epidemiological human
+- Jiang et al. 2018, *Sci Rep* 8:4557 (doi `10.1038/s41598-018-21779-y`), an epidemiological human
   disease network. CC BY.
 - The supplement was not checked (PMC served a captcha); check it on nature.com.
 
@@ -501,9 +501,9 @@ Next tier, after the five above:
 
 ## Sources checked for this note
 
-- DDXPlus: https://figshare.com/articles/dataset/DDXPlus_Dataset/20043374 ; https://arxiv.org/abs/2205.09148
-- KorMedMCQA: https://huggingface.co/datasets/sean0042/KorMedMCQA ; https://arxiv.org/abs/2403.01469
-- KBMC: https://huggingface.co/datasets/SungJoo/KBMC ; https://arxiv.org/abs/2403.16158
+- DDXPlus: https://figshare.com/articles/dataset/DDXPlus_Dataset/20043374 ; `https://arxiv.org/abs/2205.09148`
+- KorMedMCQA: https://huggingface.co/datasets/sean0042/KorMedMCQA ; `https://arxiv.org/abs/2403.01469`
+- KBMC: https://huggingface.co/datasets/SungJoo/KBMC ; `https://arxiv.org/abs/2403.16158`
 - CSIRO DAP licences: https://research.csiro.au/dap/licences/csiro-data-licence
 - phecodeX: https://github.com/PheWAS/phecodeX ; https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10627409/
 - Orphadata licence / linearisation: https://www.orphadata.com ; https://www162.lamp.le.ac.uk/vocabularies/ordo
@@ -520,7 +520,7 @@ Next tier, after the five above:
 - Korean networks: https://pmc.ncbi.nlm.nih.gov/articles/PMC7180516/ ; https://pure.skku.edu/en/publications/network-analysis-of-human-diseases-using-korean-nationwide-claims/
 - Taiwan: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5852024/
 - CPRD Kuan 2023: https://livrepository.liverpool.ac.uk/3167169/
-- UK Biobank pair papers: https://www.ukbiobank.ac.uk/publications/discovering-comorbid-diseases-using-an-inter-disease-interactivity-network-based-on-biobank-scale-phewas-data/ ; https://www.medrxiv.org/content/10.1101/2021.01.15.21249242v1
+- UK Biobank pair papers: https://www.ukbiobank.ac.uk/publications/discovering-comorbid-diseases-using-an-inter-disease-interactivity-network-based-on-biobank-scale-phewas-data/ ; `https://www.medrxiv.org/content/10.1101/2021.01.15.21249242v1`
 - JMDC: https://www.bridgetodata.org/node/107473
 - ADC meta-analyses: https://pmc.ncbi.nlm.nih.gov/articles/PMC10686142/ ; https://ecancer.org/en/news/22395-analysis-reveals-adverse-effects-of-complex-cancer-therapies-called-antibody-drug-conjugates
 - VigiBase access: https://who-umc.org/vigibase-data-access/vigibase-extract ; https://who-umc.org/vigibase/vigibase-faqs/

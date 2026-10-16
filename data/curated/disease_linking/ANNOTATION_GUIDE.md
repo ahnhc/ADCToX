@@ -1,6 +1,6 @@
 # Disease-linking gold: annotation guide (pilot v0)
 
-This gold set measures Task A of `ml/docs/model_accuracy_plan_2026-10-12.md`: free-text comorbidity -> disease concept -> organs.
+This gold set measures Task A of `ml/docs/archive/model_accuracy_plan_2026-10-12.md`: free-text comorbidity -> disease concept -> organs.
 The pilot was labelled by two independent LLM annotators (Claude Sonnet 5.5 subagents) and then adjudicated.
 **It is an LLM-annotated silver set, not expert gold.** Clinician review is still required before any number from it is quoted as accuracy.
 

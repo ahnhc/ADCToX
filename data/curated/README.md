@@ -1,4 +1,4 @@
-# Curated data (machine-labelled; see ml/docs/model_review_2026-10-12.md)
+# Curated data (machine-labelled; see ml/docs/archive/model_review_2026-10-12.md)
 
 | folder | content | labeller |
 |---|---|---|
