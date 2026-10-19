@@ -1,0 +1,247 @@
+[
+{
+"id": "MONDO:0400003",
+"concept": "- MONDO:0400003 | skeletal fluorosis | syn: fluorosis of the skeleton | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A condition that results from excessive fluoride ingestion leading to fluoride accumulation in the bone progressively over many years. The early symptoms of skeletal fluorosis, include stiffness and p...",
+"ko": "골격 불소증",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002413",
+"concept": "- MONDO:0002413 | glycogen storage disease I | syn: G6P deficiency; glycogen storage disease due to G6P deficiency; glycogen storage disease due to glucose-6-phosphatase deficiency; glycogen storage disease I | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: Glycogenosis due to glucose-6-phosphatase (G6P) deficiency or glycogen storage disease, (GSD), type 1, is a group of inherited metabolic diseases, including types a and b, and characterized by poor to...",
+"ko": "글리코겐 저장병 I형",
+"alt": [
+"폰 기르케병"
+],
+"organs": [
+"hepatic",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015104",
+"concept": "- MONDO:0015104 | porphyria cutanea tarda | syn: PCT | ancestors: dermatitis, hepatic porphyria, skin disorder, inflammatory disease | def: The most common form of chronic hepatic porphyria. It is characterized by bullous photodermatitis.",
+"ko": "만발성 피부 포르피린증",
+"alt": [
+"늦은피부포르피린증"
+],
+"organs": [
+"hepatic",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004703",
+"concept": "- MONDO:0004703 | bladder carcinoma in situ | syn: bladder flat carcinoma in situ; bladder flat CIS; carcinoma in situ of bladder; carcinoma in situ of the urinary bladder | ancestors: non-invasive bladder urothelial carcinoma, in situ carcinoma, bladder flat intraepithelial lesion, bladder transitional cell carcinoma | def: Also known as carcinoma in situ of the urinary bladder or high grade intraurothelial neoplasia, this is a flat lesion of the transitional cell epithelium characterized by severe cytologic atypia. This...",
+"ko": "방광 상피내암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012170",
+"concept": "- MONDO:0012170 | autosomal recessive nonsyndromic hearing loss 36 | syn: autosomal recessive nonsyndromic hearing loss 36; deafness, neurosensory, without vestibular involvement, autosomal dominant | ancestors: hearing loss, autosomal recessive, autosomal recessive disease, nonsyndromic genetic hearing loss, autosomal genetic disease | def: Any autosomal recessive nonsyndromic deafness in which the cause of the disease is a mutation in the ESPN gene.",
+"ko": "상염색체 열성 비증후군성 난청 36형",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005996",
+"concept": "- MONDO:0005996 | trichuriasis | syn: trichuriasis infection; Trichuris trichiura caused disease or disorder; Trichuris trichiura disease or disorder; Trichuris trichiura infectious disease | ancestors: Enoplea infectious disease, Nematoda infectious disease, helminthiasis, parasitic infectious disease | def: An infection that is caused by the nematode Trichuris trichiura, a soil-transmitted helminth, which is transmitted via food and/or water contaminated with the eggs of the worm. Symptoms are usually mi...",
+"ko": "편충증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0975909",
+"concept": "- MONDO:0975909 | multisystem langerhans cell histiocytosis | ancestors: Langerhans cell histiocytosis, histiocytosis, leukocyte disorder, dendritic cell tumor",
+"ko": "다계통 랑게르한스세포 조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016473",
+"concept": "- MONDO:0016473 | familial rhabdoid tumor | syn: familial posterior fossa brain tumor syndrome of infancy; familial posterior fossa brain tumour syndrome of infancy; familial rhabdoid tumor; hereditary rhabdoid tumor | ancestors: rhabdoid tumor, hereditary neoplastic syndrome, embryonal neoplasm, soft tissue sarcoma | def: A neoplastic syndrome most often caused by mutations in the hSNF5/INI1 tumor suppressor gene. It is characterized by the development of an atypical teratoid/rhabdoid tumor in infancy and early childho...",
+"ko": "가족성 횡문근양 종양",
+"alt": [
+"가족성 영아 후두개와 뇌종양 증후군"
+],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001170",
+"concept": "- MONDO:0001170 | hemiplegia | ancestors: palsy, central nervous system disorder, nervous system disorder, disease by body system or component | def: Severe or complete loss of motor function on one side of the body. This condition is usually caused by brain diseases that are localized to the cerebral hemisphere opposite to the side of weakness. Le...",
+"ko": "편마비",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021067",
+"concept": "- MONDO:0021067 | mediastinal germ cell tumor | syn: germ cell neoplasm of mediastinum; germ cell neoplasm of the mediastinum; germ cell tumor of mediastinum; germ cell tumor of the mediastinum | ancestors: extragonadal germ cell tumor, neoplasm of mediastinum, germ cell tumor, neoplasm of thorax | def: A germ cell tumor that arises from the mediastinum. Representative examples include seminoma, embryonal carcinoma, yolk sac tumor, teratoma, and mixed germ cell tumor.",
+"ko": "종격동 생식세포 종양",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015231",
+"concept": "- MONDO:0015231 | Bartter syndrome | syn: Bartter disease; Bartter's syndrome; hypokalemic alkalosis; renal tubular normotensive hypokalemic alkalosis with hypercalciuria | ancestors: syndromic disease, renal tubular transport disease, inherited renal tubular disease, disease by body system or component | def: Bartter syndrome is a group of rare renal tubular disease characterized by impaired salt reabsorption in the thick ascending limb of Henle's loop and clinically by the association of hypokalemic alkal...",
+"ko": "바터 증후군",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0024685",
+"concept": "- MONDO:0024685 | Philadelphia-positive myelogenous leukemia | syn: Ph1-positive granulocytic leukaemia; Ph1-positive granulocytic leukemia; Ph1-positive myelocytic leukaemia; Ph1-positive myelocytic leukemia | ancestors: myeloid leukemia, leukemia, myeloproliferative neoplasm, hematopoietic and lymphoid cell neoplasm",
+"ko": "필라델피아 염색체 양성 골수성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011256",
+"concept": "- MONDO:0011256 | emphysema, congenital, with deafness, penoscrotal web, and intellectual disability | syn: emphysema, congenital, with deafness, penoscrotal web, and intellectual disability; emphysema, congenital, with deafness, penoscrotal web, and mental retardation | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "난청, 음낭 날개막 및 지적장애를 동반한 선천성 폐기종",
+"alt": [],
+"organs": [
+"pulmonary",
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006658",
+"concept": "- MONDO:0006658 | arteriolosclerosis | syn: arteriolosclerosis (morphologic abnormality) | ancestors: coronary atherosclerosis, coronary artery disorder, atherosclerosis, arterial disorder | def: The thickening of the wall of the small arteries and arterioles. It is caused by deposition of hyaline material in the wall or concentric smooth muscle wall hypertrophy. It results in lumen narrowing ...",
+"ko": "세동맥경화증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006594",
+"concept": "- MONDO:0006594 | pemphigus | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: Pemphigus is a group of rare autoimmune diseases that cause blistering of the skin and mucous membranes (mouth, nose, throat, eyes, and genitals).This conditioncan occur at any age, but often strikes ...",
+"ko": "천포창",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001737",
+"concept": "- MONDO:0001737 | tetanus neonatorum | syn: neonatal tetanus | ancestors: tetanus, primary bacterial infectious disease, infectious disorder of the nervous system, Clostridium infectious disease | def: A syndrome of generalized rigidity with muscle spasms and seizures in the neonatal period resulting from Clostridium tetani toxin production.",
+"ko": "신생아 파상풍",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015177",
+"concept": "- MONDO:0015177 | metaphyseal anadysplasia | syn: Maroteaux-Verloes-Stanescu syndrome; regressive metaphyseal dysplasia | ancestors: skeletal dysplasia, hereditary disease, bone disorder, disease of genetic or genomic mechanism | def: Metaphyseal anadysplasia is a very rare form of metaphyseal dysplasia characterized by short stature, rhizomelic micromelia and a mild varus deformity of the legs evident from the first months of life...",
+"ko": "골간단 아나이형성증",
+"alt": [
+"마로토-베를로-스타네스쿠 증후군"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019474",
+"concept": "- MONDO:0019474 | hepatosplenic T-cell lymphoma | syn: Hepatosplenic gamma/Delta T-cell lymphoma | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm | def: An extranodal, mature T-cell non-Hodgkin lymphoma that originates from cytotoxic T-cells, usually of gamma/delta T-cell type. It is characterized by the presence of medium-size neoplastic lymphocytes ...",
+"ko": "간비장 T세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0043377",
+"concept": "- MONDO:0043377 | juvenile spondyloarthropathy | syn: JSpA; juvenile Spondyloarthritis; juvenile spondyloarthropathy | ancestors: ankylosing spondylitis, spondylitis, spondyloarthropathy, rheumatoid arthritis | def: A group of chronic, inflammatory childhood diseases characterized by arthritis and enthesitis. This disorder can affect the axial skeleton in late childhood or young adulthood.",
+"ko": "소아 척추관절병증",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000577",
+"concept": "- MONDO:0000577 | congenital anemia | syn: congenital anaemia (disease); congenital anemia; congenital anemia (disease) | ancestors: anemia, congenital hematological disorder, hematologic disorder, disease by body system or component | def: Anemia, the cause of which is present at birth.",
+"ko": "선천성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+}
+]

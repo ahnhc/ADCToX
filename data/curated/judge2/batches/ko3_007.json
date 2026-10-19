@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0006742",
+"concept": "- MONDO:0006742 | endemic goiter | syn: iodine-deficiency-related endemic goiter; simple goiter | ancestors: goiter, nutritional deficiency disease, thyroid gland disorder, nutritional disorder | def: Thyroid gland enlargement caused by inadequate dietary iodine intake. It occurs in areas in which the soil lacks iodine compounds or there is low seafood consumption.",
+"ko": "풍토성 갑상선종",
+"alt": [
+"지방성 갑상선종"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004913",
+"concept": "- MONDO:0004913 | alternating esotropia | ancestors: esotropia, strabismus, ocular motility disease, cranial nerve neuropathy",
+"ko": "교대성 내사시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001049",
+"concept": "- MONDO:0001049 | Dressler syndrome | syn: Dressler syndrome; Dressler's syndrome; postmyocardial infarction syndrome | ancestors: pericarditis, pericardium disorder, inflammatory disease, heart disorder | def: A pericarditis characterized by inflammation, occurring after injury, located in pericardium.",
+"ko": "드레슬러 증후군",
+"alt": [
+"심근경색후 증후군"
+],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0013979",
+"concept": "- MONDO:0013979 | primary ciliary dyskinesia 19 | syn: CILD19; ciliary dyskinesia, primary, type 19; LRRC6 primary ciliary dyskinesia; primary ciliary dyskinesia 19 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the LRRC6 gene.",
+"ko": "원발성 섬모운동이상증 19형",
+"alt": [
+"LRRC6 원발성 섬모운동이상증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004451",
+"concept": "- MONDO:0004451 | sarcomatous intrahepatic cholangiocarcinoma | syn: intrahepatic cholangiocarcinoma with extensive sarcomatous changes; sarcomatoid intrahepatic cholangiocarcinoma | ancestors: intrahepatic cholangiocarcinoma, intrahepatic bile duct cancer, carcinoma of liver and intrahepatic biliary tract, cholangiocarcinoma | def: A rare, aggressive variant of intrahepatic cholangiocarcinoma. It is characterized by the presence of adenocarcinoma cells that are intermingled with malignant pleomorphic spindle cells.",
+"ko": "육종성 간내 담관암종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020519",
+"concept": "- MONDO:0020519 | hand-Schuller-Christian disease | syn: chronic multifocal Langerhans cell histiocytosis; classic multifocal Langerhans cell histiocytosis; hand-Schuller-Christian disease; hand-SChüller-Christian disease | ancestors: Langerhans cell histiocytosis, histiocytosis, leukocyte disorder, dendritic cell tumor | def: A multifocal, unisystem form of Langerhans-cell histiocytosis. There is involvement of multiple sites in one organ system, most frequently the bone. Patients are usually young children presenting with...",
+"ko": "한-쉴러-크리스천병",
+"alt": [],
+"organs": [
+"haematologic",
+"ocular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019245",
+"concept": "- MONDO:0019245 | lysosomal lipid storage disorder | syn: inborn error of lipid storage; lipid storage disease; lipoid storage disease; lipoid storage disorder | ancestors: inherited lipid metabolism disorder, lysosomal storage disease, inborn errors of metabolism, hereditary disease | def: An inherited metabolic disorder in which harmful amounts of lipids accumulate in cells and tissues. Because of a functionally impaired hydrolase or auxiliary protein, their lipid substrates cannot be ...",
+"ko": "리소좀 지질 축적 질환",
+"alt": [
+"지질 저장병"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0042484",
+"concept": "- MONDO:0042484 | disseminated sporotrichosis | syn: disseminated sporotrichosis | ancestors: systemic mycosis, sporotrichosis, fungal infectious disease, infectious disease",
+"ko": "파종성 스포로트릭스증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021653",
+"concept": "- MONDO:0021653 | cutaneous focal mucinosis | ancestors: cutaneous mucinosis, skin disorder, integumentary system disorder, disease by body system or component",
+"ko": "피부 국소 점액증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007420",
+"concept": "- MONDO:0007420 | autosomal dominant deafness - onychodystrophy syndrome | syn: autosomal dominant deafness-onychodystrophy syndrome; DDOD syndrome; deafness-onychodystrophy syndrome, autosomal dominant | ancestors: integumentary system disorder, syndromic disease, hereditary disease, disease by body system or component | def: Dominant deafness-onychodystrophy (DDOD) syndrome is a multiple congenital anomalies syndrome characterized by congenital hearing impairment, small or absent nails on the hands and feet, and small ter...",
+"ko": "상염색체 우성 난청-손발톱 이영양증 증후군",
+"alt": [
+"DDOD 증후군"
+],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009832",
+"concept": "- MONDO:0009832 | pancreatic agenesis | syn: congenital pancreatic agenesis; pancreatic agenesis type 1; partial agenesis of the pancreas; partial pancreatic agenesis | ancestors: hereditary disease, disorder of development or morphogenesis, disease of genetic or genomic mechanism, disease by developmental or physiological process | def: Partial agenesis of the pancreas is characterized by the congenital absence of a critical mass of pancreatic tissue.",
+"ko": "췌장 무형성증",
+"alt": [
+"선천성 췌장 무형성증"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0042976",
+"concept": "- MONDO:0042976 | vitamin B deficiency | ancestors: vitamin deficiency disorder, nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism | def: A condition due to deficiency in any member of the vitamin B complex. These B vitamins are water-soluble and must be obtained from the diet because they are easily lost in the urine. Unlike the lipid-...",
+"ko": "비타민 B 결핍증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012624",
+"concept": "- MONDO:0012624 | acyl-CoA dehydrogenase 9 deficiency | syn: ACAD9 deficiency; acyl-CoA dehydrogenase 9 deficiency; mitochondrial complex I deficiency due to ACAD9 deficiency; mitochondrial complex I deficiency, nuclear type 20 | ancestors: disorder of fatty acid oxidation and ketogenesis, mitochondrial complex I deficiency, nuclear type, disorder of fatty acid and ketone body metabolism, inherited fatty acid metabolism disorder | def: A rare disorder leading to a deficiency of complex I of the respiratory chain and is characterized by neurological dysfunction, hepatic failure and cardiomyopathy.",
+"ko": "아실-CoA 탈수소효소 9 결핍증",
+"alt": [
+"ACAD9 결핍증"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012883",
+"concept": "- MONDO:0012883 | acute promyelocytic leukemia | syn: acute myeloblastic leukaemia 3; acute myeloblastic leukemia 3; acute myeloid leukaemia with t(15;17)(q22;q12);(PML/RARalpha) and variants; acute myeloid leukemia with t(15;17)(q22;q12);(PML/RARalpha) and variants | ancestors: inherited acute myeloid leukemia, acute myeloid leukemia, hereditary disorder of connective tissue, myeloid leukemia | def: An aggressive form of acute myeloid leukemia (AML), characterized by arrest of leukocyte differentiation at the promyelocyte stage, due to a specific chromosomal translocation t(15;17) in myeloid cell...",
+"ko": "급성 전골수구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006537",
+"concept": "- MONDO:0006537 | conjunctival pigmentation | ancestors: conjunctival deposit, conjunctival disorder, eye adnexa disorder, eye disorder | def: Pigmented lesions that arise from the conjunctiva include nevus, complexion-associated melanosis (CAM), primary acquired melanosis (PAM), and malignant melanoma.1,2All of these lesions arise from mela...",
+"ko": "결막 색소침착",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009291",
+"concept": "- MONDO:0009291 | glycogen storage disease III | syn: AGL glycogen storage disease; amylo-1,6-glucosidase deficiency; Cori disease; Cori-Forbes disease | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: Glycogen debranching enzyme (GDE) deficiency, or glycogen storage disease type 3 (GSD 3), is a form of glycogen storage disease characterized by severe muscle weakness and hepatopathy.",
+"ko": "글리코겐 축적병 III형",
+"alt": [
+"코리병"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0003781",
+"concept": "- MONDO:0003781 | bronchitis | syn: bronchial infection; bronchus inflammation; inflammation of bronchus | ancestors: bronchial disorder, tracheobronchitis, lower respiratory tract disorder, inflammatory disease | def: An acute or chronic inflammatory process affecting the bronchi.",
+"ko": "기관지염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015451",
+"concept": "- MONDO:0015451 | univentricular heart | syn: Double inlet left ventricle | ancestors: univentricular cardiopathy, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder | def: Univentricular heart (UVH) is a severe congenital cardiac malformation characterized by both atria related entirely or almost entirely to one functionally single ventricular chamber. The clinical mani...",
+"ko": "단심실",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009445",
+"concept": "- MONDO:0009445 | ichthyosis-hepatosplenomegaly-cerebellar degeneration syndrome | syn: Dykes-Markes-Harper syndrome; Dykes-Marks-Harper syndrome | ancestors: syndromic disease, hereditary ataxia, disease by body system or component, atactic disorder | def: Ichthyosis-hepatosplenomegaly-cerebellar degeneration syndrome is characterized by ichthyosis, hepatosplenomegaly and late-onset cerebellar ataxia. It has been described in two brothers. Transmission ...",
+"ko": "어린선-간비장비대-소뇌 변성 증후군",
+"alt": [
+"다이크스-마크스-하퍼 증후군"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018870",
+"concept": "- MONDO:0018870 | arterial calcification of infancy | syn: generalised arterial calcification of infancy; Generalized Arterial Calcification of Infancy; generalized arterial calcification of infancy; idiopathic infantile arterial calcification | ancestors: hereditary disease, vascular disorder, disease of genetic or genomic mechanism, cardiovascular disorder | def: Idiopathic arterial calcification of infancy is a rare condition characterized by extensive calcification and stenosis of the large and medium sized arteries.",
+"ko": "영아 동맥 석회화",
+"alt": [
+"영아 전신 동맥 석회화"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+}
+]

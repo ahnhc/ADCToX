@@ -1,0 +1,238 @@
+[
+{
+"id": "MONDO:0002177",
+"concept": "- MONDO:0002177 | hyperinsulinism | syn: hyperinsulinism; hyperinsulinism (disease) | ancestors: endocrine pancreas disorder, glucose metabolism disease, pancreas disorder, metabolic disease | def: Abnormally high levels of insulin in the blood.",
+"ko": "고인슐린혈증",
+"alt": [
+"과인슐린증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010088",
+"concept": "- MONDO:0010088 | mucosulfatidosis | syn: juvenile sulfatidosis, Austin type; MSD; mucosulfatidosis; Multiple Sulfatase Deficiency | ancestors: integumentary system disorder, developmental anomaly of metabolic origin, sphingolipidosis, lysosomal storage disease with skeletal involvement | def: Multiple sulfatase deficiency (MSD) is a very rare and fatal lysosomal storage disease characterized by a clinical phenotype that combines the features of different sulfatase deficiencies (whether lys...",
+"ko": "점액황산지질증",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0700112",
+"concept": "- MONDO:0700112 | heterotaxy, visceral, 5, autosomal | syn: HTX5; NODAL visceral heterotaxy; situs inversus viscerum; SIV | ancestors: visceral heterotaxy, syndromic disease, hereditary disease, congenital heart malformation | def: Any visceral hetetotaxy in which the cause of the disease is a mutation in the NODAL gene.",
+"ko": "상염색체 내장이소증 5형",
+"alt": [],
+"organs": [
+"cardiovascular",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001229",
+"concept": "- MONDO:0001229 | small intestine diverticulitis | syn: diverticulitis of small intestine; diverticulosis of small intestine with haemorrhage; small intestine diverticulitis | ancestors: diverticulitis, small intestine disorder, intestinal disorder, inflammatory disease | def: A diverticulitis that involves the small intestine.",
+"ko": "소장 게실염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0056799",
+"concept": "- MONDO:0056799 | synovium disorder | syn: disease of layer of synovial tissue; disease or disorder of layer of synovial tissue; disorder of layer of synovial tissue; disorder of synovium | ancestors: musculoskeletal system disorder, disease by body system or component, human disease, disease | def: A disease or disorder that involves the layer of synovial tissue.",
+"ko": "윤활막 질환",
+"alt": [
+"활막 질환"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0042484",
+"concept": "- MONDO:0042484 | disseminated sporotrichosis | syn: disseminated sporotrichosis | ancestors: systemic mycosis, sporotrichosis, fungal infectious disease, infectious disease",
+"ko": "파종성 스포로트릭스증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006645",
+"concept": "- MONDO:0006645 | alcoholic polyneuropathy | ancestors: toxic polyneuropathy, polyneuropathy, peripheral neuropathy, peripheral nervous system disorder | def: Any polyneuropathy where damage to the peripheral nervous system (including the peripheral elements of the autonomic nervous system) is associated with chronic ingestion of alcoholic beverages. The di...",
+"ko": "알코올성 다발신경병증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019472",
+"concept": "- MONDO:0019472 | extranodal nasal NK/T cell lymphoma | syn: angiocentric T-cell lymphoma; extranodal NK/T lymphoma-nasal; extranodal NK/T-cell lymphoma, nasal type; lethal midline granuloma | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, Epstein-Barr virus-associated lymphoproliferative disorder, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma | def: A rare, malignant neoplasm mainly affecting men in the fifth decade of life, that usually arises in the nose, paranasal sinuses, orbits or upper airway, and that can present with a nasal mass, nasal b...",
+"ko": "림프절외 비강형 NK/T세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008090",
+"concept": "- MONDO:0008090 | cyclic neutropenia | syn: CH; CN; cyclic agranulocytosis; cyclic hematopoiesis | ancestors: constitutional neutropenia, ELANE-related neutropenia, severe chronic neutropenia, neutropenia | def: A hematologic disorder caused by a mutation in the ELANE (ELA2) gene, characterized by regular 21-day cyclic fluctuations in the number of blood neutrophils, monocytes, eosinophils, lymphocytes, plate...",
+"ko": "주기성 호중구감소증",
+"alt": [
+"주기성 백혈구감소증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008207",
+"concept": "- MONDO:0008207 | chondromalacia patellae | syn: chondromalacia of patella; chondromalacia patellae; patella chondromalacia | ancestors: chondromalacia, skeletal dysplasia, articular cartilage disorder, hereditary disease | def: Familial chondromalacia patellae is an inherited bone disorder described in 5 families in 1963 and is characterized by localized patellar pain and male-to-male transmission.",
+"ko": "무릎뼈 연골연화증",
+"alt": [
+"슬개골 연골연화증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005173",
+"concept": "- MONDO:0005173 | actinic keratosis | syn: actinic (solar) keratosis; actinic keratosis; actinic keratosis (disease); solar keratosis | ancestors: pre-malignant neoplasm, skin neoplasm, neoplasm, precancerous condition | def: A precancerous lesion of the skin composed of atypical keratinocytes. It is characterized by the presence of thick, scaly patches of skin. Several histologic variants have been described, including at...",
+"ko": "광선각화증",
+"alt": [
+"일광각화증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016006",
+"concept": "- MONDO:0016006 | Cockayne syndrome | ancestors: autosomal recessive disease, developmental anomaly of metabolic origin, progeroid syndrome, DNA repair disease | def: A multisystem condition characterized by short stature, a characteristic facial appearance, premature aging, photosensitivity, progressive neurological dysfunction, and intellectual deficit.",
+"ko": "코케인 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001286",
+"concept": "- MONDO:0001286 | exotropia | syn: divergent concomitant strabismus; divergent strabismus | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder | def: A form of strabismus in which the eyes are deviated laterally.",
+"ko": "외사시",
+"alt": [
+"바깥 사시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015791",
+"concept": "- MONDO:0015791 | peripheral precocious puberty | syn: GIPP; gonadotropin independent precocious puberty; gonadotropin-independent precocious puberty; precocious pseudopuberty | ancestors: precocious puberty, gonadal disorder, disorder of development or morphogenesis, reproductive system disorder | def: Precocious puberty caused by sex hormones.",
+"ko": "말초성 성조숙증",
+"alt": [
+"성선자극호르몬 비의존성 성조숙증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0400003",
+"concept": "- MONDO:0400003 | skeletal fluorosis | syn: fluorosis of the skeleton | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A condition that results from excessive fluoride ingestion leading to fluoride accumulation in the bone progressively over many years. The early symptoms of skeletal fluorosis, include stiffness and p...",
+"ko": "골격 불소증",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004549",
+"concept": "- MONDO:0004549 | cork-handlers' disease | syn: cork worker's lung; cork workers lung; Suberosis | ancestors: fungal lung infectious disease, hypersensitivity pneumonitis, occupational lung disease, fungal infectious disease | def: An extrinsic allergic alveolitis caused by inhalation of cork dust containing the antigens produced by the fungus Penicillium glabrum. The symptoms include dyspnea, wheezing cough, fever and asthenia.",
+"ko": "코르크 취급자병",
+"alt": [
+"코르크폐증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005864",
+"concept": "- MONDO:0005864 | muscle cancer | syn: cancer of muscle structure; malignant muscle neoplasm; malignant muscle structure neoplasm; malignant muscle tumor | ancestors: musculoskeletal system cancer, musculoskeletal system disorder, cancer, disease by body system or component | def: A malignant neoplasm affecting the skeletal or smooth muscles. Malignant neoplasms arising from the skeletal muscles are called rhabdomyosarcomas. Malignant neoplasms arising from the smooth muscles a...",
+"ko": "근육암",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001711",
+"concept": "- MONDO:0001711 | hepatic encephalopathy | syn: portal-systemic encephalopathy | ancestors: toxic encephalopathy, brain disorder, nervous system disorder, central nervous system disorder | def: Hepatic encephalopathy is a syndrome observed in some patients with cirrhosis. It is defined as a spectrum of neuropsychiatric abnormalities in patients with liver dysfunction, when other known brain ...",
+"ko": "간성 뇌병증",
+"alt": [
+"간성 뇌증"
+],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0017373",
+"concept": "- MONDO:0017373 | poliomyelitis | syn: acute poliomyelitis; Polia; polio; poliomyelitis | ancestors: myelitis, anterior horn disorder, acquired motor neuron disease, acute disease | def: An acute infectious disorder that affects the nervous system. It is caused by the poliovirus. The virus spreads by direct contact, and can be prevented by prophylaxis with the polio vaccine.",
+"ko": "소아마비",
+"alt": [
+"폴리오",
+"회색질척수염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001066",
+"concept": "- MONDO:0001066 | late yaws | syn: gummata and ulcers due to yaws; gummatous frambeside; nodular late yaws | ancestors: yaws, cutaneous syphilis, syphilis, skin disease caused by bacterial infection | def: Late yaws is the tertiary, non-contagious stage of yaws, endemic tropical treponemal nonvenereal infection. Late yaws is characterized by destructive and deforming lesions of the skin, bones, and join...",
+"ko": "후기 딸기종",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4
+}
+]

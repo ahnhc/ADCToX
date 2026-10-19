@@ -1,0 +1,252 @@
+[
+{
+"id": "MONDO:0020355",
+"concept": "- MONDO:0020355 | coloboma of eye lens | ancestors: coloboma, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "수정체 결손",
+"alt": [
+"수정체 콜로보마"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001207",
+"concept": "- MONDO:0001207 | neonatal respiratory failure | syn: respiratory failure of newborn | ancestors: acute respiratory failure, acute disease, respiratory failure, human disease",
+"ko": "신생아 호흡부전",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001638",
+"concept": "- MONDO:0001638 | protein-deficiency anemia | syn: anaemia due to protein deficiency | ancestors: deficiency anemia, anemia, hematologic disorder, disease by body system or component",
+"ko": "단백질 결핍성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021284",
+"concept": "- MONDO:0021284 | carcinoma in situ of ureter | syn: carcinoma in situ of the ureter; carcinoma in situ of ureter; stage 0 ureter carcinoma; stage 0is carcinoma of the ureter | ancestors: in situ carcinoma, ureter carcinoma, carcinoma, high grade malignant neoplasm | def: A in situ carcinoma that involves the ureter.",
+"ko": "요관 상피내암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018646",
+"concept": "- MONDO:0018646 | sclerosing cholangitis | syn: sclerosing cholangitis; sclerosing cholangitis (disease) | ancestors: cholangitis, non-neoplastic bile duct disorder, inflammatory disease, bile duct disorder | def: A chronic, autoimmune inflammatory liver disorder characterized by narrowing and scarring of the lumen of the bile ducts. It is often seen in patients with ulcerative colitis. Signs and symptoms inclu...",
+"ko": "경화성 담관염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004685",
+"concept": "- MONDO:0004685 | Waldeyer's ring cancer | syn: cancer of tonsillar ring; malignant neoplasm of tonsillar ring; malignant neoplasm of Waldeyer's ring; malignant tonsillar ring neoplasm | ancestors: immune system cancer, oropharynx cancer, lymphoid system disorder, cancer | def: A malignant neoplasm involving the tonsillar ring.",
+"ko": "발다이어 고리암",
+"alt": [
+"왈다이어 고리암"
+],
+"organs": [
+"haematologic",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:1060188",
+"concept": "- MONDO:1060188 | small plaque parapsoriasis | ancestors: parapsoriasis, dermatitis, skin disorder, inflammatory disease | def: A variant of parapsoriasis characterized by round-to-oval plaques less than 5cm in diameter, and it rarely progresses.",
+"ko": "소판형 부건선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001624",
+"concept": "- MONDO:0001624 | acute sphenoidal sinusitis | syn: acute sphenoid sinusitis; sphenoid sinusitis, acute | ancestors: sphenoid sinusitis, acute disease, sinusitis, disorder of facial skeleton | def: Acute form of sphenoid sinusitis.",
+"ko": "급성 나비굴염",
+"alt": [
+"급성 접형동염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0017078",
+"concept": "- MONDO:0017078 | cephalocele | syn: cephalocele; cephalocele (disease); cranium bifidum; encephalocele | ancestors: congenital nervous system disorder, disorder of development or morphogenesis, nervous system disorder, disease by developmental or physiological process | def: A congenital neural tube closure defect resulting in the protrusion of the brain through a skull opening. When the protrusion includes the meninges, the term encephalomeningocele is used.",
+"ko": "두개류",
+"alt": [
+"뇌류"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0013950",
+"concept": "- MONDO:0013950 | peroxisome biogenesis disorder 11B | syn: peroxisome biogenesis disorder 11B; peroxisome biogenesis disorder type 11B | ancestors: peroxisome biogenesis disorder due to PEX13 defect, Zellweger spectrum disorders, developmental anomaly of metabolic origin, peroxisome biogenesis disorder",
+"ko": "퍼옥시좀 생합성 장애 11B형",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001154",
+"concept": "- MONDO:0001154 | Siberian tick typhus | syn: North Asian tick fever; North Asian tick fever (disorder) [ambiguous] | ancestors: spotted fever, Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis | def: A spotted fever that has material basis in Rickettsia sibirica, which is transmitted by ticks (Dermacentor nuttalli, Dermacentor marginatus and Haemaphysalis concinna). The infection has symptom fever...",
+"ko": "시베리아 진드기 발진티푸스",
+"alt": [
+"북아시아 진드기열"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0012110",
+"concept": "- MONDO:0012110 | growth delay due to insulin-like growth factor type 1 deficiency | syn: growth delay-deafness- intellectual disability syndrome; growth retardation with deafness and mental retardation due to IGF1 deficiency; IGF-1 deficiency; primary insulin-like growth factor deficiency | ancestors: hereditary disease, growth hormone insensitivity syndrome, disease of genetic or genomic mechanism, syndromic disease | def: Growth delay due to insulin-like growth factor I deficiency is characterized by the association of intrauterine and postnatal growth retardation with sensorineural deafness and intellectual deficit.",
+"ko": "인슐린유사성장인자 1형 결핍에 의한 성장 지연",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008867",
+"concept": "- MONDO:0008867 | biliary atresia | syn: atresia of bile ducts; biliary atresia, congenital; congenital biliary atresia; isolated atresia of bile ducts | ancestors: cholestasis, non-neoplastic bile duct disorder, bile duct disorder, endocrine system disorder | def: A rare, biliary tract disease characterized by progressive obliterative cholangiopathy of the intra- and extrahepatic bile ducts, occurring in the embryonic/ perinatal period, leading to severe and pe...",
+"ko": "담도 폐쇄증",
+"alt": [
+"선천성 담도 폐쇄증"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001028",
+"concept": "- MONDO:0001028 | acute pericementitis | syn: acute periodontitis; periodontitis, acute | ancestors: periodontitis, acute disease, periodontal disorder, inflammatory disease | def: An acute inflammatory process that affects the tissues that surround and support the teeth.",
+"ko": "급성 치주염",
+"alt": [
+"급성 치근막염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0975902",
+"concept": "- MONDO:0975902 | isolated congenital cholesteatoma of the middle ear | ancestors: middle ear anomaly, developmental defect during embryogenesis, otorhinolaryngologic disease, disorder of development or morphogenesis",
+"ko": "고립성 선천 중이 진주종",
+"alt": [
+"고립성 선천성 중이 콜레스테아토마"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011274",
+"concept": "- MONDO:0011274 | Muenke syndrome | syn: craniosynostosis - dysmorphism - brachydactyly; craniosynostosis brachydactyly; craniosynostosis with facial dysmorphism and brachydactyly syndrome; craniosynostosis-dysmorphism-brachydactyly syndrome | ancestors: syndromic craniosynostosis, syndromic disease, craniosynostosis, skeletal dysplasia | def: Muenke syndrome is a syndromic craniosynostosis with significant phenotypic variability, usually characterized by coronal synostosis, midfacial retrusion, strabismus, hearing loss and developmental de...",
+"ko": "뮌케 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018134",
+"concept": "- MONDO:0018134 | disorder of melanin metabolism | ancestors: inborn disorder of amino acid and other organic acid metabolism, inborn errors of metabolism, hereditary disease, metabolic disease",
+"ko": "멜라닌 대사 장애",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018754",
+"concept": "- MONDO:0018754 | cyanide poisoning | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease",
+"ko": "시안화물 중독",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013937",
+"concept": "- MONDO:0013937 | peroxisome biogenesis disorder 6B | syn: peroxisome biogenesis disorder 6B; peroxisome biogenesis disorder type 6B | ancestors: peroxisome biogenesis disorder due to PEX10 defect, Zellweger spectrum disorders, developmental anomaly of metabolic origin, peroxisome biogenesis disorder",
+"ko": "퍼옥시좀 생합성 장애 6B형",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017695",
+"concept": "- MONDO:0017695 | glycogen storage disease due to glycogen branching enzyme deficiency, progressive hepatic form | syn: GBE deficiency, progressive hepatic form; glycogen storage disease type 4, progressive hepatic form; glycogen storage disease type IV, progressive hepatic form; glycogenosis due to glycogen branching enzyme deficiency, progressive hepatic form | ancestors: glycogen storage disease due to glycogen branching enzyme deficiency, disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism",
+"ko": "글리코겐 분지효소 결핍에 의한 글리코겐 저장병, 진행성 간형",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+}
+]

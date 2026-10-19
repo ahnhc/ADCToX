@@ -9,8 +9,8 @@ Control items themselves are never written to a dataset.
 
 Applied where:
     organ      labels/verified_v4.jsonl (reviewer opus-5.5): changed concepts; linking_models.load_organ_labels reads it last
-    sym/ko     judge2/gen/*.jsonl rewritten: dropped lines removed, fixed texts replaced
-    junk       judge2/gen/junk_*.jsonl rewritten: real complaints removed
+    sym/ko     judge2/gen/*.jsonl rebuilt from the pre-review files by ml/dataset_review_gen.py (the review numbers lines of
+    junk       those files; rewriting in place applied the changes twice on shifted lines when the merge ran twice)
     profiles   disease_profiles/profiles_*.jsonl rewritten with the fixed fields
     mondo_ko   korean/review/rv_opus.jsonl (the merge of ml/mondo_ko_batches.py reads review files last)
 CSV exports for people: data/curated/review_opus/csv/*.csv, one row per item with its source and review status.
@@ -83,7 +83,8 @@ def main(apply):
     print(json.dumps(summary, ensure_ascii=False, indent=1))
     if not apply: return
     os.makedirs(R + "csv", exist_ok=True)
-    apply_organ(changes["organ"]); apply_gen("sym", changes["sym"]); apply_gen("ko", changes["ko"]); apply_junk(changes["junk"])
+    apply_organ(changes["organ"])
+    import dataset_review_gen; dataset_review_gen.main(True)                     # sym / ko / junk: rebuilt from the pre-review files
     apply_profiles(changes["profiles"]); apply_mondo_ko(changes["mondo_ko"])
     with open(R + "review_queue.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh); w.writerow(["set", "batch", "id_or_i", "verdict", "value", "reason"])
@@ -105,7 +106,7 @@ def apply_organ(ch):
 
 
 def rewrite(pattern, decide):
-    """rewrite each file of a glob: decide(global index, row) -> row, or None to drop; -> (kept, dropped, fixed)"""
+    """rewrite each file of a glob: decide(index, row) -> row, or None to drop; -> (kept, dropped, fixed)"""
     files = sorted(glob.glob(pattern)); i = 0; kept = dropped = fixed = 0
     for f in files:
         out = []
@@ -118,22 +119,6 @@ def rewrite(pattern, decide):
         with open(f, "w", encoding="utf-8") as fh:
             for x in out: fh.write(json.dumps(x, ensure_ascii=False) + "\n")
     return kept, dropped, fixed
-
-
-def apply_gen(set_, ch):
-    by = {int(r["i"]): r for r in ch if isinstance(r.get("i"), int)}
-    def decide(i, x):
-        r = by.get(i)
-        if not r: return x
-        if r["verdict"] == "drop": return None
-        if r["verdict"] == "fix" and r.get("text", "").strip(): return dict(x, text=r["text"].strip())
-        return x
-    print(set_, rewrite(D + f"judge2/gen/{set_}_*.jsonl", decide))
-
-
-def apply_junk(ch):
-    drop = {int(r["i"]) for r in ch if r.get("verdict") == "real" and isinstance(r.get("i"), int)}
-    print("junk", rewrite(D + "judge2/gen/junk_*.jsonl", lambda i, x: None if i in drop else x))
 
 
 def apply_profiles(ch):

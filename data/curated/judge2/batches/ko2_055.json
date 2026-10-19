@@ -1,0 +1,228 @@
+[
+{
+"id": "MONDO:0018531",
+"concept": "- MONDO:0018531 | carcinoma of liver and intrahepatic biliary tract | syn: carcinoma of liver and IBT; liver and intrahepatic bile duct carcinoma; liver and intrahepatic biliary tract cancer; liver and intrahepatic biliary tract carcinoma | ancestors: liver cancer, digestive system carcinoma, digestive system cancer, malignant endocrine neoplasm | def: A carcinoma that arises from the hepatocytes or intrahepatic bile ducts. The main subtypes are hepatocellular carcinoma (hepatoma) and cholangiocarcinoma.",
+"ko": "간 및 간내담도 암종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0850231",
+"concept": "- MONDO:0850231 | erythema nodosum | ancestors: panniculitis, integumentary system disorder, connective tissue disorder, inflammatory disease | def: A panniculitis that is characterized by sudden onset of painful, erythematous, subcutaneous nodules mainly localized to the pretibial areas. Lesions are usually bilateral and symmetrical, ranging from...",
+"ko": "결절홍반",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010269",
+"concept": "- MONDO:0010269 | Coats disease | syn: Coats disease; congenital retinal telangiectasia; exudative retinopathy; Leber miliary aneurysm | ancestors: retinal telangiectasia, congenital vitreoretinal dysplasia, retinal vascular disorder, congenital nervous system disorder | def: Coats disease (CD) is an idiopathic disorder characterized by retinal telangiectasia with deposition of intraretinal or subretinal exudates, potentially leading to retinal detachment and unilateral bl...",
+"ko": "코츠병",
+"alt": [
+"삼출성 망막병증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009835",
+"concept": "- MONDO:0009835 | subacute sclerosing panencephalitis | syn: Immunosuppressive measles encephalitis; SSPE; Subacute inclusion body encephalitis; Subacute sclerosing panencephalitis | ancestors: viral encephalitis, infectious encephalitis, viral infection of central nervous system, primary viral infectious disease | def: A chronic progressive encephalitis that develops a few years after measles infection and presents with a demyelination of the cerebral cortex.",
+"ko": "아급성 경화성 범뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024263",
+"concept": "- MONDO:0024263 | neonatal aspiration syndrome | ancestors: syndromic disease, lung disorder, disease by body system or component, lower respiratory tract disorder | def: Aspiration of meconium, blood, amniotic fluid or gastric contents around the time of delivery resulting in clinical symptoms from airway obstruction, parenchymal injury, and ventilation-perfusion mism...",
+"ko": "신생아 흡인 증후군",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0007652",
+"concept": "- MONDO:0007652 | gastric mucosal hypertrophy | syn: giant hypertrophic gastritis; hypertrophic gastritis; hypertrophic gastropathy; hypoproteinemic hypertrophic gastropathy | ancestors: hereditary disease, gastritis, disease of genetic or genomic mechanism, stomach disorder | def: A rare premalignant hyperproliferative gastropathy characterized by massive overgrowth of foveolar cells in the gastric lining, resulting in large gastric folds, and manifesting with epigastric pain, ...",
+"ko": "위점막 비대",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002929",
+"concept": "- MONDO:0002929 | pulmonary immaturity | syn: primary atelectasis of newborn | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component",
+"ko": "폐 미성숙",
+"alt": [
+"신생아 일차 무기폐"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0043230",
+"concept": "- MONDO:0043230 | ciguatera fish poisoning | syn: ciguatera fish poisoning; ciguatoxin causing toxic effect | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Poisoning caused by ingestion of seafood containing microgram levels of ciguatoxins. The poisoning is characterized by gastrointestinal, neurological and cardiovascular disturbances.",
+"ko": "시구아테라 어류 중독",
+"alt": [],
+"organs": [
+"cardiovascular",
+"gastrointestinal",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008420",
+"concept": "- MONDO:0008420 | seborrheic keratosis | syn: basal cell papilloma; keratosis Seborrheica; keratosis, seborrheic, somatic | ancestors: keratosis, hereditary skin disorder, skin disorder, keratinization disease | def: A common benign skin neoplasm usually affecting older individuals. The lesions usually are multiple and arise in the face, chest, and shoulders. They appear as black or brown, slightly elevated skin l...",
+"ko": "지루각화증",
+"alt": [
+"지루성 각화증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0000490",
+"concept": "- MONDO:0000490 | glomerulosclerosis | syn: glomerular sclerosis | ancestors: glomerular disorder, kidney disorder, urinary system disorder, disease by body system or component | def: A hardening of the kidney glomerulus caused by scarring of the blood vessels.",
+"ko": "사구체경화증",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016113",
+"concept": "- MONDO:0016113 | bulbospinal muscular atrophy | syn: bulbospinal muscular atrophy; SBMA; spinal and bulbal muscular atrophy; spinal-bulbar muscular atrophy | ancestors: spinal muscular atrophy, anterior horn disorder, hereditary motor neuron disease, spinal cord disorder",
+"ko": "구척수성 근위축증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018477",
+"concept": "- MONDO:0018477 | bilirubin encephalopathy | syn: bilirubin encephalopathy; kernicterus | ancestors: brain disorder, inborn disorder of bilirubin metabolism, hereditary neurological disease, central nervous system disorder",
+"ko": "빌리루빈 뇌병증",
+"alt": [
+"핵황달"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019466",
+"concept": "- MONDO:0019466 | lymphomatoid granulomatosis | syn: LYG | ancestors: Epstein-Barr virus-associated lymphoproliferative disorder, diffuse large B-cell lymphoma, Epstein-Barr virus-related tumor, neoplasm of mature B-cells | def: A very rare Epstein-Barr virus (EBV)-driven lymphoproliferative disease most commonly occurring in adults (in the fourth to sixth decade of life) and commonly affecting the lungs (with presentations v...",
+"ko": "림프종양육아종증",
+"alt": [],
+"organs": [
+"haematologic",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001984",
+"concept": "- MONDO:0001984 | candidal paronychia | ancestors: candidiasis, opportunistic mycosis, fungal infectious disease, infectious disease | def: A candidiasis that results in fungal infection of the outer-most layer located in nail, has material basis in Candida species. The infection causes painful, red, swollen area around the nail, often at...",
+"ko": "칸디다성 조갑주위염",
+"alt": [
+"칸디다 손발톱주위염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001063",
+"concept": "- MONDO:0001063 | cardia cancer | syn: cancer of cardia of stomach; cardia of stomach cancer; malignant cardia of stomach neoplasm; malignant neoplasm of cardia of stomach | ancestors: gastric cancer, digestive system cancer, gastric neoplasm, digestive system disorder | def: A malignant neoplasm involving the cardia of stomach.",
+"ko": "분문부 암",
+"alt": [
+"분문암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006591",
+"concept": "- MONDO:0006591 | panniculitis | syn: inflammation of subcutaneous adipose tissue; Subcutaneous adipose tissue; subcutaneous adipose tissue inflammation; Subcutaneous tissue | ancestors: integumentary system disorder, connective tissue disorder, inflammatory disease, disease by body system or component | def: Inflammation of the subcutaneous adipose tissue.",
+"ko": "지방층염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0020331",
+"concept": "- MONDO:0020331 | indolent systemic mastocytosis | syn: indolent systemic mastocytosis (morphologic abnormality); ISM; ism | ancestors: systemic mastocytosis, mastocytosis, mast cell neoplasm, leukocyte disorder | def: Indolent systemic mastocytosis (ISM) is a benign form of systemic mastocytosis (SM) characterized by an abnormal proliferation of mast cells either only in bone marrow or in numerous tissues.",
+"ko": "무통성 전신 비만세포증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006500",
+"concept": "- MONDO:0006500 | hemangioma | syn: benign hemangioma; hemangioma; hemangioma, benign | ancestors: benign blood vessel neoplasm, cardiovascular organ benign neoplasm, blood vessel neoplasm, benign neoplasm | def: A benign vascular lesion characterized by the formation of capillary-sized or cavernous vascular channels.",
+"ko": "혈관종",
+"alt": [],
+"organs": [
+"cardiovascular",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004573",
+"concept": "- MONDO:0004573 | ariboflavinosis | syn: riboflavin deficiency; vitamin B2 deficiency | ancestors: hereditary disease, nutritional deficiency disease, disease of genetic or genomic mechanism, nutritional disorder | def: A dietary deficiency of riboflavin causing a syndrome chiefly marked by cheilitis, angular stomatitis, glossitis associated with a purplish red or magenta-colored tongue that may show fissures, cornea...",
+"ko": "리보플라빈 결핍증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005502",
+"concept": "- MONDO:0005502 | dengue disease | syn: break bone fever; Dengue; Dengue fever; Dengue virus caused disease or disorder | ancestors: Flaviviridae infectious disease, vector-borne disease, primary viral infectious disease, infectious disease | def: Dengue fever (DF), caused by dengue virus, is an arboviral disease characterized by an initial non-specific febrile illness that can sometimes progress to more severe forms manifesting capillary leaka...",
+"ko": "뎅기병",
+"alt": [
+"뎅기열"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 6
+}
+]

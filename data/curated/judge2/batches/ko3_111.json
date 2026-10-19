@@ -1,0 +1,266 @@
+[
+{
+"id": "MONDO:0005692",
+"concept": "- MONDO:0005692 | cat-scratch disease | syn: bartonellosis due to Bartonella henselae infection; benign lymphoreticulosis; Cat-scratch fever | ancestors: lymphadenitis, bartonellosis, lymph node disorder, inflammatory disease | def: Cat scratch disease is an infectious illness caused by the bacteria bartonella (Bartonella henselae). It is believed to be transmitted by cat scratches, bites, or exposure to cat saliva. This self-lim...",
+"ko": "고양이할큄병",
+"alt": [
+"묘소병"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009326",
+"concept": "- MONDO:0009326 | congenital heart block | syn: congenital atrioventricular block | ancestors: atrioventricular block, heart conduction disease, atrioventricular dissociation, heart disorder | def: Heart block that occurs on or before 28 days of life.",
+"ko": "선천성 심장차단",
+"alt": [
+"선천성 방실차단"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018309",
+"concept": "- MONDO:0018309 | Hirschsprung disease | syn: aganglionic megacolon; congenital intestinal aganglionosis; congenital megacolon; Hirschsprung disease | ancestors: hereditary disease, intestinal motility disease, neurocristopathy, disease of genetic or genomic mechanism | def: Hirschsprung disease (HSCR) is a congenital intestinal motility disorder that is characterized by signs of intestinal obstruction due to the presence of an aganglionic segment of variable extent in th...",
+"ko": "히르슈슈프룽병",
+"alt": [
+"선천성 거대결장",
+"무신경절 거대결장"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008109",
+"concept": "- MONDO:0008109 | ocular cicatricial pemphigoid | syn: ocular cicatricial pemphigoid; ocular pemphigoid | ancestors: mucous membrane pemphigoid, autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease | def: Ocular cicatricial pemphigoid (OCP) is a form of mucous membrane pemphigoid (a group of rare, chronic autoimmune disorders) that affects the eyes. In the early stages, people with OCPgenerally experie...",
+"ko": "안구 반흔성 유천포창",
+"alt": [
+"안구 유천포창"
+],
+"organs": [
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004897",
+"concept": "- MONDO:0004897 | hypotropia | syn: downward ocular deviation; hypotropia; sunset sign | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder | def: Vertical strabismus in which there is permanent downward deviation of the visual axis of one eye.",
+"ko": "하사시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008723",
+"concept": "- MONDO:0008723 | very long chain acyl-CoA dehydrogenase deficiency | syn: acyl-CoA dehydrogenase, very long-chain deficiency; Very Long Chain Acyl CoA Dehydrogenase Deficiency (LCAD); very long chain acyl-CoA dehydrogenase deficiency; very long-chain acyl-CoA dehydrogenase deficiency | ancestors: disorder of fatty acid oxidation and ketogenesis, familial hypertrophic cardiomyopathy, disorder of fatty acid and ketone body metabolism, inherited fatty acid metabolism disorder | def: An inherited disorder of mitochondrial long-chain fatty acid oxidation with a variable presentation including: cardiomyopathy, hypoketotic hypoglycemia, liver disease, exercise intolerance and rhabdom...",
+"ko": "극장쇄 아실-CoA 탈수소효소 결핍증",
+"alt": [
+"VLCAD 결핍증"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002635",
+"concept": "- MONDO:0002635 | periodontal disorder | syn: disease of periodontium; disease or disorder of periodontium; disorder of periodontium; periodontal disease | ancestors: skeletal system disorder, musculoskeletal system disorder, disease by body system or component, human disease | def: An inflammatory process of the gingival tissues and/or periodontal membrane of the teeth, resulting in an abnormally deep gingival sulcus, possibly producing periodontal pockets and loss of alveolar b...",
+"ko": "치주 질환",
+"alt": [
+"치주 장애"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0007448",
+"concept": "- MONDO:0007448 | familial dermatographia | syn: dermatographic urticaria; dermographism | ancestors: physical urticaria, urticaria, dermatitis, skin disorder | def: Familial dermographism is a condition also known as skin writing. When people who have dermatographia lightly scratch their skin, the scratches redden into a raised wheal similar to hives. Signs and s...",
+"ko": "가족성 피부묘기증",
+"alt": [
+"피부묘기성 두드러기"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010193",
+"concept": "- MONDO:0010193 | Weaver syndrome | syn: camptodactyly-overgrowth-unusual facies syndrome; Weaver syndrome | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-intellectual disability, skeletal dysplasia, overgrowth syndrome | def: Weaver syndrome (WVS) is a rare, multisystem disorder characterized by tall stature, a typical facial appearance (hypertelorism, retrognathia) and variable intellectual disability. Additional features...",
+"ko": "위버 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0024304",
+"concept": "- MONDO:0024304 | ichthyosis vulgaris | syn: ichthyosis vulgaris | ancestors: inherited ichthyosis, ichthyosis, hereditary skin disorder, epidermal disease | def: The most common form of ichthyosis. It is an autosomal dominant inherited or acquired disorder characterized by scaling and desquamation of the skin.",
+"ko": "보통 어린선",
+"alt": [
+"심상성 어린선"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0010554",
+"concept": "- MONDO:0010554 | Abruzzo-Erickson syndrome | syn: ABERS; Abruzzo-Erickson syndrome; CHARGE-like syndrome; cleft palate-coloboma-deafness syndrome | ancestors: syndromic disease, hereditary disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, disease by body system or component | def: Abruzzo-Erikson syndrome is a multiple congenital anomalies syndrome characterized by a cleft palate, ocular coloboma, hypospadias, mixed conductive-sensorineural hearing loss, short stature, and radi...",
+"ko": "아브루초-에릭슨 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013439",
+"concept": "- MONDO:0013439 | congenital bile acid synthesis defect 3 | syn: BASD3; bile acid synthesis defect, congenital, type 3; CBAS3; congenital bile acid synthesis defect caused by mutation in CYP7B1 | ancestors: congenital bile acid synthesis defect, CYP7B1-related disorder of oxysterol accumulation, steroid inherited metabolic disorder, inherited lipid metabolism disorder | def: Congenital bile acid synthesis defect type 3 (BAS defect type 3) is a severe anomaly of bile acid synthesis characterized by severe neonatal cholestatic liver disease.",
+"ko": "선천성 담즙산 합성 결함 3형",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009251",
+"concept": "- MONDO:0009251 | fructose-1,6-bisphosphatase deficiency | syn: fructose-1,6-bisphosphatase deficiency; fructose-1,6-diphosphatase deficiency | ancestors: disorder of gluconeogenesis, glucose metabolism disease, inborn carbohydrate metabolic disorder, metabolic disease | def: Fructose-1,6-biphosphatase (FBP) deficiency is a disorder of fructose metabolism characterized by recurrent episodes of fasting hypoglycemia with lactic acidosis, that may be life-threatening in neona...",
+"ko": "과당-1,6-이인산가수분해효소 결핍증",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013091",
+"concept": "- MONDO:0013091 | glycogen storage disease IXc | syn: glycogen storage disease caused by mutation in PHKG2; glycogen storage disease IXc; glycogen storage disease type IXc; GSD type 9C | ancestors: glycogen storage disease due to liver phosphorylase kinase deficiency, glycogen storage disease IX, disorder of glycogen metabolism, liver disorder | def: A liver PhK deficiency caused by variants in the PHKG2 gene",
+"ko": "글리코겐 저장병 IXc형",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006760",
+"concept": "- MONDO:0006760 | fetal erythroblastosis | syn: erythroblastosis fetalis; HDFN; hemolytic disease of the fetus or newborn; hemolytic disease of the foetus or newborn | ancestors: microcytic anemia, anemia, hematologic disorder, disease by body system or component | def: A disorder of the fetus or newborn that occurs when fetal cells that are coated with IgG alloantibodies from the mother attack antigens inherited from the father. Severity can range from absence of sy...",
+"ko": "태아 적아구증",
+"alt": [
+"태아 적모구증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0017441",
+"concept": "- MONDO:0017441 | congenital absence of upper arm and forearm with hand present | syn: humero-radio-ulnar intercalary transverse meromelia; phocomelia | ancestors: skeletal dysplasia, dysostosis, hereditary disease, bone disorder | def: A congenital malformation in which the upper portion of a limb is either shortened or absent.",
+"ko": "손이 있는 상완 및 전완 선천성 결손",
+"alt": [
+"해표지증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0003789",
+"concept": "- MONDO:0003789 | hereditary papillary renal cell carcinoma | syn: familial renal papillary carcinoma; hereditary kidney papillary carcinoma; hereditary papillary carcinoma of kidney; hereditary papillary carcinoma of the kidney | ancestors: hereditary renal cell carcinoma, papillary renal cell carcinoma, renal cell adenocarcinoma, inherited kidney disorder | def: A familial carcinoma inherited in an autosomal dominant trait. It is characterized by the development of multiple, bilateral papillary renal cell carcinomas. The carcinomas range from microscopic lesi...",
+"ko": "유전성 유두상 신세포암",
+"alt": [
+"가족성 신장 유두암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001103",
+"concept": "- MONDO:0001103 | giardiasis | syn: Giardia infection | ancestors: protozoa infectious disease, parasitic intestinal disorder, parasitic infectious disease, intestinal disorder | def: An infection of the small intestine caused by the flagellated protozoan giardia lamblia. It is spread via contaminated food and water and by direct person-to-person contact.",
+"ko": "지아르디아증",
+"alt": [
+"편모충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006865",
+"concept": "- MONDO:0006865 | necrotizing ulcerative gingivitis | syn: acute necrotising ulcerative gingivitis [ambiguous]; acute necrotising ulcerative gingivostomatitis [ambiguous]; ANUG; Vincent angina | ancestors: gingivitis, gingival disorder, stomatitis, periodontal disorder | def: A bacterial infectious process affecting the gums. It is characterized by the development of necrotic, ulcerated, and painful lesions with creation of pseudomembranes extending along the gingival marg...",
+"ko": "괴사성 궤양성 치은염",
+"alt": [
+"급성 괴사성 궤양성 치은염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019283",
+"concept": "- MONDO:0019283 | nail anomaly | syn: epidermal appendage anomaly of nail; nail epidermal appendage anomaly | ancestors: nail disorder, integumentary system disorder, disease by body system or component, human disease | def: A epidermal appendage anomaly that involves the nail.",
+"ko": "손발톱 이상",
+"alt": [
+"조갑 이상"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+}
+]

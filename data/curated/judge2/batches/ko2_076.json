@@ -1,0 +1,239 @@
+[
+{
+"id": "MONDO:0037398",
+"concept": "- MONDO:0037398 | pneumonia caused by pseudomonas aeruginosa infection | ancestors: bacterial pneumonia, Pseudomonas aeruginosa infectious disease, bacterial infectious disease, pneumonia | def: A rare pulmonary disease characterized by primary or nonbacteremic pneumonia most frequently arising in an intensive care setting, or bacteremic pneumonia, which is typically associated with neutropen...",
+"ko": "녹농균 폐렴",
+"alt": [
+"녹농균 감염에 의한 폐렴"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020121",
+"concept": "- MONDO:0020121 | muscular dystrophy | ancestors: myopathy, neuromuscular disease, skeletal muscle disorder, nervous system disorder | def: Muscular dystrophy (MD) refers to a group of more than 30 genetic diseases characterized by progressive weakness and degeneration of the skeletal muscles that control movement. Some forms of MD are se...",
+"ko": "근디스트로피",
+"alt": [
+"근육퇴행위축증",
+"근이영양증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018906",
+"concept": "- MONDO:0018906 | follicular lymphoma | syn: follicle center lymphoma; follicle centre lymphoma; follicular center cell lymphoma; follicular centre cell lymphoma | ancestors: neoplasm of mature B-cells, indolent B-cell non-Hodgkin lymphoma, B-cell neoplasm, B-cell non-Hodgkin lymphoma | def: Follicular lymphoma is a form of non-Hodgkin lymphoma characterized by a proliferation of B cells whose nodular structure of follicular architecture is preserved.",
+"ko": "여포성 림프종",
+"alt": [
+"소포성 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0019072",
+"concept": "- MONDO:0019072 | intrahepatic cholestasis | ancestors: cholestasis, bile duct disorder, biliary tract disorder, hepatobiliary disorder | def: A cholestasis characterized by impairment of the bile flow caused by obstruction located in the liver.",
+"ko": "간내 담즙정체",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015687",
+"concept": "- MONDO:0015687 | chronic eosinophilic leukemia | syn: CEL; CEL/hypereosinophilic syndrome; chronic eosinophilic leukemia; chronic eosinophilic leukemia/hypereosinophilic syndrome | ancestors: chronic leukemia, myeloproliferative neoplasm, leukemia, myeloid neoplasm",
+"ko": "만성 호산구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008205",
+"concept": "- MONDO:0008205 | patella aplasia/hypoplasia | syn: patella aplasia or hypoplasia; PTLAH | ancestors: hereditary disease, dysostosis, disease of genetic or genomic mechanism, bone development disease | def: Isolated patella aplasia-hypoplasia is an extremely rare genetic condition characterized by congenital absence or marked reduction of the patellar bone described in only a few families to date.",
+"ko": "무릎뼈 무형성/저형성",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000708",
+"concept": "- MONDO:0000708 | Crohn jejunoileitis | ancestors: Crohn ileitis, Crohn jejunitis, small bowel Crohn disease, Crohn disease",
+"ko": "크론 공장회장염",
+"alt": [
+"크론 공회장염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009563",
+"concept": "- MONDO:0009563 | maple syrup urine disease | syn: BCKD deficiency; BCKDH deficiency; branched chain ketoaciduria; branched-chain 2-ketoacid dehydrogenase deficiency | ancestors: inborn organic aciduria, inborn disorder of branched-chain amino acid metabolism, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: An autosomal recessive inherited disorder caused by mutations in the BCKDHA, BCKDHB, DBT, and DLD genes. It is characterized by a deficiency of branched-chain alpha-keto acid dehydrogenase complex, le...",
+"ko": "단풍당뇨병",
+"alt": [
+"메이플시럽뇨병"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006733",
+"concept": "- MONDO:0006733 | dry eye syndrome | syn: dry eye; dry eye syndrome; dry eye(s); eye(s), dry | ancestors: lacrimal apparatus disorder, syndromic disease, keratoconjunctivitis, eye adnexa disorder | def: A syndrome characterized by dryness of the cornea and conjunctiva. It is usually caused by a deficiency in tear production. Symptoms include a feeling of burning eyes and a possible foreign body prese...",
+"ko": "안구건조증",
+"alt": [
+"건성안 증후군"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0003608",
+"concept": "- MONDO:0003608 | optic atrophy | syn: atrophy of optic disk | ancestors: optic nerve disorder, central nervous system disorder, cranial nerve neuropathy, disorder of visual system | def: A disorder characterized by loss of optic nerve fibers. It may be inherited or acquired. Acquired causes include ischemia, optic nerve neuropathy, glaucoma, trauma, radiation, brain tumors, and multip...",
+"ko": "시신경 위축",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017719",
+"concept": "- MONDO:0017719 | gangliosidosis | ancestors: sphingolipidosis, lysosomal lipid storage disorder, inherited lipid metabolism disorder, lysosomal storage disease | def: A group of autosomal recessive lysosomal storage disorders marked by the accumulation of gangliosides. They are caused by impaired enzymes or defective cofactors required for normal ganglioside degrad...",
+"ko": "강글리오시드증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0000344",
+"concept": "- MONDO:0000344 | Ross river fever | syn: Ross River virus caused disease or disorder; Ross River virus disease; Ross River virus disease or disorder; Ross River virus infectious disease | ancestors: Alphavirus infectious disease, vector-borne disease, Togaviridae infectious disease, infectious disease | def: A disease caused by infection with Ross River virus.",
+"ko": "로스강열",
+"alt": [
+"로스리버열"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019462",
+"concept": "- MONDO:0019462 | splenic marginal zone lymphoma | syn: marginal zone lymphoma of spleen; marginal zone lymphoma of the spleen; SLVL; SMZL | ancestors: marginal zone lymphoma, indolent B-cell non-Hodgkin lymphoma, spleen neoplasm, B-cell non-Hodgkin lymphoma | def: Splenic marginal zone lymphoma is a rare, indolent B-cell non-Hodgkin lymphoma characterized by abnormal clonal proliferation of mature B-lymphocytes with involvement in the spleen, bone marrow and, f...",
+"ko": "비장 변연부 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003019",
+"concept": "- MONDO:0003019 | potassium deficiency disease | syn: hypokalemia | ancestors: mineral metabolism disease, nutritional disorder, metabolic disease, disease by etiologic mechanism | def: Any disorder caused by an insufficient amount or availability of potassium, which generally manifests with myalgia, tetany, hypotension, polyuria, and polydipsia.",
+"ko": "칼륨 결핍증",
+"alt": [
+"저칼륨혈증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002333",
+"concept": "- MONDO:0002333 | splenic abscess | syn: splenic abscess; splenic abscess (disease) | ancestors: splenic disorder, abscess, hematologic disorder, lymphatic system disorder | def: An abscess that is located in the spleen.",
+"ko": "비장 농양",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0800497",
+"concept": "- MONDO:0800497 | interstitial lung disease 2 | syn: fibrocystic pulmonary dysplasia; fibrosing alveolitis, cryptogenic; idiopathic pulmonary fibrosis, familial; interstitial pneumonitis, usual | ancestors: inherited interstitial lung disease, hereditary disease, interstitial lung disease, disease of genetic or genomic mechanism | def: An interstitial lung disease in which the cause of the disease is a variation in the SFTPA2 gene.",
+"ko": "간질성 폐질환 2형",
+"alt": [
+"특발성 폐섬유화"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002457",
+"concept": "- MONDO:0002457 | Treacher-Collins syndrome | syn: Franceschetti-Klein syndrome; mandibulofacial dysostosis without limb anomalies; Treacher Collins Syndrome; Treacher Collins syndrome | ancestors: autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, mandibulofacial dysostosis | def: A congenital disorder of craniofacial development characterized by bilateral symmetrical oto-mandibular dysplasia without abnormalities of the extremities, and associated with several head and neck de...",
+"ko": "트리처 콜린스 증후군",
+"alt": [
+"하악안면이골증"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001595",
+"concept": "- MONDO:0001595 | choreatic disease | syn: benign familial chorea | ancestors: movement disorder, nervous system disorder, disease by body system or component, human disease | def: A neurological condition affecting the involuntary movements. It is characterized by brief, non-repetitive irregular muscle contractions. It is seen in patients with Huntington's disease.",
+"ko": "무도병성 질환",
+"alt": [
+"무도병"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0001060",
+"concept": "- MONDO:0001060 | microinvasive gastric cancer | syn: early gastric cancer; EGC; superficial gastric cancer; superficial spreading gastric cancer | ancestors: gastric adenocarcinoma, gastric carcinoma, adenocarcinoma, gastric cancer | def: An invasive adenocarcinoma confined to the mucosa or mucosa and submucosa of the gastric wall. The regional lymph nodes may or may not be involved. It usually occurs in the lesser curvature. The 5-yea...",
+"ko": "미세침윤 위암",
+"alt": [
+"조기 위암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002517",
+"concept": "- MONDO:0002517 | tenosynovitis of foot and ankle | ancestors: tenosynovitis, tendinitis, arthropathy, tendon sheath disorder",
+"ko": "발과 발목의 힘줄윤활막염",
+"alt": [
+"발 및 발목 건초염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+}
+]

@@ -1,0 +1,252 @@
+[
+{
+"id": "MONDO:0004588",
+"concept": "- MONDO:0004588 | night blindness | syn: nyctalopia | ancestors: blindness (disorder), retinal disorder, vision disorder, nervous system disorder | def: Inability to see clearly in dim light.",
+"ko": "야맹증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021777",
+"concept": "- MONDO:0021777 | acute rheumatic heart disease | syn: acute rheumatic heart disease | ancestors: rheumatic heart disease, acute disease, heart disorder, inflammatory disease | def: Pancarditis, involving inflammation of the endocardium, myocardium, and epicardium. It results from an autoimmune reaction following an infection with Streptococcus pyogenes (Group A Streptococci).",
+"ko": "급성 류마티스 심장병",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0014659",
+"concept": "- MONDO:0014659 | infantile liver failure syndrome 2 | syn: ILFS2; infantile liver failure caused by mutation in NBAS; infantile liver failure syndrome 2; infantile liver failure syndrome type 2 | ancestors: infantile liver failure, hereditary disease, liver failure, disease of genetic or genomic mechanism | def: Any infantile liver failure in which the cause of the disease is a mutation in the NBAS gene.",
+"ko": "영아 간부전 증후군 2형",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0043875",
+"concept": "- MONDO:0043875 | tumor lysis syndrome | syn: tumor lysis syndrome | ancestors: metabolic disease, neoplastic syndrome, disease by developmental or physiological process, syndromic disease | def: A condition of metabolic abnormalities that result from a spontaneous or therapy-related cytolysis of tumor cells. Tumor lysis syndrome typically occurs in aggressive, rapidly proliferating lymphoprol...",
+"ko": "종양 용해 증후군",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001831",
+"concept": "- MONDO:0001831 | irregular astigmatism | ancestors: astigmatism, refractive error, eye disorder, disorder of orbital region",
+"ko": "불규칙 난시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001571",
+"concept": "- MONDO:0001571 | gynecomastia disorder | syn: hypertrophy of breast of male organism; male organism hypertrophy of breast | ancestors: hypertrophy of breast, disorder of sexual differentiation, breast disorder, gonadal disorder | def: Development of breast tissue in males.",
+"ko": "여성형 유방",
+"alt": [
+"남성 유방비대"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020123",
+"concept": "- MONDO:0020123 | metabolic myopathy | ancestors: myopathy, skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder | def: A group of rare inherited disorders characterized by a deficiency of enzymes that are involved in metabolic pathways that affect muscles. The disorders are characterized by muscle dysfunction.",
+"ko": "대사성 근병증",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008882",
+"concept": "- MONDO:0008882 | congenital bowing of long bones | ancestors: congenital deformities of limbs, bent bone dysplasia, disorder of development or morphogenesis, skeletal dysplasia | def: Long bone bowing is a congenital condition described by the presence of symmetric or asymmetric angular deformity and shortening of the long bones, particularly the femurs, tibiae and ulnae.",
+"ko": "선천성 긴뼈 만곡",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021321",
+"concept": "- MONDO:0021321 | malignant tumor of extrahepatic bile duct | syn: cancer of extrahepatic bile duct; malignant extrahepatic bile duct neoplasm; malignant extrahepatic bile duct tumor; malignant extrahepatic bile duct tumour | ancestors: bile duct cancer, extrahepatic bile duct neoplasm, biliary tract cancer, bile duct neoplasm | def: A cancer that involves the extrahepatic bile duct.",
+"ko": "간외 담관 악성 종양",
+"alt": [
+"간외 담관암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018019",
+"concept": "- MONDO:0018019 | lead poisoning | syn: Lead intoxication; plumbism; saturnism | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: 5 ug/dL) is reported to lead to irreversible effects such as loss of cognition, shortening of attention span, alteration of behavior, dyslexia, attention deficit disorder, hypertension, renal impairme...",
+"ko": "납 중독",
+"alt": [
+"연중독"
+],
+"organs": [
+"haematologic",
+"renal",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004235",
+"concept": "- MONDO:0004235 | diverticulitis | syn: digestive tract diverticulum inflammation; inflammation of digestive tract diverticulum | ancestors: intestinal disorder, inflammatory disease, digestive system disorder, disease by developmental or physiological process | def: An infection that develops in the diverticula of the intestinal tract. Signs and symptoms include abdominal pain, fever, and leukocytosis.",
+"ko": "게실염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010012",
+"concept": "- MONDO:0010012 | autoimmune polyendocrinopathy type 2 | syn: APS type 2; APS2; autoimmune polyendocrine syndrome type 2; Autoimmune Polyendocrine Syndrome Type II | ancestors: autoimmune polyendocrinopathy, autoimmune disorder of endocrine system, syndromic disease, polyendocrinopathy | def: Autoimmune polyglandular syndrome of likely polygenic etiology characterized by the presence of primary adrenal insufficiency in association with autoimmune thyroiditis and/or type 1 diabetes mellitus...",
+"ko": "자가면역 다내분비병증 2형",
+"alt": [
+"자가면역 다선성 증후군 2형"
+],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005358",
+"concept": "- MONDO:0005358 | Dengue hemorrhagic fever | ancestors: dengue disease, viral hemorrhagic fever, Flaviviridae infectious disease, vector-borne disease | def: A serious condition caused by Dengue virus infection. Patients present with an acute febrile illness followed by restlessness, irritability, and bleeding. It may lead to hemorrhagic shock and death.",
+"ko": "뎅기출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0018059",
+"concept": "- MONDO:0018059 | meningococcal meningitis | ancestors: meningococcal infection, bacterial meningitis, bacterial infectious disease, infectious meningitis | def: An acute bacterial disease caused by Neisseria meningitides that presents usually, but not always, with a rash (non blanching petechial or purpuric rash), progressively developing signs of meningitis ...",
+"ko": "수막구균성 수막염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0020334",
+"concept": "- MONDO:0020334 | mast cell leukemia | syn: aleukemic mast cell leukaemia; aleukemic mast cell leukemia; Mast cell leukaemia; Mast cell leukemia | ancestors: leukemia, systemic mastocytosis, hematopoietic and lymphoid cell neoplasm, mastocytosis | def: Mast cell leukemia is a malignant form of systemic mastocytosis (SM) characterized, most of the time, by the presence of circulating mast cells.",
+"ko": "비만세포 백혈병",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013792",
+"concept": "- MONDO:0013792 | intracerebral hemorrhage | syn: stroke, hemorrhagic | ancestors: hemorrhagic stroke, stroke disorder, cerebrovascular disorder, brain disorder | def: A cerebrovascular disorder characterized by bleeding into one or both cerebral hemispheres including the basal ganglia and the cerebral cortex. It is often associated with hypertension and craniocereb...",
+"ko": "뇌내출혈",
+"alt": [
+"뇌출혈"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0003090",
+"concept": "- MONDO:0003090 | extrahepatic bile duct carcinoma | syn: carcinoma of extrahepatic bile duct; carcinoma of the extrahepatic bile duct; extrahepatic bile duct cancer; extrahepatic bile duct carcinoma | ancestors: bile duct carcinoma, malignant tumor of extrahepatic bile duct, bile duct cancer, digestive system carcinoma | def: A carcinoma that arises from epithelial cells of the extrahepatic bile duct.",
+"ko": "간외 담관 암종",
+"alt": [
+"간외 담관암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003937",
+"concept": "- MONDO:0003937 | spondylitis | syn: inflammation of vertebra; vertebra inflammation | ancestors: inflammatory disease, vertebral disorder, disease by developmental or physiological process, vertebral column disorder | def: The inflammation of a vertebra.",
+"ko": "척추염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018844",
+"concept": "- MONDO:0018844 | urachal cyst | syn: urachal cyst; urachal cyst (disease) | ancestors: congenital urachal anomaly, urinary system disorder, disease by body system or component, human disease | def: Urachal cyst is a congenital urachal anomaly characterized by a failure of complete closure of the urachus, in which both ends are closed but the central lumen remains patent. It is typically asymptom...",
+"ko": "요막관 낭종",
+"alt": [
+"요막관낭"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011362",
+"concept": "- MONDO:0011362 | myopathy, myofibrillar, 9, with early respiratory failure | syn: ADMERF; distal myopathy with early respiratory muscle involvement; Edstrom myopathy; Edström myopathy | ancestors: progressive muscular dystrophy, autosomal dominant distal myopathy, hereditary inclusion-body myopathy, myofibrillar myopathy",
+"ko": "근원섬유근병증 9, 조기 호흡부전 동반",
+"alt": [],
+"organs": [
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

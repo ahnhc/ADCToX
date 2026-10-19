@@ -1,0 +1,229 @@
+[
+{
+"id": "MONDO:0017356",
+"concept": "- MONDO:0017356 | inborn disorder of ornithine metabolism | syn: disorder of ornithine metabolism; inborn error of ornithine metabolic process; inborn ornithine metabolic process disorder; rare inborn error of ornithine metabolic process | ancestors: inborn disorder of amino acid metabolism, inborn disorder of ornithine or proline metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: An inherited metabolic disease that is has its basis in the disruption of ornithine metabolic process.",
+"ko": "선천성 오르니틴 대사 장애",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009162",
+"concept": "- MONDO:0009162 | Ellis-van Creveld syndrome | syn: Chondroectodermal dysplasia; Ellis Van Creveld Syndrome; Ellis Van Creveld syndrome; Ellis-VAN Creveld syndrome | ancestors: autosomal recessive disease, Jeune syndrome, ectodermal dysplasia syndrome, cardiogenetic disease | def: Ellis-van Creveld syndrome (EVC) is a skeletal and ectoderlam dysplasia characterized by a tetrad of short stature, postaxial polydactyly, ectodermal dysplasia, and congenital heart defects.",
+"ko": "엘리스-판 크레벨트 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"gastrointestinal",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001516",
+"concept": "- MONDO:0001516 | spinal muscular atrophy | ancestors: anterior horn disorder, hereditary motor neuron disease, spinal cord disorder, motor neuron disorder | def: A motor neuron disease that affect the muscles, and characterized by muscle weakness and atrophy resulting from progressive degeneration and irreversible loss of the anterior horn cells in the spinal ...",
+"ko": "척수성 근위축증",
+"alt": [
+"척수근위축증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000919",
+"concept": "- MONDO:0000919 | ampulla of vater cancer | syn: cancer of hepatopancreatic ampulla; hepatopancreatic ampulla cancer; malignant ampulla of Vater neoplasm; malignant ampulla of Vater tumor | ancestors: duodenum cancer, ampulla of vater neoplasm, malignant tumor of extrahepatic bile duct, small intestine cancer | def: A primary or metastatic malignant neoplasm involving the ampulla of Vater.",
+"ko": "바터팽대부암",
+"alt": [
+"십이지장 팽대부암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019158",
+"concept": "- MONDO:0019158 | tropical endomyocardial fibrosis | syn: Davies disease; TEMF | ancestors: non-familial restrictive cardiomyopathy, restrictive cardiomyopathy, intrinsic cardiomyopathy, cardiomyopathy | def: Tropical endomyocardial fibrosis is a restrictive cardiopathy, occurring almost exclusively in children and young adults in tropical and subtropical regions, characterized by endocardial fibrosis, aff...",
+"ko": "열대성 심내막심근섬유증",
+"alt": [
+"데이비스병"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0022037",
+"concept": "- MONDO:0022037 | large-cell immunoblastic lymphoma | ancestors: non-Hodgkin lymphoma, lymphoma, lymphoid neoplasm, lymphoid hemopathy | def: Malignant lymphoma characterized by the presence of immunoblasts with uniformly round-to-oval nuclei, one or more prominent nucleoli, and abundant cytoplasm. This class may be subdivided into plasmacy...",
+"ko": "대세포 면역모세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019241",
+"concept": "- MONDO:0019241 | inborn disorder of the gamma-glutamyl cycle | ancestors: inborn disorder of amino acid and other organic acid metabolism, inborn errors of metabolism, hereditary disease, metabolic disease",
+"ko": "선천성 감마-글루타밀 회로 장애",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000924",
+"concept": "- MONDO:0000924 | compensatory emphysema | ancestors: pulmonary emphysema, chronic obstructive pulmonary disease, obstructive lung disease, tracheal disorder",
+"ko": "보상성 폐기종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017776",
+"concept": "- MONDO:0017776 | nocardiosis | syn: Nocardia caused disease or disorder; Nocardia disease or disorder | ancestors: opportunistic bacterial infectious disease, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Nocardiosis is a local (skin, lung, brain) or disseminated (whole body) acute, subacute, or chronic bacterial infection.",
+"ko": "노카르디아증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0006950",
+"concept": "- MONDO:0006950 | retinal vasculitis | syn: retinal vasculitis | ancestors: retinal vascular disorder, retinitis, vasculitis, retinal disorder | def: Inflammation of the retinal vasculature with various causes including infectious disease; lupus erythematosus, systemic; multiple sclerosis; behcet syndrome; and chorioretinitis.",
+"ko": "망막혈관염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018612",
+"concept": "- MONDO:0018612 | congenital hypothyroidism | syn: congenital hypothyroidism; congenital iodine deficiency syndrome | ancestors: hypothyroidism, thyroid gland disorder, endocrine system disorder, disease by body system or component | def: A thyroid hormone deficiency present from birth.",
+"ko": "선천성 갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0043862",
+"concept": "- MONDO:0043862 | voice disorders | syn: neurologic voice disorder; voice disorder | ancestors: laryngeal disorder, upper respiratory tract disorder, respiratory system disorder, disease by body system or component | def: A pathologic process in the larynx that affects the production of speech. Causes include vocal cord paresis, vocal cord nodule, vocal cord polyp, and laryngitis.",
+"ko": "음성 장애",
+"alt": [
+"목소리 장애"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0017572",
+"concept": "- MONDO:0017572 | tick-borne encephalitis | syn: TBE; Tick-borne viral encephalitis | ancestors: viral encephalitis, tick-borne infectious disease, infectious encephalitis, viral infection of central nervous system | def: Tick-borne encephalitis is caused by an arbovirus of the Flaviviridae family (tick-borne encephalitis virus, TBEV), transmitted principally by the bite of the Ixodes ricinus tick. The symptomology is ...",
+"ko": "진드기매개뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0018456",
+"concept": "- MONDO:0018456 | polyarticular juvenile idiopathic arthritis | syn: juvenile polyarthritis; juvenile polyarticular arthritis; polyarticular JIA | ancestors: juvenile idiopathic arthritis, rheumatic disorder, arthritic joint disease, idiopathic disease",
+"ko": "다관절형 소아 특발성 관절염",
+"alt": [
+"소아 다발관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001594",
+"concept": "- MONDO:0001594 | Achilles bursitis | syn: Achilles bursitis or tendinitis; capped hock | ancestors: bursitis, tendinitis, skeletal ligament disorder, arthropathy | def: An bursitis involving a pathogenic inflammatory response in the calcaneal tendon.",
+"ko": "아킬레스 점액낭염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010528",
+"concept": "- MONDO:0010528 | anosmia | syn: anosmia; anosmia (disease) | ancestors: nasal disorder, otorhinolaryngologic disease, disease by body system or component, human disease | def: Loss of or impaired ability to smell. This may be caused by olfactory nerve diseases; paranasal sinus diseases; viral respiratory tract infections; craniocerebral trauma; smoking; and other conditions...",
+"ko": "후각상실증",
+"alt": [
+"무후각증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000266",
+"concept": "- MONDO:0000266 | pulmonary aspergilloma | syn: lung aspergillosis | ancestors: aspergillosis, fungal lung infectious disease, opportunistic mycosis, fungal infectious disease | def: A aspergillosis that involves the lung.",
+"ko": "폐 아스페르길루스종",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0003805",
+"concept": "- MONDO:0003805 | malignant pericardial mesothelioma | syn: malignant mesothelioma (disease) of pericardium; malignant mesothelioma of pericardium; malignant mesothelioma of the pericardium; pericardial malignant mesothelioma | ancestors: pericardium cancer, malignant mesothelioma, heart cancer, neoplasm of pericardium | def: A rare neoplasm of mesothelial origin that arises from the pericardium.",
+"ko": "악성 심낭 중피종",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011989",
+"concept": "- MONDO:0011989 | leishmaniasis | ancestors: protozoa infectious disease, vector-borne disease, parasitic infectious disease, infectious disease | def: Infectious disease that is transmitted through the bite of hematophagous female phlebotomine sand flies. The clinical spectrum ranges from asymptomatic to clinically overt disease which can remain loc...",
+"ko": "리슈마니아증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020128",
+"concept": "- MONDO:0020128 | motor neuron disorder | syn: anterior horn cell disease; disease of motor neuron; disease or disorder of motor neuron; disorder of motor neuron | ancestors: neurodegenerative disease, neuromuscular disease, central nervous system disorder, nervous system disorder | def: Neurological disease involving the motor neuron.",
+"ko": "운동신경세포 질환",
+"alt": [
+"운동신경원 질환"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+}
+]

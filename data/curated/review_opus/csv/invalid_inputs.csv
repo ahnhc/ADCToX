@@ -40,6 +40,7 @@ placeholder,다음
 chitchat,안녕하세요
 chitchat,반가워요
 chitchat,잘자요
+chitchat,심심해
 chitchat,뭐해
 chitchat,오늘 날씨 좋다
 food,라면
@@ -623,6 +624,7 @@ sentence,강아지 산책시키고 와서 간식 줬더니 좋아하더라.
 sentence,오늘따라 커피가 유난히 맛있네요.
 sentence,새로 산 운동화가 생각보다 편해요.
 sentence,다음 주 제주도 여행 계획 짜고 있어요.
+sentence,야근하느라 저녁을 편의점에서 먹었다.
 sentence,이 노래 제목이 뭔지 아시는 분 계세요?
 sentence,"지하철에서 자리 양보받았어요, 감사하네요."
 sentence,주말 아침에 늦잠 자고 브런치 먹고 싶다.
@@ -1176,7 +1178,6 @@ food,귀갓길간식
 phrase,귀찮은일
 phrase,귀국선물
 activity,심부름
-phrase,심심해
 movie,심야영화
 phrase,심플한디자인
 job,심사위원
@@ -1411,6 +1412,7 @@ refusal,굳이 말 안 할게요
 refusal,알려주기 싫어요
 refusal,개인정보라 안 씀
 refusal,비공개
+refusal,말씀 안 드릴게요
 refusal,그건 비밀이에요
 refusal,다음 질문으로
 refusal,생략할게요
@@ -1437,6 +1439,7 @@ refusal,비밀 유지
 refusal,답변 보류
 refusal,응답 안 할게
 refusal,그냥 둘게요
+refusal,아니요 답 안 함
 refusal,그건 모름 패스
 refusal,대답 유보
 refusal,말 아낄게요
@@ -1483,6 +1486,7 @@ refusal,안 밝힐래요
 refusal,그건 빼고 할게요
 refusal,여기는 패스
 refusal,쓰기 싫은데요
+refusal,말하기 귀찮아요
 refusal,그냥 넘어갈래
 refusal,응답 보류합니다
 refusal,입 닫을게요
@@ -1500,17 +1504,20 @@ unknown_memory,까먹었어요
 unknown_memory,확실하지 않음
 unknown_memory,잘 기억 안 나요
 unknown_memory,아무리 생각해도 모르겠음
+unknown_memory,들은 적이 없어요
 unknown_memory,예전 일이라 모르겠어요
 unknown_memory,전혀 모르겠음
 unknown_memory,그건 잘 모름
 unknown_memory,알 길 없음
 unknown_memory,기억 가물가물
 unknown_memory,어디서 들었는지 모름
+unknown_memory,모르는 일
 unknown_memory,확인 못 함
 unknown_memory,알아본 적 없음
 unknown_memory,정확히 기억 안 남
 unknown_memory,그런 건 몰라요
 unknown_memory,떠오르지 않아요
+unknown_memory,생각나지 않음
 unknown_memory,그건 몰라서요
 unknown_memory,까맣게 모름
 unknown_memory,전혀 기억 없음
@@ -1535,6 +1542,7 @@ unknown_memory,정보 없음
 unknown_memory,몰랐어요
 unknown_memory,전혀 모르는 내용
 unknown_memory,기억이 나지 않습니다
+unknown_memory,떠올릴 수 없어요
 unknown_memory,헷갈려서 모르겠음
 unknown_memory,헷갈려요
 unknown_memory,생각이 안 나서요
@@ -1546,7 +1554,10 @@ unknown_memory,알 리가 없음
 unknown_memory,아무 기억 없음
 unknown_memory,모르쇠
 unknown_memory,그게 뭔지 모르겠어요
+unknown_memory,들어본 기억이 없어요
+unknown_memory,기억 없음
 unknown_memory,몰?
+unknown_memory,음... 모르겠어요
 unknown_memory,글쎄요 모르겠네요
 unknown_memory,잘 모르는 분야
 unknown_memory,아리송함
@@ -1556,6 +1567,7 @@ unknown_memory,알려주실 수 있나요 모름
 unknown_memory,그것도 모르겠음
 unknown_memory,몰라서 못 씀
 unknown_memory,모르는 용어
+unknown_memory,들은 적 있는 것 같기도
 unknown_memory,기억하는 게 없음
 unknown_memory,기억 나는 게 없어요
 unknown_memory,확신이 없음
@@ -1571,11 +1583,13 @@ unknown_memory,잊음
 unknown_memory,생각해 봐도 모름
 unknown_memory,모름이요
 form_filler,해당 사항 없음
+form_filler,기타 사항
 form_filler,미기재
 form_filler,미기재 사항 없음
 form_filler,입력 안 함
 form_filler,입력 안함
 form_filler,나중에
+form_filler,나중에 입력
 form_filler,없습니다
 form_filler,공란
 form_filler,작성 안 함
@@ -2317,6 +2331,7 @@ fragment,이거 맞아
 sports_question,축구 경기 몇 대 몇이야
 sports_question,야구 결과 알려줘
 sports_question,농구 경기 일정
+sports_question,배구팀 응원가 만들어줘
 game_request,롤 시즌 티어 올리는 법
 game_request,마인크래프트 씨앗 값 추천
 game_request,리그 오브 레전드 챔피언 추천

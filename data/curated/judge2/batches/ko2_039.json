@@ -1,0 +1,234 @@
+[
+{
+"id": "MONDO:0027666",
+"concept": "- MONDO:0027666 | codeine toxicity | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease",
+"ko": "코데인 독성",
+"alt": [],
+"organs": [
+"pulmonary",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001658",
+"concept": "- MONDO:0001658 | nontoxic goiter | syn: euthyroid goiter; euthyroid goitre; non-toxic goiter; non-toxic simple goiter | ancestors: goiter, thyroid gland disorder, endocrine system disorder, disease by body system or component | def: Sporadic enlargement of the thyroid gland that is not associated with changes in thyroid function or malignancy.",
+"ko": "비독성 갑상샘종",
+"alt": [
+"단순 갑상샘종"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0015239",
+"concept": "- MONDO:0015239 | abnormal origin of the pulmonary artery | ancestors: conotruncal heart malformations, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder",
+"ko": "폐동맥 기시 이상",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0010480",
+"concept": "- MONDO:0010480 | anemia, nonspherocytic hemolytic, due to G6PD deficiency | syn: anemia, congenital, nonspherocytic hemolytic, 1, G6PD deficient; anemia, nonspherocytic hemolytic, due to G6PD deficiency; Class I G6PD deficiency; class I glucose-6-phosphate dehydrogenase deficiency | ancestors: anemia, nonspherocytic hemolytic, G6PD deficiency, inborn disorder of pentose phosphate metabolism, anemia due to erythrocyte enzyme disorder | def: Any nonspherocytic hemolytic anemia in which the cause of the disease is a variation in the G6PD gene resulting in severely decreased activity levels of the enzyme glucose-6-phosphate dehydrogenase. I...",
+"ko": "G6PD 결핍에 의한 비구형적혈구성 용혈빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005852",
+"concept": "- MONDO:0005852 | mitral valve stenosis | syn: mitral stenosis | ancestors: mitral valve disorder, heart valve disorder, heart disorder, cardiovascular disorder | def: Narrowing of the left atrioventricular mitral orifice.",
+"ko": "승모판 협착증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019848",
+"concept": "- MONDO:0019848 | posterior hypospadias | syn: perineal, scrotal or penoscrotal hypospadias | ancestors: male reproductive system disorder, disorder of development or morphogenesis, reproductive system disorder, disease by developmental or physiological process | def: Posterior hypospadias is a rare, non-syndromic, urogenital tract malformation characterized by an ectopic urethral meatus opening located in the posterior penis, the penoscrotal junction, the scrotum ...",
+"ko": "후부 요도하열",
+"alt": [
+"회음부, 음낭 또는 음경음낭 요도하열"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015041",
+"concept": "- MONDO:0015041 | myelodysplastic syndrome with excess blasts-2 | syn: MDS-EB-2; myelodysplastic syndrome with Excess blasts-2; RAEB-2; RAEB-II | ancestors: myelodysplastic syndrome with excess blasts, myelodysplastic syndrome, hematopoietic and lymphoid cell neoplasm, myeloid hemopathy | def: A myelodysplastic syndrome defined by 10-19% blasts in the bone marrow or 5-19% blasts in the blood and <10% blasts in the bone marrow. Approximately 33% of cases progress to acute leukemia. The progn...",
+"ko": "모세포 증가형 골수이형성 증후군-2",
+"alt": [
+"골수이형성 증후군, 모세포 과잉형-2"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0010787",
+"concept": "- MONDO:0010787 | Kearns-Sayre syndrome | syn: CPEO with ragged red fibers; CPEO with ragged red fibres; CPEO with ragged-Red fibres; Kearns-Sayre syndrome | ancestors: syndromic disease, progressive external ophthalmoplegia, familial dilated cardiomyopathy, mitochondrial oxidative phosphorylation disorder | def: Kearns-Sayre syndrome (KSS) is a mitochondrial disease characterized by progressive external ophthalmoplegia (PEO), pigmentary retinitis and an onset before the age of 20 years. Common additional feat...",
+"ko": "컨스-세이어 증후군",
+"alt": [
+"킨스-세이어 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005820",
+"concept": "- MONDO:0005820 | Lassa fever | syn: Lassa hemorrhagic fever; LF | ancestors: arenavirus hemorrhagic fever, lassa virus infectious disease, vector-borne disease, Arenaviridae infectious disease | def: A viral hemorrhagic fever that is caused by the Lassa virus, which is transmitted by contact with infected rodents; it is characterized by fever, headache, malaise, myalgia, and hearing loss.",
+"ko": "라사열",
+"alt": [
+"라사 출혈열"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019825",
+"concept": "- MONDO:0019825 | congenital coronary artery aneurysm | syn: congenital coronary aneurysm | ancestors: coronary artery congenital malformation, coronary artery disorder, congenital heart disease, congenital heart malformation | def: Congenital coronary artery aneurysm is a rare congenital coronary artery malformation defined as a more than 1.5 fold the normal size dilatation of a coronary artery segment with no identified underly...",
+"ko": "선천성 관상동맥 동맥류",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021478",
+"concept": "- MONDO:0021478 | benign neoplasm of nasopharynx | syn: benign nasopharyngeal neoplasm; benign nasopharyngeal tumor; benign nasopharyngeal tumour; benign neoplasm of the nasopharynx | ancestors: respiratory system benign neoplasm, nasopharyngeal neoplasm, benign neoplasm of pharynx, respiratory system disorder | def: A benign neoplasm that involves the nasopharynx.",
+"ko": "비인두 양성 신생물",
+"alt": [
+"비인두 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009380",
+"concept": "- MONDO:0009380 | Dubin-Johnson syndrome | syn: chronic idiopathic jaundice; Dubin Johnson Syndrome; Dubin-Johnson syndrome; Dubin-Sprinz disease | ancestors: syndromic disease, hereditary hyperbilirubinemia, disease by body system or component, inborn disorder of bilirubin metabolism | def: Dubin-Johnson syndrome (DJS) is a benign, inherited liver disorder characterized clinically by chronic, predominantly conjugated, hyperbilirubinemia and histopathologically by black-brown pigment depo...",
+"ko": "듀빈-존슨 증후군",
+"alt": [
+"만성 특발성 황달"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003014",
+"concept": "- MONDO:0003014 | rhinitis | syn: inflammation of nasal cavity mucosa; nasal cavity mucosa inflammation | ancestors: nasal cavity disorder, mucositis, nasal disorder, upper respiratory tract disorder | def: An inflammation of the mucous membrane lining the nose, usually associated with nasal discharge.",
+"ko": "비염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006722",
+"concept": "- MONDO:0006722 | dental fluorosis | syn: fluorosis; mottled teeth; mottling of enamel | ancestors: tooth disorder, skeletal system disorder, mouth disorder, musculoskeletal system disorder | def: A condition that results from excessive fluoride ingestion during tooth development, resulting in tooth discoloration ranging from white streaks to brown stains and cracks or pits in the tooth enamel.",
+"ko": "치아불소증",
+"alt": [
+"반상치"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0021003",
+"concept": "- MONDO:0021003 | polydactyly | syn: hyperdactyly; polydactylism; polydactyly; polydactyly (disease) | ancestors: hereditary disease, skeletal system disorder, disorder of development or morphogenesis, disease of genetic or genomic mechanism | def: A disease characterized by the presence of polydactyly, including syndromic and non-syndromic forms.",
+"ko": "다지증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006712",
+"concept": "- MONDO:0006712 | corneal edema | ancestors: corneal disorder, eye disorder, disorder of orbital region, disorder of visual system | def: Hazy, swollen cornea.",
+"ko": "각막부종",
+"alt": [
+"각막 부종"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018848",
+"concept": "- MONDO:0018848 | IgG4-related retroperitoneal fibrosis | syn: idiopathic retroperitoneal fibrosis; Ormond disease; Retroperitoneal Fibrosis; retroperitoneal fibrosis | ancestors: immunoglobulin G4-related sclerosing disease, autoimmune disease, immune system disorder, disease by body system or component | def: Retroperitoneal fibrosis (RPF) is characterized by the development of a fibrotic mass surrounding retroperitoneal structures, such as aorta, vena cava, ureters and psoas muscle.",
+"ko": "IgG4 관련 후복막 섬유증",
+"alt": [
+"오르몬드병",
+"특발성 후복막 섬유증"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0011861",
+"concept": "- MONDO:0011861 | breath-holding Spells | syn: breath-holding Spells | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "숨참기발작",
+"alt": [
+"호흡정지발작"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024431",
+"concept": "- MONDO:0024431 | bilirubin metabolism disease | syn: disorder of bilirubin metabolism | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease",
+"ko": "빌리루빈 대사 질환",
+"alt": [
+"빌리루빈 대사 장애"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0004653",
+"concept": "- MONDO:0004653 | atypical chronic myeloid leukemia, BCR-ABL1 negative | syn: aCML; atypical chronic myeloid leukaemia; atypical chronic myeloid leukemia; atypical chronic myeloid leukemia, BCR-ABL1 Negative | ancestors: myeloid leukemia, myelodysplastic/myeloproliferative neoplasm, myelodysplastic/myeloproliferative disease, leukemia | def: A myelodysplastic/myeloproliferative neoplasm characterized by the principal involvement of the neutrophil series with leukocytosis and multilineage dysplasia. The neoplastic cells do not have a Phila...",
+"ko": "비정형 만성 골수성 백혈병, BCR-ABL1 음성",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+}
+]

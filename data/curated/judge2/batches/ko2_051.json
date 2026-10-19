@@ -1,0 +1,234 @@
+[
+{
+"id": "MONDO:0006826",
+"concept": "- MONDO:0006826 | kwashiorkor | syn: nutritional edema with dyspigmentation of skin and/or hair; nutritional oedema with dyspigmentation of skin and hair | ancestors: protein-energy malnutrition, nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism | def: A syndrome produced by severe protein deficiency, characterized by retarded growth, changes in skin and hair pigment, edema, and pathologic changes in the liver, including fatty infiltration, necrosis...",
+"ko": "콰시오르코르",
+"alt": [
+"단백질 결핍증"
+],
+"organs": [
+"hepatic",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0006851",
+"concept": "- MONDO:0006851 | meconium aspiration syndrome | syn: MAS; meconium aspiration; meconium aspiration syndrome; neonatal aspiration of meconium | ancestors: neonatal aspiration syndrome, syndromic disease, lung disorder, disease by body system or component | def: A serious condition in which a newborn breathes a mixture of meconium (the first intestinal discharge) and amniotic fluid into the lungs around the time of delivery. Meconium aspiration syndrome occur...",
+"ko": "태변 흡인 증후군",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0002594",
+"concept": "- MONDO:0002594 | monkeypox | syn: Monkeypox virus infection | ancestors: primary viral infectious disease, viral infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: An infection that is caused by an Orthopoxvirus, which is transmitted by primates or rodents, and which is characterized by a prodromal syndrome of fever, chills, headache, myalgia, and lymphedema; in...",
+"ko": "원숭이두창",
+"alt": [
+"엠폭스"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024332",
+"concept": "- MONDO:0024332 | perennial allergic rhinitis | syn: non-seasonal allergic rhinitis; nonseasonal allergic rhinitis; perennial allergic rhinitis | ancestors: allergic rhinitis, allergic respiratory disease, rhinitis, respiratory system disorder | def: Allergic rhinitis caused by indoor allergens and lasting year round.",
+"ko": "통년성 알레르기비염",
+"alt": [
+"연중 알레르기비염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009767",
+"concept": "- MONDO:0009767 | oculocerebral hypopigmentation syndrome, Cross type | syn: Cross syndrome; Oculocerebral Syndrome with Hypopigmentation | ancestors: syndromic oculocutaneous albinism, disorder of development or morphogenesis, syndromic disease, disorder of melanin metabolism | def: Oculocerebral hypopigmentation syndrome, Cross type is a rare congenital syndrome characterized by cutaneous and ocular hypopigmentation, various ocular anomalies (e.g. corneal and lens opacity, spast...",
+"ko": "안뇌 저색소 증후군, 크로스형",
+"alt": [
+"크로스 증후군"
+],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0017858",
+"concept": "- MONDO:0017858 | acute erythroid leukemia | syn: acute erythroblastic leukaemia; acute erythroblastic leukemia; acute erythroid leukemia; acute myeloid leukaemia M6 | ancestors: acute myeloid leukemia by FAB classification, erythroid neoplasm, acute myeloid leukemia, myeloproliferative neoplasm | def: An acute myeloid leukemia characterized by a predominant immature erythroid population. There are two subtypes recognized: erythroleukemia and pure erythroid leukemia. (WHO, 2001)",
+"ko": "급성 적혈구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001072",
+"concept": "- MONDO:0001072 | mild pre-eclampsia | ancestors: preeclampsia, hereditary disease, toxemia of pregnancy, disease of genetic or genomic mechanism | def: A pre-eclampsia characterized by the presence of hypertension without evidence of end-organ damage, in a woman who was normotensive before 20 weeks' gestation.",
+"ko": "경증 전자간증",
+"alt": [
+"경증 임신중독증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017351",
+"concept": "- MONDO:0017351 | inborn disorder of lysine and hydroxylysine metabolism | ancestors: inborn disorder of amino acid and other organic acid metabolism, inborn disorder of aspartate family metabolism, inborn errors of metabolism, hereditary disease",
+"ko": "선천성 라이신 및 하이드록시라이신 대사 장애",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007154",
+"concept": "- MONDO:0007154 | arteriovenous malformations of the brain | syn: arteriovenous malformation of the brain, somatic; arteriovenous malformations of the brain; cerebral arteriovenous malformation; intracranial arteriovenous malformation | ancestors: arteriovenous hemangioma/malformation, hereditary disease, hemangioma, disease of genetic or genomic mechanism | def: Cerebral arteriovenous malformation (AVM) is a congenital malformative communication between the veins and the arteries in the brain in the form of a nidus, an anatomical structure composed of dilated...",
+"ko": "뇌 동정맥 기형",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001967",
+"concept": "- MONDO:0001967 | gonadal dysgenesis | ancestors: hypogonadism, gonadal disorder, reproductive system disorder, endocrine system disorder | def: A congenital disorder characterized by the presence of extremely hypoplastic gonads preventing the development of secondary sex characteristics.",
+"ko": "생식샘 발생부전",
+"alt": [
+"성선 형성부전"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016064",
+"concept": "- MONDO:0016064 | cleft palate | syn: palatoschisis; uranostaphyloschisis | ancestors: orofacial cleft, developmental defect during embryogenesis, hereditary disease, disorder of facial skeleton | def: Cleft palate is a fissure type embryopathy that affects the soft and hard palate to varying degrees.",
+"ko": "구개열",
+"alt": [
+"입천장갈림증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0007743",
+"concept": "- MONDO:0007743 | attention deficit-hyperactivity disorder | syn: attention deficit hyperactivity disorder; attention deficit-hyperactivity disorder; attention deficit/hyperactivity disorder | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: A disorder characterized by a marked pattern of inattention and/or hyperactivity-impulsivity that is inconsistent with developmental level and clearly interferes with functioning in at least two setti...",
+"ko": "주의력결핍 과잉행동장애",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006679",
+"concept": "- MONDO:0006679 | bladder neck obstruction | syn: obstruction of bladder neck or vesicourethral orifice | ancestors: urinary bladder disorder, urinary system disorder, disease by body system or component, human disease | def: Blockage of the opening between the bladder and the urethra resulting in the reduction or prevention of the urine flow from the bladder into the urethra.",
+"ko": "방광경부 폐쇄",
+"alt": [
+"방광목 폐쇄"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000023",
+"concept": "- MONDO:0000023 | infantile liver failure | syn: fever-associated acute infantile liver failure syndrome; infantile liver failure syndrome; liver failure, infantile | ancestors: hereditary disease, liver failure, disease of genetic or genomic mechanism, liver disorder",
+"ko": "영아 간부전",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005258",
+"concept": "- MONDO:0005258 | autism spectrum disorder | syn: autism spectrum disorder; autistic spectrum disorder; pervasive developmental disorder - not otherwise specified; pervasive developmental disorders | ancestors: pervasive developmental disorder, developmental disorder of mental health, complex neurodevelopmental disorder, mental disorder | def: A spectrum of developmental disorders that includes autism, and Asperger syndrome. Signs and symptoms include poor communication skills, defective social interactions, and repetitive behaviors.",
+"ko": "자폐스펙트럼장애",
+"alt": [
+"자폐 범주성 장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0000654",
+"concept": "- MONDO:0000654 | benign connective and soft tissue neoplasm | syn: benign connective and soft tissue neoplasm; benign connective and soft tissue tumor; benign connective and soft tissue tumour; benign mesenchymal cell neoplasm | ancestors: musculoskeletal system benign neoplasm, connective tissue disorder, connective and soft tissue neoplasm, musculoskeletal system disorder | def: A non-metastasizing neoplasm that arises from the connective and soft tissue. Representative examples include lipoma, leiomyoma, fibroma, and osteoma.",
+"ko": "결합조직 및 연조직 양성 신생물",
+"alt": [
+"결합 및 연부조직 양성 종양"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005480",
+"concept": "- MONDO:0005480 | contact dermatitis | syn: contact dermatitis | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: An inflammatory skin condition caused by direct contact between the skin and either an irritating substance or an allergen.",
+"ko": "접촉피부염",
+"alt": [
+"접촉성 피부염"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0001167",
+"concept": "- MONDO:0001167 | spastic diplegia | syn: diplegic infantile cerebral palsy; Little disease; Little's disease | ancestors: spastic cerebral palsy, cerebral palsy, palsy, cerebral cortex disorder | def: A type of cerebral palsy characterized by spasticity and hypertonia of the lower extremities bilaterally, particularly the legs, hips, and pelvis; this is the most common (70%) form of cerebral palsy.",
+"ko": "경직성 양측마비",
+"alt": [
+"리틀병"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004382",
+"concept": "- MONDO:0004382 | laryngeal disorder | syn: disease of larynx; disease or disorder of larynx; disorder of larynx; disorder of the larynx | ancestors: upper respiratory tract disorder, respiratory system disorder, disease by body system or component, human disease | def: A non-neoplastic or neoplastic disorder that affects the larynx. Representative examples include laryngitis, vocal cord polyp, squamous papilloma, and carcinoma.",
+"ko": "후두 질환",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019858",
+"concept": "- MONDO:0019858 | idiopathic congenital hypothyroidism | ancestors: congenital hypothyroidism, idiopathic disease, hypothyroidism, disease by etiologic mechanism | def: Idiopathic congenital hypothyroidism is a type of primary congenital hypothyroidism whose cause and prevalence are unknown.",
+"ko": "특발성 선천성 갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+}
+]

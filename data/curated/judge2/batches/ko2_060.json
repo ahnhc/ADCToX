@@ -1,0 +1,239 @@
+[
+{
+"id": "MONDO:0001228",
+"concept": "- MONDO:0001228 | conjunctival folliculosis | syn: acute follicular conjunctivitis | ancestors: acute conjunctivitis, conjunctivitis, acute disease, conjunctival disorder",
+"ko": "결막 여포증",
+"alt": [
+"급성 여포성 결막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001330",
+"concept": "- MONDO:0001330 | presbyopia | ancestors: eye accommodation disease, refractive error, eye disorder, disorder of orbital region | def: The normal decreasing elasticity of the crystalline lens that leads to loss of accommodation.",
+"ko": "노안",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000240",
+"concept": "- MONDO:0000240 | invasive aspergillosis | ancestors: pulmonary aspergilloma, aspergillosis, fungal lung infectious disease, opportunistic mycosis | def: An aspergillosis that is a serious fungal infection of the lung with pneumonia caused by Aspergillus, which spreads to other parts of the body through bloodstream in patients with acute leukemia and r...",
+"ko": "침습성 아스페르길루스증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001120",
+"concept": "- MONDO:0001120 | chronic frontal sinusitis | syn: frontal sinusitis, chronic | ancestors: frontal sinusitis, chronic rhinosinusitis, sinusitis, paranasal sinus disorder | def: Inflammation of the frontal sinus that typically lasts beyond eight weeks. It is caused by infections, allergies, and the presence of sinus polyps or a deviated septum. Signs and symptoms include head...",
+"ko": "만성 전두동염",
+"alt": [
+"만성 이마굴염"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005906",
+"concept": "- MONDO:0005906 | peritonsillar abscess | syn: quinsy | ancestors: bacterial infectious disease, abscess, disorder of pharynx, lymphoid system disorder | def: An abscess that develops in the space surrounding one or both palatine tonsils.",
+"ko": "편도주위 농양",
+"alt": [
+"편도주위 고름집"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016120",
+"concept": "- MONDO:0016120 | myotonic syndrome | ancestors: syndromic disease, skeletal muscle disorder, disease by body system or component, muscle tissue disorder",
+"ko": "근긴장 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000986",
+"concept": "- MONDO:0000986 | pleurisy | syn: inflammation of pleura; pleura inflammation; pleuritis | ancestors: pleural disorder, serositis, lower respiratory tract disorder, inflammatory disease | def: Inflammation of the pleura. It is usually caused by infections. Chest pain while breathing or coughing is the presenting symptom.",
+"ko": "흉막염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015263",
+"concept": "- MONDO:0015263 | Brugada syndrome | syn: Brugada syndrome; Brugada type idiopathic ventricular fibrillation; idiopathic ventricular fibrillation, Brugada type; right bundle branch block, ST segment elevation, and sudden death syndrome | ancestors: heart conduction disease, syndromic disease, cardiogenetic rhythm disorder, heart disorder | def: A genetically heterogeneous condition characterized by complete or incomplete right bundle branch block accompanied by ST elevation in leads V1-V3. There is a high incidence of ventricular arrhythmia ...",
+"ko": "브루가다 증후군",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015661",
+"concept": "- MONDO:0015661 | dextrocardia | syn: dextrocardia; dextrocardia (disease) | ancestors: visceral heterotaxy, cardiogenetic disease, syndromic congenital heart disease, syndromic disease | def: A rare congenital abnormality in which the heart is located in the right side of the chest. It is associated with other congenital heart defects.",
+"ko": "우심증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0041366",
+"concept": "- MONDO:0041366 | acute epiglottitis | syn: acute epiglottitis; epiglottitis, acute | ancestors: acute laryngitis, epiglottitis, laryngitis, acute disease | def: Acute form of epiglottitis.",
+"ko": "급성 후두개염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0042488",
+"concept": "- MONDO:0042488 | Cestode infectious disease | syn: Cestoda caused disease or disorder; Cestoda disease or disorder; Cestoda infectious disease; cestode infection | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infections with true tapeworms of the helminth subclass Cestoda.",
+"ko": "조충 감염증",
+"alt": [
+"촌충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0005920",
+"concept": "- MONDO:0005920 | Plasmodium falciparum malaria | syn: falciparum malaria; falciparum malaria [malignant tertian]; malignant tertian fever (finding); Plasmodium falciparum malaria, unspecified | ancestors: malaria, protozoa infectious disease, erythrocyte disorder, vector-borne disease | def: Malaria resulting from infection by Plasmodium falciparum.",
+"ko": "열대열 말라리아",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0020502",
+"concept": "- MONDO:0020502 | yellow fever | syn: bronze John; sylvatic yellow fever; Yellow fever virus caused disease or disorder; Yellow fever virus disease or disorder | ancestors: Flaviviridae infectious disease, arbovirus fever, vector-borne disease, primary viral infectious disease | def: Yellow fever (YF), caused by YF virus, is a zoonotic disease characterized by fever and constitutional symptoms, with the potential to progress to severe and fatal viral hemorrhagic fever with shock a...",
+"ko": "황열",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0030602",
+"concept": "- MONDO:0030602 | Klebsiella pneumonia | syn: Klebsiella caused pneumonia; pneumonia due to Klebsiella pneumoniae | ancestors: bacterial pneumonia, Klebsiella infectious disease, bacterial infectious disease, pneumonia | def: An pneumonia caused by infection with Klebsiella.",
+"ko": "클렙시엘라 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001571",
+"concept": "- MONDO:0001571 | gynecomastia disorder | syn: hypertrophy of breast of male organism; male organism hypertrophy of breast | ancestors: hypertrophy of breast, disorder of sexual differentiation, breast disorder, gonadal disorder | def: Development of breast tissue in males.",
+"ko": "여성형 유방",
+"alt": [
+"남성 유방비대"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004662",
+"concept": "- MONDO:0004662 | heterophyiasis | syn: Heterophyes infection | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: An infection that is caused by the intestinal fluke Heterophyes heterophyes, which is most commonly found in Asia, the Middle East, and Africa, and which is transmitted via consumption of contaminated...",
+"ko": "이형흡충증",
+"alt": [
+"헤테로피아증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010651",
+"concept": "- MONDO:0010651 | Menkes disease | syn: kinky hair disease; kinky hair syndrome; MD; Menkes disease | ancestors: syndromic disease, inborn metal metabolism disorder, disorder of copper metabolism, disease by body system or component | def: A usually severe multisystemic disorder of copper metabolism, characterized by progressive neurodegeneration and marked connective tissue anomalies as well as typical sparse abnormal steely hair.",
+"ko": "멩케스병",
+"alt": [
+"멩케스 증후군",
+"꼬불머리병"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001243",
+"concept": "- MONDO:0001243 | disseminated intravascular coagulation | syn: coagulation (DIC), disseminated intravascular; consumptive coagulopathy; defibrination syndrome; DIC | ancestors: thrombophilia, blood coagulation disease, hematologic disorder, disease by body system or component | def: A pathological process where the blood starts to coagulate throughout the whole body. This depletes the body of its platelets and coagulation factors, and there is an increased risk of hemorrhage.",
+"ko": "파종성 혈관내응고",
+"alt": [
+"파종혈관내응고증",
+"소모응고병증"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0000989",
+"concept": "- MONDO:0000989 | mumps infectious disease | syn: epidemic parotitis; Mumps; mumps; Mumps virus caused disease or disorder | ancestors: Paramyxoviridae infectious disease, Mononegavirales infectious disease, primary viral infectious disease, viral infectious disease | def: A contagious viral infection caused by the mumps virus. Symptoms include swollen and tender parotid glands, fever, muscle aches and fatigue. Due to vaccination programs, mumps has become a rare diseas...",
+"ko": "유행성 이하선염",
+"alt": [
+"볼거리"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001021",
+"concept": "- MONDO:0001021 | ametropic amblyopia | syn: refractive amblyopia | ancestors: amblyopia, vision disorder, disorder of visual system, disease by body system or component",
+"ko": "굴절이상성 약시",
+"alt": [
+"굴절성 약시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+}
+]

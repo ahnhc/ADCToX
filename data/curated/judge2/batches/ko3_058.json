@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0001733",
+"concept": "- MONDO:0001733 | occlusion of tributary of retinal vein | syn: venous tributary (branch) occlusion of retina | ancestors: vein disorder, retinal vein occlusion, vascular disorder, retinal vascular occlusion",
+"ko": "망막정맥 분지 폐쇄",
+"alt": [],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021527",
+"concept": "- MONDO:0021527 | benign neoplasm of meninges | syn: benign meningeal neoplasm; benign meningeal neoplasms; benign meningeal tumor; benign meningeal tumors | ancestors: central nervous system organ benign neoplasm, tumor of meninges, nervous system benign neoplasm, central nervous system neoplasm | def: A benign neoplasm that involves the meningeal cluster.",
+"ko": "뇌척수막 양성 신생물",
+"alt": [
+"수막 양성 종양"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0003316",
+"concept": "- MONDO:0003316 | nonanaplastic kidney Wilms tumor | syn: nonanaplastic kidney Wilms tumor; nonanaplastic renal Wilm's tumor; nonanaplastic renal Wilm's tumour; nonanaplastic renal Wilms tumor | ancestors: kidney Wilms tumor, kidney cancer, Wilms tumor, malignant urinary system neoplasm | def: Wilms tumor of the kidney characterized by the absence of nuclear anaplasia.",
+"ko": "비역형성 신장 윌름스 종양",
+"alt": [
+"비역형성 콩팥 윌름종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007950",
+"concept": "- MONDO:0007950 | mastocytosis | syn: Mast cell disease; mastocytosis | ancestors: mast cell neoplasm, leukocyte disorder, myeloid neoplasm, immune system disorder | def: A clonal myeloproliferative neoplasm characterized by the proliferation and accumulation of neoplastic mast cells in one or multiple organs or organ systems. It is a heterogeneous group of neoplasms, ...",
+"ko": "비만세포증",
+"alt": [
+"비만세포 질환"
+],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019618",
+"concept": "- MONDO:0019618 | Sheehan syndrome | syn: postpartum hypopituitarism; Sheehan's syndrome | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: An uncommon cause of hypopituitarism seen after severe postpartum hemorrhaging. Prolonged hypovolemia leads to ischemic necrosis of the pituitary. Clinical signs typically present in the puerperium an...",
+"ko": "시한 증후군",
+"alt": [
+"산후 뇌하수체기능저하증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013043",
+"concept": "- MONDO:0013043 | atypical hemolytic-uremic syndrome with C3 anomaly | syn: aHUS with C3 anomaly; atypical HUS with C3 anomaly; D-HUS with C3 anomaly; hemolytic uremic syndrome with DGKE deficiency | ancestors: atypical hemolytic uremic syndrome with complement gene abnormality, atypical hemolytic-uremic syndrome, syndromic disease, complement deficiency",
+"ko": "C3 이상을 동반한 비정형 용혈요독 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002669",
+"concept": "- MONDO:0002669 | ampullary signet ring cell adenocarcinoma | syn: ampulla of Vater signet Ring cell carcinoma; ampullary signet Ring cell carcinoma; ampullary signet ring cell carcinoma | ancestors: extrahepatic bile duct signet ring cell carcinoma, ampulla of vater adenocarcinoma, extrahepatic bile duct adenocarcinoma, signet ring cell carcinoma | def: An adenocarcinoma arising from the ampulla of Vater. Morphologically, it is characterized by the presence of mucin-containing signet-ring cells.",
+"ko": "팽대부 반지세포 선암",
+"alt": [
+"바터팽대부 반지세포암종"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019992",
+"concept": "- MONDO:0019992 | pseudohypoparathyroidism | ancestors: inborn metal metabolism disorder, developmental anomaly of metabolic origin, inherited renal tubular disease, hereditary hypoparathyroidism | def: Pseudohypoparathyroidism (PHP) is a heterogeneous group of endocrine disorders characterized by normal renal function and resistance to the action of parathyroid hormone (PTH), manifesting with hypoca...",
+"ko": "가성부갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005962",
+"concept": "- MONDO:0005962 | skeletal tuberculosis | ancestors: extrapulmonary tuberculosis, skeletal system disorder, tuberculosis, musculoskeletal system disorder | def: Tuberculosis of the bones or joints.",
+"ko": "뼈 결핵",
+"alt": [
+"골결핵"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0859006",
+"concept": "- MONDO:0859006 | proximal femoral focal deficiency | ancestors: skeletal dysplasia, dysostosis, hereditary disease, bone disorder",
+"ko": "근위 대퇴골 국소 결손",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006432",
+"concept": "- MONDO:0006432 | stromal predominant kidney Wilms tumor | syn: stromal predominant kidney adenosarcoma; stromal predominant kidney Wilms tumor; stromal predominant kidney Wilms' tumor; stromal predominant nephroblastoma | ancestors: kidney Wilms tumor, kidney cancer, Wilms tumor, malignant urinary system neoplasm | def: Wilms tumor of the kidney characterized by the predominance of the mesenchymal component.",
+"ko": "기질우세형 신장 윌름종양",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002303",
+"concept": "- MONDO:0002303 | central retinal vein occlusion | syn: central retinal vein retinal vein occlusion; central retinal Venous occlusion; retinal vein occlusion of central retinal vein | ancestors: vein disorder, retinal vein occlusion, vascular disorder, retinal vascular occlusion | def: Blockage of the central retinal vein.",
+"ko": "중심망막정맥 폐쇄",
+"alt": [
+"중심망막정맥 폐쇄증"
+],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001034",
+"concept": "- MONDO:0001034 | marginal corneal ulcer | ancestors: corneal ulcer, keratitis, ulcer disease, corneal disorder",
+"ko": "변연부 각막궤양",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005373",
+"concept": "- MONDO:0005373 | meningococcal infection | syn: Neisseria meningitidis infection | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Infections with bacteria of the species neisseria meningitidis.",
+"ko": "수막구균 감염증",
+"alt": [
+"수막알균 감염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0971092",
+"concept": "- MONDO:0971092 | soft and hard cleft palate | ancestors: cleft palate, orofacial cleft, developmental defect during embryogenesis, hereditary disease",
+"ko": "연구개 및 경구개 구개열",
+"alt": [
+"연구개경구개 열"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013711",
+"concept": "- MONDO:0013711 | peripheral neuropathy-myopathy-hoarseness-hearing loss syndrome | syn: peripheral neuropathy-myopathy-hoarseness-deafness syndrome; PNMHH | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism",
+"ko": "말초신경병증-근병증-쉰목소리-청력소실 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007239",
+"concept": "- MONDO:0007239 | epidermolytic ichthyosis | syn: BCIE; bullous congenital ichthyosiform erythroderma; bullous congenital ichthyosiform erythroderma of Brock; bullous ichthyosis | ancestors: keratinopathic ichthyosis, keratinization disease, inherited ichthyosis, integumentary system disorder | def: A rare keratinopathic ichthyosis (KPI), that is characterized by a blistering phenotype at birth which progressively becomes hyperkeratotic.",
+"ko": "표피융해성 어린선",
+"alt": [
+"표피융해성 어린선증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0002800",
+"concept": "- MONDO:0002800 | thrombophlebitis | syn: phlebitis and thrombophlebitis of superficial vessels of lower extremities | ancestors: phlebitis, vein disorder, vasculitis, vascular disorder | def: Inflammation of the veins associated with the presence of a thrombus.",
+"ko": "혈전정맥염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006014",
+"concept": "- MONDO:0006014 | vulvovaginal candidiasis | syn: candidal vulvovaginitis; candidal: [vulvovaginitis NOS] or [cervix]; candidal: cervix; candidiasis of vulva and vagina | ancestors: cutaneous candidiasis, vulvovaginitis, infective vaginitis, candidiasis | def: Infection of the vulva and vagina with a fungus of the genus CANDIDA. It is a disease associated with HIV infection.",
+"ko": "외음질 칸디다증",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0003059",
+"concept": "- MONDO:0003059 | bile duct cancer | syn: bile duct cancer; cancer of bile duct; malignant bile duct neoplasm; malignant neoplasm of bile duct | ancestors: biliary tract cancer, bile duct neoplasm, digestive system cancer, biliary tract neoplasm | def: A malignant neoplasm involving the bile duct",
+"ko": "담관암",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

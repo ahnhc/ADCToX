@@ -1,0 +1,243 @@
+[
+{
+"id": "MONDO:0004795",
+"concept": "- MONDO:0004795 | otitis externa | syn: external Ear infection; infectious otitis externa; otitis externa; outer Ear infection | ancestors: external ear disorder, ear infection, post-infectious disorder, auditory system disorder | def: Inflammation of the anatomical structures of the outer ear and ear canal secondary to an infectious process. Bacterial etiology is most common, but fungal infection is also possible. Symptoms include ...",
+"ko": "외이도염",
+"alt": [
+"바깥귀길염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0700081",
+"concept": "- MONDO:0700081 | newborn respiratory distress syndrome | syn: hyaline membrane disease; infant acute respiratory distress syndrome; infant ARDS; infant respiratory distress syndrome | ancestors: primary interstitial lung disease specific to childhood, pediatric acute respiratory distress syndrome, interstitial lung disease specific to childhood, acute respiratory distress syndrome | def: A condition beginning in the first day of life that results from inadequate surfactant production, causing increased work of breathing and impaired gas exchange.",
+"ko": "신생아 호흡곤란 증후군",
+"alt": [
+"유리질막병"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0021758",
+"concept": "- MONDO:0021758 | acquired agranulocytosis | syn: Agranulocytosis, Acquired | ancestors: agranulocytosis, leukopenia, leukocyte disorder, immune system disorder | def: Agranulocytosis that is autoimmune in origin.",
+"ko": "후천성 무과립구증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000916",
+"concept": "- MONDO:0000916 | intestinal infectious disease | ancestors: gastrointestinal mucositis, gastroenteritis, digestive system infectious disorder, digestive system disorder | def: An infectious disease involving a pathogenic inflammatory response in the intestinal mucosa.",
+"ko": "장 감염성 질환",
+"alt": [
+"장 감염병"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0009324",
+"concept": "- MONDO:0009324 | Hartnup disease | syn: aminoaciduria, Hartnup type; Hartnup disease; Hartnup disorder | ancestors: inborn disorder of amino acid transport, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: Hartnup disease is a rare metabolic disorder belonging to the neutral aminoacidurias and characterized by abnormal renal and gastrointestinal transport of neutral amino acids (tryptophan, alanine, asp...",
+"ko": "하트넙병",
+"alt": [],
+"organs": [
+"renal",
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005824",
+"concept": "- MONDO:0005824 | Legionnaires' disease | syn: Legionella pneumonia; Legionnaires' Disease | ancestors: bacterial pneumonia, legionellosis, bacterial infectious disease, pneumonia | def: A pneumonia caused by Legionella pneumophila and other Legionella species, which is characterized by fever, cough, progressive respiratory distress, and which is often accompanied by extrapulmonary ma...",
+"ko": "재향군인병",
+"alt": [
+"레지오넬라 폐렴"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007256",
+"concept": "- MONDO:0007256 | hepatocellular carcinoma | syn: cancer, hepatocellular; carcinoma of liver; carcinoma of liver cells; carcinoma of the liver cells | ancestors: adenocarcinoma, carcinoma of liver and intrahepatic biliary tract, carcinoma, glandular cell neoplasm | def: A malignant tumor that arises from hepatocytes. Hepatocellular carcinoma is relatively rare in the United States but very common in all African countries south of the Sahara and in Southeast Asia. Mos...",
+"ko": "간세포암종",
+"alt": [
+"간세포암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015364",
+"concept": "- MONDO:0015364 | hereditary sensory and autonomic neuropathy | syn: hereditary sensory and autonomic neuropathy; hereditary sensory neuropathy; hereditary sensory peripheral neuropathy; HSAN | ancestors: sensory peripheral neuropathy, hereditary peripheral neuropathy, peripheral neuropathy, hereditary neuromuscular disease | def: An instance of sensory peripheral neuropathy that is caused by an inherited modification of the individual's genome.",
+"ko": "유전감각자율신경병증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005109",
+"concept": "- MONDO:0005109 | HIV infectious disease | syn: HIV infection; Human immunodeficiency virus caused disease or disorder; Human immunodeficiency virus disease or disorder; Human immunodeficiency virus infectious disease | ancestors: viral sexually transmitted disease, lentivirus infection, sexually transmitted disease, primary viral infectious disease | def: An infection caused by the human immunodeficiency virus.",
+"ko": "HIV 감염병",
+"alt": [
+"HIV 감염증"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0007642",
+"concept": "- MONDO:0007642 | isolated agenesis of gallbladder | ancestors: biliary tract disorder, hepatobiliary disorder, digestive system disorder, disease by body system or component",
+"ko": "고립성 담낭 무형성",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001258",
+"concept": "- MONDO:0001258 | vertebral artery occlusion | syn: occlusion and stenosis of vertebral artery | ancestors: occlusion precerebral artery, arterial occlusion, cerebrovascular disorder, arterial disorder",
+"ko": "척추동맥 폐색",
+"alt": [
+"척추동맥 폐쇄"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003482",
+"concept": "- MONDO:0003482 | Pediculus humanus corporis infestation | syn: Pediculus corporis [body louse]; Pediculus humanus corporis infection | ancestors: lice infestation, parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease | def: A infectious disease involving the Pediculus humanus corporis.",
+"ko": "몸니 감염증",
+"alt": [
+"몸니증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002870",
+"concept": "- MONDO:0002870 | tricuspid valve insufficiency | syn: insufficiency, tricuspid; tricuspid insufficiency; tricuspid valve regurgitation | ancestors: tricuspid valve disorder, vascular insufficiency disorder, heart valve disorder, vascular disorder | def: The backflow of blood from the right ventricle into the right atrium, owning to imperfect functioning/insufficiency of the tricuspid valve.",
+"ko": "삼첨판 폐쇄부전",
+"alt": [
+"삼첨판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0024315",
+"concept": "- MONDO:0024315 | parasitic endophthalmitis | syn: parasitic endophthalmitis | ancestors: endophthalmitis, parasitic eye infection, inflammatory disease, eye infectious disorder | def: Infection of the epicondyles by a parasite.",
+"ko": "기생충성 안내염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016530",
+"concept": "- MONDO:0016530 | laryngocele | ancestors: laryngeal disorder, upper respiratory tract disorder, respiratory system disorder, disease by body system or component | def: A rare congenital malformation in the larynx. It is characterized by the presence of an air-filled sac within the laryngeal wall which may bulge on the neck.",
+"ko": "후두탈장",
+"alt": [
+"후두류"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0022428",
+"concept": "- MONDO:0022428 | aluminosis | syn: aluminosis of lung; pulmonary aluminosis | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: Aluminosis is characterized as diffuse interstitial fibrosis which is mainly located in the upper and middle lobes of the lung. In advanced stages it is characterized by subpleural bullous emphysema w...",
+"ko": "알루미늄폐증",
+"alt": [
+"폐 알루미늄증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019095",
+"concept": "- MONDO:0019095 | plague | syn: plague | ancestors: primary bacterial infectious disease, Yersinia infectious disease, vector-borne disease, bacterial infectious disease | def: Plague is a severe bacterial infection caused by the gram-negative bacterium Yersinia pestis.",
+"ko": "페스트",
+"alt": [
+"흑사병"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0018864",
+"concept": "- MONDO:0018864 | Kikuchi-Fujimoto disease | syn: histiocytic necrotizing lymphadenitis; Kikuchi disease | ancestors: lymphadenitis, lymph node disorder, inflammatory disease, lymphatic system disorder | def: Kikuchi-Fujimoto disease (KFD) is a benign and self-limited disorder, characterized by regional cervical lymphadenopathy with tenderness, usually accompanied with mild fever and night sweats. Less fre...",
+"ko": "기쿠치-후지모토병",
+"alt": [
+"조직구성 괴사성 림프절염"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005629",
+"concept": "- MONDO:0005629 | Acanthamoeba keratitis | syn: Acanthamoeba caused keratitis; keratitis, Acanthamoeba | ancestors: protozoa infectious disease, Acanthamoeba infectious disease, corneal infection, parasitic endophthalmitis | def: Keratitis due to infection by acanthamoeba; it is usually associated with soft contact lens wear, particularly overnight wear.",
+"ko": "아칸트아메바 각막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003970",
+"concept": "- MONDO:0003970 | gastric fundus carcinoma | syn: carcinoma of fundus of stomach; carcinoma of gastric fundus; carcinoma of the fundus of the stomach; carcinoma of the gastric fundus | ancestors: gastric carcinoma, gastric cancer, digestive system carcinoma, digestive system cancer | def: A carcinoma that arises from epithelial cells of the fundus of stomach.",
+"ko": "위저부 암종",
+"alt": [
+"위 기저부 암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+}
+]

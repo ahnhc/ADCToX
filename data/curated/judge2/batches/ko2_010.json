@@ -1,0 +1,229 @@
+[
+{
+"id": "MONDO:0007037",
+"concept": "- MONDO:0007037 | achondroplasia | syn: ACH; achondroplasia | ancestors: osteochondrodysplasia, FGFR3-related chondrodysplasia, bone development disease, skeletal dysplasia | def: Achondroplasia is the most common form of chondrodysplasia, characterized by rhizomelia, exaggerated lumbar lordosis, brachydactyly, and macrocephaly with frontal bossing and midface hypoplasia.",
+"ko": "연골무형성증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007023",
+"concept": "- MONDO:0007023 | Yersinia infectious disease | syn: Yersinia <bacteria> infection; yersiniosis | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Infections with bacteria of the genus yersinia.",
+"ko": "예르시니아 감염병",
+"alt": [
+"예르시니아증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021559",
+"concept": "- MONDO:0021559 | non-autoimmune hemolytic anemia | syn: non-autoimmune hemolytic anemia | ancestors: hemolytic anemia, normocytic anemia, anemia, hematologic disorder | def: Hemolytic anemia that is not mediated by immune mechanisms.",
+"ko": "비자가면역 용혈빈혈",
+"alt": [
+"비자가면역 용혈성 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019467",
+"concept": "- MONDO:0019467 | CD4+/CD56+ hematodermic neoplasm | syn: agranular CD4+ CD56+ hematodermic neoplasm/tumor; agranular CD4+ natural Killer cell leukaemia; agranular CD4+ natural Killer cell leukemia; blastic natural Killer leukemia/lymphoma | ancestors: skin cancer, myeloid neoplasm, T-cell non-Hodgkin lymphoma, integumentary system cancer | def: An aggressive immature hematologic neoplasm formerly known as blastic NK cell lymphoma, composed of cells with a lymphoblast-like morphology. Recent evidence suggests derivation from a plasmacytoid mo...",
+"ko": "CD4+/CD56+ 혈액피부 신생물",
+"alt": [
+"모세포성 형질세포양 수지상세포 종양"
+],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005921",
+"concept": "- MONDO:0005921 | Plasmodium vivax malaria | syn: vivax malaria | ancestors: malaria, protozoa infectious disease, erythrocyte disorder, vector-borne disease | def: Malaria resulting from infection by Plasmodium vivax.",
+"ko": "삼일열 말라리아",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002108",
+"concept": "- MONDO:0002108 | thyroid cancer | syn: cancer of thyroid gland; malignant neoplasm of the thyroid; malignant neoplasm of the thyroid gland; malignant neoplasm of thyroid | ancestors: thyroid tumor, malignant endocrine neoplasm, endocrine gland neoplasm, thyroid gland disorder | def: A malignant neoplasm involving the thyroid gland",
+"ko": "갑상선암",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0044346",
+"concept": "- MONDO:0044346 | echinococcus granulosus infectious disease | syn: Echinococcus granulosus caused disease or disorder; Echinococcus granulosus disease or disorder; echinococcus granulosus infection; Echinococcus granulosus infectious disease | ancestors: echinococcosis, Cestode infectious disease, helminthiasis, parasitic infectious disease | def: An disease or disorder caused by infection with Echinococcus granulosus.",
+"ko": "단방조충(에키노코쿠스 그라눌로수스) 감염증",
+"alt": [
+"포충증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0005722",
+"concept": "- MONDO:0005722 | croup | syn: acute laryngotracheobronchitis; acute obstructive laryngitis | ancestors: laryngotracheitis, bronchitis, acute laryngitis, laryngitis | def: Acute upper respiratory airways infection that results in the swelling of the larynx. It is usually caused by parainfluenza viruses. Signs include a characteristic barking cough and stridor.",
+"ko": "크루프",
+"alt": [
+"급성 후두기관기관지염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0008685",
+"concept": "- MONDO:0008685 | Wolff-Parkinson-White syndrome | syn: ventricular familial preexcitation syndrome; Wolff-Parkinson-White pattern (finding); Wolff-Parkinson-White syndrome; Wolff-Parkinson-white syndrome (disease) | ancestors: heart conduction disease, PRKAG2-related cardiomyopathy, heart disorder, familial cardiomyopathy | def: A cardiac conduction disorder characterized by an electrocardiographic finding of ventricular pre-excitation, which is a short PR interval and a long QRS interval with a delta wave. Most individuals a...",
+"ko": "울프-파킨슨-화이트 증후군",
+"alt": [
+"WPW 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008482",
+"concept": "- MONDO:0008482 | Sprengel deformity | syn: high scapula; Sprengel deformity; Sprengel deformity (disease) | ancestors: thoracic malformation, respiratory or thoracic malformation, respiratory system disorder, disease by body system or component",
+"ko": "스프렝겔 변형",
+"alt": [
+"견갑골 고위증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001293",
+"concept": "- MONDO:0001293 | subglottis cancer | syn: cancer of subglottis; malignant neoplasm of subglottis; malignant neoplasm of the subglottis; malignant subglottic neoplasm | ancestors: subglottis neoplasm, larynx cancer, laryngeal neoplasm, respiratory system cancer | def: A malignant neoplasm that affects the subglottic area of the larynx. The vast majority of cases are squamous cell carcinomas.",
+"ko": "성문하부암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001270",
+"concept": "- MONDO:0001270 | stone in bladder diverticulum | syn: calculus in diverticulum of bladder | ancestors: bladder calculus, bladder diverticulum, lower urinary tract calculus, urinary bladder disorder",
+"ko": "방광 게실 내 결석",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001481",
+"concept": "- MONDO:0001481 | femoral vein thrombophlebitis | syn: femoral vein thrombophlebitis; phlebitis and thrombophlebitis of femoral vein; phlebitis and thrombophlebitis of femoral vein (deep) (superficial); thrombophlebitis of femoral vein | ancestors: thrombophlebitis, phlebitis, vein disorder, vasculitis | def: A thrombophlebitis that involves the femoral vein.",
+"ko": "대퇴정맥 혈전정맥염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0010805",
+"concept": "- MONDO:0010805 | bladder exstrophy | syn: bladder exstrophy; bladder exstrophy (disease); classic exstrophy of the bladder; ectopia vesicae | ancestors: exstrophy-epispadias complex, kidney disorder, urogenital tract malformation, urinary system disorder | def: Bladder exstrophy (or classic bladder exstrophy; CEB) is a congenital genitourinary malformation belonging to the spectrum of the exstrophy-epispadias complex (EEC) and is characterized by an evaginat...",
+"ko": "방광외번증",
+"alt": [
+"선천성 방광외반증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0041182",
+"concept": "- MONDO:0041182 | polymorphic light eruption | syn: polymorphic light eruption; polymorphous light eruption | ancestors: photosensitivity disease, radiodermatitis, dermatitis, radiation-induced disorder",
+"ko": "다형광발진",
+"alt": [
+"다형일광발진"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001583",
+"concept": "- MONDO:0001583 | diabetic polyneuropathy | syn: polyneuropathy in diabetes | ancestors: diabetic neuropathy, peripheral neuropathy, peripheral nervous system disorder, neuromuscular disease",
+"ko": "당뇨병성 다발신경병증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001180",
+"concept": "- MONDO:0001180 | bullous keratopathy | ancestors: keratopathy, corneal edema, corneal disorder, eye disorder | def: Keratopathy that is characterized by the presence of epithelial bullae.",
+"ko": "수포성 각막병증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002109",
+"concept": "- MONDO:0002109 | pituitary cancer | syn: cancer of pituitary gland; malignant neoplasm of pituitary; malignant neoplasm of pituitary gland; malignant neoplasm of the pituitary | ancestors: skull cancer, reproductive system cancer, thalamic cancer, pituitary tumor | def: A primary or metastatic malignant neoplasm affecting the pituitary gland. Representative examples include functioning or non-functioning carcinomas arising from the anterior lobe of the pituitary glan...",
+"ko": "뇌하수체암",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015451",
+"concept": "- MONDO:0015451 | univentricular heart | syn: Double inlet left ventricle | ancestors: univentricular cardiopathy, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder | def: Univentricular heart (UVH) is a severe congenital cardiac malformation characterized by both atria related entirely or almost entirely to one functionally single ventricular chamber. The clinical mani...",
+"ko": "단심실",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0043731",
+"concept": "- MONDO:0043731 | lytic metastatic bone lesion | syn: lytic metastatic bone lesion; osteolysis; osteolytic lesion | ancestors: bone resorption disease, bone remodeling disease, bone disorder, skeletal system disorder | def: Dissolution of bone that particularly involves the removal or loss of calcium.",
+"ko": "용해성 골 전이 병변",
+"alt": [
+"골용해"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+}
+]

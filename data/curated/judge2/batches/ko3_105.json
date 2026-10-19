@@ -1,0 +1,248 @@
+[
+{
+"id": "MONDO:0019468",
+"concept": "- MONDO:0019468 | T-cell prolymphocytic leukemia | syn: CLL, T-cell; T cell chronic lymphocytic leukaemia; T cell chronic lymphocytic leukemia; T cell CLL | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, prolymphocytic leukemia, T lymphoblastic leukemia/lymphoma, T-cell acute lymphoblastic leukemia | def: A slow-growing type of leukemia (blood cancer) in which too many lymphocytes are found in the bone marrow and/or blood. The T-cell is specified as the defective cell line.",
+"ko": "T세포 전림프구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008679",
+"concept": "- MONDO:0008679 | Wilms tumor 1 | syn: Wilms tumor 1; Wilms tumor type 1; Wilms tumor, autosomal dominant, somatic mutation; Wilms tumor, somatic | ancestors: hereditary Wilms tumor, hereditary disease, Wilms tumor, disease of genetic or genomic mechanism | def: An autosomal disorder due to pathogenic variants in the WT1 gene leading to an increased risk Wilms tumor and genitourinary abnormalities incorporating Denys-Drash syndrome and Frasier syndrome.",
+"ko": "윌름스 종양 1",
+"alt": [
+"윌름종양 1형"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001078",
+"concept": "- MONDO:0001078 | tropical sprue | syn: post-infective tropical malabsorption; tropical steatorrhea | ancestors: malabsorption syndrome, intestinal disorder, digestive system disorder, disease by body system or component | def: A rare disorder of the digestive tract characterized by malabsorption and anemia. It is likely caused by infection leading to small intestinal mucosal injury, bacterial overgrowth and inflammatory cha...",
+"ko": "열대 스프루",
+"alt": [
+"열대성 흡수장애"
+],
+"organs": [
+"haematologic",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000129",
+"concept": "- MONDO:0000129 | glutaric aciduria | syn: glutaric acidemia; glutaric aciduria; glutaric aciduria (disease) | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease",
+"ko": "글루타르산뇨증",
+"alt": [
+"글루타르산혈증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003638",
+"concept": "- MONDO:0003638 | lung meningioma | syn: lung meningioma; lung meningioma (disease); meningioma (disease) of lung; meningioma of lung | ancestors: lung cancer, meningioma, malignant tumor of meninges, respiratory system cancer | def: A primary or metastatic meningioma that is present in the lung. The lung is the most frequent site of metastasis of meningiomas.",
+"ko": "폐 수막종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007718",
+"concept": "- MONDO:0007718 | hepatic adenomas, familial | syn: hepatic adenoma, somatic; hepatic adenomas, familial | ancestors: hereditary disease, hepatocellular adenoma, disease of genetic or genomic mechanism, benign digestive system neoplasm",
+"ko": "가족성 간선종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009711",
+"concept": "- MONDO:0009711 | congenital fiber-type disproportion myopathy | syn: CFTDM; congenital fiber-type disproportion; congenital myopathy with fiber type disproportion; congenital myopathy with fibre type disproportion | ancestors: congenital structural myopathy, congenital myopathy, myopathy, skeletal muscle disorder | def: A rare genetic disorder caused by mutations in the TPM3, ACTA1, RYR1 or SEPN1 genes. It is inherited in an autosomal dominant or recessive pattern and rarely in an X-linked pattern. It manifests with ...",
+"ko": "선천성 섬유형 불균형 근병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012626",
+"concept": "- MONDO:0012626 | Meckel syndrome, type 4 | syn: CEP290 Meckel syndrome; Meckel syndrome caused by mutation in CEP290; Meckel syndrome, type 4; Meckel-Gruber syndrome, type 4 | ancestors: Meckel syndrome, CEP290-related ciliopathy, polydactyly-syndactyly-triphalangism, syndromic disease | def: Any Meckel syndrome in which the cause of the disease is a mutation in the CEP290 gene.",
+"ko": "메켈 증후군 4형",
+"alt": [
+"CEP290 관련 메켈 증후군"
+],
+"organs": [
+"hepatic",
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015164",
+"concept": "- MONDO:0015164 | acute myeloid leukemia and myelodysplastic syndromes related to alkylating agent | syn: AML and myelodysplastic syndromes related to alkylating agent | ancestors: therapy related acute myeloid leukemia and myelodysplastic syndrome, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: Acute myeloid leukemia and myelodysplastic syndromes related to alkylating agent is a subgroup of therapy-related myeloid neoplasms (t-MN), associated with a treatment of an unrelated neoplastic or au...",
+"ko": "알킬화제 관련 급성 골수성 백혈병 및 골수형성이상 증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0043303",
+"concept": "- MONDO:0043303 | hyperacusis | syn: hyperacusis | ancestors: disorder of ear, hearing disorder, auditory perceptual disorders, otorhinolaryngologic disease | def: A disorder in which an individual has an abnormally low noise tolerance, and increased sensitivity to sounds.",
+"ko": "청각과민",
+"alt": [
+"소리과민증"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004661",
+"concept": "- MONDO:0004661 | trachea carcinoma in situ | syn: carcinoma in situ of the trachea; carcinoma in situ of trachea; severe epithelial dysplasia of trachea; stage 0 trachea carcinoma | ancestors: trachea squamous cell carcinoma, squamous carcinoma in situ, trachea carcinoma, squamous cell carcinoma | def: A carcinoma that arises from the tracheal mucosa and is confined to the epithelial layer without evidence of further tissue invasion.",
+"ko": "기관 상피내암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011156",
+"concept": "- MONDO:0011156 | progressive familial intrahepatic cholestasis type 2 | syn: ABCB11 progressive familial intrahepatic cholestasis; BSEP deficiency; cholestasis, progressive familial intrahepatic 2; cholestasis, progressive familial intrahepatic, type 2 | ancestors: benign recurrent intrahepatic cholestasis type 2, progressive familial intrahepatic cholestasis, benign recurrent intrahepatic cholestasis, syndromic disease | def: Progressive familial intrahepatic cholestasis type 2 (PFIC2), a type of progressive familial intrahepatic cholestasis (PFIC), is a severe, neonatal, hereditary disorder in bile formation that is hepat...",
+"ko": "진행성 가족성 간내 담즙정체증 2형",
+"alt": [
+"BSEP 결핍증"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011541",
+"concept": "- MONDO:0011541 | dilated cardiomyopathy 1J | syn: cardiomyopathy, dilated, type 1J; CMD1J; dilated cardiomyopathy 1J; dilated cardiomyopathy type 1J | ancestors: familial dilated cardiomyopathy, dilated cardiomyopathy, familial cardiomyopathy, intrinsic cardiomyopathy | def: An extremely rare autosomal dominant syndrome described in two families to date and characterized by moderate to severe sensorineural hearing loss manifesting during childhood, and associated with lat...",
+"ko": "확장성 심근병증 1J",
+"alt": [],
+"organs": [
+"cardiovascular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001003",
+"concept": "- MONDO:0001003 | pneumoconiosis due to talc | syn: talc pneumoconiosis | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: Pneumoconiosis caused by exposure to talc. It is characterized by fibrosis and granulomatous changes in the lung parenchyma. Chest x-rays reveal diffuse lung opacities and pleural abnormalities.",
+"ko": "활석 진폐증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007405",
+"concept": "- MONDO:0007405 | Crouzon syndrome | syn: craniofacial dysostosis; Crouzon craniofacial dysostosis; Crouzon syndrome | ancestors: syndromic craniosynostosis, syndromic disease, craniosynostosis, skeletal dysplasia | def: Crouzon disease is characterized by craniosynostosis and facial hypoplasia.",
+"ko": "크루종 증후군",
+"alt": [
+"두개안면 이골증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020289",
+"concept": "- MONDO:0020289 | congenital tricuspid malformation | ancestors: tricuspid valve disorder, disorder of development or morphogenesis, heart valve disorder, disease by developmental or physiological process",
+"ko": "선천성 삼첨판 기형",
+"alt": [
+"선천성 삼첨판막 기형"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004668",
+"concept": "- MONDO:0004668 | fascioliasis | syn: Fasciolosis; infection by fasciola; sheep liver fluke infection | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A parasitic infection that is caused by liver flukes, usually Fasciola hepatica, of sheep, goats, and cattle. Humans become infected by eating uncooked, infested aquatic vegetation (classically waterc...",
+"ko": "간질증",
+"alt": [
+"간디스토마증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0005968",
+"concept": "- MONDO:0005968 | sporotrichosis | ancestors: fungal infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: The commonest and least serious of the deep mycoses, characterized by nodular lesions of the cutaneous and subcutaneous tissues. It is caused by inhalation of contaminated dust or by infection of a wo...",
+"ko": "스포로트릭스증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0018958",
+"concept": "- MONDO:0018958 | nemaline myopathy | syn: NEM; nemaline body disease; nemaline myopathy; nemaline rod myopathy | ancestors: congenital structural myopathy, hereditary skeletal muscle disorder, congenital myopathy, hereditary disease | def: Nemaline myopathy (NM) encompasses a large spectrum of myopathies characterized by hypotonia, weakness and depressed or absent deep tendon reflexes, with pathologic evidence of nemaline bodies (rods) ...",
+"ko": "네말린 근병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006094",
+"concept": "- MONDO:0006094 | Askin tumor | syn: Askin tumor; Askin's tumor; peripheral neuroectodermal tumor of thoracopulmonary region; peripheral neuroectodermal tumour of thoracopulmonary region | ancestors: thoracic cancer, peripheral primitive neuroectodermal tumor, cancer, neoplasm of thorax | def: A primitive neuroectodermal tumor (small round blue cell tumor) of the thorax which can involve the periosteum, thoracic wall and/or pleura though it spares the lung parenchyma.",
+"ko": "애스킨 종양",
+"alt": [],
+"organs": [
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

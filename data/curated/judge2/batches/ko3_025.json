@@ -1,0 +1,263 @@
+[
+{
+"id": "MONDO:0004869",
+"concept": "- MONDO:0004869 | pelvic varices | syn: pelvic region of trunk varicose disease; varicose disease of pelvic region of trunk | ancestors: varicose disease, vein disorder, vascular disorder, cardiovascular disorder | def: A varicose disease that involves the pelvic region of trunk.",
+"ko": "골반 정맥류",
+"alt": [
+"골반 정맥 정맥류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002519",
+"concept": "- MONDO:0002519 | anus disorder | syn: anal disorder; anus disease; anus disease or disorder; disease of anus | ancestors: rectal disorder, large intestine disorder, intestinal disorder, digestive system disorder | def: A non-neoplastic or neoplastic disorder that affects the anal canal or anal margin. Representative examples of non-neoplastic disorders include hemorrhoids and anal ulcer. Representative examples of n...",
+"ko": "항문 질환",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0056799",
+"concept": "- MONDO:0056799 | synovium disorder | syn: disease of layer of synovial tissue; disease or disorder of layer of synovial tissue; disorder of layer of synovial tissue; disorder of synovium | ancestors: musculoskeletal system disorder, disease by body system or component, human disease, disease | def: A disease or disorder that involves the layer of synovial tissue.",
+"ko": "윤활막 질환",
+"alt": [
+"활막 질환"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004635",
+"concept": "- MONDO:0004635 | postcricoid region cancer | syn: malignant neoplasm of postcricoid area; malignant neoplasm of the postcricoid area; malignant postcricoid neoplasm; malignant postcricoid tumor | ancestors: hypopharynx cancer, pharynx cancer, neoplasm of hypopharynx, respiratory system cancer | def: A primary or metastatic malignant neoplasm that affects the postcricoid region.",
+"ko": "윤상연골후부암",
+"alt": [
+"하인두 윤상후부암"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0800497",
+"concept": "- MONDO:0800497 | interstitial lung disease 2 | syn: fibrocystic pulmonary dysplasia; fibrosing alveolitis, cryptogenic; idiopathic pulmonary fibrosis, familial; interstitial pneumonitis, usual | ancestors: inherited interstitial lung disease, hereditary disease, interstitial lung disease, disease of genetic or genomic mechanism | def: An interstitial lung disease in which the cause of the disease is a variation in the SFTPA2 gene.",
+"ko": "간질성 폐질환 2형",
+"alt": [
+"특발성 폐섬유화"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008612",
+"concept": "- MONDO:0008612 | tuberous sclerosis 1 | syn: TSC1 tuberous sclerosis; TSC1-related tuberous sclerosis; tuberous sclerosis 1; tuberous sclerosis caused by mutation in TSC1 | ancestors: tuberous sclerosis, autosomal dominant disease, hereditary neoplastic syndrome, neurocutaneous syndrome | def: An autosomal dominant syndrome caused by pathogenic variants in the TSC1 gene, characterized by the growth of hamartomas in multiple organs, including the brain, skin, kidneys, heart, and lungs. Other...",
+"ko": "결절성 경화증 1형",
+"alt": [
+"TSC1 결절성 경화증"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005201",
+"concept": "- MONDO:0005201 | restrictive cardiomyopathy | syn: restrictive cardiomyopathy | ancestors: intrinsic cardiomyopathy, cardiomyopathy, muscle tissue disorder, heart disorder | def: A type of heart disorder referring to the inability of the ventricles to fill with blood because the myocardium (heart muscle) stiffens and looses its flexibility. Causes include replacement of the my...",
+"ko": "제한 심근병증",
+"alt": [
+"제한성 심근병증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0012748",
+"concept": "- MONDO:0012748 | primary ciliary dyskinesia 7 | syn: CILD7; ciliary dyskinesia, primary, type 7; DNAH11 primary ciliary dyskinesia; primary ciliary dyskinesia 7 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the DNAH11 gene.",
+"ko": "일차섬모운동이상증 7형",
+"alt": [
+"원발성 섬모운동이상증 7형"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004565",
+"concept": "- MONDO:0004565 | intestinal obstruction | syn: bowel obstruction | ancestors: intestinal disorder, digestive system disorder, disease by body system or component, human disease | def: Blockage of the normal flow of the intestinal contents within the bowel.",
+"ko": "장폐색",
+"alt": [
+"장폐쇄"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010008",
+"concept": "- MONDO:0010008 | sarcosinemia | syn: sarcosinemia | ancestors: disorder of methylamine metabolism, disorder of peptide and amine metabolism, inborn errors of metabolism, hereditary disease | def: Sarcosinemia is a metabolic disorder characterized by an increased concentration of sarcosine in plasma and urine due to sarcosine dehydrogenase deficiency.",
+"ko": "사르코신혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019501",
+"concept": "- MONDO:0019501 | Usher syndrome | syn: USH; ush; Usher's syndrome | ancestors: syndromic disease, autosomal recessive disease, disease by body system or component, autosomal genetic disease | def: A syndromic diseae characterized by the association of sensorineural deafness (usually congenital) with retinitis pigmentosa and progressive vision loss.",
+"ko": "어셔 증후군",
+"alt": [
+"아셔 증후군"
+],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001174",
+"concept": "- MONDO:0001174 | conjunctival vascular disorder | syn: conjunctival vascular disorder; conjunctival vasculature disease; conjunctival vasculature disease or disorder; disease of conjunctival vasculature | ancestors: ocular vascular disorder, conjunctival disorder, eye disorder, vascular disorder | def: A disorder of the vasculature of the cornea.",
+"ko": "결막 혈관 질환",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0020326",
+"concept": "- MONDO:0020326 | lymphomatoid papulosis | syn: LyP | ancestors: primary cutaneous CD30+ T-cell lymphoproliferative disease, indolent primary cutaneous T-cell lymphoma, primary cutaneous T-cell lymphoma, T-cell non-Hodgkin lymphoma | def: Lymphomatoid papulosis (LyP) is a rare cutaneous condition characterized by chronic, recurrent, and self-regressing papulonodular skin eruptions. It belongs to the spectrum of primary cutaneous CD30+ ...",
+"ko": "림프종양 구진증",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0014434",
+"concept": "- MONDO:0014434 | Bardet-Biedl syndrome 5 | syn: Bardet-Biedl syndrome 5; Bardet-Biedl syndrome caused by mutation in BBS5; Bardet-Biedl syndrome type 5; BBS5 | ancestors: Bardet-Biedl syndrome, BBS5-related ciliopathy, syndromic disease, ciliopathy | def: Any Bardet-Biedl syndrome in which the cause of the disease is a mutation in the BBS5 gene.",
+"ko": "바르데-비들 증후군 5형",
+"alt": [],
+"organs": [
+"renal",
+"ocular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0044750",
+"concept": "- MONDO:0044750 | lassa virus infectious disease | syn: infection caused by Lassa virus; Lassa virus infection | ancestors: Arenaviridae infectious disease, primary viral infectious disease, viral infectious disease, infectious disease",
+"ko": "라사열",
+"alt": [
+"라사바이러스 감염증"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002670",
+"concept": "- MONDO:0002670 | ampulla of vater adenocarcinoma | syn: adenocarcinoma of ampulla of Vater; ampulla of Vater adenocarcinoma; ampullary adenocarcinoma; hepatopancreatic ampulla adenocarcinoma | ancestors: extrahepatic bile duct adenocarcinoma, duodenal adenocarcinoma, carcinoma of the ampulla of vater, extrahepatic bile duct carcinoma | def: A carcinoma that arises from glandular epithelial cells of the hepatopancreatic ampulla",
+"ko": "바터팽대부 선암",
+"alt": [
+"팽대부 선암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016367",
+"concept": "- MONDO:0016367 | dermatomyositis | syn: dermatomyositis; dermatopolymyositis; DM | ancestors: dermatitis, rheumatic disorder, polymyositis, skin disorder | def: Dermatomyositis (DM) is a type of idiopathic inflammatory myopathy characterized by evocative skin lesions and symmetrical proximal muscle weakness.",
+"ko": "피부근염",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0037792",
+"concept": "- MONDO:0037792 | carbohydrate metabolism disease | syn: carbohydrate metabolic process disease; disorder of carbohydrate metabolic process; disorder of carbohydrate metabolism | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A disease that has its basis in the disruption of carbohydrate metabolic process.",
+"ko": "탄수화물 대사 질환",
+"alt": [
+"탄수화물 대사 이상"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018551",
+"concept": "- MONDO:0018551 | patent urachus | syn: patent urachus; patent urachus (disease) | ancestors: congenital urachal anomaly, urinary system disorder, disease by body system or component, human disease | def: Patent urachus is a type of congenital urachal anomaly characterized by a persistent communication between the bladder and the umbilicus, secondary to non occlusion of the urachal lumen, manifesting a...",
+"ko": "요막관 개존증",
+"alt": [
+"개방 요막관"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006802",
+"concept": "- MONDO:0006802 | inappropriate ADH syndrome | syn: ectopic ADH secretion; ectopic antidiuretic hormone secretion; inappropriate ADH secretion; inappropriate antidiuretic hormone secretion syndrome | ancestors: pituitary gland disorder, ectopic hormone secretion syndrome associated with neoplasia, reproductive system disorder, endocrine system disorder | def: A syndrome characterized by abnormal secretion of antidiuretic hormone in conjunction with neoplastic growth occurring anywhere in the body.",
+"ko": "항이뇨호르몬 부적절 분비 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+}
+]

@@ -1,0 +1,238 @@
+[
+{
+"id": "MONDO:0956980",
+"concept": "- MONDO:0956980 | vascular parkinsonism | ancestors: parkinsonian disorder, basal ganglia disorder, brain disorder, central nervous system disorder | def: A Parkinsonism that is characterized by postural instability, a broad-based gait with the absence of tremors of vascular origin.",
+"ko": "혈관성 파킨슨증",
+"alt": [
+"혈관 파킨슨증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000374",
+"concept": "- MONDO:0000374 | bile duct carcinoma in situ | syn: bile duct in situ carcinoma; carcinoma in situ of bile duct; stage 0 bile duct carcinoma | ancestors: in situ carcinoma, bile duct carcinoma, carcinoma, high grade malignant neoplasm | def: A carcinoma in situ involving a bile duct.",
+"ko": "담관 상피내암종",
+"alt": [
+"담관 제자리암종"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005708",
+"concept": "- MONDO:0005708 | Colorado tick fever | syn: American mountain fever; Colorado tick encephalitis; Colorado tick fever virus caused disease or disorder; Colorado tick fever virus disease or disorder | ancestors: Reoviridae infectious disease, viral encephalitis, vector-borne disease, primary viral infectious disease | def: A febrile illness characterized by chills, aches, vomiting, leukopenia, and sometimes encephalitis. It is caused by the colorado tick fever virus, a reovirus transmitted by the tick Dermacentor anders...",
+"ko": "콜로라도 진드기열",
+"alt": [
+"콜로라도 진드기 뇌염"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004637",
+"concept": "- MONDO:0004637 | aryepiglottic fold cancer | syn: aryepiglottic fold cancer; cancer of aryepiglottic fold; malignant aryepiglottic fold neoplasm; malignant neoplasm of aryepiglottic fold | ancestors: larynx cancer, hypopharynx cancer, respiratory system cancer, laryngeal neoplasm | def: A malignant neoplasm involving the aryepiglottic fold.",
+"ko": "피열후두개주름암",
+"alt": [
+"후두개피열주름암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0007534",
+"concept": "- MONDO:0007534 | Beckwith-Wiedemann syndrome | syn: Beckwith-Wiedemann syndrome; BWS; exomphalos-macroglossia-gigantism syndrome; Wiedemann-Beckwith syndrome | ancestors: hereditary neoplastic syndrome, overgrowth syndrome, familial hypertrophic cardiomyopathy, hereditary disease | def: Beckwith-Wiedemann syndrome (BWS) is a genetic disorder characterized by overgrowth, tumor predisposition and congenital malformations.",
+"ko": "벡위드-비데만 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001616",
+"concept": "- MONDO:0001616 | lobomycosis | ancestors: dermatomycosis, cutaneous mycosis, fungal infectious disease, integumentary system disorder | def: A chronic, fungal, subcutaneous infection endemic in rural regions in South America and Central America. The causal organism is Lacazia labol.",
+"ko": "로보균증",
+"alt": [
+"로보진균증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006412",
+"concept": "- MONDO:0006412 | sinus histiocytosis with massive lymphadenopathy | syn: Destombes-Rosaï-Dorfman disease; RDD; Rosai Dorfman disease; Rosai-Dorfman Disease | ancestors: non-Langerhans cell histiocytosis, histiocytosis, lymphatic system disorder, lymphoid system disorder | def: A rare disorder of unknown etiology characterized by distention of the lymph node sinuses and sinusoidal histiocytic infiltration. The histiocytes characteristically contain ingested lymphocytes. Pati...",
+"ko": "거대 림프절병증을 동반한 림프동 조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003061",
+"concept": "- MONDO:0003061 | benign muscle neoplasm | syn: benign muscle neoplasm; benign muscle tumor; benign muscle tumour; benign neoplasm of muscle | ancestors: musculoskeletal system benign neoplasm, myomatous neoplasm, musculoskeletal system disorder, benign neoplasm | def: A benign mesenchymal neoplasm arising from smooth, skeletal, or cardiac muscle tissue.",
+"ko": "양성 근육 신생물",
+"alt": [
+"양성 근육 종양"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000461",
+"concept": "- MONDO:0000461 | nutritional biotin deficiency | ancestors: biotin metabolic disease, vitamin deficiency disorder, sulfur metabolism disease, nutritional deficiency disease",
+"ko": "영양성 비오틴 결핍증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0056798",
+"concept": "- MONDO:0056798 | disorder of appendix | syn: appendiceal disease; disease of appendix; disease of vermiform appendix; disease or disorder of vermiform appendix | ancestors: large intestine disorder, intestinal disorder, digestive system disorder, disease by body system or component | def: A disease or disorder that involves the vermiform appendix.",
+"ko": "충수 질환",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001788",
+"concept": "- MONDO:0001788 | nutmeg liver | syn: chronic passive congestion of liver | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder",
+"ko": "육두구 간",
+"alt": [
+"간 만성 수동 울혈"
+],
+"organs": [
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006989",
+"concept": "- MONDO:0006989 | suppurative periapical periodontitis | syn: dentoalveolar abscess; periapical dental abscess | ancestors: periapical periodontitis, periodontitis, periodontal disorder, inflammatory disease | def: Localized collection of pus in the tissues that enclose the root of a tooth.",
+"ko": "화농성 치근단 치주염",
+"alt": [
+"치조농양"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017597",
+"concept": "- MONDO:0017597 | T-cell/histiocyte rich large B cell lymphoma | syn: T-cell rich/histiocyte-rich large B-cell lymphoma; T-cell/histiocyte rich lymphoma; T-cell/histiocyte-rich large B-cell lymphoma; THRLBCL | ancestors: diffuse large B-cell lymphoma, neoplasm of mature B-cells, aggressive B-cell non-Hodgkin lymphoma, B-cell neoplasm | def: T-cell/histiocyte rich large B cell lymphoma (THRLBCL) is a rare variant of diffuse large B-cell lymphoma (DLBCL), mainly affecting middle-aged men and often not being discovered until an advanced dis...",
+"ko": "T세포/조직구 풍부 거대 B세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001211",
+"concept": "- MONDO:0001211 | total internal ophthalmoplegia | ancestors: eye accommodation disease, oculomotor nerve paralysis, pupil disorder, eye disorder",
+"ko": "완전 내안근마비",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020077",
+"concept": "- MONDO:0020077 | myelodysplastic/myeloproliferative disease | ancestors: myeloid hemopathy, hematopoietic and lymphoid system neoplasm, neoplasm, hematologic disorder | def: Clonal myeloid disorders that possess both dysplastic and proliferative features but are not properly classified as either MYELODYSPLASTIC SYNDROMES or MYELOPROLIFERATIVE disorderS.",
+"ko": "골수이형성/골수증식 질환",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007343",
+"concept": "- MONDO:0007343 | isolated congenital digital clubbing | syn: isolated congenital acropachy; isolated congenital nail clubbing | ancestors: inherited isolated nail anomaly, disorder of development or morphogenesis, nail disorder, hereditary disease | def: Isolated congenital digital clubbing is a rare genodermatosis disorder characterized by enlargement of the terminal segments of fingers and toes with thickened nails without any other abnormality.",
+"ko": "고립성 선천성 곤봉손가락",
+"alt": [
+"선천성 곤봉지"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021469",
+"concept": "- MONDO:0021469 | benign neoplasm of anus | syn: anus benign neoplasm; benign anal neoplasm; benign anal tumor; benign anal tumour | ancestors: anus neoplasm, benign neoplasm of rectum, rectal neoplasm, anus disorder | def: A benign neoplasm that involves the anus.",
+"ko": "항문 양성 신생물",
+"alt": [
+"항문 양성 종양"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002884",
+"concept": "- MONDO:0002884 | nail disorder | syn: disease of nail; disease or disorder of nail; disorder of nail; nail disease | ancestors: integumentary system disorder, disease by body system or component, human disease, disease | def: A disease involving the nail.",
+"ko": "손발톱 질환",
+"alt": [
+"조갑 질환"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0009290",
+"concept": "- MONDO:0009290 | glycogen storage disease II | syn: acid maltase deficiency; Alpha-1,4-glucosidase acid deficiency; GAA glycogen storage disease; generalised glycogenosis | ancestors: disorder of glycogen metabolism, familial restrictive cardiomyopathy, lysosomal glycogen storage disease, inborn carbohydrate metabolic disorder | def: Glycogen storage disease due to acid maltase deficiency (AMD) is an autosomal recessive trait leading to metabolic myopathy that affects cardiac and respiratory muscles in addition to skeletal muscle ...",
+"ko": "글리코겐 축적병 II형",
+"alt": [
+"폼페병"
+],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0100244",
+"concept": "- MONDO:0100244 | paroxysmal nocturnal hemoglobinuria | syn: acquired paroxysmal nocturnal hemoglobinuria; hereditary paroxysmal nocturnal hemoglobinuria; inherited paroxysmal nocturnal hemoglobinuria; Marchiafava-Micheli disease | ancestors: hemoglobinuria, hemolytic anemia, acquired metabolic disease, acquired aplastic anemia | def: Paroxysmal nocturnal hemoglobinuria (PNH) is an acquired clonal hematopoietic stem cell disorder characterized by corpuscular hemolytic anemia, bone marrow failure and frequent thrombotic events.",
+"ko": "발작성 야간 혈색소뇨증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+}
+]

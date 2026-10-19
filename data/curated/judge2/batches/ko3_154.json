@@ -1,0 +1,252 @@
+[
+{
+"id": "MONDO:0003286",
+"concept": "- MONDO:0003286 | extrahepatic bile duct leiomyoma | syn: extrahepatic bile duct leiomyoma; leiomyoma of extrahepatic bile duct; leiomyoma of the extrahepatic bile duct | ancestors: benign digestive system neoplasm, leiomyoma, extrahepatic bile duct neoplasm, digestive system disorder | def: A benign smooth muscle neoplasm arising from an extrahepatic bile duct. It is characterized by the presence of spindle cells with cigar-shaped nuclei, interlacing fascicles, and a whorled pattern.",
+"ko": "간외 담관 평활근종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024270",
+"concept": "- MONDO:0024270 | parasitic intestinal disorder | syn: intestine parasitic infection; parasitic intestinal disease | ancestors: intestinal disorder, parasitic infectious disease, digestive system infectious disorder, digestive system disorder | def: Infections of the INTESTINES with PARASITES, commonly involving PARASITIC WORMS. Infections with roundworms (NEMATODE INFECTIONS) and tapeworms (CESTODE INFECTIONS) are also known as HELMINTHIASIS.",
+"ko": "기생충성 장 질환",
+"alt": [
+"장 기생충 감염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004297",
+"concept": "- MONDO:0004297 | lymphoepithelioma-like thymic carcinoma | syn: lymphoepithelial cancer of the Thymus; lymphoepithelial cancer of Thymus; lymphoepithelial Thymus cancer; lymphoepithelioma-like carcinoma of the Thymus | ancestors: nasopharyngeal type undifferentiated carcinoma, thymic carcinoma, large cell carcinoma, thymus cancer | def: A rare, usually aggressive primary thymic carcinoma, characterized by a syncytial growth of undifferentiated carcinoma cells and the presence of a lymphoplasmacytic infiltrate. More than 40% of cases ...",
+"ko": "림프상피종 유사 흉선암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018536",
+"concept": "- MONDO:0018536 | adenocarcinoma of gallbladder and extrahepatic biliary tract | syn: adenocarcinoma of gallbladder and EBT; adenocarcinoma of the gallbladder and EBT; adenocarcinoma of the gallbladder and extrahepatic biliary tract | ancestors: extrahepatic bile duct adenocarcinoma, carcinoma of gallbladder and extrahepatic biliary tract, extrahepatic bile duct carcinoma, bile duct adenocarcinoma | def: Adenocarcinoma of the gallbladder and extrahepatic biliary tract is a rare epithelial carcinoma, arising either in the gallbladder itself or from the epithelium lining the extrahepatic biliary tree, c...",
+"ko": "담낭 및 간외담도 선암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0041182",
+"concept": "- MONDO:0041182 | polymorphic light eruption | syn: polymorphic light eruption; polymorphous light eruption | ancestors: photosensitivity disease, radiodermatitis, dermatitis, radiation-induced disorder",
+"ko": "다형광발진",
+"alt": [
+"다형일광발진"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005824",
+"concept": "- MONDO:0005824 | Legionnaires' disease | syn: Legionella pneumonia; Legionnaires' Disease | ancestors: bacterial pneumonia, legionellosis, bacterial infectious disease, pneumonia | def: A pneumonia caused by Legionella pneumophila and other Legionella species, which is characterized by fever, cough, progressive respiratory distress, and which is often accompanied by extrapulmonary ma...",
+"ko": "재향군인병",
+"alt": [
+"레지오넬라 폐렴"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004607",
+"concept": "- MONDO:0004607 | vallecula cancer | syn: cancer of epiglottic vallecula; epiglottic vallecula cancer; malignant epiglottic vallecula neoplasm; malignant neoplasm of epiglottic vallecula | ancestors: oropharynx cancer, pharynx cancer, neoplasm of oropharynx, respiratory system cancer | def: A cancer involving a epiglottic vallecula.",
+"ko": "후두개곡 암",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005005",
+"concept": "- MONDO:0005005 | clear cell renal carcinoma | syn: clear cell adenocarcinoma of kidney; clear cell adenocarcinoma of the kidney; clear cell adenocarcinoma, kidney; clear cell carcinoma of kidney | ancestors: clear cell adenocarcinoma, renal cell adenocarcinoma, nonpapillary renal cell carcinoma, adenocarcinoma | def: A malignant epithelial neoplasm of the kidney characterized by the presence of lipid-containing clear cells within a vascular network. The tumor may metastasize to unusual sites and late metastasis is...",
+"ko": "투명세포 신장암종",
+"alt": [
+"신장 투명세포암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0014752",
+"concept": "- MONDO:0014752 | nephrotic syndrome, type 11 | syn: familial nephrotic syndrome caused by mutation in NUP107; familial nephrotic syndrome caused by mutation in Nup107; nephrotic syndrome, type 11; nephrotic syndrome, type 11; NPHS11 | ancestors: familial idiopathic steroid-resistant nephrotic syndrome, familial nephrotic syndrome, idiopathic nephrotic syndrome, steroid-resistant nephrotic syndrome | def: Any familial nephrotic syndrome in which the cause of the disease is a mutation in the NUP107 gene.",
+"ko": "신증후군 11형",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004810",
+"concept": "- MONDO:0004810 | acute ethmoiditis | syn: acute ethmoidal sinusitis; ethmoid sinusitis, acute | ancestors: ethmoid sinusitis, acute disease, sinusitis, disorder of facial skeleton | def: Acute form of ethmoid sinusitis.",
+"ko": "급성 벌집굴염",
+"alt": [
+"급성 사골동염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0013435",
+"concept": "- MONDO:0013435 | primary ciliary dyskinesia 15 | syn: CCDC40 primary ciliary dyskinesia; CILD15; ciliary dyskinesia, primary, type 15; primary ciliary dyskinesia 15 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the CCDC40 gene.",
+"ko": "원발섬모운동이상증 15",
+"alt": [
+"일차섬모운동이상증 15"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0043775",
+"concept": "- MONDO:0043775 | respiratory paralysis | syn: paralysis of diaphragm | ancestors: diaphragm disorder, palsy, respiratory failure, respiratory system disorder | def: Complete or severe weakness of the muscles of respiration. This condition may be associated with motor neuron diseases; peripheral nerve diseases; neuromuscular junction diseases; spinal cord diseases...",
+"ko": "호흡 마비",
+"alt": [],
+"organs": [
+"pulmonary",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024954",
+"concept": "- MONDO:0024954 | larva migrans, visceral | ancestors: toxocariasis, cutaneous larva migrans, Ascaridida infectious disease, parasitic infectious disease | def: A condition produced in humans by the prolonged migration of animal nematode larvae in extraintestinal tissues other than skin; characterized by persistent hypereosinophilia, hepatomegaly, and frequen...",
+"ko": "내장 유충이행증",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001319",
+"concept": "- MONDO:0001319 | bladder lateral wall cancer | syn: malignant neoplasm of lateral wall of urinary bladder | ancestors: urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder",
+"ko": "방광 측벽암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015483",
+"concept": "- MONDO:0015483 | mandibulofacial dysostosis | syn: bilateral and symmetric oto-mandibular dysplasia | ancestors: dysostosis, bone development disease, bone disorder, disorder of development or morphogenesis | def: A hereditary disorder occurring in two forms: the complete form (Franceschetti's syndrome) is characterized by antimongoloid slant of the palpebral fissures, coloboma of the lower lid, micrognathia an...",
+"ko": "하악안면이골증",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001258",
+"concept": "- MONDO:0001258 | vertebral artery occlusion | syn: occlusion and stenosis of vertebral artery | ancestors: occlusion precerebral artery, arterial occlusion, cerebrovascular disorder, arterial disorder",
+"ko": "척추동맥 폐색",
+"alt": [
+"척추동맥 폐쇄"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004496",
+"concept": "- MONDO:0004496 | myocarditis | syn: inflammation of myocardium; myocardial inflammation (finding); myocardium inflammation | ancestors: intrinsic cardiomyopathy, inflammation of heart layer, myocardial disorder, cardiomyopathy | def: Myocarditis is a condition that is characterized by inflammation of the heart muscle (myocardium). Some affected people have no noticeable symptoms of the condition. When present, signs and symptoms m...",
+"ko": "심근염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001699",
+"concept": "- MONDO:0001699 | tinea manuum | syn: dermatophytosis of hand; dermatophytosis of manus; manus dermatophytosis; Tinea manus | ancestors: dermatophytosis, tinea infection, superficial mycosis, cutaneous mycosis | def: A dermatophytosis that involves the hands.",
+"ko": "수부백선",
+"alt": [
+"손무좀"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002846",
+"concept": "- MONDO:0002846 | granulomatous gastritis | syn: granulomatous gastritis | ancestors: gastritis, stomach disorder, inflammatory disease, digestive system disorder | def: Gastritis that is associated with the presence of granulomas.",
+"ko": "육아종성 위염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002884",
+"concept": "- MONDO:0002884 | nail disorder | syn: disease of nail; disease or disorder of nail; disorder of nail; nail disease | ancestors: integumentary system disorder, disease by body system or component, human disease, disease | def: A disease involving the nail.",
+"ko": "손발톱 질환",
+"alt": [
+"조갑 질환"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+}
+]

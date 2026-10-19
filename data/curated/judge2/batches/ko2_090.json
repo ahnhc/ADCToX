@@ -1,0 +1,228 @@
+[
+{
+"id": "MONDO:0001212",
+"concept": "- MONDO:0001212 | non-suppurative otitis media | syn: nonsuppurative otitis media | ancestors: otitis media, middle ear disorder, inflammatory disease, auditory system disorder | def: A otitis media which involves transudation of fluid in the middle ear without pus formation.",
+"ko": "비화농성 중이염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001497",
+"concept": "- MONDO:0001497 | male genital organ vascular disease | syn: vascular disorder of male genital organs | ancestors: male reproductive system disorder, reproductive system disorder, disease by body system or component, human disease",
+"ko": "남성 생식기 혈관 질환",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005866",
+"concept": "- MONDO:0005866 | Mycobacterium avium complex disease | syn: Mycobacterium avium Complex; Mycobacterium avium complex caused disease or disorder; Mycobacterium avium complex disease or disorder; Mycobacterium avium complex infectious disease | ancestors: primary bacterial infectious disease, mycobacterial infectious disease, vector-borne disease, bacterial infectious disease | def: An infection that is caused by Mycobacterium avium.",
+"ko": "마이코박테리움 아비움 복합체 질환",
+"alt": [
+"비결핵항산균 질환"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001921",
+"concept": "- MONDO:0001921 | chronic atticoantral disease | syn: chronic atticoantral suppurative otitis media | ancestors: chronic purulent otitis media, suppurative otitis media, chronic otitis media, otitis media | def: A chronic purulent otitis media which involves perforation in the attic region (pars flaccida of the tympanic membrane) or at the posterosuperior margin, with in-growth of squamous epithelium into the...",
+"ko": "만성 상고실-유양동 질환",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005619",
+"concept": "- MONDO:0005619 | typhoid fever | syn: typhoid; typhoid fever; typhoidal salmonellosis | ancestors: salmonellosis, primary bacterial infectious disease, bacterial infectious disease, infectious disease | def: A bacterial infectious disorder contracted by consumption of food or drink contaminated with Salmonella typhi. This disorder is common in developing countries and can be treated with antibiotics.",
+"ko": "장티푸스",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001334",
+"concept": "- MONDO:0001334 | hypertrichosis of eyelid | syn: eyelid hypertrichosis (disease); hypertrichosis (disease) of eyelid | ancestors: eyelid disorder, hypertrichosis, eye adnexa disorder, eye disorder | def: A hypertrichosis (disease) that involves the eyelid.",
+"ko": "눈꺼풀 다모증",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001078",
+"concept": "- MONDO:0001078 | tropical sprue | syn: post-infective tropical malabsorption; tropical steatorrhea | ancestors: malabsorption syndrome, intestinal disorder, digestive system disorder, disease by body system or component | def: A rare disorder of the digestive tract characterized by malabsorption and anemia. It is likely caused by infection leading to small intestinal mucosal injury, bacterial overgrowth and inflammatory cha...",
+"ko": "열대 스프루",
+"alt": [
+"열대성 흡수장애"
+],
+"organs": [
+"haematologic",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024271",
+"concept": "- MONDO:0024271 | intestinal helminthiasis | syn: intestine parasitic helminthiasis infectious disease | ancestors: helminthiasis, parasitic intestinal disorder, parasitic infectious disease, intestinal disorder | def: A parasitic helminthiasis infectious disease that involves the intestine.",
+"ko": "장 연충증",
+"alt": [
+"장내 기생충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0043479",
+"concept": "- MONDO:0043479 | adenoviridae infectious disease | syn: Adenoviridae caused disease or disorder; Adenoviridae disease or disorder; Adenoviridae infectious disease; adenoviridae infectious disease | ancestors: primary viral infectious disease, viral infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: An infectious process caused by adenovirus. The virus may cause respiratory illness, conjunctivitis, gastroenteritis, and cystitis.",
+"ko": "아데노바이러스 감염증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020706",
+"concept": "- MONDO:0020706 | Heberden's node | syn: Heberden's node; tuberculum arthriticum | ancestors: exostosis, hyperostosis, bone remodeling disease, bone disorder | def: Osteophytes that most commonly develop on the distal interphalangeal joints, often in the setting of osteoarthritis.",
+"ko": "헤베르덴 결절",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021517",
+"concept": "- MONDO:0021517 | benign neoplasm of trachea | syn: benign neoplasm of the trachea; benign trachea neoplasm; benign trachea tumor; benign trachea tumour | ancestors: respiratory system benign neoplasm, trachea neoplasm, respiratory system disorder, benign neoplasm | def: A benign neoplasm that involves the trachea.",
+"ko": "기관 양성 신생물",
+"alt": [
+"기관 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004566",
+"concept": "- MONDO:0004566 | postgastrectomy syndrome | ancestors: functional gastric disease, intestinal disorder, stomach disorder, digestive system disorder | def: Sequelae of gastrectomy from the second week after operation on. Include recurrent or anastomotic ulcer, postprandial syndromes (dumping syndrome and late postprandial hypoglycemia), disordered bowel ...",
+"ko": "위절제 후 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001046",
+"concept": "- MONDO:0001046 | imperforate anus | syn: anal atresia; anus, imperforate; congenital atresia of anus; imperforate anus | ancestors: anus disorder, disorder of development or morphogenesis, rectal disorder, disease by developmental or physiological process | def: A congenital birth defect characterized by the absence of a normal anal opening. It may be associated with other congenital abnormalities.",
+"ko": "항문 폐쇄증",
+"alt": [
+"쇄항"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004733",
+"concept": "- MONDO:0004733 | pyriform sinus cancer | syn: malignant neoplasm of pyriform fossa; malignant neoplasm of pyriform sinus; malignant neoplasm of the pyriform fossa; malignant neoplasm of the pyriform sinus | ancestors: hypopharynx cancer, pharynx cancer, neoplasm of hypopharynx, respiratory system cancer | def: A primary or metastatic malignant neoplasm that affects the pyriform sinus.",
+"ko": "이상와암",
+"alt": [
+"조롱박오목암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006007",
+"concept": "- MONDO:0006007 | vesicoureteral reflux | syn: vesicoureteral reflux; vesicoureteral reflux (disease) | ancestors: ureteral disorder, urinary bladder disorder, urinary system disorder, disease by body system or component | def: Abnormal flow of urine from the urinary bladder back into the ureters.",
+"ko": "방광요관 역류",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0012163",
+"concept": "- MONDO:0012163 | immunodeficiency 104 | syn: autosomal recessive T cell-negative, B-cell negative, NK cell-positive SCID; IMD104; severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-positive, NK cell-positive; severe combined immunodeficiency, T cell-negative, B-cell/natural killer-cell positive | ancestors: familial severe combined immunodeficiency, T-B+ severe combined immunodeficiency, severe combined immunodeficiency, combined immunodeficiency | def: A severe combined immunodeficiency characterized by being T cell-negative, B cell-positive and natural killer cell-positive and that has material basis in homozygous or compound heterozygous mutation ...",
+"ko": "면역결핍증 104형",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004646",
+"concept": "- MONDO:0004646 | decubitus ulcer | syn: decubitus ulcer; decubitus ulcer, elbow; decubitus ulcer, lower back; decubitus ulcer, other site | ancestors: chronic ulcer of skin, skin disorder, integumentary system disorder, disease by body system or component | def: Death of tissue due to external pressure.",
+"ko": "욕창",
+"alt": [
+"압박궤양"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0002185",
+"concept": "- MONDO:0002185 | hyperostosis | syn: bone hypertrophy; hypertrophy of bone; hypertrophy of bone (morphologic abnormality) | ancestors: bone remodeling disease, bone disorder, skeletal system disorder, musculoskeletal system disorder | def: Excessive thickening of bone.",
+"ko": "과골증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 22
+},
+{
+"id": "MONDO:0004865",
+"concept": "- MONDO:0004865 | blue drum syndrome | syn: acute mucoid otitis media | ancestors: acute transudative otitis media, non-suppurative otitis media, acute disease, otitis media | def: A acute transudative otitis media involving thick, viscid and mucuslike fluid effusion due to which the drum appears blue in color.",
+"ko": "청색 고막 증후군",
+"alt": [
+"급성 점액성 중이염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004135",
+"concept": "- MONDO:0004135 | subacute lymphocytic thyroiditis | syn: silent thyroiditis; Subacute lymphocytic thyroiditis; Subacute painless thyroiditis | ancestors: acute thyroiditis, thyroiditis, acute disease, thyroid gland disorder | def: Thyroiditis associated with painless enlargement of the thyroid gland. It occurs more frequently in females and is characterized by alterations between hyperthyroidism and hypothyroidism and the event...",
+"ko": "아급성 림프구성 갑상선염",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 1
+}
+]

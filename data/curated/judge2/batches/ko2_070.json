@@ -1,0 +1,234 @@
+[
+{
+"id": "MONDO:0019824",
+"concept": "- MONDO:0019824 | non-acquired pituitary hormone deficiency | ancestors: pituitary deficiency, hereditary endocrine growth disease, endocrine system disorder, disease by body system or component",
+"ko": "비후천성 뇌하수체 호르몬 결핍증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003996",
+"concept": "- MONDO:0003996 | basal ganglia disorder | syn: basal ganglia disease; collection of basal ganglia disease; collection of basal ganglia disease or disorder; disease of basal ganglia | ancestors: brain disorder, central nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the basal ganglia.",
+"ko": "기저핵 질환",
+"alt": [
+"기저핵병"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0021108",
+"concept": "- MONDO:0021108 | meningitis | syn: inflammation of meninx; meningitis; meningitis (disease); meninx inflammation | ancestors: encephalomyelitis, central nervous system disorder, inflammatory disease, nervous system disorder | def: A disorder characterized by acute inflammation of the meninges of the brain and/or spinal cord.",
+"ko": "수막염",
+"alt": [
+"뇌막염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0859205",
+"concept": "- MONDO:0859205 | delayed puberty, self-limited | ancestors: female reproductive system disorder, hereditary disease, reproductive system disorder, disease of genetic or genomic mechanism",
+"ko": "자연 회복성 사춘기 지연",
+"alt": [
+"체질성 사춘기 지연"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001216",
+"concept": "- MONDO:0001216 | pulp degeneration | ancestors: dental pulp disorder, tooth disorder, skeletal system disorder, mouth disorder | def: Deterioration of the normal pulp tissue.",
+"ko": "치수 변성",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006564",
+"concept": "- MONDO:0006564 | irritant dermatitis | syn: irritant contact dermatitis | ancestors: contact dermatitis, dermatitis, skin disorder, inflammatory disease | def: An inflammatory skin condition caused by direct contact between the skin and an irritating substance. It is typically manifested by erythema, mild edema, and scaling at the affected site.",
+"ko": "자극피부염",
+"alt": [
+"자극성 접촉피부염"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0006592",
+"concept": "- MONDO:0006592 | parapsoriasis | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: An inflammatory skin disorder of unknown etiology characterized by papules and plaques or scaly patches resembling psoriasis.",
+"ko": "유건선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004497",
+"concept": "- MONDO:0004497 | tertiary syphilis | syn: late syphilis; late tertiary syphilis; tertiary syphilis | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: A stage of syphilis that occurs fifteen to thirty years after the initial infection; it can include gumma formation and cardiovascular or central nervous system involvement (neurosyphilis).",
+"ko": "3기 매독",
+"alt": [
+"후기 매독"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0043726",
+"concept": "- MONDO:0043726 | multiple organ dysfunction syndrome | syn: multiorgan failure; multiple organ dysfunction syndrome; multiple organ failure; multiple organ system failure | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: The development of potentially reversible physiologic derangement involving two or more organ systems not involved in the disorder that resulted in intensive care unit (ICU) admission, and arising in ...",
+"ko": "다발성 장기 부전 증후군",
+"alt": [
+"다장기 기능부전"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"pulmonary",
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005965",
+"concept": "- MONDO:0005965 | spinal stenosis | ancestors: vertebral column disorder, disease of bone structure, skeletal system disorder, bone disorder | def: Narrowing of the spinal canal.",
+"ko": "척추관 협착증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009662",
+"concept": "- MONDO:0009662 | mucopolysaccharidosis type 7 | syn: Beta-glucuronidase deficiency; beta-glucuronidase deficiency; MPS7; MPSVII | ancestors: mucopolysaccharidosis, lysosomal storage disease with skeletal involvement, lysosomal storage disease, developmental anomaly of metabolic origin | def: Mucopolysaccharidosis type VII (MPS VII) is a very rare lysosomal storage disease belonging to the group of mucopolysaccharidoses.",
+"ko": "점액다당질증 7형",
+"alt": [
+"슬라이 증후군"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018684",
+"concept": "- MONDO:0018684 | idiopathic neonatal atrial flutter | syn: neonatal cardiac dysrhythmia | ancestors: atrial flutter, idiopathic disease, atrial tachycardia, disease by etiologic mechanism | def: Idiopathic neonatal atrial flutter (AFL) is a rare rhythm disorder, characterized by sustained tachycardia in newborns and infants with an atrial rate often at around 440 beats/minute (range 340-580)....",
+"ko": "특발성 신생아 심방조동",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002272",
+"concept": "- MONDO:0002272 | polyclonal hypergammaglobulinemia | syn: polyclonal hypergammaglobulinemia | ancestors: plasma protein metabolism disease, inborn errors of metabolism, hereditary disease, metabolic disease | def: A laboratory test result indicating abnormally high proliferation of gamma globulins in the blood originating from multiple cell lines.",
+"ko": "다클론 고감마글로불린혈증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0010089",
+"concept": "- MONDO:0010089 | isolated sulfite oxidase deficiency | syn: ISOD; isolated sulfite oxidase deficiency; sulfite oxidase deficiency; sulfite oxidase deficiency, isolated | ancestors: encephalopathy due to sulfite oxidase deficiency, lens disorder, developmental anomaly of metabolic origin, inborn disorder of methionine cycle and sulfur amino acid metabolism",
+"ko": "단독 아황산 산화효소 결핍증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:1060189",
+"concept": "- MONDO:1060189 | large plaque parapsoriasis | ancestors: parapsoriasis, dermatitis, skin disorder, inflammatory disease | def: A variant of parapsoriasis characterized by erythematous-to-brown patches or thin plaques with fine scales larger than 5cm in diameter. It has a substantial risk to evolve to mycosis fungoides.",
+"ko": "대판 부건선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000440",
+"concept": "- MONDO:0000440 | metabolic acidosis | ancestors: acidosis disorder, disorder of acid-base balance, metabolic disease, disease by developmental or physiological process",
+"ko": "대사성 산증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008797",
+"concept": "- MONDO:0008797 | anodontia | syn: complete absence of teeth; developmental absence of tooth; total anodontia of permanent and deciduous teeth | ancestors: hereditary disease, tooth disorder, disease of genetic or genomic mechanism, skeletal system disorder | def: Anodontia is an extreme developmental dental anomaly characterized by the complete absence of all teeth.",
+"ko": "무치증",
+"alt": [
+"선천성 치아 결손"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0020357",
+"concept": "- MONDO:0020357 | coloboma of eyelid | syn: coloboma of the eyelid | ancestors: coloboma, eye disorder, disorder of orbital region, disorder of visual system | def: A congenital abnormality in which a part of the upper or lower eyelid tissue is missing.",
+"ko": "눈꺼풀 결손",
+"alt": [
+"안검 결손"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006536",
+"concept": "- MONDO:0006536 | congenital generalized lipodystrophy | syn: congenital generalised lipodystrophy (disease); congenital generalized lipodystrophy; congenital generalized lipodystrophy (disease); familial generalised lipodystrophy | ancestors: hereditary lipodystrophy, generalized lipodystrophy, lipodystrophy, inborn errors of metabolism | def: An extremely rare autosomal recessive condition, characterized by an extreme scarcity of fat in the subcutaneous tissues.",
+"ko": "선천성 전신 지방이영양증",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004570",
+"concept": "- MONDO:0004570 | intestinal volvulus | syn: volvulus | ancestors: intestinal obstruction, intestinal disorder, digestive system disorder, disease by body system or component | def: Twisting of a loop of bowel that results in intestinal obstruction.",
+"ko": "장 꼬임",
+"alt": [
+"장염전"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+}
+]

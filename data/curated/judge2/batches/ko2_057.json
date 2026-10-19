@@ -1,0 +1,240 @@
+[
+{
+"id": "MONDO:0011182",
+"concept": "- MONDO:0011182 | trimethylaminuria | syn: fish odor syndrome; fish odour syndrome; fish-odor syndrome; trimethylaminuria | ancestors: dimethylglycine dehydrogenase deficiency, disorder of methylamine metabolism, disorder of peptide and amine metabolism, inborn errors of metabolism | def: A rare inborn error of metabolism characterized by the presence of large amounts of trimethylamine in urine, sweat, and breath, resulting in a fishy body odor in affected individuals.",
+"ko": "트리메틸아민뇨증",
+"alt": [
+"생선냄새 증후군"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004800",
+"concept": "- MONDO:0004800 | chronic dacryoadenitis | syn: dacryoadenitis, chronic | ancestors: dacryoadenitis, inflammatory disease, disorder of lacrimal gland, disease by developmental or physiological process | def: Chronic form of dacryoadenitis.",
+"ko": "만성 눈물샘염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005429",
+"concept": "- MONDO:0005429 | prion disease | syn: spongiform encephalopathy | ancestors: brain disorder, central nervous system infectious disorder, central nervous system disorder, infectious disorder of the nervous system | def: A transmissible disease that is caused by a protein that is able to induce abnormal folding of normal cellular proteins, leading to characteristic spongiform brain changes, which are associated with n...",
+"ko": "프리온병",
+"alt": [
+"스펀지양 뇌병증"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0043576",
+"concept": "- MONDO:0043576 | endarteritis | syn: endarteritis; inflammation of tunica intima of artery; tunica intima of artery inflammation | ancestors: arteritis, arterial disorder, vasculitis, vascular disorder | def: Inflammation of the arterial intima.",
+"ko": "동맥내막염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004842",
+"concept": "- MONDO:0004842 | stomatitis | syn: inflammation of mouth mucosa; mouth mucosa inflammation; mucositis oral; oral mucositis | ancestors: mucositis, mouth mucosa disorder, inflammatory disease, mouth disorder | def: Inflammation of the oral mucosa due to local or systemic factors.",
+"ko": "구내염",
+"alt": [
+"입안염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0003275",
+"concept": "- MONDO:0003275 | middle ear cancer | syn: cancer of middle ear; malignant middle ear neoplasm; malignant middle Ear tumor; malignant middle Ear tumour | ancestors: malignant ear neoplasm, auditory system cancer, neoplasm of middle ear, sensory system cancer | def: A malignant neoplasm involving the middle ear",
+"ko": "중이암",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000465",
+"concept": "- MONDO:0000465 | atrioventricular block | syn: atrioventricular block; atrioventricular block (disease); AV block; AV nodal block | ancestors: heart conduction disease, atrioventricular dissociation, heart disorder, cardiac conduction defect | def: A heart block that is initiated in the atrioventricular node.",
+"ko": "방실 차단",
+"alt": [
+"방실 블록"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001384",
+"concept": "- MONDO:0001384 | myopia | syn: myopia; myopia (disease); near-sightedness | ancestors: hereditary disease, refractive error, ocular growth disorder, disease of genetic or genomic mechanism | def: The condition in which the individual does not see far distances clearly.",
+"ko": "근시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004794",
+"concept": "- MONDO:0004794 | exposure keratitis | syn: exposure keratoconjunctivitis | ancestors: keratoconjunctivitis, keratitis, conjunctivitis, corneal disorder",
+"ko": "노출각막염",
+"alt": [
+"노출성 각막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005373",
+"concept": "- MONDO:0005373 | meningococcal infection | syn: Neisseria meningitidis infection | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Infections with bacteria of the species neisseria meningitidis.",
+"ko": "수막구균 감염증",
+"alt": [
+"수막알균 감염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0019434",
+"concept": "- MONDO:0019434 | systemic-onset juvenile idiopathic arthritis | syn: sJIA; SoJIA; Still disease; systemic polyarthritis | ancestors: juvenile idiopathic arthritis, autoinflammatory syndrome, rheumatic disorder, arthritic joint disease | def: Systemic-onset juvenile idiopathic arthritis is marked by the severity of the extra-articular manifestations (fever, cutaneous eruptions) and by an equal sex ratio.",
+"ko": "전신형 소아 특발성 관절염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0018895",
+"concept": "- MONDO:0018895 | Plummer-Vinson syndrome | syn: Kelly-Paterson syndrome; Sideropenic dysphagia | ancestors: syndromic disease, acquired deficiency anemia, disease by body system or component, deficiency anemia | def: Plummer-Vinson or Paterson-Kelly syndrome presents as a classical triad of dysphagia, iron-deficiency anemia and esophageal webs.",
+"ko": "플러머-빈슨 증후군",
+"alt": [
+"패터슨-켈리 증후군"
+],
+"organs": [
+"haematologic",
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0019737",
+"concept": "- MONDO:0019737 | thrombotic microangiopathy | ancestors: blood coagulation disease, hematologic disorder, disease by body system or component, human disease | def: The syndromes of microangiopathic hemolytic anemia, thrombocytopenia, and variable signs of organ impairment, due to platelet aggregation in the microcirculation.",
+"ko": "혈전성 미세혈관병증",
+"alt": [],
+"organs": [
+"haematologic",
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018770",
+"concept": "- MONDO:0018770 | Jeune syndrome | syn: Asphyxiating Thoracic Dystrophy; asphyxiating thoracic dystrophy of the newborn; JATD; Jeune asphyxiating thoracic dystrophy | ancestors: ciliopathy, short rib-polydactyly syndrome, inherited renal tubular disease, hereditary disease | def: Jeune syndrome, also called asphyxiating thoracic dystrophy, is a short-rib dysplasia characterized by a narrow thorax, short limbs and radiological skeletal abnormalities including \\\"trident\\\" aspect...",
+"ko": "죄네 증후군",
+"alt": [
+"질식성 흉곽 이영양증"
+],
+"organs": [
+"pulmonary",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005962",
+"concept": "- MONDO:0005962 | skeletal tuberculosis | ancestors: extrapulmonary tuberculosis, skeletal system disorder, tuberculosis, musculoskeletal system disorder | def: Tuberculosis of the bones or joints.",
+"ko": "뼈 결핵",
+"alt": [
+"골결핵"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005706",
+"concept": "- MONDO:0005706 | coccidioidomycosis | syn: California disease; Coccidioides immitis caused disease or disorder; Coccidioides immitis disease or disorder; Coccidioides immitis infectious disease | ancestors: primary systemic mycosis, parasitic infectious disease, systemic mycosis, infectious disease | def: A fungal infection caused by Coccidioides immitis. Affected individuals usually have mild flu-like symptoms. However, pneumonia and systemic involvement with the formation of abscesses may develop as ...",
+"ko": "콕시디오이데스진균증",
+"alt": [
+"콕시디오이데스증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0005682",
+"concept": "- MONDO:0005682 | bronchopneumonia | syn: bronchial pneumonia; chest infection - unspecified bronchopneumonia; lobular pneumonia | ancestors: pneumonia, respiratory tract infectious disorder, pneumonitis, respiratory system disorder | def: Acute inflammation of the walls of the terminal bronchioles that spreads into the peribronchial alveoli and alveolar ducts. It results in the creation of foci of consolidation, which are surrounded by...",
+"ko": "기관지폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0004893",
+"concept": "- MONDO:0004893 | hypertropia | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder | def: Vertical strabismus in which there is permanent upward deviation of the visual axis of one eye.",
+"ko": "상사시",
+"alt": [
+"위사시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006888",
+"concept": "- MONDO:0006888 | paraneoplastic polyneuropathy | syn: paraneoplastic polyneuropathy | ancestors: polyneuropathy, paraneoplastic neurologic syndrome, peripheral neuropathy, nervous system disorder | def: A diffuse or multifocal peripheral neuropathy caused by the effects of a distant neoplasm. It may be attributed, in part, to the immune response to neoplasm-elaborated proteins. The neuropathy may be ...",
+"ko": "종양 연관 다발신경병증",
+"alt": [
+"부종양성 다발신경병증"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0850301",
+"concept": "- MONDO:0850301 | pemphigoid | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: An autoimmune disease of skin and connective tissue that is characterized by subepidermal blistering especially in the lower abdomen, groin, and flexor surfaces of the extremities, creating tense blis...",
+"ko": "유천포창",
+"alt": [
+"천포창양 질환"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+}
+]

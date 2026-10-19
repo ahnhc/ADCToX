@@ -1,0 +1,232 @@
+[
+{
+"id": "MONDO:0016486",
+"concept": "- MONDO:0016486 | beta-thalassemia major | syn: Beta thalassemia Major; Cooley anaemia; Cooley anemia; Cooley's Anaemia | ancestors: beta-thalassemia HBB/LCRB, beta thalassemia, thalassemia, endocrine system disorder | def: Beta-thalassemia (BT) major is a severe early-onset form of BT characterized by severe anemia requiring regular red blood cell transfusions.",
+"ko": "중증 베타지중해빈혈",
+"alt": [
+"쿨리 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017882",
+"concept": "- MONDO:0017882 | Omsk hemorrhagic fever | ancestors: Flaviviridae infectious disease, viral hemorrhagic fever, tick-borne infectious disease, primary viral infectious disease | def: Omsk hemorrhagic fever (OHF), caused by Omsk hemorrhagic fever virus (OHFV), is a zoonotic disease characterized by fever, nausea, myalgia and moderately severe hemorrhagic manifestations as well as i...",
+"ko": "옴스크 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0700115",
+"concept": "- MONDO:0700115 | proliferative vitreoretinopathy | ancestors: retinal disorder, nervous system disorder, eye disorder, disease by body system or component | def: Vitreoretinal membrane shrinkage or contraction secondary to the proliferation of primarily retinal pigment epithelial cells and glial cells, particularly fibrous astrocytes, followed by membrane form...",
+"ko": "증식성 유리체망막병증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004597",
+"concept": "- MONDO:0004597 | pulmonary embolism and infarction | syn: infarction, pulmonary | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: Localized necrosis of lung tissue caused by obstruction of the arterial blood supply, most often due to pulmonary embolism.",
+"ko": "폐색전증 및 폐경색",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009016",
+"concept": "- MONDO:0009016 | band keratopathy | syn: band keratopathy; band-shaped keratopathy | ancestors: corneal degeneration, keratopathy, corneal dystrophy, corneal disorder | def: The deposition of calcium on the cornea, resulting in pain and decreased visual acuity.",
+"ko": "띠 각막병증",
+"alt": [
+"띠모양 각막병증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007125",
+"concept": "- MONDO:0007125 | ankyloglossia | syn: ankyloglossia; FUSED to floor of mouth | ancestors: tongue disorder, hereditary disease, mouth disorder, disease of genetic or genomic mechanism | def: A developmental abnormality in which the bottom of the tongue is attached to the floor of the mouth.",
+"ko": "혀유착증",
+"alt": [
+"설소대 단축증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001622",
+"concept": "- MONDO:0001622 | mechanical lagophthalmos | ancestors: lagophthalmos, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "기계적 토안",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0100429",
+"concept": "- MONDO:0100429 | intrahepatic cholestasis of pregnancy | syn: gravidic intrahepatic cholestasis; intrahepatic cholestasis of pregnancy; pregnancy related cholestasis; pregnancy-related cholestasis | ancestors: intrahepatic cholestasis, cholestasis, bile duct disorder, biliary tract disorder | def: A cholestatic disorder characterized by (i) pruritus with onset in the second or third trimester of pregnancy, (ii) elevated serum aminotransferases and bile acid levels, and (iii) spontaneous relief ...",
+"ko": "임신성 간내 담즙정체증",
+"alt": [
+"임신 중 간내 담즙정체"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004037",
+"concept": "- MONDO:0004037 | retinal edema | ancestors: retinal disorder, nervous system disorder, eye disorder, disease by body system or component",
+"ko": "망막 부종",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0850286",
+"concept": "- MONDO:0850286 | exercise-induced bronchoconstriction | ancestors: intrinsic asthma, asthma, bronchial disorder, lower respiratory tract disorder | def: An intrinsic asthma that is characterized by narrowing of the airways during or shortly after exercise.",
+"ko": "운동 유발 기관지수축",
+"alt": [
+"운동유발 기관지협착"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019064",
+"concept": "- MONDO:0019064 | hereditary spastic paraplegia | syn: familial spastic paraplegia; hereditary spastic paraparesis; HSP; SPG | ancestors: paraplegia, inherited neurodegenerative disorder, hereditary neuromuscular disease, palsy | def: Hereditary spastic paraplegias (HSP) comprise a genetically and clinically heterogeneous group of neurodegenerative disorders characterized by progressive spasticity and hyperreflexia of the lower lim...",
+"ko": "유전성 경직성 하반신마비",
+"alt": [
+"가족성 경직성 하반신마비"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015540",
+"concept": "- MONDO:0015540 | hemophagocytic syndrome | syn: Hemophagocytic Lymphohistiocytosis; hemophagocytic lymphohistiocytosis; hemophagocytic syndrome; HLH | ancestors: syndromic disease, lymphatic system disorder, disease by body system or component, lymphoid system disorder | def: Hemophagocytic syndrome (HPS) is a rare immune disease and a potentially life-threatening disorder characterized by cytokine storm and overwhelming inflammation causing fever, hepatosplenomegaly, cyto...",
+"ko": "혈구포식 증후군",
+"alt": [
+"혈구포식성 림프조직구증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007705",
+"concept": "- MONDO:0007705 | Heinz body anemia | syn: Heinz body anemias, alpha- | ancestors: hemolytic anemia, normocytic anemia, anemia, hematologic disorder",
+"ko": "하인츠소체 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005413",
+"concept": "- MONDO:0005413 | cystic fibrosis associated meconium ileus | syn: cystic fibrosis associated meconium ileum | ancestors: meconium ileus, perinatal disease, ileus, disease by developmental or physiological process | def: Cystic fibrosis associated meconium ileum is a thickening and congestion of the meconium in the ileum in newborns, often the first sign of cystic fibrosis. In cystic fibrosis, the meconium can form a ...",
+"ko": "낭성 섬유증 관련 태변 장폐색",
+"alt": [
+"낭성섬유증 관련 태변성 장폐색"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006085",
+"concept": "- MONDO:0006085 | angiolipoma | syn: angiolipoma, benign | ancestors: lipoma, benign lipomatous neoplasm, benign connective and soft tissue neoplasm, tumor of adipose tissue | def: A lipoma with prominent vascularity. The vascular tissue is more abundant at the periphery of the tumor and contains fibrin thrombi. It occurs more frequently in younger individuals as a painful subcu...",
+"ko": "혈관지방종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008628",
+"concept": "- MONDO:0008628 | ureterocele | syn: ureterocele; ureterocele (disease) | ancestors: ureteral disorder, hereditary disease, urinary bladder disorder, urinary system disorder | def: A cystic and dysplastic dilation of the distal ureter within the bladder that may extend into the bladder neck and urethra.",
+"ko": "요관류",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001848",
+"concept": "- MONDO:0001848 | Morgagni cataract | syn: Morgagnian cataract | ancestors: hypermature cataract, cataract, lens disorder, hereditary disease | def: A form of hypermature cataract formed by liquefaction of the cortex and sinking of the dense nucleus to the bottom of the capsular bag.",
+"ko": "모르가니 백내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009519",
+"concept": "- MONDO:0009519 | letterer-Siwe disease | syn: acute and disseminated Langerhans cell histiocytosis; acute disseminated Langerhans cell histiocytosis; letterer-Siwe disease; multifocal multisystem Langerhans cell histiocytosis | ancestors: Langerhans cell histiocytosis specific to childhood, Langerhans cell histiocytosis, histiocytosis, leukocyte disorder | def: A multifocal, multisystem form of Langerhans-cell histiocytosis. There is involvement of multiple organ systems including the bones, skin, liver, spleen, and lymph nodes. Patients are usually infants ...",
+"ko": "레테러-지베병",
+"alt": [
+"급성 파종성 랑게르한스세포 조직구증"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0043209",
+"concept": "- MONDO:0043209 | albinism | syn: albinism | ancestors: inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease, inborn errors of metabolism | def: A congenital disorder characterized by partial or complete absence of melanin pigment in the eyes, hair, or skin.",
+"ko": "백색증",
+"alt": [
+"알비니즘"
+],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001268",
+"concept": "- MONDO:0001268 | gingival recession | syn: gingival recession; gingival recession, localised; gingival recession, localized; gingival recession, unspecified | ancestors: gingival disorder, periodontal disorder, mouth mucosa disorder, skeletal system disorder | def: A loss of gum tissue resulting in an exposure of the roots of the teeth.",
+"ko": "치은퇴축",
+"alt": [
+"잇몸퇴축"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 6
+}
+]

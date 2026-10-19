@@ -1,0 +1,226 @@
+[
+{
+"id": "MONDO:0018984",
+"concept": "- MONDO:0018984 | Oroya fever | syn: Bartonella bacilliformis caused disease or disorder; Bartonella bacilliformis disease or disorder; Bartonella bacilliformis infectious disease; bartonellosis due to Bartonella bacilliformis infection | ancestors: bartonellosis, primary bacterial infectious disease, Bartonellaceae infectious disease, bacterial infectious disease | def: An infection that is caused by Bartonella bacilliformis, which is transmitted to humans from infected sandflies. The acute phase (Oroya fever) is characterized by fever, headache, myalgia, enlargement...",
+"ko": "오로야열",
+"alt": [
+"카리온병"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006000",
+"concept": "- MONDO:0006000 | tuberculous peritonitis | syn: Mycobacterium tuberculosis caused peritonitis; Mycobacterium tuberculosis peritonitis | ancestors: abdominal tuberculosis, infectious peritonitis, gastrointestinal tuberculosis, extrapulmonary tuberculosis | def: A form of peritonitis seen in patients with tuberculosis, characterized by lesion either as a miliary form or as a pelvic mass on the peritoneal surfaces. Most patients have ascites, abdominal swellin...",
+"ko": "결핵성 복막염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001512",
+"concept": "- MONDO:0001512 | intermittent proptosis | syn: intermittent exophthalmos | ancestors: disease of orbital part of eye adnexa, eye adnexa disorder, disorder of orbital region, disease by body system or component",
+"ko": "간헐성 안구돌출",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007243",
+"concept": "- MONDO:0007243 | Burkitt lymphoma | syn: Burkitt lymphoma; burkitt lymphoma, somatic; Burkitt lymphoma/leukemia; Burkitt's lymphoma | ancestors: hereditary disease, neoplasm of mature B-cells, Epstein-Barr virus-associated lymphoproliferative disorder, aggressive B-cell non-Hodgkin lymphoma | def: A rare form of malignant mature B-cell non-Hodgkin lymphoma.",
+"ko": "버킷 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0002220",
+"concept": "- MONDO:0002220 | tooth hard tissue disease | syn: disorder of hard tissues of teeth | ancestors: tooth disorder, skeletal system disorder, mouth disorder, musculoskeletal system disorder",
+"ko": "치아 경조직 질환",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001949",
+"concept": "- MONDO:0001949 | acute thyroiditis | syn: acute thyroiditis (disease); thyroiditis (disease), acute | ancestors: thyroiditis, acute disease, thyroid gland disorder, inflammatory disease | def: Acute form of thyroiditis (disease).",
+"ko": "급성 갑상선염",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008737",
+"concept": "- MONDO:0008737 | congenital afibrinogenemia | ancestors: familial dysfibrinogenemia, congenital fibrinogen deficiency, coagulation protein disease, hemorrhagic disease | def: Familial afibrinogenemia is a coagulation disorder characterized by bleeding symptoms due to a complete absence of circulating fibrinogen.",
+"ko": "선천성 무섬유소원혈증",
+"alt": [
+"선천성 무피브리노겐혈증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001810",
+"concept": "- MONDO:0001810 | hypoglossal nerve disorder | syn: disease of hypoglossal nerve; disease or disorder of hypoglossal nerve; disorder of hypoglossal [12th] nerve; disorder of hypoglossal nerve | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the hypoglossal nerve.",
+"ko": "설하신경 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002442",
+"concept": "- MONDO:0002442 | long QT syndrome | syn: long QT syndrome; ventricular arrhythmia associated with long QT syndrome | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: A condition that is characterized by episodes of fainting (syncope) and varying degree of ventricular arrhythmia as indicated by the prolonged QT interval. The inherited forms are caused by mutation o...",
+"ko": "QT 연장 증후군",
+"alt": [
+"긴 QT 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0100293",
+"concept": "- MONDO:0100293 | diaphragmatic malformation | ancestors: diaphragm disorder, developmental defect during embryogenesis, respiratory system disorder, skeletal muscle disorder",
+"ko": "횡격막 기형",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008627",
+"concept": "- MONDO:0008627 | ureter cancer | syn: cancer of ureter; malignant neoplasm of the ureter; malignant neoplasm of ureter; malignant tumor of the ureter | ancestors: malignant urinary system neoplasm, ureter neoplasm, cancer, urinary system neoplasm | def: A malignant neoplasm involving the ureter",
+"ko": "요관암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001455",
+"concept": "- MONDO:0001455 | retinal lattice degeneration | syn: palisade degeneration of retina | ancestors: peripheral retinal degeneration, retinal degeneration, retinal disorder, nervous system disorder",
+"ko": "망막 격자변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021418",
+"concept": "- MONDO:0021418 | polyp of ethmoidal sinus | syn: ethmoid sinus polyp; ethmoidal polyp; ethmoidal sinus polyp; polyp of ethmoid sinus | ancestors: paranasal sinus disorder, polyp, nasal disorder, respiratory system disorder | def: A polyp that involves the ethmoid sinus.",
+"ko": "벌집굴 용종",
+"alt": [
+"사골동 용종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001737",
+"concept": "- MONDO:0001737 | tetanus neonatorum | syn: neonatal tetanus | ancestors: tetanus, primary bacterial infectious disease, infectious disorder of the nervous system, Clostridium infectious disease | def: A syndrome of generalized rigidity with muscle spasms and seizures in the neonatal period resulting from Clostridium tetani toxin production.",
+"ko": "신생아 파상풍",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0016971",
+"concept": "- MONDO:0016971 | limb-girdle muscular dystrophy | syn: Leyden-Mobius muscular dystrophy; LGMD; limb-girdle muscular dystrophy | ancestors: progressive muscular dystrophy, muscular dystrophy, myopathy, neuromuscular disease | def: Limb-girdle muscular dystrophy (LGMD) is a heterogeneous group of muscular dystrophies characterized by proximal weakness affecting the pelvic and shoulder girdles. Cardiac and respiratory impairment ...",
+"ko": "지대형 근이영양증",
+"alt": [
+"지대근디스트로피"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0100053",
+"concept": "- MONDO:0100053 | anaphylaxis | syn: anaphylactic shock; systemic anaphylaxis | ancestors: hypersensitivity reaction disease, immune system disorder, disease by body system or component, human disease | def: An acute hypersensitivity reaction that occurs from exposure to an allergen. It results from the release of histamine and histamine-like substances from mast cells, and can present with breathing diff...",
+"ko": "아나필락시스",
+"alt": [
+"아나필락시스 쇼크"
+],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0004627",
+"concept": "- MONDO:0004627 | duodenitis | syn: duodenitis; duodenum inflammation; inflammation of duodenum | ancestors: duodenal disorder, enteritis, small intestine disorder, gastroenteritis | def: Acute or chronic inflammation of the duodenum. Causes include bacterial and viral infections and gastroesophageal reflux disease. Symptoms include vomiting and abdominal pain.",
+"ko": "십이지장염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001067",
+"concept": "- MONDO:0001067 | early yaws | syn: bone and joint lesions due to yaws; initial lesions of yaws | ancestors: yaws, syphilis, primary bacterial infectious disease, Treponema infectious disease | def: Early yaws includes primary and secondary stages of yaws, endemic tropical treponemal nonvenereal infection: development of initial lesion at inoculation site followed by widespread dissemination of t...",
+"ko": "조기 프람베시아",
+"alt": [
+"조기 요스"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0018015",
+"concept": "- MONDO:0018015 | intermittent hydrarthrosis | ancestors: rheumatic disorder, connective tissue disorder, disease by body system or component, human disease",
+"ko": "간헐성 관절수종",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001574",
+"concept": "- MONDO:0001574 | capillary disorder | syn: capillary disease; capillary disease or disorder; disease of capillary; disease or disorder of capillary | ancestors: vascular disorder, cardiovascular disorder, disease by body system or component, human disease | def: A disease involving a capillary.",
+"ko": "모세혈관 질환",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 5
+}
+]

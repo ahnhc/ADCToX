@@ -1,0 +1,251 @@
+[
+{
+"id": "MONDO:0020655",
+"concept": "- MONDO:0020655 | juvenile ankylosing spondylitis | ancestors: ankylosing spondylitis, spondylitis, spondyloarthropathy, rheumatoid arthritis",
+"ko": "소아 강직성 척추염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0003441",
+"concept": "- MONDO:0003441 | dystonic disorder | syn: dystonia; dystonic disorder | ancestors: extrapyramidal and movement disease, movement disorder, nervous system disorder, disease by body system or component | def: A movement disorder characterized by sustained or intermittent muscle contractions, resulting in abnormal movements and/or postures.",
+"ko": "근긴장이상 장애",
+"alt": [
+"근긴장이상증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019512",
+"concept": "- MONDO:0019512 | congenital heart malformation | syn: congenital heart malformation; disorder of heart development; heart development disease | ancestors: congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis, disease by body system or component | def: A disease that has its basis in the disruption of heart development.",
+"ko": "선천성 심장 기형",
+"alt": [
+"선천성 심장병"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008564",
+"concept": "- MONDO:0008564 | DiGeorge syndrome | syn: DGS; DGS1; Di-George syndrome; DiGeorge anomaly | ancestors: congenital T-cell immunodeficiency, 22q11.2 deletion syndrome, neurocristopathy, hereditary neurological disease | def: A congenital anomaly characterized by immunodeficiency, abnormal facies, congenital heart disease, hypocalcemia, and increased susceptibility to infections. Pathologic characteristics include conotrun...",
+"ko": "디조지 증후군",
+"alt": [
+"22q11.2 결손 증후군"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017469",
+"concept": "- MONDO:0017469 | congenital elbow dislocation | syn: congenital radial head dislocation; isolated congenital elbow dislocation | ancestors: disorder of development or morphogenesis, disease by developmental or physiological process, human disease, disease",
+"ko": "선천성 팔꿈치 탈구",
+"alt": [
+"선천성 요골두 탈구"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017474",
+"concept": "- MONDO:0017474 | macrodactyly of fingers | syn: macrodactyly of hand | ancestors: disorder of development or morphogenesis, disease by developmental or physiological process, human disease, disease",
+"ko": "손가락 거지증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017069",
+"concept": "- MONDO:0017069 | spina bifida cystica | syn: meningomyelocele | ancestors: isolated spina bifida, spina bifida, congenital nervous system disorder, spinal cord disorder | def: A congenital abnormality in which the spinal cord and meninges protrude through a defect in the spinal column. The protrusion is above the skin surface.",
+"ko": "낭성 이분척추",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006862",
+"concept": "- MONDO:0006862 | myofascial pain syndrome | ancestors: myopathy, skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder | def: Muscular pain in numerous body regions that can be reproduced by pressure on trigger points, localized hardenings in skeletal muscle tissue. Pain is referred to a location distant from the trigger poi...",
+"ko": "근막통증 증후군",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019969",
+"concept": "- MONDO:0019969 | panner disease | syn: aseptic necrosis of the capital humerus; Osteochondrosis of the capital humerus | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder | def: Panner's disease is an osteochondrosis of the capitellum of the humerus, characterized by involvement of the dominant upper limb and onset before the age of 10 years. It results from lateral compressi...",
+"ko": "파너병",
+"alt": [
+"상완골 소두 무혈성 괴사"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0036511",
+"concept": "- MONDO:0036511 | childhood malignant kidney neoplasm | syn: childhood kidney cancer; childhood malignant kidney neoplasm; childhood malignant kidney tumor; childhood malignant kidney tumour | ancestors: kidney cancer, childhood kidney neoplasm, childhood malignant neoplasm, malignant urinary system neoplasm | def: A malignant neoplasm that affects the kidney and occurs in childhood.",
+"ko": "소아 악성 신장 신생물",
+"alt": [
+"소아 신장암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018382",
+"concept": "- MONDO:0018382 | epiphysiolysis of the hip | syn: epiphysiolysis capitis femoris; epiphysiolysis of the upper femur; femoral head epiphysiolysis; SCFE | ancestors: osteonecrosis of genetic origin, hereditary disease, osteonecrosis, disease of genetic or genomic mechanism | def: Epiphysiolysis of the hip is a rare osteonecrosis disorder characterized by unilateral or bilateral disruption of the capital femoral physis with varying degrees of posterior epiphysis translation and...",
+"ko": "대퇴골두 골단분리증",
+"alt": [
+"엉덩관절 골단분리증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001195",
+"concept": "- MONDO:0001195 | spotted fever | syn: spotted fever; spotted fever rickettsiae disease; spotted fever rickettsiosis | ancestors: Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis, gram-negative bacterial infections | def: A type of tick-borne disease which presents on the skin caused by bacteria of the genus Rickettsia.",
+"ko": "홍반열",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0003276",
+"concept": "- MONDO:0003276 | middle ear disorder | syn: disease of middle ear; disease or disorder of middle ear; disorder of middle ear; middle ear disease | ancestors: auditory system disorder, disorder of ear, disease by body system or component, otorhinolaryngologic disease | def: A disease involving the middle ear.",
+"ko": "중이 질환",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000587",
+"concept": "- MONDO:0000587 | autoimmune disease of ear, nose and throat | syn: autoimmune otorhinolaryngologic disease | ancestors: autoimmune disease, otorhinolaryngologic disease, immune system disorder, disease by body system or component | def: An autoimmune form of otorhinolaryngologic disease.",
+"ko": "이비인후 자가면역 질환",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016861",
+"concept": "- MONDO:0016861 | Alagille syndrome due to 20p12 microdeletion | syn: Alagille syndrome due to del(20)(p12); Alagille syndrome due to monosomy 20p12; Alagille-Watson syndrome due to monosomy 20p12; Arteriohepatic dysplasia due to monosomy 20p12 | ancestors: Alagille syndrome, partial monosomy of the short arm of chromosome 20, syndromic disease, biliary tract disorder",
+"ko": "20p12 미세결실에 의한 알라질 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0031003",
+"concept": "- MONDO:0031003 | hypercholanemia, familial, 2 | syn: FHCA2; hypercholanemia, familial 2; NTCP Deficiency | ancestors: hypercholanemia, familial, inborn disorder of bile acid synthesis, sterol metabolism disorder, inherited lipid metabolism disorder",
+"ko": "가족성 고담즙산혈증 2",
+"alt": [
+"NTCP 결핍증"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001239",
+"concept": "- MONDO:0001239 | anemia of prematurity | syn: AOP | ancestors: neonatal anemia, anemia, hematologic disorder, disease by body system or component | def: A blood disorder characterized by low hemoglobin levels in premature neonates that usually spontaneously resolves within 3-6 months post birth. A combination of factors including the transition from t...",
+"ko": "미숙아 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006970",
+"concept": "- MONDO:0006970 | sialolithiasis | syn: sialolith; Stone of salivary gland or duct | ancestors: salivary gland disorder, mouth disorder, disease by body system or component, human disease | def: A concretion in the salivary gland.",
+"ko": "침샘결석증",
+"alt": [
+"타석증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0021521",
+"concept": "- MONDO:0021521 | benign neoplasm of mediastinum | syn: benign mediastinal neoplasm; benign mediastinal tumor; benign mediastinal tumour; benign neoplasm of the mediastinum | ancestors: thoracic benign neoplasm, neoplasm of mediastinum, benign neoplasm, neoplasm of thorax | def: A benign neoplasm that involves the mediastinum.",
+"ko": "종격동 양성 신생물",
+"alt": [
+"종격동 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008830",
+"concept": "- MONDO:0008830 | aspartylglucosaminuria | syn: aspartylglucosaminidase deficiency; aspartylglucosaminuria; Aspartylglycosaminuria; aspartylglycosaminuria | ancestors: oligosaccharidosis, lysosomal storage disease with skeletal involvement, developmental anomaly of metabolic origin, glycoproteinosis | def: Aspartylglycosaminuria (AGU) is an autosomal recessive lysosomal storage disease belonging to the oligosaccharidosis group (also called glycoproteinosis).",
+"ko": "아스파르틸글루코사민뇨증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+}
+]

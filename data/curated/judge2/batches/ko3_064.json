@@ -1,0 +1,265 @@
+[
+{
+"id": "MONDO:0000935",
+"concept": "- MONDO:0000935 | larynx squamous papilloma | syn: laryngeal papilloma; larynx papilloma; larynx squamous papilloma; papilloma of larynx | ancestors: squamous papilloma, benign laryngeal neoplasm, papilloma, respiratory system benign neoplasm | def: A benign exophytic neoplasm that arises from the larynx, usually the true vocal cords. It is related to human papillomavirus infection and may arise as a single or multiple lesions. It is characterize...",
+"ko": "후두 편평상피 유두종",
+"alt": [
+"후두 유두종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006850",
+"concept": "- MONDO:0006850 | maxillary sinus neoplasm | syn: maxillary antrum neoplasm; maxillary antrum tumor; maxillary antrum tumour; maxillary sinus neoplasm | ancestors: paranasal sinus neoplasm, maxillary neoplasm, paranasal sinus disorder, skull neoplasm | def: A benign or malignant neoplasm that affects the maxillary sinus. Representative examples of benign neoplasms include Schneiderian papilloma and salivary gland-type adenoma. Representative examples of ...",
+"ko": "상악동 신생물",
+"alt": [
+"위턱굴 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020161",
+"concept": "- MONDO:0020161 | congenital ectropion | ancestors: ectropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "선천성 안검외반",
+"alt": [
+"선천성 눈꺼풀 바깥말림"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013881",
+"concept": "- MONDO:0013881 | epidermolysis bullosa, junctional 7, with interstitial lung disease and nephrotic syndrome | syn: congenital ILNEB syndrome; congenital interstitial lung disease-nephrotic syndrome-epidermolysis bullosa syndrome; congenital NEP syndrome; congenital nephrotic syndrome - interstitial lung disease - epidermolysis bullosa syndrome | ancestors: junctional epidermolysis bullosa, inherited epidermolysis bullosa, epidermolysis bullosa, epidermal disease | def: A life-threatening multiorgan disorder which develops in the first months of life, presenting with respiratory distress and proteinuria in the nephrotic range, and leading to severe interstitial lung ...",
+"ko": "접합부 수포성 표피박리증 7형, 간질성 폐질환 및 신증후군 동반",
+"alt": [
+"선천성 ILNEB 증후군"
+],
+"organs": [
+"pulmonary",
+"renal",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001600",
+"concept": "- MONDO:0001600 | mucocele of salivary gland | syn: mucous retention cyst of salivary gland; ranula; salivary cyst; salivary gland mucocele | ancestors: salivary gland disorder, mouth disorder, disease by body system or component, human disease | def: A benign cyst located in the salivary gland that is lined by epithelium and filled with mucoid fluid, tissue, or other material; it is usually caused by duct obstruction.",
+"ko": "침샘 점액류",
+"alt": [
+"하마종"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0007156",
+"concept": "- MONDO:0007156 | arthritis, sacroiliac | syn: arthritis, sacroiliac | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "천장관절염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 15,
+"new": false
+},
+{
+"id": "MONDO:0020920",
+"concept": "- MONDO:0020920 | escherichia coli infection | syn: e coli infection; escherichia coli infection | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Infection with the organism Escherichia Coli.",
+"ko": "대장균 감염",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0005496",
+"concept": "- MONDO:0005496 | bile duct carcinoma | syn: bile duct cancer (including cholangiocarcinoma); bile duct carcinoma; carcinoma of bile duct | ancestors: bile duct cancer, digestive system carcinoma, biliary tract cancer, bile duct neoplasm | def: A carcinoma that arises from epithelial cells of the bile duct",
+"ko": "담관암종",
+"alt": [
+"담관암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009299",
+"concept": "- MONDO:0009299 | 46 XX gonadal dysgenesis | syn: 46,XX complete gonadal dysgenesis; 46,XX gonadal dysgenesis; 46,XX ovarian dysgenesis; 46,XX pure gonadal dysgenesis | ancestors: gonadal dysgenesis, inherited primary ovarian failure, hypogonadism, hereditary disease | def: 46,XX gonadal dysgenesis (46,XX GD) is a primary ovarian defect leading to premature ovarian failure (POF) in otherwise normal 46,XX females as a result of failure of the gonads to develop or due to r...",
+"ko": "46,XX 성선 이형성증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020866",
+"concept": "- MONDO:0020866 | nasopharyngeal diphtheria | syn: nasopharyngeal diphtheria | ancestors: nasopharyngeal disorder, diphtheria, respiratory tract infectious disorder, upper respiratory tract disorder | def: Infection of the nasopharynx by Corynebacterium diphtheriae.",
+"ko": "비인두 디프테리아",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009658",
+"concept": "- MONDO:0009658 | mucopolysaccharidosis type 3D | syn: glucosamine N-acetyl-6-sulfatase deficiency; GNS deficiency; MPS III D; MPS3D | ancestors: mucopolysaccharidosis type 3, lysosomal storage disease with skeletal involvement, syndromic disease, bone disorder | def: A rare autosomal recessive lysosomal storage disease caused by deficiency of the enzyme N-acetylglucosamine-6-sulfatase. It is characterized by behavioral changes, sleep disturbances and mental develo...",
+"ko": "점액다당질증 3D형",
+"alt": [
+"산필리포 증후군 D형"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016215",
+"concept": "- MONDO:0016215 | spastic quadriplegic cerebral palsy | syn: inherited congenital spastic quadriplegia; quadriplegic infantile cerebral palsy; spastic quadriplegia; spastic quadriplegic cerebral palsy | ancestors: spastic cerebral palsy, hereditary neurological disease, cerebral palsy, hereditary disease | def: A type of spastic cerebral palsy characterized by increased muscle tone of all four extremities.",
+"ko": "경직성 사지마비 뇌성마비",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0043283",
+"concept": "- MONDO:0043283 | silicosiderosis | syn: siderosilicosis; silicosiderosis | ancestors: silicosis, pneumoconiosis, interstitial lung disease, lung disorder",
+"ko": "규철침착증",
+"alt": [
+"규소철침착증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017408",
+"concept": "- MONDO:0017408 | rapid-onset childhood obesity-hypothalamic dysfunction-hypoventilation-autonomic dysregulation syndrome | syn: rapid-onset childhood obesity-hypothalamic dysfunction-hypoventilation-autonomic dysregulation-neural tumors syndrome; rapid-onset childhood obesity-hypothalamic dysfunction-hypoventilation-autonomic dysregulation-neural tumours syndrome; Rapid-onset Obesity with Hypothalamic Dysfunction, Hypoventilation, and Autonomic Dysregulation; rapid-onset obesity with hypothalamic dysfunction, hypoventilation, and autonomic dysregulation | ancestors: endocrine system disorder, disease by body system or component, human disease, disease | def: A very rare disorder that appears after the first year and a half of life in previously healthy children. It is characterized by rapid-onset weight gain, hypothalamic dysfunction, breathing abnormalit...",
+"ko": "급성 발병 소아 비만-시상하부 기능장애-저환기-자율신경 조절장애 증후군",
+"alt": [],
+"organs": [
+"pulmonary",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008681",
+"concept": "- MONDO:0008681 | WAGR syndrome | syn: 11p partial monosomy syndrome; chromosome 11p13 deletion syndrome; Del(11)(p13); deletion 11p13 | ancestors: hereditary neoplastic syndrome, partial deletion of the short arm of chromosome 11, 46 XY differences of sex development, hereditary disease | def: WAGR syndrome (Wilms tumor - aniridia - genitourinary anomalies - intellectual disability mental retardation) is a rare genetic disorder characterized by an unusual complex of congenital developmental...",
+"ko": "WAGR 증후군",
+"alt": [
+"11p 부분 단일염색체증 증후군"
+],
+"organs": [
+"renal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005181",
+"concept": "- MONDO:0005181 | progressive external ophthalmoplegia | syn: chronic progressive external ophthalmoplegia [ambiguous]; progressive external ophthalmoplegia | ancestors: congenital nervous system disorder, ophthalmoplegia, inborn mitochondrial myopathy, hereditary neurological disease | def: A mitochondrial myopathy characterized by slowly progressive paralysis of the levator palpebrae, orbicularis oculi, and extraocular muscles. Ragged-red fibers and atrophy are found on muscle biopsy. F...",
+"ko": "진행성 외안근마비",
+"alt": [
+"만성 진행성 외안근마비"
+],
+"organs": [
+"neurologic",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001391",
+"concept": "- MONDO:0001391 | indeterminate leprosy | syn: indeterminate leprosy [group I] | ancestors: leprosy, primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease | def: A leprosy that is an early form of the disease which causes one to a few hypopigmented or erythematous macules.",
+"ko": "미정형 나병",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0013482",
+"concept": "- MONDO:0013482 | Meckel syndrome, type 8 | syn: Meckel syndrome caused by mutation in TCTN2; Meckel syndrome, type 8; MKS8; TCTN2 Meckel syndrome | ancestors: Meckel syndrome, syndromic disease, ciliopathy, hereditary lethal multiple congenital anomalies/dysmorphic syndrome | def: Any Meckel syndrome in which the cause of the disease is a mutation in the TCTN2 gene.",
+"ko": "메켈 증후군 8형",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007473",
+"concept": "- MONDO:0007473 | Duane retraction syndrome | syn: DRS; Duane retraction syndrome; Duane syndrome; Duane's syndrome | ancestors: syndromic disease, nuclear oculomotor paralysis, hereditary neurological disease, disease by body system or component | def: Duane retraction syndrome (DRS) is a congenital form of strabismus characterized by horizontal eye movement limitation, globe retraction and palpebral fissure narrowing in attempted adduction. It is c...",
+"ko": "두안 후퇴 증후군",
+"alt": [
+"두안 증후군"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018824",
+"concept": "- MONDO:0018824 | pyoderma gangrenosum | ancestors: pyoderma, autoinflammatory syndrome, skin disorder, syndromic disease | def: Pyoderma gangrenosum (PG) is a primarily sterile inflammatory neutrophilic dermatosis characterized by recurrent cutaneous ulcerations with a mucopurulent or hemorrhagic exudate.",
+"ko": "괴저성 농피증",
+"alt": [
+"피부괴저농피증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+}
+]

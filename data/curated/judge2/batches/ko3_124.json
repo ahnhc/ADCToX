@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0001172",
+"concept": "- MONDO:0001172 | salpingo-oophoritis | syn: tubo ovarian abscess; tubo-ovarian abscess; tubo-ovarian abscess (disorder); Tubo-ovarian inflammatory disease | ancestors: salpingitis, oophoritis, pelvic inflammatory disease, fallopian tube disorder",
+"ko": "난관난소염",
+"alt": [
+"난관난소 농양"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0017734",
+"concept": "- MONDO:0017734 | sialidosis | ancestors: oligosaccharidosis, developmental anomaly of metabolic origin, glycoproteinosis, inborn carbohydrate metabolic disorder | def: Sialidosis is a lysosomal storage disease, belonging to the group of oligosaccharidoses or glycoproteinoses, with a wide clinical spectrum that is divided into two main clinical subtypes: sialidosis t...",
+"ko": "시알리다제증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0022846",
+"concept": "- MONDO:0022846 | congenital nonhemolytic jaundice | ancestors: jaundice, familial obstructive, of infancy, hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism",
+"ko": "선천성 비용혈성 황달",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003420",
+"concept": "- MONDO:0003420 | bile duct cystadenoma | syn: bile duct cystadenoma; bile duct cystadenoma (morphologic abnormality); bile duct mucinous cystic neoplasm; cystadenoma of bile duct | ancestors: cystadenoma, bile duct adenoma, adenoma, cystic neoplasm | def: An epithelial, usually multiloculated neoplasm arising from the intrahepatic or extrahepatic bile ducts. It occurs predominantly in females. Signs and symptoms include abdominal mass, abdominal pain, ...",
+"ko": "담관 낭샘종",
+"alt": [
+"담관 점액성 낭성 신생물"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006515",
+"concept": "- MONDO:0006515 | acute pancreatitis | syn: acute pancreatitis (disorder) [ambiguous]; pancreatitis, acute | ancestors: pancreatitis, acute disease, pancreas disorder, inflammatory disease | def: An acute inflammatory process that leads to necrosis of the pancreatic parenchyma. Signs and symptoms include severe abdominal pain, nausea, vomiting, diarrhea, fever, and shock. Causes include alcoho...",
+"ko": "급성 췌장염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0024320",
+"concept": "- MONDO:0024320 | inner ear neoplasm | syn: inner Ear neoplasm; internal Ear neoplasm; internal ear neoplasm; internal ear neoplasm (disease) | ancestors: inner ear disorder, ear neoplasm, auditory system disorder, disorder of ear | def: A rare neoplasm that arises from the inner ear. Representative examples include lipoma and acoustic schwannoma.",
+"ko": "속귀 신생물",
+"alt": [
+"내이 종양"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017689",
+"concept": "- MONDO:0017689 | disorder of fructose metabolism | ancestors: inborn carbohydrate metabolic disorder, inborn errors of metabolism, carbohydrate metabolism disease, hereditary disease",
+"ko": "과당 대사 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009480",
+"concept": "- MONDO:0009480 | Joubert syndrome with oculorenal defect | syn: Arima syndrome; Cerebellooculorenal syndrome; CORS; Dekaban-Arima syndrome | ancestors: syndromic disease, Joubert syndrome and related disorders, central nervous system malformation, disorder of visual system | def: Joubert syndrome with oculorenal defect is a rare subtype of Joubert syndrome and related disorders (JSRD) characterized by the neurological features of JS associated with both renal and ocular diseas...",
+"ko": "눈신장 결함을 동반한 주베르 증후군",
+"alt": [
+"아리마 증후군",
+"소뇌눈신장 증후군"
+],
+"organs": [
+"renal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009473",
+"concept": "- MONDO:0009473 | isotretinoin-like syndrome | syn: Kawashima syndrome; microtia-aortic arch syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, multiple congenital anomalies/dysmorphic syndrome, developmental defect during embryogenesis, disorder of development or morphogenesis | def: Isotretinoin-like syndrome is a phenocopy of the isotretinoin embryopathy.",
+"ko": "이소트레티노인 유사 증후군",
+"alt": [
+"가와시마 증후군",
+"소이증-대동맥궁 증후군"
+],
+"organs": [
+"cardiovascular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007154",
+"concept": "- MONDO:0007154 | arteriovenous malformations of the brain | syn: arteriovenous malformation of the brain, somatic; arteriovenous malformations of the brain; cerebral arteriovenous malformation; intracranial arteriovenous malformation | ancestors: arteriovenous hemangioma/malformation, hereditary disease, hemangioma, disease of genetic or genomic mechanism | def: Cerebral arteriovenous malformation (AVM) is a congenital malformative communication between the veins and the arteries in the brain in the form of a nidus, an anatomical structure composed of dilated...",
+"ko": "뇌 동정맥 기형",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013589",
+"concept": "- MONDO:0013589 | focal segmental glomerulosclerosis 6 | syn: focal segmental glomerulosclerosis 6; focal segmental glomerulosclerosis caused by mutation in MYO1E; focal segmental glomerulosclerosis type 6; FSGS6 | ancestors: inherited focal segmental glomerulosclerosis, inherited kidney disorder, focal segmental glomerulosclerosis, hereditary disease | def: Any focal segmental glomerulosclerosis in which the cause of the disease is a mutation in the MYO1E gene.",
+"ko": "국소 분절 사구체경화증 6",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005173",
+"concept": "- MONDO:0005173 | actinic keratosis | syn: actinic (solar) keratosis; actinic keratosis; actinic keratosis (disease); solar keratosis | ancestors: pre-malignant neoplasm, skin neoplasm, neoplasm, precancerous condition | def: A precancerous lesion of the skin composed of atypical keratinocytes. It is characterized by the presence of thick, scaly patches of skin. Several histologic variants have been described, including at...",
+"ko": "광선각화증",
+"alt": [
+"일광각화증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0007500",
+"concept": "- MONDO:0007500 | ear malformation | syn: ear malformation | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "귀 기형",
+"alt": [
+"이개 기형"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009104",
+"concept": "- MONDO:0009104 | Donnai-Barrow syndrome | syn: DBS/FOAR syndrome; diaphragmatic hernia, exomphalos, absent corpus callosum, hypertelorism, myopia, sensorineural deafness, and proteinuria; diaphragmatic hernia-exomphalos-hypertelorism syndrome; diaphragmatic hernia-hypertelorism-myopia-deafness syndrome | ancestors: autosomal recessive disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, autosomal genetic disease, multiple congenital anomalies/dysmorphic syndrome | def: Donnai-Barrow syndrome (DBS) is a rare, often severe, multiple congenital malformation syndrome with typical facial dysmorphism, ocular findings, hearing loss, agenesis of the corpus callosum, and var...",
+"ko": "도나이-배로 증후군",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001364",
+"concept": "- MONDO:0001364 | regular astigmatism | ancestors: astigmatism, refractive error, eye disorder, disorder of orbital region",
+"ko": "정난시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0014638",
+"concept": "- MONDO:0014638 | Fanconi anemia complementation group T | syn: Fanconi anaemia caused by mutation in UBE2T; Fanconi anaemia complementation group type T; Fanconi anemia caused by mutation in UBE2T; Fanconi anemia complementation group type T | ancestors: Fanconi anemia, congenital anemia, inherited aplastic anemia, bone marrow disorder | def: Any Fanconi anemia in which the cause of the disease is a mutation in the UBE2T gene.",
+"ko": "판코니 빈혈 T군",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021496",
+"concept": "- MONDO:0021496 | benign neoplasm of lip | syn: benign Lip neoplasm; benign Lip tumor; benign Lip tumour; benign neoplasm of the Lip | ancestors: benign neoplasm, lip neoplasm, neoplasm, lip disorder | def: A benign neoplasm that involves the lip.",
+"ko": "입술 양성 신생물",
+"alt": [
+"입술 양성 종양"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008183",
+"concept": "- MONDO:0008183 | annular pancreas | ancestors: pancreas disorder, digestive system disorder, endocrine system disorder, disease by body system or component | def: Annular pancreas is a distinct form of duodenal atresia in which the head of the pancreas forms a ring around the second portion of the duodenum.",
+"ko": "윤상 췌장",
+"alt": [
+"환상 췌장"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001381",
+"concept": "- MONDO:0001381 | bladder lymphoma | syn: lymphoma of bladder; lymphoma of the bladder; lymphoma of the urinary bladder; lymphoma of urinary bladder | ancestors: urinary bladder cancer, lymphoma, urinary bladder neoplasm, malignant urinary system neoplasm | def: A lymphoma that involves the urinary bladder.",
+"ko": "방광 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013972",
+"concept": "- MONDO:0013972 | Perrault syndrome 2 | syn: HARS2 Perrault syndrome; Perrault syndrome 2; Perrault syndrome caused by mutation in HARS2; Perrault syndrome type 2 | ancestors: Perrault syndrome, autosomal recessive disease, mitochondrial oxidative phosphorylation disorder, inherited primary ovarian failure | def: Any Perrault syndrome in which the cause of the disease is a mutation in the HARS2 gene.",
+"ko": "페로 증후군 2형",
+"alt": [
+"HARS2 페로 증후군"
+],
+"organs": [
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0011258",
+"concept": "- MONDO:0011258 | branchiootic syndrome 1 | syn: branchiootic syndrome 1; branchiootic syndrome caused by mutation in EYA1; branchiootic syndrome type 1; EYA1 branchiootic syndrome | ancestors: branchiootic syndrome, syndromic disease, hereditary disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability | def: Any branchiootic syndrome in which the cause of the disease is a mutation in the EYA1 gene.",
+"ko": "새이 증후군 1",
+"alt": [
+"EYA1 새이 증후군"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012695",
+"concept": "- MONDO:0012695 | Meckel syndrome, type 5 | syn: Meckel syndrome caused by mutation in RPGRIP1L; Meckel syndrome, type 5; MKS5; RPGRIP1L Meckel syndrome | ancestors: Meckel syndrome, polydactyly-syndactyly-triphalangism, syndromic disease, ciliopathy | def: Any Meckel syndrome in which the cause of the disease is a mutation in the RPGRIP1L gene.",
+"ko": "메켈 증후군 5형",
+"alt": [
+"RPGRIP1L 관련 메켈 증후군"
+],
+"organs": [
+"hepatic",
+"renal",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012365",
+"concept": "- MONDO:0012365 | gallbladder disease 2 | syn: gallbladder disease 2; GBD2 | ancestors: hereditary gallbladder disorder, hereditary disease, gallbladder disorder, disease of genetic or genomic mechanism",
+"ko": "담낭 질환 2형",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001141",
+"concept": "- MONDO:0001141 | middle ear cholesterol granuloma | syn: cholesterin granuloma of middle ear | ancestors: otitis media, middle ear disorder, inflammatory disease, auditory system disorder | def: As accumulation of granulation tissue in the middle ear that results from the degeneration of blood and a chronic inflammatory response.",
+"ko": "중이 콜레스테롤 육아종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005342",
+"concept": "- MONDO:0005342 | IgA glomerulonephritis | syn: Berger's disease; IgA glomerulonephritis; IgA Nephropathy; IgA nephropathy | ancestors: glomerulonephritis, hereditary nephritis, nephritis, glomerular disorder | def: Inflammation of a specific segment of glomeruli within the kidney.",
+"ko": "IgA 사구체신염",
+"alt": [
+"IgA 신병증",
+"버거병"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018616",
+"concept": "- MONDO:0018616 | central serous chorioretinopathy | syn: central serous retinopathy; CSC; CSCR | ancestors: retinal disorder, nervous system disorder, eye disorder, disease by body system or component | def: Central serous chorioretinopathy is a disease that causes fluid to build up under the retina, the back part of the inner eye that sends sight information to the brain. The fluid leaks from thechoroid ...",
+"ko": "중심성 장액성 맥락망막병증",
+"alt": [
+"중심성 장액성 망막병증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005106",
+"concept": "- MONDO:0005106 | lipoma | syn: benign tumour of adipose tissue; lipoma; lipoma, benign; lipomatosis, familial multiple | ancestors: benign lipomatous neoplasm, benign connective and soft tissue neoplasm, tumor of adipose tissue, musculoskeletal system benign neoplasm | def: A benign, usually painless, well-circumscribed lipomatous tumor composed of adipose tissue.",
+"ko": "지방종",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018848",
+"concept": "- MONDO:0018848 | IgG4-related retroperitoneal fibrosis | syn: idiopathic retroperitoneal fibrosis; Ormond disease; Retroperitoneal Fibrosis; retroperitoneal fibrosis | ancestors: immunoglobulin G4-related sclerosing disease, autoimmune disease, immune system disorder, disease by body system or component | def: Retroperitoneal fibrosis (RPF) is characterized by the development of a fibrotic mass surrounding retroperitoneal structures, such as aorta, vena cava, ureters and psoas muscle.",
+"ko": "IgG4 관련 후복막 섬유증",
+"alt": [
+"오르몬드병",
+"특발성 후복막 섬유증"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004276",
+"concept": "- MONDO:0004276 | ceruminoma | syn: adenoma, ceruminous gland, benign; ceruminous adenoma; ceruminous adenoma (morphologic abnormality); ceruminous adenoma of external auditory canal | ancestors: apocrine adenoma, apocrine sweat gland neoplasm, sweat gland neoplasm, apocrine sweat gland disorder | def: A benign epithelial neoplasm derived from ceruminous glands in the external auditory canal. It presents as a gray mass covered by skin. It is characterized by a proliferation of glands composed of cel...",
+"ko": "귀지샘종",
+"alt": [
+"귀지선종"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004726",
+"concept": "- MONDO:0004726 | liver inflammatory myofibroblastic tumor | syn: hepatic inflammatory myofibroblastic tumor; hepatic inflammatory myofibroblastic tumour; liver inflammatory myofibroblastic tumor | ancestors: inflammatory myofibroblastic tumor, liver and intrahepatic bile duct neoplasm, soft tissue neoplasm, endocrine gland neoplasm | def: A multinodular intermediate fibroblastic neoplasm arising from the liver. It is characterized by the presence of spindle-shaped fibroblasts and myofibroblasts, and a chronic inflammatory infiltrate co...",
+"ko": "간 염증성 근섬유모세포종양",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004800",
+"concept": "- MONDO:0004800 | chronic dacryoadenitis | syn: dacryoadenitis, chronic | ancestors: dacryoadenitis, inflammatory disease, disorder of lacrimal gland, disease by developmental or physiological process | def: Chronic form of dacryoadenitis.",
+"ko": "만성 눈물샘염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010131",
+"concept": "- MONDO:0010131 | thyroid hormone resistance, generalized, autosomal recessive | syn: thyroid hormone resistance, autosomal recessive; thyroid hormone resistance, generalized, autosomal recessive | ancestors: generalized resistance to thyroid hormone, resistance to thyroid hormone due to a mutation in thyroid hormone receptor beta, thyroid hormone resistance syndrome, hyperthyroidism | def: A rare, autosomal recessive inherited disorder usually caused by mutations in the THRB gene. It is characterized by a defective physiological resistance to thyroid hormones, resulting in the elevation...",
+"ko": "상염색체 열성 전신 갑상선호르몬 저항성",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019650",
+"concept": "- MONDO:0019650 | idiopathic steroid-sensitive nephrotic syndrome with minimal change | syn: steroid-sensitive MCNS | ancestors: idiopathic steroid-sensitive nephrotic syndrome, idiopathic nephrotic syndrome, nephrotic syndrome, idiopathic disease",
+"ko": "미세변화를 동반한 특발성 스테로이드 감수성 신증후군",
+"alt": [
+"스테로이드 감수성 미세변화 신증후군"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009665",
+"concept": "- MONDO:0009665 | biotinidase deficiency | syn: biotinidase deficiency; BTD deficiency; juvenile-onset multiple carboxylase deficiency; late-onset multiple carboxylase deficiency | ancestors: multiple carboxylase deficiency, hereditary peripheral neuropathy, inborn carbohydrate metabolic disorder, classic organic aciduria | def: A late-onset form of multiple carboxylase deficiency, an inborn error of biotin metabolism that, if untreated, is characterized by seizures, breathing difficulties, hypotonia, skin rash, alopecia, hea...",
+"ko": "비오티니다제 결핍증",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010060",
+"concept": "- MONDO:0010060 | mitochondrial DNA depletion syndrome 7 (hepatocerebral type) | syn: autosomal recessive degenerative and progressive cerebellar ataxia caused by mutation in TWNK; IOSCA; mitochondrial DNA depletion syndrome 7 (hepatocerebral type); mitochondrial DNA depletion syndrome type 7 | ancestors: autosomal recessive degenerative and progressive cerebellar ataxia, mitochondrial DNA depletion syndrome, hepatocerebral form, autosomal recessive cerebellar ataxia, mitochondrial DNA depletion syndrome | def: Infantile-onset spinocerebellar ataxia (IOSCA) is a hereditary neurological disorder with early and severe involvement of both the peripheral and central nervous systems. It has only been described in...",
+"ko": "미토콘드리아 DNA 고갈 증후군 7 (간뇌형)",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004197",
+"concept": "- MONDO:0004197 | male urethral cancer | syn: cancer of male urethra; male urethra cancer; Male urethral malignant neoplasm; malignant male urethra neoplasm | ancestors: urethra cancer, malignant urinary system neoplasm, urethra neoplasm, cancer | def: A cancer involving a male urethra.",
+"ko": "남성 요도암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015614",
+"concept": "- MONDO:0015614 | dermatitis herpetiformis | syn: dermatitis herpetiformis; Duhring's disease; Durhing-Brocq disease | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: Dermatitis herpetiformis (DH) is a chronic autoimmune subepidermal bullous disease characterized by grouped pruritic lesions such as papules, urticarial plaques, erythema, and herpetiform vesiculae, w...",
+"ko": "포진상 피부염",
+"alt": [
+"두링병"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009119",
+"concept": "- MONDO:0009119 | diverticulosis, small-intestinal | syn: diverticulosis, small-intestinal | ancestors: digestive system disorder, disease by body system or component, human disease, disease",
+"ko": "소장 게실증",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0100286",
+"concept": "- MONDO:0100286 | respiratory syncytial virus bronchiolitis | syn: RSV bronchiolitis | ancestors: respiratory syncytial virus infectious disease, bronchiolitis, Mononegavirales infectious disease, viral respiratory tract infection | def: Bronciolitis caused by infection with respiratory syncytial virus.",
+"ko": "호흡기세포융합바이러스 세기관지염",
+"alt": [
+"RSV 세기관지염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008938",
+"concept": "- MONDO:0008938 | early-onset cerebellar ataxia with retained tendon reflexes | syn: EOCA; EOCARR; Harding ataxia | ancestors: autosomal recessive degenerative and progressive cerebellar ataxia, autosomal recessive cerebellar ataxia, autosomal recessive disease, hereditary cerebellar ataxia | def: Early onset cerebellar ataxia with retained reflexes (EOCARR) or Harding ataxia is a cerebellar ataxia characterized by the progressive association of a cerebellar and pyramidal syndrome with progress...",
+"ko": "건반사가 보존된 조기 발병 소뇌 운동실조",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+}
+]

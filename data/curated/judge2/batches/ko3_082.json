@@ -1,0 +1,263 @@
+[
+{
+"id": "MONDO:0011190",
+"concept": "- MONDO:0011190 | nephronophthisis 2 | syn: INVS nephronophthisis (disease); nephronophthisis (disease) caused by mutation in INVS; nephronophthisis 2; nephronophthisis 2, infantile | ancestors: nephronophthisis, autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease | def: Any nephronophthisis in which the cause of the disease is a mutation in the INVS gene.",
+"ko": "신장위축증 2",
+"alt": [
+"INVS 신장위축증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0800043",
+"concept": "- MONDO:0800043 | Stüve-Wiedemann syndrome 1 | syn: neonatal Schwartz-Jampel syndrome; Schwartz-Jampel syndrome neonatal; Schwartz-Jampel syndrome type 2; Schwartz-Jampel syndrome, neonatal | ancestors: Schwartz-Jampel syndrome, bent bone dysplasia, Stuve-Wiedemann syndrome, syndromic disease | def: A rare autosomal recessive congenital primary skeletal dysplasia, characterized by small stature, bowing of the long bones, camptodactyly, hyperthermic episodes, respiratory distress/apneic episodes a...",
+"ko": "슈튀베-비데만 증후군 1",
+"alt": [
+"신생아 슈워츠-잠펠 증후군"
+],
+"organs": [
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019432",
+"concept": "- MONDO:0019432 | rheumatoid factor-negative juvenile idiopathic arthritis | syn: juvenile rheumatoid factor-negative polyarthritis; polyarthritis without rheumatoid factor; rheumatoid factor-negative JIA | ancestors: polyarticular juvenile idiopathic arthritis, juvenile idiopathic arthritis, rheumatic disorder, arthritic joint disease | def: Rheumatoid factor-negative polyarthritis is a term used to describe a group of poorly defined heterogenous conditions that incorporates forms of rheumatoid factor-negative polyarthritis and forms of o...",
+"ko": "류마티스인자 음성 소아 특발성 관절염",
+"alt": [
+"류마티스인자 음성 다관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0100151",
+"concept": "- MONDO:0100151 | nephropathic cystinosis | syn: Abderhalden Kaufmann Lignac syndrome; Abderhalden Lignac Kaufmann disease; Abderhalden-Kaufmann-Lignac syndrome; Abderhalden-Lignac-Kaufmann disease | ancestors: autosomal recessive disease, cystinosis, autosomal genetic disease, inborn disorder of lysosomal amino acid transport | def: An autosomal recessive condition caused by mutation(s) in the CTNS gene, encoding cystinosin. It is a sub-type of cystinosis, in which accumulation of cystine in the kidney results in renal dysfunctio...",
+"ko": "신병증성 시스틴증",
+"alt": [
+"신장병증 시스틴증"
+],
+"organs": [
+"renal",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000301",
+"concept": "- MONDO:0000301 | ophthalmomyiasis | syn: Oestrus ovis caused myiasis; Oestrus ovis myiasis; ophthalmic myiasis; ophthalmomyiasis | ancestors: hypodermyiasis, myiasis, parasitic ectoparasitic infectious disease, parasitic skin disorder | def: An myiasis caused by infection with Oestrus ovis.",
+"ko": "안구 구더기증",
+"alt": [
+"안구 승저증"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019465",
+"concept": "- MONDO:0019465 | nodal marginal zone B-cell lymphoma | syn: Monocytoid B-cell lymphoma; NMZL; nodal marginal zone B-cell lymph.; nodal marginal zone B-cell lymphoma | ancestors: marginal zone lymphoma, indolent B-cell non-Hodgkin lymphoma, spleen neoplasm, B-cell non-Hodgkin lymphoma | def: Nodal marginal zone B-cell lymphoma is a rare, indolent B-cell non-Hodgkin lymphoma, characterized by abnormal clonal proliferation of mature B-lymphocytes with involvement of the lymph nodes, sometim...",
+"ko": "림프절 변연부 B세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004612",
+"concept": "- MONDO:0004612 | malignant histiocytosis | syn: histiocytic medullary reticulosis; malignant histiocytic disease; malignant midline reticulosis; malignant reticulosis | ancestors: histiocytosis, lymphatic system disorder, lymphoid system disorder, immune system disorder | def: Distinctive neoplastic disorders of histiocytes. Included are malignant neoplasms of macrophages and dendritic cells.",
+"ko": "악성 조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008262",
+"concept": "- MONDO:0008262 | Poland syndrome | syn: Poland anomaly; Poland sequence; Poland syndrome | ancestors: syndromic disease, syndromic breast hypoplasia/aplasia, congenital limb malformation, non-syndromic limb reduction defect | def: Poland syndrome is marked by a unilateral absence or hypoplasia of the pectoralis major muscle (most frequently involving the sternocostal portion), and a variable degree of ipsilateral hand anomalies...",
+"ko": "폴란드 증후군",
+"alt": [
+"폴란드 기형"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002410",
+"concept": "- MONDO:0002410 | pyeloureteritis cystica | ancestors: pyelitis, nephritis, kidney disorder, inflammatory disease",
+"ko": "낭성 신우요관염",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0000654",
+"concept": "- MONDO:0000654 | benign connective and soft tissue neoplasm | syn: benign connective and soft tissue neoplasm; benign connective and soft tissue tumor; benign connective and soft tissue tumour; benign mesenchymal cell neoplasm | ancestors: musculoskeletal system benign neoplasm, connective tissue disorder, connective and soft tissue neoplasm, musculoskeletal system disorder | def: A non-metastasizing neoplasm that arises from the connective and soft tissue. Representative examples include lipoma, leiomyoma, fibroma, and osteoma.",
+"ko": "결합조직 및 연조직 양성 신생물",
+"alt": [
+"결합 및 연부조직 양성 종양"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019558",
+"concept": "- MONDO:0019558 | discoid lupus erythematosus | syn: DLE | ancestors: chronic cutaneous lupus erythematosus, cutaneous lupus erythematosus, lupus erythematosus, rheumatic disorder | def: A chronic, autoimmune skin condition that manifests with a red, scaling rash, most often found on the face, ears, and scalp; these lesions often lead to permanent scarring and dyspigmentation. Patient...",
+"ko": "원판상 홍반루푸스",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0006945",
+"concept": "- MONDO:0006945 | renal artery obstruction | ancestors: renal artery disease, kidney disorder, aortic disorder, urinary system disorder | def: Narrowing or occlusion of the renal artery or arteries. It is due usually to atherosclerosis; fibromuscular dysplasia; thrombosis; embolism, or external pressure. The reduced renal perfusion can lead ...",
+"ko": "신동맥 폐색",
+"alt": [
+"콩팥동맥 폐쇄"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0018684",
+"concept": "- MONDO:0018684 | idiopathic neonatal atrial flutter | syn: neonatal cardiac dysrhythmia | ancestors: atrial flutter, idiopathic disease, atrial tachycardia, disease by etiologic mechanism | def: Idiopathic neonatal atrial flutter (AFL) is a rare rhythm disorder, characterized by sustained tachycardia in newborns and infants with an atrial rate often at around 440 beats/minute (range 340-580)....",
+"ko": "특발성 신생아 심방조동",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007029",
+"concept": "- MONDO:0007029 | branchio-oto-renal syndrome | syn: Branchio-Oto-renal syndrome; branchio-oto-renal syndrome; branchiootorenal syndrome; Melnick-Fraser syndrome | ancestors: autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, autosomal genetic disease | def: A syndrome characterized by branchial arch anomalies (branchial clefts, fistulae, cysts), hearing impairment (malformations of the auricle with pre-auricular pits, conductive or sensorineural hearing ...",
+"ko": "새이신 증후군",
+"alt": [
+"새귀콩팥 증후군",
+"BOR 증후군"
+],
+"organs": [
+"renal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011624",
+"concept": "- MONDO:0011624 | transaldolase deficiency | syn: TALDO deficiency; transaldolase deficiency | ancestors: inborn disorder of pentose phosphate metabolism, disorders of pentose/polyol metabolism, inborn carbohydrate metabolic disorder, inborn errors of metabolism | def: Transaldolase deficiency is an inborn error of the pentose phosphate pathway that presents in the neonatal or antenatal period with hydrops fetalis, hepatosplenomegaly, hepatic dysfunction, thrombocyt...",
+"ko": "트랜스알돌라제 결핍증",
+"alt": [
+"TALDO 결핍증"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0100193",
+"concept": "- MONDO:0100193 | chronic liver failure | syn: end stage liver disease; end stage liver disease (decompensated liver disease); end-stage liver disease; ESLD | ancestors: liver failure, liver disorder, hepatobiliary disorder, endocrine system disorder | def: Liver failure that develops slowly and gradually for some time, possibly for years, often as the result of cirrhosis, or malnutrition.",
+"ko": "만성 간부전",
+"alt": [
+"말기 간질환"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001334",
+"concept": "- MONDO:0001334 | hypertrichosis of eyelid | syn: eyelid hypertrichosis (disease); hypertrichosis (disease) of eyelid | ancestors: eyelid disorder, hypertrichosis, eye adnexa disorder, eye disorder | def: A hypertrichosis (disease) that involves the eyelid.",
+"ko": "눈꺼풀 다모증",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001642",
+"concept": "- MONDO:0001642 | hordeolum externum | ancestors: hordeolum, blepharitis, staphylococcus aureus infection, skin disease caused by bacterial infection | def: A hordeolum that results from obstruction and infection of an eyelash follicle and adjacent glands of Zeis or Moll glands. Follicle obstruction may be associated with blepharitis.",
+"ko": "외맥립종",
+"alt": [
+"겉다래끼"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002714",
+"concept": "- MONDO:0002714 | central nervous system cancer | syn: cancer of central nervous system; cancer of CNS; cancer of the central nervous system; cancer of the CNS | ancestors: nervous system cancer, central nervous system neoplasm, cancer, nervous system neoplasm | def: A malignant neoplasm involving the central nervous system",
+"ko": "중추신경계암",
+"alt": [
+"중추신경계 암"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010576",
+"concept": "- MONDO:0010576 | X-linked mixed hearing loss with perilymphatic gusher | syn: DFNX2; X-linked mixed hearing loss with perilymphatic gusher | ancestors: inner ear disorder, prelingual non-syndromic genetic hearing loss, hereditary otorhinolaryngologic disease, X-linked nonsyndromic hearing loss | def: X-linked mixed deafness with perilymphatic gusher, also known as X-linked deafness type 2, is a rare form of non-syndromic genetic deafnesss affecting males and characterized by pathognomonic inner ea...",
+"ko": "외림프 분출을 동반한 X연관 혼합성 난청",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

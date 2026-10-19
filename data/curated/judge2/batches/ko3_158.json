@@ -1,0 +1,210 @@
+[
+{
+"id": "MONDO:0003529",
+"concept": "- MONDO:0003529 | acute pyelonephritis | syn: pyelonephritis, acute | ancestors: pyelonephritis, acute disease, uterine inflammatory disease, renal infectious disease | def: Sudden onset pyelonephritis.",
+"ko": "급성 신우신염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006795",
+"concept": "- MONDO:0006795 | hypersplenism | syn: hypersplenia; hypersplenism; hypersplenism (disease) | ancestors: splenic disorder, hematologic disorder, lymphatic system disorder, disease by body system or component | def: Overactive functioning of the spleen, resulting in excessive destruction of blood cells.",
+"ko": "비장기능항진증",
+"alt": [
+"비기능항진증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019498",
+"concept": "- MONDO:0019498 | tungiasis | syn: Tunga penetrans caused disease or disorder; Tunga penetrans disease or disorder; Tunga penetrans infectious disease | ancestors: parasitic ectoparasitic infectious disease, vector-borne disease, parasitic skin disorder, infectious disease | def: An disease or disorder caused by infection with Tunga penetrans.",
+"ko": "툰가증",
+"alt": [
+"모래벼룩증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0700081",
+"concept": "- MONDO:0700081 | newborn respiratory distress syndrome | syn: hyaline membrane disease; infant acute respiratory distress syndrome; infant ARDS; infant respiratory distress syndrome | ancestors: primary interstitial lung disease specific to childhood, pediatric acute respiratory distress syndrome, interstitial lung disease specific to childhood, acute respiratory distress syndrome | def: A condition beginning in the first day of life that results from inadequate surfactant production, causing increased work of breathing and impaired gas exchange.",
+"ko": "신생아 호흡곤란 증후군",
+"alt": [
+"유리질막병"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0021105",
+"concept": "- MONDO:0021105 | NAFLD1 | syn: fatty liver disease, nonalcoholic, susceptibility to, 1; liver disease, alcoholic, susceptibility to, 1; NAFLD1 | ancestors: metabolic dysfunction-associated steatotic liver disease, fatty liver disease, liver disorder, hepatobiliary disorder",
+"ko": "비알코올성 지방간질환 감수성 1",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005620",
+"concept": "- MONDO:0005620 | cerebral amyloid angiopathy | syn: dutch hereditary cerebral amyloid angiopathy; HCHWA; hereditary cerebral haemorrhage with amyloidosis - Dutch type; hereditary cerebral hemorrhage with amyloidosis - Dutch type | ancestors: cerebrovascular disorder, hereditary amyloidosis, hereditary neurological disease, brain disorder | def: Hereditary cerebral hemorrhage with amyloidosis (HCHWA) describes a group of rare familial central nervous system disorders characterized by amyloid deposition in the cerebral blood vessels leading to...",
+"ko": "뇌아밀로이드혈관병증",
+"alt": [
+"뇌 아밀로이드 혈관병증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008295",
+"concept": "- MONDO:0008295 | sporadic porphyria cutanea tarda | syn: acquired porphyria cutanea tarda; porphyria cutanea tarda type I | ancestors: porphyria cutanea tarda, acquired porphyria, dermatitis, hepatic porphyria | def: An instance of porphyria cutanea tarda that is acquired during the lifetime of the individual.",
+"ko": "산발성 만발성 피부 포르피린증",
+"alt": [],
+"organs": [
+"hepatic",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010731",
+"concept": "- MONDO:0010731 | Simpson-Golabi-Behmel syndrome | syn: DGSX; Golabi-Rosen syndrome; Sara Angers syndrome; SDYS | ancestors: syndromic disease, overgrowth syndrome, disease by body system or component, disorder of development or morphogenesis | def: Simpson-Golabi-Behmel syndrome is a rare X-linked multiple congenital anomalies syndrome, characterized by pre- and postnatal overgrowth, distinctive craniofacial features, variable congenital malform...",
+"ko": "심프슨-골라비-베멜 증후군",
+"alt": [
+"골라비-로젠 증후군"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"gastrointestinal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007297",
+"concept": "- MONDO:0007297 | ADan amyloidosis | syn: cerebellar ataxia, cataract, deafness, and dementia Or psychosis; cerebral amyloid angiopathy, ITM2B-related, type 2; familial Danish dementia; familial dementia, Danish type | ancestors: cerebral amyloid angiopathy, ITM2B amyloidosis, cerebrovascular disorder, hereditary amyloidosis | def: A cerebral amyloid angiopathy characterized by ataxia, intention tremor, psychosis and dementia that has material basis in an autosomal dominant mutation of ITM2B on chromosome 13q14.2.",
+"ko": "ADan 아밀로이드증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005884",
+"concept": "- MONDO:0005884 | opisthorchiasis | syn: infection by Opisthorchis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection with flukes of the genus Opisthorchis.",
+"ko": "후고환흡충증",
+"alt": [
+"오피스토르키스증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019514",
+"concept": "- MONDO:0019514 | hepatic veno-occlusive disease | syn: Budd Chiari Syndrome; hepatic Vod; liver veno-occlusive disease; sinusoidal obstruction syndrome | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder | def: Hepatic veno-occlusive disease (hepatic VOD) is a condition resulting from toxic injury to the hepatic sinusoidal capillaries that leads to obstruction of the small hepatic veins.",
+"ko": "간정맥폐쇄병",
+"alt": [
+"간 정맥폐쇄성 질환"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024333",
+"concept": "- MONDO:0024333 | sciatica | ancestors: sciatic neuropathy, neuralgia, mononeuropathy, peripheral neuropathy | def: A condition characterized by pain radiating from the back into the buttock and posterior/lateral aspects of the leg. Sciatica may be a manifestation of sciatic neuropathy; radiculopathy (involving the...",
+"ko": "좌골신경통",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0019209",
+"concept": "- MONDO:0019209 | Japanese encephalitis | syn: Encephalitis, Japanese; Japanese B encephalitis | ancestors: mosquito-borne viral encephalitis, viral encephalitis, vector-borne disease, infectious encephalitis | def: A disease due to a virus transmitted by an arthropod).",
+"ko": "일본뇌염",
+"alt": [
+"일본 B형 뇌염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001315",
+"concept": "- MONDO:0001315 | orthostatic intolerance | syn: cardiovascular malfunction arising from mental factors; irritable heart; neurocirculatory asthenia; postural orthostatic tachycardia syndrome | ancestors: dysautonomia, autonomic nervous system disorder, central nervous system disorder, peripheral nervous system disorder | def: A chronic disorder of dysautonomia, characterized by palpitation, shortness of breath, labored breathing, and subjective complaints of effort and discomfort provoked by physical exertion or upright po...",
+"ko": "기립불내증",
+"alt": [
+"기립성 불내증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001634",
+"concept": "- MONDO:0001634 | bladder leiomyoma | syn: bladder leiomyoma; leiomyoma of bladder; leiomyoma of the bladder; leiomyoma of the urinary bladder | ancestors: bladder benign neoplasm, leiomyoma, benign urinary system neoplasm, urinary bladder neoplasm | def: A well-circumscribed benign smooth muscle neoplasm arising from the bladder. It is characterized by the presence of spindle cells with cigar-shaped nuclei, interlacing fascicles, and a whorled pattern...",
+"ko": "방광 평활근종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004718",
+"concept": "- MONDO:0004718 | xeroderma of eyelid | ancestors: noninfectious dermatoses of eyelid, blepharitis, eyelid disorder, inflammatory disease",
+"ko": "눈꺼풀 피부건조증",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+}
+]

@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0015759",
+"concept": "- MONDO:0015759 | B-cell non-Hodgkin lymphoma | syn: B-cell lymphoma; B-cell NHL; B-cell non Hodgkin's lymphoma; B-cell non-Hodgkin lymphoma | ancestors: B-cell neoplasm, non-Hodgkin lymphoma, leukocyte disorder, lymphoma | def: The most common type of non-Hodgkin lymphoma. It includes the most frequently seen morphologic variants which are: diffuse large B-cell lymphoma, follicular lymphoma, small lymphocytic lymphoma and ma...",
+"ko": "B세포 비호지킨 림프종",
+"alt": [
+"B세포 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0011086",
+"concept": "- MONDO:0011086 | severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-negative, NK cell-positive | syn: SCID due to complete RAG1/2 deficiency; severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-negative, NK cell-positive; severe combined immunodeficiency, B cell-negative | ancestors: T-B- severe combined immunodeficiency, familial severe combined immunodeficiency, severe combined immunodeficiency, combined immunodeficiency | def: A rare, genetic T-B- severe combined immunodeficiency disorder due to null mutations in recombination activating gene (RAG) 1 and/or RAG2 resulting in less than 1% of wild type V(D)J recombination act...",
+"ko": "중증 복합 면역결핍증, 상염색체 열성, T세포 음성, B세포 음성, NK세포 양성",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007983",
+"concept": "- MONDO:0007983 | Schmid metaphyseal chondrodysplasia | syn: MCDS; metaphyseal chondrodysplasia Schmid type; Metaphyseal Chondrodysplasia, Schmid Type; metaphyseal chondrodysplasia, Schmid type | ancestors: syndromic disease, osteochondrodysplasia, disease by body system or component, bone development disease | def: A rare skeletal disorder caused by a variation in COL10A1 gene and is characterized by moderately short stature with short limbs, coxa vara, bowlegs and an abnormal gait.",
+"ko": "슈미트 골간단 연골이형성증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007369",
+"concept": "- MONDO:0007369 | hereditary coproporphyria | syn: coproporphyrinogen oxidase deficiency; hereditary coproporphyria | ancestors: hepatic porphyria, CPOX-related hereditary coproporphyria, liver disorder, porphyria | def: A form of acute hepatic porphyria characterized by the occurrence of neuro-visceral attacks and, more rarely, by the presence of cutaneous lesions.",
+"ko": "유전성 코프로포르피린증",
+"alt": [
+"코프로포르피리노겐 산화효소 결핍증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021313",
+"concept": "- MONDO:0021313 | eyelid cancer | syn: cancer of eyelid; cancer of skin of eyelid; eyelid cancer; malignant eyelid neoplasm | ancestors: ocular cancer, skin cancer, palpebral epidermal tumor, sensory system cancer | def: A cancer that involves the eyelid.",
+"ko": "눈꺼풀암",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0044702",
+"concept": "- MONDO:0044702 | X-linked external auditory canal atresia-dilated internal auditory canal-facial dysmorphism syndrome | syn: deafness, X-linked 7; DFNX7 | ancestors: hereditary otorhinolaryngologic disease, developmental defect during embryogenesis, X-linked deafness, hereditary disease",
+"ko": "X연관 외이도 폐쇄-내이도 확장-안면이형 증후군",
+"alt": [
+"X연관 난청 7형"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004927",
+"concept": "- MONDO:0004927 | dacryocystocele | syn: lacrimal mucocele | ancestors: chronic inflammation of lacrimal passage, lacrimal apparatus disorder, inflammatory disease, eye adnexa disorder | def: A congenital or acquired mucocele that develops in the lacrimal sac. It is usually the result of nasolacrimal duct abnormalities or obstruction.",
+"ko": "눈물주머니낭종",
+"alt": [
+"눈물 점액류"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021061",
+"concept": "- MONDO:0021061 | neurofibromatosis | syn: neurofibromatosis; neurofibromatosis syndrome | ancestors: autosomal dominant disease, hereditary neoplastic syndrome, neurocutaneous syndrome, hereditary neurological disease | def: A hereditary neoplastic syndrome in which tumors grow in the nervous system. There are typically 3 main types recognized, but other forms with uncertain etiology exist.",
+"ko": "신경섬유종증",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0019162",
+"concept": "- MONDO:0019162 | pseudohypoaldosteronism type 2 | syn: chloride shunt syndrome; familial hyperkalemic hypertension; Gordon hyperkalemia-hypertension syndrome; hyperkalemia-hypertension syndrome, Gordon type | ancestors: inherited pseudohypoaldosteronism, pseudohypoaldosteronism, inherited kidney disorder, renal tubular transport disease | def: A rare inherited form of hypertension characterized by hyperkalemia, hyperchloremic metabolic acidosis, normal or elevated aldosterone, low renin, and normal renal function.",
+"ko": "가성 저알도스테론증 2형",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001630",
+"concept": "- MONDO:0001630 | branch retinal artery occlusion | syn: retinal arterial branch occlusion | ancestors: retinal artery occlusion, retinal vascular occlusion, retinal vascular disorder, vascular occlusion disorder | def: An occlusion of a branch of the retinal artery.",
+"ko": "망막동맥 분지 폐쇄",
+"alt": [],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018582",
+"concept": "- MONDO:0018582 | GCGR-related hyperglucagonemia | syn: alpha-cell hyperplasia with glucagonemia; Mahvash disease; MVAH; nesidioblastosis alpha cell hyperplasia microglucagonoma and nonfunctioning islet cell tumor | ancestors: hereditary disease, pancreatic neoplasm, disease of genetic or genomic mechanism, pancreas disorder | def: A rare tumor of pancreas caused by mutations in the GCGR gene characterized by pancreatic alpha cell hyperplasia, pancreatic neuroendocrine tumors and markedly increased serum glucagon levels in the a...",
+"ko": "GCGR 관련 고글루카곤혈증",
+"alt": [
+"마흐바시병"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011216",
+"concept": "- MONDO:0011216 | hemochromatosis type 2A | syn: hemochromatosis type 2 caused by mutation in HJV; hemochromatosis type 2A; HFE2A; HJV hemochromatosis type 2 | ancestors: hemochromatosis type 2, hereditary hemochromatosis, hemosiderosis, inborn metal metabolism disorder | def: Any hemochromatosis type 2 in which the cause of the disease is a mutation in the HJV gene.",
+"ko": "혈색소침착증 2A형",
+"alt": [
+"HJV 혈색소침착증"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003427",
+"concept": "- MONDO:0003427 | bronchus adenoma | syn: adenoma of bronchus; adenoma of the bronchus; adenoma, bronchial, benign; bronchial adenoma | ancestors: papillary adenoma, bronchial neoplasm, lung adenoma, adenoma | def: A benign lung neoplasm characterized by the presence of a fibrovascular stroma lined by cuboidal to columnar cells. Patients are usually asymptomatic and it is incidentally discovered as a pulmonary n...",
+"ko": "기관지 선종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018694",
+"concept": "- MONDO:0018694 | isolated tracheo-esophageal fistula | syn: H-type tracheoesophageal fistula; tracheo-esophageal fistula; tracheoesophageal fistula | ancestors: tracheal disorder, esophageal disorder, lower respiratory tract disorder, upper respiratory tract disorder | def: A rare, congenital, esophageal disorder characterized by the presence of an abnormal connection between the esophagus and the trachea (typically occurring in the lower cervical or upper thoracic area ...",
+"ko": "고립성 기관식도루",
+"alt": [
+"H형 기관식도루"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0027666",
+"concept": "- MONDO:0027666 | codeine toxicity | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease",
+"ko": "코데인 독성",
+"alt": [],
+"organs": [
+"pulmonary",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018531",
+"concept": "- MONDO:0018531 | carcinoma of liver and intrahepatic biliary tract | syn: carcinoma of liver and IBT; liver and intrahepatic bile duct carcinoma; liver and intrahepatic biliary tract cancer; liver and intrahepatic biliary tract carcinoma | ancestors: liver cancer, digestive system carcinoma, digestive system cancer, malignant endocrine neoplasm | def: A carcinoma that arises from the hepatocytes or intrahepatic bile ducts. The main subtypes are hepatocellular carcinoma (hepatoma) and cholangiocarcinoma.",
+"ko": "간 및 간내담도 암종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006918",
+"concept": "- MONDO:0006918 | posterior uveitis | syn: chorioretinal region inflammation; inflammation of chorioretinal region | ancestors: uveitis, uveal disorder, inflammatory disease, eye disorder | def: Inflammation of the choroid as well as the retina and vitreous body. Some form of visual disturbance is usually present. The most important characteristics of posterior uveitis are vitreous opacities,...",
+"ko": "후포도막염",
+"alt": [
+"뒤쪽 포도막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009550",
+"concept": "- MONDO:0009550 | renal hypomagnesemia 3 | syn: CLDN16 familial primary hypomagnesemia; CLDN16 primary hypomagnesemia; familial primary hypomagnesemia caused by mutation in CLDN16; FHHNC without severe ocular involvement | ancestors: nephrocalcinosis, renal tubular transport disease, familial primary hypomagnesemia with hypercalciuria and nephrocalcinosis, calcinosis | def: Familial primary hypomagnesemia with hypercalciuria and nephrocalcinosis without severe ocular involvement (FHHN) is a form of familial primary hypomagnesemia (FPH), characterized by recurrent urinary...",
+"ko": "신성 저마그네슘혈증 3형",
+"alt": [
+"CLDN16 가족성 일차성 저마그네슘혈증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019127",
+"concept": "- MONDO:0019127 | polymyositis | syn: PM; polymyositis | ancestors: acquired idiopathic inflammatory myopathy, acquired skeletal muscle disease, idiopathic inflammatory myopathy, idiopathic disease | def: A rare idiopathic inflammatory myopathy characterized by symmetric proximal muscle weakness and elevated muscle enzymes.",
+"ko": "다발근염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004673",
+"concept": "- MONDO:0004673 | lower lip cancer | syn: cancer of lower lip; lower lip cancer; malignant lower lip neoplasm; malignant neoplasm of lower lip | ancestors: lip cancer, oral cavity cancer, head and neck cancer, lip neoplasm | def: A malignant neoplasm involving the lower lip.",
+"ko": "아랫입술암",
+"alt": [
+"하순암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+}
+]

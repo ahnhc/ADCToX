@@ -1,0 +1,256 @@
+[
+{
+"id": "MONDO:0021108",
+"concept": "- MONDO:0021108 | meningitis | syn: inflammation of meninx; meningitis; meningitis (disease); meninx inflammation | ancestors: encephalomyelitis, central nervous system disorder, inflammatory disease, nervous system disorder | def: A disorder characterized by acute inflammation of the meninges of the brain and/or spinal cord.",
+"ko": "수막염",
+"alt": [
+"뇌막염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019473",
+"concept": "- MONDO:0019473 | enteropathy-associated T-cell lymphoma | syn: EATL; EATL, type I; enteropathy associated T-cell lymphoma; enteropathy-associated T-cell lymphoma, type I | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm | def: An uncommon mature T-cell lymphoma of intraepithelial lymphocytes. It usually arises from the small intestine, most commonly the jejunum or ileum. Other less frequent primary anatomic sites include th...",
+"ko": "장병증 연관 T세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005445",
+"concept": "- MONDO:0005445 | visceral leishmaniasis | syn: kala-azar; viscus leishmaniasis | ancestors: hereditary disease, leishmaniasis, disease of genetic or genomic mechanism, protozoa infectious disease | def: A severe form of leishmaniasis characterized by irregular bouts of fever, substantial weight loss, swelling of the spleen and liver, and anemia (which may be serious). If left untreated it may lead to...",
+"ko": "내장 리슈마니아증",
+"alt": [
+"칼라아자르"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015375",
+"concept": "- MONDO:0015375 | orofaciodigital syndrome | syn: OFD; Oral-Facial-Digital Syndrome; oral-facial-digital syndrome; orofaciodigital syndrome | ancestors: hereditary disease, oromandibular-limb anomalies syndrome, disease of genetic or genomic mechanism, syndromic disease | def: Two syndromes of oral, facial, and digital malformations. Type I (Papillon-Leage and Psaume syndrome, Gorlin-Psaume syndrome) is inherited as an X-linked dominant trait and is found only in females an...",
+"ko": "구강안면수지 증후군",
+"alt": [],
+"organs": [
+"renal",
+"gastrointestinal",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0014126",
+"concept": "- MONDO:0014126 | Perrault syndrome 4 | syn: LARS2 Perrault syndrome; Perrault syndrome 4; Perrault syndrome caused by mutation in LARS2; Perrault syndrome type 4 | ancestors: Perrault syndrome, autosomal recessive disease, mitochondrial oxidative phosphorylation disorder, inherited primary ovarian failure | def: Any Perrault syndrome in which the cause of the disease is a mutation in the LARS2 gene.",
+"ko": "페로 증후군 4형",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007150",
+"concept": "- MONDO:0007150 | arcus senilis | syn: arcus of cornea; arcus senilis; corneal arcus | ancestors: corneal degeneration, hereditary disease, corneal disorder, disease of genetic or genomic mechanism | def: A corneal disease in which there is a deposition of phospholipid and cholesterol in the corneal stroma and anterior sclera.",
+"ko": "노인환",
+"alt": [
+"각막노인환"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024335",
+"concept": "- MONDO:0024335 | retrobulbar neuritis | ancestors: optic neuritis, optic nerve disorder, encephalomyelitis, eye disorder",
+"ko": "구후 시신경염",
+"alt": [
+"구후신경염"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019472",
+"concept": "- MONDO:0019472 | extranodal nasal NK/T cell lymphoma | syn: angiocentric T-cell lymphoma; extranodal NK/T lymphoma-nasal; extranodal NK/T-cell lymphoma, nasal type; lethal midline granuloma | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, Epstein-Barr virus-associated lymphoproliferative disorder, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma | def: A rare, malignant neoplasm mainly affecting men in the fifth decade of life, that usually arises in the nose, paranasal sinuses, orbits or upper airway, and that can present with a nasal mass, nasal b...",
+"ko": "림프절외 비강형 NK/T세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017858",
+"concept": "- MONDO:0017858 | acute erythroid leukemia | syn: acute erythroblastic leukaemia; acute erythroblastic leukemia; acute erythroid leukemia; acute myeloid leukaemia M6 | ancestors: acute myeloid leukemia by FAB classification, erythroid neoplasm, acute myeloid leukemia, myeloproliferative neoplasm | def: An acute myeloid leukemia characterized by a predominant immature erythroid population. There are two subtypes recognized: erythroleukemia and pure erythroid leukemia. (WHO, 2001)",
+"ko": "급성 적혈구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004723",
+"concept": "- MONDO:0004723 | liver leiomyoma | syn: hepatic leiomyoma; leiomyoma of liver; leiomyoma of the liver; liver leiomyoma | ancestors: benign endocrine neoplasm, leiomyoma, liver and intrahepatic bile duct neoplasm, hepatobiliary benign neoplasm | def: A benign smooth muscle neoplasm arising from the liver. It is characterized by the presence of spindle cells with cigar-shaped nuclei, interlacing fascicles, and a whorled pattern.",
+"ko": "간 평활근종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021297",
+"concept": "- MONDO:0021297 | carcinoma in situ of nasopharynx | syn: carcinoma in situ of nasopharynx; carcinoma in situ of the nasopharynx; nasopharyngeal carcinoma in situ; nasopharynx carcinoma in situ | ancestors: pharynx carcinoma in situ, nasopharyngeal carcinoma, in situ carcinoma, carcinoma of pharynx | def: A in situ carcinoma that involves the nasopharynx.",
+"ko": "비인두 상피내암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002089",
+"concept": "- MONDO:0002089 | retinal vascular occlusion | syn: retinal vascular occlusion; retinal vascular occlusion, unspecified | ancestors: retinal vascular disorder, vascular occlusion disorder, retinal disorder, ocular vascular disorder | def: An occlusion of the retinal vasculature.",
+"ko": "망막혈관 폐쇄",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0010789",
+"concept": "- MONDO:0010789 | MELAS syndrome | syn: MELAS syndrome; mitochondrial encephalomyopathy, lactic acidosis and stroke; mitochondrial encephalomyopathy, lactic acidosis and stroke-like episodes; mitochondrial myopathy, encephalopathy, lactic acidosis and stroke-like episodes | ancestors: syndromic disease, mitochondrial encephalomyopathy, disease by body system or component, inborn mitochondrial myopathy | def: MELAS (Mitochondrial myopathy, encephalopathy, lactic acidosis, and stroke) syndrome is a rare progressive multisystemic disorder characterized by encephalomyopathy, lactic acidosis, and stroke-like e...",
+"ko": "MELAS 증후군",
+"alt": [
+"미토콘드리아 뇌근육병증, 젖산산증 및 뇌졸중 유사 발작"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003084",
+"concept": "- MONDO:0003084 | uremic neuropathy | ancestors: peripheral neuropathy, uremia, peripheral nervous system disorder, neuromuscular disease | def: Neuropathy resulting from uremia.",
+"ko": "요독성 신경병증",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006798",
+"concept": "- MONDO:0006798 | hypervitaminosis A | syn: hypervitaminosis type A | ancestors: overnutrition, nutritional disorder, disease by etiologic mechanism, human disease | def: A symptom complex resulting from ingesting excessive amounts of vitamin A.",
+"ko": "비타민 A 과다증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002008",
+"concept": "- MONDO:0002008 | labyrinthitis | syn: inflammation of internal ear; internal ear inflammation; otitis interna | ancestors: inner ear disorder, inflammatory disease, auditory system disorder, disorder of ear | def: Inflammation of the inner ear. The cause is often not clear. It may be due to a virus, but it can also arise from bacterial infection, head injury, extreme stress, an allergy, or as a reaction to medi...",
+"ko": "미로염",
+"alt": [
+"내이염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008280",
+"concept": "- MONDO:0008280 | Peutz-Jeghers syndrome | syn: hamartomatous intestinal polyposis; Jeghers-Peutz syndrome; Peutz Jeghers Syndrome; Peutz's syndrome | ancestors: autosomal dominant disease, intestinal polyposis syndrome, autosomal genetic disease, hereditary neoplastic syndrome | def: An autosomal dominant disorder caused by pathogenic variants in the STK11 gene, characterized by hamartomatous polyps in the gastrointestinal tract, mucocutaneous pigmentation and increased risk of GI...",
+"ko": "포이츠-예거스 증후군",
+"alt": [
+"포이츠-제거스 증후군"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011099",
+"concept": "- MONDO:0011099 | HOXA1-related syndrome | syn: HOXA1-related disorder; human HOXA1 syndromes | ancestors: syndromic disease, autosomal recessive disease, disease by body system or component, autosomal genetic disease | def: Any syndromic disease in which the cause of the disease is a variation in the HOXA1 gene. HOXA1-related disorders are characterized by ocular motility disorder (horizontal gaze palsy with or without D...",
+"ko": "HOXA1 관련 증후군",
+"alt": [
+"HOXA1 관련 질환"
+],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0043541",
+"concept": "- MONDO:0043541 | viral conjunctivitis | syn: viral conjunctivitis; Viruses caused conjunctivitis (disease); Viruses conjunctivitis (disease) | ancestors: conjunctivitis, viral eye infection, conjunctival disorder, inflammatory disease | def: Conjunctivitis resulting from viral infection.",
+"ko": "바이러스성 결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0019537",
+"concept": "- MONDO:0019537 | hemoglobin D disease | syn: hemoglobin D disease | ancestors: anemia, inherited hemoglobinopathy, hematologic disorder, hereditary disease | def: Hemoglobin D disease(HbD) is a hemoglobinopathy characterized by production of abnormal variant hemoglobin known as hemoglobin D, with no or mild clinical manifestations (splenomegaly, very mild anemi...",
+"ko": "헤모글로빈 D병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+}
+]

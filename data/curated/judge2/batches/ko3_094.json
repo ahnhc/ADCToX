@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0024537",
+"concept": "- MONDO:0024537 | Brown-Vialetto-van Laere syndrome 1 | syn: Brown-Vialetto-Van Laere syndrome 1; Brown-Vialetto-van Laere syndrome 1; Brown-Vialetto-van Laere syndrome caused by mutation in SLC52A3; rfvt2-related riboflavin transporter deficiency | ancestors: riboflavin transporter deficiency, hereditary motor neuron disease, motor neuron disorder, inherited neurodegenerative disorder | def: Any Brown-Vialetto-van Laere syndrome in which the cause of the disease is a mutation in the SLC52A3 gene.",
+"ko": "브라운-비알레토-반 라에레 증후군 1",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017304",
+"concept": "- MONDO:0017304 | ocular albinism | syn: ocular albinism; ocular albinism (disease) | ancestors: disorder of melanin metabolism, disorder of visual system, inborn disorder of amino acid and other organic acid metabolism, disease by body system or component | def: Albinism affecting the eye in which pigment of the hair and skin is normal or only slightly diluted. The classic type is X-linked (Nettleship-Falls), but an autosomal recessive form also exists. Ocula...",
+"ko": "안구 백색증",
+"alt": [
+"눈 알비니즘"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024891",
+"concept": "- MONDO:0024891 | non-infectious meningitis | syn: non-infective meningitis | ancestors: meningitis, encephalomyelitis, central nervous system disorder, inflammatory disease",
+"ko": "비감염성 수막염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006589",
+"concept": "- MONDO:0006589 | occupational dermatitis | syn: occupational dermatitis; occupational eczema (disorder) [ambiguous] | ancestors: contact dermatitis, occupational disorder, dermatitis, disease of primarily extrinsic mechanism | def: Contact dermatitis associated with allergens or irritants found in the workplace.",
+"ko": "직업성 피부염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000741",
+"concept": "- MONDO:0000741 | angular cheilitis | syn: angle of oral opening cheilitis; angular cheilitis; angular stomatitis; cheilitis of angle of oral opening | ancestors: cheilitis, lip disorder, inflammatory disease, mouth disorder | def: Inflammation of the skin at the corners of the mouth characterized by redness, fissures or crusts.",
+"ko": "구각염",
+"alt": [
+"입꼬리염"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001292",
+"concept": "- MONDO:0001292 | autonomic nervous system disorder | syn: autonomic nervous disease; autonomic nervous system disease; autonomic nervous system disease or disorder; disease of autonomic nervous system | ancestors: central nervous system disorder, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the autonomic nervous system.",
+"ko": "자율신경계 질환",
+"alt": [
+"자율신경계 장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005834",
+"concept": "- MONDO:0005834 | lymphogranuloma venereum | syn: climatic or tropical bubo; Durand-Nicolas-Favre disease; lymph granuloma inguinale; lymphogranuloma inguinale | ancestors: chlamydia trachomatis infectious disease, granuloma inguinale, lymphatic system disorder, commensal bacterial infectious disease | def: Infection with the organism Mycobacterium.",
+"ko": "성병성 림프육아종",
+"alt": [
+"서혜 림프육아종"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0015045",
+"concept": "- MONDO:0015045 | alpha-heavy chain disease | syn: alpha chain disease; Alpha heavy chain disease; Alpha-HCD; Immunoproliferative small intestinal disease | ancestors: heavy chain disease, plasma cell neoplasm, neoplasm of mature B-cells, B-cell neoplasm | def: Alpha-heavy chain disease (alpha-HCD) is a type of HCD characterized by the production of incomplete monoclonal alpha-heavy chains without associated light chains. Alpha-HCD is considered to be a subt...",
+"ko": "알파 중쇄병",
+"alt": [
+"알파 사슬병"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006709",
+"concept": "- MONDO:0006709 | common bile duct neoplasm | syn: common bile duct neoplasm (disease); common bile duct tumor; common bile duct tumour; neoplasm of common bile duct | ancestors: common bile duct disorder, extrahepatic bile duct neoplasm, bile duct disorder, bile duct neoplasm | def: Tumor or cancer of the common bile duct including the ampulla of vater and the sphincter of oddi.",
+"ko": "총담관 신생물",
+"alt": [
+"총담관 종양"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003189",
+"concept": "- MONDO:0003189 | middle ear adenocarcinoma | syn: adenocarcinoma of middle Ear; adenocarcinoma of the middle Ear; adenocarcinoma of the middle ear; middle Ear adenocarcinoma | ancestors: middle ear carcinoma, adenocarcinoma, head and neck carcinoma, middle ear cancer | def: A carcinoma that arises from glandular epithelial cells of the middle ear",
+"ko": "중이 선암",
+"alt": [
+"중이 샘암종"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016971",
+"concept": "- MONDO:0016971 | limb-girdle muscular dystrophy | syn: Leyden-Mobius muscular dystrophy; LGMD; limb-girdle muscular dystrophy | ancestors: progressive muscular dystrophy, muscular dystrophy, myopathy, neuromuscular disease | def: Limb-girdle muscular dystrophy (LGMD) is a heterogeneous group of muscular dystrophies characterized by proximal weakness affecting the pelvic and shoulder girdles. Cardiac and respiratory impairment ...",
+"ko": "지대형 근이영양증",
+"alt": [
+"지대근디스트로피"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013444",
+"concept": "- MONDO:0013444 | nephronophthisis 9 | syn: NEK8 nephronophthisis (disease); nephronophthisis (disease) caused by mutation in NEK8; nephronophthisis 9; nephronophthisis type 9 | ancestors: nephronophthisis, autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease | def: Any nephronophthisis in which the cause of the disease is a mutation in the NEK8 gene.",
+"ko": "신장로 9",
+"alt": [
+"콩팥로 9",
+"네프로노프티시스 9"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006031",
+"concept": "- MONDO:0006031 | chronic rhinosinusitis | syn: chronic sinusitis; sinusitis, chronic | ancestors: sinusitis, paranasal sinus disorder, inflammatory disease, nasal disorder | def: Chronic form of sinusitis.",
+"ko": "만성 비부비동염",
+"alt": [
+"만성 부비동염"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001305",
+"concept": "- MONDO:0001305 | laryngostenosis | syn: stenosis of larynx | ancestors: laryngeal disorder, upper respiratory tract disorder, respiratory system disorder, disease by body system or component | def: Narrowing of the laryngeal airway.",
+"ko": "후두 협착",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009818",
+"concept": "- MONDO:0009818 | autosomal recessive osteopetrosis 3 | syn: autosomal recessive osteopetrosis type 3; Autosomal Recessive osteopetrosis, type 3; CA2 osteopetrosis (disease); carbonic anhydrase 2 deficiency | ancestors: autosomal recessive osteopetrosis, autosomal recessive disease, osteopetrosis, hereditary optic neuropathy | def: Osteopetrosis with renal tubular acidosis is a rare disorder characterized by osteopetrosis, renal tubular acidosis (RTA), and neurological disorders related to cerebral calcifications.",
+"ko": "상염색체 열성 대리석골병 3형",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013764",
+"concept": "- MONDO:0013764 | Joubert syndrome 16 | syn: JBTS16; Joubert syndrome 16; Joubert syndrome caused by mutation in TMEM138; Joubert syndrome type 16 | ancestors: Joubert syndrome with oculorenal defect, Joubert syndrome, syndromic disease, Joubert syndrome and related disorders | def: Any Joubert syndrome in which the cause of the disease is a mutation in the TMEM138 gene.",
+"ko": "주베르 증후군 16형",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006015",
+"concept": "- MONDO:0006015 | Waterhouse-Friderichsen syndrome | syn: meningococcal hemorrhagic adrenalitis; WFS | ancestors: syndromic disease, acute adrenal insufficiency, disease by body system or component, primary adrenal insufficiency | def: A serious disorder characterized by massive adrenal gland hemorrhage secondary to a bacterial infection, most often Neisseria meningitidis infection. It is manifested with decreased blood pressure, sh...",
+"ko": "워터하우스-프리데릭센 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005802",
+"concept": "- MONDO:0005802 | hymenolepiasis | syn: dwarf tapeworm infection; hymenolepiasis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A parasitic infection caused by tapeworms. Most infected individuals do not have symptoms. When symptoms appear, they include diarrhea, abdominal pain, restlessness, and irritability.",
+"ko": "막양조충증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004614",
+"concept": "- MONDO:0004614 | chronic monocytic leukemia | syn: monocytic leukemia, chronic | ancestors: chronic leukemia, monocytic leukemia, leukemia, hematopoietic and lymphoid cell neoplasm | def: Form of leukemia characterized by an uncontrolled proliferation of the myeloid lineage and their precursors (myeloid progenitor cells) in the bone marrow and other sites.",
+"ko": "만성 단핵구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004763",
+"concept": "- MONDO:0004763 | carotid artery dissection | syn: dissection of carotid artery | ancestors: carotid artery disorder, arterial disorder, cerebrovascular disorder, vascular disorder | def: Spontaneous or traumatic separation of the layers of the carotid artery wall. It manifests with headache, neck pain, temporary vision loss, and/or ischemic stroke.",
+"ko": "목동맥 박리",
+"alt": [
+"경동맥 박리"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+}
+]

@@ -1,0 +1,236 @@
+[
+{
+"id": "MONDO:0001742",
+"concept": "- MONDO:0001742 | interval angle-closure glaucoma | syn: intermittent angle-closure glaucoma | ancestors: primary angle-closure glaucoma, angle-closure glaucoma, glaucoma, eye disorder",
+"ko": "간헐성 폐쇄각 녹내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005127",
+"concept": "- MONDO:0005127 | lepromatous leprosy | syn: lepromatous leprosy [type L] | ancestors: leprosy, primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease | def: A chronic communicable infection which is a principal or polar form of leprosy. This disorder is caused by mycobacterium leprae and produces diffuse granulomatous skin lesions in the form of nodules, ...",
+"ko": "나종형 나병",
+"alt": [
+"나종 한센병"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005152",
+"concept": "- MONDO:0005152 | hypopituitarism | syn: pituitary insufficiency | ancestors: pituitary gland disorder, reproductive system disorder, endocrine system disorder, brain disorder | def: A condition of diminution or cessation of secretion of one or more hormones from the anterior pituitary gland. This may result from surgical or radiation ablation, non-secretory pituitary neoplasms, m...",
+"ko": "뇌하수체기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004753",
+"concept": "- MONDO:0004753 | mechanical strabismus | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "기계적 사시",
+"alt": [
+"기계성 사시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0850284",
+"concept": "- MONDO:0850284 | extrinsic asthma | ancestors: chronic asthma, asthma, bronchial disorder, lower respiratory tract disorder | def: A chronic asthma that is triggered by an allergen and that is characterized by an immune system overreaction to a harmless substance, such as pollen or dust, with the subsequent release of immunoglobi...",
+"ko": "외인성 천식",
+"alt": [
+"알레르기성 천식"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005029",
+"concept": "- MONDO:0005029 | essential thrombocythemia | syn: essential thrombocytemia; essential thrombocythemia; essential thrombocytosis; primary thrombocythemia | ancestors: thrombocytosis disease, myeloproliferative neoplasm, blood platelet disease, myeloid neoplasm | def: A chronic myeloproliferative neoplasm that involves primarily the megakaryocytic lineage. It is characterized by sustained thrombocytosis in the blood, increased numbers of large, mature megakaryocyte...",
+"ko": "본태성 혈소판증가증",
+"alt": [
+"본태성 혈소판혈증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006533",
+"concept": "- MONDO:0006533 | cholesteatoma of middle ear | syn: cholesteatoma (disease) of middle ear; cholesteatoma of middle ear; cholesteatoma of middle ear and mastoid; cholesteatoma of the middle ear | ancestors: middle ear disorder, cholesteatoma, auditory system disorder, disorder of ear | def: A non-neoplastic lesion characterized by the proliferation of keratinizing squamous epithelium in the middle ear that results in the accumulation of keratin and cells. It is usually caused by repeated...",
+"ko": "중이 진주종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0100193",
+"concept": "- MONDO:0100193 | chronic liver failure | syn: end stage liver disease; end stage liver disease (decompensated liver disease); end-stage liver disease; ESLD | ancestors: liver failure, liver disorder, hepatobiliary disorder, endocrine system disorder | def: Liver failure that develops slowly and gradually for some time, possibly for years, often as the result of cirrhosis, or malnutrition.",
+"ko": "만성 간부전",
+"alt": [
+"말기 간질환"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017304",
+"concept": "- MONDO:0017304 | ocular albinism | syn: ocular albinism; ocular albinism (disease) | ancestors: disorder of melanin metabolism, disorder of visual system, inborn disorder of amino acid and other organic acid metabolism, disease by body system or component | def: Albinism affecting the eye in which pigment of the hair and skin is normal or only slightly diluted. The classic type is X-linked (Nettleship-Falls), but an autosomal recessive form also exists. Ocula...",
+"ko": "안구 백색증",
+"alt": [
+"눈 알비니즘"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008394",
+"concept": "- MONDO:0008394 | Silver-Russell syndrome | syn: Russell Silver syndrome; Russell-Silver dwarfism; Russell-Silver Syndrome; Russell-Silver syndrome | ancestors: syndromic disease, hereditary disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, chromosomal disorder | def: Silver-Russell syndrome is characterized by growth retardation with antenatal onset, characteristic facies and limb asymmetry.",
+"ko": "실버-러셀 증후군",
+"alt": [
+"러셀-실버 증후군"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0013600",
+"concept": "- MONDO:0013600 | insomnia | syn: insomnia; insomnia (disease) | ancestors: brain disorder, sleep disorder, central nervous system disorder, disease by developmental or physiological process | def: A sleep disorder characterized by difficulty in falling asleep and/or remaining asleep.",
+"ko": "불면증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0700127",
+"concept": "- MONDO:0700127 | mosaic trisomy 21 | ancestors: trisomy 21, Down syndrome, trisomy, chromosome 21 disorder | def: Trisomy 21 characterized by the presence of an extra chromosome 21 in some of the cells of the organism.",
+"ko": "모자이크 21삼체성",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007293",
+"concept": "- MONDO:0007293 | leukocyte adhesion deficiency 1 | syn: ITGB2 leukocyte adhesion deficiency; LAD-I; lad-I; lad-type I | ancestors: leukocyte adhesion deficiency, autosomal recessive disease, functional neutrophil defect, autosomal genetic disease | def: Leukocyte adhesion deficiency type I (LAD-I) is a form of LAD characterized by life-threatening, recurrent bacterial infections.",
+"ko": "백혈구 유착 결핍증 1",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005402",
+"concept": "- MONDO:0005402 | lymphoid leukemia | syn: leukemia, LYMPHOCYTIC, malignant; lymphocytic leukemia; lymphogenous leukaemia; lymphogenous leukemia | ancestors: leukemia, lymphoid neoplasm, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm | def: A malignant lymphocytic neoplasm of B-cell or T-cell lineage involving primarily the bone marrow and the peripheral blood. This category includes precursor or acute lymphoblastic leukemias and chronic...",
+"ko": "림프구성 백혈병",
+"alt": [
+"림프성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002206",
+"concept": "- MONDO:0002206 | sweat gland cancer | syn: cancer of sweat gland; malignant neoplasm of sweat gland; malignant neoplasm of the sweat gland; malignant sweat gland neoplasm | ancestors: sweat gland neoplasm, skin cancer, epidermal appendage tumor, sweat gland disorder | def: A malignant neoplasm that affects the sweat glands.",
+"ko": "땀샘암",
+"alt": [
+"한선암"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015229",
+"concept": "- MONDO:0015229 | Bardet-Biedl syndrome | syn: Bardet-Biedl syndrome; BBS | ancestors: syndromic disease, ciliopathy, autosomal recessive disease, disease by body system or component | def: A ciliopathy with multisystem involvement. It is invariantly characterized by rod-cone dystrophy, and at least three additional non-ocular features such as intellectual disability, obesity, polydactyl...",
+"ko": "바르데-비들 증후군",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005481",
+"concept": "- MONDO:0005481 | contact dermatitis due to nickel | ancestors: contact dermatitis, dermatitis, skin disorder, inflammatory disease | def: A form of allergic contact dermatitis that results from exposure to nickel",
+"ko": "니켈 접촉피부염",
+"alt": [
+"니켈 접촉성 피부염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018647",
+"concept": "- MONDO:0018647 | secondary sclerosing cholangitis | ancestors: sclerosing cholangitis, cholangitis, non-neoplastic bile duct disorder, inflammatory disease",
+"ko": "이차성 경화성 담관염",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:1060188",
+"concept": "- MONDO:1060188 | small plaque parapsoriasis | ancestors: parapsoriasis, dermatitis, skin disorder, inflammatory disease | def: A variant of parapsoriasis characterized by round-to-oval plaques less than 5cm in diameter, and it rarely progresses.",
+"ko": "소판형 부건선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002282",
+"concept": "- MONDO:0002282 | West Nile fever | syn: West Nile virus caused disease or disorder; West Nile virus disease or disorder; West Nile virus infectious disease | ancestors: Flaviviridae infectious disease, vector-borne disease, primary viral infectious disease, infectious disease | def: A mosquito-borne viral illness caused by the west nile virus, a flavivirus and endemic to regions of Africa, Asia, and Europe. Common clinical features include headache; fever; maculopapular rash; gas...",
+"ko": "웨스트나일열",
+"alt": [
+"웨스트나일 바이러스 감염증"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+}
+]

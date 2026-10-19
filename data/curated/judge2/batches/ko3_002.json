@@ -1,0 +1,253 @@
+[
+{
+"id": "MONDO:0021457",
+"concept": "- MONDO:0021457 | benign neoplasm of pleura | syn: benign neoplasm of the pleura; benign pleural neoplasm; benign pleural tumor; benign pleural tumour | ancestors: respiratory system benign neoplasm, pleural neoplasm, respiratory system disorder, benign neoplasm | def: A benign neoplasm that involves the pleura.",
+"ko": "가슴막 양성 신생물",
+"alt": [
+"흉막 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001412",
+"concept": "- MONDO:0001412 | conjunctival concretion | ancestors: conjunctival deposit, conjunctival disorder, eye adnexa disorder, eye disorder",
+"ko": "결막 결석",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003019",
+"concept": "- MONDO:0003019 | potassium deficiency disease | syn: hypokalemia | ancestors: mineral metabolism disease, nutritional disorder, metabolic disease, disease by etiologic mechanism | def: Any disorder caused by an insufficient amount or availability of potassium, which generally manifests with myalgia, tetany, hypotension, polyuria, and polydipsia.",
+"ko": "칼륨 결핍증",
+"alt": [
+"저칼륨혈증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000890",
+"concept": "- MONDO:0000890 | Zika virus congenital syndrome | syn: congenital Zika syndrome; congenital Zika virus infection | ancestors: viral infectious disease, post-infectious syndrome, post-viral disorder, vector-borne disease | def: A congenital birth syndrome that arises from materal Zika infection.",
+"ko": "선천성 지카바이러스 증후군",
+"alt": [
+"선천성 지카 증후군"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009798",
+"concept": "- MONDO:0009798 | Primrose syndrome | syn: intellectual disability-cataracts-calcified pinnae-myopathy syndrome; Primrose syndrome | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism | def: A rare, genetic intellectual disability syndrome characterized by macrocephaly, hypotonia, dysmorphic facial features (wide forehead, ptosis, downslanting palpebral fissures, enlarged and calcified ex...",
+"ko": "프림로즈 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0043726",
+"concept": "- MONDO:0043726 | multiple organ dysfunction syndrome | syn: multiorgan failure; multiple organ dysfunction syndrome; multiple organ failure; multiple organ system failure | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: The development of potentially reversible physiologic derangement involving two or more organ systems not involved in the disorder that resulted in intensive care unit (ICU) admission, and arising in ...",
+"ko": "다발성 장기 부전 증후군",
+"alt": [
+"다장기 기능부전"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"pulmonary",
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006268",
+"concept": "- MONDO:0006268 | liver diffuse large B-cell lymphoma | syn: diffuse large B-cell lymphoma of liver; hepatic diffuse large B-cell lymphoma; liver diffuse large B-cell lymphoma; primary hepatic diffuse large B-cell lymphoma | ancestors: immune system cancer, liver lymphoma, hepatocellular carcinoma, diffuse large B-cell lymphoma | def: A rare diffuse large B-cell lymphoma that arises from the liver and the bulk of the tumor is located in the liver.",
+"ko": "간 미만성 거대 B세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004636",
+"concept": "- MONDO:0004636 | lip carcinoma in situ | syn: carcinoma in situ of lip; carcinoma in situ of the Lip; lip in situ carcinoma; stage 0 cancer of Lip | ancestors: oral cavity carcinoma in situ, carcinoma of lip, in situ carcinoma, oral cavity carcinoma | def: A in situ carcinoma that involves the lip.",
+"ko": "입술 상피내암종",
+"alt": [
+"입술 제자리암종"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001455",
+"concept": "- MONDO:0001455 | retinal lattice degeneration | syn: palisade degeneration of retina | ancestors: peripheral retinal degeneration, retinal degeneration, retinal disorder, nervous system disorder",
+"ko": "망막 격자변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001234",
+"concept": "- MONDO:0001234 | adhesive otitis media | syn: adhesive middle ear disease; adhesive otitis media; chronic adhesive otitis media | ancestors: auditory system disorder, disease by body system or component, human disease, disease | def: An auditory system disease that is characterized by a thin retracted ear drum becomes sucked into the middle-ear space and stuck (i.e., adherent) to the ossicles and other bones of the middle ear.",
+"ko": "유착성 중이염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001007",
+"concept": "- MONDO:0001007 | chronic meningitis | syn: chronic meningitis (disease); meningitis (disease), chronic | ancestors: meningitis, encephalomyelitis, central nervous system disorder, inflammatory disease | def: Chronic form of meningitis (disease).",
+"ko": "만성 수막염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001903",
+"concept": "- MONDO:0001903 | calcific tendinitis | ancestors: tendinitis, myositis disease, disease of the tendon, myopathy",
+"ko": "석회화 건염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0009763",
+"concept": "- MONDO:0009763 | obesity-hypoventilation syndrome | syn: obesity-hypoventilation syndrome | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease | def: Hypoventilation syndrome in very obese persons with excessive adipose tissue around the abdomen and diaphragm is characterized by diminished to absent ventilatory chemoresponsiveness; chronic hypoxia;...",
+"ko": "비만 저환기 증후군",
+"alt": [],
+"organs": [
+"pulmonary",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005119",
+"concept": "- MONDO:0005119 | anthrax infection | syn: anthrax; Bacillus anthracis caused disease or disorder; Bacillus anthracis disease or disorder; Bacillus anthracis infectious disease | ancestors: primary bacterial infectious disease, Bacillaceae infectious disease, bacterial infectious disease, gram-positive bacterial infections | def: An infection caused by Bacillus anthracis bacteria. It may affect the lungs, gastrointestinal tract, or skin. Patients with lung infection present with fever, headaches, cough, chest pain and shortnes...",
+"ko": "탄저",
+"alt": [
+"탄저병"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0005746",
+"concept": "- MONDO:0005746 | enterobiasis | syn: Enterobius vermicularis caused disease or disorder; Enterobius vermicularis disease or disorder; Enterobius vermicularis infectious disease; threadworm infection | ancestors: Rhabditida infectious disease, Nematoda infectious disease, helminthiasis, parasitic infectious disease | def: An infection that is caused by the nematode Enterobius vermicularis; it is characterized predominantly by perianal pruritus.",
+"ko": "요충증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008294",
+"concept": "- MONDO:0008294 | acute intermittent porphyria | syn: acute intermittent porphyria | ancestors: acute disease, HMBS-related hepatic porphyria, human disease, hepatic porphyria | def: Acute intermittent porphyria is the most frequent and the most severe form of the acute hepatic porphyrias. It is characterized by the occurrence of neuro-visceral attacks without cutaneous manifestat...",
+"ko": "급성 간헐성 포르피린증",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024532",
+"concept": "- MONDO:0024532 | otofaciocervical syndrome 1 | syn: EYA1 otofaciocervical syndrome; otofaciocervical syndrome 1; otofaciocervical syndrome caused by mutation in EYA1 | ancestors: otofaciocervical syndrome, hereditary disease, mandibulofacial dysostosis, disease of genetic or genomic mechanism | def: Any otofaciocervical syndrome in which the cause of the disease is a mutation in the EYA1 gene.",
+"ko": "이안면경부 증후군 1",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005843",
+"concept": "- MONDO:0005843 | mediastinal cancer | syn: cancer of mediastinum; cancer of the mediastinum; malignant mediastinal neoplasm; malignant mediastinal tumor | ancestors: thoracic cancer, neoplasm of mediastinum, cancer, neoplasm of thorax | def: A malignant neoplasm involving the mediastinum",
+"ko": "종격동암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021296",
+"concept": "- MONDO:0021296 | carcinoma in situ of renal pelvis | syn: carcinoma in situ of kidney pelvis; carcinoma in situ of renal pelvis; carcinoma in situ of the kidney pelvis; carcinoma in situ of the renal pelvis | ancestors: kidney carcinoma in situ, renal pelvis carcinoma, in situ carcinoma, renal carcinoma | def: A in situ carcinoma that involves the renal pelvis.",
+"ko": "신우 상피내암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013758",
+"concept": "- MONDO:0013758 | Charcot-Marie-Tooth disease dominant intermediate E | syn: autosomal dominant intermediate Charcot-Marie-Tooth disease type E; Charcot-Marie-Tooth disease dominant intermediate E; Charcot-Marie-Tooth disease dominant intermediate type E; Charcot-Marie-Tooth disease, dominant Intermediate type E | ancestors: autosomal dominant intermediate Charcot-Marie-Tooth disease, autosomal dominant disease, intermediate Charcot-Marie-Tooth disease, autosomal genetic disease | def: Autosomal dominant intermediate Charcot-Marie-Tooth disease type E is characterized by the association of Charcot-Marie-Tooth disease (hereditary peripheral neuropathy) with nephropathy. So far, aroun...",
+"ko": "샤르코-마리-투스병 우성 중간형 E",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

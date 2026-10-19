@@ -1,0 +1,248 @@
+[
+{
+"id": "MONDO:0016120",
+"concept": "- MONDO:0016120 | myotonic syndrome | ancestors: syndromic disease, skeletal muscle disorder, disease by body system or component, muscle tissue disorder",
+"ko": "근긴장 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017638",
+"concept": "- MONDO:0017638 | manganese poisoning | syn: manganese intoxication; Manganism | ancestors: toxic encephalopathy, poisoning, nervous system disorder, disease of primarily extrinsic mechanism | def: Manganese poisoning is associated with chronic inhalation of manganese particles by individuals who work with manganese ore. Clinical features include confusion; hallucinations; and an extrapyramidal ...",
+"ko": "망간 중독",
+"alt": [],
+"organs": [
+"pulmonary",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018089",
+"concept": "- MONDO:0018089 | double outlet right ventricle | syn: DORV; double outlet right ventricle | ancestors: ventricular septal defect, conotruncal heart malformations, heart septal defect, cardiogenetic disease | def: Double outlet right ventricle (DORV) is a rare cono-truncal anomaly in which both the aorta and pulmonary artery originate, either entirely or predominantly, from the morphologic right ventricle.",
+"ko": "우심실 양대혈관 기시",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000045",
+"concept": "- MONDO:0000045 | hypothyroidism, congenital, nongoitrous | ancestors: hereditary disease, congenital hypothyroidism, disease of genetic or genomic mechanism, hypothyroidism",
+"ko": "선천성 비갑상선종성 갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006648",
+"concept": "- MONDO:0006648 | anterior compartment of tibia syndrome | ancestors: compartment syndrome, skeletal muscle disorder, syndromic disease, muscle tissue disorder | def: Rapid swelling, increased tension, pain, and ischemic necrosis of the muscles of the anterior tibial compartment of the leg, often following excessive physical exertion.",
+"ko": "전경골 구획 증후군",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001672",
+"concept": "- MONDO:0001672 | bronchus cancer | syn: bronchus cancer; cancer of bronchus; malignant bronchus neoplasm; malignant neoplasm of bronchus | ancestors: respiratory system cancer, bronchial neoplasm, cancer, respiratory system disorder | def: A malignant neoplasm involving the bronchus",
+"ko": "기관지암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001298",
+"concept": "- MONDO:0001298 | congenital mitral valve insufficiency | syn: congenital insufficiency of mitral valve; congenital mitral insufficiency | ancestors: vascular insufficiency disorder, mitral valve insufficiency, vascular disorder, mitral valve disorder | def: Mitral valve insufficiency that is present at birth.",
+"ko": "선천성 승모판 폐쇄부전",
+"alt": [
+"선천성 승모판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016458",
+"concept": "- MONDO:0016458 | 8q12 microduplication syndrome | syn: dup(8)(q12); trisomy 8q12 | ancestors: partial duplication of the long arm of chromosome 8, partial duplication of chromosome 8, syndrome caused by partial chromosomal duplication, chromosome 8 disorder | def: The newly described 8q12 microduplication syndrome is associated with unusual and characteristic multi-organ clinical features, which include hearing loss, congenital heart defects, intellectual disab...",
+"ko": "8q12 미세중복 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005468",
+"concept": "- MONDO:0005468 | hypotensive disorder | syn: hypotension; hypotension (disease) | ancestors: arterial disorder, vascular disorder, cardiovascular disorder, disease by body system or component | def: Blood pressure that is abnormally low.",
+"ko": "저혈압성 질환",
+"alt": [
+"저혈압"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0015986",
+"concept": "- MONDO:0015986 | bilateral renal agenesis | syn: Renal Agenesis, Bilateral | ancestors: renal agenesis, disorder of development or morphogenesis, inherited kidney disorder, disease by developmental or physiological process | def: Bilateral renal agenesis is the most profound form of renal agenesis, characterized by complete absence of kidney development, absent ureters and subsequent absence of fetal renal function resulting i...",
+"ko": "양측 신장 무형성",
+"alt": [
+"양측 콩팥 무형성"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020726",
+"concept": "- MONDO:0020726 | tubulointerstitial kidney disease, autosomal dominant, 2 | syn: ADTKD-MUC1; autosomal dominant medullary cystic kidney disease without hyperuricemia; autosomal dominant tubulointerstitial kidney disease due to mutations in MUC1; MCKD1 | ancestors: familial juvenile hyperuricemic nephropathy, autosomal dominant medullary cystic kidney disease with or without hyperuricemia, inherited kidney disorder, autosomal dominant disease | def: An inherited disorder that causes a gradual loss of kidney function, caused by a mutation in the MUC1 gene that leads to production of an abnormal mucin 1 protein, which deposits in the kidney and lea...",
+"ko": "상염색체 우성 세뇨관간질성 신장병 2",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0043683",
+"concept": "- MONDO:0043683 | Leriche syndrome | syn: Leriche syndrome; leriche's syndrome | ancestors: syndromic disease, aortic disorder, disease by body system or component, arterial disorder | def: An atherosclerotic disorder of the peripheral vascular system affecting mostly males in their later decades. It is caused by thrombotic occlusion of the abdominal aorta just above the level of the bif...",
+"ko": "르리슈 증후군",
+"alt": [
+"리슈 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009124",
+"concept": "- MONDO:0009124 | Dubowitz syndrome | syn: Dubowitz syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome-intellectual disability, ectodermal dysplasia syndrome, multiple congenital anomalies/dysmorphic syndrome, syndromic disease | def: A rare multiple congenital syndrome characterized primarily by growth retardation, microcephaly, distinctive facial dysmorphism, cutaneous eczema, a mild to severe intellectual deficit and genital abn...",
+"ko": "두보비츠 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003482",
+"concept": "- MONDO:0003482 | Pediculus humanus corporis infestation | syn: Pediculus corporis [body louse]; Pediculus humanus corporis infection | ancestors: lice infestation, parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease | def: A infectious disease involving the Pediculus humanus corporis.",
+"ko": "몸니 감염증",
+"alt": [
+"몸니증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007191",
+"concept": "- MONDO:0007191 | Behcet disease | syn: Bechet syndrome; Behcet disease; Behcet syndrome; Behcet's syndrome | ancestors: syndromic disease, skin vascular disease, disease by body system or component, skin disorder | def: A chronic, relapsing, multisystemic vasculitis characterized by mucocutaneous lesions, as well as articular, vascular, ocular and central nervous system manifestations.",
+"ko": "베체트병",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002136",
+"concept": "- MONDO:0002136 | eczematous dermatitis of eyelid | ancestors: noninfectious dermatoses of eyelid, blepharitis, eyelid disorder, inflammatory disease",
+"ko": "눈꺼풀 습진성 피부염",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004986",
+"concept": "- MONDO:0004986 | urinary bladder carcinoma | syn: bladder carcinoma; carcinoma bladder; carcinoma of bladder; carcinoma of the bladder | ancestors: urinary bladder cancer, carcinoma, urinary bladder neoplasm, malignant urinary system neoplasm | def: A carcinoma that arises from epithelial cells of the urinary bladder",
+"ko": "방광암종",
+"alt": [
+"방광 암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005825",
+"concept": "- MONDO:0005825 | leptospirosis | syn: Leptospira caused disease or disorder; Leptospira disease or disorder; Leptospira infectious disease; leptospirosis | ancestors: primary bacterial infectious disease, spirochaetales infections, bacterial infectious disease, infectious disease | def: A contagious bacterial infection caused by spirochetes of the genus Leptospira. Humans are infected by contact with water and soil which have been contaminated with animal waste products. The signs an...",
+"ko": "렙토스피라증",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0007125",
+"concept": "- MONDO:0007125 | ankyloglossia | syn: ankyloglossia; FUSED to floor of mouth | ancestors: tongue disorder, hereditary disease, mouth disorder, disease of genetic or genomic mechanism | def: A developmental abnormality in which the bottom of the tongue is attached to the floor of the mouth.",
+"ko": "혀유착증",
+"alt": [
+"설소대 단축증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001397",
+"concept": "- MONDO:0001397 | mononeuropathy | ancestors: peripheral neuropathy, peripheral nervous system disorder, neuromuscular disease, nervous system disorder | def: Disease or trauma involving a single peripheral nerve in isolation, or out of proportion to evidence of diffuse peripheral nerve dysfunction. Mononeuropathy multiplex refers to a condition characteriz...",
+"ko": "단일신경병증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 6,
+"new": false
+}
+]

@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0018881",
+"concept": "- MONDO:0018881 | myelodysplastic syndrome | syn: dysmyelopoietic syndrome; hematopoeitic - myelodysplastic syndrome (MDS); MDS; MDS, unclassifiable | ancestors: myeloid hemopathy, neoplastic syndrome, hematopoietic and lymphoid system neoplasm, syndromic disease | def: A clonal hematopoietic disorder characterized by dysplasia and ineffective hematopoiesis in one or more of the hematopoietic cell lines. The dysplasia may be accompanied by an increase in myeloblasts,...",
+"ko": "골수형성이상 증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0018906",
+"concept": "- MONDO:0018906 | follicular lymphoma | syn: follicle center lymphoma; follicle centre lymphoma; follicular center cell lymphoma; follicular centre cell lymphoma | ancestors: neoplasm of mature B-cells, indolent B-cell non-Hodgkin lymphoma, B-cell neoplasm, B-cell non-Hodgkin lymphoma | def: Follicular lymphoma is a form of non-Hodgkin lymphoma characterized by a proliferation of B cells whose nodular structure of follicular architecture is preserved.",
+"ko": "여포성 림프종",
+"alt": [
+"소포성 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0008608",
+"concept": "- MONDO:0008608 | Down syndrome | syn: Down syndrome; Down syndrome, Isolated cases; Down's syndrome; leukemia, megakaryoblastic, with or without Down syndrome, somatic | ancestors: chromosome 21 disorder, autosomal anomaly, chromosomal disorder, disease of genetic or genomic mechanism | def: Down syndrome is a chromosomal abnormality caused by the presence of a third (partial or total) copy of the chromosome 21 genetic material and that is characterized by variable intellectual disability...",
+"ko": "다운 증후군",
+"alt": [
+"21번 삼염색체증"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0018876",
+"concept": "- MONDO:0018876 | mantle cell lymphoma | syn: classical mantle cell lymphoma; LCM; mantle cell lymphoma; mantle zone lymphoma | ancestors: aggressive B-cell non-Hodgkin lymphoma, B-cell non-Hodgkin lymphoma, B-cell neoplasm, non-Hodgkin lymphoma | def: Mantle cell lymphoma is a rare form of malignant non-Hodgkin lymphoma affecting B lymphocytes in the lymph nodes in a region called the ``mantle zone''.",
+"ko": "외투세포 림프종",
+"alt": [
+"맨틀세포 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008705",
+"concept": "- MONDO:0008705 | lysosomal acid phosphatase deficiency | syn: acid phosphatase deficiency; lysosomal acid phosphatase deficiency | ancestors: lysosomal storage disease, inborn errors of metabolism, hereditary disease, metabolic disease",
+"ko": "리소좀 산성 인산분해효소 결핍증",
+"alt": [
+"산성 인산분해효소 결핍증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019542",
+"concept": "- MONDO:0019542 | acute liver failure | syn: acute hepatic failure; fulminant hepatic failure | ancestors: acute disease, liver failure, human disease, liver disorder | def: Rapid deterioration of liver function causing encephalopathy and coagulopathy. It results from damage to the liver parenchyma usually secondary to acetaminophen overdose or viral infections.",
+"ko": "급성 간부전",
+"alt": [
+"전격성 간부전"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001719",
+"concept": "- MONDO:0001719 | gonococcal bursitis | syn: Neisseria gonorrhoeae bursitis; Neisseria gonorrhoeae caused bursitis | ancestors: bursitis, gonorrhea, arthropathy, inflammatory disease | def: An bursitis caused by infection with Neisseria gonorrhoeae.",
+"ko": "임균성 점액낭염",
+"alt": [
+"淋菌性 점액낭염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 40,
+"new": false
+},
+{
+"id": "MONDO:0003783",
+"concept": "- MONDO:0003783 | lymphopenia | syn: lymphocytopenia; lymphopenia; lymphopenia (disease) | ancestors: leukopenia, leukocyte disorder, immune system disorder, hematologic disorder | def: Reduction in the number of lymphocytes.",
+"ko": "림프구감소증",
+"alt": [
+"림프구 감소증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001198",
+"concept": "- MONDO:0001198 | acquired thrombocytopenia | syn: acquired thrombocytopenia; secondary thrombocytopenia | ancestors: thrombocytopenia, blood platelet disease, hematologic disorder, disease by body system or component | def: An instance of thrombocytopenia that is acquired during the lifetime of the individual.",
+"ko": "후천성 혈소판감소증",
+"alt": [
+"이차성 혈소판감소증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021064",
+"concept": "- MONDO:0021064 | jugulotympanic paraganglioma | syn: basicranium parasympathetic paraganglioma; glomus jugulare neoplasm; glomus jugulare tumor; glomus jugulare tumour | ancestors: skull base neoplasm, head and neck paraganglioma, parasympathetic paraganglioma, hereditary disorder of connective tissue | def: A benign or malignant extra-adrenal parasympathetic paraganglioma arising from paraganglia in the base of the skull and middle ear.",
+"ko": "경정맥-고실 부신경절종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011186",
+"concept": "- MONDO:0011186 | Usher syndrome type 1F | syn: USH1F; Usher syndrome type 1F | ancestors: Usher syndrome type 1, Usher syndrome, syndromic disease, autosomal recessive disease | def: A form of Usher syndrome type IF that can be caused by homozygous or compound heterozygous mutation in the protocadherin-15 gene (PCDH15) on chromosome 10q. It is inherited in an autosomal recessive m...",
+"ko": "어셔 증후군 1F형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0014206",
+"concept": "- MONDO:0014206 | severe early-onset pulmonary alveolar proteinosis due to MARS deficiency | syn: hereditary pulmonary alveolar proteinosis with hepatic involvement; interstitial lung and liver disease; PAP, Reunion island type; pulmonary alveolar proteinosis, Reunion island type | ancestors: hereditary pulmonary alveolar proteinosis, pulmonary alveolar proteinosis, hereditary disease, lung disorder",
+"ko": "MARS 결핍에 의한 중증 조기 발병 폐포단백질증",
+"alt": [],
+"organs": [
+"hepatic",
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001120",
+"concept": "- MONDO:0001120 | chronic frontal sinusitis | syn: frontal sinusitis, chronic | ancestors: frontal sinusitis, chronic rhinosinusitis, sinusitis, paranasal sinus disorder | def: Inflammation of the frontal sinus that typically lasts beyond eight weeks. It is caused by infections, allergies, and the presence of sinus polyps or a deviated septum. Signs and symptoms include head...",
+"ko": "만성 전두동염",
+"alt": [
+"만성 이마굴염"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005705",
+"concept": "- MONDO:0005705 | clonorchiasis | syn: Oriental liver fluke disease | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection of the biliary passages with clonorchis sinensis, also called Opisthorchis sinensis. It may lead to inflammation of the biliary tract, proliferation of biliary epithelium, progressive portal...",
+"ko": "간흡충증",
+"alt": [
+"중국간흡충증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0010150",
+"concept": "- MONDO:0010150 | head and neck squamous cell carcinoma | syn: craniocervical region squamous cell carcinoma; head and neck squamous cell carcinoma; HNSCC; SCCHN | ancestors: head and neck carcinoma, squamous cell carcinoma, carcinoma, head and neck cancer | def: A squamous cell carcinoma that arises from any of the following anatomic sites: lip and oral cavity, nasal cavity, paranasal sinuses, pharynx, larynx, and salivary glands.",
+"ko": "두경부 편평세포암종",
+"alt": [
+"두경부 편평상피세포암"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018747",
+"concept": "- MONDO:0018747 | acquired epidermolysis bullosa | syn: acquired epidermolysis bullosa; EBA; epidermolysis bullosa acquisita; epidermolysis bullosa Aquisita | ancestors: epidermolysis bullosa, autoimmune bullous skin disease, vesiculobullous skin disease, dermatitis | def: Epidermolysis bullosa acquisita (EBA) is a subepidermal bullous dermatosis of autoimmune origin that was named as a result of its resemblance to hereditary forms of epidermolysis bullosa (HEB), most n...",
+"ko": "후천성 수포성 표피박리증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008627",
+"concept": "- MONDO:0008627 | ureter cancer | syn: cancer of ureter; malignant neoplasm of the ureter; malignant neoplasm of ureter; malignant tumor of the ureter | ancestors: malignant urinary system neoplasm, ureter neoplasm, cancer, urinary system neoplasm | def: A malignant neoplasm involving the ureter",
+"ko": "요관암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006950",
+"concept": "- MONDO:0006950 | retinal vasculitis | syn: retinal vasculitis | ancestors: retinal vascular disorder, retinitis, vasculitis, retinal disorder | def: Inflammation of the retinal vasculature with various causes including infectious disease; lupus erythematosus, systemic; multiple sclerosis; behcet syndrome; and chorioretinitis.",
+"ko": "망막혈관염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001615",
+"concept": "- MONDO:0001615 | epidemic keratoconjunctivitis | syn: shipyard eye | ancestors: keratoconjunctivitis, corneal infection, adenoviridae infectious disease, viral conjunctivitis | def: Keratoconjunctivitis resulting from infection by adenoviruses.",
+"ko": "유행성 각결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0025371",
+"concept": "- MONDO:0025371 | Parvoviridae infectious disease | syn: disease due to Parvoviridae; Parvoviridae caused disease or disorder; Parvoviridae disease or disorder | ancestors: viral infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Virus infections caused by the parvoviridae.",
+"ko": "파르보바이러스과 감염병",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+}
+]

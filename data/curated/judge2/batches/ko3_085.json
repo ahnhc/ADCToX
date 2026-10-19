@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0000242",
+"concept": "- MONDO:0000242 | tinea barbae | syn: beard dermatophytosis; dermatophytosis of beard | ancestors: dermatophytosis, tinea infection, superficial mycosis, cutaneous mycosis | def: A dermatophytosis that involves the beard.",
+"ko": "수염백선",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0006533",
+"concept": "- MONDO:0006533 | cholesteatoma of middle ear | syn: cholesteatoma (disease) of middle ear; cholesteatoma of middle ear; cholesteatoma of middle ear and mastoid; cholesteatoma of the middle ear | ancestors: middle ear disorder, cholesteatoma, auditory system disorder, disorder of ear | def: A non-neoplastic lesion characterized by the proliferation of keratinizing squamous epithelium in the middle ear that results in the accumulation of keratin and cells. It is usually caused by repeated...",
+"ko": "중이 진주종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006670",
+"concept": "- MONDO:0006670 | bacterial meningitis | syn: Bacteria caused infectious meningitis; Bacteria infectious meningitis | ancestors: infectious meningitis, bacterial infectious disease, meningitis, central nervous system infectious disorder | def: Inflammation of the membranes surrounding the brain and spinal cord due to a bacterial infection.",
+"ko": "세균성 수막염",
+"alt": [
+"세균성 뇌막염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005752",
+"concept": "- MONDO:0005752 | epidural abscess | syn: extradural intraspinal abscess; intraspinal epidural abscess; intraspinal extradural abscess; spinal epidural abscess | ancestors: abscess, central nervous system neoplasm, central nervous system infectious disorder, infectious disease | def: Circumscribed collections of suppurative material occurring in the spinal or intracranial epidural space. The majority of epidural abscesses occur in the spinal canal and are associated with osteomyel...",
+"ko": "경막외 농양",
+"alt": [
+"경막외 고름집"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015677",
+"concept": "- MONDO:0015677 | cardiac diverticulum | syn: Cardiac diverticulum; cardiac diverticulum (disease) | ancestors: congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis | def: Congenital cardiac diverticulum (CCD) is a very rare congenital malformation characterized by a muscular appendix emerging from the left ventricular apex, rarely from the right ventricle or from both ...",
+"ko": "심장 게실",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001371",
+"concept": "- MONDO:0001371 | protein-energy malnutrition | syn: Protein energy malnutrition | ancestors: nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism, human disease | def: A nutritional deficit that is caused by inadequate protein or calorie intake.",
+"ko": "단백질-에너지 영양실조",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0006805",
+"concept": "- MONDO:0006805 | intermediate coronary syndrome | syn: angina at rest; anginal chest pain at rest; impending infarction; Preinfarction angina | ancestors: coronary artery disorder, arterial disorder, heart disorder, vascular disorder | def: Angina pectoris (or equivalent type of ischemic discomfort) which has recently changed in frequency, duration, intensity, or occurs at rest.",
+"ko": "중간 관상동맥 증후군",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0010155",
+"concept": "- MONDO:0010155 | Dorfman-Chanarin disease | syn: Chanarin-Dorfman Syndrome; Chanarin-Dorfman syndrome; neutral lipid storage disease with ichthyosis; NLSDI | ancestors: neutral lipid storage disease, disorder of phospholipids, sphingolipids and fatty acids biosynthesis, lysosomal lipid storage disorder, inherited lipid metabolism disorder",
+"ko": "도르프만-샤나린병",
+"alt": [],
+"organs": [
+"hepatic",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019954",
+"concept": "- MONDO:0019954 | pancreatic neuroendocrine tumor | syn: islet cell tumor; islet cell tumors - pancreas; islet cell tumors of the pancreas; islet cell tumour | ancestors: digestive system neuroendocrine tumor, grade 1/2, pancreatic neuroendocrine neoplasm, digestive system neuroendocrine neoplasm, endocrine pancreas disorder | def: Pancreatic endocrine tumor, also known as pancreatic neuroendocrine tumor (PNET), describes a group of endocrine tumors originating in the pancreas that are usually indolent and benign, but may have t...",
+"ko": "췌장 신경내분비종양",
+"alt": [
+"췌도세포종양"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006816",
+"concept": "- MONDO:0006816 | arthropathy | syn: arthropathy; disease of skeletal joint; disease or disorder of skeletal joint; disorder of skeletal joint | ancestors: skeletal system disorder, musculoskeletal system disorder, disease by body system or component, human disease | def: Any disorder of the joints.",
+"ko": "관절병증",
+"alt": [
+"관절병"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0021418",
+"concept": "- MONDO:0021418 | polyp of ethmoidal sinus | syn: ethmoid sinus polyp; ethmoidal polyp; ethmoidal sinus polyp; polyp of ethmoid sinus | ancestors: paranasal sinus disorder, polyp, nasal disorder, respiratory system disorder | def: A polyp that involves the ethmoid sinus.",
+"ko": "벌집굴 용종",
+"alt": [
+"사골동 용종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010225",
+"concept": "- MONDO:0010225 | Dent disease type 1 | syn: CLCN5 Dent disease; dent disease 1, X-linked recessive; Dent disease caused by mutation in CLCN5; Dent disease type 1 | ancestors: Dent disease, renal tubular transport disease, inherited renal tubular disease, kidney disorder | def: Dent disease type 1 is a type of Dent disease with predominantly renal manifestations.",
+"ko": "덴트병 1형",
+"alt": [
+"CLCN5 덴트병"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009934",
+"concept": "- MONDO:0009934 | alveolar capillary dysplasia with misalignment of pulmonary veins | syn: ACDMPV; alveolar capillary dysplasia; alveolar capillary dysplasia with misalignment of pulmonary veins; alveolar capillary dysplasia with misalignment of pulmonary vessels | ancestors: primary interstitial lung disease specific to childhood, congenital pulmonary veins anomaly, inherited interstitial lung disease, cardiogenetic disease | def: A rare and fatal developmental lung disease characterized by respiratory distress in neonates due to refractory hypoxemia and severe pulmonary arterial hypertension.",
+"ko": "폐정맥 오정렬을 동반한 폐포 모세혈관 이형성증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004608",
+"concept": "- MONDO:0004608 | oropharynx cancer | syn: cancer of oropharynx; malignant neoplasm of junctional region of oropharynx; malignant neoplasm of lateral wall of oropharynx; malignant neoplasm of oropharynx | ancestors: pharynx cancer, neoplasm of oropharynx, respiratory system cancer, digestive system cancer | def: A primary or metastatic malignant neoplasm that affects the oropharynx.",
+"ko": "구인두암",
+"alt": [
+"입인두암"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0021941",
+"concept": "- MONDO:0021941 | infection by Trypanosoma rhodesiense | syn: infection by trypanosoma rhodesiense; rhodesian trypanosomiasis | ancestors: human African trypanosomiasis, trypanosomiasis, vector-borne disease, protozoa infectious disease | def: An infection with Trypanosoma brucei rhodesiense.",
+"ko": "로데시아 트리파노소마 감염",
+"alt": [
+"로디지아 수면병"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016467",
+"concept": "- MONDO:0016467 | isotretinoin syndrome | syn: fetal isotretinoin syndrome; Fetal Retinoid Syndrome; fetal retinoid syndrome; foetal isotretinoin syndrome | ancestors: syndromic disease, isotretinoin-like syndrome, toxic or drug-related embryofetopathy, disease by body system or component | def: Isotretinoin embryopathy is an association of malformations caused by the teratogenic effect of isotretinoin, an oral synthetic vitamin A derivative, which is used to treat severe recalcitrant cystic ...",
+"ko": "이소트레티노인 증후군",
+"alt": [
+"태아 이소트레티노인 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020532",
+"concept": "- MONDO:0020532 | spirillary rat-bite fever | syn: sodoku; sodoku disease; Spirillary fever | ancestors: primary bacterial infectious disease, rat-bite fever, bacterial infectious disease, vector-borne disease | def: Spirillary rat-bite fever (RBF), also known as Sodoku (Japanese for so: rat and doku: poison), is caused by the gram-negative bacillus Spirillum minus and is transmitted to humans through the bites an...",
+"ko": "나선균성 쥐물림열",
+"alt": [
+"스피릴룸 쥐물림열"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0008838",
+"concept": "- MONDO:0008838 | ataxia - deafness - intellectual disability syndrome | syn: ataxia-hearing loss-intellectual disability syndrome; Reardon-Baraitser syndrome | ancestors: X-linked cerebellar ataxia, X-linked disease, hereditary cerebellar ataxia, hereditary disease | def: This syndrome is characterized by progressive ataxia beginning during childhood, deafness and intellectual deficit.",
+"ko": "운동실조-난청-지적장애 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006397",
+"concept": "- MONDO:0006397 | renal cell carcinoma associated with Xp11.2 translocations/TFE3 gene fusions | syn: renal cell cancer associated with Xp11.2 translocations/TFE3 Gene fusions; renal cell carcinoma associated with Xp11.2 translocations/TFE3 gene fusions; TFE3-Rearranged renal cell carcinoma; tRCC | ancestors: renal cell adenocarcinoma, renal cell carcinoma, adenocarcinoma, renal carcinoma | def: A group of kidney carcinomas characterized by the presence of different translocations involving the chromosome Xp11.2. These translocations result in the creation of gene fusions involving the TFE3 g...",
+"ko": "Xp11.2 전좌/TFE3 유전자 융합 연관 신장세포암종",
+"alt": [
+"Xp11 전좌 신세포암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003246",
+"concept": "- MONDO:0003246 | sclerosing hepatic carcinoma | syn: scirrhous hepatocellular cancer; scirrhous hepatocellular carcinoma; sclerosing hepatic carcinoma; sclerosing hepatocellular carcinoma | ancestors: hepatocellular carcinoma, adenocarcinoma, carcinoma of liver and intrahepatic biliary tract, carcinoma | def: An uncommon type of hepatocelluar carcinoma, morphologically characterized by significant fibrosis around the sinusoid-like spaces and atrophy of the tumor trabeculae.",
+"ko": "경화성 간암종",
+"alt": [
+"경화성 간세포암종"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

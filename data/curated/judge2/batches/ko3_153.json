@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0006796",
+"concept": "- MONDO:0006796 | hypertensive encephalopathy | ancestors: intracranial hypertension, hypertensive disorder, brain disorder, neurovascular disorder | def: Encephalopathy resulting from hypertension.",
+"ko": "고혈압성 뇌병증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006565",
+"concept": "- MONDO:0006565 | juvenile dermatitis herpetiformis | ancestors: dermatitis herpetiformis, autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease | def: Dermatitis herpetiformis in children",
+"ko": "소아 포진상 피부염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0000467",
+"concept": "- MONDO:0000467 | second-degree atrioventricular block | syn: atrioventricular block second degree; atrioventricular block, second degree; AV block second degree; second degree atrioventricular block | ancestors: atrioventricular block, heart conduction disease, atrioventricular dissociation, heart disorder | def: Intermittent failure of atrial electrical impulse conduction to the ventricles.",
+"ko": "2도 방실 차단",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007896",
+"concept": "- MONDO:0007896 | acute monocytic leukemia | syn: acute monoblastic leukaemia and acute monocytic leukaemia; acute monocytic leukaemia (FAB M5B); acute monocytic leukaemia (FAB M5b); acute monocytic leukemia | ancestors: monocytic leukemia, acute myeloid leukemia, leukemia, myeloid leukemia | def: Acute monoblastic leukemia (AML-M5), is one of the most common subtypes of acute myeloid leukemia (AML) that is either comprised of more than 80% of monoblasts (AML-M5a) or 30-80% monoblasts with (pro...",
+"ko": "급성 단핵구성 백혈병",
+"alt": [
+"급성 단구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0022430",
+"concept": "- MONDO:0022430 | persistent fetal circulation syndrome | syn: persistent fetal circulation; persistent foetal circulation; persistent pulmonary hypertension of the newborn; PPHN | ancestors: congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis, disease by body system or component | def: A cardiopulmonary disorder characterized by systemic arterial hypoxemia secondary to pulmonary hypertension and extrapulmonary right to left shunting across the foramen ovale and ductus arteriosus.",
+"ko": "지속성 태아순환 증후군",
+"alt": [
+"신생아 지속성 폐고혈압"
+],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001165",
+"concept": "- MONDO:0001165 | tongue disorder | syn: disease of tongue; disease or disorder of tongue; disorder of tongue; tongue disease | ancestors: mouth disorder, disease by body system or component, human disease, disease | def: A disease involving the tongue.",
+"ko": "혀 질환",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008965",
+"concept": "- MONDO:0008965 | CHARGE syndrome | syn: CHARGE association; CHARGE syndrome; coloboma, heart defects, choanal atresia, retardation of Growth and development, genital abnormalities, and Ear anomalies association; coloboma, heart malformation, choanal atresia, retardation of Growth and development, genital abnormalities, and Ear malformations (CHARGE) association | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, congenital hypogonadotropic hypogonadism, neurocristopathy | def: CHARGE syndrome is a multiple congenital anomaly syndrome characterized by the variable combination of multiple anomalies, mainly Coloboma; Choanal atresia/stenosis; Cranial nerve dysfunction; Charact...",
+"ko": "CHARGE 증후군",
+"alt": [
+"CHARGE 연합"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019499",
+"concept": "- MONDO:0019499 | Turner syndrome | syn: 45,X gonadal dysgenesis; 45,X syndrome; 45,X/46,XX syndrome; 45,X0 syndrome | ancestors: gonadal dysgenesis, syndromic disease, sex chromosome disorder of sex development, inherited primary ovarian failure | def: Turner syndrome is a chromosomal disorder associated with the complete or partial absence of an X chromosome.",
+"ko": "터너 증후군",
+"alt": [
+"45,X 증후군"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0000612",
+"concept": "- MONDO:0000612 | lymphatic system cancer | syn: cancer of lymphatic part of lymphoid system; lymphatic part of lymphoid system cancer; malignant lymphatic part of lymphoid system neoplasm; malignant neoplasm of lymphatic part of lymphoid system | ancestors: immune system cancer, lymphatic system disorder, cancer, immune system disorder | def: A malignant neoplasm involving the lymphatic part of lymphoid system",
+"ko": "림프계 암",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001868",
+"concept": "- MONDO:0001868 | primary angle-closure glaucoma | ancestors: angle-closure glaucoma, glaucoma, eye disorder, disorder of orbital region | def: An angle-closure glaucoma characterized by closure of the anterior chamber angle by an intrinsic defect such that aqueous outflow is blocked and the intraocular pressure becomes inappropriately elevat...",
+"ko": "원발성 폐쇄각 녹내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005814",
+"concept": "- MONDO:0005814 | intestinal cancer | syn: bowel cancer; cancer of intestine; cancer of the intestine; intestinal cancer | ancestors: digestive system cancer, intestinal neoplasm, digestive system disorder, cancer | def: A malignant neoplasm involving the intestine",
+"ko": "장암",
+"alt": [
+"창자암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016244",
+"concept": "- MONDO:0016244 | atypical hemolytic-uremic syndrome | syn: aHUS; Atypical Hemolytic Uremic Syndrome; atypical hemolytic uremic syndrome; atypical HUS | ancestors: syndromic disease, complement deficiency, thrombotic microangiopathy, hereditary hemolytic uremic syndrome | def: A rare, genetic thrombotic microangiopathy due to dysregulation of the alternative complement pathway and characterized by the triad of hemolytic anemia, thrombocytopenia, and acute renal dysfunction.",
+"ko": "비정형 용혈요독 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"cardiovascular",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021389",
+"concept": "- MONDO:0021389 | neoplasm of aortic body | syn: aortic body neoplasm; aortic body neoplasm (disease); aortic body paraganglioma; aortic body tumor | ancestors: aortic disorder, parasympathetic paraganglioma, blood vessel neoplasm, neoplasm of thorax | def: A benign or malignant extra-adrenal parasympathetic paraganglioma that arises from paraganglia adjacent to the base of the heart and great vessels.",
+"ko": "대동맥체 신생물",
+"alt": [
+"대동맥체 부신경절종"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001757",
+"concept": "- MONDO:0001757 | frontal sinus neoplasm | syn: frontal sinus neoplasm (disease); frontal sinus tumor; frontal sinus tumour; neoplasm of frontal sinus | ancestors: paranasal sinus neoplasm, paranasal sinus disorder, skull neoplasm, nasal disorder | def: A benign or malignant neoplasm that affects the frontal sinus. Representative examples of benign neoplasms include Schneiderian papilloma and salivary gland-type adenoma. Representative examples of ma...",
+"ko": "전두동 신생물",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:7770747",
+"concept": "- MONDO:7770747 | hepatic fibrinogen storage disease | syn: hepatocellular fibrinogen storage disease; hereditary hypofibrinogenemia with hepatic storage; HFSD; HHHS | ancestors: familial hypofibrinogenemia, inherited blood coagulation disorder, congenital afibrinogenemia, blood coagulation disease | def: An autosomal dominant disorder characterized by hypofibrinogenemia and variable liver disease (ranging from asymptomatic transaminase elevation to cirrhosis), caused by variants in FGG that lead to re...",
+"ko": "간 피브리노겐 저장병",
+"alt": [
+"간세포 피브리노겐 저장병"
+],
+"organs": [
+"haematologic",
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002239",
+"concept": "- MONDO:0002239 | post-surgical hypoinsulinemia | syn: postsurgical hypoinsulinemia | ancestors: endocrine pancreas disorder, pancreas disorder, digestive system disorder, endocrine system disorder",
+"ko": "수술 후 저인슐린혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012085",
+"concept": "- MONDO:0012085 | primary ciliary dyskinesia 3 | syn: CILD3; ciliary dyskinesia, primary, type 3; DNAH5 primary ciliary dyskinesia; primary ciliary dyskinesia 3 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the DNAH5 gene.",
+"ko": "일차섬모운동이상증 3형",
+"alt": [
+"원발성 섬모운동이상증 3형"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004866",
+"concept": "- MONDO:0004866 | eustachian tube disorder | syn: disease of pharyngotympanic tube; disease or disorder of pharyngotympanic tube; disorder of pharyngotympanic tube; eustachian tube disorder | ancestors: middle ear disorder, auditory system disorder, disorder of ear, disease by body system or component | def: A disease involving the pharyngotympanic tube.",
+"ko": "유스타키오관 질환",
+"alt": [
+"이관 질환"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005466",
+"concept": "- MONDO:0005466 | hypersomnia | syn: hypersomnia; hypersomnia (disease) | ancestors: sleep-wake disorder, sleep disorder, disease by developmental or physiological process, human disease | def: A sleep disorder characterized by excessive sleepiness.",
+"ko": "과다수면증",
+"alt": [
+"과수면증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020076",
+"concept": "- MONDO:0020076 | myeloproliferative neoplasm | syn: chronic myeloproliferative disease; chronic myeloproliferative disorder; chronic myeloproliferative neoplasm; CMPD | ancestors: myeloid neoplasm, myeloid hemopathy, bone marrow cancer, hematopoietic and lymphoid cell neoplasm | def: A clonal hematopoietic stem cell disorder, characterized by proliferation in the bone marrow of one or more of the myeloid (i.e., granulocytic, erythroid, megakaryocytic, and mast cell) lineages. It i...",
+"ko": "골수증식종양",
+"alt": [
+"만성 골수증식질환"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4,
+"new": false
+}
+]

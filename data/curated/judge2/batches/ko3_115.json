@@ -1,0 +1,248 @@
+[
+{
+"id": "MONDO:0015239",
+"concept": "- MONDO:0015239 | abnormal origin of the pulmonary artery | ancestors: conotruncal heart malformations, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder",
+"ko": "폐동맥 기시 이상",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020546",
+"concept": "- MONDO:0020546 | acute graft versus host disease | syn: acute graft vs. host disease; fulminant graft versus host disease; graft versus host disease, acute; GVHD, acute | ancestors: graft versus host disease, acute disease, immune system disorder, disease related to hematopoietic stem cell transplant | def: A syndrome of immunologically mediated tissue damage that may occur following an allogeneic transplant, usually affecting the skin, liver, and GI tract. The onset is usually within one hundred days of...",
+"ko": "급성 이식편대숙주병",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010359",
+"concept": "- MONDO:0010359 | Dent disease type 2 | syn: dent disease 2, X-linked recessive; Dent disease caused by mutation in OCRL; Dent disease type 2; nephrolithiasis type 2 | ancestors: Dent disease, renal tubular transport disease, inherited renal tubular disease, kidney disorder | def: Dent disease type 2 is a type of Dent disease in which patients have the manifestations of Dent disease type 1 associated with extra-renal features.",
+"ko": "덴트병 2형",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001718",
+"concept": "- MONDO:0001718 | scleritis | syn: scleritis; scleritis (disease) | ancestors: scleral disorder, eye disorder, disorder of orbital region, disorder of visual system | def: Inflammation of the sclera.",
+"ko": "공막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002409",
+"concept": "- MONDO:0002409 | auditory system disorder | syn: auditory disease; auditory system disease; auditory system disease or disorder; disease of auditory system | ancestors: disease by body system or component, human disease, disease, disposition | def: A disease involving the auditory system.",
+"ko": "청각계 질환",
+"alt": [
+"청각기관 질환"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002708",
+"concept": "- MONDO:0002708 | retinitis | syn: inflammation of retina; retina inflammation | ancestors: retinal disorder, posterior uveitis, nervous system disorder, eye disorder | def: Inflammation of the retina.",
+"ko": "망막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003181",
+"concept": "- MONDO:0003181 | lung adenoid cystic carcinoma | syn: adenocystic carcinoma of lung; adenocystic carcinoma of the lung; adenoid cystic carcinoma of lung; adenoid cystic carcinoma of the lung | ancestors: adenoid cystic carcinoma, lung adenocarcinoma, adenocarcinoma, non-small cell lung carcinoma | def: A rare usually indolent lung carcinoma characterized by a cribiform and tubular pattern and the presence of glandular epithelial cells. Clinical symptoms include shortness of breath, cough, wheeze, he...",
+"ko": "폐 샘낭성 암종",
+"alt": [
+"폐 선양낭성암종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001603",
+"concept": "- MONDO:0001603 | paralytic lagophthalmos | syn: paralytic lagophthalmos; paralytic lagophthalmos (disease) | ancestors: lagophthalmos, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "마비성 토안",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004637",
+"concept": "- MONDO:0004637 | aryepiglottic fold cancer | syn: aryepiglottic fold cancer; cancer of aryepiglottic fold; malignant aryepiglottic fold neoplasm; malignant neoplasm of aryepiglottic fold | ancestors: larynx cancer, hypopharynx cancer, respiratory system cancer, laryngeal neoplasm | def: A malignant neoplasm involving the aryepiglottic fold.",
+"ko": "피열후두개주름암",
+"alt": [
+"후두개피열주름암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0015274",
+"concept": "- MONDO:0015274 | chronic beryllium disease | syn: Berylliosis; berylliosis; chronic berylliosis; chronic beryllium lung disease | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: Chronic beryllium disease (CBD) is a granulomatous, interstitial lung disease that occurs in individuals who develop beryllium sensitization (BeS), a cell-mediated immune response to environmental and...",
+"ko": "만성 베릴륨병",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008248",
+"concept": "- MONDO:0008248 | pigmented purpuric eruption | syn: pigmented purpuric eruption | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "색소성 자반성 발진",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0014750",
+"concept": "- MONDO:0014750 | primary ciliary dyskinesia 33 | syn: CILD33; ciliary dyskinesia, primary, 33; ciliary dyskinesia, primary, type 33; GAS8 primary ciliary dyskinesia | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the GAS8 gene.",
+"ko": "일차섬모운동이상증 33형",
+"alt": [
+"원발 섬모운동이상증 33형"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001400",
+"concept": "- MONDO:0001400 | schwannoma of ureter | syn: neurilemmoma of the ureter; neurilemmoma of ureter; schwannoma of the ureter; ureter neurilemmoma | ancestors: ureter benign neoplasm, peripheral nerve schwannoma, benign neoplasm of peripheral nervous system, benign urinary system neoplasm | def: A benign nerve sheath tumor composed of Schwann cells, occurring in the ureter.",
+"ko": "요관 신경집종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020331",
+"concept": "- MONDO:0020331 | indolent systemic mastocytosis | syn: indolent systemic mastocytosis (morphologic abnormality); ISM; ism | ancestors: systemic mastocytosis, mastocytosis, mast cell neoplasm, leukocyte disorder | def: Indolent systemic mastocytosis (ISM) is a benign form of systemic mastocytosis (SM) characterized by an abnormal proliferation of mast cells either only in bone marrow or in numerous tissues.",
+"ko": "무통성 전신 비만세포증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008698",
+"concept": "- MONDO:0008698 | achalasia | syn: achalasia; achalasia (disease); achalasia of cardia; achalasia of oesophagus | ancestors: esophageal disorder, upper digestive tract disorder, digestive system disorder, disease by body system or component | def: A finding indicating the lack of adequate relaxation of the lower esophageal sphincter resulting in difficulty swallowing food.",
+"ko": "이완불능증",
+"alt": [
+"식도 이완불능증",
+"아칼라지아"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0007342",
+"concept": "- MONDO:0007342 | clubfoot | syn: club foot; clubbed foot; congenital talipes equinovarus; equinovarus deformity of foot (finding) | ancestors: familial clubfoot with or without associated lower limb anomalies, non-syndromic limb reduction defect, hereditary disease, congenital limb malformation | def: The most common congenital deformation of the foot, occurring in 1 of 1,000 live births. The most common form is talipes equinovarus, where the deformed foot is turned downward and inward sharply.",
+"ko": "내반족",
+"alt": [
+"선천성 내반족"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001330",
+"concept": "- MONDO:0001330 | presbyopia | ancestors: eye accommodation disease, refractive error, eye disorder, disorder of orbital region | def: The normal decreasing elasticity of the crystalline lens that leads to loss of accommodation.",
+"ko": "노안",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011118",
+"concept": "- MONDO:0011118 | bilineal acute myeloid leukemia | syn: acute bilineal leukaemia; acute bilineal leukemia | ancestors: acute leukemia of ambiguous lineage, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: An acute leukemia of ambiguous lineage in which there is a dual population of blasts with each population expressing markers of a distinct lineage (myeloid and lymphoid or B-and T-lymphocyte). (WHO, 2...",
+"ko": "이계통 급성 골수성 백혈병",
+"alt": [
+"급성 이계통 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001224",
+"concept": "- MONDO:0001224 | Angelucci syndrome | syn: acute atopic conjunctivitis; Angelucci's syndrome | ancestors: acute conjunctivitis, atopic conjunctivitis, conjunctivitis, acute disease | def: Atopic conjunctivitis that is of relatively short duration and that has a rapid onset.",
+"ko": "안젤루치 증후군",
+"alt": [
+"급성 아토피 결막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0100491",
+"concept": "- MONDO:0100491 | generalized pustular psoriasis | ancestors: pustular psoriasis, psoriasis, dermatitis, immune system disorder | def: A rare and extreme form of psoriasis characterized by the appearance of sterile pustules which can take many patterns. All the main pathological features of the disease are accentuated. Generalized pu...",
+"ko": "전신 농포성 건선",
+"alt": [
+"범발성 농포성 건선"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+}
+]

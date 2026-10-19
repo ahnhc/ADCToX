@@ -1,0 +1,248 @@
+[
+{
+"id": "MONDO:0004613",
+"concept": "- MONDO:0004613 | acute intestinal ischemia | syn: acute intestinal ischemia | ancestors: ischemic bowel disorder, acute disease, intestinal disorder, ischemic disease | def: Ischemia of the intestine that is rapid in onset.",
+"ko": "급성 장 허혈",
+"alt": [
+"급성 장관 허혈"
+],
+"organs": [
+"cardiovascular",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004925",
+"concept": "- MONDO:0004925 | chronic dacryocystitis | syn: dacryocystitis, chronic | ancestors: chronic inflammation of lacrimal passage, dacryocystitis, lacrimal apparatus disorder, inflammatory disease | def: Chronic form of dacryocystitis.",
+"ko": "만성 눈물주머니염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001797",
+"concept": "- MONDO:0001797 | chancroid | ancestors: primary bacterial infectious disease, bacterial sexually transmitted disease, haemophilus infectious disease, bacterial infectious disease | def: Chancroid is a bacterial infection that is spread through sexual contact. It is caused by a type of bacteria called Haemophilus ducreyi. Chancroid is characterized by a small bump on the genital which...",
+"ko": "연성하감",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001490",
+"concept": "- MONDO:0001490 | corneal granular dystrophy | syn: granular corneal dystrophy | ancestors: epithelial-stromal TGFBI dystrophy, hereditary disease, corneal dystrophy, disease of genetic or genomic mechanism | def: A stromal corneal dystrophy that is caused by mutation(s) in the TGFBI gene.",
+"ko": "과립상 각막이영양증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005102",
+"concept": "- MONDO:0005102 | undifferentiated (embryonal) sarcoma | syn: embryonal sarcoma; embryonal sarcoma (undifferentiated sarcoma); embryonal sarcoma, undifferentiated; sarcoma, undifferentiated, malignant | ancestors: liver sarcoma, liver cancer, soft tissue sarcoma, digestive system cancer | def: An aggressive malignant mesenchymal neoplasm that arises from the liver and usually occurs in older children. It is composed of immature spindle, stellate, polymorphous, and giant cells.",
+"ko": "미분화 (배아성) 육종",
+"alt": [
+"배아성 육종"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018781",
+"concept": "- MONDO:0018781 | KID syndrome | syn: ichthyosis hystrix Rheydt type; Keratitis Ichthyosis Deafness Syndrome; keratitis-ichthyosis-deafness/Hystrix-like ichthyosis-deafness syndrome; KID/HID syndrome | ancestors: diffuse palmoplantar keratoderma, ectodermal dysplasia syndrome, hereditary palmoplantar keratoderma, syndromic disease | def: Keratitis (and hystrix-like) ichthyosis deafness (KID/HID) syndrome is a rare congenital ectodermal disorder characterized by vascularizing keratitis, hyperkeratotic skin lesions and hearing loss.",
+"ko": "KID 증후군",
+"alt": [
+"각막염-어린선-난청 증후군"
+],
+"organs": [
+"ocular",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008388",
+"concept": "- MONDO:0008388 | ringed hair disease | syn: pili annulati | ancestors: hair anomaly, disorder of pilosebaceous unit, skin appendage disorder, integumentary system disorder | def: Pili annulati is an isolated, benign hair shaft abnormality, usually presenting after the age of 2 and affecting the hair of the scalp or very rarely beard, axillary, or pubic hair, that is characteri...",
+"ko": "고리 모발병",
+"alt": [
+"환상 모발증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0008810",
+"concept": "- MONDO:0008810 | familial apolipoprotein C-II deficiency | syn: familial apoC-II deficiency; familial apolipoprotein C-II deficiency; hyperlipoproteinemia, type IB | ancestors: familial hyperlipidemia, syndromic dyslipidemia, familial chylomicronemia syndrome, inherited lipid metabolism disorder",
+"ko": "가족성 아포지단백 C-II 결핍증",
+"alt": [
+"고지단백혈증 IB형"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006609",
+"concept": "- MONDO:0006609 | seborrheic infantile dermatitis | syn: generalised seborrheic dermatitis of infants; scalp seborrheic dermatitis (disease); seborrheic dermatitis (disease) of scalp | ancestors: seborrheic dermatitis, dermatitis, skin disorder, inflammatory disease | def: Excessive shedding of dry scaly material from the scalp in humans.",
+"ko": "영아 지루피부염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016530",
+"concept": "- MONDO:0016530 | laryngocele | ancestors: laryngeal disorder, upper respiratory tract disorder, respiratory system disorder, disease by body system or component | def: A rare congenital malformation in the larynx. It is characterized by the presence of an air-filled sac within the laryngeal wall which may bulge on the neck.",
+"ko": "후두탈장",
+"alt": [
+"후두류"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001955",
+"concept": "- MONDO:0001955 | protozoal dysentery | ancestors: dysentery, protozoa infectious disease, parasitic intestinal disorder, inflammatory diarrhea | def: A dysentery that involves protozoan infection.",
+"ko": "원충성 이질",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0017610",
+"concept": "- MONDO:0017610 | epidermolysis bullosa simplex | syn: EBS; EEB; epidermolysis bullosa simplex | ancestors: inherited epidermolysis bullosa, epidermolysis bullosa, epidermal disease, hereditary skin disorder | def: Epidermolysis bullosa simplex (EBS) is a group of hereditary epidermolysis bullosa (HEB) disorders characterized by skin fragility resulting in intraepidermal blisters and erosions that occur either s...",
+"ko": "단순 수포성 표피박리증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021661",
+"concept": "- MONDO:0021661 | coronary atherosclerosis | syn: arteriosclerosis disorder of coronary artery; coronary artery arteriosclerosis (disease); coronary artery arteriosclerosis disorder; coronary atherosclerosis | ancestors: coronary artery disorder, atherosclerosis, arterial disorder, heart disorder | def: Atherosclerosis of the coronary vasculature.",
+"ko": "관상동맥 죽상경화증",
+"alt": [
+"관상동맥 경화증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001588",
+"concept": "- MONDO:0001588 | chronic lacrimal gland enlargement | syn: chronic enlargement of lacrimal gland | ancestors: dacryoadenitis, inflammatory disease, disorder of lacrimal gland, disease by developmental or physiological process",
+"ko": "만성 눈물샘 비대",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005097",
+"concept": "- MONDO:0005097 | squamous cell lung carcinoma | syn: epidermoid cell carcinoma of lung; epidermoid cell carcinoma of the lung; epidermoid cell lung carcinoma; lung squamous cell carcinoma | ancestors: squamous cell carcinoma, lung carcinoma, squamous cell neoplasm, carcinoma | def: A carcinoma arising from squamous bronchial epithelial cells. It may be keratinizing or non-keratinizing. Keratinizing squamous cell carcinoma is characterized by the presence of keratinization, pearl...",
+"ko": "폐 편평세포암종",
+"alt": [
+"폐 편평상피암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001407",
+"concept": "- MONDO:0001407 | tracheal cancer | syn: Ca trachea; cancer of trachea; malignant neoplasm of the trachea; malignant neoplasm of trachea | ancestors: respiratory system cancer, trachea neoplasm, cancer, respiratory system disorder | def: A malignant neoplasm involving the trachea",
+"ko": "기관암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004192",
+"concept": "- MONDO:0004192 | urethra cancer | syn: cancer of urethra; malignant neoplasm of the urethra; malignant neoplasm of urethra; malignant tumor of the urethra | ancestors: malignant urinary system neoplasm, urethra neoplasm, cancer, urinary system neoplasm | def: A malignant neoplasm involving the urethra",
+"ko": "요도암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020121",
+"concept": "- MONDO:0020121 | muscular dystrophy | ancestors: myopathy, neuromuscular disease, skeletal muscle disorder, nervous system disorder | def: Muscular dystrophy (MD) refers to a group of more than 30 genetic diseases characterized by progressive weakness and degeneration of the skeletal muscles that control movement. Some forms of MD are se...",
+"ko": "근디스트로피",
+"alt": [
+"근육퇴행위축증",
+"근이영양증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019403",
+"concept": "- MONDO:0019403 | congenital dyserythropoietic anemia | syn: anemia, congenital dyserythropoietic; CDA; congenital dyshaematopoietic anaemia; congenital dyshaematopoietic anemia | ancestors: familial hemolytic anemia, hemolytic anemia, hereditary disease, normocytic anemia | def: Congenital dyserythropoietic anemia (CDA) is a heterogenous group of hematological disorders of late erythropoiesis and red cell abnormalities that lead to anemia. Five types of CDA are defined: CDA I...",
+"ko": "선천성 이상적혈구생성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008481",
+"concept": "- MONDO:0008481 | spondylosis, cervical | syn: spondylosis, cervical | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "경추 척추증",
+"alt": [
+"경추증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 10,
+"new": false
+}
+]

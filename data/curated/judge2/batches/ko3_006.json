@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0005832",
+"concept": "- MONDO:0005832 | lymphangitis | syn: inflammation of lymphatic vessel; lymphatic vessel inflammation | ancestors: lymphatic system disorder, vasculitis, lymphoid system disorder, vascular disorder | def: Inflammation of the lymphatic vessels.",
+"ko": "림프관염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002941",
+"concept": "- MONDO:0002941 | anal margin carcinoma | syn: anal margin cancer; anal margin carcinoma; carcinoma of anal margin; carcinoma of perianal skin | ancestors: skin carcinoma, anal carcinoma, skin cancer, carcinoma | def: A carcinoma that arises from epithelial cells of the perianal skin",
+"ko": "항문연 암종",
+"alt": [
+"항문연암"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0017880",
+"concept": "- MONDO:0017880 | Rift valley fever | syn: RVF | ancestors: viral hemorrhagic fever, vector-borne disease, viral infectious disease, hemorrhagic fever | def: Rift Valley fever (RVF), caused by the Rift Valley fever virus (RVFV), is an arbovirus characterized by a usually self-limiting febrile illness but that in some cases can also manifest with thrombosis...",
+"ko": "리프트밸리열",
+"alt": [
+"리프트 밸리열"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0100370",
+"concept": "- MONDO:0100370 | acute hepatitis B virus infection | syn: acute hepatitis B | ancestors: hepatitis B virus infection, acute disease, Hepadnaviridae infectious disease, viral hepatitis | def: A new infection by the hepatitis B virus, which can be transmitted by direct contact of infected blood with mucous membranes or open areas of the skin. Signs and symptoms may include loss of appetite,...",
+"ko": "급성 B형 간염 바이러스 감염",
+"alt": [
+"급성 B형 간염"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:1060189",
+"concept": "- MONDO:1060189 | large plaque parapsoriasis | ancestors: parapsoriasis, dermatitis, skin disorder, inflammatory disease | def: A variant of parapsoriasis characterized by erythematous-to-brown patches or thin plaques with fine scales larger than 5cm in diameter. It has a substantial risk to evolve to mycosis fungoides.",
+"ko": "대판 부건선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003753",
+"concept": "- MONDO:0003753 | nasal vestibule squamous papilloma | syn: nasal vestibule papilloma; nasal vestibule squamous papilloma; papilloma of nasal vestibule; papilloma of the nasal vestibule | ancestors: squamous papilloma, benign neoplasm of nasal cavity, papilloma, respiratory system benign neoplasm | def: A benign exophytic squamous cell neoplasm with papillary growth that arises from the nasal vestibule.",
+"ko": "비전정 편평 유두종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011296",
+"concept": "- MONDO:0011296 | Meckel syndrome, type 2 | syn: Meckel syndrome caused by mutation in TMEM216; Meckel syndrome, type 2; Meckel-Gruber syndrome, type 2; MKS2 | ancestors: Meckel syndrome, polydactyly-syndactyly-triphalangism, syndromic disease, ciliopathy | def: Any Meckel syndrome in which the cause of the disease is a mutation in the TMEM216 gene.",
+"ko": "메켈 증후군 2형",
+"alt": [
+"TMEM216 메켈 증후군"
+],
+"organs": [
+"renal",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0041850",
+"concept": "- MONDO:0041850 | pneumonia caused by gram negative bacteria | syn: pneumonia caused by gram negative bacteria; pneumonia due to gram negative bacteria; pneumonia due to gramme negative bacteria | ancestors: bacterial pneumonia, gram-negative bacterial infections, bacterial infectious disease, pneumonia",
+"ko": "그람음성균에 의한 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007028",
+"concept": "- MONDO:0007028 | rotator cuff syndrome | ancestors: skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder, disease by body system or component | def: Tear of one or more of the tendons of the four rotator cuff muscles of the shoulder. A rotator cuff 'injury' can include any type of irritation or overuse of those muscles or tendons, and is among the...",
+"ko": "회전근개 증후군",
+"alt": [
+"회전근개 질환"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008368",
+"concept": "- MONDO:0008368 | autosomal dominant distal renal tubular acidosis | syn: AD dRTA; distal renal tubular acidosis (disease), autosomal dominant; DRTA1; renal tubular acidosis, distal 1 | ancestors: autosomal dominant disease, inherited distal renal tubular acidosis, autosomal genetic disease, distal renal tubular acidosis | def: A distal renal tubular acidosis that is caused by the mutation in SLC4A1 gene and follows the autosomal dominant inheritance. It is characterized by reduced ability to acidify urine, variable hyperchl...",
+"ko": "상염색체 우성 원위 세뇨관 산증",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004573",
+"concept": "- MONDO:0004573 | ariboflavinosis | syn: riboflavin deficiency; vitamin B2 deficiency | ancestors: hereditary disease, nutritional deficiency disease, disease of genetic or genomic mechanism, nutritional disorder | def: A dietary deficiency of riboflavin causing a syndrome chiefly marked by cheilitis, angular stomatitis, glossitis associated with a purplish red or magenta-colored tongue that may show fissures, cornea...",
+"ko": "리보플라빈 결핍증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009230",
+"concept": "- MONDO:0009230 | fibrosclerosis, multifocal | syn: fibrosclerosis, multifocal | ancestors: hereditary disease, IgG4-related retroperitoneal fibrosis, disease of genetic or genomic mechanism, immunoglobulin G4-related sclerosing disease",
+"ko": "다발성 섬유경화증",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008822",
+"concept": "- MONDO:0008822 | arthrogryposis, renal dysfunction, and cholestasis 1 | syn: ARCS1; arthrogryposis, renal dysfunction, and cholestasis 1; arthrogryposis-renal dysfunction-cholestasis syndrome caused by mutation in VPS33B; VPS33B arthrogryposis-renal dysfunction-cholestasis syndrome | ancestors: arthrogryposis-renal dysfunction-cholestasis syndrome, syndromic disease, arthrogryposis multiplex congenita 2, neurogenic type, developmental anomaly of metabolic origin | def: Any arthrogryposis-renal dysfunction-cholestasis syndrome in which the cause of the disease is a mutation in the VPS33B gene that disrupts apical–basolateral polarity and vesicle‑trafficking pathways ...",
+"ko": "관절구축증, 신장 기능 이상 및 담즙정체 1",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004582",
+"concept": "- MONDO:0004582 | rheumatic myocarditis | syn: acute rheumatic myocarditis; acute rheumatic myocarditis (disorder) [ambiguous]; rheumatic myocarditis | ancestors: myocarditis, rheumatic heart disease, intrinsic cardiomyopathy, inflammation of heart layer | def: Inflammation of the myocardium in acute rheumatic heart disease.",
+"ko": "류마티스 심근염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001604",
+"concept": "- MONDO:0001604 | lagophthalmos | ancestors: eyelid disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "토안",
+"alt": [
+"안검열폐쇄부전"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005659",
+"concept": "- MONDO:0005659 | atrophic rhinitis | ancestors: rhinitis, nasal cavity disorder, mucositis, nasal disorder | def: A chronic inflammation in which the nasal mucosa gradually changes from a functional to a non-functional lining without mucociliary clearance. It is often accompanied by degradation of the bony turbin...",
+"ko": "위축비염",
+"alt": [
+"위축성 비염"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020767",
+"concept": "- MONDO:0020767 | cauda equina syndrome with neurogenic bladder | syn: cauda equina syndrome with neurogenic bladder | ancestors: cauda equina syndrome, syndromic disease, peripheral nervous system disorder, disease by body system or component | def: A rare neurologic disorder caused by impingement of the nerve roots of the cauda equina secondary to disk herniation, spinal stenosis, vertebral fracture, neoplasm or infection. Clinical signs may inc...",
+"ko": "신경인성 방광을 동반한 마미 증후군",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015791",
+"concept": "- MONDO:0015791 | peripheral precocious puberty | syn: GIPP; gonadotropin independent precocious puberty; gonadotropin-independent precocious puberty; precocious pseudopuberty | ancestors: precocious puberty, gonadal disorder, disorder of development or morphogenesis, reproductive system disorder | def: Precocious puberty caused by sex hormones.",
+"ko": "말초성 성조숙증",
+"alt": [
+"성선자극호르몬 비의존성 성조숙증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019196",
+"concept": "- MONDO:0019196 | Foix-Alajouanine syndrome | syn: angiodysgenetic necrotizing myelopathy; familial osteosclerosis with abnormalities of the nervous system and meninges; Subacute angiohypertrophic myelomalacia; Subacute ascending necrotizing myelitis | ancestors: arteriovenous hemangioma/malformation, hemangioma, benign blood vessel neoplasm, cardiovascular organ benign neoplasm | def: Foix-Alajouanine syndrome, also called subacute ascending necrotising myelitis, results from chronic congestion of the extrinsic pial veins of the spinal cord and of the intrinsic subpial network. It ...",
+"ko": "푸아-알라주아닌 증후군",
+"alt": [
+"혈관이형성 괴사성 척수병증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010960",
+"concept": "- MONDO:0010960 | protocadherin 3 | syn: protocadherin 3; protocadherin type 3 | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "프로토카드헤린 3",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

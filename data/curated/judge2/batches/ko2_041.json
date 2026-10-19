@@ -1,0 +1,242 @@
+[
+{
+"id": "MONDO:0000710",
+"concept": "- MONDO:0000710 | gastroduodenal Crohn disease | syn: gastroduodenal Crohn's disease | ancestors: duodenitis, gastritis, small bowel Crohn disease, duodenal disorder | def: An inflammatory bowel disease characterized by inflammation located in stomach and located in duodenum, has symptom nausea, has symptom vomiting, has symptom weight loss and has symptom loss of appeti...",
+"ko": "위십이지장 크론병",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019632",
+"concept": "- MONDO:0019632 | Lyme disease | syn: Borrelia; Borrelia burgdorferi infection; Borreliella burgdorferi caused disease or disorder; Borreliella burgdorferi disease or disorder | ancestors: primary bacterial infectious disease, spirochaetales infections, tick-borne infectious disease, bacterial infectious disease | def: Lyme disease (named after the towns in the USA where the disease was first identified) is a bacterial infection caused by Borrelia burgdorferi.",
+"ko": "라임병",
+"alt": [
+"라임 보렐리아증"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007416",
+"concept": "- MONDO:0007416 | Balkan nephropathy | syn: aristolochic acid nephropathy; Balkan endemic nephropathy; Chinese herb endemic nephropathy; Danubian endemic familial nephropathy | ancestors: interstitial nephritis, hereditary nephritis, nephritis, inherited kidney disorder | def: A chronic tubulointerstitial nephropathy that affects people in certain rural areas along the Danube river in the Balkans. It leads to end-stage renal disease.",
+"ko": "발칸 신병증",
+"alt": [
+"발칸 풍토성 신병증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002212",
+"concept": "- MONDO:0002212 | pneumonic tularemia | syn: pulmonary tularemia | ancestors: tularemia, primary bacterial infectious disease, vector-borne disease, bacterial infectious disease | def: A tularemia that is located in lungs. The bacteria are transmitted by breathing dusts or aerosols containing the organisms. The infection has symptom cough, has symptom chest has symptom pain, and has...",
+"ko": "폐렴형 야토병",
+"alt": [
+"폐 야토병"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005972",
+"concept": "- MONDO:0005972 | streptococcal pneumonia | syn: pneumococcal pneumonia; pneumonia due to streptococcus; streptococcal pneumonia; Streptococcus pneumoniae caused pneumonia | ancestors: bacterial pneumonia, pneumococcal infection, bacterial infectious disease, pneumonia | def: A febrile disease caused by streptococcus pneumoniae.",
+"ko": "연쇄알균 폐렴",
+"alt": [
+"폐렴알균 폐렴"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007017",
+"concept": "- MONDO:0007017 | vitreous detachment | syn: detachment Of vitreous; vitreous, detachment Of | ancestors: vitreous disorder, inherited vitreoretinopathy, vitreous body disorder, retinal disorder | def: Detachment of the vitreous humor from the retina.",
+"ko": "유리체 박리",
+"alt": [
+"후유리체박리"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018849",
+"concept": "- MONDO:0018849 | dentinogenesis imperfecta | syn: dentinogenesis imperfecta; dentinogenesis imperfecta (disease); dentinogenesis imperfecta without osteogenesis imperfecta; DGI | ancestors: tooth disorder, skeletal system disorder, mouth disorder, musculoskeletal system disorder | def: Dentinogenesis imperfecta (DGI) is a hereditary dentin defect characterized by abnormal dentin structure resulting in abnormal tooth development.",
+"ko": "상아질 형성부전증",
+"alt": [
+"유전성 상아질 이형성"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021446",
+"concept": "- MONDO:0021446 | benign neoplasm of epiglottis | syn: benign epiglottic neoplasm; benign epiglottic tumor; benign epiglottic tumour; benign Epiglottis neoplasm | ancestors: benign laryngeal neoplasm, epiglottis neoplasm, benign neoplasm of hypopharynx, respiratory system benign neoplasm | def: A benign neoplasm that involves the epiglottis.",
+"ko": "후두덮개 양성 신생물",
+"alt": [
+"후두개 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005966",
+"concept": "- MONDO:0005966 | spleen cancer | syn: cancer of spleen; cancer of the spleen; malignant neoplasm of spleen; malignant neoplasm of the spleen | ancestors: lymphatic system cancer, digestive system cancer, spleen neoplasm, immune system cancer | def: A malignant neoplasm involving the spleen",
+"ko": "비장암",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006994",
+"concept": "- MONDO:0006994 | tarsal tunnel syndrome | ancestors: syndromic disease, tibial neuropathy, disease by body system or component, mononeuropathy | def: Tarsal tunnel syndrome is a nerve disorder that is characterized by pain in the ankle, foot, and toes. This condition is caused by compression of the posterior tibial nerve, which runs through a canal...",
+"ko": "족근관 증후군",
+"alt": [
+"발목터널 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000927",
+"concept": "- MONDO:0000927 | asymptomatic neurosyphilis | ancestors: neurosyphilis, tertiary syphilis, syphilis, primary bacterial infectious disease",
+"ko": "무증상 신경매독",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003937",
+"concept": "- MONDO:0003937 | spondylitis | syn: inflammation of vertebra; vertebra inflammation | ancestors: inflammatory disease, vertebral disorder, disease by developmental or physiological process, vertebral column disorder | def: The inflammation of a vertebra.",
+"ko": "척추염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004565",
+"concept": "- MONDO:0004565 | intestinal obstruction | syn: bowel obstruction | ancestors: intestinal disorder, digestive system disorder, disease by body system or component, human disease | def: Blockage of the normal flow of the intestinal contents within the bowel.",
+"ko": "장폐색",
+"alt": [
+"장폐쇄"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018037",
+"concept": "- MONDO:0018037 | hyper-IgE syndrome | syn: HIES; hyper-IgE recurrent infection syndrome; hyperimmunoglobulin E syndrome | ancestors: hyperimmunoglobulin syndrome, B cell deficiency, inborn error of immunity, leukocyte disorder | def: A condition that is characterized by elevated serum IgE, dermatitis, and respiratory infections.",
+"ko": "고IgE 증후군",
+"alt": [],
+"organs": [
+"pulmonary",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011786",
+"concept": "- MONDO:0011786 | allergic rhinitis | syn: allergic form of rhinitis; allergic rhinitis | ancestors: allergic respiratory disease, rhinitis, respiratory system disorder, allergic disease | def: Inflammation of the nasal mucous membranes caused by an IgE-mediated response to external allergens. The inflammation may also involve the mucous membranes of the sinuses, eyes, middle ear, and pharyn...",
+"ko": "알레르기비염",
+"alt": [
+"알레르기성 비염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0008109",
+"concept": "- MONDO:0008109 | ocular cicatricial pemphigoid | syn: ocular cicatricial pemphigoid; ocular pemphigoid | ancestors: mucous membrane pemphigoid, autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease | def: Ocular cicatricial pemphigoid (OCP) is a form of mucous membrane pemphigoid (a group of rare, chronic autoimmune disorders) that affects the eyes. In the early stages, people with OCPgenerally experie...",
+"ko": "안구 반흔성 유천포창",
+"alt": [
+"안구 유천포창"
+],
+"organs": [
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020680",
+"concept": "- MONDO:0020680 | acute bronchiolitis | syn: acute bronchiolitis | ancestors: bronchiolitis, acute disease, lung disorder, human disease | def: Acute inflammation of the bronchioles usually caused by the respiratory syncytial virus.",
+"ko": "급성 세기관지염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001121",
+"concept": "- MONDO:0001121 | frontal sinusitis | ancestors: sinusitis, paranasal sinus disorder, inflammatory disease, nasal disorder | def: An acute or chronic inflammatory process affecting the mucous membrane of the frontal sinus.",
+"ko": "전두동염",
+"alt": [
+"이마굴염"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021311",
+"concept": "- MONDO:0021311 | malignant tumor of parathyroid gland | syn: cancer of parathyroid gland; malignant neoplasm of parathyroid; malignant neoplasm of parathyroid gland; malignant neoplasm of the parathyroid | ancestors: malignant endocrine neoplasm, tumor of parathyroid gland, endocrine gland neoplasm, cancer | def: A cancer that involves the parathyroid gland.",
+"ko": "부갑상샘 악성 종양",
+"alt": [
+"부갑상샘암"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:1010128",
+"concept": "- MONDO:1010128 | peritonitis | syn: peritoneum inflammation | ancestors: serositis, inflammatory disease, disease by developmental or physiological process, human disease | def: Inflammation of the peritoneum (tissue that lines the abdominal wall and covers most of the organs in the abdomen).",
+"ko": "복막염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4
+}
+]

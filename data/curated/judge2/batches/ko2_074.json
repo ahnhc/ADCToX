@@ -1,0 +1,237 @@
+[
+{
+"id": "MONDO:0006694",
+"concept": "- MONDO:0006694 | cerebral atherosclerosis | syn: cerebral atherosclerosis | ancestors: atherosclerosis, arteriosclerosis disorder, arterial disorder, vascular disorder | def: Atherosclerosis of the cerebral vasculature.",
+"ko": "뇌죽상경화증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000226",
+"concept": "- MONDO:0000226 | mineral metabolism disease | syn: disease of mineral metabolism; disorder of mineral metabolism | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease",
+"ko": "무기질 대사 질환",
+"alt": [
+"미네랄 대사 질환"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004718",
+"concept": "- MONDO:0004718 | xeroderma of eyelid | ancestors: noninfectious dermatoses of eyelid, blepharitis, eyelid disorder, inflammatory disease",
+"ko": "눈꺼풀 피부건조증",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009877",
+"concept": "- MONDO:0009877 | Laron syndrome | syn: complete growth hormone insensitivity; GH receptor deficiency; Growth Hormone Insensitivity; Growth hormone receptor deficiency | ancestors: autosomal recessive disease, growth hormone insensitivity syndrome, autosomal genetic disease, syndromic disease | def: Laron syndrome is a congenital disorder characterized by marked short stature associated with normal or high serum growth hormone (GH) and low serum insulin-like growth factor-1 (IGF-I) levels which f...",
+"ko": "라론 증후군",
+"alt": [
+"성장호르몬 불감성 증후군"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006544",
+"concept": "- MONDO:0006544 | erythema infectiosum | syn: fifth disease | ancestors: viral exanthem, exanthem, skin disorder caused by infection, primary viral infectious disease | def: A self-limited viral infectious disorder caused by the human parvovirus B19. It affects predominantly children and is characterized by the development of a bright red skin eruption in the cheeks. It i...",
+"ko": "전염홍반",
+"alt": [
+"제5병"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005342",
+"concept": "- MONDO:0005342 | IgA glomerulonephritis | syn: Berger's disease; IgA glomerulonephritis; IgA Nephropathy; IgA nephropathy | ancestors: glomerulonephritis, hereditary nephritis, nephritis, glomerular disorder | def: Inflammation of a specific segment of glomeruli within the kidney.",
+"ko": "IgA 사구체신염",
+"alt": [
+"IgA 신병증",
+"버거병"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005495",
+"concept": "- MONDO:0005495 | adrenal gland disorder | syn: adrenal gland disease; adrenal gland disease or disorder; adrenal gland diseases; adrenal gland disorder | ancestors: endocrine system disorder, disease by body system or component, human disease, disease | def: A disease involving the adrenal gland.",
+"ko": "부신 질환",
+"alt": [
+"부신 장애"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005892",
+"concept": "- MONDO:0005892 | otitis media with effusion | syn: OME | ancestors: chronic non-suppurative otitis media, non-suppurative otitis media, chronic otitis media, otitis media | def: Otitis media associated with accumulation of fluid in the middle ear.",
+"ko": "삼출성 중이염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005848",
+"concept": "- MONDO:0005848 | miliary tuberculosis | syn: acute miliary tuberculosis; disseminated tuberculosis; generalised tuberculosis; generalized tuberculosis | ancestors: extrapulmonary tuberculosis, tuberculosis, primary bacterial infectious disease, mycobacterial infectious disease | def: I would say the hematogenous widespread dissemination of tuberculosis in the body. The term derives from the chest X-ray image of the tiny (1-5 mm) tuberculosis lesions which are seen through out the ...",
+"ko": "좁쌀결핵",
+"alt": [
+"속립결핵"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0024655",
+"concept": "- MONDO:0024655 | rheumatic pericarditis | syn: rheumatic pericarditis | ancestors: pericarditis, rheumatic heart disease, pericardium disorder, inflammatory disease",
+"ko": "류마티스성 심낭염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004924",
+"concept": "- MONDO:0004924 | chronic canaliculitis | syn: actinomycosis, chronic; chronic actinomycosis | ancestors: chronic inflammation of lacrimal passage, actinomycosis, eye infectious disorder, lacrimal apparatus disorder | def: Chronic form of actinomycosis.",
+"ko": "만성 눈물소관염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002433",
+"concept": "- MONDO:0002433 | malignant cranial nerve neoplasm | syn: cancer of cranial nerve; cranial nerve cancer; cranial nerve neoplasm, malignant; malignant cranial nerve neoplasm | ancestors: cranial nerve neoplasm, head and neck cancer, peripheral nervous system cancer, peripheral nervous system neoplasm | def: Abnormal malignant growth of the cells that comprise the cranial nerve.",
+"ko": "악성 뇌신경 신생물",
+"alt": [
+"뇌신경암"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003381",
+"concept": "- MONDO:0003381 | pituitary gland disorder | syn: disease of pituitary gland; disease or disorder of pituitary gland; disorder of pituitary gland; pituitary gland disease | ancestors: reproductive system disorder, endocrine system disorder, brain disorder, disease by body system or component | def: A disease involving the pituitary gland.",
+"ko": "뇌하수체 질환",
+"alt": [
+"뇌하수체 장애"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0000740",
+"concept": "- MONDO:0000740 | adenoid hypertrophy | syn: adenoidal hypertrophy; enlarged adenoids | ancestors: upper respiratory tract disorder, mouth disorder, respiratory system disorder, disease by body system or component | def: An upper respiratory tract disease characterized by the unusual growth of the adenoid tonsil; has symptom snoring, has symptom hyponasality, has symptom otitis media with effusion, has symptom mouth b...",
+"ko": "아데노이드 비대",
+"alt": [
+"아데노이드증식증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004937",
+"concept": "- MONDO:0004937 | hypervitaminosis D | syn: hypervitaminosis type D | ancestors: overnutrition, nutritional disorder, disease by etiologic mechanism, human disease",
+"ko": "비타민 D 과다증",
+"alt": [
+"비타민 D 과잉증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018824",
+"concept": "- MONDO:0018824 | pyoderma gangrenosum | ancestors: pyoderma, autoinflammatory syndrome, skin disorder, syndromic disease | def: Pyoderma gangrenosum (PG) is a primarily sterile inflammatory neutrophilic dermatosis characterized by recurrent cutaneous ulcerations with a mucopurulent or hemorrhagic exudate.",
+"ko": "괴저성 농피증",
+"alt": [
+"피부괴저농피증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002044",
+"concept": "- MONDO:0002044 | spastic ectropion | ancestors: ectropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "경련성 눈꺼풀 바깥말림",
+"alt": [
+"경련성 안검외반"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001847",
+"concept": "- MONDO:0001847 | nuclear senile cataract | syn: lens nucleus senile cataract; senile cataract of lens nucleus; Senile nuclear sclerosis | ancestors: senile cataract, nuclear cataract, cataract, lens disorder | def: A senile cataract that involves the lens nucleus.",
+"ko": "핵성 노인성 백내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001657",
+"concept": "- MONDO:0001657 | brain cancer | syn: brain cancer; brain neoplasms, malignant; cancer of brain; cancer of the brain | ancestors: central nervous system cancer, brain neoplasm, nervous system cancer, central nervous system neoplasm | def: A primary or metastatic malignant neoplasm affecting the brain.",
+"ko": "뇌암",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001604",
+"concept": "- MONDO:0001604 | lagophthalmos | ancestors: eyelid disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "토안",
+"alt": [
+"안검열폐쇄부전"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+}
+]

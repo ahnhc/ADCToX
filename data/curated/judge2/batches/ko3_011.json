@@ -1,0 +1,253 @@
+[
+{
+"id": "MONDO:0012968",
+"concept": "- MONDO:0012968 | Usher syndrome type 1H | syn: USH1H; Usher syndrome, type 1H | ancestors: Usher syndrome type 1, Usher syndrome, syndromic disease, autosomal recessive disease | def: An Usher syndrome type 1 that has material basis in variation in the chromosome region 15q22-q23.",
+"ko": "어셔 증후군 1H형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019731",
+"concept": "- MONDO:0019731 | AApoAI amyloidosis | syn: apolipoprotein A-I amyloidosis; familial amyloid nephropathy due to apolipoprotein A-I variant; familial renal amyloidosis due to apolipoprotein A-I variant; hereditary amyloid nephropathy due to apolipoprotein A-I variant | ancestors: familial visceral amyloidosis, familial amyloid neuropathy, hereditary amyloidosis, hereditary peripheral neuropathy",
+"ko": "AApoAI 아밀로이드증",
+"alt": [
+"아포지질단백질 A-I 아밀로이드증"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006694",
+"concept": "- MONDO:0006694 | cerebral atherosclerosis | syn: cerebral atherosclerosis | ancestors: atherosclerosis, arteriosclerosis disorder, arterial disorder, vascular disorder | def: Atherosclerosis of the cerebral vasculature.",
+"ko": "뇌죽상경화증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007829",
+"concept": "- MONDO:0007829 | cholestasis, intrahepatic, of pregnancy, 1 | syn: cholestasis, intrahepatic, of pregnancy, 1; cholestasis, intrahepatic, of pregnancy, type 1 | ancestors: familial intrahepatic cholestasis, intrahepatic cholestasis of pregnancy, liver disorder, inborn errors of metabolism",
+"ko": "임신성 간내 담즙정체 1형",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009958",
+"concept": "- MONDO:0009958 | adult Refsum disease | syn: ARD; hypertrophic neuropathy of Refsum; Refsum Disease; Refsum disease | ancestors: peroxisomal disease, inborn errors of metabolism, hereditary disease, metabolic disease | def: A peroxisomal disease associated with accumulation of phytanic acid in plasma and tissues, characterized by early-onset retinitis pigmentosa and variable combinations of anosmia, polyneuropathy, deafn...",
+"ko": "성인 레프숨병",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008527",
+"concept": "- MONDO:0008527 | tarsal coalition | syn: tarsal coalition | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "족근골 유합",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007880",
+"concept": "- MONDO:0007880 | congenital laryngeal web | syn: Laryngeal web | ancestors: syndromic disease, laryngeal disorder, disease by body system or component, upper respiratory tract disorder | def: Congenital laryngeal web is a rare malformation consisting of a membrane-like structure that extends across the laryngeal lumen close to the level of the vocal cords.",
+"ko": "선천성 후두격막",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0007382",
+"concept": "- MONDO:0007382 | Ramos-Arroyo syndrome | syn: corneal anesthesia-deafness-intellectual disability syndrome; Ramos-Arroyo syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome-intellectual disability, multiple congenital anomalies/dysmorphic syndrome, developmental defect during embryogenesis, disorder of development or morphogenesis | def: Ramos-Arroyo syndrome (RAS) is a very rare genetic disorder characterized by corneal anesthesia, retinal abnormalities, bilateral hearing loss, distinct facies, patent ductus arteriosus, Hirschsprung ...",
+"ko": "라모스-아로요 증후군",
+"alt": [
+"각막 무감각-청각장애-지적장애 증후군"
+],
+"organs": [
+"cardiovascular",
+"gastrointestinal",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001964",
+"concept": "- MONDO:0001964 | chronic tubotympanic suppurative otitis media | ancestors: suppurative otitis media, otitis media, middle ear disorder, inflammatory disease | def: A suppurative otitis media which is an inflammatory disease of the middle ear cleft characterized by the presence of a persisting perforation within the pars tensa of the tympanic membrane, intermitte...",
+"ko": "만성 이관고실 화농성 중이염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018647",
+"concept": "- MONDO:0018647 | secondary sclerosing cholangitis | ancestors: sclerosing cholangitis, cholangitis, non-neoplastic bile duct disorder, inflammatory disease",
+"ko": "이차성 경화성 담관염",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019461",
+"concept": "- MONDO:0019461 | B-cell prolymphocytic leukemia | syn: B prolymphocytic leukaemia; B prolymphocytic leukemia; B-cell prolymphocytic leukemia; B-PLL | ancestors: prolymphocytic leukemia, neoplasm of mature B-cells, aggressive B-cell non-Hodgkin lymphoma, chronic leukemia | def: A neoplasm of prolymphocytes affecting the blood, bone marrow, and spleen. It is characterized by prolymphocytes exceeding 55% of the lymphoid cells in the blood and profound splenomegaly.",
+"ko": "B세포 전림프구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005276",
+"concept": "- MONDO:0005276 | dental caries | ancestors: tooth hard tissue disease, tooth disorder, skeletal system disorder, mouth disorder | def: The decay of a tooth, in which it becomes softened, discolored, and/or porous.",
+"ko": "치아우식증",
+"alt": [
+"충치"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006713",
+"concept": "- MONDO:0006713 | corneal neovascularization | ancestors: keratitis, corneal disorder, inflammatory disease, eye disorder | def: New blood vessels originating from the corneal veins and extending from the limbus into the adjacent corneal stroma. Neovascularization in the superficial and/or deep corneal stroma is a sequel to num...",
+"ko": "각막 신생혈관형성",
+"alt": [
+"각막 혈관신생"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008771",
+"concept": "- MONDO:0008771 | amelogenesis imperfecta type 1G | syn: AI1G; AIGFS; amelogenesis imperfecta and gingival fibromatosis syndrome; amelogenesis imperfecta caused by mutation in FAM20A | ancestors: amelogenesis imperfecta, disorder of development or morphogenesis, hereditary disease, dental enamel hypoplasia | def: An extremely rare syndrome which is characterized by hypoplastic amelogenesis imperfecta (hypoplastic dental enamel) and nephrocalcinosis (precipitation of calcium salts in renal tissue). Oral manifes...",
+"ko": "법랑질형성부전증 1G형",
+"alt": [],
+"organs": [
+"renal",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010683",
+"concept": "- MONDO:0010683 | X-linked myotubular myopathy | syn: centronuclear myopathy, X-linked; MTM; myotubular myopathy, X-linked, X-linked recessive; X-linked centronuclear myopathy | ancestors: X-linked disease, centronuclear myopathy, hereditary disease, congenital myopathy | def: A rare X-linked congenital myopathy characterized by numerous centrally placed nuclei on muscle biopsy and that presents at birth with marked weakness, hypotonia and respiratory failure.",
+"ko": "X연관 근세관성 근병증",
+"alt": [
+"X연관 중심핵 근병증"
+],
+"organs": [
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020971",
+"concept": "- MONDO:0020971 | gonococcal urethritis | syn: gc urethritis; gonococcal urethritis | ancestors: gonorrhea, urethritis, primary bacterial infectious disease, bacterial sexually transmitted disease | def: Inflammation of the urethra secondary to infection with Neisseria gonorrhoeae; this infection is spread through sexual contact.",
+"ko": "임균성 요도염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000978",
+"concept": "- MONDO:0000978 | extrahepatic bile duct lipoma | syn: extrahepatic bile duct lipoma; lipoma of extrahepatic bile duct; lipoma of the extrahepatic bile duct | ancestors: benign digestive system neoplasm, lipoma, extrahepatic bile duct neoplasm, digestive system disorder | def: A rare benign adipose tissue neoplasm of the extrahepatic bile duct.",
+"ko": "간외 담관 지방종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018233",
+"concept": "- MONDO:0018233 | otopalatodigital syndrome spectrum disorder | syn: OPD spectrum disorder; OPSD | ancestors: filamin-related bone disorder, skeletal dysplasia, hereditary disease, bone disorder | def: Otopalatodigital syndrome spectrum disorder is a primary bone dysplasia and encompasses a group of congenital anomalies that are characterized by skeletal dysplasia of varying clinical severity and an...",
+"ko": "이구개지(OPD) 증후군 스펙트럼 질환",
+"alt": [
+"OPD 스펙트럼 질환"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013800",
+"concept": "- MONDO:0013800 | Ehlers-Danlos syndrome, kyphoscoliotic type, 2 | syn: EDS with progressive kyphoscoliosis, myopathy, and deafness; EDS with progressive kyphoscoliosis, myopathy, and hearing loss; EDS, kyphoscoliotic and hearing loss type; Ehlers-Danlos syndrome with progressive kyphoscoliosis, myopathy, and deafness | ancestors: kyphoscoliotic Ehlers-Danlos syndrome, Ehlers-Danlos syndrome, syndromic disease, hereditary disease | def: A form of Ehlers-Danlos syndrome, characterized by severe generalized hypotonia at birth with severe early-onset kyphoscolosis along with joint hypermobility (without contractures) leading to recurren...",
+"ko": "엘러스-단로스 증후군, 후만척추측만형 2형",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021739",
+"concept": "- MONDO:0021739 | prurigo | syn: prurigo; pruritic rash | ancestors: exanthem, skin disorder, integumentary system disorder, disease by body system or component | def: A name applied to several itchy skin eruptions of unknown cause. The characteristic course is the formation of a dome-shaped papule with a small transient vesicle on top, followed by crusting over or ...",
+"ko": "양진",
+"alt": [
+"소양진"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+}
+]

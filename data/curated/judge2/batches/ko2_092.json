@@ -1,0 +1,234 @@
+[
+{
+"id": "MONDO:0021205",
+"concept": "- MONDO:0021205 | disorder of ear | syn: disease of ear; disease or disorder of ear; disorder of ear; Ear disease | ancestors: otorhinolaryngologic disease, disease by body system or component, human disease, disease | def: A disease that involves the ear.",
+"ko": "귀 질환",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006771",
+"concept": "- MONDO:0006771 | glossitis | syn: inflammation of tongue; tongue inflammation | ancestors: tongue disorder, inflammatory disease, mouth disorder, disease by developmental or physiological process | def: Inflammation of the tongue.",
+"ko": "혀염",
+"alt": [
+"설염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018583",
+"concept": "- MONDO:0018583 | human infection by orthopoxvirus | ancestors: viral infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism",
+"ko": "오르소폭스바이러스 감염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019980",
+"concept": "- MONDO:0019980 | renal hypoplasia, bilateral | ancestors: renal hypoplasia, kidney disorder, disorder of development or morphogenesis, urinary system disorder | def: Bilateral renal hypoplasia is a form of renal hypoplasia, a renal developmental anomaly in which both kidneys are small and have a deficit in the number of nephrons present.",
+"ko": "양측성 콩팥 형성저하",
+"alt": [
+"양측성 신장 형성저하"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007028",
+"concept": "- MONDO:0007028 | rotator cuff syndrome | ancestors: skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder, disease by body system or component | def: Tear of one or more of the tendons of the four rotator cuff muscles of the shoulder. A rotator cuff 'injury' can include any type of irritation or overuse of those muscles or tendons, and is among the...",
+"ko": "회전근개 증후군",
+"alt": [
+"회전근개 질환"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015249",
+"concept": "- MONDO:0015249 | mitral atresia disorder | syn: congenital atresia of mitral valve; congenital mitral valve atresia; mitral atresia; mitral valve atresia | ancestors: mitral valve disorder, congenital heart disease, congenital mitral valve insufficiency and/or stenosis, heart valve disorder | def: A congenital heart defect characterized by the complete atresia of the mitral valve.",
+"ko": "승모판 폐쇄증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008728",
+"concept": "- MONDO:0008728 | classic congenital adrenal hyperplasia due to 21-hydroxylase deficiency | syn: 21-OHD; classic 21-OHD CAH; classic congenital adrenal hyperplasia due to 21-hydroxylase deficiency | ancestors: reproductive system disorder, congenital adrenal hyperplasia, disease by body system or component, steroid inherited metabolic disorder | def: The most common form of congenital adrenal hyperplasia (CAH), characterized by simple virilizing or salt wasting forms that can manifest with genital ambiguity in females and with adrenal insufficienc...",
+"ko": "21-수산화효소 결핍에 의한 고전형 선천성 부신 과형성증",
+"alt": [
+"21-수산화효소 결핍증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0859598",
+"concept": "- MONDO:0859598 | erythroleukemia | ancestors: acute erythroid leukemia, acute myeloid leukemia by FAB classification, erythroid neoplasm, acute myeloid leukemia | def: An acute erythroid leukemia characterized by the presence of at least 50% erythroid precursors and at least 20% myeloblasts in the bone marrow.",
+"ko": "적백혈병",
+"alt": [
+"급성 적혈구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001040",
+"concept": "- MONDO:0001040 | nasopharyngitis | syn: inflammation of nasopharynx; nasopharynx inflammation | ancestors: nasopharyngeal disorder, inflammatory disease, upper respiratory tract disorder, disorder of pharynx | def: An inflammatory process that affects the nasopharynx.",
+"ko": "비인두염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015573",
+"concept": "- MONDO:0015573 | subacute cutaneous lupus erythematosus | ancestors: cutaneous lupus erythematosus, acute disease, lupus erythematosus, human disease | def: Subacute cutaneous lupus erythematosus (SCLE) is a form of cutaneous lupus erythematosus (CLE) that can present either as a non-scarring, annular photo-distributed dermatosis or psoriasiform plaques. ...",
+"ko": "아급성 피부 홍반루푸스",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010200",
+"concept": "- MONDO:0010200 | Wilson disease | syn: hepatolenticular degeneration; Westphal-Strumpell syndrome; Wilson disease; Wilson's disease | ancestors: inborn metal metabolism disorder, disorder of copper metabolism, inborn errors of metabolism, disorder of mineral absorption and transport | def: A very rare inherited multisystemic disease presenting non-specific neurological, hepatic, psychiatric or osseo-muscular manifestations due to excessive copper deposition in the body.",
+"ko": "윌슨병",
+"alt": [
+"간렌즈핵변성"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004054",
+"concept": "- MONDO:0004054 | acute canaliculitis | syn: acute canaliculitis, lacrimal; acute lacrimal canaliculitis | ancestors: acute inflammation of lacrimal passage, lacrimal apparatus disorder, acute disease, eye adnexa disorder",
+"ko": "급성 눈물소관염",
+"alt": [
+"급성 누소관염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0016531",
+"concept": "- MONDO:0016531 | digestive duplication | ancestors: digestive system disorder, disease by body system or component, human disease, disease",
+"ko": "소화관 중복증",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002246",
+"concept": "- MONDO:0002246 | perichondritis of auricle | syn: perichondritis and chondritis of pinna; perichondritis of pinna, unspecified | ancestors: otitis externa, external ear disorder, ear infection, post-infectious disorder | def: An otitis externa involving infection of the tissue surrounding the cartilage of the earlobe (pinna), ear canal, or both. It may be caused by injury, burns, insect bites, ear piercing, or a boil on th...",
+"ko": "귓바퀴 연골막염",
+"alt": [
+"이개연골막염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009848",
+"concept": "- MONDO:0009848 | dissecting cellulitis of the scalp | syn: dissecting cellulitis of the scalp | ancestors: subcutaneous tissue disorder, integumentary system disorder, disease by body system or component, human disease | def: Dissecting cellulitis of the scalp is a rare chronic suppurative dermatosis of the scalp that mainly affects black men and that is characterized by multiple painful inflammatory follicular and perifol...",
+"ko": "두피 박리성 봉와직염",
+"alt": [
+"두피 해리성 봉소염"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002012",
+"concept": "- MONDO:0002012 | methylmalonic acidemia | syn: methylmalonic aciduria | ancestors: inborn organic aciduria, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: A genetically heterogenous inherited disorder characterized by abnormalities in the metabolism of lipids and proteins. Signs and symptoms usually appear early in life and vary from mild to life threat...",
+"ko": "메틸말론산혈증",
+"alt": [
+"메틸말론산뇨증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001443",
+"concept": "- MONDO:0001443 | tympanosclerosis | ancestors: tympanic membrane disorder, middle ear disorder, auditory system disorder, disorder of ear | def: The formation of dense connective tissue in the tympanic membrane that does not necessarily cause or lead to loss of hearing.",
+"ko": "고실경화증",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019186",
+"concept": "- MONDO:0019186 | Q fever | syn: Coxiella burnetii caused disease or disorder; Coxiella burnetii disease or disorder; Coxiella burnetii infectious disease; Coxiellosis | ancestors: primary bacterial infectious disease, vector-borne disease, bacterial infectious disease, infectious disease | def: A bacterial infection caused by Coxiella burnetii. It is transmitted to humans by the inhalation of infected air particles or contact with fluids and feces of infected animals. Signs and symptoms incl...",
+"ko": "Q열",
+"alt": [],
+"organs": [
+"hepatic",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002266",
+"concept": "- MONDO:0002266 | malt worker's lung | syn: Aspergillus caused extrinsic allergic alveolitis; Aspergillus extrinsic allergic alveolitis; malt workers lung; Malt workers' lung | ancestors: pulmonary aspergilloma, allergic bronchopulmonary aspergillosis, hypersensitivity pneumonitis, occupational lung disease | def: An extrinsic allergic alveolitis caused by infection with Aspergillus.",
+"ko": "맥아 노동자 폐",
+"alt": [
+"맥아공 폐"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021002",
+"concept": "- MONDO:0021002 | syndactyly | syn: syndactyly (disease) | ancestors: hereditary disease, skeletal system disorder, disorder of development or morphogenesis, disease of genetic or genomic mechanism | def: A disease characterized by the presence of syndactyly, including syndromic and non-syndromic forms.",
+"ko": "합지증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+}
+]

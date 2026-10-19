@@ -1,0 +1,228 @@
+[
+{
+"id": "MONDO:0018932",
+"concept": "- MONDO:0018932 | cirrhotic cardiomyopathy | ancestors: non-familial hypertrophic cardiomyopathy, non-familial dilated cardiomyopathy, hypertrophic cardiomyopathy, dilated cardiomyopathy | def: Cirrhotic cardiomyopathy is the term used to describe a constellation of features indicative of abnormal heart structure and function in patients with cirrhosis. These include systolic and diastolic d...",
+"ko": "간경변성 심근병증",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003964",
+"concept": "- MONDO:0003964 | myositis ossificans | syn: FOP; myositis ossificans progressiva | ancestors: myositis disease, myopathy, inflammatory disease, skeletal muscle disorder | def: A disorder characterized by non-neoplastic bone formation in soft tissues. It usually follows blunt trauma and bleeding in the deep soft tissues.",
+"ko": "골화근염",
+"alt": [
+"진행성 골화근염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 11
+},
+{
+"id": "MONDO:0006527",
+"concept": "- MONDO:0006527 | anhidrosis | ancestors: sweat gland disorder, skin disorder, integumentary system disorder, disease by body system or component | def: Lack of sweating or the ability to sweat when provoked by the appropriate stimulus.",
+"ko": "무한증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004727",
+"concept": "- MONDO:0004727 | vestibule of mouth cancer | syn: cancer of oral opening; malignant neoplasm of oral opening; malignant neoplasm of vestibule of mouth; malignant oral opening neoplasm | ancestors: oral cavity cancer, digestive system cancer, oral cavity neoplasm, digestive system disorder | def: A cancer that involves the oral opening.",
+"ko": "구강전정암",
+"alt": [
+"입안뜰암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0013808",
+"concept": "- MONDO:0013808 | Maffucci syndrome | syn: chondrodysplasia with hemangioma; Chondroplasia angiomatosis; Dyschondroplasia and cavernous hemangioma; enchondromatosis with hemangiomata | ancestors: skin neoplasm, hereditary neoplastic syndrome, skin vascular disease, overgrowth syndrome | def: Maffucci syndrome is a very rare genetic bone and skin disorder characterized by multiple enchondromas, leading to bone deformities, combined with multiple dark, irregularly shaped hemangiomas or less...",
+"ko": "마푸치 증후군",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004522",
+"concept": "- MONDO:0004522 | infectious peritonitis | syn: acute generalised peritonitis | ancestors: infectious disease, peritonitis, disease of primarily extrinsic mechanism, serositis | def: Inflammation of the peritoneum due to infection by bacteria or fungi. Causes include liver disease, perforation of the gastrointestinal tract or biliary tract, and peritoneal dialysis. Patients usuall...",
+"ko": "감염성 복막염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001312",
+"concept": "- MONDO:0001312 | acute serous otitis media | ancestors: acute transudative otitis media, non-suppurative otitis media, acute disease, otitis media | def: A acute transudative otitis media with thin, watery and sterile effusion.",
+"ko": "급성 장액성 중이염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005771",
+"concept": "- MONDO:0005771 | geographic tongue | syn: benign migratory glossitis; glossitis areata exfoliativa | ancestors: atrophic glossitis, glossitis, tongue disorder, inflammatory disease | def: A benign condition characterized by the development of irregular patches in the surface of the tongue resulting in a map-like appearance. The patches migrate from day to day and usually resolve withou...",
+"ko": "지도상 혀",
+"alt": [
+"양성 이동성 설염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001950",
+"concept": "- MONDO:0001950 | corneal ectasia | ancestors: corneal disorder, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "각막 확장증",
+"alt": [
+"각막 팽륜"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0043771",
+"concept": "- MONDO:0043771 | radiodermatitis | syn: dermatitis radiation; radiation dermatitis; radiation-induced dermatitis; radiodermatitis | ancestors: dermatitis, radiation-induced disorder, skin disorder, inflammatory disease | def: A cutaneous inflammatory reaction occurring as a result of exposure to biologically effective levels of ionizing radiation.",
+"ko": "방사선 피부염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0001376",
+"concept": "- MONDO:0001376 | urinary bladder anterior wall cancer | ancestors: urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder",
+"ko": "방광 전벽암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015177",
+"concept": "- MONDO:0015177 | metaphyseal anadysplasia | syn: Maroteaux-Verloes-Stanescu syndrome; regressive metaphyseal dysplasia | ancestors: skeletal dysplasia, hereditary disease, bone disorder, disease of genetic or genomic mechanism | def: Metaphyseal anadysplasia is a very rare form of metaphyseal dysplasia characterized by short stature, rhizomelic micromelia and a mild varus deformity of the legs evident from the first months of life...",
+"ko": "골간단 아나이형성증",
+"alt": [
+"마로토-베를로-스타네스쿠 증후군"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005844",
+"concept": "- MONDO:0005844 | chalazion | syn: chalazion | ancestors: internal hordeolum, hordeolum, sebaceous gland disorder, skin appendage disorder | def: An eyelid cyst caused by the blockage of a meibomian gland.",
+"ko": "콩다래끼",
+"alt": [
+"산립종"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017194",
+"concept": "- MONDO:0017194 | Blount disease | syn: Blount disease; Blount's disease; infantile tibia vara; Osteochondrosis deformans tibiae | ancestors: osteochondrodysplasia, bent bone dysplasia, bone development disease, skeletal dysplasia | def: Blount disease is characterized by disturbed growth of the inner portion of the upper tibial extremity, progressively leading to bowlegged deformity with bone angulation just below the knee (tibia var...",
+"ko": "블라운트병",
+"alt": [
+"경골내반증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002342",
+"concept": "- MONDO:0002342 | chondromalacia | ancestors: articular cartilage disorder, arthropathy, skeletal system disorder, musculoskeletal system disorder | def: Pathological processes involving the chondral tissue (cartilage).",
+"ko": "연골연화증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005814",
+"concept": "- MONDO:0005814 | intestinal cancer | syn: bowel cancer; cancer of intestine; cancer of the intestine; intestinal cancer | ancestors: digestive system cancer, intestinal neoplasm, digestive system disorder, cancer | def: A malignant neoplasm involving the intestine",
+"ko": "장암",
+"alt": [
+"창자암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010671",
+"concept": "- MONDO:0010671 | microphthalmia, syndromic 1 | syn: ANOP1, formerly; Lenz dysplasia; Lenz microphthalmia syndrome; MAA, formerly | ancestors: syndromic microphthalmia, NAA10-related syndrome, syndromic disease, hereditary disease",
+"ko": "증후군성 소안구증 1형",
+"alt": [
+"렌츠 이형성증"
+],
+"organs": [
+"neurologic",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004192",
+"concept": "- MONDO:0004192 | urethra cancer | syn: cancer of urethra; malignant neoplasm of the urethra; malignant neoplasm of urethra; malignant tumor of the urethra | ancestors: malignant urinary system neoplasm, urethra neoplasm, cancer, urinary system neoplasm | def: A malignant neoplasm involving the urethra",
+"ko": "요도암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015200",
+"concept": "- MONDO:0015200 | anisakiasis | syn: Anisakis simplex infection | ancestors: Ascaridida infectious disease, intestinal helminthiasis, Rhabditida infectious disease, helminthiasis | def: Infection with roundworms of the genus anisakis. Human infection results from the consumption of fish harboring roundworm larvae. The worms may cause acute nausea; vomiting; or penetrate into the wall...",
+"ko": "아니사키스증",
+"alt": [
+"고래회충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0008882",
+"concept": "- MONDO:0008882 | congenital bowing of long bones | ancestors: congenital deformities of limbs, bent bone dysplasia, disorder of development or morphogenesis, skeletal dysplasia | def: Long bone bowing is a congenital condition described by the presence of symmetric or asymmetric angular deformity and shortening of the long bones, particularly the femurs, tibiae and ulnae.",
+"ko": "선천성 긴뼈 만곡",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+}
+]

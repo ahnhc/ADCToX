@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0001066",
+"concept": "- MONDO:0001066 | late yaws | syn: gummata and ulcers due to yaws; gummatous frambeside; nodular late yaws | ancestors: yaws, cutaneous syphilis, syphilis, skin disease caused by bacterial infection | def: Late yaws is the tertiary, non-contagious stage of yaws, endemic tropical treponemal nonvenereal infection. Late yaws is characterized by destructive and deforming lesions of the skin, bones, and join...",
+"ko": "후기 딸기종",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004948",
+"concept": "- MONDO:0004948 | B-cell chronic lymphocytic leukemia | syn: B cell chronic lymphocytic leukaemia; B cell chronic lymphocytic leukemia; B cell CLL; B cell lymphocytic leukaemia | ancestors: chronic leukemia, neoplasm of mature B-cells, acute lymphoblastic leukemia, indolent B-cell non-Hodgkin lymphoma | def: B-cell chronic lymphocytic leukemia (B-CLL) is a type of B-cell non-Hodgkin lymphoma, and the most common form of leukemia in Western countries, affecting elderly adults (mean age of 67 and 72 years) ...",
+"ko": "B세포 만성 림프구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020127",
+"concept": "- MONDO:0020127 | hereditary peripheral neuropathy | syn: genetic peripheral neuropathy | ancestors: peripheral neuropathy, hereditary neuromuscular disease, peripheral nervous system disorder, neuromuscular disease | def: An instance of peripheral neuropathy that is caused by an inherited genomic modification in an individual.",
+"ko": "유전성 말초신경병증",
+"alt": [
+"유전성 말초신경병"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0013068",
+"concept": "- MONDO:0013068 | age-related hearing impairment 2 | syn: age-related hearing impairment 2; ARHI2 | ancestors: inherited auditory system disease, presbycusis, auditory system disorder, hereditary disease",
+"ko": "연령 관련 청력장애 2형",
+"alt": [
+"노인성 난청 2형"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010793",
+"concept": "- MONDO:0010793 | nephropathy, chronic tubulointerstitial | syn: nephropathy, chronic tubulointerstitial | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "만성 세뇨관간질 신병증",
+"alt": [
+"만성 세뇨관간질성 신장병증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0000304",
+"concept": "- MONDO:0000304 | penicilliosis | syn: infection caused by Penicillium marneffei; infection caused by Talaromyces marneffei; infection due to Penicillium marneffei; Penicillium marneffei infectious disease | ancestors: opportunistic systemic mycosis, systemic mycosis, opportunistic mycosis, fungal infectious disease | def: A disease caused by infection with Talaromyces marneffei.",
+"ko": "페니실리움증",
+"alt": [
+"탈라로마이세스 마르네페이 감염증"
+],
+"organs": [
+"pulmonary",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007842",
+"concept": "- MONDO:0007842 | joint laxity, familial | syn: EDS XI; Ehlers-Danlos syndrome type 11, formerly; familial joint instability syndrome; familial joint laxity | ancestors: Ehlers-Danlos syndrome, syndromic disease, hereditary disease, developmental defect during embryogenesis | def: A type of Ehlers-Danlos syndrome characterized by generalized joint hypermobility often complicated by dislocation of major joints, particularly the shoulder but in some cases the kneecap. Congenital ...",
+"ko": "가족성 관절 이완증",
+"alt": [
+"엘러스-단로스 증후군 11형"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005714",
+"concept": "- MONDO:0005714 | congenital syphilis | syn: congenital syphilis; mother-to-child transmission of syphilis; MTCT of syphilis | ancestors: syphilis, infectious embryofetopathy, primary bacterial infectious disease, Treponema infectious disease | def: A life-threatening bacterial infection of the newborn caused by Treponema pallidum. It is transmitted to the infant from a mother with syphilis through the placenta during pregnancy. Signs and symptom...",
+"ko": "선천성 매독",
+"alt": [],
+"organs": [
+"hepatic",
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005135",
+"concept": "- MONDO:0005135 | parasitic infectious disease | syn: disease caused by parasite; parasitic disease; parasitic infection | ancestors: infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: A successful invasion of a host by an organism that uses the host for food and shelter.",
+"ko": "기생충 감염병",
+"alt": [
+"기생충 질환"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010311",
+"concept": "- MONDO:0010311 | Becker muscular dystrophy | syn: Becker dystrophinopathy; Becker muscular dystrophy; Becker muscular dystrophy, X-linked recessive; BMD | ancestors: DMD-related muscular dystrophy, muscular dystrophy, hereditary neuromuscular disease, hereditary skeletal muscle disorder | def: Becker muscular dystrophy (BMD) is a neuromuscular disease characterized by progressive muscle wasting and weakness due to degeneration of skeletal, smooth and cardiac muscle.",
+"ko": "베커 근디스트로피",
+"alt": [
+"베커 근육퇴행위축증"
+],
+"organs": [
+"cardiovascular",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003490",
+"concept": "- MONDO:0003490 | ampulla of vater squamous cell carcinoma | syn: ampulla of Vater squamous cell carcinoma; hepatopancreatic ampulla squamous cell carcinoma | ancestors: extrahepatic bile duct squamous cell carcinoma, carcinoma of the ampulla of vater, squamous cell carcinoma of the small intestine, extrahepatic bile duct carcinoma | def: A carcinoma with squamous differentiation arising from the ampulla of Vater. Signs and symptoms include jaundice, abdominal pain, anorexia, nausea, vomiting, and weight loss.",
+"ko": "바터 팽대부 편평세포암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005310",
+"concept": "- MONDO:0005310 | atrial flutter | syn: atrial flutter; atrial flutter (disease) | ancestors: atrial tachycardia, cardiac rhythm disease, heart disorder, cardiovascular disorder | def: A disorder characterized by an electrocardiographic finding of an organized, regular atrial rhythm with atrial rate of 240-340 beats per minute. Multiple P waves typically appear in the inferior leads...",
+"ko": "심방 조동",
+"alt": [
+"심방조동"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0045057",
+"concept": "- MONDO:0045057 | delirium | ancestors: cognitive disorder, psychiatric disorder, disease by developmental or physiological process, human disease | def: A disorder characterized by confusion; inattentiveness; disorientation; illusions; hallucinations; agitation; and in some instances autonomic nervous system overactivity. It may result from toxic/meta...",
+"ko": "섬망",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001776",
+"concept": "- MONDO:0001776 | prostate calculus | syn: calculus of prostate; lower urinary tract calculus of prostate gland; prostate gland lower urinary tract calculus; prostatic stone | ancestors: prostate disorder, lower urinary tract calculus, male reproductive system disorder, urolithiasis | def: A concretion in the prostate.",
+"ko": "전립샘 결석",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019440",
+"concept": "- MONDO:0019440 | wild type ABeta2M amyloidosis | syn: ABeta2Mwt amyloidosis; dialysis-related amyloidosis; dialysis-related arthropathy; wild type ABeta2-microglobulinic amyloidosis | ancestors: ABeta2M amyloidosis, amyloidosis, proteostasis deficiencies, metabolic disease",
+"ko": "야생형 ABeta2M 아밀로이드증",
+"alt": [
+"투석 관련 아밀로이드증"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009458",
+"concept": "- MONDO:0009458 | Schimke immuno-osseous dysplasia | syn: Schimke immuno-osseous dysplasia; Schimke immunoosseous dysplasia; Schimke syndrome; spondyloepiphyseal dysplasia - nephrotic syndrome | ancestors: immuno-osseous dysplasia, spondyloepiphyseal dysplasia, inborn error of immunity, osteochondrodysplasia | def: A multisystem disorder characterized by spondyloepiphyseal dysplasia and disproportionate short stature, facial dysmorphism, T-cell immunodeficiency, and glomerulonephritis with nephrotic syndrome.",
+"ko": "쉼케 면역골이형성증",
+"alt": [
+"쉼케 증후군"
+],
+"organs": [
+"renal",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019464",
+"concept": "- MONDO:0019464 | heavy chain disease | syn: HCD; heavy chain disease | ancestors: plasma cell neoplasm, neoplasm of mature B-cells, B-cell neoplasm, leukocyte disorder | def: Heavy-chain diseases (HCDs) are rare monoclonal lymphoplasma-cell proliferative disorders involving B cells and are characterized by the synthesis of truncated heavy chains without associated light ch...",
+"ko": "중쇄병",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005838",
+"concept": "- MONDO:0005838 | mansonelliasis | syn: Acanthocheilonema perstans infection; Acanthocheilonemiasis; Dipetalonema infection; Dipetalonema infections | ancestors: Rhabditida infectious disease, filariasis, Nematoda infectious disease, helminthiasis | def: A parasitic infection caused by the nematode Mansonella, including M. ozzardi, M. perstans (Dipetalonema perstans), and M. streptocerca (Dipetalonema streptocerca). Signs and symptoms include pruritus...",
+"ko": "만소넬라증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008797",
+"concept": "- MONDO:0008797 | anodontia | syn: complete absence of teeth; developmental absence of tooth; total anodontia of permanent and deciduous teeth | ancestors: hereditary disease, tooth disorder, disease of genetic or genomic mechanism, skeletal system disorder | def: Anodontia is an extreme developmental dental anomaly characterized by the complete absence of all teeth.",
+"ko": "무치증",
+"alt": [
+"선천성 치아 결손"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0002351",
+"concept": "- MONDO:0002351 | glottis cancer | syn: cancer of glottis; glottis cancer; malignant glottis neoplasm; malignant glottis tumor | ancestors: larynx cancer, glottis neoplasm, respiratory system cancer, laryngeal neoplasm | def: A malignant neoplasm that affects the glottic area of the larynx. The vast majority of cases represent squamous cell carcinomas.",
+"ko": "성문암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+}
+]

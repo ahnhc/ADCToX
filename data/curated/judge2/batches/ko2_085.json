@@ -1,0 +1,238 @@
+[
+{
+"id": "MONDO:0100610",
+"concept": "- MONDO:0100610 | autism spectrum disorder 1 | syn: Asperger syndrome; autism spectrum disorder without disorder of intellectual development and with mild or no impairment of functional language | ancestors: autism spectrum disorder, pervasive developmental disorder, developmental disorder of mental health, complex neurodevelopmental disorder | def: The mildest form of autism spectrum disorder, characterized by difficulties with social communication and restricted, repetitive behaviors, requiring minimal support for daily functioning.",
+"ko": "자폐스펙트럼장애 1형",
+"alt": [
+"아스퍼거 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005541",
+"concept": "- MONDO:0005541 | spondylolysis | syn: spondylolysis; spondylolysis (disease) | ancestors: disease of bone structure, vertebral disorder, bone disorder, vertebral column disorder | def: A defect in the pars interarticularis of a vertebral bone.",
+"ko": "척추분리증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0019967",
+"concept": "- MONDO:0019967 | Kienbock disease | syn: aseptic necrosis of the lunate bone; Kienböck Disease; Lunatomalacia; osteochondritis of the lunate bone | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder | def: Kienbock disease is a rare bone disorder of unknown etiology characterized clinically by osteonecrosis of the carpal lunate, eventually leading to collapse of the lunate bone impacting wrist function.",
+"ko": "킨뵈크병",
+"alt": [
+"월상골 무혈성 괴사"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0000385",
+"concept": "- MONDO:0000385 | benign digestive system neoplasm | syn: alimentary part of gastrointestinal system benign neoplasm; benign digestive system tumor; benign digestive system tumour; benign gastrointestinal neoplasm | ancestors: digestive system disorder, benign neoplasm, digestive system neoplasm, disease by body system or component | def: A non-metastasizing neoplasm arising from any part of the digestive system.",
+"ko": "소화기계 양성 신생물",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006952",
+"concept": "- MONDO:0006952 | retinopathy of prematurity | syn: retrolental fibroplasia; ROP; Terry syndrome | ancestors: FZD4-related exudative vitreoretinopathy, exudative vitreoretinopathy, retinal vascular disorder, vitreoretinal degeneration | def: A bilateral retinopathy characterized by neovascularization, scarring, retinal detachment, and eventually blindness. It may be mild or severe. It occurs in babies born prematurely. Causes include oxyg...",
+"ko": "미숙아 망막병증",
+"alt": [
+"미숙아 망막증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0008783",
+"concept": "- MONDO:0008783 | Tangier disease | syn: Analphalipoproteinemia; ATP-binding cassette transporter A1 deficiency; defective adenosine triphosphate-binding cassette transporter A1; Tangier disease | ancestors: hypolipoproteinemia, hypoalphalipoproteinemia, inherited lipid metabolism disorder, metabolic disease | def: Tangier disease (TD) is a rare lipoprotein metabolism disorder characterized biochemically by an almost complete absence of plasma high-density lipoproteins (HDL), and clinically by liver, spleen, lym...",
+"ko": "탕헤르병",
+"alt": [
+"무알파지단백혈증"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002070",
+"concept": "- MONDO:0002070 | ventricular septal defect | syn: interventricular communication; interventricular septal defect; ventricular septal defect; ventricular septal defect (disease) | ancestors: heart septal defect, cardiogenetic disease, congenital heart disease, hereditary disease | def: The presence of a defect (opening) in the septum that separates the two ventricles of the heart. It can be congenital or acquired.",
+"ko": "심실중격결손",
+"alt": [
+"심실사이막결손"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0000577",
+"concept": "- MONDO:0000577 | congenital anemia | syn: congenital anaemia (disease); congenital anemia; congenital anemia (disease) | ancestors: anemia, congenital hematological disorder, hematologic disorder, disease by body system or component | def: Anemia, the cause of which is present at birth.",
+"ko": "선천성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005737",
+"concept": "- MONDO:0005737 | Ebola hemorrhagic fever | syn: Ebola; Ebola fever; Ebola virus disease; Ebolavirus caused disease or disorder | ancestors: Filoviridae infectious disease, viral hemorrhagic fever, Mononegavirales infectious disease, viral infectious disease | def: A viral hemorrhagic fever that is caused by the Ebola virus, which is transmitted by contact with infected animals or humans; it is characterized by high fever, unexplained bleeding, and a high mortal...",
+"ko": "에볼라 출혈열",
+"alt": [
+"에볼라바이러스병"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001628",
+"concept": "- MONDO:0001628 | tinea unguium | syn: dermatophytic onychia; dermatophytosis of nail; nail dermatophytosis; onychomycosis | ancestors: dermatophytosis, nail infection, tinea infection, superficial mycosis | def: A fungal infection of the nail, usually caused by dermatophytes; yeasts; or nondermatophyte molds.",
+"ko": "조갑백선",
+"alt": [
+"손발톱무좀"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0012164",
+"concept": "- MONDO:0012164 | Meacham syndrome | syn: Meacham syndrome; Meacham-Winn-Culler syndrome; Rhabdomyomatous dysplasia-cardiopathy-genital anomalies syndrome | ancestors: syndromic disease, hereditary disease, 46 XY differences of sex development, disease by body system or component | def: Meacham syndrome is a multiple malformation syndrome characterized by congenital diaphragmatic abnormalities, genital defects and cardiac malformations.",
+"ko": "미첨 증후군",
+"alt": [
+"미첨-윈-쿨러 증후군"
+],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015909",
+"concept": "- MONDO:0015909 | aplastic anemia | ancestors: anemia, hematologic disorder, disease by body system or component, human disease | def: Anemia resulting from bone marrow failure (aplastic or hypoplastic bone marrow). The production of erythroblasts and red cells is markedly decreased, and it may be associated with decreased production...",
+"ko": "재생불량빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019172",
+"concept": "- MONDO:0019172 | aniridia | syn: aplasia of iris | ancestors: iris disorder, disorder of development or morphogenesis, uveal disorder, disease by developmental or physiological process | def: Aniridia is a congenital ocular malformation characterized by the complete or partial absence of the iris. It can be isolated or part of a syndrome (isolated and syndromic aniridia).",
+"ko": "무홍채증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015303",
+"concept": "- MONDO:0015303 | macular amyloidosis | ancestors: primary cutaneous amyloidosis, amyloidosis, dermis disorder, proteostasis deficiencies | def: Macular amyloidosis (MA) is a rare chronic form of cutaneous amyloidosis, a skin disease characterized by the accumulation of amyloid deposits in the dermis, clinically characterized by pruritic hyper...",
+"ko": "반점 아밀로이드증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005126",
+"concept": "- MONDO:0005126 | tuberculoid leprosy | syn: tuberculoid leprosy [type T] | ancestors: leprosy, primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease | def: A principal or polar form of leprosy in which the skin lesions are few and are sharply demarcated. Peripheral nerve involvement is pronounced and may be severe. Unlike lepromatous leprosy (leprosy, le...",
+"ko": "결핵양 나병",
+"alt": [
+"결핵양 한센병"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015614",
+"concept": "- MONDO:0015614 | dermatitis herpetiformis | syn: dermatitis herpetiformis; Duhring's disease; Durhing-Brocq disease | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: Dermatitis herpetiformis (DH) is a chronic autoimmune subepidermal bullous disease characterized by grouped pruritic lesions such as papules, urticarial plaques, erythema, and herpetiform vesiculae, w...",
+"ko": "포진상 피부염",
+"alt": [
+"두링병"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001319",
+"concept": "- MONDO:0001319 | bladder lateral wall cancer | syn: malignant neoplasm of lateral wall of urinary bladder | ancestors: urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder",
+"ko": "방광 측벽암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019157",
+"concept": "- MONDO:0019157 | myelodysplastic syndrome with ring sideroblasts | syn: acquired idiopathic sideroblastic anaemia; acquired idiopathic sideroblastic anemia; AISA; MDS with ring sideroblasts | ancestors: sideroblastic anemia, myelodysplastic syndrome, idiopathic disease, anemia | def: Acquired idiopathic sideroblastic anemia is one of a group of disorders known as the myelodysplastic syndromes (MDS) characterized by ineffective haemopoiesis affecting one or more blood cell lineages...",
+"ko": "고리철적모구를 동반한 골수형성이상 증후군",
+"alt": [
+"후천성 특발성 철적모구성 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009693",
+"concept": "- MONDO:0009693 | plasma cell myeloma | syn: Kahler disease; Kahler's disease; medullary plasmacytoma; Multiple Myeloma | ancestors: immune system cancer, plasma cell neoplasm, myeloid neoplasm, cancer | def: A bone marrow-based plasma cell neoplasm characterized by a serum monoclonal protein and skeletal destruction with osteolytic lesions, pathological fractures, bone pain, hypercalcemia, and anemia. Cli...",
+"ko": "형질세포 골수종",
+"alt": [
+"다발골수종",
+"칼러병"
+],
+"organs": [
+"haematologic",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0001724",
+"concept": "- MONDO:0001724 | supraglottis cancer | syn: cancer of supraglottic part of larynx; malignant neoplasm of extrinsic larynx; malignant neoplasm of supraglottic part of larynx; malignant neoplasm of supraglottis | ancestors: larynx cancer, supraglottis neoplasm, respiratory system cancer, laryngeal neoplasm | def: A malignant neoplasm that affects the supraglottic area of the larynx. The vast majority of cases are squamous cell carcinomas.",
+"ko": "성문상부암",
+"alt": [
+"후두 성문상부암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+}
+]

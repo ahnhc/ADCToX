@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0010088",
+"concept": "- MONDO:0010088 | mucosulfatidosis | syn: juvenile sulfatidosis, Austin type; MSD; mucosulfatidosis; Multiple Sulfatase Deficiency | ancestors: integumentary system disorder, developmental anomaly of metabolic origin, sphingolipidosis, lysosomal storage disease with skeletal involvement | def: Multiple sulfatase deficiency (MSD) is a very rare and fatal lysosomal storage disease characterized by a clinical phenotype that combines the features of different sulfatase deficiencies (whether lys...",
+"ko": "점액황산지질증",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012693",
+"concept": "- MONDO:0012693 | glycogen storage disease due to muscle and heart glycogen synthase deficiency | syn: glycogen storage disease due to glycogen synthase deficiency of heart; glycogen storage disease type 0b; glycogenosis due to muscle and heart glycogen synthase deficiency; glycogenosis type 0b | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: A glycogen storage disease characterized by muscle and heart glycogen deficiency. It has been described in three siblings (two brothers and their younger sister). The older brother died at 10.5 years ...",
+"ko": "근육 및 심장 글리코겐 합성효소 결핍에 의한 글리코겐 저장병",
+"alt": [],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005348",
+"concept": "- MONDO:0005348 | keloid | ancestors: reactive cutaneous fibrous lesion, skin disorder, integumentary system disorder, disease by body system or component | def: An irregularly shaped, elevated mark on the skin caused by deposits of excessive amounts of collagen during wound healing. It extends beyond the original boundaries of the wound and may enlarge progre...",
+"ko": "켈로이드",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004522",
+"concept": "- MONDO:0004522 | infectious peritonitis | syn: acute generalised peritonitis | ancestors: infectious disease, peritonitis, disease of primarily extrinsic mechanism, serositis | def: Inflammation of the peritoneum due to infection by bacteria or fungi. Causes include liver disease, perforation of the gastrointestinal tract or biliary tract, and peritoneal dialysis. Patients usuall...",
+"ko": "감염성 복막염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000367",
+"concept": "- MONDO:0000367 | taeniasis | syn: Taenia infection; taenia saginata infection | ancestors: intestinal helminthiasis, Cestode infectious disease, helminthiasis, parasitic intestinal disorder | def: A parasitic infection caused by tapeworms of the genus Taenia. Humans are infected by eating undercooked or raw meat of infected animals. It is usually an asymptomatic infection and patients may becom...",
+"ko": "조충증",
+"alt": [
+"테니아증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0006784",
+"concept": "- MONDO:0006784 | hemorrhagic disease of newborn | syn: hemorrhagic disease of newborn; vitamin K deficiency bleeding in newborn | ancestors: blood coagulation disease, nutritional disorder, hematologic disorder, disease by etiologic mechanism | def: A condition characterized as a coagulation disturbance in newborns due to vitamin K deficiency resulting in impaired production of coagulation factors II, VII, IX, and X, and proteins C and S by the l...",
+"ko": "신생아 출혈성 질환",
+"alt": [
+"신생아 출혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002889",
+"concept": "- MONDO:0002889 | orbital cancer | syn: cancer of orbit of skull; malignant neoplasm of orbit; malignant neoplasm of orbit of skull; malignant neoplasm of the orbit | ancestors: skull cancer, orbit neoplasm, bone cancer, head and neck cancer | def: A primary or metastatic malignant neoplasm involving the orbit.",
+"ko": "안와암",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002146",
+"concept": "- MONDO:0002146 | hypogonadism | syn: gonadotropin deficiency; hypogonadotropism | ancestors: gonadal disorder, reproductive system disorder, endocrine system disorder, disease by body system or component | def: A disorder characterized by decreased function of the gonads. Clinical manifestations in both males and females include poor libido, infertility, and osteoporosis. Additional signs in males include er...",
+"ko": "성선기능저하증",
+"alt": [
+"생식샘기능저하증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003050",
+"concept": "- MONDO:0003050 | lung large cell carcinoma | syn: anaplastic lung carcinoma; large cell carcinoma of lung; large cell carcinoma of the lung; large cell lung cancer | ancestors: large cell carcinoma, non-small cell lung carcinoma, carcinoma, lung carcinoma | def: A poorly differentiated non-small cell lung carcinoma composed of large polygonal cells without evidence of glandular or squamous differentiation. There is a male predilection.",
+"ko": "폐 대세포암종",
+"alt": [
+"폐 대세포암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0100429",
+"concept": "- MONDO:0100429 | intrahepatic cholestasis of pregnancy | syn: gravidic intrahepatic cholestasis; intrahepatic cholestasis of pregnancy; pregnancy related cholestasis; pregnancy-related cholestasis | ancestors: intrahepatic cholestasis, cholestasis, bile duct disorder, biliary tract disorder | def: A cholestatic disorder characterized by (i) pruritus with onset in the second or third trimester of pregnancy, (ii) elevated serum aminotransferases and bile acid levels, and (iii) spontaneous relief ...",
+"ko": "임신성 간내 담즙정체증",
+"alt": [
+"임신 중 간내 담즙정체"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0037398",
+"concept": "- MONDO:0037398 | pneumonia caused by pseudomonas aeruginosa infection | ancestors: bacterial pneumonia, Pseudomonas aeruginosa infectious disease, bacterial infectious disease, pneumonia | def: A rare pulmonary disease characterized by primary or nonbacteremic pneumonia most frequently arising in an intensive care setting, or bacteremic pneumonia, which is typically associated with neutropen...",
+"ko": "녹농균 폐렴",
+"alt": [
+"녹농균 감염에 의한 폐렴"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012700",
+"concept": "- MONDO:0012700 | renal tubular acidosis, distal, 4, with hemolytic anemia | syn: distal renal tubular acidosis 4 with hemolytic anaemia; distal renal tubular acidosis 4 with hemolytic anemia; distal renal tubular acidosis with anaemia; distal renal tubular acidosis with anemia | ancestors: familial hemolytic anemia, autosomal recessive distal renal tubular acidosis, hemolytic anemia, hereditary disease | def: A very rare form of distal renal tubular acidosis (dRTA) characterized by a defect in renal acidification and hereditary hemolytic anemia.",
+"ko": "용혈성 빈혈을 동반한 원위 신세뇨관산증 4형",
+"alt": [],
+"organs": [
+"haematologic",
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007256",
+"concept": "- MONDO:0007256 | hepatocellular carcinoma | syn: cancer, hepatocellular; carcinoma of liver; carcinoma of liver cells; carcinoma of the liver cells | ancestors: adenocarcinoma, carcinoma of liver and intrahepatic biliary tract, carcinoma, glandular cell neoplasm | def: A malignant tumor that arises from hepatocytes. Hepatocellular carcinoma is relatively rare in the United States but very common in all African countries south of the Sahara and in Southeast Asia. Mos...",
+"ko": "간세포암종",
+"alt": [
+"간세포암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000710",
+"concept": "- MONDO:0000710 | gastroduodenal Crohn disease | syn: gastroduodenal Crohn's disease | ancestors: duodenitis, gastritis, small bowel Crohn disease, duodenal disorder | def: An inflammatory bowel disease characterized by inflammation located in stomach and located in duodenum, has symptom nausea, has symptom vomiting, has symptom weight loss and has symptom loss of appeti...",
+"ko": "위십이지장 크론병",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007944",
+"concept": "- MONDO:0007944 | Treacher Collins syndrome 1 | syn: TCOF1 Treacher-Collins syndrome; Treacher Collins syndrome type 1; Treacher-Collins syndrome 1; Treacher-Collins syndrome caused by mutation in TCOF1 | ancestors: Treacher-Collins syndrome, autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability | def: Any Treacher-Collins syndrome in which the cause of the disease is a mutation in the TCOF1 gene.",
+"ko": "트리처 콜린스 증후군 1형",
+"alt": [
+"TCOF1 트리처 콜린스 증후군"
+],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005152",
+"concept": "- MONDO:0005152 | hypopituitarism | syn: pituitary insufficiency | ancestors: pituitary gland disorder, reproductive system disorder, endocrine system disorder, brain disorder | def: A condition of diminution or cessation of secretion of one or more hormones from the anterior pituitary gland. This may result from surgical or radiation ablation, non-secretory pituitary neoplasms, m...",
+"ko": "뇌하수체기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000344",
+"concept": "- MONDO:0000344 | Ross river fever | syn: Ross River virus caused disease or disorder; Ross River virus disease; Ross River virus disease or disorder; Ross River virus infectious disease | ancestors: Alphavirus infectious disease, vector-borne disease, Togaviridae infectious disease, infectious disease | def: A disease caused by infection with Ross River virus.",
+"ko": "로스강열",
+"alt": [
+"로스리버열"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019671",
+"concept": "- MONDO:0019671 | radial hemimelia | syn: congenital longitudinal deficiency of the radius; radial clubhand; radial longitidinal meromelia; radial ray agenesis | ancestors: hemimelia, dysostosis, non-syndromic limb reduction defect, bone development disease | def: Radial hemimelia is a congenital longitudinal deficiency of the radius bone of the forearm characterized by partial or total absence of the radius.",
+"ko": "요골 반사지증",
+"alt": [
+"선천성 요골 종축결손"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018037",
+"concept": "- MONDO:0018037 | hyper-IgE syndrome | syn: HIES; hyper-IgE recurrent infection syndrome; hyperimmunoglobulin E syndrome | ancestors: hyperimmunoglobulin syndrome, B cell deficiency, inborn error of immunity, leukocyte disorder | def: A condition that is characterized by elevated serum IgE, dermatitis, and respiratory infections.",
+"ko": "고IgE 증후군",
+"alt": [],
+"organs": [
+"pulmonary",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024330",
+"concept": "- MONDO:0024330 | infectious otitis media | syn: acute otitis Media; AOM; infectious otitis Media; middle Ear infection | ancestors: otitis media, ear infection, middle ear disorder, inflammatory disease | def: Inflammation of the anatomical structures of the middle ear secondary to an infectious process. Bacterial etiology is most common, but both viral and fungal pathogens are also possible. Symptoms inclu...",
+"ko": "감염성 중이염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+}
+]

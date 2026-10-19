@@ -1,0 +1,249 @@
+[
+{
+"id": "MONDO:0019173",
+"concept": "- MONDO:0019173 | rabies | syn: lyssa | ancestors: viral infectious disease, infectious disorder of the nervous system, infectious disease, nervous system disorder | def: Rabies is a viral zoonosis leading to a fatal encephalopathy if not treated.",
+"ko": "광견병",
+"alt": [
+"공수병"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001820",
+"concept": "- MONDO:0001820 | focal labyrinthitis | syn: circumscribed labyrinthitis | ancestors: labyrinthitis, inner ear disorder, inflammatory disease, auditory system disorder | def: A labyrinthitis which is an infectious inflammatory disease of a circumscribed area of either the vestibular or the cochlear portion of the labyrinth, or of both together. This is caused by a chronic ...",
+"ko": "국소성 미로염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004821",
+"concept": "- MONDO:0004821 | nasopharyngeal disorder | syn: disease of nasopharynx; disease or disorder of nasopharynx; disorder of nasopharynx; nasopharyngeal disorder | ancestors: upper respiratory tract disorder, disorder of pharynx, respiratory system disorder, otorhinolaryngologic disease | def: A non-neoplastic or neoplastic disorder that affects the nasopharynx. Representative examples include nasopharyngitis, angiofibroma, and carcinoma.",
+"ko": "비인두 질환",
+"alt": [
+"코인두 질환"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007197",
+"concept": "- MONDO:0007197 | bladder diverticulum | syn: bladder diverticulum; bladder diverticulum (disease); diverticulum of bladder | ancestors: hereditary disease, urinary bladder disorder, disease of genetic or genomic mechanism, urinary system disorder",
+"ko": "방광 게실",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016608",
+"concept": "- MONDO:0016608 | megalencephaly | syn: macroencephaly; megalencephaly; megalencephaly (disease) | ancestors: brain disorder, disorder of development or morphogenesis, central nervous system disorder, disease by developmental or physiological process | def: A congenital abnormality in which the occipitofrontal circumference is greater than two standard deviations above the mean for a given age. It is associated with hydrocephalus; subdural effusion; arac...",
+"ko": "거대뇌증",
+"alt": [
+"거대 뇌"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019810",
+"concept": "- MONDO:0019810 | toxic epidermal necrolysis | syn: SJS-TEN; TEN; toxic epidermolysis | ancestors: toxic dermatosis, skin disorder, integumentary system disorder, disease by body system or component | def: Toxic epidermal necrolysis (TEN) is an acute and severe skin disease with clinical and histological features characterized by the destruction and detachment of the skin epithelium and mucous membranes...",
+"ko": "독성 표피 괴사융해",
+"alt": [
+"중독표피괴사융해증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001971",
+"concept": "- MONDO:0001971 | farmer's lung disease | syn: farmer lung; farmer's lung | ancestors: hypersensitivity pneumonitis, occupational lung disease, allergic respiratory disease, interstitial lung disease | def: A hypersensitivity pneumonitis caused by the repeated exposure and inhalation of biological dust (such as hay dust, mold spores, or other agricultural products). It is considered a type II hypersensit...",
+"ko": "농부폐",
+"alt": [
+"농부폐증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:8000018",
+"concept": "- MONDO:8000018 | benign paroxysmal positional vertigo | syn: benign paroxysmal positional vertigo; BPPV; BRV; familial benign recurrent vertigo | ancestors: peripheral vertigo, hereditary otorhinolaryngologic disease, inherited auditory system disease, vestibular disorder | def: Idiopathic recurrent vertigo associated with positional nystagmus. It is associated with a vestibular loss without other neurological or auditory signs. Unlike in labyrinthitis and vestibular neuronit...",
+"ko": "양성 발작성 체위성 현훈",
+"alt": [
+"이석증"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003061",
+"concept": "- MONDO:0003061 | benign muscle neoplasm | syn: benign muscle neoplasm; benign muscle tumor; benign muscle tumour; benign neoplasm of muscle | ancestors: musculoskeletal system benign neoplasm, myomatous neoplasm, musculoskeletal system disorder, benign neoplasm | def: A benign mesenchymal neoplasm arising from smooth, skeletal, or cardiac muscle tissue.",
+"ko": "양성 근육 신생물",
+"alt": [
+"양성 근육 종양"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020572",
+"concept": "- MONDO:0020572 | complex regional pain syndrome type 2 | syn: causalgia; Complex regional pain syndrome II; CRPS II | ancestors: syndromic disease, complex regional pain syndrome, disease by body system or component, chronic pain syndrome | def: Complex regional pain syndrome type 2 (CRPS2), or causalgia is a form of complex regional pain syndrome that develops after damage to a peripheral nerve and is characterized by spontaneous pain, allod...",
+"ko": "복합부위통증증후군 2형",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013666",
+"concept": "- MONDO:0013666 | Stickler syndrome, type 5 | syn: autosomal recessive Stickler syndrome caused by mutation in COL9A2; COL9A2 autosomal recessive Stickler syndrome | ancestors: Stickler syndrome, syndromic disease, spondyloepiphyseal dysplasia, vitreoretinal degeneration | def: Any autosomal recessive Stickler syndrome in which the cause of the disease is a mutation in the COL9A2 gene.",
+"ko": "스티클러 증후군 5형",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013600",
+"concept": "- MONDO:0013600 | insomnia | syn: insomnia; insomnia (disease) | ancestors: brain disorder, sleep disorder, central nervous system disorder, disease by developmental or physiological process | def: A sleep disorder characterized by difficulty in falling asleep and/or remaining asleep.",
+"ko": "불면증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001383",
+"concept": "- MONDO:0001383 | degenerative myopia | syn: progressive high (degenerative) myopia | ancestors: myopia, eye degenerative disorder, hereditary disease, refractive error | def: Excessive axial myopia associated with complications (especially posterior staphyloma and choroidal neovascularization) that can lead to blindness.",
+"ko": "퇴행성 근시",
+"alt": [
+"병적 근시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008682",
+"concept": "- MONDO:0008682 | Denys-Drash syndrome | syn: Denys Drash syndrome; Denys-Drash syndrome; Denys-Drash syndrome, autosomal dominant, somatic mutation; Drash syndrome | ancestors: autosomal dominant disease, syndromic disease, 46 XY differences of sex development, autosomal genetic disease | def: Denys-Drash syndrome (DDS) is a rare urogenital disorder characterized by the association of diffuse mesangial sclerosis (DMS), male pseudohermaphroditism with a 46,XY karyotype, and nephroblastoma.",
+"ko": "데니스-드래시 증후군",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001767",
+"concept": "- MONDO:0001767 | stenosis of lacrimal punctum | ancestors: lacrimal apparatus disorder, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "눈물점 협착",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015661",
+"concept": "- MONDO:0015661 | dextrocardia | syn: dextrocardia; dextrocardia (disease) | ancestors: visceral heterotaxy, cardiogenetic disease, syndromic congenital heart disease, syndromic disease | def: A rare congenital abnormality in which the heart is located in the right side of the chest. It is associated with other congenital heart defects.",
+"ko": "우심증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009256",
+"concept": "- MONDO:0009256 | galactorrhea | syn: galactorrhea; galactorrhea (disease) | ancestors: lactation disease, breast disorder, disorder of development or morphogenesis, disease by body system or component | def: Excessive or inappropriate lactation in females or males, and not necessarily related to pregnancy. Galactorrhea can occur either unilaterally or bilaterally, and be profuse or sparse. Its most common...",
+"ko": "유즙분비과다증",
+"alt": [
+"젖흐름증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010066",
+"concept": "- MONDO:0010066 | familial isolated congenital asplenia | ancestors: inborn error of immunity, hereditary disease, disorder of development or morphogenesis, immune system disorder | def: Familial isolated congenital asplenia is a rare, non-syndromic, potentially life-threatening visceral malformation characterized by the absence of normal spleen function, resulting in a primary immuno...",
+"ko": "가족성 단독 선천성 무비증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021233",
+"concept": "- MONDO:0021233 | ear neoplasm | syn: ear neoplasm (disease); Ear neoplasms; Ear tumor; ear tumor | ancestors: head and neck neoplasm, disorder of ear, neoplasm, otorhinolaryngologic disease | def: A neoplasm (disease) that involves the ear.",
+"ko": "귀 신생물",
+"alt": [
+"귀 종양"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006608",
+"concept": "- MONDO:0006608 | seborrheic dermatitis | syn: cradle Cap; seborrhea; seborrheic dermatitis; seborrheic dermatitis (disease) | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: A chronic, inflammatory skin disorder that affects the scalp, central face and skin folds; it is characterized by scaling and itching.",
+"ko": "지루피부염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 5,
+"new": false
+}
+]

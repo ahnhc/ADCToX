@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0002107",
+"concept": "- MONDO:0002107 | unilateral hyperactive labyrinth | syn: hyperactive labyrinth, unilateral | ancestors: inner ear disorder, auditory system disorder, disorder of ear, disease by body system or component",
+"ko": "일측 미로 과반응",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001527",
+"concept": "- MONDO:0001527 | conjugate gaze palsy | syn: palsy of conjugate gaze | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "공동주시마비",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004651",
+"concept": "- MONDO:0004651 | smallpox | syn: ordinary smallpox; Variola virus caused disease or disorder; Variola virus disease or disorder; Variola virus infectious disease | ancestors: primary viral infectious disease, viral infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A condition that is caused by infection with Variola, and that is characterized by small, raised bumps.",
+"ko": "천연두",
+"alt": [
+"두창"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005449",
+"concept": "- MONDO:0005449 | conduction system disorder | syn: conducting system of heart disease; conducting system of heart disease or disorder; disease of conducting system of heart; disease or disorder of conducting system of heart | ancestors: muscle tissue disorder, myocardial disorder, musculoskeletal system disorder, heart disorder | def: A disease involving the conducting system of heart.",
+"ko": "전도계 질환",
+"alt": [
+"심장 전도계 질환"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0012196",
+"concept": "- MONDO:0012196 | autosomal dominant auditory neuropathy 1 | syn: auditory neuropathy caused by mutation in DIAPH3; auditory neuropathy, autosomal dominant, type 1; AUNA1; autosomal dominant auditory neuropathy type 1 | ancestors: autosomal dominant nonsyndromic hearing loss, auditory neuropathy, autosomal dominant disease, nonsyndromic genetic hearing loss | def: Any auditory neuropathy in which the cause of the disease is a mutation in the DIAPH3 gene.",
+"ko": "상염색체 우성 청각 신경병증 1형",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001339",
+"concept": "- MONDO:0001339 | portal vein thrombosis | syn: portal vein thrombotic disease; thrombotic disease of portal vein | ancestors: thrombotic disease, hepatic vascular disorder, vein disorder, vascular disorder | def: The formation of a blood clot (thrombus) in the portal vein.",
+"ko": "문맥 혈전증",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0013332",
+"concept": "- MONDO:0013332 | brachydactyly, type A1, with short stature, scoliosis, microcephaly, ptosis, hearing loss, and intellectual disability | syn: brachydactyly, type A1, with short stature, scoliosis, microcephaly, ptosis, hearing loss, and intellectual disability; brachydactyly, type A1, with short stature, scoliosis, microcephaly, ptosis, hearing loss, and mental retardation | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "A1형 단지증, 저신장, 척추측만, 소두증, 안검하수, 난청 및 지적장애 동반",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:8000010",
+"concept": "- MONDO:8000010 | antiphospholipid syndrome | syn: antiphospholipid antibody syndrome; antiphospholipid syndrome; familial lupus anticoagulant; Hughes syndrome | ancestors: syndromic disease, autoimmune disease, disease by body system or component, immune system disorder | def: A disorder caused by the presence of autoantibodies directed against phospholipids, causing a hypercoaguable state, which may result in blood clots, stroke, heart attack, and in women, significant pre...",
+"ko": "항인지질 증후군",
+"alt": [
+"항인지질항체 증후군",
+"휴즈 증후군"
+],
+"organs": [
+"haematologic",
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002433",
+"concept": "- MONDO:0002433 | malignant cranial nerve neoplasm | syn: cancer of cranial nerve; cranial nerve cancer; cranial nerve neoplasm, malignant; malignant cranial nerve neoplasm | ancestors: cranial nerve neoplasm, head and neck cancer, peripheral nervous system cancer, peripheral nervous system neoplasm | def: Abnormal malignant growth of the cells that comprise the cranial nerve.",
+"ko": "악성 뇌신경 신생물",
+"alt": [
+"뇌신경암"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018473",
+"concept": "- MONDO:0018473 | hyperlipoproteinemia type 3 | syn: Broad-betalipoproteinemia; dyslipidaemia type 3; dyslipidemia type 3; familial dysbetalipoproteinemia | ancestors: familial hyperlipidemia, inherited lipid metabolism disorder, hyperlipidemia, inborn errors of metabolism | def: Hyperlipoproteinemia (HLP) type 3 is a rare combined hyperlipidemia characterized by high levels of cholesterol and triglycerides, transported by intermediate density lipoproteins (IDLs), and a high r...",
+"ko": "고지단백혈증 3형",
+"alt": [
+"이상베타지단백혈증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006826",
+"concept": "- MONDO:0006826 | kwashiorkor | syn: nutritional edema with dyspigmentation of skin and/or hair; nutritional oedema with dyspigmentation of skin and hair | ancestors: protein-energy malnutrition, nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism | def: A syndrome produced by severe protein deficiency, characterized by retarded growth, changes in skin and hair pigment, edema, and pathologic changes in the liver, including fatty infiltration, necrosis...",
+"ko": "콰시오르코르",
+"alt": [
+"단백질 결핍증"
+],
+"organs": [
+"hepatic",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005136",
+"concept": "- MONDO:0005136 | malaria | ancestors: protozoa infectious disease, erythrocyte disorder, vector-borne disease, parasitic infectious disease | def: Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Infection with malaria parasites may result in a wide vari...",
+"ko": "말라리아",
+"alt": [
+"학질"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0031040",
+"concept": "- MONDO:0031040 | cholestasis, progressive familial intrahepatic, 12 | syn: cholestasis, isolated low-ggt; cholestasis, progressive familial intrahepatic, 12; PFIC12 | ancestors: progressive familial intrahepatic cholestasis, syndromic disease, familial intrahepatic cholestasis, inborn disorder of bilirubin metabolism",
+"ko": "진행성 가족성 간내 담즙정체 12",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024658",
+"concept": "- MONDO:0024658 | extrahepatic bile duct sarcoma | syn: extrahepatic bile duct sarcoma; sarcoma of extrahepatic bile duct; sarcoma of the extrahepatic bile duct | ancestors: bile duct sarcoma, soft tissue sarcoma, malignant tumor of extrahepatic bile duct, bile duct cancer | def: A malignant soft tissue neoplasm that arises from the extrahepatic bile ducts. Representative examples include Kaposi sarcoma, leiomyosarcoma, and rhabdomyosarcoma.",
+"ko": "간외담관 육종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001898",
+"concept": "- MONDO:0001898 | optic choroid disorder | syn: choroid disorder; disease of optic choroid; disease or disorder of optic choroid; disorder of optic choroid | ancestors: uveal disorder, ocular vascular disorder, eye disorder, vascular disorder | def: A disease involving the optic choroid.",
+"ko": "맥락막 질환",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0044343",
+"concept": "- MONDO:0044343 | cervical disk degenerative disorder | syn: cervical Disc Degeneration; cervical Disc degenerative disease; cervical Disc degenerative disorder; cervical region of vertebral column intervertebral disc degenerative disorder | ancestors: intervertebral disk degenerative disorder, vertebral column disorder, hereditary disease, skeletal system disorder | def: Any degenerative disorder affecting one or more vertebral disks of the cervical spine.",
+"ko": "경추 추간판 퇴행성 질환",
+"alt": [
+"경추 디스크 퇴행"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020500",
+"concept": "- MONDO:0020500 | Marburg hemorrhagic fever | syn: Green monkey disease; Marburg disease; Marburg virus disease; MHF | ancestors: Filoviridae infectious disease, viral hemorrhagic fever, Mononegavirales infectious disease, viral infectious disease | def: Marburg hemorrhagic fever (MHF), caused by Marburg virus, is a severe viral hemorrhagic disease characterized by initial fever and malaise followed by gastrointestinal symptoms, bleeding, shock, and m...",
+"ko": "마르부르크 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005756",
+"concept": "- MONDO:0005756 | ethmoid sinusitis | syn: ethmoid bone sinusitis; ethmoidal sinusitis; sinusitis of ethmoid bone | ancestors: sinusitis, disorder of facial skeleton, paranasal sinus disorder, inflammatory disease | def: An acute or chronic inflammatory process affecting the mucous membrane of the ethmoid sinus.",
+"ko": "사골동염",
+"alt": [
+"사골 부비동염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001569",
+"concept": "- MONDO:0001569 | acoustic neuroma | syn: acoustic neurilemmoma; acoustic neurilemoma; acoustic neurinoma; acoustic neuroma | ancestors: schwannoma, nerve sheath neoplasm, benign peripheral nerve sheath tumor, low grade glioma | def: A type of benign brain tumor that begins in the Schwann cells, which produce the myelin that protects the acoustic nerve - the nerve of hearing.",
+"ko": "청신경초종",
+"alt": [
+"청신경종"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001787",
+"concept": "- MONDO:0001787 | hepatic infarction | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder",
+"ko": "간경색",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+}
+]

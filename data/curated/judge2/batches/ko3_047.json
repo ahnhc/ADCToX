@@ -1,0 +1,256 @@
+[
+{
+"id": "MONDO:0010269",
+"concept": "- MONDO:0010269 | Coats disease | syn: Coats disease; congenital retinal telangiectasia; exudative retinopathy; Leber miliary aneurysm | ancestors: retinal telangiectasia, congenital vitreoretinal dysplasia, retinal vascular disorder, congenital nervous system disorder | def: Coats disease (CD) is an idiopathic disorder characterized by retinal telangiectasia with deposition of intraretinal or subretinal exudates, potentially leading to retinal detachment and unilateral bl...",
+"ko": "코츠병",
+"alt": [
+"삼출성 망막병증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0024623",
+"concept": "- MONDO:0024623 | otorhinolaryngologic disease | syn: ear, nose and throat disorder; ear, nose or throat disorder; ear/nose/throat disease; otolaryngologic disorder | ancestors: disease by body system or component, human disease, disease, disposition | def: Pathological processes of the ear, the nose, and the throat, also known as the ENT diseases.",
+"ko": "이비인후과 질환",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011874",
+"concept": "- MONDO:0011874 | neonatal ichthyosis-sclerosing cholangitis syndrome | syn: ichthyosis-hypotrichosis-sclerosing cholangitis syndrome; IHSC; neonatal ichthyosis-sclerosing cholangitis syndrome; NISCH syndrome | ancestors: syndromic disease, inherited ichthyosis, sclerosing cholangitis, disease by body system or component | def: Neonatal ichthyosis-sclerosing cholangitis (NISCH syndrome) is a very rare complex ichthyosis syndrome characterized by scalp hypotrichosis, scarring alopecia, ichthyosis and sclerosing cholangitis.",
+"ko": "신생아 어린선-경화성 담관염 증후군",
+"alt": [
+"NISCH 증후군"
+],
+"organs": [
+"hepatic",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016099",
+"concept": "- MONDO:0016099 | overlap myositis | syn: adult-onset overlap myositis; non-specific myositis | ancestors: acquired idiopathic inflammatory myopathy, acquired skeletal muscle disease, idiopathic inflammatory myopathy, idiopathic disease | def: Overlap myositis (OM) is a form of idiopathic inflammatory myopathy (IIM) characterized by myositis with at least one clinical and/or autoantibody overlap feature.",
+"ko": "중복 근염",
+"alt": [
+"겹침근염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008485",
+"concept": "- MONDO:0008485 | sebocystomatosis | syn: Steatocystoma multiplex | ancestors: sebaceous gland disorder, hereditary skin disorder, disorder of pilosebaceous unit, skin disorder | def: Sebocystomatosis is characterized by multiple (100 to 2000) asymptomatic dermal cysts that usually occur on the sternal region, upper back, axillae and proximal parts of the extremities.",
+"ko": "피지낭종증",
+"alt": [
+"다발성 지방낭종"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005233",
+"concept": "- MONDO:0005233 | non-small cell lung carcinoma | syn: non-small cell cancer of lung; non-small cell cancer of the lung; non-small cell carcinoma of lung; non-small cell carcinoma of the lung | ancestors: lung carcinoma, carcinoma, lung cancer, cancer | def: A group of at least three distinct histological types of lung cancer, including non-small cell squamous cell carcinoma, adenocarcinoma, and large cell carcinoma. Non-small cell lung carcinomas have a ...",
+"ko": "비소세포 폐암종",
+"alt": [
+"비소세포폐암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013749",
+"concept": "- MONDO:0013749 | ventricular septal defect 3 | syn: NKX2-5 ventricular septal defect (disease); ventricular septal defect (disease) caused by mutation in NKX2-5; ventricular septal defect 3; ventricular septal defect type 3 | ancestors: ventricular septal defect, heart septal defect, cardiogenetic disease, congenital heart disease | def: Any ventricular septal defect in which the cause of the disease is a mutation in the NKX2-5 gene.",
+"ko": "심실중격결손 3형",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010209",
+"concept": "- MONDO:0010209 | xanthinuria type I | syn: isolated xanthine oxidase deficiency; XAN1; xanthinuria type 1; xanthinuria type I | ancestors: hereditary xanthinuria, xanthinuria, inborn disorder of purine metabolism, metabolic disease | def: A rare autosomal recessive disorder of purine metabolism characterized by the isolated deficiency of xanthine dehydrogenase, causing hyperxanthinemia with low or absent uric acid and xanthinuria, lead...",
+"ko": "잔틴뇨증 1형",
+"alt": [
+"잔틴산화효소 단독 결핍증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012209",
+"concept": "- MONDO:0012209 | branchiogenic deafness syndrome | syn: MC)garbanC)-Loiselet syndrome; Mégarbané-Loiselet syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, multiple congenital anomalies/dysmorphic syndrome, developmental defect during embryogenesis, disorder of development or morphogenesis | def: Branchiogenic deafness syndrome is a multiple congenital anomalies syndrome, described in one family to date, characterized by branchial cysts or fistulae; ear malformations; congenital hearing loss (...",
+"ko": "새열성 난청 증후군",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004078",
+"concept": "- MONDO:0004078 | mucinous intrahepatic cholangiocarcinoma | syn: mucin-producing intrahepatic cholangiocarcinoma; mucinous intrahepatic cholangiocarcinoma | ancestors: intrahepatic cholangiocarcinoma, mucinous adenocarcinoma, intrahepatic bile duct cancer, carcinoma of liver and intrahepatic biliary tract | def: An intrahepatic cholangiocarcinoma that produces abundant mucin.",
+"ko": "점액성 간내 담관암종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007852",
+"concept": "- MONDO:0007852 | palmoplantar keratoderma-deafness syndrome | syn: palmoplantar hyperkeratosis-deafness syndrome; palmoplantar hyperkeratosis-hearing loss syndrome; palmoplantar keratoderma and sensorineural deafness; palmoplantar keratoderma-hearing loss syndrome | ancestors: diffuse palmoplantar keratoderma, GJB2-related disorder, hereditary palmoplantar keratoderma, hereditary disease | def: Palmoplantar keratoderma-deafness syndrome is a keratinization disorder characterized by focal or diffuse palmoplantar keratoderma. A patchy distribution is observed with accentuation on the thenars, ...",
+"ko": "손발바닥 각화증-난청 증후군",
+"alt": [
+"수족저 각화증-난청 증후군"
+],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000812",
+"concept": "- MONDO:0000812 | vertebral column disorder | syn: disease of spine; disease of vertebral column; disease or disorder of vertebral column; disorder of vertebral column | ancestors: skeletal system disorder, musculoskeletal system disorder, disease by body system or component, human disease | def: A disease involving the vertebral column.",
+"ko": "척추 질환",
+"alt": [
+"척주 질환"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002885",
+"concept": "- MONDO:0002885 | erythrasma | ancestors: pyoderma, skin disorder, integumentary system disorder, disease by body system or component | def: A chronic bacterial infection of major folds of the skin, caused by Corynebacterium minutissimum.",
+"ko": "홍색음선",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001291",
+"concept": "- MONDO:0001291 | brain compression | ancestors: brain disorder, central nervous system disorder, nervous system disorder, disease by body system or component",
+"ko": "뇌 압박",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008094",
+"concept": "- MONDO:0008094 | familial multiple nevi flammei | syn: capillary malformations, congenital, 1, somatic, mosaic; familial multiple port-wine stains; Nevus flammeus; port wine birthmark | ancestors: capillary malformation, skin vascular disease, vascular ectasia, hereditary skin disorder | def: A congenital vascular malformation in the skin (birthmark) characterized by the presence of dilated capillaries. The affected area of the skin is flat and reddish-purplish in color.",
+"ko": "가족성 다발성 화염상 모반",
+"alt": [
+"가족성 다발성 포도주색 반점"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0001128",
+"concept": "- MONDO:0001128 | nasal cavity cancer | syn: cancer of nasal cavity; malignant nasal cavity neoplasm; malignant nasal cavity tumor; malignant nasal cavity tumour | ancestors: respiratory system cancer, sensory system cancer, nasal cavity neoplasm, head and neck cancer | def: A malignant neoplasm involving the nasal cavity",
+"ko": "비강암",
+"alt": [
+"코안암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0043230",
+"concept": "- MONDO:0043230 | ciguatera fish poisoning | syn: ciguatera fish poisoning; ciguatoxin causing toxic effect | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Poisoning caused by ingestion of seafood containing microgram levels of ciguatoxins. The poisoning is characterized by gastrointestinal, neurological and cardiovascular disturbances.",
+"ko": "시구아테라 어류 중독",
+"alt": [],
+"organs": [
+"cardiovascular",
+"gastrointestinal",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004554",
+"concept": "- MONDO:0004554 | childhood kidney angiomyolipoma | syn: childhood renal angiomyolipoma; kidney angiomyolipoma of childhood; paediatric kidney angiomyolipoma; paediatric renal angiomyolipoma | ancestors: childhood kidney neoplasm, kidney angiomyolipoma, childhood neoplasm, kidney neoplasm | def: An angiomyolipoma occurring in childhood.",
+"ko": "소아 콩팥 혈관근지방종",
+"alt": [
+"소아 신장 혈관근지방종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017292",
+"concept": "- MONDO:0017292 | well-differentiated fetal adenocarcinoma of the lung | syn: fetal adenocarcinoma; fetal lung adenocarcinoma; foetal adenocarcinoma; foetal lung adenocarcinoma | ancestors: lung adenocarcinoma, tubular adenocarcinoma, adenocarcinoma, non-small cell lung carcinoma | def: Well-differentiated fetal adenocarcinoma (WDFA) of the lung is a rare, primary, low-grade, bronchopulmonary neoplasm characterized by a well-circumscribed, usually large, pulmonary mass that is histol...",
+"ko": "폐의 고분화 태아형 선암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006763",
+"concept": "- MONDO:0006763 | frozen shoulder | syn: adhesive capsulitis; adhesive capsulitis of shoulder | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: A painful inflammatory process leads to a mechanical block in active and passive range of motion (ROM) of the shoulder. Adhesive capsulitis of the shoulder is characterized by functional loss of passi...",
+"ko": "동결견",
+"alt": [
+"오십견",
+"유착성 관절낭염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+}
+]

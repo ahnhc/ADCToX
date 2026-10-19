@@ -1,0 +1,241 @@
+[
+{
+"id": "MONDO:0018090",
+"concept": "- MONDO:0018090 | double outlet left ventricle | syn: DOLV; Double outlet left ventricle; double outlet left ventricle (disease) | ancestors: conotruncal heart malformations, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder | def: Double-outlet left ventricle (DOLV) is an extremely rare congenital cardiac malformation in which both the aorta and the pulmonary artery arise, either exclusively or predominantly, from the morpholog...",
+"ko": "좌심실 양대혈관 기시",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0700284",
+"concept": "- MONDO:0700284 | carnitine palmitoyl transferase deficiency | ancestors: disorder of carnitine cycle and carnitine transport, disorder of fatty acid and ketone body metabolism, inborn disorder of energy metabolism, inborn errors of metabolism",
+"ko": "카르니틴 팔미토일 전이효소 결핍증",
+"alt": [
+"CPT 결핍증"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019383",
+"concept": "- MONDO:0019383 | acute disseminated encephalomyelitis | syn: acute disseminated encephalitis; acute disseminated encephalomyelitis; ADEM; post-infectious encephalomyelitis | ancestors: demyelinating disease, postinfectious encephalitis, neurodegenerative disease, disorder of development or morphogenesis | def: Acute disseminated encephalomyelitis (ADEM) is a demyelinating disorder of the central nervous system.",
+"ko": "급성 파종성 뇌척수염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0009475",
+"concept": "- MONDO:0009475 | isovaleric acidemia | syn: isovaleric acid CoA dehydrogenase deficiency; isovaleric acidemia; Isovalericacidemia; isovaleryl-CoA dehydrogenase deficiency | ancestors: classic organic aciduria, inborn organic aciduria, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: Isovaleric acidemia (IVA) is an autosomal recessively inherited organic aciduria characterized by a deficiency in isovaleryl-CoA dehydrogenase, that has wide clinical variability and that can present ...",
+"ko": "이소발레르산혈증",
+"alt": [
+"이소발레릴-CoA 탈수소효소 결핍증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0041903",
+"concept": "- MONDO:0041903 | gonococcal infection of joint | syn: gonococcal infection of joint | ancestors: gonorrhea, bacterial arthritis, primary bacterial infectious disease, bacterial sexually transmitted disease",
+"ko": "관절의 임균 감염",
+"alt": [
+"임균성 관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0019249",
+"concept": "- MONDO:0019249 | mucopolysaccharidosis | syn: Mucopolysaccharidoses; mucopolysaccharidoses; mucopolysaccharidosis | ancestors: lysosomal storage disease, developmental anomaly of metabolic origin, inborn carbohydrate metabolic disorder, mucopolysaccharidosis or mucopolysaccharidosis-like disorder | def: A group of autosomal recessive or X-linked inherited lysosomal storage disorders affecting the metabolism of mucopolysaccharides, resulting in the accumulation of mucopolysaccharides in the body. Sign...",
+"ko": "뮤코다당증",
+"alt": [
+"점액다당증"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019498",
+"concept": "- MONDO:0019498 | tungiasis | syn: Tunga penetrans caused disease or disorder; Tunga penetrans disease or disorder; Tunga penetrans infectious disease | ancestors: parasitic ectoparasitic infectious disease, vector-borne disease, parasitic skin disorder, infectious disease | def: An disease or disorder caused by infection with Tunga penetrans.",
+"ko": "툰가증",
+"alt": [
+"모래벼룩증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008542",
+"concept": "- MONDO:0008542 | tetralogy of fallot | syn: tetralogy of fallot; ventricular septal defect with pulmonary stenosis or atresia, dextraposition of aorta, and hypertrophy of right ventricle | ancestors: congenital heart disease, conotruncal heart malformations, cardiogenetic disease, heart disorder | def: Tetralogy of Fallot is a congenital cardiac malformation that consists of an interventricular communication, also known as a ventricular septal defect, obstruction of the right ventricular outflow tra...",
+"ko": "팔로 4징",
+"alt": [
+"팔로 사징후"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021777",
+"concept": "- MONDO:0021777 | acute rheumatic heart disease | syn: acute rheumatic heart disease | ancestors: rheumatic heart disease, acute disease, heart disorder, inflammatory disease | def: Pancarditis, involving inflammation of the endocardium, myocardium, and epicardium. It results from an autoimmune reaction following an infection with Streptococcus pyogenes (Group A Streptococci).",
+"ko": "급성 류마티스 심장병",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0005756",
+"concept": "- MONDO:0005756 | ethmoid sinusitis | syn: ethmoid bone sinusitis; ethmoidal sinusitis; sinusitis of ethmoid bone | ancestors: sinusitis, disorder of facial skeleton, paranasal sinus disorder, inflammatory disease | def: An acute or chronic inflammatory process affecting the mucous membrane of the ethmoid sinus.",
+"ko": "사골동염",
+"alt": [
+"사골 부비동염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004631",
+"concept": "- MONDO:0004631 | tongue cancer | syn: cancer of tongue; malignant neoplasm of tongue; malignant tongue neoplasm; malignant tongue tumor | ancestors: sensory system cancer, oral cavity cancer, head and neck cancer, tongue neoplasm | def: A malignant neoplasm affecting the tongue. The vast majority of cases are carcinomas.",
+"ko": "혀암",
+"alt": [
+"설암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006676",
+"concept": "- MONDO:0006676 | beriberi | syn: Beri Beri; thiamine deficiency; vitamin B1 deficiency | ancestors: vitamin B deficiency, vitamin deficiency disorder, nutritional deficiency disease, nutritional disorder | def: Beriberi is a condition that occurs in people who are deficient in thiamine (vitamin B1). There are two major types of beriberi: wet beriberi which affects the cardiovascular system and dry beriberi w...",
+"ko": "각기병",
+"alt": [
+"비타민 B1 결핍증"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006916",
+"concept": "- MONDO:0006916 | postcholecystectomy syndrome | ancestors: biliary tract disorder, urinary bladder disorder, hepatobiliary disorder, urinary system disorder | def: Abdominal symptoms after removal of the gallbladder. The common postoperative symptoms are often the same as those present before the operation, such as colic, bloating, nausea, and vomiting. There is...",
+"ko": "담낭절제술 후 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005990",
+"concept": "- MONDO:0005990 | tracheitis | syn: acute tracheitis; inflammation of tracheal mucosa; tracheal Inflammation; tracheal mucosa inflammation | ancestors: tracheal disorder, bacterial infectious disease, mucositis, tracheobronchitis | def: A tracheal disease which involves bacterial infection of the trachea often caused by Staphylococcus aureus and streptococci that follows a recent viral upper respiratory infection. The symptoms includ...",
+"ko": "기관염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0006554",
+"concept": "- MONDO:0006554 | granuloma annulare | syn: granuloma annulare | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: Granuloma annulare is a long-term (chronic) skin disease consisting of a rash with reddish bumps arranged in a circle or ring. The most commonly affected areas are the forearms, hands and feet. The le...",
+"ko": "환상육아종",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018301",
+"concept": "- MONDO:0018301 | interstitial cystitis | syn: bladder pain syndrome; chronic interstitial cystitis; IC/BPS; IC/PBS | ancestors: connective tissue disorder, chronic cystitis, disease by body system or component, cystitis | def: A rare chronic debilitating urogenital disease characterized by urinary frequency, urgency, and pelvic pain.",
+"ko": "간질성 방광염",
+"alt": [
+"방광통증 증후군"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005459",
+"concept": "- MONDO:0005459 | human African trypanosomiasis | syn: Africam sleeping sickness; African trypanosomiasis; sleeping sickness | ancestors: trypanosomiasis, vector-borne disease, protozoa infectious disease, infectious disease | def: A parasitic disorder caused by protozoa of the Trypanosoma brucei species. It is transmitted by flies and is endemic in various regions of Sub-Saharan Africa. Signs and symptoms include fever, joint p...",
+"ko": "인간 아프리카 트리파노소마증",
+"alt": [
+"아프리카 수면병"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0002278",
+"concept": "- MONDO:0002278 | benign colon neoplasm | syn: benign colon neoplasm; benign colon tumor; benign colon tumour; benign colonic neoplasm | ancestors: colonic neoplasm, benign neoplasm of large intestine, colonic disorder, colorectal neoplasm | def: A non-metastasizing neoplasm arising from the wall of the colon.",
+"ko": "결장 양성 신생물",
+"alt": [
+"대장 양성 종양"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019952",
+"concept": "- MONDO:0019952 | congenital myopathy | syn: congenital myopathy | ancestors: myopathy, skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder",
+"ko": "선천성 근병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004235",
+"concept": "- MONDO:0004235 | diverticulitis | syn: digestive tract diverticulum inflammation; inflammation of digestive tract diverticulum | ancestors: intestinal disorder, inflammatory disease, digestive system disorder, disease by developmental or physiological process | def: An infection that develops in the diverticula of the intestinal tract. Signs and symptoms include abdominal pain, fever, and leukocytosis.",
+"ko": "게실염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3
+}
+]

@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0002253",
+"concept": "- MONDO:0002253 | spondylosis | ancestors: disease of bone structure, bone disorder, skeletal system disorder, musculoskeletal system disorder | def: A degenerative spinal disease that can involve any part of the vertebra, the intervertebral disk, and the surrounding soft tissue.",
+"ko": "척추증",
+"alt": [
+"척추 증식증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 15,
+"new": false
+},
+{
+"id": "MONDO:0016301",
+"concept": "- MONDO:0016301 | congenitally corrected transposition of the great arteries | syn: congenitally corrected transposition of the great vessels; discordant ventriculoarterial and atrioventricular connections; Double discordance; L-transposition of the great arteries | ancestors: transposition of the great arteries, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder | def: Congenitally corrected transposition (CCT) of the great vessels is a rare cardiac malformation characterized by the combination of discordant atrioventricular and ventriculo-arterial connections, usua...",
+"ko": "선천성 교정 대혈관전위",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004203",
+"concept": "- MONDO:0004203 | female urethral cancer | syn: cancer of female urethra; female urethra cancer; female urethral malignant neoplasm; malignant female urethra neoplasm | ancestors: urethra cancer, malignant urinary system neoplasm, urethra neoplasm, cancer | def: A cancer that involves the female urethra.",
+"ko": "여성 요도암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007865",
+"concept": "- MONDO:0007865 | knuckle pads | syn: knuckle pads | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "손가락관절 결절",
+"alt": [
+"지절 패드"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0056798",
+"concept": "- MONDO:0056798 | disorder of appendix | syn: appendiceal disease; disease of appendix; disease of vermiform appendix; disease or disorder of vermiform appendix | ancestors: large intestine disorder, intestinal disorder, digestive system disorder, disease by body system or component | def: A disease or disorder that involves the vermiform appendix.",
+"ko": "충수 질환",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006883",
+"concept": "- MONDO:0006883 | malignant superior sulcus neoplasm | syn: malignant pulmonary sulcus neoplasm; malignant Superior sulcus lung neoplasm; malignant Superior sulcus lung tumor; malignant Superior sulcus lung tumour | ancestors: lung cancer, pulmonary sulcus neoplasm, respiratory system cancer, thoracic cancer | def: A malignant neoplasm originating from the apical lung. Most malignant superior sulcus neoplasms are bronchogenic carcinomas. This tumor may be associated with Pancoast syndrome. It is also known as Pa...",
+"ko": "악성 폐첨부 신생물",
+"alt": [
+"팬코스트 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001020",
+"concept": "- MONDO:0001020 | amblyopia | syn: amblyopia; amblyopia (disease) | ancestors: vision disorder, disorder of visual system, disease by body system or component, human disease | def: Decreased vision that results from abnormal visual development.",
+"ko": "약시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001967",
+"concept": "- MONDO:0001967 | gonadal dysgenesis | ancestors: hypogonadism, gonadal disorder, reproductive system disorder, endocrine system disorder | def: A congenital disorder characterized by the presence of extremely hypoplastic gonads preventing the development of secondary sex characteristics.",
+"ko": "생식샘 발생부전",
+"alt": [
+"성선 형성부전"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004794",
+"concept": "- MONDO:0004794 | exposure keratitis | syn: exposure keratoconjunctivitis | ancestors: keratoconjunctivitis, keratitis, conjunctivitis, corneal disorder",
+"ko": "노출각막염",
+"alt": [
+"노출성 각막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0042485",
+"concept": "- MONDO:0042485 | infective arthritis | syn: infective arthritis | ancestors: infectious disease, arthritic joint disease, disease of primarily extrinsic mechanism, bone inflammation disease | def: The inflammation of one or more joints caused by any infectious pathogen within the joint space. Symptoms include pain, stiffness, and decreased range of motion in the affected joint.",
+"ko": "감염성 관절염",
+"alt": [
+"화농성 관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0003297",
+"concept": "- MONDO:0003297 | gallbladder leiomyoma | syn: gall bladder leiomyoma; gallbladder leiomyoma; leiomyoma of gall bladder; leiomyoma of gallbladder | ancestors: leiomyoma, benign neoplasm of gallbladder, benign smooth muscle neoplasm, benign digestive system neoplasm | def: A benign smooth muscle neoplasm arising from the gallbladder. It is characterized by the presence of spindle cells with cigar-shaped nuclei, interlacing fascicles, and a whorled pattern.",
+"ko": "담낭 평활근종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0976127",
+"concept": "- MONDO:0976127 | Muggenthaler-Chowdhury-Chioza syndrome | syn: cleft lip and palate-craniofacial dysmorphism-congenital heart defect-deafness syndrome; cleft lip and palate-craniofacial dysmorphism-congenital heart defect-hearing loss syndrome; hyaluronidase 2 deficiency | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism",
+"ko": "뮈겐탈러-초두리-치오자 증후군",
+"alt": [
+"히알루로니다제 2 결핍증"
+],
+"organs": [
+"cardiovascular",
+"gastrointestinal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019142",
+"concept": "- MONDO:0019142 | inherited porphyria | syn: hereditary porphyria | ancestors: hereditary photodermatosis, inborn disorder of porphyrin metabolism, porphyria, hereditary skin disorder | def: Porphyrias constitute a group of eight hereditary metabolic diseases characterized by intermittent neuro-visceral manifestations, cutaneous lesions or by the combination of both.",
+"ko": "유전성 포르피린증",
+"alt": [
+"포르피린증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002594",
+"concept": "- MONDO:0002594 | monkeypox | syn: Monkeypox virus infection | ancestors: primary viral infectious disease, viral infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: An infection that is caused by an Orthopoxvirus, which is transmitted by primates or rodents, and which is characterized by a prodromal syndrome of fever, chills, headache, myalgia, and lymphedema; in...",
+"ko": "원숭이두창",
+"alt": [
+"엠폭스"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005001",
+"concept": "- MONDO:0005001 | chronic gastritis | syn: chronic gastritis; chronic gastritis (disease); gastritis (disease), chronic | ancestors: gastritis, stomach disorder, inflammatory disease, digestive system disorder | def: Inflammation of the stomach that is chronic in nature.",
+"ko": "만성 위염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0004677",
+"concept": "- MONDO:0004677 | tinea nigra | ancestors: superficial mycosis, cutaneous mycosis, fungal infectious disease, integumentary system disorder | def: A superficial mycosis that is a superficial fungal infection of the skin characterized by brown to black macules which usually occur on the palmar aspects of hands and occasionally the plantar and oth...",
+"ko": "흑색 백선",
+"alt": [
+"검은 백선"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004186",
+"concept": "- MONDO:0004186 | cranial nodular fasciitis | syn: cranial nodular fasciitis; cranial pseudosarcomatous fasciitis | ancestors: nodular fasciitis, skeletal system disorder, fasciitis, fibroblastic neoplasm | def: A rare self-limiting, rapidly growing, non-encapsulated benign neoplasm that arises from the cranium. This is an osteolytic lesion. It is characterized by the presence of plump spindle-shaped fibrobla...",
+"ko": "두개 결절성 근막염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009216",
+"concept": "- MONDO:0009216 | glycogen storage disease due to GLUT2 deficiency | syn: Bickel-Fanconi glycogenosis; Fanconi Bickel syndrome; Fanconi syndrome with intestinal malabsorption and galactose intolerance; Fanconi-Bickel disease | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: Fanconi-Bickel glycogenosis (FBG) is a rare glycogen storage disease characterized by hepatorenal glycogen accumulation, severe renal tubular dysfunction and impaired glucose and galactose metabolism.",
+"ko": "GLUT2 결핍에 의한 글리코겐 축적병",
+"alt": [
+"판코니-비켈 증후군"
+],
+"organs": [
+"hepatic",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0014744",
+"concept": "- MONDO:0014744 | acute infantile liver failure-cerebellar ataxia-peripheral sensory motor neuropathy syndrome | syn: acute infantile liver failure-cerebellar ataxia-peripheral sensory motor neuropathy syndrome; autosomal recessive spinocerebellar ataxia type 21; SCAR21; spinocerebellar ataxia, autosomal recessive 21 | ancestors: syndromic disease, autosomal recessive syndromic cerebellar ataxia, acute disease, disease by body system or component | def: An autosomal recessive cerebellar ataxia that has material basis in homozygous or compound heterozygous mutation in the SCYL1 gene on chromosome 11q13.",
+"ko": "급성 영아 간부전-소뇌실조-말초 감각운동 신경병증 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016486",
+"concept": "- MONDO:0016486 | beta-thalassemia major | syn: Beta thalassemia Major; Cooley anaemia; Cooley anemia; Cooley's Anaemia | ancestors: beta-thalassemia HBB/LCRB, beta thalassemia, thalassemia, endocrine system disorder | def: Beta-thalassemia (BT) major is a severe early-onset form of BT characterized by severe anemia requiring regular red blood cell transfusions.",
+"ko": "중증 베타지중해빈혈",
+"alt": [
+"쿨리 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+}
+]

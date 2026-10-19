@@ -1,0 +1,238 @@
+[
+{
+"id": "MONDO:0003432",
+"concept": "- MONDO:0003432 | strabismus | syn: squint; strabismus | ancestors: ocular motility disease, cranial nerve neuropathy, nervous system disorder, disease by body system or component | def: Strabismus is the intermittent or constant misalignment of an eye so that its line of vision is not pointed at the same object as the other eye. Strabismus is caused by an imbalance in the extraocular...",
+"ko": "사시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0100371",
+"concept": "- MONDO:0100371 | acute hepatitis C virus infection | syn: acute hepatitis C | ancestors: hepatitis C virus infection, acute disease, viral hepatitis, human disease | def: A new infection by the hepatitis C virus, which can be detected in blood. Signs and symptoms may include right upper quadrant abdominal pain, jaundice, dark urine, white stools and nausea. Approximate...",
+"ko": "급성 C형 간염 바이러스 감염",
+"alt": [
+"급성 C형 간염"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008412",
+"concept": "- MONDO:0008412 | intestinal schistosomiasis | ancestors: schistosomiasis, intestinal helminthiasis, helminthiasis, vector-borne disease | def: An intestinal infection that is caused by Schistosoma japonicum.",
+"ko": "장 주혈흡충증",
+"alt": [
+"장 일본주혈흡충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005645",
+"concept": "- MONDO:0005645 | ancylostomiasis | syn: Ancylostoma caused disease or disorder; Ancylostoma disease or disorder; Ancylostoma infectious disease | ancestors: trichostrongyloidiasis, Rhabditida infectious disease, Nematoda infectious disease, helminthiasis | def: Infection by hookworms of the genus Ancylostoma.",
+"ko": "십이지장충증",
+"alt": [
+"구충증"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020159",
+"concept": "- MONDO:0020159 | congenital entropion | ancestors: entropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "선천성 안검내반",
+"alt": [
+"선천성 눈꺼풀 안쪽말림"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001517",
+"concept": "- MONDO:0001517 | dysentery | syn: diarrheal disease, infectious; dysenteric diarrhea; dysenteric diarrhoea; infectious diarrhea | ancestors: inflammatory diarrhea, acute diarrhea, intestinal infectious disease, gastrointestinal mucositis | def: Acute inflammation of the intestine associated with infectious diarrhea of various etiologies, generally acquired by eating contaminated food containing toxins, biological derived from bacteria or oth...",
+"ko": "이질",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002304",
+"concept": "- MONDO:0002304 | protein S deficiency | syn: Protein S deficiency; Protein S deficiency disease | ancestors: thrombophilia, blood coagulation disease, hematologic disorder, disease by body system or component | def: Protein S deficiency is a disorder that causes abnormal blood clotting. When someone bleeds, the blood begins a complicated series of rapid chemical reactions involving proteins called blood coagulati...",
+"ko": "단백질 S 결핍증",
+"alt": [
+"단백 S 결핍증"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020572",
+"concept": "- MONDO:0020572 | complex regional pain syndrome type 2 | syn: causalgia; Complex regional pain syndrome II; CRPS II | ancestors: syndromic disease, complex regional pain syndrome, disease by body system or component, chronic pain syndrome | def: Complex regional pain syndrome type 2 (CRPS2), or causalgia is a form of complex regional pain syndrome that develops after damage to a peripheral nerve and is characterized by spontaneous pain, allod...",
+"ko": "복합부위통증증후군 2형",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001326",
+"concept": "- MONDO:0001326 | dental pulp necrosis | syn: necrosis of pulp; necrosis of the pulp; necrotic pulp; pulp necrosis | ancestors: dental pulp disorder, tooth disorder, skeletal system disorder, mouth disorder | def: Death of pulp tissue with or without bacterial invasion. When the necrosis is due to ischemia with superimposed bacterial infection, it is referred to as pulp gangrene. When the necrosis is non-bacter...",
+"ko": "치수 괴사",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008938",
+"concept": "- MONDO:0008938 | early-onset cerebellar ataxia with retained tendon reflexes | syn: EOCA; EOCARR; Harding ataxia | ancestors: autosomal recessive degenerative and progressive cerebellar ataxia, autosomal recessive cerebellar ataxia, autosomal recessive disease, hereditary cerebellar ataxia | def: Early onset cerebellar ataxia with retained reflexes (EOCARR) or Harding ataxia is a cerebellar ataxia characterized by the progressive association of a cerebellar and pyramidal syndrome with progress...",
+"ko": "건반사가 보존된 조기 발병 소뇌 운동실조",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0009000",
+"concept": "- MONDO:0009000 | familial reactive perforating collagenosis | ancestors: dermis disorder, skin disorder, integumentary system disorder, disease by body system or component | def: Familial reactive perforating collagenosis is a very rare genetic skin disease characterized by transepidermal elimination of collagen fibers presenting as recurrent spontaneously involuting keratotic...",
+"ko": "가족성 반응성 천공성 교원질증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002240",
+"concept": "- MONDO:0002240 | acute perichondritis of pinna | syn: acute perichondritis of auricle; perichondritis of auricle, acute | ancestors: acute otitis externa, perichondritis of auricle, otitis externa, acute disease | def: Acute form of perichondritis of auricle.",
+"ko": "급성 귓바퀴 연골막염",
+"alt": [
+"급성 이개연골막염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005354",
+"concept": "- MONDO:0005354 | chronic hepatitis C virus infection | syn: chronic Hepatitis C; hepatitis C infection, chronic; hepatitis C, chronic | ancestors: hepatitis C virus infection, viral hepatitis, hepatitis, digestive system infectious disorder | def: Chronic form of hepatitis C infection.",
+"ko": "만성 C형간염 바이러스 감염",
+"alt": [
+"만성 C형간염"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0004927",
+"concept": "- MONDO:0004927 | dacryocystocele | syn: lacrimal mucocele | ancestors: chronic inflammation of lacrimal passage, lacrimal apparatus disorder, inflammatory disease, eye adnexa disorder | def: A congenital or acquired mucocele that develops in the lacrimal sac. It is usually the result of nasolacrimal duct abnormalities or obstruction.",
+"ko": "눈물주머니낭종",
+"alt": [
+"눈물 점액류"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005236",
+"concept": "- MONDO:0005236 | xanthoma | syn: xanthoma; xanthoma (disease) | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A non-neoplastic disorder characterized by a localized collection of histiocytes containing lipid. Xanthomas usually occur in the skin and subcutaneous tissues, but occasionally they may involve the d...",
+"ko": "황색종",
+"alt": [],
+"organs": [
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005201",
+"concept": "- MONDO:0005201 | restrictive cardiomyopathy | syn: restrictive cardiomyopathy | ancestors: intrinsic cardiomyopathy, cardiomyopathy, muscle tissue disorder, heart disorder | def: A type of heart disorder referring to the inability of the ventricles to fill with blood because the myocardium (heart muscle) stiffens and looses its flexibility. Causes include replacement of the my...",
+"ko": "제한 심근병증",
+"alt": [
+"제한성 심근병증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001299",
+"concept": "- MONDO:0001299 | diabetic autonomic neuropathy | ancestors: autonomic neuropathy, diabetic neuropathy, autonomic nervous system disorder, peripheral neuropathy | def: Autonomic neuropathy that is caused by diabetes mellitus.",
+"ko": "당뇨병성 자율신경병증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002236",
+"concept": "- MONDO:0002236 | ocular cancer | syn: cancer of eye; cancer of eyeball of camera-type eye; cancer of the eye; eye cancer | ancestors: sensory system cancer, head and neck cancer, eye neoplasm, nervous system cancer | def: A benign or malignant neoplasm affecting the structures of the eye.",
+"ko": "안암",
+"alt": [
+"눈암"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019650",
+"concept": "- MONDO:0019650 | idiopathic steroid-sensitive nephrotic syndrome with minimal change | syn: steroid-sensitive MCNS | ancestors: idiopathic steroid-sensitive nephrotic syndrome, idiopathic nephrotic syndrome, nephrotic syndrome, idiopathic disease",
+"ko": "미세변화를 동반한 특발성 스테로이드 감수성 신증후군",
+"alt": [
+"스테로이드 감수성 미세변화 신증후군"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006752",
+"concept": "- MONDO:0006752 | Erysipelothrix rhusiopathiae infectious disease | syn: erysipeloid; Erysipelothrix rhusiopathiae caused disease or disorder; Erysipelothrix rhusiopathiae disease or disorder | ancestors: Erysipelothrix infectious disease, gram-positive bacterial infections, bacterial infectious disease, infectious disease | def: A disease caused by infection with Erysipelothrix rhusiopathiae.",
+"ko": "돼지단독균 감염증",
+"alt": [
+"유단독"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+}
+]

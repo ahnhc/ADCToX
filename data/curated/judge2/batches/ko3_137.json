@@ -1,0 +1,263 @@
+[
+{
+"id": "MONDO:0001977",
+"concept": "- MONDO:0001977 | ureteral lymphoma | syn: lymphoma of the ureter; lymphoma of ureter; primary ureter lymphoma; ureter lymphoma | ancestors: lymphoma, ureter cancer, lymphoid neoplasm, lymphoid hemopathy | def: A lymphoma that involves the ureter.",
+"ko": "요관 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009738",
+"concept": "- MONDO:0009738 | sialidosis type 2 | syn: dysmorphic sialidosis; dysmorphic sialidosis with renal involvement; infantile dysmorphic sialidosis; mucolipidosis I | ancestors: sialidosis, familial mucolipidosis, lysosomal storage disease with skeletal involvement, oligosaccharidosis | def: A rare lysosomal storage disease, and the severe, early onset form of sialidosis characterized by a progressively severe mucopolysaccharidosis-like phenotype (coarse facies, dysostosis multiplex, hepa...",
+"ko": "시알리도시스 2형",
+"alt": [
+"이형성 시알리도시스"
+],
+"organs": [
+"renal",
+"neurologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002128",
+"concept": "- MONDO:0002128 | mononeuritis multiplex | syn: mononeuritis multiplex | ancestors: neuritis of upper limb, neuritis, peripheral neuropathy, inflammatory disease | def: A painful asymmetric asynchronous sensory and motor peripheral neuropathy involving isolated damage to at least 2 separate nerve areas; associated with (but not limited to) systemic disorders such as ...",
+"ko": "다발단일신경염",
+"alt": [
+"다발성 단일신경염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001061",
+"concept": "- MONDO:0001061 | pylorus cancer | syn: cancer of pylorus; malignant neoplasm of Prepylorus; malignant neoplasm of pylorus; malignant pylorus neoplasm | ancestors: gastric cancer, digestive system cancer, gastric neoplasm, digestive system disorder | def: A malignant neoplasm involving the pylorus.",
+"ko": "유문부 암",
+"alt": [
+"유문암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0009859",
+"concept": "- MONDO:0009859 | PHAVER syndrome | syn: PHAVER syndrome; Powell-Chandra-Saal syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome without intellectual disability, multiple congenital anomalies/dysmorphic syndrome, developmental defect during embryogenesis, disorder of development or morphogenesis | def: Phaver syndrome is a very rare syndrome characterized by the association of limb Pterygia, Heart anomalies, Autosomal recessive inheritance, Vertebral defects, Ear anomalies and Radial defects.",
+"ko": "PHAVER 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003984",
+"concept": "- MONDO:0003984 | internal auditory canal lipoma | syn: inner Ear lipoma; internal acoustic meatus lipoma; internal Ear lipoma; lipoma of internal acoustic meatus | ancestors: lipoma, benign neoplasm of ear, inner ear neoplasm, benign lipomatous neoplasm | def: A rare benign adipose tissue neoplasm of the internal auditory canal, often presenting as an acoustic tumor. It may be intermixed with the vestibulocochlear nerve and may adhere to adjacent structures...",
+"ko": "내이도 지방종",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000158",
+"concept": "- MONDO:0000158 | developmental dysplasia of the hip | syn: congenital hip dysplasia | ancestors: hereditary disease, bone development disease, disease of genetic or genomic mechanism, bone disorder | def: A spectrum of hip abnormalities commonly presenting in infancy involving the relationship between the femoral head and the acetabulum and that includes subluxation or dislocation at rest or upon provo...",
+"ko": "발달성 고관절 이형성증",
+"alt": [
+"선천성 고관절 이형성증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0022697",
+"concept": "- MONDO:0022697 | athetoid cerebral palsy | syn: athetoid cerebral palsy; dyskinetic cerebral palsy | ancestors: cerebral palsy, palsy, cerebral cortex disorder, central nervous system disorder | def: A subtype of cerebral palsy characterized by involuntary, purposeless writhing movements which affect the hands, feet, arms, and legs; the face and tongue may be affected as well, leading to involunta...",
+"ko": "무정위운동형 뇌성마비",
+"alt": [
+"이상운동형 뇌성마비"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001419",
+"concept": "- MONDO:0001419 | trachea squamous cell carcinoma | syn: epidermoid carcinoma of the trachea; epidermoid carcinoma of trachea; squamous cell carcinoma of the trachea; squamous cell carcinoma of trachea | ancestors: trachea carcinoma, squamous cell carcinoma, tracheal cancer, carcinoma | def: A rare squamous cell carcinoma that arises from the mucosal lining of the trachea. It usually grows as an intraluminal mass and later invades extraluminal structures. The majority of patients present ...",
+"ko": "기관 편평세포암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021404",
+"concept": "- MONDO:0021404 | polyp of sphenoidal sinus | syn: polyp of sphenoid sinus; polyp of the sphenoid sinus; polyp of the sphenoidal sinus; sphenoid sinus polyp | ancestors: paranasal sinus disorder, polyp, disorder of facial skeleton, nasal disorder | def: A polyp that involves the sphenoidal sinus.",
+"ko": "나비굴 용종",
+"alt": [
+"접형동 용종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0043327",
+"concept": "- MONDO:0043327 | cerebrospinal fluid leak | syn: cerebrospinal fluid leak | ancestors: central nervous system disorder, nervous system disorder, disease by body system or component, human disease | def: Discharge of cerebrospinal fluid through a hole through the skull bone most commonly draining from the nose (CEREBROSPINAL FLUID RHINORRHEA) or the ear (CEREBROSPINAL FLUID OTORRHEA).",
+"ko": "뇌척수액 누출",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005771",
+"concept": "- MONDO:0005771 | geographic tongue | syn: benign migratory glossitis; glossitis areata exfoliativa | ancestors: atrophic glossitis, glossitis, tongue disorder, inflammatory disease | def: A benign condition characterized by the development of irregular patches in the surface of the tongue resulting in a map-like appearance. The patches migrate from day to day and usually resolve withou...",
+"ko": "지도상 혀",
+"alt": [
+"양성 이동성 설염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0100471",
+"concept": "- MONDO:0100471 | vitamin D deficiency | syn: avitaminosis D; avitaminosis D, NOS; DEFIC VITAMIN D; deficiencies, vitamin D | ancestors: vitamin deficiency disorder, nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism | def: Abnormally low level of 25-hydroxyvitamin D in the blood.",
+"ko": "비타민 D 결핍증",
+"alt": [
+"비타민 D 결핍"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0008737",
+"concept": "- MONDO:0008737 | congenital afibrinogenemia | ancestors: familial dysfibrinogenemia, congenital fibrinogen deficiency, coagulation protein disease, hemorrhagic disease | def: Familial afibrinogenemia is a coagulation disorder characterized by bleeding symptoms due to a complete absence of circulating fibrinogen.",
+"ko": "선천성 무섬유소원혈증",
+"alt": [
+"선천성 무피브리노겐혈증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005784",
+"concept": "- MONDO:0005784 | hantavirus hemorrhagic fever with renal syndrome | syn: hemorrhagic nephrosonephritis; HFRS | ancestors: renal infectious disease, hantavirus infectious disease, kidney disorder, urinary tract infection | def: A disorder caused by hantaviruses of the family Bunyaviridae. It is transmitted by rodents and is manifested with fever, hemorrhage, and renal failure. Other symptoms include headaches, abdominal and ...",
+"ko": "한타바이러스 신증후 출혈열",
+"alt": [
+"유행성 출혈열"
+],
+"organs": [
+"haematologic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001943",
+"concept": "- MONDO:0001943 | Plasmodium malariae malaria | syn: quartan malaria | ancestors: malaria, protozoa infectious disease, erythrocyte disorder, vector-borne disease | def: Malaria resulting from infection by Plasmodium malariae.",
+"ko": "Plasmodium malariae 말라리아",
+"alt": [
+"사일열 말라리아"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001519",
+"concept": "- MONDO:0001519 | entropion | syn: entropion; entropion (disease) | ancestors: eyelid disorder, eye adnexa disorder, eye disorder, disorder of orbital region | def: The turning inward (inversion) of the edge of the eyelid, with the tarsal cartilage turned inward toward the eyeball. (Dorland, 27th ed)",
+"ko": "안검내반",
+"alt": [
+"눈꺼풀속말림"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003190",
+"concept": "- MONDO:0003190 | middle ear carcinoma | syn: carcinoma of middle Ear; carcinoma of middle ear; carcinoma of the middle Ear; carcinoma of the middle ear | ancestors: head and neck carcinoma, middle ear cancer, carcinoma, head and neck cancer | def: A carcinoma that arises from epithelial cells of the middle ear",
+"ko": "중이 암종",
+"alt": [
+"중이암"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0023153",
+"concept": "- MONDO:0023153 | tuberculous ascites | syn: tuberculous ascites | ancestors: abdominal tuberculosis, extrapulmonary tuberculosis, tuberculosis, primary bacterial infectious disease | def: A type of abdominal tuberculosis that is characterized by accumulation of fluid in the abdomen, a swollen abdomen, and slightly raised tubercles of 1–2 mm all over the peritoneum.",
+"ko": "결핵성 복수",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007174",
+"concept": "- MONDO:0007174 | Lown-Ganong-Levine syndrome | syn: atrial tachyarrhythmia with short PR interval; LGL syndrome; Lown-Ganong-Levine syndrome | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: Lown-Ganong-Levine syndrome is an extremely rare conduction disorder characterized by a short PR interval (less than or equal to 120 ms) with normal QRS complex on electrocardiogram associated with th...",
+"ko": "라운-가농-르빈 증후군",
+"alt": [
+"LGL 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+}
+]

@@ -1,0 +1,255 @@
+[
+{
+"id": "MONDO:0000924",
+"concept": "- MONDO:0000924 | compensatory emphysema | ancestors: pulmonary emphysema, chronic obstructive pulmonary disease, obstructive lung disease, tracheal disorder",
+"ko": "보상성 폐기종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014164",
+"concept": "- MONDO:0014164 | Meckel syndrome, type 11 | syn: meckel syndrome 11; Meckel syndrome caused by mutation in TMEM231; Meckel syndrome, type 11; TMEM231 Meckel syndrome | ancestors: Meckel syndrome, syndromic disease, ciliopathy, hereditary lethal multiple congenital anomalies/dysmorphic syndrome | def: Any Meckel syndrome in which the cause of the disease is a mutation in the TMEM231 gene.",
+"ko": "메켈 증후군 11형",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0041052",
+"concept": "- MONDO:0041052 | postherpetic neuralgia | syn: postherpetic neuralgia | ancestors: post-infectious neuralgia, neuralgia, post-viral disorder, peripheral neuropathy",
+"ko": "대상포진 후 신경통",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019147",
+"concept": "- MONDO:0019147 | myiasis | syn: infestation by fly larvae; infestation by maggots; maggot infestation; myiasis, unspecified | ancestors: parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease, skin disorder caused by infection | def: The infection of a fly larva (maggot) in human tissue, which most commonly occurs in tropical climates. Affected tissues most commonly include skin, especially if open wounds are present, nasal passag...",
+"ko": "파리유충증",
+"alt": [
+"구더기증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001246",
+"concept": "- MONDO:0001246 | typhus | syn: typhus fever; typhus-group rickettsiae disease; typhus-group rickettsiosis | ancestors: Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis, gram-negative bacterial infections | def: A group of infectious diseases that include epidemic typhus, scrub typhus and murine typhus.",
+"ko": "발진티푸스",
+"alt": [
+"티푸스열"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0010298",
+"concept": "- MONDO:0010298 | Lesch-Nyhan syndrome | syn: complete hypoxanthine-guanine phosphoribosyltransferase deficiency; deficiency of IMP pyrophosphorylase; HPRT complete deficiency; HPRT deficiency grade IV | ancestors: syndromic disease, hypoxanthine-guanine phosphoribosyltransferase deficiency, disease by body system or component, inborn disorder of purine metabolism | def: Lesch-Nyhan syndrome (LNS) is the most severe form of hypoxanthine-guanine phosphoribosyltransferase (HPRT) deficiency, a hereditary disorder of purine metabolism, and is associated with uric acid ove...",
+"ko": "레쉬-니한 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006572",
+"concept": "- MONDO:0006572 | lichen planus | syn: lichen ruber planus | ancestors: dermatitis, lichen disease, skin disorder, inflammatory disease | def: A chronic, recurrent, pruritic inflammatory disorder of unknown etiology that affects the skin and mucus membranes. It presents with rashes and papules that tend to resolve spontaneously. It may be as...",
+"ko": "편평태선",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0015072",
+"concept": "- MONDO:0015072 | liver neuroendocrine carcinoma | syn: hepatic neuroendocrine carcinoma; HNEC; liver neuroendocrine cancer; liver neuroendocrine carcinoma | ancestors: neuroendocrine carcinoma, carcinoma of liver and intrahepatic biliary tract, digestive system neuroendocrine neoplasm, carcinoma | def: An extremely rare, aggressive, high-grade and poorly differentiated carcinoma with neuroendocrine differentiation that arises from the liver.",
+"ko": "간 신경내분비암종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001671",
+"concept": "- MONDO:0001671 | mucocele of appendix | syn: appendiceal mucocele; mucocele of the appendix | ancestors: intestinal disorder, digestive system disorder, disease by body system or component, human disease | def: Accumulation of mucus within the appendix.",
+"ko": "충수 점액류",
+"alt": [
+"충수 점액낭종"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021416",
+"concept": "- MONDO:0021416 | polyp of gallbladder | syn: gall bladder polyp; gallbladder polyp; polyp of the gallbladder | ancestors: polyp, gallbladder disorder, cancer or benign tumor, hepatobiliary disorder | def: A polyp that involves the gall bladder.",
+"ko": "담낭 용종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015229",
+"concept": "- MONDO:0015229 | Bardet-Biedl syndrome | syn: Bardet-Biedl syndrome; BBS | ancestors: syndromic disease, ciliopathy, autosomal recessive disease, disease by body system or component | def: A ciliopathy with multisystem involvement. It is invariantly characterized by rod-cone dystrophy, and at least three additional non-ocular features such as intellectual disability, obesity, polydactyl...",
+"ko": "바르데-비들 증후군",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005634",
+"concept": "- MONDO:0005634 | acute hemorrhagic conjunctivitis | syn: epidemic hemorrhagic conjunctivitis | ancestors: acute conjunctivitis, viral conjunctivitis, conjunctivitis, acute disease | def: Acute conjunctivitis that is characterized by bleeding into the conjunctiva.",
+"ko": "급성 출혈성 결막염",
+"alt": [
+"유행성 출혈성 결막염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0020568",
+"concept": "- MONDO:0020568 | cutaneous myiasis | ancestors: myiasis, parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease",
+"ko": "피부 구더기증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005709",
+"concept": "- MONDO:0005709 | common cold | syn: acute nasopharyngitis; acute nasopharyngitis [common cold]; acute rhinitis | ancestors: nasopharyngitis, viral respiratory tract infection, nasopharyngeal disorder, inflammatory disease | def: An inflammatory process affecting the nasal mucosa, usually caused by viruses (e.g., rhinovirus, adenovirus, parainfluenza virus, and coronavirus). It is characterized by chills, headaches, mucopurule...",
+"ko": "감기",
+"alt": [
+"급성 비인두염",
+"일반감기"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001734",
+"concept": "- MONDO:0001734 | tuberous sclerosis | syn: Bourneville disease; Bourneville syndrome; Bourneville's disease; Bourneville's syndrome | ancestors: autosomal dominant disease, hereditary neoplastic syndrome, neurocutaneous syndrome, hereditary neurological disease | def: Hereditary disease characterized by seizures, intellectual disability, developmental delay, and skin and ocular lesions. First signs usually occur during infancy or childhood but in rare cases may not...",
+"ko": "결절성 경화증",
+"alt": [
+"부르느빌병"
+],
+"organs": [
+"renal",
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0012892",
+"concept": "- MONDO:0012892 | bone fragility with contractures, arterial rupture, and deafness | syn: bone fragility with contractures, arterial rupture, and deafness; bone fragility-contractures-arterial rupture-deafness syndrome; connective tissue disorder due to LH3 deficiency; connective tissue disorder due to lysyl hydroxylase-3 deficiency | ancestors: developmental defect during embryogenesis, hereditary disorder of connective tissue, disorder of development or morphogenesis, hereditary disease | def: A rare, genetic disease, caused by lack of lysyl hydrohylase 3 (LH3) activity, characterized by multiple tissue and organ involvement, including skeletal abnormalities (club foot, progressive scoliosi...",
+"ko": "구축, 동맥 파열 및 난청을 동반한 골취약성",
+"alt": [],
+"organs": [
+"cardiovascular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002551",
+"concept": "- MONDO:0002551 | c-P angle neurinoma | syn: cerebellar Pontine angle neurinoma; cerebellopontine angle neurinoma; cerebellopontine angle schwannoma | ancestors: cerebellopontine angle tumor, brain neoplasm, brain disorder, central nervous system neoplasm",
+"ko": "소뇌교각 신경초종",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0043468",
+"concept": "- MONDO:0043468 | acne keloid | syn: acne keloid; keloidal folliculitis | ancestors: keloid, folliculitis, reactive cutaneous fibrous lesion, dermatitis | def: A chronic eruption of fibrous papules that develop and fuse to form a thick sclerotic, hypertrophic band at a site of deep folliculitis, usually along the posterior hairline of the scalp. It is most c...",
+"ko": "켈로이드 여드름",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0001670",
+"concept": "- MONDO:0001670 | tooth resorption | ancestors: tooth hard tissue disease, tooth disorder, skeletal system disorder, mouth disorder | def: Resorption of calcified dental tissue, involving demineralization due to reversal of the cation exchange and lacunar resorption by osteoclasts. There are two types: external (as a result of tooth path...",
+"ko": "치아 흡수",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001873",
+"concept": "- MONDO:0001873 | geniculate ganglionitis | syn: geniculate ganglion inflammation; geniculate ganglionitis; inflammation of geniculate ganglion | ancestors: facial nerve disorder, inflammatory disease, sensory ganglionopathy, cranial nerve neuropathy | def: Diseases of the facial nerve or nuclei. Pontine disorders may affect the facial nuclei or nerve fascicle. The nerve may be involved intracranially, along its course through the petrous portion of the ...",
+"ko": "무릎신경절염",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+}
+]

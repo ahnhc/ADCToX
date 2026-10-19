@@ -1,0 +1,239 @@
+[
+{
+"id": "MONDO:0006827",
+"concept": "- MONDO:0006827 | lateral medullary syndrome | syn: Posterior inferior cerebellar artery syndrome; Wallenberg syndrome; Wallenberg's syndrome | ancestors: syndromic disease, brain stem infarction, disease by body system or component, brain infarction | def: A syndrome caused by an infarct in the vertebral or posterior inferior cerebellar artery. It is characterized by sensory defects affecting the same side of the face as the infarct and the opposite sid...",
+"ko": "외측 연수 증후군",
+"alt": [
+"왈렌베르크 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002078",
+"concept": "- MONDO:0002078 | heart septal defect | syn: Cardiac septal defects; congenital septal defect; holes in the heart | ancestors: congenital heart disease, heart disorder, congenital anomaly of cardiovascular system, cardiovascular disorder | def: A congenital disorder characterized by the presence of an abnormal communication between the atria or the ventricles of the heart due to defects in the cardiac septum.",
+"ko": "심장중격결손",
+"alt": [
+"심장 사이막 결손"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001223",
+"concept": "- MONDO:0001223 | parathyroid gland disorder | syn: disease of parathyroid gland; disease or disorder of parathyroid gland; disorder of parathyroid gland; parathyroid disease | ancestors: endocrine system disorder, disease by body system or component, human disease, disease | def: A disease involving the parathyroid gland.",
+"ko": "부갑상선 질환",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005654",
+"concept": "- MONDO:0005654 | ascariasis | syn: Ascaris lumbricoides caused disease or disorder; Ascaris lumbricoides disease or disorder; Ascaris lumbricoides infectious disease | ancestors: Ascaridida infectious disease, Rhabditida infectious disease, Nematoda infectious disease, helminthiasis | def: An infection that is caused by the roundworm Ascaris lumbricoides, many cases of which remain asymptomatic. During the transient larval migratory phase, shortness of breath, fever, and eosinophilia ca...",
+"ko": "회충증",
+"alt": [
+"거염충증"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0021727",
+"concept": "- MONDO:0021727 | aberrant subclavian artery | syn: aberrant subclavian artery; congenital malposition of subclavian artery | ancestors: arterial disorder, vascular disorder, cardiovascular disorder, disease by body system or component | def: Aberrant subclavian artery is a rare vascular anomaly that is present from birth. It usually causes no symptoms and is oftendiscovered as an incidental finding (such as througha barium swallow or echo...",
+"ko": "이상 쇄골하동맥",
+"alt": [
+"비정상 쇄골하동맥"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001751",
+"concept": "- MONDO:0001751 | cholestasis | syn: obstruction of bile duct | ancestors: bile duct disorder, biliary tract disorder, hepatobiliary disorder, digestive system disorder | def: Impairment of the bile flow caused by obstruction within the liver, or outside the liver in the bile duct system.",
+"ko": "담즙정체",
+"alt": [
+"담즙 정체증"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000045",
+"concept": "- MONDO:0000045 | hypothyroidism, congenital, nongoitrous | ancestors: hereditary disease, congenital hypothyroidism, disease of genetic or genomic mechanism, hypothyroidism",
+"ko": "선천성 비갑상선종성 갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005788",
+"concept": "- MONDO:0005788 | hepatitis E virus infection | syn: Hepatitis E virus caused hepatitis; Hepatitis E virus hepatitis; hepatitis type E | ancestors: viral hepatitis, hepatitis, digestive system infectious disorder, primary viral infectious disease | def: Acute inflammation of the liver in humans; caused by hepatitis E virus, a non-enveloped single-stranded rna virus. Similar to hepatitis A, its incubation period is 15-60 days and is enterically transm...",
+"ko": "E형 간염 바이러스 감염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005761",
+"concept": "- MONDO:0005761 | filarial elephantiasis | syn: eyelid elephantiasis; Lymphatic Filariasis | ancestors: parasitic eyelid infestation, elephantiasis, filariasis, vector-borne disease | def: Parasitic infestation of the human lymphatic system by wuchereria bancrofti or brugia malayi. It is also called lymphatic filariasis.",
+"ko": "사상충성 코끼리피부병",
+"alt": [
+"림프사상충증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005976",
+"concept": "- MONDO:0005976 | syphilis | syn: Treponema pallidum caused disease or disorder; Treponema pallidum disease or disorder; Treponema pallidum infectious disease | ancestors: primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease, bacterial sexually transmitted disease | def: A contagious bacterial infection caused by the spirochete Treponema pallidum. It is a sexually transmitted disorder, although it can also be transmitted from the mother to the fetus in utero. Typicall...",
+"ko": "매독",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0006044",
+"concept": "- MONDO:0006044 | nephrosclerosis | ancestors: renal artery disease, kidney disorder, aortic disorder, urinary system disorder | def: Hardening of the kidney due to infiltration by fibrous connective tissue (fibrosis), usually caused by renovascular diseases or chronic hypertension. Nephrosclerosis leads to renal ischemia.",
+"ko": "콩팥경화증",
+"alt": [
+"신장경화증"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004763",
+"concept": "- MONDO:0004763 | carotid artery dissection | syn: dissection of carotid artery | ancestors: carotid artery disorder, arterial disorder, cerebrovascular disorder, vascular disorder | def: Spontaneous or traumatic separation of the layers of the carotid artery wall. It manifests with headache, neck pain, temporary vision loss, and/or ischemic stroke.",
+"ko": "목동맥 박리",
+"alt": [
+"경동맥 박리"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018870",
+"concept": "- MONDO:0018870 | arterial calcification of infancy | syn: generalised arterial calcification of infancy; Generalized Arterial Calcification of Infancy; generalized arterial calcification of infancy; idiopathic infantile arterial calcification | ancestors: hereditary disease, vascular disorder, disease of genetic or genomic mechanism, cardiovascular disorder | def: Idiopathic arterial calcification of infancy is a rare condition characterized by extensive calcification and stenosis of the large and medium sized arteries.",
+"ko": "영아 동맥 석회화",
+"alt": [
+"영아 전신 동맥 석회화"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001364",
+"concept": "- MONDO:0001364 | regular astigmatism | ancestors: astigmatism, refractive error, eye disorder, disorder of orbital region",
+"ko": "정난시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008046",
+"concept": "- MONDO:0008046 | autosomal dominant myoglobinuria | syn: myoglobinuria, autosomal dominant | ancestors: autosomal dominant disease, inborn errors of metabolism, autosomal genetic disease, hereditary disease | def: Autosomal dominant myoglobinuria is a rare metabolic myopathy characterized by episodic myalgia with myoglobinuria which is induced by fever, viral or bacterial infection, prolonged exercise or alcoho...",
+"ko": "상염색체 우성 근글로빈뇨증",
+"alt": [],
+"organs": [
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001255",
+"concept": "- MONDO:0001255 | ventilation pneumonitis | syn: humidifier lung; humidifiers lung; ventilation systems lung | ancestors: hypersensitivity pneumonitis, allergic respiratory disease, interstitial lung disease, pneumonitis | def: An extrinsic allergic alveolitis caused by inhalation of antigens from thermophilic actinomycetes species growing in air conditioners and humidifiers. Fungi like Aureobasidium sp and Candida albicans ...",
+"ko": "환기장치 과민성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008409",
+"concept": "- MONDO:0008409 | congenital myopathy 7A, myosin storage, autosomal dominant | syn: autosomal dominant myosin storage myopathy; MSMA; MYH7-related late-onset scapuloperoneal muscular dystrophy; MYH7-related late-onset scapuloperoneal syndrome | ancestors: scapuloperoneal myopathy, congenital nervous system disorder, neuromuscular disease caused by qualitative or quantitative defects of beta-myosin heavy chain (MYH7), congenital myopathy",
+"ko": "선천성 근육병 7A, 미오신 저장, 상염색체 우성",
+"alt": [
+"상염색체 우성 미오신 저장 근육병"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004677",
+"concept": "- MONDO:0004677 | tinea nigra | ancestors: superficial mycosis, cutaneous mycosis, fungal infectious disease, integumentary system disorder | def: A superficial mycosis that is a superficial fungal infection of the skin characterized by brown to black macules which usually occur on the palmar aspects of hands and occasionally the plantar and oth...",
+"ko": "흑색 백선",
+"alt": [
+"검은 백선"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007009",
+"concept": "- MONDO:0007009 | ureterolithiasis | syn: calculus of ureter; ureteric stone | ancestors: ureteral disorder, urinary bladder disorder, urinary system disorder, disease by body system or component | def: The presence of a calculus in the ureter of the kidney; this is most often composed of mineral salts and proteins.",
+"ko": "요관결석증",
+"alt": [
+"요관 결석"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006740",
+"concept": "- MONDO:0006740 | empty sella syndrome | syn: empty sella; empty sella syndrome | ancestors: syndromic disease, pituitary gland disorder, disease by body system or component, reproductive system disorder | def: Empty sella syndrome (ESS) is a condition that involves the sella turcica, a bony structure at the base of the brain that protects the pituitary gland. There is a primary and secondary form of the con...",
+"ko": "빈 안장 증후군",
+"alt": [
+"공안장 증후군"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+}
+]

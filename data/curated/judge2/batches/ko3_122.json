@@ -1,0 +1,256 @@
+[
+{
+"id": "MONDO:0980992",
+"concept": "- MONDO:0980992 | Meier-Gorlin syndrome 9 | syn: GINS3 Meier-Gorlin syndrome; Meier-Gorlin syndrome 9; MGORS9 | ancestors: Meier-Gorlin syndrome, syndromic disease, autosomal recessive disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome | def: Any Meier-Gorlin syndrome in which the cause of the disease is a mutation in the GINS3 gene.",
+"ko": "마이어-고를린 증후군 9",
+"alt": [
+"GINS3 마이어-고를린 증후군"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009662",
+"concept": "- MONDO:0009662 | mucopolysaccharidosis type 7 | syn: Beta-glucuronidase deficiency; beta-glucuronidase deficiency; MPS7; MPSVII | ancestors: mucopolysaccharidosis, lysosomal storage disease with skeletal involvement, lysosomal storage disease, developmental anomaly of metabolic origin | def: Mucopolysaccharidosis type VII (MPS VII) is a very rare lysosomal storage disease belonging to the group of mucopolysaccharidoses.",
+"ko": "점액다당질증 7형",
+"alt": [
+"슬라이 증후군"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006550",
+"concept": "- MONDO:0006550 | fibroepithelial polyp of urethra | syn: fibroepithelial polyp of the urethra; fibroepithelial polyp of urethra; urethra fibroepithelial polyp; urethra skin tag | ancestors: urethral disorder, fibroepithelial polyp, urinary system disorder, polyp | def: A benign polypoid lesion of mesodermal origin that arises from the urethra.",
+"ko": "요도 섬유상피성 용종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005361",
+"concept": "- MONDO:0005361 | eosinophilic esophagitis | syn: EoE | ancestors: esophagitis, eosinophilic gastrointestinal disease, esophageal disorder, inflammatory disease | def: Eosinophilic esophagitis (EoE) is a chronic, allergic disease of the esophagus characterized clinically by symptoms of esophageal dysfunction (including vomiting, dysphagia, feeding disorders, food im...",
+"ko": "호산구성 식도염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0044210",
+"concept": "- MONDO:0044210 | thalassemia minor | syn: beta thalassemia trait | ancestors: beta-thalassemia HBB/LCRB, beta thalassemia, thalassemia, endocrine system disorder | def: The inheritance of only one mutated beta-globin allele (beta+ or beta0).",
+"ko": "경증 지중해빈혈",
+"alt": [
+"베타 지중해빈혈 보인자"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014980",
+"concept": "- MONDO:0014980 | cone-rod dystrophy and hearing loss | syn: cone-rod dystrophy and hearing loss; cone-rod dystrophy and hearing loss; CRDHL; CRDHL | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "원추-간체 이영양증 및 난청",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011326",
+"concept": "- MONDO:0011326 | citrullinemia, type II, adult-onset | syn: citrullinemia, adult-onset type II; citrullinemia, type II, adult-onset | ancestors: citrullinemia type II, citrin deficiency, citrullinemia, urea cycle disorder or inherited hyperammonemia | def: Adult-onset citrullinemia type II is an inherited disorder that causes ammonia and other toxic substances to accumulate in the blood. The condition chiefly affects the nervous system, causing confusio...",
+"ko": "시트룰린혈증 2형, 성인 발병",
+"alt": [
+"성인형 시트룰린혈증 2형"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005454",
+"concept": "- MONDO:0005454 | lung neuroendocrine neoplasm | syn: lung NET; lung neuroendocrine neoplasm; lung neuroendocrine tumor; lung neuroendocrine tumor, well differentiated, low or intermediate grade | ancestors: neuroendocrine neoplasm, lung neoplasm, endocrine gland neoplasm, lung disorder | def: A low, intermediate, or high grade malignant neoplasm with neuroendocrine differentiation that arises from the lung. This category includes typical carcinoid tumor, atypical carcinoid tumor, small cel...",
+"ko": "폐 신경내분비 신생물",
+"alt": [
+"폐 신경내분비 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011748",
+"concept": "- MONDO:0011748 | Usher syndrome type 1G | syn: USH1G; USH1G Usher syndrome; Usher syndrome caused by mutation in USH1G; Usher syndrome type 1G | ancestors: Usher syndrome type 1, Usher syndrome, syndromic disease, autosomal recessive disease | def: Any Usher syndrome in which the cause of the disease is a mutation in the USH1G gene.",
+"ko": "어셔 증후군 1G형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0800201",
+"concept": "- MONDO:0800201 | baldness, male pattern | syn: MPB | ancestors: androgenetic alopecia, endocrine alopecia, alopecia, hair anomaly",
+"ko": "남성형 탈모",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004885",
+"concept": "- MONDO:0004885 | choroidal sclerosis | syn: choroidal degenerations; neurodegenerative disease of optic choroid; optic choroid neurodegenerative disease | ancestors: optic choroid disorder, eye degenerative disorder, neurodegenerative disease, neurovascular disorder | def: A neurodegenerative disease that involves the optic choroid.",
+"ko": "맥락막 경화",
+"alt": [
+"맥락막 경화증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011558",
+"concept": "- MONDO:0011558 | Usher syndrome type 2C | syn: USH2C; Usher syndrome, type 2C, autosomal recessive, digenic dominant; Usher syndrome, type 2C, GPR98/PDZD7 digenic, autosomal recessive, digenic dominant; Usher syndrome, type IIC, GPR98/PDZD7 digenic, autosomal recessive, digenic dominant | ancestors: Usher syndrome type 2, Usher syndrome, syndromic disease, autosomal recessive disease | def: A form of Usher syndrome type 2 that features a heterozygous frameshift mutation in the GPR98 gene and a heterozygous frameshift mutation in the PDZD7 gene. It is inherited in an autosomal recessive m...",
+"ko": "어셔 증후군 2C형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002404",
+"concept": "- MONDO:0002404 | liver hemangioma | syn: angioma of liver; hemangioma of liver; hepatic angioma; liver hemangioma | ancestors: benign endocrine neoplasm, intra-abdominal hemangioma, liver and intrahepatic bile duct neoplasm, hepatobiliary benign neoplasm | def: A hemangioma arising from the liver.",
+"ko": "간 혈관종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001332",
+"concept": "- MONDO:0001332 | palindromic rheumatism | ancestors: syndromic disease, hydrarthrosis, rheumatic disorder, disease by body system or component | def: A syndrome that involves sudden and rapidly developing attacks of arthritis with a remission period that results in no joint damage or symptoms.",
+"ko": "회귀류마티즘",
+"alt": [
+"회귀성 류마티스"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0001303",
+"concept": "- MONDO:0001303 | abnormal pupillary function | syn: abnormal pupillary function; abnormal pupillary function (disease) | ancestors: pupil disorder, iris disorder, uveal disorder, eye disorder",
+"ko": "동공 기능 이상",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001414",
+"concept": "- MONDO:0001414 | osteopoikilosis | syn: osteopoikilosis; osteopoikilosis (disease) | ancestors: osteosclerosis, bone remodeling disease, bone disorder, skeletal system disorder | def: A rare autosomal dominant inherited disorder characterized by the presence of small areas of increased density throughout the bones.",
+"ko": "골반점증",
+"alt": [
+"점상골증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009747",
+"concept": "- MONDO:0009747 | mitochondrial DNA depletion syndrome 6 (hepatocerebral type) | syn: mitochondrial DNA depletion syndrome 6 (hepatocerebral type); Navajo neurohepatopathy; Navajo neuropathy | ancestors: mitochondrial DNA depletion syndrome, hepatocerebral form, mitochondrial DNA depletion syndrome, mitochondrial oxidative phosphorylation disorder, inborn mitochondrial metabolism disorder",
+"ko": "미토콘드리아 DNA 고갈 증후군 6형 (간뇌형)",
+"alt": [
+"나바호 신경간병증"
+],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007529",
+"concept": "- MONDO:0007529 | elastosis perforans serpiginosa | syn: elastosis perforans serpiginosa | ancestors: dermis disorder, skin disorder, integumentary system disorder, disease by body system or component",
+"ko": "사행성 천공성 탄력섬유증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0008015",
+"concept": "- MONDO:0008015 | motion sickness | syn: motion sickness; travel sickness | ancestors: inner ear disorder, hereditary otorhinolaryngologic disease, inherited auditory system disease, auditory system disorder | def: A sensation of discomfort that results from a discordant relationship between visualized movement and any movement sensed by the vestibular system, which is characterized by dizziness, nausea, and vom...",
+"ko": "멀미",
+"alt": [
+"동요병"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005821",
+"concept": "- MONDO:0005821 | late congenital syphilis | syn: late congenital syphilis; late congenital syphilis (2 years or more) | ancestors: congenital syphilis, syphilis, infectious embryofetopathy, primary bacterial infectious disease",
+"ko": "후기 선천성 매독",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 9,
+"new": false
+}
+]

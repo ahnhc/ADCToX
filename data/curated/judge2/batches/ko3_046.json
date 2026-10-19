@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0016594",
+"concept": "- MONDO:0016594 | superficial siderosis | syn: hemosiderosis of the central nervous system; superficial hemosiderosis of the central nervous system; superficial hemosiderosis of the CNS; superficial siderosis of the central nervous system | ancestors: neurodegenerative disease, central nervous system disorder, nervous system disorder, disease by body system or component | def: Superficial siderosis is a rare neurologic disease characterized by progressive sensorineural hearing loss, cerebellar ataxia, pyramidal signs, and neuroimaging findings revealing hemosiderin deposits...",
+"ko": "표재성 철침착증",
+"alt": [
+"중추신경계 표재성 헤모시데린증"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006601",
+"concept": "- MONDO:0006601 | pityriasis rosea | syn: Pityriasis circinata; Pityriasis rosea | ancestors: dermatitis, exanthem, skin disorder, inflammatory disease | def: A mild, self-limited skin disorder that is most commonly seen in children and young adults. It is characterized by an initial large round spot on the chest, abdomen, or back, often referred to as a he...",
+"ko": "장미색 비강진",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0013028",
+"concept": "- MONDO:0013028 | adenosine monophosphate deaminase deficiency | syn: AMP deaminase deficiency; myoadenylate deaminase deficiency | ancestors: inborn mitochondrial myopathy, inborn disorder of purine metabolism, congenital structural myopathy, inborn mitochondrial metabolism disorder | def: Adenosine monophosphate (AMP) deaminase deficiency is a metabolic disorder for which two forms have been described. Lack of activity of the erythrocyte isoform of AMP deaminase has been described in s...",
+"ko": "아데노신 일인산 탈아미노효소 결핍증",
+"alt": [
+"AMP 탈아미노효소 결핍증"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021111",
+"concept": "- MONDO:0021111 | ureter neoplasm | syn: neoplasm of the ureter; neoplasm of ureter; neoplasms of the ureter; neoplasms of ureter | ancestors: ureteral disorder, urinary system neoplasm, urinary system disorder, neoplasm | def: A benign or malignant neoplasm that affects the ureter.",
+"ko": "요관 신생물",
+"alt": [
+"요관 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018963",
+"concept": "- MONDO:0018963 | hereditary methemoglobinemia | syn: autosomal recessive methemoglobinemia; congenital methemoglobinemia; hereditary methemoglobinemia | ancestors: methemoglobinemia, anemia, inherited hemoglobinopathy, hemoglobinopathy | def: Methemoglobinemia inherited in an autosomal recessive pattern. It is caused by deficiency of the enzyme NADH methemoglobin reductase or the presence of abnormal hemoglobin M. It presents with cyanosis...",
+"ko": "유전성 메트헤모글로빈혈증",
+"alt": [
+"선천성 메트헤모글로빈혈증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009692",
+"concept": "- MONDO:0009692 | primary myelofibrosis | syn: Agnogenic myeloid metaplasia; AMM; chronic idiopathic myelofibrosis; CIMF | ancestors: acquired aplastic anemia, myeloproliferative neoplasm, aplastic anemia, myeloid neoplasm | def: Myelofibrosis with myeloid metaplasia is a myeloproliferative disease with annual incidence of approximately 1 case per 100,000 individuals and age at diagnosis around 60 (an increased prevalence is n...",
+"ko": "원발성 골수섬유화증",
+"alt": [
+"특발성 골수화생"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004672",
+"concept": "- MONDO:0004672 | fasciolopsiasis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A small bowel infection that is caused by Fasciolopsis buski, which is endemic in the Far East and Southeast Asia, and which is transmitted via the consumption of raw or undercooked aquatic plants. Th...",
+"ko": "비대흡충증",
+"alt": [
+"장디스토마증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006218",
+"concept": "- MONDO:0006218 | gallbladder biliary intraepithelial neoplasia | syn: gallbladder biliary intraepithelial neoplasia; gallbladder BilIN; gallbladder dysplasia; gallbladder intraepithelial neoplasia | ancestors: gallbladder neoplasm, hepatobiliary neoplasm, gallbladder disorder, hepatobiliary disorder | def: A neoplastic, non-invasive lesion that affects the gallbladder epithelium. It is characterized by the presence of atypical epithelial cells with an increased nuclear/cytoplasmic ratio, nuclear hyperch...",
+"ko": "담낭 담도상피내 신생물",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000827",
+"concept": "- MONDO:0000827 | salmonellosis | syn: rare form of salmonellosis; Salmonella infection | ancestors: primary bacterial infectious disease, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infections with bacteria of the genus salmonella.",
+"ko": "살모넬라증",
+"alt": [
+"살모넬라 감염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0005052",
+"concept": "- MONDO:0005052 | irritable bowel syndrome | syn: IBS; irritable bowel syndrome; irritable colon; mucus colitis | ancestors: syndromic disease, intestinal disorder, disease by body system or component, digestive system disorder | def: Irritable bowel syndrome (IBS) is a chronic functional condition of the lower gastrointestinal (GI) tract characterized by abdominal pain or discomfort and disordered bowel habit (diarrhea, constipati...",
+"ko": "과민성 장 증후군",
+"alt": [
+"과민성 대장 증후군"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0011502",
+"concept": "- MONDO:0011502 | Wolfram syndrome 2 | syn: CISD2 Wolfram syndrome; WFS2; Wolfram syndrome 2; Wolfram syndrome caused by mutation in CISD2 | ancestors: hereditary disease, Wolfram syndrome, disease of genetic or genomic mechanism, syndromic disease | def: Any Wolfram syndrome in which the cause of the disease is a mutation in the CISD2 gene.",
+"ko": "볼프람 증후군 2형",
+"alt": [
+"CISD2 볼프람 증후군"
+],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018484",
+"concept": "- MONDO:0018484 | semicircular canal dehiscence syndrome | syn: Minor's syndrome; Minorbs syndrome; SCD syndrome; Superior Semicircular Canal Dehiscence | ancestors: otorhinolaryngologic disease, disease by body system or component, human disease, disease | def: Semicircular canal dehiscence (SCD) syndrome is a rare otorhinolaryngologic disease characterized by the uni- or bilateral dehiscence of the bone(s) overlying the superior (most common), lateral or po...",
+"ko": "반고리관 열개 증후군",
+"alt": [
+"마이너 증후군"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000726",
+"concept": "- MONDO:0000726 | idiopathic scoliosis | ancestors: scoliosis, idiopathic disease, disease of bone structure, disease by etiologic mechanism | def: A scoliosis with no known cause.",
+"ko": "특발성 척추측만증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0013138",
+"concept": "- MONDO:0013138 | vertigo, benign recurrent, 2 | syn: BRV2; vertigo, benign recurrent, 2 | ancestors: peripheral vertigo, vestibular disorder, inner ear disorder, auditory system disorder",
+"ko": "양성 재발성 현훈 2형",
+"alt": [
+"양성 재발성 어지럼증 2형"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002817",
+"concept": "- MONDO:0002817 | adrenal gland cancer | syn: adrenal cancer; adrenal gland cancer; cancer of adrenal gland; malignant adrenal gland neoplasm | ancestors: retroperitoneal cancer, malignant endocrine neoplasm, adrenal gland neoplasm, cancer | def: A malignant neoplasm involving the adrenal gland",
+"ko": "부신암",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0030067",
+"concept": "- MONDO:0030067 | Treacher Collins syndrome 4 | syn: TCS4; TREACHER COLLINS SYNDROME 4; treacher collins syndrome 4; Treacher-Collins syndrome 4 | ancestors: Treacher-Collins syndrome, autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability",
+"ko": "트리처 콜린스 증후군 4형",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002397",
+"concept": "- MONDO:0002397 | liver sarcoma | syn: hepatic sarcoma; liver sarcoma; sarcoma of liver; sarcoma of the liver | ancestors: liver cancer, soft tissue sarcoma, digestive system cancer, malignant endocrine neoplasm | def: A malignant soft tissue neoplasm that arises from the liver. Representative examples include angiosarcoma, undifferentiated (embryonal) sarcoma, rhabdomyosarcoma, and leiomyosarcoma.",
+"ko": "간 육종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013000",
+"concept": "- MONDO:0013000 | porphyria due to ALA dehydratase deficiency | syn: acute hepatic porphyria; ALAD Porphyria; ALAD porphyria; ALAD-related hepatic porphyria | ancestors: hepatic porphyria, inherited porphyria, liver disorder, porphyria | def: A hepatic porphyria caused by biallelic variants in ALAD (in an autosomal recessive inheritance pattern). This is an extremely rare form of hepatic porphyria characterized by neuro-visceral attacks, n...",
+"ko": "ALA 탈수효소 결핍 포르피린증",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004768",
+"concept": "- MONDO:0004768 | keratoconjunctivitis | ancestors: keratitis, conjunctivitis, corneal disorder, inflammatory disease | def: Inflammation of both the cornea and the conjunctiva.",
+"ko": "각결막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017692",
+"concept": "- MONDO:0017692 | generalized galactose epimerase deficiency | syn: generalised epimerase deficiency galactosemia; generalised GALE deficiency; generalised GALE-D; generalised UDP-galactose-4-epimerase deficiency | ancestors: galactose epimerase deficiency, disorder of galactose and fructose metabolism, galactosemia, inborn carbohydrate metabolic disorder",
+"ko": "전신성 갈락토오스 에피머화효소 결핍증",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+}
+]

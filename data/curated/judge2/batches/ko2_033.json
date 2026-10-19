@@ -1,0 +1,229 @@
+[
+{
+"id": "MONDO:0020112",
+"concept": "- MONDO:0020112 | vitamin B12- and folate-independent constitutional megaloblastic anemia | ancestors: megaloblastic anemia, hereditary anemia, macrocytic anemia, deficiency anemia",
+"ko": "비타민 B12 및 엽산 비의존성 선천성 거대적아구성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001700",
+"concept": "- MONDO:0001700 | megaloblastic anemia | syn: megaloblastic anaemia (disease); megaloblastic anemia; megaloblastic anemia (disease) | ancestors: macrocytic anemia, anemia, hematologic disorder, disease by body system or component | def: Anemia characterized by the presence of unusually large erythroblasts in the bone marrow called megaloblasts. It is usually caused by vitamin B12 or folic acid deficiency. Other causes include toxins ...",
+"ko": "거대적아구성 빈혈",
+"alt": [
+"거대모구성 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006643",
+"concept": "- MONDO:0006643 | alcoholic cardiomyopathy | syn: alcoholic cardiomyopathy | ancestors: extrinsic cardiomyopathy, alcohol-induced disorders, cardiomyopathy, alcohol-related disorders | def: A dilated cardiomyopathy which is associated with consumption of large amounts of alcohol over a period of years.",
+"ko": "알코올성 심근병증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020143",
+"concept": "- MONDO:0020143 | cerebral lipidosis with dementia | syn: cerebral lipidosis | ancestors: brain disorder, lysosomal lipid storage disorder, hereditary neurological disease, central nervous system disorder",
+"ko": "치매 동반 대뇌 지질증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006105",
+"concept": "- MONDO:0006105 | benign conjunctival neoplasm | syn: benign conjunctiva neoplasm; benign conjunctiva tumor; benign conjunctiva tumour; benign conjunctival neoplasm | ancestors: conjunctival tumor, benign neoplasm of eye, conjunctival disorder, eye neoplasm | def: Abnormal growth of the cells of the conjunctiva without malignant characteristics.",
+"ko": "양성 결막 신생물",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016342",
+"concept": "- MONDO:0016342 | familial isolated arrhythmogenic right ventricular dysplasia | syn: familial isolated arrhythmogenic right ventricular cardiomyopathy; familial isolated arrhythmogenic right ventricular dysplasia; familial isolated arrhythmogenic ventricular cardiomyopathy; familial isolated arrhythmogenic ventricular dysplasia | ancestors: familial cardiomyopathy, arrhythmogenic right ventricular cardiomyopathy, cardiomyopathy, cardiogenetic disease | def: Familial isolated arrhythmogenic right ventricular dysplasia (ARVC) is the familial autosomal dominant form of ARVC, a heart muscle disease characterized by life-threatening ventricular arrhythmias wi...",
+"ko": "가족성 단독 부정맥유발 우심실 이형성증",
+"alt": [
+"가족성 단독 부정맥유발 우심실 심근병증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0100471",
+"concept": "- MONDO:0100471 | vitamin D deficiency | syn: avitaminosis D; avitaminosis D, NOS; DEFIC VITAMIN D; deficiencies, vitamin D | ancestors: vitamin deficiency disorder, nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism | def: Abnormally low level of 25-hydroxyvitamin D in the blood.",
+"ko": "비타민 D 결핍증",
+"alt": [
+"비타민 D 결핍"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0017078",
+"concept": "- MONDO:0017078 | cephalocele | syn: cephalocele; cephalocele (disease); cranium bifidum; encephalocele | ancestors: congenital nervous system disorder, disorder of development or morphogenesis, nervous system disorder, disease by developmental or physiological process | def: A congenital neural tube closure defect resulting in the protrusion of the brain through a skull opening. When the protrusion includes the meninges, the term encephalomeningocele is used.",
+"ko": "두개류",
+"alt": [
+"뇌류"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005387",
+"concept": "- MONDO:0005387 | primary ovarian failure | syn: primary ovarian failure | ancestors: ovarian dysfunction, ovarian disorder, gonadal disorder, female reproductive system disorder | def: Absent or premature cessation of ovarian function due to a pathologic process originating within the ovaries.",
+"ko": "원발성 난소부전",
+"alt": [
+"일차성 난소기능부전"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001492",
+"concept": "- MONDO:0001492 | kyphoscoliotic heart disease | ancestors: chronic pulmonary heart disease, cor pulmonale, congestive heart failure, heart failure",
+"ko": "척추후만측만증성 심장병",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0012883",
+"concept": "- MONDO:0012883 | acute promyelocytic leukemia | syn: acute myeloblastic leukaemia 3; acute myeloblastic leukemia 3; acute myeloid leukaemia with t(15;17)(q22;q12);(PML/RARalpha) and variants; acute myeloid leukemia with t(15;17)(q22;q12);(PML/RARalpha) and variants | ancestors: inherited acute myeloid leukemia, acute myeloid leukemia, hereditary disorder of connective tissue, myeloid leukemia | def: An aggressive form of acute myeloid leukemia (AML), characterized by arrest of leukocyte differentiation at the promyelocyte stage, due to a specific chromosomal translocation t(15;17) in myeloid cell...",
+"ko": "급성 전골수구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005052",
+"concept": "- MONDO:0005052 | irritable bowel syndrome | syn: IBS; irritable bowel syndrome; irritable colon; mucus colitis | ancestors: syndromic disease, intestinal disorder, disease by body system or component, digestive system disorder | def: Irritable bowel syndrome (IBS) is a chronic functional condition of the lower gastrointestinal (GI) tract characterized by abdominal pain or discomfort and disordered bowel habit (diarrhea, constipati...",
+"ko": "과민성 장 증후군",
+"alt": [
+"과민성 대장 증후군"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0008056",
+"concept": "- MONDO:0008056 | myotonic dystrophy type 1 | syn: DM1; DMPK myotonic dystrophy; dystrophia myotonica; MD1 | ancestors: myotonic dystrophy, familial hypertrophic cardiomyopathy, progressive muscular dystrophy, myotonic syndrome | def: Steinert disease, also known as myotonic dystrophy type 1, is a muscle disease characterized by myotonia and by multiorgan damage that combines various degrees of muscle weakness, arrhythmia and/or ca...",
+"ko": "근긴장성 이영양증 1형",
+"alt": [
+"근긴장성 근디스트로피 1형"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000612",
+"concept": "- MONDO:0000612 | lymphatic system cancer | syn: cancer of lymphatic part of lymphoid system; lymphatic part of lymphoid system cancer; malignant lymphatic part of lymphoid system neoplasm; malignant neoplasm of lymphatic part of lymphoid system | ancestors: immune system cancer, lymphatic system disorder, cancer, immune system disorder | def: A malignant neoplasm involving the lymphatic part of lymphoid system",
+"ko": "림프계 암",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009175",
+"concept": "- MONDO:0009175 | eosinophilic fasciitis | syn: diffuse fasciitis with eosinophilia; eosinophilic fasciitis; eosinophilic fasciitis (disease); Shulman syndrome | ancestors: fasciitis, acquired idiopathic inflammatory myopathy, musculoskeletal system disorder, connective tissue disorder | def: Eosinophilic fasciitis is a rare connective tissue disease that is characterized by inflammation and thickening of the fascia, usually associated with peripheral eosinophilia. It presents during adult...",
+"ko": "호산구성 근막염",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007020",
+"concept": "- MONDO:0007020 | Wernicke encephalopathy | syn: dementia due to thiamine deficiency; Wernicke's encephalopathy | ancestors: brain disorder, alcohol-related disorders, central nervous system disorder, substance-related disorder | def: An acute neurological disorder characterized by the triad of ophthalmoplegia, ataxia, and disturbances of mental activity or consciousness. Eye movement abnormalities include nystagmus, external rectu...",
+"ko": "베르니케 뇌병증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001749",
+"concept": "- MONDO:0001749 | cortical senile cataract | syn: lens cortex senile cataract; senile cataract of lens cortex | ancestors: senile cataract, cortical cataract, cataract, lens disorder | def: A senile cataract that involves the lens cortex.",
+"ko": "피질성 노인성 백내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020311",
+"concept": "- MONDO:0020311 | chronic myelomonocytic leukemia | syn: chronic myelomonocytic leukaemia (CMML); chronic myelomonocytic leukemia; chronic myelomonocytic leukemia (CMML); CMML | ancestors: chronic leukemia, myelodysplastic/myeloproliferative neoplasm, myelodysplastic/myeloproliferative disease, leukemia | def: A myelodysplastic/myeloproliferative neoplasm which is characterized by persistent monocytosis, absence of a Philadelphia chromosome and BCR/ABL fusion gene, fewer than 20 percent blasts in the bone m...",
+"ko": "만성 골수단핵구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005135",
+"concept": "- MONDO:0005135 | parasitic infectious disease | syn: disease caused by parasite; parasitic disease; parasitic infection | ancestors: infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: A successful invasion of a host by an organism that uses the host for food and shelter.",
+"ko": "기생충 감염병",
+"alt": [
+"기생충 질환"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004641",
+"concept": "- MONDO:0004641 | skin carcinoma in situ | syn: carcinoma in situ of skin; carcinoma in situ of the skin; carcinoma in situ of zone of skin; carcinoma of skin stage 0 | ancestors: skin carcinoma, in situ carcinoma, skin cancer, carcinoma | def: A in situ carcinoma that involves the zone of skin.",
+"ko": "피부 상피내암종",
+"alt": [
+"피부 제자리암종"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 4
+}
+]

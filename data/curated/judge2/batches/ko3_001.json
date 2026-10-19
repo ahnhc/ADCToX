@@ -1,0 +1,263 @@
+[
+{
+"id": "MONDO:0003472",
+"concept": "- MONDO:0003472 | lice infestation | syn: louse infestation (& [pediculosis and Phthirus] or [lice]); mixed pediculosis infestation; pediculosis; pediculosis and Phthirus infestation | ancestors: parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease, skin disorder caused by infection | def: A contagious infestation of parasitic insects found on the head (Pediculus humanus capitis), body (Pediculus humanus corporis), or pubic area (Pthirus pubis) that typically cause itching and rash.",
+"ko": "이 감염증",
+"alt": [
+"이 기생증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0045010",
+"concept": "- MONDO:0045010 | glycoprotein metabolism disease | syn: disorder of glycoprotein metabolic process; disorder of glycoprotein metabolism; glycoprotein metabolic process disease; glycoprotein metabolism disease | ancestors: inborn errors of metabolism, hereditary disease, metabolic disease, disease of genetic or genomic mechanism | def: A disease that has its basis in the disruption of glycoprotein metabolic process.",
+"ko": "당단백질 대사 질환",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0000461",
+"concept": "- MONDO:0000461 | nutritional biotin deficiency | ancestors: biotin metabolic disease, vitamin deficiency disorder, sulfur metabolism disease, nutritional deficiency disease",
+"ko": "영양성 비오틴 결핍증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012590",
+"concept": "- MONDO:0012590 | XFE progeroid syndrome | syn: XFE progeroid syndrome; XFEPS; XPF-ERCC1 progeroid syndrome | ancestors: syndromic disease, progeroid syndrome, disease by body system or component, hereditary disease | def: A syndrome characterized by aged bird-like facies, lack of subcutaneous fat, dwarfism, cachexia and microcephaly. Additional features include sun-sensitivity from birth, learning disabilities, hearing...",
+"ko": "XFE 조로 증후군",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017860",
+"concept": "- MONDO:0017860 | methanol poisoning | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Methanol poisoning is a rare poisoning resulting in elevated anion gap metabolic acidosis, due to the alcohol dehydrogenase (ADH)-mediated production of formic acid (which is poisonous to the central ...",
+"ko": "메탄올 중독",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001228",
+"concept": "- MONDO:0001228 | conjunctival folliculosis | syn: acute follicular conjunctivitis | ancestors: acute conjunctivitis, conjunctivitis, acute disease, conjunctival disorder",
+"ko": "결막 여포증",
+"alt": [
+"급성 여포성 결막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010420",
+"concept": "- MONDO:0010420 | X-linked erythropoietic protoporphyria | syn: ALAS2-related erythropoietic protoporphyria; erythropoietic protoporphyria, X-linked; X-linked dominant erythropoietic protoporphyria; X-linked dominant protoporphyria | ancestors: X-linked disease, erythropoietic protoporphyria, hereditary disease, hepatic porphyria | def: An erythropoietic protoporphyria in which the cause of the disease is a hemizygous, heterozygous, or homozygous (rare) gain-of-function (GOF) variant (X-linked inheritance pattern) in the terminal reg...",
+"ko": "X연관 적혈구생성 프로토포르피린증",
+"alt": [
+"ALAS2 관련 적혈구생성 프로토포르피린증"
+],
+"organs": [
+"hepatic",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000374",
+"concept": "- MONDO:0000374 | bile duct carcinoma in situ | syn: bile duct in situ carcinoma; carcinoma in situ of bile duct; stage 0 bile duct carcinoma | ancestors: in situ carcinoma, bile duct carcinoma, carcinoma, high grade malignant neoplasm | def: A carcinoma in situ involving a bile duct.",
+"ko": "담관 상피내암종",
+"alt": [
+"담관 제자리암종"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005865",
+"concept": "- MONDO:0005865 | mushroom workers' lung | syn: mushroom workers lung | ancestors: hypersensitivity pneumonitis, occupational lung disease, allergic respiratory disease, interstitial lung disease | def: An extrinsic allergic alveolitis involving inflammation of the alveoli within the lung caused by hypersensitivity to the inhalation of organic dust particles derived from either the mushrooms, their s...",
+"ko": "버섯재배자 폐",
+"alt": [
+"버섯 작업자 폐"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018221",
+"concept": "- MONDO:0018221 | immune hydrops fetalis | syn: IHF; immune fetal edema; immune fetal hydrops; immune foetal hydrops | ancestors: hydrops fetalis, developmental defect during embryogenesis, disorder of development or morphogenesis, disease by developmental or physiological process | def: Immune hydrops fetalis (IHF), a form of HF, describes the excessive accumulation of fetal fluid within the fetal extravascular compartments and body cavities due to maternal rhesus (Rh) incompatibilit...",
+"ko": "면역성 태아수종",
+"alt": [
+"면역성 태아부종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016603",
+"concept": "- MONDO:0016603 | citrullinemia type II | syn: adult-onset citrin deficiency; adult-onset type 2 citrullinemia; adult-onset type II citrullinemia; citrullinemia type 2 | ancestors: citrin deficiency, citrullinemia, urea cycle disorder or inherited hyperammonemia, urea cycle disorder | def: Citrullinemia type II is a severe subtype of citrin deficiency characterized clinically by adult onset (20 and 50 years of age), recurrent episodes of hyperammonemia and associated neuropsychiatric sy...",
+"ko": "시트룰린혈증 II형",
+"alt": [
+"성인 발병 시트린 결핍증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0100345",
+"concept": "- MONDO:0100345 | lactose intolerance | syn: lactose intolerance; lactose intolerance (disease) | ancestors: nutritional disorder, inborn carbohydrate metabolic disorder, malabsorption syndrome, disease by etiologic mechanism",
+"ko": "유당불내증",
+"alt": [
+"젖당불내증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005055",
+"concept": "- MONDO:0005055 | Kaposi's sarcoma | syn: Kaposi sarcoma; Kaposi's sarcoma; Kaposi's sarcoma (disease); KS | ancestors: viral infectious disease, human herpesvirus 8-related tumor, angiosarcoma, infectious disease | def: A malignant neoplasm characterized by a vascular proliferation which usually contains blunt endothelial cells. Erythrocyte extravasation and hemosiderin deposition are frequently present. The most fre...",
+"ko": "카포시 육종",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0006946",
+"concept": "- MONDO:0006946 | renal osteodystrophy | syn: renal rickets | ancestors: secondary hyperparathyroidism of renal origin, rickets, impaired renal function disease, secondary hyperparathyroidism | def: Abnormalities of bone mineral metabolism associated with chronic kidney disease.",
+"ko": "신성 골이영양증",
+"alt": [
+"콩팥뼈이영양증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002513",
+"concept": "- MONDO:0002513 | kidney benign neoplasm | syn: benign kidney neoplasm; benign kidney tumor; benign kidney tumour; benign neoplasm of kidney | ancestors: benign urinary system neoplasm, kidney neoplasm, benign neoplasm, urinary system neoplasm | def: A non-metastasizing neoplasm that arises from the kidney. Representative examples include cystic nephroma, metanephric adenoma, oncocytoma, and urothelial papilloma of the renal pelvis.",
+"ko": "콩팥 양성 신생물",
+"alt": [
+"신장 양성 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001741",
+"concept": "- MONDO:0001741 | hyperparathyroidism | syn: hyperparathyroidism | ancestors: parathyroid gland disorder, endocrine system disorder, disease by body system or component, human disease | def: Hyperfunction of the parathyroid glands resulting in the overproduction of parathyroid hormone. It may be primary or secondary; primary hyperparathyroidism is caused by parathyroid adenoma, parathyroi...",
+"ko": "부갑상선기능항진증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002739",
+"concept": "- MONDO:0002739 | extrahepatic bile duct mucinous adenocarcinoma | syn: bile duct colloid carcinoma; bile duct colloidal carcinoma; bile duct mucinous adenocarcinoma; colloid adenocarcinoma of bile duct | ancestors: extrahepatic bile duct adenocarcinoma, mucinous adenocarcinoma, extrahepatic bile duct carcinoma, bile duct adenocarcinoma | def: An adenocarcinoma that arises from the extrahepatic bile ducts. It is characterized by the presence of extracellular mucin that constitutes more than fifty-percent of the tumor.",
+"ko": "간외담관 점액성 선암",
+"alt": [
+"간외 담관 점액성 선암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002357",
+"concept": "- MONDO:0002357 | hepatic flexure cancer | syn: cancer of hepatic flexure of colon; hepatic flexure of colon cancer; malignant hepatic flexure of colon neoplasm; malignant neoplasm of hepatic flexure | ancestors: ascending colon cancer, malignant colon neoplasm, colonic neoplasm, colorectal cancer | def: A malignant neoplasm involving the hepatic flexure of colon.",
+"ko": "간만곡부 암",
+"alt": [
+"간굴곡부암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017282",
+"concept": "- MONDO:0017282 | alveolar echinococcosis | syn: Echinococcus multilocularis caused disease or disorder; Echinococcus multilocularis disease or disorder; Echinococcus multilocularis infection; Echinococcus multilocularis infectious disease | ancestors: echinococcosis, Cestode infectious disease, helminthiasis, parasitic infectious disease | def: Alveolar echinococcosis (AE) is a rare parasitic disorder that occurs after ingestion of eggs of Echinococcus multilocularis. AE is characterized by an initial asymptomatic incubation period of many y...",
+"ko": "다포성 에키노코쿠스증",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001823",
+"concept": "- MONDO:0001823 | sick sinus syndrome | syn: SSS | ancestors: sinoatrial node disorder, syndromic disease, heart conduction disease, conduction system disorder | def: A constellation of signs and symptoms which may include syncope, fatigue, dizziness, and alternating periods of bradycardia and atrial tachycardia, which is caused by sinoatrial node dysfunction.",
+"ko": "동기능부전 증후군",
+"alt": [
+"병적 굴 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+}
+]

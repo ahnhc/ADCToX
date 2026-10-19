@@ -1,0 +1,247 @@
+[
+{
+"id": "MONDO:0005754",
+"concept": "- MONDO:0005754 | epilepsy with generalized tonic-clonic seizures | syn: EGTCA; epilepsy with generalized tonic-clonic seizures alone; grand Mal epilepsy; tonic-clonic epilepsy | ancestors: variable-age onset idiopathic generalized epilepsy syndrome, idiopathic generalized epilepsy, variable age epilepsy syndrome, hereditary generalized epilepsy | def: A generalized tonic-clonic seizure.",
+"ko": "전신 강직간대 발작 뇌전증",
+"alt": [
+"전신 강직간대 발작 간질"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0003542",
+"concept": "- MONDO:0003542 | dental pulp calcification | syn: pulp calcification | ancestors: dental pulp disorder, tooth disorder, skeletal system disorder, mouth disorder",
+"ko": "치수 석회화",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006280",
+"concept": "- MONDO:0006280 | lung sclerosing hemangioma | syn: lung sclerosing angioma; lung sclerosing hemangioma; Pneumocytoma; sclerosing angioma of lung | ancestors: hemangioma of lung, lung benign neoplasm, hemangioma, respiratory system benign neoplasm | def: A benign tumor that arises from the lung. It is characterized by the presence of sclerotic, papillary, solid, and hemorrhagic patterns and hyperplastic type II pneumocytes. Cholesterol clefts, hemosid...",
+"ko": "폐 경화성 혈관종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000384",
+"concept": "- MONDO:0000384 | bladder benign neoplasm | syn: benign bladder neoplasm; benign bladder tumor; benign bladder tumour; benign neoplasm of bladder | ancestors: benign urinary system neoplasm, urinary bladder neoplasm, benign neoplasm, urinary system neoplasm | def: A benign abnormal growth of the cells that comprise the bladder.",
+"ko": "방광 양성 신생물",
+"alt": [
+"방광 양성 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021299",
+"concept": "- MONDO:0021299 | carcinoma in situ of extrahepatic bile duct | syn: carcinoma in situ of extrahepatic bile duct; carcinoma in situ of extrahepatic bile ducts; carcinoma in situ of extrahepatic biliary ducts; carcinoma in situ of the extrahepatic bile duct | ancestors: bile duct carcinoma in situ, extrahepatic bile duct carcinoma, in situ carcinoma, bile duct carcinoma | def: A in situ carcinoma that involves the extrahepatic bile duct.",
+"ko": "간외 담관 상피내암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018181",
+"concept": "- MONDO:0018181 | staphylococcal scalded skin syndrome | syn: generalised exfoliative disease; generalized exfoliative disease; Ritter disease; Ritter's disease | ancestors: commensal bacterial infectious disease, staphylococcus aureus infection, staphylococcal toxemia, skin disease caused by bacterial infection | def: A blistering skin disorder caused by exfoliative toxins produced by Staphylococcus aureus infection. The toxins cause the formation of bullae and diffuse skin desquamation. The lesions may be localize...",
+"ko": "포도알균 열상피부 증후군",
+"alt": [
+"포도상구균 화상모양피부 증후군"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003147",
+"concept": "- MONDO:0003147 | space motion sickness | syn: adaptation syndrome, Space; motion sickness, Space; Space adaptation syndrome; syndrome, Space adaptation | ancestors: motion sickness, inner ear disorder, hereditary otorhinolaryngologic disease, inherited auditory system disease | def: Disorder characterized by nausea, vomiting, and dizziness, possibly in response to vestibular disorientation or fluid shifts associated with space flight. (From Webster's New World Dictionary)",
+"ko": "우주 멀미",
+"alt": [
+"우주 운동병"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008762",
+"concept": "- MONDO:0008762 | autosomal recessive Alport syndrome | syn: Alport syndrome 2, autosomal recessive; Alport syndrome, autosomal recessive | ancestors: autosomal recessive disease, Alport syndrome, autosomal genetic disease, syndromic disease | def: Autosomal recessive Alport syndrome isa genetic condition characterized by kidney disease, hearing loss, and eye abnormalities. Most affected individuals experience progressive loss of kidney function...",
+"ko": "상염색체 열성 알포트 증후군",
+"alt": [],
+"organs": [
+"renal",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003378",
+"concept": "- MONDO:0003378 | liver leiomyosarcoma | syn: hepatic leiomyosarcoma; leiomyosarcoma of liver; leiomyosarcoma of the liver; liver leiomyosarcoma | ancestors: liver sarcoma, leiomyosarcoma, liver cancer, soft tissue sarcoma | def: An aggressive malignant smooth muscle neoplasm, arising from the liver. It is characterized by a proliferation of neoplastic spindle cells.",
+"ko": "간 평활근육종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003607",
+"concept": "- MONDO:0003607 | neuritis of upper limb | syn: forelimb neuritis; neuritis of forelimb | ancestors: neuritis, peripheral neuropathy, inflammatory disease, peripheral nervous system disorder | def: A neuritis that involves the forelimb.",
+"ko": "상지 신경염",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018044",
+"concept": "- MONDO:0018044 | idiopathic hypersomnia | syn: primary hypersomnia | ancestors: hypersomnia, idiopathic disease, sleep-wake disorder, disease by etiologic mechanism | def: Idiopathic hypersomnia is a sleep disorder classified in two forms: idiopathic hypersomnia with long sleep time and idiopathic hypersomnia without long sleep time.",
+"ko": "특발성 과다수면증",
+"alt": [
+"원발성 과다수면증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004877",
+"concept": "- MONDO:0004877 | transient neonatal thrombocytopenia | ancestors: neonatal thrombocytopenia, thrombocytopenia, blood platelet disease, hematologic disorder",
+"ko": "일과성 신생아 혈소판감소증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001331",
+"concept": "- MONDO:0001331 | conjunctival deposit | ancestors: conjunctival disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "결막 침착물",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018106",
+"concept": "- MONDO:0018106 | hereditary xanthinuria | syn: classic xanthinuria; hereditary xanthinuria; xanthic urolithiasis; xanthine stone disease | ancestors: xanthinuria, inborn disorder of purine metabolism, metabolic disease, inborn disorder of purine or pyrimidine metabolism | def: Hereditary xanthinuria is a purine metabolism disorder due to inherited deficiency of the xanthine dehydrogenase/oxidase enzyme and is characterized by very low (or undetectable) concentrations of uri...",
+"ko": "유전성 크산틴뇨증",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001535",
+"concept": "- MONDO:0001535 | vagus nerve disorder | syn: disease of vagus nerve; disease or disorder of vagus nerve; disorder of pneumogastric [10th] nerve; disorder of vagus nerve | ancestors: glossopharyngeal nerve disorder, cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder | def: A disease involving the vagus nerve.",
+"ko": "미주신경 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021469",
+"concept": "- MONDO:0021469 | benign neoplasm of anus | syn: anus benign neoplasm; benign anal neoplasm; benign anal tumor; benign anal tumour | ancestors: anus neoplasm, benign neoplasm of rectum, rectal neoplasm, anus disorder | def: A benign neoplasm that involves the anus.",
+"ko": "항문 양성 신생물",
+"alt": [
+"항문 양성 종양"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007352",
+"concept": "- MONDO:0007352 | renal coloboma syndrome | syn: CAKUT with or without ocular abnormalities; coloboma of optic nerve with renal disease; congenital anomalies of the kidney and urinary tract with or without ocular abnormalities; Papillo-renal syndrome | ancestors: autosomal dominant disease, syndromic disease, autosomal genetic disease, disease by body system or component | def: Renal coloboma syndrome (RCS) is a genetic condition characterized by optic nerve dysplasia and renal hypodysplasia.",
+"ko": "신장-콜로보마 증후군",
+"alt": [],
+"organs": [
+"renal",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006105",
+"concept": "- MONDO:0006105 | benign conjunctival neoplasm | syn: benign conjunctiva neoplasm; benign conjunctiva tumor; benign conjunctiva tumour; benign conjunctival neoplasm | ancestors: conjunctival tumor, benign neoplasm of eye, conjunctival disorder, eye neoplasm | def: Abnormal growth of the cells of the conjunctiva without malignant characteristics.",
+"ko": "양성 결막 신생물",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005913",
+"concept": "- MONDO:0005913 | phlebotomus fever | syn: pappataci fever; Sandfly fever | ancestors: vector-borne disease, primary viral infectious disease, infectious disease, viral infectious disease | def: Influenza-like febrile viral disease caused by several members of the bunyaviridae family and transmitted mostly by the bloodsucking sandfly Phlebotomus papatasii.",
+"ko": "파리모기열",
+"alt": [
+"사모기열"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004471",
+"concept": "- MONDO:0004471 | bacterial arthritis | syn: pyogenic arthritis; septic arthritis | ancestors: bacterial infectious disease, infective arthritis, infectious disease, arthritic joint disease | def: The inflammation of one or more joints caused by a bacterial infection within the joint space. Symptoms include pain, stiffness, and decreased range of motion in the affected joint.",
+"ko": "세균성 관절염",
+"alt": [
+"화농성 관절염",
+"패혈성 관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+}
+]

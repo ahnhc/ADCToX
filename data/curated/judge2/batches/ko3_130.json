@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0018856",
+"concept": "- MONDO:0018856 | lichen amyloidosis | syn: amyloid lichen; lichen amyloidosus | ancestors: primary cutaneous amyloidosis, amyloidosis, dermis disorder, proteostasis deficiencies | def: Lichen amyloidosis is a rare chronic form of cutaneous amyloidosis, a skin disease characterized by the accumulation of amyloid deposits in the dermis, clinically characterized by the development of p...",
+"ko": "태선 아밀로이드증",
+"alt": [
+"태선성 아밀로이드증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0020567",
+"concept": "- MONDO:0020567 | apnea of prematurity | ancestors: infantile apnea, respiratory system disorder, disease by body system or component, human disease | def: Apnea of prematurity is a developmental disorder affecting premature infants, likely secondary to an immaturity of respiratory control resulting in idiopathic pauses in breathing often associated with...",
+"ko": "미숙아 무호흡",
+"alt": [
+"미숙아 무호흡증"
+],
+"organs": [
+"pulmonary",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011760",
+"concept": "- MONDO:0011760 | Scheie syndrome | syn: MPS I S; MPS1S; MPSIS; mucopolysaccharidosis type 1S | ancestors: mucopolysaccharidosis type 1, syndromic disease, lysosomal storage disease with skeletal involvement, eye disorder | def: Scheie syndrome is the mildest form of mucopolysaccharidosis type 1 (MPS1), a rare lysosomal storage disease, characterized by skeletal deformities and a delay in motor development.",
+"ko": "샤이에 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012984",
+"concept": "- MONDO:0012984 | PHARC syndrome | syn: peripheral neuropathy, Fiskerstrand type; PHARC syndrome | ancestors: autosomal recessive disease, syndromic dyslipidemia, disorder of phospholipids, sphingolipids and fatty acids biosynthesis, hereditary peripheral neuropathy | def: Fiskerstrand type peripheral neuropathy is a slowly-progressive Refsum-like disorder associating signs of peripheral neuropathy with late-onset hearing loss, cataract and pigmentary retinopathy that b...",
+"ko": "PHARC 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016535",
+"concept": "- MONDO:0016535 | hypohidrotic ectodermal dysplasia | syn: anhidrotic ectodermal dysplasia; anhidrotic ectodermal dysplasia 1; anhidrotic ectodermal dysplasia 3; ectodermal dysplasia 1, Anhydrotic | ancestors: ectodermal dysplasia syndrome, disorder of development or morphogenesis, syndromic disease, hereditary epidermal appendage anomaly | def: A genetic disorder of ectoderm development characterized by malformation of ectodermal structures such as skin, hair, teeth and sweat glands. It comprises three clinically almost indistinguishable sub...",
+"ko": "저땀증성 외배엽이형성증",
+"alt": [
+"무땀증성 외배엽이형성증"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019455",
+"concept": "- MONDO:0019455 | acute panmyelosis with myelofibrosis | syn: acute (malignant) myelofibrosis; acute (malignant) myelosclerosis; acute myelodysplasia with myelofibrosis; acute myelofibrosis | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: An acute myeloid leukemia characterized by bone marrow fibrosis without preexisting primary myelofibrosis.",
+"ko": "골수섬유화를 동반한 급성 범골수증",
+"alt": [
+"급성 악성 골수섬유화증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001465",
+"concept": "- MONDO:0001465 | superficial keratitis | ancestors: keratitis, corneal disorder, inflammatory disease, eye disorder",
+"ko": "표재성 각막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0100610",
+"concept": "- MONDO:0100610 | autism spectrum disorder 1 | syn: Asperger syndrome; autism spectrum disorder without disorder of intellectual development and with mild or no impairment of functional language | ancestors: autism spectrum disorder, pervasive developmental disorder, developmental disorder of mental health, complex neurodevelopmental disorder | def: The mildest form of autism spectrum disorder, characterized by difficulties with social communication and restricted, repetitive behaviors, requiring minimal support for daily functioning.",
+"ko": "자폐스펙트럼장애 1형",
+"alt": [
+"아스퍼거 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015450",
+"concept": "- MONDO:0015450 | triatrial heart | syn: Cor Triatriatum; Cor triatriatum | ancestors: congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis | def: A rare congenital abnormality of the heart characterized by the presence of three atria. The right or left atrium is divided into two parts by fibromuscular tissue or a membrane. It may be associated ...",
+"ko": "삼심방심",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010089",
+"concept": "- MONDO:0010089 | isolated sulfite oxidase deficiency | syn: ISOD; isolated sulfite oxidase deficiency; sulfite oxidase deficiency; sulfite oxidase deficiency, isolated | ancestors: encephalopathy due to sulfite oxidase deficiency, lens disorder, developmental anomaly of metabolic origin, inborn disorder of methionine cycle and sulfur amino acid metabolism",
+"ko": "단독 아황산 산화효소 결핍증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002729",
+"concept": "- MONDO:0002729 | rhabdoid tumor of the kidney | syn: kidney rhabdoid tumor; kidney rhabdoid tumour; malignant rhabdoid tumor of kidney; malignant rhabdoid tumor of the kidney | ancestors: rhabdoid tumor, kidney sarcoma, embryonal neoplasm, soft tissue sarcoma | def: A rhabdoid tumor that arises from the kidney. It occurs in children and it is associated with abnormalities of chromosome 22. It is characterized by the presence of cells with a large eccentric nucleu...",
+"ko": "신장 횡문근양 종양",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016175",
+"concept": "- MONDO:0016175 | cutis laxa | syn: cutis laxa; elastolysis | ancestors: integumentary system disorder, developmental defect during embryogenesis, disease by body system or component, disorder of development or morphogenesis | def: Cutis laxa (CL) is an inherited or acquired connective tissue disorder characterized by wrinkled, redundant and sagging inelastic skin associated with skeletal and developmental anomalies and, in some...",
+"ko": "피부이완증",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001924",
+"concept": "- MONDO:0001924 | dystrophies primarily involving the retinal pigment epithelium | ancestors: inherited retinal dystrophy, retinal degeneration, hereditary neurological disease, retinal disorder",
+"ko": "망막색소상피 주 침범 이영양증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006712",
+"concept": "- MONDO:0006712 | corneal edema | ancestors: corneal disorder, eye disorder, disorder of orbital region, disorder of visual system | def: Hazy, swollen cornea.",
+"ko": "각막부종",
+"alt": [
+"각막 부종"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015515",
+"concept": "- MONDO:0015515 | carnitine palmitoyltransferase II deficiency | syn: Carnitine palmitoyltransferase deficiency type 2; carnitine palmitoyltransferase II deficiency; CPT II deficiency; CPT2 | ancestors: carnitine palmitoyl transferase deficiency, disorder of carnitine cycle and carnitine transport, disorder of fatty acid and ketone body metabolism, inborn disorder of energy metabolism | def: Carnitine palmitoyltransferase II (CPT II) deficiency is an inherited metabolic disorder that affects mitochondrial oxidation of long chain fatty acids (LCFA). Three forms of CPT II deficiency have be...",
+"ko": "카르니틴 팔미토일전달효소 II 결핍증",
+"alt": [
+"CPT II 결핍증"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019451",
+"concept": "- MONDO:0019451 | chronic neutrophilic leukemia | syn: chronic neutrophilic leukemia; neutrophilic leukaemia; neutrophilic leukemia | ancestors: chronic leukemia, myeloproliferative neoplasm, leukemia, myeloid neoplasm | def: A rare chronic myeloproliferative neoplasm characterized by neutrophilic leukocytosis. There is no detectable Philadelphia chromosome or BCR/ABL fusion gene.",
+"ko": "만성 호중구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001910",
+"concept": "- MONDO:0001910 | ochronosis disorder | syn: ochronosis | ancestors: connective tissue disorder, metabolic disease, skeletal system disorder, disease by body system or component | def: A disorder characterized by bluish-black discoloration of the cartilaginous tissues due to accumulation of homogentisic acid. It is associated with alkaptonuria. Signs and symptoms include dark urine,...",
+"ko": "갈색황변증",
+"alt": [],
+"organs": [
+"dermatologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0019561",
+"concept": "- MONDO:0019561 | lupus erythematosus panniculitis | syn: lupus erythematosus profundus; lupus panniculitis; lupus profundus | ancestors: panniculitis, chronic cutaneous lupus erythematosus, integumentary system disorder, connective tissue disorder | def: A type of lupus erythematosus characterized by deep dermal or subcutaneous nodules, most often on the head, face, or upper arms. It is generally chronic and occurs most often in women between the ages...",
+"ko": "홍반루푸스 지방층염",
+"alt": [
+"루푸스 지방층염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006752",
+"concept": "- MONDO:0006752 | Erysipelothrix rhusiopathiae infectious disease | syn: erysipeloid; Erysipelothrix rhusiopathiae caused disease or disorder; Erysipelothrix rhusiopathiae disease or disorder | ancestors: Erysipelothrix infectious disease, gram-positive bacterial infections, bacterial infectious disease, infectious disease | def: A disease caused by infection with Erysipelothrix rhusiopathiae.",
+"ko": "돼지단독균 감염증",
+"alt": [
+"유단독"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0010200",
+"concept": "- MONDO:0010200 | Wilson disease | syn: hepatolenticular degeneration; Westphal-Strumpell syndrome; Wilson disease; Wilson's disease | ancestors: inborn metal metabolism disorder, disorder of copper metabolism, inborn errors of metabolism, disorder of mineral absorption and transport | def: A very rare inherited multisystemic disease presenting non-specific neurological, hepatic, psychiatric or osseo-muscular manifestations due to excessive copper deposition in the body.",
+"ko": "윌슨병",
+"alt": [
+"간렌즈핵변성"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+}
+]

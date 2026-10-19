@@ -1,0 +1,233 @@
+[
+{
+"id": "MONDO:0017967",
+"concept": "- MONDO:0017967 | testicular agenesis | syn: bilateral anorchia | ancestors: 46 XY differences of sex development, disorder of sexual differentiation, gonadal disorder, developmental defect during embryogenesis",
+"ko": "고환 무발생",
+"alt": [
+"양측 무고환증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018962",
+"concept": "- MONDO:0018962 | common mesentery | syn: universal mesentery | ancestors: digestive system disorder, disease by body system or component, human disease, disease",
+"ko": "공통 장간막",
+"alt": [
+"범발성 장간막"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021420",
+"concept": "- MONDO:0021420 | polyp of vocal cord | syn: laryngeal vocal fold polyp; polyp of the vocal cord; vocal cord polyp | ancestors: laryngeal disorder, polyp, upper respiratory tract disorder, cancer or benign tumor | def: A non-neoplastic polypoid swelling of the vocal cord mucosa. It is usually unilateral and caused by excessive use of the voice.",
+"ko": "성대 용종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001007",
+"concept": "- MONDO:0001007 | chronic meningitis | syn: chronic meningitis (disease); meningitis (disease), chronic | ancestors: meningitis, encephalomyelitis, central nervous system disorder, inflammatory disease | def: Chronic form of meningitis (disease).",
+"ko": "만성 수막염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004828",
+"concept": "- MONDO:0004828 | lower urinary tract calculus | syn: lower urinary tract urolithiasis; urolithiasis of lower urinary tract | ancestors: urolithiasis, urinary system disorder, disease by body system or component, human disease | def: A urolithiasis that involves the lower urinary tract.",
+"ko": "하부요로 결석",
+"alt": [
+"하부 요로결석"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0019648",
+"concept": "- MONDO:0019648 | achondrogenesis | ancestors: osteochondrodysplasia, spondylodysplastic dysplasia, bone development disease, skeletal dysplasia | def: Achondrogenesis describes a rare group of lethal skeletal dysplasias characterized by an endochondral ossification deficiency that leads to dwarfism with extreme micromelia, a small thorax, a prominen...",
+"ko": "연골무발생증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005125",
+"concept": "- MONDO:0005125 | borderline leprosy | syn: borderline leprosy [group B] | ancestors: leprosy, primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease | def: A form of leprosy in which there are clinical manifestations of both principal types (lepromatous and tuberculoid). The disease may shift toward one of these two polar or principal forms.",
+"ko": "경계성 나병",
+"alt": [
+"경계성 한센병"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001912",
+"concept": "- MONDO:0001912 | acute frontal sinusitis | syn: frontal sinusitis, acute | ancestors: frontal sinusitis, acute disease, sinusitis, human disease | def: Acute form of frontal sinusitis.",
+"ko": "급성 전두동염",
+"alt": [
+"급성 이마굴염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018019",
+"concept": "- MONDO:0018019 | lead poisoning | syn: Lead intoxication; plumbism; saturnism | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: 5 ug/dL) is reported to lead to irreversible effects such as loss of cognition, shortening of attention span, alteration of behavior, dyslexia, attention deficit disorder, hypertension, renal impairme...",
+"ko": "납 중독",
+"alt": [
+"연중독"
+],
+"organs": [
+"haematologic",
+"renal",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005729",
+"concept": "- MONDO:0005729 | dicrocoeliasis | syn: Dicrocoelium caused disease or disorder; Dicrocoelium disease or disorder; Dicrocoelium infectious disease | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection with flukes of the genus Dicrocoelium.",
+"ko": "창형흡충증",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009928",
+"concept": "- MONDO:0009928 | pulmonary alveolar microlithiasis | syn: pulmonary alveolar microlithiasis | ancestors: hereditary disease, lung disorder, disease of genetic or genomic mechanism, lower respiratory tract disorder | def: Pulmonary alveolar microlithiasis is a disorder in which tiny fragments (microliths) of calcium phosphate gradually accumulate in the small air sacs (alveoli) of the lungs. These deposits eventually c...",
+"ko": "폐포 미세결석증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004872",
+"concept": "- MONDO:0004872 | hemorrhoid | syn: Haemorrhoids; hemorrhoid; Hemorrhoids | ancestors: pelvic varices, varicose disease, vein disorder, vascular disorder | def: Dilated veins in the anal canal.",
+"ko": "치핵",
+"alt": [
+"치질"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0001272",
+"concept": "- MONDO:0001272 | functional diarrhea | ancestors: colonic disorder, large intestine disorder, intestinal disorder, digestive system disorder",
+"ko": "기능성 설사",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0100347",
+"concept": "- MONDO:0100347 | carcinoid syndrome | syn: carcinoid syndrome; malignant carcinoid syndrome | ancestors: syndromic disease, disease by body system or component, human disease, disease",
+"ko": "카르시노이드 증후군",
+"alt": [
+"악성 카르시노이드 증후군"
+],
+"organs": [
+"cardiovascular",
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006656",
+"concept": "- MONDO:0006656 | aortitis | syn: aorta inflammation; inflammation of aorta | ancestors: aortic disorder, vasculitis, arterial disorder, vascular disorder | def: Inflammation of the aorta. Causes include trauma, infectious disorders, and connective tissue disorders.",
+"ko": "대동맥염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0017875",
+"concept": "- MONDO:0017875 | Bolivian hemorrhagic fever | syn: Machupo hemorrhagic fever | ancestors: arenavirus hemorrhagic fever, vector-borne disease, Arenaviridae infectious disease, viral hemorrhagic fever | def: Bolivian hemorrhagic fever (BHF), caused by the Machupo virus (MACV), is a severe acute viral hemorrhagic fever characterized by fever, myalgia, and arthralgia followed by hemorrhagic and neurological...",
+"ko": "볼리비아 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001507",
+"concept": "- MONDO:0001507 | viral labyrinthitis | syn: epidemic vertigo; epidemic vertigo (finding); Viruses caused labyrinthitis; Viruses labyrinthitis | ancestors: labyrinthitis, viral infectious disease, ear infection, inner ear disorder | def: An labyrinthitis caused by infection with Viruses.",
+"ko": "바이러스성 미로염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001122",
+"concept": "- MONDO:0001122 | chronic maxillary sinusitis | syn: chronic antritis; maxillary sinusitis, chronic | ancestors: maxillary sinusitis, chronic rhinosinusitis, sinusitis, mouth disorder | def: Inflammation of the maxillary sinus that typically lasts beyond eight weeks. It is caused by infections, allergies, and the presence of sinus polyps or a deviated septum. Signs and symptoms include he...",
+"ko": "만성 상악동염",
+"alt": [
+"만성 위턱굴염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007985",
+"concept": "- MONDO:0007985 | metatarsus varus, type 1 | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "중족내반, 1형",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005224",
+"concept": "- MONDO:0005224 | acute myeloblastic leukemia without maturation | syn: acute granulocytic leukaemia without maturation; acute granulocytic leukemia without maturation; acute M1 myeloid leukaemia; acute M1 myeloid leukemia | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: An acute myeloid leukemia (AML) characterized by blasts without evidence of maturation to more mature neutrophils. (WHO, 2001)",
+"ko": "성숙을 동반하지 않은 급성 골수모구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+}
+]

@@ -5,8 +5,7 @@ confirm, apply the second part of the Korean-name review, and measure the organ 
     ADC_RESEARCH_MODE=1 python ml/dataset_review_merge2.py --apply    # revert, apply, write report2.json and adjudication batches
 
 verify     a round-1 change stays when the verifier chose the new side or "same"; otherwise it is reverted:
-           organ -> removed from verified_v4.jsonl; ko / sym drops -> the line comes back in gen/*_restored.jsonl; ko fixes ->
-           the old text; profiles -> the old fields; mondo_ko -> removed from review/rv_opus.jsonl (then re-merged).
+           organ -> removed from verified_v4.jsonl; ko / sym -> ml/dataset_review_gen.py rebuilds the files without it; profiles -> the old fields; mondo_ko -> removed from review/rv_opus.jsonl (then re-merged).
 mondo_ko2  fixes appended to review/rv_opus.jsonl when the batch's controls pass.
 blind      agreement of the blind labels with the current labels (exact, superset, Jaccard) by label size; disagreements are
            written as A/B batches (adjudicate_NN.json: current vs blind) for a third pass.
@@ -73,35 +72,9 @@ def main(apply):
     with open(v4p, "w", encoding="utf-8") as fh:
         for x in v4:
             if x["id"] not in drop_v4: fh.write(json.dumps(x, ensure_ascii=False) + "\n")
-    old_rows = {}                                                                 # round-1 batch values for restores
-    for f in glob.glob(R + "batches/ko_*.json"):
-        for x in json.load(open(f, encoding="utf-8")): old_rows[("ko", str(x["i"]))] = x
-    for f in glob.glob(R + "batches/sym_*.json"):
-        for p in json.load(open(f, encoding="utf-8")):
-            for s in p["sentences"]: old_rows[("sym", str(s["i"]))] = dict(s, id=p["id"])
-    restored = {"ko": [], "sym": []}; unfix = []
-    for b, _ in revert:
-        if b["set"] in ("ko", "sym"):
-            o = old_rows.get((b["set"], b["key"]))
-            if not o: continue
-            new_side = b["A"] if _["new_is"] == "A" else b["B"]
-            if isinstance(new_side, str) and new_side.startswith("(drop"):
-                restored[b["set"]].append(dict(id=o["id"], text=o["text"], kind=o["kind"]) if b["set"] == "ko" else dict(id=o["id"], text=o["text"], lang=o["lang"], style=o["style"]))
-            else: unfix.append((o["id"], new_side, o["text"]))
-    for set_, rows in restored.items():
-        if rows:
-            with open(D + f"judge2/gen/{set_}_restored.jsonl", "a", encoding="utf-8") as fh:
-                for x in rows: fh.write(json.dumps(x, ensure_ascii=False) + "\n")
-    if unfix:
-        want = {(i, new): old for i, new, old in unfix}
-        for f in sorted(glob.glob(D + "judge2/gen/ko_*.jsonl")):
-            out = []
-            for l in open(f, encoding="utf-8"):
-                if not l.strip(): continue
-                x = json.loads(l); k = (x["id"], x["text"])
-                if k in want: x = dict(x, text=want[k])
-                out.append(x)
-            open(f, "w", encoding="utf-8").write("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in out))
+    # ko / sym reverts: ml/dataset_review_gen.py rebuilds those files from the pre-review lines without the reverted changes
+    import dataset_review_gen; dataset_review_gen.main(True)
+    restored = {"ko": [], "sym": []}; unfix = [b for b, _ in revert if b["set"] in ("ko", "sym")]
     prof_rev = {b["key"]: (b["A"] if _["new_is"] == "B" else b["B"]) for b, _ in revert if b["set"] == "profiles"}
     if prof_rev:
         for f in sorted(glob.glob(D + "disease_profiles/profiles_*.jsonl")):

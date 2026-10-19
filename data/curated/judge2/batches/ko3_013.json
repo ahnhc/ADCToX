@@ -1,0 +1,262 @@
+[
+{
+"id": "MONDO:0005946",
+"concept": "- MONDO:0005946 | rhinosporidiosis | syn: Rhinosporidium seeberi caused disease or disorder; Rhinosporidium seeberi disease or disorder; Rhinosporidium seeberi infectious disease | ancestors: parasitic Ichthyosporea infectious disease, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Chronic, localized granulomatous infection of mucocutaneous tissues, especially the nose, and characterized by hyperplasia and the development of polyps. It is found in humans and other animals and is...",
+"ko": "리노스포리디움증",
+"alt": [
+"비포자충증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018056",
+"concept": "- MONDO:0018056 | bullous lichen planus | ancestors: lichen planus, dermatitis, lichen disease, skin disorder | def: Bullous lichen planus is a variant of rare lichen planus characterized by the development of vesico-bullous lesions.",
+"ko": "수포성 편평태선",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004568",
+"concept": "- MONDO:0004568 | paralytic ileus | syn: paralytic ileus; paralytic ileus (disease) | ancestors: ileus, intestinal obstruction, intestinal disorder, digestive system disorder | def: An ileus caused by abdominal or pelvic surgery, infections, disorders that affect the muscles and nerves, and medications. Signs and symptoms include those of intestinal obstruction.",
+"ko": "마비성 장폐색증",
+"alt": [
+"마비성 장폐색"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001538",
+"concept": "- MONDO:0001538 | retinal ischemia | syn: ischaemic disease of retina; ischemic disease of retina; retina ischaemic disease; retina ischemic disease | ancestors: ischemic disease, retinal disorder, neurovascular disorder, vascular disorder | def: A ischemic disease that involves the retina.",
+"ko": "망막 허혈",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004987",
+"concept": "- MONDO:0004987 | urinary bladder neoplasm | syn: bladder neoplasm; bladder tumor; bladder tumors; bladder tumour | ancestors: urinary bladder disorder, urinary system neoplasm, urinary system disorder, neoplasm | def: A benign or malignant, primary or metastatic neoplasm of the bladder. - 2003",
+"ko": "방광 신생물",
+"alt": [
+"방광 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007015",
+"concept": "- MONDO:0007015 | viral meningitis | ancestors: infectious meningitis, aseptic meningitis, meningitis, central nervous system infectious disorder | def: Inflammation of the membranes surrounding the brain and spinal cord due to a viral infection.",
+"ko": "바이러스성 수막염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002577",
+"concept": "- MONDO:0002577 | extrahepatic bile duct rhabdomyosarcoma | syn: bile duct rhabdomyosarcoma (disease); extrahepatic bile duct rhabdomyosarcoma; extrahepatic bile duct rhabdomyosarcoma (disease); rhabdomyosarcoma (disease) of extrahepatic bile duct | ancestors: rhabdomyosarcoma, extrahepatic bile duct sarcoma, soft tissue sarcoma, bile duct sarcoma | def: A malignant mesenchymal tumor with skeletal muscle differentiation, arising from the extrahepatic bile ducts.",
+"ko": "간외담관 횡문근육종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003962",
+"concept": "- MONDO:0003962 | Froelich syndrome | syn: Babinski-Froelich syndrome; dystrophia Adiposogenitalis; Froehlich's syndrome; Froelich's syndrome | ancestors: hypothalamic disorder, syndromic disease, thalamic disorder, disease by body system or component | def: Froelich syndrome is characterized by obesity and hypogonadism due to a hypothalamic-pituitary disorder. The hypothalamus is a part of the brain where certain functions such as sleep cycles and body t...",
+"ko": "프뢸리히 증후군",
+"alt": [
+"바빈스키-프뢸리히 증후군",
+"비만성기능부전증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011873",
+"concept": "- MONDO:0011873 | Niemann-Pick disease, type C2 | syn: Niemann-Pick disease, type C2; NPC2; type C2 Niemann-Pick disease | ancestors: Niemann-Pick disease type C, Niemann-Pick disease, autosomal recessive disease, non-Langerhans cell histiocytosis | def: Niemann-Pick disease type C2 is a rare metabolic condition that affects many different parts of the body. Although signs and symptoms can develop at any age (infancy through adulthood), most affected ...",
+"ko": "니만-피크병 C2형",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002164",
+"concept": "- MONDO:0002164 | focal chorioretinitis | ancestors: chorioretinitis, uveitis, uveal disorder, inflammatory disease",
+"ko": "국소 맥락망막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001601",
+"concept": "- MONDO:0001601 | Plasmodium ovale malaria | ancestors: malaria, protozoa infectious disease, erythrocyte disorder, vector-borne disease | def: An malaria caused by infection with Plasmodium ovale.",
+"ko": "난형열원충 말라리아",
+"alt": [
+"난형 말라리아"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024249",
+"concept": "- MONDO:0024249 | pityriasis lichenoides | syn: Pityriasis Lichenoides; pityriasis lichenoides | ancestors: exanthem, parapsoriasis, skin vascular disease, skin disorder | def: A rare cutaneous disorder of unknown etiology that can present either as an acute condition, with multiple papular lesions which become vesicular and necrotic (pityriasis lichenoides et varioliformis ...",
+"ko": "태선양 비강진",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011599",
+"concept": "- MONDO:0011599 | birdshot chorioretinopathy | syn: birdshot chorioretinitis; birdshot chorioretinopathy; birdshot retinochoroiditis; birdshot retinochoroidopathy | ancestors: posterior uveitis, uveitis, uveal disorder, inflammatory disease | def: Birdshot chorioretinopathy is a posterior uveitis characterized by multiple cream-colored, hypopigmented choroidal lesions in the fundus and a strong association with HLA-A29 and clinically presenting...",
+"ko": "버드샷 맥락망막병증",
+"alt": [
+"버드샷 망막맥락막염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005777",
+"concept": "- MONDO:0005777 | granuloma inguinale | syn: donovanosis; granuloma inguinale | ancestors: primary bacterial infectious disease, bacterial sexually transmitted disease, Klebsiella infectious disease, bacterial infectious disease | def: A condition resulting from infection by Klebsiella granulomati, which is characterized by ulcerative lesions of the genitalia.",
+"ko": "서혜부 육아종",
+"alt": [
+"도노반증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004291",
+"concept": "- MONDO:0004291 | subglottis squamous cell carcinoma | syn: epidermoid carcinoma of subglottis; epidermoid carcinoma of the subglottis; squamous cell carcinoma of subglottis; squamous cell carcinoma of the subglottis | ancestors: subglottis carcinoma, laryngeal squamous cell carcinoma, subglottis cancer, laryngeal carcinoma | def: A squamous cell carcinoma of the larynx that arises from the subglottic area. Symptoms include dyspnea and stridor. It spreads to the hypopharynx, trachea, and thyroid gland.",
+"ko": "성문하 편평세포암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009767",
+"concept": "- MONDO:0009767 | oculocerebral hypopigmentation syndrome, Cross type | syn: Cross syndrome; Oculocerebral Syndrome with Hypopigmentation | ancestors: syndromic oculocutaneous albinism, disorder of development or morphogenesis, syndromic disease, disorder of melanin metabolism | def: Oculocerebral hypopigmentation syndrome, Cross type is a rare congenital syndrome characterized by cutaneous and ocular hypopigmentation, various ocular anomalies (e.g. corneal and lens opacity, spast...",
+"ko": "안뇌 저색소 증후군, 크로스형",
+"alt": [
+"크로스 증후군"
+],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016862",
+"concept": "- MONDO:0016862 | Alagille syndrome due to a JAG1 point mutation | syn: Alagille syndrome due to a JAG1 point mutation; Alagille syndrome type 1; Alagille syndrome-JAG1; Alagille-Watson syndrome due to a JAG1 point mutation | ancestors: autosomal dominant disease, Alagille syndrome, autosomal genetic disease, syndromic disease | def: Any Alagille syndrome due to a variation in the JAG1 gene that affects many organ systems including the liver, heart, skeleton, eyes and kidneys.",
+"ko": "JAG1 점돌연변이에 의한 알라질 증후군",
+"alt": [
+"알라질 증후군 1형"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"renal",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016984",
+"concept": "- MONDO:0016984 | nevus of Ota | syn: Nevus fusculoceruleus ophthalmomaxillaris; oculocutaneous melanocytic Nevus; oculodermal melanocytosis; Ota's Nevus | ancestors: melanocytic nevus, benign neoplasm of skin, melanocytic skin neoplasm, integumentary system benign neoplasm | def: Nevus of Ota is an oculodermal melanocytosis more commonly found in Asian and African populations, usually present at birth and characterized by a usually unilateral, bluish gray, patchy, speckled pig...",
+"ko": "오타모반",
+"alt": [
+"오타 모반"
+],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001229",
+"concept": "- MONDO:0001229 | small intestine diverticulitis | syn: diverticulitis of small intestine; diverticulosis of small intestine with haemorrhage; small intestine diverticulitis | ancestors: diverticulitis, small intestine disorder, intestinal disorder, inflammatory disease | def: A diverticulitis that involves the small intestine.",
+"ko": "소장 게실염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001422",
+"concept": "- MONDO:0001422 | primary aldosteronism | syn: Conn syndrome; Conn's syndrome; primary aldosteronism; primary hyperaldosteronism | ancestors: hyperaldosteronism, adrenal gland hyperfunction, adrenal cortex disorder, adrenal gland disorder | def: An endocrine disorder characterized by excessive production of aldosterone by the adrenal glands. Causes include adrenal gland adenoma and adrenal gland hyperplasia. The overproduction of aldosterone ...",
+"ko": "원발성 알도스테론증",
+"alt": [
+"콘 증후군"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+}
+]

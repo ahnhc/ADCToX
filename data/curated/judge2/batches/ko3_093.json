@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0006876",
+"concept": "- MONDO:0006876 | ocular tuberculosis | ancestors: extrapulmonary tuberculosis, eye infectious disorder, tuberculosis, eye disorder | def: Tuberculous infection of the eye, primarily the iris, ciliary body, and choroid.",
+"ko": "안결핵",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013614",
+"concept": "- MONDO:0013614 | hypertelorism-preauricular sinus-punctual pits-deafness syndrome | syn: HPPD; hypertelorism-preauricular sinus-punctual pits-hearing loss syndrome | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "안구간격과대증-귀앞 누공-눈물점 함몰-난청 증후군",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002664",
+"concept": "- MONDO:0002664 | extrahepatic bile duct signet ring cell carcinoma | syn: bile duct signet Ring cell carcinoma; bile duct signet ring cell carcinoma; extrahepatic bile duct signet Ring cell carcinoma; signet Ring cell bile duct carcinoma | ancestors: extrahepatic bile duct adenocarcinoma, signet ring cell carcinoma, extrahepatic bile duct carcinoma, bile duct adenocarcinoma | def: An adenocarcinoma that arises from the extrahepatic bile ducts. It is characterized by the presence of signet ring malignant epithelial cells.",
+"ko": "간외담관 반지세포암종",
+"alt": [
+"간외 담관 반지세포암종"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001109",
+"concept": "- MONDO:0001109 | petrositis | syn: inflammation of petrous part of temporal bone; petrous part of temporal bone inflammation | ancestors: osteomyelitis, inflammatory disease, skull disorder, bone inflammation disease | def: Inflammation of petrous bone.",
+"ko": "추체염",
+"alt": [
+"측두골 추체염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002145",
+"concept": "- MONDO:0002145 | disorder of sexual differentiation | syn: conditions affecting reproductive development; differences of sex development; disorder of sex development; disorder of sex differentiation | ancestors: gonadal disorder, developmental defect during embryogenesis, reproductive system disorder, endocrine system disorder | def: A congenital disorder characterized by abnormalities in the development of the sexual characteristics.",
+"ko": "성분화 장애",
+"alt": [
+"성발달 차이"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021454",
+"concept": "- MONDO:0021454 | benign neoplasm of eye | syn: benign eye neoplasm; benign eye tumor; benign eye tumour; benign neoplasm of the eye | ancestors: sensory organ benign neoplasm, eye neoplasm, nervous system benign neoplasm, eye disorder | def: A benign neoplasm that involves the eye.",
+"ko": "눈 양성 신생물",
+"alt": [
+"눈 양성 종양"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0017372",
+"concept": "- MONDO:0017372 | congenital varicella syndrome | syn: antenatal varicella virus infection; mother-to-child transmission of varicella syndrome | ancestors: syndromic disease, viral infectious disease, infectious embryofetopathy, disease by body system or component | def: Fetal varicella syndrome (CVS) is an acquired developmental anomaly syndrome characterized by skin, neurological, ocular, limbs and growth defects secondary to maternal Varicella-Zoster Virus (VZV) in...",
+"ko": "선천성 수두 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0100309",
+"concept": "- MONDO:0100309 | hereditary ataxia | syn: rare hereditary ataxia | ancestors: atactic disorder, hereditary neurological disease, nervous system disorder, hereditary disease | def: An instance of an atactic disorder that is caused by an inherited genomic modification in an individual.",
+"ko": "유전성 운동실조",
+"alt": [
+"희귀 유전성 운동실조"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001257",
+"concept": "- MONDO:0001257 | retinal microaneurysm | ancestors: retinal vascular disorder, retinal disorder, ocular vascular disorder, neurovascular disorder",
+"ko": "망막 미세동맥류",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003707",
+"concept": "- MONDO:0003707 | distal cholangiocarcinoma | syn: dCCA; distal bile duct carcinoma; distal biliary tract carcinoma; distal CCA | ancestors: extrahepatic bile duct adenocarcinoma, common bile duct neoplasm, cholangiocarcinoma, extrahepatic bile duct carcinoma | def: A carcinoma that arises from the common bile duct distal to the insertion of the cystic duct.",
+"ko": "원위부 담관암",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001215",
+"concept": "- MONDO:0001215 | allescheriosis | ancestors: primary systemic mycosis, systemic mycosis, fungal infectious disease, infectious disease | def: A primary systemic mycosis that results in systemic fungal infection, has material basis in Pseudallescheria boydii, which results in formation of abscesses.",
+"ko": "알레스케리아증",
+"alt": [
+"슈도알레스케리아증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006540",
+"concept": "- MONDO:0006540 | dyshidrosis | syn: dyshidrosis; DYSHYDROTIC eczema; vesicular eczema of hands and/or feet | ancestors: sweat gland disorder, skin disorder, integumentary system disorder, disease by body system or component | def: A recurrent eczematous reaction characterized by the development of vesicular eruptions on the palms and soles, particularly along the sides and between the digits. It is accompanied by pruritus, a bu...",
+"ko": "한포진",
+"alt": [
+"이한성 습진"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005242",
+"concept": "- MONDO:0005242 | empyema | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: An accumulation of pus in a body cavity, usually the pleural space.",
+"ko": "농흉",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012561",
+"concept": "- MONDO:0012561 | congenital anomalies of kidney and urinary tract 1 | syn: CAKUT1; congenital anomalies of kidney and urinary tract 1; congenital anomaly of kidney and urinary tract caused by mutation in DSTYK; DSTYK congenital anomaly of kidney and urinary tract | ancestors: congenital anomaly of kidney and urinary tract, developmental defect during embryogenesis, inherited kidney disorder, disorder of development or morphogenesis | def: Any congenital anomaly of kidney and urinary tract in which the cause of the disease is a mutation in the DSTYK gene.",
+"ko": "선천성 콩팥요로 기형 1형",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001763",
+"concept": "- MONDO:0001763 | ethmoid sinus cancer | syn: cancer of ethmoid sinus; ethmoid sinus cancer; malignant ethmoid sinus neoplasm; malignant ethmoid sinus tumor | ancestors: paranasal sinus carcinoma, ethmoidal sinus neoplasm, bone carcinoma, paranasal sinus cancer | def: A malignant neoplasm involving the ethmoid sinus.",
+"ko": "사골동암",
+"alt": [
+"벌집굴암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004431",
+"concept": "- MONDO:0004431 | hemarthrosis | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: Bleeding into the joints. It may arise from trauma or spontaneously in patients with hemophilia.",
+"ko": "관절혈증",
+"alt": [
+"관절 내 출혈"
+],
+"organs": [
+"haematologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001644",
+"concept": "- MONDO:0001644 | acute proliferative glomerulonephritis | syn: acute glomerulonephritis with lesion of proliferative glomerulonephritis; post-streptococcal glomerulonephritis; proliferative glomerulonephritis, acute | ancestors: proliferative glomerulonephritis, acute disease, glomerulonephritis, human disease | def: Inflammation of the glomeruli status post infection with nephritogenic streptococci, most often group A beta hemolytic streptococcus.",
+"ko": "급성 증식성 사구체신염",
+"alt": [
+"연쇄구균 감염후 사구체신염"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000050",
+"concept": "- MONDO:0000050 | isolated congenital growth hormone deficiency | syn: congenital IGHD; congenital isolated GH deficiency; congenital isolated growth hormone deficiency; ICGHD | ancestors: combined pituitary hormone deficiencies, genetic form, congenital nervous system disorder, hypopituitarism, congenital hypogonadotropic hypogonadism",
+"ko": "선천성 단독 성장호르몬 결핍증",
+"alt": [
+"선천성 단독 성장호르몬결핍"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003785",
+"concept": "- MONDO:0003785 | leukopenia | syn: leukocytopenia; White blood cell decreased | ancestors: leukocyte disorder, immune system disorder, hematologic disorder, disease by body system or component | def: A laboratory test result indicating a decreased number of white blood cells in the peripheral blood.",
+"ko": "백혈구감소증",
+"alt": [
+"백혈구 감소증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006412",
+"concept": "- MONDO:0006412 | sinus histiocytosis with massive lymphadenopathy | syn: Destombes-Rosaï-Dorfman disease; RDD; Rosai Dorfman disease; Rosai-Dorfman Disease | ancestors: non-Langerhans cell histiocytosis, histiocytosis, lymphatic system disorder, lymphoid system disorder | def: A rare disorder of unknown etiology characterized by distention of the lymph node sinuses and sinusoidal histiocytic infiltration. The histiocytes characteristically contain ingested lymphocytes. Pati...",
+"ko": "거대 림프절병증을 동반한 림프동 조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+}
+]

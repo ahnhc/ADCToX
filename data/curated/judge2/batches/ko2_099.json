@@ -1,0 +1,228 @@
+[
+{
+"id": "MONDO:0004375",
+"concept": "- MONDO:0004375 | end stage renal failure | syn: chronic kidney disease, stage 5; disease (ESRD), end stage renal; end stage kidney disease; end stage kidney failure | ancestors: chronic kidney disease, kidney disorder, urinary system disorder, disease by body system or component | def: Long-standing and persistent renal disease with glomerular filtration rate (GFR) less than 15 ml/min.",
+"ko": "말기 신부전",
+"alt": [
+"말기 콩팥병"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001641",
+"concept": "- MONDO:0001641 | severe pre-eclampsia | syn: Preeclampsia with severe features; severe preeclampsia | ancestors: preeclampsia, hereditary disease, toxemia of pregnancy, disease of genetic or genomic mechanism | def: Preeclampsia with a systolic blood pressure of 160 mmHg or higher, or a diastolic blood pressure of 110 mmHg or higher on two occasions at least 4 hours apart while on bedrest. It is associated with t...",
+"ko": "중증 전자간증",
+"alt": [
+"중증 자간전증"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007130",
+"concept": "- MONDO:0007130 | congenital total pulmonary venous return anomaly | syn: TAPVR; total anomalous pulmonary venous return | ancestors: congenital pulmonary venous return anomaly, congenital pulmonary veins anomaly, congenital heart disease, heart disorder | def: Total pulmonary venous return (TAPVR) is a form of congenital pulmonary venous return where all of the pulmonary veins drain into the right atrium or one of its tributaries, instead of the left atrium...",
+"ko": "선천성 총폐정맥 환류 이상",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002203",
+"concept": "- MONDO:0002203 | constipation disorder | syn: constipation | ancestors: bowel dysfunction, intestinal disorder, digestive system disorder, disease by body system or component | def: Irregular and infrequent or difficult evacuation of the bowels.",
+"ko": "변비 질환",
+"alt": [
+"변비"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0019809",
+"concept": "- MONDO:0019809 | congenital aortic valve insufficiency | syn: congenital aortic insufficiency; congenital insufficiency of aortic valve; Congential aortic valve insufficiency | ancestors: aortic valve insufficiency, disorder of development or morphogenesis, aortic valve disorder, vascular insufficiency disorder | def: Dysfunction of the aortic valve characterized by incomplete valve closure that is present at birth.",
+"ko": "선천성 대동맥판 폐쇄부전",
+"alt": [
+"선천성 대동맥판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0975911",
+"concept": "- MONDO:0975911 | reticular dysgenesis-like severe combined immunodeficiency | ancestors: T-B- severe combined immunodeficiency, severe combined immunodeficiency, combined immunodeficiency, immunodeficiency disease",
+"ko": "세망 이형성증 유사 중증 복합 면역결핍증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003542",
+"concept": "- MONDO:0003542 | dental pulp calcification | syn: pulp calcification | ancestors: dental pulp disorder, tooth disorder, skeletal system disorder, mouth disorder",
+"ko": "치수 석회화",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004717",
+"concept": "- MONDO:0004717 | peliosis hepatis | syn: hepatic peliosis | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder | def: A vascular disease of the liver characterized by the occurrence of multiple blood-filled cysts or cavities. The cysts are lined with endothelial cells; the cavities lined with hepatic parenchymal cell...",
+"ko": "간자색반병",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0024182",
+"concept": "- MONDO:0024182 | dry beriberi | ancestors: beriberi, vitamin B deficiency, vitamin deficiency disorder, nutritional deficiency disease",
+"ko": "건성 각기병",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004897",
+"concept": "- MONDO:0004897 | hypotropia | syn: downward ocular deviation; hypotropia; sunset sign | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder | def: Vertical strabismus in which there is permanent downward deviation of the visual axis of one eye.",
+"ko": "하사시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001154",
+"concept": "- MONDO:0001154 | Siberian tick typhus | syn: North Asian tick fever; North Asian tick fever (disorder) [ambiguous] | ancestors: spotted fever, Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis | def: A spotted fever that has material basis in Rickettsia sibirica, which is transmitted by ticks (Dermacentor nuttalli, Dermacentor marginatus and Haemaphysalis concinna). The infection has symptom fever...",
+"ko": "시베리아 진드기 발진티푸스",
+"alt": [
+"북아시아 진드기열"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0000949",
+"concept": "- MONDO:0000949 | conjunctival degeneration | ancestors: conjunctival disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "결막 변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004567",
+"concept": "- MONDO:0004567 | ileus | ancestors: intestinal obstruction, intestinal disorder, digestive system disorder, disease by body system or component | def: Decrease in peristalsis in the absence of a mechanical bowel obstruction.",
+"ko": "장마비",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0003454",
+"concept": "- MONDO:0003454 | conjunctival cancer | syn: conjunctiva cancer; malignant conjunctiva neoplasm; malignant conjunctiva tumor; malignant conjunctiva tumour | ancestors: ocular cancer, conjunctival tumor, sensory system cancer, head and neck cancer | def: A malignant neoplasm involving the conjunctiva.",
+"ko": "결막암",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009256",
+"concept": "- MONDO:0009256 | galactorrhea | syn: galactorrhea; galactorrhea (disease) | ancestors: lactation disease, breast disorder, disorder of development or morphogenesis, disease by body system or component | def: Excessive or inappropriate lactation in females or males, and not necessarily related to pregnancy. Galactorrhea can occur either unilaterally or bilaterally, and be profuse or sparse. Its most common...",
+"ko": "유즙분비과다증",
+"alt": [
+"젖흐름증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004902",
+"concept": "- MONDO:0004902 | interstitial keratitis | ancestors: connective tissue disorder, deep keratitis, disease by body system or component, keratitis",
+"ko": "간질성 각막염",
+"alt": [
+"실질각막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020334",
+"concept": "- MONDO:0020334 | mast cell leukemia | syn: aleukemic mast cell leukaemia; aleukemic mast cell leukemia; Mast cell leukaemia; Mast cell leukemia | ancestors: leukemia, systemic mastocytosis, hematopoietic and lymphoid cell neoplasm, mastocytosis | def: Mast cell leukemia is a malignant form of systemic mastocytosis (SM) characterized, most of the time, by the presence of circulating mast cells.",
+"ko": "비만세포 백혈병",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002800",
+"concept": "- MONDO:0002800 | thrombophlebitis | syn: phlebitis and thrombophlebitis of superficial vessels of lower extremities | ancestors: phlebitis, vein disorder, vasculitis, vascular disorder | def: Inflammation of the veins associated with the presence of a thrombus.",
+"ko": "혈전정맥염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004580",
+"concept": "- MONDO:0004580 | retinal degeneration | syn: retina degeneration; retina, Degeneration Of | ancestors: retinal disorder, nervous system disorder, eye disorder, disease by body system or component | def: Degeneration of the retina.",
+"ko": "망막 변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018068",
+"concept": "- MONDO:0018068 | trisomy 13 | syn: Patau syndrome; Patau's syndrome; trisomy 13; Trisomy 13 Syndrome | ancestors: syndromic disease, congenital vitreoretinal dysplasia, chromosome 13 disorder, trisomy | def: Trisomy 13 is a chromosomal anomaly caused by the presence of an extra chromosome 13 and is characterized by brain malformations (holoprosencephaly), facial dysmorphism, ocular anomalies, postaxial po...",
+"ko": "13 삼염색체증",
+"alt": [
+"파타우 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 6
+}
+]

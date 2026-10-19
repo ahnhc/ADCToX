@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0016342",
+"concept": "- MONDO:0016342 | familial isolated arrhythmogenic right ventricular dysplasia | syn: familial isolated arrhythmogenic right ventricular cardiomyopathy; familial isolated arrhythmogenic right ventricular dysplasia; familial isolated arrhythmogenic ventricular cardiomyopathy; familial isolated arrhythmogenic ventricular dysplasia | ancestors: familial cardiomyopathy, arrhythmogenic right ventricular cardiomyopathy, cardiomyopathy, cardiogenetic disease | def: Familial isolated arrhythmogenic right ventricular dysplasia (ARVC) is the familial autosomal dominant form of ARVC, a heart muscle disease characterized by life-threatening ventricular arrhythmias wi...",
+"ko": "가족성 단독 부정맥유발 우심실 이형성증",
+"alt": [
+"가족성 단독 부정맥유발 우심실 심근병증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010265",
+"concept": "- MONDO:0010265 | Simpson-Golabi-Behmel syndrome type 2 | syn: lethal variant of Simpson-Golabi-Behmel syndrome; OFD1 Simpson-Golabi-Behmel syndrome; SGBS2; Simpson-Golabi-Behmel syndrome caused by mutation in OFD1 | ancestors: hereditary disease, Simpson-Golabi-Behmel syndrome, disease of genetic or genomic mechanism, syndromic disease | def: Simpson-Golabi-Behmel syndrome (SGBS) type 2 is an extremely rare and severe, early-lethal form of SGBS, an overgrowth-multiple anomalies syndrome, characterized by hydrops fetalis, macrocephaly, faci...",
+"ko": "심슨-골라비-베멜 증후군 2형",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009691",
+"concept": "- MONDO:0009691 | mycosis fungoides | syn: CTCL/ mycosis fungoides; cutaneous T-cell lymphoma/mycosis fungoides; MF; mycosis fungoides | ancestors: primary cutaneous T-cell non-Hodgkin lymphoma, mycosis fungoides and variants, mature T-cell and NK-cell non-Hodgkin lymphoma, primary cutaneous lymphoma | def: Classical mycosis fungoides is the most common type of mycosis fungoides (MF), a form of cutaneous T-cell lymphoma, and is characterized by slow progression from patches to more infiltrated plaques an...",
+"ko": "균상식육종",
+"alt": [
+"피부 T세포 림프종"
+],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011390",
+"concept": "- MONDO:0011390 | focal segmental glomerulosclerosis 2 | syn: focal segmental glomerulosclerosis 2; focal segmental glomerulosclerosis caused by mutation in TRPC6; focal segmental glomerulosclerosis type 2; FSGS2 | ancestors: inherited focal segmental glomerulosclerosis, inherited kidney disorder, focal segmental glomerulosclerosis, hereditary disease | def: Any focal segmental glomerulosclerosis in which the cause of the disease is a mutation in the TRPC6 gene.",
+"ko": "국소분절사구체경화증 2",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018864",
+"concept": "- MONDO:0018864 | Kikuchi-Fujimoto disease | syn: histiocytic necrotizing lymphadenitis; Kikuchi disease | ancestors: lymphadenitis, lymph node disorder, inflammatory disease, lymphatic system disorder | def: Kikuchi-Fujimoto disease (KFD) is a benign and self-limited disorder, characterized by regional cervical lymphadenopathy with tenderness, usually accompanied with mild fever and night sweats. Less fre...",
+"ko": "기쿠치-후지모토병",
+"alt": [
+"조직구성 괴사성 림프절염"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019272",
+"concept": "- MONDO:0019272 | hereditary palmoplantar keratoderma | syn: hereditary keratosis palmoplantaris; hereditary palmoplantar hyperkeratosis; hereditary palmoplantar keratosis; hereditary PPK | ancestors: palmoplantar keratosis, epidermal disease, hereditary skin disorder, keratosis | def: An instance of palmoplantar keratosis that is caused by an inherited modification of the individual's genome.",
+"ko": "유전성 손발바닥각화증",
+"alt": [
+"유전성 장척각화증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001700",
+"concept": "- MONDO:0001700 | megaloblastic anemia | syn: megaloblastic anaemia (disease); megaloblastic anemia; megaloblastic anemia (disease) | ancestors: macrocytic anemia, anemia, hematologic disorder, disease by body system or component | def: Anemia characterized by the presence of unusually large erythroblasts in the bone marrow called megaloblasts. It is usually caused by vitamin B12 or folic acid deficiency. Other causes include toxins ...",
+"ko": "거대적아구성 빈혈",
+"alt": [
+"거대모구성 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003543",
+"concept": "- MONDO:0003543 | trigeminal nerve disorder | syn: disease of trigeminal nerve; disease or disorder of trigeminal nerve; disorder of trigeminal nerve; trigeminal nerve disease | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the trigeminal nerve.",
+"ko": "삼차신경 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0007100",
+"concept": "- MONDO:0007100 | familial amyloid neuropathy | syn: amyloid neuropathies, familial; ATTRv amyloidosis; familial amyloid neuropathy; familial amyloid polyneuropathy | ancestors: hereditary amyloidosis, hereditary peripheral neuropathy, inborn errors of metabolism, amyloidosis | def: A rare genetic systemic disease characterized by adult onset, progressive sensorimotor and autonomic neuropathy and infiltrative cardiomyopathy. Neurological involvement usually starts with sensory lo...",
+"ko": "가족성 아밀로이드 신경병증",
+"alt": [
+"ATTRv 아밀로이드증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001021",
+"concept": "- MONDO:0001021 | ametropic amblyopia | syn: refractive amblyopia | ancestors: amblyopia, vision disorder, disorder of visual system, disease by body system or component",
+"ko": "굴절이상성 약시",
+"alt": [
+"굴절성 약시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010518",
+"concept": "- MONDO:0010518 | Wiskott-Aldrich syndrome | syn: eczema-thrombocytopenia-immunodeficiency syndrome; immunodeficiency 2; WAS; Wiskott Aldrich syndrome | ancestors: X-linked disease, combined immunodeficiency, hereditary neoplastic syndrome, inherited blood coagulation disorder | def: Wiskott-Aldrich syndrome (WAS) is a primary immunodeficiency disease characterized by microthrombocytopenia, eczema, infections and an increased risk for autoimmune manifestations and malignancies.",
+"ko": "비스코트-올드리치 증후군",
+"alt": [
+"윌스코트-앨드리치 증후군"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001143",
+"concept": "- MONDO:0001143 | paralytic strabismus | syn: paralytic squint | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "마비성 사시",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0957462",
+"concept": "- MONDO:0957462 | primary pulmonary tuberculosis | ancestors: pulmonary tuberculosis, respiratory system disorder, tuberculosis, disease by body system or component",
+"ko": "원발성 폐결핵",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009894",
+"concept": "- MONDO:0009894 | short-rib thoracic dysplasia 6 with or without polydactyly | syn: Majewski syndrome; polydactyly with neonatal chondrodystrophy type II; short rib-polydactyly syndrome type II; short-rib thoracic dysplasia 6 with or without polydactyly | ancestors: Jeune syndrome, short rib-polydactyly syndrome, Majewski type, ciliopathy, short rib-polydactyly syndrome | def: A group of rare, autosomal recessive inherited disorders characterized by a constricted thoracic cage, short ribs, and a 'trident' appearance of the acetabular roof. Polydactyly may or may not be pres...",
+"ko": "단늑골 흉곽 이형성증 6형 (다지증 동반 또는 비동반)",
+"alt": [
+"마제프스키 증후군"
+],
+"organs": [
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013127",
+"concept": "- MONDO:0013127 | asphyxiating thoracic dystrophy 3 | syn: asphyxiating thoracic dystrophy 3; asphyxiating thoracic dystrophy type 3; ATD3; DYNC2H1-related short rib thoracic dysplasia | ancestors: Jeune syndrome, ciliopathy, short rib-polydactyly syndrome, inherited renal tubular disease | def: An asphyxiating thoracic dystrophy that has material basis in homozygous or compound heterozygous mutation in the DYNC2H1 gene on chromosome 11q22.",
+"ko": "질식성 흉곽 이영양증 3형",
+"alt": [
+"질식성 흉곽 이형성증 3형",
+"제옹 증후군"
+],
+"organs": [
+"pulmonary",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006618",
+"concept": "- MONDO:0006618 | vibratory urticaria | ancestors: physical urticaria, urticaria, dermatitis, skin disorder | def: This very rare form of angioedema develops in reply to contact with vibration. In vibratory angioedema, symptoms develop within two to five minutes after contact with vibration and dissolve after abou...",
+"ko": "진동 두드러기",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0021474",
+"concept": "- MONDO:0021474 | benign neoplasm of ear | syn: aural neoplasms, benign; benign Ear neoplasm; benign Ear tumor; benign Ear tumour | ancestors: sensory organ benign neoplasm, ear neoplasm, nervous system benign neoplasm, head and neck neoplasm | def: A benign neoplasm that involves the ear.",
+"ko": "귀 양성 신생물",
+"alt": [
+"귀 양성 종양"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006002",
+"concept": "- MONDO:0006002 | urogenital tuberculosis | syn: genitourinary system tuberculosis | ancestors: extrapulmonary tuberculosis, tuberculosis, primary bacterial infectious disease, mycobacterial infectious disease | def: A general term for mycobacterium infections of any part of the urogenital system in either the male or the female.",
+"ko": "비뇨생식기 결핵",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003816",
+"concept": "- MONDO:0003816 | articular cartilage disorder | syn: articular cartilage disorder; articular cartilage of joint disease; articular cartilage of joint disease or disorder; disease of articular cartilage of joint | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: A disease involving the articular cartilage of joint.",
+"ko": "관절연골 질환",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0020451",
+"concept": "- MONDO:0020451 | congenital stenosis of the inferior vena cava | syn: congenital stenosis of the inferior caval vein; congenital stenosis of the IVC | ancestors: congenital anomaly of the inferior vena cava, vascular disorder, cardiovascular disorder, disease by body system or component",
+"ko": "선천성 하대정맥 협착",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+}
+]

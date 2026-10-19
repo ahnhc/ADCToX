@@ -1,0 +1,236 @@
+[
+{
+"id": "MONDO:0008626",
+"concept": "- MONDO:0008626 | ureter, bifid or double | syn: ureter, bifid or double | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "분지 또는 중복 요관",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0016301",
+"concept": "- MONDO:0016301 | congenitally corrected transposition of the great arteries | syn: congenitally corrected transposition of the great vessels; discordant ventriculoarterial and atrioventricular connections; Double discordance; L-transposition of the great arteries | ancestors: transposition of the great arteries, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder | def: Congenitally corrected transposition (CCT) of the great vessels is a rare cardiac malformation characterized by the combination of discordant atrioventricular and ventriculo-arterial connections, usua...",
+"ko": "선천성 교정 대혈관전위",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005526",
+"concept": "- MONDO:0005526 | tetanus | syn: Clostridium tetani caused infectious disease of the nervous system; Clostridium tetani infectious disease of the nervous system | ancestors: primary bacterial infectious disease, infectious disorder of the nervous system, Clostridium infectious disease, bacterial infectious disease | def: A serious infectious disorder that follows wound contamination by the Gram-positive bacterium Clostridium tetani. The bacteria produce a neurotoxin called tetanospasmin, which causes muscle spasm in t...",
+"ko": "파상풍",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005638",
+"concept": "- MONDO:0005638 | agnosia | syn: agnosia | ancestors: perceptual disorders, nervous system disorder, disease by body system or component, human disease | def: A rare disorder characterized by the lack of ability to recognize individuals, objects, shapes, sounds, or smells. There is no loss of memory. It is caused by neurological damage in the brain, specifi...",
+"ko": "실인증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005996",
+"concept": "- MONDO:0005996 | trichuriasis | syn: trichuriasis infection; Trichuris trichiura caused disease or disorder; Trichuris trichiura disease or disorder; Trichuris trichiura infectious disease | ancestors: Enoplea infectious disease, Nematoda infectious disease, helminthiasis, parasitic infectious disease | def: An infection that is caused by the nematode Trichuris trichiura, a soil-transmitted helminth, which is transmitted via food and/or water contaminated with the eggs of the worm. Symptoms are usually mi...",
+"ko": "편충증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0009251",
+"concept": "- MONDO:0009251 | fructose-1,6-bisphosphatase deficiency | syn: fructose-1,6-bisphosphatase deficiency; fructose-1,6-diphosphatase deficiency | ancestors: disorder of gluconeogenesis, glucose metabolism disease, inborn carbohydrate metabolic disorder, metabolic disease | def: Fructose-1,6-biphosphatase (FBP) deficiency is a disorder of fructose metabolism characterized by recurrent episodes of fasting hypoglycemia with lactic acidosis, that may be life-threatening in neona...",
+"ko": "과당-1,6-이인산가수분해효소 결핍증",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005707",
+"concept": "- MONDO:0005707 | coccidiosis | syn: coccidiosis (& [intestinal]) | ancestors: protozoa infectious disease, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A parasitic infection caused by Coccidia. It affects livestock, birds and humans. In humans the parasite infests the intestinal tract and may cause watery diarrhea, abdominal pain, fever, nausea and v...",
+"ko": "콕시디아증",
+"alt": [
+"구충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004810",
+"concept": "- MONDO:0004810 | acute ethmoiditis | syn: acute ethmoidal sinusitis; ethmoid sinusitis, acute | ancestors: ethmoid sinusitis, acute disease, sinusitis, disorder of facial skeleton | def: Acute form of ethmoid sinusitis.",
+"ko": "급성 벌집굴염",
+"alt": [
+"급성 사골동염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019455",
+"concept": "- MONDO:0019455 | acute panmyelosis with myelofibrosis | syn: acute (malignant) myelofibrosis; acute (malignant) myelosclerosis; acute myelodysplasia with myelofibrosis; acute myelofibrosis | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: An acute myeloid leukemia characterized by bone marrow fibrosis without preexisting primary myelofibrosis.",
+"ko": "골수섬유화를 동반한 급성 범골수증",
+"alt": [
+"급성 악성 골수섬유화증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000301",
+"concept": "- MONDO:0000301 | ophthalmomyiasis | syn: Oestrus ovis caused myiasis; Oestrus ovis myiasis; ophthalmic myiasis; ophthalmomyiasis | ancestors: hypodermyiasis, myiasis, parasitic ectoparasitic infectious disease, parasitic skin disorder | def: An myiasis caused by infection with Oestrus ovis.",
+"ko": "안구 구더기증",
+"alt": [
+"안구 승저증"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018815",
+"concept": "- MONDO:0018815 | aneurysmal bone cyst | syn: ABC; aneurysmal bone cyst; aneurysmal bone cyst (disease); aneurysmal bone cysts | ancestors: bone neoplasm, hereditary disorder of connective tissue, bone disorder, connective tissue neoplasm | def: A locally aggressive and destructive benign cystic lesion of the bone. It is characterized by the formation of multiloculated hemorrhagic cystic spaces which are separated by fibrous septa. It can ari...",
+"ko": "동맥류성 뼈낭종",
+"alt": [
+"동맥류성 골낭종"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005774",
+"concept": "- MONDO:0005774 | glanders | syn: Burkholderia mallei caused disease or disorder; Burkholderia mallei disease or disorder; Burkholderia mallei infectious disease; farcy pipes | ancestors: primary bacterial infectious disease, burkholderia infectious disease, bacterial infectious disease, gram-negative bacterial infections | def: A condition resulting from infection by Burkholderia mallei, which mainly affects horses.",
+"ko": "비저",
+"alt": [
+"비저병"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0003529",
+"concept": "- MONDO:0003529 | acute pyelonephritis | syn: pyelonephritis, acute | ancestors: pyelonephritis, acute disease, uterine inflammatory disease, renal infectious disease | def: Sudden onset pyelonephritis.",
+"ko": "급성 신우신염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001929",
+"concept": "- MONDO:0001929 | ascending cholangitis | syn: ascending cholangitis | ancestors: cholangitis, non-neoplastic bile duct disorder, inflammatory disease, bile duct disorder | def: Acute infection of the bile ducts caused by bacteria ascending from the small intestine.",
+"ko": "상행성 담관염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010789",
+"concept": "- MONDO:0010789 | MELAS syndrome | syn: MELAS syndrome; mitochondrial encephalomyopathy, lactic acidosis and stroke; mitochondrial encephalomyopathy, lactic acidosis and stroke-like episodes; mitochondrial myopathy, encephalopathy, lactic acidosis and stroke-like episodes | ancestors: syndromic disease, mitochondrial encephalomyopathy, disease by body system or component, inborn mitochondrial myopathy | def: MELAS (Mitochondrial myopathy, encephalopathy, lactic acidosis, and stroke) syndrome is a rare progressive multisystemic disorder characterized by encephalomyopathy, lactic acidosis, and stroke-like e...",
+"ko": "MELAS 증후군",
+"alt": [
+"미토콘드리아 뇌근육병증, 젖산산증 및 뇌졸중 유사 발작"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002275",
+"concept": "- MONDO:0002275 | generalized atherosclerosis | syn: generalised and unspecified atherosclerosis; generalized and unspecified atherosclerosis; generalized atherosclerosis | ancestors: atherosclerosis, arteriosclerosis disorder, arterial disorder, vascular disorder | def: Atherosclerosis that is not localized.",
+"ko": "전신 죽상경화증",
+"alt": [
+"전신 동맥경화증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0016372",
+"concept": "- MONDO:0016372 | glossopharyngeal neuralgia | syn: glossopharyngeal nerve neuralgia; glossopharyngeal neuralgia; Glossovasopharyngeal neuralgia; neuralgia of glossopharyngeal nerve | ancestors: glossopharyngeal nerve disorder, cranial neuralgia, cranial nerve neuropathy, peripheral nervous system disorder | def: Glossopharyngeal neuralgia is a condition characterized by repeated episodes of severe pain in the tongue, throat, ear, and tonsils (areas connected to the ninth cranial nerve, or glossopharyngeal ner...",
+"ko": "설인신경통",
+"alt": [
+"혀인두신경통"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003232",
+"concept": "- MONDO:0003232 | alcoholic pancreatitis | syn: alcoholic pancreatitis | ancestors: pancreatitis, alcohol-induced disorders, pancreas disorder, inflammatory disease | def: Acute or chronic inflammation of the pancreas due to excessive alcohol drinking. Alcoholic pancreatitis usually presents as an acute episode but it is a chronic progressive disease in alcoholics.",
+"ko": "알코올성 췌장염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005884",
+"concept": "- MONDO:0005884 | opisthorchiasis | syn: infection by Opisthorchis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection with flukes of the genus Opisthorchis.",
+"ko": "후고환흡충증",
+"alt": [
+"오피스토르키스증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007405",
+"concept": "- MONDO:0007405 | Crouzon syndrome | syn: craniofacial dysostosis; Crouzon craniofacial dysostosis; Crouzon syndrome | ancestors: syndromic craniosynostosis, syndromic disease, craniosynostosis, skeletal dysplasia | def: Crouzon disease is characterized by craniosynostosis and facial hypoplasia.",
+"ko": "크루종 증후군",
+"alt": [
+"두개안면 이골증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+}
+]

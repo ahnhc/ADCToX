@@ -1,0 +1,236 @@
+[
+{
+"id": "MONDO:0018154",
+"concept": "- MONDO:0018154 | Madelung deformity | ancestors: Leri-Weill dyschondrosteosis, osteochondrodysplasia, bone development disease, skeletal dysplasia | def: Madelung disease, or deformity (MD) is a predominantly bilateral wrist anomaly characterized by shortened and bowed radii and long ulnae leading to dorsal dislocation of the distal ulna and limited mo...",
+"ko": "마델룽 변형",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005752",
+"concept": "- MONDO:0005752 | epidural abscess | syn: extradural intraspinal abscess; intraspinal epidural abscess; intraspinal extradural abscess; spinal epidural abscess | ancestors: abscess, central nervous system neoplasm, central nervous system infectious disorder, infectious disease | def: Circumscribed collections of suppurative material occurring in the spinal or intracranial epidural space. The majority of epidural abscesses occur in the spinal canal and are associated with osteomyel...",
+"ko": "경막외 농양",
+"alt": [
+"경막외 고름집"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001338",
+"concept": "- MONDO:0001338 | acute apical periodontitis | syn: acute apical periodontitis of pulpal origin | ancestors: acute pericementitis, periapical periodontitis, periodontitis, acute disease",
+"ko": "급성 치근단 치주염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001817",
+"concept": "- MONDO:0001817 | acute closed-angle glaucoma | syn: acute angle-closure glaucoma; angle-closure glaucoma, acute | ancestors: primary angle-closure glaucoma, acute disease, angle-closure glaucoma, human disease | def: Acute form of angle-closure glaucoma.",
+"ko": "급성 폐쇄각 녹내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021063",
+"concept": "- MONDO:0021063 | malignant colon neoplasm | syn: cancer of colon; colon cancer; colon neoplasm, malignant; colon tumor, malignant | ancestors: colonic neoplasm, colorectal cancer, colonic disorder, colorectal neoplasm | def: A primary or metastatic malignant neoplasm that affects the colon. Representative examples include carcinoma, lymphoma, and sarcoma.",
+"ko": "악성 결장 신생물",
+"alt": [
+"결장암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001252",
+"concept": "- MONDO:0001252 | toxic multinodular goitre | syn: MNG; Plummer disease; Plummer's disease; TMNG | ancestors: primary hyperthyroidism, hyperthyroidism, thyroid gland disorder, endocrine system disorder | def: Nodular enlargement of the thyroid gland associated with hyperthyroidism.",
+"ko": "독성 다결절성 갑상선종",
+"alt": [
+"플러머병"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0000304",
+"concept": "- MONDO:0000304 | penicilliosis | syn: infection caused by Penicillium marneffei; infection caused by Talaromyces marneffei; infection due to Penicillium marneffei; Penicillium marneffei infectious disease | ancestors: opportunistic systemic mycosis, systemic mycosis, opportunistic mycosis, fungal infectious disease | def: A disease caused by infection with Talaromyces marneffei.",
+"ko": "페니실리움증",
+"alt": [
+"탈라로마이세스 마르네페이 감염증"
+],
+"organs": [
+"pulmonary",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005974",
+"concept": "- MONDO:0005974 | strongyloidiasis | syn: Anguilluliasis; Anguillulosis | ancestors: Rhabditida infectious disease, Nematoda infectious disease, helminthiasis, parasitic infectious disease | def: An infection that is caused by nematodes of the genus Strongyloides, most commonly Strongyloides stercoralis, which is a soil-transmitted helminth, and which is characterized by a variety of gastroint...",
+"ko": "분선충증",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0016242",
+"concept": "- MONDO:0016242 | hemoglobin C disease | ancestors: anemia, inherited hemoglobinopathy, hematologic disorder, hereditary disease | def: Hemoglobin C disease (HbC) is a hemoglobinopathy characterized by production of abnormal variant hemoglobin known as hemoglobin C, with no or mild clinical manifestations (hemolytic anemia).",
+"ko": "헤모글로빈 C병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000748",
+"concept": "- MONDO:0000748 | mastoiditis | syn: inflammation of mastoid process of temporal bone; mastoid process of temporal bone inflammation; mastoid process of temporal boneitis; mastoiditis | ancestors: bone inflammation disease, inflammatory disease, bone disorder, disease by developmental or physiological process | def: Inflammation of the mucosal lining of the mastoid antrum and mastoid air cell system of the mastoid process.",
+"ko": "꼭지돌기염",
+"alt": [
+"유양돌기염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0044014",
+"concept": "- MONDO:0044014 | postpartum thyroiditis | syn: postpartum thyroiditis | ancestors: autoimmune thyroid disease, puerperal disorder, autoimmune disorder of endocrine system, thyroiditis | def: A transient autoimmune Inflammatory disorder of thyroid gland that occurs postpartum due to any partum problem. It is characterized by the presence of high titers of autoantibodies against thyroid per...",
+"ko": "산후 갑상선염",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0023164",
+"concept": "- MONDO:0023164 | viral pericarditis | syn: viral pericarditis | ancestors: pericarditis, primary viral infectious disease, pericardium disorder, inflammatory disease | def: Pericarditis that is caused by an infection with a viral agent.",
+"ko": "바이러스성 심낭염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001224",
+"concept": "- MONDO:0001224 | Angelucci syndrome | syn: acute atopic conjunctivitis; Angelucci's syndrome | ancestors: acute conjunctivitis, atopic conjunctivitis, conjunctivitis, acute disease | def: Atopic conjunctivitis that is of relatively short duration and that has a rapid onset.",
+"ko": "안젤루치 증후군",
+"alt": [
+"급성 아토피 결막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006571",
+"concept": "- MONDO:0006571 | lichen nitidus | ancestors: lichen disease, skin disorder, integumentary system disorder, disease by body system or component | def: A chronic inflammatory disease characterized by shiny, flat-topped, usually flesh-colored micropapules no larger than the head of a pin. Lesions are localized in the early stages, found chiefly on the...",
+"ko": "광택태선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001985",
+"concept": "- MONDO:0001985 | partial arterial retinal occlusion | syn: partial retinal arterial occlusion | ancestors: retinal artery occlusion, retinal vascular occlusion, retinal vascular disorder, vascular occlusion disorder | def: A partial occlusion of the retinal artery.",
+"ko": "부분 망막동맥 폐쇄",
+"alt": [],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018408",
+"concept": "- MONDO:0018408 | cystic echinococcosis | syn: hydatid disease; Hydatidosis | ancestors: echinococcus granulosus infectious disease, echinococcosis, Cestode infectious disease, helminthiasis",
+"ko": "낭성 포충증",
+"alt": [
+"낭포성 에키노코쿠스증",
+"포충증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018229",
+"concept": "- MONDO:0018229 | Stevens-Johnson syndrome | syn: Dermatostomatitis, Stevens Johnson type; Stevens Johnson syndrome | ancestors: syndromic disease, toxic epidermal necrolysis, disease by body system or component, toxic dermatosis | def: Stevens-Johnson syndrome is a limited form of toxic epidermal necrolysis characterized by destruction and detachment of the skin epithelium and mucous membranes involving less than 10% of the body sur...",
+"ko": "스티븐스-존슨 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019196",
+"concept": "- MONDO:0019196 | Foix-Alajouanine syndrome | syn: angiodysgenetic necrotizing myelopathy; familial osteosclerosis with abnormalities of the nervous system and meninges; Subacute angiohypertrophic myelomalacia; Subacute ascending necrotizing myelitis | ancestors: arteriovenous hemangioma/malformation, hemangioma, benign blood vessel neoplasm, cardiovascular organ benign neoplasm | def: Foix-Alajouanine syndrome, also called subacute ascending necrotising myelitis, results from chronic congestion of the extrinsic pial veins of the spinal cord and of the intrinsic subpial network. It ...",
+"ko": "푸아-알라주아닌 증후군",
+"alt": [
+"혈관이형성 괴사성 척수병증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019512",
+"concept": "- MONDO:0019512 | congenital heart malformation | syn: congenital heart malformation; disorder of heart development; heart development disease | ancestors: congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis, disease by body system or component | def: A disease that has its basis in the disruption of heart development.",
+"ko": "선천성 심장 기형",
+"alt": [
+"선천성 심장병"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0013792",
+"concept": "- MONDO:0013792 | intracerebral hemorrhage | syn: stroke, hemorrhagic | ancestors: hemorrhagic stroke, stroke disorder, cerebrovascular disorder, brain disorder | def: A cerebrovascular disorder characterized by bleeding into one or both cerebral hemispheres including the basal ganglia and the cerebral cortex. It is often associated with hypertension and craniocereb...",
+"ko": "뇌내출혈",
+"alt": [
+"뇌출혈"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 5
+}
+]

@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0000334",
+"concept": "- MONDO:0000334 | multinodular goiter | syn: goiter, multinodular | ancestors: hereditary disease, nodular goiter, disease of genetic or genomic mechanism, goiter | def: Nodular goiter characterized by more than one discrete tissue mass.",
+"ko": "다결절성 갑상선종",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011758",
+"concept": "- MONDO:0011758 | Hurler syndrome | syn: Hurler disease; Hurler syndrome; MPS I H; MPS1H | ancestors: mucopolysaccharidosis type 1, syndromic disease, lysosomal storage disease with skeletal involvement, eye disorder | def: Hurler syndrome is the most severe form of mucopolysaccharidosis type 1 (MPS1), a rare lysosomal storage disease, characterized by skeletal abnormalities, cognitive impairment, heart disease, respirat...",
+"ko": "헐러 증후군",
+"alt": [
+"헐러병"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010539",
+"concept": "- MONDO:0010539 | X-linked mandibulofacial dysostosis | syn: mandibulofacial dysostosis, Toriello type; mandibulofacial dysostosis, X-linked; X-linked branchial arch syndrome; X-linked mandibulofacial dysostosis with limb anomalies | ancestors: X-linked disease, syndromic disease, mandibulofacial dysostosis, hereditary disease | def: X-linked mandibulofacial dysostosis is an extremely rare multiple congenital abnormality syndrome that is characterized by microcephaly, malar hypoplasia with downslanting palpebral fissures, highly a...",
+"ko": "X연관 하악안면골이형성증",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007416",
+"concept": "- MONDO:0007416 | Balkan nephropathy | syn: aristolochic acid nephropathy; Balkan endemic nephropathy; Chinese herb endemic nephropathy; Danubian endemic familial nephropathy | ancestors: interstitial nephritis, hereditary nephritis, nephritis, inherited kidney disorder | def: A chronic tubulointerstitial nephropathy that affects people in certain rural areas along the Danube river in the Balkans. It leads to end-stage renal disease.",
+"ko": "발칸 신병증",
+"alt": [
+"발칸 풍토성 신병증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001815",
+"concept": "- MONDO:0001815 | extrapyramidal and movement disease | ancestors: movement disorder, nervous system disorder, disease by body system or component, human disease",
+"ko": "추체외로 및 운동 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019082",
+"concept": "- MONDO:0019082 | bullous pemphigoid | syn: bullous pemphigoid | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: Bullous pemphigoid (BP) is the most common form of autoimmune bullous dermatosis.",
+"ko": "수포성 유천포창",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0001703",
+"concept": "- MONDO:0001703 | color vision disorder | syn: blindness color; blindness colour; color blindness; color vision defects | ancestors: vision disorder, disorder of visual system, disease by body system or component, human disease | def: The absence of or defect in the perception of colors.",
+"ko": "색각 이상",
+"alt": [
+"색맹"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010353",
+"concept": "- MONDO:0010353 | deafness-intellectual disability, Martin-Probst type syndrome | syn: intellectual disability, X-linked, syndromic, Martin-Probst type; Martin-Probst syndrome; martin-probst syndrome, X-linked recessive; mental retardation, X-linked, syndromic, Martin-Probst type | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: A syndrome characterized by severe bilateral deafness, intellectual deficit, umbilical hernia and abnormal dermatoglyphics. It has been described in three males from three generations of one family. M...",
+"ko": "난청-지적장애, 마틴-프로브스트형 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003278",
+"concept": "- MONDO:0003278 | inner ear cancer | syn: cancer of internal ear; internal ear cancer; malignant internal ear neoplasm; malignant neoplasm of internal ear | ancestors: malignant ear neoplasm, auditory system cancer, inner ear neoplasm, sensory system cancer | def: A malignant neoplasm involving the internal ear.",
+"ko": "속귀암",
+"alt": [
+"내이암"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006679",
+"concept": "- MONDO:0006679 | bladder neck obstruction | syn: obstruction of bladder neck or vesicourethral orifice | ancestors: urinary bladder disorder, urinary system disorder, disease by body system or component, human disease | def: Blockage of the opening between the bladder and the urethra resulting in the reduction or prevention of the urine flow from the bladder into the urethra.",
+"ko": "방광경부 폐쇄",
+"alt": [
+"방광목 폐쇄"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010481",
+"concept": "- MONDO:0010481 | angioedema | syn: angioedemas; angioneurotic Edemas; edema, angioneurotic; edema, Quincke's | ancestors: urticaria, skin vascular disease, dermatitis, skin disorder | def: Swelling involving the deep dermis, subcutaneous, or submucosal tissues, representing localized edema. Angioedema often occurs in the face, lips, tongue, and larynx.",
+"ko": "혈관부종",
+"alt": [
+"혈관신경성 부종"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006834",
+"concept": "- MONDO:0006834 | lip cancer | syn: cancer of lip; lip cancer; malignant Lip neoplasm; malignant lip neoplasm | ancestors: oral cavity cancer, head and neck cancer, lip neoplasm, digestive system cancer | def: A primary or metastatic malignant neoplasm involving the lip.",
+"ko": "입술암",
+"alt": [
+"구순암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 13,
+"new": false
+},
+{
+"id": "MONDO:0017844",
+"concept": "- MONDO:0017844 | Sezary syndrome | syn: CTCL / Sezary syndrome; cutaneous T-cell lymphoma/Sezary syndrome; SC)zary syndrome; Sezary disease | ancestors: primary cutaneous T-cell non-Hodgkin lymphoma, mature T-cell and NK-cell non-Hodgkin lymphoma, primary cutaneous lymphoma, neoplasm of mature T-cells or NK-cells | def: Sezary syndrome (SS) is an aggressive form of cutaneous T-cell lymphoma characterized by a triad of erythroderma, lymphadenopathy and circulating atypical lymphocytes (Sezary cells).",
+"ko": "세자리 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004030",
+"concept": "- MONDO:0004030 | ureter transitional cell carcinoma | syn: transitional cell carcinoma of the ureter; transitional cell carcinoma of ureter; ureter transitional cell carcinoma; ureter urothelial cancer | ancestors: ureter carcinoma, renal pelvis/ureter urothelial carcinoma, carcinoma, ureter cancer | def: A carcinoma that arises from the transitional epithelium of the ureter. It is associated with tobacco use and usually presents with gross or microscopic hematuria.",
+"ko": "요관 이행세포암종",
+"alt": [
+"요관 요로상피암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009723",
+"concept": "- MONDO:0009723 | Leigh syndrome | syn: infantile subacute necrotizing encephalopathy; Leigh disease; Leigh syndrome; Leigh syndrome spectrum | ancestors: mitochondrial oxidative phosphorylation disorder, hereditary peripheral neuropathy, inborn mitochondrial metabolism disorder, peripheral neuropathy | def: A progressive neurological disease defined by specific neuropathological features associating brainstem and basal ganglia lesions.",
+"ko": "리 증후군",
+"alt": [
+"리병",
+"영아 아급성 괴사성 뇌병증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003722",
+"concept": "- MONDO:0003722 | internal auditory canal meningioma | syn: internal acoustic meatus meningioma (disease); meningioma (disease) of internal acoustic meatus; meningioma of internal auditory canal; meningioma of the internal auditory canal | ancestors: middle cranial fossa meningioma, inner ear neoplasm, skeletal system disorder, meningioma | def: A meningioma that affects the internal auditory canal.",
+"ko": "내이도 수막종",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009265",
+"concept": "- MONDO:0009265 | Gaucher disease type I | syn: Gaucher disease type I; Gaucher disease, noncerebral juvenile; Gaucher's disease type I; non-cerebral juvenile Gaucher disease | ancestors: familial restrictive cardiomyopathy, Gaucher disease, secondary avascular necrosis, osteonecrosis of genetic origin | def: Gaucher disease type 1 is the chronic non-neurological form of Gaucher disease (GD) characterized by organomegaly, bone involvement and cytopenia.",
+"ko": "고셔병 1형",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016471",
+"concept": "- MONDO:0016471 | pachyonychia congenita | syn: PC | ancestors: focal palmoplantar keratoderma, hereditary palmoplantar keratoderma, palmoplantar keratosis, epidermal disease | def: Pachyonychia congenita (PC) is a rare genodermatosis predominantly featuring painful palmoplantar keratoderma, thickened nails, cysts and whitish oral mucosa.",
+"ko": "선천성 손발톱비후증",
+"alt": [
+"선천성 조갑비후증"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015536",
+"concept": "- MONDO:0015536 | papular xanthoma | ancestors: non-Langerhans cell histiocytosis, histiocytosis, lymphatic system disorder, lymphoid system disorder | def: Papular xanthoma is a form of non-Langerhans cell histiocytosis characterized by cutaneous presentation of solitary or disseminated yellow to orange-brown papular or papulonodular, noncoalescent, asym...",
+"ko": "구진성 황색종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000948",
+"concept": "- MONDO:0000948 | xerophthalmia | syn: conjunctival xerosis | ancestors: dry eye syndrome, lacrimal apparatus disorder, syndromic disease, keratoconjunctivitis | def: Dryness of the eye due to inadequate production of tears. Causes include vitamin A deficiency, Sjogren syndrome, rheumatoid arthritis, systemic lupus erythematosus, and scleroderma.",
+"ko": "안구건조증",
+"alt": [
+"결막건조증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+}
+]

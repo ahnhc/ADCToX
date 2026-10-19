@@ -1,0 +1,255 @@
+[
+{
+"id": "MONDO:0004835",
+"concept": "- MONDO:0004835 | necrotizing fasciitis | ancestors: fasciitis, musculoskeletal system disorder, connective tissue disorder, inflammatory disease | def: Necrotizing fasciitis is a serious infection of the skin, the tissue just beneath the skin (subcutaneous tissue), and the tissue that covers internal organs (fascia). Necrotizing fasciitis can be caus...",
+"ko": "괴사성 근막염",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0016770",
+"concept": "- MONDO:0016770 | actinic lichen planus | syn: actinic LP; lichen planus actinus; lichen planus subtropicus; lichen planus tropicus | ancestors: lichen planus, dermatitis, lichen disease, skin disorder | def: Actinic lichen planus (LP) is a rare variant of cutaneous lichen planus characterized by the development of photo-distributed lichenoid lesions.",
+"ko": "광선 편평태선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0003322",
+"concept": "- MONDO:0003322 | epithelial predominant Wilms' tumor | syn: epithelial predominant kidney adenosarcoma; epithelial predominant kidney Wilms tumor; epithelial predominant kidney Wilms tumour; epithelial predominant nephroblastoma | ancestors: kidney Wilms tumor, kidney cancer, Wilms tumor, malignant urinary system neoplasm | def: Wilms tumor of the kidney characterized by the predominance of the epithelial component. The epithelial cells may form papillary and tubular patterns and pseudorosettes.",
+"ko": "상피 우세형 윌름스 종양",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009290",
+"concept": "- MONDO:0009290 | glycogen storage disease II | syn: acid maltase deficiency; Alpha-1,4-glucosidase acid deficiency; GAA glycogen storage disease; generalised glycogenosis | ancestors: disorder of glycogen metabolism, familial restrictive cardiomyopathy, lysosomal glycogen storage disease, inborn carbohydrate metabolic disorder | def: Glycogen storage disease due to acid maltase deficiency (AMD) is an autosomal recessive trait leading to metabolic myopathy that affects cardiac and respiratory muscles in addition to skeletal muscle ...",
+"ko": "글리코겐 축적병 II형",
+"alt": [
+"폼페병"
+],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008652",
+"concept": "- MONDO:0008652 | congenital vertical talus | syn: Charcot-Marie-Tooth disease, foot deformity of; congenital convex foot; congenital convex pes valgus; congenital rocker-bottom foot | ancestors: hereditary disease, congenital deformities of limbs, disease of genetic or genomic mechanism, disorder of development or morphogenesis | def: Isolated congenital vertical talus (CVT) is a rare pedal deformity recognizable at birth by a dislocation of the talonavicular joint, resulting in a characteristic radiographic near-vertical orientati...",
+"ko": "선천성 수직거골",
+"alt": [
+"선천성 볼록발"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0000610",
+"concept": "- MONDO:0000610 | marantic endocarditis | syn: nonbacterial thrombotic endocarditis | ancestors: thrombotic disease, blood coagulation disease, endocarditis, vascular disorder | def: Formation of a non-infectious thrombus, referred to as vegetation, on previously undamaged endocardium. It usually occurs as a complication of connective-tissue diseases and cancers because of the ass...",
+"ko": "소모성 심내막염",
+"alt": [
+"비세균성 혈전성 심내막염"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011669",
+"concept": "- MONDO:0011669 | hypotonia-cystinuria syndrome | syn: cystinuria with mitochondrial disease; HCS; hypotonia-cystinuria syndrome; hypotonia-cystinuria syndrome type 1 | ancestors: syndromic disease, inborn mitochondrial metabolism disorder, partial deletion of the short arm of chromosome 2, inborn disorder of amino acid transport | def: A rare syndrome including neonatal and infantile hypotonia and failure to thrive, cystinuria type 1 and nephrolithiasis, growth retardation due to growth hormone deficiency, and minor facial dysmorphi...",
+"ko": "저긴장-시스틴뇨증 증후군",
+"alt": [
+"미토콘드리아 질환 동반 시스틴뇨증"
+],
+"organs": [
+"renal",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001802",
+"concept": "- MONDO:0001802 | acute tympanitis | syn: acute myringitis | ancestors: acute disease, tympanitis, human disease, tympanic membrane disorder",
+"ko": "급성 고막염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0004135",
+"concept": "- MONDO:0004135 | subacute lymphocytic thyroiditis | syn: silent thyroiditis; Subacute lymphocytic thyroiditis; Subacute painless thyroiditis | ancestors: acute thyroiditis, thyroiditis, acute disease, thyroid gland disorder | def: Thyroiditis associated with painless enlargement of the thyroid gland. It occurs more frequently in females and is characterized by alterations between hyperthyroidism and hypothyroidism and the event...",
+"ko": "아급성 림프구성 갑상선염",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018072",
+"concept": "- MONDO:0018072 | persistent truncus arteriosus | syn: common aorticopulmonary trunk; common arterial trunk; common truncus arteriosus; persistent truncus arteriosus | ancestors: congenital heart disease, conotruncal heart malformations, heart disorder, congenital anomaly of cardiovascular system | def: A rare congenital cardiovascular disorder characterized by the failure of the embryologic structure truncus arteriosus to divide into the aorta and pulmonary trunk. It results in the presence of a sin...",
+"ko": "지속 동맥줄기",
+"alt": [
+"총동맥간",
+"총동맥간증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0020528",
+"concept": "- MONDO:0020528 | ACTH-dependent Cushing syndrome | syn: ACTH-dependent CS; adrenocorticotropic hormone-dependent Cushing syndrome; corticotropin-dependent Cushing syndrome; pituitary-dependent Cushing's disease | ancestors: hyperpituitarism, endogenous Cushing syndrome, anterior pituitary gland disorder, adrenal gland disorder | def: A group of endogenous Cushing syndrome caused by abnormal production of ACTH due to pituitary adenoma or an extrapituitary tumor.",
+"ko": "ACTH 의존성 쿠싱 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017879",
+"concept": "- MONDO:0017879 | hantavirus pulmonary syndrome | ancestors: syndromic disease, lung disorder, hantavirus infectious disease, viral hemorrhagic fever | def: An infection caused by Hantaviruses. It manifests with flu-like symptoms but it rapidly progresses to life-threatening respiratory problems.",
+"ko": "한타바이러스 폐증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0023419",
+"concept": "- MONDO:0023419 | hyperprolinemia | ancestors: inborn disorder of proline metabolism, inborn disorder of amino acid metabolism, inborn disorder of ornithine or proline metabolism, inborn disorder of amino acid and other organic acid metabolism | def: Hyperprolinemia is when there isan excess of a particular protein building block (amino acid), called proline, in the blood. This condition generally occurs when proline is not broken down properly by...",
+"ko": "고프롤린혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002764",
+"concept": "- MONDO:0002764 | urethra squamous cell carcinoma | syn: epidermoid carcinoma of the urethra; epidermoid carcinoma of urethra; squamous cell carcinoma of the urethra; squamous cell carcinoma of urethra | ancestors: squamous cell carcinoma, carcinoma of urethra, squamous cell neoplasm, carcinoma | def: A well differentiated, moderately differentiated, or poorly differentiated squamous cell carcinoma that arises from the male or female urethra.",
+"ko": "요도 편평세포암종",
+"alt": [
+"요도 편평상피암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009864",
+"concept": "- MONDO:0009864 | phosphoenolpyruvate carboxykinase deficiency, mitochondrial | syn: PEPCK deficiency, mitochondrial; phosphoenolpyruvate carboxykinase deficiency, mitochondrial | ancestors: phosphoenolpyruvate carboxykinase deficiency, disorder of gluconeogenesis, glucose metabolism disease, inborn carbohydrate metabolic disorder",
+"ko": "포스포에놀피루브산 카르복시키나제 결핍증, 미토콘드리아형",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004532",
+"concept": "- MONDO:0004532 | auditory system cancer | syn: auditory system cancer; cancer of auditory system; malignant auditory system neoplasm; malignant neoplasm of auditory system | ancestors: sensory system cancer, auditory system disorder, nervous system cancer, disease by body system or component | def: A malignant neoplasm involving the auditory system",
+"ko": "청각계 암",
+"alt": [
+"청각기관 암"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010726",
+"concept": "- MONDO:0010726 | Rett syndrome | syn: Rett syndrome; Rett syndrome, atypical, X-linked dominant; Rett syndrome, preserved speech variant, X-linked dominant; Rett syndrome, X-linked dominant | ancestors: pervasive developmental disorder, syndromic disease, Mendelian neurodevelopmental disorder, developmental disorder of mental health | def: A severe neurodevelopmental disorder affecting the central nervous system.",
+"ko": "레트 증후군",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001110",
+"concept": "- MONDO:0001110 | chronic pyelonephritis | syn: pyelonephritis, chronic | ancestors: chronic kidney disease, pyelonephritis, kidney disorder, uterine inflammatory disease | def: Persistent pyelonephritis.",
+"ko": "만성 신우신염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0007800",
+"concept": "- MONDO:0007800 | chromosome 18p deletion syndrome | syn: 18p syndrome; 18p-; chromosome 18p deletion; chromosome 18p deletion syndrome | ancestors: syndromic disease, partial deletion of chromosome 18, disease by body system or component, syndrome caused by partial chromosomal deletion | def: Monosomy 18p refers to a chromosomal disorder resulting from the deletion of all or part of the short arm of chromosome 18.",
+"ko": "18p 염색체 결실 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011731",
+"concept": "- MONDO:0011731 | glucose-galactose malabsorption | syn: glucose-galactose malabsorption; SGLT1 deficiency | ancestors: congenital diarrhea, intestinal disorder, glucose transport disorder, diarrheal disease | def: Glucose-galactose malabsorption (GGM) is a very rare, potentially lethal, genetic metabolic disease characterized by impaired glucose-galactose absorption resulting in severe watery diarrhea and dehyd...",
+"ko": "포도당-갈락토스 흡수장애",
+"alt": [
+"SGLT1 결핍증"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+}
+]

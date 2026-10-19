@@ -1,0 +1,238 @@
+[
+{
+"id": "MONDO:0019316",
+"concept": "- MONDO:0019316 | maculopapular cutaneous mastocytosis | syn: UP/MPCM; urticaria pigmentosa; urticaria pigmentosa/maculopapular cutaneous mastocytosis | ancestors: cutaneous mastocytosis, dermis tumor, urticaria, mastocytosis | def: Maculopapular cutaneous mastocytosis (MCM) is a form of cutaneous mastocytosis (CM) characterized by the presence of multiple hyperpigmented macules, papules or nodules associated with abnormal accumu...",
+"ko": "반구진성 피부 비만세포증",
+"alt": [
+"색소성 두드러기"
+],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019403",
+"concept": "- MONDO:0019403 | congenital dyserythropoietic anemia | syn: anemia, congenital dyserythropoietic; CDA; congenital dyshaematopoietic anaemia; congenital dyshaematopoietic anemia | ancestors: familial hemolytic anemia, hemolytic anemia, hereditary disease, normocytic anemia | def: Congenital dyserythropoietic anemia (CDA) is a heterogenous group of hematological disorders of late erythropoiesis and red cell abnormalities that lead to anemia. Five types of CDA are defined: CDA I...",
+"ko": "선천성 이상적혈구생성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009230",
+"concept": "- MONDO:0009230 | fibrosclerosis, multifocal | syn: fibrosclerosis, multifocal | ancestors: hereditary disease, IgG4-related retroperitoneal fibrosis, disease of genetic or genomic mechanism, immunoglobulin G4-related sclerosing disease",
+"ko": "다발성 섬유경화증",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009665",
+"concept": "- MONDO:0009665 | biotinidase deficiency | syn: biotinidase deficiency; BTD deficiency; juvenile-onset multiple carboxylase deficiency; late-onset multiple carboxylase deficiency | ancestors: multiple carboxylase deficiency, hereditary peripheral neuropathy, inborn carbohydrate metabolic disorder, classic organic aciduria | def: A late-onset form of multiple carboxylase deficiency, an inborn error of biotin metabolism that, if untreated, is characterized by seizures, breathing difficulties, hypotonia, skin rash, alopecia, hea...",
+"ko": "비오티니다제 결핍증",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001397",
+"concept": "- MONDO:0001397 | mononeuropathy | ancestors: peripheral neuropathy, peripheral nervous system disorder, neuromuscular disease, nervous system disorder | def: Disease or trauma involving a single peripheral nerve in isolation, or out of proportion to evidence of diffuse peripheral nerve dysfunction. Mononeuropathy multiplex refers to a condition characteriz...",
+"ko": "단일신경병증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0020640",
+"concept": "- MONDO:0020640 | autoimmune encephalitis | syn: autoimmune encephalitis | ancestors: autoimmune disorder of central nervous system, encephalitis, central nervous system disorder, autoimmune disorder of the nervous system | def: Inflammation of the brain secondary to an immune response triggered by the body itself.",
+"ko": "자가면역뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008652",
+"concept": "- MONDO:0008652 | congenital vertical talus | syn: Charcot-Marie-Tooth disease, foot deformity of; congenital convex foot; congenital convex pes valgus; congenital rocker-bottom foot | ancestors: hereditary disease, congenital deformities of limbs, disease of genetic or genomic mechanism, disorder of development or morphogenesis | def: Isolated congenital vertical talus (CVT) is a rare pedal deformity recognizable at birth by a dislocation of the talonavicular joint, resulting in a characteristic radiographic near-vertical orientati...",
+"ko": "선천성 수직거골",
+"alt": [
+"선천성 볼록발"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0021492",
+"concept": "- MONDO:0021492 | benign neoplasm of major salivary gland | syn: benign Major salivary gland neoplasm; benign Major salivary gland tumor; benign Major salivary gland tumour; benign neoplasm of the Major salivary gland | ancestors: neoplasm of major salivary gland, benign neoplasm of salivary gland, tumor of salivary gland, benign neoplasm | def: A benign neoplasm that involves the major salivary gland.",
+"ko": "큰침샘 양성 신생물",
+"alt": [
+"주타액선 양성 종양"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020325",
+"concept": "- MONDO:0020325 | anaplastic large cell lymphoma | syn: ALCL; anaplastic large cell lymphoma; CD30 Positive anaplastic large cell lymphoma; CD30 positive anaplastic large cell lymphoma | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm | def: Anaplastic large cell lymphoma (ALCL) is a rare and aggressive peripheral T-cell non-Hodgkin lymphoma, belonging to the group of CD30-positive lymphoproliferative disorders, which affects lymph nodes ...",
+"ko": "역형성 대세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006876",
+"concept": "- MONDO:0006876 | ocular tuberculosis | ancestors: extrapulmonary tuberculosis, eye infectious disorder, tuberculosis, eye disorder | def: Tuberculous infection of the eye, primarily the iris, ciliary body, and choroid.",
+"ko": "안결핵",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006865",
+"concept": "- MONDO:0006865 | necrotizing ulcerative gingivitis | syn: acute necrotising ulcerative gingivitis [ambiguous]; acute necrotising ulcerative gingivostomatitis [ambiguous]; ANUG; Vincent angina | ancestors: gingivitis, gingival disorder, stomatitis, periodontal disorder | def: A bacterial infectious process affecting the gums. It is characterized by the development of necrotic, ulcerated, and painful lesions with creation of pseudomembranes extending along the gingival marg...",
+"ko": "괴사성 궤양성 치은염",
+"alt": [
+"급성 괴사성 궤양성 치은염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001056",
+"concept": "- MONDO:0001056 | gastric cancer | syn: Ca lesser curvature - stomach; cancer of stomach; gastric cancer; gastric cancer risk after h. pylori infection | ancestors: digestive system cancer, gastric neoplasm, digestive system disorder, cancer | def: A primary or metastatic malignant neoplasm involving the stomach.",
+"ko": "위암",
+"alt": [
+"위의 악성 신생물"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 18
+},
+{
+"id": "MONDO:0004859",
+"concept": "- MONDO:0004859 | hydrops of gallbladder | ancestors: gallbladder disorder, hepatobiliary disorder, digestive system disorder, disease by body system or component",
+"ko": "담낭수종",
+"alt": [
+"쓸개 수종"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0044753",
+"concept": "- MONDO:0044753 | lumbar spinal stenosis | syn: lumbar region of vertebral column spinal stenosis; lumbar spinal stenosis; spinal stenosis of lumbar region; spinal stenosis of lumbar region of vertebral column | ancestors: spinal stenosis, vertebral column disorder, disease of bone structure, skeletal system disorder | def: A spinal stenosis that involves the lumbar region of vertebral column.",
+"ko": "요추 척추관 협착증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015483",
+"concept": "- MONDO:0015483 | mandibulofacial dysostosis | syn: bilateral and symmetric oto-mandibular dysplasia | ancestors: dysostosis, bone development disease, bone disorder, disorder of development or morphogenesis | def: A hereditary disorder occurring in two forms: the complete form (Franceschetti's syndrome) is characterized by antimongoloid slant of the palpebral fissures, coloboma of the lower lid, micrognathia an...",
+"ko": "하악안면이골증",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018582",
+"concept": "- MONDO:0018582 | GCGR-related hyperglucagonemia | syn: alpha-cell hyperplasia with glucagonemia; Mahvash disease; MVAH; nesidioblastosis alpha cell hyperplasia microglucagonoma and nonfunctioning islet cell tumor | ancestors: hereditary disease, pancreatic neoplasm, disease of genetic or genomic mechanism, pancreas disorder | def: A rare tumor of pancreas caused by mutations in the GCGR gene characterized by pancreatic alpha cell hyperplasia, pancreatic neuroendocrine tumors and markedly increased serum glucagon levels in the a...",
+"ko": "GCGR 관련 고글루카곤혈증",
+"alt": [
+"마흐바시병"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002637",
+"concept": "- MONDO:0002637 | histiocytosis | syn: histiocytic infiltrate; histiocytic syndrome | ancestors: lymphatic system disorder, lymphoid system disorder, immune system disorder, disease by body system or component | def: A morphologic finding indicating tissue infiltration by non-neoplastic or neoplastic histiocytes.",
+"ko": "조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0041259",
+"concept": "- MONDO:0041259 | diphtheritic myocarditis | syn: Corynebacterium diphtheriae caused myocarditis; Corynebacterium diphtheriae myocarditis; diphtheritic myocarditis | ancestors: bacterial myocarditis, diphtheria, myocarditis, primary bacterial infectious disease | def: An myocarditis caused by infection with Corynebacterium diphtheriae.",
+"ko": "디프테리아성 심근염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0002425",
+"concept": "- MONDO:0002425 | rectosigmoid junction cancer | syn: cancer of rectosigmoid junction; malignant neoplasm of rectosigmoid; malignant neoplasm of rectosigmoid junction; malignant neoplasm of the rectosigmoid junction | ancestors: sigmoid colon cancer, rectosigmoid junction neoplasm, rectal cancer, sigmoid neoplasm | def: A primary or metastatic malignant neoplasm that affects the rectosigmoid area. Representative examples include carcinoma, lymphoma, and sarcoma.",
+"ko": "직장구불결장 이행부암",
+"alt": [
+"직장S상결장 접합부암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005119",
+"concept": "- MONDO:0005119 | anthrax infection | syn: anthrax; Bacillus anthracis caused disease or disorder; Bacillus anthracis disease or disorder; Bacillus anthracis infectious disease | ancestors: primary bacterial infectious disease, Bacillaceae infectious disease, bacterial infectious disease, gram-positive bacterial infections | def: An infection caused by Bacillus anthracis bacteria. It may affect the lungs, gastrointestinal tract, or skin. Patients with lung infection present with fever, headaches, cough, chest pain and shortnes...",
+"ko": "탄저",
+"alt": [
+"탄저병"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 7
+}
+]

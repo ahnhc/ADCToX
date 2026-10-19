@@ -1,0 +1,241 @@
+[
+{
+"id": "MONDO:0005867",
+"concept": "- MONDO:0005867 | Mycoplasma pneumoniae pneumonia | syn: Mycoplasmal pneumonia; pneumonia due to Mycoplasma pneumoniae | ancestors: bacterial pneumonia, Mycoplasmoides infection, bacterial infectious disease, pneumonia | def: Interstitial pneumonia caused by extensive infection of the lungs (lung) and bronchi, particularly the lower lobes of the lungs, by mycoplasma pneumoniae in humans. In sheep, it is caused by mycoplasm...",
+"ko": "마이코플라스마 폐렴균 폐렴",
+"alt": [
+"마이코플라스마 폐렴"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007896",
+"concept": "- MONDO:0007896 | acute monocytic leukemia | syn: acute monoblastic leukaemia and acute monocytic leukaemia; acute monocytic leukaemia (FAB M5B); acute monocytic leukaemia (FAB M5b); acute monocytic leukemia | ancestors: monocytic leukemia, acute myeloid leukemia, leukemia, myeloid leukemia | def: Acute monoblastic leukemia (AML-M5), is one of the most common subtypes of acute myeloid leukemia (AML) that is either comprised of more than 80% of monoblasts (AML-M5a) or 30-80% monoblasts with (pro...",
+"ko": "급성 단핵구성 백혈병",
+"alt": [
+"급성 단구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0008487",
+"concept": "- MONDO:0008487 | polycystic ovary syndrome | syn: PCOS; polycystic ovarian disease; polycystic ovaries; polycystic ovary syndrome | ancestors: syndromic disease, hereditary disease, endocrine system disorder, disease by body system or component | def: A disorder that manifests as multiple cysts on the ovaries. It results in hormonal imbalances and leads to irregular and abnormal menstrual periods, excess growth of hair, acne eruptions and obesity.",
+"ko": "다낭성 난소 증후군",
+"alt": [
+"다낭성 난소 질환"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0009575",
+"concept": "- MONDO:0009575 | thiamine-responsive megaloblastic anemia syndrome | syn: Rogers syndrome; thiamine metabolism dysfunction syndrome 1; thiamine-responsive anemia syndrome; thiamine-responsive megaloblastic anemia syndrome | ancestors: thiamine-responsive dysfunction syndrome, autosomal recessive disease, vitamin B12- and folate-independent constitutional megaloblastic anemia, disorder of thiamine metabolism and transport | def: Thiamine-responsive megaloblastic anemia (TRMA) is characterized by a triad of megaloblastic anemia, non-type I diabetes mellitus, and sensorineural deafness.",
+"ko": "티아민 반응성 거대적아구성 빈혈 증후군",
+"alt": [
+"로저스 증후군"
+],
+"organs": [
+"haematologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005942",
+"concept": "- MONDO:0005942 | Reye syndrome | syn: Reye's syndrome | ancestors: syndromic disease, rheumatic disorder, brain disorder, disease by body system or component | def: An acute and potentially fatal metabolic disorder characterized by cerebral edema, fatty liver and hypoglycemia. It occurs primarily in children and has been associated with the use of aspirin for the...",
+"ko": "라이 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003231",
+"concept": "- MONDO:0003231 | acute nonparalytic poliomyelitis | syn: acute nonparalytic poliomyelitis | ancestors: poliomyelitis, myelitis, anterior horn disorder, acquired motor neuron disease | def: A poliomyelitis that does not exhibit paralysis.",
+"ko": "급성 비마비성 소아마비",
+"alt": [
+"급성 비마비성 척수회색질염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015622",
+"concept": "- MONDO:0015622 | wound myiasis | syn: traumatic myiasis | ancestors: cutaneous myiasis, myiasis, parasitic ectoparasitic infectious disease, parasitic skin disorder",
+"ko": "상처 구더기증",
+"alt": [
+"외상성 구더기증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001916",
+"concept": "- MONDO:0001916 | gastrointestinal tularemia | syn: enteric tularemia | ancestors: tularemia, primary bacterial infectious disease, vector-borne disease, bacterial infectious disease | def: A tularemia that results in formation of ulcerative lesions located in gastrointestinal tract. The infection has symptom fever, has symptom chills, has symptom malaise, has symptom muscle aches, and h...",
+"ko": "위장관 야토병",
+"alt": [
+"장 야토병"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0023286",
+"concept": "- MONDO:0023286 | graphite pneumoconiosis | syn: graphite fibrosis of lung; graphite pneumoconiosis | ancestors: pulmonary fibrosis, pneumoconiosis, interstitial lung disease, lung disorder",
+"ko": "흑연 진폐증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005693",
+"concept": "- MONDO:0005693 | cauda equina syndrome | syn: cauda equina syndromic disease; syndromic disease of cauda equina | ancestors: syndromic disease, peripheral nervous system disorder, disease by body system or component, nervous system disorder | def: Cauda equina syndrome refers to a group of symptoms that occur when some of the nerves in the cauda equina (the bundle of nerves that spread out from the bottom of the spinal cord) become compressed a...",
+"ko": "마미 증후군",
+"alt": [
+"말총 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001636",
+"concept": "- MONDO:0001636 | mechanical entropion | ancestors: entropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "기계적 안검내반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0043836",
+"concept": "- MONDO:0043836 | tuberculosis, spinal | syn: pott disease; pott's disease; tuberculosis of vertebral column | ancestors: vertebral column disorder, skeletal tuberculosis, skeletal system disorder, extrapulmonary tuberculosis | def: Tuberculosis of the vertebrae.",
+"ko": "척추 결핵",
+"alt": [
+"포트병"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001369",
+"concept": "- MONDO:0001369 | chronic laryngitis | syn: laryngitis, chronic | ancestors: laryngitis, laryngeal disorder, inflammatory disease, upper respiratory tract disorder | def: Persistent laryngitis usually caused by smoking, heavy alcohol consumption, voice abuse, or gastroesophageal reflux disease. It results in hoarseness and other voice changes.",
+"ko": "만성 후두염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001413",
+"concept": "- MONDO:0001413 | ulceroglandular tularemia | ancestors: tularemia, primary bacterial infectious disease, vector-borne disease, bacterial infectious disease | def: A tularemia that results in painful regional lymphadenopathy and an ulcerated skin lesion.",
+"ko": "궤양샘형 야토병",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0700058",
+"concept": "- MONDO:0700058 | Morton neuroma | syn: interdigital nerve compression syndrome; interdigital neuralgia; interdigital neuritis; interdigital neuroma | ancestors: neuroma, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: Compressive neuropathy of the forefoot interdigital nerve chiefly due to compression and irritation at the plantar aspect of the transverse intermetatarsal ligament. It is not a true neuroma as the co...",
+"ko": "모튼 신경종",
+"alt": [
+"지간신경 압박 증후군"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006862",
+"concept": "- MONDO:0006862 | myofascial pain syndrome | ancestors: myopathy, skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder | def: Muscular pain in numerous body regions that can be reproduced by pressure on trigger points, localized hardenings in skeletal muscle tissue. Pain is referred to a location distant from the trigger poi...",
+"ko": "근막통증 증후군",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001766",
+"concept": "- MONDO:0001766 | eversion of lacrimal punctum | ancestors: lacrimal apparatus disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "눈물점 외반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016887",
+"concept": "- MONDO:0016887 | partial deletion of the short arm of chromosome 5 | syn: partial deletion of chromosome 5p; partial deletion of the short arm of chromosome type 5; partial monosomy of chromosome 5p; partial monosomy of the short arm of chromosome 5 | ancestors: partial deletion of chromosome 5, syndrome caused by partial chromosomal deletion, chromosome 5 disorder, chromosomal disorder",
+"ko": "5번 염색체 단완 부분 결실",
+"alt": [
+"5p 결실 증후군",
+"묘성 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002460",
+"concept": "- MONDO:0002460 | lacrimal system cancer | syn: cancer of lacrimal apparatus; lacrimal apparatus cancer; lacrimal system neoplasm; lacrimal system neoplasms | ancestors: lacrimal apparatus disorder, ocular cancer, eye adnexa disorder, eye disorder | def: A cancer that involves the lacrimal apparatus.",
+"ko": "눈물기관암",
+"alt": [
+"누기계 암"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0017560",
+"concept": "- MONDO:0017560 | congenital genu recurvatum | syn: genu recurvatum; hyperextension deformity of knee; hyperextension of knee deformity | ancestors: congenital knee dislocation, disorder of development or morphogenesis, disease by developmental or physiological process, human disease | def: An abnormal alignment of the knee backwards that is due to a deformity in the knee joint.",
+"ko": "선천성 반장슬",
+"alt": [
+"선천성 무릎 과신전 변형"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+}
+]

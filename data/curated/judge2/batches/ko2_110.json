@@ -1,0 +1,234 @@
+[
+{
+"id": "MONDO:0003781",
+"concept": "- MONDO:0003781 | bronchitis | syn: bronchial infection; bronchus inflammation; inflammation of bronchus | ancestors: bronchial disorder, tracheobronchitis, lower respiratory tract disorder, inflammatory disease | def: An acute or chronic inflammatory process affecting the bronchi.",
+"ko": "기관지염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005843",
+"concept": "- MONDO:0005843 | mediastinal cancer | syn: cancer of mediastinum; cancer of the mediastinum; malignant mediastinal neoplasm; malignant mediastinal tumor | ancestors: thoracic cancer, neoplasm of mediastinum, cancer, neoplasm of thorax | def: A malignant neoplasm involving the mediastinum",
+"ko": "종격동암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021439",
+"concept": "- MONDO:0021439 | benign neoplasm of pituitary gland | syn: benign neoplasm of pituitary; benign neoplasm of the pituitary; benign neoplasm of the pituitary gland; benign pituitary gland neoplasm | ancestors: benign reproductive system neoplasm, benign endocrine neoplasm, bone benign neoplasm, pituitary tumor | def: A benign neoplasm that involves the pituitary gland.",
+"ko": "뇌하수체 양성 신생물",
+"alt": [
+"뇌하수체 양성 종양"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011827",
+"concept": "- MONDO:0011827 | patent ductus arteriosus | syn: familial patent arterial duct; patency of the ductus arteriosus; patent ductus arteriosus; patent ductus arteriosus familial (type) | ancestors: vascular disorder, congenital heart disease, cardiogenetic disease, cardiovascular disorder | def: A congenital defect characterized by the failure of the ductus arteriosus to close soon after birth. As a consequence, blood from the aorta mixes with blood from the pulmonary artery. If untreated, it...",
+"ko": "동맥관개존증",
+"alt": [
+"동맥관 열림증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001851",
+"concept": "- MONDO:0001851 | primary lacrimal atrophy | ancestors: lacrimal apparatus disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "원발성 눈물샘 위축",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004598",
+"concept": "- MONDO:0004598 | acute cor pulmonale | syn: acute pulmonary heart disease; cor pulmonale, acute | ancestors: cor pulmonale, acute disease, congestive heart failure, human disease | def: A form of acute right heart failure produced by a sudden increase in resistance to blood flow in the pulmonary circulation.",
+"ko": "급성 폐성심",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005515",
+"concept": "- MONDO:0005515 | oral cavity cancer | syn: cancer of oral cavity; malignant mouth neoplasm; malignant mouth tumor; malignant mouth tumour | ancestors: digestive system cancer, oral cavity neoplasm, digestive system disorder, cancer | def: A primary or metastatic malignant neoplasm involving the oral cavity. The majority are squamous cell carcinomas.",
+"ko": "구강암",
+"alt": [
+"입안암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0000709",
+"concept": "- MONDO:0000709 | Crohn ileitis | syn: Crohn's ileitis | ancestors: small bowel Crohn disease, Crohn disease, enteritis, inflammatory bowel disease | def: A Crohn disease involving a pathogenic inflammatory response in the ileum.",
+"ko": "크론 회장염",
+"alt": [
+"크론병 회장염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004869",
+"concept": "- MONDO:0004869 | pelvic varices | syn: pelvic region of trunk varicose disease; varicose disease of pelvic region of trunk | ancestors: varicose disease, vein disorder, vascular disorder, cardiovascular disorder | def: A varicose disease that involves the pelvic region of trunk.",
+"ko": "골반 정맥류",
+"alt": [
+"골반 정맥 정맥류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018044",
+"concept": "- MONDO:0018044 | idiopathic hypersomnia | syn: primary hypersomnia | ancestors: hypersomnia, idiopathic disease, sleep-wake disorder, disease by etiologic mechanism | def: Idiopathic hypersomnia is a sleep disorder classified in two forms: idiopathic hypersomnia with long sleep time and idiopathic hypersomnia without long sleep time.",
+"ko": "특발성 과다수면증",
+"alt": [
+"원발성 과다수면증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006021",
+"concept": "- MONDO:0006021 | Prinzmetal angina | syn: angina inversa; variant angina | ancestors: coronary vasospasm, coronary artery disorder, arterial disorder, heart disorder | def: A syndrome typically consisting of angina (cardiac chest pain) at rest that occurs in cycles. It is caused by vasospasm, a narrowing of the coronary arteries caused by contraction of the smooth muscle...",
+"ko": "프린츠메탈 협심증",
+"alt": [
+"변이형 협심증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0007686",
+"concept": "- MONDO:0007686 | gray platelet syndrome | syn: Alpha storage pool deficiency; BDPLT4; GPS; gray platelet syndrome | ancestors: inherited bleeding disorder, platelet-type, syndromic disease, alpha granule disease, hemorrhagic disease | def: A rare inherited bleeding disorder caused by a variation in the NBEAL2 gene, characterized by macrothrombocytopenia, myelofibrosis, splenomegaly and typical gray appearance of platelets on Wright stai...",
+"ko": "회색 혈소판 증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005293",
+"concept": "- MONDO:0005293 | flatfoot | syn: fallen Arch; flat Foot | ancestors: skeletal system disorder, musculoskeletal system disorder, disease by body system or component, human disease | def: An anatomic deformity in which the arch of the foot collapses, resulting in the entire sole of the foot coming into complete or near-complete contact with the ground.",
+"ko": "평발",
+"alt": [
+"편평족"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005977",
+"concept": "- MONDO:0005977 | tabes dorsalis | ancestors: neurosyphilis, infectious disorder of the nervous system, tertiary syphilis, nervous system disorder | def: A form of neurosyphilis characterized by slowly progressive degeneration of the spinal cord. Signs and symptoms include pain, ataxia, loss of coordination, personality changes, blindness, urinary inco...",
+"ko": "척수매독",
+"alt": [
+"척수로"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0020076",
+"concept": "- MONDO:0020076 | myeloproliferative neoplasm | syn: chronic myeloproliferative disease; chronic myeloproliferative disorder; chronic myeloproliferative neoplasm; CMPD | ancestors: myeloid neoplasm, myeloid hemopathy, bone marrow cancer, hematopoietic and lymphoid cell neoplasm | def: A clonal hematopoietic stem cell disorder, characterized by proliferation in the bone marrow of one or more of the myeloid (i.e., granulocytic, erythroid, megakaryocytic, and mast cell) lineages. It i...",
+"ko": "골수증식종양",
+"alt": [
+"만성 골수증식질환"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0016471",
+"concept": "- MONDO:0016471 | pachyonychia congenita | syn: PC | ancestors: focal palmoplantar keratoderma, hereditary palmoplantar keratoderma, palmoplantar keratosis, epidermal disease | def: Pachyonychia congenita (PC) is a rare genodermatosis predominantly featuring painful palmoplantar keratoderma, thickened nails, cysts and whitish oral mucosa.",
+"ko": "선천성 손발톱비후증",
+"alt": [
+"선천성 조갑비후증"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000979",
+"concept": "- MONDO:0000979 | pinta disease | syn: Pinta; pinta | ancestors: primary bacterial infectious disease, Treponema infectious disease, skin disease caused by bacterial infection, bacterial infectious disease | def: An endemic bacterial infection caused by Treponema carateum. It is manifested with chronic cutaneous lesions. The early lesions consist of papules and erythematous plaques. The late lesions consist of...",
+"ko": "핀타병",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021463",
+"concept": "- MONDO:0021463 | benign neoplasm of parathyroid gland | syn: benign neoplasm of parathyroid; benign neoplasm of the parathyroid; benign neoplasm of the parathyroid gland; benign parathyroid gland neoplasm | ancestors: benign endocrine neoplasm, tumor of parathyroid gland, endocrine gland neoplasm, benign neoplasm | def: A benign neoplasm that involves the parathyroid gland.",
+"ko": "부갑상샘 양성 신생물",
+"alt": [
+"부갑상선 양성 종양"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006684",
+"concept": "- MONDO:0006684 | brain edema | ancestors: brain disorder, central nervous system disorder, nervous system disorder, disease by body system or component | def: Increased intracellular or extracellular fluid in brain tissue. Cytotoxic brain edema (swelling due to increased intracellular fluid) is indicative of a disturbance in cell metabolism, and is commonly...",
+"ko": "뇌부종",
+"alt": [
+"뇌수종"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017774",
+"concept": "- MONDO:0017774 | hypobetalipoproteinemia | ancestors: hypolipoproteinemia, inherited lipid metabolism disorder, inborn errors of metabolism, hereditary disease | def: A group of lipoprotein metabolism disorders that are characterized by permanently low levels (below the 5th percentile) of apolipoprotein B and LDL cholesterol.",
+"ko": "저베타지단백혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+}
+]

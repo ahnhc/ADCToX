@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0023483",
+"concept": "- MONDO:0023483 | infectious myositis | syn: infectious myositis; infective myositis | ancestors: infectious disease, myositis disease, disease of primarily extrinsic mechanism, myopathy | def: An infectious process affecting the skeletal muscles. It can be caused by viruses (including HIV), bacteria, fungi, and parasites. Symptoms include muscle weakness and muscle pain.",
+"ko": "감염성 근염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002106",
+"concept": "- MONDO:0002106 | labyrinthine unilateral reactive loss | syn: loss of labyrinthine reactivity, unilateral | ancestors: inner ear disorder, auditory system disorder, disorder of ear, disease by body system or component",
+"ko": "일측 미로 반응 소실",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007338",
+"concept": "- MONDO:0007338 | cleft soft palate | syn: cleft soft palate; cleft velum; cleft velum palatinum | ancestors: cleft palate, orofacial cleft, developmental defect during embryogenesis, hereditary disease | def: Cleft velum is a fissure type embryopathy that affects in varying degrees the soft palate.",
+"ko": "연구개열",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009571",
+"concept": "- MONDO:0009571 | Meckel syndrome, type 1 | syn: Meckel syndrome caused by mutation in MKS1; Meckel syndrome, type 1; Meckel-Gruber syndrome, type 1; MKS1 | ancestors: Meckel syndrome, polydactyly-syndactyly-triphalangism, MKS1-related ciliopathy, syndromic disease | def: Any Meckel syndrome in which the cause of the disease is a mutation in the MKS1 gene.",
+"ko": "메켈 증후군 1형",
+"alt": [
+"메켈-그루버 증후군 1형"
+],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005654",
+"concept": "- MONDO:0005654 | ascariasis | syn: Ascaris lumbricoides caused disease or disorder; Ascaris lumbricoides disease or disorder; Ascaris lumbricoides infectious disease | ancestors: Ascaridida infectious disease, Rhabditida infectious disease, Nematoda infectious disease, helminthiasis | def: An infection that is caused by the roundworm Ascaris lumbricoides, many cases of which remain asymptomatic. During the transient larval migratory phase, shortness of breath, fever, and eosinophilia ca...",
+"ko": "회충증",
+"alt": [
+"거염충증"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0016238",
+"concept": "- MONDO:0016238 | solitary fibrous tumor | syn: localised fibrous mesothelioma; localised fibrous tumour; localized fibrous mesothelioma; localized fibrous tumor | ancestors: fibroblastic neoplasm, mesenchymal cell neoplasm, connective tissue neoplasm, neoplasm | def: Solitary fibrous tumor (SFT) represents a diverse group of ubiquitous rare spindle cell neoplasms that may be benign or malignant and that most frequently arises from the pleura and peritoneum and rar...",
+"ko": "고립성 섬유성 종양",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0850231",
+"concept": "- MONDO:0850231 | erythema nodosum | ancestors: panniculitis, integumentary system disorder, connective tissue disorder, inflammatory disease | def: A panniculitis that is characterized by sudden onset of painful, erythematous, subcutaneous nodules mainly localized to the pretibial areas. Lesions are usually bilateral and symmetrical, ranging from...",
+"ko": "결절홍반",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014794",
+"concept": "- MONDO:0014794 | Meier-Gorlin syndrome 6 | syn: GMNN Meier-Gorlin syndrome; Meier-Gorlin syndrome 6; Meier-Gorlin syndrome caused by mutation in GMNN; Meier-Gorlin syndrome type 6 | ancestors: Meier-Gorlin syndrome, syndromic disease, autosomal recessive disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome | def: Any Meier-Gorlin syndrome in which the cause of the disease is a mutation in the GMNN gene.",
+"ko": "마이어-고를린 증후군 6형",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021063",
+"concept": "- MONDO:0021063 | malignant colon neoplasm | syn: cancer of colon; colon cancer; colon neoplasm, malignant; colon tumor, malignant | ancestors: colonic neoplasm, colorectal cancer, colonic disorder, colorectal neoplasm | def: A primary or metastatic malignant neoplasm that affects the colon. Representative examples include carcinoma, lymphoma, and sarcoma.",
+"ko": "악성 결장 신생물",
+"alt": [
+"결장암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015484",
+"concept": "- MONDO:0015484 | cysticercosis | syn: tapeworm infection: [intestinal taenia solium] or [pork]; tapeworm infection: intestinal taenia solum; tapeworm infection: pork | ancestors: taeniasis, intestinal helminthiasis, Cestode infectious disease, helminthiasis | def: Cysticercosis is a parasitic infectious disease characterized by cyst formation in the target tissue of Taenia solium (tapeworm) parasite larvae ingested via the feces of a human with a tapeworm (huma...",
+"ko": "낭미충증",
+"alt": [
+"유구낭미충증"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0005894",
+"concept": "- MONDO:0005894 | paracoccidioidomycosis | ancestors: primary systemic mycosis, systemic mycosis, fungal infectious disease, infectious disease | def: A systemic fungal infection caused by Paracoccidioides brasiliensis that is most often seen in immunocompromised patients. It affects the mucous membranes, lymph nodes, lungs and bones.",
+"ko": "파라콕시디오이데스진균증",
+"alt": [
+"파라콕시디오이데스증"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0002130",
+"concept": "- MONDO:0002130 | upper limb mononeuronitis | syn: forelimb mononeuritis simplex; mononeuritis of upper limb, unspecified; mononeuritis simplex of forelimb | ancestors: mononeuritis simplex, neuritis of upper limb, mononeuropathy, neuritis | def: A disease affecting a single peripheral nerve of the upper limb.",
+"ko": "상지 단일신경염",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002849",
+"concept": "- MONDO:0002849 | liver rhabdomyosarcoma | syn: hepatic rhabdomyosarcoma; liver rhabdomyosarcoma; liver rhabdomyosarcoma (disease); rhabdomyosarcoma (disease) of liver | ancestors: liver sarcoma, rhabdomyosarcoma, liver cancer, soft tissue sarcoma | def: A malignant mesenchymal tumor with skeletal muscle differentiation affecting the liver.",
+"ko": "간 횡문근육종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005258",
+"concept": "- MONDO:0005258 | autism spectrum disorder | syn: autism spectrum disorder; autistic spectrum disorder; pervasive developmental disorder - not otherwise specified; pervasive developmental disorders | ancestors: pervasive developmental disorder, developmental disorder of mental health, complex neurodevelopmental disorder, mental disorder | def: A spectrum of developmental disorders that includes autism, and Asperger syndrome. Signs and symptoms include poor communication skills, defective social interactions, and repetitive behaviors.",
+"ko": "자폐스펙트럼장애",
+"alt": [
+"자폐 범주성 장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006543",
+"concept": "- MONDO:0006543 | epidermolysis bullosa dystrophica | syn: DEB; dermolytic epidermolysis bullosa; epidermolysis bullosa dystrophica | ancestors: inherited epidermolysis bullosa, epidermolysis bullosa, epidermal disease, hereditary skin disorder | def: A genetic skin disorder caused by mutations in the type VII collagen gene (COL7A1). It is characterized by the formation of blisters and scarring in the skin and mucous membranes.",
+"ko": "이영양성 표피박리수포증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007241",
+"concept": "- MONDO:0007241 | bundle branch block, familial isolated complete right | syn: bundle branch block, familial isolated complete right | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "가족성 고립성 완전 우각차단",
+"alt": [
+"가족성 완전 우각 차단"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019470",
+"concept": "- MONDO:0019470 | aggressive NK-cell leukemia | syn: aggressive NK-cell leukaemia (morphologic abnormality); aggressive NK-cell leukemia; aggressive NK-cell leukemia (morphologic abnormality); aggressive NK-cell leukemia/lymphoma | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, chronic leukemia, T lymphoblastic leukemia/lymphoma, T-cell acute lymphoblastic leukemia | def: A rare, highly aggressive, Epstein-Barr virus-associated leukemia, also known as aggressive NK-cell leukemia/lymphoma; it may represent the leukemic counterpart of nasal type extranodal NK/T-cell lymp...",
+"ko": "공격성 NK세포 백혈병",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019563",
+"concept": "- MONDO:0019563 | CREST syndrome | syn: calcinosis-Raynaud phenomenon-esophageal involvement-sclerodactyly-telangiectasia syndrome | ancestors: syndromic disease, limited cutaneous systemic sclerosis, disease by body system or component, systemic sclerosis | def: CREST syndrome is a subtype of limited cutaneous systemic sclerosis (lcSSc) whose name is an acronym for the cardinal clinical features of the syndrome: calcinosis, Raynaud's phenomenon, esophageal dy...",
+"ko": "CREST 증후군",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005990",
+"concept": "- MONDO:0005990 | tracheitis | syn: acute tracheitis; inflammation of tracheal mucosa; tracheal Inflammation; tracheal mucosa inflammation | ancestors: tracheal disorder, bacterial infectious disease, mucositis, tracheobronchitis | def: A tracheal disease which involves bacterial infection of the trachea often caused by Staphylococcus aureus and streptococci that follows a recent viral upper respiratory infection. The symptoms includ...",
+"ko": "기관염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0011182",
+"concept": "- MONDO:0011182 | trimethylaminuria | syn: fish odor syndrome; fish odour syndrome; fish-odor syndrome; trimethylaminuria | ancestors: dimethylglycine dehydrogenase deficiency, disorder of methylamine metabolism, disorder of peptide and amine metabolism, inborn errors of metabolism | def: A rare inborn error of metabolism characterized by the presence of large amounts of trimethylamine in urine, sweat, and breath, resulting in a fishy body odor in affected individuals.",
+"ko": "트리메틸아민뇨증",
+"alt": [
+"생선냄새 증후군"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+}
+]

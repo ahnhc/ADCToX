@@ -1,0 +1,263 @@
+[
+{
+"id": "MONDO:0010229",
+"concept": "- MONDO:0010229 | alopecia, congenital | syn: alopecia, congenital; congenital alopecia | ancestors: alopecia, isolated, alopecia totalis, alopecia, hereditary skin disorder | def: A congenital condition characterized by the absence of hair on the scalp or entire body. The lack of hair is rarely absolute and is usually accompanied by incompletely grown, lanugo-like hair. It affe...",
+"ko": "선천성 탈모증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0009376",
+"concept": "- MONDO:0009376 | carbamoyl phosphate synthetase I deficiency disease | syn: carbamoyl phosphate synthetase deficiency; carbamoyl phosphate synthetase I deficiency disease; carbamoyl-phosphate synthase deficiency disease; carbamoyl-phosphate synthetase deficiency | ancestors: urea cycle disorder or inherited hyperammonemia, urea cycle disorder, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: Carbamoyl-phosphate synthetase 1 deficiency (CPS1D) is a rare and severe disorder of urea cycle metabolism most commonly characterized by either a neonatal-onset of severe hyperammonemia that occurs f...",
+"ko": "카바모일인산 합성효소 I 결핍증",
+"alt": [
+"CPS1 결핍증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007243",
+"concept": "- MONDO:0007243 | Burkitt lymphoma | syn: Burkitt lymphoma; burkitt lymphoma, somatic; Burkitt lymphoma/leukemia; Burkitt's lymphoma | ancestors: hereditary disease, neoplasm of mature B-cells, Epstein-Barr virus-associated lymphoproliferative disorder, aggressive B-cell non-Hodgkin lymphoma | def: A rare form of malignant mature B-cell non-Hodgkin lymphoma.",
+"ko": "버킷 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0008310",
+"concept": "- MONDO:0008310 | Hutchinson-Gilford progeria syndrome | syn: HGPS; Hutchinson-Gilford disease; Hutchinson-Gilford progeria; Hutchinson-Gilford progeria syndrome | ancestors: syndromic disease, autosomal recessive disease, progeroid syndrome, primary osteolysis | def: Hutchinson-Gilford progeria syndrome is a rare, fatal, autosomal dominant and premature aging disease, beginning in childhood and characterized by growth reduction, failure to thrive, a typical facial...",
+"ko": "허친슨-길포드 조로증",
+"alt": [
+"허친슨-길포드 프로제리아"
+],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005995",
+"concept": "- MONDO:0005995 | trichostrongylosis | syn: Trichostrongyliasis; Trichostrongylus caused disease or disorder; Trichostrongylus disease or disorder; Trichostrongylus infectious disease | ancestors: trichostrongyloidiasis, Rhabditida infectious disease, Nematoda infectious disease, helminthiasis | def: Infestation with nematode worms of the genus trichostrongylus. Humans become infected by swallowing larvae, usually with contaminated food or drink, although the larvae may penetrate human skin.",
+"ko": "모양선충증",
+"alt": [
+"트리코스트롱길루스증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007616",
+"concept": "- MONDO:0007616 | fibula, recurrent dislocation of head of | syn: fibula, recurrent dislocation of head of | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "비골두 재발성 탈구",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001720",
+"concept": "- MONDO:0001720 | gonococcal synovitis | syn: gonococcal synovitis and tenosynovitis | ancestors: synovitis, gonococcal infection of joint, connective tissue disorder, arthritic joint disease | def: An synovitis (disease) caused by infection with Neisseria gonorrhoeae.",
+"ko": "임균성 윤활막염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0014523",
+"concept": "- MONDO:0014523 | juvenile-onset diabetes mellitus-central and peripheral neurodegeneration syndrome | syn: combined cerebellar and peripheral ataxia-hearing loss-diabetes mellitus syndrome | ancestors: hereditary ataxia, atactic disorder, hereditary neurological disease, nervous system disorder",
+"ko": "소아 발병 당뇨병-중추 및 말초 신경퇴행 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0850046",
+"concept": "- MONDO:0850046 | amniotic fluid embolism | ancestors: pregnancy disorder, obstetric disorder, disease by developmental or physiological process, human disease",
+"ko": "양수 색전증",
+"alt": [],
+"organs": [
+"haematologic",
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004756",
+"concept": "- MONDO:0004756 | nasal cavity neoplasm | syn: nasal cavity neoplasm; nasal cavity neoplasm (disease); nasal cavity tumor; nasal cavity tumour | ancestors: nasal cavity disorder, head and neck neoplasm, respiratory tract neoplasm, nasal disorder | def: A benign or malignant neoplasm that affects the nasal cavity. Representative examples of benign neoplasms include Schneiderian papilloma and salivary gland-type adenoma. Representative examples of mal...",
+"ko": "코안 신생물",
+"alt": [
+"비강 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0042967",
+"concept": "- MONDO:0042967 | rheumatic disease of mitral valve | syn: mitral valve rheumatologic disorder; rheumatic disease of mitral valve; rheumatologic disorder of mitral valve | ancestors: mitral valve disorder, rheumatic disorder, heart valve disorder, connective tissue disorder | def: A rheumatologic disorder that involves the mitral valve.",
+"ko": "승모판 류마티스 질환",
+"alt": [
+"류마티스성 승모판 질환"
+],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006983",
+"concept": "- MONDO:0006983 | subclavian steal syndrome | syn: subclavian artery stenosis | ancestors: syndromic disease, cerebrovascular disorder, disease by body system or component, brain disorder | def: An uncommon neurovascular condition seen with exertion of the upper extremity. It is usually caused by atherosclerotic stenosis or occlusion of the subclavian artery proximal to the origin of the vert...",
+"ko": "쇄골하동맥 탈취 증후군",
+"alt": [
+"쇄골하 도둑 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020077",
+"concept": "- MONDO:0020077 | myelodysplastic/myeloproliferative disease | ancestors: myeloid hemopathy, hematopoietic and lymphoid system neoplasm, neoplasm, hematologic disorder | def: Clonal myeloid disorders that possess both dysplastic and proliferative features but are not properly classified as either MYELODYSPLASTIC SYNDROMES or MYELOPROLIFERATIVE disorderS.",
+"ko": "골수이형성/골수증식 질환",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001272",
+"concept": "- MONDO:0001272 | functional diarrhea | ancestors: colonic disorder, large intestine disorder, intestinal disorder, digestive system disorder",
+"ko": "기능성 설사",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013005",
+"concept": "- MONDO:0013005 | EAST syndrome | syn: EAST syndrome; seizures, sensorineural deafness, ataxia, intellectual disability and electrolyte imbalance; seizures-sensorineural deafness-ataxia-intellectual disability-electrolyte imbalance syndrome; sesame syndrome | ancestors: inherited renal tubular disease, hereditary ataxia, renal tubule disorder, inherited kidney disorder | def: SeSAME syndrome is characterized by seizures, sensorineural deafness, ataxia, intellectual deficit, and electrolyte imbalance (hypokalemia, metabolic alkalosis, and hypomagnesemia).",
+"ko": "EAST 증후군",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010811",
+"concept": "- MONDO:0010811 | benign prostatic hyperplasia | syn: benign hyperplasia of prostate; benign hyperplasia of the prostate; benign prostate hyperplasia; benign prostatic hyperplasia | ancestors: prostate disorder, hyperplasia, male reproductive system disorder, cancer or benign tumor | def: A non-cancerous nodular enlargement of the prostate gland. It is characterized by the presence of epithelial cell nodules, and stromal nodules containing fibrous and smooth muscle elements. It is the ...",
+"ko": "양성 전립선 비대증",
+"alt": [
+"전립선비대증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004727",
+"concept": "- MONDO:0004727 | vestibule of mouth cancer | syn: cancer of oral opening; malignant neoplasm of oral opening; malignant neoplasm of vestibule of mouth; malignant oral opening neoplasm | ancestors: oral cavity cancer, digestive system cancer, oral cavity neoplasm, digestive system disorder | def: A cancer that involves the oral opening.",
+"ko": "구강전정암",
+"alt": [
+"입안뜰암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0024502",
+"concept": "- MONDO:0024502 | gallbladder neuroendocrine neoplasm | syn: gall bladder NET; gall bladder neuroendocrine neoplasm; gall bladder neuroendocrine tumor; gall bladder neuroendocrine tumor, well differentiated, low or intermediate grade | ancestors: gallbladder neoplasm, digestive system neuroendocrine neoplasm, hepatobiliary neoplasm, gallbladder disorder | def: A neoplasm with neuroendocrine differentiation that arises from the gallbladder. It includes well differentiated neuroendocrine tumors (low and intermediate grade) and poorly differentiated neuroendoc...",
+"ko": "담낭 신경내분비 신생물",
+"alt": [
+"담낭 신경내분비종양"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010578",
+"concept": "- MONDO:0010578 | deafness dystonia syndrome | syn: DDON syndrome; deafness dystonia optic neuronopathy syndrome (DDON); deafness dystonia syndrome; Deafness-Dystonia-Optic Neuronopathy Syndrome | ancestors: inherited neurodegenerative disorder, neurodegenerative disease, hereditary neurological disease, central nervous system disorder | def: An X-linked recessive neurodegenerative syndrome characterized by clinical manifestations commencing with early childhood onset hearing loss, followed by adolescent onset progressive dystonia or ataxi...",
+"ko": "난청-근긴장이상 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011010",
+"concept": "- MONDO:0011010 | microphthalmia, syndromic 9 | syn: anophthalmia-pulmonary hypoplasia syndrome; clinical anophthalmia mild facial dysmorphism lung heart and diaphragm malformations; Matthew Wood syndrome; Matthew-Wood syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome without intellectual disability, thoracic malformation, syndromic microphthalmia, multiple congenital anomalies/dysmorphic syndrome | def: A syndromic microphthalmiae in which the cause of the disease is a mutation in the STRA6 gene. It is characterized by microphthalmia or anophthalmia, and variable features including including intellec...",
+"ko": "증후군성 소안구증 9",
+"alt": [
+"무안구증-폐 저형성 증후군"
+],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+}
+]

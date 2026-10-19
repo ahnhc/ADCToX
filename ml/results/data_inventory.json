@@ -1,0 +1,342 @@
+{
+ "items": 147028,
+ "by_lang_type": {
+  "en|abbrev": 5151,
+  "en|canonical": 12294,
+  "en|junk": 380,
+  "en|kcd": 2,
+  "en|lay": 298,
+  "en|mention": 2805,
+  "en|symptom": 5194,
+  "en|synonym": 45055,
+  "en|typo": 1134,
+  "ko|abbrev": 33,
+  "ko|canonical": 21159,
+  "ko|junk": 1872,
+  "ko|kcd": 18655,
+  "ko|lay": 8779,
+  "ko|symptom": 5706,
+  "ko|synonym": 6389,
+  "ko|typo": 4253,
+  "mixed|abbrev": 31,
+  "mixed|canonical": 3367,
+  "mixed|junk": 37,
+  "mixed|kcd": 1300,
+  "mixed|lay": 243,
+  "mixed|symptom": 1075,
+  "mixed|synonym": 1572,
+  "mixed|typo": 189,
+  "other|junk": 55
+ },
+ "by_source_lang": {
+  "external|en": 2805,
+  "gen_ko|en": 250,
+  "gen_ko|ko": 2929,
+  "gen_ko|mixed": 184,
+  "gen_sym|en": 3158,
+  "gen_sym|ko": 3663,
+  "gen_sym|mixed": 1069,
+  "junk|en": 380,
+  "junk|ko": 1872,
+  "junk|mixed": 37,
+  "junk|other": 55,
+  "kcd|en": 2,
+  "kcd|ko": 18655,
+  "kcd|mixed": 1300,
+  "ko2|en": 289,
+  "ko2|ko": 10627,
+  "ko2|mixed": 345,
+  "mondo_ko|ko": 25852,
+  "mondo_ko|mixed": 4862,
+  "mondo_names|en": 58624,
+  "profiles|en": 3857,
+  "profiles|ko": 3248,
+  "profiles|mixed": 17,
+  "train_queries|en": 2948
+ },
+ "labelled_concepts": 20816,
+ "coverage": {
+  "en|abbrev": 4531,
+  "en|any": 20816,
+  "en|canonical": 12294,
+  "en|lay": 298,
+  "en|mention": 1136,
+  "en|symptom": 534,
+  "en|synonym": 15830,
+  "en|typo": 1134,
+  "ko|abbrev": 33,
+  "ko|any": 17616,
+  "ko|canonical": 17319,
+  "ko|lay": 3137,
+  "ko|symptom": 534,
+  "ko|synonym": 5442,
+  "ko|typo": 2133,
+  "mixed|abbrev": 31,
+  "mixed|any": 4444,
+  "mixed|canonical": 3125,
+  "mixed|lay": 173,
+  "mixed|symptom": 443,
+  "mixed|synonym": 1479,
+  "mixed|typo": 96
+ },
+ "per_organ": {
+  "haematologic": {
+   "concepts": 1528,
+   "en_any": 1528,
+   "en_canonical": 894,
+   "en_lay": 29,
+   "en_typo": 93,
+   "en_abbrev": 358,
+   "ko_any": 1117,
+   "ko_canonical": 1060,
+   "ko_lay": 296,
+   "ko_typo": 223,
+   "ko_abbrev": 2
+  },
+  "hepatic": {
+   "concepts": 612,
+   "en_any": 612,
+   "en_canonical": 322,
+   "en_lay": 17,
+   "en_typo": 58,
+   "en_abbrev": 160,
+   "ko_any": 505,
+   "ko_canonical": 480,
+   "ko_lay": 148,
+   "ko_typo": 117,
+   "ko_abbrev": 1
+  },
+  "cardiovascular": {
+   "concepts": 1751,
+   "en_any": 1751,
+   "en_canonical": 1063,
+   "en_lay": 25,
+   "en_typo": 94,
+   "en_abbrev": 464,
+   "ko_any": 1480,
+   "ko_canonical": 1455,
+   "ko_lay": 327,
+   "ko_typo": 261,
+   "ko_abbrev": 6
+  },
+  "pulmonary": {
+   "concepts": 1021,
+   "en_any": 1021,
+   "en_canonical": 622,
+   "en_lay": 16,
+   "en_typo": 63,
+   "en_abbrev": 213,
+   "ko_any": 952,
+   "ko_canonical": 944,
+   "ko_lay": 277,
+   "ko_typo": 238,
+   "ko_abbrev": 0
+  },
+  "renal": {
+   "concepts": 1151,
+   "en_any": 1151,
+   "en_canonical": 576,
+   "en_lay": 16,
+   "en_typo": 52,
+   "en_abbrev": 268,
+   "ko_any": 1010,
+   "ko_canonical": 995,
+   "ko_lay": 180,
+   "ko_typo": 146,
+   "ko_abbrev": 0
+  },
+  "gastrointestinal": {
+   "concepts": 2096,
+   "en_any": 2096,
+   "en_canonical": 1202,
+   "en_lay": 48,
+   "en_typo": 172,
+   "en_abbrev": 358,
+   "ko_any": 1928,
+   "ko_canonical": 1899,
+   "ko_lay": 426,
+   "ko_typo": 283,
+   "ko_abbrev": 6
+  },
+  "neurologic": {
+   "concepts": 6735,
+   "en_any": 6735,
+   "en_canonical": 4279,
+   "en_lay": 50,
+   "en_typo": 237,
+   "en_abbrev": 1647,
+   "ko_any": 5269,
+   "ko_canonical": 5166,
+   "ko_lay": 539,
+   "ko_typo": 345,
+   "ko_abbrev": 5
+  },
+  "ocular": {
+   "concepts": 2349,
+   "en_any": 2349,
+   "en_canonical": 1295,
+   "en_lay": 18,
+   "en_typo": 84,
+   "en_abbrev": 629,
+   "ko_any": 1983,
+   "ko_canonical": 1947,
+   "ko_lay": 332,
+   "ko_typo": 264,
+   "ko_abbrev": 2
+  },
+  "dermatologic": {
+   "concepts": 2285,
+   "en_any": 2285,
+   "en_canonical": 1327,
+   "en_lay": 17,
+   "en_typo": 88,
+   "en_abbrev": 470,
+   "ko_any": 2016,
+   "ko_canonical": 1987,
+   "ko_lay": 335,
+   "ko_typo": 264,
+   "ko_abbrev": 3
+  },
+  "metabolic_endocrine": {
+   "concepts": 2562,
+   "en_any": 2562,
+   "en_canonical": 1486,
+   "en_lay": 34,
+   "en_typo": 144,
+   "en_abbrev": 563,
+   "ko_any": 1943,
+   "ko_canonical": 1871,
+   "ko_lay": 358,
+   "ko_typo": 243,
+   "ko_abbrev": 2
+  },
+  "musculoskeletal": {
+   "concepts": 3760,
+   "en_any": 3760,
+   "en_canonical": 2218,
+   "en_lay": 25,
+   "en_typo": 176,
+   "en_abbrev": 806,
+   "ko_any": 3086,
+   "ko_canonical": 3012,
+   "ko_lay": 427,
+   "ko_typo": 282,
+   "ko_abbrev": 2
+  },
+  "infectious_immune": {
+   "concepts": 2469,
+   "en_any": 2469,
+   "en_canonical": 1698,
+   "en_lay": 70,
+   "en_typo": 213,
+   "en_abbrev": 454,
+   "ko_any": 2098,
+   "ko_canonical": 2037,
+   "ko_lay": 738,
+   "ko_typo": 599,
+   "ko_abbrev": 11
+  },
+  "otologic": {
+   "concepts": 839,
+   "en_any": 839,
+   "en_canonical": 504,
+   "en_lay": 2,
+   "en_typo": 20,
+   "en_abbrev": 133,
+   "ko_any": 721,
+   "ko_canonical": 710,
+   "ko_lay": 88,
+   "ko_typo": 70,
+   "ko_abbrev": 0
+  }
+ },
+ "junk_lang": {
+  "ko": 1872,
+  "en": 380,
+  "other": 55,
+  "mixed": 37
+ },
+ "scores": {
+  "by_category": {
+   "en": {
+    "canonical": 0.905,
+    "synonym": 0.909,
+    "abbrev": 0.735,
+    "typo": 0.893,
+    "lay": 0.903
+   },
+   "ko": {
+    "canonical": 0.796,
+    "synonym": 0.854,
+    "abbrev": 0.705,
+    "typo": 0.667,
+    "lay": 0.817
+   }
+  },
+  "per_organ": {
+   "en": {
+    "haematologic": 0.953,
+    "hepatic": 0.955,
+    "cardiovascular": 0.901,
+    "pulmonary": 0.849,
+    "renal": 0.949,
+    "gastrointestinal": 0.896,
+    "neurologic": 0.838,
+    "ocular": 0.871,
+    "dermatologic": 0.74,
+    "metabolic_endocrine": 0.988,
+    "musculoskeletal": 0.958,
+    "infectious_immune": 0.798,
+    "otologic": 0.727
+   },
+   "ko": {
+    "haematologic": 0.816,
+    "hepatic": 0.859,
+    "cardiovascular": 0.864,
+    "pulmonary": 0.747,
+    "renal": 0.782,
+    "gastrointestinal": 0.867,
+    "neurologic": 0.679,
+    "ocular": 0.89,
+    "dermatologic": 0.445,
+    "metabolic_endocrine": 0.938,
+    "musculoskeletal": 0.802,
+    "infectious_immune": 0.763,
+    "otologic": 0.618
+   }
+  },
+  "macro": {
+   "en": 0.879,
+   "ko": 0.775
+  },
+  "ko_questions": {
+   "ko": 232,
+   "en": 46,
+   "mixed": 23,
+   "other": 3
+  },
+  "ko_questions_by_category": {
+   "canonical": {
+    "ko": 47,
+    "mixed": 4
+   },
+   "synonym": {
+    "ko": 45,
+    "mixed": 6
+   },
+   "abbrev": {
+    "en": 31,
+    "mixed": 8,
+    "ko": 12
+   },
+   "typo": {
+    "ko": 48,
+    "mixed": 3
+   },
+   "lay": {
+    "ko": 50,
+    "mixed": 1
+   }
+  }
+ }
+}

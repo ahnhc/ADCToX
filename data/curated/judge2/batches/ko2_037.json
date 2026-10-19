@@ -1,0 +1,235 @@
+[
+{
+"id": "MONDO:0002941",
+"concept": "- MONDO:0002941 | anal margin carcinoma | syn: anal margin cancer; anal margin carcinoma; carcinoma of anal margin; carcinoma of perianal skin | ancestors: skin carcinoma, anal carcinoma, skin cancer, carcinoma | def: A carcinoma that arises from epithelial cells of the perianal skin",
+"ko": "항문연 암종",
+"alt": [
+"항문연암"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0043237",
+"concept": "- MONDO:0043237 | glossodynia | syn: glossodynia | ancestors: tongue disorder, neurological pain disorder, mouth disorder, nervous system disorder | def: Painful sensations in the tongue, including a sensation of burning.",
+"ko": "설통",
+"alt": [
+"혀통증"
+],
+"organs": [
+"gastrointestinal",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019530",
+"concept": "- MONDO:0019530 | non-syndromic syndactyly | syn: nonsyndromic syndactyly | ancestors: syndactyly, hereditary disease, skeletal system disorder, disorder of development or morphogenesis | def: A congenital condition characterized by webbing between the fingers and/or toes, joining the digits together. In rare cases, the joining of the fingers or toes may involve bony fusion between the digi...",
+"ko": "비증후군성 합지증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005648",
+"concept": "- MONDO:0005648 | aortic valve insufficiency | syn: aortic insufficiency; rheumatic aortic insufficiency; rheumatic aortic regurgitation | ancestors: aortic valve disorder, vascular insufficiency disorder, heart valve disorder, aortic disorder | def: Dysfunction of the aortic valve characterized by incomplete valve closure.",
+"ko": "대동맥판막 폐쇄부전",
+"alt": [
+"대동맥판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 13
+},
+{
+"id": "MONDO:0004947",
+"concept": "- MONDO:0004947 | B-cell acute lymphoblastic leukemia | syn: B lymphoblastic leukemia/lymphoma; precursor B lymphoblastic leukemia/lymphoma; precursor B-lymphoblastic lymphoma/leukemia | ancestors: acute lymphoblastic leukemia, B-cell non-Hodgkin lymphoma, precursor lymphoblastic lymphoma/leukemia, neoplasm of immature B and T cells | def: A neoplasm of lymphoblasts committed to the B-cell lineage, typically composed of small to medium-sized blast cells. When the neoplasm involves predominantly the bone marrow and the peripheral blood, ...",
+"ko": "B세포 급성 림프모구백혈병",
+"alt": [
+"B세포 급성 림프구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005724",
+"concept": "- MONDO:0005724 | cryptococcosis | syn: Cryptococcus neoformans caused disease or disorder; Cryptococcus neoformans disease or disorder; Cryptococcus neoformans infectious disease; torulosis | ancestors: opportunistic mycosis, parasitic infectious disease, fungal infectious disease, infectious disease | def: An acute or chronic, localized or disseminated infection by Cryptococcus neoformans. Sites of involvement include the lungs, central nervous system and meninges, skin, and visceral organs.--2004",
+"ko": "크립토코쿠스증",
+"alt": [
+"크립토콕쿠스증"
+],
+"organs": [
+"pulmonary",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0010481",
+"concept": "- MONDO:0010481 | angioedema | syn: angioedemas; angioneurotic Edemas; edema, angioneurotic; edema, Quincke's | ancestors: urticaria, skin vascular disease, dermatitis, skin disorder | def: Swelling involving the deep dermis, subcutaneous, or submucosal tissues, representing localized edema. Angioedema often occurs in the face, lips, tongue, and larynx.",
+"ko": "혈관부종",
+"alt": [
+"혈관신경성 부종"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004664",
+"concept": "- MONDO:0004664 | helminthiasis | syn: helminthiasis | ancestors: parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: A parasitic infection characterized by the infestation with worms, mainly in the intestine.",
+"ko": "연충증",
+"alt": [
+"기생충 감염증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0017329",
+"concept": "- MONDO:0017329 | familial vesicoureteral reflux | syn: familial VUR; hereditary vesicoureteral reflux (disease) | ancestors: hereditary disease, vesicoureteral reflux, disease of genetic or genomic mechanism, ureteral disorder | def: Familial vesicoureteral reflux is a rare, non-syndromic urogenital tract malformation characterized by the familial occurrence of retrograde flow of urine from the bladder into the ureter and sometime...",
+"ko": "가족성 방광요관역류",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009072",
+"concept": "- MONDO:0009072 | Dandy-Walker syndrome | syn: Dandy Walker Malformation; Dandy-Walker syndrome; Dandy-Walker syndrome, Isolated cases | ancestors: cerebellar disorder, cystic malformation of the posterior fossa, brain disorder, central nervous system malformation | def: Dandy-Walker malformation (DWM) is the association of three signs: hydrocephalus, partial or complete absence of the cerebellar vermis, and posterior fossa cyst contiguous with the fourth ventricle, p...",
+"ko": "댄디-워커 증후군",
+"alt": [
+"댄디-워커 기형"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008322",
+"concept": "- MONDO:0008322 | pseudoachondroplasia | syn: pseudoachondroplasia; Pseudoachondroplastic dysplasia; pseudoachondroplastic dysplasia; Pseudoachondroplastic spondyloepiphyseal dysplasia | ancestors: osteochondrodysplasia, COMP-related skeletal dysplasia, bone development disease, skeletal dysplasia | def: Pseudoachondroplasia is characterized by severe growth deficiency and deformations such as bow legs and hyperlordosis.",
+"ko": "가성연골무형성증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001429",
+"concept": "- MONDO:0001429 | transient arthropathy | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: Arthropathy that is not permanent.",
+"ko": "일과성 관절병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0006594",
+"concept": "- MONDO:0006594 | pemphigus | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: Pemphigus is a group of rare autoimmune diseases that cause blistering of the skin and mucous membranes (mouth, nose, throat, eyes, and genitals).This conditioncan occur at any age, but often strikes ...",
+"ko": "천포창",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0019979",
+"concept": "- MONDO:0019979 | renal hypoplasia, unilateral | ancestors: renal hypoplasia, kidney disorder, disorder of development or morphogenesis, urinary system disorder | def: Unilateral renal hypoplasia is a form of renal hypoplasia, a renal developmental anomaly in which one kidney is small and has a deficit in the number of nephrons present.",
+"ko": "편측성 콩팥 형성저하",
+"alt": [
+"일측성 신장 형성저하"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006903",
+"concept": "- MONDO:0006903 | peroneal nerve paralysis | syn: nerve palsy, peroneal; palsy, peroneal nerve | ancestors: peripheral nervous system disorder, nervous system disorder, disease by body system or component, human disease | def: Paralysis of the nerves located in the legs.",
+"ko": "종아리신경 마비",
+"alt": [
+"비골신경 마비"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005751",
+"concept": "- MONDO:0005751 | epidemic pleurodynia | syn: Bornholm disease; epidemic myalgia | ancestors: viral infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: An acute, febrile, infectious disease generally occurring in epidemics. It is usually caused by coxsackieviruses B and sometimes by coxsackieviruses A; echoviruses; or other enteroviruses.",
+"ko": "유행성 흉막통",
+"alt": [
+"본홀름병"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0041052",
+"concept": "- MONDO:0041052 | postherpetic neuralgia | syn: postherpetic neuralgia | ancestors: post-infectious neuralgia, neuralgia, post-viral disorder, peripheral neuropathy",
+"ko": "대상포진 후 신경통",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0023419",
+"concept": "- MONDO:0023419 | hyperprolinemia | ancestors: inborn disorder of proline metabolism, inborn disorder of amino acid metabolism, inborn disorder of ornithine or proline metabolism, inborn disorder of amino acid and other organic acid metabolism | def: Hyperprolinemia is when there isan excess of a particular protein building block (amino acid), called proline, in the blood. This condition generally occurs when proline is not broken down properly by...",
+"ko": "고프롤린혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019620",
+"concept": "- MONDO:0019620 | congenital esophageal diverticulum | syn: congenital esophageal pouch | ancestors: esophageal disorder, disorder of development or morphogenesis, upper digestive tract disorder, disease by developmental or physiological process | def: Congenital esophageal diverticulum is a rare, non-syndromic malformation of the esophagus, present at birth, and characterized by a false diverticulum, most often located in the upper, posterior esoph...",
+"ko": "선천성 식도 게실",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020398",
+"concept": "- MONDO:0020398 | congenital mitral stenosis | syn: congenital mitral stenosis; congenital mitral stenosis (disease); congenital mitral valve stenosis; hereditary mitral valve stenosis | ancestors: mitral valve stenosis, congenital mitral valve insufficiency and/or stenosis, inherited mitral valve disease, mitral valve disorder | def: Congenital mitral stenosis is a congenital heart malformation comprising a spectrum of morphologically heterogeneous developmental anomalies that result in functional and anatomic obstruction of inflo...",
+"ko": "선천성 승모판 협착",
+"alt": [
+"선천성 이첨판 협착"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+}
+]

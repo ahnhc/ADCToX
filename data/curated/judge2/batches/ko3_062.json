@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0009913",
+"concept": "- MONDO:0009913 | prune belly syndrome with pulmonic stenosis, intellectual disability, and deafness | syn: prune belly syndrome with pulmonic stenosis, intellectual disability, and deafness; prune belly syndrome with pulmonic stenosis, mental retardation, and deafness | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "폐동맥 협착, 지적장애 및 난청을 동반한 자두배 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004435",
+"concept": "- MONDO:0004435 | liver fibrosarcoma | syn: fibrosarcoma of liver; fibrosarcoma of the liver; hepatic fibrosarcoma; liver fibrosarcoma | ancestors: liver sarcoma, fibrosarcoma, liver cancer, soft tissue sarcoma | def: A usually aggressive malignant neoplasm arising from the liver. It is characterized by the presence of spindle-shaped fibroblasts and collagenous stroma formation in a herringbone growth pattern.",
+"ko": "간 섬유육종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015486",
+"concept": "- MONDO:0015486 | keratoconus | syn: keratoconus; keratoconus (disease) | ancestors: corneal disorder, hereditary disease, ocular growth disorder, eye disorder | def: A degenerative, structural disorder of the eye, characterized by a cone-shaped protrusion of the cornea. It may lead to visual disturbances.",
+"ko": "원추각막",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005928",
+"concept": "- MONDO:0005928 | post-thrombotic syndrome | syn: postphlebitic syndrome | ancestors: venous insufficiency, vein disorder, vascular insufficiency disorder, vascular disorder | def: A condition characterized by a chronically swollen limb, often a leg with stasis dermatitis and ulcerations. This syndrome can appear soon after phlebitis or years later. Postphlebitic syndrome is the...",
+"ko": "혈전후 증후군",
+"alt": [
+"정맥염후 증후군"
+],
+"organs": [
+"cardiovascular",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009699",
+"concept": "- MONDO:0009699 | action myoclonus-renal failure syndrome | syn: action myoclonus-renal failure syndrome; AMRF; epilepsy, progressive myoclonic 4, with or without renal failure; epilepsy, progressive myoclonic, 4, with or without renal failure | ancestors: progressive myoclonus epilepsy, hereditary neurological disease, myoclonic epilepsy, variable-age epilepsy syndrome with developmental and/or epileptic encephalopathy or progressive neurological deterioration | def: Action myoclonus-renal failure syndrome (AMRF) is a rare epilepsy syndrome characterized by progressive myoclonus epilepsy in association with primary glomerular disease. Patients present with neurolo...",
+"ko": "동작성 근간대경련-신부전 증후군",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019858",
+"concept": "- MONDO:0019858 | idiopathic congenital hypothyroidism | ancestors: congenital hypothyroidism, idiopathic disease, hypothyroidism, disease by etiologic mechanism | def: Idiopathic congenital hypothyroidism is a type of primary congenital hypothyroidism whose cause and prevalence are unknown.",
+"ko": "특발성 선천성 갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0014884",
+"concept": "- MONDO:0014884 | cholestasis, progressive familial intrahepatic, 5 | syn: cholestasis, progressive familial intrahepatic, 5; cholestasis, progressive familial intrahepatic, 5; PFIC5; cholestasis, progressive familial intrahepatic, type 5; NR1H4 deficiency | ancestors: progressive familial intrahepatic cholestasis, syndromic disease, familial intrahepatic cholestasis, inborn disorder of bilirubin metabolism | def: Any progressive familial intrahepatic cholestasis in which the cause of the disease is a mutation in the NR1H4 gene.",
+"ko": "진행성 가족성 간내 담즙정체증 5형",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001985",
+"concept": "- MONDO:0001985 | partial arterial retinal occlusion | syn: partial retinal arterial occlusion | ancestors: retinal artery occlusion, retinal vascular occlusion, retinal vascular disorder, vascular occlusion disorder | def: A partial occlusion of the retinal artery.",
+"ko": "부분 망막동맥 폐쇄",
+"alt": [],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003452",
+"concept": "- MONDO:0003452 | cochlear disorder | syn: cochlea disease; cochlea disease or disorder; disease of cochlea; disease or disorder of cochlea | ancestors: inner ear disorder, skull disorder, auditory system disorder, disorder of ear | def: Pathological processes of the snail-like structure (cochlea) of the inner ear (labyrinth) which can involve its nervous tissue, blood vessels, or fluid (endolymph).",
+"ko": "달팽이관 질환",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004427",
+"concept": "- MONDO:0004427 | supraglottis neoplasm | syn: neoplasm of supraglottic part of larynx; neoplasm of supraglottis; neoplasm of the supraglottis; supraglottic neoplasm | ancestors: laryngeal neoplasm, laryngeal disorder, respiratory tract neoplasm, upper respiratory tract disorder | def: A benign or malignant neoplasm that affects the supraglottic area of the larynx.",
+"ko": "성문상부 신생물",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002026",
+"concept": "- MONDO:0002026 | candidiasis | syn: Candida <Debaryomycetaceae> infection; Candida infection; Candidosis; thrush | ancestors: opportunistic mycosis, fungal infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection with the organism Candida.",
+"ko": "칸디다증",
+"alt": [
+"칸디다 감염"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0008891",
+"concept": "- MONDO:0008891 | riboflavin transporter deficiency | syn: Brown-Vialetto-van Laere syndrome; disorder of riboflavin transmembrane transporter activity; Fazio-Londe syndrome; riboflavin transmembrane transporter activity disease | ancestors: hereditary motor neuron disease, motor neuron disorder, inherited neurodegenerative disorder, hereditary neuromuscular disease | def: A progressive motor neuron disorder characterized by respiratory insufficiency, sensorineural deafness and progressive ponto-bulbar palsy.",
+"ko": "리보플라빈 운반체 결핍증",
+"alt": [
+"브라운-비알레토-반 라에레 증후군"
+],
+"organs": [
+"pulmonary",
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000266",
+"concept": "- MONDO:0000266 | pulmonary aspergilloma | syn: lung aspergillosis | ancestors: aspergillosis, fungal lung infectious disease, opportunistic mycosis, fungal infectious disease | def: A aspergillosis that involves the lung.",
+"ko": "폐 아스페르길루스종",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0019324",
+"concept": "- MONDO:0019324 | pemphigus foliaceus | ancestors: pemphigus, autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease | def: Pemphigus foliaceous is a rare superficial pemphigus disease characterized by multiple, pruritic, scaly, crusted cutaneous erosions, with flaky circumscribed patches, localized mostly on the face, sca...",
+"ko": "낙엽상 천포창",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002078",
+"concept": "- MONDO:0002078 | heart septal defect | syn: Cardiac septal defects; congenital septal defect; holes in the heart | ancestors: congenital heart disease, heart disorder, congenital anomaly of cardiovascular system, cardiovascular disorder | def: A congenital disorder characterized by the presence of an abnormal communication between the atria or the ventricles of the heart due to defects in the cardiac septum.",
+"ko": "심장중격결손",
+"alt": [
+"심장 사이막 결손"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007797",
+"concept": "- MONDO:0007797 | hypoparathyroidism-deafness-renal disease syndrome | syn: Barakat Syndrome; Barakat syndrome; HDR syndrome; hypoparathyroidism, deafness, and renal anomalies syndrome | ancestors: syndromic disease, hereditary disease, partial deletion of the short arm of chromosome 10, disease by body system or component | def: The HDR syndrome is an inherited condition consisting of hypoparathyroidism, sensorineural deafness and renal disease.",
+"ko": "부갑상선기능저하증-난청-신장질환 증후군",
+"alt": [
+"HDR 증후군"
+],
+"organs": [
+"renal",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012517",
+"concept": "- MONDO:0012517 | Gaucher disease due to saposin C deficiency | syn: atypical Gaucher disease due to saposin C deficiency; atypical Gaucher's disease due to saposin c deficiency; Gaucher disease caused by mutation in PSAP; PSAP Gaucher disease | ancestors: PSAP-related sphingolipidosis, sphingolipidosis, lysosomal lipid storage disorder, inherited lipid metabolism disorder | def: Any Gaucher disease in which the cause of the disease is a mutation in the PSAP gene.",
+"ko": "사포신 C 결핍에 의한 고셔병",
+"alt": [
+"사포신 C 결핍 비전형 고셔병"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015041",
+"concept": "- MONDO:0015041 | myelodysplastic syndrome with excess blasts-2 | syn: MDS-EB-2; myelodysplastic syndrome with Excess blasts-2; RAEB-2; RAEB-II | ancestors: myelodysplastic syndrome with excess blasts, myelodysplastic syndrome, hematopoietic and lymphoid cell neoplasm, myeloid hemopathy | def: A myelodysplastic syndrome defined by 10-19% blasts in the bone marrow or 5-19% blasts in the blood and <10% blasts in the bone marrow. Approximately 33% of cases progress to acute leukemia. The progn...",
+"ko": "모세포 증가형 골수이형성 증후군-2",
+"alt": [
+"골수이형성 증후군, 모세포 과잉형-2"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019569",
+"concept": "- MONDO:0019569 | Cockayne syndrome type 1 | syn: Cockayne syndrome A; Cockayne syndrome caused by mutation in ERCC8; Cockayne syndrome type 1; Cockayne syndrome type a | ancestors: Cockayne syndrome, autosomal recessive disease, developmental anomaly of metabolic origin, progeroid syndrome | def: Cockayne syndrome caused by mutation(s) in the ERCC8 gene, encoding DNA excision repair protein ERCC-8.",
+"ko": "코케인 증후군 1형",
+"alt": [
+"코케인 증후군 A형"
+],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001514",
+"concept": "- MONDO:0001514 | prolapse of urethra | syn: urethrocele | ancestors: prolapse of female genital organ, urethral disorder, female reproductive system disorder, urinary system disorder | def: Prolapse of the urethral mucosa from the exterior urethral opening.",
+"ko": "요도 탈출",
+"alt": [
+"요도류"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3,
+"new": false
+}
+]

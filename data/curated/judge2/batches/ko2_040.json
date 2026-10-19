@@ -1,0 +1,234 @@
+[
+{
+"id": "MONDO:0004671",
+"concept": "- MONDO:0004671 | penis carcinoma in situ | syn: Bowen disease of the penis; Bowen's disease of penis; Bowen's disease of the penis; carcinoma in situ of penis | ancestors: squamous carcinoma in situ, squamous cell carcinoma of penis, in situ carcinoma, squamous cell carcinoma | def: A in situ carcinoma that involves the penis.",
+"ko": "음경 상피내암종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017860",
+"concept": "- MONDO:0017860 | methanol poisoning | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Methanol poisoning is a rare poisoning resulting in elevated anion gap metabolic acidosis, due to the alcohol dehydrogenase (ADH)-mediated production of formic acid (which is poisonous to the central ...",
+"ko": "메탄올 중독",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009650",
+"concept": "- MONDO:0009650 | mucolipidosis type II | syn: I Cell Disease; I-cell disease; mucolipidosis type II; mucolipidosis type II alpha/beta | ancestors: familial mucolipidosis, GNPTAB-mucolipidosis, lysosomal storage disease with skeletal involvement, mucolipidosis | def: Mucolipidosis II (MLII) is a slowly progressive lysosomal disorder characterized by growth retardation, skeletal abnormalities, facial dysmorphism, stiff skin, developmental delay and cardiomegaly.",
+"ko": "점액지질증 2형",
+"alt": [
+"I-세포병"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011399",
+"concept": "- MONDO:0011399 | alpha thalassemia spectrum | syn: alpha thalassaemia; alpha thalassemia spectrum; alpha-thalassemia; thalassemia, alpha- | ancestors: thalassemia, inherited hemoglobinopathy, hereditary disease, hemoglobinopathy | def: An inherited hemoglobinopathy characterized by impaired synthesis of alpha-globin chains leading to a variable clinical picture depending on the number of affected alleles.",
+"ko": "알파 지중해빈혈 스펙트럼",
+"alt": [
+"알파 탈라세미아 스펙트럼"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019649",
+"concept": "- MONDO:0019649 | idiopathic steroid-sensitive nephrotic syndrome with focal segmental hyalinosis | syn: idiopathic steroid-sensitive nephrotic syndrome with focal segmental glomerulosclerosis | ancestors: idiopathic steroid-sensitive nephrotic syndrome, idiopathic nephrotic syndrome, nephrotic syndrome, idiopathic disease",
+"ko": "국소분절 초자질변성을 동반한 특발성 스테로이드 감수성 신증후군",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020435",
+"concept": "- MONDO:0020435 | atrial septal defect, coronary sinus type | syn: ASD, coronary sinus type; atrial septal defect coronary sinus; unroofed coronary sinus | ancestors: atrial septal defect, syndromic congenital heart disease, heart septal defect, cardiogenetic disease",
+"ko": "심방중격결손, 관상정맥동형",
+"alt": [
+"ASD 관상정맥동형"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004686",
+"concept": "- MONDO:0004686 | lattice corneal dystrophy | syn: lattice corneal dystrophy; lattice corneal dystrophy (disease) | ancestors: stromal corneal dystrophy, corneal dystrophy, corneal disorder, eye disorder",
+"ko": "격자 각막이영양증",
+"alt": [
+"격자형 각막 디스트로피"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005705",
+"concept": "- MONDO:0005705 | clonorchiasis | syn: Oriental liver fluke disease | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection of the biliary passages with clonorchis sinensis, also called Opisthorchis sinensis. It may lead to inflammation of the biliary tract, proliferation of biliary epithelium, progressive portal...",
+"ko": "간흡충증",
+"alt": [
+"중국간흡충증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0006648",
+"concept": "- MONDO:0006648 | anterior compartment of tibia syndrome | ancestors: compartment syndrome, skeletal muscle disorder, syndromic disease, muscle tissue disorder | def: Rapid swelling, increased tension, pain, and ischemic necrosis of the muscles of the anterior tibial compartment of the leg, often following excessive physical exertion.",
+"ko": "전경골 구획 증후군",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005664",
+"concept": "- MONDO:0005664 | bartonellosis | syn: Bartonella caused disease or disorder; Bartonella disease or disorder; Bartonella infection; Rochalimaea infection (disorder) | ancestors: primary bacterial infectious disease, Bartonellaceae infectious disease, bacterial infectious disease, gram-negative bacterial infections | def: An infectious disease produced by bacteria of the genus Bartonella.",
+"ko": "바르토넬라증",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0006847",
+"concept": "- MONDO:0006847 | malignant lymphatic vessel tumor | ancestors: lymphoid neoplasm, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm, neoplasm | def: Neoplasms composed of lymphoid tissue, a lattice work of reticular tissue the interspaces of which contain lymphocytes. The concept does not refer to neoplasms located in lymphatic vessels.",
+"ko": "악성 림프관 종양",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004055",
+"concept": "- MONDO:0004055 | acute inflammation of lacrimal passage | ancestors: lacrimal apparatus disorder, acute disease, eye adnexa disorder, eye disorder",
+"ko": "급성 눈물길 염증",
+"alt": [
+"급성 누도 염증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0043494",
+"concept": "- MONDO:0043494 | arteritis | syn: arteritis; artery inflammation; inflammation of artery | ancestors: arterial disorder, vasculitis, vascular disorder, inflammatory disease | def: An inflammatory process affecting an artery.",
+"ko": "동맥염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019456",
+"concept": "- MONDO:0019456 | acute myeloid leukemia with multilineage dysplasia | syn: AML with multilineage dysplasia; AML with myelodysplasia-related features; De novo acute myeloid leukaemia with multilineage dysplasia; De novo acute myeloid leukemia with multilineage dysplasia | ancestors: acute myeloid leukemia, myeloid leukemia, acute leukemia, leukemia | def: An acute myeloid leukemia arising de novo and not as a result of treatment. It is characterized by the presence of myelodysplastic features in at least 50% of the cells of at least two hematopoietic c...",
+"ko": "다계통 이형성을 동반한 급성 골수성 백혈병",
+"alt": [
+"골수형성이상 관련 급성 골수성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002429",
+"concept": "- MONDO:0002429 | idiopathic interstitial pneumonia | syn: idiopathic fibrosing alveolitis; idiopathic interstitial pneumonitis; IIP; IIp | ancestors: pneumonia, idiopathic disease, respiratory tract infectious disorder, pneumonitis | def: A class of diffuse lung diseases that typically affect the pulmonary interstitium, although some also have a component affecting the airways (for instance, Cryptogenic organizing pneumonitis).",
+"ko": "특발성 간질성 폐렴",
+"alt": [
+"특발성 섬유화 폐포염"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001294",
+"concept": "- MONDO:0001294 | Horner syndrome | syn: Horner syndrome; Horner's syndrome | ancestors: autonomic neuropathy, autonomic nervous system disorder, peripheral neuropathy, central nervous system disorder | def: Horner's syndrome is a rare condition characterized by miosis (constriction of thepupil), ptosis (drooping of the upper eyelid), and anhidrosis (absence of sweating of the face). It iscaused by damage...",
+"ko": "호너 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002755",
+"concept": "- MONDO:0002755 | solitary osseous plasmacytoma | syn: isolated plasmacytoma of bone; solitary plasmacytoma of bone | ancestors: plasmacytoma, plasma cell neoplasm, neoplasm of mature B-cells, B-cell neoplasm | def: A localized, clonal (malignant) plasma cell infiltrate in the bone, without peripheral blood involvement. The most commonly affected bones are the vertebrae, ribs, skull, pelvis and femur. X-rays exam...",
+"ko": "단발성 골 형질세포종",
+"alt": [
+"고립성 뼈 형질세포종"
+],
+"organs": [
+"haematologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018958",
+"concept": "- MONDO:0018958 | nemaline myopathy | syn: NEM; nemaline body disease; nemaline myopathy; nemaline rod myopathy | ancestors: congenital structural myopathy, hereditary skeletal muscle disorder, congenital myopathy, hereditary disease | def: Nemaline myopathy (NM) encompasses a large spectrum of myopathies characterized by hypotonia, weakness and depressed or absent deep tendon reflexes, with pathologic evidence of nemaline bodies (rods) ...",
+"ko": "네말린 근병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005768",
+"concept": "- MONDO:0005768 | gastrointestinal tuberculosis | syn: tuberculosis of intestines, peritoneum, and mesenteric glands | ancestors: extrapulmonary tuberculosis, digestive system infectious disorder, tuberculosis, digestive system disorder | def: Tuberculosis that involves any region of the gastrointestinal tract, mostly in the distal ileum and the cecum. In most cases, mycobacterium tuberculosis is the pathogen. Clinical features include abdo...",
+"ko": "위장관 결핵",
+"alt": [
+"장결핵"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015397",
+"concept": "- MONDO:0015397 | craniofacial microsomia | syn: Expanded spectrum hemifacial microsomia; Expanded spectrum of hemifacial microsomia; facioauriculovertebral dysplasia; first branchial arch syndrome | ancestors: syndromic disease, oculoauriculovertebral spectrum with radial defects, neurocristopathy, disease by body system or component",
+"ko": "두개안면 왜소증",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 1
+}
+]

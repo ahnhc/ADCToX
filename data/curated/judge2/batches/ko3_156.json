@@ -1,0 +1,266 @@
+[
+{
+"id": "MONDO:0043836",
+"concept": "- MONDO:0043836 | tuberculosis, spinal | syn: pott disease; pott's disease; tuberculosis of vertebral column | ancestors: vertebral column disorder, skeletal tuberculosis, skeletal system disorder, extrapulmonary tuberculosis | def: Tuberculosis of the vertebrae.",
+"ko": "척추 결핵",
+"alt": [
+"포트병"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005339",
+"concept": "- MONDO:0005339 | androgenetic alopecia | ancestors: endocrine alopecia, alopecia, hair anomaly, disorder of pilosebaceous unit",
+"ko": "안드로겐성 탈모증",
+"alt": [
+"남성형 탈모"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008219",
+"concept": "- MONDO:0008219 | pemphigus vulgaris | ancestors: pemphigus, autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease | def: Pemphigus is a group of chronic autoimmune skin diseases characterized by blister formations on the outer layer of the skin and the mucous membranes. Three clinical forms have been characterized, of w...",
+"ko": "심상성 천포창",
+"alt": [
+"보통천포창"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021461",
+"concept": "- MONDO:0021461 | benign neoplasm of hypopharynx | syn: benign hypopharyngeal neoplasm; benign hypopharyngeal tumor; benign hypopharyngeal tumour; benign neoplasm of the hypopharynx | ancestors: respiratory system benign neoplasm, neoplasm of hypopharynx, benign neoplasm of pharynx, respiratory system disorder | def: A benign neoplasm that involves the hypopharynx.",
+"ko": "하인두 양성 신생물",
+"alt": [
+"하인두 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0054741",
+"concept": "- MONDO:0054741 | combined oxidative phosphorylation deficiency 34 | syn: combined oxidative phosphorylation deficiency 34; syndromic sensorineural deafness due to combined oxidative phosphorylation defect; syndromic sensorineural deafness due to COXPD; syndromic sensorineural hearing loss due to COXPD | ancestors: combined oxidative phosphorylation deficiency, mitochondrial oxidative phosphorylation disorder, inborn mitochondrial metabolism disorder, developmental anomaly of metabolic origin",
+"ko": "복합 산화적 인산화 결핍증 34형",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005376",
+"concept": "- MONDO:0005376 | membranous glomerulonephritis | syn: membranous Glomerulonephropathy; membranous nephropathy | ancestors: glomerulonephritis, podocytopathy, nephritis, glomerular disorder | def: A slowly progressive inflammation of the glomeruli characterized by immune complex deposits at the glomerular basement membrane, resulting in a thickened membrane, and nephrotic syndrome.",
+"ko": "막성 사구체신염",
+"alt": [
+"막성 신병증"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019517",
+"concept": "- MONDO:0019517 | Waardenburg syndrome type 2 | syn: Waardenburg syndrome type 2; Waardenburg syndrome type II; WS2 | ancestors: Waardenburg syndrome, autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability | def: Waardenburg syndrome type 2 (WS2) is an autosomal dominant subtype of Waardenburg syndrome (WS), characterized by varying degrees of deafness and pigmentation anomalies of eyes, hair and skin, but wit...",
+"ko": "바르덴부르흐 증후군 2형",
+"alt": [
+"와덴부르흐 증후군 2형"
+],
+"organs": [
+"ocular",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0044720",
+"concept": "- MONDO:0044720 | cerebellar ataxia with neuropathy and bilateral vestibular areflexia syndrome | syn: CABV syndrome; CANVAS; cerebellar ataxia with bilateral vestibulopathy syndrome; cerebellar ataxia, neuropathy, and vestibular areflexia syndrome | ancestors: hereditary sensory and autonomic neuropathy type 1, hereditary otorhinolaryngologic disease, autosomal recessive syndromic cerebellar ataxia, hereditary sensory and autonomic neuropathy | def: An autosomal recessive syndromic cerebellar ataxia caused by variation in the RFC1 gene, characterized by late-onset cerebellar dysfunction (including gait and limb ataxia, nystagmus, and dysarthria),...",
+"ko": "신경병증 및 양측 전정반사 소실을 동반한 소뇌실조 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001793",
+"concept": "- MONDO:0001793 | excessive tearing | syn: epiphora | ancestors: lacrimal apparatus disorder, eye adnexa disorder, eye disorder, disorder of orbital region | def: Profuse lacrimation.",
+"ko": "눈물흘림증",
+"alt": [
+"유루증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006000",
+"concept": "- MONDO:0006000 | tuberculous peritonitis | syn: Mycobacterium tuberculosis caused peritonitis; Mycobacterium tuberculosis peritonitis | ancestors: abdominal tuberculosis, infectious peritonitis, gastrointestinal tuberculosis, extrapulmonary tuberculosis | def: A form of peritonitis seen in patients with tuberculosis, characterized by lesion either as a miliary form or as a pelvic mass on the peritoneal surfaces. Most patients have ascites, abdominal swellin...",
+"ko": "결핵성 복막염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019458",
+"concept": "- MONDO:0019458 | acute basophilic leukemia | syn: basophilic leukaemia; basophilic leukemia; leukaemia basophilic; leukemia basophilic | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: A rare acute myeloid leukemia in which the immature cells differentiate towards basophils.",
+"ko": "급성 호염기구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019168",
+"concept": "- MONDO:0019168 | pyomyositis | syn: myositis purulenta tropica; myositis tropicans; PM; suppurative myositis | ancestors: bacterial myositis, bacterial infectious disease, myositis disease, infectious disease | def: Pyomyositis (PM) is a rare primary bacterial infection of the skeletal muscle, usually resulting from hematogenous spread or due to muscle injury, and characterized by pain and tenderness in the affec...",
+"ko": "화농성 근염",
+"alt": [
+"열대성 근염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 23,
+"new": false
+},
+{
+"id": "MONDO:0001626",
+"concept": "- MONDO:0001626 | traumatic glaucoma | syn: glaucoma associated with ocular trauma | ancestors: secondary glaucoma, glaucoma, eye disorder, disorder of orbital region",
+"ko": "외상성 녹내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004802",
+"concept": "- MONDO:0004802 | pulmonary eosinophilia | ancestors: hypereosinophilic syndrome, syndromic disease, non-familial restrictive cardiomyopathy, eosinophil disorder | def: A condition characterized by infiltration of the lung with eosinophils due to inflammation or other disease processes. Major eosinophilic lung diseases are the eosinophilic pneumonias caused by infect...",
+"ko": "폐 호산구증가증",
+"alt": [
+"폐호산구증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002088",
+"concept": "- MONDO:0002088 | partial retinal vein occlusion | syn: partial retinal vein occlusion | ancestors: retinal vein occlusion, retinal vascular occlusion, retinal vascular disorder, vascular occlusion disorder",
+"ko": "부분 망막정맥 폐쇄",
+"alt": [],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009846",
+"concept": "- MONDO:0009846 | pentosuria | syn: essential pentosuria; pentosuria; xylitol dehydrogenase deficiency | ancestors: inborn disorder of pentose phosphate metabolism, disorders of pentose/polyol metabolism, inborn carbohydrate metabolic disorder, inborn errors of metabolism | def: Pentosuria is an inborn error of metabolism which is characterized by the excretion of 1 to 4 g of the pentose L-xylulose in the urine per day.",
+"ko": "펜토스뇨증",
+"alt": [
+"본태성 펜토스뇨증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008300",
+"concept": "- MONDO:0008300 | Prader-Willi syndrome | syn: Prader-Labhart-Willi syndrome; Prader-Willi syndrome; Prader-Willi-Labhart syndrome; Willi-Prader syndrome | ancestors: syndromic disease, congenital nervous system disorder, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, congenital hypogonadotropic hypogonadism | def: Prader-Willi syndrome is a rare genetic disorder characterized by hypothalamic-pituitary abnormalities with severe hypotonia during the neonatal period and first two years of life and the onset of hyp...",
+"ko": "프라더-윌리 증후군",
+"alt": [
+"프라더-빌리 증후군"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009973",
+"concept": "- MONDO:0009973 | reticular dysgenesis | syn: AK2 deficiency; congenital aleukocytosis; De Vaal disease; generalised haematopoietic hypoplasia | ancestors: T-B- severe combined immunodeficiency, familial severe combined immunodeficiency, severe combined immunodeficiency, combined immunodeficiency | def: Reticular dysgenesis is the most severe form of severe combined immunodeficiency (SCID) and is characterized by bilateral sensorineural deafness and a lack of innate and adaptive immune functions lead...",
+"ko": "망상 이형성증",
+"alt": [
+"AK2 결핍증"
+],
+"organs": [
+"haematologic",
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001748",
+"concept": "- MONDO:0001748 | maxillary sinus carcinoma | syn: cancer of maxillary sinus; carcinoma of maxillary sinus; malignant maxillary sinus neoplasm; malignant maxillary sinus tumor | ancestors: paranasal sinus carcinoma, jaw cancer, digestive system carcinoma, maxillary sinus neoplasm | def: A carcinoma that arises from the maxillary sinus. Representative examples include squamous cell carcinoma, adenocarcinoma, and adenoid cystic carcinoma.",
+"ko": "상악동암종",
+"alt": [
+"위턱굴 암종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011303",
+"concept": "- MONDO:0011303 | focal segmental glomerulosclerosis 1 | syn: ACTN4 focal segmental glomerulosclerosis; familial idiopathic steroid-resistant nephrotic syndrome with focal segmental glomerulosclerosis; focal segmental glomerulosclerosis 1; focal segmental glomerulosclerosis caused by mutation in ACTN4 | ancestors: inherited focal segmental glomerulosclerosis, familial idiopathic steroid-resistant nephrotic syndrome, inherited kidney disorder, focal segmental glomerulosclerosis | def: Any focal segmental glomerulosclerosis in which the cause of the disease is a mutation in the ACTN4 gene.",
+"ko": "국소 분절 사구체경화증 1",
+"alt": [
+"ACTN4 국소 분절 사구체경화증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

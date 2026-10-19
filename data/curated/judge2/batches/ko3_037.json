@@ -1,0 +1,267 @@
+[
+{
+"id": "MONDO:0013276",
+"concept": "- MONDO:0013276 | Reynolds syndrome | syn: primary biliary cirrhosis and systemic scleroderma; Reynolds syndrome | ancestors: hereditary disease, autoimmune disease, disease of genetic or genomic mechanism, immune system disorder | def: An autoimmune disorder characterized by the association of primary biliary cirrhosis (PBC) with limited cutaneous systemic sclerosis (lcSSc).",
+"ko": "레이놀즈 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015253",
+"concept": "- MONDO:0015253 | Diamond-Blackfan anemia | syn: Aase syndrome; Aase-Smith II syndrome; Blackfan-Diamond anaemia; Blackfan-Diamond anemia | ancestors: pure red-cell aplasia, inherited aplastic anemia, anemia, hereditary disease | def: A congenital aregenerative and often macrocytic anemia with erythroblastopenia.",
+"ko": "다이아몬드-블랙팬 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0009412",
+"concept": "- MONDO:0009412 | scurvy | syn: ascorbic acid deficiency; deficiency of vitamin C; scurvy; vitamin C deficiency | ancestors: vitamin deficiency disorder, carbohydrate metabolism disease, nutritional deficiency disease, metabolic disease | def: A condition that develops in people who do not consume an adequate amount of vitamin C in their diet. Although scurvy is relatively rare in the United States, it continues to be a problem in malnouris...",
+"ko": "괴혈병",
+"alt": [
+"비타민 C 결핍증"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001515",
+"concept": "- MONDO:0001515 | corneal degeneration | ancestors: corneal disorder, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "각막 변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011821",
+"concept": "- MONDO:0011821 | Meckel syndrome, type 3 | syn: Meckel syndrome caused by mutation in TMEM67; Meckel syndrome, type 3; Meckel-Gruber syndrome, type 3; MKS3 | ancestors: Meckel syndrome, polydactyly-syndactyly-triphalangism, syndromic disease, ciliopathy | def: Any Meckel syndrome in which the cause of the disease is a mutation in the TMEM67 gene.",
+"ko": "메켈 증후군 3형",
+"alt": [
+"메켈-그루버 증후군 3형"
+],
+"organs": [
+"hepatic",
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015908",
+"concept": "- MONDO:0015908 | chromomycosis | syn: chromoblastomycosis; Chromomycosis; chromomycosis | ancestors: subcutaneous mycosis, dermatomycosis, cutaneous mycosis, fungal infectious disease | def: Chromomycosis is a chronic cutaneous and subcutaneous fungal infection, found mainly in subtropical and tropical areas (in soil and plant debris and transmitted by traumatic inoculation), and characte...",
+"ko": "크로모진균증",
+"alt": [
+"착색분아균증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0019372",
+"concept": "- MONDO:0019372 | solitary bone cyst | syn: bone cyst; cyst of bone; cyst of the bone; simple bone cyst | ancestors: bone neoplasm, bone disorder, connective tissue neoplasm, skeletal system disorder | def: A solitary bone cyst is a benign non-epithelial bone cavity that is asymptomatic and that is found most commonly in the second decade of life by chance. The long bones are most often affected, but cas...",
+"ko": "단발성 뼈낭종",
+"alt": [
+"뼈낭종"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0021003",
+"concept": "- MONDO:0021003 | polydactyly | syn: hyperdactyly; polydactylism; polydactyly; polydactyly (disease) | ancestors: hereditary disease, skeletal system disorder, disorder of development or morphogenesis, disease of genetic or genomic mechanism | def: A disease characterized by the presence of polydactyly, including syndromic and non-syndromic forms.",
+"ko": "다지증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005392",
+"concept": "- MONDO:0005392 | scoliosis | ancestors: disease of bone structure, bone disorder, skeletal system disorder, musculoskeletal system disorder | def: A congenital or acquired spinal deformity characterized by lateral curvature of the spine.",
+"ko": "척추측만증",
+"alt": [
+"측만증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 16,
+"new": false
+},
+{
+"id": "MONDO:0008814",
+"concept": "- MONDO:0008814 | arginase deficiency | syn: arginase deficiency; Arginase-1 Deficiency; argininemia; hyperargininemia | ancestors: urea cycle disorder or inherited hyperammonemia, urea cycle disorder, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: Arginase deficiency is a rare autosomal recessive amino acid metabolism disorder characterized clinically by variable degrees of hyperammonemia, developing from about 3 years of age, and leading to pr...",
+"ko": "아르기나제 결핍증",
+"alt": [
+"고아르기닌혈증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002605",
+"concept": "- MONDO:0002605 | hepatic angiomyolipoma | syn: liver angiomyolipoma; liver PEComa | ancestors: angiomyolipoma, liver and intrahepatic bile duct neoplasm, neoplasm with perivascular epithelioid cell differentiation, endocrine gland neoplasm | def: An angiomyolipoma arising from the liver.",
+"ko": "간 혈관근지방종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001989",
+"concept": "- MONDO:0001989 | atrophic glossitis | syn: atrophy of tongue papillae | ancestors: glossitis, tongue disorder, inflammatory disease, mouth disorder",
+"ko": "위축성 혀염",
+"alt": [
+"위축성 설염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:1060166",
+"concept": "- MONDO:1060166 | giant cell hepatitis with autoimmune hemolytic anemia | syn: GCH-AHA; giant cell hepatitis associated with autoimmune hemolytic anemia; giant cell hepatitis with autoimmune haemolytic anaemia | ancestors: autoimmune hepatitis, autoimmune hemolytic anemia, autoimmune disorder of endocrine system, autoimmune disorder of exocrine system | def: A rare autoimmune disease of early childhood, marked by the simultaneous or sequential immune attack on red blood cells and liver cells.",
+"ko": "자가면역 용혈빈혈을 동반한 거대세포 간염",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002803",
+"concept": "- MONDO:0002803 | intestinal pseudo-obstruction | syn: Chronic intestinal pseudo-obstruction.; intestinal pseudo-obstruction; intestine pseudoobstruction; pseudo-obstruction of intestine | ancestors: ileus, intestinal obstruction, intestinal disorder, digestive system disorder | def: Intestinal pseudo-obstruction is a digestive disorder in whichthe intestinal walls are unable to contract normally (called hypomotility); the conditionresembles a true obstruction, but no actual block...",
+"ko": "장 가성폐쇄",
+"alt": [
+"가성 장폐색"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017362",
+"concept": "- MONDO:0017362 | neuralgic amyotrophy | syn: acute brachial plexus neuritis; immune brachial plexus neuropathy; mononeuritis multiplex with brachial predilection; neuralgic shoulder amyotrophy | ancestors: acquired peripheral neuropathy, peripheral neuropathy, peripheral nervous system disorder, neuromuscular disease | def: Neuralgic amyotrophy (NA) is an uncommon disorder of the peripheral nervous system characterized by the sudden onset of extreme pain in the upper extremity followed by rapid multifocal motor weakness ...",
+"ko": "신경통성 근위축증",
+"alt": [
+"파소니지-터너 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021475",
+"concept": "- MONDO:0021475 | benign neoplasm of nasal cavity | syn: benign nasal cavity neoplasm; benign nasal cavity tumor; benign nasal cavity tumour; benign neoplasm of the nasal cavity | ancestors: respiratory system benign neoplasm, sensory organ benign neoplasm, nasal cavity neoplasm, respiratory system disorder | def: A benign neoplasm that involves the nasal cavity.",
+"ko": "비강 양성 신생물",
+"alt": [
+"코안 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010222",
+"concept": "- MONDO:0010222 | X-linked Opitz G/BBB syndrome | syn: Opitz G/BBB syndrome, X-linked; Opitz GBBB syndrome, type I, X-linked recessive; X-linked Opitz BBB/G syndrome; X-linked Opitz G/BBB syndrome | ancestors: X-linked disease, Opitz G/BBB syndrome, hereditary disease, syndromic disease | def: X-linked form of Opitz G/BBB syndrome.",
+"ko": "X연관 오피츠 G/BBB 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"gastrointestinal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010122",
+"concept": "- MONDO:0010122 | congenital thrombotic thrombocytopenic purpura | syn: congenital ADAMTS-13 deficiency; congenital ADAMTS13 deficiency; congenital thrombotic thrombocytopenic purpura; congenital TTP | ancestors: inherited bleeding disorder, platelet-type, congenital hematological disorder, thrombotic thrombocytopenic purpura, inherited blood coagulation disorder | def: Congenital thrombotic thrombocytopenic purpura is the hereditary form of thrombotic thrombocytopenic purpura (TTP) characterized by profound peripheral thrombocytopenia, microangiopathic hemolytic ane...",
+"ko": "선천성 혈전성 혈소판감소성 자반증",
+"alt": [
+"업쇼-슐만 증후군"
+],
+"organs": [
+"haematologic",
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018493",
+"concept": "- MONDO:0018493 | malignant hyperthermia of anesthesia | syn: anaesthesia related hyperthermia; hyperthermia of anaesthesia; hyperthermia of anesthesia; malignant hyperpyrexia | ancestors: muscular channelopathy, hereditary neuromuscular disease, neuromuscular disease, disease by molecular mechanism | def: A pharmacogenetic disorder of skeletal muscle that presents as a hypermetabolic response to potent volatile anesthetic gasses such as halothane, sevoflurane, desflurane and the depolarizing muscle rel...",
+"ko": "마취 악성고열증",
+"alt": [
+"마취 중 악성 고체온증"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008054",
+"concept": "- MONDO:0008054 | juvenile dermatomyositis | syn: childhood dermatomyositis; inflammation of myoseptum; juvenile dermatomyositis; juvenile DM | ancestors: dermatomyositis, juvenile idiopathic inflammatory myopathy, dermatitis, rheumatic disorder | def: Juvenile dermatomyositis (JDM) is the early-onset form of dermatomyositis (DM), a systemic, autoimmune inflammatory muscle disorder, characterized by proximal muscle weakness, evocative skin lesion, a...",
+"ko": "소아 피부근염",
+"alt": [
+"연소성 피부근염"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+}
+]

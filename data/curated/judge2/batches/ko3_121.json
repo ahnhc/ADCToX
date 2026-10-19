@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0019480",
+"concept": "- MONDO:0019480 | Langerhans cell sarcoma | syn: Langerhans cell sarcoma; sarcoma of Langerhans cell | ancestors: dendritic cell sarcoma, immune system cancer, leukocyte disorder, sarcoma | def: A neoplastic proliferation of Langerhans cells with overtly malignant cytologic features. It can be considered a higher grade variant of Langerhans cell histiocytosis (LCH) and it can present de novo ...",
+"ko": "랑게르한스세포 육종",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001079",
+"concept": "- MONDO:0001079 | pancreatic steatorrhea | syn: pancreatic steatorrhoea | ancestors: steatorrhea, pancreas disorder, intestinal disorder, digestive system disorder",
+"ko": "췌장성 지방변",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005845",
+"concept": "- MONDO:0005845 | meningoencephalitis | ancestors: encephalitis, encephalomyelitis, brain disorder, acute disease | def: Inflammation of the meninges and brain, generally secondary to an infectious cause. Pathogens may be bacterial, viral, fungal, or protozoan.",
+"ko": "수막뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005788",
+"concept": "- MONDO:0005788 | hepatitis E virus infection | syn: Hepatitis E virus caused hepatitis; Hepatitis E virus hepatitis; hepatitis type E | ancestors: viral hepatitis, hepatitis, digestive system infectious disorder, primary viral infectious disease | def: Acute inflammation of the liver in humans; caused by hepatitis E virus, a non-enveloped single-stranded rna virus. Similar to hepatitis A, its incubation period is 15-60 days and is enterically transm...",
+"ko": "E형 간염 바이러스 감염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0100344",
+"concept": "- MONDO:0100344 | Bartter disease type 1 | syn: BARTS1; Bartter disease type 1; Bartter syndrome caused by mutation in SLC12A1; Bartter syndrome type 1 | ancestors: Bartter syndrome, syndromic disease, renal tubular transport disease, inherited renal tubular disease",
+"ko": "바터병 1형",
+"alt": [
+"바터 증후군 1형"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005289",
+"concept": "- MONDO:0005289 | paranasal sinus neoplasm | syn: accessory sinus neoplasm; accessory sinus tumor; accessory sinus tumour; neoplasm of accessory sinus | ancestors: paranasal sinus disorder, skull neoplasm, nasal disorder, respiratory system disorder | def: A benign or malignant neoplasm that affects the paranasal sinuses. Representative examples of benign neoplasms include Schneiderian papilloma and salivary gland-type adenoma. Representative examples o...",
+"ko": "부비동 신생물",
+"alt": [
+"부비동 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006827",
+"concept": "- MONDO:0006827 | lateral medullary syndrome | syn: Posterior inferior cerebellar artery syndrome; Wallenberg syndrome; Wallenberg's syndrome | ancestors: syndromic disease, brain stem infarction, disease by body system or component, brain infarction | def: A syndrome caused by an infarct in the vertebral or posterior inferior cerebellar artery. It is characterized by sensory defects affecting the same side of the face as the infarct and the opposite sid...",
+"ko": "외측 연수 증후군",
+"alt": [
+"왈렌베르크 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009917",
+"concept": "- MONDO:0009917 | pseudohypoaldosteronism, type IB1, autosomal recessive | syn: autosomal recessive PHA 1; autosomal recessive pseudohypoaldosteronism type 1; generalised PHA1; generalised pseudohypoaldosteronism type 1 | ancestors: pseudohypoaldosteronism type 1, inherited renal tubular disease, inherited pseudohypoaldosteronism, renal tubule disorder | def: Generalized pseudohypoaldosteronism type 1 (generalized PHA1) is a severe form of primary mineralocorticoid resistance with systemic involvement and salt loss in multiple organs.",
+"ko": "가성저알도스테론증, IB1형, 상염색체 열성",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004747",
+"concept": "- MONDO:0004747 | cleft lip | syn: cheiloschisis; cleft lip; cleft lip (disease); cleft lip, unilateral, complete | ancestors: orofacial cleft, hereditary disease, disorder of facial skeleton, disease of genetic or genomic mechanism | def: A congenital abnormality consisting of one or more clefts (splits) in the upper lip, which may be accompanied by a cleft palate; it is the result of the failure of the embryonic parts of the lip to fu...",
+"ko": "구순열",
+"alt": [
+"언청이",
+"입술갈림증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0014432",
+"concept": "- MONDO:0014432 | Bardet-Biedl syndrome 2 | syn: Bardet-Biedl syndrome 2; Bardet-Biedl syndrome caused by mutation in BBS2; Bardet-Biedl syndrome type 2; BBS2 | ancestors: Bardet-Biedl syndrome, BBS2-related ciliopathy, syndromic disease, ciliopathy | def: Any Bardet-Biedl syndrome in which the cause of the disease is a mutation in the BBS2 gene.",
+"ko": "바르데-비들 증후군 2형",
+"alt": [],
+"organs": [
+"renal",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0014221",
+"concept": "- MONDO:0014221 | triosephosphate isomerase deficiency | syn: hemolytic anaemia due to triosephosphate isomerase deficiency; hemolytic anemia due to triosephosphate isomerase deficiency; triose phosphate-isomerase deficiency; triosephosphate isomerase deficiency | ancestors: glucose metabolism disease, familial hemolytic anemia, disorder of glycolysis, anemia due to erythrocyte enzyme disorder | def: Triosephosphate isomerase (TPI) deficiency is a severe autosomal recessive inherited multisystem disorder of glycolytic metabolism characterized by hemolytic anemia and neurodegeneration.",
+"ko": "트리오스인산 이성질화효소 결핍증",
+"alt": [],
+"organs": [
+"haematologic",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013875",
+"concept": "- MONDO:0013875 | 3-methylglutaconic aciduria with deafness, encephalopathy, and Leigh-like syndrome | syn: 3-methylglutaconic aciduria caused by mutation in SERAC1; 3-methylglutaconic aciduria with deafness, encephalopathy, and Leigh-like syndrome; 3-methylglutaconic aciduria with deafness-encephalopathy-Leigh-like syndrome; MEGDEL | ancestors: inborn mitochondrial metabolism disorder, 3-methylglutaconic aciduria, disorder of phospholipids, sphingolipids and fatty acids biosynthesis, SERAC1-related neurological disorder | def: Any 3-methylglutaconic aciduria in which the cause of the disease is a mutation in the SERAC1 gene.",
+"ko": "난청, 뇌병증, 리 유사 증후군을 동반한 3-메틸글루타콘산뇨증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008354",
+"concept": "- MONDO:0008354 | purpura simplex | syn: purpura simplex | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "단순 자반증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011227",
+"concept": "- MONDO:0011227 | short stature-auditory canal atresia-mandibular hypoplasia-skeletal anomalies syndrome | syn: SAMS syndrome; short stature, auditory canal atresia, mandibular hypoplasia, skeletal abnormalities | ancestors: skeletal system disorder, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, hereditary otorhinolaryngologic disease, musculoskeletal system disorder",
+"ko": "저신장-외이도 폐쇄-하악 저형성-골격 이상 증후군",
+"alt": [
+"SAMS 증후군"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003799",
+"concept": "- MONDO:0003799 | conjunctivitis | syn: conjunctiva inflammation; conjunctivitis; conjunctivitis (disease); inflammation of conjunctiva | ancestors: conjunctival disorder, inflammatory disease, eye adnexa disorder, eye disorder | def: Inflammation of the conjunctiva of the eye.",
+"ko": "결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0010699",
+"concept": "- MONDO:0010699 | Charcot-Marie-Tooth disease X-linked recessive 5 | syn: Charcot-Marie-Tooth disease X-linked recessive type 5; Charcot-Marie-Tooth disease, X-linked recessive, 5; Charcot-Marie-Tooth disease, X-linked recessive, 5, X-linked recessive; Charcot-Marie-Tooth disease, X-linked recessive, type 5 | ancestors: Charcot-Marie-Tooth disease type X, inborn disorder of purine metabolism, X-linked disease, Charcot-Marie-Tooth disease | def: X-linked Charcot-Marie-Tooth disease type 5 is a rare, genetic, peripheral sensorimotor neuropathy characterized by an X-linked recessive inheritance pattern and the infancy- to childhood-onset of: 1)...",
+"ko": "X연관 열성 샤르코-마리-투스병 5형",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018872",
+"concept": "- MONDO:0018872 | acute megakaryoblastic leukemia | syn: acute M7 myeloid leukaemia; acute M7 myeloid leukemia; acute megakaryoblastic leukaemia (FAB type M7); acute megakaryoblastic leukemia | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: Acute megakaryoblastic leukemia (AMKL) is a form of acute myeloid leukemia (AML) that occurs predominantly in childhood and particularly in children with Down syndrome (DS-AMKL). Nonspecific symptoms ...",
+"ko": "급성 거핵모구성 백혈병",
+"alt": [
+"급성 거핵아구성 백혈병",
+"급성 골수성 백혈병 M7"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001590",
+"concept": "- MONDO:0001590 | quadriplegia | syn: bilateral diplegia; tetraplegia | ancestors: palsy, central nervous system disorder, nervous system disorder, disease by body system or component | def: Paralysis of all four limbs.",
+"ko": "사지마비",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0016217",
+"concept": "- MONDO:0016217 | mal de Debarquement | syn: disembarkment syndrome; MDD; MdDS; sickness of disembarkment | ancestors: otorhinolaryngologic disease, disease by body system or component, human disease, disease | def: Mal de debarquement (MdD) is a rare otorhinolaryngological disease characterized by a persistent sensation of motion such as rocking, swaying, tumbling and/or bobbing following a period of exposure to...",
+"ko": "하선 후 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012910",
+"concept": "- MONDO:0012910 | age-related hearing impairment 1 | syn: age-related hearing impairment 1; ARHI1 | ancestors: inherited auditory system disease, presbycusis, auditory system disorder, hereditary disease",
+"ko": "나이관련 청력손상 1",
+"alt": [
+"노인성 난청 1"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

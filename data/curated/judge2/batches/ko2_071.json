@@ -1,0 +1,236 @@
+[
+{
+"id": "MONDO:0017862",
+"concept": "- MONDO:0017862 | paraquat poisoning | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Paraquat poisoning is a rare intoxication with paraquat (a non-selective bipyridilium herbicide that has been banned in Europe), usually occurring through ingestion of the poison, and that presents wi...",
+"ko": "파라콰트 중독",
+"alt": [],
+"organs": [
+"hepatic",
+"pulmonary",
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006981",
+"concept": "- MONDO:0006981 | subacute bacterial endocarditis | syn: SBE; Subacute bacterial endocarditis | ancestors: infective endocarditis, acute disease, endocarditis, infectious disease | def: Subacute inflammation of the endocardium. Streptococcus viridans is the usual etiologic agent of subacute bacterial endocarditis. The distinction between \\\"acute\\\" and \\\"subacute\\\" endocarditis has tr...",
+"ko": "아급성 세균성 심내막염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001760",
+"concept": "- MONDO:0001760 | photokeratitis | syn: ultraviolet keratitis | ancestors: keratitis, radiation-induced disorder, corneal disorder, inflammatory disease | def: Injury to the cornea secondary to ultraviolet light.",
+"ko": "광각막염",
+"alt": [
+"자외선 각막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008698",
+"concept": "- MONDO:0008698 | achalasia | syn: achalasia; achalasia (disease); achalasia of cardia; achalasia of oesophagus | ancestors: esophageal disorder, upper digestive tract disorder, digestive system disorder, disease by body system or component | def: A finding indicating the lack of adequate relaxation of the lower esophageal sphincter resulting in difficulty swallowing food.",
+"ko": "이완불능증",
+"alt": [
+"식도 이완불능증",
+"아칼라지아"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0008219",
+"concept": "- MONDO:0008219 | pemphigus vulgaris | ancestors: pemphigus, autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease | def: Pemphigus is a group of chronic autoimmune skin diseases characterized by blister formations on the outer layer of the skin and the mucous membranes. Three clinical forms have been characterized, of w...",
+"ko": "심상성 천포창",
+"alt": [
+"보통천포창"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001590",
+"concept": "- MONDO:0001590 | quadriplegia | syn: bilateral diplegia; tetraplegia | ancestors: palsy, central nervous system disorder, nervous system disorder, disease by body system or component | def: Paralysis of all four limbs.",
+"ko": "사지마비",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001831",
+"concept": "- MONDO:0001831 | irregular astigmatism | ancestors: astigmatism, refractive error, eye disorder, disorder of orbital region",
+"ko": "불규칙 난시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003009",
+"concept": "- MONDO:0003009 | hyperaldosteronism | ancestors: adrenal gland hyperfunction, adrenal cortex disorder, adrenal gland disorder, endocrine system disorder | def: Overproduction of aldosterone by the adrenal glands, which may lead to hypokalemia and/or hypernatremia.",
+"ko": "알도스테론증",
+"alt": [
+"고알도스테론증"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0005677",
+"concept": "- MONDO:0005677 | Rickettsia conorii infectious disease | ancestors: spotted fever, Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis",
+"ko": "리케치아 코노리 감염병",
+"alt": [
+"지중해 발진열"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006115",
+"concept": "- MONDO:0006115 | blast phase chronic myelogenous leukemia, BCR-ABL1 positive | syn: blast crisis; blast phase chronic granulocytic leukaemia; blast phase chronic granulocytic leukemia; blast phase chronic myelocytic leukaemia | ancestors: chronic myeloid leukemia, myeloid leukemia, hereditary disorder of connective tissue, leukemia | def: An advanced phase of chronic myelogenous leukemia. It is characterized by: 1. the presence of blasts in the peripheral blood or bone marrow that are at least 20% of the peripheral blood white cells or...",
+"ko": "BCR-ABL1 양성 만성 골수성 백혈병 모세포기",
+"alt": [
+"모세포 위기"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011760",
+"concept": "- MONDO:0011760 | Scheie syndrome | syn: MPS I S; MPS1S; MPSIS; mucopolysaccharidosis type 1S | ancestors: mucopolysaccharidosis type 1, syndromic disease, lysosomal storage disease with skeletal involvement, eye disorder | def: Scheie syndrome is the mildest form of mucopolysaccharidosis type 1 (MPS1), a rare lysosomal storage disease, characterized by skeletal deformities and a delay in motor development.",
+"ko": "샤이에 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004848",
+"concept": "- MONDO:0004848 | ulcerative stomatitis | syn: ulcerative stomatitis | ancestors: stomatitis, mucositis, mouth mucosa disorder, inflammatory disease | def: Inflammation of the mouth mucosa associated with the presence of ulcers.",
+"ko": "궤양성 구내염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0044919",
+"concept": "- MONDO:0044919 | malignant renal pelvis neoplasm | syn: cancer of renal pelvis; malignant neoplasm of renal pelvis; malignant neoplasm of the renal pelvis; malignant renal pelvis neoplasm | ancestors: kidney cancer, renal pelvis neoplasm, malignant urinary system neoplasm, kidney neoplasm | def: A primary or metastatic malignant neoplasm that affects the renal pelvis.",
+"ko": "신우 악성 신생물",
+"alt": [
+"신우암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021084",
+"concept": "- MONDO:0021084 | vision disorder | syn: disorder of vision; vision disorder; visual disorder | ancestors: disorder of visual system, disease by body system or component, human disease, disease | def: Any impairment to the vision.",
+"ko": "시각 장애",
+"alt": [
+"시력 장애"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0015681",
+"concept": "- MONDO:0015681 | childhood disintegrative disorder | syn: childhood disintegrative disease; dementia infantilis; disintegrative psychosis; heller syndrome | ancestors: pervasive developmental disorder, developmental disorder of mental health, complex neurodevelopmental disorder, mental disorder | def: A rare pervasive developmental disorder with a disease onset before the age of three and characterized by a dramatic loss of behavioral and developmental functioning after atleast two years of normal ...",
+"ko": "소아기 붕괴성 장애",
+"alt": [
+"소아기 해체장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0006796",
+"concept": "- MONDO:0006796 | hypertensive encephalopathy | ancestors: intracranial hypertension, hypertensive disorder, brain disorder, neurovascular disorder | def: Encephalopathy resulting from hypertension.",
+"ko": "고혈압성 뇌병증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017469",
+"concept": "- MONDO:0017469 | congenital elbow dislocation | syn: congenital radial head dislocation; isolated congenital elbow dislocation | ancestors: disorder of development or morphogenesis, disease by developmental or physiological process, human disease, disease",
+"ko": "선천성 팔꿈치 탈구",
+"alt": [
+"선천성 요골두 탈구"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017079",
+"concept": "- MONDO:0017079 | meningoencephalocele | syn: brain meninx cephalocele (disease); cephalocele (disease) of brain meninx; meningoencephalocele | ancestors: meningocele, brain disorder, cephalocele, congenital nervous system disorder | def: A congenital abnormality in which the meninges protrude through a defect in the cranium.",
+"ko": "수막뇌류",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001398",
+"concept": "- MONDO:0001398 | ureter benign neoplasm | syn: benign neoplasm of the ureter; benign neoplasm of ureter; benign tumor of the ureter; benign tumor of ureter | ancestors: benign urinary system neoplasm, ureter neoplasm, benign neoplasm, urinary system neoplasm | def: Cancer or tumors of the ureter which may cause obstruction leading to hydroureter, hydronephrosis, and pyelonephritis. hematuria is a common symptom.",
+"ko": "요관 양성 신생물",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006969",
+"concept": "- MONDO:0006969 | sialadenitis | syn: lymphadenitis (disease) of saliva-secreting gland; saliva-secreting gland lymphadenitis (disease); sialitis; sialoadenitis | ancestors: salivary gland disorder, lymphadenitis, mouth disorder, lymph node disorder | def: Sialadenitis is an infection of the salivary glands. It is usually caused by a virus or bacteria. The parotid (in front ofthe ear) and submandibular (under the chin) glands are most commonly affected....",
+"ko": "침샘염",
+"alt": [
+"타액선염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4
+}
+]

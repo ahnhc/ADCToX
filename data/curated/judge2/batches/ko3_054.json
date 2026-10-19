@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0020511",
+"concept": "- MONDO:0020511 | precursor B-cell acute lymphoblastic leukemia | syn: B cell precursor type acute leukaemia; B cell precursor type acute leukemia; B-cell precursor type acute leukaemia; B-cell precursor type acute leukemia | ancestors: acute lymphoblastic leukemia, aggressive B-cell non-Hodgkin lymphoma, precursor lymphoblastic lymphoma/leukemia, neoplasm of immature B and T cells | def: The most frequent type of acute lymphoblastic leukemia. Approximately 75% of cases occur in children under six years of age. This is a good prognosis leukemia. In the pediatric age group the complete ...",
+"ko": "전구 B세포 급성 림프모구백혈병",
+"alt": [
+"전구 B세포 급성 림프구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006684",
+"concept": "- MONDO:0006684 | brain edema | ancestors: brain disorder, central nervous system disorder, nervous system disorder, disease by body system or component | def: Increased intracellular or extracellular fluid in brain tissue. Cytotoxic brain edema (swelling due to increased intracellular fluid) is indicative of a disturbance in cell metabolism, and is commonly...",
+"ko": "뇌부종",
+"alt": [
+"뇌수종"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016344",
+"concept": "- MONDO:0016344 | hydranencephaly | syn: hydranencephaly; hydranencephaly (disease) | ancestors: anencephaly, encephaloclastic disorder, congenital nervous system disorder, hereditary neurological disease | def: A rare congenital brain disorder in which the cerebral hemispheres are absent and replaced by sacs that contain cerebrospinal fluid. Signs and symptoms include irritability, increased muscle tone, sei...",
+"ko": "수두무뇌증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010223",
+"concept": "- MONDO:0010223 | ichthyosis, X-linked, without steroid sulfatase deficiency | syn: ichthyosis, X-linked, without steroid sulfatase deficiency | ancestors: recessive X-linked ichthyosis, inherited ichthyosis, sterol metabolism disorder, X-linked recessive disease",
+"ko": "스테로이드 설파타제 결핍이 없는 X연관 어린선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004631",
+"concept": "- MONDO:0004631 | tongue cancer | syn: cancer of tongue; malignant neoplasm of tongue; malignant tongue neoplasm; malignant tongue tumor | ancestors: sensory system cancer, oral cavity cancer, head and neck cancer, tongue neoplasm | def: A malignant neoplasm affecting the tongue. The vast majority of cases are carcinomas.",
+"ko": "혀암",
+"alt": [
+"설암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009877",
+"concept": "- MONDO:0009877 | Laron syndrome | syn: complete growth hormone insensitivity; GH receptor deficiency; Growth Hormone Insensitivity; Growth hormone receptor deficiency | ancestors: autosomal recessive disease, growth hormone insensitivity syndrome, autosomal genetic disease, syndromic disease | def: Laron syndrome is a congenital disorder characterized by marked short stature associated with normal or high serum growth hormone (GH) and low serum insulin-like growth factor-1 (IGF-I) levels which f...",
+"ko": "라론 증후군",
+"alt": [
+"성장호르몬 불감성 증후군"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018077",
+"concept": "- MONDO:0018077 | tularemia | syn: Francisella tularensis caused disease or disorder; Francisella tularensis disease or disorder; Francisella tularensis infectious disease | ancestors: primary bacterial infectious disease, vector-borne disease, bacterial infectious disease, infectious disease | def: Tularemia is an infection caused by the bacterium Francisella tularensis. It is more common in rodents and rabbits but has been found in other animals including domestic cats, sheep, birds, and hamste...",
+"ko": "야토병",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0006839",
+"concept": "- MONDO:0006839 | Lutembacher syndrome | syn: Lutembacher's syndrome | ancestors: atrial septal defect, heart septal defect, cardiogenetic disease, congenital heart disease | def: A condition characterized by a combination of ostium secundum atrial septal defect and an acquired mitral valve stenosis.",
+"ko": "루텐바허 증후군",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008660",
+"concept": "- MONDO:0008660 | autosomal dominant hypophosphatemic rickets | syn: ADHR; autosomal dominant hereditary hypophosphatemic rickets; autosomal dominant hypophosphatemia; autosomal dominant hypophosphatemic rickets | ancestors: hereditary hypophosphatemic rickets, autosomal dominant disease, abnormal mineralization disorder, hereditary disease | def: Autosomal dominant hypophosphatemic rickets (ADHR) is a hereditary renal phosphate-wasting disorder characterized by hypophosphatemia, rickets and/or osteomalacia.",
+"ko": "상염색체 우성 저인산혈증 구루병",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011822",
+"concept": "- MONDO:0011822 | Bartter disease type 3 | syn: adult Bartter syndrome; BARTS3; Bartter disease type 3; Bartter syndrome type 3 | ancestors: Bartter syndrome, syndromic disease, renal tubular transport disease, inherited renal tubular disease | def: Classic Bartter syndrome is a type of Bartter syndrome, characterized by a milder clinical picture than the antenatal/infantile subtype, and presenting with failure to thrive, hypokalemic alkalosis, i...",
+"ko": "바터병 3형",
+"alt": [
+"바터 증후군 3형"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007025",
+"concept": "- MONDO:0007025 | chancre | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: The primary sore of syphilis, a painless indurated, eroded papule, occurring at the site of entry of the infection.",
+"ko": "하감",
+"alt": [
+"매독 하감"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001982",
+"concept": "- MONDO:0001982 | Niemann-Pick disease | syn: lipoid histiocytosis (classical phosphatide); Niemann-Pick disease with cholesterol esterification block; Niemann-Pick disease, subacute juvenile form; sphingomyelin/cholesterol lipidosis | ancestors: non-Langerhans cell histiocytosis, sphingolipidosis, histiocytosis, lysosomal lipid storage disorder | def: A group of inherited, severe metabolic disorders in which sphingomyelin accumulates in lysosomes in cells. The lysosomes normally transport material through and out of the cell.",
+"ko": "니만-픽병",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019254",
+"concept": "- MONDO:0019254 | inborn disorder of purine or pyrimidine metabolism | syn: inborn purine-pyrimidine metabolic disorder | ancestors: inborn errors of metabolism, hereditary disease, metabolic disease, disease of genetic or genomic mechanism",
+"ko": "퓨린 또는 피리미딘 대사의 선천성 장애",
+"alt": [
+"선천성 퓨린-피리미딘 대사 질환"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005893",
+"concept": "- MONDO:0005893 | pancreatic endocrine carcinoma | syn: carcinoma of endocrine pancreas; carcinoma, islet cell, malignant; endocrine pancreas carcinoma; high grade pancreatic neuroendocrine carcinoma | ancestors: neuroendocrine carcinoma, pancreatic neuroendocrine neoplasm, digestive system carcinoma, malignant pancreatic neoplasm | def: An aggressive, high-grade and poorly differentiated carcinoma with neuroendocrine differentiation that arises from the pancreas. The mitotic count is more than 20 per 10 HPF. According to the size of ...",
+"ko": "췌장 내분비암종",
+"alt": [
+"췌도세포암"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013968",
+"concept": "- MONDO:0013968 | PGM1-congenital disorder of glycosylation | syn: CDG syndrome type It; CDG-It; CDG1T; congenital disorder of glycosylation type 1t | ancestors: congenital disorder of glycosylation type I, familial dilated cardiomyopathy, disorder of protein N-glycosylation, congenital disorder of glycosylation",
+"ko": "PGM1 선천성 당화장애",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021511",
+"concept": "- MONDO:0021511 | benign neoplasm of adrenal gland | syn: adrenal gland benign neoplasm; benign adrenal gland neoplasm; benign adrenal gland tumor; benign adrenal gland tumour | ancestors: benign endocrine neoplasm, adrenal gland neoplasm, endocrine gland neoplasm, benign neoplasm | def: A benign neoplasm that involves the adrenal gland.",
+"ko": "부신 양성 신생물",
+"alt": [
+"부신 양성 종양"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013994",
+"concept": "- MONDO:0013994 | Joubert syndrome 20 | syn: JBTS20; Joubert syndrome 20; Joubert syndrome caused by mutation in TMEM231; Joubert syndrome type 20 | ancestors: Joubert syndrome with ocular defect, Joubert syndrome, syndromic disease, Joubert syndrome and related disorders | def: Any Joubert syndrome in which the cause of the disease is a mutation in the TMEM231 gene.",
+"ko": "주베르 증후군 20형",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011147",
+"concept": "- MONDO:0011147 | chromosome 18q deletion syndrome | syn: 18q deletion syndrome; 18Q syndrome; 18q-syndrome; chromosome 18q deletion syndrome | ancestors: syndromic disease, partial deletion of chromosome 18, disease by body system or component, syndrome caused by partial chromosomal deletion | def: A condition in which some or all of the cells of the body contain extra genetic material from chromosome 18. Clinical features of this condition may include the following: spina bifida, hearing loss, ...",
+"ko": "18q 결실 증후군",
+"alt": [
+"염색체 18q 결실 증후군"
+],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006981",
+"concept": "- MONDO:0006981 | subacute bacterial endocarditis | syn: SBE; Subacute bacterial endocarditis | ancestors: infective endocarditis, acute disease, endocarditis, infectious disease | def: Subacute inflammation of the endocardium. Streptococcus viridans is the usual etiologic agent of subacute bacterial endocarditis. The distinction between \\\"acute\\\" and \\\"subacute\\\" endocarditis has tr...",
+"ko": "아급성 세균성 심내막염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0100577",
+"concept": "- MONDO:0100577 | myoclonic epilepsy | syn: myoclonic epilepsy syndrome | ancestors: epilepsy syndrome, epilepsy, brain disorder, central nervous system disorder | def: A group of epilepsy syndromes in which myoclonic seizures are a prominent feature.",
+"ko": "근간대 뇌전증",
+"alt": [
+"근간대성 간질"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+}
+]

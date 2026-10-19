@@ -1,0 +1,232 @@
+[
+{
+"id": "MONDO:0006354",
+"concept": "- MONDO:0006354 | parathyroid hyperplasia | syn: hyperplasia of parathyroid; hyperplasia of the parathyroid; parathyroid gland hyperplasia; parathyroid hyperplasia | ancestors: parathyroid gland disorder, hyperplasia, endocrine system disorder, cancer or benign tumor | def: A hyperplasia that involves the parathyroid gland.",
+"ko": "부갑상샘 증식증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009223",
+"concept": "- MONDO:0009223 | hypogonadotropic hypogonadism 23 with or without anosmia | syn: 46,XY disorder of sex development due to LHB deficiency; 46,XY disorder of sex development due to luteinizing hormone subunit beta deficiency; 46,XY DSD due to LHB deficiency; 46,XY DSD due to luteinizing hormone subunit beta deficiency | ancestors: hypogonadotropic hypogonadism, Leydig cell hypoplasia, hypogonadism, hereditary disease | def: Any hypogonadotropic hypogonadism in which the cause of the disease is a mutation in the LHB gene.",
+"ko": "후각상실 동반 또는 비동반 저성선자극호르몬성 성선기능저하증 23형",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009319",
+"concept": "- MONDO:0009319 | pantothenate kinase-associated neurodegeneration | syn: Hallervorden-Spatz disease; Hallervorden-Spatz syndrome; NBIA1; neurodegeneration with brain iron accumulation 1 | ancestors: neurodegeneration with brain iron accumulation, iron metabolism disease, neuroaxonal dystrophy, movement disorder | def: Pantothenate kinase-associated neurodegeneration (PKAN) is the most common type of neurodegeneration with brain iron accumulation (NBIA), a rare neurodegenerative disorder characterized by progressive...",
+"ko": "판토텐산 인산화효소 관련 신경변성",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019542",
+"concept": "- MONDO:0019542 | acute liver failure | syn: acute hepatic failure; fulminant hepatic failure | ancestors: acute disease, liver failure, human disease, liver disorder | def: Rapid deterioration of liver function causing encephalopathy and coagulopathy. It results from damage to the liver parenchyma usually secondary to acetaminophen overdose or viral infections.",
+"ko": "급성 간부전",
+"alt": [
+"전격성 간부전"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020686",
+"concept": "- MONDO:0020686 | acute tonsillitis | syn: acute tonsillitis | ancestors: tonsillitis, acute disease, upper respiratory tract disorder, disorder of pharynx | def: An acute inflammation of the tonsils caused by viruses or bacteria. Signs and symptoms include fever, enlargement of the tonsils, difficulty swallowing, and enlargement of the regional lymph nodes.",
+"ko": "급성 편도염",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0000153",
+"concept": "- MONDO:0000153 | transposition of the great arteries | syn: complete transposition; great vessels transposition; TGA; TGV | ancestors: congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis | def: A congenital cardiac defect in which two heart vessels are reversed (transposed).",
+"ko": "대혈관전위",
+"alt": [
+"대동맥전위",
+"완전 대혈관전위"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004170",
+"concept": "- MONDO:0004170 | nodular episcleritis | ancestors: scleral disorder, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "결절성 상공막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000922",
+"concept": "- MONDO:0000922 | pelvic inflammatory disease | syn: pelvic inflammatory disease; PID | ancestors: female reproductive system disorder, inflammatory disease, reproductive system disorder, disease by developmental or physiological process | def: Pelvic inflammatory disease (PID) is an acute or chronic inflammation in the pelvic cavity. It is most commonly caused by sexually transmitted diseases, including chlamydia and gonorrhea that have asc...",
+"ko": "골반염",
+"alt": [
+"골반 염증성 질환"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004672",
+"concept": "- MONDO:0004672 | fasciolopsiasis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A small bowel infection that is caused by Fasciolopsis buski, which is endemic in the Far East and Southeast Asia, and which is transmitted via the consumption of raw or undercooked aquatic plants. Th...",
+"ko": "비대흡충증",
+"alt": [
+"장디스토마증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004918",
+"concept": "- MONDO:0004918 | central corneal ulcer | ancestors: corneal ulcer, keratitis, ulcer disease, corneal disorder",
+"ko": "중심 각막궤양",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0100577",
+"concept": "- MONDO:0100577 | myoclonic epilepsy | syn: myoclonic epilepsy syndrome | ancestors: epilepsy syndrome, epilepsy, brain disorder, central nervous system disorder | def: A group of epilepsy syndromes in which myoclonic seizures are a prominent feature.",
+"ko": "근간대 뇌전증",
+"alt": [
+"근간대성 간질"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0043283",
+"concept": "- MONDO:0043283 | silicosiderosis | syn: siderosilicosis; silicosiderosis | ancestors: silicosis, pneumoconiosis, interstitial lung disease, lung disorder",
+"ko": "규철침착증",
+"alt": [
+"규소철침착증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016537",
+"concept": "- MONDO:0016537 | lymphoproliferative syndrome | syn: lymphoproliferative disorder; lymphoproliferative syndrome | ancestors: inborn error of immunity, hereditary disease, immune system disorder, disease of genetic or genomic mechanism | def: A disorder characterized by proliferation of lymphocytes at various stages of differentiation. Lymphoproliferative disorders can be neoplastic (clonal, as in lymphomas and leukemias) or reactive (poly...",
+"ko": "림프증식 증후군",
+"alt": [
+"림프증식성 질환"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020153",
+"concept": "- MONDO:0020153 | cryptophthalmia | syn: cryptophthalmos | ancestors: eyelid disorder, eye adnexa disorder, eye disorder, disorder of orbital region | def: A congenital abnormality characterized by the presence of a continuous layer of skin extending over the eyeballs and the absence of eyelids and the palpebral fissure.",
+"ko": "은안증",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004223",
+"concept": "- MONDO:0004223 | polyp of middle ear | syn: middle Ear polyp; middle ear polyp; polyp of the middle ear | ancestors: polyp, neoplasm of middle ear, cancer or benign tumor, middle ear disorder | def: A benign polypoid growth in the middle ear.",
+"ko": "중이 용종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008234",
+"concept": "- MONDO:0008234 | multiple endocrine neoplasia type 2A | syn: MEA type 2a; MEA type II; men 2A; men type 2a | ancestors: autosomal dominant disease, multiple endocrine neoplasia type 2, autosomal genetic disease, thyroid gland carcinoma | def: An autosomal dominant tumor predisposition disorder caused by pathogenic variants in the RET gene, characterized by an increased risk of medullary thyroid carcinoma, pheochromocytoma, and hyperparathy...",
+"ko": "다발성 내분비샘종양 2A형",
+"alt": [
+"다발성 내분비선종증 2A형"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002239",
+"concept": "- MONDO:0002239 | post-surgical hypoinsulinemia | syn: postsurgical hypoinsulinemia | ancestors: endocrine pancreas disorder, pancreas disorder, digestive system disorder, endocrine system disorder",
+"ko": "수술 후 저인슐린혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000628",
+"concept": "- MONDO:0000628 | central nervous system organ benign neoplasm | syn: central nervous system benign neoplasm | ancestors: nervous system benign neoplasm, central nervous system neoplasm, benign neoplasm, nervous system neoplasm | def: A benign neoplasm that involves the central nervous system.",
+"ko": "중추신경계 양성 신생물",
+"alt": [
+"중추신경계 양성 종양"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0017850",
+"concept": "- MONDO:0017850 | sirenomelia | syn: symmelia | ancestors: familial caudal dysgenesis, hereditary disease, caudal regression-sirenomelia spectrum, disease of genetic or genomic mechanism | def: Sirenomelia is a rare, genetic, developmental defect during embryogenesis disorder characterized by fusion of the lower limbs and associated with some degree of lower extremity reduction and persisten...",
+"ko": "인어체증",
+"alt": [
+"시레노멜리아"
+],
+"organs": [
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008814",
+"concept": "- MONDO:0008814 | arginase deficiency | syn: arginase deficiency; Arginase-1 Deficiency; argininemia; hyperargininemia | ancestors: urea cycle disorder or inherited hyperammonemia, urea cycle disorder, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: Arginase deficiency is a rare autosomal recessive amino acid metabolism disorder characterized clinically by variable degrees of hyperammonemia, developing from about 3 years of age, and leading to pr...",
+"ko": "아르기나제 결핍증",
+"alt": [
+"고아르기닌혈증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+}
+]

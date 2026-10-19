@@ -1,0 +1,239 @@
+[
+{
+"id": "MONDO:0006742",
+"concept": "- MONDO:0006742 | endemic goiter | syn: iodine-deficiency-related endemic goiter; simple goiter | ancestors: goiter, nutritional deficiency disease, thyroid gland disorder, nutritional disorder | def: Thyroid gland enlargement caused by inadequate dietary iodine intake. It occurs in areas in which the soil lacks iodine compounds or there is low seafood consumption.",
+"ko": "풍토성 갑상선종",
+"alt": [
+"지방성 갑상선종"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0021322",
+"concept": "- MONDO:0021322 | malignant tumor of meninges | syn: cancer of meningeal cluster; cancer of meninges; cancer of the meninges; malignant meningeal cluster neoplasm | ancestors: central nervous system cancer, tumor of meninges, nervous system cancer, central nervous system neoplasm | def: A cancer that involves the meningeal cluster.",
+"ko": "수막 악성 종양",
+"alt": [
+"수막암"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004661",
+"concept": "- MONDO:0004661 | trachea carcinoma in situ | syn: carcinoma in situ of the trachea; carcinoma in situ of trachea; severe epithelial dysplasia of trachea; stage 0 trachea carcinoma | ancestors: trachea squamous cell carcinoma, squamous carcinoma in situ, trachea carcinoma, squamous cell carcinoma | def: A carcinoma that arises from the tracheal mucosa and is confined to the epithelial layer without evidence of further tissue invasion.",
+"ko": "기관 상피내암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004858",
+"concept": "- MONDO:0004858 | occlusion of gallbladder | syn: obstruction of gallbladder | ancestors: gallbladder disorder, hepatobiliary disorder, digestive system disorder, disease by body system or component | def: Blockage of the normal flow of the contents of the gallbladder.",
+"ko": "담낭 폐쇄",
+"alt": [
+"쓸개 폐색"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011996",
+"concept": "- MONDO:0011996 | chronic myeloid leukemia | syn: BCR-ABL Positive chronic myelogenous leukaemia; BCR-ABL Positive chronic myelogenous leukemia; chronic granulocytic leukemia; chronic myelocytic leukaemia | ancestors: myeloid leukemia, hereditary disorder of connective tissue, leukemia, myeloproliferative neoplasm | def: A chronic myeloproliferative neoplasm characterized by the expression of the BCR-ABL1 fusion gene. It presents with neutrophilic leukocytosis. It can appear at any age, but it mostly affects middle ag...",
+"ko": "만성 골수성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018020",
+"concept": "- MONDO:0018020 | mercury poisoning | syn: hydrargyria; mercurialism; Mercury intoxication | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Mercury poisoning is caused mainly through ingestion or inhalation of any of the 3 forms of mercury, elemental, organic, and inorganic. Exposure to elemental mercury affects the pulmonary (inhalation ...",
+"ko": "수은 중독",
+"alt": [],
+"organs": [
+"pulmonary",
+"renal",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001049",
+"concept": "- MONDO:0001049 | Dressler syndrome | syn: Dressler syndrome; Dressler's syndrome; postmyocardial infarction syndrome | ancestors: pericarditis, pericardium disorder, inflammatory disease, heart disorder | def: A pericarditis characterized by inflammation, occurring after injury, located in pericardium.",
+"ko": "드레슬러 증후군",
+"alt": [
+"심근경색후 증후군"
+],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007150",
+"concept": "- MONDO:0007150 | arcus senilis | syn: arcus of cornea; arcus senilis; corneal arcus | ancestors: corneal degeneration, hereditary disease, corneal disorder, disease of genetic or genomic mechanism | def: A corneal disease in which there is a deposition of phospholipid and cholesterol in the corneal stroma and anterior sclera.",
+"ko": "노인환",
+"alt": [
+"각막노인환"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002314",
+"concept": "- MONDO:0002314 | chronic conjunctivitis | syn: chronic conjunctivitis; chronic conjunctivitis (disease); chronic conjunctivitis, unspecified; conjunctivitis (disease), chronic | ancestors: conjunctivitis, conjunctival disorder, inflammatory disease, eye adnexa disorder | def: Conjunctivitis that is persistent and long-standing.",
+"ko": "만성 결막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020289",
+"concept": "- MONDO:0020289 | congenital tricuspid malformation | ancestors: tricuspid valve disorder, disorder of development or morphogenesis, heart valve disorder, disease by developmental or physiological process",
+"ko": "선천성 삼첨판 기형",
+"alt": [
+"선천성 삼첨판막 기형"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001600",
+"concept": "- MONDO:0001600 | mucocele of salivary gland | syn: mucous retention cyst of salivary gland; ranula; salivary cyst; salivary gland mucocele | ancestors: salivary gland disorder, mouth disorder, disease by body system or component, human disease | def: A benign cyst located in the salivary gland that is lined by epithelium and filled with mucoid fluid, tissue, or other material; it is usually caused by duct obstruction.",
+"ko": "침샘 점액류",
+"alt": [
+"하마종"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001979",
+"concept": "- MONDO:0001979 | dumping syndrome | syn: jejunal syndrome | ancestors: syndromic disease, postgastrectomy syndrome, disease by body system or component, functional gastric disease | def: A disorder of the gastrointestinal tract. It is typically caused by the rapid emptying of undigested food from the stomach to the small intestine following gastroesophageal surgery but may be seen sec...",
+"ko": "덤핑 증후군",
+"alt": [
+"급속배출 증후군"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002043",
+"concept": "- MONDO:0002043 | ectropion | syn: ectropion; ectropion (disease); ectropion of eyelid | ancestors: eyelid disorder, eye adnexa disorder, eye disorder, disorder of orbital region | def: The turning outward (eversion) of the edge of the eyelid, resulting in the exposure of the palpebral conjunctiva. (Dorland, 27th ed)",
+"ko": "눈꺼풀 바깥말림",
+"alt": [
+"안검외반"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0100286",
+"concept": "- MONDO:0100286 | respiratory syncytial virus bronchiolitis | syn: RSV bronchiolitis | ancestors: respiratory syncytial virus infectious disease, bronchiolitis, Mononegavirales infectious disease, viral respiratory tract infection | def: Bronciolitis caused by infection with respiratory syncytial virus.",
+"ko": "호흡기세포융합바이러스 세기관지염",
+"alt": [
+"RSV 세기관지염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0971092",
+"concept": "- MONDO:0971092 | soft and hard cleft palate | ancestors: cleft palate, orofacial cleft, developmental defect during embryogenesis, hereditary disease",
+"ko": "연구개 및 경구개 구개열",
+"alt": [
+"연구개경구개 열"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006999",
+"concept": "- MONDO:0006999 | tooth disorder | syn: calcareous tooth disease; calcareous tooth disease or disorder; dental disorder; disease of calcareous tooth | ancestors: skeletal system disorder, mouth disorder, musculoskeletal system disorder, disease by body system or component | def: A disease involving the calcareous tooth.",
+"ko": "치아 질환",
+"alt": [
+"치아 장애"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016044",
+"concept": "- MONDO:0016044 | cleft lip/palate | syn: alveolar cleft lip and palate; cleft lip and palate; cleft lip-alveolus-palate syndrome; FLP | ancestors: orofacial cleft, disorder of development or morphogenesis, hereditary disease, disorder of facial skeleton | def: Cleft lip and palate is a fissure type embryopathy extending across the upper lip, nasal base, alveolar ridge and the hard and soft palate.",
+"ko": "구순구개열",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009672",
+"concept": "- MONDO:0009672 | spinal muscular atrophy, type III | syn: Kugelberg Welander Syndrome; Kugelberg-Welander disease; SMA type 3; SMA type III | ancestors: proximal spinal muscular atrophy, spinal muscular atrophy, hereditary peripheral neuropathy, anterior horn disorder | def: Proximal spinal muscular atrophy type 3 (SMA3) is a relatively mild form of proximal spinal muscular atrophy characterized by muscle weakness and hypotonia resulting from the degeneration and loss of ...",
+"ko": "척수성 근위축증 3형",
+"alt": [
+"쿠겔베르크-벨란더병"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0006947",
+"concept": "- MONDO:0006947 | renovascular hypertension | syn: renovascular hypertension; renovascular hypertension (disease) | ancestors: renal hypertension, secondary hypertension, kidney disorder, hypertensive disorder | def: High blood pressure secondary to renal artery stenosis.",
+"ko": "신혈관성 고혈압",
+"alt": [
+"콩팥혈관성 고혈압"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006918",
+"concept": "- MONDO:0006918 | posterior uveitis | syn: chorioretinal region inflammation; inflammation of chorioretinal region | ancestors: uveitis, uveal disorder, inflammatory disease, eye disorder | def: Inflammation of the choroid as well as the retina and vitreous body. Some form of visual disturbance is usually present. The most important characteristics of posterior uveitis are vitreous opacities,...",
+"ko": "후포도막염",
+"alt": [
+"뒤쪽 포도막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+}
+]

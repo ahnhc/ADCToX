@@ -1,0 +1,230 @@
+[
+{
+"id": "MONDO:0001165",
+"concept": "- MONDO:0001165 | tongue disorder | syn: disease of tongue; disease or disorder of tongue; disorder of tongue; tongue disease | ancestors: mouth disorder, disease by body system or component, human disease, disease | def: A disease involving the tongue.",
+"ko": "혀 질환",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001367",
+"concept": "- MONDO:0001367 | chronic congestive splenomegaly | syn: congestive splenomegaly, chronic | ancestors: congestive splenomegaly, splenic disorder, hematologic disorder, lymphatic system disorder | def: Chronic form of congestive splenomegaly.",
+"ko": "만성 울혈성 비장비대",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005709",
+"concept": "- MONDO:0005709 | common cold | syn: acute nasopharyngitis; acute nasopharyngitis [common cold]; acute rhinitis | ancestors: nasopharyngitis, viral respiratory tract infection, nasopharyngeal disorder, inflammatory disease | def: An inflammatory process affecting the nasal mucosa, usually caused by viruses (e.g., rhinovirus, adenovirus, parainfluenza virus, and coronavirus). It is characterized by chills, headaches, mucopurule...",
+"ko": "감기",
+"alt": [
+"급성 비인두염",
+"일반감기"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006294",
+"concept": "- MONDO:0006294 | pleural cancer | syn: cancer of pleura; cancer of the pleura; malignant neoplasm of pleura; malignant neoplasm of the pleura | ancestors: respiratory system cancer, thoracic cancer, pleural neoplasm, cancer | def: A primary or metastatic malignant neoplasm affecting the pleura. A representative example of primary malignant pleural neoplasm is the malignant pleural mesothelioma. A representative example of metas...",
+"ko": "흉막암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001828",
+"concept": "- MONDO:0001828 | acquired color blindness | syn: acquired color vision deficiencies; acquired color vision deficiency; acquired color vision disorder; acquired colour vision disorder | ancestors: color vision disorder, vision disorder, disorder of visual system, disease by body system or component | def: Non-heritable difficulty in distinguishing colors.",
+"ko": "후천성 색각이상",
+"alt": [
+"후천성 색맹"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004830",
+"concept": "- MONDO:0004830 | fasciitis | syn: fascia inflammation; fasciitis; fasciitis (disease); Fascitis | ancestors: musculoskeletal system disorder, connective tissue disorder, inflammatory disease, disease by body system or component | def: Inflammation process in fascia.",
+"ko": "근막염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007921",
+"concept": "- MONDO:0007921 | yellow nail syndrome | syn: lymphedema with yellow nails; yellow nail syndrome; YNS | ancestors: syndromic disease, lymphatic malformation, disease by body system or component, hereditary disease | def: A very rare syndromic disorder characterized by the variable triad of characteristic yellow nails, chronic respiratory manifestations, and primary lymphedema.",
+"ko": "황색손발톱 증후군",
+"alt": [
+"노란손발톱 증후군"
+],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017941",
+"concept": "- MONDO:0017941 | chikungunya | syn: Chikungunya fever; Chikungunya virus caused disease or disorder; Chikungunya virus disease or disorder; Chikungunya virus infectious disease | ancestors: Alphavirus infectious disease, arbovirus fever, vector-borne disease, Togaviridae infectious disease | def: An infection that is caused by the Chikungunya virus, which is transmitted by mosquitoes; it is characterized by fever and severe arthralgia.",
+"ko": "치쿤구니야열",
+"alt": [
+"치쿤구니야 바이러스 감염증"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0043875",
+"concept": "- MONDO:0043875 | tumor lysis syndrome | syn: tumor lysis syndrome | ancestors: metabolic disease, neoplastic syndrome, disease by developmental or physiological process, syndromic disease | def: A condition of metabolic abnormalities that result from a spontaneous or therapy-related cytolysis of tumor cells. Tumor lysis syndrome typically occurs in aggressive, rapidly proliferating lymphoprol...",
+"ko": "종양 용해 증후군",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000396",
+"concept": "- MONDO:0000396 | spastic cerebral palsy | ancestors: cerebral palsy, palsy, cerebral cortex disorder, central nervous system disorder | def: A form of cerebral palsy wherein spasticity is the exclusive impairment present.",
+"ko": "경직형 뇌성마비",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001767",
+"concept": "- MONDO:0001767 | stenosis of lacrimal punctum | ancestors: lacrimal apparatus disorder, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "눈물점 협착",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001235",
+"concept": "- MONDO:0001235 | appendix cancer | syn: cancer of vermiform appendix; malignant appendix neoplasm; malignant appendix tumor; malignant appendix tumour | ancestors: appendiceal neoplasm, cecum cancer, cecal neoplasm, disorder of appendix | def: A malignant neoplasm involving the vermiform appendix",
+"ko": "충수암",
+"alt": [
+"충수의 악성 신생물"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020320",
+"concept": "- MONDO:0020320 | acute myeloblastic leukemia with maturation | syn: acute M2 myeloid leukaemia; acute M2 myeloid leukemia; acute myeloblastic leukaemia M2; acute myeloblastic leukemia M2 | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: An acute myeloid leukemia (AML) characterized by blasts with evidence of maturation to more mature neutrophils. (WHO, 2001)",
+"ko": "성숙을 동반한 급성 골수모구성 백혈병",
+"alt": [
+"급성 M2 골수성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021113",
+"concept": "- MONDO:0021113 | respiratory failure | syn: failure, respiratory; respiratory failure | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: The significant impairment of gas exchange within the lungs resulting in hypoxia, hypercarbia, or both, to the extent that organ tissue perfusion is severely compromised. Causes include chronic obstru...",
+"ko": "호흡부전",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0006948",
+"concept": "- MONDO:0006948 | retinal artery occlusion | ancestors: retinal vascular occlusion, retinal vascular disorder, vascular occlusion disorder, retinal disorder | def: An occlusion of the retinal artery.",
+"ko": "망막동맥 폐쇄",
+"alt": [
+"망막동맥 폐색"
+],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018087",
+"concept": "- MONDO:0018087 | viral hemorrhagic fever | syn: haemorrhagic fevers, viral; VHF; VHFs; viral haemorrhagic fever | ancestors: viral infectious disease, hemorrhagic fever, infectious disease, disease of primarily extrinsic mechanism | def: A viral infectious disease caused by RNA viruses in the Arenaviridae, Bunyaviridae, Filoviridae, or Flaviviridae family, and characterized by a severe multisystem syndrome, with damage to the vascular...",
+"ko": "바이러스성 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0021742",
+"concept": "- MONDO:0021742 | puerperal infection | ancestors: infectious disease, puerperal disorder, disease of primarily extrinsic mechanism, obstetric disorder | def: An infection occurring in puerperium, the period of 6-8 weeks after giving birth.",
+"ko": "산욕 감염",
+"alt": [
+"산욕열"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0004913",
+"concept": "- MONDO:0004913 | alternating esotropia | ancestors: esotropia, strabismus, ocular motility disease, cranial nerve neuropathy",
+"ko": "교대성 내사시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008485",
+"concept": "- MONDO:0008485 | sebocystomatosis | syn: Steatocystoma multiplex | ancestors: sebaceous gland disorder, hereditary skin disorder, disorder of pilosebaceous unit, skin disorder | def: Sebocystomatosis is characterized by multiple (100 to 2000) asymptomatic dermal cysts that usually occur on the sternal region, upper back, axillae and proximal parts of the extremities.",
+"ko": "피지낭종증",
+"alt": [
+"다발성 지방낭종"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019458",
+"concept": "- MONDO:0019458 | acute basophilic leukemia | syn: basophilic leukaemia; basophilic leukemia; leukaemia basophilic; leukemia basophilic | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: A rare acute myeloid leukemia in which the immature cells differentiate towards basophils.",
+"ko": "급성 호염기구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+}
+]

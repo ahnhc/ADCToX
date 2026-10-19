@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0044919",
+"concept": "- MONDO:0044919 | malignant renal pelvis neoplasm | syn: cancer of renal pelvis; malignant neoplasm of renal pelvis; malignant neoplasm of the renal pelvis; malignant renal pelvis neoplasm | ancestors: kidney cancer, renal pelvis neoplasm, malignant urinary system neoplasm, kidney neoplasm | def: A primary or metastatic malignant neoplasm that affects the renal pelvis.",
+"ko": "신우 악성 신생물",
+"alt": [
+"신우암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020654",
+"concept": "- MONDO:0020654 | renal pelvis/ureter urothelial carcinoma | syn: renal pelvis and ureter TCC; renal pelvis and ureter transitional cell cancer; renal pelvis and ureter transitional cell carcinoma; renal pelvis and ureter urothelial carcinoma | ancestors: urothelial carcinoma, malignant urinary system neoplasm, transitional cell carcinoma, urothelial neoplasm | def: A transitional cell carcinoma that arises from the renal pelvis and ureter.",
+"ko": "신우/요관 요로상피암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015795",
+"concept": "- MONDO:0015795 | undifferentiated embryonal sarcoma of the liver | syn: embryonal sarcoma of the liver; UES; undifferentiated sarcoma of the liver | ancestors: liver and intrahepatic bile duct neoplasm, endocrine gland neoplasm, hepatobiliary neoplasm, liver disorder | def: Embryonal sarcoma of the liver is a rare primary malignant hepatic neoplasm of childhood of mesenchymal origin. It can rarely occur in adults. It is characterized by abdominal mass, right upper quadra...",
+"ko": "간의 미분화 배아육종",
+"alt": [
+"간 배아육종"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0022825",
+"concept": "- MONDO:0022825 | congenital cystic eye | ancestors: syndromic disease, disease by body system or component, human disease, disease",
+"ko": "선천성 낭성 안구",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013789",
+"concept": "- MONDO:0013789 | DDOST-congenital disorder of glycosylation | syn: carbohydrate deficient glycoprotein syndrome type Ir; CDG syndrome type Ir; CDG-Ir; CDG1R | ancestors: congenital disorder of glycosylation type I, disorder of protein N-glycosylation, congenital disorder of glycosylation, glycoprotein metabolism disease | def: DDOST-CDG is a form of congenital disorders of N-linked glycosylation characterized by failure to thrive, developmental delay, hypotonia, strabismus and hepatic dysfunction. The disease is caused by m...",
+"ko": "DDOST 관련 선천성 당화 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009083",
+"concept": "- MONDO:0009083 | conductive deafness-malformed external ear syndrome | syn: conductive hearing loss-malformed external ear syndrome; Mengel-Konigsmark syndrome | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "전음성 난청-외이 기형 증후군",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007687",
+"concept": "- MONDO:0007687 | graying of hair, precocious | syn: graying of hair, precocious | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "조기 백발",
+"alt": [
+"조기 흰머리"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0019471",
+"concept": "- MONDO:0019471 | adult T-cell leukemia/lymphoma | syn: adult T-cell leukaemia; adult T-cell leukemia; adult T-cell leukemia/lymphoma; ATLL | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, adult lymphoma, T-cell leukemia, human T-lymphotropic virus 1 infectious disease | def: A peripheral (mature) T-cell neoplasm linked to the human T-cell leukemia virus type 1 (HTLV-1), adult T-cell leukemia/lymphoma is endemic in several regions of the world, in particular Japan, the Car...",
+"ko": "성인 T세포 백혈병/림프종",
+"alt": [
+"성인 T세포 백혈병"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002471",
+"concept": "- MONDO:0002471 | bursitis | syn: inflammation of synovial bursa; synovial bursa inflammation | ancestors: arthropathy, inflammatory disease, synovial bursa disorder, skeletal system disorder | def: Inflammation or irritation of a synovial bursa, the fibrous sac that acts as a cushion between moving structures of bones, muscles, tendons or skin.",
+"ko": "윤활주머니염",
+"alt": [
+"점액낭염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0004223",
+"concept": "- MONDO:0004223 | polyp of middle ear | syn: middle Ear polyp; middle ear polyp; polyp of the middle ear | ancestors: polyp, neoplasm of middle ear, cancer or benign tumor, middle ear disorder | def: A benign polypoid growth in the middle ear.",
+"ko": "중이 용종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009032",
+"concept": "- MONDO:0009032 | cranioectodermal dysplasia | syn: CED; cranioectodermal dysplasia; Sensenbrenner syndrome | ancestors: craniosynostosis syndrome, autosomal recessive, syndromic craniosynostosis, short rib-polydactyly syndrome, inherited renal tubular disease | def: Cranioectodermal dysplasia (CED) is a rare developmental disorder characterized by congenital skeletal and ectodermal defects associated with dysmorphic features, nephronophthisis, hepatic fibrosis an...",
+"ko": "두개외배엽 이형성증",
+"alt": [
+"센센브레너 증후군"
+],
+"organs": [
+"hepatic",
+"renal",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010416",
+"concept": "- MONDO:0010416 | deafness, cataract, retinitis pigmentosa, and sperm abnormalities | syn: deafness, cataract, retinitis pigmentosa, and sperm abnormalities; deafness, cataract, retinitis pigmentosa, and sperm abnormalities, X-linked recessive | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "난청, 백내장, 망막색소변성 및 정자 이상",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010895",
+"concept": "- MONDO:0010895 | ABCD syndrome | syn: ABCD syndrome; albinism, block lock, cell migration disorder of the neurocytes of the gut, and deafness | ancestors: autosomal recessive disease, autosomal genetic disease, hereditary disease, disease of genetic or genomic mechanism | def: An autosomal recessive disease that is characterized by albinism, black lock, cell migration disorder of the neurocytes of the gut and sensorineural deafness and has material basis in a mutation in th...",
+"ko": "ABCD 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017885",
+"concept": "- MONDO:0017885 | chromophobe renal cell carcinoma | syn: chromophobe adenocarcinoma; chromophobe carcinoma; chromophobe carcinoma of kidney; chromophobe carcinoma of the kidney | ancestors: renal cell adenocarcinoma, renal cell carcinoma, adenocarcinoma, renal carcinoma | def: Chromophobe renal cell carcinoma is a rare subtype of renal cell carcinoma, originating from the intercalating cells of the collecting ducts and macroscopically manifesting as a well-circumscribed, hi...",
+"ko": "혐색소성 신세포암",
+"alt": [
+"혐색소성 신세포암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000984",
+"concept": "- MONDO:0000984 | thalassemia | syn: sickle-cell thalassemia with crisis; sickle-cell thalassemia without crisis | ancestors: inherited hemoglobinopathy, hereditary disease, hemoglobinopathy, disease of genetic or genomic mechanism | def: An inherited blood disorder characterized by a decreased synthesis of one of the polypeptide chains that form hemoglobin. Anemia results from this abnormal hemoglobin formation.",
+"ko": "지중해빈혈",
+"alt": [
+"탈라세미아"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0001798",
+"concept": "- MONDO:0001798 | hypermobility syndrome | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component",
+"ko": "관절 과운동성 증후군",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019433",
+"concept": "- MONDO:0019433 | oligoarticular juvenile idiopathic arthritis | syn: Oligoarticular JIA; Pauciarticular chronic arthritis; Pauciarticular JIA; Pauciarticular juvenile idiopathic arthritis | ancestors: juvenile idiopathic arthritis, rheumatic disorder, arthritic joint disease, idiopathic disease | def: Oligoarticular juvenile arthritis is the most common form of juvenile idiopathic arthritis (JIA), representing nearly 50% of cases.",
+"ko": "소수관절형 소아 특발성 관절염",
+"alt": [
+"소관절형 소아 특발성 관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001674",
+"concept": "- MONDO:0001674 | diverticulitis of colon | syn: colon diverticulitis | ancestors: colonic disorder, diverticulitis, large intestine disorder, intestinal disorder | def: Inflammation of the colonic diverticula, generally with abscess formation and subsequent perforation.",
+"ko": "대장 게실염",
+"alt": [
+"결장 게실염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001562",
+"concept": "- MONDO:0001562 | displacement of cardia through esophageal hiatus | syn: congenital hiatus hernia | ancestors: hiatus hernia, stomach disorder, digestive system disorder, disease by body system or component",
+"ko": "식도열공을 통한 분문 전위",
+"alt": [
+"선천성 열공탈장"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0011628",
+"concept": "- MONDO:0011628 | propionic acidemia | syn: GLYCINEMIA, ketotic; ketotic hyperglycinemia; propionic acidemia; propionic aciduria | ancestors: classic organic aciduria, inborn organic aciduria, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: An organic aciduria caused by the deficient activity of the propionyl Coenzyme A carboxylase and is characterized by life threatening episodes of metabolic decompensation, neurological dysfunction and...",
+"ko": "프로피온산혈증",
+"alt": [
+"케톤성 고글리신혈증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+}
+]

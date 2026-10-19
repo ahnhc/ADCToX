@@ -1,0 +1,265 @@
+[
+{
+"id": "MONDO:0009267",
+"concept": "- MONDO:0009267 | Gaucher disease type III | syn: cerebral juvenile and adult form of Gaucher disease; chronic neuronopathic Gaucher disease; Gaucher disease type III; Gaucher disease, chronic neuronopathic type | ancestors: Gaucher disease, eye disorder, sphingolipidosis, disorder of orbital region | def: Gaucher disease type 3 is the subacute neurological form of Gaucher disease (GD) characterized by progressive encephalopathy and associated with the systemic manifestations (organomegaly, bone involve...",
+"ko": "고셰병 3형",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007130",
+"concept": "- MONDO:0007130 | congenital total pulmonary venous return anomaly | syn: TAPVR; total anomalous pulmonary venous return | ancestors: congenital pulmonary venous return anomaly, congenital pulmonary veins anomaly, congenital heart disease, heart disorder | def: Total pulmonary venous return (TAPVR) is a form of congenital pulmonary venous return where all of the pulmonary veins drain into the right atrium or one of its tributaries, instead of the left atrium...",
+"ko": "선천성 총폐정맥 환류 이상",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0014158",
+"concept": "- MONDO:0014158 | nephronophthisis 16 | syn: ANKS6 nephronophthisis (disease); nephronophthisis (disease) caused by mutation in ANKS6; nephronophthisis 16; nephronophthisis type 16 | ancestors: nephronophthisis, autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease | def: Any nephronophthisis in which the cause of the disease is a mutation in the ANKS6 gene.",
+"ko": "네프로노프티시스 16형",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021084",
+"concept": "- MONDO:0021084 | vision disorder | syn: disorder of vision; vision disorder; visual disorder | ancestors: disorder of visual system, disease by body system or component, human disease, disease | def: Any impairment to the vision.",
+"ko": "시각 장애",
+"alt": [
+"시력 장애"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0015260",
+"concept": "- MONDO:0015260 | diphyllobothriasis | syn: Bothriocephalosis; Diphyllobothrium caused disease or disorder; Diphyllobothrium disease or disorder; Diphyllobothrium infection | ancestors: Cestode infectious disease, helminthiasis, parasitic infectious disease, infectious disease | def: Bothriocephalosis is a mammalian cosmopolitan intestinal parasitosis. In addition to non-specific digestive problems (nausea, abdominal pain, lack of appetite), bothriocephalosis provokes an anemia ca...",
+"ko": "긴촌충증",
+"alt": [
+"열두조충증",
+"광절열두조충증"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007017",
+"concept": "- MONDO:0007017 | vitreous detachment | syn: detachment Of vitreous; vitreous, detachment Of | ancestors: vitreous disorder, inherited vitreoretinopathy, vitreous body disorder, retinal disorder | def: Detachment of the vitreous humor from the retina.",
+"ko": "유리체 박리",
+"alt": [
+"후유리체박리"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001060",
+"concept": "- MONDO:0001060 | microinvasive gastric cancer | syn: early gastric cancer; EGC; superficial gastric cancer; superficial spreading gastric cancer | ancestors: gastric adenocarcinoma, gastric carcinoma, adenocarcinoma, gastric cancer | def: An invasive adenocarcinoma confined to the mucosa or mucosa and submucosa of the gastric wall. The regional lymph nodes may or may not be involved. It usually occurs in the lesser curvature. The 5-yea...",
+"ko": "미세침윤 위암",
+"alt": [
+"조기 위암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0019640",
+"concept": "- MONDO:0019640 | posterior urethral valve | syn: congenital posterior urethral valves; Posterior Urethral Valves; PUV | ancestors: fetal lower urinary tract obstruction, kidney disorder, urogenital tract malformation, urinary system disorder | def: Posterior urethral valve (PUV) is the most common anomaly of fetal lower urinary tract obstruction (LUTO) and is characterized by an abnormal congenital obstructing membrane that is located within the...",
+"ko": "후부요도판막",
+"alt": [
+"선천성 후부요도판막"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004733",
+"concept": "- MONDO:0004733 | pyriform sinus cancer | syn: malignant neoplasm of pyriform fossa; malignant neoplasm of pyriform sinus; malignant neoplasm of the pyriform fossa; malignant neoplasm of the pyriform sinus | ancestors: hypopharynx cancer, pharynx cancer, neoplasm of hypopharynx, respiratory system cancer | def: A primary or metastatic malignant neoplasm that affects the pyriform sinus.",
+"ko": "이상와암",
+"alt": [
+"조롱박오목암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009475",
+"concept": "- MONDO:0009475 | isovaleric acidemia | syn: isovaleric acid CoA dehydrogenase deficiency; isovaleric acidemia; Isovalericacidemia; isovaleryl-CoA dehydrogenase deficiency | ancestors: classic organic aciduria, inborn organic aciduria, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: Isovaleric acidemia (IVA) is an autosomal recessively inherited organic aciduria characterized by a deficiency in isovaleryl-CoA dehydrogenase, that has wide clinical variability and that can present ...",
+"ko": "이소발레르산혈증",
+"alt": [
+"이소발레릴-CoA 탈수소효소 결핍증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005888",
+"concept": "- MONDO:0005888 | ornithosis | syn: psittacosis | ancestors: primary bacterial infectious disease, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Disease caused by the Chlamydophila psittaci bacteria, usually transmitted from birds to humans.",
+"ko": "앵무병",
+"alt": [
+"조류병"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006527",
+"concept": "- MONDO:0006527 | anhidrosis | ancestors: sweat gland disorder, skin disorder, integumentary system disorder, disease by body system or component | def: Lack of sweating or the ability to sweat when provoked by the appropriate stimulus.",
+"ko": "무한증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011963",
+"concept": "- MONDO:0011963 | Joubert syndrome 2 | syn: cerebellooculorenal syndrome 2; CORS2; JBTS2; Joubert syndrome 2 | ancestors: Joubert syndrome with oculorenal defect, Joubert syndrome, syndromic disease, Joubert syndrome and related disorders | def: Any Joubert syndrome in which the cause of the disease is a mutation in the TMEM216 gene.",
+"ko": "주베르 증후군 2형",
+"alt": [
+"소뇌안구신장 증후군 2형"
+],
+"organs": [
+"renal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013772",
+"concept": "- MONDO:0013772 | Huppke-Brendel syndrome | syn: acetyl CoA transporter deficiency; congenital cataract-deafness-severe developmental delay syndrome; congenital cataracts, hearing loss, and neurodegeneration; Huppke-Brendel syndrome | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "훕케-브렌델 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010263",
+"concept": "- MONDO:0010263 | Alport syndrome-intellectual disability-midface hypoplasia-elliptocytosis syndrome | syn: AMME complex; AMME syndrome; ATS-MR | ancestors: syndromic disease, disease by body system or component, human disease, disease",
+"ko": "알포트 증후군-지적장애-얼굴중앙 저형성-타원적혈구증 증후군",
+"alt": [
+"AMME 증후군"
+],
+"organs": [
+"haematologic",
+"renal",
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010622",
+"concept": "- MONDO:0010622 | recessive X-linked ichthyosis | syn: ichthyosis (disease), X-linked; ichthyosis , X-linked, X-linked recessive; Ichthyosis, X Linked; recessive X-linked ichthyosis | ancestors: inherited ichthyosis, sterol metabolism disorder, X-linked recessive disease, ichthyosis | def: A genodermatosis belonging to the Mendelian Disorders of Cornification (MeDOC) and characterized by generalized hyperkeratosis and scaling of the skin.",
+"ko": "열성 X연관 어린선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008090",
+"concept": "- MONDO:0008090 | cyclic neutropenia | syn: CH; CN; cyclic agranulocytosis; cyclic hematopoiesis | ancestors: constitutional neutropenia, ELANE-related neutropenia, severe chronic neutropenia, neutropenia | def: A hematologic disorder caused by a mutation in the ELANE (ELA2) gene, characterized by regular 21-day cyclic fluctuations in the number of blood neutrophils, monocytes, eosinophils, lymphocytes, plate...",
+"ko": "주기성 호중구감소증",
+"alt": [
+"주기성 백혈구감소증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007837",
+"concept": "- MONDO:0007837 | Johnson neuroectodermal syndrome | syn: alopecia-anosmia-conductive hearing loss-hypogonadism syndrome; alopecia-anosmia-deafness-hypogonadism syndrome; Johnson neuroectodermal syndrome; Johnson-McMillin syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome-intellectual disability, ectodermal dysplasia syndrome, multiple congenital anomalies/dysmorphic syndrome, syndromic disease | def: Johnson neuroectodermal syndrome is characterized by alopecia, anosmia or hyposmia, conductive deafness with malformed ears and microtia and/or atresia of the external auditory canal, and hypogonadotr...",
+"ko": "존슨 신경외배엽 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006567",
+"concept": "- MONDO:0006567 | kernicterus due to isoimmunization | syn: kernicterus - due to isoimm.; kernicterus due to isoimmunization of fetus or newborn; kernicterus due to isoimmunization of foetus or newborn; kernicterus related to isoimmunization | ancestors: neonatal anemia, bilirubin encephalopathy, anemia, brain disorder | def: Encephalopathy in infants due to high levels of unconjugated bilirubin that are a result of Rh incompatibility between the mother and the fetus.",
+"ko": "동종면역에 의한 핵황달",
+"alt": [],
+"organs": [
+"haematologic",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:1010112",
+"concept": "- MONDO:1010112 | isolated short stature | ancestors: disorder of development or morphogenesis, disease by developmental or physiological process, human disease, disease | def: A disease characterized by the height of an individual two standard deviations below the corresponding mean height for a given age, sex and population group with no known cause.",
+"ko": "특발성 저신장",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+}
+]

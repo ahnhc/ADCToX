@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0014381",
+"concept": "- MONDO:0014381 | cholestasis, progressive familial intrahepatic, 4 | syn: cholestasis, progressive familial intrahepatic, 4; cholestasis, progressive familial intrahepatic, type 4; PFIC4; progressive familial intrahepatic cholestasis caused by mutation in TJP2 | ancestors: progressive familial intrahepatic cholestasis, syndromic disease, familial intrahepatic cholestasis, inborn disorder of bilirubin metabolism | def: Any progressive familial intrahepatic cholestasis in which the cause of the disease is a mutation in the TJP2 gene.",
+"ko": "진행성 가족성 간내 담즙정체증 4형",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012155",
+"concept": "- MONDO:0012155 | choanal atresia | syn: atresia of nares | ancestors: nasal cavity disorder, hereditary otorhinolaryngologic disease, nasal disorder, upper respiratory tract disorder | def: Choanal atresia (CA) is a congenital anomaly of the posterior nasal airway characterized by the obstruction of one (unilateral) or both (bilateral) choanal aperture(s), with clinical manifestations ra...",
+"ko": "후비공 폐쇄증",
+"alt": [
+"후비공 폐쇄"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019632",
+"concept": "- MONDO:0019632 | Lyme disease | syn: Borrelia; Borrelia burgdorferi infection; Borreliella burgdorferi caused disease or disorder; Borreliella burgdorferi disease or disorder | ancestors: primary bacterial infectious disease, spirochaetales infections, tick-borne infectious disease, bacterial infectious disease | def: Lyme disease (named after the towns in the USA where the disease was first identified) is a bacterial infection caused by Borrelia burgdorferi.",
+"ko": "라임병",
+"alt": [
+"라임 보렐리아증"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0043475",
+"concept": "- MONDO:0043475 | Adams-Stokes syndrome | syn: Stokes-Adams syndrome | ancestors: syndromic disease, atrioventricular dissociation, disease by body system or component, cardiac conduction defect | def: An episode of sudden and transient loss of consciousness sometimes associated with seizures. It is caused by a sudden decrease of the cardiac output that results from a sudden cardiac dysrhythmia. Typ...",
+"ko": "아담스-스톡스 증후군",
+"alt": [
+"스톡스-아담스 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001628",
+"concept": "- MONDO:0001628 | tinea unguium | syn: dermatophytic onychia; dermatophytosis of nail; nail dermatophytosis; onychomycosis | ancestors: dermatophytosis, nail infection, tinea infection, superficial mycosis | def: A fungal infection of the nail, usually caused by dermatophytes; yeasts; or nondermatophyte molds.",
+"ko": "조갑백선",
+"alt": [
+"손발톱무좀"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0001167",
+"concept": "- MONDO:0001167 | spastic diplegia | syn: diplegic infantile cerebral palsy; Little disease; Little's disease | ancestors: spastic cerebral palsy, cerebral palsy, palsy, cerebral cortex disorder | def: A type of cerebral palsy characterized by spasticity and hypertonia of the lower extremities bilaterally, particularly the legs, hips, and pelvis; this is the most common (70%) form of cerebral palsy.",
+"ko": "경직성 양측마비",
+"alt": [
+"리틀병"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020863",
+"concept": "- MONDO:0020863 | laryngeal diphtheria | syn: laryngeal diphtheria | ancestors: laryngeal disorder, diphtheria, respiratory tract infectious disorder, upper respiratory tract disorder | def: Infection of the larynx by Corynebacterium diphtheriae.",
+"ko": "후두 디프테리아",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0011429",
+"concept": "- MONDO:0011429 | juvenile idiopathic arthritis | syn: JIA; Juvenile idiopathic arthritis; juvenile idiopathic arthritis; juvenile rheumatoid arthritis | ancestors: rheumatic disorder, arthritic joint disease, idiopathic disease, connective tissue disorder | def: Juvenile idiopathic arthritis (JIA) is the term used to describe a group of inflammatory articular disorders of unknown cause that begin before the age of 16 and last over 6 weeks. The term juvenile i...",
+"ko": "소아 특발성 관절염",
+"alt": [
+"청소년 특발성 관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 11,
+"new": false
+},
+{
+"id": "MONDO:0021205",
+"concept": "- MONDO:0021205 | disorder of ear | syn: disease of ear; disease or disorder of ear; disorder of ear; Ear disease | ancestors: otorhinolaryngologic disease, disease by body system or component, human disease, disease | def: A disease that involves the ear.",
+"ko": "귀 질환",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000921",
+"concept": "- MONDO:0000921 | ampulla of vater neoplasm | syn: ampulla of Vater tumor; ampulla of Vater tumour; hepatopancreatic ampulla neoplasm; hepatopancreatic ampulla neoplasm (disease) | ancestors: common bile duct neoplasm, tumor of duodenum, common bile duct disorder, extrahepatic bile duct neoplasm | def: A benign or malignant neoplasm involving the ampulla of Vater.",
+"ko": "바터팽대부 신생물",
+"alt": [
+"바터팽대부 종양"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0100347",
+"concept": "- MONDO:0100347 | carcinoid syndrome | syn: carcinoid syndrome; malignant carcinoid syndrome | ancestors: syndromic disease, disease by body system or component, human disease, disease",
+"ko": "카르시노이드 증후군",
+"alt": [
+"악성 카르시노이드 증후군"
+],
+"organs": [
+"cardiovascular",
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019665",
+"concept": "- MONDO:0019665 | monostotic fibrous dysplasia | syn: Jaffe-Lichtenstein disease; monostotic fibrous dysplasia; monostotic fibrous dysplasia (disease); monostotic fibrous dysplasia of bone | ancestors: fibrous dysplasia, bone remodeling disease, fibrous dysplasia/McCune-Albright syndrome, bone disorder | def: Fibrous dysplasia of bone involving only one bone.",
+"ko": "단골성 섬유성 이형성증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0000708",
+"concept": "- MONDO:0000708 | Crohn jejunoileitis | ancestors: Crohn ileitis, Crohn jejunitis, small bowel Crohn disease, Crohn disease",
+"ko": "크론 공장회장염",
+"alt": [
+"크론 공회장염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017444",
+"concept": "- MONDO:0017444 | congenital absence of both lower leg and foot | syn: tibiofibular terminal transverse meromelia | ancestors: skeletal dysplasia, dysostosis, hereditary disease, bone disorder",
+"ko": "하퇴 및 발 동시 선천성 결손",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008599",
+"concept": "- MONDO:0008599 | trigeminal neuralgia | syn: neuralgia of trigeminal nerve; trigeminal nerve neuralgia; trigeminal neuralgia | ancestors: central nervous system disorder, trigeminal nerve disorder, cranial neuralgia, nervous system disorder | def: Trigeminal neuralgia is a nerve disorder that causes a stabbing or electric-shock-like pain in parts of the face. The pain lasts a few seconds to a few minutes, and usually on only one side of the fac...",
+"ko": "삼차신경통",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0024487",
+"concept": "- MONDO:0024487 | nail infection | syn: nail infection | ancestors: nail disorder, infectious disease, integumentary system disorder, disease of primarily extrinsic mechanism | def: An infectious process affecting the nail.",
+"ko": "손발톱 감염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0012575",
+"concept": "- MONDO:0012575 | branchiootorenal syndrome 2 | syn: branchio-oto-renal syndrome caused by mutation in SIX5; branchiootorenal syndrome 2; branchiootorenal syndrome type 2; SIX5 branchio-oto-renal syndrome | ancestors: branchio-oto-renal syndrome, autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability | def: Any branchio-oto-renal syndrome in which the cause of the disease is a mutation in the SIX5 gene.",
+"ko": "새이신 증후군 2형",
+"alt": [
+"SIX5 관련 새이신 증후군",
+"BOR 증후군 2형"
+],
+"organs": [
+"renal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0100240",
+"concept": "- MONDO:0100240 | inherited thrombophilia | syn: hereditary hypercoagulable disorder; hereditary thrombophilia; thrombophilia, hereditary | ancestors: thrombophilia, inherited blood coagulation disorder, blood coagulation disease, hereditary disease | def: An instance of thrombophilia that is inherited.",
+"ko": "유전성 혈전성향증",
+"alt": [
+"유전성 혈전증 소인"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001591",
+"concept": "- MONDO:0001591 | senile entropion | ancestors: entropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "노인성 안검내반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006643",
+"concept": "- MONDO:0006643 | alcoholic cardiomyopathy | syn: alcoholic cardiomyopathy | ancestors: extrinsic cardiomyopathy, alcohol-induced disorders, cardiomyopathy, alcohol-related disorders | def: A dilated cardiomyopathy which is associated with consumption of large amounts of alcohol over a period of years.",
+"ko": "알코올성 심근병증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+}
+]

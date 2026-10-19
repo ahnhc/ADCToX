@@ -1,0 +1,232 @@
+[
+{
+"id": "MONDO:0005124",
+"concept": "- MONDO:0005124 | leprosy | syn: Hansen disease; Hansen's disease; Mycobacterium leprae caused disease or disorder; Mycobacterium leprae disease or disorder | ancestors: primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease, infectious disease | def: Leprosy is a chronic infectious disease affecting primarily the skin and peripheral nervous system.",
+"ko": "나병",
+"alt": [
+"한센병"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0011628",
+"concept": "- MONDO:0011628 | propionic acidemia | syn: GLYCINEMIA, ketotic; ketotic hyperglycinemia; propionic acidemia; propionic aciduria | ancestors: classic organic aciduria, inborn organic aciduria, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: An organic aciduria caused by the deficient activity of the propionyl Coenzyme A carboxylase and is characterized by life threatening episodes of metabolic decompensation, neurological dysfunction and...",
+"ko": "프로피온산혈증",
+"alt": [
+"케톤성 고글리신혈증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004730",
+"concept": "- MONDO:0004730 | speech disorder | syn: speech impediment or impairment | ancestors: communication disorder, specific developmental disorder, developmental disorder of mental health, mental disorder | def: A term referring to disorders characterized by the disruption of normal speech. It includes stuttering, lisps, dysarthria and voice disorders.",
+"ko": "말장애",
+"alt": [
+"발화장애",
+"언어장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010920",
+"concept": "- MONDO:0010920 | microtia | syn: congenital microtias; M-A; microtia, congenital; microtia-anotia | ancestors: developmental defect during embryogenesis, otorhinolaryngologic disease, disorder of development or morphogenesis, disease by body system or component | def: A congenital malformation of the external ear, seen more frequently in males, that occurs sporadically or is inherited, that is characterized by unilateral (79-93% of cases, 60% of which involve the r...",
+"ko": "소이증",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019349",
+"concept": "- MONDO:0019349 | Sotos syndrome | syn: cerebral gigantism; cerebral gigantism syndrome; chromosome 5q35 deletion syndrome; NSD1 Sotos syndrome | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, partial deletion of the long arm of chromosome 5, skeletal dysplasia | def: Sotos syndrome is a rare multisystemic genetic disorder characterized by a typical facial appearance, overgrowth of the body in early life with macrocephaly, and mild to severe intellectual disability...",
+"ko": "소토스 증후군",
+"alt": [
+"뇌성 거인증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001174",
+"concept": "- MONDO:0001174 | conjunctival vascular disorder | syn: conjunctival vascular disorder; conjunctival vasculature disease; conjunctival vasculature disease or disorder; disease of conjunctival vasculature | ancestors: ocular vascular disorder, conjunctival disorder, eye disorder, vascular disorder | def: A disorder of the vasculature of the cornea.",
+"ko": "결막 혈관 질환",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0007899",
+"concept": "- MONDO:0007899 | lichen sclerosus et atrophicus | syn: lichen sclerosus et atrophicus | ancestors: dermatitis, hereditary skin disorder, skin disorder, inflammatory disease | def: A chronic inflammatory process affecting the skin. It is characterized by the presence of white, indurated plaques, epidermal atrophy, and fibrosis of the upper dermis. It usually appears in the vulva...",
+"ko": "경화위축태선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016391",
+"concept": "- MONDO:0016391 | neonatal diabetes mellitus | syn: congenital diabetes mellitus; diabetes mellitus syndrome in newborn infant; NDM | ancestors: monogenic diabetes, diabetes mellitus, inborn errors of metabolism, endocrine pancreas disorder | def: Neonatal diabetes mellitus presents as hyperglycemia, failure to thrive and, in some cases, dehydration and ketoacidosis which may be severe with coma, in a child within the first months of life.",
+"ko": "신생아 당뇨병",
+"alt": [
+"선천성 당뇨병"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019470",
+"concept": "- MONDO:0019470 | aggressive NK-cell leukemia | syn: aggressive NK-cell leukaemia (morphologic abnormality); aggressive NK-cell leukemia; aggressive NK-cell leukemia (morphologic abnormality); aggressive NK-cell leukemia/lymphoma | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, chronic leukemia, T lymphoblastic leukemia/lymphoma, T-cell acute lymphoblastic leukemia | def: A rare, highly aggressive, Epstein-Barr virus-associated leukemia, also known as aggressive NK-cell leukemia/lymphoma; it may represent the leukemic counterpart of nasal type extranodal NK/T-cell lymp...",
+"ko": "공격성 NK세포 백혈병",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007088",
+"concept": "- MONDO:0007088 | Alzheimer disease type 1 | syn: AD1; Alzheimer disease 1, familial; Alzheimer disease, familial, 1 | ancestors: early-onset autosomal dominant Alzheimer disease, APP-related brain and vascular amyloidosis, autosomal dominant disease, familial Alzheimer disease",
+"ko": "알츠하이머병 1형",
+"alt": [
+"가족성 알츠하이머병 1"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020500",
+"concept": "- MONDO:0020500 | Marburg hemorrhagic fever | syn: Green monkey disease; Marburg disease; Marburg virus disease; MHF | ancestors: Filoviridae infectious disease, viral hemorrhagic fever, Mononegavirales infectious disease, viral infectious disease | def: Marburg hemorrhagic fever (MHF), caused by Marburg virus, is a severe viral hemorrhagic disease characterized by initial fever and malaise followed by gastrointestinal symptoms, bleeding, shock, and m...",
+"ko": "마르부르크 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003004",
+"concept": "- MONDO:0003004 | macular degeneration | syn: macula lutea retinal degeneration; macula retinal degeneration; retinal degeneration of macula lutea | ancestors: retinal degeneration, retinal disorder, nervous system disorder, eye disorder | def: Loss of vision in the central portion of the retina (macula), secondary to retinal degeneration.",
+"ko": "황반변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0009723",
+"concept": "- MONDO:0009723 | Leigh syndrome | syn: infantile subacute necrotizing encephalopathy; Leigh disease; Leigh syndrome; Leigh syndrome spectrum | ancestors: mitochondrial oxidative phosphorylation disorder, hereditary peripheral neuropathy, inborn mitochondrial metabolism disorder, peripheral neuropathy | def: A progressive neurological disease defined by specific neuropathological features associating brainstem and basal ganglia lesions.",
+"ko": "리 증후군",
+"alt": [
+"리병",
+"영아 아급성 괴사성 뇌병증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0016344",
+"concept": "- MONDO:0016344 | hydranencephaly | syn: hydranencephaly; hydranencephaly (disease) | ancestors: anencephaly, encephaloclastic disorder, congenital nervous system disorder, hereditary neurological disease | def: A rare congenital brain disorder in which the cerebral hemispheres are absent and replaced by sacs that contain cerebrospinal fluid. Signs and symptoms include irritability, increased muscle tone, sei...",
+"ko": "수두무뇌증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017689",
+"concept": "- MONDO:0017689 | disorder of fructose metabolism | ancestors: inborn carbohydrate metabolic disorder, inborn errors of metabolism, carbohydrate metabolism disease, hereditary disease",
+"ko": "과당 대사 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001466",
+"concept": "- MONDO:0001466 | punctate epithelial keratoconjunctivitis | syn: punctate keratitis | ancestors: superficial keratitis, keratoconjunctivitis, keratitis, conjunctivitis",
+"ko": "점상 상피성 각결막염",
+"alt": [
+"점상 각막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000467",
+"concept": "- MONDO:0000467 | second-degree atrioventricular block | syn: atrioventricular block second degree; atrioventricular block, second degree; AV block second degree; second degree atrioventricular block | ancestors: atrioventricular block, heart conduction disease, atrioventricular dissociation, heart disorder | def: Intermittent failure of atrial electrical impulse conduction to the ventricles.",
+"ko": "2도 방실 차단",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006008",
+"concept": "- MONDO:0006008 | vestibular neuronitis | ancestors: vestibulocochlear nerve disorder, neuritis, retrocochlear disease, cranial nerve neuropathy | def: Idiopathic inflammation of the vestibular nerve, characterized clinically by the acute or subacute onset of vertigo; nausea; and imbalance. The cochlear nerve is typically spared and hearing loss and ...",
+"ko": "전정신경염",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0017844",
+"concept": "- MONDO:0017844 | Sezary syndrome | syn: CTCL / Sezary syndrome; cutaneous T-cell lymphoma/Sezary syndrome; SC)zary syndrome; Sezary disease | ancestors: primary cutaneous T-cell non-Hodgkin lymphoma, mature T-cell and NK-cell non-Hodgkin lymphoma, primary cutaneous lymphoma, neoplasm of mature T-cells or NK-cells | def: Sezary syndrome (SS) is an aggressive form of cutaneous T-cell lymphoma characterized by a triad of erythroderma, lymphadenopathy and circulating atypical lymphocytes (Sezary cells).",
+"ko": "세자리 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001490",
+"concept": "- MONDO:0001490 | corneal granular dystrophy | syn: granular corneal dystrophy | ancestors: epithelial-stromal TGFBI dystrophy, hereditary disease, corneal dystrophy, disease of genetic or genomic mechanism | def: A stromal corneal dystrophy that is caused by mutation(s) in the TGFBI gene.",
+"ko": "과립상 각막이영양증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+}
+]

@@ -1,0 +1,264 @@
+[
+{
+"id": "MONDO:0018308",
+"concept": "- MONDO:0018308 | liver mesenchymal hamartoma | syn: biliary hamartoma; hepatic mesenchymal hamartoma; liver mesenchymal hamartoma; liver MH | ancestors: liver and intrahepatic bile duct neoplasm, mesenchymal hamartoma, endocrine gland neoplasm, hepatobiliary neoplasm | def: A multicystic, tumor-like hamartomatous lesion that arises from the liver during fetal development. Clinically, it usually presents as an abdominal mass associated with abdominal distention. Following...",
+"ko": "간 간엽 과오종",
+"alt": [
+"간 중간엽 과오종"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004177",
+"concept": "- MONDO:0004177 | benign urethral neoplasm | syn: benign neoplasm of the urethra; benign neoplasm of urethra; benign tumor of the urethra; benign tumor of urethra | ancestors: benign urinary system neoplasm, urethra neoplasm, benign neoplasm, urinary system neoplasm | def: Abnormal growth of the cells of the urethra (lower urinary tract) without malignant characteristics.",
+"ko": "양성 요도 신생물",
+"alt": [
+"양성 요도 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021758",
+"concept": "- MONDO:0021758 | acquired agranulocytosis | syn: Agranulocytosis, Acquired | ancestors: agranulocytosis, leukopenia, leukocyte disorder, immune system disorder | def: Agranulocytosis that is autoimmune in origin.",
+"ko": "후천성 무과립구증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020806",
+"concept": "- MONDO:0020806 | sinoatrial block | ancestors: heart conduction disease, heart disorder, cardiovascular disorder, disease by body system or component | def: A heart block that is initiated in the sinoatrial node.",
+"ko": "동방 차단",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003432",
+"concept": "- MONDO:0003432 | strabismus | syn: squint; strabismus | ancestors: ocular motility disease, cranial nerve neuropathy, nervous system disorder, disease by body system or component | def: Strabismus is the intermittent or constant misalignment of an eye so that its line of vision is not pointed at the same object as the other eye. Strabismus is caused by an imbalance in the extraocular...",
+"ko": "사시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0021443",
+"concept": "- MONDO:0021443 | benign neoplasm of lymph node | syn: benign lymph node neoplasm; benign lymph node tumor; benign lymph node tumour; benign neoplasm of the lymph node | ancestors: immune system organ benign neoplasm, lymph node neoplasm, immune system disorder, benign neoplasm | def: A benign neoplasm that involves the lymph node.",
+"ko": "림프절 양성 신생물",
+"alt": [
+"림프절 양성 종양"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005737",
+"concept": "- MONDO:0005737 | Ebola hemorrhagic fever | syn: Ebola; Ebola fever; Ebola virus disease; Ebolavirus caused disease or disorder | ancestors: Filoviridae infectious disease, viral hemorrhagic fever, Mononegavirales infectious disease, viral infectious disease | def: A viral hemorrhagic fever that is caused by the Ebola virus, which is transmitted by contact with infected animals or humans; it is characterized by high fever, unexplained bleeding, and a high mortal...",
+"ko": "에볼라 출혈열",
+"alt": [
+"에볼라바이러스병"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002425",
+"concept": "- MONDO:0002425 | rectosigmoid junction cancer | syn: cancer of rectosigmoid junction; malignant neoplasm of rectosigmoid; malignant neoplasm of rectosigmoid junction; malignant neoplasm of the rectosigmoid junction | ancestors: sigmoid colon cancer, rectosigmoid junction neoplasm, rectal cancer, sigmoid neoplasm | def: A primary or metastatic malignant neoplasm that affects the rectosigmoid area. Representative examples include carcinoma, lymphoma, and sarcoma.",
+"ko": "직장구불결장 이행부암",
+"alt": [
+"직장S상결장 접합부암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002457",
+"concept": "- MONDO:0002457 | Treacher-Collins syndrome | syn: Franceschetti-Klein syndrome; mandibulofacial dysostosis without limb anomalies; Treacher Collins Syndrome; Treacher Collins syndrome | ancestors: autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, mandibulofacial dysostosis | def: A congenital disorder of craniofacial development characterized by bilateral symmetrical oto-mandibular dysplasia without abnormalities of the extremities, and associated with several head and neck de...",
+"ko": "트리처 콜린스 증후군",
+"alt": [
+"하악안면이골증"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015193",
+"concept": "- MONDO:0015193 | hydrops fetalis | syn: fetal anasarca; fetal hydrops; foetal anasarca; foetal hydrops | ancestors: developmental defect during embryogenesis, disorder of development or morphogenesis, disease by developmental or physiological process, human disease | def: Hydrops fetalis is a severe and challenging fetal condition usually defined as the excessive accumulation of fetal fluid within the fetal extravascular compartments and body cavities that manifests as...",
+"ko": "태아 수종",
+"alt": [
+"태아 전신부종"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002172",
+"concept": "- MONDO:0002172 | otosalpingitis | syn: Eustachian salpingitis; inflammation of pharyngotympanic tube; pharyngotympanic tube inflammation | ancestors: eustachian tube disorder, otitis media, middle ear disorder, inflammatory disease | def: An inflammatory disease involving a pathogenic inflammatory response in the pharyngotympanic tube.",
+"ko": "유스타키오관염",
+"alt": [
+"이관염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009223",
+"concept": "- MONDO:0009223 | hypogonadotropic hypogonadism 23 with or without anosmia | syn: 46,XY disorder of sex development due to LHB deficiency; 46,XY disorder of sex development due to luteinizing hormone subunit beta deficiency; 46,XY DSD due to LHB deficiency; 46,XY DSD due to luteinizing hormone subunit beta deficiency | ancestors: hypogonadotropic hypogonadism, Leydig cell hypoplasia, hypogonadism, hereditary disease | def: Any hypogonadotropic hypogonadism in which the cause of the disease is a mutation in the LHB gene.",
+"ko": "후각상실 동반 또는 비동반 저성선자극호르몬성 성선기능저하증 23형",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005459",
+"concept": "- MONDO:0005459 | human African trypanosomiasis | syn: Africam sleeping sickness; African trypanosomiasis; sleeping sickness | ancestors: trypanosomiasis, vector-borne disease, protozoa infectious disease, infectious disease | def: A parasitic disorder caused by protozoa of the Trypanosoma brucei species. It is transmitted by flies and is endemic in various regions of Sub-Saharan Africa. Signs and symptoms include fever, joint p...",
+"ko": "인간 아프리카 트리파노소마증",
+"alt": [
+"아프리카 수면병"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0001123",
+"concept": "- MONDO:0001123 | chronic sphenoidal sinusitis | syn: chronic sphenoid sinusitis; sphenoid sinusitis, chronic | ancestors: sphenoid sinusitis, chronic rhinosinusitis, sinusitis, disorder of facial skeleton | def: Inflammation of the sphenoid sinus that typically lasts beyond eight weeks. It is caused by infections, allergies, and the presence of sinus polyps or a deviated septum. Signs and symptoms include hea...",
+"ko": "만성 접형동염",
+"alt": [
+"만성 나비굴염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017416",
+"concept": "- MONDO:0017416 | postpoliomyelitis syndrome | syn: Post Polio Syndrome; postpolio sequelae; postpolio syndrome; postpoliomyelitic syndrome | ancestors: poliomyelitis, myelitis, anterior horn disorder, acquired motor neuron disease | def: Postpoliomyelitis syndrome (PPS) is a neurologic disorder characterized by the development of new neuromuscular symptoms such as progressive muscular weakness or abnormal muscle fatigability occurring...",
+"ko": "소아마비후 증후군",
+"alt": [
+"폴리오후 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005003",
+"concept": "- MONDO:0005003 | chronic pancreatitis | syn: pancreatitis, chronic | ancestors: pancreatitis, pancreas disorder, inflammatory disease, digestive system disorder | def: A chronic inflammatory process causing damage and fibrosis of the pancreatic parenchyma. Signs and symptoms include abdominal pain, malabsorption and diabetes mellitus.",
+"ko": "만성 췌장염",
+"alt": [
+"만성 이자염"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0000919",
+"concept": "- MONDO:0000919 | ampulla of vater cancer | syn: cancer of hepatopancreatic ampulla; hepatopancreatic ampulla cancer; malignant ampulla of Vater neoplasm; malignant ampulla of Vater tumor | ancestors: duodenum cancer, ampulla of vater neoplasm, malignant tumor of extrahepatic bile duct, small intestine cancer | def: A primary or metastatic malignant neoplasm involving the ampulla of Vater.",
+"ko": "바터팽대부암",
+"alt": [
+"십이지장 팽대부암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019087",
+"concept": "- MONDO:0019087 | cholangiocarcinoma | syn: CC; CCA; cholangiocarcinoma; cholangiocarcinoma, malignant | ancestors: bile duct adenocarcinoma, adenocarcinoma, bile duct carcinoma, carcinoma | def: A carcinoma that arises from the intrahepatic biliary tree (intrahepatic cholangiocarcinoma) or from the junction, or adjacent to the junction, of the right and left hepatic ducts (hilar cholangiocarc...",
+"ko": "담관암종",
+"alt": [
+"담관암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008636",
+"concept": "- MONDO:0008636 | double uterus-hemivagina-renal agenesis syndrome | syn: Double uterus and obstructed hemivagina syndrome; Herlyn-Werner syndrome; obstructed hemivagina and ipsilateral renal anomaly; OHVIRA syndrome | ancestors: syndromic disease, reproductive system disorder, disorder of development or morphogenesis, disease by body system or component | def: Double uterus, hemivagina and renal agenesis is a rare congenital urogenital anomaly characterized by the presence of double uterus (didelphys, bicornuate or septum-complete or partial), unilateral ce...",
+"ko": "중복자궁-반질-신장무형성 증후군",
+"alt": [
+"헐린-베르너 증후군"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017227",
+"concept": "- MONDO:0017227 | autoimmune pancreatitis type 1 | syn: AIP type 1; autoimmune pancreatitis type 1; IgG4-related pancreatitis; lymphoplasmacytic sclerosing pancreatitis | ancestors: chronic pancreatitis, autoimmune pancreatitis, pancreatitis, autoimmune disorder of endocrine system | def: Type 1 autoimmune pancreatitis is a form of autoimmune pancreatitis seen in elderly males (>60 years) and presenting with abdominal pain, steatorrhea, obstructive jaundice and other organ (bile duct, ...",
+"ko": "자가면역췌장염 1형",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+}
+]

@@ -1,0 +1,230 @@
+[
+{
+"id": "MONDO:0001109",
+"concept": "- MONDO:0001109 | petrositis | syn: inflammation of petrous part of temporal bone; petrous part of temporal bone inflammation | ancestors: osteomyelitis, inflammatory disease, skull disorder, bone inflammation disease | def: Inflammation of petrous bone.",
+"ko": "추체염",
+"alt": [
+"측두골 추체염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0700031",
+"concept": "- MONDO:0700031 | mosaic trisomy 18 | ancestors: trisomy 18, syndromic disease, trisomy, chromosome 18 disorder | def: Trisomy 18 in which the presence of an extra copy of chromosome 18 is present only in some of the cells of the organism.",
+"ko": "모자이크 18삼체성",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006077",
+"concept": "- MONDO:0006077 | adrenal medullary hyperplasia | syn: adrenal medulla hyperplasia | ancestors: hyperplasia, adrenal gland disorder, cancer or benign tumor, endocrine system disorder | def: A hyperplasia that involves the adrenal medulla.",
+"ko": "부신수질 증식증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002419",
+"concept": "- MONDO:0002419 | transient tic disorder | syn: benign Tic disorder of childhood | ancestors: tic disorder, movement disorder, specific developmental disorder, nervous system disorder | def: A neurological disorder presenting in childhood that is characterized by motor and/or phonic tics that occur daily or nearly daily for one to twelve months and are not attributed to an identifiable ca...",
+"ko": "일과성 틱 장애",
+"alt": [
+"일시성 틱장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005746",
+"concept": "- MONDO:0005746 | enterobiasis | syn: Enterobius vermicularis caused disease or disorder; Enterobius vermicularis disease or disorder; Enterobius vermicularis infectious disease; threadworm infection | ancestors: Rhabditida infectious disease, Nematoda infectious disease, helminthiasis, parasitic infectious disease | def: An infection that is caused by the nematode Enterobius vermicularis; it is characterized predominantly by perianal pruritus.",
+"ko": "요충증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015898",
+"concept": "- MONDO:0015898 | adrenogenital syndrome | syn: adrenogenital disorder; adrenogenital syndrome; androgenital syndrome | ancestors: adrenal gland disorder, steroid metabolism disease, endocrine system disorder, metabolic disease | def: Abnormal sex differentiation or congenital disorders of sex development caused by abnormal levels of steroid hormones expressed by the gonads or the adrenal glands, such as in congenital adrenal hyper...",
+"ko": "부신성기 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0019242",
+"concept": "- MONDO:0019242 | inborn disorder of branched-chain amino acid metabolism | syn: disorder of branched-chain amino acid metabolism; inborn branched-chain amino acid metabolic process disorder; inborn disorder of branched-chain amino acid metabolism; inborn error of branched-chain amino acid metabolic process | ancestors: inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease, inborn errors of metabolism | def: An inherited metabolic disease that is has its basis in the disruption of branched-chain amino acid metabolic process.",
+"ko": "선천성 분지쇄 아미노산 대사 장애",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019359",
+"concept": "- MONDO:0019359 | Rocky mountain spotted fever | ancestors: spotted fever, Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis | def: Rocky Mountain spotted fever refers to an infection caused by the bacterium Rickettsia rickettsia. This particular bacterium is carried by certain species of ticks and spread to humans through the bit...",
+"ko": "로키산 홍반열",
+"alt": [
+"로키산 점무늬열"
+],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001508",
+"concept": "- MONDO:0001508 | patulous eustachian tube | ancestors: eustachian tube disorder, middle ear disorder, auditory system disorder, disorder of ear | def: A eustachian tube disorder with a wider eustachian tube which allows a larger bolus of bacteria-laden material from the nasopharynx during an infection to enter the middle ear, causing a more fulminan...",
+"ko": "이관 개방증",
+"alt": [
+"유스타키오관 개방증"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001637",
+"concept": "- MONDO:0001637 | cicatricial entropion | ancestors: entropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "반흔성 안검내반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021511",
+"concept": "- MONDO:0021511 | benign neoplasm of adrenal gland | syn: adrenal gland benign neoplasm; benign adrenal gland neoplasm; benign adrenal gland tumor; benign adrenal gland tumour | ancestors: benign endocrine neoplasm, adrenal gland neoplasm, endocrine gland neoplasm, benign neoplasm | def: A benign neoplasm that involves the adrenal gland.",
+"ko": "부신 양성 신생물",
+"alt": [
+"부신 양성 종양"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0100017",
+"concept": "- MONDO:0100017 | pityriasis rubra pilaris | ancestors: erythrokeratoderma, epidermal disease, skin disorder, integumentary system disorder | def: A group of skin conditions that cause constant inflammation and scaling of the skin. People with PRP have reddish, scaly patches that may occur everywhere on the body, or only on certain areas. Some p...",
+"ko": "모공성 홍색비강진",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018382",
+"concept": "- MONDO:0018382 | epiphysiolysis of the hip | syn: epiphysiolysis capitis femoris; epiphysiolysis of the upper femur; femoral head epiphysiolysis; SCFE | ancestors: osteonecrosis of genetic origin, hereditary disease, osteonecrosis, disease of genetic or genomic mechanism | def: Epiphysiolysis of the hip is a rare osteonecrosis disorder characterized by unilateral or bilateral disruption of the capital femoral physis with varying degrees of posterior epiphysis translation and...",
+"ko": "대퇴골두 골단분리증",
+"alt": [
+"엉덩관절 골단분리증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019262",
+"concept": "- MONDO:0019262 | juvenile neuronal ceroid lipofuscinosis | syn: batten disease; JNCL; juvenile NCL; juvenile neuronal ceroid lipofuscinosis | ancestors: neuronal ceroid lipofuscinosis, cerebral lipidosis with dementia, lysosomal lipid storage disorder, inherited neurodegenerative disorder | def: A genetically heterogeneous group of neuronal ceroid lipofuscinoses (NCLs) typically characterized by onset at early school age with vision loss due to retinopathy, seizures and the decline of mental ...",
+"ko": "소아 신경세로이드지갈색소증",
+"alt": [
+"바텐병"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015164",
+"concept": "- MONDO:0015164 | acute myeloid leukemia and myelodysplastic syndromes related to alkylating agent | syn: AML and myelodysplastic syndromes related to alkylating agent | ancestors: therapy related acute myeloid leukemia and myelodysplastic syndrome, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: Acute myeloid leukemia and myelodysplastic syndromes related to alkylating agent is a subgroup of therapy-related myeloid neoplasms (t-MN), associated with a treatment of an unrelated neoplastic or au...",
+"ko": "알킬화제 관련 급성 골수성 백혈병 및 골수형성이상 증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005246",
+"concept": "- MONDO:0005246 | osteomyelitis | syn: osteomyelitis; osteomyelitis (disease) | ancestors: bone inflammation disease, bone marrow disorder, bone disorder, immune system disorder | def: An acute or chronic inflammation of the bone and its structures due to infection with pyogenic bacteria.",
+"ko": "골수염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 10
+},
+{
+"id": "MONDO:0005073",
+"concept": "- MONDO:0005073 | melanocytic nevus | syn: melanocytic Nevus; melanotic Nevus; mole; mole of skin | ancestors: benign neoplasm of skin, melanocytic skin neoplasm, integumentary system benign neoplasm, skin neoplasm | def: A neoplasm composed of melanocytes that usually appears as a dark spot on the skin.",
+"ko": "멜라닌세포 모반",
+"alt": [
+"점"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0004665",
+"concept": "- MONDO:0004665 | nodular sclerosis classical Hodgkin lymphoma | syn: Hodgkin lymphoma, nodular sclerosis; Hodgkin's disease nodular sclerosis; Hodgkin's disease, nodular sclerosis NOS (morphologic abnormality); Hodgkin's disease, nodular sclerosis of unspecified site | ancestors: classic Hodgkin lymphoma, hereditary disease, Hodgkins lymphoma, disease of genetic or genomic mechanism | def: A subtype of classical Hodgkin lymphoma characterized by collagen bands that surround at least one nodule, and Hodgkin and Reed-Sternberg cells with lacunar type morphology. (WHO, 2008)",
+"ko": "결절경화형 고전적 호지킨 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009119",
+"concept": "- MONDO:0009119 | diverticulosis, small-intestinal | syn: diverticulosis, small-intestinal | ancestors: digestive system disorder, disease by body system or component, human disease, disease",
+"ko": "소장 게실증",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005777",
+"concept": "- MONDO:0005777 | granuloma inguinale | syn: donovanosis; granuloma inguinale | ancestors: primary bacterial infectious disease, bacterial sexually transmitted disease, Klebsiella infectious disease, bacterial infectious disease | def: A condition resulting from infection by Klebsiella granulomati, which is characterized by ulcerative lesions of the genitalia.",
+"ko": "서혜부 육아종",
+"alt": [
+"도노반증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+}
+]

@@ -1,0 +1,245 @@
+[
+{
+"id": "MONDO:0002667",
+"concept": "- MONDO:0002667 | gallbladder signet ring cell adenocarcinoma | syn: gall bladder signet ring cell carcinoma; gallbladder signet Ring cell carcinoma; signet Ring cell carcinoma of gallbladder; signet Ring cell carcinoma of the gallbladder | ancestors: signet ring cell carcinoma, gallbladder adenocarcinoma, adenocarcinoma, gallbladder carcinoma | def: An adenocarcinoma that arises from the gallbladder. It is characterized by the presence of signet ring malignant epithelial cells.",
+"ko": "담낭 반지세포 선암",
+"alt": [
+"담낭 반지세포암종"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017079",
+"concept": "- MONDO:0017079 | meningoencephalocele | syn: brain meninx cephalocele (disease); cephalocele (disease) of brain meninx; meningoencephalocele | ancestors: meningocele, brain disorder, cephalocele, congenital nervous system disorder | def: A congenital abnormality in which the meninges protrude through a defect in the cranium.",
+"ko": "수막뇌류",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017765",
+"concept": "- MONDO:0017765 | disorder of magnesium transport | syn: inborn error of magnesium ion transport; inborn magnesium ion transport disorder; rare inborn error of magnesium ion transport | ancestors: disorder of mineral absorption and transport, disorder of metabolite absorption and transport, inborn errors of metabolism, hereditary disease | def: An inherited metabolic disease that is has its basis in the disruption of magnesium ion transport.",
+"ko": "마그네슘 수송 장애",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001739",
+"concept": "- MONDO:0001739 | purulent labyrinthitis | syn: suppurative labyrinthitis | ancestors: labyrinthitis, inner ear disorder, inflammatory disease, auditory system disorder | def: A labyrinthitis which is a bacterial infectious disease of the inner ear, often causing deafness and loss of vestibular function. This is caused when bacteria spread to the inner ear during the course...",
+"ko": "화농성 미로염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006645",
+"concept": "- MONDO:0006645 | alcoholic polyneuropathy | ancestors: toxic polyneuropathy, polyneuropathy, peripheral neuropathy, peripheral nervous system disorder | def: Any polyneuropathy where damage to the peripheral nervous system (including the peripheral elements of the autonomic nervous system) is associated with chronic ingestion of alcoholic beverages. The di...",
+"ko": "알코올성 다발신경병증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0700115",
+"concept": "- MONDO:0700115 | proliferative vitreoretinopathy | ancestors: retinal disorder, nervous system disorder, eye disorder, disease by body system or component | def: Vitreoretinal membrane shrinkage or contraction secondary to the proliferation of primarily retinal pigment epithelial cells and glial cells, particularly fibrous astrocytes, followed by membrane form...",
+"ko": "증식성 유리체망막병증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013588",
+"concept": "- MONDO:0013588 | Perrault syndrome 3 | syn: CLPP Perrault syndrome; Perrault syndrome 3; Perrault syndrome caused by mutation in CLPP; Perrault syndrome type 3 | ancestors: Perrault syndrome, autosomal recessive disease, mitochondrial oxidative phosphorylation disorder, inherited primary ovarian failure | def: Any Perrault syndrome in which the cause of the disease is a mutation in the CLPP gene.",
+"ko": "페로 증후군 3",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024676",
+"concept": "- MONDO:0024676 | childhood kidney Wilms tumor | syn: childhood kidney Wilms tumor; childhood renal Wilms tumor; childhood renal Wilms tumour; childhood renal Wilms' tumor | ancestors: kidney Wilms tumor, childhood malignant kidney neoplasm, kidney cancer, Wilms tumor | def: A Wilms tumor of the kidney which occurs in children.",
+"ko": "소아 신장 윌름스 종양",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010516",
+"concept": "- MONDO:0010516 | midface hypoplasia, hearing impairment, elliptocytosis, and nephrocalcinosis | syn: MFHIEN; midface hypoplasia, hearing impairment, elliptocytosis, and nephrocalcinosis; midface hypoplasia, hearing impairment, elliptocytosis, and nephrocalcinosis, X-linked recessive; midface hypoplasia, hearing impairment, elliptocytosis, and nephrocalcinosis; MFHIEN | ancestors: hereditary disease, Alport syndrome-intellectual disability-midface hypoplasia-elliptocytosis syndrome, disease of genetic or genomic mechanism, syndromic disease",
+"ko": "중안면 형성저하, 청력장애, 타원적혈구증 및 신석회증",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013040",
+"concept": "- MONDO:0013040 | atypical hemolytic-uremic syndrome with MCP/CD46 anomaly | syn: aHUS with MCP/CD46 anomaly; atypical HUS with MCP/CD46 anomaly; D-HUS with MCP/CD46 anomaly; hemolytic uremic syndrome, atypical, susceptibility to, type 2 | ancestors: atypical hemolytic uremic syndrome with complement gene abnormality, atypical hemolytic-uremic syndrome, syndromic disease, complement deficiency",
+"ko": "MCP/CD46 이상을 동반한 비정형 용혈요독 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001722",
+"concept": "- MONDO:0001722 | central pterygium | ancestors: progressive peripheral pterygium, conjunctival pterygium, conjunctival degeneration, pterygium",
+"ko": "중심성 익상편",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003245",
+"concept": "- MONDO:0003245 | aflatoxin-related hepatocellular carcinoma | syn: aflatoxins-related hepatocellular cancer; aflatoxins-related hepatocellular carcinoma | ancestors: hepatocellular carcinoma, adenocarcinoma, carcinoma of liver and intrahepatic biliary tract, carcinoma | def: A hepatocellular carcinoma that develops following exposure to aflatoxin.",
+"ko": "아플라톡신 관련 간세포암종",
+"alt": [
+"아플라톡신 관련 간세포암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:1010178",
+"concept": "- MONDO:1010178 | CHD7-related CHARGE syndrome | syn: CHARGE syndrome due to CHD7 deficiency; CHD7-related CHARGE syndrome | ancestors: CHARGE syndrome, syndromic disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, congenital hypogonadotropic hypogonadism | def: A CHARGE syndrome in which the cause of the disease is a variation in the CHD7 gene.",
+"ko": "CHD7 관련 CHARGE 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015681",
+"concept": "- MONDO:0015681 | childhood disintegrative disorder | syn: childhood disintegrative disease; dementia infantilis; disintegrative psychosis; heller syndrome | ancestors: pervasive developmental disorder, developmental disorder of mental health, complex neurodevelopmental disorder, mental disorder | def: A rare pervasive developmental disorder with a disease onset before the age of three and characterized by a dramatic loss of behavioral and developmental functioning after atleast two years of normal ...",
+"ko": "소아기 붕괴성 장애",
+"alt": [
+"소아기 해체장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0024337",
+"concept": "- MONDO:0024337 | urothelial neoplasm | syn: neoplasm of urothelium; transitional cell neoplasm of the urinary tract; tumor of urothelium; tumour of urothelium | ancestors: urinary system neoplasm, transitional cell neoplasm, urinary system disorder, neoplasm | def: A neoplasm involving a urothelium.",
+"ko": "요로상피 신생물",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004695",
+"concept": "- MONDO:0004695 | liver lymphoma | syn: hepatic lymphoma; liver lymphoma; lymphoma of liver; lymphoma of the liver | ancestors: liver cancer, gastrointestinal lymphoma, digestive system cancer, malignant endocrine neoplasm | def: A rare lymphoma that arises from the liver and the bulk of the tumor is located in the liver. The most frequent types of lymphoma that arise from the liver are diffuse large B-cell lymphoma and mucosa...",
+"ko": "간 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008728",
+"concept": "- MONDO:0008728 | classic congenital adrenal hyperplasia due to 21-hydroxylase deficiency | syn: 21-OHD; classic 21-OHD CAH; classic congenital adrenal hyperplasia due to 21-hydroxylase deficiency | ancestors: reproductive system disorder, congenital adrenal hyperplasia, disease by body system or component, steroid inherited metabolic disorder | def: The most common form of congenital adrenal hyperplasia (CAH), characterized by simple virilizing or salt wasting forms that can manifest with genital ambiguity in females and with adrenal insufficienc...",
+"ko": "21-수산화효소 결핍에 의한 고전형 선천성 부신 과형성증",
+"alt": [
+"21-수산화효소 결핍증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003574",
+"concept": "- MONDO:0003574 | external ear cancer | syn: cancer of external ear; external ear cancer; malignant external Ear neoplasm; malignant external ear neoplasm | ancestors: malignant ear neoplasm, auditory system cancer, external ear neoplasm, sensory system cancer | def: A malignant neoplasm involving the external ear.",
+"ko": "외이암",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001928",
+"concept": "- MONDO:0001928 | suppurative cholangitis | syn: suppurative cholangitis | ancestors: cholangitis, non-neoplastic bile duct disorder, inflammatory disease, bile duct disorder | def: Cholangitis that is characterized by pyogenic organisms.",
+"ko": "화농성 담관염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001749",
+"concept": "- MONDO:0001749 | cortical senile cataract | syn: lens cortex senile cataract; senile cataract of lens cortex | ancestors: senile cataract, cortical cataract, cataract, lens disorder | def: A senile cataract that involves the lens cortex.",
+"ko": "피질성 노인성 백내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+}
+]

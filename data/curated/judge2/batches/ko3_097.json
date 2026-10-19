@@ -1,0 +1,251 @@
+[
+{
+"id": "MONDO:0007576",
+"concept": "- MONDO:0007576 | esophageal cancer | syn: cancer of esophagus; cancer of oesophagus; esophageal cancer; esophageal cancer, somatic | ancestors: digestive system cancer, neoplasm of esophagus, digestive system disorder, cancer | def: A primary or metastatic malignant neoplasm involving the esophagus.",
+"ko": "식도암",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0018014",
+"concept": "- MONDO:0018014 | transient neonatal multiple acyl-CoA dehydrogenase deficiency | syn: transient neonatal glutaric acidemia type 2; transient neonatal glutaric aciduria type 2; transient neonatal MAD deficiency; transient neonatal MADD | ancestors: acyl-CoA dehydrogenase deficiency, disorder of fatty acid oxidation and ketogenesis, disorder of fatty acid and ketone body metabolism, inherited fatty acid metabolism disorder | def: Transient neonatal multiple acyl-CoA dehydrogenase deficiency describes a very rare condition where a maternal riboflavin deficiency causes an infant to present with manifestations similar to those se...",
+"ko": "일과성 신생아 다발성 아실-CoA 탈수소효소 결핍증",
+"alt": [
+"일과성 신생아 글루타르산뇨증 2형"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006077",
+"concept": "- MONDO:0006077 | adrenal medullary hyperplasia | syn: adrenal medulla hyperplasia | ancestors: hyperplasia, adrenal gland disorder, cancer or benign tumor, endocrine system disorder | def: A hyperplasia that involves the adrenal medulla.",
+"ko": "부신수질 증식증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001610",
+"concept": "- MONDO:0001610 | acute dacryocystitis | syn: dacryocystitis, acute | ancestors: dacryocystitis, acute disease, inflammatory disease, nasolacrimal duct disorder | def: Acute form of dacryocystitis.",
+"ko": "급성 눈물주머니염",
+"alt": [
+"급성 누낭염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006672",
+"concept": "- MONDO:0006672 | balanitis | syn: balanitis; glans penis inflammation; inflammation of glans penis | ancestors: penile disorder, inflammatory disease, male reproductive system disorder, disease by developmental or physiological process | def: An infectious or non-infectious inflammatory process that affects the glans penis. Symptoms include redness and pain of the glans penis and foreskin and discharge.",
+"ko": "귀두염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018090",
+"concept": "- MONDO:0018090 | double outlet left ventricle | syn: DOLV; Double outlet left ventricle; double outlet left ventricle (disease) | ancestors: conotruncal heart malformations, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder | def: Double-outlet left ventricle (DOLV) is an extremely rare congenital cardiac malformation in which both the aorta and the pulmonary artery arise, either exclusively or predominantly, from the morpholog...",
+"ko": "좌심실 양대혈관 기시",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0100061",
+"concept": "- MONDO:0100061 | PRPS1 deficiency disorder | syn: PRPS1 deficiency disorder; PRPS1-related CMTX5/Arts syndrome/XLNSHL | ancestors: hereditary peripheral neuropathy, peripheral neuropathy, hereditary neuromuscular disease, peripheral nervous system disorder | def: A peripheral neuropathy that is characterized by variants in PRPS1, which causes decreased or impaired function of the PRPS1 enzyme, and presents as a range of peripheral neuropathies that can include...",
+"ko": "PRPS1 결핍 질환",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019218",
+"concept": "- MONDO:0019218 | inborn disorder of bile acid synthesis | syn: Bile Acid Synthesis Disorders; inborn bile acid biosynthetic process disorder; inborn error of bile acid biosynthetic process; rare inborn error of bile acid biosynthetic process | ancestors: sterol metabolism disorder, inherited lipid metabolism disorder, steroid metabolism disease, inborn errors of metabolism | def: Anomalies of bile acid synthesis are a group of sterol metabolism disorders due to enzyme deficiencies of bile acid synthesis (BAS) in infants, children and adults, with variable manifestations that i...",
+"ko": "선천성 담즙산 합성 장애",
+"alt": [
+"담즙산 합성 이상"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:1040017",
+"concept": "- MONDO:1040017 | intestinal fistula | ancestors: intestinal disorder, digestive system disorder, disease by body system or component, human disease | def: An intestinal disorder characterized by an opening in the intestine to some epithelial surface.",
+"ko": "장 누공",
+"alt": [
+"장관 누공"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001067",
+"concept": "- MONDO:0001067 | early yaws | syn: bone and joint lesions due to yaws; initial lesions of yaws | ancestors: yaws, syphilis, primary bacterial infectious disease, Treponema infectious disease | def: Early yaws includes primary and secondary stages of yaws, endemic tropical treponemal nonvenereal infection: development of initial lesion at inoculation site followed by widespread dissemination of t...",
+"ko": "조기 프람베시아",
+"alt": [
+"조기 요스"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0001583",
+"concept": "- MONDO:0001583 | diabetic polyneuropathy | syn: polyneuropathy in diabetes | ancestors: diabetic neuropathy, peripheral neuropathy, peripheral nervous system disorder, neuromuscular disease",
+"ko": "당뇨병성 다발신경병증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001211",
+"concept": "- MONDO:0001211 | total internal ophthalmoplegia | ancestors: eye accommodation disease, oculomotor nerve paralysis, pupil disorder, eye disorder",
+"ko": "완전 내안근마비",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018896",
+"concept": "- MONDO:0018896 | thrombotic thrombocytopenic purpura | syn: Moschcowitz disease; Moschowitz disease; TTP | ancestors: thrombophilia, thrombocytopenic purpura, blood coagulation disease, thrombocytopenia | def: Thrombotic thrombocytopenic purpura (TTP) is an aggressive and life-threatening form of thrombotic microangiopathy (TMA) characterized by profound peripheral thrombocytopenia, microangiopathic hemolyt...",
+"ko": "혈전성 혈소판감소성 자반증",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017576",
+"concept": "- MONDO:0017576 | 46,XX disorder of sex development | syn: 46,XX differences of Sex development; 46,XX disorders of Sex development; 46,XX DSD; female pseudohermaphroditism | ancestors: disorder of sexual differentiation, gonadal disorder, developmental defect during embryogenesis, reproductive system disorder | def: Conditions affecting individuals with 46,XX karyotype characterized by atypical development of one or more of the following: the gonads, the internal reproductive structures, the external reproductive...",
+"ko": "46,XX 성발달장애",
+"alt": [
+"46,XX 성분화장애"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018544",
+"concept": "- MONDO:0018544 | adrenoleukodystrophy | syn: ABCD1 deficiency; adrenoleukodystrophy; adrenoleukodystrophy, X-linked; adrenoleukodystrophy, X-linked recessive | ancestors: X-linked disease, adrenal gland disorder, hereditary dementia, leukodystrophy | def: A peroxisomal disorder resulting in cerebral demyelination, axonal dysfunction in the spinal cord leading to spastic paraplegia, adrenal insufficiency and in some cases testicular insufficiency.",
+"ko": "부신백질이영양증",
+"alt": [
+"X연관 부신백질이영양증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002155",
+"concept": "- MONDO:0002155 | cholecystitis | syn: acute and chronic cholecystitis; gall bladder inflammation; inflammation of gall bladder | ancestors: cholangitis, gallbladder disorder, non-neoplastic bile duct disorder, inflammatory disease | def: An acute or chronic inflammation involving the gallbladder wall. It may be associated with the presence of gallstones.",
+"ko": "담낭염",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0016532",
+"concept": "- MONDO:0016532 | Lennox-Gastaut syndrome | syn: LGS | ancestors: syndromic disease, genetic developmental and epileptic encephalopathy, childhood-onset epilepsy syndrome with developmental and/or epileptic encephalopathy, disease by body system or component | def: Lennox-Gastaut syndrome (LGS) belongs to the group of severe childhood epileptic encephalopathies.",
+"ko": "레녹스-가스토 증후군",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015692",
+"concept": "- MONDO:0015692 | refractory anemia with excess blasts in transformation | syn: RAEB-T; RAEB-t | ancestors: refractory hematologic cancer, myelodysplastic syndrome, hematopoietic and lymphoid cell neoplasm, myeloid hemopathy | def: Refractory anemia with excess blasts in transformation (RAEB-T) is characterized by dysplastic features of the myeloid and usually erythroid progenitor cells in the bone marrow and an increased number...",
+"ko": "전환기 과다모세포 동반 불응성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0043294",
+"concept": "- MONDO:0043294 | linear scleroderma | syn: linear Scleroderma; linear scleroderma | ancestors: localized scleroderma, scleroderma, rheumatic disorder, autoimmune disease | def: A type of localized scleroderma characterized by a long strip of indurated skin, which is typically found unilaterally on an arm or leg, and sometimes on the forehead or trunk. This disorder often aff...",
+"ko": "선상 경피증",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0001040",
+"concept": "- MONDO:0001040 | nasopharyngitis | syn: inflammation of nasopharynx; nasopharynx inflammation | ancestors: nasopharyngeal disorder, inflammatory disease, upper respiratory tract disorder, disorder of pharynx | def: An inflammatory process that affects the nasopharynx.",
+"ko": "비인두염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+}
+]

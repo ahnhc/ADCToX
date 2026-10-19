@@ -1,0 +1,247 @@
+[
+{
+"id": "MONDO:0017720",
+"concept": "- MONDO:0017720 | GM2 gangliosidosis | syn: gangliosidosis GM2; GM>2< gangliosidosis | ancestors: gangliosidosis, inherited neurodegenerative disorder, sphingolipidosis, neurodegenerative disease | def: A group of recessively inherited diseases characterized by the intralysosomal accumulation of G(M2) GANGLIOSIDE in the neuronal cells. Subtypes include mutations of enzymes in the BETA-N-ACETYLHEXOSAM...",
+"ko": "GM2 강글리오시드증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000608",
+"concept": "- MONDO:0000608 | familial juvenile hyperuricemic nephropathy | syn: familial juvenile gouty nephropathy; familial juvenile hyperuricemic nephropathy; familial nephropathy associated with hyperuricemia; familial nephropathy with gout | ancestors: inherited kidney disorder, hereditary disease, kidney disorder, disease of genetic or genomic mechanism",
+"ko": "가족성 소아 고요산혈증 신병증",
+"alt": [
+"가족성 소아 통풍성 신병증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004855",
+"concept": "- MONDO:0004855 | tenosynovitis | syn: tendon sheath inflammation; Tenosynovitides | ancestors: tendinitis, arthropathy, tendon sheath disorder, myositis disease | def: Inflammation of the synovial lining of a tendon sheath. Causes include trauma, tendon stress, bacterial disease (gonorrhea, tuberculosis), rheumatic disease, and gout. Common sites are the hand, wrist...",
+"ko": "건활막염",
+"alt": [
+"힘줄윤활막염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001373",
+"concept": "- MONDO:0001373 | urinary bladder posterior wall cancer | ancestors: urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder",
+"ko": "방광 후벽암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001116",
+"concept": "- MONDO:0001116 | mesenteric lymphadenitis | syn: lymphadenitis (disease) of mesentery; mesenteric adenitis; mesenteric lymphadenitis; mesentery lymphadenitis (disease) | ancestors: lymphadenitis, lymph node disorder, inflammatory disease, lymphatic system disorder | def: Inflammation of the mesenteric lymph nodes.",
+"ko": "장간막 림프절염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019759",
+"concept": "- MONDO:0019759 | epispadias | syn: epispadias; epispadias (disease) | ancestors: exstrophy-epispadias complex, kidney disorder, urogenital tract malformation, urinary system disorder | def: Epispadias is a congenital genitourinary malformation belonging to the spectrum of the exstrophy-epispadias complex (EEC) and is characterized in males by an ectopic meatus or a mucosal strip in place...",
+"ko": "요도상열",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004663",
+"concept": "- MONDO:0004663 | colon carcinoma in situ | syn: carcinoma in situ of colon; carcinoma in situ of the colon; colon cancer stage 0; colon carcinoma in situ | ancestors: colon carcinoma, intestine carcinoma in situ, malignant colon neoplasm, colorectal carcinoma | def: A in situ carcinoma that involves the colon.",
+"ko": "결장 상피내암종",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000295",
+"concept": "- MONDO:0000295 | acanthocephaliasis | syn: Acanthocephala caused disease or disorder; Acanthocephala disease or disorder; Acanthocephala infectious disease; disease caused by Acanthocephala | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: An disease or disorder caused by infection with Acanthocephala.",
+"ko": "구두충증",
+"alt": [
+"가시머리벌레증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004353",
+"concept": "- MONDO:0004353 | extrahepatic biliary papillomatosis | syn: extrahepatic bile duct papillary neoplasm; extrahepatic bile duct papillomatosis; extrahepatic biliary papillomatosis | ancestors: bile duct papillary neoplasm, benign digestive system neoplasm, intraductal papilloma, bile duct neoplasm | def: A non-invasive, papillary epithelial neoplasm that arises from the epithelium of the extrahepatic bile ducts.",
+"ko": "간외 담도 유두종증",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018935",
+"concept": "- MONDO:0018935 | hairy cell leukemia | syn: hairy cell leukemia; HCL; HCL-C; leukemic reticuloendotheliosis | ancestors: B-cell chronic lymphocytic leukemia, chronic leukemia, neoplasm of mature B-cells, acute lymphoblastic leukemia | def: Hairy cell leukemia (HCL) is a rare type of leukemia in which abnormal B-lymphocytes are present in the bone marrow, spleen and peripheral blood. It is a slowly progressive chronic lymphocytic leukemi...",
+"ko": "모발세포 백혈병",
+"alt": [
+"털세포 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008195",
+"concept": "- MONDO:0008195 | paramyotonia congenita of Von Eulenburg | syn: paramyotonia congenita; paramyotonia congenita of Von Eulenburg | ancestors: myotonic syndrome, hereditary skeletal muscle disorder, SCN4A-related channelopathy, syndromic disease | def: Paramyotonia congenita of Von Eulenburg is characterized by exercise- or cold-induced myotonia and muscle weakness. Prevalence is unknown. The syndrome is nonprogressive and is transmitted as an autos...",
+"ko": "폰 오일렌부르크 선천성 이상근긴장증",
+"alt": [
+"선천성 이상근긴장증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008542",
+"concept": "- MONDO:0008542 | tetralogy of fallot | syn: tetralogy of fallot; ventricular septal defect with pulmonary stenosis or atresia, dextraposition of aorta, and hypertrophy of right ventricle | ancestors: congenital heart disease, conotruncal heart malformations, cardiogenetic disease, heart disorder | def: Tetralogy of Fallot is a congenital cardiac malformation that consists of an interventricular communication, also known as a ventricular septal defect, obstruction of the right ventricular outflow tra...",
+"ko": "팔로 4징",
+"alt": [
+"팔로 사징후"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017138",
+"concept": "- MONDO:0017138 | Opitz G/BBB syndrome | syn: hypertelorism-oesophageal abnormality-hypospadias syndrome; hypospadias-dysphagia syndrome; hypospadias-hypertelorism syndrome; Opitz G syndrome | ancestors: syndromic disease, hereditary disease, telecanthus, multiple congenital anomalies/dysmorphic syndrome-intellectual disability | def: Opitz G/BBB syndrome (OS) is a multiple congenital anomalies disorder characterized by malformations of the midline including hypertelorism, laryngo-tracheo-esophalgeal defects and hypospadias. There ...",
+"ko": "오피츠 G/BBB 증후군",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013808",
+"concept": "- MONDO:0013808 | Maffucci syndrome | syn: chondrodysplasia with hemangioma; Chondroplasia angiomatosis; Dyschondroplasia and cavernous hemangioma; enchondromatosis with hemangiomata | ancestors: skin neoplasm, hereditary neoplastic syndrome, skin vascular disease, overgrowth syndrome | def: Maffucci syndrome is a very rare genetic bone and skin disorder characterized by multiple enchondromas, leading to bone deformities, combined with multiple dark, irregularly shaped hemangiomas or less...",
+"ko": "마푸치 증후군",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001926",
+"concept": "- MONDO:0001926 | ureteral disorder | syn: disease of ureter; disease or disorder of ureter; disorder of ureter; ureter disease | ancestors: urinary system disorder, disease by body system or component, human disease, disease | def: A non-neoplastic or neoplastic disorder affecting the ureter.",
+"ko": "요관 질환",
+"alt": [
+"수뇨관 질환"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002220",
+"concept": "- MONDO:0002220 | tooth hard tissue disease | syn: disorder of hard tissues of teeth | ancestors: tooth disorder, skeletal system disorder, mouth disorder, musculoskeletal system disorder",
+"ko": "치아 경조직 질환",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004514",
+"concept": "- MONDO:0004514 | chronic rhinitis | syn: rhinitis, chronic | ancestors: rhinitis, nasal cavity disorder, mucositis, nasal disorder | def: Chronic inflammation of the nasal cavity mucosa. It may lead to post-nasal drip resulting in chronic sore throat and chronic cough.",
+"ko": "만성 비염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0009757",
+"concept": "- MONDO:0009757 | Niemann-Pick disease, type C1 | syn: Niemann-Pick disease, type C1; type C1 Niemann-Pick disease | ancestors: Niemann-Pick disease type C, Niemann-Pick disease, autosomal recessive disease, non-Langerhans cell histiocytosis | def: Type C Niemann-Pick disease associated with a mutation in the gene NPC1, encoding Niemann-Pick C1 protein.",
+"ko": "니만-픽병 C1형",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0023011",
+"concept": "- MONDO:0023011 | Wilson-Mikity syndrome | syn: Wilson-Mikity syndrome; wilson-mikity syndrome | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component",
+"ko": "윌슨-미키티 증후군",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001064",
+"concept": "- MONDO:0001064 | acute eustachian salpingitis | syn: acute otosalpingitis; otosalpingitis, acute | ancestors: otosalpingitis, acute disease, eustachian tube disorder, otitis media | def: Acute form of otosalpingitis.",
+"ko": "급성 이관염",
+"alt": [
+"급성 이관난관염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+}
+]

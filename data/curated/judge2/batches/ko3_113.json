@@ -1,0 +1,256 @@
+[
+{
+"id": "MONDO:0013191",
+"concept": "- MONDO:0013191 | focal segmental glomerulosclerosis 5 | syn: focal segmental glomerulosclerosis 5; focal segmental glomerulosclerosis caused by mutation in INF2; focal segmental glomerulosclerosis type 5; FSGS5 | ancestors: inherited focal segmental glomerulosclerosis, inherited kidney disorder, focal segmental glomerulosclerosis, hereditary disease | def: Any focal segmental glomerulosclerosis in which the cause of the disease is a mutation in the INF2 gene.",
+"ko": "국소 분절 사구체경화증 5형",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021117",
+"concept": "- MONDO:0021117 | lung neoplasm | syn: lung neoplasm; lung neoplasm (disease); lung neoplasms; lung tumor | ancestors: lung disorder, respiratory tract neoplasm, neoplasm of thorax, lower respiratory tract disorder | def: A benign or malignant, primary or metastatic neoplasm involving the lungs. Representative examples of benign neoplasms include adenoma, papilloma, chondroma, and endobronchial lipoma. Representative e...",
+"ko": "폐 신생물",
+"alt": [
+"폐 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019967",
+"concept": "- MONDO:0019967 | Kienbock disease | syn: aseptic necrosis of the lunate bone; Kienböck Disease; Lunatomalacia; osteochondritis of the lunate bone | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder | def: Kienbock disease is a rare bone disorder of unknown etiology characterized clinically by osteonecrosis of the carpal lunate, eventually leading to collapse of the lunate bone impacting wrist function.",
+"ko": "킨뵈크병",
+"alt": [
+"월상골 무혈성 괴사"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0018965",
+"concept": "- MONDO:0018965 | Alport syndrome | syn: Alport deafness-nephropathy; Alport syndrome; Alport's syndrome | ancestors: syndromic disease, hereditary nephritis, disease by body system or component, nephritis | def: A rare renal disease characterized by glomerular nephropathy with hematuria progressing to end-stage renal disease (ESRD), frequently associated with sensorineural deafness, and occasionally with ocul...",
+"ko": "알포트 증후군",
+"alt": [],
+"organs": [
+"renal",
+"ocular",
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000263",
+"concept": "- MONDO:0000263 | laryngotracheitis | ancestors: laryngitis, tracheitis, laryngeal disorder, inflammatory disease | def: An inflammation of both larynx and trachea.",
+"ko": "후두기관염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005311",
+"concept": "- MONDO:0005311 | atherosclerosis | syn: atherosclerosis of artery | ancestors: arteriosclerosis disorder, arterial disorder, vascular disorder, cardiovascular disorder | def: A disease characterized by the build-up of fatty material and calcium deposition in the arterial wall resulting in partial or complete occlusion of the arterial lumen.",
+"ko": "죽상경화증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002277",
+"concept": "- MONDO:0002277 | arteriosclerosis disorder | syn: arterial sclerosis; arteriosclerosis; arteriosclerotic cardiovascular disease; vascular sclerosis | ancestors: arterial disorder, vascular disorder, cardiovascular disorder, disease by body system or component | def: A vascular disorder characterized by thickening and hardening of the walls of the arteries.",
+"ko": "동맥경화증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021235",
+"concept": "- MONDO:0021235 | external ear neoplasm | syn: external ear neoplasm (disease); external Ear tumor; external ear tumor; external Ear tumour | ancestors: external ear disorder, ear neoplasm, auditory system disorder, disorder of ear | def: A neoplasm (disease) that involves the external ear.",
+"ko": "외이 신생물",
+"alt": [
+"외이 종양"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024422",
+"concept": "- MONDO:0024422 | auditory perceptual disorders | syn: disorder of sensory perception of sound; sensory perception of sound disease | ancestors: perceptual disorders, nervous system disorder, disease by body system or component, human disease | def: Acquired or developmental cognitive disorders of AUDITORY PERCEPTION characterized by a reduced ability to perceive information contained in auditory stimuli despite intact auditory pathways. Affected...",
+"ko": "청각 지각 장애",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003809",
+"concept": "- MONDO:0003809 | malignant mediastinum hemangiopericytoma | syn: malignant hemangiopericytoma of mediastinum; malignant hemangiopericytoma of the mediastinum; malignant mediastinal hemangiopericytoma; mediastinum hemangiopericytoma | ancestors: hemangiopericytoma, malignant, neoplasm of mediastinum, hemangiopericytoma, solitary fibrous tumor | def: A malignant hemangiopericytoma arising in the mediastinum.",
+"ko": "종격동 악성 혈관주위세포종",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001262",
+"concept": "- MONDO:0001262 | African histoplasmosis | syn: African histoplasmosis; Histoplasma capsulatum var. duboisii caused disease or disorder; Histoplasma capsulatum var. duboisii disease or disorder; Histoplasma capsulatum var. duboisii infectious disease | ancestors: Histoplasma capsulatum infectious disease, histoplasmosis, primary systemic mycosis, systemic mycosis | def: An disease or disorder caused by infection with Histoplasma capsulatum var. duboisii.",
+"ko": "아프리카 히스토플라스마증",
+"alt": [
+"두보아시 히스토플라스마증"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006941",
+"concept": "- MONDO:0006941 | rat-bite fever | syn: spirillosis; Streptobacillosis | ancestors: bacterial infectious disease, vector-borne disease, infectious disease, disease of primarily extrinsic mechanism | def: An infectious disease that is caused transmitted by the bite of a rat. Two species of bacteria can cause the infection: Streptobacillus moniliformis and Spirillum minus.",
+"ko": "서교열",
+"alt": [
+"쥐물림열"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0015612",
+"concept": "- MONDO:0015612 | Dent disease | syn: Dent syndrome; low-molecular-weight proteinuria with hypercalciuria and nephrocalcinosis; renal Fanconi syndrome with nephrocalcinosis and renal stones; X-linked recessive hypercalciuric hypophosphatemic rickets | ancestors: renal tubular transport disease, inherited renal tubular disease, kidney disorder, renal tubule disorder | def: Dent disease is a rare genetic renal tubular disease characterized by manifestations of proximal tubule dysfunction.",
+"ko": "덴트병",
+"alt": [
+"덴트 증후군"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001379",
+"concept": "- MONDO:0001379 | ureteric orifice cancer | syn: cancer of ureteral orifice; malignant neoplasm of ureteral orifice; malignant tumour of ureteric orifice; malignant ureteral orifice neoplasm | ancestors: bladder dome cancer, ureter cancer, urinary bladder cancer, malignant urinary system neoplasm | def: A malignant neoplasm involving the ureteral orifice.",
+"ko": "요관구암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009831",
+"concept": "- MONDO:0009831 | malignant pancreatic neoplasm | syn: cancer of pancreas; malignant neoplasm of pancreas; malignant neoplasm of the pancreas; malignant pancreas neoplasm | ancestors: digestive system cancer, pancreatic neoplasm, digestive system disorder, cancer | def: A malignant neoplasm involving the pancreas.",
+"ko": "악성 췌장 신생물",
+"alt": [
+"췌장암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0011812",
+"concept": "- MONDO:0011812 | Duane-radial ray syndrome | syn: acro-renal-ocular syndrome; DR syndrome; DRRS; Duane anomaly with radial ray abnormalities and deafness | ancestors: autosomal dominant disease, syndromic disease, dysostosis, congenital limb malformation | def: A syndrome of multiple congenital anomalies and is characterized by ocular manifestations (uni- or bilateral Duane anomaly (95% of cases), congenital optic nerve hypoplasia or optic disk coloboma), bi...",
+"ko": "두안-요골열 증후군",
+"alt": [],
+"organs": [
+"renal",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016067",
+"concept": "- MONDO:0016067 | Crandall syndrome | syn: alopecia-deafness-hypogonadism syndrome; alopecia-sensorineural deafness-hypogonadism syndrome | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: This syndrome is characterized by progressive sensorineural deafness, alopecia and hypogonadism with LH and GH deficiencies. It has been described in three brothers. It resembles Bjrnstad's syndrome t...",
+"ko": "크랜덜 증후군",
+"alt": [
+"탈모-난청-성선기능저하 증후군"
+],
+"organs": [
+"dermatologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018034",
+"concept": "- MONDO:0018034 | thalidomide embryopathy | syn: fetal thalidomide syndrome; foetal thalidomide syndrome; thalidomide embryopathy syndrome; thalidomide-induced birth defect | ancestors: syndromic disease, toxic or drug-related embryofetopathy, dysostosis, congenital limb malformation | def: A group of anomalies presented in infants as a result of in utero exposure (between 20-36 days after fertilization) to thalidomide, a sedative used in treatment of a range of conditions, including mor...",
+"ko": "탈리도마이드 배아병증",
+"alt": [
+"탈리도마이드 증후군"
+],
+"organs": [
+"cardiovascular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006107",
+"concept": "- MONDO:0006107 | benign thyroid gland neoplasm | syn: benign neoplasm of the thyroid; benign neoplasm of the thyroid gland; benign neoplasm of thyroid; benign neoplasm of thyroid gland | ancestors: benign endocrine neoplasm, thyroid tumor, endocrine gland neoplasm, benign neoplasm | def: A benign neoplasm arising from the thyroid gland.",
+"ko": "양성 갑상선 신생물",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009983",
+"concept": "- MONDO:0009983 | retinitis pigmentosa-intellectual disability-deafness-hypogenitalism syndrome | syn: retinitis pigmentosa-intellectual disability- labyrinthine deafness-hypogenitalism syndrome; retinitis pigmentosa-intellectual disability-sensorineural hearing loss-hypogenitalism syndrome | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism | def: Retinitis pigmentosa - intellectual disability - deafness - hypogenitalism is an extremely rare syndromic retinitis pigmentosa characterized by pigmentary retinopathy, diabetes mellitus with hyperinsu...",
+"ko": "망막색소변성-지적장애-청각장애-성기저형성 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

@@ -1,0 +1,262 @@
+[
+{
+"id": "MONDO:0002552",
+"concept": "- MONDO:0002552 | vascular myelopathy | syn: vascular myelopathies | ancestors: spinal cord disorder, central nervous system disorder, nervous system disorder, disease by body system or component",
+"ko": "혈관성 척수병증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005382",
+"concept": "- MONDO:0005382 | bone Paget disease | syn: bone Paget disease; bone Paget's disease; osseous Paget's disease; osteitis deformans | ancestors: hyperostosis, hereditary disease, metabolic bone disorder, bone remodeling disease | def: A disease of bone that initially results in the excessive resorption of bone (by osteoclasts) followed by the replacement of normal bone marrow with vascular and fibrous tissue.",
+"ko": "뼈 파제트병",
+"alt": [
+"파제트병"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0006678",
+"concept": "- MONDO:0006678 | bladder calculus | ancestors: lower urinary tract calculus, urinary bladder disorder, urolithiasis, urinary system disorder | def: A concretion in the urinary bladder.",
+"ko": "방광결석",
+"alt": [
+"방광 결석"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009575",
+"concept": "- MONDO:0009575 | thiamine-responsive megaloblastic anemia syndrome | syn: Rogers syndrome; thiamine metabolism dysfunction syndrome 1; thiamine-responsive anemia syndrome; thiamine-responsive megaloblastic anemia syndrome | ancestors: thiamine-responsive dysfunction syndrome, autosomal recessive disease, vitamin B12- and folate-independent constitutional megaloblastic anemia, disorder of thiamine metabolism and transport | def: Thiamine-responsive megaloblastic anemia (TRMA) is characterized by a triad of megaloblastic anemia, non-type I diabetes mellitus, and sensorineural deafness.",
+"ko": "티아민 반응성 거대적아구성 빈혈 증후군",
+"alt": [
+"로저스 증후군"
+],
+"organs": [
+"haematologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0022529",
+"concept": "- MONDO:0022529 | BK-virus nephropathy | syn: BK virus nephropathy; BKN; kidney disease caused by BK polyomavirus; nephropathy caused by BK polyomavirus | ancestors: hantavirus hemorrhagic fever with renal syndrome, renal infectious disease, hantavirus infectious disease, kidney disorder",
+"ko": "BK 바이러스 신병증",
+"alt": [
+"BK 바이러스 신장병증"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012456",
+"concept": "- MONDO:0012456 | congenital primary aphakia | syn: anterior segment dysgenesis 2, multiple subtypes; aphakia, congenital primary; congenital absence of lens; congenital aphakia | ancestors: lens disorder, anterior segment dysgenesis, eye disorder, hereditary disease | def: Congenital primary aphakia (CPA) is characterized by an absence of the lens. The prevalence is unknown. CPA can be associated with variable secondary ocular defects (including aplasia/dysplasia of the...",
+"ko": "선천성 원발성 무수정체증",
+"alt": [
+"선천성 수정체 결손"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019509",
+"concept": "- MONDO:0019509 | cutaneous leukocytoclastic angiitis | syn: cutaneous hypersensitivity vasculitis; cutaneous leukocytoclastic vasculitis; cutaneous small vessel vasculitis; cutaneous small-vessel vasculitis | ancestors: immune complex mediated vasculitis, vasculitis, vascular disorder, inflammatory disease | def: Cutaneous leukocytoclastic angiitis is a small-vessel vasculitis presenting with palpable purpura and urticarial lesions which predate the purpuric lesions most frequently observed on the legs. System...",
+"ko": "피부 백혈구파괴혈관염",
+"alt": [
+"피부 과민성 혈관염"
+],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0019015",
+"concept": "- MONDO:0019015 | omphalocele | syn: congenital omphalocele; exomphalos; omphalocele; omphalocele (disease) | ancestors: abdominal wall malformation, developmental defect during embryogenesis, disorder of development or morphogenesis, disease by developmental or physiological process | def: Omphalocele is an embryopathy classified in the group of abdominal celosomias and is characterized by a large hernia of the abdominal wall, centered on the umbilical cord, in which the protruding visc...",
+"ko": "제대류",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0007417",
+"concept": "- MONDO:0007417 | Darier disease | syn: Darier disease; Darier's disease; Darier-White disease; Keratosis Follicularis | ancestors: epidermal disease, hereditary skin disorder, skin disorder, hereditary disease | def: Darier disease (DD) is a keratinization disorder characterized by the development of keratotic papules in seborrheic areas and specific nail anomalies.",
+"ko": "다리에병",
+"alt": [
+"다리에-화이트병"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005852",
+"concept": "- MONDO:0005852 | mitral valve stenosis | syn: mitral stenosis | ancestors: mitral valve disorder, heart valve disorder, heart disorder, cardiovascular disorder | def: Narrowing of the left atrioventricular mitral orifice.",
+"ko": "승모판 협착증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021747",
+"concept": "- MONDO:0021747 | Acanthamoeba infectious disease | syn: Acanthamoeba infection; infection by Acanthamoeba | ancestors: infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: An infectious disease involving the Acanthamoeba.",
+"ko": "아칸트아메바 감염병",
+"alt": [
+"아칸타메바 감염증"
+],
+"organs": [
+"neurologic",
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003689",
+"concept": "- MONDO:0003689 | familial hemolytic anemia | syn: congenital hemolytic anemia; hereditary hemolytic anemia | ancestors: hemolytic anemia, hereditary disease, normocytic anemia, disease of genetic or genomic mechanism | def: A congenital hemolytic anemia caused by defects of the erythrocyte membrane, enzyme deficiencies, or hemoglobinopathies.",
+"ko": "가족성 용혈성 빈혈",
+"alt": [
+"선천성 용혈성 빈혈",
+"유전성 용혈성 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0019952",
+"concept": "- MONDO:0019952 | congenital myopathy | syn: congenital myopathy | ancestors: myopathy, skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder",
+"ko": "선천성 근병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012662",
+"concept": "- MONDO:0012662 | Usher syndrome type 2D | syn: USH2D; Usher syndrome caused by mutation in WHRN; Usher syndrome type 2D; WHRN Usher syndrome | ancestors: Usher syndrome type 2, Usher syndrome, syndromic disease, autosomal recessive disease | def: Any Usher syndrome in which the cause of the disease is a mutation in the WHRN gene.",
+"ko": "어셔 증후군 2D형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004662",
+"concept": "- MONDO:0004662 | heterophyiasis | syn: Heterophyes infection | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: An infection that is caused by the intestinal fluke Heterophyes heterophyes, which is most commonly found in Asia, the Middle East, and Africa, and which is transmitted via consumption of contaminated...",
+"ko": "이형흡충증",
+"alt": [
+"헤테로피아증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0043472",
+"concept": "- MONDO:0043472 | ectopic ACTH secretion syndrome | syn: ectopic ACTH secretion; ectopic ACTH secretion syndrome; ectopic ACTH syndrome; hypercortisolism due to nonpituitary tumor | ancestors: adrenal gland disorder, neoplastic syndrome, endocrine system disorder, syndromic disease | def: A syndrome characterized by abnormal secretion of adrenocorticotrophic hormone in conjunction with neoplastic growth occurring anywhere in the body. The most common associations are tumors of the bron...",
+"ko": "이소성 ACTH 분비 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004619",
+"concept": "- MONDO:0004619 | measles | syn: Measles morbillivirus caused disease or disorder; Measles morbillivirus disease or disorder; Measles morbillivirus infectious disease; morbilli | ancestors: morbillivirus infectious disease, Paramyxoviridae infectious disease, Mononegavirales infectious disease, primary viral infectious disease | def: A highly contagious viral infection caused by the measles virus. Symptoms appear 8-12 days after exposure and include a rash, cough, fever and muscle pains that can last 4-7 days. Measles vaccines are...",
+"ko": "홍역",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002042",
+"concept": "- MONDO:0002042 | mechanical ectropion | ancestors: ectropion, eyelid disorder, eye adnexa disorder, eye disorder | def: An ectropion with a mechanical etiology.",
+"ko": "기계적 눈꺼풀 바깥말림",
+"alt": [
+"기계적 안검외반"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0032934",
+"concept": "- MONDO:0032934 | genitourinary and/or brain malformation syndrome | syn: genitourinary and/or brain malformation syndrome; genitourinary and/or/brain malformation syndrome; GUB syndrome; UBM syndrome | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "비뇨생식기 및/또는 뇌 기형 증후군",
+"alt": [
+"GUB 증후군"
+],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005751",
+"concept": "- MONDO:0005751 | epidemic pleurodynia | syn: Bornholm disease; epidemic myalgia | ancestors: viral infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: An acute, febrile, infectious disease generally occurring in epidemics. It is usually caused by coxsackieviruses B and sometimes by coxsackieviruses A; echoviruses; or other enteroviruses.",
+"ko": "유행성 흉막통",
+"alt": [
+"본홀름병"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+}
+]

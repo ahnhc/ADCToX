@@ -1,0 +1,244 @@
+[
+{
+"id": "MONDO:0007417",
+"concept": "- MONDO:0007417 | Darier disease | syn: Darier disease; Darier's disease; Darier-White disease; Keratosis Follicularis | ancestors: epidermal disease, hereditary skin disorder, skin disorder, hereditary disease | def: Darier disease (DD) is a keratinization disorder characterized by the development of keratotic papules in seborrheic areas and specific nail anomalies.",
+"ko": "다리에병",
+"alt": [
+"다리에-화이트병"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006534",
+"concept": "- MONDO:0006534 | cholinergic urticaria | ancestors: physical urticaria, urticaria, dermatitis, skin disorder | def: A type of physical urticarias (or hives) that appears when a person is sweating.",
+"ko": "콜린성 두드러기",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005995",
+"concept": "- MONDO:0005995 | trichostrongylosis | syn: Trichostrongyliasis; Trichostrongylus caused disease or disorder; Trichostrongylus disease or disorder; Trichostrongylus infectious disease | ancestors: trichostrongyloidiasis, Rhabditida infectious disease, Nematoda infectious disease, helminthiasis | def: Infestation with nematode worms of the genus trichostrongylus. Humans become infected by swallowing larvae, usually with contaminated food or drink, although the larvae may penetrate human skin.",
+"ko": "모양선충증",
+"alt": [
+"트리코스트롱길루스증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019473",
+"concept": "- MONDO:0019473 | enteropathy-associated T-cell lymphoma | syn: EATL; EATL, type I; enteropathy associated T-cell lymphoma; enteropathy-associated T-cell lymphoma, type I | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm | def: An uncommon mature T-cell lymphoma of intraepithelial lymphocytes. It usually arises from the small intestine, most commonly the jejunum or ileum. Other less frequent primary anatomic sites include th...",
+"ko": "장병증 연관 T세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001803",
+"concept": "- MONDO:0001803 | myringitis bullosa hemorrhagica | syn: bullous myringitis | ancestors: tympanic membrane disorder, middle ear disorder, auditory system disorder, disorder of ear | def: A tympanic membrane disease that is characterized by blisters on the eardrum resulting from infection.",
+"ko": "출혈성 수포성 고막염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008867",
+"concept": "- MONDO:0008867 | biliary atresia | syn: atresia of bile ducts; biliary atresia, congenital; congenital biliary atresia; isolated atresia of bile ducts | ancestors: cholestasis, non-neoplastic bile duct disorder, bile duct disorder, endocrine system disorder | def: A rare, biliary tract disease characterized by progressive obliterative cholangiopathy of the intra- and extrahepatic bile ducts, occurring in the embryonic/ perinatal period, leading to severe and pe...",
+"ko": "담도 폐쇄증",
+"alt": [
+"선천성 담도 폐쇄증"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018305",
+"concept": "- MONDO:0018305 | chronic granulomatous disease | syn: CGD; chronic septic granulomatosis | ancestors: hereditary disease, phagocyte bactericidal dysfunction, inflammatory disease, defective phagocytic cell engulfment | def: Chronic granulomatous disease (CGD) is a rare primary immunodeficiency, mainly affecting phagocytes, which is characterized by an increased susceptibility to severe and recurrent bacterial and fungal ...",
+"ko": "만성 육아종병",
+"alt": [
+"만성 육아종증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0016175",
+"concept": "- MONDO:0016175 | cutis laxa | syn: cutis laxa; elastolysis | ancestors: integumentary system disorder, developmental defect during embryogenesis, disease by body system or component, disorder of development or morphogenesis | def: Cutis laxa (CL) is an inherited or acquired connective tissue disorder characterized by wrinkled, redundant and sagging inelastic skin associated with skeletal and developmental anomalies and, in some...",
+"ko": "피부이완증",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015193",
+"concept": "- MONDO:0015193 | hydrops fetalis | syn: fetal anasarca; fetal hydrops; foetal anasarca; foetal hydrops | ancestors: developmental defect during embryogenesis, disorder of development or morphogenesis, disease by developmental or physiological process, human disease | def: Hydrops fetalis is a severe and challenging fetal condition usually defined as the excessive accumulation of fetal fluid within the fetal extravascular compartments and body cavities that manifests as...",
+"ko": "태아 수종",
+"alt": [
+"태아 전신부종"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0100076",
+"concept": "- MONDO:0100076 | juvenile idiopathic scoliosis | ancestors: idiopathic scoliosis, scoliosis, idiopathic disease, disease of bone structure | def: A scoliosis with no known cause arising in a juvenile.",
+"ko": "소아기 특발성 척추측만증",
+"alt": [
+"소아 특발성 척추옆굽음증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0001752",
+"concept": "- MONDO:0001752 | alveolar periostitis | syn: alveolitis of jaw; dry socket; extrinsic allergic alveolitis of jaw skeleton; jaw skeleton extrinsic allergic alveolitis | ancestors: periostitis, mouth disorder, connective tissue disorder, bone disorder | def: A condition sometimes occurring after tooth extraction, particularly after traumatic extraction, resulting in a dry appearance of the exposed bone in the socket, due to disintegration or loss of the b...",
+"ko": "치조 골막염",
+"alt": [
+"건성 발치와"
+],
+"organs": [
+"gastrointestinal",
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001331",
+"concept": "- MONDO:0001331 | conjunctival deposit | ancestors: conjunctival disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "결막 침착물",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0022208",
+"concept": "- MONDO:0022208 | crystal arthropathy | syn: crystal arthropathy | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component",
+"ko": "결정 관절병증",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 12
+},
+{
+"id": "MONDO:0001945",
+"concept": "- MONDO:0001945 | postencephalitic Parkinson disease | syn: postencephalitic Parkinsonism; postencephalitic parkinsonism | ancestors: secondary Parkinson disease, parkinsonian disorder, neurodegenerative disease, basal ganglia disorder | def: A disease believed to be caused by a viral illness that triggers degeneration of the nerve cells in the substantia nigra. Overall, this degeneration leads to clinical parkinsonism.",
+"ko": "뇌염후 파킨슨병",
+"alt": [
+"뇌염후 파킨슨증"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001642",
+"concept": "- MONDO:0001642 | hordeolum externum | ancestors: hordeolum, blepharitis, staphylococcus aureus infection, skin disease caused by bacterial infection | def: A hordeolum that results from obstruction and infection of an eyelash follicle and adjacent glands of Zeis or Moll glands. Follicle obstruction may be associated with blepharitis.",
+"ko": "외맥립종",
+"alt": [
+"겉다래끼"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018896",
+"concept": "- MONDO:0018896 | thrombotic thrombocytopenic purpura | syn: Moschcowitz disease; Moschowitz disease; TTP | ancestors: thrombophilia, thrombocytopenic purpura, blood coagulation disease, thrombocytopenia | def: Thrombotic thrombocytopenic purpura (TTP) is an aggressive and life-threatening form of thrombotic microangiopathy (TMA) characterized by profound peripheral thrombocytopenia, microangiopathic hemolyt...",
+"ko": "혈전성 혈소판감소성 자반증",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001982",
+"concept": "- MONDO:0001982 | Niemann-Pick disease | syn: lipoid histiocytosis (classical phosphatide); Niemann-Pick disease with cholesterol esterification block; Niemann-Pick disease, subacute juvenile form; sphingomyelin/cholesterol lipidosis | ancestors: non-Langerhans cell histiocytosis, sphingolipidosis, histiocytosis, lysosomal lipid storage disorder | def: A group of inherited, severe metabolic disorders in which sphingomyelin accumulates in lysosomes in cells. The lysosomes normally transport material through and out of the cell.",
+"ko": "니만-픽병",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018310",
+"concept": "- MONDO:0018310 | Langerhans cell histiocytosis | syn: histiocytosis X; Langerhans cell granulomatosis; Langerhans cell histiocytosis; Langerhans cell histiocytosis, NOS | ancestors: histiocytosis, leukocyte disorder, dendritic cell tumor, phagocytic cell dysfunction | def: Langerhans cell histiocytosis (LCH) is a systemic disease associated with the proliferation and accumulation (usually in granulomas) of Langerhans cells in various tissues.",
+"ko": "랑게르한스세포 조직구증",
+"alt": [
+"조직구증 X"
+],
+"organs": [
+"haematologic",
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0001261",
+"concept": "- MONDO:0001261 | Mobitz type II atrioventricular block | syn: AV block second degree Mobitz type II; AV block second degree Möbitz type II; Mobitz (type) II atrioventricular block; Mobitz II | ancestors: second-degree atrioventricular block, atrioventricular block, heart conduction disease, atrioventricular dissociation | def: A disorder characterized by an electrocardiographic finding of intermittent failure of atrial electrical impulse conduction to the ventricles, characterized by a relatively constant PR interval prior ...",
+"ko": "모비츠 2형 방실차단",
+"alt": [
+"모비츠 II형 방실차단"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005438",
+"concept": "- MONDO:0005438 | metastatic malignant neoplasm in the lymph nodes | syn: Metastases to lymph nodes; metastasis to lymph node; metastatic malignant neoplasm to the lymph nodes; metastatic neoplasm to the lymph node | ancestors: lymph node cancer, lymphatic system cancer, lymph node neoplasm, immune system cancer | def: The spread of a malignant neoplasm to the lymph nodes.",
+"ko": "림프절 전이성 악성 신생물",
+"alt": [
+"림프절 전이"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+}
+]

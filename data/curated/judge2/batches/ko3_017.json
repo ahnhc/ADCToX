@@ -1,0 +1,247 @@
+[
+{
+"id": "MONDO:0700058",
+"concept": "- MONDO:0700058 | Morton neuroma | syn: interdigital nerve compression syndrome; interdigital neuralgia; interdigital neuritis; interdigital neuroma | ancestors: neuroma, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: Compressive neuropathy of the forefoot interdigital nerve chiefly due to compression and irritation at the plantar aspect of the transverse intermetatarsal ligament. It is not a true neuroma as the co...",
+"ko": "모튼 신경종",
+"alt": [
+"지간신경 압박 증후군"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016820",
+"concept": "- MONDO:0016820 | Moyamoya disease | syn: idiopathic Moyamoya disease; progressive intracranial arterial occlusion | ancestors: cerebral arterial disease, hereditary neurological disease, intracranial arterial disease, hereditary disease | def: Moyamoya disease (MMD) is a rare intracranial arteriopathy involving progressive stenosis of the cerebral vasculature located at the base of the brain causing transient ischemic attacks or strokes.",
+"ko": "모야모야병",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003497",
+"concept": "- MONDO:0003497 | renal pelvis squamous cell carcinoma | syn: epidermoid carcinoma of kidney pelvis; epidermoid carcinoma of renal pelvis; epidermoid carcinoma of the kidney pelvis; epidermoid carcinoma of the renal pelvis | ancestors: squamous cell carcinoma, renal pelvis carcinoma, squamous cell neoplasm, carcinoma | def: A squamous cell carcinoma that involves the renal pelvis.",
+"ko": "신우 편평세포암종",
+"alt": [
+"콩팥깔때기 편평세포암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009276",
+"concept": "- MONDO:0009276 | Bernard-Soulier syndrome | syn: Bernard-Soulier syndrome; giant platelet disorder, isolated; giant platelet syndrome; Hemorrhagiparous thrombocytic dystrophy | ancestors: inherited bleeding disorder, platelet-type, syndromic disease, hemorrhagic disease, blood platelet disease | def: Bernard Soulier syndrome (BSS) is an inherited platelet disorder characterized by mild to severe bleeding tendency, macrothrombocytopenia and absent ristocetin-induced platelet agglutination.",
+"ko": "베르나르-술리에 증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004240",
+"concept": "- MONDO:0004240 | posterior urethra cancer | syn: malignant neoplasm of posterior urethra; malignant neoplasm of the posterior urethra; malignant tumor of posterior urethra; malignant tumor of the posterior urethra | ancestors: urethra cancer, malignant urinary system neoplasm, urethra neoplasm, cancer | def: A malignant neoplasm that affects the portion of the urethra that is close to the bladder.",
+"ko": "후부 요도암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003318",
+"concept": "- MONDO:0003318 | mixed cell type kidney Wilms' tumor | syn: mixed cell type kidney adenosarcoma; mixed cell type kidney Wilms tumor; mixed cell type kidney Wilms tumour; mixed cell type nephroblastoma | ancestors: kidney Wilms tumor, kidney cancer, Wilms tumor, malignant urinary system neoplasm | def: Wilms tumor of the kidney characterized by the presence of blastema, epithelial, and mesenchymal components (triphasic pattern) or a combination of two of them (biphasic pattern).",
+"ko": "혼합세포형 신장 윌름스 종양",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021402",
+"concept": "- MONDO:0021402 | polyp of external auditory canal | syn: external acoustic meatus polyp; external auditory canal polyp; external Ear polyp; polyp of the external auditory canal | ancestors: polyp, external ear neoplasm, cancer or benign tumor, external ear disorder | def: A polyp that involves the external acoustic meatus.",
+"ko": "외이도 용종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001299",
+"concept": "- MONDO:0001299 | diabetic autonomic neuropathy | ancestors: autonomic neuropathy, diabetic neuropathy, autonomic nervous system disorder, peripheral neuropathy | def: Autonomic neuropathy that is caused by diabetes mellitus.",
+"ko": "당뇨병성 자율신경병증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006497",
+"concept": "- MONDO:0006497 | cerebral palsy | syn: infantile cerebral palsy | ancestors: palsy, cerebral cortex disorder, central nervous system disorder, brain disorder | def: A group of disorders affecting the development of movement and posture, often accompanied by disturbances of sensation, perception, cognition, and behavior. It results from damage to the fetal or infa...",
+"ko": "뇌성마비",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0017312",
+"concept": "- MONDO:0017312 | Perrault syndrome | syn: Perrault syndrome; XX gonodal dysgenesis-deafness syndrome | ancestors: autosomal recessive disease, mitochondrial oxidative phosphorylation disorder, inherited primary ovarian failure, autosomal genetic disease | def: Perrault syndrome (PS) is characterized by the association of ovarian dysgenesis in females with sensorineural hearing impairment. In more recent PS reports, some authors have described neurologic abn...",
+"ko": "페로 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0700126",
+"concept": "- MONDO:0700126 | trisomy 21 | ancestors: Down syndrome, trisomy, chromosome 21 disorder, aneuploidy | def: A chromosomal disorder consisting of the presence of an extra chromosome 21.",
+"ko": "21삼체성",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0031010",
+"concept": "- MONDO:0031010 | odontochondrodysplasia 2 with hearing loss and diabetes | syn: ODCD2; ondontochondrodysplasia 2 with hearing loss and diabetes | ancestors: odontochondrodysplasia, spondylometaphyseal dysplasia, TRIP11-related skeletal dysplasia, skeletal dysplasia",
+"ko": "치아연골이형성증 2, 난청 및 당뇨병 동반",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001127",
+"concept": "- MONDO:0001127 | tibialis tendinitis | syn: tendinitis of tibialis; tibialis tendinitis | ancestors: tendinitis, myositis disease, disease of the tendon, myopathy | def: A tendinitis that involves the tibialis.",
+"ko": "경골근 건염",
+"alt": [
+"정강근 힘줄염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0001065",
+"concept": "- MONDO:0001065 | supine hypotensive syndrome | ancestors: hypotensive disorder, arterial disorder, vascular disorder, cardiovascular disorder | def: A vascular disease that is characterized by severe supine hypotension in late pregnancy, whose clinical presentation ranges from minimal cardiovascular alterations to severe shock, resulting from infe...",
+"ko": "앙와위 저혈압 증후군",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005438",
+"concept": "- MONDO:0005438 | metastatic malignant neoplasm in the lymph nodes | syn: Metastases to lymph nodes; metastasis to lymph node; metastatic malignant neoplasm to the lymph nodes; metastatic neoplasm to the lymph node | ancestors: lymph node cancer, lymphatic system cancer, lymph node neoplasm, immune system cancer | def: The spread of a malignant neoplasm to the lymph nodes.",
+"ko": "림프절 전이성 악성 신생물",
+"alt": [
+"림프절 전이"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0850421",
+"concept": "- MONDO:0850421 | acute hemorrhagic pancreatitis | ancestors: acute pancreatitis, pancreatitis, acute disease, pancreas disorder | def: An acute pancreatits that is characterized by acute inflammation of the pancreas in which the initial edematous pancreatitis evolved into necrosis accompanied by hemorrhage.",
+"ko": "급성 출혈성 췌장염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003388",
+"concept": "- MONDO:0003388 | ampulla of vater clear cell adenocarcinoma | syn: ampulla of Vater clear cell adenocarcinoma; hepatopancreatic ampulla clear cell adenocarcinoma | ancestors: ampulla of vater adenocarcinoma, extrahepatic bile duct clear cell adenocarcinoma, extrahepatic bile duct adenocarcinoma, duodenal adenocarcinoma | def: A carcinoma with glandular differentiation arising from the ampulla of Vater. Morphologically, it is characterized by the presence of glycogen-rich cells with hyperchromatic nuclei.",
+"ko": "바터 팽대부 투명세포 선암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005680",
+"concept": "- MONDO:0005680 | Brill-Zinsser disease | syn: Brill disease; Brill's disease; recrudescent typhus | ancestors: epidemic louse-borne typhus, typhus, Rickettsiaceae infectious disease, vector-borne disease | def: A delayed relapse of epidemic typhus, caused by Rickettsia prowazekii.",
+"ko": "브릴-진서병",
+"alt": [
+"재발성 발진티푸스"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006903",
+"concept": "- MONDO:0006903 | peroneal nerve paralysis | syn: nerve palsy, peroneal; palsy, peroneal nerve | ancestors: peripheral nervous system disorder, nervous system disorder, disease by body system or component, human disease | def: Paralysis of the nerves located in the legs.",
+"ko": "종아리신경 마비",
+"alt": [
+"비골신경 마비"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019323",
+"concept": "- MONDO:0019323 | pemphigus erythematosus | syn: seborrheic pemphigus; Senear-Usher syndrome | ancestors: pemphigus, autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease | def: Pemphigus erythematosus is a rare superficial pemphigus disease characterized clinically by well-demarcated, localized, erythematous, scaly, hyperkeratotic, crusted plaques, with frequent butterfly di...",
+"ko": "홍반성 천포창",
+"alt": [
+"세나-어셔 증후군"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+}
+]

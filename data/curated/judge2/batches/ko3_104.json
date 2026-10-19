@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0009705",
+"concept": "- MONDO:0009705 | carnitine palmitoyl transferase 1A deficiency | syn: carnitine palmitoyl transferase 1A deficiency; Carnitine palmitoyl transferase IA deficiency; carnitine palmitoyl transferase IA deficiency; Carnitine Palmitoyltransferase 1A Deficiency | ancestors: inherited fatty acid metabolism disorder, carnitine palmitoyl transferase deficiency, inherited lipid metabolism disorder, disorder of carnitine cycle and carnitine transport | def: Carnitine palmitoyltransferase 1A (CPT-1A) deficiency is an inborn error of metabolism that affects mitochondrial oxidation of long chain fatty acids (LCFA) in the liver and kidneys, and is characteri...",
+"ko": "카르니틴 팔미토일전달효소 1A 결핍증",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007037",
+"concept": "- MONDO:0007037 | achondroplasia | syn: ACH; achondroplasia | ancestors: osteochondrodysplasia, FGFR3-related chondrodysplasia, bone development disease, skeletal dysplasia | def: Achondroplasia is the most common form of chondrodysplasia, characterized by rhizomelia, exaggerated lumbar lordosis, brachydactyly, and macrocephaly with frontal bossing and midface hypoplasia.",
+"ko": "연골무형성증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0024472",
+"concept": "- MONDO:0024472 | boutonneuse fever | syn: African tick typhus; boutonneuse disease; boutonneuse fever; Conor and Bruch's disease | ancestors: Rickettsia conorii infectious disease, spotted fever, Rickettsiaceae infectious disease, vector-borne disease | def: An infectious disease of the Mediterranean area, the Crimea, Africa, and India, caused by infection with rickettsia conorii subsp. coronorii.",
+"ko": "지중해 반점열",
+"alt": [
+"부토뇌즈열",
+"아프리카 진드기 발진티푸스"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0006740",
+"concept": "- MONDO:0006740 | empty sella syndrome | syn: empty sella; empty sella syndrome | ancestors: syndromic disease, pituitary gland disorder, disease by body system or component, reproductive system disorder | def: Empty sella syndrome (ESS) is a condition that involves the sella turcica, a bony structure at the base of the brain that protects the pituitary gland. There is a primary and secondary form of the con...",
+"ko": "빈 안장 증후군",
+"alt": [
+"공안장 증후군"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008237",
+"concept": "- MONDO:0008237 | phocomelia-ectrodactyly-deafness-sinus arrhythmia syndrome | syn: Stoll-LC)vy-Francfort syndrome; Stoll-Lévy-Francfort syndrome | ancestors: hereditary disease, dysostosis, congenital limb malformation, disease of genetic or genomic mechanism | def: Phocomelia-ectrodactyly-deafness-sinus arrhythmia syndrome is characterized by phocomelia (involving arms more severely), ectrodactyly, ear anomalies (bilateral anomalies of the pinnae), conductive de...",
+"ko": "해표지증-결손지증-난청-굴부정맥 증후군",
+"alt": [
+"스톨-레비-프랑포르 증후군"
+],
+"organs": [
+"cardiovascular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001384",
+"concept": "- MONDO:0001384 | myopia | syn: myopia; myopia (disease); near-sightedness | ancestors: hereditary disease, refractive error, ocular growth disorder, disease of genetic or genomic mechanism | def: The condition in which the individual does not see far distances clearly.",
+"ko": "근시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003996",
+"concept": "- MONDO:0003996 | basal ganglia disorder | syn: basal ganglia disease; collection of basal ganglia disease; collection of basal ganglia disease or disorder; disease of basal ganglia | ancestors: brain disorder, central nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the basal ganglia.",
+"ko": "기저핵 질환",
+"alt": [
+"기저핵병"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0018301",
+"concept": "- MONDO:0018301 | interstitial cystitis | syn: bladder pain syndrome; chronic interstitial cystitis; IC/BPS; IC/PBS | ancestors: connective tissue disorder, chronic cystitis, disease by body system or component, cystitis | def: A rare chronic debilitating urogenital disease characterized by urinary frequency, urgency, and pelvic pain.",
+"ko": "간질성 방광염",
+"alt": [
+"방광통증 증후군"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009583",
+"concept": "- MONDO:0009583 | blepharophimosis - intellectual disability syndrome, Ohdo type | syn: blepharophimosis syndrome, Ohdo type; BMRS, Ohdo type; Ohdo syndrome; Ohdo-Madokoro-Sonoda syndrome | ancestors: Ohdo syndrome and variants, blepharophimosis - intellectual disability syndrome, multiple congenital anomalies/dysmorphic syndrome-intellectual disability, multiple congenital anomalies/dysmorphic syndrome | def: Ohdo blepharophimosis syndrome (OBS) is a multiple congenital malformation syndrome characterized by blepharophimosis, ptosis, dental hypoplasia, hearing impairment and intellectual disability.",
+"ko": "안검열소 지적장애 증후군, 오도형",
+"alt": [
+"오도 증후군"
+],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012191",
+"concept": "- MONDO:0012191 | hepatoencephalopathy due to combined oxidative phosphorylation defect type 1 | syn: combined oxidative phosphorylation deficiency caused by mutation in GFM1; combined oxidative phosphorylation deficiency type 1; GFM1 combined oxidative phosphorylation deficiency; hepatoencephalopathy due to combined oxidative phosphorylation defect type 1 | ancestors: combined oxidative phosphorylation deficiency, mitochondrial oxidative phosphorylation disorder, inborn mitochondrial metabolism disorder, developmental anomaly of metabolic origin | def: Hepatoencephalopathy due to combined oxidative phosphorylation deficiency type 1 is a rare, inherited mitochondrial disorder due to a defect in mitochondrial protein synthesis characterized by intraut...",
+"ko": "산화적 인산화 복합 결함에 의한 간뇌병증 1형",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004865",
+"concept": "- MONDO:0004865 | blue drum syndrome | syn: acute mucoid otitis media | ancestors: acute transudative otitis media, non-suppurative otitis media, acute disease, otitis media | def: A acute transudative otitis media involving thick, viscid and mucuslike fluid effusion due to which the drum appears blue in color.",
+"ko": "청색 고막 증후군",
+"alt": [
+"급성 점액성 중이염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011385",
+"concept": "- MONDO:0011385 | intervertebral disk degenerative disorder | syn: degenerative disk disease; degenerative disorder of intervertebral disc; degenerative disorder of intervertebral disk; IDD | ancestors: vertebral column disorder, hereditary disease, skeletal system disorder, disease of genetic or genomic mechanism | def: Any disease of a degenerative nature that affects the intervertebral disk.",
+"ko": "추간판 퇴행성 질환",
+"alt": [
+"추간판 변성"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0000463",
+"concept": "- MONDO:0000463 | Ochoa syndrome | syn: hydronephrosis-inverted smile syndrome; inverted smile-neurogenic bladder syndrome; Ochoa syndrome; partial facial palsy with urinary abnormalities | ancestors: autosomal recessive disease, autosomal genetic disease, hereditary disease, disease of genetic or genomic mechanism | def: Ochoa syndrome is characterized by the association of severe voiding dysfunction and a characteristic facial expression.",
+"ko": "오초아 증후군",
+"alt": [
+"수신증-역위 미소 증후군"
+],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016765",
+"concept": "- MONDO:0016765 | 19p13.12 microdeletion syndrome | syn: Del(19)(p13.12); monosomy 19p13.12 | ancestors: partial deletion of the short arm of chromosome 19, partial deletion of chromosome 19, syndrome caused by partial chromosomal deletion, chromosome 19 disorder | def: 19p13.12 microdeletion syndrome is a newly described syndrome characterized by moderate to severe developmental delay, language delay, bilateral sensorineural and/or conductive hearing loss and facial...",
+"ko": "19p13.12 미세결실 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007016",
+"concept": "- MONDO:0007016 | vitamin A deficiency | syn: vitamin A deficiency; vitamin A deficiency (disease) | ancestors: vitamin deficiency disorder, nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism | def: Deficiency of vitamin A due to malnutrition, malabsorption, or dietary lack. It is manifested with reduced night vision, night blindness, and xerophthalmia.",
+"ko": "비타민 A 결핍증",
+"alt": [],
+"organs": [
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009324",
+"concept": "- MONDO:0009324 | Hartnup disease | syn: aminoaciduria, Hartnup type; Hartnup disease; Hartnup disorder | ancestors: inborn disorder of amino acid transport, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: Hartnup disease is a rare metabolic disorder belonging to the neutral aminoacidurias and characterized by abnormal renal and gastrointestinal transport of neutral amino acids (tryptophan, alanine, asp...",
+"ko": "하트넙병",
+"alt": [],
+"organs": [
+"renal",
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0014608",
+"concept": "- MONDO:0014608 | mandibulofacial dysostosis with alopecia | syn: mandibulofacial dysostosis with alopecia; MFDA | ancestors: integumentary system disorder, syndromic disease, hereditary disease, mandibulofacial dysostosis | def: A syndrome characterized by malar and mandibular hypoplasia, typically associated with abnormalities of the ears and eyelids, and with alopecia.",
+"ko": "탈모를 동반한 하악안면 이골증",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008382",
+"concept": "- MONDO:0008382 | retinoschisis, autosomal dominant | syn: autosomal dominant retinoschisis; retinoschisis, autosomal dominant | ancestors: autosomal dominant disease, retinoschisis, inherited retinal dystrophy, autosomal genetic disease | def: Autosomal dominant form of retinoschisis.",
+"ko": "상염색체 우성 망막층간분리증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002185",
+"concept": "- MONDO:0002185 | hyperostosis | syn: bone hypertrophy; hypertrophy of bone; hypertrophy of bone (morphologic abnormality) | ancestors: bone remodeling disease, bone disorder, skeletal system disorder, musculoskeletal system disorder | def: Excessive thickening of bone.",
+"ko": "과골증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 22,
+"new": false
+},
+{
+"id": "MONDO:0005481",
+"concept": "- MONDO:0005481 | contact dermatitis due to nickel | ancestors: contact dermatitis, dermatitis, skin disorder, inflammatory disease | def: A form of allergic contact dermatitis that results from exposure to nickel",
+"ko": "니켈 접촉피부염",
+"alt": [
+"니켈 접촉성 피부염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+}
+]

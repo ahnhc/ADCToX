@@ -1,0 +1,252 @@
+[
+{
+"id": "MONDO:0007023",
+"concept": "- MONDO:0007023 | Yersinia infectious disease | syn: Yersinia <bacteria> infection; yersiniosis | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Infections with bacteria of the genus yersinia.",
+"ko": "예르시니아 감염병",
+"alt": [
+"예르시니아증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011441",
+"concept": "- MONDO:0011441 | complex regional pain syndrome type 1 | syn: Algodystrophy; Complex regional pain syndrome I; complex regional pain syndrome type 1; CRPS I | ancestors: syndromic disease, complex regional pain syndrome, disease by body system or component, chronic pain syndrome | def: Complex regional pain syndrome type 1 (CRPS1) is a form of complex regional pain syndrome in which the pain is disproportionate to any known inciting event and is characterized by continuous pain, all...",
+"ko": "복합부위통증증후군 1형",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008213",
+"concept": "- MONDO:0008213 | pectus excavatum | syn: pectus excavatum; pectus excavatum (disease) | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease | def: A developmental anomaly in which the lower sternum is posteriorly dislocated and concavely deformed, resulting in a funnel-shaped thorax.",
+"ko": "오목가슴",
+"alt": [
+"함몰흉",
+"누두흉"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006680",
+"concept": "- MONDO:0006680 | blue nevus | syn: blue nevus; blue Nevus of skin; blue Nevus of the skin; blue skin Nevus | ancestors: melanocytic nevus, benign neoplasm of skin, melanocytic skin neoplasm, integumentary system benign neoplasm | def: An intradermal nevus characterized by the presence of benign pigmented dendritic spindle-shaped melanocytes. It most frequently occurs in the skin of the distal upper extremities, followed by the lowe...",
+"ko": "청색 모반",
+"alt": [
+"푸른 점"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019586",
+"concept": "- MONDO:0019586 | X-linked nonsyndromic hearing loss | syn: X-linked isolated neurosensory hearing loss type DFN; X-linked isolated sensorineural hearing loss type DFN; X-linked non-syndromic neurosensory hearing loss type DFN; X-linked non-syndromic sensorineural hearing loss type DFN | ancestors: nonsyndromic genetic hearing loss, X-linked deafness, hearing loss disorder, inherited auditory system disease | def: X-linked form of nonsyndromic deafness.",
+"ko": "X연관 비증후군성 난청",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004473",
+"concept": "- MONDO:0004473 | epiglottis cancer | syn: cancer of epiglottis; epiglottic cancer; epiglottic throat cancer; epiglottis cancer | ancestors: epiglottis neoplasm, carcinoma of supraglottis, hypopharyngeal carcinoma, oropharyngeal carcinoma | def: A malignant neoplasm that affects the epiglottis. The vast majority of cases are squamous cell carcinomas.",
+"ko": "후두개암",
+"alt": [
+"후두덮개암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019391",
+"concept": "- MONDO:0019391 | Fanconi anemia | syn: Fanconi anemia; Fanconi pancytopenia; Fanconi's anemia; pancytopenia, congenital | ancestors: congenital anemia, inherited aplastic anemia, bone marrow disorder, multiple congenital anomalies/dysmorphic syndrome without intellectual disability | def: Fanconi anemia (FA) is a hereditary DNA repair disorder characterized by progressive pancytopenia with bone marrow failure, variable congenital malformations and predisposition to develop hematologica...",
+"ko": "판코니 빈혈",
+"alt": [
+"판코니 범혈구감소증"
+],
+"organs": [
+"haematologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010503",
+"concept": "- MONDO:0010503 | Bartter disease type 5 | syn: BARTS5; Bartter syndrome caused by mutation in MAGED2; Bartter syndrome, type 5, antenatal, transient; Bartter syndrome, type 5, antenatal, transient, X-linked recessive | ancestors: Bartter syndrome, syndromic disease, renal tubular transport disease, inherited renal tubular disease | def: Any Bartter syndrome in which the cause of the disease is a mutation in the MAGED2 gene.",
+"ko": "바터병 5형",
+"alt": [
+"바터 증후군 5형"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010619",
+"concept": "- MONDO:0010619 | X-linked dominant hypophosphatemic rickets | syn: hereditary hypophosphatemic rickets, X-linked; hypophosphatemic rickets, X-linked; hypophosphatemic rickets, X-linked dominant, X-linked dominant; rickets, vitamin D-resistant | ancestors: X-linked dominant disease, X-linked hypophosphatemic rickets, abnormal mineralization disorder, X-linked disease | def: X-linked hypophosphatemia (XLH) is a hereditary renal phosphate-wasting disorder characterized by hypophosphatemia, rickets and/or osteomalacia, and diminished growth.",
+"ko": "X연관 우성 저인산혈증 구루병",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008849",
+"concept": "- MONDO:0008849 | atrophoderma vermiculata | syn: atrophoderma vermiculata; folliculitis ulerythematosa reticulate | ancestors: keratosis pilaris atrophicans, epidermal disease, keratosis pilaris, hereditary skin disorder",
+"ko": "벌레먹은모양 위축피부증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0017705",
+"concept": "- MONDO:0017705 | congenital pulmonary venous return anomaly | syn: congenital pulmonary venous connection anomaly | ancestors: congenital pulmonary veins anomaly, congenital heart disease, heart disorder, congenital anomaly of cardiovascular system | def: Congenital pulmonary venous return anomaly is a cardiac malformation where some or all of the pulmonary veins drain into the right atrium or the systemic veins, with or without the presence of pulmona...",
+"ko": "선천성 폐정맥 환류 이상",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001294",
+"concept": "- MONDO:0001294 | Horner syndrome | syn: Horner syndrome; Horner's syndrome | ancestors: autonomic neuropathy, autonomic nervous system disorder, peripheral neuropathy, central nervous system disorder | def: Horner's syndrome is a rare condition characterized by miosis (constriction of thepupil), ptosis (drooping of the upper eyelid), and anhidrosis (absence of sweating of the face). It iscaused by damage...",
+"ko": "호너 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002691",
+"concept": "- MONDO:0002691 | liver cancer | syn: cancer of liver; hepatic cancer; liver cancer; malignant liver neoplasm | ancestors: digestive system cancer, malignant endocrine neoplasm, liver and intrahepatic bile duct neoplasm, digestive system disorder | def: An epithelial or non-epithelial malignant neoplasm that arises from the liver. Representative examples include hepatocellular carcinoma, intrahepatic cholangiocarcinoma, lymphoma, and sarcoma.",
+"ko": "간암",
+"alt": [
+"간세포암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0100244",
+"concept": "- MONDO:0100244 | paroxysmal nocturnal hemoglobinuria | syn: acquired paroxysmal nocturnal hemoglobinuria; hereditary paroxysmal nocturnal hemoglobinuria; inherited paroxysmal nocturnal hemoglobinuria; Marchiafava-Micheli disease | ancestors: hemoglobinuria, hemolytic anemia, acquired metabolic disease, acquired aplastic anemia | def: Paroxysmal nocturnal hemoglobinuria (PNH) is an acquired clonal hematopoietic stem cell disorder characterized by corpuscular hemolytic anemia, bone marrow failure and frequent thrombotic events.",
+"ko": "발작성 야간 혈색소뇨증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017319",
+"concept": "- MONDO:0017319 | hereditary elliptocytosis | syn: congenital elliptocytosis; Hashimoto Encephalopathy; HE; hereditary ovalocytosis | ancestors: hemolytic anemia, normocytic anemia, anemia, hematologic disorder | def: Hereditary elliptocytosis (HE) is a rare clinically and genetically heterogeneous disorder of the red cell membrane characterized by manifestations ranging from mild to severe transfusion-dependent he...",
+"ko": "유전성 타원적혈구증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0016086",
+"concept": "- MONDO:0016086 | osteochondritis of tarsal/metatarsal bone | syn: aseptic necrosis of the tarsal bone; juvenile osteochondrosis of foot; Kohler disease; Kohler's disease | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder | def: A rare bone disease characterized by avascular necrosis of the navicular bone in children. Patients present with sudden unexplained foot pain, inability to bear weight, and limping. Radiographic featu...",
+"ko": "족근골/중족골 골연골염",
+"alt": [
+"소아 발 골연골증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 11,
+"new": false
+},
+{
+"id": "MONDO:0007943",
+"concept": "- MONDO:0007943 | Nager acrofacial dysostosis | syn: acrofacial dysostosis 1, Nager type; mandibulofacial dysostosis with preaxial limb anomalies; NAFD; Nager acrofacial dysostosis | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, SF3B4-related acrofacial dysostosis, disease by body system or component | def: Nager syndrome, also called Nager acrofacial dysostosis (NAFD) is a congenital malformation syndrome characterized by mandibulofacial dystosis (malar hypoplasia, micrognathia, external ear malformatio...",
+"ko": "나거 말단안면이골증",
+"alt": [
+"나거 증후군"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0041366",
+"concept": "- MONDO:0041366 | acute epiglottitis | syn: acute epiglottitis; epiglottitis, acute | ancestors: acute laryngitis, epiglottitis, laryngitis, acute disease | def: Acute form of epiglottitis.",
+"ko": "급성 후두개염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0007293",
+"concept": "- MONDO:0007293 | leukocyte adhesion deficiency 1 | syn: ITGB2 leukocyte adhesion deficiency; LAD-I; lad-I; lad-type I | ancestors: leukocyte adhesion deficiency, autosomal recessive disease, functional neutrophil defect, autosomal genetic disease | def: Leukocyte adhesion deficiency type I (LAD-I) is a form of LAD characterized by life-threatening, recurrent bacterial infections.",
+"ko": "백혈구 유착 결핍증 1",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000023",
+"concept": "- MONDO:0000023 | infantile liver failure | syn: fever-associated acute infantile liver failure syndrome; infantile liver failure syndrome; liver failure, infantile | ancestors: hereditary disease, liver failure, disease of genetic or genomic mechanism, liver disorder",
+"ko": "영아 간부전",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+}
+]

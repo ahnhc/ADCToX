@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0019004",
+"concept": "- MONDO:0019004 | kidney Wilms tumor | syn: kidney Wilms tumor; nephroblastoma; nephroblastoma, malignant; renal embryonic tumor | ancestors: kidney cancer, Wilms tumor, malignant urinary system neoplasm, kidney neoplasm | def: An embryonal pediatric tumor of the kidney which may also be seen rarely in adults. The peak incidence of Wilms tumor is between the second and fifth year of life. Microscopically, it is composed of a...",
+"ko": "신장 빌름종양",
+"alt": [
+"신장모세포종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008941",
+"concept": "- MONDO:0008941 | hepatic fibrosis-renal cysts-intellectual disability syndrome | syn: Thompson Baraitser syndrome; Thompson-Baraitser syndrome | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: A rare, syndromic intellectual disability characterized by early developmental delay with failure to thrive, intellectual disability, congenital hepatic fibrosis, renal cystic dysplasia, and dysmorphi...",
+"ko": "간 섬유화-신장 낭종-지적 장애 증후군",
+"alt": [
+"톰슨-바라이터 증후군"
+],
+"organs": [
+"hepatic",
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001555",
+"concept": "- MONDO:0001555 | neonatal thyrotoxicosis | syn: infantile hyperthyroidism | ancestors: thyrotoxicosis, hyperthyroidism, thyroid gland disorder, endocrine system disorder | def: A hypermetabolic syndrome characterized by tachycardia, palpitations, tremor, weight loss, and moist skin that is caused by the elevation of thyroid hormone levels in the serum of the newborn infant o...",
+"ko": "신생아 갑상샘중독증",
+"alt": [
+"신생아 갑상선기능항진증"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000923",
+"concept": "- MONDO:0000923 | interstitial emphysema | syn: interstitial emphysema of lung; PIE; pie; pulmonary interstitial emphysema | ancestors: pulmonary emphysema, chronic obstructive pulmonary disease, obstructive lung disease, tracheal disorder | def: Pathologic accumulation of air in the interstitium of the lungs, which is caused by the rupture of alveoli and terminal bronchioles, and is most often seen in premature infants that need mechanical ve...",
+"ko": "간질성 폐기종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003345",
+"concept": "- MONDO:0003345 | hilar cholangiocarcinoma | syn: cholangiocarcinoma of hilar portion of hepatic duct; hilar CC; hilar CCA; hilar cholangiocarcinoma | ancestors: extrahepatic bile duct adenocarcinoma, cholangiocarcinoma, extrahepatic bile duct carcinoma, bile duct adenocarcinoma | def: A cholangiocarcinoma that arises from the junction, or adjacent to the junction, of the right and left hepatic ducts.",
+"ko": "간문부 담관암종",
+"alt": [
+"간문부 담관암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011342",
+"concept": "- MONDO:0011342 | SLC35A1-congenital disorder of glycosylation | syn: carbohydrate deficient glycoprotein syndrome type IIf; CDG syndrome type IIf; CDG-IIf; CDG2F | ancestors: congenital disorder of glycosylation type II, disorder of multiple glycosylation, congenital disorder of glycosylation, inborn errors of metabolism | def: SLC35A1-CDG is an extremely rare form of CDG syndrome characterized clinically in the single reported case by repeated hemorrhagic incidents, including severe pulmonary hemorrhage.",
+"ko": "SLC35A1 선천성 당화장애",
+"alt": [],
+"organs": [
+"haematologic",
+"pulmonary",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018092",
+"concept": "- MONDO:0018092 | Vogt-Koyanagi-Harada disease | syn: Harada's disease; Uveomenigitic syndrome; uveomeningoencephalitic syndrome; Vogt-Koyanagi syndrome | ancestors: panuveitis, uveitis, uveal disorder, inflammatory disease | def: A bilateral, chronic, diffuse granulomatous panuveitis typically characterized by serous retinal detachment and frequently associated with neurological (meningitis), auditory, and dermatological alter...",
+"ko": "포크트-고야나기-하라다병",
+"alt": [
+"하라다병"
+],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005988",
+"concept": "- MONDO:0005988 | toxocariasis | syn: Toxocara caused disease or disorder; Toxocara disease or disorder; Toxocara infection; Toxocara infectious disease | ancestors: Ascaridida infectious disease, Rhabditida infectious disease, Nematoda infectious disease, helminthiasis | def: A parasitic infection caused by worms found in domestic animals. In humans nematode larvae enter the portal system from the small intestine and disseminate in visceral organs causing inflammatory reac...",
+"ko": "개회충증",
+"alt": [
+"톡소카라증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001751",
+"concept": "- MONDO:0001751 | cholestasis | syn: obstruction of bile duct | ancestors: bile duct disorder, biliary tract disorder, hepatobiliary disorder, digestive system disorder | def: Impairment of the bile flow caused by obstruction within the liver, or outside the liver in the bile duct system.",
+"ko": "담즙정체",
+"alt": [
+"담즙 정체증"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024568",
+"concept": "- MONDO:0024568 | infantile liver failure syndrome 1 | syn: infantile liver failure caused by mutation in LARS; infantile liver failure caused by mutation in Lars; infantile liver failure syndrome 1; infantile liver failure syndrome type 1 | ancestors: infantile liver failure, hereditary disease, liver failure, disease of genetic or genomic mechanism | def: Any infantile liver failure in which the cause of the disease is a mutation in the LARS gene.",
+"ko": "영아 간부전 증후군 1",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005549",
+"concept": "- MONDO:0005549 | renal cell adenocarcinoma | syn: adenocarcinoma of kidney; adenocarcinoma of the kidney; carcinoma, renal cell, malignant; kidney adenocarcinoma | ancestors: renal cell carcinoma, adenocarcinoma, renal carcinoma, carcinoma | def: A carcinoma arising from the renal parenchyma. There is a strong correlation between cigarette smoking and the development of renal cell carcinoma. The clinical presentation includes : hematuria, flan...",
+"ko": "신세포 선암종",
+"alt": [
+"콩팥 샘암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021500",
+"concept": "- MONDO:0021500 | benign neoplasm of spleen | syn: benign neoplasm of the spleen; benign splenic neoplasm; spleen benign neoplasm | ancestors: immune system organ benign neoplasm, spleen neoplasm, immune system disorder, benign neoplasm | def: A benign neoplasm that involves the spleen.",
+"ko": "비장 양성 신생물",
+"alt": [
+"지라 양성 종양"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003275",
+"concept": "- MONDO:0003275 | middle ear cancer | syn: cancer of middle ear; malignant middle ear neoplasm; malignant middle Ear tumor; malignant middle Ear tumour | ancestors: malignant ear neoplasm, auditory system cancer, neoplasm of middle ear, sensory system cancer | def: A malignant neoplasm involving the middle ear",
+"ko": "중이암",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002305",
+"concept": "- MONDO:0002305 | thrombophilia | syn: excessive blood clotting; hypercoagulability; hypercoagulability state; hypercoagulable | ancestors: blood coagulation disease, hematologic disorder, disease by body system or component, human disease | def: A condition characterized by an abnormally high level of thrombi. Causes include thrombotic thrombocytopenic purpura, disseminated intravascular coagulation, bone marrow disorders, and antiphospholipi...",
+"ko": "혈전성향증",
+"alt": [
+"응고항진증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005224",
+"concept": "- MONDO:0005224 | acute myeloblastic leukemia without maturation | syn: acute granulocytic leukaemia without maturation; acute granulocytic leukemia without maturation; acute M1 myeloid leukaemia; acute M1 myeloid leukemia | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: An acute myeloid leukemia (AML) characterized by blasts without evidence of maturation to more mature neutrophils. (WHO, 2001)",
+"ko": "성숙을 동반하지 않은 급성 골수모구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006956",
+"concept": "- MONDO:0006956 | Rickettsiosis | syn: infection, Rickettsia; infections, Rickettsia; Rickettsia caused disease or disorder; Rickettsia disease or disorder | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: A group of infectious diseases that is caused by Rickettsia.",
+"ko": "리케치아증",
+"alt": [
+"리케치아 감염"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0044792",
+"concept": "- MONDO:0044792 | large congenital melanocytic nevus | syn: bathing trunk nevus; congenital melanocytic nevi; congenital melanocytic nevus; congenital melanocytic nevus of skin | ancestors: melanocytic nevus, hereditary skin disorder, benign neoplasm of skin, melanocytic skin neoplasm | def: A large, or giant, congenital melanocytic nevus (LCMN or GCMN) is a pigmented skin lesion of more than 20 cm - or 40 cm- respectively, projected adult diameter, composed of melanocytes, and presenting...",
+"ko": "거대 선천성 멜라닌세포 모반",
+"alt": [
+"수영복 모반"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0000933",
+"concept": "- MONDO:0000933 | subglottis neoplasm | syn: neoplasm of subglottis; neoplasm of the subglottis; subglottic neoplasm; subglottic tumor | ancestors: laryngeal neoplasm, laryngeal disorder, respiratory tract neoplasm, upper respiratory tract disorder | def: A benign or malignant neoplasm that affects the subglottic area of the larynx.",
+"ko": "성문하부 신생물",
+"alt": [
+"성문하 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001113",
+"concept": "- MONDO:0001113 | Fiedler's myocarditis | syn: idiopathic myocarditis | ancestors: myocarditis, intrinsic cardiomyopathy, inflammation of heart layer, myocardial disorder",
+"ko": "피들러 심근염",
+"alt": [
+"특발성 심근염"
+],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001918",
+"concept": "- MONDO:0001918 | epiphora due to excess lacrimation | ancestors: excessive tearing, lacrimal apparatus disorder, eye adnexa disorder, eye disorder",
+"ko": "과도한 눈물분비로 인한 눈물흘림증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+}
+]

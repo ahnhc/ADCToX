@@ -1,0 +1,234 @@
+[
+{
+"id": "MONDO:0007244",
+"concept": "- MONDO:0007244 | Caffey disease | syn: Caffey disease; infantile cortical hyperostosis | ancestors: hyperostosis, bone inflammation disease, neonatal osteosclerotic dysplasia, bone remodeling disease | def: Caffey disease is an osteosclerotic dysplasia characterized by acute inflammation with massive subperiosteal new bone formation usually involving the diaphyses of the long bones, as well as the ribs, ...",
+"ko": "카페병",
+"alt": [
+"영아 피질골 과골증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 12
+},
+{
+"id": "MONDO:0007025",
+"concept": "- MONDO:0007025 | chancre | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: The primary sore of syphilis, a painless indurated, eroded papule, occurring at the site of entry of the infection.",
+"ko": "하감",
+"alt": [
+"매독 하감"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024333",
+"concept": "- MONDO:0024333 | sciatica | ancestors: sciatic neuropathy, neuralgia, mononeuropathy, peripheral neuropathy | def: A condition characterized by pain radiating from the back into the buttock and posterior/lateral aspects of the leg. Sciatica may be a manifestation of sciatic neuropathy; radiculopathy (involving the...",
+"ko": "좌골신경통",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0017376",
+"concept": "- MONDO:0017376 | reactive arthritis | syn: arthritis urethritica; Fiessinger-Leroy disease; Fiessinger-Leroy-Reiter syndrome; polyarthritis enterica | ancestors: rheumatic disorder, arthritic joint disease, connective tissue disorder, bone inflammation disease | def: Reactive arthritis (ReA) is an autoimmune disorder belonging to the group of seronegative spondyloarthropathies and is characterized by the classic triad of arthritis, urethritis and conjunctivitis.",
+"ko": "반응성 관절염",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0000384",
+"concept": "- MONDO:0000384 | bladder benign neoplasm | syn: benign bladder neoplasm; benign bladder tumor; benign bladder tumour; benign neoplasm of bladder | ancestors: benign urinary system neoplasm, urinary bladder neoplasm, benign neoplasm, urinary system neoplasm | def: A benign abnormal growth of the cells that comprise the bladder.",
+"ko": "방광 양성 신생물",
+"alt": [
+"방광 양성 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0010223",
+"concept": "- MONDO:0010223 | ichthyosis, X-linked, without steroid sulfatase deficiency | syn: ichthyosis, X-linked, without steroid sulfatase deficiency | ancestors: recessive X-linked ichthyosis, inherited ichthyosis, sterol metabolism disorder, X-linked recessive disease",
+"ko": "스테로이드 설파타제 결핍이 없는 X연관 어린선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004854",
+"concept": "- MONDO:0004854 | ophthalmia neonatorum | syn: gonococcal conjunctivitis (neonatorum); neonatal conjunctivitis | ancestors: gonococcal conjunctivitis, gonorrhea, bacterial conjunctivitis, primary bacterial infectious disease | def: Inflammation of the conjunctiva in a newborn due to chemical or infectious causes. Aseptic conjunctivitis is often related to the use of prophylactic medications for infectious conjunctivitis. Septic ...",
+"ko": "신생아 안염",
+"alt": [
+"신생아 결막염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0042976",
+"concept": "- MONDO:0042976 | vitamin B deficiency | ancestors: vitamin deficiency disorder, nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism | def: A condition due to deficiency in any member of the vitamin B complex. These B vitamins are water-soluble and must be obtained from the diet because they are easily lost in the urine. Unlike the lipid-...",
+"ko": "비타민 B 결핍증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019142",
+"concept": "- MONDO:0019142 | inherited porphyria | syn: hereditary porphyria | ancestors: hereditary photodermatosis, inborn disorder of porphyrin metabolism, porphyria, hereditary skin disorder | def: Porphyrias constitute a group of eight hereditary metabolic diseases characterized by intermittent neuro-visceral manifestations, cutaneous lesions or by the combination of both.",
+"ko": "유전성 포르피린증",
+"alt": [
+"포르피린증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005446",
+"concept": "- MONDO:0005446 | cutaneous leishmaniasis | syn: Asian desert cutaneous leishmaniasis; zone of skin leishmaniasis | ancestors: leishmaniasis, parasitic skin disorder, protozoa infectious disease, vector-borne disease | def: Leishmaniasis affecting the skin. It is the most common form of leishmaniasis. It presents with erythematous macules and papules, and nodules which may eventually ulcerate. The lesions appear in the b...",
+"ko": "피부 리슈마니아증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001172",
+"concept": "- MONDO:0001172 | salpingo-oophoritis | syn: tubo ovarian abscess; tubo-ovarian abscess; tubo-ovarian abscess (disorder); Tubo-ovarian inflammatory disease | ancestors: salpingitis, oophoritis, pelvic inflammatory disease, fallopian tube disorder",
+"ko": "난관난소염",
+"alt": [
+"난관난소 농양"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0001519",
+"concept": "- MONDO:0001519 | entropion | syn: entropion; entropion (disease) | ancestors: eyelid disorder, eye adnexa disorder, eye disorder, disorder of orbital region | def: The turning inward (inversion) of the edge of the eyelid, with the tarsal cartilage turned inward toward the eyeball. (Dorland, 27th ed)",
+"ko": "안검내반",
+"alt": [
+"눈꺼풀속말림"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0014523",
+"concept": "- MONDO:0014523 | juvenile-onset diabetes mellitus-central and peripheral neurodegeneration syndrome | syn: combined cerebellar and peripheral ataxia-hearing loss-diabetes mellitus syndrome | ancestors: hereditary ataxia, atactic disorder, hereditary neurological disease, nervous system disorder",
+"ko": "소아 발병 당뇨병-중추 및 말초 신경퇴행 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002013",
+"concept": "- MONDO:0002013 | lymphangioma | syn: benign lymphangioma (morphologic abnormality); lymphangioma; lymphangioma, benign | ancestors: cardiovascular organ benign neoplasm, lymphatic vessel neoplasm, benign neoplasm, cardiovascular neoplasm | def: A benign lesion composed of dilated lymphatic channels. Painless swelling is the usual clinical manifestation.",
+"ko": "림프관종",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018904",
+"concept": "- MONDO:0018904 | primary membranoproliferative glomerulonephritis | syn: Mesangiocapillary glomerulonephritis; MPGN | ancestors: glomerulonephritis, nephritis, glomerular disorder, kidney disorder | def: A rare glomerular disease characterized by a pattern of glomerular injury on kidney biopsy with characteristic light microscopic changes: mesangial hypercellularity, endocapillary proliferation, and t...",
+"ko": "원발성 막증식성 사구체신염",
+"alt": [
+"메산지움모세혈관 사구체신염"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0000466",
+"concept": "- MONDO:0000466 | first-degree atrioventricular block | syn: atrioventricular block first degree; atrioventricular block, first degree; AV block first degree; first degree atrioventricular block | ancestors: atrioventricular block, heart conduction disease, atrioventricular dissociation, heart disorder | def: A disorder characterized by an electrocardiographic finding of prolonged PR interval for a specific population. For adults one common threshold is a PR interval greater than 0.20 seconds.",
+"ko": "1도 방실 차단",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002008",
+"concept": "- MONDO:0002008 | labyrinthitis | syn: inflammation of internal ear; internal ear inflammation; otitis interna | ancestors: inner ear disorder, inflammatory disease, auditory system disorder, disorder of ear | def: Inflammation of the inner ear. The cause is often not clear. It may be due to a virus, but it can also arise from bacterial infection, head injury, extreme stress, an allergy, or as a reaction to medi...",
+"ko": "미로염",
+"alt": [
+"내이염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007342",
+"concept": "- MONDO:0007342 | clubfoot | syn: club foot; clubbed foot; congenital talipes equinovarus; equinovarus deformity of foot (finding) | ancestors: familial clubfoot with or without associated lower limb anomalies, non-syndromic limb reduction defect, hereditary disease, congenital limb malformation | def: The most common congenital deformation of the foot, occurring in 1 of 1,000 live births. The most common form is talipes equinovarus, where the deformed foot is turned downward and inward sharply.",
+"ko": "내반족",
+"alt": [
+"선천성 내반족"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0003060",
+"concept": "- MONDO:0003060 | biliary tract cancer | syn: biliary tree cancer; cancer of biliary tree; malignant biliary tree neoplasm; malignant neoplasm of biliary tree | ancestors: digestive system cancer, biliary tract neoplasm, digestive system disorder, cancer | def: A malignant neoplasm involving the biliary tree",
+"ko": "담도암",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001535",
+"concept": "- MONDO:0001535 | vagus nerve disorder | syn: disease of vagus nerve; disease or disorder of vagus nerve; disorder of pneumogastric [10th] nerve; disorder of vagus nerve | ancestors: glossopharyngeal nerve disorder, cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder | def: A disease involving the vagus nerve.",
+"ko": "미주신경 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+}
+]

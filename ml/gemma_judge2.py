@@ -17,7 +17,7 @@ Held out: 10% of the concepts (organ calibration, align check), 10% of the junk 
 Dev checks (never test): gold dev queries in English and Korean (data/curated/judge2/gen/koeval_*), symptom_eval_v0 dev half.
 -> $ADCTOX_CACHE/gemma_judge2_<tag>/ (adapter_head.pt, calibration.npz, info.json), ml/results/benchmarks/gemma_judge2_<tag>.json
 """
-import argparse, glob, hashlib, json, os, random, sys, time
+import argparse, collections, glob, hashlib, json, os, random, sys, time
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ.setdefault("ADC_RESEARCH_MODE", "1")
@@ -27,6 +27,8 @@ from build_linking_pools import read_obo
 
 AXES = MI.AXES; DEV = "cuda:0"; PROMPT = GJ.PROMPT; G2 = P.REPO + "data/curated/judge2/gen/"
 HANGUL = lambda s: any("가" <= c <= "힣" for c in s)
+JUNK_COPIES = 4                                                          # each training junk text this many times
+SOURCES = ["mondo_names", "train_queries", "external", "profiles", "kcd", "gen_ko", "gen_sym", "mondo_ko", "ko2", "kotypo", "ko3"]     # junk always
 
 
 def sym_split(t): return "dev" if int(hashlib.sha256(t.encode()).hexdigest(), 16) % 2 == 0 else "test"     # as ml/eval_symptoms.py
@@ -66,8 +68,14 @@ def predict(model, tok, texts, bs=128):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--layers", type=int, default=18); ap.add_argument("--tag", default="v2")
     ap.add_argument("--rank", type=int, default=16); ap.add_argument("--epochs", type=int, default=2); ap.add_argument("--lr", type=float, default=2e-4)
-    ap.add_argument("--kcd", type=int, default=20000); ap.add_argument("--smoke", action="store_true")
-    a = ap.parse_args(); rng = random.Random(7); torch.manual_seed(7)
+    ap.add_argument("--kcd", type=int, default=20000); ap.add_argument("--smoke", action="store_true"); ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--stage", default="unstaged"); ap.add_argument("--note", default=""); ap.add_argument("--compare-to", default=None)
+    ap.add_argument("--consist", type=float, default=0.0, help="weight of the Korean-English consistency loss (0: off)")
+    ap.add_argument("--drop", default="", help="comma list of training sources to leave out (ablation): " + ",".join(SOURCES))
+    a = ap.parse_args(); rng = random.Random(a.seed); torch.manual_seed(a.seed)
+    import tuning_ledger as TL
+    TL.write_card(a.tag, dict(tag=a.tag, stage=a.stage, note=a.note, compare_to=a.compare_to, started=time.strftime("%Y-%m-%d %H:%M"), args=vars(a),
+                              git=TL.git_state(), data=TL.manifest(cache=P.CACHE), backbone=dict(model=GJ.GEMMA, revision=GJ.REV, prompt=PROMPT)))
     from peft import LoraConfig, get_peft_model
     T = read_obo(); held = LM.gold_held(T); labels, _ = LM.load_organ_labels()
     prof = SG.profiles(); pid = {p["id"]: k for k, p in enumerate(prof)}
@@ -78,39 +86,75 @@ def main():
     E = Z["E"].astype(np.float32)
     def cvec(t): return E[row[t]] if t in row else None
     # ---- items: (text, concept or None, organ vector or None, valid, align vector or None, sym class or -1)
-    items = []
-    def add(text, t=None, org=True, valid=1.0, vec=None, sym=True, alg=True):
+    items = []; drop = {x for x in a.drop.split(",") if x}; unknown = drop - set(SOURCES)
+    if unknown: raise SystemExit(f"unknown sources {sorted(unknown)}; known: {SOURCES}")
+    def add(text, t=None, org=True, valid=1.0, vec=None, sym=True, alg=True, src="?"):
         if not text or not str(text).strip(): return
         ok = t is not None and t not in held
         o = np.array([x in labels[t] for x in AXES], np.float32) if (org and ok and t in labels) else None
         v = vec if vec is not None else (cvec(t) if (alg and ok) else None)
-        items.append((str(text).strip(), t, o, valid, v, pid.get(t, -1) if (sym and t is not None) else -1))
-    for q, t in OH.texts(T, labels, held): add(q, t)
-    for p in prof:
-        for k in p.get("ko", []) + p.get("ko_lay", []): add(k, p["id"])
-        for k in p.get("en", []) + p.get("abbr", []): add(k, p["id"])
-        for k in p.get("symptoms_ko", [])[:3] + p.get("symptoms_en", [])[:3]: add(k, p["id"], alg=False, sym=False)
-    kcd = list(zip([str(x) for x in Z["ko_keys"]], [str(x) for x in Z["ko_vals"]])); rng.shuffle(kcd); kcd = kcd[: a.kcd]
-    kv = MI._embed([v for _, v in kcd], DEV).astype(np.float32)
-    top = np.concatenate([(torch.from_numpy(kv[i:i + 4096]).to(DEV) @ torch.from_numpy(E).to(DEV).T).argmax(1).cpu().numpy() for i in range(0, len(kv), 4096)])
+        items.append((str(text).strip(), t, o, valid, v, pid.get(t, -1) if (sym and t is not None) else -1, src))
+    if "mondo_names" not in drop:                                             # MONDO names and synonyms (as organ_head.texts)
+        for t in labels:
+            if t not in held and t in T:
+                for q in [T[t]["name"]] + T[t]["syn"][:5]: add(q, t, src="mondo_names")
+    if "train_queries" not in drop:
+        for f in sorted(glob.glob(P.REPO + "data/curated/train_queries/review/review2_*.jsonl")):
+            for x in map(json.loads, open(f)):
+                if x.get("validity") == "valid" and x.get("match") is True and x["concept"] in labels and x["concept"] not in held: add(x["query"], x["concept"], src="train_queries")
+    ext = P.REPO + "data/curated/external/mentions_mondo.jsonl"                  # licensed corpus mentions, not in the repository
+    if "external" not in drop and os.path.exists(ext):
+        for r in map(json.loads, open(ext)):
+            if r["split"] == "train" and len(r["mondo"]) == 1 and r["mondo"][0] in labels and r["mondo"][0] not in held: add(r["mention"], r["mondo"][0], src="external")
+    elif "external" not in drop: drop.add("external"); print("external mentions not found: trained without them", flush=True)
+    if "profiles" not in drop:
+        for p in prof:
+            for k in p.get("ko", []) + p.get("ko_lay", []): add(k, p["id"], src="profiles")
+            for k in p.get("en", []) + p.get("abbr", []): add(k, p["id"], src="profiles")
+            for k in p.get("symptoms_ko", [])[:3] + p.get("symptoms_en", [])[:3]: add(k, p["id"], alg=False, sym=False, src="profiles")
     n_kcd = 0
-    for (k, v), vec, j in zip(kcd, kv, top):
-        if ids[j] in held: continue
-        add(k, None, vec=vec); n_kcd += 1
-    gko = jl("ko_*.jsonl"); gsym = jl("sym_*.jsonl"); junk = jl("junk_*.jsonl")
+    if "kcd" not in drop:
+        kcd = list(zip([str(x) for x in Z["ko_keys"]], [str(x) for x in Z["ko_vals"]])); rng.shuffle(kcd); kcd = kcd[: a.kcd]
+        kv = MI._embed([v for _, v in kcd], DEV).astype(np.float32)
+        top = np.concatenate([(torch.from_numpy(kv[i:i + 4096]).to(DEV) @ torch.from_numpy(E).to(DEV).T).argmax(1).cpu().numpy() for i in range(0, len(kv), 4096)])
+        for (k, v), vec, j in zip(kcd, kv, top):
+            if ids[j] in held: continue
+            add(k, None, vec=vec, src="kcd"); n_kcd += 1
+    gko = jl("ko_*.jsonl") if "gen_ko" not in drop else []; gsym = jl("sym_*.jsonl") if "gen_sym" not in drop else []; junk = jl("junk_*.jsonl")
     for x in gko:
-        if x.get("id") in T: add(x.get("text"), x["id"])
+        if x.get("id") in T: add(x.get("text"), x["id"], src="gen_ko")
     for x in gsym:
-        if x.get("id") in pid: add(x.get("text"), x["id"])
+        if x.get("id") in pid: add(x.get("text"), x["id"], src="gen_sym")
+    n_mk = 0
+    if "mondo_ko" not in drop:                                                # reviewed Korean MONDO names (korean/mondo_ko.jsonl)
+        for x in map(json.loads, open(P.REPO + "data/curated/korean/mondo_ko.jsonl", encoding="utf-8")):
+            if x["conf"] == "low" or x["id"] not in T: continue
+            for k in [x["ko"]] + x["alt"]: add(k, x["id"], src="mondo_ko"); n_mk += 1
+    gko2 = jl("ko2_*.jsonl") if "ko2" not in drop else []
+    for x in gko2:
+        if x.get("id") in T: add(x.get("text"), x["id"], src="ko2")
+    gtypo = jl("kotypo_*.jsonl") if "kotypo" not in drop else []             # rule-based Korean typos (ml/ko_typos.py)
+    for x in gtypo:
+        if x.get("id") in T: add(x.get("text"), x["id"], src="kotypo")
+    gko3 = jl("ko3_*.jsonl") if "ko3" not in drop else []                    # short words, abbreviations, Korean-English mixes (ml/ko3_batches.py)
+    for x in gko3:
+        if x.get("id") in T: add(x.get("text"), x["id"], src="ko3")
     junk = list(dict.fromkeys(str(x.get("text", "")).strip() for x in junk if str(x.get("text", "")).strip())); rng.shuffle(junk)
     junk_val = junk[: len(junk) // 10]; junk_tr = junk[len(junk) // 10:]
-    for _ in range(4):                                                    # oversampled: 1 junk per ~25 real texts
-        for j in junk_tr: items.append((j, None, None, 0.0, None, -1))
+    for j in junk_tr: items.append((j, None, None, 0.0, None, -1, "junk"))
     items = list({(x[0], x[1], x[3]): x for x in items}.values())
+    items, n_leak = TL.drop_leaks(items)                                     # evaluation queries with their gold concept
+    items += [x for x in items if x[6] == "junk"] * (JUNK_COPIES - 1)        # oversampled after the dedupe (before 2026-10-18 the dedupe undid it)
     concepts = sorted({x[1] for x in items if x[1] is not None}); rng.shuffle(concepts); val_c = set(concepts[: len(concepts) // 10])
     train = [x for x in items if x[1] is None or x[1] not in val_c]; val = [x for x in items if x[1] is not None and x[1] in val_c]
     if a.smoke: train, val = train[::300], val[::100]
     print(f"items {len(items)} (korean {sum(HANGUL(x[0]) for x in items)}, kcd {n_kcd}, gen ko {len(gko)}, gen sym {len(gsym)}, junk {len(junk)}), train {len(train)}, val {len(val)}", flush=True)
+    outs = lambda x: [o for o, ok in (("organ", x[2] is not None), ("align", x[4] is not None), ("valid", True), ("sym", x[5] >= 0)) if ok]
+    chk, bad = TL.checks(items, outs)
+    TL.write_card(a.tag, dict(checks=chk, items=dict(total=len(items), train=len(train), val=len(val), korean=sum(HANGUL(x[0]) for x in items), kcd=n_kcd,
+                  gen_ko=len(gko), gen_sym=len(gsym), junk=len(junk), junk_copies=JUNK_COPIES, mondo_ko=n_mk, ko2=len(gko2), kotypo=len(gtypo), ko3=len(gko3), dropped_eval_text=n_leak,
+                  sources_left_out=sorted(drop), by_source=dict(collections.Counter(x[6] for x in train)), **{f"out_{o}": sum(o in outs(x) for x in train) for o in ("organ", "align", "valid", "sym")})))
+    if bad: raise SystemExit("pre-training checks failed: " + "; ".join(bad))
     # ---- dev sets (computed before Gemma takes the GPU)
     Q = json.load(open(EL.D + "raw/queries_v0.json")); Gd = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl"))}
     gold = [dict(Gd[q["qid"]], category=q["category"]) for q in Q]; groups = [q["group"] or q["qid"] for q in Q]
@@ -142,19 +186,34 @@ def main():
         m = [k for k, x in enumerate(b) if x[5] >= 0]
         if m: L["sym"] = torch.nn.functional.cross_entropy(zs[m], torch.tensor([b[k][5] for k in m], device=DEV))
         return L
+    # ---- Korean-English pairs (--consist): every Korean training text of a concept with the concept's English MONDO name. The
+    # Korean text is pushed to give the outputs the English name gives (organ probabilities and align vector, English side fixed),
+    # so what tuning teaches on English names carries over to Korean ones the training never saw. Train concepts only.
+    pairs = [(x[0], T[x[1]]["name"]) for x in train if a.consist > 0 and x[1] is not None and x[1] in T and HANGUL(x[0])]
+    PB = 16
+    def consist_loss():
+        q = [pairs[rng.randrange(len(pairs))] for _ in range(PB)]
+        ek = tok([PROMPT.format(k) for k, _ in q], return_tensors="pt", padding=True, truncation=True, max_length=64)
+        ee = tok([PROMPT.format(e) for _, e in q], return_tensors="pt", padding=True, truncation=True, max_length=64)
+        zk, _, vk, _ = model(ek["input_ids"].to(DEV), ek["attention_mask"].to(DEV))
+        with torch.no_grad(): ze, _, ve, _ = model(ee["input_ids"].to(DEV), ee["attention_mask"].to(DEV))
+        return bce(zk, torch.sigmoid(ze)).mean() + (1 - (vk * ve).sum(1)).mean()
     best = (1e9, None); t0 = time.time()
     for ep in range(a.epochs):
         model.train(); idx = list(range(len(train))); rng.shuffle(idx)
         for s in range(0, len(idx), BS):
             b = [train[j] for j in idx[s:s + BS]]
             enc = tok([PROMPT.format(x[0]) for x in b], return_tensors="pt", padding=True, truncation=True, max_length=64)
-            L = losses(b, model(enc["input_ids"].to(DEV), enc["attention_mask"].to(DEV))); loss = sum(L.values())
+            L = losses(b, model(enc["input_ids"].to(DEV), enc["attention_mask"].to(DEV)))
+            if pairs: L["consist"] = a.consist * consist_loss()
+            loss = sum(L.values())
             opt.zero_grad(); loss.backward(); opt.step(); sched.step()
             if (s // BS) % 500 == 0: print(f"ep {ep} step {s // BS} " + " ".join(f"{k} {v.item():.3f}" for k, v in L.items()) + f" {time.time() - t0:.0f}s", flush=True)
         zo, zv, va, zs = predict(model, tok, [x[0] for x in val])
         yo = np.stack([x[2] if x[2] is not None else np.zeros(13) for x in val]); mo = np.array([x[2] is not None for x in val])
         vl = float(bce(torch.from_numpy(zo[mo]), torch.from_numpy(yo[mo]).float()).mean())
         print(f"epoch {ep} val organ loss {vl:.4f}", flush=True)
+        TL.write_card(a.tag, dict(epochs=[*json.load(open(TL.CARDS + f"{a.tag}.json")).get("epochs", [])[:ep], dict(epoch=ep + 1, val_organ_loss=round(vl, 4), minutes=round((time.time() - t0) / 60, 1))]))
         if vl < best[0]: best = (vl, ep, {k: v.detach().cpu().clone() for k, v in model.state_dict().items() if "lora" in k or not k.startswith("lm.")})
     model.load_state_dict(best[2], strict=False)
     out = P.CACHE + f"gemma_judge2_{a.tag}/"; os.makedirs(out, exist_ok=True); torch.save(best[2], out + "adapter_head.pt")
@@ -211,6 +270,11 @@ def main():
     print(json.dumps(res, indent=1, ensure_ascii=False))
     np.savez(out + "calibration.npz", temp=temp, thr=thr, vthr=np.float32(vthr)); json.dump(dict(res, backbone=GJ.GEMMA, revision=GJ.REV, prompt=PROMPT, profiles=[p["id"] for p in prof]), open(out + "info.json", "w"), indent=1, ensure_ascii=False)
     json.dump(res, open(P.REPO + f"ml/results/benchmarks/gemma_judge2_{a.tag}.json", "w"), indent=1, ensure_ascii=False)
+    pick = lambda ev, k: round(ev[k]["macro_f1"], 3)
+    TL.write_card(a.tag, dict(finished=time.strftime("%Y-%m-%d %H:%M"), chosen_epoch=best[1] + 1, calibration=dict(temp=[round(float(x), 2) for x in temp], thr=[round(float(x), 2) for x in thr], valid=valid_info),
+                  results=dict(en_pipeline=pick(ev_en, "linker+valid"), en_single=pick(ev_en, "align0.7+valid"), ko_pipeline=pick(ev_ko, "linker+valid"), ko_single=pick(ev_ko, "align0.7+valid"),
+                               align_top1=round(align_val["top1"], 3), sym_top3=sym_ev["mix"]["top3"], valid_threshold=vthr)))
+    TL.render()
 
 
 if __name__ == "__main__":

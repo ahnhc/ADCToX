@@ -1,0 +1,298 @@
+[
+{
+"qid": "q0504",
+"group": "q0504",
+"category": "ambiguous",
+"en": "kidney stuff",
+"ko": "신장 관련",
+"disease": "kidney disorder"
+},
+{
+"qid": "q0530",
+"group": "q0530",
+"category": "ambiguous",
+"en": "nerve problem",
+"ko": "신경 문제",
+"disease": "nervous system disorder"
+},
+{
+"qid": "ctl13_1",
+"group": "sarcoidosis",
+"category": "canonical",
+"en": "sarcoidosis",
+"ko": "관절이 닳음",
+"disease": "sarcoidosis"
+},
+{
+"qid": "q0570",
+"group": "q0570",
+"category": "non_disease",
+"en": "central line in place",
+"ko": "중심정맥관 삽입 상태",
+"disease": null
+},
+{
+"qid": "q0446",
+"group": "sarcoidosis",
+"category": "canonical",
+"en": "sarcoidosis",
+"ko": "사르코이드증",
+"disease": "sarcoidosis"
+},
+{
+"qid": "q0447",
+"group": "sarcoidosis",
+"category": "synonym",
+"en": "Besnier-Boeck-Schaumann disease",
+"ko": "베스니에-뵈크-샤우만병",
+"disease": "sarcoidosis"
+},
+{
+"qid": "q0448",
+"group": "sarcoidosis",
+"category": "abbrev",
+"en": "sarc",
+"ko": "사르코",
+"disease": "sarcoma"
+},
+{
+"qid": "ctl13_2",
+"group": "atopic_dermatitis",
+"category": "abbrev",
+"en": "atopic derm",
+"ko": "유전자 문제로 철분이 쌓임",
+"disease": "atopic eczema"
+},
+{
+"qid": "q0449",
+"group": "sarcoidosis",
+"category": "typo",
+"en": "sarcoidois",
+"ko": "사르코이드즈",
+"disease": "sarcoidosis"
+},
+{
+"qid": "q0450",
+"group": "sarcoidosis",
+"category": "lay",
+"en": "lumpy inflammation in lungs and lymph nodes",
+"ko": "폐와 림프절에 덩어리진 염증",
+"disease": "sarcoidosis"
+},
+{
+"qid": "q0061",
+"group": "heart_failure_nyha3",
+"category": "canonical",
+"en": "Heart failure NYHA class III",
+"ko": "심부전 NYHA 3등급",
+"disease": "moderate heart failure"
+},
+{
+"qid": "q0062",
+"group": "heart_failure_nyha3",
+"category": "synonym",
+"en": "Class III congestive heart failure",
+"ko": "3등급 울혈성 심부전",
+"disease": "congestive heart failure"
+},
+{
+"qid": "q0063",
+"group": "heart_failure_nyha3",
+"category": "abbrev",
+"en": "CHF NYHA III",
+"ko": "CHF NYHA III",
+"disease": "congestive heart failure"
+},
+{
+"qid": "q0064",
+"group": "heart_failure_nyha3",
+"category": "typo",
+"en": "heart failer NYHA class 3",
+"ko": "심부저 NYHA 3등급",
+"disease": "moderate heart failure"
+},
+{
+"qid": "q0065",
+"group": "heart_failure_nyha3",
+"category": "lay",
+"en": "heart pump too weak, breathless walking",
+"ko": "심장 펌프가 약하고 걸으면 숨참",
+"disease": "heart failure"
+},
+{
+"qid": "q0111",
+"group": "pulmonary_embolism",
+"category": "canonical",
+"en": "Pulmonary embolism",
+"ko": "폐색전증",
+"disease": "pulmonary embolism"
+},
+{
+"qid": "q0112",
+"group": "pulmonary_embolism",
+"category": "synonym",
+"en": "Pulmonary thromboembolism",
+"ko": "폐혈전색전증",
+"disease": "pulmonary embolism"
+},
+{
+"qid": "q0113",
+"group": "pulmonary_embolism",
+"category": "abbrev",
+"en": "PE hx",
+"ko": "PE 과거력",
+"disease": "pulmonary embolism"
+},
+{
+"qid": "q0114",
+"group": "pulmonary_embolism",
+"category": "typo",
+"en": "pulmonry embolism",
+"ko": "폐색정증",
+"disease": "pulmonary embolism"
+},
+{
+"qid": "q0115",
+"group": "pulmonary_embolism",
+"category": "lay",
+"en": "clot in lung",
+"ko": "폐에 핏덩이",
+"disease": "pulmonary embolism"
+},
+{
+"qid": "q0136",
+"group": "ckd_stage_4",
+"category": "canonical",
+"en": "Chronic kidney disease stage 4",
+"ko": "만성콩팥병 4기",
+"disease": null
+},
+{
+"qid": "q0137",
+"group": "ckd_stage_4",
+"category": "synonym",
+"en": "Severe chronic renal insufficiency (CKD G4)",
+"ko": "중증 만성신부전 (CKD G4)",
+"disease": null
+},
+{
+"qid": "q0138",
+"group": "ckd_stage_4",
+"category": "abbrev",
+"en": "CKD4",
+"ko": "CKD4",
+"disease": null
+},
+{
+"qid": "q0139",
+"group": "ckd_stage_4",
+"category": "typo",
+"en": "chronic kidny disease stage 4",
+"ko": "만성콩팟병 4기",
+"disease": null
+},
+{
+"qid": "q0140",
+"group": "ckd_stage_4",
+"category": "lay",
+"en": "kidneys working at about 20 percent",
+"ko": "신장이 20퍼센트 정도만 기능함",
+"disease": "impaired renal function disease"
+},
+{
+"qid": "q0596",
+"group": "q0596",
+"category": "invalid",
+"en": "xxxxx",
+"ko": "엑스엑스",
+"disease": null
+},
+{
+"qid": "q0276",
+"group": "acne_vulgaris",
+"category": "canonical",
+"en": "Acne vulgaris",
+"ko": "심상성 여드름",
+"disease": "acne"
+},
+{
+"qid": "ctl13_0",
+"group": "heart_failure_nyha3",
+"category": "abbrev",
+"en": "CHF NYHA III",
+"ko": "자는 동안 숨을 멈춤",
+"disease": "congestive heart failure"
+},
+{
+"qid": "q0277",
+"group": "acne_vulgaris",
+"category": "synonym",
+"en": "Common acne",
+"ko": "보통 여드름",
+"disease": "acne"
+},
+{
+"qid": "q0278",
+"group": "acne_vulgaris",
+"category": "abbrev",
+"en": "acne vulg",
+"ko": "심상성 여",
+"disease": "acne"
+},
+{
+"qid": "q0279",
+"group": "acne_vulgaris",
+"category": "typo",
+"en": "acne vulgarus",
+"ko": "심상성 여드름ㅁ",
+"disease": "acne"
+},
+{
+"qid": "q0280",
+"group": "acne_vulgaris",
+"category": "lay",
+"en": "zits",
+"ko": "뾰루지",
+"disease": "acne"
+},
+{
+"qid": "q0271",
+"group": "atopic_dermatitis",
+"category": "canonical",
+"en": "Atopic dermatitis",
+"ko": "아토피피부염",
+"disease": "atopic eczema"
+},
+{
+"qid": "q0272",
+"group": "atopic_dermatitis",
+"category": "synonym",
+"en": "Atopic eczema",
+"ko": "아토피 습진",
+"disease": "atopic eczema"
+},
+{
+"qid": "q0273",
+"group": "atopic_dermatitis",
+"category": "abbrev",
+"en": "atopic derm",
+"ko": "아토피",
+"disease": "atopic eczema"
+},
+{
+"qid": "q0274",
+"group": "atopic_dermatitis",
+"category": "typo",
+"en": "atopic dermatits",
+"ko": "아토피피부여",
+"disease": "atopic eczema"
+},
+{
+"qid": "q0275",
+"group": "atopic_dermatitis",
+"category": "lay",
+"en": "itchy dry rashy skin",
+"ko": "가렵고 건조하고 발진 나는 피부",
+"disease": "atopic eczema"
+}
+]

@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0004891",
+"concept": "- MONDO:0004891 | hyperopia | syn: hypermetropia | ancestors: refractive error, eye disorder, disorder of orbital region, disorder of visual system | def: A refractive error in which rays of light entering the eye parallel to the optic axis are brought to a focus behind the retina, as a result of the eyeball being too short from front to back. It is als...",
+"ko": "원시",
+"alt": [
+"원시안"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007311",
+"concept": "- MONDO:0007311 | Charcot-Marie-Tooth disease type 1E | syn: Charcot-Marie-Tooth disease and deafness; Charcot-Marie-Tooth disease, type 1E; Charcot-Marie-Tooth disease-deafness syndrome; CMT1E | ancestors: Charcot-Marie-Tooth disease type 1, Charcot-Marie-Tooth disease, hereditary peripheral neuropathy, peripheral neuropathy | def: A rare subtype of CMT1 characterized by a variable clinical presentation. Onset within the first two years of life with a delay in walking is not uncommon; however, onset may occur later. CMT1E is cau...",
+"ko": "샤르코-마리-투스병 1E형",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001979",
+"concept": "- MONDO:0001979 | dumping syndrome | syn: jejunal syndrome | ancestors: syndromic disease, postgastrectomy syndrome, disease by body system or component, functional gastric disease | def: A disorder of the gastrointestinal tract. It is typically caused by the rapid emptying of undigested food from the stomach to the small intestine following gastroesophageal surgery but may be seen sec...",
+"ko": "덤핑 증후군",
+"alt": [
+"급속배출 증후군"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001549",
+"concept": "- MONDO:0001549 | hemolytic-uremic syndrome | syn: hemolytic uremic syndrome; HUS | ancestors: blood coagulation disease, hematologic disorder, disease by body system or component, human disease | def: Acute kidney injury associated with microangiopathic hemolytic anemia and thrombocytopenia.",
+"ko": "용혈요독증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017351",
+"concept": "- MONDO:0017351 | inborn disorder of lysine and hydroxylysine metabolism | ancestors: inborn disorder of amino acid and other organic acid metabolism, inborn disorder of aspartate family metabolism, inborn errors of metabolism, hereditary disease",
+"ko": "선천성 라이신 및 하이드록시라이신 대사 장애",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001507",
+"concept": "- MONDO:0001507 | viral labyrinthitis | syn: epidemic vertigo; epidemic vertigo (finding); Viruses caused labyrinthitis; Viruses labyrinthitis | ancestors: labyrinthitis, viral infectious disease, ear infection, inner ear disorder | def: An labyrinthitis caused by infection with Viruses.",
+"ko": "바이러스성 미로염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015987",
+"concept": "- MONDO:0015987 | scimitar syndrome | syn: congenital pulmonary venolobar syndrome; Epibronchial right pulmonary vein syndrome; Halasz syndrome; hypogenetic lung syndrome | ancestors: congenital pulmonary venous return anomaly, congenital anomaly of the great arteries, syndromic congenital heart disease, congenital pulmonary veins anomaly | def: Scimitar syndrome is characterized by a combination of cardiopulmonary anomalies including partial anomalous pulmonary venous return connection of the right lung to the inferior caval vein leading to ...",
+"ko": "언월도 증후군",
+"alt": [
+"선천성 폐정맥엽 증후군"
+],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0700284",
+"concept": "- MONDO:0700284 | carnitine palmitoyl transferase deficiency | ancestors: disorder of carnitine cycle and carnitine transport, disorder of fatty acid and ketone body metabolism, inborn disorder of energy metabolism, inborn errors of metabolism",
+"ko": "카르니틴 팔미토일 전이효소 결핍증",
+"alt": [
+"CPT 결핍증"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006012",
+"concept": "- MONDO:0006012 | viral pneumonia | syn: Viruses caused pneumonia; Viruses pneumonia | ancestors: pneumonia, viral respiratory tract infection, primary viral infectious disease, respiratory tract infectious disorder | def: Inflammation of the lung parenchyma that is caused by a viral infection.",
+"ko": "바이러스성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0020439",
+"concept": "- MONDO:0020439 | patent foramen ovale | syn: ostium secundum type atrial septal defect; patent foramen ovale; patent foramen ovale (disease) | ancestors: atrial septal defect, heart septal defect, cardiogenetic disease, congenital heart disease | def: A persistent opening in the atrial septum after birth. While a normal part of fetal circulation, the foramen ovale should close once the newborn begins breathing and the pressure in the left atrium ex...",
+"ko": "난원공 개존",
+"alt": [
+"난원공 열림"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005855",
+"concept": "- MONDO:0005855 | molluscum contagiosum | ancestors: viral infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: A common, benign, usually self-limited viral infection of the skin and occasionally the conjunctivae by a poxvirus (molluscum contagiosum virus). (Dorland, 27th ed)",
+"ko": "전염성 연속종",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0004937",
+"concept": "- MONDO:0004937 | hypervitaminosis D | syn: hypervitaminosis type D | ancestors: overnutrition, nutritional disorder, disease by etiologic mechanism, human disease",
+"ko": "비타민 D 과다증",
+"alt": [
+"비타민 D 과잉증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004842",
+"concept": "- MONDO:0004842 | stomatitis | syn: inflammation of mouth mucosa; mouth mucosa inflammation; mucositis oral; oral mucositis | ancestors: mucositis, mouth mucosa disorder, inflammatory disease, mouth disorder | def: Inflammation of the oral mucosa due to local or systemic factors.",
+"ko": "구내염",
+"alt": [
+"입안염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0005541",
+"concept": "- MONDO:0005541 | spondylolysis | syn: spondylolysis; spondylolysis (disease) | ancestors: disease of bone structure, vertebral disorder, bone disorder, vertebral column disorder | def: A defect in the pars interarticularis of a vertebral bone.",
+"ko": "척추분리증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0010703",
+"concept": "- MONDO:0010703 | ornithine carbamoyltransferase deficiency | syn: OCT deficiency; ornithine carbamoyltransferase deficiency; ornithine carbamoyltransferase deficiency disease; ornithine transcarbamylase deficiency | ancestors: urea cycle disorder or inherited hyperammonemia, urea cycle disorder, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: Ornithine transcarbamylase deficiency (OTCD) is a disorder of urea cycle metabolism and ammonia detoxification characterized by either a severe, neonatal-onset disease found almost exclusively in male...",
+"ko": "오르니틴 카바모일전달효소 결핍증",
+"alt": [
+"OTC 결핍증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005989",
+"concept": "- MONDO:0005989 | toxoplasmosis | syn: Toxoplasma gondii caused disease or disorder; Toxoplasma gondii disease or disorder; Toxoplasma gondii infectious disease | ancestors: coccidiosis, protozoa infectious disease, parasitic infectious disease, infectious disease | def: A parasitic disease contracted by the ingestion or fetal transmission of toxoplasma gondii.",
+"ko": "톡소플라스마증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015263",
+"concept": "- MONDO:0015263 | Brugada syndrome | syn: Brugada syndrome; Brugada type idiopathic ventricular fibrillation; idiopathic ventricular fibrillation, Brugada type; right bundle branch block, ST segment elevation, and sudden death syndrome | ancestors: heart conduction disease, syndromic disease, cardiogenetic rhythm disorder, heart disorder | def: A genetically heterogeneous condition characterized by complete or incomplete right bundle branch block accompanied by ST elevation in leads V1-V3. There is a high incidence of ventricular arrhythmia ...",
+"ko": "브루가다 증후군",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019054",
+"concept": "- MONDO:0019054 | congenital limb malformation | syn: congenital limb malformation | ancestors: developmental defect during embryogenesis, disorder of development or morphogenesis, disease by developmental or physiological process, human disease",
+"ko": "선천성 사지 기형",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001828",
+"concept": "- MONDO:0001828 | acquired color blindness | syn: acquired color vision deficiencies; acquired color vision deficiency; acquired color vision disorder; acquired colour vision disorder | ancestors: color vision disorder, vision disorder, disorder of visual system, disease by body system or component | def: Non-heritable difficulty in distinguishing colors.",
+"ko": "후천성 색각이상",
+"alt": [
+"후천성 색맹"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006722",
+"concept": "- MONDO:0006722 | dental fluorosis | syn: fluorosis; mottled teeth; mottling of enamel | ancestors: tooth disorder, skeletal system disorder, mouth disorder, musculoskeletal system disorder | def: A condition that results from excessive fluoride ingestion during tooth development, resulting in tooth discoloration ranging from white streaks to brown stains and cracks or pits in the tooth enamel.",
+"ko": "치아불소증",
+"alt": [
+"반상치"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+}
+]

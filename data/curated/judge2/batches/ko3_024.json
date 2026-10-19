@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0043771",
+"concept": "- MONDO:0043771 | radiodermatitis | syn: dermatitis radiation; radiation dermatitis; radiation-induced dermatitis; radiodermatitis | ancestors: dermatitis, radiation-induced disorder, skin disorder, inflammatory disease | def: A cutaneous inflammatory reaction occurring as a result of exposure to biologically effective levels of ionizing radiation.",
+"ko": "방사선 피부염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0001655",
+"concept": "- MONDO:0001655 | dissociated nystagmus | syn: dissociated nystagmus | ancestors: pathologic nystagmus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "해리성 안진",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005780",
+"concept": "- MONDO:0005780 | hantavirus infectious disease | syn: disease due to hantavirus; Hantavirus caused disease or disorder; Hantavirus disease or disorder; Hantavirus infection | ancestors: Bunyaviridae infectious disease, primary viral infectious disease, viral infectious disease, infectious disease | def: Any infection caused by a virus of the genus Hantavirus, which is transmitted by aerosolized rodent excreta or rodent bites, that can result in a variety of clinical manifestations from hemorrhagic fe...",
+"ko": "한타바이러스 감염병",
+"alt": [
+"한타바이러스 감염증"
+],
+"organs": [
+"pulmonary",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006711",
+"concept": "- MONDO:0006711 | constrictive pericarditis | syn: constrictive pericarditis; constrictive pericarditis (disease) | ancestors: pericarditis, pericardium disorder, inflammatory disease, heart disorder | def: A heart disorder in which the pericardial sac becomes thickened and fibrotic, tightening the myocardium and impeding the normal myocardial function.",
+"ko": "수축성 심낭염",
+"alt": [
+"협착성 심낭염"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005495",
+"concept": "- MONDO:0005495 | adrenal gland disorder | syn: adrenal gland disease; adrenal gland disease or disorder; adrenal gland diseases; adrenal gland disorder | ancestors: endocrine system disorder, disease by body system or component, human disease, disease | def: A disease involving the adrenal gland.",
+"ko": "부신 질환",
+"alt": [
+"부신 장애"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0043862",
+"concept": "- MONDO:0043862 | voice disorders | syn: neurologic voice disorder; voice disorder | ancestors: laryngeal disorder, upper respiratory tract disorder, respiratory system disorder, disease by body system or component | def: A pathologic process in the larynx that affects the production of speech. Causes include vocal cord paresis, vocal cord nodule, vocal cord polyp, and laryngitis.",
+"ko": "음성 장애",
+"alt": [
+"목소리 장애"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0010920",
+"concept": "- MONDO:0010920 | microtia | syn: congenital microtias; M-A; microtia, congenital; microtia-anotia | ancestors: developmental defect during embryogenesis, otorhinolaryngologic disease, disorder of development or morphogenesis, disease by body system or component | def: A congenital malformation of the external ear, seen more frequently in males, that occurs sporadically or is inherited, that is characterized by unilateral (79-93% of cases, 60% of which involve the r...",
+"ko": "소이증",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003231",
+"concept": "- MONDO:0003231 | acute nonparalytic poliomyelitis | syn: acute nonparalytic poliomyelitis | ancestors: poliomyelitis, myelitis, anterior horn disorder, acquired motor neuron disease | def: A poliomyelitis that does not exhibit paralysis.",
+"ko": "급성 비마비성 소아마비",
+"alt": [
+"급성 비마비성 척수회색질염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012025",
+"concept": "- MONDO:0012025 | branchiootic syndrome 3 | syn: branchiootic syndrome 3; branchiootic syndrome caused by mutation in SIX1; branchiootic syndrome type 3; SIX1 branchiootic syndrome | ancestors: branchiootic syndrome, syndromic disease, hereditary disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability | def: Any branchiootic syndrome in which the cause of the disease is a mutation in the SIX1 gene.",
+"ko": "새이 증후군 3형",
+"alt": [
+"새이-귀 증후군 3형"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020112",
+"concept": "- MONDO:0020112 | vitamin B12- and folate-independent constitutional megaloblastic anemia | ancestors: megaloblastic anemia, hereditary anemia, macrocytic anemia, deficiency anemia",
+"ko": "비타민 B12 및 엽산 비의존성 선천성 거대적아구성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006041",
+"concept": "- MONDO:0006041 | lung carcinoid tumor | syn: carcinoid tumor (disease) of lung; carcinoid tumor of lung; carcinoid tumor of the lung; carcinoid tumour (disease) of lung | ancestors: carcinoid tumor, lung neuroendocrine neoplasm, neuroendocrine neoplasm, lung neoplasm | def: A neuroendocrine neoplasm that arises from the lung. It is characterized by the presence of uniform polygonal cells with small or moderate amount of cytoplasm and inconspicuous nucleoli. The cells are...",
+"ko": "폐 카르시노이드 종양",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002857",
+"concept": "- MONDO:0002857 | gallbladder sarcoma | syn: gall bladder sarcoma; gallbladder sarcoma; malignant mesenchymal tumour of gallbladder; sarcoma of gall bladder | ancestors: gallbladder cancer, soft tissue sarcoma, digestive system cancer, gallbladder neoplasm | def: A malignant soft tissue neoplasm that arises from the gallbladder. Representative examples include Kaposi sarcoma, leiomyosarcoma, and rhabdomyosarcoma.",
+"ko": "담낭 육종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011103",
+"concept": "- MONDO:0011103 | autosomal dominant nonsyndromic hearing loss 3A | syn: GJB2-AD NSHL; GJB2-related autosomal dominant nonsyndromic hearing loss | ancestors: autosomal dominant nonsyndromic hearing loss, GJB2-related disorder, autosomal dominant disease, nonsyndromic genetic hearing loss | def: Any autosomal dominant nonsyndromic deafness in which the cause of the disease is a mutation in the GJB2 gene.",
+"ko": "상염색체 우성 비증후군성 난청 3A",
+"alt": [
+"GJB2 관련 상염색체 우성 비증후군성 난청"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005502",
+"concept": "- MONDO:0005502 | dengue disease | syn: break bone fever; Dengue; Dengue fever; Dengue virus caused disease or disorder | ancestors: Flaviviridae infectious disease, vector-borne disease, primary viral infectious disease, infectious disease | def: Dengue fever (DF), caused by dengue virus, is an arboviral disease characterized by an initial non-specific febrile illness that can sometimes progress to more severe forms manifesting capillary leaka...",
+"ko": "뎅기병",
+"alt": [
+"뎅기열"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0001930",
+"concept": "- MONDO:0001930 | acute cholangitis | syn: acute cholangitis; cholangitis, acute | ancestors: cholangitis, acute disease, non-neoplastic bile duct disorder, inflammatory disease | def: Cholangitis that is both sudden in onset and of a relatively short duration.",
+"ko": "급성 담관염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008892",
+"concept": "- MONDO:0008892 | progressive familial intrahepatic cholestasis type 1 | syn: Byler disease; cholestasis, progressive familial intrahepatic 1; cholestasis, progressive familial intrahepatic, type 1; FIC1 deficiency | ancestors: progressive familial intrahepatic cholestasis, syndromic disease, familial intrahepatic cholestasis, inborn disorder of bilirubin metabolism | def: PFIC1, a type of progressive familial intrahepathic cholestasis (PFIC), is an infantile hereditary disorder in bile formation that is hepatocellular in origin and associated with extrahepatic features...",
+"ko": "진행성 가족성 간내 담즙정체 1형",
+"alt": [
+"바일러병"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021221",
+"concept": "- MONDO:0021221 | vestibulocochlear nerve neoplasm | syn: acoustic nerve neoplasm; acoustic nerve tumor; acoustic nerve tumour; cranial nerve eight neoplasms | ancestors: vestibulocochlear nerve disorder, cranial nerve neoplasm, retrocochlear disease, cranial nerve neuropathy | def: A neoplasm (disease) that involves the vestibulocochlear nerve.",
+"ko": "전정와우신경 신생물",
+"alt": [
+"청신경 종양"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020413",
+"concept": "- MONDO:0020413 | encircling double aortic arch | ancestors: aortic arch defects, congenital anomaly of the great arteries, congenital heart malformation, congenital anomaly of cardiovascular system | def: Encircling double aortic arch is a very rare congenital anomaly of the great arteries characterized by the presence of two aortic arches (right and left) which encircle and compress the trachea and es...",
+"ko": "고리형 이중 대동맥궁",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005114",
+"concept": "- MONDO:0005114 | pneumococcal infection | syn: pneumococcal infection; Streptococcus pneumoniae caused disease or disorder; Streptococcus pneumoniae disease or disorder; Streptococcus pneumoniae infectious disease | ancestors: streptococcal infection, gram-positive bacterial infections, bacterial infectious disease, infectious disease | def: Infections with bacteria of the species streptococcus pneumoniae.",
+"ko": "폐렴구균 감염",
+"alt": [
+"폐렴사슬알균 감염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008322",
+"concept": "- MONDO:0008322 | pseudoachondroplasia | syn: pseudoachondroplasia; Pseudoachondroplastic dysplasia; pseudoachondroplastic dysplasia; Pseudoachondroplastic spondyloepiphyseal dysplasia | ancestors: osteochondrodysplasia, COMP-related skeletal dysplasia, bone development disease, skeletal dysplasia | def: Pseudoachondroplasia is characterized by severe growth deficiency and deformations such as bow legs and hyperlordosis.",
+"ko": "가성연골무형성증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+}
+]

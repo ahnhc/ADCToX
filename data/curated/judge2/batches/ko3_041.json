@@ -1,0 +1,252 @@
+[
+{
+"id": "MONDO:0020640",
+"concept": "- MONDO:0020640 | autoimmune encephalitis | syn: autoimmune encephalitis | ancestors: autoimmune disorder of central nervous system, encephalitis, central nervous system disorder, autoimmune disorder of the nervous system | def: Inflammation of the brain secondary to an immune response triggered by the body itself.",
+"ko": "자가면역뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018071",
+"concept": "- MONDO:0018071 | trisomy 18 | syn: chromosome 18 duplication; complete trisomy 18 syndrome; E3 trisomy; Edwards syndrome | ancestors: syndromic disease, trisomy, chromosome 18 disorder, disease by body system or component | def: Trisomy 18 is a chromosomal abnormality associated with the presence of an extra chromosome 18 and characterized by growth delay, dolichocephaly, a characteristic facies, limb anomalies and visceral m...",
+"ko": "18 삼염색체증",
+"alt": [
+"에드워드 증후군"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0018922",
+"concept": "- MONDO:0018922 | cold agglutinin disease | syn: CAD; CAS; chronic cold agglutinin disease; cold agglutinin syndrome | ancestors: autoimmune hemolytic anemia, cold type, autoimmune hemolytic anemia, autoimmune disorder of blood, hemolytic anemia | def: Cold agglutinin disease is a type of autoimmune hemolytic anemia defined by the presence of cold autoantibodies (autoantibodies which are active at temperatures below 30B0C).",
+"ko": "한랭응집소병",
+"alt": [
+"한랭 응집소 질환"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008353",
+"concept": "- MONDO:0008353 | pruritic urticarial papules and plaques of pregnancy | syn: polymorphic eruption of pregnancy; pruritic urticarial papules and plaques of pregnancy | ancestors: urticaria, pregnancy disorder, dermatitis, obstetric disorder",
+"ko": "임신 소양성 두드러기 구진 및 판",
+"alt": [
+"임신 다형발진"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015395",
+"concept": "- MONDO:0015395 | congenital subglottic stenosis | ancestors: laryngeal disorder, upper respiratory tract disorder, respiratory system disorder, disease by body system or component",
+"ko": "선천성 성문하 협착",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001637",
+"concept": "- MONDO:0001637 | cicatricial entropion | ancestors: entropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "반흔성 안검내반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006938",
+"concept": "- MONDO:0006938 | pyelitis | syn: inflammation of renal pelvis; renal pelvis inflammation | ancestors: nephritis, kidney disorder, inflammatory disease, urinary system disorder | def: Inflammation of the renal pelvis.",
+"ko": "신우염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003377",
+"concept": "- MONDO:0003377 | extrahepatic bile duct leiomyosarcoma | syn: bile duct leiomyosarcoma; extrahepatic bile duct leiomyosarcoma; leiomyosarcoma of bile duct; leiomyosarcoma of extrahepatic bile duct | ancestors: extrahepatic bile duct carcinoma, leiomyosarcoma, extrahepatic bile duct sarcoma, bile duct carcinoma | def: An aggressive malignant smooth muscle neoplasm, arising from an extrahepatic bile duct. It is characterized by a proliferation of neoplastic spindle cells.",
+"ko": "간외담관 평활근육종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004828",
+"concept": "- MONDO:0004828 | lower urinary tract calculus | syn: lower urinary tract urolithiasis; urolithiasis of lower urinary tract | ancestors: urolithiasis, urinary system disorder, disease by body system or component, human disease | def: A urolithiasis that involves the lower urinary tract.",
+"ko": "하부요로 결석",
+"alt": [
+"하부 요로결석"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0020721",
+"concept": "- MONDO:0020721 | X-linked sideroblastic anemia 1 | syn: anemia, sideroblastic, 1, X-linked recessive; sideroblastic anemia, X-linked; X-linked sideroblastic anemia; XLSA | ancestors: X-linked disease, inborn disorder of porphyrin metabolism, inherited sideroblastic anemia, hereditary disease",
+"ko": "X연관 철적모구성 빈혈 1",
+"alt": [
+"X연관 철아구성 빈혈 1"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005126",
+"concept": "- MONDO:0005126 | tuberculoid leprosy | syn: tuberculoid leprosy [type T] | ancestors: leprosy, primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease | def: A principal or polar form of leprosy in which the skin lesions are few and are sharply demarcated. Peripheral nerve involvement is pronounced and may be severe. Unlike lepromatous leprosy (leprosy, le...",
+"ko": "결핵양 나병",
+"alt": [
+"결핵양 한센병"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0000927",
+"concept": "- MONDO:0000927 | asymptomatic neurosyphilis | ancestors: neurosyphilis, tertiary syphilis, syphilis, primary bacterial infectious disease",
+"ko": "무증상 신경매독",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004080",
+"concept": "- MONDO:0004080 | glottis squamous cell carcinoma | syn: epidermoid carcinoma of glottis; epidermoid carcinoma of the glottis; glottic epidermoid carcinoma; glottic squamous cell carcinoma | ancestors: glottis carcinoma, laryngeal squamous cell carcinoma, glottis cancer, laryngeal carcinoma | def: A squamous cell carcinoma of the larynx that arises from the glottic area. It may remain localized for a long period then in late disease stage, it may spread to the opposite true vocal cord, supraglo...",
+"ko": "성문 편평세포암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008487",
+"concept": "- MONDO:0008487 | polycystic ovary syndrome | syn: PCOS; polycystic ovarian disease; polycystic ovaries; polycystic ovary syndrome | ancestors: syndromic disease, hereditary disease, endocrine system disorder, disease by body system or component | def: A disorder that manifests as multiple cysts on the ovaries. It results in hormonal imbalances and leads to irregular and abnormal menstrual periods, excess growth of hair, acne eruptions and obesity.",
+"ko": "다낭성 난소 증후군",
+"alt": [
+"다낭성 난소 질환"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0100638",
+"concept": "- MONDO:0100638 | endocrine myopathy | ancestors: metabolic myopathy, myopathy, skeletal muscle disorder, muscle tissue disorder | def: A metabolic myopathy associated with an endocrine disorder.",
+"ko": "내분비 근병증",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001534",
+"concept": "- MONDO:0001534 | ocular hyperemia | syn: hyperemia eye; hyperemia of conjunctiva | ancestors: conjunctival disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "안구 충혈",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003210",
+"concept": "- MONDO:0003210 | intrahepatic cholangiocarcinoma | syn: cholangiocarcinoma, intrahepatic, malignant; ICC; intrahepatic bile duct cancer (cholangiocarcinoma); intrahepatic bile duct carcinoma | ancestors: intrahepatic bile duct cancer, carcinoma of liver and intrahepatic biliary tract, cholangiocarcinoma, liver cancer | def: A carcinoma that arises from the intrahepatic bile duct epithelium in any site of the intrahepatic biliary tree. Grossly, the malignant lesions are solid, nodular, and grayish. Morphologically, the va...",
+"ko": "간내 담관암종",
+"alt": [
+"간내 담관암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003004",
+"concept": "- MONDO:0003004 | macular degeneration | syn: macula lutea retinal degeneration; macula retinal degeneration; retinal degeneration of macula lutea | ancestors: retinal degeneration, retinal disorder, nervous system disorder, eye disorder | def: Loss of vision in the central portion of the retina (macula), secondary to retinal degeneration.",
+"ko": "황반변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0007404",
+"concept": "- MONDO:0007404 | Cri-du-chat syndrome | syn: 5p deletion syndrome; 5p partial monosomy syndrome; Cat-Cry syndrome; chromosome 5p deletion syndrome | ancestors: syndromic disease, partial deletion of the short arm of chromosome 5, disease by body system or component, partial deletion of chromosome 5 | def: Monosomy 5p, also known as Cri du chat syndrome, is a rare autosomal deletion syndrome characterized by a mewing cry (cri du chat) in infancy, multiple congenital anomalies, intellectual disability, m...",
+"ko": "묘성 증후군",
+"alt": [
+"5p 결실 증후군"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009923",
+"concept": "- MONDO:0009923 | 46,XY disorder of sex development due to 5-alpha-reductase 2 deficiency | syn: 3-oxo-5 Alpha-steroid Delta 4-dehydrogenase deficiency; 46,XY disorder of sex development due to 5-alpha-reductase 2 deficiency; 46,XY DSD due to 5-alpha-reductase 2 deficiency; 5 Alpha steroid reductase 2 deficiency | ancestors: inherited lipid metabolism disorder, developmental anomaly of metabolic origin, 46 XY differences of sex development, inborn errors of metabolism | def: A rare disorder of sex development (DSD) due to a defect in metabolizing testosterone to dihydrotestosterone and characterized by incomplete intrauterine masculinization which ranges from a female gen...",
+"ko": "5-알파-환원효소 2 결핍에 의한 46,XY 성발달 장애",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+}
+]

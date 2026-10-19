@@ -1,0 +1,240 @@
+[
+{
+"id": "MONDO:0009763",
+"concept": "- MONDO:0009763 | obesity-hypoventilation syndrome | syn: obesity-hypoventilation syndrome | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease | def: Hypoventilation syndrome in very obese persons with excessive adipose tissue around the abdomen and diaphragm is characterized by diminished to absent ventilatory chemoresponsiveness; chronic hypoxia;...",
+"ko": "비만 저환기 증후군",
+"alt": [],
+"organs": [
+"pulmonary",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0022792",
+"concept": "- MONDO:0022792 | coccygodynia | syn: coccydynia | ancestors: vertebral column disorder, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: A rare pain disorder characterized by pain in and around the coccyx (tailbone). Although various causes have been described for the condition, the more common causes are direct falls and injury.",
+"ko": "꼬리뼈통증",
+"alt": [
+"미골통"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0006790",
+"concept": "- MONDO:0006790 | hypercementosis | syn: cementation hyperplasia | ancestors: tooth hard tissue disease, tooth disorder, skeletal system disorder, mouth disorder | def: A regressive change of teeth characterized by excessive development of secondary cementum on the tooth surface. It may occur on any part of the root, but the apical two-thirds are most commonly affect...",
+"ko": "치아시멘트질 과형성",
+"alt": [
+"시멘트질 과다증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018689",
+"concept": "- MONDO:0018689 | plasma cell leukemia | syn: leukaemia plasmacytic; leukemia plasmacytic; PCL; plasma cell leukemia | ancestors: plasma cell neoplasm, acute lymphoblastic leukemia, B-cell non-Hodgkin lymphoma, neoplasm of mature B-cells | def: An aggressive plasma cell neoplasm characterized by the presence of neoplastic plasma cells in the peripheral blood. It is characterized by the presence of a circulating clonal plasma cell count that ...",
+"ko": "형질세포백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0017879",
+"concept": "- MONDO:0017879 | hantavirus pulmonary syndrome | ancestors: syndromic disease, lung disorder, hantavirus infectious disease, viral hemorrhagic fever | def: An infection caused by Hantaviruses. It manifests with flu-like symptoms but it rapidly progresses to life-threatening respiratory problems.",
+"ko": "한타바이러스 폐증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002889",
+"concept": "- MONDO:0002889 | orbital cancer | syn: cancer of orbit of skull; malignant neoplasm of orbit; malignant neoplasm of orbit of skull; malignant neoplasm of the orbit | ancestors: skull cancer, orbit neoplasm, bone cancer, head and neck cancer | def: A primary or metastatic malignant neoplasm involving the orbit.",
+"ko": "안와암",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001028",
+"concept": "- MONDO:0001028 | acute pericementitis | syn: acute periodontitis; periodontitis, acute | ancestors: periodontitis, acute disease, periodontal disorder, inflammatory disease | def: An acute inflammatory process that affects the tissues that surround and support the teeth.",
+"ko": "급성 치주염",
+"alt": [
+"급성 치근막염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0020066",
+"concept": "- MONDO:0020066 | Ehlers-Danlos syndrome | syn: Danlos disease; Danlos Disease, Ehlers; danlos ehlers syndrome; Disease, Ehlers Danlos | ancestors: syndromic disease, hereditary disease, developmental defect during embryogenesis, disease by body system or component | def: The Ehlers–Danlos syndromes (EDS) are a clinically and genetically heterogeneous group of heritable connective tissue disorders (HCTDs) characterized by joint hypermobility, skin hyperextensibility, a...",
+"ko": "엘러스-단로스 증후군",
+"alt": [
+"엘러스-단로 증후군"
+],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0044750",
+"concept": "- MONDO:0044750 | lassa virus infectious disease | syn: infection caused by Lassa virus; Lassa virus infection | ancestors: Arenaviridae infectious disease, primary viral infectious disease, viral infectious disease, infectious disease",
+"ko": "라사열",
+"alt": [
+"라사바이러스 감염증"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011086",
+"concept": "- MONDO:0011086 | severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-negative, NK cell-positive | syn: SCID due to complete RAG1/2 deficiency; severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-negative, NK cell-positive; severe combined immunodeficiency, B cell-negative | ancestors: T-B- severe combined immunodeficiency, familial severe combined immunodeficiency, severe combined immunodeficiency, combined immunodeficiency | def: A rare, genetic T-B- severe combined immunodeficiency disorder due to null mutations in recombination activating gene (RAG) 1 and/or RAG2 resulting in less than 1% of wild type V(D)J recombination act...",
+"ko": "중증 복합 면역결핍증, 상염색체 열성, T세포 음성, B세포 음성, NK세포 양성",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004855",
+"concept": "- MONDO:0004855 | tenosynovitis | syn: tendon sheath inflammation; Tenosynovitides | ancestors: tendinitis, arthropathy, tendon sheath disorder, myositis disease | def: Inflammation of the synovial lining of a tendon sheath. Causes include trauma, tendon stress, bacterial disease (gonorrhea, tuberculosis), rheumatic disease, and gout. Common sites are the hand, wrist...",
+"ko": "건활막염",
+"alt": [
+"힘줄윤활막염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005610",
+"concept": "- MONDO:0005610 | Kashin-Beck disease | ancestors: osteochondrodysplasia, bone development disease, skeletal dysplasia, bone disorder | def: Disabling osteochondrodysplasia with osteosclerosis, cone-shaped metaphysis, and shortening of the diaphysis. It is endemic in parts of Siberia and northern China. Mineral deficiencies (e.g., selenium...",
+"ko": "카신-벡병",
+"alt": [
+"카신-벡 병"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017362",
+"concept": "- MONDO:0017362 | neuralgic amyotrophy | syn: acute brachial plexus neuritis; immune brachial plexus neuropathy; mononeuritis multiplex with brachial predilection; neuralgic shoulder amyotrophy | ancestors: acquired peripheral neuropathy, peripheral neuropathy, peripheral nervous system disorder, neuromuscular disease | def: Neuralgic amyotrophy (NA) is an uncommon disorder of the peripheral nervous system characterized by the sudden onset of extreme pain in the upper extremity followed by rapid multifocal motor weakness ...",
+"ko": "신경통성 근위축증",
+"alt": [
+"파소니지-터너 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0013028",
+"concept": "- MONDO:0013028 | adenosine monophosphate deaminase deficiency | syn: AMP deaminase deficiency; myoadenylate deaminase deficiency | ancestors: inborn mitochondrial myopathy, inborn disorder of purine metabolism, congenital structural myopathy, inborn mitochondrial metabolism disorder | def: Adenosine monophosphate (AMP) deaminase deficiency is a metabolic disorder for which two forms have been described. Lack of activity of the erythrocyte isoform of AMP deaminase has been described in s...",
+"ko": "아데노신 일인산 탈아미노효소 결핍증",
+"alt": [
+"AMP 탈아미노효소 결핍증"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018872",
+"concept": "- MONDO:0018872 | acute megakaryoblastic leukemia | syn: acute M7 myeloid leukaemia; acute M7 myeloid leukemia; acute megakaryoblastic leukaemia (FAB type M7); acute megakaryoblastic leukemia | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: Acute megakaryoblastic leukemia (AMKL) is a form of acute myeloid leukemia (AML) that occurs predominantly in childhood and particularly in children with Down syndrome (DS-AMKL). Nonspecific symptoms ...",
+"ko": "급성 거핵모구성 백혈병",
+"alt": [
+"급성 거핵아구성 백혈병",
+"급성 골수성 백혈병 M7"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0021454",
+"concept": "- MONDO:0021454 | benign neoplasm of eye | syn: benign eye neoplasm; benign eye tumor; benign eye tumour; benign neoplasm of the eye | ancestors: sensory organ benign neoplasm, eye neoplasm, nervous system benign neoplasm, eye disorder | def: A benign neoplasm that involves the eye.",
+"ko": "눈 양성 신생물",
+"alt": [
+"눈 양성 종양"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005960",
+"concept": "- MONDO:0005960 | silicosis | syn: pneumoconiosis due to silica; silicosis | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: Silicosis is a respiratory disease caused by breathing in (inhaling) silica dust. There are three types of silicosis: Simple chronic silicosis, the most common type of silicosis, results from long-ter...",
+"ko": "규폐증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015045",
+"concept": "- MONDO:0015045 | alpha-heavy chain disease | syn: alpha chain disease; Alpha heavy chain disease; Alpha-HCD; Immunoproliferative small intestinal disease | ancestors: heavy chain disease, plasma cell neoplasm, neoplasm of mature B-cells, B-cell neoplasm | def: Alpha-heavy chain disease (alpha-HCD) is a type of HCD characterized by the production of incomplete monoclonal alpha-heavy chains without associated light chains. Alpha-HCD is considered to be a subt...",
+"ko": "알파 중쇄병",
+"alt": [
+"알파 사슬병"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0004485",
+"concept": "- MONDO:0004485 | interstitial myocarditis | ancestors: myocarditis, intrinsic cardiomyopathy, inflammation of heart layer, myocardial disorder | def: Inflammation of the heart characterized by infiltration of the interstitial tissues by inflammatory cells, histiocytes, and the formation of granulomas. Giant cells are often present.",
+"ko": "간질성 심근염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001881",
+"concept": "- MONDO:0001881 | toxic shock syndrome | syn: bacterial toxic-shock syndrome; bacterial TSS; shock syndrome (TSS), toxic; syndrome (TSS), toxic shock | ancestors: commensal bacterial infectious disease, syndromic disease, bacterial infectious disease, disease by body system or component | def: A rare acute life-threatening systemic bacterial noncontagious illness caused by exotoxins from bacteria of either the Streptococcus pyogenes or Staphylococcus aureus type. It is characterized by high...",
+"ko": "독성 쇼크 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+}
+]

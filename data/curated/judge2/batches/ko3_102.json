@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0001689",
+"concept": "- MONDO:0001689 | hypertrophy of tongue papillae | ancestors: tongue disorder, mouth disorder, disease by body system or component, human disease",
+"ko": "혀유두 비대",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019316",
+"concept": "- MONDO:0019316 | maculopapular cutaneous mastocytosis | syn: UP/MPCM; urticaria pigmentosa; urticaria pigmentosa/maculopapular cutaneous mastocytosis | ancestors: cutaneous mastocytosis, dermis tumor, urticaria, mastocytosis | def: Maculopapular cutaneous mastocytosis (MCM) is a form of cutaneous mastocytosis (CM) characterized by the presence of multiple hyperpigmented macules, papules or nodules associated with abnormal accumu...",
+"ko": "반구진성 피부 비만세포증",
+"alt": [
+"색소성 두드러기"
+],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002098",
+"concept": "- MONDO:0002098 | facial nerve disorder | syn: disease of facial nerve; disease or disorder of facial nerve; disorder of facial nerve; facial nerve disease | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the facial nerve.",
+"ko": "안면신경 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0003805",
+"concept": "- MONDO:0003805 | malignant pericardial mesothelioma | syn: malignant mesothelioma (disease) of pericardium; malignant mesothelioma of pericardium; malignant mesothelioma of the pericardium; pericardial malignant mesothelioma | ancestors: pericardium cancer, malignant mesothelioma, heart cancer, neoplasm of pericardium | def: A rare neoplasm of mesothelial origin that arises from the pericardium.",
+"ko": "악성 심낭 중피종",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018938",
+"concept": "- MONDO:0018938 | mucopolysaccharidosis type 4 | syn: eccentro-osteochondrodysplasia; eccentrochondrodysplasia; eccentroosteochondrodysplasia; Morquio disease | ancestors: syndromic disease, mucopolysaccharidosis, disease by body system or component, lysosomal storage disease | def: A lysosomal storage disease belonging to the group of mucopolysaccharidoses, and characterized by spondylo-epiphyso-metaphyseal dysplasia. It exists in two forms, A and B.",
+"ko": "점액다당류증 4형",
+"alt": [
+"모르키오 증후군"
+],
+"organs": [
+"cardiovascular",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011725",
+"concept": "- MONDO:0011725 | Crigler-Najjar syndrome type 2 | syn: Arias syndrome; bilirubin uridinediphosphate glucuronosyltransferase deficiency type 2; bilirubin-UGT deficiency type 2; hereditary unconjugated hyperbilirubinemia type 2 | ancestors: Crigler-Najjar syndrome, syndromic disease, hereditary hyperbilirubinemia, disease by body system or component | def: Type 2 Crigler-Najjar syndrome (CNS2) is a hereditary disorder of bilirubin metabolism characterized by unconjugated hyperbilirubinemia due to reduced and inducible activity of hepatic bilirubin glucu...",
+"ko": "크리글러-나자르 증후군 2형",
+"alt": [
+"아리아스 증후군"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002637",
+"concept": "- MONDO:0002637 | histiocytosis | syn: histiocytic infiltrate; histiocytic syndrome | ancestors: lymphatic system disorder, lymphoid system disorder, immune system disorder, disease by body system or component | def: A morphologic finding indicating tissue infiltration by non-neoplastic or neoplastic histiocytes.",
+"ko": "조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006909",
+"concept": "- MONDO:0006909 | pituitary dwarfism | ancestors: adrenal gland disorder, endocrine system disorder, disease by body system or component, human disease | def: Proportionately decreased bodily growth due to failure of the pituitary gland to produce an adequate supply of growth hormone.",
+"ko": "뇌하수체성 왜소증",
+"alt": [
+"뇌하수체 난쟁이증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004717",
+"concept": "- MONDO:0004717 | peliosis hepatis | syn: hepatic peliosis | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder | def: A vascular disease of the liver characterized by the occurrence of multiple blood-filled cysts or cavities. The cysts are lined with endothelial cells; the cavities lined with hepatic parenchymal cell...",
+"ko": "간자색반병",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001917",
+"concept": "- MONDO:0001917 | chronic perichondritis of pinna | syn: chronic perichondritis of auricle; perichondritis of auricle, chronic | ancestors: perichondritis of auricle, otitis externa, external ear disorder, ear infection | def: Chronic form of perichondritis of auricle.",
+"ko": "귓바퀴 만성 연골막염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016566",
+"concept": "- MONDO:0016566 | loiasis | ancestors: filariasis, helminthiasis, parasitic infectious disease, infectious disease | def: Loiasis is a form of filariasis (see this term), caused by the parasitic worm Loa loa, endemic to the forest and savannah regions of Central and Western Africa. Loiasis may either be asymptomatic or m...",
+"ko": "로아사상충증",
+"alt": [
+"로아로아증"
+],
+"organs": [
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008633",
+"concept": "- MONDO:0008633 | Muckle-Wells syndrome | syn: Muckle-Wells syndrome; neutrophilic urticaria | ancestors: autosomal dominant disease, cryopyrin-associated periodic syndrome, autosomal genetic disease, immune system disorder | def: An intermediate form of cryopyrin-associated periodic syndrome (CAPS) and is characterized by recurrent fever (with malaise and chills), recurrent urticaria-like skin rash, sensorineural deafness, gen...",
+"ko": "머클-웰스 증후군",
+"alt": [
+"호중구성 두드러기"
+],
+"organs": [
+"dermatologic",
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015696",
+"concept": "- MONDO:0015696 | Good syndrome | syn: thymoma-immunodeficiency; thymoma-immunodeficiency syndrome | ancestors: agammaglobulinemia, acquired immunodeficiency, B cell deficiency, immune system disorder | def: Good syndrome, also known as thymoma-immunodeficiency, is a very rare acquired immunodeficiency syndrome characterized by the association of thymoma and combined B-cell and T-cell immunodeficiency of ...",
+"ko": "굿 증후군",
+"alt": [
+"흉선종-면역결핍 증후군"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011230",
+"concept": "- MONDO:0011230 | ossification of the posterior longitudinal ligament of the spine | syn: OPLL; ossification of Posterior longitudinal ligament | ancestors: skeletal system disorder, hereditary disorder of connective tissue, musculoskeletal system disorder, hereditary disease | def: A disorder characterized by benign depositions of calcium in the posterior longitudinal ligament. Signs and symptoms result from the compression of nerve roots and include motor and sensory disturbanc...",
+"ko": "척추 후종인대 골화증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0018612",
+"concept": "- MONDO:0018612 | congenital hypothyroidism | syn: congenital hypothyroidism; congenital iodine deficiency syndrome | ancestors: hypothyroidism, thyroid gland disorder, endocrine system disorder, disease by body system or component | def: A thyroid hormone deficiency present from birth.",
+"ko": "선천성 갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008684",
+"concept": "- MONDO:0008684 | Wolf-Hirschhorn syndrome | syn: 4p deletion syndrome; 4p- syndrome; chromosome 4p16.3 deletion syndrome; distal deletion 4p | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-intellectual disability, chromosome 4 short arm deletion, disease by body system or component | def: Wolf-Hirschhorn syndrome (WHS) is a developmental disorder characterized by typical craniofacial features, prenatal and postnatal growth impairment, intellectual disability, severe delayed psychomotor...",
+"ko": "울프-허쉬혼 증후군",
+"alt": [
+"4p 결손 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007422",
+"concept": "- MONDO:0007422 | keratoderma hereditarium mutilans | syn: keratoderma hereditarium mutilans; KHM; mutilating keratoderma; mutilating keratoderma of Vohwinkel | ancestors: integumentary system disorder, GJB2-related disorder, disease by body system or component, hereditary disease | def: A rare, diffuse, mutilating, hereditary palmoplantar keratoderma disorder characterized by severe, honeycomb-pattern palmoplantar keratosis and pseudoainhum of the digits leading to autoamputation, as...",
+"ko": "유전성 절단성 각피증",
+"alt": [],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0022208",
+"concept": "- MONDO:0022208 | crystal arthropathy | syn: crystal arthropathy | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component",
+"ko": "결정 관절병증",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 12,
+"new": false
+},
+{
+"id": "MONDO:0015070",
+"concept": "- MONDO:0015070 | laryngeal neuroendocrine neoplasm | syn: laryngeal neuroendocrine neoplasm; larynx NET; larynx neuroendocrine neoplasm; larynx neuroendocrine tumor | ancestors: head and neck neoplasm, neuroendocrine neoplasm, laryngeal neoplasm, otorhinolaryngologic disease | def: A benign or malignant neoplasm with neuroendocrine differentiation that arises from the larynx. This category includes paraganglioma, carcinoid tumor, small cell carcinoma, and large cell neuroendocri...",
+"ko": "후두 신경내분비 신생물",
+"alt": [
+"후두 신경내분비종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001711",
+"concept": "- MONDO:0001711 | hepatic encephalopathy | syn: portal-systemic encephalopathy | ancestors: toxic encephalopathy, brain disorder, nervous system disorder, central nervous system disorder | def: Hepatic encephalopathy is a syndrome observed in some patients with cirrhosis. It is defined as a spectrum of neuropsychiatric abnormalities in patients with liver dysfunction, when other known brain ...",
+"ko": "간성 뇌병증",
+"alt": [
+"간성 뇌증"
+],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+}
+]

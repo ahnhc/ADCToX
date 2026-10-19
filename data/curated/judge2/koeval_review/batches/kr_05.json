@@ -1,0 +1,266 @@
+[
+{
+"qid": "q0547",
+"group": "q0547",
+"category": "non_disease",
+"en": "s/p cholecystectomy",
+"ko": "담낭절제술 후",
+"disease": null
+},
+{
+"qid": "q0585",
+"group": "q0585",
+"category": "invalid",
+"en": "null",
+"ko": "널",
+"disease": null
+},
+{
+"qid": "q0036",
+"group": "alcoholic_hepatitis",
+"category": "canonical",
+"en": "Alcoholic hepatitis",
+"ko": "알코올성 간염",
+"disease": "alcoholic hepatitis"
+},
+{
+"qid": "q0037",
+"group": "alcoholic_hepatitis",
+"category": "synonym",
+"en": "Alcohol-associated hepatitis",
+"ko": "알코올 연관 간염",
+"disease": "alcoholic hepatitis"
+},
+{
+"qid": "q0038",
+"group": "alcoholic_hepatitis",
+"category": "abbrev",
+"en": "AH",
+"ko": "AH",
+"disease": null
+},
+{
+"qid": "q0039",
+"group": "alcoholic_hepatitis",
+"category": "typo",
+"en": "alcholic hepatitis",
+"ko": "알콜성 가염",
+"disease": "alcoholic hepatitis"
+},
+{
+"qid": "q0040",
+"group": "alcoholic_hepatitis",
+"category": "lay",
+"en": "liver inflamed from drinking",
+"ko": "술 때문에 간에 염증이 생김",
+"disease": "alcoholic hepatitis"
+},
+{
+"qid": "q0406",
+"group": "menieres_disease",
+"category": "canonical",
+"en": "meniere disease",
+"ko": "메니에르병",
+"disease": "Meniere disease"
+},
+{
+"qid": "q0407",
+"group": "menieres_disease",
+"category": "synonym",
+"en": "Endolymphatic hydrops",
+"ko": "내림프수종",
+"disease": "endolymphatic hydrops"
+},
+{
+"qid": "q0408",
+"group": "menieres_disease",
+"category": "abbrev",
+"en": "MD ear",
+"ko": "MD 귀",
+"disease": "Meniere disease"
+},
+{
+"qid": "q0409",
+"group": "menieres_disease",
+"category": "typo",
+"en": "meniers disease",
+"ko": "메니에로병",
+"disease": "Meniere disease"
+},
+{
+"qid": "q0410",
+"group": "menieres_disease",
+"category": "lay",
+"en": "dizzy spells with ringing in ear",
+"ko": "어지럼증이 오고 귀에서 소리가 남",
+"disease": "Meniere disease"
+},
+{
+"qid": "q0106",
+"group": "asthma",
+"category": "canonical",
+"en": "asthma",
+"ko": "천식",
+"disease": "asthma"
+},
+{
+"qid": "ctl05_2",
+"group": "menieres_disease",
+"category": "abbrev",
+"en": "MD ear",
+"ko": "본태성 고혈압",
+"disease": "Meniere disease"
+},
+{
+"qid": "q0107",
+"group": "asthma",
+"category": "synonym",
+"en": "Bronchial asthma",
+"ko": "기관지천식",
+"disease": "asthma"
+},
+{
+"qid": "q0108",
+"group": "asthma",
+"category": "abbrev",
+"en": "RAD",
+"ko": "RAD",
+"disease": "radiculopathy"
+},
+{
+"qid": "q0109",
+"group": "asthma",
+"category": "typo",
+"en": "asthama",
+"ko": "천싟",
+"disease": "asthma"
+},
+{
+"qid": "q0110",
+"group": "asthma",
+"category": "lay",
+"en": "wheezy chest since childhood",
+"ko": "어릴 때부터 가슴에서 쌕쌕 소리가 남",
+"disease": "asthma"
+},
+{
+"qid": "q0509",
+"group": "q0509",
+"category": "ambiguous",
+"en": "as",
+"ko": "as",
+"disease": "aortic valve stenosis"
+},
+{
+"qid": "q0561",
+"group": "q0561",
+"category": "non_disease",
+"en": "history of blood transfusion",
+"ko": "수혈 과거력",
+"disease": null
+},
+{
+"qid": "q0511",
+"group": "q0511",
+"category": "ambiguous",
+"en": "ca",
+"ko": "ca",
+"disease": "cancer"
+},
+{
+"qid": "q0491",
+"group": "thyroid_eye_disease",
+"category": "canonical",
+"en": "Thyroid eye disease",
+"ko": "갑상선 눈병증",
+"disease": "endocrine exophthalmos"
+},
+{
+"qid": "q0492",
+"group": "thyroid_eye_disease",
+"category": "synonym",
+"en": "Graves ophthalmopathy",
+"ko": "그레이브스 안병증",
+"disease": "endocrine exophthalmos"
+},
+{
+"qid": "q0493",
+"group": "thyroid_eye_disease",
+"category": "abbrev",
+"en": "TED",
+"ko": "TED",
+"disease": "endocrine exophthalmos"
+},
+{
+"qid": "q0494",
+"group": "thyroid_eye_disease",
+"category": "typo",
+"en": "thyroid eye diesase",
+"ko": "갑상선 눈병즘",
+"disease": "endocrine exophthalmos"
+},
+{
+"qid": "ctl05_0",
+"group": "thyroid_eye_disease",
+"category": "abbrev",
+"en": "TED",
+"ko": "귀 뼈가 굳어서 난청",
+"disease": "endocrine exophthalmos"
+},
+{
+"qid": "q0495",
+"group": "thyroid_eye_disease",
+"category": "lay",
+"en": "bulging eyes from thyroid",
+"ko": "갑상선 때문에 눈이 튀어나옴",
+"disease": "endocrine exophthalmos"
+},
+{
+"qid": "q0176",
+"group": "gerd",
+"category": "canonical",
+"en": "Gastroesophageal reflux disease",
+"ko": "위식도역류질환",
+"disease": "gastroesophageal reflux disease"
+},
+{
+"qid": "q0177",
+"group": "gerd",
+"category": "synonym",
+"en": "Reflux esophagitis",
+"ko": "역류성 식도염",
+"disease": "peptic esophagitis"
+},
+{
+"qid": "ctl05_1",
+"group": "menieres_disease",
+"category": "lay",
+"en": "dizzy spells with ringing in ear",
+"ko": "만성폐쇄성폐질환",
+"disease": "Meniere disease"
+},
+{
+"qid": "q0178",
+"group": "gerd",
+"category": "abbrev",
+"en": "GERD",
+"ko": "GERD",
+"disease": "gastroesophageal reflux disease"
+},
+{
+"qid": "q0179",
+"group": "gerd",
+"category": "typo",
+"en": "gastroesophogeal reflux disease",
+"ko": "위식도역류질한",
+"disease": "gastroesophageal reflux disease"
+},
+{
+"qid": "q0180",
+"group": "gerd",
+"category": "lay",
+"en": "acid reflux",
+"ko": "위산 역류",
+"disease": "gastroesophageal reflux disease"
+}
+]

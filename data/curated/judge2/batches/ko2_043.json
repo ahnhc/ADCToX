@@ -1,0 +1,241 @@
+[
+{
+"id": "MONDO:0001114",
+"concept": "- MONDO:0001114 | bacterial myocarditis | syn: septic myocarditis | ancestors: myocarditis, intrinsic cardiomyopathy, inflammation of heart layer, myocardial disorder | def: Myocarditis that is caused by an infection with a bacterial agent.",
+"ko": "세균성 심근염",
+"alt": [
+"패혈성 심근염"
+],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0002803",
+"concept": "- MONDO:0002803 | intestinal pseudo-obstruction | syn: Chronic intestinal pseudo-obstruction.; intestinal pseudo-obstruction; intestine pseudoobstruction; pseudo-obstruction of intestine | ancestors: ileus, intestinal obstruction, intestinal disorder, digestive system disorder | def: Intestinal pseudo-obstruction is a digestive disorder in whichthe intestinal walls are unable to contract normally (called hypomotility); the conditionresembles a true obstruction, but no actual block...",
+"ko": "장 가성폐쇄",
+"alt": [
+"가성 장폐색"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015692",
+"concept": "- MONDO:0015692 | refractory anemia with excess blasts in transformation | syn: RAEB-T; RAEB-t | ancestors: refractory hematologic cancer, myelodysplastic syndrome, hematopoietic and lymphoid cell neoplasm, myeloid hemopathy | def: Refractory anemia with excess blasts in transformation (RAEB-T) is characterized by dysplastic features of the myeloid and usually erythroid progenitor cells in the bone marrow and an increased number...",
+"ko": "전환기 과다모세포 동반 불응성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009249",
+"concept": "- MONDO:0009249 | hereditary fructose intolerance | syn: Fructosaemia; fructose intolerance; Fructose Intolerance, Hereditary; fructose intolerance, hereditary | ancestors: disorder of fructose metabolism, disorder of galactose and fructose metabolism, inborn carbohydrate metabolic disorder, inborn errors of metabolism | def: Hereditary fructose intolerance (HFI) is an autosomal recessive disorder of fructose metabolism, resulting from a deficiency of hepatic fructose-1-phosphate aldolase activity and leading to gastrointe...",
+"ko": "유전성 과당불내증",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006770",
+"concept": "- MONDO:0006770 | giant cell reparative granuloma | syn: central giant cell (reparative) granuloma; central giant cell granuloma; GCLSB; giant cell lesion of small bones | ancestors: bone giant cell tumor, bone sarcoma, bone cancer, sarcoma | def: A rare tumor-like lesion of the hands and feet characterized by the presence of hemorrhagic fibrous tissue, hemosiderin deposition, osteoclast-like giant cells which are irregularly distributed, and r...",
+"ko": "거대세포 복원성 육아종",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016984",
+"concept": "- MONDO:0016984 | nevus of Ota | syn: Nevus fusculoceruleus ophthalmomaxillaris; oculocutaneous melanocytic Nevus; oculodermal melanocytosis; Ota's Nevus | ancestors: melanocytic nevus, benign neoplasm of skin, melanocytic skin neoplasm, integumentary system benign neoplasm | def: Nevus of Ota is an oculodermal melanocytosis more commonly found in Asian and African populations, usually present at birth and characterized by a usually unilateral, bluish gray, patchy, speckled pig...",
+"ko": "오타모반",
+"alt": [
+"오타 모반"
+],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005854",
+"concept": "- MONDO:0005854 | mixed connective tissue disease | syn: MCTD; sharp syndrome | ancestors: rheumatic disorder, overlapping connective tissue disease, connective tissue disorder, autoimmune disease | def: Mixed connective tissue disease (MCTD) is a rare autoimmune disorder that is characterized by features commonly seen in three different connective tissue disorders: systemic lupus erythematosus, scler...",
+"ko": "혼합결합조직병",
+"alt": [],
+"organs": [
+"pulmonary",
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006558",
+"concept": "- MONDO:0006558 | pemphigoid gestationis | syn: gestational pemphigoid; Herpes gestationis; Herpes gestationis (disorder); Herpes gestationis NOS (disorder) | ancestors: pemphigus, pregnancy disorder, autoimmune bullous skin disease, obstetric disorder | def: A rare pregnancy-associated autoimmune skin disease that is characterized by an itchy rash that develops into blisters. It is most common during the second and third trimesters of pregnancy. It was pr...",
+"ko": "임신성 유천포창",
+"alt": [
+"임신 헤르페스"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0037847",
+"concept": "- MONDO:0037847 | vertebral joint disorder | syn: disease of intervertebral joint; disease or disorder of intervertebral joint; disorder of intervertebral joint; disorder of joint of spine | ancestors: vertebral column disorder, arthropathy, skeletal system disorder, musculoskeletal system disorder | def: A disease that involves the intervertebral joint.",
+"ko": "척추 관절 질환",
+"alt": [
+"추간관절 질환"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0000608",
+"concept": "- MONDO:0000608 | familial juvenile hyperuricemic nephropathy | syn: familial juvenile gouty nephropathy; familial juvenile hyperuricemic nephropathy; familial nephropathy associated with hyperuricemia; familial nephropathy with gout | ancestors: inherited kidney disorder, hereditary disease, kidney disorder, disease of genetic or genomic mechanism",
+"ko": "가족성 소아 고요산혈증 신병증",
+"alt": [
+"가족성 소아 통풍성 신병증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001244",
+"concept": "- MONDO:0001244 | vitamin K deficiency hemorrhagic disease | syn: deficiency of vitamin K; vitamin K deficiency; vitamin K deficiency coagulation disorder | ancestors: vitamin deficiency disorder, nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism | def: Deficiency of vitamin K. It may lead to bleeding, manifested with ecchymoses, petechiae, and hematomas. In infants it may cause hemorrhagic disease of newborn with intracranial and retroperitoneal ble...",
+"ko": "비타민 K 결핍 출혈병",
+"alt": [
+"비타민 K 결핍증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021129",
+"concept": "- MONDO:0021129 | microphthalmia | syn: microphthalmia | ancestors: ocular growth disorder, eye disorder, disorder of orbital region, disorder of visual system | def: Congenital or developmental anomaly in which the eyeballs are abnormally small.",
+"ko": "소안구증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000158",
+"concept": "- MONDO:0000158 | developmental dysplasia of the hip | syn: congenital hip dysplasia | ancestors: hereditary disease, bone development disease, disease of genetic or genomic mechanism, bone disorder | def: A spectrum of hip abnormalities commonly presenting in infancy involving the relationship between the femoral head and the acetabulum and that includes subluxation or dislocation at rest or upon provo...",
+"ko": "발달성 고관절 이형성증",
+"alt": [
+"선천성 고관절 이형성증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021521",
+"concept": "- MONDO:0021521 | benign neoplasm of mediastinum | syn: benign mediastinal neoplasm; benign mediastinal tumor; benign mediastinal tumour; benign neoplasm of the mediastinum | ancestors: thoracic benign neoplasm, neoplasm of mediastinum, benign neoplasm, neoplasm of thorax | def: A benign neoplasm that involves the mediastinum.",
+"ko": "종격동 양성 신생물",
+"alt": [
+"종격동 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016239",
+"concept": "- MONDO:0016239 | cystinosis | syn: cystine storage disease; cystinosis; Protein defect of cystin transport | ancestors: inborn disorder of lysosomal amino acid transport, lysosomal storage disease, inborn errors of metabolism, hereditary disease | def: Cystinosis is a metabolic disease characterized by an accumulation of cystine inside the lysosomes, causing damage in different organs and tissues, particularly in the kidneys and eyes. Three clinical...",
+"ko": "시스틴증",
+"alt": [
+"시스틴 저장병"
+],
+"organs": [
+"renal",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019950",
+"concept": "- MONDO:0019950 | congenital muscular dystrophy | syn: CMD; MDC | ancestors: congenital nervous system disorder, muscular dystrophy, nervous system disorder, myopathy | def: A muscular dystrophy that is characterized by diminished muscle tone (hypotonia), progressive muscle weakness and degeneration (atrophy), abnormally fixed joints, spinal rigidity, and delays in reachi...",
+"ko": "선천성 근이영양증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019508",
+"concept": "- MONDO:0019508 | van der Woude syndrome | syn: cleft lip/palate with mucous cysts of lower lip; lip-pit syndrome; VWS | ancestors: hereditary disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, IRF6-related condition, disease of genetic or genomic mechanism | def: Van der Woude syndrome (VWS) is a rare congenital genetic dysmorphic syndrome characterized by paramedian lower-lip fistulae, cleft lip with or without cleft palate, or isolated cleft palate.",
+"ko": "반 데르 보우데 증후군",
+"alt": [
+"입술 오목-구순구개열 증후군"
+],
+"organs": [
+"gastrointestinal",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001062",
+"concept": "- MONDO:0001062 | pyloric antrum cancer | syn: cancer of pyloric antrum; malignant neoplasm of pyloric antrum; malignant pyloric antrum neoplasm; malignant tumour of pyloric antrum | ancestors: pylorus cancer, gastric cancer, digestive system cancer, gastric neoplasm | def: A malignant neoplasm involving the pyloric antrum.",
+"ko": "유문동 암",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002146",
+"concept": "- MONDO:0002146 | hypogonadism | syn: gonadotropin deficiency; hypogonadotropism | ancestors: gonadal disorder, reproductive system disorder, endocrine system disorder, disease by body system or component | def: A disorder characterized by decreased function of the gonads. Clinical manifestations in both males and females include poor libido, infertility, and osteoporosis. Additional signs in males include er...",
+"ko": "성선기능저하증",
+"alt": [
+"생식샘기능저하증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002354",
+"concept": "- MONDO:0002354 | benign laryngeal neoplasm | syn: benign laryngeal neoplasm; benign laryngeal tumor; benign laryngeal tumour; benign larynx neoplasm | ancestors: respiratory system benign neoplasm, laryngeal neoplasm, respiratory system disorder, benign neoplasm | def: A non-metastasizing neoplasm that arises from the larynx. Representative examples include squamous papilloma and hemangioma.",
+"ko": "후두 양성 신생물",
+"alt": [
+"후두 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+}
+]

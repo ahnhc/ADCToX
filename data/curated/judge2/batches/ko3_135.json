@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0011827",
+"concept": "- MONDO:0011827 | patent ductus arteriosus | syn: familial patent arterial duct; patency of the ductus arteriosus; patent ductus arteriosus; patent ductus arteriosus familial (type) | ancestors: vascular disorder, congenital heart disease, cardiogenetic disease, cardiovascular disorder | def: A congenital defect characterized by the failure of the ductus arteriosus to close soon after birth. As a consequence, blood from the aorta mixes with blood from the pulmonary artery. If untreated, it...",
+"ko": "동맥관개존증",
+"alt": [
+"동맥관 열림증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020744",
+"concept": "- MONDO:0020744 | Mobitz type I atrioventricular block | syn: AV block second degree Mobitz type I; AV block second degree Möbitz type I; Mobitz I; Mobitz type I | ancestors: second-degree atrioventricular block, atrioventricular block, heart conduction disease, atrioventricular dissociation | def: A disorder characterized by an electrocardiographic finding of intermittent failure of atrial electrical impulse conduction to the ventricles, characterized by a progressively lengthening PR interval ...",
+"ko": "모비츠 I형 방실 차단",
+"alt": [
+"2도 방실 차단 모비츠 1형"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004609",
+"concept": "- MONDO:0004609 | herpes simplex infectious disease | syn: Simplexvirus caused disease or disorder; Simplexvirus disease or disorder; Simplexvirus infectious disease | ancestors: Herpesviridae infectious disease, primary viral infectious disease, viral infectious disease, infectious disease | def: A group of acute infections caused by herpes simplex virus type 1 or type 2 that is characterized by the development of one or more small fluid-filled vesicles with a raised erythematous base on the s...",
+"ko": "단순포진 감염증",
+"alt": [
+"단순 헤르페스 감염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005895",
+"concept": "- MONDO:0005895 | paragonimiasis | syn: infection by Paragonimus; lung fluke disease; lung fluke infection; Paragonimus westermani caused disease or disorder | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A parasitic infection caused by trematodes of the Paragonimus genus. Humans are infected from ingestion of raw or undercooked food. It results in chronic lung infection and eosinophilia.",
+"ko": "폐흡충증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0037939",
+"concept": "- MONDO:0037939 | porphyria | syn: porphyria | ancestors: porphyrin metabolism disease, metabolic disease, disease by developmental or physiological process, human disease | def: Porphyria is a group of diseases in which substances called porphyrins build up, negatively affecting the skin or nervous system. Most types are inherited, but porphyria cutanea tarda may also be due ...",
+"ko": "포르피린증",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005977",
+"concept": "- MONDO:0005977 | tabes dorsalis | ancestors: neurosyphilis, infectious disorder of the nervous system, tertiary syphilis, nervous system disorder | def: A form of neurosyphilis characterized by slowly progressive degeneration of the spinal cord. Signs and symptoms include pain, ataxia, loss of coordination, personality changes, blindness, urinary inco...",
+"ko": "척수매독",
+"alt": [
+"척수로"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005291",
+"concept": "- MONDO:0005291 | brain aneurysm | ancestors: cerebral arterial disease, intracranial arterial disease, cerebrovascular disorder, brain disorder | def: A congenital or acquired aneurysm within the cranium.",
+"ko": "뇌동맥류",
+"alt": [
+"뇌 동맥류"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012198",
+"concept": "- MONDO:0012198 | PCWH syndrome | syn: neurologic Waardenburg-Shah syndrome; PCWH; peripheral demyelinating neuropathy, central dysmyelination, Waardenburg syndrome, and Hirschsprung disease; WS4 plus | ancestors: autosomal dominant disease, syndromic disease, autosomal genetic disease, disease by body system or component | def: A syndrome characterized by the association of the features of Waardenburg-Shah syndrome (WSS) (sensorineural hearing loss, pigmentary abnormalities and Hirschsprung disease) with neurological feature...",
+"ko": "PCWH 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018081",
+"concept": "- MONDO:0018081 | hemorrhagic fever-renal syndrome | syn: Hantavirosis; Hantavirus fever | ancestors: viral hemorrhagic fever, viral infectious disease, hemorrhagic fever, infectious disease | def: Hemorrhagic fever with renal syndrome (HFRS) is a rodent-borne potentially severe hemorrhagic disease caused by Old World Hantaviruses characterized by high fever, malaise, headache, myalgia, arthralg...",
+"ko": "신증후출혈열",
+"alt": [
+"한타바이러스 감염증"
+],
+"organs": [
+"haematologic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011112",
+"concept": "- MONDO:0011112 | Wilms tumor 5 | syn: Wilms tumor 5; Wilms tumor susceptibility-5, autosomal dominant, somatic mutation; Wilms tumor type 5; Wilms tumour susceptibility-5, autosomal dominant, somatic mutation | ancestors: hereditary Wilms tumor, hereditary disease, Wilms tumor, disease of genetic or genomic mechanism | def: Any Wilms tumor in which the cause of the disease is a mutation in the POU6F2 gene.",
+"ko": "윌름스 종양 5",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001039",
+"concept": "- MONDO:0001039 | tonsillitis | syn: chronic tonsillitis; inflammation of tonsil; tonsil inflammation; tonsilitis | ancestors: upper respiratory tract disorder, disorder of pharynx, inflammatory disease, lymphoid system disorder | def: Inflammation of the tonsillar tissue.",
+"ko": "편도염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006541",
+"concept": "- MONDO:0006541 | epidermolysis bullosa | syn: epidermolysis bullosa | ancestors: vesiculobullous skin disease, skin disorder, integumentary system disorder, disease by body system or component | def: Epidermolysis bullosa (EB) is a group of genetic skin diseases that cause the skin to blister very easily. Blisters form in response to minor injuries or friction, such as rubbing or scratching. There...",
+"ko": "표피박리수포증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001493",
+"concept": "- MONDO:0001493 | chronic pulmonary heart disease | ancestors: cor pulmonale, congestive heart failure, heart failure, heart disorder | def: Heart disease which occurs as a result of a primary pulmonary disease. Cor pulmonale most often manifests as right ventricular hypertrophy; it can also lead to right ventricular failure.",
+"ko": "만성 폐성심",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004465",
+"concept": "- MONDO:0004465 | periampullary adenocarcinoma | syn: periampullary adenocarcinoma; periampullary cancer; periampullary region of duodenum adenocarcinoma | ancestors: ampulla of vater adenocarcinoma, extrahepatic bile duct adenocarcinoma, duodenal adenocarcinoma, carcinoma of the ampulla of vater | def: An adenocarcinoma that arises from the periampullary region.",
+"ko": "팽대부주위 선암종",
+"alt": [
+"팽대부주위암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005673",
+"concept": "- MONDO:0005673 | blind loop syndrome | syn: blind loop syndrome; stasis (blind loop) syndrome; stasis syndrome | ancestors: malabsorption syndrome, intestinal disorder, digestive system disorder, disease by body system or component | def: A disorder affecting the small intestine. It is caused by the stasis of food and subsequent overgrowth of bacteria in a portion of the small intestine that is unintentionally bypassed as a complicatio...",
+"ko": "맹관 증후군",
+"alt": [
+"정체고리 증후군"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019701",
+"concept": "- MONDO:0019701 | chondrodysplasia punctata | syn: CDP; chondrodysplasia calcificans congenita; chondrodysplasia punctata (stippled epiphyses) Group; chondrodysplasia punctata congenita | ancestors: skeletal dysplasia, hereditary disease, bone disorder, disease of genetic or genomic mechanism | def: A rare congenital developmental disorder characterized by the presence of stippled foci of calcification in the hyaline cartilage, joint contractions, mental retardation and ichthyosis.",
+"ko": "점상연골이형성증",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0005272",
+"concept": "- MONDO:0005272 | myelodysplastic syndrome with single lineage dysplasia | syn: MDS with single lineage dysplasia; MDS-SLD; RA; refractory anaemia | ancestors: myelodysplastic syndrome, myeloid hemopathy, neoplastic syndrome, hematopoietic and lymphoid system neoplasm | def: A myelodysplastic syndrome characterized by dysplasia seen in at least 10% of the early cells of 1 cell type (either red blood cells, white blood cells, or megakaryocytes) in the bone marrow.",
+"ko": "단일계열 이형성을 동반한 골수형성이상증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018947",
+"concept": "- MONDO:0018947 | centronuclear myopathy | syn: centronuclear myopathy; CNM; myopathy, centronuclear | ancestors: congenital myopathy, hereditary skeletal muscle disorder, myopathy, hereditary disease | def: Centronuclear myopathy (CNM) is an inherited neuromuscular disorder characterized by clinical features of a congenital myopathy and centrally placed nuclei on muscle biopsy.",
+"ko": "중심핵 근병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005507",
+"concept": "- MONDO:0005507 | gingival cancer | syn: cancer of gingiva; gingiva cancer; malignant gingiva neoplasm; malignant gingival neoplasm | ancestors: musculoskeletal system cancer, oral cavity cancer, head and neck cancer, gingival neoplasm | def: A primary or metastatic malignant neoplasm that affects the gums.",
+"ko": "잇몸암",
+"alt": [
+"치은암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005231",
+"concept": "- MONDO:0005231 | hepatitis C virus infection | syn: hepatitis C infection; Hepatitis C virus caused hepatitis; Hepatitis C virus hepatitis; hepatitis type C | ancestors: viral hepatitis, hepatitis, digestive system infectious disorder, primary viral infectious disease | def: A viral infection caused by the hepatitis C virus.",
+"ko": "C형간염 바이러스 감염",
+"alt": [
+"C형간염"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+}
+]

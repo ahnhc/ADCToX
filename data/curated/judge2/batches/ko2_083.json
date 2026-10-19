@@ -1,0 +1,237 @@
+[
+{
+"id": "MONDO:0020419",
+"concept": "- MONDO:0020419 | pulmonary artery hypoplasia | syn: pulmonary artery hypoplasia; pulmonary artery hypoplasia (disease) | ancestors: congenital anomaly of the great arteries, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder",
+"ko": "폐동맥 저형성",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0850230",
+"concept": "- MONDO:0850230 | chronic urticaria | ancestors: urticaria, dermatitis, skin disorder, inflammatory disease | def: An urticaria that is characterized by the presence of urticaria for a period exceeding 6 weeks, assuming symptoms for most days of the week.",
+"ko": "만성 두드러기",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005106",
+"concept": "- MONDO:0005106 | lipoma | syn: benign tumour of adipose tissue; lipoma; lipoma, benign; lipomatosis, familial multiple | ancestors: benign lipomatous neoplasm, benign connective and soft tissue neoplasm, tumor of adipose tissue, musculoskeletal system benign neoplasm | def: A benign, usually painless, well-circumscribed lipomatous tumor composed of adipose tissue.",
+"ko": "지방종",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001039",
+"concept": "- MONDO:0001039 | tonsillitis | syn: chronic tonsillitis; inflammation of tonsil; tonsil inflammation; tonsilitis | ancestors: upper respiratory tract disorder, disorder of pharynx, inflammatory disease, lymphoid system disorder | def: Inflammation of the tonsillar tissue.",
+"ko": "편도염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000468",
+"concept": "- MONDO:0000468 | third-degree atrioventricular block | syn: atrioventricular block complete; atrioventricular block, third degree; AV block third degree; complete atrioventricular block | ancestors: atrioventricular block, heart conduction disease, atrioventricular dissociation, heart disorder | def: A disorder characterized by an electrocardiographic finding of complete failure of atrial electrical impulse conduction to the ventricles. This is manifested on the ECG by disassociation of atrial and...",
+"ko": "3도 방실 차단",
+"alt": [
+"완전 방실 차단"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0010837",
+"concept": "- MONDO:0010837 | primary hyperparathyroidism | syn: primary hyperparathyroidism; primary hyperparathyroidism (disease) | ancestors: hyperparathyroidism, parathyroid gland disorder, endocrine system disorder, disease by body system or component | def: Hyperfunction of the parathyroid glands resulting in the overproduction of parathyroid hormone. It is caused by parathyroid adenoma, parathyroid hyperplasia, parathyroid carcinoma, and multiple endocr...",
+"ko": "원발성 부갑상샘기능항진증",
+"alt": [
+"원발성 부갑상선기능항진증"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002811",
+"concept": "- MONDO:0002811 | main bronchus cancer | syn: cancer of main bronchus; main bronchus cancer; malignant main bronchus neoplasm; malignant neoplasm of main bronchus | ancestors: bronchus cancer, respiratory system cancer, bronchial neoplasm, cancer | def: A malignant neoplasm involving the main bronchus.",
+"ko": "주기관지암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0009326",
+"concept": "- MONDO:0009326 | congenital heart block | syn: congenital atrioventricular block | ancestors: atrioventricular block, heart conduction disease, atrioventricular dissociation, heart disorder | def: Heart block that occurs on or before 28 days of life.",
+"ko": "선천성 심장차단",
+"alt": [
+"선천성 방실차단"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005620",
+"concept": "- MONDO:0005620 | cerebral amyloid angiopathy | syn: dutch hereditary cerebral amyloid angiopathy; HCHWA; hereditary cerebral haemorrhage with amyloidosis - Dutch type; hereditary cerebral hemorrhage with amyloidosis - Dutch type | ancestors: cerebrovascular disorder, hereditary amyloidosis, hereditary neurological disease, brain disorder | def: Hereditary cerebral hemorrhage with amyloidosis (HCHWA) describes a group of rare familial central nervous system disorders characterized by amyloid deposition in the cerebral blood vessels leading to...",
+"ko": "뇌아밀로이드혈관병증",
+"alt": [
+"뇌 아밀로이드 혈관병증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000984",
+"concept": "- MONDO:0000984 | thalassemia | syn: sickle-cell thalassemia with crisis; sickle-cell thalassemia without crisis | ancestors: inherited hemoglobinopathy, hereditary disease, hemoglobinopathy, disease of genetic or genomic mechanism | def: An inherited blood disorder characterized by a decreased synthesis of one of the polypeptide chains that form hemoglobin. Anemia results from this abnormal hemoglobin formation.",
+"ko": "지중해빈혈",
+"alt": [
+"탈라세미아"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0001630",
+"concept": "- MONDO:0001630 | branch retinal artery occlusion | syn: retinal arterial branch occlusion | ancestors: retinal artery occlusion, retinal vascular occlusion, retinal vascular disorder, vascular occlusion disorder | def: An occlusion of a branch of the retinal artery.",
+"ko": "망막동맥 분지 폐쇄",
+"alt": [],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008740",
+"concept": "- MONDO:0008740 | agnathia-otocephaly complex | syn: agnathia-holoprosencephaly-situs inversus syndrome; agnathia-otocephaly complex; dysgnathia complex agnathia-holoprosencephaly; holoprosencephaly-agnathia | ancestors: hereditary disease, multiple congenital anomalies/dysmorphic syndrome-intellectual disability, disease of genetic or genomic mechanism, multiple congenital anomalies/dysmorphic syndrome | def: Agnathia-holoprosencephaly-situs inversus syndrome is an extremely rare and fatal association syndrome, characterized by absence of the mandible, cerebral malformations with facial anomalies related t...",
+"ko": "무하악-이두증 복합체",
+"alt": [
+"무하악증-이두개증 복합체"
+],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001560",
+"concept": "- MONDO:0001560 | hypertrophic pyloric stenosis | syn: congenital constriction of the pylorus; congenital hypertrophic pyloric stenosis; congenital Hypertrophy of the pylorus; congenital pyloric stenosis | ancestors: pyloric stenosis, intestinal disorder, stomach disorder, digestive system disorder | def: An abnormality characterized by thickening of the muscle in the wall of the pylorus. It results in the narrowing of the pyloric channel. The overlying mucosa may appear hypertrophic as well. Clinical ...",
+"ko": "비후성 유문협착증",
+"alt": [
+"선천성 비후성 유문협착증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0009379",
+"concept": "- MONDO:0009379 | Rotor syndrome | syn: hyperbilirubinemia, Rotor type; hyperbilirubinemia, rotor type, digenic; Rotor syndrome | ancestors: hereditary hyperbilirubinemia, inborn disorder of bilirubin metabolism, hyperbilirubinemia, inborn disorder of porphyrin metabolism | def: Rotor syndrome (RT) is a benign, inherited liver disorder characterized by chronic, predominantly conjugated, nonhemolytic hyperbilirubinemia with normal liver histology.",
+"ko": "로터 증후군",
+"alt": [
+"로터형 고빌리루빈혈증"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0012853",
+"concept": "- MONDO:0012853 | Fontaine progeroid syndrome | syn: craniofacial dysostosis, hypertrichosis, hypoplasia of labia majora; craniofacial dysostosis, hypertrichosis, Hypoplasia of labia majora, dental and eye anomalies, patent ductus arteriosus, and normal intelligence; craniofacial dysostosis-genital, dental, cardiac anomalies syndrome; cranofacial dysostosis-hypertrichosis-hypoplasia of labia majora syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome without intellectual disability, progeroid syndrome, ectodermal dysplasia syndrome, multiple congenital anomalies/dysmorphic syndrome | def: A rare premature aging syndrome characterized by pre-and postnatal growth retardation, a congenital premature-aged appearance with distinctive craniofacial dysmorphism (wide calvaria with large open a...",
+"ko": "퐁텐 조로 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006609",
+"concept": "- MONDO:0006609 | seborrheic infantile dermatitis | syn: generalised seborrheic dermatitis of infants; scalp seborrheic dermatitis (disease); seborrheic dermatitis (disease) of scalp | ancestors: seborrheic dermatitis, dermatitis, skin disorder, inflammatory disease | def: Excessive shedding of dry scaly material from the scalp in humans.",
+"ko": "영아 지루피부염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004760",
+"concept": "- MONDO:0004760 | urethral false passage | ancestors: urethral disorder, urinary system disorder, disease by body system or component, human disease",
+"ko": "요도 가성 통로",
+"alt": [
+"요도 거짓길"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019254",
+"concept": "- MONDO:0019254 | inborn disorder of purine or pyrimidine metabolism | syn: inborn purine-pyrimidine metabolic disorder | ancestors: inborn errors of metabolism, hereditary disease, metabolic disease, disease of genetic or genomic mechanism",
+"ko": "퓨린 또는 피리미딘 대사의 선천성 장애",
+"alt": [
+"선천성 퓨린-피리미딘 대사 질환"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006909",
+"concept": "- MONDO:0006909 | pituitary dwarfism | ancestors: adrenal gland disorder, endocrine system disorder, disease by body system or component, human disease | def: Proportionately decreased bodily growth due to failure of the pituitary gland to produce an adequate supply of growth hormone.",
+"ko": "뇌하수체성 왜소증",
+"alt": [
+"뇌하수체 난쟁이증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019384",
+"concept": "- MONDO:0019384 | encephalitis lethargica | syn: encephalitis lethargica; epidemic encephalitis; lethargic encephalitis; Von Economo encephalitis | ancestors: viral encephalitis, postinfectious encephalitis, parkinsonian disorder, infectious encephalitis | def: A form of encephalitis, the etiology of which is uncertain, that is characterized by lethargy and headache.",
+"ko": "기면성 뇌염",
+"alt": [
+"폰 에코노모 뇌염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+}
+]

@@ -1,0 +1,231 @@
+[
+{
+"id": "MONDO:0009299",
+"concept": "- MONDO:0009299 | 46 XX gonadal dysgenesis | syn: 46,XX complete gonadal dysgenesis; 46,XX gonadal dysgenesis; 46,XX ovarian dysgenesis; 46,XX pure gonadal dysgenesis | ancestors: gonadal dysgenesis, inherited primary ovarian failure, hypogonadism, hereditary disease | def: 46,XX gonadal dysgenesis (46,XX GD) is a primary ovarian defect leading to premature ovarian failure (POF) in otherwise normal 46,XX females as a result of failure of the gonads to develop or due to r...",
+"ko": "46,XX 성선 이형성증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0044345",
+"concept": "- MONDO:0044345 | Schistosoma mansoni infectious disease | syn: Schistosoma mansoni caused disease or disorder; Schistosoma mansoni disease or disorder; Schistosoma mansoni infection | ancestors: schistosomiasis, helminthiasis, vector-borne disease, parasitic infectious disease | def: An infection that is caused by Schistosoma mansoni.",
+"ko": "만소니주혈흡충 감염증",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000050",
+"concept": "- MONDO:0000050 | isolated congenital growth hormone deficiency | syn: congenital IGHD; congenital isolated GH deficiency; congenital isolated growth hormone deficiency; ICGHD | ancestors: combined pituitary hormone deficiencies, genetic form, congenital nervous system disorder, hypopituitarism, congenital hypogonadotropic hypogonadism",
+"ko": "선천성 단독 성장호르몬 결핍증",
+"alt": [
+"선천성 단독 성장호르몬결핍"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000941",
+"concept": "- MONDO:0000941 | eyelid degenerative disorder | syn: eyelid neurodegenerative disease; neurodegenerative disease of eyelid | ancestors: eyelid disorder, neurodegenerative disease, eye adnexa disorder, eye disorder | def: A neurodegenerative disease that involves the eyelid.",
+"ko": "눈꺼풀 퇴행성 질환",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000265",
+"concept": "- MONDO:0000265 | aspiration pneumonia | syn: acid aspiration syndrome; acid aspiration syndromes; aspiration pneumonia; aspiration pneumonia (disease) | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: A type of lung inflammation resulting from the aspiration of food, liquid, or gastric contents into the upper respiratory tract.",
+"ko": "흡인성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001465",
+"concept": "- MONDO:0001465 | superficial keratitis | ancestors: keratitis, corneal disorder, inflammatory disease, eye disorder",
+"ko": "표재성 각막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002404",
+"concept": "- MONDO:0002404 | liver hemangioma | syn: angioma of liver; hemangioma of liver; hepatic angioma; liver hemangioma | ancestors: benign endocrine neoplasm, intra-abdominal hemangioma, liver and intrahepatic bile duct neoplasm, hepatobiliary benign neoplasm | def: A hemangioma arising from the liver.",
+"ko": "간 혈관종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005003",
+"concept": "- MONDO:0005003 | chronic pancreatitis | syn: pancreatitis, chronic | ancestors: pancreatitis, pancreas disorder, inflammatory disease, digestive system disorder | def: A chronic inflammatory process causing damage and fibrosis of the pancreatic parenchyma. Signs and symptoms include abdominal pain, malabsorption and diabetes mellitus.",
+"ko": "만성 췌장염",
+"alt": [
+"만성 이자염"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0100234",
+"concept": "- MONDO:0100234 | paroxysmal familial ventricular fibrillation | syn: idiopathic ventricular fibrillation; idiopathic ventricular fibrillation, non Brugada type; IVF; paroxysmal familial ventricular fibrillation | ancestors: ventricular fibrillation, cardiogenetic rhythm disorder, cardiac rhythm disease, cardiogenetic disease | def: A rare, genetic, cardiac rhythm disease characterized by ventricular fibrillation in the absence of any structural or functional heart disease, or known repolarization abnormalities. The presence of J...",
+"ko": "발작성 가족성 심실세동",
+"alt": [
+"특발성 심실세동"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018134",
+"concept": "- MONDO:0018134 | disorder of melanin metabolism | ancestors: inborn disorder of amino acid and other organic acid metabolism, inborn errors of metabolism, hereditary disease, metabolic disease",
+"ko": "멜라닌 대사 장애",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009902",
+"concept": "- MONDO:0009902 | cutaneous porphyria | syn: CEP; Congenital Erythropoietic Porphyria; cutaneous porphyria; erythropoietic porphyria | ancestors: familial hemolytic anemia, inherited porphyria, anemia due to erythrocyte enzyme disorder, hemolytic anemia | def: An erythropoietic porphyria (massive accumulation of photoreactive porphyrins in the bone marrow erythroid cells and circulating erythrocytes, resulting in cutaneous photosensitivity) caused by bialle...",
+"ko": "피부 포르피린증",
+"alt": [
+"선천성 적혈구생성 포르피린증"
+],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004600",
+"concept": "- MONDO:0004600 | monocytic leukemia | ancestors: leukemia, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm, neoplasm",
+"ko": "단핵구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0008280",
+"concept": "- MONDO:0008280 | Peutz-Jeghers syndrome | syn: hamartomatous intestinal polyposis; Jeghers-Peutz syndrome; Peutz Jeghers Syndrome; Peutz's syndrome | ancestors: autosomal dominant disease, intestinal polyposis syndrome, autosomal genetic disease, hereditary neoplastic syndrome | def: An autosomal dominant disorder caused by pathogenic variants in the STK11 gene, characterized by hamartomatous polyps in the gastrointestinal tract, mucocutaneous pigmentation and increased risk of GI...",
+"ko": "포이츠-예거스 증후군",
+"alt": [
+"포이츠-제거스 증후군"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005764",
+"concept": "- MONDO:0005764 | follicular dendritic cell sarcoma | syn: follicular Dendritic cell sarcoma; follicular dendritic cell sarcoma; follicular Dendritic cell sarcoma/tumor; follicular dendritic cell tumor | ancestors: dendritic cell sarcoma, Epstein-Barr virus-associated mesenchymal tumor, immune system cancer, leukocyte disorder | def: A neoplasm composed of spindle to ovoid cells which have morphologic and immunophenotypic characteristics of follicular dendritic cells. It affects lymph nodes and other sites including the tonsils, g...",
+"ko": "여포성 수지상세포 육종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0017441",
+"concept": "- MONDO:0017441 | congenital absence of upper arm and forearm with hand present | syn: humero-radio-ulnar intercalary transverse meromelia; phocomelia | ancestors: skeletal dysplasia, dysostosis, hereditary disease, bone disorder | def: A congenital malformation in which the upper portion of a limb is either shortened or absent.",
+"ko": "손이 있는 상완 및 전완 선천성 결손",
+"alt": [
+"해표지증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001691",
+"concept": "- MONDO:0001691 | laryngeal cartilage cancer | syn: cancer of laryngeal cartilage; laryngeal cartilage cancer; malignant laryngeal cartilage neoplasm; malignant neoplasm of laryngeal cartilage | ancestors: musculoskeletal system cancer, larynx cancer, skeletal system disorder, musculoskeletal system disorder | def: A malignant neoplasm involving the laryngeal cartilage.",
+"ko": "후두연골암",
+"alt": [],
+"organs": [
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008300",
+"concept": "- MONDO:0008300 | Prader-Willi syndrome | syn: Prader-Labhart-Willi syndrome; Prader-Willi syndrome; Prader-Willi-Labhart syndrome; Willi-Prader syndrome | ancestors: syndromic disease, congenital nervous system disorder, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, congenital hypogonadotropic hypogonadism | def: Prader-Willi syndrome is a rare genetic disorder characterized by hypothalamic-pituitary abnormalities with severe hypotonia during the neonatal period and first two years of life and the onset of hyp...",
+"ko": "프라더-윌리 증후군",
+"alt": [
+"프라더-빌리 증후군"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007099",
+"concept": "- MONDO:0007099 | familial visceral amyloidosis | syn: amyloidosis, 3 or more types; amyloidosis, familial renal; amyloidosis, Ostertag type; amyloidosis, renal | ancestors: familial amyloid neuropathy, hereditary amyloidosis, hereditary peripheral neuropathy, inborn errors of metabolism",
+"ko": "가족성 내장 아밀로이드증",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001754",
+"concept": "- MONDO:0001754 | eclampsia | syn: eclampsia, postpartum | ancestors: toxemia of pregnancy, hypertension, pregnancy-induced, hypertensive disorder, pregnancy disorder | def: A potentially life-threatening pregnancy-related disorder characterized by tonic-clonic seizures in association with hypertension after the twentieth week of gestation and up to six weeks postpartum a...",
+"ko": "자간증",
+"alt": [
+"자간"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0024229",
+"concept": "- MONDO:0024229 | miliaria crystallina | ancestors: miliaria, syndromic disease, sweat gland disorder, disease by body system or component | def: A miliaria that is characterized by clear, superficial, noninflammed, subcorneal vesicles that easily rupture when rubbed and is located in the stratum corneum.",
+"ko": "수정성 땀띠",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+}
+]

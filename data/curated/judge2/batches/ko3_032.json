@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0016044",
+"concept": "- MONDO:0016044 | cleft lip/palate | syn: alveolar cleft lip and palate; cleft lip and palate; cleft lip-alveolus-palate syndrome; FLP | ancestors: orofacial cleft, disorder of development or morphogenesis, hereditary disease, disorder of facial skeleton | def: Cleft lip and palate is a fissure type embryopathy extending across the upper lip, nasal base, alveolar ridge and the hard and soft palate.",
+"ko": "구순구개열",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010533",
+"concept": "- MONDO:0010533 | Arts syndrome | syn: ARTS; Arts; Arts syndrome; Arts syndrome, X-linked recessive | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism | def: Lethal ataxia with deafness and optic atrophy (also known as Arts syndrome) is characterized by intellectual deficit, early-onset hypotonia, ataxia, delayed motor development, hearing impairment and l...",
+"ko": "아츠 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017198",
+"concept": "- MONDO:0017198 | osteopetrosis | syn: Albers-Schonberg disease; marble bone disease; marble bones; osteopetrosis | ancestors: skeletal dysplasia, familial osteosclerosis, hereditary disease, bone disorder | def: Osteopetrosis, also known as marble bone disease, is a descriptive term that refers to a group of rare, heritable disorders of the skeleton characterized by increased bone density on radiographs.",
+"ko": "대리석뼈병",
+"alt": [
+"골화석증"
+],
+"organs": [
+"haematologic",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019950",
+"concept": "- MONDO:0019950 | congenital muscular dystrophy | syn: CMD; MDC | ancestors: congenital nervous system disorder, muscular dystrophy, nervous system disorder, myopathy | def: A muscular dystrophy that is characterized by diminished muscle tone (hypotonia), progressive muscle weakness and degeneration (atrophy), abnormally fixed joints, spinal rigidity, and delays in reachi...",
+"ko": "선천성 근이영양증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002246",
+"concept": "- MONDO:0002246 | perichondritis of auricle | syn: perichondritis and chondritis of pinna; perichondritis of pinna, unspecified | ancestors: otitis externa, external ear disorder, ear infection, post-infectious disorder | def: An otitis externa involving infection of the tissue surrounding the cartilage of the earlobe (pinna), ear canal, or both. It may be caused by injury, burns, insect bites, ear piercing, or a boil on th...",
+"ko": "귓바퀴 연골막염",
+"alt": [
+"이개연골막염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006217",
+"concept": "- MONDO:0006217 | gallbladder adenosquamous carcinoma | syn: adenosquamous carcinoma of gallbladder; adenosquamous carcinoma of the gallbladder; adenosquamous gallbladder carcinoma; gall bladder adenosquamous carcinoma | ancestors: adenosquamous carcinoma, gallbladder squamous cell carcinoma, squamous cell carcinoma, gallbladder carcinoma | def: A carcinoma that arises from the gallbladder. It is characterized by the presence of glandular and squamous malignant epithelial components.",
+"ko": "담낭 선편평세포암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005738",
+"concept": "- MONDO:0005738 | echinococcosis | syn: echinococcosis; Echinococcus caused disease or disorder; Echinococcus disease or disorder; Echinococcus infectious disease | ancestors: Cestode infectious disease, helminthiasis, parasitic infectious disease, infectious disease | def: A parasitic infection caused by tapeworm larvae of Echinococcus. It affects livestock and humans. It is characterized by the formation of hydatid cysts mainly in the liver, lungs, spleen, and kidneys....",
+"ko": "포충증",
+"alt": [
+"에키노코쿠스증"
+],
+"organs": [
+"hepatic",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0019526",
+"concept": "- MONDO:0019526 | erythema elevatum diutinum | ancestors: immune complex mediated vasculitis, vasculitis, vascular disorder, inflammatory disease | def: Erythema elevatum diutinum (EED) is a distinctive form of chronic cutaneous vasculitis, belonging to the group of the neutrophilic dermatoses.",
+"ko": "융기성 지속성 홍반",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0006591",
+"concept": "- MONDO:0006591 | panniculitis | syn: inflammation of subcutaneous adipose tissue; Subcutaneous adipose tissue; subcutaneous adipose tissue inflammation; Subcutaneous tissue | ancestors: integumentary system disorder, connective tissue disorder, inflammatory disease, disease by body system or component | def: Inflammation of the subcutaneous adipose tissue.",
+"ko": "지방층염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0007669",
+"concept": "- MONDO:0007669 | renal cysts and diabetes syndrome | syn: CAKUT with diabetes; congenital anomalies of the kidney and urinary tract with diabetes; hepatocyte nuclear Factor 1-beta-associated monogenic diabetes; HNF1B-MODY | ancestors: familial juvenile hyperuricemic nephropathy, syndromic disease, maturity-onset diabetes of the young, inherited kidney disorder | def: Renal cysts and diabetes syndrome (RCAD) is a rare form of maturity-onset diabetes of the young (MODY) characterized clinically by heterogeneous cystic renal disease and early-onset familial non-autoi...",
+"ko": "신장 낭종 및 당뇨병 증후군",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001256",
+"concept": "- MONDO:0001256 | arteriovenous hemangioma/malformation | syn: arteriovenous angioma; arteriovenous hemangioma; arteriovenous hemangioma/malformation; racemose aneurysm (morphologic abnormality) | ancestors: hemangioma, benign blood vessel neoplasm, cardiovascular organ benign neoplasm, blood vessel neoplasm | def: A benign vascular lesion characterized by the presence of a complex network of communicating arterial and venous vascular structures.",
+"ko": "동정맥 혈관종/기형",
+"alt": [
+"동정맥 기형"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0100197",
+"concept": "- MONDO:0100197 | parainfluenza infectious disease | syn: HPIV infectious disorder; parainfluenza (disorder); parainfluenza infectious disorder | ancestors: Paramyxoviridae infectious disease, Mononegavirales infectious disease, primary viral infectious disease, viral infectious disease | def: A disease caused by infection with parainfluenza virus. There are four serotypes which cause respiratory illnesses in children and adults.",
+"ko": "파라인플루엔자 감염증",
+"alt": [
+"파라인플루엔자 감염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008982",
+"concept": "- MONDO:0008982 | central areolar choroidal dystrophy | syn: areolar atrophy of the macula; CACD; central areolar choroidal sclerosis; choroidal dystrophy | ancestors: optic choroid disorder, hereditary disease, uveal disorder, ocular vascular disorder | def: A hereditary macular disorder, usually presenting between the ages of 30-60, characterized by a large area of atrophy in the center of the macula and the loss or absence of photoreceptors, retinal pig...",
+"ko": "중심 지도형 맥락막 이영양증",
+"alt": [
+"황반 지도형 위축"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009529",
+"concept": "- MONDO:0009529 | pyruvate dehydrogenase E3 deficiency | syn: dihydrolipoamide dehydrogenase deficiency; DLD deficiency; E3-deficient maple syrup urine disease; pyruvate dehydrogenase E3 deficiency | ancestors: maple syrup urine disease, inherited lipoic acid biosynthesis defect, pyruvate dehydrogenase deficiency, inborn organic aciduria | def: Pyruvate dehydrogenase E3 deficiency is a very rare subtype of pyruvate dehydrogenase deficiency (PDHD) characterized by either early-onset lactic acidosis and delayed development, later-onset neurolo...",
+"ko": "피루브산 탈수소효소 E3 결핍증",
+"alt": [
+"디하이드로리포아미드 탈수소효소 결핍증",
+"DLD 결핍증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018849",
+"concept": "- MONDO:0018849 | dentinogenesis imperfecta | syn: dentinogenesis imperfecta; dentinogenesis imperfecta (disease); dentinogenesis imperfecta without osteogenesis imperfecta; DGI | ancestors: tooth disorder, skeletal system disorder, mouth disorder, musculoskeletal system disorder | def: Dentinogenesis imperfecta (DGI) is a hereditary dentin defect characterized by abnormal dentin structure resulting in abnormal tooth development.",
+"ko": "상아질 형성부전증",
+"alt": [
+"유전성 상아질 이형성"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015636",
+"concept": "- MONDO:0015636 | dirofilariasis | syn: Dirofilaria caused disease or disorder; Dirofilaria disease or disorder; infection by Dirofilaria | ancestors: Rhabditida infectious disease, filariasis, Nematoda infectious disease, helminthiasis | def: Infection with nematodes of the genus dirofilaria, usually in animals, especially dogs, but occasionally in humans.",
+"ko": "디로필라리아증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016035",
+"concept": "- MONDO:0016035 | Nelson syndrome | syn: Nelson's syndrome | ancestors: functioning pituitary gland adenoma, functioning pituitary gland neoplasm, pituitary gland adenoma, pituitary tumor | def: A syndrome that develops following bilateral adrenalectomy for Cushing syndrome. The signs and symptoms result from the presence of an adenocorticotropin-secreting pituitary gland adenoma, and include...",
+"ko": "넬슨 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014000",
+"concept": "- MONDO:0014000 | congenital heart defects, multiple types, 2 | syn: cardiac anomalies-short stature-joint hypermobility-facial dysmorphism syndrome due to TAB2 mutation; CHTD2; congenital heart defects, multiple types, 2; congenital heart malformation caused by mutation in TAB2 | ancestors: congenital heart defects, multiple types, polyvalvular heart disease syndrome, congenital heart malformation, cardiogenetic disease | def: Any congenital heart disease characterized by variable features including polyvalvular heart disease, growth failure, joint hypermobility, hypotonia, and hearing loss due to a variation in the TAB2 ge...",
+"ko": "선천성 심장 결손, 다발성 유형 2",
+"alt": [
+"TAB2 관련 선천성 심장 기형"
+],
+"organs": [
+"cardiovascular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005109",
+"concept": "- MONDO:0005109 | HIV infectious disease | syn: HIV infection; Human immunodeficiency virus caused disease or disorder; Human immunodeficiency virus disease or disorder; Human immunodeficiency virus infectious disease | ancestors: viral sexually transmitted disease, lentivirus infection, sexually transmitted disease, primary viral infectious disease | def: An infection caused by the human immunodeficiency virus.",
+"ko": "HIV 감염병",
+"alt": [
+"HIV 감염증"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0003721",
+"concept": "- MONDO:0003721 | kidney osteogenic sarcoma | syn: kidney extraskeletal osteosarcoma; kidney osteogenic sarcoma; kidney osteosarcoma; kidney osteosarcoma (disease) | ancestors: extraosseous osteosarcoma, kidney sarcoma, osteosarcoma, soft tissue sarcoma | def: An osteosarcoma arising from the kidney.",
+"ko": "신장 골육종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

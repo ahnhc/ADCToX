@@ -1,0 +1,241 @@
+[
+{
+"id": "MONDO:0041850",
+"concept": "- MONDO:0041850 | pneumonia caused by gram negative bacteria | syn: pneumonia caused by gram negative bacteria; pneumonia due to gram negative bacteria; pneumonia due to gramme negative bacteria | ancestors: bacterial pneumonia, gram-negative bacterial infections, bacterial infectious disease, pneumonia",
+"ko": "그람음성균에 의한 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004604",
+"concept": "- MONDO:0004604 | Hodgkin's lymphoma, lymphocytic-histiocytic predominance | syn: classic Hodgkin lymphoma, lymphocyte-rich type; Hodgkin lymphoma, lymphocyte-rich; Hodgkin's disease, lymphocyte predominance [obs]; LRCHL | ancestors: classic Hodgkin lymphoma, hereditary disease, Hodgkins lymphoma, disease of genetic or genomic mechanism | def: A subtype of classical Hodgkin lymphoma with scattered Hodgkin and Reed-Sternberg cells and a nodular or less often diffuse cellular background consisting of small lymphocytes and with an absence of n...",
+"ko": "림프구 풍부형 고전적 호지킨 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001955",
+"concept": "- MONDO:0001955 | protozoal dysentery | ancestors: dysentery, protozoa infectious disease, parasitic intestinal disorder, inflammatory diarrhea | def: A dysentery that involves protozoan infection.",
+"ko": "원충성 이질",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005740",
+"concept": "- MONDO:0005740 | Echovirus infectious disease | syn: Echovirus caused disease or disorder; Echovirus disease or disorder | ancestors: enterovirus infectious disease, Picornaviridae infectious disease, primary viral infectious disease, viral infectious disease | def: Infectious disease processes, including meningitis, diarrhea, and respiratory disorders, caused by echoviruses.",
+"ko": "에코바이러스 감염병",
+"alt": [
+"에코바이러스 감염증"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002042",
+"concept": "- MONDO:0002042 | mechanical ectropion | ancestors: ectropion, eyelid disorder, eye adnexa disorder, eye disorder | def: An ectropion with a mechanical etiology.",
+"ko": "기계적 눈꺼풀 바깥말림",
+"alt": [
+"기계적 안검외반"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001824",
+"concept": "- MONDO:0001824 | polyneuropathy | syn: polyneuropathy | ancestors: peripheral neuropathy, peripheral nervous system disorder, neuromuscular disease, nervous system disorder | def: A disease or disorder affecting more than one nerve.",
+"ko": "다발신경병증",
+"alt": [
+"다발성 신경병증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0006524",
+"concept": "- MONDO:0006524 | acrodermatitis chronica atrophicans | ancestors: acrodermatitis, dermatitis, skin disorder, inflammatory disease | def: An acrodermatitis characterized by a chronically progressive course, leading to widespread atrophy of the skin. It is a clinical manifestation of Lyme borreliosis.",
+"ko": "만성 위축성 지단피부염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006823",
+"concept": "- MONDO:0006823 | Klinefelter syndrome | syn: 47,XXY syndrome; Klinefelter syndrome; Klinefelter's syndrome; Klinefelter's syndrome, XXY | ancestors: sex chromosome disorder of sex development, chromosome X disorder, trisomy, disorder of sexual differentiation | def: A sex chromosome disorder caused by the presence of an extra X chromosome in the male karyotype. Affected individuals are infertile and have a small penis and testes. They tend to have tall stature an...",
+"ko": "클라인펠터 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0001747",
+"concept": "- MONDO:0001747 | tibial collateral ligament bursitis | ancestors: enthesopathy, musculoskeletal system disorder, connective tissue disorder, disease by body system or component",
+"ko": "경골측부인대 점액낭염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017775",
+"concept": "- MONDO:0017775 | melioidosis | syn: Burkholderia pseudomallei caused disease or disorder; Burkholderia pseudomallei disease or disorder; Burkholderia pseudomallei infectious disease; pseudoglanders | ancestors: primary bacterial infectious disease, burkholderia infectious disease, bacterial infectious disease, gram-negative bacterial infections | def: An infection that is caused by Burkholderia pseudomallei, which is found in soil and water; symptoms vary widely, but most commonly include fever, cough, pneumonia, arthralgia, myalgia, and skin ulcer...",
+"ko": "유비저",
+"alt": [
+"멜리오이도시스"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0018922",
+"concept": "- MONDO:0018922 | cold agglutinin disease | syn: CAD; CAS; chronic cold agglutinin disease; cold agglutinin syndrome | ancestors: autoimmune hemolytic anemia, cold type, autoimmune hemolytic anemia, autoimmune disorder of blood, hemolytic anemia | def: Cold agglutinin disease is a type of autoimmune hemolytic anemia defined by the presence of cold autoantibodies (autoantibodies which are active at temperatures below 30B0C).",
+"ko": "한랭응집소병",
+"alt": [
+"한랭 응집소 질환"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016723",
+"concept": "- MONDO:0016723 | pineocytoma | syn: benign pinealoma; pinealocytoma; pineocytoma; pineocytoma (disease) | ancestors: benign endocrine neoplasm, benign neoplasm of brain, pineal parenchymal cell neoplasm, endocrine gland neoplasm | def: Pineocytoma is the least aggressive form of pineal parenchymal tumors, manifesting with symptoms such as Parinaud's syndrome (a group of eye movement abnormalities and pupil dysfunction, including def...",
+"ko": "송과체세포종",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001422",
+"concept": "- MONDO:0001422 | primary aldosteronism | syn: Conn syndrome; Conn's syndrome; primary aldosteronism; primary hyperaldosteronism | ancestors: hyperaldosteronism, adrenal gland hyperfunction, adrenal cortex disorder, adrenal gland disorder | def: An endocrine disorder characterized by excessive production of aldosterone by the adrenal glands. Causes include adrenal gland adenoma and adrenal gland hyperplasia. The overproduction of aldosterone ...",
+"ko": "원발성 알도스테론증",
+"alt": [
+"콘 증후군"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0017474",
+"concept": "- MONDO:0017474 | macrodactyly of fingers | syn: macrodactyly of hand | ancestors: disorder of development or morphogenesis, disease by developmental or physiological process, human disease, disease",
+"ko": "손가락 거지증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018092",
+"concept": "- MONDO:0018092 | Vogt-Koyanagi-Harada disease | syn: Harada's disease; Uveomenigitic syndrome; uveomeningoencephalitic syndrome; Vogt-Koyanagi syndrome | ancestors: panuveitis, uveitis, uveal disorder, inflammatory disease | def: A bilateral, chronic, diffuse granulomatous panuveitis typically characterized by serous retinal detachment and frequently associated with neurological (meningitis), auditory, and dermatological alter...",
+"ko": "포크트-고야나기-하라다병",
+"alt": [
+"하라다병"
+],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0019391",
+"concept": "- MONDO:0019391 | Fanconi anemia | syn: Fanconi anemia; Fanconi pancytopenia; Fanconi's anemia; pancytopenia, congenital | ancestors: congenital anemia, inherited aplastic anemia, bone marrow disorder, multiple congenital anomalies/dysmorphic syndrome without intellectual disability | def: Fanconi anemia (FA) is a hereditary DNA repair disorder characterized by progressive pancytopenia with bone marrow failure, variable congenital malformations and predisposition to develop hematologica...",
+"ko": "판코니 빈혈",
+"alt": [
+"판코니 범혈구감소증"
+],
+"organs": [
+"haematologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018694",
+"concept": "- MONDO:0018694 | isolated tracheo-esophageal fistula | syn: H-type tracheoesophageal fistula; tracheo-esophageal fistula; tracheoesophageal fistula | ancestors: tracheal disorder, esophageal disorder, lower respiratory tract disorder, upper respiratory tract disorder | def: A rare, congenital, esophageal disorder characterized by the presence of an abnormal connection between the esophagus and the trachea (typically occurring in the lower cervical or upper thoracic area ...",
+"ko": "고립성 기관식도루",
+"alt": [
+"H형 기관식도루"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005928",
+"concept": "- MONDO:0005928 | post-thrombotic syndrome | syn: postphlebitic syndrome | ancestors: venous insufficiency, vein disorder, vascular insufficiency disorder, vascular disorder | def: A condition characterized by a chronically swollen limb, often a leg with stasis dermatitis and ulcerations. This syndrome can appear soon after phlebitis or years later. Postphlebitic syndrome is the...",
+"ko": "혈전후 증후군",
+"alt": [
+"정맥염후 증후군"
+],
+"organs": [
+"cardiovascular",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001730",
+"concept": "- MONDO:0001730 | urethral syndrome | ancestors: urethral disorder, urinary system disorder, disease by body system or component, human disease",
+"ko": "요도 증후군",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002268",
+"concept": "- MONDO:0002268 | dyspepsia | syn: dyspepsia, indigestion; indigestion | ancestors: functional gastric disease, stomach disorder, digestive system disorder, disease by body system or component | def: An uncomfortable, often painful feeling in the stomach, resulting from impaired digestion. Symptoms include burning stomach pain, bloating, heartburn, nausea, and vomiting. Causes include gastritis, g...",
+"ko": "소화불량",
+"alt": [
+"소화불량증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+}
+]

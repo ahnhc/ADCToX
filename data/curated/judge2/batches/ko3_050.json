@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0043237",
+"concept": "- MONDO:0043237 | glossodynia | syn: glossodynia | ancestors: tongue disorder, neurological pain disorder, mouth disorder, nervous system disorder | def: Painful sensations in the tongue, including a sensation of burning.",
+"ko": "설통",
+"alt": [
+"혀통증"
+],
+"organs": [
+"gastrointestinal",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0043310",
+"concept": "- MONDO:0043310 | amaurosis fugax | syn: amaurosis fugax | ancestors: blindness (disorder), vision disorder, disorder of visual system, disease by body system or component | def: Transient complete or partial monocular blindness due to retinal ischemia. This may be caused by emboli from the CAROTID ARTERY (usually in association with CAROTID STENOSIS) and other locations that ...",
+"ko": "일과성 흑암시",
+"alt": [
+"일과성 단안 실명"
+],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006564",
+"concept": "- MONDO:0006564 | irritant dermatitis | syn: irritant contact dermatitis | ancestors: contact dermatitis, dermatitis, skin disorder, inflammatory disease | def: An inflammatory skin condition caused by direct contact between the skin and an irritating substance. It is typically manifested by erythema, mild edema, and scaling at the affected site.",
+"ko": "자극피부염",
+"alt": [
+"자극성 접촉피부염"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004009",
+"concept": "- MONDO:0004009 | kidney pelvis sarcomatoid transitional cell carcinoma | syn: infiltrating renal pelvis urothelial carcinoma, sarcomatoid variant; kidney pelvis sarcomatoid transitional cell carcinoma; renal pelvis sarcomatoid transitional cell carcinoma; sarcomatoid transitional cell carcinoma of kidney pelvis | ancestors: sarcomatoid transitional cell carcinoma, renal pelvis urothelial carcinoma, sarcomatoid carcinoma, transitional cell carcinoma | def: An infiltrating transitional cell carcinoma that arises from the renal pelvis and exhibits sarcomatoid features.",
+"ko": "신우 육종양 이행세포암종",
+"alt": [
+"신우 육종양 요로상피암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001453",
+"concept": "- MONDO:0001453 | senile reticular retinal degeneration | syn: Senile reticular degeneration of retina | ancestors: peripheral retinal degeneration, retinal degeneration, retinal disorder, nervous system disorder",
+"ko": "노인성 망상 망막 변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000889",
+"concept": "- MONDO:0000889 | haemophilus meningitis | syn: Haemophilus influenzae bacterial meningitis; Haemophilus influenzae caused bacterial meningitis | ancestors: bacterial meningitis, haemophilus infectious disease, infectious meningitis, bacterial infectious disease | def: Infections of the nervous system caused by bacteria of the genus haemophilus, and marked by prominent inflammation of the meninges. haemophilus influenzae type B is the most common causative organism....",
+"ko": "헤모필루스 수막염",
+"alt": [
+"인플루엔자균 수막염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006007",
+"concept": "- MONDO:0006007 | vesicoureteral reflux | syn: vesicoureteral reflux; vesicoureteral reflux (disease) | ancestors: ureteral disorder, urinary bladder disorder, urinary system disorder, disease by body system or component | def: Abnormal flow of urine from the urinary bladder back into the ureters.",
+"ko": "방광요관 역류",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009072",
+"concept": "- MONDO:0009072 | Dandy-Walker syndrome | syn: Dandy Walker Malformation; Dandy-Walker syndrome; Dandy-Walker syndrome, Isolated cases | ancestors: cerebellar disorder, cystic malformation of the posterior fossa, brain disorder, central nervous system malformation | def: Dandy-Walker malformation (DWM) is the association of three signs: hydrocephalus, partial or complete absence of the cerebellar vermis, and posterior fossa cyst contiguous with the fourth ventricle, p...",
+"ko": "댄디-워커 증후군",
+"alt": [
+"댄디-워커 기형"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010192",
+"concept": "- MONDO:0010192 | Waardenburg syndrome type 4A | syn: EDNRB Waardenburg syndrome; Waardenburg syndrome caused by mutation in EDNRB; Waardenburg syndrome type 4A; WS4A | ancestors: Waardenburg-Shah syndrome, Waardenburg syndrome, intestinal motility disease, neurocristopathy | def: A subtype of Waardenburg syndrome type 4 (Waardenburg-Shah syndrome) caused by mutations in EDNRB.",
+"ko": "와덴부르그 증후군 4A형",
+"alt": [
+"바르덴부르흐 증후군 4A형"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001657",
+"concept": "- MONDO:0001657 | brain cancer | syn: brain cancer; brain neoplasms, malignant; cancer of brain; cancer of the brain | ancestors: central nervous system cancer, brain neoplasm, nervous system cancer, central nervous system neoplasm | def: A primary or metastatic malignant neoplasm affecting the brain.",
+"ko": "뇌암",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0100302",
+"concept": "- MONDO:0100302 | LADD syndrome 1 | syn: lacrimoauriculodentodigital syndrome 1; LADD1 | ancestors: LADD syndrome, autosomal dominant disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, polydactyly-syndactyly-triphalangism | def: Any LADD syndrome in which the cause of the disease is a variation in the FGFR2 gene.",
+"ko": "LADD 증후군 1형",
+"alt": [
+"눈물샘-귀-치아-손가락 증후군 1형"
+],
+"organs": [
+"gastrointestinal",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015364",
+"concept": "- MONDO:0015364 | hereditary sensory and autonomic neuropathy | syn: hereditary sensory and autonomic neuropathy; hereditary sensory neuropathy; hereditary sensory peripheral neuropathy; HSAN | ancestors: sensory peripheral neuropathy, hereditary peripheral neuropathy, peripheral neuropathy, hereditary neuromuscular disease | def: An instance of sensory peripheral neuropathy that is caused by an inherited modification of the individual's genome.",
+"ko": "유전감각자율신경병증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005610",
+"concept": "- MONDO:0005610 | Kashin-Beck disease | ancestors: osteochondrodysplasia, bone development disease, skeletal dysplasia, bone disorder | def: Disabling osteochondrodysplasia with osteosclerosis, cone-shaped metaphysis, and shortening of the diaphysis. It is endemic in parts of Siberia and northern China. Mineral deficiencies (e.g., selenium...",
+"ko": "카신-벡병",
+"alt": [
+"카신-벡 병"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004797",
+"concept": "- MONDO:0004797 | mononeuritis of lower limb | syn: hindlimb mononeuritis simplex; mononeuritis simplex of hindlimb | ancestors: mononeuritis simplex, mononeuropathy, neuritis, peripheral neuropathy | def: A mononeuritis simplex that involves the hindlimb.",
+"ko": "하지 단일신경염",
+"alt": [
+"하지 단발성 신경염"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001149",
+"concept": "- MONDO:0001149 | microcephaly | syn: microcephalus; microcephaly; microcephaly (disease); microencephaly | ancestors: disorder of development or morphogenesis, neurodevelopmental disorder, disease by developmental or physiological process, nervous system disorder | def: A congenital or acquired developmental disorder in which the circumference of the head is smaller than normal for the person's age and sex.",
+"ko": "소두증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004394",
+"concept": "- MONDO:0004394 | maxillary sinus squamous cell carcinoma | syn: epidermoid carcinoma of maxillary antrum; epidermoid carcinoma of maxillary sinus; epidermoid carcinoma of maxillofacial sinus; epidermoid carcinoma of the maxillary antrum | ancestors: maxillary sinus carcinoma, oral cavity squamous cell carcinoma, paranasal sinus squamous cell carcinoma, paranasal sinus carcinoma | def: A squamous cell carcinoma that arises from the mucosal epithelial surface of the maxillary sinus. Patients may present with nasal fullness, obstruction, and/or epistaxis.",
+"ko": "상악동 편평세포암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002202",
+"concept": "- MONDO:0002202 | outlet dysfunction constipation | ancestors: constipation disorder, bowel dysfunction, intestinal disorder, digestive system disorder",
+"ko": "출구 기능장애 변비",
+"alt": [
+"출구폐쇄형 변비"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0030602",
+"concept": "- MONDO:0030602 | Klebsiella pneumonia | syn: Klebsiella caused pneumonia; pneumonia due to Klebsiella pneumoniae | ancestors: bacterial pneumonia, Klebsiella infectious disease, bacterial infectious disease, pneumonia | def: An pneumonia caused by infection with Klebsiella.",
+"ko": "클렙시엘라 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019313",
+"concept": "- MONDO:0019313 | lymphatic malformation | syn: hereditary lymphedema; lymphedema, hereditary | ancestors: hereditary disease, vascular disorder, primary lymphedema, disease of genetic or genomic mechanism | def: Primary lymphedema is caused by anatomic or functional defects in the lymphatic system, resulting in chronic swelling of body parts and lymphatic-system malformation.",
+"ko": "림프관 기형",
+"alt": [
+"유전성 림프부종"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003572",
+"concept": "- MONDO:0003572 | nasopharyngeal type undifferentiated carcinoma | syn: lymphoepithelial carcinoma; lymphoepithelioma; lymphoepithelioma-like carcinoma; nasopharyngeal type undifferentiated carcinoma | ancestors: large cell carcinoma, carcinoma, cancer, epithelial neoplasm | def: A nonkeratinizing carcinoma which occurs predominantly in the nasopharynx but also in the tonsils and rarely in other anatomic sites. It is characterized by the presence of large malignant cells with ...",
+"ko": "비인두형 미분화 암종",
+"alt": [
+"림프상피종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+}
+]

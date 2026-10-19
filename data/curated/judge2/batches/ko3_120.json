@@ -1,0 +1,255 @@
+[
+{
+"id": "MONDO:0020317",
+"concept": "- MONDO:0020317 | acute myeloid leukemia with 11q23 abnormalities | syn: acute myeloid leukaemia with 11q23 (MLL) abnormalities; acute myeloid leukaemia with MLL abnormalities; acute myeloid Leukaemia with t(9;11)(p21.3;q23.3); MLLT3-KMT2A; acute myeloid leukaemia with t(9;11)(p22.3;q23.3); MLLT3-KMT2A | ancestors: acute myeloid leukemia, myeloid leukemia, acute leukemia, leukemia | def: An acute myeloid leukemia associated with t(9;11)(p22.3;q23.3) and MLLT3-KMT2A fusion protein expression. Morphologically it usually has monocytic features. It may present at any age but it is more co...",
+"ko": "11q23 이상을 동반한 급성 골수성 백혈병",
+"alt": [
+"MLL 이상 급성 골수성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009319",
+"concept": "- MONDO:0009319 | pantothenate kinase-associated neurodegeneration | syn: Hallervorden-Spatz disease; Hallervorden-Spatz syndrome; NBIA1; neurodegeneration with brain iron accumulation 1 | ancestors: neurodegeneration with brain iron accumulation, iron metabolism disease, neuroaxonal dystrophy, movement disorder | def: Pantothenate kinase-associated neurodegeneration (PKAN) is the most common type of neurodegeneration with brain iron accumulation (NBIA), a rare neurodegenerative disorder characterized by progressive...",
+"ko": "판토텐산 인산화효소 관련 신경변성",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014374",
+"concept": "- MONDO:0014374 | nephronophthisis 18 | syn: CEP83 nephronophthisis (disease); nephronophthisis (disease) caused by mutation in CEP83; nephronophthisis 18; nephronophthisis type 18 | ancestors: nephronophthisis, autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease | def: Any nephronophthisis in which the cause of the disease is a mutation in the CEP83 gene.",
+"ko": "신장로 18형",
+"alt": [
+"신단위로 18형"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004375",
+"concept": "- MONDO:0004375 | end stage renal failure | syn: chronic kidney disease, stage 5; disease (ESRD), end stage renal; end stage kidney disease; end stage kidney failure | ancestors: chronic kidney disease, kidney disorder, urinary system disorder, disease by body system or component | def: Long-standing and persistent renal disease with glomerular filtration rate (GFR) less than 15 ml/min.",
+"ko": "말기 신부전",
+"alt": [
+"말기 콩팥병"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007361",
+"concept": "- MONDO:0007361 | C1 inhibitor deficiency | ancestors: classic complement early component deficiency, complement deficiency, inborn error of immunity, immunodeficiency disease",
+"ko": "C1 억제인자 결핍증",
+"alt": [
+"유전혈관부종"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018902",
+"concept": "- MONDO:0018902 | hepatocellular adenoma | syn: adenoma of liver cells; adenoma of the liver cells; adenoma, hepatocellular, benign; HCA | ancestors: benign digestive system neoplasm, benign endocrine neoplasm, adenoma, liver and intrahepatic bile duct neoplasm | def: A benign epithelial neoplasm arising from the hepatocytes. Grossly, it appears as a soft, round mass which often contains areas of hemorrhage and necrosis. Morphologically, the neoplastic cells resemb...",
+"ko": "간세포 선종",
+"alt": [
+"간세포성 샘종"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001199",
+"concept": "- MONDO:0001199 | dislocation of ear ossicle | syn: dislocation of ear ossicles | ancestors: auditory system disorder, disease by body system or component, human disease, disease | def: Ossicular chain dislocation is a separation of the middle ear bones. It results in a hearing loss due to sound not being transmitted properly (conductive hearing loss). Ossicular chain dislocation is ...",
+"ko": "이소골 탈구",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010650",
+"concept": "- MONDO:0010650 | Melnick-Needles syndrome | syn: Melnick-Needles osteodysplasty; Melnick-Needles syndrome; Melnick-Needles syndrome, X-linked dominant | ancestors: otopalatodigital syndrome spectrum disorder, filamin-related bone disorder, skeletal dysplasia, hereditary disease | def: A otopalatodigital syndrome spectrum disorder and is associated with a short stature, facial dysmorphism, osseous abnormalities involving the majority of the axial and appendicular skeleton resulting ...",
+"ko": "멜닉-니들스 증후군",
+"alt": [],
+"organs": [
+"renal",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006210",
+"concept": "- MONDO:0006210 | fibrolamellar hepatocellular carcinoma | syn: FHCC; fibrolamellar cancer; fibrolamellar carcinoma; fibrolamellar carcinoma of liver cells | ancestors: hepatocellular carcinoma, adenocarcinoma, carcinoma of liver and intrahepatic biliary tract, carcinoma | def: A distinctive type of liver cell carcinoma that arises in non-cirrhotic livers and is seen predominantly in young patients. The tumor cells are polygonal and deeply eosinophilic, and are embedded in a...",
+"ko": "섬유판층성 간세포암종",
+"alt": [
+"섬유층판 간세포암종"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004001",
+"concept": "- MONDO:0004001 | compartment syndrome | syn: compartment syndrome | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: Elevated pressure in a confined space enclosed by fascia or eschar, which may lead to vascular compromise and subsequent ischemic injury to the tissue within the space.",
+"ko": "구획 증후군",
+"alt": [
+"구획증후군"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0020159",
+"concept": "- MONDO:0020159 | congenital entropion | ancestors: entropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "선천성 안검내반",
+"alt": [
+"선천성 눈꺼풀 안쪽말림"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003079",
+"concept": "- MONDO:0003079 | mastocytoma | syn: mastocytoma | ancestors: mast cell neoplasm, myeloid neoplasm, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm | def: A localized tumor composed of sheets of mast cells without atypia. It includes the cutaneous mastocytoma which involves the dermis and subcutaneous tissue, and the extracutaneous mastocytoma. Most cas...",
+"ko": "비만세포종",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001810",
+"concept": "- MONDO:0001810 | hypoglossal nerve disorder | syn: disease of hypoglossal nerve; disease or disorder of hypoglossal nerve; disorder of hypoglossal [12th] nerve; disorder of hypoglossal nerve | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the hypoglossal nerve.",
+"ko": "설하신경 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008394",
+"concept": "- MONDO:0008394 | Silver-Russell syndrome | syn: Russell Silver syndrome; Russell-Silver dwarfism; Russell-Silver Syndrome; Russell-Silver syndrome | ancestors: syndromic disease, hereditary disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, chromosomal disorder | def: Silver-Russell syndrome is characterized by growth retardation with antenatal onset, characteristic facies and limb asymmetry.",
+"ko": "실버-러셀 증후군",
+"alt": [
+"러셀-실버 증후군"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004964",
+"concept": "- MONDO:0004964 | peripheral T-cell lymphoma, not otherwise specified | syn: peripheral T-cell lymphoma, not otherwise specified | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm | def: Aggressive nodal or extranodal mature (peripheral) T-cell lymphomas that do not belong to the better defined entities of the remainder of mature T-cell lymphomas. This category includes the following ...",
+"ko": "말초 T세포 림프종, 달리 분류되지 않는 것",
+"alt": [
+"말초 T세포 림프종 NOS"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002314",
+"concept": "- MONDO:0002314 | chronic conjunctivitis | syn: chronic conjunctivitis; chronic conjunctivitis (disease); chronic conjunctivitis, unspecified; conjunctivitis (disease), chronic | ancestors: conjunctivitis, conjunctival disorder, inflammatory disease, eye adnexa disorder | def: Conjunctivitis that is persistent and long-standing.",
+"ko": "만성 결막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015573",
+"concept": "- MONDO:0015573 | subacute cutaneous lupus erythematosus | ancestors: cutaneous lupus erythematosus, acute disease, lupus erythematosus, human disease | def: Subacute cutaneous lupus erythematosus (SCLE) is a form of cutaneous lupus erythematosus (CLE) that can present either as a non-scarring, annular photo-distributed dermatosis or psoriasiform plaques. ...",
+"ko": "아급성 피부 홍반루푸스",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003277",
+"concept": "- MONDO:0003277 | malignant ear neoplasm | syn: cancer of ear; ear cancer; malignant Ear neoplasm; malignant ear neoplasm | ancestors: sensory system cancer, head and neck cancer, ear neoplasm, nervous system cancer | def: A malignant neoplasm that affects the ear. Representative examples include ceruminous adenocarcinoma and squamous cell carcinoma of the external ear and adenocarcinoma of the middle ear.",
+"ko": "악성 귀 신생물",
+"alt": [
+"귀암"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005722",
+"concept": "- MONDO:0005722 | croup | syn: acute laryngotracheobronchitis; acute obstructive laryngitis | ancestors: laryngotracheitis, bronchitis, acute laryngitis, laryngitis | def: Acute upper respiratory airways infection that results in the swelling of the larynx. It is usually caused by parainfluenza viruses. Signs include a characteristic barking cough and stridor.",
+"ko": "크루프",
+"alt": [
+"급성 후두기관기관지염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0014712",
+"concept": "- MONDO:0014712 | Senior-Loken syndrome 9 | syn: Senior-Loken syndrome 9; Senior-Loken syndrome 9; SLSN9; Senior-Loken syndrome caused by mutation in TRAF3IP1; Senior-Loken syndrome type 9 | ancestors: Senior-Loken syndrome, ciliopathy, autosomal recessive disease, inherited renal tubular disease | def: Any Senior-Loken syndrome in which the cause of the disease is a mutation in the TRAF3IP1 gene.",
+"ko": "세니어-로켄 증후군 9",
+"alt": [],
+"organs": [
+"renal",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+}
+]

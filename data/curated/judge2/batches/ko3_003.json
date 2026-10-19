@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0005661",
+"concept": "- MONDO:0005661 | babesiosis | syn: Babesia caused disease or disorder; Babesia disease or disorder; Babesia infectious disease; babesiasis | ancestors: protozoa infectious disease, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Babesiosis refers to a condition caused by microscopic parasites that infect the red blood cells. Many people who are infected with Babesia parasites do not experience any symptoms of the condition. W...",
+"ko": "바베시아증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005125",
+"concept": "- MONDO:0005125 | borderline leprosy | syn: borderline leprosy [group B] | ancestors: leprosy, primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease | def: A form of leprosy in which there are clinical manifestations of both principal types (lepromatous and tuberculoid). The disease may shift toward one of these two polar or principal forms.",
+"ko": "경계성 나병",
+"alt": [
+"경계성 한센병"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0020435",
+"concept": "- MONDO:0020435 | atrial septal defect, coronary sinus type | syn: ASD, coronary sinus type; atrial septal defect coronary sinus; unroofed coronary sinus | ancestors: atrial septal defect, syndromic congenital heart disease, heart septal defect, cardiogenetic disease",
+"ko": "심방중격결손, 관상정맥동형",
+"alt": [
+"ASD 관상정맥동형"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024298",
+"concept": "- MONDO:0024298 | vitamin deficiency disorder | syn: avitaminosis; vitamin deficiency; vitamin deficiency disorder | ancestors: nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism, human disease | def: A disorder that is caused by the deficiency of a vitamin. The deficiency may result from either suboptimal vitamin intake or conditions that prevent the vitamin's use or absorption in the body. Repres...",
+"ko": "비타민 결핍증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015342",
+"concept": "- MONDO:0015342 | acute transverse myelitis | ancestors: myelitis, acute disease, spinal cord disorder, encephalomyelitis | def: Acute transverse myelitis (ATM) is an inflammatory demyelinating disorder of the spinal cord that can be either idiopathic (IATM) or secondary to a known cause (SATM).",
+"ko": "급성 횡단 척수염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005517",
+"concept": "- MONDO:0005517 | pharynx cancer | syn: cancer of chordate pharynx; cancer of pharynx; chordate pharynx cancer; malignant chordate pharynx neoplasm | ancestors: respiratory system cancer, digestive system cancer, disorder of pharynx, pharynx neoplasm | def: A primary or metastatic malignant neoplasm that affects the pharynx.",
+"ko": "인두암",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021839",
+"concept": "- MONDO:0021839 | spirochaetales infections | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Infections with bacteria of the order SPIROCHAETALES.",
+"ko": "스피로헤타목 감염",
+"alt": [
+"나선균 감염"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0005651",
+"concept": "- MONDO:0005651 | arenavirus hemorrhagic fever | syn: arenaviral hemorrhagic fever | ancestors: Arenaviridae infectious disease, viral hemorrhagic fever, primary viral infectious disease, viral infectious disease | def: A viral infectious disease that involves fever and bleeding disorder caused by Arenavirus.",
+"ko": "아레나바이러스 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002041",
+"concept": "- MONDO:0002041 | fungal infectious disease | syn: Fungi caused disease or disorder; Fungi disease or disorder; Fungi infection; Fungi infectious disease | ancestors: infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: An infection caused by a fungus.",
+"ko": "진균 감염병",
+"alt": [
+"진균증"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0014851",
+"concept": "- MONDO:0014851 | hypercalcemia, infantile, 2 | syn: autosomal recessive infantile hypercalcemia caused by mutation in SLC34A1; HCINF2; hypercalcemia, infantile 2; hypercalcemia, infantile, 2 | ancestors: hypercalcemia, infantile, hypercalcemia disease, autosomal recessive disease, inborn errors of metabolism | def: Any hypercalcemia, infantile in which the cause of the disease is a mutation in the SLC34A1 gene.",
+"ko": "영아 고칼슘혈증 2형",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006303",
+"concept": "- MONDO:0006303 | middle ear squamous cell carcinoma | syn: epidermoid carcinoma of middle Ear; epidermoid carcinoma of the middle Ear; epidermoid carcinoma of the middle ear; middle Ear epidermoid carcinoma | ancestors: middle ear carcinoma, head and neck squamous cell carcinoma, head and neck carcinoma, middle ear cancer | def: A rare squamous cell carcinoma that arises from the middle ear.",
+"ko": "중이 편평세포암종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002442",
+"concept": "- MONDO:0002442 | long QT syndrome | syn: long QT syndrome; ventricular arrhythmia associated with long QT syndrome | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: A condition that is characterized by episodes of fainting (syncope) and varying degree of ventricular arrhythmia as indicated by the prolonged QT interval. The inherited forms are caused by mutation o...",
+"ko": "QT 연장 증후군",
+"alt": [
+"긴 QT 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0022428",
+"concept": "- MONDO:0022428 | aluminosis | syn: aluminosis of lung; pulmonary aluminosis | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: Aluminosis is characterized as diffuse interstitial fibrosis which is mainly located in the upper and middle lobes of the lung. In advanced stages it is characterized by subpleural bullous emphysema w...",
+"ko": "알루미늄폐증",
+"alt": [
+"폐 알루미늄증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005029",
+"concept": "- MONDO:0005029 | essential thrombocythemia | syn: essential thrombocytemia; essential thrombocythemia; essential thrombocytosis; primary thrombocythemia | ancestors: thrombocytosis disease, myeloproliferative neoplasm, blood platelet disease, myeloid neoplasm | def: A chronic myeloproliferative neoplasm that involves primarily the megakaryocytic lineage. It is characterized by sustained thrombocytosis in the blood, increased numbers of large, mature megakaryocyte...",
+"ko": "본태성 혈소판증가증",
+"alt": [
+"본태성 혈소판혈증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017373",
+"concept": "- MONDO:0017373 | poliomyelitis | syn: acute poliomyelitis; Polia; polio; poliomyelitis | ancestors: myelitis, anterior horn disorder, acquired motor neuron disease, acute disease | def: An acute infectious disorder that affects the nervous system. It is caused by the poliovirus. The virus spreads by direct contact, and can be prevented by prophylaxis with the polio vaccine.",
+"ko": "소아마비",
+"alt": [
+"폴리오",
+"회색질척수염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002268",
+"concept": "- MONDO:0002268 | dyspepsia | syn: dyspepsia, indigestion; indigestion | ancestors: functional gastric disease, stomach disorder, digestive system disorder, disease by body system or component | def: An uncomfortable, often painful feeling in the stomach, resulting from impaired digestion. Symptoms include burning stomach pain, bloating, heartburn, nausea, and vomiting. Causes include gastritis, g...",
+"ko": "소화불량",
+"alt": [
+"소화불량증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0009848",
+"concept": "- MONDO:0009848 | dissecting cellulitis of the scalp | syn: dissecting cellulitis of the scalp | ancestors: subcutaneous tissue disorder, integumentary system disorder, disease by body system or component, human disease | def: Dissecting cellulitis of the scalp is a rare chronic suppurative dermatosis of the scalp that mainly affects black men and that is characterized by multiple painful inflammatory follicular and perifol...",
+"ko": "두피 박리성 봉와직염",
+"alt": [
+"두피 해리성 봉소염"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018979",
+"concept": "- MONDO:0018979 | multifocal motor neuropathy | syn: MMN; MMNCB; multifocal motor neuropathy with conduction block | ancestors: acquired peripheral neuropathy, peripheral neuropathy, peripheral nervous system disorder, neuromuscular disease | def: Multifocal motor neuropathy (MMN) is a rare acquired immune-mediatedneuropathy characterized clinically by a purely motor deficit with conduction block and asymmetric multifocal weakness, fasciculatio...",
+"ko": "다초점 운동신경병증",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002776",
+"concept": "- MONDO:0002776 | external ear disorder | syn: disease of external ear; disease or disorder of external ear; disorder of external ear; external ear disease | ancestors: auditory system disorder, disorder of ear, disease by body system or component, otorhinolaryngologic disease | def: A disease involving the external ear.",
+"ko": "외이 질환",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0017934",
+"concept": "- MONDO:0017934 | aphonia-deafness-retinal dystrophy-bifid halluces-intellectual disability syndrome | syn: aphonia-deafness-retinal dystrophy-duplicated halluces-intellectual disability syndrome; aphonia-hearing loss-retinal dystrophy-duplicated halluces-intellectual disability syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome-intellectual disability, multiple congenital anomalies/dysmorphic syndrome, developmental defect during embryogenesis, disorder of development or morphogenesis | def: Aphonia-deafness-retinal dystrophy-bifid halluces-intellectual disability syndrome is a rare, genetic, multiple congenital anomalies/dysmorphic syndrome characterized by moderate to severe intellectua...",
+"ko": "무성증-난청-망막이영양증-엄지중복-지적장애 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

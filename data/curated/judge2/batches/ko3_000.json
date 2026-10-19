@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0008218",
+"concept": "- MONDO:0008218 | Hailey-Hailey disease | syn: benign chronic familial pemphigus of Hailey-Hailey; benign chronic pemphigus; Hailey-Hailey disease; pemphigus, benign familial | ancestors: pemphigus, epidermal disease, hereditary skin disorder, autoimmune bullous skin disease | def: Benign chronic familial pemphigus of Hailey-Hailey is characterized by rhagades mostly located in the armpits, inguinal and perineal folds (scrotum, vulva).",
+"ko": "헤일리-헤일리병",
+"alt": [
+"양성 만성 가족성 천포창"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012118",
+"concept": "- MONDO:0012118 | COG7-congenital disorder of glycosylation | syn: carbohydrate deficient glycoprotein syndrome type IIe; CDG syndrome type IIe; CDG-IIe; CDG2E | ancestors: congenital disorder of glycosylation type II, developmental anomaly of metabolic origin, defect in conserved oligomeric Golgi complex, congenital disorder of glycosylation | def: COG7-CDG is a congenital disorder of glycosylation characterized by dysmorphism, skeletal dysplasia, hypotonia, hepatosplenomegaly, jaundice, cardiac insufficiency, recurrent infections and epilepsy. ...",
+"ko": "COG7 선천성 당화 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019466",
+"concept": "- MONDO:0019466 | lymphomatoid granulomatosis | syn: LYG | ancestors: Epstein-Barr virus-associated lymphoproliferative disorder, diffuse large B-cell lymphoma, Epstein-Barr virus-related tumor, neoplasm of mature B-cells | def: A very rare Epstein-Barr virus (EBV)-driven lymphoproliferative disease most commonly occurring in adults (in the fourth to sixth decade of life) and commonly affecting the lungs (with presentations v...",
+"ko": "림프종양육아종증",
+"alt": [],
+"organs": [
+"haematologic",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002367",
+"concept": "- MONDO:0002367 | kidney cancer | syn: cancer of kidney; kidney cancer; malignant kidney neoplasm; malignant kidney tumor | ancestors: malignant urinary system neoplasm, kidney neoplasm, cancer, urinary system neoplasm | def: Primary or metastatic malignant neoplasm involving the kidney.",
+"ko": "신장암",
+"alt": [
+"콩팥암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001579",
+"concept": "- MONDO:0001579 | corneal staphyloma | ancestors: corneal disorder, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "각막포도종",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009728",
+"concept": "- MONDO:0009728 | nephronophthisis 1 | syn: familial juvenile nephronophthisis; juvenile nephronophthisis; nephronophthisis (disease) caused by mutation in NPHP1; nephronophthisis 1 | ancestors: syndromic disease, ciliopathy, nephronophthisis, disease by body system or component | def: Progressive tubulointerstitial nephritis inherited in an autosomal recessive manner. It is caused by mutations in the NPHP1 gene. Patients present with anemia, polyuria, and polydipsia during childhoo...",
+"ko": "콩팥단위로 1형",
+"alt": [
+"신장로 1형",
+"NPHP1 관련 신장로"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006998",
+"concept": "- MONDO:0006998 | tonsil cancer | syn: malignant neoplasm of the tonsil; malignant neoplasm of tonsil; malignant tonsil neoplasm; malignant tonsil tumor | ancestors: Waldeyer's ring cancer, tonsil neoplasm, immune system cancer, oropharynx cancer | def: A primary or metastatic malignant neoplasm that affects the tonsil.",
+"ko": "편도암",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0000628",
+"concept": "- MONDO:0000628 | central nervous system organ benign neoplasm | syn: central nervous system benign neoplasm | ancestors: nervous system benign neoplasm, central nervous system neoplasm, benign neoplasm, nervous system neoplasm | def: A benign neoplasm that involves the central nervous system.",
+"ko": "중추신경계 양성 신생물",
+"alt": [
+"중추신경계 양성 종양"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0044014",
+"concept": "- MONDO:0044014 | postpartum thyroiditis | syn: postpartum thyroiditis | ancestors: autoimmune thyroid disease, puerperal disorder, autoimmune disorder of endocrine system, thyroiditis | def: A transient autoimmune Inflammatory disorder of thyroid gland that occurs postpartum due to any partum problem. It is characterized by the presence of high titers of autoantibodies against thyroid per...",
+"ko": "산후 갑상선염",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003417",
+"concept": "- MONDO:0003417 | internuclear ophthalmoplegia | ancestors: ophthalmoplegia, strabismus, ocular motility disease, palsy",
+"ko": "핵간 안근마비",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001375",
+"concept": "- MONDO:0001375 | bladder trigone cancer | syn: cancer of trigone of urinary bladder; malignant neoplasm of trigone of urinary bladder; malignant trigone of urinary bladder neoplasm; trigone of urinary bladder cancer | ancestors: bladder dome cancer, urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm | def: A malignant neoplasm involving the trigone of urinary bladder.",
+"ko": "방광삼각암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001312",
+"concept": "- MONDO:0001312 | acute serous otitis media | ancestors: acute transudative otitis media, non-suppurative otitis media, acute disease, otitis media | def: A acute transudative otitis media with thin, watery and sterile effusion.",
+"ko": "급성 장액성 중이염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002727",
+"concept": "- MONDO:0002727 | olfactory nerve disorder | syn: disease of olfactory nerve; disease or disorder of olfactory nerve; disorder of 1st nerve; disorder of olfactory [1st] nerve | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, brain disorder, nervous system disorder | def: A disease involving the olfactory nerve.",
+"ko": "후각신경 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021503",
+"concept": "- MONDO:0021503 | benign neoplasm of gallbladder | syn: benign gallbladder neoplasm; benign gallbladder tumor; benign gallbladder tumour; benign neoplasm of the gallbladder | ancestors: benign digestive system neoplasm, gallbladder neoplasm, digestive system disorder, benign neoplasm | def: A benign neoplasm that involves the gall bladder.",
+"ko": "담낭 양성 신생물",
+"alt": [
+"담낭 양성 종양"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008188",
+"concept": "- MONDO:0008188 | papillomatosis, confluent and reticulated | syn: papillomatosis, confluent and reticulated | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "융합망상 유두종증",
+"alt": [
+"융합성 망상 유두종증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0007244",
+"concept": "- MONDO:0007244 | Caffey disease | syn: Caffey disease; infantile cortical hyperostosis | ancestors: hyperostosis, bone inflammation disease, neonatal osteosclerotic dysplasia, bone remodeling disease | def: Caffey disease is an osteosclerotic dysplasia characterized by acute inflammation with massive subperiosteal new bone formation usually involving the diaphyses of the long bones, as well as the ribs, ...",
+"ko": "카페병",
+"alt": [
+"영아 피질골 과골증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 12,
+"new": false
+},
+{
+"id": "MONDO:0006948",
+"concept": "- MONDO:0006948 | retinal artery occlusion | ancestors: retinal vascular occlusion, retinal vascular disorder, vascular occlusion disorder, retinal disorder | def: An occlusion of the retinal artery.",
+"ko": "망막동맥 폐쇄",
+"alt": [
+"망막동맥 폐색"
+],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0003479",
+"concept": "- MONDO:0003479 | toxic pneumonitis | syn: acute chemical fume pulmonary oedema; acute chemical pulmonary oedema | ancestors: pneumonitis, lung disorder, inflammatory disease, lower respiratory tract disorder | def: A pneumonia that is an acute inflammation of the lungs induced by inhalation of metal fumes or toxic gasses and vapors. It is a sentinel health event (occupational) associated with exposure to ammonia...",
+"ko": "독성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019148",
+"concept": "- MONDO:0019148 | Wolman disease | syn: Wolman disease with hypolipoproteinemia and acanthocytosis; Wolman's disease | ancestors: lysosomal acid lipase deficiency, syndromic dyslipidemia, lysosomal lipid storage disorder, syndromic disease | def: Wolman disease represents the most severe manifestation of lysosomal acid lipase deficiency. Milder phenotypes as a whole are referred to as cholesterol ester storage disease. The acid lipase enzyme p...",
+"ko": "볼만병",
+"alt": [
+"울먼병"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017627",
+"concept": "- MONDO:0017627 | congenital hereditary facial paralysis-variable hearing loss syndrome | syn: congenital hereditary facial palsy with variable deafness; congenital hereditary facial palsy with variable hearing loss; congenital hereditary facial paralysis with variable deafness; congenital hereditary facial paralysis-variable deafness syndrome | ancestors: syndromic disease, disorder of facial skeleton, disease by body system or component, skull disorder | def: Congenital hereditary facial paralysis-variable hearing loss syndrome is an extremely rare autosomal recessive disorder characterized by bilateral facial palsy with masked facies, sensorineural hearin...",
+"ko": "선천성 유전성 안면마비-가변성 난청 증후군",
+"alt": [
+"선천성 유전성 안면신경마비"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

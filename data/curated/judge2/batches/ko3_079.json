@@ -1,0 +1,246 @@
+[
+{
+"id": "MONDO:0004872",
+"concept": "- MONDO:0004872 | hemorrhoid | syn: Haemorrhoids; hemorrhoid; Hemorrhoids | ancestors: pelvic varices, varicose disease, vein disorder, vascular disorder | def: Dilated veins in the anal canal.",
+"ko": "치핵",
+"alt": [
+"치질"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0010378",
+"concept": "- MONDO:0010378 | X-linked hereditary sensory and autonomic neuropathy with hearing loss | syn: X-linked auditory neuropathy with peripheral sensory neuropathy type 1; X-linked hereditary sensory and autonomic neuropathy with hearing loss | ancestors: hereditary sensory and autonomic neuropathy, X-linked nonsyndromic hearing loss, auditory neuropathy, sensory peripheral neuropathy | def: This syndrome is characterized by the association of an axonal sensory and autonomic neuropathy with hearing loss.",
+"ko": "난청을 동반한 X연관 유전성 감각 및 자율신경병증",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017572",
+"concept": "- MONDO:0017572 | tick-borne encephalitis | syn: TBE; Tick-borne viral encephalitis | ancestors: viral encephalitis, tick-borne infectious disease, infectious encephalitis, viral infection of central nervous system | def: Tick-borne encephalitis is caused by an arbovirus of the Flaviviridae family (tick-borne encephalitis virus, TBEV), transmitted principally by the bite of the Ixodes ricinus tick. The symptomology is ...",
+"ko": "진드기매개뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0004911",
+"concept": "- MONDO:0004911 | cardiovascular syphilis | ancestors: tertiary syphilis, syphilis, primary bacterial infectious disease, Treponema infectious disease | def: A tertiary syphilis that is manifested as aneurysm formation in the ascending aorta, caused by chronic inflammatory destruction of the vasa vasorum, insufficiency of the aortic valve, or narrowing of ...",
+"ko": "심혈관 매독",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021492",
+"concept": "- MONDO:0021492 | benign neoplasm of major salivary gland | syn: benign Major salivary gland neoplasm; benign Major salivary gland tumor; benign Major salivary gland tumour; benign neoplasm of the Major salivary gland | ancestors: neoplasm of major salivary gland, benign neoplasm of salivary gland, tumor of salivary gland, benign neoplasm | def: A benign neoplasm that involves the major salivary gland.",
+"ko": "큰침샘 양성 신생물",
+"alt": [
+"주타액선 양성 종양"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003423",
+"concept": "- MONDO:0003423 | middle ear adenoma | syn: middle ear adenoma | ancestors: adenoma, benign neoplasm of middle ear, benign epithelial neoplasm, epithelial neoplasm | def: A benign, well-circumscribed glandular neoplasm that arises from the middle ear and may exhibit neuroendocrine differentiation. It usually presents with conductive hearing loss.",
+"ko": "중이 선종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0044753",
+"concept": "- MONDO:0044753 | lumbar spinal stenosis | syn: lumbar region of vertebral column spinal stenosis; lumbar spinal stenosis; spinal stenosis of lumbar region; spinal stenosis of lumbar region of vertebral column | ancestors: spinal stenosis, vertebral column disorder, disease of bone structure, skeletal system disorder | def: A spinal stenosis that involves the lumbar region of vertebral column.",
+"ko": "요추 척추관 협착증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015347",
+"concept": "- MONDO:0015347 | multicentric reticulohistiocytosis | syn: giant cell histiocytomatosis; lipoid dermatoarthritis; multicentric reticulohistiocytosis | ancestors: syndromic disease, non-Langerhans cell histiocytosis, disease by body system or component, histiocytosis | def: Multicentric reticulohistiocytosis (MRH) is a rare non-Langerhans cell histiocytosis characterized by the association of specific nodular skin lesions and destructive arthritis.",
+"ko": "다중심성 세망조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004225",
+"concept": "- MONDO:0004225 | monoclonal gammopathy of uncertain significance | syn: benign monoclonal gammopathy; MGUS; monoclonal gammopathy of undetermined significance; monoclonal gammopathy Of undetermined significance (MGUS) | ancestors: monoclonal gammopathy, hematologic disorder, disease by body system or component, human disease | def: A condition characterized by the presence of a monoclonal gammopathy (MG) in which the clonal mass has not reached a predefined state in which the condition is considered malignant. Up to 25% of cases...",
+"ko": "의미불명 단클론감마병증",
+"alt": [
+"의미불명의 단클론 감마글로불린병증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009929",
+"concept": "- MONDO:0009929 | surfactant metabolism dysfunction, pulmonary, 1 | syn: interstitial lung disease due to SP-B dysfunction; Interstitial Lung Disease Due To Surfactant Protein B Deficiency; interstitial lung disease due to surfactant Protein B deficiency; neonatal acute respiratory distress due to SP-B deficiency | ancestors: hereditary pulmonary alveolar proteinosis, acute disease, pulmonary alveolar proteinosis, hereditary disease",
+"ko": "폐 표면활성제 대사 기능 이상 1형",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000265",
+"concept": "- MONDO:0000265 | aspiration pneumonia | syn: acid aspiration syndrome; acid aspiration syndromes; aspiration pneumonia; aspiration pneumonia (disease) | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: A type of lung inflammation resulting from the aspiration of food, liquid, or gastric contents into the upper respiratory tract.",
+"ko": "흡인성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015898",
+"concept": "- MONDO:0015898 | adrenogenital syndrome | syn: adrenogenital disorder; adrenogenital syndrome; androgenital syndrome | ancestors: adrenal gland disorder, steroid metabolism disease, endocrine system disorder, metabolic disease | def: Abnormal sex differentiation or congenital disorders of sex development caused by abnormal levels of steroid hormones expressed by the gonads or the adrenal glands, such as in congenital adrenal hyper...",
+"ko": "부신성기 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0044791",
+"concept": "- MONDO:0044791 | combined hepatocellular carcinoma and cholangiocarcinoma | syn: carcinoma of the liver and intrahepatic biliary tract; Cholangiohepatoma; combined hepatocellular cancer and intrahepatic bile duct cancer (cholangiocarcinoma); combined hepatocellular carcinoma and cholangiocarcinoma | ancestors: adenocarcinoma, carcinoma of liver and intrahepatic biliary tract, carcinoma, glandular cell neoplasm | def: A rare tumor containing unequivocal elements of both hepatocellular and cholangiocarcinoma that are intimately admixed. This tumor should be distinguished from separate hepatocellular carcinoma and ch...",
+"ko": "간세포암종-담관암종 혼합형",
+"alt": [
+"복합 간세포-담관암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004719",
+"concept": "- MONDO:0004719 | hard palate cancer | syn: cancer of hard palate; hard palate; hard palate cancer; malignant hard palate neoplasm | ancestors: palatal neoplasm, oral cavity cancer, head and neck cancer, head and neck neoplasm | def: A malignant neoplasm involving the hard palate.",
+"ko": "경구개암",
+"alt": [
+"단단입천장암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0020292",
+"concept": "- MONDO:0020292 | congenital anomaly of the great arteries | syn: congenital aorta, aortic arch or pulmonary arteries anomaly | ancestors: congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis",
+"ko": "선천성 대혈관 기형",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0018312",
+"concept": "- MONDO:0018312 | histoplasmosis | syn: darling disease; Histoplasma caused disease or disorder; Histoplasma disease or disorder; Histoplasma infectious disease | ancestors: primary systemic mycosis, systemic mycosis, fungal infectious disease, infectious disease | def: A disease caused by the fungus Histoplasma capsulatum. It primarily affects the lungs but can also occur as a disseminated disease that affects additional organs. The acute respiratory disease has sym...",
+"ko": "히스토플라스마증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008736",
+"concept": "- MONDO:0008736 | peroxisome biogenesis disorder 2B | syn: peroxisome biogenesis disorder 2B; peroxisome biogenesis disorder type 2B | ancestors: peroxisome biogenesis disorder due to PEX5 defect, Zellweger spectrum disorders, developmental anomaly of metabolic origin, peroxisome biogenesis disorder",
+"ko": "퍼옥시좀 생합성 장애 2B",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013817",
+"concept": "- MONDO:0013817 | preeclampsia/eclampsia 5 | syn: CORIN preeclampsia; Corin preeclampsia; preeclampsia caused by mutation in CORIN; preeclampsia caused by mutation in Corin | ancestors: preeclampsia, hereditary disease, toxemia of pregnancy, disease of genetic or genomic mechanism | def: Any preeclampsia in which the cause of the disease is a mutation in the CORIN gene.",
+"ko": "자간전증/자간증 5형",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006838",
+"concept": "- MONDO:0006838 | lupus vulgaris | ancestors: cutaneous tuberculosis, extrapulmonary tuberculosis, skin disease caused by bacterial infection, tuberculosis | def: A form of cutaneous tuberculosis. It is seen predominantly in women and typically involves the nasal mucosa; buccal mucosa; and conjunctival mucosa.",
+"ko": "심상성 낭창",
+"alt": [
+"루푸스 불가리스"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0006362",
+"concept": "- MONDO:0006362 | peritoneal mesothelioma | syn: mesothelioma of peritoneum; mesothelioma of the peritoneum; peritoneal mesothelioma; peritoneal mesothelioma (disease) | ancestors: mesothelioma, peritoneal neoplasm, mesothelial neoplasm, neoplasm | def: A benign or malignant mesothelial neoplasm that arises from the peritoneum.",
+"ko": "복막 중피종",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+}
+]

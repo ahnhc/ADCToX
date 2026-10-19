@@ -1,0 +1,239 @@
+[
+{
+"id": "MONDO:0006680",
+"concept": "- MONDO:0006680 | blue nevus | syn: blue nevus; blue Nevus of skin; blue Nevus of the skin; blue skin Nevus | ancestors: melanocytic nevus, benign neoplasm of skin, melanocytic skin neoplasm, integumentary system benign neoplasm | def: An intradermal nevus characterized by the presence of benign pigmented dendritic spindle-shaped melanocytes. It most frequently occurs in the skin of the distal upper extremities, followed by the lowe...",
+"ko": "청색 모반",
+"alt": [
+"푸른 점"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001538",
+"concept": "- MONDO:0001538 | retinal ischemia | syn: ischaemic disease of retina; ischemic disease of retina; retina ischaemic disease; retina ischemic disease | ancestors: ischemic disease, retinal disorder, neurovascular disorder, vascular disorder | def: A ischemic disease that involves the retina.",
+"ko": "망막 허혈",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001380",
+"concept": "- MONDO:0001380 | bladder dome cancer | syn: cancer of fundus of urinary bladder; fundus of urinary bladder cancer; malignant fundus of urinary bladder neoplasm; malignant neoplasm of dome of urinary bladder | ancestors: urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder | def: Cancer of the upper, convex surface of the bladder.",
+"ko": "방광 천장암",
+"alt": [
+"방광저부암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001014",
+"concept": "- MONDO:0001014 | chronic leukemia | syn: chronic leukaemia (disease); chronic leukemia; chronic leukemia (disease); leukaemia (disease), chronic | ancestors: leukemia, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm, neoplasm | def: A slowly progressing leukemia characterized by a clonal (malignant) proliferation of maturing and mature myeloid cells or mature lymphocytes. When the clonal cellular population is composed of myeloid...",
+"ko": "만성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009255",
+"concept": "- MONDO:0009255 | galactokinase deficiency | syn: galactokinase deficiency; galactokinase deficiency galactosemia; galactokinase deficiency with cataracts; galactosemia type 2 | ancestors: galactosemia, disorder of galactose and fructose metabolism, eye disorder, disorder of galactose metabolism | def: Galactokinase deficiency is a rare mild form of galactosemia characterized by early onset of cataract and an absence of the usual signs of classic galactosemia, i.e. feeding difficulties, poor weight ...",
+"ko": "갈락토키나아제 결핍증",
+"alt": [],
+"organs": [
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002420",
+"concept": "- MONDO:0002420 | tic disorder | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: Disorders characterized by recurrent TICS that may interfere with speech and other activities. Tics are sudden, rapid, nonrhythmic, stereotyped motor movements or vocalizations which may be exacerbate...",
+"ko": "틱 장애",
+"alt": [
+"틱장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0020863",
+"concept": "- MONDO:0020863 | laryngeal diphtheria | syn: laryngeal diphtheria | ancestors: laryngeal disorder, diphtheria, respiratory tract infectious disorder, upper respiratory tract disorder | def: Infection of the larynx by Corynebacterium diphtheriae.",
+"ko": "후두 디프테리아",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005468",
+"concept": "- MONDO:0005468 | hypotensive disorder | syn: hypotension; hypotension (disease) | ancestors: arterial disorder, vascular disorder, cardiovascular disorder, disease by body system or component | def: Blood pressure that is abnormally low.",
+"ko": "저혈압성 질환",
+"alt": [
+"저혈압"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002104",
+"concept": "- MONDO:0002104 | conversion disorder | syn: conversion hysterical neurosis; Functional neurological disorder | ancestors: somatoform disorder, psychiatric disorder, disease by developmental or physiological process, human disease | def: Conversion disorder is a disorder in which a person experiences blindness, paralysis, or other symptoms affecting the nervous system that cannot be explained solely by a physical illness or injury. Sy...",
+"ko": "전환장애",
+"alt": [
+"기능성 신경학적 장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024280",
+"concept": "- MONDO:0024280 | polyarticular arthritis | syn: polyarthritis; polyarticular arthritis | ancestors: arthritic joint disease, bone inflammation disease, arthropathy, inflammatory disease | def: An arthritis affecting five or more separate joints.",
+"ko": "다발관절염",
+"alt": [
+"다관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0005754",
+"concept": "- MONDO:0005754 | epilepsy with generalized tonic-clonic seizures | syn: EGTCA; epilepsy with generalized tonic-clonic seizures alone; grand Mal epilepsy; tonic-clonic epilepsy | ancestors: variable-age onset idiopathic generalized epilepsy syndrome, idiopathic generalized epilepsy, variable age epilepsy syndrome, hereditary generalized epilepsy | def: A generalized tonic-clonic seizure.",
+"ko": "전신 강직간대 발작 뇌전증",
+"alt": [
+"전신 강직간대 발작 간질"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:1030008",
+"concept": "- MONDO:1030008 | mitral valve insufficiency | syn: insufficiency, mitral; mitral insufficiency; mitral valve incompetence; mitral valve insufficiency/ regurgitation | ancestors: mitral valve disorder, heart valve disorder, heart disorder, cardiovascular disorder | def: A mitral valve disorder characterized by incomplete valve closure.",
+"ko": "승모판 폐쇄부전",
+"alt": [
+"승모판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0008608",
+"concept": "- MONDO:0008608 | Down syndrome | syn: Down syndrome; Down syndrome, Isolated cases; Down's syndrome; leukemia, megakaryoblastic, with or without Down syndrome, somatic | ancestors: chromosome 21 disorder, autosomal anomaly, chromosomal disorder, disease of genetic or genomic mechanism | def: Down syndrome is a chromosomal abnormality caused by the presence of a third (partial or total) copy of the chromosome 21 genetic material and that is characterized by variable intellectual disability...",
+"ko": "다운 증후군",
+"alt": [
+"21번 삼염색체증"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:1010100",
+"concept": "- MONDO:1010100 | myxedema coma | ancestors: hypothyroidism, thyroid gland disorder, endocrine system disorder, disease by body system or component | def: A rare complication of hypothyroidism characterized by altered mental status, hypothermia, and symptoms related to the slowing of other organ systems.",
+"ko": "점액부종 혼수",
+"alt": [
+"점액수종 혼수"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005382",
+"concept": "- MONDO:0005382 | bone Paget disease | syn: bone Paget disease; bone Paget's disease; osseous Paget's disease; osteitis deformans | ancestors: hyperostosis, hereditary disease, metabolic bone disorder, bone remodeling disease | def: A disease of bone that initially results in the excessive resorption of bone (by osteoclasts) followed by the replacement of normal bone marrow with vascular and fibrous tissue.",
+"ko": "뼈 파제트병",
+"alt": [
+"파제트병"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0002552",
+"concept": "- MONDO:0002552 | vascular myelopathy | syn: vascular myelopathies | ancestors: spinal cord disorder, central nervous system disorder, nervous system disorder, disease by body system or component",
+"ko": "혈관성 척수병증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003785",
+"concept": "- MONDO:0003785 | leukopenia | syn: leukocytopenia; White blood cell decreased | ancestors: leukocyte disorder, immune system disorder, hematologic disorder, disease by body system or component | def: A laboratory test result indicating a decreased number of white blood cells in the peripheral blood.",
+"ko": "백혈구감소증",
+"alt": [
+"백혈구 감소증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002172",
+"concept": "- MONDO:0002172 | otosalpingitis | syn: Eustachian salpingitis; inflammation of pharyngotympanic tube; pharyngotympanic tube inflammation | ancestors: eustachian tube disorder, otitis media, middle ear disorder, inflammatory disease | def: An inflammatory disease involving a pathogenic inflammatory response in the pharyngotympanic tube.",
+"ko": "유스타키오관염",
+"alt": [
+"이관염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0008660",
+"concept": "- MONDO:0008660 | autosomal dominant hypophosphatemic rickets | syn: ADHR; autosomal dominant hereditary hypophosphatemic rickets; autosomal dominant hypophosphatemia; autosomal dominant hypophosphatemic rickets | ancestors: hereditary hypophosphatemic rickets, autosomal dominant disease, abnormal mineralization disorder, hereditary disease | def: Autosomal dominant hypophosphatemic rickets (ADHR) is a hereditary renal phosphate-wasting disorder characterized by hypophosphatemia, rickets and/or osteomalacia.",
+"ko": "상염색체 우성 저인산혈증 구루병",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006835",
+"concept": "- MONDO:0006835 | minimal change disease | syn: lipoid nephrosis; minimal change disease; minimal change glomerulonephritis; minimal change nephropathy | ancestors: glomerulonephritis, podocytopathy, nephritis, glomerular disorder | def: A glomerular disorder characterized by the electron microscopic finding of loss of podocyte foot processes. Light microscopic examination does not show glomerular changes. Patients present with protei...",
+"ko": "미세변화병",
+"alt": [
+"미세변화 신증후군"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2
+}
+]

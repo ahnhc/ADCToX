@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0018332",
+"concept": "- MONDO:0018332 | multiple acyl-CoA dehydrogenase deficiency, severe neonatal type | syn: glutaric aciduria type 2, severe neonatal type; MAD deficiency, severe neonatal type; MADD, severe neonatal type | ancestors: multiple acyl-CoA dehydrogenase deficiency, glutaric aciduria, inborn mitochondrial metabolism disorder, acyl-CoA dehydrogenase deficiency",
+"ko": "다중 아실-CoA 탈수소효소 결핍증, 중증 신생아형",
+"alt": [
+"글루타르산뇨증 2형, 중증 신생아형"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019027",
+"concept": "- MONDO:0019027 | otopalatodigital syndrome | syn: oto-palatal-digital syndrome; oto-palato-digital syndrome | ancestors: otopalatodigital syndrome spectrum disorder, filamin-related bone disorder, skeletal dysplasia, hereditary disease | def: A form of frontootopalatodigital syndrome, characterized by deafness, cleft palate, and characteristic digital anomalies. OPD syndrome is divided into two forms based on severity: the milder form desi...",
+"ko": "이구개지증후군",
+"alt": [
+"귀-입천장-손가락 증후군"
+],
+"organs": [
+"gastrointestinal",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013174",
+"concept": "- MONDO:0013174 | primary ciliary dyskinesia 13 | syn: CILD13; ciliary dyskinesia, primary, type 13; DNAAF1 primary ciliary dyskinesia; primary ciliary dyskinesia 13 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the DNAAF1 gene.",
+"ko": "일차 섬모운동이상증 13형",
+"alt": [
+"원발 섬모운동이상증 13형"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016591",
+"concept": "- MONDO:0016591 | sporadic adult-onset ataxia of unknown etiology | syn: idiopathic late-onset cerebellar ataxia; SAOA | ancestors: acquired ataxia, atactic disorder, nervous system disorder, disease by body system or component | def: Sporadic adult-onset ataxia of unknown etiology describes a group of non-hereditary degenerative ataxias characterized by a slowly progressive cerebellar syndrome (with ataxia of stance and gait, uppe...",
+"ko": "원인불명 산발성 성인 발병 운동실조",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007688",
+"concept": "- MONDO:0007688 | Myhre syndrome | syn: facial dysmorphism-intellectual disability-short stature-hearing loss syndrome; Myhre syndrome | ancestors: congenital nervous system disorder, multiple congenital anomalies/dysmorphic syndrome-intellectual disability, acromelic dysplasia, autosomal dominant syndromic intellectual disability | def: Myhre syndrome is characterized by striking muscular build, short stature, reduced joint mobility, brachydactyly, mixed hearing loss and mental retardation of variable severity. Facial dysmorphism wit...",
+"ko": "마이어 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0060766",
+"concept": "- MONDO:0060766 | anal polyp | syn: anal polyp; polyp of anus; polyp of the anus | ancestors: anus disorder, polyp of rectum, gastrointestinal polyp, rectal disorder | def: A non-neoplastic or neoplastic polypoid lesion that arises from the anus. Representative examples include the fibroepithelial polyp and squamous papilloma.",
+"ko": "항문 용종",
+"alt": [
+"항문 폴립"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003010",
+"concept": "- MONDO:0003010 | multilocular clear cell renal cell carcinoma | syn: MCRCC; multilocular clear cell adenocarcinoma; multilocular clear cell carcinoma; multilocular clear cell renal cell adenocarcinoma | ancestors: clear cell renal carcinoma, clear cell adenocarcinoma, renal cell adenocarcinoma, nonpapillary renal cell carcinoma | def: A rare type of renal cell carcinoma. It is a well-circumscribed multicystic mass without solid areas. The inner lining of the cystic structures is composed of clear cells.",
+"ko": "다방성 투명세포 신세포암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006190",
+"concept": "- MONDO:0006190 | endolymphatic sac tumor | syn: aggressive papillary tumor of the temporal bone; aggressive papillary tumour of the temporal bone; ELST; endolymphatic sac neoplasm | ancestors: papillary epithelial neoplasm, inner ear neoplasm, epithelial neoplasm, inner ear disorder | def: An aggressive epithelial neoplasm arising from the temporal bone. It is characterized by the presence of a papillary pattern, and has been described as an adenoma or carcinoma in the literature. There...",
+"ko": "내림프낭 종양",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005866",
+"concept": "- MONDO:0005866 | Mycobacterium avium complex disease | syn: Mycobacterium avium Complex; Mycobacterium avium complex caused disease or disorder; Mycobacterium avium complex disease or disorder; Mycobacterium avium complex infectious disease | ancestors: primary bacterial infectious disease, mycobacterial infectious disease, vector-borne disease, bacterial infectious disease | def: An infection that is caused by Mycobacterium avium.",
+"ko": "마이코박테리움 아비움 복합체 질환",
+"alt": [
+"비결핵항산균 질환"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004899",
+"concept": "- MONDO:0004899 | monofixation syndrome | syn: microstrabismus; microtropia | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "단일 고정 증후군",
+"alt": [
+"미세사시"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0012164",
+"concept": "- MONDO:0012164 | Meacham syndrome | syn: Meacham syndrome; Meacham-Winn-Culler syndrome; Rhabdomyomatous dysplasia-cardiopathy-genital anomalies syndrome | ancestors: syndromic disease, hereditary disease, 46 XY differences of sex development, disease by body system or component | def: Meacham syndrome is a multiple malformation syndrome characterized by congenital diaphragmatic abnormalities, genital defects and cardiac malformations.",
+"ko": "미첨 증후군",
+"alt": [
+"미첨-윈-쿨러 증후군"
+],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001461",
+"concept": "- MONDO:0001461 | tinea corporis | ancestors: dermatophytosis, tinea infection, superficial mycosis, cutaneous mycosis | def: A dermatophyte disease of the glabrous skin, excluding the scalp, beard, face, hands, feet, and groin.",
+"ko": "체부백선",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005619",
+"concept": "- MONDO:0005619 | typhoid fever | syn: typhoid; typhoid fever; typhoidal salmonellosis | ancestors: salmonellosis, primary bacterial infectious disease, bacterial infectious disease, infectious disease | def: A bacterial infectious disorder contracted by consumption of food or drink contaminated with Salmonella typhi. This disorder is common in developing countries and can be treated with antibiotics.",
+"ko": "장티푸스",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0020325",
+"concept": "- MONDO:0020325 | anaplastic large cell lymphoma | syn: ALCL; anaplastic large cell lymphoma; CD30 Positive anaplastic large cell lymphoma; CD30 positive anaplastic large cell lymphoma | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm | def: Anaplastic large cell lymphoma (ALCL) is a rare and aggressive peripheral T-cell non-Hodgkin lymphoma, belonging to the group of CD30-positive lymphoproliferative disorders, which affects lymph nodes ...",
+"ko": "역형성 대세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:8000000",
+"concept": "- MONDO:8000000 | infectious discitis | ancestors: vertebral joint disorder, infective arthritis, vertebral column disorder, arthropathy | def: An infection of the intervertebral disk space.",
+"ko": "감염성 추간판염",
+"alt": [
+"감염성 디스키티스"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0024431",
+"concept": "- MONDO:0024431 | bilirubin metabolism disease | syn: disorder of bilirubin metabolism | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease",
+"ko": "빌리루빈 대사 질환",
+"alt": [
+"빌리루빈 대사 장애"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001481",
+"concept": "- MONDO:0001481 | femoral vein thrombophlebitis | syn: femoral vein thrombophlebitis; phlebitis and thrombophlebitis of femoral vein; phlebitis and thrombophlebitis of femoral vein (deep) (superficial); thrombophlebitis of femoral vein | ancestors: thrombophlebitis, phlebitis, vein disorder, vasculitis | def: A thrombophlebitis that involves the femoral vein.",
+"ko": "대퇴정맥 혈전정맥염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019360",
+"concept": "- MONDO:0019360 | rickettsialpox | syn: vesicular rickettsiosis | ancestors: spotted fever, Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis",
+"ko": "리케치아두창",
+"alt": [
+"수포성 리케치아증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0021517",
+"concept": "- MONDO:0021517 | benign neoplasm of trachea | syn: benign neoplasm of the trachea; benign trachea neoplasm; benign trachea tumor; benign trachea tumour | ancestors: respiratory system benign neoplasm, trachea neoplasm, respiratory system disorder, benign neoplasm | def: A benign neoplasm that involves the trachea.",
+"ko": "기관 양성 신생물",
+"alt": [
+"기관 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001705",
+"concept": "- MONDO:0001705 | pure red-cell aplasia | syn: PRCA; pure red cell aplasia; Pure Red Cell Aplasia, Acquired | ancestors: anemia, hematologic disorder, disease by body system or component, human disease | def: A disease characterized by normocytic, normochromic anemia, low hematocrit, reticulocytopenia, and selective erythroid hypoplasia.",
+"ko": "순수 적혈구 무형성증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+}
+]

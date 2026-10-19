@@ -1,0 +1,237 @@
+[
+{
+"id": "MONDO:0003816",
+"concept": "- MONDO:0003816 | articular cartilage disorder | syn: articular cartilage disorder; articular cartilage of joint disease; articular cartilage of joint disease or disorder; disease of articular cartilage of joint | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: A disease involving the articular cartilage of joint.",
+"ko": "관절연골 질환",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0001371",
+"concept": "- MONDO:0001371 | protein-energy malnutrition | syn: Protein energy malnutrition | ancestors: nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism, human disease | def: A nutritional deficit that is caused by inadequate protein or calorie intake.",
+"ko": "단백질-에너지 영양실조",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0005272",
+"concept": "- MONDO:0005272 | myelodysplastic syndrome with single lineage dysplasia | syn: MDS with single lineage dysplasia; MDS-SLD; RA; refractory anaemia | ancestors: myelodysplastic syndrome, myeloid hemopathy, neoplastic syndrome, hematopoietic and lymphoid system neoplasm | def: A myelodysplastic syndrome characterized by dysplasia seen in at least 10% of the early cells of 1 cell type (either red blood cells, white blood cells, or megakaryocytes) in the bone marrow.",
+"ko": "단일계열 이형성을 동반한 골수형성이상증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005276",
+"concept": "- MONDO:0005276 | dental caries | ancestors: tooth hard tissue disease, tooth disorder, skeletal system disorder, mouth disorder | def: The decay of a tooth, in which it becomes softened, discolored, and/or porous.",
+"ko": "치아우식증",
+"alt": [
+"충치"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0002639",
+"concept": "- MONDO:0002639 | glossopharyngeal nerve disorder | syn: disease of glossopharyngeal nerve; disease or disorder of glossopharyngeal nerve; disorder of glossopharyngeal nerve; glossopharyngeal nerve disease | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the glossopharyngeal nerve.",
+"ko": "혀인두신경 질환",
+"alt": [
+"설인신경 질환"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009414",
+"concept": "- MONDO:0009414 | glycogen storage disorder due to hepatic glycogen synthase deficiency | syn: glycogen storage disease due to glycogen synthase deficiency of liver; glycogen storage disease due to hepatic glycogen synthase deficiency; glycogen storage disease due to liver glycogen synthase deficiency; glycogen storage disease type 0a | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: Glycogen synthetase deficiency, or glycogen storage disease (GSD) type 0, is a genetically inherited anomaly of glycogen metabolism and a form of GSD characterized by fasting hypoglycemia. This is not...",
+"ko": "간 글리코겐 합성효소 결핍에 의한 글리코겐 저장병",
+"alt": [
+"글리코겐 저장병 0형"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020648",
+"concept": "- MONDO:0020648 | rubella encephalitis | ancestors: postinfectious encephalitis, post-viral disorder, infectious encephalitis, post-infectious disorder",
+"ko": "풍진뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0008228",
+"concept": "- MONDO:0008228 | pernicious anemia | syn: acquired pernicious anaemia; acquired pernicious anemia; Addison anaemia; Addison anemia | ancestors: megaloblastic anemia, hereditary disease, nutritional deficiency disease, macrocytic anemia | def: Megaloblastic anemia caused by vitamin B-12 deficiency due to impaired absorption. The impaired absorption of vitamin B-12 is secondary to atrophic gastritis and loss of gastric parietal cells.",
+"ko": "악성빈혈",
+"alt": [
+"후천성 악성빈혈"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000987",
+"concept": "- MONDO:0000987 | cholesterolosis of gallbladder | syn: strawberry gallbladder | ancestors: gallbladder disorder, hepatobiliary disorder, digestive system disorder, disease by body system or component | def: A disorder characterized by a change in the gallbladder wall due to excess cholesterol.",
+"ko": "담낭 콜레스테롤증",
+"alt": [
+"딸기 담낭"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015987",
+"concept": "- MONDO:0015987 | scimitar syndrome | syn: congenital pulmonary venolobar syndrome; Epibronchial right pulmonary vein syndrome; Halasz syndrome; hypogenetic lung syndrome | ancestors: congenital pulmonary venous return anomaly, congenital anomaly of the great arteries, syndromic congenital heart disease, congenital pulmonary veins anomaly | def: Scimitar syndrome is characterized by a combination of cardiopulmonary anomalies including partial anomalous pulmonary venous return connection of the right lung to the inferior caval vein leading to ...",
+"ko": "언월도 증후군",
+"alt": [
+"선천성 폐정맥엽 증후군"
+],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020767",
+"concept": "- MONDO:0020767 | cauda equina syndrome with neurogenic bladder | syn: cauda equina syndrome with neurogenic bladder | ancestors: cauda equina syndrome, syndromic disease, peripheral nervous system disorder, disease by body system or component | def: A rare neurologic disorder caused by impingement of the nerve roots of the cauda equina secondary to disk herniation, spinal stenosis, vertebral fracture, neoplasm or infection. Clinical signs may inc...",
+"ko": "신경인성 방광을 동반한 마미 증후군",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006015",
+"concept": "- MONDO:0006015 | Waterhouse-Friderichsen syndrome | syn: meningococcal hemorrhagic adrenalitis; WFS | ancestors: syndromic disease, acute adrenal insufficiency, disease by body system or component, primary adrenal insufficiency | def: A serious disorder characterized by massive adrenal gland hemorrhage secondary to a bacterial infection, most often Neisseria meningitidis infection. It is manifested with decreased blood pressure, sh...",
+"ko": "워터하우스-프리데릭센 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0004871",
+"concept": "- MONDO:0004871 | perianal hematoma | syn: external thrombosed hemorrhoids; Thrombosed external haemorrhoids | ancestors: hemorrhoid, pelvic varices, varicose disease, vein disorder",
+"ko": "항문주위 혈종",
+"alt": [
+"혈전성 외치핵"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005576",
+"concept": "- MONDO:0005576 | cryoglobulinemia | syn: cryoglobulinemia | ancestors: type IV hypersensitivity disease, autoimmune disease, hypersensitivity reaction disease, immune system disorder | def: Cryoglobulinemia is a type of vasculitis that is caused by abnormal proteins (antibodies) in the blood called 'cryoglobulins.' At cold temperatures, these proteins become solid or gel-like, which can ...",
+"ko": "한랭글로불린혈증",
+"alt": [
+"냉글로불린혈증"
+],
+"organs": [
+"haematologic",
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001904",
+"concept": "- MONDO:0001904 | polyneuropathy due to drug | ancestors: toxic polyneuropathy, polyneuropathy, peripheral neuropathy, peripheral nervous system disorder",
+"ko": "약물 유발 다발신경병증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015197",
+"concept": "- MONDO:0015197 | aneurysm of sinus of Valsalva | ancestors: aortic disorder, disorder of development or morphogenesis, arterial disorder, disease by developmental or physiological process | def: Sinus of Valsalva aneurysm (SVA) is a rare congenital heart malformation of one or more of the aortic sinuses, consisting of a dilation that when unruptured is usually asymptomatic but when ruptured p...",
+"ko": "발살바동 동맥류",
+"alt": [
+"발살바굴 동맥류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008830",
+"concept": "- MONDO:0008830 | aspartylglucosaminuria | syn: aspartylglucosaminidase deficiency; aspartylglucosaminuria; Aspartylglycosaminuria; aspartylglycosaminuria | ancestors: oligosaccharidosis, lysosomal storage disease with skeletal involvement, developmental anomaly of metabolic origin, glycoproteinosis | def: Aspartylglycosaminuria (AGU) is an autosomal recessive lysosomal storage disease belonging to the oligosaccharidosis group (also called glycoproteinosis).",
+"ko": "아스파르틸글루코사민뇨증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020669",
+"concept": "- MONDO:0020669 | paranasal sinus cancer | syn: malignant accessory sinus neoplasm; malignant accessory sinus tumor; malignant accessory sinus tumour; malignant neoplasm of accessory sinus | ancestors: respiratory system cancer, sensory system cancer, skull cancer, paranasal sinus neoplasm | def: A primary or metastatic malignant neoplasm involving the paranasal sinuses.",
+"ko": "부비동암",
+"alt": [
+"코곁굴암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002089",
+"concept": "- MONDO:0002089 | retinal vascular occlusion | syn: retinal vascular occlusion; retinal vascular occlusion, unspecified | ancestors: retinal vascular disorder, vascular occlusion disorder, retinal disorder, ocular vascular disorder | def: An occlusion of the retinal vasculature.",
+"ko": "망막혈관 폐쇄",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002099",
+"concept": "- MONDO:0002099 | Histoplasma capsulatum infectious disease | syn: Histoplasma capsulatum caused disease or disorder; Histoplasma capsulatum disease or disorder; infection by Histoplasma capsulatum | ancestors: histoplasmosis, primary systemic mycosis, systemic mycosis, fungal infectious disease | def: An disease or disorder caused by infection with Histoplasma capsulatum.",
+"ko": "Histoplasma capsulatum 감염병",
+"alt": [
+"히스토플라스마 감염병"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+}
+]

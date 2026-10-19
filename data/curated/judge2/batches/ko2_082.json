@@ -1,0 +1,235 @@
+[
+{
+"id": "MONDO:0001061",
+"concept": "- MONDO:0001061 | pylorus cancer | syn: cancer of pylorus; malignant neoplasm of Prepylorus; malignant neoplasm of pylorus; malignant pylorus neoplasm | ancestors: gastric cancer, digestive system cancer, gastric neoplasm, digestive system disorder | def: A malignant neoplasm involving the pylorus.",
+"ko": "유문부 암",
+"alt": [
+"유문암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0016489",
+"concept": "- MONDO:0016489 | delta-beta-thalassemia | ancestors: beta-thalassemia and related diseases, anemia, inherited hemoglobinopathy, hematologic disorder | def: Delta-beta-thalassemia is a form of beta-thalassemia characterized by decreased or absent synthesis of the delta- and beta-globin chains with a compensatory increase in expression of fetal gamma-chain...",
+"ko": "델타-베타지중해빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006998",
+"concept": "- MONDO:0006998 | tonsil cancer | syn: malignant neoplasm of the tonsil; malignant neoplasm of tonsil; malignant tonsil neoplasm; malignant tonsil tumor | ancestors: Waldeyer's ring cancer, tonsil neoplasm, immune system cancer, oropharynx cancer | def: A primary or metastatic malignant neoplasm that affects the tonsil.",
+"ko": "편도암",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0018473",
+"concept": "- MONDO:0018473 | hyperlipoproteinemia type 3 | syn: Broad-betalipoproteinemia; dyslipidaemia type 3; dyslipidemia type 3; familial dysbetalipoproteinemia | ancestors: familial hyperlipidemia, inherited lipid metabolism disorder, hyperlipidemia, inborn errors of metabolism | def: Hyperlipoproteinemia (HLP) type 3 is a rare combined hyperlipidemia characterized by high levels of cholesterol and triglycerides, transported by intermediate density lipoproteins (IDLs), and a high r...",
+"ko": "고지단백혈증 3형",
+"alt": [
+"이상베타지단백혈증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017734",
+"concept": "- MONDO:0017734 | sialidosis | ancestors: oligosaccharidosis, developmental anomaly of metabolic origin, glycoproteinosis, inborn carbohydrate metabolic disorder | def: Sialidosis is a lysosomal storage disease, belonging to the group of oligosaccharidoses or glycoproteinoses, with a wide clinical spectrum that is divided into two main clinical subtypes: sialidosis t...",
+"ko": "시알리다제증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019433",
+"concept": "- MONDO:0019433 | oligoarticular juvenile idiopathic arthritis | syn: Oligoarticular JIA; Pauciarticular chronic arthritis; Pauciarticular JIA; Pauciarticular juvenile idiopathic arthritis | ancestors: juvenile idiopathic arthritis, rheumatic disorder, arthritic joint disease, idiopathic disease | def: Oligoarticular juvenile arthritis is the most common form of juvenile idiopathic arthritis (JIA), representing nearly 50% of cases.",
+"ko": "소수관절형 소아 특발성 관절염",
+"alt": [
+"소관절형 소아 특발성 관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0024644",
+"concept": "- MONDO:0024644 | myocardial ischemia | syn: IHD; ischaemic disease of myocardium; ischaemic heart disease; ischemic disease of myocardium | ancestors: ischemic disease, myocardial disorder, vascular disorder, heart disorder | def: A disorder of cardiac function caused by insufficient blood flow to the muscle tissue of the heart. The decreased blood flow may be due to narrowing of the coronary arteries (coronary artery disease),...",
+"ko": "심근허혈",
+"alt": [
+"허혈성 심장질환"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0019509",
+"concept": "- MONDO:0019509 | cutaneous leukocytoclastic angiitis | syn: cutaneous hypersensitivity vasculitis; cutaneous leukocytoclastic vasculitis; cutaneous small vessel vasculitis; cutaneous small-vessel vasculitis | ancestors: immune complex mediated vasculitis, vasculitis, vascular disorder, inflammatory disease | def: Cutaneous leukocytoclastic angiitis is a small-vessel vasculitis presenting with palpable purpura and urticarial lesions which predate the purpuric lesions most frequently observed on the legs. System...",
+"ko": "피부 백혈구파괴혈관염",
+"alt": [
+"피부 과민성 혈관염"
+],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0022697",
+"concept": "- MONDO:0022697 | athetoid cerebral palsy | syn: athetoid cerebral palsy; dyskinetic cerebral palsy | ancestors: cerebral palsy, palsy, cerebral cortex disorder, central nervous system disorder | def: A subtype of cerebral palsy characterized by involuntary, purposeless writhing movements which affect the hands, feet, arms, and legs; the face and tongue may be affected as well, leading to involunta...",
+"ko": "무정위운동형 뇌성마비",
+"alt": [
+"이상운동형 뇌성마비"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009412",
+"concept": "- MONDO:0009412 | scurvy | syn: ascorbic acid deficiency; deficiency of vitamin C; scurvy; vitamin C deficiency | ancestors: vitamin deficiency disorder, carbohydrate metabolism disease, nutritional deficiency disease, metabolic disease | def: A condition that develops in people who do not consume an adequate amount of vitamin C in their diet. Although scurvy is relatively rare in the United States, it continues to be a problem in malnouris...",
+"ko": "괴혈병",
+"alt": [
+"비타민 C 결핍증"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0004812",
+"concept": "- MONDO:0004812 | acute dacryoadenitis | syn: dacryoadenitis, acute | ancestors: dacryoadenitis, acute disease, inflammatory disease, disorder of lacrimal gland | def: Acute form of dacryoadenitis.",
+"ko": "급성 눈물샘염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020326",
+"concept": "- MONDO:0020326 | lymphomatoid papulosis | syn: LyP | ancestors: primary cutaneous CD30+ T-cell lymphoproliferative disease, indolent primary cutaneous T-cell lymphoma, primary cutaneous T-cell lymphoma, T-cell non-Hodgkin lymphoma | def: Lymphomatoid papulosis (LyP) is a rare cutaneous condition characterized by chronic, recurrent, and self-regressing papulonodular skin eruptions. It belongs to the spectrum of primary cutaneous CD30+ ...",
+"ko": "림프종양 구진증",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019464",
+"concept": "- MONDO:0019464 | heavy chain disease | syn: HCD; heavy chain disease | ancestors: plasma cell neoplasm, neoplasm of mature B-cells, B-cell neoplasm, leukocyte disorder | def: Heavy-chain diseases (HCDs) are rare monoclonal lymphoplasma-cell proliferative disorders involving B cells and are characterized by the synthesis of truncated heavy chains without associated light ch...",
+"ko": "중쇄병",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001138",
+"concept": "- MONDO:0001138 | angiodysplasia of intestine | syn: intestine angiodysplasia | ancestors: angiodysplasia, intestinal disorder, vascular disorder, digestive system disorder | def: A angiodysplasia that involves the intestine.",
+"ko": "장 혈관이형성증",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005593",
+"concept": "- MONDO:0005593 | chronic periodontitis | syn: periodontitis, chronic | ancestors: periodontitis, periodontal disorder, inflammatory disease, skeletal system disorder | def: A chronic inflammatory process that affects the tissues that surround and support the teeth.",
+"ko": "만성 치주염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0024685",
+"concept": "- MONDO:0024685 | Philadelphia-positive myelogenous leukemia | syn: Ph1-positive granulocytic leukaemia; Ph1-positive granulocytic leukemia; Ph1-positive myelocytic leukaemia; Ph1-positive myelocytic leukemia | ancestors: myeloid leukemia, leukemia, myeloproliferative neoplasm, hematopoietic and lymphoid cell neoplasm",
+"ko": "필라델피아 염색체 양성 골수성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015254",
+"concept": "- MONDO:0015254 | schistosomiasis | syn: Bilharzia; bilharziasis; schistosomiasis; snail fever | ancestors: helminthiasis, vector-borne disease, parasitic infectious disease, infectious disease | def: An infectious disease caused by parasitic trematodes of the genus Schistosoma that colonize human blood vessels and release eggs that can cause granulomatous reactions leading to acute (swimmer's itch...",
+"ko": "주혈흡충증",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0011340",
+"concept": "- MONDO:0011340 | congenital tracheal stenosis | ancestors: otorhinolaryngologic disease, disease by body system or component, human disease, disease",
+"ko": "선천성 기관 협착증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005723",
+"concept": "- MONDO:0005723 | Cryptococcal meningitis | syn: Cryptococcus neoformans caused infectious meningitis; Cryptococcus neoformans infectious meningitis | ancestors: cryptococcosis, fungal meningitis, opportunistic mycosis, parasitic infectious disease | def: Meningeal inflammation produced by cryptococcus neoformans, an encapsulated yeast that tends to infect individuals with acquired immunodeficiency syndrome and other immunocompromised states. The organ...",
+"ko": "크립토코쿠스 뇌수막염",
+"alt": [
+"크립토콕쿠스 수막염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001873",
+"concept": "- MONDO:0001873 | geniculate ganglionitis | syn: geniculate ganglion inflammation; geniculate ganglionitis; inflammation of geniculate ganglion | ancestors: facial nerve disorder, inflammatory disease, sensory ganglionopathy, cranial nerve neuropathy | def: Diseases of the facial nerve or nuclei. Pontine disorders may affect the facial nuclei or nerve fascicle. The nerve may be involved intracranially, along its course through the petrous portion of the ...",
+"ko": "무릎신경절염",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 1
+}
+]

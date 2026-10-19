@@ -1,0 +1,238 @@
+[
+{
+"id": "MONDO:0000432",
+"concept": "- MONDO:0000432 | lymphoplasmacytic lymphoma | syn: Immunocytoma, lymphoplasmacytic type; lymphoma, lymphoplasmacytic, malignant; lymphoma, plasmacytic; lymphoplasmacytic lymphoma | ancestors: B-cell neoplasm, leukocyte disorder, lymphoma, immune system disorder | def: A clonal neoplasm of small B-lymphocytes, lymphoplasmacytoid cells, and plasma cells involving the bone marrow, lymph nodes, and the spleen. The majority of patients have a serum IgM paraprotein.",
+"ko": "림프형질세포림프종",
+"alt": [
+"림프형질세포성 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000437",
+"concept": "- MONDO:0000437 | cerebellar ataxia | syn: ataxia syndrome; cerebellar ataxias; spinocerebellar ataxia; spinocerebellar degeneration | ancestors: movement disorder, cerebellar degeneration, atactic disorder, nervous system disorder | def: A neurological syndrome characterized by clumsy and uncoordinated movement of the limbs, trunk, and cranial muscles. It results from pathology in the cerebellum and its connections, or in the proprioc...",
+"ko": "소뇌성 운동실조",
+"alt": [
+"소뇌실조"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017598",
+"concept": "- MONDO:0017598 | primary cutaneous anaplastic large cell lymphoma | syn: ALCL, cutaneous; anaplastic large-cell lymphoma, primary cutaneous type; C-ALCL; primary anaplastic large cell lymphoma of skin | ancestors: primary cutaneous T-cell non-Hodgkin lymphoma, primary cutaneous CD30+ T-cell lymphoproliferative disease, anaplastic large cell lymphoma, anaplastic cancer | def: Primary cutaneous anaplastic large cell lymphoma (C-ALCL) is a rare T-cell non-Hodgkin lymphoma that affects the skin and generally shows no extracutaneous involvement at presentation. It belongs to t...",
+"ko": "원발성 피부 역형성 대세포 림프종",
+"alt": [
+"피부 ALCL"
+],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001719",
+"concept": "- MONDO:0001719 | gonococcal bursitis | syn: Neisseria gonorrhoeae bursitis; Neisseria gonorrhoeae caused bursitis | ancestors: bursitis, gonorrhea, arthropathy, inflammatory disease | def: An bursitis caused by infection with Neisseria gonorrhoeae.",
+"ko": "임균성 점액낭염",
+"alt": [
+"淋菌性 점액낭염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 40
+},
+{
+"id": "MONDO:0043510",
+"concept": "- MONDO:0043510 | brain injury | syn: brain injury; injury of brain | ancestors: brain disorder, nervous system injury, central nervous system disorder, nervous system disorder | def: Acute and chronic (see also brain INJURIES, CHRONIC) injuries to the brain, including the cerebral hemispheres, CEREBELLUM, and brain STEM. Clinical manifestations depend on the nature of injury. Diff...",
+"ko": "뇌 손상",
+"alt": [
+"뇌손상"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005045",
+"concept": "- MONDO:0005045 | hypertrophic cardiomyopathy | syn: hypertrophic cardiomyopathy; hypertrophic subaortic stenosis; obstructive hypertrophic cardiomyopathy | ancestors: intrinsic cardiomyopathy, cardiomyopathy, muscle tissue disorder, heart disorder | def: A condition in which the myocardium is hypertrophied without an obvious cause. The hypertrophy is generally asymmetric and may be associated with obstruction of the ventricular outflow tract.",
+"ko": "비대 심근병증",
+"alt": [
+"비후성 심근병증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001909",
+"concept": "- MONDO:0001909 | renal tubular acidosis | ancestors: acidosis disorder, renal tubular transport disease, renal tubule disorder, disorder of acid-base balance | def: A group of genetic disorders of the kidney tubules characterized by the accumulation of metabolically produced acids with elevated plasma chloride, hyperchloremic metabolic acidosis. Defective renal a...",
+"ko": "신세뇨관산증",
+"alt": [
+"세뇨관 산증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004614",
+"concept": "- MONDO:0004614 | chronic monocytic leukemia | syn: monocytic leukemia, chronic | ancestors: chronic leukemia, monocytic leukemia, leukemia, hematopoietic and lymphoid cell neoplasm | def: Form of leukemia characterized by an uncontrolled proliferation of the myeloid lineage and their precursors (myeloid progenitor cells) in the bone marrow and other sites.",
+"ko": "만성 단핵구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019378",
+"concept": "- MONDO:0019378 | la Crosse encephalitis | syn: Californian encephalitis; La Crosse virus caused infectious encephalitis; La Crosse virus infectious encephalitis | ancestors: mosquito-borne viral encephalitis, Bunyaviridae infectious disease, viral encephalitis, vector-borne disease | def: La Crosse encephalitis (CE) is an acute arboviral infection caused by the La Crosse bunyavirus transmitted by an infected mosquito, usually observed in infants, children or adolescents (6 months to 16...",
+"ko": "라크로스 뇌염",
+"alt": [
+"캘리포니아 뇌염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001720",
+"concept": "- MONDO:0001720 | gonococcal synovitis | syn: gonococcal synovitis and tenosynovitis | ancestors: synovitis, gonococcal infection of joint, connective tissue disorder, arthritic joint disease | def: An synovitis (disease) caused by infection with Neisseria gonorrhoeae.",
+"ko": "임균성 윤활막염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018309",
+"concept": "- MONDO:0018309 | Hirschsprung disease | syn: aganglionic megacolon; congenital intestinal aganglionosis; congenital megacolon; Hirschsprung disease | ancestors: hereditary disease, intestinal motility disease, neurocristopathy, disease of genetic or genomic mechanism | def: Hirschsprung disease (HSCR) is a congenital intestinal motility disorder that is characterized by signs of intestinal obstruction due to the presence of an aganglionic segment of variable extent in th...",
+"ko": "히르슈슈프룽병",
+"alt": [
+"선천성 거대결장",
+"무신경절 거대결장"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001149",
+"concept": "- MONDO:0001149 | microcephaly | syn: microcephalus; microcephaly; microcephaly (disease); microencephaly | ancestors: disorder of development or morphogenesis, neurodevelopmental disorder, disease by developmental or physiological process, nervous system disorder | def: A congenital or acquired developmental disorder in which the circumference of the head is smaller than normal for the person's age and sex.",
+"ko": "소두증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024686",
+"concept": "- MONDO:0024686 | tenosynovial giant cell tumor, diffuse type | syn: diffuse giant cell neoplasm of tendon sheath; diffuse giant cell neoplasm of Tenosynovium; diffuse giant cell neoplasm of the Tenosynovium; diffuse giant cell tumor of tendon sheath | ancestors: tenosynovial giant cell tumor, benign synovial neoplasm, giant cell tumor, synovium neoplasm | def: A locally aggressive, diffusely infiltrating tumor, arising in the tendon sheath. It is composed of synovial-like mononuclear cells, hemosiderin-laden macrophages, foam cells, and inflammatory cells. ...",
+"ko": "힘줄집 거대세포종 미만형",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0000875",
+"concept": "- MONDO:0000875 | adult acute monocytic leukemia | syn: acute monocytic leukaemia of adults; acute monocytic leukemia of adults; adult acute differentiated monocytic leukaemia (M5b); adult acute differentiated monocytic leukemia (M5b) | ancestors: acute monocytic leukemia, monocytic leukemia, acute myeloid leukemia, leukemia | def: A acute monocytic leukemia that occurs in an adult.",
+"ko": "성인 급성 단핵구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0017991",
+"concept": "- MONDO:0017991 | Takayasu arteritis | syn: aortic arch arteritis; aortic arch syndrome; Arteritis, Takayasu; cervical aortic arch | ancestors: syndromic disease, aortic arch defects, disorder of pharynx, arteritis | def: A rare inflammatory large-vessel vasculitis primarily affecting the aorta and its major branches, but also other large vessels, causing stenosis, occlusion, or aneurysm.",
+"ko": "타카야스 동맥염",
+"alt": [
+"대동맥궁 동맥염"
+],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001031",
+"concept": "- MONDO:0001031 | purulent acute otitis media | syn: acute suppurative otitis media; suppurative otitis media, acute | ancestors: suppurative otitis media, acute disease, otitis media, human disease | def: Acute form of suppurative otitis media.",
+"ko": "화농성 급성 중이염",
+"alt": [
+"급성 화농성 중이염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0008336",
+"concept": "- MONDO:0008336 | pterygium colli, isolated | syn: pterygium colli, isolated | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "단독 목갈퀴",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001952",
+"concept": "- MONDO:0001952 | parietal lobe cancer | syn: cancer of parietal lobe; malignant neoplasm of parietal lobe; malignant parietal lobe neoplasm; parietal lobe cancer | ancestors: cerebral hemisphere cancer, neoplasm of parietal lobe, supratentorial cancer, neoplasm of cerebral hemisphere | def: A malignant neoplasm involving the parietal lobe",
+"ko": "두정엽암",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008810",
+"concept": "- MONDO:0008810 | familial apolipoprotein C-II deficiency | syn: familial apoC-II deficiency; familial apolipoprotein C-II deficiency; hyperlipoproteinemia, type IB | ancestors: familial hyperlipidemia, syndromic dyslipidemia, familial chylomicronemia syndrome, inherited lipid metabolism disorder",
+"ko": "가족성 아포지단백 C-II 결핍증",
+"alt": [
+"고지단백혈증 IB형"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008006",
+"concept": "- MONDO:0008006 | Moebius syndrome | syn: MBS; Mobius syndrome; Moebius sequence; Moebius Syndrome | ancestors: facial nerve disorder, syndromic disease, congenital nervous system disorder, nuclear oculomotor paralysis | def: A very rare congenital cranial dysinnervation disorder characterized by unilateral or bilateral non progressive congenital facial palsy (VII cranial nerve) with impairments of ocular abduction (VI cra...",
+"ko": "뫼비우스 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+}
+]

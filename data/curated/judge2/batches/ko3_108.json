@@ -1,0 +1,253 @@
+[
+{
+"id": "MONDO:0010643",
+"concept": "- MONDO:0010643 | acute leukemia | syn: acute leukaemia (disease); acute leukemia; acute leukemia (disease) | ancestors: leukemia, acute disease, hematopoietic and lymphoid cell neoplasm, human disease | def: A clonal (malignant) hematopoietic disorder with an acute onset, affecting the bone marrow and the peripheral blood. The malignant cells show minimal differentiation and are called blasts, either myel...",
+"ko": "급성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012865",
+"concept": "- MONDO:0012865 | Pseudofolliculitis barbae | syn: Pseudofolliculitis barbae | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "수염 가성모낭염",
+"alt": [
+"가성모낭염"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0021530",
+"concept": "- MONDO:0021530 | benign neoplasm of subglottis | syn: benign neoplasm of the subglottis; benign subglottic neoplasm; benign subglottic tumor; benign subglottic tumour | ancestors: subglottis neoplasm, benign laryngeal neoplasm, laryngeal neoplasm, respiratory system benign neoplasm | def: A benign neoplasm that involves the subglottis.",
+"ko": "성문하부 양성 신생물",
+"alt": [
+"성문하 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010134",
+"concept": "- MONDO:0010134 | Pendred syndrome | syn: deafness with goiter; deafness with goitre; goiter-deafness syndrome; hypothyroidism, congenital, due to dyshormonogenesis, 2B | ancestors: syndromic disease, autosomal recessive disease, familial thyroid dyshormonogenesis, disease by body system or component | def: Pendred syndrome (PDS) is a clinically variable genetic disorder characterized by bilateral sensorineural hearing loss and euthyroid goiter.",
+"ko": "펜드레드 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003308",
+"concept": "- MONDO:0003308 | pleural mesothelioma | syn: mesothelioma of pleura; mesothelioma of the pleura; pleura mesothelioma; pleural mesothelioma | ancestors: mesothelioma, pleural neoplasm, mesothelial neoplasm, pleural disorder | def: A neoplasm that arises from the mesothelial cells of the pleura. The primary cause is exposure to asbestos. The major histologic variants are the epithelioid malignant mesothelioma, desmoplastic malig...",
+"ko": "흉막 중피종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001540",
+"concept": "- MONDO:0001540 | bagassosis | syn: bagasse extrinsic allergic alveolitis; bagasse workers lung; extrinsic allergic alveolitis from bagasse | ancestors: hypersensitivity pneumonitis, occupational lung disease, allergic respiratory disease, interstitial lung disease | def: An occupational lung disorder caused by inhalation of bagasse dust. In the acute phase, it manifests as cough, dyspnea, fever, chills, and weakness. Chronic exposure may lead to interstitial lung fibr...",
+"ko": "바가스폐증",
+"alt": [
+"사탕수수폐증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006215",
+"concept": "- MONDO:0006215 | gallbladder adenocarcinoma | syn: adenocarcinoma of gallbladder; adenocarcinoma of the gallbladder; gall bladder adenocarcinoma; gallbladder adenocarcinoma | ancestors: gallbladder carcinoma, adenocarcinoma, gallbladder cancer, digestive system carcinoma | def: A carcinoma that arises from glandular epithelial cells of the gall bladder.",
+"ko": "담낭 선암",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018583",
+"concept": "- MONDO:0018583 | human infection by orthopoxvirus | ancestors: viral infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism",
+"ko": "오르소폭스바이러스 감염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004293",
+"concept": "- MONDO:0004293 | supraglottis squamous cell carcinoma | syn: epidermoid carcinoma of supraglottis; epidermoid carcinoma of the supraglottis; squamous cell carcinoma of supraglottis; squamous cell carcinoma of the supraglottis | ancestors: carcinoma of supraglottis, laryngeal squamous cell carcinoma, supraglottis cancer, laryngeal carcinoma | def: A squamous cell carcinoma of the larynx that arises from the supraglottic area. Signs and symptoms include dysphagia, a sensation of foreign body in the throat, and hemoptysis. It spreads to the space...",
+"ko": "성문상부 편평세포암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018621",
+"concept": "- MONDO:0018621 | lymphoplasmacytic lymphoma without IgM production | syn: lymphoplasmacytic lymphoma without Immunoglobulin M production | ancestors: indolent B-cell non-Hodgkin lymphoma, B-cell non-Hodgkin lymphoma, B-cell neoplasm, non-Hodgkin lymphoma",
+"ko": "IgM 비분비 림프형질세포림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005761",
+"concept": "- MONDO:0005761 | filarial elephantiasis | syn: eyelid elephantiasis; Lymphatic Filariasis | ancestors: parasitic eyelid infestation, elephantiasis, filariasis, vector-borne disease | def: Parasitic infestation of the human lymphatic system by wuchereria bancrofti or brugia malayi. It is also called lymphatic filariasis.",
+"ko": "사상충성 코끼리피부병",
+"alt": [
+"림프사상충증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009294",
+"concept": "- MONDO:0009294 | glycogen storage disease VI | syn: glycogen storage disease caused by mutation in PYGL; glycogen storage disease type 6; Glycogen Storage Disease Type VI; glycogen storage disease type VI | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: Liver phosphorylase deficiency, or glycogen storage disease type 6b (Hers' disease, GSD 6b) is a benign and rare form of glycogen storage disease.",
+"ko": "글리코겐 축적병 VI형",
+"alt": [
+"허스병"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0007743",
+"concept": "- MONDO:0007743 | attention deficit-hyperactivity disorder | syn: attention deficit hyperactivity disorder; attention deficit-hyperactivity disorder; attention deficit/hyperactivity disorder | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: A disorder characterized by a marked pattern of inattention and/or hyperactivity-impulsivity that is inconsistent with developmental level and clearly interferes with functioning in at least two setti...",
+"ko": "주의력결핍 과잉행동장애",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0017838",
+"concept": "- MONDO:0017838 | sclerosteosis | syn: cortical hyperostosis with syndactyly; cortical hyperostosis-syndactyly syndrome | ancestors: hyperostosis, hereditary disease, bone remodeling disease, disease of genetic or genomic mechanism | def: Sclerosteosis is a very rare serious sclerosing hyperostosis syndrome characterized clinically by variable syndactyly and progressive skeletal overgrowth (particularly of the skull), resulting in dist...",
+"ko": "경화골증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008116",
+"concept": "- MONDO:0008116 | oculopharyngeal muscular dystrophy | syn: oculopharyngeal muscular dystrophy; OPMD | ancestors: myopathy of extraocular muscle, progressive muscular dystrophy, hereditary neuromuscular disease, hereditary skeletal muscle disorder | def: Oculopharyngeal muscular dystrophy (OPMD) is an adult-onset progressive myopathy characterized by progressive eyelid ptosis, dysphagia, dysarthria and proximal limb weakness.",
+"ko": "안인두 근디스트로피",
+"alt": [
+"안구인두 근육퇴행위축"
+],
+"organs": [
+"gastrointestinal",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005611",
+"concept": "- MONDO:0005611 | bladder transitional cell carcinoma | syn: bladder transitional cell carcinoma; bladder urothelial cancer; bladder urothelial carcinoma; transitional cell carcinoma of the urinary bladder | ancestors: urinary bladder carcinoma, urothelial carcinoma, urinary bladder cancer, carcinoma | def: The most common morphologic subtype of urinary bladder carcinoma (over 90% of cases). It arises from the transitional epithelium. It most often affects males in their sixth and seventh decades of life...",
+"ko": "방광 이행세포암종",
+"alt": [
+"방광 요로상피암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013916",
+"concept": "- MONDO:0013916 | nephronophthisis 14 | syn: nephronophthisis (disease) caused by mutation in ZNF423; nephronophthisis 14; nephronophthisis type 14; NPHP14 | ancestors: Joubert syndrome, nephronophthisis, syndromic disease, ciliopathy | def: Any nephronophthisis in which the cause of the disease is a mutation in the ZNF423 gene.",
+"ko": "네프로노프티시스 14형",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0014436",
+"concept": "- MONDO:0014436 | Bardet-Biedl syndrome 8 | syn: Bardet-Biedl syndrome 8; Bardet-Biedl syndrome caused by mutation in TTC8; Bardet-Biedl syndrome type 8; BBS8 | ancestors: Bardet-Biedl syndrome, TTC8-related ciliopathy, syndromic disease, ciliopathy | def: Any Bardet-Biedl syndrome in which the cause of the disease is a mutation in the TTC8 gene.",
+"ko": "바르데-비들 증후군 8형",
+"alt": [],
+"organs": [
+"renal",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001966",
+"concept": "- MONDO:0001966 | chronic closed-angle glaucoma | syn: anatomical narrow angle glaucoma; angle-closure glaucoma, chronic; chronic angle-closure glaucoma | ancestors: primary angle-closure glaucoma, angle-closure glaucoma, glaucoma, eye disorder | def: Chronic form of angle-closure glaucoma.",
+"ko": "만성 폐쇄각 녹내장",
+"alt": [
+"만성 협우각 녹내장"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003089",
+"concept": "- MONDO:0003089 | extrahepatic bile duct mucoepidermoid carcinoma | syn: bile duct mucoepidermoid carcinoma; extrahepatic bile duct mucoepidermoid carcinoma; mucoepidermoid carcinoma of bile duct; mucoepidermoid carcinoma of the bile duct | ancestors: extrahepatic bile duct mucinous adenocarcinoma, mucoepidermoid carcinoma, extrahepatic bile duct adenocarcinoma, mucinous adenocarcinoma | def: A mucoepidermoid carcinoma that arises from the extrahepatic bile ducts.",
+"ko": "간외 담관 점액표피양암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

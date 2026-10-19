@@ -1,0 +1,232 @@
+[
+{
+"id": "MONDO:0005802",
+"concept": "- MONDO:0005802 | hymenolepiasis | syn: dwarf tapeworm infection; hymenolepiasis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A parasitic infection caused by tapeworms. Most infected individuals do not have symptoms. When symptoms appear, they include diarrhea, abdominal pain, restlessness, and irritability.",
+"ko": "막양조충증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017276",
+"concept": "- MONDO:0017276 | frontotemporal dementia | syn: Frontotemporal degeneration; FTD | ancestors: hereditary dementia, inherited neurodegenerative disorder, dementia, hereditary disease | def: Frontotemporal dementia (FTD) comprises a group of neurodegenerative disorders, characterized by progressive changes in behavior, executive dysfunction and language impairment, as a result of degenera...",
+"ko": "전두측두엽 치매",
+"alt": [
+"전두측두치매"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0043475",
+"concept": "- MONDO:0043475 | Adams-Stokes syndrome | syn: Stokes-Adams syndrome | ancestors: syndromic disease, atrioventricular dissociation, disease by body system or component, cardiac conduction defect | def: An episode of sudden and transient loss of consciousness sometimes associated with seizures. It is caused by a sudden decrease of the cardiac output that results from a sudden cardiac dysrhythmia. Typ...",
+"ko": "아담스-스톡스 증후군",
+"alt": [
+"스톡스-아담스 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020567",
+"concept": "- MONDO:0020567 | apnea of prematurity | ancestors: infantile apnea, respiratory system disorder, disease by body system or component, human disease | def: Apnea of prematurity is a developmental disorder affecting premature infants, likely secondary to an immaturity of respiratory control resulting in idiopathic pauses in breathing often associated with...",
+"ko": "미숙아 무호흡",
+"alt": [
+"미숙아 무호흡증"
+],
+"organs": [
+"pulmonary",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021450",
+"concept": "- MONDO:0021450 | benign neoplasm of heart | syn: benign Cardiac neoplasm; benign Cardiac tumor; benign Cardiac tumour; benign heart neoplasm | ancestors: cardiovascular organ benign neoplasm, thoracic benign neoplasm, heart neoplasm, benign neoplasm | def: A benign neoplasm that involves the heart.",
+"ko": "심장 양성 신생물",
+"alt": [
+"심장 양성 종양"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001239",
+"concept": "- MONDO:0001239 | anemia of prematurity | syn: AOP | ancestors: neonatal anemia, anemia, hematologic disorder, disease by body system or component | def: A blood disorder characterized by low hemoglobin levels in premature neonates that usually spontaneously resolves within 3-6 months post birth. A combination of factors including the transition from t...",
+"ko": "미숙아 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016318",
+"concept": "- MONDO:0016318 | progressive multifocal leukoencephalopathy | syn: PML; progressive multifocal leukoencephalitis | ancestors: infectious encephalitis, encephalitis, central nervous system infectious disorder, encephalomyelitis | def: Progressive multifocal leukoencephalopathy (PML) is a neurological disorder that damages the myelin that covers and protects nerves in the white matter of the brain. It is caused by the JC virus (JCV)...",
+"ko": "진행성 다초점 백질뇌병증",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0003472",
+"concept": "- MONDO:0003472 | lice infestation | syn: louse infestation (& [pediculosis and Phthirus] or [lice]); mixed pediculosis infestation; pediculosis; pediculosis and Phthirus infestation | ancestors: parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease, skin disorder caused by infection | def: A contagious infestation of parasitic insects found on the head (Pediculus humanus capitis), body (Pediculus humanus corporis), or pubic area (Pthirus pubis) that typically cause itching and rash.",
+"ko": "이 감염증",
+"alt": [
+"이 기생증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0020528",
+"concept": "- MONDO:0020528 | ACTH-dependent Cushing syndrome | syn: ACTH-dependent CS; adrenocorticotropic hormone-dependent Cushing syndrome; corticotropin-dependent Cushing syndrome; pituitary-dependent Cushing's disease | ancestors: hyperpituitarism, endogenous Cushing syndrome, anterior pituitary gland disorder, adrenal gland disorder | def: A group of endogenous Cushing syndrome caused by abnormal production of ACTH due to pituitary adenoma or an extrapituitary tumor.",
+"ko": "ACTH 의존성 쿠싱 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001603",
+"concept": "- MONDO:0001603 | paralytic lagophthalmos | syn: paralytic lagophthalmos; paralytic lagophthalmos (disease) | ancestors: lagophthalmos, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "마비성 토안",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006816",
+"concept": "- MONDO:0006816 | arthropathy | syn: arthropathy; disease of skeletal joint; disease or disorder of skeletal joint; disorder of skeletal joint | ancestors: skeletal system disorder, musculoskeletal system disorder, disease by body system or component, human disease | def: Any disorder of the joints.",
+"ko": "관절병증",
+"alt": [
+"관절병"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0009303",
+"concept": "- MONDO:0009303 | anti-glomerular basement membrane disease | syn: anti-GBM syndrome; anti-glomerular basement membrane disease; Goodpasture Syndrome; Goodpasture syndrome | ancestors: autoimmune disease, immune system disorder, disease by body system or component, human disease | def: An autoimmune disease that affects the lungs and kidneys and is characterized by pulmonary alveolar hemorrhage (bleeding in the lungs) and a kidney disease known as glomerulonephritis. Some use the te...",
+"ko": "항사구체기저막병",
+"alt": [
+"항GBM병"
+],
+"organs": [
+"pulmonary",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007156",
+"concept": "- MONDO:0007156 | arthritis, sacroiliac | syn: arthritis, sacroiliac | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "천장관절염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 15
+},
+{
+"id": "MONDO:0003072",
+"concept": "- MONDO:0003072 | retinal cancer | syn: cancer of retina; malignant neoplasm of retina; malignant neoplasm of the retina; malignant retina neoplasm | ancestors: ocular cancer, retina neoplasm, sensory system cancer, head and neck cancer | def: A malignant neoplasm involving the retina.",
+"ko": "망막암",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008015",
+"concept": "- MONDO:0008015 | motion sickness | syn: motion sickness; travel sickness | ancestors: inner ear disorder, hereditary otorhinolaryngologic disease, inherited auditory system disease, auditory system disorder | def: A sensation of discomfort that results from a discordant relationship between visualized movement and any movement sensed by the vestibular system, which is characterized by dizziness, nausea, and vom...",
+"ko": "멀미",
+"alt": [
+"동요병"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0859006",
+"concept": "- MONDO:0859006 | proximal femoral focal deficiency | ancestors: skeletal dysplasia, dysostosis, hereditary disease, bone disorder",
+"ko": "근위 대퇴골 국소 결손",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006031",
+"concept": "- MONDO:0006031 | chronic rhinosinusitis | syn: chronic sinusitis; sinusitis, chronic | ancestors: sinusitis, paranasal sinus disorder, inflammatory disease, nasal disorder | def: Chronic form of sinusitis.",
+"ko": "만성 비부비동염",
+"alt": [
+"만성 부비동염"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0005946",
+"concept": "- MONDO:0005946 | rhinosporidiosis | syn: Rhinosporidium seeberi caused disease or disorder; Rhinosporidium seeberi disease or disorder; Rhinosporidium seeberi infectious disease | ancestors: parasitic Ichthyosporea infectious disease, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Chronic, localized granulomatous infection of mucocutaneous tissues, especially the nose, and characterized by hyperplasia and the development of polyps. It is found in humans and other animals and is...",
+"ko": "리노스포리디움증",
+"alt": [
+"비포자충증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006653",
+"concept": "- MONDO:0006653 | anthracosilicosis | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: Fibrosis of the lung parenchyma caused by inhalation of carbon and silica dust. It manifests as shortness of breath.",
+"ko": "탄분규폐증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024891",
+"concept": "- MONDO:0024891 | non-infectious meningitis | syn: non-infective meningitis | ancestors: meningitis, encephalomyelitis, central nervous system disorder, inflammatory disease",
+"ko": "비감염성 수막염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+}
+]

@@ -1,0 +1,256 @@
+[
+{
+"id": "MONDO:0008336",
+"concept": "- MONDO:0008336 | pterygium colli, isolated | syn: pterygium colli, isolated | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "단독 목갈퀴",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016226",
+"concept": "- MONDO:0016226 | specific language disorder | syn: dysphasia; specific language disorder | ancestors: specific learning disability, nervous system disorder, disease by body system or component, human disease",
+"ko": "특정 언어장애",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005808",
+"concept": "- MONDO:0005808 | inclusion conjunctivitis | syn: Chlamydial conjunctivitis; neonatal Chlamydia conjunctivitis | ancestors: chlamydia trachomatis infectious disease, bacterial conjunctivitis, commensal bacterial infectious disease, chlamydia infectious disease | def: Inflammation of the conjunctiva in a newborn due to Chlamydia trachomatis which was acquired during labor and delivery.",
+"ko": "봉입체 결막염",
+"alt": [
+"클라미디아 결막염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0010799",
+"concept": "- MONDO:0010799 | deafness, aminoglycoside-induced | syn: deafness, aminoglycoside-induced; deafness, mitochondrial, modifier of, mitochondrial; deafness, streptomycin-induced; mitochondrial isolated neurosensory deafness with susceptibility to aminoglycoside exposure | ancestors: postlingual non-syndromic genetic hearing loss, mitochondrial oxidative phosphorylation disorder, nonsyndromic genetic hearing loss, inborn mitochondrial metabolism disorder",
+"ko": "아미노글리코시드 유발 난청",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009369",
+"concept": "- MONDO:0009369 | non-immune hydrops fetalis | syn: non-immune fetal edema; non-immune fetal hydrops; non-immune foetal hydrops; non-immune foetal oedema | ancestors: hydrops fetalis, developmental defect during embryogenesis, disorder of development or morphogenesis, disease by developmental or physiological process | def: Non-immune hydrops fetalis (NIHF), a form of HF, is a severe fetal condition defined as the excessive accumulation of fetal fluid within the fetal extravascular compartments and body cavities, and is ...",
+"ko": "비면역성 태아수종",
+"alt": [],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010787",
+"concept": "- MONDO:0010787 | Kearns-Sayre syndrome | syn: CPEO with ragged red fibers; CPEO with ragged red fibres; CPEO with ragged-Red fibres; Kearns-Sayre syndrome | ancestors: syndromic disease, progressive external ophthalmoplegia, familial dilated cardiomyopathy, mitochondrial oxidative phosphorylation disorder | def: Kearns-Sayre syndrome (KSS) is a mitochondrial disease characterized by progressive external ophthalmoplegia (PEO), pigmentary retinitis and an onset before the age of 20 years. Common additional feat...",
+"ko": "컨스-세이어 증후군",
+"alt": [
+"킨스-세이어 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002265",
+"concept": "- MONDO:0002265 | stereotypic movement disorder | syn: stereotyped repetitive movements NOS (finding) | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: Motor behavior that is repetitive, often seemingly driven, and nonfunctional. This behavior markedly interferes with normal activities or results in severe bodily self-injury. The behavior is not due ...",
+"ko": "상동증적 운동장애",
+"alt": [
+"상동증 운동 장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019848",
+"concept": "- MONDO:0019848 | posterior hypospadias | syn: perineal, scrotal or penoscrotal hypospadias | ancestors: male reproductive system disorder, disorder of development or morphogenesis, reproductive system disorder, disease by developmental or physiological process | def: Posterior hypospadias is a rare, non-syndromic, urogenital tract malformation characterized by an ectopic urethral meatus opening located in the posterior penis, the penoscrotal junction, the scrotum ...",
+"ko": "후부 요도하열",
+"alt": [
+"회음부, 음낭 또는 음경음낭 요도하열"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0043765",
+"concept": "- MONDO:0043765 | presbycusis | syn: age-related hearing impairment; ARHI; presbycusis | ancestors: sensorineural hearing loss disorder, hearing loss disorder, hearing disorder, auditory system disorder | def: Bilateral hearing loss caused by progressive degeneration of cochlear structures and central auditory pathways, typically associated with the aging process.",
+"ko": "노인성 난청",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016825",
+"concept": "- MONDO:0016825 | mitochondrial myopathy-lactic acidosis-deafness syndrome | syn: mitochondrial myopathy with lactic acidosis; mitochondrial myopathy-lactic acidosis-hearing loss syndrome | ancestors: inborn mitochondrial myopathy, congenital structural myopathy, inborn mitochondrial metabolism disorder, hereditary skeletal muscle disorder | def: Mitochondrial myopathy-lactic acidosis-deafness is a type of metabolic myopathy described only in two sisters to date, presenting during childhood, and characterized clinically by growth failure, seve...",
+"ko": "미토콘드리아 근병증-젖산산증-난청 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002738",
+"concept": "- MONDO:0002738 | acute transudative otitis media | syn: acute nonsuppurative otitis media; non-suppurative otitis media, acute | ancestors: non-suppurative otitis media, acute disease, otitis media, human disease | def: Acute form of non-suppurative otitis media.",
+"ko": "급성 삼출성 중이염",
+"alt": [
+"급성 비화농성 중이염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0001372",
+"concept": "- MONDO:0001372 | bladder neck cancer | syn: cancer of neck of urinary bladder; malignant neck of urinary bladder neoplasm; malignant neoplasm of neck of urinary bladder; malignant tumour of bladder neck | ancestors: urinary bladder cancer, disorder of neck of urinary bladder, urinary bladder neoplasm, malignant urinary system neoplasm | def: A malignant neoplasm involving the neck of urinary bladder.",
+"ko": "방광경부암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0100335",
+"concept": "- MONDO:0100335 | local anesthetic poisoning | syn: local anesthetic poisoning | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: A poisoning that is caused by exposure to a local anesthetic.",
+"ko": "국소마취제 중독",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006314",
+"concept": "- MONDO:0006314 | nasal cavity polyp | syn: nasal cavity polyp; nasal polyp; polyp of nasal cavity; polyp of the nasal cavity | ancestors: nasal cavity disorder, polyp, nasal disorder, upper respiratory tract disorder | def: A soft and painless polypoid mass that arises from the mucosa in the nasal cavity. It is usually the result of an inflammatory process. It may recur following surgical resection.",
+"ko": "비강 용종",
+"alt": [
+"코안 용종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005903",
+"concept": "- MONDO:0005903 | pericardial tuberculosis | syn: tuberculous pericarditis | ancestors: extrapulmonary tuberculosis, pericarditis, tuberculosis, pericardium disorder | def: Inflammation of the sac surrounding the heart (pericardium) due to mycobacterium tuberculosis infection. Pericarditis can lead to swelling (pericardial effusion), compression of the heart (cardiac tam...",
+"ko": "심낭 결핵",
+"alt": [
+"결핵성 심낭염"
+],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015944",
+"concept": "- MONDO:0015944 | axial mesodermal dysplasia spectrum | syn: blastogenesis defect; Russell-Weaver-Bull syndrome | ancestors: syndromic disease, disorder of development or morphogenesis, disease by body system or component, disease by developmental or physiological process | def: Axial mesodermal dysplasia spectrum is a rare developmental defect during embryogenesis syndrome characterized by congenital manifestations of both oculo-auriculo-vertebral spectrum and caudal regress...",
+"ko": "축성 중배엽 이형성 스펙트럼",
+"alt": [
+"배아형성 결손"
+],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000490",
+"concept": "- MONDO:0000490 | glomerulosclerosis | syn: glomerular sclerosis | ancestors: glomerular disorder, kidney disorder, urinary system disorder, disease by body system or component | def: A hardening of the kidney glomerulus caused by scarring of the blood vessels.",
+"ko": "사구체경화증",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001919",
+"concept": "- MONDO:0001919 | cystoid macular retinal degeneration | syn: cystoid macular degeneration of retina | ancestors: degeneration of macula and posterior pole, macular degeneration, retinal degeneration, retinal disorder",
+"ko": "낭포성 황반 망막변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007908",
+"concept": "- MONDO:0007908 | multiple symmetric lipomatosis | syn: cephalothoracic lipodystrophy; cervical symmetrical lipomatosis; familial benign cervical lipomatosis; Launois-Bensaude lipomatosis | ancestors: integumentary system benign neoplasm, lipomatosis, subcutaneous tissue disorder, hereditary disorder of connective tissue | def: A rare subcutaneous tissue disease characterized by growth of symmetric non-encapsulated masses of adipose tissue mostly around the face and neck with variable clinical repercussions (e.g. reduced nec...",
+"ko": "다발성 대칭성 지방종증",
+"alt": [
+"마델룽병"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009414",
+"concept": "- MONDO:0009414 | glycogen storage disorder due to hepatic glycogen synthase deficiency | syn: glycogen storage disease due to glycogen synthase deficiency of liver; glycogen storage disease due to hepatic glycogen synthase deficiency; glycogen storage disease due to liver glycogen synthase deficiency; glycogen storage disease type 0a | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: Glycogen synthetase deficiency, or glycogen storage disease (GSD) type 0, is a genetically inherited anomaly of glycogen metabolism and a form of GSD characterized by fasting hypoglycemia. This is not...",
+"ko": "간 글리코겐 합성효소 결핍에 의한 글리코겐 저장병",
+"alt": [
+"글리코겐 저장병 0형"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+}
+]

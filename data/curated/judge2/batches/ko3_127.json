@@ -1,0 +1,250 @@
+[
+{
+"id": "MONDO:0009835",
+"concept": "- MONDO:0009835 | subacute sclerosing panencephalitis | syn: Immunosuppressive measles encephalitis; SSPE; Subacute inclusion body encephalitis; Subacute sclerosing panencephalitis | ancestors: viral encephalitis, infectious encephalitis, viral infection of central nervous system, primary viral infectious disease | def: A chronic progressive encephalitis that develops a few years after measles infection and presents with a demyelination of the cerebral cortex.",
+"ko": "아급성 경화성 범뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0024361",
+"concept": "- MONDO:0024361 | circadian rhythm sleep disorder | syn: circadian sleep disorder | ancestors: sleep-wake disorder, sleep disorder, disease by developmental or physiological process, human disease | def: A persistent or recurrent pattern of sleep disruption that is primarily due to an alteration of the circadian system or to a misalignment between the endogenous circadian rhythm and the sleep-wake sch...",
+"ko": "일주기리듬 수면장애",
+"alt": [
+"24시간 주기 수면장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002441",
+"concept": "- MONDO:0002441 | Jervell and Lange-Nielsen syndrome | syn: Jervell and Lange Nielsen syndrome; Jervell Lange-Nielsen syndrome; long QT interval-deafness syndrome | ancestors: familial long QT syndrome, long QT syndrome, hereditary disease, syndromic disease | def: An autosomal recessive inherited syndrome caused by mutations in the KCNE1 and KCNQ1 genes. It is characterized by congenital hearing loss and arrhythmia. It is a form of long QT syndrome.",
+"ko": "예르벨-랑에닐센 증후군",
+"alt": [
+"Jervell and Lange-Nielsen 증후군"
+],
+"organs": [
+"cardiovascular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009938",
+"concept": "- MONDO:0009938 | pulmonic stenosis | syn: pulmonary stenosis; pulmonic stenosis; pulmonic stenosis (disease) | ancestors: hereditary disease, congenital pulmonary valve stenosis, disease of genetic or genomic mechanism, congenital anomaly of the great arteries",
+"ko": "폐동맥 협착증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006966",
+"concept": "- MONDO:0006966 | secondary Parkinson disease | syn: secondary Parkinsonism; secondary parkinsonism (disorder) [ambiguous]; secondary parkinsonism, unspecified | ancestors: neurodegenerative disease, central nervous system disorder, nervous system disorder, disease by body system or component | def: A condition with a clinical picture similar to that of Parkinson disease, but which is caused by external factors, including medication.",
+"ko": "이차성 파킨슨병",
+"alt": [
+"이차성 파킨슨증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0007088",
+"concept": "- MONDO:0007088 | Alzheimer disease type 1 | syn: AD1; Alzheimer disease 1, familial; Alzheimer disease, familial, 1 | ancestors: early-onset autosomal dominant Alzheimer disease, APP-related brain and vascular amyloidosis, autosomal dominant disease, familial Alzheimer disease",
+"ko": "알츠하이머병 1형",
+"alt": [
+"가족성 알츠하이머병 1"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015455",
+"concept": "- MONDO:0015455 | gonococcal conjunctivitis | syn: conjunctivitis gonococcal; gonococcal ophthalmia neonatorum | ancestors: gonorrhea, bacterial conjunctivitis, primary bacterial infectious disease, bacterial sexually transmitted disease | def: Inflammation of the conjunctiva in a newborn due to Neisseria gonorrhoeae which was acquired during labor and delivery.",
+"ko": "임균성 결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0018689",
+"concept": "- MONDO:0018689 | plasma cell leukemia | syn: leukaemia plasmacytic; leukemia plasmacytic; PCL; plasma cell leukemia | ancestors: plasma cell neoplasm, acute lymphoblastic leukemia, B-cell non-Hodgkin lymphoma, neoplasm of mature B-cells | def: An aggressive plasma cell neoplasm characterized by the presence of neoplastic plasma cells in the peripheral blood. It is characterized by the presence of a circulating clonal plasma cell count that ...",
+"ko": "형질세포백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010735",
+"concept": "- MONDO:0010735 | Kennedy disease | syn: Kennedy disease; Kennedy's disease; SBMA; SMAX1 | ancestors: inherited neurodegenerative disorder, neurodegenerative disease, hereditary neurological disease, central nervous system disorder | def: Kennedy's disease, also known as bulbospinal muscular atrophy (BSMA), is a rare X-linked recessive motor neuron disease characterized by proximal and bulbar muscle wasting.",
+"ko": "케네디병",
+"alt": [
+"구척수성 근위축증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004389",
+"concept": "- MONDO:0004389 | mite infestation | ancestors: parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease, skin disorder caused by infection | def: Infestations with arthropods of the subclass acari, superorder Acariformes.",
+"ko": "진드기 감염증",
+"alt": [
+"옴진드기 감염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0009402",
+"concept": "- MONDO:0009402 | acrofrontofacionasal dysostosis 2 | syn: acrofrontofacionasal dysostosis 2; acrofrontofacionasal dysostosis type 2; acrofrontofacionasal syndrome type 2; hypertelorism-hypospadias-polysyndactyly syndrome | ancestors: syndromic disease, acrofrontofacionasal dysostosis, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, disease by body system or component | def: A very rare syndrome associating an acro-fronto-facio-nasal dysostosis with genitourinary anomalies.",
+"ko": "말단전두안면비 이골증 2형",
+"alt": [
+"눈사이멀어짐-요도밑열-다합지증 증후군"
+],
+"organs": [
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003438",
+"concept": "- MONDO:0003438 | combined small cell lung carcinoma | syn: combined small and large cell lung cancer; combined small and large cell lung carcinoma; combined small cell and large cell lung carcinoma; combined small cell carcinoma of lung | ancestors: combined lung carcinoma, small cell lung carcinoma, neuroendocrine carcinoma, lung carcinoma | def: A morphologic variant of small cell lung carcinoma in combination with a non-small cell carcinoma.",
+"ko": "복합 소세포폐암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002511",
+"concept": "- MONDO:0002511 | stenosis of lacrimal sac | ancestors: lacrimal apparatus disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "눈물주머니 협착",
+"alt": [
+"누낭 협착"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006665",
+"concept": "- MONDO:0006665 | chronic atrophic gastritis | syn: atrophic Gastritides; atrophic gastritis; gastric atrophy; Gastritides, atrophic | ancestors: chronic gastritis, gastritis, stomach disorder, inflammatory disease | def: Atrophic gastritis that is persistent and long-standing.",
+"ko": "만성 위축성 위염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0017774",
+"concept": "- MONDO:0017774 | hypobetalipoproteinemia | ancestors: hypolipoproteinemia, inherited lipid metabolism disorder, inborn errors of metabolism, hereditary disease | def: A group of lipoprotein metabolism disorders that are characterized by permanently low levels (below the 5th percentile) of apolipoprotein B and LDL cholesterol.",
+"ko": "저베타지단백혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0100310",
+"concept": "- MONDO:0100310 | hereditary cerebellar ataxia | syn: cerebellar hereditary ataxia; hereditary cerebellar ataxia | ancestors: cerebellar ataxia, inherited neurodegenerative disorder, hereditary ataxia, movement disorder | def: Cerebellar ataxia that is transmitted from parent to child.",
+"ko": "유전성 소뇌 운동실조",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0009672",
+"concept": "- MONDO:0009672 | spinal muscular atrophy, type III | syn: Kugelberg Welander Syndrome; Kugelberg-Welander disease; SMA type 3; SMA type III | ancestors: proximal spinal muscular atrophy, spinal muscular atrophy, hereditary peripheral neuropathy, anterior horn disorder | def: Proximal spinal muscular atrophy type 3 (SMA3) is a relatively mild form of proximal spinal muscular atrophy characterized by muscle weakness and hypotonia resulting from the degeneration and loss of ...",
+"ko": "척수성 근위축증 3형",
+"alt": [
+"쿠겔베르크-벨란더병"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0014911",
+"concept": "- MONDO:0014911 | growth retardation, intellectual developmental disorder, hypotonia, and hepatopathy | syn: GRIDHH; growth retardation, impaired intellectual development, hypotonia, and hepatopathy; Growth retardation, intellectual developmental disorder, hypotonia, and hepatopathy; growth retardation, intellectual developmental disorder, hypotonia, and hepatopathy; GRIDHH | ancestors: syndromic disease, autosomal recessive disease, disease by body system or component, autosomal genetic disease | def: A rare, genetic, syndromic intellectual disability disease characterized by severe intrauterine and post-natal growth delay, moderate to severe intellectual disability, and neonatal-onset hepatopathy ...",
+"ko": "성장 지연, 지적 발달장애, 저긴장증 및 간병증",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008433",
+"concept": "- MONDO:0008433 | small cell lung carcinoma | syn: lung oat cell carcinoma; lung small cell carcinoma; lung small cell neuroendocrine carcinoma; oat cell carcinoma of lung | ancestors: small cell carcinoma, lung carcinoma, lung neuroendocrine neoplasm, neuroendocrine carcinoma | def: Small cell lung cancer (SCLC) is a highly aggressive malignant neoplasm, accounting for 10-15% of lung cancer cases, characterized byrapid growth, and early metastasis. SCLC usually manifests as a lar...",
+"ko": "소세포폐암",
+"alt": [
+"소세포 폐암종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002127",
+"concept": "- MONDO:0002127 | urethral stricture | syn: urethral stricture; urethral stricture (disease) | ancestors: urethral obstruction, urethral disorder, urinary system disorder, disease by body system or component | def: Narrowing of any part of the urethra. It is characterized by decreased urinary stream and often other obstructive voiding symptoms.",
+"ko": "요도 협착",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 4,
+"new": false
+}
+]

@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0009562",
+"concept": "- MONDO:0009562 | beta-mannosidosis | syn: Beta-mannosidase deficiency; beta-mannosidase deficiency; beta-mannosidosis; lysosomal beta-mannosidase deficiency | ancestors: oligosaccharidosis, hereditary peripheral neuropathy, lysosomal storage disease with skeletal involvement, developmental anomaly of metabolic origin | def: Beta-mannosidosis is a very rare lysosomal storage disease characterized by developmental delay of varying severity and hearing loss, but that can manifest a wide phenotypic heterogeneity.",
+"ko": "베타-만노시드축적증",
+"alt": [
+"베타-만노시드증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010674",
+"concept": "- MONDO:0010674 | mucopolysaccharidosis type 2 | syn: attenuated MPS (subtype; formerly known as mild MPS II); Hunter syndrome; Hunter's syndrome; I2S deficiency | ancestors: syndromic disease, mucopolysaccharidosis, lysosomal storage disease with skeletal involvement, disease by body system or component | def: A lysosomal storage disease leading to a massive accumulation of glycosaminoglycans and a wide variety of symptoms including distinctive coarse facial features, short stature, cardio-respiratory invol...",
+"ko": "점액다당류증 2형",
+"alt": [
+"헌터 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019354",
+"concept": "- MONDO:0019354 | Stickler syndrome | syn: hereditary progressive arthroophthalmopathy; Stickler syndrome | ancestors: syndromic disease, spondyloepiphyseal dysplasia, vitreoretinal degeneration, disease by body system or component | def: Stickler syndrome is an inherited vitreoretinopathy characterized by the association of ocular signs with more or less complete forms of Pierre-Robin sequence, bone disorders, and sensorineural deafne...",
+"ko": "스티클러 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005519",
+"concept": "- MONDO:0005519 | renal pelvis carcinoma | syn: carcinoma of kidney pelvis; carcinoma of renal pelvis; carcinoma of the kidney pelvis; carcinoma of the renal pelvis | ancestors: renal carcinoma, malignant renal pelvis neoplasm, kidney cancer, carcinoma | def: A carcinoma arising in the renal pelvis. The majority of renal pelvis carcinomas are transitional cell and less frequently squamous cell carcinomas.",
+"ko": "신우암종",
+"alt": [
+"신우암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009058",
+"concept": "- MONDO:0009058 | cystathioninuria | syn: cystathionase deficiency; cystathioninuria; cystathioninuria (disease); gamma-cystathionase deficiency | ancestors: inborn disorder of amino acid metabolism, inborn disorder of methionine cycle and sulfur amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: Cystathioninuria is an autosomal recessive disorder caused by cystathionine gamma-lyase deficiency. It is usually pyridoxine-dependent, but in very rare cases it may be non-dependent. It is generally ...",
+"ko": "시스타티오닌뇨증",
+"alt": [
+"시스타티오나제 결핍증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002975",
+"concept": "- MONDO:0002975 | malignant breast melanoma | syn: breast melanoma; breast melanoma (disease); malignant breast melanoma; malignant melanoma of breast | ancestors: melanoma, breast cancer, melanocytic neoplasm, thoracic cancer | def: A melanoma that arises usually from the breast skin and less often from the breast glandular tissue. Primary breast melanomas are rare.",
+"ko": "악성 유방 흑색종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0002518",
+"concept": "- MONDO:0002518 | gallbladder papillary neoplasm | syn: gall bladder papillary epithelial neoplasm; gallbladder papillary neoplasm; gallbladder papillomatosis; intracystic papillary neoplasm | ancestors: papillary epithelial neoplasm, gallbladder neoplasm, epithelial neoplasm, hepatobiliary neoplasm | def: A non-invasive, papillary epithelial neoplasm that arises from the epithelium of the gallbladder. Intraepithelial neoplasia is present.",
+"ko": "담낭 유두상 신생물",
+"alt": [
+"쓸개 유두상 신생물"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0850284",
+"concept": "- MONDO:0850284 | extrinsic asthma | ancestors: chronic asthma, asthma, bronchial disorder, lower respiratory tract disorder | def: A chronic asthma that is triggered by an allergen and that is characterized by an immune system overreaction to a harmless substance, such as pollen or dust, with the subsequent release of immunoglobi...",
+"ko": "외인성 천식",
+"alt": [
+"알레르기성 천식"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005842",
+"concept": "- MONDO:0005842 | maxillary sinusitis | ancestors: sinusitis, mouth disorder, disorder of facial skeleton, paranasal sinus disorder | def: An acute or chronic inflammatory process affecting the mucous membrane of the maxillary sinus.",
+"ko": "상악동염",
+"alt": [
+"상악 부비동염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016064",
+"concept": "- MONDO:0016064 | cleft palate | syn: palatoschisis; uranostaphyloschisis | ancestors: orofacial cleft, developmental defect during embryogenesis, hereditary disease, disorder of facial skeleton | def: Cleft palate is a fissure type embryopathy that affects the soft and hard palate to varying degrees.",
+"ko": "구개열",
+"alt": [
+"입천장갈림증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005965",
+"concept": "- MONDO:0005965 | spinal stenosis | ancestors: vertebral column disorder, disease of bone structure, skeletal system disorder, bone disorder | def: Narrowing of the spinal canal.",
+"ko": "척추관 협착증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010933",
+"concept": "- MONDO:0010933 | autosomal recessive nonsyndromic hearing loss 4 | syn: enlarged vestibular aqueduct; enlarged vestibular aqueduct, digenic | ancestors: hearing loss, autosomal recessive, autosomal recessive disease, nonsyndromic genetic hearing loss, autosomal genetic disease | def: An autosomal recessive nonsyndromic deafness that has material basis in mutation in the SLC26A4 gene on chromosome 7q22. Mutation in the FOXI1 gene has been found to be a rare cause of EVA. EVA may al...",
+"ko": "상염색체 열성 비증후군성 난청 4",
+"alt": [
+"전정수도관 확장"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011273",
+"concept": "- MONDO:0011273 | H syndrome | syn: Asrar Facharzt Haque syndrome; H syndrome | ancestors: laryngeal disorder, sinus histiocytosis with massive lymphadenopathy, hyperpigmentation of the skin, hereditary skin disorder | def: A systemic inherited histiocytosis, with characteristic cutaneous findings accompanying systemic manifestations. H syndrome refers to the major clinical findings of hyperpigmentation, hypertrichosis, ...",
+"ko": "H 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000956",
+"concept": "- MONDO:0000956 | small intestine cancer | syn: cancer of small intestine; malignant neoplasm of small bowel; malignant neoplasm of small intestine; malignant neoplasm of the small bowel | ancestors: small intestine neoplasm, intestinal cancer, intestinal neoplasm, small intestine disorder | def: A primary or metastatic malignant neoplasm involving the small intestine.",
+"ko": "소장암",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005488",
+"concept": "- MONDO:0005488 | adolescent idiopathic scoliosis | ancestors: idiopathic scoliosis, scoliosis, idiopathic disease, disease of bone structure | def: A scoliosis with no known cause arising in adolescent.",
+"ko": "청소년 특발성 척추측만증",
+"alt": [
+"사춘기 특발성 척추측만증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0002365",
+"concept": "- MONDO:0002365 | kidney hemangiopericytoma | syn: hemangiopericytoma of kidney; hemangiopericytoma of the kidney; kidney hemangiopericytoma; kidney spindle cell tumor | ancestors: hemangiopericytoma, kidney neoplasm, hemangiopericytic tumor, kidney disorder | def: A hemangiopericytoma arising from the kidney.",
+"ko": "신장 혈관주위세포종",
+"alt": [
+"콩팥 혈관주위세포종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011571",
+"concept": "- MONDO:0011571 | deafness, autosomal dominant 39, with dentinogenesis imperfecta 1 | syn: deafness, autosomal dominant 39, with dentinogenesis imperfecta 1; deafness, autosomal dominant 39, with dentinogenesis imperfecta type 1 | ancestors: dentinogenesis imperfecta type 2, hereditary disease, dentinogenesis imperfecta, disease of genetic or genomic mechanism",
+"ko": "상염색체 우성 난청 39형, 상아질형성부전 1형 동반",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009015",
+"concept": "- MONDO:0009015 | corneal dystrophy-perceptive deafness syndrome | syn: CDPD; corneal dystrophy with progressive deafness; Harboyan syndrome | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism | def: Corneal dystrophy-perceptive deafness (CDPD) or Harboyan syndrome is a degenerative corneal disorder characterized by the association of congenital hereditary endothelial dystrophy (CHED) with progres...",
+"ko": "각막 이영양증-감각성 난청 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004705",
+"concept": "- MONDO:0004705 | liver solitary fibrous tumor | syn: fibroma of liver; fibroma of the liver; hepatic fibroma; liver fibroma | ancestors: fibroma, solitary fibrous tumor, liver and intrahepatic bile duct neoplasm, fibroblastic neoplasm | def: A solitary fibrous tumor that arises from the liver. It affects females more frequently than males. Signs and symptoms include the presence of an abdominal mass and abdominal discomfort.",
+"ko": "간 고립성 섬유성 종양",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0014943",
+"concept": "- MONDO:0014943 | mitochondrial DNA depletion syndrome 15 (hepatocerebral type) | syn: mitochondrial DNA depletion syndrome 15 (hepatocerebral type); mitochondrial DNA depletion syndrome caused by mutation in TFAM; TFAM mitochondrial DNA depletion syndrome | ancestors: mitochondrial DNA depletion syndrome, mitochondrial oxidative phosphorylation disorder, inborn mitochondrial metabolism disorder, developmental anomaly of metabolic origin | def: Any mitochondrial DNA depletion syndrome in which the cause of the disease is a mutation in the TFAM gene.",
+"ko": "미토콘드리아 DNA 고갈 증후군 15형 (간-뇌형)",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

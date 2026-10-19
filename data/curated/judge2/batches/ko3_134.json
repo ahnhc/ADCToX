@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0007712",
+"concept": "- MONDO:0007712 | oculoauriculovertebral spectrum with radial defects | syn: hemifacial microsomia-radial defects syndrome; Moeschler-Clarren syndrome | ancestors: hereditary disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, dysostosis, disease of genetic or genomic mechanism | def: Oculoauriculovertebral spectrum (OAVS) with radial defects is a rare branchial arches and limb primordia development disorder characterized by variable degrees of uni- or bilateral craniofacial malfor...",
+"ko": "요골 결손을 동반한 안이개척추 스펙트럼",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0956980",
+"concept": "- MONDO:0956980 | vascular parkinsonism | ancestors: parkinsonian disorder, basal ganglia disorder, brain disorder, central nervous system disorder | def: A Parkinsonism that is characterized by postural instability, a broad-based gait with the absence of tremors of vascular origin.",
+"ko": "혈관성 파킨슨증",
+"alt": [
+"혈관 파킨슨증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016006",
+"concept": "- MONDO:0016006 | Cockayne syndrome | ancestors: autosomal recessive disease, developmental anomaly of metabolic origin, progeroid syndrome, DNA repair disease | def: A multisystem condition characterized by short stature, a characteristic facial appearance, premature aging, photosensitivity, progressive neurological dysfunction, and intellectual deficit.",
+"ko": "코케인 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020753",
+"concept": "- MONDO:0020753 | Orthocoronavirinae infectious disease | syn: Coronavinae infectious disease; coronavirus infectious disease | ancestors: Coronaviridae infectious disease, Nidovirales infectious disease, primary viral infectious disease, viral infectious disease | def: Infectious disease causes by viruses in the subfamily Orthocoronavirinae (coronaviruses). In humans, coronaviruses cause respiratory tract infections that can be mild, such as some cases of the common...",
+"ko": "오르소코로나바이러스아과 감염증",
+"alt": [
+"코로나바이러스 감염증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005085",
+"concept": "- MONDO:0005085 | pterygium | syn: pterygium of conjunctiva and cornea | ancestors: benign conjunctival neoplasm, benign neoplasm of cornea, ocular growth disorder, conjunctival tumor | def: A wedge-shaped fibrovascular lesion arising from the bulbar conjunctiva and extending to the cornea. It is caused by chronic exposure to solar ultraviolet radiation, heat, and dust. It may cause sever...",
+"ko": "익상편",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015254",
+"concept": "- MONDO:0015254 | schistosomiasis | syn: Bilharzia; bilharziasis; schistosomiasis; snail fever | ancestors: helminthiasis, vector-borne disease, parasitic infectious disease, infectious disease | def: An infectious disease caused by parasitic trematodes of the genus Schistosoma that colonize human blood vessels and release eggs that can cause granulomatous reactions leading to acute (swimmer's itch...",
+"ko": "주혈흡충증",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005960",
+"concept": "- MONDO:0005960 | silicosis | syn: pneumoconiosis due to silica; silicosis | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: Silicosis is a respiratory disease caused by breathing in (inhaling) silica dust. There are three types of silicosis: Simple chronic silicosis, the most common type of silicosis, results from long-ter...",
+"ko": "규폐증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0014700",
+"concept": "- MONDO:0014700 | Au-Kline syndrome | syn: Au-Kline syndrome; AUKS; hydronephrosis, congenital, with cleft palate, characteristic facies, hypotonia, and intellectual disability; hydronephrosis, congenital, with cleft palate, characteristic facies, hypotonia, and mental retardation | ancestors: neurodevelopmental disorder-craniofacial dysmorphism-cardiac defect-hip dysplasia syndrome, Mendelian neurodevelopmental disorder, congenital nervous system disorder, multiple congenital anomalies/dysmorphic syndrome-intellectual disability",
+"ko": "아우-클라인 증후군",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003009",
+"concept": "- MONDO:0003009 | hyperaldosteronism | ancestors: adrenal gland hyperfunction, adrenal cortex disorder, adrenal gland disorder, endocrine system disorder | def: Overproduction of aldosterone by the adrenal glands, which may lead to hypokalemia and/or hypernatremia.",
+"ko": "알도스테론증",
+"alt": [
+"고알도스테론증"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0009966",
+"concept": "- MONDO:0009966 | NPHP3-related Meckel-like syndrome | syn: Goldston syndrome; Meckel syndrome type 7; Meckel-like syndrome type 1; MKS7 | ancestors: Meckel syndrome, central nervous system malformation, hereditary neurological disease, syndromic disease",
+"ko": "NPHP3 관련 메켈 유사 증후군",
+"alt": [
+"골드스턴 증후군"
+],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005566",
+"concept": "- MONDO:0005566 | neonatal abstinence syndrome | syn: NAS; neonatal narcotic withdrawal syndrome | ancestors: substance withdrawal syndrome, syndromic disease, substance-related disorder, disease by body system or component | def: A constellation of neurobehavioral features observed in a neonate following antenatal exposure to drugs including opioids, benzodiazepines, and selective serotonin reuptake inhibitors.",
+"ko": "신생아 금단 증후군",
+"alt": [
+"신생아 마약 금단 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0700127",
+"concept": "- MONDO:0700127 | mosaic trisomy 21 | ancestors: trisomy 21, Down syndrome, trisomy, chromosome 21 disorder | def: Trisomy 21 characterized by the presence of an extra chromosome 21 in some of the cells of the organism.",
+"ko": "모자이크 21삼체성",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006571",
+"concept": "- MONDO:0006571 | lichen nitidus | ancestors: lichen disease, skin disorder, integumentary system disorder, disease by body system or component | def: A chronic inflammatory disease characterized by shiny, flat-topped, usually flesh-colored micropapules no larger than the head of a pin. Lesions are localized in the early stages, found chiefly on the...",
+"ko": "광택태선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0043479",
+"concept": "- MONDO:0043479 | adenoviridae infectious disease | syn: Adenoviridae caused disease or disorder; Adenoviridae disease or disorder; Adenoviridae infectious disease; adenoviridae infectious disease | ancestors: primary viral infectious disease, viral infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: An infectious process caused by adenovirus. The virus may cause respiratory illness, conjunctivitis, gastroenteritis, and cystitis.",
+"ko": "아데노바이러스 감염증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021311",
+"concept": "- MONDO:0021311 | malignant tumor of parathyroid gland | syn: cancer of parathyroid gland; malignant neoplasm of parathyroid; malignant neoplasm of parathyroid gland; malignant neoplasm of the parathyroid | ancestors: malignant endocrine neoplasm, tumor of parathyroid gland, endocrine gland neoplasm, cancer | def: A cancer that involves the parathyroid gland.",
+"ko": "부갑상샘 악성 종양",
+"alt": [
+"부갑상샘암"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016484",
+"concept": "- MONDO:0016484 | Usher syndrome type 2 | syn: USH2; Usher syndrome type 2 | ancestors: Usher syndrome, syndromic disease, autosomal recessive disease, disease by body system or component | def: A syndrome characterized by congenital, bilateral sensorineural hearing loss that is mild to moderate in the low frequencies and severe to profound in the higher frequencies, no abnormalities in the v...",
+"ko": "어셔 증후군 2형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015760",
+"concept": "- MONDO:0015760 | T-cell non-Hodgkin lymphoma | syn: non-Hodgkin's T-cell lymphoma; T cell lymphoma; T-cell and NK-cell non-Hodgkin lymphoma; T-cell and NK-cell non-Hodgkin's lymphoma | ancestors: non-Hodgkin lymphoma, lymphoma, lymphoid neoplasm, lymphoid hemopathy | def: A non-Hodgkin lymphoma of T-cell lineage. It includes the T lymphoblastic lymphoma and the mature T- and NK-cell lymphomas. -- 2003",
+"ko": "T세포 비호지킨 림프종",
+"alt": [
+"T세포 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018962",
+"concept": "- MONDO:0018962 | common mesentery | syn: universal mesentery | ancestors: digestive system disorder, disease by body system or component, human disease, disease",
+"ko": "공통 장간막",
+"alt": [
+"범발성 장간막"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011559",
+"concept": "- MONDO:0011559 | benign recurrent intrahepatic cholestasis type 2 | syn: Bric type 2; BRIC2; cholestasis, benign recurrent intrahepatic, type 2 | ancestors: benign recurrent intrahepatic cholestasis, familial intrahepatic cholestasis, inborn disorder of bilirubin metabolism, liver disorder",
+"ko": "양성 재발성 간내 담즙정체 2형",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002236",
+"concept": "- MONDO:0002236 | ocular cancer | syn: cancer of eye; cancer of eyeball of camera-type eye; cancer of the eye; eye cancer | ancestors: sensory system cancer, head and neck cancer, eye neoplasm, nervous system cancer | def: A benign or malignant neoplasm affecting the structures of the eye.",
+"ko": "안암",
+"alt": [
+"눈암"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+}
+]

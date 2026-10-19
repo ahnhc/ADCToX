@@ -1,0 +1,239 @@
+[
+{
+"id": "MONDO:0021461",
+"concept": "- MONDO:0021461 | benign neoplasm of hypopharynx | syn: benign hypopharyngeal neoplasm; benign hypopharyngeal tumor; benign hypopharyngeal tumour; benign neoplasm of the hypopharynx | ancestors: respiratory system benign neoplasm, neoplasm of hypopharynx, benign neoplasm of pharynx, respiratory system disorder | def: A benign neoplasm that involves the hypopharynx.",
+"ko": "하인두 양성 신생물",
+"alt": [
+"하인두 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004473",
+"concept": "- MONDO:0004473 | epiglottis cancer | syn: cancer of epiglottis; epiglottic cancer; epiglottic throat cancer; epiglottis cancer | ancestors: epiglottis neoplasm, carcinoma of supraglottis, hypopharyngeal carcinoma, oropharyngeal carcinoma | def: A malignant neoplasm that affects the epiglottis. The vast majority of cases are squamous cell carcinomas.",
+"ko": "후두개암",
+"alt": [
+"후두덮개암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0020655",
+"concept": "- MONDO:0020655 | juvenile ankylosing spondylitis | ancestors: ankylosing spondylitis, spondylitis, spondyloarthropathy, rheumatoid arthritis",
+"ko": "소아 강직성 척추염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0009276",
+"concept": "- MONDO:0009276 | Bernard-Soulier syndrome | syn: Bernard-Soulier syndrome; giant platelet disorder, isolated; giant platelet syndrome; Hemorrhagiparous thrombocytic dystrophy | ancestors: inherited bleeding disorder, platelet-type, syndromic disease, hemorrhagic disease, blood platelet disease | def: Bernard Soulier syndrome (BSS) is an inherited platelet disorder characterized by mild to severe bleeding tendency, macrothrombocytopenia and absent ristocetin-induced platelet agglutination.",
+"ko": "베르나르-술리에 증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005507",
+"concept": "- MONDO:0005507 | gingival cancer | syn: cancer of gingiva; gingiva cancer; malignant gingiva neoplasm; malignant gingival neoplasm | ancestors: musculoskeletal system cancer, oral cavity cancer, head and neck cancer, gingival neoplasm | def: A primary or metastatic malignant neoplasm that affects the gums.",
+"ko": "잇몸암",
+"alt": [
+"치은암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004777",
+"concept": "- MONDO:0004777 | acute laryngitis | syn: laryngitis, acute | ancestors: laryngitis, acute disease, laryngeal disorder, inflammatory disease | def: An acute inflammatory process affecting the larynx. It is caused by bacteria, viruses, or vocal strain. Signs and symptoms include sore throat, cough, swallowing difficulties, and hoarseness.",
+"ko": "급성 후두염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0008585",
+"concept": "- MONDO:0008585 | HELLP syndrome | syn: hemolysis, elevated liver enzymes, low platelets in pregnancy; hemolysis-elevated liver enzymes-low platelet count syndrome; hemolysis-elevated liver enzymes-low platelets syndrome | ancestors: severe pre-eclampsia, syndromic disease, preeclampsia, disease by body system or component | def: A life-threatening condition that can potentially complicate pregnancy. It is named for 3 features of the condition: H emolysis, E levated L iver enzyme levels, and L ow P latelet levels. It typically...",
+"ko": "HELLP 증후군",
+"alt": [
+"임신 중 용혈·간효소 상승·혈소판감소 증후군"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019453",
+"concept": "- MONDO:0019453 | myelodysplastic syndrome with multilineage dysplasia | syn: MDS-MLD; RCMD; refractory cytopenia with multilineage dysplasia | ancestors: refractory hematologic cancer, myelodysplastic syndrome, hematopoietic and lymphoid cell neoplasm, myeloid hemopathy | def: Refractory cytopenias with multilineage dysplasia (RCMD) is a frequent subtype of myelodysplastic syndrome (MDS) characterized by 1 or more cytopenias in the peripheral blood and dysplasia in 2 or mor...",
+"ko": "다계통 이형성을 동반한 골수형성이상증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007064",
+"concept": "- MONDO:0007064 | severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-negative, NK cell-negative, due to adenosine deaminase deficiency | syn: ADA deficiency; ADA-SCID; adenosine deaminase deficiency; adenosine deaminase deficiency, partial, Autosomal recessive, Somatic mosaicism | ancestors: T-B- severe combined immunodeficiency, inborn disorder of purine metabolism, familial severe combined immunodeficiency, severe combined immunodeficiency | def: A form of SCID characterized by profound lymphopenia and very low immunoglobulin levels of all isotypes resulting in severe and recurrent opportunistic infections.",
+"ko": "아데노신 탈아미노효소 결핍에 의한 상염색체 열성 T세포 음성 B세포 음성 NK세포 음성 중증 복합 면역결핍증",
+"alt": [
+"ADA 결핍증"
+],
+"organs": [
+"haematologic",
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003607",
+"concept": "- MONDO:0003607 | neuritis of upper limb | syn: forelimb neuritis; neuritis of forelimb | ancestors: neuritis, peripheral neuropathy, inflammatory disease, peripheral nervous system disorder | def: A neuritis that involves the forelimb.",
+"ko": "상지 신경염",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001674",
+"concept": "- MONDO:0001674 | diverticulitis of colon | syn: colon diverticulitis | ancestors: colonic disorder, diverticulitis, large intestine disorder, intestinal disorder | def: Inflammation of the colonic diverticula, generally with abscess formation and subsequent perforation.",
+"ko": "대장 게실염",
+"alt": [
+"결장 게실염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018874",
+"concept": "- MONDO:0018874 | acute myeloid leukemia | syn: acute granulocytic leukaemia; acute granulocytic leukemia; acute myeloblastic leukemia; acute myelocytic leukaemia | ancestors: myeloid leukemia, acute leukemia, leukemia, myeloproliferative neoplasm | def: Acute myeloid leukemia (AML) is a group of neoplasms arising from precursor cells committed to the myeloid cell-line differentiation. All of them are characterized by clonal expansion of myeloid blast...",
+"ko": "급성 골수성 백혈병",
+"alt": [
+"급성 골수모구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0100637",
+"concept": "- MONDO:0100637 | drug-induced myopathy | ancestors: myopathy, skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder | def: A myopathy caused by exposure to a drug.",
+"ko": "약물 유발 근병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019167",
+"concept": "- MONDO:0019167 | immunoglobulin A vasculitis | syn: allergic purpura; anaphylactoid purpura; HSP; IgA vasculitis | ancestors: hypersensitivity vasculitis, immune complex mediated vasculitis, necrotizing vasculitis, hypersensitivity reaction disease | def: A systemic IgA vasculitis that affects small vessels. It is characterized by skin purpura, arthritis, and abdominal and/or renal involvement.",
+"ko": "IgA 혈관염",
+"alt": [
+"알레르기성 자반증",
+"헤노흐-쇤라인 자반증"
+],
+"organs": [
+"renal",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019005",
+"concept": "- MONDO:0019005 | nephronophthisis | syn: medullary cystic kidney; nephronophthisis; nephronophthisis (disease) | ancestors: autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease, renal tubule disorder | def: Progressive tubulointerstitial injury, inherited in an autosomal recessive pattern, caused by mutations in genes involved in ciliary function, which may result in an end stage renal failure.",
+"ko": "신단위로증",
+"alt": [
+"신장로증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016608",
+"concept": "- MONDO:0016608 | megalencephaly | syn: macroencephaly; megalencephaly; megalencephaly (disease) | ancestors: brain disorder, disorder of development or morphogenesis, central nervous system disorder, disease by developmental or physiological process | def: A congenital abnormality in which the occipitofrontal circumference is greater than two standard deviations above the mean for a given age. It is associated with hydrocephalus; subdural effusion; arac...",
+"ko": "거대뇌증",
+"alt": [
+"거대 뇌"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018920",
+"concept": "- MONDO:0018920 | peripartum cardiomyopathy | syn: peripartum cardiomyopathy; postpartum cardiomyopathy | ancestors: non-familial dilated cardiomyopathy, pregnancy disorder, dilated cardiomyopathy, obstetric disorder | def: Peripartum cardiomyopathy (PPCM) is an idiopathic, potentially fatal form of dilated cardiomyopathy that develops during the final month of pregnancy or within five months after delivery.",
+"ko": "주산기 심근병증",
+"alt": [
+"산후 심근병증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0010674",
+"concept": "- MONDO:0010674 | mucopolysaccharidosis type 2 | syn: attenuated MPS (subtype; formerly known as mild MPS II); Hunter syndrome; Hunter's syndrome; I2S deficiency | ancestors: syndromic disease, mucopolysaccharidosis, lysosomal storage disease with skeletal involvement, disease by body system or component | def: A lysosomal storage disease leading to a massive accumulation of glycosaminoglycans and a wide variety of symptoms including distinctive coarse facial features, short stature, cardio-respiratory invol...",
+"ko": "점액다당류증 2형",
+"alt": [
+"헌터 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015900",
+"concept": "- MONDO:0015900 | hypoaldosteronism disease | syn: rare hypoaldosteronism | ancestors: adrenal gland disorder, endocrine system disorder, disease by body system or component, human disease",
+"ko": "알도스테론저하증",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019759",
+"concept": "- MONDO:0019759 | epispadias | syn: epispadias; epispadias (disease) | ancestors: exstrophy-epispadias complex, kidney disorder, urogenital tract malformation, urinary system disorder | def: Epispadias is a congenital genitourinary malformation belonging to the spectrum of the exstrophy-epispadias complex (EEC) and is characterized in males by an ectopic meatus or a mucosal strip in place...",
+"ko": "요도상열",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+}
+]

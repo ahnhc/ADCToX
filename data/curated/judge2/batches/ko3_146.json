@@ -1,0 +1,256 @@
+[
+{
+"id": "MONDO:0013969",
+"concept": "- MONDO:0013969 | combined oxidative phosphorylation defect type 11 | syn: combined oxidative phosphorylation defect type 11; combined oxidative phosphorylation deficiency caused by mutation in RMND1; combined oxidative phosphorylation deficiency type 11; COXPD11 | ancestors: combined oxidative phosphorylation deficiency, mitochondrial oxidative phosphorylation disorder, inborn mitochondrial metabolism disorder, developmental anomaly of metabolic origin | def: Any combined oxidative phosphorylation deficiency in which the cause of the disease is a mutation in the RMND1 gene.",
+"ko": "복합 산화적 인산화 결함 11형",
+"alt": [
+"RMND1 관련 복합 산화적 인산화 결핍증"
+],
+"organs": [
+"renal",
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021202",
+"concept": "- MONDO:0021202 | allergic otitis media | syn: allergic form of otitis media (disease); allergic otitis media (disease) | ancestors: allergic disease, otitis media, hypersensitivity reaction disease, middle ear disorder | def: A otitis media (disease) with a basis in a pathological type I hypersensitivity reaction.",
+"ko": "알레르기성 중이염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002429",
+"concept": "- MONDO:0002429 | idiopathic interstitial pneumonia | syn: idiopathic fibrosing alveolitis; idiopathic interstitial pneumonitis; IIP; IIp | ancestors: pneumonia, idiopathic disease, respiratory tract infectious disorder, pneumonitis | def: A class of diffuse lung diseases that typically affect the pulmonary interstitium, although some also have a component affecting the airways (for instance, Cryptogenic organizing pneumonitis).",
+"ko": "특발성 간질성 폐렴",
+"alt": [
+"특발성 섬유화 폐포염"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005280",
+"concept": "- MONDO:0005280 | prostatitis | syn: inflammation of prostate gland; prostate gland inflammation; prostatitis; prostatitis (disease) | ancestors: prostate disorder, inflammatory disease, male reproductive system disorder, disease by developmental or physiological process | def: An infectious or non-infectious inflammatory process affecting the prostate gland.",
+"ko": "전립선염",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0005739",
+"concept": "- MONDO:0005739 | echinostomiasis | syn: Echinostomatoidea caused disease or disorder; Echinostomatoidea disease or disorder; Echinostomatoidea infectious disease | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection by flukes of the genus Echinostoma.",
+"ko": "극구흡충증",
+"alt": [
+"에키노스토마증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006969",
+"concept": "- MONDO:0006969 | sialadenitis | syn: lymphadenitis (disease) of saliva-secreting gland; saliva-secreting gland lymphadenitis (disease); sialitis; sialoadenitis | ancestors: salivary gland disorder, lymphadenitis, mouth disorder, lymph node disorder | def: Sialadenitis is an infection of the salivary glands. It is usually caused by a virus or bacteria. The parotid (in front ofthe ear) and submandibular (under the chin) glands are most commonly affected....",
+"ko": "침샘염",
+"alt": [
+"타액선염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0024686",
+"concept": "- MONDO:0024686 | tenosynovial giant cell tumor, diffuse type | syn: diffuse giant cell neoplasm of tendon sheath; diffuse giant cell neoplasm of Tenosynovium; diffuse giant cell neoplasm of the Tenosynovium; diffuse giant cell tumor of tendon sheath | ancestors: tenosynovial giant cell tumor, benign synovial neoplasm, giant cell tumor, synovium neoplasm | def: A locally aggressive, diffusely infiltrating tumor, arising in the tendon sheath. It is composed of synovial-like mononuclear cells, hemosiderin-laden macrophages, foam cells, and inflammatory cells. ...",
+"ko": "힘줄집 거대세포종 미만형",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005492",
+"concept": "- MONDO:0005492 | urticaria | syn: hives; urticaria; urticaria (disease) | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: A vascular reaction of the skin characterized by erythema and wheal formation due to localized increase of vascular permeability. The causative mechanism may be allergy, infection, or stress.",
+"ko": "두드러기",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002275",
+"concept": "- MONDO:0002275 | generalized atherosclerosis | syn: generalised and unspecified atherosclerosis; generalized and unspecified atherosclerosis; generalized atherosclerosis | ancestors: atherosclerosis, arteriosclerosis disorder, arterial disorder, vascular disorder | def: Atherosclerosis that is not localized.",
+"ko": "전신 죽상경화증",
+"alt": [
+"전신 동맥경화증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0011014",
+"concept": "- MONDO:0011014 | pleuropulmonary blastoma | syn: childhood pulmonary blastoma; paediatric pulmonary blastoma; pediatric pulmonary blastoma; pleuropulmonary blastoma | ancestors: pulmonary blastoma, childhood malignant neoplasm, DICER1-related tumor predisposition, blastoma | def: A malignant neoplasm affecting the lungs and/or the pleura. Pleuropulmonary blastoma is seen in children. Microscopically, the tumor may show features of chondrosarcoma, leiomyosarcoma, rhabdomyosarco...",
+"ko": "흉막폐모세포종",
+"alt": [
+"소아 폐모세포종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006581",
+"concept": "- MONDO:0006581 | miliaria rubra | syn: prickly heat - miliaria; sudamina | ancestors: miliaria, syndromic disease, sweat gland disorder, disease by body system or component | def: Miliaria rubraor prickly heat occurs deeper in the epidermis (outside layer of skin) and results in very itchy red papules (bumps).",
+"ko": "홍색 땀띠",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005984",
+"concept": "- MONDO:0005984 | tinea pedis | syn: athlete's foot; dermatophytosis of foot; dermatophytosis of pes; pes dermatophytosis | ancestors: dermatophytosis, tinea infection, superficial mycosis, cutaneous mycosis | def: Dermatological pruritic lesion in the feet, caused by Trichophyton rubrum, T. mentagrophytes, or Epidermophyton floccosum.",
+"ko": "발백선",
+"alt": [
+"무좀"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0019824",
+"concept": "- MONDO:0019824 | non-acquired pituitary hormone deficiency | ancestors: pituitary deficiency, hereditary endocrine growth disease, endocrine system disorder, disease by body system or component",
+"ko": "비후천성 뇌하수체 호르몬 결핍증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017388",
+"concept": "- MONDO:0017388 | celiac trunk compression syndrome | syn: celiac artery compression syndrome; celiac artery stenosis from compression by median arcuate ligament of diaphragm; coeliac artery compression syndrome; Dunbar syndrome | ancestors: arterial disorder, syndromic disease, hereditary disease, vascular disorder | def: A rare disease caused by compression of the celiac axis by an abnormally shaped arcuate ligament (the part of the diaphragm in which both pillars join in the midline around the aorta). Patients have r...",
+"ko": "복강동맥 압박 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002943",
+"concept": "- MONDO:0002943 | external ear basal cell carcinoma | syn: basal cell carcinoma of external Ear; basal cell carcinoma of the external Ear; basal cell carcinoma of the external ear; basal cell external ear carcinoma | ancestors: external ear carcinoma, skin basal cell carcinoma, head and neck carcinoma, external ear cancer | def: A basal cell carcinoma that arises from the skin of the external ear.",
+"ko": "외이 기저세포암종",
+"alt": [],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018919",
+"concept": "- MONDO:0018919 | McCune-Albright syndrome | syn: Albright's disease; gonadotropin-independent female-limited sexual precocity; MAS; McCune Albright Syndrome | ancestors: syndromic disease, fibrous dysplasia/McCune-Albright syndrome, disease by body system or component, skeletal system disorder | def: A rare mosaic syndrome characterized by the combination of two or more of the following: fibrous dysplasia of bone (FD), hyperpigmented macules, and hyperfunctioning endocrinopathies (precocious puber...",
+"ko": "맥큔-올브라이트 증후군",
+"alt": [],
+"organs": [
+"dermatologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019145",
+"concept": "- MONDO:0019145 | hereditary thrombophilia due to congenital protein C deficiency | syn: hereditary thrombophilia due to congenital protein C deficiency; Protein C Deficiency; Protein C deficiency; protein C deficiency | ancestors: inherited thrombophilia, thrombophilia, inherited blood coagulation disorder, blood coagulation disease | def: Congenital protein C deficiency is an inherited coagulation disorder characterized by deep venous thrombosis symptoms due to reduced synthesis and/or activity levels of protein C.",
+"ko": "선천성 단백질 C 결핍에 의한 유전성 혈전성향증",
+"alt": [],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005964",
+"concept": "- MONDO:0005964 | sphenoid sinusitis | syn: sinusitis of sphenoid bone; sphenoid bone sinusitis; sphenoidal sinusitis | ancestors: sinusitis, disorder of facial skeleton, paranasal sinus disorder, inflammatory disease | def: An acute or chronic inflammatory process affecting the mucous membrane of the sphenoid sinus.",
+"ko": "접형동염",
+"alt": [
+"나비굴염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005708",
+"concept": "- MONDO:0005708 | Colorado tick fever | syn: American mountain fever; Colorado tick encephalitis; Colorado tick fever virus caused disease or disorder; Colorado tick fever virus disease or disorder | ancestors: Reoviridae infectious disease, viral encephalitis, vector-borne disease, primary viral infectious disease | def: A febrile illness characterized by chills, aches, vomiting, leukopenia, and sometimes encephalitis. It is caused by the colorado tick fever virus, a reovirus transmitted by the tick Dermacentor anders...",
+"ko": "콜로라도 진드기열",
+"alt": [
+"콜로라도 진드기 뇌염"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005526",
+"concept": "- MONDO:0005526 | tetanus | syn: Clostridium tetani caused infectious disease of the nervous system; Clostridium tetani infectious disease of the nervous system | ancestors: primary bacterial infectious disease, infectious disorder of the nervous system, Clostridium infectious disease, bacterial infectious disease | def: A serious infectious disorder that follows wound contamination by the Gram-positive bacterium Clostridium tetani. The bacteria produce a neurotoxin called tetanospasmin, which causes muscle spasm in t...",
+"ko": "파상풍",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+}
+]

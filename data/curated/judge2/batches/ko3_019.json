@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0019467",
+"concept": "- MONDO:0019467 | CD4+/CD56+ hematodermic neoplasm | syn: agranular CD4+ CD56+ hematodermic neoplasm/tumor; agranular CD4+ natural Killer cell leukaemia; agranular CD4+ natural Killer cell leukemia; blastic natural Killer leukemia/lymphoma | ancestors: skin cancer, myeloid neoplasm, T-cell non-Hodgkin lymphoma, integumentary system cancer | def: An aggressive immature hematologic neoplasm formerly known as blastic NK cell lymphoma, composed of cells with a lymphoblast-like morphology. Recent evidence suggests derivation from a plasmacytoid mo...",
+"ko": "CD4+/CD56+ 혈액피부 신생물",
+"alt": [
+"모세포성 형질세포양 수지상세포 종양"
+],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001220",
+"concept": "- MONDO:0001220 | hypoparathyroidism | ancestors: parathyroid gland disorder, endocrine system disorder, disease by body system or component, human disease | def: Hypoparathyroidism is an endocrine disorder in which the parathyroid glands in the neck do not produce enough parathyroid hormone (PTH). Common signs and symptoms include abdominal pain, brittle nails...",
+"ko": "부갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006664",
+"concept": "- MONDO:0006664 | atrial septal defect | syn: ASD; atrial septal defect; Atrial Septal Defects; atrial septum defect | ancestors: heart septal defect, cardiogenetic disease, congenital heart disease, hereditary disease | def: Interauricular communication is a congenital malformation characterized by a communication between the atrial chambers of the heart.",
+"ko": "심방중격결손",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0018874",
+"concept": "- MONDO:0018874 | acute myeloid leukemia | syn: acute granulocytic leukaemia; acute granulocytic leukemia; acute myeloblastic leukemia; acute myelocytic leukaemia | ancestors: myeloid leukemia, acute leukemia, leukemia, myeloproliferative neoplasm | def: Acute myeloid leukemia (AML) is a group of neoplasms arising from precursor cells committed to the myeloid cell-line differentiation. All of them are characterized by clonal expansion of myeloid blast...",
+"ko": "급성 골수성 백혈병",
+"alt": [
+"급성 골수모구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017862",
+"concept": "- MONDO:0017862 | paraquat poisoning | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Paraquat poisoning is a rare intoxication with paraquat (a non-selective bipyridilium herbicide that has been banned in Europe), usually occurring through ingestion of the poison, and that presents wi...",
+"ko": "파라콰트 중독",
+"alt": [],
+"organs": [
+"hepatic",
+"pulmonary",
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004967",
+"concept": "- MONDO:0004967 | acute lymphoblastic leukemia | syn: acute lymphoblastic leukaemia (ALL); acute lymphoblastic leukaemia (disease); acute lymphoblastic leukemia; acute lymphoblastic leukemia (ALL) | ancestors: precursor lymphoblastic lymphoma/leukemia, neoplasm of immature B and T cells, lymphoid leukemia, acute leukemia | def: Leukemia with an acute onset, characterized by the presence of lymphoblasts in the bone marrow and the peripheral blood. It includes the acute B lymphoblastic leukemia and acute T lymphoblastic leukem...",
+"ko": "급성 림프모구백혈병",
+"alt": [
+"급성 림프구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0006761",
+"concept": "- MONDO:0006761 | fibromuscular dysplasia | syn: fibromuscular dysplasia; fibromuscular dysplasia of arteries; FMDA | ancestors: arterial disorder, hereditary disease, vascular disorder, disease of genetic or genomic mechanism | def: A disorder characterized by fibrous thickening of the arterial wall resulting in narrowing of the arterial lumen. It most often affects the renal artery and less often the carotid artery and abdominal...",
+"ko": "섬유근육 형성이상",
+"alt": [
+"섬유근형성이상"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0023305",
+"concept": "- MONDO:0023305 | heavy metal poisoning | syn: heavy metal poisoning; toxic effect of heavy metal | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Heavy metal poisoning refers to when excessive exposure to a heavy metal affects the normal function of the body. Examples of heavy metals that can cause toxicity include lead, mercury, arsenic, cadmi...",
+"ko": "중금속 중독",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006844",
+"concept": "- MONDO:0006844 | magnesium deficiency | ancestors: nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism, human disease | def: A nutritional condition produced by a deficiency of magnesium in the diet, characterized by anorexia, nausea, vomiting, lethargy, and weakness. Symptoms are paresthesias, muscle cramps, irritability, ...",
+"ko": "마그네슘 결핍증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016472",
+"concept": "- MONDO:0016472 | dracunculiasis | syn: dracontiasis; Dracunculosis; Dracunculus medinensis caused disease or disorder; Dracunculus medinensis disease or disorder | ancestors: Rhabditida infectious disease, filariasis, Nematoda infectious disease, helminthiasis | def: Dracunculiasis (Guinea worm disease) is a neglected tropical disease (NTD) characterized by a painful burning skin lesion from which the Dracunculus medinensis parasite emerges approximately 1 year af...",
+"ko": "메디나충증",
+"alt": [
+"기니아충증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001577",
+"concept": "- MONDO:0001577 | respiratory syncytial virus infectious disease | syn: Human respiratory syncytial virus infection; respiratory syncytial virus infection | ancestors: Mononegavirales infectious disease, viral respiratory tract infection, primary viral infectious disease, viral infectious disease | def: Infection with the respiratory syncytial virus, an RNA virus of the genus Pneumovirus, in the family Paramyxoviridae, which is characterized by the formation of syncytia in tissue culture. It causes m...",
+"ko": "호흡기세포융합바이러스 감염증",
+"alt": [
+"RSV 감염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:1060134",
+"concept": "- MONDO:1060134 | atherosclerotic cardiovascular disease | ancestors: atherosclerosis, arteriosclerosis disorder, arterial disorder, vascular disorder | def: Any cardiovascular disease resulting from atherosclerosis.",
+"ko": "죽상경화성 심혈관 질환",
+"alt": [
+"동맥경화성 심혈관 질환"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006770",
+"concept": "- MONDO:0006770 | giant cell reparative granuloma | syn: central giant cell (reparative) granuloma; central giant cell granuloma; GCLSB; giant cell lesion of small bones | ancestors: bone giant cell tumor, bone sarcoma, bone cancer, sarcoma | def: A rare tumor-like lesion of the hands and feet characterized by the presence of hemorrhagic fibrous tissue, hemosiderin deposition, osteoclast-like giant cells which are irregularly distributed, and r...",
+"ko": "거대세포 복원성 육아종",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002751",
+"concept": "- MONDO:0002751 | bladder adenocarcinoma | syn: adenocarcinoma of bladder; adenocarcinoma of the bladder; adenocarcinoma of the urinary bladder; adenocarcinoma of urinary bladder | ancestors: adenocarcinoma, urinary bladder carcinoma, carcinoma, glandular cell neoplasm | def: A carcinoma that arises from glandular epithelial cells of the urinary bladder",
+"ko": "방광 선암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019434",
+"concept": "- MONDO:0019434 | systemic-onset juvenile idiopathic arthritis | syn: sJIA; SoJIA; Still disease; systemic polyarthritis | ancestors: juvenile idiopathic arthritis, autoinflammatory syndrome, rheumatic disorder, arthritic joint disease | def: Systemic-onset juvenile idiopathic arthritis is marked by the severity of the extra-articular manifestations (fever, cutaneous eruptions) and by an equal sex ratio.",
+"ko": "전신형 소아 특발성 관절염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0000468",
+"concept": "- MONDO:0000468 | third-degree atrioventricular block | syn: atrioventricular block complete; atrioventricular block, third degree; AV block third degree; complete atrioventricular block | ancestors: atrioventricular block, heart conduction disease, atrioventricular dissociation, heart disorder | def: A disorder characterized by an electrocardiographic finding of complete failure of atrial electrical impulse conduction to the ventricles. This is manifested on the ECG by disassociation of atrial and...",
+"ko": "3도 방실 차단",
+"alt": [
+"완전 방실 차단"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0011493",
+"concept": "- MONDO:0011493 | Stickler syndrome type 2 | syn: COL11A1 Stickler syndrome; Stickler syndrome caused by mutation in COL11A1; Stickler syndrome type II | ancestors: Stickler syndrome, syndromic disease, spondyloepiphyseal dysplasia, vitreoretinal degeneration | def: Stickler syndrome is an inherited vitreoretinopathy characterized by the association of ocular signs with more or less complete forms of Pierre-Robin sequence, bone disorders, and sensorineural deafne...",
+"ko": "스티클러 증후군 2형",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005324",
+"concept": "- MONDO:0005324 | seasonal allergic rhinitis | syn: hay fever; seasonal allergic rhinitis | ancestors: allergic rhinitis, allergic respiratory disease, rhinitis, respiratory system disorder | def: Allergic rhinitis caused by outdoor allergens.",
+"ko": "계절성 알레르기 비염",
+"alt": [
+"건초열"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0017675",
+"concept": "- MONDO:0017675 | punctate palmoplantar keratoderma | syn: punctate keratosis palmoplantaris; punctate palmoplantar hyperkeratosis; punctate PPK | ancestors: hereditary palmoplantar keratoderma, palmoplantar keratosis, epidermal disease, hereditary skin disorder | def: A palmoplantar keratosis characterized by keratoses with a \\\"raindrop\\\" pattern on the palmoplantar surface, skin lesions which may involve the whole of the palmoplantar surface, or may be more restri...",
+"ko": "점상 손발바닥 각화증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0000153",
+"concept": "- MONDO:0000153 | transposition of the great arteries | syn: complete transposition; great vessels transposition; TGA; TGV | ancestors: congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis | def: A congenital cardiac defect in which two heart vessels are reversed (transposed).",
+"ko": "대혈관전위",
+"alt": [
+"대동맥전위",
+"완전 대혈관전위"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+}
+]

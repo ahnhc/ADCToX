@@ -1,0 +1,255 @@
+[
+{
+"id": "MONDO:0021113",
+"concept": "- MONDO:0021113 | respiratory failure | syn: failure, respiratory; respiratory failure | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: The significant impairment of gas exchange within the lungs resulting in hypoxia, hypercarbia, or both, to the extent that organ tissue perfusion is severely compromised. Causes include chronic obstru...",
+"ko": "호흡부전",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0008475",
+"concept": "- MONDO:0008475 | spondylolisthesis | syn: spondylolisthesis; spondylolisthesis (disease) | ancestors: disease of bone structure, hereditary disease, bone disorder, disease of genetic or genomic mechanism | def: A condition in which there is forward displacement of a vertebral bone over the on below it.",
+"ko": "척추전방전위증",
+"alt": [
+"척추분리증성 전방전위"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0001369",
+"concept": "- MONDO:0001369 | chronic laryngitis | syn: laryngitis, chronic | ancestors: laryngitis, laryngeal disorder, inflammatory disease, upper respiratory tract disorder | def: Persistent laryngitis usually caused by smoking, heavy alcohol consumption, voice abuse, or gastroesophageal reflux disease. It results in hoarseness and other voice changes.",
+"ko": "만성 후두염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0002237",
+"concept": "- MONDO:0002237 | carbuncle | syn: carbuncle and furuncle of buttock; carbuncle and furuncle of face | ancestors: pyoderma, skin disorder, integumentary system disorder, disease by body system or component | def: An infection of cutaneous and subcutaneous tissue that consists of a cluster of boils. Commonly, the causative agent is staphylococcus aureus. Carbuncles produce fever, leukocytosis, extreme pain, and...",
+"ko": "큰종기",
+"alt": [
+"옹종"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 10,
+"new": false
+},
+{
+"id": "MONDO:0021439",
+"concept": "- MONDO:0021439 | benign neoplasm of pituitary gland | syn: benign neoplasm of pituitary; benign neoplasm of the pituitary; benign neoplasm of the pituitary gland; benign pituitary gland neoplasm | ancestors: benign reproductive system neoplasm, benign endocrine neoplasm, bone benign neoplasm, pituitary tumor | def: A benign neoplasm that involves the pituitary gland.",
+"ko": "뇌하수체 양성 신생물",
+"alt": [
+"뇌하수체 양성 종양"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020648",
+"concept": "- MONDO:0020648 | rubella encephalitis | ancestors: postinfectious encephalitis, post-viral disorder, infectious encephalitis, post-infectious disorder",
+"ko": "풍진뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0024326",
+"concept": "- MONDO:0024326 | pleural adenomatoid tumor | syn: benign mesothelioma of pleura; benign mesothelioma of the pleura; pleura adenomatoid tumor; pleura adenomatoid tumour | ancestors: benign mesothelioma, pleural mesothelioma, adenomatoid tumor, benign neoplasm of pleura | def: A rare benign neoplasm that arises from the mesothelial cells of the pleura. It is characterized by a proliferation of epithelioid cells forming glandular and tubular patterns in a fibrous stroma.",
+"ko": "흉막 샘종모양 종양",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005649",
+"concept": "- MONDO:0005649 | appendicitis | syn: inflammation of vermiform appendix; vermiform appendix inflammation | ancestors: cecal disorder, gastroenteritis, disorder of appendix, colonic disorder | def: Acute inflammation of the vermiform appendix.",
+"ko": "충수염",
+"alt": [
+"맹장염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0002356",
+"concept": "- MONDO:0002356 | pancreas disorder | syn: disease of pancreas; disease or disorder of pancreas; disorder of pancreas; pancreas disease | ancestors: digestive system disorder, endocrine system disorder, disease by body system or component, human disease | def: A non-neoplastic or neoplastic disorder that affects the pancreas. Representative examples of non-neoplastic disorders include pancreatitis and pancreatic insufficiency. Representative examples of neo...",
+"ko": "췌장 질환",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018999",
+"concept": "- MONDO:0018999 | LCAT deficiency | syn: lecithin-cholesterol acyltransferase deficiency | ancestors: hypoalphalipoproteinemia, metabolic disease, disease by developmental or physiological process, human disease | def: LCAT (lecithin-cholesterol acyltransferase) deficiency is a rare lipoprotein metabolism disorder characterized clinically by corneal opacities, and sometimes renal failure and hemolytic anemia, and bi...",
+"ko": "LCAT 결핍증",
+"alt": [
+"레시틴-콜레스테롤 아실전달효소 결핍증"
+],
+"organs": [
+"haematologic",
+"renal",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020179",
+"concept": "- MONDO:0020179 | palpebral nevus | syn: eyelid nevus; melanocytic nevus of skin of eyelid; nevus of eyelid; nevus of the eyelid | ancestors: melanocytic nevus, benign tumor of palpebral epidermis, benign neoplasm of skin, melanocytic skin neoplasm | def: A melanocytic nevus that involves the skin of eyelid.",
+"ko": "눈꺼풀 모반",
+"alt": [
+"안검 모반"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0004909",
+"concept": "- MONDO:0004909 | urethral gland abscess | ancestors: urethral disorder, urinary system disorder, disease by body system or component, human disease",
+"ko": "요도샘 농양",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013571",
+"concept": "- MONDO:0013571 | acatalasia | syn: acatalasemia; acatalasia; catalase deficiency | ancestors: disorder of defective peroxisome oxidative status, peroxisomal single enzyme/protein defect, peroxisomal disease, inborn errors of metabolism | def: A congenital disorder resulting from a deficiency in erythrocyte catalase, an enzyme responsible for the breakdown of hydrogen peroxide.",
+"ko": "무카탈라제혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014891",
+"concept": "- MONDO:0014891 | hyperuricemic nephropathy, familial juvenile type 4 | syn: ADTKD-SEC61A1; familial juvenile hyperuricemic nephropathy caused by mutation in SEC61A1; HNFJ4; hyperuricemic nephropathy, familial juvenile, 4 | ancestors: familial juvenile hyperuricemic nephropathy, SEC61A1 deficiency, inherited kidney disorder, hereditary disease | def: Any familial juvenile hyperuricemic nephropathy in which the cause of the disease is a mutation in the SEC61A1 gene.",
+"ko": "가족성 소아 고요산혈증 신병증 4형",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001517",
+"concept": "- MONDO:0001517 | dysentery | syn: diarrheal disease, infectious; dysenteric diarrhea; dysenteric diarrhoea; infectious diarrhea | ancestors: inflammatory diarrhea, acute diarrhea, intestinal infectious disease, gastrointestinal mucositis | def: Acute inflammation of the intestine associated with infectious diarrhea of various etiologies, generally acquired by eating contaminated food containing toxins, biological derived from bacteria or oth...",
+"ko": "이질",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001580",
+"concept": "- MONDO:0001580 | lacrimal duct cancer | syn: cancer of lacrimal drainage system; lacrimal drainage system cancer; malignant lacrimal drainage system neoplasm; malignant lacrimal duct neoplasm | ancestors: lacrimal system cancer, lacrimal apparatus disorder, ocular cancer, eye adnexa disorder | def: A primary or metastatic malignant neoplasm affecting the lacrimal duct.",
+"ko": "눈물관암",
+"alt": [
+"누도암"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005870",
+"concept": "- MONDO:0005870 | necatoriasis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A disorder caused by an infection with hookworms of the genus Necator, which settle in the host's small intestine, and cause abdominal pain, diarrhea, weight loss, and anemia.",
+"ko": "아메리카구충증",
+"alt": [
+"네카토르증"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018897",
+"concept": "- MONDO:0018897 | primary cutaneous CD30+ T-cell lymphoproliferative disease | syn: primary cutaneous Ki-1+ T-cell lymphoproliferative disease | ancestors: indolent primary cutaneous T-cell lymphoma, primary cutaneous T-cell lymphoma, T-cell non-Hodgkin lymphoma, primary cutaneous lymphoma",
+"ko": "원발성 피부 CD30 양성 T세포 림프증식질환",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0018895",
+"concept": "- MONDO:0018895 | Plummer-Vinson syndrome | syn: Kelly-Paterson syndrome; Sideropenic dysphagia | ancestors: syndromic disease, acquired deficiency anemia, disease by body system or component, deficiency anemia | def: Plummer-Vinson or Paterson-Kelly syndrome presents as a classical triad of dysphagia, iron-deficiency anemia and esophageal webs.",
+"ko": "플러머-빈슨 증후군",
+"alt": [
+"패터슨-켈리 증후군"
+],
+"organs": [
+"haematologic",
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004187",
+"concept": "- MONDO:0004187 | nodular fasciitis | syn: nodular fasciitis; pseudosarcomatous fasciitis; pseudosarcomatous fibromatosis | ancestors: fasciitis, fibroblastic neoplasm, soft tissue neoplasm, subcutaneous tissue disorder | def: A self-limiting, rapidly growing, non-encapsulated benign neoplasm that arises from the soft tissues. It is characterized by the presence of plump spindle-shaped fibroblasts, multinucleated osteoclast...",
+"ko": "결절성 근막염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 7,
+"new": false
+}
+]

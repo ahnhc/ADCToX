@@ -1,0 +1,232 @@
+[
+{
+"id": "MONDO:0010134",
+"concept": "- MONDO:0010134 | Pendred syndrome | syn: deafness with goiter; deafness with goitre; goiter-deafness syndrome; hypothyroidism, congenital, due to dyshormonogenesis, 2B | ancestors: syndromic disease, autosomal recessive disease, familial thyroid dyshormonogenesis, disease by body system or component | def: Pendred syndrome (PDS) is a clinically variable genetic disorder characterized by bilateral sensorineural hearing loss and euthyroid goiter.",
+"ko": "펜드레드 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006690",
+"concept": "- MONDO:0006690 | carotid artery thrombosis | ancestors: intracranial thrombosis, carotid artery disorder, thrombotic disease, cerebrovascular disorder | def: Blood clot formation in any part of the carotid arteries. This may produce carotid stenosis or occlusion of the vessel, leading to transient ischemic attack; cerebral infarction; or amaurosis fugax.",
+"ko": "목동맥 혈전증",
+"alt": [
+"경동맥 혈전증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005324",
+"concept": "- MONDO:0005324 | seasonal allergic rhinitis | syn: hay fever; seasonal allergic rhinitis | ancestors: allergic rhinitis, allergic respiratory disease, rhinitis, respiratory system disorder | def: Allergic rhinitis caused by outdoor allergens.",
+"ko": "계절성 알레르기 비염",
+"alt": [
+"건초열"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0007946",
+"concept": "- MONDO:0007946 | jaw-winking syndrome | syn: jaw-winking; jaw-winking syndrome; mandibulo-palpebral synkinesis-ptosis syndrome; Marcus Gunn Phenomenon | ancestors: syndromic disease, cranial nerve neuropathy, disorder of visual system, disease by body system or component | def: Marcus-Gunn syndrome is characterized by ptosis associated with maxillopalpebral synkinesis.",
+"ko": "턱-윙크 증후군",
+"alt": [
+"마커스 건 현상"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001964",
+"concept": "- MONDO:0001964 | chronic tubotympanic suppurative otitis media | ancestors: suppurative otitis media, otitis media, middle ear disorder, inflammatory disease | def: A suppurative otitis media which is an inflammatory disease of the middle ear cleft characterized by the presence of a persisting perforation within the pars tensa of the tympanic membrane, intermitte...",
+"ko": "만성 이관고실 화농성 중이염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020806",
+"concept": "- MONDO:0020806 | sinoatrial block | ancestors: heart conduction disease, heart disorder, cardiovascular disorder, disease by body system or component | def: A heart block that is initiated in the sinoatrial node.",
+"ko": "동방 차단",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001110",
+"concept": "- MONDO:0001110 | chronic pyelonephritis | syn: pyelonephritis, chronic | ancestors: chronic kidney disease, pyelonephritis, kidney disorder, uterine inflammatory disease | def: Persistent pyelonephritis.",
+"ko": "만성 신우신염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0008667",
+"concept": "- MONDO:0008667 | von Hippel-Lindau disease | syn: cerebroretinal angiomatosis; familial cerebelloretinal angiomatosis; Lindau disease; VHL | ancestors: autosomal dominant disease, neurocutaneous syndrome, hereditary neurological disease, autosomal genetic disease | def: An autosomal dominant disorder caused by pathogenic variants in the VHL gene, leading to an increased risk of various benign and malignant tumors, including hemangioblastomas, retinal hemangiomas, end...",
+"ko": "폰 히펠-린다우병",
+"alt": [
+"폰히펠-린다우 증후군"
+],
+"organs": [
+"renal",
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019514",
+"concept": "- MONDO:0019514 | hepatic veno-occlusive disease | syn: Budd Chiari Syndrome; hepatic Vod; liver veno-occlusive disease; sinusoidal obstruction syndrome | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder | def: Hepatic veno-occlusive disease (hepatic VOD) is a condition resulting from toxic injury to the hepatic sinusoidal capillaries that leads to obstruction of the small hepatic veins.",
+"ko": "간정맥폐쇄병",
+"alt": [
+"간 정맥폐쇄성 질환"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007369",
+"concept": "- MONDO:0007369 | hereditary coproporphyria | syn: coproporphyrinogen oxidase deficiency; hereditary coproporphyria | ancestors: hepatic porphyria, CPOX-related hereditary coproporphyria, liver disorder, porphyria | def: A form of acute hepatic porphyria characterized by the occurrence of neuro-visceral attacks and, more rarely, by the presence of cutaneous lesions.",
+"ko": "유전성 코프로포르피린증",
+"alt": [
+"코프로포르피리노겐 산화효소 결핍증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0016644",
+"concept": "- MONDO:0016644 | logopenic progressive aphasia | syn: Logopenic primary progressive aphasia; Logopenic variant PPA; LPA | ancestors: primary progressive aphasia, neurodegenerative disease, central nervous system disorder, nervous system disorder | def: Logopenic progressive aphasia (lv-PPA) is a form of primary progressive aphasia (PPA), characterized by impaired single-word retrieval and naming and impaired repetition with spared single-word compre...",
+"ko": "로고페닉 진행성 실어증",
+"alt": [
+"로고페닉 원발진행실어증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004582",
+"concept": "- MONDO:0004582 | rheumatic myocarditis | syn: acute rheumatic myocarditis; acute rheumatic myocarditis (disorder) [ambiguous]; rheumatic myocarditis | ancestors: myocarditis, rheumatic heart disease, intrinsic cardiomyopathy, inflammation of heart layer | def: Inflammation of the myocardium in acute rheumatic heart disease.",
+"ko": "류마티스 심근염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0002545",
+"concept": "- MONDO:0002545 | spinal cord disorder | syn: disease of spinal cord; disease of the spinal cord; disease or disorder of spinal cord; disorder of spinal cord | ancestors: central nervous system disorder, nervous system disorder, disease by body system or component, human disease | def: A disease involving the spinal cord.",
+"ko": "척수 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0013749",
+"concept": "- MONDO:0013749 | ventricular septal defect 3 | syn: NKX2-5 ventricular septal defect (disease); ventricular septal defect (disease) caused by mutation in NKX2-5; ventricular septal defect 3; ventricular septal defect type 3 | ancestors: ventricular septal defect, heart septal defect, cardiogenetic disease, congenital heart disease | def: Any ventricular septal defect in which the cause of the disease is a mutation in the NKX2-5 gene.",
+"ko": "심실중격결손 3형",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005065",
+"concept": "- MONDO:0005065 | mesothelioma | syn: mesothelioma | ancestors: mesothelial neoplasm, neoplasm, neoplastic disease or syndrome, cancer or benign tumor | def: A usually malignant and aggressive neoplasm of the mesothelium which is often associated with exposure to asbestos.",
+"ko": "중피종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005055",
+"concept": "- MONDO:0005055 | Kaposi's sarcoma | syn: Kaposi sarcoma; Kaposi's sarcoma; Kaposi's sarcoma (disease); KS | ancestors: viral infectious disease, human herpesvirus 8-related tumor, angiosarcoma, infectious disease | def: A malignant neoplasm characterized by a vascular proliferation which usually contains blunt endothelial cells. Erythrocyte extravasation and hemosiderin deposition are frequently present. The most fre...",
+"ko": "카포시 육종",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0044348",
+"concept": "- MONDO:0044348 | hemoglobinopathy | syn: hemoglobinopathy | ancestors: erythrocyte disorder, hematologic disorder, disease by body system or component, human disease",
+"ko": "혈색소병증",
+"alt": [
+"헤모글로빈병증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0019468",
+"concept": "- MONDO:0019468 | T-cell prolymphocytic leukemia | syn: CLL, T-cell; T cell chronic lymphocytic leukaemia; T cell chronic lymphocytic leukemia; T cell CLL | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, prolymphocytic leukemia, T lymphoblastic leukemia/lymphoma, T-cell acute lymphoblastic leukemia | def: A slow-growing type of leukemia (blood cancer) in which too many lymphocytes are found in the bone marrow and/or blood. The T-cell is specified as the defective cell line.",
+"ko": "T세포 전림프구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000334",
+"concept": "- MONDO:0000334 | multinodular goiter | syn: goiter, multinodular | ancestors: hereditary disease, nodular goiter, disease of genetic or genomic mechanism, goiter | def: Nodular goiter characterized by more than one discrete tissue mass.",
+"ko": "다결절성 갑상선종",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0023297",
+"concept": "- MONDO:0023297 | guttate psoriasis | syn: guttate psoriasis | ancestors: psoriasis, dermatitis, immune system disorder, hereditary skin disorder | def: A form of psoriasis characterized by a sudden onset of small, red, and scaly teardrop-shaped spots that appear on the arms, legs, and middle of the body, usually triggered by an infection.",
+"ko": "물방울 건선",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+}
+]

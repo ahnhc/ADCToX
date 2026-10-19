@@ -1,0 +1,263 @@
+[
+{
+"id": "MONDO:0019157",
+"concept": "- MONDO:0019157 | myelodysplastic syndrome with ring sideroblasts | syn: acquired idiopathic sideroblastic anaemia; acquired idiopathic sideroblastic anemia; AISA; MDS with ring sideroblasts | ancestors: sideroblastic anemia, myelodysplastic syndrome, idiopathic disease, anemia | def: Acquired idiopathic sideroblastic anemia is one of a group of disorders known as the myelodysplastic syndromes (MDS) characterized by ineffective haemopoiesis affecting one or more blood cell lineages...",
+"ko": "고리철적모구를 동반한 골수형성이상 증후군",
+"alt": [
+"후천성 특발성 철적모구성 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001451",
+"concept": "- MONDO:0001451 | peripheral retinal degeneration | syn: peripheral degeneration of retina; peripheral retinal Degeneration | ancestors: retinal degeneration, retinal disorder, nervous system disorder, eye disorder | def: Degeneration of the peripheral retina.",
+"ko": "주변부 망막 변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001213",
+"concept": "- MONDO:0001213 | serous glue ear | syn: serous otitis media, chronic | ancestors: serous otitis media, chronic non-suppurative otitis media, non-suppurative otitis media, chronic otitis media | def: Chronic form of serous otitis media.",
+"ko": "장액성 아교귀",
+"alt": [
+"만성 장액성 중이염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017560",
+"concept": "- MONDO:0017560 | congenital genu recurvatum | syn: genu recurvatum; hyperextension deformity of knee; hyperextension of knee deformity | ancestors: congenital knee dislocation, disorder of development or morphogenesis, disease by developmental or physiological process, human disease | def: An abnormal alignment of the knee backwards that is due to a deformity in the knee joint.",
+"ko": "선천성 반장슬",
+"alt": [
+"선천성 무릎 과신전 변형"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008404",
+"concept": "- MONDO:0008404 | scalp-ear-nipple syndrome | syn: Finlay-Marks syndrome; scalp-ear-nipple syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome without intellectual disability, ectodermal dysplasia syndrome, mixed dermis disorder, multiple congenital anomalies/dysmorphic syndrome | def: Scalp-ear-nipple syndrome is characterized by the following triad: areas of hairless raw skin over the scalp (present at birth and healing during childhood), prominent, hypoplastic ears with almost ab...",
+"ko": "두피-귀-젖꼭지 증후군",
+"alt": [
+"핀레이-마크스 증후군"
+],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005892",
+"concept": "- MONDO:0005892 | otitis media with effusion | syn: OME | ancestors: chronic non-suppurative otitis media, non-suppurative otitis media, chronic otitis media, otitis media | def: Otitis media associated with accumulation of fluid in the middle ear.",
+"ko": "삼출성 중이염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0007145",
+"concept": "- MONDO:0007145 | aplasia cutis congenita | syn: aplasia cutis congenita; aplasia cutis congenita (disease); aplasia cutis congenita recessive | ancestors: mixed dermis disorder, hereditary skin disorder, dermis disorder, hereditary disease | def: Aplasia cutis congenita (ACC) is a rare skin disorder characterized by localized absence of skin that is usually located on the scalp but can occur anywhere on the body including the face, trunk and e...",
+"ko": "선천성 피부무형성증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0009258",
+"concept": "- MONDO:0009258 | classic galactosemia | syn: classic galactosemia; galactose-1-phosphate uridyltransferase deficiency; galactosemia type 1; GALT deficiency | ancestors: galactosemia, inherited primary ovarian failure, disorder of galactose and fructose metabolism, eye disorder | def: Classic galactosemia is a life-threatening metabolic disease with onset in the neonatal period. Infants usually develop feeding difficulties, lethargy, and severe liver disease.",
+"ko": "고전적 갈락토오스혈증",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019064",
+"concept": "- MONDO:0019064 | hereditary spastic paraplegia | syn: familial spastic paraplegia; hereditary spastic paraparesis; HSP; SPG | ancestors: paraplegia, inherited neurodegenerative disorder, hereditary neuromuscular disease, palsy | def: Hereditary spastic paraplegias (HSP) comprise a genetically and clinically heterogeneous group of neurodegenerative disorders characterized by progressive spasticity and hyperreflexia of the lower lim...",
+"ko": "유전성 경직성 하반신마비",
+"alt": [
+"가족성 경직성 하반신마비"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005631",
+"concept": "- MONDO:0005631 | actinomycosis | syn: Actinomyces infection | ancestors: commensal bacterial infectious disease, Actinomycetales infectious disease, bacterial infectious disease, gram-positive bacterial infections | def: Actinomycosis is a chronic bacterial infection that commonly affects the face and neck. It is usually caused by an anaerobic bacteria called Actinomyces israelii. Actinomyces are normal inhabitants of...",
+"ko": "방선균증",
+"alt": [
+"악티노미세스증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0020066",
+"concept": "- MONDO:0020066 | Ehlers-Danlos syndrome | syn: Danlos disease; Danlos Disease, Ehlers; danlos ehlers syndrome; Disease, Ehlers Danlos | ancestors: syndromic disease, hereditary disease, developmental defect during embryogenesis, disease by body system or component | def: The Ehlers–Danlos syndromes (EDS) are a clinically and genetically heterogeneous group of heritable connective tissue disorders (HCTDs) characterized by joint hypermobility, skin hyperextensibility, a...",
+"ko": "엘러스-단로스 증후군",
+"alt": [
+"엘러스-단로 증후군"
+],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004148",
+"concept": "- MONDO:0004148 | gallbladder papillary neoplasm with an associated invasive carcinoma | syn: gall bladder papillary carcinoma; gallbladder papillary neoplasm with an associated invasive cancer; gallbladder papillary neoplasm with an associated invasive carcinoma; intracystic papillary neoplasm with an associated invasive carcinoma | ancestors: papillary adenocarcinoma, gallbladder papillary neoplasm, gallbladder adenocarcinoma, adenocarcinoma | def: An intraluminal papillary neoplasm, usually with high grade intraepithelial neoplasia, that arises from the gallbladder. It is associated with the presence of an invasive carcinoma. The carcinomatous ...",
+"ko": "침윤성 암종을 동반한 담낭 유두상 신생물",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004634",
+"concept": "- MONDO:0004634 | vein disorder | syn: disease of vein; disease or disorder of vein; disorder of vein; vein disease | ancestors: vascular disorder, cardiovascular disorder, disease by body system or component, human disease | def: A disease involving the vein.",
+"ko": "정맥 질환",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019259",
+"concept": "- MONDO:0019259 | classic phenylketonuria | syn: classic PKU | ancestors: phenylketonuria, autosomal recessive disease, phenylalanine hydroxylase deficiency, autosomal genetic disease | def: A phenylketonuria characterized by untreated blood phenylalanine concentrations above approximately 1200 umol/L, the most severe end of the phenylalanine hydroxylase deficiency spectrum, reflecting li...",
+"ko": "고전형 페닐케톤뇨증",
+"alt": [
+"고전적 PKU"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015909",
+"concept": "- MONDO:0015909 | aplastic anemia | ancestors: anemia, hematologic disorder, disease by body system or component, human disease | def: Anemia resulting from bone marrow failure (aplastic or hypoplastic bone marrow). The production of erythroblasts and red cells is markedly decreased, and it may be associated with decreased production...",
+"ko": "재생불량빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019359",
+"concept": "- MONDO:0019359 | Rocky mountain spotted fever | ancestors: spotted fever, Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis | def: Rocky Mountain spotted fever refers to an infection caused by the bacterium Rickettsia rickettsia. This particular bacterium is carried by certain species of ticks and spread to humans through the bit...",
+"ko": "로키산 홍반열",
+"alt": [
+"로키산 점무늬열"
+],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000916",
+"concept": "- MONDO:0000916 | intestinal infectious disease | ancestors: gastrointestinal mucositis, gastroenteritis, digestive system infectious disorder, digestive system disorder | def: An infectious disease involving a pathogenic inflammatory response in the intestinal mucosa.",
+"ko": "장 감염성 질환",
+"alt": [
+"장 감염병"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0007836",
+"concept": "- MONDO:0007836 | IVIC syndrome | syn: IVIC syndrome; oculo-oto-radial syndrome; radial ray defects, hearing impairment, external ophthalmoplegia, and thrombocytopenia | ancestors: hereditary disease, dysostosis, congenital limb malformation, disease of genetic or genomic mechanism | def: IVIC syndrome is a very rare genetic malformation syndrome characterized by upper limb anomalies (radial ray defects, carpal bone fusion), extraocular motor disturbances, and congenital bilateral non-...",
+"ko": "IVIC 증후군",
+"alt": [
+"눈-귀-요골 증후군"
+],
+"organs": [
+"haematologic",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017280",
+"concept": "- MONDO:0017280 | demodicidosis | syn: demodectic mange; Demodex caused disease or disorder; Demodex disease or disorder; Demodex infectious disease | ancestors: integumentary system disorder, parasitic infectious disease, disease by body system or component, infectious disease | def: Demodicidosis is a rare parasitic cutaneous disease due to Demodex mite infestation characterized by variable degrees of spinulosis, erythema, papules, and pustules, usually accompanied by a burning o...",
+"ko": "모낭충증",
+"alt": [
+"데모덱스증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0018850",
+"concept": "- MONDO:0018850 | proliferating trichilemmal cyst | syn: Pilar cyst; Pilar tumor; Pilar tumour; proliferating Pilar tumor | ancestors: hair follicle neoplasm, epidermal appendage tumor, disorder of pilosebaceous unit, skin neoplasm | def: Proliferating trichilemmal tumor is a rare large, multinodular, usually benign, tumor that is generally located in the posterior part of the scalp in aged women (over 50 years). It first appears as a ...",
+"ko": "증식성 털집 낭종",
+"alt": [
+"증식성 외모근초낭종",
+"필라 종양"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+}
+]

@@ -1,0 +1,253 @@
+[
+{
+"id": "MONDO:0005683",
+"concept": "- MONDO:0005683 | brucellosis | syn: undulant fever | ancestors: primary bacterial infectious disease, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Brucellosis is a bacterial infection that spreads from animals to people via unpasteurized dairy products or by exposure to contaminated animal products or infected animals. Animals that are most comm...",
+"ko": "브루셀라증",
+"alt": [
+"파상열"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0006999",
+"concept": "- MONDO:0006999 | tooth disorder | syn: calcareous tooth disease; calcareous tooth disease or disorder; dental disorder; disease of calcareous tooth | ancestors: skeletal system disorder, mouth disorder, musculoskeletal system disorder, disease by body system or component | def: A disease involving the calcareous tooth.",
+"ko": "치아 질환",
+"alt": [
+"치아 장애"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0016020",
+"concept": "- MONDO:0016020 | frontal encephalocele | syn: anterior encephalocele | ancestors: isolated encephalocele, cephalocele, congenital nervous system disorder, disorder of development or morphogenesis",
+"ko": "전두 뇌류",
+"alt": [
+"전방 뇌류"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003802",
+"concept": "- MONDO:0003802 | cornea cancer | syn: cancer of cornea; cornea cancer; malignant cornea neoplasm; malignant cornea tumor | ancestors: ocular cancer, cornea neoplasm, sensory system cancer, head and neck cancer | def: A malignant neoplasm involving the cornea.",
+"ko": "각막암",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008073",
+"concept": "- MONDO:0008073 | familial juvenile hyperuricemic nephropathy type 1 | syn: ADTKD-UMOD; autosomal dominant medullary cystic kidney disease type 2; autosomal dominant medullary cystic kidney disease with hyperuricemia; Autosomal Dominant Tubulo-Interstitial Kidney Disease | ancestors: familial juvenile hyperuricemic nephropathy, autosomal dominant medullary cystic kidney disease with or without hyperuricemia, inborn disorder of purine metabolism, inherited kidney disorder | def: A rare kidney disorder characterized by hyperuricemia, progressive nephropathy, and gout occurring at an early age.",
+"ko": "가족성 소아 고요산혈증 신병증 1형",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003900",
+"concept": "- MONDO:0003900 | connective tissue disorder | syn: connective tissue disease; connective tissue disease or disorder; connective tissue diseases; connective tissue disorder | ancestors: disease by body system or component, human disease, disease, disposition | def: A disease involving the connective tissue.",
+"ko": "결합조직 질환",
+"alt": [
+"결합조직병"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0020445",
+"concept": "- MONDO:0020445 | agenesis of the superior vena cava | syn: absence of the superior caval vein; absence of the superior vena cava; absence of the SVC; agenesis of the superior caval vein | ancestors: congenital anomaly of superior vena cava, vascular disorder, disorder of development or morphogenesis, cardiovascular disorder | def: Agenesis of the superior vena cava (SVC) is a rare congenital anomaly of the great veins characterized by unilateral or bilateral complete absence of the SVC. Unilateral agenesis is mainly asymptomati...",
+"ko": "상대정맥 무형성",
+"alt": [
+"상대정맥 결손"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001031",
+"concept": "- MONDO:0001031 | purulent acute otitis media | syn: acute suppurative otitis media; suppurative otitis media, acute | ancestors: suppurative otitis media, acute disease, otitis media, human disease | def: Acute form of suppurative otitis media.",
+"ko": "화농성 급성 중이염",
+"alt": [
+"급성 화농성 중이염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009076",
+"concept": "- MONDO:0009076 | autosomal recessive nonsyndromic hearing loss 1A | syn: autosomal recessive nonsyndromic hearing loss 1A; GJB2-AR NSHL; GJB2-related autosomal recessive nonsyndromic hearing loss | ancestors: hearing loss, autosomal recessive, GJB2-related disorder, autosomal recessive disease, nonsyndromic genetic hearing loss | def: An autosomal recessive disorder caused by mutations in the GJB2 gene, encoding gap junction beta-2 protein. The condition is characterized by profound sensorineural hearing loss and may be associated ...",
+"ko": "상염색체 열성 비증후군성 난청 1A",
+"alt": [
+"GJB2 관련 난청"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001249",
+"concept": "- MONDO:0001249 | trachoma | ancestors: chlamydia trachomatis infectious disease, commensal bacterial infectious disease, chlamydia infectious disease, bacterial infectious disease | def: A chronic infection of the conjunctiva and cornea caused by chlamydia trachomatis.",
+"ko": "트라코마",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0016644",
+"concept": "- MONDO:0016644 | logopenic progressive aphasia | syn: Logopenic primary progressive aphasia; Logopenic variant PPA; LPA | ancestors: primary progressive aphasia, neurodegenerative disease, central nervous system disorder, nervous system disorder | def: Logopenic progressive aphasia (lv-PPA) is a form of primary progressive aphasia (PPA), characterized by impaired single-word retrieval and naming and impaired repetition with spared single-word compre...",
+"ko": "로고페닉 진행성 실어증",
+"alt": [
+"로고페닉 원발진행실어증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005065",
+"concept": "- MONDO:0005065 | mesothelioma | syn: mesothelioma | ancestors: mesothelial neoplasm, neoplasm, neoplastic disease or syndrome, cancer or benign tumor | def: A usually malignant and aggressive neoplasm of the mesothelium which is often associated with exposure to asbestos.",
+"ko": "중피종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009868",
+"concept": "- MONDO:0009868 | glycogen storage disease IXb | syn: glycogen storage disease 9B; glycogen storage disease caused by mutation in PHKB; glycogen storage disease IXb; glycogen storage disease type 9B | ancestors: glycogen storage disease IX, disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism | def: A disorder of glycogen metabolism caused by a deficiency in liver and muscle phosphorylase kinase subunit b, is autosomal recessive and can lead to hepatomegaly, hypoglycemia after prolonged fasting, ...",
+"ko": "글리코겐 저장병 IXb형",
+"alt": [
+"글리코겐 저장병 9B형"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020143",
+"concept": "- MONDO:0020143 | cerebral lipidosis with dementia | syn: cerebral lipidosis | ancestors: brain disorder, lysosomal lipid storage disorder, hereditary neurological disease, central nervous system disorder",
+"ko": "치매 동반 대뇌 지질증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001824",
+"concept": "- MONDO:0001824 | polyneuropathy | syn: polyneuropathy | ancestors: peripheral neuropathy, peripheral nervous system disorder, neuromuscular disease, nervous system disorder | def: A disease or disorder affecting more than one nerve.",
+"ko": "다발신경병증",
+"alt": [
+"다발성 신경병증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0001565",
+"concept": "- MONDO:0001565 | abnormal retinal correspondence | ancestors: binocular vision disease, vision disorder, disorder of visual system, disease by body system or component",
+"ko": "이상 망막 대응",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015249",
+"concept": "- MONDO:0015249 | mitral atresia disorder | syn: congenital atresia of mitral valve; congenital mitral valve atresia; mitral atresia; mitral valve atresia | ancestors: mitral valve disorder, congenital heart disease, congenital mitral valve insufficiency and/or stenosis, heart valve disorder | def: A congenital heart defect characterized by the complete atresia of the mitral valve.",
+"ko": "승모판 폐쇄증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021484",
+"concept": "- MONDO:0021484 | benign neoplasm of maxillary sinus | syn: benign maxillary antrum neoplasm; benign maxillary antrum tumor; benign maxillary antrum tumour; benign maxillary sinus neoplasm | ancestors: respiratory system benign neoplasm, bone benign neoplasm, sensory organ benign neoplasm, maxillary sinus neoplasm | def: A benign neoplasm that involves the maxillary sinus.",
+"ko": "위턱굴 양성 신생물",
+"alt": [
+"상악동 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010556",
+"concept": "- MONDO:0010556 | X-linked chondrodysplasia punctata | syn: chondrodysplasia punctata, X-linked; CPXD | ancestors: X-linked disease, non-rhizomelic chondrodysplasia punctata, sterol biosynthesis disorder, hereditary disease | def: X-linked form of chondrodysplasia punctata.",
+"ko": "X연관 점상연골이형성증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008685",
+"concept": "- MONDO:0008685 | Wolff-Parkinson-White syndrome | syn: ventricular familial preexcitation syndrome; Wolff-Parkinson-White pattern (finding); Wolff-Parkinson-White syndrome; Wolff-Parkinson-white syndrome (disease) | ancestors: heart conduction disease, PRKAG2-related cardiomyopathy, heart disorder, familial cardiomyopathy | def: A cardiac conduction disorder characterized by an electrocardiographic finding of ventricular pre-excitation, which is a short PR interval and a long QRS interval with a delta wave. Most individuals a...",
+"ko": "울프-파킨슨-화이트 증후군",
+"alt": [
+"WPW 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+}
+]

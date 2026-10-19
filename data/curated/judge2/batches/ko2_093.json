@@ -1,0 +1,234 @@
+[
+{
+"id": "MONDO:0006844",
+"concept": "- MONDO:0006844 | magnesium deficiency | ancestors: nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism, human disease | def: A nutritional condition produced by a deficiency of magnesium in the diet, characterized by anorexia, nausea, vomiting, lethargy, and weakness. Symptoms are paresthesias, muscle cramps, irritability, ...",
+"ko": "마그네슘 결핍증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002635",
+"concept": "- MONDO:0002635 | periodontal disorder | syn: disease of periodontium; disease or disorder of periodontium; disorder of periodontium; periodontal disease | ancestors: skeletal system disorder, musculoskeletal system disorder, disease by body system or component, human disease | def: An inflammatory process of the gingival tissues and/or periodontal membrane of the teeth, resulting in an abnormally deep gingival sulcus, possibly producing periodontal pockets and loss of alveolar b...",
+"ko": "치주 질환",
+"alt": [
+"치주 장애"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0850046",
+"concept": "- MONDO:0850046 | amniotic fluid embolism | ancestors: pregnancy disorder, obstetric disorder, disease by developmental or physiological process, human disease",
+"ko": "양수 색전증",
+"alt": [],
+"organs": [
+"haematologic",
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021489",
+"concept": "- MONDO:0021489 | benign neoplasm of sweat gland | syn: benign neoplasm of the sweat gland; benign sweat gland neoplasm; benign sweat gland tumor; benign sweat gland tumour | ancestors: sweat gland neoplasm, benign neoplasm of skin, epidermal appendage tumor, sweat gland disorder | def: A benign neoplasm that involves the sweat gland.",
+"ko": "땀샘 양성 신생물",
+"alt": [
+"한선 양성 종양"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001989",
+"concept": "- MONDO:0001989 | atrophic glossitis | syn: atrophy of tongue papillae | ancestors: glossitis, tongue disorder, inflammatory disease, mouth disorder",
+"ko": "위축성 혀염",
+"alt": [
+"위축성 설염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0044917",
+"concept": "- MONDO:0044917 | T-lymphoblastic lymphoma | syn: Precur. T-lymphoblastic lymphoma; precursor T Lymphoblastic lymphoma; precursor T-cell Lymphoblastic lymphoma; precursor T-Lymphoblastic lymphoma | ancestors: lymphoblastic lymphoma, T lymphoblastic leukemia/lymphoma, T-cell non-Hodgkin lymphoma, precursor lymphoblastic lymphoma/leukemia | def: The most frequent type of lymphoblastic lymphoma. It comprises approximately 85-90% of cases. It is more frequently seen in adolescent males. It frequently presents with a mass lesion in the mediastin...",
+"ko": "T림프모구 림프종",
+"alt": [
+"T세포 림프모구성 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001291",
+"concept": "- MONDO:0001291 | brain compression | ancestors: brain disorder, central nervous system disorder, nervous system disorder, disease by body system or component",
+"ko": "뇌 압박",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015260",
+"concept": "- MONDO:0015260 | diphyllobothriasis | syn: Bothriocephalosis; Diphyllobothrium caused disease or disorder; Diphyllobothrium disease or disorder; Diphyllobothrium infection | ancestors: Cestode infectious disease, helminthiasis, parasitic infectious disease, infectious disease | def: Bothriocephalosis is a mammalian cosmopolitan intestinal parasitosis. In addition to non-specific digestive problems (nausea, abdominal pain, lack of appetite), bothriocephalosis provokes an anemia ca...",
+"ko": "긴촌충증",
+"alt": [
+"열두조충증",
+"광절열두조충증"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001051",
+"concept": "- MONDO:0001051 | acute otitis externa | syn: acute otitis externa; acute swimmers' ear; otitis externa, acute | ancestors: otitis externa, acute disease, external ear disorder, ear infection | def: Acute form of otitis externa.",
+"ko": "급성 외이도염",
+"alt": [
+"수영자 귀"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002098",
+"concept": "- MONDO:0002098 | facial nerve disorder | syn: disease of facial nerve; disease or disorder of facial nerve; disorder of facial nerve; facial nerve disease | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the facial nerve.",
+"ko": "안면신경 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0003479",
+"concept": "- MONDO:0003479 | toxic pneumonitis | syn: acute chemical fume pulmonary oedema; acute chemical pulmonary oedema | ancestors: pneumonitis, lung disorder, inflammatory disease, lower respiratory tract disorder | def: A pneumonia that is an acute inflammation of the lungs induced by inhalation of metal fumes or toxic gasses and vapors. It is a sentinel health event (occupational) associated with exposure to ammonia...",
+"ko": "독성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021488",
+"concept": "- MONDO:0021488 | benign neoplasm of lacrimal gland | syn: benign lacrimal gland neoplasm; benign lacrimal gland tumor; benign lacrimal gland tumour; benign neoplasm of the lacrimal gland | ancestors: lacrimal gland neoplasm, benign neoplasm of eye, eye neoplasm, disorder of lacrimal gland | def: A benign neoplasm that involves the lacrimal gland.",
+"ko": "눈물샘 양성 신생물",
+"alt": [
+"누선 양성 종양"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008848",
+"concept": "- MONDO:0008848 | atrioventricular dissociation | syn: atrioventricular dissociation; atrioventricular dissociation (disease) | ancestors: cardiac conduction defect, cardiac rhythm disease, heart disorder, cardiovascular disorder | def: Impaired conduction of cardiac impulse that can occur anywhere along the conduction pathway, such as between the sinoatrial node and the right atrium (sa block) or between atria and ventricles (av blo...",
+"ko": "방실 해리",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007842",
+"concept": "- MONDO:0007842 | joint laxity, familial | syn: EDS XI; Ehlers-Danlos syndrome type 11, formerly; familial joint instability syndrome; familial joint laxity | ancestors: Ehlers-Danlos syndrome, syndromic disease, hereditary disease, developmental defect during embryogenesis | def: A type of Ehlers-Danlos syndrome characterized by generalized joint hypermobility often complicated by dislocation of major joints, particularly the shoulder but in some cases the kneecap. Congenital ...",
+"ko": "가족성 관절 이완증",
+"alt": [
+"엘러스-단로스 증후군 11형"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0003648",
+"concept": "- MONDO:0003648 | tympanic membrane disorder | syn: disease of tympanic membrane; disease or disorder of tympanic membrane; disorder of tympanic membrane; tympanic membrane disease | ancestors: middle ear disorder, auditory system disorder, disorder of ear, disease by body system or component | def: A disease involving the tympanic membrane.",
+"ko": "고막 질환",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005865",
+"concept": "- MONDO:0005865 | mushroom workers' lung | syn: mushroom workers lung | ancestors: hypersensitivity pneumonitis, occupational lung disease, allergic respiratory disease, interstitial lung disease | def: An extrinsic allergic alveolitis involving inflammation of the alveoli within the lung caused by hypersensitivity to the inhalation of organic dust particles derived from either the mushrooms, their s...",
+"ko": "버섯재배자 폐",
+"alt": [
+"버섯 작업자 폐"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019563",
+"concept": "- MONDO:0019563 | CREST syndrome | syn: calcinosis-Raynaud phenomenon-esophageal involvement-sclerodactyly-telangiectasia syndrome | ancestors: syndromic disease, limited cutaneous systemic sclerosis, disease by body system or component, systemic sclerosis | def: CREST syndrome is a subtype of limited cutaneous systemic sclerosis (lcSSc) whose name is an acronym for the cardinal clinical features of the syndrome: calcinosis, Raynaud's phenomenon, esophageal dy...",
+"ko": "CREST 증후군",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000565",
+"concept": "- MONDO:0000565 | infective endocarditis | syn: endocarditis infective | ancestors: endocarditis, infectious disease, endocardium disorder, inflammation of heart layer | def: Infective endocarditis (IE) is an infection of the inner lining of the heart chambers (endocardium) and valves. This condition is sometimes called 'endocarditis,' although it is important to distingui...",
+"ko": "감염성 심내막염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004577",
+"concept": "- MONDO:0004577 | corneal ulcer | syn: cornea ulcer disease; ulcer disease of cornea; Ulcer, corneal | ancestors: keratitis, ulcer disease, corneal disorder, inflammatory disease | def: Area of epithelial tissue loss from corneal surface; associated with inflammatory cells in the cornea and anterior chamber.",
+"ko": "각막 궤양",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018555",
+"concept": "- MONDO:0018555 | hypogonadotropic hypogonadism | syn: central hypogonadism; gonadotropic deficiency; hypogonadism, hypogonadotropic; hypogonadotropic hypogonadism | ancestors: hypogonadism, hereditary disease, gonadal disorder, disease of genetic or genomic mechanism | def: Abnormal ovarian or testicular function due to insufficient hormonal stimulation from the hypothalamic-pituitary axis.",
+"ko": "저성선자극호르몬성 성선기능저하증",
+"alt": [
+"중추성 성선기능저하증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+}
+]

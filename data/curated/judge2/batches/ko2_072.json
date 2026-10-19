@@ -1,0 +1,234 @@
+[
+{
+"id": "MONDO:0000948",
+"concept": "- MONDO:0000948 | xerophthalmia | syn: conjunctival xerosis | ancestors: dry eye syndrome, lacrimal apparatus disorder, syndromic disease, keratoconjunctivitis | def: Dryness of the eye due to inadequate production of tears. Causes include vitamin A deficiency, Sjogren syndrome, rheumatoid arthritis, systemic lupus erythematosus, and scleroderma.",
+"ko": "안구건조증",
+"alt": [
+"결막건조증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004332",
+"concept": "- MONDO:0004332 | lung hilum cancer | syn: cancer of lung hilus; lung hilus cancer; malignant hilar lung neoplasm; malignant hilar lung tumor | ancestors: lung hilum neoplasm, lung cancer, lung neoplasm, respiratory system cancer | def: A malignant neoplasm involving the lung hilus.",
+"ko": "폐문부 암",
+"alt": [
+"폐문 암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0043314",
+"concept": "- MONDO:0043314 | aquarium granuloma | syn: aquarium granuloma; fish tank granuloma; Mycobacterium marinum caused skin disease; Mycobacterium marinum skin disease | ancestors: mycobacterial infectious disease, skin disease caused by bacterial infection, bacterial infectious disease, skin disorder caused by infection | def: A skin condition caused by Mycobacterium marinum, characterized by a skin lesion that presents roughly three weeks after exposure.",
+"ko": "수족관 육아종",
+"alt": [
+"어항 육아종"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015450",
+"concept": "- MONDO:0015450 | triatrial heart | syn: Cor Triatriatum; Cor triatriatum | ancestors: congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis | def: A rare congenital abnormality of the heart characterized by the presence of three atria. The right or left atrium is divided into two parts by fibromuscular tissue or a membrane. It may be associated ...",
+"ko": "삼심방심",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006938",
+"concept": "- MONDO:0006938 | pyelitis | syn: inflammation of renal pelvis; renal pelvis inflammation | ancestors: nephritis, kidney disorder, inflammatory disease, urinary system disorder | def: Inflammation of the renal pelvis.",
+"ko": "신우염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0011338",
+"concept": "- MONDO:0011338 | Omenn syndrome | syn: combined immunodeficiency with hypereosinophilia; Omenn syndrome | ancestors: T-B- severe combined immunodeficiency, familial severe combined immunodeficiency, severe combined immunodeficiency, combined immunodeficiency | def: An inflammatory condition characterized by erythroderma, desquamation, alopecia, chronic diarrhea, failure to thrive, lymphadenopathy, and hepatosplenomegaly, associated with severe combined immunodef...",
+"ko": "오멘 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019642",
+"concept": "- MONDO:0019642 | vitamin D-dependent rickets, type 2 | syn: hereditary 1,25 dihydroxyvitamin D-resistant rickets with abnormal Vitamin D receptor; hereditary vitamin D-resistant rickets; HVDRR; hypocalcemic vitamin D-resistant rickets | ancestors: hypocalcemic rickets, vitamin D-dependent rickets, rickets, disorders of vitamin D metabolism | def: Hypocalcemic vitamin D-resistant rickets (HVDRR) is a hereditary disorder of vitamin D action characterized by hypocalcemia, severe rickets and in many cases alopecia.",
+"ko": "비타민 D 의존성 구루병 2형",
+"alt": [
+"유전성 1,25-디하이드록시비타민 D 저항성 구루병"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000430",
+"concept": "- MONDO:0000430 | mature T-cell and NK-cell non-Hodgkin lymphoma | syn: mature T-and NK-cell lymphoma; mature T-cell and NK-cell lymphoma; mature T-cell and NK-cell non-Hodgkin lymphoma; mature T-cell and NK-cell non-Hodgkin's lymphoma | ancestors: neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm, non-Hodgkin lymphoma | def: This type of lymphoma is not frequently seen in the western hemisphere. Clinically, with the exception of anaplastic large cell lymphoma, mature T- and NK-cell lymphomas are among the most aggressive ...",
+"ko": "성숙 T세포 및 NK세포 비호지킨 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016824",
+"concept": "- MONDO:0016824 | infantile myofibromatosis | syn: infantile hemangiopericytoma; infantile myofibromatosis; multicentric myofibromatosis; myofibromatosis | ancestors: benign perivascular tumor, hereditary disorder of connective tissue, benign soft tissue neoplasm, pericytic neoplasm | def: A benign, multifocal, nodular and well-circumscribed neoplasm usually seen as a congenital neoplasm or in the first year of life. It is characterized by a biphasic growth pattern and is composed of sm...",
+"ko": "영아 근섬유종증",
+"alt": [
+"다발성 근섬유종증"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005834",
+"concept": "- MONDO:0005834 | lymphogranuloma venereum | syn: climatic or tropical bubo; Durand-Nicolas-Favre disease; lymph granuloma inguinale; lymphogranuloma inguinale | ancestors: chlamydia trachomatis infectious disease, granuloma inguinale, lymphatic system disorder, commensal bacterial infectious disease | def: Infection with the organism Mycobacterium.",
+"ko": "성병성 림프육아종",
+"alt": [
+"서혜 림프육아종"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001322",
+"concept": "- MONDO:0001322 | pericardium cancer | syn: cancer of pericardium; malignant neoplasm of pericardium; malignant neoplasm of the pericardium; malignant pericardial neoplasm | ancestors: heart cancer, neoplasm of pericardium, cardiovascular cancer, thoracic cancer | def: A malignant neoplasm involving the pericardium.",
+"ko": "심낭암",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008564",
+"concept": "- MONDO:0008564 | DiGeorge syndrome | syn: DGS; DGS1; Di-George syndrome; DiGeorge anomaly | ancestors: congenital T-cell immunodeficiency, 22q11.2 deletion syndrome, neurocristopathy, hereditary neurological disease | def: A congenital anomaly characterized by immunodeficiency, abnormal facies, congenital heart disease, hypocalcemia, and increased susceptibility to infections. Pathologic characteristics include conotrun...",
+"ko": "디조지 증후군",
+"alt": [
+"22q11.2 결손 증후군"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005868",
+"concept": "- MONDO:0005868 | myelophthisic anemia | syn: anaemia LEUKOERYTHROBLASTIC; anemia LEUKOERYTHROBLASTIC; leukoerythroblastic reaction | ancestors: aplastic anemia, anemia, hematologic disorder, disease by body system or component | def: An aplastic anemia that is characterized by displacement of hemopoietic bone-marrow tissue either by fibrosis, tumors or granulomas.",
+"ko": "골수로성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009044",
+"concept": "- MONDO:0009044 | Crigler-Najjar syndrome | syn: bilirubin UDP glucuronyl transferase deficiency; bilirubin uridinediphosphate glucuronosyltransferase deficiency; bilirubin-UGT deficiency; Crigler Najjar Syndrome | ancestors: syndromic disease, hereditary hyperbilirubinemia, disease by body system or component, inborn disorder of bilirubin metabolism | def: Crigler-Najjar syndrome (CNS) is a hereditary disorder of bilirubin metabolism characterized by unconjugated hyperbilirubinemia due to a hepatic deficit of bilirubin glucuronosyltransferase (GT) activ...",
+"ko": "크리글러-나자르 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019170",
+"concept": "- MONDO:0019170 | polyarteritis nodosa | syn: classic polyarteritis nodosa; classical polyarteritis nodosa; Küssmaul-Maier disease; PAN | ancestors: arteritis, arterial disorder, vasculitis, vascular disorder | def: Polyarteritis nodosa (PAN) is a rare, clinically heterogeneous, rheumatologic disease characterized by necrotizing inflammatory lesions affecting small- and medium-sized blood vessels. PAN most common...",
+"ko": "결절다발동맥염",
+"alt": [
+"고전적 결절다발동맥염"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0022846",
+"concept": "- MONDO:0022846 | congenital nonhemolytic jaundice | ancestors: jaundice, familial obstructive, of infancy, hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism",
+"ko": "선천성 비용혈성 황달",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000239",
+"concept": "- MONDO:0000239 | adiaspiromycosis | syn: adiaspiromycosis; adiaspirosis; haplosporangiosis; pulmonary adiaspiromycosis | ancestors: primary systemic mycosis, fungal lung infectious disease, systemic mycosis, fungal infectious disease | def: Adiaspiromycosis is a rare fungal infection in the lung and is caused by inhalation of spores of the saprophytic soil fungus Chrysosporium parvum var crescens (previously known as Emmonsia crescens).",
+"ko": "아디아스피로진균증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0013571",
+"concept": "- MONDO:0013571 | acatalasia | syn: acatalasemia; acatalasia; catalase deficiency | ancestors: disorder of defective peroxisome oxidative status, peroxisomal single enzyme/protein defect, peroxisomal disease, inborn errors of metabolism | def: A congenital disorder resulting from a deficiency in erythrocyte catalase, an enzyme responsible for the breakdown of hydrogen peroxide.",
+"ko": "무카탈라제혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005348",
+"concept": "- MONDO:0005348 | keloid | ancestors: reactive cutaneous fibrous lesion, skin disorder, integumentary system disorder, disease by body system or component | def: An irregularly shaped, elevated mark on the skin caused by deposits of excessive amounts of collagen during wound healing. It extends beyond the original boundaries of the wound and may enlarge progre...",
+"ko": "켈로이드",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0009144",
+"concept": "- MONDO:0009144 | Ebstein anomaly | syn: Ebstein anomaly; Ebstein anomaly (disease); Ebstein anomaly of the tricuspid valve; Ebstein's anomaly | ancestors: congenital tricuspid malformation, tricuspid valve disorder, disorder of development or morphogenesis, heart valve disorder | def: Ebstein's malformation is a rare congenital cardiac anomaly characterized by rotational displacement of the septal and inferior leaflets of the tricuspid valve such that they are hinged within the rig...",
+"ko": "에브스타인 기형",
+"alt": [
+"엡스타인 기형"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+}
+]

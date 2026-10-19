@@ -1,0 +1,224 @@
+[
+{
+"id": "MONDO:0007880",
+"concept": "- MONDO:0007880 | congenital laryngeal web | syn: Laryngeal web | ancestors: syndromic disease, laryngeal disorder, disease by body system or component, upper respiratory tract disorder | def: Congenital laryngeal web is a rare malformation consisting of a membrane-like structure that extends across the laryngeal lumen close to the level of the vocal cords.",
+"ko": "선천성 후두격막",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0003606",
+"concept": "- MONDO:0003606 | adrenal medulla cancer | syn: adrenal medulla cancer; cancer of adrenal medulla; malignant adrenal medulla neoplasm; malignant adrenal medulla tumor | ancestors: adrenal gland cancer, adrenal medulla neoplasm, retroperitoneal cancer, malignant endocrine neoplasm | def: A malignant neoplasm involving the adrenal medulla",
+"ko": "부신수질암",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001773",
+"concept": "- MONDO:0001773 | post-vaccinal encephalitis | syn: encephalitis following immunisation procedures; encephalitis following immunization procedures | ancestors: encephalitis, encephalomyelitis, brain disorder, acute disease | def: An acute or subacute inflammatory process of the central nervous system characterized histologically by multiple foci of perivascular demyelination. Symptom onset usually occurs several days after an ...",
+"ko": "예방접종 후 뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015760",
+"concept": "- MONDO:0015760 | T-cell non-Hodgkin lymphoma | syn: non-Hodgkin's T-cell lymphoma; T cell lymphoma; T-cell and NK-cell non-Hodgkin lymphoma; T-cell and NK-cell non-Hodgkin's lymphoma | ancestors: non-Hodgkin lymphoma, lymphoma, lymphoid neoplasm, lymphoid hemopathy | def: A non-Hodgkin lymphoma of T-cell lineage. It includes the T lymphoblastic lymphoma and the mature T- and NK-cell lymphomas. -- 2003",
+"ko": "T세포 비호지킨 림프종",
+"alt": [
+"T세포 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001695",
+"concept": "- MONDO:0001695 | senile ectropion | ancestors: ectropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "노인성 안검외반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002691",
+"concept": "- MONDO:0002691 | liver cancer | syn: cancer of liver; hepatic cancer; liver cancer; malignant liver neoplasm | ancestors: digestive system cancer, malignant endocrine neoplasm, liver and intrahepatic bile duct neoplasm, digestive system disorder | def: An epithelial or non-epithelial malignant neoplasm that arises from the liver. Representative examples include hepatocellular carcinoma, intrahepatic cholangiocarcinoma, lymphoma, and sarcoma.",
+"ko": "간암",
+"alt": [
+"간세포암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009388",
+"concept": "- MONDO:0009388 | hyperlysinemia | syn: hyperlysinemia; hyperlysinemia (disease); hyperlysinemia type I; lysine alpha-ketoglutarate reductase deficiency | ancestors: inborn disorder of amino acid metabolism, inborn disorder of lysine and hydroxylysine metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: Hyperlysinaemia is a lysine metabolism disorder characterized by elevated levels of lysine in the cerebrospinal fluid and blood. Variable degrees of saccharopinuria are also present.",
+"ko": "고라이신혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020292",
+"concept": "- MONDO:0020292 | congenital anomaly of the great arteries | syn: congenital aorta, aortic arch or pulmonary arteries anomaly | ancestors: congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis",
+"ko": "선천성 대혈관 기형",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018023",
+"concept": "- MONDO:0018023 | hemoglobin M disease | syn: M hemoglobinopathy; methemoglobinemia, beta type | ancestors: hereditary methemoglobinemia, methemoglobinemia, anemia, inherited hemoglobinopathy",
+"ko": "헤모글로빈 M병",
+"alt": [
+"M 헤모글로빈병증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019461",
+"concept": "- MONDO:0019461 | B-cell prolymphocytic leukemia | syn: B prolymphocytic leukaemia; B prolymphocytic leukemia; B-cell prolymphocytic leukemia; B-PLL | ancestors: prolymphocytic leukemia, neoplasm of mature B-cells, aggressive B-cell non-Hodgkin lymphoma, chronic leukemia | def: A neoplasm of prolymphocytes affecting the blood, bone marrow, and spleen. It is characterized by prolymphocytes exceeding 55% of the lymphoid cells in the blood and profound splenomegaly.",
+"ko": "B세포 전림프구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001860",
+"concept": "- MONDO:0001860 | folic acid deficiency anemia | syn: folate deficiency anemia; folate-deficiency anemia; folate-deficient megaloblastic anemia | ancestors: nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism, human disease",
+"ko": "엽산결핍성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0004774",
+"concept": "- MONDO:0004774 | gonococcal iridocyclitis | syn: Neisseria gonorrhoeae caused iridocyclitis (disease); Neisseria gonorrhoeae iridocyclitis (disease) | ancestors: gonococcal endophthalmia, infectious anterior uveitis, gonorrhea, endophthalmitis | def: An iridocyclitis (disease) caused by infection with Neisseria gonorrhoeae.",
+"ko": "임균성 홍채섬모체염",
+"alt": [
+"임질성 홍채섬모체염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010631",
+"concept": "- MONDO:0010631 | incontinentia pigmenti | syn: Bloch-Siemens syndrome; Bloch-Sulzberger syndrome; incontinentia pigmenti; Incontinentia pigmenti syndrome | ancestors: ectodermal dysplasia syndrome, congenital vitreoretinal dysplasia, syndromic disease, hereditary epidermal appendage anomaly | def: Incontinentia pigmenti (IP) is a rare X-linked dominant multi-systemic ectodermal dysplasia usually lethal in males and presenting neonatally in females with a bullous rash along Blashko's lines (BL) ...",
+"ko": "색소실조증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007100",
+"concept": "- MONDO:0007100 | familial amyloid neuropathy | syn: amyloid neuropathies, familial; ATTRv amyloidosis; familial amyloid neuropathy; familial amyloid polyneuropathy | ancestors: hereditary amyloidosis, hereditary peripheral neuropathy, inborn errors of metabolism, amyloidosis | def: A rare genetic systemic disease characterized by adult onset, progressive sensorimotor and autonomic neuropathy and infiltrative cardiomyopathy. Neurological involvement usually starts with sensory lo...",
+"ko": "가족성 아밀로이드 신경병증",
+"alt": [
+"ATTRv 아밀로이드증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0002708",
+"concept": "- MONDO:0002708 | retinitis | syn: inflammation of retina; retina inflammation | ancestors: retinal disorder, posterior uveitis, nervous system disorder, eye disorder | def: Inflammation of the retina.",
+"ko": "망막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020568",
+"concept": "- MONDO:0020568 | cutaneous myiasis | ancestors: myiasis, parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease",
+"ko": "피부 구더기증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0056802",
+"concept": "- MONDO:0056802 | synovial bursa disorder | syn: disease of synovial bursa; disease or disorder of synovial bursa; disorder of bursa; disorder of synovial bursa | ancestors: synovium disorder, musculoskeletal system disorder, disease by body system or component, human disease | def: A disease or disorder that involves the synovial bursa.",
+"ko": "윤활주머니 질환",
+"alt": [
+"점액낭 질환"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0006658",
+"concept": "- MONDO:0006658 | arteriolosclerosis | syn: arteriolosclerosis (morphologic abnormality) | ancestors: coronary atherosclerosis, coronary artery disorder, atherosclerosis, arterial disorder | def: The thickening of the wall of the small arteries and arterioles. It is caused by deposition of hyaline material in the wall or concentric smooth muscle wall hypertrophy. It results in lumen narrowing ...",
+"ko": "세동맥경화증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007955",
+"concept": "- MONDO:0007955 | Meckel diverticulum | syn: Meckel diverticulum; Meckel's diverticulum; persistent vitelline duct | ancestors: hereditary disease, digestive system disorder, disease of genetic or genomic mechanism, disease by body system or component | def: A congenital pouch in the distal ileum. It may cause painless rectal bleeding and bowel obstruction.",
+"ko": "메켈 게실",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005488",
+"concept": "- MONDO:0005488 | adolescent idiopathic scoliosis | ancestors: idiopathic scoliosis, scoliosis, idiopathic disease, disease of bone structure | def: A scoliosis with no known cause arising in adolescent.",
+"ko": "청소년 특발성 척추측만증",
+"alt": [
+"사춘기 특발성 척추측만증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 7
+}
+]

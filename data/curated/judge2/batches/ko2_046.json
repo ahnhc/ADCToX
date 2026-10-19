@@ -1,0 +1,233 @@
+[
+{
+"id": "MONDO:0002738",
+"concept": "- MONDO:0002738 | acute transudative otitis media | syn: acute nonsuppurative otitis media; non-suppurative otitis media, acute | ancestors: non-suppurative otitis media, acute disease, otitis media, human disease | def: Acute form of non-suppurative otitis media.",
+"ko": "급성 삼출성 중이염",
+"alt": [
+"급성 비화농성 중이염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0020600",
+"concept": "- MONDO:0020600 | acute pharyngitis | syn: acute pharyngitis; pharyngitis, acute | ancestors: pharyngitis, acute disease, upper respiratory tract disorder, inflammatory disease | def: An acute and painful inflammatory process that affects the pharynx. It is usually caused by viruses and less often bacteria. Signs and symptoms include discomfort on swallowing, low-grade fever, heada...",
+"ko": "급성 인두염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0001577",
+"concept": "- MONDO:0001577 | respiratory syncytial virus infectious disease | syn: Human respiratory syncytial virus infection; respiratory syncytial virus infection | ancestors: Mononegavirales infectious disease, viral respiratory tract infection, primary viral infectious disease, viral infectious disease | def: Infection with the respiratory syncytial virus, an RNA virus of the genus Pneumovirus, in the family Paramyxoviridae, which is characterized by the formation of syncytia in tissue culture. It causes m...",
+"ko": "호흡기세포융합바이러스 감염증",
+"alt": [
+"RSV 감염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001924",
+"concept": "- MONDO:0001924 | dystrophies primarily involving the retinal pigment epithelium | ancestors: inherited retinal dystrophy, retinal degeneration, hereditary neurological disease, retinal disorder",
+"ko": "망막색소상피 주 침범 이영양증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019440",
+"concept": "- MONDO:0019440 | wild type ABeta2M amyloidosis | syn: ABeta2Mwt amyloidosis; dialysis-related amyloidosis; dialysis-related arthropathy; wild type ABeta2-microglobulinic amyloidosis | ancestors: ABeta2M amyloidosis, amyloidosis, proteostasis deficiencies, metabolic disease",
+"ko": "야생형 ABeta2M 아밀로이드증",
+"alt": [
+"투석 관련 아밀로이드증"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021667",
+"concept": "- MONDO:0021667 | neuralgia | syn: neuralgia | ancestors: peripheral neuropathy, neurological pain disorder, peripheral nervous system disorder, neuromuscular disease | def: A pain disorder characterize by pain in the distribution of a nerve or nerves",
+"ko": "신경통",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0957462",
+"concept": "- MONDO:0957462 | primary pulmonary tuberculosis | ancestors: pulmonary tuberculosis, respiratory system disorder, tuberculosis, disease by body system or component",
+"ko": "원발성 폐결핵",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008692",
+"concept": "- MONDO:0008692 | abetalipoproteinemia | syn: abetalipoproteinemia; Bassen-Kornzweig disease; homozygous familial hypobetalipoproteinemia | ancestors: familial hemolytic anemia, intestinal disorder, hypobetalipoproteinemia, autosomal recessive metabolic cerebellar ataxia | def: Abetalipoproteinemia/ homozygous familial hypobetalipoproteinemia (ABL/HoFHBL) is a severe form of familial hypobetalipoproteinemia characterized by permanently low levels (below the 5th percentile) o...",
+"ko": "무베타지단백혈증",
+"alt": [
+"바센-코른츠바이크병"
+],
+"organs": [
+"gastrointestinal",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001218",
+"concept": "- MONDO:0001218 | acute laryngopharyngitis | ancestors: upper respiratory tract disorder, acute disease, respiratory system disorder, human disease | def: An upper respiratory tract disease which involves inflammation of both larynx and pharynx.",
+"ko": "급성 후두인두염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020920",
+"concept": "- MONDO:0020920 | escherichia coli infection | syn: e coli infection; escherichia coli infection | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Infection with the organism Escherichia Coli.",
+"ko": "대장균 감염",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001249",
+"concept": "- MONDO:0001249 | trachoma | ancestors: chlamydia trachomatis infectious disease, commensal bacterial infectious disease, chlamydia infectious disease, bacterial infectious disease | def: A chronic infection of the conjunctiva and cornea caused by chlamydia trachomatis.",
+"ko": "트라코마",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001071",
+"concept": "- MONDO:0001071 | intellectual disability | syn: intellectual disabilities; intellectual disability | ancestors: neurodevelopmental disorder, nervous system disorder, disease by body system or component, human disease | def: A broad category of disorders characterized by an impairment to the intelligence an individual possesses. These impairments can result from trauma, birth, or disease and are not restricted to any part...",
+"ko": "지적장애",
+"alt": [
+"정신지체"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0040699",
+"concept": "- MONDO:0040699 | necrotizing scleritis | ancestors: scleritis, scleral disorder, eye disorder, disorder of orbital region | def: A severe form of scleritis with subtypes: necrotising zonal granulomatous inflammation, diffuse non-granulomatous chronic inflammation, mixed pattern of acute purulent inflammation mixed with granulom...",
+"ko": "괴사성 공막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006678",
+"concept": "- MONDO:0006678 | bladder calculus | ancestors: lower urinary tract calculus, urinary bladder disorder, urolithiasis, urinary system disorder | def: A concretion in the urinary bladder.",
+"ko": "방광결석",
+"alt": [
+"방광 결석"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0100226",
+"concept": "- MONDO:0100226 | parasomnia, sleepwalking type | syn: parasomnia, sleepwalking type; parasomnia, sleepwalking type, multifactorial; PSMNSW | ancestors: sleep disorder, disease by developmental or physiological process, human disease, disease | def: A disorder in which a series of complex behaviors are initiated during slow-wave (non-REM) sleep and result in walking during sleep. It is a parasomnia, defined as a clinical disorder resulting in und...",
+"ko": "사건수면, 몽유병형",
+"alt": [
+"몽유병"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018312",
+"concept": "- MONDO:0018312 | histoplasmosis | syn: darling disease; Histoplasma caused disease or disorder; Histoplasma disease or disorder; Histoplasma infectious disease | ancestors: primary systemic mycosis, systemic mycosis, fungal infectious disease, infectious disease | def: A disease caused by the fungus Histoplasma capsulatum. It primarily affects the lungs but can also occur as a disseminated disease that affects additional organs. The acute respiratory disease has sym...",
+"ko": "히스토플라스마증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005634",
+"concept": "- MONDO:0005634 | acute hemorrhagic conjunctivitis | syn: epidemic hemorrhagic conjunctivitis | ancestors: acute conjunctivitis, viral conjunctivitis, conjunctivitis, acute disease | def: Acute conjunctivitis that is characterized by bleeding into the conjunctiva.",
+"ko": "급성 출혈성 결막염",
+"alt": [
+"유행성 출혈성 결막염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019145",
+"concept": "- MONDO:0019145 | hereditary thrombophilia due to congenital protein C deficiency | syn: hereditary thrombophilia due to congenital protein C deficiency; Protein C Deficiency; Protein C deficiency; protein C deficiency | ancestors: inherited thrombophilia, thrombophilia, inherited blood coagulation disorder, blood coagulation disease | def: Congenital protein C deficiency is an inherited coagulation disorder characterized by deep venous thrombosis symptoms due to reduced synthesis and/or activity levels of protein C.",
+"ko": "선천성 단백질 C 결핍에 의한 유전성 혈전성향증",
+"alt": [],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0024617",
+"concept": "- MONDO:0024617 | xanthogranuloma | syn: xanthogranuloma | ancestors: non-Langerhans cell histiocytosis, histiocytosis, lymphatic system disorder, lymphoid system disorder",
+"ko": "황색육아종",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005025",
+"concept": "- MONDO:0005025 | endocarditis | syn: endocarditis; endocarditis (disease); endocardium inflammation; inflammation of endocardium | ancestors: endocardium disorder, inflammation of heart layer, heart disorder, inflammatory disease | def: Inflammation of the endocardium.",
+"ko": "심내막염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 1
+}
+]

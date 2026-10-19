@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0001758",
+"concept": "- MONDO:0001758 | paranasal sinus sarcoma | syn: accessory sinus sarcoma; paranasal sinus sarcoma; sarcoma of accessory sinus; sarcoma of paranasal sinus | ancestors: paranasal sinus carcinoma, soft tissue sarcoma, bone carcinoma, paranasal sinus cancer | def: A malignant soft tissue neoplasm that arises from the paranasal sinus.",
+"ko": "부비동 육종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0100371",
+"concept": "- MONDO:0100371 | acute hepatitis C virus infection | syn: acute hepatitis C | ancestors: hepatitis C virus infection, acute disease, viral hepatitis, human disease | def: A new infection by the hepatitis C virus, which can be detected in blood. Signs and symptoms may include right upper quadrant abdominal pain, jaundice, dark urine, white stools and nausea. Approximate...",
+"ko": "급성 C형 간염 바이러스 감염",
+"alt": [
+"급성 C형 간염"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000465",
+"concept": "- MONDO:0000465 | atrioventricular block | syn: atrioventricular block; atrioventricular block (disease); AV block; AV nodal block | ancestors: heart conduction disease, atrioventricular dissociation, heart disorder, cardiac conduction defect | def: A heart block that is initiated in the atrioventricular node.",
+"ko": "방실 차단",
+"alt": [
+"방실 블록"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0014504",
+"concept": "- MONDO:0014504 | Perrault syndrome 5 | syn: Perrault syndrome 5; Perrault syndrome caused by mutation in TWNK; Perrault syndrome type 5; TWNK Perrault syndrome | ancestors: Perrault syndrome, autosomal recessive disease, mitochondrial oxidative phosphorylation disorder, inherited primary ovarian failure | def: Any Perrault syndrome in which the cause of the disease is a mutation in the TWNK gene.",
+"ko": "페로 증후군 5형",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001574",
+"concept": "- MONDO:0001574 | capillary disorder | syn: capillary disease; capillary disease or disorder; disease of capillary; disease or disorder of capillary | ancestors: vascular disorder, cardiovascular disorder, disease by body system or component, human disease | def: A disease involving a capillary.",
+"ko": "모세혈관 질환",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0013943",
+"concept": "- MONDO:0013943 | peroxisome biogenesis disorder 8B | syn: peroxisome biogenesis disorder 8B; peroxisome biogenesis disorder type 8B | ancestors: peroxisome biogenesis disorder due to PEX16 defect, Zellweger spectrum disorders, developmental anomaly of metabolic origin, peroxisome biogenesis disorder",
+"ko": "퍼옥시좀 생합성 장애 8B형",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018456",
+"concept": "- MONDO:0018456 | polyarticular juvenile idiopathic arthritis | syn: juvenile polyarthritis; juvenile polyarticular arthritis; polyarticular JIA | ancestors: juvenile idiopathic arthritis, rheumatic disorder, arthritic joint disease, idiopathic disease",
+"ko": "다관절형 소아 특발성 관절염",
+"alt": [
+"소아 다발관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012698",
+"concept": "- MONDO:0012698 | Waardenburg syndrome type 2E | syn: SOX10 Waardenburg syndrome type 2; Waardenburg syndrome type 2 caused by mutation in SOX10; WS2E | ancestors: Waardenburg syndrome type 2, Waardenburg syndrome, autosomal dominant disease, syndromic disease | def: Any Waardenburg syndrome type 2 in which the cause of the disease is a mutation in the SOX10 gene.",
+"ko": "바르덴부르흐 증후군 2E형",
+"alt": [
+"SOX10 관련 바르덴부르흐 증후군"
+],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010691",
+"concept": "- MONDO:0010691 | Norrie disease | syn: atrophia bulborum hereditaria; Episkopi blindness; Norrie disease; Norrie disease, X-linked recessive | ancestors: congenital vitreoretinal dysplasia, NDP-related vitreoretinopathy, congenital nervous system disorder, inherited vitreoretinopathy | def: A rare X-linked genetic vitreoretinal condition characterized by abnormal retinal development with congenital blindness. Common associated manifestations include sensorineural hearing loss and develop...",
+"ko": "노리병",
+"alt": [
+"노리에병"
+],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013630",
+"concept": "- MONDO:0013630 | Meckel syndrome, type 9 | syn: B9D1 Meckel syndrome; meckel syndrome 9; Meckel syndrome caused by mutation in B9D1; Meckel syndrome, type 9 | ancestors: Meckel syndrome, syndromic disease, ciliopathy, hereditary lethal multiple congenital anomalies/dysmorphic syndrome | def: Any Meckel syndrome in which the cause of the disease is a mutation in the B9D1 gene.",
+"ko": "메켈 증후군 9형",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011234",
+"concept": "- MONDO:0011234 | auriculocondylar syndrome 1 | syn: Auriculocondylar syndrome 1; auriculocondylar syndrome caused by mutation in GNAI3; Auriculocondylar syndrome type 1; GNAI3 auriculocondylar syndrome | ancestors: auriculocondylar syndrome, ear malformation, hereditary disease, disease of genetic or genomic mechanism | def: Any auriculocondylar syndrome in which the cause of the disease is a mutation in the GNAI3 gene.",
+"ko": "귀관절돌기 증후군 1",
+"alt": [
+"GNAI3 귀관절돌기 증후군"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004567",
+"concept": "- MONDO:0004567 | ileus | ancestors: intestinal obstruction, intestinal disorder, digestive system disorder, disease by body system or component | def: Decrease in peristalsis in the absence of a mechanical bowel obstruction.",
+"ko": "장마비",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0003866",
+"concept": "- MONDO:0003866 | liver extraskeletal osteosarcoma | syn: hepatic extraskeletal osteosarcoma; hepatic osteogenic sarcoma; hepatic osteosarcoma; liver extraskeletal osteosarcoma | ancestors: liver sarcoma, extraosseous osteosarcoma, liver cancer, soft tissue sarcoma | def: An osteosarcoma arising from the liver.",
+"ko": "간 골외 골육종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021440",
+"concept": "- MONDO:0021440 | benign neoplasm of skin | syn: benign cutaneous neoplasm; benign cutaneous tumor; benign cutaneous tumour; benign neoplasm of the skin | ancestors: integumentary system benign neoplasm, skin neoplasm, integumentary system disorder, benign neoplasm | def: A benign neoplasm that involves the zone of skin.",
+"ko": "피부 양성 신생물",
+"alt": [
+"피부 양성 종양"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0012136",
+"concept": "- MONDO:0012136 | carnitine palmitoyl transferase II deficiency, neonatal form | syn: Carnitine palmitoyl transferase deficiency type 2, lethal systemic form; Carnitine palmitoyl transferase deficiency type 2, neonatal form; Carnitine palmitoyl transferase II deficiency, lethal systemic form; carnitine palmitoyl transferase II deficiency, neonatal form | ancestors: carnitine palmitoyltransferase II deficiency, carnitine palmitoyl transferase deficiency, disorder of carnitine cycle and carnitine transport, disorder of fatty acid and ketone body metabolism | def: The neonatal form of carnitine palmitoyltransferase II (CPT II) deficiency, an inherited disorder that affects mitochondrial oxidation of long chain fatty acids (LCFA), is the lethal form of the disea...",
+"ko": "카르니틴 팔미토일전달효소 II 결핍증, 신생아형",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006771",
+"concept": "- MONDO:0006771 | glossitis | syn: inflammation of tongue; tongue inflammation | ancestors: tongue disorder, inflammatory disease, mouth disorder, disease by developmental or physiological process | def: Inflammation of the tongue.",
+"ko": "혀염",
+"alt": [
+"설염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017376",
+"concept": "- MONDO:0017376 | reactive arthritis | syn: arthritis urethritica; Fiessinger-Leroy disease; Fiessinger-Leroy-Reiter syndrome; polyarthritis enterica | ancestors: rheumatic disorder, arthritic joint disease, connective tissue disorder, bone inflammation disease | def: Reactive arthritis (ReA) is an autoimmune disorder belonging to the group of seronegative spondyloarthropathies and is characterized by the classic triad of arthritis, urethritis and conjunctivitis.",
+"ko": "반응성 관절염",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0016817",
+"concept": "- MONDO:0016817 | Meier-Gorlin syndrome | syn: ear-patella-short stature syndrome; Meier-Gorlin syndrome | ancestors: syndromic disease, autosomal recessive disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, disease by body system or component | def: Ear-patella-short stature syndrome is an association of malformations including bilateral microtia (severe hypoplasia of ear pinnae), absent patellae, short stature, poor weight gain, and characterist...",
+"ko": "마이어-고를린 증후군",
+"alt": [
+"귀-슬개골-저신장 증후군"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0044705",
+"concept": "- MONDO:0044705 | paranasal sinus squamous cell carcinoma | syn: epidermoid carcinoma of paranasal sinus; epidermoid carcinoma of the paranasal sinus; paranasal sinus epidermoid carcinoma; paranasal sinus squamous cell carcinoma | ancestors: paranasal sinus carcinoma, bone squamous cell carcinoma, head and neck squamous cell carcinoma, bone carcinoma | def: A squamous cell carcinoma that arises from the mucosal epithelial surface of the ethmoid, frontal, maxillary, or sphenoid sinus. Patients may present with nasal fullness, obstruction, and/or epistaxis...",
+"ko": "부비동 편평세포암종",
+"alt": [
+"부비동 표피양암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004893",
+"concept": "- MONDO:0004893 | hypertropia | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder | def: Vertical strabismus in which there is permanent upward deviation of the visual axis of one eye.",
+"ko": "상사시",
+"alt": [
+"위사시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+}
+]

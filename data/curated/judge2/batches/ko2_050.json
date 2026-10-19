@@ -1,0 +1,229 @@
+[
+{
+"id": "MONDO:0005895",
+"concept": "- MONDO:0005895 | paragonimiasis | syn: infection by Paragonimus; lung fluke disease; lung fluke infection; Paragonimus westermani caused disease or disorder | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A parasitic infection caused by trematodes of the Paragonimus genus. Humans are infected from ingestion of raw or undercooked food. It results in chronic lung infection and eosinophilia.",
+"ko": "폐흡충증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0021416",
+"concept": "- MONDO:0021416 | polyp of gallbladder | syn: gall bladder polyp; gallbladder polyp; polyp of the gallbladder | ancestors: polyp, gallbladder disorder, cancer or benign tumor, hepatobiliary disorder | def: A polyp that involves the gall bladder.",
+"ko": "담낭 용종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001461",
+"concept": "- MONDO:0001461 | tinea corporis | ancestors: dermatophytosis, tinea infection, superficial mycosis, cutaneous mycosis | def: A dermatophyte disease of the glabrous skin, excluding the scalp, beard, face, hands, feet, and groin.",
+"ko": "체부백선",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001127",
+"concept": "- MONDO:0001127 | tibialis tendinitis | syn: tendinitis of tibialis; tibialis tendinitis | ancestors: tendinitis, myositis disease, disease of the tendon, myopathy | def: A tendinitis that involves the tibialis.",
+"ko": "경골근 건염",
+"alt": [
+"정강근 힘줄염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0018181",
+"concept": "- MONDO:0018181 | staphylococcal scalded skin syndrome | syn: generalised exfoliative disease; generalized exfoliative disease; Ritter disease; Ritter's disease | ancestors: commensal bacterial infectious disease, staphylococcus aureus infection, staphylococcal toxemia, skin disease caused by bacterial infection | def: A blistering skin disorder caused by exfoliative toxins produced by Staphylococcus aureus infection. The toxins cause the formation of bullae and diffuse skin desquamation. The lesions may be localize...",
+"ko": "포도알균 열상피부 증후군",
+"alt": [
+"포도상구균 화상모양피부 증후군"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021941",
+"concept": "- MONDO:0021941 | infection by Trypanosoma rhodesiense | syn: infection by trypanosoma rhodesiense; rhodesian trypanosomiasis | ancestors: human African trypanosomiasis, trypanosomiasis, vector-borne disease, protozoa infectious disease | def: An infection with Trypanosoma brucei rhodesiense.",
+"ko": "로데시아 트리파노소마 감염",
+"alt": [
+"로디지아 수면병"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018947",
+"concept": "- MONDO:0018947 | centronuclear myopathy | syn: centronuclear myopathy; CNM; myopathy, centronuclear | ancestors: congenital myopathy, hereditary skeletal muscle disorder, myopathy, hereditary disease | def: Centronuclear myopathy (CNM) is an inherited neuromuscular disorder characterized by clinical features of a congenital myopathy and centrally placed nuclei on muscle biopsy.",
+"ko": "중심핵 근병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007606",
+"concept": "- MONDO:0007606 | fibrodysplasia ossificans progressiva | syn: fibrodysplasia ossificans progressiva; FOP; fop; progressive myositis ossificans | ancestors: hereditary disease, skeletal system disorder, subcutaneous tissue disorder, disease of genetic or genomic mechanism | def: Fibrodysplasia ossificans progressiva (FOP) is a severely disabling heritable disorder of connective tissue characterized by congenital malformations of the great toes and progressive heterotopic ossi...",
+"ko": "진행성 골화성 섬유이형성증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0001246",
+"concept": "- MONDO:0001246 | typhus | syn: typhus fever; typhus-group rickettsiae disease; typhus-group rickettsiosis | ancestors: Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis, gram-negative bacterial infections | def: A group of infectious diseases that include epidemic typhus, scrub typhus and murine typhus.",
+"ko": "발진티푸스",
+"alt": [
+"티푸스열"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0001453",
+"concept": "- MONDO:0001453 | senile reticular retinal degeneration | syn: Senile reticular degeneration of retina | ancestors: peripheral retinal degeneration, retinal degeneration, retinal disorder, nervous system disorder",
+"ko": "노인성 망상 망막 변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001549",
+"concept": "- MONDO:0001549 | hemolytic-uremic syndrome | syn: hemolytic uremic syndrome; HUS | ancestors: blood coagulation disease, hematologic disorder, disease by body system or component, human disease | def: Acute kidney injury associated with microangiopathic hemolytic anemia and thrombocytopenia.",
+"ko": "용혈요독증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001032",
+"concept": "- MONDO:0001032 | Mooren ulcer | ancestors: corneal ulcer, keratitis, ulcer disease, corneal disorder",
+"ko": "무렌 궤양",
+"alt": [
+"무렌 각막궤양"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005181",
+"concept": "- MONDO:0005181 | progressive external ophthalmoplegia | syn: chronic progressive external ophthalmoplegia [ambiguous]; progressive external ophthalmoplegia | ancestors: congenital nervous system disorder, ophthalmoplegia, inborn mitochondrial myopathy, hereditary neurological disease | def: A mitochondrial myopathy characterized by slowly progressive paralysis of the levator palpebrae, orbicularis oculi, and extraocular muscles. Ragged-red fibers and atrophy are found on muscle biopsy. F...",
+"ko": "진행성 외안근마비",
+"alt": [
+"만성 진행성 외안근마비"
+],
+"organs": [
+"neurologic",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001034",
+"concept": "- MONDO:0001034 | marginal corneal ulcer | ancestors: corneal ulcer, keratitis, ulcer disease, corneal disorder",
+"ko": "변연부 각막궤양",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006664",
+"concept": "- MONDO:0006664 | atrial septal defect | syn: ASD; atrial septal defect; Atrial Septal Defects; atrial septum defect | ancestors: heart septal defect, cardiogenetic disease, congenital heart disease, hereditary disease | def: Interauricular communication is a congenital malformation characterized by a communication between the atrial chambers of the heart.",
+"ko": "심방중격결손",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0001918",
+"concept": "- MONDO:0001918 | epiphora due to excess lacrimation | ancestors: excessive tearing, lacrimal apparatus disorder, eye adnexa disorder, eye disorder",
+"ko": "과도한 눈물분비로 인한 눈물흘림증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0017388",
+"concept": "- MONDO:0017388 | celiac trunk compression syndrome | syn: celiac artery compression syndrome; celiac artery stenosis from compression by median arcuate ligament of diaphragm; coeliac artery compression syndrome; Dunbar syndrome | ancestors: arterial disorder, syndromic disease, hereditary disease, vascular disorder | def: A rare disease caused by compression of the celiac axis by an abnormally shaped arcuate ligament (the part of the diaphragm in which both pillars join in the midline around the aorta). Patients have r...",
+"ko": "복강동맥 압박 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001601",
+"concept": "- MONDO:0001601 | Plasmodium ovale malaria | ancestors: malaria, protozoa infectious disease, erythrocyte disorder, vector-borne disease | def: An malaria caused by infection with Plasmodium ovale.",
+"ko": "난형열원충 말라리아",
+"alt": [
+"난형 말라리아"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004177",
+"concept": "- MONDO:0004177 | benign urethral neoplasm | syn: benign neoplasm of the urethra; benign neoplasm of urethra; benign tumor of the urethra; benign tumor of urethra | ancestors: benign urinary system neoplasm, urethra neoplasm, benign neoplasm, urinary system neoplasm | def: Abnormal growth of the cells of the urethra (lower urinary tract) without malignant characteristics.",
+"ko": "양성 요도 신생물",
+"alt": [
+"양성 요도 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0017865",
+"concept": "- MONDO:0017865 | congenital pulmonary valve stenosis | ancestors: congenital anomaly of the great arteries, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder | def: Congenital pulmonary stenosis (PS) is a congenital heart malformation that is characterized by a right ventricular outflow obstruction with a clinical presentation that may vary from critical stenosis...",
+"ko": "선천성 폐동맥판 협착",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+}
+]

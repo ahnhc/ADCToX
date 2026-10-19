@@ -1,0 +1,263 @@
+[
+{
+"id": "MONDO:0000873",
+"concept": "- MONDO:0000873 | lymphoblastic lymphoma | syn: lymphoblastic lymphoma; lymphoma, lymphoblastic, malignant; precursor cell lymphoblastic lymphoma; precursor lymphoblastic lymphoma | ancestors: precursor lymphoblastic lymphoma/leukemia, non-Hodgkin lymphoma, lymphoid neoplasm, lymphoma | def: A lymphoma composed of immature small to medium-sized precursor lymphoid cells (lymphoblasts). It includes the B- and T-cell lymphoblastic lymphoma.",
+"ko": "림프모구림프종",
+"alt": [
+"림프아구성 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008832",
+"concept": "- MONDO:0008832 | right atrial isomerism | syn: asplenia with cardiovascular anomalies; Ivemark Syndrome; Ivemark syndrome; right atrial isomerism | ancestors: visceral heterotaxy, syndromic disease, hereditary disease, congenital heart malformation | def: A visceral heterotaxy characterized by complete atrioventricular septal defect with a common atrium and univentricular AV connection, total anomalous pulmonary drainage, and transposition or malpositi...",
+"ko": "우측 심방 이성증",
+"alt": [
+"이베마크 증후군"
+],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015947",
+"concept": "- MONDO:0015947 | inherited ichthyosis | syn: congenital ichthyosis of skin; genetic ichthyosis; hereditary ichthyosis (disease); inherited genetic ichthyosis | ancestors: ichthyosis, hereditary skin disorder, epidermal disease, hereditary disease | def: Mendelian disorders of cornification affecting all or most of integument characterized by hyperkeratosis and/or scaling, caused by an inherited modification of the individual's genome.",
+"ko": "유전성 어린선",
+"alt": [
+"선천성 어린선"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0016485",
+"concept": "- MONDO:0016485 | Usher syndrome type 3 | syn: USH3; Usher syndrome type 3 | ancestors: Usher syndrome, syndromic disease, autosomal recessive disease, disease by body system or component | def: A syndrome characterized by postlingual progressive hearing loss, abnormalities in the vestibular system, and onset of retinitis pigmentosa symptoms usually by the second decade of life.",
+"ko": "어셔 증후군 3형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016075",
+"concept": "- MONDO:0016075 | filariasis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A parasitic disease caused by tissue-invasive, vector-borne nematodes which can be found anywhere in the human body and that are transmitted to humans through the bite of an infected mosquito or fly o...",
+"ko": "사상충증",
+"alt": [
+"필라리아증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0700119",
+"concept": "- MONDO:0700119 | distal chromosome 18q deletion syndrome | syn: distal 18q deletion; distal 18q deletion syndrome; distal 18q- | ancestors: chromosome 18q deletion syndrome, syndromic disease, partial deletion of chromosome 18, disease by body system or component | def: Distal chromosome 18q deletion syndrome is a chromosome abnormality that occurs when there is a missing (deleted) copy of genetic material at the end of the long arm (q) of chromosome 18.",
+"ko": "18q 원위부 결실 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004910",
+"concept": "- MONDO:0004910 | mitral valve prolapse | syn: barlow's syndrome; floppy mitral valve; mitral valve prolapse; mitral valve prolapse (disease) | ancestors: mitral valve disorder, heart valve disorder, heart disorder, cardiovascular disorder | def: A fairly common and often benign valvular heart disorder characterized by redundancy or hooding of mitral valve leaflets so that they prolapse into the left atrium, often causing mitral regurgitation....",
+"ko": "승모판 탈출증",
+"alt": [
+"바로우 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013255",
+"concept": "- MONDO:0013255 | arthrogryposis, renal dysfunction, and cholestasis 2 | syn: ARCS2; arthrogryposis, renal dysfunction, and cholestasis 2; arthrogryposis-renal dysfunction-cholestasis syndrome caused by mutation in VIPAS39; VIPAS39 arthrogryposis-renal dysfunction-cholestasis syndrome | ancestors: arthrogryposis-renal dysfunction-cholestasis syndrome, syndromic disease, arthrogryposis multiplex congenita 2, neurogenic type, developmental anomaly of metabolic origin | def: Any arthrogryposis-renal dysfunction-cholestasis syndrome in which the cause of the disease is a mutation in the VIPAS39 gene that disrupts vesicle‑trafficking pathways required for apical–basolateral...",
+"ko": "관절구축, 신장 기능이상 및 담즙정체 2",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005336",
+"concept": "- MONDO:0005336 | myopathy | ancestors: skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder, disease by body system or component | def: A disease of the muscle in which the muscle fibers do not function properly. This results in muscular weakness.",
+"ko": "근병증",
+"alt": [
+"근육병"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002152",
+"concept": "- MONDO:0002152 | intermittent squint | syn: intermittent heterotropia | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "간헐 사시",
+"alt": [
+"간헐성 사시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0018023",
+"concept": "- MONDO:0018023 | hemoglobin M disease | syn: M hemoglobinopathy; methemoglobinemia, beta type | ancestors: hereditary methemoglobinemia, methemoglobinemia, anemia, inherited hemoglobinopathy",
+"ko": "헤모글로빈 M병",
+"alt": [
+"M 헤모글로빈병증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007969",
+"concept": "- MONDO:0007969 | Melkersson-Rosenthal syndrome | syn: Melkersson's syndrome; Melkersson-Rosenthal syndrome | ancestors: facial nerve disorder, cheilitis, syndromic disease, urticaria | def: The Melkersson-Rosenthal syndrome is a rare disorder characterized by a triad of recurrent orofacial swelling, relapsing facial paralysis and fissured tongue and onset in childhood or early adolescenc...",
+"ko": "멜커손-로젠탈 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006267",
+"concept": "- MONDO:0006267 | liver cavernous hemangioma | syn: cavernous hemangioma of liver; liver cavernous hemangioma | ancestors: liver hemangioma, cavernous hemangioma, benign endocrine neoplasm, intra-abdominal hemangioma | def: A hemangioma with cavernous vascular spaces arising from the liver. It is the most frequent benign tumor of the liver and usually affects young females.",
+"ko": "간 해면상 혈관종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005223",
+"concept": "- MONDO:0005223 | acute myeloid leukemia with minimal differentiation | syn: acute myeloblastic leukaemia with minimal differentiation; acute myeloblastic leukemia with minimal differentiation; acute myeloblastic leukemia, minimally differentiated; acute myelocytic leukaemia with minimal differentiation | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: An acute myeloid leukemia (AML) in which the blasts do not show evidence of myeloid differentiation by morphology and conventional cytochemistry. (WHO, 2001)",
+"ko": "최소 분화 급성 골수성 백혈병",
+"alt": [
+"급성 골수모구성 백혈병 M0"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004332",
+"concept": "- MONDO:0004332 | lung hilum cancer | syn: cancer of lung hilus; lung hilus cancer; malignant hilar lung neoplasm; malignant hilar lung tumor | ancestors: lung hilum neoplasm, lung cancer, lung neoplasm, respiratory system cancer | def: A malignant neoplasm involving the lung hilus.",
+"ko": "폐문부 암",
+"alt": [
+"폐문 암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012252",
+"concept": "- MONDO:0012252 | rhabdoid tumor predisposition syndrome 1 | syn: familial rhabdoid tumor caused by mutation in SMARCB1; familial rhabdoid tumour caused by mutation in SMARCB1; rhabdoid tumor predisposition syndrome 1; rhabdoid tumour predisposition syndrome type 1 | ancestors: familial rhabdoid tumor, SMARCB1-related tumor predisposition, rhabdoid tumor, hereditary neoplastic syndrome | def: Any familial rhabdoid tumor in which the cause of the disease is a mutation in the SMARCB1 gene.",
+"ko": "횡문근양 종양 소인 증후군 1형",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001071",
+"concept": "- MONDO:0001071 | intellectual disability | syn: intellectual disabilities; intellectual disability | ancestors: neurodevelopmental disorder, nervous system disorder, disease by body system or component, human disease | def: A broad category of disorders characterized by an impairment to the intelligence an individual possesses. These impairments can result from trauma, birth, or disease and are not restricted to any part...",
+"ko": "지적장애",
+"alt": [
+"정신지체"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0009650",
+"concept": "- MONDO:0009650 | mucolipidosis type II | syn: I Cell Disease; I-cell disease; mucolipidosis type II; mucolipidosis type II alpha/beta | ancestors: familial mucolipidosis, GNPTAB-mucolipidosis, lysosomal storage disease with skeletal involvement, mucolipidosis | def: Mucolipidosis II (MLII) is a slowly progressive lysosomal disorder characterized by growth retardation, skeletal abnormalities, facial dysmorphism, stiff skin, developmental delay and cardiomegaly.",
+"ko": "점액지질증 2형",
+"alt": [
+"I-세포병"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002730",
+"concept": "- MONDO:0002730 | childhood kidney neoplasm | syn: childhood kidney neoplasm; childhood kidney tumor; childhood kidney tumour; childhood renal neoplasm | ancestors: childhood neoplasm, kidney neoplasm, neoplasm, kidney disorder | def: A kidney neoplasm that occurs during childhood.",
+"ko": "소아 신장 신생물",
+"alt": [
+"소아 신장 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001261",
+"concept": "- MONDO:0001261 | Mobitz type II atrioventricular block | syn: AV block second degree Mobitz type II; AV block second degree Möbitz type II; Mobitz (type) II atrioventricular block; Mobitz II | ancestors: second-degree atrioventricular block, atrioventricular block, heart conduction disease, atrioventricular dissociation | def: A disorder characterized by an electrocardiographic finding of intermittent failure of atrial electrical impulse conduction to the ventricles, characterized by a relatively constant PR interval prior ...",
+"ko": "모비츠 2형 방실차단",
+"alt": [
+"모비츠 II형 방실차단"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+}
+]

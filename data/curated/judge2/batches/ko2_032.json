@@ -1,0 +1,240 @@
+[
+{
+"id": "MONDO:0005631",
+"concept": "- MONDO:0005631 | actinomycosis | syn: Actinomyces infection | ancestors: commensal bacterial infectious disease, Actinomycetales infectious disease, bacterial infectious disease, gram-positive bacterial infections | def: Actinomycosis is a chronic bacterial infection that commonly affects the face and neck. It is usually caused by an anaerobic bacteria called Actinomyces israelii. Actinomyces are normal inhabitants of...",
+"ko": "방선균증",
+"alt": [
+"악티노미세스증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0009058",
+"concept": "- MONDO:0009058 | cystathioninuria | syn: cystathionase deficiency; cystathioninuria; cystathioninuria (disease); gamma-cystathionase deficiency | ancestors: inborn disorder of amino acid metabolism, inborn disorder of methionine cycle and sulfur amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: Cystathioninuria is an autosomal recessive disorder caused by cystathionine gamma-lyase deficiency. It is usually pyridoxine-dependent, but in very rare cases it may be non-dependent. It is generally ...",
+"ko": "시스타티오닌뇨증",
+"alt": [
+"시스타티오나제 결핍증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004492",
+"concept": "- MONDO:0004492 | mediastinitis | ancestors: inflammatory disease, disease by developmental or physiological process, human disease, disease | def: An inflammatory process affecting the mediastinum.",
+"ko": "종격동염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018908",
+"concept": "- MONDO:0018908 | non-Hodgkin lymphoma | syn: NHL; non-Hodgkin lymphoma; non-Hodgkin's lymphoma; non-Hodgkin's lymphoma (NHL) | ancestors: lymphoma, lymphoid neoplasm, lymphoid hemopathy, hematopoietic and lymphoid cell neoplasm | def: Distinct from Hodgkin lymphoma both morphologically and biologically, non-Hodgkin lymphoma (NHL) is characterized by the absence of Reed-Sternberg cells, can occur at any age, and usually presents as ...",
+"ko": "비호지킨 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0008310",
+"concept": "- MONDO:0008310 | Hutchinson-Gilford progeria syndrome | syn: HGPS; Hutchinson-Gilford disease; Hutchinson-Gilford progeria; Hutchinson-Gilford progeria syndrome | ancestors: syndromic disease, autosomal recessive disease, progeroid syndrome, primary osteolysis | def: Hutchinson-Gilford progeria syndrome is a rare, fatal, autosomal dominant and premature aging disease, beginning in childhood and characterized by growth reduction, failure to thrive, a typical facial...",
+"ko": "허친슨-길포드 조로증",
+"alt": [
+"허친슨-길포드 프로제리아"
+],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001889",
+"concept": "- MONDO:0001889 | ovarian dysfunction | syn: ovarian failure; ovarian hypofunction; ovarian insufficiency | ancestors: ovarian disorder, gonadal disorder, female reproductive system disorder, reproductive system disorder | def: The inability of the ovaries to function.",
+"ko": "난소 기능부전",
+"alt": [
+"난소기능저하"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0013209",
+"concept": "- MONDO:0013209 | metabolic dysfunction-associated steatotic liver disease | syn: fatty liver disease, nonalcoholic; MASLD; NAFLD; NAFLD - nonalcoholic fatty liver disease | ancestors: fatty liver disease, liver disorder, hepatobiliary disorder, endocrine system disorder | def: Metabolic dysfunction-associated steatotic liver disease (MASLD, formerly known as nonalcoholic fatty liver disease or NAFLD) is a type of liver disease that is not caused by alcohol. It typically doe...",
+"ko": "대사 기능이상 연관 지방간질환",
+"alt": [
+"비알코올성 지방간질환"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002817",
+"concept": "- MONDO:0002817 | adrenal gland cancer | syn: adrenal cancer; adrenal gland cancer; cancer of adrenal gland; malignant adrenal gland neoplasm | ancestors: retroperitoneal cancer, malignant endocrine neoplasm, adrenal gland neoplasm, cancer | def: A malignant neoplasm involving the adrenal gland",
+"ko": "부신암",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001555",
+"concept": "- MONDO:0001555 | neonatal thyrotoxicosis | syn: infantile hyperthyroidism | ancestors: thyrotoxicosis, hyperthyroidism, thyroid gland disorder, endocrine system disorder | def: A hypermetabolic syndrome characterized by tachycardia, palpitations, tremor, weight loss, and moist skin that is caused by the elevation of thyroid hormone levels in the serum of the newborn infant o...",
+"ko": "신생아 갑상샘중독증",
+"alt": [
+"신생아 갑상선기능항진증"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005991",
+"concept": "- MONDO:0005991 | trench fever | syn: Bartonella quintana caused disease or disorder; Bartonella quintana disease or disorder; Bartonella quintana infectious disease; bartonellosis due to Bartonella quintana infection | ancestors: bartonellosis, vector-borne disease, primary bacterial infectious disease, Bartonellaceae infectious disease | def: An intermittent fever characterized by intervals of chills, fever, and splenomegaly each of which may last as long as 40 hours. It is caused by bartonella quintana and transmitted by the human louse.",
+"ko": "참호열",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0006761",
+"concept": "- MONDO:0006761 | fibromuscular dysplasia | syn: fibromuscular dysplasia; fibromuscular dysplasia of arteries; FMDA | ancestors: arterial disorder, hereditary disease, vascular disorder, disease of genetic or genomic mechanism | def: A disorder characterized by fibrous thickening of the arterial wall resulting in narrowing of the arterial lumen. It most often affects the renal artery and less often the carotid artery and abdominal...",
+"ko": "섬유근육 형성이상",
+"alt": [
+"섬유근형성이상"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021404",
+"concept": "- MONDO:0021404 | polyp of sphenoidal sinus | syn: polyp of sphenoid sinus; polyp of the sphenoid sinus; polyp of the sphenoidal sinus; sphenoid sinus polyp | ancestors: paranasal sinus disorder, polyp, disorder of facial skeleton, nasal disorder | def: A polyp that involves the sphenoidal sinus.",
+"ko": "나비굴 용종",
+"alt": [
+"접형동 용종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015947",
+"concept": "- MONDO:0015947 | inherited ichthyosis | syn: congenital ichthyosis of skin; genetic ichthyosis; hereditary ichthyosis (disease); inherited genetic ichthyosis | ancestors: ichthyosis, hereditary skin disorder, epidermal disease, hereditary disease | def: Mendelian disorders of cornification affecting all or most of integument characterized by hyperkeratosis and/or scaling, caused by an inherited modification of the individual's genome.",
+"ko": "유전성 어린선",
+"alt": [
+"선천성 어린선"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004948",
+"concept": "- MONDO:0004948 | B-cell chronic lymphocytic leukemia | syn: B cell chronic lymphocytic leukaemia; B cell chronic lymphocytic leukemia; B cell CLL; B cell lymphocytic leukaemia | ancestors: chronic leukemia, neoplasm of mature B-cells, acute lymphoblastic leukemia, indolent B-cell non-Hodgkin lymphoma | def: B-cell chronic lymphocytic leukemia (B-CLL) is a type of B-cell non-Hodgkin lymphoma, and the most common form of leukemia in Western countries, affecting elderly adults (mean age of 67 and 72 years) ...",
+"ko": "B세포 만성 림프구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008213",
+"concept": "- MONDO:0008213 | pectus excavatum | syn: pectus excavatum; pectus excavatum (disease) | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease | def: A developmental anomaly in which the lower sternum is posteriorly dislocated and concavely deformed, resulting in a funnel-shaped thorax.",
+"ko": "오목가슴",
+"alt": [
+"함몰흉",
+"누두흉"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0008720",
+"concept": "- MONDO:0008720 | congenital isolated adrenocorticotropic hormone deficiency | syn: ACTH deficiency; adrenocorticotropic hormone deficiency; congenital isolated adrenocorticotropic hormone deficiency (disease) | ancestors: combined pituitary hormone deficiencies, genetic form, isolated congenital hypogonadotropic hypogonadism, congenital nervous system disorder, hypopituitarism | def: A hypopituitarrium that is characterized by a decreased or absent production of adrenocorticotropic hormone by the pituitary gland.",
+"ko": "선천성 단독 부신피질자극호르몬 결핍증",
+"alt": [
+"ACTH 결핍증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015253",
+"concept": "- MONDO:0015253 | Diamond-Blackfan anemia | syn: Aase syndrome; Aase-Smith II syndrome; Blackfan-Diamond anaemia; Blackfan-Diamond anemia | ancestors: pure red-cell aplasia, inherited aplastic anemia, anemia, hereditary disease | def: A congenital aregenerative and often macrocytic anemia with erythroblastopenia.",
+"ko": "다이아몬드-블랙팬 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0019313",
+"concept": "- MONDO:0019313 | lymphatic malformation | syn: hereditary lymphedema; lymphedema, hereditary | ancestors: hereditary disease, vascular disorder, primary lymphedema, disease of genetic or genomic mechanism | def: Primary lymphedema is caused by anatomic or functional defects in the lymphatic system, resulting in chronic swelling of body parts and lymphatic-system malformation.",
+"ko": "림프관 기형",
+"alt": [
+"유전성 림프부종"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007089",
+"concept": "- MONDO:0007089 | Alzheimer disease 2 | syn: AD2; Alzheimer disease 2; Alzheimer disease associated with APOE E4; Alzheimer disease associated with APOE4 | ancestors: familial Alzheimer disease, Alzheimer disease, hereditary dementia, inherited neurodegenerative disorder | def: An Alzheimer's disease that is characterized by an association of the apolipoprotein E E4 allele.",
+"ko": "알츠하이머병 2형",
+"alt": [
+"APOE E4 연관 알츠하이머병"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0002041",
+"concept": "- MONDO:0002041 | fungal infectious disease | syn: Fungi caused disease or disorder; Fungi disease or disorder; Fungi infection; Fungi infectious disease | ancestors: infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: An infection caused by a fungus.",
+"ko": "진균 감염병",
+"alt": [
+"진균증"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5
+}
+]

@@ -1,0 +1,263 @@
+[
+{
+"id": "MONDO:0018920",
+"concept": "- MONDO:0018920 | peripartum cardiomyopathy | syn: peripartum cardiomyopathy; postpartum cardiomyopathy | ancestors: non-familial dilated cardiomyopathy, pregnancy disorder, dilated cardiomyopathy, obstetric disorder | def: Peripartum cardiomyopathy (PPCM) is an idiopathic, potentially fatal form of dilated cardiomyopathy that develops during the final month of pregnancy or within five months after delivery.",
+"ko": "주산기 심근병증",
+"alt": [
+"산후 심근병증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021450",
+"concept": "- MONDO:0021450 | benign neoplasm of heart | syn: benign Cardiac neoplasm; benign Cardiac tumor; benign Cardiac tumour; benign heart neoplasm | ancestors: cardiovascular organ benign neoplasm, thoracic benign neoplasm, heart neoplasm, benign neoplasm | def: A benign neoplasm that involves the heart.",
+"ko": "심장 양성 신생물",
+"alt": [
+"심장 양성 종양"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0041903",
+"concept": "- MONDO:0041903 | gonococcal infection of joint | syn: gonococcal infection of joint | ancestors: gonorrhea, bacterial arthritis, primary bacterial infectious disease, bacterial sexually transmitted disease",
+"ko": "관절의 임균 감염",
+"alt": [
+"임균성 관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0005837",
+"concept": "- MONDO:0005837 | mandibular cancer | syn: cancer of mandible; malignant mandible neoplasm; malignant neoplasm of inferior maxilla; malignant neoplasm of lower jaw bone | ancestors: jaw cancer, skull cancer, digestive system cancer, neoplasm of jaw | def: A malignant neoplasm involving the mandible",
+"ko": "하악암",
+"alt": [
+"아래턱뼈암"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019609",
+"concept": "- MONDO:0019609 | Zellweger spectrum disorders | syn: cerebrohepatorenal syndrome; Zellweger spectrum disorders; Zellweger syndrome; ZS | ancestors: developmental anomaly of metabolic origin, peroxisome biogenesis disorder, metabolic disease, developmental defect during embryogenesis | def: The most severe variant seen in the peroxisome biogenesis disorders that is characterized by neuronal migration defects in the brain, dysmorphic craniofacial features, profound hypotonia, neonatal sei...",
+"ko": "젤베거 스펙트럼 질환",
+"alt": [
+"뇌간신 증후군"
+],
+"organs": [
+"hepatic",
+"renal",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004924",
+"concept": "- MONDO:0004924 | chronic canaliculitis | syn: actinomycosis, chronic; chronic actinomycosis | ancestors: chronic inflammation of lacrimal passage, actinomycosis, eye infectious disorder, lacrimal apparatus disorder | def: Chronic form of actinomycosis.",
+"ko": "만성 눈물소관염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018305",
+"concept": "- MONDO:0018305 | chronic granulomatous disease | syn: CGD; chronic septic granulomatosis | ancestors: hereditary disease, phagocyte bactericidal dysfunction, inflammatory disease, defective phagocytic cell engulfment | def: Chronic granulomatous disease (CGD) is a rare primary immunodeficiency, mainly affecting phagocytes, which is characterized by an increased susceptibility to severe and recurrent bacterial and fungal ...",
+"ko": "만성 육아종병",
+"alt": [
+"만성 육아종증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008207",
+"concept": "- MONDO:0008207 | chondromalacia patellae | syn: chondromalacia of patella; chondromalacia patellae; patella chondromalacia | ancestors: chondromalacia, skeletal dysplasia, articular cartilage disorder, hereditary disease | def: Familial chondromalacia patellae is an inherited bone disorder described in 5 families in 1963 and is characterized by localized patellar pain and male-to-male transmission.",
+"ko": "무릎뼈 연골연화증",
+"alt": [
+"슬개골 연골연화증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009000",
+"concept": "- MONDO:0009000 | familial reactive perforating collagenosis | ancestors: dermis disorder, skin disorder, integumentary system disorder, disease by body system or component | def: Familial reactive perforating collagenosis is a very rare genetic skin disease characterized by transepidermal elimination of collagen fibers presenting as recurrent spontaneously involuting keratotic...",
+"ko": "가족성 반응성 천공성 교원질증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001863",
+"concept": "- MONDO:0001863 | aorta atresia | syn: congenital atresia and stenosis of aorta | ancestors: aortic disorder, arterial disorder, vascular disorder, cardiovascular disorder | def: An aortic disease that is characterized by an absence of an opening from the left ventricle of the heart into the aorta.",
+"ko": "대동맥 폐쇄증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006654",
+"concept": "- MONDO:0006654 | anthracosis | syn: coal dust pneumoconiosis; coal miner's pneumoconiosis; coal workers' pneumoconiosis; pneumoconiosis from coal dust | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: A chronic lung disorder characterized by deposition of coal dust in the lung parenchyma leading to the formation of black nodules and emphysema. It occurs in coal miners.",
+"ko": "탄진증",
+"alt": [
+"탄광부 진폐증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001773",
+"concept": "- MONDO:0001773 | post-vaccinal encephalitis | syn: encephalitis following immunisation procedures; encephalitis following immunization procedures | ancestors: encephalitis, encephalomyelitis, brain disorder, acute disease | def: An acute or subacute inflammatory process of the central nervous system characterized histologically by multiple foci of perivascular demyelination. Symptom onset usually occurs several days after an ...",
+"ko": "예방접종 후 뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000396",
+"concept": "- MONDO:0000396 | spastic cerebral palsy | ancestors: cerebral palsy, palsy, cerebral cortex disorder, central nervous system disorder | def: A form of cerebral palsy wherein spasticity is the exclusive impairment present.",
+"ko": "경직형 뇌성마비",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001916",
+"concept": "- MONDO:0001916 | gastrointestinal tularemia | syn: enteric tularemia | ancestors: tularemia, primary bacterial infectious disease, vector-borne disease, bacterial infectious disease | def: A tularemia that results in formation of ulcerative lesions located in gastrointestinal tract. The infection has symptom fever, has symptom chills, has symptom malaise, has symptom muscle aches, and h...",
+"ko": "위장관 야토병",
+"alt": [
+"장 야토병"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009520",
+"concept": "- MONDO:0009520 | 3-hydroxy-3-methylglutaric aciduria | syn: 3-hydroxy-3-methylglutaric aciduria; 3-hydroxy-3-methylglutaryl-CoA lyase deficiency; 3-OH 3-Methyl glutaric aciduria; deficiency of hydroxymethylglutaryl-CoA lyase | ancestors: disorder of fatty acid oxidation and ketogenesis, classic organic aciduria, disorder of fatty acid and ketone body metabolism, inherited fatty acid metabolism disorder | def: 3-hydroxy-3-methylglutaric aciduria (3HMG) is an organic aciduria, due to deficiency of 3-hydroxy-3-methylglutaryl-CoA-lyase (a key enzyme in ketogenesis and leucine metabolism) usually presenting in ...",
+"ko": "3-하이드록시-3-메틸글루타르산뇨증",
+"alt": [
+"HMG-CoA 분해효소 결핍증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019068",
+"concept": "- MONDO:0019068 | congenital membranous nephropathy due to maternal anti-neutral endopeptidase alloimmunization | syn: alloimmune neonatal renal disease; fetomaternal alloimmunization with antenatal glomerulopathies; FMAIG; neonatal glomerulopathy due to Neprilysin alloimmunization | ancestors: glomerular disorder, kidney disorder, urinary system disorder, disease by body system or component | def: A glomerular disease characterized by severe renal failure and nephrotic syndrome at birth, which rapidly improve in the first weeks of life.",
+"ko": "모체 항-중성 엔도펩티데이스 동종면역에 의한 선천성 막성 신병증",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011759",
+"concept": "- MONDO:0011759 | Hurler-Scheie syndrome | syn: Hurler-Scheie syndrome; MPS I H-S; MPS1H/S; MPSIH/S | ancestors: mucopolysaccharidosis type 1, syndromic disease, lysosomal storage disease with skeletal involvement, eye disorder | def: Hurler-Scheie syndrome is the intermediate form of mucopolysaccharidosis type 1 (MPS1) between the two extremes Hurler syndrome and Scheie syndrome ; it is a rare lysosomal storage disease, characteri...",
+"ko": "헐러-샤이에 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001595",
+"concept": "- MONDO:0001595 | choreatic disease | syn: benign familial chorea | ancestors: movement disorder, nervous system disorder, disease by body system or component, human disease | def: A neurological condition affecting the involuntary movements. It is characterized by brief, non-repetitive irregular muscle contractions. It is seen in patients with Huntington's disease.",
+"ko": "무도병성 질환",
+"alt": [
+"무도병"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0043287",
+"concept": "- MONDO:0043287 | superior vena cava syndrome | syn: superior vena cava syndrome | ancestors: syndromic disease, vascular disorder, disease by body system or component, cardiovascular disorder | def: Obstruction of the blood flow in the superior vena cava caused by a malignant neoplasm, thrombosis, or aneurysm. It is a medical emergency requiring immediate treatment. Signs and symptoms include swe...",
+"ko": "상대정맥 증후군",
+"alt": [
+"상대정맥증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008585",
+"concept": "- MONDO:0008585 | HELLP syndrome | syn: hemolysis, elevated liver enzymes, low platelets in pregnancy; hemolysis-elevated liver enzymes-low platelet count syndrome; hemolysis-elevated liver enzymes-low platelets syndrome | ancestors: severe pre-eclampsia, syndromic disease, preeclampsia, disease by body system or component | def: A life-threatening condition that can potentially complicate pregnancy. It is named for 3 features of the condition: H emolysis, E levated L iver enzyme levels, and L ow P latelet levels. It typically...",
+"ko": "HELLP 증후군",
+"alt": [
+"임신 중 용혈·간효소 상승·혈소판감소 증후군"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+}
+]

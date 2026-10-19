@@ -1,0 +1,261 @@
+[
+{
+"id": "MONDO:0003880",
+"concept": "- MONDO:0003880 | ceruminous carcinoma | syn: carcinoma, ceruminous gland, malignant; ceruminous adenocarcinoma; ceruminous adenocarcinoma (morphologic abnormality) | ancestors: external ear carcinoma, apocrine adenocarcinoma, head and neck carcinoma, external ear cancer | def: An infiltrating adenocarcinoma derived from ceruminous glands in the external auditory canal.",
+"ko": "귀지샘 암종",
+"alt": [
+"귀지선 암종"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019280",
+"concept": "- MONDO:0019280 | hypertrichosis | syn: hypertrichosis; hypertrichosis (disease) | ancestors: disorder of pilosebaceous unit, integumentary system disorder, disease by body system or component, human disease | def: Excessive hair growth anywhere on the body.",
+"ko": "다모증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0007705",
+"concept": "- MONDO:0007705 | Heinz body anemia | syn: Heinz body anemias, alpha- | ancestors: hemolytic anemia, normocytic anemia, anemia, hematologic disorder",
+"ko": "하인츠소체 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010529",
+"concept": "- MONDO:0010529 | X-linked spinocerebellar ataxia type 3 | syn: SCAX3; spinocerebellar ataxia, X-linked type 3; X-linked ataxia-deafness syndrome | ancestors: X-linked cerebellar ataxia, X-linked disease, hereditary cerebellar ataxia, hereditary disease | def: A form of spinocerebellar degeneration characterized by onset in infancy of hypotonia, ataxia, sensorineural deafness, developmental delay, esotropia, and optic atrophy, and by a progressive course le...",
+"ko": "X연관 척수소뇌실조 3형",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010879",
+"concept": "- MONDO:0010879 | CODAS syndrome | syn: cerebrooculodentoauriculoskeletal syndrome; CODAS syndrome | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, spondyloepiphyseal dysplasia, disease by body system or component | def: Codas syndrome is a multiple congenital anomalies syndrome characterized by Cerebral, Ocular, Dental, Auricular and Skeletal anomalies.",
+"ko": "CODAS 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001847",
+"concept": "- MONDO:0001847 | nuclear senile cataract | syn: lens nucleus senile cataract; senile cataract of lens nucleus; Senile nuclear sclerosis | ancestors: senile cataract, nuclear cataract, cataract, lens disorder | def: A senile cataract that involves the lens nucleus.",
+"ko": "핵성 노인성 백내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008967",
+"concept": "- MONDO:0008967 | congenital bile acid synthesis defect 4 | syn: 2-methylacyl-CoA racemase deficiency; Alpha-methyl-acyl-CoA racemase deficiency; BAS defect type 4; BASD4 | ancestors: alpha-methylacyl-CoA racemase deficiency, congenital bile acid synthesis defect, disorder of peroxisomal beta oxidation, steroid inherited metabolic disorder | def: An anomaly of bile acid synthesis characterized by mild cholestatic liver disease, fat malabsorption and/or neurological disease.",
+"ko": "선천성 담즙산 합성 결함 4",
+"alt": [
+"2-메틸아실-CoA 라세마제 결핍증"
+],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018746",
+"concept": "- MONDO:0018746 | mucous membrane pemphigoid | syn: benign mucous Membrane pemphigoid; cicatricial pemphigoid; mucosal pemphigoid; Mucosynechial pemphigoid | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: Mucous membrane pemphigoid is a bullous dermatosis characterized clinically by blistering of the mucous membranes followed by scarring, and immunologically by IgG, IgA and/or C3 deposits on the epider...",
+"ko": "점막 유천포창",
+"alt": [
+"점막류천포창",
+"반흔성 유천포창"
+],
+"organs": [
+"gastrointestinal",
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005828",
+"concept": "- MONDO:0005828 | listeriosis | syn: infection by Listeria monocytogenes; Listeria infection; Listeria monocytogenes caused disease or disorder; Listeria monocytogenes disease or disorder | ancestors: primary bacterial infectious disease, vector-borne disease, bacterial infectious disease, infectious disease | def: A bacterial infection caused by Listeria monocytogenes. It occurs in newborns, elderly, and immunocompromised patients. The bacteria are transmitted through ingestion of contaminated food. Clinical ma...",
+"ko": "리스테리아증",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0021285",
+"concept": "- MONDO:0021285 | carcinoma in situ of urethra | syn: carcinoma in situ of the urethra; carcinoma in situ of urethra; stage 0 urethra carcinoma; stage 0is carcinoma of the urethra | ancestors: in situ carcinoma, carcinoma of urethra, carcinoma, high grade malignant neoplasm | def: A in situ carcinoma that involves the urethra.",
+"ko": "요도 상피내암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0035337",
+"concept": "- MONDO:0035337 | Duane retraction syndrome with congenital deafness | syn: DRS with deafness; DRS with hearing loss; Duane retraction syndrome with congenital hearing loss; DURS with deafness | ancestors: Duane retraction syndrome, syndromic disease, nuclear oculomotor paralysis, hereditary neurological disease | def: A rare neurologic disease characterized by the presence of Duane retraction syndrome (i. e. a congenital cranial dysinnervation disorder with unilateral or bilateral limitation of abduction and/or add...",
+"ko": "선천성 난청을 동반한 듀안 후퇴 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006952",
+"concept": "- MONDO:0006952 | retinopathy of prematurity | syn: retrolental fibroplasia; ROP; Terry syndrome | ancestors: FZD4-related exudative vitreoretinopathy, exudative vitreoretinopathy, retinal vascular disorder, vitreoretinal degeneration | def: A bilateral retinopathy characterized by neovascularization, scarring, retinal detachment, and eventually blindness. It may be mild or severe. It occurs in babies born prematurely. Causes include oxyg...",
+"ko": "미숙아 망막병증",
+"alt": [
+"미숙아 망막증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0019262",
+"concept": "- MONDO:0019262 | juvenile neuronal ceroid lipofuscinosis | syn: batten disease; JNCL; juvenile NCL; juvenile neuronal ceroid lipofuscinosis | ancestors: neuronal ceroid lipofuscinosis, cerebral lipidosis with dementia, lysosomal lipid storage disorder, inherited neurodegenerative disorder | def: A genetically heterogeneous group of neuronal ceroid lipofuscinoses (NCLs) typically characterized by onset at early school age with vision loss due to retinopathy, seizures and the decline of mental ...",
+"ko": "소아 신경세로이드지갈색소증",
+"alt": [
+"바텐병"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004922",
+"concept": "- MONDO:0004922 | developmental coordination disorder | syn: clumsy child syndrome; development coordination disorder; developmental dyspraxia | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: A disorder characterized by an impairment in the development of an individual's motor coordination skills; this impairment in motor development is not due to a medical condition.",
+"ko": "발달성 협응 장애",
+"alt": [
+"서투른 아이 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005724",
+"concept": "- MONDO:0005724 | cryptococcosis | syn: Cryptococcus neoformans caused disease or disorder; Cryptococcus neoformans disease or disorder; Cryptococcus neoformans infectious disease; torulosis | ancestors: opportunistic mycosis, parasitic infectious disease, fungal infectious disease, infectious disease | def: An acute or chronic, localized or disseminated infection by Cryptococcus neoformans. Sites of involvement include the lungs, central nervous system and meninges, skin, and visceral organs.--2004",
+"ko": "크립토코쿠스증",
+"alt": [
+"크립토콕쿠스증"
+],
+"organs": [
+"pulmonary",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0004686",
+"concept": "- MONDO:0004686 | lattice corneal dystrophy | syn: lattice corneal dystrophy; lattice corneal dystrophy (disease) | ancestors: stromal corneal dystrophy, corneal dystrophy, corneal disorder, eye disorder",
+"ko": "격자 각막이영양증",
+"alt": [
+"격자형 각막 디스트로피"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0100637",
+"concept": "- MONDO:0100637 | drug-induced myopathy | ancestors: myopathy, skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder | def: A myopathy caused by exposure to a drug.",
+"ko": "약물 유발 근병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008163",
+"concept": "- MONDO:0008163 | otofaciocervical syndrome | syn: Fara Chlupackova syndrome; Fara-Chlupackova syndrome; OFC syndrome | ancestors: hereditary disease, mandibulofacial dysostosis, disease of genetic or genomic mechanism, dysostosis | def: A rare, genetic developmental defect during embryogenesis characterized by distinct facial features (long triangular face, broad forehead, narrow nose and mandible, high arched palate), prominent, dys...",
+"ko": "귀얼굴목 증후군",
+"alt": [
+"파라-클루파코바 증후군"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008482",
+"concept": "- MONDO:0008482 | Sprengel deformity | syn: high scapula; Sprengel deformity; Sprengel deformity (disease) | ancestors: thoracic malformation, respiratory or thoracic malformation, respiratory system disorder, disease by body system or component",
+"ko": "스프렝겔 변형",
+"alt": [
+"견갑골 고위증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011049",
+"concept": "- MONDO:0011049 | Fine-Lubinsky syndrome | syn: brachycephaly-deafness-cataract-intellectual disability syndrome; fine-Lubinsky syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome-intellectual disability, multiple congenital anomalies/dysmorphic syndrome, developmental defect during embryogenesis, disorder of development or morphogenesis | def: A syndrome characterized by psychomotor delay, brachycephaly with flat face, small nose, microstomia, cleft palate, cataract, hearing loss, hypoplastic scrotum and digital anomalies.",
+"ko": "파인-루빈스키 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

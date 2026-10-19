@@ -1,0 +1,239 @@
+[
+{
+"id": "MONDO:0001303",
+"concept": "- MONDO:0001303 | abnormal pupillary function | syn: abnormal pupillary function; abnormal pupillary function (disease) | ancestors: pupil disorder, iris disorder, uveal disorder, eye disorder",
+"ko": "동공 기능 이상",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018921",
+"concept": "- MONDO:0018921 | Meckel syndrome | syn: Meckel-Gruber syndrome | ancestors: syndromic disease, ciliopathy, hereditary lethal multiple congenital anomalies/dysmorphic syndrome, disease by body system or component | def: A rare, lethal, genetic, multiple congenital anomaly disorder characterized by the triad of brain malformation mainly occipital encephalocele, large polycystic kidneys, and polydactyly as well as asso...",
+"ko": "메켈 증후군",
+"alt": [
+"메켈-그루버 증후군"
+],
+"organs": [
+"renal",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016035",
+"concept": "- MONDO:0016035 | Nelson syndrome | syn: Nelson's syndrome | ancestors: functioning pituitary gland adenoma, functioning pituitary gland neoplasm, pituitary gland adenoma, pituitary tumor | def: A syndrome that develops following bilateral adrenalectomy for Cushing syndrome. The signs and symptoms result from the presence of an adenocorticotropin-secreting pituitary gland adenoma, and include...",
+"ko": "넬슨 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006543",
+"concept": "- MONDO:0006543 | epidermolysis bullosa dystrophica | syn: DEB; dermolytic epidermolysis bullosa; epidermolysis bullosa dystrophica | ancestors: inherited epidermolysis bullosa, epidermolysis bullosa, epidermal disease, hereditary skin disorder | def: A genetic skin disorder caused by mutations in the type VII collagen gene (COL7A1). It is characterized by the formation of blisters and scarring in the skin and mucous membranes.",
+"ko": "이영양성 표피박리수포증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021451",
+"concept": "- MONDO:0021451 | benign neoplasm of brain | syn: benign brain neoplasm; benign brain tumor; benign brain tumour; benign neoplasm of the brain | ancestors: central nervous system organ benign neoplasm, brain neoplasm, nervous system benign neoplasm, central nervous system neoplasm | def: A benign neoplasm that involves the brain.",
+"ko": "뇌 양성 신생물",
+"alt": [
+"뇌 양성 종양"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0016591",
+"concept": "- MONDO:0016591 | sporadic adult-onset ataxia of unknown etiology | syn: idiopathic late-onset cerebellar ataxia; SAOA | ancestors: acquired ataxia, atactic disorder, nervous system disorder, disease by body system or component | def: Sporadic adult-onset ataxia of unknown etiology describes a group of non-hereditary degenerative ataxias characterized by a slowly progressive cerebellar syndrome (with ataxia of stance and gait, uppe...",
+"ko": "원인불명 산발성 성인 발병 운동실조",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019245",
+"concept": "- MONDO:0019245 | lysosomal lipid storage disorder | syn: inborn error of lipid storage; lipid storage disease; lipoid storage disease; lipoid storage disorder | ancestors: inherited lipid metabolism disorder, lysosomal storage disease, inborn errors of metabolism, hereditary disease | def: An inherited metabolic disorder in which harmful amounts of lipids accumulate in cells and tissues. Because of a functionally impaired hydrolase or auxiliary protein, their lipid substrates cannot be ...",
+"ko": "리소좀 지질 축적 질환",
+"alt": [
+"지질 저장병"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0008982",
+"concept": "- MONDO:0008982 | central areolar choroidal dystrophy | syn: areolar atrophy of the macula; CACD; central areolar choroidal sclerosis; choroidal dystrophy | ancestors: optic choroid disorder, hereditary disease, uveal disorder, ocular vascular disorder | def: A hereditary macular disorder, usually presenting between the ages of 30-60, characterized by a large area of atrophy in the center of the macula and the loss or absence of photoreceptors, retinal pig...",
+"ko": "중심 지도형 맥락막 이영양증",
+"alt": [
+"황반 지도형 위축"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018992",
+"concept": "- MONDO:0018992 | IgG4-related thyroid disease | syn: Riedel disease; Riedel fibrosing thyroiditis; Riedel thyroiditis; Riedel's fibrosing thyroiditis | ancestors: autoimmune thyroid disease, immunoglobulin G4-related sclerosing disease, autoimmune disorder of endocrine system, thyroiditis | def: Riedel thyroiditis is a fibroinflammatory disorder of the thyroid gland, occurring more frequently in females, characterized a large, hard thyroid mass, and presenting with pressure symptoms (breathin...",
+"ko": "IgG4 관련 갑상선 질환",
+"alt": [
+"리델 갑상선염",
+"리델병"
+],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017690",
+"concept": "- MONDO:0017690 | disorder of galactose metabolism | ancestors: inborn carbohydrate metabolic disorder, inborn errors of metabolism, carbohydrate metabolism disease, hereditary disease",
+"ko": "갈락토오스 대사 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004613",
+"concept": "- MONDO:0004613 | acute intestinal ischemia | syn: acute intestinal ischemia | ancestors: ischemic bowel disorder, acute disease, intestinal disorder, ischemic disease | def: Ischemia of the intestine that is rapid in onset.",
+"ko": "급성 장 허혈",
+"alt": [
+"급성 장관 허혈"
+],
+"organs": [
+"cardiovascular",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007865",
+"concept": "- MONDO:0007865 | knuckle pads | syn: knuckle pads | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "손가락관절 결절",
+"alt": [
+"지절 패드"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001540",
+"concept": "- MONDO:0001540 | bagassosis | syn: bagasse extrinsic allergic alveolitis; bagasse workers lung; extrinsic allergic alveolitis from bagasse | ancestors: hypersensitivity pneumonitis, occupational lung disease, allergic respiratory disease, interstitial lung disease | def: An occupational lung disorder caused by inhalation of bagasse dust. In the acute phase, it manifests as cough, dyspnea, fever, chills, and weakness. Chronic exposure may lead to interstitial lung fibr...",
+"ko": "바가스폐증",
+"alt": [
+"사탕수수폐증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015194",
+"concept": "- MONDO:0015194 | sideroblastic anemia | syn: anaemia sideroblastic; anemia sideroblastic; sideroblastic anemia | ancestors: anemia, hematologic disorder, disease by body system or component, human disease | def: A group of rare heterogeneous inherited or acquired bone marrow disorders, isolated or part of a syndrome, characterized by decreased hemoglobin synthesis, because of defective use of iron (although p...",
+"ko": "철적모구성 빈혈",
+"alt": [
+"철적아구성 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006970",
+"concept": "- MONDO:0006970 | sialolithiasis | syn: sialolith; Stone of salivary gland or duct | ancestors: salivary gland disorder, mouth disorder, disease by body system or component, human disease | def: A concretion in the salivary gland.",
+"ko": "침샘결석증",
+"alt": [
+"타석증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0018106",
+"concept": "- MONDO:0018106 | hereditary xanthinuria | syn: classic xanthinuria; hereditary xanthinuria; xanthic urolithiasis; xanthine stone disease | ancestors: xanthinuria, inborn disorder of purine metabolism, metabolic disease, inborn disorder of purine or pyrimidine metabolism | def: Hereditary xanthinuria is a purine metabolism disorder due to inherited deficiency of the xanthine dehydrogenase/oxidase enzyme and is characterized by very low (or undetectable) concentrations of uri...",
+"ko": "유전성 크산틴뇨증",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0859689",
+"concept": "- MONDO:0859689 | hepatobiliary benign neoplasm | ancestors: benign digestive system neoplasm, digestive system disorder, benign neoplasm, digestive system neoplasm",
+"ko": "간담도 양성 신생물",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021513",
+"concept": "- MONDO:0021513 | benign neoplasm of tonsil | syn: benign neoplasm of the tonsil; benign tonsil neoplasm; benign tonsil tumor; benign tonsil tumour | ancestors: respiratory system benign neoplasm, tonsil neoplasm, benign neoplasm of pharynx, respiratory system disorder | def: A benign neoplasm that involves the tonsil.",
+"ko": "편도 양성 신생물",
+"alt": [
+"편도 양성 종양"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0019395",
+"concept": "- MONDO:0019395 | Hinman syndrome | syn: HAS; Hinman-Allen syndrome; HS; non-neurogenic neurogenic bladder | ancestors: urinary bladder disorder, urinary system disorder, disease by body system or component, human disease | def: Hinman syndrome (HS) or non-neurogenic neurogenic bladder is a voiding dysfunction of the bladder of neuropsychological origin that is characterized by functional bladder outlet obstruction in the abs...",
+"ko": "힌만 증후군",
+"alt": [
+"힌만-앨런 증후군"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0980737",
+"concept": "- MONDO:0980737 | arterionephrosclerosis | ancestors: chronic kidney disease, kidney disorder, urinary system disorder, disease by body system or component | def: A chronic kidney disease that is characterized by arteriosclerosis, global glomerulosclerosis, and cortical fibrosis with tubular atrophy and loss.",
+"ko": "동맥성 신장경화증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1
+}
+]

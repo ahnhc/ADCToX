@@ -1,0 +1,236 @@
+[
+{
+"id": "MONDO:0006937",
+"concept": "- MONDO:0006937 | pulpitis | syn: dental pulp inflammation; inflammation of dental pulp | ancestors: dental pulp disorder, bacterial infectious disease, inflammatory disease, tooth disorder | def: Inflammation of the dental pulp.",
+"ko": "치수염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0000327",
+"concept": "- MONDO:0000327 | Buruli ulcer disease | syn: Buruli ulcer; Mycobacterium ulcerans caused disease or disorder; Mycobacterium ulcerans disease or disorder; Mycobacterium ulcerans infectious disease | ancestors: primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease, infectious disease | def: A cutaneous infection caused by Mycobacterium ulcerans. It presents with painless nodular swelling of the skin, leading to the formation of necrotizing ulcers.",
+"ko": "부룰리 궤양",
+"alt": [
+"부룰리 궤양병"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0002181",
+"concept": "- MONDO:0002181 | exostosis | syn: bone osteophyte; exostosis | ancestors: hyperostosis, bone remodeling disease, bone disorder, skeletal system disorder | def: Non-neoplastic overgrowth of bone.",
+"ko": "외골종",
+"alt": [
+"뼈돌기"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001943",
+"concept": "- MONDO:0001943 | Plasmodium malariae malaria | syn: quartan malaria | ancestors: malaria, protozoa infectious disease, erythrocyte disorder, vector-borne disease | def: Malaria resulting from infection by Plasmodium malariae.",
+"ko": "Plasmodium malariae 말라리아",
+"alt": [
+"사일열 말라리아"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004635",
+"concept": "- MONDO:0004635 | postcricoid region cancer | syn: malignant neoplasm of postcricoid area; malignant neoplasm of the postcricoid area; malignant postcricoid neoplasm; malignant postcricoid tumor | ancestors: hypopharynx cancer, pharynx cancer, neoplasm of hypopharynx, respiratory system cancer | def: A primary or metastatic malignant neoplasm that affects the postcricoid region.",
+"ko": "윤상연골후부암",
+"alt": [
+"하인두 윤상후부암"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019209",
+"concept": "- MONDO:0019209 | Japanese encephalitis | syn: Encephalitis, Japanese; Japanese B encephalitis | ancestors: mosquito-borne viral encephalitis, viral encephalitis, vector-borne disease, infectious encephalitis | def: A disease due to a virus transmitted by an arthropod).",
+"ko": "일본뇌염",
+"alt": [
+"일본 B형 뇌염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019591",
+"concept": "- MONDO:0019591 | panhypopituitarism | syn: complete hypopituitarism | ancestors: combined pituitary hormone deficiencies, genetic form, congenital nervous system disorder, hypopituitarism, congenital hypogonadotropic hypogonadism | def: Insufficient production of all the anterior pituitary hormones.",
+"ko": "범뇌하수체기능저하증",
+"alt": [
+"전뇌하수체기능저하증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001802",
+"concept": "- MONDO:0001802 | acute tympanitis | syn: acute myringitis | ancestors: acute disease, tympanitis, human disease, tympanic membrane disorder",
+"ko": "급성 고막염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001624",
+"concept": "- MONDO:0001624 | acute sphenoidal sinusitis | syn: acute sphenoid sinusitis; sphenoid sinusitis, acute | ancestors: sphenoid sinusitis, acute disease, sinusitis, disorder of facial skeleton | def: Acute form of sphenoid sinusitis.",
+"ko": "급성 나비굴염",
+"alt": [
+"급성 접형동염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0007404",
+"concept": "- MONDO:0007404 | Cri-du-chat syndrome | syn: 5p deletion syndrome; 5p partial monosomy syndrome; Cat-Cry syndrome; chromosome 5p deletion syndrome | ancestors: syndromic disease, partial deletion of the short arm of chromosome 5, disease by body system or component, partial deletion of chromosome 5 | def: Monosomy 5p, also known as Cri du chat syndrome, is a rare autosomal deletion syndrome characterized by a mewing cry (cri du chat) in infancy, multiple congenital anomalies, intellectual disability, m...",
+"ko": "묘성 증후군",
+"alt": [
+"5p 결실 증후군"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001143",
+"concept": "- MONDO:0001143 | paralytic strabismus | syn: paralytic squint | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "마비성 사시",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0957317",
+"concept": "- MONDO:0957317 | hematuria, benign familial | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "양성 가족성 혈뇨",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006022",
+"concept": "- MONDO:0006022 | acidosis disorder | syn: acidosis | ancestors: disorder of acid-base balance, metabolic disease, disease by developmental or physiological process, human disease | def: An abnormally high acidity of the blood and other body tissues. Acidosis can be either respiratory or metabolic.",
+"ko": "산증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006019",
+"concept": "- MONDO:0006019 | yaws | syn: Bouba; frambesia; frambesia tropica; Treponema pallidum subsp. pertenue caused disease or disorder | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: An endemic, infectious, nonvenereal disease in humans that presents mainly in children younger than 15 years. The disease occurs primarily in warm, humid, tropical areas of Africa, Asia, South America...",
+"ko": "열대딸기종",
+"alt": [
+"요스"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001217",
+"concept": "- MONDO:0001217 | pseudomembranous conjunctivitis | syn: conjunctivitis with pseudomembrane | ancestors: acute conjunctivitis, bacterial conjunctivitis, conjunctivitis, acute disease | def: Conjunctivitis that is characterized by formation of a pseudomembrane.",
+"ko": "위막성 결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020533",
+"concept": "- MONDO:0020533 | streptobacillary rat-bite fever | syn: Haverhill fever; Streptobacillary fever; streptobacillary rat-bite fever | ancestors: primary bacterial infectious disease, streptobacillus infectious disease, rat-bite fever, bacterial infectious disease | def: Streptobacillary rat-bite fever (RBF) is a systemic zoonosis caused by the aerobic gram-negative bacterium Streptobacillus moniliformis and is transmitted to humans through the bites and scratches of ...",
+"ko": "연쇄간균성 쥐물림열",
+"alt": [
+"스트렙토바실루스 쥐물림열"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0045057",
+"concept": "- MONDO:0045057 | delirium | ancestors: cognitive disorder, psychiatric disorder, disease by developmental or physiological process, human disease | def: A disorder characterized by confusion; inattentiveness; disorientation; illusions; hallucinations; agitation; and in some instances autonomic nervous system overactivity. It may result from toxic/meta...",
+"ko": "섬망",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0004877",
+"concept": "- MONDO:0004877 | transient neonatal thrombocytopenia | ancestors: neonatal thrombocytopenia, thrombocytopenia, blood platelet disease, hematologic disorder",
+"ko": "일과성 신생아 혈소판감소증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004659",
+"concept": "- MONDO:0004659 | eye carcinoma in situ | syn: carcinoma in situ of eye; carcinoma in situ of eyeball of camera-type eye; eye in situ carcinoma; eyeball of camera-type eye carcinoma in situ | ancestors: eye carcinoma, in situ carcinoma, head and neck carcinoma, ocular cancer | def: A carcinoma in situ involving a eye.",
+"ko": "눈 상피내암종",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019372",
+"concept": "- MONDO:0019372 | solitary bone cyst | syn: bone cyst; cyst of bone; cyst of the bone; simple bone cyst | ancestors: bone neoplasm, bone disorder, connective tissue neoplasm, skeletal system disorder | def: A solitary bone cyst is a benign non-epithelial bone cavity that is asymptomatic and that is found most commonly in the second decade of life by chance. The long bones are most often affected, but cas...",
+"ko": "단발성 뼈낭종",
+"alt": [
+"뼈낭종"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4
+}
+]

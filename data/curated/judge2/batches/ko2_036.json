@@ -1,0 +1,238 @@
+[
+{
+"id": "MONDO:0004925",
+"concept": "- MONDO:0004925 | chronic dacryocystitis | syn: dacryocystitis, chronic | ancestors: chronic inflammation of lacrimal passage, dacryocystitis, lacrimal apparatus disorder, inflammatory disease | def: Chronic form of dacryocystitis.",
+"ko": "만성 눈물주머니염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006540",
+"concept": "- MONDO:0006540 | dyshidrosis | syn: dyshidrosis; DYSHYDROTIC eczema; vesicular eczema of hands and/or feet | ancestors: sweat gland disorder, skin disorder, integumentary system disorder, disease by body system or component | def: A recurrent eczematous reaction characterized by the development of vesicular eruptions on the palms and soles, particularly along the sides and between the digits. It is accompanied by pruritus, a bu...",
+"ko": "한포진",
+"alt": [
+"이한성 습진"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002972",
+"concept": "- MONDO:0002972 | posterior mediastinum cancer | syn: cancer of posterior mediastinum; malignant neoplasm of posterior mediastinum; malignant posterior mediastinum neoplasm; posterior mediastinum cancer | ancestors: mediastinal cancer, thoracic cancer, neoplasm of mediastinum, cancer | def: A malignant neoplasm involving the posterior mediastinum.",
+"ko": "뒤세로칸암",
+"alt": [
+"후종격동암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020413",
+"concept": "- MONDO:0020413 | encircling double aortic arch | ancestors: aortic arch defects, congenital anomaly of the great arteries, congenital heart malformation, congenital anomaly of cardiovascular system | def: Encircling double aortic arch is a very rare congenital anomaly of the great arteries characterized by the presence of two aortic arches (right and left) which encircle and compress the trachea and es...",
+"ko": "고리형 이중 대동맥궁",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001723",
+"concept": "- MONDO:0001723 | progressive peripheral pterygium | ancestors: conjunctival pterygium, conjunctival degeneration, pterygium, conjunctival disorder",
+"ko": "진행성 주변부 익상편",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001304",
+"concept": "- MONDO:0001304 | benign hypertensive renal disease | syn: hypertensive renal disease, benign; hypertensive renal disease, benign, without mention of renal failure | ancestors: hypertensive nephropathy, kidney disorder, urinary system disorder, disease by body system or component",
+"ko": "양성 고혈압성 신장병",
+"alt": [
+"양성 고혈압성 콩팥병"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0100310",
+"concept": "- MONDO:0100310 | hereditary cerebellar ataxia | syn: cerebellar hereditary ataxia; hereditary cerebellar ataxia | ancestors: cerebellar ataxia, inherited neurodegenerative disorder, hereditary ataxia, movement disorder | def: Cerebellar ataxia that is transmitted from parent to child.",
+"ko": "유전성 소뇌 운동실조",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0015104",
+"concept": "- MONDO:0015104 | porphyria cutanea tarda | syn: PCT | ancestors: dermatitis, hepatic porphyria, skin disorder, inflammatory disease | def: The most common form of chronic hepatic porphyria. It is characterized by bullous photodermatitis.",
+"ko": "만발성 피부 포르피린증",
+"alt": [
+"늦은피부포르피린증"
+],
+"organs": [
+"hepatic",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021477",
+"concept": "- MONDO:0021477 | benign neoplasm of sphenoidal sinus | syn: benign neoplasm of sphenoid sinus; benign neoplasm of the sphenoid sinus; benign neoplasm of the sphenoidal sinus; benign sphenoid sinus neoplasm | ancestors: respiratory system benign neoplasm, bone benign neoplasm, sensory organ benign neoplasm, sphenoidal sinus neoplasm | def: A non-metastasizing neoplasm that arises from the sphenoid sinus.",
+"ko": "나비굴 양성 신생물",
+"alt": [
+"접형동 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021783",
+"concept": "- MONDO:0021783 | streptococcal sore throat | syn: strep throat; streptococcal pharyngitis | ancestors: pharyngitis, streptococcal infection, respiratory tract infectious disorder, upper respiratory tract disorder | def: Inflammation of the throat due to Streptococcus pyogenes.",
+"ko": "연쇄구균 인후염",
+"alt": [
+"연쇄상구균 인두염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004964",
+"concept": "- MONDO:0004964 | peripheral T-cell lymphoma, not otherwise specified | syn: peripheral T-cell lymphoma, not otherwise specified | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm | def: Aggressive nodal or extranodal mature (peripheral) T-cell lymphomas that do not belong to the better defined entities of the remainder of mature T-cell lymphomas. This category includes the following ...",
+"ko": "말초 T세포 림프종, 달리 분류되지 않는 것",
+"alt": [
+"말초 T세포 림프종 NOS"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005825",
+"concept": "- MONDO:0005825 | leptospirosis | syn: Leptospira caused disease or disorder; Leptospira disease or disorder; Leptospira infectious disease; leptospirosis | ancestors: primary bacterial infectious disease, spirochaetales infections, bacterial infectious disease, infectious disease | def: A contagious bacterial infection caused by spirochetes of the genus Leptospira. Humans are infected by contact with water and soil which have been contaminated with animal waste products. The signs an...",
+"ko": "렙토스피라증",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0035345",
+"concept": "- MONDO:0035345 | chronic bilirubin encephalopathy | syn: Bilirubin-induced neurological dysfunction; BIND; CBE; Kernicterus spectrum disorder | ancestors: toxic encephalopathy, brain disorder, nervous system disorder, central nervous system disorder | def: A rare neurologic disease characterized by the chronic consequences of bilirubin toxicity in the globus pallidus, sub-thalamic nuclei, and other brain regions, after exposure to high levels of unconju...",
+"ko": "만성 빌리루빈 뇌병증",
+"alt": [
+"핵황달"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0700418",
+"concept": "- MONDO:0700418 | idiopathic hypercalciuria | ancestors: urinary system disorder, idiopathic disease, disease by body system or component, disease by etiologic mechanism | def: A rare renal disease characterized by persistent excess urinary calcium excretion in the absence of an underlying systemic disease and hypercalcemia. The condition leads to an increased risk for the f...",
+"ko": "특발성 고칼슘뇨증",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003471",
+"concept": "- MONDO:0003471 | Pediculus humanus capitis infestation | syn: Pediculus capitis [head louse]; Pediculus humanus capitis infection | ancestors: lice infestation, parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease | def: A infectious disease involving Pediculus humanus capitis.",
+"ko": "머릿니 감염증",
+"alt": [
+"머릿니증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003962",
+"concept": "- MONDO:0003962 | Froelich syndrome | syn: Babinski-Froelich syndrome; dystrophia Adiposogenitalis; Froehlich's syndrome; Froelich's syndrome | ancestors: hypothalamic disorder, syndromic disease, thalamic disorder, disease by body system or component | def: Froelich syndrome is characterized by obesity and hypogonadism due to a hypothalamic-pituitary disorder. The hypothalamus is a part of the brain where certain functions such as sleep cycles and body t...",
+"ko": "프뢸리히 증후군",
+"alt": [
+"바빈스키-프뢸리히 증후군",
+"비만성기능부전증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007426",
+"concept": "- MONDO:0007426 | deafness, unilateral | syn: deafness, unilateral | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "일측성 난청",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0001037",
+"concept": "- MONDO:0001037 | ring corneal ulcer | ancestors: corneal ulcer, keratitis, ulcer disease, corneal disorder",
+"ko": "고리형 각막궤양",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005473",
+"concept": "- MONDO:0005473 | temporomandibular joint disorder | syn: TMD | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: Any condition affecting the anatomic and functional characteristics of the temporomandibular joint.",
+"ko": "턱관절 장애",
+"alt": [
+"측두하악관절 장애"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015046",
+"concept": "- MONDO:0015046 | gamma-heavy chain disease | syn: Franklin disease; Franklin's disease; gamma heavy chain disease; gamma-HCD | ancestors: heavy chain disease, plasma cell neoplasm, neoplasm of mature B-cells, B-cell neoplasm | def: Gamma-heavy chain disease (gamma-HCD) is a type of HCD characterized by the production of incomplete monoclonal gamma-heavy chains without associated light chains. The clinical presentation most commo...",
+"ko": "감마 중쇄병",
+"alt": [
+"프랭클린병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3
+}
+]

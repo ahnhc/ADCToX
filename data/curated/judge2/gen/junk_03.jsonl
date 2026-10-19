@@ -10,6 +10,7 @@
 {"text": "알려주기 싫어요", "kind": "refusal"}
 {"text": "개인정보라 안 씀", "kind": "refusal"}
 {"text": "비공개", "kind": "refusal"}
+{"text": "말씀 안 드릴게요", "kind": "refusal"}
 {"text": "그건 비밀이에요", "kind": "refusal"}
 {"text": "다음 질문으로", "kind": "refusal"}
 {"text": "생략할게요", "kind": "refusal"}
@@ -36,6 +37,7 @@
 {"text": "답변 보류", "kind": "refusal"}
 {"text": "응답 안 할게", "kind": "refusal"}
 {"text": "그냥 둘게요", "kind": "refusal"}
+{"text": "아니요 답 안 함", "kind": "refusal"}
 {"text": "그건 모름 패스", "kind": "refusal"}
 {"text": "대답 유보", "kind": "refusal"}
 {"text": "말 아낄게요", "kind": "refusal"}
@@ -82,6 +84,7 @@
 {"text": "그건 빼고 할게요", "kind": "refusal"}
 {"text": "여기는 패스", "kind": "refusal"}
 {"text": "쓰기 싫은데요", "kind": "refusal"}
+{"text": "말하기 귀찮아요", "kind": "refusal"}
 {"text": "그냥 넘어갈래", "kind": "refusal"}
 {"text": "응답 보류합니다", "kind": "refusal"}
 {"text": "입 닫을게요", "kind": "refusal"}
@@ -99,17 +102,20 @@
 {"text": "확실하지 않음", "kind": "unknown_memory"}
 {"text": "잘 기억 안 나요", "kind": "unknown_memory"}
 {"text": "아무리 생각해도 모르겠음", "kind": "unknown_memory"}
+{"text": "들은 적이 없어요", "kind": "unknown_memory"}
 {"text": "예전 일이라 모르겠어요", "kind": "unknown_memory"}
 {"text": "전혀 모르겠음", "kind": "unknown_memory"}
 {"text": "그건 잘 모름", "kind": "unknown_memory"}
 {"text": "알 길 없음", "kind": "unknown_memory"}
 {"text": "기억 가물가물", "kind": "unknown_memory"}
 {"text": "어디서 들었는지 모름", "kind": "unknown_memory"}
+{"text": "모르는 일", "kind": "unknown_memory"}
 {"text": "확인 못 함", "kind": "unknown_memory"}
 {"text": "알아본 적 없음", "kind": "unknown_memory"}
 {"text": "정확히 기억 안 남", "kind": "unknown_memory"}
 {"text": "그런 건 몰라요", "kind": "unknown_memory"}
 {"text": "떠오르지 않아요", "kind": "unknown_memory"}
+{"text": "생각나지 않음", "kind": "unknown_memory"}
 {"text": "그건 몰라서요", "kind": "unknown_memory"}
 {"text": "까맣게 모름", "kind": "unknown_memory"}
 {"text": "전혀 기억 없음", "kind": "unknown_memory"}
@@ -134,6 +140,7 @@
 {"text": "몰랐어요", "kind": "unknown_memory"}
 {"text": "전혀 모르는 내용", "kind": "unknown_memory"}
 {"text": "기억이 나지 않습니다", "kind": "unknown_memory"}
+{"text": "떠올릴 수 없어요", "kind": "unknown_memory"}
 {"text": "헷갈려서 모르겠음", "kind": "unknown_memory"}
 {"text": "헷갈려요", "kind": "unknown_memory"}
 {"text": "생각이 안 나서요", "kind": "unknown_memory"}
@@ -145,7 +152,10 @@
 {"text": "아무 기억 없음", "kind": "unknown_memory"}
 {"text": "모르쇠", "kind": "unknown_memory"}
 {"text": "그게 뭔지 모르겠어요", "kind": "unknown_memory"}
+{"text": "들어본 기억이 없어요", "kind": "unknown_memory"}
+{"text": "기억 없음", "kind": "unknown_memory"}
 {"text": "몰?", "kind": "unknown_memory"}
+{"text": "음... 모르겠어요", "kind": "unknown_memory"}
 {"text": "글쎄요 모르겠네요", "kind": "unknown_memory"}
 {"text": "잘 모르는 분야", "kind": "unknown_memory"}
 {"text": "아리송함", "kind": "unknown_memory"}
@@ -155,6 +165,7 @@
 {"text": "그것도 모르겠음", "kind": "unknown_memory"}
 {"text": "몰라서 못 씀", "kind": "unknown_memory"}
 {"text": "모르는 용어", "kind": "unknown_memory"}
+{"text": "들은 적 있는 것 같기도", "kind": "unknown_memory"}
 {"text": "기억하는 게 없음", "kind": "unknown_memory"}
 {"text": "기억 나는 게 없어요", "kind": "unknown_memory"}
 {"text": "확신이 없음", "kind": "unknown_memory"}
@@ -170,11 +181,13 @@
 {"text": "생각해 봐도 모름", "kind": "unknown_memory"}
 {"text": "모름이요", "kind": "unknown_memory"}
 {"text": "해당 사항 없음", "kind": "form_filler"}
+{"text": "기타 사항", "kind": "form_filler"}
 {"text": "미기재", "kind": "form_filler"}
 {"text": "미기재 사항 없음", "kind": "form_filler"}
 {"text": "입력 안 함", "kind": "form_filler"}
 {"text": "입력 안함", "kind": "form_filler"}
 {"text": "나중에", "kind": "form_filler"}
+{"text": "나중에 입력", "kind": "form_filler"}
 {"text": "없습니다", "kind": "form_filler"}
 {"text": "공란", "kind": "form_filler"}
 {"text": "작성 안 함", "kind": "form_filler"}

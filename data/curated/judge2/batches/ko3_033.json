@@ -1,0 +1,253 @@
+[
+{
+"id": "MONDO:0859598",
+"concept": "- MONDO:0859598 | erythroleukemia | ancestors: acute erythroid leukemia, acute myeloid leukemia by FAB classification, erythroid neoplasm, acute myeloid leukemia | def: An acute erythroid leukemia characterized by the presence of at least 50% erythroid precursors and at least 20% myeloblasts in the bone marrow.",
+"ko": "적백혈병",
+"alt": [
+"급성 적혈구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013220",
+"concept": "- MONDO:0013220 | hemochromatosis type 2B | syn: HAMP hemochromatosis type 2; hemochromatosis type 2 caused by mutation in HAMP; HFE2B | ancestors: hemochromatosis type 2, hereditary hemochromatosis, hemosiderosis, inborn metal metabolism disorder | def: Any hemochromatosis type 2 in which the cause of the disease is a mutation in the HAMP gene.",
+"ko": "혈색소증 2B형",
+"alt": [
+"유전성 혈색소증 2B형"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005753",
+"concept": "- MONDO:0005753 | epiglottitis | syn: inflammation of mucosa of epiglottis; mucosa of epiglottis inflammation; supraglottitis | ancestors: upper respiratory tract disorder, mucositis, disorder of pharynx, respiratory system disorder | def: Inflammation of the epiglottis.",
+"ko": "후두개염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020357",
+"concept": "- MONDO:0020357 | coloboma of eyelid | syn: coloboma of the eyelid | ancestors: coloboma, eye disorder, disorder of orbital region, disorder of visual system | def: A congenital abnormality in which a part of the upper or lower eyelid tissue is missing.",
+"ko": "눈꺼풀 결손",
+"alt": [
+"안검 결손"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003563",
+"concept": "- MONDO:0003563 | diffuse pulmonary fibrosis | ancestors: pulmonary fibrosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: Diffuse replacement of the lung tissue by connective tissue.",
+"ko": "미만성 폐섬유증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004848",
+"concept": "- MONDO:0004848 | ulcerative stomatitis | syn: ulcerative stomatitis | ancestors: stomatitis, mucositis, mouth mucosa disorder, inflammatory disease | def: Inflammation of the mouth mucosa associated with the presence of ulcers.",
+"ko": "궤양성 구내염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003553",
+"concept": "- MONDO:0003553 | ampulla of vater adenosquamous carcinoma | syn: ampulla of Vater adenosquamous carcinoma; hepatopancreatic ampulla adenosquamous carcinoma | ancestors: ampulla of vater squamous cell carcinoma, extrahepatic bile duct adenosquamous carcinoma, extrahepatic bile duct squamous cell carcinoma, carcinoma of the ampulla of vater | def: A carcinoma with glandular and squamous differentiation arising from the ampulla of Vater. Signs and symptoms include jaundice, abdominal pain, anorexia, nausea, vomiting, and weight loss.",
+"ko": "바터 팽대부 선편평상피암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020600",
+"concept": "- MONDO:0020600 | acute pharyngitis | syn: acute pharyngitis; pharyngitis, acute | ancestors: pharyngitis, acute disease, upper respiratory tract disorder, inflammatory disease | def: An acute and painful inflammatory process that affects the pharynx. It is usually caused by viruses and less often bacteria. Signs and symptoms include discomfort on swallowing, low-grade fever, heada...",
+"ko": "급성 인두염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0013224",
+"concept": "- MONDO:0013224 | rhabdoid tumor predisposition syndrome 2 | syn: familial rhabdoid tumor caused by mutation in SMARCA4; familial rhabdoid tumour caused by mutation in SMARCA4; rhabdoid tumor predisposition syndrome 2; rhabdoid tumor predisposition syndrome type 2 | ancestors: familial rhabdoid tumor, atypical teratoid rhabdoid tumor, hereditary neurological disease, rhabdoid tumor | def: Any familial rhabdoid tumor in which the cause of the disease is a mutation in the SMARCA4 gene.",
+"ko": "횡문근양 종양 소인 증후군 2",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000965",
+"concept": "- MONDO:0000965 | liver lipoma | syn: hepatic lipoma; lipoma of liver; lipoma of the liver; liver lipoma | ancestors: benign endocrine neoplasm, lipoma, liver and intrahepatic bile duct neoplasm, hepatobiliary benign neoplasm | def: A rare benign adipose tissue neoplasm of the liver.",
+"ko": "간 지방종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013302",
+"concept": "- MONDO:0013302 | nephronophthisis 11 | syn: nephronophthisis 11; nephronophthisis type 11; NPHP11 | ancestors: nephronophthisis, Senior-Boichis syndrome, autosomal recessive disease, inherited renal tubular disease | def: A nephronophthisis that has material basis in homozygous or compound heterozygous mutation in the TMEM67 gene on chromosome 8q22.1.",
+"ko": "신장황폐증 11",
+"alt": [],
+"organs": [
+"hepatic",
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019355",
+"concept": "- MONDO:0019355 | adult-onset Still disease | syn: adult-onset Still disease; Adult-Onset Still's Disease; adult-onset Still's disease; AOSD | ancestors: arthritic joint disease, autoinflammatory syndrome, bone inflammation disease, arthropathy | def: A rare inflammatory multisystem disorder characterized clinically by fever of unknown origin, arthralgia or arthritis, hyperleucocytosis, and typical skin rash.",
+"ko": "성인 발병 스틸병",
+"alt": [
+"성인형 스틸병"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0002836",
+"concept": "- MONDO:0002836 | urethra transitional cell carcinoma | syn: transitional cell carcinoma of the urethra; transitional cell carcinoma of urethra; urethra transitional cell carcinoma; urethral transitional cell carcinoma | ancestors: carcinoma of urethra, urothelial carcinoma, urethra cancer, carcinoma | def: A transitional cell carcinoma that arises from the male or female urethra.",
+"ko": "요도 이행세포암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0100349",
+"concept": "- MONDO:0100349 | COACH syndrome | syn: cerebellar vermis hypoplasia-oligophrenia-congenital ataxia-coloboma-hepatic fibrosis; gentile syndrome; Joubert syndrome with congenital hepatic fibrosis; Joubert syndrome with hepatic defect | ancestors: Joubert syndrome and related disorders, disorder of development or morphogenesis, autosomal recessive congenital cerebellar ataxia, disease by developmental or physiological process | def: A Mendelian disease characterized by infantile ataxia with hypo/aplastic vermis, hepatic fibrocirrhosis, slender-shaped skeleton, peculiar face, and moderate intellectual disability.",
+"ko": "COACH 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000809",
+"concept": "- MONDO:0000809 | purpura fulminans | ancestors: disseminated intravascular coagulation, purpura, thrombophilia, hemorrhagic disease | def: A severe, rapidly fatal reaction occurring most commonly in children following an infectious illness. It is characterized by large, rapidly spreading skin hemorrhages, fever, or shock. Purpura fulmina...",
+"ko": "전격성 자반증",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0011959",
+"concept": "- MONDO:0011959 | sweet syndrome | syn: acute febrile neutrophilic dermatosis; sweet syndrome | ancestors: syndromic disease, rheumatic disorder, hereditary disorder of connective tissue, hereditary skin disorder | def: Sweet's syndrome (the eponym for acute febrile neutrophilic dermatosis) is characterized by a constellation of clinical symptoms, physical features, and pathologic findings which include fever, neutro...",
+"ko": "스위트 증후군",
+"alt": [
+"급성 열성 호중구성 피부병"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008421",
+"concept": "- MONDO:0008421 | flat face-microstomia-ear anomaly syndrome | syn: blepharophimosis-telecanthus-microstomia syndrome; Simosa-Penchaszadeh-Bustos syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome without intellectual disability, multiple congenital anomalies/dysmorphic syndrome, developmental defect during embryogenesis, disorder of development or morphogenesis | def: Flat face-microstomia-ear anomaly syndrome is a rare, genetic, multiple congenital anomalies/dysmorphic syndrome characterized by dysmorphic facial features, including high forehead, elongated and fla...",
+"ko": "편평 얼굴-소구증-귀 기형 증후군",
+"alt": [
+"안검열협착-내안각격리-소구증 증후군"
+],
+"organs": [
+"gastrointestinal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002807",
+"concept": "- MONDO:0002807 | bronchial neoplasm | syn: bronchial neoplasm; bronchial neoplasm (disease); bronchus neoplasm (disease); bronchus tumor | ancestors: bronchial disorder, respiratory tract neoplasm, lower respiratory tract disorder, neoplasm | def: Tumors or cancer of the bronchi.",
+"ko": "기관지 신생물",
+"alt": [
+"기관지 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001037",
+"concept": "- MONDO:0001037 | ring corneal ulcer | ancestors: corneal ulcer, keratitis, ulcer disease, corneal disorder",
+"ko": "고리형 각막궤양",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017884",
+"concept": "- MONDO:0017884 | papillary renal cell carcinoma | syn: chromophil carcinoma of kidney; chromophil carcinoma of the kidney; chromophil renal cell carcinoma; HPRCC | ancestors: papillary adenocarcinoma, renal cell adenocarcinoma, adenocarcinoma, papillary carcinoma | def: A rare subtype of renal cell carcinoma, arising from the renal tubular epithelium and showing a papillary growth pattern, which typically manifests with hematuria, flank pain, palpable abdominal mass ...",
+"ko": "유두상 신세포암",
+"alt": [
+"유두상 신세포암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

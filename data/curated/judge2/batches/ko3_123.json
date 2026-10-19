@@ -1,0 +1,263 @@
+[
+{
+"id": "MONDO:0009721",
+"concept": "- MONDO:0009721 | Nathalie syndrome | syn: deafness-cataract-skeletal anomalies syndrome; deafness-cataracts-skeletal anomalies syndrome; Nathalie syndrome; sensorineural hearing loss-cataract-skeletal anomalies-cardiomyopathy syndrome | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: Nathalie syndrome is characterized by deafness, cataract, muscular atrophy, skeletal abnormalities, growth retardation, underdeveloped secondary sexual characteristics, and electrocardiographic abnorm...",
+"ko": "나탈리 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0044344",
+"concept": "- MONDO:0044344 | Schistosoma japonicum infectious disease | syn: Schistosoma japonicum caused disease or disorder; Schistosoma japonicum disease or disorder; Schistosoma japonicum infection | ancestors: schistosomiasis, helminthiasis, vector-borne disease, parasitic infectious disease | def: An infection that is caused by Schistosoma japonicum.",
+"ko": "일본주혈흡충 감염증",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003444",
+"concept": "- MONDO:0003444 | intrahepatic bile duct adenoma | syn: adenoma of the intrahepatic bile duct; adenoma, HEPATOCHOLANGIOCELLULAR, benign; intrahepatic bile duct adenoma | ancestors: bile duct adenoma, liver and intrahepatic bile duct neoplasm, digestive system adenoma, bile duct neoplasm | def: A rare adenoma that arises from the intrahepatic biliary tree.",
+"ko": "간내담관 선종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005812",
+"concept": "- MONDO:0005812 | influenza | syn: flu; influenza infection; Influenza with other manifestations; orthomyxoviridae caused disease or disorder | ancestors: viral respiratory tract infection, primary viral infectious disease, viral infectious disease, respiratory tract infectious disorder | def: An acute viral infection of the respiratory tract, occurring in isolated cases, in epidemics, or in pandemics; it is caused by serologically different strains of viruses (influenzaviruses) designated ...",
+"ko": "인플루엔자",
+"alt": [
+"독감"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004657",
+"concept": "- MONDO:0004657 | disseminated chorioretinitis | ancestors: chorioretinitis, uveitis, uveal disorder, inflammatory disease",
+"ko": "파종성 맥락망막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0005293",
+"concept": "- MONDO:0005293 | flatfoot | syn: fallen Arch; flat Foot | ancestors: skeletal system disorder, musculoskeletal system disorder, disease by body system or component, human disease | def: An anatomic deformity in which the arch of the foot collapses, resulting in the entire sole of the foot coming into complete or near-complete contact with the ground.",
+"ko": "평발",
+"alt": [
+"편평족"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002282",
+"concept": "- MONDO:0002282 | West Nile fever | syn: West Nile virus caused disease or disorder; West Nile virus disease or disorder; West Nile virus infectious disease | ancestors: Flaviviridae infectious disease, vector-borne disease, primary viral infectious disease, infectious disease | def: A mosquito-borne viral illness caused by the west nile virus, a flavivirus and endemic to regions of Africa, Asia, and Europe. Common clinical features include headache; fever; maculopapular rash; gas...",
+"ko": "웨스트나일열",
+"alt": [
+"웨스트나일 바이러스 감염증"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002553",
+"concept": "- MONDO:0002553 | cerebellopontine angle tumor | syn: C-P angle neoplasm; C-P angle tumor; C-P angle tumour; cerebellar Pontine angle neoplasm | ancestors: brain neoplasm, brain disorder, central nervous system neoplasm, central nervous system disorder | def: A neoplasm that affects the cerebellopontine angle. Representative examples include vestibular schwannoma and meningioma.",
+"ko": "소뇌다리각 종양",
+"alt": [
+"소뇌교각 종양"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002353",
+"concept": "- MONDO:0002353 | glottis neoplasm | syn: glottis neoplasm; glottis neoplasm (disease); glottis tumor; glottis tumour | ancestors: laryngeal neoplasm, laryngeal disorder, respiratory tract neoplasm, upper respiratory tract disorder | def: A benign or malignant neoplasm that affects the glottic area of the larynx.",
+"ko": "성문 신생물",
+"alt": [
+"성문 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021071",
+"concept": "- MONDO:0021071 | laryngeal neoplasm | syn: laryngeal neoplasm; laryngeal tumor; laryngeal tumour; larynx neoplasm | ancestors: laryngeal disorder, respiratory tract neoplasm, upper respiratory tract disorder, neoplasm | def: A benign or malignant neoplasm involving the larynx.",
+"ko": "후두 신생물",
+"alt": [
+"후두 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001322",
+"concept": "- MONDO:0001322 | pericardium cancer | syn: cancer of pericardium; malignant neoplasm of pericardium; malignant neoplasm of the pericardium; malignant pericardial neoplasm | ancestors: heart cancer, neoplasm of pericardium, cardiovascular cancer, thoracic cancer | def: A malignant neoplasm involving the pericardium.",
+"ko": "심낭암",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002972",
+"concept": "- MONDO:0002972 | posterior mediastinum cancer | syn: cancer of posterior mediastinum; malignant neoplasm of posterior mediastinum; malignant posterior mediastinum neoplasm; posterior mediastinum cancer | ancestors: mediastinal cancer, thoracic cancer, neoplasm of mediastinum, cancer | def: A malignant neoplasm involving the posterior mediastinum.",
+"ko": "뒤세로칸암",
+"alt": [
+"후종격동암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003930",
+"concept": "- MONDO:0003930 | non-invasive bladder urothelial carcinoma | syn: non-invasive bladder urothelial carcinoma; stage 0 bladder urothelial cancer; stage 0 bladder urothelial carcinoma; stage 0 bladder urothelial carcinoma aJCC v6 | ancestors: bladder transitional cell carcinoma, urinary bladder carcinoma, urothelial carcinoma, urinary bladder cancer | def: Stage 0 includes: 0a (Ta, N0, M0); 0is (Tis, N0, M0). Ta: Noninvasive papillary carcinoma. Tis: Carcinoma in situ: \\\"flat tumor\\\". N0: No regional lymph node metastasis. M0: No distant metastasis. (AJ...",
+"ko": "비침윤성 방광 요로상피암종",
+"alt": [
+"0기 방광 요로상피암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010914",
+"concept": "- MONDO:0010914 | carnitine palmitoyl transferase II deficiency, severe infantile form | syn: Carnitine palmitoyl transferase deficiency type 2, hepatocardiomuscular form; Carnitine palmitoyl transferase deficiency type 2, severe infantile form; Carnitine palmitoyl transferase II deficiency, hepatocardiomuscular form; carnitine palmitoyl transferase II deficiency, severe infantile form | ancestors: carnitine palmitoyltransferase II deficiency, carnitine palmitoyl transferase deficiency, disorder of carnitine cycle and carnitine transport, disorder of fatty acid and ketone body metabolism | def: The severe infantile form of carnitine palmitoyltransferase II (CPT II) deficiency, an inherited disorder that affects mitochondrial oxidation of long chain fatty acids (LCFA), is the early-onset form...",
+"ko": "카르니틴 팔미토일전이효소 II 결핍증, 중증 영아형",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003637",
+"concept": "- MONDO:0003637 | clear cell-sugar-tumor of the lung | syn: CCSTL; clear cell-Sugar-tumor of lung; clear cell-Sugar-tumor of the lung; lung clear cell tumor | ancestors: lung benign neoplasm, benign PEComa, lung PEComa, respiratory system benign neoplasm | def: A rare benign lung tumor with perivascular epithelioid cell differentiation. It is composed of round or oval cells with abundant clear or eosinophilic cytoplasm and distinct cell borders. The vast maj...",
+"ko": "폐 투명세포 당종양",
+"alt": [
+"폐 투명세포종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005799",
+"concept": "- MONDO:0005799 | hookworm infectious disease | ancestors: infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Infection of humans or animals with hookworms other than those caused by the genus Ancylostoma or Necator, for which the specific terms ancylostomiasis and necatoriasis are available.",
+"ko": "구충 감염병",
+"alt": [
+"십이지장충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0003720",
+"concept": "- MONDO:0003720 | kidney fibrosarcoma | syn: fibrosarcoma of kidney; fibrosarcoma of the kidney; kidney fibrosarcoma; kidney fibrosarcoma (disease) | ancestors: kidney sarcoma, fibrosarcoma, kidney cancer, soft tissue sarcoma | def: A usually aggressive malignant neoplasm arising from the kidney. It is characterized by the presence of spindle-shaped fibroblasts and collagenous stroma formation in a herringbone growth pattern.",
+"ko": "신장 섬유육종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019312",
+"concept": "- MONDO:0019312 | Hermansky-Pudlak syndrome | syn: HPS | ancestors: syndromic oculocutaneous albinism, disorder of lysosomal-related organelles, inherited blood coagulation disorder, syndromic disease | def: Hermansky-Pudlak syndrome (HSP) is a multi-system disorder characterized by oculocutaneous albinism, bleeding diathesis and, in some cases, neutropenia, pulmonary fibrosis, or granulomatous colitis. H...",
+"ko": "헤르만스키-푸들라크 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"pulmonary",
+"ocular",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002304",
+"concept": "- MONDO:0002304 | protein S deficiency | syn: Protein S deficiency; Protein S deficiency disease | ancestors: thrombophilia, blood coagulation disease, hematologic disorder, disease by body system or component | def: Protein S deficiency is a disorder that causes abnormal blood clotting. When someone bleeds, the blood begins a complicated series of rapid chemical reactions involving proteins called blood coagulati...",
+"ko": "단백질 S 결핍증",
+"alt": [
+"단백 S 결핍증"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003964",
+"concept": "- MONDO:0003964 | myositis ossificans | syn: FOP; myositis ossificans progressiva | ancestors: myositis disease, myopathy, inflammatory disease, skeletal muscle disorder | def: A disorder characterized by non-neoplastic bone formation in soft tissues. It usually follows blunt trauma and bleeding in the deep soft tissues.",
+"ko": "골화근염",
+"alt": [
+"진행성 골화근염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 11,
+"new": false
+}
+]

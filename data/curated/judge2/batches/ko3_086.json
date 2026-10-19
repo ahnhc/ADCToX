@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0019732",
+"concept": "- MONDO:0019732 | ALys amyloidosis | syn: familial amyloid nephropathy due to lysozyme variant; familial renal amyloidosis due to lysozyme variant; hereditary amyloid nephropathy due to lysozyme variant; hereditary renal amyloidosis due to lysozyme variant | ancestors: familial visceral amyloidosis, familial amyloid neuropathy, hereditary amyloidosis, hereditary peripheral neuropathy",
+"ko": "ALys 아밀로이드증",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0031047",
+"concept": "- MONDO:0031047 | Stickler syndrome, type 6 | syn: Stickler syndrome, type VI; STL6 | ancestors: Stickler syndrome, syndromic disease, spondyloepiphyseal dysplasia, vitreoretinal degeneration",
+"ko": "스티클러 증후군 6형",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021463",
+"concept": "- MONDO:0021463 | benign neoplasm of parathyroid gland | syn: benign neoplasm of parathyroid; benign neoplasm of the parathyroid; benign neoplasm of the parathyroid gland; benign parathyroid gland neoplasm | ancestors: benign endocrine neoplasm, tumor of parathyroid gland, endocrine gland neoplasm, benign neoplasm | def: A benign neoplasm that involves the parathyroid gland.",
+"ko": "부갑상샘 양성 신생물",
+"alt": [
+"부갑상선 양성 종양"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004730",
+"concept": "- MONDO:0004730 | speech disorder | syn: speech impediment or impairment | ancestors: communication disorder, specific developmental disorder, developmental disorder of mental health, mental disorder | def: A term referring to disorders characterized by the disruption of normal speech. It includes stuttering, lisps, dysarthria and voice disorders.",
+"ko": "말장애",
+"alt": [
+"발화장애",
+"언어장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016723",
+"concept": "- MONDO:0016723 | pineocytoma | syn: benign pinealoma; pinealocytoma; pineocytoma; pineocytoma (disease) | ancestors: benign endocrine neoplasm, benign neoplasm of brain, pineal parenchymal cell neoplasm, endocrine gland neoplasm | def: Pineocytoma is the least aggressive form of pineal parenchymal tumors, manifesting with symptoms such as Parinaud's syndrome (a group of eye movement abnormalities and pupil dysfunction, including def...",
+"ko": "송과체세포종",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011752",
+"concept": "- MONDO:0011752 | nephronophthisis 4 | syn: nephronophthisis (disease) caused by mutation in NPHP4; nephronophthisis 4; nephronophthisis type 4; NPHP4 | ancestors: nephronophthisis, autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease | def: Any nephronophthisis in which the cause of the disease is a mutation in the NPHP4 gene.",
+"ko": "신장로 4형",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000327",
+"concept": "- MONDO:0000327 | Buruli ulcer disease | syn: Buruli ulcer; Mycobacterium ulcerans caused disease or disorder; Mycobacterium ulcerans disease or disorder; Mycobacterium ulcerans infectious disease | ancestors: primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease, infectious disease | def: A cutaneous infection caused by Mycobacterium ulcerans. It presents with painless nodular swelling of the skin, leading to the formation of necrotizing ulcers.",
+"ko": "부룰리 궤양",
+"alt": [
+"부룰리 궤양병"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009424",
+"concept": "- MONDO:0009424 | Bartter disease type 2 | syn: BARTS2; Bartter disease type 2; Bartter syndrome caused by mutation in KCNJ1; Bartter syndrome type 2 | ancestors: Bartter syndrome, syndromic disease, renal tubular transport disease, inherited renal tubular disease | def: Any Bartter syndrome in which the cause of the disease is a mutation in the KCNJ1 gene.",
+"ko": "바터병 2형",
+"alt": [
+"바터 증후군 2형",
+"KCNJ1 관련 바터 증후군"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007343",
+"concept": "- MONDO:0007343 | isolated congenital digital clubbing | syn: isolated congenital acropachy; isolated congenital nail clubbing | ancestors: inherited isolated nail anomaly, disorder of development or morphogenesis, nail disorder, hereditary disease | def: Isolated congenital digital clubbing is a rare genodermatosis disorder characterized by enlargement of the terminal segments of fingers and toes with thickened nails without any other abnormality.",
+"ko": "고립성 선천성 곤봉손가락",
+"alt": [
+"선천성 곤봉지"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008963",
+"concept": "- MONDO:0008963 | Chediak-Higashi syndrome | syn: Chediak Higashi Syndrome; Chediak Higashi syndrome; Chediak-Higashi syndrome; CHS | ancestors: inherited bleeding disorder, platelet-type, congenital nervous system disorder, constitutional neutropenia, hereditary hemophagocytic lymphohistiocytosis | def: A rare severe genetic disorder generally characterized by partial oculocutaneous albinism (OCA), severe immunodeficiency, mild bleeding (caused by giant lysosome‑related organelles in multiple hematop...",
+"ko": "체디아크-히가시 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0100081",
+"concept": "- MONDO:0100081 | sleep disorder | syn: disturbances, sleep; sleep disturbance; sleep disturbances | ancestors: disease by developmental or physiological process, human disease, disease, disposition | def: A change from the patient's baseline sleeping pattern, in the hours slept and/or an alteration/dysfunction in the stages of sleep.",
+"ko": "수면 장애",
+"alt": [
+"수면장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0020502",
+"concept": "- MONDO:0020502 | yellow fever | syn: bronze John; sylvatic yellow fever; Yellow fever virus caused disease or disorder; Yellow fever virus disease or disorder | ancestors: Flaviviridae infectious disease, arbovirus fever, vector-borne disease, primary viral infectious disease | def: Yellow fever (YF), caused by YF virus, is a zoonotic disease characterized by fever and constitutional symptoms, with the potential to progress to severe and fatal viral hemorrhagic fever with shock a...",
+"ko": "황열",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0017773",
+"concept": "- MONDO:0017773 | hypoalphalipoproteinemia | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A metabolic disorder characterized by deficiency of high density (alpha) lipoprotein in the blood.",
+"ko": "저알파지단백혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021452",
+"concept": "- MONDO:0021452 | benign neoplasm of cornea | syn: benign cornea neoplasm; benign cornea tumor; benign cornea tumour; benign corneal neoplasm | ancestors: cornea neoplasm, benign neoplasm of eye, corneal disorder, eye neoplasm | def: A benign neoplasm that involves the cornea.",
+"ko": "각막 양성 신생물",
+"alt": [
+"각막 양성 종양"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004620",
+"concept": "- MONDO:0004620 | Hodgkin's lymphoma, lymphocytic depletion | syn: adult HDLD; adult LDHD; adult lymphocyte depleted classical Hodgkin lymphoma; adult lymphocyte depleted Hodgkin lymphoma | ancestors: classic Hodgkin lymphoma, hereditary disease, Hodgkins lymphoma, disease of genetic or genomic mechanism | def: A diffuse subtype of classical Hodgkin lymphoma which is rich in Hodgkin and Reed-Sternberg cells and/or depleted in non-neoplastic lymphocytes. (WHO, 2008)",
+"ko": "호지킨 림프종, 림프구 고갈형",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008753",
+"concept": "- MONDO:0008753 | alkaptonuria | syn: alcaptonuria; alkaptonuria; hereditary ochronosis; homogentisate 1,2-dioxygenase deficiency | ancestors: disorder of tyrosine metabolism, inborn disorder of phenylalanine and tyrosine metabolism, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: A metabolic disease characterized by the accumulation of homogentisic acid (HGA) and its oxidized product, benzoquinone acetic acid (BQA), in various tissues (e.g. cartilage, connective tissue) and bo...",
+"ko": "알캅톤뇨증",
+"alt": [
+"유전성 갈색증"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012190",
+"concept": "- MONDO:0012190 | epidermolysis bullosa simplex 7, with nephropathy and deafness | syn: epidermolysis bullosa simplex 7, with nephropathy and deafness; nephrotic syndrome - deafness - pretibial epidermolysis bullosa syndrome; nephrotic syndrome-hearing loss-pretibial epidermolysis bullosa syndrome | ancestors: epidermolysis bullosa simplex, inherited epidermolysis bullosa, epidermolysis bullosa, epidermal disease",
+"ko": "신병증과 난청을 동반한 단순 수포성 표피박리증 7형",
+"alt": [],
+"organs": [
+"renal",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019241",
+"concept": "- MONDO:0019241 | inborn disorder of the gamma-glutamyl cycle | ancestors: inborn disorder of amino acid and other organic acid metabolism, inborn errors of metabolism, hereditary disease, metabolic disease",
+"ko": "선천성 감마-글루타밀 회로 장애",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015687",
+"concept": "- MONDO:0015687 | chronic eosinophilic leukemia | syn: CEL; CEL/hypereosinophilic syndrome; chronic eosinophilic leukemia; chronic eosinophilic leukemia/hypereosinophilic syndrome | ancestors: chronic leukemia, myeloproliferative neoplasm, leukemia, myeloid neoplasm",
+"ko": "만성 호산구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001052",
+"concept": "- MONDO:0001052 | chronic fungal otitis externa | syn: chronic mycotic otitis externa; chronic otomycosis; otomycosis, chronic | ancestors: otomycosis, otitis externa, tinea infection, external ear disorder | def: Chronic form of otomycosis.",
+"ko": "만성 진균성 외이도염",
+"alt": [
+"만성 이진균증"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

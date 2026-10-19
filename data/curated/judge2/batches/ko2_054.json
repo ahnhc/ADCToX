@@ -1,0 +1,237 @@
+[
+{
+"id": "MONDO:0004471",
+"concept": "- MONDO:0004471 | bacterial arthritis | syn: pyogenic arthritis; septic arthritis | ancestors: bacterial infectious disease, infective arthritis, infectious disease, arthritic joint disease | def: The inflammation of one or more joints caused by a bacterial infection within the joint space. Symptoms include pain, stiffness, and decreased range of motion in the affected joint.",
+"ko": "세균성 관절염",
+"alt": [
+"화농성 관절염",
+"패혈성 관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0015166",
+"concept": "- MONDO:0015166 | acute myeloid leukemia with t(8;21)(q22;q22) translocation | syn: AML with t(8;21)(q22;q22) translocation | ancestors: acute myeloid leukemia, myeloid leukemia, acute leukemia, leukemia",
+"ko": "t(8;21)(q22;q22) 전위를 동반한 급성 골수성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002303",
+"concept": "- MONDO:0002303 | central retinal vein occlusion | syn: central retinal vein retinal vein occlusion; central retinal Venous occlusion; retinal vein occlusion of central retinal vein | ancestors: vein disorder, retinal vein occlusion, vascular disorder, retinal vascular occlusion | def: Blockage of the central retinal vein.",
+"ko": "중심망막정맥 폐쇄",
+"alt": [
+"중심망막정맥 폐쇄증"
+],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005336",
+"concept": "- MONDO:0005336 | myopathy | ancestors: skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder, disease by body system or component | def: A disease of the muscle in which the muscle fibers do not function properly. This results in muscular weakness.",
+"ko": "근병증",
+"alt": [
+"근육병"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0000889",
+"concept": "- MONDO:0000889 | haemophilus meningitis | syn: Haemophilus influenzae bacterial meningitis; Haemophilus influenzae caused bacterial meningitis | ancestors: bacterial meningitis, haemophilus infectious disease, infectious meningitis, bacterial infectious disease | def: Infections of the nervous system caused by bacteria of the genus haemophilus, and marked by prominent inflammation of the meninges. haemophilus influenzae type B is the most common causative organism....",
+"ko": "헤모필루스 수막염",
+"alt": [
+"인플루엔자균 수막염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0024239",
+"concept": "- MONDO:0024239 | congenital anomaly of cardiovascular system | syn: cardiovascular system development disease; congenital Abnormality of the circulatory system; congenital anomaly of cardiovascular system; congenital cardiovascular Abnormality | ancestors: cardiovascular disorder, disorder of development or morphogenesis, disease by body system or component, disease by developmental or physiological process | def: A disease that has its basis in the disruption of cardiovascular system development.",
+"ko": "선천성 심혈관계 기형",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005361",
+"concept": "- MONDO:0005361 | eosinophilic esophagitis | syn: EoE | ancestors: esophagitis, eosinophilic gastrointestinal disease, esophageal disorder, inflammatory disease | def: Eosinophilic esophagitis (EoE) is a chronic, allergic disease of the esophagus characterized clinically by symptoms of esophageal dysfunction (including vomiting, dysphagia, feeding disorders, food im...",
+"ko": "호산구성 식도염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006983",
+"concept": "- MONDO:0006983 | subclavian steal syndrome | syn: subclavian artery stenosis | ancestors: syndromic disease, cerebrovascular disorder, disease by body system or component, brain disorder | def: An uncommon neurovascular condition seen with exertion of the upper extremity. It is usually caused by atherosclerotic stenosis or occlusion of the subclavian artery proximal to the origin of the vert...",
+"ko": "쇄골하동맥 탈취 증후군",
+"alt": [
+"쇄골하 도둑 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000819",
+"concept": "- MONDO:0000819 | anencephaly | syn: anencephalus | ancestors: congenital nervous system disorder, hereditary neurological disease, nervous system disorder, hereditary disease | def: A rare neural tube defect during pregnancy, resulting in the absence of a large portion of the brain and skull in the fetus.",
+"ko": "무뇌증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006107",
+"concept": "- MONDO:0006107 | benign thyroid gland neoplasm | syn: benign neoplasm of the thyroid; benign neoplasm of the thyroid gland; benign neoplasm of thyroid; benign neoplasm of thyroid gland | ancestors: benign endocrine neoplasm, thyroid tumor, endocrine gland neoplasm, benign neoplasm | def: A benign neoplasm arising from the thyroid gland.",
+"ko": "양성 갑상선 신생물",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001214",
+"concept": "- MONDO:0001214 | acute conjunctivitis | syn: acute conjunctivitis (disease); conjunctivitis (disease), acute | ancestors: conjunctivitis, acute disease, conjunctival disorder, inflammatory disease | def: Acute inflammation of the conjunctiva.",
+"ko": "급성 결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0003563",
+"concept": "- MONDO:0003563 | diffuse pulmonary fibrosis | ancestors: pulmonary fibrosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: Diffuse replacement of the lung tissue by connective tissue.",
+"ko": "미만성 폐섬유증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009658",
+"concept": "- MONDO:0009658 | mucopolysaccharidosis type 3D | syn: glucosamine N-acetyl-6-sulfatase deficiency; GNS deficiency; MPS III D; MPS3D | ancestors: mucopolysaccharidosis type 3, lysosomal storage disease with skeletal involvement, syndromic disease, bone disorder | def: A rare autosomal recessive lysosomal storage disease caused by deficiency of the enzyme N-acetylglucosamine-6-sulfatase. It is characterized by behavioral changes, sleep disturbances and mental develo...",
+"ko": "점액다당질증 3D형",
+"alt": [
+"산필리포 증후군 D형"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019036",
+"concept": "- MONDO:0019036 | amoebiasis due to free-living amoebae | ancestors: parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Free-living amebae belonging to the genera Acanthamoeba, Balamuthia, Naegleria and Sappinia are important causes of disease in humans and animals. Naegleria fowleri produces an acute, and usually leth...",
+"ko": "자유생활 아메바에 의한 아메바증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005997",
+"concept": "- MONDO:0005997 | tricuspid valve stenosis | syn: tricuspid stenosis | ancestors: tricuspid valve disorder, aortic disorder, heart valve disorder, arterial disorder | def: Narrowing or stricture of the tricuspid orifice of the heart.",
+"ko": "삼첨판 협착증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004833",
+"concept": "- MONDO:0004833 | plantar fasciitis | ancestors: fasciitis, musculoskeletal system disorder, connective tissue disorder, inflammatory disease | def: Inflammation of the thick tissue on the bottom of the foot (plantar fascia) causing heel pain. The plantar fascia (also called plantar aponeurosis) are bands of fibrous tissue extending from the calca...",
+"ko": "발바닥근막염",
+"alt": [
+"족저근막염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001816",
+"concept": "- MONDO:0001816 | scleroperikeratitis | syn: scleritis with corneal involvement | ancestors: scleritis, keratitis, scleral disorder, corneal disorder",
+"ko": "공막각막주위염",
+"alt": [
+"공막각막염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001610",
+"concept": "- MONDO:0001610 | acute dacryocystitis | syn: dacryocystitis, acute | ancestors: dacryocystitis, acute disease, inflammatory disease, nasolacrimal duct disorder | def: Acute form of dacryocystitis.",
+"ko": "급성 눈물주머니염",
+"alt": [
+"급성 누낭염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002026",
+"concept": "- MONDO:0002026 | candidiasis | syn: Candida <Debaryomycetaceae> infection; Candida infection; Candidosis; thrush | ancestors: opportunistic mycosis, fungal infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection with the organism Candida.",
+"ko": "칸디다증",
+"alt": [
+"칸디다 감염"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0020519",
+"concept": "- MONDO:0020519 | hand-Schuller-Christian disease | syn: chronic multifocal Langerhans cell histiocytosis; classic multifocal Langerhans cell histiocytosis; hand-Schuller-Christian disease; hand-SChüller-Christian disease | ancestors: Langerhans cell histiocytosis, histiocytosis, leukocyte disorder, dendritic cell tumor | def: A multifocal, unisystem form of Langerhans-cell histiocytosis. There is involvement of multiple sites in one organ system, most frequently the bone. Patients are usually young children presenting with...",
+"ko": "한-쉴러-크리스천병",
+"alt": [],
+"organs": [
+"haematologic",
+"ocular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+}
+]

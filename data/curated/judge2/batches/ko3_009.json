@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0003506",
+"concept": "- MONDO:0003506 | pulmonary artery choriocarcinoma | syn: choriocarcinoma of pulmonary artery; choriocarcinoma of the pulmonary artery; chorioepithelioma of pulmonary artery; chorioepithelioma of the pulmonary artery | ancestors: arterial disorder, choriocarcinoma, malignant germ cell tumor, great vessel cancer | def: A rare choriocarcinoma that arises from a pulmonary artery.",
+"ko": "폐동맥 융모암종",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007360",
+"concept": "- MONDO:0007360 | branchiootic syndrome 2 | syn: branchiootic syndrome 2; branchiootic syndrome type 2 | ancestors: branchiootic syndrome, syndromic disease, hereditary disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability",
+"ko": "새이증후군 2형",
+"alt": [
+"새귀 증후군 2형"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001912",
+"concept": "- MONDO:0001912 | acute frontal sinusitis | syn: frontal sinusitis, acute | ancestors: frontal sinusitis, acute disease, sinusitis, human disease | def: Acute form of frontal sinusitis.",
+"ko": "급성 전두동염",
+"alt": [
+"급성 이마굴염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004566",
+"concept": "- MONDO:0004566 | postgastrectomy syndrome | ancestors: functional gastric disease, intestinal disorder, stomach disorder, digestive system disorder | def: Sequelae of gastrectomy from the second week after operation on. Include recurrent or anastomotic ulcer, postprandial syndromes (dumping syndrome and late postprandial hypoglycemia), disordered bowel ...",
+"ko": "위절제 후 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010177",
+"concept": "- MONDO:0010177 | vascular hyalinosis | syn: Rambaud-Gallian syndrome; Rambaud-Gallian-Touchard syndrome; retinal ischaemic syndrome-digestive tract small vessel hyalinosis-diffuse cerebral calcifications syndrome; retinal ischemic syndrome-digestive tract small vessel hyalinosis-diffuse cerebral calcifications syndrome | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease | def: A syndrome characterized by progressive hyalinosis involving capillaries and often arterioles and small veins of the digestive tract, kidneys, and idiopathic cerebral calcifications. It has been descr...",
+"ko": "혈관 유리질증",
+"alt": [],
+"organs": [
+"renal",
+"gastrointestinal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010702",
+"concept": "- MONDO:0010702 | orofaciodigital syndrome I | syn: OFD syndrome 1; OFD1; OFDI; OFDS 1 | ancestors: syndromic disease, Mendelian neurodevelopmental disorder, OFD1-related ciliopathy, disease by body system or component | def: A rare neurodevelopmental disorder in the ciliopathy group that is lethal in males and characterized by variable anomalies including external malformations (craniofacial and digital), and possible inv...",
+"ko": "구강안면수지 증후군 1형",
+"alt": [
+"OFD 증후군 1형"
+],
+"organs": [
+"renal",
+"gastrointestinal",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019225",
+"concept": "- MONDO:0019225 | disorder of gluconeogenesis | syn: gluconeogenesis disorder; inborn error of gluconeogenesis; inborn gluconeogenesis disorder; rare inborn error of gluconeogenesis | ancestors: glucose metabolism disease, inborn carbohydrate metabolic disorder, metabolic disease, inborn errors of metabolism | def: An inherited metabolic disease that is has its basis in the disruption of gluconeogenesis.",
+"ko": "포도당신생합성 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021666",
+"concept": "- MONDO:0021666 | ear infection | syn: Ear infection; otitis | ancestors: infectious disease, inflammatory disease, disorder of ear, disease of primarily extrinsic mechanism | def: A viral or bacterial infection that affects the external, middle, or inner ear. It may follow an upper respiratory infection. Signs and symptoms include pain, ear discharge, ear fullness, hearing loss...",
+"ko": "귀 감염",
+"alt": [
+"중이염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019456",
+"concept": "- MONDO:0019456 | acute myeloid leukemia with multilineage dysplasia | syn: AML with multilineage dysplasia; AML with myelodysplasia-related features; De novo acute myeloid leukaemia with multilineage dysplasia; De novo acute myeloid leukemia with multilineage dysplasia | ancestors: acute myeloid leukemia, myeloid leukemia, acute leukemia, leukemia | def: An acute myeloid leukemia arising de novo and not as a result of treatment. It is characterized by the presence of myelodysplastic features in at least 50% of the cells of at least two hematopoietic c...",
+"ko": "다계통 이형성을 동반한 급성 골수성 백혈병",
+"alt": [
+"골수형성이상 관련 급성 골수성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002186",
+"concept": "- MONDO:0002186 | acute maxillary sinusitis | syn: acute antritis; maxillary sinusitis, acute | ancestors: maxillary sinusitis, acute disease, sinusitis, mouth disorder | def: Acute form of maxillary sinusitis.",
+"ko": "급성 상악동염",
+"alt": [
+"급성 상악굴염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008392",
+"concept": "- MONDO:0008392 | Roussy-Levy syndrome | syn: hereditary areflexic dystasia, Roussy-levy type; hereditary areflexic dystasia, Roussy-Lévy type; Roussy levy syndrome; Roussy Lévy Syndrome | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism",
+"ko": "루시-레비 증후군",
+"alt": [
+"유전성 무반사성 보행실조, 루시-레비형"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009853",
+"concept": "- MONDO:0009853 | Imerslund-Grasbeck syndrome | syn: familial megaloblastic anaemia; familial megaloblastic anemia; Imerslund-Grasbeck syndrome; Imerslund-Gräsbeck syndrome | ancestors: megaloblastic anemia, syndromic disease, hereditary anemia, inborn disorder of cobalamin metabolism and transport | def: Imerslund-Grasbeck syndrome (IGS) or selective vitamin B12 (cobalamin) malabsorption with proteinuria is a rare autosomal recessive disorder characterized by vitamin B12 deficiency commonly resulting ...",
+"ko": "임러슬런드-그래스벡 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0040699",
+"concept": "- MONDO:0040699 | necrotizing scleritis | ancestors: scleritis, scleral disorder, eye disorder, disorder of orbital region | def: A severe form of scleritis with subtypes: necrotising zonal granulomatous inflammation, diffuse non-granulomatous chronic inflammation, mixed pattern of acute purulent inflammation mixed with granulom...",
+"ko": "괴사성 공막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004715",
+"concept": "- MONDO:0004715 | liver carcinoma in situ | syn: carcinoma in situ of liver; carcinoma in situ of liver, gallbladder and bile ducts; liver in situ carcinoma; stage 0 liver carcinoma | ancestors: in situ carcinoma, carcinoma of liver and intrahepatic biliary tract, carcinoma, high grade malignant neoplasm | def: A carcinoma in situ involving a liver.",
+"ko": "간 상피내암종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005723",
+"concept": "- MONDO:0005723 | Cryptococcal meningitis | syn: Cryptococcus neoformans caused infectious meningitis; Cryptococcus neoformans infectious meningitis | ancestors: cryptococcosis, fungal meningitis, opportunistic mycosis, parasitic infectious disease | def: Meningeal inflammation produced by cryptococcus neoformans, an encapsulated yeast that tends to infect individuals with acquired immunodeficiency syndrome and other immunocompromised states. The organ...",
+"ko": "크립토코쿠스 뇌수막염",
+"alt": [
+"크립토콕쿠스 수막염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004114",
+"concept": "- MONDO:0004114 | urinary bladder small cell neuroendocrine carcinoma | syn: bladder small cell neuroendocrine cancer; bladder small cell neuroendocrine carcinoma; poorly differentiated neuroendocrine carcinoma of the bladder; SCCB | ancestors: small cell carcinoma, urinary bladder carcinoma, neuroendocrine carcinoma, urinary bladder cancer | def: A highly aggressive carcinoma, histologically resembling small cell lung carcinoma. In most cases it is associated with carcinoma in situ.",
+"ko": "방광 소세포 신경내분비 암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001927",
+"concept": "- MONDO:0001927 | pulmonary valve insufficiency | syn: pulmonary regurgitation; pulmonary valve regurgitation; pulmonary valvular regurgitation; regurgitation, pulmonary | ancestors: pulmonary valve disorder, heart valve disorder, heart disorder, cardiovascular disorder | def: Dysfunction of the pulmonary valve characterized by incomplete valve closure.",
+"ko": "폐동맥판 폐쇄부전",
+"alt": [
+"폐동맥판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001904",
+"concept": "- MONDO:0001904 | polyneuropathy due to drug | ancestors: toxic polyneuropathy, polyneuropathy, peripheral neuropathy, peripheral nervous system disorder",
+"ko": "약물 유발 다발신경병증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019538",
+"concept": "- MONDO:0019538 | Gaisbock syndrome | syn: stress erythrocytosis; stress polycythemia | ancestors: acquired secondary polycythemia, acquired polycythemia, secondary polycythemia, polycythemia | def: Polycythemia that is caused by stress.",
+"ko": "가이스뵈크 증후군",
+"alt": [
+"스트레스 적혈구증가증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004485",
+"concept": "- MONDO:0004485 | interstitial myocarditis | ancestors: myocarditis, intrinsic cardiomyopathy, inflammation of heart layer, myocardial disorder | def: Inflammation of the heart characterized by infiltration of the interstitial tissues by inflammatory cells, histiocytes, and the formation of granulomas. Giant cells are often present.",
+"ko": "간질성 심근염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+}
+]

@@ -1,0 +1,256 @@
+[
+{
+"id": "MONDO:0000380",
+"concept": "- MONDO:0000380 | paranasal sinus carcinoma | syn: accessory sinus cancer; accessory sinus carcinoma; cancer of paranasal sinus; carcinoma of accessory sinus | ancestors: bone carcinoma, paranasal sinus cancer, nasal cavity and paranasal sinus carcinoma, bone cancer | def: A malignant epithelial neoplasm arising in the paranasal sinus.",
+"ko": "부비동암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016239",
+"concept": "- MONDO:0016239 | cystinosis | syn: cystine storage disease; cystinosis; Protein defect of cystin transport | ancestors: inborn disorder of lysosomal amino acid transport, lysosomal storage disease, inborn errors of metabolism, hereditary disease | def: Cystinosis is a metabolic disease characterized by an accumulation of cystine inside the lysosomes, causing damage in different organs and tissues, particularly in the kidneys and eyes. Three clinical...",
+"ko": "시스틴증",
+"alt": [
+"시스틴 저장병"
+],
+"organs": [
+"renal",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019804",
+"concept": "- MONDO:0019804 | congenital tracheomalacia | syn: congenital major airway collapse; Congenital Tracheomalacia; congenital tracheomalacia; tracheomalacia, congenital | ancestors: tracheal disorder, otorhinolaryngologic disease, lower respiratory tract disorder, upper respiratory tract disorder | def: Congenital tracheomalacia is a rare condition where the trachea is soft and flexible causing the tracheal wall to collapse when exhaling, coughing or crying, that usually presents in infancy, and that...",
+"ko": "선천성 기관연화증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005160",
+"concept": "- MONDO:0005160 | aortic aneurysm | syn: abdominal aortic aneurysm, ruptured; aortic aneurysm; aortic aneurysm (disease); aortic aneurysm of unspecified site, ruptured | ancestors: aortic disorder, arterial disorder, vascular disorder, cardiovascular disorder | def: A ruptured aneurysm located in the wall of the proximal portion of the descending aorta proceeding from the arch of the aorta.",
+"ko": "대동맥류",
+"alt": [
+"대동맥 동맥류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0975911",
+"concept": "- MONDO:0975911 | reticular dysgenesis-like severe combined immunodeficiency | ancestors: T-B- severe combined immunodeficiency, severe combined immunodeficiency, combined immunodeficiency, immunodeficiency disease",
+"ko": "세망 이형성증 유사 중증 복합 면역결핍증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011338",
+"concept": "- MONDO:0011338 | Omenn syndrome | syn: combined immunodeficiency with hypereosinophilia; Omenn syndrome | ancestors: T-B- severe combined immunodeficiency, familial severe combined immunodeficiency, severe combined immunodeficiency, combined immunodeficiency | def: An inflammatory condition characterized by erythroderma, desquamation, alopecia, chronic diarrhea, failure to thrive, lymphadenopathy, and hepatosplenomegaly, associated with severe combined immunodef...",
+"ko": "오멘 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006009",
+"concept": "- MONDO:0006009 | viral encephalitis | syn: viral encephalitis; Viruses caused encephalitis; Viruses encephalitis | ancestors: infectious encephalitis, viral infection of central nervous system, primary viral infectious disease, encephalitis | def: Encephalitis resulting from viral infection.",
+"ko": "바이러스성 뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0003445",
+"concept": "- MONDO:0003445 | extrahepatic bile duct adenoma | syn: adenoma of extrahepatic bile duct; adenoma of the extrahepatic bile duct; extrahepatic bile duct adenoma | ancestors: bile duct adenoma, extrahepatic bile duct neoplasm, digestive system adenoma, bile duct neoplasm | def: An adenoma that arises from the extrahepatic bile ducts. It is classified as papillary, tubular, or tubulopapillary.",
+"ko": "간외담관 선종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021400",
+"concept": "- MONDO:0021400 | polyp of colon | syn: colon polyp; colonic polyp; polyp of the colon | ancestors: colonic disorder, polyp of large intestine, large intestine disorder, polyp | def: A polyp that involves the colon.",
+"ko": "결장 용종",
+"alt": [
+"대장 용종"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008758",
+"concept": "- MONDO:0008758 | mitochondrial DNA depletion syndrome 4a | syn: AHD; AHS; Alper syndrome; Alper's disease | ancestors: syndromic disease, hereditary peripheral neuropathy, inherited neurodegenerative disorder, mitochondrial DNA depletion syndrome, hepatocerebral form | def: A cerebrohepatopathy and a rare and severe form of mitochondrial DNA (mtDNA) depletion syndrome characterized by the triad of progressive developmental regression, intractable seizures, and hepatic fa...",
+"ko": "미토콘드리아 DNA 고갈 증후군 4a",
+"alt": [
+"알퍼스-후텐로허 증후군"
+],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0022037",
+"concept": "- MONDO:0022037 | large-cell immunoblastic lymphoma | ancestors: non-Hodgkin lymphoma, lymphoma, lymphoid neoplasm, lymphoid hemopathy | def: Malignant lymphoma characterized by the presence of immunoblasts with uniformly round-to-oval nuclei, one or more prominent nucleoli, and abundant cytoplasm. This class may be subdivided into plasmacy...",
+"ko": "대세포 면역모세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006536",
+"concept": "- MONDO:0006536 | congenital generalized lipodystrophy | syn: congenital generalised lipodystrophy (disease); congenital generalized lipodystrophy; congenital generalized lipodystrophy (disease); familial generalised lipodystrophy | ancestors: hereditary lipodystrophy, generalized lipodystrophy, lipodystrophy, inborn errors of metabolism | def: An extremely rare autosomal recessive condition, characterized by an extreme scarcity of fat in the subcutaneous tissues.",
+"ko": "선천성 전신 지방이영양증",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008671",
+"concept": "- MONDO:0008671 | Waardenburg syndrome type 2A | syn: MITF Waardenburg syndrome type 2; Waardenburg syndrome type 2 caused by mutation in MITF; Waardenburg syndrome type 2A; Waardenburg syndrome type IIA | ancestors: Waardenburg syndrome type 2, Waardenburg syndrome, autosomal dominant disease, syndromic disease | def: Waardenburg syndrome Type 2 caused by mutations in the MITF gene.",
+"ko": "바르덴부르크 증후군 2A형",
+"alt": [
+"MITF 바르덴부르크 증후군 2형"
+],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018626",
+"concept": "- MONDO:0018626 | paratyphoid fever | ancestors: salmonellosis, primary bacterial infectious disease, bacterial infectious disease, infectious disease | def: A condition resembling typhoid fever that is caused by infection by Salmonella enterica serovar Parathyphi.",
+"ko": "파라티푸스",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0023176",
+"concept": "- MONDO:0023176 | formaldehyde poisoning | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease",
+"ko": "포름알데히드 중독",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006216",
+"concept": "- MONDO:0006216 | gallbladder adenoma | syn: adenoma of gallbladder; adenoma of the gallbladder; gall bladder adenoma; gallbladder adenoma | ancestors: digestive system adenoma, gallbladder neoplasm, polyp of gallbladder, adenoma | def: A polypoid epithelial neoplasm that arises from the gallbladder. According to the neoplastic growth pattern, it is classified as tubular, tubulopapillary, or papillary.",
+"ko": "담낭 샘종",
+"alt": [
+"담낭 선종"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005059",
+"concept": "- MONDO:0005059 | leukemia | syn: blood (leukemia); leukaemia (disease); leukemia; leukemia (disease) | ancestors: hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm, neoplasm, hematologic disorder | def: A malignant (clonal) hematologic disorder, involving hematopoietic stem cells and characterized by the presence of primitive or atypical myeloid or lymphoid cells in the bone marrow and the blood. Leu...",
+"ko": "백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0013931",
+"concept": "- MONDO:0013931 | peroxisome biogenesis disorder 4B | syn: autosomal recessive cerebellar ataxia-blindness-deafness syndrome; autosomal recessive spinocerebellar ataxia type 3; autosomal recessive spinocerebellar ataxia-blindness-hearing loss syndrome; PBD4B | ancestors: autosomal recessive syndromic cerebellar ataxia, peroxisome biogenesis disorder due to PEX6 defect, autosomal recessive cerebellar ataxia, Zellweger spectrum disorders | def: Any peroxisome biogenesis disorder due to PEX6 defect characterized by the association of early-onset cerebellar ataxia with hearing loss and blindness. Patients may also present demyelinating periphe...",
+"ko": "퍼옥시좀 생합성 장애 4B형",
+"alt": [
+"상염색체 열성 소뇌실조-시력상실-난청 증후군"
+],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0975906",
+"concept": "- MONDO:0975906 | unifocal langerhans cell histiocytosis | ancestors: Langerhans cell histiocytosis, histiocytosis, leukocyte disorder, dendritic cell tumor",
+"ko": "단일병소 랑게르한스세포 조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019036",
+"concept": "- MONDO:0019036 | amoebiasis due to free-living amoebae | ancestors: parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Free-living amebae belonging to the genera Acanthamoeba, Balamuthia, Naegleria and Sappinia are important causes of disease in humans and animals. Naegleria fowleri produces an acute, and usually leth...",
+"ko": "자유생활 아메바에 의한 아메바증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+}
+]

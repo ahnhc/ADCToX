@@ -1,0 +1,256 @@
+[
+{
+"id": "MONDO:0004067",
+"concept": "- MONDO:0004067 | gallbladder mucinous adenocarcinoma | syn: colloid carcinoma of gallbladder; colloid carcinoma of the gallbladder; colloidal carcinoma of gallbladder; colloidal carcinoma of the gallbladder | ancestors: mucinous adenocarcinoma, gallbladder adenocarcinoma, adenocarcinoma, mucin-producing carcinoma | def: An adenocarcinoma that arises from the gallbladder. It is characterized by the presence of extracellular mucin that constitutes more than fifty-percent of the tumor.",
+"ko": "담낭 점액성 선암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005629",
+"concept": "- MONDO:0005629 | Acanthamoeba keratitis | syn: Acanthamoeba caused keratitis; keratitis, Acanthamoeba | ancestors: protozoa infectious disease, Acanthamoeba infectious disease, corneal infection, parasitic endophthalmitis | def: Keratitis due to infection by acanthamoeba; it is usually associated with soft contact lens wear, particularly overnight wear.",
+"ko": "아칸트아메바 각막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003471",
+"concept": "- MONDO:0003471 | Pediculus humanus capitis infestation | syn: Pediculus capitis [head louse]; Pediculus humanus capitis infection | ancestors: lice infestation, parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease | def: A infectious disease involving Pediculus humanus capitis.",
+"ko": "머릿니 감염증",
+"alt": [
+"머릿니증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004645",
+"concept": "- MONDO:0004645 | cheek mucosa cancer | syn: buccal mucosa cancer; cancer of buccal mucosa; malignant buccal mucosa neoplasm; malignant buccal mucosa tumor | ancestors: oral cavity cancer, head and neck cancer, buccal mucosa neoplasm, digestive system cancer | def: A malignant neoplasm involving the buccal mucosa.",
+"ko": "볼점막암",
+"alt": [
+"협점막암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021315",
+"concept": "- MONDO:0021315 | malignant tumor of nasopharynx | syn: cancer of nasopharynx; malignant nasopharyngeal neoplasm; malignant nasopharyngeal tumor; malignant nasopharyngeal tumour | ancestors: nasopharyngeal neoplasm, pharynx cancer, nasopharyngeal disorder, head and neck neoplasm | def: A cancer that involves the nasopharynx.",
+"ko": "비인두 악성 종양",
+"alt": [
+"비인두암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000989",
+"concept": "- MONDO:0000989 | mumps infectious disease | syn: epidemic parotitis; Mumps; mumps; Mumps virus caused disease or disorder | ancestors: Paramyxoviridae infectious disease, Mononegavirales infectious disease, primary viral infectious disease, viral infectious disease | def: A contagious viral infection caused by the mumps virus. Symptoms include swollen and tender parotid glands, fever, muscle aches and fatigue. Due to vaccination programs, mumps has become a rare diseas...",
+"ko": "유행성 이하선염",
+"alt": [
+"볼거리"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0002412",
+"concept": "- MONDO:0002412 | disorder of glycogen metabolism | syn: glycogen storage disease; glycogen storage disorder; glycogenoses; glycogenosis | ancestors: inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism, carbohydrate metabolism disease | def: An inherited metabolic disorder characterized either by defects in glycogen synthesis or defects in the breaking down of glycogen. It results either in the creation of abnormal forms of glycogen or ac...",
+"ko": "글리코겐 대사 질환",
+"alt": [
+"당원 저장병"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005504",
+"concept": "- MONDO:0005504 | diphtheria | ancestors: primary bacterial infectious disease, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A Gram-positive bacterial infection caused by Corynebacterium diphtheriae. It usually involves the oral cavity, pharynx, and nasal cavity. Patients develop pseudomembranes in the affected areas and ma...",
+"ko": "디프테리아",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001816",
+"concept": "- MONDO:0001816 | scleroperikeratitis | syn: scleritis with corneal involvement | ancestors: scleritis, keratitis, scleral disorder, corneal disorder",
+"ko": "공막각막주위염",
+"alt": [
+"공막각막염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001367",
+"concept": "- MONDO:0001367 | chronic congestive splenomegaly | syn: congestive splenomegaly, chronic | ancestors: congestive splenomegaly, splenic disorder, hematologic disorder, lymphatic system disorder | def: Chronic form of congestive splenomegaly.",
+"ko": "만성 울혈성 비장비대",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002342",
+"concept": "- MONDO:0002342 | chondromalacia | ancestors: articular cartilage disorder, arthropathy, skeletal system disorder, musculoskeletal system disorder | def: Pathological processes involving the chondral tissue (cartilage).",
+"ko": "연골연화증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000402",
+"concept": "- MONDO:0000402 | small cell carcinoma | syn: oat cell cancer; oat cell carcinoma; small cell cancer; small cell car. (extrapulmonary) | ancestors: neuroendocrine carcinoma, carcinoma, neuroendocrine neoplasm, malignant endocrine neoplasm | def: A neuroendocrine carcinoma composed of small malignant cells which are often said to resemble \\\"oat cells\\\" under the microscope. Small cell carcinoma most often affects the lungs. Clinically, this is...",
+"ko": "소세포암종",
+"alt": [
+"연맥세포암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0044345",
+"concept": "- MONDO:0044345 | Schistosoma mansoni infectious disease | syn: Schistosoma mansoni caused disease or disorder; Schistosoma mansoni disease or disorder; Schistosoma mansoni infection | ancestors: schistosomiasis, helminthiasis, vector-borne disease, parasitic infectious disease | def: An infection that is caused by Schistosoma mansoni.",
+"ko": "만소니주혈흡충 감염증",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014332",
+"concept": "- MONDO:0014332 | hyperammonemic encephalopathy due to carbonic anhydrase VA deficiency | syn: CA-VA deficiency; hyperammonemic encephalopathy due to carbonic anhydrase VA deficiency | ancestors: disorder of gluconeogenesis, urea cycle disorder or inherited hyperammonemia, glucose metabolism disease, inborn carbohydrate metabolic disorder",
+"ko": "탄산탈수효소 VA 결핍에 의한 고암모니아혈증 뇌병증",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006534",
+"concept": "- MONDO:0006534 | cholinergic urticaria | ancestors: physical urticaria, urticaria, dermatitis, skin disorder | def: A type of physical urticarias (or hives) that appears when a person is sweating.",
+"ko": "콜린성 두드러기",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009300",
+"concept": "- MONDO:0009300 | Perrault syndrome 1 | syn: HSD17B4 Perrault syndrome; Perrault syndrome 1; Perrault syndrome caused by mutation in HSD17B4; Perrault syndrome type 1 | ancestors: Perrault syndrome, autosomal recessive disease, mitochondrial oxidative phosphorylation disorder, inherited primary ovarian failure | def: Any Perrault syndrome in which the cause of the disease is a mutation in the HSD17B4 gene.",
+"ko": "페로 증후군 1형",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005826",
+"concept": "- MONDO:0005826 | lipid pneumonia | syn: lipoid pneumonitis; lipoidpneumonitis | ancestors: aspiration pneumonitis, pneumonitis, lung disorder, inflammatory disease | def: Pneumonia due to aspiration or inhalation of various oily or fatty substances.",
+"ko": "지질성 폐렴",
+"alt": [
+"지방성 폐렴"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0859565",
+"concept": "- MONDO:0859565 | atrioventricular septal defect | ancestors: familial atrioventricular septal defect, heart septal defect, cardiogenetic disease, congenital heart disease",
+"ko": "방실중격결손",
+"alt": [
+"방실 중격 결손증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010571",
+"concept": "- MONDO:0010571 | otopalatodigital syndrome type 2 | syn: OPD 2 syndrome; OPD II syndrome; OPD syndrome 2; Otopalatodigital Syndrome Type I and II | ancestors: otopalatodigital syndrome, otopalatodigital syndrome spectrum disorder, filamin-related bone disorder, skeletal dysplasia | def: A severe form of otopalatodigital syndrome spectrum disorder, and is characterized by dysmorphic facies, severe skeletal dysplasia affecting the axial and appendicular skeleton, extraskeletal anomalie...",
+"ko": "이구개지 증후군 2형",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009493",
+"concept": "- MONDO:0009493 | Richards-Rundle syndrome | syn: ketoaciduria-intellectual disability-ataxia-deafness syndrome; Richards-Rundle syndrome | ancestors: hereditary ataxia, atactic disorder, hereditary neurological disease, nervous system disorder | def: Richards-Rundle syndrome is an extremely rare neurodegenerative disorder characterized by progressive spinocerebellar ataxia, sensorineural hearing loss, and hypergonadotropic hypogonadism associated ...",
+"ko": "리처즈-런들 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

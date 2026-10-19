@@ -1,0 +1,225 @@
+[
+{
+"id": "MONDO:0001195",
+"concept": "- MONDO:0001195 | spotted fever | syn: spotted fever; spotted fever rickettsiae disease; spotted fever rickettsiosis | ancestors: Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis, gram-negative bacterial infections | def: A type of tick-borne disease which presents on the skin caused by bacteria of the genus Rickettsia.",
+"ko": "홍반열",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0001170",
+"concept": "- MONDO:0001170 | hemiplegia | ancestors: palsy, central nervous system disorder, nervous system disorder, disease by body system or component | def: Severe or complete loss of motor function on one side of the body. This condition is usually caused by brain diseases that are localized to the cerebral hemisphere opposite to the side of weakness. Le...",
+"ko": "편마비",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018850",
+"concept": "- MONDO:0018850 | proliferating trichilemmal cyst | syn: Pilar cyst; Pilar tumor; Pilar tumour; proliferating Pilar tumor | ancestors: hair follicle neoplasm, epidermal appendage tumor, disorder of pilosebaceous unit, skin neoplasm | def: Proliferating trichilemmal tumor is a rare large, multinodular, usually benign, tumor that is generally located in the posterior part of the scalp in aged women (over 50 years). It first appears as a ...",
+"ko": "증식성 털집 낭종",
+"alt": [
+"증식성 외모근초낭종",
+"필라 종양"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001020",
+"concept": "- MONDO:0001020 | amblyopia | syn: amblyopia; amblyopia (disease) | ancestors: vision disorder, disorder of visual system, disease by body system or component, human disease | def: Decreased vision that results from abnormal visual development.",
+"ko": "약시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0100549",
+"concept": "- MONDO:0100549 | focal nodular hyperplasia | syn: FNH; focal nodular hyperplasia of the liver; hepatic focal nodular hyperplasia | ancestors: hepatobiliary benign neoplasm, benign digestive system neoplasm, digestive system disorder, benign neoplasm | def: A benign tumor of the liver, characterized by hyperplastic growth of hepatocytes and a central fibrovascular scar.",
+"ko": "국소 결절 과형성",
+"alt": [
+"초점 결절성 과증식"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001579",
+"concept": "- MONDO:0001579 | corneal staphyloma | ancestors: corneal disorder, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "각막포도종",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024330",
+"concept": "- MONDO:0024330 | infectious otitis media | syn: acute otitis Media; AOM; infectious otitis Media; middle Ear infection | ancestors: otitis media, ear infection, middle ear disorder, inflammatory disease | def: Inflammation of the anatomical structures of the middle ear secondary to an infectious process. Bacterial etiology is most common, but both viral and fungal pathogens are also possible. Symptoms inclu...",
+"ko": "감염성 중이염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004826",
+"concept": "- MONDO:0004826 | urethral calculus | syn: urethra urolithiasis; urolithiasis of urethra | ancestors: urethral disorder, lower urinary tract calculus, urinary system disorder, urolithiasis | def: A concretion in the urethra.",
+"ko": "요도 결석",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021377",
+"concept": "- MONDO:0021377 | hypertrophic lichen planus | syn: hypertrophic lichen planus | ancestors: lichen planus, dermatitis, lichen disease, skin disorder | def: A form of lichen planus that is characterized by plaques of markedly thickened skin that is often extremely pruritic and localized to the lower legs. It can result in permanent pigmentation and scarri...",
+"ko": "비후성 편평태선",
+"alt": [
+"비대성 편평태선"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001815",
+"concept": "- MONDO:0001815 | extrapyramidal and movement disease | ancestors: movement disorder, nervous system disorder, disease by body system or component, human disease",
+"ko": "추체외로 및 운동 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0021315",
+"concept": "- MONDO:0021315 | malignant tumor of nasopharynx | syn: cancer of nasopharynx; malignant nasopharyngeal neoplasm; malignant nasopharyngeal tumor; malignant nasopharyngeal tumour | ancestors: nasopharyngeal neoplasm, pharynx cancer, nasopharyngeal disorder, head and neck neoplasm | def: A cancer that involves the nasopharynx.",
+"ko": "비인두 악성 종양",
+"alt": [
+"비인두암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004571",
+"concept": "- MONDO:0004571 | intestinal impaction | ancestors: intestinal obstruction, intestinal disorder, digestive system disorder, disease by body system or component",
+"ko": "장 분변막힘",
+"alt": [
+"장 매복"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019736",
+"concept": "- MONDO:0019736 | dense deposit disease | syn: membranoproliferative glomerulonephritis type 2; Mesangiocapillary glomerulonephritis type 2 | ancestors: complement 3 glomerulopathy, primary membranoproliferative glomerulonephritis, glomerulonephritis, nephritis | def: A histological subtype of C3 glomerulopathy characterized by C3 deposition in renal tissue in the absence or near-absence of immunoglobulin deposits, in a patient with the classic clinical features of...",
+"ko": "치밀침착병",
+"alt": [
+"막증식 사구체신염 2형"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0004719",
+"concept": "- MONDO:0004719 | hard palate cancer | syn: cancer of hard palate; hard palate; hard palate cancer; malignant hard palate neoplasm | ancestors: palatal neoplasm, oral cavity cancer, head and neck cancer, head and neck neoplasm | def: A malignant neoplasm involving the hard palate.",
+"ko": "경구개암",
+"alt": [
+"단단입천장암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007616",
+"concept": "- MONDO:0007616 | fibula, recurrent dislocation of head of | syn: fibula, recurrent dislocation of head of | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "비골두 재발성 탈구",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004652",
+"concept": "- MONDO:0004652 | bacterial pneumonia | syn: Bacteria caused pneumonia; Bacteria pneumonia; pneumonia due to other gram-negative bacteria | ancestors: bacterial infectious disease, pneumonia, infectious disease, respiratory tract infectious disorder | def: Acute infection of the lung parenchyma caused by bacteria (e.g., Streptococcus pneumoniae, Haemophilus influenzae, Chlamydia pneumoniae, Mycoplasma pneumoniae, and Legionella pneumophila). Signs and s...",
+"ko": "세균성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001029",
+"concept": "- MONDO:0001029 | Klippel-Feil syndrome | syn: Klippel-Feil Sequence | ancestors: musculoskeletal system disorder, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism | def: A congenital, musculoskeletal condition characterized by the fusion of at least two vertebrae of the neck. Common symptoms include a short neck, low hairline at the back of the head, and restricted mo...",
+"ko": "클리펠-파일 증후군",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006839",
+"concept": "- MONDO:0006839 | Lutembacher syndrome | syn: Lutembacher's syndrome | ancestors: atrial septal defect, heart septal defect, cardiogenetic disease, congenital heart disease | def: A condition characterized by a combination of ostium secundum atrial septal defect and an acquired mitral valve stenosis.",
+"ko": "루텐바허 증후군",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011929",
+"concept": "- MONDO:0011929 | chromosome 1p36 deletion syndrome | syn: 1p telomere deletion syndrome; 1p36 deletion syndrome; 1p36 microdeletion syndrome; chromosome 1p36 deletion syndrome, distal, isolated cases | ancestors: partial deletion of the short arm of chromosome 1, partial deletion of chromosome 1, syndrome caused by partial chromosomal deletion, chromosome 1 disorder | def: A chromosomal anomaly characterized by distinctive facial dysmorphic features, hypotonia, developmental delay, intellectual disability, seizures, heart defects, hearing impairment and prenatal onset g...",
+"ko": "1p36 결실 증후군",
+"alt": [
+"1번 염색체 1p36 결실 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002351",
+"concept": "- MONDO:0002351 | glottis cancer | syn: cancer of glottis; glottis cancer; malignant glottis neoplasm; malignant glottis tumor | ancestors: larynx cancer, glottis neoplasm, respiratory system cancer, laryngeal neoplasm | def: A malignant neoplasm that affects the glottic area of the larynx. The vast majority of cases represent squamous cell carcinomas.",
+"ko": "성문암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+}
+]

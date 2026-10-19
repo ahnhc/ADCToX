@@ -1,0 +1,251 @@
+[
+{
+"id": "MONDO:0005806",
+"concept": "- MONDO:0005806 | hypopharynx cancer | syn: hypopharyngeal cancer; hypopharynx pharynx cancer; hypural pharynx cancer; malignant hypopharyngeal neoplasm | ancestors: pharynx cancer, neoplasm of hypopharynx, respiratory system cancer, digestive system cancer | def: A primary or metastatic malignant neoplasm that affects the hypopharynx.",
+"ko": "하인두암",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0013837",
+"concept": "- MONDO:0013837 | deafness-encephaloneuropathy-obesity-valvulopathy syndrome | syn: coenzyme Q10 deficiency, primary, type 2; hearing loss-encephaloneuropathy-obesity-valvulopathy syndrome | ancestors: coenzyme Q10 deficiency, mitochondrial oxidative phosphorylation disorder, hereditary peripheral neuropathy, inborn mitochondrial metabolism disorder | def: Deafness-encephaloneuropathy-obesity-valvulopathy syndrome is a rare mitochondrial disease with marked clinical variability typically characterized by encephalomyopathy, kidney disease (nephrotic synd...",
+"ko": "난청-뇌신경병증-비만-판막병증 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005844",
+"concept": "- MONDO:0005844 | chalazion | syn: chalazion | ancestors: internal hordeolum, hordeolum, sebaceous gland disorder, skin appendage disorder | def: An eyelid cyst caused by the blockage of a meibomian gland.",
+"ko": "콩다래끼",
+"alt": [
+"산립종"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018908",
+"concept": "- MONDO:0018908 | non-Hodgkin lymphoma | syn: NHL; non-Hodgkin lymphoma; non-Hodgkin's lymphoma; non-Hodgkin's lymphoma (NHL) | ancestors: lymphoma, lymphoid neoplasm, lymphoid hemopathy, hematopoietic and lymphoid cell neoplasm | def: Distinct from Hodgkin lymphoma both morphologically and biologically, non-Hodgkin lymphoma (NHL) is characterized by the absence of Reed-Sternberg cells, can occur at any age, and usually presents as ...",
+"ko": "비호지킨 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0023286",
+"concept": "- MONDO:0023286 | graphite pneumoconiosis | syn: graphite fibrosis of lung; graphite pneumoconiosis | ancestors: pulmonary fibrosis, pneumoconiosis, interstitial lung disease, lung disorder",
+"ko": "흑연 진폐증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0800026",
+"concept": "- MONDO:0800026 | central hypoventilation syndrome, congenital, 1, with or without Hirschsprung disease | syn: autonomic control, congenital failure of; CCHS; congenital central alveolar hypoventilation syndrome; congenital central hypoventilation | ancestors: autonomic nervous system disorder, syndromic disease, congenital nervous system disorder, neurocristopathy | def: A rare disease due to a severely impaired central autonomic control of breathing and dysfunction of the autonomous nervous system. The incidence is estimated to be at 1 of 200 000 livebirths. A hetero...",
+"ko": "선천 중추 저환기 증후군 1, 허쉬스프룽병 동반 또는 비동반",
+"alt": [],
+"organs": [
+"pulmonary",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018840",
+"concept": "- MONDO:0018840 | isolated congenital hepatic fibrosis | syn: Congenital Hepatic Fibrosis; congenital hepatic fibrosis; nonsyndromic congenital hepatic fibrosis | ancestors: biliary tract disorder, cirrhosis, familial, hepatobiliary disorder, hereditary disease | def: A congenital disorder usually inherited in an autosomal recessive pattern. It affects the hepatobiliary system and the kidneys. It is characterized by liver fibrosis, portal hypertension, and renal cy...",
+"ko": "고립성 선천성 간섬유증",
+"alt": [
+"선천성 간섬유증"
+],
+"organs": [
+"hepatic",
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002219",
+"concept": "- MONDO:0002219 | paraurethral gland neoplasm | syn: neoplasm of paraurethral gland; paraurethral gland neoplasm (disease); paraurethral gland tumor; paraurethral gland tumour | ancestors: vulvar neoplasm, vulvar disease, female reproductive system neoplasm, female reproductive system disorder | def: A neoplasm (disease) that involves the paraurethral gland.",
+"ko": "요도옆샘 신생물",
+"alt": [
+"요도곁샘 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007759",
+"concept": "- MONDO:0007759 | hyperlipidemia, familial combined, LPL related | syn: combined hyperlipidemia, familial | ancestors: familial hyperlipidemia, inherited lipid metabolism disorder, hyperlipidemia, inborn errors of metabolism",
+"ko": "가족성 복합 고지혈증, LPL 관련",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020533",
+"concept": "- MONDO:0020533 | streptobacillary rat-bite fever | syn: Haverhill fever; Streptobacillary fever; streptobacillary rat-bite fever | ancestors: primary bacterial infectious disease, streptobacillus infectious disease, rat-bite fever, bacterial infectious disease | def: Streptobacillary rat-bite fever (RBF) is a systemic zoonosis caused by the aerobic gram-negative bacterium Streptobacillus moniliformis and is transmitted to humans through the bites and scratches of ...",
+"ko": "연쇄간균성 쥐물림열",
+"alt": [
+"스트렙토바실루스 쥐물림열"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006791",
+"concept": "- MONDO:0006791 | hyperemesis gravidarum | syn: hyperemesis gravidarum; hyperemesis gravidarum (disease) | ancestors: pregnancy disorder, obstetric disorder, disease by developmental or physiological process, human disease | def: Severe, intractable vomiting during pregnancy (usually the first trimester) accompanied by dehydration, weight loss, and electrolyte imbalances.",
+"ko": "임신 오조",
+"alt": [
+"임신과다구토증"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006992",
+"concept": "- MONDO:0006992 | syphilitic aortitis | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: Cardiovascular manifestations of syphilis, an infection of treponema pallidum. In the late stage of syphilis, sometimes 20-30 years after the initial infection, damages are often seen in the blood ves...",
+"ko": "매독성 대동맥염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002232",
+"concept": "- MONDO:0002232 | nasal cavity disorder | syn: disease of nasal cavity; disease or disorder of nasal cavity; disorder of nasal cavity; nasal cavity disease | ancestors: nasal disorder, upper respiratory tract disorder, otorhinolaryngologic disease, respiratory system disorder | def: A disease involving the nasal cavity.",
+"ko": "비강 질환",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002105",
+"concept": "- MONDO:0002105 | toxic megacolon | ancestors: megacolon, colonic disorder, large intestine disorder, intestinal disorder | def: An acute form of megacolon, severe pathological dilatation of the colon. It is associated with clinical conditions such as ulcerative colitis; crohn disease; amebic dysentery; or clostridium enterocol...",
+"ko": "독성 거대결장",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021210",
+"concept": "- MONDO:0021210 | trachea neoplasm | syn: neoplasm of the trachea; neoplasm of trachea; trachea neoplasm (disease); trachea tumor | ancestors: tracheal disorder, respiratory tract neoplasm, lower respiratory tract disorder, upper respiratory tract disorder | def: A neoplasm (disease) that involves the trachea.",
+"ko": "기관 신생물",
+"alt": [
+"기관 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002212",
+"concept": "- MONDO:0002212 | pneumonic tularemia | syn: pulmonary tularemia | ancestors: tularemia, primary bacterial infectious disease, vector-borne disease, bacterial infectious disease | def: A tularemia that is located in lungs. The bacteria are transmitted by breathing dusts or aerosols containing the organisms. The infection has symptom cough, has symptom chest has symptom pain, and has...",
+"ko": "폐렴형 야토병",
+"alt": [
+"폐 야토병"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019737",
+"concept": "- MONDO:0019737 | thrombotic microangiopathy | ancestors: blood coagulation disease, hematologic disorder, disease by body system or component, human disease | def: The syndromes of microangiopathic hemolytic anemia, thrombocytopenia, and variable signs of organ impairment, due to platelet aggregation in the microcirculation.",
+"ko": "혈전성 미세혈관병증",
+"alt": [],
+"organs": [
+"haematologic",
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004315",
+"concept": "- MONDO:0004315 | cholangiolocellular carcinoma | syn: cholangiocarcinoma of intralobular bile duct; cholangiolocellular carcinoma; CLC; intralobular bile duct cholangiocarcinoma | ancestors: intrahepatic cholangiocarcinoma, connective tissue neoplasm, intrahepatic bile duct cancer, carcinoma of liver and intrahepatic biliary tract | def: An intrahepatic cholangiocarcinoma that arises from the canals of Hering.",
+"ko": "세담관세포암종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004754",
+"concept": "- MONDO:0004754 | rectal prolapse | syn: rectal prolapse; rectal prolapse (disease) | ancestors: rectal disorder, large intestine disorder, intestinal disorder, digestive system disorder | def: Protrusion of the rectum through the anus.",
+"ko": "직장탈출증",
+"alt": [
+"직장 탈출"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005375",
+"concept": "- MONDO:0005375 | nasopharyngeal neoplasm | syn: nasopharyngeal neoplasms; nasopharyngeal tumor; nasopharyngeal tumour; nasopharynx neoplasm | ancestors: nasopharyngeal disorder, head and neck neoplasm, respiratory tract neoplasm, pharynx neoplasm | def: A benign or malignant neoplasm affecting the nasopharynx. Representative examples of benign neoplasms include angiofibroma and squamous papilloma. Representative examples of malignant neoplasms includ...",
+"ko": "비인두 신생물",
+"alt": [
+"비인두 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+}
+]

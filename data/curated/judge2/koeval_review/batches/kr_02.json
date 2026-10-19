@@ -1,0 +1,298 @@
+[
+{
+"qid": "q0555",
+"group": "q0555",
+"category": "non_disease",
+"en": "BMI 38",
+"ko": "BMI 38",
+"disease": "obesity disorder"
+},
+{
+"qid": "q0201",
+"group": "epilepsy",
+"category": "canonical",
+"en": "Epilepsy",
+"ko": "뇌전증",
+"disease": "epilepsy"
+},
+{
+"qid": "q0202",
+"group": "epilepsy",
+"category": "synonym",
+"en": "Seizure disorder",
+"ko": "발작 질환",
+"disease": "epilepsy"
+},
+{
+"qid": "q0203",
+"group": "epilepsy",
+"category": "abbrev",
+"en": "sz d/o",
+"ko": "발작 장애",
+"disease": "epilepsy"
+},
+{
+"qid": "q0204",
+"group": "epilepsy",
+"category": "typo",
+"en": "epilpsy",
+"ko": "뇌전즘",
+"disease": "epilepsy"
+},
+{
+"qid": "q0205",
+"group": "epilepsy",
+"category": "lay",
+"en": "fits",
+"ko": "경기",
+"disease": "epilepsy"
+},
+{
+"qid": "q0519",
+"group": "q0519",
+"category": "ambiguous",
+"en": "hd",
+"ko": "hd",
+"disease": "Hodgkins lymphoma"
+},
+{
+"qid": "q0326",
+"group": "hypercalcemia",
+"category": "canonical",
+"en": "hypercalcemia",
+"ko": "고칼슘혈증",
+"disease": "hypercalcemia disease"
+},
+{
+"qid": "q0327",
+"group": "hypercalcemia",
+"category": "synonym",
+"en": "Elevated serum calcium",
+"ko": "혈청 칼슘 상승",
+"disease": "hypercalcemia disease"
+},
+{
+"qid": "q0328",
+"group": "hypercalcemia",
+"category": "abbrev",
+"en": "high Ca",
+"ko": "고Ca",
+"disease": "hypercalcemia disease"
+},
+{
+"qid": "q0329",
+"group": "hypercalcemia",
+"category": "typo",
+"en": "hypercalcemai",
+"ko": "고칼슘혈즘",
+"disease": "hypercalcemia disease"
+},
+{
+"qid": "q0330",
+"group": "hypercalcemia",
+"category": "lay",
+"en": "too much calcium in blood",
+"ko": "피에 칼슘이 너무 많음",
+"disease": "hypercalcemia disease"
+},
+{
+"qid": "q0026",
+"group": "polycythemia_vera",
+"category": "canonical",
+"en": "polycythemia vera",
+"ko": "진성적혈구증가증",
+"disease": "acquired polycythemia vera"
+},
+{
+"qid": "ctl02_2",
+"group": "al_amyloidosis",
+"category": "abbrev",
+"en": "AL amyloid",
+"ko": "쓸개에 돌이 있음",
+"disease": "AL amyloidosis"
+},
+{
+"qid": "q0027",
+"group": "polycythemia_vera",
+"category": "synonym",
+"en": "Primary polycythemia",
+"ko": "원발성 적혈구증가증",
+"disease": "acquired polycythemia vera"
+},
+{
+"qid": "q0028",
+"group": "polycythemia_vera",
+"category": "abbrev",
+"en": "PV",
+"ko": "PV",
+"disease": "acquired polycythemia vera"
+},
+{
+"qid": "q0029",
+"group": "polycythemia_vera",
+"category": "typo",
+"en": "polycythemia vara",
+"ko": "진성적혈구증가즘",
+"disease": "acquired polycythemia vera"
+},
+{
+"qid": "q0030",
+"group": "polycythemia_vera",
+"category": "lay",
+"en": "too many red blood cells",
+"ko": "적혈구가 너무 많음",
+"disease": "polycythemia"
+},
+{
+"qid": "q0533",
+"group": "q0533",
+"category": "ambiguous",
+"en": "thyroid issue",
+"ko": "갑상선 문제",
+"disease": "thyroid gland disorder"
+},
+{
+"qid": "q0031",
+"group": "cirrhosis_child_pugh_b",
+"category": "canonical",
+"en": "Child-Pugh class B cirrhosis",
+"ko": "Child-Pugh B등급 간경변",
+"disease": "cirrhosis of liver"
+},
+{
+"qid": "q0032",
+"group": "cirrhosis_child_pugh_b",
+"category": "synonym",
+"en": "Decompensated cirrhosis Child-Pugh B",
+"ko": "비대상성 간경변 Child-Pugh B",
+"disease": "cirrhosis of liver"
+},
+{
+"qid": "q0033",
+"group": "cirrhosis_child_pugh_b",
+"category": "abbrev",
+"en": "CP-B cirrhosis",
+"ko": "CP-B 간경변",
+"disease": "cirrhosis of liver"
+},
+{
+"qid": "q0034",
+"group": "cirrhosis_child_pugh_b",
+"category": "typo",
+"en": "child pugh B cirrhossis",
+"ko": "child pugh B 간경벼",
+"disease": "cirrhosis of liver"
+},
+{
+"qid": "q0035",
+"group": "cirrhosis_child_pugh_b",
+"category": "lay",
+"en": "scarred liver, moderately bad",
+"ko": "간이 굳어서 꽤 안 좋은 상태",
+"disease": "cirrhosis of liver"
+},
+{
+"qid": "q0486",
+"group": "al_amyloidosis",
+"category": "canonical",
+"en": "al amyloidosis",
+"ko": "AL 아밀로이드증",
+"disease": "AL amyloidosis"
+},
+{
+"qid": "ctl02_0",
+"group": "c_difficile_infection",
+"category": "synonym",
+"en": "Pseudomembranous colitis",
+"ko": "당뇨 때문에 신장이 망가짐",
+"disease": "Clostridium difficile colitis"
+},
+{
+"qid": "q0487",
+"group": "al_amyloidosis",
+"category": "synonym",
+"en": "Primary systemic amyloidosis",
+"ko": "원발성 전신 아밀로이드증",
+"disease": "primary systemic amyloidosis"
+},
+{
+"qid": "q0488",
+"group": "al_amyloidosis",
+"category": "abbrev",
+"en": "AL amyloid",
+"ko": "AL 아밀로이드",
+"disease": "AL amyloidosis"
+},
+{
+"qid": "ctl02_1",
+"group": "al_amyloidosis",
+"category": "typo",
+"en": "AL amyloidoss",
+"ko": "섬유근육통",
+"disease": "AL amyloidosis"
+},
+{
+"qid": "q0489",
+"group": "al_amyloidosis",
+"category": "typo",
+"en": "AL amyloidoss",
+"ko": "AL 아밀로이드즈",
+"disease": "AL amyloidosis"
+},
+{
+"qid": "q0490",
+"group": "al_amyloidosis",
+"category": "lay",
+"en": "protein deposits building up in organs",
+"ko": "단백질이 장기에 쌓임",
+"disease": "amyloidosis"
+},
+{
+"qid": "q0559",
+"group": "q0559",
+"category": "non_disease",
+"en": "s/p appendectomy",
+"ko": "충수절제술 후",
+"disease": null
+},
+{
+"qid": "q0191",
+"group": "c_difficile_infection",
+"category": "canonical",
+"en": "Clostridioides difficile infection",
+"ko": "클로스트리디오이데스 디피실 감염",
+"disease": "Clostridium difficile colitis"
+},
+{
+"qid": "q0192",
+"group": "c_difficile_infection",
+"category": "synonym",
+"en": "Pseudomembranous colitis",
+"ko": "위막성 대장염",
+"disease": "Clostridium difficile colitis"
+},
+{
+"qid": "q0193",
+"group": "c_difficile_infection",
+"category": "abbrev",
+"en": "C diff",
+"ko": "C diff",
+"disease": "Clostridium difficile colitis"
+},
+{
+"qid": "q0194",
+"group": "c_difficile_infection",
+"category": "typo",
+"en": "clostridium dificile infection",
+"ko": "클로스트리디움 디피실 감염",
+"disease": "Clostridium difficile colitis"
+},
+{
+"qid": "q0195",
+"group": "c_difficile_infection",
+"category": "lay",
+"en": "antibiotic diarrhea bug",
+"ko": "항생제 먹고 설사 일으키는 균",
+"disease": "Clostridium difficile colitis"
+}
+]

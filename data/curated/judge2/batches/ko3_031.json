@@ -1,0 +1,262 @@
+[
+{
+"id": "MONDO:0024467",
+"concept": "- MONDO:0024467 | apocrine sweat gland disorder | syn: apocrine sweat gland disease; apocrine sweat gland disease or disorder; disease of apocrine sweat gland; disease or disorder of apocrine sweat gland | ancestors: sweat gland disorder, skin disorder, integumentary system disorder, disease by body system or component | def: A disease that involves the apocrine sweat gland.",
+"ko": "아포크린 땀샘 질환",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006294",
+"concept": "- MONDO:0006294 | pleural cancer | syn: cancer of pleura; cancer of the pleura; malignant neoplasm of pleura; malignant neoplasm of the pleura | ancestors: respiratory system cancer, thoracic cancer, pleural neoplasm, cancer | def: A primary or metastatic malignant neoplasm affecting the pleura. A representative example of primary malignant pleural neoplasm is the malignant pleural mesothelioma. A representative example of metas...",
+"ko": "흉막암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019322",
+"concept": "- MONDO:0019322 | pemphigus vegetans | ancestors: pemphigus vulgaris, pemphigus, autoimmune bullous skin disease, dermatitis",
+"ko": "증식성 천포창",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0010631",
+"concept": "- MONDO:0010631 | incontinentia pigmenti | syn: Bloch-Siemens syndrome; Bloch-Sulzberger syndrome; incontinentia pigmenti; Incontinentia pigmenti syndrome | ancestors: ectodermal dysplasia syndrome, congenital vitreoretinal dysplasia, syndromic disease, hereditary epidermal appendage anomaly | def: Incontinentia pigmenti (IP) is a rare X-linked dominant multi-systemic ectodermal dysplasia usually lethal in males and presenting neonatally in females with a bullous rash along Blashko's lines (BL) ...",
+"ko": "색소실조증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019444",
+"concept": "- MONDO:0019444 | trichinellosis | syn: Trichinella caused disease or disorder; Trichinella disease or disorder; Trichinella infectious disease; trichinosis | ancestors: Enoplea infectious disease, parasitic myositis, Nematoda infectious disease, parasitic infectious disease | def: A zoonotic parasitic disease caused by the consumption of raw or undercooked meat (pork and wild game) infected by nematodes of the genus Trichinella and that is characterized by an enteral (intestina...",
+"ko": "선모충증",
+"alt": [
+"트리키넬라증"
+],
+"organs": [
+"gastrointestinal",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019719",
+"concept": "- MONDO:0019719 | congenital anomaly of kidney and urinary tract | syn: CAKUT; congenital anomalies of kidney and urinary tract; congenital anomaly of kidney and urinary tract; renal or urinary tract malformation | ancestors: developmental defect during embryogenesis, inherited kidney disorder, disorder of development or morphogenesis, hereditary disease | def: A urinary system disease characterized by structural malformations in the kidney and/or urinary tract containing vesicoureteral reflux.",
+"ko": "선천성 신장 및 요로 기형",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0044348",
+"concept": "- MONDO:0044348 | hemoglobinopathy | syn: hemoglobinopathy | ancestors: erythrocyte disorder, hematologic disorder, disease by body system or component, human disease",
+"ko": "혈색소병증",
+"alt": [
+"헤모글로빈병증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0007275",
+"concept": "- MONDO:0007275 | carpal tunnel syndrome | syn: carpal tunnel syndrome | ancestors: nerve compression syndrome, hereditary peripheral neuropathy, peripheral neuropathy, hereditary neuromuscular disease | def: Entrapment of the median nerve in the wrist that is characterized by numbness, tingling and painful movement.",
+"ko": "손목터널 증후군",
+"alt": [
+"수근관 증후군"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011728",
+"concept": "- MONDO:0011728 | benign essential blepharospasm | syn: benign essential blepharospasm; blepharospasm | ancestors: focal dystonia, dystonic disorder, extrapyramidal and movement disease, movement disorder | def: Involuntary twitching of the eyelid.",
+"ko": "양성 본태성 눈꺼풀연축",
+"alt": [
+"눈꺼풀경련"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021032",
+"concept": "- MONDO:0021032 | herpes zoster with dermatitis of eyelid | syn: herpes zoster dermatitis of eyelid; herpes zoster dermatitis of eyelids; herpes zoster with dermatitis of eyelid | ancestors: eyelid disorder, viral eye infection, herpes zoster dermatitis, eye adnexa disorder | def: A form of herpes zoster infection characterized by dermatitis of the skin of the eyelid due to reactivation of latent virus associated with the ophthalmic branch of the trigeminal nerve.",
+"ko": "눈꺼풀 피부염을 동반한 대상포진",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019454",
+"concept": "- MONDO:0019454 | myelodysplastic syndrome with excess blasts | syn: MDS-EB; myelodysplastic syndrome with Excess blasts; RAEB; refractory Anaemia with an Excess of blasts | ancestors: myelodysplastic syndrome, hematopoietic and lymphoid cell neoplasm, myeloid hemopathy, neoplastic syndrome | def: A myelodysplastic syndrome characterized by the presence of 5-19% myeloblasts in the bone marrow or 2-19% blasts in the peripheral blood. It includes two categories: myelodysplastic syndrome with exce...",
+"ko": "과잉 모세포를 동반한 골수형성이상증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009249",
+"concept": "- MONDO:0009249 | hereditary fructose intolerance | syn: Fructosaemia; fructose intolerance; Fructose Intolerance, Hereditary; fructose intolerance, hereditary | ancestors: disorder of fructose metabolism, disorder of galactose and fructose metabolism, inborn carbohydrate metabolic disorder, inborn errors of metabolism | def: Hereditary fructose intolerance (HFI) is an autosomal recessive disorder of fructose metabolism, resulting from a deficiency of hepatic fructose-1-phosphate aldolase activity and leading to gastrointe...",
+"ko": "유전성 과당불내증",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005672",
+"concept": "- MONDO:0005672 | blastomycosis | syn: Blastomyces dermatitidis caused disease or disorder; Blastomyces dermatitidis disease or disorder; Blastomyces dermatitidis infection; Blastomyces dermatitidis infectious disease | ancestors: primary systemic mycosis, systemic mycosis, fungal infectious disease, infectious disease | def: Blastomycosis is a rare infection that may develop when people inhale a fungus called Blastomyces dermatitidis, a fungus that is found in moist soil, particularly where there is rotting vegetation. Th...",
+"ko": "분아균증",
+"alt": [
+"블라스토미세스증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0018892",
+"concept": "- MONDO:0018892 | Wyburn-Mason syndrome | syn: bonnet-Dechaume-Blanc syndrome; CAMS2; Cerebrofacial arteriovenous metameric syndrome type 2 | ancestors: skin hemangioma, cerebrofacial arteriovenous metameric syndrome, skin vascular disease, benign eyelid neoplasm | def: Wyburn-Mason syndrome or Bonnet-Dechaume-Blanc syndrome is characterized by the association of arteriovenous malformations of the maxilla, retina, optic nerve, thalamus, hypothalamus and cerebral cort...",
+"ko": "와이번-메이슨 증후군",
+"alt": [
+"보네-데쇼-블랑 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001121",
+"concept": "- MONDO:0001121 | frontal sinusitis | ancestors: sinusitis, paranasal sinus disorder, inflammatory disease, nasal disorder | def: An acute or chronic inflammatory process affecting the mucous membrane of the frontal sinus.",
+"ko": "전두동염",
+"alt": [
+"이마굴염"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0850286",
+"concept": "- MONDO:0850286 | exercise-induced bronchoconstriction | ancestors: intrinsic asthma, asthma, bronchial disorder, lower respiratory tract disorder | def: An intrinsic asthma that is characterized by narrowing of the airways during or shortly after exercise.",
+"ko": "운동 유발 기관지수축",
+"alt": [
+"운동유발 기관지협착"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006115",
+"concept": "- MONDO:0006115 | blast phase chronic myelogenous leukemia, BCR-ABL1 positive | syn: blast crisis; blast phase chronic granulocytic leukaemia; blast phase chronic granulocytic leukemia; blast phase chronic myelocytic leukaemia | ancestors: chronic myeloid leukemia, myeloid leukemia, hereditary disorder of connective tissue, leukemia | def: An advanced phase of chronic myelogenous leukemia. It is characterized by: 1. the presence of blasts in the peripheral blood or bone marrow that are at least 20% of the peripheral blood white cells or...",
+"ko": "BCR-ABL1 양성 만성 골수성 백혈병 모세포기",
+"alt": [
+"모세포 위기"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003134",
+"concept": "- MONDO:0003134 | proliferative glomerulonephritis | ancestors: glomerulonephritis, nephritis, glomerular disorder, kidney disorder | def: A constellation of renal disorders characterized by an increase number of cells in the glomerulus; these disorders generally present with nephrotic syndrome, and generally progress to end stage renal ...",
+"ko": "증식성 사구체신염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005648",
+"concept": "- MONDO:0005648 | aortic valve insufficiency | syn: aortic insufficiency; rheumatic aortic insufficiency; rheumatic aortic regurgitation | ancestors: aortic valve disorder, vascular insufficiency disorder, heart valve disorder, aortic disorder | def: Dysfunction of the aortic valve characterized by incomplete valve closure.",
+"ko": "대동맥판막 폐쇄부전",
+"alt": [
+"대동맥판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 13,
+"new": false
+},
+{
+"id": "MONDO:0008692",
+"concept": "- MONDO:0008692 | abetalipoproteinemia | syn: abetalipoproteinemia; Bassen-Kornzweig disease; homozygous familial hypobetalipoproteinemia | ancestors: familial hemolytic anemia, intestinal disorder, hypobetalipoproteinemia, autosomal recessive metabolic cerebellar ataxia | def: Abetalipoproteinemia/ homozygous familial hypobetalipoproteinemia (ABL/HoFHBL) is a severe form of familial hypobetalipoproteinemia characterized by permanently low levels (below the 5th percentile) o...",
+"ko": "무베타지단백혈증",
+"alt": [
+"바센-코른츠바이크병"
+],
+"organs": [
+"gastrointestinal",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+}
+]

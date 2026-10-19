@@ -1,0 +1,251 @@
+[
+{
+"id": "MONDO:0007925",
+"concept": "- MONDO:0007925 | myelodysplastic syndrome associated with isolated del(5q) | syn: 5Q minus syndrome; 5Q- syndrome; 5q- syndrome; 5q- syndrome, refractory macrocytic anaemia due to 5q deletion | ancestors: macrocytic anemia, hereditary disease, partial deletion of the long arm of chromosome 5, myelodysplastic syndrome | def: A myelodysplastic syndrome characterized by a deletion between bands q31 and 33 on chromosome 5. The number of blasts in the bone marrow and blood is <5%. The bone marrow is usually hypercellular or n...",
+"ko": "단독 del(5q)와 연관된 골수형성이상 증후군",
+"alt": [
+"5q- 증후군"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019158",
+"concept": "- MONDO:0019158 | tropical endomyocardial fibrosis | syn: Davies disease; TEMF | ancestors: non-familial restrictive cardiomyopathy, restrictive cardiomyopathy, intrinsic cardiomyopathy, cardiomyopathy | def: Tropical endomyocardial fibrosis is a restrictive cardiopathy, occurring almost exclusively in children and young adults in tropical and subtropical regions, characterized by endocardial fibrosis, aff...",
+"ko": "열대성 심내막심근섬유증",
+"alt": [
+"데이비스병"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001268",
+"concept": "- MONDO:0001268 | gingival recession | syn: gingival recession; gingival recession, localised; gingival recession, localized; gingival recession, unspecified | ancestors: gingival disorder, periodontal disorder, mouth mucosa disorder, skeletal system disorder | def: A loss of gum tissue resulting in an exposure of the roots of the teeth.",
+"ko": "치은퇴축",
+"alt": [
+"잇몸퇴축"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0006751",
+"concept": "- MONDO:0006751 | Erysipelothrix infectious disease | syn: Erysipelothrix caused disease or disorder; Erysipelothrix disease or disorder | ancestors: gram-positive bacterial infections, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infections with bacteria of the genus erysipelothrix.",
+"ko": "에리시펠로트릭스 감염증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0003014",
+"concept": "- MONDO:0003014 | rhinitis | syn: inflammation of nasal cavity mucosa; nasal cavity mucosa inflammation | ancestors: nasal cavity disorder, mucositis, nasal disorder, upper respiratory tract disorder | def: An inflammation of the mucous membrane lining the nose, usually associated with nasal discharge.",
+"ko": "비염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019296",
+"concept": "- MONDO:0019296 | subcutaneous tissue disorder | syn: disease of superficial fascia; disease or disorder of superficial fascia; disorder of superficial fascia; superficial fascia disease | ancestors: integumentary system disorder, disease by body system or component, human disease, disease | def: A disease involving the superficial fascia.",
+"ko": "피하조직 질환",
+"alt": [
+"피하 조직 장애"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015283",
+"concept": "- MONDO:0015283 | maternally-inherited cardiomyopathy and hearing loss | syn: maternally-inherited cardiomyopathy and deafness; tRNA-LYS-related cardiomyopathy-hearing loss syndrome | ancestors: mitochondrial disease, disease by developmental or physiological process, human disease, disease | def: Maternally inherited cardiomyopathy and hearing loss is a mitochondrial disease described in two unrelated families to date that has a heterogeneous clinical presentation characterized by the associat...",
+"ko": "모계 유전 심근병증 및 청력 소실",
+"alt": [],
+"organs": [
+"cardiovascular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021287",
+"concept": "- MONDO:0021287 | carcinoma in situ of epiglottis | syn: carcinoma in situ of epiglottis; carcinoma in situ of the Epiglottis; epiglottic carcinoma in situ; Epiglottis carcinoma in situ | ancestors: epiglottis cancer, larynx carcinoma in situ, carcinoma in situ of hypopharynx, carcinoma in situ of oropharynx | def: A in situ carcinoma that involves the epiglottis.",
+"ko": "후두덮개 상피내암종",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001179",
+"concept": "- MONDO:0001179 | pinguecula | ancestors: conjunctival degeneration, ocular growth disorder, conjunctival disorder, eye disorder | def: A yellowish thickened lesion on the conjunctiva near the cornea representing a benign degenerative change in the conjunctiva caused by the leakage and deposition of certain blood proteins through the ...",
+"ko": "검열반",
+"alt": [
+"순간 결막반"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0020584",
+"concept": "- MONDO:0020584 | anemia due to enzyme disorder | syn: anemia due to enzyme disorder | ancestors: anemia, hematologic disorder, disease by body system or component, human disease | def: Any form of anemia that results from the absence of, or the defective action of, any enzyme.",
+"ko": "효소 장애에 의한 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0024288",
+"concept": "- MONDO:0024288 | hyperbilirubinemia | syn: hyperbilirubinemia | ancestors: bilirubin metabolism disease, metabolic disease, disease by developmental or physiological process, human disease | def: A disease characterized by elevated level of the pigment bilirubin in the blood.",
+"ko": "고빌리루빈혈증",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002416",
+"concept": "- MONDO:0002416 | ethmoid sinus squamous cell carcinoma | syn: epidermoid carcinoma of ethmoid sinus; epidermoid carcinoma of ethmoidal sinus; epidermoid carcinoma of the ethmoid sinus; epidermoid carcinoma of the ethmoidal sinus | ancestors: ethmoid sinus cancer, paranasal sinus squamous cell carcinoma, paranasal sinus carcinoma, ethmoidal sinus neoplasm | def: A squamous cell carcinoma that arises from the mucosal epithelial surface of the ethmoid sinus. Patients may present with nasal fullness, obstruction, and/or epistaxis.",
+"ko": "벌집뼈굴 편평세포암종",
+"alt": [
+"사골동 편평세포암종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013717",
+"concept": "- MONDO:0013717 | asphyxiating thoracic dystrophy 5 | syn: asphyxiating thoracic dystrophy 5; asphyxiating thoracic dystrophy type 5; ATD5; Jeune syndrome caused by mutation in WDR19 | ancestors: Jeune syndrome, ciliopathy, short rib-polydactyly syndrome, inherited renal tubular disease | def: Any Jeune syndrome in which the cause of the disease is a mutation in the WDR19 gene.",
+"ko": "질식성 흉곽 이형성증 5형",
+"alt": [],
+"organs": [
+"hepatic",
+"pulmonary",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004509",
+"concept": "- MONDO:0004509 | intrahepatic biliary papillomatosis | syn: intrahepatic bile duct papillary neoplasm; intrahepatic bile duct papillomatosis; intrahepatic biliary papillomatosis | ancestors: bile duct papillary neoplasm, benign digestive system neoplasm, intraductal papilloma, bile duct neoplasm | def: A non-invasive, papillary epithelial neoplasm that arises from the epithelium of the intrahepatic bile ducts.",
+"ko": "간내 담관 유두종증",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020419",
+"concept": "- MONDO:0020419 | pulmonary artery hypoplasia | syn: pulmonary artery hypoplasia; pulmonary artery hypoplasia (disease) | ancestors: congenital anomaly of the great arteries, congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder",
+"ko": "폐동맥 저형성",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005127",
+"concept": "- MONDO:0005127 | lepromatous leprosy | syn: lepromatous leprosy [type L] | ancestors: leprosy, primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease | def: A chronic communicable infection which is a principal or polar form of leprosy. This disorder is caused by mycobacterium leprae and produces diffuse granulomatous skin lesions in the form of nodules, ...",
+"ko": "나종형 나병",
+"alt": [
+"나종 한센병"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0020669",
+"concept": "- MONDO:0020669 | paranasal sinus cancer | syn: malignant accessory sinus neoplasm; malignant accessory sinus tumor; malignant accessory sinus tumour; malignant neoplasm of accessory sinus | ancestors: respiratory system cancer, sensory system cancer, skull cancer, paranasal sinus neoplasm | def: A primary or metastatic malignant neoplasm involving the paranasal sinuses.",
+"ko": "부비동암",
+"alt": [
+"코곁굴암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001460",
+"concept": "- MONDO:0001460 | dyshormonogenic goiter | ancestors: goiter, thyroid gland disorder, endocrine system disorder, disease by body system or component",
+"ko": "호르몬 합성장애성 갑상선종",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001217",
+"concept": "- MONDO:0001217 | pseudomembranous conjunctivitis | syn: conjunctivitis with pseudomembrane | ancestors: acute conjunctivitis, bacterial conjunctivitis, conjunctivitis, acute disease | def: Conjunctivitis that is characterized by formation of a pseudomembrane.",
+"ko": "위막성 결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004054",
+"concept": "- MONDO:0004054 | acute canaliculitis | syn: acute canaliculitis, lacrimal; acute lacrimal canaliculitis | ancestors: acute inflammation of lacrimal passage, lacrimal apparatus disorder, acute disease, eye adnexa disorder",
+"ko": "급성 눈물소관염",
+"alt": [
+"급성 누소관염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+}
+]

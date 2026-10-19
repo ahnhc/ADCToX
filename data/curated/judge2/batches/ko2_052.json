@@ -1,0 +1,237 @@
+[
+{
+"id": "MONDO:0001954",
+"concept": "- MONDO:0001954 | thrombophlebitis migrans | ancestors: thrombophlebitis, phlebitis, vein disorder, vasculitis | def: A thrombophlebitis that is characterized by repeated occurrences of thrombophlebitis in different locations.",
+"ko": "유주성 혈전정맥염",
+"alt": [
+"이주성 혈전정맥염"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015675",
+"concept": "- MONDO:0015675 | distomatosis | syn: distomiasis; fluke infection | ancestors: parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Distomatosis is a group of parasitoses caused by flat worms that live in contact with epitheliums. Clinical classification depends on the organ infected by the adult parasite: liver, lungs, or intesti...",
+"ko": "디스토마증",
+"alt": [
+"흡충 감염"
+],
+"organs": [
+"hepatic",
+"pulmonary",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0009262",
+"concept": "- MONDO:0009262 | GM1 gangliosidosis type 3 | syn: adult-onset GM1 gangliosidosis | ancestors: GM1 gangliosidosis, eye disorder, bone disorder, gangliosidosis | def: GM1 gangliosidosis type 3 is a mild, chronic, adult form of GM1 gangliosidosis characterized by onset generally during childhood or adolescence and by cerebellar dysfunction.",
+"ko": "GM1 강글리오시드축적증 3형",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019636",
+"concept": "- MONDO:0019636 | renal agenesis, unilateral | syn: congenital single kidney; congenital solitary kidney; unilateral renal agenesis | ancestors: renal agenesis, disorder of development or morphogenesis, inherited kidney disorder, disease by developmental or physiological process | def: Unilateral renal agenesis (URA) is a form of renal agenesis characterized by the complete absence of development of one kidney accompanied by an absent ureter.",
+"ko": "편측 신장무형성",
+"alt": [
+"선천성 단일 신장"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005753",
+"concept": "- MONDO:0005753 | epiglottitis | syn: inflammation of mucosa of epiglottis; mucosa of epiglottis inflammation; supraglottitis | ancestors: upper respiratory tract disorder, mucositis, disorder of pharynx, respiratory system disorder | def: Inflammation of the epiglottis.",
+"ko": "후두개염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001379",
+"concept": "- MONDO:0001379 | ureteric orifice cancer | syn: cancer of ureteral orifice; malignant neoplasm of ureteral orifice; malignant tumour of ureteric orifice; malignant ureteral orifice neoplasm | ancestors: bladder dome cancer, ureter cancer, urinary bladder cancer, malignant urinary system neoplasm | def: A malignant neoplasm involving the ureteral orifice.",
+"ko": "요관구암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0025371",
+"concept": "- MONDO:0025371 | Parvoviridae infectious disease | syn: disease due to Parvoviridae; Parvoviridae caused disease or disorder; Parvoviridae disease or disorder | ancestors: viral infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Virus infections caused by the parvoviridae.",
+"ko": "파르보바이러스과 감염병",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019628",
+"concept": "- MONDO:0019628 | Rieger anomaly | ancestors: iridogoniodysgenesis, anterior segment dysgenesis, hereditary disease, eye disorder | def: Rieger's anomaly is a congenital ocular defect caused by anterior segment dysgenesis and is characterized by severe anterior chamber deformity with prominent strands and marked atrophy of the iris str...",
+"ko": "리거 이상",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009831",
+"concept": "- MONDO:0009831 | malignant pancreatic neoplasm | syn: cancer of pancreas; malignant neoplasm of pancreas; malignant neoplasm of the pancreas; malignant pancreas neoplasm | ancestors: digestive system cancer, pancreatic neoplasm, digestive system disorder, cancer | def: A malignant neoplasm involving the pancreas.",
+"ko": "악성 췌장 신생물",
+"alt": [
+"췌장암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005492",
+"concept": "- MONDO:0005492 | urticaria | syn: hives; urticaria; urticaria (disease) | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: A vascular reaction of the skin characterized by erythema and wheal formation due to localized increase of vascular permeability. The causative mechanism may be allergy, infection, or stress.",
+"ko": "두드러기",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001085",
+"concept": "- MONDO:0001085 | interstitial nephritis | syn: Tubulointerstitial nephritis | ancestors: nephritis, kidney disorder, inflammatory disease, urinary system disorder | def: Inflammation of the renal tubules and supporting tissues of the kidney.",
+"ko": "간질성 신염",
+"alt": [
+"세뇨관간질성 신염"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0023011",
+"concept": "- MONDO:0023011 | Wilson-Mikity syndrome | syn: Wilson-Mikity syndrome; wilson-mikity syndrome | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component",
+"ko": "윌슨-미키티 증후군",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004241",
+"concept": "- MONDO:0004241 | Osgood-Schlatter disease | syn: aseptic necrosis of the tibial tubercle; Osgood-Schlatter disease; Osgood-Schlatter's disease; osteochondritis of the tibial tubercle | ancestors: bone inflammation disease, osteochondrosis, bone disorder, osteonecrosis | def: Osteochondrosis of the growth plate near the tibial tuberosity.",
+"ko": "오스굿-슐라터병",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019312",
+"concept": "- MONDO:0019312 | Hermansky-Pudlak syndrome | syn: HPS | ancestors: syndromic oculocutaneous albinism, disorder of lysosomal-related organelles, inherited blood coagulation disorder, syndromic disease | def: Hermansky-Pudlak syndrome (HSP) is a multi-system disorder characterized by oculocutaneous albinism, bleeding diathesis and, in some cases, neutropenia, pulmonary fibrosis, or granulomatous colitis. H...",
+"ko": "헤르만스키-푸들라크 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"pulmonary",
+"ocular",
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004608",
+"concept": "- MONDO:0004608 | oropharynx cancer | syn: cancer of oropharynx; malignant neoplasm of junctional region of oropharynx; malignant neoplasm of lateral wall of oropharynx; malignant neoplasm of oropharynx | ancestors: pharynx cancer, neoplasm of oropharynx, respiratory system cancer, digestive system cancer | def: A primary or metastatic malignant neoplasm that affects the oropharynx.",
+"ko": "구인두암",
+"alt": [
+"입인두암"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001827",
+"concept": "- MONDO:0001827 | white piedra | syn: Tinea blanca | ancestors: piedra, trichosporonosis, disorder of pilosebaceous unit, superficial mycosis | def: A superficial mycosis due to T beigelii that is characterized by a soft, friable, beige nodule of the distal ends of hair shafts.",
+"ko": "백색 모발결절증",
+"alt": [
+"백색 피에드라"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004621",
+"concept": "- MONDO:0004621 | upper lip cancer | syn: cancer of upper lip; malignant neoplasm of upper lip; malignant upper lip neoplasm; upper lip cancer | ancestors: lip cancer, oral cavity cancer, head and neck cancer, lip neoplasm | def: A malignant neoplasm involving the upper lip.",
+"ko": "윗입술암",
+"alt": [
+"상순암"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0004911",
+"concept": "- MONDO:0004911 | cardiovascular syphilis | ancestors: tertiary syphilis, syphilis, primary bacterial infectious disease, Treponema infectious disease | def: A tertiary syphilis that is manifested as aneurysm formation in the ascending aorta, caused by chronic inflammatory destruction of the vasa vasorum, insufficiency of the aortic valve, or narrowing of ...",
+"ko": "심혈관 매독",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019978",
+"concept": "- MONDO:0019978 | Robinow syndrome | syn: acral dysostosis with facial and genital abnormalities; fetal face syndrome; foetal face syndrome; mesomelic dwarfism-small genitalia syndrome | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, skeletal dysplasia, disease by body system or component | def: Robinow syndrome (RS) is a rare genetic syndrome characterized by limb shortening and abnormalities of the head, face and external genitalia.",
+"ko": "로비노 증후군",
+"alt": [
+"태아얼굴 증후군"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001671",
+"concept": "- MONDO:0001671 | mucocele of appendix | syn: appendiceal mucocele; mucocele of the appendix | ancestors: intestinal disorder, digestive system disorder, disease by body system or component, human disease | def: Accumulation of mucus within the appendix.",
+"ko": "충수 점액류",
+"alt": [
+"충수 점액낭종"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+}
+]

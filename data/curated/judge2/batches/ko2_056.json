@@ -1,0 +1,231 @@
+[
+{
+"id": "MONDO:0020744",
+"concept": "- MONDO:0020744 | Mobitz type I atrioventricular block | syn: AV block second degree Mobitz type I; AV block second degree Möbitz type I; Mobitz I; Mobitz type I | ancestors: second-degree atrioventricular block, atrioventricular block, heart conduction disease, atrioventricular dissociation | def: A disorder characterized by an electrocardiographic finding of intermittent failure of atrial electrical impulse conduction to the ventricles, characterized by a progressively lengthening PR interval ...",
+"ko": "모비츠 I형 방실 차단",
+"alt": [
+"2도 방실 차단 모비츠 1형"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020731",
+"concept": "- MONDO:0020731 | arbovirus infection | syn: arbovirus infection; arthropod-borne viral infection | ancestors: viral infectious disease, vector-borne disease, infectious disease, disease of primarily extrinsic mechanism | def: A viral infection that is transmitted by an arthropod.",
+"ko": "절지동물 매개 바이러스 감염",
+"alt": [
+"아르보바이러스 감염"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0005832",
+"concept": "- MONDO:0005832 | lymphangitis | syn: inflammation of lymphatic vessel; lymphatic vessel inflammation | ancestors: lymphatic system disorder, vasculitis, lymphoid system disorder, vascular disorder | def: Inflammation of the lymphatic vessels.",
+"ko": "림프관염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001234",
+"concept": "- MONDO:0001234 | adhesive otitis media | syn: adhesive middle ear disease; adhesive otitis media; chronic adhesive otitis media | ancestors: auditory system disorder, disease by body system or component, human disease, disease | def: An auditory system disease that is characterized by a thin retracted ear drum becomes sucked into the middle-ear space and stuck (i.e., adherent) to the ossicles and other bones of the middle ear.",
+"ko": "유착성 중이염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006834",
+"concept": "- MONDO:0006834 | lip cancer | syn: cancer of lip; lip cancer; malignant Lip neoplasm; malignant lip neoplasm | ancestors: oral cavity cancer, head and neck cancer, lip neoplasm, digestive system cancer | def: A primary or metastatic malignant neoplasm involving the lip.",
+"ko": "입술암",
+"alt": [
+"구순암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 13
+},
+{
+"id": "MONDO:0010726",
+"concept": "- MONDO:0010726 | Rett syndrome | syn: Rett syndrome; Rett syndrome, atypical, X-linked dominant; Rett syndrome, preserved speech variant, X-linked dominant; Rett syndrome, X-linked dominant | ancestors: pervasive developmental disorder, syndromic disease, Mendelian neurodevelopmental disorder, developmental disorder of mental health | def: A severe neurodevelopmental disorder affecting the central nervous system.",
+"ko": "레트 증후군",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017638",
+"concept": "- MONDO:0017638 | manganese poisoning | syn: manganese intoxication; Manganism | ancestors: toxic encephalopathy, poisoning, nervous system disorder, disease of primarily extrinsic mechanism | def: Manganese poisoning is associated with chronic inhalation of manganese particles by individuals who work with manganese ore. Clinical features include confusion; hallucinations; and an extrapyramidal ...",
+"ko": "망간 중독",
+"alt": [],
+"organs": [
+"pulmonary",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000367",
+"concept": "- MONDO:0000367 | taeniasis | syn: Taenia infection; taenia saginata infection | ancestors: intestinal helminthiasis, Cestode infectious disease, helminthiasis, parasitic intestinal disorder | def: A parasitic infection caused by tapeworms of the genus Taenia. Humans are infected by eating undercooked or raw meat of infected animals. It is usually an asymptomatic infection and patients may becom...",
+"ko": "조충증",
+"alt": [
+"테니아증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0007542",
+"concept": "- MONDO:0007542 | Camurati-Engelmann disease | syn: Camurati-Engelmann disease; Camurati-Engelmann syndrome; Camurati-Englemann disease; progressive diaphyseal dysplasia | ancestors: syndromic disease, skeletal dysplasia, disease by body system or component, hereditary disease | def: Camurati-Englemann disease (CED) is a rare, clinically variable bone dysplasia syndrome characterized by hyperostosis of the long bones, skull, spine and pelvis, associated with severe pain in the ext...",
+"ko": "카무라티-엥겔만병",
+"alt": [
+"카무라티-엥겔만 증후군"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018166",
+"concept": "- MONDO:0018166 | oral submucous fibrosis | syn: oral cavity submucous fibrosis; oral submucosal fibrosis, including of tongue; OSMF | ancestors: mouth disorder, disorder of facial skeleton, disease by body system or component, skull disorder | def: Oral submucous fibrosis (OSMF) is a chronic, progressive disease that alters the fibroelasticity of the oral submucosa, prevalent in India and Southeast Asia but rare elsewhere, and characterized by b...",
+"ko": "구강 점막하 섬유증",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019084",
+"concept": "- MONDO:0019084 | radiation proctitis | ancestors: proctitis, radiation-induced disorder, anus disorder, inflammatory bowel disease | def: Radiation proctitis is a rare rectal disease directly induced by pelvic radiotherapy and characterized by rectal bleeding, change in bowel habits, tenesmus and sepsis.",
+"ko": "방사선 직장염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0023153",
+"concept": "- MONDO:0023153 | tuberculous ascites | syn: tuberculous ascites | ancestors: abdominal tuberculosis, extrapulmonary tuberculosis, tuberculosis, primary bacterial infectious disease | def: A type of abdominal tuberculosis that is characterized by accumulation of fluid in the abdomen, a swollen abdomen, and slightly raised tubercles of 1–2 mm all over the peritoneum.",
+"ko": "결핵성 복수",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017720",
+"concept": "- MONDO:0017720 | GM2 gangliosidosis | syn: gangliosidosis GM2; GM>2< gangliosidosis | ancestors: gangliosidosis, inherited neurodegenerative disorder, sphingolipidosis, neurodegenerative disease | def: A group of recessively inherited diseases characterized by the intralysosomal accumulation of G(M2) GANGLIOSIDE in the neuronal cells. Subtypes include mutations of enzymes in the BETA-N-ACETYLHEXOSAM...",
+"ko": "GM2 강글리오시드증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001917",
+"concept": "- MONDO:0001917 | chronic perichondritis of pinna | syn: chronic perichondritis of auricle; perichondritis of auricle, chronic | ancestors: perichondritis of auricle, otitis externa, external ear disorder, ear infection | def: Chronic form of perichondritis of auricle.",
+"ko": "귓바퀴 만성 연골막염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021321",
+"concept": "- MONDO:0021321 | malignant tumor of extrahepatic bile duct | syn: cancer of extrahepatic bile duct; malignant extrahepatic bile duct neoplasm; malignant extrahepatic bile duct tumor; malignant extrahepatic bile duct tumour | ancestors: bile duct cancer, extrahepatic bile duct neoplasm, biliary tract cancer, bile duct neoplasm | def: A cancer that involves the extrahepatic bile duct.",
+"ko": "간외 담관 악성 종양",
+"alt": [
+"간외 담관암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015237",
+"concept": "- MONDO:0015237 | arrhinia | syn: isolated nose agenesis; Nose agenesis | ancestors: otorhinolaryngologic disease, disease by body system or component, human disease, disease | def: Arrhinia is an extremely rare, major congenital malformation consisting of an absence of the nose ranging from hyporrhinia (absence of external nasal structures) to total arrhinia (absence of external...",
+"ko": "무비증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007947",
+"concept": "- MONDO:0007947 | Marfan syndrome | syn: Marfan syndrome; Marfan syndrome type 1; Marfan syndrome, type 1; Marfan's syndrome | ancestors: autosomal dominant disease, syndromic disease, skeletal system disorder, Marfan and Marfan-related disorder | def: A disorder of the connective tissue. Connective tissue provides strength and flexibility to structures throughout the body such as bones, ligaments, muscles, walls of blood vessels, and heart valves. ...",
+"ko": "마르판 증후군",
+"alt": [
+"마르판 증후군 1형"
+],
+"organs": [
+"cardiovascular",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007572",
+"concept": "- MONDO:0007572 | primary familial polycythemia due to EPO receptor mutation | syn: congenital erythrocytosis due to erythropoietin receptor mutation; congenital polycythemia due to erythropoietin receptor mutation; EPOR familial polycythemia; erythrocytosis, familial, 1 | ancestors: familial polycythemia, hereditary disease, polycythemia, disease of genetic or genomic mechanism | def: Primary familial polycythemia is an inherited hematological disorder resulting from mutations in the erythropoietin (EPO) receptor and is characterized by an elevated absolute red blood cell mass caus...",
+"ko": "EPO 수용체 돌연변이에 의한 일차 가족성 적혈구증가증",
+"alt": [
+"선천성 적혈구증가증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021203",
+"concept": "- MONDO:0021203 | serous otitis media | syn: SOM | ancestors: non-suppurative otitis media, otitis media, middle ear disorder, inflammatory disease",
+"ko": "삼출성 중이염",
+"alt": [
+"장액성 중이염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001213",
+"concept": "- MONDO:0001213 | serous glue ear | syn: serous otitis media, chronic | ancestors: serous otitis media, chronic non-suppurative otitis media, non-suppurative otitis media, chronic otitis media | def: Chronic form of serous otitis media.",
+"ko": "장액성 아교귀",
+"alt": [
+"만성 장액성 중이염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 2
+}
+]

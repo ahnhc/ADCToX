@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0018173",
+"concept": "- MONDO:0018173 | acute opioid poisoning | ancestors: acute disease, poisoning, human disease, disease of primarily extrinsic mechanism | def: Acute opioid poisoning is a rare intoxication with opioids, a large group of alkaloid analgesics, mainly characterized by miosis (pinpoint pupil), respiratory depression (bradypnea/apnea) and central ...",
+"ko": "급성 오피오이드 중독",
+"alt": [
+"급성 아편유사제 중독"
+],
+"organs": [
+"pulmonary",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013584",
+"concept": "- MONDO:0013584 | hereditary sensory neuropathy-deafness-dementia syndrome | syn: Hereditary Sensory and Autonomic Neuropathy Type 1E; hereditary sensory neuropathy-sensorineural hearing loss-dementia syndrome; HSAN1E; HSN1E | ancestors: sleep-wake disorder, hereditary dementia, hereditary sensory and autonomic neuropathy type 1, inherited neurodegenerative disorder | def: A hereditary sensory neuropathy characterized by adult onset of progressive peripheral sensory loss, progressive hearing impairment, and early-onset dementia that has material basis in heterozygous mu...",
+"ko": "유전성 감각신경병증-난청-치매 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015597",
+"concept": "- MONDO:0015597 | palmoplantar pustulosis | syn: localised pustular psoriasis; localized pustular psoriasis; LPP; Palmoplantar Pustulosis | ancestors: epidermal disease, pustular psoriasis, skin disorder, psoriasis | def: A rare skin disease characterized by chronic eruption of sterile pustules on an erythematous and desquamative background, affecting the palms and soles, sometimes also the lateral aspects of hands and...",
+"ko": "손발바닥 농포증",
+"alt": [
+"국소 농포성 건선"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010704",
+"concept": "- MONDO:0010704 | otopalatodigital syndrome type 1 | syn: OPD 1 syndrome; OPD I syndrome; OPD syndrome 1; OPD1 | ancestors: syndromic disease, otopalatodigital syndrome, disease by body system or component, otopalatodigital syndrome spectrum disorder | def: The mildest form of otopalatodigital syndrome spectrum disorder that is characterized by a generalized skeletal dysplasia, mild intellectual disability, conductive hearing loss, and typical facial ano...",
+"ko": "이구개수지 증후군 1형",
+"alt": [
+"OPD 1형 증후군"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002757",
+"concept": "- MONDO:0002757 | acute allergic sanguinous otitis media | ancestors: acute sanguinous otitis media, acute transudative otitis media, non-suppurative otitis media, acute disease | def: A acute sanguinous otitis media caused by an allergen.",
+"ko": "급성 알레르기성 혈성 중이염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001032",
+"concept": "- MONDO:0001032 | Mooren ulcer | ancestors: corneal ulcer, keratitis, ulcer disease, corneal disorder",
+"ko": "무렌 궤양",
+"alt": [
+"무렌 각막궤양"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0043209",
+"concept": "- MONDO:0043209 | albinism | syn: albinism | ancestors: inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease, inborn errors of metabolism | def: A congenital disorder characterized by partial or complete absence of melanin pigment in the eyes, hair, or skin.",
+"ko": "백색증",
+"alt": [
+"알비니즘"
+],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007233",
+"concept": "- MONDO:0007233 | second branchial cleft anomaly | syn: branchial cleft; branchial cleft remnant; second branchial cleft cyst; second branchial cleft fistula | ancestors: cysts and fistulae of the face and oral cavity, hereditary otorhinolaryngologic disease, developmental defect during embryogenesis, otorhinolaryngologic disease | def: A congenital defect in the neck that occurs during early embryonic development. It is caused by developmental abnormalities of the pharyngeal arches and results in the development of a cyst or a fissu...",
+"ko": "제2 새열 기형",
+"alt": [
+"제2 새열낭종"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021326",
+"concept": "- MONDO:0021326 | malignant neoplasm of cervical esophagus | syn: cancer of cervical part of esophagus; cancer of cervical part of oesophagus; cervical part of esophagus cancer; cervical part of oesophagus cancer | ancestors: esophageal cancer, digestive system cancer, neoplasm of esophagus, digestive system disorder | def: A cancer that involves the cervical part of esophagus.",
+"ko": "경부 식도 악성 신생물",
+"alt": [
+"경부 식도암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015626",
+"concept": "- MONDO:0015626 | Charcot-Marie-Tooth disease | syn: Charcot Marie Tooth muscular atrophy; Charcot-Marie-Tooth disease; Charcot-Marie-Tooth hereditary neuropathy; CMT | ancestors: hereditary peripheral neuropathy, peripheral neuropathy, hereditary neuromuscular disease, peripheral nervous system disorder | def: An inherited degenerative disorder involving the peripheral nerves. It is caused by mutations in the genes that are responsible for the production of proteins necessary for the function and structure ...",
+"ko": "샤르코-마리-투스병",
+"alt": [
+"유전성 운동감각신경병증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012126",
+"concept": "- MONDO:0012126 | familial avascular necrosis of femoral head | syn: aseptic Necrosis of femoral head; aseptic Necrosis of head of femur; familial osteonecrosis of the femoral head | ancestors: primary avascular necrosis, osteonecrosis of genetic origin, avascular necrosis, hereditary disease | def: Avascular necrosis of femoral head (ANFH) is a severely disabling disease characterized by progressive groin pain, a limping gait, leg length discrepancy, collapse of the subchondral bone, limitation ...",
+"ko": "가족성 대퇴골두 무혈성 괴사",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005707",
+"concept": "- MONDO:0005707 | coccidiosis | syn: coccidiosis (& [intestinal]) | ancestors: protozoa infectious disease, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A parasitic infection caused by Coccidia. It affects livestock, birds and humans. In humans the parasite infests the intestinal tract and may cause watery diarrhea, abdominal pain, fever, nausea and v...",
+"ko": "콕시디아증",
+"alt": [
+"구충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000565",
+"concept": "- MONDO:0000565 | infective endocarditis | syn: endocarditis infective | ancestors: endocarditis, infectious disease, endocardium disorder, inflammation of heart layer | def: Infective endocarditis (IE) is an infection of the inner lining of the heart chambers (endocardium) and valves. This condition is sometimes called 'endocarditis,' although it is important to distingui...",
+"ko": "감염성 심내막염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001443",
+"concept": "- MONDO:0001443 | tympanosclerosis | ancestors: tympanic membrane disorder, middle ear disorder, auditory system disorder, disorder of ear | def: The formation of dense connective tissue in the tympanic membrane that does not necessarily cause or lead to loss of hearing.",
+"ko": "고실경화증",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002737",
+"concept": "- MONDO:0002737 | acute sanguinous otitis media | ancestors: acute transudative otitis media, non-suppurative otitis media, acute disease, otitis media | def: A acute transudative otitis media which involves bloody effusion.",
+"ko": "급성 혈성 중이염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018997",
+"concept": "- MONDO:0018997 | Noonan syndrome | syn: Noonan syndrome; Noonan's syndrome | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, lymphatic malformation, Noonan syndrome and Noonan-related syndrome | def: Noonan Syndrome (NS) is characterized by short stature, typical facial dysmorphism and congenital heart defects.",
+"ko": "누난 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002099",
+"concept": "- MONDO:0002099 | Histoplasma capsulatum infectious disease | syn: Histoplasma capsulatum caused disease or disorder; Histoplasma capsulatum disease or disorder; infection by Histoplasma capsulatum | ancestors: histoplasmosis, primary systemic mycosis, systemic mycosis, fungal infectious disease | def: An disease or disorder caused by infection with Histoplasma capsulatum.",
+"ko": "Histoplasma capsulatum 감염병",
+"alt": [
+"히스토플라스마 감염병"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0000259",
+"concept": "- MONDO:0000259 | asymptomatic dengue | ancestors: dengue disease, Flaviviridae infectious disease, vector-borne disease, primary viral infectious disease",
+"ko": "무증상 뎅기열",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010947",
+"concept": "- MONDO:0010947 | Budd-Chiari syndrome | syn: Budd-Chiari syndrome; Budd-Chiari syndrome, somatic | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder | def: Budd-Chiari syndrome (BCS) is caused by obstruction of hepatic venous outflow involving either the hepatic veins or the terminal segment of the inferior vena cava.",
+"ko": "버드-키아리 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001374",
+"concept": "- MONDO:0001374 | bladder sarcoma | syn: bladder sarcoma; sarcoma of bladder; sarcoma of the bladder; sarcoma of the urinary bladder | ancestors: urinary bladder cancer, soft tissue sarcoma, urinary bladder neoplasm, malignant urinary system neoplasm | def: A malignant mesenchymal cell neoplasm that affects the urinary bladder.",
+"ko": "방광 육종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

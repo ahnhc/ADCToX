@@ -1,0 +1,252 @@
+[
+{
+"id": "MONDO:0021488",
+"concept": "- MONDO:0021488 | benign neoplasm of lacrimal gland | syn: benign lacrimal gland neoplasm; benign lacrimal gland tumor; benign lacrimal gland tumour; benign neoplasm of the lacrimal gland | ancestors: lacrimal gland neoplasm, benign neoplasm of eye, eye neoplasm, disorder of lacrimal gland | def: A benign neoplasm that involves the lacrimal gland.",
+"ko": "눈물샘 양성 신생물",
+"alt": [
+"누선 양성 종양"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021453",
+"concept": "- MONDO:0021453 | benign neoplasm of retina | syn: benign neoplasm of the retina; benign retina neoplasm; benign retina tumor; benign retina tumour | ancestors: retina neoplasm, benign neoplasm of eye, retinal disorder, eye neoplasm | def: A benign neoplasm that involves the retina.",
+"ko": "망막 양성 신생물",
+"alt": [
+"망막 양성 종양"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006982",
+"concept": "- MONDO:0006982 | subacute thyroiditis | syn: De Quervain thyroiditis; De Quervain's thyroiditis; de Quervain's thyroiditis; DeQuervain thyroiditis | ancestors: acute thyroiditis, thyroiditis, acute disease, thyroid gland disorder | def: Self-limited inflammation of the thyroid gland characterized by the presence of multinucleated giant cells. Patients present with neck pain, often associated with fever and dysphagia. The clinical cou...",
+"ko": "아급성 갑상샘염",
+"alt": [
+"드퀘르뱅 갑상선염"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0018201",
+"concept": "- MONDO:0018201 | extragonadal germ cell tumor | syn: extragonadal germ cell neoplasm; extragonadal germ cell neoplasms; extragonadal germ cell tumor; neoplasm of extragonadal germ cell | ancestors: germ cell tumor, neoplasm, neoplastic disease or syndrome, cancer or benign tumor | def: A germ cell tumor arising in an anatomic site other than the testis or ovary (e.g., central nervous system, lung, mediastinum, and retroperitoneum).",
+"ko": "성선외 생식세포 종양",
+"alt": [
+"성선외 생식세포종"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002104",
+"concept": "- MONDO:0002104 | conversion disorder | syn: conversion hysterical neurosis; Functional neurological disorder | ancestors: somatoform disorder, psychiatric disorder, disease by developmental or physiological process, human disease | def: Conversion disorder is a disorder in which a person experiences blindness, paralysis, or other symptoms affecting the nervous system that cannot be explained solely by a physical illness or injury. Sy...",
+"ko": "전환장애",
+"alt": [
+"기능성 신경학적 장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009114",
+"concept": "- MONDO:0009114 | congenital sucrase-isomaltase deficiency | syn: congenital sucrase-isomaltase deficiency; congenital sucrose intolerance; CSID; disaccharide intolerance | ancestors: intestinal disaccharidase deficiency, disorder of carbohydrate transmembrane transport and absorption, malabsorption syndrome, carbohydrate metabolism disease | def: A disorder of carbohydrate absorption and transport caused by autosomal recessive mutation of the SI gene, characterized by malabsorption of sucrose and maltose.",
+"ko": "선천성 수크라제-이소말타제 결핍증",
+"alt": [
+"선천성 설탕 불내성"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013044",
+"concept": "- MONDO:0013044 | atypical hemolytic-uremic syndrome with thrombomodulin anomaly | syn: aHUS with thrombomodulin anomaly; atypical HUS with thrombomodulin anomaly; D-HUS with thrombomodulin anomaly; hemolytic uremic syndrome, atypical, susceptibility to, type 6 | ancestors: atypical hemolytic uremic syndrome with complement gene abnormality, atypical hemolytic-uremic syndrome, syndromic disease, complement deficiency",
+"ko": "트롬보모듈린 이상을 동반한 비정형 용혈요독 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0041259",
+"concept": "- MONDO:0041259 | diphtheritic myocarditis | syn: Corynebacterium diphtheriae caused myocarditis; Corynebacterium diphtheriae myocarditis; diphtheritic myocarditis | ancestors: bacterial myocarditis, diphtheria, myocarditis, primary bacterial infectious disease | def: An myocarditis caused by infection with Corynebacterium diphtheriae.",
+"ko": "디프테리아성 심근염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0004918",
+"concept": "- MONDO:0004918 | central corneal ulcer | ancestors: corneal ulcer, keratitis, ulcer disease, corneal disorder",
+"ko": "중심 각막궤양",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001564",
+"concept": "- MONDO:0001564 | binocular vision disease | syn: binocular vision disorder | ancestors: vision disorder, disorder of visual system, disease by body system or component, human disease | def: Any inability to efficiently utilize and/or sustain binocular vision.",
+"ko": "양안시 질환",
+"alt": [
+"양안시 장애"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0014564",
+"concept": "- MONDO:0014564 | congenital bile acid synthesis defect 5 | syn: ABCD3 congenital bile acid synthesis defect; bile acid synthesis defect, congenital, type 5; CBAS5; congenital bile acid synthesis defect caused by mutation in ABCD3 | ancestors: congenital bile acid synthesis defect, disorder of peroxisomal transporter, steroid inherited metabolic disorder, peroxisomal single enzyme/protein defect | def: Any congenital bile acid synthesis defect in which the cause of the disease is a mutation in the ABCD3 gene.",
+"ko": "선천성 담즙산 합성 결함 5형",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003717",
+"concept": "- MONDO:0003717 | renal pelvis papillary tumor | syn: papillary neoplasm of renal pelvis; papillary neoplasm of the renal pelvis; papillary tumor of renal pelvis; papillary tumor of the renal pelvis | ancestors: papillary urothelial neoplasm, renal pelvis neoplasm, papillary epithelial neoplasm, urothelial neoplasm | def: A papillary tumor originating in the renal pelvis.",
+"ko": "신우 유두상 종양",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020686",
+"concept": "- MONDO:0020686 | acute tonsillitis | syn: acute tonsillitis | ancestors: tonsillitis, acute disease, upper respiratory tract disorder, disorder of pharynx | def: An acute inflammation of the tonsils caused by viruses or bacteria. Signs and symptoms include fever, enlargement of the tonsils, difficulty swallowing, and enlargement of the regional lymph nodes.",
+"ko": "급성 편도염",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0008296",
+"concept": "- MONDO:0008296 | familial porphyria cutanea tarda | syn: hereditary porphyria cutanea tarda; porphyria cutanea tarda type II; porphyria cutanea tarda, susceptibility to | ancestors: porphyria cutanea tarda, UROD-related inherited porphyria, dermatitis, hepatic porphyria | def: An instance of porphyria cutanea tarda that is caused by an inherited modification of the individual's genome.",
+"ko": "가족성 만발성 피부 포르피린증",
+"alt": [],
+"organs": [
+"hepatic",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002944",
+"concept": "- MONDO:0002944 | external ear carcinoma | syn: carcinoma of external Ear; carcinoma of external ear; carcinoma of the external Ear; carcinoma of the external ear | ancestors: head and neck carcinoma, external ear cancer, carcinoma, head and neck cancer | def: A carcinoma that arises from epithelial cells of the external ear",
+"ko": "외이 암종",
+"alt": [
+"외이암"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001378",
+"concept": "- MONDO:0001378 | urachus cancer | syn: cancer of urachus; malignant neoplasm of urachus; malignant tumour of urachus; malignant urachus neoplasm | ancestors: urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder | def: A malignant neoplasm involving the urachus.",
+"ko": "요막관암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005664",
+"concept": "- MONDO:0005664 | bartonellosis | syn: Bartonella caused disease or disorder; Bartonella disease or disorder; Bartonella infection; Rochalimaea infection (disorder) | ancestors: primary bacterial infectious disease, Bartonellaceae infectious disease, bacterial infectious disease, gram-negative bacterial infections | def: An infectious disease produced by bacteria of the genus Bartonella.",
+"ko": "바르토넬라증",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0005677",
+"concept": "- MONDO:0005677 | Rickettsia conorii infectious disease | ancestors: spotted fever, Rickettsiaceae infectious disease, vector-borne disease, Rickettsiosis",
+"ko": "리케치아 코노리 감염병",
+"alt": [
+"지중해 발진열"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016595",
+"concept": "- MONDO:0016595 | inhalational anthrax | syn: inhalation anthrax disease; pulmonary anthrax; respiratory anthrax; respiratory anthrax disease | ancestors: anthrax infection, primary bacterial infectious disease, Bacillaceae infectious disease, bacterial infectious disease | def: A rare acute systemic infection caused by the inhalation of Bacillus anthracis spores (e.g. through infected animal products, bioterrorism) and characterized by an initial stage where patients present...",
+"ko": "흡입 탄저",
+"alt": [
+"폐탄저"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0024303",
+"concept": "- MONDO:0024303 | external hirudiniasis | ancestors: hirudiniasis, parasitic ectoparasitic infectious disease, infectious disease, parasitic skin disorder | def: The attachment of leeches to the skin. After the leeches drop off, bleeding may continue as a result of the action of hirudin. Bites may become infected or ulcerate.",
+"ko": "체외 거머리증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+}
+]

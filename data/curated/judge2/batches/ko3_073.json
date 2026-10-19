@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0012978",
+"concept": "- MONDO:0012978 | primary ciliary dyskinesia 11 | syn: CILD11; ciliary dyskinesia, primary, type 11; primary ciliary dyskinesia 11; primary ciliary dyskinesia caused by mutation in RSPH4A | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the RSPH4A gene.",
+"ko": "일차섬모운동이상증 11형",
+"alt": [
+"원발성 섬모운동이상증 11형"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003960",
+"concept": "- MONDO:0003960 | pulmonary large cell neuroendocrine carcinoma | syn: large cell lung carcinoma with neuroendocrine differentiation; large cell lung neuroendocrine carcinoma; large cell neuroendocrine carcinoma of lung; large cell neuroendocrine carcinoma of the lung | ancestors: lung large cell carcinoma, large cell neuroendocrine carcinoma, lung neuroendocrine neoplasm, large cell carcinoma | def: A large cell neuroendocrine carcinoma that involves the lung(s).",
+"ko": "폐 대세포 신경내분비암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005413",
+"concept": "- MONDO:0005413 | cystic fibrosis associated meconium ileus | syn: cystic fibrosis associated meconium ileum | ancestors: meconium ileus, perinatal disease, ileus, disease by developmental or physiological process | def: Cystic fibrosis associated meconium ileum is a thickening and congestion of the meconium in the ileum in newborns, often the first sign of cystic fibrosis. In cystic fibrosis, the meconium can form a ...",
+"ko": "낭성 섬유증 관련 태변 장폐색",
+"alt": [
+"낭성섬유증 관련 태변성 장폐색"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007726",
+"concept": "- MONDO:0007726 | hip dysplasia, Beukes type | syn: Beukes familial hip dysplasia; BFHD; Cilliers-Beighton syndrome; hip dysplasia, Beukes type | ancestors: spondyloepiphyseal dysplasia, osteochondrodysplasia, bone development disease, skeletal dysplasia | def: Beukes familial hip dysplasia (BFHD) is a primary bone dysplasia, characterized by premature degenerative arthropathy of the hip. The disease presents with hip joint discomfort/pain and gait disturban...",
+"ko": "고관절 이형성증 뵈케스형",
+"alt": [
+"실리어스-베이턴 증후군"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016489",
+"concept": "- MONDO:0016489 | delta-beta-thalassemia | ancestors: beta-thalassemia and related diseases, anemia, inherited hemoglobinopathy, hematologic disorder | def: Delta-beta-thalassemia is a form of beta-thalassemia characterized by decreased or absent synthesis of the delta- and beta-globin chains with a compensatory increase in expression of fetal gamma-chain...",
+"ko": "델타-베타지중해빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017124",
+"concept": "- MONDO:0017124 | noma | syn: cancrum oris; gangrenous stomatitis | ancestors: ulcerative stomatitis, bacterial infectious disease, stomatitis, infectious disease | def: Noma is a gangrenous disease that causes severe destruction of the soft and osseous tissues of the face.",
+"ko": "노마",
+"alt": [
+"괴저성 구내염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0024280",
+"concept": "- MONDO:0024280 | polyarticular arthritis | syn: polyarthritis; polyarticular arthritis | ancestors: arthritic joint disease, bone inflammation disease, arthropathy, inflammatory disease | def: An arthritis affecting five or more separate joints.",
+"ko": "다발관절염",
+"alt": [
+"다관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0011996",
+"concept": "- MONDO:0011996 | chronic myeloid leukemia | syn: BCR-ABL Positive chronic myelogenous leukaemia; BCR-ABL Positive chronic myelogenous leukemia; chronic granulocytic leukemia; chronic myelocytic leukaemia | ancestors: myeloid leukemia, hereditary disorder of connective tissue, leukemia, myeloproliferative neoplasm | def: A chronic myeloproliferative neoplasm characterized by the expression of the BCR-ABL1 fusion gene. It presents with neutrophilic leukocytosis. It can appear at any age, but it mostly affects middle ag...",
+"ko": "만성 골수성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001658",
+"concept": "- MONDO:0001658 | nontoxic goiter | syn: euthyroid goiter; euthyroid goitre; non-toxic goiter; non-toxic simple goiter | ancestors: goiter, thyroid gland disorder, endocrine system disorder, disease by body system or component | def: Sporadic enlargement of the thyroid gland that is not associated with changes in thyroid function or malignancy.",
+"ko": "비독성 갑상샘종",
+"alt": [
+"단순 갑상샘종"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0004830",
+"concept": "- MONDO:0004830 | fasciitis | syn: fascia inflammation; fasciitis; fasciitis (disease); Fascitis | ancestors: musculoskeletal system disorder, connective tissue disorder, inflammatory disease, disease by body system or component | def: Inflammation process in fascia.",
+"ko": "근막염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011786",
+"concept": "- MONDO:0011786 | allergic rhinitis | syn: allergic form of rhinitis; allergic rhinitis | ancestors: allergic respiratory disease, rhinitis, respiratory system disorder, allergic disease | def: Inflammation of the nasal mucous membranes caused by an IgE-mediated response to external allergens. The inflammation may also involve the mucous membranes of the sinuses, eyes, middle ear, and pharyn...",
+"ko": "알레르기비염",
+"alt": [
+"알레르기성 비염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0004357",
+"concept": "- MONDO:0004357 | carcinoma of supraglottis | syn: cancer of supraglottis; cancer of the supraglottis; carcinoma of supraglottic part of larynx; carcinoma of supraglottis | ancestors: supraglottis cancer, laryngeal carcinoma, larynx cancer, supraglottis neoplasm | def: A carcinoma of the larynx that arises from the supraglottic area.",
+"ko": "성문상부 암종",
+"alt": [
+"성문상부암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009872",
+"concept": "- MONDO:0009872 | Bjornstad syndrome | syn: Bjornstad syndrome; Björnstad Syndrome; deafness-pili torti-hypogonadism syndrome | ancestors: autosomal recessive disease, mitochondrial disease, autosomal genetic disease, disease by developmental or physiological process | def: Bjrnstad syndrome is characterized by congenital sensorineural hearing loss and pili torti. Less than fifty cases have been reported so far. The hearing loss usually becomes evident very early in life...",
+"ko": "비외른스타드 증후군",
+"alt": [],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021451",
+"concept": "- MONDO:0021451 | benign neoplasm of brain | syn: benign brain neoplasm; benign brain tumor; benign brain tumour; benign neoplasm of the brain | ancestors: central nervous system organ benign neoplasm, brain neoplasm, nervous system benign neoplasm, central nervous system neoplasm | def: A benign neoplasm that involves the brain.",
+"ko": "뇌 양성 신생물",
+"alt": [
+"뇌 양성 종양"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000987",
+"concept": "- MONDO:0000987 | cholesterolosis of gallbladder | syn: strawberry gallbladder | ancestors: gallbladder disorder, hepatobiliary disorder, digestive system disorder, disease by body system or component | def: A disorder characterized by a change in the gallbladder wall due to excess cholesterol.",
+"ko": "담낭 콜레스테롤증",
+"alt": [
+"딸기 담낭"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001876",
+"concept": "- MONDO:0001876 | renal artery atheroma | syn: atherosclerosis of renal artery; renal artery atherosclerosis | ancestors: aortic atherosclerosis, renal artery disease, atherosclerosis, aortic disorder | def: A atherosclerosis that involves the renal artery.",
+"ko": "신동맥 죽종",
+"alt": [
+"신동맥 죽상경화증"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0033667",
+"concept": "- MONDO:0033667 | Delpire-McNeill syndrome | syn: DELMNES; SLC12A2-related autosomal dominant infantile-developmental delay-intellectual disability-sensorineural deafness syndrome | ancestors: autosomal dominant disease, Mendelian neurodevelopmental disorder, autosomal genetic disease, hereditary neurological disease | def: Any neurodevelopmental disorder in which the cause of the disease is a mutation in the SLC12A2 gene. It is characterized by global developmental delay, mild to moderate intellectual disability, delaye...",
+"ko": "델피르-맥닐 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019390",
+"concept": "- MONDO:0019390 | Susac syndrome | syn: RED-M; Retinocochleocerebral vasculopathy; retinopathy-encephalopathy-deafness associated with microangiopathy; SICRET syndrome | ancestors: syndromic disease, autoimmune disease, disease by body system or component, immune system disorder | def: Susac syndrome (SS) is a rare disorder characterized by the triad of central nervous system (CNS) dysfunction, branch retinal artery occlusions (BRAOs) and sensorineural hearing loss (SNHL). It is pre...",
+"ko": "수삭 증후군",
+"alt": [
+"망막와우뇌혈관병증"
+],
+"organs": [
+"neurologic",
+"ocular",
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024349",
+"concept": "- MONDO:0024349 | pityriasis alba | ancestors: exanthem, skin disorder, integumentary system disorder, disease by body system or component | def: A prevalent and benign dermatological condition that predominantly affects children and adolescents. The name \\\"pityriasis alba\\\" derives from its appearance, where \\\"pityriasis\\\" denotes the fine sca...",
+"ko": "백색 비강진",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:1010100",
+"concept": "- MONDO:1010100 | myxedema coma | ancestors: hypothyroidism, thyroid gland disorder, endocrine system disorder, disease by body system or component | def: A rare complication of hypothyroidism characterized by altered mental status, hypothermia, and symptoms related to the slowing of other organ systems.",
+"ko": "점액부종 혼수",
+"alt": [
+"점액수종 혼수"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+}
+]

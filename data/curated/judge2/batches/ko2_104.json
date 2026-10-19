@@ -1,0 +1,235 @@
+[
+{
+"id": "MONDO:0005469",
+"concept": "- MONDO:0005469 | orthostatic hypotension | syn: orthostatic hypotension; orthostatic hypotension (disease) | ancestors: hypotensive disorder, arterial disorder, vascular disorder, cardiovascular disorder | def: Sudden fall of the blood pressure of at least 20/10 mm Hg when a person stands up.",
+"ko": "기립저혈압",
+"alt": [
+"기립성 저혈압"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019127",
+"concept": "- MONDO:0019127 | polymyositis | syn: PM; polymyositis | ancestors: acquired idiopathic inflammatory myopathy, acquired skeletal muscle disease, idiopathic inflammatory myopathy, idiopathic disease | def: A rare idiopathic inflammatory myopathy characterized by symmetric proximal muscle weakness and elevated muscle enzymes.",
+"ko": "다발근염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0017773",
+"concept": "- MONDO:0017773 | hypoalphalipoproteinemia | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A metabolic disorder characterized by deficiency of high density (alpha) lipoprotein in the blood.",
+"ko": "저알파지단백혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002305",
+"concept": "- MONDO:0002305 | thrombophilia | syn: excessive blood clotting; hypercoagulability; hypercoagulability state; hypercoagulable | ancestors: blood coagulation disease, hematologic disorder, disease by body system or component, human disease | def: A condition characterized by an abnormally high level of thrombi. Causes include thrombotic thrombocytopenic purpura, disseminated intravascular coagulation, bone marrow disorders, and antiphospholipi...",
+"ko": "혈전성향증",
+"alt": [
+"응고항진증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001220",
+"concept": "- MONDO:0001220 | hypoparathyroidism | ancestors: parathyroid gland disorder, endocrine system disorder, disease by body system or component, human disease | def: Hypoparathyroidism is an endocrine disorder in which the parathyroid glands in the neck do not produce enough parathyroid hormone (PTH). Common signs and symptoms include abdominal pain, brittle nails...",
+"ko": "부갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0024318",
+"concept": "- MONDO:0024318 | viral infection of central nervous system | syn: viral infection of central nervous system | ancestors: viral infectious disease, central nervous system infectious disorder, infectious disease, central nervous system disorder",
+"ko": "중추신경계 바이러스 감염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010793",
+"concept": "- MONDO:0010793 | nephropathy, chronic tubulointerstitial | syn: nephropathy, chronic tubulointerstitial | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "만성 세뇨관간질 신병증",
+"alt": [
+"만성 세뇨관간질성 신장병증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019037",
+"concept": "- MONDO:0019037 | progressive supranuclear palsy | syn: progressive supranuclear ophthalmoplegia; PSP syndrome; Steele-Richardson-Olszewski disease; Steele-Richardson-Olszewski syndrome | ancestors: syndromic disease, movement disorder, supranuclear oculomotor palsy, inherited neurodegenerative disorder | def: A rare late-onset neurodegenerative disease characterized by supranuclear gaze palsy, postural instability, progressive rigidity, and mild dementia.",
+"ko": "진행성 핵상 마비",
+"alt": [
+"진행성 핵상 안근마비"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007361",
+"concept": "- MONDO:0007361 | C1 inhibitor deficiency | ancestors: classic complement early component deficiency, complement deficiency, inborn error of immunity, immunodeficiency disease",
+"ko": "C1 억제인자 결핍증",
+"alt": [
+"유전혈관부종"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019211",
+"concept": "- MONDO:0019211 | isolated congenital anonychia | syn: isolated anonychia | ancestors: inherited isolated nail anomaly, nail disorder, hereditary disease, integumentary system disorder | def: Isolated congenital anonychia is characterized by nail abnormalities ranging from onychodystrophy (dystrophic nails) to anonychia (absence of nails). Onychodystrophy-anonychia has been described in at...",
+"ko": "단독 선천성 손발톱 결손증",
+"alt": [
+"단독 무조증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001787",
+"concept": "- MONDO:0001787 | hepatic infarction | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder",
+"ko": "간경색",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018963",
+"concept": "- MONDO:0018963 | hereditary methemoglobinemia | syn: autosomal recessive methemoglobinemia; congenital methemoglobinemia; hereditary methemoglobinemia | ancestors: methemoglobinemia, anemia, inherited hemoglobinopathy, hemoglobinopathy | def: Methemoglobinemia inherited in an autosomal recessive pattern. It is caused by deficiency of the enzyme NADH methemoglobin reductase or the presence of abnormal hemoglobin M. It presents with cyanosis...",
+"ko": "유전성 메트헤모글로빈혈증",
+"alt": [
+"선천성 메트헤모글로빈혈증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005870",
+"concept": "- MONDO:0005870 | necatoriasis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A disorder caused by an infection with hookworms of the genus Necator, which settle in the host's small intestine, and cause abdominal pain, diarrhea, weight loss, and anemia.",
+"ko": "아메리카구충증",
+"alt": [
+"네카토르증"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019454",
+"concept": "- MONDO:0019454 | myelodysplastic syndrome with excess blasts | syn: MDS-EB; myelodysplastic syndrome with Excess blasts; RAEB; refractory Anaemia with an Excess of blasts | ancestors: myelodysplastic syndrome, hematopoietic and lymphoid cell neoplasm, myeloid hemopathy, neoplastic syndrome | def: A myelodysplastic syndrome characterized by the presence of 5-19% myeloblasts in the bone marrow or 2-19% blasts in the peripheral blood. It includes two categories: myelodysplastic syndrome with exce...",
+"ko": "과잉 모세포를 동반한 골수형성이상증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005975",
+"concept": "- MONDO:0005975 | suppurative otitis media | ancestors: otitis media, middle ear disorder, inflammatory disease, auditory system disorder | def: Inflammation of the middle ear with purulent discharge.",
+"ko": "화농성 중이염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001198",
+"concept": "- MONDO:0001198 | acquired thrombocytopenia | syn: acquired thrombocytopenia; secondary thrombocytopenia | ancestors: thrombocytopenia, blood platelet disease, hematologic disorder, disease by body system or component | def: An instance of thrombocytopenia that is acquired during the lifetime of the individual.",
+"ko": "후천성 혈소판감소증",
+"alt": [
+"이차성 혈소판감소증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021452",
+"concept": "- MONDO:0021452 | benign neoplasm of cornea | syn: benign cornea neoplasm; benign cornea tumor; benign cornea tumour; benign corneal neoplasm | ancestors: cornea neoplasm, benign neoplasm of eye, corneal disorder, eye neoplasm | def: A benign neoplasm that involves the cornea.",
+"ko": "각막 양성 신생물",
+"alt": [
+"각막 양성 종양"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001116",
+"concept": "- MONDO:0001116 | mesenteric lymphadenitis | syn: lymphadenitis (disease) of mesentery; mesenteric adenitis; mesenteric lymphadenitis; mesentery lymphadenitis (disease) | ancestors: lymphadenitis, lymph node disorder, inflammatory disease, lymphatic system disorder | def: Inflammation of the mesenteric lymph nodes.",
+"ko": "장간막 림프절염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004607",
+"concept": "- MONDO:0004607 | vallecula cancer | syn: cancer of epiglottic vallecula; epiglottic vallecula cancer; malignant epiglottic vallecula neoplasm; malignant neoplasm of epiglottic vallecula | ancestors: oropharynx cancer, pharynx cancer, neoplasm of oropharynx, respiratory system cancer | def: A cancer involving a epiglottic vallecula.",
+"ko": "후두개곡 암",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002412",
+"concept": "- MONDO:0002412 | disorder of glycogen metabolism | syn: glycogen storage disease; glycogen storage disorder; glycogenoses; glycogenosis | ancestors: inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism, carbohydrate metabolism disease | def: An inherited metabolic disorder characterized either by defects in glycogen synthesis or defects in the breaking down of glycogen. It results either in the creation of abnormal forms of glycogen or ac...",
+"ko": "글리코겐 대사 질환",
+"alt": [
+"당원 저장병"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+}
+]

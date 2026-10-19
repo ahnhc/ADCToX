@@ -1,0 +1,233 @@
+[
+{
+"id": "MONDO:0004187",
+"concept": "- MONDO:0004187 | nodular fasciitis | syn: nodular fasciitis; pseudosarcomatous fasciitis; pseudosarcomatous fibromatosis | ancestors: fasciitis, fibroblastic neoplasm, soft tissue neoplasm, subcutaneous tissue disorder | def: A self-limiting, rapidly growing, non-encapsulated benign neoplasm that arises from the soft tissues. It is characterized by the presence of plump spindle-shaped fibroblasts, multinucleated osteoclast...",
+"ko": "결절성 근막염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0006898",
+"concept": "- MONDO:0006898 | periarthritis | ancestors: bursitis, arthritic joint disease, arthropathy, inflammatory disease | def: Inflammation of the tissues around a joint. (Dorland, 27th ed)",
+"ko": "관절주위염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018938",
+"concept": "- MONDO:0018938 | mucopolysaccharidosis type 4 | syn: eccentro-osteochondrodysplasia; eccentrochondrodysplasia; eccentroosteochondrodysplasia; Morquio disease | ancestors: syndromic disease, mucopolysaccharidosis, disease by body system or component, lysosomal storage disease | def: A lysosomal storage disease belonging to the group of mucopolysaccharidoses, and characterized by spondylo-epiphyso-metaphyseal dysplasia. It exists in two forms, A and B.",
+"ko": "점액다당류증 4형",
+"alt": [
+"모르키오 증후군"
+],
+"organs": [
+"cardiovascular",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015375",
+"concept": "- MONDO:0015375 | orofaciodigital syndrome | syn: OFD; Oral-Facial-Digital Syndrome; oral-facial-digital syndrome; orofaciodigital syndrome | ancestors: hereditary disease, oromandibular-limb anomalies syndrome, disease of genetic or genomic mechanism, syndromic disease | def: Two syndromes of oral, facial, and digital malformations. Type I (Papillon-Leage and Psaume syndrome, Gorlin-Psaume syndrome) is inherited as an X-linked dominant trait and is found only in females an...",
+"ko": "구강안면수지 증후군",
+"alt": [],
+"organs": [
+"renal",
+"gastrointestinal",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0010298",
+"concept": "- MONDO:0010298 | Lesch-Nyhan syndrome | syn: complete hypoxanthine-guanine phosphoribosyltransferase deficiency; deficiency of IMP pyrophosphorylase; HPRT complete deficiency; HPRT deficiency grade IV | ancestors: syndromic disease, hypoxanthine-guanine phosphoribosyltransferase deficiency, disease by body system or component, inborn disorder of purine metabolism | def: Lesch-Nyhan syndrome (LNS) is the most severe form of hypoxanthine-guanine phosphoribosyltransferase (HPRT) deficiency, a hereditary disorder of purine metabolism, and is associated with uric acid ove...",
+"ko": "레쉬-니한 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006640",
+"concept": "- MONDO:0006640 | adrenal gland hyperfunction | syn: adrenal gland hyperfunction; hyperadrenalism; hypercortisolemia | ancestors: adrenal cortex disorder, adrenal gland disorder, endocrine system disorder, disease by body system or component | def: Excess production of adrenal cortex hormones.",
+"ko": "부신 기능항진증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001113",
+"concept": "- MONDO:0001113 | Fiedler's myocarditis | syn: idiopathic myocarditis | ancestors: myocarditis, intrinsic cardiomyopathy, inflammation of heart layer, myocardial disorder",
+"ko": "피들러 심근염",
+"alt": [
+"특발성 심근염"
+],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005649",
+"concept": "- MONDO:0005649 | appendicitis | syn: inflammation of vermiform appendix; vermiform appendix inflammation | ancestors: cecal disorder, gastroenteritis, disorder of appendix, colonic disorder | def: Acute inflammation of the vermiform appendix.",
+"ko": "충수염",
+"alt": [
+"맹장염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0000890",
+"concept": "- MONDO:0000890 | Zika virus congenital syndrome | syn: congenital Zika syndrome; congenital Zika virus infection | ancestors: viral infectious disease, post-infectious syndrome, post-viral disorder, vector-borne disease | def: A congenital birth syndrome that arises from materal Zika infection.",
+"ko": "선천성 지카바이러스 증후군",
+"alt": [
+"선천성 지카 증후군"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001928",
+"concept": "- MONDO:0001928 | suppurative cholangitis | syn: suppurative cholangitis | ancestors: cholangitis, non-neoplastic bile duct disorder, inflammatory disease, bile duct disorder | def: Cholangitis that is characterized by pyogenic organisms.",
+"ko": "화농성 담관염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019173",
+"concept": "- MONDO:0019173 | rabies | syn: lyssa | ancestors: viral infectious disease, infectious disorder of the nervous system, infectious disease, nervous system disorder | def: Rabies is a viral zoonosis leading to a fatal encephalopathy if not treated.",
+"ko": "광견병",
+"alt": [
+"공수병"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0003210",
+"concept": "- MONDO:0003210 | intrahepatic cholangiocarcinoma | syn: cholangiocarcinoma, intrahepatic, malignant; ICC; intrahepatic bile duct cancer (cholangiocarcinoma); intrahepatic bile duct carcinoma | ancestors: intrahepatic bile duct cancer, carcinoma of liver and intrahepatic biliary tract, cholangiocarcinoma, liver cancer | def: A carcinoma that arises from the intrahepatic bile duct epithelium in any site of the intrahepatic biliary tree. Grossly, the malignant lesions are solid, nodular, and grayish. Morphologically, the va...",
+"ko": "간내 담관암종",
+"alt": [
+"간내 담관암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008183",
+"concept": "- MONDO:0008183 | annular pancreas | ancestors: pancreas disorder, digestive system disorder, endocrine system disorder, disease by body system or component | def: Annular pancreas is a distinct form of duodenal atresia in which the head of the pancreas forms a ring around the second portion of the duodenum.",
+"ko": "윤상 췌장",
+"alt": [
+"환상 췌장"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000284",
+"concept": "- MONDO:0000284 | Hantavirus hemorrhagic fever with renal syndrome, Puumala virus type | syn: nephropathis epidemica | ancestors: hantavirus hemorrhagic fever with renal syndrome, vector-borne disease, renal infectious disease, hantavirus infectious disease",
+"ko": "한타바이러스 신증후군 출혈열, 푸말라바이러스형",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001722",
+"concept": "- MONDO:0001722 | central pterygium | ancestors: progressive peripheral pterygium, conjunctival pterygium, conjunctival degeneration, pterygium",
+"ko": "중심성 익상편",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009476",
+"concept": "- MONDO:0009476 | atresia of small intestine | syn: apple peel syndrome; atresia of the small intestine; congenital small intestine atresia; intestinal atresia type IIIb | ancestors: disorder of development or morphogenesis, small intestine disorder, disease by developmental or physiological process, intestinal disorder | def: Atresia of small intestine is a special form of intestinal atresia with absence of mesentery, which is most likely due to an intrauterine intestinal vascular accident. Newborns are usually preterm inf...",
+"ko": "소장 폐쇄증",
+"alt": [
+"사과껍질 증후군"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0002202",
+"concept": "- MONDO:0002202 | outlet dysfunction constipation | ancestors: constipation disorder, bowel dysfunction, intestinal disorder, digestive system disorder",
+"ko": "출구 기능장애 변비",
+"alt": [
+"출구폐쇄형 변비"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007127",
+"concept": "- MONDO:0007127 | diffuse idiopathic skeletal hyperostosis | syn: ankylosing vertebral hyperostosis; diffuse idiopathic skeletal hyperostosis; DISH; dish | ancestors: hyperostosis, hereditary disease, idiopathic disease, bone remodeling disease | def: This syndrome is characterized by the association of ankylosing vertebral hyperostosis with hyperkeratosis of the soles and palms.",
+"ko": "미만성 특발성 골격 과골증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001314",
+"concept": "- MONDO:0001314 | chondrocalcinosis | syn: calcium pyrophosphate deposition disease; pseudogout | ancestors: metabolic disease, arthritic joint disease, metabolic bone disorder, disease by developmental or physiological process | def: An acute episode of pain, swelling, and redness, sometimes associated with fever. It is caused by the deposition of calcium pyrophosphate crystals in the joints.",
+"ko": "연골석회화증",
+"alt": [
+"가성통풍"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 15
+},
+{
+"id": "MONDO:0008533",
+"concept": "- MONDO:0008533 | teeth, supernumerary | syn: teeth, supernumerary | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease | def: An extra tooth, erupted or unerupted, resembling or unlike the other teeth in the group to which it belongs. Its presence may cause malposition of adjacent teeth or prevent their eruption.",
+"ko": "과잉치",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 6
+}
+]

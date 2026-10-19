@@ -1,0 +1,240 @@
+[
+{
+"id": "MONDO:0004922",
+"concept": "- MONDO:0004922 | developmental coordination disorder | syn: clumsy child syndrome; development coordination disorder; developmental dyspraxia | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: A disorder characterized by an impairment in the development of an individual's motor coordination skills; this impairment in motor development is not due to a medical condition.",
+"ko": "발달성 협응 장애",
+"alt": [
+"서투른 아이 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0100197",
+"concept": "- MONDO:0100197 | parainfluenza infectious disease | syn: HPIV infectious disorder; parainfluenza (disorder); parainfluenza infectious disorder | ancestors: Paramyxoviridae infectious disease, Mononegavirales infectious disease, primary viral infectious disease, viral infectious disease | def: A disease caused by infection with parainfluenza virus. There are four serotypes which cause respiratory illnesses in children and adults.",
+"ko": "파라인플루엔자 감염증",
+"alt": [
+"파라인플루엔자 감염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004706",
+"concept": "- MONDO:0004706 | discoid lupus erythematosus of eyelid | ancestors: noninfectious dermatoses of eyelid, blepharitis, eyelid disorder, inflammatory disease",
+"ko": "눈꺼풀 원판상 홍반루푸스",
+"alt": [
+"눈꺼풀 원판상 루푸스"
+],
+"organs": [
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001123",
+"concept": "- MONDO:0001123 | chronic sphenoidal sinusitis | syn: chronic sphenoid sinusitis; sphenoid sinusitis, chronic | ancestors: sphenoid sinusitis, chronic rhinosinusitis, sinusitis, disorder of facial skeleton | def: Inflammation of the sphenoid sinus that typically lasts beyond eight weeks. It is caused by infections, allergies, and the presence of sinus polyps or a deviated septum. Signs and symptoms include hea...",
+"ko": "만성 접형동염",
+"alt": [
+"만성 나비굴염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009852",
+"concept": "- MONDO:0009852 | hereditary intrinsic factor deficiency | syn: congenital intrinsic factor deficiency; congenital pernicious anaemia; congenital pernicious anemia; gastric intrinsic factor deficiency | ancestors: hereditary anemia, inborn disorder of cobalamin metabolism and transport, deficiency anemia, hereditary disease | def: Congenital intrinsic factor deficiency (IFD) is a rare disorder of vitamin B12 (cobalamin) absorption that is characterized by megaloblastic anemia and neurological abnormalities.",
+"ko": "유전성 내인자 결핍증",
+"alt": [
+"선천성 내인자 결핍증"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005001",
+"concept": "- MONDO:0005001 | chronic gastritis | syn: chronic gastritis; chronic gastritis (disease); gastritis (disease), chronic | ancestors: gastritis, stomach disorder, inflammatory disease, digestive system disorder | def: Inflammation of the stomach that is chronic in nature.",
+"ko": "만성 위염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001580",
+"concept": "- MONDO:0001580 | lacrimal duct cancer | syn: cancer of lacrimal drainage system; lacrimal drainage system cancer; malignant lacrimal drainage system neoplasm; malignant lacrimal duct neoplasm | ancestors: lacrimal system cancer, lacrimal apparatus disorder, ocular cancer, eye adnexa disorder | def: A primary or metastatic malignant neoplasm affecting the lacrimal duct.",
+"ko": "눈물관암",
+"alt": [
+"누도암"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004802",
+"concept": "- MONDO:0004802 | pulmonary eosinophilia | ancestors: hypereosinophilic syndrome, syndromic disease, non-familial restrictive cardiomyopathy, eosinophil disorder | def: A condition characterized by infiltration of the lung with eosinophils due to inflammation or other disease processes. Major eosinophilic lung diseases are the eosinophilic pneumonias caused by infect...",
+"ko": "폐 호산구증가증",
+"alt": [
+"폐호산구증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002471",
+"concept": "- MONDO:0002471 | bursitis | syn: inflammation of synovial bursa; synovial bursa inflammation | ancestors: arthropathy, inflammatory disease, synovial bursa disorder, skeletal system disorder | def: Inflammation or irritation of a synovial bursa, the fibrous sac that acts as a cushion between moving structures of bones, muscles, tendons or skin.",
+"ko": "윤활주머니염",
+"alt": [
+"점액낭염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0006941",
+"concept": "- MONDO:0006941 | rat-bite fever | syn: spirillosis; Streptobacillosis | ancestors: bacterial infectious disease, vector-borne disease, infectious disease, disease of primarily extrinsic mechanism | def: An infectious disease that is caused transmitted by the bite of a rat. Two species of bacteria can cause the infection: Streptobacillus moniliformis and Spirillum minus.",
+"ko": "서교열",
+"alt": [
+"쥐물림열"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0017705",
+"concept": "- MONDO:0017705 | congenital pulmonary venous return anomaly | syn: congenital pulmonary venous connection anomaly | ancestors: congenital pulmonary veins anomaly, congenital heart disease, heart disorder, congenital anomaly of cardiovascular system | def: Congenital pulmonary venous return anomaly is a cardiac malformation where some or all of the pulmonary veins drain into the right atrium or the systemic veins, with or without the presence of pulmona...",
+"ko": "선천성 폐정맥 환류 이상",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005116",
+"concept": "- MONDO:0005116 | Whipple disease | syn: intestinal lipodystrophy; intestinal lipophagic granulomatosis; secondary non-tropical sprue; Tropheryma whipplei caused disease or disorder | ancestors: intestinal disorder, bacterial infectious disease, digestive system infectious disorder, digestive system disorder | def: A systemic infection caused by the Gram-positive bacterium Tropheryma whipplei. It affects the small intestine resulting in malabsorption. Other sites or systems affected by the infection are the join...",
+"ko": "휘플병",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001328",
+"concept": "- MONDO:0001328 | thyroid hormone resistance syndrome | syn: generalised thyroid hormone resistance | ancestors: inherited thyroid metabolism disease, thyroid gland disorder, inborn errors of metabolism, endocrine system disorder | def: An inherited autosomal recessive trait, characterized by peripheral resistance to thyroid hormones and the resulting elevation in serum levels of thyroxine and triiodothyronine.",
+"ko": "갑상선호르몬 저항 증후군",
+"alt": [
+"갑상선호르몬 불응증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019324",
+"concept": "- MONDO:0019324 | pemphigus foliaceus | ancestors: pemphigus, autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease | def: Pemphigus foliaceous is a rare superficial pemphigus disease characterized by multiple, pruritic, scaly, crusted cutaneous erosions, with flaky circumscribed patches, localized mostly on the face, sca...",
+"ko": "낙엽상 천포창",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019804",
+"concept": "- MONDO:0019804 | congenital tracheomalacia | syn: congenital major airway collapse; Congenital Tracheomalacia; congenital tracheomalacia; tracheomalacia, congenital | ancestors: tracheal disorder, otorhinolaryngologic disease, lower respiratory tract disorder, upper respiratory tract disorder | def: Congenital tracheomalacia is a rare condition where the trachea is soft and flexible causing the tracheal wall to collapse when exhaling, coughing or crying, that usually presents in infancy, and that...",
+"ko": "선천성 기관연화증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009813",
+"concept": "- MONDO:0009813 | chronic recurrent multifocal osteomyelitis | syn: chronic multifocal osteomyelitis; chronic recurrent multifocal osteomyelitis; chronic recurrent multifocal osteomyelitis (disease); CNO/CRMO | ancestors: osteomyelitis, autoinflammatory syndrome, hereditary disorder of connective tissue, bone inflammation disease | def: Chronic non bacterial osteomyelitis (CNO), also known as chronic recurrent multifocal osteomyelitis (CRMO), is a chronic autoinflammatory syndrome that is characterized by multiple foci of painful swe...",
+"ko": "만성 재발성 다발성 골수염",
+"alt": [
+"만성 다발성 골수염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001298",
+"concept": "- MONDO:0001298 | congenital mitral valve insufficiency | syn: congenital insufficiency of mitral valve; congenital mitral insufficiency | ancestors: vascular insufficiency disorder, mitral valve insufficiency, vascular disorder, mitral valve disorder | def: Mitral valve insufficiency that is present at birth.",
+"ko": "선천성 승모판 폐쇄부전",
+"alt": [
+"선천성 승모판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002265",
+"concept": "- MONDO:0002265 | stereotypic movement disorder | syn: stereotyped repetitive movements NOS (finding) | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: Motor behavior that is repetitive, often seemingly driven, and nonfunctional. This behavior markedly interferes with normal activities or results in severe bodily self-injury. The behavior is not due ...",
+"ko": "상동증적 운동장애",
+"alt": [
+"상동증 운동 장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:1010112",
+"concept": "- MONDO:1010112 | isolated short stature | ancestors: disorder of development or morphogenesis, disease by developmental or physiological process, human disease, disease | def: A disease characterized by the height of an individual two standard deviations below the corresponding mean height for a given age, sex and population group with no known cause.",
+"ko": "특발성 저신장",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004698",
+"concept": "- MONDO:0004698 | intestine carcinoma in situ | syn: carcinoma in situ of intestine; intestine in situ carcinoma; stage 0 intestine carcinoma | ancestors: in situ carcinoma, intestinal cancer, digestive system carcinoma, carcinoma | def: A carcinoma in situ involving a intestine.",
+"ko": "장 상피내암종",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+}
+]

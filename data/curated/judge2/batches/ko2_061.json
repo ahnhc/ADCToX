@@ -1,0 +1,238 @@
+[
+{
+"id": "MONDO:0003689",
+"concept": "- MONDO:0003689 | familial hemolytic anemia | syn: congenital hemolytic anemia; hereditary hemolytic anemia | ancestors: hemolytic anemia, hereditary disease, normocytic anemia, disease of genetic or genomic mechanism | def: A congenital hemolytic anemia caused by defects of the erythrocyte membrane, enzyme deficiencies, or hemoglobinopathies.",
+"ko": "가족성 용혈성 빈혈",
+"alt": [
+"선천성 용혈성 빈혈",
+"유전성 용혈성 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0017416",
+"concept": "- MONDO:0017416 | postpoliomyelitis syndrome | syn: Post Polio Syndrome; postpolio sequelae; postpolio syndrome; postpoliomyelitic syndrome | ancestors: poliomyelitis, myelitis, anterior horn disorder, acquired motor neuron disease | def: Postpoliomyelitis syndrome (PPS) is a neurologic disorder characterized by the development of new neuromuscular symptoms such as progressive muscular weakness or abnormal muscle fatigability occurring...",
+"ko": "소아마비후 증후군",
+"alt": [
+"폴리오후 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0003572",
+"concept": "- MONDO:0003572 | nasopharyngeal type undifferentiated carcinoma | syn: lymphoepithelial carcinoma; lymphoepithelioma; lymphoepithelioma-like carcinoma; nasopharyngeal type undifferentiated carcinoma | ancestors: large cell carcinoma, carcinoma, cancer, epithelial neoplasm | def: A nonkeratinizing carcinoma which occurs predominantly in the nasopharynx but also in the tonsils and rarely in other anatomic sites. It is characterized by the presence of large malignant cells with ...",
+"ko": "비인두형 미분화 암종",
+"alt": [
+"림프상피종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005242",
+"concept": "- MONDO:0005242 | empyema | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: An accumulation of pus in a body cavity, usually the pleural space.",
+"ko": "농흉",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007191",
+"concept": "- MONDO:0007191 | Behcet disease | syn: Bechet syndrome; Behcet disease; Behcet syndrome; Behcet's syndrome | ancestors: syndromic disease, skin vascular disease, disease by body system or component, skin disorder | def: A chronic, relapsing, multisystemic vasculitis characterized by mucocutaneous lesions, as well as articular, vascular, ocular and central nervous system manifestations.",
+"ko": "베체트병",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019465",
+"concept": "- MONDO:0019465 | nodal marginal zone B-cell lymphoma | syn: Monocytoid B-cell lymphoma; NMZL; nodal marginal zone B-cell lymph.; nodal marginal zone B-cell lymphoma | ancestors: marginal zone lymphoma, indolent B-cell non-Hodgkin lymphoma, spleen neoplasm, B-cell non-Hodgkin lymphoma | def: Nodal marginal zone B-cell lymphoma is a rare, indolent B-cell non-Hodgkin lymphoma, characterized by abnormal clonal proliferation of mature B-lymphocytes with involvement of the lymph nodes, sometim...",
+"ko": "림프절 변연부 B세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019159",
+"concept": "- MONDO:0019159 | Loeffler endocarditis | syn: eosinophilic endocarditis; eosinophilic endomyocardial disease | ancestors: non-familial restrictive cardiomyopathy, restrictive cardiomyopathy, intrinsic cardiomyopathy, cardiomyopathy | def: Loeffler's endocarditis is a rare restrictive cardiomyopathy characterized by hypereosinophilia and fibrous thickening of the endocardium, with usually large thrombi against the ventricle walls, that ...",
+"ko": "뢰플러 심내막염",
+"alt": [
+"호산구성 심내막염"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018876",
+"concept": "- MONDO:0018876 | mantle cell lymphoma | syn: classical mantle cell lymphoma; LCM; mantle cell lymphoma; mantle zone lymphoma | ancestors: aggressive B-cell non-Hodgkin lymphoma, B-cell non-Hodgkin lymphoma, B-cell neoplasm, non-Hodgkin lymphoma | def: Mantle cell lymphoma is a rare form of malignant non-Hodgkin lymphoma affecting B lymphocytes in the lymph nodes in a region called the ``mantle zone''.",
+"ko": "외투세포 림프종",
+"alt": [
+"맨틀세포 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019471",
+"concept": "- MONDO:0019471 | adult T-cell leukemia/lymphoma | syn: adult T-cell leukaemia; adult T-cell leukemia; adult T-cell leukemia/lymphoma; ATLL | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, adult lymphoma, T-cell leukemia, human T-lymphotropic virus 1 infectious disease | def: A peripheral (mature) T-cell neoplasm linked to the human T-cell leukemia virus type 1 (HTLV-1), adult T-cell leukemia/lymphoma is endemic in several regions of the world, in particular Japan, the Car...",
+"ko": "성인 T세포 백혈병/림프종",
+"alt": [
+"성인 T세포 백혈병"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009169",
+"concept": "- MONDO:0009169 | endocardial fibroelastosis | syn: Elastomyofibrosis; endocardial fibroelastosis | ancestors: endocardium disorder, heart disorder, cardiovascular disorder, disease by body system or component | def: Endomyocardial fibroelastosis is a cause of unexplained childhood cardiac insufficiency. It results from diffuse thickening of the endocardium leading to dilated myocardiopathy in the majority of case...",
+"ko": "심내막 섬유탄성증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002127",
+"concept": "- MONDO:0002127 | urethral stricture | syn: urethral stricture; urethral stricture (disease) | ancestors: urethral obstruction, urethral disorder, urinary system disorder, disease by body system or component | def: Narrowing of any part of the urethra. It is characterized by decreased urinary stream and often other obstructive voiding symptoms.",
+"ko": "요도 협착",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0018544",
+"concept": "- MONDO:0018544 | adrenoleukodystrophy | syn: ABCD1 deficiency; adrenoleukodystrophy; adrenoleukodystrophy, X-linked; adrenoleukodystrophy, X-linked recessive | ancestors: X-linked disease, adrenal gland disorder, hereditary dementia, leukodystrophy | def: A peroxisomal disorder resulting in cerebral demyelination, axonal dysfunction in the spinal cord leading to spastic paraplegia, adrenal insufficiency and in some cases testicular insufficiency.",
+"ko": "부신백질이영양증",
+"alt": [
+"X연관 부신백질이영양증"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003417",
+"concept": "- MONDO:0003417 | internuclear ophthalmoplegia | ancestors: ophthalmoplegia, strabismus, ocular motility disease, palsy",
+"ko": "핵간 안근마비",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0100505",
+"concept": "- MONDO:0100505 | food dermatitis | syn: dermatitis due to food taken internally | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: Dermatitis caused by an allergic reaction to ingested food.",
+"ko": "음식 피부염",
+"alt": [
+"식품 유발 피부염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005738",
+"concept": "- MONDO:0005738 | echinococcosis | syn: echinococcosis; Echinococcus caused disease or disorder; Echinococcus disease or disorder; Echinococcus infectious disease | ancestors: Cestode infectious disease, helminthiasis, parasitic infectious disease, infectious disease | def: A parasitic infection caused by tapeworm larvae of Echinococcus. It affects livestock and humans. It is characterized by the formation of hydatid cysts mainly in the liver, lungs, spleen, and kidneys....",
+"ko": "포충증",
+"alt": [
+"에키노코쿠스증"
+],
+"organs": [
+"hepatic",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0005828",
+"concept": "- MONDO:0005828 | listeriosis | syn: infection by Listeria monocytogenes; Listeria infection; Listeria monocytogenes caused disease or disorder; Listeria monocytogenes disease or disorder | ancestors: primary bacterial infectious disease, vector-borne disease, bacterial infectious disease, infectious disease | def: A bacterial infection caused by Listeria monocytogenes. It occurs in newborns, elderly, and immunocompromised patients. The bacteria are transmitted through ingestion of contaminated food. Clinical ma...",
+"ko": "리스테리아증",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0015991",
+"concept": "- MONDO:0015991 | citrullinemia | syn: deficiency of citrulline-aspartate ligase | ancestors: urea cycle disorder, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: Citrullinemia is an autosomal recessively inherited disorder of urea cycle metabolism and ammonia detoxification characterized by elevated concentrations of serum citrulline and ammonia. The disease p...",
+"ko": "시트룰린혈증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004715",
+"concept": "- MONDO:0004715 | liver carcinoma in situ | syn: carcinoma in situ of liver; carcinoma in situ of liver, gallbladder and bile ducts; liver in situ carcinoma; stage 0 liver carcinoma | ancestors: in situ carcinoma, carcinoma of liver and intrahepatic biliary tract, carcinoma, high grade malignant neoplasm | def: A carcinoma in situ involving a liver.",
+"ko": "간 상피내암종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0009846",
+"concept": "- MONDO:0009846 | pentosuria | syn: essential pentosuria; pentosuria; xylitol dehydrogenase deficiency | ancestors: inborn disorder of pentose phosphate metabolism, disorders of pentose/polyol metabolism, inborn carbohydrate metabolic disorder, inborn errors of metabolism | def: Pentosuria is an inborn error of metabolism which is characterized by the excretion of 1 to 4 g of the pentose L-xylulose in the urine per day.",
+"ko": "펜토스뇨증",
+"alt": [
+"본태성 펜토스뇨증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020782",
+"concept": "- MONDO:0020782 | chronic gingivitis | syn: chronic gingivitis | ancestors: gingivitis, gingival disorder, stomatitis, periodontal disorder | def: Chronic painless inflammation of the gums. It is characterized by erythema and edema of the gums and bleeding while brushing the teeth.",
+"ko": "만성 치은염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 8
+}
+]

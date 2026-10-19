@@ -1,0 +1,255 @@
+[
+{
+"id": "MONDO:0005693",
+"concept": "- MONDO:0005693 | cauda equina syndrome | syn: cauda equina syndromic disease; syndromic disease of cauda equina | ancestors: syndromic disease, peripheral nervous system disorder, disease by body system or component, nervous system disorder | def: Cauda equina syndrome refers to a group of symptoms that occur when some of the nerves in the cauda equina (the bundle of nerves that spread out from the bottom of the spinal cord) become compressed a...",
+"ko": "마미 증후군",
+"alt": [
+"말총 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009292",
+"concept": "- MONDO:0009292 | glycogen storage disease due to glycogen branching enzyme deficiency | syn: amylopectinosis; Andersen disease; Andersen Disease (GSD IV); Andersen's disease | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: Glycogen branching enzyme (GBE) deficiency (Andersen's disease or amylopectinosis), or glycogen storage disease type 4 (GSD4), is a rare and severe form of glycogen storage disease which accounts for ...",
+"ko": "글리코겐 분지효소 결핍에 의한 글리코겐 축적병",
+"alt": [
+"안데르센병"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005006",
+"concept": "- MONDO:0005006 | clear cell sarcoma of kidney | syn: CCSK; childhood clear cell sarcoma of the kidney; childhood kidney clear cell sarcoma; childhood renal clear cell sarcoma | ancestors: clear cell sarcoma, kidney sarcoma, soft tissue sarcoma, kidney cancer | def: A rare pediatric sarcoma affecting the kidney. It is characterized by the presence of epithelioid or spindle cells forming cords or nests, separated by fibrovascular septa. It is associated with inter...",
+"ko": "신장 투명세포 육종",
+"alt": [
+"소아 신장 투명세포 육종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001766",
+"concept": "- MONDO:0001766 | eversion of lacrimal punctum | ancestors: lacrimal apparatus disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "눈물점 외반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002109",
+"concept": "- MONDO:0002109 | pituitary cancer | syn: cancer of pituitary gland; malignant neoplasm of pituitary; malignant neoplasm of pituitary gland; malignant neoplasm of the pituitary | ancestors: skull cancer, reproductive system cancer, thalamic cancer, pituitary tumor | def: A primary or metastatic malignant neoplasm affecting the pituitary gland. Representative examples include functioning or non-functioning carcinomas arising from the anterior lobe of the pituitary glan...",
+"ko": "뇌하수체암",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003784",
+"concept": "- MONDO:0003784 | nasal cavity carcinoma in situ | syn: carcinoma in situ of nasal cavity; carcinoma in situ of the nasal cavity; nasal cavity carcinoma in situ; nasal cavity in situ carcinoma | ancestors: nasal cavity carcinoma, in situ carcinoma, nasal cavity cancer, head and neck carcinoma | def: A in situ carcinoma that involves the nasal cavity.",
+"ko": "비강 상피내암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009080",
+"concept": "- MONDO:0009080 | split hand-foot malformation 1 with sensorineural hearing loss | syn: SHFM1D; split hand-foot malformation 1 with sensorineural hearing loss; split-hand/foot malformation 1 with sensorineural hearing loss | ancestors: multiple congenital anomalies/dysmorphic syndrome without intellectual disability, split hand-foot malformation, skeletal dysplasia, congenital limb malformation | def: Split hand - split foot - deafness is an extremely rare genetic syndrome reported in a few families to date and characterized clinically by split hand/split foot malformation (SHFM) and mild to modera...",
+"ko": "감각신경성 난청을 동반한 갈래손발 기형 1",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021020",
+"concept": "- MONDO:0021020 | Crigler-Najjar syndrome type 1 | syn: bilirubin uridinediphosphate glucuronosyltransferase deficiency type 1; bilirubin-UGT deficiency type 1; Crigler-Najjar syndrome, type 1; Crigler-Najjar syndrome, type I | ancestors: Crigler-Najjar syndrome, syndromic disease, hereditary hyperbilirubinemia, disease by body system or component | def: Crigler-Najjar syndrome type 1 (CNS1) is the most severe form of CNS, a hereditary disorder of hepatic bilirubin conjugation, characterized by severe neonatal unconjugated hyperbilirubinemia due to a ...",
+"ko": "크리글러-나자르 증후군 1형",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0100549",
+"concept": "- MONDO:0100549 | focal nodular hyperplasia | syn: FNH; focal nodular hyperplasia of the liver; hepatic focal nodular hyperplasia | ancestors: hepatobiliary benign neoplasm, benign digestive system neoplasm, digestive system disorder, benign neoplasm | def: A benign tumor of the liver, characterized by hyperplastic growth of hepatocytes and a central fibrovascular scar.",
+"ko": "국소 결절 과형성",
+"alt": [
+"초점 결절성 과증식"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012439",
+"concept": "- MONDO:0012439 | Alagille syndrome due to a NOTCH2 point mutation | syn: Alagille syndrome due to a NOTCH2 point mutation; Alagille syndrome type 2; Alagille syndrome-NOTCH2; Alagille-Watson syndrome due to a NOTCH2 point mutation | ancestors: Alagille syndrome, syndromic disease, biliary tract disorder, eye disorder | def: A genetic condition caused by pathogenic variants in the NOTCH2 gene upstream of those implicated with Hajdu-Cheney syndrome. The mechanism of pathogenicity for Alagille syndrome appears to be haploin...",
+"ko": "NOTCH2 점돌연변이에 의한 알라질 증후군",
+"alt": [
+"알라질 증후군 2형"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003007",
+"concept": "- MONDO:0003007 | childhood kidney cell carcinoma | syn: childhood kidney cell carcinoma; childhood renal cell carcinoma; childhood renal cell carcinoma (disease); paediatric kidney cell carcinoma | ancestors: renal cell adenocarcinoma, childhood malignant kidney neoplasm, renal cell carcinoma, kidney cancer | def: A renal cell carcinoma that occurs during childhood.",
+"ko": "소아 신세포암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006460",
+"concept": "- MONDO:0006460 | thyroglossal duct cyst | syn: thyroglossal tract cyst | ancestors: neoplasm, neoplastic disease or syndrome, cancer or benign tumor, disease by etiologic mechanism | def: A congenital benign cyst arising from the remnants of the thyroglossal duct. It is usually located in the midline of the neck.",
+"ko": "갑상설관 낭종",
+"alt": [
+"갑상혀관 낭종"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004660",
+"concept": "- MONDO:0004660 | lung carcinoma in situ | syn: bronchial carcinoma in situ; carcinoma in situ of lung; lung in situ carcinoma; stage 0 lung cancer | ancestors: in situ carcinoma, lung carcinoma, carcinoma, high grade malignant neoplasm | def: A carcinoma in situ involving a lung.",
+"ko": "폐 상피내암종",
+"alt": [
+"폐 제자리암종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005790",
+"concept": "- MONDO:0005790 | hepatitis A virus infection | syn: Hepatitis A; Hepatitis A infection; hepatitis type A | ancestors: viral hepatitis, hepatitis, digestive system infectious disorder, primary viral infectious disease | def: Acute inflammation of the liver caused by the hepatitis A virus. It is highly contagious and usually contracted through close contact with an infected individual or their feces, contaminated food or w...",
+"ko": "A형 간염 바이러스 감염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0008763",
+"concept": "- MONDO:0008763 | Alstrom syndrome | syn: ALMS; ALSS; Alstrom syndrome; Alstrom's syndrome | ancestors: syndromic disease, ciliopathy, autosomal recessive disease, disease by body system or component | def: A multisystemic disorder characterized by cone-rod dystrophy, hearing loss, obesity, insulin resistance and hyperinsulinemia, type 2 diabetes mellitus, dilated cardiomyopathy (DCM), and progressive he...",
+"ko": "알스트룀 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"ocular",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011340",
+"concept": "- MONDO:0011340 | congenital tracheal stenosis | ancestors: otorhinolaryngologic disease, disease by body system or component, human disease, disease",
+"ko": "선천성 기관 협착증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003321",
+"concept": "- MONDO:0003321 | hereditary Wilms tumor | syn: familial Wilms tumor; familial Wilms tumour; familial Wilms' tumor; familial Wilms' tumour | ancestors: hereditary disease, Wilms tumor, disease of genetic or genomic mechanism, embryonal neoplasm | def: Familial embryonal neoplasm derived from nephrogenic blastemal cells. Several lines of differentiation, including blastemal, stromal and epithelial, are usually expressed. Comprises approximately 1% o...",
+"ko": "유전성 윌름스 종양",
+"alt": [
+"가족성 윌름스 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013202",
+"concept": "- MONDO:0013202 | Waardenburg syndrome type 4C | syn: Waardenburg syndrome type 4C; WS4C | ancestors: Waardenburg-Shah syndrome, Waardenburg syndrome, intestinal motility disease, neurocristopathy | def: A subtype of Waardenburg syndrome type 4 (Waardenburg-Shah syndrome) caused by mutations in SOX10.",
+"ko": "바르덴부르흐 증후군 4C형",
+"alt": [
+"와덴버그 증후군 4C형"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001760",
+"concept": "- MONDO:0001760 | photokeratitis | syn: ultraviolet keratitis | ancestors: keratitis, radiation-induced disorder, corneal disorder, inflammatory disease | def: Injury to the cornea secondary to ultraviolet light.",
+"ko": "광각막염",
+"alt": [
+"자외선 각막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016242",
+"concept": "- MONDO:0016242 | hemoglobin C disease | ancestors: anemia, inherited hemoglobinopathy, hematologic disorder, hereditary disease | def: Hemoglobin C disease (HbC) is a hemoglobinopathy characterized by production of abnormal variant hemoglobin known as hemoglobin C, with no or mild clinical manifestations (hemolytic anemia).",
+"ko": "헤모글로빈 C병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+}
+]

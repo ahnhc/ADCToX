@@ -1,0 +1,240 @@
+[
+{
+"id": "MONDO:0012126",
+"concept": "- MONDO:0012126 | familial avascular necrosis of femoral head | syn: aseptic Necrosis of femoral head; aseptic Necrosis of head of femur; familial osteonecrosis of the femoral head | ancestors: primary avascular necrosis, osteonecrosis of genetic origin, avascular necrosis, hereditary disease | def: Avascular necrosis of femoral head (ANFH) is a severely disabling disease characterized by progressive groin pain, a limping gait, leg length discrepancy, collapse of the subchondral bone, limitation ...",
+"ko": "가족성 대퇴골두 무혈성 괴사",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005059",
+"concept": "- MONDO:0005059 | leukemia | syn: blood (leukemia); leukaemia (disease); leukemia; leukemia (disease) | ancestors: hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm, neoplasm, hematologic disorder | def: A malignant (clonal) hematologic disorder, involving hematopoietic stem cells and characterized by the presence of primitive or atypical myeloid or lymphoid cells in the bone marrow and the blood. Leu...",
+"ko": "백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:1040017",
+"concept": "- MONDO:1040017 | intestinal fistula | ancestors: intestinal disorder, digestive system disorder, disease by body system or component, human disease | def: An intestinal disorder characterized by an opening in the intestine to some epithelial surface.",
+"ko": "장 누공",
+"alt": [
+"장관 누공"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005984",
+"concept": "- MONDO:0005984 | tinea pedis | syn: athlete's foot; dermatophytosis of foot; dermatophytosis of pes; pes dermatophytosis | ancestors: dermatophytosis, tinea infection, superficial mycosis, cutaneous mycosis | def: Dermatological pruritic lesion in the feet, caused by Trichophyton rubrum, T. mentagrophytes, or Epidermophyton floccosum.",
+"ko": "발백선",
+"alt": [
+"무좀"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0008815",
+"concept": "- MONDO:0008815 | argininosuccinic aciduria | syn: argininosuccinase deficiency; argininosuccinatelyase deficiency; argininosuccinic acid lyase deficiency; argininosuccinic aciduria | ancestors: urea cycle disorder or inherited hyperammonemia, urea cycle disorder, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: Argininosuccinic aciduria (ASA) is a disorder of urea cycle metabolism most commonly characterized by either a severe, neonatal-onset form that manifests with hyperammonemia accompanied with vomiting,...",
+"ko": "아르기니노석신산뇨증",
+"alt": [
+"아르기니노석신산 분해효소 결핍증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002413",
+"concept": "- MONDO:0002413 | glycogen storage disease I | syn: G6P deficiency; glycogen storage disease due to G6P deficiency; glycogen storage disease due to glucose-6-phosphatase deficiency; glycogen storage disease I | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: Glycogenosis due to glucose-6-phosphatase (G6P) deficiency or glycogen storage disease, (GSD), type 1, is a group of inherited metabolic diseases, including types a and b, and characterized by poor to...",
+"ko": "글리코겐 저장병 I형",
+"alt": [
+"폰 기르케병"
+],
+"organs": [
+"hepatic",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001050",
+"concept": "- MONDO:0001050 | malignant otitis externa | ancestors: otitis externa, external ear disorder, ear infection, post-infectious disorder | def: An otitis externa which involves infection of the external ear that has spread to involve the skull bone containing part of the ear canal, the middle ear, and the inner ear. It is caused by the bacter...",
+"ko": "악성 외이도염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0100335",
+"concept": "- MONDO:0100335 | local anesthetic poisoning | syn: local anesthetic poisoning | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: A poisoning that is caused by exposure to a local anesthetic.",
+"ko": "국소마취제 중독",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015134",
+"concept": "- MONDO:0015134 | constitutional neutropenia | syn: congenital neutropenia; genetic infantile agranulocytosis; infantile genetic agranulocytosis | ancestors: neutropenia, congenital hematological disorder, agranulocytosis, hematologic disorder | def: A rare disorder characterized by recurrent infantile infections and absence of neutrophils in the peripheral blood.",
+"ko": "선천성 호중구감소증",
+"alt": [
+"체질성 호중구감소증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0010029",
+"concept": "- MONDO:0010029 | situs inversus | syn: complete situs inversus; complete situs inversus viscerum; complete transposition (morphologic abnormality); situs inversus | ancestors: visceral heterotaxy, syndromic disease, hereditary disease, congenital heart malformation | def: A congenital condition in which there is complete right-to-left reversal of the position of the major thoracic and abdominal organs (that is, they are arranged in a mirror image of the normal position...",
+"ko": "내장역위증",
+"alt": [
+"좌우바뀜증"
+],
+"organs": [
+"cardiovascular",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019203",
+"concept": "- MONDO:0019203 | acute interstitial pneumonia | syn: acute interstitial pneumonitis; AIP; Hamman-rich syndrome | ancestors: idiopathic interstitial pneumonia, acute disease, pneumonia, idiopathic disease | def: Acute interstitial pneumonia (AIP), also referred to as Hamman-Rich syndrome, is a rapidly progressive and histologically distinct form of idiopathic interstitial pneumonia.",
+"ko": "급성 간질성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007745",
+"concept": "- MONDO:0007745 | Gilbert syndrome | syn: familial cholemia; Gilbert disease; Gilbert syndrome; Gilbert's syndrome | ancestors: syndromic disease, hereditary hyperbilirubinemia, disease by body system or component, inborn disorder of bilirubin metabolism | def: An autosomal recessive inherited disorder characterized by unconjugated hyperbilirubinemia, resulting in harmless intermittent jaundice.",
+"ko": "길버트 증후군",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001903",
+"concept": "- MONDO:0001903 | calcific tendinitis | ancestors: tendinitis, myositis disease, disease of the tendon, myopathy",
+"ko": "석회화 건염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0019323",
+"concept": "- MONDO:0019323 | pemphigus erythematosus | syn: seborrheic pemphigus; Senear-Usher syndrome | ancestors: pemphigus, autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease | def: Pemphigus erythematosus is a rare superficial pemphigus disease characterized clinically by well-demarcated, localized, erythematous, scaly, hyperkeratotic, crusted plaques, with frequent butterfly di...",
+"ko": "홍반성 천포창",
+"alt": [
+"세나-어셔 증후군"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001378",
+"concept": "- MONDO:0001378 | urachus cancer | syn: cancer of urachus; malignant neoplasm of urachus; malignant tumour of urachus; malignant urachus neoplasm | ancestors: urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder | def: A malignant neoplasm involving the urachus.",
+"ko": "요막관암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018621",
+"concept": "- MONDO:0018621 | lymphoplasmacytic lymphoma without IgM production | syn: lymphoplasmacytic lymphoma without Immunoglobulin M production | ancestors: indolent B-cell non-Hodgkin lymphoma, B-cell non-Hodgkin lymphoma, B-cell neoplasm, non-Hodgkin lymphoma",
+"ko": "IgM 비분비 림프형질세포림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006982",
+"concept": "- MONDO:0006982 | subacute thyroiditis | syn: De Quervain thyroiditis; De Quervain's thyroiditis; de Quervain's thyroiditis; DeQuervain thyroiditis | ancestors: acute thyroiditis, thyroiditis, acute disease, thyroid gland disorder | def: Self-limited inflammation of the thyroid gland characterized by the presence of multinucleated giant cells. Patients present with neck pain, often associated with fever and dysphagia. The clinical cou...",
+"ko": "아급성 갑상샘염",
+"alt": [
+"드퀘르뱅 갑상선염"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0019124",
+"concept": "- MONDO:0019124 | microscopic polyangiitis | syn: Micropolyangiitis; microscopic polyarteritis; MPA | ancestors: anti-neutrophil cytoplasmic antibody-associated vasculitis, arteritis, necrotizing vasculitis, arterial disorder | def: Microscopic polyangiitis (MPA) is an inflammatory, necrotizing, systemic vasculitis that affects predominantly small vessels (i.e. small arteries, arterioles, capillaries, venules) in multiple organs.",
+"ko": "현미경적 다발혈관염",
+"alt": [
+"현미경적 다발동맥염"
+],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005720",
+"concept": "- MONDO:0005720 | cowpox | ancestors: primary viral infectious disease, viral infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A mild, eruptive skin disease of milk cows caused by cowpox virus, with lesions occurring principally on the udder and teats. Human infection may occur while milking an infected animal.",
+"ko": "우두",
+"alt": [
+"소두창"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006945",
+"concept": "- MONDO:0006945 | renal artery obstruction | ancestors: renal artery disease, kidney disorder, aortic disorder, urinary system disorder | def: Narrowing or occlusion of the renal artery or arteries. It is due usually to atherosclerosis; fibromuscular dysplasia; thrombosis; embolism, or external pressure. The reduced renal perfusion can lead ...",
+"ko": "신동맥 폐색",
+"alt": [
+"콩팥동맥 폐쇄"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 3
+}
+]

@@ -1,0 +1,253 @@
+[
+{
+"id": "MONDO:0012366",
+"concept": "- MONDO:0012366 | gallbladder disease 3 | syn: gallbladder disease 3; GBD3 | ancestors: hereditary gallbladder disorder, hereditary disease, gallbladder disorder, disease of genetic or genomic mechanism",
+"ko": "담낭 질환 3형",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005810",
+"concept": "- MONDO:0005810 | infectious mononucleosis | syn: Gammaherpesviral mononucleosis; glandular fever; Mono | ancestors: Epstein-Barr virus infection, Herpesviridae infectious disease, primary viral infectious disease, viral infectious disease | def: A condition characterized by an increase in mononuclear white blood cells and swollen lymph nodes, which is usually caused by infection with the Epstein-Barr virus.",
+"ko": "전염성 단핵구증",
+"alt": [
+"선열"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0024182",
+"concept": "- MONDO:0024182 | dry beriberi | ancestors: beriberi, vitamin B deficiency, vitamin deficiency disorder, nutritional deficiency disease",
+"ko": "건성 각기병",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017300",
+"concept": "- MONDO:0017300 | congenital pericardium anomaly | ancestors: congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis | def: Congenital pericardium anomaly comprises a group of rare congenital cardiac malformations characterized by the complete (Congenital complete agenesis of pericardium) or partial absence of the pericard...",
+"ko": "선천성 심낭 이상",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017598",
+"concept": "- MONDO:0017598 | primary cutaneous anaplastic large cell lymphoma | syn: ALCL, cutaneous; anaplastic large-cell lymphoma, primary cutaneous type; C-ALCL; primary anaplastic large cell lymphoma of skin | ancestors: primary cutaneous T-cell non-Hodgkin lymphoma, primary cutaneous CD30+ T-cell lymphoproliferative disease, anaplastic large cell lymphoma, anaplastic cancer | def: Primary cutaneous anaplastic large cell lymphoma (C-ALCL) is a rare T-cell non-Hodgkin lymphoma that affects the skin and generally shows no extracutaneous involvement at presentation. It belongs to t...",
+"ko": "원발성 피부 역형성 대세포 림프종",
+"alt": [
+"피부 ALCL"
+],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004963",
+"concept": "- MONDO:0004963 | T-cell acute lymphoblastic leukemia | syn: acute T cell leukemia; acute T cell lymphoblastic leukaemia; acute T cell lymphoblastic leukemia; acute T cell lymphocytic leukaemia | ancestors: acute lymphoblastic leukemia, T-cell leukemia, precursor lymphoblastic lymphoma/leukemia, neoplasm of immature B and T cells | def: Acute lymphoblastic leukemia of T-cell origin. It comprises about 15% of childhood cases and 25% of adult cases. It is more common in males than females. (WHO, 2001)",
+"ko": "T세포 급성 림프모구백혈병",
+"alt": [
+"T세포 급성 림프구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005012",
+"concept": "- MONDO:0005012 | cutaneous melanoma | syn: cutaneous (skin) melanoma; cutaneous melanoma; cutaneous melanoma (disease); malignant cutaneous melanoma | ancestors: skin cancer, melanoma, melanocytic skin neoplasm, integumentary system cancer | def: A primary melanoma arising from atypical melanocytes in the skin. Precursor lesions include acquired and congenital melanocytic nevi, and dysplastic nevi. Several histologic variants have been recogni...",
+"ko": "피부 흑색종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019736",
+"concept": "- MONDO:0019736 | dense deposit disease | syn: membranoproliferative glomerulonephritis type 2; Mesangiocapillary glomerulonephritis type 2 | ancestors: complement 3 glomerulopathy, primary membranoproliferative glomerulonephritis, glomerulonephritis, nephritis | def: A histological subtype of C3 glomerulopathy characterized by C3 deposition in renal tissue in the absence or near-absence of immunoglobulin deposits, in a patient with the classic clinical features of...",
+"ko": "치밀침착병",
+"alt": [
+"막증식 사구체신염 2형"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0009297",
+"concept": "- MONDO:0009297 | familial renal glucosuria | syn: familial renal glucosuria; Renal Glycosuria; SGLT2 deficiency | ancestors: renal tubular transport disease, glucose transport disorder, inherited kidney disorder, kidney disorder | def: Familial Renal Glucosuria (FRG) is characterized by the presence of persistent isolated glucosuria in the absence of both generalized proximal tubular dysfunction and hyperglycemia. FRG is usually con...",
+"ko": "가족성 신성 포도당뇨증",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001508",
+"concept": "- MONDO:0001508 | patulous eustachian tube | ancestors: eustachian tube disorder, middle ear disorder, auditory system disorder, disorder of ear | def: A eustachian tube disorder with a wider eustachian tube which allows a larger bolus of bacteria-laden material from the nasopharynx during an infection to enter the middle ear, causing a more fulminan...",
+"ko": "이관 개방증",
+"alt": [
+"유스타키오관 개방증"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0100069",
+"concept": "- MONDO:0100069 | hearing impairment and infertile male syndrome | syn: hearing impairment and infertile male syndrome; HIIMS | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: A syndromic genetic deafness characterized by segregation of nonsyndromic hearing loss in females and hearing loss with infertility in males. Affected males have been reported to have low count to abs...",
+"ko": "청력손실 및 남성불임 증후군",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004804",
+"concept": "- MONDO:0004804 | dacryoadenitis | syn: inflammation of lacrimal gland; lacrimal gland inflammation | ancestors: inflammatory disease, disorder of lacrimal gland, disease by developmental or physiological process, lacrimal apparatus disorder | def: Inflammation and enlargement of the lacrimal gland.",
+"ko": "눈물샘염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006291",
+"concept": "- MONDO:0006291 | malignant jugulotympanic paraganglioma | syn: cancer of jugular body; jugular body cancer; malignant glomus jugulare neoplasm; malignant glomus jugulare tumor | ancestors: vascular cancer, skull cancer, central nervous system cancer, vein disorder | def: A jugulotympanic paraganglioma that metastasizes to other anatomic sites.",
+"ko": "악성 경정맥고실 부신경절종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0014572",
+"concept": "- MONDO:0014572 | Lichtenstein-Knorr syndrome | syn: autosomal recessive spinocerebellar ataxia type 19; Lichtenstein-Knorr syndrome; LIKNS; progressive autosomal recessive ataxia-sensorineural hearing loss syndrome | ancestors: autosomal recessive cerebellar ataxia, autosomal recessive disease, hereditary cerebellar ataxia, autosomal genetic disease | def: An autosomal recessive spinocerebellar ataxia caused by disease-causing variants in the SLC9A1 gene, characterized by early-onset cerebellar ataxia, cognitive or developmental delay, seizure, and cere...",
+"ko": "리히텐슈타인-크노르 증후군",
+"alt": [
+"상염색체 열성 척수소뇌실조 19형"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001122",
+"concept": "- MONDO:0001122 | chronic maxillary sinusitis | syn: chronic antritis; maxillary sinusitis, chronic | ancestors: maxillary sinusitis, chronic rhinosinusitis, sinusitis, mouth disorder | def: Inflammation of the maxillary sinus that typically lasts beyond eight weeks. It is caused by infections, allergies, and the presence of sinus polyps or a deviated septum. Signs and symptoms include he...",
+"ko": "만성 상악동염",
+"alt": [
+"만성 위턱굴염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002257",
+"concept": "- MONDO:0002257 | ankylosis | syn: ankylosis; ankylosis (disease) | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: Fixation and immobility of a joint.",
+"ko": "강직증",
+"alt": [
+"관절 강직"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0005921",
+"concept": "- MONDO:0005921 | Plasmodium vivax malaria | syn: vivax malaria | ancestors: malaria, protozoa infectious disease, erythrocyte disorder, vector-borne disease | def: Malaria resulting from infection by Plasmodium vivax.",
+"ko": "삼일열 말라리아",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021537",
+"concept": "- MONDO:0021537 | undifferentiated carcinoma of nasopharynx | syn: lymphoepithelioma of nasopharynx; lymphoepithelioma of the nasopharynx; nasopharyngeal lymphoepithelioma; nasopharyngeal nonkeratinizing undifferentiated carcinoma | ancestors: undifferentiated carcinoma, nasopharyngeal carcinoma, carcinoma, head and neck carcinoma | def: A undifferentiated carcinoma that involves the nasopharynx.",
+"ko": "비인두 미분화 암종",
+"alt": [
+"비인두 림프상피종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004664",
+"concept": "- MONDO:0004664 | helminthiasis | syn: helminthiasis | ancestors: parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: A parasitic infection characterized by the infestation with worms, mainly in the intestine.",
+"ko": "연충증",
+"alt": [
+"기생충 감염증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0005975",
+"concept": "- MONDO:0005975 | suppurative otitis media | ancestors: otitis media, middle ear disorder, inflammatory disease, auditory system disorder | def: Inflammation of the middle ear with purulent discharge.",
+"ko": "화농성 중이염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 4,
+"new": false
+}
+]

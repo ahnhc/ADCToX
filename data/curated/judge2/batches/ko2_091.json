@@ -1,0 +1,230 @@
+[
+{
+"id": "MONDO:0009938",
+"concept": "- MONDO:0009938 | pulmonic stenosis | syn: pulmonary stenosis; pulmonic stenosis; pulmonic stenosis (disease) | ancestors: hereditary disease, congenital pulmonary valve stenosis, disease of genetic or genomic mechanism, congenital anomaly of the great arteries",
+"ko": "폐동맥 협착증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021312",
+"concept": "- MONDO:0021312 | malignant tumor of adrenal cortex | syn: adrenal cortex cancer; cancer of adrenal cortex; malignant adrenal cortex neoplasm; malignant adrenal cortex tumor | ancestors: adrenal gland cancer, adrenal cortex neoplasm, retroperitoneal cancer, malignant endocrine neoplasm | def: A cancer that involves the adrenal cortex.",
+"ko": "부신피질 악성 종양",
+"alt": [
+"부신피질암"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006567",
+"concept": "- MONDO:0006567 | kernicterus due to isoimmunization | syn: kernicterus - due to isoimm.; kernicterus due to isoimmunization of fetus or newborn; kernicterus due to isoimmunization of foetus or newborn; kernicterus related to isoimmunization | ancestors: neonatal anemia, bilirubin encephalopathy, anemia, brain disorder | def: Encephalopathy in infants due to high levels of unconjugated bilirubin that are a result of Rh incompatibility between the mother and the fetus.",
+"ko": "동종면역에 의한 핵황달",
+"alt": [],
+"organs": [
+"haematologic",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021496",
+"concept": "- MONDO:0021496 | benign neoplasm of lip | syn: benign Lip neoplasm; benign Lip tumor; benign Lip tumour; benign neoplasm of the Lip | ancestors: benign neoplasm, lip neoplasm, neoplasm, lip disorder | def: A benign neoplasm that involves the lip.",
+"ko": "입술 양성 신생물",
+"alt": [
+"입술 양성 종양"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0021440",
+"concept": "- MONDO:0021440 | benign neoplasm of skin | syn: benign cutaneous neoplasm; benign cutaneous tumor; benign cutaneous tumour; benign neoplasm of the skin | ancestors: integumentary system benign neoplasm, skin neoplasm, integumentary system disorder, benign neoplasm | def: A benign neoplasm that involves the zone of skin.",
+"ko": "피부 양성 신생물",
+"alt": [
+"피부 양성 종양"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004754",
+"concept": "- MONDO:0004754 | rectal prolapse | syn: rectal prolapse; rectal prolapse (disease) | ancestors: rectal disorder, large intestine disorder, intestinal disorder, digestive system disorder | def: Protrusion of the rectum through the anus.",
+"ko": "직장탈출증",
+"alt": [
+"직장 탈출"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002903",
+"concept": "- MONDO:0002903 | articulation disorder | syn: phonological disorder | ancestors: speech disorder, language disorder, communication disorder, specific developmental disorder | def: A disorder characterized by the failure to use developmentally expected speech sounds that are appropriate for the individual's age (i.e., the individual makes errors in sound production or use or omi...",
+"ko": "조음장애",
+"alt": [
+"음운장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001710",
+"concept": "- MONDO:0001710 | perforation of bile duct | ancestors: bile duct disorder, biliary tract disorder, hepatobiliary disorder, digestive system disorder | def: A rupture in the wall of the extrahepatic or intrahepatic bile duct due to traumatic or pathologic processes.",
+"ko": "담관 천공",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009691",
+"concept": "- MONDO:0009691 | mycosis fungoides | syn: CTCL/ mycosis fungoides; cutaneous T-cell lymphoma/mycosis fungoides; MF; mycosis fungoides | ancestors: primary cutaneous T-cell non-Hodgkin lymphoma, mycosis fungoides and variants, mature T-cell and NK-cell non-Hodgkin lymphoma, primary cutaneous lymphoma | def: Classical mycosis fungoides is the most common type of mycosis fungoides (MF), a form of cutaneous T-cell lymphoma, and is characterized by slow progression from patches to more infiltrated plaques an...",
+"ko": "균상식육종",
+"alt": [
+"피부 T세포 림프종"
+],
+"organs": [
+"haematologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018626",
+"concept": "- MONDO:0018626 | paratyphoid fever | ancestors: salmonellosis, primary bacterial infectious disease, bacterial infectious disease, infectious disease | def: A condition resembling typhoid fever that is caused by infection by Salmonella enterica serovar Parathyphi.",
+"ko": "파라티푸스",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0024268",
+"concept": "- MONDO:0024268 | superficial mycosis | syn: stratum corneum of epidermis fungal infectious disease | ancestors: cutaneous mycosis, fungal infectious disease, integumentary system disorder, infectious disease | def: A mycosis that is limited to the stratum corneum and essentially elicits no inflammation.",
+"ko": "표재성 진균증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0001798",
+"concept": "- MONDO:0001798 | hypermobility syndrome | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component",
+"ko": "관절 과운동성 증후군",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002145",
+"concept": "- MONDO:0002145 | disorder of sexual differentiation | syn: conditions affecting reproductive development; differences of sex development; disorder of sex development; disorder of sex differentiation | ancestors: gonadal disorder, developmental defect during embryogenesis, reproductive system disorder, endocrine system disorder | def: A congenital disorder characterized by abnormalities in the development of the sexual characteristics.",
+"ko": "성분화 장애",
+"alt": [
+"성발달 차이"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001655",
+"concept": "- MONDO:0001655 | dissociated nystagmus | syn: dissociated nystagmus | ancestors: pathologic nystagmus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "해리성 안진",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019010",
+"concept": "- MONDO:0019010 | congenital isolated hyperinsulinism | syn: chi; persistent hyperinsulinemic hypoglycemia of infancy; PHHI | ancestors: islet cell adenomatosis, familial hyperinsulinism, overgrowth syndrome, endocrine pancreas disorder | def: Congenital isolated hyperinsulinism (CHI), a rare endocrine disease is the most frequent cause of severe and persistent hypoglycemia in the neonatal period and early infancy and is characterized by an...",
+"ko": "선천성 단독 고인슐린혈증",
+"alt": [
+"영아 지속성 고인슐린성 저혈당증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010622",
+"concept": "- MONDO:0010622 | recessive X-linked ichthyosis | syn: ichthyosis (disease), X-linked; ichthyosis , X-linked, X-linked recessive; Ichthyosis, X Linked; recessive X-linked ichthyosis | ancestors: inherited ichthyosis, sterol metabolism disorder, X-linked recessive disease, ichthyosis | def: A genodermatosis belonging to the Mendelian Disorders of Cornification (MeDOC) and characterized by generalized hyperkeratosis and scaling of the skin.",
+"ko": "열성 X연관 어린선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007752",
+"concept": "- MONDO:0007752 | hyperheparinemia | syn: hyperheparinemia | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "고헤파린혈증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001863",
+"concept": "- MONDO:0001863 | aorta atresia | syn: congenital atresia and stenosis of aorta | ancestors: aortic disorder, arterial disorder, vascular disorder, cardiovascular disorder | def: An aortic disease that is characterized by an absence of an opening from the left ventricle of the heart into the aorta.",
+"ko": "대동맥 폐쇄증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0006936",
+"concept": "- MONDO:0006936 | pulmonary valve stenosis | ancestors: pulmonary valve disorder, heart valve disorder, heart disorder, cardiovascular disorder | def: The pathologic narrowing of the orifice of the pulmonary valve. This lesion restricts blood outflow from the right ventricle to the pulmonary artery. When the trileaflet valve is fused into an imperfo...",
+"ko": "폐동맥판 협착",
+"alt": [
+"폐동맥판막 협착증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002724",
+"concept": "- MONDO:0002724 | mast cell neoplasm | syn: mast cell neoplasm; Mast cell proliferative disease; Mast cell tumor; mast cell tumor | ancestors: myeloid neoplasm, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm, neoplasm | def: A heterogeneous group of disorders characterized by the abnormal growth and accumulation of mast cells in one or more organ systems. Recent data suggest that most variants of mast cell neoplasms are c...",
+"ko": "비만세포 신생물",
+"alt": [
+"비만세포 종양"
+],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 2
+}
+]

@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0037847",
+"concept": "- MONDO:0037847 | vertebral joint disorder | syn: disease of intervertebral joint; disease or disorder of intervertebral joint; disorder of intervertebral joint; disorder of joint of spine | ancestors: vertebral column disorder, arthropathy, skeletal system disorder, musculoskeletal system disorder | def: A disease that involves the intervertebral joint.",
+"ko": "척추 관절 질환",
+"alt": [
+"추간관절 질환"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009379",
+"concept": "- MONDO:0009379 | Rotor syndrome | syn: hyperbilirubinemia, Rotor type; hyperbilirubinemia, rotor type, digenic; Rotor syndrome | ancestors: hereditary hyperbilirubinemia, inborn disorder of bilirubin metabolism, hyperbilirubinemia, inborn disorder of porphyrin metabolism | def: Rotor syndrome (RT) is a benign, inherited liver disorder characterized by chronic, predominantly conjugated, nonhemolytic hyperbilirubinemia with normal liver histology.",
+"ko": "로터 증후군",
+"alt": [
+"로터형 고빌리루빈혈증"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0023297",
+"concept": "- MONDO:0023297 | guttate psoriasis | syn: guttate psoriasis | ancestors: psoriasis, dermatitis, immune system disorder, hereditary skin disorder | def: A form of psoriasis characterized by a sudden onset of small, red, and scaly teardrop-shaped spots that appear on the arms, legs, and middle of the body, usually triggered by an infection.",
+"ko": "물방울 건선",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021559",
+"concept": "- MONDO:0021559 | non-autoimmune hemolytic anemia | syn: non-autoimmune hemolytic anemia | ancestors: hemolytic anemia, normocytic anemia, anemia, hematologic disorder | def: Hemolytic anemia that is not mediated by immune mechanisms.",
+"ko": "비자가면역 용혈빈혈",
+"alt": [
+"비자가면역 용혈성 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020173",
+"concept": "- MONDO:0020173 | benign tumor of palpebral epidermis | syn: skin of eyelid benign neoplasm | ancestors: palpebral epidermal tumor, benign eyelid neoplasm, eyelid neoplasm, benign neoplasm of skin | def: A benign neoplasm that involves the skin of eyelid.",
+"ko": "눈꺼풀 표피 양성 종양",
+"alt": [
+"눈꺼풀 피부 양성 신생물"
+],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0002387",
+"concept": "- MONDO:0002387 | liver angiosarcoma | syn: angiosarcoma (disease) of liver; angiosarcoma of liver; angiosarcoma of the liver; hemangiosarcoma of liver | ancestors: liver sarcoma, hepatic vascular disorder, angiosarcoma, liver cancer | def: A malignant vascular neoplasm arising from the liver.",
+"ko": "간 혈관육종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003926",
+"concept": "- MONDO:0003926 | neurilemmoma of the pleura | syn: neurilemmoma of pleura; pleura schwannoma; pleural neurilemmoma; pleural schwannoma | ancestors: peripheral nerve schwannoma, pleural neoplasm, schwannoma, pleural disorder | def: A schwannoma that involves the pleura.",
+"ko": "흉막 신경초종",
+"alt": [
+"흉막 슈반세포종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017590",
+"concept": "- MONDO:0017590 | carcinoma of the ampulla of vater | syn: ampulla of Vater carcinoma; ampullary carcinoma; Ampulloma; carcinoma of ampulla of vater | ancestors: ampulla of vater cancer, extrahepatic bile duct carcinoma, carcinoma of duodenum, duodenum cancer | def: A carcinoma arising from the ampulla of Vater. The vast majority of cases are adenocarcinomas. Signs and symptoms include jaundice, abdominal pain, anorexia, nausea, vomiting, and weight loss.",
+"ko": "바터 팽대부암",
+"alt": [
+"팽대부암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002108",
+"concept": "- MONDO:0002108 | thyroid cancer | syn: cancer of thyroid gland; malignant neoplasm of the thyroid; malignant neoplasm of the thyroid gland; malignant neoplasm of thyroid | ancestors: thyroid tumor, malignant endocrine neoplasm, endocrine gland neoplasm, thyroid gland disorder | def: A malignant neoplasm involving the thyroid gland",
+"ko": "갑상선암",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003085",
+"concept": "- MONDO:0003085 | keratitis | syn: cornea inflammation; inflammation of cornea | ancestors: corneal disorder, inflammatory disease, eye disorder, disease by developmental or physiological process | def: A corneal disease that is characterized by inflammation of the cornea.",
+"ko": "각막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0017941",
+"concept": "- MONDO:0017941 | chikungunya | syn: Chikungunya fever; Chikungunya virus caused disease or disorder; Chikungunya virus disease or disorder; Chikungunya virus infectious disease | ancestors: Alphavirus infectious disease, arbovirus fever, vector-borne disease, Togaviridae infectious disease | def: An infection that is caused by the Chikungunya virus, which is transmitted by mosquitoes; it is characterized by fever and severe arthralgia.",
+"ko": "치쿤구니야열",
+"alt": [
+"치쿤구니야 바이러스 감염증"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009419",
+"concept": "- MONDO:0009419 | Woodhouse-Sakati syndrome | syn: diabetes-hypogonadism-deafness-intellectual disability syndrome; Woodhouse-Sakati syndrome; woodhouse-Sakati syndrome | ancestors: congenital hypogonadotropic hypogonadism, neurodegeneration with brain iron accumulation, inherited dystonia, hypogonadotropic hypogonadism | def: Woodhouse-Sakati syndrome is a multisystemic disorder characterized by hypogonadism, alopecia, diabetes mellitus, intellectual deficit and extrapyramidal signs with choreoathetoid movements and dyston...",
+"ko": "우드하우스-사카티 증후군",
+"alt": [
+"당뇨-성선기능저하-난청-지적장애 증후군"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006586",
+"concept": "- MONDO:0006586 | neurotic excoriation | syn: dermatitis factitia [artefacta] | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: A condition in which patients produce skin lesions through repetitive, compulsive excoriation of their skin.",
+"ko": "신경증성 찰상",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010671",
+"concept": "- MONDO:0010671 | microphthalmia, syndromic 1 | syn: ANOP1, formerly; Lenz dysplasia; Lenz microphthalmia syndrome; MAA, formerly | ancestors: syndromic microphthalmia, NAA10-related syndrome, syndromic disease, hereditary disease",
+"ko": "증후군성 소안구증 1형",
+"alt": [
+"렌츠 이형성증"
+],
+"organs": [
+"neurologic",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006989",
+"concept": "- MONDO:0006989 | suppurative periapical periodontitis | syn: dentoalveolar abscess; periapical dental abscess | ancestors: periapical periodontitis, periodontitis, periodontal disorder, inflammatory disease | def: Localized collection of pus in the tissues that enclose the root of a tooth.",
+"ko": "화농성 치근단 치주염",
+"alt": [
+"치조농양"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007020",
+"concept": "- MONDO:0007020 | Wernicke encephalopathy | syn: dementia due to thiamine deficiency; Wernicke's encephalopathy | ancestors: brain disorder, alcohol-related disorders, central nervous system disorder, substance-related disorder | def: An acute neurological disorder characterized by the triad of ophthalmoplegia, ataxia, and disturbances of mental activity or consciousness. Eye movement abnormalities include nystagmus, external rectu...",
+"ko": "베르니케 뇌병증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004940",
+"concept": "- MONDO:0004940 | acute female pelvic peritonitis | ancestors: pelvic inflammatory disease, acute disease, female reproductive system disorder, inflammatory disease",
+"ko": "급성 여성 골반 복막염",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0056802",
+"concept": "- MONDO:0056802 | synovial bursa disorder | syn: disease of synovial bursa; disease or disorder of synovial bursa; disorder of bursa; disorder of synovial bursa | ancestors: synovium disorder, musculoskeletal system disorder, disease by body system or component, human disease | def: A disease or disorder that involves the synovial bursa.",
+"ko": "윤활주머니 질환",
+"alt": [
+"점액낭 질환"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0006004",
+"concept": "- MONDO:0006004 | vasomotor rhinitis | ancestors: allergic rhinitis, allergic respiratory disease, rhinitis, respiratory system disorder | def: Inflammation in the nasal cavity mucosa that results from the abnormal regulation of the blood flow in the nose. It may be caused by temperature fluctuations, air pollution, strong odors, and tobacco ...",
+"ko": "혈관운동성 비염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0007937",
+"concept": "- MONDO:0007937 | renal hypomagnesemia 2 | syn: familial primary hypomagnesemia caused by mutation in FXYD2; FXYD2 familial primary hypomagnesemia; FXYD2 primary hypomagnesemia; HOMG2 | ancestors: familial primary hypomagnesemia with hypocalcuria, familial primary hypomagnesemia, inborn metal metabolism disorder, inherited renal tubular disease | def: Autosomal dominant primary hypomagnesemia with hypocalciuria (ADPHH) is a mild form of familial primary hypomagnesemia (FPH), characterized by extreme weakness, tetany and convulsions. Secondary distu...",
+"ko": "신성 저마그네슘혈증 2형",
+"alt": [
+"FXYD2 가족성 원발 저마그네슘혈증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+}
+]

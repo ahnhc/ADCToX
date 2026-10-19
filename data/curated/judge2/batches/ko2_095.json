@@ -1,0 +1,230 @@
+[
+{
+"id": "MONDO:0021523",
+"concept": "- MONDO:0021523 | benign neoplasm of pharynx | syn: benign neoplasm of the pharynx; benign pharyngeal neoplasm; benign pharyngeal tumor; benign pharyngeal tumour | ancestors: benign neoplasm, pharynx neoplasm, neoplasm, digestive system neoplasm | def: A benign neoplasm that involves the pharynx.",
+"ko": "인두 양성 신생물",
+"alt": [
+"인두 양성 종양"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006580",
+"concept": "- MONDO:0006580 | miliaria | syn: heat rash; prickly heat | ancestors: syndromic disease, sweat gland disorder, disease by body system or component, skin disorder | def: A small (one mm or less) vesicular, papular or pustular monomorphous rash, which is associated with heat, fever or occlusion of sweat glands.",
+"ko": "땀띠",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001199",
+"concept": "- MONDO:0001199 | dislocation of ear ossicle | syn: dislocation of ear ossicles | ancestors: auditory system disorder, disease by body system or component, human disease, disease | def: Ossicular chain dislocation is a separation of the middle ear bones. It results in a hearing loss due to sound not being transmitted properly (conductive hearing loss). Ossicular chain dislocation is ...",
+"ko": "이소골 탈구",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006002",
+"concept": "- MONDO:0006002 | urogenital tuberculosis | syn: genitourinary system tuberculosis | ancestors: extrapulmonary tuberculosis, tuberculosis, primary bacterial infectious disease, mycobacterial infectious disease | def: A general term for mycobacterium infections of any part of the urogenital system in either the male or the female.",
+"ko": "비뇨생식기 결핵",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005680",
+"concept": "- MONDO:0005680 | Brill-Zinsser disease | syn: Brill disease; Brill's disease; recrudescent typhus | ancestors: epidemic louse-borne typhus, typhus, Rickettsiaceae infectious disease, vector-borne disease | def: A delayed relapse of epidemic typhus, caused by Rickettsia prowazekii.",
+"ko": "브릴-진서병",
+"alt": [
+"재발성 발진티푸스"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0002815",
+"concept": "- MONDO:0002815 | acute myocarditis | syn: myocarditis, acute | ancestors: myocarditis, acute disease, intrinsic cardiomyopathy, inflammation of heart layer | def: The sudden onset of inflammation of heart muscle with myocellular necrosis; this is generally secondary to an infectious cause, and patients often have a recent history of a flu-like illness.",
+"ko": "급성 심근염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001527",
+"concept": "- MONDO:0001527 | conjugate gaze palsy | syn: palsy of conjugate gaze | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "공동주시마비",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000259",
+"concept": "- MONDO:0000259 | asymptomatic dengue | ancestors: dengue disease, Flaviviridae infectious disease, vector-borne disease, primary viral infectious disease",
+"ko": "무증상 뎅기열",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007015",
+"concept": "- MONDO:0007015 | viral meningitis | ancestors: infectious meningitis, aseptic meningitis, meningitis, central nervous system infectious disorder | def: Inflammation of the membranes surrounding the brain and spinal cord due to a viral infection.",
+"ko": "바이러스성 수막염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007655",
+"concept": "- MONDO:0007655 | fissured tongue | syn: Furrowed tongue; plicated tongue; scrotal tongue | ancestors: tongue disorder, mouth disorder, disease by body system or component, human disease",
+"ko": "열구설",
+"alt": [
+"갈라진 혀"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0001256",
+"concept": "- MONDO:0001256 | arteriovenous hemangioma/malformation | syn: arteriovenous angioma; arteriovenous hemangioma; arteriovenous hemangioma/malformation; racemose aneurysm (morphologic abnormality) | ancestors: hemangioma, benign blood vessel neoplasm, cardiovascular organ benign neoplasm, blood vessel neoplasm | def: A benign vascular lesion characterized by the presence of a complex network of communicating arterial and venous vascular structures.",
+"ko": "동정맥 혈관종/기형",
+"alt": [
+"동정맥 기형"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019280",
+"concept": "- MONDO:0019280 | hypertrichosis | syn: hypertrichosis; hypertrichosis (disease) | ancestors: disorder of pilosebaceous unit, integumentary system disorder, disease by body system or component, human disease | def: Excessive hair growth anywhere on the body.",
+"ko": "다모증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0020333",
+"concept": "- MONDO:0020333 | aggressive systemic mastocytosis | syn: aggressive systemic mastocytosis (morphologic abnormality); ASM | ancestors: systemic mastocytosis, mastocytosis, mast cell neoplasm, leukocyte disorder | def: Aggressive systemic mastocytosis (ASM) is a severe and rare form of systemic mastocytosis (SM) characterized by considerable infiltration of mast cells in different tissues.",
+"ko": "공격성 전신 비만세포증",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"gastrointestinal",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001670",
+"concept": "- MONDO:0001670 | tooth resorption | ancestors: tooth hard tissue disease, tooth disorder, skeletal system disorder, mouth disorder | def: Resorption of calcified dental tissue, involving demineralization due to reversal of the cation exchange and lacunar resorption by osteoclasts. There are two types: external (as a result of tooth path...",
+"ko": "치아 흡수",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004963",
+"concept": "- MONDO:0004963 | T-cell acute lymphoblastic leukemia | syn: acute T cell leukemia; acute T cell lymphoblastic leukaemia; acute T cell lymphoblastic leukemia; acute T cell lymphocytic leukaemia | ancestors: acute lymphoblastic leukemia, T-cell leukemia, precursor lymphoblastic lymphoma/leukemia, neoplasm of immature B and T cells | def: Acute lymphoblastic leukemia of T-cell origin. It comprises about 15% of childhood cases and 25% of adult cases. It is more common in males than females. (WHO, 2001)",
+"ko": "T세포 급성 림프모구백혈병",
+"alt": [
+"T세포 급성 림프구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016823",
+"concept": "- MONDO:0016823 | mycetoma | syn: Madura foot | ancestors: infectious disease, subcutaneous tissue disorder, disease of primarily extrinsic mechanism, integumentary system disorder | def: Mycetomas are subcutaneous inflammatory pseudotumors containing fungal or actinomycetic (bacteria with branched filaments) granules or grains.",
+"ko": "균종",
+"alt": [
+"마두라발"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0006541",
+"concept": "- MONDO:0006541 | epidermolysis bullosa | syn: epidermolysis bullosa | ancestors: vesiculobullous skin disease, skin disorder, integumentary system disorder, disease by body system or component | def: Epidermolysis bullosa (EB) is a group of genetic skin diseases that cause the skin to blister very easily. Blisters form in response to minor injuries or friction, such as rubbing or scratching. There...",
+"ko": "표피박리수포증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0020753",
+"concept": "- MONDO:0020753 | Orthocoronavirinae infectious disease | syn: Coronavinae infectious disease; coronavirus infectious disease | ancestors: Coronaviridae infectious disease, Nidovirales infectious disease, primary viral infectious disease, viral infectious disease | def: Infectious disease causes by viruses in the subfamily Orthocoronavirinae (coronaviruses). In humans, coronaviruses cause respiratory tract infections that can be mild, such as some cases of the common...",
+"ko": "오르소코로나바이러스아과 감염증",
+"alt": [
+"코로나바이러스 감염증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007338",
+"concept": "- MONDO:0007338 | cleft soft palate | syn: cleft soft palate; cleft velum; cleft velum palatinum | ancestors: cleft palate, orofacial cleft, developmental defect during embryogenesis, hereditary disease | def: Cleft velum is a fissure type embryopathy that affects in varying degrees the soft palate.",
+"ko": "연구개열",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004741",
+"concept": "- MONDO:0004741 | tyrosinemia | ancestors: disorder of tyrosine metabolism, inborn disorder of phenylalanine and tyrosine metabolism, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: An autosomal recessive inherited metabolic disorder caused by mutations in the FAH, HPD, and TAT genes. It is characterized by deficiency of one of the enzymes that are involved in the metabolism of t...",
+"ko": "티로신혈증",
+"alt": [
+"티로신 혈증"
+],
+"organs": [
+"hepatic",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+}
+]

@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0021350",
+"concept": "- MONDO:0021350 | neoplasm of thorax | syn: neoplasm of the thorax; neoplasm of thoracic segment of trunk; thoracic neoplasm; thoracic segment of trunk neoplasm | ancestors: neoplasm, neoplastic disease or syndrome, cancer or benign tumor, disease by etiologic mechanism | def: A neoplasm (disease) that involves the thoracic segment of trunk.",
+"ko": "흉부 신생물",
+"alt": [
+"흉부 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0044983",
+"concept": "- MONDO:0044983 | benign lipomatous neoplasm | syn: adipose tissue benign connective and soft tissue neoplasm; benign adipose tissue neoplasm; benign adipose tissue tumor; benign adipose tissue tumour | ancestors: benign connective and soft tissue neoplasm, tumor of adipose tissue, musculoskeletal system benign neoplasm, connective tissue disorder | def: A benign mesenchymal neoplasm composed of adipose (fatty) tissue. The most common representative of this category is the lipoma.",
+"ko": "양성 지방종성 신생물",
+"alt": [
+"양성 지방조직 종양"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008297",
+"concept": "- MONDO:0008297 | variegate porphyria | syn: Protocoproporphyria; protoporphyrinogen oxidase deficiency; variegate porphyria | ancestors: PPOX-related hepatic porphyria, hepatic porphyria, inherited porphyria, liver disorder | def: Variegate porphyria is a form of acute hepatic porphyria characterized by the occurrence of neuro-visceral attacks with or without the presence of cutaneous lesions.",
+"ko": "다양성 포르피린증",
+"alt": [
+"혼합 포르피린증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017755",
+"concept": "- MONDO:0017755 | inborn disorder of bilirubin metabolism | syn: disorder of bilirubin metabolism and excretion; hereditary bilirubin metabolism disease; inborn disorder of bilirubin metabolism and excretion | ancestors: inborn disorder of porphyrin metabolism, bilirubin metabolism disease, inborn errors of metabolism, porphyrin metabolism disease | def: An instance of bilirubin metabolism disease that is caused by an inherited modification of the individual's genome.",
+"ko": "선천성 빌리루빈 대사 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002856",
+"concept": "- MONDO:0002856 | gallbladder rhabdomyosarcoma | syn: gall bladder rhabdomyosarcoma; gall bladder rhabdomyosarcoma (disease); gallbladder rhabdomyosarcoma; rhabdomyosarcoma (disease) of gall bladder | ancestors: gallbladder sarcoma, rhabdomyosarcoma, gallbladder cancer, soft tissue sarcoma | def: A rhabdomyosarcoma that is located in the gallbladder.",
+"ko": "담낭 횡문근육종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018182",
+"concept": "- MONDO:0018182 | bullous impetigo | ancestors: staphylococcal toxemia, skin disease caused by bacterial infection, staphylococcal infection, bacterial infectious disease | def: Bullous impetigo is a contagious superficial infection occurring in intact skin. Prevalence in the general population is unknown. The disease is characterized by fragile vesicles and flaccid blisters,...",
+"ko": "물집농가진",
+"alt": [
+"수포성 농가진"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021167",
+"concept": "- MONDO:0021167 | myositis disease | syn: inflammation of muscle tissue; inflammatory disorder of muscle (disorder); muscle tissue inflammation | ancestors: myopathy, inflammatory disease, skeletal muscle disorder, disease by developmental or physiological process | def: An inflammatory disease involving a pathogenic inflammatory response in the muscle tissue.",
+"ko": "근염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0008420",
+"concept": "- MONDO:0008420 | seborrheic keratosis | syn: basal cell papilloma; keratosis Seborrheica; keratosis, seborrheic, somatic | ancestors: keratosis, hereditary skin disorder, skin disorder, keratinization disease | def: A common benign skin neoplasm usually affecting older individuals. The lesions usually are multiple and arise in the face, chest, and shoulders. They appear as black or brown, slightly elevated skin l...",
+"ko": "지루각화증",
+"alt": [
+"지루성 각화증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004180",
+"concept": "- MONDO:0004180 | benign urinary system neoplasm | syn: benign neoplasm of the urinary tract; benign neoplasm of urinary tract; benign tumor of the urinary tract; benign tumor of urinary tract | ancestors: benign neoplasm, urinary system neoplasm, neoplasm, urinary system disorder | def: A non-metastasizing neoplasm that arises from the organs that comprise the urinary system. Representative examples include renal oncocytoma, bladder inverted papilloma, and urothelial papilloma.",
+"ko": "양성 비뇨계 신생물",
+"alt": [
+"양성 비뇨기계 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004047",
+"concept": "- MONDO:0004047 | sphenoidal sinus neoplasm | syn: neoplasm of sphenoid sinus; neoplasm of sphenoidal sinus; neoplasm of the sphenoid sinus; neoplasm of the sphenoidal sinus | ancestors: skull base neoplasm, paranasal sinus neoplasm, disorder of facial skeleton, skull neoplasm | def: A benign or malignant neoplasm that affects the sphenoid sinus. Representative examples of benign neoplasms include Schneiderian papilloma and salivary gland-type adenoma. Representative examples of m...",
+"ko": "접형동 신생물",
+"alt": [
+"나비굴 신생물"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013442",
+"concept": "- MONDO:0013442 | nephronophthisis 12 | syn: nephronophthisis (disease) caused by mutation in TTC21B; nephronophthisis 12; nephronophthisis type 12; NPHP12 | ancestors: nephronophthisis, autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease | def: Any nephronophthisis in which the cause of the disease is a mutation in the TTC21B gene.",
+"ko": "신장로 12",
+"alt": [
+"콩팥로 12",
+"네프로노프티시스 12"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000437",
+"concept": "- MONDO:0000437 | cerebellar ataxia | syn: ataxia syndrome; cerebellar ataxias; spinocerebellar ataxia; spinocerebellar degeneration | ancestors: movement disorder, cerebellar degeneration, atactic disorder, nervous system disorder | def: A neurological syndrome characterized by clumsy and uncoordinated movement of the limbs, trunk, and cranial muscles. It results from pathology in the cerebellum and its connections, or in the proprioc...",
+"ko": "소뇌성 운동실조",
+"alt": [
+"소뇌실조"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021203",
+"concept": "- MONDO:0021203 | serous otitis media | syn: SOM | ancestors: non-suppurative otitis media, otitis media, middle ear disorder, inflammatory disease",
+"ko": "삼출성 중이염",
+"alt": [
+"장액성 중이염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0007752",
+"concept": "- MONDO:0007752 | hyperheparinemia | syn: hyperheparinemia | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "고헤파린혈증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003455",
+"concept": "- MONDO:0003455 | bile duct papillary neoplasm | syn: bile duct papillary epithelial neoplasm; bile duct papillary neoplasm; bile duct papillomatosis; biliary papillomatosis | ancestors: benign digestive system neoplasm, intraductal papilloma, bile duct neoplasm, digestive system disorder | def: A non-invasive, papillary epithelial neoplasm that arises from the epithelium of the intrahepatic or extrahepatic bile ducts.",
+"ko": "담관 유두상 신생물",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001851",
+"concept": "- MONDO:0001851 | primary lacrimal atrophy | ancestors: lacrimal apparatus disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "원발성 눈물샘 위축",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009627",
+"concept": "- MONDO:0009627 | Galloway-Mowat syndrome | syn: Galloway syndrome; Galloway-Mowat syndrome; microcephaly, hiatal hernia and nephrotic syndrome; microcephaly-hiatus hernia-nephrotic syndrome | ancestors: syndromic disease, autosomal recessive disease, disease by body system or component, autosomal genetic disease | def: Galloway syndrome is characterized by the association of nephrotic syndrome and central nervous system anomalies.",
+"ko": "갤러웨이-모왓 증후군",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008583",
+"concept": "- MONDO:0008583 | inherited torticollis | syn: congenital torticollis; fibromatosis colli; inherited torticollis (disease); torticollis | ancestors: fibromatosis, hereditary disorder of connective tissue, fibroblastic neoplasm, hereditary disease | def: A congenital benign lesion that occurs in the distal sternocleidomastoid muscle of infants. It is characterized by the presence of plump spindle cells, and collagenous stroma formation.",
+"ko": "유전성 사경",
+"alt": [
+"선천성 근성사경"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0015675",
+"concept": "- MONDO:0015675 | distomatosis | syn: distomiasis; fluke infection | ancestors: parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Distomatosis is a group of parasitoses caused by flat worms that live in contact with epitheliums. Clinical classification depends on the organ infected by the adult parasite: liver, lungs, or intesti...",
+"ko": "디스토마증",
+"alt": [
+"흡충 감염"
+],
+"organs": [
+"hepatic",
+"pulmonary",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0011533",
+"concept": "- MONDO:0011533 | temtamy preaxial brachydactyly syndrome | syn: preaxial brachydactyly syndrome, TEMTAMY type; temtamy preaxial brachydactyly syndrome | ancestors: syndromic disease, skeletal system disorder, autosomal recessive disease, congenital disorder of glycosylation | def: An autosomal recessive disease that is characterized by brachydactyly, hyperphalangism of digits, facial dysmorphism, dental anomalies, sensorineural hearing loss, delayed motor and mental development...",
+"ko": "템타미 축전성 단지증 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

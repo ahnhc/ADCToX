@@ -1,0 +1,246 @@
+[
+{
+"id": "MONDO:0019979",
+"concept": "- MONDO:0019979 | renal hypoplasia, unilateral | ancestors: renal hypoplasia, kidney disorder, disorder of development or morphogenesis, urinary system disorder | def: Unilateral renal hypoplasia is a form of renal hypoplasia, a renal developmental anomaly in which one kidney is small and has a deficit in the number of nephrons present.",
+"ko": "편측성 콩팥 형성저하",
+"alt": [
+"일측성 신장 형성저하"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004170",
+"concept": "- MONDO:0004170 | nodular episcleritis | ancestors: scleral disorder, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "결절성 상공막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013788",
+"concept": "- MONDO:0013788 | Usher syndrome type 3B | syn: HARS Usher syndrome; USH3B; Usher syndrome caused by mutation in HARS | ancestors: Usher syndrome type 3, Usher syndrome, syndromic disease, autosomal recessive disease | def: Any Usher syndrome in which the cause of the disease is a mutation in the HARS gene.",
+"ko": "어셔 증후군 3B형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010686",
+"concept": "- MONDO:0010686 | N syndrome | syn: N syndrome; NSX | ancestors: multiple congenital anomalies/dysmorphic syndrome-intellectual disability, hereditary neoplastic syndrome, multiple congenital anomalies/dysmorphic syndrome, hereditary disease | def: N syndrome is characterized by intellectual deficit, deafness, ocular anomalies, T-cell leukemia, cryptorchidism, hypospadias and spasticity.",
+"ko": "N 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006583",
+"concept": "- MONDO:0006583 | necrobiosis lipoidica | syn: necrobiosis lipoidica | ancestors: dermis disorder, skin disorder, integumentary system disorder, disease by body system or component | def: Necrobiosis lipoidica is a rare skin disorder of collagen degeneration. It is characterized by a rash that occurs on the lower legs. It is more common in women, and there are usually several spots. Th...",
+"ko": "지방유사괴사증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001223",
+"concept": "- MONDO:0001223 | parathyroid gland disorder | syn: disease of parathyroid gland; disease or disorder of parathyroid gland; disorder of parathyroid gland; parathyroid disease | ancestors: endocrine system disorder, disease by body system or component, human disease, disease | def: A disease involving the parathyroid gland.",
+"ko": "부갑상선 질환",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005974",
+"concept": "- MONDO:0005974 | strongyloidiasis | syn: Anguilluliasis; Anguillulosis | ancestors: Rhabditida infectious disease, Nematoda infectious disease, helminthiasis, parasitic infectious disease | def: An infection that is caused by nematodes of the genus Strongyloides, most commonly Strongyloides stercoralis, which is a soil-transmitted helminth, and which is characterized by a variety of gastroint...",
+"ko": "분선충증",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0004571",
+"concept": "- MONDO:0004571 | intestinal impaction | ancestors: intestinal obstruction, intestinal disorder, digestive system disorder, disease by body system or component",
+"ko": "장 분변막힘",
+"alt": [
+"장 매복"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021477",
+"concept": "- MONDO:0021477 | benign neoplasm of sphenoidal sinus | syn: benign neoplasm of sphenoid sinus; benign neoplasm of the sphenoid sinus; benign neoplasm of the sphenoidal sinus; benign sphenoid sinus neoplasm | ancestors: respiratory system benign neoplasm, bone benign neoplasm, sensory organ benign neoplasm, sphenoidal sinus neoplasm | def: A non-metastasizing neoplasm that arises from the sphenoid sinus.",
+"ko": "나비굴 양성 신생물",
+"alt": [
+"접형동 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010085",
+"concept": "- MONDO:0010085 | Schilder disease | syn: myelinoclastic diffuse sclerosis; Schilder disease; Schilder's disease | ancestors: demyelinating disease, neurodegenerative disease, disorder of development or morphogenesis, central nervous system disorder | def: Schilder's disease is a progressive demyelinating disorder of the central nervous system.",
+"ko": "쉴더병",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004109",
+"concept": "- MONDO:0004109 | epiglottis neoplasm | syn: epiglottic neoplasm; epiglottic tumor; epiglottic tumour; epiglottis neoplasm (disease) | ancestors: supraglottis neoplasm, neoplasm of hypopharynx, laryngeal neoplasm, head and neck neoplasm | def: A benign or malignant neoplasm that affects the epiglottis.",
+"ko": "후두덮개 신생물",
+"alt": [
+"후두개 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013995",
+"concept": "- MONDO:0013995 | cholestasis, intrahepatic, of pregnancy, 3 | syn: cholestasis, intrahepatic, of pregnancy 3; cholestasis, intrahepatic, of pregnancy type 3 | ancestors: familial intrahepatic cholestasis, intrahepatic cholestasis of pregnancy, liver disorder, inborn errors of metabolism",
+"ko": "임신 중 간내 담즙정체 3형",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001014",
+"concept": "- MONDO:0001014 | chronic leukemia | syn: chronic leukaemia (disease); chronic leukemia; chronic leukemia (disease); leukaemia (disease), chronic | ancestors: leukemia, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm, neoplasm | def: A slowly progressing leukemia characterized by a clonal (malignant) proliferation of maturing and mature myeloid cells or mature lymphocytes. When the clonal cellular population is composed of myeloid...",
+"ko": "만성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007985",
+"concept": "- MONDO:0007985 | metatarsus varus, type 1 | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "중족내반, 1형",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003776",
+"concept": "- MONDO:0003776 | renal pelvis inverted papilloma | syn: inverted papilloma of kidney pelvis; inverted papilloma of renal pelvis; inverted papilloma of the kidney pelvis; inverted papilloma of the renal pelvis | ancestors: renal pelvis urothelial papilloma, inverted urothelial papilloma, renal pelvis papillary tumor, urothelial papilloma | def: A neoplasm of the renal pelvis in which the epithelial cells grow downward into the underlying supportive tissue.",
+"ko": "신우 내번 유두종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019159",
+"concept": "- MONDO:0019159 | Loeffler endocarditis | syn: eosinophilic endocarditis; eosinophilic endomyocardial disease | ancestors: non-familial restrictive cardiomyopathy, restrictive cardiomyopathy, intrinsic cardiomyopathy, cardiomyopathy | def: Loeffler's endocarditis is a rare restrictive cardiomyopathy characterized by hypereosinophilia and fibrous thickening of the endocardium, with usually large thrombi against the ventricle walls, that ...",
+"ko": "뢰플러 심내막염",
+"alt": [
+"호산구성 심내막염"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005304",
+"concept": "- MONDO:0005304 | biliary tract neoplasm | syn: biliary tract neoplasm; biliary tract neoplasm (disease); biliary tree neoplasm; biliary tree neoplasm (disease) | ancestors: hepatobiliary neoplasm, biliary tract disorder, hepatobiliary disorder, digestive system neoplasm | def: A neoplasm that involves the biliary tract.",
+"ko": "담도 신생물",
+"alt": [
+"담도 종양"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003757",
+"concept": "- MONDO:0003757 | paraplegia | ancestors: palsy, central nervous system disorder, nervous system disorder, disease by body system or component | def: Complete paralysis of the lower half of the body including both legs, often caused by damage to the spinal cord.",
+"ko": "하반신 마비",
+"alt": [
+"대마비"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0020696",
+"concept": "- MONDO:0020696 | vitamin B12 deficiency | syn: cobalamin deficiency; hypocobalaminemia; vitamin b12 deficiency | ancestors: metabolic disease, vitamin B deficiency, disease by developmental or physiological process, vitamin deficiency disorder | def: A disease characterized by low serum levels of vitamin B12, either inherited or acquired.",
+"ko": "비타민 B12 결핍증",
+"alt": [],
+"organs": [
+"haematologic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0003243",
+"concept": "- MONDO:0003243 | hepatocellular clear cell carcinoma | syn: clear cell carcinoma of liver cells; clear cell carcinoma of the liver cells; clear cell hepatocellular cancer; clear cell hepatocellular carcinoma | ancestors: clear cell adenocarcinoma, hepatocellular carcinoma, adenocarcinoma, carcinoma of liver and intrahepatic biliary tract | def: A morphologic variant of hepatocellular carcinoma characterized by the presence of clear cells.",
+"ko": "간세포성 투명세포 암종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

@@ -1,0 +1,248 @@
+[
+{
+"id": "MONDO:0016537",
+"concept": "- MONDO:0016537 | lymphoproliferative syndrome | syn: lymphoproliferative disorder; lymphoproliferative syndrome | ancestors: inborn error of immunity, hereditary disease, immune system disorder, disease of genetic or genomic mechanism | def: A disorder characterized by proliferation of lymphocytes at various stages of differentiation. Lymphoproliferative disorders can be neoplastic (clonal, as in lymphomas and leukemias) or reactive (poly...",
+"ko": "림프증식 증후군",
+"alt": [
+"림프증식성 질환"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0850230",
+"concept": "- MONDO:0850230 | chronic urticaria | ancestors: urticaria, dermatitis, skin disorder, inflammatory disease | def: An urticaria that is characterized by the presence of urticaria for a period exceeding 6 weeks, assuming symptoms for most days of the week.",
+"ko": "만성 두드러기",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0030549",
+"concept": "- MONDO:0030549 | hearing loss, autosomal dominant 81 | syn: DFNA81; hearing loss, autosomal dominant 81 | ancestors: autosomal dominant nonsyndromic hearing loss, autosomal dominant disease, nonsyndromic genetic hearing loss, autosomal genetic disease",
+"ko": "상염색체 우성 난청 81형",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015622",
+"concept": "- MONDO:0015622 | wound myiasis | syn: traumatic myiasis | ancestors: cutaneous myiasis, myiasis, parasitic ectoparasitic infectious disease, parasitic skin disorder",
+"ko": "상처 구더기증",
+"alt": [
+"외상성 구더기증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021412",
+"concept": "- MONDO:0021412 | polyp of maxillary sinus | syn: maxillary antral polyp; maxillary sinus polyp; polyp of the maxillary sinus | ancestors: paranasal sinus disorder, polyp, mouth disorder, disorder of facial skeleton | def: A polyp that involves the maxillary sinus.",
+"ko": "위턱굴 용종",
+"alt": [
+"상악동 용종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004707",
+"concept": "- MONDO:0004707 | anal canal carcinoma in situ | syn: anal canal in situ carcinoma; carcinoma in situ of anal canal; stage 0 anal canal cancer; stage 0 anal canal cancer aJCC v6 | ancestors: rectum carcinoma in situ, anal canal carcinoma, intestine carcinoma in situ, rectal carcinoma | def: A carcinoma in situ involving a anal canal.",
+"ko": "항문관 상피내암종",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001921",
+"concept": "- MONDO:0001921 | chronic atticoantral disease | syn: chronic atticoantral suppurative otitis media | ancestors: chronic purulent otitis media, suppurative otitis media, chronic otitis media, otitis media | def: A chronic purulent otitis media which involves perforation in the attic region (pars flaccida of the tympanic membrane) or at the posterosuperior margin, with in-growth of squamous epithelium into the...",
+"ko": "만성 상고실-유양동 질환",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006592",
+"concept": "- MONDO:0006592 | parapsoriasis | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: An inflammatory skin disorder of unknown etiology characterized by papules and plaques or scaly patches resembling psoriasis.",
+"ko": "유건선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0044917",
+"concept": "- MONDO:0044917 | T-lymphoblastic lymphoma | syn: Precur. T-lymphoblastic lymphoma; precursor T Lymphoblastic lymphoma; precursor T-cell Lymphoblastic lymphoma; precursor T-Lymphoblastic lymphoma | ancestors: lymphoblastic lymphoma, T lymphoblastic leukemia/lymphoma, T-cell non-Hodgkin lymphoma, precursor lymphoblastic lymphoma/leukemia | def: The most frequent type of lymphoblastic lymphoma. It comprises approximately 85-90% of cases. It is more frequently seen in adolescent males. It frequently presents with a mass lesion in the mediastin...",
+"ko": "T림프모구 림프종",
+"alt": [
+"T세포 림프모구성 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003115",
+"concept": "- MONDO:0003115 | subglottic hemangioma | syn: angioma of subglottis; angioma of the subglottis; hemangioma of subglottis; hemangioma of the subglottis | ancestors: hemangioma, benign neoplasm of subglottis, benign blood vessel neoplasm, subglottis neoplasm | def: A hemangioma arising from the subglottic area.",
+"ko": "성문하 혈관종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005813",
+"concept": "- MONDO:0005813 | interdigitating dendritic cell sarcoma | syn: interdigitating cell sarcoma/tumor; interdigitating Dendritic cell sarcoma; interdigitating Dendritic cell sarcoma/tumor | ancestors: dendritic cell sarcoma, immune system cancer, leukocyte disorder, sarcoma | def: A neoplastic proliferation of spindle to ovoid cells which show phenotypic features similar to those of interdigitating dendritic cells. The clinical course is generally aggressive. (WHO, 2008)",
+"ko": "깍지낌 수지상세포 육종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004947",
+"concept": "- MONDO:0004947 | B-cell acute lymphoblastic leukemia | syn: B lymphoblastic leukemia/lymphoma; precursor B lymphoblastic leukemia/lymphoma; precursor B-lymphoblastic lymphoma/leukemia | ancestors: acute lymphoblastic leukemia, B-cell non-Hodgkin lymphoma, precursor lymphoblastic lymphoma/leukemia, neoplasm of immature B and T cells | def: A neoplasm of lymphoblasts committed to the B-cell lineage, typically composed of small to medium-sized blast cells. When the neoplasm involves predominantly the bone marrow and the peripheral blood, ...",
+"ko": "B세포 급성 림프모구백혈병",
+"alt": [
+"B세포 급성 림프구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021478",
+"concept": "- MONDO:0021478 | benign neoplasm of nasopharynx | syn: benign nasopharyngeal neoplasm; benign nasopharyngeal tumor; benign nasopharyngeal tumour; benign neoplasm of the nasopharynx | ancestors: respiratory system benign neoplasm, nasopharyngeal neoplasm, benign neoplasm of pharynx, respiratory system disorder | def: A benign neoplasm that involves the nasopharynx.",
+"ko": "비인두 양성 신생물",
+"alt": [
+"비인두 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004604",
+"concept": "- MONDO:0004604 | Hodgkin's lymphoma, lymphocytic-histiocytic predominance | syn: classic Hodgkin lymphoma, lymphocyte-rich type; Hodgkin lymphoma, lymphocyte-rich; Hodgkin's disease, lymphocyte predominance [obs]; LRCHL | ancestors: classic Hodgkin lymphoma, hereditary disease, Hodgkins lymphoma, disease of genetic or genomic mechanism | def: A subtype of classical Hodgkin lymphoma with scattered Hodgkin and Reed-Sternberg cells and a nodular or less often diffuse cellular background consisting of small lymphocytes and with an absence of n...",
+"ko": "림프구 풍부형 고전적 호지킨 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0023601",
+"concept": "- MONDO:0023601 | non-classic congenital adrenal hyperplasia | syn: late-onset congenital adrenal hyperplasia; non-classic congenital adrenal hyperplasia | ancestors: congenital adrenal hyperplasia, steroid inherited metabolic disorder, chronic primary adrenal insufficiency, hereditary endocrine growth disease | def: A milder form of congenital adrenal hyperplasia characterized by decreased activity of an enzyme in the steroidogenic pathway, typically presenting later in life, that does not require life-long corti...",
+"ko": "비고전형 선천성 부신과다형성",
+"alt": [
+"후기 발병 선천성 부신과다형성"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013385",
+"concept": "- MONDO:0013385 | Treacher Collins syndrome 2 | syn: POLR1D Treacher-Collins syndrome; Treacher Collins syndrome 2; Treacher Collins syndrome type 2; Treacher-Collins syndrome caused by mutation in POLR1D | ancestors: Treacher-Collins syndrome, autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability | def: Any Treacher-Collins syndrome in which the cause of the disease is a mutation in the POLR1D gene.",
+"ko": "트리처 콜린스 증후군 2",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004484",
+"concept": "- MONDO:0004484 | gallbladder melanoma | syn: gall bladder melanoma; gall bladder melanoma (disease); gallbladder malignant melanoma; gallbladder melanoma | ancestors: gallbladder cancer, digestive system melanoma, digestive system cancer, gallbladder neoplasm | def: A melanoma that arises from the gallbladder.",
+"ko": "담낭 흑색종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006994",
+"concept": "- MONDO:0006994 | tarsal tunnel syndrome | ancestors: syndromic disease, tibial neuropathy, disease by body system or component, mononeuropathy | def: Tarsal tunnel syndrome is a nerve disorder that is characterized by pain in the ankle, foot, and toes. This condition is caused by compression of the posterior tibial nerve, which runs through a canal...",
+"ko": "족근관 증후군",
+"alt": [
+"발목터널 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008006",
+"concept": "- MONDO:0008006 | Moebius syndrome | syn: MBS; Mobius syndrome; Moebius sequence; Moebius Syndrome | ancestors: facial nerve disorder, syndromic disease, congenital nervous system disorder, nuclear oculomotor paralysis | def: A very rare congenital cranial dysinnervation disorder characterized by unilateral or bilateral non progressive congenital facial palsy (VII cranial nerve) with impairments of ocular abduction (VI cra...",
+"ko": "뫼비우스 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009169",
+"concept": "- MONDO:0009169 | endocardial fibroelastosis | syn: Elastomyofibrosis; endocardial fibroelastosis | ancestors: endocardium disorder, heart disorder, cardiovascular disorder, disease by body system or component | def: Endomyocardial fibroelastosis is a cause of unexplained childhood cardiac insufficiency. It results from diffuse thickening of the endocardium leading to dilated myocardiopathy in the majority of case...",
+"ko": "심내막 섬유탄성증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+}
+]

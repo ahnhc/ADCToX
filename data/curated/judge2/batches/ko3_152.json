@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0001085",
+"concept": "- MONDO:0001085 | interstitial nephritis | syn: Tubulointerstitial nephritis | ancestors: nephritis, kidney disorder, inflammatory disease, urinary system disorder | def: Inflammation of the renal tubules and supporting tissues of the kidney.",
+"ko": "간질성 신염",
+"alt": [
+"세뇨관간질성 신염"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020320",
+"concept": "- MONDO:0020320 | acute myeloblastic leukemia with maturation | syn: acute M2 myeloid leukaemia; acute M2 myeloid leukemia; acute myeloblastic leukaemia M2; acute myeloblastic leukemia M2 | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: An acute myeloid leukemia (AML) characterized by blasts with evidence of maturation to more mature neutrophils. (WHO, 2001)",
+"ko": "성숙을 동반한 급성 골수모구성 백혈병",
+"alt": [
+"급성 M2 골수성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017967",
+"concept": "- MONDO:0017967 | testicular agenesis | syn: bilateral anorchia | ancestors: 46 XY differences of sex development, disorder of sexual differentiation, gonadal disorder, developmental defect during embryogenesis",
+"ko": "고환 무발생",
+"alt": [
+"양측 무고환증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0043555",
+"concept": "- MONDO:0043555 | infantile diarrhea | syn: diarrheal disease of infancy; infantile diarrhea; infantile diarrheal disease; infantile onset diarrheal disease | ancestors: dysentery, inflammatory diarrhea, acute diarrhea, intestinal infectious disease | def: Diarrhea occurring in infants from newborn to 24-months old.",
+"ko": "영아 설사",
+"alt": [
+"영아 설사병"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001444",
+"concept": "- MONDO:0001444 | Chagas disease | syn: Chagas disease; Chagas' disease; infection by trypanosoma cruzi; Trypanosoma cruzi caused disease or disorder | ancestors: trypanosomiasis, vector-borne disease, protozoa infectious disease, infectious disease | def: A parasitic infection caused by Trypanosoma cruzi. It is transmitted by insect bites. It is characterized by an acute and chronic phase; in the acute phase patients may have fever, malaise, and swelli...",
+"ko": "샤가스병",
+"alt": [
+"아메리카 트리파노소마증"
+],
+"organs": [
+"cardiovascular",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0018408",
+"concept": "- MONDO:0018408 | cystic echinococcosis | syn: hydatid disease; Hydatidosis | ancestors: echinococcus granulosus infectious disease, echinococcosis, Cestode infectious disease, helminthiasis",
+"ko": "낭성 포충증",
+"alt": [
+"낭포성 에키노코쿠스증",
+"포충증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006835",
+"concept": "- MONDO:0006835 | minimal change disease | syn: lipoid nephrosis; minimal change disease; minimal change glomerulonephritis; minimal change nephropathy | ancestors: glomerulonephritis, podocytopathy, nephritis, glomerular disorder | def: A glomerular disorder characterized by the electron microscopic finding of loss of podocyte foot processes. Light microscopic examination does not show glomerular changes. Patients present with protei...",
+"ko": "미세변화병",
+"alt": [
+"미세변화 신증후군"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000949",
+"concept": "- MONDO:0000949 | conjunctival degeneration | ancestors: conjunctival disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "결막 변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0003708",
+"concept": "- MONDO:0003708 | extrahepatic bile duct small cell adenocarcinoma | syn: extrahepatic bile duct small cell NEC; extrahepatic bile duct small cell neuroendocrine carcinoma; Oat cell carcinoma of extrahepatic bile duct; Oat cell carcinoma of the extrahepatic bile duct | ancestors: small cell carcinoma, extrahepatic bile duct adenocarcinoma, digestive system neuroendocrine neoplasm, neuroendocrine carcinoma | def: An aggressive, high-grade and poorly differentiated carcinoma with neuroendocrine differentiation that arises from the extrahepatic bile ducts. It is characterized by the presence of malignant small c...",
+"ko": "간외 담관 소세포 선암종",
+"alt": [
+"간외 담관 소세포 신경내분비암종"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001594",
+"concept": "- MONDO:0001594 | Achilles bursitis | syn: Achilles bursitis or tendinitis; capped hock | ancestors: bursitis, tendinitis, skeletal ligament disorder, arthropathy | def: An bursitis involving a pathogenic inflammatory response in the calcaneal tendon.",
+"ko": "아킬레스 점액낭염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000748",
+"concept": "- MONDO:0000748 | mastoiditis | syn: inflammation of mastoid process of temporal bone; mastoid process of temporal bone inflammation; mastoid process of temporal boneitis; mastoiditis | ancestors: bone inflammation disease, inflammatory disease, bone disorder, disease by developmental or physiological process | def: Inflammation of the mucosal lining of the mastoid antrum and mastoid air cell system of the mastoid process.",
+"ko": "꼭지돌기염",
+"alt": [
+"유양돌기염"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002301",
+"concept": "- MONDO:0002301 | frontal sinus squamous cell carcinoma | syn: epidermoid carcinoma of frontal sinus; epidermoid carcinoma of the frontal sinus; frontal sinus epidermoid carcinoma; frontal sinus squamous cell carcinoma | ancestors: frontal sinus cancer, paranasal sinus squamous cell carcinoma, paranasal sinus carcinoma, frontal sinus neoplasm | def: A squamous cell carcinoma that arises from the mucosal epithelial surface of the frontal sinus. Patients may present with nasal fullness, obstruction, and/or epistaxis.",
+"ko": "전두동 편평세포암종",
+"alt": [
+"이마굴 편평세포암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013430",
+"concept": "- MONDO:0013430 | Meier-Gorlin syndrome 3 | syn: Meier-Gorlin syndrome 3; Meier-Gorlin syndrome caused by mutation in ORC6; Meier-Gorlin syndrome type 3; ORC6 Meier-Gorlin syndrome | ancestors: Meier-Gorlin syndrome, syndromic disease, autosomal recessive disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome | def: Any Meier-Gorlin syndrome in which the cause of the disease is a mutation in the ORC6 gene.",
+"ko": "마이어-고를린 증후군 3",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019809",
+"concept": "- MONDO:0019809 | congenital aortic valve insufficiency | syn: congenital aortic insufficiency; congenital insufficiency of aortic valve; Congential aortic valve insufficiency | ancestors: aortic valve insufficiency, disorder of development or morphogenesis, aortic valve disorder, vascular insufficiency disorder | def: Dysfunction of the aortic valve characterized by incomplete valve closure that is present at birth.",
+"ko": "선천성 대동맥판 폐쇄부전",
+"alt": [
+"선천성 대동맥판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0013854",
+"concept": "- MONDO:0013854 | primary ciliary dyskinesia 17 | syn: CCDC103 primary ciliary dyskinesia; CILD17; ciliary dyskinesia, primary, type 17; primary ciliary dyskinesia 17 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the CCDC103 gene.",
+"ko": "일차성 섬모운동이상증 17형",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024271",
+"concept": "- MONDO:0024271 | intestinal helminthiasis | syn: intestine parasitic helminthiasis infectious disease | ancestors: helminthiasis, parasitic intestinal disorder, parasitic infectious disease, intestinal disorder | def: A parasitic helminthiasis infectious disease that involves the intestine.",
+"ko": "장 연충증",
+"alt": [
+"장내 기생충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0011644",
+"concept": "- MONDO:0011644 | pars planitis | syn: inflammation of pars plana of ciliary body; pars plana of ciliary body inflammation; pars plana of ciliary bodyitis; pars planitis | ancestors: ciliary body disorder, chorioretinitis, intermediate uveitis, iris disorder | def: An inflammatory disorder of the cilliary body in the uvea that affects healthy, younger individuals who are often asymptomatic. It has a long clinical course with relapses and remissions. Symptoms inc...",
+"ko": "평면부염",
+"alt": [
+"섬모체 평면부 염증"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013111",
+"concept": "- MONDO:0013111 | acute infantile liver failure due to synthesis defect of mtDNA-encoded proteins | syn: acute infantile liver failure due to synthesis defect of mitochondrial DNA-encoded proteins; acute infantile liver failure due to synthesis defect of mtDNA-encoded proteins; infantile liver failure caused by mutation in TRMU; LFIT | ancestors: infantile liver failure, mitochondrial oxidative phosphorylation disorder, acute liver failure, hereditary disease | def: Acute infantile liver failure due to mtDNA-encoded proteins synthesis defect is a very rare mitochondrial respiratory chain deficiency described in fewer than 10 infants, primarily of middle Eastern d...",
+"ko": "mtDNA 암호화 단백질 합성 결함에 의한 급성 영아 간부전",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001429",
+"concept": "- MONDO:0001429 | transient arthropathy | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: Arthropathy that is not permanent.",
+"ko": "일과성 관절병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0018932",
+"concept": "- MONDO:0018932 | cirrhotic cardiomyopathy | ancestors: non-familial hypertrophic cardiomyopathy, non-familial dilated cardiomyopathy, hypertrophic cardiomyopathy, dilated cardiomyopathy | def: Cirrhotic cardiomyopathy is the term used to describe a constellation of features indicative of abnormal heart structure and function in patients with cirrhosis. These include systolic and diastolic d...",
+"ko": "간경변성 심근병증",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+}
+]

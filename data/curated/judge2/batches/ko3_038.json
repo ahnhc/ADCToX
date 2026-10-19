@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0011242",
+"concept": "- MONDO:0011242 | Bartter disease type 4A | syn: BARTS4A; Bartter disease type 4a; Bartter syndrome caused by mutation in BSND; BSND | ancestors: Bartter syndrome type 4, Bartter syndrome, syndromic disease, renal tubular transport disease | def: Any Bartter syndrome in which the cause of the disease is a mutation in the BSND gene.",
+"ko": "바터병 4A형",
+"alt": [
+"바터 증후군 4A형"
+],
+"organs": [
+"renal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0100234",
+"concept": "- MONDO:0100234 | paroxysmal familial ventricular fibrillation | syn: idiopathic ventricular fibrillation; idiopathic ventricular fibrillation, non Brugada type; IVF; paroxysmal familial ventricular fibrillation | ancestors: ventricular fibrillation, cardiogenetic rhythm disorder, cardiac rhythm disease, cardiogenetic disease | def: A rare, genetic, cardiac rhythm disease characterized by ventricular fibrillation in the absence of any structural or functional heart disease, or known repolarization abnormalities. The presence of J...",
+"ko": "발작성 가족성 심실세동",
+"alt": [
+"특발성 심실세동"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018669",
+"concept": "- MONDO:0018669 | snakebite envenomation | syn: poisoning by venomous snake | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease",
+"ko": "뱀독 중독",
+"alt": [
+"뱀 교상"
+],
+"organs": [
+"haematologic",
+"renal",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004741",
+"concept": "- MONDO:0004741 | tyrosinemia | ancestors: disorder of tyrosine metabolism, inborn disorder of phenylalanine and tyrosine metabolism, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: An autosomal recessive inherited metabolic disorder caused by mutations in the FAH, HPD, and TAT genes. It is characterized by deficiency of one of the enzymes that are involved in the metabolism of t...",
+"ko": "티로신혈증",
+"alt": [
+"티로신 혈증"
+],
+"organs": [
+"hepatic",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008511",
+"concept": "- MONDO:0008511 | proximal symphalangism | syn: proximal symphalangism; proximal symphalangism (disease); symphalangism, Cushing type | ancestors: symphalangism, autosomal dominant disease, congenital limb malformation, skeletal system disorder | def: Proximal symphalangism is a very rare, genetic bone disorder characterized by ankylosis of the proximal interphalangeal joints, carpal and tarsal bone fusion, and conductive hearing loss in some patie...",
+"ko": "근위 지절유합증",
+"alt": [
+"근위 지골유합증"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0043994",
+"concept": "- MONDO:0043994 | acute cholecystitis | syn: acute cholecystitis | ancestors: acute cholangitis, cholecystitis, cholangitis, acute disease | def: Acute inflammation of the gallbladder.",
+"ko": "급성 담낭염",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0008960",
+"concept": "- MONDO:0008960 | Charcot-Marie-Tooth disease-hearing loss-intellectual disability syndrome | syn: Charcot-Marie-Tooth disease-hearing loss-intellectual disability syndrome; hereditary motor and sensory neuropathy with deafness, intellectual disability and absent sensory large myelinated fibers; hereditary motor and sensory neuropathy with deafness, intellectual disability and absent sensory large myelinated fibres | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism | def: A rare demyelinating hereditary motor and sensory neuropathy characterized by early-onset, slowly progressive, distal muscular weakness and atrophy with no sensory impairment, congenital sensorineural...",
+"ko": "샤르코-마리-투스병-난청-지적 장애 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001952",
+"concept": "- MONDO:0001952 | parietal lobe cancer | syn: cancer of parietal lobe; malignant neoplasm of parietal lobe; malignant parietal lobe neoplasm; parietal lobe cancer | ancestors: cerebral hemisphere cancer, neoplasm of parietal lobe, supratentorial cancer, neoplasm of cerebral hemisphere | def: A malignant neoplasm involving the parietal lobe",
+"ko": "두정엽암",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008205",
+"concept": "- MONDO:0008205 | patella aplasia/hypoplasia | syn: patella aplasia or hypoplasia; PTLAH | ancestors: hereditary disease, dysostosis, disease of genetic or genomic mechanism, bone development disease | def: Isolated patella aplasia-hypoplasia is an extremely rare genetic condition characterized by congenital absence or marked reduction of the patellar bone described in only a few families to date.",
+"ko": "무릎뼈 무형성/저형성",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004665",
+"concept": "- MONDO:0004665 | nodular sclerosis classical Hodgkin lymphoma | syn: Hodgkin lymphoma, nodular sclerosis; Hodgkin's disease nodular sclerosis; Hodgkin's disease, nodular sclerosis NOS (morphologic abnormality); Hodgkin's disease, nodular sclerosis of unspecified site | ancestors: classic Hodgkin lymphoma, hereditary disease, Hodgkins lymphoma, disease of genetic or genomic mechanism | def: A subtype of classical Hodgkin lymphoma characterized by collagen bands that surround at least one nodule, and Hodgkin and Reed-Sternberg cells with lacunar type morphology. (WHO, 2008)",
+"ko": "결절경화형 고전적 호지킨 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007710",
+"concept": "- MONDO:0007710 | facial hemiatrophy | syn: hemifacial atrophy; parry-Romberg syndrome; progressive facial hemiatrophy; progressive hemifacial atrophy | ancestors: facial nerve disorder, syndromic disease, cranial nerve neuropathy, peripheral nervous system disorder | def: Progressive hemifacial atrophy (PHA) is a rare acquired disorder, characterized by unilateral slowly progressive atrophy of the skin and soft tissues of half of the face leading to a sunken appearance...",
+"ko": "안면 반측위축",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024263",
+"concept": "- MONDO:0024263 | neonatal aspiration syndrome | ancestors: syndromic disease, lung disorder, disease by body system or component, lower respiratory tract disorder | def: Aspiration of meconium, blood, amniotic fluid or gastric contents around the time of delivery resulting in clinical symptoms from airway obstruction, parenchymal injury, and ventilation-perfusion mism...",
+"ko": "신생아 흡인 증후군",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001338",
+"concept": "- MONDO:0001338 | acute apical periodontitis | syn: acute apical periodontitis of pulpal origin | ancestors: acute pericementitis, periapical periodontitis, periodontitis, acute disease",
+"ko": "급성 치근단 치주염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005576",
+"concept": "- MONDO:0005576 | cryoglobulinemia | syn: cryoglobulinemia | ancestors: type IV hypersensitivity disease, autoimmune disease, hypersensitivity reaction disease, immune system disorder | def: Cryoglobulinemia is a type of vasculitis that is caused by abnormal proteins (antibodies) in the blood called 'cryoglobulins.' At cold temperatures, these proteins become solid or gel-like, which can ...",
+"ko": "한랭글로불린혈증",
+"alt": [
+"냉글로불린혈증"
+],
+"organs": [
+"haematologic",
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009060",
+"concept": "- MONDO:0009060 | cystic disease of lung | syn: cystic disease of lung | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "폐 낭성 질환",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005789",
+"concept": "- MONDO:0005789 | hepatitis D virus infection | syn: HDV; Hepatitis D; Hepatitis D virus; hepatitis delta | ancestors: viral hepatitis, post-viral disorder, hepatitis, digestive system infectious disorder | def: Inflammation of the liver in humans caused by hepatitis delta virus, a defective RNA virus that can only infect hepatitis B patients. For its viral coating, hepatitis delta virus requires the hepatiti...",
+"ko": "D형 간염 바이러스 감염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001959",
+"concept": "- MONDO:0001959 | labyrinthine bilateral reactive loss | syn: loss of labyrinthine reactivity, bilateral | ancestors: inner ear disorder, auditory system disorder, disorder of ear, disease by body system or component",
+"ko": "양측 미로 반응 소실",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005080",
+"concept": "- MONDO:0005080 | portal hypertension | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder | def: Increased blood pressure in the portal venous system. It is most commonly caused by cirrhosis. Other causes include portal vein thrombosis, Budd-Chiari syndrome, and right heart failure. Complications...",
+"ko": "문맥압 항진증",
+"alt": [
+"문맥 고혈압"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018020",
+"concept": "- MONDO:0018020 | mercury poisoning | syn: hydrargyria; mercurialism; Mercury intoxication | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Mercury poisoning is caused mainly through ingestion or inhalation of any of the 3 forms of mercury, elemental, organic, and inorganic. Exposure to elemental mercury affects the pulmonary (inhalation ...",
+"ko": "수은 중독",
+"alt": [],
+"organs": [
+"pulmonary",
+"renal",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015092",
+"concept": "- MONDO:0015092 | cleft hard palate | ancestors: cleft palate, orofacial cleft, developmental defect during embryogenesis, hereditary disease",
+"ko": "경구개 갈림증",
+"alt": [
+"경구개열"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+}
+]

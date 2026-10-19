@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0001770",
+"concept": "- MONDO:0001770 | gastrin secretion abnormality | ancestors: endocrine pancreas disorder, pancreas disorder, digestive system disorder, endocrine system disorder",
+"ko": "가스트린 분비 이상",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011436",
+"concept": "- MONDO:0011436 | autosomal recessive distal spinal muscular atrophy 1 | syn: autosomal recessive distal spinal muscular atrophy 1; autosomal recessive distal spinal muscular atrophy type 1; autosomal recessive spinal muscular atrophy with respiratory distress; dHMN6 | ancestors: spinal muscular atrophy, neuronopathy, distal hereditary motor, autosomal recessive, anterior horn disorder, hereditary motor neuron disease | def: Spinal muscular atrophy with respiratory distress type 1 is a rare genetic motor neuron disease characterized by severe respiratory distress/respiratory failure in association with diaphragmatic event...",
+"ko": "상염색체 열성 원위 척수성 근위축증 1",
+"alt": [],
+"organs": [
+"pulmonary",
+"neurologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006554",
+"concept": "- MONDO:0006554 | granuloma annulare | syn: granuloma annulare | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: Granuloma annulare is a long-term (chronic) skin disease consisting of a rash with reddish bumps arranged in a circle or ring. The most commonly affected areas are the forearms, hands and feet. The le...",
+"ko": "환상육아종",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0033203",
+"concept": "- MONDO:0033203 | nephrotic syndrome 14 | syn: familial steroid-resistant nephrotic syndrome with adrenal insufficiency; nephrotic syndrome 14; nephrotic syndrome, type 14; primary adrenal insufficiency-steroid-resistant nephrotic syndrome due to SGPL1 deficiency | ancestors: familial nephrotic syndrome, syndromic dyslipidemia, disorder of phospholipids, sphingolipids and fatty acids biosynthesis, steroid-resistant nephrotic syndrome",
+"ko": "신증후군 14형",
+"alt": [
+"부신기능부전 동반 가족성 스테로이드 저항성 신증후군"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008533",
+"concept": "- MONDO:0008533 | teeth, supernumerary | syn: teeth, supernumerary | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease | def: An extra tooth, erupted or unerupted, resembling or unlike the other teeth in the group to which it belongs. Its presence may cause malposition of adjacent teeth or prevent their eruption.",
+"ko": "과잉치",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0001994",
+"concept": "- MONDO:0001994 | sphenoidal sinus cancer | syn: cancer of sphenoidal sinus; malignant neoplasm of sphenoid sinus; malignant neoplasm of sphenoidal sinus; malignant neoplasm of the sphenoid sinus | ancestors: paranasal sinus carcinoma, sphenoidal sinus neoplasm, bone carcinoma, paranasal sinus cancer | def: A malignant neoplasm involving the sphenoidal sinus.",
+"ko": "나비굴암",
+"alt": [
+"접형동암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013745",
+"concept": "- MONDO:0013745 | Joubert syndrome 14 | syn: JBTS14; Joubert syndrome 14; Joubert syndrome caused by mutation in TMEM237; Joubert syndrome type 14 | ancestors: Joubert syndrome with oculorenal defect, Joubert syndrome with ocular defect, Joubert syndrome, syndromic disease | def: Any Joubert syndrome in which the cause of the disease is a mutation in the TMEM237 gene.",
+"ko": "주베르 증후군 14형",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010431",
+"concept": "- MONDO:0010431 | Joubert syndrome 10 | syn: JBTS10; Joubert syndrome 10; Joubert syndrome 10, X-linked recessive; Joubert syndrome caused by mutation in OFD1 | ancestors: Joubert syndrome, OFD1-related ciliopathy, syndromic disease, ciliopathy | def: Any Joubert syndrome in which the cause of the disease is a mutation in the OFD1 gene.",
+"ko": "주베르 증후군 10",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013782",
+"concept": "- MONDO:0013782 | pseudohypoaldosteronism type 2E | syn: CUL3 pseudohypoaldosteronism type 2; Cul3 pseudohypoaldosteronism type 2; PHA2E; pseudohypoaldosteronism type 2 caused by mutation in CUL3 | ancestors: pseudohypoaldosteronism type 2, inherited pseudohypoaldosteronism, pseudohypoaldosteronism, inherited kidney disorder | def: Any pseudohypoaldosteronism type 2 in which the cause of the disease is a mutation in the CUL3 gene.",
+"ko": "가성저알도스테론증 2E형",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011456",
+"concept": "- MONDO:0011456 | nephronophthisis 3 | syn: nephronophthisis (disease) caused by mutation in NPHP3; nephronophthisis 3; nephronophthisis type 3; NPH3 | ancestors: nephronophthisis, autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease | def: Any nephronophthisis in which the cause of the disease is a mutation in the NPHP3 gene.",
+"ko": "신장로 3형",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013432",
+"concept": "- MONDO:0013432 | Meier-Gorlin syndrome 5 | syn: CDC6 Meier-Gorlin syndrome; Meier-Gorlin syndrome 5; Meier-Gorlin syndrome caused by mutation in CDC6; Meier-Gorlin syndrome type 5 | ancestors: Meier-Gorlin syndrome, syndromic disease, autosomal recessive disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome | def: Any Meier-Gorlin syndrome in which the cause of the disease is a mutation in the CDC6 gene.",
+"ko": "마이어-고를린 증후군 5",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021489",
+"concept": "- MONDO:0021489 | benign neoplasm of sweat gland | syn: benign neoplasm of the sweat gland; benign sweat gland neoplasm; benign sweat gland tumor; benign sweat gland tumour | ancestors: sweat gland neoplasm, benign neoplasm of skin, epidermal appendage tumor, sweat gland disorder | def: A benign neoplasm that involves the sweat gland.",
+"ko": "땀샘 양성 신생물",
+"alt": [
+"한선 양성 종양"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001752",
+"concept": "- MONDO:0001752 | alveolar periostitis | syn: alveolitis of jaw; dry socket; extrinsic allergic alveolitis of jaw skeleton; jaw skeleton extrinsic allergic alveolitis | ancestors: periostitis, mouth disorder, connective tissue disorder, bone disorder | def: A condition sometimes occurring after tooth extraction, particularly after traumatic extraction, resulting in a dry appearance of the exposed bone in the socket, due to disintegration or loss of the b...",
+"ko": "치조 골막염",
+"alt": [
+"건성 발치와"
+],
+"organs": [
+"gastrointestinal",
+"musculoskeletal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002760",
+"concept": "- MONDO:0002760 | bladder squamous cell carcinoma | syn: bladder epidermoid carcinoma; bladder squamous cell cancer; bladder squamous cell carcinoma; epidermoid carcinoma of bladder | ancestors: urinary bladder carcinoma, squamous cell carcinoma, urinary bladder cancer, carcinoma | def: A squamous cell carcinoma of the bladder arising from metaplastic epithelium. It represents less than 10% of bladder carcinomas. The exception is the Middle East along the Nile Valley, where it repres...",
+"ko": "방광 편평세포암종",
+"alt": [
+"방광 편평상피암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000634",
+"concept": "- MONDO:0000634 | thoracic benign neoplasm | syn: benign neoplasm of the thorax; benign neoplasm of thorax; benign thoracic neoplasm; benign thoracic tumor | ancestors: benign neoplasm, neoplasm of thorax, neoplasm, neoplastic disease or syndrome | def: A non-metastasizing neoplasm arising from any of the organs of the thoracic cavity. Representative examples include pleural adenomatoid tumor, chest wall lipoma, mediastinal schwannoma, and lung hamar...",
+"ko": "흉부 양성 신생물",
+"alt": [
+"가슴 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001881",
+"concept": "- MONDO:0001881 | toxic shock syndrome | syn: bacterial toxic-shock syndrome; bacterial TSS; shock syndrome (TSS), toxic; syndrome (TSS), toxic shock | ancestors: commensal bacterial infectious disease, syndromic disease, bacterial infectious disease, disease by body system or component | def: A rare acute life-threatening systemic bacterial noncontagious illness caused by exotoxins from bacteria of either the Streptococcus pyogenes or Staphylococcus aureus type. It is characterized by high...",
+"ko": "독성 쇼크 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019005",
+"concept": "- MONDO:0019005 | nephronophthisis | syn: medullary cystic kidney; nephronophthisis; nephronophthisis (disease) | ancestors: autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease, renal tubule disorder | def: Progressive tubulointerstitial injury, inherited in an autosomal recessive pattern, caused by mutations in genes involved in ciliary function, which may result in an end stage renal failure.",
+"ko": "신단위로증",
+"alt": [
+"신장로증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004492",
+"concept": "- MONDO:0004492 | mediastinitis | ancestors: inflammatory disease, disease by developmental or physiological process, human disease, disease | def: An inflammatory process affecting the mediastinum.",
+"ko": "종격동염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009964",
+"concept": "- MONDO:0009964 | short-rib thoracic dysplasia 9 with or without polydactyly | syn: Conorenal syndrome; Mainzer Saldino syndrome; Mainzer-Saldino syndrome; renal dysplasia-retinal pigmentary dystrophy-cerebellar ataxia-skeletal dysplasia syndrome | ancestors: autosomal recessive disease, Jeune syndrome, acromelic dysplasia, IFT140-related recessive ciliopathy | def: An asphyxiating thoracic dystrophy that has material basis in homozygous or compound heterozygous mutation in the IFT140 gene on chromosome 16p13.",
+"ko": "단늑골 흉곽 이형성증 9형 (다지증 동반 또는 비동반)",
+"alt": [
+"콘레날 증후군"
+],
+"organs": [
+"renal",
+"neurologic",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009636",
+"concept": "- MONDO:0009636 | mitochondrial DNA depletion syndrome 3 (hepatocerebral type) | syn: DGUOK mitochondrial DNA depletion syndrome; mitochondrial DNA depletion syndrome 3; mitochondrial DNA depletion syndrome 3 (hepatocerebral type); mitochondrial DNA depletion syndrome caused by mutation in DGUOK | ancestors: inborn disorder of purine metabolism, mitochondrial DNA depletion syndrome, hepatocerebral form, inborn disorder of purine or pyrimidine metabolism, purine metabolism disease | def: Any mitochondrial DNA depletion syndrome in which the cause of the disease is a mutation in the DGUOK gene.",
+"ko": "미토콘드리아 DNA 고갈 증후군 3형 (간뇌형)",
+"alt": [
+"DGUOK 미토콘드리아 DNA 고갈 증후군"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+}
+]

@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0019034",
+"concept": "- MONDO:0019034 | accessory pancreas | ancestors: pancreas disorder, digestive system disorder, endocrine system disorder, disease by body system or component | def: Accessory pancreas is an asymptomatic embryopathy characterized by the presence of pancreatic tissue in other sites of the body such as the splenic pedicle, gonadic pedicles, intestinal mesentery, duo...",
+"ko": "부췌장",
+"alt": [
+"이소성 췌장"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001742",
+"concept": "- MONDO:0001742 | interval angle-closure glaucoma | syn: intermittent angle-closure glaucoma | ancestors: primary angle-closure glaucoma, angle-closure glaucoma, glaucoma, eye disorder",
+"ko": "간헐성 폐쇄각 녹내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004598",
+"concept": "- MONDO:0004598 | acute cor pulmonale | syn: acute pulmonary heart disease; cor pulmonale, acute | ancestors: cor pulmonale, acute disease, congestive heart failure, human disease | def: A form of acute right heart failure produced by a sudden increase in resistance to blood flow in the pulmonary circulation.",
+"ko": "급성 폐성심",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002576",
+"concept": "- MONDO:0002576 | embryonal extrahepatic bile duct rhabdomyosarcoma | syn: embryonal extrahepatic bile duct rhabdomyosarcoma; embryonal rhabdomyosarcoma (disease) of extrahepatic bile duct; embryonal rhabdomyosarcoma of extrahepatic bile duct; embryonal rhabdomyosarcoma of the extrahepatic bile duct | ancestors: extrahepatic bile duct rhabdomyosarcoma, embryonal rhabdomyosarcoma, rhabdomyosarcoma, extrahepatic bile duct sarcoma | def: An embryonal rhabdomyosarcoma that arises from the extrahepatic bile ducts.",
+"ko": "배아형 간외담관 횡문근육종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005740",
+"concept": "- MONDO:0005740 | Echovirus infectious disease | syn: Echovirus caused disease or disorder; Echovirus disease or disorder | ancestors: enterovirus infectious disease, Picornaviridae infectious disease, primary viral infectious disease, viral infectious disease | def: Infectious disease processes, including meningitis, diarrhea, and respiratory disorders, caused by echoviruses.",
+"ko": "에코바이러스 감염병",
+"alt": [
+"에코바이러스 감염증"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013042",
+"concept": "- MONDO:0013042 | atypical hemolytic-uremic syndrome with B factor anomaly | syn: aHUS with B factor anomaly; atypical HUS with B factor anomaly; D-HUS with B factor anomaly; hemolytic uremic syndrome, atypical, susceptibility to, type 4 | ancestors: atypical hemolytic uremic syndrome with complement gene abnormality, atypical hemolytic-uremic syndrome, syndromic disease, complement deficiency",
+"ko": "B 인자 이상을 동반한 비정형 용혈요독 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009563",
+"concept": "- MONDO:0009563 | maple syrup urine disease | syn: BCKD deficiency; BCKDH deficiency; branched chain ketoaciduria; branched-chain 2-ketoacid dehydrogenase deficiency | ancestors: inborn organic aciduria, inborn disorder of branched-chain amino acid metabolism, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: An autosomal recessive inherited disorder caused by mutations in the BCKDHA, BCKDHB, DBT, and DLD genes. It is characterized by a deficiency of branched-chain alpha-keto acid dehydrogenase complex, le...",
+"ko": "단풍당뇨병",
+"alt": [
+"메이플시럽뇨병"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0030045",
+"concept": "- MONDO:0030045 | Liberfarb syndrome | syn: Liberfarb syndrome; LIBF; short stature-skeletal dysplasia-retinal degeneration-intellectual disability-sensorineural hearing loss syndrome; spondyloepimetaphyseal dysplasia, Liberfarb Type | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism | def: A progressive disorder involving connective tissue, bone, retina, ear, and brain, characterized by early-onset retinal degeneration, sensorineural hearing loss, microcephaly, intellectual disability, ...",
+"ko": "리베르파브 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0957317",
+"concept": "- MONDO:0957317 | hematuria, benign familial | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "양성 가족성 혈뇨",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019234",
+"concept": "- MONDO:0019234 | peroxisome biogenesis disorder | syn: PBD, ZSS; PBD-ZSD; peroxisomal biogenesis disorders; peroxisomal biogenesis disorders, Zellweger syndrome spectrum | ancestors: syndromic disease, autosomal recessive disease, leukodystrophy, peroxisomal disease | def: Peroxisome biogenesis disorders, Zellweger syndrome spectrum (PBD-ZSS) is a group of autosomal recessive disorders affecting the formation of functional peroxisomes, characterized by sensorineural hea...",
+"ko": "퍼옥시좀 형성 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019620",
+"concept": "- MONDO:0019620 | congenital esophageal diverticulum | syn: congenital esophageal pouch | ancestors: esophageal disorder, disorder of development or morphogenesis, upper digestive tract disorder, disease by developmental or physiological process | def: Congenital esophageal diverticulum is a rare, non-syndromic malformation of the esophagus, present at birth, and characterized by a false diverticulum, most often located in the upper, posterior esoph...",
+"ko": "선천성 식도 게실",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014860",
+"concept": "- MONDO:0014860 | polycystic liver disease 2 | syn: PCLD2; polycystic liver disease 2; polycystic liver disease 2; PCLD2; polycystic liver disease type 2 | ancestors: autosomal dominant polycystic liver disease, autosomal dominant disease, liver disorder, autosomal genetic disease | def: Any polycystic kidney disease in which the cause of the disease is a mutation in the SEC63 gene.",
+"ko": "다낭성 간질환 2형",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011308",
+"concept": "- MONDO:0011308 | GRACILE syndrome | syn: Fellman disease; gracile syndrome; Growth restriction-aminoaciduria-cholestasis-iron overload-lactic acidosis-early death syndrome | ancestors: hereditary disease, mitochondrial disease, disease of genetic or genomic mechanism, disease by developmental or physiological process | def: GRACILE syndrome is an inherited lethal mitochondrial disorder characterized by fetal growth restriction (GR), aminoaciduria (A), cholestasis (C), iron overload (I), lactacidosis (L), and early death ...",
+"ko": "GRACILE 증후군",
+"alt": [
+"펠만병"
+],
+"organs": [
+"hepatic",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019172",
+"concept": "- MONDO:0019172 | aniridia | syn: aplasia of iris | ancestors: iris disorder, disorder of development or morphogenesis, uveal disorder, disease by developmental or physiological process | def: Aniridia is a congenital ocular malformation characterized by the complete or partial absence of the iris. It can be isolated or part of a syndrome (isolated and syndromic aniridia).",
+"ko": "무홍채증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015200",
+"concept": "- MONDO:0015200 | anisakiasis | syn: Anisakis simplex infection | ancestors: Ascaridida infectious disease, intestinal helminthiasis, Rhabditida infectious disease, helminthiasis | def: Infection with roundworms of the genus anisakis. Human infection results from the consumption of fish harboring roundworm larvae. The worms may cause acute nausea; vomiting; or penetrate into the wall...",
+"ko": "아니사키스증",
+"alt": [
+"고래회충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0017137",
+"concept": "- MONDO:0017137 | onchocerciasis | syn: infection by Onchocerca volvulus; Onchocerca volvulus infection; onchocerciasis | ancestors: Rhabditida infectious disease, filariasis, vector-borne disease, Nematoda infectious disease | def: Onchocerciasis is a form of filariasis, caused by the parasitic worm Onchocerca volvulus, transmitted by the black fly. The infection can either be asymptomatic or manifest as an ocular disease (river...",
+"ko": "회선사상충증",
+"alt": [
+"온코세르카증"
+],
+"organs": [
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0020108",
+"concept": "- MONDO:0020108 | autoimmune hemolytic anemia | syn: AHA; AIHA; Anemia, Hemolytic, Acquired Autoimmune; autoimmune haemolytic anemia | ancestors: autoimmune disorder of blood, hemolytic anemia, hematologic disorder, autoimmune disease | def: Autoimmune hemolytic anemia (AIHA) is an autoimmune disorder in which various types of auto-antibodies are directed against red blood cells causing their survival to be shortened and resulting in hemo...",
+"ko": "자가면역 용혈성 빈혈",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008626",
+"concept": "- MONDO:0008626 | ureter, bifid or double | syn: ureter, bifid or double | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "분지 또는 중복 요관",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017276",
+"concept": "- MONDO:0017276 | frontotemporal dementia | syn: Frontotemporal degeneration; FTD | ancestors: hereditary dementia, inherited neurodegenerative disorder, dementia, hereditary disease | def: Frontotemporal dementia (FTD) comprises a group of neurodegenerative disorders, characterized by progressive changes in behavior, executive dysfunction and language impairment, as a result of degenera...",
+"ko": "전두측두엽 치매",
+"alt": [
+"전두측두치매"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019008",
+"concept": "- MONDO:0019008 | benign recurrent intrahepatic cholestasis | syn: BRIC; Bric; cholestasis, benign recurrent intrahepatic; Summerskill-Walshe-Tygstrup syndrome | ancestors: familial intrahepatic cholestasis, inborn disorder of bilirubin metabolism, liver disorder, inborn errors of metabolism | def: Benign recurrent intrahepatic cholestasis (BRIC) is a hereditary liver disorder characterized by intermittent episodes of intrahepatic cholestasis, generally without progression to chronic liver damag...",
+"ko": "양성 재발성 간내 담즙정체",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

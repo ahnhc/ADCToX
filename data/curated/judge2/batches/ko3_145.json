@@ -1,0 +1,256 @@
+[
+{
+"id": "MONDO:0008667",
+"concept": "- MONDO:0008667 | von Hippel-Lindau disease | syn: cerebroretinal angiomatosis; familial cerebelloretinal angiomatosis; Lindau disease; VHL | ancestors: autosomal dominant disease, neurocutaneous syndrome, hereditary neurological disease, autosomal genetic disease | def: An autosomal dominant disorder caused by pathogenic variants in the VHL gene, leading to an increased risk of various benign and malignant tumors, including hemangioblastomas, retinal hemangiomas, end...",
+"ko": "폰 히펠-린다우병",
+"alt": [
+"폰히펠-린다우 증후군"
+],
+"organs": [
+"renal",
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019010",
+"concept": "- MONDO:0019010 | congenital isolated hyperinsulinism | syn: chi; persistent hyperinsulinemic hypoglycemia of infancy; PHHI | ancestors: islet cell adenomatosis, familial hyperinsulinism, overgrowth syndrome, endocrine pancreas disorder | def: Congenital isolated hyperinsulinism (CHI), a rare endocrine disease is the most frequent cause of severe and persistent hypoglycemia in the neonatal period and early infancy and is characterized by an...",
+"ko": "선천성 단독 고인슐린혈증",
+"alt": [
+"영아 지속성 고인슐린성 저혈당증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021516",
+"concept": "- MONDO:0021516 | benign neoplasm of glottis | syn: benign glottis neoplasm; benign glottis tumor; benign glottis tumour; benign neoplasm of the glottis | ancestors: glottis neoplasm, benign laryngeal neoplasm, laryngeal neoplasm, respiratory system benign neoplasm | def: A benign neoplasm that involves the glottis.",
+"ko": "성문 양성 신생물",
+"alt": [
+"성문 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007113",
+"concept": "- MONDO:0007113 | Angelman syndrome | syn: Angelman syndrome; Angelman’s syndrome | ancestors: syndromic disease, hereditary neurological disease, disease by body system or component, hereditary disease | def: A neurogenetic disorder characterized by severe intellectual deficit and distinct facial dysmorphic features.",
+"ko": "엔젤만 증후군",
+"alt": [
+"앤젤만 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001083",
+"concept": "- MONDO:0001083 | Fanconi renotubular syndrome | syn: De toni-debre-Fanconi syndrome; Fanconi syndrome; Fanconi's syndrome; Fanconi-de toni syndrome | ancestors: syndromic disease, renal tubular transport disease, renal tubule disorder, disease by body system or component | def: A genetic or acquired disorder characterized by impairment of the function of the proximal tubules of the kidney. It results in decreased reabsorption of electrolytes, glucose, amino acids, and other ...",
+"ko": "판코니 신세뇨관 증후군",
+"alt": [
+"판코니 증후군"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003364",
+"concept": "- MONDO:0003364 | gallbladder leiomyosarcoma | syn: gall bladder leiomyosarcoma; gallbladder leiomyosarcoma; leiomyosarcoma of gall bladder; leiomyosarcoma of gallbladder | ancestors: gallbladder sarcoma, leiomyosarcoma, gallbladder cancer, soft tissue sarcoma | def: An aggressive malignant smooth muscle neoplasm, arising from the gallbladder. It is characterized by a proliferation of neoplastic spindle cells.",
+"ko": "담낭 평활근육종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006544",
+"concept": "- MONDO:0006544 | erythema infectiosum | syn: fifth disease | ancestors: viral exanthem, exanthem, skin disorder caused by infection, primary viral infectious disease | def: A self-limited viral infectious disorder caused by the human parvovirus B19. It affects predominantly children and is characterized by the development of a bright red skin eruption in the cheeks. It i...",
+"ko": "전염홍반",
+"alt": [
+"제5병"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006260",
+"concept": "- MONDO:0006260 | kidney medullary carcinoma | syn: carcinoma of renal medulla; kidney medullary carcinoma; renal medulla carcinoma; Renal Medullary Carcinoma | ancestors: renal cell carcinoma, adenocarcinoma, renal carcinoma, carcinoma | def: A type of renal carcinoma affecting mostly young African-Americans. It is located in the medulla of the kidney, and follows an aggressive clinical course. Most reported cases have shown metastatic dis...",
+"ko": "신장 수질암종",
+"alt": [
+"콩팥 수질암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009385",
+"concept": "- MONDO:0009385 | hyperleucine-Isoleucinemia | syn: hyperleucine-Isoleucinemia | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "고류신-이소류신혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0859689",
+"concept": "- MONDO:0859689 | hepatobiliary benign neoplasm | ancestors: benign digestive system neoplasm, digestive system disorder, benign neoplasm, digestive system neoplasm",
+"ko": "간담도 양성 신생물",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008628",
+"concept": "- MONDO:0008628 | ureterocele | syn: ureterocele; ureterocele (disease) | ancestors: ureteral disorder, hereditary disease, urinary bladder disorder, urinary system disorder | def: A cystic and dysplastic dilation of the distal ureter within the bladder that may extend into the bladder neck and urethra.",
+"ko": "요관류",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006937",
+"concept": "- MONDO:0006937 | pulpitis | syn: dental pulp inflammation; inflammation of dental pulp | ancestors: dental pulp disorder, bacterial infectious disease, inflammatory disease, tooth disorder | def: Inflammation of the dental pulp.",
+"ko": "치수염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005593",
+"concept": "- MONDO:0005593 | chronic periodontitis | syn: periodontitis, chronic | ancestors: periodontitis, periodontal disorder, inflammatory disease, skeletal system disorder | def: A chronic inflammatory process that affects the tissues that surround and support the teeth.",
+"ko": "만성 치주염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0011268",
+"concept": "- MONDO:0011268 | renal tubular acidosis, distal, 3, with or without sensorineural hearing loss | syn: classical distal renal tubular acidosis; classical distal RTA; distal renal tubular acidosis 3, with or without sensorineural hearing loss; renal tubular acidosis, distal, 3, with or without sensorineural hearing loss | ancestors: renal tubular acidosis, inherited renal tubular disease, autosomal recessive distal renal tubular acidosis, inborn errors of metabolism",
+"ko": "원위 신세뇨관 산증 3, 감각신경성 난청 동반 또는 비동반",
+"alt": [
+"고전적 원위 신세뇨관 산증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008410",
+"concept": "- MONDO:0008410 | Scheuermann disease | syn: Calve's disease; familial Scheuermann juvenile kyphosis; familial spinal osteochondrosis; juvenile osteochondrosis of spine | ancestors: osteochondrosis, osteonecrosis of genetic origin, osteonecrosis, hereditary disease | def: A disorder characterized by osteochondrosis of the vertebral epiphyses in childhood.",
+"ko": "쇼이어만병",
+"alt": [
+"쇼이어만 후만증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 18,
+"new": false
+},
+{
+"id": "MONDO:0006790",
+"concept": "- MONDO:0006790 | hypercementosis | syn: cementation hyperplasia | ancestors: tooth hard tissue disease, tooth disorder, skeletal system disorder, mouth disorder | def: A regressive change of teeth characterized by excessive development of secondary cementum on the tooth surface. It may occur on any part of the root, but the apical two-thirds are most commonly affect...",
+"ko": "치아시멘트질 과형성",
+"alt": [
+"시멘트질 과다증"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019072",
+"concept": "- MONDO:0019072 | intrahepatic cholestasis | ancestors: cholestasis, bile duct disorder, biliary tract disorder, hepatobiliary disorder | def: A cholestasis characterized by impairment of the bile flow caused by obstruction located in the liver.",
+"ko": "간내 담즙정체",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021002",
+"concept": "- MONDO:0021002 | syndactyly | syn: syndactyly (disease) | ancestors: hereditary disease, skeletal system disorder, disorder of development or morphogenesis, disease of genetic or genomic mechanism | def: A disease characterized by the presence of syndactyly, including syndromic and non-syndromic forms.",
+"ko": "합지증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005357",
+"concept": "- MONDO:0005357 | Creutzfeldt Jacob disease | syn: CJD; CJD (Creutzfeldt Jakob disease); classic Creutzfeldt-Jakob disease; Creutzfeldt Jakob Disease | ancestors: prion disease, brain disorder, central nervous system infectious disorder, central nervous system disorder | def: A rare transmittable degenerative disorder of the brain caused by prions. Morphologically it is characterized by spongiform degeneration of the cerebral and cerebellar cortex. Signs and symptoms inclu...",
+"ko": "크로이츠펠트-야콥병",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004795",
+"concept": "- MONDO:0004795 | otitis externa | syn: external Ear infection; infectious otitis externa; otitis externa; outer Ear infection | ancestors: external ear disorder, ear infection, post-infectious disorder, auditory system disorder | def: Inflammation of the anatomical structures of the outer ear and ear canal secondary to an infectious process. Bacterial etiology is most common, but fungal infection is also possible. Symptoms include ...",
+"ko": "외이도염",
+"alt": [
+"바깥귀길염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 8,
+"new": false
+}
+]

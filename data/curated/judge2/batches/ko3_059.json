@@ -1,0 +1,262 @@
+[
+{
+"id": "MONDO:0009519",
+"concept": "- MONDO:0009519 | letterer-Siwe disease | syn: acute and disseminated Langerhans cell histiocytosis; acute disseminated Langerhans cell histiocytosis; letterer-Siwe disease; multifocal multisystem Langerhans cell histiocytosis | ancestors: Langerhans cell histiocytosis specific to childhood, Langerhans cell histiocytosis, histiocytosis, leukocyte disorder | def: A multifocal, multisystem form of Langerhans-cell histiocytosis. There is involvement of multiple organ systems including the bones, skin, liver, spleen, and lymph nodes. Patients are usually infants ...",
+"ko": "레테러-지베병",
+"alt": [
+"급성 파종성 랑게르한스세포 조직구증"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019963",
+"concept": "- MONDO:0019963 | bronchial endocrine tumor | syn: bronchial NET; bronchus NET; bronchus neuroendocrine neoplasm; bronchus neuroendocrine tumor | ancestors: bronchial neoplasm, neuroendocrine neoplasm, bronchial disorder, respiratory tract neoplasm | def: A neuroendocrine neoplasm that involves the bronchus.",
+"ko": "기관지 내분비종양",
+"alt": [
+"기관지 신경내분비종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005768",
+"concept": "- MONDO:0005768 | gastrointestinal tuberculosis | syn: tuberculosis of intestines, peritoneum, and mesenteric glands | ancestors: extrapulmonary tuberculosis, digestive system infectious disorder, tuberculosis, digestive system disorder | def: Tuberculosis that involves any region of the gastrointestinal tract, mostly in the distal ileum and the cecum. In most cases, mycobacterium tuberculosis is the pathogen. Clinical features include abdo...",
+"ko": "위장관 결핵",
+"alt": [
+"장결핵"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009144",
+"concept": "- MONDO:0009144 | Ebstein anomaly | syn: Ebstein anomaly; Ebstein anomaly (disease); Ebstein anomaly of the tricuspid valve; Ebstein's anomaly | ancestors: congenital tricuspid malformation, tricuspid valve disorder, disorder of development or morphogenesis, heart valve disorder | def: Ebstein's malformation is a rare congenital cardiac anomaly characterized by rotational displacement of the septal and inferior leaflets of the tricuspid valve such that they are hinged within the rig...",
+"ko": "에브스타인 기형",
+"alt": [
+"엡스타인 기형"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015166",
+"concept": "- MONDO:0015166 | acute myeloid leukemia with t(8;21)(q22;q22) translocation | syn: AML with t(8;21)(q22;q22) translocation | ancestors: acute myeloid leukemia, myeloid leukemia, acute leukemia, leukemia",
+"ko": "t(8;21)(q22;q22) 전위를 동반한 급성 골수성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007245",
+"concept": "- MONDO:0007245 | cafe au lait spots, multiple | syn: autosomal dominant café au lait spots; cafe-au-lait spots, multiple; familial cafe-au-lait spots; familial café-au-lait spots | ancestors: hyperpigmentation of the skin, skin pigmentation disorder, skin disorder, integumentary system disorder | def: A cutaneous disorder characterized by the presence of several cafe-au-lait (CAL) macules without any other manifestations of neurofibromatosis or any other systemic disorder.",
+"ko": "다발성 카페오레 반점",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003026",
+"concept": "- MONDO:0003026 | gallbladder angiosarcoma | syn: angiosarcoma (disease) of gall bladder; angiosarcoma of gallbladder; angiosarcoma of the gallbladder; gall bladder angiosarcoma (disease) | ancestors: gallbladder sarcoma, angiosarcoma, gallbladder cancer, soft tissue sarcoma | def: An angiosarcoma that is located in the gallbladder.",
+"ko": "담낭 혈관육종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011290",
+"concept": "- MONDO:0011290 | dislocated elbows, bowed tibias, scoliosis, deafness, cataract, microcephaly, and intellectual disability | syn: dislocated elbows, bowed tibias, scoliosis, deafness, cataract, microcephaly, and intellectual disability; dislocated elbows, bowed tibias, scoliosis, deafness, cataract, microcephaly, and mental retardation | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "팔꿈치 탈구, 휜 정강뼈, 척추측만증, 난청, 백내장, 소두증 및 지적장애",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005402",
+"concept": "- MONDO:0005402 | lymphoid leukemia | syn: leukemia, LYMPHOCYTIC, malignant; lymphocytic leukemia; lymphogenous leukaemia; lymphogenous leukemia | ancestors: leukemia, lymphoid neoplasm, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm | def: A malignant lymphocytic neoplasm of B-cell or T-cell lineage involving primarily the bone marrow and the peripheral blood. This category includes precursor or acute lymphoblastic leukemias and chronic...",
+"ko": "림프구성 백혈병",
+"alt": [
+"림프성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001848",
+"concept": "- MONDO:0001848 | Morgagni cataract | syn: Morgagnian cataract | ancestors: hypermature cataract, cataract, lens disorder, hereditary disease | def: A form of hypermature cataract formed by liquefaction of the cortex and sinking of the dense nucleus to the bottom of the capsular bag.",
+"ko": "모르가니 백내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008412",
+"concept": "- MONDO:0008412 | intestinal schistosomiasis | ancestors: schistosomiasis, intestinal helminthiasis, helminthiasis, vector-borne disease | def: An intestinal infection that is caused by Schistosoma japonicum.",
+"ko": "장 주혈흡충증",
+"alt": [
+"장 일본주혈흡충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001235",
+"concept": "- MONDO:0001235 | appendix cancer | syn: cancer of vermiform appendix; malignant appendix neoplasm; malignant appendix tumor; malignant appendix tumour | ancestors: appendiceal neoplasm, cecum cancer, cecal neoplasm, disorder of appendix | def: A malignant neoplasm involving the vermiform appendix",
+"ko": "충수암",
+"alt": [
+"충수의 악성 신생물"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011396",
+"concept": "- MONDO:0011396 | loricrin keratoderma | syn: Camisa disease; keratoderma hereditarium mutilans with ichthyosis; keratoderma-ichthyosiform dermatosis-elevated beta-glucuronidase syndrome; loricrin keratoderma | ancestors: diffuse palmoplantar keratoderma, hereditary palmoplantar keratoderma, palmoplantar keratosis, epidermal disease | def: A diffuse palmoplantar keratoderma, characterized by honeycomb palmoplantar hyperkeratosis associated with pseudoainhum of the fifth digit of the hand, ichthyosis and deafness. Keratoderma hereditariu...",
+"ko": "로리크린 각피증",
+"alt": [],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012539",
+"concept": "- MONDO:0012539 | Joubert syndrome 6 | syn: JBTS6; Joubert syndrome 6; Joubert syndrome caused by mutation in TMEM67; Joubert syndrome type 6 | ancestors: Joubert syndrome, syndromic disease, ciliopathy, disorder of development or morphogenesis | def: Any Joubert syndrome in which the cause of the disease is a mutation in the TMEM67 gene.",
+"ko": "주베르 증후군 6형",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0980737",
+"concept": "- MONDO:0980737 | arterionephrosclerosis | ancestors: chronic kidney disease, kidney disorder, urinary system disorder, disease by body system or component | def: A chronic kidney disease that is characterized by arteriosclerosis, global glomerulosclerosis, and cortical fibrosis with tubular atrophy and loss.",
+"ko": "동맥성 신장경화증",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005236",
+"concept": "- MONDO:0005236 | xanthoma | syn: xanthoma; xanthoma (disease) | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A non-neoplastic disorder characterized by a localized collection of histiocytes containing lipid. Xanthomas usually occur in the skin and subcutaneous tissues, but occasionally they may involve the d...",
+"ko": "황색종",
+"alt": [],
+"organs": [
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019773",
+"concept": "- MONDO:0019773 | myelomeningocele | ancestors: spina bifida cystica, isolated spina bifida, spina bifida, congenital nervous system disorder | def: Myelomeningocele is the most severe form of spina bifida. It happens when parts of the spinal cord and nerves come through the open part of the spine. It causes nerve damage and other disabilities. Se...",
+"ko": "척수수막류",
+"alt": [
+"수막척수류"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002038",
+"concept": "- MONDO:0002038 | head and neck carcinoma | syn: carcinoma of craniocervical region; carcinoma of head and neck; carcinoma of neck; carcinoma of the head and neck | ancestors: carcinoma, head and neck cancer, cancer, epithelial neoplasm | def: A carcinoma that arises from the head and neck region. Representative examples include oral cavity squamous cell carcinoma, laryngeal squamous cell carcinoma, and salivary gland carcinoma.",
+"ko": "두경부암종",
+"alt": [
+"두경부암"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018992",
+"concept": "- MONDO:0018992 | IgG4-related thyroid disease | syn: Riedel disease; Riedel fibrosing thyroiditis; Riedel thyroiditis; Riedel's fibrosing thyroiditis | ancestors: autoimmune thyroid disease, immunoglobulin G4-related sclerosing disease, autoimmune disorder of endocrine system, thyroiditis | def: Riedel thyroiditis is a fibroinflammatory disorder of the thyroid gland, occurring more frequently in females, characterized a large, hard thyroid mass, and presenting with pressure symptoms (breathin...",
+"ko": "IgG4 관련 갑상선 질환",
+"alt": [
+"리델 갑상선염",
+"리델병"
+],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009484",
+"concept": "- MONDO:0009484 | primary ciliary dyskinesia 1 | syn: CILD1; ciliary dyskinesia, primary, type 1; DNAI1 primary ciliary dyskinesia; primary ciliary dyskinesia 1 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the DNAI1 gene.",
+"ko": "일차성 섬모 운동이상증 1형",
+"alt": [
+"DNAI1 일차성 섬모 운동이상증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+}
+]

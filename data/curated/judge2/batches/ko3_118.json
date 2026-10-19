@@ -1,0 +1,255 @@
+[
+{
+"id": "MONDO:0005446",
+"concept": "- MONDO:0005446 | cutaneous leishmaniasis | syn: Asian desert cutaneous leishmaniasis; zone of skin leishmaniasis | ancestors: leishmaniasis, parasitic skin disorder, protozoa infectious disease, vector-borne disease | def: Leishmaniasis affecting the skin. It is the most common form of leishmaniasis. It presents with erythematous macules and papules, and nodules which may eventually ulcerate. The lesions appear in the b...",
+"ko": "피부 리슈마니아증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018097",
+"concept": "- MONDO:0018097 | infantile spasms | syn: IESS; infantile epileptic spasms syndrome; infantile spasms; infantile spasms syndrome | ancestors: syndromic disease, neonatal/infantile-onset epilepsy syndrome with developmental and epileptic encephalopathy, disease by body system or component, neonatal/infantile epilepsy syndrome | def: A rare epilepsy syndrome characterized by onset of epileptic spasms in infants between 2 and 12 months of age, and rarely up to 24 months. Infants may have no antecedent history, or a history reflecti...",
+"ko": "영아 연축",
+"alt": [
+"영아 경련",
+"West 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008833",
+"concept": "- MONDO:0008833 | renal-hepatic-pancreatic dysplasia 1 | syn: NPHP3 renal-hepatic-pancreatic dysplasia; renal-hepatic-pancreatic dysplasia 1; renal-hepatic-pancreatic dysplasia caused by mutation in NPHP3; renal-hepatic-pancreatic dysplasia type 1 | ancestors: renal-hepatic-pancreatic dysplasia, hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism | def: Any renal-hepatic-pancreatic dysplasia in which the cause of the disease is a mutation in the NPHP3 gene.",
+"ko": "신장-간-췌장 이형성증 1",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024268",
+"concept": "- MONDO:0024268 | superficial mycosis | syn: stratum corneum of epidermis fungal infectious disease | ancestors: cutaneous mycosis, fungal infectious disease, integumentary system disorder, infectious disease | def: A mycosis that is limited to the stratum corneum and essentially elicits no inflammation.",
+"ko": "표재성 진균증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0001747",
+"concept": "- MONDO:0001747 | tibial collateral ligament bursitis | ancestors: enthesopathy, musculoskeletal system disorder, connective tissue disorder, disease by body system or component",
+"ko": "경골측부인대 점액낭염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009380",
+"concept": "- MONDO:0009380 | Dubin-Johnson syndrome | syn: chronic idiopathic jaundice; Dubin Johnson Syndrome; Dubin-Johnson syndrome; Dubin-Sprinz disease | ancestors: syndromic disease, hereditary hyperbilirubinemia, disease by body system or component, inborn disorder of bilirubin metabolism | def: Dubin-Johnson syndrome (DJS) is a benign, inherited liver disorder characterized clinically by chronic, predominantly conjugated, hyperbilirubinemia and histopathologically by black-brown pigment depo...",
+"ko": "듀빈-존슨 증후군",
+"alt": [
+"만성 특발성 황달"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015340",
+"concept": "- MONDO:0015340 | drug rash with eosinophilia and systemic symptoms | syn: DHS; DRESS; dress; DRESS syndrome | ancestors: syndromic disease, urticaria, severe cutaneous adverse reaction, toxic dermatosis | def: DRESS syndrome (Drug Rash with Eosinophilia and Systemic Symptoms) is a hypersensitivity reaction characterized by a generalized skin rash, fever, eosinophilia, lymphocytosis and visceral involvement ...",
+"ko": "호산구 증가 및 전신 증상을 동반한 약물 발진",
+"alt": [
+"DRESS 증후군"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003232",
+"concept": "- MONDO:0003232 | alcoholic pancreatitis | syn: alcoholic pancreatitis | ancestors: pancreatitis, alcohol-induced disorders, pancreas disorder, inflammatory disease | def: Acute or chronic inflammation of the pancreas due to excessive alcohol drinking. Alcoholic pancreatitis usually presents as an acute episode but it is a chronic progressive disease in alcoholics.",
+"ko": "알코올성 췌장염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019084",
+"concept": "- MONDO:0019084 | radiation proctitis | ancestors: proctitis, radiation-induced disorder, anus disorder, inflammatory bowel disease | def: Radiation proctitis is a rare rectal disease directly induced by pelvic radiotherapy and characterized by rectal bleeding, change in bowel habits, tenesmus and sepsis.",
+"ko": "방사선 직장염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021467",
+"concept": "- MONDO:0021467 | benign neoplasm of renal pelvis | syn: benign kidney pelvis neoplasm; benign neoplasm of the renal pelvis; benign renal pelvis neoplasm; benign renal pelvis tumor | ancestors: kidney benign neoplasm, renal pelvis neoplasm, benign urinary system neoplasm, kidney neoplasm | def: A benign neoplasm that involves the renal pelvis.",
+"ko": "콩팥깔때기 양성 신생물",
+"alt": [
+"신우 양성 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0042488",
+"concept": "- MONDO:0042488 | Cestode infectious disease | syn: Cestoda caused disease or disorder; Cestoda disease or disorder; Cestoda infectious disease; cestode infection | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infections with true tapeworms of the helminth subclass Cestoda.",
+"ko": "조충 감염증",
+"alt": [
+"촌충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001466",
+"concept": "- MONDO:0001466 | punctate epithelial keratoconjunctivitis | syn: punctate keratitis | ancestors: superficial keratitis, keratoconjunctivitis, keratitis, conjunctivitis",
+"ko": "점상 상피성 각결막염",
+"alt": [
+"점상 각막염"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004462",
+"concept": "- MONDO:0004462 | extrahepatic bile duct cystadenoma | syn: cystadenoma of extrahepatic bile duct; cystadenoma of the extrahepatic bile duct; extrahepatic bile duct cystadenoma; extrahepatic bile duct mucinous cystic neoplasm | ancestors: bile duct cystadenoma, extrahepatic bile duct adenoma, cystadenoma, bile duct adenoma | def: A mucinous cystic neoplasm that arises from the extrahepatic bile ducts.",
+"ko": "간외 담관 낭샘종",
+"alt": [
+"간외 담관 낭선종"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005638",
+"concept": "- MONDO:0005638 | agnosia | syn: agnosia | ancestors: perceptual disorders, nervous system disorder, disease by body system or component, human disease | def: A rare disorder characterized by the lack of ability to recognize individuals, objects, shapes, sounds, or smells. There is no loss of memory. It is caused by neurological damage in the brain, specifi...",
+"ko": "실인증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012117",
+"concept": "- MONDO:0012117 | ALG9-congenital disorder of glycosylation | syn: ALG9-CDG; ALG9-congenital disorder of glycosylation; carbohydrate deficient glycoprotein syndrome type 1L; CDG syndrome type IL | ancestors: congenital disorder of glycosylation type I, disorder of protein N-glycosylation, congenital disorder of glycosylation, glycoprotein metabolism disease | def: A form of congenital disorders of N-linked glycosylation characterized by progressive microcephaly, hypotonia, developmental delay, drug-resistant infantile epilepsy, and hepatomegaly. Additional feat...",
+"ko": "ALG9 선천성 당화 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003501",
+"concept": "- MONDO:0003501 | external ear squamous cell carcinoma | syn: epidermoid carcinoma of external Ear; epidermoid carcinoma of the external Ear; epidermoid carcinoma of the external ear; external Ear epidermoid carcinoma | ancestors: external ear carcinoma, head and neck squamous cell carcinoma, head and neck carcinoma, external ear cancer | def: A squamous cell carcinoma that arises from the skin of the external ear.",
+"ko": "외이 편평세포암종",
+"alt": [],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016391",
+"concept": "- MONDO:0016391 | neonatal diabetes mellitus | syn: congenital diabetes mellitus; diabetes mellitus syndrome in newborn infant; NDM | ancestors: monogenic diabetes, diabetes mellitus, inborn errors of metabolism, endocrine pancreas disorder | def: Neonatal diabetes mellitus presents as hyperglycemia, failure to thrive and, in some cases, dehydration and ketoacidosis which may be severe with coma, in a child within the first months of life.",
+"ko": "신생아 당뇨병",
+"alt": [
+"선천성 당뇨병"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005473",
+"concept": "- MONDO:0005473 | temporomandibular joint disorder | syn: TMD | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: Any condition affecting the anatomic and functional characteristics of the temporomandibular joint.",
+"ko": "턱관절 장애",
+"alt": [
+"측두하악관절 장애"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019319",
+"concept": "- MONDO:0019319 | verrucous nevus | syn: verrucous Epidermal Nevus | ancestors: linear verrucous nevus syndrome, melanocytic nevus, benign neoplasm of skin, melanocytic skin neoplasm | def: A benign wart-like, pigmented skin lesion appearing on various parts of the body at birth or early in childhood, usually in linear groupings.",
+"ko": "사마귀모양 모반",
+"alt": [
+"사마귀모양 표피모반"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0018929",
+"concept": "- MONDO:0018929 | medial condensing osteitis of the clavicle | syn: condensing osteitis of the clavicle; condensing osteitis of the medial clavicle; osteitis condensans of the clavicle | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder",
+"ko": "쇄골 내측 응축성 골염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+}
+]

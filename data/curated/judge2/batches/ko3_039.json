@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0005221",
+"concept": "- MONDO:0005221 | renal pelvis urothelial carcinoma | syn: kidney renal pelvis urothelial cancer; renal pelvis transitional cell carcinoma; renal pelvis urothelial cancer; renal pelvis urothelial carcinoma | ancestors: renal pelvis carcinoma, renal pelvis/ureter urothelial carcinoma, renal carcinoma, malignant renal pelvis neoplasm | def: A carcinoma that arises from the transitional epithelium of the renal pelvis. It is associated with tobacco use and usually presents with gross or microscopic hematuria. Urothelial carcinomas of the r...",
+"ko": "신우 요로상피암종",
+"alt": [
+"신우 이행세포암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003381",
+"concept": "- MONDO:0003381 | pituitary gland disorder | syn: disease of pituitary gland; disease or disorder of pituitary gland; disorder of pituitary gland; pituitary gland disease | ancestors: reproductive system disorder, endocrine system disorder, brain disorder, disease by body system or component | def: A disease involving the pituitary gland.",
+"ko": "뇌하수체 질환",
+"alt": [
+"뇌하수체 장애"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0007862",
+"concept": "- MONDO:0007862 | Waardenburg syndrome type 3 | syn: Klein-Waardenburg syndrome; Waardenburg syndrome type III; Waardenburg syndrome with limb anomalies; Waardenburg syndrome with upper limb anomalies | ancestors: Waardenburg syndrome, autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability | def: Waardenburg syndrome type 3 (WS3) is a very rare subtype of Waardenburg syndrome (WS) that is characterized by limb anomalies in association with congenital hearing loss, minor defects in structures a...",
+"ko": "바르덴부르크 증후군 3형",
+"alt": [
+"클라인-바르덴부르크 증후군"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0023164",
+"concept": "- MONDO:0023164 | viral pericarditis | syn: viral pericarditis | ancestors: pericarditis, primary viral infectious disease, pericardium disorder, inflammatory disease | def: Pericarditis that is caused by an infection with a viral agent.",
+"ko": "바이러스성 심낭염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001582",
+"concept": "- MONDO:0001582 | cicatricial ectropion | ancestors: ectropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "반흔성 안검외반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007947",
+"concept": "- MONDO:0007947 | Marfan syndrome | syn: Marfan syndrome; Marfan syndrome type 1; Marfan syndrome, type 1; Marfan's syndrome | ancestors: autosomal dominant disease, syndromic disease, skeletal system disorder, Marfan and Marfan-related disorder | def: A disorder of the connective tissue. Connective tissue provides strength and flexibility to structures throughout the body such as bones, ligaments, muscles, walls of blood vessels, and heart valves. ...",
+"ko": "마르판 증후군",
+"alt": [
+"마르판 증후군 1형"
+],
+"organs": [
+"cardiovascular",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015044",
+"concept": "- MONDO:0015044 | mu-heavy chain disease | syn: mu chain disease; mu heavy chain disease; mu-HCD | ancestors: heavy chain disease, plasma cell neoplasm, neoplasm of mature B-cells, B-cell neoplasm | def: Mu-heavy chain disease (mu-HCD) is a type of HCD characterized by the production of incomplete monoclonal mu-heavy chains without associated light chains. The clinical presentation resembles that of p...",
+"ko": "뮤 중쇄병",
+"alt": [
+"뮤 사슬병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007879",
+"concept": "- MONDO:0007879 | larynx atresia | syn: congenital atresia of larynx; congenital atresia of the larynx; laryngeal atresia | ancestors: laryngeal disorder, otorhinolaryngologic disease, upper respiratory tract disorder, disease by body system or component | def: A congenital malformation of the larynx in which there is failure of recanalization of the laryngotracheal tube during gestation.",
+"ko": "후두 폐쇄증",
+"alt": [
+"선천성 후두 폐쇄"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006108",
+"concept": "- MONDO:0006108 | bile duct adenoma | syn: adenoma of bile duct; adenoma of the bile duct; bile duct adenoma; bile duct adenoma (morphologic abnormality) | ancestors: digestive system adenoma, bile duct neoplasm, adenoma, digestive system neoplasm | def: A benign, well-demarcated polypoid neoplasm arising from the bile duct epithelium. According to the growth pattern, it is classified as tubular, papillary, or tubulopapillary. Adenomas arising from th...",
+"ko": "담관 선종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004055",
+"concept": "- MONDO:0004055 | acute inflammation of lacrimal passage | ancestors: lacrimal apparatus disorder, acute disease, eye adnexa disorder, eye disorder",
+"ko": "급성 눈물길 염증",
+"alt": [
+"급성 누도 염증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005848",
+"concept": "- MONDO:0005848 | miliary tuberculosis | syn: acute miliary tuberculosis; disseminated tuberculosis; generalised tuberculosis; generalized tuberculosis | ancestors: extrapulmonary tuberculosis, tuberculosis, primary bacterial infectious disease, mycobacterial infectious disease | def: I would say the hematogenous widespread dissemination of tuberculosis in the body. The term derives from the chest X-ray image of the tiny (1-5 mm) tuberculosis lesions which are seen through out the ...",
+"ko": "좁쌀결핵",
+"alt": [
+"속립결핵"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 9,
+"new": false
+},
+{
+"id": "MONDO:0015766",
+"concept": "- MONDO:0015766 | cholera | syn: cholera due to Vibrio cholerae; Vibrio cholerae caused disease or disorder; Vibrio cholerae disease or disorder; Vibrio cholerae infectious disease | ancestors: primary bacterial infectious disease, intestinal infectious disease, vibrio infectious disease, bacterial infectious disease | def: Cholera is an infectious disease, caused by intestinal infection with Vibrio cholerae, characterized by massive watery diarrhea and severe dehydration that can lead to shock and death if left untreate...",
+"ko": "콜레라",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0021253",
+"concept": "- MONDO:0021253 | gallbladder neoplasm | syn: gall bladder neoplasm; gall bladder neoplasm (disease); gall bladder tumor; gall bladder tumour | ancestors: hepatobiliary neoplasm, gallbladder disorder, hepatobiliary disorder, digestive system neoplasm | def: A neoplasm (disease) that involves the gall bladder.",
+"ko": "담낭 신생물",
+"alt": [
+"담낭 종양"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002333",
+"concept": "- MONDO:0002333 | splenic abscess | syn: splenic abscess; splenic abscess (disease) | ancestors: splenic disorder, abscess, hematologic disorder, lymphatic system disorder | def: An abscess that is located in the spleen.",
+"ko": "비장 농양",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005668",
+"concept": "- MONDO:0005668 | bird fancier's lung | syn: Avian hypersensitivity pneumonitis; bird fancier lung; bird fancier's lung; bird-fanciers' lung | ancestors: hypersensitivity pneumonitis, occupational lung disease, allergic respiratory disease, interstitial lung disease | def: Hypersensitivity granulomatous pneumonitis caused by the inhalation of avian antigens that are present in the dust of the droppings and feathers of many species of birds. In the acute phase it manifes...",
+"ko": "조류사육자폐",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010144",
+"concept": "- MONDO:0010144 | tibial hemimelia | syn: congenital absence of tibia; congenital aplasia and dysplasia of the tibia with intact fibula; congenital longitudinal deficiency of the tibia; tibial hemimelia | ancestors: hemimelia, dysostosis, non-syndromic limb reduction defect, bone development disease | def: Tibial hemimelia is a rare congenital anomaly characterized by deficiency of the tibia with a relatively intact fibula.",
+"ko": "경골 반사지증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004863",
+"concept": "- MONDO:0004863 | purulent endophthalmitis | ancestors: endophthalmitis, inflammatory disease, eye infectious disorder, disease by developmental or physiological process",
+"ko": "화농성 안내염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012906",
+"concept": "- MONDO:0012906 | primary ciliary dyskinesia 9 | syn: CILD9; ciliary dyskinesia, primary, type 9; DNAI2 primary ciliary dyskinesia; primary ciliary dyskinesia 9 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the DNAI2 gene.",
+"ko": "일차섬모운동이상증 9형",
+"alt": [
+"원발성 섬모운동이상증 9형"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0022792",
+"concept": "- MONDO:0022792 | coccygodynia | syn: coccydynia | ancestors: vertebral column disorder, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: A rare pain disorder characterized by pain in and around the coccyx (tailbone). Although various causes have been described for the condition, the more common causes are direct falls and injury.",
+"ko": "꼬리뼈통증",
+"alt": [
+"미골통"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0008319",
+"concept": "- MONDO:0008319 | protoporphyria, erythropoietic, 1 | syn: EPP1; FECH-related erythropoietic protoporphyria; ferrochelatase deficiency; heme synthetase deficiency | ancestors: autosomal erythropoietic protoporphyria, erythropoietic protoporphyria, hepatic porphyria, inherited porphyria | def: An erythropoietic protoporphyria caused by biallelic variants in FECH (an autosomal recessive inheritance pattern) and causing primarily accumulation of protoporphyrin IX. Symptoms include extremely p...",
+"ko": "적혈구생성 프로토포르피린증 1형",
+"alt": [
+"FECH 관련 적혈구생성 프로토포르피린증"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

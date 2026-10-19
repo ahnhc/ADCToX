@@ -1,0 +1,250 @@
+[
+{
+"id": "MONDO:0000928",
+"concept": "- MONDO:0000928 | eyelid melanoma | syn: eyelid melanoma; eyelid melanoma (disease); malignant eyelid melanoma; malignant melanoma of eyelid | ancestors: cutaneous melanoma, ocular melanoma, eyelid cancer, skin cancer | def: A melanoma that arises from the upper or lower eyelid.",
+"ko": "눈꺼풀 흑색종",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0019536",
+"concept": "- MONDO:0019536 | Shiga toxin-associated hemolytic uremic syndrome | syn: D+HUS; hemolytic-uremic syndrome with diarrhea; hemolytic-uremic syndrome with diarrhoea; Shiga-like toxin-associated HUS | ancestors: hemolytic anemia, infection-related hemolytic uremic syndrome, normocytic anemia, hemolytic-uremic syndrome | def: A rare thrombotic microangiopathy characterized by mechanical hemolytic anemia, thrombocytopenia, and renal dysfunction that is usually associated with prodromal enteritis caused by Shigella dysentria...",
+"ko": "시가독소 연관 용혈요독 증후군",
+"alt": [
+"설사 동반 용혈요독 증후군"
+],
+"organs": [
+"haematologic",
+"renal",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001518",
+"concept": "- MONDO:0001518 | spastic entropion | ancestors: entropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "경련성 안검내반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012541",
+"concept": "- MONDO:0012541 | deafness with labyrinthine aplasia, microtia, and microdontia | syn: Congenital Deafness with Labyrinthine Aplasia, Microtia, and Microdontia; deafness with labyrinthine aplasia, microtia, and microdontia; deafness, congenital with inner ear agenesis, microtia, and microdontia; LAMM syndrome | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease | def: Deafness with labyrinthine aplasia, microtia, and microdontia (LAMM) is a genetic transmission deafness syndrome.",
+"ko": "미로 무형성, 소이증 및 소치증을 동반한 난청",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015376",
+"concept": "- MONDO:0015376 | first branchial cleft anomaly | syn: first branchial cleft cyst; first branchial cleft fistula | ancestors: cysts and fistulae of the face and oral cavity, developmental defect during embryogenesis, otorhinolaryngologic disease, disorder of development or morphogenesis",
+"ko": "제1 새열 이상",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021667",
+"concept": "- MONDO:0021667 | neuralgia | syn: neuralgia | ancestors: peripheral neuropathy, neurological pain disorder, peripheral nervous system disorder, neuromuscular disease | def: A pain disorder characterize by pain in the distribution of a nerve or nerves",
+"ko": "신경통",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005387",
+"concept": "- MONDO:0005387 | primary ovarian failure | syn: primary ovarian failure | ancestors: ovarian dysfunction, ovarian disorder, gonadal disorder, female reproductive system disorder | def: Absent or premature cessation of ovarian function due to a pathologic process originating within the ovaries.",
+"ko": "원발성 난소부전",
+"alt": [
+"일차성 난소기능부전"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001929",
+"concept": "- MONDO:0001929 | ascending cholangitis | syn: ascending cholangitis | ancestors: cholangitis, non-neoplastic bile duct disorder, inflammatory disease, bile duct disorder | def: Acute infection of the bile ducts caused by bacteria ascending from the small intestine.",
+"ko": "상행성 담관염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007921",
+"concept": "- MONDO:0007921 | yellow nail syndrome | syn: lymphedema with yellow nails; yellow nail syndrome; YNS | ancestors: syndromic disease, lymphatic malformation, disease by body system or component, hereditary disease | def: A very rare syndromic disorder characterized by the variable triad of characteristic yellow nails, chronic respiratory manifestations, and primary lymphedema.",
+"ko": "황색손발톱 증후군",
+"alt": [
+"노란손발톱 증후군"
+],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006936",
+"concept": "- MONDO:0006936 | pulmonary valve stenosis | ancestors: pulmonary valve disorder, heart valve disorder, heart disorder, cardiovascular disorder | def: The pathologic narrowing of the orifice of the pulmonary valve. This lesion restricts blood outflow from the right ventricle to the pulmonary artery. When the trileaflet valve is fused into an imperfo...",
+"ko": "폐동맥판 협착",
+"alt": [
+"폐동맥판막 협착증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009476",
+"concept": "- MONDO:0009476 | atresia of small intestine | syn: apple peel syndrome; atresia of the small intestine; congenital small intestine atresia; intestinal atresia type IIIb | ancestors: disorder of development or morphogenesis, small intestine disorder, disease by developmental or physiological process, intestinal disorder | def: Atresia of small intestine is a special form of intestinal atresia with absence of mesentery, which is most likely due to an intrauterine intestinal vascular accident. Newborns are usually preterm inf...",
+"ko": "소장 폐쇄증",
+"alt": [
+"사과껍질 증후군"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001054",
+"concept": "- MONDO:0001054 | double pterygium | ancestors: pterygium, benign conjunctival neoplasm, benign neoplasm of cornea, ocular growth disorder",
+"ko": "이중 익상편",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005859",
+"concept": "- MONDO:0005859 | mucocutaneous leishmaniasis | syn: American cutaneous leishmaniasis; American mucocutaneous leishmaniasis; cutaneous leishmaniasis, American; mucocutaneous leishmaniasis, (American) | ancestors: leishmaniasis, protozoa infectious disease, vector-borne disease, parasitic infectious disease | def: The most common form of leishmaniasis that is transmitted through the bite of female phlebotomine sand flies or after exposure to leishmania parasites. It is characterized by skin lesions at the site ...",
+"ko": "점막피부 리슈마니아증",
+"alt": [
+"미국 피부 리슈마니아증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0021129",
+"concept": "- MONDO:0021129 | microphthalmia | syn: microphthalmia | ancestors: ocular growth disorder, eye disorder, disorder of orbital region, disorder of visual system | def: Congenital or developmental anomaly in which the eyeballs are abnormally small.",
+"ko": "소안구증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004659",
+"concept": "- MONDO:0004659 | eye carcinoma in situ | syn: carcinoma in situ of eye; carcinoma in situ of eyeball of camera-type eye; eye in situ carcinoma; eyeball of camera-type eye carcinoma in situ | ancestors: eye carcinoma, in situ carcinoma, head and neck carcinoma, ocular cancer | def: A carcinoma in situ involving a eye.",
+"ko": "눈 상피내암종",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006690",
+"concept": "- MONDO:0006690 | carotid artery thrombosis | ancestors: intracranial thrombosis, carotid artery disorder, thrombotic disease, cerebrovascular disorder | def: Blood clot formation in any part of the carotid arteries. This may produce carotid stenosis or occlusion of the vessel, leading to transient ischemic attack; cerebral infarction; or amaurosis fugax.",
+"ko": "목동맥 혈전증",
+"alt": [
+"경동맥 혈전증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005966",
+"concept": "- MONDO:0005966 | spleen cancer | syn: cancer of spleen; cancer of the spleen; malignant neoplasm of spleen; malignant neoplasm of the spleen | ancestors: lymphatic system cancer, digestive system cancer, spleen neoplasm, immune system cancer | def: A malignant neoplasm involving the spleen",
+"ko": "비장암",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011080",
+"concept": "- MONDO:0011080 | progressive deafness with stapes fixation | syn: Stapedo-vestibular ankylosis; Thies-Reis syndrome | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease | def: Stapes fixation (stapedovestibular ankylosis) is a hearing loss condition that appears as a consequence of annular ligament destruction followed by excessive connective tissue production during the he...",
+"ko": "등골 고정을 동반한 진행성 난청",
+"alt": [
+"티에스-라이스 증후군"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004944",
+"concept": "- MONDO:0004944 | neurosyphilis | syn: neurosyphilis | ancestors: tertiary syphilis, syphilis, primary bacterial infectious disease, Treponema infectious disease | def: Infection of the brain or spinal cord by Treponema pallidum. It occurs many years following the original infection which remained untreated. Signs and symptoms include abnormal gait, blindness, depres...",
+"ko": "신경매독",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004580",
+"concept": "- MONDO:0004580 | retinal degeneration | syn: retina degeneration; retina, Degeneration Of | ancestors: retinal disorder, nervous system disorder, eye disorder, disease by body system or component | def: Degeneration of the retina.",
+"ko": "망막 변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+}
+]

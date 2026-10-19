@@ -1,0 +1,255 @@
+[
+{
+"id": "MONDO:0004184",
+"concept": "- MONDO:0004184 | urethral disorder | syn: disease of urethra; disease or disorder of urethra; disorder of urethra; urethra disease | ancestors: urinary system disorder, disease by body system or component, human disease, disease | def: A disease involving the urethra.",
+"ko": "요도 질환",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006500",
+"concept": "- MONDO:0006500 | hemangioma | syn: benign hemangioma; hemangioma; hemangioma, benign | ancestors: benign blood vessel neoplasm, cardiovascular organ benign neoplasm, blood vessel neoplasm, benign neoplasm | def: A benign vascular lesion characterized by the formation of capillary-sized or cavernous vascular channels.",
+"ko": "혈관종",
+"alt": [],
+"organs": [
+"cardiovascular",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006354",
+"concept": "- MONDO:0006354 | parathyroid hyperplasia | syn: hyperplasia of parathyroid; hyperplasia of the parathyroid; parathyroid gland hyperplasia; parathyroid hyperplasia | ancestors: parathyroid gland disorder, hyperplasia, endocrine system disorder, cancer or benign tumor | def: A hyperplasia that involves the parathyroid gland.",
+"ko": "부갑상샘 증식증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018555",
+"concept": "- MONDO:0018555 | hypogonadotropic hypogonadism | syn: central hypogonadism; gonadotropic deficiency; hypogonadism, hypogonadotropic; hypogonadotropic hypogonadism | ancestors: hypogonadism, hereditary disease, gonadal disorder, disease of genetic or genomic mechanism | def: Abnormal ovarian or testicular function due to insufficient hormonal stimulation from the hypothalamic-pituitary axis.",
+"ko": "저성선자극호르몬성 성선기능저하증",
+"alt": [
+"중추성 성선기능저하증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009101",
+"concept": "- MONDO:0009101 | Wolfram syndrome 1 | syn: WFS1; WFS1 Wolfram syndrome; Wolfram syndrome 1; Wolfram syndrome caused by mutation in WFS1 | ancestors: Wolfram syndrome, WFS1-related disorder, syndromic disease, hereditary disease | def: Any Wolfram syndrome in which the cause of the disease is a mutation in the WFS1 gene.",
+"ko": "울프람 증후군 1",
+"alt": [
+"WFS1 울프람 증후군"
+],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002272",
+"concept": "- MONDO:0002272 | polyclonal hypergammaglobulinemia | syn: polyclonal hypergammaglobulinemia | ancestors: plasma protein metabolism disease, inborn errors of metabolism, hereditary disease, metabolic disease | def: A laboratory test result indicating abnormally high proliferation of gamma globulins in the blood originating from multiple cell lines.",
+"ko": "다클론 고감마글로불린혈증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0010528",
+"concept": "- MONDO:0010528 | anosmia | syn: anosmia; anosmia (disease) | ancestors: nasal disorder, otorhinolaryngologic disease, disease by body system or component, human disease | def: Loss of or impaired ability to smell. This may be caused by olfactory nerve diseases; paranasal sinus diseases; viral respiratory tract infections; craniocerebral trauma; smoking; and other conditions...",
+"ko": "후각상실증",
+"alt": [
+"무후각증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001764",
+"concept": "- MONDO:0001764 | ethmoidal sinus neoplasm | syn: ethmoid sinus neoplasm; ethmoid sinus neoplasm (disease); ethmoid sinus tumor; ethmoid sinus tumour | ancestors: paranasal sinus neoplasm, paranasal sinus disorder, skull neoplasm, nasal disorder | def: A benign or malignant neoplasm that affects the ethmoid sinus. Representative examples of benign neoplasms include Schneiderian papilloma and salivary gland-type adenoma. Representative examples of ma...",
+"ko": "사골동 신생물",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008720",
+"concept": "- MONDO:0008720 | congenital isolated adrenocorticotropic hormone deficiency | syn: ACTH deficiency; adrenocorticotropic hormone deficiency; congenital isolated adrenocorticotropic hormone deficiency (disease) | ancestors: combined pituitary hormone deficiencies, genetic form, isolated congenital hypogonadotropic hypogonadism, congenital nervous system disorder, hypopituitarism | def: A hypopituitarrium that is characterized by a decreased or absent production of adrenocorticotropic hormone by the pituitary gland.",
+"ko": "선천성 단독 부신피질자극호르몬 결핍증",
+"alt": [
+"ACTH 결핍증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010558",
+"concept": "- MONDO:0010558 | choroideremia-deafness-obesity syndrome | syn: Ayazi syndrome; Xq21 deletion syndrome, X-linked recessive | ancestors: inherited retinal dystrophy, retinal degeneration, hereditary neurological disease, retinal disorder | def: Choroideremia-deafness-obesity syndrome is an X-linked retinal dystrophy characterized by choroideremia, causing in affected males progressive nyctalopia and eventual central blindness. Obesity, moder...",
+"ko": "무맥락막증-난청-비만 증후군",
+"alt": [
+"아야지 증후군"
+],
+"organs": [
+"ocular",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001063",
+"concept": "- MONDO:0001063 | cardia cancer | syn: cancer of cardia of stomach; cardia of stomach cancer; malignant cardia of stomach neoplasm; malignant neoplasm of cardia of stomach | ancestors: gastric cancer, digestive system cancer, gastric neoplasm, digestive system disorder | def: A malignant neoplasm involving the cardia of stomach.",
+"ko": "분문부 암",
+"alt": [
+"분문암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005701",
+"concept": "- MONDO:0005701 | chlamydia trachomatis infectious disease | syn: Chlamydia trachomatis caused disease or disorder; Chlamydia trachomatis disease or disorder; Chlamydial infection | ancestors: commensal bacterial infectious disease, chlamydia infectious disease, bacterial infectious disease, bacterial sexually transmitted disease | def: An infection that is caused by Chlamydia trachomatis.",
+"ko": "클라미디아 트라코마티스 감염병",
+"alt": [
+"클라미디아 감염증"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0006836",
+"concept": "- MONDO:0006836 | Listeria meningitis | syn: Listeria meningitis; Listeria monocytogenes caused infectious meningitis; Listeria monocytogenes infectious meningitis | ancestors: listeriosis, bacterial meningitis, primary bacterial infectious disease, vector-borne disease | def: Inflammation of the meninges caused by listeria monocytogenes infection, usually occurring in individuals under the age of 3 years or over the age of 50 years. It may occur at any age in individuals w...",
+"ko": "리스테리아 수막염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0019349",
+"concept": "- MONDO:0019349 | Sotos syndrome | syn: cerebral gigantism; cerebral gigantism syndrome; chromosome 5q35 deletion syndrome; NSD1 Sotos syndrome | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, partial deletion of the long arm of chromosome 5, skeletal dysplasia | def: Sotos syndrome is a rare multisystemic genetic disorder characterized by a typical facial appearance, overgrowth of the body in early life with macrocephaly, and mild to severe intellectual disability...",
+"ko": "소토스 증후군",
+"alt": [
+"뇌성 거인증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003317",
+"concept": "- MONDO:0003317 | metachronous kidney Wilms' tumor | syn: metachronous Wilms tumor; metachronous Wilms tumor of the kidney; metachronous Wilms tumour; metachronous Wilms tumour of the kidney | ancestors: kidney Wilms tumor, kidney cancer, Wilms tumor, malignant urinary system neoplasm | def: Wilms tumor arising in the remaining kidney following treatment of the original Wilms tumor.",
+"ko": "이시성 신장 윌름스 종양",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002887",
+"concept": "- MONDO:0002887 | bile duct disorder | syn: bile duct disease; bile duct disease or disorder; bile duct disorder; disease of bile duct | ancestors: biliary tract disorder, hepatobiliary disorder, digestive system disorder, disease by body system or component | def: A disease involving the bile duct.",
+"ko": "담관 질환",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018155",
+"concept": "- MONDO:0018155 | lateral sclerosis | syn: adult-onset PLS; adult-onset primary lateral sclerosis; PLS; primary lateral sclerosis | ancestors: hereditary motor neuron disease, motor neuron disorder, inherited neurodegenerative disorder, hereditary neuromuscular disease | def: Primary lateral sclerosis (PLS) is an idiopathic non-familial motor neuron disease characterized by slowly progressive upper motor neuron dysfunction leading to spasticity, mild weakness in voluntary ...",
+"ko": "측삭경화증",
+"alt": [
+"원발성 측삭경화증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004583",
+"concept": "- MONDO:0004583 | transient retinal arterial occlusion | syn: transient retinal arterial occlusion | ancestors: retinal artery occlusion, retinal vascular occlusion, retinal vascular disorder, vascular occlusion disorder | def: A partial, temporary occlusion of the retinal artery.",
+"ko": "일과성 망막동맥 폐쇄",
+"alt": [
+"일과성 망막동맥 폐색"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:7770750",
+"concept": "- MONDO:7770750 | Athabaskan brainstem dysgenesis syndrome | syn: ABDS; ABSD; Athabascan brainstem dysgenesis syndrome; Athabaskan brainstem dysgenesis | ancestors: HOXA1-related syndrome, syndromic disease, autosomal recessive disease, disease by body system or component | def: A HOXA1-related syndrome characterized by horizontal gaze palsy, sensorineural deafness, central hypoventilation, developmental delay, and intellectual disability, described in persons of Athabaskan A...",
+"ko": "아타바스칸 뇌줄기 발생이상 증후군",
+"alt": [],
+"organs": [
+"pulmonary",
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002133",
+"concept": "- MONDO:0002133 | chronic rheumatic pericarditis | syn: rheumatic pericarditis, chronic | ancestors: rheumatic pericarditis, pericarditis, rheumatic heart disease, pericardium disorder | def: Chronic form of rheumatic pericarditis.",
+"ko": "만성 류마티스 심낭염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+}
+]

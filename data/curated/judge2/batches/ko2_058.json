@@ -1,0 +1,242 @@
+[
+{
+"id": "MONDO:0100638",
+"concept": "- MONDO:0100638 | endocrine myopathy | ancestors: metabolic myopathy, myopathy, skeletal muscle disorder, muscle tissue disorder | def: A metabolic myopathy associated with an endocrine disorder.",
+"ko": "내분비 근병증",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019773",
+"concept": "- MONDO:0019773 | myelomeningocele | ancestors: spina bifida cystica, isolated spina bifida, spina bifida, congenital nervous system disorder | def: Myelomeningocele is the most severe form of spina bifida. It happens when parts of the spinal cord and nerves come through the open part of the spine. It causes nerve damage and other disabilities. Se...",
+"ko": "척수수막류",
+"alt": [
+"수막척수류"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017198",
+"concept": "- MONDO:0017198 | osteopetrosis | syn: Albers-Schonberg disease; marble bone disease; marble bones; osteopetrosis | ancestors: skeletal dysplasia, familial osteosclerosis, hereditary disease, bone disorder | def: Osteopetrosis, also known as marble bone disease, is a descriptive term that refers to a group of rare, heritable disorders of the skeleton characterized by increased bone density on radiographs.",
+"ko": "대리석뼈병",
+"alt": [
+"골화석증"
+],
+"organs": [
+"haematologic",
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018083",
+"concept": "- MONDO:0018083 | transient tyrosinemia of the newborn | syn: transient neonatal tyrosinemia; transient tyrosinemia of the neonate | ancestors: tyrosinemia, disorder of tyrosine metabolism, inborn disorder of phenylalanine and tyrosine metabolism, inborn disorder of amino acid metabolism | def: A benign disorder of tyrosine metabolism detected upon newborn screening and often observed in premature infants. It shows no clinical symptoms. It is characterized by tyrosinemia, moderate hyperpheny...",
+"ko": "신생아 일과성 티로신혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001689",
+"concept": "- MONDO:0001689 | hypertrophy of tongue papillae | ancestors: tongue disorder, mouth disorder, disease by body system or component, human disease",
+"ko": "혀유두 비대",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0011429",
+"concept": "- MONDO:0011429 | juvenile idiopathic arthritis | syn: JIA; Juvenile idiopathic arthritis; juvenile idiopathic arthritis; juvenile rheumatoid arthritis | ancestors: rheumatic disorder, arthritic joint disease, idiopathic disease, connective tissue disorder | def: Juvenile idiopathic arthritis (JIA) is the term used to describe a group of inflammatory articular disorders of unknown cause that begin before the age of 16 and last over 6 weeks. The term juvenile i...",
+"ko": "소아 특발성 관절염",
+"alt": [
+"청소년 특발성 관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 11
+},
+{
+"id": "MONDO:0020451",
+"concept": "- MONDO:0020451 | congenital stenosis of the inferior vena cava | syn: congenital stenosis of the inferior caval vein; congenital stenosis of the IVC | ancestors: congenital anomaly of the inferior vena cava, vascular disorder, cardiovascular disorder, disease by body system or component",
+"ko": "선천성 하대정맥 협착",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004038",
+"concept": "- MONDO:0004038 | dental enamel hypoplasia | syn: enamel hypoplasia | ancestors: tooth hard tissue disease, tooth disorder, skeletal system disorder, mouth disorder | def: Deficiency in the enamel tissue that results in the formation of grooves, pits, or dents on the surface of the affected teeth.",
+"ko": "법랑질 형성부전",
+"alt": [
+"치아 법랑질 저형성"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009711",
+"concept": "- MONDO:0009711 | congenital fiber-type disproportion myopathy | syn: CFTDM; congenital fiber-type disproportion; congenital myopathy with fiber type disproportion; congenital myopathy with fibre type disproportion | ancestors: congenital structural myopathy, congenital myopathy, myopathy, skeletal muscle disorder | def: A rare genetic disorder caused by mutations in the TPM3, ACTA1, RYR1 or SEPN1 genes. It is inherited in an autosomal dominant or recessive pattern and rarely in an X-linked pattern. It manifests with ...",
+"ko": "선천성 섬유형 불균형 근병증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001858",
+"concept": "- MONDO:0001858 | Tietze syndrome | syn: costochondral joint syndromic disease; Costochondritis; syndromic disease of costochondral joint; Tietze syndrome | ancestors: syndromic disease, arthropathy, disease by body system or component, skeletal system disorder | def: Idiopathic painful nonsuppurative swellings of one or more costal cartilages, especially of the second rib. The anterior chest pain may mimic that of coronary artery disease.",
+"ko": "티체 증후군",
+"alt": [
+"늑연골염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019147",
+"concept": "- MONDO:0019147 | myiasis | syn: infestation by fly larvae; infestation by maggots; maggot infestation; myiasis, unspecified | ancestors: parasitic ectoparasitic infectious disease, parasitic skin disorder, parasitic infectious disease, skin disorder caused by infection | def: The infection of a fly larva (maggot) in human tissue, which most commonly occurs in tropical climates. Affected tissues most commonly include skin, especially if open wounds are present, nasal passag...",
+"ko": "파리유충증",
+"alt": [
+"구더기증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0015092",
+"concept": "- MONDO:0015092 | cleft hard palate | ancestors: cleft palate, orofacial cleft, developmental defect during embryogenesis, hereditary disease",
+"ko": "경구개 갈림증",
+"alt": [
+"경구개열"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019499",
+"concept": "- MONDO:0019499 | Turner syndrome | syn: 45,X gonadal dysgenesis; 45,X syndrome; 45,X/46,XX syndrome; 45,X0 syndrome | ancestors: gonadal dysgenesis, syndromic disease, sex chromosome disorder of sex development, inherited primary ovarian failure | def: Turner syndrome is a chromosomal disorder associated with the complete or partial absence of an X chromosome.",
+"ko": "터너 증후군",
+"alt": [
+"45,X 증후군"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0005673",
+"concept": "- MONDO:0005673 | blind loop syndrome | syn: blind loop syndrome; stasis (blind loop) syndrome; stasis syndrome | ancestors: malabsorption syndrome, intestinal disorder, digestive system disorder, disease by body system or component | def: A disorder affecting the small intestine. It is caused by the stasis of food and subsequent overgrowth of bacteria in a portion of the small intestine that is unintentionally bypassed as a complicatio...",
+"ko": "맹관 증후군",
+"alt": [
+"정체고리 증후군"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001935",
+"concept": "- MONDO:0001935 | neurogenic arthropathy | syn: arthropathy associated with neurological disorder; neuropathic arthropathy; neuropathic arthropathy (& Charcot's) | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: Chronic progressive degeneration of the stress-bearing portion of a joint, with bizarre hypertrophic changes at the periphery. It is probably a complication of a variety of neurologic disorders, parti...",
+"ko": "신경병성 관절병증",
+"alt": [
+"샤르코 관절병증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0009692",
+"concept": "- MONDO:0009692 | primary myelofibrosis | syn: Agnogenic myeloid metaplasia; AMM; chronic idiopathic myelofibrosis; CIMF | ancestors: acquired aplastic anemia, myeloproliferative neoplasm, aplastic anemia, myeloid neoplasm | def: Myelofibrosis with myeloid metaplasia is a myeloproliferative disease with annual incidence of approximately 1 case per 100,000 individuals and age at diagnosis around 60 (an increased prevalence is n...",
+"ko": "원발성 골수섬유화증",
+"alt": [
+"특발성 골수화생"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0008684",
+"concept": "- MONDO:0008684 | Wolf-Hirschhorn syndrome | syn: 4p deletion syndrome; 4p- syndrome; chromosome 4p16.3 deletion syndrome; distal deletion 4p | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-intellectual disability, chromosome 4 short arm deletion, disease by body system or component | def: Wolf-Hirschhorn syndrome (WHS) is a developmental disorder characterized by typical craniofacial features, prenatal and postnatal growth impairment, intellectual disability, severe delayed psychomotor...",
+"ko": "울프-허쉬혼 증후군",
+"alt": [
+"4p 결손 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009369",
+"concept": "- MONDO:0009369 | non-immune hydrops fetalis | syn: non-immune fetal edema; non-immune fetal hydrops; non-immune foetal hydrops; non-immune foetal oedema | ancestors: hydrops fetalis, developmental defect during embryogenesis, disorder of development or morphogenesis, disease by developmental or physiological process | def: Non-immune hydrops fetalis (NIHF), a form of HF, is a severe fetal condition defined as the excessive accumulation of fetal fluid within the fetal extravascular compartments and body cavities, and is ...",
+"ko": "비면역성 태아수종",
+"alt": [],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005555",
+"concept": "- MONDO:0005555 | cycloplegia | syn: paresis of accommodation | ancestors: eye accommodation disease, eye disorder, disorder of orbital region, disorder of visual system | def: Cycloplegia is paralysis of the ciliary muscle of the eye, resulting in a loss of accommodation.",
+"ko": "조절마비",
+"alt": [
+"섬모체근마비"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001315",
+"concept": "- MONDO:0001315 | orthostatic intolerance | syn: cardiovascular malfunction arising from mental factors; irritable heart; neurocirculatory asthenia; postural orthostatic tachycardia syndrome | ancestors: dysautonomia, autonomic nervous system disorder, central nervous system disorder, peripheral nervous system disorder | def: A chronic disorder of dysautonomia, characterized by palpitation, shortness of breath, labored breathing, and subjective complaints of effort and discomfort provoked by physical exertion or upright po...",
+"ko": "기립불내증",
+"alt": [
+"기립성 불내증"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1
+}
+]

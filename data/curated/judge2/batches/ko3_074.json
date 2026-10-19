@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0004764",
+"concept": "- MONDO:0004764 | fibular collateral ligament bursitis | ancestors: enthesopathy, musculoskeletal system disorder, connective tissue disorder, disease by body system or component",
+"ko": "종아리쪽곁인대 윤활낭염",
+"alt": [
+"비측부인대 점액낭염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021483",
+"concept": "- MONDO:0021483 | benign neoplasm of frontal sinus | syn: benign frontal sinus neoplasm; benign frontal sinus tumor; benign frontal sinus tumour; benign neoplasm of the frontal sinus | ancestors: respiratory system benign neoplasm, bone benign neoplasm, sensory organ benign neoplasm, frontal sinus neoplasm | def: A benign neoplasm that involves the frontal sinus.",
+"ko": "이마굴 양성 신생물",
+"alt": [
+"전두동 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000973",
+"concept": "- MONDO:0000973 | external ear lipoma | syn: external Ear lipoma; external ear lipoma; lipoma of external Ear; lipoma of external ear | ancestors: lipoma, external ear neoplasm, benign neoplasm of ear, benign lipomatous neoplasm | def: A benign adipose tissue neoplasm of the external ear.",
+"ko": "외이 지방종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002639",
+"concept": "- MONDO:0002639 | glossopharyngeal nerve disorder | syn: disease of glossopharyngeal nerve; disease or disorder of glossopharyngeal nerve; disorder of glossopharyngeal nerve; glossopharyngeal nerve disease | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the glossopharyngeal nerve.",
+"ko": "혀인두신경 질환",
+"alt": [
+"설인신경 질환"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000240",
+"concept": "- MONDO:0000240 | invasive aspergillosis | ancestors: pulmonary aspergilloma, aspergillosis, fungal lung infectious disease, opportunistic mycosis | def: An aspergillosis that is a serious fungal infection of the lung with pneumonia caused by Aspergillus, which spreads to other parts of the body through bloodstream in patients with acute leukemia and r...",
+"ko": "침습성 아스페르길루스증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0024377",
+"concept": "- MONDO:0024377 | circadian rhythm sleep disorder, delayed sleep phase type | syn: delayed sleep phase syndrome; DSPS; sleep wake schedule disorder, delayed phase type | ancestors: circadian rhythm sleep disorder, sleep-wake disorder, sleep disorder, disease by developmental or physiological process | def: A circadian sleep disorder in which the individual's internal body clock is delayed with respect to the external day/night cycle.",
+"ko": "일주기리듬 수면장애, 수면위상지연형",
+"alt": [
+"수면위상지연 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000986",
+"concept": "- MONDO:0000986 | pleurisy | syn: inflammation of pleura; pleura inflammation; pleuritis | ancestors: pleural disorder, serositis, lower respiratory tract disorder, inflammatory disease | def: Inflammation of the pleura. It is usually caused by infections. Chest pain while breathing or coughing is the presenting symptom.",
+"ko": "흉막염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005563",
+"concept": "- MONDO:0005563 | nut midline carcinoma | syn: carcinoma with t(15;19)(q13;p13.1) translocation; Midline carcinoma of children and Young adults with NUT rearrangement; NMC; nuclear protein in testis midline carcinoma | ancestors: undifferentiated carcinoma, carcinoma, cancer, epithelial neoplasm | def: A rare, highly aggressive and lethal carcinoma that affects children and young adults. It arises from midline epithelial structures, most commonly the head, neck, and mediastinum. It is a poorly diffe...",
+"ko": "NUT 정중선 암종",
+"alt": [
+"NUT 중앙선 암종"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006081",
+"concept": "- MONDO:0006081 | anal melanoma | syn: anal malignant melanoma; anal melanoma; anus melanoma; anus melanoma (disease) | ancestors: anus cancer, rectum malignant melanoma, anus neoplasm, rectal cancer | def: A melanoma arising from the anus. Clinical presentation includes rectal bleeding, tenesmus, pain, and change in bowel habit. The prognosis is usually poor.",
+"ko": "항문 흑색종",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002815",
+"concept": "- MONDO:0002815 | acute myocarditis | syn: myocarditis, acute | ancestors: myocarditis, acute disease, intrinsic cardiomyopathy, inflammation of heart layer | def: The sudden onset of inflammation of heart muscle with myocellular necrosis; this is generally secondary to an infectious cause, and patients often have a recent history of a flu-like illness.",
+"ko": "급성 심근염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0019249",
+"concept": "- MONDO:0019249 | mucopolysaccharidosis | syn: Mucopolysaccharidoses; mucopolysaccharidoses; mucopolysaccharidosis | ancestors: lysosomal storage disease, developmental anomaly of metabolic origin, inborn carbohydrate metabolic disorder, mucopolysaccharidosis or mucopolysaccharidosis-like disorder | def: A group of autosomal recessive or X-linked inherited lysosomal storage disorders affecting the metabolism of mucopolysaccharides, resulting in the accumulation of mucopolysaccharides in the body. Sign...",
+"ko": "뮤코다당증",
+"alt": [
+"점액다당증"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004641",
+"concept": "- MONDO:0004641 | skin carcinoma in situ | syn: carcinoma in situ of skin; carcinoma in situ of the skin; carcinoma in situ of zone of skin; carcinoma of skin stage 0 | ancestors: skin carcinoma, in situ carcinoma, skin cancer, carcinoma | def: A in situ carcinoma that involves the zone of skin.",
+"ko": "피부 상피내암종",
+"alt": [
+"피부 제자리암종"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001024",
+"concept": "- MONDO:0001024 | pneumonic plague | ancestors: lung disorder, plague, respiratory tract infectious disorder, lower respiratory tract disorder | def: A plague in which the bacteria have infected the lungs.",
+"ko": "폐페스트",
+"alt": [
+"폐렴형 페스트"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014720",
+"concept": "- MONDO:0014720 | autosomal dominant optic atrophy plus syndrome | syn: DOA+; optic atrophy-deafness-polyneuropathy-myopathy syndrome | ancestors: autosomal dominant disease, hereditary optic atrophy, mitochondrial disease, autosomal genetic disease | def: A hereditary optic atrophy associating the typical optic atrophy with other extra-ocular manifestations such as sensorineural deafness, myopathy, chronic progressive external ophthalmoplegia, ataxia a...",
+"ko": "상염색체 우성 시신경위축 플러스 증후군",
+"alt": [
+"상염색체 우성 시신경위축증 플러스 증후군"
+],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004857",
+"concept": "- MONDO:0004857 | tendinitis | syn: inflammation of tendon; tendon inflammation; tendonitis | ancestors: myositis disease, disease of the tendon, myopathy, inflammatory disease | def: Inflammation of a tendon, usually resulting from an overuse injury. It is characterized by swelling of the tendon, tenderness around the inflamed tendon, and pain while moving the affected area of the...",
+"ko": "건염",
+"alt": [
+"힘줄염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010837",
+"concept": "- MONDO:0010837 | primary hyperparathyroidism | syn: primary hyperparathyroidism; primary hyperparathyroidism (disease) | ancestors: hyperparathyroidism, parathyroid gland disorder, endocrine system disorder, disease by body system or component | def: Hyperfunction of the parathyroid glands resulting in the overproduction of parathyroid hormone. It is caused by parathyroid adenoma, parathyroid hyperplasia, parathyroid carcinoma, and multiple endocr...",
+"ko": "원발성 부갑상샘기능항진증",
+"alt": [
+"원발성 부갑상선기능항진증"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0024318",
+"concept": "- MONDO:0024318 | viral infection of central nervous system | syn: viral infection of central nervous system | ancestors: viral infectious disease, central nervous system infectious disorder, infectious disease, central nervous system disorder",
+"ko": "중추신경계 바이러스 감염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001800",
+"concept": "- MONDO:0001800 | equatorial staphyloma | ancestors: scleral disorder, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "적도부 포도종",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005711",
+"concept": "- MONDO:0005711 | congenital diaphragmatic hernia | syn: CDH; congenital diaphragmatic hernia | ancestors: diaphragm disorder, hereditary skeletal muscle disorder, respiratory system disorder, skeletal muscle disorder | def: A posterolateral defect of the diaphragm that allows passage of abdominal viscera into the thorax, leading to respiratory insufficiency and persistent pulmonary hypertension with high mortality.",
+"ko": "선천성 횡격막 탈장",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0016060",
+"concept": "- MONDO:0016060 | laryngotracheoesophageal cleft | syn: congenital cleft larynx; Larnygeotracheoesophageal cleft; laryngeal cleft; laryngo-tracheo-esophageal cleft | ancestors: tracheal disorder, esophageal disorder, lower respiratory tract disorder, upper respiratory tract disorder | def: A laryngo-tracheo-esophageal cleft (LC) is a congenital malformation characterized by an abnormal, posterior, sagittal communication between the larynx and the pharynx, possibly extending downward bet...",
+"ko": "후두기관식도 열",
+"alt": [
+"선천성 후두열"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

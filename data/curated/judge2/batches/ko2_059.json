@@ -1,0 +1,236 @@
+[
+{
+"id": "MONDO:0006953",
+"concept": "- MONDO:0006953 | Rh isoimmunization | ancestors: blood group incompatibility, hematologic disorder, disease by body system or component, human disease | def: The mother develops antibodies against red blood cell Rhesus antigens. This may lead to potential fetal adverse outcomes such as anemia.",
+"ko": "Rh 동종면역",
+"alt": [
+"Rh 부적합 임신"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005989",
+"concept": "- MONDO:0005989 | toxoplasmosis | syn: Toxoplasma gondii caused disease or disorder; Toxoplasma gondii disease or disorder; Toxoplasma gondii infectious disease | ancestors: coccidiosis, protozoa infectious disease, parasitic infectious disease, infectious disease | def: A parasitic disease contracted by the ingestion or fetal transmission of toxoplasma gondii.",
+"ko": "톡소플라스마증",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0021326",
+"concept": "- MONDO:0021326 | malignant neoplasm of cervical esophagus | syn: cancer of cervical part of esophagus; cancer of cervical part of oesophagus; cervical part of esophagus cancer; cervical part of oesophagus cancer | ancestors: esophageal cancer, digestive system cancer, neoplasm of esophagus, digestive system disorder | def: A cancer that involves the cervical part of esophagus.",
+"ko": "경부 식도 악성 신생물",
+"alt": [
+"경부 식도암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006798",
+"concept": "- MONDO:0006798 | hypervitaminosis A | syn: hypervitaminosis type A | ancestors: overnutrition, nutritional disorder, disease by etiologic mechanism, human disease | def: A symptom complex resulting from ingesting excessive amounts of vitamin A.",
+"ko": "비타민 A 과다증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019537",
+"concept": "- MONDO:0019537 | hemoglobin D disease | syn: hemoglobin D disease | ancestors: anemia, inherited hemoglobinopathy, hematologic disorder, hereditary disease | def: Hemoglobin D disease(HbD) is a hemoglobinopathy characterized by production of abnormal variant hemoglobin known as hemoglobin D, with no or mild clinical manifestations (splenomegaly, very mild anemi...",
+"ko": "헤모글로빈 D병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005784",
+"concept": "- MONDO:0005784 | hantavirus hemorrhagic fever with renal syndrome | syn: hemorrhagic nephrosonephritis; HFRS | ancestors: renal infectious disease, hantavirus infectious disease, kidney disorder, urinary tract infection | def: A disorder caused by hantaviruses of the family Bunyaviridae. It is transmitted by rodents and is manifested with fever, hemorrhage, and renal failure. Other symptoms include headaches, abdominal and ...",
+"ko": "한타바이러스 신증후 출혈열",
+"alt": [
+"유행성 출혈열"
+],
+"organs": [
+"haematologic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010518",
+"concept": "- MONDO:0010518 | Wiskott-Aldrich syndrome | syn: eczema-thrombocytopenia-immunodeficiency syndrome; immunodeficiency 2; WAS; Wiskott Aldrich syndrome | ancestors: X-linked disease, combined immunodeficiency, hereditary neoplastic syndrome, inherited blood coagulation disorder | def: Wiskott-Aldrich syndrome (WAS) is a primary immunodeficiency disease characterized by microthrombocytopenia, eczema, infections and an increased risk for autoimmune manifestations and malignancies.",
+"ko": "비스코트-올드리치 증후군",
+"alt": [
+"윌스코트-앨드리치 증후군"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000295",
+"concept": "- MONDO:0000295 | acanthocephaliasis | syn: Acanthocephala caused disease or disorder; Acanthocephala disease or disorder; Acanthocephala infectious disease; disease caused by Acanthocephala | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: An disease or disorder caused by infection with Acanthocephala.",
+"ko": "구두충증",
+"alt": [
+"가시머리벌레증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004180",
+"concept": "- MONDO:0004180 | benign urinary system neoplasm | syn: benign neoplasm of the urinary tract; benign neoplasm of urinary tract; benign tumor of the urinary tract; benign tumor of urinary tract | ancestors: benign neoplasm, urinary system neoplasm, neoplasm, urinary system disorder | def: A non-metastasizing neoplasm that arises from the organs that comprise the urinary system. Representative examples include renal oncocytoma, bladder inverted papilloma, and urothelial papilloma.",
+"ko": "양성 비뇨계 신생물",
+"alt": [
+"양성 비뇨기계 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:1040033",
+"concept": "- MONDO:1040033 | congenital muscular dystrophy without intellectual disability | syn: CMD without intellectual disability; CMD-no MR; congenital muscular dystrophy-dystroglycanopathy without intellectual disability | ancestors: congenital muscular dystrophy, congenital nervous system disorder, muscular dystrophy, nervous system disorder | def: A congenital muscular dystrophy due to dystroglycanopathy characterized by a wide phenotypic spectrum which includes hypotonia and muscular weakness present at birth or early infancy, delayed or arres...",
+"ko": "지적장애를 동반하지 않는 선천성 근이영양증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015486",
+"concept": "- MONDO:0015486 | keratoconus | syn: keratoconus; keratoconus (disease) | ancestors: corneal disorder, hereditary disease, ocular growth disorder, eye disorder | def: A degenerative, structural disorder of the eye, characterized by a cone-shaped protrusion of the cornea. It may lead to visual disturbances.",
+"ko": "원추각막",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004866",
+"concept": "- MONDO:0004866 | eustachian tube disorder | syn: disease of pharyngotympanic tube; disease or disorder of pharyngotympanic tube; disorder of pharyngotympanic tube; eustachian tube disorder | ancestors: middle ear disorder, auditory system disorder, disorder of ear, disease by body system or component | def: A disease involving the pharyngotympanic tube.",
+"ko": "유스타키오관 질환",
+"alt": [
+"이관 질환"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0020355",
+"concept": "- MONDO:0020355 | coloboma of eye lens | ancestors: coloboma, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "수정체 결손",
+"alt": [
+"수정체 콜로보마"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005799",
+"concept": "- MONDO:0005799 | hookworm infectious disease | ancestors: infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Infection of humans or animals with hookworms other than those caused by the genus Ancylostoma or Necator, for which the specific terms ancylostomiasis and necatoriasis are available.",
+"ko": "구충 감염병",
+"alt": [
+"십이지장충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006009",
+"concept": "- MONDO:0006009 | viral encephalitis | syn: viral encephalitis; Viruses caused encephalitis; Viruses encephalitis | ancestors: infectious encephalitis, viral infection of central nervous system, primary viral infectious disease, encephalitis | def: Encephalitis resulting from viral infection.",
+"ko": "바이러스성 뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0003783",
+"concept": "- MONDO:0003783 | lymphopenia | syn: lymphocytopenia; lymphopenia; lymphopenia (disease) | ancestors: leukopenia, leukocyte disorder, immune system disorder, hematologic disorder | def: Reduction in the number of lymphocytes.",
+"ko": "림프구감소증",
+"alt": [
+"림프구 감소증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001927",
+"concept": "- MONDO:0001927 | pulmonary valve insufficiency | syn: pulmonary regurgitation; pulmonary valve regurgitation; pulmonary valvular regurgitation; regurgitation, pulmonary | ancestors: pulmonary valve disorder, heart valve disorder, heart disorder, cardiovascular disorder | def: Dysfunction of the pulmonary valve characterized by incomplete valve closure.",
+"ko": "폐동맥판 폐쇄부전",
+"alt": [
+"폐동맥판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0004588",
+"concept": "- MONDO:0004588 | night blindness | syn: nyctalopia | ancestors: blindness (disorder), retinal disorder, vision disorder, nervous system disorder | def: Inability to see clearly in dim light.",
+"ko": "야맹증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009067",
+"concept": "- MONDO:0009067 | cystinuria | syn: cystinuria; cystinuria (disease); cystinuria-lysinuria syndrome | ancestors: syndromic disease, inherited renal tubular disease, inborn disorder of amino acid transport, disease by body system or component | def: Cystinuria is a renal tubular amino acid transport disorder characterized by recurrent formation of kidneys cystine stones.",
+"ko": "시스틴뇨증",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021680",
+"concept": "- MONDO:0021680 | streptococcal infection | syn: streptococcal infection; Streptococcus caused disease or disorder; Streptococcus disease or disorder; Streptococcus infectious disease | ancestors: gram-positive bacterial infections, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Any of the several infectious disorders caused by members of streptococcus, a genus of gram positive bacteria belonging to the family Streptococcaceae. Streptococcal infections are classified into Gro...",
+"ko": "연쇄알균 감염",
+"alt": [
+"연쇄상구균 감염"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5
+}
+]

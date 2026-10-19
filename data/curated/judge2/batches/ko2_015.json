@@ -1,0 +1,241 @@
+[
+{
+"id": "MONDO:0008353",
+"concept": "- MONDO:0008353 | pruritic urticarial papules and plaques of pregnancy | syn: polymorphic eruption of pregnancy; pruritic urticarial papules and plaques of pregnancy | ancestors: urticaria, pregnancy disorder, dermatitis, obstetric disorder",
+"ko": "임신 소양성 두드러기 구진 및 판",
+"alt": [
+"임신 다형발진"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016472",
+"concept": "- MONDO:0016472 | dracunculiasis | syn: dracontiasis; Dracunculosis; Dracunculus medinensis caused disease or disorder; Dracunculus medinensis disease or disorder | ancestors: Rhabditida infectious disease, filariasis, Nematoda infectious disease, helminthiasis | def: Dracunculiasis (Guinea worm disease) is a neglected tropical disease (NTD) characterized by a painful burning skin lesion from which the Dracunculus medinensis parasite emerges approximately 1 year af...",
+"ko": "메디나충증",
+"alt": [
+"기니아충증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0000741",
+"concept": "- MONDO:0000741 | angular cheilitis | syn: angle of oral opening cheilitis; angular cheilitis; angular stomatitis; cheilitis of angle of oral opening | ancestors: cheilitis, lip disorder, inflammatory disease, mouth disorder | def: Inflammation of the skin at the corners of the mouth characterized by redness, fissures or crusts.",
+"ko": "구각염",
+"alt": [
+"입꼬리염"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015986",
+"concept": "- MONDO:0015986 | bilateral renal agenesis | syn: Renal Agenesis, Bilateral | ancestors: renal agenesis, disorder of development or morphogenesis, inherited kidney disorder, disease by developmental or physiological process | def: Bilateral renal agenesis is the most profound form of renal agenesis, characterized by complete absence of kidney development, absent ureters and subsequent absence of fetal renal function resulting i...",
+"ko": "양측 신장 무형성",
+"alt": [
+"양측 콩팥 무형성"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019136",
+"concept": "- MONDO:0019136 | Zygomycosis | syn: Mucormycosis; mucormycosis; Zygomycota infectious disease | ancestors: opportunistic mycosis, fungal infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Any infection due to a fungus of the Zygomycota phylum. The disease typically involves the rhino-facial-cranial area, lungs, gastrointestinal tract, skin, or less commonly other organ systems. The inf...",
+"ko": "접합균증",
+"alt": [
+"털곰팡이증"
+],
+"organs": [
+"pulmonary",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0002088",
+"concept": "- MONDO:0002088 | partial retinal vein occlusion | syn: partial retinal vein occlusion | ancestors: retinal vein occlusion, retinal vascular occlusion, retinal vascular disorder, vascular occlusion disorder",
+"ko": "부분 망막정맥 폐쇄",
+"alt": [],
+"organs": [
+"cardiovascular",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021467",
+"concept": "- MONDO:0021467 | benign neoplasm of renal pelvis | syn: benign kidney pelvis neoplasm; benign neoplasm of the renal pelvis; benign renal pelvis neoplasm; benign renal pelvis tumor | ancestors: kidney benign neoplasm, renal pelvis neoplasm, benign urinary system neoplasm, kidney neoplasm | def: A benign neoplasm that involves the renal pelvis.",
+"ko": "콩팥깔때기 양성 신생물",
+"alt": [
+"신우 양성 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006237",
+"concept": "- MONDO:0006237 | granulocytic sarcoma | syn: granulocytic sarcoma; sarcoma, granulocytic, malignant | ancestors: myeloid sarcoma, sarcoma, acute myeloid leukemia by FAB classification, cancer | def: A tumor mass composed of myeloblasts, neutrophils and neutrophil precursors. Granulocytic sarcoma is the most common type of myeloid sarcoma. (WHO, 2001)",
+"ko": "과립구성 육종",
+"alt": [
+"골수성 육종",
+"녹색종"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006711",
+"concept": "- MONDO:0006711 | constrictive pericarditis | syn: constrictive pericarditis; constrictive pericarditis (disease) | ancestors: pericarditis, pericardium disorder, inflammatory disease, heart disorder | def: A heart disorder in which the pericardial sac becomes thickened and fibrotic, tightening the myocardium and impeding the normal myocardial function.",
+"ko": "수축성 심낭염",
+"alt": [
+"협착성 심낭염"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004923",
+"concept": "- MONDO:0004923 | chronic inflammation of lacrimal passage | ancestors: lacrimal apparatus disorder, inflammatory disease, eye adnexa disorder, eye disorder",
+"ko": "눈물길 만성 염증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005970",
+"concept": "- MONDO:0005970 | staphylococcal pneumonia | syn: Staphylococcus caused pneumonia; Staphylococcus pneumonia | ancestors: bacterial pneumonia, staphylococcal infection, bacterial infectious disease, pneumonia | def: Pneumonia caused by infections with bacteria of the genus staphylococcus, usually with staphylococcus aureus.",
+"ko": "포도알균 폐렴",
+"alt": [
+"포도상구균 폐렴"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018979",
+"concept": "- MONDO:0018979 | multifocal motor neuropathy | syn: MMN; MMNCB; multifocal motor neuropathy with conduction block | ancestors: acquired peripheral neuropathy, peripheral neuropathy, peripheral nervous system disorder, neuromuscular disease | def: Multifocal motor neuropathy (MMN) is a rare acquired immune-mediatedneuropathy characterized clinically by a purely motor deficit with conduction block and asymmetric multifocal weakness, fasciculatio...",
+"ko": "다초점 운동신경병증",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001564",
+"concept": "- MONDO:0001564 | binocular vision disease | syn: binocular vision disorder | ancestors: vision disorder, disorder of visual system, disease by body system or component, human disease | def: Any inability to efficiently utilize and/or sustain binocular vision.",
+"ko": "양안시 질환",
+"alt": [
+"양안시 장애"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0004703",
+"concept": "- MONDO:0004703 | bladder carcinoma in situ | syn: bladder flat carcinoma in situ; bladder flat CIS; carcinoma in situ of bladder; carcinoma in situ of the urinary bladder | ancestors: non-invasive bladder urothelial carcinoma, in situ carcinoma, bladder flat intraepithelial lesion, bladder transitional cell carcinoma | def: Also known as carcinoma in situ of the urinary bladder or high grade intraurothelial neoplasia, this is a flat lesion of the transitional cell epithelium characterized by severe cytologic atypia. This...",
+"ko": "방광 상피내암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001615",
+"concept": "- MONDO:0001615 | epidemic keratoconjunctivitis | syn: shipyard eye | ancestors: keratoconjunctivitis, corneal infection, adenoviridae infectious disease, viral conjunctivitis | def: Keratoconjunctivitis resulting from infection by adenoviruses.",
+"ko": "유행성 각결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006014",
+"concept": "- MONDO:0006014 | vulvovaginal candidiasis | syn: candidal vulvovaginitis; candidal: [vulvovaginitis NOS] or [cervix]; candidal: cervix; candidiasis of vulva and vagina | ancestors: cutaneous candidiasis, vulvovaginitis, infective vaginitis, candidiasis | def: Infection of the vulva and vagina with a fungus of the genus CANDIDA. It is a disease associated with HIV infection.",
+"ko": "외음질 칸디다증",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019168",
+"concept": "- MONDO:0019168 | pyomyositis | syn: myositis purulenta tropica; myositis tropicans; PM; suppurative myositis | ancestors: bacterial myositis, bacterial infectious disease, myositis disease, infectious disease | def: Pyomyositis (PM) is a rare primary bacterial infection of the skeletal muscle, usually resulting from hematogenous spread or due to muscle injury, and characterized by pain and tenderness in the affec...",
+"ko": "화농성 근염",
+"alt": [
+"열대성 근염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 23
+},
+{
+"id": "MONDO:0044211",
+"concept": "- MONDO:0044211 | idiopathic urticaria | ancestors: urticaria, idiopathic disease, dermatitis, disease by etiologic mechanism",
+"ko": "특발성 두드러기",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001414",
+"concept": "- MONDO:0001414 | osteopoikilosis | syn: osteopoikilosis; osteopoikilosis (disease) | ancestors: osteosclerosis, bone remodeling disease, bone disorder, skeletal system disorder | def: A rare autosomal dominant inherited disorder characterized by the presence of small areas of increased density throughout the bones.",
+"ko": "골반점증",
+"alt": [
+"점상골증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018661",
+"concept": "- MONDO:0018661 | Zika virus infectious disease | syn: Zika; Zika virus caused disease or disorder; Zika virus disease; Zika virus disease or disorder | ancestors: Flaviviridae infectious disease, vector-borne disease, primary viral infectious disease, infectious disease | def: Mosquito-born virus disease characterized by a clinical course that may be asymptomatic or mild with fever, conjunctivitis, muscle and joint pain, headache, exanthema, but may also be associated with ...",
+"ko": "지카바이러스 감염증",
+"alt": [
+"지카열"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+}
+]

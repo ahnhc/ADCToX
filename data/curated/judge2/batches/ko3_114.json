@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0001860",
+"concept": "- MONDO:0001860 | folic acid deficiency anemia | syn: folate deficiency anemia; folate-deficiency anemia; folate-deficient megaloblastic anemia | ancestors: nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism, human disease",
+"ko": "엽산결핍성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0005997",
+"concept": "- MONDO:0005997 | tricuspid valve stenosis | syn: tricuspid stenosis | ancestors: tricuspid valve disorder, aortic disorder, heart valve disorder, arterial disorder | def: Narrowing or stricture of the tricuspid orifice of the heart.",
+"ko": "삼첨판 협착증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015333",
+"concept": "- MONDO:0015333 | progeroid syndrome | syn: progeria; progeria or progeroid syndrome | ancestors: hereditary disease, premature aging syndrome, developmental defect during embryogenesis, disease of genetic or genomic mechanism | def: A group of rare genetic disorders which mimic physiological aging, making affected individuals appear to be older than they are.",
+"ko": "조로 증후군",
+"alt": [],
+"organs": [
+"dermatologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0009288",
+"concept": "- MONDO:0009288 | glycogen storage disease Ib | syn: G6P deficiency type IB; G6P translocase deficiency; G6PT deficiency; glucose-6-phosphate transport defect | ancestors: constitutional neutropenia, glycogen storage disease type 1 due to SLC37A4 mutation, neutropenia, congenital hematological disorder | def: A type of glycogenosis due to G6P deficiency.",
+"ko": "글리코겐 축적병 Ib형",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020356",
+"concept": "- MONDO:0020356 | coloboma of iris | syn: coloboma of iris; coloboma of iris (disease); coloboma of the iris | ancestors: coloboma, ocular, autosomal dominant, microphthalmia, isolated, with coloboma, isolated microphthalmia, coloboma | def: A congenital or acquired defect characterized by the presence of a hole in or adjacent to the iris.",
+"ko": "홍채 결손",
+"alt": [
+"홍채 콜로보마"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008713",
+"concept": "- MONDO:0008713 | acrodermatitis enteropathica | syn: acrodermatitis enteropathica; acrodermatitis enteropathica, zinc deficiency type; AEZ; inherited zinc deficiency | ancestors: inborn metal metabolism disorder, disorder of zinc metabolism, inborn errors of metabolism, disorder of mineral absorption and transport | def: Acrodermatitis enteropathica (AE) is a rare inherited inborn error of metabolism resulting in a severe zinc deficiency and characterized by acral dermatitis, alopecia, diarrhea and growth failure.",
+"ko": "장병증성 말단피부염",
+"alt": [
+"아연결핍형 장병증성 말단피부염"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0000980",
+"concept": "- MONDO:0000980 | aortic atherosclerosis | syn: aorta atherosclerosis; aortic atherosclerosis; aortic atherosclerosis (disease); atherosclerosis of aorta | ancestors: atherosclerosis, aortic disorder, arteriosclerosis disorder, arterial disorder | def: A atherosclerosis that involves the aorta.",
+"ko": "대동맥 죽상경화증",
+"alt": [
+"대동맥 동맥경화증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009962",
+"concept": "- MONDO:0009962 | Senior-Loken syndrome 1 | syn: NPHP1 Senior-Loken syndrome; Senior-Loken syndrome 1; Senior-Loken syndrome caused by mutation in NPHP1; Senior-Loken syndrome type 1 | ancestors: Senior-Loken syndrome, ciliopathy, autosomal recessive disease, inherited renal tubular disease | def: Any Senior-Loken syndrome in which the cause of the disease is a mutation in the NPHP1 gene.",
+"ko": "세니어-로켄 증후군 1형",
+"alt": [],
+"organs": [
+"renal",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0100551",
+"concept": "- MONDO:0100551 | AFG2B-related complex neurodevelopmental disorder with motor features and hearing loss | syn: AFG2B-related complex neurodevelopmental disorder with motor features and hearing loss; SPATA5L1-related complex neurodevelopmental disorder with motor features and hearing loss | ancestors: complex neurodevelopmental disorder, Mendelian neurodevelopmental disorder, neurodevelopmental disorder, hereditary neurological disease | def: A neurodevelopmental disorder related to biallelic variants in AFG2B and characterized by a spectrum of intellectual disability, hearing loss, and motor features including spasticity, dystonia, and/or...",
+"ko": "운동 증상 및 청력 소실 동반 AFG2B 관련 복합 신경발달장애",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009303",
+"concept": "- MONDO:0009303 | anti-glomerular basement membrane disease | syn: anti-GBM syndrome; anti-glomerular basement membrane disease; Goodpasture Syndrome; Goodpasture syndrome | ancestors: autoimmune disease, immune system disorder, disease by body system or component, human disease | def: An autoimmune disease that affects the lungs and kidneys and is characterized by pulmonary alveolar hemorrhage (bleeding in the lungs) and a kidney disease known as glomerulonephritis. Some use the te...",
+"ko": "항사구체기저막병",
+"alt": [
+"항GBM병"
+],
+"organs": [
+"pulmonary",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013428",
+"concept": "- MONDO:0013428 | Meier-Gorlin syndrome 2 | syn: Meier-Gorlin syndrome 2; Meier-Gorlin syndrome caused by mutation in ORC4; Meier-Gorlin syndrome type 2; ORC4 Meier-Gorlin syndrome | ancestors: Meier-Gorlin syndrome, syndromic disease, autosomal recessive disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome | def: Any Meier-Gorlin syndrome in which the cause of the disease is a mutation in the ORC4 gene.",
+"ko": "마이어-고를린 증후군 2",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000373",
+"concept": "- MONDO:0000373 | gall bladder carcinoma in situ | syn: carcinoma in situ of gall bladder; gall bladder in situ carcinoma; stage 0 gall bladder carcinoma | ancestors: gallbladder carcinoma, in situ carcinoma, gallbladder cancer, digestive system carcinoma | def: A carcinoma in situ involving a gall bladder.",
+"ko": "담낭 상피내암종",
+"alt": [
+"담낭 제자리암종"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020782",
+"concept": "- MONDO:0020782 | chronic gingivitis | syn: chronic gingivitis | ancestors: gingivitis, gingival disorder, stomatitis, periodontal disorder | def: Chronic painless inflammation of the gums. It is characterized by erythema and edema of the gums and bleeding while brushing the teeth.",
+"ko": "만성 치은염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0014005",
+"concept": "- MONDO:0014005 | immunoglobulin-mediated membranoproliferative glomerulonephritis | syn: Ig-mediated membranoproliferative glomerulonephritis; Ig-mediated MPGN; immune complex mediated membranoproliferative glomerulonephritis; immunoglobulin-mediated membranoproliferative glomerulonephritis | ancestors: familial nephrotic syndrome, hereditary nephritis, primary membranoproliferative glomerulonephritis, hereditary hemolytic uremic syndrome | def: Glomerulonephritis characterized by mesangial proliferation, endocapillary proliferation, and glomerular capillary wall remodeling with immune complex deposits from classical complement pathway activa...",
+"ko": "면역글로불린 매개 막증식사구체신염",
+"alt": [
+"Ig 매개 MPGN"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002643",
+"concept": "- MONDO:0002643 | vestibular disorder | syn: disease of vestibular labyrinth; disease of vestibular system; disease or disorder of vestibular labyrinth; disorder of vestibular labyrinth | ancestors: inner ear disorder, auditory system disorder, disorder of ear, disease by body system or component | def: Pathological processes of the vestibular labyrinth which contains part of the balancing apparatus. Patients with vestibular diseases show instability and are at risk of frequent falls.",
+"ko": "전정 질환",
+"alt": [
+"전정계 질환"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001114",
+"concept": "- MONDO:0001114 | bacterial myocarditis | syn: septic myocarditis | ancestors: myocarditis, intrinsic cardiomyopathy, inflammation of heart layer, myocardial disorder | def: Myocarditis that is caused by an infection with a bacterial agent.",
+"ko": "세균성 심근염",
+"alt": [
+"패혈성 심근염"
+],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010598",
+"concept": "- MONDO:0010598 | glycogen storage disease IXa1 | syn: glycogen storage disease caused by mutation in PHKA2; glycogen storage disease IXa1; glycogen storage disease type 9A; glycogen storage disease type IXa | ancestors: glycogen storage disease due to liver phosphorylase kinase deficiency, glycogen storage disease IX, disorder of glycogen metabolism, liver disorder | def: Any glycogen storage disease in which the cause of the disease is a mutation in the PHKA2 gene, with no PHK activity in liver or erythrocytes.",
+"ko": "글리코겐 저장병 IXa1형",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004757",
+"concept": "- MONDO:0004757 | chronic ethmoidal sinusitis | syn: chronic ethmoidal sinusitis; ethmoid sinusitis, chronic | ancestors: ethmoid sinusitis, chronic rhinosinusitis, sinusitis, disorder of facial skeleton | def: Inflammation of the ethmoid sinus that typically lasts beyond eight weeks. It is caused by infections, allergies, and the presence of sinus polyps or a deviated septum. Signs and symptoms include head...",
+"ko": "만성 벌집굴염",
+"alt": [
+"만성 사골동염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012173",
+"concept": "- MONDO:0012173 | long chain 3-hydroxyacyl-CoA dehydrogenase deficiency | syn: fatty liver, acute, of pregnancy; HELLP syndrome, maternal, of pregnancy; LCHAD deficiency; LCHADD | ancestors: disorder of fatty acid oxidation and ketogenesis, hereditary peripheral neuropathy, familial hypertrophic cardiomyopathy, disorder of fatty acid and ketone body metabolism | def: Long chain 3-hydroxyacyl-CoA dehydrogenase deficiency (LCHADD) is a mitochondrial disorder of long chain fatty acid oxidation characterized in most patients by onset in infancy/ early childhood with h...",
+"ko": "장쇄 3-하이드록시아실-CoA 탈수소효소 결핍증",
+"alt": [],
+"organs": [
+"hepatic",
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019242",
+"concept": "- MONDO:0019242 | inborn disorder of branched-chain amino acid metabolism | syn: disorder of branched-chain amino acid metabolism; inborn branched-chain amino acid metabolic process disorder; inborn disorder of branched-chain amino acid metabolism; inborn error of branched-chain amino acid metabolic process | ancestors: inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease, inborn errors of metabolism | def: An inherited metabolic disease that is has its basis in the disruption of branched-chain amino acid metabolic process.",
+"ko": "선천성 분지쇄 아미노산 대사 장애",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+}
+]

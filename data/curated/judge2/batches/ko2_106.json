@@ -1,0 +1,242 @@
+[
+{
+"id": "MONDO:0001699",
+"concept": "- MONDO:0001699 | tinea manuum | syn: dermatophytosis of hand; dermatophytosis of manus; manus dermatophytosis; Tinea manus | ancestors: dermatophytosis, tinea infection, superficial mycosis, cutaneous mycosis | def: A dermatophytosis that involves the hands.",
+"ko": "수부백선",
+"alt": [
+"손무좀"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018929",
+"concept": "- MONDO:0018929 | medial condensing osteitis of the clavicle | syn: condensing osteitis of the clavicle; condensing osteitis of the medial clavicle; osteitis condensans of the clavicle | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder",
+"ko": "쇄골 내측 응축성 골염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0010735",
+"concept": "- MONDO:0010735 | Kennedy disease | syn: Kennedy disease; Kennedy's disease; SBMA; SMAX1 | ancestors: inherited neurodegenerative disorder, neurodegenerative disease, hereditary neurological disease, central nervous system disorder | def: Kennedy's disease, also known as bulbospinal muscular atrophy (BSMA), is a rare X-linked recessive motor neuron disease characterized by proximal and bulbar muscle wasting.",
+"ko": "케네디병",
+"alt": [
+"구척수성 근위축증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001563",
+"concept": "- MONDO:0001563 | vestibulocochlear nerve disorder | syn: acoustic nerve disease; acoustic nerve disorder; acoustic nerve disorder NOS; disease of vestibulocochlear nerve | ancestors: retrocochlear disease, cranial nerve neuropathy, peripheral nervous system disorder, auditory system disorder | def: A disease involving the vestibulocochlear nerve.",
+"ko": "전정와우신경 질환",
+"alt": [
+"청신경 질환"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007448",
+"concept": "- MONDO:0007448 | familial dermatographia | syn: dermatographic urticaria; dermographism | ancestors: physical urticaria, urticaria, dermatitis, skin disorder | def: Familial dermographism is a condition also known as skin writing. When people who have dermatographia lightly scratch their skin, the scratches redden into a raised wheal similar to hives. Signs and s...",
+"ko": "가족성 피부묘기증",
+"alt": [
+"피부묘기성 두드러기"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0044983",
+"concept": "- MONDO:0044983 | benign lipomatous neoplasm | syn: adipose tissue benign connective and soft tissue neoplasm; benign adipose tissue neoplasm; benign adipose tissue tumor; benign adipose tissue tumour | ancestors: benign connective and soft tissue neoplasm, tumor of adipose tissue, musculoskeletal system benign neoplasm, connective tissue disorder | def: A benign mesenchymal neoplasm composed of adipose (fatty) tissue. The most common representative of this category is the lipoma.",
+"ko": "양성 지방종성 신생물",
+"alt": [
+"양성 지방조직 종양"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016020",
+"concept": "- MONDO:0016020 | frontal encephalocele | syn: anterior encephalocele | ancestors: isolated encephalocele, cephalocele, congenital nervous system disorder, disorder of development or morphogenesis",
+"ko": "전두 뇌류",
+"alt": [
+"전방 뇌류"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019830",
+"concept": "- MONDO:0019830 | congenital anomaly of the inferior vena cava | syn: congenital anomaly of the inferior caval vein; congenital anomaly of the IVC | ancestors: vascular disorder, cardiovascular disorder, disease by body system or component, human disease",
+"ko": "선천성 하대정맥 이상",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0022790",
+"concept": "- MONDO:0022790 | cleft tongue | ancestors: syndromic disease, disease by body system or component, human disease, disease",
+"ko": "혀갈림증",
+"alt": [
+"설열"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0009295",
+"concept": "- MONDO:0009295 | glycogen storage disease VII | syn: glycogen storage disease caused by mutation in PFKM; Glycogen Storage Disease Type 7; glycogen storage disease type 7; glycogen storage disease type VII | ancestors: disorder of glycogen metabolism, familial hemolytic anemia, disorder of glycolysis, anemia due to erythrocyte enzyme disorder | def: Muscle phosphofructokinase (PFK) deficiency (Tarui's disease), or glycogen storage disease type 7 (GSD7), is a rare form of glycogen storage disease characterized by exertional fatigue and muscular ex...",
+"ko": "글리코겐 축적병 VII형",
+"alt": [
+"타루이병"
+],
+"organs": [
+"haematologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018182",
+"concept": "- MONDO:0018182 | bullous impetigo | ancestors: staphylococcal toxemia, skin disease caused by bacterial infection, staphylococcal infection, bacterial infectious disease | def: Bullous impetigo is a contagious superficial infection occurring in intact skin. Prevalence in the general population is unknown. The disease is characterized by fragile vesicles and flaccid blisters,...",
+"ko": "물집농가진",
+"alt": [
+"수포성 농가진"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005711",
+"concept": "- MONDO:0005711 | congenital diaphragmatic hernia | syn: CDH; congenital diaphragmatic hernia | ancestors: diaphragm disorder, hereditary skeletal muscle disorder, respiratory system disorder, skeletal muscle disorder | def: A posterolateral defect of the diaphragm that allows passage of abdominal viscera into the thorax, leading to respiratory insufficiency and persistent pulmonary hypertension with high mortality.",
+"ko": "선천성 횡격막 탈장",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0017236",
+"concept": "- MONDO:0017236 | rapidly progressive glomerulonephritis | syn: RPGN | ancestors: glomerulonephritis, nephritis, glomerular disorder, kidney disorder | def: Inflammation of the glomeruli that is characterized by a rapid loss in renal function with glomerular crescent formation observed on biopsy; it is often seen in patients with concomitant autoimmune di...",
+"ko": "급속 진행성 사구체신염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 11
+},
+{
+"id": "MONDO:0019432",
+"concept": "- MONDO:0019432 | rheumatoid factor-negative juvenile idiopathic arthritis | syn: juvenile rheumatoid factor-negative polyarthritis; polyarthritis without rheumatoid factor; rheumatoid factor-negative JIA | ancestors: polyarticular juvenile idiopathic arthritis, juvenile idiopathic arthritis, rheumatic disorder, arthritic joint disease | def: Rheumatoid factor-negative polyarthritis is a term used to describe a group of poorly defined heterogenous conditions that incorporates forms of rheumatoid factor-negative polyarthritis and forms of o...",
+"ko": "류마티스인자 음성 소아 특발성 관절염",
+"alt": [
+"류마티스인자 음성 다관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016367",
+"concept": "- MONDO:0016367 | dermatomyositis | syn: dermatomyositis; dermatopolymyositis; DM | ancestors: dermatitis, rheumatic disorder, polymyositis, skin disorder | def: Dermatomyositis (DM) is a type of idiopathic inflammatory myopathy characterized by evocative skin lesions and symmetrical proximal muscle weakness.",
+"ko": "피부근염",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0006670",
+"concept": "- MONDO:0006670 | bacterial meningitis | syn: Bacteria caused infectious meningitis; Bacteria infectious meningitis | ancestors: infectious meningitis, bacterial infectious disease, meningitis, central nervous system infectious disorder | def: Inflammation of the membranes surrounding the brain and spinal cord due to a bacterial infection.",
+"ko": "세균성 수막염",
+"alt": [
+"세균성 뇌막염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0060766",
+"concept": "- MONDO:0060766 | anal polyp | syn: anal polyp; polyp of anus; polyp of the anus | ancestors: anus disorder, polyp of rectum, gastrointestinal polyp, rectal disorder | def: A non-neoplastic or neoplastic polypoid lesion that arises from the anus. Representative examples include the fibroepithelial polyp and squamous papilloma.",
+"ko": "항문 용종",
+"alt": [
+"항문 폴립"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001054",
+"concept": "- MONDO:0001054 | double pterygium | ancestors: pterygium, benign conjunctival neoplasm, benign neoplasm of cornea, ocular growth disorder",
+"ko": "이중 익상편",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005661",
+"concept": "- MONDO:0005661 | babesiosis | syn: Babesia caused disease or disorder; Babesia disease or disorder; Babesia infectious disease; babesiasis | ancestors: protozoa infectious disease, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Babesiosis refers to a condition caused by microscopic parasites that infect the red blood cells. Many people who are infected with Babesia parasites do not experience any symptoms of the condition. W...",
+"ko": "바베시아증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0009958",
+"concept": "- MONDO:0009958 | adult Refsum disease | syn: ARD; hypertrophic neuropathy of Refsum; Refsum Disease; Refsum disease | ancestors: peroxisomal disease, inborn errors of metabolism, hereditary disease, metabolic disease | def: A peroxisomal disease associated with accumulation of phytanic acid in plasma and tissues, characterized by early-onset retinitis pigmentosa and variable combinations of anosmia, polyneuropathy, deafn...",
+"ko": "성인 레프숨병",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+}
+]

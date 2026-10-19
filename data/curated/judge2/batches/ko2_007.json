@@ -1,0 +1,235 @@
+[
+{
+"id": "MONDO:0001207",
+"concept": "- MONDO:0001207 | neonatal respiratory failure | syn: respiratory failure of newborn | ancestors: acute respiratory failure, acute disease, respiratory failure, human disease",
+"ko": "신생아 호흡부전",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011599",
+"concept": "- MONDO:0011599 | birdshot chorioretinopathy | syn: birdshot chorioretinitis; birdshot chorioretinopathy; birdshot retinochoroiditis; birdshot retinochoroidopathy | ancestors: posterior uveitis, uveitis, uveal disorder, inflammatory disease | def: Birdshot chorioretinopathy is a posterior uveitis characterized by multiple cream-colored, hypopigmented choroidal lesions in the fundus and a strong association with HLA-A29 and clinically presenting...",
+"ko": "버드샷 맥락망막병증",
+"alt": [
+"버드샷 망막맥락막염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018747",
+"concept": "- MONDO:0018747 | acquired epidermolysis bullosa | syn: acquired epidermolysis bullosa; EBA; epidermolysis bullosa acquisita; epidermolysis bullosa Aquisita | ancestors: epidermolysis bullosa, autoimmune bullous skin disease, vesiculobullous skin disease, dermatitis | def: Epidermolysis bullosa acquisita (EBA) is a subepidermal bullous dermatosis of autoimmune origin that was named as a result of its resemblance to hereditary forms of epidermolysis bullosa (HEB), most n...",
+"ko": "후천성 수포성 표피박리증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024228",
+"concept": "- MONDO:0024228 | miliaria profunda | ancestors: miliaria, syndromic disease, sweat gland disorder, disease by body system or component | def: A miliaria that is characterized by ductal occlusion of the papillary dermis causing the gland's secretions to leak between the superficial and deep layers of the skin resulting in a rapidly-spreading...",
+"ko": "심부 땀띠",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004940",
+"concept": "- MONDO:0004940 | acute female pelvic peritonitis | ancestors: pelvic inflammatory disease, acute disease, female reproductive system disorder, inflammatory disease",
+"ko": "급성 여성 골반 복막염",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002885",
+"concept": "- MONDO:0002885 | erythrasma | ancestors: pyoderma, skin disorder, integumentary system disorder, disease by body system or component | def: A chronic bacterial infection of major folds of the skin, caused by Corynebacterium minutissimum.",
+"ko": "홍색음선",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019970",
+"concept": "- MONDO:0019970 | Sinding-Larsen-Johansson disease | syn: aseptic necrosis of patella; Osteochondrosis of patella | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder | def: Sinding-Larsen-Johansson disease is a type of osteochondrosis affecting the attachment of the patellar tendon to the patella and characterized by tenderness and localized swelling of the patella.",
+"ko": "신딩-라르센-요한손병",
+"alt": [
+"슬개골 골연골증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017874",
+"concept": "- MONDO:0017874 | Argentine hemorrhagic fever | syn: Argentinian hemorrhagic fever; Junin hemorrhagic fever | ancestors: arenavirus hemorrhagic fever, vector-borne disease, Arenaviridae infectious disease, viral hemorrhagic fever | def: Argentine hemorrhagic fever (AHF), caused by the Junin virus (JUNV), is an acute viral hemorrhagic disease characterized by initial fever and malaise followed by gastrointestinal symptoms and in some ...",
+"ko": "아르헨티나 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019444",
+"concept": "- MONDO:0019444 | trichinellosis | syn: Trichinella caused disease or disorder; Trichinella disease or disorder; Trichinella infectious disease; trichinosis | ancestors: Enoplea infectious disease, parasitic myositis, Nematoda infectious disease, parasitic infectious disease | def: A zoonotic parasitic disease caused by the consumption of raw or undercooked meat (pork and wild game) infected by nematodes of the genus Trichinella and that is characterized by an enteral (intestina...",
+"ko": "선모충증",
+"alt": [
+"트리키넬라증"
+],
+"organs": [
+"gastrointestinal",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019296",
+"concept": "- MONDO:0019296 | subcutaneous tissue disorder | syn: disease of superficial fascia; disease or disorder of superficial fascia; disorder of superficial fascia; superficial fascia disease | ancestors: integumentary system disorder, disease by body system or component, human disease, disease | def: A disease involving the superficial fascia.",
+"ko": "피하조직 질환",
+"alt": [
+"피하 조직 장애"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017576",
+"concept": "- MONDO:0017576 | 46,XX disorder of sex development | syn: 46,XX differences of Sex development; 46,XX disorders of Sex development; 46,XX DSD; female pseudohermaphroditism | ancestors: disorder of sexual differentiation, gonadal disorder, developmental defect during embryogenesis, reproductive system disorder | def: Conditions affecting individuals with 46,XX karyotype characterized by atypical development of one or more of the following: the gonads, the internal reproductive structures, the external reproductive...",
+"ko": "46,XX 성발달장애",
+"alt": [
+"46,XX 성분화장애"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004967",
+"concept": "- MONDO:0004967 | acute lymphoblastic leukemia | syn: acute lymphoblastic leukaemia (ALL); acute lymphoblastic leukaemia (disease); acute lymphoblastic leukemia; acute lymphoblastic leukemia (ALL) | ancestors: precursor lymphoblastic lymphoma/leukemia, neoplasm of immature B and T cells, lymphoid leukemia, acute leukemia | def: Leukemia with an acute onset, characterized by the presence of lymphoblasts in the bone marrow and the peripheral blood. It includes the acute B lymphoblastic leukemia and acute T lymphoblastic leukem...",
+"ko": "급성 림프모구백혈병",
+"alt": [
+"급성 림프구성 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0016532",
+"concept": "- MONDO:0016532 | Lennox-Gastaut syndrome | syn: LGS | ancestors: syndromic disease, genetic developmental and epileptic encephalopathy, childhood-onset epilepsy syndrome with developmental and/or epileptic encephalopathy, disease by body system or component | def: Lennox-Gastaut syndrome (LGS) belongs to the group of severe childhood epileptic encephalopathies.",
+"ko": "레녹스-가스토 증후군",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004885",
+"concept": "- MONDO:0004885 | choroidal sclerosis | syn: choroidal degenerations; neurodegenerative disease of optic choroid; optic choroid neurodegenerative disease | ancestors: optic choroid disorder, eye degenerative disorder, neurodegenerative disease, neurovascular disorder | def: A neurodegenerative disease that involves the optic choroid.",
+"ko": "맥락막 경화",
+"alt": [
+"맥락막 경화증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:1060134",
+"concept": "- MONDO:1060134 | atherosclerotic cardiovascular disease | ancestors: atherosclerosis, arteriosclerosis disorder, arterial disorder, vascular disorder | def: Any cardiovascular disease resulting from atherosclerosis.",
+"ko": "죽상경화성 심혈관 질환",
+"alt": [
+"동맥경화성 심혈관 질환"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019345",
+"concept": "- MONDO:0019345 | shigellosis | syn: shigellosis | ancestors: primary bacterial infectious disease, dysentery, large intestine disorder, bacterial infectious disease | def: Shigellosis is a bacterial infection leading to dysentery and is caused by Shigella, which are small, ubiquitous Gram-negative bacteria belonging to the enterobacteria family. There are four species: ...",
+"ko": "세균성 이질",
+"alt": [
+"시겔라증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0005136",
+"concept": "- MONDO:0005136 | malaria | ancestors: protozoa infectious disease, erythrocyte disorder, vector-borne disease, parasitic infectious disease | def: Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Infection with malaria parasites may result in a wide vari...",
+"ko": "말라리아",
+"alt": [
+"학질"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006583",
+"concept": "- MONDO:0006583 | necrobiosis lipoidica | syn: necrobiosis lipoidica | ancestors: dermis disorder, skin disorder, integumentary system disorder, disease by body system or component | def: Necrobiosis lipoidica is a rare skin disorder of collagen degeneration. It is characterized by a rash that occurs on the lower legs. It is more common in women, and there are usually several spots. Th...",
+"ko": "지방유사괴사증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002164",
+"concept": "- MONDO:0002164 | focal chorioretinitis | ancestors: chorioretinitis, uveitis, uveal disorder, inflammatory disease",
+"ko": "국소 맥락망막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0011147",
+"concept": "- MONDO:0011147 | chromosome 18q deletion syndrome | syn: 18q deletion syndrome; 18Q syndrome; 18q-syndrome; chromosome 18q deletion syndrome | ancestors: syndromic disease, partial deletion of chromosome 18, disease by body system or component, syndrome caused by partial chromosomal deletion | def: A condition in which some or all of the cells of the body contain extra genetic material from chromosome 18. Clinical features of this condition may include the following: spina bifida, hearing loss, ...",
+"ko": "18q 결실 증후군",
+"alt": [
+"염색체 18q 결실 증후군"
+],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 1
+}
+]

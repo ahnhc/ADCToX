@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0006021",
+"concept": "- MONDO:0006021 | Prinzmetal angina | syn: angina inversa; variant angina | ancestors: coronary vasospasm, coronary artery disorder, arterial disorder, heart disorder | def: A syndrome typically consisting of angina (cardiac chest pain) at rest that occurs in cycles. It is caused by vasospasm, a narrowing of the coronary arteries caused by contraction of the smooth muscle...",
+"ko": "프린츠메탈 협심증",
+"alt": [
+"변이형 협심증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0006726",
+"concept": "- MONDO:0006726 | diaphragmatic eventration | syn: diaphragmatic eventration; diaphragmatic eventration (disease) | ancestors: diaphragm disorder, respiratory system disorder, skeletal muscle disorder, disease by body system or component | def: A congenital or acquired abnormality characterized by elevation of the hemidiaphragm.",
+"ko": "횡격막 이완증",
+"alt": [
+"횡격막 거상증"
+],
+"organs": [
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002206",
+"concept": "- MONDO:0002206 | sweat gland cancer | syn: cancer of sweat gland; malignant neoplasm of sweat gland; malignant neoplasm of the sweat gland; malignant sweat gland neoplasm | ancestors: sweat gland neoplasm, skin cancer, epidermal appendage tumor, sweat gland disorder | def: A malignant neoplasm that affects the sweat glands.",
+"ko": "땀샘암",
+"alt": [
+"한선암"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005952",
+"concept": "- MONDO:0005952 | scarlet fever | syn: scarlatina | ancestors: streptococcal infection, gram-positive bacterial infections, bacterial infectious disease, infectious disease | def: A streptococcal infection, mainly occurring among children, that is characterized by a red skin rash, sore throat, and fever.",
+"ko": "성홍열",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001817",
+"concept": "- MONDO:0001817 | acute closed-angle glaucoma | syn: acute angle-closure glaucoma; angle-closure glaucoma, acute | ancestors: primary angle-closure glaucoma, acute disease, angle-closure glaucoma, human disease | def: Acute form of angle-closure glaucoma.",
+"ko": "급성 폐쇄각 녹내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024541",
+"concept": "- MONDO:0024541 | trichohepatoenteric syndrome 1 | syn: tricho-hepato-enteric syndrome caused by mutation in TTC37; TRICHOHEPATOENTERIC syndrome 1; trichohepatoenteric syndrome 1; TTC37 tricho-hepato-enteric syndrome | ancestors: trichohepatoenteric syndrome, inborn error of immunity, intestinal disorder, hereditary disorder of connective tissue | def: Any tricho-hepato-enteric syndrome in which the cause of the disease is a mutation in the TTC37 gene.",
+"ko": "털-간-장 증후군 1",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002432",
+"concept": "- MONDO:0002432 | malignant neoplasm of acoustic nerve | syn: cancer of the vestibulocochlear nerve; cancer of vestibulocochlear nerve; malignant acoustic nerve neoplasm; malignant acoustic nerve tumor | ancestors: malignant cranial nerve neoplasm, auditory system cancer, vestibulocochlear nerve neoplasm, cranial nerve neoplasm | def: A malignant neoplasm involving the vestibulocochlear nerve.",
+"ko": "청신경 악성 신생물",
+"alt": [
+"전정와우신경암"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012163",
+"concept": "- MONDO:0012163 | immunodeficiency 104 | syn: autosomal recessive T cell-negative, B-cell negative, NK cell-positive SCID; IMD104; severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-positive, NK cell-positive; severe combined immunodeficiency, T cell-negative, B-cell/natural killer-cell positive | ancestors: familial severe combined immunodeficiency, T-B+ severe combined immunodeficiency, severe combined immunodeficiency, combined immunodeficiency | def: A severe combined immunodeficiency characterized by being T cell-negative, B cell-positive and natural killer cell-positive and that has material basis in homozygous or compound heterozygous mutation ...",
+"ko": "면역결핍증 104형",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0800459",
+"concept": "- MONDO:0800459 | noxacusis | syn: auditory nociception; noise-induced pain; noxacusis; pain hyperacusis | ancestors: hyperacusis, disorder of ear, hearing disorder, auditory perceptual disorders | def: Noxacusis/pain hyperacusis is characterized by individuals who experience otalgia or pain (e.g., dull ache, burning, sharp, stabbing pain and throbbing pain) in response to everyday sounds. This diffe...",
+"ko": "통증성 청각과민증",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010725",
+"concept": "- MONDO:0010725 | X-linked retinoschisis | syn: juvenile X-linked retinoschisis; retinoschisis, X-linked; retinoschisis, X-linked recessive; X-linked juvenile retinoschisis | ancestors: X-linked disease, retinoschisis, inherited retinal dystrophy, vitreoretinal degeneration | def: A genetic ocular disease that is characterized by reduced visual acuity in males due to juvenile macular degeneration.",
+"ko": "X연관 망막층간분리증",
+"alt": [
+"소아 X연관 망막층간분리증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010931",
+"concept": "- MONDO:0010931 | vitamin D-dependent rickets, type 2B | syn: hereditary 1,25 dihydroxyvitamin D-resistant rickets with abnormal vitamin D receptor without alopecia; vitamin D dependent rickets 2b; vitamin D receptor signaling defect rickets; vitamin D receptor signalling defect rickets | ancestors: vitamin D-dependent rickets, type 2, abnormal mineralization disorder, hypocalcemic rickets, vitamin D-dependent rickets | def: Rickets caused by a post-receptor defect in the vitamin D signaling pathway producing vitamin D resistance due to constitutive overexpression of a nuclear ribonucleoprotein that competes with the vita...",
+"ko": "비타민 D 의존성 구루병 2B형",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021680",
+"concept": "- MONDO:0021680 | streptococcal infection | syn: streptococcal infection; Streptococcus caused disease or disorder; Streptococcus disease or disorder; Streptococcus infectious disease | ancestors: gram-positive bacterial infections, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Any of the several infectious disorders caused by members of streptococcus, a genus of gram positive bacteria belonging to the family Streptococcaceae. Streptococcal infections are classified into Gro...",
+"ko": "연쇄알균 감염",
+"alt": [
+"연쇄상구균 감염"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0006823",
+"concept": "- MONDO:0006823 | Klinefelter syndrome | syn: 47,XXY syndrome; Klinefelter syndrome; Klinefelter's syndrome; Klinefelter's syndrome, XXY | ancestors: sex chromosome disorder of sex development, chromosome X disorder, trisomy, disorder of sexual differentiation | def: A sex chromosome disorder caused by the presence of an extra X chromosome in the male karyotype. Affected individuals are infertile and have a small penis and testes. They tend to have tall stature an...",
+"ko": "클라인펠터 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0019167",
+"concept": "- MONDO:0019167 | immunoglobulin A vasculitis | syn: allergic purpura; anaphylactoid purpura; HSP; IgA vasculitis | ancestors: hypersensitivity vasculitis, immune complex mediated vasculitis, necrotizing vasculitis, hypersensitivity reaction disease | def: A systemic IgA vasculitis that affects small vessels. It is characterized by skin purpura, arthritis, and abdominal and/or renal involvement.",
+"ko": "IgA 혈관염",
+"alt": [
+"알레르기성 자반증",
+"헤노흐-쇤라인 자반증"
+],
+"organs": [
+"renal",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0012516",
+"concept": "- MONDO:0012516 | mandibulofacial dysostosis-microcephaly syndrome | syn: mandibulofacial dysostosis with microcephaly; mandibulofacial dysostosis, Guion-Almeida type; mandibulofacial dysostosis-microcephaly syndrome; MFDM syndrome | ancestors: autosomal dominant disease, multiple congenital anomalies/dysmorphic syndrome-intellectual disability, acrofacial dysostosis, autosomal genetic disease | def: Mandibulofacial dysostosis-microcephaly syndrome is a rare genetic multiple malformation disorder characterized by malar and mandibular hypoplasia, microcephaly, ear malformations with associated cond...",
+"ko": "하악안면이골증-소두증 증후군",
+"alt": [
+"소두증을 동반한 하악안면이골증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000936",
+"concept": "- MONDO:0000936 | syphilitic meningitis | syn: Treponema caused infectious meningitis; Treponema infectious meningitis | ancestors: Treponema infectious disease, bacterial meningitis caused by gram-negative bacteria, bacterial sexually transmitted disease, gram-negative bacterial infections | def: An infectious meningitis caused by infection with Treponema.",
+"ko": "매독성 수막염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005429",
+"concept": "- MONDO:0005429 | prion disease | syn: spongiform encephalopathy | ancestors: brain disorder, central nervous system infectious disorder, central nervous system disorder, infectious disorder of the nervous system | def: A transmissible disease that is caused by a protein that is able to induce abnormal folding of normal cellular proteins, leading to characteristic spongiform brain changes, which are associated with n...",
+"ko": "프리온병",
+"alt": [
+"스펀지양 뇌병증"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019628",
+"concept": "- MONDO:0019628 | Rieger anomaly | ancestors: iridogoniodysgenesis, anterior segment dysgenesis, hereditary disease, eye disorder | def: Rieger's anomaly is a congenital ocular defect caused by anterior segment dysgenesis and is characterized by severe anterior chamber deformity with prominent strands and marked atrophy of the iris str...",
+"ko": "리거 이상",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0043576",
+"concept": "- MONDO:0043576 | endarteritis | syn: endarteritis; inflammation of tunica intima of artery; tunica intima of artery inflammation | ancestors: arteritis, arterial disorder, vasculitis, vascular disorder | def: Inflammation of the arterial intima.",
+"ko": "동맥내막염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021662",
+"concept": "- MONDO:0021662 | bile duct neoplasm | syn: bile duct neoplasm; bile duct neoplasm (disease); bile duct tumor; bile duct tumour | ancestors: bile duct disorder, biliary tract neoplasm, biliary tract disorder, hepatobiliary neoplasm | def: A benign or malignant neoplasm that affects the intrahepatic or extrahepatic bile ducts. Representative examples of benign neoplasms include bile duct adenoma and extrahepatic bile duct lipoma. Repres...",
+"ko": "담관 신생물",
+"alt": [
+"담관 종양"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

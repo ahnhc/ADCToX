@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0001938",
+"concept": "- MONDO:0001938 | vulvar dystrophy | ancestors: vulvar disease, female reproductive system disorder, reproductive system disorder, disease by body system or component | def: A non-neoplastic lesion that affects the vulva and is characterized by thinning or thickening of the skin and dryness.",
+"ko": "외음부 이영양증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0002278",
+"concept": "- MONDO:0002278 | benign colon neoplasm | syn: benign colon neoplasm; benign colon tumor; benign colon tumour; benign colonic neoplasm | ancestors: colonic neoplasm, benign neoplasm of large intestine, colonic disorder, colorectal neoplasm | def: A non-metastasizing neoplasm arising from the wall of the colon.",
+"ko": "결장 양성 신생물",
+"alt": [
+"대장 양성 종양"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009515",
+"concept": "- MONDO:0009515 | Norum disease | syn: complete LCAT deficiency; FLD; lecithin acyltransferase deficiency; lecithin:cholesterol acyltransferase deficiency | ancestors: hypolipoproteinemia, LCAT deficiency, inherited lipid metabolism disorder, hypoalphalipoproteinemia | def: A form of lecithin-cholesterol acyltransferase deficiency (LCAT) characterized clinically by corneal opacities, hemolytic anemia, and renal failure, and biochemically by severely decreased HDL cholest...",
+"ko": "노룸병",
+"alt": [
+"완전 LCAT 결핍증",
+"레시틴 아실전이효소 결핍증"
+],
+"organs": [
+"haematologic",
+"renal",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007745",
+"concept": "- MONDO:0007745 | Gilbert syndrome | syn: familial cholemia; Gilbert disease; Gilbert syndrome; Gilbert's syndrome | ancestors: syndromic disease, hereditary hyperbilirubinemia, disease by body system or component, inborn disorder of bilirubin metabolism | def: An autosomal recessive inherited disorder characterized by unconjugated hyperbilirubinemia, resulting in harmless intermittent jaundice.",
+"ko": "길버트 증후군",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004991",
+"concept": "- MONDO:0004991 | minimally invasive lung adenocarcinoma | syn: BAC; bac; bronchioalveolar adenocarcinoma of lung; bronchioalveolar adenocarcinoma of the lung | ancestors: lung adenocarcinoma, adenocarcinoma, non-small cell lung carcinoma, carcinoma | def: A solitary adenocarcinoma arising from the lung measuring 3 cm or less. It is characterized by a predominantly lepidic pattern and 5 mm or less invasion in greatest dimension. It is usually a non-muci...",
+"ko": "최소침습 폐 샘암종",
+"alt": [
+"최소침습성 폐선암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018093",
+"concept": "- MONDO:0018093 | arbovirus fever | syn: arbovirus fever | ancestors: viral infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Arbovirosis are polymorphic diseases caused by arboviruses and are classically characterized by encephalitis and hemorrhage, however, most commonly only aspecific fever is observed.",
+"ko": "절지동물 매개 바이러스열",
+"alt": [
+"아르보바이러스열"
+],
+"organs": [
+"haematologic",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0007652",
+"concept": "- MONDO:0007652 | gastric mucosal hypertrophy | syn: giant hypertrophic gastritis; hypertrophic gastritis; hypertrophic gastropathy; hypoproteinemic hypertrophic gastropathy | ancestors: hereditary disease, gastritis, disease of genetic or genomic mechanism, stomach disorder | def: A rare premalignant hyperproliferative gastropathy characterized by massive overgrowth of foveolar cells in the gastric lining, resulting in large gastric folds, and manifesting with epigastric pain, ...",
+"ko": "위점막 비대",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018083",
+"concept": "- MONDO:0018083 | transient tyrosinemia of the newborn | syn: transient neonatal tyrosinemia; transient tyrosinemia of the neonate | ancestors: tyrosinemia, disorder of tyrosine metabolism, inborn disorder of phenylalanine and tyrosine metabolism, inborn disorder of amino acid metabolism | def: A benign disorder of tyrosine metabolism detected upon newborn screening and often observed in premature infants. It shows no clinical symptoms. It is characterized by tyrosinemia, moderate hyperpheny...",
+"ko": "신생아 일과성 티로신혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018310",
+"concept": "- MONDO:0018310 | Langerhans cell histiocytosis | syn: histiocytosis X; Langerhans cell granulomatosis; Langerhans cell histiocytosis; Langerhans cell histiocytosis, NOS | ancestors: histiocytosis, leukocyte disorder, dendritic cell tumor, phagocytic cell dysfunction | def: Langerhans cell histiocytosis (LCH) is a systemic disease associated with the proliferation and accumulation (usually in granulomas) of Langerhans cells in various tissues.",
+"ko": "랑게르한스세포 조직구증",
+"alt": [
+"조직구증 X"
+],
+"organs": [
+"haematologic",
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0010526",
+"concept": "- MONDO:0010526 | Fabry disease | syn: Alpha-galactosidase A deficiency; Anderson-Fabry disease; angiokeratoma corporis diffusum; diffuse angiokeratoma | ancestors: developmental anomaly of metabolic origin, sphingolipidosis, metabolic disease, developmental defect during embryogenesis | def: Fabry disease (FD) is a progressive, inherited, multisystemic lysosomal storage disease characterized by specific neurological, cutaneous, renal, cardiovascular, cochleo-vestibular and cerebrovascular...",
+"ko": "파브리병",
+"alt": [
+"파브리 병"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005961",
+"concept": "- MONDO:0005961 | sinusitis | ancestors: paranasal sinus disorder, inflammatory disease, nasal disorder, respiratory system disorder | def: An acute or chronic inflammatory process affecting the mucous membranes of any sinus cavity.",
+"ko": "부비동염",
+"alt": [
+"축농증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004038",
+"concept": "- MONDO:0004038 | dental enamel hypoplasia | syn: enamel hypoplasia | ancestors: tooth hard tissue disease, tooth disorder, skeletal system disorder, mouth disorder | def: Deficiency in the enamel tissue that results in the formation of grooves, pits, or dents on the surface of the affected teeth.",
+"ko": "법랑질 형성부전",
+"alt": [
+"치아 법랑질 저형성"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020311",
+"concept": "- MONDO:0020311 | chronic myelomonocytic leukemia | syn: chronic myelomonocytic leukaemia (CMML); chronic myelomonocytic leukemia; chronic myelomonocytic leukemia (CMML); CMML | ancestors: chronic leukemia, myelodysplastic/myeloproliferative neoplasm, myelodysplastic/myeloproliferative disease, leukemia | def: A myelodysplastic/myeloproliferative neoplasm which is characterized by persistent monocytosis, absence of a Philadelphia chromosome and BCR/ABL fusion gene, fewer than 20 percent blasts in the bone m...",
+"ko": "만성 골수단핵구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018015",
+"concept": "- MONDO:0018015 | intermittent hydrarthrosis | ancestors: rheumatic disorder, connective tissue disorder, disease by body system or component, human disease",
+"ko": "간헐성 관절수종",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005260",
+"concept": "- MONDO:0005260 | autism | syn: autism; autism (disease); infantile autism; Kanner's syndrome | ancestors: autism spectrum disorder, pervasive developmental disorder, developmental disorder of mental health, complex neurodevelopmental disorder | def: Persistent deficits in social interaction and communication and interaction as well as a markedly restricted repertoire of activity and interest as well as repetitive patterns of behavior.",
+"ko": "자폐증",
+"alt": [
+"소아 자폐증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0018477",
+"concept": "- MONDO:0018477 | bilirubin encephalopathy | syn: bilirubin encephalopathy; kernicterus | ancestors: brain disorder, inborn disorder of bilirubin metabolism, hereditary neurological disease, central nervous system disorder",
+"ko": "빌리루빈 뇌병증",
+"alt": [
+"핵황달"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001029",
+"concept": "- MONDO:0001029 | Klippel-Feil syndrome | syn: Klippel-Feil Sequence | ancestors: musculoskeletal system disorder, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism | def: A congenital, musculoskeletal condition characterized by the fusion of at least two vertebrae of the neck. Common symptoms include a short neck, low hairline at the back of the head, and restricted mo...",
+"ko": "클리펠-파일 증후군",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001216",
+"concept": "- MONDO:0001216 | pulp degeneration | ancestors: dental pulp disorder, tooth disorder, skeletal system disorder, mouth disorder | def: Deterioration of the normal pulp tissue.",
+"ko": "치수 변성",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001398",
+"concept": "- MONDO:0001398 | ureter benign neoplasm | syn: benign neoplasm of the ureter; benign neoplasm of ureter; benign tumor of the ureter; benign tumor of ureter | ancestors: benign urinary system neoplasm, ureter neoplasm, benign neoplasm, urinary system neoplasm | def: Cancer or tumors of the ureter which may cause obstruction leading to hydroureter, hydronephrosis, and pyelonephritis. hematuria is a common symptom.",
+"ko": "요관 양성 신생물",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004696",
+"concept": "- MONDO:0004696 | larynx carcinoma in situ | syn: carcinoma in situ of larynx; carcinoma in situ of the larynx; laryngeal cancer stage 0; laryngeal carcinoma in situ | ancestors: laryngeal carcinoma, in situ carcinoma, larynx cancer, carcinoma | def: A in situ carcinoma that involves the larynx.",
+"ko": "후두 상피내암종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+}
+]

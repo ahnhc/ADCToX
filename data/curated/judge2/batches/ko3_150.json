@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0021929",
+"concept": "- MONDO:0021929 | traumatic myositis ossificans | syn: traumatic myositis ossificans | ancestors: myositis ossificans, myositis disease, myopathy, inflammatory disease | def: Myositis Ossificans resulting from trauma.",
+"ko": "외상성 골화성 근염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0035345",
+"concept": "- MONDO:0035345 | chronic bilirubin encephalopathy | syn: Bilirubin-induced neurological dysfunction; BIND; CBE; Kernicterus spectrum disorder | ancestors: toxic encephalopathy, brain disorder, nervous system disorder, central nervous system disorder | def: A rare neurologic disease characterized by the chronic consequences of bilirubin toxicity in the globus pallidus, sub-thalamic nuclei, and other brain regions, after exposure to high levels of unconju...",
+"ko": "만성 빌리루빈 뇌병증",
+"alt": [
+"핵황달"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000819",
+"concept": "- MONDO:0000819 | anencephaly | syn: anencephalus | ancestors: congenital nervous system disorder, hereditary neurological disease, nervous system disorder, hereditary disease | def: A rare neural tube defect during pregnancy, resulting in the absence of a large portion of the brain and skull in the fetus.",
+"ko": "무뇌증",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000709",
+"concept": "- MONDO:0000709 | Crohn ileitis | syn: Crohn's ileitis | ancestors: small bowel Crohn disease, Crohn disease, enteritis, inflammatory bowel disease | def: A Crohn disease involving a pathogenic inflammatory response in the ileum.",
+"ko": "크론 회장염",
+"alt": [
+"크론병 회장염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001376",
+"concept": "- MONDO:0001376 | urinary bladder anterior wall cancer | ancestors: urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder",
+"ko": "방광 전벽암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017287",
+"concept": "- MONDO:0017287 | immunoglobulin G4-related sclerosing disease | syn: IgG4-RD; IgG4-related disease; IgG4-related sclerosing disease; IgG4-related systemic disease | ancestors: autoimmune disease, immune system disorder, disease by body system or component, human disease | def: A recently described mass-forming lesion that occurs in the pancreas, submandibular glands, lacrimal glands, lymph nodes, and hepatobiliary tract. It is characterized by the presence of marked tissue ...",
+"ko": "면역글로불린 G4 관련 경화성 질환",
+"alt": [
+"IgG4 관련 질환"
+],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016525",
+"concept": "- MONDO:0016525 | familial hyperaldosteronism | syn: FH; genetic hyperaldosteronism; hereditary hyperaldosteronism | ancestors: primary aldosteronism, hereditary disease, hyperaldosteronism, disease of genetic or genomic mechanism | def: Familial hyperaldosteronism (FH) is the heritable form of primary aldosteronism (PA) which comprises three identified subtypes to date: FH type I (FH-I) characterized by early-onset hypertension, gluc...",
+"ko": "가족성 알도스테론증",
+"alt": [
+"유전성 알도스테론증"
+],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005476",
+"concept": "- MONDO:0005476 | atrioventricular node disorder | syn: atrioventricular node disease; atrioventricular node disease or disorder; disease of atrioventricular node; disease or disorder of atrioventricular node | ancestors: conduction system disorder, muscle tissue disorder, myocardial disorder, musculoskeletal system disorder | def: A disease involving the atrioventricular node.",
+"ko": "방실결절 질환",
+"alt": [
+"방실결절 장애"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011989",
+"concept": "- MONDO:0011989 | leishmaniasis | ancestors: protozoa infectious disease, vector-borne disease, parasitic infectious disease, infectious disease | def: Infectious disease that is transmitted through the bite of hematophagous female phlebotomine sand flies. The clinical spectrum ranges from asymptomatic to clinically overt disease which can remain loc...",
+"ko": "리슈마니아증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003303",
+"concept": "- MONDO:0003303 | neurofibroma of gallbladder | syn: gall bladder neurofibroma; gallbladder neurofibroma; neurofibroma of gall bladder; neurofibroma of gallbladder | ancestors: gallbladder cancer, neurofibroma, peripheral nervous system cancer, malignant glioma | def: A non-metastasizing encapsulated neoplasm arising from nerves in the gallbladder. Morphologically, it is characterized by the presence of fibroblasts and Schwann cells.",
+"ko": "담낭 신경섬유종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017684",
+"concept": "- MONDO:0017684 | disorder of beta and omega amino acid metabolism | ancestors: inborn disorder of amino acid and other organic acid metabolism, inborn errors of metabolism, hereditary disease, metabolic disease",
+"ko": "베타 및 오메가 아미노산 대사 장애",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006640",
+"concept": "- MONDO:0006640 | adrenal gland hyperfunction | syn: adrenal gland hyperfunction; hyperadrenalism; hypercortisolemia | ancestors: adrenal cortex disorder, adrenal gland disorder, endocrine system disorder, disease by body system or component | def: Excess production of adrenal cortex hormones.",
+"ko": "부신 기능항진증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002138",
+"concept": "- MONDO:0002138 | allergic contact dermatitis of eyelid | syn: contact and allergic dermatitis of eyelid; eyelid allergic contact dermatitis | ancestors: noninfectious dermatoses of eyelid, eye allergy, allergic contact dermatitis, blepharitis | def: A allergic contact dermatitis that involves the eyelid.",
+"ko": "눈꺼풀 알레르기접촉피부염",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0024315",
+"concept": "- MONDO:0024315 | parasitic endophthalmitis | syn: parasitic endophthalmitis | ancestors: endophthalmitis, parasitic eye infection, inflammatory disease, eye infectious disorder | def: Infection of the epicondyles by a parasite.",
+"ko": "기생충성 안내염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018105",
+"concept": "- MONDO:0018105 | Wolfram syndrome | syn: diabetes insipidus, diabetes mellitus, optic atrophy, and deafness syndrome; diabetes insipidus-diabetes mellitus-optic atrophy-deafness syndrome; diabetes mellitus and insipidus with optic atrophy and deafness; DIDMOAD | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: Wolfram syndrome (WS) also known as DIDMOAD, is a neurodegenerative disorder characterized by type I diabetes mellitus (DM), diabetes insipidus (DI), sensorineural deafness (D), bilateral optical atro...",
+"ko": "볼프람 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018772",
+"concept": "- MONDO:0018772 | Joubert syndrome | syn: cerebelloparenchymal disorder IV; classic Joubert syndrome; CPD IV; Joubert syndrome | ancestors: syndromic disease, ciliopathy, disorder of development or morphogenesis, disease by body system or component | def: Joubert syndrome (JS) is characterized by congenital malformation of the brainstem and agenesis or hypoplasia of the cerebellar vermis leading to an abnormal respiratory pattern, nystagmus, hypotonia,...",
+"ko": "주베르 증후군",
+"alt": [],
+"organs": [
+"renal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018667",
+"concept": "- MONDO:0018667 | pleural empyema | syn: pleural empyema; pleural empyema (disease) | ancestors: pleural disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: The presence of pus in the thoracic cavity, between the visceral and parietal pleura.",
+"ko": "농흉",
+"alt": [
+"흉막 농양"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021320",
+"concept": "- MONDO:0021320 | malignant tumor of floor of mouth | syn: cancer of mouth floor; malignant floor of mouth neoplasm; malignant floor of mouth tumor; malignant floor of mouth tumour | ancestors: digestive system cancer, head and neck cancer, neoplasm of floor of mouth, digestive system disorder | def: A cancer that involves the mouth floor.",
+"ko": "구강저 악성 종양",
+"alt": [
+"입바닥암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004497",
+"concept": "- MONDO:0004497 | tertiary syphilis | syn: late syphilis; late tertiary syphilis; tertiary syphilis | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: A stage of syphilis that occurs fifteen to thirty years after the initial infection; it can include gumma formation and cardiovascular or central nervous system involvement (neurosyphilis).",
+"ko": "3기 매독",
+"alt": [
+"후기 매독"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001945",
+"concept": "- MONDO:0001945 | postencephalitic Parkinson disease | syn: postencephalitic Parkinsonism; postencephalitic parkinsonism | ancestors: secondary Parkinson disease, parkinsonian disorder, neurodegenerative disease, basal ganglia disorder | def: A disease believed to be caused by a viral illness that triggers degeneration of the nerve cells in the substantia nigra. Overall, this degeneration leads to clinical parkinsonism.",
+"ko": "뇌염후 파킨슨병",
+"alt": [
+"뇌염후 파킨슨증"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+}
+]

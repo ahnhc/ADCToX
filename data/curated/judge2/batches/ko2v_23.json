@@ -1,0 +1,2426 @@
+[
+{
+"i": 6578,
+"id": "MONDO:0001628",
+"concept": "- MONDO:0001628 | tinea unguium | syn: dermatophytic onychia; dermatophytosis of nail; nail dermatophytosis; onychomycosis | ancestors: dermatophytosis, nail infection, tinea infection, superficial mycosis | def: A fungal infection of the nail, usually caused by dermatophytes; yeasts; or nondermatophyte molds.",
+"ko": "조갑백선",
+"text": "조갑배선",
+"kind": "typo"
+},
+{
+"i": 6579,
+"id": "MONDO:0005888",
+"concept": "- MONDO:0005888 | ornithosis | syn: psittacosis | ancestors: primary bacterial infectious disease, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Disease caused by the Chlamydophila psittaci bacteria, usually transmitted from birds to humans.",
+"ko": "앵무병",
+"text": "앵무벙",
+"kind": "typo"
+},
+{
+"i": 6580,
+"id": "MONDO:0006851",
+"concept": "- MONDO:0006851 | meconium aspiration syndrome | syn: MAS; meconium aspiration; meconium aspiration syndrome; neonatal aspiration of meconium | ancestors: neonatal aspiration syndrome, syndromic disease, lung disorder, disease by body system or component | def: A serious condition in which a newborn breathes a mixture of meconium (the first intestinal discharge) and amniotic fluid into the lungs around the time of delivery. Meconium aspiration syndrome occur...",
+"ko": "태변 흡인 증후군",
+"text": "아기가 태어날 때 똥물을 들이마셔서 폐가 나빠진 병",
+"kind": "everyday"
+},
+{
+"i": 6581,
+"id": "MONDO:0005693",
+"concept": "- MONDO:0005693 | cauda equina syndrome | syn: cauda equina syndromic disease; syndromic disease of cauda equina | ancestors: syndromic disease, peripheral nervous system disorder, disease by body system or component, nervous system disorder | def: Cauda equina syndrome refers to a group of symptoms that occur when some of the nerves in the cauda equina (the bundle of nerves that spread out from the bottom of the spinal cord) become compressed a...",
+"ko": "마미 증후군",
+"text": "허리 신경 다발이 눌려서 다리 힘 빠지는 병",
+"kind": "everyday"
+},
+{
+"i": 6582,
+"id": "MONDO:0018929",
+"concept": "- MONDO:0018929 | medial condensing osteitis of the clavicle | syn: condensing osteitis of the clavicle; condensing osteitis of the medial clavicle; osteitis condensans of the clavicle | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder",
+"ko": "쇄골 내측 응축성 골염",
+"text": "쇄골 내측 응추성 골염",
+"kind": "typo"
+},
+{
+"i": 6583,
+"id": "MONDO:0019533",
+"concept": "- MONDO:0019533 | paroxysmal cold hemoglobinuria | syn: Donath-Landsteiner hemolytic anaemia; Donath-Landsteiner hemolytic anemia; Donath-Landsteiner syndrome; PCH | ancestors: autoimmune hemolytic anemia, cold type, autoimmune hemolytic anemia, autoimmune disorder of blood, hemolytic anemia | def: Paroxysmal cold hemoglobinuria (PCH) is a very rare subtype of autoimmune hemolytic anemia (AIHA), caused by the presence of cold-reacting autoantibodies in the blood and characterized by the sudden p...",
+"ko": "발작성 한랭 혈색소뇨증",
+"text": "추위에 노출되면 소변이 빨갛게 나온다고 혈액내과 갔어요",
+"kind": "spoken"
+},
+{
+"i": 6584,
+"id": "MONDO:0001540",
+"concept": "- MONDO:0001540 | bagassosis | syn: bagasse extrinsic allergic alveolitis; bagasse workers lung; extrinsic allergic alveolitis from bagasse | ancestors: hypersensitivity pneumonitis, occupational lung disease, allergic respiratory disease, interstitial lung disease | def: An occupational lung disorder caused by inhalation of bagasse dust. In the acute phase, it manifests as cough, dyspnea, fever, chills, and weakness. Chronic exposure may lead to interstitial lung fibr...",
+"ko": "바가스폐증",
+"text": "바가스페증",
+"kind": "typo"
+},
+{
+"i": 6585,
+"id": "MONDO:0019460",
+"concept": "- MONDO:0019460 | acute leukemia of ambiguous lineage | syn: acute leukaemia of indeterminate lineage; acute leukemia of ambiguous lineage; acute leukemia of indeterminate lineage; hybrid acute leukaemia | ancestors: acute myeloid leukemia, myeloid leukemia, acute leukemia, leukemia | def: An acute leukemia in which the blasts lack sufficient evidence to classify as myeloid or lymphoid or they have morphologic and/or immunophenotypic characteristics of both myeloid and lymphoid cells. (...",
+"ko": "계통 불명확 급성 백혈병",
+"text": "계통 불명학 급성 백혈병",
+"kind": "typo"
+},
+{
+"i": -23011,
+"id": "MONDO:0011996",
+"concept": "- MONDO:0011996 | chronic myeloid leukemia | syn: BCR-ABL Positive chronic myelogenous leukaemia; BCR-ABL Positive chronic myelogenous leukemia; chronic granulocytic leukemia; chronic myelocytic leukaemia | ancestors: myeloid leukemia, hereditary disorder of connective tissue, leukemia, myeloproliferative neoplasm | def: A chronic myeloproliferative neoplasm characterized by the expression of the BCR-ABL1 fusion gene. It presents with neutrophilic leukocytosis. It can appear at any age, but it mostly affects middle ag...",
+"ko": "만성 골수성 백혈병",
+"text": "목이 아프고 열나면서 온몸에 좁쌀 같은 발진이 생기는 병",
+"kind": "everyday"
+},
+{
+"i": 6586,
+"id": "MONDO:0004922",
+"concept": "- MONDO:0004922 | developmental coordination disorder | syn: clumsy child syndrome; development coordination disorder; developmental dyspraxia | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: A disorder characterized by an impairment in the development of an individual's motor coordination skills; this impairment in motor development is not due to a medical condition.",
+"ko": "발달성 협응 장애",
+"text": "아이가 협응 장애라고 해서 작업치료 받아요",
+"kind": "spoken"
+},
+{
+"i": -23013,
+"id": "MONDO:0009044",
+"concept": "- MONDO:0009044 | Crigler-Najjar syndrome | syn: bilirubin UDP glucuronyl transferase deficiency; bilirubin uridinediphosphate glucuronosyltransferase deficiency; bilirubin-UGT deficiency; Crigler Najjar Syndrome | ancestors: syndromic disease, hereditary hyperbilirubinemia, disease by body system or component, inborn disorder of bilirubin metabolism | def: Crigler-Najjar syndrome (CNS) is a hereditary disorder of bilirubin metabolism characterized by unconjugated hyperbilirubinemia due to a hepatic deficit of bilirubin glucuronosyltransferase (GT) activ...",
+"ko": "크리글러-나자르 증후군",
+"text": "멩케스벙",
+"kind": "typo"
+},
+{
+"i": 6587,
+"id": "MONDO:0021113",
+"concept": "- MONDO:0021113 | respiratory failure | syn: failure, respiratory; respiratory failure | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: The significant impairment of gas exchange within the lungs resulting in hypoxia, hypercarbia, or both, to the extent that organ tissue perfusion is severely compromised. Causes include chronic obstru...",
+"ko": "호흡부전",
+"text": "폐가 산소를 몸에 충분히 못 넣어 주는 병",
+"kind": "everyday"
+},
+{
+"i": 6588,
+"id": "MONDO:0006648",
+"concept": "- MONDO:0006648 | anterior compartment of tibia syndrome | ancestors: compartment syndrome, skeletal muscle disorder, syndromic disease, muscle tissue disorder | def: Rapid swelling, increased tension, pain, and ischemic necrosis of the muscles of the anterior tibial compartment of the leg, often following excessive physical exertion.",
+"ko": "전경골 구획 증후군",
+"text": "운동 후 정강이 앞쪽이 팽팽하게 부풀고 심하게 아픈 병",
+"kind": "everyday"
+},
+{
+"i": 6589,
+"id": "MONDO:0010771",
+"concept": "- MONDO:0010771 | histiocytoid cardiomyopathy | syn: Arachnocytosis of the myocardium; congenital cardiomyopathy; foamy myocardial transformation of infancy; histiocytoid cardiomyopathy | ancestors: inborn mitochondrial metabolism disorder, familial dilated cardiomyopathy, developmental anomaly of metabolic origin, inborn disorder of energy metabolism | def: Histiocytoid cardiomyopathy is an arrhythmogenic disorder characterized by cardiomegaly, severe cardiac arrhythmias or sudden death, and the presence of histiocyte-like cells within the myocardium.",
+"ko": "조직구양 심근병증",
+"text": "소아과에서 조직구양 심근병증이라고 하더라고요",
+"kind": "spoken"
+},
+{
+"i": 6590,
+"id": "MONDO:0001187",
+"concept": "- MONDO:0001187 | urinary bladder cancer | syn: bladder cancer, somatic; cancer of urinary bladder; malignant bladder neoplasm; malignant bladder tumor | ancestors: urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder, urinary system neoplasm | def: A primary or metastatic malignant neoplasm involving the bladder.",
+"ko": "방광암",
+"text": "방강암",
+"kind": "typo"
+},
+{
+"i": 6591,
+"id": "MONDO:0018667",
+"concept": "- MONDO:0018667 | pleural empyema | syn: pleural empyema; pleural empyema (disease) | ancestors: pleural disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: The presence of pus in the thoracic cavity, between the visceral and parietal pleura.",
+"ko": "농흉",
+"text": "농흥",
+"kind": "typo"
+},
+{
+"i": 6592,
+"id": "MONDO:0006876",
+"concept": "- MONDO:0006876 | ocular tuberculosis | ancestors: extrapulmonary tuberculosis, eye infectious disorder, tuberculosis, eye disorder | def: Tuberculous infection of the eye, primarily the iris, ciliary body, and choroid.",
+"ko": "안결핵",
+"text": "결핵 때문에 눈에 염증이 생겨 치료 중이에요",
+"kind": "spoken"
+},
+{
+"i": 6593,
+"id": "MONDO:0021412",
+"concept": "- MONDO:0021412 | polyp of maxillary sinus | syn: maxillary antral polyp; maxillary sinus polyp; polyp of the maxillary sinus | ancestors: paranasal sinus disorder, polyp, mouth disorder, disorder of facial skeleton | def: A polyp that involves the maxillary sinus.",
+"ko": "위턱굴 용종",
+"text": "CT에서 위턱굴 용종이 보인다고 하셨어요",
+"kind": "spoken"
+},
+{
+"i": 6594,
+"id": "MONDO:0001644",
+"concept": "- MONDO:0001644 | acute proliferative glomerulonephritis | syn: acute glomerulonephritis with lesion of proliferative glomerulonephritis; post-streptococcal glomerulonephritis; proliferative glomerulonephritis, acute | ancestors: proliferative glomerulonephritis, acute disease, glomerulonephritis, human disease | def: Inflammation of the glomeruli status post infection with nephritogenic streptococci, most often group A beta hemolytic streptococcus.",
+"ko": "급성 증식성 사구체신염",
+"text": "급성 증식성 사구체신엽",
+"kind": "typo"
+},
+{
+"i": 6595,
+"id": "MONDO:0006567",
+"concept": "- MONDO:0006567 | kernicterus due to isoimmunization | syn: kernicterus - due to isoimm.; kernicterus due to isoimmunization of fetus or newborn; kernicterus due to isoimmunization of foetus or newborn; kernicterus related to isoimmunization | ancestors: neonatal anemia, bilirubin encephalopathy, anemia, brain disorder | def: Encephalopathy in infants due to high levels of unconjugated bilirubin that are a result of Rh incompatibility between the mother and the fetus.",
+"ko": "동종면역에 의한 핵황달",
+"text": "동종면역에 의한 핵황담",
+"kind": "typo"
+},
+{
+"i": 6596,
+"id": "MONDO:0005714",
+"concept": "- MONDO:0005714 | congenital syphilis | syn: congenital syphilis; mother-to-child transmission of syphilis; MTCT of syphilis | ancestors: syphilis, infectious embryofetopathy, primary bacterial infectious disease, Treponema infectious disease | def: A life-threatening bacterial infection of the newborn caused by Treponema pallidum. It is transmitted to the infant from a mother with syphilis through the placenta during pregnancy. Signs and symptom...",
+"ko": "선천성 매독",
+"text": "엄마 뱃속에서 매독이 옮아 태어난 아기 병",
+"kind": "everyday"
+},
+{
+"i": 6597,
+"id": "MONDO:0012693",
+"concept": "- MONDO:0012693 | glycogen storage disease due to muscle and heart glycogen synthase deficiency | syn: glycogen storage disease due to glycogen synthase deficiency of heart; glycogen storage disease type 0b; glycogenosis due to muscle and heart glycogen synthase deficiency; glycogenosis type 0b | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: A glycogen storage disease characterized by muscle and heart glycogen deficiency. It has been described in three siblings (two brothers and their younger sister). The older brother died at 10.5 years ...",
+"ko": "근육 및 심장 글리코겐 합성효소 결핍에 의한 글리코겐 저장병",
+"text": "근육 및 심장 글리코겐 합성효소 결핌에 의한 글리코겐 저장병",
+"kind": "typo"
+},
+{
+"i": 6598,
+"id": "MONDO:0001947",
+"concept": "- MONDO:0001947 | suppurative thyroiditis | syn: acute suppurative thyroiditis | ancestors: thyroiditis, thyroid gland disorder, inflammatory disease, endocrine system disorder | def: Acute inflammatory disease of the thyroid gland due to infections by bacteria; fungi; or other microorganisms. Symptoms include tender swelling, fever, and often with leukocytosis.",
+"ko": "화농성 갑상선염",
+"text": "화농성 갑상선엮",
+"kind": "typo"
+},
+{
+"i": 6599,
+"id": "MONDO:0009262",
+"concept": "- MONDO:0009262 | GM1 gangliosidosis type 3 | syn: adult-onset GM1 gangliosidosis | ancestors: GM1 gangliosidosis, eye disorder, bone disorder, gangliosidosis | def: GM1 gangliosidosis type 3 is a mild, chronic, adult form of GM1 gangliosidosis characterized by onset generally during childhood or adolescence and by cerebellar dysfunction.",
+"ko": "GM1 강글리오시드축적증 3형",
+"text": "GM1 강글리오시드추적증 3형",
+"kind": "typo"
+},
+{
+"i": 6600,
+"id": "MONDO:0020528",
+"concept": "- MONDO:0020528 | ACTH-dependent Cushing syndrome | syn: ACTH-dependent CS; adrenocorticotropic hormone-dependent Cushing syndrome; corticotropin-dependent Cushing syndrome; pituitary-dependent Cushing's disease | ancestors: hyperpituitarism, endogenous Cushing syndrome, anterior pituitary gland disorder, adrenal gland disorder | def: A group of endogenous Cushing syndrome caused by abnormal production of ACTH due to pituitary adenoma or an extrapituitary tumor.",
+"ko": "ACTH 의존성 쿠싱 증후군",
+"text": "뇌하수체 쪽 문제로 코르티솔이 높아서 쿠싱 진단받았어요",
+"kind": "spoken"
+},
+{
+"i": 6601,
+"id": "MONDO:0019773",
+"concept": "- MONDO:0019773 | myelomeningocele | ancestors: spina bifida cystica, isolated spina bifida, spina bifida, congenital nervous system disorder | def: Myelomeningocele is the most severe form of spina bifida. It happens when parts of the spinal cord and nerves come through the open part of the spine. It causes nerve damage and other disabilities. Se...",
+"ko": "척수수막류",
+"text": "척수수막뉴",
+"kind": "typo"
+},
+{
+"i": 6602,
+"id": "MONDO:0016035",
+"concept": "- MONDO:0016035 | Nelson syndrome | syn: Nelson's syndrome | ancestors: functioning pituitary gland adenoma, functioning pituitary gland neoplasm, pituitary gland adenoma, pituitary tumor | def: A syndrome that develops following bilateral adrenalectomy for Cushing syndrome. The signs and symptoms result from the presence of an adenocorticotropin-secreting pituitary gland adenoma, and include...",
+"ko": "넬슨 증후군",
+"text": "넬선 증후군",
+"kind": "typo"
+},
+{
+"i": 6603,
+"id": "MONDO:0017474",
+"concept": "- MONDO:0017474 | macrodactyly of fingers | syn: macrodactyly of hand | ancestors: disorder of development or morphogenesis, disease by developmental or physiological process, human disease, disease",
+"ko": "손가락 거지증",
+"text": "손가락이 유난히 커서 소아과 진료받았어요",
+"kind": "spoken"
+},
+{
+"i": 6604,
+"id": "MONDO:0001032",
+"concept": "- MONDO:0001032 | Mooren ulcer | ancestors: corneal ulcer, keratitis, ulcer disease, corneal disorder",
+"ko": "무렌 궤양",
+"text": "각막이 점점 녹아 들어가는 궤양",
+"kind": "everyday"
+},
+{
+"i": 6605,
+"id": "MONDO:0000984",
+"concept": "- MONDO:0000984 | thalassemia | syn: sickle-cell thalassemia with crisis; sickle-cell thalassemia without crisis | ancestors: inherited hemoglobinopathy, hereditary disease, hemoglobinopathy, disease of genetic or genomic mechanism | def: An inherited blood disorder characterized by a decreased synthesis of one of the polypeptide chains that form hemoglobin. Anemia results from this abnormal hemoglobin formation.",
+"ko": "지중해빈혈",
+"text": "지중해빈혈 보인자라서 결혼 전에 검사 받았어요",
+"kind": "spoken"
+},
+{
+"i": 6606,
+"id": "MONDO:0024472",
+"concept": "- MONDO:0024472 | boutonneuse fever | syn: African tick typhus; boutonneuse disease; boutonneuse fever; Conor and Bruch's disease | ancestors: Rickettsia conorii infectious disease, spotted fever, Rickettsiaceae infectious disease, vector-borne disease | def: An infectious disease of the Mediterranean area, the Crimea, Africa, and India, caused by infection with rickettsia conorii subsp. coronorii.",
+"ko": "지중해 반점열",
+"text": "지중헤 반점열",
+"kind": "typo"
+},
+{
+"i": 6607,
+"id": "MONDO:0006077",
+"concept": "- MONDO:0006077 | adrenal medullary hyperplasia | syn: adrenal medulla hyperplasia | ancestors: hyperplasia, adrenal gland disorder, cancer or benign tumor, endocrine system disorder | def: A hyperplasia that involves the adrenal medulla.",
+"ko": "부신수질 증식증",
+"text": "부신소질 증식증",
+"kind": "typo"
+},
+{
+"i": 6608,
+"id": "MONDO:0009044",
+"concept": "- MONDO:0009044 | Crigler-Najjar syndrome | syn: bilirubin UDP glucuronyl transferase deficiency; bilirubin uridinediphosphate glucuronosyltransferase deficiency; bilirubin-UGT deficiency; Crigler Najjar Syndrome | ancestors: syndromic disease, hereditary hyperbilirubinemia, disease by body system or component, inborn disorder of bilirubin metabolism | def: Crigler-Najjar syndrome (CNS) is a hereditary disorder of bilirubin metabolism characterized by unconjugated hyperbilirubinemia due to a hepatic deficit of bilirubin glucuronosyltransferase (GT) activ...",
+"ko": "크리글러-나자르 증후군",
+"text": "태어날 때부터 피부와 눈이 노랗고 간이 빌리루빈을 못 처리하는 병",
+"kind": "everyday"
+},
+{
+"i": 6609,
+"id": "MONDO:0002303",
+"concept": "- MONDO:0002303 | central retinal vein occlusion | syn: central retinal vein retinal vein occlusion; central retinal Venous occlusion; retinal vein occlusion of central retinal vein | ancestors: vein disorder, retinal vein occlusion, vascular disorder, retinal vascular occlusion | def: Blockage of the central retinal vein.",
+"ko": "중심망막정맥 폐쇄",
+"text": "중심망막정막 폐쇄",
+"kind": "typo"
+},
+{
+"i": 6610,
+"id": "MONDO:0001305",
+"concept": "- MONDO:0001305 | laryngostenosis | syn: stenosis of larynx | ancestors: laryngeal disorder, upper respiratory tract disorder, respiratory system disorder, disease by body system or component | def: Narrowing of the laryngeal airway.",
+"ko": "후두 협착",
+"text": "후두 헙착",
+"kind": "typo"
+},
+{
+"i": 6611,
+"id": "MONDO:0044917",
+"concept": "- MONDO:0044917 | T-lymphoblastic lymphoma | syn: Precur. T-lymphoblastic lymphoma; precursor T Lymphoblastic lymphoma; precursor T-cell Lymphoblastic lymphoma; precursor T-Lymphoblastic lymphoma | ancestors: lymphoblastic lymphoma, T lymphoblastic leukemia/lymphoma, T-cell non-Hodgkin lymphoma, precursor lymphoblastic lymphoma/leukemia | def: The most frequent type of lymphoblastic lymphoma. It comprises approximately 85-90% of cases. It is more frequently seen in adolescent males. It frequently presents with a mass lesion in the mediastin...",
+"ko": "T림프모구 림프종",
+"text": "가슴에 덩어리가 있어서 T림프모구 림프종 검사 받았어요",
+"kind": "spoken"
+},
+{
+"i": 6612,
+"id": "MONDO:0011996",
+"concept": "- MONDO:0011996 | chronic myeloid leukemia | syn: BCR-ABL Positive chronic myelogenous leukaemia; BCR-ABL Positive chronic myelogenous leukemia; chronic granulocytic leukemia; chronic myelocytic leukaemia | ancestors: myeloid leukemia, hereditary disorder of connective tissue, leukemia, myeloproliferative neoplasm | def: A chronic myeloproliferative neoplasm characterized by the expression of the BCR-ABL1 fusion gene. It presents with neutrophilic leukocytosis. It can appear at any age, but it mostly affects middle ag...",
+"ko": "만성 골수성 백혈병",
+"text": "만셩 골수성 백혈병",
+"kind": "typo"
+},
+{
+"i": 6613,
+"id": "MONDO:0008336",
+"concept": "- MONDO:0008336 | pterygium colli, isolated | syn: pterygium colli, isolated | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "단독 목갈퀴",
+"text": "단독 목갈키",
+"kind": "typo"
+},
+{
+"i": 6614,
+"id": "MONDO:0007576",
+"concept": "- MONDO:0007576 | esophageal cancer | syn: cancer of esophagus; cancer of oesophagus; esophageal cancer; esophageal cancer, somatic | ancestors: digestive system cancer, neoplasm of esophagus, digestive system disorder, cancer | def: A primary or metastatic malignant neoplasm involving the esophagus.",
+"ko": "식도암",
+"text": "식두암",
+"kind": "typo"
+},
+{
+"i": 6615,
+"id": "MONDO:0001239",
+"concept": "- MONDO:0001239 | anemia of prematurity | syn: AOP | ancestors: neonatal anemia, anemia, hematologic disorder, disease by body system or component | def: A blood disorder characterized by low hemoglobin levels in premature neonates that usually spontaneously resolves within 3-6 months post birth. A combination of factors including the transition from t...",
+"ko": "미숙아 빈혈",
+"text": "일찍 태어난 아기가 피가 부족한 병",
+"kind": "everyday"
+},
+{
+"i": 6616,
+"id": "MONDO:0005729",
+"concept": "- MONDO:0005729 | dicrocoeliasis | syn: Dicrocoelium caused disease or disorder; Dicrocoelium disease or disorder; Dicrocoelium infectious disease | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection with flukes of the genus Dicrocoelium.",
+"ko": "창형흡충증",
+"text": "간에 작은 기생충이 들어가서 생긴 병",
+"kind": "everyday"
+},
+{
+"i": 6617,
+"id": "MONDO:0005080",
+"concept": "- MONDO:0005080 | portal hypertension | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder | def: Increased blood pressure in the portal venous system. It is most commonly caused by cirrhosis. Other causes include portal vein thrombosis, Budd-Chiari syndrome, and right heart failure. Complications...",
+"ko": "문맥압 항진증",
+"text": "문맥압항진증",
+"kind": "typo"
+},
+{
+"i": 6618,
+"id": "MONDO:0004514",
+"concept": "- MONDO:0004514 | chronic rhinitis | syn: rhinitis, chronic | ancestors: rhinitis, nasal cavity disorder, mucositis, nasal disorder | def: Chronic inflammation of the nasal cavity mucosa. It may lead to post-nasal drip resulting in chronic sore throat and chronic cough.",
+"ko": "만성 비염",
+"text": "코막힘이 오래돼서 만성 비염으로 약 먹고 있어요",
+"kind": "spoken"
+},
+{
+"i": 6619,
+"id": "MONDO:0018770",
+"concept": "- MONDO:0018770 | Jeune syndrome | syn: Asphyxiating Thoracic Dystrophy; asphyxiating thoracic dystrophy of the newborn; JATD; Jeune asphyxiating thoracic dystrophy | ancestors: ciliopathy, short rib-polydactyly syndrome, inherited renal tubular disease, hereditary disease | def: Jeune syndrome, also called asphyxiating thoracic dystrophy, is a short-rib dysplasia characterized by a narrow thorax, short limbs and radiological skeletal abnormalities including \\\"trident\\\" aspect...",
+"ko": "죄네 증후군",
+"text": "죄네 증후근",
+"kind": "typo"
+},
+{
+"i": 6620,
+"id": "MONDO:0005311",
+"concept": "- MONDO:0005311 | atherosclerosis | syn: atherosclerosis of artery | ancestors: arteriosclerosis disorder, arterial disorder, vascular disorder, cardiovascular disorder | def: A disease characterized by the build-up of fatty material and calcium deposition in the arterial wall resulting in partial or complete occlusion of the arterial lumen.",
+"ko": "죽상경화증",
+"text": "죽상정화증",
+"kind": "typo"
+},
+{
+"i": 6621,
+"id": "MONDO:0043327",
+"concept": "- MONDO:0043327 | cerebrospinal fluid leak | syn: cerebrospinal fluid leak | ancestors: central nervous system disorder, nervous system disorder, disease by body system or component, human disease | def: Discharge of cerebrospinal fluid through a hole through the skull bone most commonly draining from the nose (CEREBROSPINAL FLUID RHINORRHEA) or the ear (CEREBROSPINAL FLUID OTORRHEA).",
+"ko": "뇌척수액 누출",
+"text": "코나 귀에서 맑은 물이 계속 흐르는 병",
+"kind": "everyday"
+},
+{
+"i": 6622,
+"id": "MONDO:0021463",
+"concept": "- MONDO:0021463 | benign neoplasm of parathyroid gland | syn: benign neoplasm of parathyroid; benign neoplasm of the parathyroid; benign neoplasm of the parathyroid gland; benign parathyroid gland neoplasm | ancestors: benign endocrine neoplasm, tumor of parathyroid gland, endocrine gland neoplasm, benign neoplasm | def: A benign neoplasm that involves the parathyroid gland.",
+"ko": "부갑상샘 양성 신생물",
+"text": "부갑상샘 양상 신생물",
+"kind": "typo"
+},
+{
+"i": 6623,
+"id": "MONDO:0001050",
+"concept": "- MONDO:0001050 | malignant otitis externa | ancestors: otitis externa, external ear disorder, ear infection, post-infectious disorder | def: An otitis externa which involves infection of the external ear that has spread to involve the skull bone containing part of the ear canal, the middle ear, and the inner ear. It is caused by the bacter...",
+"ko": "악성 외이도염",
+"text": "악성 외이도렴",
+"kind": "typo"
+},
+{
+"i": 6624,
+"id": "MONDO:0019537",
+"concept": "- MONDO:0019537 | hemoglobin D disease | syn: hemoglobin D disease | ancestors: anemia, inherited hemoglobinopathy, hematologic disorder, hereditary disease | def: Hemoglobin D disease(HbD) is a hemoglobinopathy characterized by production of abnormal variant hemoglobin known as hemoglobin D, with no or mild clinical manifestations (splenomegaly, very mild anemi...",
+"ko": "헤모글로빈 D병",
+"text": "가족력으로 헤모글로빈 이상이라고 들은 병",
+"kind": "everyday"
+},
+{
+"i": 6625,
+"id": "MONDO:0017388",
+"concept": "- MONDO:0017388 | celiac trunk compression syndrome | syn: celiac artery compression syndrome; celiac artery stenosis from compression by median arcuate ligament of diaphragm; coeliac artery compression syndrome; Dunbar syndrome | ancestors: arterial disorder, syndromic disease, hereditary disease, vascular disorder | def: A rare disease caused by compression of the celiac axis by an abnormally shaped arcuate ligament (the part of the diaphragm in which both pillars join in the midline around the aorta). Patients have r...",
+"ko": "복강동맥 압박 증후군",
+"text": "배 위쪽 큰 혈관이 힘줄에 눌려 막히는 병",
+"kind": "everyday"
+},
+{
+"i": 6626,
+"id": "MONDO:0037939",
+"concept": "- MONDO:0037939 | porphyria | syn: porphyria | ancestors: porphyrin metabolism disease, metabolic disease, disease by developmental or physiological process, human disease | def: Porphyria is a group of diseases in which substances called porphyrins build up, negatively affecting the skin or nervous system. Most types are inherited, but porphyria cutanea tarda may also be due ...",
+"ko": "포르피린증",
+"text": "피 색소가 쌓여 햇빛에 피부가 따갑고 소변이 붉은 병",
+"kind": "everyday"
+},
+{
+"i": 6627,
+"id": "MONDO:0006460",
+"concept": "- MONDO:0006460 | thyroglossal duct cyst | syn: thyroglossal tract cyst | ancestors: neoplasm, neoplastic disease or syndrome, cancer or benign tumor, disease by etiologic mechanism | def: A congenital benign cyst arising from the remnants of the thyroglossal duct. It is usually located in the midline of the neck.",
+"ko": "갑상설관 낭종",
+"text": "갑상설관 낭중",
+"kind": "typo"
+},
+{
+"i": 6628,
+"id": "MONDO:0003061",
+"concept": "- MONDO:0003061 | benign muscle neoplasm | syn: benign muscle neoplasm; benign muscle tumor; benign muscle tumour; benign neoplasm of muscle | ancestors: musculoskeletal system benign neoplasm, myomatous neoplasm, musculoskeletal system disorder, benign neoplasm | def: A benign mesenchymal neoplasm arising from smooth, skeletal, or cardiac muscle tissue.",
+"ko": "양성 근육 신생물",
+"text": "양성 근유 신생물",
+"kind": "typo"
+},
+{
+"i": 6629,
+"id": "MONDO:0006008",
+"concept": "- MONDO:0006008 | vestibular neuronitis | ancestors: vestibulocochlear nerve disorder, neuritis, retrocochlear disease, cranial nerve neuropathy | def: Idiopathic inflammation of the vestibular nerve, characterized clinically by the acute or subacute onset of vertigo; nausea; and imbalance. The cochlear nerve is typically spared and hearing loss and ...",
+"ko": "전정신경염",
+"text": "감기 앓고 나서 갑자기 어지러워서 진료 받았어요",
+"kind": "spoken"
+},
+{
+"i": -23012,
+"id": "MONDO:0001116",
+"concept": "- MONDO:0001116 | mesenteric lymphadenitis | syn: lymphadenitis (disease) of mesentery; mesenteric adenitis; mesenteric lymphadenitis; mesentery lymphadenitis (disease) | ancestors: lymphadenitis, lymph node disorder, inflammatory disease, lymphatic system disorder | def: Inflammation of the mesenteric lymph nodes.",
+"ko": "장간막 림프절염",
+"text": "코막힘이 오래돼서 만성 비염으로 약 먹고 있어요",
+"kind": "spoken"
+},
+{
+"i": 6630,
+"id": "MONDO:0005890",
+"concept": "- MONDO:0005890 | osteitis fibrosa | syn: osteitis fibrosa cystica; Von Recklinghausen disease of Bone; Von Recklinghausen's disease of Bone | ancestors: bone resorption disease, bone remodeling disease, bone disorder, skeletal system disorder | def: A disorder that is characterized by bone cysts and fractures, resulting from hyperparathyroidism.",
+"ko": "섬유성 골염",
+"text": "부갑상선 이상으로 뼈에 구멍이 생겼대요",
+"kind": "spoken"
+},
+{
+"i": 6631,
+"id": "MONDO:0001258",
+"concept": "- MONDO:0001258 | vertebral artery occlusion | syn: occlusion and stenosis of vertebral artery | ancestors: occlusion precerebral artery, arterial occlusion, cerebrovascular disorder, arterial disorder",
+"ko": "척추동맥 폐색",
+"text": "척추동매 폐색",
+"kind": "typo"
+},
+{
+"i": 6632,
+"id": "MONDO:0000468",
+"concept": "- MONDO:0000468 | third-degree atrioventricular block | syn: atrioventricular block complete; atrioventricular block, third degree; AV block third degree; complete atrioventricular block | ancestors: atrioventricular block, heart conduction disease, atrioventricular dissociation, heart disorder | def: A disorder characterized by an electrocardiographic finding of complete failure of atrial electrical impulse conduction to the ventricles. This is manifested on the ECG by disassociation of atrial and...",
+"ko": "3도 방실 차단",
+"text": "심전도에서 3도 방실차단 나와서 페이스메이커 얘기 들었어요",
+"kind": "spoken"
+},
+{
+"i": 6633,
+"id": "MONDO:1040033",
+"concept": "- MONDO:1040033 | congenital muscular dystrophy without intellectual disability | syn: CMD without intellectual disability; CMD-no MR; congenital muscular dystrophy-dystroglycanopathy without intellectual disability | ancestors: congenital muscular dystrophy, congenital nervous system disorder, muscular dystrophy, nervous system disorder | def: A congenital muscular dystrophy due to dystroglycanopathy characterized by a wide phenotypic spectrum which includes hypotonia and muscular weakness present at birth or early infancy, delayed or arres...",
+"ko": "지적장애를 동반하지 않는 선천성 근이영양증",
+"text": "지적장애를 동반하지 않는 선천성 근이영양즁",
+"kind": "typo"
+},
+{
+"i": 6634,
+"id": "MONDO:0005382",
+"concept": "- MONDO:0005382 | bone Paget disease | syn: bone Paget disease; bone Paget's disease; osseous Paget's disease; osteitis deformans | ancestors: hyperostosis, hereditary disease, metabolic bone disorder, bone remodeling disease | def: A disease of bone that initially results in the excessive resorption of bone (by osteoclasts) followed by the replacement of normal bone marrow with vascular and fibrous tissue.",
+"ko": "뼈 파제트병",
+"text": "나이 들어 뼈가 두꺼워지고 다리가 휘는 병",
+"kind": "everyday"
+},
+{
+"i": 6635,
+"id": "MONDO:0007865",
+"concept": "- MONDO:0007865 | knuckle pads | syn: knuckle pads | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "손가락관절 결절",
+"text": "손까락관절 결절",
+"kind": "typo"
+},
+{
+"i": 6636,
+"id": "MONDO:0018531",
+"concept": "- MONDO:0018531 | carcinoma of liver and intrahepatic biliary tract | syn: carcinoma of liver and IBT; liver and intrahepatic bile duct carcinoma; liver and intrahepatic biliary tract cancer; liver and intrahepatic biliary tract carcinoma | ancestors: liver cancer, digestive system carcinoma, digestive system cancer, malignant endocrine neoplasm | def: A carcinoma that arises from the hepatocytes or intrahepatic bile ducts. The main subtypes are hepatocellular carcinoma (hepatoma) and cholangiocarcinoma.",
+"ko": "간 및 간내담도 암종",
+"text": "간 밑 간내담도 암종",
+"kind": "typo"
+},
+{
+"i": 6637,
+"id": "MONDO:0006992",
+"concept": "- MONDO:0006992 | syphilitic aortitis | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: Cardiovascular manifestations of syphilis, an infection of treponema pallidum. In the late stage of syphilis, sometimes 20-30 years after the initial infection, damages are often seen in the blood ves...",
+"ko": "매독성 대동맥염",
+"text": "매독 때문에 대동맥에 염증 생겼다고 하셨어요",
+"kind": "spoken"
+},
+{
+"i": -23001,
+"id": "MONDO:0008692",
+"concept": "- MONDO:0008692 | abetalipoproteinemia | syn: abetalipoproteinemia; Bassen-Kornzweig disease; homozygous familial hypobetalipoproteinemia | ancestors: familial hemolytic anemia, intestinal disorder, hypobetalipoproteinemia, autosomal recessive metabolic cerebellar ataxia | def: Abetalipoproteinemia/ homozygous familial hypobetalipoproteinemia (ABL/HoFHBL) is a severe form of familial hypobetalipoproteinemia characterized by permanently low levels (below the 5th percentile) o...",
+"ko": "무베타지단백혈증",
+"text": "일찍 태어난 아기가 피가 부족한 병",
+"kind": "everyday"
+},
+{
+"i": 6638,
+"id": "MONDO:0011759",
+"concept": "- MONDO:0011759 | Hurler-Scheie syndrome | syn: Hurler-Scheie syndrome; MPS I H-S; MPS1H/S; MPSIH/S | ancestors: mucopolysaccharidosis type 1, syndromic disease, lysosomal storage disease with skeletal involvement, eye disorder | def: Hurler-Scheie syndrome is the intermediate form of mucopolysaccharidosis type 1 (MPS1) between the two extremes Hurler syndrome and Scheie syndrome ; it is a rare lysosomal storage disease, characteri...",
+"ko": "헐러-샤이에 증후군",
+"text": "뼈가 굽고 각막이 뿌옇게 되는 유전성 대사병",
+"kind": "everyday"
+},
+{
+"i": 6639,
+"id": "MONDO:0024685",
+"concept": "- MONDO:0024685 | Philadelphia-positive myelogenous leukemia | syn: Ph1-positive granulocytic leukaemia; Ph1-positive granulocytic leukemia; Ph1-positive myelocytic leukaemia; Ph1-positive myelocytic leukemia | ancestors: myeloid leukemia, leukemia, myeloproliferative neoplasm, hematopoietic and lymphoid cell neoplasm",
+"ko": "필라델피아 염색체 양성 골수성 백혈병",
+"text": "염색체에 이상이 있어서 생긴 골수 백혈병",
+"kind": "everyday"
+},
+{
+"i": 6640,
+"id": "MONDO:0006970",
+"concept": "- MONDO:0006970 | sialolithiasis | syn: sialolith; Stone of salivary gland or duct | ancestors: salivary gland disorder, mouth disorder, disease by body system or component, human disease | def: A concretion in the salivary gland.",
+"ko": "침샘결석증",
+"text": "침샘에 돌이 생겨 밥 먹을 때 붓는 병",
+"kind": "everyday"
+},
+{
+"i": 6641,
+"id": "MONDO:0005664",
+"concept": "- MONDO:0005664 | bartonellosis | syn: Bartonella caused disease or disorder; Bartonella disease or disorder; Bartonella infection; Rochalimaea infection (disorder) | ancestors: primary bacterial infectious disease, Bartonellaceae infectious disease, bacterial infectious disease, gram-negative bacterial infections | def: An infectious disease produced by bacteria of the genus Bartonella.",
+"ko": "바르토넬라증",
+"text": "바루토넬라증",
+"kind": "typo"
+},
+{
+"i": 6642,
+"id": "MONDO:0006956",
+"concept": "- MONDO:0006956 | Rickettsiosis | syn: infection, Rickettsia; infections, Rickettsia; Rickettsia caused disease or disorder; Rickettsia disease or disorder | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: A group of infectious diseases that is caused by Rickettsia.",
+"ko": "리케치아증",
+"text": "벌레에 물리고 나서 고열과 발진이 생긴 병",
+"kind": "everyday"
+},
+{
+"i": 6643,
+"id": "MONDO:8000010",
+"concept": "- MONDO:8000010 | antiphospholipid syndrome | syn: antiphospholipid antibody syndrome; antiphospholipid syndrome; familial lupus anticoagulant; Hughes syndrome | ancestors: syndromic disease, autoimmune disease, disease by body system or component, immune system disorder | def: A disorder caused by the presence of autoantibodies directed against phospholipids, causing a hypercoaguable state, which may result in blood clots, stroke, heart attack, and in women, significant pre...",
+"ko": "항인지질 증후군",
+"text": "피가 자꾸 굳어서 혈관이 막히는 면역 병",
+"kind": "everyday"
+},
+{
+"i": 6644,
+"id": "MONDO:0006515",
+"concept": "- MONDO:0006515 | acute pancreatitis | syn: acute pancreatitis (disorder) [ambiguous]; pancreatitis, acute | ancestors: pancreatitis, acute disease, pancreas disorder, inflammatory disease | def: An acute inflammatory process that leads to necrosis of the pancreatic parenchyma. Signs and symptoms include severe abdominal pain, nausea, vomiting, diarrhea, fever, and shock. Causes include alcoho...",
+"ko": "급성 췌장염",
+"text": "갑자기 배가 찢어질 듯 아프고 토하는 췌장 병",
+"kind": "everyday"
+},
+{
+"i": 6645,
+"id": "MONDO:0018864",
+"concept": "- MONDO:0018864 | Kikuchi-Fujimoto disease | syn: histiocytic necrotizing lymphadenitis; Kikuchi disease | ancestors: lymphadenitis, lymph node disorder, inflammatory disease, lymphatic system disorder | def: Kikuchi-Fujimoto disease (KFD) is a benign and self-limited disorder, characterized by regional cervical lymphadenopathy with tenderness, usually accompanied with mild fever and night sweats. Less fre...",
+"ko": "기쿠치-후지모토병",
+"text": "목 옆 멍울이 붓고 아프고 열 나는 병",
+"kind": "everyday"
+},
+{
+"i": 6646,
+"id": "MONDO:0006816",
+"concept": "- MONDO:0006816 | arthropathy | syn: arthropathy; disease of skeletal joint; disease or disorder of skeletal joint; disorder of skeletal joint | ancestors: skeletal system disorder, musculoskeletal system disorder, disease by body system or component, human disease | def: Any disorder of the joints.",
+"ko": "관절병증",
+"text": "관절병즘",
+"kind": "typo"
+},
+{
+"i": 6647,
+"id": "MONDO:0001858",
+"concept": "- MONDO:0001858 | Tietze syndrome | syn: costochondral joint syndromic disease; Costochondritis; syndromic disease of costochondral joint; Tietze syndrome | ancestors: syndromic disease, arthropathy, disease by body system or component, skeletal system disorder | def: Idiopathic painful nonsuppurative swellings of one or more costal cartilages, especially of the second rib. The anterior chest pain may mimic that of coronary artery disease.",
+"ko": "티체 증후군",
+"text": "갈비뼈와 가슴뼈 사이가 붓고 눌리면 아픈 병",
+"kind": "everyday"
+},
+{
+"i": 6648,
+"id": "MONDO:0037792",
+"concept": "- MONDO:0037792 | carbohydrate metabolism disease | syn: carbohydrate metabolic process disease; disorder of carbohydrate metabolic process; disorder of carbohydrate metabolism | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A disease that has its basis in the disruption of carbohydrate metabolic process.",
+"ko": "탄수화물 대사 질환",
+"text": "유전 검사에서 탄수화물 대사 이상이 나왔대요",
+"kind": "spoken"
+},
+{
+"i": 6649,
+"id": "MONDO:0002282",
+"concept": "- MONDO:0002282 | West Nile fever | syn: West Nile virus caused disease or disorder; West Nile virus disease or disorder; West Nile virus infectious disease | ancestors: Flaviviridae infectious disease, vector-borne disease, primary viral infectious disease, infectious disease | def: A mosquito-borne viral illness caused by the west nile virus, a flavivirus and endemic to regions of Africa, Asia, and Europe. Common clinical features include headache; fever; maculopapular rash; gas...",
+"ko": "웨스트나일열",
+"text": "모기 물린 뒤 열나고 머리 아픈 바이러스 병",
+"kind": "everyday"
+},
+{
+"i": 6650,
+"id": "MONDO:0002737",
+"concept": "- MONDO:0002737 | acute sanguinous otitis media | ancestors: acute transudative otitis media, non-suppurative otitis media, acute disease, otitis media | def: A acute transudative otitis media which involves bloody effusion.",
+"ko": "급성 혈성 중이염",
+"text": "귀 안에 피 섞인 물이 찼다고 중이염이래요",
+"kind": "spoken"
+},
+{
+"i": 6651,
+"id": "MONDO:0002041",
+"concept": "- MONDO:0002041 | fungal infectious disease | syn: Fungi caused disease or disorder; Fungi disease or disorder; Fungi infection; Fungi infectious disease | ancestors: infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: An infection caused by a fungus.",
+"ko": "진균 감염병",
+"text": "곰팡이 감염이라 항진균제를 처방받았어요",
+"kind": "spoken"
+},
+{
+"i": 6652,
+"id": "MONDO:0000956",
+"concept": "- MONDO:0000956 | small intestine cancer | syn: cancer of small intestine; malignant neoplasm of small bowel; malignant neoplasm of small intestine; malignant neoplasm of the small bowel | ancestors: small intestine neoplasm, intestinal cancer, intestinal neoplasm, small intestine disorder | def: A primary or metastatic malignant neoplasm involving the small intestine.",
+"ko": "소장암",
+"text": "작은창자에 생긴 암",
+"kind": "everyday"
+},
+{
+"i": 6653,
+"id": "MONDO:0006533",
+"concept": "- MONDO:0006533 | cholesteatoma of middle ear | syn: cholesteatoma (disease) of middle ear; cholesteatoma of middle ear; cholesteatoma of middle ear and mastoid; cholesteatoma of the middle ear | ancestors: middle ear disorder, cholesteatoma, auditory system disorder, disorder of ear | def: A non-neoplastic lesion characterized by the proliferation of keratinizing squamous epithelium in the middle ear that results in the accumulation of keratin and cells. It is usually caused by repeated...",
+"ko": "중이 진주종",
+"text": "고막 뒤에 피부 덩어리가 자라서 생긴 귀 질환",
+"kind": "everyday"
+},
+{
+"i": 6654,
+"id": "MONDO:0012155",
+"concept": "- MONDO:0012155 | choanal atresia | syn: atresia of nares | ancestors: nasal cavity disorder, hereditary otorhinolaryngologic disease, nasal disorder, upper respiratory tract disorder | def: Choanal atresia (CA) is a congenital anomaly of the posterior nasal airway characterized by the obstruction of one (unilateral) or both (bilateral) choanal aperture(s), with clinical manifestations ra...",
+"ko": "후비공 폐쇄증",
+"text": "신생아 때 코가 막혀서 후비공 폐쇄증 수술했어요",
+"kind": "spoken"
+},
+{
+"i": 6655,
+"id": "MONDO:0008685",
+"concept": "- MONDO:0008685 | Wolff-Parkinson-White syndrome | syn: ventricular familial preexcitation syndrome; Wolff-Parkinson-White pattern (finding); Wolff-Parkinson-White syndrome; Wolff-Parkinson-white syndrome (disease) | ancestors: heart conduction disease, PRKAG2-related cardiomyopathy, heart disorder, familial cardiomyopathy | def: A cardiac conduction disorder characterized by an electrocardiographic finding of ventricular pre-excitation, which is a short PR interval and a long QRS interval with a delta wave. Most individuals a...",
+"ko": "울프-파킨슨-화이트 증후군",
+"text": "심장이 갑자기 빨리 뛰어서 검사했더니 전기 이상이래요",
+"kind": "spoken"
+},
+{
+"i": 6656,
+"id": "MONDO:0005495",
+"concept": "- MONDO:0005495 | adrenal gland disorder | syn: adrenal gland disease; adrenal gland disease or disorder; adrenal gland diseases; adrenal gland disorder | ancestors: endocrine system disorder, disease by body system or component, human disease, disease | def: A disease involving the adrenal gland.",
+"ko": "부신 질환",
+"text": "스트레스 호르몬을 만드는 기관에 문제가 생긴 병",
+"kind": "everyday"
+},
+{
+"i": 6657,
+"id": "MONDO:0019461",
+"concept": "- MONDO:0019461 | B-cell prolymphocytic leukemia | syn: B prolymphocytic leukaemia; B prolymphocytic leukemia; B-cell prolymphocytic leukemia; B-PLL | ancestors: prolymphocytic leukemia, neoplasm of mature B-cells, aggressive B-cell non-Hodgkin lymphoma, chronic leukemia | def: A neoplasm of prolymphocytes affecting the blood, bone marrow, and spleen. It is characterized by prolymphocytes exceeding 55% of the lymphoid cells in the blood and profound splenomegaly.",
+"ko": "B세포 전림프구성 백혈병",
+"text": "B세포 전림프구싱 백혈병",
+"kind": "typo"
+},
+{
+"i": 6658,
+"id": "MONDO:0020076",
+"concept": "- MONDO:0020076 | myeloproliferative neoplasm | syn: chronic myeloproliferative disease; chronic myeloproliferative disorder; chronic myeloproliferative neoplasm; CMPD | ancestors: myeloid neoplasm, myeloid hemopathy, bone marrow cancer, hematopoietic and lymphoid cell neoplasm | def: A clonal hematopoietic stem cell disorder, characterized by proliferation in the bone marrow of one or more of the myeloid (i.e., granulocytic, erythroid, megakaryocytic, and mast cell) lineages. It i...",
+"ko": "골수증식종양",
+"text": "골수중식종양",
+"kind": "typo"
+},
+{
+"i": 6659,
+"id": "MONDO:0005692",
+"concept": "- MONDO:0005692 | cat-scratch disease | syn: bartonellosis due to Bartonella henselae infection; benign lymphoreticulosis; Cat-scratch fever | ancestors: lymphadenitis, bartonellosis, lymph node disorder, inflammatory disease | def: Cat scratch disease is an infectious illness caused by the bacteria bartonella (Bartonella henselae). It is believed to be transmitted by cat scratches, bites, or exposure to cat saliva. This self-lim...",
+"ko": "고양이할큄병",
+"text": "고양이에게 긁히거나 물린 뒤 림프절이 붓는 병",
+"kind": "everyday"
+},
+{
+"i": 6660,
+"id": "MONDO:0008564",
+"concept": "- MONDO:0008564 | DiGeorge syndrome | syn: DGS; DGS1; Di-George syndrome; DiGeorge anomaly | ancestors: congenital T-cell immunodeficiency, 22q11.2 deletion syndrome, neurocristopathy, hereditary neurological disease | def: A congenital anomaly characterized by immunodeficiency, abnormal facies, congenital heart disease, hypocalcemia, and increased susceptibility to infections. Pathologic characteristics include conotrun...",
+"ko": "디조지 증후군",
+"text": "디조지 증후군이라 심장 수술을 받았어요",
+"kind": "spoken"
+},
+{
+"i": 6661,
+"id": "MONDO:0009385",
+"concept": "- MONDO:0009385 | hyperleucine-Isoleucinemia | syn: hyperleucine-Isoleucinemia | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "고류신-이소류신혈증",
+"text": "고류신-이소류신헐증",
+"kind": "typo"
+},
+{
+"i": 6662,
+"id": "MONDO:0006044",
+"concept": "- MONDO:0006044 | nephrosclerosis | ancestors: renal artery disease, kidney disorder, aortic disorder, urinary system disorder | def: Hardening of the kidney due to infiltration by fibrous connective tissue (fibrosis), usually caused by renovascular diseases or chronic hypertension. Nephrosclerosis leads to renal ischemia.",
+"ko": "콩팥경화증",
+"text": "고혈압 오래 앓아서 콩팥이 굳었대요",
+"kind": "spoken"
+},
+{
+"i": 6663,
+"id": "MONDO:0005722",
+"concept": "- MONDO:0005722 | croup | syn: acute laryngotracheobronchitis; acute obstructive laryngitis | ancestors: laryngotracheitis, bronchitis, acute laryngitis, laryngitis | def: Acute upper respiratory airways infection that results in the swelling of the larynx. It is usually caused by parainfluenza viruses. Signs include a characteristic barking cough and stridor.",
+"ko": "크루프",
+"text": "크루포",
+"kind": "typo"
+},
+{
+"i": 6664,
+"id": "MONDO:0003014",
+"concept": "- MONDO:0003014 | rhinitis | syn: inflammation of nasal cavity mucosa; nasal cavity mucosa inflammation | ancestors: nasal cavity disorder, mucositis, nasal disorder, upper respiratory tract disorder | def: An inflammation of the mucous membrane lining the nose, usually associated with nasal discharge.",
+"ko": "비염",
+"text": "비연",
+"kind": "typo"
+},
+{
+"i": 6665,
+"id": "MONDO:0001123",
+"concept": "- MONDO:0001123 | chronic sphenoidal sinusitis | syn: chronic sphenoid sinusitis; sphenoid sinusitis, chronic | ancestors: sphenoid sinusitis, chronic rhinosinusitis, sinusitis, disorder of facial skeleton | def: Inflammation of the sphenoid sinus that typically lasts beyond eight weeks. It is caused by infections, allergies, and the presence of sinus polyps or a deviated septum. Signs and symptoms include hea...",
+"ko": "만성 접형동염",
+"text": "머리 안쪽 나비굴에 생긴 만성 염증",
+"kind": "everyday"
+},
+{
+"i": 6666,
+"id": "MONDO:0004967",
+"concept": "- MONDO:0004967 | acute lymphoblastic leukemia | syn: acute lymphoblastic leukaemia (ALL); acute lymphoblastic leukaemia (disease); acute lymphoblastic leukemia; acute lymphoblastic leukemia (ALL) | ancestors: precursor lymphoblastic lymphoma/leukemia, neoplasm of immature B and T cells, lymphoid leukemia, acute leukemia | def: Leukemia with an acute onset, characterized by the presence of lymphoblasts in the bone marrow and the peripheral blood. It includes the acute B lymphoblastic leukemia and acute T lymphoblastic leukem...",
+"ko": "급성 림프모구백혈병",
+"text": "급성 림프모구백혁병",
+"kind": "typo"
+},
+{
+"i": 6667,
+"id": "MONDO:0007342",
+"concept": "- MONDO:0007342 | clubfoot | syn: club foot; clubbed foot; congenital talipes equinovarus; equinovarus deformity of foot (finding) | ancestors: familial clubfoot with or without associated lower limb anomalies, non-syndromic limb reduction defect, hereditary disease, congenital limb malformation | def: The most common congenital deformation of the foot, occurring in 1 of 1,000 live births. The most common form is talipes equinovarus, where the deformed foot is turned downward and inward sharply.",
+"ko": "내반족",
+"text": "발끝이 안으로 틀어져서 걷기 힘든 아기 발 병",
+"kind": "everyday"
+},
+{
+"i": 6668,
+"id": "MONDO:0001039",
+"concept": "- MONDO:0001039 | tonsillitis | syn: chronic tonsillitis; inflammation of tonsil; tonsil inflammation; tonsilitis | ancestors: upper respiratory tract disorder, disorder of pharynx, inflammatory disease, lymphoid system disorder | def: Inflammation of the tonsillar tissue.",
+"ko": "편도염",
+"text": "펀도염",
+"kind": "typo"
+},
+{
+"i": 6669,
+"id": "MONDO:0005619",
+"concept": "- MONDO:0005619 | typhoid fever | syn: typhoid; typhoid fever; typhoidal salmonellosis | ancestors: salmonellosis, primary bacterial infectious disease, bacterial infectious disease, infectious disease | def: A bacterial infectious disorder contracted by consumption of food or drink contaminated with Salmonella typhi. This disorder is common in developing countries and can be treated with antibiotics.",
+"ko": "장티푸스",
+"text": "장티푸쓰",
+"kind": "typo"
+},
+{
+"i": 6670,
+"id": "MONDO:0021104",
+"concept": "- MONDO:0021104 | alcoholic fatty liver disease | syn: alcoholic fatty liver; alcoholic Steatohepatitis | ancestors: fatty liver disease, alcoholic liver disease, liver disorder, alcohol-induced disorders | def: Lipid infiltration of the hepatic parenchymal cells that is due to alcohol abuse. The fatty changes in the alcoholic fatty liver may be reversible, depending on the amounts of triglycerides accumulate...",
+"ko": "알코올성 지방간 질환",
+"text": "술 많이 마셔서 간에 기름이 낀 병",
+"kind": "everyday"
+},
+{
+"i": 6671,
+"id": "MONDO:0018932",
+"concept": "- MONDO:0018932 | cirrhotic cardiomyopathy | ancestors: non-familial hypertrophic cardiomyopathy, non-familial dilated cardiomyopathy, hypertrophic cardiomyopathy, dilated cardiomyopathy | def: Cirrhotic cardiomyopathy is the term used to describe a constellation of features indicative of abnormal heart structure and function in patients with cirrhosis. These include systolic and diastolic d...",
+"ko": "간경변성 심근병증",
+"text": "간경벼성 심근병증",
+"kind": "typo"
+},
+{
+"i": 6672,
+"id": "MONDO:0009379",
+"concept": "- MONDO:0009379 | Rotor syndrome | syn: hyperbilirubinemia, Rotor type; hyperbilirubinemia, rotor type, digenic; Rotor syndrome | ancestors: hereditary hyperbilirubinemia, inborn disorder of bilirubin metabolism, hyperbilirubinemia, inborn disorder of porphyrin metabolism | def: Rotor syndrome (RT) is a benign, inherited liver disorder characterized by chronic, predominantly conjugated, nonhemolytic hyperbilirubinemia with normal liver histology.",
+"ko": "로터 증후군",
+"text": "빌리루빈 수치가 계속 높아서 유전 검사 받았어요",
+"kind": "spoken"
+},
+{
+"i": 6673,
+"id": "MONDO:0001328",
+"concept": "- MONDO:0001328 | thyroid hormone resistance syndrome | syn: generalised thyroid hormone resistance | ancestors: inherited thyroid metabolism disease, thyroid gland disorder, inborn errors of metabolism, endocrine system disorder | def: An inherited autosomal recessive trait, characterized by peripheral resistance to thyroid hormones and the resulting elevation in serum levels of thyroxine and triiodothyronine.",
+"ko": "갑상선호르몬 저항 증후군",
+"text": "호르몬은 충분한데 몸이 못 알아듣는 병",
+"kind": "everyday"
+},
+{
+"i": 6674,
+"id": "MONDO:0020600",
+"concept": "- MONDO:0020600 | acute pharyngitis | syn: acute pharyngitis; pharyngitis, acute | ancestors: pharyngitis, acute disease, upper respiratory tract disorder, inflammatory disease | def: An acute and painful inflammatory process that affects the pharynx. It is usually caused by viruses and less often bacteria. Signs and symptoms include discomfort on swallowing, low-grade fever, heada...",
+"ko": "급성 인두염",
+"text": "급성 인두엮",
+"kind": "typo"
+},
+{
+"i": -23002,
+"id": "MONDO:0004967",
+"concept": "- MONDO:0004967 | acute lymphoblastic leukemia | syn: acute lymphoblastic leukaemia (ALL); acute lymphoblastic leukaemia (disease); acute lymphoblastic leukemia; acute lymphoblastic leukemia (ALL) | ancestors: precursor lymphoblastic lymphoma/leukemia, neoplasm of immature B and T cells, lymphoid leukemia, acute leukemia | def: Leukemia with an acute onset, characterized by the presence of lymphoblasts in the bone marrow and the peripheral blood. It includes the acute B lymphoblastic leukemia and acute T lymphoblastic leukem...",
+"ko": "급성 림프모구백혈병",
+"text": "갓난아기가 열나고 뼈가 부어서 검사했대요",
+"kind": "spoken"
+},
+{
+"i": 6675,
+"id": "MONDO:0001622",
+"concept": "- MONDO:0001622 | mechanical lagophthalmos | ancestors: lagophthalmos, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "기계적 토안",
+"text": "수술 뒤로 눈이 완전히 안 감겨서 안약을 자주 넣어요",
+"kind": "spoken"
+},
+{
+"i": 6676,
+"id": "MONDO:0000461",
+"concept": "- MONDO:0000461 | nutritional biotin deficiency | ancestors: biotin metabolic disease, vitamin deficiency disorder, sulfur metabolism disease, nutritional deficiency disease",
+"ko": "영양성 비오틴 결핍증",
+"text": "영향성 비오틴 결핍증",
+"kind": "typo"
+},
+{
+"i": 6677,
+"id": "MONDO:0006742",
+"concept": "- MONDO:0006742 | endemic goiter | syn: iodine-deficiency-related endemic goiter; simple goiter | ancestors: goiter, nutritional deficiency disease, thyroid gland disorder, nutritional disorder | def: Thyroid gland enlargement caused by inadequate dietary iodine intake. It occurs in areas in which the soil lacks iodine compounds or there is low seafood consumption.",
+"ko": "풍토성 갑상선종",
+"text": "풍토선 갑상선종",
+"kind": "typo"
+},
+{
+"i": 6678,
+"id": "MONDO:0006608",
+"concept": "- MONDO:0006608 | seborrheic dermatitis | syn: cradle Cap; seborrhea; seborrheic dermatitis; seborrheic dermatitis (disease) | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: A chronic, inflammatory skin disorder that affects the scalp, central face and skin folds; it is characterized by scaling and itching.",
+"ko": "지루피부염",
+"text": "얼굴이나 머리에 기름진 허물이 자꾸 생기는 병",
+"kind": "everyday"
+},
+{
+"i": 6679,
+"id": "MONDO:0001966",
+"concept": "- MONDO:0001966 | chronic closed-angle glaucoma | syn: anatomical narrow angle glaucoma; angle-closure glaucoma, chronic; chronic angle-closure glaucoma | ancestors: primary angle-closure glaucoma, angle-closure glaucoma, glaucoma, eye disorder | def: Chronic form of angle-closure glaucoma.",
+"ko": "만성 폐쇄각 녹내장",
+"text": "눈 물길이 막혀서 천천히 나빠지는 녹내장",
+"kind": "everyday"
+},
+{
+"i": 6680,
+"id": "MONDO:0008046",
+"concept": "- MONDO:0008046 | autosomal dominant myoglobinuria | syn: myoglobinuria, autosomal dominant | ancestors: autosomal dominant disease, inborn errors of metabolism, autosomal genetic disease, hereditary disease | def: Autosomal dominant myoglobinuria is a rare metabolic myopathy characterized by episodic myalgia with myoglobinuria which is induced by fever, viral or bacterial infection, prolonged exercise or alcoho...",
+"ko": "상염색체 우성 근글로빈뇨증",
+"text": "상염색체 우승 근글로빈뇨증",
+"kind": "typo"
+},
+{
+"i": 6681,
+"id": "MONDO:0008848",
+"concept": "- MONDO:0008848 | atrioventricular dissociation | syn: atrioventricular dissociation; atrioventricular dissociation (disease) | ancestors: cardiac conduction defect, cardiac rhythm disease, heart disorder, cardiovascular disorder | def: Impaired conduction of cardiac impulse that can occur anywhere along the conduction pathway, such as between the sinoatrial node and the right atrium (sa block) or between atria and ventricles (av blo...",
+"ko": "방실 해리",
+"text": "방실 헤리",
+"kind": "typo"
+},
+{
+"i": 6682,
+"id": "MONDO:0004795",
+"concept": "- MONDO:0004795 | otitis externa | syn: external Ear infection; infectious otitis externa; otitis externa; outer Ear infection | ancestors: external ear disorder, ear infection, post-infectious disorder, auditory system disorder | def: Inflammation of the anatomical structures of the outer ear and ear canal secondary to an infectious process. Bacterial etiology is most common, but fungal infection is also possible. Symptoms include ...",
+"ko": "외이도염",
+"text": "귀 바깥길에 염증 생긴 병",
+"kind": "everyday"
+},
+{
+"i": 6683,
+"id": "MONDO:0021727",
+"concept": "- MONDO:0021727 | aberrant subclavian artery | syn: aberrant subclavian artery; congenital malposition of subclavian artery | ancestors: arterial disorder, vascular disorder, cardiovascular disorder, disease by body system or component | def: Aberrant subclavian artery is a rare vascular anomaly that is present from birth. It usually causes no symptoms and is oftendiscovered as an incidental finding (such as througha barium swallow or echo...",
+"ko": "이상 쇄골하동맥",
+"text": "이상 쇄골하동백",
+"kind": "typo"
+},
+{
+"i": 6684,
+"id": "MONDO:0004863",
+"concept": "- MONDO:0004863 | purulent endophthalmitis | ancestors: endophthalmitis, inflammatory disease, eye infectious disorder, disease by developmental or physiological process",
+"ko": "화농성 안내염",
+"text": "눈알 안쪽이 곪아서 시력이 떨어지는 병",
+"kind": "everyday"
+},
+{
+"i": 6685,
+"id": "MONDO:0015614",
+"concept": "- MONDO:0015614 | dermatitis herpetiformis | syn: dermatitis herpetiformis; Duhring's disease; Durhing-Brocq disease | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: Dermatitis herpetiformis (DH) is a chronic autoimmune subepidermal bullous disease characterized by grouped pruritic lesions such as papules, urticarial plaques, erythema, and herpetiform vesiculae, w...",
+"ko": "포진상 피부염",
+"text": "포진상 피부엄",
+"kind": "typo"
+},
+{
+"i": -23006,
+"id": "MONDO:0007113",
+"concept": "- MONDO:0007113 | Angelman syndrome | syn: Angelman syndrome; Angelman’s syndrome | ancestors: syndromic disease, hereditary neurological disease, disease by body system or component, hereditary disease | def: A neurogenetic disorder characterized by severe intellectual deficit and distinct facial dysmorphic features.",
+"ko": "엔젤만 증후군",
+"text": "소장 개실염",
+"kind": "typo"
+},
+{
+"i": 6686,
+"id": "MONDO:8000000",
+"concept": "- MONDO:8000000 | infectious discitis | ancestors: vertebral joint disorder, infective arthritis, vertebral column disorder, arthropathy | def: An infection of the intervertebral disk space.",
+"ko": "감염성 추간판염",
+"text": "감염성 츄간판염",
+"kind": "typo"
+},
+{
+"i": 6687,
+"id": "MONDO:0001858",
+"concept": "- MONDO:0001858 | Tietze syndrome | syn: costochondral joint syndromic disease; Costochondritis; syndromic disease of costochondral joint; Tietze syndrome | ancestors: syndromic disease, arthropathy, disease by body system or component, skeletal system disorder | def: Idiopathic painful nonsuppurative swellings of one or more costal cartilages, especially of the second rib. The anterior chest pain may mimic that of coronary artery disease.",
+"ko": "티체 증후군",
+"text": "티채 증후군",
+"kind": "typo"
+},
+{
+"i": 6688,
+"id": "MONDO:0021477",
+"concept": "- MONDO:0021477 | benign neoplasm of sphenoidal sinus | syn: benign neoplasm of sphenoid sinus; benign neoplasm of the sphenoid sinus; benign neoplasm of the sphenoidal sinus; benign sphenoid sinus neoplasm | ancestors: respiratory system benign neoplasm, bone benign neoplasm, sensory organ benign neoplasm, sphenoidal sinus neoplasm | def: A non-metastasizing neoplasm that arises from the sphenoid sinus.",
+"ko": "나비굴 양성 신생물",
+"text": "나비굴에 양성 혹이 있다고 해서 CT 찍었어요",
+"kind": "spoken"
+},
+{
+"i": 6689,
+"id": "MONDO:0001873",
+"concept": "- MONDO:0001873 | geniculate ganglionitis | syn: geniculate ganglion inflammation; geniculate ganglionitis; inflammation of geniculate ganglion | ancestors: facial nerve disorder, inflammatory disease, sensory ganglionopathy, cranial nerve neuropathy | def: Diseases of the facial nerve or nuclei. Pontine disorders may affect the facial nuclei or nerve fascicle. The nerve may be involved intracranially, along its course through the petrous portion of the ...",
+"ko": "무릎신경절염",
+"text": "무릎신경절념",
+"kind": "typo"
+},
+{
+"i": 6690,
+"id": "MONDO:0002246",
+"concept": "- MONDO:0002246 | perichondritis of auricle | syn: perichondritis and chondritis of pinna; perichondritis of pinna, unspecified | ancestors: otitis externa, external ear disorder, ear infection, post-infectious disorder | def: An otitis externa involving infection of the tissue surrounding the cartilage of the earlobe (pinna), ear canal, or both. It may be caused by injury, burns, insect bites, ear piercing, or a boil on th...",
+"ko": "귓바퀴 연골막염",
+"text": "귓바퀴가 빨갛게 붓고 아픈 염증",
+"kind": "everyday"
+},
+{
+"i": 6691,
+"id": "MONDO:0015760",
+"concept": "- MONDO:0015760 | T-cell non-Hodgkin lymphoma | syn: non-Hodgkin's T-cell lymphoma; T cell lymphoma; T-cell and NK-cell non-Hodgkin lymphoma; T-cell and NK-cell non-Hodgkin's lymphoma | ancestors: non-Hodgkin lymphoma, lymphoma, lymphoid neoplasm, lymphoid hemopathy | def: A non-Hodgkin lymphoma of T-cell lineage. It includes the T lymphoblastic lymphoma and the mature T- and NK-cell lymphomas. -- 2003",
+"ko": "T세포 비호지킨 림프종",
+"text": "T세포 비호지킨 림프총",
+"kind": "typo"
+},
+{
+"i": 6692,
+"id": "MONDO:0005517",
+"concept": "- MONDO:0005517 | pharynx cancer | syn: cancer of chordate pharynx; cancer of pharynx; chordate pharynx cancer; malignant chordate pharynx neoplasm | ancestors: respiratory system cancer, digestive system cancer, disorder of pharynx, pharynx neoplasm | def: A primary or metastatic malignant neoplasm that affects the pharynx.",
+"ko": "인두암",
+"text": "목구멍 안쪽에 생긴 암",
+"kind": "everyday"
+},
+{
+"i": 6693,
+"id": "MONDO:0017764",
+"concept": "- MONDO:0017764 | disorder of zinc metabolism | ancestors: disorder of mineral absorption and transport, disorder of metabolite absorption and transport, inborn errors of metabolism, hereditary disease",
+"ko": "아연 대사 장애",
+"text": "아엽 대사 장애",
+"kind": "typo"
+},
+{
+"i": 6694,
+"id": "MONDO:0004192",
+"concept": "- MONDO:0004192 | urethra cancer | syn: cancer of urethra; malignant neoplasm of the urethra; malignant neoplasm of urethra; malignant tumor of the urethra | ancestors: malignant urinary system neoplasm, urethra neoplasm, cancer, urinary system neoplasm | def: A malignant neoplasm involving the urethra",
+"ko": "요도암",
+"text": "소변볼 때 피가 나와서 요도 쪽 검사를 받았어요",
+"kind": "spoken"
+},
+{
+"i": 6695,
+"id": "MONDO:0006115",
+"concept": "- MONDO:0006115 | blast phase chronic myelogenous leukemia, BCR-ABL1 positive | syn: blast crisis; blast phase chronic granulocytic leukaemia; blast phase chronic granulocytic leukemia; blast phase chronic myelocytic leukaemia | ancestors: chronic myeloid leukemia, myeloid leukemia, hereditary disorder of connective tissue, leukemia | def: An advanced phase of chronic myelogenous leukemia. It is characterized by: 1. the presence of blasts in the peripheral blood or bone marrow that are at least 20% of the peripheral blood white cells or...",
+"ko": "BCR-ABL1 양성 만성 골수성 백혈병 모세포기",
+"text": "만성 백혈병이 급성처럼 나빠진 단계",
+"kind": "everyday"
+},
+{
+"i": 6696,
+"id": "MONDO:0004135",
+"concept": "- MONDO:0004135 | subacute lymphocytic thyroiditis | syn: silent thyroiditis; Subacute lymphocytic thyroiditis; Subacute painless thyroiditis | ancestors: acute thyroiditis, thyroiditis, acute disease, thyroid gland disorder | def: Thyroiditis associated with painless enlargement of the thyroid gland. It occurs more frequently in females and is characterized by alterations between hyperthyroidism and hypothyroidism and the event...",
+"ko": "아급성 림프구성 갑상선염",
+"text": "통증은 없는데 갑상선이 붓고 갑자기 기능이 바뀌는 병",
+"kind": "everyday"
+},
+{
+"i": 6697,
+"id": "MONDO:0002164",
+"concept": "- MONDO:0002164 | focal chorioretinitis | ancestors: chorioretinitis, uveitis, uveal disorder, inflammatory disease",
+"ko": "국소 맥락망막염",
+"text": "눈 안쪽 한 부분에만 염증이 생긴 병",
+"kind": "everyday"
+},
+{
+"i": 6698,
+"id": "MONDO:0001315",
+"concept": "- MONDO:0001315 | orthostatic intolerance | syn: cardiovascular malfunction arising from mental factors; irritable heart; neurocirculatory asthenia; postural orthostatic tachycardia syndrome | ancestors: dysautonomia, autonomic nervous system disorder, central nervous system disorder, peripheral nervous system disorder | def: A chronic disorder of dysautonomia, characterized by palpitation, shortness of breath, labored breathing, and subjective complaints of effort and discomfort provoked by physical exertion or upright po...",
+"ko": "기립불내증",
+"text": "기립불내종",
+"kind": "typo"
+},
+{
+"i": 6699,
+"id": "MONDO:0023153",
+"concept": "- MONDO:0023153 | tuberculous ascites | syn: tuberculous ascites | ancestors: abdominal tuberculosis, extrapulmonary tuberculosis, tuberculosis, primary bacterial infectious disease | def: A type of abdominal tuberculosis that is characterized by accumulation of fluid in the abdomen, a swollen abdomen, and slightly raised tubercles of 1–2 mm all over the peritoneum.",
+"ko": "결핵성 복수",
+"text": "결핵성 복수라고 배에서 물 빼는 중이에요",
+"kind": "spoken"
+},
+{
+"i": 6700,
+"id": "MONDO:0018068",
+"concept": "- MONDO:0018068 | trisomy 13 | syn: Patau syndrome; Patau's syndrome; trisomy 13; Trisomy 13 Syndrome | ancestors: syndromic disease, congenital vitreoretinal dysplasia, chromosome 13 disorder, trisomy | def: Trisomy 13 is a chromosomal anomaly caused by the presence of an extra chromosome 13 and is characterized by brain malformations (holoprosencephaly), facial dysmorphism, ocular anomalies, postaxial po...",
+"ko": "13 삼염색체증",
+"text": "아기가 13번 염색체가 하나 많대서 중환자실에 있어요",
+"kind": "spoken"
+},
+{
+"i": 6701,
+"id": "MONDO:0001898",
+"concept": "- MONDO:0001898 | optic choroid disorder | syn: choroid disorder; disease of optic choroid; disease or disorder of optic choroid; disorder of optic choroid | ancestors: uveal disorder, ocular vascular disorder, eye disorder, vascular disorder | def: A disease involving the optic choroid.",
+"ko": "맥락막 질환",
+"text": "안과에서 맥락막에 문제가 있다고 들었어요",
+"kind": "spoken"
+},
+{
+"i": -23009,
+"id": "MONDO:0005714",
+"concept": "- MONDO:0005714 | congenital syphilis | syn: congenital syphilis; mother-to-child transmission of syphilis; MTCT of syphilis | ancestors: syphilis, infectious embryofetopathy, primary bacterial infectious disease, Treponema infectious disease | def: A life-threatening bacterial infection of the newborn caused by Treponema pallidum. It is transmitted to the infant from a mother with syphilis through the placenta during pregnancy. Signs and symptom...",
+"ko": "선천성 매독",
+"text": "크루포",
+"kind": "typo"
+},
+{
+"i": 6702,
+"id": "MONDO:0021477",
+"concept": "- MONDO:0021477 | benign neoplasm of sphenoidal sinus | syn: benign neoplasm of sphenoid sinus; benign neoplasm of the sphenoid sinus; benign neoplasm of the sphenoidal sinus; benign sphenoid sinus neoplasm | ancestors: respiratory system benign neoplasm, bone benign neoplasm, sensory organ benign neoplasm, sphenoidal sinus neoplasm | def: A non-metastasizing neoplasm that arises from the sphenoid sinus.",
+"ko": "나비굴 양성 신생물",
+"text": "코 깊숙한 안쪽 나비굴에 생긴 양성 혹",
+"kind": "everyday"
+},
+{
+"i": 6703,
+"id": "MONDO:0100637",
+"concept": "- MONDO:0100637 | drug-induced myopathy | ancestors: myopathy, skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder | def: A myopathy caused by exposure to a drug.",
+"ko": "약물 유발 근병증",
+"text": "특정 약 때문에 근육에 생긴 병",
+"kind": "everyday"
+},
+{
+"i": 6704,
+"id": "MONDO:0005952",
+"concept": "- MONDO:0005952 | scarlet fever | syn: scarlatina | ancestors: streptococcal infection, gram-positive bacterial infections, bacterial infectious disease, infectious disease | def: A streptococcal infection, mainly occurring among children, that is characterized by a red skin rash, sore throat, and fever.",
+"ko": "성홍열",
+"text": "혀가 딸기처럼 빨개지고 열이 나는 세균 감염병",
+"kind": "everyday"
+},
+{
+"i": 6705,
+"id": "MONDO:0005336",
+"concept": "- MONDO:0005336 | myopathy | ancestors: skeletal muscle disorder, muscle tissue disorder, musculoskeletal system disorder, disease by body system or component | def: A disease of the muscle in which the muscle fibers do not function properly. This results in muscular weakness.",
+"ko": "근병증",
+"text": "근육이 제대로 일을 못 해서 힘이 빠지는 병",
+"kind": "everyday"
+},
+{
+"i": 6706,
+"id": "MONDO:0007113",
+"concept": "- MONDO:0007113 | Angelman syndrome | syn: Angelman syndrome; Angelman’s syndrome | ancestors: syndromic disease, hereditary neurological disease, disease by body system or component, hereditary disease | def: A neurogenetic disorder characterized by severe intellectual deficit and distinct facial dysmorphic features.",
+"ko": "엔젤만 증후군",
+"text": "엔젤맨 증후군",
+"kind": "typo"
+},
+{
+"i": 6707,
+"id": "MONDO:0001019",
+"concept": "- MONDO:0001019 | suppression amblyopia | syn: strabismic amblyopia | ancestors: amblyopia, vision disorder, disorder of visual system, disease by body system or component | def: A nonspecific term referring to impaired vision. Major subcategories include stimulus deprivation-induced amblyopia and toxic amblyopia. Stimulus deprivation-induced amblyopia is a developmental disor...",
+"ko": "억제성 약시",
+"text": "억제성 약씨",
+"kind": "typo"
+},
+{
+"i": 6708,
+"id": "MONDO:0000997",
+"concept": "- MONDO:0000997 | monocular esotropia | ancestors: esotropia, strabismus, ocular motility disease, cranial nerve neuropathy | def: A form of ocular misalignment characterized by an excessive convergence of the visual axes, resulting in a 'cross-eye' appearance. An example of this condition occurs when paralysis of the lateral rec...",
+"ko": "단안 내사시",
+"text": "눈 한쪽이 코 쪽으로 쏠리는 사시",
+"kind": "everyday"
+},
+{
+"i": 6709,
+"id": "MONDO:0004571",
+"concept": "- MONDO:0004571 | intestinal impaction | ancestors: intestinal obstruction, intestinal disorder, digestive system disorder, disease by body system or component",
+"ko": "장 분변막힘",
+"text": "장 분편막힘",
+"kind": "typo"
+},
+{
+"i": 6710,
+"id": "MONDO:0001952",
+"concept": "- MONDO:0001952 | parietal lobe cancer | syn: cancer of parietal lobe; malignant neoplasm of parietal lobe; malignant parietal lobe neoplasm; parietal lobe cancer | ancestors: cerebral hemisphere cancer, neoplasm of parietal lobe, supratentorial cancer, neoplasm of cerebral hemisphere | def: A malignant neoplasm involving the parietal lobe",
+"ko": "두정엽암",
+"text": "두졍엽암",
+"kind": "typo"
+},
+{
+"i": 6711,
+"id": "MONDO:0018023",
+"concept": "- MONDO:0018023 | hemoglobin M disease | syn: M hemoglobinopathy; methemoglobinemia, beta type | ancestors: hereditary methemoglobinemia, methemoglobinemia, anemia, inherited hemoglobinopathy",
+"ko": "헤모글로빈 M병",
+"text": "헤모글로빈 M벙",
+"kind": "typo"
+},
+{
+"i": 6712,
+"id": "MONDO:0001810",
+"concept": "- MONDO:0001810 | hypoglossal nerve disorder | syn: disease of hypoglossal nerve; disease or disorder of hypoglossal nerve; disorder of hypoglossal [12th] nerve; disorder of hypoglossal nerve | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the hypoglossal nerve.",
+"ko": "설하신경 질환",
+"text": "설하싱경 질환",
+"kind": "typo"
+},
+{
+"i": 6713,
+"id": "MONDO:0018965",
+"concept": "- MONDO:0018965 | Alport syndrome | syn: Alport deafness-nephropathy; Alport syndrome; Alport's syndrome | ancestors: syndromic disease, hereditary nephritis, disease by body system or component, nephritis | def: A rare renal disease characterized by glomerular nephropathy with hematuria progressing to end-stage renal disease (ESRD), frequently associated with sensorineural deafness, and occasionally with ocul...",
+"ko": "알포트 증후군",
+"text": "알포드 증후군",
+"kind": "typo"
+},
+{
+"i": 6714,
+"id": "MONDO:0006694",
+"concept": "- MONDO:0006694 | cerebral atherosclerosis | syn: cerebral atherosclerosis | ancestors: atherosclerosis, arteriosclerosis disorder, arterial disorder, vascular disorder | def: Atherosclerosis of the cerebral vasculature.",
+"ko": "뇌죽상경화증",
+"text": "뇌죽상경확증",
+"kind": "typo"
+},
+{
+"i": 6715,
+"id": "MONDO:0022428",
+"concept": "- MONDO:0022428 | aluminosis | syn: aluminosis of lung; pulmonary aluminosis | ancestors: syndromic disease, disease by body system or component, human disease, disease | def: Aluminosis is characterized as diffuse interstitial fibrosis which is mainly located in the upper and middle lobes of the lung. In advanced stages it is characterized by subpleural bullous emphysema w...",
+"ko": "알루미늄폐증",
+"text": "알루미늄 공장에서 일하다가 폐에 섬유화 생겼대요",
+"kind": "spoken"
+},
+{
+"i": 6716,
+"id": "MONDO:0010085",
+"concept": "- MONDO:0010085 | Schilder disease | syn: myelinoclastic diffuse sclerosis; Schilder disease; Schilder's disease | ancestors: demyelinating disease, neurodegenerative disease, disorder of development or morphogenesis, central nervous system disorder | def: Schilder's disease is a progressive demyelinating disorder of the central nervous system.",
+"ko": "쉴더병",
+"text": "쉴떠병",
+"kind": "typo"
+},
+{
+"i": 6717,
+"id": "MONDO:0020502",
+"concept": "- MONDO:0020502 | yellow fever | syn: bronze John; sylvatic yellow fever; Yellow fever virus caused disease or disorder; Yellow fever virus disease or disorder | ancestors: Flaviviridae infectious disease, arbovirus fever, vector-borne disease, primary viral infectious disease | def: Yellow fever (YF), caused by YF virus, is a zoonotic disease characterized by fever and constitutional symptoms, with the potential to progress to severe and fatal viral hemorrhagic fever with shock a...",
+"ko": "황열",
+"text": "항열",
+"kind": "typo"
+},
+{
+"i": 6718,
+"id": "MONDO:0019296",
+"concept": "- MONDO:0019296 | subcutaneous tissue disorder | syn: disease of superficial fascia; disease or disorder of superficial fascia; disorder of superficial fascia; superficial fascia disease | ancestors: integumentary system disorder, disease by body system or component, human disease, disease | def: A disease involving the superficial fascia.",
+"ko": "피하조직 질환",
+"text": "피부 바로 밑 지방층이 붓거나 딱딱해지는 병",
+"kind": "everyday"
+},
+{
+"i": 6719,
+"id": "MONDO:0001049",
+"concept": "- MONDO:0001049 | Dressler syndrome | syn: Dressler syndrome; Dressler's syndrome; postmyocardial infarction syndrome | ancestors: pericarditis, pericardium disorder, inflammatory disease, heart disorder | def: A pericarditis characterized by inflammation, occurring after injury, located in pericardium.",
+"ko": "드레슬러 증후군",
+"text": "드래슬러 증후군",
+"kind": "typo"
+},
+{
+"i": 6720,
+"id": "MONDO:0003608",
+"concept": "- MONDO:0003608 | optic atrophy | syn: atrophy of optic disk | ancestors: optic nerve disorder, central nervous system disorder, cranial nerve neuropathy, disorder of visual system | def: A disorder characterized by loss of optic nerve fibers. It may be inherited or acquired. Acquired causes include ischemia, optic nerve neuropathy, glaucoma, trauma, radiation, brain tumors, and multip...",
+"ko": "시신경 위축",
+"text": "시신경 위축이라서 시력이 점점 떨어진다고 들었어요",
+"kind": "spoken"
+},
+{
+"i": 6721,
+"id": "MONDO:0043310",
+"concept": "- MONDO:0043310 | amaurosis fugax | syn: amaurosis fugax | ancestors: blindness (disorder), vision disorder, disorder of visual system, disease by body system or component | def: Transient complete or partial monocular blindness due to retinal ischemia. This may be caused by emboli from the CAROTID ARTERY (usually in association with CAROTID STENOSIS) and other locations that ...",
+"ko": "일과성 흑암시",
+"text": "한쪽 눈이 잠깐씩 캄캄해지는 병",
+"kind": "everyday"
+},
+{
+"i": 6722,
+"id": "MONDO:0019312",
+"concept": "- MONDO:0019312 | Hermansky-Pudlak syndrome | syn: HPS | ancestors: syndromic oculocutaneous albinism, disorder of lysosomal-related organelles, inherited blood coagulation disorder, syndromic disease | def: Hermansky-Pudlak syndrome (HSP) is a multi-system disorder characterized by oculocutaneous albinism, bleeding diathesis and, in some cases, neutropenia, pulmonary fibrosis, or granulomatous colitis. H...",
+"ko": "헤르만스키-푸들라크 증후군",
+"text": "눈과 피부 색이 옅고 출혈이 잦은 선천병",
+"kind": "everyday"
+},
+{
+"i": 6723,
+"id": "MONDO:0005913",
+"concept": "- MONDO:0005913 | phlebotomus fever | syn: pappataci fever; Sandfly fever | ancestors: vector-borne disease, primary viral infectious disease, infectious disease, viral infectious disease | def: Influenza-like febrile viral disease caused by several members of the bunyaviridae family and transmitted mostly by the bloodsucking sandfly Phlebotomus papatasii.",
+"ko": "파리모기열",
+"text": "모래파리에 물려 고열과 몸살이 오는 병",
+"kind": "everyday"
+},
+{
+"i": 6724,
+"id": "MONDO:0018037",
+"concept": "- MONDO:0018037 | hyper-IgE syndrome | syn: HIES; hyper-IgE recurrent infection syndrome; hyperimmunoglobulin E syndrome | ancestors: hyperimmunoglobulin syndrome, B cell deficiency, inborn error of immunity, leukocyte disorder | def: A condition that is characterized by elevated serum IgE, dermatitis, and respiratory infections.",
+"ko": "고IgE 증후군",
+"text": "면역 수치 높은 희귀병이라고 진단받았어요",
+"kind": "spoken"
+},
+{
+"i": 6725,
+"id": "MONDO:0002884",
+"concept": "- MONDO:0002884 | nail disorder | syn: disease of nail; disease or disorder of nail; disorder of nail; nail disease | ancestors: integumentary system disorder, disease by body system or component, human disease, disease | def: A disease involving the nail.",
+"ko": "손발톱 질환",
+"text": "손빨톱 질환",
+"kind": "typo"
+},
+{
+"i": 6726,
+"id": "MONDO:0010787",
+"concept": "- MONDO:0010787 | Kearns-Sayre syndrome | syn: CPEO with ragged red fibers; CPEO with ragged red fibres; CPEO with ragged-Red fibres; Kearns-Sayre syndrome | ancestors: syndromic disease, progressive external ophthalmoplegia, familial dilated cardiomyopathy, mitochondrial oxidative phosphorylation disorder | def: Kearns-Sayre syndrome (KSS) is a mitochondrial disease characterized by progressive external ophthalmoplegia (PEO), pigmentary retinitis and an onset before the age of 20 years. Common additional feat...",
+"ko": "컨스-세이어 증후군",
+"text": "눈꺼풀이 처져서 컨스-세이어 증후군이라고 하더라고요",
+"kind": "spoken"
+},
+{
+"i": 6727,
+"id": "MONDO:0001187",
+"concept": "- MONDO:0001187 | urinary bladder cancer | syn: bladder cancer, somatic; cancer of urinary bladder; malignant bladder neoplasm; malignant bladder tumor | ancestors: urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder, urinary system neoplasm | def: A primary or metastatic malignant neoplasm involving the bladder.",
+"ko": "방광암",
+"text": "방광압",
+"kind": "typo"
+},
+{
+"i": 6728,
+"id": "MONDO:0001403",
+"concept": "- MONDO:0001403 | labium majus cancer | syn: cancer of labium majora; labium majora cancer; malignant labia majora neoplasm; malignant labia majora tumor | ancestors: vulva cancer, skin cancer, female reproductive organ cancer, vulvar neoplasm | def: A malignant neoplasm involving the labium majora.",
+"ko": "대음순암",
+"text": "사타구니 쪽 바깥 살이 암으로 변한 것",
+"kind": "everyday"
+},
+{
+"i": 6729,
+"id": "MONDO:0019468",
+"concept": "- MONDO:0019468 | T-cell prolymphocytic leukemia | syn: CLL, T-cell; T cell chronic lymphocytic leukaemia; T cell chronic lymphocytic leukemia; T cell CLL | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, prolymphocytic leukemia, T lymphoblastic leukemia/lymphoma, T-cell acute lymphoblastic leukemia | def: A slow-growing type of leukemia (blood cancer) in which too many lymphocytes are found in the bone marrow and/or blood. The T-cell is specified as the defective cell line.",
+"ko": "T세포 전림프구성 백혈병",
+"text": "T세포 전림프규성 백혈병",
+"kind": "typo"
+},
+{
+"i": 6730,
+"id": "MONDO:0019403",
+"concept": "- MONDO:0019403 | congenital dyserythropoietic anemia | syn: anemia, congenital dyserythropoietic; CDA; congenital dyshaematopoietic anaemia; congenital dyshaematopoietic anemia | ancestors: familial hemolytic anemia, hemolytic anemia, hereditary disease, normocytic anemia | def: Congenital dyserythropoietic anemia (CDA) is a heterogenous group of hematological disorders of late erythropoiesis and red cell abnormalities that lead to anemia. Five types of CDA are defined: CDA I...",
+"ko": "선천성 이상적혈구생성 빈혈",
+"text": "태어날 때부터 적혈구 모양이 이상해서 생기는 빈혈",
+"kind": "everyday"
+},
+{
+"i": 6731,
+"id": "MONDO:0012155",
+"concept": "- MONDO:0012155 | choanal atresia | syn: atresia of nares | ancestors: nasal cavity disorder, hereditary otorhinolaryngologic disease, nasal disorder, upper respiratory tract disorder | def: Choanal atresia (CA) is a congenital anomaly of the posterior nasal airway characterized by the obstruction of one (unilateral) or both (bilateral) choanal aperture(s), with clinical manifestations ra...",
+"ko": "후비공 폐쇄증",
+"text": "코 뒤쪽 숨길이 태어날 때부터 막혀 있는 병",
+"kind": "everyday"
+},
+{
+"i": 6732,
+"id": "MONDO:0001889",
+"concept": "- MONDO:0001889 | ovarian dysfunction | syn: ovarian failure; ovarian hypofunction; ovarian insufficiency | ancestors: ovarian disorder, gonadal disorder, female reproductive system disorder, reproductive system disorder | def: The inability of the ovaries to function.",
+"ko": "난소 기능부전",
+"text": "난소 기능보전",
+"kind": "typo"
+},
+{
+"i": 6733,
+"id": "MONDO:0019259",
+"concept": "- MONDO:0019259 | classic phenylketonuria | syn: classic PKU | ancestors: phenylketonuria, autosomal recessive disease, phenylalanine hydroxylase deficiency, autosomal genetic disease | def: A phenylketonuria characterized by untreated blood phenylalanine concentrations above approximately 1200 umol/L, the most severe end of the phenylalanine hydroxylase deficiency spectrum, reflecting li...",
+"ko": "고전형 페닐케톤뇨증",
+"text": "고젼형 페닐케톤뇨증",
+"kind": "typo"
+},
+{
+"i": 6734,
+"id": "MONDO:0012693",
+"concept": "- MONDO:0012693 | glycogen storage disease due to muscle and heart glycogen synthase deficiency | syn: glycogen storage disease due to glycogen synthase deficiency of heart; glycogen storage disease type 0b; glycogenosis due to muscle and heart glycogen synthase deficiency; glycogenosis type 0b | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: A glycogen storage disease characterized by muscle and heart glycogen deficiency. It has been described in three siblings (two brothers and their younger sister). The older brother died at 10.5 years ...",
+"ko": "근육 및 심장 글리코겐 합성효소 결핍에 의한 글리코겐 저장병",
+"text": "근육과 심장에 저장 당이 잘 안 쌓이는 선천 병",
+"kind": "everyday"
+},
+{
+"i": 6735,
+"id": "MONDO:0002342",
+"concept": "- MONDO:0002342 | chondromalacia | ancestors: articular cartilage disorder, arthropathy, skeletal system disorder, musculoskeletal system disorder | def: Pathological processes involving the chondral tissue (cartilage).",
+"ko": "연골연화증",
+"text": "연골이 닳아 물렁해져서 통증이 생기는 병",
+"kind": "everyday"
+},
+{
+"i": 6736,
+"id": "MONDO:0002105",
+"concept": "- MONDO:0002105 | toxic megacolon | ancestors: megacolon, colonic disorder, large intestine disorder, intestinal disorder | def: An acute form of megacolon, severe pathological dilatation of the colon. It is associated with clinical conditions such as ulcerative colitis; crohn disease; amebic dysentery; or clostridium enterocol...",
+"ko": "독성 거대결장",
+"text": "독셩 거대결장",
+"kind": "typo"
+},
+{
+"i": 6737,
+"id": "MONDO:0021032",
+"concept": "- MONDO:0021032 | herpes zoster with dermatitis of eyelid | syn: herpes zoster dermatitis of eyelid; herpes zoster dermatitis of eyelids; herpes zoster with dermatitis of eyelid | ancestors: eyelid disorder, viral eye infection, herpes zoster dermatitis, eye adnexa disorder | def: A form of herpes zoster infection characterized by dermatitis of the skin of the eyelid due to reactivation of latent virus associated with the ophthalmic branch of the trigeminal nerve.",
+"ko": "눈꺼풀 피부염을 동반한 대상포진",
+"text": "눈꺼풀에 물집 돋고 따가운 대상포진",
+"kind": "everyday"
+},
+{
+"i": 6738,
+"id": "MONDO:0001110",
+"concept": "- MONDO:0001110 | chronic pyelonephritis | syn: pyelonephritis, chronic | ancestors: chronic kidney disease, pyelonephritis, kidney disorder, uterine inflammatory disease | def: Persistent pyelonephritis.",
+"ko": "만성 신우신염",
+"text": "만성 신우신엄",
+"kind": "typo"
+},
+{
+"i": 6739,
+"id": "MONDO:0021582",
+"concept": "- MONDO:0021582 | lentigo | syn: lentigines; lentiginosis; lentigo | ancestors: hereditary skin disorder, hereditary disease, skin disorder, disease of genetic or genomic mechanism | def: A flat, benign, pigmented spot on the skin caused by excessive deposition of melanin from an increased number of melanocytes in the cell layer directly above the basement membrane of the epidermis. Fo...",
+"ko": "검은점",
+"text": "햇빛을 안 받아도 피부 표면에 납작하게 까만 점이 생긴 것",
+"kind": "everyday"
+},
+{
+"i": 6740,
+"id": "MONDO:0024268",
+"concept": "- MONDO:0024268 | superficial mycosis | syn: stratum corneum of epidermis fungal infectious disease | ancestors: cutaneous mycosis, fungal infectious disease, integumentary system disorder, infectious disease | def: A mycosis that is limited to the stratum corneum and essentially elicits no inflammation.",
+"ko": "표재성 진균증",
+"text": "피부 겉에 곰팡이균이 생겨서 연고 발라요",
+"kind": "spoken"
+},
+{
+"i": 6741,
+"id": "MONDO:0001797",
+"concept": "- MONDO:0001797 | chancroid | ancestors: primary bacterial infectious disease, bacterial sexually transmitted disease, haemophilus infectious disease, bacterial infectious disease | def: Chancroid is a bacterial infection that is spread through sexual contact. It is caused by a type of bacteria called Haemophilus ducreyi. Chancroid is characterized by a small bump on the genital which...",
+"ko": "연성하감",
+"text": "연싱하감",
+"kind": "typo"
+},
+{
+"i": 6742,
+"id": "MONDO:0015229",
+"concept": "- MONDO:0015229 | Bardet-Biedl syndrome | syn: Bardet-Biedl syndrome; BBS | ancestors: syndromic disease, ciliopathy, autosomal recessive disease, disease by body system or component | def: A ciliopathy with multisystem involvement. It is invariantly characterized by rod-cone dystrophy, and at least three additional non-ocular features such as intellectual disability, obesity, polydactyl...",
+"ko": "바르데-비들 증후군",
+"text": "시력이 점점 떨어지고 살이 잘 찌는 유전병",
+"kind": "everyday"
+},
+{
+"i": 6743,
+"id": "MONDO:0019391",
+"concept": "- MONDO:0019391 | Fanconi anemia | syn: Fanconi anemia; Fanconi pancytopenia; Fanconi's anemia; pancytopenia, congenital | ancestors: congenital anemia, inherited aplastic anemia, bone marrow disorder, multiple congenital anomalies/dysmorphic syndrome without intellectual disability | def: Fanconi anemia (FA) is a hereditary DNA repair disorder characterized by progressive pancytopenia with bone marrow failure, variable congenital malformations and predisposition to develop hematologica...",
+"ko": "판코니 빈혈",
+"text": "판코니 빈혈이라 골수 검사 받았어요",
+"kind": "spoken"
+},
+{
+"i": 6744,
+"id": "MONDO:0018072",
+"concept": "- MONDO:0018072 | persistent truncus arteriosus | syn: common aorticopulmonary trunk; common arterial trunk; common truncus arteriosus; persistent truncus arteriosus | ancestors: congenital heart disease, conotruncal heart malformations, heart disorder, congenital anomaly of cardiovascular system | def: A rare congenital cardiovascular disorder characterized by the failure of the embryologic structure truncus arteriosus to divide into the aorta and pulmonary trunk. It results in the presence of a sin...",
+"ko": "지속 동맥줄기",
+"text": "지속 동매줄기",
+"kind": "typo"
+},
+{
+"i": 6745,
+"id": "MONDO:0022208",
+"concept": "- MONDO:0022208 | crystal arthropathy | syn: crystal arthropathy | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component",
+"ko": "결정 관절병증",
+"text": "결졍 관절병증",
+"kind": "typo"
+},
+{
+"i": 6746,
+"id": "MONDO:0005777",
+"concept": "- MONDO:0005777 | granuloma inguinale | syn: donovanosis; granuloma inguinale | ancestors: primary bacterial infectious disease, bacterial sexually transmitted disease, Klebsiella infectious disease, bacterial infectious disease | def: A condition resulting from infection by Klebsiella granulomati, which is characterized by ulcerative lesions of the genitalia.",
+"ko": "서혜부 육아종",
+"text": "서헤부 육아종",
+"kind": "typo"
+},
+{
+"i": 6747,
+"id": "MONDO:0004830",
+"concept": "- MONDO:0004830 | fasciitis | syn: fascia inflammation; fasciitis; fasciitis (disease); Fascitis | ancestors: musculoskeletal system disorder, connective tissue disorder, inflammatory disease, disease by body system or component | def: Inflammation process in fascia.",
+"ko": "근막염",
+"text": "근육 감싸는 막이 부어서 한동안 약 먹었어요",
+"kind": "spoken"
+},
+{
+"i": 6748,
+"id": "MONDO:0017638",
+"concept": "- MONDO:0017638 | manganese poisoning | syn: manganese intoxication; Manganism | ancestors: toxic encephalopathy, poisoning, nervous system disorder, disease of primarily extrinsic mechanism | def: Manganese poisoning is associated with chronic inhalation of manganese particles by individuals who work with manganese ore. Clinical features include confusion; hallucinations; and an extrapyramidal ...",
+"ko": "망간 중독",
+"text": "광산에서 일하다가 망간 중독 진단받았어요",
+"kind": "spoken"
+},
+{
+"i": 6749,
+"id": "MONDO:0002265",
+"concept": "- MONDO:0002265 | stereotypic movement disorder | syn: stereotyped repetitive movements NOS (finding) | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: Motor behavior that is repetitive, often seemingly driven, and nonfunctional. This behavior markedly interferes with normal activities or results in severe bodily self-injury. The behavior is not due ...",
+"ko": "상동증적 운동장애",
+"text": "몸을 같은 모양으로 계속 흔드는 아이 장애",
+"kind": "everyday"
+},
+{
+"i": 6750,
+"id": "MONDO:0002183",
+"concept": "- MONDO:0002183 | enthesopathy | syn: disease of enthesis; disease or disorder of enthesis; disorder of enthesis; enthesis disease | ancestors: musculoskeletal system disorder, connective tissue disorder, disease by body system or component, human disease | def: A disorder involving the attachment of a tendon or ligament to a bone",
+"ko": "건부착부병증",
+"text": "견부착부병증",
+"kind": "typo"
+},
+{
+"i": 6751,
+"id": "MONDO:0019632",
+"concept": "- MONDO:0019632 | Lyme disease | syn: Borrelia; Borrelia burgdorferi infection; Borreliella burgdorferi caused disease or disorder; Borreliella burgdorferi disease or disorder | ancestors: primary bacterial infectious disease, spirochaetales infections, tick-borne infectious disease, bacterial infectious disease | def: Lyme disease (named after the towns in the USA where the disease was first identified) is a bacterial infection caused by Borrelia burgdorferi.",
+"ko": "라임병",
+"text": "진드기에 물렸는데 라임병 확진 받았어요",
+"kind": "spoken"
+},
+{
+"i": 6752,
+"id": "MONDO:0007743",
+"concept": "- MONDO:0007743 | attention deficit-hyperactivity disorder | syn: attention deficit hyperactivity disorder; attention deficit-hyperactivity disorder; attention deficit/hyperactivity disorder | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: A disorder characterized by a marked pattern of inattention and/or hyperactivity-impulsivity that is inconsistent with developmental level and clearly interferes with functioning in at least two setti...",
+"ko": "주의력결핍 과잉행동장애",
+"text": "아이가 집중을 못해서 약 먹고 있어요",
+"kind": "spoken"
+},
+{
+"i": 6753,
+"id": "MONDO:0011429",
+"concept": "- MONDO:0011429 | juvenile idiopathic arthritis | syn: JIA; Juvenile idiopathic arthritis; juvenile idiopathic arthritis; juvenile rheumatoid arthritis | ancestors: rheumatic disorder, arthritic joint disease, idiopathic disease, connective tissue disorder | def: Juvenile idiopathic arthritis (JIA) is the term used to describe a group of inflammatory articular disorders of unknown cause that begin before the age of 16 and last over 6 weeks. The term juvenile i...",
+"ko": "소아 특발성 관절염",
+"text": "소아 특발썽 관절염",
+"kind": "typo"
+},
+{
+"i": 6754,
+"id": "MONDO:0013749",
+"concept": "- MONDO:0013749 | ventricular septal defect 3 | syn: NKX2-5 ventricular septal defect (disease); ventricular septal defect (disease) caused by mutation in NKX2-5; ventricular septal defect 3; ventricular septal defect type 3 | ancestors: ventricular septal defect, heart septal defect, cardiogenetic disease, congenital heart disease | def: Any ventricular septal defect in which the cause of the disease is a mutation in the NKX2-5 gene.",
+"ko": "심실중격결손 3형",
+"text": "심실중격걸손 3형",
+"kind": "typo"
+},
+{
+"i": 6755,
+"id": "MONDO:0024298",
+"concept": "- MONDO:0024298 | vitamin deficiency disorder | syn: avitaminosis; vitamin deficiency; vitamin deficiency disorder | ancestors: nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism, human disease | def: A disorder that is caused by the deficiency of a vitamin. The deficiency may result from either suboptimal vitamin intake or conditions that prevent the vitamin's use or absorption in the body. Repres...",
+"ko": "비타민 결핍증",
+"text": "음식으로 비타민을 못 챙겨서 생긴 병",
+"kind": "everyday"
+},
+{
+"i": 6756,
+"id": "MONDO:0002412",
+"concept": "- MONDO:0002412 | disorder of glycogen metabolism | syn: glycogen storage disease; glycogen storage disorder; glycogenoses; glycogenosis | ancestors: inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism, carbohydrate metabolism disease | def: An inherited metabolic disorder characterized either by defects in glycogen synthesis or defects in the breaking down of glycogen. It results either in the creation of abnormal forms of glycogen or ac...",
+"ko": "글리코겐 대사 질환",
+"text": "글리코겐 대사 질완",
+"kind": "typo"
+},
+{
+"i": 6757,
+"id": "MONDO:0004235",
+"concept": "- MONDO:0004235 | diverticulitis | syn: digestive tract diverticulum inflammation; inflammation of digestive tract diverticulum | ancestors: intestinal disorder, inflammatory disease, digestive system disorder, disease by developmental or physiological process | def: An infection that develops in the diverticula of the intestinal tract. Signs and symptoms include abdominal pain, fever, and leukocytosis.",
+"ko": "게실염",
+"text": "게실염으로 항생제 맞고 입원했어요",
+"kind": "spoken"
+},
+{
+"i": 6758,
+"id": "MONDO:0010811",
+"concept": "- MONDO:0010811 | benign prostatic hyperplasia | syn: benign hyperplasia of prostate; benign hyperplasia of the prostate; benign prostate hyperplasia; benign prostatic hyperplasia | ancestors: prostate disorder, hyperplasia, male reproductive system disorder, cancer or benign tumor | def: A non-cancerous nodular enlargement of the prostate gland. It is characterized by the presence of epithelial cell nodules, and stromal nodules containing fibrous and smooth muscle elements. It is the ...",
+"ko": "양성 전립선 비대증",
+"text": "전립선이 커져서 소변 보기 힘든 병",
+"kind": "everyday"
+},
+{
+"i": 6759,
+"id": "MONDO:0005631",
+"concept": "- MONDO:0005631 | actinomycosis | syn: Actinomyces infection | ancestors: commensal bacterial infectious disease, Actinomycetales infectious disease, bacterial infectious disease, gram-positive bacterial infections | def: Actinomycosis is a chronic bacterial infection that commonly affects the face and neck. It is usually caused by an anaerobic bacteria called Actinomyces israelii. Actinomyces are normal inhabitants of...",
+"ko": "방선균증",
+"text": "방선균 감염이라서 항생제를 오래 먹고 있어요",
+"kind": "spoken"
+},
+{
+"i": 6760,
+"id": "MONDO:0001711",
+"concept": "- MONDO:0001711 | hepatic encephalopathy | syn: portal-systemic encephalopathy | ancestors: toxic encephalopathy, brain disorder, nervous system disorder, central nervous system disorder | def: Hepatic encephalopathy is a syndrome observed in some patients with cirrhosis. It is defined as a spectrum of neuropsychiatric abnormalities in patients with liver dysfunction, when other known brain ...",
+"ko": "간성 뇌병증",
+"text": "간셩 뇌병증",
+"kind": "typo"
+},
+{
+"i": 6761,
+"id": "MONDO:0019671",
+"concept": "- MONDO:0019671 | radial hemimelia | syn: congenital longitudinal deficiency of the radius; radial clubhand; radial longitidinal meromelia; radial ray agenesis | ancestors: hemimelia, dysostosis, non-syndromic limb reduction defect, bone development disease | def: Radial hemimelia is a congenital longitudinal deficiency of the radius bone of the forearm characterized by partial or total absence of the radius.",
+"ko": "요골 반사지증",
+"text": "팔이 휘고 손목이 엄지 쪽으로 꺾인 병",
+"kind": "everyday"
+},
+{
+"i": 6762,
+"id": "MONDO:0017576",
+"concept": "- MONDO:0017576 | 46,XX disorder of sex development | syn: 46,XX differences of Sex development; 46,XX disorders of Sex development; 46,XX DSD; female pseudohermaphroditism | ancestors: disorder of sexual differentiation, gonadal disorder, developmental defect during embryogenesis, reproductive system disorder | def: Conditions affecting individuals with 46,XX karyotype characterized by atypical development of one or more of the following: the gonads, the internal reproductive structures, the external reproductive...",
+"ko": "46,XX 성발달장애",
+"text": "여자 염색체인데 생식기 발달이 정상 여성과 다른 선천 상태",
+"kind": "everyday"
+},
+{
+"i": 6763,
+"id": "MONDO:0001229",
+"concept": "- MONDO:0001229 | small intestine diverticulitis | syn: diverticulitis of small intestine; diverticulosis of small intestine with haemorrhage; small intestine diverticulitis | ancestors: diverticulitis, small intestine disorder, intestinal disorder, inflammatory disease | def: A diverticulitis that involves the small intestine.",
+"ko": "소장 게실염",
+"text": "소장 개실염",
+"kind": "typo"
+},
+{
+"i": 6764,
+"id": "MONDO:0002776",
+"concept": "- MONDO:0002776 | external ear disorder | syn: disease of external ear; disease or disorder of external ear; disorder of external ear; external ear disease | ancestors: auditory system disorder, disorder of ear, disease by body system or component, otorhinolaryngologic disease | def: A disease involving the external ear.",
+"ko": "외이 질환",
+"text": "왜이 질환",
+"kind": "typo"
+},
+{
+"i": 6765,
+"id": "MONDO:0003805",
+"concept": "- MONDO:0003805 | malignant pericardial mesothelioma | syn: malignant mesothelioma (disease) of pericardium; malignant mesothelioma of pericardium; malignant mesothelioma of the pericardium; pericardial malignant mesothelioma | ancestors: pericardium cancer, malignant mesothelioma, heart cancer, neoplasm of pericardium | def: A rare neoplasm of mesothelial origin that arises from the pericardium.",
+"ko": "악성 심낭 중피종",
+"text": "심장막에 생긴 드문 악성 암",
+"kind": "everyday"
+},
+{
+"i": 6766,
+"id": "MONDO:0001449",
+"concept": "- MONDO:0001449 | lymphocytic choriomeningitis | syn: lymphocytic choriomeningitis mammarenavirus caused infectious meningitis; lymphocytic choriomeningitis mammarenavirus infectious meningitis; lymphocytic meningoencephalitis | ancestors: Arenaviridae infectious disease, viral meningitis, viral infection of central nervous system, vector-borne disease | def: A form of meningitis caused by lymphocytic choriomeningitis virus. mice and other rodents serve as the natural hosts, and infection in humans usually occurs through inhalation or ingestion of infectio...",
+"ko": "림프구성 맥락수막염",
+"text": "쥐 배설물 때문에 생긴 뇌막염",
+"kind": "everyday"
+},
+{
+"i": 6767,
+"id": "MONDO:0005696",
+"concept": "- MONDO:0005696 | central nervous system tuberculosis | syn: central nervous system tuberculosis | ancestors: extrapulmonary tuberculosis, central nervous system infectious disorder, tuberculosis, central nervous system disorder | def: A well-circumscribed mass composed of tuberculous granulation tissue that may occur in the cerebral hemispheres, cerebellum, brain stem, or perimeningeal spaces. Multiple lesions are quite common. Man...",
+"ko": "중추신경계 결핵",
+"text": "CNS TB",
+"kind": "abbrev"
+},
+{
+"i": -23015,
+"id": "MONDO:0001019",
+"concept": "- MONDO:0001019 | suppression amblyopia | syn: strabismic amblyopia | ancestors: amblyopia, vision disorder, disorder of visual system, disease by body system or component | def: A nonspecific term referring to impaired vision. Major subcategories include stimulus deprivation-induced amblyopia and toxic amblyopia. Stimulus deprivation-induced amblyopia is a developmental disor...",
+"ko": "억제성 약시",
+"text": "퐁텐 조로 증후근",
+"kind": "typo"
+},
+{
+"i": 6768,
+"id": "MONDO:0004636",
+"concept": "- MONDO:0004636 | lip carcinoma in situ | syn: carcinoma in situ of lip; carcinoma in situ of the Lip; lip in situ carcinoma; stage 0 cancer of Lip | ancestors: oral cavity carcinoma in situ, carcinoma of lip, in situ carcinoma, oral cavity carcinoma | def: A in situ carcinoma that involves the lip.",
+"ko": "입술 상피내암종",
+"text": "입술 상파내암종",
+"kind": "typo"
+},
+{
+"i": 6769,
+"id": "MONDO:0000295",
+"concept": "- MONDO:0000295 | acanthocephaliasis | syn: Acanthocephala caused disease or disorder; Acanthocephala disease or disorder; Acanthocephala infectious disease; disease caused by Acanthocephala | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: An disease or disorder caused by infection with Acanthocephala.",
+"ko": "구두충증",
+"text": "장에 가시 달린 기생충이 붙어 있는 병",
+"kind": "everyday"
+},
+{
+"i": 6770,
+"id": "MONDO:0027666",
+"concept": "- MONDO:0027666 | codeine toxicity | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease",
+"ko": "코데인 독성",
+"text": "코데인 독섬",
+"kind": "typo"
+},
+{
+"i": 6771,
+"id": "MONDO:0006524",
+"concept": "- MONDO:0006524 | acrodermatitis chronica atrophicans | ancestors: acrodermatitis, dermatitis, skin disorder, inflammatory disease | def: An acrodermatitis characterized by a chronically progressive course, leading to widespread atrophy of the skin. It is a clinical manifestation of Lyme borreliosis.",
+"ko": "만성 위축성 지단피부염",
+"text": "팔다리 피부가 얇아지고 쭈글쭈글해지는 병",
+"kind": "everyday"
+},
+{
+"i": 6772,
+"id": "MONDO:0020453",
+"concept": "- MONDO:0020453 | congenital partial pulmonary venous return anomaly | syn: Partial anomalous pulmonary Venous connection; Partial anomalous pulmonary Venous return | ancestors: congenital pulmonary venous return anomaly, congenital pulmonary veins anomaly, congenital heart disease, heart disorder | def: Partial pulmonary venous return (PAPVR) is a form of congenital pulmonary venous return where one or a few of the pulmonary veins drain into the right atrium or one of its tributaries instead of the l...",
+"ko": "선천성 부분 폐정맥 환류 이상",
+"text": "폐에서 온 정맥 일부가 오른쪽 심장으로 잘못 연결된 선천병",
+"kind": "everyday"
+},
+{
+"i": -23005,
+"id": "MONDO:0019403",
+"concept": "- MONDO:0019403 | congenital dyserythropoietic anemia | syn: anemia, congenital dyserythropoietic; CDA; congenital dyshaematopoietic anaemia; congenital dyshaematopoietic anemia | ancestors: familial hemolytic anemia, hemolytic anemia, hereditary disease, normocytic anemia | def: Congenital dyserythropoietic anemia (CDA) is a heterogenous group of hematological disorders of late erythropoiesis and red cell abnormalities that lead to anemia. Five types of CDA are defined: CDA I...",
+"ko": "선천성 이상적혈구생성 빈혈",
+"text": "왜이 질환",
+"kind": "typo"
+},
+{
+"i": 6773,
+"id": "MONDO:0002342",
+"concept": "- MONDO:0002342 | chondromalacia | ancestors: articular cartilage disorder, arthropathy, skeletal system disorder, musculoskeletal system disorder | def: Pathological processes involving the chondral tissue (cartilage).",
+"ko": "연골연화증",
+"text": "연골연와증",
+"kind": "typo"
+},
+{
+"i": 6774,
+"id": "MONDO:0001481",
+"concept": "- MONDO:0001481 | femoral vein thrombophlebitis | syn: femoral vein thrombophlebitis; phlebitis and thrombophlebitis of femoral vein; phlebitis and thrombophlebitis of femoral vein (deep) (superficial); thrombophlebitis of femoral vein | ancestors: thrombophlebitis, phlebitis, vein disorder, vasculitis | def: A thrombophlebitis that involves the femoral vein.",
+"ko": "대퇴정맥 혈전정맥염",
+"text": "허벅지 정맥에 피가 굳어서 염증 생긴 병",
+"kind": "everyday"
+},
+{
+"i": 6775,
+"id": "MONDO:0018911",
+"concept": "- MONDO:0018911 | maturity-onset diabetes of the young | syn: maturity onset diabetes of the young; maturity-onset diabetes of the young; maturity-onset diabetes of the young (disease); MODY | ancestors: monogenic diabetes, disorder of glycolysis, diabetes mellitus, inborn errors of metabolism | def: MODY (maturity-onset diabetes of the young) is a rare, familial, clinically and genetically heterogeneous form of diabetes characterized by young age of onset (generally 10-45 years of age) with maint...",
+"ko": "청년기 발병 성인형 당뇨병",
+"text": "청년기 발병 성인형 당뇨뱅",
+"kind": "typo"
+},
+{
+"i": 6776,
+"id": "MONDO:0001776",
+"concept": "- MONDO:0001776 | prostate calculus | syn: calculus of prostate; lower urinary tract calculus of prostate gland; prostate gland lower urinary tract calculus; prostatic stone | ancestors: prostate disorder, lower urinary tract calculus, male reproductive system disorder, urolithiasis | def: A concretion in the prostate.",
+"ko": "전립샘 결석",
+"text": "전립선 안에 돌이 생긴 병",
+"kind": "everyday"
+},
+{
+"i": 6777,
+"id": "MONDO:0010481",
+"concept": "- MONDO:0010481 | angioedema | syn: angioedemas; angioneurotic Edemas; edema, angioneurotic; edema, Quincke's | ancestors: urticaria, skin vascular disease, dermatitis, skin disorder | def: Swelling involving the deep dermis, subcutaneous, or submucosal tissues, representing localized edema. Angioedema often occurs in the face, lips, tongue, and larynx.",
+"ko": "혈관부종",
+"text": "입술이랑 눈두덩이가 자꾸 부어서 혈관부종 진단받았어요",
+"kind": "spoken"
+},
+{
+"i": 6778,
+"id": "MONDO:0020669",
+"concept": "- MONDO:0020669 | paranasal sinus cancer | syn: malignant accessory sinus neoplasm; malignant accessory sinus tumor; malignant accessory sinus tumour; malignant neoplasm of accessory sinus | ancestors: respiratory system cancer, sensory system cancer, skull cancer, paranasal sinus neoplasm | def: A primary or metastatic malignant neoplasm involving the paranasal sinuses.",
+"ko": "부비동암",
+"text": "코 옆 부비동에 종양이 생겼대요",
+"kind": "spoken"
+},
+{
+"i": 6779,
+"id": "MONDO:0006571",
+"concept": "- MONDO:0006571 | lichen nitidus | ancestors: lichen disease, skin disorder, integumentary system disorder, disease by body system or component | def: A chronic inflammatory disease characterized by shiny, flat-topped, usually flesh-colored micropapules no larger than the head of a pin. Lesions are localized in the early stages, found chiefly on the...",
+"ko": "광택태선",
+"text": "피부과에서 광택 태선이라고 들었어요, 작은 돌기가 많아요",
+"kind": "spoken"
+},
+{
+"i": 6780,
+"id": "MONDO:0007233",
+"concept": "- MONDO:0007233 | second branchial cleft anomaly | syn: branchial cleft; branchial cleft remnant; second branchial cleft cyst; second branchial cleft fistula | ancestors: cysts and fistulae of the face and oral cavity, hereditary otorhinolaryngologic disease, developmental defect during embryogenesis, otorhinolaryngologic disease | def: A congenital defect in the neck that occurs during early embryonic development. It is caused by developmental abnormalities of the pharyngeal arches and results in the development of a cyst or a fissu...",
+"ko": "제2 새열 기형",
+"text": "목 옆 턱 아래에 있는 구멍으로 고름이 나오는 선천 기형",
+"kind": "everyday"
+},
+{
+"i": 6781,
+"id": "MONDO:0013749",
+"concept": "- MONDO:0013749 | ventricular septal defect 3 | syn: NKX2-5 ventricular septal defect (disease); ventricular septal defect (disease) caused by mutation in NKX2-5; ventricular septal defect 3; ventricular septal defect type 3 | ancestors: ventricular septal defect, heart septal defect, cardiogenetic disease, congenital heart disease | def: Any ventricular septal defect in which the cause of the disease is a mutation in the NKX2-5 gene.",
+"ko": "심실중격결손 3형",
+"text": "유전자 이상으로 심장 아랫방 사이 벽에 구멍이 생긴 병",
+"kind": "everyday"
+},
+{
+"i": 6782,
+"id": "MONDO:0005870",
+"concept": "- MONDO:0005870 | necatoriasis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A disorder caused by an infection with hookworms of the genus Necator, which settle in the host's small intestine, and cause abdominal pain, diarrhea, weight loss, and anemia.",
+"ko": "아메리카구충증",
+"text": "장 속 기생충 때문에 피가 부족해지는 병",
+"kind": "everyday"
+},
+{
+"i": -23017,
+"id": "MONDO:0001622",
+"concept": "- MONDO:0001622 | mechanical lagophthalmos | ancestors: lagophthalmos, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "기계적 토안",
+"text": "요막관 개준증",
+"kind": "typo"
+},
+{
+"i": 6783,
+"id": "MONDO:0002136",
+"concept": "- MONDO:0002136 | eczematous dermatitis of eyelid | ancestors: noninfectious dermatoses of eyelid, blepharitis, eyelid disorder, inflammatory disease",
+"ko": "눈꺼풀 습진성 피부염",
+"text": "눈꺼풀 습진상 피부염",
+"kind": "typo"
+},
+{
+"i": 6784,
+"id": "MONDO:0005459",
+"concept": "- MONDO:0005459 | human African trypanosomiasis | syn: Africam sleeping sickness; African trypanosomiasis; sleeping sickness | ancestors: trypanosomiasis, vector-borne disease, protozoa infectious disease, infectious disease | def: A parasitic disorder caused by protozoa of the Trypanosoma brucei species. It is transmitted by flies and is endemic in various regions of Sub-Saharan Africa. Signs and symptoms include fever, joint p...",
+"ko": "인간 아프리카 트리파노소마증",
+"text": "인간 아프리카 트리파노소마종",
+"kind": "typo"
+},
+{
+"i": 6785,
+"id": "MONDO:0017416",
+"concept": "- MONDO:0017416 | postpoliomyelitis syndrome | syn: Post Polio Syndrome; postpolio sequelae; postpolio syndrome; postpoliomyelitic syndrome | ancestors: poliomyelitis, myelitis, anterior horn disorder, acquired motor neuron disease | def: Postpoliomyelitis syndrome (PPS) is a neurologic disorder characterized by the development of new neuromuscular symptoms such as progressive muscular weakness or abnormal muscle fatigability occurring...",
+"ko": "소아마비후 증후군",
+"text": "소아마비휴 증후군",
+"kind": "typo"
+},
+{
+"i": 6786,
+"id": "MONDO:0015681",
+"concept": "- MONDO:0015681 | childhood disintegrative disorder | syn: childhood disintegrative disease; dementia infantilis; disintegrative psychosis; heller syndrome | ancestors: pervasive developmental disorder, developmental disorder of mental health, complex neurodevelopmental disorder, mental disorder | def: A rare pervasive developmental disorder with a disease onset before the age of three and characterized by a dramatic loss of behavioral and developmental functioning after atleast two years of normal ...",
+"ko": "소아기 붕괴성 장애",
+"text": "애가 말을 잘하다가 두 돌 지나고 다 잃어버렸어요",
+"kind": "spoken"
+},
+{
+"i": 6787,
+"id": "MONDO:0002041",
+"concept": "- MONDO:0002041 | fungal infectious disease | syn: Fungi caused disease or disorder; Fungi disease or disorder; Fungi infection; Fungi infectious disease | ancestors: infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: An infection caused by a fungus.",
+"ko": "진균 감염병",
+"text": "진군 감염병",
+"kind": "typo"
+},
+{
+"i": 6788,
+"id": "MONDO:0011147",
+"concept": "- MONDO:0011147 | chromosome 18q deletion syndrome | syn: 18q deletion syndrome; 18Q syndrome; 18q-syndrome; chromosome 18q deletion syndrome | ancestors: syndromic disease, partial deletion of chromosome 18, disease by body system or component, syndrome caused by partial chromosomal deletion | def: A condition in which some or all of the cells of the body contain extra genetic material from chromosome 18. Clinical features of this condition may include the following: spina bifida, hearing loss, ...",
+"ko": "18q 결실 증후군",
+"text": "18q 결시 증후군",
+"kind": "typo"
+},
+{
+"i": 6789,
+"id": "MONDO:0001465",
+"concept": "- MONDO:0001465 | superficial keratitis | ancestors: keratitis, corneal disorder, inflammatory disease, eye disorder",
+"ko": "표재성 각막염",
+"text": "안과에서 표재성 각막염이라고 했어요",
+"kind": "spoken"
+},
+{
+"i": 6790,
+"id": "MONDO:0020333",
+"concept": "- MONDO:0020333 | aggressive systemic mastocytosis | syn: aggressive systemic mastocytosis (morphologic abnormality); ASM | ancestors: systemic mastocytosis, mastocytosis, mast cell neoplasm, leukocyte disorder | def: Aggressive systemic mastocytosis (ASM) is a severe and rare form of systemic mastocytosis (SM) characterized by considerable infiltration of mast cells in different tissues.",
+"ko": "공격성 전신 비만세포증",
+"text": "공격성 전신 비만쎄포증",
+"kind": "typo"
+},
+{
+"i": 6791,
+"id": "MONDO:0002108",
+"concept": "- MONDO:0002108 | thyroid cancer | syn: cancer of thyroid gland; malignant neoplasm of the thyroid; malignant neoplasm of the thyroid gland; malignant neoplasm of thyroid | ancestors: thyroid tumor, malignant endocrine neoplasm, endocrine gland neoplasm, thyroid gland disorder | def: A malignant neoplasm involving the thyroid gland",
+"ko": "갑상선암",
+"text": "갑상선앙",
+"kind": "typo"
+},
+{
+"i": 6792,
+"id": "MONDO:0000989",
+"concept": "- MONDO:0000989 | mumps infectious disease | syn: epidemic parotitis; Mumps; mumps; Mumps virus caused disease or disorder | ancestors: Paramyxoviridae infectious disease, Mononegavirales infectious disease, primary viral infectious disease, viral infectious disease | def: A contagious viral infection caused by the mumps virus. Symptoms include swollen and tender parotid glands, fever, muscle aches and fatigue. Due to vaccination programs, mumps has become a rare diseas...",
+"ko": "유행성 이하선염",
+"text": "귀 밑이 퉁퉁 붓고 열나는 옮는 병, 볼거리",
+"kind": "everyday"
+},
+{
+"i": 6793,
+"id": "MONDO:0019970",
+"concept": "- MONDO:0019970 | Sinding-Larsen-Johansson disease | syn: aseptic necrosis of patella; Osteochondrosis of patella | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder | def: Sinding-Larsen-Johansson disease is a type of osteochondrosis affecting the attachment of the patellar tendon to the patella and characterized by tenderness and localized swelling of the patella.",
+"ko": "신딩-라르센-요한손병",
+"text": "신딩-라르센-요안손병",
+"kind": "typo"
+},
+{
+"i": -23008,
+"id": "MONDO:0018072",
+"concept": "- MONDO:0018072 | persistent truncus arteriosus | syn: common aorticopulmonary trunk; common arterial trunk; common truncus arteriosus; persistent truncus arteriosus | ancestors: congenital heart disease, conotruncal heart malformations, heart disorder, congenital anomaly of cardiovascular system | def: A rare congenital cardiovascular disorder characterized by the failure of the embryologic structure truncus arteriosus to divide into the aorta and pulmonary trunk. It results in the presence of a sin...",
+"ko": "지속 동맥줄기",
+"text": "감기 뒤 갑자기 빙글빙글 돌며 어지럽고 구역질 나는 병",
+"kind": "everyday"
+},
+{
+"i": 6794,
+"id": "MONDO:0018097",
+"concept": "- MONDO:0018097 | infantile spasms | syn: IESS; infantile epileptic spasms syndrome; infantile spasms; infantile spasms syndrome | ancestors: syndromic disease, neonatal/infantile-onset epilepsy syndrome with developmental and epileptic encephalopathy, disease by body system or component, neonatal/infantile epilepsy syndrome | def: A rare epilepsy syndrome characterized by onset of epileptic spasms in infants between 2 and 12 months of age, and rarely up to 24 months. Infants may have no antecedent history, or a history reflecti...",
+"ko": "영아 연축",
+"text": "아기가 고개를 꺾고 몸을 굽히는 발작을 자주 하는 병",
+"kind": "everyday"
+},
+{
+"i": 6795,
+"id": "MONDO:0005445",
+"concept": "- MONDO:0005445 | visceral leishmaniasis | syn: kala-azar; viscus leishmaniasis | ancestors: hereditary disease, leishmaniasis, disease of genetic or genomic mechanism, protozoa infectious disease | def: A severe form of leishmaniasis characterized by irregular bouts of fever, substantial weight loss, swelling of the spleen and liver, and anemia (which may be serious). If left untreated it may lead to...",
+"ko": "내장 리슈마니아증",
+"text": "내장 리스마니아증",
+"kind": "typo"
+},
+{
+"i": 6796,
+"id": "MONDO:0002432",
+"concept": "- MONDO:0002432 | malignant neoplasm of acoustic nerve | syn: cancer of the vestibulocochlear nerve; cancer of vestibulocochlear nerve; malignant acoustic nerve neoplasm; malignant acoustic nerve tumor | ancestors: malignant cranial nerve neoplasm, auditory system cancer, vestibulocochlear nerve neoplasm, cranial nerve neoplasm | def: A malignant neoplasm involving the vestibulocochlear nerve.",
+"ko": "청신경 악성 신생물",
+"text": "귀 신경 쪽에 악성 종양이 있어서 방사선 치료받았어요.",
+"kind": "spoken"
+},
+{
+"i": 6797,
+"id": "MONDO:0005952",
+"concept": "- MONDO:0005952 | scarlet fever | syn: scarlatina | ancestors: streptococcal infection, gram-positive bacterial infections, bacterial infectious disease, infectious disease | def: A streptococcal infection, mainly occurring among children, that is characterized by a red skin rash, sore throat, and fever.",
+"ko": "성홍열",
+"text": "목이 아프고 열나면서 온몸에 좁쌀 같은 발진이 생기는 병",
+"kind": "everyday"
+},
+{
+"i": 6798,
+"id": "MONDO:0004635",
+"concept": "- MONDO:0004635 | postcricoid region cancer | syn: malignant neoplasm of postcricoid area; malignant neoplasm of the postcricoid area; malignant postcricoid neoplasm; malignant postcricoid tumor | ancestors: hypopharynx cancer, pharynx cancer, neoplasm of hypopharynx, respiratory system cancer | def: A primary or metastatic malignant neoplasm that affects the postcricoid region.",
+"ko": "윤상연골후부암",
+"text": "목 깊은 곳 연골 뒤쪽에 생긴 암",
+"kind": "everyday"
+},
+{
+"i": 6799,
+"id": "MONDO:0004964",
+"concept": "- MONDO:0004964 | peripheral T-cell lymphoma, not otherwise specified | syn: peripheral T-cell lymphoma, not otherwise specified | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm | def: Aggressive nodal or extranodal mature (peripheral) T-cell lymphomas that do not belong to the better defined entities of the remainder of mature T-cell lymphomas. This category includes the following ...",
+"ko": "말초 T세포 림프종, 달리 분류되지 않는 것",
+"text": "T세포 림프종인데 특정 종류로 딱 안 맞는 것",
+"kind": "everyday"
+},
+{
+"i": 6800,
+"id": "MONDO:0015395",
+"concept": "- MONDO:0015395 | congenital subglottic stenosis | ancestors: laryngeal disorder, upper respiratory tract disorder, respiratory system disorder, disease by body system or component",
+"ko": "선천성 성문하 협착",
+"text": "아기가 성문하 협착이라서 숨소리가 커요",
+"kind": "spoken"
+},
+{
+"i": 6801,
+"id": "MONDO:0001876",
+"concept": "- MONDO:0001876 | renal artery atheroma | syn: atherosclerosis of renal artery; renal artery atherosclerosis | ancestors: aortic atherosclerosis, renal artery disease, atherosclerosis, aortic disorder | def: A atherosclerosis that involves the renal artery.",
+"ko": "신동맥 죽종",
+"text": "콩팥 혈관이 동맥경화라서 혈압약 먹고 있어요",
+"kind": "spoken"
+},
+{
+"i": 6802,
+"id": "MONDO:0009276",
+"concept": "- MONDO:0009276 | Bernard-Soulier syndrome | syn: Bernard-Soulier syndrome; giant platelet disorder, isolated; giant platelet syndrome; Hemorrhagiparous thrombocytic dystrophy | ancestors: inherited bleeding disorder, platelet-type, syndromic disease, hemorrhagic disease, blood platelet disease | def: Bernard Soulier syndrome (BSS) is an inherited platelet disorder characterized by mild to severe bleeding tendency, macrothrombocytopenia and absent ristocetin-induced platelet agglutination.",
+"ko": "베르나르-술리에 증후군",
+"text": "베르나르-술리애 증후군",
+"kind": "typo"
+},
+{
+"i": 6803,
+"id": "MONDO:0019470",
+"concept": "- MONDO:0019470 | aggressive NK-cell leukemia | syn: aggressive NK-cell leukaemia (morphologic abnormality); aggressive NK-cell leukemia; aggressive NK-cell leukemia (morphologic abnormality); aggressive NK-cell leukemia/lymphoma | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, chronic leukemia, T lymphoblastic leukemia/lymphoma, T-cell acute lymphoblastic leukemia | def: A rare, highly aggressive, Epstein-Barr virus-associated leukemia, also known as aggressive NK-cell leukemia/lymphoma; it may represent the leukemic counterpart of nasal type extranodal NK/T-cell lymp...",
+"ko": "공격성 NK세포 백혈병",
+"text": "ANKL",
+"kind": "abbrev"
+},
+{
+"i": -23004,
+"id": "MONDO:0005692",
+"concept": "- MONDO:0005692 | cat-scratch disease | syn: bartonellosis due to Bartonella henselae infection; benign lymphoreticulosis; Cat-scratch fever | ancestors: lymphadenitis, bartonellosis, lymph node disorder, inflammatory disease | def: Cat scratch disease is an infectious illness caused by the bacteria bartonella (Bartonella henselae). It is believed to be transmitted by cat scratches, bites, or exposure to cat saliva. This self-lim...",
+"ko": "고양이할큄병",
+"text": "드래슬러 증후군",
+"kind": "typo"
+},
+{
+"i": 6804,
+"id": "MONDO:0019005",
+"concept": "- MONDO:0019005 | nephronophthisis | syn: medullary cystic kidney; nephronophthisis; nephronophthisis (disease) | ancestors: autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease, renal tubule disorder | def: Progressive tubulointerstitial injury, inherited in an autosomal recessive pattern, caused by mutations in genes involved in ciliary function, which may result in an end stage renal failure.",
+"ko": "신단위로증",
+"text": "신단위로즁",
+"kind": "typo"
+},
+{
+"i": 6805,
+"id": "MONDO:0000045",
+"concept": "- MONDO:0000045 | hypothyroidism, congenital, nongoitrous | ancestors: hereditary disease, congenital hypothyroidism, disease of genetic or genomic mechanism, hypothyroidism",
+"ko": "선천성 비갑상선종성 갑상선기능저하증",
+"text": "목이 붓지 않고 아기 때부터 갑상선 호르몬이 모자란 병",
+"kind": "everyday"
+},
+{
+"i": 6806,
+"id": "MONDO:0007244",
+"concept": "- MONDO:0007244 | Caffey disease | syn: Caffey disease; infantile cortical hyperostosis | ancestors: hyperostosis, bone inflammation disease, neonatal osteosclerotic dysplasia, bone remodeling disease | def: Caffey disease is an osteosclerotic dysplasia characterized by acute inflammation with massive subperiosteal new bone formation usually involving the diaphyses of the long bones, as well as the ribs, ...",
+"ko": "카페병",
+"text": "갓난아기가 열나고 뼈가 부어서 검사했대요",
+"kind": "spoken"
+},
+{
+"i": 6807,
+"id": "MONDO:0005631",
+"concept": "- MONDO:0005631 | actinomycosis | syn: Actinomyces infection | ancestors: commensal bacterial infectious disease, Actinomycetales infectious disease, bacterial infectious disease, gram-positive bacterial infections | def: Actinomycosis is a chronic bacterial infection that commonly affects the face and neck. It is usually caused by an anaerobic bacteria called Actinomyces israelii. Actinomyces are normal inhabitants of...",
+"ko": "방선균증",
+"text": "턱 주변이 붓고 고름이 새는 세균 감염병",
+"kind": "everyday"
+},
+{
+"i": 6808,
+"id": "MONDO:0001116",
+"concept": "- MONDO:0001116 | mesenteric lymphadenitis | syn: lymphadenitis (disease) of mesentery; mesenteric adenitis; mesenteric lymphadenitis; mesentery lymphadenitis (disease) | ancestors: lymphadenitis, lymph node disorder, inflammatory disease, lymphatic system disorder | def: Inflammation of the mesenteric lymph nodes.",
+"ko": "장간막 림프절염",
+"text": "장 주변 임파선이 부어 아픈 병",
+"kind": "everyday"
+},
+{
+"i": 6809,
+"id": "MONDO:0001879",
+"concept": "- MONDO:0001879 | anus cancer | syn: anus cancer; cancer of anus; malignant anal neoplasm; malignant anal tumor | ancestors: anus neoplasm, rectal cancer, rectal neoplasm, anus disorder | def: A malignant neoplasm involving the anus",
+"ko": "항문암",
+"text": "항문 쪽에 암이라고 해서 수술 얘기가 나왔어요",
+"kind": "spoken"
+},
+{
+"i": -23010,
+"id": "MONDO:0006044",
+"concept": "- MONDO:0006044 | nephrosclerosis | ancestors: renal artery disease, kidney disorder, aortic disorder, urinary system disorder | def: Hardening of the kidney due to infiltration by fibrous connective tissue (fibrosis), usually caused by renovascular diseases or chronic hypertension. Nephrosclerosis leads to renal ischemia.",
+"ko": "콩팥경화증",
+"text": "피 색소가 쌓여 햇빛에 피부가 따갑고 소변이 붉은 병",
+"kind": "everyday"
+},
+{
+"i": 6810,
+"id": "MONDO:0006354",
+"concept": "- MONDO:0006354 | parathyroid hyperplasia | syn: hyperplasia of parathyroid; hyperplasia of the parathyroid; parathyroid gland hyperplasia; parathyroid hyperplasia | ancestors: parathyroid gland disorder, hyperplasia, endocrine system disorder, cancer or benign tumor | def: A hyperplasia that involves the parathyroid gland.",
+"ko": "부갑상샘 증식증",
+"text": "부갑상샘이 커졌다고 들었어요",
+"kind": "spoken"
+},
+{
+"i": 6811,
+"id": "MONDO:0018689",
+"concept": "- MONDO:0018689 | plasma cell leukemia | syn: leukaemia plasmacytic; leukemia plasmacytic; PCL; plasma cell leukemia | ancestors: plasma cell neoplasm, acute lymphoblastic leukemia, B-cell non-Hodgkin lymphoma, neoplasm of mature B-cells | def: An aggressive plasma cell neoplasm characterized by the presence of neoplastic plasma cells in the peripheral blood. It is characterized by the presence of a circulating clonal plasma cell count that ...",
+"ko": "형질세포백혈병",
+"text": "혈액 속 형질세포가 비정상으로 늘어난 백혈병",
+"kind": "everyday"
+},
+{
+"i": 6812,
+"id": "MONDO:0018844",
+"concept": "- MONDO:0018844 | urachal cyst | syn: urachal cyst; urachal cyst (disease) | ancestors: congenital urachal anomaly, urinary system disorder, disease by body system or component, human disease | def: Urachal cyst is a congenital urachal anomaly characterized by a failure of complete closure of the urachus, in which both ends are closed but the central lumen remains patent. It is typically asymptom...",
+"ko": "요막관 낭종",
+"text": "태어날 때부터 배꼽 밑에 주머니가 있는 병",
+"kind": "everyday"
+},
+{
+"i": 6813,
+"id": "MONDO:0001722",
+"concept": "- MONDO:0001722 | central pterygium | ancestors: progressive peripheral pterygium, conjunctival pterygium, conjunctival degeneration, pterygium",
+"ko": "중심성 익상편",
+"text": "눈 가운데 쪽으로 하얀 막이 자라 들어오는 병",
+"kind": "everyday"
+},
+{
+"i": 6814,
+"id": "MONDO:0010789",
+"concept": "- MONDO:0010789 | MELAS syndrome | syn: MELAS syndrome; mitochondrial encephalomyopathy, lactic acidosis and stroke; mitochondrial encephalomyopathy, lactic acidosis and stroke-like episodes; mitochondrial myopathy, encephalopathy, lactic acidosis and stroke-like episodes | ancestors: syndromic disease, mitochondrial encephalomyopathy, disease by body system or component, inborn mitochondrial myopathy | def: MELAS (Mitochondrial myopathy, encephalopathy, lactic acidosis, and stroke) syndrome is a rare progressive multisystemic disorder characterized by encephalomyopathy, lactic acidosis, and stroke-like e...",
+"ko": "MELAS 증후군",
+"text": "미토콘드리아 유전자 이상으로 뇌졸중 같은 발작이 오는 병",
+"kind": "everyday"
+},
+{
+"i": 6815,
+"id": "MONDO:0045020",
+"concept": "- MONDO:0045020 | glycine metabolism disease | syn: disorder of glycine metabolic process; disorder of glycine metabolism; glycine metabolic process disease; glycine metabolism disease | ancestors: amino acid metabolism disease, metabolic disease, disease by developmental or physiological process, human disease | def: A disease that has its basis in the disruption of glycine metabolic process.",
+"ko": "글리신 대사 질환",
+"text": "태어날 때부터 글리신 처리가 안 되는 선천성 대사병",
+"kind": "everyday"
+},
+{
+"i": 6816,
+"id": "MONDO:0021742",
+"concept": "- MONDO:0021742 | puerperal infection | ancestors: infectious disease, puerperal disorder, disease of primarily extrinsic mechanism, obstetric disorder | def: An infection occurring in puerperium, the period of 6-8 weeks after giving birth.",
+"ko": "산욕 감염",
+"text": "아기 낳고 몸 안에 균이 들어가 열나는 병",
+"kind": "everyday"
+},
+{
+"i": 6817,
+"id": "MONDO:0004664",
+"concept": "- MONDO:0004664 | helminthiasis | syn: helminthiasis | ancestors: parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: A parasitic infection characterized by the infestation with worms, mainly in the intestine.",
+"ko": "연충증",
+"text": "년충증",
+"kind": "typo"
+},
+{
+"i": 6818,
+"id": "MONDO:0018962",
+"concept": "- MONDO:0018962 | common mesentery | syn: universal mesentery | ancestors: digestive system disorder, disease by body system or component, human disease, disease",
+"ko": "공통 장간막",
+"text": "태어날 때 장간막 기형이 있다고 들었어요",
+"kind": "spoken"
+},
+{
+"i": 6819,
+"id": "MONDO:0018551",
+"concept": "- MONDO:0018551 | patent urachus | syn: patent urachus; patent urachus (disease) | ancestors: congenital urachal anomaly, urinary system disorder, disease by body system or component, human disease | def: Patent urachus is a type of congenital urachal anomaly characterized by a persistent communication between the bladder and the umbilicus, secondary to non occlusion of the urachal lumen, manifesting a...",
+"ko": "요막관 개존증",
+"text": "요막관 개준증",
+"kind": "typo"
+},
+{
+"i": 6820,
+"id": "MONDO:1010128",
+"concept": "- MONDO:1010128 | peritonitis | syn: peritoneum inflammation | ancestors: serositis, inflammatory disease, disease by developmental or physiological process, human disease | def: Inflammation of the peritoneum (tissue that lines the abdominal wall and covers most of the organs in the abdomen).",
+"ko": "복막염",
+"text": "봉막염",
+"kind": "typo"
+},
+{
+"i": 6821,
+"id": "MONDO:0021453",
+"concept": "- MONDO:0021453 | benign neoplasm of retina | syn: benign neoplasm of the retina; benign retina neoplasm; benign retina tumor; benign retina tumour | ancestors: retina neoplasm, benign neoplasm of eye, retinal disorder, eye neoplasm | def: A benign neoplasm that involves the retina.",
+"ko": "망막 양성 신생물",
+"text": "눈 속 막에 작은 혹이 생겼는데 악성은 아니래요",
+"kind": "everyday"
+},
+{
+"i": 6822,
+"id": "MONDO:0008698",
+"concept": "- MONDO:0008698 | achalasia | syn: achalasia; achalasia (disease); achalasia of cardia; achalasia of oesophagus | ancestors: esophageal disorder, upper digestive tract disorder, digestive system disorder, disease by body system or component | def: A finding indicating the lack of adequate relaxation of the lower esophageal sphincter resulting in difficulty swallowing food.",
+"ko": "이완불능증",
+"text": "먹은 음식이 식도에 걸려 잘 안 내려가는 병",
+"kind": "everyday"
+},
+{
+"i": 6823,
+"id": "MONDO:0009852",
+"concept": "- MONDO:0009852 | hereditary intrinsic factor deficiency | syn: congenital intrinsic factor deficiency; congenital pernicious anaemia; congenital pernicious anemia; gastric intrinsic factor deficiency | ancestors: hereditary anemia, inborn disorder of cobalamin metabolism and transport, deficiency anemia, hereditary disease | def: Congenital intrinsic factor deficiency (IFD) is a rare disorder of vitamin B12 (cobalamin) absorption that is characterized by megaloblastic anemia and neurological abnormalities.",
+"ko": "유전성 내인자 결핍증",
+"text": "선천적으로 내인자가 없어서 B12 주사 맞아요",
+"kind": "spoken"
+},
+{
+"i": 6824,
+"id": "MONDO:0024617",
+"concept": "- MONDO:0024617 | xanthogranuloma | syn: xanthogranuloma | ancestors: non-Langerhans cell histiocytosis, histiocytosis, lymphatic system disorder, lymphoid system disorder",
+"ko": "황색육아종",
+"text": "황새육아종",
+"kind": "typo"
+},
+{
+"i": 6825,
+"id": "MONDO:0001331",
+"concept": "- MONDO:0001331 | conjunctival deposit | ancestors: conjunctival disorder, eye adnexa disorder, eye disorder, disorder of orbital region",
+"ko": "결막 침착물",
+"text": "눈 흰자 위에 작은 덩어리가 생겼는데 아프진 않아요",
+"kind": "everyday"
+},
+{
+"i": 6826,
+"id": "MONDO:0004038",
+"concept": "- MONDO:0004038 | dental enamel hypoplasia | syn: enamel hypoplasia | ancestors: tooth hard tissue disease, tooth disorder, skeletal system disorder, mouth disorder | def: Deficiency in the enamel tissue that results in the formation of grooves, pits, or dents on the surface of the affected teeth.",
+"ko": "법랑질 형성부전",
+"text": "이 겉면이 패여 있고 약한 치아",
+"kind": "everyday"
+},
+{
+"i": 6827,
+"id": "MONDO:0012853",
+"concept": "- MONDO:0012853 | Fontaine progeroid syndrome | syn: craniofacial dysostosis, hypertrichosis, hypoplasia of labia majora; craniofacial dysostosis, hypertrichosis, Hypoplasia of labia majora, dental and eye anomalies, patent ductus arteriosus, and normal intelligence; craniofacial dysostosis-genital, dental, cardiac anomalies syndrome; cranofacial dysostosis-hypertrichosis-hypoplasia of labia majora syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome without intellectual disability, progeroid syndrome, ectodermal dysplasia syndrome, multiple congenital anomalies/dysmorphic syndrome | def: A rare premature aging syndrome characterized by pre-and postnatal growth retardation, a congenital premature-aged appearance with distinctive craniofacial dysmorphism (wide calvaria with large open a...",
+"ko": "퐁텐 조로 증후군",
+"text": "퐁텐 조로 증후근",
+"kind": "typo"
+},
+{
+"i": 6828,
+"id": "MONDO:0005099",
+"concept": "- MONDO:0005099 | subarachnoid hemorrhage | syn: subarachnoid haemorrhage (disease); subarachnoid hemorrhage; subarachnoid hemorrhage (disease) | ancestors: hemorrhagic stroke, stroke disorder, cerebrovascular disorder, brain disorder | def: A serious neurological disorder characterized by intracranial hemorrhage into the subarachnoid space.",
+"ko": "지주막하 출혈",
+"text": "지주만하 출혈",
+"kind": "typo"
+},
+{
+"i": 6829,
+"id": "MONDO:0005843",
+"concept": "- MONDO:0005843 | mediastinal cancer | syn: cancer of mediastinum; cancer of the mediastinum; malignant mediastinal neoplasm; malignant mediastinal tumor | ancestors: thoracic cancer, neoplasm of mediastinum, cancer, neoplasm of thorax | def: A malignant neoplasm involving the mediastinum",
+"ko": "종격동암",
+"text": "가슴 가운데 종양 때문에 항암 치료 받고 있어요",
+"kind": "spoken"
+},
+{
+"i": 6830,
+"id": "MONDO:0008692",
+"concept": "- MONDO:0008692 | abetalipoproteinemia | syn: abetalipoproteinemia; Bassen-Kornzweig disease; homozygous familial hypobetalipoproteinemia | ancestors: familial hemolytic anemia, intestinal disorder, hypobetalipoproteinemia, autosomal recessive metabolic cerebellar ataxia | def: Abetalipoproteinemia/ homozygous familial hypobetalipoproteinemia (ABL/HoFHBL) is a severe form of familial hypobetalipoproteinemia characterized by permanently low levels (below the 5th percentile) o...",
+"ko": "무베타지단백혈증",
+"text": "무베타지단백헐증",
+"kind": "typo"
+},
+{
+"i": 6831,
+"id": "MONDO:0003079",
+"concept": "- MONDO:0003079 | mastocytoma | syn: mastocytoma | ancestors: mast cell neoplasm, myeloid neoplasm, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm | def: A localized tumor composed of sheets of mast cells without atypia. It includes the cutaneous mastocytoma which involves the dermis and subcutaneous tissue, and the extracutaneous mastocytoma. Most cas...",
+"ko": "비만세포종",
+"text": "피부 혹을 조직검사했더니 비만세포종이래요",
+"kind": "spoken"
+},
+{
+"i": 6832,
+"id": "MONDO:0015626",
+"concept": "- MONDO:0015626 | Charcot-Marie-Tooth disease | syn: Charcot Marie Tooth muscular atrophy; Charcot-Marie-Tooth disease; Charcot-Marie-Tooth hereditary neuropathy; CMT | ancestors: hereditary peripheral neuropathy, peripheral neuropathy, hereditary neuromuscular disease, peripheral nervous system disorder | def: An inherited degenerative disorder involving the peripheral nerves. It is caused by mutations in the genes that are responsible for the production of proteins necessary for the function and structure ...",
+"ko": "샤르코-마리-투스병",
+"text": "다리 근육이 점점 말라서 발이 자주 걸리는 유전병",
+"kind": "everyday"
+},
+{
+"i": 6833,
+"id": "MONDO:0001249",
+"concept": "- MONDO:0001249 | trachoma | ancestors: chlamydia trachomatis infectious disease, commensal bacterial infectious disease, chlamydia infectious disease, bacterial infectious disease | def: A chronic infection of the conjunctiva and cornea caused by chlamydia trachomatis.",
+"ko": "트라코마",
+"text": "눈꺼풀 안쪽이 거칠어지는 전염성 눈병",
+"kind": "everyday"
+},
+{
+"i": 6834,
+"id": "MONDO:0020601",
+"concept": "- MONDO:0020601 | mosquito-borne viral encephalitis | syn: mosquito-borne viral encephalitis | ancestors: viral encephalitis, vector-borne disease, infectious encephalitis, viral infection of central nervous system | def: Viral encephalitis that is transmitted by mosquitos.",
+"ko": "모기매개 바이러스뇌염",
+"text": "모기가 옮긴 바이러스 때문에 뇌가 붓는 병",
+"kind": "everyday"
+},
+{
+"i": 6835,
+"id": "MONDO:0002078",
+"concept": "- MONDO:0002078 | heart septal defect | syn: Cardiac septal defects; congenital septal defect; holes in the heart | ancestors: congenital heart disease, heart disorder, congenital anomaly of cardiovascular system, cardiovascular disorder | def: A congenital disorder characterized by the presence of an abnormal communication between the atria or the ventricles of the heart due to defects in the cardiac septum.",
+"ko": "심장중격결손",
+"text": "심장중겹결손",
+"kind": "typo"
+},
+{
+"i": 6836,
+"id": "MONDO:0006722",
+"concept": "- MONDO:0006722 | dental fluorosis | syn: fluorosis; mottled teeth; mottling of enamel | ancestors: tooth disorder, skeletal system disorder, mouth disorder, musculoskeletal system disorder | def: A condition that results from excessive fluoride ingestion during tooth development, resulting in tooth discoloration ranging from white streaks to brown stains and cracks or pits in the tooth enamel.",
+"ko": "치아불소증",
+"text": "치아불소 증",
+"kind": "typo"
+},
+{
+"i": 6837,
+"id": "MONDO:0006008",
+"concept": "- MONDO:0006008 | vestibular neuronitis | ancestors: vestibulocochlear nerve disorder, neuritis, retrocochlear disease, cranial nerve neuropathy | def: Idiopathic inflammation of the vestibular nerve, characterized clinically by the acute or subacute onset of vertigo; nausea; and imbalance. The cochlear nerve is typically spared and hearing loss and ...",
+"ko": "전정신경염",
+"text": "감기 뒤 갑자기 빙글빙글 돌며 어지럽고 구역질 나는 병",
+"kind": "everyday"
+},
+{
+"i": 6838,
+"id": "MONDO:0004872",
+"concept": "- MONDO:0004872 | hemorrhoid | syn: Haemorrhoids; hemorrhoid; Hemorrhoids | ancestors: pelvic varices, varicose disease, vein disorder, vascular disorder | def: Dilated veins in the anal canal.",
+"ko": "치핵",
+"text": "치행",
+"kind": "typo"
+},
+{
+"i": 6839,
+"id": "MONDO:0006879",
+"concept": "- MONDO:0006879 | optic papillitis | syn: Choked disc; Choked discs; Choked disk; Choked disks | ancestors: retinitis, optic neuritis, retinal disorder, posterior uveitis | def: Swelling of the optic disk, usually in association with increased intracranial pressure, characterized by hyperemia, blurring of the disk margins, microhemorrhages, blind spot enlargement, and engorge...",
+"ko": "시신경유두염",
+"text": "시신경유두염이라고 해서 스테로이드 치료 받았어요",
+"kind": "spoken"
+},
+{
+"i": -23003,
+"id": "MONDO:0001947",
+"concept": "- MONDO:0001947 | suppurative thyroiditis | syn: acute suppurative thyroiditis | ancestors: thyroiditis, thyroid gland disorder, inflammatory disease, endocrine system disorder | def: Acute inflammatory disease of the thyroid gland due to infections by bacteria; fungi; or other microorganisms. Symptoms include tender swelling, fever, and often with leukocytosis.",
+"ko": "화농성 갑상선염",
+"text": "눈꺼풀에 물집 돋고 따가운 대상포진",
+"kind": "everyday"
+},
+{
+"i": 6840,
+"id": "MONDO:0002471",
+"concept": "- MONDO:0002471 | bursitis | syn: inflammation of synovial bursa; synovial bursa inflammation | ancestors: arthropathy, inflammatory disease, synovial bursa disorder, skeletal system disorder | def: Inflammation or irritation of a synovial bursa, the fibrous sac that acts as a cushion between moving structures of bones, muscles, tendons or skin.",
+"ko": "윤활주머니염",
+"text": "팔꿈치나 무릎 주변이 붓고 누르면 아픈 병",
+"kind": "everyday"
+},
+{
+"i": 6841,
+"id": "MONDO:0005768",
+"concept": "- MONDO:0005768 | gastrointestinal tuberculosis | syn: tuberculosis of intestines, peritoneum, and mesenteric glands | ancestors: extrapulmonary tuberculosis, digestive system infectious disorder, tuberculosis, digestive system disorder | def: Tuberculosis that involves any region of the gastrointestinal tract, mostly in the distal ileum and the cecum. In most cases, mycobacterium tuberculosis is the pathogen. Clinical features include abdo...",
+"ko": "위장관 결핵",
+"text": "장에 결핵이 생겨 배 아프고 설사하는 병",
+"kind": "everyday"
+},
+{
+"i": 6842,
+"id": "MONDO:0002133",
+"concept": "- MONDO:0002133 | chronic rheumatic pericarditis | syn: rheumatic pericarditis, chronic | ancestors: rheumatic pericarditis, pericarditis, rheumatic heart disease, pericardium disorder | def: Chronic form of rheumatic pericarditis.",
+"ko": "만성 류마티스 심낭염",
+"text": "만성 류마티스 심당염",
+"kind": "typo"
+},
+{
+"i": 6843,
+"id": "MONDO:0005507",
+"concept": "- MONDO:0005507 | gingival cancer | syn: cancer of gingiva; gingiva cancer; malignant gingiva neoplasm; malignant gingival neoplasm | ancestors: musculoskeletal system cancer, oral cavity cancer, head and neck cancer, gingival neoplasm | def: A primary or metastatic malignant neoplasm that affects the gums.",
+"ko": "잇몸암",
+"text": "잇몸에 덩어리가 생겨 커지는 암",
+"kind": "everyday"
+},
+{
+"i": -23016,
+"id": "MONDO:0009379",
+"concept": "- MONDO:0009379 | Rotor syndrome | syn: hyperbilirubinemia, Rotor type; hyperbilirubinemia, rotor type, digenic; Rotor syndrome | ancestors: hereditary hyperbilirubinemia, inborn disorder of bilirubin metabolism, hyperbilirubinemia, inborn disorder of porphyrin metabolism | def: Rotor syndrome (RT) is a benign, inherited liver disorder characterized by chronic, predominantly conjugated, nonhemolytic hyperbilirubinemia with normal liver histology.",
+"ko": "로터 증후군",
+"text": "ANKL",
+"kind": "abbrev"
+},
+{
+"i": 6844,
+"id": "MONDO:0009297",
+"concept": "- MONDO:0009297 | familial renal glucosuria | syn: familial renal glucosuria; Renal Glycosuria; SGLT2 deficiency | ancestors: renal tubular transport disease, glucose transport disorder, inherited kidney disorder, kidney disorder | def: Familial Renal Glucosuria (FRG) is characterized by the presence of persistent isolated glucosuria in the absence of both generalized proximal tubular dysfunction and hyperglycemia. FRG is usually con...",
+"ko": "가족성 신성 포도당뇨증",
+"text": "가족성 신성 포도단뇨증",
+"kind": "typo"
+},
+{
+"i": -23007,
+"id": "MONDO:0001797",
+"concept": "- MONDO:0001797 | chancroid | ancestors: primary bacterial infectious disease, bacterial sexually transmitted disease, haemophilus infectious disease, bacterial infectious disease | def: Chancroid is a bacterial infection that is spread through sexual contact. It is caused by a type of bacteria called Haemophilus ducreyi. Chancroid is characterized by a small bump on the genital which...",
+"ko": "연성하감",
+"text": "바가스페증",
+"kind": "typo"
+},
+{
+"i": 6845,
+"id": "MONDO:0005756",
+"concept": "- MONDO:0005756 | ethmoid sinusitis | syn: ethmoid bone sinusitis; ethmoidal sinusitis; sinusitis of ethmoid bone | ancestors: sinusitis, disorder of facial skeleton, paranasal sinus disorder, inflammatory disease | def: An acute or chronic inflammatory process affecting the mucous membrane of the ethmoid sinus.",
+"ko": "사골동염",
+"text": "사골동염이라고 콧속 염증 진단받았어요",
+"kind": "spoken"
+},
+{
+"i": 6846,
+"id": "MONDO:0003275",
+"concept": "- MONDO:0003275 | middle ear cancer | syn: cancer of middle ear; malignant middle ear neoplasm; malignant middle Ear tumor; malignant middle Ear tumour | ancestors: malignant ear neoplasm, auditory system cancer, neoplasm of middle ear, sensory system cancer | def: A malignant neoplasm involving the middle ear",
+"ko": "중이암",
+"text": "고막 안쪽 빈 공간에 생긴 암",
+"kind": "everyday"
+},
+{
+"i": 6847,
+"id": "MONDO:0001919",
+"concept": "- MONDO:0001919 | cystoid macular retinal degeneration | syn: cystoid macular degeneration of retina | ancestors: degeneration of macula and posterior pole, macular degeneration, retinal degeneration, retinal disorder",
+"ko": "낭포성 황반 망막변성",
+"text": "망막 중심부에 물주머니가 생겨 글씨가 흐려지는 병",
+"kind": "everyday"
+},
+{
+"i": 6848,
+"id": "MONDO:0004733",
+"concept": "- MONDO:0004733 | pyriform sinus cancer | syn: malignant neoplasm of pyriform fossa; malignant neoplasm of pyriform sinus; malignant neoplasm of the pyriform fossa; malignant neoplasm of the pyriform sinus | ancestors: hypopharynx cancer, pharynx cancer, neoplasm of hypopharynx, respiratory system cancer | def: A primary or metastatic malignant neoplasm that affects the pyriform sinus.",
+"ko": "이상와암",
+"text": "목 안쪽 음식 길 옆에 생긴 암",
+"kind": "everyday"
+},
+{
+"i": -23014,
+"id": "MONDO:0004830",
+"concept": "- MONDO:0004830 | fasciitis | syn: fascia inflammation; fasciitis; fasciitis (disease); Fascitis | ancestors: musculoskeletal system disorder, connective tissue disorder, inflammatory disease, disease by body system or component | def: Inflammation process in fascia.",
+"ko": "근막염",
+"text": "심장이 갑자기 빨리 뛰어서 검사했더니 전기 이상이래요",
+"kind": "spoken"
+},
+{
+"i": 6849,
+"id": "MONDO:0006836",
+"concept": "- MONDO:0006836 | Listeria meningitis | syn: Listeria meningitis; Listeria monocytogenes caused infectious meningitis; Listeria monocytogenes infectious meningitis | ancestors: listeriosis, bacterial meningitis, primary bacterial infectious disease, vector-borne disease | def: Inflammation of the meninges caused by listeria monocytogenes infection, usually occurring in individuals under the age of 3 years or over the age of 50 years. It may occur at any age in individuals w...",
+"ko": "리스테리아 수막염",
+"text": "리스테리아 슈막염",
+"kind": "typo"
+},
+{
+"i": 6850,
+"id": "MONDO:0037847",
+"concept": "- MONDO:0037847 | vertebral joint disorder | syn: disease of intervertebral joint; disease or disorder of intervertebral joint; disorder of intervertebral joint; disorder of joint of spine | ancestors: vertebral column disorder, arthropathy, skeletal system disorder, musculoskeletal system disorder | def: A disease that involves the intervertebral joint.",
+"ko": "척추 관절 질환",
+"text": "허리 뒤쪽 척추 관절이 아파서 관절 주사 맞았어요",
+"kind": "spoken"
+},
+{
+"i": 6851,
+"id": "MONDO:0006970",
+"concept": "- MONDO:0006970 | sialolithiasis | syn: sialolith; Stone of salivary gland or duct | ancestors: salivary gland disorder, mouth disorder, disease by body system or component, human disease | def: A concretion in the salivary gland.",
+"ko": "침샘결석증",
+"text": "밥 먹을 때마다 턱밑이 붓는데 침샘결석증이래요",
+"kind": "spoken"
+},
+{
+"i": 6852,
+"id": "MONDO:0006672",
+"concept": "- MONDO:0006672 | balanitis | syn: balanitis; glans penis inflammation; inflammation of glans penis | ancestors: penile disorder, inflammatory disease, male reproductive system disorder, disease by developmental or physiological process | def: An infectious or non-infectious inflammatory process that affects the glans penis. Symptoms include redness and pain of the glans penis and foreskin and discharge.",
+"ko": "귀두염",
+"text": "귀두 부분이 짓무르고 가려운 염증",
+"kind": "everyday"
+},
+{
+"i": 6853,
+"id": "MONDO:0007150",
+"concept": "- MONDO:0007150 | arcus senilis | syn: arcus of cornea; arcus senilis; corneal arcus | ancestors: corneal degeneration, hereditary disease, corneal disorder, disease of genetic or genomic mechanism | def: A corneal disease in which there is a deposition of phospholipid and cholesterol in the corneal stroma and anterior sclera.",
+"ko": "노인환",
+"text": "검은자 가장자리에 흰 고리가 생기는 것",
+"kind": "everyday"
+},
+{
+"i": 6854,
+"id": "MONDO:0007201",
+"concept": "- MONDO:0007201 | blepharophimosis, ptosis, and epicanthus inversus syndrome | syn: blepharophimosis types 1 and 2; blepharophimosis, epicanthus inversus, and ptosis, type 1; blepharophimosis, epicanthus inversus, and ptosis, type 2; blepharophimosis, ptosis, and epicanthus inversus | ancestors: autosomal dominant disease, telecanthus, inherited primary ovarian failure, autosomal genetic disease | def: Blepharophimosis, Ptosis, and Epicanthus Inversus syndrome (BPES) is an ophthalmic disorder characterized by blepharophimosis, ptosis, epicanthus inversus, and telecanthus, that can appear associated ...",
+"ko": "안검열 협착, 안검하수 및 역내안각췌피 증후군",
+"text": "눈꺼풀이 좁게 처지고 눈구석 피부가 접힌 선천성 병",
+"kind": "everyday"
+},
+{
+"i": 6855,
+"id": "MONDO:0010651",
+"concept": "- MONDO:0010651 | Menkes disease | syn: kinky hair disease; kinky hair syndrome; MD; Menkes disease | ancestors: syndromic disease, inborn metal metabolism disorder, disorder of copper metabolism, disease by body system or component | def: A usually severe multisystemic disorder of copper metabolism, characterized by progressive neurodegeneration and marked connective tissue anomalies as well as typical sparse abnormal steely hair.",
+"ko": "멩케스병",
+"text": "멩케스벙",
+"kind": "typo"
+},
+{
+"i": 6856,
+"id": "MONDO:0002127",
+"concept": "- MONDO:0002127 | urethral stricture | syn: urethral stricture; urethral stricture (disease) | ancestors: urethral obstruction, urethral disorder, urinary system disorder, disease by body system or component | def: Narrowing of any part of the urethra. It is characterized by decreased urinary stream and often other obstructive voiding symptoms.",
+"ko": "요도 협착",
+"text": "요도 협작",
+"kind": "typo"
+},
+{
+"i": 6857,
+"id": "MONDO:0017282",
+"concept": "- MONDO:0017282 | alveolar echinococcosis | syn: Echinococcus multilocularis caused disease or disorder; Echinococcus multilocularis disease or disorder; Echinococcus multilocularis infection; Echinococcus multilocularis infectious disease | ancestors: echinococcosis, Cestode infectious disease, helminthiasis, parasitic infectious disease | def: Alveolar echinococcosis (AE) is a rare parasitic disorder that occurs after ingestion of eggs of Echinococcus multilocularis. AE is characterized by an initial asymptomatic incubation period of many y...",
+"ko": "다포성 에키노코쿠스증",
+"text": "다포성 에키노꼬쿠스증",
+"kind": "typo"
+},
+{
+"i": 6858,
+"id": "MONDO:0009303",
+"concept": "- MONDO:0009303 | anti-glomerular basement membrane disease | syn: anti-GBM syndrome; anti-glomerular basement membrane disease; Goodpasture Syndrome; Goodpasture syndrome | ancestors: autoimmune disease, immune system disorder, disease by body system or component, human disease | def: An autoimmune disease that affects the lungs and kidneys and is characterized by pulmonary alveolar hemorrhage (bleeding in the lungs) and a kidney disease known as glomerulonephritis. Some use the te...",
+"ko": "항사구체기저막병",
+"text": "폐와 콩팥을 면역이 같이 공격하는 병",
+"kind": "everyday"
+},
+{
+"i": 6859,
+"id": "MONDO:0018432",
+"concept": "- MONDO:0018432 | lichen myxedematosus | syn: lichen myxoedematosus | ancestors: cutaneous mucinosis, dermis disorder, skin disorder, integumentary system disorder",
+"ko": "점액부종성 태선",
+"text": "점액부종성 태설",
+"kind": "typo"
+},
+{
+"i": 6860,
+"id": "MONDO:0019978",
+"concept": "- MONDO:0019978 | Robinow syndrome | syn: acral dysostosis with facial and genital abnormalities; fetal face syndrome; foetal face syndrome; mesomelic dwarfism-small genitalia syndrome | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, skeletal dysplasia, disease by body system or component | def: Robinow syndrome (RS) is a rare genetic syndrome characterized by limb shortening and abnormalities of the head, face and external genitalia.",
+"ko": "로비노 증후군",
+"text": "로비노 중후군",
+"kind": "typo"
+},
+{
+"i": 6861,
+"id": "MONDO:0020413",
+"concept": "- MONDO:0020413 | encircling double aortic arch | ancestors: aortic arch defects, congenital anomaly of the great arteries, congenital heart malformation, congenital anomaly of cardiovascular system | def: Encircling double aortic arch is a very rare congenital anomaly of the great arteries characterized by the presence of two aortic arches (right and left) which encircle and compress the trachea and es...",
+"ko": "고리형 이중 대동맥궁",
+"text": "고리형 이중 대동백궁",
+"kind": "typo"
+},
+{
+"i": 6862,
+"id": "MONDO:0002727",
+"concept": "- MONDO:0002727 | olfactory nerve disorder | syn: disease of olfactory nerve; disease or disorder of olfactory nerve; disorder of 1st nerve; disorder of olfactory [1st] nerve | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, brain disorder, nervous system disorder | def: A disease involving the olfactory nerve.",
+"ko": "후각신경 질환",
+"text": "후각신경 질횐",
+"kind": "typo"
+},
+{
+"i": 6863,
+"id": "MONDO:0022825",
+"concept": "- MONDO:0022825 | congenital cystic eye | ancestors: syndromic disease, disease by body system or component, human disease, disease",
+"ko": "선천성 낭성 안구",
+"text": "눈 속에 물주머니가 생기고 태어난 병",
+"kind": "everyday"
+}
+]

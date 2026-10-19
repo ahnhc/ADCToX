@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0011906",
+"concept": "- MONDO:0011906 | congenital bile acid synthesis defect 1 | syn: 3-beta-hydroxy-delta-5-C27-steroid oxidoreductase deficiency type 1; BASD1; bile acid synthesis defect, congenital, type 1; CBAS1 | ancestors: congenital bile acid synthesis defect, steroid inherited metabolic disorder, inherited lipid metabolism disorder, inborn errors of metabolism | def: Congenital bile acid synthesis defect type 1 (BAS defect type 1) is the most common anomaly of bile acid synthesis characterized by variable manifestations of progressive cholestatic liver disease, an...",
+"ko": "선천성 담즙산 합성 결함 1형",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007395",
+"concept": "- MONDO:0007395 | craniofacial-deafness-hand syndrome | syn: CDHS; craniofacial-deafness-hand syndrome; Sommer-Young-Wee-Frye syndrome | ancestors: hereditary disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, disease of genetic or genomic mechanism, multiple congenital anomalies/dysmorphic syndrome | def: Craniofacial-deafness-hand syndrome (CDHS) is an autosomal dominant disorder, described in one family to date, characterized by characteristic facial features (flat facial profile with normal calvariu...",
+"ko": "두개안면-청각장애-손 증후군",
+"alt": [
+"좀머-영-위-프라이 증후군"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008815",
+"concept": "- MONDO:0008815 | argininosuccinic aciduria | syn: argininosuccinase deficiency; argininosuccinatelyase deficiency; argininosuccinic acid lyase deficiency; argininosuccinic aciduria | ancestors: urea cycle disorder or inherited hyperammonemia, urea cycle disorder, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: Argininosuccinic aciduria (ASA) is a disorder of urea cycle metabolism most commonly characterized by either a severe, neonatal-onset form that manifests with hyperammonemia accompanied with vomiting,...",
+"ko": "아르기니노석신산뇨증",
+"alt": [
+"아르기니노석신산 분해효소 결핍증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005116",
+"concept": "- MONDO:0005116 | Whipple disease | syn: intestinal lipodystrophy; intestinal lipophagic granulomatosis; secondary non-tropical sprue; Tropheryma whipplei caused disease or disorder | ancestors: intestinal disorder, bacterial infectious disease, digestive system infectious disorder, digestive system disorder | def: A systemic infection caused by the Gram-positive bacterium Tropheryma whipplei. It affects the small intestine resulting in malabsorption. Other sites or systems affected by the infection are the join...",
+"ko": "휘플병",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004894",
+"concept": "- MONDO:0004894 | cyclotropia | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "회선사시",
+"alt": [
+"회전사시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0044211",
+"concept": "- MONDO:0044211 | idiopathic urticaria | ancestors: urticaria, idiopathic disease, dermatitis, disease by etiologic mechanism",
+"ko": "특발성 두드러기",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004549",
+"concept": "- MONDO:0004549 | cork-handlers' disease | syn: cork worker's lung; cork workers lung; Suberosis | ancestors: fungal lung infectious disease, hypersensitivity pneumonitis, occupational lung disease, fungal infectious disease | def: An extrinsic allergic alveolitis caused by inhalation of cork dust containing the antigens produced by the fungus Penicillium glabrum. The symptoms include dyspnea, wheezing cough, fever and asthenia.",
+"ko": "코르크 취급자병",
+"alt": [
+"코르크폐증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0013209",
+"concept": "- MONDO:0013209 | metabolic dysfunction-associated steatotic liver disease | syn: fatty liver disease, nonalcoholic; MASLD; NAFLD; NAFLD - nonalcoholic fatty liver disease | ancestors: fatty liver disease, liver disorder, hepatobiliary disorder, endocrine system disorder | def: Metabolic dysfunction-associated steatotic liver disease (MASLD, formerly known as nonalcoholic fatty liver disease or NAFLD) is a type of liver disease that is not caused by alcohol. It typically doe...",
+"ko": "대사 기능이상 연관 지방간질환",
+"alt": [
+"비알코올성 지방간질환"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001548",
+"concept": "- MONDO:0001548 | hepatic coma | ancestors: hepatic encephalopathy, toxic encephalopathy, brain disorder, nervous system disorder | def: A syndrome characterized by central nervous system dysfunction in association with liver failure, including portal-systemic shunts. Clinical features include lethargy and confusion (frequently progres...",
+"ko": "간성 혼수",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011929",
+"concept": "- MONDO:0011929 | chromosome 1p36 deletion syndrome | syn: 1p telomere deletion syndrome; 1p36 deletion syndrome; 1p36 microdeletion syndrome; chromosome 1p36 deletion syndrome, distal, isolated cases | ancestors: partial deletion of the short arm of chromosome 1, partial deletion of chromosome 1, syndrome caused by partial chromosomal deletion, chromosome 1 disorder | def: A chromosomal anomaly characterized by distinctive facial dysmorphic features, hypotonia, developmental delay, intellectual disability, seizures, heart defects, hearing impairment and prenatal onset g...",
+"ko": "1p36 결실 증후군",
+"alt": [
+"1번 염색체 1p36 결실 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002460",
+"concept": "- MONDO:0002460 | lacrimal system cancer | syn: cancer of lacrimal apparatus; lacrimal apparatus cancer; lacrimal system neoplasm; lacrimal system neoplasms | ancestors: lacrimal apparatus disorder, ocular cancer, eye adnexa disorder, eye disorder | def: A cancer that involves the lacrimal apparatus.",
+"ko": "눈물기관암",
+"alt": [
+"누기계 암"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001897",
+"concept": "- MONDO:0001897 | bilateral hyperactive labyrinth | syn: hyperactive labyrinth, bilateral | ancestors: inner ear disorder, auditory system disorder, disorder of ear, disease by body system or component",
+"ko": "양측 미로 과반응",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019649",
+"concept": "- MONDO:0019649 | idiopathic steroid-sensitive nephrotic syndrome with focal segmental hyalinosis | syn: idiopathic steroid-sensitive nephrotic syndrome with focal segmental glomerulosclerosis | ancestors: idiopathic steroid-sensitive nephrotic syndrome, idiopathic nephrotic syndrome, nephrotic syndrome, idiopathic disease",
+"ko": "국소분절 초자질변성을 동반한 특발성 스테로이드 감수성 신증후군",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005774",
+"concept": "- MONDO:0005774 | glanders | syn: Burkholderia mallei caused disease or disorder; Burkholderia mallei disease or disorder; Burkholderia mallei infectious disease; farcy pipes | ancestors: primary bacterial infectious disease, burkholderia infectious disease, bacterial infectious disease, gram-negative bacterial infections | def: A condition resulting from infection by Burkholderia mallei, which mainly affects horses.",
+"ko": "비저",
+"alt": [
+"비저병"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0010759",
+"concept": "- MONDO:0010759 | Wildervanck syndrome | syn: Cervicooculoacoustic syndrome; Wildervanck syndrome | ancestors: Klippel-Feil syndrome, syndromic disease, musculoskeletal system disorder, hereditary disease | def: Wildervanck syndrome is characterized by the triad of cervical vertebral fusion (Klippel-Feil anomaly), bilateral abducens palsy with retracted eyes (Duane syndrome) and congenital perceptive deafness...",
+"ko": "빌더반크 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009382",
+"concept": "- MONDO:0009382 | hyperbilirubinemia, shunt, primary | syn: hyperbilirubinemia, shunt, primary; PSHB | ancestors: hereditary hyperbilirubinemia, inborn disorder of bilirubin metabolism, hyperbilirubinemia, inborn disorder of porphyrin metabolism",
+"ko": "일차성 단락 고빌리루빈혈증",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001138",
+"concept": "- MONDO:0001138 | angiodysplasia of intestine | syn: intestine angiodysplasia | ancestors: angiodysplasia, intestinal disorder, vascular disorder, digestive system disorder | def: A angiodysplasia that involves the intestine.",
+"ko": "장 혈관이형성증",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0024228",
+"concept": "- MONDO:0024228 | miliaria profunda | ancestors: miliaria, syndromic disease, sweat gland disorder, disease by body system or component | def: A miliaria that is characterized by ductal occlusion of the papillary dermis causing the gland's secretions to leak between the superficial and deep layers of the skin resulting in a rapidly-spreading...",
+"ko": "심부 땀띠",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015197",
+"concept": "- MONDO:0015197 | aneurysm of sinus of Valsalva | ancestors: aortic disorder, disorder of development or morphogenesis, arterial disorder, disease by developmental or physiological process | def: Sinus of Valsalva aneurysm (SVA) is a rare congenital heart malformation of one or more of the aortic sinuses, consisting of a dilation that when unruptured is usually asymptomatic but when ruptured p...",
+"ko": "발살바동 동맥류",
+"alt": [
+"발살바굴 동맥류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001516",
+"concept": "- MONDO:0001516 | spinal muscular atrophy | ancestors: anterior horn disorder, hereditary motor neuron disease, spinal cord disorder, motor neuron disorder | def: A motor neuron disease that affect the muscles, and characterized by muscle weakness and atrophy resulting from progressive degeneration and irreversible loss of the anterior horn cells in the spinal ...",
+"ko": "척수성 근위축증",
+"alt": [
+"척수근위축증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+}
+]

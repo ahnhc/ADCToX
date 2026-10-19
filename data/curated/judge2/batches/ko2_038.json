@@ -1,0 +1,247 @@
+[
+{
+"id": "MONDO:0001437",
+"concept": "- MONDO:0001437 | pulmonary alveolar proteinosis | syn: pulmonary alveolar proteinosis | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: A rare lung disorder characterized by the filling of the pulmonary alveoli with proteinaceous material which stains positive with periodic acid-Schiff stain. It may be idiopathic or secondary due to h...",
+"ko": "폐포 단백질증",
+"alt": [
+"폐포단백증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008262",
+"concept": "- MONDO:0008262 | Poland syndrome | syn: Poland anomaly; Poland sequence; Poland syndrome | ancestors: syndromic disease, syndromic breast hypoplasia/aplasia, congenital limb malformation, non-syndromic limb reduction defect | def: Poland syndrome is marked by a unilateral absence or hypoplasia of the pectoralis major muscle (most frequently involving the sternocostal portion), and a variable degree of ipsilateral hand anomalies...",
+"ko": "폴란드 증후군",
+"alt": [
+"폴란드 기형"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002183",
+"concept": "- MONDO:0002183 | enthesopathy | syn: disease of enthesis; disease or disorder of enthesis; disorder of enthesis; enthesis disease | ancestors: musculoskeletal system disorder, connective tissue disorder, disease by body system or component, human disease | def: A disorder involving the attachment of a tendon or ligament to a bone",
+"ko": "건부착부병증",
+"alt": [
+"부착부병증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0019148",
+"concept": "- MONDO:0019148 | Wolman disease | syn: Wolman disease with hypolipoproteinemia and acanthocytosis; Wolman's disease | ancestors: lysosomal acid lipase deficiency, syndromic dyslipidemia, lysosomal lipid storage disorder, syndromic disease | def: Wolman disease represents the most severe manifestation of lysosomal acid lipase deficiency. Milder phenotypes as a whole are referred to as cholesterol ester storage disease. The acid lipase enzyme p...",
+"ko": "볼만병",
+"alt": [
+"울먼병"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004673",
+"concept": "- MONDO:0004673 | lower lip cancer | syn: cancer of lower lip; lower lip cancer; malignant lower lip neoplasm; malignant neoplasm of lower lip | ancestors: lip cancer, oral cavity cancer, head and neck cancer, lip neoplasm | def: A malignant neoplasm involving the lower lip.",
+"ko": "아랫입술암",
+"alt": [
+"하순암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0005692",
+"concept": "- MONDO:0005692 | cat-scratch disease | syn: bartonellosis due to Bartonella henselae infection; benign lymphoreticulosis; Cat-scratch fever | ancestors: lymphadenitis, bartonellosis, lymph node disorder, inflammatory disease | def: Cat scratch disease is an infectious illness caused by the bacteria bartonella (Bartonella henselae). It is believed to be transmitted by cat scratches, bites, or exposure to cat saliva. This self-lim...",
+"ko": "고양이할큄병",
+"alt": [
+"묘소병"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0002186",
+"concept": "- MONDO:0002186 | acute maxillary sinusitis | syn: acute antritis; maxillary sinusitis, acute | ancestors: maxillary sinusitis, acute disease, sinusitis, mouth disorder | def: Acute form of maxillary sinusitis.",
+"ko": "급성 상악동염",
+"alt": [
+"급성 상악굴염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007925",
+"concept": "- MONDO:0007925 | myelodysplastic syndrome associated with isolated del(5q) | syn: 5Q minus syndrome; 5Q- syndrome; 5q- syndrome; 5q- syndrome, refractory macrocytic anaemia due to 5q deletion | ancestors: macrocytic anemia, hereditary disease, partial deletion of the long arm of chromosome 5, myelodysplastic syndrome | def: A myelodysplastic syndrome characterized by a deletion between bands q31 and 33 on chromosome 5. The number of blasts in the bone marrow and blood is <5%. The bone marrow is usually hypercellular or n...",
+"ko": "단독 del(5q)와 연관된 골수형성이상 증후군",
+"alt": [
+"5q- 증후군"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0042485",
+"concept": "- MONDO:0042485 | infective arthritis | syn: infective arthritis | ancestors: infectious disease, arthritic joint disease, disease of primarily extrinsic mechanism, bone inflammation disease | def: The inflammation of one or more joints caused by any infectious pathogen within the joint space. Symptoms include pain, stiffness, and decreased range of motion in the affected joint.",
+"ko": "감염성 관절염",
+"alt": [
+"화농성 관절염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0006763",
+"concept": "- MONDO:0006763 | frozen shoulder | syn: adhesive capsulitis; adhesive capsulitis of shoulder | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: A painful inflammatory process leads to a mechanical block in active and passive range of motion (ROM) of the shoulder. Adhesive capsulitis of the shoulder is characterized by functional loss of passi...",
+"ko": "동결견",
+"alt": [
+"오십견",
+"유착성 관절낭염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002776",
+"concept": "- MONDO:0002776 | external ear disorder | syn: disease of external ear; disease or disorder of external ear; disorder of external ear; external ear disease | ancestors: auditory system disorder, disorder of ear, disease by body system or component, otorhinolaryngologic disease | def: A disease involving the external ear.",
+"ko": "외이 질환",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016047",
+"concept": "- MONDO:0016047 | endophthalmitis | ancestors: inflammatory disease, eye infectious disorder, disease by developmental or physiological process, eye disorder | def: An infectious process affecting the internal structures of the eye.",
+"ko": "안내염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0009060",
+"concept": "- MONDO:0009060 | cystic disease of lung | syn: cystic disease of lung | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "폐 낭성 질환",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002896",
+"concept": "- MONDO:0002896 | primary syphilis | syn: early syphilis, symptomatic | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: The subclinical or symptomatic stage of syphilis, occurring at an average of three weeks after contact with an infected individual. It manifests with one or more painless, indurated ulcers (chancres) ...",
+"ko": "1기 매독",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004583",
+"concept": "- MONDO:0004583 | transient retinal arterial occlusion | syn: transient retinal arterial occlusion | ancestors: retinal artery occlusion, retinal vascular occlusion, retinal vascular disorder, vascular occlusion disorder | def: A partial, temporary occlusion of the retinal artery.",
+"ko": "일과성 망막동맥 폐쇄",
+"alt": [
+"일과성 망막동맥 폐색"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008965",
+"concept": "- MONDO:0008965 | CHARGE syndrome | syn: CHARGE association; CHARGE syndrome; coloboma, heart defects, choanal atresia, retardation of Growth and development, genital abnormalities, and Ear anomalies association; coloboma, heart malformation, choanal atresia, retardation of Growth and development, genital abnormalities, and Ear malformations (CHARGE) association | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, congenital hypogonadotropic hypogonadism, neurocristopathy | def: CHARGE syndrome is a multiple congenital anomaly syndrome characterized by the variable combination of multiple anomalies, mainly Coloboma; Choanal atresia/stenosis; Cranial nerve dysfunction; Charact...",
+"ko": "CHARGE 증후군",
+"alt": [
+"CHARGE 연합"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018746",
+"concept": "- MONDO:0018746 | mucous membrane pemphigoid | syn: benign mucous Membrane pemphigoid; cicatricial pemphigoid; mucosal pemphigoid; Mucosynechial pemphigoid | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: Mucous membrane pemphigoid is a bullous dermatosis characterized clinically by blistering of the mucous membranes followed by scarring, and immunologically by IgG, IgA and/or C3 deposits on the epider...",
+"ko": "점막 유천포창",
+"alt": [
+"점막류천포창",
+"반흔성 유천포창"
+],
+"organs": [
+"gastrointestinal",
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005291",
+"concept": "- MONDO:0005291 | brain aneurysm | ancestors: cerebral arterial disease, intracranial arterial disease, cerebrovascular disorder, brain disorder | def: A congenital or acquired aneurysm within the cranium.",
+"ko": "뇌동맥류",
+"alt": [
+"뇌 동맥류"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003543",
+"concept": "- MONDO:0003543 | trigeminal nerve disorder | syn: disease of trigeminal nerve; disease or disorder of trigeminal nerve; disorder of trigeminal nerve; trigeminal nerve disease | ancestors: cranial nerve neuropathy, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the trigeminal nerve.",
+"ko": "삼차신경 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005821",
+"concept": "- MONDO:0005821 | late congenital syphilis | syn: late congenital syphilis; late congenital syphilis (2 years or more) | ancestors: congenital syphilis, syphilis, infectious embryofetopathy, primary bacterial infectious disease",
+"ko": "후기 선천성 매독",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 9
+}
+]

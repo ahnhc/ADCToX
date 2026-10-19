@@ -1,0 +1,229 @@
+[
+{
+"id": "MONDO:0021527",
+"concept": "- MONDO:0021527 | benign neoplasm of meninges | syn: benign meningeal neoplasm; benign meningeal neoplasms; benign meningeal tumor; benign meningeal tumors | ancestors: central nervous system organ benign neoplasm, tumor of meninges, nervous system benign neoplasm, central nervous system neoplasm | def: A benign neoplasm that involves the meningeal cluster.",
+"ko": "뇌척수막 양성 신생물",
+"alt": [
+"수막 양성 종양"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005012",
+"concept": "- MONDO:0005012 | cutaneous melanoma | syn: cutaneous (skin) melanoma; cutaneous melanoma; cutaneous melanoma (disease); malignant cutaneous melanoma | ancestors: skin cancer, melanoma, melanocytic skin neoplasm, integumentary system cancer | def: A primary melanoma arising from atypical melanocytes in the skin. Precursor lesions include acquired and congenital melanocytic nevi, and dysplastic nevi. Several histologic variants have been recogni...",
+"ko": "피부 흑색종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017610",
+"concept": "- MONDO:0017610 | epidermolysis bullosa simplex | syn: EBS; EEB; epidermolysis bullosa simplex | ancestors: inherited epidermolysis bullosa, epidermolysis bullosa, epidermal disease, hereditary skin disorder | def: Epidermolysis bullosa simplex (EBS) is a group of hereditary epidermolysis bullosa (HEB) disorders characterized by skin fragility resulting in intraepidermal blisters and erosions that occur either s...",
+"ko": "단순 수포성 표피박리증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002866",
+"concept": "- MONDO:0002866 | duodenal disorder | syn: disease of duodenum; disease or disorder of duodenum; disorder of duodenum; duodenum disease | ancestors: small intestine disorder, intestinal disorder, digestive system disorder, disease by body system or component | def: Pathological conditions in the duodenum region of the small intestine (intestine, small).",
+"ko": "십이지장 질환",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0043555",
+"concept": "- MONDO:0043555 | infantile diarrhea | syn: diarrheal disease of infancy; infantile diarrhea; infantile diarrheal disease; infantile onset diarrheal disease | ancestors: dysentery, inflammatory diarrhea, acute diarrhea, intestinal infectious disease | def: Diarrhea occurring in infants from newborn to 24-months old.",
+"ko": "영아 설사",
+"alt": [
+"영아 설사병"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020866",
+"concept": "- MONDO:0020866 | nasopharyngeal diphtheria | syn: nasopharyngeal diphtheria | ancestors: nasopharyngeal disorder, diphtheria, respiratory tract infectious disorder, upper respiratory tract disorder | def: Infection of the nasopharynx by Corynebacterium diphtheriae.",
+"ko": "비인두 디프테리아",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0850421",
+"concept": "- MONDO:0850421 | acute hemorrhagic pancreatitis | ancestors: acute pancreatitis, pancreatitis, acute disease, pancreas disorder | def: An acute pancreatits that is characterized by acute inflammation of the pancreas in which the initial edematous pancreatitis evolved into necrosis accompanied by hemorrhage.",
+"ko": "급성 출혈성 췌장염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005890",
+"concept": "- MONDO:0005890 | osteitis fibrosa | syn: osteitis fibrosa cystica; Von Recklinghausen disease of Bone; Von Recklinghausen's disease of Bone | ancestors: bone resorption disease, bone remodeling disease, bone disorder, skeletal system disorder | def: A disorder that is characterized by bone cysts and fractures, resulting from hyperparathyroidism.",
+"ko": "섬유성 골염",
+"alt": [
+"폰 레클링하우젠 뼈병"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004612",
+"concept": "- MONDO:0004612 | malignant histiocytosis | syn: histiocytic medullary reticulosis; malignant histiocytic disease; malignant midline reticulosis; malignant reticulosis | ancestors: histiocytosis, lymphatic system disorder, lymphoid system disorder, immune system disorder | def: Distinctive neoplastic disorders of histiocytes. Included are malignant neoplasms of macrophages and dendritic cells.",
+"ko": "악성 조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004496",
+"concept": "- MONDO:0004496 | myocarditis | syn: inflammation of myocardium; myocardial inflammation (finding); myocardium inflammation | ancestors: intrinsic cardiomyopathy, inflammation of heart layer, myocardial disorder, cardiomyopathy | def: Myocarditis is a condition that is characterized by inflammation of the heart muscle (myocardium). Some affected people have no noticeable symptoms of the condition. When present, signs and symptoms m...",
+"ko": "심근염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0043765",
+"concept": "- MONDO:0043765 | presbycusis | syn: age-related hearing impairment; ARHI; presbycusis | ancestors: sensorineural hearing loss disorder, hearing loss disorder, hearing disorder, auditory system disorder | def: Bilateral hearing loss caused by progressive degeneration of cochlear structures and central auditory pathways, typically associated with the aging process.",
+"ko": "노인성 난청",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0043541",
+"concept": "- MONDO:0043541 | viral conjunctivitis | syn: viral conjunctivitis; Viruses caused conjunctivitis (disease); Viruses conjunctivitis (disease) | ancestors: conjunctivitis, viral eye infection, conjunctival disorder, inflammatory disease | def: Conjunctivitis resulting from viral infection.",
+"ko": "바이러스성 결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005392",
+"concept": "- MONDO:0005392 | scoliosis | ancestors: disease of bone structure, bone disorder, skeletal system disorder, musculoskeletal system disorder | def: A congenital or acquired spinal deformity characterized by lateral curvature of the spine.",
+"ko": "척추측만증",
+"alt": [
+"측만증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 16
+},
+{
+"id": "MONDO:0002757",
+"concept": "- MONDO:0002757 | acute allergic sanguinous otitis media | ancestors: acute sanguinous otitis media, acute transudative otitis media, non-suppurative otitis media, acute disease | def: A acute sanguinous otitis media caused by an allergen.",
+"ko": "급성 알레르기성 혈성 중이염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0024270",
+"concept": "- MONDO:0024270 | parasitic intestinal disorder | syn: intestine parasitic infection; parasitic intestinal disease | ancestors: intestinal disorder, parasitic infectious disease, digestive system infectious disorder, digestive system disorder | def: Infections of the INTESTINES with PARASITES, commonly involving PARASITIC WORMS. Infections with roundworms (NEMATODE INFECTIONS) and tapeworms (CESTODE INFECTIONS) are also known as HELMINTHIASIS.",
+"ko": "기생충성 장 질환",
+"alt": [
+"장 기생충 감염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0015536",
+"concept": "- MONDO:0015536 | papular xanthoma | ancestors: non-Langerhans cell histiocytosis, histiocytosis, lymphatic system disorder, lymphoid system disorder | def: Papular xanthoma is a form of non-Langerhans cell histiocytosis characterized by cutaneous presentation of solitary or disseminated yellow to orange-brown papular or papulonodular, noncoalescent, asym...",
+"ko": "구진성 황색종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015040",
+"concept": "- MONDO:0015040 | myelodysplastic syndrome with excess blasts-1 | syn: MDS-EB-1; myelodysplastic syndrome with Excess blasts-1; RAEB-1; RAEB-I | ancestors: myelodysplastic syndrome with excess blasts, myelodysplastic syndrome, hematopoietic and lymphoid cell neoplasm, myeloid hemopathy | def: A myelodysplastic syndrome defined by 5-9% blasts in the bone marrow, and <5% blasts in the blood. Approximately 25% of cases progress to an acute leukemia. (WHO)",
+"ko": "모세포 증가형 골수이형성 증후군-1",
+"alt": [
+"골수이형성 증후군, 모세포 과잉형-1"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019533",
+"concept": "- MONDO:0019533 | paroxysmal cold hemoglobinuria | syn: Donath-Landsteiner hemolytic anaemia; Donath-Landsteiner hemolytic anemia; Donath-Landsteiner syndrome; PCH | ancestors: autoimmune hemolytic anemia, cold type, autoimmune hemolytic anemia, autoimmune disorder of blood, hemolytic anemia | def: Paroxysmal cold hemoglobinuria (PCH) is a very rare subtype of autoimmune hemolytic anemia (AIHA), caused by the presence of cold-reacting autoantibodies in the blood and characterized by the sudden p...",
+"ko": "발작성 한랭 혈색소뇨증",
+"alt": [
+"도나스-란트슈타이너 용혈성 빈혈"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004862",
+"concept": "- MONDO:0004862 | vitreous abscess | ancestors: vitreous disorder, purulent endophthalmitis, abscess, vitreous body disorder",
+"ko": "유리체 농양",
+"alt": [
+"초자체 농양"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002643",
+"concept": "- MONDO:0002643 | vestibular disorder | syn: disease of vestibular labyrinth; disease of vestibular system; disease or disorder of vestibular labyrinth; disorder of vestibular labyrinth | ancestors: inner ear disorder, auditory system disorder, disorder of ear, disease by body system or component | def: Pathological processes of the vestibular labyrinth which contains part of the balancing apparatus. Patients with vestibular diseases show instability and are at risk of frequent falls.",
+"ko": "전정 질환",
+"alt": [
+"전정계 질환"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 3
+}
+]

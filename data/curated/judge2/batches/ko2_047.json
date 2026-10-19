@@ -1,0 +1,237 @@
+[
+{
+"id": "MONDO:0021839",
+"concept": "- MONDO:0021839 | spirochaetales infections | ancestors: bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Infections with bacteria of the order SPIROCHAETALES.",
+"ko": "스피로헤타목 감염",
+"alt": [
+"나선균 감염"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0005810",
+"concept": "- MONDO:0005810 | infectious mononucleosis | syn: Gammaherpesviral mononucleosis; glandular fever; Mono | ancestors: Epstein-Barr virus infection, Herpesviridae infectious disease, primary viral infectious disease, viral infectious disease | def: A condition characterized by an increase in mononuclear white blood cells and swollen lymph nodes, which is usually caused by infection with the Epstein-Barr virus.",
+"ko": "전염성 단핵구증",
+"alt": [
+"선열"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0018892",
+"concept": "- MONDO:0018892 | Wyburn-Mason syndrome | syn: bonnet-Dechaume-Blanc syndrome; CAMS2; Cerebrofacial arteriovenous metameric syndrome type 2 | ancestors: skin hemangioma, cerebrofacial arteriovenous metameric syndrome, skin vascular disease, benign eyelid neoplasm | def: Wyburn-Mason syndrome or Bonnet-Dechaume-Blanc syndrome is characterized by the association of arteriovenous malformations of the maxilla, retina, optic nerve, thalamus, hypothalamus and cerebral cort...",
+"ko": "와이번-메이슨 증후군",
+"alt": [
+"보네-데쇼-블랑 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005476",
+"concept": "- MONDO:0005476 | atrioventricular node disorder | syn: atrioventricular node disease; atrioventricular node disease or disorder; disease of atrioventricular node; disease or disorder of atrioventricular node | ancestors: conduction system disorder, muscle tissue disorder, myocardial disorder, musculoskeletal system disorder | def: A disease involving the atrioventricular node.",
+"ko": "방실결절 질환",
+"alt": [
+"방실결절 장애"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021925",
+"concept": "- MONDO:0021925 | tracheobronchitis | syn: tracheobronchitis | ancestors: lower respiratory tract disorder, inflammatory disease, respiratory system disorder, disease by developmental or physiological process | def: Inflammation of the tracheobronchial tree.",
+"ko": "기관기관지염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001971",
+"concept": "- MONDO:0001971 | farmer's lung disease | syn: farmer lung; farmer's lung | ancestors: hypersensitivity pneumonitis, occupational lung disease, allergic respiratory disease, interstitial lung disease | def: A hypersensitivity pneumonitis caused by the repeated exposure and inhalation of biological dust (such as hay dust, mold spores, or other agricultural products). It is considered a type II hypersensit...",
+"ko": "농부폐",
+"alt": [
+"농부폐증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0009124",
+"concept": "- MONDO:0009124 | Dubowitz syndrome | syn: Dubowitz syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome-intellectual disability, ectodermal dysplasia syndrome, multiple congenital anomalies/dysmorphic syndrome, syndromic disease | def: A rare multiple congenital syndrome characterized primarily by growth retardation, microcephaly, distinctive facial dysmorphism, cutaneous eczema, a mild to severe intellectual deficit and genital abn...",
+"ko": "두보비츠 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000245",
+"concept": "- MONDO:0000245 | tinea imbricata | ancestors: tinea corporis, dermatophytosis, tinea infection, superficial mycosis | def: A tinea corporis that results in fungal infection located in skin, has material basis in Trichophyton concentricum, which is characterized by ring-like growth in overlapping circles that may have an a...",
+"ko": "와상백선",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0975906",
+"concept": "- MONDO:0975906 | unifocal langerhans cell histiocytosis | ancestors: Langerhans cell histiocytosis, histiocytosis, leukocyte disorder, dendritic cell tumor",
+"ko": "단일병소 랑게르한스세포 조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011644",
+"concept": "- MONDO:0011644 | pars planitis | syn: inflammation of pars plana of ciliary body; pars plana of ciliary body inflammation; pars plana of ciliary bodyitis; pars planitis | ancestors: ciliary body disorder, chorioretinitis, intermediate uveitis, iris disorder | def: An inflammatory disorder of the cilliary body in the uvea that affects healthy, younger individuals who are often asymptomatic. It has a long clinical course with relapses and remissions. Symptoms inc...",
+"ko": "평면부염",
+"alt": [
+"섬모체 평면부 염증"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002128",
+"concept": "- MONDO:0002128 | mononeuritis multiplex | syn: mononeuritis multiplex | ancestors: neuritis of upper limb, neuritis, peripheral neuropathy, inflammatory disease | def: A painful asymmetric asynchronous sensory and motor peripheral neuropathy involving isolated damage to at least 2 separate nerve areas; associated with (but not limited to) systemic disorders such as ...",
+"ko": "다발단일신경염",
+"alt": [
+"다발성 단일신경염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004609",
+"concept": "- MONDO:0004609 | herpes simplex infectious disease | syn: Simplexvirus caused disease or disorder; Simplexvirus disease or disorder; Simplexvirus infectious disease | ancestors: Herpesviridae infectious disease, primary viral infectious disease, viral infectious disease, infectious disease | def: A group of acute infections caused by herpes simplex virus type 1 or type 2 that is characterized by the development of one or more small fluid-filled vesicles with a raised erythematous base on the s...",
+"ko": "단순포진 감염증",
+"alt": [
+"단순 헤르페스 감염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005701",
+"concept": "- MONDO:0005701 | chlamydia trachomatis infectious disease | syn: Chlamydia trachomatis caused disease or disorder; Chlamydia trachomatis disease or disorder; Chlamydial infection | ancestors: commensal bacterial infectious disease, chlamydia infectious disease, bacterial infectious disease, bacterial sexually transmitted disease | def: An infection that is caused by Chlamydia trachomatis.",
+"ko": "클라미디아 트라코마티스 감염병",
+"alt": [
+"클라미디아 감염증"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001187",
+"concept": "- MONDO:0001187 | urinary bladder cancer | syn: bladder cancer, somatic; cancer of urinary bladder; malignant bladder neoplasm; malignant bladder tumor | ancestors: urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder, urinary system neoplasm | def: A primary or metastatic malignant neoplasm involving the bladder.",
+"ko": "방광암",
+"alt": [
+"요로상피암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021389",
+"concept": "- MONDO:0021389 | neoplasm of aortic body | syn: aortic body neoplasm; aortic body neoplasm (disease); aortic body paraganglioma; aortic body tumor | ancestors: aortic disorder, parasympathetic paraganglioma, blood vessel neoplasm, neoplasm of thorax | def: A benign or malignant extra-adrenal parasympathetic paraganglioma that arises from paraganglia adjacent to the base of the heart and great vessels.",
+"ko": "대동맥체 신생물",
+"alt": [
+"대동맥체 부신경절종"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0800201",
+"concept": "- MONDO:0800201 | baldness, male pattern | syn: MPB | ancestors: androgenetic alopecia, endocrine alopecia, alopecia, hair anomaly",
+"ko": "남성형 탈모",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006555",
+"concept": "- MONDO:0006555 | granulomatous dermatitis | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: An inflammatory reaction of the skin to various organic and inorganic antigens. It is characterized by tumor-like masses or nodules of granulomatous tissue comprised of activated histiocytes, epitheli...",
+"ko": "육아종성 피부염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0024288",
+"concept": "- MONDO:0024288 | hyperbilirubinemia | syn: hyperbilirubinemia | ancestors: bilirubin metabolism disease, metabolic disease, disease by developmental or physiological process, human disease | def: A disease characterized by elevated level of the pigment bilirubin in the blood.",
+"ko": "고빌리루빈혈증",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001770",
+"concept": "- MONDO:0001770 | gastrin secretion abnormality | ancestors: endocrine pancreas disorder, pancreas disorder, digestive system disorder, endocrine system disorder",
+"ko": "가스트린 분비 이상",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001548",
+"concept": "- MONDO:0001548 | hepatic coma | ancestors: hepatic encephalopathy, toxic encephalopathy, brain disorder, nervous system disorder | def: A syndrome characterized by central nervous system dysfunction in association with liver failure, including portal-systemic shunts. Clinical features include lethargy and confusion (frequently progres...",
+"ko": "간성 혼수",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 2
+}
+]

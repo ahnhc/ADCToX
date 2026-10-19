@@ -1,0 +1,252 @@
+[
+{
+"id": "MONDO:0002070",
+"concept": "- MONDO:0002070 | ventricular septal defect | syn: interventricular communication; interventricular septal defect; ventricular septal defect; ventricular septal defect (disease) | ancestors: heart septal defect, cardiogenetic disease, congenital heart disease, hereditary disease | def: The presence of a defect (opening) in the septum that separates the two ventricles of the heart. It can be congenital or acquired.",
+"ko": "심실중격결손",
+"alt": [
+"심실사이막결손"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0044634",
+"concept": "- MONDO:0044634 | retinitis pigmentosa-hearing loss-premature aging-short stature-facial dysmorphism syndrome | syn: retinitis pigmentosa-deafness-premature aging-short stature-facial dysmorphism syndrome; short stature, hearing loss, retinitis pigmentosa, and distinctive facies | ancestors: syndromic disease, hereditary disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome, disease by body system or component",
+"ko": "망막색소변성-난청-조기 노화-저신장-안면이형 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021239",
+"concept": "- MONDO:0021239 | urethra neoplasm | syn: neoplasm of the urethra; neoplasm of urethra; neoplasms. urethra; tumor of the urethra | ancestors: urethral disorder, urinary system neoplasm, urinary system disorder, neoplasm | def: A neoplasm (disease) that involves the urethra.",
+"ko": "요도 신생물",
+"alt": [
+"요도 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019453",
+"concept": "- MONDO:0019453 | myelodysplastic syndrome with multilineage dysplasia | syn: MDS-MLD; RCMD; refractory cytopenia with multilineage dysplasia | ancestors: refractory hematologic cancer, myelodysplastic syndrome, hematopoietic and lymphoid cell neoplasm, myeloid hemopathy | def: Refractory cytopenias with multilineage dysplasia (RCMD) is a frequent subtype of myelodysplastic syndrome (MDS) characterized by 1 or more cytopenias in the peripheral blood and dysplasia in 2 or mor...",
+"ko": "다계통 이형성을 동반한 골수형성이상증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015015",
+"concept": "- MONDO:0015015 | congenital bile acid synthesis defect 6 | syn: ACOX2 congenital bile acid synthesis defect; bile acid synthesis defect, congenital, 6; bile acid synthesis defect, congenital, type 6; CBAS6 | ancestors: congenital bile acid synthesis defect, steroid inherited metabolic disorder, inherited lipid metabolism disorder, inborn errors of metabolism | def: Any congenital bile acid synthesis defect in which the cause of the disease is a mutation in the ACOX2 gene.",
+"ko": "선천성 담즙산 합성 결함 6형",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008409",
+"concept": "- MONDO:0008409 | congenital myopathy 7A, myosin storage, autosomal dominant | syn: autosomal dominant myosin storage myopathy; MSMA; MYH7-related late-onset scapuloperoneal muscular dystrophy; MYH7-related late-onset scapuloperoneal syndrome | ancestors: scapuloperoneal myopathy, congenital nervous system disorder, neuromuscular disease caused by qualitative or quantitative defects of beta-myosin heavy chain (MYH7), congenital myopathy",
+"ko": "선천성 근육병 7A, 미오신 저장, 상염색체 우성",
+"alt": [
+"상염색체 우성 미오신 저장 근육병"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005976",
+"concept": "- MONDO:0005976 | syphilis | syn: Treponema pallidum caused disease or disorder; Treponema pallidum disease or disorder; Treponema pallidum infectious disease | ancestors: primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease, bacterial sexually transmitted disease | def: A contagious bacterial infection caused by the spirochete Treponema pallidum. It is a sexually transmitted disorder, although it can also be transmitted from the mother to the fetus in utero. Typicall...",
+"ko": "매독",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0004037",
+"concept": "- MONDO:0004037 | retinal edema | ancestors: retinal disorder, nervous system disorder, eye disorder, disease by body system or component",
+"ko": "망막 부종",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006919",
+"concept": "- MONDO:0006919 | potassium deficiency | ancestors: nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism, human disease | def: A condition due to decreased dietary intake of potassium, as in starvation or failure to administer in intravenous solutions, or to gastrointestinal loss in diarrhea, chronic laxative abuse, vomiting,...",
+"ko": "칼륨 결핍증",
+"alt": [
+"저칼륨증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007089",
+"concept": "- MONDO:0007089 | Alzheimer disease 2 | syn: AD2; Alzheimer disease 2; Alzheimer disease associated with APOE E4; Alzheimer disease associated with APOE4 | ancestors: familial Alzheimer disease, Alzheimer disease, hereditary dementia, inherited neurodegenerative disorder | def: An Alzheimer's disease that is characterized by an association of the apolipoprotein E E4 allele.",
+"ko": "알츠하이머병 2형",
+"alt": [
+"APOE E4 연관 알츠하이머병"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0021322",
+"concept": "- MONDO:0021322 | malignant tumor of meninges | syn: cancer of meningeal cluster; cancer of meninges; cancer of the meninges; malignant meningeal cluster neoplasm | ancestors: central nervous system cancer, tumor of meninges, nervous system cancer, central nervous system neoplasm | def: A cancer that involves the meningeal cluster.",
+"ko": "수막 악성 종양",
+"alt": [
+"수막암"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001691",
+"concept": "- MONDO:0001691 | laryngeal cartilage cancer | syn: cancer of laryngeal cartilage; laryngeal cartilage cancer; malignant laryngeal cartilage neoplasm; malignant neoplasm of laryngeal cartilage | ancestors: musculoskeletal system cancer, larynx cancer, skeletal system disorder, musculoskeletal system disorder | def: A malignant neoplasm involving the laryngeal cartilage.",
+"ko": "후두연골암",
+"alt": [],
+"organs": [
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004858",
+"concept": "- MONDO:0004858 | occlusion of gallbladder | syn: obstruction of gallbladder | ancestors: gallbladder disorder, hepatobiliary disorder, digestive system disorder, disease by body system or component | def: Blockage of the normal flow of the contents of the gallbladder.",
+"ko": "담낭 폐쇄",
+"alt": [
+"쓸개 폐색"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019830",
+"concept": "- MONDO:0019830 | congenital anomaly of the inferior vena cava | syn: congenital anomaly of the inferior caval vein; congenital anomaly of the IVC | ancestors: vascular disorder, cardiovascular disorder, disease by body system or component, human disease",
+"ko": "선천성 하대정맥 이상",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008680",
+"concept": "- MONDO:0008680 | Wilms tumor 2 | syn: Wilms tumor 2; Wilms tumor 2, autosomal dominant, somatic mutation; Wilms tumor type 2; Wilms tumour 2, autosomal dominant, somatic mutation | ancestors: hereditary Wilms tumor, hereditary disease, Wilms tumor, disease of genetic or genomic mechanism",
+"ko": "윌름스 종양 2",
+"alt": [
+"윌름종양 2형"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002043",
+"concept": "- MONDO:0002043 | ectropion | syn: ectropion; ectropion (disease); ectropion of eyelid | ancestors: eyelid disorder, eye adnexa disorder, eye disorder, disorder of orbital region | def: The turning outward (eversion) of the edge of the eyelid, resulting in the exposure of the palpebral conjunctiva. (Dorland, 27th ed)",
+"ko": "눈꺼풀 바깥말림",
+"alt": [
+"안검외반"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002903",
+"concept": "- MONDO:0002903 | articulation disorder | syn: phonological disorder | ancestors: speech disorder, language disorder, communication disorder, specific developmental disorder | def: A disorder characterized by the failure to use developmentally expected speech sounds that are appropriate for the individual's age (i.e., the individual makes errors in sound production or use or omi...",
+"ko": "조음장애",
+"alt": [
+"음운장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0019813",
+"concept": "- MONDO:0019813 | congenital tricuspid stenosis | ancestors: congenital tricuspid malformation, tricuspid valve disorder, disorder of development or morphogenesis, heart valve disorder",
+"ko": "선천성 삼첨판 협착",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006555",
+"concept": "- MONDO:0006555 | granulomatous dermatitis | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: An inflammatory reaction of the skin to various organic and inorganic antigens. It is characterized by tumor-like masses or nodules of granulomatous tissue comprised of activated histiocytes, epitheli...",
+"ko": "육아종성 피부염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004739",
+"concept": "- MONDO:0004739 | urea cycle disorder | syn: disorder of urea cycle metabolism; inborn disorder of urea cycle metabolism and ammonia detoxification; inborn urea cycle disorder; urea cycle disorders | ancestors: inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease, inborn errors of metabolism | def: A genetic inborn error of metabolism characterized by the deficiency of one of the enzymes necessary for the urea cycle. It results in accumulation of ammonia in the body.",
+"ko": "요소회로 장애",
+"alt": [
+"요소회로 대사 이상"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+}
+]

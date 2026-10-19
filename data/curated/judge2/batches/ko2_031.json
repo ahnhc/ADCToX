@@ -1,0 +1,231 @@
+[
+{
+"id": "MONDO:0007759",
+"concept": "- MONDO:0007759 | hyperlipidemia, familial combined, LPL related | syn: combined hyperlipidemia, familial | ancestors: familial hyperlipidemia, inherited lipid metabolism disorder, hyperlipidemia, inborn errors of metabolism",
+"ko": "가족성 복합 고지혈증, LPL 관련",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002105",
+"concept": "- MONDO:0002105 | toxic megacolon | ancestors: megacolon, colonic disorder, large intestine disorder, intestinal disorder | def: An acute form of megacolon, severe pathological dilatation of the colon. It is associated with clinical conditions such as ulcerative colitis; crohn disease; amebic dysentery; or clostridium enterocol...",
+"ko": "독성 거대결장",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015908",
+"concept": "- MONDO:0015908 | chromomycosis | syn: chromoblastomycosis; Chromomycosis; chromomycosis | ancestors: subcutaneous mycosis, dermatomycosis, cutaneous mycosis, fungal infectious disease | def: Chromomycosis is a chronic cutaneous and subcutaneous fungal infection, found mainly in subtropical and tropical areas (in soil and plant debris and transmitted by traumatic inoculation), and characte...",
+"ko": "크로모진균증",
+"alt": [
+"착색분아균증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0006532",
+"concept": "- MONDO:0006532 | cholesteatoma of external ear | syn: cholesteatoma (disease) of external ear; external ear cholesteatoma (disease) | ancestors: external ear disorder, cholesteatoma, auditory system disorder, disorder of ear | def: A cholesteatoma (disease) that involves the external ear.",
+"ko": "외이 진주종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001292",
+"concept": "- MONDO:0001292 | autonomic nervous system disorder | syn: autonomic nervous disease; autonomic nervous system disease; autonomic nervous system disease or disorder; disease of autonomic nervous system | ancestors: central nervous system disorder, peripheral nervous system disorder, nervous system disorder, disease by body system or component | def: A disease involving the autonomic nervous system.",
+"ko": "자율신경계 질환",
+"alt": [
+"자율신경계 장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006665",
+"concept": "- MONDO:0006665 | chronic atrophic gastritis | syn: atrophic Gastritides; atrophic gastritis; gastric atrophy; Gastritides, atrophic | ancestors: chronic gastritis, gastritis, stomach disorder, inflammatory disease | def: Atrophic gastritis that is persistent and long-standing.",
+"ko": "만성 위축성 위염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0019719",
+"concept": "- MONDO:0019719 | congenital anomaly of kidney and urinary tract | syn: CAKUT; congenital anomalies of kidney and urinary tract; congenital anomaly of kidney and urinary tract; renal or urinary tract malformation | ancestors: developmental defect during embryogenesis, inherited kidney disorder, disorder of development or morphogenesis, hereditary disease | def: A urinary system disease characterized by structural malformations in the kidney and/or urinary tract containing vesicoureteral reflux.",
+"ko": "선천성 신장 및 요로 기형",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0005894",
+"concept": "- MONDO:0005894 | paracoccidioidomycosis | ancestors: primary systemic mycosis, systemic mycosis, fungal infectious disease, infectious disease | def: A systemic fungal infection caused by Paracoccidioides brasiliensis that is most often seen in immunocompromised patients. It affects the mucous membranes, lymph nodes, lungs and bones.",
+"ko": "파라콕시디오이데스진균증",
+"alt": [
+"파라콕시디오이데스증"
+],
+"organs": [
+"pulmonary",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0000257",
+"concept": "- MONDO:0000257 | acute diarrhea | syn: acute diarrheal disease; diarrhea (disease), acute; diarrhea, acute; diarrheal disease, acute | ancestors: diarrheal disease, acute disease, digestive system disorder, human disease | def: Acute form of diarrhea.",
+"ko": "급성 설사",
+"alt": [
+"급성 설사 질환"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015342",
+"concept": "- MONDO:0015342 | acute transverse myelitis | ancestors: myelitis, acute disease, spinal cord disorder, encephalomyelitis | def: Acute transverse myelitis (ATM) is an inflammatory demyelinating disorder of the spinal cord that can be either idiopathic (IATM) or secondary to a known cause (SATM).",
+"ko": "급성 횡단 척수염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005665",
+"concept": "- MONDO:0005665 | Bell's palsy | syn: facial nerve palsy; facial nerve paralysis; nerve paralysis, Facial; palsy of facial nerve | ancestors: facial paralysis, facial nerve disorder, cranial nerve palsy, palsy | def: Partial or complete paralysis of the facial muscles of one side of a person's face. It is caused by damage to the seventh cranial nerve. It is usually temporary but it may recur.",
+"ko": "벨마비",
+"alt": [
+"안면신경마비"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0040676",
+"concept": "- MONDO:0040676 | great vessel cancer | syn: cancer of great vessel of heart; great vessel cancer; great vessel of heart cancer; malignant great vessel neoplasm | ancestors: vascular cancer, cardiovascular cancer, blood vessel neoplasm, cancer | def: A malignant neoplasm arising from the great vessels.",
+"ko": "대혈관암",
+"alt": [
+"심장 대혈관암"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004891",
+"concept": "- MONDO:0004891 | hyperopia | syn: hypermetropia | ancestors: refractive error, eye disorder, disorder of orbital region, disorder of visual system | def: A refractive error in which rays of light entering the eye parallel to the optic axis are brought to a focus behind the retina, as a result of the eyeball being too short from front to back. It is als...",
+"ko": "원시",
+"alt": [
+"원시안"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006589",
+"concept": "- MONDO:0006589 | occupational dermatitis | syn: occupational dermatitis; occupational eczema (disorder) [ambiguous] | ancestors: contact dermatitis, occupational disorder, dermatitis, disease of primarily extrinsic mechanism | def: Contact dermatitis associated with allergens or irritants found in the workplace.",
+"ko": "직업성 피부염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007710",
+"concept": "- MONDO:0007710 | facial hemiatrophy | syn: hemifacial atrophy; parry-Romberg syndrome; progressive facial hemiatrophy; progressive hemifacial atrophy | ancestors: facial nerve disorder, syndromic disease, cranial nerve neuropathy, peripheral nervous system disorder | def: Progressive hemifacial atrophy (PHA) is a rare acquired disorder, characterized by unilateral slowly progressive atrophy of the skin and soft tissues of half of the face leading to a sunken appearance...",
+"ko": "안면 반측위축",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002155",
+"concept": "- MONDO:0002155 | cholecystitis | syn: acute and chronic cholecystitis; gall bladder inflammation; inflammation of gall bladder | ancestors: cholangitis, gallbladder disorder, non-neoplastic bile duct disorder, inflammatory disease | def: An acute or chronic inflammation involving the gallbladder wall. It may be associated with the presence of gallstones.",
+"ko": "담낭염",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0043327",
+"concept": "- MONDO:0043327 | cerebrospinal fluid leak | syn: cerebrospinal fluid leak | ancestors: central nervous system disorder, nervous system disorder, disease by body system or component, human disease | def: Discharge of cerebrospinal fluid through a hole through the skull bone most commonly draining from the nose (CEREBROSPINAL FLUID RHINORRHEA) or the ear (CEREBROSPINAL FLUID OTORRHEA).",
+"ko": "뇌척수액 누출",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004757",
+"concept": "- MONDO:0004757 | chronic ethmoidal sinusitis | syn: chronic ethmoidal sinusitis; ethmoid sinusitis, chronic | ancestors: ethmoid sinusitis, chronic rhinosinusitis, sinusitis, disorder of facial skeleton | def: Inflammation of the ethmoid sinus that typically lasts beyond eight weeks. It is caused by infections, allergies, and the presence of sinus polyps or a deviated septum. Signs and symptoms include head...",
+"ko": "만성 벌집굴염",
+"alt": [
+"만성 사골동염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007500",
+"concept": "- MONDO:0007500 | ear malformation | syn: ear malformation | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "귀 기형",
+"alt": [
+"이개 기형"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0012155",
+"concept": "- MONDO:0012155 | choanal atresia | syn: atresia of nares | ancestors: nasal cavity disorder, hereditary otorhinolaryngologic disease, nasal disorder, upper respiratory tract disorder | def: Choanal atresia (CA) is a congenital anomaly of the posterior nasal airway characterized by the obstruction of one (unilateral) or both (bilateral) choanal aperture(s), with clinical manifestations ra...",
+"ko": "후비공 폐쇄증",
+"alt": [
+"후비공 폐쇄"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+}
+]

@@ -1,0 +1,252 @@
+[
+{
+"id": "MONDO:0100017",
+"concept": "- MONDO:0100017 | pityriasis rubra pilaris | ancestors: erythrokeratoderma, epidermal disease, skin disorder, integumentary system disorder | def: A group of skin conditions that cause constant inflammation and scaling of the skin. People with PRP have reddish, scaly patches that may occur everywhere on the body, or only on certain areas. Some p...",
+"ko": "모공성 홍색비강진",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024617",
+"concept": "- MONDO:0024617 | xanthogranuloma | syn: xanthogranuloma | ancestors: non-Langerhans cell histiocytosis, histiocytosis, lymphatic system disorder, lymphoid system disorder",
+"ko": "황색육아종",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015195",
+"concept": "- MONDO:0015195 | atresia of urethra | syn: atresia of urethra; atresia of urethra (disease); urethral atresia | ancestors: fetal lower urinary tract obstruction, kidney disorder, urogenital tract malformation, urinary system disorder | def: Atresia of the urethra is a rare congenital bladder outlet obstruction, a fetal lower urinary tract obstruction (fetal LUTO), that is usually fatal. Unless there is some other egress for the urine to ...",
+"ko": "요도 폐쇄증",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004833",
+"concept": "- MONDO:0004833 | plantar fasciitis | ancestors: fasciitis, musculoskeletal system disorder, connective tissue disorder, inflammatory disease | def: Inflammation of the thick tissue on the bottom of the foot (plantar fascia) causing heel pain. The plantar fascia (also called plantar aponeurosis) are bands of fibrous tissue extending from the calca...",
+"ko": "발바닥근막염",
+"alt": [
+"족저근막염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001449",
+"concept": "- MONDO:0001449 | lymphocytic choriomeningitis | syn: lymphocytic choriomeningitis mammarenavirus caused infectious meningitis; lymphocytic choriomeningitis mammarenavirus infectious meningitis; lymphocytic meningoencephalitis | ancestors: Arenaviridae infectious disease, viral meningitis, viral infection of central nervous system, vector-borne disease | def: A form of meningitis caused by lymphocytic choriomeningitis virus. mice and other rodents serve as the natural hosts, and infection in humans usually occurs through inhalation or ingestion of infectio...",
+"ko": "림프구성 맥락수막염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0000740",
+"concept": "- MONDO:0000740 | adenoid hypertrophy | syn: adenoidal hypertrophy; enlarged adenoids | ancestors: upper respiratory tract disorder, mouth disorder, respiratory system disorder, disease by body system or component | def: An upper respiratory tract disease characterized by the unusual growth of the adenoid tonsil; has symptom snoring, has symptom hyponasality, has symptom otitis media with effusion, has symptom mouth b...",
+"ko": "아데노이드 비대",
+"alt": [
+"아데노이드증식증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002967",
+"concept": "- MONDO:0002967 | dermatophytosis of scalp or beard | syn: dermatophytosis of scalp and beard; scalp dermatophytosis; scalp ringworm | ancestors: dermatophytosis, tinea infection, superficial mycosis, cutaneous mycosis | def: Dermatophytosis involving the stratum corneum of the skin of the scalp and beard area.",
+"ko": "두피 및 수염 피부사상균증",
+"alt": [
+"두피 백선"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015071",
+"concept": "- MONDO:0015071 | middle ear neuroendocrine tumor | syn: middle ear NET; middle ear neuroendocrine neoplasm; middle ear neuroendocrine tumor; middle ear neuroendocrine tumor, well differentiated, low or intermediate grade | ancestors: neuroendocrine neoplasm, neoplasm of middle ear, endocrine gland neoplasm, middle ear disorder | def: A neuroendocrine neoplasm that involves the middle ear.",
+"ko": "중이 신경내분비종양",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003060",
+"concept": "- MONDO:0003060 | biliary tract cancer | syn: biliary tree cancer; cancer of biliary tree; malignant biliary tree neoplasm; malignant neoplasm of biliary tree | ancestors: digestive system cancer, biliary tract neoplasm, digestive system disorder, cancer | def: A malignant neoplasm involving the biliary tree",
+"ko": "담도암",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0011861",
+"concept": "- MONDO:0011861 | breath-holding Spells | syn: breath-holding Spells | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "숨참기발작",
+"alt": [
+"호흡정지발작"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002870",
+"concept": "- MONDO:0002870 | tricuspid valve insufficiency | syn: insufficiency, tricuspid; tricuspid insufficiency; tricuspid valve regurgitation | ancestors: tricuspid valve disorder, vascular insufficiency disorder, heart valve disorder, vascular disorder | def: The backflow of blood from the right ventricle into the right atrium, owning to imperfect functioning/insufficiency of the tricuspid valve.",
+"ko": "삼첨판 폐쇄부전",
+"alt": [
+"삼첨판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0100226",
+"concept": "- MONDO:0100226 | parasomnia, sleepwalking type | syn: parasomnia, sleepwalking type; parasomnia, sleepwalking type, multifactorial; PSMNSW | ancestors: sleep disorder, disease by developmental or physiological process, human disease, disease | def: A disorder in which a series of complex behaviors are initiated during slow-wave (non-REM) sleep and result in walking during sleep. It is a parasomnia, defined as a clinical disorder resulting in und...",
+"ko": "사건수면, 몽유병형",
+"alt": [
+"몽유병"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002886",
+"concept": "- MONDO:0002886 | common bile duct disorder | syn: common bile duct disease; common bile duct disease or disorder; disease of common bile duct; disease or disorder of common bile duct | ancestors: bile duct disorder, biliary tract disorder, hepatobiliary disorder, digestive system disorder | def: A disease involving the common bile duct.",
+"ko": "총담관 질환",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001252",
+"concept": "- MONDO:0001252 | toxic multinodular goitre | syn: MNG; Plummer disease; Plummer's disease; TMNG | ancestors: primary hyperthyroidism, hyperthyroidism, thyroid gland disorder, endocrine system disorder | def: Nodular enlargement of the thyroid gland associated with hyperthyroidism.",
+"ko": "독성 다결절성 갑상선종",
+"alt": [
+"플러머병"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009215",
+"concept": "- MONDO:0009215 | Fanconi anemia complementation group A | syn: FANCA; FANCA Fanconi anaemia; FANCA Fanconi anemia; Fanconi anaemia caused by mutation in FANCA | ancestors: Fanconi anemia, non-syndromic limb reduction defect, congenital anemia, inherited aplastic anemia | def: Fanconi anemia caused by mutations of the FANCA gene. FANCA gene mutations are the most common cause of Fanconi anemia. This gene provides instructions for making a protein that is involved in the Fan...",
+"ko": "판코니 빈혈 상보군 A",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021482",
+"concept": "- MONDO:0021482 | benign neoplasm of middle ear | syn: benign middle Ear neoplasm; benign middle Ear tumor; benign middle Ear tumour; benign neoplasm of the middle Ear | ancestors: neoplasm of middle ear, benign neoplasm of ear, middle ear disorder, ear neoplasm | def: A benign neoplasm that involves the middle ear.",
+"ko": "가운데귀 양성 신생물",
+"alt": [
+"중이 양성 종양"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020128",
+"concept": "- MONDO:0020128 | motor neuron disorder | syn: anterior horn cell disease; disease of motor neuron; disease or disorder of motor neuron; disorder of motor neuron | ancestors: neurodegenerative disease, neuromuscular disease, central nervous system disorder, nervous system disorder | def: Neurological disease involving the motor neuron.",
+"ko": "운동신경세포 질환",
+"alt": [
+"운동신경원 질환"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004871",
+"concept": "- MONDO:0004871 | perianal hematoma | syn: external thrombosed hemorrhoids; Thrombosed external haemorrhoids | ancestors: hemorrhoid, pelvic varices, varicose disease, vein disorder",
+"ko": "항문주위 혈종",
+"alt": [
+"혈전성 외치핵"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003975",
+"concept": "- MONDO:0003975 | Littre gland carcinoma | syn: carcinoma of LittrC) glands; carcinoma of Littre glands; carcinoma of Littré glands; carcinoma of male urethral gland | ancestors: male urethral cancer, carcinoma of urethra, urethra cancer, carcinoma | def: A carcinoma involving a male urethral gland.",
+"ko": "리트레샘 암종",
+"alt": [
+"리트레선 암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005682",
+"concept": "- MONDO:0005682 | bronchopneumonia | syn: bronchial pneumonia; chest infection - unspecified bronchopneumonia; lobular pneumonia | ancestors: pneumonia, respiratory tract infectious disorder, pneumonitis, respiratory system disorder | def: Acute inflammation of the walls of the terminal bronchioles that spreads into the peribronchial alveoli and alveolar ducts. It results in the creation of foci of consolidation, which are surrounded by...",
+"ko": "기관지폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+}
+]

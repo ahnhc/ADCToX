@@ -1,0 +1,253 @@
+[
+{
+"id": "MONDO:0001380",
+"concept": "- MONDO:0001380 | bladder dome cancer | syn: cancer of fundus of urinary bladder; fundus of urinary bladder cancer; malignant fundus of urinary bladder neoplasm; malignant neoplasm of dome of urinary bladder | ancestors: urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder | def: Cancer of the upper, convex surface of the bladder.",
+"ko": "방광 천장암",
+"alt": [
+"방광저부암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004760",
+"concept": "- MONDO:0004760 | urethral false passage | ancestors: urethral disorder, urinary system disorder, disease by body system or component, human disease",
+"ko": "요도 가성 통로",
+"alt": [
+"요도 거짓길"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0023258",
+"concept": "- MONDO:0023258 | glycogen storage disease type 1 due to SLC37A4 mutation | syn: glucose-6-phosphate translocase deficiency; glycogen storage disease I caused by mutation in SLC37A4; SLC37A4 glycogen storage disease I | ancestors: glycogen storage disease I, disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism | def: Any glycogen storage disease due to glucose-6-phosphatase deficiency in which the cause of the disease is a mutation in the SLC37A4 gene.",
+"ko": "SLC37A4 변이에 의한 글리코겐 저장병 1형",
+"alt": [
+"포도당-6-인산 전위효소 결핍증"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002240",
+"concept": "- MONDO:0002240 | acute perichondritis of pinna | syn: acute perichondritis of auricle; perichondritis of auricle, acute | ancestors: acute otitis externa, perichondritis of auricle, otitis externa, acute disease | def: Acute form of perichondritis of auricle.",
+"ko": "급성 귓바퀴 연골막염",
+"alt": [
+"급성 이개연골막염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013025",
+"concept": "- MONDO:0013025 | chromosome 6q24-q25 deletion syndrome | syn: chromosome 6q24-q25 deletion syndrome; chromosome 6q25-q25 deletion syndrome; Del(6)(q25) | ancestors: partial deletion of the long arm of chromosome 6, partial deletion of chromosome 6, syndrome caused by partial chromosomal deletion, chromosome 6 disorder | def: 6q25 microdeletion syndrome is a recently described syndrome characterized by developmental delay, facial dysmorphism and hearing loss.",
+"ko": "염색체 6q24-q25 결실 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003072",
+"concept": "- MONDO:0003072 | retinal cancer | syn: cancer of retina; malignant neoplasm of retina; malignant neoplasm of the retina; malignant retina neoplasm | ancestors: ocular cancer, retina neoplasm, sensory system cancer, head and neck cancer | def: A malignant neoplasm involving the retina.",
+"ko": "망막암",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016216",
+"concept": "- MONDO:0016216 | adult hepatocellular carcinoma | syn: adult HCC; adult hepatocellular carcinoma; adult hepatoma; adult primary carcinoma of liver cell | ancestors: hepatocellular carcinoma, adenocarcinoma, carcinoma of liver and intrahepatic biliary tract, carcinoma | def: Adult hepatocellular carcinoma is the most common primary liver cancer of adulthood. Derived from well-differentiated hepatocytes, it often develops from chronic liver cirrhosis which is most often du...",
+"ko": "성인 간세포암",
+"alt": [
+"성인 간암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006614",
+"concept": "- MONDO:0006614 | subcorneal pustular dermatosis | syn: pustulosis subcornealis; Sneddon-Wilkinson disease; subcorneal pustular dermatitis; subcorneal pustular dermatosis | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: A rare, benign, chronic disease characterized by sterile pustular eruption, typically involving the flexural sites of the trunk and proximal extremities.",
+"ko": "각질층하 농포성 피부병",
+"alt": [
+"스네돈-윌킨슨병"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020830",
+"concept": "- MONDO:0020830 | diaphragmitis | syn: diaphragmatitis; diaphragmitis | ancestors: diaphragm disorder, inflammatory disease, respiratory system disorder, skeletal muscle disorder",
+"ko": "횡격막염",
+"alt": [],
+"organs": [
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002660",
+"concept": "- MONDO:0002660 | blepharochalasis | syn: blepharochalasis; blepharochalasis (disease) | ancestors: eyelid disorder, eye adnexa disorder, eye disorder, disorder of orbital region | def: An eyelid disease that is characterized by exacerbations and remissions of eyelid edema, which results in a stretching and subsequent atrophy of the eyelid tissue, leading to the formation of redundan...",
+"ko": "눈꺼풀이완증",
+"alt": [
+"안검이완증"
+],
+"organs": [
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0005073",
+"concept": "- MONDO:0005073 | melanocytic nevus | syn: melanocytic Nevus; melanotic Nevus; mole; mole of skin | ancestors: benign neoplasm of skin, melanocytic skin neoplasm, integumentary system benign neoplasm, skin neoplasm | def: A neoplasm composed of melanocytes that usually appears as a dark spot on the skin.",
+"ko": "멜라닌세포 모반",
+"alt": [
+"점"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:8000019",
+"concept": "- MONDO:8000019 | vertigo, benign recurrent, 1 | syn: BRV1; vertigo, benign recurrent, 1 | ancestors: peripheral vertigo, hereditary otorhinolaryngologic disease, inherited auditory system disease, vestibular disorder",
+"ko": "양성 재발성 현훈 1",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001557",
+"concept": "- MONDO:0001557 | olecranon bursitis | syn: bursitis of olecranon; elbow bursitis (& olecranon); olecranon bursitis | ancestors: enthesopathy, bursitis, musculoskeletal system disorder, connective tissue disorder | def: A bursitis that involves the olecranon.",
+"ko": "팔꿈치머리 점액낭염",
+"alt": [
+"주두 점액낭염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0007655",
+"concept": "- MONDO:0007655 | fissured tongue | syn: Furrowed tongue; plicated tongue; scrotal tongue | ancestors: tongue disorder, mouth disorder, disease by body system or component, human disease",
+"ko": "열구설",
+"alt": [
+"갈라진 혀"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0001532",
+"concept": "- MONDO:0001532 | capillariasis | syn: Capillaria infection | ancestors: Enoplea infectious disease, Nematoda infectious disease, helminthiasis, parasitic infectious disease | def: A infectious disease involving the Capillaria.",
+"ko": "모세선충증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003716",
+"concept": "- MONDO:0003716 | renal pelvis papillary urothelial carcinoma | syn: kidney pelvis papillary carcinoma; papillary carcinoma of kidney pelvis; papillary carcinoma of renal pelvis; papillary carcinoma of the kidney pelvis | ancestors: renal pelvis papillary tumor, renal pelvis urothelial carcinoma, papillary transitional cell carcinoma, papillary urothelial neoplasm | def: A papillary transitional cell carcinoma that arises from the renal pelvis.",
+"ko": "신우 유두상 요로상피암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009928",
+"concept": "- MONDO:0009928 | pulmonary alveolar microlithiasis | syn: pulmonary alveolar microlithiasis | ancestors: hereditary disease, lung disorder, disease of genetic or genomic mechanism, lower respiratory tract disorder | def: Pulmonary alveolar microlithiasis is a disorder in which tiny fragments (microliths) of calcium phosphate gradually accumulate in the small air sacs (alveoli) of the lungs. These deposits eventually c...",
+"ko": "폐포 미세결석증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010161",
+"concept": "- MONDO:0010161 | tyrosinemia type I | syn: FAH deficiency; fumarylacetoacetase deficiency; fumarylacetoacetate hydrolase deficiency; hepatorenal tyrosinemia | ancestors: tyrosinemia, disorder of tyrosine metabolism, inborn disorder of phenylalanine and tyrosine metabolism, inborn disorder of amino acid metabolism | def: Tyrosinemia type 1 (HTI) is an inborn error of tyrosine catabolism caused by defective activity of fumarylacetoacetate hydrolase (FAH) and is characterized by progressive liver disease, renal tubular ...",
+"ko": "티로신혈증 1형",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018911",
+"concept": "- MONDO:0018911 | maturity-onset diabetes of the young | syn: maturity onset diabetes of the young; maturity-onset diabetes of the young; maturity-onset diabetes of the young (disease); MODY | ancestors: monogenic diabetes, disorder of glycolysis, diabetes mellitus, inborn errors of metabolism | def: MODY (maturity-onset diabetes of the young) is a rare, familial, clinically and genetically heterogeneous form of diabetes characterized by young age of onset (generally 10-45 years of age) with maint...",
+"ko": "청년기 발병 성인형 당뇨병",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018432",
+"concept": "- MONDO:0018432 | lichen myxedematosus | syn: lichen myxoedematosus | ancestors: cutaneous mucinosis, dermis disorder, skin disorder, integumentary system disorder",
+"ko": "점액부종성 태선",
+"alt": [
+"점액수종 태선"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+}
+]

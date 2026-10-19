@@ -1,0 +1,249 @@
+[
+{
+"id": "MONDO:0005411",
+"concept": "- MONDO:0005411 | gallbladder cancer | syn: cancer of gall bladder; gall bladder cancer; malignant gall bladder neoplasm; malignant gallbladder neoplasm | ancestors: digestive system cancer, gallbladder neoplasm, digestive system disorder, cancer | def: A malignant neoplasm involving the gall bladder",
+"ko": "담낭암",
+"alt": [
+"쓸개암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012644",
+"concept": "- MONDO:0012644 | asphyxiating thoracic dystrophy 2 | syn: asphyxiating thoracic dystrophy 2; asphyxiating thoracic dystrophy type 2; ATD2; IFT80 Jeune syndrome | ancestors: Jeune syndrome, ciliopathy, short rib-polydactyly syndrome, inherited renal tubular disease | def: Any Jeune syndrome in which the cause of the disease is a mutation in the IFT80 gene.",
+"ko": "질식성 흉곽이형성증 2형",
+"alt": [
+"저느 증후군 2형"
+],
+"organs": [
+"pulmonary",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018166",
+"concept": "- MONDO:0018166 | oral submucous fibrosis | syn: oral cavity submucous fibrosis; oral submucosal fibrosis, including of tongue; OSMF | ancestors: mouth disorder, disorder of facial skeleton, disease by body system or component, skull disorder | def: Oral submucous fibrosis (OSMF) is a chronic, progressive disease that alters the fibroelasticity of the oral submucosa, prevalent in India and Southeast Asia but rare elsewhere, and characterized by b...",
+"ko": "구강 점막하 섬유증",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006530",
+"concept": "- MONDO:0006530 | cholesteatoma | syn: cholesteatoma; cholesteatoma (disease) | ancestors: keratosis, skin disorder, keratinization disease, integumentary system disorder | def: A pathologic process characterized by the proliferation of keratinizing squamous epithelium resulting in the accumulation of keratin and cells in the middle ear and/or mastoid. It may be congenital or...",
+"ko": "진주종",
+"alt": [
+"콜레스테아토마"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012486",
+"concept": "- MONDO:0012486 | preauricular tag, isolated, autosomal dominant, 1 | syn: preauricular tag, isolated, autosomal dominant, 1; preauricular Tag, isolated, autosomal dominant, type 1 | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "단독 상염색체 우성 이개전 피부꼬리 1형",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018883",
+"concept": "- MONDO:0018883 | Berardinelli-Seip congenital lipodystrophy | syn: Beradinelli-Seip syndrome; Berardinelli lipodystrophy syndrome; Berardinelli Seip syndrome; Brunzell syndrome | ancestors: hereditary lipodystrophy, disorder of development or morphogenesis, lipodystrophy, inborn errors of metabolism | def: A lipodystrophy characterized by the association of lipoatrophy, hypertriglyceridemia, hepatomegaly and acromegaloid features. BSCL belongs to the group of extreme insulin resistance syndromes, which ...",
+"ko": "베라르디넬리-세이프 선천성 지방이영양증",
+"alt": [
+"베라르디넬리-세이프 증후군"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0800178",
+"concept": "- MONDO:0800178 | platinum-induced ototoxicity | syn: deafness, platinum-induced; platinum-related ototoxicity | ancestors: sensorineural hearing loss disorder, poisoning, hearing loss disorder, disease of primarily extrinsic mechanism | def: Progressive, bilateral, and irreversible sensorineural hearing loss as a frequently encountered side effect of platinum-based chemotherapy such as cisplatin and carboplatin.",
+"ko": "백금 유발 이독성",
+"alt": [
+"백금 관련 이독성"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0014097",
+"concept": "- MONDO:0014097 | congenital short bowel syndrome | syn: congenital short bowel syndrome; CSBS | ancestors: disorder of development or morphogenesis, small intestine disorder, disease by developmental or physiological process, intestinal disorder | def: Congenital short bowel syndrome is a rare intestinal disorder of neonates of unknown etiology. Patients are born with a short small bowel (less than 75 cm in length) that compromises proper intestinal...",
+"ko": "선천성 단장 증후군",
+"alt": [
+"선천성 짧은창자 증후군"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003502",
+"concept": "- MONDO:0003502 | ureter squamous cell carcinoma | syn: epidermoid carcinoma of the ureter; epidermoid carcinoma of ureter; squamous cell carcinoma of the ureter; squamous cell carcinoma of ureter | ancestors: squamous cell carcinoma, ureter carcinoma, squamous cell neoplasm, carcinoma | def: A rare squamous cell carcinoma that arises from the ureter.",
+"ko": "요관 편평세포암종",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019203",
+"concept": "- MONDO:0019203 | acute interstitial pneumonia | syn: acute interstitial pneumonitis; AIP; Hamman-rich syndrome | ancestors: idiopathic interstitial pneumonia, acute disease, pneumonia, idiopathic disease | def: Acute interstitial pneumonia (AIP), also referred to as Hamman-Rich syndrome, is a rapidly progressive and histologically distinct form of idiopathic interstitial pneumonia.",
+"ko": "급성 간질성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002013",
+"concept": "- MONDO:0002013 | lymphangioma | syn: benign lymphangioma (morphologic abnormality); lymphangioma; lymphangioma, benign | ancestors: cardiovascular organ benign neoplasm, lymphatic vessel neoplasm, benign neoplasm, cardiovascular neoplasm | def: A benign lesion composed of dilated lymphatic channels. Painless swelling is the usual clinical manifestation.",
+"ko": "림프관종",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0014157",
+"concept": "- MONDO:0014157 | mandibular hypoplasia-deafness-progeroid syndrome | syn: mandibular hypoplasia-hearing loss-progeroid syndrome; MDP syndrome | ancestors: progeroid syndrome, hereditary disease, premature aging syndrome, developmental defect during embryogenesis",
+"ko": "아래턱 형성저하-난청-조로 증후군",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009044",
+"concept": "- MONDO:0009044 | Crigler-Najjar syndrome | syn: bilirubin UDP glucuronyl transferase deficiency; bilirubin uridinediphosphate glucuronosyltransferase deficiency; bilirubin-UGT deficiency; Crigler Najjar Syndrome | ancestors: syndromic disease, hereditary hyperbilirubinemia, disease by body system or component, inborn disorder of bilirubin metabolism | def: Crigler-Najjar syndrome (CNS) is a hereditary disorder of bilirubin metabolism characterized by unconjugated hyperbilirubinemia due to a hepatic deficit of bilirubin glucuronosyltransferase (GT) activ...",
+"ko": "크리글러-나자르 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015397",
+"concept": "- MONDO:0015397 | craniofacial microsomia | syn: Expanded spectrum hemifacial microsomia; Expanded spectrum of hemifacial microsomia; facioauriculovertebral dysplasia; first branchial arch syndrome | ancestors: syndromic disease, oculoauriculovertebral spectrum with radial defects, neurocristopathy, disease by body system or component",
+"ko": "두개안면 왜소증",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006978",
+"concept": "- MONDO:0006978 | splenic infarction | ancestors: splenic disorder, vascular insufficiency disorder, hematologic disorder, lymphatic system disorder | def: Insufficiency of arterial or venous blood supply to the spleen due to emboli, thrombi, vascular torsion, or pressure that produces a macroscopic area of necrosis. (From Stedman, 25th ed)",
+"ko": "비장 경색",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007878",
+"concept": "- MONDO:0007878 | congenital laryngomalacia | ancestors: laryngeal disorder, upper respiratory tract disorder, respiratory system disorder, disease by body system or component | def: Increased collapsibility of the larynx.",
+"ko": "선천성 후두연화증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020731",
+"concept": "- MONDO:0020731 | arbovirus infection | syn: arbovirus infection; arthropod-borne viral infection | ancestors: viral infectious disease, vector-borne disease, infectious disease, disease of primarily extrinsic mechanism | def: A viral infection that is transmitted by an arthropod.",
+"ko": "절지동물 매개 바이러스 감염",
+"alt": [
+"아르보바이러스 감염"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0000627",
+"concept": "- MONDO:0000627 | benign endocrine neoplasm | syn: benign endocrine gland neoplasm; benign endocrine gland tumor; benign endocrine gland tumour; benign endocrine neoplasm | ancestors: endocrine gland neoplasm, benign neoplasm, neoplasm, endocrine system disorder | def: A non-metastasizing, functioning or non-functioning neoplasm that arises from an endocrine organ. Representative examples include thyroid gland follicular adenoma and parathyroid gland adenoma.",
+"ko": "내분비 양성 신생물",
+"alt": [
+"내분비샘 양성 종양"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007572",
+"concept": "- MONDO:0007572 | primary familial polycythemia due to EPO receptor mutation | syn: congenital erythrocytosis due to erythropoietin receptor mutation; congenital polycythemia due to erythropoietin receptor mutation; EPOR familial polycythemia; erythrocytosis, familial, 1 | ancestors: familial polycythemia, hereditary disease, polycythemia, disease of genetic or genomic mechanism | def: Primary familial polycythemia is an inherited hematological disorder resulting from mutations in the erythropoietin (EPO) receptor and is characterized by an elevated absolute red blood cell mass caus...",
+"ko": "EPO 수용체 돌연변이에 의한 일차 가족성 적혈구증가증",
+"alt": [
+"선천성 적혈구증가증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0043731",
+"concept": "- MONDO:0043731 | lytic metastatic bone lesion | syn: lytic metastatic bone lesion; osteolysis; osteolytic lesion | ancestors: bone resorption disease, bone remodeling disease, bone disorder, skeletal system disorder | def: Dissolution of bone that particularly involves the removal or loss of calcium.",
+"ko": "용해성 골 전이 병변",
+"alt": [
+"골용해"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+}
+]

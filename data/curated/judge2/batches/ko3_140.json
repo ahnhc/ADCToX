@@ -1,0 +1,262 @@
+[
+{
+"id": "MONDO:0013939",
+"concept": "- MONDO:0013939 | peroxisome biogenesis disorder 7B | syn: peroxisome biogenesis disorder 7B; peroxisome biogenesis disorder type 7B | ancestors: peroxisome biogenesis disorder due to PEX26 defect, Zellweger spectrum disorders, developmental anomaly of metabolic origin, peroxisome biogenesis disorder",
+"ko": "퍼옥시좀 생합성 장애 7B형",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003205",
+"concept": "- MONDO:0003205 | renal pelvis adenocarcinoma | syn: adenocarcinoma of kidney pelvis; adenocarcinoma of renal pelvis; adenocarcinoma of the kidney pelvis; adenocarcinoma of the renal pelvis | ancestors: renal cell carcinoma, renal pelvis carcinoma, adenocarcinoma, renal carcinoma | def: A carcinoma that arises from glandular epithelial cells of the renal pelvis",
+"ko": "신우 선암",
+"alt": [
+"콩팥깔때기 선암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019170",
+"concept": "- MONDO:0019170 | polyarteritis nodosa | syn: classic polyarteritis nodosa; classical polyarteritis nodosa; Küssmaul-Maier disease; PAN | ancestors: arteritis, arterial disorder, vasculitis, vascular disorder | def: Polyarteritis nodosa (PAN) is a rare, clinically heterogeneous, rheumatologic disease characterized by necrotizing inflammatory lesions affecting small- and medium-sized blood vessels. PAN most common...",
+"ko": "결절다발동맥염",
+"alt": [
+"고전적 결절다발동맥염"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004904",
+"concept": "- MONDO:0004904 | toxic maculopathy | syn: toxic maculopathy of retina | ancestors: degeneration of macula and posterior pole, macular degeneration, retinal degeneration, retinal disorder",
+"ko": "독성 황반병증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005991",
+"concept": "- MONDO:0005991 | trench fever | syn: Bartonella quintana caused disease or disorder; Bartonella quintana disease or disorder; Bartonella quintana infectious disease; bartonellosis due to Bartonella quintana infection | ancestors: bartonellosis, vector-borne disease, primary bacterial infectious disease, Bartonellaceae infectious disease | def: An intermittent fever characterized by intervals of chills, fever, and splenomegaly each of which may last as long as 40 hours. It is caused by bartonella quintana and transmitted by the human louse.",
+"ko": "참호열",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002665",
+"concept": "- MONDO:0002665 | extrahepatic bile duct adenocarcinoma | syn: adenocarcinoma of extrahepatic bile duct; adenocarcinoma of the extrahepatic bile duct; extrahepatic bile duct adenocarcinoma | ancestors: extrahepatic bile duct carcinoma, bile duct adenocarcinoma, bile duct carcinoma, malignant tumor of extrahepatic bile duct | def: A carcinoma that arises from glandular epithelial cells of the extrahepatic bile duct",
+"ko": "간외담관 선암",
+"alt": [
+"간외 담관 선암종"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009079",
+"concept": "- MONDO:0009079 | DOORS syndrome | syn: autosomal recessive deafness-onychodystrophy syndrome; deafness-onychodystrophy-osteodystrophy-intellectual disability syndrome; deafness-onychodystrophy-osteodystrophy-intellectual disability-seizures syndrome; deafness-onychoosteodystrophy-intellectual disability syndrome | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism | def: DOORS syndrome (also known as DOOR syndrome) is a multiple congenital anomalies-intellectual disability syndrome characterized by sensorineural hearing loss (deafness), onychodystrophy, osteodystrophy...",
+"ko": "DOORS 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"dermatologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003979",
+"concept": "- MONDO:0003979 | intrahepatic bile duct cystadenoma | syn: intrahepatic bile duct cystadenoma; intrahepatic bile duct mucinous cystic neoplasm | ancestors: bile duct cystadenoma, intrahepatic bile duct adenoma, cystadenoma, bile duct adenoma | def: A mucinous cystic neoplasm that arises from the intrahepatic bile ducts.",
+"ko": "간내 담관 낭샘종",
+"alt": [
+"간내 담관 낭선종"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007818",
+"concept": "- MONDO:0007818 | hyper-IgE recurrent infection syndrome 1, autosomal dominant | syn: AD hyperimmunoglobulin E syndrome; AD-HIES; autosomal dominant HIES; autosomal dominant hyper IgE syndrome | ancestors: autosomal dominant disease, hyper-IgE syndrome, autosomal genetic disease, hyperimmunoglobulin syndrome | def: A condition of decreased or absent presence or activity of signal transducer and activator of transcription 3 protein. Deficiency of this protein is associated with hyper-IgE syndrome.",
+"ko": "고IgE 재발감염 증후군 1형, 상염색체 우성",
+"alt": [
+"상염색체 우성 고IgE 증후군"
+],
+"organs": [
+"pulmonary",
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008265",
+"concept": "- MONDO:0008265 | polycystic liver disease 1 | syn: nonsyndromic congenital polycystic liver disease; nonsyndromic polycystic liver disease (disease); PCLD1; polycystic liver disease 1 | ancestors: autosomal dominant polycystic liver disease, autosomal dominant disease, liver disorder, autosomal genetic disease | def: A polycystic liver disease in which the cause of the disease is a mutation in the PRKCSH gene, and is characterized by the appearance of numerous cysts spread throughout the liver.",
+"ko": "다낭성 간질환 1형",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001609",
+"concept": "- MONDO:0001609 | agranulocytosis | syn: granulocytopenia | ancestors: leukopenia, leukocyte disorder, immune system disorder, hematologic disorder | def: A decrease in the number of mature granulocytes (neutrophils, eosinophils, and basophils) in the peripheral blood.",
+"ko": "무과립구증",
+"alt": [
+"과립구감소증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010168",
+"concept": "- MONDO:0010168 | Usher syndrome type 1 | syn: retinitis pigmentosa and congenital deafness; USH1; Usher syndrome type 1; Usher syndrome, type 1 | ancestors: Usher syndrome, syndromic disease, autosomal recessive disease, disease by body system or component | def: A syndrome characterized by congenital, bilateral, severe sensorineural hearing loss, abnormalities in the vestibular system, and adolescent-onset retinitis pigmentosa.",
+"ko": "어셔 증후군 1형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007236",
+"concept": "- MONDO:0007236 | branchiootorenal syndrome 1 | syn: branchiootorenal syndrome 1; branchiootorenal syndrome 1, with or without cataracts; branchiootorenal syndrome type 1 | ancestors: branchio-oto-renal syndrome, autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability",
+"ko": "새열이신 증후군 1",
+"alt": [
+"BOR 증후군 1"
+],
+"organs": [
+"renal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001413",
+"concept": "- MONDO:0001413 | ulceroglandular tularemia | ancestors: tularemia, primary bacterial infectious disease, vector-borne disease, bacterial infectious disease | def: A tularemia that results in painful regional lymphadenopathy and an ulcerated skin lesion.",
+"ko": "궤양샘형 야토병",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002012",
+"concept": "- MONDO:0002012 | methylmalonic acidemia | syn: methylmalonic aciduria | ancestors: inborn organic aciduria, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: A genetically heterogenous inherited disorder characterized by abnormalities in the metabolism of lipids and proteins. Signs and symptoms usually appear early in life and vary from mild to life threat...",
+"ko": "메틸말론산혈증",
+"alt": [
+"메틸말론산뇨증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003970",
+"concept": "- MONDO:0003970 | gastric fundus carcinoma | syn: carcinoma of fundus of stomach; carcinoma of gastric fundus; carcinoma of the fundus of the stomach; carcinoma of the gastric fundus | ancestors: gastric carcinoma, gastric cancer, digestive system carcinoma, digestive system cancer | def: A carcinoma that arises from epithelial cells of the fundus of stomach.",
+"ko": "위저부 암종",
+"alt": [
+"위 기저부 암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009339",
+"concept": "- MONDO:0009339 | congenital bile acid synthesis defect 2 | syn: AKR1D1 congenital bile acid synthesis defect; BASD2; bile acid synthesis defect, congenital, type 2; CBAS2 | ancestors: congenital bile acid synthesis defect, steroid inherited metabolic disorder, inherited lipid metabolism disorder, inborn errors of metabolism | def: Congenital bile acid synthesis defect type 2 (BAS defect type 2) is an anomaly of bile acid synthesis characterized by severe and rapidly progressive cholestatic liver disease, and malabsorption of fa...",
+"ko": "선천성 담즙산 합성 결함 2형",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020459",
+"concept": "- MONDO:0020459 | unstable hemoglobin disease | ancestors: inherited hemoglobinopathy, hereditary disease, hemoglobinopathy, disease of genetic or genomic mechanism",
+"ko": "불안정 헤모글로빈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012064",
+"concept": "- MONDO:0012064 | choanal atresia-hearing loss-cardiac defects-craniofacial dysmorphism syndrome | syn: Burn-McKeown syndrome; oculootofacial dysplasia | ancestors: hereditary disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, disease of genetic or genomic mechanism, multiple congenital anomalies/dysmorphic syndrome | def: Choanal atresia - deafness - cardiac defects - dysmorphism syndrome, also known as Burn-McKeown syndrome, is an extremely rare multiple congenital anomaly syndrome characterized by bilateral choanal a...",
+"ko": "후비공 폐쇄-난청-심장 결손-두개안면 이형 증후군",
+"alt": [
+"번-맥키운 증후군"
+],
+"organs": [
+"cardiovascular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018229",
+"concept": "- MONDO:0018229 | Stevens-Johnson syndrome | syn: Dermatostomatitis, Stevens Johnson type; Stevens Johnson syndrome | ancestors: syndromic disease, toxic epidermal necrolysis, disease by body system or component, toxic dermatosis | def: Stevens-Johnson syndrome is a limited form of toxic epidermal necrolysis characterized by destruction and detachment of the skin epithelium and mucous membranes involving less than 10% of the body sur...",
+"ko": "스티븐스-존슨 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+}
+]

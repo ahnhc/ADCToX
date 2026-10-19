@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0005854",
+"concept": "- MONDO:0005854 | mixed connective tissue disease | syn: MCTD; sharp syndrome | ancestors: rheumatic disorder, overlapping connective tissue disease, connective tissue disorder, autoimmune disease | def: Mixed connective tissue disease (MCTD) is a rare autoimmune disorder that is characterized by features commonly seen in three different connective tissue disorders: systemic lupus erythematosus, scler...",
+"ko": "혼합결합조직병",
+"alt": [],
+"organs": [
+"pulmonary",
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001180",
+"concept": "- MONDO:0001180 | bullous keratopathy | ancestors: keratopathy, corneal edema, corneal disorder, eye disorder | def: Keratopathy that is characterized by the presence of epithelial bullae.",
+"ko": "수포성 각막병증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004881",
+"concept": "- MONDO:0004881 | myositis fibrosa | syn: interstitial myositis | ancestors: myositis disease, myopathy, inflammatory disease, skeletal muscle disorder | def: A form of myositis that is characterized by the formation of connective tissue within the muscle.",
+"ko": "섬유성 근육염",
+"alt": [
+"사이질 근육염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0008228",
+"concept": "- MONDO:0008228 | pernicious anemia | syn: acquired pernicious anaemia; acquired pernicious anemia; Addison anaemia; Addison anemia | ancestors: megaloblastic anemia, hereditary disease, nutritional deficiency disease, macrocytic anemia | def: Megaloblastic anemia caused by vitamin B-12 deficiency due to impaired absorption. The impaired absorption of vitamin B-12 is secondary to atrophic gastritis and loss of gastric parietal cells.",
+"ko": "악성빈혈",
+"alt": [
+"후천성 악성빈혈"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015762",
+"concept": "- MONDO:0015762 | progressive familial intrahepatic cholestasis | syn: cholestasis, progressive familial intrahepatic; PFIC | ancestors: syndromic disease, familial intrahepatic cholestasis, inborn disorder of bilirubin metabolism, disease by body system or component | def: Progressive familial intrahepatic cholestasis (PFIC) refers to a heterogeneous group of autosomal recessive disorders of childhood that disrupt bile formation and present with cholestasis of hepatocel...",
+"ko": "진행성 가족성 간내 담즙정체증",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015991",
+"concept": "- MONDO:0015991 | citrullinemia | syn: deficiency of citrulline-aspartate ligase | ancestors: urea cycle disorder, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: Citrullinemia is an autosomal recessively inherited disorder of urea cycle metabolism and ammonia detoxification characterized by elevated concentrations of serum citrulline and ammonia. The disease p...",
+"ko": "시트룰린혈증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011101",
+"concept": "- MONDO:0011101 | peroxisome biogenesis disorder 1B | syn: peroxisome biogenesis disorder 1B; peroxisome biogenesis disorder 1B (NALD/IRD); peroxisome biogenesis disorder type 1B | ancestors: peroxisome biogenesis disorder due to PEX1 defect, Zellweger spectrum disorders, developmental anomaly of metabolic origin, peroxisome biogenesis disorder",
+"ko": "퍼옥시좀 생합성 장애 1B",
+"alt": [
+"신생아 부신백질이영양증"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019533",
+"concept": "- MONDO:0019533 | paroxysmal cold hemoglobinuria | syn: Donath-Landsteiner hemolytic anaemia; Donath-Landsteiner hemolytic anemia; Donath-Landsteiner syndrome; PCH | ancestors: autoimmune hemolytic anemia, cold type, autoimmune hemolytic anemia, autoimmune disorder of blood, hemolytic anemia | def: Paroxysmal cold hemoglobinuria (PCH) is a very rare subtype of autoimmune hemolytic anemia (AIHA), caused by the presence of cold-reacting autoantibodies in the blood and characterized by the sudden p...",
+"ko": "발작성 한랭 혈색소뇨증",
+"alt": [
+"도나스-란트슈타이너 용혈성 빈혈"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004812",
+"concept": "- MONDO:0004812 | acute dacryoadenitis | syn: dacryoadenitis, acute | ancestors: dacryoadenitis, acute disease, inflammatory disease, disorder of lacrimal gland | def: Acute form of dacryoadenitis.",
+"ko": "급성 눈물샘염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002044",
+"concept": "- MONDO:0002044 | spastic ectropion | ancestors: ectropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "경련성 눈꺼풀 바깥말림",
+"alt": [
+"경련성 안검외반"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015912",
+"concept": "- MONDO:0015912 | macrothrombocytopenia and granulocyte inclusions with or without nephritis or sensorineural hearing loss | syn: Epstein syndrome; Fechtner syndrome; FTNS; giant platelet syndrome with thrombocytopenia | ancestors: inherited bleeding disorder, platelet-type, syndromic disease, syndromic constitutional thrombocytopenia, hemorrhagic disease | def: An inherited giant platelet disorder with a complex phenotype characterized by congenital thrombocytopenia and possible subsequent manifestations of sensorineural hearing loss, presenile cataracts, el...",
+"ko": "과립구 봉입체를 동반한 거대혈소판감소증 (신염 또는 감각신경성 난청 동반 여부 무관)",
+"alt": [
+"엡스타인 증후군",
+"페히트너 증후군"
+],
+"organs": [
+"haematologic",
+"renal",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018815",
+"concept": "- MONDO:0018815 | aneurysmal bone cyst | syn: ABC; aneurysmal bone cyst; aneurysmal bone cyst (disease); aneurysmal bone cysts | ancestors: bone neoplasm, hereditary disorder of connective tissue, bone disorder, connective tissue neoplasm | def: A locally aggressive and destructive benign cystic lesion of the bone. It is characterized by the formation of multiloculated hemorrhagic cystic spaces which are separated by fibrous septa. It can ari...",
+"ko": "동맥류성 뼈낭종",
+"alt": [
+"동맥류성 골낭종"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001879",
+"concept": "- MONDO:0001879 | anus cancer | syn: anus cancer; cancer of anus; malignant anal neoplasm; malignant anal tumor | ancestors: anus neoplasm, rectal cancer, rectal neoplasm, anus disorder | def: A malignant neoplasm involving the anus",
+"ko": "항문암",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0017882",
+"concept": "- MONDO:0017882 | Omsk hemorrhagic fever | ancestors: Flaviviridae infectious disease, viral hemorrhagic fever, tick-borne infectious disease, primary viral infectious disease | def: Omsk hemorrhagic fever (OHF), caused by Omsk hemorrhagic fever virus (OHFV), is a zoonotic disease characterized by fever, nausea, myalgia and moderately severe hemorrhagic manifestations as well as i...",
+"ko": "옴스크 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017764",
+"concept": "- MONDO:0017764 | disorder of zinc metabolism | ancestors: disorder of mineral absorption and transport, disorder of metabolite absorption and transport, inborn errors of metabolism, hereditary disease",
+"ko": "아연 대사 장애",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006019",
+"concept": "- MONDO:0006019 | yaws | syn: Bouba; frambesia; frambesia tropica; Treponema pallidum subsp. pertenue caused disease or disorder | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: An endemic, infectious, nonvenereal disease in humans that presents mainly in children younger than 15 years. The disease occurs primarily in warm, humid, tropical areas of Africa, Asia, South America...",
+"ko": "열대딸기종",
+"alt": [
+"요스"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004597",
+"concept": "- MONDO:0004597 | pulmonary embolism and infarction | syn: infarction, pulmonary | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: Localized necrosis of lung tissue caused by obstruction of the arterial blood supply, most often due to pulmonary embolism.",
+"ko": "폐색전증 및 폐경색",
+"alt": [],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011397",
+"concept": "- MONDO:0011397 | autosomal dominant cerebellar ataxia, deafness and narcolepsy | syn: ADCA-DN syndrome; autosomal dominant cerebellar ataxia, deafness and narcolepsy | ancestors: sleep-wake disorder, autosomal dominant cerebellar ataxia type I, sleep disorder, autosomal dominant cerebellar ataxia | def: Autosomal dominant cerebellar ataxia, deafness and narcolepsy (ADCA-DN) is a polymorphic disorder and a subtype of autosomal dominant cerebellar ataxia type 1 (ADCA type 1) characterized by ataxia, se...",
+"ko": "상염색체 우성 소뇌실조, 난청 및 기면증",
+"alt": [],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005868",
+"concept": "- MONDO:0005868 | myelophthisic anemia | syn: anaemia LEUKOERYTHROBLASTIC; anemia LEUKOERYTHROBLASTIC; leukoerythroblastic reaction | ancestors: aplastic anemia, anemia, hematologic disorder, disease by body system or component | def: An aplastic anemia that is characterized by displacement of hemopoietic bone-marrow tissue either by fibrosis, tumors or granulomas.",
+"ko": "골수로성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005246",
+"concept": "- MONDO:0005246 | osteomyelitis | syn: osteomyelitis; osteomyelitis (disease) | ancestors: bone inflammation disease, bone marrow disorder, bone disorder, immune system disorder | def: An acute or chronic inflammation of the bone and its structures due to infection with pyogenic bacteria.",
+"ko": "골수염",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 10,
+"new": false
+}
+]

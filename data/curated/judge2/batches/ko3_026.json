@@ -1,0 +1,258 @@
+[
+{
+"id": "MONDO:0021093",
+"concept": "- MONDO:0021093 | cranioectodermal dysplasia 1 | syn: CED1; cranioectodermal dysplasia 1; cranioectodermal dysplasia caused by mutation in IFT122; cranioectodermal dysplasia type 1 | ancestors: cranioectodermal dysplasia, craniosynostosis syndrome, autosomal recessive, syndromic craniosynostosis, short rib-polydactyly syndrome | def: Any cranioectodermal dysplasia in which the cause of the disease is a mutation in the IFT122 gene.",
+"ko": "두개외배엽 이형성증 1형",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009813",
+"concept": "- MONDO:0009813 | chronic recurrent multifocal osteomyelitis | syn: chronic multifocal osteomyelitis; chronic recurrent multifocal osteomyelitis; chronic recurrent multifocal osteomyelitis (disease); CNO/CRMO | ancestors: osteomyelitis, autoinflammatory syndrome, hereditary disorder of connective tissue, bone inflammation disease | def: Chronic non bacterial osteomyelitis (CNO), also known as chronic recurrent multifocal osteomyelitis (CRMO), is a chronic autoinflammatory syndrome that is characterized by multiple foci of painful swe...",
+"ko": "만성 재발성 다발성 골수염",
+"alt": [
+"만성 다발성 골수염"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001710",
+"concept": "- MONDO:0001710 | perforation of bile duct | ancestors: bile duct disorder, biliary tract disorder, hepatobiliary disorder, digestive system disorder | def: A rupture in the wall of the extrahepatic or intrahepatic bile duct due to traumatic or pathologic processes.",
+"ko": "담관 천공",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0043494",
+"concept": "- MONDO:0043494 | arteritis | syn: arteritis; artery inflammation; inflammation of artery | ancestors: arterial disorder, vasculitis, vascular disorder, inflammatory disease | def: An inflammatory process affecting an artery.",
+"ko": "동맥염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0012854",
+"concept": "- MONDO:0012854 | bilateral microtia-deafness-cleft palate syndrome | syn: microtia with or without hearing impairment (AD); microtia, hearing impairment, and cleft palate (AR) | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease | def: This syndrome is characterized by the association of bilateral microtia with severe to profound hearing impairment, and cleft palate.",
+"ko": "양측 소이증-난청-구개열 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002984",
+"concept": "- MONDO:0002984 | reticulohistiocytic granuloma | syn: reticulohistiocytic granuloma (morphologic abnormality); solitary Reticulohistiocytoma; solitary reticulohistiocytoma | ancestors: histiocytosis, lymphatic system disorder, lymphoid system disorder, immune system disorder | def: A rare cutaneous lesion composed of eosinophilic histiocytes, which are often multinucleated. The lesions are yellow-brown papules affecting any part of the body. Patients are usually adult men. The p...",
+"ko": "세망조직구성 육아종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0005543",
+"concept": "- MONDO:0005543 | autoimmune hepatitis type 1 | syn: autoimmune hepatitis type 1; type 1 AIH | ancestors: autoimmune hepatitis, autoimmune disorder of endocrine system, autoimmune disorder of exocrine system, autoimmune disorder of gastrointestinal tract | def: Autoimmune hepatitis characterized by the presence of antinuclear antibody (ANA) and antismooth-muscle antibody (ASMA).",
+"ko": "자가면역간염 1형",
+"alt": [
+"자가면역 간염 1형"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019186",
+"concept": "- MONDO:0019186 | Q fever | syn: Coxiella burnetii caused disease or disorder; Coxiella burnetii disease or disorder; Coxiella burnetii infectious disease; Coxiellosis | ancestors: primary bacterial infectious disease, vector-borne disease, bacterial infectious disease, infectious disease | def: A bacterial infection caused by Coxiella burnetii. It is transmitted to humans by the inhalation of infected air particles or contact with fluids and feces of infected animals. Signs and symptoms incl...",
+"ko": "Q열",
+"alt": [],
+"organs": [
+"hepatic",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006580",
+"concept": "- MONDO:0006580 | miliaria | syn: heat rash; prickly heat | ancestors: syndromic disease, sweat gland disorder, disease by body system or component, skin disorder | def: A small (one mm or less) vesicular, papular or pustular monomorphous rash, which is associated with heat, fever or occlusion of sweat glands.",
+"ko": "땀띠",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001947",
+"concept": "- MONDO:0001947 | suppurative thyroiditis | syn: acute suppurative thyroiditis | ancestors: thyroiditis, thyroid gland disorder, inflammatory disease, endocrine system disorder | def: Acute inflammatory disease of the thyroid gland due to infections by bacteria; fungi; or other microorganisms. Symptoms include tender swelling, fever, and often with leukocytosis.",
+"ko": "화농성 갑상선염",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019124",
+"concept": "- MONDO:0019124 | microscopic polyangiitis | syn: Micropolyangiitis; microscopic polyarteritis; MPA | ancestors: anti-neutrophil cytoplasmic antibody-associated vasculitis, arteritis, necrotizing vasculitis, arterial disorder | def: Microscopic polyangiitis (MPA) is an inflammatory, necrotizing, systemic vasculitis that affects predominantly small vessels (i.e. small arteries, arterioles, capillaries, venules) in multiple organs.",
+"ko": "현미경적 다발혈관염",
+"alt": [
+"현미경적 다발동맥염"
+],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0013434",
+"concept": "- MONDO:0013434 | primary ciliary dyskinesia 14 | syn: CCDC39 primary ciliary dyskinesia; CILD14; ciliary dyskinesia, primary, type 14; primary ciliary dyskinesia 14 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the CCDC39 gene.",
+"ko": "원발섬모운동이상증 14",
+"alt": [
+"일차섬모운동이상증 14"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001875",
+"concept": "- MONDO:0001875 | epicondylitis | syn: ectepicondyle of humerus inflammation; inflammation of ectepicondyle of humerus; lateral epicondylitis | ancestors: bone inflammation disease, inflammatory disease, bone disorder, disease by developmental or physiological process | def: Inflammation of the lateral epicondyle.",
+"ko": "상과염",
+"alt": [
+"팔꿈치 상과염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000226",
+"concept": "- MONDO:0000226 | mineral metabolism disease | syn: disease of mineral metabolism; disorder of mineral metabolism | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease",
+"ko": "무기질 대사 질환",
+"alt": [
+"미네랄 대사 질환"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005665",
+"concept": "- MONDO:0005665 | Bell's palsy | syn: facial nerve palsy; facial nerve paralysis; nerve paralysis, Facial; palsy of facial nerve | ancestors: facial paralysis, facial nerve disorder, cranial nerve palsy, palsy | def: Partial or complete paralysis of the facial muscles of one side of a person's face. It is caused by damage to the seventh cranial nerve. It is usually temporary but it may recur.",
+"ko": "벨마비",
+"alt": [
+"안면신경마비"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007946",
+"concept": "- MONDO:0007946 | jaw-winking syndrome | syn: jaw-winking; jaw-winking syndrome; mandibulo-palpebral synkinesis-ptosis syndrome; Marcus Gunn Phenomenon | ancestors: syndromic disease, cranial nerve neuropathy, disorder of visual system, disease by body system or component | def: Marcus-Gunn syndrome is characterized by ptosis associated with maxillopalpebral synkinesis.",
+"ko": "턱-윙크 증후군",
+"alt": [
+"마커스 건 현상"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005764",
+"concept": "- MONDO:0005764 | follicular dendritic cell sarcoma | syn: follicular Dendritic cell sarcoma; follicular dendritic cell sarcoma; follicular Dendritic cell sarcoma/tumor; follicular dendritic cell tumor | ancestors: dendritic cell sarcoma, Epstein-Barr virus-associated mesenchymal tumor, immune system cancer, leukocyte disorder | def: A neoplasm composed of spindle to ovoid cells which have morphologic and immunophenotypic characteristics of follicular dendritic cells. It affects lymph nodes and other sites including the tonsils, g...",
+"ko": "여포성 수지상세포 육종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001212",
+"concept": "- MONDO:0001212 | non-suppurative otitis media | syn: nonsuppurative otitis media | ancestors: otitis media, middle ear disorder, inflammatory disease, auditory system disorder | def: A otitis media which involves transudation of fluid in the middle ear without pus formation.",
+"ko": "비화농성 중이염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001678",
+"concept": "- MONDO:0001678 | intestinal tuberculosis | syn: intestine tuberculosis; tuberculosis of intestine | ancestors: gastroenteritis, gastrointestinal tuberculosis, intestinal disorder, inflammatory disease | def: A tuberculosis that involves the intestine.",
+"ko": "장결핵",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012350",
+"concept": "- MONDO:0012350 | complement factor H deficiency | syn: C3 glomerulopathy 1; CFH deficiency; complement factor H deficiency; factor H deficiency | ancestors: hereditary nephritis, complement 3 glomerulopathy, nephritis, inherited kidney disorder | def: Any complement 3 glomerulopathy caused by variation(s) in the CFH gene, characterized by increased susceptibility to recurrent, usually severe, infections (particularly by Neisseria meningitidis, Esch...",
+"ko": "보체 인자 H 결핍증",
+"alt": [
+"CFH 결핍증",
+"C3 사구체병증 1형"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+}
+]

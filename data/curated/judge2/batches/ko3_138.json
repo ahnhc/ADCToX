@@ -1,0 +1,251 @@
+[
+{
+"id": "MONDO:1010128",
+"concept": "- MONDO:1010128 | peritonitis | syn: peritoneum inflammation | ancestors: serositis, inflammatory disease, disease by developmental or physiological process, human disease | def: Inflammation of the peritoneum (tissue that lines the abdominal wall and covers most of the organs in the abdomen).",
+"ko": "복막염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0015286",
+"concept": "- MONDO:0015286 | congenital disorder of glycosylation | syn: carbohydrate deficient glycoprotein syndrome; carbohydrate-deficient glycoprotein syndrome; CDG; congenital disorder of glycosylation | ancestors: inborn errors of metabolism, hereditary disease, metabolic disease, disease of genetic or genomic mechanism | def: Congenital disorder of glycosylation (CDG) is a fast growing group of inborn errors of metabolism characterized by defective activity of enzymes that participate in glycosylation (modification of prot...",
+"ko": "선천성 당화 장애",
+"alt": [
+"선천성 글리코실화 장애"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019384",
+"concept": "- MONDO:0019384 | encephalitis lethargica | syn: encephalitis lethargica; epidemic encephalitis; lethargic encephalitis; Von Economo encephalitis | ancestors: viral encephalitis, postinfectious encephalitis, parkinsonian disorder, infectious encephalitis | def: A form of encephalitis, the etiology of which is uncertain, that is characterized by lethargy and headache.",
+"ko": "기면성 뇌염",
+"alt": [
+"폰 에코노모 뇌염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021366",
+"concept": "- MONDO:0021366 | neoplasm of middle ear | syn: middle Ear neoplasm; middle ear neoplasm; middle ear neoplasm (disease); middle Ear tumor | ancestors: middle ear disorder, ear neoplasm, auditory system disorder, disorder of ear | def: A neoplasm (disease) that involves the middle ear.",
+"ko": "중이 신생물",
+"alt": [
+"중이 종양"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:1030008",
+"concept": "- MONDO:1030008 | mitral valve insufficiency | syn: insufficiency, mitral; mitral insufficiency; mitral valve incompetence; mitral valve insufficiency/ regurgitation | ancestors: mitral valve disorder, heart valve disorder, heart disorder, cardiovascular disorder | def: A mitral valve disorder characterized by incomplete valve closure.",
+"ko": "승모판 폐쇄부전",
+"alt": [
+"승모판 역류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0018154",
+"concept": "- MONDO:0018154 | Madelung deformity | ancestors: Leri-Weill dyschondrosteosis, osteochondrodysplasia, bone development disease, skeletal dysplasia | def: Madelung disease, or deformity (MD) is a predominantly bilateral wrist anomaly characterized by shortened and bowed radii and long ulnae leading to dorsal dislocation of the distal ulna and limited mo...",
+"ko": "마델룽 변형",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005469",
+"concept": "- MONDO:0005469 | orthostatic hypotension | syn: orthostatic hypotension; orthostatic hypotension (disease) | ancestors: hypotensive disorder, arterial disorder, vascular disorder, cardiovascular disorder | def: Sudden fall of the blood pressure of at least 20/10 mm Hg when a person stands up.",
+"ko": "기립저혈압",
+"alt": [
+"기립성 저혈압"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001636",
+"concept": "- MONDO:0001636 | mechanical entropion | ancestors: entropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "기계적 안검내반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017719",
+"concept": "- MONDO:0017719 | gangliosidosis | ancestors: sphingolipidosis, lysosomal lipid storage disorder, inherited lipid metabolism disorder, lysosomal storage disease | def: A group of autosomal recessive lysosomal storage disorders marked by the accumulation of gangliosides. They are caused by impaired enzymes or defective cofactors required for normal ganglioside degrad...",
+"ko": "강글리오시드증",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0010984",
+"concept": "- MONDO:0010984 | Usher syndrome type 1D | syn: USH1D; Usher syndrome, type 1D/F digenic | ancestors: Usher syndrome type 1, Usher syndrome, syndromic disease, autosomal recessive disease | def: A form of Usher syndrome type I that is caused by homozygous or compound heterozygous mutation in the gene encoding cadherin-23 (CDH23) on chromosome 10q22. It is inherited in an autosomal recessive m...",
+"ko": "어셔 증후군 1D형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009965",
+"concept": "- MONDO:0009965 | Perlman syndrome | syn: nephroblastomatosis - foetal ascites - macrosomia - Wilms tumour; nephroblastomatosis, foetal ascites, macrosomia and Wilms tumour; nephroblastomatosis-fetal ascites-macrosomia-Wilms tumor syndrome; nephroblastomatosis-fetal ascites-macrosomia-Wilms tumour syndrome | ancestors: syndromic disease, hereditary disease, overgrowth syndrome, disease by body system or component | def: Perlman syndrome is characterized principally by polyhydramnios, neonatal macrosomia, bilateral renal tumors (hamartomas with or without nephroblastomatosis), hypertrophy of the islets of Langerhans a...",
+"ko": "펄만 증후군",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004600",
+"concept": "- MONDO:0004600 | monocytic leukemia | ancestors: leukemia, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm, neoplasm",
+"ko": "단핵구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004706",
+"concept": "- MONDO:0004706 | discoid lupus erythematosus of eyelid | ancestors: noninfectious dermatoses of eyelid, blepharitis, eyelid disorder, inflammatory disease",
+"ko": "눈꺼풀 원판상 홍반루푸스",
+"alt": [
+"눈꺼풀 원판상 루푸스"
+],
+"organs": [
+"ocular",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001949",
+"concept": "- MONDO:0001949 | acute thyroiditis | syn: acute thyroiditis (disease); thyroiditis (disease), acute | ancestors: thyroiditis, acute disease, thyroid gland disorder, inflammatory disease | def: Acute form of thyroiditis (disease).",
+"ko": "급성 갑상선염",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001403",
+"concept": "- MONDO:0001403 | labium majus cancer | syn: cancer of labium majora; labium majora cancer; malignant labia majora neoplasm; malignant labia majora tumor | ancestors: vulva cancer, skin cancer, female reproductive organ cancer, vulvar neoplasm | def: A malignant neoplasm involving the labium majora.",
+"ko": "대음순암",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010029",
+"concept": "- MONDO:0010029 | situs inversus | syn: complete situs inversus; complete situs inversus viscerum; complete transposition (morphologic abnormality); situs inversus | ancestors: visceral heterotaxy, syndromic disease, hereditary disease, congenital heart malformation | def: A congenital condition in which there is complete right-to-left reversal of the position of the major thoracic and abdominal organs (that is, they are arranged in a mirror image of the normal position...",
+"ko": "내장역위증",
+"alt": [
+"좌우바뀜증"
+],
+"organs": [
+"cardiovascular",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0043257",
+"concept": "- MONDO:0043257 | pemphigus and fogo selvagem | syn: Brazilian pemphigus foliaceus | ancestors: pemphigus foliaceus, pemphigus, autoimmune bullous skin disease, dermatitis",
+"ko": "천포창 및 포고 셀바젬",
+"alt": [
+"브라질 천포창"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0015243",
+"concept": "- MONDO:0015243 | allergic bronchopulmonary aspergillosis | syn: ABPA; allergic aspergillosis; Hinson-Pepys disease | ancestors: allergic respiratory disease, aspergillosis, respiratory system disorder, allergic disease | def: Allergic bronchopulmonary aspergillosis (ABPA) is a rare immunologic pulmonary disorder caused by hypersensitivity to Aspergillus fumigatus, clinically manifesting with poorly controlled asthma and re...",
+"ko": "알레르기성 기관지폐아스페르길루스증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000466",
+"concept": "- MONDO:0000466 | first-degree atrioventricular block | syn: atrioventricular block first degree; atrioventricular block, first degree; AV block first degree; first degree atrioventricular block | ancestors: atrioventricular block, heart conduction disease, atrioventricular dissociation, heart disorder | def: A disorder characterized by an electrocardiographic finding of prolonged PR interval for a specific population. For adults one common threshold is a PR interval greater than 0.20 seconds.",
+"ko": "1도 방실 차단",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000875",
+"concept": "- MONDO:0000875 | adult acute monocytic leukemia | syn: acute monocytic leukaemia of adults; acute monocytic leukemia of adults; adult acute differentiated monocytic leukaemia (M5b); adult acute differentiated monocytic leukemia (M5b) | ancestors: acute monocytic leukemia, monocytic leukemia, acute myeloid leukemia, leukemia | def: A acute monocytic leukemia that occurs in an adult.",
+"ko": "성인 급성 단핵구성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+}
+]

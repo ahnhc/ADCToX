@@ -1,0 +1,240 @@
+[
+{
+"id": "MONDO:0005280",
+"concept": "- MONDO:0005280 | prostatitis | syn: inflammation of prostate gland; prostate gland inflammation; prostatitis; prostatitis (disease) | ancestors: prostate disorder, inflammatory disease, male reproductive system disorder, disease by developmental or physiological process | def: An infectious or non-infectious inflammatory process affecting the prostate gland.",
+"ko": "전립선염",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0020843",
+"concept": "- MONDO:0020843 | pseudomembranous diphtheritic conjunctivitis | syn: conjunctival diphtheria; pseudomembranous diphtheritic conjunctivitis | ancestors: pseudomembranous conjunctivitis, diphtheria, acute conjunctivitis, bacterial conjunctivitis | def: Pseudomembranous colitis resulting from infection by Corynebacterium diphtheriae.",
+"ko": "위막성 디프테리아성 결막염",
+"alt": [
+"결막 디프테리아"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001876",
+"concept": "- MONDO:0001876 | renal artery atheroma | syn: atherosclerosis of renal artery; renal artery atherosclerosis | ancestors: aortic atherosclerosis, renal artery disease, atherosclerosis, aortic disorder | def: A atherosclerosis that involves the renal artery.",
+"ko": "신동맥 죽종",
+"alt": [
+"신동맥 죽상경화증"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007319",
+"concept": "- MONDO:0007319 | chondrocalcinosis 2 | syn: calcium pyrophosphate dihydrate crystal deposition disease; chondrocalcinosis 2; chondrocalcinosis type 2; familial articular chondrocalcinosis | ancestors: chondrocalcinosis, rheumatic disorder, inborn errors of metabolism, hereditary disorder of connective tissue | def: A chronic inherited arthropathy characterized by chondrocalcinosis (CC; i.e. cartilage calcification), often associated with recurrent acute calcium pyrophosphate (CPP) crystal arthritis and polyartic...",
+"ko": "연골석회화증 2",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 22
+},
+{
+"id": "MONDO:0010886",
+"concept": "- MONDO:0010886 | 2q37 microdeletion syndrome | syn: 2q37 microdeletion syndrome; 2q37 monosomy; Albright hereditary osteodystrophy type 3; Albright hereditary osteodystrophy-like syndrome | ancestors: partial deletion of the long arm of chromosome 2, skeletal dysplasia, congenital limb malformation, partial deletion of chromosome 2 | def: A chromosomal anomaly involving deletion of chromosome band 2q37 and manifests as three major clinical findings: developmental delay, skeletal malformations and facial dysmorphism.",
+"ko": "2q37 미세결실 증후군",
+"alt": [
+"2q37 단일염색체증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0044344",
+"concept": "- MONDO:0044344 | Schistosoma japonicum infectious disease | syn: Schistosoma japonicum caused disease or disorder; Schistosoma japonicum disease or disorder; Schistosoma japonicum infection | ancestors: schistosomiasis, helminthiasis, vector-borne disease, parasitic infectious disease | def: An infection that is caused by Schistosoma japonicum.",
+"ko": "일본주혈흡충 감염증",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001926",
+"concept": "- MONDO:0001926 | ureteral disorder | syn: disease of ureter; disease or disorder of ureter; disorder of ureter; ureter disease | ancestors: urinary system disorder, disease by body system or component, human disease, disease | def: A non-neoplastic or neoplastic disorder affecting the ureter.",
+"ko": "요관 질환",
+"alt": [
+"수뇨관 질환"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002083",
+"concept": "- MONDO:0002083 | Richter transformation | syn: chronic lymphocytic leukemia with Richter transformation; chronic lymphocytic leukemia/small lymphocytic lymphoma with Richter transformation; Richter syndrome; Richter's syndrome | ancestors: secondary neoplasm, neoplastic disease or syndrome, cancer or benign tumor, disease by etiologic mechanism | def: Transformation of chronic lymphocytic leukemia (CLL) or small lymphocytic lymphoma (SLL) into a more aggressive type of lymphoma, usually diffuse large B-cell lymphoma (immunoblastic or centroblastic ...",
+"ko": "리히터 형질전환",
+"alt": [
+"리히터 증후군"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005445",
+"concept": "- MONDO:0005445 | visceral leishmaniasis | syn: kala-azar; viscus leishmaniasis | ancestors: hereditary disease, leishmaniasis, disease of genetic or genomic mechanism, protozoa infectious disease | def: A severe form of leishmaniasis characterized by irregular bouts of fever, substantial weight loss, swelling of the spleen and liver, and anemia (which may be serious). If left untreated it may lead to...",
+"ko": "내장 리슈마니아증",
+"alt": [
+"칼라아자르"
+],
+"organs": [
+"haematologic",
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018881",
+"concept": "- MONDO:0018881 | myelodysplastic syndrome | syn: dysmyelopoietic syndrome; hematopoeitic - myelodysplastic syndrome (MDS); MDS; MDS, unclassifiable | ancestors: myeloid hemopathy, neoplastic syndrome, hematopoietic and lymphoid system neoplasm, syndromic disease | def: A clonal hematopoietic disorder characterized by dysplasia and ineffective hematopoiesis in one or more of the hematopoietic cell lines. The dysplasia may be accompanied by an increase in myeloblasts,...",
+"ko": "골수형성이상 증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0001262",
+"concept": "- MONDO:0001262 | African histoplasmosis | syn: African histoplasmosis; Histoplasma capsulatum var. duboisii caused disease or disorder; Histoplasma capsulatum var. duboisii disease or disorder; Histoplasma capsulatum var. duboisii infectious disease | ancestors: Histoplasma capsulatum infectious disease, histoplasmosis, primary systemic mycosis, systemic mycosis | def: An disease or disorder caused by infection with Histoplasma capsulatum var. duboisii.",
+"ko": "아프리카 히스토플라스마증",
+"alt": [
+"두보아시 히스토플라스마증"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0011385",
+"concept": "- MONDO:0011385 | intervertebral disk degenerative disorder | syn: degenerative disk disease; degenerative disorder of intervertebral disc; degenerative disorder of intervertebral disk; IDD | ancestors: vertebral column disorder, hereditary disease, skeletal system disorder, disease of genetic or genomic mechanism | def: Any disease of a degenerative nature that affects the intervertebral disk.",
+"ko": "추간판 퇴행성 질환",
+"alt": [
+"추간판 변성"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0004904",
+"concept": "- MONDO:0004904 | toxic maculopathy | syn: toxic maculopathy of retina | ancestors: degeneration of macula and posterior pole, macular degeneration, retinal degeneration, retinal disorder",
+"ko": "독성 황반병증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008218",
+"concept": "- MONDO:0008218 | Hailey-Hailey disease | syn: benign chronic familial pemphigus of Hailey-Hailey; benign chronic pemphigus; Hailey-Hailey disease; pemphigus, benign familial | ancestors: pemphigus, epidermal disease, hereditary skin disorder, autoimmune bullous skin disease | def: Benign chronic familial pemphigus of Hailey-Hailey is characterized by rhagades mostly located in the armpits, inguinal and perineal folds (scrotum, vulva).",
+"ko": "헤일리-헤일리병",
+"alt": [
+"양성 만성 가족성 천포창"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020356",
+"concept": "- MONDO:0020356 | coloboma of iris | syn: coloboma of iris; coloboma of iris (disease); coloboma of the iris | ancestors: coloboma, ocular, autosomal dominant, microphthalmia, isolated, with coloboma, isolated microphthalmia, coloboma | def: A congenital or acquired defect characterized by the presence of a hole in or adjacent to the iris.",
+"ko": "홍채 결손",
+"alt": [
+"홍채 콜로보마"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003005",
+"concept": "- MONDO:0003005 | macular retinal edema | syn: macula lutea retinal edema; macula lutea retinal oedema; macular edema; retinal edema of macula lutea | ancestors: macular degeneration, retinal edema, retinal degeneration, retinal disorder | def: Accumulation of intraretinal fluid and protein in the macula, which may result in swelling and decreased central vision.",
+"ko": "황반 망막부종",
+"alt": [
+"황반부종"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0037871",
+"concept": "- MONDO:0037871 | amino acid metabolism disease | syn: amino acid disorder; amino acid metabolism disorder; amino acidopathy; cellular amino acid metabolic process disease | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A disease that has its basis in the disruption of cellular amino acid metabolic process.",
+"ko": "아미노산 대사 질환",
+"alt": [
+"아미노산 대사 이상"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001994",
+"concept": "- MONDO:0001994 | sphenoidal sinus cancer | syn: cancer of sphenoidal sinus; malignant neoplasm of sphenoid sinus; malignant neoplasm of sphenoidal sinus; malignant neoplasm of the sphenoid sinus | ancestors: paranasal sinus carcinoma, sphenoidal sinus neoplasm, bone carcinoma, paranasal sinus cancer | def: A malignant neoplasm involving the sphenoidal sinus.",
+"ko": "나비굴암",
+"alt": [
+"접형동암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007726",
+"concept": "- MONDO:0007726 | hip dysplasia, Beukes type | syn: Beukes familial hip dysplasia; BFHD; Cilliers-Beighton syndrome; hip dysplasia, Beukes type | ancestors: spondyloepiphyseal dysplasia, osteochondrodysplasia, bone development disease, skeletal dysplasia | def: Beukes familial hip dysplasia (BFHD) is a primary bone dysplasia, characterized by premature degenerative arthropathy of the hip. The disease presents with hip joint discomfort/pain and gait disturban...",
+"ko": "고관절 이형성증 뵈케스형",
+"alt": [
+"실리어스-베이턴 증후군"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006040",
+"concept": "- MONDO:0006040 | lactic acidosis | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: Metabolic acidosis characterized by the accumulation of lactate in the body. It is caused by tissue hypoxia.",
+"ko": "젖산산증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+}
+]

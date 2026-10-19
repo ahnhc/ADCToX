@@ -1,0 +1,251 @@
+[
+{
+"id": "MONDO:0001244",
+"concept": "- MONDO:0001244 | vitamin K deficiency hemorrhagic disease | syn: deficiency of vitamin K; vitamin K deficiency; vitamin K deficiency coagulation disorder | ancestors: vitamin deficiency disorder, nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism | def: Deficiency of vitamin K. It may lead to bleeding, manifested with ecchymoses, petechiae, and hematomas. In infants it may cause hemorrhagic disease of newborn with intracranial and retroperitoneal ble...",
+"ko": "비타민 K 결핍 출혈병",
+"alt": [
+"비타민 K 결핍증"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000385",
+"concept": "- MONDO:0000385 | benign digestive system neoplasm | syn: alimentary part of gastrointestinal system benign neoplasm; benign digestive system tumor; benign digestive system tumour; benign gastrointestinal neoplasm | ancestors: digestive system disorder, benign neoplasm, digestive system neoplasm, disease by body system or component | def: A non-metastasizing neoplasm arising from any part of the digestive system.",
+"ko": "소화기계 양성 신생물",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006532",
+"concept": "- MONDO:0006532 | cholesteatoma of external ear | syn: cholesteatoma (disease) of external ear; external ear cholesteatoma (disease) | ancestors: external ear disorder, cholesteatoma, auditory system disorder, disorder of ear | def: A cholesteatoma (disease) that involves the external ear.",
+"ko": "외이 진주종",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006879",
+"concept": "- MONDO:0006879 | optic papillitis | syn: Choked disc; Choked discs; Choked disk; Choked disks | ancestors: retinitis, optic neuritis, retinal disorder, posterior uveitis | def: Swelling of the optic disk, usually in association with increased intracranial pressure, characterized by hyperemia, blurring of the disk margins, microhemorrhages, blind spot enlargement, and engorge...",
+"ko": "시신경유두염",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006598",
+"concept": "- MONDO:0006598 | phototoxic dermatitis | syn: photosensitive dermatitis; photosensitivity reaction | ancestors: irritant dermatitis, photosensitivity disease, contact dermatitis, radiodermatitis | def: Dermatitis caused or precipitated by exposure to ultraviolet sunlight, or by mediating phototoxic or photoallergic material in response to ultraviolet sunlight.",
+"ko": "광독성 피부염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007888",
+"concept": "- MONDO:0007888 | hereditary leiomyomatosis and renal cell cancer | syn: familial leiomyomatosis; familial leiomyomatosis and renal cell cancer; familial leiomyomatosis cutis et uteri; familial leiomyomatosis with renal carcinoma | ancestors: hereditary neoplastic syndrome, hereditary disease, inherited disease susceptibility, neoplastic syndrome | def: Hereditary leiomyomatosis and renal cell cancer (HLRCC) is a hereditary cancer syndrome characterized by a predisposition to cutaneous and uterine leiomyomas and, in some families, to renal cell cance...",
+"ko": "유전성 평활근종증 및 신세포암",
+"alt": [
+"가족성 평활근종증"
+],
+"organs": [
+"renal",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007534",
+"concept": "- MONDO:0007534 | Beckwith-Wiedemann syndrome | syn: Beckwith-Wiedemann syndrome; BWS; exomphalos-macroglossia-gigantism syndrome; Wiedemann-Beckwith syndrome | ancestors: hereditary neoplastic syndrome, overgrowth syndrome, familial hypertrophic cardiomyopathy, hereditary disease | def: Beckwith-Wiedemann syndrome (BWS) is a genetic disorder characterized by overgrowth, tumor predisposition and congenital malformations.",
+"ko": "벡위드-비데만 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002002",
+"concept": "- MONDO:0002002 | postsurgical hypothyroidism | ancestors: hypothyroidism, thyroid gland disorder, endocrine system disorder, disease by body system or component",
+"ko": "수술후 갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002898",
+"concept": "- MONDO:0002898 | skin cancer | syn: cancer of zone of skin; malignant neoplasm of skin; malignant neoplasm of the skin; malignant neoplasm of zone of skin | ancestors: integumentary system cancer, skin neoplasm, integumentary system disorder, cancer | def: A malignant neoplasm involving the zone of skin",
+"ko": "피부암",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010520",
+"concept": "- MONDO:0010520 | X-linked Alport syndrome | syn: Alport syndrome 1, X-linked, X-linked dominant; Alport syndrome, X-linked; nephropathy and deafness, X-linked; X-linked Alport syndrome | ancestors: X-linked disease, Alport syndrome, hereditary disease, syndromic disease | def: X-linked form of Alport syndrome.",
+"ko": "X연관 알포트 증후군",
+"alt": [],
+"organs": [
+"renal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004160",
+"concept": "- MONDO:0004160 | female stress incontinence | ancestors: urinary bladder disorder, urinary system disorder, disease by body system or component, human disease | def: The involuntary loss of urine in females secondary to insufficient strength of the pelvic floor muscles; this can result from physical changes following pregnancy and childbirth, or as a response to a...",
+"ko": "여성 복압성 요실금",
+"alt": [
+"여성 스트레스성 요실금"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004182",
+"concept": "- MONDO:0004182 | stage IVb bladder cancer | syn: Jewett-Marshall stage D2 bladder cancer; Jewett-Marshall stage D2 urinary bladder cancer; Jewett-Marshall stage D2 urinary bladder carcinoma; stage IVB bladder cancer | ancestors: urinary bladder carcinoma, urinary bladder cancer, carcinoma, urinary bladder neoplasm | def: Stage IV includes T4b, NO,MO/any T NI, MO/ any T N2 MO,/ any T N3 MO/ any T any N M1 : T4b: Tumor invades the pelvic wall, abdominal wall. N1: Metastasis in a single lymph node, 2 cm or less in greate...",
+"ko": "IVb기 방광암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0014909",
+"concept": "- MONDO:0014909 | primary ciliary dyskinesia 34 | syn: CILD34; ciliary dyskinesia, primary, 34; ciliary dyskinesia, primary, type 34; DNAJB13 primary ciliary dyskinesia | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the DNAJB13 gene.",
+"ko": "일차섬모운동이상증 34형",
+"alt": [
+"원발 섬모운동이상증 34형"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018087",
+"concept": "- MONDO:0018087 | viral hemorrhagic fever | syn: haemorrhagic fevers, viral; VHF; VHFs; viral haemorrhagic fever | ancestors: viral infectious disease, hemorrhagic fever, infectious disease, disease of primarily extrinsic mechanism | def: A viral infectious disease caused by RNA viruses in the Arenaviridae, Bunyaviridae, Filoviridae, or Flaviviridae family, and characterized by a severe multisystem syndrome, with damage to the vascular...",
+"ko": "바이러스성 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001072",
+"concept": "- MONDO:0001072 | mild pre-eclampsia | ancestors: preeclampsia, hereditary disease, toxemia of pregnancy, disease of genetic or genomic mechanism | def: A pre-eclampsia characterized by the presence of hypertension without evidence of end-organ damage, in a woman who was normotensive before 20 weeks' gestation.",
+"ko": "경증 전자간증",
+"alt": [
+"경증 임신중독증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007032",
+"concept": "- MONDO:0007032 | prune belly syndrome | syn: abdominal muscle deficiency syndrome; eagle-Barret syndrome; Obrinsky syndrome; Obrisnksy syndrome | ancestors: syndromic disease, fetal lower urinary tract obstruction, inherited kidney disorder, disease by body system or component | def: Prune belly syndrome is a rare congenital disorder, belonging to the group of fetal lower urinary tract obstructions (LUTO), involving variable dilation of the lower urinary tract in association with ...",
+"ko": "프룬 벨리 증후군",
+"alt": [
+"자두배 증후군"
+],
+"organs": [
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002755",
+"concept": "- MONDO:0002755 | solitary osseous plasmacytoma | syn: isolated plasmacytoma of bone; solitary plasmacytoma of bone | ancestors: plasmacytoma, plasma cell neoplasm, neoplasm of mature B-cells, B-cell neoplasm | def: A localized, clonal (malignant) plasma cell infiltrate in the bone, without peripheral blood involvement. The most commonly affected bones are the vertebrae, ribs, skull, pelvis and femur. X-rays exam...",
+"ko": "단발성 골 형질세포종",
+"alt": [
+"고립성 뼈 형질세포종"
+],
+"organs": [
+"haematologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0024239",
+"concept": "- MONDO:0024239 | congenital anomaly of cardiovascular system | syn: cardiovascular system development disease; congenital Abnormality of the circulatory system; congenital anomaly of cardiovascular system; congenital cardiovascular Abnormality | ancestors: cardiovascular disorder, disorder of development or morphogenesis, disease by body system or component, disease by developmental or physiological process | def: A disease that has its basis in the disruption of cardiovascular system development.",
+"ko": "선천성 심혈관계 기형",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009295",
+"concept": "- MONDO:0009295 | glycogen storage disease VII | syn: glycogen storage disease caused by mutation in PFKM; Glycogen Storage Disease Type 7; glycogen storage disease type 7; glycogen storage disease type VII | ancestors: disorder of glycogen metabolism, familial hemolytic anemia, disorder of glycolysis, anemia due to erythrocyte enzyme disorder | def: Muscle phosphofructokinase (PFK) deficiency (Tarui's disease), or glycogen storage disease type 7 (GSD7), is a rare form of glycogen storage disease characterized by exertional fatigue and muscular ex...",
+"ko": "글리코겐 축적병 VII형",
+"alt": [
+"타루이병"
+],
+"organs": [
+"haematologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013590",
+"concept": "- MONDO:0013590 | Stickler syndrome, type 4 | syn: autosomal recessive Stickler syndrome caused by mutation in COL9A1; COL9A1 autosomal recessive Stickler syndrome | ancestors: Stickler syndrome, syndromic disease, spondyloepiphyseal dysplasia, vitreoretinal degeneration | def: Any autosomal recessive Stickler syndrome in which the cause of the disease is a mutation in the COL9A1 gene.",
+"ko": "스티클러 증후군 4형",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

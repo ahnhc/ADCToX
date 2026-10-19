@@ -1,0 +1,236 @@
+[
+{
+"id": "MONDO:0001714",
+"concept": "- MONDO:0001714 | bejel | syn: Njovera; nonvenereal endemic syphilis; Treponema pallidum subsp. endemicum caused disease or disorder; Treponema pallidum subsp. endemicum disease or disorder | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: A chronic skin and tissue disease caused by infection by the endemicum subspecies of the spirochete Treponema pallidum.",
+"ko": "베젤",
+"alt": [
+"비성병성 풍토성 매독"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0002410",
+"concept": "- MONDO:0002410 | pyeloureteritis cystica | ancestors: pyelitis, nephritis, kidney disorder, inflammatory disease",
+"ko": "낭성 신우요관염",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016075",
+"concept": "- MONDO:0016075 | filariasis | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A parasitic disease caused by tissue-invasive, vector-borne nematodes which can be found anywhere in the human body and that are transmitted to humans through the bite of an infected mosquito or fly o...",
+"ko": "사상충증",
+"alt": [
+"필라리아증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0020127",
+"concept": "- MONDO:0020127 | hereditary peripheral neuropathy | syn: genetic peripheral neuropathy | ancestors: peripheral neuropathy, hereditary neuromuscular disease, peripheral nervous system disorder, neuromuscular disease | def: An instance of peripheral neuropathy that is caused by an inherited genomic modification in an individual.",
+"ko": "유전성 말초신경병증",
+"alt": [
+"유전성 말초신경병"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0011441",
+"concept": "- MONDO:0011441 | complex regional pain syndrome type 1 | syn: Algodystrophy; Complex regional pain syndrome I; complex regional pain syndrome type 1; CRPS I | ancestors: syndromic disease, complex regional pain syndrome, disease by body system or component, chronic pain syndrome | def: Complex regional pain syndrome type 1 (CRPS1) is a form of complex regional pain syndrome in which the pain is disproportionate to any known inciting event and is characterized by continuous pain, all...",
+"ko": "복합부위통증증후군 1형",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001557",
+"concept": "- MONDO:0001557 | olecranon bursitis | syn: bursitis of olecranon; elbow bursitis (& olecranon); olecranon bursitis | ancestors: enthesopathy, bursitis, musculoskeletal system disorder, connective tissue disorder | def: A bursitis that involves the olecranon.",
+"ko": "팔꿈치머리 점액낭염",
+"alt": [
+"주두 점액낭염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0010066",
+"concept": "- MONDO:0010066 | familial isolated congenital asplenia | ancestors: inborn error of immunity, hereditary disease, disorder of development or morphogenesis, immune system disorder | def: Familial isolated congenital asplenia is a rare, non-syndromic, potentially life-threatening visceral malformation characterized by the absence of normal spleen function, resulting in a primary immuno...",
+"ko": "가족성 단독 선천성 무비증",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001460",
+"concept": "- MONDO:0001460 | dyshormonogenic goiter | ancestors: goiter, thyroid gland disorder, endocrine system disorder, disease by body system or component",
+"ko": "호르몬 합성장애성 갑상선종",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024472",
+"concept": "- MONDO:0024472 | boutonneuse fever | syn: African tick typhus; boutonneuse disease; boutonneuse fever; Conor and Bruch's disease | ancestors: Rickettsia conorii infectious disease, spotted fever, Rickettsiaceae infectious disease, vector-borne disease | def: An infectious disease of the Mediterranean area, the Crimea, Africa, and India, caused by infection with rickettsia conorii subsp. coronorii.",
+"ko": "지중해 반점열",
+"alt": [
+"부토뇌즈열",
+"아프리카 진드기 발진티푸스"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0018646",
+"concept": "- MONDO:0018646 | sclerosing cholangitis | syn: sclerosing cholangitis; sclerosing cholangitis (disease) | ancestors: cholangitis, non-neoplastic bile duct disorder, inflammatory disease, bile duct disorder | def: A chronic, autoimmune inflammatory liver disorder characterized by narrowing and scarring of the lumen of the bile ducts. It is often seen in patients with ulcerative colitis. Signs and symptoms inclu...",
+"ko": "경화성 담관염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007032",
+"concept": "- MONDO:0007032 | prune belly syndrome | syn: abdominal muscle deficiency syndrome; eagle-Barret syndrome; Obrinsky syndrome; Obrisnksy syndrome | ancestors: syndromic disease, fetal lower urinary tract obstruction, inherited kidney disorder, disease by body system or component | def: Prune belly syndrome is a rare congenital disorder, belonging to the group of fetal lower urinary tract obstructions (LUTO), involving variable dilation of the lower urinary tract in association with ...",
+"ko": "프룬 벨리 증후군",
+"alt": [
+"자두배 증후군"
+],
+"organs": [
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008145",
+"concept": "- MONDO:0008145 | Ollier disease | syn: dyschondroplasia; Ollier disease; Ollier type enchondromatosis; Ollier's disease | ancestors: skeletal dysplasia, bone neoplasm, hereditary disorder of connective tissue, hereditary disease | def: A rare primary bone dysplasia disorder characterized by the development of multiple mainly unilateral or asymmetrically distributed enchondromas throughout the metaphyses of the long bones.",
+"ko": "올리에병",
+"alt": [
+"연골이형성증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015455",
+"concept": "- MONDO:0015455 | gonococcal conjunctivitis | syn: conjunctivitis gonococcal; gonococcal ophthalmia neonatorum | ancestors: gonorrhea, bacterial conjunctivitis, primary bacterial infectious disease, bacterial sexually transmitted disease | def: Inflammation of the conjunctiva in a newborn due to Neisseria gonorrhoeae which was acquired during labor and delivery.",
+"ko": "임균성 결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0013662",
+"concept": "- MONDO:0013662 | Barrett esophagus | syn: Barrett esophagus; Barrett esophagus/esophageal adenocarcinoma; Barrett's esophagus; Barrett's oesophagus with esophagitis | ancestors: esophageal disorder, upper digestive tract disorder, digestive system disorder, disease by body system or component | def: Esophageal lesion lined with columnar metaplastic epithelium which is flat or villiform. Barrett epithelium is characterized by two different types of cells: goblet cells and columnar cells. The sympt...",
+"ko": "바렛 식도",
+"alt": [
+"바렛식도"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001797",
+"concept": "- MONDO:0001797 | chancroid | ancestors: primary bacterial infectious disease, bacterial sexually transmitted disease, haemophilus infectious disease, bacterial infectious disease | def: Chancroid is a bacterial infection that is spread through sexual contact. It is caused by a type of bacteria called Haemophilus ducreyi. Chancroid is characterized by a small bump on the genital which...",
+"ko": "연성하감",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006572",
+"concept": "- MONDO:0006572 | lichen planus | syn: lichen ruber planus | ancestors: dermatitis, lichen disease, skin disorder, inflammatory disease | def: A chronic, recurrent, pruritic inflammatory disorder of unknown etiology that affects the skin and mucus membranes. It presents with rashes and papules that tend to resolve spontaneously. It may be as...",
+"ko": "편평태선",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0024361",
+"concept": "- MONDO:0024361 | circadian rhythm sleep disorder | syn: circadian sleep disorder | ancestors: sleep-wake disorder, sleep disorder, disease by developmental or physiological process, human disease | def: A persistent or recurrent pattern of sleep disruption that is primarily due to an alteration of the circadian system or to a misalignment between the endogenous circadian rhythm and the sleep-wake sch...",
+"ko": "일주기리듬 수면장애",
+"alt": [
+"24시간 주기 수면장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003134",
+"concept": "- MONDO:0003134 | proliferative glomerulonephritis | ancestors: glomerulonephritis, nephritis, glomerular disorder, kidney disorder | def: A constellation of renal disorders characterized by an increase number of cells in the glomerulus; these disorders generally present with nephrotic syndrome, and generally progress to end stage renal ...",
+"ko": "증식성 사구체신염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001079",
+"concept": "- MONDO:0001079 | pancreatic steatorrhea | syn: pancreatic steatorrhoea | ancestors: steatorrhea, pancreas disorder, intestinal disorder, digestive system disorder",
+"ko": "췌장성 지방변",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003278",
+"concept": "- MONDO:0003278 | inner ear cancer | syn: cancer of internal ear; internal ear cancer; malignant internal ear neoplasm; malignant neoplasm of internal ear | ancestors: malignant ear neoplasm, auditory system cancer, inner ear neoplasm, sensory system cancer | def: A malignant neoplasm involving the internal ear.",
+"ko": "속귀암",
+"alt": [
+"내이암"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 1
+}
+]

@@ -1,0 +1,65 @@
+[
+{
+"id": "MONDO:0001403",
+"concept": "- MONDO:0001403 | labium majus cancer | syn: cancer of labium majora; labium majora cancer; malignant labia majora neoplasm; malignant labia majora tumor | ancestors: vulva cancer, skin cancer, female reproductive organ cancer, vulvar neoplasm | def: A malignant neoplasm involving the labium majora.",
+"ko": "대음순암",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006585",
+"concept": "- MONDO:0006585 | neurodermatitis | syn: lichen simplex Chronicus | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: Skin findings arising from repeated rubbing, picking or scratching of a real or imagined irritation of the skin.",
+"ko": "신경피부염",
+"alt": [
+"단순 만성 태선"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007016",
+"concept": "- MONDO:0007016 | vitamin A deficiency | syn: vitamin A deficiency; vitamin A deficiency (disease) | ancestors: vitamin deficiency disorder, nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism | def: Deficiency of vitamin A due to malnutrition, malabsorption, or dietary lack. It is manifested with reduced night vision, night blindness, and xerophthalmia.",
+"ko": "비타민 A 결핍증",
+"alt": [],
+"organs": [
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006581",
+"concept": "- MONDO:0006581 | miliaria rubra | syn: prickly heat - miliaria; sudamina | ancestors: miliaria, syndromic disease, sweat gland disorder, disease by body system or component | def: Miliaria rubraor prickly heat occurs deeper in the epidermis (outside layer of skin) and results in very itchy red papules (bumps).",
+"ko": "홍색 땀띠",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001241",
+"concept": "- MONDO:0001241 | transient neonatal neutropenia | ancestors: neutropenia, agranulocytosis, leukopenia, leukocyte disorder",
+"ko": "일과성 신생아 호중구감소증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004707",
+"concept": "- MONDO:0004707 | anal canal carcinoma in situ | syn: anal canal in situ carcinoma; carcinoma in situ of anal canal; stage 0 anal canal cancer; stage 0 anal canal cancer aJCC v6 | ancestors: rectum carcinoma in situ, anal canal carcinoma, intestine carcinoma in situ, rectal carcinoma | def: A carcinoma in situ involving a anal canal.",
+"ko": "항문관 상피내암종",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+}
+]

@@ -1,0 +1,235 @@
+[
+{
+"id": "MONDO:0001768",
+"concept": "- MONDO:0001768 | stenosis of lacrimal passage | syn: stenosis of lacrimal canaliculi | ancestors: lacrimal apparatus disorder, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "눈물길 협착",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017444",
+"concept": "- MONDO:0017444 | congenital absence of both lower leg and foot | syn: tibiofibular terminal transverse meromelia | ancestors: skeletal dysplasia, dysostosis, hereditary disease, bone disorder",
+"ko": "하퇴 및 발 동시 선천성 결손",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:8000010",
+"concept": "- MONDO:8000010 | antiphospholipid syndrome | syn: antiphospholipid antibody syndrome; antiphospholipid syndrome; familial lupus anticoagulant; Hughes syndrome | ancestors: syndromic disease, autoimmune disease, disease by body system or component, immune system disorder | def: A disorder caused by the presence of autoantibodies directed against phospholipids, causing a hypercoaguable state, which may result in blood clots, stroke, heart attack, and in women, significant pre...",
+"ko": "항인지질 증후군",
+"alt": [
+"항인지질항체 증후군",
+"휴즈 증후군"
+],
+"organs": [
+"haematologic",
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0000462",
+"concept": "- MONDO:0000462 | eye adnexa disorder | syn: disease of ocular adnexa; disease or disorder of ocular adnexa; disorder of ocular adnexa; ocular adnexa disease | ancestors: disorder of orbital region, disease by body system or component, human disease, disease | def: A disease involving the ocular adnexa.",
+"ko": "눈부속기 질환",
+"alt": [
+"안부속기 질환"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008527",
+"concept": "- MONDO:0008527 | tarsal coalition | syn: tarsal coalition | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "족근골 유합",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020445",
+"concept": "- MONDO:0020445 | agenesis of the superior vena cava | syn: absence of the superior caval vein; absence of the superior vena cava; absence of the SVC; agenesis of the superior caval vein | ancestors: congenital anomaly of superior vena cava, vascular disorder, disorder of development or morphogenesis, cardiovascular disorder | def: Agenesis of the superior vena cava (SVC) is a rare congenital anomaly of the great veins characterized by unilateral or bilateral complete absence of the SVC. Unilateral agenesis is mainly asymptomati...",
+"ko": "상대정맥 무형성",
+"alt": [
+"상대정맥 결손"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018935",
+"concept": "- MONDO:0018935 | hairy cell leukemia | syn: hairy cell leukemia; HCL; HCL-C; leukemic reticuloendotheliosis | ancestors: B-cell chronic lymphocytic leukemia, chronic leukemia, neoplasm of mature B-cells, acute lymphoblastic leukemia | def: Hairy cell leukemia (HCL) is a rare type of leukemia in which abnormal B-lymphocytes are present in the bone marrow, spleen and peripheral blood. It is a slowly progressive chronic lymphocytic leukemi...",
+"ko": "모발세포 백혈병",
+"alt": [
+"털세포 백혈병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0021500",
+"concept": "- MONDO:0021500 | benign neoplasm of spleen | syn: benign neoplasm of the spleen; benign splenic neoplasm; spleen benign neoplasm | ancestors: immune system organ benign neoplasm, spleen neoplasm, immune system disorder, benign neoplasm | def: A benign neoplasm that involves the spleen.",
+"ko": "비장 양성 신생물",
+"alt": [
+"지라 양성 종양"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005979",
+"concept": "- MONDO:0005979 | thoracic outlet syndrome | syn: thoracic outlet compression syndrome; TOS | ancestors: syndromic disease, vascular disorder, disease by body system or component, cardiovascular disorder | def: A syndrome resulting from the compression of the blood vessels or nerves in the space between the clavicle and first rib (thoracic outlet). It is caused by car accident injuries or repetitive job or s...",
+"ko": "흉곽출구 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0043303",
+"concept": "- MONDO:0043303 | hyperacusis | syn: hyperacusis | ancestors: disorder of ear, hearing disorder, auditory perceptual disorders, otorhinolaryngologic disease | def: A disorder in which an individual has an abnormally low noise tolerance, and increased sensitivity to sounds.",
+"ko": "청각과민",
+"alt": [
+"소리과민증"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019272",
+"concept": "- MONDO:0019272 | hereditary palmoplantar keratoderma | syn: hereditary keratosis palmoplantaris; hereditary palmoplantar hyperkeratosis; hereditary palmoplantar keratosis; hereditary PPK | ancestors: palmoplantar keratosis, epidermal disease, hereditary skin disorder, keratosis | def: An instance of palmoplantar keratosis that is caused by an inherited modification of the individual's genome.",
+"ko": "유전성 손발바닥각화증",
+"alt": [
+"유전성 장척각화증"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021929",
+"concept": "- MONDO:0021929 | traumatic myositis ossificans | syn: traumatic myositis ossificans | ancestors: myositis ossificans, myositis disease, myopathy, inflammatory disease | def: Myositis Ossificans resulting from trauma.",
+"ko": "외상성 골화성 근염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0005411",
+"concept": "- MONDO:0005411 | gallbladder cancer | syn: cancer of gall bladder; gall bladder cancer; malignant gall bladder neoplasm; malignant gallbladder neoplasm | ancestors: digestive system cancer, gallbladder neoplasm, digestive system disorder, cancer | def: A malignant neoplasm involving the gall bladder",
+"ko": "담낭암",
+"alt": [
+"쓸개암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021443",
+"concept": "- MONDO:0021443 | benign neoplasm of lymph node | syn: benign lymph node neoplasm; benign lymph node tumor; benign lymph node tumour; benign neoplasm of the lymph node | ancestors: immune system organ benign neoplasm, lymph node neoplasm, immune system disorder, benign neoplasm | def: A benign neoplasm that involves the lymph node.",
+"ko": "림프절 양성 신생물",
+"alt": [
+"림프절 양성 종양"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016466",
+"concept": "- MONDO:0016466 | asbestosis | syn: asbestos dust pneumoconiosis; asbestos pneumoconiosis; asbestosis; pneumoconiosis from asbestos dust | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: A lung disorder caused by inhalation of asbestos fibers. It results in fibrosis of the lung parenchyma. Signs and symptoms include coughing, shortness of breath and chest pain.",
+"ko": "석면폐증",
+"alt": [
+"석면 진폐증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001638",
+"concept": "- MONDO:0001638 | protein-deficiency anemia | syn: anaemia due to protein deficiency | ancestors: deficiency anemia, anemia, hematologic disorder, disease by body system or component",
+"ko": "단백질 결핍성 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001756",
+"concept": "- MONDO:0001756 | frontal sinus cancer | syn: cancer of frontal sinus; frontal sinus cancer; malignant frontal sinus neoplasm; malignant frontal sinus tumor | ancestors: paranasal sinus carcinoma, frontal sinus neoplasm, bone carcinoma, paranasal sinus cancer | def: A malignant neoplasm involving the frontal sinus.",
+"ko": "전두동암",
+"alt": [
+"이마굴암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0016820",
+"concept": "- MONDO:0016820 | Moyamoya disease | syn: idiopathic Moyamoya disease; progressive intracranial arterial occlusion | ancestors: cerebral arterial disease, hereditary neurological disease, intracranial arterial disease, hereditary disease | def: Moyamoya disease (MMD) is a rare intracranial arteriopathy involving progressive stenosis of the cerebral vasculature located at the base of the brain causing transient ischemic attacks or strokes.",
+"ko": "모야모야병",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018911",
+"concept": "- MONDO:0018911 | maturity-onset diabetes of the young | syn: maturity onset diabetes of the young; maturity-onset diabetes of the young; maturity-onset diabetes of the young (disease); MODY | ancestors: monogenic diabetes, disorder of glycolysis, diabetes mellitus, inborn errors of metabolism | def: MODY (maturity-onset diabetes of the young) is a rare, familial, clinically and genetically heterogeneous form of diabetes characterized by young age of onset (generally 10-45 years of age) with maint...",
+"ko": "청년기 발병 성인형 당뇨병",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0024335",
+"concept": "- MONDO:0024335 | retrobulbar neuritis | ancestors: optic neuritis, optic nerve disorder, encephalomyelitis, eye disorder",
+"ko": "구후 시신경염",
+"alt": [
+"구후신경염"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2
+}
+]

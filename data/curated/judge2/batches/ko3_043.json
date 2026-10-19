@@ -1,0 +1,257 @@
+[
+{
+"id": "MONDO:0019642",
+"concept": "- MONDO:0019642 | vitamin D-dependent rickets, type 2 | syn: hereditary 1,25 dihydroxyvitamin D-resistant rickets with abnormal Vitamin D receptor; hereditary vitamin D-resistant rickets; HVDRR; hypocalcemic vitamin D-resistant rickets | ancestors: hypocalcemic rickets, vitamin D-dependent rickets, rickets, disorders of vitamin D metabolism | def: Hypocalcemic vitamin D-resistant rickets (HVDRR) is a hereditary disorder of vitamin D action characterized by hypocalcemia, severe rickets and in many cases alopecia.",
+"ko": "비타민 D 의존성 구루병 2형",
+"alt": [
+"유전성 1,25-디하이드록시비타민 D 저항성 구루병"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019636",
+"concept": "- MONDO:0019636 | renal agenesis, unilateral | syn: congenital single kidney; congenital solitary kidney; unilateral renal agenesis | ancestors: renal agenesis, disorder of development or morphogenesis, inherited kidney disorder, disease by developmental or physiological process | def: Unilateral renal agenesis (URA) is a form of renal agenesis characterized by the complete absence of development of one kidney accompanied by an absent ureter.",
+"ko": "편측 신장무형성",
+"alt": [
+"선천성 단일 신장"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002732",
+"concept": "- MONDO:0002732 | lung benign neoplasm | syn: benign lung neoplasm; benign lung tumor; benign lung tumour; benign neoplasm of lung | ancestors: respiratory system benign neoplasm, thoracic benign neoplasm, lung neoplasm, respiratory system disorder | def: A non-metastasizing neoplasm that arises from the lung parenchyma or the bronchi. Representative examples include lung adenoma, lung hamartoma, and endobronchial lipoma.",
+"ko": "폐 양성 신생물",
+"alt": [
+"폐 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0017762",
+"concept": "- MONDO:0017762 | disorder of copper metabolism | syn: inborn cellular copper ion homeostasis disorder; inborn error of cellular copper ion homeostasis; rare inborn error of cellular copper ion homeostasis | ancestors: disorder of mineral absorption and transport, disorder of metabolite absorption and transport, inborn errors of metabolism, hereditary disease | def: An inherited metabolic disease that is has its basis in the disruption of cellular copper ion homeostasis.",
+"ko": "구리 대사 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0037871",
+"concept": "- MONDO:0037871 | amino acid metabolism disease | syn: amino acid disorder; amino acid metabolism disorder; amino acidopathy; cellular amino acid metabolic process disease | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A disease that has its basis in the disruption of cellular amino acid metabolic process.",
+"ko": "아미노산 대사 질환",
+"alt": [
+"아미노산 대사 이상"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0013041",
+"concept": "- MONDO:0013041 | atypical hemolytic-uremic syndrome with I factor anomaly | syn: aHUS with I factor anomaly; atypical HUS with I factor anomaly; D-HUS with I factor anomaly; hemolytic uremic syndrome, atypical, susceptibility to, type 3 | ancestors: atypical hemolytic uremic syndrome with complement gene abnormality, atypical hemolytic-uremic syndrome, syndromic disease, complement deficiency",
+"ko": "I 인자 이상을 동반한 비정형 용혈요독 증후군",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:1040033",
+"concept": "- MONDO:1040033 | congenital muscular dystrophy without intellectual disability | syn: CMD without intellectual disability; CMD-no MR; congenital muscular dystrophy-dystroglycanopathy without intellectual disability | ancestors: congenital muscular dystrophy, congenital nervous system disorder, muscular dystrophy, nervous system disorder | def: A congenital muscular dystrophy due to dystroglycanopathy characterized by a wide phenotypic spectrum which includes hypotonia and muscular weakness present at birth or early infancy, delayed or arres...",
+"ko": "지적장애를 동반하지 않는 선천성 근이영양증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0019255",
+"concept": "- MONDO:0019255 | sphingolipidosis | ancestors: lysosomal lipid storage disorder, inherited lipid metabolism disorder, lysosomal storage disease, inborn errors of metabolism | def: An inherited metabolic disorder that affects the lysosomal degradation of the spinhgolipids. Representative examples include Gaucher disease, Tay-Sachs disease, and Niemann-Pick disease.",
+"ko": "스핑고지질증",
+"alt": [
+"스핑고리피도시스"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021312",
+"concept": "- MONDO:0021312 | malignant tumor of adrenal cortex | syn: adrenal cortex cancer; cancer of adrenal cortex; malignant adrenal cortex neoplasm; malignant adrenal cortex tumor | ancestors: adrenal gland cancer, adrenal cortex neoplasm, retroperitoneal cancer, malignant endocrine neoplasm | def: A cancer that involves the adrenal cortex.",
+"ko": "부신피질 악성 종양",
+"alt": [
+"부신피질암"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007955",
+"concept": "- MONDO:0007955 | Meckel diverticulum | syn: Meckel diverticulum; Meckel's diverticulum; persistent vitelline duct | ancestors: hereditary disease, digestive system disorder, disease of genetic or genomic mechanism, disease by body system or component | def: A congenital pouch in the distal ileum. It may cause painless rectal bleeding and bowel obstruction.",
+"ko": "메켈 게실",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004753",
+"concept": "- MONDO:0004753 | mechanical strabismus | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "기계적 사시",
+"alt": [
+"기계성 사시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006524",
+"concept": "- MONDO:0006524 | acrodermatitis chronica atrophicans | ancestors: acrodermatitis, dermatitis, skin disorder, inflammatory disease | def: An acrodermatitis characterized by a chronically progressive course, leading to widespread atrophy of the skin. It is a clinical manifestation of Lyme borreliosis.",
+"ko": "만성 위축성 지단피부염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004518",
+"concept": "- MONDO:0004518 | anterior urethra cancer | syn: anterior urethra malignant neoplasm; anterior urethra malignant tumor; anterior urethra malignant tumour; anterior urethral cancer | ancestors: urethra cancer, malignant urinary system neoplasm, urethra neoplasm, cancer | def: A malignant neoplasm that affects the portion of the urethra that is close to the outside of the body.",
+"ko": "전부 요도암",
+"alt": [
+"앞쪽 요도암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008975",
+"concept": "- MONDO:0008975 | otospondylomegaepiphyseal dysplasia | syn: OSMED; otospondylmegaepiphyseal dysplasia; otospondylomegaepiphyseal dysplasia | ancestors: spondyloepiphyseal dysplasia, osteochondrodysplasia, bone development disease, skeletal dysplasia | def: An inborn error of cartilage collagen formation characterized by sensorineural hearing loss, enlarged epiphyses, skeletal dysplasia with disproportionately short limbs, vertebral body anomalies and a ...",
+"ko": "이-척추-큰골끝 이형성증",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001046",
+"concept": "- MONDO:0001046 | imperforate anus | syn: anal atresia; anus, imperforate; congenital atresia of anus; imperforate anus | ancestors: anus disorder, disorder of development or morphogenesis, rectal disorder, disease by developmental or physiological process | def: A congenital birth defect characterized by the absence of a normal anal opening. It may be associated with other congenital abnormalities.",
+"ko": "항문 폐쇄증",
+"alt": [
+"쇄항"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020680",
+"concept": "- MONDO:0020680 | acute bronchiolitis | syn: acute bronchiolitis | ancestors: bronchiolitis, acute disease, lung disorder, human disease | def: Acute inflammation of the bronchioles usually caused by the respiratory syncytial virus.",
+"ko": "급성 세기관지염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001616",
+"concept": "- MONDO:0001616 | lobomycosis | ancestors: dermatomycosis, cutaneous mycosis, fungal infectious disease, integumentary system disorder | def: A chronic, fungal, subcutaneous infection endemic in rural regions in South America and Central America. The causal organism is Lacazia labol.",
+"ko": "로보균증",
+"alt": [
+"로보진균증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0010028",
+"concept": "- MONDO:0010028 | sialuria | syn: sialuria; sialuria, French type | ancestors: disorder of sialic acid metabolism, free sialic acid storage disease, lysosomal storage disease, inborn disorder of lysosomal amino acid transport | def: Sialuria is an extremely rare metabolic disorder described in fewer than 10 patients to date and characterized by variable signs and symptoms, mostly in infancy, including transient failure to thrive,...",
+"ko": "시알산뇨증",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015040",
+"concept": "- MONDO:0015040 | myelodysplastic syndrome with excess blasts-1 | syn: MDS-EB-1; myelodysplastic syndrome with Excess blasts-1; RAEB-1; RAEB-I | ancestors: myelodysplastic syndrome with excess blasts, myelodysplastic syndrome, hematopoietic and lymphoid cell neoplasm, myeloid hemopathy | def: A myelodysplastic syndrome defined by 5-9% blasts in the bone marrow, and <5% blasts in the blood. Approximately 25% of cases progress to an acute leukemia. (WHO)",
+"ko": "모세포 증가형 골수이형성 증후군-1",
+"alt": [
+"골수이형성 증후군, 모세포 과잉형-1"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001187",
+"concept": "- MONDO:0001187 | urinary bladder cancer | syn: bladder cancer, somatic; cancer of urinary bladder; malignant bladder neoplasm; malignant bladder tumor | ancestors: urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder, urinary system neoplasm | def: A primary or metastatic malignant neoplasm involving the bladder.",
+"ko": "방광암",
+"alt": [
+"요로상피암"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+}
+]

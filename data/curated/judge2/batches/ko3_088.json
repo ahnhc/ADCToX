@@ -1,0 +1,255 @@
+[
+{
+"id": "MONDO:0018931",
+"concept": "- MONDO:0018931 | mucolipidosis type III, alpha/beta | syn: ML 3 alpha/beta; ML III alpha/beta; MLIII; mucolipidosis type 3 alpha/beta | ancestors: familial mucolipidosis, GNPTAB-mucolipidosis, lysosomal storage disease with skeletal involvement, mucolipidosis | def: Mucolipidosis III alpha/beta (MLIII alpha/beta) is a lysosomal disorder characterized by progressive slowing of the growth rate from early childhood, stiffness and pain in joints, gradual coarsening o...",
+"ko": "점액지질증 III형 알파/베타",
+"alt": [
+"ML III 알파/베타"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011399",
+"concept": "- MONDO:0011399 | alpha thalassemia spectrum | syn: alpha thalassaemia; alpha thalassemia spectrum; alpha-thalassemia; thalassemia, alpha- | ancestors: thalassemia, inherited hemoglobinopathy, hereditary disease, hemoglobinopathy | def: An inherited hemoglobinopathy characterized by impaired synthesis of alpha-globin chains leading to a variable clinical picture depending on the number of affected alleles.",
+"ko": "알파 지중해빈혈 스펙트럼",
+"alt": [
+"알파 탈라세미아 스펙트럼"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002258",
+"concept": "- MONDO:0002258 | pharyngitis | syn: inflammation of throat; Sore throat; throat inflammation | ancestors: upper respiratory tract disorder, inflammatory disease, respiratory system disorder, disease by developmental or physiological process | def: Inflammation of the throat most often caused by viral and bacterial infections. Other causes include allergens, chemical substances, and trauma.",
+"ko": "인두염",
+"alt": [
+"목감기"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020706",
+"concept": "- MONDO:0020706 | Heberden's node | syn: Heberden's node; tuberculum arthriticum | ancestors: exostosis, hyperostosis, bone remodeling disease, bone disorder | def: Osteophytes that most commonly develop on the distal interphalangeal joints, often in the setting of osteoarthritis.",
+"ko": "헤베르덴 결절",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001340",
+"concept": "- MONDO:0001340 | heart cancer | syn: cancer of heart; Cardiac neoplasm, malignant; heart cancer; malignant Cardiac neoplasm | ancestors: cardiovascular cancer, thoracic cancer, heart neoplasm, cancer | def: A malignant neoplasm involving the heart",
+"ko": "심장암",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018770",
+"concept": "- MONDO:0018770 | Jeune syndrome | syn: Asphyxiating Thoracic Dystrophy; asphyxiating thoracic dystrophy of the newborn; JATD; Jeune asphyxiating thoracic dystrophy | ancestors: ciliopathy, short rib-polydactyly syndrome, inherited renal tubular disease, hereditary disease | def: Jeune syndrome, also called asphyxiating thoracic dystrophy, is a short-rib dysplasia characterized by a narrow thorax, short limbs and radiological skeletal abnormalities including \\\"trident\\\" aspect...",
+"ko": "죄네 증후군",
+"alt": [
+"질식성 흉곽 이영양증"
+],
+"organs": [
+"pulmonary",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016318",
+"concept": "- MONDO:0016318 | progressive multifocal leukoencephalopathy | syn: PML; progressive multifocal leukoencephalitis | ancestors: infectious encephalitis, encephalitis, central nervous system infectious disorder, encephalomyelitis | def: Progressive multifocal leukoencephalopathy (PML) is a neurological disorder that damages the myelin that covers and protects nerves in the white matter of the brain. It is caused by the JC virus (JCV)...",
+"ko": "진행성 다초점 백질뇌병증",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0001255",
+"concept": "- MONDO:0001255 | ventilation pneumonitis | syn: humidifier lung; humidifiers lung; ventilation systems lung | ancestors: hypersensitivity pneumonitis, allergic respiratory disease, interstitial lung disease, pneumonitis | def: An extrinsic allergic alveolitis caused by inhalation of antigens from thermophilic actinomycetes species growing in air conditioners and humidifiers. Fungi like Aureobasidium sp and Candida albicans ...",
+"ko": "환기장치 과민성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001889",
+"concept": "- MONDO:0001889 | ovarian dysfunction | syn: ovarian failure; ovarian hypofunction; ovarian insufficiency | ancestors: ovarian disorder, gonadal disorder, female reproductive system disorder, reproductive system disorder | def: The inability of the ovaries to function.",
+"ko": "난소 기능부전",
+"alt": [
+"난소기능저하"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0013880",
+"concept": "- MONDO:0013880 | facial paresis, hereditary congenital, 3 | syn: congenital hereditary facial paralysis-variable hearing loss syndrome caused by mutation in HOXB1; facial paresis, hereditary congenital, 3; facial paresis, hereditary congenital, type 3; HOXB1 congenital hereditary facial paralysis-variable hearing loss syndrome | ancestors: isolated hereditary congenital facial paralysis, congenital hereditary facial paralysis-variable hearing loss syndrome, congenital nervous system disorder, hereditary neurological disease | def: Any congenital hereditary facial paralysis-variable hearing loss syndrome in which the cause of the disease is a mutation in the HOXB1 gene.",
+"ko": "유전성 선천성 안면마비 3형",
+"alt": [
+"HOXB1 안면마비-난청 증후군"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024616",
+"concept": "- MONDO:0024616 | tympanitis | syn: inflammation of tympanic membrane; myringitis; tympanic membrane inflammation | ancestors: tympanic membrane disorder, otitis media, middle ear disorder, inflammatory disease | def: An inflammatory disease involving a pathogenic inflammatory response in the tympanic membrane.",
+"ko": "고막염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001558",
+"concept": "- MONDO:0001558 | Potter sequence | syn: oligohydramnios sequence; Potter syndrome; Potter's sequence; Potter's syndrome | ancestors: syndromic disease, oligohydramnios, disease by body system or component, placenta disorder | def: A rare, lethal congenital malformation characterized by bilateral renal agenesis and the absence or decreased volume of amniotic fluid (oligohydramnios). The presence of oligohydramnios gives rise to ...",
+"ko": "포터 연쇄",
+"alt": [
+"양수과소 연쇄",
+"포터 증후군"
+],
+"organs": [
+"pulmonary",
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004923",
+"concept": "- MONDO:0004923 | chronic inflammation of lacrimal passage | ancestors: lacrimal apparatus disorder, inflammatory disease, eye adnexa disorder, eye disorder",
+"ko": "눈물길 만성 염증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003648",
+"concept": "- MONDO:0003648 | tympanic membrane disorder | syn: disease of tympanic membrane; disease or disorder of tympanic membrane; disorder of tympanic membrane; tympanic membrane disease | ancestors: middle ear disorder, auditory system disorder, disorder of ear, disease by body system or component | def: A disease involving the tympanic membrane.",
+"ko": "고막 질환",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005970",
+"concept": "- MONDO:0005970 | staphylococcal pneumonia | syn: Staphylococcus caused pneumonia; Staphylococcus pneumonia | ancestors: bacterial pneumonia, staphylococcal infection, bacterial infectious disease, pneumonia | def: Pneumonia caused by infections with bacteria of the genus staphylococcus, usually with staphylococcus aureus.",
+"ko": "포도알균 폐렴",
+"alt": [
+"포도상구균 폐렴"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007426",
+"concept": "- MONDO:0007426 | deafness, unilateral | syn: deafness, unilateral | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "일측성 난청",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0003719",
+"concept": "- MONDO:0003719 | renal pelvis neoplasm | syn: kidney pelvis neoplasm; kidney pelvis tumor; kidney pelvis tumour; neoplasm of kidney pelvis | ancestors: kidney neoplasm, kidney disorder, urinary system neoplasm, urinary system disorder | def: A neoplasm (disease) that involves the renal pelvis.",
+"ko": "신우 신생물",
+"alt": [
+"신우 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019970",
+"concept": "- MONDO:0019970 | Sinding-Larsen-Johansson disease | syn: aseptic necrosis of patella; Osteochondrosis of patella | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder | def: Sinding-Larsen-Johansson disease is a type of osteochondrosis affecting the attachment of the patellar tendon to the patella and characterized by tenderness and localized swelling of the patella.",
+"ko": "신딩-라르센-요한손병",
+"alt": [
+"슬개골 골연골증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005729",
+"concept": "- MONDO:0005729 | dicrocoeliasis | syn: Dicrocoelium caused disease or disorder; Dicrocoelium disease or disorder; Dicrocoelium infectious disease | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection with flukes of the genus Dicrocoelium.",
+"ko": "창형흡충증",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001950",
+"concept": "- MONDO:0001950 | corneal ectasia | ancestors: corneal disorder, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "각막 확장증",
+"alt": [
+"각막 팽륜"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+}
+]

@@ -1,0 +1,243 @@
+[
+{
+"id": "MONDO:0004764",
+"concept": "- MONDO:0004764 | fibular collateral ligament bursitis | ancestors: enthesopathy, musculoskeletal system disorder, connective tissue disorder, disease by body system or component",
+"ko": "종아리쪽곁인대 윤활낭염",
+"alt": [
+"비측부인대 점액낭염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005339",
+"concept": "- MONDO:0005339 | androgenetic alopecia | ancestors: endocrine alopecia, alopecia, hair anomaly, disorder of pilosebaceous unit",
+"ko": "안드로겐성 탈모증",
+"alt": [
+"남성형 탈모"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0021503",
+"concept": "- MONDO:0021503 | benign neoplasm of gallbladder | syn: benign gallbladder neoplasm; benign gallbladder tumor; benign gallbladder tumour; benign neoplasm of the gallbladder | ancestors: benign digestive system neoplasm, gallbladder neoplasm, digestive system disorder, benign neoplasm | def: A benign neoplasm that involves the gall bladder.",
+"ko": "담낭 양성 신생물",
+"alt": [
+"담낭 양성 종양"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001966",
+"concept": "- MONDO:0001966 | chronic closed-angle glaucoma | syn: anatomical narrow angle glaucoma; angle-closure glaucoma, chronic; chronic angle-closure glaucoma | ancestors: primary angle-closure glaucoma, angle-closure glaucoma, glaucoma, eye disorder | def: Chronic form of angle-closure glaucoma.",
+"ko": "만성 폐쇄각 녹내장",
+"alt": [
+"만성 협우각 녹내장"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005478",
+"concept": "- MONDO:0005478 | torsades de pointes | ancestors: ventricular tachycardia, cardiac rhythm disease, heart disorder, cardiovascular disorder | def: A malignant form of polymorphic ventricular tachycardia that is characterized by heart rate between 200 and 250 beats per minute, and qrs complexes with changing amplitude and twisting of the points. ...",
+"ko": "염전성 심실빈맥",
+"alt": [
+"토르사드 드 푸앙"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018221",
+"concept": "- MONDO:0018221 | immune hydrops fetalis | syn: IHF; immune fetal edema; immune fetal hydrops; immune foetal hydrops | ancestors: hydrops fetalis, developmental defect during embryogenesis, disorder of development or morphogenesis, disease by developmental or physiological process | def: Immune hydrops fetalis (IHF), a form of HF, describes the excessive accumulation of fetal fluid within the fetal extravascular compartments and body cavities due to maternal rhesus (Rh) incompatibilit...",
+"ko": "면역성 태아수종",
+"alt": [
+"면역성 태아부종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0020108",
+"concept": "- MONDO:0020108 | autoimmune hemolytic anemia | syn: AHA; AIHA; Anemia, Hemolytic, Acquired Autoimmune; autoimmune haemolytic anemia | ancestors: autoimmune disorder of blood, hemolytic anemia, hematologic disorder, autoimmune disease | def: Autoimmune hemolytic anemia (AIHA) is an autoimmune disorder in which various types of auto-antibodies are directed against red blood cells causing their survival to be shortened and resulting in hemo...",
+"ko": "자가면역 용혈성 빈혈",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004620",
+"concept": "- MONDO:0004620 | Hodgkin's lymphoma, lymphocytic depletion | syn: adult HDLD; adult LDHD; adult lymphocyte depleted classical Hodgkin lymphoma; adult lymphocyte depleted Hodgkin lymphoma | ancestors: classic Hodgkin lymphoma, hereditary disease, Hodgkins lymphoma, disease of genetic or genomic mechanism | def: A diffuse subtype of classical Hodgkin lymphoma which is rich in Hodgkin and Reed-Sternberg cells and/or depleted in non-neoplastic lymphocytes. (WHO, 2008)",
+"ko": "호지킨 림프종, 림프구 고갈형",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006713",
+"concept": "- MONDO:0006713 | corneal neovascularization | ancestors: keratitis, corneal disorder, inflammatory disease, eye disorder | def: New blood vessels originating from the corneal veins and extending from the limbus into the adjacent corneal stroma. Neovascularization in the superficial and/or deep corneal stroma is a sequel to num...",
+"ko": "각막 신생혈관형성",
+"alt": [
+"각막 혈관신생"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005812",
+"concept": "- MONDO:0005812 | influenza | syn: flu; influenza infection; Influenza with other manifestations; orthomyxoviridae caused disease or disorder | ancestors: viral respiratory tract infection, primary viral infectious disease, viral infectious disease, respiratory tract infectious disorder | def: An acute viral infection of the respiratory tract, occurring in isolated cases, in epidemics, or in pandemics; it is caused by serologically different strains of viruses (influenzaviruses) designated ...",
+"ko": "인플루엔자",
+"alt": [
+"독감"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0009832",
+"concept": "- MONDO:0009832 | pancreatic agenesis | syn: congenital pancreatic agenesis; pancreatic agenesis type 1; partial agenesis of the pancreas; partial pancreatic agenesis | ancestors: hereditary disease, disorder of development or morphogenesis, disease of genetic or genomic mechanism, disease by developmental or physiological process | def: Partial agenesis of the pancreas is characterized by the congenital absence of a critical mass of pancreatic tissue.",
+"ko": "췌장 무형성증",
+"alt": [
+"선천성 췌장 무형성증"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018965",
+"concept": "- MONDO:0018965 | Alport syndrome | syn: Alport deafness-nephropathy; Alport syndrome; Alport's syndrome | ancestors: syndromic disease, hereditary nephritis, disease by body system or component, nephritis | def: A rare renal disease characterized by glomerular nephropathy with hematuria progressing to end-stage renal disease (ESRD), frequently associated with sensorineural deafness, and occasionally with ocul...",
+"ko": "알포트 증후군",
+"alt": [],
+"organs": [
+"renal",
+"ocular",
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006726",
+"concept": "- MONDO:0006726 | diaphragmatic eventration | syn: diaphragmatic eventration; diaphragmatic eventration (disease) | ancestors: diaphragm disorder, respiratory system disorder, skeletal muscle disorder, disease by body system or component | def: A congenital or acquired abnormality characterized by elevation of the hemidiaphragm.",
+"ko": "횡격막 이완증",
+"alt": [
+"횡격막 거상증"
+],
+"organs": [
+"pulmonary",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005964",
+"concept": "- MONDO:0005964 | sphenoid sinusitis | syn: sinusitis of sphenoid bone; sphenoid bone sinusitis; sphenoidal sinusitis | ancestors: sinusitis, disorder of facial skeleton, paranasal sinus disorder, inflammatory disease | def: An acute or chronic inflammatory process affecting the mucous membrane of the sphenoid sinus.",
+"ko": "접형동염",
+"alt": [
+"나비굴염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001694",
+"concept": "- MONDO:0001694 | diffuse interstitial keratitis | ancestors: interstitial keratitis, connective tissue disorder, deep keratitis, disease by body system or component",
+"ko": "미만성 간질성 각막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000980",
+"concept": "- MONDO:0000980 | aortic atherosclerosis | syn: aorta atherosclerosis; aortic atherosclerosis; aortic atherosclerosis (disease); atherosclerosis of aorta | ancestors: atherosclerosis, aortic disorder, arteriosclerosis disorder, arterial disorder | def: A atherosclerosis that involves the aorta.",
+"ko": "대동맥 죽상경화증",
+"alt": [
+"대동맥 동맥경화증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004881",
+"concept": "- MONDO:0004881 | myositis fibrosa | syn: interstitial myositis | ancestors: myositis disease, myopathy, inflammatory disease, skeletal muscle disorder | def: A form of myositis that is characterized by the formation of connective tissue within the muscle.",
+"ko": "섬유성 근육염",
+"alt": [
+"사이질 근육염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006760",
+"concept": "- MONDO:0006760 | fetal erythroblastosis | syn: erythroblastosis fetalis; HDFN; hemolytic disease of the fetus or newborn; hemolytic disease of the foetus or newborn | ancestors: microcytic anemia, anemia, hematologic disorder, disease by body system or component | def: A disorder of the fetus or newborn that occurs when fetal cells that are coated with IgG alloantibodies from the mother attack antigens inherited from the father. Severity can range from absence of sy...",
+"ko": "태아 적아구증",
+"alt": [
+"태아 적모구증"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001626",
+"concept": "- MONDO:0001626 | traumatic glaucoma | syn: glaucoma associated with ocular trauma | ancestors: secondary glaucoma, glaucoma, eye disorder, disorder of orbital region",
+"ko": "외상성 녹내장",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008583",
+"concept": "- MONDO:0008583 | inherited torticollis | syn: congenital torticollis; fibromatosis colli; inherited torticollis (disease); torticollis | ancestors: fibromatosis, hereditary disorder of connective tissue, fibroblastic neoplasm, hereditary disease | def: A congenital benign lesion that occurs in the distal sternocleidomastoid muscle of infants. It is characterized by the presence of plump spindle cells, and collagenous stroma formation.",
+"ko": "유전성 사경",
+"alt": [
+"선천성 근성사경"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4
+}
+]

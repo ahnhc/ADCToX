@@ -1,0 +1,230 @@
+[
+{
+"id": "MONDO:0006672",
+"concept": "- MONDO:0006672 | balanitis | syn: balanitis; glans penis inflammation; inflammation of glans penis | ancestors: penile disorder, inflammatory disease, male reproductive system disorder, disease by developmental or physiological process | def: An infectious or non-infectious inflammatory process that affects the glans penis. Symptoms include redness and pain of the glans penis and foreskin and discharge.",
+"ko": "귀두염",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0859565",
+"concept": "- MONDO:0859565 | atrioventricular septal defect | ancestors: familial atrioventricular septal defect, heart septal defect, cardiogenetic disease, congenital heart disease",
+"ko": "방실중격결손",
+"alt": [
+"방실 중격 결손증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018844",
+"concept": "- MONDO:0018844 | urachal cyst | syn: urachal cyst; urachal cyst (disease) | ancestors: congenital urachal anomaly, urinary system disorder, disease by body system or component, human disease | def: Urachal cyst is a congenital urachal anomaly characterized by a failure of complete closure of the urachus, in which both ends are closed but the central lumen remains patent. It is typically asymptom...",
+"ko": "요막관 낭종",
+"alt": [
+"요막관낭"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005913",
+"concept": "- MONDO:0005913 | phlebotomus fever | syn: pappataci fever; Sandfly fever | ancestors: vector-borne disease, primary viral infectious disease, infectious disease, viral infectious disease | def: Influenza-like febrile viral disease caused by several members of the bunyaviridae family and transmitted mostly by the bloodsucking sandfly Phlebotomus papatasii.",
+"ko": "파리모기열",
+"alt": [
+"사모기열"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0100309",
+"concept": "- MONDO:0100309 | hereditary ataxia | syn: rare hereditary ataxia | ancestors: atactic disorder, hereditary neurological disease, nervous system disorder, hereditary disease | def: An instance of an atactic disorder that is caused by an inherited genomic modification in an individual.",
+"ko": "유전성 운동실조",
+"alt": [
+"희귀 유전성 운동실조"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0005988",
+"concept": "- MONDO:0005988 | toxocariasis | syn: Toxocara caused disease or disorder; Toxocara disease or disorder; Toxocara infection; Toxocara infectious disease | ancestors: Ascaridida infectious disease, Rhabditida infectious disease, Nematoda infectious disease, helminthiasis | def: A parasitic infection caused by worms found in domestic animals. In humans nematode larvae enter the portal system from the small intestine and disseminate in visceral organs causing inflammatory reac...",
+"ko": "개회충증",
+"alt": [
+"톡소카라증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0015677",
+"concept": "- MONDO:0015677 | cardiac diverticulum | syn: Cardiac diverticulum; cardiac diverticulum (disease) | ancestors: congenital heart malformation, congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis | def: Congenital cardiac diverticulum (CCD) is a very rare congenital malformation characterized by a muscular appendix emerging from the left ventricular apex, rarely from the right ventricle or from both ...",
+"ko": "심장 게실",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006497",
+"concept": "- MONDO:0006497 | cerebral palsy | syn: infantile cerebral palsy | ancestors: palsy, cerebral cortex disorder, central nervous system disorder, brain disorder | def: A group of disorders affecting the development of movement and posture, often accompanied by disturbances of sensation, perception, cognition, and behavior. It results from damage to the fetal or infa...",
+"ko": "뇌성마비",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0005739",
+"concept": "- MONDO:0005739 | echinostomiasis | syn: Echinostomatoidea caused disease or disorder; Echinostomatoidea disease or disorder; Echinostomatoidea infectious disease | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infection by flukes of the genus Echinostoma.",
+"ko": "극구흡충증",
+"alt": [
+"에키노스토마증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0011759",
+"concept": "- MONDO:0011759 | Hurler-Scheie syndrome | syn: Hurler-Scheie syndrome; MPS I H-S; MPS1H/S; MPSIH/S | ancestors: mucopolysaccharidosis type 1, syndromic disease, lysosomal storage disease with skeletal involvement, eye disorder | def: Hurler-Scheie syndrome is the intermediate form of mucopolysaccharidosis type 1 (MPS1) between the two extremes Hurler syndrome and Scheie syndrome ; it is a rare lysosomal storage disease, characteri...",
+"ko": "헐러-샤이에 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006081",
+"concept": "- MONDO:0006081 | anal melanoma | syn: anal malignant melanoma; anal melanoma; anus melanoma; anus melanoma (disease) | ancestors: anus cancer, rectum malignant melanoma, anus neoplasm, rectal cancer | def: A melanoma arising from the anus. Clinical presentation includes rectal bleeding, tenesmus, pain, and change in bowel habit. The prognosis is usually poor.",
+"ko": "항문 흑색종",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019969",
+"concept": "- MONDO:0019969 | panner disease | syn: aseptic necrosis of the capital humerus; Osteochondrosis of the capital humerus | ancestors: osteochondrosis, osteonecrosis, bone disorder, skeletal system disorder | def: Panner's disease is an osteochondrosis of the capitellum of the humerus, characterized by involvement of the dominant upper limb and onset before the age of 10 years. It results from lateral compressi...",
+"ko": "파너병",
+"alt": [
+"상완골 소두 무혈성 괴사"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0043683",
+"concept": "- MONDO:0043683 | Leriche syndrome | syn: Leriche syndrome; leriche's syndrome | ancestors: syndromic disease, aortic disorder, disease by body system or component, arterial disorder | def: An atherosclerotic disorder of the peripheral vascular system affecting mostly males in their later decades. It is caused by thrombotic occlusion of the abdominal aorta just above the level of the bif...",
+"ko": "르리슈 증후군",
+"alt": [
+"리슈 증후군"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002846",
+"concept": "- MONDO:0002846 | granulomatous gastritis | syn: granulomatous gastritis | ancestors: gastritis, stomach disorder, inflammatory disease, digestive system disorder | def: Gastritis that is associated with the presence of granulomas.",
+"ko": "육아종성 위염",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019034",
+"concept": "- MONDO:0019034 | accessory pancreas | ancestors: pancreas disorder, digestive system disorder, endocrine system disorder, disease by body system or component | def: Accessory pancreas is an asymptomatic embryopathy characterized by the presence of pancreatic tissue in other sites of the body such as the splenic pedicle, gonadic pedicles, intestinal mesentery, duo...",
+"ko": "부췌장",
+"alt": [
+"이소성 췌장"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007197",
+"concept": "- MONDO:0007197 | bladder diverticulum | syn: bladder diverticulum; bladder diverticulum (disease); diverticulum of bladder | ancestors: hereditary disease, urinary bladder disorder, disease of genetic or genomic mechanism, urinary system disorder",
+"ko": "방광 게실",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001793",
+"concept": "- MONDO:0001793 | excessive tearing | syn: epiphora | ancestors: lacrimal apparatus disorder, eye adnexa disorder, eye disorder, disorder of orbital region | def: Profuse lacrimation.",
+"ko": "눈물흘림증",
+"alt": [
+"유루증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001919",
+"concept": "- MONDO:0001919 | cystoid macular retinal degeneration | syn: cystoid macular degeneration of retina | ancestors: degeneration of macula and posterior pole, macular degeneration, retinal degeneration, retinal disorder",
+"ko": "낭포성 황반 망막변성",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003802",
+"concept": "- MONDO:0003802 | cornea cancer | syn: cancer of cornea; cornea cancer; malignant cornea neoplasm; malignant cornea tumor | ancestors: ocular cancer, cornea neoplasm, sensory system cancer, head and neck cancer | def: A malignant neoplasm involving the cornea.",
+"ko": "각막암",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005837",
+"concept": "- MONDO:0005837 | mandibular cancer | syn: cancer of mandible; malignant mandible neoplasm; malignant neoplasm of inferior maxilla; malignant neoplasm of lower jaw bone | ancestors: jaw cancer, skull cancer, digestive system cancer, neoplasm of jaw | def: A malignant neoplasm involving the mandible",
+"ko": "하악암",
+"alt": [
+"아래턱뼈암"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2
+}
+]

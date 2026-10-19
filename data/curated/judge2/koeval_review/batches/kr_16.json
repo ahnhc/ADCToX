@@ -1,0 +1,282 @@
+[
+{
+"qid": "q0306",
+"group": "graves_disease",
+"category": "canonical",
+"en": "graves disease",
+"ko": "그레이브스병",
+"disease": "Graves disease"
+},
+{
+"qid": "q0307",
+"group": "graves_disease",
+"category": "synonym",
+"en": "Toxic diffuse goiter",
+"ko": "독성 미만성 갑상선종",
+"disease": "toxic diffuse goiter"
+},
+{
+"qid": "q0308",
+"group": "graves_disease",
+"category": "abbrev",
+"en": "GD thyroid",
+"ko": "GD 갑상선",
+"disease": "Graves disease"
+},
+{
+"qid": "q0309",
+"group": "graves_disease",
+"category": "typo",
+"en": "graves diesase",
+"ko": "그레이브스벵",
+"disease": "Graves disease"
+},
+{
+"qid": "q0310",
+"group": "graves_disease",
+"category": "lay",
+"en": "overactive thyroid, racing heart",
+"ko": "갑상선이 너무 활발하고 심장이 빨리 뜀",
+"disease": "hyperthyroidism"
+},
+{
+"qid": "q0241",
+"group": "cataract",
+"category": "canonical",
+"en": "Cataract",
+"ko": "백내장",
+"disease": "cataract"
+},
+{
+"qid": "ctl16_0",
+"group": "gout",
+"category": "canonical",
+"en": "gout",
+"ko": "일반가변성면역결핍증",
+"disease": "gout"
+},
+{
+"qid": "q0242",
+"group": "cataract",
+"category": "synonym",
+"en": "Lens opacity",
+"ko": "수정체 혼탁",
+"disease": "cataract"
+},
+{
+"qid": "q0243",
+"group": "cataract",
+"category": "abbrev",
+"en": "cat OU",
+"ko": "백내장 양안",
+"disease": "cataract"
+},
+{
+"qid": "q0244",
+"group": "cataract",
+"category": "typo",
+"en": "catarct",
+"ko": "백내쟝",
+"disease": "cataract"
+},
+{
+"qid": "q0245",
+"group": "cataract",
+"category": "lay",
+"en": "cloudy eye lens",
+"ko": "눈 렌즈가 뿌옇게 됨",
+"disease": "cataract"
+},
+{
+"qid": "q0535",
+"group": "q0535",
+"category": "ambiguous",
+"en": "immune problem",
+"ko": "면역 문제",
+"disease": "immune system disorder"
+},
+{
+"qid": "q0261",
+"group": "blepharitis",
+"category": "canonical",
+"en": "Blepharitis",
+"ko": "눈꺼풀염",
+"disease": "blepharitis"
+},
+{
+"qid": "q0262",
+"group": "blepharitis",
+"category": "synonym",
+"en": "Eyelid margin inflammation",
+"ko": "안검연 염증",
+"disease": "blepharitis"
+},
+{
+"qid": "q0263",
+"group": "blepharitis",
+"category": "abbrev",
+"en": "blephar",
+"ko": "안검염",
+"disease": "blepharitis"
+},
+{
+"qid": "q0264",
+"group": "blepharitis",
+"category": "typo",
+"en": "blepharits",
+"ko": "눈꺼풀여",
+"disease": "blepharitis"
+},
+{
+"qid": "q0265",
+"group": "blepharitis",
+"category": "lay",
+"en": "crusty itchy eyelids",
+"ko": "딱지 앉고 가려운 눈꺼풀",
+"disease": "blepharitis"
+},
+{
+"qid": "q0586",
+"group": "q0586",
+"category": "invalid",
+"en": "-",
+"ko": "-",
+"disease": null
+},
+{
+"qid": "q0546",
+"group": "q0546",
+"category": "non_disease",
+"en": "elevated ALT",
+"ko": "ALT 상승",
+"disease": null
+},
+{
+"qid": "ctl16_1",
+"group": "gout",
+"category": "typo",
+"en": "gouty arthritus",
+"ko": "항체가 없고 면역이 약함",
+"disease": "gout"
+},
+{
+"qid": "q0556",
+"group": "q0556",
+"category": "non_disease",
+"en": "family history of breast cancer",
+"ko": "유방암 가족력",
+"disease": null
+},
+{
+"qid": "q0539",
+"group": "q0539",
+"category": "ambiguous",
+"en": "ards? or pna",
+"ko": "ARDS? 아니면 PNA",
+"disease": "acute respiratory distress syndrome"
+},
+{
+"qid": "q0346",
+"group": "gout",
+"category": "canonical",
+"en": "gout",
+"ko": "통풍",
+"disease": "gout"
+},
+{
+"qid": "q0347",
+"group": "gout",
+"category": "synonym",
+"en": "Gouty arthritis",
+"ko": "통풍성 관절염",
+"disease": "gout"
+},
+{
+"qid": "q0348",
+"group": "gout",
+"category": "abbrev",
+"en": "hx gout",
+"ko": "통풍 hx",
+"disease": "gout"
+},
+{
+"qid": "q0349",
+"group": "gout",
+"category": "typo",
+"en": "gouty arthritus",
+"ko": "통풍성 관절열",
+"disease": "gout"
+},
+{
+"qid": "q0350",
+"group": "gout",
+"category": "lay",
+"en": "big toe swelling uric acid attacks",
+"ko": "엄지발가락 붓고 요산 발작",
+"disease": "gout"
+},
+{
+"qid": "q0513",
+"group": "q0513",
+"category": "ambiguous",
+"en": "ad",
+"ko": "ad",
+"disease": "Alzheimer disease"
+},
+{
+"qid": "q0529",
+"group": "q0529",
+"category": "ambiguous",
+"en": "sugar problem",
+"ko": "당 문제",
+"disease": "hyperglycemia"
+},
+{
+"qid": "q0496",
+"group": "sjogren_syndrome",
+"category": "canonical",
+"en": "Sjogren syndrome",
+"ko": "쇼그렌 증후군",
+"disease": "Sjogren syndrome"
+},
+{
+"qid": "q0497",
+"group": "sjogren_syndrome",
+"category": "synonym",
+"en": "Sicca syndrome",
+"ko": "건성 증후군",
+"disease": "Sjogren syndrome"
+},
+{
+"qid": "q0498",
+"group": "sjogren_syndrome",
+"category": "abbrev",
+"en": "SS dry",
+"ko": "SS 건조",
+"disease": "Sjogren syndrome"
+},
+{
+"qid": "ctl16_2",
+"group": "q0535",
+"category": "ambiguous",
+"en": "immune problem",
+"ko": "급성신손상",
+"disease": "immune system disorder"
+},
+{
+"qid": "q0499",
+"group": "sjogren_syndrome",
+"category": "typo",
+"en": "sjogrens sydrome",
+"ko": "쇼그렌 증후근",
+"disease": "Sjogren syndrome"
+},
+{
+"qid": "q0500",
+"group": "sjogren_syndrome",
+"category": "lay",
+"en": "dry eyes and dry mouth autoimmune",
+"ko": "눈과 입이 마르는 자가면역",
+"disease": "Sjogren syndrome"
+}
+]

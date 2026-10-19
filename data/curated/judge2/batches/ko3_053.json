@@ -1,0 +1,264 @@
+[
+{
+"id": "MONDO:0020366",
+"concept": "- MONDO:0020366 | congenital glaucoma | syn: buphthalmia; buphthalmos; Buphthalmus; hydrophthalmos | ancestors: hereditary glaucoma, hereditary disease, glaucoma, disease of genetic or genomic mechanism | def: A developmental glaucoma that results from the abnormal development of the aqueous drainage structure, characterized by an elevated intra-ocular pressure, enlargement of globe (buphthalmos), corneal e...",
+"ko": "선천성 녹내장",
+"alt": [
+"우안증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015194",
+"concept": "- MONDO:0015194 | sideroblastic anemia | syn: anaemia sideroblastic; anemia sideroblastic; sideroblastic anemia | ancestors: anemia, hematologic disorder, disease by body system or component, human disease | def: A group of rare heterogeneous inherited or acquired bone marrow disorders, isolated or part of a syndrome, characterized by decreased hemoglobin synthesis, because of defective use of iron (although p...",
+"ko": "철적모구성 빈혈",
+"alt": [
+"철적아구성 빈혈"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010720",
+"concept": "- MONDO:0010720 | partial androgen insensitivity syndrome | syn: androgen insensitivity, partial; androgen insensitivity, partial, with or without breast cancer; androgen insensitivity, partial, with or without breast cancer, X-linked recessive; familial incomplete Male pseudohermaphroditism, type 1 | ancestors: androgen insensitivity syndrome, hereditary disease, 46 XY differences of sex development, disease of genetic or genomic mechanism | def: Partial androgen insensitivity syndrome (PAIS) is a disorder of sex development (DSD) distinct from complete AIS (CAIS) characterized by the presence of abnormal genital development in a 46,XY individ...",
+"ko": "부분 안드로겐 불감성 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012680",
+"concept": "- MONDO:0012680 | nephronophthisis 7 | syn: GLIS2 nephronophthisis (disease); nephronophthisis (disease) caused by mutation in GLIS2; nephronophthisis 7; nephronophthisis type 7 | ancestors: nephronophthisis, autosomal recessive disease, inherited renal tubular disease, autosomal genetic disease | def: Any nephronophthisis in which the cause of the disease is a mutation in the GLIS2 gene.",
+"ko": "신장로염 7형",
+"alt": [
+"GLIS2 관련 신장로염"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009393",
+"concept": "- MONDO:0009393 | ornithine translocase deficiency | syn: HHH syndrome; hyperornithinemia-hyperammonemia-homocitrullinemia syndrome; ornithine carrier deficiency; ornithine translocase deficiency | ancestors: syndromic disease, urea cycle disorder or inherited hyperammonemia, disease by body system or component, urea cycle disorder | def: A rare, genetic disorder of urea cycle metabolism characterized by either a neonatal-onset with manifestations of lethargy, poor feeding, vomiting and tachypnea or, more commonly, presentations in inf...",
+"ko": "오르니틴 수송체 결핍증",
+"alt": [
+"HHH 증후군",
+"고오르니틴혈증-고암모니아혈증-호모시트룰린뇨증 증후군"
+],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000245",
+"concept": "- MONDO:0000245 | tinea imbricata | ancestors: tinea corporis, dermatophytosis, tinea infection, superficial mycosis | def: A tinea corporis that results in fungal infection located in skin, has material basis in Trichophyton concentricum, which is characterized by ring-like growth in overlapping circles that may have an a...",
+"ko": "와상백선",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018470",
+"concept": "- MONDO:0018470 | renal agenesis | syn: absent/small kidney; absent/underdeveloped kidney; renal agenesis; renal agenesis (disease) | ancestors: disorder of development or morphogenesis, inherited kidney disorder, disease by developmental or physiological process, hereditary disease | def: Renal agenesis (RA) is a form of renal tract malformation characterized by the complete absence of development of one or both kidneys (unilateral RA or bilateral RA respectively), accompanied by absen...",
+"ko": "콩팥 무형성",
+"alt": [
+"신장 무형성",
+"신장 무발생"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0020007",
+"concept": "- MONDO:0020007 | absence of the pulmonary artery | syn: agenesis of pulmonary artery; aplasia of pulmonary artery; pulmonary artery absent; pulmonary artery agenesis | ancestors: arterial disorder, congenital anomaly of the great arteries, vascular disorder, congenital heart malformation | def: A rare vascular anomaly characterized by congenital absence of the right or left pulmonary artery, usually ending within 2 cm of its expected origin from the pulmonary trunk. Patients often also have ...",
+"ko": "폐동맥 결손",
+"alt": [
+"폐동맥 무형성"
+],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021377",
+"concept": "- MONDO:0021377 | hypertrophic lichen planus | syn: hypertrophic lichen planus | ancestors: lichen planus, dermatitis, lichen disease, skin disorder | def: A form of lichen planus that is characterized by plaques of markedly thickened skin that is often extremely pruritic and localized to the lower legs. It can result in permanent pigmentation and scarri...",
+"ko": "비후성 편평태선",
+"alt": [
+"비대성 편평태선"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004650",
+"concept": "- MONDO:0004650 | malignant carotid body paraganglioma | syn: carotid body paraganglioma, malignant; malignant carotid body paraganglioma; malignant carotid body tumor (morphologic abnormality); malignant carotid body tumour (morphologic abnormality) | ancestors: central nervous system cancer, head and neck cancer, carotid body paraganglioma, malignant endocrine neoplasm | def: A carotid body paraganglioma that metastasizes to other anatomic sites.",
+"ko": "악성 경동맥소체 부신경절종",
+"alt": [
+"악성 경동맥소체 파라강글리오마"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000462",
+"concept": "- MONDO:0000462 | eye adnexa disorder | syn: disease of ocular adnexa; disease or disorder of ocular adnexa; disorder of ocular adnexa; ocular adnexa disease | ancestors: disorder of orbital region, disease by body system or component, human disease, disease | def: A disease involving the ocular adnexa.",
+"ko": "눈부속기 질환",
+"alt": [
+"안부속기 질환"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002177",
+"concept": "- MONDO:0002177 | hyperinsulinism | syn: hyperinsulinism; hyperinsulinism (disease) | ancestors: endocrine pancreas disorder, glucose metabolism disease, pancreas disorder, metabolic disease | def: Abnormally high levels of insulin in the blood.",
+"ko": "고인슐린혈증",
+"alt": [
+"과인슐린증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021642",
+"concept": "- MONDO:0021642 | vulval varices | syn: mammalian vulva varicose disease; varicose disease of mammalian vulva | ancestors: female reproductive system disorder, pelvic varices, reproductive system disorder, varicose disease | def: A varicose disease that involves the mammalian vulva.",
+"ko": "외음부 정맥류",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011678",
+"concept": "- MONDO:0011678 | homozygous 11P15-p14 deletion syndrome | syn: chromosome 11p15-p14 deletion syndrome; homozygous 11P15-p14 deletion syndrome | ancestors: partial deletion of the short arm of chromosome 11, partial deletion of chromosome 11, syndrome caused by partial chromosomal deletion, chromosome 11 disorder",
+"ko": "동형접합 11p15-p14 결실 증후군",
+"alt": [
+"염색체 11p15-p14 결실 증후군"
+],
+"organs": [
+"renal",
+"gastrointestinal",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002420",
+"concept": "- MONDO:0002420 | tic disorder | ancestors: specific developmental disorder, developmental disorder of mental health, mental disorder, psychiatric disorder | def: Disorders characterized by recurrent TICS that may interfere with speech and other activities. Tics are sudden, rapid, nonrhythmic, stereotyped motor movements or vocalizations which may be exacerbate...",
+"ko": "틱 장애",
+"alt": [
+"틱장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001497",
+"concept": "- MONDO:0001497 | male genital organ vascular disease | syn: vascular disorder of male genital organs | ancestors: male reproductive system disorder, reproductive system disorder, disease by body system or component, human disease",
+"ko": "남성 생식기 혈관 질환",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005555",
+"concept": "- MONDO:0005555 | cycloplegia | syn: paresis of accommodation | ancestors: eye accommodation disease, eye disorder, disorder of orbital region, disorder of visual system | def: Cycloplegia is paralysis of the ciliary muscle of the eye, resulting in a loss of accommodation.",
+"ko": "조절마비",
+"alt": [
+"섬모체근마비"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001768",
+"concept": "- MONDO:0001768 | stenosis of lacrimal passage | syn: stenosis of lacrimal canaliculi | ancestors: lacrimal apparatus disorder, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "눈물길 협착",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002102",
+"concept": "- MONDO:0002102 | cheilitis | syn: inflammation of lip; lip inflammation | ancestors: lip disorder, inflammatory disease, mouth disorder, disease by developmental or physiological process | def: An inflammatory process affecting the lip.",
+"ko": "입술염",
+"alt": [
+"구순염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007407",
+"concept": "- MONDO:0007407 | Cryoglobulinemic vasculitis | syn: essential cryoglobulinemia; essential mixed cryoglobulinemia; MC; Mixed Cryoglobulinemia | ancestors: immune complex mediated vasculitis, vasculitis, vascular disorder, inflammatory disease | def: Mixed cryoglobulinemia (MC) is a rare multisystem disease characterized by the presence of circulating cryoprecipitable immune complexes in the serum, manifested clinically by a classical triad of pur...",
+"ko": "한랭글로불린혈증 혈관염",
+"alt": [
+"본태성 혼합 한랭글로불린혈증"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+}
+]

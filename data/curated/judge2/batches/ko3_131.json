@@ -1,0 +1,264 @@
+[
+{
+"id": "MONDO:0004859",
+"concept": "- MONDO:0004859 | hydrops of gallbladder | ancestors: gallbladder disorder, hepatobiliary disorder, digestive system disorder, disease by body system or component",
+"ko": "담낭수종",
+"alt": [
+"쓸개 수종"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007235",
+"concept": "- MONDO:0007235 | branchiooculofacial syndrome | syn: Bof syndrome; BOFS; BOFS syndrome; branchial clefts with characteristic facies growth retardation imperforate nasolacrimal duct and premature ageing | ancestors: autosomal dominant disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, autosomal genetic disease, multiple congenital anomalies/dysmorphic syndrome | def: Branchio-oculo-facial syndrome (BOFS) is characterized by low birth weight and growth retardation, bilateral branchial clefts that may be hemangiomatous, sometimes with linear skin lesions behind the ...",
+"ko": "새열안안면 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006220",
+"concept": "- MONDO:0006220 | gallbladder squamous cell carcinoma | syn: epidermoid carcinoma of gallbladder; epidermoid carcinoma of the gallbladder; epidermoid gallbladder carcinoma; gall bladder squamous cell carcinoma | ancestors: gallbladder carcinoma, squamous cell carcinoma, gallbladder cancer, digestive system carcinoma | def: A carcinoma that arises from the gallbladder. It is composed entirely by malignant squamous epithelial cells.",
+"ko": "담낭 편평세포암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004826",
+"concept": "- MONDO:0004826 | urethral calculus | syn: urethra urolithiasis; urolithiasis of urethra | ancestors: urethral disorder, lower urinary tract calculus, urinary system disorder, urolithiasis | def: A concretion in the urethra.",
+"ko": "요도 결석",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0100053",
+"concept": "- MONDO:0100053 | anaphylaxis | syn: anaphylactic shock; systemic anaphylaxis | ancestors: hypersensitivity reaction disease, immune system disorder, disease by body system or component, human disease | def: An acute hypersensitivity reaction that occurs from exposure to an allergen. It results from the release of histamine and histamine-like substances from mast cells, and can present with breathing diff...",
+"ko": "아나필락시스",
+"alt": [
+"아나필락시스 쇼크"
+],
+"organs": [
+"cardiovascular",
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001218",
+"concept": "- MONDO:0001218 | acute laryngopharyngitis | ancestors: upper respiratory tract disorder, acute disease, respiratory system disorder, human disease | def: An upper respiratory tract disease which involves inflammation of both larynx and pharynx.",
+"ko": "급성 후두인두염",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019216",
+"concept": "- MONDO:0019216 | inborn disorder of amino acid transport | syn: inborn disorder of amino acid absorption and transport | ancestors: inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease, inborn errors of metabolism",
+"ko": "선천성 아미노산 수송 장애",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006888",
+"concept": "- MONDO:0006888 | paraneoplastic polyneuropathy | syn: paraneoplastic polyneuropathy | ancestors: polyneuropathy, paraneoplastic neurologic syndrome, peripheral neuropathy, nervous system disorder | def: A diffuse or multifocal peripheral neuropathy caused by the effects of a distant neoplasm. It may be attributed, in part, to the immune response to neoplasm-elaborated proteins. The neuropathy may be ...",
+"ko": "종양 연관 다발신경병증",
+"alt": [
+"부종양성 다발신경병증"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0012273",
+"concept": "- MONDO:0012273 | autosomal recessive nonsyndromic hearing loss 48 | syn: autosomal recessive nonsyndromic hearing loss 48; USH1J; Usher syndrome type 1J | ancestors: hearing loss, autosomal recessive, autosomal recessive disease, nonsyndromic genetic hearing loss, autosomal genetic disease | def: Any autosomal recessive nonsyndromic deafness in which the cause of the disease is a mutation in the CIB2 gene.",
+"ko": "상염색체 열성 비증후군성 난청 48",
+"alt": [
+"어셔 증후군 1J형"
+],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012717",
+"concept": "- MONDO:0012717 | renal hypomagnesemia 4 | syn: EGF familial primary hypomagnesemia; EGF primary hypomagnesemia; familial primary hypomagnesemia caused by mutation in EGF; HOMG4 | ancestors: familial primary hypomagnesemia with normocalciuria and normocalcemia, familial primary hypomagnesemia with normocalcuria, familial primary hypomagnesemia, inborn metal metabolism disorder | def: Any primary hypomagnesemia in which the cause of the disease is a mutation in the EGF gene.",
+"ko": "신장성 저마그네슘혈증 4형",
+"alt": [
+"EGF 관련 가족성 원발성 저마그네슘혈증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005890",
+"concept": "- MONDO:0005890 | osteitis fibrosa | syn: osteitis fibrosa cystica; Von Recklinghausen disease of Bone; Von Recklinghausen's disease of Bone | ancestors: bone resorption disease, bone remodeling disease, bone disorder, skeletal system disorder | def: A disorder that is characterized by bone cysts and fractures, resulting from hyperparathyroidism.",
+"ko": "섬유성 골염",
+"alt": [
+"폰 레클링하우젠 뼈병"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018904",
+"concept": "- MONDO:0018904 | primary membranoproliferative glomerulonephritis | syn: Mesangiocapillary glomerulonephritis; MPGN | ancestors: glomerulonephritis, nephritis, glomerular disorder, kidney disorder | def: A rare glomerular disease characterized by a pattern of glomerular injury on kidney biopsy with characteristic light microscopic changes: mesangial hypercellularity, endocapillary proliferation, and t...",
+"ko": "원발성 막증식성 사구체신염",
+"alt": [
+"메산지움모세혈관 사구체신염"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0010170",
+"concept": "- MONDO:0010170 | Usher syndrome type 3A | syn: CLRN1 Usher syndrome; USH3A; Usher syndrome caused by mutation in CLRN1; Usher syndrome type 3A | ancestors: Usher syndrome type 3, Usher syndrome, syndromic disease, autosomal recessive disease | def: Any Usher syndrome in which the cause of the disease is a mutation in the CLRN1 gene.",
+"ko": "어셔 증후군 3A형",
+"alt": [],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019600",
+"concept": "- MONDO:0019600 | xeroderma pigmentosum | syn: angioma pigmentosum atrophicum; atrophoderma pigmentosum; Kaposi dermatosis; Kaposi disease | ancestors: hereditary photodermatosis, DNA repair disease, hereditary skin disorder, inborn errors of metabolism | def: Xeroderma pigmentosum (XP) is a rare genodermatosis characterized by extreme sensitivity to ultraviolet (UV)-induced changes in the skin and eyes, and multiple skin cancers. It is subdivided into 8 co...",
+"ko": "색소건피증",
+"alt": [
+"색소성 건피증"
+],
+"organs": [
+"neurologic",
+"ocular",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0019591",
+"concept": "- MONDO:0019591 | panhypopituitarism | syn: complete hypopituitarism | ancestors: combined pituitary hormone deficiencies, genetic form, congenital nervous system disorder, hypopituitarism, congenital hypogonadotropic hypogonadism | def: Insufficient production of all the anterior pituitary hormones.",
+"ko": "범뇌하수체기능저하증",
+"alt": [
+"전뇌하수체기능저하증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017356",
+"concept": "- MONDO:0017356 | inborn disorder of ornithine metabolism | syn: disorder of ornithine metabolism; inborn error of ornithine metabolic process; inborn ornithine metabolic process disorder; rare inborn error of ornithine metabolic process | ancestors: inborn disorder of amino acid metabolism, inborn disorder of ornithine or proline metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: An inherited metabolic disease that is has its basis in the disruption of ornithine metabolic process.",
+"ko": "선천성 오르니틴 대사 장애",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0011972",
+"concept": "- MONDO:0011972 | ovarian hyperstimulation syndrome | syn: OHSS; ovarian hyperstimulation syndrome | ancestors: hereditary disease, ovarian disorder, disease of genetic or genomic mechanism, gonadal disorder | def: A complication of ovulation induction in infertility treatment. It is graded by the severity of symptoms which include ovary enlargement, multiple ovarian follicles; ovarian cysts; ascites; and genera...",
+"ko": "난소과자극 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0005657",
+"concept": "- MONDO:0005657 | aspergillosis | ancestors: opportunistic mycosis, fungal infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Aspergillosis is an infection, growth, or allergic response caused by the Aspergillus fungus. There are several different kinds of aspergillosis. One kind is allergic bronchopulmonary aspergillosis (a...",
+"ko": "아스페르길루스증",
+"alt": [
+"국균증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0001714",
+"concept": "- MONDO:0001714 | bejel | syn: Njovera; nonvenereal endemic syphilis; Treponema pallidum subsp. endemicum caused disease or disorder; Treponema pallidum subsp. endemicum disease or disorder | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: A chronic skin and tissue disease caused by infection by the endemicum subspecies of the spirochete Treponema pallidum.",
+"ko": "베젤",
+"alt": [
+"비성병성 풍토성 매독"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0014202",
+"concept": "- MONDO:0014202 | primary ciliary dyskinesia 24 | syn: CILD24; ciliary dyskinesia, primary, type 24; primary ciliary dyskinesia 24; primary ciliary dyskinesia caused by mutation in RSPH1 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the RSPH1 gene.",
+"ko": "일차섬모운동장애 24형",
+"alt": [
+"원발성 섬모운동이상증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+}
+]

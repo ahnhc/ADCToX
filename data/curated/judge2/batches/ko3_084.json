@@ -1,0 +1,259 @@
+[
+{
+"id": "MONDO:0006757",
+"concept": "- MONDO:0006757 | extrahepatic cholestasis | syn: cholestasis of extrahepatic bile duct; extrahepatic bile duct cholestasis; extrahepatic cholestasis (finding) | ancestors: cholestasis, non-neoplastic bile duct disorder, bile duct disorder, endocrine system disorder | def: Impairment of the bile flow caused by an obstruction in the portion of the bile duct system located outside of the liver.",
+"ko": "간외 담즙정체",
+"alt": [
+"간외 담즙울체"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010480",
+"concept": "- MONDO:0010480 | anemia, nonspherocytic hemolytic, due to G6PD deficiency | syn: anemia, congenital, nonspherocytic hemolytic, 1, G6PD deficient; anemia, nonspherocytic hemolytic, due to G6PD deficiency; Class I G6PD deficiency; class I glucose-6-phosphate dehydrogenase deficiency | ancestors: anemia, nonspherocytic hemolytic, G6PD deficiency, inborn disorder of pentose phosphate metabolism, anemia due to erythrocyte enzyme disorder | def: Any nonspherocytic hemolytic anemia in which the cause of the disease is a variation in the G6PD gene resulting in severely decreased activity levels of the enzyme glucose-6-phosphate dehydrogenase. I...",
+"ko": "G6PD 결핍에 의한 비구형적혈구성 용혈빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0017329",
+"concept": "- MONDO:0017329 | familial vesicoureteral reflux | syn: familial VUR; hereditary vesicoureteral reflux (disease) | ancestors: hereditary disease, vesicoureteral reflux, disease of genetic or genomic mechanism, ureteral disorder | def: Familial vesicoureteral reflux is a rare, non-syndromic urogenital tract malformation characterized by the familial occurrence of retrograde flow of urine from the bladder into the ureter and sometime...",
+"ko": "가족성 방광요관역류",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019149",
+"concept": "- MONDO:0019149 | cholesteryl ester storage disease | syn: cholesterol ester hydrolase deficiency, partial; cholesterol ester storage disease; LAL deficiency, partial; LIPA deficiency, partial | ancestors: lysosomal acid lipase deficiency, syndromic dyslipidemia, lysosomal lipid storage disorder, syndromic disease | def: A form of lysosomal acid lipase deficiency characterized by progressive cholesterol esters and triglyceride accumulation in tissues and organs typically presenting with hepatosplenomegaly, liver dysfu...",
+"ko": "콜레스테롤 에스터 축적병",
+"alt": [
+"콜레스테롤 에스터 저장병"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018013",
+"concept": "- MONDO:0018013 | complement 3 glomerulopathy | syn: C3 glomerulopathy; C3G; non-Ig-mediated membranoproliferative glomerulonephritis; non-Ig-mediated MPGN | ancestors: primary membranoproliferative glomerulonephritis, glomerulonephritis, nephritis, glomerular disorder | def: A rare primary membranoproliferative glomerulonephritis characterized by complement dysregulation occurring in the fluid phase and in the glomerular microenvironment, which results in prominent comple...",
+"ko": "보체 C3 사구체병증",
+"alt": [
+"C3 사구체병증"
+],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019395",
+"concept": "- MONDO:0019395 | Hinman syndrome | syn: HAS; Hinman-Allen syndrome; HS; non-neurogenic neurogenic bladder | ancestors: urinary bladder disorder, urinary system disorder, disease by body system or component, human disease | def: Hinman syndrome (HS) or non-neurogenic neurogenic bladder is a voiding dysfunction of the bladder of neuropsychological origin that is characterized by functional bladder outlet obstruction in the abs...",
+"ko": "힌만 증후군",
+"alt": [
+"힌만-앨런 증후군"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0014312",
+"concept": "- MONDO:0014312 | auriculocondylar syndrome 3 | syn: Auriculocondylar syndrome 3; Auriculocondylar syndrome type 3 | ancestors: auriculocondylar syndrome, ear malformation, hereditary disease, disease of genetic or genomic mechanism",
+"ko": "이개과두 증후군 3형",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006688",
+"concept": "- MONDO:0006688 | byssinosis | syn: cotton dust pneumoconiosis; pneumoconiosis from cotton dust | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: An occupational lung disorder caused by exposure to cotton dust. It occurs more commonly in workers in the textile industry. Signs and symptoms include chest tightness, cough and wheezing. The symptom...",
+"ko": "면폐증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009693",
+"concept": "- MONDO:0009693 | plasma cell myeloma | syn: Kahler disease; Kahler's disease; medullary plasmacytoma; Multiple Myeloma | ancestors: immune system cancer, plasma cell neoplasm, myeloid neoplasm, cancer | def: A bone marrow-based plasma cell neoplasm characterized by a serum monoclonal protein and skeletal destruction with osteolytic lesions, pathological fractures, bone pain, hypercalcemia, and anemia. Cli...",
+"ko": "형질세포 골수종",
+"alt": [
+"다발골수종",
+"칼러병"
+],
+"organs": [
+"haematologic",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0001935",
+"concept": "- MONDO:0001935 | neurogenic arthropathy | syn: arthropathy associated with neurological disorder; neuropathic arthropathy; neuropathic arthropathy (& Charcot's) | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: Chronic progressive degeneration of the stress-bearing portion of a joint, with bizarre hypertrophic changes at the periphery. It is probably a complication of a variety of neurologic disorders, parti...",
+"ko": "신경병성 관절병증",
+"alt": [
+"샤르코 관절병증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0004653",
+"concept": "- MONDO:0004653 | atypical chronic myeloid leukemia, BCR-ABL1 negative | syn: aCML; atypical chronic myeloid leukaemia; atypical chronic myeloid leukemia; atypical chronic myeloid leukemia, BCR-ABL1 Negative | ancestors: myeloid leukemia, myelodysplastic/myeloproliferative neoplasm, myelodysplastic/myeloproliferative disease, leukemia | def: A myelodysplastic/myeloproliferative neoplasm characterized by the principal involvement of the neutrophil series with leukocytosis and multilineage dysplasia. The neoplastic cells do not have a Phila...",
+"ko": "비정형 만성 골수성 백혈병, BCR-ABL1 음성",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021783",
+"concept": "- MONDO:0021783 | streptococcal sore throat | syn: strep throat; streptococcal pharyngitis | ancestors: pharyngitis, streptococcal infection, respiratory tract infectious disorder, upper respiratory tract disorder | def: Inflammation of the throat due to Streptococcus pyogenes.",
+"ko": "연쇄구균 인후염",
+"alt": [
+"연쇄상구균 인두염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021727",
+"concept": "- MONDO:0021727 | aberrant subclavian artery | syn: aberrant subclavian artery; congenital malposition of subclavian artery | ancestors: arterial disorder, vascular disorder, cardiovascular disorder, disease by body system or component | def: Aberrant subclavian artery is a rare vascular anomaly that is present from birth. It usually causes no symptoms and is oftendiscovered as an incidental finding (such as througha barium swallow or echo...",
+"ko": "이상 쇄골하동맥",
+"alt": [
+"비정상 쇄골하동맥"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001756",
+"concept": "- MONDO:0001756 | frontal sinus cancer | syn: cancer of frontal sinus; frontal sinus cancer; malignant frontal sinus neoplasm; malignant frontal sinus tumor | ancestors: paranasal sinus carcinoma, frontal sinus neoplasm, bone carcinoma, paranasal sinus cancer | def: A malignant neoplasm involving the frontal sinus.",
+"ko": "전두동암",
+"alt": [
+"이마굴암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016372",
+"concept": "- MONDO:0016372 | glossopharyngeal neuralgia | syn: glossopharyngeal nerve neuralgia; glossopharyngeal neuralgia; Glossovasopharyngeal neuralgia; neuralgia of glossopharyngeal nerve | ancestors: glossopharyngeal nerve disorder, cranial neuralgia, cranial nerve neuropathy, peripheral nervous system disorder | def: Glossopharyngeal neuralgia is a condition characterized by repeated episodes of severe pain in the tongue, throat, ear, and tonsils (areas connected to the ninth cranial nerve, or glossopharyngeal ner...",
+"ko": "설인신경통",
+"alt": [
+"혀인두신경통"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0020601",
+"concept": "- MONDO:0020601 | mosquito-borne viral encephalitis | syn: mosquito-borne viral encephalitis | ancestors: viral encephalitis, vector-borne disease, infectious encephalitis, viral infection of central nervous system | def: Viral encephalitis that is transmitted by mosquitos.",
+"ko": "모기매개 바이러스뇌염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0001676",
+"concept": "- MONDO:0001676 | erythropoietic protoporphyria | syn: EPP (erythropoietic protoporphyria porphyria) | ancestors: hepatic porphyria, inherited porphyria, liver disorder, porphyria | def: A rare congenital metabolic disorder characterized by an inborn error of porphyrin-heme biosynthesis. Signs and symptoms include painful cutaneous photosensitivity leading to blistering and scarring o...",
+"ko": "적혈구생성 프로토포르피린증",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016113",
+"concept": "- MONDO:0016113 | bulbospinal muscular atrophy | syn: bulbospinal muscular atrophy; SBMA; spinal and bulbal muscular atrophy; spinal-bulbar muscular atrophy | ancestors: spinal muscular atrophy, anterior horn disorder, hereditary motor neuron disease, spinal cord disorder",
+"ko": "구척수성 근위축증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001304",
+"concept": "- MONDO:0001304 | benign hypertensive renal disease | syn: hypertensive renal disease, benign; hypertensive renal disease, benign, without mention of renal failure | ancestors: hypertensive nephropathy, kidney disorder, urinary system disorder, disease by body system or component",
+"ko": "양성 고혈압성 신장병",
+"alt": [
+"양성 고혈압성 콩팥병"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006219",
+"concept": "- MONDO:0006219 | gallbladder small cell neuroendocrine carcinoma | syn: gall bladder small cell carcinoma; gallbladder Oat cell carcinoma; gallbladder small cell carcinoma; gallbladder small cell NEC | ancestors: small cell carcinoma, gallbladder carcinoma, gallbladder neuroendocrine neoplasm, neuroendocrine carcinoma | def: An aggressive, high-grade and poorly differentiated carcinoma with neuroendocrine differentiation that arises from the gallbladder. It is characterized by the presence of malignant small cells.",
+"ko": "담낭 소세포 신경내분비암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

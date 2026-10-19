@@ -1,0 +1,230 @@
+[
+{
+"id": "MONDO:0014221",
+"concept": "- MONDO:0014221 | triosephosphate isomerase deficiency | syn: hemolytic anaemia due to triosephosphate isomerase deficiency; hemolytic anemia due to triosephosphate isomerase deficiency; triose phosphate-isomerase deficiency; triosephosphate isomerase deficiency | ancestors: glucose metabolism disease, familial hemolytic anemia, disorder of glycolysis, anemia due to erythrocyte enzyme disorder | def: Triosephosphate isomerase (TPI) deficiency is a severe autosomal recessive inherited multisystem disorder of glycolytic metabolism characterized by hemolytic anemia and neurodegeneration.",
+"ko": "트리오스인산 이성질화효소 결핍증",
+"alt": [],
+"organs": [
+"haematologic",
+"neurologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001898",
+"concept": "- MONDO:0001898 | optic choroid disorder | syn: choroid disorder; disease of optic choroid; disease or disorder of optic choroid; disorder of optic choroid | ancestors: uveal disorder, ocular vascular disorder, eye disorder, vascular disorder | def: A disease involving the optic choroid.",
+"ko": "맥락막 질환",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0016595",
+"concept": "- MONDO:0016595 | inhalational anthrax | syn: inhalation anthrax disease; pulmonary anthrax; respiratory anthrax; respiratory anthrax disease | ancestors: anthrax infection, primary bacterial infectious disease, Bacillaceae infectious disease, bacterial infectious disease | def: A rare acute systemic infection caused by the inhalation of Bacillus anthracis spores (e.g. through infected animal products, bioterrorism) and characterized by an initial stage where patients present...",
+"ko": "흡입 탄저",
+"alt": [
+"폐탄저"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0045010",
+"concept": "- MONDO:0045010 | glycoprotein metabolism disease | syn: disorder of glycoprotein metabolic process; disorder of glycoprotein metabolism; glycoprotein metabolic process disease; glycoprotein metabolism disease | ancestors: inborn errors of metabolism, hereditary disease, metabolic disease, disease of genetic or genomic mechanism | def: A disease that has its basis in the disruption of glycoprotein metabolic process.",
+"ko": "당단백질 대사 질환",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0003084",
+"concept": "- MONDO:0003084 | uremic neuropathy | ancestors: peripheral neuropathy, uremia, peripheral nervous system disorder, neuromuscular disease | def: Neuropathy resulting from uremia.",
+"ko": "요독성 신경병증",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008382",
+"concept": "- MONDO:0008382 | retinoschisis, autosomal dominant | syn: autosomal dominant retinoschisis; retinoschisis, autosomal dominant | ancestors: autosomal dominant disease, retinoschisis, inherited retinal dystrophy, autosomal genetic disease | def: Autosomal dominant form of retinoschisis.",
+"ko": "상염색체 우성 망막층간분리증",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001741",
+"concept": "- MONDO:0001741 | hyperparathyroidism | syn: hyperparathyroidism | ancestors: parathyroid gland disorder, endocrine system disorder, disease by body system or component, human disease | def: Hyperfunction of the parathyroid glands resulting in the overproduction of parathyroid hormone. It may be primary or secondary; primary hyperparathyroidism is caused by parathyroid adenoma, parathyroi...",
+"ko": "부갑상선기능항진증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0007576",
+"concept": "- MONDO:0007576 | esophageal cancer | syn: cancer of esophagus; cancer of oesophagus; esophageal cancer; esophageal cancer, somatic | ancestors: digestive system cancer, neoplasm of esophagus, digestive system disorder, cancer | def: A primary or metastatic malignant neoplasm involving the esophagus.",
+"ko": "식도암",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0000754",
+"concept": "- MONDO:0000754 | anal fistula | syn: anal fistula; anal fistula (disease); anorectal fistula | ancestors: rectal disorder, intestinal fistula, large intestine disorder, intestinal disorder | def: An intestinal disorder characterized by an opening in the anal canal to the perianal skin. In the vast majority of cases there is a history of perianal abscess.",
+"ko": "항문루",
+"alt": [
+"항문 누공"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0004747",
+"concept": "- MONDO:0004747 | cleft lip | syn: cheiloschisis; cleft lip; cleft lip (disease); cleft lip, unilateral, complete | ancestors: orofacial cleft, hereditary disease, disorder of facial skeleton, disease of genetic or genomic mechanism | def: A congenital abnormality consisting of one or more clefts (splits) in the upper lip, which may be accompanied by a cleft palate; it is the result of the failure of the embryonic parts of the lip to fu...",
+"ko": "구순열",
+"alt": [
+"언청이",
+"입술갈림증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0020453",
+"concept": "- MONDO:0020453 | congenital partial pulmonary venous return anomaly | syn: Partial anomalous pulmonary Venous connection; Partial anomalous pulmonary Venous return | ancestors: congenital pulmonary venous return anomaly, congenital pulmonary veins anomaly, congenital heart disease, heart disorder | def: Partial pulmonary venous return (PAPVR) is a form of congenital pulmonary venous return where one or a few of the pulmonary veins drain into the right atrium or one of its tributaries instead of the l...",
+"ko": "선천성 부분 폐정맥 환류 이상",
+"alt": [
+"부분 폐정맥 이상 연결"
+],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004189",
+"concept": "- MONDO:0004189 | esophageal tuberculosis | syn: esophagus tuberculosis; oesophagus tuberculosis; tuberculosis of oesophagus | ancestors: esophageal disorder, gastrointestinal tuberculosis, upper digestive tract disorder, extrapulmonary tuberculosis | def: A tuberculosis that involves the esophagus.",
+"ko": "식도 결핵",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001672",
+"concept": "- MONDO:0001672 | bronchus cancer | syn: bronchus cancer; cancer of bronchus; malignant bronchus neoplasm; malignant neoplasm of bronchus | ancestors: respiratory system cancer, bronchial neoplasm, cancer, respiratory system disorder | def: A malignant neoplasm involving the bronchus",
+"ko": "기관지암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0012693",
+"concept": "- MONDO:0012693 | glycogen storage disease due to muscle and heart glycogen synthase deficiency | syn: glycogen storage disease due to glycogen synthase deficiency of heart; glycogen storage disease type 0b; glycogenosis due to muscle and heart glycogen synthase deficiency; glycogenosis type 0b | ancestors: disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism, inborn errors of metabolism | def: A glycogen storage disease characterized by muscle and heart glycogen deficiency. It has been described in three siblings (two brothers and their younger sister). The older brother died at 10.5 years ...",
+"ko": "근육 및 심장 글리코겐 합성효소 결핍에 의한 글리코겐 저장병",
+"alt": [],
+"organs": [
+"cardiovascular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0003441",
+"concept": "- MONDO:0003441 | dystonic disorder | syn: dystonia; dystonic disorder | ancestors: extrapyramidal and movement disease, movement disorder, nervous system disorder, disease by body system or component | def: A movement disorder characterized by sustained or intermittent muscle contractions, resulting in abnormal movements and/or postures.",
+"ko": "근긴장이상 장애",
+"alt": [
+"근긴장이상증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001800",
+"concept": "- MONDO:0001800 | equatorial staphyloma | ancestors: scleral disorder, eye disorder, disorder of orbital region, disorder of visual system",
+"ko": "적도부 포도종",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0042967",
+"concept": "- MONDO:0042967 | rheumatic disease of mitral valve | syn: mitral valve rheumatologic disorder; rheumatic disease of mitral valve; rheumatologic disorder of mitral valve | ancestors: mitral valve disorder, rheumatic disorder, heart valve disorder, connective tissue disorder | def: A rheumatologic disorder that involves the mitral valve.",
+"ko": "승모판 류마티스 질환",
+"alt": [
+"류마티스성 승모판 질환"
+],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0018470",
+"concept": "- MONDO:0018470 | renal agenesis | syn: absent/small kidney; absent/underdeveloped kidney; renal agenesis; renal agenesis (disease) | ancestors: disorder of development or morphogenesis, inherited kidney disorder, disease by developmental or physiological process, hereditary disease | def: Renal agenesis (RA) is a form of renal tract malformation characterized by the complete absence of development of one or both kidneys (unilateral RA or bilateral RA respectively), accompanied by absen...",
+"ko": "콩팥 무형성",
+"alt": [
+"신장 무형성",
+"신장 무발생"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0000827",
+"concept": "- MONDO:0000827 | salmonellosis | syn: rare form of salmonellosis; Salmonella infection | ancestors: primary bacterial infectious disease, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Infections with bacteria of the genus salmonella.",
+"ko": "살모넬라증",
+"alt": [
+"살모넬라 감염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0018905",
+"concept": "- MONDO:0018905 | diffuse large B-cell lymphoma | syn: diffuse large B-cell lymphoma; DLBCL | ancestors: neoplasm of mature B-cells, aggressive B-cell non-Hodgkin lymphoma, B-cell neoplasm, B-cell non-Hodgkin lymphoma | def: Diffuse large B-cell lymphoma is the most common subtype of non-Hodgkin lymphoma (NHL) in adults characterized by a median age of presentation in the sixth decade of life (but also rarely occurring in...",
+"ko": "미만성 거대 B세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3
+}
+]

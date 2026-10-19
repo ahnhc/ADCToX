@@ -1,0 +1,248 @@
+[
+{
+"id": "MONDO:0007201",
+"concept": "- MONDO:0007201 | blepharophimosis, ptosis, and epicanthus inversus syndrome | syn: blepharophimosis types 1 and 2; blepharophimosis, epicanthus inversus, and ptosis, type 1; blepharophimosis, epicanthus inversus, and ptosis, type 2; blepharophimosis, ptosis, and epicanthus inversus | ancestors: autosomal dominant disease, telecanthus, inherited primary ovarian failure, autosomal genetic disease | def: Blepharophimosis, Ptosis, and Epicanthus Inversus syndrome (BPES) is an ophthalmic disorder characterized by blepharophimosis, ptosis, epicanthus inversus, and telecanthus, that can appear associated ...",
+"ko": "안검열 협착, 안검하수 및 역내안각췌피 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000375",
+"concept": "- MONDO:0000375 | bronchus carcinoma in situ | syn: bronchus in situ carcinoma; carcinoma in situ of bronchus; stage 0 bronchus carcinoma | ancestors: bronchogenic carcinoma, lung carcinoma in situ, bronchus cancer, lung carcinoma | def: A carcinoma in situ involving a bronchus.",
+"ko": "기관지 상피내암종",
+"alt": [
+"기관지 제자리암종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011245",
+"concept": "- MONDO:0011245 | ichthyosis, hystrix-like, with hearing loss | syn: HID syndrome; hystrix-like ichthyosis with deafness; ichthyosis, hystrix-like, with deafness | ancestors: KID syndrome, GJB2-related disorder, diffuse palmoplantar keratoderma, ectodermal dysplasia syndrome",
+"ko": "난청을 동반한 호저양 어린선",
+"alt": [
+"HID 증후군"
+],
+"organs": [
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013917",
+"concept": "- MONDO:0013917 | nephronophthisis 15 | syn: CEP164 nephronophthisis (disease); nephronophthisis (disease) caused by mutation in CEP164; nephronophthisis 15; nephronophthisis type 15 | ancestors: Senior-Loken syndrome, nephronophthisis, CEP164-related ciliopathy, ciliopathy | def: Any nephronophthisis in which the cause of the disease is a mutation in the CEP164 gene.",
+"ko": "네프로노프티시스 15형",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001326",
+"concept": "- MONDO:0001326 | dental pulp necrosis | syn: necrosis of pulp; necrosis of the pulp; necrotic pulp; pulp necrosis | ancestors: dental pulp disorder, tooth disorder, skeletal system disorder, mouth disorder | def: Death of pulp tissue with or without bacterial invasion. When the necrosis is due to ischemia with superimposed bacterial infection, it is referred to as pulp gangrene. When the necrosis is non-bacter...",
+"ko": "치수 괴사",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002395",
+"concept": "- MONDO:0002395 | renal adenoma | syn: adenoma, renal cell, benign; kidney adenoma; renal adenoma; renal cell adenoma (morphologic abnormality) | ancestors: kidney benign neoplasm, adenoma, benign epithelial neoplasm, benign urinary system neoplasm | def: An adenoma arising from the renal cortex.",
+"ko": "신장 샘종",
+"alt": [
+"신장 선종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020333",
+"concept": "- MONDO:0020333 | aggressive systemic mastocytosis | syn: aggressive systemic mastocytosis (morphologic abnormality); ASM | ancestors: systemic mastocytosis, mastocytosis, mast cell neoplasm, leukocyte disorder | def: Aggressive systemic mastocytosis (ASM) is a severe and rare form of systemic mastocytosis (SM) characterized by considerable infiltration of mast cells in different tissues.",
+"ko": "공격성 전신 비만세포증",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"gastrointestinal",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001695",
+"concept": "- MONDO:0001695 | senile ectropion | ancestors: ectropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "노인성 안검외반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004854",
+"concept": "- MONDO:0004854 | ophthalmia neonatorum | syn: gonococcal conjunctivitis (neonatorum); neonatal conjunctivitis | ancestors: gonococcal conjunctivitis, gonorrhea, bacterial conjunctivitis, primary bacterial infectious disease | def: Inflammation of the conjunctiva in a newborn due to chemical or infectious causes. Aseptic conjunctivitis is often related to the use of prophylactic medications for infectious conjunctivitis. Septic ...",
+"ko": "신생아 안염",
+"alt": [
+"신생아 결막염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002545",
+"concept": "- MONDO:0002545 | spinal cord disorder | syn: disease of spinal cord; disease of the spinal cord; disease or disorder of spinal cord; disorder of spinal cord | ancestors: central nervous system disorder, nervous system disorder, disease by body system or component, human disease | def: A disease involving the spinal cord.",
+"ko": "척수 질환",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0021742",
+"concept": "- MONDO:0021742 | puerperal infection | ancestors: infectious disease, puerperal disorder, disease of primarily extrinsic mechanism, obstetric disorder | def: An infection occurring in puerperium, the period of 6-8 weeks after giving birth.",
+"ko": "산욕 감염",
+"alt": [
+"산욕열"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0859205",
+"concept": "- MONDO:0859205 | delayed puberty, self-limited | ancestors: female reproductive system disorder, hereditary disease, reproductive system disorder, disease of genetic or genomic mechanism",
+"ko": "자연 회복성 사춘기 지연",
+"alt": [
+"체질성 사춘기 지연"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005867",
+"concept": "- MONDO:0005867 | Mycoplasma pneumoniae pneumonia | syn: Mycoplasmal pneumonia; pneumonia due to Mycoplasma pneumoniae | ancestors: bacterial pneumonia, Mycoplasmoides infection, bacterial infectious disease, pneumonia | def: Interstitial pneumonia caused by extensive infection of the lungs (lung) and bronchi, particularly the lower lobes of the lungs, by mycoplasma pneumoniae in humans. In sheep, it is caused by mycoplasm...",
+"ko": "마이코플라스마 폐렴균 폐렴",
+"alt": [
+"마이코플라스마 폐렴"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0012251",
+"concept": "- MONDO:0012251 | MEDNIK syndrome | syn: erythrokeratodermia variabilis 3; erythrokeratodermia variabilis, Kamouraska type; intellectual disability, enteropathy, deafness, neuropathy, ichthyosis, keratodermia; intellectual disability-enteropathy-deafness-peripheral neuropathy-ichthyosis-keratodermia syndrome | ancestors: syndromic disease, disorder of copper metabolism, erythrokeratoderma, hereditary skin disorder | def: MEDNIK syndrome, previously known as Erythrokeratodermia Variabilis type 3 (EKV3), is characterized by intellectual deficit, enteropathy, sensorineural hearing loss, peripheral neuropathy, lamellar an...",
+"ko": "MEDNIK 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"neurologic",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000440",
+"concept": "- MONDO:0000440 | metabolic acidosis | ancestors: acidosis disorder, disorder of acid-base balance, metabolic disease, disease by developmental or physiological process",
+"ko": "대사성 산증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019803",
+"concept": "- MONDO:0019803 | angioma serpiginosum | ancestors: dermis tumor, skin hemangioma, capillary malformation, skin vascular disease | def: Angioma serpiginosum (AS) is a benign congenital skin disease characterized by progressive dilation of the subepidermal skin vessels manifesting as purple punctate lesions usually appearing on the low...",
+"ko": "사행성 혈관종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0005786",
+"concept": "- MONDO:0005786 | Hepadnaviridae infectious disease | syn: Hepadnaviridae caused disease or disorder; Hepadnaviridae disease or disorder | ancestors: primary viral infectious disease, viral infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Virus diseases caused by the hepadnaviridae.",
+"ko": "헤파드나바이러스과 감염병",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006898",
+"concept": "- MONDO:0006898 | periarthritis | ancestors: bursitis, arthritic joint disease, arthropathy, inflammatory disease | def: Inflammation of the tissues around a joint. (Dorland, 27th ed)",
+"ko": "관절주위염",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007127",
+"concept": "- MONDO:0007127 | diffuse idiopathic skeletal hyperostosis | syn: ankylosing vertebral hyperostosis; diffuse idiopathic skeletal hyperostosis; DISH; dish | ancestors: hyperostosis, hereditary disease, idiopathic disease, bone remodeling disease | def: This syndrome is characterized by the association of ankylosing vertebral hyperostosis with hyperkeratosis of the soles and palms.",
+"ko": "미만성 특발성 골격 과골증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0004189",
+"concept": "- MONDO:0004189 | esophageal tuberculosis | syn: esophagus tuberculosis; oesophagus tuberculosis; tuberculosis of oesophagus | ancestors: esophageal disorder, gastrointestinal tuberculosis, upper digestive tract disorder, extrapulmonary tuberculosis | def: A tuberculosis that involves the esophagus.",
+"ko": "식도 결핵",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+}
+]

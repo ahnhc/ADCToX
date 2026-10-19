@@ -1,0 +1,261 @@
+[
+{
+"id": "MONDO:0043537",
+"concept": "- MONDO:0043537 | cluster headache syndrome | syn: Cephalgia, histamine; Cephalgias, histamine; ciliary neuralgia; ciliary neuralgias | ancestors: brain disorder, trigeminal autonomic cephalalgia, central nervous system disorder, trigeminal nerve disorder | def: A headache disorder that is characterized by periodic severe, unilateral orbital, supraorbital, and/or temporal pain, and is associated with ipsilateral cranial autonomic symptoms.",
+"ko": "군발두통 증후군",
+"alt": [
+"군발 두통"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0017775",
+"concept": "- MONDO:0017775 | melioidosis | syn: Burkholderia pseudomallei caused disease or disorder; Burkholderia pseudomallei disease or disorder; Burkholderia pseudomallei infectious disease; pseudoglanders | ancestors: primary bacterial infectious disease, burkholderia infectious disease, bacterial infectious disease, gram-negative bacterial infections | def: An infection that is caused by Burkholderia pseudomallei, which is found in soil and water; symptoms vary widely, but most commonly include fever, cough, pneumonia, arthralgia, myalgia, and skin ulcer...",
+"ko": "유비저",
+"alt": [
+"멜리오이도시스"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0005979",
+"concept": "- MONDO:0005979 | thoracic outlet syndrome | syn: thoracic outlet compression syndrome; TOS | ancestors: syndromic disease, vascular disorder, disease by body system or component, cardiovascular disorder | def: A syndrome resulting from the compression of the blood vessels or nerves in the space between the clavicle and first rib (thoracic outlet). It is caused by car accident injuries or repetitive job or s...",
+"ko": "흉곽출구 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006022",
+"concept": "- MONDO:0006022 | acidosis disorder | syn: acidosis | ancestors: disorder of acid-base balance, metabolic disease, disease by developmental or physiological process, human disease | def: An abnormally high acidity of the blood and other body tissues. Acidosis can be either respiratory or metabolic.",
+"ko": "산증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009255",
+"concept": "- MONDO:0009255 | galactokinase deficiency | syn: galactokinase deficiency; galactokinase deficiency galactosemia; galactokinase deficiency with cataracts; galactosemia type 2 | ancestors: galactosemia, disorder of galactose and fructose metabolism, eye disorder, disorder of galactose metabolism | def: Galactokinase deficiency is a rare mild form of galactosemia characterized by early onset of cataract and an absence of the usual signs of classic galactosemia, i.e. feeding difficulties, poor weight ...",
+"ko": "갈락토키나아제 결핍증",
+"alt": [],
+"organs": [
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010886",
+"concept": "- MONDO:0010886 | 2q37 microdeletion syndrome | syn: 2q37 microdeletion syndrome; 2q37 monosomy; Albright hereditary osteodystrophy type 3; Albright hereditary osteodystrophy-like syndrome | ancestors: partial deletion of the long arm of chromosome 2, skeletal dysplasia, congenital limb malformation, partial deletion of chromosome 2 | def: A chromosomal anomaly involving deletion of chromosome band 2q37 and manifests as three major clinical findings: developmental delay, skeletal malformations and facial dysmorphism.",
+"ko": "2q37 미세결실 증후군",
+"alt": [
+"2q37 단일염색체증"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0018068",
+"concept": "- MONDO:0018068 | trisomy 13 | syn: Patau syndrome; Patau's syndrome; trisomy 13; Trisomy 13 Syndrome | ancestors: syndromic disease, congenital vitreoretinal dysplasia, chromosome 13 disorder, trisomy | def: Trisomy 13 is a chromosomal anomaly caused by the presence of an extra chromosome 13 and is characterized by brain malformations (holoprosencephaly), facial dysmorphism, ocular anomalies, postaxial po...",
+"ko": "13 삼염색체증",
+"alt": [
+"파타우 증후군"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"ocular",
+"musculoskeletal"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0021925",
+"concept": "- MONDO:0021925 | tracheobronchitis | syn: tracheobronchitis | ancestors: lower respiratory tract disorder, inflammatory disease, respiratory system disorder, disease by developmental or physiological process | def: Inflammation of the tracheobronchial tree.",
+"ko": "기관기관지염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001512",
+"concept": "- MONDO:0001512 | intermittent proptosis | syn: intermittent exophthalmos | ancestors: disease of orbital part of eye adnexa, eye adnexa disorder, disorder of orbital region, disease by body system or component",
+"ko": "간헐성 안구돌출",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020843",
+"concept": "- MONDO:0020843 | pseudomembranous diphtheritic conjunctivitis | syn: conjunctival diphtheria; pseudomembranous diphtheritic conjunctivitis | ancestors: pseudomembranous conjunctivitis, diphtheria, acute conjunctivitis, bacterial conjunctivitis | def: Pseudomembranous colitis resulting from infection by Corynebacterium diphtheriae.",
+"ko": "위막성 디프테리아성 결막염",
+"alt": [
+"결막 디프테리아"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0000155",
+"concept": "- MONDO:0000155 | triglyceride storage disease | syn: inborn error of sequestering of triglyceride; inborn sequestering of triglyceride disorder; rare inborn error of sequestering of triglyceride | ancestors: lysosomal lipid storage disorder, inherited lipid metabolism disorder, lysosomal storage disease, inborn errors of metabolism | def: An inherited metabolic disease that is has its basis in the disruption of sequestering of triglyceride.",
+"ko": "중성지방 축적병",
+"alt": [],
+"organs": [
+"hepatic",
+"dermatologic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004640",
+"concept": "- MONDO:0004640 | alcoholic gastritis | syn: alcoholic gastritis; alcoholic gastritis, with haemorrhage; alcoholic gastritis, without mention of haemorrhage | ancestors: gastritis, stomach disorder, inflammatory disease, digestive system disorder | def: Inflammation of the stomach resulting from alcohol ingestion.",
+"ko": "알코올성 위염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0850301",
+"concept": "- MONDO:0850301 | pemphigoid | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: An autoimmune disease of skin and connective tissue that is characterized by subepidermal blistering especially in the lower abdomen, groin, and flexor surfaces of the extremities, creating tense blis...",
+"ko": "유천포창",
+"alt": [
+"천포창양 질환"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0018871",
+"concept": "- MONDO:0018871 | acute myelomonocytic leukemia M4 | syn: acute M4 myeloid leukaemia; acute M4 myeloid leukemia; acute myelomonocytic leukaemia; acute myelomonocytic leukaemia (FAB type M4) | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: An acute leukemia characterized by the proliferation of both neutrophil and monocyte precursors. (WHO, 2001)",
+"ko": "급성 골수단핵구성 백혈병 M4",
+"alt": [
+"급성 골수단구성 백혈병 M4"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006109",
+"concept": "- MONDO:0006109 | malignant biphasic mesothelioma | syn: biphasic mesothelioma; malignant biphasic mesothelioma; malignant biphasic mesothelioma, malignant; malignant mixed mesothelioma | ancestors: malignant mesothelioma, cancer, mesothelioma, neoplasm | def: A malignant neoplasm arising from mesothelial cells in the pleura. It is characterized by the presence of neoplastic epithelioid cells and sarcomatoid features.",
+"ko": "악성 이상성 중피종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001328",
+"concept": "- MONDO:0001328 | thyroid hormone resistance syndrome | syn: generalised thyroid hormone resistance | ancestors: inherited thyroid metabolism disease, thyroid gland disorder, inborn errors of metabolism, endocrine system disorder | def: An inherited autosomal recessive trait, characterized by peripheral resistance to thyroid hormones and the resulting elevation in serum levels of thyroxine and triiodothyronine.",
+"ko": "갑상선호르몬 저항 증후군",
+"alt": [
+"갑상선호르몬 불응증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008234",
+"concept": "- MONDO:0008234 | multiple endocrine neoplasia type 2A | syn: MEA type 2a; MEA type II; men 2A; men type 2a | ancestors: autosomal dominant disease, multiple endocrine neoplasia type 2, autosomal genetic disease, thyroid gland carcinoma | def: An autosomal dominant tumor predisposition disorder caused by pathogenic variants in the RET gene, characterized by an increased risk of medullary thyroid carcinoma, pheochromocytoma, and hyperparathy...",
+"ko": "다발성 내분비샘종양 2A형",
+"alt": [
+"다발성 내분비선종증 2A형"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010989",
+"concept": "- MONDO:0010989 | Mayer-Rokitansky-Küster-Hauser syndrome type 2 | syn: atypical MRKH syndrome; Mayer-Rokitansky-Küster-Hauser syndrome type 2; MRKH syndrome type 2; MURCS association | ancestors: Mayer-Rokitansky-Kuster-Hauser syndrome, syndromic disease, partial bilateral aplasia of the mullerian ducts, disease by body system or component | def: Mayer-Rokitansky-Küster-Hauser (MRKH) syndrome type 2, a form of MRKH syndrome, is characterized by congenital aplasia of the uterus and upper 2/3 of the vagina that is associated with at least one ot...",
+"ko": "마이어-로키탄스키-퀴스터-하우저 증후군 2형",
+"alt": [
+"MRKH 증후군 2형"
+],
+"organs": [
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004638",
+"concept": "- MONDO:0004638 | lymphosarcoma | syn: diffuse lymphoma; lymphosarcoma | ancestors: lymphatic system cancer, non-Hodgkin lymphoma, immune system cancer, lymphatic system disorder | def: An antiquated term that refers to a non-Hodgkin lymphoma composed of small and medium sized lymphocytes.",
+"ko": "림프육종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007064",
+"concept": "- MONDO:0007064 | severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-negative, NK cell-negative, due to adenosine deaminase deficiency | syn: ADA deficiency; ADA-SCID; adenosine deaminase deficiency; adenosine deaminase deficiency, partial, Autosomal recessive, Somatic mosaicism | ancestors: T-B- severe combined immunodeficiency, inborn disorder of purine metabolism, familial severe combined immunodeficiency, severe combined immunodeficiency | def: A form of SCID characterized by profound lymphopenia and very low immunoglobulin levels of all isotypes resulting in severe and recurrent opportunistic infections.",
+"ko": "아데노신 탈아미노효소 결핍에 의한 상염색체 열성 T세포 음성 B세포 음성 NK세포 음성 중증 복합 면역결핍증",
+"alt": [
+"ADA 결핍증"
+],
+"organs": [
+"haematologic",
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+}
+]

@@ -1,0 +1,260 @@
+[
+{
+"id": "MONDO:0009182",
+"concept": "- MONDO:0009182 | junctional epidermolysis bullosa Herlitz type | syn: epidermolysis bullosa letalis; Herlitz-Pearson-type epidermolysis bullosa; JEB, generalised severe; JEB, generalized severe | ancestors: junctional epidermolysis bullosa, inherited epidermolysis bullosa, epidermolysis bullosa, epidermal disease | def: Junctional epidermolysis bullosa, Herlitz-type is a severe subtype of junctional epidermolysis bullosa (JEB) characterized by blisters and extensive erosions, localized to the skin and mucous membrane...",
+"ko": "접합부 수포성 표피박리증, 헤를리츠형",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0001641",
+"concept": "- MONDO:0001641 | severe pre-eclampsia | syn: Preeclampsia with severe features; severe preeclampsia | ancestors: preeclampsia, hereditary disease, toxemia of pregnancy, disease of genetic or genomic mechanism | def: Preeclampsia with a systolic blood pressure of 160 mmHg or higher, or a diastolic blood pressure of 110 mmHg or higher on two occasions at least 4 hours apart while on bedrest. It is associated with t...",
+"ko": "중증 전자간증",
+"alt": [
+"중증 자간전증"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006476",
+"concept": "- MONDO:0006476 | undifferentiated gallbladder carcinoma | syn: anaplastic carcinoma of gallbladder; anaplastic carcinoma of the gallbladder; anaplastic gallbladder carcinoma; gall bladder undifferentiated carcinoma | ancestors: gallbladder carcinoma, undifferentiated carcinoma, gallbladder cancer, digestive system carcinoma | def: A carcinoma without evidence of differentiation arising from the gallbladder. The most common variant is the spindle and giant cell type which resembles a sarcoma.",
+"ko": "미분화 담낭암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011514",
+"concept": "- MONDO:0011514 | tricuspid atresia | syn: congenital atresia of tricuspid valve; tricuspid atresia; tricuspid atresia (disease); tricuspid valve atresia | ancestors: congenital heart disease, congenital tricuspid malformation, cardiogenetic disease, heart disorder | def: Tricuspid atresia is (TA) a rare congenital heart malformation characterized by the congenital agenesis of tricuspid valve leading to severe hypoplasia of right ventricle (functionally univentricular)...",
+"ko": "삼첨판 폐쇄증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001051",
+"concept": "- MONDO:0001051 | acute otitis externa | syn: acute otitis externa; acute swimmers' ear; otitis externa, acute | ancestors: otitis externa, acute disease, external ear disorder, ear infection | def: Acute form of otitis externa.",
+"ko": "급성 외이도염",
+"alt": [
+"수영자 귀"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004977",
+"concept": "- MONDO:0004977 | angioimmunoblastic T-cell lymphoma | syn: AILD; AILT; angioimmunoblastic lymphadenopathy; angioimmunoblastic lymphadenopathy type T-cell lymphoma | ancestors: mature T-cell and NK-cell non-Hodgkin lymphoma, neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm | def: A mature T-cell non-Hodgkin lymphoma, characterized by systemic disease and a polymorphous infiltrate involving lymph nodes and extranodal sites. The clinical course is typically aggressive.",
+"ko": "혈관면역모세포성 T세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0014174",
+"concept": "- MONDO:0014174 | renal-hepatic-pancreatic dysplasia 2 | syn: NEK8 renal-hepatic-pancreatic dysplasia; renal-hepatic-pancreatic dysplasia 2; renal-hepatic-pancreatic dysplasia caused by mutation in NEK8; renal-hepatic-pancreatic dysplasia type 2 | ancestors: renal-hepatic-pancreatic dysplasia, hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism | def: Any renal-hepatic-pancreatic dysplasia in which the cause of the disease is a mutation in the NEK8 gene.",
+"ko": "콩팥-간-췌장 이형성증 2형",
+"alt": [
+"신장-간-췌장 이형성증 2형"
+],
+"organs": [
+"hepatic",
+"renal",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0044788",
+"concept": "- MONDO:0044788 | large duct intrahepatic cholangiocarcinoma | syn: intrahepatic bile duct carcinoma, large duct type; intrahepatic cholangiocarcinoma, large duct; intrahepatic cholangiocarcinoma, perihilar type; large duct intrahepatic cholangiocarcinoma | ancestors: intrahepatic cholangiocarcinoma, intrahepatic bile duct cancer, carcinoma of liver and intrahepatic biliary tract, cholangiocarcinoma | def: An intrahepatic cholangiocarcinoma that arises from the intrahepatic large bile ducts.",
+"ko": "큰 담관형 간내 담관암종",
+"alt": [
+"큰 담관형 간내 담관암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007128",
+"concept": "- MONDO:0007128 | annular erythema | syn: annular erythema | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "환상 홍반",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0006352",
+"concept": "- MONDO:0006352 | paranasal sinus adenoid cystic carcinoma | syn: accessory sinus adenoid cystic carcinoma; adenoid cystic carcinoma of accessory sinus; adenoid cystic carcinoma of paranasal sinus; adenoid cystic carcinoma of the accessory sinus | ancestors: paranasal sinus carcinoma, adenoid cystic carcinoma, bone carcinoma, paranasal sinus cancer | def: A rare adenoid cystic carcinoma that arises from the paranasal sinuses. It usually has an aggressive clinical course characterized by high recurrence rates and distant metastases.",
+"ko": "부비동 선양낭성암종",
+"alt": [
+"코곁굴 선양낭성암종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015046",
+"concept": "- MONDO:0015046 | gamma-heavy chain disease | syn: Franklin disease; Franklin's disease; gamma heavy chain disease; gamma-HCD | ancestors: heavy chain disease, plasma cell neoplasm, neoplasm of mature B-cells, B-cell neoplasm | def: Gamma-heavy chain disease (gamma-HCD) is a type of HCD characterized by the production of incomplete monoclonal gamma-heavy chains without associated light chains. The clinical presentation most commo...",
+"ko": "감마 중쇄병",
+"alt": [
+"프랭클린병"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009262",
+"concept": "- MONDO:0009262 | GM1 gangliosidosis type 3 | syn: adult-onset GM1 gangliosidosis | ancestors: GM1 gangliosidosis, eye disorder, bone disorder, gangliosidosis | def: GM1 gangliosidosis type 3 is a mild, chronic, adult form of GM1 gangliosidosis characterized by onset generally during childhood or adolescence and by cerebellar dysfunction.",
+"ko": "GM1 강글리오시드축적증 3형",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010517",
+"concept": "- MONDO:0010517 | ciliary dyskinesia, primary, 36, X-linked | syn: CILD36; ciliary dyskinesia, primary, 36, X-linked; ciliary dyskinesia, primary, 36, X-linked, X-linked recessive; ciliary dyskinesia, primary, 36, X-linked; CILD36 | ancestors: primary ciliary dyskinesia, syndromic disease, respiratory system disorder, ciliopathy | def: Any primary ciliary dyskinesia in which the cause of the disease is a mutation in the PIH1D3 gene.",
+"ko": "원발섬모운동이상증 36, X연관",
+"alt": [
+"일차 섬모운동이상증 36"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0015057",
+"concept": "- MONDO:0015057 | renin-angiotensin-aldosterone system-blocker-induced angioedema | syn: Raas-blocker-induced angioedema; Raas-blocker-induced angioneurotic edema; Raas-blocker-induced angioneurotic oedema; RAE | ancestors: acquired angioedema, angioedema, urticaria, skin vascular disease | def: Renin-angiotensin-aldosterone system (RAAS)-blocker induced angioedema (RAE) is a type of acquired angioedema (AAE) characterized by acute edema in subcutaneous tissues, viscera and/or the upper airwa...",
+"ko": "레닌-안지오텐신-알도스테론계 차단제 유발 혈관부종",
+"alt": [
+"RAAS 차단제 유발 혈관부종"
+],
+"organs": [
+"pulmonary",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006044",
+"concept": "- MONDO:0006044 | nephrosclerosis | ancestors: renal artery disease, kidney disorder, aortic disorder, urinary system disorder | def: Hardening of the kidney due to infiltration by fibrous connective tissue (fibrosis), usually caused by renovascular diseases or chronic hypertension. Nephrosclerosis leads to renal ischemia.",
+"ko": "콩팥경화증",
+"alt": [
+"신장경화증"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002083",
+"concept": "- MONDO:0002083 | Richter transformation | syn: chronic lymphocytic leukemia with Richter transformation; chronic lymphocytic leukemia/small lymphocytic lymphoma with Richter transformation; Richter syndrome; Richter's syndrome | ancestors: secondary neoplasm, neoplastic disease or syndrome, cancer or benign tumor, disease by etiologic mechanism | def: Transformation of chronic lymphocytic leukemia (CLL) or small lymphocytic lymphoma (SLL) into a more aggressive type of lymphoma, usually diffuse large B-cell lymphoma (immunoblastic or centroblastic ...",
+"ko": "리히터 형질전환",
+"alt": [
+"리히터 증후군"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007086",
+"concept": "- MONDO:0007086 | autosomal dominant Alport syndrome | syn: Alport syndrome 3, autosomal dominant; Alport syndrome, autosomal dominant | ancestors: autosomal dominant disease, Alport syndrome, autosomal genetic disease, syndromic disease | def: Autosomal dominant Alport syndrome isa genetic condition characterized by kidney disease, hearing loss, and eye abnormalities. Most affected individuals experience progressive loss of kidney function,...",
+"ko": "상염색체 우성 알포트 증후군",
+"alt": [],
+"organs": [
+"renal",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0041095",
+"concept": "- MONDO:0041095 | malignant otitis externa caused by Pseudomonas aeruginosa | syn: malignant otitis externa caused by Pseudomonas aeruginosa; malignant otitis externa due to Pseudomonas aeruginosa; Pseudomonas aeruginosa caused malignant otitis externa; Pseudomonas aeruginosa malignant otitis externa | ancestors: malignant otitis externa, Pseudomonas aeruginosa infectious disease, otitis externa, Pseudomonas infection | def: An malignant otitis externa caused by infection with Pseudomonas aeruginosa.",
+"ko": "녹농균에 의한 악성 외이도염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005220",
+"concept": "- MONDO:0005220 | collecting duct carcinoma | syn: BDC; Bellini carcinoma; Bellini duct carcinoma; carcinoma of collecting duct of renal tubule | ancestors: renal cell carcinoma, adenocarcinoma, renal carcinoma, carcinoma | def: A carcinoma that arises from epithelial cells of the collecting duct of renal tubule",
+"ko": "집합관암종",
+"alt": [
+"벨리니 암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021582",
+"concept": "- MONDO:0021582 | lentigo | syn: lentigines; lentiginosis; lentigo | ancestors: hereditary skin disorder, hereditary disease, skin disorder, disease of genetic or genomic mechanism | def: A flat, benign, pigmented spot on the skin caused by excessive deposition of melanin from an increased number of melanocytes in the cell layer directly above the basement membrane of the epidermis. Fo...",
+"ko": "검은점",
+"alt": [
+"흑색점"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+}
+]

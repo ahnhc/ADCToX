@@ -1,0 +1,262 @@
+[
+{
+"id": "MONDO:0005942",
+"concept": "- MONDO:0005942 | Reye syndrome | syn: Reye's syndrome | ancestors: syndromic disease, rheumatic disorder, brain disorder, disease by body system or component | def: An acute and potentially fatal metabolic disorder characterized by cerebral edema, fatty liver and hypoglycemia. It occurs primarily in children and has been associated with the use of aspirin for the...",
+"ko": "라이 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001241",
+"concept": "- MONDO:0001241 | transient neonatal neutropenia | ancestors: neutropenia, agranulocytosis, leukopenia, leukocyte disorder",
+"ko": "일과성 신생아 호중구감소증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019378",
+"concept": "- MONDO:0019378 | la Crosse encephalitis | syn: Californian encephalitis; La Crosse virus caused infectious encephalitis; La Crosse virus infectious encephalitis | ancestors: mosquito-borne viral encephalitis, Bunyaviridae infectious disease, viral encephalitis, vector-borne disease | def: La Crosse encephalitis (CE) is an acute arboviral infection caused by the La Crosse bunyavirus transmitted by an infected mosquito, usually observed in infants, children or adolescents (6 months to 16...",
+"ko": "라크로스 뇌염",
+"alt": [
+"캘리포니아 뇌염"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0002811",
+"concept": "- MONDO:0002811 | main bronchus cancer | syn: cancer of main bronchus; main bronchus cancer; malignant main bronchus neoplasm; malignant neoplasm of main bronchus | ancestors: bronchus cancer, respiratory system cancer, bronchial neoplasm, cancer | def: A malignant neoplasm involving the main bronchus.",
+"ko": "주기관지암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015448",
+"concept": "- MONDO:0015448 | mitochondrial complex III deficiency | syn: isolated coenzyme Q-cytochrome C reductase deficiency; isolated CoQ-cytochrome C reductase deficiency; isolated mitochondrial respiratory chain complex III deficiency; isolated ubiquinone-cytochrome C reductase deficiency | ancestors: mitochondrial respiratory chain complex deficiency, mitochondrial oxidative phosphorylation disorder, inborn mitochondrial metabolism disorder, developmental anomaly of metabolic origin | def: A rare, genetic, mitochondrial oxidative phosphorylation disorder characterized by a wide spectrum of clinical manifestations ranging from isolated myopathy or transient hepatopathy to severe multisys...",
+"ko": "미토콘드리아 복합체 III 결핍증",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0007542",
+"concept": "- MONDO:0007542 | Camurati-Engelmann disease | syn: Camurati-Engelmann disease; Camurati-Engelmann syndrome; Camurati-Englemann disease; progressive diaphyseal dysplasia | ancestors: syndromic disease, skeletal dysplasia, disease by body system or component, hereditary disease | def: Camurati-Englemann disease (CED) is a rare, clinically variable bone dysplasia syndrome characterized by hyperostosis of the long bones, skull, spine and pelvis, associated with severe pain in the ext...",
+"ko": "카무라티-엥겔만병",
+"alt": [
+"카무라티-엥겔만 증후군"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0017194",
+"concept": "- MONDO:0017194 | Blount disease | syn: Blount disease; Blount's disease; infantile tibia vara; Osteochondrosis deformans tibiae | ancestors: osteochondrodysplasia, bent bone dysplasia, bone development disease, skeletal dysplasia | def: Blount disease is characterized by disturbed growth of the inner portion of the upper tibial extremity, progressively leading to bowlegged deformity with bone angulation just below the knee (tibia var...",
+"ko": "블라운트병",
+"alt": [
+"경골내반증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006947",
+"concept": "- MONDO:0006947 | renovascular hypertension | syn: renovascular hypertension; renovascular hypertension (disease) | ancestors: renal hypertension, secondary hypertension, kidney disorder, hypertensive disorder | def: High blood pressure secondary to renal artery stenosis.",
+"ko": "신혈관성 고혈압",
+"alt": [
+"콩팥혈관성 고혈압"
+],
+"organs": [
+"cardiovascular",
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010651",
+"concept": "- MONDO:0010651 | Menkes disease | syn: kinky hair disease; kinky hair syndrome; MD; Menkes disease | ancestors: syndromic disease, inborn metal metabolism disorder, disorder of copper metabolism, disease by body system or component | def: A usually severe multisystemic disorder of copper metabolism, characterized by progressive neurodegeneration and marked connective tissue anomalies as well as typical sparse abnormal steely hair.",
+"ko": "멩케스병",
+"alt": [
+"멩케스 증후군",
+"꼬불머리병"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001858",
+"concept": "- MONDO:0001858 | Tietze syndrome | syn: costochondral joint syndromic disease; Costochondritis; syndromic disease of costochondral joint; Tietze syndrome | ancestors: syndromic disease, arthropathy, disease by body system or component, skeletal system disorder | def: Idiopathic painful nonsuppurative swellings of one or more costal cartilages, especially of the second rib. The anterior chest pain may mimic that of coronary artery disease.",
+"ko": "티체 증후군",
+"alt": [
+"늑연골염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002724",
+"concept": "- MONDO:0002724 | mast cell neoplasm | syn: mast cell neoplasm; Mast cell proliferative disease; Mast cell tumor; mast cell tumor | ancestors: myeloid neoplasm, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm, neoplasm | def: A heterogeneous group of disorders characterized by the abnormal growth and accumulation of mast cells in one or more organ systems. Recent data suggest that most variants of mast cell neoplasms are c...",
+"ko": "비만세포 신생물",
+"alt": [
+"비만세포 종양"
+],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007142",
+"concept": "- MONDO:0007142 | Townes-Brocks syndrome | syn: imperforate anus with hand, foot and ear anomalies; rear syndrome; renal-ear-anal-radial syndrome; sensorineural deafness with imperforate anus and hypoplastic thumbs | ancestors: autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, congenital limb malformation | def: Townes-Brocks syndrome (TBS) is a rare genetic disorder characterized by the triad of imperforate anus, dysplastic ears often associated with sensorineural and/or conductive hearing impairment, and th...",
+"ko": "타운스-브록스 증후군",
+"alt": [],
+"organs": [
+"renal",
+"gastrointestinal",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002806",
+"concept": "- MONDO:0002806 | bronchogenic carcinoma | syn: bronchial carcinoma; bronchiogenic carcinoma; bronchogenic carcinoma; bronchogenic lung cancer | ancestors: bronchus cancer, lung carcinoma, respiratory system cancer, bronchial neoplasm | def: A lung carcinoma arising from the bronchial epithelium.",
+"ko": "기관지원성 암종",
+"alt": [
+"기관지암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004777",
+"concept": "- MONDO:0004777 | acute laryngitis | syn: laryngitis, acute | ancestors: laryngitis, acute disease, laryngeal disorder, inflammatory disease | def: An acute inflammatory process affecting the larynx. It is caused by bacteria, viruses, or vocal strain. Signs and symptoms include sore throat, cough, swallowing difficulties, and hoarseness.",
+"ko": "급성 후두염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0023134",
+"concept": "- MONDO:0023134 | febrile ulceronecrotic Mucha-Habermann disease | syn: febrile ulceronecrotic Mucha-Habermann disease; febrile ulceronecrotic pityriasis lichenoides acuta | ancestors: acute lichenoid pityriasis, acute disease, pityriasis lichenoides, human disease | def: Febrile ulceronecrotic Mucha-Habermann disease (FUMHD) is a rare and severe form of pityriasis lichenoides et varioliformis acuta (PLEVA). PLEVA is characterized by skin lesions that ulcerate, breakdo...",
+"ko": "열성 궤양괴사성 무하-하버만병",
+"alt": [
+"열성 궤양괴사성 급성 태선양 비강진"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001563",
+"concept": "- MONDO:0001563 | vestibulocochlear nerve disorder | syn: acoustic nerve disease; acoustic nerve disorder; acoustic nerve disorder NOS; disease of vestibulocochlear nerve | ancestors: retrocochlear disease, cranial nerve neuropathy, peripheral nervous system disorder, auditory system disorder | def: A disease involving the vestibulocochlear nerve.",
+"ko": "전정와우신경 질환",
+"alt": [
+"청신경 질환"
+],
+"organs": [
+"neurologic",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000333",
+"concept": "- MONDO:0000333 | early congenital syphilis | ancestors: congenital syphilis, syphilis, infectious embryofetopathy, primary bacterial infectious disease | def: A congenital syphilis that is manifested between 0 and 2 years old.",
+"ko": "조기 선천 매독",
+"alt": [],
+"organs": [
+"hepatic",
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0007642",
+"concept": "- MONDO:0007642 | isolated agenesis of gallbladder | ancestors: biliary tract disorder, hepatobiliary disorder, digestive system disorder, disease by body system or component",
+"ko": "고립성 담낭 무형성",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003454",
+"concept": "- MONDO:0003454 | conjunctival cancer | syn: conjunctiva cancer; malignant conjunctiva neoplasm; malignant conjunctiva tumor; malignant conjunctiva tumour | ancestors: ocular cancer, conjunctival tumor, sensory system cancer, head and neck cancer | def: A malignant neoplasm involving the conjunctiva.",
+"ko": "결막암",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008848",
+"concept": "- MONDO:0008848 | atrioventricular dissociation | syn: atrioventricular dissociation; atrioventricular dissociation (disease) | ancestors: cardiac conduction defect, cardiac rhythm disease, heart disorder, cardiovascular disorder | def: Impaired conduction of cardiac impulse that can occur anywhere along the conduction pathway, such as between the sinoatrial node and the right atrium (sa block) or between atria and ventricles (av blo...",
+"ko": "방실 해리",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+}
+]

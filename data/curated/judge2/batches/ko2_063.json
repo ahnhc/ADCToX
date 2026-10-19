@@ -1,0 +1,237 @@
+[
+{
+"id": "MONDO:0021104",
+"concept": "- MONDO:0021104 | alcoholic fatty liver disease | syn: alcoholic fatty liver; alcoholic Steatohepatitis | ancestors: fatty liver disease, alcoholic liver disease, liver disorder, alcohol-induced disorders | def: Lipid infiltration of the hepatic parenchymal cells that is due to alcohol abuse. The fatty changes in the alcoholic fatty liver may be reversible, depending on the amounts of triglycerides accumulate...",
+"ko": "알코올성 지방간 질환",
+"alt": [
+"알코올성 지방간"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020584",
+"concept": "- MONDO:0020584 | anemia due to enzyme disorder | syn: anemia due to enzyme disorder | ancestors: anemia, hematologic disorder, disease by body system or component, human disease | def: Any form of anemia that results from the absence of, or the defective action of, any enzyme.",
+"ko": "효소 장애에 의한 빈혈",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0008705",
+"concept": "- MONDO:0008705 | lysosomal acid phosphatase deficiency | syn: acid phosphatase deficiency; lysosomal acid phosphatase deficiency | ancestors: lysosomal storage disease, inborn errors of metabolism, hereditary disease, metabolic disease",
+"ko": "리소좀 산성 인산분해효소 결핍증",
+"alt": [
+"산성 인산분해효소 결핍증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018493",
+"concept": "- MONDO:0018493 | malignant hyperthermia of anesthesia | syn: anaesthesia related hyperthermia; hyperthermia of anaesthesia; hyperthermia of anesthesia; malignant hyperpyrexia | ancestors: muscular channelopathy, hereditary neuromuscular disease, neuromuscular disease, disease by molecular mechanism | def: A pharmacogenetic disorder of skeletal muscle that presents as a hypermetabolic response to potent volatile anesthetic gasses such as halothane, sevoflurane, desflurane and the depolarizing muscle rel...",
+"ko": "마취 악성고열증",
+"alt": [
+"마취 중 악성 고체온증"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008475",
+"concept": "- MONDO:0008475 | spondylolisthesis | syn: spondylolisthesis; spondylolisthesis (disease) | ancestors: disease of bone structure, hereditary disease, bone disorder, disease of genetic or genomic mechanism | def: A condition in which there is forward displacement of a vertebral bone over the on below it.",
+"ko": "척추전방전위증",
+"alt": [
+"척추분리증성 전방전위"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0010526",
+"concept": "- MONDO:0010526 | Fabry disease | syn: Alpha-galactosidase A deficiency; Anderson-Fabry disease; angiokeratoma corporis diffusum; diffuse angiokeratoma | ancestors: developmental anomaly of metabolic origin, sphingolipidosis, metabolic disease, developmental defect during embryogenesis | def: Fabry disease (FD) is a progressive, inherited, multisystemic lysosomal storage disease characterized by specific neurological, cutaneous, renal, cardiovascular, cochleo-vestibular and cerebrovascular...",
+"ko": "파브리병",
+"alt": [
+"파브리 병"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic",
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005504",
+"concept": "- MONDO:0005504 | diphtheria | ancestors: primary bacterial infectious disease, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A Gram-positive bacterial infection caused by Corynebacterium diphtheriae. It usually involves the oral cavity, pharynx, and nasal cavity. Patients develop pseudomembranes in the affected areas and ma...",
+"ko": "디프테리아",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0008666",
+"concept": "- MONDO:0008666 | volvulus of midgut | syn: congenital malrotation of intestine; intestinal malrotation; volvulus of midgut | ancestors: hereditary disease, intestinal disorder, disease of genetic or genomic mechanism, digestive system disorder | def: A congenital abnormality in which the intestine is abnormally rotated (twisted). It may result in intestinal obstruction.",
+"ko": "중장 꼬임",
+"alt": [
+"선천성 장회전이상"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000726",
+"concept": "- MONDO:0000726 | idiopathic scoliosis | ancestors: scoliosis, idiopathic disease, disease of bone structure, disease by etiologic mechanism | def: A scoliosis with no known cause.",
+"ko": "특발성 척추측만증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0019054",
+"concept": "- MONDO:0019054 | congenital limb malformation | syn: congenital limb malformation | ancestors: developmental defect during embryogenesis, disorder of development or morphogenesis, disease by developmental or physiological process, human disease",
+"ko": "선천성 사지 기형",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001444",
+"concept": "- MONDO:0001444 | Chagas disease | syn: Chagas disease; Chagas' disease; infection by trypanosoma cruzi; Trypanosoma cruzi caused disease or disorder | ancestors: trypanosomiasis, vector-borne disease, protozoa infectious disease, infectious disease | def: A parasitic infection caused by Trypanosoma cruzi. It is transmitted by insect bites. It is characterized by an acute and chronic phase; in the acute phase patients may have fever, malaise, and swelli...",
+"ko": "샤가스병",
+"alt": [
+"아메리카 트리파노소마증"
+],
+"organs": [
+"cardiovascular",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0011230",
+"concept": "- MONDO:0011230 | ossification of the posterior longitudinal ligament of the spine | syn: OPLL; ossification of Posterior longitudinal ligament | ancestors: skeletal system disorder, hereditary disorder of connective tissue, musculoskeletal system disorder, hereditary disease | def: A disorder characterized by benign depositions of calcium in the posterior longitudinal ligament. Signs and symptoms result from the compression of nerve roots and include motor and sensory disturbanc...",
+"ko": "척추 후종인대 골화증",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0010811",
+"concept": "- MONDO:0010811 | benign prostatic hyperplasia | syn: benign hyperplasia of prostate; benign hyperplasia of the prostate; benign prostate hyperplasia; benign prostatic hyperplasia | ancestors: prostate disorder, hyperplasia, male reproductive system disorder, cancer or benign tumor | def: A non-cancerous nodular enlargement of the prostate gland. It is characterized by the presence of epithelial cell nodules, and stromal nodules containing fibrous and smooth muscle elements. It is the ...",
+"ko": "양성 전립선 비대증",
+"alt": [
+"전립선비대증"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000997",
+"concept": "- MONDO:0000997 | monocular esotropia | ancestors: esotropia, strabismus, ocular motility disease, cranial nerve neuropathy | def: A form of ocular misalignment characterized by an excessive convergence of the visual axes, resulting in a 'cross-eye' appearance. An example of this condition occurs when paralysis of the lateral rec...",
+"ko": "단안 내사시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004184",
+"concept": "- MONDO:0004184 | urethral disorder | syn: disease of urethra; disease or disorder of urethra; disorder of urethra; urethra disease | ancestors: urinary system disorder, disease by body system or component, human disease, disease | def: A disease involving the urethra.",
+"ko": "요도 질환",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007879",
+"concept": "- MONDO:0007879 | larynx atresia | syn: congenital atresia of larynx; congenital atresia of the larynx; laryngeal atresia | ancestors: laryngeal disorder, otorhinolaryngologic disease, upper respiratory tract disorder, disease by body system or component | def: A congenital malformation of the larynx in which there is failure of recanalization of the laryngotracheal tube during gestation.",
+"ko": "후두 폐쇄증",
+"alt": [
+"선천성 후두 폐쇄"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008294",
+"concept": "- MONDO:0008294 | acute intermittent porphyria | syn: acute intermittent porphyria | ancestors: acute disease, HMBS-related hepatic porphyria, human disease, hepatic porphyria | def: Acute intermittent porphyria is the most frequent and the most severe form of the acute hepatic porphyrias. It is characterized by the occurrence of neuro-visceral attacks without cutaneous manifestat...",
+"ko": "급성 간헐성 포르피린증",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019255",
+"concept": "- MONDO:0019255 | sphingolipidosis | ancestors: lysosomal lipid storage disorder, inherited lipid metabolism disorder, lysosomal storage disease, inborn errors of metabolism | def: An inherited metabolic disorder that affects the lysosomal degradation of the spinhgolipids. Representative examples include Gaucher disease, Tay-Sachs disease, and Niemann-Pick disease.",
+"ko": "스핑고지질증",
+"alt": [
+"스핑고리피도시스"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005099",
+"concept": "- MONDO:0005099 | subarachnoid hemorrhage | syn: subarachnoid haemorrhage (disease); subarachnoid hemorrhage; subarachnoid hemorrhage (disease) | ancestors: hemorrhagic stroke, stroke disorder, cerebrovascular disorder, brain disorder | def: A serious neurological disorder characterized by intracranial hemorrhage into the subarachnoid space.",
+"ko": "지주막하 출혈",
+"alt": [
+"거미막하 출혈"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0005156",
+"concept": "- MONDO:0005156 | encephalomyelitis | syn: central nervous system inflammation; encephalitis and/or myelitis; inflammation of central nervous system | ancestors: central nervous system disorder, inflammatory disease, nervous system disorder, disease by developmental or physiological process | def: Inflammation of the brain and the spinal cord.",
+"ko": "뇌척수염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+}
+]

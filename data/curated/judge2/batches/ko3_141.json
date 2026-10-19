@@ -1,0 +1,261 @@
+[
+{
+"id": "MONDO:0001724",
+"concept": "- MONDO:0001724 | supraglottis cancer | syn: cancer of supraglottic part of larynx; malignant neoplasm of extrinsic larynx; malignant neoplasm of supraglottic part of larynx; malignant neoplasm of supraglottis | ancestors: larynx cancer, supraglottis neoplasm, respiratory system cancer, laryngeal neoplasm | def: A malignant neoplasm that affects the supraglottic area of the larynx. The vast majority of cases are squamous cell carcinomas.",
+"ko": "성문상부암",
+"alt": [
+"후두 성문상부암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007319",
+"concept": "- MONDO:0007319 | chondrocalcinosis 2 | syn: calcium pyrophosphate dihydrate crystal deposition disease; chondrocalcinosis 2; chondrocalcinosis type 2; familial articular chondrocalcinosis | ancestors: chondrocalcinosis, rheumatic disorder, inborn errors of metabolism, hereditary disorder of connective tissue | def: A chronic inherited arthropathy characterized by chondrocalcinosis (CC; i.e. cartilage calcification), often associated with recurrent acute calcium pyrophosphate (CPP) crystal arthritis and polyartic...",
+"ko": "연골석회화증 2",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 22,
+"new": false
+},
+{
+"id": "MONDO:0001314",
+"concept": "- MONDO:0001314 | chondrocalcinosis | syn: calcium pyrophosphate deposition disease; pseudogout | ancestors: metabolic disease, arthritic joint disease, metabolic bone disorder, disease by developmental or physiological process | def: An acute episode of pain, swelling, and redness, sometimes associated with fever. It is caused by the deposition of calcium pyrophosphate crystals in the joints.",
+"ko": "연골석회화증",
+"alt": [
+"가성통풍"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 15,
+"new": false
+},
+{
+"id": "MONDO:0004627",
+"concept": "- MONDO:0004627 | duodenitis | syn: duodenitis; duodenum inflammation; inflammation of duodenum | ancestors: duodenal disorder, enteritis, small intestine disorder, gastroenteritis | def: Acute or chronic inflammation of the duodenum. Causes include bacterial and viral infections and gastroesophageal reflux disease. Symptoms include vomiting and abdominal pain.",
+"ko": "십이지장염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005696",
+"concept": "- MONDO:0005696 | central nervous system tuberculosis | syn: central nervous system tuberculosis | ancestors: extrapulmonary tuberculosis, central nervous system infectious disorder, tuberculosis, central nervous system disorder | def: A well-circumscribed mass composed of tuberculous granulation tissue that may occur in the cerebral hemispheres, cerebellum, brain stem, or perimeningeal spaces. Multiple lesions are quite common. Man...",
+"ko": "중추신경계 결핵",
+"alt": [
+"신경계 결핵"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0022171",
+"concept": "- MONDO:0022171 | chromhidrosis | syn: chromhidrosis | ancestors: apocrine sweat gland disorder, sweat gland disorder, skin disorder, integumentary system disorder | def: A rare condition characterized by the secretion of colored sweat, caused by the deposition of lipofuscin in the sweat glands. Usually chromhidrosis affects the apocrine glands, mainly on the face and ...",
+"ko": "유색한증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0019345",
+"concept": "- MONDO:0019345 | shigellosis | syn: shigellosis | ancestors: primary bacterial infectious disease, dysentery, large intestine disorder, bacterial infectious disease | def: Shigellosis is a bacterial infection leading to dysentery and is caused by Shigella, which are small, ubiquitous Gram-negative bacteria belonging to the enterobacteria family. There are four species: ...",
+"ko": "세균성 이질",
+"alt": [
+"시겔라증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0009469",
+"concept": "- MONDO:0009469 | benign recurrent intrahepatic cholestasis type 1 | syn: ATP8B1 benign recurrent intrahepatic cholestasis; benign recurrent intrahepatic cholestasis caused by mutation in ATP8B1; Bric type 1; BRIC1 | ancestors: progressive familial intrahepatic cholestasis, benign recurrent intrahepatic cholestasis, syndromic disease, familial intrahepatic cholestasis | def: Benign recurrent intrahepatic cholestasis 1 (BRIC1) is characterized by episodes of liver dysfunction called cholestasis, during which the liver cells have a reduced ability to release a digestive flu...",
+"ko": "양성 재발성 간내 담즙정체 1형",
+"alt": [
+"ATP8B1 양성 재발성 간내 담즙정체"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001437",
+"concept": "- MONDO:0001437 | pulmonary alveolar proteinosis | syn: pulmonary alveolar proteinosis | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component | def: A rare lung disorder characterized by the filling of the pulmonary alveoli with proteinaceous material which stains positive with periodic acid-Schiff stain. It may be idiopathic or secondary due to h...",
+"ko": "폐포 단백질증",
+"alt": [
+"폐포단백증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0100505",
+"concept": "- MONDO:0100505 | food dermatitis | syn: dermatitis due to food taken internally | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: Dermatitis caused by an allergic reaction to ingested food.",
+"ko": "음식 피부염",
+"alt": [
+"식품 유발 피부염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0000107",
+"concept": "- MONDO:0000107 | auriculocondylar syndrome | syn: auriculo-condylar syndrome; question mark ear syndrome | ancestors: ear malformation, hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism | def: Auriculo-condylar syndrome (ACS) presents with bilateral external ear malformations ('question mark' ears), mandibular condyle hypoplasia, microstomia, micrognathia, microglossia and facial asymmetry....",
+"ko": "이개과두 증후군",
+"alt": [
+"물음표 귀 증후군"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019383",
+"concept": "- MONDO:0019383 | acute disseminated encephalomyelitis | syn: acute disseminated encephalitis; acute disseminated encephalomyelitis; ADEM; post-infectious encephalomyelitis | ancestors: demyelinating disease, postinfectious encephalitis, neurodegenerative disease, disorder of development or morphogenesis | def: Acute disseminated encephalomyelitis (ADEM) is a demyelinating disorder of the central nervous system.",
+"ko": "급성 파종성 뇌척수염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0009287",
+"concept": "- MONDO:0009287 | glycogen storage disease due to glucose-6-phosphatase deficiency type IA | syn: G6P deficiency type 1a; G6PC glycogen storage disease; glycogen storage disease caused by mutation in G6PC; glycogen storage disease due to G6P deficiency type Ia | ancestors: glycogen storage disease I, disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism | def: Glycogenosis due to glucose-6-phosphatase deficiency (G6P) type a, or glycogen storage disease (GSD) type 1a, is a type of glycogenosis due to G6P deficiency.",
+"ko": "포도당-6-인산분해효소 결핍에 의한 글리코겐 축적병 IA형",
+"alt": [
+"폰기르케병"
+],
+"organs": [
+"hepatic",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001788",
+"concept": "- MONDO:0001788 | nutmeg liver | syn: chronic passive congestion of liver | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder",
+"ko": "육두구 간",
+"alt": [
+"간 만성 수동 울혈"
+],
+"organs": [
+"hepatic",
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013898",
+"concept": "- MONDO:0013898 | karyomegalic interstitial nephritis | syn: FAN1 interstitial nephritis; interstitial nephritis caused by mutation in FAN1; karyomegalic interstitial nephritis; KIN | ancestors: interstitial nephritis, hereditary nephritis, DNA repair disease, nephritis | def: Any interstitial nephritis in which the cause of the disease is a mutation in the FAN1 gene.",
+"ko": "핵거대 간질성 신염",
+"alt": [
+"FAN1 간질성 신염"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001995",
+"concept": "- MONDO:0001995 | sphenoid sinus squamous cell carcinoma | syn: epidermoid carcinoma of sphenoid sinus; epidermoid carcinoma of sphenoidal sinus; epidermoid carcinoma of the sphenoid sinus; epidermoid carcinoma of the sphenoidal sinus | ancestors: sphenoidal sinus cancer, paranasal sinus squamous cell carcinoma, paranasal sinus carcinoma, sphenoidal sinus neoplasm | def: A squamous cell carcinoma that arises from the mucosal epithelial surface of the sphenoid sinus. Patients may present with nasal fullness, obstruction, and/or epistaxis.",
+"ko": "나비굴 편평세포암종",
+"alt": [
+"접형동 편평세포암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019518",
+"concept": "- MONDO:0019518 | Waardenburg-Shah syndrome | syn: Shah-Waardenburg syndrome; Waardenburg syndrome type 4; Waardenburg syndrome type IV; Waardenburg-Hirschsprung syndrome | ancestors: Waardenburg syndrome, intestinal motility disease, neurocristopathy, autosomal dominant disease | def: Waardenburg-Shah syndrome (WSS) is a neurocristopathy characterized by the association of Waardenburg syndrome (sensorineural hearing loss and pigmentary abnormalities) and Hirschsprung disease.",
+"ko": "바르덴부르흐-샤 증후군",
+"alt": [
+"바르덴부르흐 증후군 4형"
+],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0010771",
+"concept": "- MONDO:0010771 | histiocytoid cardiomyopathy | syn: Arachnocytosis of the myocardium; congenital cardiomyopathy; foamy myocardial transformation of infancy; histiocytoid cardiomyopathy | ancestors: inborn mitochondrial metabolism disorder, familial dilated cardiomyopathy, developmental anomaly of metabolic origin, inborn disorder of energy metabolism | def: Histiocytoid cardiomyopathy is an arrhythmogenic disorder characterized by cardiomegaly, severe cardiac arrhythmias or sudden death, and the presence of histiocyte-like cells within the myocardium.",
+"ko": "조직구양 심근병증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0014816",
+"concept": "- MONDO:0014816 | split-foot malformation-mesoaxial polydactyly syndrome | syn: SFMMP; split-foot malformation with mesoaxial polydactyly; split-foot malformation-mesoaxial polydactyly-nail abnormalities-sensorineural hearing loss syndrome | ancestors: hereditary disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, dysostosis, congenital limb malformation",
+"ko": "손발 갈림 기형-중축 다지증 증후군",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018094",
+"concept": "- MONDO:0018094 | Waardenburg syndrome | syn: Waardenburg syndrome; Waardenburg's syndrome | ancestors: autosomal dominant disease, syndromic disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, autosomal genetic disease | def: A disorder characterized by varying degrees of deafness and minor defects in structures arising from neural crest, including pigmentation anomalies of eyes, hair, and skin. WS is classified into four ...",
+"ko": "와덴부르크 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

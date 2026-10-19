@@ -1,0 +1,230 @@
+[
+{
+"id": "MONDO:0044210",
+"concept": "- MONDO:0044210 | thalassemia minor | syn: beta thalassemia trait | ancestors: beta-thalassemia HBB/LCRB, beta thalassemia, thalassemia, endocrine system disorder | def: The inheritance of only one mutated beta-globin allele (beta+ or beta0).",
+"ko": "경증 지중해빈혈",
+"alt": [
+"베타 지중해빈혈 보인자"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0017762",
+"concept": "- MONDO:0017762 | disorder of copper metabolism | syn: inborn cellular copper ion homeostasis disorder; inborn error of cellular copper ion homeostasis; rare inborn error of cellular copper ion homeostasis | ancestors: disorder of mineral absorption and transport, disorder of metabolite absorption and transport, inborn errors of metabolism, hereditary disease | def: An inherited metabolic disease that is has its basis in the disruption of cellular copper ion homeostasis.",
+"ko": "구리 대사 장애",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019810",
+"concept": "- MONDO:0019810 | toxic epidermal necrolysis | syn: SJS-TEN; TEN; toxic epidermolysis | ancestors: toxic dermatosis, skin disorder, integumentary system disorder, disease by body system or component | def: Toxic epidermal necrolysis (TEN) is an acute and severe skin disease with clinical and histological features characterized by the destruction and detachment of the skin epithelium and mucous membranes...",
+"ko": "독성 표피 괴사융해",
+"alt": [
+"중독표피괴사융해증"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019015",
+"concept": "- MONDO:0019015 | omphalocele | syn: congenital omphalocele; exomphalos; omphalocele; omphalocele (disease) | ancestors: abdominal wall malformation, developmental defect during embryogenesis, disorder of development or morphogenesis, disease by developmental or physiological process | def: Omphalocele is an embryopathy classified in the group of abdominal celosomias and is characterized by a large hernia of the abdominal wall, centered on the umbilical cord, in which the protruding visc...",
+"ko": "제대류",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0003085",
+"concept": "- MONDO:0003085 | keratitis | syn: cornea inflammation; inflammation of cornea | ancestors: corneal disorder, inflammatory disease, eye disorder, disease by developmental or physiological process | def: A corneal disease that is characterized by inflammation of the cornea.",
+"ko": "각막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0009385",
+"concept": "- MONDO:0009385 | hyperleucine-Isoleucinemia | syn: hyperleucine-Isoleucinemia | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "고류신-이소류신혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005952",
+"concept": "- MONDO:0005952 | scarlet fever | syn: scarlatina | ancestors: streptococcal infection, gram-positive bacterial infections, bacterial infectious disease, infectious disease | def: A streptococcal infection, mainly occurring among children, that is characterized by a red skin rash, sore throat, and fever.",
+"ko": "성홍열",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0010556",
+"concept": "- MONDO:0010556 | X-linked chondrodysplasia punctata | syn: chondrodysplasia punctata, X-linked; CPXD | ancestors: X-linked disease, non-rhizomelic chondrodysplasia punctata, sterol biosynthesis disorder, hereditary disease | def: X-linked form of chondrodysplasia punctata.",
+"ko": "X연관 점상연골이형성증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018616",
+"concept": "- MONDO:0018616 | central serous chorioretinopathy | syn: central serous retinopathy; CSC; CSCR | ancestors: retinal disorder, nervous system disorder, eye disorder, disease by body system or component | def: Central serous chorioretinopathy is a disease that causes fluid to build up under the retina, the back part of the inner eye that sends sight information to the brain. The fluid leaks from thechoroid ...",
+"ko": "중심성 장액성 맥락망막병증",
+"alt": [
+"중심성 장액성 망막병증"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019125",
+"concept": "- MONDO:0019125 | relapsing polychondritis | ancestors: chondromalacia, articular cartilage disorder, arthropathy, skeletal system disorder | def: A rare, clinically heterogeneous, multisystemic inflammatory disease characterized by inflammation of the cartilage and proteoglycan rich structures leading to cartilage damage with joint, ocular and ...",
+"ko": "재발성 다발연골염",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 26
+},
+{
+"id": "MONDO:0002102",
+"concept": "- MONDO:0002102 | cheilitis | syn: inflammation of lip; lip inflammation | ancestors: lip disorder, inflammatory disease, mouth disorder, disease by developmental or physiological process | def: An inflammatory process affecting the lip.",
+"ko": "입술염",
+"alt": [
+"구순염"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002277",
+"concept": "- MONDO:0002277 | arteriosclerosis disorder | syn: arterial sclerosis; arteriosclerosis; arteriosclerotic cardiovascular disease; vascular sclerosis | ancestors: arterial disorder, vascular disorder, cardiovascular disorder, disease by body system or component | def: A vascular disorder characterized by thickening and hardening of the walls of the arteries.",
+"ko": "동맥경화증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0024467",
+"concept": "- MONDO:0024467 | apocrine sweat gland disorder | syn: apocrine sweat gland disease; apocrine sweat gland disease or disorder; disease of apocrine sweat gland; disease or disorder of apocrine sweat gland | ancestors: sweat gland disorder, skin disorder, integumentary system disorder, disease by body system or component | def: A disease that involves the apocrine sweat gland.",
+"ko": "아포크린 땀샘 질환",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006314",
+"concept": "- MONDO:0006314 | nasal cavity polyp | syn: nasal cavity polyp; nasal polyp; polyp of nasal cavity; polyp of the nasal cavity | ancestors: nasal cavity disorder, polyp, nasal disorder, upper respiratory tract disorder | def: A soft and painless polypoid mass that arises from the mucosa in the nasal cavity. It is usually the result of an inflammatory process. It may recur following surgical resection.",
+"ko": "비강 용종",
+"alt": [
+"코안 용종"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0019355",
+"concept": "- MONDO:0019355 | adult-onset Still disease | syn: adult-onset Still disease; Adult-Onset Still's Disease; adult-onset Still's disease; AOSD | ancestors: arthritic joint disease, autoinflammatory syndrome, bone inflammation disease, arthropathy | def: A rare inflammatory multisystem disorder characterized clinically by fever of unknown origin, arthralgia or arthritis, hyperleucocytosis, and typical skin rash.",
+"ko": "성인 발병 스틸병",
+"alt": [
+"성인형 스틸병"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0004835",
+"concept": "- MONDO:0004835 | necrotizing fasciitis | ancestors: fasciitis, musculoskeletal system disorder, connective tissue disorder, inflammatory disease | def: Necrotizing fasciitis is a serious infection of the skin, the tissue just beneath the skin (subcutaneous tissue), and the tissue that covers internal organs (fascia). Necrotizing fasciitis can be caus...",
+"ko": "괴사성 근막염",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0003799",
+"concept": "- MONDO:0003799 | conjunctivitis | syn: conjunctiva inflammation; conjunctivitis; conjunctivitis (disease); inflammation of conjunctiva | ancestors: conjunctival disorder, inflammatory disease, eye adnexa disorder, eye disorder | def: Inflammation of the conjunctiva of the eye.",
+"ko": "결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0002737",
+"concept": "- MONDO:0002737 | acute sanguinous otitis media | ancestors: acute transudative otitis media, non-suppurative otitis media, acute disease, otitis media | def: A acute transudative otitis media which involves bloody effusion.",
+"ko": "급성 혈성 중이염",
+"alt": [],
+"organs": [
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019283",
+"concept": "- MONDO:0019283 | nail anomaly | syn: epidermal appendage anomaly of nail; nail epidermal appendage anomaly | ancestors: nail disorder, integumentary system disorder, disease by body system or component, human disease | def: A epidermal appendage anomaly that involves the nail.",
+"ko": "손발톱 이상",
+"alt": [
+"조갑 이상"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007233",
+"concept": "- MONDO:0007233 | second branchial cleft anomaly | syn: branchial cleft; branchial cleft remnant; second branchial cleft cyst; second branchial cleft fistula | ancestors: cysts and fistulae of the face and oral cavity, hereditary otorhinolaryngologic disease, developmental defect during embryogenesis, otorhinolaryngologic disease | def: A congenital defect in the neck that occurs during early embryonic development. It is caused by developmental abnormalities of the pharyngeal arches and results in the development of a cyst or a fissu...",
+"ko": "제2 새열 기형",
+"alt": [
+"제2 새열낭종"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3
+}
+]

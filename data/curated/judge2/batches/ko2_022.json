@@ -1,0 +1,244 @@
+[
+{
+"id": "MONDO:0005466",
+"concept": "- MONDO:0005466 | hypersomnia | syn: hypersomnia; hypersomnia (disease) | ancestors: sleep-wake disorder, sleep disorder, disease by developmental or physiological process, human disease | def: A sleep disorder characterized by excessive sleepiness.",
+"ko": "과다수면증",
+"alt": [
+"과수면증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002130",
+"concept": "- MONDO:0002130 | upper limb mononeuronitis | syn: forelimb mononeuritis simplex; mononeuritis of upper limb, unspecified; mononeuritis simplex of forelimb | ancestors: mononeuritis simplex, neuritis of upper limb, mononeuropathy, neuritis | def: A disease affecting a single peripheral nerve of the upper limb.",
+"ko": "상지 단일신경염",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0010144",
+"concept": "- MONDO:0010144 | tibial hemimelia | syn: congenital absence of tibia; congenital aplasia and dysplasia of the tibia with intact fibula; congenital longitudinal deficiency of the tibia; tibial hemimelia | ancestors: hemimelia, dysostosis, non-syndromic limb reduction defect, bone development disease | def: Tibial hemimelia is a rare congenital anomaly characterized by deficiency of the tibia with a relatively intact fibula.",
+"ko": "경골 반사지증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021453",
+"concept": "- MONDO:0021453 | benign neoplasm of retina | syn: benign neoplasm of the retina; benign retina neoplasm; benign retina tumor; benign retina tumour | ancestors: retina neoplasm, benign neoplasm of eye, retinal disorder, eye neoplasm | def: A benign neoplasm that involves the retina.",
+"ko": "망막 양성 신생물",
+"alt": [
+"망막 양성 종양"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005888",
+"concept": "- MONDO:0005888 | ornithosis | syn: psittacosis | ancestors: primary bacterial infectious disease, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Disease caused by the Chlamydophila psittaci bacteria, usually transmitted from birds to humans.",
+"ko": "앵무병",
+"alt": [
+"조류병"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007878",
+"concept": "- MONDO:0007878 | congenital laryngomalacia | ancestors: laryngeal disorder, upper respiratory tract disorder, respiratory system disorder, disease by body system or component | def: Increased collapsibility of the larynx.",
+"ko": "선천성 후두연화증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006791",
+"concept": "- MONDO:0006791 | hyperemesis gravidarum | syn: hyperemesis gravidarum; hyperemesis gravidarum (disease) | ancestors: pregnancy disorder, obstetric disorder, disease by developmental or physiological process, human disease | def: Severe, intractable vomiting during pregnancy (usually the first trimester) accompanied by dehydration, weight loss, and electrolyte imbalances.",
+"ko": "임신 오조",
+"alt": [
+"임신과다구토증"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0003308",
+"concept": "- MONDO:0003308 | pleural mesothelioma | syn: mesothelioma of pleura; mesothelioma of the pleura; pleura mesothelioma; pleural mesothelioma | ancestors: mesothelioma, pleural neoplasm, mesothelial neoplasm, pleural disorder | def: A neoplasm that arises from the mesothelial cells of the pleura. The primary cause is exposure to asbestos. The major histologic variants are the epithelioid malignant mesothelioma, desmoplastic malig...",
+"ko": "흉막 중피종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005160",
+"concept": "- MONDO:0005160 | aortic aneurysm | syn: abdominal aortic aneurysm, ruptured; aortic aneurysm; aortic aneurysm (disease); aortic aneurysm of unspecified site, ruptured | ancestors: aortic disorder, arterial disorder, vascular disorder, cardiovascular disorder | def: A ruptured aneurysm located in the wall of the proximal portion of the descending aorta proceeding from the arch of the aorta.",
+"ko": "대동맥류",
+"alt": [
+"대동맥 동맥류"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 8
+},
+{
+"id": "MONDO:0019813",
+"concept": "- MONDO:0019813 | congenital tricuspid stenosis | ancestors: congenital tricuspid malformation, tricuspid valve disorder, disorder of development or morphogenesis, heart valve disorder",
+"ko": "선천성 삼첨판 협착",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018093",
+"concept": "- MONDO:0018093 | arbovirus fever | syn: arbovirus fever | ancestors: viral infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: Arbovirosis are polymorphic diseases caused by arboviruses and are classically characterized by encephalitis and hemorrhage, however, most commonly only aspecific fever is observed.",
+"ko": "절지동물 매개 바이러스열",
+"alt": [
+"아르보바이러스열"
+],
+"organs": [
+"haematologic",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0021666",
+"concept": "- MONDO:0021666 | ear infection | syn: Ear infection; otitis | ancestors: infectious disease, inflammatory disease, disorder of ear, disease of primarily extrinsic mechanism | def: A viral or bacterial infection that affects the external, middle, or inner ear. It may follow an upper respiratory infection. Signs and symptoms include pain, ear discharge, ear fullness, hearing loss...",
+"ko": "귀 감염",
+"alt": [
+"중이염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0021739",
+"concept": "- MONDO:0021739 | prurigo | syn: prurigo; pruritic rash | ancestors: exanthem, skin disorder, integumentary system disorder, disease by body system or component | def: A name applied to several itchy skin eruptions of unknown cause. The characteristic course is the formation of a dome-shaped papule with a small transient vesicle on top, followed by crusting over or ...",
+"ko": "양진",
+"alt": [
+"소양진"
+],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0010193",
+"concept": "- MONDO:0010193 | Weaver syndrome | syn: camptodactyly-overgrowth-unusual facies syndrome; Weaver syndrome | ancestors: syndromic disease, multiple congenital anomalies/dysmorphic syndrome-intellectual disability, skeletal dysplasia, overgrowth syndrome | def: Weaver syndrome (WVS) is a rare, multisystem disorder characterized by tall stature, a typical facial appearance (hypertelorism, retrognathia) and variable intellectual disability. Additional features...",
+"ko": "위버 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004650",
+"concept": "- MONDO:0004650 | malignant carotid body paraganglioma | syn: carotid body paraganglioma, malignant; malignant carotid body paraganglioma; malignant carotid body tumor (morphologic abnormality); malignant carotid body tumour (morphologic abnormality) | ancestors: central nervous system cancer, head and neck cancer, carotid body paraganglioma, malignant endocrine neoplasm | def: A carotid body paraganglioma that metastasizes to other anatomic sites.",
+"ko": "악성 경동맥소체 부신경절종",
+"alt": [
+"악성 경동맥소체 파라강글리오마"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0018871",
+"concept": "- MONDO:0018871 | acute myelomonocytic leukemia M4 | syn: acute M4 myeloid leukaemia; acute M4 myeloid leukemia; acute myelomonocytic leukaemia; acute myelomonocytic leukaemia (FAB type M4) | ancestors: acute myeloid leukemia by FAB classification, acute myeloid leukemia, myeloid leukemia, acute leukemia | def: An acute leukemia characterized by the proliferation of both neutrophil and monocyte precursors. (WHO, 2001)",
+"ko": "급성 골수단핵구성 백혈병 M4",
+"alt": [
+"급성 골수단구성 백혈병 M4"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018072",
+"concept": "- MONDO:0018072 | persistent truncus arteriosus | syn: common aorticopulmonary trunk; common arterial trunk; common truncus arteriosus; persistent truncus arteriosus | ancestors: congenital heart disease, conotruncal heart malformations, heart disorder, congenital anomaly of cardiovascular system | def: A rare congenital cardiovascular disorder characterized by the failure of the embryologic structure truncus arteriosus to divide into the aorta and pulmonary trunk. It results in the presence of a sin...",
+"ko": "지속 동맥줄기",
+"alt": [
+"총동맥간",
+"총동맥간증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0007407",
+"concept": "- MONDO:0007407 | Cryoglobulinemic vasculitis | syn: essential cryoglobulinemia; essential mixed cryoglobulinemia; MC; Mixed Cryoglobulinemia | ancestors: immune complex mediated vasculitis, vasculitis, vascular disorder, inflammatory disease | def: Mixed cryoglobulinemia (MC) is a rare multisystem disease characterized by the presence of circulating cryoprecipitable immune complexes in the serum, manifested clinically by a classical triad of pur...",
+"ko": "한랭글로불린혈증 혈관염",
+"alt": [
+"본태성 혼합 한랭글로불린혈증"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0005080",
+"concept": "- MONDO:0005080 | portal hypertension | ancestors: hepatic vascular disorder, liver disorder, vascular disorder, hepatobiliary disorder | def: Increased blood pressure in the portal venous system. It is most commonly caused by cirrhosis. Other causes include portal vein thrombosis, Budd-Chiari syndrome, and right heart failure. Complications...",
+"ko": "문맥압 항진증",
+"alt": [
+"문맥 고혈압"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018999",
+"concept": "- MONDO:0018999 | LCAT deficiency | syn: lecithin-cholesterol acyltransferase deficiency | ancestors: hypoalphalipoproteinemia, metabolic disease, disease by developmental or physiological process, human disease | def: LCAT (lecithin-cholesterol acyltransferase) deficiency is a rare lipoprotein metabolism disorder characterized clinically by corneal opacities, and sometimes renal failure and hemolytic anemia, and bi...",
+"ko": "LCAT 결핍증",
+"alt": [
+"레시틴-콜레스테롤 아실전달효소 결핍증"
+],
+"organs": [
+"haematologic",
+"renal",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+}
+]

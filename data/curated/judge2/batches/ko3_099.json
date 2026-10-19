@@ -1,0 +1,253 @@
+[
+{
+"id": "MONDO:0001622",
+"concept": "- MONDO:0001622 | mechanical lagophthalmos | ancestors: lagophthalmos, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "기계적 토안",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009067",
+"concept": "- MONDO:0009067 | cystinuria | syn: cystinuria; cystinuria (disease); cystinuria-lysinuria syndrome | ancestors: syndromic disease, inherited renal tubular disease, inborn disorder of amino acid transport, disease by body system or component | def: Cystinuria is a renal tubular amino acid transport disorder characterized by recurrent formation of kidneys cystine stones.",
+"ko": "시스틴뇨증",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0017923",
+"concept": "- MONDO:0017923 | multiple synostoses syndrome | syn: deafness-Hermann type symphalangism syndrome; facio-audio-symphalangism; symphalangism-brachydactyly syndrome; WL syndrome | ancestors: synostosis, syndromic disease, hereditary disease, congenital limb malformation | def: Multiple synostoses syndrome (MSS) is a rare developmental bone disorder characterized by proximal symphalangism of the fingers and/or toes often associated with fusion of carpal and tarsal, humerorad...",
+"ko": "다발성 골유합 증후군",
+"alt": [
+"안면청각 지절유합증"
+],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005720",
+"concept": "- MONDO:0005720 | cowpox | ancestors: primary viral infectious disease, viral infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A mild, eruptive skin disease of milk cows caused by cowpox virus, with lesions occurring principally on the udder and teats. Human infection may occur while milking an infected animal.",
+"ko": "우두",
+"alt": [
+"소두창"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009388",
+"concept": "- MONDO:0009388 | hyperlysinemia | syn: hyperlysinemia; hyperlysinemia (disease); hyperlysinemia type I; lysine alpha-ketoglutarate reductase deficiency | ancestors: inborn disorder of amino acid metabolism, inborn disorder of lysine and hydroxylysine metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease | def: Hyperlysinaemia is a lysine metabolism disorder characterized by elevated levels of lysine in the cerebrospinal fluid and blood. Variable degrees of saccharopinuria are also present.",
+"ko": "고라이신혈증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0015237",
+"concept": "- MONDO:0015237 | arrhinia | syn: isolated nose agenesis; Nose agenesis | ancestors: otorhinolaryngologic disease, disease by body system or component, human disease, disease | def: Arrhinia is an extremely rare, major congenital malformation consisting of an absence of the nose ranging from hyporrhinia (absence of external nasal structures) to total arrhinia (absence of external...",
+"ko": "무비증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011284",
+"concept": "- MONDO:0011284 | astigmatism | syn: astigmatism; astigmatism (disease) | ancestors: refractive error, eye disorder, disorder of orbital region, disorder of visual system | def: Unequal curvature of the refractive surfaces of the eye. Thus a point source of light cannot be brought to a point focus on the retina but is spread over a more or less diffuse area. This results from...",
+"ko": "난시",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0006656",
+"concept": "- MONDO:0006656 | aortitis | syn: aorta inflammation; inflammation of aorta | ancestors: aortic disorder, vasculitis, arterial disorder, vascular disorder | def: Inflammation of the aorta. Causes include trauma, infectious disorders, and connective tissue disorders.",
+"ko": "대동맥염",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000909",
+"concept": "- MONDO:0000909 | Bartter disease type 4B | syn: BARTS4B; Bartter disease type 4B; Bartter syndrome, type 4B | ancestors: Bartter syndrome type 4, Bartter syndrome, syndromic disease, renal tubular transport disease | def: A Bartter disease that has material basis in simultaneous mutation in both the CLCNKA and CLCNKB genes.",
+"ko": "바터병 4B형",
+"alt": [
+"바터 증후군 4B형"
+],
+"organs": [
+"renal",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0012871",
+"concept": "- MONDO:0012871 | Jervell and Lange-Nielsen syndrome 2 | syn: Jervell and Lange-Nielsen syndrome 2; Jervell and Lange-Nielsen syndrome caused by mutation in KCNE1; Jervell and Lange-Nielsen syndrome type 2; KCNE1 Jervell and Lange-Nielsen syndrome | ancestors: Jervell and Lange-Nielsen syndrome, long QT syndrome 5, familial long QT syndrome, long QT syndrome | def: Any Jervell and Lange-Nielsen syndrome in which the cause of the disease is a mutation in the KCNE1 gene.",
+"ko": "예르벨-랑게-닐센 증후군 2형",
+"alt": [],
+"organs": [
+"cardiovascular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008783",
+"concept": "- MONDO:0008783 | Tangier disease | syn: Analphalipoproteinemia; ATP-binding cassette transporter A1 deficiency; defective adenosine triphosphate-binding cassette transporter A1; Tangier disease | ancestors: hypolipoproteinemia, hypoalphalipoproteinemia, inherited lipid metabolism disorder, metabolic disease | def: Tangier disease (TD) is a rare lipoprotein metabolism disorder characterized biochemically by an almost complete absence of plasma high-density lipoproteins (HDL), and clinically by liver, spleen, lym...",
+"ko": "탕헤르병",
+"alt": [
+"무알파지단백혈증"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0020602",
+"concept": "- MONDO:0020602 | Simpson-Golabi-Behmel syndrome type 1 | syn: bulldog syndrome; GPC3 Simpson-Golabi-Behmel syndrome; SGBS1; Simpson dysmorphia syndrome | ancestors: hereditary disease, Simpson-Golabi-Behmel syndrome, disease of genetic or genomic mechanism, syndromic disease | def: Any Simpson-Golabi-Behmel syndrome in which the cause of the disease is a mutation in the GPC3 gene.",
+"ko": "심프슨-골라비-베멜 증후군 1형",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004959",
+"concept": "- MONDO:0004959 | plasma cell neoplasm | syn: plasma cell dyscrasia; plasma cell neoplasm; plasma cell tumor; plasma cell tumor, malignant | ancestors: neoplasm of mature B-cells, B-cell neoplasm, leukocyte disorder, lymphoma | def: A clonal proliferation of immunoglobulin-secreting plasma cells. This category includes plasma cell myeloma, plasma cell leukemia, plasmacytoma, monoclonal immunoglobulin deposition disease, and monoc...",
+"ko": "형질세포 신생물",
+"alt": [],
+"organs": [
+"haematologic",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006042",
+"concept": "- MONDO:0006042 | meningeal tuberculosis | syn: Meningitis, Tuberculous; TB meningitis; TBM; tubercular meningitis | ancestors: tuberculous salpingitis, central nervous system tuberculosis, bacterial meningitis, salpingitis | def: A bacterial infection of the membranes covering the brain and the spinal cord caused by Mycobacterium tuberculosis.",
+"ko": "결핵성 수막염",
+"alt": [
+"수막 결핵"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0017875",
+"concept": "- MONDO:0017875 | Bolivian hemorrhagic fever | syn: Machupo hemorrhagic fever | ancestors: arenavirus hemorrhagic fever, vector-borne disease, Arenaviridae infectious disease, viral hemorrhagic fever | def: Bolivian hemorrhagic fever (BHF), caused by the Machupo virus (MACV), is a severe acute viral hemorrhagic fever characterized by fever, myalgia, and arthralgia followed by hemorrhagic and neurological...",
+"ko": "볼리비아 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015014",
+"concept": "- MONDO:0015014 | coloboma, osteopetrosis, microphthalmia, macrocephaly, albinism, and deafness | syn: coloboma, osteopetrosis, microphthalmia, macrocephaly, albinism, and deafness; coloboma, osteopetrosis, microphthalmia, macrocephaly, albinism, and deafness; COMMAD; COMMAD; COMMAD syndrome | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "COMMAD 증후군",
+"alt": [],
+"organs": [
+"ocular",
+"dermatologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024332",
+"concept": "- MONDO:0024332 | perennial allergic rhinitis | syn: non-seasonal allergic rhinitis; nonseasonal allergic rhinitis; perennial allergic rhinitis | ancestors: allergic rhinitis, allergic respiratory disease, rhinitis, respiratory system disorder | def: Allergic rhinitis caused by indoor allergens and lasting year round.",
+"ko": "통년성 알레르기비염",
+"alt": [
+"연중 알레르기비염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009143",
+"concept": "- MONDO:0009143 | Meier-Gorlin syndrome 1 | syn: Meier-Gorlin syndrome 1; Meier-Gorlin syndrome caused by mutation in ORC1; Meier-Gorlin syndrome type 1; ORC1 Meier-Gorlin syndrome | ancestors: Meier-Gorlin syndrome, syndromic disease, autosomal recessive disease, multiple congenital anomalies/dysmorphic syndrome-variable intellectual disability syndrome | def: Any Meier-Gorlin syndrome in which the cause of the disease is a mutation in the ORC1 gene.",
+"ko": "마이어-고를린 증후군 1형",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005920",
+"concept": "- MONDO:0005920 | Plasmodium falciparum malaria | syn: falciparum malaria; falciparum malaria [malignant tertian]; malignant tertian fever (finding); Plasmodium falciparum malaria, unspecified | ancestors: malaria, protozoa infectious disease, erythrocyte disorder, vector-borne disease | def: Malaria resulting from infection by Plasmodium falciparum.",
+"ko": "열대열 말라리아",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0007899",
+"concept": "- MONDO:0007899 | lichen sclerosus et atrophicus | syn: lichen sclerosus et atrophicus | ancestors: dermatitis, hereditary skin disorder, skin disorder, inflammatory disease | def: A chronic inflammatory process affecting the skin. It is characterized by the presence of white, indurated plaques, epidermal atrophy, and fibrosis of the upper dermis. It usually appears in the vulva...",
+"ko": "경화위축태선",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+}
+]

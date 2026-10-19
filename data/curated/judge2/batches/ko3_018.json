@@ -1,0 +1,264 @@
+[
+{
+"id": "MONDO:0008161",
+"concept": "- MONDO:0008161 | otodental syndrome | syn: globodontia; otodental dysplasia; otodental dysplasia chromosome deletion syndrome; otodental syndrome | ancestors: partial deletion of the long arm of chromosome 11, disorder of development or morphogenesis, partial deletion of chromosome 11, disease by developmental or physiological process | def: Otodental syndrome is a very rare inherited condition characterized by grossly enlarged canine and molar teeth (globodontia) associated with sensorineural hearing loss.",
+"ko": "귀치아 증후군",
+"alt": [
+"구형치아증"
+],
+"organs": [
+"gastrointestinal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0019980",
+"concept": "- MONDO:0019980 | renal hypoplasia, bilateral | ancestors: renal hypoplasia, kidney disorder, disorder of development or morphogenesis, urinary system disorder | def: Bilateral renal hypoplasia is a form of renal hypoplasia, a renal developmental anomaly in which both kidneys are small and have a deficit in the number of nephrons present.",
+"ko": "양측성 콩팥 형성저하",
+"alt": [
+"양측성 신장 형성저하"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0018661",
+"concept": "- MONDO:0018661 | Zika virus infectious disease | syn: Zika; Zika virus caused disease or disorder; Zika virus disease; Zika virus disease or disorder | ancestors: Flaviviridae infectious disease, vector-borne disease, primary viral infectious disease, infectious disease | def: Mosquito-born virus disease characterized by a clinical course that may be asymptomatic or mild with fever, conjunctivitis, muscle and joint pain, headache, exanthema, but may also be associated with ...",
+"ko": "지카바이러스 감염증",
+"alt": [
+"지카열"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001803",
+"concept": "- MONDO:0001803 | myringitis bullosa hemorrhagica | syn: bullous myringitis | ancestors: tympanic membrane disorder, middle ear disorder, auditory system disorder, disorder of ear | def: A tympanic membrane disease that is characterized by blisters on the eardrum resulting from infection.",
+"ko": "출혈성 수포성 고막염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0013662",
+"concept": "- MONDO:0013662 | Barrett esophagus | syn: Barrett esophagus; Barrett esophagus/esophageal adenocarcinoma; Barrett's esophagus; Barrett's oesophagus with esophagitis | ancestors: esophageal disorder, upper digestive tract disorder, digestive system disorder, disease by body system or component | def: Esophageal lesion lined with columnar metaplastic epithelium which is flat or villiform. Barrett epithelium is characterized by two different types of cells: goblet cells and columnar cells. The sympt...",
+"ko": "바렛 식도",
+"alt": [
+"바렛식도"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0100293",
+"concept": "- MONDO:0100293 | diaphragmatic malformation | ancestors: diaphragm disorder, developmental defect during embryogenesis, respiratory system disorder, skeletal muscle disorder",
+"ko": "횡격막 기형",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006558",
+"concept": "- MONDO:0006558 | pemphigoid gestationis | syn: gestational pemphigoid; Herpes gestationis; Herpes gestationis (disorder); Herpes gestationis NOS (disorder) | ancestors: pemphigus, pregnancy disorder, autoimmune bullous skin disease, obstetric disorder | def: A rare pregnancy-associated autoimmune skin disease that is characterized by an itchy rash that develops into blisters. It is most common during the second and third trimesters of pregnancy. It was pr...",
+"ko": "임신성 유천포창",
+"alt": [
+"임신 헤르페스"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001754",
+"concept": "- MONDO:0001754 | eclampsia | syn: eclampsia, postpartum | ancestors: toxemia of pregnancy, hypertension, pregnancy-induced, hypertensive disorder, pregnancy disorder | def: A potentially life-threatening pregnancy-related disorder characterized by tonic-clonic seizures in association with hypertension after the twentieth week of gestation and up to six weeks postpartum a...",
+"ko": "자간증",
+"alt": [
+"자간"
+],
+"organs": [
+"cardiovascular",
+"neurologic"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0017236",
+"concept": "- MONDO:0017236 | rapidly progressive glomerulonephritis | syn: RPGN | ancestors: glomerulonephritis, nephritis, glomerular disorder, kidney disorder | def: Inflammation of the glomeruli that is characterized by a rapid loss in renal function with glomerular crescent formation observed on biopsy; it is often seen in patients with concomitant autoimmune di...",
+"ko": "급속 진행성 사구체신염",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 11,
+"new": false
+},
+{
+"id": "MONDO:0100076",
+"concept": "- MONDO:0100076 | juvenile idiopathic scoliosis | ancestors: idiopathic scoliosis, scoliosis, idiopathic disease, disease of bone structure | def: A scoliosis with no known cause arising in a juvenile.",
+"ko": "소아기 특발성 척추측만증",
+"alt": [
+"소아 특발성 척추옆굽음증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0700112",
+"concept": "- MONDO:0700112 | heterotaxy, visceral, 5, autosomal | syn: HTX5; NODAL visceral heterotaxy; situs inversus viscerum; SIV | ancestors: visceral heterotaxy, syndromic disease, hereditary disease, congenital heart malformation | def: Any visceral hetetotaxy in which the cause of the disease is a mutation in the NODAL gene.",
+"ko": "상염색체 내장이소증 5형",
+"alt": [],
+"organs": [
+"cardiovascular",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008449",
+"concept": "- MONDO:0008449 | spina bifida | syn: rachischisis; spina bifida; spina bifida (disease); spinal meningocele | ancestors: congenital nervous system disorder, spinal cord disorder, disorder of development or morphogenesis, nervous system disorder | def: A congenital neural tube defect in which vertebrae are not fully formed. It results in the protrusion of the spinal cord through the opening of the vertebrae.",
+"ko": "이분척추",
+"alt": [
+"척추갈림증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 7,
+"new": false
+},
+{
+"id": "MONDO:0004774",
+"concept": "- MONDO:0004774 | gonococcal iridocyclitis | syn: Neisseria gonorrhoeae caused iridocyclitis (disease); Neisseria gonorrhoeae iridocyclitis (disease) | ancestors: gonococcal endophthalmia, infectious anterior uveitis, gonorrhea, endophthalmitis | def: An iridocyclitis (disease) caused by infection with Neisseria gonorrhoeae.",
+"ko": "임균성 홍채섬모체염",
+"alt": [
+"임질성 홍채섬모체염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0013930",
+"concept": "- MONDO:0013930 | peroxisome biogenesis disorder 4A (Zellweger) | syn: classic peroxisome biogenesis disorder; peroxisome biogenesis disorder 4A (Zellweger) | ancestors: peroxisome biogenesis disorder due to PEX6 defect, Zellweger spectrum disorders, developmental anomaly of metabolic origin, peroxisome biogenesis disorder",
+"ko": "퍼옥시좀 생합성 장애 4A형(젤웨거)",
+"alt": [],
+"organs": [
+"hepatic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024644",
+"concept": "- MONDO:0024644 | myocardial ischemia | syn: IHD; ischaemic disease of myocardium; ischaemic heart disease; ischemic disease of myocardium | ancestors: ischemic disease, myocardial disorder, vascular disorder, heart disorder | def: A disorder of cardiac function caused by insufficient blood flow to the muscle tissue of the heart. The decreased blood flow may be due to narrowing of the coronary arteries (coronary artery disease),...",
+"ko": "심근허혈",
+"alt": [
+"허혈성 심장질환"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0100439",
+"concept": "- MONDO:0100439 | glycogen storage disease IXa2 | syn: GSD IXa2; GSD9A2; liver glycogenosis, X-linked, type 2 | ancestors: glycogen storage disease IX, disorder of glycogen metabolism, inborn carbohydrate metabolic disorder, inborn disorder of energy metabolism | def: Any glycogen storage disease in which the cause of the disease is a mutation in the PHKA2 gene, with no PHK in liver, but normal activity in erythrocytes.",
+"ko": "글리코겐 저장병 IXa2형",
+"alt": [
+"글리코겐 축적병 IXa2형"
+],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0014779",
+"concept": "- MONDO:0014779 | Wilms tumor 6 | syn: Wilms tumor 6; Wilms tumor 6; WT6; Wilms tumor type 6; Wilms tumour 6; WT6 | ancestors: hereditary Wilms tumor, hereditary disease, Wilms tumor, disease of genetic or genomic mechanism | def: Any Wilms tumor in which the cause of the disease is a mutation in the REST gene.",
+"ko": "윌름스 종양 6형",
+"alt": [
+"윌름종양 6형"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0030073",
+"concept": "- MONDO:0030073 | Mitchell syndrome | syn: ACOX1 upregulation; MITCH; Mitchell syndrome | ancestors: disorder of defective peroxisome oxidative status, peroxisomal single enzyme/protein defect, peroxisomal disease, inborn errors of metabolism | def: A peroxisomal disease characterized by progressive episodic demyelination, sensorimotor polyneuropathy, and hearing loss that has material basis in heterozygous mutation in the ACOX1 gene on chromosom...",
+"ko": "미첼 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001694",
+"concept": "- MONDO:0001694 | diffuse interstitial keratitis | ancestors: interstitial keratitis, connective tissue disorder, deep keratitis, disease by body system or component",
+"ko": "미만성 간질성 각막염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002514",
+"concept": "- MONDO:0002514 | hepatobiliary neoplasm | syn: hepatic and biliary neoplasms; hepatic and biliary tumors; hepatic and biliary tumours; hepatic, biliary, and gallbladder neoplasms | ancestors: hepatobiliary disorder, digestive system neoplasm, digestive system disorder, neoplasm | def: A benign or malignant neoplasm that affects the liver parenchyma, bile ducts, and gallbladder. Representative examples of benign neoplasms include hepatocellular adenoma, bile duct adenoma, and gallbl...",
+"ko": "간담도 신생물",
+"alt": [
+"간담관 종양"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+}
+]

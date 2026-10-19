@@ -1,0 +1,254 @@
+[
+{
+"id": "MONDO:0008666",
+"concept": "- MONDO:0008666 | volvulus of midgut | syn: congenital malrotation of intestine; intestinal malrotation; volvulus of midgut | ancestors: hereditary disease, intestinal disorder, disease of genetic or genomic mechanism, digestive system disorder | def: A congenital abnormality in which the intestine is abnormally rotated (twisted). It may result in intestinal obstruction.",
+"ko": "중장 꼬임",
+"alt": [
+"선천성 장회전이상"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0006653",
+"concept": "- MONDO:0006653 | anthracosilicosis | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: Fibrosis of the lung parenchyma caused by inhalation of carbon and silica dust. It manifests as shortness of breath.",
+"ko": "탄분규폐증",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009607",
+"concept": "- MONDO:0009607 | methionine adenosyltransferase deficiency | syn: brain demyelination due to methionine adenosyltransferase deficiency; hypermethioninemia, persistent, autosomal dominant, due to methionine adenosyltransferase I/III deficiency; isolated persistent hypermethioninemia; MAT deficiency | ancestors: inborn disorder of methionine cycle and sulfur amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, sulfur metabolism disease, inborn errors of metabolism | def: Hypermethioninemia due to methionine adenosyltransferase deficiency is a very rare metabolic disorder resulting in isolated hepatic hypermethioninemia that is usually benign due to partial inactivatio...",
+"ko": "메티오닌 아데노실전달효소 결핍증",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021066",
+"concept": "- MONDO:0021066 | urinary system neoplasm | syn: neoplasm of renal system; neoplasm of the urinary system; neoplasm of the urinary tract; neoplasm of urinary system | ancestors: urinary system disorder, neoplasm, disease by body system or component, neoplastic disease or syndrome | def: A benign or malignant, primary or metastatic neoplasm involving the urinary system. --2003",
+"ko": "비뇨기계 신생물",
+"alt": [
+"비뇨기계 종양"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0031007",
+"concept": "- MONDO:0031007 | spondyloepiphyseal dysplasia, sensorineural hearing loss, impaired intellectual development, and leber congenital amaurosis | syn: SHILCA; SHILCA syndrome | ancestors: congenital nervous system disorder, NMNAT1-related retinopathy, nervous system disorder, inherited retinal dystrophy",
+"ko": "척추골단 이형성증, 감각신경성 난청, 지적발달장애 및 레베르 선천성 흑암시",
+"alt": [
+"SHILCA 증후군"
+],
+"organs": [
+"neurologic",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001293",
+"concept": "- MONDO:0001293 | subglottis cancer | syn: cancer of subglottis; malignant neoplasm of subglottis; malignant neoplasm of the subglottis; malignant subglottic neoplasm | ancestors: subglottis neoplasm, larynx cancer, laryngeal neoplasm, respiratory system cancer | def: A malignant neoplasm that affects the subglottic area of the larynx. The vast majority of cases are squamous cell carcinomas.",
+"ko": "성문하부암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005124",
+"concept": "- MONDO:0005124 | leprosy | syn: Hansen disease; Hansen's disease; Mycobacterium leprae caused disease or disorder; Mycobacterium leprae disease or disorder | ancestors: primary bacterial infectious disease, mycobacterial infectious disease, bacterial infectious disease, infectious disease | def: Leprosy is a chronic infectious disease affecting primarily the skin and peripheral nervous system.",
+"ko": "나병",
+"alt": [
+"한센병"
+],
+"organs": [
+"neurologic",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 8,
+"new": false
+},
+{
+"id": "MONDO:0003005",
+"concept": "- MONDO:0003005 | macular retinal edema | syn: macula lutea retinal edema; macula lutea retinal oedema; macular edema; retinal edema of macula lutea | ancestors: macular degeneration, retinal edema, retinal degeneration, retinal disorder | def: Accumulation of intraretinal fluid and protein in the macula, which may result in swelling and decreased central vision.",
+"ko": "황반 망막부종",
+"alt": [
+"황반부종"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005906",
+"concept": "- MONDO:0005906 | peritonsillar abscess | syn: quinsy | ancestors: bacterial infectious disease, abscess, disorder of pharynx, lymphoid system disorder | def: An abscess that develops in the space surrounding one or both palatine tonsils.",
+"ko": "편도주위 농양",
+"alt": [
+"편도주위 고름집"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0015900",
+"concept": "- MONDO:0015900 | hypoaldosteronism disease | syn: rare hypoaldosteronism | ancestors: adrenal gland disorder, endocrine system disorder, disease by body system or component, human disease",
+"ko": "알도스테론저하증",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0008903",
+"concept": "- MONDO:0008903 | lung cancer | syn: adenocarcinoma of lung, response to tyrosine kinase inhibitor in, autosomal dominant, somatic mutation; adenocarcinoma of lung, somatic; cancer of lung; lung cancer | ancestors: respiratory system cancer, thoracic cancer, lung neoplasm, cancer | def: A malignant neoplasm involving the lung.",
+"ko": "폐암",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006474",
+"concept": "- MONDO:0006474 | transitional cell carcinoma | syn: carcinoma of transitional epithelial cell; carcinoma of urothelial cell; carcinoma, urothelial, malignant; transitional carcinoma | ancestors: carcinoma, cancer, epithelial neoplasm, neoplasm | def: A malignant neoplasm arising from the transitional epithelium, usually affecting the urinary bladder, ureter, or renal pelvis. It may or may not have a papillary configuration. It is graded 1 to 3 or ...",
+"ko": "이행세포암종",
+"alt": [
+"요로상피암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0022790",
+"concept": "- MONDO:0022790 | cleft tongue | ancestors: syndromic disease, disease by body system or component, human disease, disease",
+"ko": "혀갈림증",
+"alt": [
+"설열"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0015303",
+"concept": "- MONDO:0015303 | macular amyloidosis | ancestors: primary cutaneous amyloidosis, amyloidosis, dermis disorder, proteostasis deficiencies | def: Macular amyloidosis (MA) is a rare chronic form of cutaneous amyloidosis, a skin disease characterized by the accumulation of amyloid deposits in the dermis, clinically characterized by pruritic hyper...",
+"ko": "반점 아밀로이드증",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0021513",
+"concept": "- MONDO:0021513 | benign neoplasm of tonsil | syn: benign neoplasm of the tonsil; benign tonsil neoplasm; benign tonsil tumor; benign tonsil tumour | ancestors: respiratory system benign neoplasm, tonsil neoplasm, benign neoplasm of pharynx, respiratory system disorder | def: A benign neoplasm that involves the tonsil.",
+"ko": "편도 양성 신생물",
+"alt": [
+"편도 양성 종양"
+],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0016424",
+"concept": "- MONDO:0016424 | progressive sensorineural hearing loss-hypertrophic cardiomyopathy syndrome | syn: progressive neurosensory deafness-hypertrophic cardiomyopathy syndrome; progressive neurosensory hearing loss-hypertrophic cardiomyopathy syndrome; progressive sensorineural deafness-hypertrophic cardiomyopathy syndrome | ancestors: hypertrophic cardiomyopathy, intrinsic cardiomyopathy, cardiomyopathy, muscle tissue disorder | def: Progressive sensorineural hearing loss - hypertrophic cardiomyopathy is an extremely rare disorder described in one family to date that is characterized by progressive, late onset, autosomal dominant ...",
+"ko": "진행성 감각신경성 난청-비대심근병증 증후군",
+"alt": [],
+"organs": [
+"cardiovascular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018055",
+"concept": "- MONDO:0018055 | pediatric hepatocellular carcinoma | syn: childhood carcinoma of the liver cell; childhood hepatocellular carcinoma; childhood-onset HCC; childhood-onset hepatocellular carcinoma | ancestors: childhood malignant neoplasm, hepatocellular carcinoma, cancer, childhood neoplasm | def: Pediatric hepatocellular carcinoma (pediatric HCC) is a rare, aggressive, malignant hepatic tumor that develops mainly in children over 10 years of age.",
+"ko": "소아 간세포암종",
+"alt": [
+"소아 간암"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000972",
+"concept": "- MONDO:0000972 | gallbladder lipoma | syn: gall bladder lipoma; gallbladder lipoma; lipoma of gall bladder; lipoma of gallbladder | ancestors: lipoma, benign neoplasm of gallbladder, benign lipomatous neoplasm, benign digestive system neoplasm | def: A benign adipose tissue neoplasm involving the gallbladder wall.",
+"ko": "담낭 지방종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021104",
+"concept": "- MONDO:0021104 | alcoholic fatty liver disease | syn: alcoholic fatty liver; alcoholic Steatohepatitis | ancestors: fatty liver disease, alcoholic liver disease, liver disorder, alcohol-induced disorders | def: Lipid infiltration of the hepatic parenchymal cells that is due to alcohol abuse. The fatty changes in the alcoholic fatty liver may be reversible, depending on the amounts of triglycerides accumulate...",
+"ko": "알코올성 지방간 질환",
+"alt": [
+"알코올성 지방간"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0021041",
+"concept": "- MONDO:0021041 | pleural solitary fibrous tumor | syn: fibroma of pleura; fibroma of the pleura; localised fibrous mesothelioma of pleura; localised fibrous mesothelioma of the pleura | ancestors: solitary fibrous tumor, pleural neoplasm, fibroblastic neoplasm, pleural disorder | def: A localized neoplasm of probable fibroblastic derivation, that arises from the pleura. It is characterized by the presence of round to spindle-shaped cells, hylanized stroma formation, thin-walled bra...",
+"ko": "흉막 고립성 섬유성 종양",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+}
+]

@@ -1,0 +1,232 @@
+[
+{
+"id": "MONDO:0022430",
+"concept": "- MONDO:0022430 | persistent fetal circulation syndrome | syn: persistent fetal circulation; persistent foetal circulation; persistent pulmonary hypertension of the newborn; PPHN | ancestors: congenital anomaly of cardiovascular system, cardiovascular disorder, disorder of development or morphogenesis, disease by body system or component | def: A cardiopulmonary disorder characterized by systemic arterial hypoxemia secondary to pulmonary hypertension and extrapulmonary right to left shunting across the foramen ovale and ductus arteriosus.",
+"ko": "지속성 태아순환 증후군",
+"alt": [
+"신생아 지속성 폐고혈압"
+],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0015347",
+"concept": "- MONDO:0015347 | multicentric reticulohistiocytosis | syn: giant cell histiocytomatosis; lipoid dermatoarthritis; multicentric reticulohistiocytosis | ancestors: syndromic disease, non-Langerhans cell histiocytosis, disease by body system or component, histiocytosis | def: Multicentric reticulohistiocytosis (MRH) is a rare non-Langerhans cell histiocytosis characterized by the association of specific nodular skin lesions and destructive arthritis.",
+"ko": "다중심성 세망조직구증",
+"alt": [],
+"organs": [
+"haematologic",
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005357",
+"concept": "- MONDO:0005357 | Creutzfeldt Jacob disease | syn: CJD; CJD (Creutzfeldt Jakob disease); classic Creutzfeldt-Jakob disease; Creutzfeldt Jakob Disease | ancestors: prion disease, brain disorder, central nervous system infectious disorder, central nervous system disorder | def: A rare transmittable degenerative disorder of the brain caused by prions. Morphologically it is characterized by spongiform degeneration of the cerebral and cerebellar cortex. Signs and symptoms inclu...",
+"ko": "크로이츠펠트-야콥병",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001215",
+"concept": "- MONDO:0001215 | allescheriosis | ancestors: primary systemic mycosis, systemic mycosis, fungal infectious disease, infectious disease | def: A primary systemic mycosis that results in systemic fungal infection, has material basis in Pseudallescheria boydii, which results in formation of abscesses.",
+"ko": "알레스케리아증",
+"alt": [
+"슈도알레스케리아증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005790",
+"concept": "- MONDO:0005790 | hepatitis A virus infection | syn: Hepatitis A; Hepatitis A infection; hepatitis type A | ancestors: viral hepatitis, hepatitis, digestive system infectious disorder, primary viral infectious disease | def: Acute inflammation of the liver caused by the hepatitis A virus. It is highly contagious and usually contracted through close contact with an infected individual or their feces, contaminated food or w...",
+"ko": "A형 간염 바이러스 감염",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0010012",
+"concept": "- MONDO:0010012 | autoimmune polyendocrinopathy type 2 | syn: APS type 2; APS2; autoimmune polyendocrine syndrome type 2; Autoimmune Polyendocrine Syndrome Type II | ancestors: autoimmune polyendocrinopathy, autoimmune disorder of endocrine system, syndromic disease, polyendocrinopathy | def: Autoimmune polyglandular syndrome of likely polygenic etiology characterized by the presence of primary adrenal insufficiency in association with autoimmune thyroiditis and/or type 1 diabetes mellitus...",
+"ko": "자가면역 다내분비병증 2형",
+"alt": [
+"자가면역 다선성 증후군 2형"
+],
+"organs": [
+"metabolic_endocrine",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0023305",
+"concept": "- MONDO:0023305 | heavy metal poisoning | syn: heavy metal poisoning; toxic effect of heavy metal | ancestors: poisoning, disease of primarily extrinsic mechanism, disease by etiologic mechanism, human disease | def: Heavy metal poisoning refers to when excessive exposure to a heavy metal affects the normal function of the body. Examples of heavy metals that can cause toxicity include lead, mercury, arsenic, cadmi...",
+"ko": "중금속 중독",
+"alt": [],
+"organs": [
+"renal",
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007245",
+"concept": "- MONDO:0007245 | cafe au lait spots, multiple | syn: autosomal dominant café au lait spots; cafe-au-lait spots, multiple; familial cafe-au-lait spots; familial café-au-lait spots | ancestors: hyperpigmentation of the skin, skin pigmentation disorder, skin disorder, integumentary system disorder | def: A cutaneous disorder characterized by the presence of several cafe-au-lait (CAL) macules without any other manifestations of neurofibromatosis or any other systemic disorder.",
+"ko": "다발성 카페오레 반점",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0010643",
+"concept": "- MONDO:0010643 | acute leukemia | syn: acute leukaemia (disease); acute leukemia; acute leukemia (disease) | ancestors: leukemia, acute disease, hematopoietic and lymphoid cell neoplasm, human disease | def: A clonal (malignant) hematopoietic disorder with an acute onset, affecting the bone marrow and the peripheral blood. The malignant cells show minimal differentiation and are called blasts, either myel...",
+"ko": "급성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006553",
+"concept": "- MONDO:0006553 | Fox-Fordyce disease | syn: Fox-Fordyce disease | ancestors: sweat gland disorder, skin disorder, integumentary system disorder, disease by body system or component | def: A chronic skin disease most common in women aged 13-35 years.It is characterized by the development of intense itching in the underarm area, the pubic area, and around the nipple of the breast as a re...",
+"ko": "폭스-포다이스병",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005808",
+"concept": "- MONDO:0005808 | inclusion conjunctivitis | syn: Chlamydial conjunctivitis; neonatal Chlamydia conjunctivitis | ancestors: chlamydia trachomatis infectious disease, bacterial conjunctivitis, commensal bacterial infectious disease, chlamydia infectious disease | def: Inflammation of the conjunctiva in a newborn due to Chlamydia trachomatis which was acquired during labor and delivery.",
+"ko": "봉입체 결막염",
+"alt": [
+"클라미디아 결막염"
+],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:8000018",
+"concept": "- MONDO:8000018 | benign paroxysmal positional vertigo | syn: benign paroxysmal positional vertigo; BPPV; BRV; familial benign recurrent vertigo | ancestors: peripheral vertigo, hereditary otorhinolaryngologic disease, inherited auditory system disease, vestibular disorder | def: Idiopathic recurrent vertigo associated with positional nystagmus. It is associated with a vestibular loss without other neurological or auditory signs. Unlike in labyrinthitis and vestibular neuronit...",
+"ko": "양성 발작성 체위성 현훈",
+"alt": [
+"이석증"
+],
+"organs": [
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001373",
+"concept": "- MONDO:0001373 | urinary bladder posterior wall cancer | ancestors: urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm, urinary bladder disorder",
+"ko": "방광 후벽암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005657",
+"concept": "- MONDO:0005657 | aspergillosis | ancestors: opportunistic mycosis, fungal infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Aspergillosis is an infection, growth, or allergic response caused by the Aspergillus fungus. There are several different kinds of aspergillosis. One kind is allergic bronchopulmonary aspergillosis (a...",
+"ko": "아스페르길루스증",
+"alt": [
+"국균증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0004640",
+"concept": "- MONDO:0004640 | alcoholic gastritis | syn: alcoholic gastritis; alcoholic gastritis, with haemorrhage; alcoholic gastritis, without mention of haemorrhage | ancestors: gastritis, stomach disorder, inflammatory disease, digestive system disorder | def: Inflammation of the stomach resulting from alcohol ingestion.",
+"ko": "알코올성 위염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005813",
+"concept": "- MONDO:0005813 | interdigitating dendritic cell sarcoma | syn: interdigitating cell sarcoma/tumor; interdigitating Dendritic cell sarcoma; interdigitating Dendritic cell sarcoma/tumor | ancestors: dendritic cell sarcoma, immune system cancer, leukocyte disorder, sarcoma | def: A neoplastic proliferation of spindle to ovoid cells which show phenotypic features similar to those of interdigitating dendritic cells. The clinical course is generally aggressive. (WHO, 2008)",
+"ko": "깍지낌 수지상세포 육종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0002754",
+"concept": "- MONDO:0002754 | extramedullary plasmacytoma | syn: extramedullary plasmacytoma; extramedullary plasmacytoma (clinical); extraosseous plasmacytoma; plasmacytoma, extramedullary | ancestors: plasmacytoma, plasma cell neoplasm, neoplasm of mature B-cells, B-cell neoplasm | def: A plasma cell neoplasm arising at an extraosseous site. There is no involvement of the bone marrow. It most frequently involves the oropharynx, nasopharynx, sinuses, and larynx. Other sites of involve...",
+"ko": "골수외 형질세포종",
+"alt": [
+"골외 형질세포종"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006992",
+"concept": "- MONDO:0006992 | syphilitic aortitis | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: Cardiovascular manifestations of syphilis, an infection of treponema pallidum. In the late stage of syphilis, sometimes 20-30 years after the initial infection, damages are often seen in the blood ves...",
+"ko": "매독성 대동맥염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007113",
+"concept": "- MONDO:0007113 | Angelman syndrome | syn: Angelman syndrome; Angelman’s syndrome | ancestors: syndromic disease, hereditary neurological disease, disease by body system or component, hereditary disease | def: A neurogenetic disorder characterized by severe intellectual deficit and distinct facial dysmorphic features.",
+"ko": "엔젤만 증후군",
+"alt": [
+"앤젤만 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001763",
+"concept": "- MONDO:0001763 | ethmoid sinus cancer | syn: cancer of ethmoid sinus; ethmoid sinus cancer; malignant ethmoid sinus neoplasm; malignant ethmoid sinus tumor | ancestors: paranasal sinus carcinoma, ethmoidal sinus neoplasm, bone carcinoma, paranasal sinus cancer | def: A malignant neoplasm involving the ethmoid sinus.",
+"ko": "사골동암",
+"alt": [
+"벌집굴암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+}
+]

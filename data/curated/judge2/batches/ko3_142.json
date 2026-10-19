@@ -1,0 +1,262 @@
+[
+{
+"id": "MONDO:0005972",
+"concept": "- MONDO:0005972 | streptococcal pneumonia | syn: pneumococcal pneumonia; pneumonia due to streptococcus; streptococcal pneumonia; Streptococcus pneumoniae caused pneumonia | ancestors: bacterial pneumonia, pneumococcal infection, bacterial infectious disease, pneumonia | def: A febrile disease caused by streptococcus pneumoniae.",
+"ko": "연쇄알균 폐렴",
+"alt": [
+"폐렴알균 폐렴"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000284",
+"concept": "- MONDO:0000284 | Hantavirus hemorrhagic fever with renal syndrome, Puumala virus type | syn: nephropathis epidemica | ancestors: hantavirus hemorrhagic fever with renal syndrome, vector-borne disease, renal infectious disease, hantavirus infectious disease",
+"ko": "한타바이러스 신증후군 출혈열, 푸말라바이러스형",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009558",
+"concept": "- MONDO:0009558 | Treacher Collins syndrome 3 | syn: POLR1C Treacher-Collins syndrome; Treacher Collins syndrome 3; Treacher Collins syndrome type 3; Treacher-Collins syndrome caused by mutation in POLR1C | ancestors: Treacher-Collins syndrome, POLR1C-related disorder, autosomal dominant disease, syndromic disease | def: Any Treacher-Collins syndrome in which the cause of the disease is a mutation in the POLR1C gene.",
+"ko": "트리처 콜린스 증후군 3형",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006847",
+"concept": "- MONDO:0006847 | malignant lymphatic vessel tumor | ancestors: lymphoid neoplasm, hematopoietic and lymphoid cell neoplasm, hematopoietic and lymphoid system neoplasm, neoplasm | def: Neoplasms composed of lymphoid tissue, a lattice work of reticular tissue the interspaces of which contain lymphocytes. The concept does not refer to neoplasms located in lymphatic vessels.",
+"ko": "악성 림프관 종양",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000342",
+"concept": "- MONDO:0000342 | O'nyong'nyong fever | syn: O'nyong-nyong virus caused disease or disorder; O'nyong-nyong virus disease or disorder; O'nyong-nyong virus infectious disease | ancestors: Alphavirus infectious disease, vector-borne disease, Togaviridae infectious disease, infectious disease | def: An disease or disorder caused by infection with O'nyong-nyong virus.",
+"ko": "오니옹니옹열",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0020398",
+"concept": "- MONDO:0020398 | congenital mitral stenosis | syn: congenital mitral stenosis; congenital mitral stenosis (disease); congenital mitral valve stenosis; hereditary mitral valve stenosis | ancestors: mitral valve stenosis, congenital mitral valve insufficiency and/or stenosis, inherited mitral valve disease, mitral valve disorder | def: Congenital mitral stenosis is a congenital heart malformation comprising a spectrum of morphologically heterogeneous developmental anomalies that result in functional and anatomic obstruction of inflo...",
+"ko": "선천성 승모판 협착",
+"alt": [
+"선천성 이첨판 협착"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019136",
+"concept": "- MONDO:0019136 | Zygomycosis | syn: Mucormycosis; mucormycosis; Zygomycota infectious disease | ancestors: opportunistic mycosis, fungal infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Any infection due to a fungus of the Zygomycota phylum. The disease typically involves the rhino-facial-cranial area, lungs, gastrointestinal tract, skin, or less commonly other organ systems. The inf...",
+"ko": "접합균증",
+"alt": [
+"털곰팡이증"
+],
+"organs": [
+"pulmonary",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0008046",
+"concept": "- MONDO:0008046 | autosomal dominant myoglobinuria | syn: myoglobinuria, autosomal dominant | ancestors: autosomal dominant disease, inborn errors of metabolism, autosomal genetic disease, hereditary disease | def: Autosomal dominant myoglobinuria is a rare metabolic myopathy characterized by episodic myalgia with myoglobinuria which is induced by fever, viral or bacterial infection, prolonged exercise or alcoho...",
+"ko": "상염색체 우성 근글로빈뇨증",
+"alt": [],
+"organs": [
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0001909",
+"concept": "- MONDO:0001909 | renal tubular acidosis | ancestors: acidosis disorder, renal tubular transport disease, renal tubule disorder, disorder of acid-base balance | def: A group of genetic disorders of the kidney tubules characterized by the accumulation of metabolically produced acids with elevated plasma chloride, hyperchloremic metabolic acidosis. Defective renal a...",
+"ko": "신세뇨관산증",
+"alt": [
+"세뇨관 산증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005645",
+"concept": "- MONDO:0005645 | ancylostomiasis | syn: Ancylostoma caused disease or disorder; Ancylostoma disease or disorder; Ancylostoma infectious disease | ancestors: trichostrongyloidiasis, Rhabditida infectious disease, Nematoda infectious disease, helminthiasis | def: Infection by hookworms of the genus Ancylostoma.",
+"ko": "십이지장충증",
+"alt": [
+"구충증"
+],
+"organs": [
+"haematologic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003890",
+"concept": "- MONDO:0003890 | infiltrating bladder urothelial carcinoma | syn: infiltrating bladder urothelial carcinoma; infiltrating transitional cell carcinoma of the urinary bladder; invasive bladder transitional cell carcinoma; invasive bladder urothelial carcinoma | ancestors: bladder transitional cell carcinoma, infiltrating urothelial carcinoma, urinary bladder carcinoma, urothelial carcinoma | def: An invasive transitional cell carcinoma that arises from the urinary bladder urothelium.",
+"ko": "침윤성 방광 요로상피암종",
+"alt": [
+"침윤성 방광 이행세포암종"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0011601",
+"concept": "- MONDO:0011601 | neonatal intrahepatic cholestasis due to citrin deficiency | syn: neonatal intrahepatic cholestasis caused by citrin deficiency; neonatal intrahepatic cholestasis due to citrin deficiency; NICCD | ancestors: citrin deficiency, citrullinemia, urea cycle disorder or inherited hyperammonemia, urea cycle disorder | def: Neonatal intrahepatic cholestasis due to citrin deficiency is a mild subtype of citrin deficiency characterized clinically by low birth weight, failure to thrive, transient intrahepatic cholestasis, m...",
+"ko": "시트린 결핍에 의한 신생아 간내 담즙정체",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009823",
+"concept": "- MONDO:0009823 | primary hyperoxaluria type 1 | syn: AGXT primary hyperoxaluria; glycolic aciduria; peroxisomal alanine-glyoxylate aminotransferase deficiency; PH1 | ancestors: primary hyperoxaluria, alanine glyoxylate aminotransferase deficiency, inborn carbohydrate metabolic disorder, disorder of glyoxylate metabolism | def: A rare disorder of glyoxylate metabolism characterized by the accumulation of oxalate due to a deficiency of the peroxisomal hepatic enzyme L-alanine: glyoxylate aminotransferase (AGT). Clinical prese...",
+"ko": "원발성 고옥살산뇨증 1형",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016531",
+"concept": "- MONDO:0016531 | digestive duplication | ancestors: digestive system disorder, disease by body system or component, human disease, disease",
+"ko": "소화관 중복증",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009134",
+"concept": "- MONDO:0009134 | congenital dyserythropoietic anemia type 2 | syn: CDA II; CDA type 2; CDA type II; congenital dyserythropoietic anemia type 2 | ancestors: congenital anemia, disorder of multiple glycosylation, congenital dyserythropoietic anemia, anemia | def: Congenital dyserythropoietic anemia type II (CDA II) is the most common form of CDA characterized by anemia, jaundice and splenomegaly and often leading to liver iron overload and gallstones.",
+"ko": "선천성 적혈구생성이상 빈혈 2형",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001214",
+"concept": "- MONDO:0001214 | acute conjunctivitis | syn: acute conjunctivitis (disease); conjunctivitis (disease), acute | ancestors: conjunctivitis, acute disease, conjunctival disorder, inflammatory disease | def: Acute inflammation of the conjunctiva.",
+"ko": "급성 결막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0021446",
+"concept": "- MONDO:0021446 | benign neoplasm of epiglottis | syn: benign epiglottic neoplasm; benign epiglottic tumor; benign epiglottic tumour; benign Epiglottis neoplasm | ancestors: benign laryngeal neoplasm, epiglottis neoplasm, benign neoplasm of hypopharynx, respiratory system benign neoplasm | def: A benign neoplasm that involves the epiglottis.",
+"ko": "후두덮개 양성 신생물",
+"alt": [
+"후두개 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0011323",
+"concept": "- MONDO:0011323 | arhinia, choanal atresia, and microphthalmia | syn: arhinia choanal atresia microphthalmia; arhinia, choanal atresia, microphthalmia, and hypogonadotropic hypogonadism; arrhinia-choanal atresia-microphthalmia syndrome; BAM syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome without intellectual disability, congenital hypogonadotropic hypogonadism, multiple congenital anomalies/dysmorphic syndrome, hypogonadotropic hypogonadism | def: Any syndromic disease characterized by severe hypoplasia of the nose and eyes, palatal abnormalities, deficient taste and smell, inguinal hernias, hypogonadotropic hypogonadism with cryptorchidism, an...",
+"ko": "무비증, 후비공 폐쇄증 및 소안구증",
+"alt": [],
+"organs": [
+"pulmonary",
+"ocular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006237",
+"concept": "- MONDO:0006237 | granulocytic sarcoma | syn: granulocytic sarcoma; sarcoma, granulocytic, malignant | ancestors: myeloid sarcoma, sarcoma, acute myeloid leukemia by FAB classification, cancer | def: A tumor mass composed of myeloblasts, neutrophils and neutrophil precursors. Granulocytic sarcoma is the most common type of myeloid sarcoma. (WHO, 2001)",
+"ko": "과립구성 육종",
+"alt": [
+"골수성 육종",
+"녹색종"
+],
+"organs": [
+"haematologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008748",
+"concept": "- MONDO:0008748 | Hermansky-Pudlak syndrome 1 | syn: albinism with hemorrhagic diathesis and pigmented; delta storage pool disease; Hermansky-Pudlak syndrome 1; Hermansky-Pudlak syndrome caused by mutation in HPS1 | ancestors: Hermansky-Pudlak syndrome with pulmonary fibrosis, interstitial lung disease specific to childhood, Hermansky-Pudlak syndrome, inherited interstitial lung disease | def: Any Hermansky-Pudlak syndrome in which the cause of the disease is a mutation in the HPS1 gene, causing defects of melanosomes and absence of platelet dense bodies. Core features include oculocutaneou...",
+"ko": "허만스키-퍼들락 증후군 1",
+"alt": [],
+"organs": [
+"haematologic",
+"pulmonary",
+"ocular",
+"dermatologic"
+],
+"kcd_links": 0,
+"new": true
+}
+]

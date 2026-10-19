@@ -1,0 +1,263 @@
+[
+{
+"id": "MONDO:0017597",
+"concept": "- MONDO:0017597 | T-cell/histiocyte rich large B cell lymphoma | syn: T-cell rich/histiocyte-rich large B-cell lymphoma; T-cell/histiocyte rich lymphoma; T-cell/histiocyte-rich large B-cell lymphoma; THRLBCL | ancestors: diffuse large B-cell lymphoma, neoplasm of mature B-cells, aggressive B-cell non-Hodgkin lymphoma, B-cell neoplasm | def: T-cell/histiocyte rich large B cell lymphoma (THRLBCL) is a rare variant of diffuse large B-cell lymphoma (DLBCL), mainly affecting middle-aged men and often not being discovered until an advanced dis...",
+"ko": "T세포/조직구 풍부 거대 B세포 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0010299",
+"concept": "- MONDO:0010299 | hypoxanthine guanine phosphoribosyltransferase partial deficiency | syn: HPRT deficiency, grade I; HPRT partial deficiency; HPRT-related gout; HPRT-related hyperuricemia | ancestors: hypoxanthine-guanine phosphoribosyltransferase deficiency, inborn disorder of purine metabolism, inborn disorder of purine or pyrimidine metabolism, purine metabolism disease | def: Kelley-Seegmiller syndrome (KSS) is the mildest form of hypoxanthine-guanine phosphoribosyltransferase (HPRT) deficiency, a hereditary disorder of purine metabolism, and is associated with uric acid o...",
+"ko": "하이포잔틴 구아닌 포스포리보실전달효소 부분 결핍증",
+"alt": [
+"HPRT 부분 결핍증"
+],
+"organs": [
+"renal",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018921",
+"concept": "- MONDO:0018921 | Meckel syndrome | syn: Meckel-Gruber syndrome | ancestors: syndromic disease, ciliopathy, hereditary lethal multiple congenital anomalies/dysmorphic syndrome, disease by body system or component | def: A rare, lethal, genetic, multiple congenital anomaly disorder characterized by the triad of brain malformation mainly occipital encephalocele, large polycystic kidneys, and polydactyly as well as asso...",
+"ko": "메켈 증후군",
+"alt": [
+"메켈-그루버 증후군"
+],
+"organs": [
+"renal",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019524",
+"concept": "- MONDO:0019524 | Bartter syndrome type 4 | syn: Bartter syndrome type 4; Bartter syndrome type IV; Bartter syndrome with sensorineural deafness | ancestors: Bartter syndrome, syndromic disease, renal tubular transport disease, inherited renal tubular disease | def: A form of Bartter syndrome characterized by maternal polyhydramnios, premature delivery, salt loss, polyuria and sensorineural deafness, associated with hypokalemic and hypochloremic metabolic alkalos...",
+"ko": "바터 증후군 4형",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0005864",
+"concept": "- MONDO:0005864 | muscle cancer | syn: cancer of muscle structure; malignant muscle neoplasm; malignant muscle structure neoplasm; malignant muscle tumor | ancestors: musculoskeletal system cancer, musculoskeletal system disorder, cancer, disease by body system or component | def: A malignant neoplasm affecting the skeletal or smooth muscles. Malignant neoplasms arising from the skeletal muscles are called rhabdomyosarcomas. Malignant neoplasms arising from the smooth muscles a...",
+"ko": "근육암",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0700418",
+"concept": "- MONDO:0700418 | idiopathic hypercalciuria | ancestors: urinary system disorder, idiopathic disease, disease by body system or component, disease by etiologic mechanism | def: A rare renal disease characterized by persistent excess urinary calcium excretion in the absence of an underlying systemic disease and hypercalcemia. The condition leads to an increased risk for the f...",
+"ko": "특발성 고칼슘뇨증",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002517",
+"concept": "- MONDO:0002517 | tenosynovitis of foot and ankle | ancestors: tenosynovitis, tendinitis, arthropathy, tendon sheath disorder",
+"ko": "발과 발목의 힘줄윤활막염",
+"alt": [
+"발 및 발목 건초염"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0002929",
+"concept": "- MONDO:0002929 | pulmonary immaturity | syn: primary atelectasis of newborn | ancestors: lung disorder, lower respiratory tract disorder, respiratory system disorder, disease by body system or component",
+"ko": "폐 미성숙",
+"alt": [
+"신생아 일차 무기폐"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0004671",
+"concept": "- MONDO:0004671 | penis carcinoma in situ | syn: Bowen disease of the penis; Bowen's disease of penis; Bowen's disease of the penis; carcinoma in situ of penis | ancestors: squamous carcinoma in situ, squamous cell carcinoma of penis, in situ carcinoma, squamous cell carcinoma | def: A in situ carcinoma that involves the penis.",
+"ko": "음경 상피내암종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0008740",
+"concept": "- MONDO:0008740 | agnathia-otocephaly complex | syn: agnathia-holoprosencephaly-situs inversus syndrome; agnathia-otocephaly complex; dysgnathia complex agnathia-holoprosencephaly; holoprosencephaly-agnathia | ancestors: hereditary disease, multiple congenital anomalies/dysmorphic syndrome-intellectual disability, disease of genetic or genomic mechanism, multiple congenital anomalies/dysmorphic syndrome | def: Agnathia-holoprosencephaly-situs inversus syndrome is an extremely rare and fatal association syndrome, characterized by absence of the mandible, cerebral malformations with facial anomalies related t...",
+"ko": "무하악-이두증 복합체",
+"alt": [
+"무하악증-이두개증 복합체"
+],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0005045",
+"concept": "- MONDO:0005045 | hypertrophic cardiomyopathy | syn: hypertrophic cardiomyopathy; hypertrophic subaortic stenosis; obstructive hypertrophic cardiomyopathy | ancestors: intrinsic cardiomyopathy, cardiomyopathy, muscle tissue disorder, heart disorder | def: A condition in which the myocardium is hypertrophied without an obvious cause. The hypertrophy is generally asymmetric and may be associated with obstruction of the ventricular outflow tract.",
+"ko": "비대 심근병증",
+"alt": [
+"비후성 심근병증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0001434",
+"concept": "- MONDO:0001434 | inflammatory spondylopathy | ancestors: spondylitis, inflammatory disease, vertebral disorder, disease by developmental or physiological process",
+"ko": "염증성 척추병증",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 12,
+"new": false
+},
+{
+"id": "MONDO:0001648",
+"concept": "- MONDO:0001648 | esophageal candidiasis | syn: Candida esophagitis; candidal esophagitis; candidiasis of the esophagus; candidiasis of the oesophagus | ancestors: fungal esophagitis, candidiasis, esophagitis, fungal infectious disease | def: Esophagitis resulting from Candida.",
+"ko": "식도 칸디다증",
+"alt": [
+"칸디다 식도염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009105",
+"concept": "- MONDO:0009105 | trichohepatoenteric syndrome | syn: phenotypic diarrhea; phenotypic diarrhoea; SD/THE; syndromic diarrhea | ancestors: inborn error of immunity, intestinal disorder, hereditary disorder of connective tissue, type 1 interferonopathy of childhood | def: A severe congenital enteropathy manifesting as intractable diarrhea in the first month of life with failure to thrive and associated with facial dysmorphism, hair abnormalities, and, in some cases, im...",
+"ko": "모발-간-장 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal",
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008641",
+"concept": "- MONDO:0008641 | retinal vasculopathy with cerebral leukoencephalopathy and systemic manifestations | syn: hereditary vascular retinopathy; retinal vasculopathy and cerebral leukoencephalopathy; RVCL; RVCL-S | ancestors: retinal vascular disorder, inherited retinal dystrophy, TREX1-related type 1 interferonopathy, type 1 interferonopathy of childhood | def: An inherited group of small vessel diseases comprised of cerebroretinal vasculopathy (CRV), hereditary vascular retinopathy (HRV) and hereditary endotheliopathy with retinopathy, nephropathy and strok...",
+"ko": "뇌백질병증 및 전신 증상을 동반한 망막혈관병증",
+"alt": [
+"유전성 혈관성 망막병증"
+],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic",
+"ocular"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006840",
+"concept": "- MONDO:0006840 | lymphangiectasis | ancestors: lymphatic system disorder, vascular ectasia, lymphoid system disorder, vascular disorder | def: Dilatation of the lymphatic vessels.",
+"ko": "림프관확장증",
+"alt": [
+"임파관 확장증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0019125",
+"concept": "- MONDO:0019125 | relapsing polychondritis | ancestors: chondromalacia, articular cartilage disorder, arthropathy, skeletal system disorder | def: A rare, clinically heterogeneous, multisystemic inflammatory disease characterized by inflammation of the cartilage and proteoglycan rich structures leading to cartilage damage with joint, ocular and ...",
+"ko": "재발성 다발연골염",
+"alt": [],
+"organs": [
+"ocular",
+"musculoskeletal",
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 26,
+"new": false
+},
+{
+"id": "MONDO:0060582",
+"concept": "- MONDO:0060582 | auditory neuropathy-optic atrophy syndrome | syn: ANOA; auditory neuropathy and optic atrophy; multiple mitochondrial dysfunctions syndrome 9A | ancestors: autosomal recessive disease, fatal multiple mitochondrial dysfunctions syndrome, FDXR-related optic atrophy mitochondrial dysfunction syndrome, autosomal genetic disease | def: A mitochondrial dysfunction syndrome in which the cause of the disease is a mutation in the FDXR gene. It is characterized by onset of visual and hearing impairment in the first or second decades.",
+"ko": "청각신경병증-시신경위축 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0003549",
+"concept": "- MONDO:0003549 | adenosquamous bile duct carcinoma | syn: adenosquamous carcinoma of bile duct; adenosquamous carcinoma of the bile duct; bile duct adenosquamous carcinoma | ancestors: squamous cell bile duct carcinoma, adenosquamous carcinoma, squamous cell carcinoma, bile duct carcinoma | def: An adenosquamous carcinoma that arises from the bile ducts.",
+"ko": "담관 선편평상피암종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004241",
+"concept": "- MONDO:0004241 | Osgood-Schlatter disease | syn: aseptic necrosis of the tibial tubercle; Osgood-Schlatter disease; Osgood-Schlatter's disease; osteochondritis of the tibial tubercle | ancestors: bone inflammation disease, osteochondrosis, bone disorder, osteonecrosis | def: Osteochondrosis of the growth plate near the tibial tuberosity.",
+"ko": "오스굿-슐라터병",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+}
+]

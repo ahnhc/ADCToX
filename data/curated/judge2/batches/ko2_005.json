@@ -1,0 +1,232 @@
+[
+{
+"id": "MONDO:0006515",
+"concept": "- MONDO:0006515 | acute pancreatitis | syn: acute pancreatitis (disorder) [ambiguous]; pancreatitis, acute | ancestors: pancreatitis, acute disease, pancreas disorder, inflammatory disease | def: An acute inflammatory process that leads to necrosis of the pancreatic parenchyma. Signs and symptoms include severe abdominal pain, nausea, vomiting, diarrhea, fever, and shock. Causes include alcoho...",
+"ko": "급성 췌장염",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0008392",
+"concept": "- MONDO:0008392 | Roussy-Levy syndrome | syn: hereditary areflexic dystasia, Roussy-levy type; hereditary areflexic dystasia, Roussy-Lévy type; Roussy levy syndrome; Roussy Lévy Syndrome | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism",
+"ko": "루시-레비 증후군",
+"alt": [
+"유전성 무반사성 보행실조, 루시-레비형"
+],
+"organs": [
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020459",
+"concept": "- MONDO:0020459 | unstable hemoglobin disease | ancestors: inherited hemoglobinopathy, hereditary disease, hemoglobinopathy, disease of genetic or genomic mechanism",
+"ko": "불안정 헤모글로빈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006802",
+"concept": "- MONDO:0006802 | inappropriate ADH syndrome | syn: ectopic ADH secretion; ectopic antidiuretic hormone secretion; inappropriate ADH secretion; inappropriate antidiuretic hormone secretion syndrome | ancestors: pituitary gland disorder, ectopic hormone secretion syndrome associated with neoplasia, reproductive system disorder, endocrine system disorder | def: A syndrome characterized by abnormal secretion of antidiuretic hormone in conjunction with neoplastic growth occurring anywhere in the body.",
+"ko": "항이뇨호르몬 부적절 분비 증후군",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0017764",
+"concept": "- MONDO:0017764 | disorder of zinc metabolism | ancestors: disorder of mineral absorption and transport, disorder of metabolite absorption and transport, inborn errors of metabolism, hereditary disease",
+"ko": "아연 대사 장애",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"dermatologic",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0006004",
+"concept": "- MONDO:0006004 | vasomotor rhinitis | ancestors: allergic rhinitis, allergic respiratory disease, rhinitis, respiratory system disorder | def: Inflammation in the nasal cavity mucosa that results from the abnormal regulation of the blood flow in the nose. It may be caused by temperature fluctuations, air pollution, strong odors, and tobacco ...",
+"ko": "혈관운동성 비염",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0017319",
+"concept": "- MONDO:0017319 | hereditary elliptocytosis | syn: congenital elliptocytosis; Hashimoto Encephalopathy; HE; hereditary ovalocytosis | ancestors: hemolytic anemia, normocytic anemia, anemia, hematologic disorder | def: Hereditary elliptocytosis (HE) is a rare clinically and genetically heterogeneous disorder of the red cell membrane characterized by manifestations ranging from mild to severe transfusion-dependent he...",
+"ko": "유전성 타원적혈구증",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001375",
+"concept": "- MONDO:0001375 | bladder trigone cancer | syn: cancer of trigone of urinary bladder; malignant neoplasm of trigone of urinary bladder; malignant trigone of urinary bladder neoplasm; trigone of urinary bladder cancer | ancestors: bladder dome cancer, urinary bladder cancer, urinary bladder neoplasm, malignant urinary system neoplasm | def: A malignant neoplasm involving the trigone of urinary bladder.",
+"ko": "방광삼각암",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004160",
+"concept": "- MONDO:0004160 | female stress incontinence | ancestors: urinary bladder disorder, urinary system disorder, disease by body system or component, human disease | def: The involuntary loss of urine in females secondary to insufficient strength of the pelvic floor muscles; this can result from physical changes following pregnancy and childbirth, or as a response to a...",
+"ko": "여성 복압성 요실금",
+"alt": [
+"여성 스트레스성 요실금"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006012",
+"concept": "- MONDO:0006012 | viral pneumonia | syn: Viruses caused pneumonia; Viruses pneumonia | ancestors: pneumonia, viral respiratory tract infection, primary viral infectious disease, respiratory tract infectious disorder | def: Inflammation of the lung parenchyma that is caused by a viral infection.",
+"ko": "바이러스성 폐렴",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006654",
+"concept": "- MONDO:0006654 | anthracosis | syn: coal dust pneumoconiosis; coal miner's pneumoconiosis; coal workers' pneumoconiosis; pneumoconiosis from coal dust | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: A chronic lung disorder characterized by deposition of coal dust in the lung parenchyma leading to the formation of black nodules and emphysema. It occurs in coal miners.",
+"ko": "탄진증",
+"alt": [
+"탄광부 진폐증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0006840",
+"concept": "- MONDO:0006840 | lymphangiectasis | ancestors: lymphatic system disorder, vascular ectasia, lymphoid system disorder, vascular disorder | def: Dilatation of the lymphatic vessels.",
+"ko": "림프관확장증",
+"alt": [
+"임파관 확장증"
+],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005683",
+"concept": "- MONDO:0005683 | brucellosis | syn: undulant fever | ancestors: primary bacterial infectious disease, bacterial infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: Brucellosis is a bacterial infection that spreads from animals to people via unpasteurized dairy products or by exposure to contaminated animal products or infected animals. Animals that are most comm...",
+"ko": "브루셀라증",
+"alt": [
+"파상열"
+],
+"organs": [
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0017765",
+"concept": "- MONDO:0017765 | disorder of magnesium transport | syn: inborn error of magnesium ion transport; inborn magnesium ion transport disorder; rare inborn error of magnesium ion transport | ancestors: disorder of mineral absorption and transport, disorder of metabolite absorption and transport, inborn errors of metabolism, hereditary disease | def: An inherited metabolic disease that is has its basis in the disruption of magnesium ion transport.",
+"ko": "마그네슘 수송 장애",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001024",
+"concept": "- MONDO:0001024 | pneumonic plague | ancestors: lung disorder, plague, respiratory tract infectious disorder, lower respiratory tract disorder | def: A plague in which the bacteria have infected the lungs.",
+"ko": "폐페스트",
+"alt": [
+"폐렴형 페스트"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008753",
+"concept": "- MONDO:0008753 | alkaptonuria | syn: alcaptonuria; alkaptonuria; hereditary ochronosis; homogentisate 1,2-dioxygenase deficiency | ancestors: disorder of tyrosine metabolism, inborn disorder of phenylalanine and tyrosine metabolism, inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism | def: A metabolic disease characterized by the accumulation of homogentisic acid (HGA) and its oxidized product, benzoquinone acetic acid (BQA), in various tissues (e.g. cartilage, connective tissue) and bo...",
+"ko": "알캅톤뇨증",
+"alt": [
+"유전성 갈색증"
+],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005672",
+"concept": "- MONDO:0005672 | blastomycosis | syn: Blastomyces dermatitidis caused disease or disorder; Blastomyces dermatitidis disease or disorder; Blastomyces dermatitidis infection; Blastomyces dermatitidis infectious disease | ancestors: primary systemic mycosis, systemic mycosis, fungal infectious disease, infectious disease | def: Blastomycosis is a rare infection that may develop when people inhale a fungus called Blastomyces dermatitidis, a fungus that is found in moist soil, particularly where there is rotting vegetation. Th...",
+"ko": "분아균증",
+"alt": [
+"블라스토미세스증"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 9
+},
+{
+"id": "MONDO:0001879",
+"concept": "- MONDO:0001879 | anus cancer | syn: anus cancer; cancer of anus; malignant anal neoplasm; malignant anal tumor | ancestors: anus neoplasm, rectal cancer, rectal neoplasm, anus disorder | def: A malignant neoplasm involving the anus",
+"ko": "항문암",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0004651",
+"concept": "- MONDO:0004651 | smallpox | syn: ordinary smallpox; Variola virus caused disease or disorder; Variola virus disease or disorder; Variola virus infectious disease | ancestors: primary viral infectious disease, viral infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A condition that is caused by infection with Variola, and that is characterized by small, raised bumps.",
+"ko": "천연두",
+"alt": [
+"두창"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0023601",
+"concept": "- MONDO:0023601 | non-classic congenital adrenal hyperplasia | syn: late-onset congenital adrenal hyperplasia; non-classic congenital adrenal hyperplasia | ancestors: congenital adrenal hyperplasia, steroid inherited metabolic disorder, chronic primary adrenal insufficiency, hereditary endocrine growth disease | def: A milder form of congenital adrenal hyperplasia characterized by decreased activity of an enzyme in the steroidogenic pathway, typically presenting later in life, that does not require life-long corti...",
+"ko": "비고전형 선천성 부신과다형성",
+"alt": [
+"후기 발병 선천성 부신과다형성"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1
+}
+]

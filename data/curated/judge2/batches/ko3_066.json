@@ -1,0 +1,266 @@
+[
+{
+"id": "MONDO:0008056",
+"concept": "- MONDO:0008056 | myotonic dystrophy type 1 | syn: DM1; DMPK myotonic dystrophy; dystrophia myotonica; MD1 | ancestors: myotonic dystrophy, familial hypertrophic cardiomyopathy, progressive muscular dystrophy, myotonic syndrome | def: Steinert disease, also known as myotonic dystrophy type 1, is a muscle disease characterized by myotonia and by multiorgan damage that combines various degrees of muscle weakness, arrhythmia and/or ca...",
+"ko": "근긴장성 이영양증 1형",
+"alt": [
+"근긴장성 근디스트로피 1형"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002354",
+"concept": "- MONDO:0002354 | benign laryngeal neoplasm | syn: benign laryngeal neoplasm; benign laryngeal tumor; benign laryngeal tumour; benign larynx neoplasm | ancestors: respiratory system benign neoplasm, laryngeal neoplasm, respiratory system disorder, benign neoplasm | def: A non-metastasizing neoplasm that arises from the larynx. Representative examples include squamous papilloma and hemangioma.",
+"ko": "후두 양성 신생물",
+"alt": [
+"후두 양성 종양"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0043314",
+"concept": "- MONDO:0043314 | aquarium granuloma | syn: aquarium granuloma; fish tank granuloma; Mycobacterium marinum caused skin disease; Mycobacterium marinum skin disease | ancestors: mycobacterial infectious disease, skin disease caused by bacterial infection, bacterial infectious disease, skin disorder caused by infection | def: A skin condition caused by Mycobacterium marinum, characterized by a skin lesion that presents roughly three weeks after exposure.",
+"ko": "수족관 육아종",
+"alt": [
+"어항 육아종"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0016620",
+"concept": "- MONDO:0016620 | primary hypertrophic osteoarthropathy | syn: hypertrophic osteoarthropathy, primary; hypertrophic osteoarthropathy, primary, autosomal recessive, type 1; hypertropic osteoarthropathy, primary; idiopathic hypertrophic osteoarthropathy | ancestors: syndromic disease, hereditary disease, disease by body system or component, disease of genetic or genomic mechanism | def: A genetically and clinically heterogeneous inherited disorder characterized by digital clubbing and osteoarthropathy, with variable features of pachydermia, delayed closure of the fontanels, and conge...",
+"ko": "원발성 비후성 골관절병증",
+"alt": [
+"일차성 비후성 골관절병증"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 12,
+"new": false
+},
+{
+"id": "MONDO:0054581",
+"concept": "- MONDO:0054581 | Townes-Brocks syndrome 1 | syn: townes-brocks branchiootorenal-like syndrome; Townes-Brocks syndrome 1 | ancestors: Townes-Brocks syndrome, polydactyly-syndactyly-triphalangism, autosomal dominant disease, syndromic disease",
+"ko": "타운스-브록스 증후군 1형",
+"alt": [],
+"organs": [
+"renal",
+"gastrointestinal",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004081",
+"concept": "- MONDO:0004081 | extrahepatic bile duct clear cell adenocarcinoma | syn: bile duct clear cell adenocarcinoma; clear cell adenocarcinoma of bile duct; clear cell adenocarcinoma of the bile duct; clear cell bile duct adenocarcinoma | ancestors: extrahepatic bile duct adenocarcinoma, clear cell adenocarcinoma, extrahepatic bile duct carcinoma, bile duct adenocarcinoma | def: A morphologic variant of extrahepatic bile duct adenocarcinoma characterized by the presence of malignant glandular epithelium composed of clear cells.",
+"ko": "간외 담관 투명세포 선암종",
+"alt": [],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0018984",
+"concept": "- MONDO:0018984 | Oroya fever | syn: Bartonella bacilliformis caused disease or disorder; Bartonella bacilliformis disease or disorder; Bartonella bacilliformis infectious disease; bartonellosis due to Bartonella bacilliformis infection | ancestors: bartonellosis, primary bacterial infectious disease, Bartonellaceae infectious disease, bacterial infectious disease | def: An infection that is caused by Bartonella bacilliformis, which is transmitted to humans from infected sandflies. The acute phase (Oroya fever) is characterized by fever, headache, myalgia, enlargement...",
+"ko": "오로야열",
+"alt": [
+"카리온병"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002866",
+"concept": "- MONDO:0002866 | duodenal disorder | syn: disease of duodenum; disease or disorder of duodenum; disorder of duodenum; duodenum disease | ancestors: small intestine disorder, intestinal disorder, digestive system disorder, disease by body system or component | def: Pathological conditions in the duodenum region of the small intestine (intestine, small).",
+"ko": "십이지장 질환",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0016823",
+"concept": "- MONDO:0016823 | mycetoma | syn: Madura foot | ancestors: infectious disease, subcutaneous tissue disorder, disease of primarily extrinsic mechanism, integumentary system disorder | def: Mycetomas are subcutaneous inflammatory pseudotumors containing fungal or actinomycetic (bacteria with branched filaments) granules or grains.",
+"ko": "균종",
+"alt": [
+"마두라발"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0044743",
+"concept": "- MONDO:0044743 | major salivary gland cancer | syn: cancer of major salivary gland; malignant major salivary gland neoplasm; malignant major salivary gland tumor; malignant major salivary gland tumour | ancestors: salivary gland cancer, neoplasm of major salivary gland, oral cavity cancer, head and neck cancer | def: A primary or metastatic malignant neoplasm affecting the major salivary glands. Representative examples include carcinoma, lymphoma, and sarcoma.",
+"ko": "큰침샘암",
+"alt": [
+"주침샘암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0007872",
+"concept": "- MONDO:0007872 | LADD syndrome | syn: Lacrimo-auriculo-dento-digital syndrome; Lacrimoauriculodento-digital syndrome; LACRIMOAURICULODENTODIGITAL syndrome; lacrimoauriculodentodigital syndrome | ancestors: autosomal dominant disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, polydactyly-syndactyly-triphalangism, autosomal genetic disease | def: A multiple congenital anomaly syndrome characterized by hypoplasia, aplasia or atresia of the lacrimal system; anomalies of the ears and hearing loss; hypoplasias, apalsias or atresias of the salivary...",
+"ko": "LADD 증후군",
+"alt": [
+"눈물샘-귀-치아-손가락 증후군"
+],
+"organs": [
+"gastrointestinal",
+"ocular",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002812",
+"concept": "- MONDO:0002812 | infectious otitis interna | syn: infectious labyrinthitis; infectious otitis interna; inner Ear infection; inner ear infection | ancestors: labyrinthitis, ear infection, post-infectious disorder, inner ear disorder | def: Inflammation of the anatomical structures of the inner ear secondary to an infectious process. Symptoms include severe vertigo, nausea, vomiting, anxiety, and pain. Viral etiology is most common, and ...",
+"ko": "감염성 내이염",
+"alt": [
+"감염성 미로염"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004382",
+"concept": "- MONDO:0004382 | laryngeal disorder | syn: disease of larynx; disease or disorder of larynx; disorder of larynx; disorder of the larynx | ancestors: upper respiratory tract disorder, respiratory system disorder, disease by body system or component, human disease | def: A non-neoplastic or neoplastic disorder that affects the larynx. Representative examples include laryngitis, vocal cord polyp, squamous papilloma, and carcinoma.",
+"ko": "후두 질환",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0004698",
+"concept": "- MONDO:0004698 | intestine carcinoma in situ | syn: carcinoma in situ of intestine; intestine in situ carcinoma; stage 0 intestine carcinoma | ancestors: in situ carcinoma, intestinal cancer, digestive system carcinoma, carcinoma | def: A carcinoma in situ involving a intestine.",
+"ko": "장 상피내암종",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014880",
+"concept": "- MONDO:0014880 | Duane retraction syndrome 3 with or without deafness | syn: Duane retraction syndrome 3 with or without deafness; Duane retraction syndrome caused by mutation in MAFB; DURS3; MAFB Duane retraction syndrome | ancestors: Duane retraction syndrome, syndromic disease, nuclear oculomotor paralysis, hereditary neurological disease | def: Duane syndrome type 3 is a disorder of eye movement.The affected eye, or eyes, has limited ability to move both inward toward the nose and outward toward the ears. The eye opening narrows and the eyeb...",
+"ko": "난청을 동반하거나 동반하지 않는 두안 후퇴 증후군 3형",
+"alt": [
+"두안 증후군 3형"
+],
+"organs": [
+"ocular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004570",
+"concept": "- MONDO:0004570 | intestinal volvulus | syn: volvulus | ancestors: intestinal obstruction, intestinal disorder, digestive system disorder, disease by body system or component | def: Twisting of a loop of bowel that results in intestinal obstruction.",
+"ko": "장 꼬임",
+"alt": [
+"장염전"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007686",
+"concept": "- MONDO:0007686 | gray platelet syndrome | syn: Alpha storage pool deficiency; BDPLT4; GPS; gray platelet syndrome | ancestors: inherited bleeding disorder, platelet-type, syndromic disease, alpha granule disease, hemorrhagic disease | def: A rare inherited bleeding disorder caused by a variation in the NBEAL2 gene, characterized by macrothrombocytopenia, myelofibrosis, splenomegaly and typical gray appearance of platelets on Wright stai...",
+"ko": "회색 혈소판 증후군",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0007009",
+"concept": "- MONDO:0007009 | ureterolithiasis | syn: calculus of ureter; ureteric stone | ancestors: ureteral disorder, urinary bladder disorder, urinary system disorder, disease by body system or component | def: The presence of a calculus in the ureter of the kidney; this is most often composed of mineral salts and proteins.",
+"ko": "요관결석증",
+"alt": [
+"요관 결석"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0023726",
+"concept": "- MONDO:0023726 | mediastinal yolk sac tumor | syn: endodermal sinus neoplasm of mediastinum; endodermal sinus neoplasm of the mediastinum; endodermal sinus tumor of mediastinum; endodermal sinus tumor of the mediastinum | ancestors: yolk sac tumor, mediastinal malignant germ cell tumor, extragonadal nonseminomatous germ cell tumor, extragonadal germ cell cancer | def: An extragonadal non-seminomatous malignant germ cell tumor that arises from the mediastinum. It is characterized by the presence of small pale cells with small amount of cytoplasm and round to oval nu...",
+"ko": "종격동 난황낭종양",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0008918",
+"concept": "- MONDO:0008918 | carnitine-acylcarnitine translocase deficiency | syn: CACT deficiency; carnitine-acylcarnitine translocase deficiency | ancestors: disorder of fatty acid oxidation and ketogenesis, disorder of carnitine cycle and carnitine transport, disorder of fatty acid and ketone body metabolism, inherited fatty acid metabolism disorder | def: Carnitine-acylcarnitine translocase (CACT) deficiency is a life-threatening, inherited disorder of fatty acid oxidation which usually presents in the neonatal period with severe hypoketotic hypoglycem...",
+"ko": "카르니틴-아실카르니틴 전위효소 결핍증",
+"alt": [
+"CACT 결핍증"
+],
+"organs": [
+"hepatic",
+"cardiovascular",
+"metabolic_endocrine"
+],
+"kcd_links": 0,
+"new": true
+}
+]

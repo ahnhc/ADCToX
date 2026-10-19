@@ -1,0 +1,265 @@
+[
+{
+"id": "MONDO:0003825",
+"concept": "- MONDO:0003825 | kidney oncocytoma | syn: kidney oncocytic neoplasm; kidney oncocytoma; oncocytoma of kidney; oncocytoma of the kidney | ancestors: kidney benign neoplasm, oncocytic neoplasm, benign epithelial neoplasm, benign urinary system neoplasm | def: A benign tumor of the kidney, characterized by the presence of large cells with abundant eosinophilic granular cytoplasm. The majority of these tumors are discovered incidentally, during work-up of ot...",
+"ko": "신장 호산과립세포종",
+"alt": [
+"신장 온코사이토마"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0013845",
+"concept": "- MONDO:0013845 | auriculocondylar syndrome 2 | syn: Auriculocondylar syndrome 2; auriculocondylar syndrome caused by mutation in PLCB4; Auriculocondylar syndrome type 2; PLCB4 auriculocondylar syndrome | ancestors: auriculocondylar syndrome, ear malformation, hereditary disease, disease of genetic or genomic mechanism | def: Any auriculocondylar syndrome in which the cause of the disease is a mutation in the PLCB4 gene.",
+"ko": "이개과두 증후군 2형",
+"alt": [],
+"organs": [
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024540",
+"concept": "- MONDO:0024540 | Jervell and Lange-Nielsen syndrome 1 | syn: Jervell and Lange-Nielsen syndrome 1; Jervell and Lange-Nielsen syndrome caused by mutation in KCNQ1; KCNQ1 Jervell and Lange-Nielsen syndrome | ancestors: Jervell and Lange-Nielsen syndrome, familial long QT syndrome, long QT syndrome, hereditary disease | def: Any Jervell and Lange-Nielsen syndrome in which the cause of the disease is a mutation in the KCNQ1 gene.",
+"ko": "예르벨-랑게닐센 증후군 1",
+"alt": [],
+"organs": [
+"cardiovascular",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0004643",
+"concept": "- MONDO:0004643 | myeloid leukemia | syn: leukaemia granulocytic; leukaemia myeloid; leukemia granulocytic; leukemia myelogenous | ancestors: leukemia, myeloproliferative neoplasm, hematopoietic and lymphoid cell neoplasm, myeloid neoplasm | def: A clonal proliferation of myeloid cells and their precursors in the bone marrow, peripheral blood, and spleen. When the proliferating cells are immature myeloid cells and myeloblasts, it is called acu...",
+"ko": "골수성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0017850",
+"concept": "- MONDO:0017850 | sirenomelia | syn: symmelia | ancestors: familial caudal dysgenesis, hereditary disease, caudal regression-sirenomelia spectrum, disease of genetic or genomic mechanism | def: Sirenomelia is a rare, genetic, developmental defect during embryogenesis disorder characterized by fusion of the lower limbs and associated with some degree of lower extremity reduction and persisten...",
+"ko": "인어체증",
+"alt": [
+"시레노멜리아"
+],
+"organs": [
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0000432",
+"concept": "- MONDO:0000432 | lymphoplasmacytic lymphoma | syn: Immunocytoma, lymphoplasmacytic type; lymphoma, lymphoplasmacytic, malignant; lymphoma, plasmacytic; lymphoplasmacytic lymphoma | ancestors: B-cell neoplasm, leukocyte disorder, lymphoma, immune system disorder | def: A clonal neoplasm of small B-lymphocytes, lymphoplasmacytoid cells, and plasma cells involving the bone marrow, lymph nodes, and the spleen. The majority of patients have a serum IgM paraprotein.",
+"ko": "림프형질세포림프종",
+"alt": [
+"림프형질세포성 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009612",
+"concept": "- MONDO:0009612 | methylmalonic aciduria due to methylmalonyl-CoA mutase deficiency | syn: methylmalonic acidemia due to methylmalonyl-CoA mutase deficiency; methylmalonic aciduria due to methylmalonyl-CoA mutase deficiency; methylmalonyl-CoA mutase deficiency; methylmalonyl-Coenzyme A mutase deficiency | ancestors: methylmalonic acidemia, classic organic aciduria, inborn organic aciduria, inborn disorder of amino acid metabolism | def: Vitamin B12-unresponsive methylmalonic acidemia is an inborn error of vitamin B12 (cobalamin) metabolism characterized by recurrent ketoacidotic crises or transient vomiting, dehydration, hypotonia an...",
+"ko": "메틸말로닐-CoA 뮤타제 결핍에 의한 메틸말론산뇨증",
+"alt": [
+"메틸말론산혈증"
+],
+"organs": [
+"renal",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009902",
+"concept": "- MONDO:0009902 | cutaneous porphyria | syn: CEP; Congenital Erythropoietic Porphyria; cutaneous porphyria; erythropoietic porphyria | ancestors: familial hemolytic anemia, inherited porphyria, anemia due to erythrocyte enzyme disorder, hemolytic anemia | def: An erythropoietic porphyria (massive accumulation of photoreactive porphyrins in the bone marrow erythroid cells and circulating erythrocytes, resulting in cutaneous photosensitivity) caused by bialle...",
+"ko": "피부 포르피린증",
+"alt": [
+"선천성 적혈구생성 포르피린증"
+],
+"organs": [
+"haematologic",
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0006553",
+"concept": "- MONDO:0006553 | Fox-Fordyce disease | syn: Fox-Fordyce disease | ancestors: sweat gland disorder, skin disorder, integumentary system disorder, disease by body system or component | def: A chronic skin disease most common in women aged 13-35 years.It is characterized by the development of intense itching in the underarm area, the pubic area, and around the nipple of the breast as a re...",
+"ko": "폭스-포다이스병",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002386",
+"concept": "- MONDO:0002386 | mixed epithelial stromal tumor of the kidney | syn: benign MEST; MEST; mixed epithelial and stromal tumor of kidney; mixed epithelial and stromal tumour of kidney | ancestors: mixed epithelial stromal tumor, kidney neoplasm, mixed neoplasm, kidney disorder | def: A rare, usually benign neoplasm that arises from the kidney. It usually affects females. It is characterized by the presence of a biphasic pattern with tubular and cystic structures in a spindle cell ...",
+"ko": "신장 혼합 상피기질 종양",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001056",
+"concept": "- MONDO:0001056 | gastric cancer | syn: Ca lesser curvature - stomach; cancer of stomach; gastric cancer; gastric cancer risk after h. pylori infection | ancestors: digestive system cancer, gastric neoplasm, digestive system disorder, cancer | def: A primary or metastatic malignant neoplasm involving the stomach.",
+"ko": "위암",
+"alt": [
+"위의 악성 신생물"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 18,
+"new": false
+},
+{
+"id": "MONDO:0016466",
+"concept": "- MONDO:0016466 | asbestosis | syn: asbestos dust pneumoconiosis; asbestos pneumoconiosis; asbestosis; pneumoconiosis from asbestos dust | ancestors: pneumoconiosis, interstitial lung disease, lung disorder, lower respiratory tract disorder | def: A lung disorder caused by inhalation of asbestos fibers. It results in fibrosis of the lung parenchyma. Signs and symptoms include coughing, shortness of breath and chest pain.",
+"ko": "석면폐증",
+"alt": [
+"석면 진폐증"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005156",
+"concept": "- MONDO:0005156 | encephalomyelitis | syn: central nervous system inflammation; encephalitis and/or myelitis; inflammation of central nervous system | ancestors: central nervous system disorder, inflammatory disease, nervous system disorder, disease by developmental or physiological process | def: Inflammation of the brain and the spinal cord.",
+"ko": "뇌척수염",
+"alt": [],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006676",
+"concept": "- MONDO:0006676 | beriberi | syn: Beri Beri; thiamine deficiency; vitamin B1 deficiency | ancestors: vitamin B deficiency, vitamin deficiency disorder, nutritional deficiency disease, nutritional disorder | def: Beriberi is a condition that occurs in people who are deficient in thiamine (vitamin B1). There are two major types of beriberi: wet beriberi which affects the cardiovascular system and dry beriberi w...",
+"ko": "각기병",
+"alt": [
+"비타민 B1 결핍증"
+],
+"organs": [
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0011214",
+"concept": "- MONDO:0011214 | progressive familial intrahepatic cholestasis type 3 | syn: ABCB4 progressive familial intrahepatic cholestasis; cholestasis, progressive familial intrahepatic 3; cholestasis, progressive familial intrahepatic, type 3; MDR3 Deficiency | ancestors: progressive familial intrahepatic cholestasis, syndromic disease, familial intrahepatic cholestasis, inborn disorder of bilirubin metabolism | def: Progressive familial intrahepatic cholestasis type 3 (PFIC3), a type of progressive familial intrahepatic cholestasis (PFIC), is a late-onset hereditary disorder in bile formation that is hepatocellul...",
+"ko": "진행성 가족성 간내 담즙정체증 3형",
+"alt": [
+"ABCB4 결핍증"
+],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016824",
+"concept": "- MONDO:0016824 | infantile myofibromatosis | syn: infantile hemangiopericytoma; infantile myofibromatosis; multicentric myofibromatosis; myofibromatosis | ancestors: benign perivascular tumor, hereditary disorder of connective tissue, benign soft tissue neoplasm, pericytic neoplasm | def: A benign, multifocal, nodular and well-circumscribed neoplasm usually seen as a congenital neoplasm or in the first year of life. It is characterized by a biphasic growth pattern and is composed of sm...",
+"ko": "영아 근섬유종증",
+"alt": [
+"다발성 근섬유종증"
+],
+"organs": [
+"dermatologic",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0009430",
+"concept": "- MONDO:0009430 | hypophosphatemic rickets, autosomal recessive, 1 | syn: autosomal recessive hypophosphatemic rickets caused by mutation in DMP1; DMP1 autosomal recessive hypophosphatemic rickets; hypophosphatemic rickets, AR; hypophosphatemic rickets, autosomal recessive, 1 | ancestors: autosomal recessive hypophosphatemic rickets, abnormal mineralization disorder, hereditary hypophosphatemic rickets, autosomal recessive disease | def: Any autosomal recessive hypophosphatemic rickets in which the cause of the disease is a mutation in the DMP1 gene.",
+"ko": "상염색체 열성 저인산혈증 구루병 1형",
+"alt": [
+"DMP1 상염색체 열성 저인산혈증 구루병"
+],
+"organs": [
+"renal",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000754",
+"concept": "- MONDO:0000754 | anal fistula | syn: anal fistula; anal fistula (disease); anorectal fistula | ancestors: rectal disorder, intestinal fistula, large intestine disorder, intestinal disorder | def: An intestinal disorder characterized by an opening in the anal canal to the perianal skin. In the vast majority of cases there is a history of perianal abscess.",
+"ko": "항문루",
+"alt": [
+"항문 누공"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4,
+"new": false
+},
+{
+"id": "MONDO:0005820",
+"concept": "- MONDO:0005820 | Lassa fever | syn: Lassa hemorrhagic fever; LF | ancestors: arenavirus hemorrhagic fever, lassa virus infectious disease, vector-borne disease, Arenaviridae infectious disease | def: A viral hemorrhagic fever that is caused by the Lassa virus, which is transmitted by contact with infected rodents; it is characterized by fever, headache, malaise, myalgia, and hearing loss.",
+"ko": "라사열",
+"alt": [
+"라사 출혈열"
+],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004474",
+"concept": "- MONDO:0004474 | gallbladder lymphoma | syn: gall bladder lymphoma; gallbladder lymphoma; lymphoma of gall bladder; lymphoma of gallbladder | ancestors: gastrointestinal lymphoma, gallbladder cancer, digestive system cancer, lymphoma | def: A lymphoma that arises from the gallbladder, with the bulk of the tumor located at this site.",
+"ko": "담낭 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"hepatic",
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 0,
+"new": true
+}
+]

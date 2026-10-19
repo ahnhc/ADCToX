@@ -1,0 +1,262 @@
+[
+{
+"id": "MONDO:0019508",
+"concept": "- MONDO:0019508 | van der Woude syndrome | syn: cleft lip/palate with mucous cysts of lower lip; lip-pit syndrome; VWS | ancestors: hereditary disease, multiple congenital anomalies/dysmorphic syndrome without intellectual disability, IRF6-related condition, disease of genetic or genomic mechanism | def: Van der Woude syndrome (VWS) is a rare congenital genetic dysmorphic syndrome characterized by paramedian lower-lip fistulae, cleft lip with or without cleft palate, or isolated cleft palate.",
+"ko": "반 데르 보우데 증후군",
+"alt": [
+"입술 오목-구순구개열 증후군"
+],
+"organs": [
+"gastrointestinal",
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0007099",
+"concept": "- MONDO:0007099 | familial visceral amyloidosis | syn: amyloidosis, 3 or more types; amyloidosis, familial renal; amyloidosis, Ostertag type; amyloidosis, renal | ancestors: familial amyloid neuropathy, hereditary amyloidosis, hereditary peripheral neuropathy, inborn errors of metabolism",
+"ko": "가족성 내장 아밀로이드증",
+"alt": [],
+"organs": [
+"hepatic",
+"renal",
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001954",
+"concept": "- MONDO:0001954 | thrombophlebitis migrans | ancestors: thrombophlebitis, phlebitis, vein disorder, vasculitis | def: A thrombophlebitis that is characterized by repeated occurrences of thrombophlebitis in different locations.",
+"ko": "유주성 혈전정맥염",
+"alt": [
+"이주성 혈전정맥염"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009404",
+"concept": "- MONDO:0009404 | hypertelorism, microtia, facial clefting syndrome | syn: Bixler-Christian-Gorlin syndrome; HMC syndrome; hypertelorism, microtia, facial clefting syndrome; hypertelorism-microtia-facial clefting syndrome | ancestors: autosomal recessive disease, multiple congenital anomalies/dysmorphic syndrome-intellectual disability, autosomal genetic disease, multiple congenital anomalies/dysmorphic syndrome | def: Hypertelorism-microtia-facial clefting syndrome, or HMC syndrome, is a very rare syndrome characterized by the combination of hypertelorism, cleft lip and palate and microtia.",
+"ko": "눈사이멀어짐-소이증-안면 열 증후군",
+"alt": [
+"비클러-크리스천-고를린 증후군",
+"HMC 증후군"
+],
+"organs": [
+"gastrointestinal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0006085",
+"concept": "- MONDO:0006085 | angiolipoma | syn: angiolipoma, benign | ancestors: lipoma, benign lipomatous neoplasm, benign connective and soft tissue neoplasm, tumor of adipose tissue | def: A lipoma with prominent vascularity. The vascular tissue is more abundant at the periphery of the tumor and contains fibrin thrombi. It occurs more frequently in younger individuals as a painful subcu...",
+"ko": "혈관지방종",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0002181",
+"concept": "- MONDO:0002181 | exostosis | syn: bone osteophyte; exostosis | ancestors: hyperostosis, bone remodeling disease, bone disorder, skeletal system disorder | def: Non-neoplastic overgrowth of bone.",
+"ko": "외골종",
+"alt": [
+"뼈돌기"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 5,
+"new": false
+},
+{
+"id": "MONDO:0009175",
+"concept": "- MONDO:0009175 | eosinophilic fasciitis | syn: diffuse fasciitis with eosinophilia; eosinophilic fasciitis; eosinophilic fasciitis (disease); Shulman syndrome | ancestors: fasciitis, acquired idiopathic inflammatory myopathy, musculoskeletal system disorder, connective tissue disorder | def: Eosinophilic fasciitis is a rare connective tissue disease that is characterized by inflammation and thickening of the fascia, usually associated with peripheral eosinophilia. It presents during adult...",
+"ko": "호산구성 근막염",
+"alt": [],
+"organs": [
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003255",
+"concept": "- MONDO:0003255 | mediastinal granular cell myoblastoma | syn: granular cell myoblastoma of mediastinum; granular cell myoblastoma of the mediastinum; granular cell neoplasm of mediastinum; granular cell neoplasm of the mediastinum | ancestors: granular cell tumor, neoplasm of mediastinum, nerve sheath neoplasm, neoplasm of thorax | def: An exceptionally rare, generally benign, granular cell tumor that arises from the mediastinum. All the reported cases were located in the posterior mediastinum.",
+"ko": "종격동 과립세포 근아세포종",
+"alt": [],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0020453",
+"concept": "- MONDO:0020453 | congenital partial pulmonary venous return anomaly | syn: Partial anomalous pulmonary Venous connection; Partial anomalous pulmonary Venous return | ancestors: congenital pulmonary venous return anomaly, congenital pulmonary veins anomaly, congenital heart disease, heart disorder | def: Partial pulmonary venous return (PAPVR) is a form of congenital pulmonary venous return where one or a few of the pulmonary veins drain into the right atrium or one of its tributaries instead of the l...",
+"ko": "선천성 부분 폐정맥 환류 이상",
+"alt": [
+"부분 폐정맥 이상 연결"
+],
+"organs": [
+"cardiovascular",
+"pulmonary"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009192",
+"concept": "- MONDO:0009192 | Wolcott-Rallison syndrome | syn: early-onset diabetes mellitus with multiple epiphyseal dysplasia; Wolcott-Rallison syndrome; WRS | ancestors: syndromic disease, autosomal recessive disease, spondyloepiphyseal dysplasia, disease by body system or component | def: Wolcott-Rallison syndrome (WRS) is a very rare genetic disease, characterized by permanent neonatal diabetes mellitus (PNDM) with multiple epiphyseal dysplasia and other clinical manifestations, inclu...",
+"ko": "월콧-랠리슨 증후군",
+"alt": [],
+"organs": [
+"hepatic",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002897",
+"concept": "- MONDO:0002897 | secondary syphilis | ancestors: syphilis, primary bacterial infectious disease, Treponema infectious disease, bacterial infectious disease | def: The secondary stage of syphilis typically that is characterized by generalized rash (including palms and soles), mucocutaneous lesions, and lymphadenopathy. It usually begins one to two months after t...",
+"ko": "2기 매독",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0014435",
+"concept": "- MONDO:0014435 | Bardet-Biedl syndrome 7 | syn: Bardet-Biedl syndrome 7; Bardet-Biedl syndrome caused by mutation in BBS7; Bardet-Biedl syndrome type 7; BBS7 | ancestors: Bardet-Biedl syndrome, BBS7-related ciliopathy, syndromic disease, ciliopathy | def: Any Bardet-Biedl syndrome in which the cause of the disease is a mutation in the BBS7 gene.",
+"ko": "바르데-비들 증후군 7형",
+"alt": [],
+"organs": [
+"renal",
+"ocular",
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0033664",
+"concept": "- MONDO:0033664 | Kilquist syndrome | syn: KILQS; SLC12A2-related autosomal recessive neonatal-developmental delay-intellectual disability-feeding difficulty-sensorineural deafness syndrome | ancestors: autosomal recessive disease, SLC12A2-related developmental delay-intellectual disability-sensorineural deafness syndrome, autosomal genetic disease, multiple congenital anomalies/dysmorphic syndrome-intellectual disability | def: An autosomal recessive multisystem disorder characterized by neurologic, gastrointestinal, and secretory dysfunction. Affected individuals present at birth with hypotonia, feeding difficulties, mild d...",
+"ko": "킬퀴스트 증후군",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"neurologic",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001827",
+"concept": "- MONDO:0001827 | white piedra | syn: Tinea blanca | ancestors: piedra, trichosporonosis, disorder of pilosebaceous unit, superficial mycosis | def: A superficial mycosis due to T beigelii that is characterized by a soft, friable, beige nodule of the distal ends of hair shafts.",
+"ko": "백색 모발결절증",
+"alt": [
+"백색 피에드라"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0003608",
+"concept": "- MONDO:0003608 | optic atrophy | syn: atrophy of optic disk | ancestors: optic nerve disorder, central nervous system disorder, cranial nerve neuropathy, disorder of visual system | def: A disorder characterized by loss of optic nerve fibers. It may be inherited or acquired. Acquired causes include ischemia, optic nerve neuropathy, glaucoma, trauma, radiation, brain tumors, and multip...",
+"ko": "시신경 위축",
+"alt": [],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001270",
+"concept": "- MONDO:0001270 | stone in bladder diverticulum | syn: calculus in diverticulum of bladder | ancestors: bladder calculus, bladder diverticulum, lower urinary tract calculus, urinary bladder disorder",
+"ko": "방광 게실 내 결석",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002736",
+"concept": "- MONDO:0002736 | ampulla of vater mucinous adenocarcinoma | syn: ampulla of Vater mucinous adenocarcinoma; hepatopancreatic ampulla mucinous adenocarcinoma | ancestors: ampulla of vater adenocarcinoma, extrahepatic bile duct mucinous adenocarcinoma, extrahepatic bile duct adenocarcinoma, duodenal adenocarcinoma | def: A carcinoma with glandular differentiation arising from the ampulla of Vater. Morphologically, it is characterized by the presence of mucoid stroma formation.",
+"ko": "바터팽대부 점액성 선암",
+"alt": [
+"팽대부 점액성 선암"
+],
+"organs": [
+"hepatic",
+"gastrointestinal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:1061001",
+"concept": "- MONDO:1061001 | Gianotti-Crosti syndrome | syn: Crosti-Gianotti syndrome; Gianotti Crosti syndrome; Gianotti-Crosti syndrome; infantile papular acrodermatitis | ancestors: acrodermatitis, dermatitis, skin disorder, inflammatory disease | def: An acrodermatitis characterized by the acute onset of a self-limited, symmetrical, monomorphic papular or papulovesicular eruption predominantly on the cheeks, buttocks and extensor surfaces of the ex...",
+"ko": "잔노티-크로스티 증후군",
+"alt": [
+"소아 구진성 말단피부염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": true
+},
+{
+"id": "MONDO:0006869",
+"concept": "- MONDO:0006869 | nodular goiter | syn: goiter, nodular; nodular goiter; nodular goiter (disease); nodular goitre (disease) | ancestors: goiter, thyroid gland disorder, endocrine system disorder, disease by body system or component | def: Goiter characterized by discrete tissue mass(es) that may or may not produce thyroid hormones.",
+"ko": "결절성 갑상선종",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0002266",
+"concept": "- MONDO:0002266 | malt worker's lung | syn: Aspergillus caused extrinsic allergic alveolitis; Aspergillus extrinsic allergic alveolitis; malt workers lung; Malt workers' lung | ancestors: pulmonary aspergilloma, allergic bronchopulmonary aspergillosis, hypersensitivity pneumonitis, occupational lung disease | def: An extrinsic allergic alveolitis caused by infection with Aspergillus.",
+"ko": "맥아 노동자 폐",
+"alt": [
+"맥아공 폐"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+}
+]

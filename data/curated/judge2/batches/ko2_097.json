@@ -1,0 +1,241 @@
+[
+{
+"id": "MONDO:0017124",
+"concept": "- MONDO:0017124 | noma | syn: cancrum oris; gangrenous stomatitis | ancestors: ulcerative stomatitis, bacterial infectious disease, stomatitis, infectious disease | def: Noma is a gangrenous disease that causes severe destruction of the soft and osseous tissues of the face.",
+"ko": "노마",
+"alt": [
+"괴저성 구내염"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0006042",
+"concept": "- MONDO:0006042 | meningeal tuberculosis | syn: Meningitis, Tuberculous; TB meningitis; TBM; tubercular meningitis | ancestors: tuberculous salpingitis, central nervous system tuberculosis, bacterial meningitis, salpingitis | def: A bacterial infection of the membranes covering the brain and the spinal cord caused by Mycobacterium tuberculosis.",
+"ko": "결핵성 수막염",
+"alt": [
+"수막 결핵"
+],
+"organs": [
+"neurologic",
+"infectious_immune"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0018097",
+"concept": "- MONDO:0018097 | infantile spasms | syn: IESS; infantile epileptic spasms syndrome; infantile spasms; infantile spasms syndrome | ancestors: syndromic disease, neonatal/infantile-onset epilepsy syndrome with developmental and epileptic encephalopathy, disease by body system or component, neonatal/infantile epilepsy syndrome | def: A rare epilepsy syndrome characterized by onset of epileptic spasms in infants between 2 and 12 months of age, and rarely up to 24 months. Infants may have no antecedent history, or a history reflecti...",
+"ko": "영아 연축",
+"alt": [
+"영아 경련",
+"West 증후군"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0019259",
+"concept": "- MONDO:0019259 | classic phenylketonuria | syn: classic PKU | ancestors: phenylketonuria, autosomal recessive disease, phenylalanine hydroxylase deficiency, autosomal genetic disease | def: A phenylketonuria characterized by untreated blood phenylalanine concentrations above approximately 1200 umol/L, the most severe end of the phenylalanine hydroxylase deficiency spectrum, reflecting li...",
+"ko": "고전형 페닐케톤뇨증",
+"alt": [
+"고전적 PKU"
+],
+"organs": [
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001532",
+"concept": "- MONDO:0001532 | capillariasis | syn: Capillaria infection | ancestors: Enoplea infectious disease, Nematoda infectious disease, helminthiasis, parasitic infectious disease | def: A infectious disease involving the Capillaria.",
+"ko": "모세선충증",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002258",
+"concept": "- MONDO:0002258 | pharyngitis | syn: inflammation of throat; Sore throat; throat inflammation | ancestors: upper respiratory tract disorder, inflammatory disease, respiratory system disorder, disease by developmental or physiological process | def: Inflammation of the throat most often caused by viral and bacterial infections. Other causes include allergens, chemical substances, and trauma.",
+"ko": "인두염",
+"alt": [
+"목감기"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0001103",
+"concept": "- MONDO:0001103 | giardiasis | syn: Giardia infection | ancestors: protozoa infectious disease, parasitic intestinal disorder, parasitic infectious disease, intestinal disorder | def: An infection of the small intestine caused by the flagellated protozoan giardia lamblia. It is spread via contaminated food and water and by direct person-to-person contact.",
+"ko": "지아르디아증",
+"alt": [
+"편모충증"
+],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0020696",
+"concept": "- MONDO:0020696 | vitamin B12 deficiency | syn: cobalamin deficiency; hypocobalaminemia; vitamin b12 deficiency | ancestors: metabolic disease, vitamin B deficiency, disease by developmental or physiological process, vitamin deficiency disorder | def: A disease characterized by low serum levels of vitamin B12, either inherited or acquired.",
+"ko": "비타민 B12 결핍증",
+"alt": [],
+"organs": [
+"haematologic",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001383",
+"concept": "- MONDO:0001383 | degenerative myopia | syn: progressive high (degenerative) myopia | ancestors: myopia, eye degenerative disorder, hereditary disease, refractive error | def: Excessive axial myopia associated with complications (especially posterior staphyloma and choroidal neovascularization) that can lead to blindness.",
+"ko": "퇴행성 근시",
+"alt": [
+"병적 근시"
+],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0700126",
+"concept": "- MONDO:0700126 | trisomy 21 | ancestors: Down syndrome, trisomy, chromosome 21 disorder, aneuploidy | def: A chromosomal disorder consisting of the presence of an extra chromosome 21.",
+"ko": "21삼체성",
+"alt": [],
+"organs": [
+"cardiovascular",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0005659",
+"concept": "- MONDO:0005659 | atrophic rhinitis | ancestors: rhinitis, nasal cavity disorder, mucositis, nasal disorder | def: A chronic inflammation in which the nasal mucosa gradually changes from a functional to a non-functional lining without mucociliary clearance. It is often accompanied by degradation of the bony turbin...",
+"ko": "위축비염",
+"alt": [
+"위축성 비염"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0007345",
+"concept": "- MONDO:0007345 | aorta coarctation | syn: aortic coarctation | ancestors: hereditary disease, aortic disorder, disorder of development or morphogenesis, disease of genetic or genomic mechanism | def: Congenital narrowing of a segment of the aorta. Signs and symptoms include hypertension, muscle weakness, shortness of breath, headaches and leg cramps.",
+"ko": "대동맥 축착증",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0024954",
+"concept": "- MONDO:0024954 | larva migrans, visceral | ancestors: toxocariasis, cutaneous larva migrans, Ascaridida infectious disease, parasitic infectious disease | def: A condition produced in humans by the prolonged migration of animal nematode larvae in extraintestinal tissues other than skin; characterized by persistent hypereosinophilia, hepatomegaly, and frequen...",
+"ko": "내장 유충이행증",
+"alt": [],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0011731",
+"concept": "- MONDO:0011731 | glucose-galactose malabsorption | syn: glucose-galactose malabsorption; SGLT1 deficiency | ancestors: congenital diarrhea, intestinal disorder, glucose transport disorder, diarrheal disease | def: Glucose-galactose malabsorption (GGM) is a very rare, potentially lethal, genetic metabolic disease characterized by impaired glucose-galactose absorption resulting in severe watery diarrhea and dehyd...",
+"ko": "포도당-갈락토스 흡수장애",
+"alt": [
+"SGLT1 결핍증"
+],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0021202",
+"concept": "- MONDO:0021202 | allergic otitis media | syn: allergic form of otitis media (disease); allergic otitis media (disease) | ancestors: allergic disease, otitis media, hypersensitivity reaction disease, middle ear disorder | def: A otitis media (disease) with a basis in a pathological type I hypersensitivity reaction.",
+"ko": "알레르기성 중이염",
+"alt": [],
+"organs": [
+"infectious_immune",
+"otologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005651",
+"concept": "- MONDO:0005651 | arenavirus hemorrhagic fever | syn: arenaviral hemorrhagic fever | ancestors: Arenaviridae infectious disease, viral hemorrhagic fever, primary viral infectious disease, viral infectious disease | def: A viral infectious disease that involves fever and bleeding disorder caused by Arenavirus.",
+"ko": "아레나바이러스 출혈열",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0015696",
+"concept": "- MONDO:0015696 | Good syndrome | syn: thymoma-immunodeficiency; thymoma-immunodeficiency syndrome | ancestors: agammaglobulinemia, acquired immunodeficiency, B cell deficiency, immune system disorder | def: Good syndrome, also known as thymoma-immunodeficiency, is a very rare acquired immunodeficiency syndrome characterized by the association of thymoma and combined B-cell and T-cell immunodeficiency of ...",
+"ko": "굿 증후군",
+"alt": [
+"흉선종-면역결핍 증후군"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0008481",
+"concept": "- MONDO:0008481 | spondylosis, cervical | syn: spondylosis, cervical | ancestors: hereditary disease, disease of genetic or genomic mechanism, disease by etiologic mechanism, human disease",
+"ko": "경추 척추증",
+"alt": [
+"경추증"
+],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 10
+},
+{
+"id": "MONDO:0004643",
+"concept": "- MONDO:0004643 | myeloid leukemia | syn: leukaemia granulocytic; leukaemia myeloid; leukemia granulocytic; leukemia myelogenous | ancestors: leukemia, myeloproliferative neoplasm, hematopoietic and lymphoid cell neoplasm, myeloid neoplasm | def: A clonal proliferation of myeloid cells and their precursors in the bone marrow, peripheral blood, and spleen. When the proliferating cells are immature myeloid cells and myeloblasts, it is called acu...",
+"ko": "골수성 백혈병",
+"alt": [],
+"organs": [
+"haematologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0004909",
+"concept": "- MONDO:0004909 | urethral gland abscess | ancestors: urethral disorder, urinary system disorder, disease by body system or component, human disease",
+"ko": "요도샘 농양",
+"alt": [],
+"organs": [
+"renal",
+"infectious_immune"
+],
+"kcd_links": 2
+}
+]

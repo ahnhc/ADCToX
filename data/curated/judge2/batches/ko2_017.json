@@ -1,0 +1,239 @@
+[
+{
+"id": "MONDO:0004668",
+"concept": "- MONDO:0004668 | fascioliasis | syn: Fasciolosis; infection by fasciola; sheep liver fluke infection | ancestors: helminthiasis, parasitic infectious disease, infectious disease, disease of primarily extrinsic mechanism | def: A parasitic infection that is caused by liver flukes, usually Fasciola hepatica, of sheep, goats, and cattle. Humans become infected by eating uncooked, infested aquatic vegetation (classically waterc...",
+"ko": "간질증",
+"alt": [
+"간디스토마증"
+],
+"organs": [
+"hepatic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0037792",
+"concept": "- MONDO:0037792 | carbohydrate metabolism disease | syn: carbohydrate metabolic process disease; disorder of carbohydrate metabolic process; disorder of carbohydrate metabolism | ancestors: metabolic disease, disease by developmental or physiological process, human disease, disease | def: A disease that has its basis in the disruption of carbohydrate metabolic process.",
+"ko": "탄수화물 대사 질환",
+"alt": [
+"탄수화물 대사 이상"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005842",
+"concept": "- MONDO:0005842 | maxillary sinusitis | ancestors: sinusitis, mouth disorder, disorder of facial skeleton, paranasal sinus disorder | def: An acute or chronic inflammatory process affecting the mucous membrane of the maxillary sinus.",
+"ko": "상악동염",
+"alt": [
+"상악 부비동염"
+],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006608",
+"concept": "- MONDO:0006608 | seborrheic dermatitis | syn: cradle Cap; seborrhea; seborrheic dermatitis; seborrheic dermatitis (disease) | ancestors: dermatitis, skin disorder, inflammatory disease, integumentary system disorder | def: A chronic, inflammatory skin disorder that affects the scalp, central face and skin folds; it is characterized by scaling and itching.",
+"ko": "지루피부염",
+"alt": [],
+"organs": [
+"dermatologic"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0002507",
+"concept": "- MONDO:0002507 | gingival overgrowth | syn: gingival enlargement | ancestors: gingival disorder, periodontal disorder, mouth mucosa disorder, skeletal system disorder | def: Excessive growth of the gingiva either by an increase in the size of the constituent cells (gingival hypertrophy) or by an increase in their number (gingival hyperplasia). (From Jablonski's Dictionary...",
+"ko": "잇몸 과성장",
+"alt": [
+"치은 증식"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0021287",
+"concept": "- MONDO:0021287 | carcinoma in situ of epiglottis | syn: carcinoma in situ of epiglottis; carcinoma in situ of the Epiglottis; epiglottic carcinoma in situ; Epiglottis carcinoma in situ | ancestors: epiglottis cancer, larynx carcinoma in situ, carcinoma in situ of hypopharynx, carcinoma in situ of oropharynx | def: A in situ carcinoma that involves the epiglottis.",
+"ko": "후두덮개 상피내암종",
+"alt": [],
+"organs": [
+"pulmonary",
+"gastrointestinal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015195",
+"concept": "- MONDO:0015195 | atresia of urethra | syn: atresia of urethra; atresia of urethra (disease); urethral atresia | ancestors: fetal lower urinary tract obstruction, kidney disorder, urogenital tract malformation, urinary system disorder | def: Atresia of the urethra is a rare congenital bladder outlet obstruction, a fetal lower urinary tract obstruction (fetal LUTO), that is usually fatal. Unless there is some other egress for the urine to ...",
+"ko": "요도 폐쇄증",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006919",
+"concept": "- MONDO:0006919 | potassium deficiency | ancestors: nutritional deficiency disease, nutritional disorder, disease by etiologic mechanism, human disease | def: A condition due to decreased dietary intake of potassium, as in starvation or failure to administer in intravenous solutions, or to gastrointestinal loss in diarrhea, chronic laxative abuse, vomiting,...",
+"ko": "칼륨 결핍증",
+"alt": [
+"저칼륨증"
+],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0002356",
+"concept": "- MONDO:0002356 | pancreas disorder | syn: disease of pancreas; disease or disorder of pancreas; disorder of pancreas; pancreas disease | ancestors: digestive system disorder, endocrine system disorder, disease by body system or component, human disease | def: A non-neoplastic or neoplastic disorder that affects the pancreas. Representative examples of non-neoplastic disorders include pancreatitis and pancreatic insufficiency. Representative examples of neo...",
+"ko": "췌장 질환",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"metabolic_endocrine"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004899",
+"concept": "- MONDO:0004899 | monofixation syndrome | syn: microstrabismus; microtropia | ancestors: strabismus, ocular motility disease, cranial nerve neuropathy, nervous system disorder",
+"ko": "단일 고정 증후군",
+"alt": [
+"미세사시"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0008449",
+"concept": "- MONDO:0008449 | spina bifida | syn: rachischisis; spina bifida; spina bifida (disease); spinal meningocele | ancestors: congenital nervous system disorder, spinal cord disorder, disorder of development or morphogenesis, nervous system disorder | def: A congenital neural tube defect in which vertebrae are not fully formed. It results in the protrusion of the spinal cord through the opening of the vertebrae.",
+"ko": "이분척추",
+"alt": [
+"척추갈림증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 7
+},
+{
+"id": "MONDO:0006614",
+"concept": "- MONDO:0006614 | subcorneal pustular dermatosis | syn: pustulosis subcornealis; Sneddon-Wilkinson disease; subcorneal pustular dermatitis; subcorneal pustular dermatosis | ancestors: autoimmune bullous skin disease, dermatitis, vesiculobullous skin disease, autoimmune disease | def: A rare, benign, chronic disease characterized by sterile pustular eruption, typically involving the flexural sites of the trunk and proximal extremities.",
+"ko": "각질층하 농포성 피부병",
+"alt": [
+"스네돈-윌킨슨병"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019992",
+"concept": "- MONDO:0019992 | pseudohypoparathyroidism | ancestors: inborn metal metabolism disorder, developmental anomaly of metabolic origin, inherited renal tubular disease, hereditary hypoparathyroidism | def: Pseudohypoparathyroidism (PHP) is a heterogeneous group of endocrine disorders characterized by normal renal function and resistance to the action of parathyroid hormone (PTH), manifesting with hypoca...",
+"ko": "가성부갑상선기능저하증",
+"alt": [],
+"organs": [
+"metabolic_endocrine",
+"musculoskeletal"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0015626",
+"concept": "- MONDO:0015626 | Charcot-Marie-Tooth disease | syn: Charcot Marie Tooth muscular atrophy; Charcot-Marie-Tooth disease; Charcot-Marie-Tooth hereditary neuropathy; CMT | ancestors: hereditary peripheral neuropathy, peripheral neuropathy, hereditary neuromuscular disease, peripheral nervous system disorder | def: An inherited degenerative disorder involving the peripheral nerves. It is caused by mutations in the genes that are responsible for the production of proteins necessary for the function and structure ...",
+"ko": "샤르코-마리-투스병",
+"alt": [
+"유전성 운동감각신경병증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019640",
+"concept": "- MONDO:0019640 | posterior urethral valve | syn: congenital posterior urethral valves; Posterior Urethral Valves; PUV | ancestors: fetal lower urinary tract obstruction, kidney disorder, urogenital tract malformation, urinary system disorder | def: Posterior urethral valve (PUV) is the most common anomaly of fetal lower urinary tract obstruction (LUTO) and is characterized by an abnormal congenital obstructing membrane that is located within the...",
+"ko": "후부요도판막",
+"alt": [
+"선천성 후부요도판막"
+],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0019609",
+"concept": "- MONDO:0019609 | Zellweger spectrum disorders | syn: cerebrohepatorenal syndrome; Zellweger spectrum disorders; Zellweger syndrome; ZS | ancestors: developmental anomaly of metabolic origin, peroxisome biogenesis disorder, metabolic disease, developmental defect during embryogenesis | def: The most severe variant seen in the peroxisome biogenesis disorders that is characterized by neuronal migration defects in the brain, dysmorphic craniofacial features, profound hypotonia, neonatal sei...",
+"ko": "젤베거 스펙트럼 질환",
+"alt": [
+"뇌간신 증후군"
+],
+"organs": [
+"hepatic",
+"renal",
+"neurologic",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0006966",
+"concept": "- MONDO:0006966 | secondary Parkinson disease | syn: secondary Parkinsonism; secondary parkinsonism (disorder) [ambiguous]; secondary parkinsonism, unspecified | ancestors: neurodegenerative disease, central nervous system disorder, nervous system disorder, disease by body system or component | def: A condition with a clinical picture similar to that of Parkinson disease, but which is caused by external factors, including medication.",
+"ko": "이차성 파킨슨병",
+"alt": [
+"이차성 파킨슨증"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0001565",
+"concept": "- MONDO:0001565 | abnormal retinal correspondence | ancestors: binocular vision disease, vision disorder, disorder of visual system, disease by body system or component",
+"ko": "이상 망막 대응",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0000873",
+"concept": "- MONDO:0000873 | lymphoblastic lymphoma | syn: lymphoblastic lymphoma; lymphoma, lymphoblastic, malignant; precursor cell lymphoblastic lymphoma; precursor lymphoblastic lymphoma | ancestors: precursor lymphoblastic lymphoma/leukemia, non-Hodgkin lymphoma, lymphoid neoplasm, lymphoma | def: A lymphoma composed of immature small to medium-sized precursor lymphoid cells (lymphoblasts). It includes the B- and T-cell lymphoblastic lymphoma.",
+"ko": "림프모구림프종",
+"alt": [
+"림프아구성 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001257",
+"concept": "- MONDO:0001257 | retinal microaneurysm | ancestors: retinal vascular disorder, retinal disorder, ocular vascular disorder, neurovascular disorder",
+"ko": "망막 미세동맥류",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 2
+}
+]

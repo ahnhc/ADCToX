@@ -1,0 +1,250 @@
+[
+{
+"id": "MONDO:0008831",
+"concept": "- MONDO:0008831 | asphyxiating thoracic dystrophy 1 | syn: asphyxiating thoracic dystrophy 1; asphyxiating thoracic dystrophy type 1; ATD1; short-rib thoracic dysplasia 1 with or without polydactyly | ancestors: Jeune syndrome, ciliopathy, short rib-polydactyly syndrome, inherited renal tubular disease | def: An asphyxiating thoracic dystrophy associated with variation in the region 15q13.",
+"ko": "질식성 흉곽 이형성증 1",
+"alt": [
+"질식성 흉부 이영양증 1형"
+],
+"organs": [
+"pulmonary",
+"renal",
+"musculoskeletal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0000239",
+"concept": "- MONDO:0000239 | adiaspiromycosis | syn: adiaspiromycosis; adiaspirosis; haplosporangiosis; pulmonary adiaspiromycosis | ancestors: primary systemic mycosis, fungal lung infectious disease, systemic mycosis, fungal infectious disease | def: Adiaspiromycosis is a rare fungal infection in the lung and is caused by inhalation of spores of the saprophytic soil fungus Chrysosporium parvum var crescens (previously known as Emmonsia crescens).",
+"ko": "아디아스피로진균증",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009968",
+"concept": "- MONDO:0009968 | renal tubular acidosis, distal, 2, with progressive sensorineural hearing loss | syn: distal renal tubular acidosis 2 with progressive sensorineural hearing loss; distal renal tubular acidosis co-occurrent with sensorineural deafness; renal tubular acidosis, distal, 2, with progressive sensorineural hearing loss; renal tubular acidosis, distal, with progressive nerve deafness | ancestors: autosomal recessive distal renal tubular acidosis, autosomal recessive disease, inherited distal renal tubular acidosis, autosomal genetic disease",
+"ko": "신세뇨관산증, 원위부, 2형, 진행성 감각신경성 난청 동반",
+"alt": [],
+"organs": [
+"renal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0024655",
+"concept": "- MONDO:0024655 | rheumatic pericarditis | syn: rheumatic pericarditis | ancestors: pericarditis, rheumatic heart disease, pericardium disorder, inflammatory disease",
+"ko": "류마티스성 심낭염",
+"alt": [],
+"organs": [
+"cardiovascular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0004250",
+"concept": "- MONDO:0004250 | extrahepatic bile duct papillary adenoma | syn: extrahepatic bile duct papillary adenoma; papillary adenoma of extrahepatic bile duct; papillary adenoma of the extrahepatic bile duct | ancestors: papillary adenoma, extrahepatic bile duct adenoma, bile duct papillary neoplasm, adenoma | def: An adenoma that arises from the extrahepatic bile ducts. It is characterized by the presence of a papillary growth pattern.",
+"ko": "간외 담관 유두상 선종",
+"alt": [],
+"organs": [
+"hepatic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0001243",
+"concept": "- MONDO:0001243 | disseminated intravascular coagulation | syn: coagulation (DIC), disseminated intravascular; consumptive coagulopathy; defibrination syndrome; DIC | ancestors: thrombophilia, blood coagulation disease, hematologic disorder, disease by body system or component | def: A pathological process where the blood starts to coagulate throughout the whole body. This depletes the body of its platelets and coagulation factors, and there is an increased risk of hemorrhage.",
+"ko": "파종성 혈관내응고",
+"alt": [
+"파종혈관내응고증",
+"소모응고병증"
+],
+"organs": [
+"haematologic",
+"cardiovascular"
+],
+"kcd_links": 6,
+"new": false
+},
+{
+"id": "MONDO:0005595",
+"concept": "- MONDO:0005595 | laryngeal squamous cell carcinoma | syn: epidermoid carcinoma of larynx; epidermoid carcinoma of the larynx; laryngeal epidermoid carcinoma; laryngeal squamous cell carcinoma | ancestors: laryngeal carcinoma, head and neck squamous cell carcinoma, larynx cancer, carcinoma | def: A squamous cell carcinoma that arises from the larynx. It is the most common histologic type of laryngeal carcinoma. It can arise from the glottis, supraglottic area, or it can be transglottic. Glotti...",
+"ko": "후두 편평세포암종",
+"alt": [
+"후두 편평상피암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0009241",
+"concept": "- MONDO:0009241 | fountain syndrome | syn: deafness-skeletal dysplasia-coarse face with full lips syndrome; deafness-skeletal dysplasia-lip granuloma syndrome; fountain syndrome | ancestors: multiple congenital anomalies/dysmorphic syndrome-intellectual disability, multiple congenital anomalies/dysmorphic syndrome, developmental defect during embryogenesis, disorder of development or morphogenesis | def: Fountain syndrome is an extremely rare multi-systemic genetic disorder characterized by intellectual disability, deafness, skeletal abnormalities and coarse facial features.",
+"ko": "파운틴 증후군",
+"alt": [],
+"organs": [
+"neurologic",
+"musculoskeletal",
+"otologic"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0016047",
+"concept": "- MONDO:0016047 | endophthalmitis | ancestors: inflammatory disease, eye infectious disorder, disease by developmental or physiological process, eye disorder | def: An infectious process affecting the internal structures of the eye.",
+"ko": "안내염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0000430",
+"concept": "- MONDO:0000430 | mature T-cell and NK-cell non-Hodgkin lymphoma | syn: mature T-and NK-cell lymphoma; mature T-cell and NK-cell lymphoma; mature T-cell and NK-cell non-Hodgkin lymphoma; mature T-cell and NK-cell non-Hodgkin's lymphoma | ancestors: neoplasm of mature T-cells or NK-cells, T-cell non-Hodgkin lymphoma, T-cell and NK-cell neoplasm, non-Hodgkin lymphoma | def: This type of lymphoma is not frequently seen in the western hemisphere. Clinically, with the exception of anaplastic large cell lymphoma, mature T- and NK-cell lymphomas are among the most aggressive ...",
+"ko": "성숙 T세포 및 NK세포 비호지킨 림프종",
+"alt": [],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0006112",
+"concept": "- MONDO:0006112 | bladder inflammatory myofibroblastic tumor | syn: bladder inflammatory myofibroblastic neoplasm; bladder inflammatory myofibroblastic tumor; inflammatory myofibroblastic neoplasm of bladder; inflammatory myofibroblastic neoplasm of the bladder | ancestors: urinary bladder neoplasm, inflammatory myofibroblastic tumor, urinary bladder disorder, urinary system neoplasm | def: A multinodular intermediate fibroblastic neoplasm arising from the bladder. It is characterized by the presence of spindle-shaped fibroblasts and myofibroblasts, and a chronic inflammatory infiltrate ...",
+"ko": "방광 염증성 근섬유모세포 종양",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0021523",
+"concept": "- MONDO:0021523 | benign neoplasm of pharynx | syn: benign neoplasm of the pharynx; benign pharyngeal neoplasm; benign pharyngeal tumor; benign pharyngeal tumour | ancestors: benign neoplasm, pharynx neoplasm, neoplasm, digestive system neoplasm | def: A benign neoplasm that involves the pharynx.",
+"ko": "인두 양성 신생물",
+"alt": [
+"인두 양성 종양"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0001984",
+"concept": "- MONDO:0001984 | candidal paronychia | ancestors: candidiasis, opportunistic mycosis, fungal infectious disease, infectious disease | def: A candidiasis that results in fungal infection of the outer-most layer located in nail, has material basis in Candida species. The infection causes painful, red, swollen area around the nail, often at...",
+"ko": "칸디다성 조갑주위염",
+"alt": [
+"칸디다 손발톱주위염"
+],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0700031",
+"concept": "- MONDO:0700031 | mosaic trisomy 18 | ancestors: trisomy 18, syndromic disease, trisomy, chromosome 18 disorder | def: Trisomy 18 in which the presence of an extra copy of chromosome 18 is present only in some of the cells of the organism.",
+"ko": "모자이크 18삼체성",
+"alt": [],
+"organs": [
+"cardiovascular",
+"renal",
+"neurologic"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0009252",
+"concept": "- MONDO:0009252 | essential fructosuria | syn: fructokinase deficiency; fructosuria, essential; ketohexokinase deficiency | ancestors: disorder of fructose metabolism, disorder of galactose and fructose metabolism, inborn carbohydrate metabolic disorder, inborn errors of metabolism | def: Essential fructosuria is a rare autosomal recessive disorder of fructose metabolism caused by a deficiency of fructokinaseenzyme activity. It is characterized by elevated fructosemia and presence of f...",
+"ko": "본태성 과당뇨증",
+"alt": [],
+"organs": [
+"metabolic_endocrine"
+],
+"kcd_links": 1,
+"new": false
+},
+{
+"id": "MONDO:0003442",
+"concept": "- MONDO:0003442 | bladder papillary urothelial neoplasm | syn: bladder papillary transitional cell neoplasm; bladder papillary urothelial neoplasm; urinary bladder papillary transitional cell neoplasm; urinary bladder papillary urothelial neoplasm | ancestors: papillary urothelial neoplasm, urinary bladder neoplasm, papillary epithelial neoplasm, urothelial neoplasm | def: A papillary epithelial neoplasm that involves the urinary bladder urothelium.",
+"ko": "방광 유두상 요로상피 신생물",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 0,
+"new": true
+},
+{
+"id": "MONDO:0002419",
+"concept": "- MONDO:0002419 | transient tic disorder | syn: benign Tic disorder of childhood | ancestors: tic disorder, movement disorder, specific developmental disorder, nervous system disorder | def: A neurological disorder presenting in childhood that is characterized by motor and/or phonic tics that occur daily or nearly daily for one to twelve months and are not attributed to an identifiable ca...",
+"ko": "일과성 틱 장애",
+"alt": [
+"일시성 틱장애"
+],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0004277",
+"concept": "- MONDO:0004277 | gonorrhea | syn: GC; Neisseria gonorrhoeae infection | ancestors: primary bacterial infectious disease, bacterial sexually transmitted disease, bacterial infectious disease, sexually transmitted disease | def: A common sexually transmitted bacterial infection caused by Neisseria gonorrhoeae. It is transmitted through vaginal, oral, or anal intercourse. Infected individuals may be asymptomatic. Symptoms in m...",
+"ko": "임질",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 3,
+"new": false
+},
+{
+"id": "MONDO:0019648",
+"concept": "- MONDO:0019648 | achondrogenesis | ancestors: osteochondrodysplasia, spondylodysplastic dysplasia, bone development disease, skeletal dysplasia | def: Achondrogenesis describes a rare group of lethal skeletal dysplasias characterized by an endochondral ossification deficiency that leads to dwarfism with extreme micromelia, a small thorax, a prominen...",
+"ko": "연골무발생증",
+"alt": [],
+"organs": [
+"musculoskeletal"
+],
+"kcd_links": 2,
+"new": false
+},
+{
+"id": "MONDO:0005515",
+"concept": "- MONDO:0005515 | oral cavity cancer | syn: cancer of oral cavity; malignant mouth neoplasm; malignant mouth tumor; malignant mouth tumour | ancestors: digestive system cancer, oral cavity neoplasm, digestive system disorder, cancer | def: A primary or metastatic malignant neoplasm involving the oral cavity. The majority are squamous cell carcinomas.",
+"ko": "구강암",
+"alt": [
+"입안암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 5,
+"new": false
+}
+]

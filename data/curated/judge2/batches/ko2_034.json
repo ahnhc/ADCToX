@@ -1,0 +1,227 @@
+[
+{
+"id": "MONDO:0002357",
+"concept": "- MONDO:0002357 | hepatic flexure cancer | syn: cancer of hepatic flexure of colon; hepatic flexure of colon cancer; malignant hepatic flexure of colon neoplasm; malignant neoplasm of hepatic flexure | ancestors: ascending colon cancer, malignant colon neoplasm, colonic neoplasm, colorectal cancer | def: A malignant neoplasm involving the hepatic flexure of colon.",
+"ko": "간만곡부 암",
+"alt": [
+"간굴곡부암"
+],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001678",
+"concept": "- MONDO:0001678 | intestinal tuberculosis | syn: intestine tuberculosis; tuberculosis of intestine | ancestors: gastroenteritis, gastrointestinal tuberculosis, intestinal disorder, inflammatory disease | def: A tuberculosis that involves the intestine.",
+"ko": "장결핵",
+"alt": [],
+"organs": [
+"gastrointestinal",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001518",
+"concept": "- MONDO:0001518 | spastic entropion | ancestors: entropion, eyelid disorder, eye adnexa disorder, eye disorder",
+"ko": "경련성 안검내반",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0000333",
+"concept": "- MONDO:0000333 | early congenital syphilis | ancestors: congenital syphilis, syphilis, infectious embryofetopathy, primary bacterial infectious disease | def: A congenital syphilis that is manifested between 0 and 2 years old.",
+"ko": "조기 선천 매독",
+"alt": [],
+"organs": [
+"hepatic",
+"dermatologic",
+"musculoskeletal",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0015759",
+"concept": "- MONDO:0015759 | B-cell non-Hodgkin lymphoma | syn: B-cell lymphoma; B-cell NHL; B-cell non Hodgkin's lymphoma; B-cell non-Hodgkin lymphoma | ancestors: B-cell neoplasm, non-Hodgkin lymphoma, leukocyte disorder, lymphoma | def: The most common type of non-Hodgkin lymphoma. It includes the most frequently seen morphologic variants which are: diffuse large B-cell lymphoma, follicular lymphoma, small lymphocytic lymphoma and ma...",
+"ko": "B세포 비호지킨 림프종",
+"alt": [
+"B세포 림프종"
+],
+"organs": [
+"haematologic",
+"infectious_immune"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001776",
+"concept": "- MONDO:0001776 | prostate calculus | syn: calculus of prostate; lower urinary tract calculus of prostate gland; prostate gland lower urinary tract calculus; prostatic stone | ancestors: prostate disorder, lower urinary tract calculus, male reproductive system disorder, urolithiasis | def: A concretion in the prostate.",
+"ko": "전립샘 결석",
+"alt": [],
+"organs": [
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001558",
+"concept": "- MONDO:0001558 | Potter sequence | syn: oligohydramnios sequence; Potter syndrome; Potter's sequence; Potter's syndrome | ancestors: syndromic disease, oligohydramnios, disease by body system or component, placenta disorder | def: A rare, lethal congenital malformation characterized by bilateral renal agenesis and the absence or decreased volume of amniotic fluid (oligohydramnios). The presence of oligohydramnios gives rise to ...",
+"ko": "포터 연쇄",
+"alt": [
+"양수과소 연쇄",
+"포터 증후군"
+],
+"organs": [
+"pulmonary",
+"renal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0018077",
+"concept": "- MONDO:0018077 | tularemia | syn: Francisella tularensis caused disease or disorder; Francisella tularensis disease or disorder; Francisella tularensis infectious disease | ancestors: primary bacterial infectious disease, vector-borne disease, bacterial infectious disease, infectious disease | def: Tularemia is an infection caused by the bacterium Francisella tularensis. It is more common in rodents and rabbits but has been found in other animals including domestic cats, sheep, birds, and hamste...",
+"ko": "야토병",
+"alt": [],
+"organs": [
+"infectious_immune"
+],
+"kcd_links": 6
+},
+{
+"id": "MONDO:0002519",
+"concept": "- MONDO:0002519 | anus disorder | syn: anal disorder; anus disease; anus disease or disorder; disease of anus | ancestors: rectal disorder, large intestine disorder, intestinal disorder, digestive system disorder | def: A non-neoplastic or neoplastic disorder that affects the anal canal or anal margin. Representative examples of non-neoplastic disorders include hemorrhoids and anal ulcer. Representative examples of n...",
+"ko": "항문 질환",
+"alt": [],
+"organs": [
+"gastrointestinal"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0001718",
+"concept": "- MONDO:0001718 | scleritis | syn: scleritis; scleritis (disease) | ancestors: scleral disorder, eye disorder, disorder of orbital region, disorder of visual system | def: Inflammation of the sclera.",
+"ko": "공막염",
+"alt": [],
+"organs": [
+"ocular",
+"infectious_immune"
+],
+"kcd_links": 4
+},
+{
+"id": "MONDO:0024422",
+"concept": "- MONDO:0024422 | auditory perceptual disorders | syn: disorder of sensory perception of sound; sensory perception of sound disease | ancestors: perceptual disorders, nervous system disorder, disease by body system or component, human disease | def: Acquired or developmental cognitive disorders of AUDITORY PERCEPTION characterized by a reduced ability to perceive information contained in auditory stimuli despite intact auditory pathways. Affected...",
+"ko": "청각 지각 장애",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0005968",
+"concept": "- MONDO:0005968 | sporotrichosis | ancestors: fungal infectious disease, infectious disease, disease of primarily extrinsic mechanism, disease by etiologic mechanism | def: The commonest and least serious of the deep mycoses, characterized by nodular lesions of the cutaneous and subcutaneous tissues. It is caused by inhalation of contaminated dust or by infection of a wo...",
+"ko": "스포로트릭스증",
+"alt": [],
+"organs": [
+"dermatologic",
+"infectious_immune"
+],
+"kcd_links": 5
+},
+{
+"id": "MONDO:0001128",
+"concept": "- MONDO:0001128 | nasal cavity cancer | syn: cancer of nasal cavity; malignant nasal cavity neoplasm; malignant nasal cavity tumor; malignant nasal cavity tumour | ancestors: respiratory system cancer, sensory system cancer, nasal cavity neoplasm, head and neck cancer | def: A malignant neoplasm involving the nasal cavity",
+"ko": "비강암",
+"alt": [
+"코안암"
+],
+"organs": [
+"pulmonary"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0008599",
+"concept": "- MONDO:0008599 | trigeminal neuralgia | syn: neuralgia of trigeminal nerve; trigeminal nerve neuralgia; trigeminal neuralgia | ancestors: central nervous system disorder, trigeminal nerve disorder, cranial neuralgia, nervous system disorder | def: Trigeminal neuralgia is a nerve disorder that causes a stabbing or electric-shock-like pain in parts of the face. The pain lasts a few seconds to a few minutes, and usually on only one side of the fac...",
+"ko": "삼차신경통",
+"alt": [],
+"organs": [
+"neurologic"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0007473",
+"concept": "- MONDO:0007473 | Duane retraction syndrome | syn: DRS; Duane retraction syndrome; Duane syndrome; Duane's syndrome | ancestors: syndromic disease, nuclear oculomotor paralysis, hereditary neurological disease, disease by body system or component | def: Duane retraction syndrome (DRS) is a congenital form of strabismus characterized by horizontal eye movement limitation, globe retraction and palpebral fissure narrowing in attempted adduction. It is c...",
+"ko": "두안 후퇴 증후군",
+"alt": [
+"두안 증후군"
+],
+"organs": [
+"neurologic",
+"ocular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0004804",
+"concept": "- MONDO:0004804 | dacryoadenitis | syn: inflammation of lacrimal gland; lacrimal gland inflammation | ancestors: inflammatory disease, disorder of lacrimal gland, disease by developmental or physiological process, lacrimal apparatus disorder | def: Inflammation and enlargement of the lacrimal gland.",
+"ko": "눈물샘염",
+"alt": [],
+"organs": [
+"ocular"
+],
+"kcd_links": 3
+},
+{
+"id": "MONDO:0001340",
+"concept": "- MONDO:0001340 | heart cancer | syn: cancer of heart; Cardiac neoplasm, malignant; heart cancer; malignant Cardiac neoplasm | ancestors: cardiovascular cancer, thoracic cancer, heart neoplasm, cancer | def: A malignant neoplasm involving the heart",
+"ko": "심장암",
+"alt": [],
+"organs": [
+"cardiovascular"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0019216",
+"concept": "- MONDO:0019216 | inborn disorder of amino acid transport | syn: inborn disorder of amino acid absorption and transport | ancestors: inborn disorder of amino acid metabolism, inborn disorder of amino acid and other organic acid metabolism, amino acid metabolism disease, inborn errors of metabolism",
+"ko": "선천성 아미노산 수송 장애",
+"alt": [],
+"organs": [
+"renal",
+"metabolic_endocrine"
+],
+"kcd_links": 1
+},
+{
+"id": "MONDO:0005668",
+"concept": "- MONDO:0005668 | bird fancier's lung | syn: Avian hypersensitivity pneumonitis; bird fancier lung; bird fancier's lung; bird-fanciers' lung | ancestors: hypersensitivity pneumonitis, occupational lung disease, allergic respiratory disease, interstitial lung disease | def: Hypersensitivity granulomatous pneumonitis caused by the inhalation of avian antigens that are present in the dust of the droppings and feathers of many species of birds. In the acute phase it manifes...",
+"ko": "조류사육자폐",
+"alt": [],
+"organs": [
+"pulmonary",
+"infectious_immune"
+],
+"kcd_links": 2
+},
+{
+"id": "MONDO:0004431",
+"concept": "- MONDO:0004431 | hemarthrosis | ancestors: arthropathy, skeletal system disorder, musculoskeletal system disorder, disease by body system or component | def: Bleeding into the joints. It may arise from trauma or spontaneously in patients with hemophilia.",
+"ko": "관절혈증",
+"alt": [
+"관절 내 출혈"
+],
+"organs": [
+"haematologic",
+"musculoskeletal"
+],
+"kcd_links": 2
+}
+]
