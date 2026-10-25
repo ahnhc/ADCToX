@@ -1,0 +1,93 @@
+{
+ "concepts": 22638,
+ "how": {
+  "3-pass agreement": 19528,
+  "adjudicated": 2876,
+  "audit-corrected": 234
+ },
+ "no_axis": 1443,
+ "primary_per_organ": {
+  "haematologic": 1625,
+  "hepatic": 519,
+  "cardiovascular": 1989,
+  "pulmonary": 1035,
+  "renal": 1086,
+  "gastrointestinal": 2140,
+  "neurologic": 6217,
+  "ocular": 2409,
+  "dermatologic": 2448,
+  "metabolic_endocrine": 3338,
+  "musculoskeletal": 3854,
+  "infectious_immune": 3099,
+  "otologic": 832
+ },
+ "involved_per_organ": {
+  "haematologic": 173,
+  "hepatic": 275,
+  "cardiovascular": 541,
+  "pulmonary": 353,
+  "renal": 379,
+  "gastrointestinal": 585,
+  "neurologic": 978,
+  "ocular": 1068,
+  "dermatologic": 311,
+  "metabolic_endocrine": 129,
+  "musculoskeletal": 1050,
+  "infectious_immune": 14,
+  "otologic": 522
+ },
+ "agreement": {
+  "haematologic": {
+   "kappa_between_passes": 0.958,
+   "single_pass_vs_final": 0.995
+  },
+  "hepatic": {
+   "kappa_between_passes": 0.944,
+   "single_pass_vs_final": 0.997
+  },
+  "cardiovascular": {
+   "kappa_between_passes": 0.953,
+   "single_pass_vs_final": 0.993
+  },
+  "pulmonary": {
+   "kappa_between_passes": 0.937,
+   "single_pass_vs_final": 0.994
+  },
+  "renal": {
+   "kappa_between_passes": 0.953,
+   "single_pass_vs_final": 0.995
+  },
+  "gastrointestinal": {
+   "kappa_between_passes": 0.948,
+   "single_pass_vs_final": 0.992
+  },
+  "neurologic": {
+   "kappa_between_passes": 0.969,
+   "single_pass_vs_final": 0.99
+  },
+  "ocular": {
+   "kappa_between_passes": 0.956,
+   "single_pass_vs_final": 0.991
+  },
+  "dermatologic": {
+   "kappa_between_passes": 0.961,
+   "single_pass_vs_final": 0.994
+  },
+  "metabolic_endocrine": {
+   "kappa_between_passes": 0.97,
+   "single_pass_vs_final": 0.994
+  },
+  "musculoskeletal": {
+   "kappa_between_passes": 0.945,
+   "single_pass_vs_final": 0.985
+  },
+  "infectious_immune": {
+   "kappa_between_passes": 0.98,
+   "single_pass_vs_final": 0.996
+  },
+  "otologic": {
+   "kappa_between_passes": 0.958,
+   "single_pass_vs_final": 0.997
+  }
+ }
+}

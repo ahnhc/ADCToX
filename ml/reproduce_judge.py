@@ -45,7 +45,7 @@ def farm(work, name):
 def run_seed(a, seed, gpu, logs):
     tag = f"{a.tag}s{seed}"; env = dict(os.environ, CUDA_VISIBLE_DEVICES=str(gpu), ADC_RESEARCH_MODE="1", ADCTOX_CACHE=a.work)
     cmd = [PY, "ml/gemma_judge2.py", "--tag", tag, "--seed", str(seed), "--stage", a.stage, "--note", a.note, "--layers", str(a.layers),
-           "--rank", str(a.rank), "--epochs", str(a.epochs), "--lr", str(a.lr), "--consist", str(a.consist)]
+           "--rank", str(a.rank), "--epochs", str(a.epochs), "--lr", str(a.lr), "--consist", str(a.consist), "--clip", str(a.clip)]
     if a.drop: cmd += ["--drop", a.drop]
     if a.compare_to: cmd += ["--compare-to", f"{a.compare_to}"]
     if not (a.resume and os.path.exists(os.path.join(a.work, f"gemma_judge2_{tag}", "calibration.npz"))): sh(cmd, env, f"{logs}/train_{tag}.log")
@@ -58,9 +58,15 @@ def run_seed(a, seed, gpu, logs):
     return tag
 
 
+def base_name():
+    """the untuned-Gemma benchmark of the Gemma size in use (GEMMA_MODEL): bench_base for E2B, bench_base_e4b for E4B, ..."""
+    import gemma_judge as GJ
+    return "base" if GJ.GEMMA == "google/gemma-4-E2B" else "base_" + GJ.GEMMA.rsplit("-", 1)[-1].lower()
+
+
 def base_current():
     import gemma_judge as GJ, bench_judge as B
-    p = B.OUT + "bench_base.json"
+    p = B.OUT + f"bench_{base_name()}.json"
     if not os.path.exists(p): return False
     b = json.load(open(p)); return b.get("revision") == GJ.REV and b.get("questions") == B.questions_sha()
 
@@ -69,7 +75,7 @@ def report(a, tags):
     import bench_judge as B, eval_linking as EL
     split = "test" if a.test else "dev"; Q, gold, groups, ko, SE = B.questions(); ix = [i for i, g in enumerate(groups) if EL.split_of(g) == split]
     load = lambda n: json.load(open(B.OUT + f"bench_{n}.json"))["per"]
-    systems = ["base"] + [f"single_{t}" for t in tags] + ([f"app_{t}" for t in tags] if a.app else [])
+    systems = [base_name()] + [f"single_{t}" for t in tags] + ([f"app_{t}" for t in tags] if a.app else [])
     per = {n: load(n) for n in systems}
     def organ_f1(rows, lang):
         jx = [i for i in ix if rows[lang][i] is not None]
@@ -81,9 +87,9 @@ def report(a, tags):
     for n in systems:
         r = {lang: organ_f1(per[n], lang) for lang in ("en", "ko")}; M[n] = r; d = []
         for lang in ("en", "ko"):
-            if n == "base": d.append("–"); continue
-            jx = [i for i in ix if per[n][lang][i] is not None and per["base"][lang][i] is not None]
-            pa = [((x or {}).get("concept"), (x or {}).get("organs", [])) for x in per[n][lang]]; pb = [((x or {}).get("concept"), (x or {}).get("organs", [])) for x in per["base"][lang]]
+            if n == systems[0]: d.append("–"); continue
+            jx = [i for i in ix if per[n][lang][i] is not None and per[systems[0]][lang][i] is not None]
+            pa = [((x or {}).get("concept"), (x or {}).get("organs", [])) for x in per[n][lang]]; pb = [((x or {}).get("concept"), (x or {}).get("organs", [])) for x in per[systems[0]][lang]]
             b = EL.boot(pa, pb, gold, jx, groups); d.append(f"{b['delta']:+.3f} [{b['lo']:+.3f}, {b['hi']:+.3f}]")
         f = lambda v: "–" if v is None else f"{v:.3f}"
         L.append(f"| {n} | {f(r['en']['macro_f1'])} | {f(r['ko']['macro_f1'])} | {f(r['en']['concept_acc'])} | {f(r['ko']['concept_acc'])} | {f(r['en']['false_accept_invalid'])} | {d[0]} | {d[1]} |")
@@ -93,7 +99,7 @@ def report(a, tags):
     axes = B.AXES; met = {"en": 0, "ko": 0}
     for ax in axes:
         cell = []
-        for n, lang in (("base", "en"), ("base", "ko")): cell.append(M[n][lang]["per_organ_f1"][ax])
+        for n, lang in ((systems[0], "en"), (systems[0], "ko")): cell.append(M[n][lang]["per_organ_f1"][ax])
         for lang in ("en", "ko"):
             v = [M[n][lang]["per_organ_f1"][ax] for n in singles if M[n][lang]["per_organ_f1"][ax] is not None]
             m = float(np.mean(v)) if v else None; cell.append(m); met[lang] += m is not None and m >= TARGET
@@ -109,7 +115,7 @@ def main():
     ap.add_argument("--stage", required=True); ap.add_argument("--note", default=""); ap.add_argument("--seeds", default="7,8,9")
     ap.add_argument("--gpus", default="0"); ap.add_argument("--drop", default=""); ap.add_argument("--compare-to", default=None)
     ap.add_argument("--layers", type=int, default=18); ap.add_argument("--rank", type=int, default=16); ap.add_argument("--epochs", type=int, default=2)
-    ap.add_argument("--lr", type=float, default=2e-4); ap.add_argument("--consist", type=float, default=0.0); ap.add_argument("--app", action="store_true"); ap.add_argument("--test", action="store_true")
+    ap.add_argument("--lr", type=float, default=2e-4); ap.add_argument("--consist", type=float, default=0.0); ap.add_argument("--clip", type=float, default=0.0); ap.add_argument("--app", action="store_true"); ap.add_argument("--test", action="store_true")
     ap.add_argument("--report-only", action="store_true"); ap.add_argument("--resume", action="store_true", help="skip training for seeds whose checkpoint exists")
     a = ap.parse_args(); a.work = os.path.realpath(a.work)
     import adc_runtime as RT
@@ -121,7 +127,7 @@ def main():
     if not a.report_only:
         if not base_current():
             print("untuned Gemma: benchmark", flush=True)
-            sh([PY, "ml/bench_judge.py", "--system", "base"], dict(os.environ, CUDA_VISIBLE_DEVICES=gpus[0], ADCTOX_CACHE=a.work), f"{logs}/bench_base.log")
+            sh([PY, "ml/bench_judge.py", "--system", "base", "--name", base_name()], dict(os.environ, CUDA_VISIBLE_DEVICES=gpus[0], ADCTOX_CACHE=a.work), f"{logs}/bench_base.log")
         import queue
         from concurrent.futures import ThreadPoolExecutor
         free = queue.Queue()

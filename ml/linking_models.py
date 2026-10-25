@@ -49,6 +49,7 @@ def ancestors_all(T, t):
 
 # ------------------------------------------------------------------ labels
 def load_organ_labels():
+    if os.environ.get("ADCTOX_LABELS", "v4") in ("v5", "v5p", "v51", "v51f"): return load_organ_labels_v5()
     man = json.load(open(R + "concept_organs/manifest.json")); cal = set(man["calibration"]); good, per = {}, {}
     for f in sorted(glob.glob(R + "concept_organs/labels/batch_*.jsonl")):
         L = [json.loads(l) for l in open(f)]; c = [set(x["organs"]) == set(man["calibration"][x["id"]]) for x in L if x["id"] in cal]
@@ -91,6 +92,21 @@ def load_organ_labels():
     agree = [v[0] == v[1] for v in strict_per.values() if len(v) >= 2]
     stats = dict(n_labels=len(labels), n_strict=len(strict), n_verified=len(verified), n_filled=len(filled), n_reviewed=len(reviewed), n_expert=len(expert), n_nonhuman_dropped=len(nonhuman), relabel_calibration_exact=rq, relabel_overlap_exact=float(np.mean(agree)) if agree else None, n_relabel_overlap=len(agree))
     return labels, stats
+
+
+def load_organ_labels_v5():
+    """ADCTOX_LABELS=v5: organs = primary ∪ involved from concept_organs/v5/labels_v5.jsonl (GPT 3 passes + adjudication + audit,
+    2026-10-22). ADCTOX_LABELS=v5p: primary only. ADCTOX_LABELS=v51: labels_v5_1.jsonl (v5 with malformation-only and
+    1-2-patient involved organs dropped by two agreeing Haiku reviews, ml/relabel_v5_1.py). ADCTOX_LABELS=v51f:
+    labels_v5_1_final.jsonl (a drop stands only if GPT agrees too). Gold concepts and their parents/children are dropped here, so neither training
+    nor the label table can see them; animal concepts are dropped as in v4."""
+    mode = os.environ["ADCTOX_LABELS"]; held = gold_held(read_obo()); labels = {}
+    for x in map(json.loads, open(R + "concept_organs/v5/" + ({"v51": "labels_v5_1.jsonl", "v51f": "labels_v5_1_final.jsonl"}.get(mode, "labels_v5.jsonl")), encoding="utf-8")):
+        if x["id"] in held: continue
+        labels[x["id"]] = frozenset(x["primary"] if mode == "v5p" else x["primary"] + x["involved"])
+    nonhuman = _nonhuman(labels)
+    for t in nonhuman: labels.pop(t, None)
+    return labels, dict(n_labels=len(labels), source=f"labels_v5 ({mode})", n_nonhuman_dropped=len(nonhuman), n_gold_related_dropped=len(held))
 
 
 # ------------------------------------------------------------------ concept features

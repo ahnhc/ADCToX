@@ -88,6 +88,8 @@ adctox --model-version
 
 평가는 학습과 분리한 dev/test로 했습니다. 앱 전체 파이프라인의 장기 macro-F1은 영어 0.841, 한국어 0.733입니다. 자세한 내용은 [Gemma 판정 모델 문서](ml/docs/gemma_judge.md)에 있습니다.
 
+연구 전체 흐름(장기 라벨 v4→v5.1, Gemma·encoder 결합, 처음부터 만든 모델)과 현재 결과는 [연구 흐름 개요](ml/docs/overview.md)에 정리했습니다.
+
 이 저장소의 파이프라인과 데이터로 Gemma를 직접 튜닝하고, 튜닝 안 한 Gemma와 같은 문제로 비교할 수 있습니다. 명령 하나로 학습부터 비교 보고서까지 나옵니다: [재현 방법](ml/docs/reproduce.md). 학습마다 쓴 데이터와 점수는 [학습 기록](ml/docs/tuning_log.md)에 남습니다.
 
 ## 개발

@@ -16,6 +16,9 @@ Encoder: DIM wide, LAYERS layers, HEADS heads, pre-norm, mean pooling. Outputs: 
 Stage 1 (names): InfoNCE over same-disease name pairs (judge_data.pairs: MONDO synonyms, Korean-English MONDO names, KCD
 Korean-English names, every training text with its concept name, UMLS synonyms), in-batch negatives, tau TAU.
 Stage 2 (judge): the gemma_judge2 items (judge_data.items): organ and valid BCE, with the pair loss kept on.
+Pretrained backbone (--backbone, e.g. BAAI/bge-m3, FacebookAI/xlm-roberta-large, intfloat/multilingual-e5-large,
+Qwen/Qwen3-Embedding-0.6B): the same outputs, stages, data, calibration and rule on top of that model (its own tokenizer, text as
+typed, mean pooling, backbone lr --lr, heads --head-lr); the resolved model revision goes on the run card.
 Held out: 10% of the concepts (their items and pairs), for model selection, organ calibration and theta; 10% of the junk (valid
 threshold), as gemma_judge2. Calibration, valid threshold and the final organ rule are those of the Gemma single benchmark:
 nearest MONDO name (index of every MONDO name and synonym, embedded by this encoder) with cosine >= theta -> that concept's
@@ -45,27 +48,51 @@ def train_tokenizer(texts, path):
     tk.save(path); return tk
 
 
+def hf_path(name):
+    if os.path.isdir(name): return name                                      # a local model folder (ml/scratch_pretrain.py)
+    from huggingface_hub import snapshot_download
+    return snapshot_download(name, cache_dir=os.environ.get("HF_CACHE", os.path.expanduser("~/.cache/huggingface/hub")))
+
+
+class HFTok:
+    """a pretrained model's tokenizer, text as typed."""
+    def __init__(self, name):
+        import transformers as T
+        self.tk = T.AutoTokenizer.from_pretrained(hf_path(name))
+    def __call__(self, texts):
+        e = self.tk([str(t).strip() for t in texts], padding=True, truncation=True, max_length=MAXLEN, return_tensors="pt")
+        return e["input_ids"].to(DEV), e["attention_mask"].to(DEV).bool()
+
+
 class Enc(torch.nn.Module):
-    def __init__(self, vocab):
+    def __init__(self, vocab=None, hf=None):
         super().__init__()
-        self.emb = torch.nn.Embedding(vocab, DIM, padding_idx=0); self.pos = torch.nn.Embedding(MAXLEN + 1, DIM)
-        layer = torch.nn.TransformerEncoderLayer(DIM, HEADS, 4 * DIM, dropout=0.1, batch_first=True, norm_first=True, activation="gelu")
-        self.enc = torch.nn.TransformerEncoder(layer, LAYERS, enable_nested_tensor=False); self.norm = torch.nn.LayerNorm(DIM)
-        self.organ = torch.nn.Linear(DIM, 13); self.valid = torch.nn.Linear(DIM, 1); self.proj = torch.nn.Linear(DIM, PROJ)
-    def forward(self, ids):
-        m = ids != 0; x = self.emb(ids) + self.pos(torch.arange(ids.shape[1], device=ids.device))[None]
-        h = self.norm(self.enc(x, src_key_padding_mask=~m)); h = (h * m[..., None]).sum(1) / m.sum(1, keepdim=True).clamp(min=1)
+        if hf:
+            import transformers as T
+            self.bb = T.AutoModel.from_pretrained(hf_path(hf)); D = self.bb.config.hidden_size
+            if self.bb.supports_gradient_checkpointing: self.bb.gradient_checkpointing_enable()   # MPNet (BioLORD) has none
+        else:
+            D = DIM; self.emb = torch.nn.Embedding(vocab, DIM, padding_idx=0); self.pos = torch.nn.Embedding(MAXLEN + 1, DIM)
+            layer = torch.nn.TransformerEncoderLayer(DIM, HEADS, 4 * DIM, dropout=0.1, batch_first=True, norm_first=True, activation="gelu")
+            self.enc = torch.nn.TransformerEncoder(layer, LAYERS, enable_nested_tensor=False); self.norm = torch.nn.LayerNorm(DIM)
+        self.organ = torch.nn.Linear(D, 13); self.valid = torch.nn.Linear(D, 1); self.proj = torch.nn.Linear(D, PROJ)
+    def forward(self, b):
+        ids, m = b
+        if hasattr(self, "bb"): h = self.bb(input_ids=ids, attention_mask=m.long()).last_hidden_state
+        else: h = self.norm(self.enc(self.emb(ids) + self.pos(torch.arange(ids.shape[1], device=ids.device))[None], src_key_padding_mask=~m))
+        h = (h * m[..., None]).sum(1) / m.sum(1, keepdim=True).clamp(min=1)
         return self.organ(h), self.valid(h)[:, 0], torch.nn.functional.normalize(self.proj(h), dim=-1)
 
 
 def encode(tk, texts):
+    if isinstance(tk, HFTok): return tk(texts)
     rows = [[2] + e.ids[:MAXLEN] for e in tk.encode_batch([prep(t) for t in texts])]
-    L = max(map(len, rows)); return torch.tensor([r + [0] * (L - len(r)) for r in rows], device=DEV)
+    L = max(map(len, rows)); ids = torch.tensor([r + [0] * (L - len(r)) for r in rows], device=DEV); return ids, ids != 0
 
 
-def predict(model, tk, texts, bs=1024):
-    model.eval(); out = [[], [], []]
-    with torch.no_grad():
+def predict(model, tk, texts, bs=None):
+    bs = bs or (256 if isinstance(tk, HFTok) else 1024); model.eval(); out = [[], [], []]
+    with torch.no_grad(), torch.autocast("cuda", dtype=torch.bfloat16):
         for i in range(0, len(texts), bs):
             for k, z in enumerate(model(encode(tk, texts[i:i + bs]))): out[k].append(z.float().cpu().numpy())
     return [np.concatenate(o) if o else np.zeros((0,)) for o in out]
@@ -82,8 +109,10 @@ def nce(model, tk, batch):
 
 def load(folder):
     from tokenizers import Tokenizer
-    tk = Tokenizer.from_file(folder + "tokenizer.json"); cfg = json.load(open(folder + "calibration.json"))
-    model = Enc(tk.get_vocab_size()).to(DEV); model.load_state_dict(torch.load(folder + "model.pt", map_location=DEV)); model.eval()
+    cfg = json.load(open(folder + "calibration.json"))
+    if cfg.get("backbone"): tk = HFTok(cfg["backbone"]); model = Enc(hf=cfg["backbone"]).to(DEV)
+    else: tk = Tokenizer.from_file(folder + "tokenizer.json"); model = Enc(tk.get_vocab_size()).to(DEV)
+    model.load_state_dict(torch.load(folder + "model.pt", map_location=DEV)); model.eval()
     Z = np.load(folder + "index.npz", allow_pickle=True); return model, tk, cfg, Z["E"], [str(x) for x in Z["ids"]]
 
 
@@ -106,14 +135,21 @@ def main():
     ap.add_argument("--seed", type=int, default=7); ap.add_argument("--drop", default=""); ap.add_argument("--compare-to", default=None)
     ap.add_argument("--pre-epochs", type=int, default=6); ap.add_argument("--epochs", type=int, default=6); ap.add_argument("--lr", type=float, default=5e-4)
     ap.add_argument("--bs", type=int, default=256); ap.add_argument("--smoke", action="store_true")
+    ap.add_argument("--backbone", default=None, help="a pretrained Hugging Face model instead of the random encoder")
+    ap.add_argument("--head-lr", type=float, default=1e-3, help="with --backbone: lr of the output layers")
+    ap.add_argument("--distill", default=None, help="teacher npz (ml/distill_teacher.py): adds a loss toward the teacher's organ and validity probabilities")
+    ap.add_argument("--distill-w", type=float, default=1.0, help="weight of the distillation loss")
     a = ap.parse_args(); rng = random.Random(a.seed); torch.manual_seed(a.seed); np.random.seed(a.seed)
     import tuning_ledger as TL, judge_data as JD, linking_models as LM
     from build_linking_pools import read_obo
     drop = {x for x in a.drop.split(",") if x}; unknown = drop - set(JD.SOURCES) - set(JD.PAIR_SOURCES)
     if unknown: raise SystemExit(f"unknown sources {sorted(unknown)}")
-    cfg = dict(vocab=VOCAB, dim=DIM, layers=LAYERS, heads=HEADS, proj=PROJ, maxlen=MAXLEN, tau=TAU, text="NFD + BPE", init="random")
+    if a.backbone:
+        rev = os.path.basename(hf_path(a.backbone))
+        cfg = dict(backbone=a.backbone, revision=rev, proj=PROJ, maxlen=MAXLEN, tau=TAU, text="as typed, model tokenizer", init="pretrained")
+    else: cfg = dict(vocab=VOCAB, dim=DIM, layers=LAYERS, heads=HEADS, proj=PROJ, maxlen=MAXLEN, tau=TAU, text="NFD + BPE", init="random")
     TL.write_card(a.tag, dict(tag=a.tag, stage=a.stage, note=a.note, compare_to=a.compare_to, started=time.strftime("%Y-%m-%d %H:%M"), args=vars(a),
-                              git=TL.git_state(), data=TL.manifest(cache=P.CACHE), backbone=dict(model="scratch transformer (no pretrained weights)", **cfg)))
+                              git=TL.git_state(), data=TL.manifest(cache=P.CACHE), backbone=dict(model=a.backbone or "scratch transformer (no pretrained weights)", **cfg)))
     items, junk_val, info = JD.items(drop=drop, seed=a.seed); pairs = JD.pairs(drop=drop, seed=a.seed, items_=items)
     T = read_obo(); labels, _ = LM.load_organ_labels()
     concepts = sorted({x[1] for x in items if x[1] is not None}); rng.shuffle(concepts); val_c = set(concepts[: len(concepts) // 10])
@@ -125,14 +161,28 @@ def main():
     TL.write_card(a.tag, dict(checks=chk, items=dict(total=len(items), train=len(train), val=len(val), junk_copies=JD.JUNK_COPIES, **info,
                   by_source=dict(collections.Counter(x[6] for x in train)), pairs=len(ptrain), pairs_by_source=dict(collections.Counter(p[3] for p in ptrain)))))
     if bad: raise SystemExit("pre-training checks failed: " + "; ".join(bad))
+    KD = None
+    if a.distill:                                                                         # teacher texts naming a validation concept are left out
+        import tuning_ledger as TL
+        Z = dict(np.load(a.distill, allow_pickle=True))                                   # read each array once (npz members load on every access)
+        vn = {TL.norm(n) for t in val_c if t in T for n in [T[t]["name"]] + T[t]["syn"]} | {TL.norm(x[0]) for x in val}
+        tx = [str(t) for t in Z["texts"]]; keep = [k for k, t in enumerate(tx) if TL.norm(t) not in vn]
+        KD = dict(texts=[tx[k] for k in keep], organ=Z["organ"][keep].astype(np.float32), valid=Z["valid"][keep].astype(np.float32))
+        TL.write_card(a.tag, dict(distill=dict(file=a.distill, tags=[str(x) for x in Z["tags"]], texts=len(keep), dropped_val=len(tx) - len(keep), weight=a.distill_w)))
+        print("distill texts", len(keep), "dropped (validation concepts)", len(tx) - len(keep), flush=True)
     out = P.CACHE + f"scratch_judge_{a.tag}/"; os.makedirs(out, exist_ok=True)
     corpus = [x[0] for x in items] + [t for p in pairs for t in p[:2]] + [n for t in T.values() for n in [t["name"]] + t["syn"]]
-    tk = train_tokenizer(corpus, out + "tokenizer.json")
-    model = Enc(tk.get_vocab_size()).to(DEV); print("parameters", sum(p.numel() for p in model.parameters()), flush=True)
+    if a.backbone: tk = HFTok(a.backbone); model = Enc(hf=a.backbone).to(DEV)
+    else: tk = train_tokenizer(corpus, out + "tokenizer.json"); model = Enc(tk.get_vocab_size()).to(DEV)
+    print("parameters", sum(p.numel() for p in model.parameters()), flush=True)
     bce = torch.nn.BCEWithLogitsLoss(reduction="none"); t0 = time.time()
 
     def run(epochs, step_fn, n_steps, lr):
-        opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=0.01); tot = epochs * n_steps
+        if a.backbone:
+            bb = [p for n, p in model.named_parameters() if n.startswith("bb.")]; hd = [p for n, p in model.named_parameters() if not n.startswith("bb.")]
+            opt = torch.optim.AdamW([dict(params=bb, lr=lr), dict(params=hd, lr=a.head_lr)], weight_decay=0.01)
+        else: opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=0.01)
+        tot = epochs * n_steps
         sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: min(1, (s + 1) / 300) * 0.5 * (1 + math.cos(math.pi * min(1, s / tot))))
         return opt, sched
 
@@ -159,6 +209,9 @@ def main():
                 L = dict(valid=bce(zv.float(), torch.tensor([x[3] for x in b], device=DEV)).mean())
                 if m.any(): L["organ"] = bce(zo.float(), yo).mean(1)[m].mean()
                 L["nce"] = 0.5 * nce(model, tk, [ptrain[rng.randrange(len(ptrain))] for _ in range(a.bs)])
+                if KD:
+                    kk = [rng.randrange(len(KD["texts"])) for _ in range(a.bs)]; zo2, zv2, _ = model(encode(tk, [KD["texts"][k] for k in kk]))
+                    L["kd"] = a.distill_w * (bce(zo2.float(), torch.from_numpy(KD["organ"][kk]).to(DEV)).mean() + 0.5 * bce(zv2.float(), torch.from_numpy(KD["valid"][kk]).to(DEV)).mean())
                 loss = sum(L.values())
             opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); sched.step()
             if s % 400 == 0: print(f"judge ep {ep} step {s}/{nb} " + " ".join(f"{k} {v.item():.3f}" for k, v in L.items()) + f" {time.time() - t0:.0f}s", flush=True)

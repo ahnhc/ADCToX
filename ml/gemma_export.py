@@ -28,6 +28,9 @@ def q_rows(w, bits):
     return (q[:, 0::2] | (q[:, 1::2] << 4)).contiguous(), s
 
 
+FULL_LAYERS = {"google/gemma-4-E2B": 35}                                   # metadata: layers of the uncut model
+
+
 def cut_layers(model, L):
     """keep the first L decoder layers and the per-layer word-table columns they read; the config then says L layers (the
     key/value sharing flags were set on the layers when the 35-layer model was built and stay as they were)."""
@@ -88,7 +91,7 @@ def main():
         if f.startswith("weights"): os.remove(out + f)
     ple = {k: v.contiguous() for k, v in W.items() if k.startswith("embed_tokens_per_layer.")}     # two files: a GitHub release file must be < 2 GiB
     save_file(ple, out + "weights-1.safetensors"); save_file({k: v.contiguous() for k, v in W.items() if k not in ple}, out + "weights-2.safetensors")
-    json.dump(dict(prompt=GJ.PROMPT, temp=cal["temp"].tolist(), thr=cal["thr"].tolist(), embed_scale=scales, layers=L, config_layers=35, backbone=GJ.GEMMA, revision=GJ.REV,
+    json.dump(dict(prompt=GJ.PROMPT, temp=cal["temp"].tolist(), thr=cal["thr"].tolist(), embed_scale=scales, layers=L, config_layers=FULL_LAYERS.get(GJ.GEMMA), backbone=GJ.GEMMA, revision=GJ.REV,
                    licence="Gemma 4: Apache-2.0", **extra), open(out + "judge.json", "w"), indent=1, ensure_ascii=False)
     size = sum(os.path.getsize(out + f) for f in os.listdir(out) if f.startswith("weights")); print("written", out, round(size / 1e9, 2), "GB", flush=True)
     # quantized vs float decisions

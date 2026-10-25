@@ -31,3 +31,22 @@ data/curated/external/
 
 # Opus dataset review: the batch inputs (17 MB) are rebuilt by ml/dataset_review_batches.py; the verdicts in out/ are kept
 data/curated/review_opus/batches/
+
+# Teammate workbooks are never committed
+*.xlsx
+
+# Organ labels v5: batch inputs (cut from input/concepts.jsonl by ml/relabel_v5.py), Codex session event logs and the abandoned
+# first layout; the outputs in */out/, the votes, the final labels and the reports are kept
+data/curated/concept_organs/v5/*/in/
+data/curated/concept_organs/v5/provenance/old_layout_*/
+data/curated/concept_organs/v5/provenance/*.events.jsonl
+data/curated/concept_organs/v5/provenance/*.stderr.txt
+data/curated/concept_organs/v5/provenance/*.response.txt
+data/curated/known_eval/batches/
+
+# GPU queue logs and the live queue file
+ml/results/sweep/queue.out
+ml/results/sweep/jobs.txt
+ml/results/sweep/jobs.txt.logs/
+ml/results/sweep/logs_*/
+ml/results/reproduce/logs_*/

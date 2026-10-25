@@ -1,0 +1,1480 @@
+{
+ "tag": "s5as7",
+ "stage": "S5 English first",
+ "note": "English only: every Korean source left out, no consistency loss, no UMLS",
+ "compare_to": "s2ds7",
+ "started": "2026-10-21 00:39",
+ "args": {
+  "layers": 18,
+  "tag": "s5as7",
+  "rank": 16,
+  "epochs": 2,
+  "lr": 0.0002,
+  "kcd": 20000,
+  "smoke": false,
+  "seed": 7,
+  "stage": "S5 English first",
+  "note": "English only: every Korean source left out, no consistency loss, no UMLS",
+  "compare_to": "s2ds7",
+  "consist": 0.0,
+  "drop": "gen_ko,ko2,kotypo,ko3,mondo_ko,kcd,umls"
+ },
+ "git": {
+  "commit": "8839663",
+  "dirty": [
+   "ml/docs/reproduce.md",
+   "ml/docs/scratch_model.md",
+   "ml/docs/tuning_log.md",
+   "ml/gemma_export.py",
+   "ml/gemma_judge.py",
+   "ml/gemma_judge2.py",
+   "ml/reproduce_judge.py",
+   "ml/scratch_judge.py",
+   "data/curated/concept_organs/GUIDE_v5.md",
+   "data/curated/concept_organs/v5/",
+   "data/curated/known_eval/",
+   "ml/docs/relabel_v5_plan.md",
+   "ml/docs/sweep_1027.md",
+   "ml/fetch_pubmed.py",
+   "ml/fetch_umls.sh",
+   "ml/gpu_queue.py",
+   "ml/known_eval.py",
+   "ml/relabel_v5.py",
+   "ml/relabel_v5_codex.py",
+   "ml/relabel_v5_gpt.py",
+   "ml/results/benchmarks/bench_base_e4b.json",
+   "ml/results/benchmarks/bench_enc_ebs7.json",
+   "ml/results/benchmarks/bench_enc_ees7.json",
+   "ml/results/benchmarks/bench_enc_ees8.json",
+   "ml/results/benchmarks/bench_enc_ees9.json",
+   "ml/results/benchmarks/bench_enc_eqs7.json",
+   "ml/results/benchmarks/bench_enc_exs7.json",
+   "ml/results/benchmarks/bench_scratch_x1s7.json",
+   "ml/results/benchmarks/bench_scratch_x1s8.json",
+   "ml/results/benchmarks/bench_scratch_x1s9.json",
+   "ml/results/benchmarks/bench_single_s2es7.json",
+   "ml/results/benchmarks/bench_single_s2es8.json",
+   "ml/results/benchmarks/bench_single_s2es9.json",
+   "ml/results/benchmarks/bench_single_s2fs7.json",
+   "ml/results/benchmarks/bench_single_s3s7.json",
+   "ml/results/benchmarks/bench_single_s3s8.json",
+   "ml/results/benchmarks/bench_single_s3s9.json",
+   "ml/results/benchmarks/bench_single_s4s7.json",
+   "ml/results/benchmarks/gemma_judge2_s2es7.json",
+   "ml/results/benchmarks/gemma_judge2_s2es8.json",
+   "ml/results/benchmarks/gemma_judge2_s2es9.json",
+   "ml/results/benchmarks/gemma_judge2_s2fs7.json",
+   "ml/results/benchmarks/gemma_judge2_s2fs8.json",
+   "ml/results/benchmarks/gemma_judge2_s3s7.json",
+   "ml/results/benchmarks/gemma_judge2_s3s8.json",
+   "ml/results/benchmarks/gemma_judge2_s3s9.json",
+   "ml/results/benchmarks/gemma_judge2_s4s7.json",
+   "ml/results/benchmarks/known_base.json",
+   "ml/results/benchmarks/known_base_e4b.json",
+   "ml/results/benchmarks/known_enc_ebs7.json"
+  ],
+  "n_dirty": 91
+ },
+ "data": {
+  "organ_labels": {
+   "files": {
+    "data/curated/concept_organs/labels/batch_00.jsonl": [
+     310,
+     "106ca3b1176062f1"
+    ],
+    "data/curated/concept_organs/labels/batch_01.jsonl": [
+     310,
+     "eecafffc50d9f983"
+    ],
+    "data/curated/concept_organs/labels/batch_02.jsonl": [
+     310,
+     "4b075b0a235e26dd"
+    ],
+    "data/curated/concept_organs/labels/batch_03.jsonl": [
+     310,
+     "d51b901615e031ac"
+    ],
+    "data/curated/concept_organs/labels/batch_04.jsonl": [
+     310,
+     "d833bd958f5f6beb"
+    ],
+    "data/curated/concept_organs/labels/batch_05.jsonl": [
+     310,
+     "ba31268f13c3a2d3"
+    ],
+    "data/curated/concept_organs/labels/batch_06.jsonl": [
+     310,
+     "62553207d25a7aa6"
+    ],
+    "data/curated/concept_organs/labels/batch_07.jsonl": [
+     310,
+     "9506748d7cc28f4e"
+    ],
+    "data/curated/concept_organs/labels/batch_08.jsonl": [
+     310,
+     "cca2e0c6fb469582"
+    ],
+    "data/curated/concept_organs/labels/batch_09.jsonl": [
+     307,
+     "c33be3b1a0485f96"
+    ],
+    "data/curated/concept_organs/labels/batch_10.jsonl": [
+     310,
+     "9ba6bb278c7ece19"
+    ],
+    "data/curated/concept_organs/labels/batch_11.jsonl": [
+     310,
+     "401feeeb31b3e624"
+    ],
+    "data/curated/concept_organs/labels/batch_12.jsonl": [
+     310,
+     "a107b66a4ba04479"
+    ],
+    "data/curated/concept_organs/labels/batch_13.jsonl": [
+     310,
+     "a13bc1b16fdb6687"
+    ],
+    "data/curated/concept_organs/labels/batch_14.jsonl": [
+     310,
+     "47fe950179e65c75"
+    ],
+    "data/curated/concept_organs/labels/batch_15.jsonl": [
+     260,
+     "6d103f48668086e3"
+    ],
+    "data/curated/concept_organs/labels/relabel_0.jsonl": [
+     151,
+     "3a75da8bd1dfbcf4"
+    ],
+    "data/curated/concept_organs/labels/relabel_1.jsonl": [
+     151,
+     "66b65d3b40130e3f"
+    ],
+    "data/curated/concept_organs/labels/relabel_2.jsonl": [
+     150,
+     "efda4c30dcf52b1a"
+    ],
+    "data/curated/concept_organs/labels/relabel_3.jsonl": [
+     150,
+     "041fcadce0e46d93"
+    ],
+    "data/curated/concept_organs/labels/relabel_4.jsonl": [
+     150,
+     "ed65a8fe5a95b686"
+    ],
+    "data/curated/concept_organs/labels/v2_00.jsonl": [
+     157,
+     "28276b388e934e2c"
+    ],
+    "data/curated/concept_organs/labels/v2_01.jsonl": [
+     157,
+     "5fd4cd124534c279"
+    ],
+    "data/curated/concept_organs/labels/v2_02.jsonl": [
+     157,
+     "ebf27dcada3f253a"
+    ],
+    "data/curated/concept_organs/labels/v2_03.jsonl": [
+     157,
+     "9d5a6749e820934c"
+    ],
+    "data/curated/concept_organs/labels/v2_04.jsonl": [
+     157,
+     "b3ea3654f1dcf99d"
+    ],
+    "data/curated/concept_organs/labels/v2_05.jsonl": [
+     157,
+     "8e5cc5b957d6518e"
+    ],
+    "data/curated/concept_organs/labels/v2_06.jsonl": [
+     157,
+     "ecbb55fc06ab8749"
+    ],
+    "data/curated/concept_organs/labels/v2_07.jsonl": [
+     157,
+     "0d5e9f1c37a2bfe1"
+    ],
+    "data/curated/concept_organs/labels/v2_08.jsonl": [
+     157,
+     "178bb12637380891"
+    ],
+    "data/curated/concept_organs/labels/v2_09.jsonl": [
+     157,
+     "0d0ee41800f4e355"
+    ],
+    "data/curated/concept_organs/labels/v2_10.jsonl": [
+     157,
+     "e1a6c6c61baa4d0c"
+    ],
+    "data/curated/concept_organs/labels/v2_11.jsonl": [
+     157,
+     "e91bb8e865513cf6"
+    ],
+    "data/curated/concept_organs/labels/v2_12.jsonl": [
+     157,
+     "0c677c38e5b34cb9"
+    ],
+    "data/curated/concept_organs/labels/v2_13.jsonl": [
+     157,
+     "32bd1e20efa72c14"
+    ],
+    "data/curated/concept_organs/labels/v2_14.jsonl": [
+     157,
+     "61f1c78eff1c0065"
+    ],
+    "data/curated/concept_organs/labels/v2_15.jsonl": [
+     157,
+     "d1d377773b0055ba"
+    ],
+    "data/curated/concept_organs/labels/v2_16.jsonl": [
+     157,
+     "448814e6edd40a1b"
+    ],
+    "data/curated/concept_organs/labels/v2_17.jsonl": [
+     157,
+     "a486a858aff21caf"
+    ],
+    "data/curated/concept_organs/labels/v2_18.jsonl": [
+     157,
+     "ccacae0075c8d6d1"
+    ],
+    "data/curated/concept_organs/labels/v2_19.jsonl": [
+     157,
+     "9716562cba71d141"
+    ],
+    "data/curated/concept_organs/labels/v2_20.jsonl": [
+     157,
+     "cfe84bfc7f2764bf"
+    ],
+    "data/curated/concept_organs/labels/v2_21.jsonl": [
+     156,
+     "1b49cf79bf27b69d"
+    ],
+    "data/curated/concept_organs/labels/v2_22.jsonl": [
+     156,
+     "1e45e91c86d092d1"
+    ],
+    "data/curated/concept_organs/labels/v2_23.jsonl": [
+     156,
+     "f009325afb5b23bd"
+    ],
+    "data/curated/concept_organs/labels/v2_24.jsonl": [
+     156,
+     "382701db8585e7c8"
+    ],
+    "data/curated/concept_organs/labels/v2_25.jsonl": [
+     156,
+     "4113b27e9c758c87"
+    ],
+    "data/curated/concept_organs/labels/v2_26.jsonl": [
+     156,
+     "de46f69e45188f0a"
+    ],
+    "data/curated/concept_organs/labels/v2_27.jsonl": [
+     156,
+     "8c28a4e20305ae44"
+    ],
+    "data/curated/concept_organs/labels/v2_28.jsonl": [
+     156,
+     "7135937219fb457b"
+    ],
+    "data/curated/concept_organs/labels/v2_29.jsonl": [
+     156,
+     "4fd1c6b85eb083e0"
+    ],
+    "data/curated/concept_organs/labels/v2_30.jsonl": [
+     156,
+     "2827800610b98d9b"
+    ],
+    "data/curated/concept_organs/labels/v2_31.jsonl": [
+     156,
+     "bc4fc6671aeaaf91"
+    ],
+    "data/curated/concept_organs/labels/v2_32.jsonl": [
+     156,
+     "888ab8bb24cec8b2"
+    ],
+    "data/curated/concept_organs/labels/v2_33.jsonl": [
+     156,
+     "9bd4aeb76a78ff8c"
+    ],
+    "data/curated/concept_organs/labels/v2_34.jsonl": [
+     156,
+     "b28c38b900d243f8"
+    ],
+    "data/curated/concept_organs/labels/v2_35.jsonl": [
+     156,
+     "d8739a6f7d7641e2"
+    ],
+    "data/curated/concept_organs/labels/v2_36.jsonl": [
+     156,
+     "5bbc1c32d7d22693"
+    ],
+    "data/curated/concept_organs/labels/v2_37.jsonl": [
+     156,
+     "cbf54a263c8c9183"
+    ],
+    "data/curated/concept_organs/labels/v2_38.jsonl": [
+     156,
+     "a64aaf946289453c"
+    ],
+    "data/curated/concept_organs/labels/v3_00.jsonl": [
+     163,
+     "456d03dc8cce3ee3"
+    ],
+    "data/curated/concept_organs/labels/v3_01.jsonl": [
+     163,
+     "f7b0ba76f8ec1b2c"
+    ],
+    "data/curated/concept_organs/labels/v3_02.jsonl": [
+     163,
+     "cf75f8dac7d8aaab"
+    ],
+    "data/curated/concept_organs/labels/v3_03.jsonl": [
+     163,
+     "081bd695220c9481"
+    ],
+    "data/curated/concept_organs/labels/v3_04.jsonl": [
+     163,
+     "947b75b62421b4f4"
+    ],
+    "data/curated/concept_organs/labels/v3_05.jsonl": [
+     163,
+     "de9bb10a46ef90dd"
+    ],
+    "data/curated/concept_organs/labels/v3_06.jsonl": [
+     163,
+     "ea4af1811c657069"
+    ],
+    "data/curated/concept_organs/labels/v3_07.jsonl": [
+     163,
+     "e6989a26c0130a64"
+    ],
+    "data/curated/concept_organs/labels/v3_08.jsonl": [
+     163,
+     "bd3552f831dbda28"
+    ],
+    "data/curated/concept_organs/labels/v3_09.jsonl": [
+     162,
+     "d81acbb922909089"
+    ],
+    "data/curated/concept_organs/labels/v3_10.jsonl": [
+     162,
+     "cbcca7ccc31cfb9a"
+    ],
+    "data/curated/concept_organs/labels/v4_00.jsonl": [
+     180,
+     "0926b4e43f687317"
+    ],
+    "data/curated/concept_organs/labels/v4_01.jsonl": [
+     180,
+     "e45bdcf5b0571368"
+    ],
+    "data/curated/concept_organs/labels/v4_02.jsonl": [
+     180,
+     "95ee1bc94d2fc4ae"
+    ],
+    "data/curated/concept_organs/labels/v4_03.jsonl": [
+     180,
+     "1072725b061c9220"
+    ],
+    "data/curated/concept_organs/labels/v4_04.jsonl": [
+     180,
+     "44257e5668f0a706"
+    ],
+    "data/curated/concept_organs/labels/v4_05.jsonl": [
+     180,
+     "f2bcfa750d47d228"
+    ],
+    "data/curated/concept_organs/labels/v4_06.jsonl": [
+     180,
+     "62916e6db28d2f00"
+    ],
+    "data/curated/concept_organs/labels/v4_07.jsonl": [
+     180,
+     "fb814865cd45511b"
+    ],
+    "data/curated/concept_organs/labels/v4_08.jsonl": [
+     180,
+     "f25e42e9fa752842"
+    ],
+    "data/curated/concept_organs/labels/v4_09.jsonl": [
+     180,
+     "6f68fb33bcb34267"
+    ],
+    "data/curated/concept_organs/labels/v4_10.jsonl": [
+     180,
+     "f2bb954b8b9d65ee"
+    ],
+    "data/curated/concept_organs/labels/v4_11.jsonl": [
+     180,
+     "4dd6ceac67cc9ed2"
+    ],
+    "data/curated/concept_organs/labels/v4_12.jsonl": [
+     180,
+     "461a1426d563f1c5"
+    ],
+    "data/curated/concept_organs/labels/v4_13.jsonl": [
+     180,
+     "155868e2b0f97d77"
+    ],
+    "data/curated/concept_organs/labels/v4_14.jsonl": [
+     180,
+     "dfbbc2da30277e45"
+    ],
+    "data/curated/concept_organs/labels/v4_15.jsonl": [
+     180,
+     "1b889afa8e98334d"
+    ],
+    "data/curated/concept_organs/labels/v4_16.jsonl": [
+     180,
+     "fb569a03348baa6e"
+    ],
+    "data/curated/concept_organs/labels/v4_17.jsonl": [
+     180,
+     "082d6244f7e4b787"
+    ],
+    "data/curated/concept_organs/labels/v4_18.jsonl": [
+     180,
+     "71cbcc3991fa65ac"
+    ],
+    "data/curated/concept_organs/labels/v4_19.jsonl": [
+     177,
+     "2b441a45249697bb"
+    ],
+    "data/curated/concept_organs/labels/v4_20.jsonl": [
+     180,
+     "1db41eb9812f7051"
+    ],
+    "data/curated/concept_organs/labels/v4_21.jsonl": [
+     180,
+     "e67a9fed959541df"
+    ],
+    "data/curated/concept_organs/labels/v4_22.jsonl": [
+     180,
+     "94aba67d310caff9"
+    ],
+    "data/curated/concept_organs/labels/v4_23.jsonl": [
+     180,
+     "ea8bdec8071910ca"
+    ],
+    "data/curated/concept_organs/labels/v4_24.jsonl": [
+     180,
+     "f91d6c3392173891"
+    ],
+    "data/curated/concept_organs/labels/v4_25.jsonl": [
+     180,
+     "f1fbdaaf6a820655"
+    ],
+    "data/curated/concept_organs/labels/v4_26.jsonl": [
+     180,
+     "01799db48a183076"
+    ],
+    "data/curated/concept_organs/labels/v4_27.jsonl": [
+     180,
+     "ec7bb55d6aa732ec"
+    ],
+    "data/curated/concept_organs/labels/v4_28.jsonl": [
+     180,
+     "69bd4b1e5784dd78"
+    ],
+    "data/curated/concept_organs/labels/v4_29.jsonl": [
+     180,
+     "502dbf83dfa35d47"
+    ],
+    "data/curated/concept_organs/labels/v4_30.jsonl": [
+     180,
+     "2b082fd3d29ea05c"
+    ],
+    "data/curated/concept_organs/labels/v4_31.jsonl": [
+     180,
+     "0b11fe663f92c37b"
+    ],
+    "data/curated/concept_organs/labels/v4_32.jsonl": [
+     180,
+     "0dde1c396dcdb891"
+    ],
+    "data/curated/concept_organs/labels/v4_33.jsonl": [
+     180,
+     "74d27e35401a9ae3"
+    ],
+    "data/curated/concept_organs/labels/v4_34.jsonl": [
+     180,
+     "4d8943087d85560e"
+    ],
+    "data/curated/concept_organs/labels/v4_35.jsonl": [
+     180,
+     "da7298a6c56a2e8b"
+    ],
+    "data/curated/concept_organs/labels/v4_36.jsonl": [
+     180,
+     "127efa9a56a24f96"
+    ],
+    "data/curated/concept_organs/labels/v4_37.jsonl": [
+     180,
+     "1a373d720989d524"
+    ],
+    "data/curated/concept_organs/labels/v4_38.jsonl": [
+     179,
+     "aeb20c68eece03b3"
+    ],
+    "data/curated/concept_organs/labels/v4_39.jsonl": [
+     180,
+     "763b53ee11c53596"
+    ],
+    "data/curated/concept_organs/labels/v4_40.jsonl": [
+     180,
+     "b5f546c519ac3f58"
+    ],
+    "data/curated/concept_organs/labels/v4_41.jsonl": [
+     180,
+     "ed3e8b6fde88b1e1"
+    ],
+    "data/curated/concept_organs/labels/v4_42.jsonl": [
+     180,
+     "e136262722b1ca2f"
+    ],
+    "data/curated/concept_organs/labels/v4_43.jsonl": [
+     180,
+     "8f883bf065029f69"
+    ],
+    "data/curated/concept_organs/labels/v4_44.jsonl": [
+     180,
+     "43e1e95e074299fd"
+    ],
+    "data/curated/concept_organs/labels/v4_45.jsonl": [
+     180,
+     "3f033462aa514c2c"
+    ],
+    "data/curated/concept_organs/labels/v4_46.jsonl": [
+     180,
+     "90edcba0afb681b2"
+    ],
+    "data/curated/concept_organs/labels/v4_47.jsonl": [
+     180,
+     "1d39567a050dbc46"
+    ],
+    "data/curated/concept_organs/labels/v4_48.jsonl": [
+     180,
+     "c8349cdd6b68f61a"
+    ],
+    "data/curated/concept_organs/labels/v4_49.jsonl": [
+     180,
+     "013ce368470774e9"
+    ],
+    "data/curated/concept_organs/labels/v4_50.jsonl": [
+     180,
+     "dfdfcf5cb1b51e86"
+    ],
+    "data/curated/concept_organs/labels/v4_51.jsonl": [
+     180,
+     "34e58211ca167bb3"
+    ],
+    "data/curated/concept_organs/labels/v4_52.jsonl": [
+     180,
+     "d82b986d3fb947f9"
+    ],
+    "data/curated/concept_organs/labels/v4_53.jsonl": [
+     180,
+     "87f07a8161eba98e"
+    ],
+    "data/curated/concept_organs/labels/v4_54.jsonl": [
+     180,
+     "d786cd282e33f898"
+    ],
+    "data/curated/concept_organs/labels/v4_55.jsonl": [
+     180,
+     "200be87b7371a2f1"
+    ],
+    "data/curated/concept_organs/labels/v4_56.jsonl": [
+     180,
+     "6fcf3788a291bbda"
+    ],
+    "data/curated/concept_organs/labels/v4_57.jsonl": [
+     180,
+     "9879e5095018c4dc"
+    ],
+    "data/curated/concept_organs/labels/v4_58.jsonl": [
+     176,
+     "fd5c5e923207b2ab"
+    ],
+    "data/curated/concept_organs/labels/v4_59.jsonl": [
+     180,
+     "02be46b99650c04f"
+    ],
+    "data/curated/concept_organs/labels/v4_60.jsonl": [
+     179,
+     "959430ddbc9b2d6d"
+    ],
+    "data/curated/concept_organs/labels/v4_61.jsonl": [
+     179,
+     "45ce5766080aa483"
+    ],
+    "data/curated/concept_organs/labels/v4_62.jsonl": [
+     179,
+     "b039c191dbd1e3a2"
+    ],
+    "data/curated/concept_organs/labels/v4_63.jsonl": [
+     179,
+     "e6be076e767c4d17"
+    ],
+    "data/curated/concept_organs/labels/v4_64.jsonl": [
+     179,
+     "c1e29f832c9c7e9e"
+    ],
+    "data/curated/concept_organs/labels/v4_65.jsonl": [
+     179,
+     "8d7a8b22d4d8be12"
+    ],
+    "data/curated/concept_organs/labels/v4_66.jsonl": [
+     179,
+     "fdb167b7ca7dab19"
+    ],
+    "data/curated/concept_organs/labels/v4_67.jsonl": [
+     179,
+     "72aba96d9f7d65f7"
+    ],
+    "data/curated/concept_organs/labels/v4_68.jsonl": [
+     179,
+     "dca99ba48370d571"
+    ],
+    "data/curated/concept_organs/labels/v4_69.jsonl": [
+     179,
+     "84d0c288f0a68784"
+    ],
+    "data/curated/concept_organs/labels/v4_70.jsonl": [
+     179,
+     "bcb56009cecf90ab"
+    ],
+    "data/curated/concept_organs/labels/v4_71.jsonl": [
+     179,
+     "eca272f515d46f27"
+    ],
+    "data/curated/concept_organs/labels/v4_72.jsonl": [
+     179,
+     "66811ef8834a3c72"
+    ],
+    "data/curated/concept_organs/labels/v4_73.jsonl": [
+     179,
+     "47b61737cc98f046"
+    ],
+    "data/curated/concept_organs/labels/v4_74.jsonl": [
+     179,
+     "28494489e28d5551"
+    ],
+    "data/curated/concept_organs/labels/v4_75.jsonl": [
+     179,
+     "0078338c89101fee"
+    ],
+    "data/curated/concept_organs/labels/v4_76.jsonl": [
+     179,
+     "8163d8b076b4d942"
+    ],
+    "data/curated/concept_organs/labels/v4_77.jsonl": [
+     177,
+     "245d2461c294428b"
+    ],
+    "data/curated/concept_organs/labels/v4_78.jsonl": [
+     179,
+     "d5d54e4ed69e8a3c"
+    ],
+    "data/curated/concept_organs/labels/v4_79.jsonl": [
+     179,
+     "15a03406a574dde7"
+    ],
+    "data/curated/concept_organs/labels/v4_80.jsonl": [
+     179,
+     "2a34101c124d4208"
+    ],
+    "data/curated/concept_organs/labels/v4_81.jsonl": [
+     179,
+     "f910de29cccb0175"
+    ],
+    "data/curated/concept_organs/labels/v4_82.jsonl": [
+     179,
+     "57b518239a2b2181"
+    ],
+    "data/curated/concept_organs/labels/v4_83.jsonl": [
+     179,
+     "827b89dd91f4fa06"
+    ],
+    "data/curated/concept_organs/labels/v4_84.jsonl": [
+     179,
+     "c9f2ec9f6ca001de"
+    ],
+    "data/curated/concept_organs/labels/v4_85.jsonl": [
+     179,
+     "9711772295807f87"
+    ],
+    "data/curated/concept_organs/labels/v4_86.jsonl": [
+     179,
+     "3f633850a8f55616"
+    ],
+    "data/curated/concept_organs/labels/v4_87.jsonl": [
+     179,
+     "f8a18f1e22bd7eae"
+    ],
+    "data/curated/concept_organs/labels/v4_88.jsonl": [
+     179,
+     "c3c4155e949d7755"
+    ],
+    "data/curated/concept_organs/labels/v4_89.jsonl": [
+     179,
+     "e95b5a09c8c9947f"
+    ],
+    "data/curated/concept_organs/labels/v4_90.jsonl": [
+     179,
+     "84643a92d442da81"
+    ],
+    "data/curated/concept_organs/labels/v4_91.jsonl": [
+     179,
+     "f250c3ffcf81a303"
+    ],
+    "data/curated/concept_organs/labels/v4_92.jsonl": [
+     179,
+     "51a6cc794633adb3"
+    ],
+    "data/curated/concept_organs/labels/v4_93.jsonl": [
+     179,
+     "26f8b3d275920c55"
+    ],
+    "data/curated/concept_organs/labels/v4_94.jsonl": [
+     179,
+     "e1807b23677f2385"
+    ],
+    "data/curated/concept_organs/labels/v4_95.jsonl": [
+     179,
+     "64b0a0fe8d5a9d41"
+    ],
+    "data/curated/concept_organs/labels/v4_96.jsonl": [
+     179,
+     "02c6c7f18e9f2d0a"
+    ],
+    "data/curated/concept_organs/labels/v4_97.jsonl": [
+     179,
+     "3771f39e85a4868e"
+    ],
+    "data/curated/concept_organs/labels/v4_98.jsonl": [
+     179,
+     "423ebcca67073ddb"
+    ],
+    "data/curated/concept_organs/labels/v4_99.jsonl": [
+     179,
+     "2fd0623a95e29a35"
+    ],
+    "data/curated/concept_organs/labels/verified_v2.jsonl": [
+     4465,
+     "8188a7376db1ca67"
+    ],
+    "data/curated/concept_organs/labels/verified_v3.jsonl": [
+     16831,
+     "ccc9edf848c670a3"
+    ],
+    "data/curated/concept_organs/labels/verified_v4.jsonl": [
+     678,
+     "25d8a0a7ab3b4e77"
+    ],
+    "data/curated/concept_organs/manifest.json": [
+     null,
+     "d27bfa88a18417bd"
+    ]
+   },
+   "rows": 53479,
+   "sha": "d983e483aef13478"
+  },
+  "train_queries": {
+   "files": {
+    "data/curated/external/mentions_mondo.jsonl": [
+     31421,
+     "7b17cd8a0137e978"
+    ],
+    "data/curated/train_queries/review/review2_00.jsonl": [
+     192,
+     "92fb9c3daedf092b"
+    ],
+    "data/curated/train_queries/review/review2_01.jsonl": [
+     192,
+     "30dd31ab6dde99fd"
+    ],
+    "data/curated/train_queries/review/review2_02.jsonl": [
+     192,
+     "8d3e4deba85bdd61"
+    ],
+    "data/curated/train_queries/review/review2_03.jsonl": [
+     192,
+     "8890530beed438d9"
+    ],
+    "data/curated/train_queries/review/review2_04.jsonl": [
+     192,
+     "f627bf00f6e94667"
+    ],
+    "data/curated/train_queries/review/review2_05.jsonl": [
+     192,
+     "fc08f02c730284e8"
+    ],
+    "data/curated/train_queries/review/review2_06.jsonl": [
+     192,
+     "c675671ddcf3ccab"
+    ],
+    "data/curated/train_queries/review/review2_07.jsonl": [
+     192,
+     "c98f52f20e289a2e"
+    ],
+    "data/curated/train_queries/review/review2_08.jsonl": [
+     192,
+     "081d2f1cdc6ed77e"
+    ],
+    "data/curated/train_queries/review/review2_09.jsonl": [
+     188,
+     "260323811a4eec61"
+    ],
+    "data/curated/train_queries/review/review2_10.jsonl": [
+     192,
+     "a38fac11dd4a9ca4"
+    ],
+    "data/curated/train_queries/review/review2_11.jsonl": [
+     192,
+     "7d70fce5b3ea37fa"
+    ],
+    "data/curated/train_queries/review/review2_12.jsonl": [
+     192,
+     "383fac5eeb00b308"
+    ],
+    "data/curated/train_queries/review/review2_13.jsonl": [
+     192,
+     "e9ea911f051d0e4f"
+    ],
+    "data/curated/train_queries/review/review2_14.jsonl": [
+     192,
+     "5c8552dfecf99ea2"
+    ],
+    "data/curated/train_queries/review/review2_15.jsonl": [
+     192,
+     "556c01fb1675311b"
+    ],
+    "data/curated/train_queries/review/review2_16.jsonl": [
+     192,
+     "8a677162a9abc9d0"
+    ],
+    "data/curated/train_queries/review/review2_17.jsonl": [
+     192,
+     "b9a97892ca82aea5"
+    ],
+    "data/curated/train_queries/review/review2_18.jsonl": [
+     192,
+     "7f45a513f4fc1430"
+    ],
+    "data/curated/train_queries/review/review2_19.jsonl": [
+     192,
+     "efae717afe6223c7"
+    ],
+    "data/curated/train_queries/review/review2_20.jsonl": [
+     192,
+     "769f378e17943c8a"
+    ],
+    "data/curated/train_queries/review/review2_21.jsonl": [
+     192,
+     "e247ddc296f740fe"
+    ],
+    "data/curated/train_queries/review/review2_22.jsonl": [
+     192,
+     "9cc014b48330e4b2"
+    ],
+    "data/curated/train_queries/review/review2_23.jsonl": [
+     188,
+     "330f8183d4cf3797"
+    ],
+    "data/curated/train_queries/review/review2_24.jsonl": [
+     188,
+     "89249938d2709ccd"
+    ]
+   },
+   "rows": 36209,
+   "sha": "e4bc7ea2e13675b7"
+  },
+  "profiles": {
+   "files": {
+    "data/curated/disease_profiles/profiles_0.jsonl": [
+     130,
+     "dc458d3755f733c0"
+    ],
+    "data/curated/disease_profiles/profiles_1.jsonl": [
+     130,
+     "ef52e547b09a52f1"
+    ],
+    "data/curated/disease_profiles/profiles_2.jsonl": [
+     130,
+     "da9cd71887074824"
+    ],
+    "data/curated/disease_profiles/profiles_3.jsonl": [
+     130,
+     "6ad2c12f604c9300"
+    ],
+    "data/curated/disease_profiles/profiles_4.jsonl": [
+     130,
+     "fb2bd92b5791329e"
+    ],
+    "data/curated/disease_profiles/profiles_5.jsonl": [
+     130,
+     "e98965d4046f3fd0"
+    ],
+    "data/curated/disease_profiles/profiles_6.jsonl": [
+     10,
+     "246d05b8d41ac712"
+    ]
+   },
+   "rows": 790,
+   "sha": "05ca4ea538f105c5"
+  },
+  "gen_ko": {
+   "files": {
+    "data/curated/judge2/gen/ko_00.jsonl": [
+     225,
+     "3142d8cd10871f0c"
+    ],
+    "data/curated/judge2/gen/ko_01.jsonl": [
+     246,
+     "d66c6bd8c13faf46"
+    ],
+    "data/curated/judge2/gen/ko_02.jsonl": [
+     221,
+     "730cca9ad5ceda30"
+    ],
+    "data/curated/judge2/gen/ko_03.jsonl": [
+     237,
+     "90118f1d9704e794"
+    ],
+    "data/curated/judge2/gen/ko_04.jsonl": [
+     274,
+     "7f56874bf7e577f7"
+    ],
+    "data/curated/judge2/gen/ko_05.jsonl": [
+     247,
+     "ef1602ea4596e4da"
+    ],
+    "data/curated/judge2/gen/ko_06.jsonl": [
+     241,
+     "412b2665f01e3aa4"
+    ],
+    "data/curated/judge2/gen/ko_07.jsonl": [
+     256,
+     "e8e795cb3be83264"
+    ],
+    "data/curated/judge2/gen/ko_08.jsonl": [
+     272,
+     "b2dfa087b56ce078"
+    ],
+    "data/curated/judge2/gen/ko_09.jsonl": [
+     232,
+     "143cd79577292451"
+    ],
+    "data/curated/judge2/gen/ko_10.jsonl": [
+     227,
+     "12be0e6b24811b7d"
+    ],
+    "data/curated/judge2/gen/ko_11.jsonl": [
+     212,
+     "652dc1c28d2187d8"
+    ],
+    "data/curated/judge2/gen/ko_12.jsonl": [
+     239,
+     "7f53249a423d5c04"
+    ],
+    "data/curated/judge2/gen/ko_13.jsonl": [
+     270,
+     "3cab52547adc62a0"
+    ],
+    "data/curated/judge2/gen/ko_14.jsonl": [
+     262,
+     "f1c85a9845940dab"
+    ],
+    "data/curated/judge2/gen/ko_15.jsonl": [
+     268,
+     "f19cdd970cf95167"
+    ],
+    "data/curated/judge2/gen/ko_16.jsonl": [
+     246,
+     "0b839ca731bc673c"
+    ],
+    "data/curated/judge2/gen/ko_17.jsonl": [
+     242,
+     "46d6d4cbda25c7d2"
+    ],
+    "data/curated/judge2/gen/ko_18.jsonl": [
+     260,
+     "a8ee6aaa0530f2b2"
+    ],
+    "data/curated/judge2/gen/ko_19.jsonl": [
+     172,
+     "97e2b9b9465fd084"
+    ]
+   },
+   "rows": 4849,
+   "sha": "8006439c078241c3"
+  },
+  "gen_sym": {
+   "files": {
+    "data/curated/judge2/gen/sym_00.jsonl": [
+     400,
+     "2377d0b501a40ae7"
+    ],
+    "data/curated/judge2/gen/sym_01.jsonl": [
+     398,
+     "5da98a06b6db3cce"
+    ],
+    "data/curated/judge2/gen/sym_02.jsonl": [
+     398,
+     "3b2d59914b62c9e0"
+    ],
+    "data/curated/judge2/gen/sym_03.jsonl": [
+     400,
+     "e70fc8e7754a38ce"
+    ],
+    "data/curated/judge2/gen/sym_04.jsonl": [
+     400,
+     "206010006be7a52b"
+    ],
+    "data/curated/judge2/gen/sym_05.jsonl": [
+     398,
+     "ab62a07fdfad9cb1"
+    ],
+    "data/curated/judge2/gen/sym_06.jsonl": [
+     400,
+     "f397ae90e07006c7"
+    ],
+    "data/curated/judge2/gen/sym_07.jsonl": [
+     400,
+     "44aa25006d0b6ebb"
+    ],
+    "data/curated/judge2/gen/sym_08.jsonl": [
+     399,
+     "00366ad8f39de409"
+    ],
+    "data/curated/judge2/gen/sym_09.jsonl": [
+     400,
+     "6d4505830d3bb1b4"
+    ],
+    "data/curated/judge2/gen/sym_10.jsonl": [
+     400,
+     "60e25fb2fc570971"
+    ],
+    "data/curated/judge2/gen/sym_11.jsonl": [
+     400,
+     "5a3e9b95e0882de8"
+    ],
+    "data/curated/judge2/gen/sym_12.jsonl": [
+     400,
+     "cd8d0fa4f6837e3a"
+    ],
+    "data/curated/judge2/gen/sym_13.jsonl": [
+     400,
+     "71415aefb0b6427d"
+    ],
+    "data/curated/judge2/gen/sym_14.jsonl": [
+     399,
+     "84f9ae55b88d791c"
+    ],
+    "data/curated/judge2/gen/sym_15.jsonl": [
+     400,
+     "d819027fbf9ffc75"
+    ],
+    "data/curated/judge2/gen/sym_16.jsonl": [
+     399,
+     "d5b01f6aa556a909"
+    ],
+    "data/curated/judge2/gen/sym_17.jsonl": [
+     399,
+     "ae50db4627257f95"
+    ],
+    "data/curated/judge2/gen/sym_18.jsonl": [
+     400,
+     "f4a7f60a10d54eec"
+    ],
+    "data/curated/judge2/gen/sym_19.jsonl": [
+     300,
+     "af0e6750244a743a"
+    ]
+   },
+   "rows": 7890,
+   "sha": "966c27084b4ecd1c"
+  },
+  "gen_junk": {
+   "files": {
+    "data/curated/judge2/gen/junk_00.jsonl": [
+     499,
+     "4b319cdcca964aa1"
+    ],
+    "data/curated/judge2/gen/junk_01.jsonl": [
+     405,
+     "009838db46573bba"
+    ],
+    "data/curated/judge2/gen/junk_02.jsonl": [
+     497,
+     "e7f2b84b762e24cc"
+    ],
+    "data/curated/judge2/gen/junk_03.jsonl": [
+     447,
+     "1c25ffe4befe9c1f"
+    ],
+    "data/curated/judge2/gen/junk_04.jsonl": [
+     496,
+     "72feed05bd951d14"
+    ]
+   },
+   "rows": 2344,
+   "sha": "28214930fa4fe9e0"
+  },
+  "mondo_ko": {
+   "files": {
+    "data/curated/korean/mondo_ko.jsonl": [
+     23258,
+     "851cff6d4c1a4428"
+    ]
+   },
+   "rows": 23258,
+   "sha": "4a3b7fad8cba65a9"
+  },
+  "gen_ko2": {
+   "files": {
+    "data/curated/judge2/gen/ko2_00.jsonl": [
+     2000,
+     "01ec4e7decafce66"
+    ],
+    "data/curated/judge2/gen/ko2_01.jsonl": [
+     2000,
+     "acba2ed91bad8061"
+    ],
+    "data/curated/judge2/gen/ko2_02.jsonl": [
+     2000,
+     "db296b925b35f3c3"
+    ],
+    "data/curated/judge2/gen/ko2_03.jsonl": [
+     2000,
+     "14995a925593e74b"
+    ],
+    "data/curated/judge2/gen/ko2_04.jsonl": [
+     2000,
+     "e422d02c7451e444"
+    ],
+    "data/curated/judge2/gen/ko2_05.jsonl": [
+     1261,
+     "4e501366fad71fb2"
+    ]
+   },
+   "rows": 11261,
+   "sha": "ea1d47caae877f1e"
+  },
+  "gen_kotypo": {
+   "files": {
+    "data/curated/judge2/gen/kotypo_00.jsonl": [
+     10000,
+     "8bbf62aee9b3625b"
+    ],
+    "data/curated/judge2/gen/kotypo_01.jsonl": [
+     10000,
+     "de68b6ac98a33d7c"
+    ],
+    "data/curated/judge2/gen/kotypo_02.jsonl": [
+     6423,
+     "b9077393dc801ead"
+    ]
+   },
+   "rows": 26423,
+   "sha": "8160e6982f0d1e73"
+  },
+  "gen_ko3": {
+   "files": {
+    "data/curated/judge2/gen/ko3_00.jsonl": [
+     2000,
+     "65a48d49ace18063"
+    ],
+    "data/curated/judge2/gen/ko3_01.jsonl": [
+     2000,
+     "b55bdc35254e1d5d"
+    ],
+    "data/curated/judge2/gen/ko3_02.jsonl": [
+     2000,
+     "2840a10c5abcfe48"
+    ],
+    "data/curated/judge2/gen/ko3_03.jsonl": [
+     160,
+     "25b567b0a299b2cb"
+    ]
+   },
+   "rows": 6160,
+   "sha": "cf100ea277c57618"
+  },
+  "umls": {
+   "files": {
+    "data/curated/external/umls/items.jsonl": [
+     113978,
+     "b901715d46be12cd"
+    ],
+    "data/curated/external/umls/manifest.json": [
+     null,
+     "6a393309d0935ff4"
+    ],
+    "data/curated/external/umls/pairs.jsonl": [
+     193954,
+     "903dfb526e8765ae"
+    ]
+   },
+   "rows": 307932,
+   "sha": "df1e8e1db9039baa"
+  },
+  "mondo_index": {
+   "path": "/data/hyeongchanahn/adctox/work/ml_cache_v2/mondo_index.npz",
+   "sha": "61776237bb65e273",
+   "bytes": 388293762
+  },
+  "mondo_obo": {
+   "path": "data/raw_big/mondo/2026-10-07/mondo.obo",
+   "sha": "2631e8e165d41def"
+  }
+ },
+ "backbone": {
+  "model": "google/gemma-4-E2B",
+  "revision": "d29ff6b45f081a49ee2733a859c9c9c2d95d1a6f",
+  "prompt": "Condition: {}\nOrgans it directly affects:"
+ },
+ "checks": {
+  "sym_language_mismatch": 0,
+  "eval_text_leak": {},
+  "eval_text_conflict": {
+   "organ": 120,
+   "align": 40,
+   "valid": 410,
+   "sym": 101
+  },
+  "eval_text_conflict_examples": [
+   [
+    "LN",
+    "MONDO:0002486"
+   ],
+   [
+    "DM",
+    "MONDO:0016367"
+   ],
+   [
+    "SCD",
+    "MONDO:0007374"
+   ],
+   [
+    "HEP",
+    "MONDO:0019799"
+   ],
+   [
+    "CED",
+    "MONDO:0009032"
+   ],
+   [
+    "RA",
+    "MONDO:0005272"
+   ],
+   [
+    "RLS",
+    "MONDO:0017413"
+   ],
+   [
+    "HS",
+    "MONDO:0019395"
+   ],
+   [
+    "RAD",
+    "MONDO:0007483"
+   ],
+   [
+    "CHB",
+    "MONDO:0000468"
+   ],
+   [
+    "DM",
+    "MONDO:0016107"
+   ],
+   [
+    "CP",
+    "MONDO:0016064"
+   ],
+   [
+    "L-N",
+    "MONDO:0010298"
+   ],
+   [
+    "AS",
+    "MONDO:0007113"
+   ],
+   [
+    "fits",
+    "MONDO:0001386"
+   ],
+   [
+    "UC",
+    "MONDO:0040679"
+   ],
+   [
+    "PE",
+    "MONDO:0001780"
+   ],
+   [
+    "HD",
+    "MONDO:0018309"
+   ],
+   [
+    "CP",
+    "MONDO:0006497"
+   ],
+   [
+    "PD",
+    "MONDO:0002635"
+   ],
+   [
+    "HH",
+    "MONDO:0002404"
+   ],
+   [
+    "nerve problem",
+    "MONDO:0005244"
+   ],
+   [
+    "fatigue",
+    "MONDO:0005154"
+   ],
+   [
+    "fatigue",
+    "MONDO:0005300"
+   ],
+   [
+    "fatigue",
+    "MONDO:0015925"
+   ],
+   [
+    "fatigue",
+    "MONDO:0018881"
+   ],
+   [
+    "fatigue",
+    "MONDO:0005420"
+   ],
+   [
+    "홍채섬모체염",
+    "MONDO:0017634"
+   ],
+   [
+    "iridocyclitis",
+    "MONDO:0017634"
+   ],
+   [
+    "anterior uveitis",
+    "MONDO:0017634"
+   ]
+  ],
+  "valid_conflicts": 1
+ },
+ "items": {
+  "total": 89562,
+  "train": 81430,
+  "val": 8132,
+  "korean": 15646,
+  "kcd": 0,
+  "gen_ko": 0,
+  "gen_sym": 7890,
+  "junk": 2344,
+  "junk_copies": 4,
+  "mondo_ko": 0,
+  "ko2": 0,
+  "kotypo": 0,
+  "ko3": 0,
+  "umls": 0,
+  "dropped_eval_text": 210,
+  "sources_left_out": [
+   "gen_ko",
+   "kcd",
+   "ko2",
+   "ko3",
+   "kotypo",
+   "mondo_ko",
+   "umls"
+  ],
+  "by_source": {
+   "profiles": 7660,
+   "mondo_names": 52880,
+   "external": 2609,
+   "train_queries": 2761,
+   "gen_sym": 7080,
+   "junk": 8440
+  },
+  "out_organ": 68243,
+  "out_align": 65406,
+  "out_valid": 81430,
+  "out_sym": 12193
+ },
+ "epochs": [
+  {
+   "epoch": 1,
+   "val_organ_loss": 0.1283,
+   "minutes": 15.0
+  },
+  {
+   "epoch": 2,
+   "val_organ_loss": 0.1179,
+   "minutes": 26.4
+  }
+ ],
+ "finished": "2026-10-21 01:07",
+ "chosen_epoch": 2,
+ "calibration": {
+  "temp": [
+   1.1,
+   1.1,
+   1.2,
+   1.2,
+   1.2,
+   1.1,
+   1.2,
+   1.0,
+   1.1,
+   1.0,
+   1.1,
+   1.0,
+   1.2
+  ],
+  "thr": [
+   0.55,
+   0.4,
+   0.4,
+   0.3,
+   0.4,
+   0.45,
+   0.45,
+   0.5,
+   0.4,
+   0.55,
+   0.45,
+   0.45,
+   0.55
+  ],
+  "valid": {
+   "threshold": 0.99,
+   "real_accepted": 0.9918839153959665,
+   "junk_accepted": 0.0
+  }
+ },
+ "results": {
+  "en_pipeline": 0.877,
+  "en_single": 0.862,
+  "ko_pipeline": 0.757,
+  "ko_single": 0.757,
+  "align_top1": 0.473,
+  "sym_top3": 0.92,
+  "valid_threshold": 0.99
+ },
+ "bench": {
+  "single (dev)": {
+   "en": 0.859,
+   "ko": 0.757,
+   "concept_en": 0.283,
+   "invalid_accept": 0.0,
+   "symptom_top3": 0.886
+  }
+ }
+}

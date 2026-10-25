@@ -19,7 +19,9 @@ import torch
 import adc_paths as P, eval_linking as EL, mondo_index as MI, linking_models as LM, organ_head as OH, suggest as SG
 from build_linking_pools import read_obo
 
-GEMMA = "google/gemma-4-E2B"; REV = "d29ff6b45f081a49ee2733a859c9c9c2d95d1a6f"; AXES = MI.AXES; DEV = "cuda:0"
+GEMMA = os.environ.get("GEMMA_MODEL", "google/gemma-4-E2B")                 # GEMMA_MODEL / GEMMA_REV: another Gemma 4 size (e.g. E4B)
+REV = os.environ.get("GEMMA_REV", "d29ff6b45f081a49ee2733a859c9c9c2d95d1a6f" if GEMMA == "google/gemma-4-E2B" else None)
+AXES = MI.AXES; DEV = "cuda:0"
 PROMPT = "Condition: {}\nOrgans it directly affects:"
 
 

@@ -50,6 +50,7 @@ ADC_RESEARCH_MODE=1 python ml/reproduce_judge.py --work /data/me/work_cache --ta
 | `ko2` | 한국어 일상어·약어·오타 |
 | `kotypo` | 규칙 기반 한국어 오타 (`ml/ko_typos.py`) |
 | `ko3` | 한국어 짧은 말·약어·한영 혼합 (`ml/ko3_batches.py`) |
+| `umls` | UMLS 이름·약어 (`ml/umls_build.py`, 라이선스 필요, 없으면 자동으로 빠짐) |
 
 예: `--drop mondo_ko,ko2 --compare-to r1s7`이면 한국어 이름 데이터가 얼마나 기여했는지 나온다.
 

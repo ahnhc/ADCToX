@@ -28,7 +28,7 @@ from build_linking_pools import read_obo
 AXES = MI.AXES; DEV = "cuda:0"; PROMPT = GJ.PROMPT; G2 = P.REPO + "data/curated/judge2/gen/"
 HANGUL = lambda s: any("가" <= c <= "힣" for c in s)
 JUNK_COPIES = 4                                                          # each training junk text this many times
-SOURCES = ["mondo_names", "train_queries", "external", "profiles", "kcd", "gen_ko", "gen_sym", "mondo_ko", "ko2", "kotypo", "ko3"]     # junk always
+SOURCES = ["mondo_names", "train_queries", "external", "profiles", "kcd", "gen_ko", "gen_sym", "mondo_ko", "ko2", "kotypo", "ko3", "umls"]     # junk always
 
 
 def sym_split(t): return "dev" if int(hashlib.sha256(t.encode()).hexdigest(), 16) % 2 == 0 else "test"     # as ml/eval_symptoms.py
@@ -71,6 +71,7 @@ def main():
     ap.add_argument("--kcd", type=int, default=20000); ap.add_argument("--smoke", action="store_true"); ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--stage", default="unstaged"); ap.add_argument("--note", default=""); ap.add_argument("--compare-to", default=None)
     ap.add_argument("--consist", type=float, default=0.0, help="weight of the Korean-English consistency loss (0: off)")
+    ap.add_argument("--clip", type=float, default=0.0, help="clip the gradient norm to this value (0: off). E4B runs under-train in about half the seeds without it")
     ap.add_argument("--drop", default="", help="comma list of training sources to leave out (ablation): " + ",".join(SOURCES))
     a = ap.parse_args(); rng = random.Random(a.seed); torch.manual_seed(a.seed)
     import tuning_ledger as TL
@@ -136,6 +137,12 @@ def main():
     gtypo = jl("kotypo_*.jsonl") if "kotypo" not in drop else []             # rule-based Korean typos (ml/ko_typos.py)
     for x in gtypo:
         if x.get("id") in T: add(x.get("text"), x["id"], src="kotypo")
+    umls = P.REPO + "data/curated/external/umls/items.jsonl"                # UMLS names of MONDO-linked concepts (ml/umls_build.py; licensed, local)
+    n_umls = 0
+    if "umls" not in drop and os.path.exists(umls):
+        for r in map(json.loads, open(umls, encoding="utf-8")):
+            if r["mondo"] in labels and r["mondo"] not in held: add(r["text"], r["mondo"], src="umls"); n_umls += 1
+    elif "umls" not in drop: drop.add("umls"); print("UMLS files not found: trained without them", flush=True)
     gko3 = jl("ko3_*.jsonl") if "ko3" not in drop else []                    # short words, abbreviations, Korean-English mixes (ml/ko3_batches.py)
     for x in gko3:
         if x.get("id") in T: add(x.get("text"), x["id"], src="ko3")
@@ -152,7 +159,7 @@ def main():
     outs = lambda x: [o for o, ok in (("organ", x[2] is not None), ("align", x[4] is not None), ("valid", True), ("sym", x[5] >= 0)) if ok]
     chk, bad = TL.checks(items, outs)
     TL.write_card(a.tag, dict(checks=chk, items=dict(total=len(items), train=len(train), val=len(val), korean=sum(HANGUL(x[0]) for x in items), kcd=n_kcd,
-                  gen_ko=len(gko), gen_sym=len(gsym), junk=len(junk), junk_copies=JUNK_COPIES, mondo_ko=n_mk, ko2=len(gko2), kotypo=len(gtypo), ko3=len(gko3), dropped_eval_text=n_leak,
+                  gen_ko=len(gko), gen_sym=len(gsym), junk=len(junk), junk_copies=JUNK_COPIES, mondo_ko=n_mk, ko2=len(gko2), kotypo=len(gtypo), ko3=len(gko3), umls=n_umls, dropped_eval_text=n_leak,
                   sources_left_out=sorted(drop), by_source=dict(collections.Counter(x[6] for x in train)), **{f"out_{o}": sum(o in outs(x) for x in train) for o in ("organ", "align", "valid", "sym")})))
     if bad: raise SystemExit("pre-training checks failed: " + "; ".join(bad))
     # ---- dev sets (computed before Gemma takes the GPU)
@@ -207,7 +214,9 @@ def main():
             L = losses(b, model(enc["input_ids"].to(DEV), enc["attention_mask"].to(DEV)))
             if pairs: L["consist"] = a.consist * consist_loss()
             loss = sum(L.values())
-            opt.zero_grad(); loss.backward(); opt.step(); sched.step()
+            opt.zero_grad(); loss.backward()
+            if a.clip > 0: torch.nn.utils.clip_grad_norm_(params, a.clip)
+            opt.step(); sched.step()
             if (s // BS) % 500 == 0: print(f"ep {ep} step {s // BS} " + " ".join(f"{k} {v.item():.3f}" for k, v in L.items()) + f" {time.time() - t0:.0f}s", flush=True)
         zo, zv, va, zs = predict(model, tok, [x[0] for x in val])
         yo = np.stack([x[2] if x[2] is not None else np.zeros(13) for x in val]); mo = np.array([x[2] is not None for x in val])
