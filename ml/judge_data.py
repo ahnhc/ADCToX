@@ -140,3 +140,49 @@ def pairs(drop=frozenset(), seed=7, items_=None):
     if "umls" not in drop and os.path.exists(UMLS + "pairs.jsonl"):
         for r in map(json.loads, open(UMLS + "pairs.jsonl", encoding="utf-8")): add(r["a"], r["b"], r.get("mondo"), "umls")
     return out
+
+
+EXTRA_PAIRS = ["entypo", "lrabr"]
+SPELL = [("haem", "hem"), ("oe", "e"), ("ae", "e"), ("our", "or"), ("ise", "ize"), ("tre", "ter"), ("ph", "f")]
+
+
+def typo(s, rng):
+    """one plausible English misspelling: a British/American spelling swap if one applies, else a deleted, doubled, swapped or
+    replaced letter (a neighbouring key), or lower case."""
+    sw = [(a, b) for a, b in SPELL if a in s.lower()] + [(b, a) for a, b in SPELL[:5] if b in s.lower() and rng.random() < 0.3]
+    if sw and rng.random() < 0.4:
+        a, b = rng.choice(sw); i = s.lower().index(a); return s[:i] + b + s[i + len(a):]
+    pos = [i for i, c in enumerate(s) if c.isalpha()]
+    if len(pos) < 4: return s.lower()
+    i = rng.choice(pos[1:]); op = rng.random(); near = "qwertyuiopasdfghjklzxcvbnm"
+    if op < 0.3: return s[:i] + s[i + 1:]
+    if op < 0.5: return s[:i] + s[i] + s[i:]
+    if op < 0.75 and i + 1 < len(s): return s[:i] + s[i + 1] + s[i] + s[i + 2:]
+    k = near.find(s[i].lower()); return s[:i] + (near[max(0, k - 1)] if k > 0 else "e") + s[i + 1:]
+
+
+def extra_pairs(kinds, seed=7):
+    """opt-in name pairs (ml/scratch_judge.py --add-pairs), from training concepts only:
+    entypo  a misspelling of an English MONDO name or synonym -> the name (up to 3 per concept)
+    lrabr   an abbreviation from the SPECIALIST lexicon (LRABR) whose expansion is a MONDO name or synonym of exactly one concept -> its name"""
+    import tuning_ledger as TL
+    T, held, _, _ = base(); ev = TL.eval_concepts(); rng = random.Random(seed); out = []
+    def add(a, b, t, src):
+        if a and b and TL.norm(a) != TL.norm(b) and TL.norm(a) not in ev and TL.norm(b) not in ev: out.append((a, b, t, src))
+    ok = {t: x for t, x in T.items() if t.startswith("MONDO:") and t not in held and not x["name"].startswith("obsolete")}
+    if "entypo" in kinds:
+        for t, x in ok.items():
+            for s in rng.sample([x["name"]] + x["syn"], min(3, 1 + len(x["syn"]))):
+                if not HANGUL(s): add(typo(s, rng), x["name"], t, "entypo")
+    if "lrabr" in kinds:
+        import linking_models as LM
+        by = {}
+        for t, x in ok.items():
+            for n in [x["name"]] + x["syn"]: by.setdefault(TL.norm(n), set()).add(t)
+        ab = {}
+        for line in open(LM.LRABR, encoding="utf-8"):
+            f = line.split("|")
+            if len(f) > 4 and f[2] in ("acronym", "abbreviation"): ab.setdefault(f[1], set()).update(by.get(TL.norm(f[4]), ()))
+        for a_, ts in ab.items():
+            if len(ts) == 1: t = next(iter(ts)); add(a_, ok[t]["name"], t, "lrabr")
+    return out

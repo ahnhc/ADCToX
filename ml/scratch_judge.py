@@ -139,10 +139,11 @@ def main():
     ap.add_argument("--head-lr", type=float, default=1e-3, help="with --backbone: lr of the output layers")
     ap.add_argument("--distill", default=None, help="teacher npz (ml/distill_teacher.py): adds a loss toward the teacher's organ and validity probabilities")
     ap.add_argument("--distill-w", type=float, default=1.0, help="weight of the distillation loss")
+    ap.add_argument("--add-pairs", default="", help="opt-in name pairs from judge_data.extra_pairs: entypo, lrabr")
     a = ap.parse_args(); rng = random.Random(a.seed); torch.manual_seed(a.seed); np.random.seed(a.seed)
     import tuning_ledger as TL, judge_data as JD, linking_models as LM
     from build_linking_pools import read_obo
-    drop = {x for x in a.drop.split(",") if x}; unknown = drop - set(JD.SOURCES) - set(JD.PAIR_SOURCES)
+    drop = {x for x in a.drop.split(",") if x}; unknown = (drop - set(JD.SOURCES) - set(JD.PAIR_SOURCES)) | ({x for x in a.add_pairs.split(",") if x} - set(JD.EXTRA_PAIRS))
     if unknown: raise SystemExit(f"unknown sources {sorted(unknown)}")
     if a.backbone:
         rev = os.path.basename(hf_path(a.backbone))
@@ -150,7 +151,7 @@ def main():
     else: cfg = dict(vocab=VOCAB, dim=DIM, layers=LAYERS, heads=HEADS, proj=PROJ, maxlen=MAXLEN, tau=TAU, text="NFD + BPE", init="random")
     TL.write_card(a.tag, dict(tag=a.tag, stage=a.stage, note=a.note, compare_to=a.compare_to, started=time.strftime("%Y-%m-%d %H:%M"), args=vars(a),
                               git=TL.git_state(), data=TL.manifest(cache=P.CACHE), backbone=dict(model=a.backbone or "scratch transformer (no pretrained weights)", **cfg)))
-    items, junk_val, info = JD.items(drop=drop, seed=a.seed); pairs = JD.pairs(drop=drop, seed=a.seed, items_=items)
+    items, junk_val, info = JD.items(drop=drop, seed=a.seed); pairs = JD.pairs(drop=drop, seed=a.seed, items_=items) + JD.extra_pairs({x for x in a.add_pairs.split(',') if x}, a.seed)
     T = read_obo(); labels, _ = LM.load_organ_labels()
     concepts = sorted({x[1] for x in items if x[1] is not None}); rng.shuffle(concepts); val_c = set(concepts[: len(concepts) // 10])
     train = [x for x in items if x[1] is None or x[1] not in val_c]; val = [x for x in items if x[1] is not None and x[1] in val_c]
