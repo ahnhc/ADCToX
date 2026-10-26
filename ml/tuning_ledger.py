@@ -149,6 +149,7 @@ def _diff(a, b):
     ch = []
     for g in sorted(set(a.get("data", {})) | set(b.get("data", {}))):
         x, y = a.get("data", {}).get(g, {}), b.get("data", {}).get(g, {})
+        x, y = (v if isinstance(v, dict) else dict(sha=v) for v in (x, y))           # evidence cards keep plain values
         if x.get("sha") != y.get("sha"):
             if "files" not in y: ch.append(f"{g} 바뀜"); continue
             nf = sum(x.get("files", {}).get(f, [None, None])[1] != v[1] for f, v in y["files"].items())
