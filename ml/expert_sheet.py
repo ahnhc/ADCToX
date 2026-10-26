@@ -45,6 +45,7 @@ def score(path):
         it = key["rows"][str(int(r["row"]))]; given = set(it["organs"]); wrong = split(r["wrong_organs"]) & given; miss = split(r["missing_organs"]) - given
         bad = (split(r["wrong_organs"]) - given) | (miss - set(AXES))
         if bad: print(f"row {r['row']}: not an organ of this row or not an axis: {sorted(bad)}")
+        miss &= set(AXES)
         for n in it["systems"]:
             S[n]["tp"] += len(given - wrong); S[n]["fp"] += len(wrong); S[n]["fn"] += len(miss)
     for n, s in S.items():

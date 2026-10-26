@@ -1296,5 +1296,14 @@
   "real_accepted": 0.9873378628783199,
   "minutes": 143.0
  },
- "finished": "2026-10-26 22:14"
+ "finished": "2026-10-26 22:14",
+ "bench": {
+  "scratch (dev)": {
+   "en": 0.711,
+   "ko": 0.612,
+   "concept_en": 0.504,
+   "invalid_accept": 0.0,
+   "symptom_top3": null
+  }
+ }
 }
