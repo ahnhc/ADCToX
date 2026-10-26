@@ -10,7 +10,7 @@
 환자의 기저질환과 검사값을 넣으면, 승인된 ADC 15종을 의약품 라벨 근거로 비교해 주는 터미널 앱입니다.
 
 - **질환 입력:** 한국어, 영어, 약어, 증상 문장으로 찾습니다. MONDO 사람 질환 23,258개에 한국어 이름이 있습니다.
-- **AI 장기 분석:** 입력한 질환이 13개 장기 중 어디에 해당하는지 Gemma 판정 모델이 정합니다. 모든 계산은 PC 안에서만 합니다.
+- **AI 장기 분석:** 입력한 질환이 13개 장기 중 어디에 해당하는지, 이 프로젝트에서 처음부터 학습한 판정 모델이 정합니다(앱 0.5, 모델 0.7부터). 모든 계산은 PC 안에서만 합니다.
 - **결과:** ADC마다 Label restriction, 환자 장기와 겹치는 경고(Boxed warning, Warning), 확인할 검사값을 보여 줍니다.
 
 연구용 프로토타입입니다. 장기 판정은 독성 발생 확률이 아니고, 임상 판단을 대신하지 않습니다.
@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/ai.svg" alt="AI 장기 분석과 Gemma 판정 창" width="820">
+  <img src="docs/images/ai.svg" alt="AI 장기 분석 화면 (0.4, Gemma 판정 창)" width="820">
 </p>
 
 <p align="center">
@@ -46,7 +46,7 @@ irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 설치가 끝나면 `adctox`를 실행합니다. Windows는 시작 메뉴의 ADCTOX를 눌러도 됩니다.
 
 - Python 3.12가 없으면 설치 폴더 안에 따로 받습니다. 시스템 Python은 바꾸지 않습니다.
-- 처음 설치할 때 CPU 추론 환경과 모델 파일 약 3.3 GiB를 받습니다.
+- 처음 설치할 때 CPU 추론 환경과 모델 파일(약 1.4 GiB)을 받습니다.
 - Intel Mac은 지원하지 않습니다.
 - 설치 경로, GPU, 삭제 방법은 [설치 안내](docs/INSTALL.md)에 있습니다.
 
@@ -58,7 +58,7 @@ irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 |---|---|
 | 질환 | 질환명이나 증상을 입력하고 Enter로 추가합니다. Backspace로 마지막 질환을 뺍니다. |
 | 검사 수치 | 아는 값만 입력합니다. 비워 두어도 됩니다. |
-| AI 장기 분석 | 입력을 어떤 질환으로 읽었는지와 장기를 확인합니다. ↑↓로 입력을 고르면 Gemma 판정 창이 열립니다. |
+| AI 장기 분석 | 입력을 어떤 질환으로 읽었는지와 장기를 확인합니다. Read as 끝의 `label`·`record`·`name`은 장기를 정한 근거입니다(장기 라벨표, MONDO 기록 읽기, 입력 이름만 본 판정). |
 | 우선순위 | 장기가 다른 질환이 여럿일 때, 어느 질환의 독성을 먼저 피할지 정합니다. 기본은 질환 심각도 순입니다. |
 | 결과 | ↑↓로 ADC를 고르면 아래에 이유가 나옵니다. PgDn으로 표를 출력하고 끝냅니다. |
 
@@ -81,12 +81,12 @@ adctox --model-version
 
 | 구성 | 역할 |
 |---|---|
-| Gemma 4 E2B 판정 모델 (앞 18층, LoRA, int8) | 출력 4개: 유효 입력 판정, 13개 장기 확률, 한국어 → MONDO 연결, 증상 → 질환 |
-| SapBERT + 재정렬 모델 | 입력을 MONDO 질환에 연결 |
+| 판정 모델 (BERT-base, 처음부터 학습) | 입력 → MONDO 질환 연결, 유효 입력 판정, 13개 장기. PubMed 초록, UMLS(제한 등급 0), MONDO, HPO 텍스트로 무작위 가중치에서 학습 |
+| MONDO 기록 읽기 결과 | 라벨이 없는 MONDO 질환은 정의·상위 개념·증상 기록을 읽은 모델의 장기를 쓴다(미리 계산한 표) |
 | BioLORD | 증상 문장 검색 |
 | 장기 라벨 | MONDO 사람 질환 21,032개의 13개 장기 라벨, LLM 에이전트가 만들고 검수 |
 
-평가는 학습과 분리한 dev/test로 했습니다. 앱 전체 파이프라인의 장기 macro-F1은 영어 0.841, 한국어 0.733입니다. 자세한 내용은 [Gemma 판정 모델 문서](ml/docs/gemma_judge.md)에 있습니다.
+평가는 학습과 분리한 dev/test로 했습니다. test 영어 장기 macro-F1(처음 보는 질환과 아는 질환의 평균)은 0.723으로, 튜닝한 Gemma 판정 모델 0.711, 튜닝 안 한 Gemma 0.586과 비교했습니다. 자세한 내용은 [연구 흐름 개요](ml/docs/overview.md) 5절과 [처음부터 만든 모델 문서](ml/docs/scratch_model.md)에 있습니다. 모델 0.6까지 쓴 Gemma 판정 모델은 [Gemma 판정 모델 문서](ml/docs/gemma_judge.md)에 있습니다.
 
 연구 전체 흐름(장기 라벨 v4→v5.1, Gemma·encoder 결합, 처음부터 만든 모델)과 현재 결과는 [연구 흐름 개요](ml/docs/overview.md)에 정리했습니다.
 
