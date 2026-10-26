@@ -122,10 +122,20 @@ def judge(texts, folder):
     model, tk, cfg, E, ids = load(folder); labels, _ = LM.load_organ_labels()
     zo, zv, va = predict(model, tk, list(texts)); S = va @ E.T; j = S.argmax(1); s = S.max(1)
     po = 1 / (1 + np.exp(-zo / np.array(cfg["temp"]))); pv = 1 / (1 + np.exp(-zv)); rows = []
+    # optional, both off unless set: $EVIDENCE_DIR (ml/evidence_judge.py) gives the organs of a linked concept without a label;
+    # $MONDO_FIRST (e.g. 0.02) prefers the best MONDO name over an HPO term that is at most that much more similar
+    ev, eps = os.environ.get("EVIDENCE_DIR"), os.environ.get("MONDO_FIRST")
+    if ev:
+        Z = np.load(ev.rstrip("/") + "/pred.npz"); thr_e = np.array(json.load(open(ev.rstrip("/") + "/calibration.json"))["thr"])
+        evp = dict(zip(map(str, Z["ids"]), Z["p"].astype(np.float32)))
+    if eps is not None:
+        mon = np.array([str(x).startswith("MONDO:") for x in ids]); Sm = np.where(mon[None], S, -9); jm = Sm.argmax(1); sm = Sm.max(1)
     for k in range(len(texts)):
         if pv[k] < cfg["vthr"]: rows.append(dict(concept=None, organs=[], valid=float(pv[k]))); continue
         c = ids[j[k]] if s[k] >= cfg["theta"] else None
+        if eps is not None and sm[k] >= cfg["theta"] and sm[k] >= s[k] - float(eps): c = ids[jm[k]]
         lo = sorted(labels.get(c, []), key=AXES.index) if c else []
+        if c and not lo and ev and c in evp: lo = [AXES[a] for a in np.where(evp[c] >= thr_e)[0]]
         rows.append(dict(concept=c, organs=lo or [AXES[a] for a in np.where(po[k] >= np.array(cfg["thr"]))[0]], valid=float(pv[k]), sim=float(s[k])))
     return rows
 
