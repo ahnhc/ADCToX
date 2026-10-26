@@ -1,0 +1,21 @@
+{
+ "tag": "ev2s7",
+ "x2": "x2s7",
+ "split": "dev",
+ "scores": {
+  "judge": {
+   "gold_v0": 0.6968,
+   "gold_v1": 0.6701,
+   "known": 0.8029,
+   "evidence_rows_gold": 0,
+   "evidence_rows_known": 0
+  },
+  "judge + evidence": {
+   "gold_v0": 0.7513,
+   "gold_v1": 0.7259,
+   "known": 0.7838,
+   "evidence_rows_gold": 280,
+   "evidence_rows_known": 23
+  }
+ }
+}

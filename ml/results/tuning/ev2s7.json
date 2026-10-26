@@ -1,0 +1,57 @@
+{
+ "tag": "ev2s7",
+ "stage": "X2 evidence reader",
+ "note": "evidence reader on the p3 48h backbone (X2's), v5.1 labels, CPU, maxlen 192",
+ "started": "2026-10-25 20:38",
+ "args": {
+  "cmd": "train",
+  "backbone": "/data/hyeongchanahn/adctox/work/pretrain_p3_48h",
+  "tag": "ev2s7",
+  "x2": null,
+  "epochs": 2,
+  "bs": 16,
+  "lr": 3e-05,
+  "seed": 7,
+  "drop_def": 0.2,
+  "smoke": false,
+  "stage": "X2 evidence reader",
+  "note": "evidence reader on the p3 48h backbone (X2's), v5.1 labels, CPU, maxlen 192"
+ },
+ "git": {
+  "commit": "1f4c6fb",
+  "dirty": [
+   "ml/evidence_judge.py",
+   "ml/results/tuning/ev2s7.json",
+   "ml/results/tuning/evsmoke.json"
+  ],
+  "n_dirty": 3
+ },
+ "data": {
+  "evidence": "/home/hyeongchanahn/CONI/adctox/data/curated/concept_organs/v5/input/concepts.jsonl",
+  "n_train": 18735,
+  "n_val": 2081,
+  "labels": "v51"
+ },
+ "backbone": {
+  "model": "/data/hyeongchanahn/adctox/work/pretrain_p3_48h"
+ },
+ "finished": "2026-10-26 02:13",
+ "results": {
+  "val_f1": 0.8684352118248084,
+  "thr": [
+   0.6000000000000002,
+   0.30000000000000004,
+   0.6500000000000001,
+   0.5500000000000002,
+   0.3500000000000001,
+   0.3500000000000001,
+   0.5000000000000001,
+   0.6000000000000002,
+   0.7000000000000002,
+   0.5000000000000001,
+   0.40000000000000013,
+   0.6000000000000002,
+   0.20000000000000004
+  ]
+ }
+}
