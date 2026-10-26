@@ -34,7 +34,7 @@
 | gold_v1 | gold 개념을 v5 기준으로 다시 라벨링한 것. GPT 라벨과 Claude 라벨이 다르면 두 판정자(Claude, GPT)가 A/B로 보고, 둘이 다르면 gold_v0이 정한다 (`ml/gold_v1.py`) |
 | known | 학습에 들어간 질환을 새로운 표현으로 묻는 평가(영어 326, 한국어 1,142문항, `ml/known_eval.py`). 정답은 학습에 쓴 라벨표다 |
 | primary / involved | v5 라벨의 두 단계. primary는 질환이 생기는 장기, involved는 질환이 직접 손상시키는 다른 장기 |
-| E2B / E4B | Gemma 4의 두 크기. 앱은 E2B 앞 18층에 LoRA를 붙여 int8로 쓴다 |
+| E2B / E4B | Gemma 4의 두 크기. 모델 0.6까지 앱은 E2B 앞 18층에 LoRA를 붙여 int8로 썼다 |
 | S2d, S5a, S6d … | Gemma 튜닝 설정 이름. S2d = 한국어 포함 기본, S5a = 영어만, S6d/S6e = E4B 영어만. 기록은 [tuning_log.md](tuning_log.md) |
 | 결합(hybrid) | encoder가 찾은 질환의 유사도가 기준(0.85) 이상이면 encoder 답을 쓰고, 아니면 Gemma 판정을 쓴다 |
 | X0 ~ X3 | 사전학습 모델 없이 처음부터 만든 판정 모델. [scratch_model.md](scratch_model.md) |
@@ -119,6 +119,8 @@ BiomedBERT-large(encoder, seed 3개)도 같은 모양이다. gold_v0은 v4 0.786
 
 **앱 교체 기준 (2026-10-25 결정):** 처음부터 만든 모델이 Gemma 판정 모델을 넘을 때까지 앱은 Gemma로 돌아간다. 그동안 처음부터 만든 모델을 계속 학습한다.
 
+**교체 (2026-10-27):** test에서 기준을 넘어(위 표), 앱 0.5.0과 모델 0.7부터 x2te 단독으로 판정한다(`ScratchJudge/`, `ml/scratch_runtime.py`). 아래 표는 교체를 정할 때 쓴 dev 기록이다.
+
 비교 조건은 아래와 같다.
 - 같은 v5.1 라벨로 학습한 Gemma E2B 판정 모델(v51a)과 비교한다.
 - 점수는 dev 영어, seed 3개 평균이다.
@@ -152,7 +154,7 @@ BiomedBERT-large(encoder, seed 3개)도 같은 모양이다. gold_v0은 v4 0.786
 
 | 문서 | 내용 |
 |---|---|
-| [gemma_judge.md](gemma_judge.md) | 앱의 Gemma 판정 모델 구조와 평가 |
+| [gemma_judge.md](gemma_judge.md) | 모델 0.6까지 앱의 Gemma 판정 모델 구조와 평가 |
 | [tuning_log.md](tuning_log.md) | 모든 튜닝 실행의 데이터·설정·점수 기록 |
 | [sweep_1027.md](sweep_1027.md) | 10-20~27 Gemma·encoder·결합 탐색 |
 | [relabel_v5_plan.md](relabel_v5_plan.md) | 장기 라벨 v5 계획과 결과 |
