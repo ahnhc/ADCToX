@@ -638,7 +638,9 @@ def _result_details(row, checks_, width):
         out.append(paint("Payload and linker", "33;1"))
         out.append(f"  {mech['payload']} ({mech['payload_family']}, {mech['mechanism']}), linker {mech['linker']}"
                    + (" cleavable" if mech["linker_cleavable"] == "True" else " non-cleavable") + (", bystander effect" if mech["bystander"] == "True" else ""))
-        if mech.get("mechanism_note"): out.append("  " + mech["mechanism_note"] + (f" [{mech['reference']}]" if mech.get("reference") else ""))
+        note = mech.get("mechanism_note", "")                                          # the label's own 12.1 text, verbatim
+        keep = [x for x in re.split(r"(?<=\.)\s+(?=[A-Z])", note) if re.search(re.escape(mech["payload"]) + r"|microtubul|topoisomerase|DNA", x)][:2]
+        if keep: out.append("  " + " ".join(keep) + (f" [{mech['reference']}]" if mech.get("reference") else ""))
     mine = [test for test, names, _ in checks_ if (not names or row["name"] in names) and not test.startswith("enter ")]
     if mine:
         out.append(paint("─" * width, "90"))
