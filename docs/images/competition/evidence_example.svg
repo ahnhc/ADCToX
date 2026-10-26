@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="760" viewBox="0 0 1300 760" font-family="Helvetica, Arial, sans-serif">
+<rect width="1300" height="760" fill="#ffffff"/>
+<text x="20" y="34" font-size="18" font-weight="bold" fill="#333">Input</text>
+<text x="300" y="34" font-size="18" font-weight="bold" fill="#333">Linked MONDO record (what the reader sees)</text>
+<text x="900" y="34" font-size="18" font-weight="bold" fill="#333">Name only</text>
+<text x="1100" y="34" font-size="18" font-weight="bold" fill="#333">With the record</text>
+<rect x="10" y="56" width="1280" height="205" rx="10" fill="#f6f7f9" stroke="#d0d4da"/>
+<text x="20" y="88" font-size="17" font-weight="bold" fill="#111">TUBERCULOSIS</text>
+<text x="300" y="86" font-size="14" font-weight="bold" fill="#333">MONDO:0018076  tuberculosis</text>
+<text x="300" y="110" font-size="13" fill="#333">A chronic, recurrent infection caused by the bacterium Mycobacterium tuberculosis.</text>
+<text x="300" y="130" font-size="13" fill="#333">Tuberculosis (TB) may affect almost any tissue or organ of the body with the lungs</text>
+<text x="300" y="150" font-size="13" fill="#333">being the most common site of infection. The clinical stages of TB are primary or</text>
+<text x="300" y="170" font-size="13" fill="#333">initial infection, latent or dormant infection, and recrudescent or adult-type TB.</text>
+<text x="300" y="190" font-size="13" fill="#333">Ninety to 95% of primary TB infections may go unrecognized. Histopathologically,</text>
+<text x="300" y="210" font-size="13" fill="#333">tissue lesions consist of granulomas which usually undergo central caseation</text>
+<text x="300" y="230" font-size="13" fill="#333">necrosis. Local symptoms of TB vary according to the part affected; acute symptoms ...</text>
+<text x="900" y="88" font-size="16" font-weight="normal" fill="#b23b3b">infectious_immune</text>
+<text x="1100" y="88" font-size="16" font-weight="bold" fill="#1f7a3a">infectious_immune</text>
+<text x="1100" y="112" font-size="16" font-weight="bold" fill="#1f7a3a">pulmonary</text>
+<rect x="10" y="281" width="1280" height="205" rx="10" fill="#f6f7f9" stroke="#d0d4da"/>
+<text x="20" y="313" font-size="17" font-weight="bold" fill="#111">Gluten-sensitive</text>
+<text x="20" y="335" font-size="17" font-weight="bold" fill="#111">enteropathy</text>
+<text x="300" y="311" font-size="14" font-weight="bold" fill="#333">MONDO:0005130  celiac disease</text>
+<text x="300" y="335" font-size="13" fill="#333">An autoimmune genetic disorder with an unknown pattern of inheritance that</text>
+<text x="300" y="355" font-size="13" fill="#333">primarily affects the digestive tract. It is caused by intolerance to dietary</text>
+<text x="300" y="375" font-size="13" fill="#333">gluten. Consumption of gluten protein triggers an immune response which damages</text>
+<text x="300" y="395" font-size="13" fill="#333">small intestinal villi and prevents adequate absorption of nutrients. Clinical</text>
+<text x="300" y="415" font-size="13" fill="#333">signs include abdominal cramping, diarrhea or constipation and weight loss. If</text>
+<text x="300" y="435" font-size="13" fill="#333">untreated, the clinical course may progress to malnutrition, anemia, osteoporosis</text>
+<text x="300" y="455" font-size="13" fill="#333">and an increased risk of intestinal malignancies. However, the prognosis is ...</text>
+<text x="900" y="313" font-size="16" font-weight="normal" fill="#b23b3b">gastrointestinal</text>
+<text x="900" y="337" font-size="16" font-weight="normal" fill="#b23b3b">metabolic_endocrine</text>
+<text x="1100" y="313" font-size="16" font-weight="bold" fill="#1f7a3a">gastrointestinal</text>
+<text x="1100" y="337" font-size="16" font-weight="bold" fill="#1f7a3a">infectious_immune</text>
+<rect x="10" y="506" width="1280" height="205" rx="10" fill="#f6f7f9" stroke="#d0d4da"/>
+<text x="20" y="538" font-size="17" font-weight="bold" fill="#111">Clostridioides</text>
+<text x="20" y="560" font-size="17" font-weight="bold" fill="#111">difficile infection</text>
+<text x="300" y="536" font-size="14" font-weight="bold" fill="#333">MONDO:0000705  Clostridium difficile colitis</text>
+<text x="300" y="560" font-size="13" fill="#333">A bacterial infection of the colon secondary to infection with Clostridium</text>
+<text x="300" y="580" font-size="13" fill="#333">difficile bacteria. This infection generally results from the loss of normal gut</text>
+<text x="300" y="600" font-size="13" fill="#333">flora secondary to recent antibiotic use, and manifests as copious watery stools,</text>
+<text x="300" y="620" font-size="13" fill="#333">with associated abdominal pain and myalgia. C. difficile is the most common cause</text>
+<text x="300" y="640" font-size="13" fill="#333">of pseudomembranous colitis, and can progress to toxic megacolon if left</text>
+<text x="300" y="660" font-size="13" fill="#333">untreated. . is a: bacterial infectious disease, infectious colitis . under:</text>
+<text x="300" y="680" font-size="13" fill="#333">colitis, infectious disease, digestive system infectious disorder ...</text>
+<text x="900" y="538" font-size="16" font-weight="normal" fill="#b23b3b">infectious_immune</text>
+<text x="1100" y="538" font-size="16" font-weight="bold" fill="#1f7a3a">gastrointestinal</text>
+<text x="1100" y="562" font-size="16" font-weight="bold" fill="#1f7a3a">infectious_immune</text>
+<text x="14" y="748" font-size="12" fill="#666">Gold dev questions; two annotators agree with the right column. Record text: MONDO (CC BY 4.0). Model: x2te seed 8, trained from scratch.</text>
+</svg>
