@@ -1414,6 +1414,7 @@
 - x2s7 대비 바뀐 것: add_pairs None → ; backbone /data/hyeongchanahn/adctox/work/pretrain_p3_48h → /data/hyeongchanahn/adctox/work/pretrain_p4; compare_to x2p24s7 → x2s7; lr 0.0001 → 5e-05
 - 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
 - 내부 dev: epochs_best 4, val_organ_loss 0.1508, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8891960303002603, '0.55': 0.8892810396699394, '0.6': 0.8897347825024723, '0.65': 0.8904089737323411, '0.7': 0.8899491514971755, '0.75': 0.8868542105035533, '0.8': 0.8788202120932419, '0.85': 0.8656109460200556, '0.9': 0.8475141567750923, '0.95': 0.8200608340578566, '1.0': 0.7498328934505663}, real_accepted 0.9905994336060415, minutes 143.3
+- 벤치마크 scratch (dev): en 0.72, ko 0.642, concept_en 0.496, invalid_accept 0.0, symptom_top3 None
 
 ### x3s8 — X3: p4 bert-large (335M) from scratch, 3 GPUs, 32h, wwm, UMLS/MONDO/HPO x10, batch 1152, lr 2e-4; judge lr 5e-5; x2c distillation (big teacher, weight 1), v5.1 labels
 
@@ -1424,6 +1425,7 @@
 - x2s8 대비 바뀐 것: add_pairs None → ; backbone /data/hyeongchanahn/adctox/work/pretrain_p3_48h → /data/hyeongchanahn/adctox/work/pretrain_p4; compare_to x2p24s8 → x2s8; lr 0.0001 → 5e-05
 - 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
 - 내부 dev: epochs_best 3, val_organ_loss 0.1593, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.884614961409164, '0.55': 0.8846328442270217, '0.6': 0.8853209982007415, '0.65': 0.8856354825240478, '0.7': 0.8844014928638846, '0.75': 0.8805145693246643, '0.8': 0.8706871141677456, '0.85': 0.8565630899127678, '0.9': 0.8350118402745506, '0.95': 0.8041598907336183, '1.0': 0.7346992254787518}, real_accepted 0.9873378628783199, minutes 143.0
+- 벤치마크 scratch (dev): en 0.711, ko 0.612, concept_en 0.504, invalid_accept 0.0, symptom_top3 None
 
 ### x3s9 — X3: p4 bert-large (335M) from scratch, 3 GPUs, 32h, wwm, UMLS/MONDO/HPO x10, batch 1152, lr 2e-4; judge lr 5e-5; x2c distillation (big teacher, weight 1), v5.1 labels
 
@@ -1434,6 +1436,7 @@
 - x2s9 대비 바뀐 것: add_pairs None → ; backbone /data/hyeongchanahn/adctox/work/pretrain_p3_48h → /data/hyeongchanahn/adctox/work/pretrain_p4; compare_to x2p24s9 → x2s9; lr 0.0001 → 5e-05
 - 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
 - 내부 dev: epochs_best 3, val_organ_loss 0.1602, valid_threshold 0.995, theta 0.7, theta_val_f1 {'0.5': 0.8871868586267363, '0.55': 0.8872309497951641, '0.6': 0.8877148577287071, '0.65': 0.888774336328457, '0.7': 0.8896296787229633, '0.75': 0.8850158100045318, '0.8': 0.8766426652914651, '0.85': 0.8607999964092345, '0.9': 0.8367032205225432, '0.95': 0.8067282074990241, '1.0': 0.7327907677384532}, real_accepted 0.9913689203374675, minutes 141.0
+- 벤치마크 scratch (dev): en 0.717, ko 0.618, concept_en 0.478, invalid_accept 0.0, symptom_top3 None
 
 ## X2 typo and abbreviation pairs
 
@@ -1445,6 +1448,8 @@
 - 출처별 학습 항목: umls 102,602, mondo_names 45,705, mondo_ko 27,794, kotypo 23,781, kcd 16,272, ko2 9,872, junk 8,440, gen_sym 7,340, ko3 5,390, profiles_sym 3,679, gen_ko 2,864, train_queries 2,376, profiles 2,146, external 1,618
 - x2s7 대비 바뀐 것: add_pairs None → entypo,lrabr; compare_to x2p24s7 → x2s7
 - 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 3, val_organ_loss 0.1515, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8842054361384097, '0.55': 0.8842245967190857, '0.6': 0.8848776323156595, '0.65': 0.8852788446303704, '0.7': 0.8846614528729533, '0.75': 0.8785860299705847, '0.8': 0.8668967708321773, '0.85': 0.8543979983868206, '0.9': 0.8351677164349355, '0.95': 0.810540849803176, '1.0': 0.7411521592119261}, real_accepted 0.9900094398993078, minutes 66.9
+- 벤치마크 scratch (dev): en 0.698, ko 0.613, concept_en 0.491, invalid_accept 0.0, symptom_top3 None
 
 ### x2ts8 — X2 + opt-in name pairs: English misspellings of MONDO names (entypo) and SPECIALIST LRABR abbreviations (lrabr)
 
@@ -1454,6 +1459,8 @@
 - 출처별 학습 항목: umls 102,393, mondo_names 45,674, mondo_ko 27,748, kotypo 23,723, kcd 16,225, ko2 9,872, junk 8,440, gen_sym 7,323, ko3 5,392, profiles_sym 3,668, gen_ko 2,830, train_queries 2,337, profiles 2,155, external 1,572
 - x2s8 대비 바뀐 것: add_pairs None → entypo,lrabr; compare_to x2p24s8 → x2s8
 - 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 3, val_organ_loss 0.1595, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8811278804174203, '0.55': 0.881239985568338, '0.6': 0.8816093961651694, '0.65': 0.8817714068711493, '0.7': 0.8797313106405464, '0.75': 0.8732367718652878, '0.8': 0.864225851797117, '0.85': 0.8473197738925268, '0.9': 0.8218277895304585, '0.95': 0.7968076530187136, '1.0': 0.729315386495101}, real_accepted 0.9862183446571958, minutes 66.4
+- 벤치마크 scratch (dev): en 0.711, ko 0.628, concept_en 0.522, invalid_accept 0.0, symptom_top3 None
 
 ### x2ts9 — X2 + opt-in name pairs: English misspellings of MONDO names (entypo) and SPECIALIST LRABR abbreviations (lrabr)
 
@@ -1463,4 +1470,6 @@
 - 출처별 학습 항목: umls 102,196, mondo_names 45,720, mondo_ko 27,812, kotypo 23,774, kcd 16,271, ko2 9,843, junk 8,440, gen_sym 7,351, ko3 5,377, profiles_sym 3,688, gen_ko 2,904, train_queries 2,405, profiles 2,176, external 1,624
 - x2s9 대비 바뀐 것: add_pairs None → entypo,lrabr; compare_to x2p24s9 → x2s9
 - 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 4, val_organ_loss 0.1593, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8846689211597235, '0.55': 0.8847241939662831, '0.6': 0.8859912338148668, '0.65': 0.8868056896304295, '0.7': 0.8853979941411632, '0.75': 0.8792260148662095, '0.8': 0.8659824516996822, '0.85': 0.849671503094015, '0.9': 0.8284802618421507, '0.95': 0.8014650702444434, '1.0': 0.7302653871157142}, real_accepted 0.989697134637067, minutes 65.5
+- 벤치마크 scratch (dev): en 0.661, ko 0.66, concept_en 0.487, invalid_accept 0.0, symptom_top3 None
 

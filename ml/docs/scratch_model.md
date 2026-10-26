@@ -270,3 +270,7 @@ X2에서 사전학습 시간을 늘려도 점수가 오르지 않아, 모델 크
 | x2te + Gemma (0.8) | 0.854 | 0.830 | 0.812 | 0.833 |
 
 test 채점 대상(한 번만): 튜닝 안 한 Gemma, Gemma v51a, X2, x2te, x2te + Gemma.
+
+## test 결과 (2026-10-26, 한 번)
+
+[overview.md](overview.md) 5절 표와 같다. x2te 0.723(Gemma v51a 0.711), x2te + Gemma 0.755. seed별 평균: x2te 0.721 / 0.728 / 0.717. 원자료 `ml/results/benchmarks/final_test.json`. 이후 모델은 고정한다.
