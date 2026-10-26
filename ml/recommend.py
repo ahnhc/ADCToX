@@ -603,6 +603,21 @@ def _missing_inputs(verdict):
     return [short.get(next((d for d, text in RS.NEEDS.items() if text == need), ""), need) for need in verdict.missing]
 
 
+_MECH = None
+
+
+def _mechanisms():
+    """adc -> payload, family, mechanism, linker and the teammates' mechanism note (data/curated/competition/
+    adc_mechanism_draft.csv, ml/competition_tables.py); empty when the file is not there (e.g. a portable build)."""
+    global _MECH
+    if _MECH is None:
+        import csv
+        p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "curated", "competition", "adc_mechanism_draft.csv")
+        try: _MECH = {r["adc"]: r for r in csv.DictReader(open(p, encoding="utf-8"))}
+        except OSError: _MECH = {}
+    return _MECH
+
+
 def _result_details(row, checks_, width):
     """Complete restriction reasons and checks; the viewer wraps and scrolls this panel."""
     paint = lambda t, c: f"\033[{c}m{t}\033[0m" if c else t
@@ -617,6 +632,13 @@ def _result_details(row, checks_, width):
         out.append(paint("─" * width, "90"))
         out.append(paint("Missing inputs", "33;1"))
         out.extend("  " + need for need in _missing_inputs(row["verdict"]))
+    mech = _mechanisms().get(row.get("adc"))
+    if mech:
+        out.append(paint("─" * width, "90"))
+        out.append(paint("Payload and linker", "33;1"))
+        out.append(f"  {mech['payload']} ({mech['payload_family']}, {mech['mechanism']}), linker {mech['linker']}"
+                   + (" cleavable" if mech["linker_cleavable"] == "True" else " non-cleavable") + (", bystander effect" if mech["bystander"] == "True" else ""))
+        if mech.get("mechanism_note"): out.append("  " + mech["mechanism_note"] + (f" [{mech['reference']}]" if mech.get("reference") else ""))
     mine = [test for test, names, _ in checks_ if (not names or row["name"] in names) and not test.startswith("enter ")]
     if mine:
         out.append(paint("─" * width, "90"))
