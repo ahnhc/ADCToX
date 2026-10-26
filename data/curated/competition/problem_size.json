@@ -1,0 +1,346 @@
+{
+ "n_adcs": 15,
+ "organ": {
+  "haematologic": {
+   "boxed": [
+    "sacituzumab-govitecan"
+   ],
+   "wp": [
+    "belantamab-mafodotin",
+    "brentuximab-vedotin",
+    "inotuzumab-ozogamicin",
+    "loncastuximab-tesirine",
+    "polatuzumab-vedotin",
+    "trastuzumab-deruxtecan",
+    "trastuzumab-emtansine"
+   ]
+  },
+  "hepatic": {
+   "boxed": [
+    "gemtuzumab-ozogamicin",
+    "inotuzumab-ozogamicin",
+    "pivekimab-sunirine",
+    "trastuzumab-emtansine"
+   ],
+   "wp": [
+    "brentuximab-vedotin",
+    "loncastuximab-tesirine",
+    "polatuzumab-vedotin"
+   ]
+  },
+  "cardiovascular": {
+   "boxed": [
+    "trastuzumab-emtansine"
+   ],
+   "wp": [
+    "gemtuzumab-ozogamicin",
+    "inotuzumab-ozogamicin",
+    "loncastuximab-tesirine",
+    "pivekimab-sunirine",
+    "tisotumab-vedotin",
+    "trastuzumab-deruxtecan"
+   ]
+  },
+  "pulmonary": {
+   "boxed": [
+    "trastuzumab-deruxtecan"
+   ],
+   "wp": [
+    "brentuximab-vedotin",
+    "datopotamab-deruxtecan",
+    "enfortumab-vedotin",
+    "mirvetuximab-soravtansine",
+    "telisotuzumab-vedotin",
+    "tisotumab-vedotin",
+    "trastuzumab-emtansine"
+   ]
+  },
+  "renal": {
+   "boxed": [],
+   "wp": [
+    "brentuximab-vedotin"
+   ]
+  },
+  "gastrointestinal": {
+   "boxed": [
+    "sacituzumab-govitecan"
+   ],
+   "wp": [
+    "brentuximab-vedotin",
+    "datopotamab-deruxtecan"
+   ]
+  },
+  "neurologic": {
+   "boxed": [
+    "brentuximab-vedotin"
+   ],
+   "wp": [
+    "enfortumab-vedotin",
+    "mirvetuximab-soravtansine",
+    "polatuzumab-vedotin",
+    "telisotuzumab-vedotin",
+    "tisotumab-vedotin",
+    "trastuzumab-emtansine"
+   ]
+  },
+  "ocular": {
+   "boxed": [
+    "belantamab-mafodotin",
+    "mirvetuximab-soravtansine",
+    "tisotumab-vedotin"
+   ],
+   "wp": [
+    "datopotamab-deruxtecan",
+    "enfortumab-vedotin",
+    "telisotuzumab-vedotin"
+   ]
+  },
+  "dermatologic": {
+   "boxed": [
+    "enfortumab-vedotin"
+   ],
+   "wp": [
+    "brentuximab-vedotin",
+    "loncastuximab-tesirine",
+    "tisotumab-vedotin"
+   ]
+  },
+  "metabolic_endocrine": {
+   "boxed": [],
+   "wp": [
+    "brentuximab-vedotin",
+    "enfortumab-vedotin",
+    "polatuzumab-vedotin",
+    "sacituzumab-govitecan"
+   ]
+  },
+  "musculoskeletal": {
+   "boxed": [],
+   "wp": []
+  },
+  "infectious_immune": {
+   "boxed": [],
+   "wp": [
+    "brentuximab-vedotin",
+    "gemtuzumab-ozogamicin",
+    "inotuzumab-ozogamicin",
+    "loncastuximab-tesirine",
+    "pivekimab-sunirine",
+    "polatuzumab-vedotin",
+    "sacituzumab-govitecan",
+    "telisotuzumab-vedotin",
+    "trastuzumab-emtansine"
+   ]
+  },
+  "otologic": {
+   "boxed": [],
+   "wp": []
+  }
+ },
+ "organ_counts": {
+  "haematologic": {
+   "boxed": 1,
+   "wp": 7,
+   "any": 8
+  },
+  "hepatic": {
+   "boxed": 4,
+   "wp": 3,
+   "any": 7
+  },
+  "cardiovascular": {
+   "boxed": 1,
+   "wp": 6,
+   "any": 7
+  },
+  "pulmonary": {
+   "boxed": 1,
+   "wp": 7,
+   "any": 8
+  },
+  "renal": {
+   "boxed": 0,
+   "wp": 1,
+   "any": 1
+  },
+  "gastrointestinal": {
+   "boxed": 1,
+   "wp": 2,
+   "any": 3
+  },
+  "neurologic": {
+   "boxed": 1,
+   "wp": 6,
+   "any": 7
+  },
+  "ocular": {
+   "boxed": 3,
+   "wp": 3,
+   "any": 6
+  },
+  "dermatologic": {
+   "boxed": 1,
+   "wp": 3,
+   "any": 4
+  },
+  "metabolic_endocrine": {
+   "boxed": 0,
+   "wp": 4,
+   "any": 4
+  },
+  "musculoskeletal": {
+   "boxed": 0,
+   "wp": 0,
+   "any": 0
+  },
+  "infectious_immune": {
+   "boxed": 0,
+   "wp": 9,
+   "any": 9
+  },
+  "otologic": {
+   "boxed": 0,
+   "wp": 0,
+   "any": 0
+  }
+ },
+ "comorbidities": {
+  "chronic kidney disease": {
+   "mondo": "MONDO:0005300",
+   "organs": [
+    "renal"
+   ],
+   "adcs_with_warning_on_these_organs": [
+    "brentuximab-vedotin"
+   ],
+   "n": 1
+  },
+  "cirrhosis of liver": {
+   "mondo": "MONDO:0005155",
+   "organs": [
+    "hepatic"
+   ],
+   "adcs_with_warning_on_these_organs": [
+    "brentuximab-vedotin",
+    "gemtuzumab-ozogamicin",
+    "inotuzumab-ozogamicin",
+    "loncastuximab-tesirine",
+    "pivekimab-sunirine",
+    "polatuzumab-vedotin",
+    "trastuzumab-emtansine"
+   ],
+   "n": 7
+  },
+  "type 2 diabetes mellitus": {
+   "mondo": "MONDO:0005148",
+   "organs": [
+    "metabolic_endocrine"
+   ],
+   "adcs_with_warning_on_these_organs": [
+    "brentuximab-vedotin",
+    "enfortumab-vedotin",
+    "polatuzumab-vedotin",
+    "sacituzumab-govitecan"
+   ],
+   "n": 4
+  },
+  "heart failure": {
+   "mondo": "MONDO:0005252",
+   "organs": [
+    "cardiovascular"
+   ],
+   "adcs_with_warning_on_these_organs": [
+    "gemtuzumab-ozogamicin",
+    "inotuzumab-ozogamicin",
+    "loncastuximab-tesirine",
+    "pivekimab-sunirine",
+    "tisotumab-vedotin",
+    "trastuzumab-deruxtecan",
+    "trastuzumab-emtansine"
+   ],
+   "n": 7
+  },
+  "interstitial lung disease": {
+   "mondo": "MONDO:0015925",
+   "organs": [
+    "pulmonary"
+   ],
+   "adcs_with_warning_on_these_organs": [
+    "brentuximab-vedotin",
+    "datopotamab-deruxtecan",
+    "enfortumab-vedotin",
+    "mirvetuximab-soravtansine",
+    "telisotuzumab-vedotin",
+    "tisotumab-vedotin",
+    "trastuzumab-deruxtecan",
+    "trastuzumab-emtansine"
+   ],
+   "n": 8
+  },
+  "chronic obstructive pulmonary disease": {
+   "mondo": "MONDO:0005002",
+   "organs": [
+    "pulmonary"
+   ],
+   "adcs_with_warning_on_these_organs": [
+    "brentuximab-vedotin",
+    "datopotamab-deruxtecan",
+    "enfortumab-vedotin",
+    "mirvetuximab-soravtansine",
+    "telisotuzumab-vedotin",
+    "tisotumab-vedotin",
+    "trastuzumab-deruxtecan",
+    "trastuzumab-emtansine"
+   ],
+   "n": 8
+  },
+  "peripheral neuropathy": {
+   "mondo": "MONDO:0005244",
+   "organs": [
+    "neurologic"
+   ],
+   "adcs_with_warning_on_these_organs": [
+    "brentuximab-vedotin",
+    "enfortumab-vedotin",
+    "mirvetuximab-soravtansine",
+    "polatuzumab-vedotin",
+    "telisotuzumab-vedotin",
+    "tisotumab-vedotin",
+    "trastuzumab-emtansine"
+   ],
+   "n": 7
+  },
+  "essential hypertension": {
+   "mondo": "MONDO:0001134",
+   "organs": [
+    "cardiovascular"
+   ],
+   "adcs_with_warning_on_these_organs": [
+    "gemtuzumab-ozogamicin",
+    "inotuzumab-ozogamicin",
+    "loncastuximab-tesirine",
+    "pivekimab-sunirine",
+    "tisotumab-vedotin",
+    "trastuzumab-deruxtecan",
+    "trastuzumab-emtansine"
+   ],
+   "n": 7
+  },
+  "glaucoma": {
+   "mondo": "MONDO:0005041",
+   "organs": [
+    "ocular"
+   ],
+   "adcs_with_warning_on_these_organs": [
+    "belantamab-mafodotin",
+    "datopotamab-deruxtecan",
+    "enfortumab-vedotin",
+    "mirvetuximab-soravtansine",
+    "telisotuzumab-vedotin",
+    "tisotumab-vedotin"
+   ],
+   "n": 6
+  }
+ },
+ "source": "approved labels (DailyMed snapshot via ml/drug_evidence.py); comorbidity organs from the app's label table"
+}
