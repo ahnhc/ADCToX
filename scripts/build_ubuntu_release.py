@@ -88,6 +88,23 @@ def model_assets(output, version, cache):
     print(f"Model {version}: {len(files)} files, {sum(f['size'] for f in files) / 1024**2:.1f} MiB total; encoders use pinned Hugging Face URLs.")
 
 
+def derived_models(output, version, base, add, drop):
+    """a model release from a published manifest: its files stay where they are (same URLs and checksums, so an update downloads
+    nothing again), the folders in `drop` are left out and each folder in `add` is uploaded with this release.
+    Models 0.7 = models 0.6 without GemmaJudge/ plus ScratchJudge/."""
+    output.mkdir(parents=True, exist_ok=True)
+    manifest = json.loads(base.read_text()); manifest["model_version"] = version
+    files = [f for f in manifest["files"] if f["path"].split("/")[0] not in drop]
+    for folder in add:
+        for path in sorted(folder.iterdir()):
+            asset = f"{folder.name}-{path.name}"; (output / asset).write_bytes(path.read_bytes())
+            files.append({"path": f"{folder.name}/{path.name}", "size": path.stat().st_size, "sha256": digest(path), "url": f"https://github.com/{REPOSITORY}/releases/download/models-{version}/{asset}"})
+    manifest["files"] = files; validate_manifest(manifest)
+    write(output / "models.json", manifest); write(ROOT / "releases/models/stable3.json", manifest)   # read by app 0.5+
+    new = [f for f in files if f"/models-{version}/" in f["url"]]
+    print(f"Model {version}: {len(files)} files, {sum(f['size'] for f in files) / 1024**2:.1f} MiB total; {len(new)} new files, {sum(f['size'] for f in new) / 1024**2:.1f} MiB.")
+
+
 def release_tag():
     """v0.2 -> v0.2.0, v0.2.1 -> v0.2.1: the Git tag of the app release."""
     return "v" + APP_VERSION + (".0" if APP_VERSION.count(".") == 1 else "")
@@ -126,8 +143,12 @@ def main():
     p.add_argument("--model-version", default="0.0")
     p.add_argument("--cache", type=Path, default=Path("/data/hyeongchanahn/adctox/ml_cache"))
     p.add_argument("--out", type=Path, default=ROOT / "dist/releases")
+    p.add_argument("--base-manifest", type=Path, help="with --models: reuse this published manifest's files (derived_models)")
+    p.add_argument("--add", type=Path, action="append", default=[], help="with --base-manifest: a bundle folder to upload")
+    p.add_argument("--drop", action="append", default=[], help="with --base-manifest: a bundle folder to leave out")
     args = p.parse_args()
-    if args.models: model_assets(args.out / "models", args.model_version, args.cache)
+    if args.models and args.base_manifest: derived_models(args.out / "models", args.model_version, args.base_manifest, args.add, set(args.drop))
+    elif args.models: model_assets(args.out / "models", args.model_version, args.cache)
     app_assets(args.out / "app")
 
 
