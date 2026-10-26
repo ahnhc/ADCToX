@@ -65,7 +65,7 @@ def validate_manifest(data, allow_local=False):
             raise UpdateError("Invalid model file entry.")
         path = PurePosixPath(item["path"])
         if (path.is_absolute() or ".." in path.parts or "\\" in item["path"] or str(path) != item["path"]
-                or not path.parts or path.parts[0] not in ("BioLORD-2023", "SapBERT", "GemmaJudge", "vuln_biolord.pt", "mondo_index.npz")
+                or not path.parts or path.parts[0] not in ("BioLORD-2023", "SapBERT", "GemmaJudge", "ScratchJudge", "vuln_biolord.pt", "mondo_index.npz")
                 or item["path"] in seen or any(ord(c) < 32 for c in item["path"])):
             raise UpdateError("Invalid or duplicate model path.")
         if path.parts[0] in ("vuln_biolord.pt", "mondo_index.npz") and len(path.parts) != 1:

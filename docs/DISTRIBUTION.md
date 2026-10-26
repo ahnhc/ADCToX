@@ -5,7 +5,7 @@
 | 대상 | 버전과 위치 | 배포 방식 |
 |---|---|---|
 | 앱 | `ml/adc_version.py` (`APP_VERSION`) | Git tag `v<버전>`, GitHub Release의 `adctox-ubuntu.tar.gz`(Linux, macOS 공용), `ADCTOX-windows.zip` |
-| 모델 묶음 | `releases/models/stable2.json` (앱 0.3.8 이상), `stable.json` (앱 0.3.7 이하, 모델 0.4에 고정) | 별도 tag `models-<버전>`. Gemma 판정 모델, MLP, MONDO index assets |
+| 모델 묶음 | `releases/models/stable3.json` (앱 0.5 이상, 모델 0.7부터 `ScratchJudge/`), `stable2.json` (앱 0.3.8~0.4.x, Gemma 묶음에 고정), `stable.json` (앱 0.3.7 이하, 모델 0.4에 고정) | 별도 tag `models-<버전>`. 판정 모델, MLP, MONDO index assets |
 | 기본 encoder | manifest에 고정한 HF revision | 원본 Hugging Face에서 파일별 다운로드 |
 | 연구 자료 | `ml/docs`, `ml/results`, `report`, `docs` | Git 이력 및 README 링크 |
 | 학습 원본 | 원본 워크북과 로컬 cache | Git 및 앱 archive에 포함하지 않음 |

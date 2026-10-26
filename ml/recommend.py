@@ -140,17 +140,26 @@ def _free_info(free, progress=None):
             Ef, Er = VM._st(text), VM._st([_reg[i]["label"] for i in _reg]); ids = list(_reg); best = []
             for i in range(len(free)):
                 sims = Er @ Ef[i]; k = int(sims.argmax()); best.append((ids[k], float(sims[k])))
-            if progress: progress("linking")
-            links = MI.link(text)
+            links = None
             try:
-                import gemma_runtime as GR
-                if GR.available():                             # model 0.5+: the Gemma organ judge reads the typed text itself (Korean too)
+                import scratch_runtime as SR
+                if SR.available():                             # model 0.7+: the from-scratch judge links and judges on its own
                     if progress: progress("judging")
-                    if GR.has_extra(): _judge_extra(free, links, GR, MI)
-                    else:
-                        for lk, organs in zip(links, GR.judge(list(free))): lk["judged"] = organs
+                    links = [_scratch_link(r) for r in SR.judge(text)]
             except Exception as error:
-                warnings.warn(f"Gemma organ judge unavailable: {error}")
+                warnings.warn(f"organ judge unavailable: {error}")
+            if links is None:
+                if progress: progress("linking")
+                links = MI.link(text)
+                try:
+                    import gemma_runtime as GR
+                    if GR.available():                         # model 0.5-0.6: the Gemma organ judge reads the typed text itself (Korean too)
+                        if progress: progress("judging")
+                        if GR.has_extra(): _judge_extra(free, links, GR, MI)
+                        else:
+                            for lk, organs in zip(links, GR.judge(list(free))): lk["judged"] = organs
+                except Exception as error:
+                    warnings.warn(f"Gemma organ judge unavailable: {error}")
             _FREE[key] = (best, links)
     best, links = _FREE[key]
     learned = None
@@ -179,6 +188,16 @@ def _judge_extra(free, links, GR, MI):
         if k in vecs and near[k][1] >= KO_ALIGN:
             name, organs = MI.concept(near[k][0])
             if organs: lk.update(mondo=near[k][0], name=name, sim=near[k][1], axes=organs, via="judge vector")
+
+
+def _scratch_link(r):
+    """one row of scratch_runtime.judge in the linker's format: a MONDO concept gives its organs (from its label, its MONDO record
+    or, without either, the organ output on the text); any other result is an AI judgment of the text. `judge_via` says which."""
+    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, judge_via=r["via"])
+    if not r["ok"]: return lk
+    if r["concept"] and r["concept"].startswith("MONDO:"): lk.update(mondo=r["concept"], name=r["name"], axes=list(r["organs"]))
+    elif r["organs"]: lk.update(judged=list(r["organs"]), sim=0.0, judge_via="name")
+    return lk
 
 
 def english(texts):
@@ -232,7 +251,8 @@ def analyze_conditions(conditions, progress=None):
         report = dict(condition=c, source=source, name=name, mondo=link.get("mondo") if source.startswith("MONDO") else None, organs=[] if source == "Unmapped" else organs.get(c, []), estimates=estimates,
                       model="BioLORD + disease-pair MLP" if prediction is not None else None,
                       readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")),
-                      models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates}, gemma=link.get("gemma"), via=link.get("via"))
+                      models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates}, gemma=link.get("gemma"), via=link.get("via"),
+                      judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" else None)
         _ANALYSES[c] = report; reports.append(report)
     if progress: progress("done")
     return reports
@@ -759,6 +779,7 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
         for report in analyses:
             organs = ", ".join(ORGAN_SHORT[a] for a in report["organs"]) or no_organ_text(report)
             src = "MONDO" if report["source"].startswith("MONDO") else report["source"] if report["source"] != "Unmapped" else ""
+            if src and report.get("judge_via"): src += f" · {report['judge_via']}"      # label, record or name: what set the organs
             read = f"   ({src}: {report['name']})" if report["name"] else (f"   ({src})" if src else "")
             emit(f"{report['condition']} → {organs}" + paint(read, "90"))
     missing = list(dict.fromkeys(need for row in rows for need in _missing_inputs(row["verdict"])))
@@ -913,7 +934,7 @@ HELP = """ADCTOX {version}
 
 기저질환(과 검사 수치)을 넣으면 미국 FDA 라벨이 있는 ADC {n}개를 이 환자에게 맞는 순서로 보여 줍니다.
 순서 기준: 라벨의 사용 제한(금기, 피하라, 자료 없음) > 환자 장기에 걸린 boxed 경고 > 그 밖의 경고.
-질환은 BioLORD와 SapBERT로 MONDO 질환과 장기에 연결하고, 분석은 이 컴퓨터 안에서만 합니다.
+질환은 AI 판정 모델이 MONDO 질환과 장기에 연결하고, 분석은 이 컴퓨터 안에서만 합니다.
 연구용 도구입니다. 독성 발생 확률이 아니며 처방 결정을 대신하지 않습니다.
 
 사용

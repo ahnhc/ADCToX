@@ -533,7 +533,7 @@ class Form:
         def work():
             try: result.extend(self.RC.analyze_conditions(conditions, progress=events.put))
             except Exception as error: errors.append(error)
-        stages = STAGES; current = 0; started = stage_at = time.monotonic()
+        stages_ = stages(); current = 0; started = stage_at = time.monotonic()
         worker = threading.Thread(target=work, daemon=True); worker.start()
         timeout = getattr(self.scr, "timeout", None)
         if timeout: timeout(100)
@@ -541,7 +541,7 @@ class Form:
             while worker.is_alive():
                 while not events.empty():
                     event = events.get()
-                    was = current; current = next((i for i, (key, _) in enumerate(stages) if key == event), len(stages))
+                    was = current; current = next((i for i, (key, _) in enumerate(stages_) if key == event), len(stages_))
                     if current != was: stage_at = time.monotonic()
                 y = self.frame("AI 장기 분석", "")
                 h, w = self.scr.getmaxyx()
@@ -574,13 +574,13 @@ class Form:
         the highlighted input, what each Gemma judge output said and which step set the organs."""
         import tui, suggest as SG
         top = cur = 0; RC = self.RC; ko = SG.index(RC).ko
-        SOURCE = {"AI judgment": "AI judgment (Gemma)", "Registry match": "Registry", "Similar condition": "Similar registry condition",
+        SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Similar condition": "Similar registry condition",
                   "Phenotype (HPO)": "HPO phenotype", "Chosen": "Chosen", "Unmapped": "Not understood"}
         first = True; last = -1
         while True:
             y0 = self.frame("AI 장기 분석", "")
             h, w = self.scr.getmaxyx(); width = max(2, w - 5)
-            self.S.put_ansi(y0, 2, pipeline(len(STAGES), None if self.analysis_cached else elapsed)); y0 += 2
+            self.S.put_ansi(y0, 2, pipeline(len(stages()), None if self.analysis_cached else elapsed)); y0 += 2
             nw = min(24, max(_w(r["condition"]) for r in reports))
             rows = []
             for r in reports:
@@ -588,6 +588,8 @@ class Form:
                 kr = bool(HANGUL.search(r["condition"]))           # the disease name in the language of the input
                 read = ((ko.get(r.get("mondo") or "") if kr else "") or r["name"]) if r["source"].startswith("MONDO") else ((ko.get(picked) if kr else "") or r["name"] or "")
                 how = "MONDO" if r["source"].startswith("MONDO") else SOURCE.get(r["source"], r["source"])
+                if r["source"] == "AI judgment" and r.get("gemma"): how += " (Gemma)"
+                if r.get("judge_via"): how += f" · {r['judge_via']}"          # label, record or name: what set the organs
                 org = strip(RC.AXES, r["organs"]) if r["organs"] else "\033[90m" + ("none of 13" if r["source"].startswith("MONDO") else "-") + "\033[0m"
                 tag = ""
                 if r.get("ambiguous") and r["condition"] not in RC.CHOICE: tag = f"   \033[33m{len(r['readings'])} meanings: pick on the next screen\033[0m"
@@ -625,6 +627,16 @@ class Form:
 
 
 STAGES = [("embedding", "BioLORD"), ("linking", "SapBERT · MONDO"), ("judging", "Gemma"), ("inference", "MLP")]
+STAGES_SCRATCH = [("embedding", "BioLORD"), ("judging", "Organ judge"), ("inference", "MLP")]   # models 0.7+
+
+
+def stages():
+    """the analysis stages of the active model bundle."""
+    try:
+        import scratch_runtime as SR
+        return STAGES_SCRATCH if SR.available() else STAGES
+    except Exception:
+        return STAGES
 SPIN = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
 
 
@@ -634,8 +646,8 @@ def running(current, t, since, width):
     moving without ever claiming a stage is done."""
     import math
     G, D, E = "\033[32;1m", "\033[90m", "\033[0m"
-    n = len(STAGES); names = []
-    for i, (_, name) in enumerate(STAGES):
+    n = len(stages()); names = []
+    for i, (_, name) in enumerate(stages()):
         names.append((G + name + E) if i < current else name if i == current else (D + name + E))
     p = min(1.0, current / n + (1 / n) * 0.92 * (1 - math.exp(-since / 2.5))) if current < n else 1.0
     bw = max(24, width - 10); k = int(p * bw)
@@ -649,10 +661,10 @@ def pipeline(current, elapsed):
     import time
     G, Y, D, E = "\033[32m", "\033[33;1m", "\033[90m", "\033[0m"
     parts = []
-    for i, (_, name) in enumerate(STAGES):
+    for i, (_, name) in enumerate(stages()):
         parts.append((G + name + E) if i < current else (Y + "▶ " + name + E) if i == current else (D + name + E))
     line = (D + " ── " + E).join(parts)
-    if current >= len(STAGES): return line + (f"   {D}✓ {elapsed:.1f} s{E}" if elapsed is not None else "")
+    if current >= len(stages()): return line + (f"   {D}✓ {elapsed:.1f} s{E}" if elapsed is not None else "")
     return line + f"   {Y}{SPIN[int(time.monotonic() * 10) % len(SPIN)]}{E} {D}{elapsed:.1f} s{E}"
 
 

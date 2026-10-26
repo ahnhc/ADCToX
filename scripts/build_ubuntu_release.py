@@ -62,11 +62,13 @@ def model_assets(output, version, cache):
     for name in ("vuln_biolord.pt", "mondo_index.npz"):
         path = output / name
         files.append({"path": name, "size": path.stat().st_size, "sha256": digest(path), "url": f"https://github.com/{REPOSITORY}/releases/download/models-{version}/{name}"})
-    judge = cache / "GemmaJudge"                                     # model 0.5+: the quantized Gemma organ judge (Apache-2.0)
-    if judge.is_dir():
-        for path in sorted(judge.iterdir()):
-            asset = f"GemmaJudge-{path.name}"; (output / asset).write_bytes(path.read_bytes()) if not (output / asset).exists() or (output / asset).stat().st_size != path.stat().st_size else None
-            files.append({"path": f"GemmaJudge/{path.name}", "size": path.stat().st_size, "sha256": digest(path), "url": f"https://github.com/{REPOSITORY}/releases/download/models-{version}/{asset}"})
+    judge = cache / "GemmaJudge"                                     # model 0.5-0.6: the quantized Gemma organ judge (Apache-2.0)
+    scratch = cache / "ScratchJudge"                                 # model 0.7+: the from-scratch organ judge (ml/scratch_export.py)
+    for folder in (judge, scratch):
+        if not folder.is_dir(): continue
+        for path in sorted(folder.iterdir()):
+            asset = f"{folder.name}-{path.name}"; (output / asset).write_bytes(path.read_bytes()) if not (output / asset).exists() or (output / asset).stat().st_size != path.stat().st_size else None
+            files.append({"path": f"{folder.name}/{path.name}", "size": path.stat().st_size, "sha256": digest(path), "url": f"https://github.com/{REPOSITORY}/releases/download/models-{version}/{asset}"})
     for repo, revision, directory in ENCODERS:
         snapshot = Path(snapshot_download(repo, revision=revision, allow_patterns=["*.json", "1_Pooling/*", "model.safetensors", "vocab.txt"]))
         for path in sorted(snapshot.rglob("*")):
@@ -79,8 +81,10 @@ def model_assets(output, version, cache):
                 "context": "legacy-lag-only", "files": files}
     validate_manifest(manifest)
     write(output / "models.json", manifest)
-    write(ROOT / "releases/models/stable2.json", manifest)                       # read by app 0.3.8+
-    if not judge.is_dir(): write(ROOT / "releases/models/stable.json", manifest)  # apps up to 0.3.7 cannot take GemmaJudge/
+    if scratch.is_dir(): write(ROOT / "releases/models/stable3.json", manifest)  # read by app 0.5+; older apps reject ScratchJudge/
+    else:
+        write(ROOT / "releases/models/stable2.json", manifest)                   # read by app 0.3.8-0.4.x
+        if not judge.is_dir(): write(ROOT / "releases/models/stable.json", manifest)  # apps up to 0.3.7 cannot take GemmaJudge/
     print(f"Model {version}: {len(files)} files, {sum(f['size'] for f in files) / 1024**2:.1f} MiB total; encoders use pinned Hugging Face URLs.")
 
 
@@ -100,7 +104,7 @@ def app_assets(output):
     subprocess.run([sys.executable, "-I", str(ROOT / "ml/build_portable.py"), "--full", str(app)], check=True,
                    env={**os.environ, "ADCTOX_EVIDENCE_SNAPSHOT": str(snapshot)})
     subprocess.run([sys.executable, "-m", "py_compile", str(app)], check=True)
-    source_hashes = {str(p.relative_to(ROOT)): digest(p) for p in sorted((ROOT / "ml").glob("*.py")) if p.name in {"recommend.py", "restrictions.py", "labs.py", "form.py", "tui.py", "term.py", "adc_version.py", "adc_runtime.py", "adc_updates.py", "vulnerability_model.py", "mondo_index.py", "lab.py", "build_portable.py", "suggest.py", "gemma_runtime.py"}}
+    source_hashes = {str(p.relative_to(ROOT)): digest(p) for p in sorted((ROOT / "ml").glob("*.py")) if p.name in {"recommend.py", "restrictions.py", "labs.py", "form.py", "tui.py", "term.py", "adc_version.py", "adc_runtime.py", "adc_updates.py", "vulnerability_model.py", "mondo_index.py", "lab.py", "build_portable.py", "suggest.py", "gemma_runtime.py", "scratch_runtime.py"}}
     info = {"app_version": APP_VERSION, "runtime_api": RUNTIME_API, "source_sha256": source_hashes}
     write(output / "bundle-info.json", info)
     archive = output / "adctox-ubuntu.tar.gz"

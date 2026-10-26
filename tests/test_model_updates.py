@@ -298,6 +298,20 @@ def test_gemma_judge_folder_installs_and_the_old_manifest_stays_for_old_apps(ser
     updates.validate_manifest(manifest, allow_local=True)
     updates.install(manifest, tmp_path, allow_local=True)
     assert (selected_bundle(tmp_path) / "GemmaJudge" / "weights-1.safetensors").read_bytes() == b"w1"
-    assert adc_version.MODEL_MANIFEST_URL.endswith("/releases/models/stable2.json")
     old = json.loads((Path(__file__).resolve().parents[1] / "releases/models/stable.json").read_text())
     assert not any(f["path"].startswith("GemmaJudge/") for f in old["files"])            # apps <= 0.3.7 still read this one
+
+
+def test_scratch_judge_folder_installs_and_older_apps_keep_their_manifests(server, tmp_path):
+    import adc_version
+    manifest = make_manifest(server, "0.7"); base, bodies, _ = server
+    for name, body in (("ScratchJudge/judge.json", b"{}"), ("ScratchJudge/weights.safetensors", b"w")):
+        bodies["/0.7/" + name] = body
+        manifest["files"].append({"path": name, "url": base + "/0.7/" + name, "size": len(body), "sha256": hashlib.sha256(body).hexdigest()})
+    updates.validate_manifest(manifest, allow_local=True)
+    updates.install(manifest, tmp_path, allow_local=True)
+    assert (selected_bundle(tmp_path) / "ScratchJudge" / "weights.safetensors").read_bytes() == b"w"
+    assert adc_version.MODEL_MANIFEST_URL.endswith("/releases/models/stable3.json")
+    releases = Path(__file__).resolve().parents[1] / "releases/models/"
+    for old in ("stable.json", "stable2.json"):                                       # apps 0.4.x and older reject ScratchJudge/
+        assert not any(f["path"].startswith("ScratchJudge/") for f in json.loads((releases / old).read_text())["files"])

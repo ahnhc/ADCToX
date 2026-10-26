@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0 — The from-scratch organ judge
+
+- **The disease judge is the model trained from scratch here (x2te), not Gemma**, in model bundles 0.7+ (`ScratchJudge/`, ml/scratch_runtime.py).
+  - It is a BERT-base encoder pretrained from random weights on PubMed abstracts, UMLS, MONDO and HPO text (ml/scratch_pretrain.py), and trained to link a typed condition to a MONDO name and to judge its 13 organs (ml/scratch_judge.py, with English misspellings and abbreviations).
+  - A linked MONDO concept takes its organs from the v5.1 organ table. A concept without a label takes the organs that the evidence reader got from its MONDO entry (definition, parents, phenotypes, ml/evidence_judge.py). These are precomputed into `concepts.json`; the reader is not shipped.
+  - Test, English organ macro-F1, mean of unseen diseases (gold_v0) and known diseases: 0.723, against 0.711 for the tuned Gemma judge and 0.586 for untuned Gemma (ml/docs/overview.md §5). The difference to the tuned Gemma is within the 95% interval.
+  - The exported folder gives the same concept and organs as the research code on all 304 gold dev queries (ml/scratch_export.py). CPU: about 0.4 s per typed condition after a 7 s load.
+- **AI 장기 분석 screen:** the stage line is `BioLORD ── Organ judge ── MLP`. "Read as" ends in what set the organs: `label` (the organ table), `record` (read from the MONDO entry) or `name` (judged from the typed text alone). The Gemma panel appears only with a Gemma bundle.
+- **Not carried over from the Gemma judge:** Korean text outside the Korean MONDO names is not linked (Korean is not evaluated since 2026-10-25), there is no symptom-to-disease output, and an input is no longer offered as "N meanings" to pick from.
+- **Updates:** app 0.5 reads `releases/models/stable3.json`. Apps 0.3.8–0.4.x keep reading `stable2.json` (Gemma bundles), because their updater rejects the `ScratchJudge/` folder. `ADC_SCRATCH_JUDGE=0` uses the older linker and judge of the same bundle when it has them.
+
 ## 0.4.0 – 0.4.3 — One session, five steps
 
 - **One terminal session from the search page to the result screen.** The result screen used to open in a second curses session after the input steps, with a flash of the shell in between; PgUp on it then restarted the wizard. Now `form.run` owns the whole flow and returns the results; PgUp on the result screen goes back to the priority or lab-value step in place.
