@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "model_version": "0.6",
+  "model_version": "0.7",
   "runtime_api": 1,
   "architecture": "biolord-twotower-v1",
   "axes": [
@@ -44,42 +44,6 @@
       "size": 183798944,
       "sha256": "b0e2e2d85454db28ae1145fbb02545d9d02e8601b5658cc8e7688d6176ee5aea",
       "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/mondo_index.npz"
-    },
-    {
-      "path": "GemmaJudge/config.json",
-      "size": 2434,
-      "sha256": "e93a7aa931de96ee5ec61f304b58977ead0c3019780c2e0868b20e1f1cd0bb62",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-config.json"
-    },
-    {
-      "path": "GemmaJudge/judge.json",
-      "size": 15906,
-      "sha256": "4f8260064a69cb796423f1f57c0fec53fa05263fbf144fb7c3a3a5ecf2373f55",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-judge.json"
-    },
-    {
-      "path": "GemmaJudge/tokenizer.json",
-      "size": 32170225,
-      "sha256": "a768fce2beb2bf55336ba0aa5fa9fa5bcb03ca47c94b10a93335e61bcebbeb36",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-tokenizer.json"
-    },
-    {
-      "path": "GemmaJudge/tokenizer_config.json",
-      "size": 1528,
-      "sha256": "adba82b4cf1946aa59382f37e7c40e8904e628ec671bdbdde8d997f4f1a6ed79",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-tokenizer_config.json"
-    },
-    {
-      "path": "GemmaJudge/weights-1.safetensors",
-      "size": 1208484128,
-      "sha256": "8e24c6ce06677e173b75dc94580b7ec9145fcf816a60304fbb63d1d6608ea32d",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-weights-1.safetensors"
-    },
-    {
-      "path": "GemmaJudge/weights-2.safetensors",
-      "size": 1177156912,
-      "sha256": "bb825141f525e7b303e95f32e1b6ab3cce41658fe3c9cfe34002d342f3f92a7e",
-      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.6/GemmaJudge-weights-2.safetensors"
     },
     {
       "path": "BioLORD-2023/1_Pooling/config.json",
@@ -170,6 +134,48 @@
       "size": 226150,
       "sha256": "79489a52be45e6fa033521e8ce8e4f62aedc0a742ee2aa6fc04667e5b0b1454d",
       "url": "https://huggingface.co/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/resolve/090663c3ae57bf35ffe4d0d468a2a88d03051a4d/vocab.txt"
+    },
+    {
+      "path": "ScratchJudge/concepts.json",
+      "size": 4041382,
+      "sha256": "0f58d6f0a082c364d91895778009a5160b20c4245355155ab4c854f2897ecfe1",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-concepts.json"
+    },
+    {
+      "path": "ScratchJudge/config.json",
+      "size": 676,
+      "sha256": "c8f712a2662b3872ac17fdde0ec1f4bd1ab950343a142f3bd22793417d56fcb0",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-config.json"
+    },
+    {
+      "path": "ScratchJudge/index.npz",
+      "size": 88248854,
+      "sha256": "108b0c481fb2035af699c12a41a44b3175a9f7b0b5cae6820d0143617bef80dd",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-index.npz"
+    },
+    {
+      "path": "ScratchJudge/judge.json",
+      "size": 1043,
+      "sha256": "26e85e5d3024415d3bf745eaff0379881607f5fef9dca93fab96e0f854fc5413",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-judge.json"
+    },
+    {
+      "path": "ScratchJudge/tokenizer.json",
+      "size": 2149823,
+      "sha256": "942150cafd458275b190a8c6860094e4b04eca8842a7364266b81843c745b9e2",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-tokenizer.json"
+    },
+    {
+      "path": "ScratchJudge/tokenizer_config.json",
+      "size": 249,
+      "sha256": "6dc720dd382f90cc514b18bbda9b1c8e083b0cba606bf3ab5129d98bc9389d3b",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-tokenizer_config.json"
+    },
+    {
+      "path": "ScratchJudge/weights.safetensors",
+      "size": 221673260,
+      "sha256": "3467f342692c7a648ddd1ca99445d9e24da0b659cfed9e7321186ebe65b79600",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-weights.safetensors"
     }
   ]
 }
