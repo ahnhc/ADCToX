@@ -24,7 +24,7 @@ threshold), as gemma_judge2. Calibration, valid threshold and the final organ ru
 nearest MONDO name (index of every MONDO name and synonym, embedded by this encoder) with cosine >= theta -> that concept's
 organs, else the organ head. theta is chosen on the held-out concepts, never on the evaluation questions.
 """
-import argparse, collections, json, math, os, random, sys, time, unicodedata
+import argparse, collections, functools, json, math, os, random, sys, time, unicodedata
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ.setdefault("ADC_RESEARCH_MODE", "1")
@@ -107,6 +107,7 @@ def nce(model, tk, batch):
     return (torch.nn.functional.cross_entropy(s, y) + torch.nn.functional.cross_entropy(s.T, y)) / 2
 
 
+@functools.lru_cache(maxsize=2)                                                       # judge() is called per query in the app
 def load(folder):
     from tokenizers import Tokenizer
     cfg = json.load(open(folder + "calibration.json"))
@@ -116,10 +117,16 @@ def load(folder):
     Z = np.load(folder + "index.npz", allow_pickle=True); return model, tk, cfg, Z["E"], [str(x) for x in Z["ids"]]
 
 
+@functools.lru_cache(maxsize=1)
+def _labels():
+    import linking_models as LM
+    return LM.load_organ_labels()
+
+
 def judge(texts, folder):
     """-> [dict(concept, organs, valid, sim)] by the rule in the module docstring."""
     import linking_models as LM
-    model, tk, cfg, E, ids = load(folder); labels, _ = LM.load_organ_labels()
+    model, tk, cfg, E, ids = load(folder); labels, _ = _labels()
     zo, zv, va = predict(model, tk, list(texts)); S = va @ E.T; j = S.argmax(1); s = S.max(1)
     po = 1 / (1 + np.exp(-zo / np.array(cfg["temp"]))); pv = 1 / (1 + np.exp(-zv)); rows = []
     # optional, both off unless set: $EVIDENCE_DIR (ml/evidence_judge.py) gives the organs of a linked concept without a label;

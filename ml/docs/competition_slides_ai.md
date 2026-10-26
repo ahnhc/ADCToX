@@ -1,6 +1,6 @@
 # AI 파트 슬라이드·포스터 초안 (2026-10-27)
 
-[competition_plan.md](competition_plan.md)의 PPT 구성 중 AI 몫(2~6장, 10장)과 포스터 AI 칸이다. 숫자는 모두 test 값이고, 원자료는 [ml/docs/overview.md](../ml/docs/overview.md) 5절과 `ml/results/benchmarks/final_test.json`이다. 팀원은 문장을 다듬어도 되지만 숫자는 바꾸지 않는다.
+[competition_plan.md](../../docs/competition_plan.md)의 PPT 구성 중 AI 몫(2~6장, 10장)과 포스터 AI 칸이다. 숫자는 모두 test 값이고, 원자료는 [overview.md](overview.md) 5절과 `ml/results/benchmarks/final_test.json`이다. 팀원은 문장을 다듬어도 되지만 숫자는 바꾸지 않는다.
 
 ## 2장. 해결 개요
 
