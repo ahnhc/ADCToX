@@ -14,7 +14,7 @@ Built on Linux from the same app archive the Ubuntu release uses, so app and mod
 Outputs dist/releases/windows/ADCTOX-windows.zip and windows.json (size, SHA256, release URL).
 Downloads are cached in ADCTOX_WIN_CACHE (default /data/hyeongchanahn/adctox/raw/win_build on the lab server, else ~/.cache/adctox-win).
 """
-import argparse, hashlib, io, json, os, shutil, subprocess, sys, tarfile, urllib.request, zipfile
+import argparse, hashlib, json, os, shutil, subprocess, sys, tarfile, urllib.request, zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]

@@ -17,11 +17,8 @@ DM = pathlib.Path("/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07")
 CACHE = pathlib.Path("/data/hyeongchanahn/adctox/ml_cache/tox.pkl")
 needs_labels = pytest.mark.skipif(not DM.exists(), reason="DailyMed snapshot not present")
 needs_cache = pytest.mark.skipif(not (DM.exists() and CACHE.exists()), reason="label snapshot or workbook cache not present")
-try:
-    import torch  # noqa: F401
-    HAS_TORCH = True
-except ImportError:
-    HAS_TORCH = False
+import importlib.util
+HAS_TORCH = importlib.util.find_spec("torch") is not None
 needs_encoder = pytest.mark.skipif(not HAS_TORCH, reason="free-text conditions need the ML env (torch); run with /data/hyeongchanahn/envs/adctox/bin/python")
 
 
