@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/ai.svg" alt="AI 장기 분석 화면 (0.4, Gemma 판정 창)" width="820">
+  <img src="docs/images/ai.svg" alt="AI 장기 분석 화면: 입력, 장기, 읽은 질환과 근거(label·record·name)" width="820">
 </p>
 
 <p align="center">
