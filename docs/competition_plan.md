@@ -26,6 +26,8 @@
 
 AI 담당 부분은 수요일 밤까지 끝낸다. 아래 2단계·3단계 중 AI 몫을 앞으로 당겼다.
 
+**진행 (10-26 밤):** 최종 구성 선택(x2te), test 1회 채점, 전문가 검증 시트(`data/curated/competition/expert_sheet.csv`, 작성법 `expert_sheet_guide.md`)까지 끝났다. test 결과는 [ml/docs/overview.md](../ml/docs/overview.md) 5절.
+
 | 언제 | 할 일 | 끝난 상태 |
 |---|---|---|
 | 10-26(월) 밤 | 자동 실행: X3, 기록 읽기 3개, 오타·약어 X2 | 결과 파일 |
