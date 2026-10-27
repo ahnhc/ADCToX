@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — Lab boundaries, analysis screen
+## 0.5.4 — Lab boundaries, analysis screen
 
 - **Bilirubin, AST, ALT (x ULN) and Cockcroft-Gault CLcr reach the label thresholds unrounded**, in exact decimal arithmetic. Before, the ratio was rounded to 0.01 first: bilirubin 3.601 mg/dL with ULN 1.2 became 3.00 x ULN and Datopotamab deruxtecan got the "up to 3 x ULN" rule instead of "> 3 x ULN". The CTCAE organ flags compare exactly too (bilirubin 1.8 is not above 1.5 x 1.2). Only the screen rounds, with more digits when a value would otherwise show as a threshold (3.001 x ULN, not 3).
 - **AI 장기 분석:** the model names (`BioLORD ── Organ judge ── MLP`) are gone. One line says what the model reports it is doing: "질환 확인 중..." or "장기 분석 중...". A cached analysis shows the table at once.
