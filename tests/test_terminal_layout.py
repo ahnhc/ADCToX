@@ -464,3 +464,25 @@ def test_motion_replays_the_frame_and_lands_on_the_drawn_screen(monkeypatch):
     monkeypatch.setattr(motion, "enabled", lambda: False)
     before = len(fake.frames); win.erase(); win.addstr(4, 2, "x"); win.transition("wipe"); win.refresh()
     assert len(fake.frames) == before + 1                                                        # off: one frame, no replay
+
+
+@pytest.mark.parametrize("keys, goes_on", [(["\n"], True), (["KEY_DOWN", "\n"], False)])
+def test_saved_patient_is_offered_to_go_on_or_start_new(monkeypatch, keys, goes_on):
+    """0.5.3: a saved run in progress is not loaded silently; the first screen names what is saved and where."""
+    import types
+    import form
+    console = term._Shim()
+    monkeypatch.setattr(tui, "curses", console)
+    monkeypatch.setattr(form, "curses", console)
+    monkeypatch.setattr(term, "USE_SHIM", True)
+    monkeypatch.setattr(term._Screen, "_size", lambda self: (30, 100))
+    screen = term._Screen(console)
+    frames = []
+    it = iter([getattr(console, k) if k.startswith("KEY_") else k for k in keys])
+    screen.refresh = lambda: frames.append("\n".join("".join(ch for ch, _ in line) for line in screen.buf))
+    screen.get_wch = lambda: next(it)
+    RC = types.SimpleNamespace(_reg={}, condition_name=lambda c: c)
+    st = dict(picked=set(), free="pulmonary TB, Hemophilia A", raw={"hb": 8.0}, choice={})
+    assert form.Form(screen, RC).resume(st) is goes_on
+    first = frames[0]
+    assert "질환 2개 (pulmonary TB, Hemophilia A) · 검사 수치 1개" in first and "last_input.json" in first and "새 환자로 시작" in first

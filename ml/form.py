@@ -456,6 +456,27 @@ class Form:
             elif k == "PGDN": return cur
             elif k == "PGUP": return BACK
 
+    def resume(self, st):
+        """a saved run in progress (SAVE) at start: go on with it, or start a new patient and delete it. -> True to go on."""
+        RC = self.RC; names = [RC.condition_name(i) for i in sorted(st["picked"], key=list(RC._reg).index)] + split_free(st["free"])
+        desc = [f"질환 {len(names)}개" + (f" ({', '.join(names)})" if names else "") + f" · 검사 수치 {len(st['raw'])}개",
+                "이 PC의 ~/.config/adctox/last_input.json에 저장되어 있고, 결과가 나오면 지워집니다."]
+        options = ["이어서 하기", "새 환자로 시작 (저장된 입력 지움)"]; cur = 0
+        while True:
+            y0 = self.frame("이전에 입력하던 환자가 있습니다", "", nav=())
+            h, w = self.scr.getmaxyx()
+            for paragraph in desc:
+                for ln in _wrap(paragraph, w - 5, "    "): self.S.put(y0, 2, ln, self.S.dim); y0 += 1
+            y0 += 1
+            for i, o in enumerate(options): self.row(y0 + i, f" {'→' if i == cur else ' '} {o}", i == cur, i)
+            self.S.put(h - 1, 2, "↑↓ 고르기   Enter 확인", self.S.dim)
+            self.scr.refresh(); k = self.key()
+            if isinstance(k, tuple): cur = k[1]; k = "ENTER"                  # a click on a row picks it
+            if k == "UP": cur = max(0, cur - 1)
+            elif k == "DOWN": cur = min(len(options) - 1, cur + 1)
+            elif k == "ENTER": return cur == 0
+            elif k == "ESC": return True
+
     def meanings(self, groups, chosen):
         """one screen for every typed text that reads as several diseases. groups: [(text, readings)]; chosen: {text: id or None}.
         -> {text: id or None (unknown)} or BACK."""
@@ -705,6 +726,8 @@ def run(RC, back=False):
     PgUp on the result screen returns to the last input step with the entries kept. `back` is accepted for older callers."""
     def app(scr):
         F = Form(scr, RC); st = load(); st["picked"] &= set(RC._reg); step = 0; has_priority = False
+        if (st["picked"] or split_free(st["free"]) or st["raw"]) and not F.resume(st):     # a new patient: the saved entries go
+            clear(); st = load()
         kn = RC.condition_name                                       # a picked disease keeps the name it was picked by
         RC.CHOICE.update(st["choice"])
         while True:

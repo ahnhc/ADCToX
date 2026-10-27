@@ -6,6 +6,7 @@
 - `adctox --self-test` prints the table for one fixed example patient (alzheimer, cirrhosis, 치매); the install workflow uses it.
 - `--plain` keeps the question-and-answer input; an empty condition line ends it instead of filling in an example patient.
 - **Key values on the result screen list every entered lab value**, with the organ it marked: `Hb 8 g/dL → Blood`. Before, a value that only marked an organ (Hb, TSH, albumin, ...) was used but the block said "Not entered".
+- **A saved run in progress is no longer loaded silently.** At start the app names what is saved (conditions, number of lab values, the file) and offers "이어서 하기" or "새 환자로 시작", which deletes the file.
 - pyproject.toml carries the app version (it said 0.4.3); a test keeps the two equal.
 - README: the AI judgment was evaluated on English input only; where the input is saved and when it is deleted.
 
