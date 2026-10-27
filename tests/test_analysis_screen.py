@@ -20,7 +20,9 @@ def _screen(monkeypatch, keys, size=(24, 80)):
 
 
 def _rc():
-    return types.SimpleNamespace(_reg={}, CHOICE={}, AXES=list(tui.GLYPH), condition_name=lambda c: c)
+    import recommend as RC
+    return types.SimpleNamespace(_reg={}, CHOICE={}, AXES=list(tui.GLYPH), condition_name=lambda c: c, FIRST_TEXT=RC.FIRST_TEXT,
+                                 _indications=lambda: {})
 
 
 def _report(i, **kw):
@@ -171,10 +173,13 @@ def test_an_analysis_that_cannot_go_on_shows_one_error_line(monkeypatch):
 
 def test_the_picked_condition_comes_first_and_the_rest_keep_their_order(monkeypatch):
     import builtins, recommend as RC
-    pc = [("cirrhosis", {"hepatic"}, 1.0), ("heart_failure", {"cardiovascular"}, 1.0), ("glaucoma", {"ocular"}, 0.5)]
-    monkeypatch.setattr(RC, "PRIORITY", {}); monkeypatch.setattr(builtins, "input", lambda prompt: "3")
+    pc = [("cirrhosis", {"hepatic"}, 1.0), ("heart_failure", {"cardiovascular"}, 1.0), ("glaucoma", {"ocular"}, 0.5), ("Lab: Hb < 10 g/dL", {"haematologic"}, 0.5)]
+    monkeypatch.setattr(RC, "PRIORITY", {}); monkeypatch.setattr(RC, "FIRST", None); monkeypatch.setattr(builtins, "input", lambda prompt: "3")
     RC._ask_priority_pc(pc)
-    assert RC.priority(pc) == {"glaucoma": 1, "cirrhosis": 2, "heart_failure": 2}
+    assert RC.FIRST == "glaucoma" and RC.priority(pc) == {"glaucoma": 1, "cirrhosis": 2, "heart_failure": 2, "Lab: Hb < 10 g/dL": 3}
+    monkeypatch.setattr(builtins, "input", lambda prompt: "4")                  # lab findings are not offered: 4 is out of range
+    RC._ask_priority_pc(pc)
+    assert RC.FIRST is None and RC.PRIORITY == {}
     monkeypatch.setattr(builtins, "input", lambda prompt: "")
     RC._ask_priority_pc(pc)
-    assert RC.PRIORITY == {} and RC.priority(pc) == RC.default_levels(pc) == {"cirrhosis": 1, "heart_failure": 1, "glaucoma": 2}
+    assert RC.PRIORITY == {} and RC.priority(pc) == RC.default_levels(pc)

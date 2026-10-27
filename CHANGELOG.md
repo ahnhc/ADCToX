@@ -1,8 +1,14 @@
 # Changelog
 
-## Unreleased
+## Unreleased — Read as a doctor would
 
-- **Priority step: one pick, no numbers.** "가장 걱정되는 질환" lists the conditions with their organs and "자동 (질환 중증도 순)"; the picked condition comes first and the others keep the severity order. The numbered levels, − / + buttons and "1 = 먼저 피함" are gone (terminal screens and `--plain`).
+From going through every screen as a doctor using the app for the first time.
+- **Priority step: one pick, no numbers.** "가장 걱정되는 질환" lists the diseases with their organs and "자동 (질환 중증도 순)". The numbered levels, − / + buttons and "1 = 먼저 피함" are gone (terminal screens and `--plain`). Lab findings are not offered as a pick; they keep the automatic order.
+- **A picked disease now moves its organs' warnings down.** Among ADCs that are not Avoid / Contraindicated, those with a boxed warning on the picked disease's organs go last, then those with a warning there. Before, the label restriction tier came first, so picking interstitial lung disease still left Datopotamab deruxtecan (lung warning) at #1. Without a pick the order is unchanged; Avoid stays at the bottom either way.
+- **Result words:** "Unclear" is gone. The label's "not studied / data limited" reads `Not studied`, a label silent on the patient's state reads `No data`, and a restriction that depends on a value not entered ends in `?` (`Avoid?`), explained in the legend.
+- **Missing inputs** lists only the values not entered that could change the restriction (`ANC`, `Child-Pugh`), not the whole domain ("Bilirubin / AST / ALT / Child-Pugh" after bilirubin and AST were entered).
+- **The selected ADC's panel** starts with its FDA indications (label section 1, data/curated/competition/adc_indications.csv), lists the label warnings on the patient's organs with their sections (`Lung  !!  Boxed INTERSTITIAL LUNG DISEASE; 5.1 ...`), writes bands as the label does (`bilirubin >1.5 to 3×ULN`, `CLcr 30 to <60`) and the payload without table codes (`topoisomerase I inhibitor`, `Val-Cit PABC`, target).
+- **Input screens:** the start screen says in one line what the app does; the lab screen shows the ULN each x ULN uses and the value being entered as x ULN; a value out of range names the field and its unit and moves the cursor there ("Hb: 1–25 g/dL 사이로 입력하세요", was "hb: 1–25"); Backspace on an empty box takes a disease off on the second press, not the first. The result screen's PgDn says `종료`.
 
 ## 0.5.4 — Lab boundaries, analysis screen
 

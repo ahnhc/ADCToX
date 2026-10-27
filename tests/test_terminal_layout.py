@@ -105,7 +105,7 @@ def test_real_result_list_fits_and_keeps_warning_evidence():
                 if (not names or row["name"] in names) and not test.startswith("enter "):
                     assert test in detail
             if row["name"] == "Trastuzumab deruxtecan":
-                assert "Unclear" in detail and "LVEF < 50%" in detail
+                assert "Not studied" in detail and "LVEF < 50%" in detail
 
 
 def test_organ_preview_uses_patient_warnings_and_excludes_patient_organs_from_other():
@@ -158,7 +158,7 @@ def test_selected_drug_values_come_first_and_egfr_approximation_remains_visible(
 
 
 @pytest.mark.parametrize("category, state", [("no_adjustment", "None"), ("monitor", "Monitor"),
-    ("reduce_dose", "Monitor"), ("insufficient_data", "Unclear"), ("no_statement", "Unclear"),
+    ("reduce_dose", "Monitor"), ("insufficient_data", "Not studied"), ("no_statement", "No data"),
     ("avoid", "Avoid"), ("contraindicated", "Avoid")])
 def test_restriction_column_is_one_word_with_exact_action_in_the_details(category, state):
     import recommend as R

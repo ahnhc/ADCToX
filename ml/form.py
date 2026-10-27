@@ -70,6 +70,12 @@ def _key(scr, tab=False):
             curses.KEY_LEFT: "LEFT", curses.KEY_RIGHT: "RIGHT", curses.KEY_PPAGE: "PGUP", curses.KEY_NPAGE: "PGDN"}.get(k)
 
 
+def _lab_error(field, error):
+    """'Hb: 1–25 g/dL 사이로 입력하세요' (a range), 'Hb: 숫자를 입력하세요' (anything else)."""
+    _, label, unit, _ = field
+    return f"{label}: {error} {unit} 사이로 입력하세요" if re.fullmatch(r"[\d.]+–[\d.]+", str(error)) else f"{label}: {error}"
+
+
 def split_free(text):
     """'copd ,   asthma,heart  stop' -> ['copd', 'asthma', 'heart stop']"""
     return [" ".join(x.split()) for x in text.split(",") if x.strip()]
@@ -213,6 +219,7 @@ class Form:
         query, cur, note = "", 0, ""
         found, ai, sym = [], dict(q=None, res=[], busy=False), dict(q=None, res=None, busy=False, error="")
         first = True; flash = [None, 0.0]                              # the logo is drawn in on the first frame; a new chip is lit briefly
+        armed = False                                                  # Backspace on an empty box: the first press marks the last chip
         typed_at = 0.0; ai_on = RC.HAS_LEARNED; dirty = False; searched_at = 0.0
         def search():                                              # spelling suggestions; during fast typing at most every 0.15 s
             nonlocal found, dirty, searched_at
@@ -282,6 +289,9 @@ class Form:
                 if big:
                     for ln in logo(): self.S.put_ansi(y, (w - logo_width()) // 2, ln); y += 1
                 else: self.S.put_ansi(y, (w - 6) // 2, "\033[36;1mADC\033[0m\033[31;1mToX\033[0m"); y += 1
+                if not (rows or sel):                                      # the empty start screen says what the app does
+                    about = f"기저질환과 검사 수치로 FDA 승인 ADC {len(RC._indications()) or 15}개를 경고가 적은 순서로 보여 줍니다."
+                    self.S.put(y + 1, max(1, (w - _w(about)) // 2), _clip(about, w - 2), self.S.dim); y += 1
                 y += 2
                 if sel:                                                    # chips; a click or Backspace on an empty box takes one off
                     x = bx
@@ -290,7 +300,7 @@ class Form:
                         org = ", ".join(GLYPH[a] for a in RC.AXES if a in ax)
                         chip = f"[ {item[2]}" + (f"  {org}" if org else "") + " × ]"
                         if x + _w(chip) > bx + bw and x > bx: y += 1; x = bx
-                        if flash[0] == n and time.monotonic() < flash[1]: self.S.put(y, x, _clip(chip, bw), self.S.cur)
+                        if (flash[0] == n and time.monotonic() < flash[1]) or (armed and n == len(sel) - 1): self.S.put(y, x, _clip(chip, bw), self.S.cur)
                         else: self.S.put_ansi(y, x, f"\033[32;1m[\033[0m {_clip(item[2], bw - 12)}" + (f"  \033[90m{org}\033[0m" if org else "") + " \033[31m×\033[0m \033[32;1m]\033[0m")
                         self.hit(y, x, x + _w(chip), ("CHIP", n)); x += _w(chip) + 2
                     y += 1
@@ -339,6 +349,7 @@ class Form:
                 if first and hasattr(self.scr, "transition") and not self.scr.armed(): self.scr.transition("wipe", y_from=1)
                 first = False
                 self.scr.refresh(); k = self.key(tab=True)
+                was_armed = armed; armed = armed and k in (None, "")              # any other key drops the mark
                 if isinstance(k, tuple) and k[0] == "ROW": cur = k[1]; k = "ENTER"     # a click on a row picks it
                 if isinstance(k, tuple) and k[0] == "CHIP":
                     if k[1] < len(sel): note = f"뺌: {sel.pop(k[1])[2]}"
@@ -369,7 +380,8 @@ class Form:
                     else:
                         note = add(s); query, found, cur = "", [], 0
                 elif k == "BS" and not query:
-                    if sel: note = f"뺌: {sel.pop()[2]}"
+                    if sel and was_armed: note = f"뺌: {sel.pop()[2]}"
+                    elif sel: armed = True; note = f"한 번 더 누르면 뺌: {sel[-1][2]}"
                 elif k == "BS" or (isinstance(k, str) and len(k) == 1 and k.isprintable()):
                     query = query[:-1] if k == "BS" else query + k; typed_at = time.monotonic(); cur = 0; dirty = True
                     if not query or time.monotonic() - searched_at > 0.15: search()
@@ -403,7 +415,8 @@ class Form:
                 elif x[0] == "done": self.row(y0 + r, f" {'→' if on else ' '} [ 완료 ]", on, row)
                 else:
                     k, label, unit, _ = fields[x[1]]; v = vals[k]
-                    self.row(y0 + r, f" {'→' if on else ' '} {label:<{lw}}  {v + ('_' if on else ''):<10} {unit}", on, row)
+                    uln = f"{unit:<6}   ULN {LB.ULN[k]:g}" if k in LB.ULN else unit       # the reference upper limit the x ULN uses
+                    self.row(y0 + r, f" {'→' if on else ' '} {label:<{lw}}  {v + ('_' if on else ''):<10} {uln}", on, row)
             parsed = {}
             for key, v in vals.items():                                 # a value still being typed ("0", "0.") is just left out
                 try:
@@ -411,11 +424,17 @@ class Form:
                 except ValueError: pass
             try: info = "   ".join(n for n in LB.derive(parsed)[2] if n.startswith("CLcr"))
             except Exception: info = ""
-            self.S.put(h - 1, 1, note or info, self.S.dim); note = ""
+            ck = fields[rows[at][1]][0] if rows[at][0] == "field" else None
+            if ck in LB.ULN and ck in parsed:                               # the value being entered, as the label rules read it
+                info = (f"{fields[rows[at][1]][1]} {LB.shown('bili', parsed[ck] / LB.ULN[ck])}×ULN   " + info).rstrip()
+            self.S.put(h - 1, 1, _clip(note or info, max(10, w - 30)), self.S.dim); note = ""     # left of the PgUp / PgDn hint
             self.scr.refresh(); k = self.key()
             if isinstance(k, tuple):                                       # a click moves to the field (or finishes on 완료)
                 cur = pick.index(k[1]) if k[1] in pick else cur; at = pick[cur]; k = "NOOP"
             x = rows[at]
+            if k in ("UP", "DOWN") and x[0] == "field" and vals[fields[x[1]][0]].strip():     # leaving a field: say if it will not be taken
+                try: LB.parse(fields[x[1]][0], vals[fields[x[1]][0]])
+                except ValueError as e: note = _lab_error(fields[x[1]], e)
             if k == "UP": cur = max(0, cur - 1)
             elif k == "DOWN": cur = min(len(pick) - 1, cur + 1)
             elif k == "PGUP": return BACK
@@ -426,12 +445,14 @@ class Form:
                     for key, v in vals.items():
                         if not v.strip(): continue
                         try: out[key] = LB.parse(key, v)
-                        except ValueError as e: note = f"{key}: {e}"; break
+                        except ValueError as e:                             # the field with the bad value, and what it takes
+                            i = next(i for i, f in enumerate(fields) if f[0] == key); cur = pick.index(rows.index(("field", i)))
+                            note = _lab_error(fields[i], e); break
                     else: return out
                 else:
                     key = fields[x[1]][0]
                     try: LB.parse(key, vals[key]); cur = min(len(pick) - 1, cur + 1)
-                    except ValueError as e: note = f"{fields[x[1]][1]}: {e}"
+                    except ValueError as e: note = _lab_error(fields[x[1]], e)
             elif x[0] == "field":
                 key = fields[x[1]][0]
                 if k == "BS": vals[key] = vals[key][:-1]
@@ -520,7 +541,7 @@ class Form:
         """the one condition to weigh first, or 0 = automatic (severity order). -> 0, 1..n (names[k - 1]) or BACK."""
         options = ["자동 (질환 중증도 순)"] + names; n = len(options); top = 0; w0 = max(_w(x) for x in names)
         while True:
-            y0 = self.frame("가장 걱정되는 질환", "라벨 제한이 같은 ADC 중에서는 고른 질환의 장기에 경고가 적은 쪽이 위로 갑니다."); h = self.scr.getmaxyx()[0]
+            y0 = self.frame("가장 걱정되는 질환", self.RC.FIRST_TEXT); h = self.scr.getmaxyx()[0]
             fit = max(1, h - 2 - y0); top = min(max(top, cur - fit + 1), cur, max(0, n - fit))     # above the key hint, the selection in view
             for r, k in enumerate(range(top, min(n, top + fit))):
                 pic = "" if k == 0 else " " * (w0 - _w(options[k])) + "   " + strip(self.RC.AXES, organs[k - 1])
@@ -725,14 +746,15 @@ def run(RC, back=False):
                     RC.FALLBACK = {c: RC.AUTO_FALLBACK for c in miss}
                 step = 3; st["miss"] = bool(miss)
             elif step == 3:                                       # priority between conditions on different organs: one screen, the default order shown
-                pc = RC.patient_conditions(conds, st["raw"]); RC.PRIORITY = {}
+                pc = RC.patient_conditions(conds, st["raw"]); RC.PRIORITY = {}; RC.FIRST = None
                 has_priority = len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2
                 if has_priority:
                     d = RC.default_levels(pc); names = [c for c, _, _ in pc]
-                    k = F.first([kn(c) for c in names], [o for _, o, _ in pc], names.index(worry[0]) + 1 if worry[0] in names else 0)
+                    picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")]      # diseases; lab findings keep the automatic order
+                    k = F.first([kn(c) for c, _ in picks], [o for _, o in picks], [c for c, _ in picks].index(worry[0]) + 1 if worry[0] in dict(picks) else 0)
                     if k == BACK: step = 2 if split_free(st["free"]) else 1; continue
-                    worry[0] = names[k - 1] if k else None                  # the chosen one first; the others keep the severity order
-                    if k: RC.PRIORITY = {c: 0 if c == worry[0] else d[c] for c in names}
+                    worry[0] = picks[k - 1][0] if k else None              # the chosen one first; the others keep the severity order
+                    if k: RC.PRIORITY = {c: 0 if c == worry[0] else d[c] for c in names}; RC.FIRST = worry[0]
                 step = 4
             else:                                                 # the result screen, in the same session
                 rows, sc, notes, ck = RC.recommend(conds, {}, st["raw"])

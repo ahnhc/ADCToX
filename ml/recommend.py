@@ -42,6 +42,7 @@ AXES = DE.AXES; R = RS.R
 LEARNED_FRACTION = 0.0      # off by default; see the module docstring
 FALLBACK = {}               # condition text -> learned fraction, only for conditions that map to no organ (asked in the wizard)
 PRIORITY = {}               # condition text -> level the user set (1 = avoid its organs' toxicity first); default = severity order
+FIRST = None                # the condition the doctor is most worried about (the priority step); None = automatic
 CHOICE = {}                 # condition text -> MONDO id the user picked among its readings (None = 'not sure'); see mondo_index.readings
 REG_NEAR = 0.80             # a free-text condition is 'the same as' a registry condition at this BioLORD cosine -> its curated organs
 MONDO_SEVERITY = 0.80       # organs read off the MONDO hierarchy have no curated severity; one fixed value, not fitted
@@ -427,10 +428,14 @@ def recommend(conditions, labs=None, raw=None):
                          B=round(B, 3), Wn=round(Wn, 3), boxed=boxed, warn=warn, elsewhere=elsewhere, organs=org, has_tables=e["has_tables"]))
     # restriction tier (worst case), settled tier, then boxed warnings on the level-1 organs, level-2 organs, ..., then the other
     # warnings level by level. Within one patient this is the order; B and Wn (severity sums) stay for comparisons across patients.
-    rows.sort(key=lambda r: (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"], r["name"]))
+    first = next((set(o) for c, o, _ in pc if c == FIRST), None)
+    hit = lambda r, k: sum(a in first for a in r[k]) if first else 0
+    # a picked condition: its organs' boxed warnings, then warnings, come before Monitor / Not studied; Avoid stays last
+    order = lambda r: ((r["tier"] >= RS.TIER["avoid"], hit(r, "boxed"), hit(r, "warn")) if first else ()) + (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"])
+    rows.sort(key=lambda r: (order(r), r["name"]))
     prev = None
     for r in rows:
-        k = (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"]); r["tie"] = bool(prev and k == prev["key"]); r["rank"] = prev["rank"] if r["tie"] else (prev["rank"] + 1 if prev else 1)
+        k = order(r); r["tie"] = bool(prev and k == prev["key"]); r["rank"] = prev["rank"] if r["tie"] else (prev["rank"] + 1 if prev else 1)
         r["key"] = k; prev = r
     for i in range(len(rows) - 1):
         if rows[i + 1]["tie"]: rows[i]["tie"] = True
@@ -510,8 +515,14 @@ WHEN_TXT = {"crcl_lt": "CLcr < {}", "crcl_ge": "CLcr ≥ {}", "bili_gt": "biliru
             "lvef_lt": "LVEF < {}%", "platelets_lt": "platelets < {}k", "anc_lt": "ANC < {}k", "hba1c_ge": "HbA1c ≥ {}%"}
 
 
+RANGE_TXT = [("crcl_ge", "crcl_lt", "CLcr {} to <{}"), ("bili_gt", "bili_le", "bilirubin >{} to {}×ULN"),
+             ("ast_gt", "ast_le", "AST >{} to {}×ULN"), ("alt_gt", "alt_le", "ALT >{} to {}×ULN")]
+
+
 def _when(w):
-    parts = []
+    parts = []; w = dict(w)
+    for lo, hi, text in RANGE_TXT:                     # a band reads as the label writes it: 'bilirubin >1.5 to 3×ULN', 'CLcr 30 to <90'
+        if lo in w and hi in w: parts.append(text.format(w.pop(lo), w.pop(hi)))
     for k, v in w.items():
         if k in WHEN_TXT: parts.append(WHEN_TXT[k].format(v))
         elif k == "esrd": parts.append("ESRD/dialysis" if v else "not on dialysis")
@@ -618,9 +629,11 @@ def _result_list(rows, width):
         # Four display groups only. Exact label actions (including dose reduction / contraindication)
         # and whether a rule is still conditional remain explicit in the selected row's reasons.
         tier = verdict.worst_possible
-        state, tone = {0: ("None", "32"), 1: ("Monitor", "36"), 2: ("Unclear", "33"),
+        state, tone = {0: ("None", "32"), 1: ("Monitor", "36"), 2: ("No data", "33"),
                        3: ("Avoid", "31"), 4: ("Avoid", "31")}.get(tier, ("None", "90"))
-        status = paint(state, tone + (";1" if verdict.worst_known == tier else ""))
+        if tier == 2 and any(c == "insufficient_data" for c, _ in verdict.known + verdict.possible): state = "Not studied"
+        sure = verdict.worst_known == tier
+        status = paint(state + ("" if sure else "?"), tone + (";1" if sure else ""))   # ?: it depends on a value not entered
         organs = _organ_preview(row)
         if stacked:
             names = tui._wrap(row["name"], max(2, width - 6), "")
@@ -649,6 +662,8 @@ def _compact_line(text, width):
 
 
 def _missing_inputs(verdict):
+    """the values not entered that could still change this ADC's restriction (only those: an entered bilirubin is not listed)."""
+    if getattr(verdict, "inputs", None): return list(verdict.inputs)
     short = {"renal": "CLcr / dialysis status", "hepatic": "Bilirubin / AST / ALT / Child-Pugh", "cardiac": "LVEF",
              "blood": "Platelets / ANC", "metabolic": "HbA1c"}
     return [short.get(next((d for d, text in RS.NEEDS.items() if text == need), ""), need) for need in verdict.missing]
@@ -670,6 +685,46 @@ def _mechanisms():
     return _MECH
 
 
+_IND = None
+
+
+def _indications():
+    """adc -> the label's section 1 indications, short (data/curated/competition/adc_indications.csv); the app build embeds it."""
+    global _IND
+    if _IND is None:
+        try:
+            from __adc_data__ import _portable_data
+            _IND = _portable_data().get("indications", {})
+        except ImportError:
+            _IND = read_mechanisms(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "curated", "competition", "adc_indications.csv"))
+    return _IND
+
+
+# payload / linker codes of the mechanism table, as a reader writes them
+MECH_TXT = {"tubulin": "microtubule inhibitor", "topo1": "topoisomerase I inhibitor", "dna_cleave": "DNA strand breaks",
+            "dna_crosslink": "DNA crosslinking", "ign": "indolinobenzodiazepine", "pbd": "pyrrolobenzodiazepine",
+            "hydrazone_AcBut_disulfide": "AcBut hydrazone", "IGN_peptide": "peptide", "sulfo_SPDB": "sulfo-SPDB",
+            "val_ala_PABC_PEG8": "Val-Ala PABC (PEG8)", "vc_PABC": "Val-Cit PABC", "mc": "maleimidocaproyl (mc)"}
+
+
+def payload_line(mech):
+    """'MMAE (auristatin), microtubule inhibitor · Val-Cit PABC linker, cleavable · bystander effect · target CD30'"""
+    t = lambda x: MECH_TXT.get(x, x)
+    return (f"{mech['payload']} ({t(mech['payload_family'])}), {t(mech['mechanism'])} · {t(mech['linker'])} linker, "
+            + ("cleavable" if mech["linker_cleavable"] == "True" else "non-cleavable") + (" · bystander effect" if mech["bystander"] == "True" else "")
+            + (f" · target {mech['target']}" if mech.get("target") else ""))
+
+
+def organ_warning_lines(row):
+    """the label warnings on this patient's organs, the boxed one first: '  Lung      !!  Boxed INTERSTITIAL LUNG DISEASE; 5.1 ...'"""
+    out = []
+    for marks, organs in (("!!", row.get("boxed", [])), ("! ", row.get("warn", []))):
+        for a in organs:
+            heads = "; ".join(f"{sec} {head}" for sec, head in row["organs"][a].get("headings", []))
+            out.append(f"  {ORGAN_SHORT[a]:<9} {marks}  {heads}")
+    return out
+
+
 def read_mechanisms(path):
     import csv
     try: return {r["adc"]: r for r in csv.DictReader(open(path, encoding="utf-8"))}
@@ -680,12 +735,19 @@ def _result_details(row, checks_, width):
     """Complete restriction reasons and checks; the viewer wraps and scrolls this panel."""
     paint = lambda t, c: f"\033[{c}m{t}\033[0m" if c else t
     out = [paint(row["name"], "33;1")]
+    ind = _indications().get(row.get("adc"))
+    if ind: out.append(paint("  " + ind["indication"], "90"))                     # what it is approved for (label section 1)
     evidence = reason_rows(row)
     evidence = [reason for reason in evidence if reason[3] != "no_adjustment"] or evidence
     evidence.sort(key=lambda reason: (-RS.TIER[reason[3]], not reason[4], reason[0]))
     for organ, status, basis, code, sure in evidence:
         out.append(f"  {organ.capitalize():<9} " + paint(status, TONE[code] + (";1" if sure else "")) + f"   {basis}")
     if not evidence: out.append("  No applicable label restriction")
+    warned = organ_warning_lines(row)
+    if warned:
+        out.append(paint("─" * width, "90"))
+        out.append(paint("Warnings on the patient's organs", "33;1"))
+        out.extend(warned)
     if row["verdict"].missing:
         out.append(paint("─" * width, "90"))
         out.append(paint("Missing inputs", "33;1"))
@@ -694,8 +756,7 @@ def _result_details(row, checks_, width):
     if mech:
         out.append(paint("─" * width, "90"))
         out.append(paint("Payload and linker", "33;1"))
-        out.append(f"  {mech['payload']} ({mech['payload_family']}, {mech['mechanism']}), linker {mech['linker']}"
-                   + (" cleavable" if mech["linker_cleavable"] == "True" else " non-cleavable") + (", bystander effect" if mech["bystander"] == "True" else ""))
+        out.append("  " + payload_line(mech))
         note = mech.get("mechanism_note", "")                                          # the label's own 12.1 text, verbatim
         keep = [x for x in re.split(r"(?<=\.)\s+(?=[A-Z])", note) if re.search(re.escape(mech["payload"]) + r"|microtubul|topoisomerase|DNA", x)][:2]
         if keep: out.append("  " + " ".join(keep) + (f" [{mech['reference']}]" if mech.get("reference") else ""))
@@ -789,7 +850,7 @@ def browse(rows, checks_=(), notes=(), labs=None, raw=None, scr=None, crumbs=Non
     values = {**(LB.derive(raw)[0] if raw else {}), **(labs or {})}
     return tui.browse("ADC 추천 결과", lambda w: _result_list(rows, w), [],
                       lambda i, w: _result_details(rows[i], checks_, w),
-                      footer="!! Boxed warning   ! Warning   + more organs",
+                      footer="!! Boxed warning   ! Warning   + more organs   ? needs a value not entered",
                       context=lambda i, w: _result_context(rows, notes, w, values, i, graphic=True, raw=raw), scr=scr, crumbs=crumbs)
 
 
@@ -824,7 +885,7 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
     for line in _result_context(rows, notes, width, values, raw=raw): emit(line)
     emit()
     for line in _result_list(rows, width)[0]: emit(line)
-    emit(paint("!! Boxed warning   ! Warning   + more organs", "90"))
+    emit(paint("!! Boxed warning   ! Warning   + more organs   ? needs a value not entered", "90"))
     actions = [(r, reason) for r in rows for reason in reason_rows(r) if reason[3] in ("reduce_dose", "contraindicated")]
     if actions:
         heading("Label actions")
@@ -903,16 +964,20 @@ def _tui_ok():
     return sys.stdin.isatty() and sys.stdout.isatty() and (os.name == "nt" or os.environ.get("TERM", "dumb") != "dumb")   # Windows sets no TERM
 
 
+FIRST_TEXT = "고른 질환의 장기에 경고가 있는 ADC를 아래로 내립니다. Avoid는 그대로 맨 아래입니다."
+
+
 def _ask_priority_pc(pc):
     """the one condition to weigh first (form.Form.first in the terminal screens); Enter = automatic, the severity order."""
-    global PRIORITY
-    names = [c for c, _, _ in pc]; d = default_levels(pc)
-    print("\n가장 걱정되는 질환\n  라벨 제한이 같은 ADC 중에서는 고른 질환의 장기에 경고가 적은 쪽이 위로 갑니다.\n  0) 자동 (질환 중증도 순)")
-    for k, (c, organs, _) in enumerate(pc, 1): print(f"  {k}) {condition_name(c)}   {', '.join(ORGAN_SHORT[a] for a in sorted(organs, key=AXES.index))}")
+    global PRIORITY, FIRST
+    names = [c for c, _, _ in pc]; d = default_levels(pc); picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")]
+    print(f"\n가장 걱정되는 질환\n  {FIRST_TEXT}\n  0) 자동 (질환 중증도 순)")
+    for k, (c, organs) in enumerate(picks, 1): print(f"  {k}) {condition_name(c)}   {', '.join(ORGAN_SHORT[a] for a in sorted(organs, key=AXES.index))}")
     try: raw = input("  번호 (Enter = 0) > ").strip()
     except EOFError: raw = ""
-    k = int(raw) if raw.isdigit() and int(raw) <= len(names) else 0
-    PRIORITY = {c: 0 if c == names[k - 1] else d[c] for c in names} if k else {}
+    k = int(raw) if raw.isdigit() and int(raw) <= len(picks) else 0
+    FIRST = picks[k - 1][0] if k else None
+    PRIORITY = {c: 0 if c == FIRST else d[c] for c in names} if k else {}
 
 
 def _ask_fallback(conds, radio=None):
@@ -970,7 +1035,8 @@ SELF_TEST = ("alzheimer", "cirrhosis", "치매")
 HELP = """ADCTOX {version}
 
 기저질환(과 검사 수치)을 넣으면 미국 FDA 라벨이 있는 ADC {n}개를 이 환자에게 맞는 순서로 보여 줍니다.
-순서 기준: 라벨의 사용 제한(금기, 피하라, 자료 없음) > 환자 장기에 걸린 boxed 경고 > 그 밖의 경고.
+순서 기준: 라벨의 사용 제한(Contraindicated, Avoid, Not studied) > 환자 장기에 걸린 boxed 경고 > 그 밖의 경고.
+가장 걱정되는 질환을 고르면, Avoid가 아닌 ADC 중에서 그 질환의 장기 경고가 적은 ADC가 위로 갑니다.
 질환은 AI 판정 모델이 MONDO 질환과 장기에 연결하고, 분석은 이 컴퓨터 안에서만 합니다.
 연구용 도구입니다. 독성 발생 확률이 아니며 처방 결정을 대신하지 않습니다.
 
@@ -982,7 +1048,7 @@ HELP = """ADCTOX {version}
 입력 화면 키
   글자 입력       질환명 추천 (한국어, 영어, 약어, 초성, 오타); 두 단어 이상이면 증상으로 찾은 질환도
   ↑↓ ENTER        추천 고르기 (클릭도 됨)
-  Backspace       빈 칸에서 누르면 마지막에 고른 질환 빼기 (질환 칩의 ×를 눌러도 됨)
+  Backspace       빈 칸에서 두 번 누르면 마지막에 고른 질환 빼기 (질환 칩의 ×를 눌러도 됨)
   PgDn / PgUp     다음 단계 / 이전 단계
   ESC             입력 지우기, 빈 칸에서 누르면 종료
 

@@ -31,10 +31,18 @@ DOMAIN_AXIS = {"renal": "renal", "hepatic": "hepatic", "cardiac": "cardiovascula
 NEEDS = {"renal": "Creatinine + age/sex/weight or eGFR (dialysis/ESRD status if CLcr < 15)", "hepatic": "Bilirubin, AST, ALT (or Child-Pugh)",
          "cardiac": "LVEF", "blood": "Platelet, ANC", "metabolic": "HbA1c"}
 INF = float("inf")
-# words for the result table: Clear = the label settles it (no adjustment), Unclear = the label says data are limited/unknown,
-# No data = the label says nothing about this patient's state
+# words for the result table: Clear = the label settles it (no adjustment), Not studied = the label says such patients were not
+# studied or data are limited, No data = the label says nothing about this patient's state
 TABLE = {"no_adjustment": "Clear", "monitor": "Monitor", "reduce_dose": "Reduce dose", "no_statement": "No data",
-         "insufficient_data": "Unclear", "avoid": "Avoid", "contraindicated": "Contraindicated"}
+         "insufficient_data": "Not studied", "avoid": "Avoid", "contraindicated": "Contraindicated"}
+# a rule's input -> the value a doctor enters for it (Missing inputs lists only these, not the whole domain)
+INPUT = {"crcl_lt": "CLcr (Creatinine + age, sex, weight, or eGFR)", "crcl_ge": "CLcr (Creatinine + age, sex, weight, or eGFR)",
+         "bili_gt": "Bilirubin", "bili_le": "Bilirubin", "ast_gt": "AST", "ast_le": "AST", "alt_gt": "ALT", "alt_le": "ALT",
+         "child_pugh": "Child-Pugh", "esrd": "Dialysis/ESRD", "lvef_lt": "LVEF", "lvef_ge": "LVEF", "platelets_lt": "Platelets",
+         "anc_lt": "ANC", "hba1c_ge": "HbA1c", "ugt1a1_28_homozygous": "UGT1A1*28"}
+FIELD = {"crcl_lt": "crcl", "crcl_ge": "crcl", "bili_gt": "bili", "bili_le": "bili", "ast_gt": "ast", "ast_le": "ast", "alt_gt": "alt",
+         "alt_le": "alt", "child_pugh": "child_pugh", "esrd": "esrd", "lvef_lt": "lvef", "lvef_ge": "lvef", "platelets_lt": "platelets",
+         "anc_lt": "anc", "hba1c_ge": "hba1c", "ugt1a1_28_homozygous": "ugt1a1_28_homozygous"}
 
 
 def load_rules():
@@ -140,6 +148,7 @@ class Verdict:
     possible: list         # [(category, rule)] that hold for SOME plausible value of a missing input
     silent: list           # covered domains where some plausible state has no rule ("no label statement")
     missing: list          # tests that would settle a 'possible' verdict
+    inputs: list = field(default_factory=list)     # the single values among them that are not entered (INPUT words)
 
     @property
     def worst_known(self): return max([TIER[c] for c, _ in self.known] + [TIER["no_statement"] for d, sure in self.silent if sure] + [-1])
@@ -169,7 +178,10 @@ def judge(p, adcs, rules=None):
         # ask only for tests that could still change the answer: a possible verdict above what is already certain
         w = v.worst_known
         need = {r["domain"] for c, r in possible if TIER[c] > w} | {d for d, sure in silent if not sure and TIER["no_statement"] > w}
-        v.missing = sorted({NEEDS.get(d, d) for d in need}); out[adc] = v
+        v.missing = sorted({NEEDS.get(d, d) for d in need})
+        keys = [k for c, r in possible if TIER[c] > w for k in r["when"] if k in FIELD]
+        keys += [k for d, sure in silent if not sure and TIER["no_statement"] > w for r in rs if r["domain"] == d for k in r["when"] if k in FIELD]
+        v.inputs = list(dict.fromkeys(INPUT[k] for k in keys if getattr(p, FIELD[k], None) is None)); out[adc] = v
     return out
 
 

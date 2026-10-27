@@ -307,9 +307,9 @@ def browse(title, lines, selectable, details, footer="", context=(), scr=None, c
                 S.put_ansi(yb + 1 + k, 2, ln, curses.A_BOLD if detail_top + k == 0 else 0)
             S.rule(h - 3)
             if detail_focus:
-                hint = "↑↓ 이유 스크롤   Tab ADC 목록   PgUp 이전 단계   PgDn 결과 출력"
+                hint = "↑↓ 이유 스크롤   Tab ADC 목록   PgUp 이전 단계   PgDn 종료"
             else:
-                hint = "↑↓ ADC 고르기   Tab 이유 스크롤   PgUp 이전 단계   PgDn 결과 출력"
+                hint = "↑↓ ADC 고르기   Tab 이유 스크롤   PgUp 이전 단계   PgDn 종료"
             if len(out) > detail_area:
                 hint += f"   {detail_top + 1}-{min(detail_top + detail_area, len(out))}/{len(out)}"
             S.put(h - 2, 2, hint, S.dim)
