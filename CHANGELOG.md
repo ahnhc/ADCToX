@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — Input on the screens only
+## 0.5.3 — Input on the screens only
 
 - **The command line no longer takes conditions or lab values.** `adctox cirrhosis --lab hb=8`, `--crcl`, `--child-pugh`, `--priority`, `--detail` and `--list` are gone; any such argument is refused with exit code 2 and a pointer to the input screens. This also removes three ways to get a result from input nobody checked: without a terminal the app used to analyse a made-up patient (interstitial lung disease), a misspelt `--lab` key was ignored, and `--crcl -10 --child-pugh Z` went into the table as given.
 - `adctox --self-test` prints the table for one fixed example patient (alzheimer, cirrhosis, 치매); the install workflow uses it.
