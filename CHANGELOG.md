@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — The app reads a disease the way the judge does
+## 0.5.1 — The app reads a disease the way the judge does
 
 With model bundles 0.7+, every way into the analysis now gives the organs the from-scratch judge gives (gold dev: the app and the judge differ on 1 of 304 queries, down from 6; the one left is a registry context condition, 'anthracycline exposure').
 - **A disease picked from the search list** gets the judge's organs for that concept (the v5.1 organ table, or what the evidence reader got from its MONDO entry), not the older MONDO crosswalk the list used to show. The two disagreed on 8,121 of the 21,238 concepts the judge has organs for. "Read as" for a picked disease ends in `label` or `record` too. The crosswalk stays for concepts the judge has no organs for.
