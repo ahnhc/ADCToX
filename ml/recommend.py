@@ -193,11 +193,18 @@ def _judge_extra(free, links, GR, MI):
 def _scratch_link(r):
     """one row of scratch_runtime.judge in the linker's format: a MONDO concept gives its organs (from its label, its MONDO record
     or, without either, the organ output on the text); any other result is an AI judgment of the text. `judge_via` says which."""
-    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, judge_via=r["via"])
+    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, judge_via=r["via"], judge=True)
     if not r["ok"]: return lk
     if r["concept"] and r["concept"].startswith("MONDO:"): lk.update(mondo=r["concept"], name=r["name"], axes=list(r["organs"]))
     elif r["organs"]: lk.update(judged=list(r["organs"]), sim=0.0, judge_via="name")
     return lk
+
+
+def _judge_differs(lk, near):
+    """the from-scratch judge linked a MONDO disease with organs that is not the registry condition's own concept: the judge's link
+    stands over the looser name similarity ('Type 1 diabetes mellitus' is not the registry's 'Type 2 diabetes'). A registry
+    condition the judge does not place in MONDO (prior exposures, procedures) still matches by name."""
+    return bool(lk.get("judge") and lk.get("mondo") and lk["axes"] and _reg[near].get("mondo_id") != lk["mondo"])
 
 
 def english(texts):
@@ -252,7 +259,7 @@ def analyze_conditions(conditions, progress=None):
                       model="BioLORD + disease-pair MLP" if prediction is not None else None,
                       readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")),
                       models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates}, gemma=link.get("gemma"), via=link.get("via"),
-                      judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" else None)
+                      judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" else _chosen_via(c) if source == "Chosen" else None)
         _ANALYSES[c] = report; reports.append(report)
     if progress: progress("done")
     return reports
@@ -279,19 +286,19 @@ def resolve(conditions):
                 own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in chosen[1]]
                 how = f"free text; chosen reading {'HPO' if picked.startswith('HP:') else 'MONDO'} '{chosen[0]}' -> organs: {', '.join(chosen[1]) or 'none'}"
             elif c in CHOICE and picked is None: own, how = np.zeros(len(AXES)), "free text; not understood (no organ); reading left open by the user"
-            elif sim >= REG_NEAR: own, how = own_vec(near), f"free text; same as registry '{rl}' (cos {sim:.2f})"; ids.add(near)
+            elif sim >= REG_NEAR and not _judge_differs(lk, near): own, how = own_vec(near), f"free text; same as registry '{rl}' (cos {sim:.2f})"; ids.add(near)
             elif lk["axes"] and not (GATE_MONDO and rejected):
                 own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in lk["axes"]]
                 how = f"free text; MONDO '{lk['name']}' (sim {lk['sim']:.2f}) -> organs: {', '.join(lk['axes'])}"
             elif lk.get("judged") and not rejected:                 # index v5+: no linked organ, the fast organ judgment of the text
                 own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in lk["judged"]]
                 how = f"free text; AI judgment -> organs: {', '.join(lk['judged'])}"
-            elif lk["axes"] == [] and lk.get("sim", 0) >= LINK_THETA and not rejected and not lk.get("ambiguous"):
+            elif lk["axes"] == [] and (lk.get("mondo") if lk.get("judge") else lk.get("sim", 0) >= LINK_THETA) and not rejected and not lk.get("ambiguous"):
                 own, how = np.zeros(len(AXES)), f"free text; MONDO '{lk['name']}' (sim {lk['sim']:.2f}) -> no organ axis"
             elif hp:
                 own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in hp["organs"]]
                 how = f"free text; phenotype HPO '{hp['name']}' (sim {hp['sim']:.2f}) -> organs: {', '.join(hp['organs'])}"
-            elif sim >= MATCH_COS and not (GATE_BORROW and rejected): own, how = own_vec(near), f"free text; organs borrowed from registry '{rl}' (cos {sim:.2f})"
+            elif sim >= MATCH_COS and not lk.get("judge") and not (GATE_BORROW and rejected): own, how = own_vec(near), f"free text; organs borrowed from registry '{rl}' (cos {sim:.2f})"
             else:
                 own, how = np.zeros(len(AXES)), "free text; not understood (no organ)"
                 if FALLBACK.get(c) == AUTO_FALLBACK and rejected:
@@ -319,6 +326,15 @@ def _chosen(mondo):
     if MI._IDX is None: MI.link(["x"])                          # loads the index of the active bundle
     name, organs = MI.concept(mondo)
     return (name, organs) if name else None
+
+
+def _chosen_via(condition):
+    """models 0.7+: label or record, for a reading picked from the list (the same organs the judge gives that concept)."""
+    try:
+        import scratch_runtime as SR
+        return SR.concept_via(CHOICE.get(condition) or "")
+    except Exception:
+        return None
 
 
 def ambiguous_conditions(conditions):

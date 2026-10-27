@@ -146,10 +146,15 @@ class Index:
                 self.rows = []
                 with np.load(adc_runtime.model_path("mondo_index.npz", MI.C + "mondo_index.npz"), allow_pickle=False) as d:
                     ids, names, axes = d["ids"].tolist(), d["names"].tolist(), d["axes"] > 0; axn = MI.AXES
+                    try:
+                        import scratch_runtime as SR
+                        J = SR.concept_organs()                   # models 0.7+: the judge's organs for a concept, as when typed
+                    except Exception:
+                        J = {}
                     pref = {t: v[2] for t, v in mondo_ko().items() if v[2]}      # the preferred MONDO name (the first index row can be a synonym)
                     for j, (t, n) in enumerate(zip(ids, names)):
                         if t in organs: continue
-                        organs[t] = [axn[k] for k in np.flatnonzero(axes[j])]; p = pref.get(t, n)
+                        organs[t] = J.get(t) or [axn[k] for k in np.flatnonzero(axes[j])]; p = pref.get(t, n)
                         if not n.startswith("obsolete") and t not in nh and not ANIMAL.search(n):
                             for key in dict.fromkeys([n, p]): self._add(key, 0, ("mondo", t, p[:1].upper() + p[1:], "", organs[t]))
                     first = {}

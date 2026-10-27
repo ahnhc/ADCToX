@@ -35,6 +35,26 @@ def folder():
 def available(): return os.environ.get("ADC_SCRATCH_JUDGE", "1") != "0" and folder() is not None
 
 
+_ORG = {}
+
+
+def concept_organs():
+    """MONDO id -> organs, as the judge gives them for a linked concept (label or record), or {} without the judge. The search list
+    and a reading chosen from it use these, so a disease picked from the list gets the organs it gets when typed. No model is loaded."""
+    if not available(): return {}
+    path = folder()
+    if path not in _ORG:
+        C = json.load(open(os.path.join(path, "concepts.json"), encoding="utf-8"))
+        _ORG[path] = {c: (list(v[1]), v[2]) for c, v in C.items() if c.startswith("MONDO:") and v[1]}
+    return {c: o for c, (o, _) in _ORG[path].items()}
+
+
+def concept_via(concept):
+    """"label" or "record": where the judge's organs for a MONDO concept come from; None without the judge or without organs."""
+    if not available() or concept_organs() is None: return None
+    return _ORG[folder()].get(concept, (None, None))[1]
+
+
 def load(path=None):
     path = path or folder()
     with _LOCK:

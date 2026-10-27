@@ -571,7 +571,8 @@ class Form:
 
     def _analysis_review(self, reports, elapsed):
         """per typed condition: what it was read as and its organs (the ones the recommendation uses), one line each; under it, for
-        the highlighted input, what each Gemma judge output said and which step set the organs."""
+        the highlighted input with models 0.5-0.6, what each Gemma judge output said and which step set the organs (models 0.7+:
+        no panel; Read as ends in label, record or name)."""
         import tui, suggest as SG
         top = cur = 0; RC = self.RC; ko = SG.index(RC).ko
         SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Similar condition": "Similar registry condition",

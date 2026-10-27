@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — The app reads a disease the way the judge does
+
+With model bundles 0.7+, every way into the analysis now gives the organs the from-scratch judge gives (gold dev: the app and the judge differ on 1 of 304 queries, down from 6; the one left is a registry context condition, 'anthracycline exposure').
+- **A disease picked from the search list** gets the judge's organs for that concept (the v5.1 organ table, or what the evidence reader got from its MONDO entry), not the older MONDO crosswalk the list used to show. The two disagreed on 8,121 of the 21,238 concepts the judge has organs for. "Read as" for a picked disease ends in `label` or `record` too. The crosswalk stays for concepts the judge has no organs for.
+- **A registry condition no longer overrides the judge's MONDO link by name similarity alone.** 'Type 1 diabetes mellitus' was read as the registry's 'Type 2 diabetes' (BioLORD 0.84) and lost its immune axis. A registry condition still matches by name when the judge links the same concept or does not place the text in MONDO (prior exposures, procedures).
+- **A MONDO link of the judge counts at the judge's own threshold (0.65)**, not the older linker's 0.75, and the judge's "no organs" is no longer replaced by organs borrowed from a loosely similar registry condition.
+- docs/INSTALL.md: the model download is about 1.4 GiB (was 3.3 GiB with the Gemma judge).
+
 ## 0.5.0 — The from-scratch organ judge
 
 - **The disease judge is the model trained from scratch here (x2te), not Gemma**, in model bundles 0.7+ (`ScratchJudge/`, ml/scratch_runtime.py).

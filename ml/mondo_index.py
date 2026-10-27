@@ -96,14 +96,29 @@ def gate_inputs(texts, Q, top_v, top_j, ids):
         rows.append([vv[0], vv[0] - s2] + _char_feats(t))
     return np.c_[Q, np.array(rows, np.float32)]
 
+def _load():
+    """the index of the active bundle; with the from-scratch judge (models 0.7+) a concept's organs are the judge's (its v5.1 label
+    or its MONDO record), not the crosswalk's, wherever the judge has them."""
+    d = dict(np.load(adc_runtime.model_path("mondo_index.npz", C + "mondo_index.npz"), allow_pickle=not adc_runtime.restricted_bundle()))
+    d["_ids"] = [str(x) for x in d["ids"]]
+    try:
+        import scratch_runtime as SR
+        J = SR.concept_organs()
+    except Exception:
+        J = {}
+    if J:
+        d["axes"] = d["axes"].copy()
+        for k, t in enumerate(d["_ids"]):
+            if t in J: d["axes"][k] = [float(a in J[t]) for a in AXES]
+    return d
+
 def link(texts):
     """-> per text {mondo, name, sim, axes, valid}; valid = P(the text names a disease) from the index's validity gate (index v1+),
     None for an older index. axes stay empty below THETA."""
     global _IDX, _IDX_E
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
     if _IDX is None:
-        _IDX = dict(np.load(adc_runtime.model_path("mondo_index.npz", C + "mondo_index.npz"), allow_pickle=not adc_runtime.restricted_bundle())); _IDX_E = None
-        _IDX["_ids"] = [str(x) for x in _IDX["ids"]]
+        _IDX = _load(); _IDX_E = None
     if _IDX_E is None or _IDX_E.device != torch.device(device): _IDX_E = torch.from_numpy(_IDX["E"].astype(np.float32)).to(device)
     texts = list(texts); Qn = _embed(texts, device).astype(np.float32); Q = torch.from_numpy(Qn).to(device)
     with torch.no_grad(): v, j = (Q @ _IDX_E.T).topk(64, dim=1)
@@ -248,8 +263,7 @@ def korean(text):
     global _IDX
     if not HANGUL.search(text): return None
     if _IDX is None:
-        _IDX = dict(np.load(adc_runtime.model_path("mondo_index.npz", C + "mondo_index.npz"), allow_pickle=not adc_runtime.restricted_bundle()))
-        _IDX["_ids"] = [str(x) for x in _IDX["ids"]]
+        _IDX = _load()
     if "ko_keys" not in _IDX: return None
     if "_ko" not in _IDX: _IDX["_ko"] = {str(k): (str(v), int(r)) for k, v, r in zip(_IDX["ko_keys"], _IDX["ko_vals"], _IDX["ko_rank"])}
     q = _ko_norm(text); hit = _IDX["_ko"].get(q)
