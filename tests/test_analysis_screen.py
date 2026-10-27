@@ -121,18 +121,19 @@ def test_wrapped_rows_scroll_whole(monkeypatch):
         assert any(ln.lstrip().startswith(f"› condition number {k}") for ln in last)
 
 
-def test_priority_rows_stay_above_the_key_hint_and_follow_the_selection(monkeypatch):
-    """nine conditions at 80x24: rows close up, then scroll; none runs into the PgUp / PgDn hint."""
+def test_priority_is_one_pick_that_stays_above_the_key_hint(monkeypatch):
+    """the priority step asks for the one condition to weigh first; nine conditions at 80x24 scroll with the selection."""
     import form
     names = [f"condition number {i}" for i in range(9)]
-    screen, frames = _screen(monkeypatch, ["KEY_DOWN"] * 8 + ["KEY_NPAGE"])
+    screen, frames = _screen(monkeypatch, ["KEY_DOWN"] * 9 + ["KEY_NPAGE"])
     F = form.Form(screen, _rc()); F.step = 3
-    assert F.order(names, ["Liver"] * 9, [1] * 9) == [1] * 9
+    assert F.first(names, [["hepatic"]] * 9) == 9
+    assert "가장 걱정되는 질환" in "\n".join(frames[0]) and "(●) 자동 (질환 중증도 순)" in "\n".join(frames[0])
     for f in frames:
-        assert "PgDn 다음" in f[-1] and not any("condition number" in ln for ln in f[-2:])
-    assert any("→" in ln and "condition number 8" in ln for ln in frames[-1])
-    assert any("→" in ln and "condition number 0" in ln for ln in frames[0])
-
+        assert "PgDn 다음" in f[-1] and "↑↓ 고르기" in f[-1] and not any("condition number" in ln for ln in f[-2:])
+    assert any("(●) condition number 8" in ln for ln in frames[-1])
+    text = "\n".join("\n".join(f) for f in frames)
+    assert "먼저 피함" not in text and "[ − ]" not in text
 
 def test_result_table_header_stays_while_rows_scroll(monkeypatch):
     console = term._Shim()
@@ -166,3 +167,14 @@ def test_an_analysis_that_cannot_go_on_shows_one_error_line(monkeypatch):
     assert any("AI 분석을 완료하지 못했습니다" in ln for ln in shown)
     assert sum("ValueError" in ln for ln in shown) == 1 and not any("second line" in ln for ln in shown)
     assert not any("장기 분석 중" in ln for f in frames for ln in f)          # the judge step never started
+
+
+def test_the_picked_condition_comes_first_and_the_rest_keep_their_order(monkeypatch):
+    import builtins, recommend as RC
+    pc = [("cirrhosis", {"hepatic"}, 1.0), ("heart_failure", {"cardiovascular"}, 1.0), ("glaucoma", {"ocular"}, 0.5)]
+    monkeypatch.setattr(RC, "PRIORITY", {}); monkeypatch.setattr(builtins, "input", lambda prompt: "3")
+    RC._ask_priority_pc(pc)
+    assert RC.priority(pc) == {"glaucoma": 1, "cirrhosis": 2, "heart_failure": 2}
+    monkeypatch.setattr(builtins, "input", lambda prompt: "")
+    RC._ask_priority_pc(pc)
+    assert RC.PRIORITY == {} and RC.priority(pc) == RC.default_levels(pc) == {"cirrhosis": 1, "heart_failure": 1, "glaucoma": 2}

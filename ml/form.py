@@ -516,31 +516,22 @@ class Form:
             elif k == "PGDN": return pick
             elif k == "PGUP": return BACK
 
-    def order(self, names, details, levels, organs=None, title="우선순위", hint="1 = 먼저 피함 · 같은 숫자 = 같은 순위 · ←→ 또는 − + 클릭 · 그대로 두면 질환 심각도 순"):
-        """priority between conditions: 1 = avoid its organs' toxicity first. ←→ or the clickable − / + change a level."""
-        lv = list(levels); n = len(names); it = 0; top = 0
+    def first(self, names, organs, cur=0):
+        """the one condition to weigh first, or 0 = automatic (severity order). -> 0, 1..n (names[k - 1]) or BACK."""
+        options = ["자동 (질환 중증도 순)"] + names; n = len(options); top = 0; w0 = max(_w(x) for x in names)
         while True:
-            y0 = self.frame(title, hint); h = self.scr.getmaxyx()[0]
-            order = sorted(range(n), key=lambda i: (lv[i], i)); pos = order.index(it); w0 = max(_w(x) for x in names)
-            room = max(1, h - 2 - y0); gap = 2 if 2 * n - 1 <= room else 1; fit = max(1, (room + gap - 1) // gap)   # above the key hint
-            top = min(max(top, pos - fit + 1), pos, max(0, n - fit))                                                # the selected row in view
-            for r, i in enumerate(order[top:top + fit]):
-                on = i == it; y = y0 + r * gap
-                pic = strip(self.RC.AXES, organs[i]) if organs else details[i]
-                self.row(y, f" {'→' if on else ' '}       {lv[i]:>2}         {names[i]}{' ' * (w0 - _w(names[i]))}   {pic}", on, i)
-                self.button(y, 5, "−", ("DEC", i)); self.button(y, 14, "+", ("INC", i))      # [ − ]  1  [ + ]  name
-            self.scr.refresh(); k = self.key()
-            if isinstance(k, tuple):
-                kind, i = k[0], k[1]; it = i
-                if kind == "DEC": lv[i] = max(1, lv[i] - 1)
-                elif kind == "INC": lv[i] = min(n, lv[i] + 1)
-                continue
-            if k == "UP": it = order[max(0, pos - 1)]
-            elif k == "DOWN": it = order[min(n - 1, pos + 1)]
-            elif k in ("LEFT", "-"): lv[it] = max(1, lv[it] - 1)
-            elif k in ("RIGHT", "+", "="): lv[it] = min(n, lv[it] + 1)
-            elif k == "PGDN": d = {v: j for j, v in enumerate(sorted(set(lv)), 1)}; return [d[v] for v in lv]
-            elif k == "PGUP": return BACK
+            y0 = self.frame("가장 걱정되는 질환", "라벨 제한이 같은 ADC 중에서는 고른 질환의 장기에 경고가 적은 쪽이 위로 갑니다."); h = self.scr.getmaxyx()[0]
+            fit = max(1, h - 2 - y0); top = min(max(top, cur - fit + 1), cur, max(0, n - fit))     # above the key hint, the selection in view
+            for r, k in enumerate(range(top, min(n, top + fit))):
+                pic = "" if k == 0 else " " * (w0 - _w(options[k])) + "   " + strip(self.RC.AXES, organs[k - 1])
+                self.row(y0 + r, f" {'→' if k == cur else ' '} ({'●' if k == cur else '○'}) {options[k]}{pic}", k == cur, k)
+            self.S.put(h - 1, 2, "↑↓ 고르기", self.S.dim)
+            self.scr.refresh(); key = self.key()
+            if isinstance(key, tuple): cur = key[1]; continue                # a click picks; PgDn goes on
+            if key == "UP": cur = max(0, cur - 1)
+            elif key == "DOWN": cur = min(n - 1, cur + 1)
+            elif key == "PGDN": return cur
+            elif key == "PGUP": return BACK
 
     def loading(self, text):
         y0 = self.frame(text, ""); self.scr.refresh()
@@ -697,6 +688,7 @@ def run(RC, back=False):
         if (st["picked"] or split_free(st["free"]) or st["raw"]) and not F.resume(st):     # a new patient: the saved entries go
             clear(); st = load()
         kn = RC.condition_name                                       # a picked disease keeps the name it was picked by
+        worry = [None]                                               # the condition picked on the priority screen
         RC.CHOICE.update(st["choice"])
         while True:
             F.step = min(step, 4); F.done = []
@@ -737,9 +729,10 @@ def run(RC, back=False):
                 has_priority = len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2
                 if has_priority:
                     d = RC.default_levels(pc); names = [c for c, _, _ in pc]
-                    lv = F.order([kn(c) for c in names], [", ".join(RC.EN[a] for a in sorted(o, key=RC.AXES.index)) for _, o, _ in pc], [d[c] for c in names], [o for _, o, _ in pc])
-                    if lv == BACK: step = 2 if split_free(st["free"]) else 1; continue
-                    RC.PRIORITY = dict(zip(names, lv))
+                    k = F.first([kn(c) for c in names], [o for _, o, _ in pc], names.index(worry[0]) + 1 if worry[0] in names else 0)
+                    if k == BACK: step = 2 if split_free(st["free"]) else 1; continue
+                    worry[0] = names[k - 1] if k else None                  # the chosen one first; the others keep the severity order
+                    if k: RC.PRIORITY = {c: 0 if c == worry[0] else d[c] for c in names}
                 step = 4
             else:                                                 # the result screen, in the same session
                 rows, sc, notes, ck = RC.recommend(conds, {}, st["raw"])

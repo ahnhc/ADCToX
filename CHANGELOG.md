@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **Priority step: one pick, no numbers.** "가장 걱정되는 질환" lists the conditions with their organs and "자동 (질환 중증도 순)"; the picked condition comes first and the others keep the severity order. The numbered levels, − / + buttons and "1 = 먼저 피함" are gone (terminal screens and `--plain`).
+
 ## 0.5.4 — Lab boundaries, analysis screen
 
 - **Bilirubin, AST, ALT (x ULN) and Cockcroft-Gault CLcr reach the label thresholds unrounded**, in exact decimal arithmetic. Before, the ratio was rounded to 0.01 first: bilirubin 3.601 mg/dL with ULN 1.2 became 3.00 x ULN and Datopotamab deruxtecan got the "up to 3 x ULN" rule instead of "> 3 x ULN". The CTCAE organ flags compare exactly too (bilirubin 1.8 is not above 1.5 x 1.2). Only the screen rounds, with more digits when a value would otherwise show as a threshold (3.001 x ULN, not 3).

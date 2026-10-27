@@ -894,7 +894,6 @@ def priority_lines(pc):
     for c, _, _ in sorted(pc, key=lambda item: levels[item[0]]): groups.setdefault(levels[c], []).append(condition_name(c))
     return [f"  {level}. {', '.join(names)}" for level, names in groups.items()]
 COND_Q = ("기저질환 선택", "SPACE 선택(복수 가능)    / 검색    ENTER 확정")
-PRIORITY_Q = ("어느 질환 쪽 독성을 먼저 피할까요?", "1 = 가장 먼저. 같은 숫자는 같은 순위. 순위가 높은 질환의 장기에 경고가 있는 약이 뒤로 갑니다.")
 FALLBACK_Q = ("추정 장기 반영: {conds}", "질환명과 추정 장기를 확인해 주세요. 자동은 질환으로 인식된 입력에만 반영합니다.")
 FALLBACK_OPTS = [("자동", 0.25), ("반영", 0.5), ("반영 안함", 0.0)]
 def _tui_ok():
@@ -905,13 +904,15 @@ def _tui_ok():
 
 
 def _ask_priority_pc(pc):
+    """the one condition to weigh first (form.Form.first in the terminal screens); Enter = automatic, the severity order."""
     global PRIORITY
-    names = [c for c, _, _ in pc]
-    print("\n자동 우선순위")
-    for line in priority_lines(pc): print(line)
-    try: raw = input("  직접 정하려면 질환 순서대로 순위 입력 (예: 2 1 1), Enter = 자동 > ").split()
-    except EOFError: raw = []
-    PRIORITY = dict(zip(names, [int(x) for x in raw])) if len(raw) == len(names) and all(x.isdigit() and int(x) >= 1 for x in raw) else {}
+    names = [c for c, _, _ in pc]; d = default_levels(pc)
+    print("\n가장 걱정되는 질환\n  라벨 제한이 같은 ADC 중에서는 고른 질환의 장기에 경고가 적은 쪽이 위로 갑니다.\n  0) 자동 (질환 중증도 순)")
+    for k, (c, organs, _) in enumerate(pc, 1): print(f"  {k}) {condition_name(c)}   {', '.join(ORGAN_SHORT[a] for a in sorted(organs, key=AXES.index))}")
+    try: raw = input("  번호 (Enter = 0) > ").strip()
+    except EOFError: raw = ""
+    k = int(raw) if raw.isdigit() and int(raw) <= len(names) else 0
+    PRIORITY = {c: 0 if c == names[k - 1] else d[c] for c in names} if k else {}
 
 
 def _ask_fallback(conds, radio=None):
