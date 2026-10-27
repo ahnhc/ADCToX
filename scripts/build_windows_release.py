@@ -108,8 +108,8 @@ def wheels(torch_version, requirements):
     pip = [sys.executable, "-m", "pip"] if subprocess.run([sys.executable, "-m", "pip", "--version"], capture_output=True).returncode == 0 else [shutil.which("python3") or "python3", "-m", "pip"]
     subprocess.run([*pip, "download", "--quiet", "--disable-pip-version-check", "--no-deps", "--only-binary=:all:", "--platform", "win_amd64",
                     "--python-version", "3.12", "--implementation", "cp", "-d", str(out), *pins], check=True)
-    names = {p.split("==")[0].lower().replace("-", "_") for p in pins}
-    return sorted(w for w in out.glob("*.whl") if w.name.split("-")[0].lower() in names)
+    pinned = {(n.lower().replace("-", "_").replace(".", "_"), v) for n, v in (p.split("==", 1) for p in pins)}
+    return sorted(w for w in out.glob("*.whl") if tuple(w.name.lower().split("-")[:2]) in pinned)   # only the locked versions: the cache keeps older ones
 
 
 def unpack_wheel(wheel, site, prefix=None):
