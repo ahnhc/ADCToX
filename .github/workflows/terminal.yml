@@ -88,5 +88,5 @@ jobs:
           & $py -I pkg\ADCTOX\launcher.py --help
           & $py -I pkg\ADCTOX\launcher.py --update-models
           if ($LASTEXITCODE -ne 0) { throw "model download failed" }
-          & $py -I pkg\ADCTOX\launcher.py alzheimer cirrhosis 치매 | Tee-Object out.txt
+          & $py -I pkg\ADCTOX\launcher.py --self-test | Tee-Object out.txt
           if (-not (Select-String -Path out.txt -Pattern "ADC" -Quiet)) { throw "no recommendation table" }
