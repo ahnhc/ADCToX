@@ -1,8 +1,8 @@
 """Patient comorbidities (and, optionally, lab values) in; every approved ADC out, ordered by what its label says about THIS patient.
 
-    /data/hyeongchanahn/envs/adctox/bin/python -I ml/recommend.py ckd_stage_3 heart_failure --crcl 45 --lvef 48
-    lab-report values: --lab creatinine=1.3 --lab age=70 --lab sex=F --lab weight=55 --lab bilirubin=2.0 --lab ast=50 ... (ml/labs.py FIELDS)
-    or already in label form: --crcl --bili --ast --alt (x ULN) --child-pugh A|B|C --lvef --ugt1a1-28-homozygous
+    /data/hyeongchanahn/envs/adctox/bin/python -I ml/recommend.py         the input screens (conditions, lab values, ..., result)
+    in code: rows, s, notes, checks = recommend(["ckd_stage_3", "heart_failure"], {"crcl": 45, "lvef": 48}, {"bilirubin": 2.0})
+    (since 0.5.3 the command line takes no conditions or lab values; `--self-test` prints one fixed example)
 
 Order, most favourable first (a lexicographic key, so nothing below can buy back anything above):
   1. label use restriction for this patient (ml/restrictions.py, conf/label_restrictions.yaml), worst case over the lab
@@ -712,7 +712,25 @@ DOMAIN_VALUES = {"renal": ("crcl", "esrd"), "hepatic": ("bili", "ast", "alt", "c
                  "blood": ("platelets", "anc"), "metabolic": ("hba1c",), "genotype": ("ugt1a1_28_homozygous",)}
 
 
-def _result_context(rows, notes, width, values=None, selected=0, graphic=False):
+# lab-report values already shown through a restriction input (CLcr, x ULN, ...), so not listed again
+_SHOWN_AS = {"bilirubin": "bili", "ast": "ast", "alt": "alt", "platelet": "platelets", "anc": "anc", "hba1c": "hba1c", "lvef": "lvef",
+             "child_pugh": "child_pugh", "ugt1a1": "ugt1a1_28_homozygous", "age": "crcl", "sex": "crcl", "weight": "crcl", "creatinine": "crcl", "egfr": "crcl"}
+
+
+def _raw_values(raw, values):
+    """entered lab values that no restriction input shows, each with the organ it marked (ml/labs.py FLAGS): 'Hb 8 g/dL → Blood'."""
+    import labs as LB
+    out = []
+    for k, label, unit, _ in LB.FIELDS:
+        v = (raw or {}).get(k)
+        if v is None or values.get(_SHOWN_AS.get(k, "")) is not None: continue
+        text = ("yes" if v else "no") if isinstance(v, bool) else f"{v:g}" if isinstance(v, (int, float)) else str(v)
+        organs = [o for key, test, o, _ in LB.FLAGS if key == k and isinstance(v, (int, float)) and test(v, LB.ULN.get(k))]
+        out.append((bool(organs), f"{label} {text} {unit}" + (" → " + ", ".join(ORGAN_SHORT[o] for o in dict.fromkeys(organs)) if organs else "")))
+    return [t for _, t in sorted(out, key=lambda x: not x[0])]           # the ones that marked an organ first
+
+
+def _result_context(rows, notes, width, values=None, selected=0, graphic=False, raw=None):
     """Bounded key values and organ priority, without repeating diagnoses from the input screen."""
     values = values or {}
     prio = rows[0]["priority"] if rows else []
@@ -727,6 +745,7 @@ def _result_context(rows, notes, width, values=None, selected=0, graphic=False):
         if key == "crcl" and any(a == "Lab" and "CLcr ≈ eGFR" in b for a, b in notes):
             inputs.append(f"CLcr ≈ {text} mL/min (eGFR)")
         else: inputs.append(f"{label} {text}{unit}")
+    inputs += _raw_values(raw, values)
     organ_levels = {}
     for level, _, organs in prio:
         for organ in organs: organ_levels[organ] = min(level, organ_levels.get(organ, level))
@@ -768,7 +787,7 @@ def browse(rows, checks_=(), notes=(), labs=None, raw=None, scr=None, crumbs=Non
     return tui.browse("ADC 추천 결과", lambda w: _result_list(rows, w), [],
                       lambda i, w: _result_details(rows[i], checks_, w),
                       footer="!! Boxed warning   ! Warning   + more organs",
-                      context=lambda i, w: _result_context(rows, notes, w, values, i, graphic=True), scr=scr, crumbs=crumbs)
+                      context=lambda i, w: _result_context(rows, notes, w, values, i, graphic=True, raw=raw), scr=scr, crumbs=crumbs)
 
 
 def patient_lines(notes):
@@ -799,7 +818,7 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
     emit(paint("ADCTOX", "33;1") + " " * max(1, width - 6 - len(tui.UI_VERSION)) + paint(tui.UI_VERSION, "90"))
     emit(paint("─" * width, "90")); emit()
     values = {**(LB.derive(raw)[0] if raw else {}), **(labs or {})}
-    for line in _result_context(rows, notes, width, values): emit(line)
+    for line in _result_context(rows, notes, width, values, raw=raw): emit(line)
     emit()
     for line in _result_list(rows, width)[0]: emit(line)
     emit(paint("!! Boxed warning   ! Warning   + more organs", "90"))
@@ -908,18 +927,21 @@ def _ask_fallback(conds, radio=None):
 
 
 def wizard(back=False):
-    """plain prompts (--plain, or no full-screen terminal) -> (conditions, labs (x ULN form; empty), colour, raw lab values).
+    """plain prompts (--plain, or no full-screen terminal) -> (conditions, labs (x ULN form; empty), colour, raw lab values), or
+    None when no condition is given.
     The terminal session is form.run."""
     import labs as LB
     ids = list(_reg)
-    try: text = input("기저질환 (번호/ID/영어, 쉼표 구분; ? = 목록) > ")
-    except EOFError: text = ""
-    while text.strip() == "?":
-        for k, i in enumerate(ids, 1): print(f"  {k:>2}) {i:<28} {_reg[i]['label']}")
-        try: text = input("기저질환 > ")
-        except EOFError: text = ""
-    split = [" ".join(x.split()) for x in text.split(",") if x.strip()]
-    conds = [ids[int(x) - 1] if x.isdigit() and 1 <= int(x) <= len(ids) else x for x in split] or ["interstitial_lung_disease"]
+    split = []
+    while not split:                                   # no condition, no analysis: ask again (Enter on an empty line = exit)
+        try: text = input("기저질환 (번호/ID/영어, 쉼표 구분; ? = 목록, Enter = 종료) > ")
+        except EOFError: return None
+        if text.strip() == "?":
+            for k, i in enumerate(ids, 1): print(f"  {k:>2}) {i:<28} {_reg[i]['label']}")
+            continue
+        if not text.strip(): return None
+        split = [" ".join(x.split()) for x in text.split(",") if x.strip()]
+    conds = [ids[int(x) - 1] if x.isdigit() and 1 <= int(x) <= len(ids) else x for x in split]
     raw = {}
     try: has = input("검사 수치가 있나요? (y = 있음, Enter = 없음) > ").strip().lower() == "y"
     except EOFError: has = False
@@ -938,41 +960,7 @@ def wizard(back=False):
     return conds, {}, None, raw
 
 
-def parse_args(argv):
-    args, labs, flags, i = [], {}, {"detail": False}, 0
-    while i < len(argv):
-        a = argv[i]
-        if a == "--detail": flags["detail"] = True
-        elif a == "--plain": pass                              # read by _tui_ok()
-        elif a == "--ugt1a1-28-homozygous": labs["ugt1a1_28_homozygous"] = True
-        elif a in ("--crcl", "--bili", "--ast", "--alt", "--lvef"): labs[a[2:]] = float(argv[i + 1]); i += 1
-        elif a == "--child-pugh": labs["child_pugh"] = argv[i + 1].upper(); i += 1
-        elif a == "--learned": flags["learned"] = float(argv[i + 1]); i += 1
-        elif a == "--learned-fallback": flags["fallback"] = float(argv[i + 1]); i += 1
-        elif a == "--lab":
-            import labs as LB
-            if "=" not in argv[i + 1]: raise ValueError(f"--lab {argv[i + 1]}: 이름=값 형식이어야 합니다")
-            k, val = argv[i + 1].split("=", 1); k = k.strip().lower()
-            try: flags.setdefault("raw", {})[k] = LB.parse(k, val)
-            except ValueError as error: raise ValueError(f"--lab {k}={val.strip()}: {error}") from None
-            i += 1
-        elif a == "--priority": flags["priority"] = [int(x) for x in argv[i + 1].split(",")]; i += 1
-        else: args.append(a)
-        i += 1
-    return args, labs, flags
-
-
-def _option_error(argv, error):
-    if isinstance(error, IndexError): return f"{argv[-1]} 뒤에 값이 없습니다"
-    return re.sub(r"(could not convert string to float|invalid literal for int\(\) with base 10): ", "숫자가 아닙니다: ", str(error))
-
-
-def list_conditions():
-    print(f"{'ID':<30} {'이름':<46} 장기"); by = {}
-    for r in _reg.values(): by.setdefault(r["organ_axes"].split(";")[0], []).append(r)
-    for organ, rs in by.items():
-        print(f"\n[{organ}]"); [print(f"  {r['id']:<28} {r['label']:<46} {r['organ_axes']}") for r in rs]
-    print("\n[context]"); [print(f"  {k:<28} {v}") for k, v in CONTEXT.items()]
+SELF_TEST = ("alzheimer", "cirrhosis", "치매")
 
 
 HELP = """ADCTOX {version}
@@ -983,17 +971,9 @@ HELP = """ADCTOX {version}
 연구용 도구입니다. 독성 발생 확률이 아니며 처방 결정을 대신하지 않습니다.
 
 사용
-  adctox                         입력 화면으로 시작 (질환 → 검사 수치 → 결과)
-  adctox 질환 [질환 ...] [옵션]   화면 없이 바로 결과 표 출력
-      예) adctox cirrhosis 당뇨 "heart failure" --lab creatinine=1.3 --lab age=70 --lab sex=F --lab weight=55
-  adctox --list                  미리 등록된 질환 ID 목록
-
-결과 표 옵션
-  --lab 이름=값                  검사 수치 (creatinine, age, sex, weight, bilirubin, ast, alt, platelet, anc, hb, hba1c, lvef ...)
-  --crcl 45 --bili 2.0 --ast 3   라벨 단위로 직접 입력 (CLcr mL/min, 정상 상한의 배수)
-  --child-pugh A|B|C             간기능 등급
-  --priority 2,1                 질환 순서대로 우선순위 (1 = 그 장기 독성을 먼저 피함)
-  --detail                       근거 문장까지 출력
+  adctox                         입력 화면으로 시작 (질환 → 검사 수치 → AI 장기 분석 → 우선순위 → 결과)
+  adctox --plain                 전체 화면 없이 질문에 답하는 방식으로 입력
+  질환과 검사 수치는 입력 화면에서만 넣습니다. 명령줄 인자로는 받지 않습니다.
 
 입력 화면 키
   글자 입력       질환명 추천 (한국어, 영어, 약어, 초성, 오타); 두 단어 이상이면 증상으로 찾은 질환도
@@ -1010,6 +990,7 @@ HELP = """ADCTOX {version}
   adctox --model-version         설치된 모델 버전
   adctox --rollback-models       이전 모델로 되돌리기
   adctox --verify-models         모델 파일 무결성 검사
+  adctox --self-test             예시 환자 한 명(alzheimer, cirrhosis, 치매)으로 분석이 끝까지 되는지 확인
   adctox --version               앱 버전
   adctox --help                  이 설명
 
@@ -1017,7 +998,6 @@ HELP = """ADCTOX {version}
 
 
 def main():
-    global LEARNED_FRACTION, FALLBACK, PRIORITY
     from adc_version import APP_VERSION
     arguments = sys.argv[1:]
     if arguments == ["--version"]:
@@ -1035,33 +1015,32 @@ def main():
     if "--no-wt" in sys.argv: sys.argv.remove("--no-wt")
     else: term.into_windows_terminal()                 # double-clicked on Windows: reopen in Windows Terminal when there is one
     term.windows_console()                              # UTF-8 and ANSI colours in a Windows console
-    if "--list" in sys.argv: list_conditions(); sys.exit(0)
-    try: args, labs, flags = parse_args(sys.argv[1:])
-    except (ValueError, IndexError) as error:                    # a bad or missing option value: say which, no traceback
-        print(f"adctox: 옵션 값을 읽지 못했습니다 ({_option_error(sys.argv[1:], error)}). 사용법: adctox --help", file=sys.stderr); sys.exit(2)
-    if "learned" in flags: LEARNED_FRACTION = flags["learned"]
-    if flags.get("fallback") and args: FALLBACK = {c: flags["fallback"] for c in unresolved(args)}
-    if flags.get("priority") and args: PRIORITY = dict(zip(args, flags["priority"]))
-    if args and HAS_LEARNED: analyze_conditions(args)
-    if not args and sys.stdin.isatty() and _tui_ok():                   # the terminal session: five steps and the result screen
+    if arguments == ["--self-test"]:                    # installed-app check (CI): one fixed example patient, the printed table
+        conds = list(SELF_TEST)
+        if HAS_LEARNED: analyze_conditions(conds)
+        rows, s, notes, ck = recommend(conds); render(rows, s, notes, ck); return
+    other = [a for a in arguments if a != "--plain"]
+    if other:                                          # 0.5.3: conditions and lab values are entered on the screens only
+        print(f"adctox: 알 수 없는 인자입니다: {' '.join(other)}\n질환과 검사 수치는 입력 화면에서 넣습니다. adctox 만 실행하세요 (옵션: adctox --help).", file=sys.stderr)
+        sys.exit(2)
+    if not sys.stdin.isatty():
+        print("adctox: 입력 화면이 필요합니다. 터미널에서 실행하세요 (설치 확인은 adctox --self-test).", file=sys.stderr); sys.exit(2)
+    if _tui_ok():                                      # the terminal session: five steps and the result screen
         import form
         r = form.run(sys.modules[__name__])
         if r is None: sys.exit(0)
         conds, raw, (rows, s, notes, ck) = r
-        print(); render(rows, s, notes, ck, detail=flags["detail"], labs={}, raw=raw); form.clear(); return
-    while True:
-        raw = flags.get("raw")
-        if args: conds, col = args, None
-        elif sys.stdin.isatty(): conds, labs, col, raw = wizard()
-        else: conds, col = ["interstitial_lung_disease"], None
+        print(); render(rows, s, notes, ck, labs={}, raw=raw); form.clear(); return
+    while True:                                        # --plain, or a terminal without full-screen support
+        answers = wizard()
+        if answers is None: return
+        conds, labs, col, raw = answers
         print()
         rows, s, notes, ck = recommend(conds, labs, raw)
-        render(rows, s, notes, ck, detail=flags["detail"], color=col, labs=labs, raw=raw)
-        if args or not sys.stdin.isatty(): break
+        render(rows, s, notes, ck, color=col, labs=labs, raw=raw)
         try: again = input("\nRun again with different answers? (y = yes, Enter = exit) > ").strip().lower()
         except EOFError: break
         if again != "y": break
-
 
 if __name__ == "__main__":
     main()

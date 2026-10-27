@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — Input on the screens only
+
+- **The command line no longer takes conditions or lab values.** `adctox cirrhosis --lab hb=8`, `--crcl`, `--child-pugh`, `--priority`, `--detail` and `--list` are gone; any such argument is refused with exit code 2 and a pointer to the input screens. This also removes three ways to get a result from input nobody checked: without a terminal the app used to analyse a made-up patient (interstitial lung disease), a misspelt `--lab` key was ignored, and `--crcl -10 --child-pugh Z` went into the table as given.
+- `adctox --self-test` prints the table for one fixed example patient (alzheimer, cirrhosis, 치매); the install workflow uses it.
+- `--plain` keeps the question-and-answer input; an empty condition line ends it instead of filling in an example patient.
+- **Key values on the result screen list every entered lab value**, with the organ it marked: `Hb 8 g/dL → Blood`. Before, a value that only marked an organ (Hb, TSH, albumin, ...) was used but the block said "Not entered".
+- pyproject.toml carries the app version (it said 0.4.3); a test keeps the two equal.
+- README: the AI judgment was evaluated on English input only; where the input is saved and when it is deleted.
+
 ## 0.5.2 — Result screen fix
 
 - **The result screen opens again.** In 0.5.0 and 0.5.1 the installed app stopped with `NameError: __file__` on the result screen: the payload and linker table (data/curated/competition/adc_mechanism_draft.csv) was read from the repository path, which the one-file app does not have. The build now carries the table (ml/build_portable.py), and a test opens every ADC's result panel from the one-file build.

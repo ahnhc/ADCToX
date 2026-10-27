@@ -315,3 +315,10 @@ def test_scratch_judge_folder_installs_and_older_apps_keep_their_manifests(serve
     releases = Path(__file__).resolve().parents[1] / "releases/models/"
     for old in ("stable.json", "stable2.json"):                                       # apps 0.4.x and older reject ScratchJudge/
         assert not any(f["path"].startswith("ScratchJudge/") for f in json.loads((releases / old).read_text())["files"])
+
+
+def test_package_version_is_the_app_version():
+    """pyproject.toml and ml/adc_version.py name one version (0.5.2 shipped with the package at 0.4.3)."""
+    import re, adc_version
+    text = (Path(__file__).resolve().parents[1] / "pyproject.toml").read_text()
+    assert re.search(r'^version = "([^"]+)"', text, re.M).group(1) == adc_version.APP_VERSION

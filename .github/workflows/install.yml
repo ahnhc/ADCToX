@@ -27,7 +27,7 @@ jobs:
         run: |
           export PATH="$HOME/.local/bin:$PATH"
           adctox --version
-          adctox alzheimer cirrhosis 치매 | tee out.txt
+          adctox --self-test | tee out.txt
           grep -q ADC out.txt
 
   windows:
@@ -42,6 +42,6 @@ jobs:
         run: |
           $app = Join-Path $env:LOCALAPPDATA 'adctox\app'
           & "$app\python\python.exe" -I "$app\launcher.py" --version
-          & "$app\python\python.exe" -I "$app\launcher.py" alzheimer cirrhosis 치매 | Tee-Object out.txt
+          & "$app\python\python.exe" -I "$app\launcher.py" --self-test | Tee-Object out.txt
           if (-not (Select-String -Path out.txt -Pattern "ADC" -Quiet)) { throw "no recommendation table" }
           if (-not (Test-Path (Join-Path $env:LOCALAPPDATA 'adctox\bin\adctox.cmd'))) { throw "adctox command missing" }

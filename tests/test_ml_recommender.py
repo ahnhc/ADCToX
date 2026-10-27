@@ -160,17 +160,50 @@ def test_lab_report_values_are_converted_to_what_the_labels_read():
     assert LB.derive(dict(creatinine=1.3))[0].get("crcl") is None                       # creatinine alone gives no CLcr
 
 
+# the printed table for one patient, from the repository (argv[1] = "") or a one-file build (argv[1] = its path); the command line
+# takes no conditions since 0.5.3, so the tests call recommend() and render() as the input screens do
+_TABLE = ("import json, runpy, sys\n"
+          "if sys.argv[1]: runpy.run_path(sys.argv[1], run_name='app')\n"
+          "else: sys.path.insert(0, 'ml')\n"
+          "import recommend as RC\n"
+          "a = json.loads(sys.argv[2]); conds = a['conditions']\n"
+          "RC.PRIORITY = dict(zip(conds, a.get('priority', []))); RC.FALLBACK = {c: a['fallback'] for c in conds} if a.get('fallback') else {}\n"
+          "if RC.HAS_LEARNED: RC.analyze_conditions(conds)\n"
+          "rows, s, notes, ck = RC.recommend(conds, {}, a.get('raw')); RC.render(rows, s, notes, ck, raw=a.get('raw'))\n")
+
+
+def _table(python, build, patient, env, cwd):
+    import json, subprocess
+    return subprocess.run([python, "-I", "-c", _TABLE, str(build or ""), json.dumps(patient)], capture_output=True, text=True, env=env, cwd=cwd).stdout
+
+
 @needs_labels
 def test_portable_build_gives_the_server_result(tmp_path):
     """the one-file build must print the same table as the repository version for listed conditions and lab values."""
     import subprocess
     out = tmp_path / "adc_recommender.py"
     subprocess.run([sys.executable, "-I", str(ROOT / "ml/build_portable.py"), str(out)], check=True, capture_output=True)
-    args = ["cirrhosis", "glaucoma", "dialysis", "--lab", "bilirubin=2.0", "--lab", "platelet=80", "--lab", "anc=1.2", "--priority", "2,1,1"]
+    patient = dict(conditions=["cirrhosis", "glaucoma", "dialysis"], raw=dict(bilirubin=2.0, platelet=80.0, anc=1.2), priority=[2, 1, 1])
     env = {"PATH": "/usr/bin:/bin", "NO_COLOR": "1", "HOME": str(tmp_path)}
-    server = subprocess.run([sys.executable, "-I", str(ROOT / "ml/recommend.py"), *args], capture_output=True, text=True, env=env, cwd=ROOT).stdout
-    portable = subprocess.run([sys.executable, "-I", str(out), *args], capture_output=True, text=True, env=env, cwd=tmp_path).stdout
+    server = _table(sys.executable, None, patient, env, ROOT)
+    portable = _table(sys.executable, out, patient, env, tmp_path)
     assert "Label restriction" in server and portable == server
+
+
+@needs_labels
+def test_command_line_takes_no_conditions(tmp_path):
+    """0.5.3: conditions and lab values are entered on the screens only; arguments are refused, and no example patient is
+    filled in when there is no terminal."""
+    import subprocess
+    env = {"PATH": "/usr/bin:/bin", "NO_COLOR": "1", "HOME": str(tmp_path)}
+    run = lambda *a: subprocess.run([sys.executable, "-I", str(ROOT / "ml/recommend.py"), *a], capture_output=True, text=True, env=env, cwd=ROOT, stdin=subprocess.DEVNULL)
+    for args in (["cirrhosis"], ["--lab", "hb=8"], ["--plain", "--lab", "hb=8"], ["--crcl", "-10", "--child-pugh", "Z"], ["--list"]):
+        r = run(*args); assert r.returncode == 2 and "입력 화면" in r.stderr and "ADC" not in r.stdout, args
+    r = run("--plain"); assert r.returncode == 2 and "Lung" not in r.stdout                  # no terminal: no made-up patient
+    out = tmp_path / "adc_recommender.py"                                                   # the self-test without language models
+    subprocess.run([sys.executable, "-I", str(ROOT / "ml/build_portable.py"), str(out)], check=True, capture_output=True)
+    r = subprocess.run([sys.executable, "-I", str(out), "--self-test"], capture_output=True, text=True, env=env, cwd=tmp_path, stdin=subprocess.DEVNULL)
+    assert r.returncode == 0 and "Label restriction" in r.stdout, r.stderr[-500:]
 
 
 @needs_labels
@@ -206,10 +239,10 @@ def test_full_build_gives_the_server_result_for_typed_diseases(tmp_path):
     out, m = tmp_path / "adc_recommender_full.py", tmp_path / "models"; m.mkdir()
     for k, p in _FULL_MODELS.items(): (m / k).symlink_to(p)
     subprocess.run([_MODEL_PY, "-I", str(ROOT / "ml/build_portable.py"), "--full", str(out)], check=True, capture_output=True)
-    args = ["alzheimer", "adhd", "heart stop", "cirrhosis", "자폐증", "--learned-fallback", "0.25", "--lab", "bilirubin=2.0"]
+    patient = dict(conditions=["alzheimer", "adhd", "heart stop", "cirrhosis", "자폐증"], fallback=0.25, raw=dict(bilirubin=2.0))
     env = {"PATH": "/usr/bin:/bin", "NO_COLOR": "1", "HOME": str(tmp_path), "CUDA_VISIBLE_DEVICES": ""}
-    server = subprocess.run([_MODEL_PY, "-I", str(ROOT / "ml/recommend.py"), *args], capture_output=True, text=True, env=env, cwd=ROOT).stdout
-    full = subprocess.run([_MODEL_PY, "-I", str(out), *args], capture_output=True, text=True, env={**env, "ADC_MODEL_DIR": str(m)}, cwd=tmp_path).stdout
+    server = _table(_MODEL_PY, None, patient, env, ROOT)
+    full = _table(_MODEL_PY, out, patient, {**env, "ADC_MODEL_DIR": str(m)}, tmp_path)
     assert "Alzheimer disease" in server and "autism" in server.lower() and full == server
 
 
@@ -392,5 +425,6 @@ def test_help_explains_the_program_and_lists_every_command(arg, monkeypatch, cap
     monkeypatch.setattr(sys, "argv", ["adctox", arg])
     RC.main(); out = capsys.readouterr().out
     assert "ADC" in out and "연구용" in out and "Backspace" in out and "Ctrl+U" not in out
-    for c in ("--update-app", "--check-app", "--update-models", "--check-models", "--model-version", "--rollback-models", "--verify-models", "--version", "--list", "--lab"):
+    for c in ("--update-app", "--check-app", "--update-models", "--check-models", "--model-version", "--rollback-models", "--verify-models", "--version", "--self-test", "--plain"):
         assert c in out
+    assert "--lab" not in out and "--list" not in out                                      # 0.5.3: no conditions or lab values on the command line
