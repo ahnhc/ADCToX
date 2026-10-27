@@ -325,14 +325,27 @@ def _chosen(mondo):
     import mondo_index as MI
     if MI._IDX is None: MI.link(["x"])                          # loads the index of the active bundle
     name, organs = MI.concept(mondo)
+    if name and not organs and mondo.startswith("MONDO:"):
+        try:
+            import scratch_runtime as SR
+            if SR.available() and not SR.concept_via(mondo):         # models 0.7+: as when its name is typed, the judge reads the name
+                if mondo not in _CHOSEN_NAME:
+                    r = SR.judge([name])[0]; _CHOSEN_NAME[mondo] = list(r["organs"]) if r["ok"] else []
+                organs = _CHOSEN_NAME[mondo]
+        except Exception as error:
+            warnings.warn(f"organ judge unavailable: {error}")
     return (name, organs) if name else None
+
+
+_CHOSEN_NAME = {}           # MONDO id -> the judge's organs for its name (a concept without label or record)
 
 
 def _chosen_via(condition):
     """models 0.7+: label or record, for a reading picked from the list (the same organs the judge gives that concept)."""
     try:
         import scratch_runtime as SR
-        return SR.concept_via(CHOICE.get(condition) or "")
+        picked = CHOICE.get(condition) or ""
+        return SR.concept_via(picked) or ("name" if _CHOSEN_NAME.get(picked) else None)
     except Exception:
         return None
 
@@ -644,14 +657,21 @@ _MECH = None
 
 def _mechanisms():
     """adc -> payload, family, mechanism, linker and the teammates' mechanism note (data/curated/competition/
-    adc_mechanism_draft.csv, ml/competition_tables.py); empty when the file is not there (e.g. a portable build)."""
+    adc_mechanism_draft.csv, ml/competition_tables.py); the app build embeds it (ml/build_portable.py)."""
     global _MECH
     if _MECH is None:
-        import csv
-        p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "curated", "competition", "adc_mechanism_draft.csv")
-        try: _MECH = {r["adc"]: r for r in csv.DictReader(open(p, encoding="utf-8"))}
-        except OSError: _MECH = {}
+        try:
+            from __adc_data__ import _portable_data                                   # the app build carries the table
+            _MECH = _portable_data().get("mechanisms", {})
+        except ImportError:
+            _MECH = read_mechanisms(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "curated", "competition", "adc_mechanism_draft.csv"))
     return _MECH
+
+
+def read_mechanisms(path):
+    import csv
+    try: return {r["adc"]: r for r in csv.DictReader(open(path, encoding="utf-8"))}
+    except OSError: return {}
 
 
 def _result_details(row, checks_, width):
@@ -931,11 +951,20 @@ def parse_args(argv):
         elif a == "--learned-fallback": flags["fallback"] = float(argv[i + 1]); i += 1
         elif a == "--lab":
             import labs as LB
-            k, val = argv[i + 1].split("=", 1); flags.setdefault("raw", {})[k.strip().lower()] = LB.parse(k.strip().lower(), val); i += 1
+            if "=" not in argv[i + 1]: raise ValueError(f"--lab {argv[i + 1]}: 이름=값 형식이어야 합니다")
+            k, val = argv[i + 1].split("=", 1); k = k.strip().lower()
+            try: flags.setdefault("raw", {})[k] = LB.parse(k, val)
+            except ValueError as error: raise ValueError(f"--lab {k}={val.strip()}: {error}") from None
+            i += 1
         elif a == "--priority": flags["priority"] = [int(x) for x in argv[i + 1].split(",")]; i += 1
         else: args.append(a)
         i += 1
     return args, labs, flags
+
+
+def _option_error(argv, error):
+    if isinstance(error, IndexError): return f"{argv[-1]} 뒤에 값이 없습니다"
+    return re.sub(r"(could not convert string to float|invalid literal for int\(\) with base 10): ", "숫자가 아닙니다: ", str(error))
 
 
 def list_conditions():
@@ -1007,7 +1036,9 @@ def main():
     else: term.into_windows_terminal()                 # double-clicked on Windows: reopen in Windows Terminal when there is one
     term.windows_console()                              # UTF-8 and ANSI colours in a Windows console
     if "--list" in sys.argv: list_conditions(); sys.exit(0)
-    args, labs, flags = parse_args(sys.argv[1:])
+    try: args, labs, flags = parse_args(sys.argv[1:])
+    except (ValueError, IndexError) as error:                    # a bad or missing option value: say which, no traceback
+        print(f"adctox: 옵션 값을 읽지 못했습니다 ({_option_error(sys.argv[1:], error)}). 사용법: adctox --help", file=sys.stderr); sys.exit(2)
     if "learned" in flags: LEARNED_FRACTION = flags["learned"]
     if flags.get("fallback") and args: FALLBACK = {c: flags["fallback"] for c in unresolved(args)}
     if flags.get("priority") and args: PRIORITY = dict(zip(args, flags["priority"]))

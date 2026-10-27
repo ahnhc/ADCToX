@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — Result screen fix
+
+- **The result screen opens again.** In 0.5.0 and 0.5.1 the installed app stopped with `NameError: __file__` on the result screen: the payload and linker table (data/curated/competition/adc_mechanism_draft.csv) was read from the repository path, which the one-file app does not have. The build now carries the table (ml/build_portable.py), and a test opens every ADC's result panel from the one-file build.
+- **A wrong option value is reported, not a traceback:** `--lab hb=abc`, `--lab hb`, `--crcl` without a value, `--priority a` print what could not be read and exit with code 2. The lab step says "숫자를 입력하세요" for a value that is not a number.
+- **A disease picked from the list that has neither a label nor a MONDO record** gets the judge's organs for its name, as when the name is typed (`Chosen · name`).
+
 ## 0.5.1 — The app reads a disease the way the judge does
 
 With model bundles 0.7+, every way into the analysis now gives the organs the from-scratch judge gives (gold dev: the app and the judge differ on 1 of 304 queries, down from 6; the one left is a registry context condition, 'anthracycline exposure').

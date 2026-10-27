@@ -54,7 +54,8 @@ def parse(key, text):
     if key == "ugt1a1":
         if t.lower()[:1] in ("y", "n"): return t.lower()[:1] == "y"
         raise ValueError("y or n")
-    v = float(t.replace(",", ""))
+    try: v = float(t.replace(",", ""))
+    except ValueError: raise ValueError("숫자를 입력하세요") from None
     lo, hi = RANGE.get(key, (float("-inf"), float("inf")))
     if not lo <= v <= hi: raise ValueError(f"{lo:g}–{hi:g}")
     return v

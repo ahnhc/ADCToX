@@ -173,6 +173,22 @@ def test_portable_build_gives_the_server_result(tmp_path):
     assert "Label restriction" in server and portable == server
 
 
+@needs_labels
+def test_portable_build_opens_every_result_panel(tmp_path):
+    """the result screen's panel for each ADC (restrictions, payload and linker) from the one-file build, where modules have no
+    __file__ (0.5.0: NameError on the result screen)."""
+    import subprocess
+    out = tmp_path / "adc_recommender.py"
+    subprocess.run([sys.executable, "-I", str(ROOT / "ml/build_portable.py"), str(out)], check=True, capture_output=True)
+    code = ("import runpy, sys; runpy.run_path(sys.argv[1], run_name='app'); import recommend as RC\n"
+            "rows, _, _, checks = RC.recommend(['cirrhosis', 'glaucoma'])\n"
+            "panels = [RC._result_details(r, checks, 100) for r in rows]\n"
+            "print(len(rows), sum(any('Payload and linker' in str(x) for x in p) for p in panels))")
+    run = subprocess.run([sys.executable, "-I", "-c", code, str(out)], capture_output=True, text=True, env={"PATH": "/usr/bin:/bin", "HOME": str(tmp_path)}, cwd=tmp_path)
+    assert run.returncode == 0, run.stderr[-800:]
+    n, mech = map(int, run.stdout.split()); assert n > 10 and mech == n
+
+
 _HF = pathlib.Path.home() / ".cache/huggingface/hub"
 _FULL_MODELS = {"BioLORD-2023": _HF / "models--FremyCompany--BioLORD-2023/snapshots/167aab527b238a50ca65224e6319215d2ff4fc9f",
                 "SapBERT": _HF / "models--cambridgeltl--SapBERT-from-PubMedBERT-fulltext/snapshots/090663c3ae57bf35ffe4d0d468a2a88d03051a4d",
