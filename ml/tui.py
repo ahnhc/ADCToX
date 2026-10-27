@@ -288,16 +288,18 @@ def browse(title, lines, selectable, details, footer="", context=(), scr=None, c
             available = max(4, h - y0 - 3)
             panel = min(len(out) + 1, max(3, int(available * (0.75 if detail_focus else 0.55))))
             area = min(len(table), max(1, available - panel))
-            sel = choices[cur]
-            top = min(top, max(0, len(table) - area))
+            fixed = min(choices[0], max(0, area - 2))            # the column header stays while the rows scroll
+            for k in range(fixed): S.row(y0 + k, table[k], False)
+            sel = choices[cur]; rows_area = area - fixed
+            top = max(fixed, min(top, max(fixed, len(table) - rows_area)))
             if sel < top: top = sel
-            if sel >= top + area: top = sel - area + 1
+            if sel >= top + rows_area: top = sel - rows_area + 1
             shown = {}
-            for k in range(area):
+            for k in range(rows_area):
                 i = top + k
                 if i >= len(table): break
                 end = choices[cur + 1] if cur + 1 < len(choices) else len(table)
-                S.row(y0 + k, table[i], sel <= i < end); shown[y0 + k] = i
+                S.row(y0 + fixed + k, table[i], sel <= i < end); shown[y0 + fixed + k] = i
             yb = y0 + area; S.rule(yb)
             detail_area = max(1, h - yb - 4)
             detail_top = max(0, min(detail_top, len(out) - detail_area))

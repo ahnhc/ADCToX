@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — Lab boundaries, analysis screen
+
+- **Bilirubin, AST, ALT (x ULN) and Cockcroft-Gault CLcr reach the label thresholds unrounded**, in exact decimal arithmetic. Before, the ratio was rounded to 0.01 first: bilirubin 3.601 mg/dL with ULN 1.2 became 3.00 x ULN and Datopotamab deruxtecan got the "up to 3 x ULN" rule instead of "> 3 x ULN". The CTCAE organ flags compare exactly too (bilirubin 1.8 is not above 1.5 x 1.2). Only the screen rounds, with more digits when a value would otherwise show as a threshold (3.001 x ULN, not 3).
+- **AI 장기 분석:** the model names (`BioLORD ── Organ judge ── MLP`) are gone. One line says what the model reports it is doing: "질환 확인 중..." or "장기 분석 중...". A cached analysis shows the table at once.
+- **A failed organ judge is no longer silent.** The bundle's older MONDO linker reads the text instead (as before), and the table says so: "Organ judge 오류 · MONDO linker로 대체", Read as ends in `linker`. An analysis that cannot finish shows one error line.
+- The analysis table, the priority list and the result list scroll with the highlighted row at 80x24; headers stay, and no row runs into the key hint.
+
 ## 0.5.3 — Input on the screens only
 
 - **The command line no longer takes conditions or lab values.** `adctox cirrhosis --lab hb=8`, `--crcl`, `--child-pugh`, `--priority`, `--detail` and `--list` are gone; any such argument is refused with exit code 2 and a pointer to the input screens. This also removes three ways to get a result from input nobody checked: without a terminal the app used to analyse a made-up patient (interstitial lung disease), a misspelt `--lab` key was ignored, and `--crcl -10 --child-pugh Z` went into the table as given.

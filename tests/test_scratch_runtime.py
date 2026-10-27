@@ -50,11 +50,3 @@ def test_rows_enter_the_app_as_mondo_links_or_ai_judgments():
     assert lk["axes"] == [] and lk["judged"] == ["ocular"] and lk["sim"] == 0.0
     lk = RC._scratch_link(dict(concept=None, name="", organs=[], via=None, valid=0.1, ok=False, sim=0.2))
     assert lk["gate"] is False and not lk["axes"] and not lk.get("judged")
-
-
-def test_the_stage_line_names_the_judge_of_the_active_bundle(folder, monkeypatch):
-    import form, scratch_runtime as SR
-    monkeypatch.setattr(SR, "folder", lambda: folder)
-    assert [n for _, n in form.stages()] == ["BioLORD", "Organ judge", "MLP"]
-    monkeypatch.setattr(SR, "folder", lambda: None)
-    assert [n for _, n in form.stages()] == ["BioLORD", "SapBERT · MONDO", "Gemma", "MLP"]

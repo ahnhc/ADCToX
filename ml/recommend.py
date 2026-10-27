@@ -131,26 +131,28 @@ def _free_info(free, progress=None):
     The portable build replaces this function with string matching on MONDO names and synonyms."""
     key = tuple(free)
     if key not in _FREE:
+        if progress: progress("embedding")
         with _Loading("Loading weights / 질환 해석 모델 (BioLORD, MONDO)", "질환 해석 모델 준비 완료", enabled=progress is None):
             import vulnerability_model as VM, mondo_index as MI
-            if progress: progress("embedding")
             # typed text and registry labels in separate batches: the registry is embedded once per process, and the typed
             # text gets the same (fp16, unpadded-by-the-registry) embedding the MLP reuses below
             text = english(free)                                   # Korean names go to the models as their English KCD name
             Ef, Er = VM._st(text), VM._st([_reg[i]["label"] for i in _reg]); ids = list(_reg); best = []
             for i in range(len(free)):
                 sims = Er @ Ef[i]; k = int(sims.argmax()); best.append((ids[k], float(sims[k])))
-            links = None
+            links = None; failed = None
             try:
                 import scratch_runtime as SR
                 if SR.available():                             # model 0.7+: the from-scratch judge links and judges on its own
                     if progress: progress("judging")
                     links = [_scratch_link(r) for r in SR.judge(text)]
             except Exception as error:
-                warnings.warn(f"organ judge unavailable: {error}")
+                failed = f"{type(error).__name__}: {error}"; warnings.warn(f"organ judge unavailable: {error}")
             if links is None:
                 if progress: progress("linking")
                 links = MI.link(text)
+                if failed:                                     # the bundle's older linker read these: the analysis screen says so
+                    for lk in links: lk["fallback"] = failed
                 try:
                     import gemma_runtime as GR
                     if GR.available():                         # model 0.5-0.6: the Gemma organ judge reads the typed text itself (Korean too)
@@ -216,9 +218,9 @@ def english(texts):
 
 def _predict_free(free, progress=None):
     """Run our saved trained head, once per new text; these scores are not probabilities."""
-    if progress: progress("inference")
     missing = list(dict.fromkeys(c for c in free if c not in _FREE_PREDICTIONS))
     if missing:
+        if progress: progress("inference")                         # only when the MLP actually runs (not for cached texts)
         import vulnerability_model as VM
         if hasattr(VM, "predict_models"):                          # main estimate plus the comparison heads (model 0.2+)
             for c, by in zip(missing, VM.predict_models(english(missing))):
@@ -258,7 +260,7 @@ def analyze_conditions(conditions, progress=None):
         report = dict(condition=c, source=source, name=name, mondo=link.get("mondo") if source.startswith("MONDO") else None, organs=[] if source == "Unmapped" else organs.get(c, []), estimates=estimates,
                       model="BioLORD + disease-pair MLP" if prediction is not None else None,
                       readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")),
-                      models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates}, gemma=link.get("gemma"), via=link.get("via"),
+                      models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates}, gemma=link.get("gemma"), via=link.get("via"), fallback=link.get("fallback"),
                       judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" else _chosen_via(c) if source == "Chosen" else None)
         _ANALYSES[c] = report; reports.append(report)
     if progress: progress("done")
@@ -732,6 +734,7 @@ def _raw_values(raw, values):
 
 def _result_context(rows, notes, width, values=None, selected=0, graphic=False, raw=None):
     """Bounded key values and organ priority, without repeating diagnoses from the input screen."""
+    import labs as LB
     values = values or {}
     prio = rows[0]["priority"] if rows else []
     reasons_ = sorted(reason_rows(rows[selected]), key=lambda reason: (-RS.TIER[reason[3]], not reason[4])) if rows else []
@@ -741,7 +744,7 @@ def _result_context(rows, notes, width, values=None, selected=0, graphic=False, 
     inputs = []
     for key in ordered:
         label, unit = VALUE_LABELS[key]; value = values[key]
-        text = ("yes" if value else "no") if isinstance(value, bool) else (f"{value:g}" if isinstance(value, (int, float)) else str(value))
+        text = ("yes" if value else "no") if isinstance(value, bool) else (LB.shown(key, value) if isinstance(value, (int, float)) else str(value))
         if key == "crcl" and any(a == "Lab" and "CLcr ≈ eGFR" in b for a, b in notes):
             inputs.append(f"CLcr ≈ {text} mL/min (eGFR)")
         else: inputs.append(f"{label} {text}{unit}")

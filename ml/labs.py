@@ -9,6 +9,8 @@ Two uses, kept apart:
      new weight is introduced. These flags never trigger condition-based label rules (they are not registry conditions).
 Values a lab report prints that no ADC label uses (lipids, uric acid, ferritin, T3, free T4) are not asked for.
 """
+from fractions import Fraction
+
 # key, label, unit, group; ULN defaults are common adult reference upper limits, overridable with uln_<key>
 FIELDS = [("age", "Age", "years", "Basic"), ("sex", "Sex", "M/F", "Basic"), ("weight", "Weight", "kg", "Basic"),
           ("creatinine", "Creatinine", "mg/dL", "Kidney"), ("egfr", "eGFR", "mL/min/1.73m²", "Kidney"),
@@ -31,12 +33,12 @@ FLAGS = [("hb", lambda v, u: v < 10.0, "haematologic", "Hb < 10 g/dL (CTCAE anae
          ("hba1c", lambda v, u: v >= 6.5, "metabolic_endocrine", "HbA1c ≥ 6.5% (ADA diabetes)"),
          ("glucose", lambda v, u: v >= 126.0, "metabolic_endocrine", "fasting glucose ≥ 126 mg/dL (ADA diabetes)"),
          ("albumin", lambda v, u: v < 3.0, "hepatic", "albumin < 3.0 g/dL (CTCAE G2)"),
-         ("ggt", lambda v, u: v > 2.5 * u, "hepatic", "GGT > 2.5 x ULN (CTCAE G2)"),
-         ("bilirubin", lambda v, u: v > 1.5 * u, "hepatic", "bilirubin > 1.5 x ULN (CTCAE G2)"),
-         ("ast", lambda v, u: v > 3.0 * u, "hepatic", "AST > 3 x ULN (CTCAE G2)"),
-         ("alt", lambda v, u: v > 3.0 * u, "hepatic", "ALT > 3 x ULN (CTCAE G2)"),
-         ("amylase", lambda v, u: v > 1.5 * u, "gastrointestinal", "amylase > 1.5 x ULN (CTCAE G2)"),
-         ("lipase", lambda v, u: v > 1.5 * u, "gastrointestinal", "lipase > 1.5 x ULN (CTCAE G2)"),
+         ("ggt", lambda v, u: _xuln(v, u) > 2.5, "hepatic", "GGT > 2.5 x ULN (CTCAE G2)"),
+         ("bilirubin", lambda v, u: _xuln(v, u) > 1.5, "hepatic", "bilirubin > 1.5 x ULN (CTCAE G2)"),
+         ("ast", lambda v, u: _xuln(v, u) > 3.0, "hepatic", "AST > 3 x ULN (CTCAE G2)"),
+         ("alt", lambda v, u: _xuln(v, u) > 3.0, "hepatic", "ALT > 3 x ULN (CTCAE G2)"),
+         ("amylase", lambda v, u: _xuln(v, u) > 1.5, "gastrointestinal", "amylase > 1.5 x ULN (CTCAE G2)"),
+         ("lipase", lambda v, u: _xuln(v, u) > 1.5, "gastrointestinal", "lipase > 1.5 x ULN (CTCAE G2)"),
          ("tsh", lambda v, u: v > 10.0 or v < 0.1, "metabolic_endocrine", "TSH > 10 or < 0.1 µIU/mL (overt thyroid dysfunction)")]
 
 
@@ -61,22 +63,40 @@ def parse(key, text):
     return v
 
 
+def _exact(x):
+    return Fraction(repr(x)) if isinstance(x, float) else Fraction(x)      # the number as typed, not its binary float
+
+
+def _xuln(v, u):
+    return _exact(v) / _exact(u)
+
+
 def cockcroft_gault(age, weight, creatinine, sex):
-    return (140 - age) * weight / (72 * creatinine) * (0.85 if sex == "F" else 1.0)
+    """not rounded: the label thresholds compare the exact value; round only to show it."""
+    return float((140 - _exact(age)) * _exact(weight) / (72 * _exact(creatinine)) * (Fraction(17, 20) if sex == "F" else 1))
+
+
+def shown(key, v):
+    """a derived value as the screen shows it: CLcr to 0.1 mL/min, x ULN to 0.01. A value that would show as a multiple of 0.5,
+    where the label thresholds are (3 x ULN, CLcr 30), without being one gets more digits: 3.601 / 1.2 shows 3.001, not 3."""
+    if key not in ("crcl", "bili", "ast", "alt") or not isinstance(v, float): return f"{v:g}"
+    d = 1 if key == "crcl" else 2
+    while d < 6 and round(v, d) != v and (round(v, d) * 2).is_integer(): d += 1
+    return f"{round(v, d):g}"
 
 
 def derive(raw, uln=None):
     """raw {key: value} -> (restriction inputs for ml/restrictions.Patient, [(organ, why)], [note lines])."""
     u = {**ULN, **(uln or {})}; lab, flags, notes = {}, [], []
     if all(raw.get(k) is not None for k in ("age", "weight", "creatinine", "sex")) and raw["creatinine"] > 0 and raw["age"] < 140:
-        lab["crcl"] = round(cockcroft_gault(raw["age"], raw["weight"], raw["creatinine"], raw["sex"]), 1)
-        notes.append(f"CLcr {lab['crcl']:g} mL/min (Cockcroft-Gault)")
+        lab["crcl"] = cockcroft_gault(raw["age"], raw["weight"], raw["creatinine"], raw["sex"])
+        notes.append(f"CLcr {shown('crcl', lab['crcl'])} mL/min (Cockcroft-Gault)")
     elif raw.get("egfr") is not None:
         lab["crcl"] = float(raw["egfr"]); notes.append(f"CLcr ≈ eGFR {raw['egfr']:g} (approximation; Creatinine + age, sex, weight give CLcr)")
     elif raw.get("creatinine") is not None:
         notes.append("Creatinine needs age, sex and weight for CLcr (or enter eGFR)")
     for k, dst in (("bilirubin", "bili"), ("ast", "ast"), ("alt", "alt")):
-        if raw.get(k) is not None: lab[dst] = round(raw[k] / u[k], 2)
+        if raw.get(k) is not None: lab[dst] = float(_xuln(raw[k], u[k]))     # not rounded (3.601 / 1.2 is above 3 x ULN)
     for k, dst in (("platelet", "platelets"), ("anc", "anc"), ("hba1c", "hba1c"), ("lvef", "lvef"), ("child_pugh", "child_pugh"), ("ugt1a1", "ugt1a1_28_homozygous")):
         if raw.get(k) is not None: lab[dst] = raw[k]
     for k, test, organ, why in FLAGS:

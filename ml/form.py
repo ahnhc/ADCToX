@@ -121,7 +121,6 @@ class Form:
         self.step = 0                       # index into STEPS, for the breadcrumb at the top
         self.done = []                      # [(step title, summary)] shown above the current step
         self.usage = _ProcessUsage()
-        self.analysis_cached = False
         self.hits = []                      # [(y, x0, x1, value)] clickable places of the current frame
         try:
             curses.mousemask(curses.BUTTON1_PRESSED | curses.BUTTON1_CLICKED | getattr(curses, "BUTTON4_PRESSED", 0) | getattr(curses, "BUTTON5_PRESSED", 0))
@@ -519,12 +518,14 @@ class Form:
 
     def order(self, names, details, levels, organs=None, title="우선순위", hint="1 = 먼저 피함 · 같은 숫자 = 같은 순위 · ←→ 또는 − + 클릭 · 그대로 두면 질환 심각도 순"):
         """priority between conditions: 1 = avoid its organs' toxicity first. ←→ or the clickable − / + change a level."""
-        lv = list(levels); n = len(names); it = 0
+        lv = list(levels); n = len(names); it = 0; top = 0
         while True:
-            y0 = self.frame(title, hint)
+            y0 = self.frame(title, hint); h = self.scr.getmaxyx()[0]
             order = sorted(range(n), key=lambda i: (lv[i], i)); pos = order.index(it); w0 = max(_w(x) for x in names)
-            for r, i in enumerate(order):
-                on = i == it; y = y0 + r * 2
+            room = max(1, h - 2 - y0); gap = 2 if 2 * n - 1 <= room else 1; fit = max(1, (room + gap - 1) // gap)   # above the key hint
+            top = min(max(top, pos - fit + 1), pos, max(0, n - fit))                                                # the selected row in view
+            for r, i in enumerate(order[top:top + fit]):
+                on = i == it; y = y0 + r * gap
                 pic = strip(self.RC.AXES, organs[i]) if organs else details[i]
                 self.row(y, f" {'→' if on else ' '}       {lv[i]:>2}         {names[i]}{' ' * (w0 - _w(names[i]))}   {pic}", on, i)
                 self.button(y, 5, "−", ("DEC", i)); self.button(y, 14, "+", ("INC", i))      # [ − ]  1  [ + ]  name
@@ -545,30 +546,25 @@ class Form:
         y0 = self.frame(text, ""); self.scr.refresh()
 
     def analyze(self, conditions):
-        """Keep curses on the main thread; animate only stages the actual model reports."""
+        """Keep curses on the main thread; the line says what the model reports it is doing, one step at a time."""
         import queue, threading, time
         events = queue.SimpleQueue(); result = []; errors = []
-        free = [c for c in conditions if c not in self.RC._reg and c.lower() not in self.RC._by_label and c not in self.RC.CONTEXT]
-        self.analysis_cached = tuple(free) in self.RC._FREE and (not self.RC.HAS_LEARNED or all(c in self.RC._FREE_PREDICTIONS for c in free))
         self.usage = _ProcessUsage()
         def work():
             try: result.extend(self.RC.analyze_conditions(conditions, progress=events.put))
             except Exception as error: errors.append(error)
-        stages_ = stages(); current = 0; started = stage_at = time.monotonic()
+        step = ""; started = time.monotonic()
         worker = threading.Thread(target=work, daemon=True); worker.start()
         timeout = getattr(self.scr, "timeout", None)
         if timeout: timeout(100)
         try:
             while worker.is_alive():
                 while not events.empty():
-                    event = events.get()
-                    was = current; current = next((i for i, (key, _) in enumerate(stages_) if key == event), len(stages_))
-                    if current != was: stage_at = time.monotonic()
+                    step = STEP_TEXT.get(events.get(), step)
                 y = self.frame("AI 장기 분석", "")
                 h, w = self.scr.getmaxyx()
-                now = time.monotonic()
-                for ln in running(current, now - started, now - stage_at, min(w - 6, 72)): self.S.put_ansi(y, 2, ln); y += 1
-                y += 1
+                if step: self.S.put(y, 2, step + "." * (1 + int((time.monotonic() - started) * 2.5) % 3))
+                y += 2
                 names = ", ".join(c for c in conditions if c not in self.RC._reg and c.lower() not in self.RC._by_label and c not in self.RC.CONTEXT)
                 for ln in _wrap(names, w - 5, "  ")[:2]: self.S.put(y, 2, ln, self.S.dim); y += 1
                 self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
@@ -579,7 +575,8 @@ class Form:
             if timeout: timeout(-1)
         worker.join()
         if errors:
-            self.choose("AI 분석을 완료하지 못했습니다", f"모델 실행 환경을 확인해 주세요.\n{type(errors[0]).__name__}: {str(errors[0])[:160]}", ["질환 입력으로 돌아가기"])
+            error = f"{type(errors[0]).__name__}: {errors[0]}".splitlines()[0]          # one line: the analysis did not finish
+            self.choose("AI 분석을 완료하지 못했습니다", _clip(error, self.scr.getmaxyx()[1] - 6), ["질환 입력으로 돌아가기"])
             return BACK
         return result, time.monotonic() - started
 
@@ -593,7 +590,8 @@ class Form:
     def _analysis_review(self, reports, elapsed):
         """per typed condition: what it was read as and its organs (the ones the recommendation uses), one line each; under it, for
         the highlighted input with models 0.5-0.6, what each Gemma judge output said and which step set the organs (models 0.7+:
-        no panel; Read as ends in label, record or name)."""
+        no panel; Read as ends in label, record or name, or in linker when the organ judge failed and the older linker read it).
+        The table scrolls with the highlighted input."""
         import tui, suggest as SG
         top = cur = 0; RC = self.RC; ko = SG.index(RC).ko
         SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Similar condition": "Similar registry condition",
@@ -602,7 +600,8 @@ class Form:
         while True:
             y0 = self.frame("AI 장기 분석", "")
             h, w = self.scr.getmaxyx(); width = max(2, w - 5)
-            self.S.put_ansi(y0, 2, pipeline(len(stages()), None if self.analysis_cached else elapsed)); y0 += 2
+            if any(r.get("fallback") for r in reports):         # the organ judge failed: none of its output is shown as used
+                self.S.put_ansi(y0, 2, "\033[33m" + _clip("Organ judge 오류 · MONDO linker로 대체", w - 4) + "\033[0m"); y0 += 2
             nw = min(24, max(_w(r["condition"]) for r in reports))
             rows = []
             for r in reports:
@@ -612,6 +611,7 @@ class Form:
                 how = "MONDO" if r["source"].startswith("MONDO") else SOURCE.get(r["source"], r["source"])
                 if r["source"] == "AI judgment" and r.get("gemma"): how += " (Gemma)"
                 if r.get("judge_via"): how += f" · {r['judge_via']}"          # label, record or name: what set the organs
+                elif r.get("fallback") and r["source"] != "Unmapped": how += " · linker"
                 org = strip(RC.AXES, r["organs"]) if r["organs"] else "\033[90m" + ("none of 13" if r["source"].startswith("MONDO") else "-") + "\033[0m"
                 tag = ""
                 if r.get("ambiguous") and r["condition"] not in RC.CHOICE: tag = f"   \033[33m{len(r['readings'])} meanings: pick on the next screen\033[0m"
@@ -619,16 +619,23 @@ class Form:
                 rows.append((r["condition"], org, (f"{read}  " if read else "") + f"\033[90m{how}\033[0m" + tag))
             ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for _, o, _ in rows] + [6]), 24)
             head = f"  \033[1m{'Input':<{nw}}\033[0m   \033[1m{'Organs':<{ow}}\033[0m   \033[1mRead as\033[0m"
-            lines = [head, "\033[90m" + "─" * min(width, nw + ow + 42) + "\033[0m"]
+            fixed = [ln for line in (head, "\033[90m" + "─" * min(width, nw + ow + 42) + "\033[0m") for ln in tui._wrap_ansi(line, width)]
+            wrapped, span = [], []                              # the rows under the fixed header; span = (first, end) line of each input
             for k, (c, org, what) in enumerate(rows):
                 name = _clip(c, nw); plain = re.sub(r"\x1b\[[\d;]*m", "", org)
-                lines.append(("\033[36;1m› \033[0m" if k == cur else "  ") + f"{name}{' ' * (nw - _w(name))}   {org}{' ' * max(0, ow - _w(plain))}   {what}")
+                row = tui._wrap_ansi(("\033[36;1m› \033[0m" if k == cur else "  ") + f"{name}{' ' * (nw - _w(name))}   {org}{' ' * max(0, ow - _w(plain))}   {what}", width)
+                span.append((len(wrapped), len(wrapped) + len(row))); wrapped += row
             panel = gemma_panel(reports[cur], RC, ko, width) if reports[cur].get("gemma") else []
-            wrapped = [ln for line in lines for ln in tui._wrap_ansi(line, width)]
-            if h - y0 - 4 - len(wrapped) < len(panel) + 1: panel = []            # the panel only when the whole table still fits
-            area = max(1, h - y0 - 3 - (len(panel) + 1 if panel else 0)); top = max(0, min(top, len(wrapped) - area))
-            for i, ln in enumerate(wrapped[top:top + area]): self.S.put_ansi(y0 + i, 2, ln)
-            py = y0 + min(area, len(wrapped)) + 1
+            if h - y0 - 4 - len(fixed) - len(wrapped) < len(panel) + 1: panel = []     # the panel only when the whole table still fits
+            area = max(1, h - y0 - 3 - len(fixed) - (len(panel) + 1 if panel else 0))
+            if len(reports) > 1:                                # keep the highlighted input in view
+                first, end = span[cur]; top = min(top, first); top = max(top, end - area)
+            top = max(0, min(top, len(wrapped) - area)); end = top + area
+            if len(reports) > 1:                                # whole inputs only: no wrapped tail at the top or head at the bottom
+                top = next(a for a, _ in span if a >= top)          # never past the highlighted input, which starts at or after top
+                end = min(top + area, max(b for _, b in span if b <= max(top + area, span[cur][1])))
+            for i, ln in enumerate(fixed + wrapped[top:end]): self.S.put_ansi(y0 + i, 2, ln)
+            py = y0 + len(fixed) + min(area, len(wrapped)) + 1
             for i, ln in enumerate(panel): self.S.put_ansi(py + i, 2, ln)
             if hasattr(self.scr, "transition"):
                 if first and not self.scr.armed(): self.scr.transition("cascade", y_from=y0)          # the table builds up
@@ -648,46 +655,7 @@ class Form:
             elif key == "PGDN": return None
 
 
-STAGES = [("embedding", "BioLORD"), ("linking", "SapBERT · MONDO"), ("judging", "Gemma"), ("inference", "MLP")]
-STAGES_SCRATCH = [("embedding", "BioLORD"), ("judging", "Organ judge"), ("inference", "MLP")]   # models 0.7+
-
-
-def stages():
-    """the analysis stages of the active model bundle."""
-    try:
-        import scratch_runtime as SR
-        return STAGES_SCRATCH if SR.available() else STAGES
-    except Exception:
-        return STAGES
-SPIN = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
-
-
-def running(current, t, since, width):
-    """the analysis while it runs: the stage names (done green, running normal, waiting grey) over one thin bar. The bar fills
-    a quarter per stage; inside a stage it eases towards the next quarter (since = seconds in the running stage) so it keeps
-    moving without ever claiming a stage is done."""
-    import math
-    G, D, E = "\033[32;1m", "\033[90m", "\033[0m"
-    n = len(stages()); names = []
-    for i, (_, name) in enumerate(stages()):
-        names.append((G + name + E) if i < current else name if i == current else (D + name + E))
-    p = min(1.0, current / n + (1 / n) * 0.92 * (1 - math.exp(-since / 2.5))) if current < n else 1.0
-    bw = max(24, width - 10); k = int(p * bw)
-    bar = G + "━" * k + ("╸" if k < bw else "") + E + D + "─" * max(0, bw - k - 1) + E
-    return ["      ".join(names), bar + f"   {D}{t:.1f} s{E}"]
-
-
-def pipeline(current, elapsed):
-    """the analysis stages in one line: done stages green, the running one lit with a spinner, the rest grey; the time at the end.
-    current = len(STAGES) means finished; elapsed None shows no time (a cached analysis)."""
-    import time
-    G, Y, D, E = "\033[32m", "\033[33;1m", "\033[90m", "\033[0m"
-    parts = []
-    for i, (_, name) in enumerate(stages()):
-        parts.append((G + name + E) if i < current else (Y + "▶ " + name + E) if i == current else (D + name + E))
-    line = (D + " ── " + E).join(parts)
-    if current >= len(stages()): return line + (f"   {D}✓ {elapsed:.1f} s{E}" if elapsed is not None else "")
-    return line + f"   {Y}{SPIN[int(time.monotonic() * 10) % len(SPIN)]}{E} {D}{elapsed:.1f} s{E}"
+STEP_TEXT = {"embedding": "질환 확인 중", "linking": "질환 확인 중", "judging": "장기 분석 중", "inference": "장기 분석 중"}   # progress events -> the line
 
 
 def gemma_panel(r, RC, ko, width):
@@ -752,7 +720,7 @@ def run(RC, back=False):
                     analysis = F.analyze(conds)
                     if analysis == BACK: step = 0; continue
                     reports, elapsed = analysis
-                    if F.analysis_review(reports, elapsed) == BACK: step = 1; continue
+                    if reports and F.analysis_review(reports, elapsed) == BACK: step = 1; continue    # registry names alone: nothing to review
                     groups = [g for g in RC.ambiguous_conditions(conds) if g[0] not in st["choice"]]   # typed texts with readings on different organs: the user picks
                     if groups:
                         applied = {r["condition"]: o["mondo"] for r in reports for o in r.get("readings", []) if o["name"] == r["name"]}
