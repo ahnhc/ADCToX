@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased: Cancer type first, models load while typing
+## 0.5.8: Cancer type first, models load while typing (Ubuntu and macOS; Windows stays on 0.5.5)
 
 - **A cancer step comes first** (암종, before 질환): pick the patient's cancer, or 모름. The ADCs approved for it (FDA label section 1, data/curated/competition/adc_cancers.csv, 19 cancer types covering all 15 ADCs) come first; the others follow under a `Other cancers` rule, in the same order as before. 모름 keeps the order unchanged. `--plain` asks it too, and the saved input keeps it.
 - **The encoder and the organ judge load in the background from the start**, while the doctor picks the cancer and types the diseases. On this server the first analysis after typing took 3 s, against about 80 s before.
