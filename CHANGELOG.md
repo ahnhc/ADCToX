@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased: CPU threads
+## 0.5.7: CPU threads (Ubuntu and macOS; Windows stays on 0.5.5)
 
 - **The AI analysis runs torch on at most 4 CPU threads** (`OMP_NUM_THREADS`, `MKL_NUM_THREADS`; `ADCTOX_THREADS` or the user's own `OMP_NUM_THREADS` win). Torch's default, one thread per core, left most threads waiting on a few diseases at a time: on a shared 24-core Xeon, 4 diseases took 14 to 19 s on 24 threads and 1.1 to 1.4 s on 4, and the first analysis with model loading 110 to 134 s against 79 to 84 s.
 
