@@ -216,3 +216,13 @@ def test_no_middle_dot_in_the_app_text():
     root = pathlib.Path(__file__).resolve().parents[1] / "ml"
     for name in ("form.py", "tui.py", "recommend.py", "restrictions.py", "labs.py", "term.py"):
         assert "·" not in (root / name).read_text(encoding="utf-8"), name
+
+
+def test_the_app_runs_torch_on_at_most_four_threads(monkeypatch):
+    import recommend as RC
+    monkeypatch.setattr(RC.os, "cpu_count", lambda: 48)
+    env = {}; RC.cap_threads(env); assert env == {"OMP_NUM_THREADS": "4", "MKL_NUM_THREADS": "4"}
+    monkeypatch.setattr(RC.os, "cpu_count", lambda: 2)
+    env = {}; RC.cap_threads(env); assert env["OMP_NUM_THREADS"] == "2"
+    env = {"OMP_NUM_THREADS": "16"}; RC.cap_threads(env); assert env["OMP_NUM_THREADS"] == "16"        # the user's own setting stays
+    env = {"ADCTOX_THREADS": "8"}; RC.cap_threads(env); assert env["MKL_NUM_THREADS"] == "8"

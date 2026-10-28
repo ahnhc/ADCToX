@@ -1094,6 +1094,14 @@ HELP = """ADCTOX {version}
 자세히: https://github.com/ahnhc/ADCToX"""
 
 
+def cap_threads(environ=os.environ):
+    """before torch loads: at most 4 CPU threads (ADCTOX_THREADS or OMP_NUM_THREADS set by the user win). A few diseases at a time
+    run fastest on a few busy threads; torch's default, one per core, leaves most of them waiting (24-core Xeon, 4 diseases:
+    analysis 1.1 s on 4 threads, 14 to 19 s on 24, on a shared server)."""
+    threads = environ.get("ADCTOX_THREADS") or str(min(4, os.cpu_count() or 1))
+    for name in ("OMP_NUM_THREADS", "MKL_NUM_THREADS"): environ.setdefault(name, threads)
+
+
 def main():
     from adc_version import APP_VERSION
     arguments = sys.argv[1:]
@@ -1108,6 +1116,7 @@ def main():
         raise SystemExit(adc_updates.app_cli("update" if arguments[0] == "--update-app" else "check"))
     if arguments in (["--help"], ["-h"], ["help"]):
         print(HELP.format(version=APP_VERSION, n=len(_evidence()[0]))); return
+    cap_threads()
     import term
     if "--no-wt" in sys.argv: sys.argv.remove("--no-wt")
     else: term.into_windows_terminal()                 # double-clicked on Windows: reopen in Windows Terminal when there is one

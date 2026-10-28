@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased: CPU threads
+
+- **The AI analysis runs torch on at most 4 CPU threads** (`OMP_NUM_THREADS`, `MKL_NUM_THREADS`; `ADCTOX_THREADS` or the user's own `OMP_NUM_THREADS` win). Torch's default, one thread per core, left most threads waiting on a few diseases at a time: on a shared 24-core Xeon, 4 diseases took 14 to 19 s on 24 threads and 1.1 to 1.4 s on 4, and the first analysis with model loading 110 to 134 s against 79 to 84 s.
+
 ## 0.5.6: Organs first shown by the analysis (Ubuntu and macOS; Windows stays on 0.5.5)
 
 - **The first screen no longer shows organs.** The suggestions and the picked chips carry names only; the organs appear on the AI 장기 분석 screen, which every disease now goes through, a disease picked from the registry list too (it used to skip the screen and show its organs first on the result).
