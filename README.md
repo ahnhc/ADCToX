@@ -78,7 +78,7 @@ ADC(antibody-drug conjugate)는 항체에 강한 세포독성 payload를 붙인 
   <img src="docs/images/search.svg" alt="질환 검색 화면" width="820">
 </p>
 
-**AI 장기 분석.** 질환마다 판정 모델의 장기 확률 상위 3개가 나옵니다. 초록이 순위에 쓰는 장기입니다.
+**AI 장기 분석.** 질환마다 판정 모델의 장기 확률 상위 3개가 나옵니다.
 
 <p align="center">
   <img src="docs/images/ai.svg" alt="AI 장기 분석 화면: 질환마다 장기 확률 상위 3개" width="820">

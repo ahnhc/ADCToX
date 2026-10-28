@@ -195,7 +195,7 @@ def test_the_analysis_shows_the_three_likeliest_organs_with_their_probability(mo
     assert plain(form.likely(list(tui.GLYPH), ["hepatic"], None)) == "Liver"                           # no judge output: the used organs
     frames = _review(monkeypatch, [dict(_report(1), organs=["neurologic"], p=p)], ["KEY_NPAGE"])
     text = "\n".join(frames[0])
-    assert "Neuro 95%  Cardio 68%  Metabolic 22%" in text and "AI가 본 장기 확률" in text and all(len(ln) <= 80 for ln in frames[0])
+    assert "Neuro 95%  Cardio 68%  Metabolic 22%" in text and "순위에 쓰는" not in text and all(len(ln) <= 80 for ln in frames[0])
 
 
 def test_a_registry_disease_gets_an_analysis_row(monkeypatch):

@@ -607,7 +607,7 @@ class Form:
             if any(r.get("fallback") for r in reports):         # the organ judge failed: none of its output is shown as used
                 self.S.put_ansi(y0, 2, "\033[33m" + _clip("Organ judge 오류, MONDO linker로 대체", w - 4) + "\033[0m"); y0 += 2
             shown = lambda r: RC.condition_name(r["condition"]) if r["source"] == "Registry" else r["condition"]   # a picked disease by its name
-            nw = min(24, max(_w(shown(r)) for r in reports)); grey = False
+            nw = min(24, max(_w(shown(r)) for r in reports))
             rows = []
             for r in reports:
                 picked = RC.CHOICE.get(r["condition"]) or ""
@@ -619,7 +619,6 @@ class Form:
                 elif r.get("fallback") and r["source"] != "Unmapped": how += " (linker)"
                 org = (likely(RC.AXES, r["organs"], r.get("p")) if r["organs"] else
                        "\033[90m" + ("none of 13" if r["source"].startswith("MONDO") else "-") + "\033[0m")
-                grey = grey or (bool(r["organs"]) and bool(r.get("p")))
                 tag = ""
                 if r.get("ambiguous") and r["condition"] not in RC.CHOICE: tag = f"   \033[33m{len(r['readings'])} meanings: pick on the next screen\033[0m"
                 if read.lower() in (r["condition"].lower(), shown(r).lower()): read = ""
@@ -648,7 +647,6 @@ class Form:
                 if first and not self.scr.armed(): self.scr.transition("cascade", y_from=y0)          # the table builds up
                 elif cur != last and panel: self.scr.transition("cascade", y_from=py)                # a new judge panel unfolds
             first = False; last = cur
-            if grey: self.S.put_ansi(h - 3, 2, tui._wrap_ansi("\033[90m%: AI가 본 장기 확률   \033[0m\033[32;1m초록\033[0m\033[90m: 순위에 쓰는 장기   회색: 쓰지 않음\033[0m", w - 4)[0])
             self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
             if len(reports) > 1: self.S.put(h - 1, 2, "↑↓ 입력 고르기", self.S.dim)
             elif len(wrapped) > area: self.S.put(h - 1, 2, f"{top + 1}–{min(top + area, len(wrapped))} / {len(wrapped)}", self.S.dim)
