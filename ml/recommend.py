@@ -43,6 +43,7 @@ LEARNED_FRACTION = 0.0      # off by default; see the module docstring
 FALLBACK = {}               # condition text -> learned fraction, only for conditions that map to no organ (asked in the wizard)
 PRIORITY = {}               # condition text -> level the user set (1 = avoid its organs' toxicity first); default = severity order
 FIRST = None                # the condition the doctor is most worried about (the priority step); None = automatic
+CANCER = None               # the patient's cancer (the first step); the ADCs approved for it come first. None = not given
 CHOICE = {}                 # condition text -> MONDO id the user picked among its readings (None = 'not sure'); see mondo_index.readings
 REG_NEAR = 0.80             # a free-text condition is 'the same as' a registry condition at this BioLORD cosine -> its curated organs
 MONDO_SEVERITY = 0.80       # organs read off the MONDO hierarchy have no curated severity; one fixed value, not fitted
@@ -455,10 +456,13 @@ def recommend(conditions, labs=None, raw=None):
                          B=round(B, 3), Wn=round(Wn, 3), boxed=boxed, warn=warn, elsewhere=elsewhere, organs=org, has_tables=e["has_tables"]))
     # restriction tier (worst case), settled tier, then boxed warnings on the level-1 organs, level-2 organs, ..., then the other
     # warnings level by level. Within one patient this is the order; B and Wn (severity sums) stay for comparisons across patients.
+    approved = set(_cancers().get(CANCER, [])) if CANCER else set()
+    for r in rows: r["indicated"] = not approved or r["adc"] in approved
     first = next((set(o) for c, o, _ in pc if c == FIRST), None)
     hit = lambda r, k: sum(a in first for a in r[k]) if first else 0
-    # a picked condition: its organs' boxed warnings, then warnings, come before Monitor / Not studied; Avoid stays last
-    order = lambda r: ((r["tier"] >= RS.TIER["avoid"], hit(r, "boxed"), hit(r, "warn")) if first else ()) + (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"])
+    # a cancer: the ADCs approved for it first. A picked condition: its organs' boxed warnings, then warnings, come before
+    # Monitor / Not studied; Avoid stays last
+    order = lambda r: ((not r["indicated"],) if approved else ()) + ((r["tier"] >= RS.TIER["avoid"], hit(r, "boxed"), hit(r, "warn")) if first else ()) + (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"])
     rows.sort(key=lambda r: (order(r), r["name"]))
     prev = None
     for r in rows:
@@ -649,6 +653,8 @@ def _result_list(rows, width):
     out.append("\033[90m" + "─" * width + "\033[0m")
     at = []; previous_rank = None
     for row in rows:
+        if not row.get("indicated", True) and at and rows[len(at) - 1].get("indicated", True):    # the ADCs for other cancers
+            out.append("\033[90m── Other cancers " + "─" * max(0, width - 17) + "\033[0m")
         at.append(len(out))
         rank_text = f"{row['rank']:>3}" if row["rank"] != previous_rank else "   "
         previous_rank = row["rank"]
@@ -750,6 +756,37 @@ def organ_warning_lines(row):
             heads = "; ".join(f"{sec} {head}" for sec, head in row["organs"][a].get("headings", []))
             out.append(f"  {ORGAN_SHORT[a]:<9} {marks}  {heads}")
     return out
+
+
+_CAN = None
+
+
+def _cancers():
+    """cancer -> the ADCs approved for it, from the labels' section 1 (data/curated/competition/adc_cancers.csv); the app build embeds it."""
+    global _CAN
+    if _CAN is None:
+        try:
+            from __adc_data__ import _portable_data
+            _CAN = _portable_data().get("cancers", {})
+        except ImportError:
+            import csv
+            try: _CAN = {r["cancer"]: r["adcs"].split(";") for r in csv.DictReader(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "curated", "competition", "adc_cancers.csv"), encoding="utf-8"))}
+            except OSError: _CAN = {}
+    return _CAN
+
+
+def preload():
+    """load the encoder and the organ judge in the background while the doctor types: the first analysis waited for them."""
+    import threading
+    def work():
+        try:
+            import vulnerability_model as VM
+            VM._st([_reg[i]["label"] for i in _reg])           # the registry names the analysis compares typed text with
+            import scratch_runtime as SR
+            if SR.available(): SR.load()
+        except Exception as error:
+            warnings.warn(f"preload: {error}")
+    threading.Thread(target=work, daemon=True).start()
 
 
 def read_mechanisms(path):
@@ -1027,7 +1064,13 @@ def wizard(back=False):
     None when no condition is given.
     The terminal session is form.run."""
     import labs as LB
-    ids = list(_reg)
+    global CANCER
+    ids = list(_reg); cancers = list(_cancers())
+    print("암종")
+    for k, c in enumerate(cancers, 1): print(f"  {k:>2}) {c}")
+    try: text = input("번호 (Enter = 모름) > ").strip()
+    except EOFError: text = ""
+    CANCER = cancers[int(text) - 1] if text.isdigit() and 1 <= int(text) <= len(cancers) else None
     split = []
     while not split:                                   # no condition, no analysis: ask again (Enter on an empty line = exit)
         try: text = input("기저질환 (번호/ID/영어, 쉼표 구분; ? = 목록, Enter = 종료) > ")
@@ -1131,8 +1174,9 @@ def main():
         sys.exit(2)
     if not sys.stdin.isatty():
         print("adctox: 입력 화면이 필요합니다. 터미널에서 실행하세요 (설치 확인은 adctox --self-test).", file=sys.stderr); sys.exit(2)
-    if _tui_ok():                                      # the terminal session: five steps and the result screen
+    if _tui_ok():                                      # the terminal session: six steps and the result screen
         import form
+        preload()
         r = form.run(sys.modules[__name__])
         if r is None: sys.exit(0)
         conds, raw, (rows, s, notes, ck) = r

@@ -299,7 +299,7 @@ def browse(title, lines, selectable, details, footer="", context=(), scr=None, c
                 i = top + k
                 if i >= len(table): break
                 end = choices[cur + 1] if cur + 1 < len(choices) else len(table)
-                S.row(y0 + fixed + k, table[i], sel <= i < end); shown[y0 + fixed + k] = i
+                S.row(y0 + fixed + k, table[i], sel <= i < end and not table[i].startswith("\033[90m──")); shown[y0 + fixed + k] = i   # a rule is never lit
             yb = y0 + area; S.rule(yb)
             detail_area = max(1, h - yb - 4)
             detail_top = max(0, min(detail_top, len(out) - detail_area))

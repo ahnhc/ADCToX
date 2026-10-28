@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased: Cancer type first, models load while typing
+
+- **A cancer step comes first** (암종, before 질환): pick the patient's cancer, or 모름. The ADCs approved for it (FDA label section 1, data/curated/competition/adc_cancers.csv, 19 cancer types covering all 15 ADCs) come first; the others follow under a `Other cancers` rule, in the same order as before. 모름 keeps the order unchanged. `--plain` asks it too, and the saved input keeps it.
+- **The encoder and the organ judge load in the background from the start**, while the doctor picks the cancer and types the diseases. On this server the first analysis after typing took 3 s, against about 80 s before.
+
 ## 0.5.7: CPU threads (Ubuntu and macOS; Windows stays on 0.5.5)
 
 - **The AI analysis runs torch on at most 4 CPU threads** (`OMP_NUM_THREADS`, `MKL_NUM_THREADS`; `ADCTOX_THREADS` or the user's own `OMP_NUM_THREADS` win). Torch's default, one thread per core, left most threads waiting on a few diseases at a time: on a shared 24-core Xeon, 4 diseases took 14 to 19 s on 24 threads and 1.1 to 1.4 s on 4, and the first analysis with model loading 110 to 134 s against 79 to 84 s.
@@ -25,7 +30,7 @@ From going through every screen as a doctor using the app for the first time.
 
 - **Bilirubin, AST, ALT (x ULN) and Cockcroft-Gault CLcr reach the label thresholds unrounded**, in exact decimal arithmetic. Before, the ratio was rounded to 0.01 first: bilirubin 3.601 mg/dL with ULN 1.2 became 3.00 x ULN and Datopotamab deruxtecan got the "up to 3 x ULN" rule instead of "> 3 x ULN". The CTCAE organ flags compare exactly too (bilirubin 1.8 is not above 1.5 x 1.2). Only the screen rounds, with more digits when a value would otherwise show as a threshold (3.001 x ULN, not 3).
 - **AI 장기 분석:** the model names (`BioLORD ── Organ judge ── MLP`) are gone. One line says what the model reports it is doing: "질환 확인 중..." or "장기 분석 중...". A cached analysis shows the table at once.
-- **A failed organ judge is no longer silent.** The bundle's older MONDO linker reads the text instead (as before), and the table says so: "Organ judge 오류 · MONDO linker로 대체", Read as ends in `linker`. An analysis that cannot finish shows one error line.
+- **A failed organ judge is no longer silent.** The bundle's older MONDO linker reads the text instead (as before), and the table says so: "Organ judge 오류, MONDO linker로 대체", Read as ends in `linker`. An analysis that cannot finish shows one error line.
 - The analysis table, the priority list and the result list scroll with the highlighted row at 80x24; headers stay, and no row runs into the key hint.
 
 ## 0.5.3 — Input on the screens only
@@ -42,7 +47,7 @@ From going through every screen as a doctor using the app for the first time.
 
 - **The result screen opens again.** In 0.5.0 and 0.5.1 the installed app stopped with `NameError: __file__` on the result screen: the payload and linker table (data/curated/competition/adc_mechanism_draft.csv) was read from the repository path, which the one-file app does not have. The build now carries the table (ml/build_portable.py), and a test opens every ADC's result panel from the one-file build.
 - **A wrong option value is reported, not a traceback:** `--lab hb=abc`, `--lab hb`, `--crcl` without a value, `--priority a` print what could not be read and exit with code 2. The lab step says "숫자를 입력하세요" for a value that is not a number.
-- **A disease picked from the list that has neither a label nor a MONDO record** gets the judge's organs for its name, as when the name is typed (`Chosen · name`).
+- **A disease picked from the list that has neither a label nor a MONDO record** gets the judge's organs for its name, as when the name is typed (`Chosen, name`).
 
 ## 0.5.1 — The app reads a disease the way the judge does
 
@@ -66,8 +71,8 @@ With model bundles 0.7+, every way into the analysis now gives the organs the fr
 ## 0.4.0 – 0.4.3 — One session, five steps
 
 - **One terminal session from the search page to the result screen.** The result screen used to open in a second curses session after the input steps, with a flash of the shell in between; PgUp on it then restarted the wizard. Now `form.run` owns the whole flow and returns the results; PgUp on the result screen goes back to the priority or lab-value step in place.
-- **Five steps, shown as a breadcrumb at the top** (질환 · 검사 수치 · AI 장기 분석 · 우선순위 · 결과), the current one lit.
-  - The analysis progress and the review are one screen. While it runs, the four stage names stand over one thin bar that fills a quarter per finished stage and eases towards the next quarter meanwhile (0.4.3; the stage spinner of 0.4.0, the braille stream of 0.4.1 and the wave of 0.4.2 were replaced). When it ends, the table builds up under `BioLORD ── SapBERT · MONDO ── Gemma ── MLP   ✓ 3.5 s`.
+- **Five steps, shown as a breadcrumb at the top** (질환, 검사 수치, AI 장기 분석, 우선순위, 결과), the current one lit.
+  - The analysis progress and the review are one screen. While it runs, the four stage names stand over one thin bar that fills a quarter per finished stage and eases towards the next quarter meanwhile (0.4.3; the stage spinner of 0.4.0, the braille stream of 0.4.1 and the wave of 0.4.2 were replaced). When it ends, the table builds up under `BioLORD ── SapBERT, MONDO ── Gemma ── MLP   ✓ 3.5 s`.
   - Priority is one screen: the default order is shown at once and can be changed with ←→ or the − / + buttons; PgDn keeps it. The separate "자동 / 직접 정하기" question is gone.
   - After the result screen, the table is printed and the app exits. The `Run again? (y/Enter)` prompt is gone (the `--plain` path keeps it).
 - **The clickable `[ ◀ 이전 ] [ 다음 ▶ ]` buttons are gone** (0.4.1). PgUp / PgDn move between screens; the hint at the bottom right stays.

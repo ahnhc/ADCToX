@@ -129,3 +129,41 @@ def test_the_first_screen_shows_no_organs(monkeypatch):
     last = texts[-1]
     assert "Heart failure" in last and "Glaucoma" in last
     assert not any(o in t for t in texts for o in ("Liver", "Cardio", "Eye", "분석 때 판정", "none of 13"))
+
+
+def test_every_adc_has_a_cancer_and_every_cancer_an_adc():
+    can = RC._cancers()
+    assert set(a for v in can.values() for a in v) == set(RC._indications()) and all(can.values())
+
+
+def test_the_adcs_approved_for_the_cancer_come_first(monkeypatch):
+    monkeypatch.setattr(RC, "CANCER", "Large B-cell lymphoma (DLBCL)")
+    rows, *_ = RC.recommend(["cirrhosis"], {}, {})
+    approved = {"polatuzumab-vedotin", "loncastuximab-tesirine", "brentuximab-vedotin"}
+    assert {r["adc"] for r in rows[:3]} == approved and not any(r["indicated"] for r in rows[3:])
+    lines, at = RC._result_list(rows, 100)
+    rule = next(i for i, ln in enumerate(lines) if "Other cancers" in ln)
+    assert at[2] < rule < at[3]
+    monkeypatch.setattr(RC, "CANCER", None)
+    plain, _ = RC.recommend(["cirrhosis"], {}, {})[:2]
+    assert all(r["indicated"] for r in plain) and not any("Other cancers" in ln for ln in RC._result_list(plain, 100)[0])
+
+
+def test_the_cancer_step_picks_one_or_none(monkeypatch):
+    import form
+    screen, frames = _screen(monkeypatch, [], (24, 80))
+    def none(): raise form.curses.error                                         # nothing after a bare Esc
+    screen.get_wch = none
+    for keys, want in ((["DOWN", "PGDN"], next(iter(RC._cancers()))), (["PGDN"], None), (["ESC"], form.QUIT)):
+        it = iter(keys); monkeypatch.setattr(form, "_key", lambda scr, tab=False: next(it))
+        F = form.Form(screen, RC); F.step = 0
+        assert F.cancer() == want
+    assert "암종" in "\n".join(frames[0]) and "(●) 모름" in "\n".join(frames[0])
+    assert all(len(ln) <= 80 for f in frames for ln in f)
+
+
+def test_the_cancer_is_saved_with_the_entries(monkeypatch, tmp_path):
+    import form
+    monkeypatch.setattr(form, "SAVE", str(tmp_path / "last_input.json"))
+    form.save(dict(picked={"cirrhosis"}, free="", raw={}, choice={}, cancer="Multiple myeloma"))
+    assert form.load()["cancer"] == "Multiple myeloma"

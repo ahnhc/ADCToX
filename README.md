@@ -6,7 +6,7 @@
 [![Ubuntu terminal](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml/badge.svg)](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml)
 [![One-line install](https://github.com/ahnhc/ADCToX/actions/workflows/install.yml/badge.svg)](https://github.com/ahnhc/ADCToX/actions/workflows/install.yml)
 
-**환자의 기저질환 이름만으로 이미 손상된 장기를 판정하고, FDA 승인 ADC 15종 중 그 장기에 라벨 경고가 적은 약부터 보여 주는 터미널 앱입니다.** 장기 판정은 공개 의학 텍스트만으로 처음부터 학습한 1.1억 파라미터 모델이 PC 안에서 합니다.
+**환자의 기저질환 이름만으로 이미 손상된 장기를 판정하고, 환자의 암에 승인된 ADC 중 그 장기에 라벨 경고가 적은 약부터 보여 주는 터미널 앱입니다.** 장기 판정은 공개 의학 텍스트만으로 처음부터 학습한 1.1억 파라미터 모델이 PC 안에서 합니다.
 
 <p align="center">
   <img src="docs/images/performance.svg" alt="장기 판정 정확도: 이 프로젝트의 모델 평균 0.723, 튜닝한 Gemma 4 E2B 0.711, 튜닝 안 한 Gemma 0.586" width="820">
@@ -32,7 +32,7 @@ ADC(antibody-drug conjugate)는 항체에 강한 세포독성 payload를 붙인 
 ## 목표
 
 1. 어떤 형태로 적힌 기저질환이든 표준 질환(MONDO)에 연결하고, 13개 장기 중 이미 손상된 장기를 판정한다.
-2. 그 장기를 ADC 15종의 라벨 경고, 라벨 제한 기준(간, 신장 기능 수치), payload 기전과 맞춰, 경고가 적은 순서로 보여 준다.
+2. 그 장기를 ADC 15종의 라벨 경고, 라벨 제한 기준(간, 신장 기능 수치), payload 기전과 맞춰, 환자의 암에 승인된 약부터 경고가 적은 순서로 보여 준다.
 3. 거대 언어 모델 없이, 공개 의학 텍스트만으로 처음부터 학습한 작은 모델로 같은 수준에 도달한다.
 4. 환자 정보가 PC 밖으로 나가지 않는다.
 
@@ -84,7 +84,7 @@ ADC(antibody-drug conjugate)는 항체에 강한 세포독성 payload를 붙인 
   <img src="docs/images/ai.svg" alt="AI 장기 분석 화면: 질환마다 장기 확률 상위 3개" width="820">
 </p>
 
-**ADC 비교.** 15종을 라벨 제한과 환자 장기에 걸린 경고 순으로 정렬합니다. 가장 걱정되는 질환을 하나 고르면 그 장기에 경고가 있는 ADC가 아래로 내려갑니다. ADC를 고르면 적응증, 라벨 제한 기준, 환자 장기에 걸린 경고와 절 번호, payload와 linker 기전이 나옵니다.
+**ADC 비교.** 암종을 고르면 그 암에 승인된 ADC가 먼저 나오고, 나머지는 그 아래에 이어집니다. 각 묶음 안에서는 라벨 제한과 환자 장기에 걸린 경고 순으로 정렬합니다. 가장 걱정되는 질환을 하나 고르면 그 장기에 경고가 있는 ADC가 아래로 내려갑니다. ADC를 고르면 적응증, 라벨 제한 기준, 환자 장기에 걸린 경고와 절 번호, payload와 linker 기전이 나옵니다.
 
 <p align="center">
   <img src="docs/images/results.svg" alt="ADC 비교 결과" width="820">
@@ -112,10 +112,11 @@ irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 
 ## 사용법
 
-`질환   검사 수치   AI 장기 분석   우선순위   결과`의 다섯 화면을 **PgUp / PgDn**으로 오갑니다.
+`암종   질환   검사 수치   AI 장기 분석   우선순위   결과`의 여섯 화면을 **PgUp / PgDn**으로 오갑니다.
 
 | 화면 | 하는 일 |
 |---|---|
+| 암종 | 환자의 암을 고릅니다. 모르면 15종을 모두 비교합니다 |
 | 질환 | 질환명이나 증상을 입력하고 Enter로 추가합니다 |
 | 검사 수치 | 아는 값만 입력합니다 |
 | AI 장기 분석 | 질환마다 판정한 장기를 확인합니다 |

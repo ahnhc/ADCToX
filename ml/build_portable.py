@@ -129,10 +129,10 @@ def extract(path, names):
 
 def runtime_modules():
     """vulnerability_model and mondo_index for the full build: server functions, local file locations."""
-    vm = extract(R / "ml/lab.py", ["TwoTower"]) + "\n" + extract(R / "ml/vulnerability_model.py", ["close", "_encoder", "_st", "_ensemble", "axis_net", "predict", "predict_models", "agreement"])
+    vm = extract(R / "ml/lab.py", ["TwoTower"]) + "\n" + extract(R / "ml/vulnerability_model.py", ["close", "_encoder", "_load_encoder", "_st", "_ensemble", "axis_net", "predict", "predict_models", "agreement"])
     vm = sub(vm, '"FremyCompany/BioLORD-2023"', 'os.path.join(_BASE, "BioLORD-2023")', "vulnerability_model")
     vm = vm.replace("lab.TwoTower", "TwoTower"); assert not re.search(r"\blab\.(?!py)", vm)
-    vm = RT_HEAD + 'DEV = "cuda:0" if torch.cuda.is_available() else "cpu"; PT = os.path.join(_BASE, "vuln_biolord.pt")\n_ST, _EMB, _CK, _EMB_MAX, _CK_AXIS, _CK_HIDDEN, _CK_ALT, _CK_OPT = {}, {}, {}, 4096, [], set(), [], {"agree_min": 1}\n\n' + vm
+    vm = RT_HEAD + 'DEV = "cuda:0" if torch.cuda.is_available() else "cpu"; PT = os.path.join(_BASE, "vuln_biolord.pt")\n_ST, _EMB, _CK, _EMB_MAX, _CK_AXIS, _CK_HIDDEN, _CK_ALT, _CK_OPT = {}, {}, {}, 4096, [], set(), [], {"agree_min": 1}\n_ST_LOCK = __import__("threading").Lock()\n\n' + vm
     mi = extract(R / "ml/mondo_index.py", ["_encoder", "_embed", "close", "_char_feats", "gate_inputs", "_load", "link", "concept", "readings", "abbreviations", "concept_candidates", "_tri", "rr_features", "rerank_scores", "judged_organs", "phenotype", "_ko_norm", "korean", "nearest"])
     mi = RT_HEAD + 'THETA = 0.75; NAME = os.path.join(_BASE, "SapBERT"); C = _BASE + os.sep\n_ENC = {}; _IDX = None; _IDX_E = None; TIE = 0.02; HPO_THETA = 0.85; RR_K = 10; import re; ABBREV = re.compile(r"^[A-Za-z][A-Za-z0-9]{1,5}$"); HANGUL = re.compile("[가-힣]")\n\n' + mi
     src = (R / "ml/mondo_index.py").read_text()
@@ -160,7 +160,8 @@ def main():
                 profiles=__import__("suggest").read_profiles(R / "data/curated/disease_profiles"), nonhuman=sorted(__import__("suggest").nonhuman_ids(OBO)),
                 mondo_ko={t: [k, en] + list(alt) for t, (k, alt, en) in __import__("suggest").read_mondo_ko(R / "data/curated/korean/mondo_ko.jsonl").items()},
                 mechanisms={r["adc"]: r for r in csv.DictReader(open(R / "data/curated/competition/adc_mechanism_draft.csv", encoding="utf-8"))},
-                indications={r["adc"]: r for r in csv.DictReader(open(R / "data/curated/competition/adc_indications.csv", encoding="utf-8"))})
+                indications={r["adc"]: r for r in csv.DictReader(open(R / "data/curated/competition/adc_indications.csv", encoding="utf-8"))},
+                cancers={r["cancer"]: r["adcs"].split(";") for r in csv.DictReader(open(R / "data/curated/competition/adc_cancers.csv", encoding="utf-8"))})
     if FULL: data["learned"] = json.load(open(R / "ml/results/learned_vulnerability.json"))["severity"]
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
     src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "gemma_runtime", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion")}
