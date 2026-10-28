@@ -63,7 +63,10 @@ def test_details_show_indication_organ_warnings_and_readable_payload(monkeypatch
     tdxd = next(r for r in rows if r["name"] == "Trastuzumab deruxtecan")
     text = "\n".join(map(plain, RC._result_details(tdxd, [], 110)))
     assert "HER2+ breast cancer" in text and "Warnings on the patient's organs" in text
-    assert re.search(r"Lung\s+!!\s+Boxed INTERSTITIAL LUNG DISEASE; 5.1 Interstitial Lung Disease/Pneumonitis", text)
+    assert re.search(r"Lung\s+!!\s+Interstitial Lung Disease/Pneumonitis\s*$", text, re.M)
+    assert not re.search(r"\b\d+\.\d+ [A-Z]|Boxed [A-Z]|\[\d+\.\d+\]", text)            # no section numbers
+    assert RC.warning_names([("Boxed", "HEPATOTOXICITY"), ("5.1", "Hepatotoxicity")]) == "Hepatotoxicity"
+    assert RC.warning_names([("5.2", "Neutropenia"), ("5.3", "Peripheral Neuropathy")]) == "Neutropenia; Peripheral Neuropathy"
     assert "topoisomerase I inhibitor" in text and "topo1" not in text
     for r in rows:
         t = "\n".join(map(plain, RC._result_details(r, [], 110)))

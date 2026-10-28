@@ -754,14 +754,20 @@ def payload_line(mech):
             + (f"; target {mech['target']}" if mech.get("target") else ""))
 
 
+def warning_names(headings):
+    """the label's warning names on one organ, without section numbers; a name inside another (the boxed warning's capitals
+    within its section 5 heading) is shown once, as the longer: [("Boxed", "INTERSTITIAL LUNG DISEASE"), ("5.1", "Interstitial
+    Lung Disease/Pneumonitis")] -> 'Interstitial Lung Disease/Pneumonitis'"""
+    heads = list(dict.fromkeys(head for _, head in headings))
+    keep = [h for i, h in enumerate(heads) if not any(h.lower() in o.lower() and (h.lower() != o.lower() or (h.isupper() and not o.isupper()) or (h == o and j < i))
+                                                    for j, o in enumerate(heads) if j != i)]
+    return "; ".join(keep)
+
+
 def organ_warning_lines(row):
-    """the label warnings on this patient's organs, the boxed one first: '  Lung      !!  Boxed INTERSTITIAL LUNG DISEASE; 5.1 ...'"""
-    out = []
-    for marks, organs in (("!!", row.get("boxed", [])), ("! ", row.get("warn", []))):
-        for a in organs:
-            heads = "; ".join(f"{sec} {head}" for sec, head in row["organs"][a].get("headings", []))
-            out.append(f"  {ORGAN_SHORT[a]:<9} {marks}  {heads}")
-    return out
+    """the label warnings on this patient's organs, the boxed one first: '  Lung      !!  Interstitial Lung Disease/Pneumonitis'"""
+    return [f"  {ORGAN_SHORT[a]:<9} {marks}  {warning_names(row['organs'][a].get('headings', []))}"
+            for marks, organs in (("!!", row.get("boxed", [])), ("! ", row.get("warn", []))) for a in organs]
 
 
 _CAN = _CM = None
@@ -862,7 +868,7 @@ def _result_details(row, checks_, width):
         out.append("  " + payload_line(mech))
         note = mech.get("mechanism_note", "")                                          # the label's own 12.1 text, verbatim
         keep = [x for x in re.split(r"(?<=\.)\s+(?=[A-Z])", note) if re.search(re.escape(mech["payload"]) + r"|microtubul|topoisomerase|DNA", x)][:2]
-        if keep: out.append("  " + " ".join(keep) + (f" [{mech['reference']}]" if mech.get("reference") else ""))
+        if keep: out.append("  " + " ".join(keep))
     mine = [test for test, names, _ in checks_ if (not names or row["name"] in names) and not test.startswith("enter ")]
     if mine:
         out.append(paint("─" * width, "90"))
@@ -1020,7 +1026,7 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
             emit(r["name"])
             for a in AXES:
                 if a in s:
-                    o = r["organs"][a]; hd = "; ".join(f"{sec} {h}" for sec, h in o["headings"]) or "no warning"
+                    o = r["organs"][a]; hd = warning_names(o["headings"]) or "no warning"
                     emit(f"  {EN[a]} / {o['level']} / {hd} / {_inc_text(o)}")
 
 

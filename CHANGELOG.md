@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased: No section numbers
+
+- The ADC detail panel names the label's warnings without section numbers (`Lung  !!  Interstitial Lung Disease/Pneumonitis`, was `Boxed INTERSTITIAL LUNG DISEASE; 5.1 Interstitial Lung Disease/Pneumonitis`); a boxed warning named inside its section 5 heading is shown once. The payload text no longer ends in its section reference. `--plain` follows.
+
 ## 0.6.0: Final design pass (Ubuntu and macOS; Windows stays on 0.5.5)
 
 - **A cancer name the search reads badly comes first in the suggestions**: `HER2 양성 유방암` suggested benign tumours (양성 also means benign); now HER2 positive breast carcinoma is the first row. Six more Korean receptor-status names in cancer_aliases.csv (HER2 음성, 호르몬수용체 양성, ER 양성 유방암; HER2 양성 위암).
