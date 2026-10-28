@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="386" viewBox="0 0 820 386" role="img" aria-label="장기 판정 macro-F1 비교">
+<style>svg{font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif}
+.bg{fill:#fcfcfb}.ink{fill:#0b0b0b}.sec{fill:#52514e}.mut{fill:#898781}.grid{stroke:#e1e0d9}.s1{fill:#2a78d6}.s2{fill:#eb6834}.s3{fill:#1baf7a}
+@media (prefers-color-scheme: dark){.bg{fill:#1a1a19}.ink{fill:#f0efec}.sec{fill:#c3c2b7}.grid{stroke:#2c2c2a}.s1{fill:#3987e5}.s2{fill:#d95926}.s3{fill:#199e70}}</style>
+<rect class="bg" width="820" height="386" rx="8"/>
+<text class="ink" x="20" y="32" font-size="17" font-weight="600">장기 판정 정확도 (test, 장기 macro-F1, seed 3개 평균)</text>
+<rect class="s1" x="20" y="50" width="12" height="12" rx="3"/><text class="sec" x="38" y="60" font-size="13">이 프로젝트의 모델 (처음부터 학습, 1.1억 파라미터)</text>
+<rect class="s2" x="20" y="70" width="12" height="12" rx="3"/><text class="sec" x="38" y="80" font-size="13">Gemma 4 E2B, 같은 라벨로 튜닝</text>
+<rect class="s3" x="20" y="90" width="12" height="12" rx="3"/><text class="sec" x="38" y="100" font-size="13">Gemma 4 E2B, 튜닝 안 함</text>
+<line class="grid" x1="150.0" y1="120" x2="150.0" y2="342" stroke-width="1"/>
+<text class="mut" x="150.0" y="360" font-size="12" text-anchor="middle">0</text>
+<line class="grid" x1="302.5" y1="120" x2="302.5" y2="342" stroke-width="1"/>
+<text class="mut" x="302.5" y="360" font-size="12" text-anchor="middle">0.25</text>
+<line class="grid" x1="455.0" y1="120" x2="455.0" y2="342" stroke-width="1"/>
+<text class="mut" x="455.0" y="360" font-size="12" text-anchor="middle">0.5</text>
+<line class="grid" x1="607.5" y1="120" x2="607.5" y2="342" stroke-width="1"/>
+<text class="mut" x="607.5" y="360" font-size="12" text-anchor="middle">0.75</text>
+<line class="grid" x1="760.0" y1="120" x2="760.0" y2="342" stroke-width="1"/>
+<text class="mut" x="760.0" y="360" font-size="12" text-anchor="middle">1</text>
+<text class="ink" x="138" y="159.0" font-size="14" text-anchor="end" font-weight="600">평균</text>
+<path class="s1" d="M150,128 h437.0 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-437.0 z"/>
+<text class="ink" x="597.0" y="141" font-size="13" font-weight="600">0.723</text>
+<path class="s2" d="M150,146 h429.7 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-429.7 z"/>
+<text class="sec" x="589.7" y="159" font-size="13">0.711</text>
+<path class="s3" d="M150,164 h353.5 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-353.5 z"/>
+<text class="sec" x="513.5" y="177" font-size="13">0.586</text>
+<text class="ink" x="138" y="237.0" font-size="14" text-anchor="end">처음 보는 질환</text>
+<path class="s1" d="M150,206 h470.6 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-470.6 z"/>
+<text class="ink" x="630.6" y="219" font-size="13" font-weight="600">0.778</text>
+<path class="s2" d="M150,224 h504.7 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-504.7 z"/>
+<text class="sec" x="664.7" y="237" font-size="13">0.834</text>
+<path class="s3" d="M150,242 h446.8 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-446.8 z"/>
+<text class="sec" x="606.8" y="255" font-size="13">0.739</text>
+<text class="ink" x="138" y="315.0" font-size="14" text-anchor="end">아는 질환, 새 표현</text>
+<path class="s1" d="M150,284 h402.9 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-402.9 z"/>
+<text class="ink" x="562.9" y="297" font-size="13" font-weight="600">0.667</text>
+<path class="s2" d="M150,302 h354.7 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-354.7 z"/>
+<text class="sec" x="514.7" y="315" font-size="13">0.588</text>
+<path class="s3" d="M150,320 h259.5 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-259.5 z"/>
+<text class="sec" x="419.5" y="333" font-size="13">0.432</text>
+<text class="mut" x="150" y="378" font-size="12">처음 보는 질환 296문항 (학습에서 질환과 상위, 하위 개념을 모두 뺌), 아는 질환 168문항</text>
+</svg>
