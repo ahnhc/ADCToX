@@ -182,7 +182,7 @@ def test_condition_page_has_no_update_screen_and_keeps_input(monkeypatch):
     monkeypatch.setattr(form, "_key", lambda scr, tab=False: next(keys))
     assert not hasattr(form.Form, "model_updates")
     rc = SimpleNamespace(_reg={"cirrhosis": {"organ_axes": "hepatic", "label": "Cirrhosis"}}, AXES=["hepatic"], EN={"hepatic": "Hepatic"},
-                         KO={"cirrhosis": "간경변"}, ORGAN_KO={"hepatic": "간"}, condition_name=lambda c: "Cirrhosis", HAS_LEARNED=True)
+                         KO={"cirrhosis": "간경변"}, ORGAN_KO={"hepatic": "간"}, condition_name=lambda c: "Cirrhosis", HAS_LEARNED=True, cancer_alias=lambda q: None)
     selected, free, choice = form.Form(screen, rc).conditions(set(), "asthma")
     assert selected == {"cirrhosis"} and free == "asthma" and choice == {}
 

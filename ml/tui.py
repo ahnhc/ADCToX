@@ -156,6 +156,13 @@ def _wrap_ansi(text, width):
     if line or not out: out.append("".join(line) + ("\x1b[0m" if active else ""))
     return out
 
+def _wrap_hanging(text, width):
+    """_wrap_ansi for an indented detail line: its wrapped lines start two columns further in than the line itself."""
+    plain = re.sub(r"\x1b\[[\d;]*m", "", text); lead = len(plain) - len(plain.lstrip(" "))
+    if not lead: return _wrap_ansi(text, width)
+    pad = " " * min(lead + 2, width // 3); rows = _wrap_ansi(text, width - len(pad))
+    return rows[:1] + [pad + row for row in rows[1:]]
+
 def radiolist(title, items, default=0, description=""):
     """items: [(label, detail)]. Returns the chosen index (ESC / q -> default)."""
     def run(scr):
@@ -284,7 +291,7 @@ def browse(title, lines, selectable, details, footer="", context=(), scr=None, c
             cur = min(cur, len(choices) - 1)
             out = []
             for ln in (details(cur, width) if callable(details) else details[cur]):
-                out += _wrap_ansi(ln, width)
+                out += _wrap_hanging(ln, width)
             available = max(4, h - y0 - 3)
             panel = min(len(out) + 1, max(3, int(available * (0.75 if detail_focus else 0.55))))
             area = min(len(table), max(1, available - panel))

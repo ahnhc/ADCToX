@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0: Final design pass (Ubuntu and macOS; Windows stays on 0.5.5)
+
+- **A cancer name the search reads badly comes first in the suggestions**: `HER2 양성 유방암` suggested benign tumours (양성 also means benign); now HER2 positive breast carcinoma is the first row. Six more Korean receptor-status names in cancer_aliases.csv (HER2 음성, 호르몬수용체 양성, ER 양성 유방암; HER2 양성 위암).
+- The start screen says the cancer goes in the box too (`기저질환, 암종, 검사 수치로 ...`; the box `질환명, 증상, 암종을 입력하세요`), and the summary line above each step reads `질환`.
+- Wrapped lines keep their column: the ADC detail panel (indications, restriction reasons) and Read as on AI 장기 분석 at 80 columns no longer fall back to the left edge.
+
 ## 0.5.9: The cancer is typed with the diseases (Ubuntu and macOS; Windows stays on 0.5.5)
 
 - **No separate cancer step.** A cancer typed or picked on the 질환 screen (any MONDO cancer, lymphoma or leukemia; 2,597 terms in data/curated/competition/cancer_mondo.json, built by ml/build_cancer_mondo.py from cancer_roots.csv) is taken as the patient's cancer, and the patient as having that cancer only: the ADCs approved for it come first, the others follow under the `Other cancers` rule. Several cancers take the ADCs of all of them. A cancer counts for no organ, and AI 장기 분석 shows it as `Cancer`.

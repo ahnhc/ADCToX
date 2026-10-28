@@ -270,7 +270,8 @@ class Form:
             while True:
                 q = query.strip()
                 have = set().union(*[keys(x) for x in sel]) if sel else set()       # a disease once: picked, or in any section
-                rows = [("s", x, "") for x in found if fresh(x, have)]
+                alias = RC.cancer_alias(q) if q else None                 # a cancer name the search reads badly (HER2 양성 유방암: 양성 = benign)
+                rows = [("s", x, "") for x in ([("mondo", alias, RC._cancer_map()["terms"][alias][0], q, [])] if alias else []) + found if fresh(x, have)]
                 if ai["q"] == q and ai["res"]:
                     rows += [("s", x, "AI") for x in ai["res"] if fresh(x, have)]
                 split = SG.parts(RC, query)
@@ -290,7 +291,7 @@ class Form:
                     for ln in logo(): self.S.put_ansi(y, (w - logo_width()) // 2, ln); y += 1
                 else: self.S.put_ansi(y, (w - 6) // 2, "\033[36;1mADC\033[0m\033[31;1mToX\033[0m"); y += 1
                 if not (rows or sel):                                      # the empty start screen says what the app does
-                    about = f"기저질환과 검사 수치로 FDA 승인 ADC {len(RC._indications()) or 15}개를 경고가 적은 순서로 보여 줍니다."
+                    about = f"기저질환, 암종, 검사 수치로 FDA 승인 ADC {len(RC._indications()) or 15}개를 경고가 적은 순서로 보여 줍니다."
                     self.S.put(y + 1, max(1, (w - _w(about)) // 2), _clip(about, w - 2), self.S.dim); y += 1
                 y += 2
                 if sel:                                                    # chips (names only: the organs come with the analysis); a click or Backspace on an empty box takes one off
@@ -630,7 +631,11 @@ class Form:
             wrapped, span = [], []                              # the rows under the fixed header; span = (first, end) line of each input
             for k, (c, org, what) in enumerate(rows):
                 name = _clip(c, nw); plain = re.sub(r"\x1b\[[\d;]*m", "", org)
-                row = tui._wrap_ansi(("\033[36;1m› \033[0m" if k == cur else "  ") + f"{name}{' ' * (nw - _w(name))}   {org}{' ' * max(0, ow - _w(plain))}   {what}", width)
+                head = ("\033[36;1m› \033[0m" if k == cur else "  ") + f"{name}{' ' * (nw - _w(name))}   {org}{' ' * max(0, ow - _w(plain))}   "
+                col = 2 + nw + 3 + max(ow, _w(plain)) + 3                  # Read as wraps under itself
+                if width - col >= 12:
+                    parts = tui._wrap_ansi(what, width - col); row = [head + parts[0]] + [" " * col + x for x in parts[1:]]
+                else: row = tui._wrap_ansi(head + what, width)
                 span.append((len(wrapped), len(wrapped) + len(row))); wrapped += row
             panel = gemma_panel(reports[cur], RC, ko, width) if reports[cur].get("gemma") else []
             if h - y0 - 4 - len(fixed) - len(wrapped) < len(panel) + 1: panel = []     # the panel only when the whole table still fits
@@ -718,7 +723,7 @@ def run(RC, back=False):
         RC.CHOICE.update(st["choice"])
         while True:
             F.step = min(step, 4); F.done = []
-            if step >= 1: F.done.append(("기저질환", ", ".join([RC.condition_name(i) for i in sorted(st["picked"], key=list(RC._reg).index)] + [kn(c) for c in split_free(st["free"])])))
+            if step >= 1: F.done.append(("질환", ", ".join([RC.condition_name(i) for i in sorted(st["picked"], key=list(RC._reg).index)] + [kn(c) for c in split_free(st["free"])])))
             if step >= 2:
                 F.done.append(("검사 수치", f"{len(st['raw'])}개 입력" if st["raw"] else "입력 없음"))
             conds = [i for i in RC._reg if i in st["picked"]] + split_free(st["free"])
