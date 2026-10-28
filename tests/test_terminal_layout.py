@@ -485,4 +485,4 @@ def test_saved_patient_is_offered_to_go_on_or_start_new(monkeypatch, keys, goes_
     st = dict(picked=set(), free="pulmonary TB, Hemophilia A", raw={"hb": 8.0}, choice={})
     assert form.Form(screen, RC).resume(st) is goes_on
     first = frames[0]
-    assert "질환 2개 (pulmonary TB, Hemophilia A) · 검사 수치 1개" in first and "last_input.json" in first and "새 환자로 시작" in first
+    assert "질환 2개 (pulmonary TB, Hemophilia A), 검사 수치 1개" in first and "last_input.json" in first and "새 환자로 시작" in first

@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased: Organs first shown by the analysis
+
+- **The first screen no longer shows organs.** The suggestions and the picked chips carry names only; the organs appear on the AI 장기 분석 screen, which every disease now goes through, a disease picked from the registry list too (it used to skip the screen and show its organs first on the result).
+- **The analysis shows the organ judge's three most probable organs with their probability** (`Liver 90%  Cardio 16%  Blood 9%`), the calibrated organ output on the text. The organs the ranking uses are green, the others grey; a used organ outside the three follows them. A one-line legend says so. Without the judge (models before 0.7, or the judge failed) the used organs are shown as before.
+- No middle dot in the app's text: Read as reads `MONDO (record)`, the step bar is spaced, the payload line uses semicolons.
+
 ## 0.5.5 — Read as a doctor would
 
 From going through every screen as a doctor using the app for the first time.

@@ -89,7 +89,8 @@ def _outputs(M, texts, bs=64):
 
 
 def judge(texts, path=None):
-    """-> one dict per text: concept (or None), name, organs, via ("label", "record", "name" or None), valid, ok, sim."""
+    """-> one dict per text: concept (or None), name, organs, via ("label", "record", "name" or None), valid, ok, sim, and p: the
+    calibrated organ output on the text itself, {axis: probability} for all 13 (what the screens show as the organ probabilities)."""
     texts = list(texts)
     if not texts: return []
     M = load(path); j = M["j"]; AX = j["axes"]
@@ -97,11 +98,11 @@ def judge(texts, path=None):
     Sm = np.where(M["mondo"][None], S, -9); jm = Sm.argmax(1); sm = Sm.max(1)
     po = 1 / (1 + np.exp(-zo / np.array(j["temp"]))); pv = 1 / (1 + np.exp(-zv)); rows = []
     for k in range(len(texts)):
-        ok = bool(pv[k] >= j["vthr"])
-        if not ok: rows.append(dict(concept=None, name="", organs=[], via=None, valid=float(pv[k]), ok=False, sim=float(s[k]))); continue
+        ok = bool(pv[k] >= j["vthr"]); p = {a: float(x) for a, x in zip(AX, po[k])}
+        if not ok: rows.append(dict(concept=None, name="", organs=[], via=None, valid=float(pv[k]), ok=False, sim=float(s[k]), p=p)); continue
         c, sim = (M["ids"][jj[k]], float(s[k])) if s[k] >= j["theta"] else (None, float(s[k]))
         if sm[k] >= j["theta"] and sm[k] >= s[k] - j["mondo_first"]: c, sim = M["ids"][jm[k]], float(sm[k])
         name, organs, via = M["C"].get(c, ["", [], ""]) if c else ("", [], "")
         if not organs: organs, via = [AX[a] for a in np.where(po[k] >= np.array(j["thr"]))[0]], "name"
-        rows.append(dict(concept=c, name=name, organs=list(organs), via=via, valid=float(pv[k]), ok=True, sim=sim))
+        rows.append(dict(concept=c, name=name, organs=list(organs), via=via, valid=float(pv[k]), ok=True, sim=sim, p=p))
     return rows

@@ -189,7 +189,7 @@ class Form:
         if width > w - 2 * (len(UI_VERSION) + 12): return
         x = (w - width) // 2
         for i, (name, on) in enumerate(parts):
-            if i: self.S.put(y, x, " · ", self.S.dim); x += 3
+            if i: self.S.put(y, x, "   ", self.S.dim); x += 3
             self.S.put(y, x, name, self.S.title if on else self.S.dim); x += _w(name)
 
     def frame(self, title, hint, nav=("PGUP", "PGDN")):
@@ -293,15 +293,13 @@ class Form:
                     about = f"기저질환과 검사 수치로 FDA 승인 ADC {len(RC._indications()) or 15}개를 경고가 적은 순서로 보여 줍니다."
                     self.S.put(y + 1, max(1, (w - _w(about)) // 2), _clip(about, w - 2), self.S.dim); y += 1
                 y += 2
-                if sel:                                                    # chips; a click or Backspace on an empty box takes one off
+                if sel:                                                    # chips (names only: the organs come with the analysis); a click or Backspace on an empty box takes one off
                     x = bx
                     for n, item in enumerate(sel):
-                        ax = item[3] or (I.organs.get(item[1], []) if item[0] == "mondo" else [])
-                        org = ", ".join(GLYPH[a] for a in RC.AXES if a in ax)
-                        chip = f"[ {item[2]}" + (f"  {org}" if org else "") + " × ]"
+                        chip = f"[ {item[2]} × ]"
                         if x + _w(chip) > bx + bw and x > bx: y += 1; x = bx
                         if (flash[0] == n and time.monotonic() < flash[1]) or (armed and n == len(sel) - 1): self.S.put(y, x, _clip(chip, bw), self.S.cur)
-                        else: self.S.put_ansi(y, x, f"\033[32;1m[\033[0m {_clip(item[2], bw - 12)}" + (f"  \033[90m{org}\033[0m" if org else "") + " \033[31m×\033[0m \033[32;1m]\033[0m")
+                        else: self.S.put_ansi(y, x, f"\033[32;1m[\033[0m {_clip(item[2], bw - 6)}" + " \033[31m×\033[0m \033[32;1m]\033[0m")
                         self.hit(y, x, x + _w(chip), ("CHIP", n)); x += _w(chip) + 2
                     y += 1
                 caret = "_" if int(time.monotonic() * 2) % 2 == 0 else " "                                       # blinks twice a second
@@ -312,15 +310,10 @@ class Form:
                 if ai["busy"]: status = "AI 추천 찾는 중 ..."
                 if sym["busy"]: status = "증상으로 질환 찾는 중 ...   처음 한 번은 모델을 불러 10초쯤 걸립니다"
                 if sym["error"]: status = "증상 검색 실패: " + sym["error"]
-                lw = min(max([_w(names_of(r[0], r[1])[0]) for r in rows if r[0] in ("s", "sym")] + [10]), max(16, bw // 2 + 2))
-                orgs = {}
-                for k, (kind, s, tag) in enumerate(rows):
-                    if kind in ("s", "sym"):
-                        orgs[k] = strip(RC.AXES, s[4]) if s[4] else "\033[90m" + ("none of 13" if s[0] in ("mondo", "reg") and (I.mondo_loaded or s[0] == "reg") else "분석 때 판정") + "\033[0m"
-                ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for o in orgs.values()] + [6]), 16)
+                lw = min(max([_w(names_of(r[0], r[1])[0]) for r in rows if r[0] in ("s", "sym")] + [10]), max(16, bw * 3 // 5))
                 lines = []; tip = ""
                 for k, (kind, s, tag) in enumerate(rows):
-                    if kind == "sym" and not any(l[0] == "head" for l in lines): lines += [("head", ""), ("head", "증상·문장으로 찾은 질환")] if k else [("head", "증상·문장으로 찾은 질환")]
+                    if kind == "sym" and not any(l[0] == "head" for l in lines): lines += [("head", ""), ("head", "증상이나 문장으로 찾은 질환")] if k else [("head", "증상이나 문장으로 찾은 질환")]
                     lines.append((k, kind, s, tag))
                 area = max(3, h - y - 3)
                 at = next((i for i, l in enumerate(lines) if l[0] == cur), 0)
@@ -332,13 +325,12 @@ class Form:
                     if kind == "raw": text = f"\033[90m+ 입력한 그대로 추가:\033[0m {s[2]}"
                     elif kind == "split": text = s[2]
                     else:
-                        main, sub = names_of(kind, s); org = orgs[k]
+                        main, sub = names_of(kind, s)                    # names only: the organs come with the analysis
                         label = _clip(marquee(main, lw, time.monotonic() - rested[1]) if on else main, lw)
-                        plain = re.sub(r"\x1b\[[\d;]*m", "", org)
-                        room = max(0, bw - 10 - lw - ow); tail = tag if kind == "sym" else sub
-                        if on and kind != "sym" and sub and (_w(sub) > room or _w(main) > lw): tip = f"{main}  ·  {sub}"     # the whole names, under the list
+                        room = max(0, bw - 7 - lw); tail = tag if kind == "sym" else sub
+                        if on and kind != "sym" and sub and (_w(sub) > room or _w(main) > lw): tip = f"{main}   {sub}"     # the whole names, under the list
                         tail = tail if _w(tail) <= room else (_clip(tail, room) if kind == "sym" else "")   # a second name is shown whole or not at all
-                        text = f"{label}{' ' * (lw - _w(label))}   {org}{' ' * max(0, ow - _w(plain))}   \033[90m{tail}\033[0m" + (f" \033[90m{tag}\033[0m" if tag == "AI" else "")
+                        text = f"{label}{' ' * (lw - _w(label))}   \033[90m{tail}\033[0m" + (f" \033[90m{tag}\033[0m" if tag == "AI" else "")
                     if on: self.S.put(yy, bx, " " * bw, self.S.cur)
                     self.S.put_ansi(yy, bx + 1, f"{'→' if on else ' '} {text}", selected=on); self.hit(yy, bx, bx + bw, ("ROW", k))
                 foot = "Enter 추가   ↑↓ 선택   " + ("× 또는 Backspace 빼기   PgDn 다음" if sel else "Esc 종료")
@@ -479,7 +471,7 @@ class Form:
     def resume(self, st):
         """a saved run in progress (SAVE) at start: go on with it, or start a new patient and delete it. -> True to go on."""
         RC = self.RC; names = [RC.condition_name(i) for i in sorted(st["picked"], key=list(RC._reg).index)] + split_free(st["free"])
-        desc = [f"질환 {len(names)}개" + (f" ({', '.join(names)})" if names else "") + f" · 검사 수치 {len(st['raw'])}개",
+        desc = [f"질환 {len(names)}개" + (f" ({', '.join(names)})" if names else "") + f", 검사 수치 {len(st['raw'])}개",
                 "이 PC의 ~/.config/adctox/last_input.json에 저장되어 있고, 결과가 나오면 지워집니다."]
         options = ["이어서 하기", "새 환자로 시작 (저장된 입력 지움)"]; cur = 0
         while True:
@@ -577,7 +569,7 @@ class Form:
                 h, w = self.scr.getmaxyx()
                 if step: self.S.put(y, 2, step + "." * (1 + int((time.monotonic() - started) * 2.5) % 3))
                 y += 2
-                names = ", ".join(c for c in conditions if c not in self.RC._reg and c.lower() not in self.RC._by_label and c not in self.RC.CONTEXT)
+                names = ", ".join(self.RC.condition_name(c) if c in self.RC._reg else c for c in conditions if c not in self.RC.CONTEXT)
                 for ln in _wrap(names, w - 5, "  ")[:2]: self.S.put(y, 2, ln, self.S.dim); y += 1
                 self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
                 self.scr.refresh()
@@ -606,15 +598,16 @@ class Form:
         The table scrolls with the highlighted input."""
         import tui, suggest as SG
         top = cur = 0; RC = self.RC; ko = SG.index(RC).ko
-        SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Similar condition": "Similar registry condition",
+        SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Registry": "Registry", "Similar condition": "Similar registry condition",
                   "Phenotype (HPO)": "HPO phenotype", "Chosen": "Chosen", "Unmapped": "Not understood"}
         first = True; last = -1
         while True:
             y0 = self.frame("AI 장기 분석", "")
             h, w = self.scr.getmaxyx(); width = max(2, w - 5)
             if any(r.get("fallback") for r in reports):         # the organ judge failed: none of its output is shown as used
-                self.S.put_ansi(y0, 2, "\033[33m" + _clip("Organ judge 오류 · MONDO linker로 대체", w - 4) + "\033[0m"); y0 += 2
-            nw = min(24, max(_w(r["condition"]) for r in reports))
+                self.S.put_ansi(y0, 2, "\033[33m" + _clip("Organ judge 오류, MONDO linker로 대체", w - 4) + "\033[0m"); y0 += 2
+            shown = lambda r: RC.condition_name(r["condition"]) if r["source"] == "Registry" else r["condition"]   # a picked disease by its name
+            nw = min(24, max(_w(shown(r)) for r in reports)); grey = False
             rows = []
             for r in reports:
                 picked = RC.CHOICE.get(r["condition"]) or ""
@@ -622,14 +615,16 @@ class Form:
                 read = ((ko.get(r.get("mondo") or "") if kr else "") or r["name"]) if r["source"].startswith("MONDO") else ((ko.get(picked) if kr else "") or r["name"] or "")
                 how = "MONDO" if r["source"].startswith("MONDO") else SOURCE.get(r["source"], r["source"])
                 if r["source"] == "AI judgment" and r.get("gemma"): how += " (Gemma)"
-                if r.get("judge_via"): how += f" · {r['judge_via']}"          # label, record or name: what set the organs
-                elif r.get("fallback") and r["source"] != "Unmapped": how += " · linker"
-                org = strip(RC.AXES, r["organs"]) if r["organs"] else "\033[90m" + ("none of 13" if r["source"].startswith("MONDO") else "-") + "\033[0m"
+                if r.get("judge_via"): how += f" ({r['judge_via']})"          # label, record or name: what set the organs
+                elif r.get("fallback") and r["source"] != "Unmapped": how += " (linker)"
+                org = (likely(RC.AXES, r["organs"], r.get("p")) if r["organs"] else
+                       "\033[90m" + ("none of 13" if r["source"].startswith("MONDO") else "-") + "\033[0m")
+                grey = grey or (bool(r["organs"]) and bool(r.get("p")))
                 tag = ""
                 if r.get("ambiguous") and r["condition"] not in RC.CHOICE: tag = f"   \033[33m{len(r['readings'])} meanings: pick on the next screen\033[0m"
-                if read.lower() == r["condition"].lower(): read = ""
-                rows.append((r["condition"], org, (f"{read}  " if read else "") + f"\033[90m{how}\033[0m" + tag))
-            ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for _, o, _ in rows] + [6]), 24)
+                if read.lower() in (r["condition"].lower(), shown(r).lower()): read = ""
+                rows.append((shown(r), org, (f"{read}  " if read else "") + f"\033[90m{how}\033[0m" + tag))
+            ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for _, o, _ in rows] + [6]), 40)
             head = f"  \033[1m{'Input':<{nw}}\033[0m   \033[1m{'Organs':<{ow}}\033[0m   \033[1mRead as\033[0m"
             fixed = [ln for line in (head, "\033[90m" + "─" * min(width, nw + ow + 42) + "\033[0m") for ln in tui._wrap_ansi(line, width)]
             wrapped, span = [], []                              # the rows under the fixed header; span = (first, end) line of each input
@@ -653,6 +648,7 @@ class Form:
                 if first and not self.scr.armed(): self.scr.transition("cascade", y_from=y0)          # the table builds up
                 elif cur != last and panel: self.scr.transition("cascade", y_from=py)                # a new judge panel unfolds
             first = False; last = cur
+            if grey: self.S.put_ansi(h - 3, 2, tui._wrap_ansi("\033[90m%: AI가 본 장기 확률   \033[0m\033[32;1m초록\033[0m\033[90m: 순위에 쓰는 장기   회색: 쓰지 않음\033[0m", w - 4)[0])
             self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
             if len(reports) > 1: self.S.put(h - 1, 2, "↑↓ 입력 고르기", self.S.dim)
             elif len(wrapped) > area: self.S.put(h - 1, 2, f"{top + 1}–{min(top + area, len(wrapped))} / {len(wrapped)}", self.S.dim)
@@ -665,6 +661,16 @@ class Form:
                 else: top = min(max(0, len(wrapped) - area), top + 1)
             elif key == "PGUP": return BACK
             elif key == "PGDN": return None
+
+
+def likely(axes, used, p):
+    """the organ judge's three most probable organs with their probability, most probable first: the organs the recommendation
+    uses in green, the others grey; a used organ outside the three follows them. Without the judge's output: the used organs."""
+    if not p: return strip(axes, used)
+    top = sorted(axes, key=lambda a: -p.get(a, 0))[:3]
+    top += [a for a in axes if a in used and a not in top]
+    pct = lambda x: ">99%" if x >= 0.995 else "<1%" if x < 0.005 else f"{round(x * 100)}%"
+    return "  ".join((f"\033[32;1m" if a in used else "\033[90m") + f"{GLYPH[a]} {pct(p.get(a, 0))}\033[0m" for a in top)
 
 
 STEP_TEXT = {"embedding": "질환 확인 중", "linking": "질환 확인 중", "judging": "장기 분석 중", "inference": "장기 분석 중"}   # progress events -> the line
@@ -726,14 +732,15 @@ def run(RC, back=False):
                 r = F.labs(st["raw"])
                 if r == BACK: step = 0; continue
                 st["raw"] = r; save(st); step = 2
-            elif step == 2:                                       # free text that maps to no organ
+            elif step == 2:                                       # every disease's organs, first shown here
                 RC.FALLBACK = {}
                 reports = []
-                if split_free(st["free"]):
+                if conds:
                     analysis = F.analyze(conds)
                     if analysis == BACK: step = 0; continue
                     reports, elapsed = analysis
-                    if reports and F.analysis_review(reports, elapsed) == BACK: step = 1; continue    # registry names alone: nothing to review
+                    if reports and F.analysis_review(reports, elapsed) == BACK: step = 1; continue
+                if split_free(st["free"]):
                     groups = [g for g in RC.ambiguous_conditions(conds) if g[0] not in st["choice"]]   # typed texts with readings on different organs: the user picks
                     if groups:
                         applied = {r["condition"]: o["mondo"] for r in reports for o in r.get("readings", []) if o["name"] == r["name"]}
@@ -752,13 +759,13 @@ def run(RC, back=False):
                     d = RC.default_levels(pc); names = [c for c, _, _ in pc]
                     picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")]      # diseases; lab findings keep the automatic order
                     k = F.first([kn(c) for c, _ in picks], [o for _, o in picks], [c for c, _ in picks].index(worry[0]) + 1 if worry[0] in dict(picks) else 0)
-                    if k == BACK: step = 2 if split_free(st["free"]) else 1; continue
+                    if k == BACK: step = 2 if conds else 1; continue
                     worry[0] = picks[k - 1][0] if k else None              # the chosen one first; the others keep the severity order
                     if k: RC.PRIORITY = {c: 0 if c == worry[0] else d[c] for c in names}; RC.FIRST = worry[0]
                 step = 4
             else:                                                 # the result screen, in the same session
                 rows, sc, notes, ck = RC.recommend(conds, {}, st["raw"])
                 r = RC.browse(rows, ck, notes, {}, st["raw"], scr=F.scr, crumbs=lambda: F.crumbs(1))
-                if r == "back": step = 3 if has_priority else 1; continue
+                if r == "back": step = 3 if has_priority else 2 if conds else 1; continue
                 return conds, st["raw"], (rows, sc, notes, ck)
     return curses.wrapper(app)

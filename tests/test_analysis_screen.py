@@ -55,9 +55,9 @@ def test_a_failed_organ_judge_is_named_and_its_rows_read_as_linker(monkeypatch):
     reports = [_report(1, fallback="RuntimeError: weights missing"), dict(_report(2, fallback="RuntimeError: weights missing"), source="Unmapped", organs=[], judge_via=None)]
     reports[0]["judge_via"] = None
     first = "\n".join(_review(monkeypatch, reports, ["KEY_NPAGE"])[0])
-    assert "Organ judge 오류 · MONDO linker로 대체" in first and "MONDO · linker" in first
+    assert "Organ judge 오류, MONDO linker로 대체" in first and "MONDO (linker)" in first
     ok = "\n".join(_review(monkeypatch, [_report(1)], ["KEY_NPAGE"])[0])
-    assert "오류" not in ok and "linker" not in ok and "MONDO · record" in ok
+    assert "오류" not in ok and "linker" not in ok and "MONDO (record)" in ok
 
 
 def _fake_models(monkeypatch, judge):
@@ -183,3 +183,36 @@ def test_the_picked_condition_comes_first_and_the_rest_keep_their_order(monkeypa
     monkeypatch.setattr(builtins, "input", lambda prompt: "")
     RC._ask_priority_pc(pc)
     assert RC.PRIORITY == {} and RC.priority(pc) == RC.default_levels(pc)
+
+
+def test_the_analysis_shows_the_three_likeliest_organs_with_their_probability(monkeypatch):
+    import form
+    p = {a: 0.0 for a in tui.GLYPH}; p.update(neurologic=0.951, cardiovascular=0.68, metabolic_endocrine=0.22)
+    plain = lambda t: __import__("re").sub(r"\x1b\[[\d;]*m", "", t)
+    assert plain(form.likely(list(tui.GLYPH), ["neurologic"], p)) == "Neuro 95%  Cardio 68%  Metabolic 22%"
+    assert "\033[32;1mNeuro" in form.likely(list(tui.GLYPH), ["neurologic"], p) and "\033[90mCardio" in form.likely(list(tui.GLYPH), ["neurologic"], p)
+    assert plain(form.likely(list(tui.GLYPH), ["neurologic", "ocular"], p)).endswith("Eye <1%")        # a used organ outside the three follows
+    assert plain(form.likely(list(tui.GLYPH), ["hepatic"], None)) == "Liver"                           # no judge output: the used organs
+    frames = _review(monkeypatch, [dict(_report(1), organs=["neurologic"], p=p)], ["KEY_NPAGE"])
+    text = "\n".join(frames[0])
+    assert "Neuro 95%  Cardio 68%  Metabolic 22%" in text and "AI가 본 장기 확률" in text and all(len(ln) <= 80 for ln in frames[0])
+
+
+def test_a_registry_disease_gets_an_analysis_row(monkeypatch):
+    import recommend as RC, scratch_runtime as SR
+    rid = next(iter(RC._reg)); label = RC._reg[rid]["label"]
+    p = {a: 0.5 for a in RC.AXES}
+    monkeypatch.setattr(SR, "available", lambda: True)
+    monkeypatch.setattr(SR, "judge", lambda texts: [dict(p=p) for _ in texts])
+    RC._ANALYSES.clear(); RC._REG_P.clear(); events = []
+    try:
+        (r,) = RC.analyze_conditions([rid], progress=events.append)
+        assert r["source"] == "Registry" and r["name"] == label and r["p"] == p and r["organs"]
+        assert events == ["judging", "done"]
+    finally: RC._ANALYSES.clear(); RC._REG_P.clear()
+
+
+def test_no_middle_dot_in_the_app_text():
+    root = pathlib.Path(__file__).resolve().parents[1] / "ml"
+    for name in ("form.py", "tui.py", "recommend.py", "restrictions.py", "labs.py", "term.py"):
+        assert "·" not in (root / name).read_text(encoding="utf-8"), name

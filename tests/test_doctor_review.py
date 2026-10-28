@@ -120,3 +120,12 @@ def test_the_start_screen_says_what_the_app_does(monkeypatch):
     import form
     r, texts = _conditions(monkeypatch, ["ESC"], [])
     assert r == form.QUIT and "FDA 승인 ADC 15개를 경고가 적은 순서로 보여 줍니다" in texts[0]
+
+
+def test_the_first_screen_shows_no_organs(monkeypatch):
+    """the organs are first shown by the analysis: neither the picked chips nor the suggestions carry them."""
+    r, texts = _conditions(monkeypatch, list("glauc") + [None, None, "PGDN"], ["heart_failure", "cirrhosis"])
+    assert r[0] == {"heart_failure", "cirrhosis"}
+    last = texts[-1]
+    assert "Heart failure" in last and "Glaucoma" in last
+    assert not any(o in t for t in texts for o in ("Liver", "Cardio", "Eye", "분석 때 판정", "none of 13"))

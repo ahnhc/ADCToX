@@ -277,7 +277,7 @@ def browse(title, lines, selectable, details, footer="", context=(), scr=None, c
             for ln in header[:budget]:
                 S.put_ansi(y0, 2, ln); y0 += 1
             if len(header) > budget:
-                S.put(y0, 2, f"그 외 {len(header) - budget}줄 · 창을 늘리면 모두 표시", S.dim); y0 += 1
+                S.put(y0, 2, f"그 외 {len(header) - budget}줄, 창을 늘리면 모두 표시", S.dim); y0 += 1
             if context: y0 += 1
             table, choices = lines(width) if callable(lines) else (lines, selectable)
             if not choices: return "next"

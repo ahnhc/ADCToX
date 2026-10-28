@@ -96,7 +96,7 @@ HAS_LEARNED = True          # the learned estimate is available (not in the port
 
 def clear_model_cache():
     """A completed model update must invalidate both linking and inference results."""
-    _FREE.clear(); _FREE_PREDICTIONS.clear(); _FREE_MODELS.clear(); _ANALYSES.clear(); _REGISTRY_LEARNED.clear()
+    _FREE.clear(); _FREE_PREDICTIONS.clear(); _FREE_MODELS.clear(); _ANALYSES.clear(); _REG_P.clear(); _REGISTRY_LEARNED.clear()
     module = sys.modules.get("mondo_index")
     if module is not None:
         index = getattr(module, "_IDX", None)
@@ -196,7 +196,7 @@ def _judge_extra(free, links, GR, MI):
 def _scratch_link(r):
     """one row of scratch_runtime.judge in the linker's format: a MONDO concept gives its organs (from its label, its MONDO record
     or, without either, the organ output on the text); any other result is an AI judgment of the text. `judge_via` says which."""
-    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, judge_via=r["via"], judge=True)
+    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, judge_via=r["via"], judge=True, p=r.get("p"))
     if not r["ok"]: return lk
     if r["concept"] and r["concept"].startswith("MONDO:"): lk.update(mondo=r["concept"], name=r["name"], axes=list(r["organs"]))
     elif r["organs"]: lk.update(judged=list(r["organs"]), sim=0.0, judge_via="name")
@@ -240,12 +240,20 @@ def analyze_conditions(conditions, progress=None):
     Running inference does not silently turn on cross-organ weighting or invent a label diagnosis.
     """
     free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
-    if not free: return []
-    best, links, _ = _free_info(free, progress)
-    learned = _predict_free(free, progress) if HAS_LEARNED else [None] * len(free)
+    picked = [c for c in conditions if c not in free and c not in CONTEXT]
+    if not free and not picked: return []
+    best, links, _ = _free_info(free, progress) if free else ([], [], None)
+    learned = (_predict_free(free, progress) if HAS_LEARNED else [None] * len(free)) if free else []
     _, _, _, notes, pc = resolve(conditions)
     organs = {c: sorted(axes, key=AXES.index) for c, axes, _ in pc}
     reports = []
+    labels = {c: _reg[c if c in _reg else _by_label[c.lower()]]["label"] for c in picked}
+    probs = _registry_p(list(labels.values()), progress)
+    for c in picked:                                            # a registry disease: its curated organs; the judge's organ output beside them
+        report = dict(condition=c, source="Registry", name=labels[c], mondo=_reg[c if c in _reg else _by_label[c.lower()]].get("mondo_id"),
+                      organs=organs.get(c, []), estimates=[], model=None, readings=[], ambiguous=False, models=[], by_model={}, agree={},
+                      gemma=None, via=None, fallback=None, judge_via=None, p=probs.get(labels[c]))
+        _ANALYSES[c] = report; reports.append(report)
     for c, (near, sim), link, prediction in zip(free, best, links, learned):
         how = dict(notes)[c]
         source = ("Chosen" if "chosen reading" in how else "AI judgment" if "AI judgment" in how else "MONDO (no organ axis)" if "no organ axis" in how else "MONDO" if "; MONDO '" in how else "Phenotype (HPO)" if "phenotype HPO" in how else
@@ -262,10 +270,29 @@ def analyze_conditions(conditions, progress=None):
                       model="BioLORD + disease-pair MLP" if prediction is not None else None,
                       readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")),
                       models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates}, gemma=link.get("gemma"), via=link.get("via"), fallback=link.get("fallback"),
-                      judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" else _chosen_via(c) if source == "Chosen" else None)
+                      judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" else _chosen_via(c) if source == "Chosen" else None,
+                      p=link.get("p"))
         _ANALYSES[c] = report; reports.append(report)
     if progress: progress("done")
-    return reports
+    return sorted(reports, key=lambda r: conditions.index(r["condition"]))
+
+
+_REG_P = {}                     # registry name -> the organ judge's organ probabilities on it
+
+
+def _registry_p(labels, progress=None):
+    """{registry name: {axis: probability}} from the organ judge's organ output on the name, or None per name without the judge
+    (models before 0.7, or the judge failed). The registry's own organs are what the recommendation uses."""
+    need = [l for l in labels if l not in _REG_P]
+    if need:
+        try:
+            import scratch_runtime as SR
+            if SR.available():
+                if progress: progress("judging")
+                for l, r in zip(need, SR.judge(need)): _REG_P[l] = r.get("p")
+        except Exception as error:
+            warnings.warn(f"organ judge unavailable: {error}")
+    return {l: _REG_P.get(l) for l in labels}
 
 
 def resolve(conditions):
@@ -708,11 +735,11 @@ MECH_TXT = {"tubulin": "microtubule inhibitor", "topo1": "topoisomerase I inhibi
 
 
 def payload_line(mech):
-    """'MMAE (auristatin), microtubule inhibitor · Val-Cit PABC linker, cleavable · bystander effect · target CD30'"""
+    """'MMAE (auristatin), microtubule inhibitor; Val-Cit PABC linker, cleavable; bystander effect; target CD30'"""
     t = lambda x: MECH_TXT.get(x, x)
-    return (f"{mech['payload']} ({t(mech['payload_family'])}), {t(mech['mechanism'])} · {t(mech['linker'])} linker, "
-            + ("cleavable" if mech["linker_cleavable"] == "True" else "non-cleavable") + (" · bystander effect" if mech["bystander"] == "True" else "")
-            + (f" · target {mech['target']}" if mech.get("target") else ""))
+    return (f"{mech['payload']} ({t(mech['payload_family'])}), {t(mech['mechanism'])}; {t(mech['linker'])} linker, "
+            + ("cleavable" if mech["linker_cleavable"] == "True" else "non-cleavable") + ("; bystander effect" if mech["bystander"] == "True" else "")
+            + (f"; target {mech['target']}" if mech.get("target") else ""))
 
 
 def organ_warning_lines(row):
@@ -892,13 +919,13 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
         for row, (organ, status, basis, code, certain) in actions:
             emit(f"{row['name']} / {organ.capitalize()}")
             emit("  " + paint(status, TONE[code]) + f"   {basis}")
-    analyses = [_ANALYSES[c] for c, _ in notes if c in _ANALYSES]
+    analyses = [_ANALYSES[c] for c, _ in notes if c in _ANALYSES and _ANALYSES[c]["source"] != "Registry"]     # typed text only
     if analyses:
         heading("AI organ analysis")
         for report in analyses:
             organs = ", ".join(ORGAN_SHORT[a] for a in report["organs"]) or no_organ_text(report)
             src = "MONDO" if report["source"].startswith("MONDO") else report["source"] if report["source"] != "Unmapped" else ""
-            if src and report.get("judge_via"): src += f" · {report['judge_via']}"      # label, record or name: what set the organs
+            if src and report.get("judge_via"): src += f" ({report['judge_via']})"      # label, record or name: what set the organs
             read = f"   ({src}: {report['name']})" if report["name"] else (f"   ({src})" if src else "")
             emit(f"{report['condition']} → {organs}" + paint(read, "90"))
     missing = list(dict.fromkeys(need for row in rows for need in _missing_inputs(row["verdict"])))
