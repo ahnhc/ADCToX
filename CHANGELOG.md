@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased: The cancer is typed with the diseases
+## 0.5.9: The cancer is typed with the diseases (Ubuntu and macOS; Windows stays on 0.5.5)
 
 - **No separate cancer step.** A cancer typed or picked on the 질환 screen (any MONDO cancer, lymphoma or leukemia; 2,597 terms in data/curated/competition/cancer_mondo.json, built by ml/build_cancer_mondo.py from cancer_roots.csv) is taken as the patient's cancer, and the patient as having that cancer only: the ADCs approved for it come first, the others follow under the `Other cancers` rule. Several cancers take the ADCs of all of them. A cancer counts for no organ, and AI 장기 분석 shows it as `Cancer`.
 - A cancer maps to the label cancers under its most specific MONDO root: HER2 positive breast carcinoma to HER2+ breast cancer, breast cancer to all four breast indications, lung cancer to the three NSCLC ones. A solid cancer also takes the tumour-agnostic HER2+ (IHC 3+) solid tumor approval. A cancer no ADC is approved for puts the rule above every ADC.
