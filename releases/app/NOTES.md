@@ -1,10 +1,7 @@
-ADCTOX 0.6.0: 마지막 디자인 점검을 반영했다. 이번 버전은 Ubuntu와 macOS용이고, Windows는 0.5.5 그대로다.
+ADCTOX 0.6.1: ADC 상세에서 라벨 절 번호를 뺐다. 이번 버전은 Ubuntu와 macOS용이고, Windows는 0.5.5 그대로다.
 
-- **암 이름 제안을 고쳤다.** `HER2 양성 유방암`을 입력하면 '양성'을 benign으로 읽어 양성 종양들이 먼저 나왔다. 이제 HER2 positive breast carcinoma가 첫 줄에 나온다. HER2 음성, 호르몬수용체 양성, ER 양성 유방암과 HER2 양성 위암도 같은 방식으로 인식한다.
-- 첫 화면과 입력 칸에 암종도 여기에 입력한다는 것을 적었다. 단계 위 요약 줄의 이름은 `질환`이다.
-- 줄이 넘칠 때 들여쓰기를 유지한다. ADC 상세(적응증, 제한 이유)와 80칸 화면의 AI 장기 분석 Read as가 더는 왼쪽 끝으로 밀리지 않는다.
-
-0.5.6부터 0.5.9까지의 변화: 첫 화면에서는 장기를 보이지 않고 AI 장기 분석에서 장기 확률 상위 3개를 보인다. CPU 스레드를 4개로 줄여 분석이 빨라졌다. 모델은 입력하는 동안 미리 불러온다. 암종은 질환과 함께 입력하고, 그 암에 승인된 ADC가 먼저 나온다.
+- **경고 이름만 보인다.** `Lung  !!  Interstitial Lung Disease/Pneumonitis`처럼 장기 옆에 라벨 경고 이름만 나온다(전에는 `Boxed INTERSTITIAL LUNG DISEASE; 5.1 Interstitial Lung Disease/Pneumonitis`). Boxed warning 이름이 5절 제목에 들어 있으면 한 번만 나온다.
+- payload 기전 문장 끝의 `[12.1]` 같은 표시를 뺐다. `--plain` 출력도 같다.
 
 모델은 그대로 0.7이다.
 

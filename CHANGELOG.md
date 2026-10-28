@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased: No section numbers
+## 0.6.1: No section numbers (Ubuntu and macOS; Windows stays on 0.5.5)
 
 - The ADC detail panel names the label's warnings without section numbers (`Lung  !!  Interstitial Lung Disease/Pneumonitis`, was `Boxed INTERSTITIAL LUNG DISEASE; 5.1 Interstitial Lung Disease/Pneumonitis`); a boxed warning named inside its section 5 heading is shown once. The payload text no longer ends in its section reference. `--plain` follows.
 
