@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased: The cancer is typed with the diseases
+
+- **No separate cancer step.** A cancer typed or picked on the 질환 screen (any MONDO cancer, lymphoma or leukemia; 2,597 terms in data/curated/competition/cancer_mondo.json, built by ml/build_cancer_mondo.py from cancer_roots.csv) is taken as the patient's cancer, and the patient as having that cancer only: the ADCs approved for it come first, the others follow under the `Other cancers` rule. Several cancers take the ADCs of all of them. A cancer counts for no organ, and AI 장기 분석 shows it as `Cancer`.
+- A cancer maps to the label cancers under its most specific MONDO root: HER2 positive breast carcinoma to HER2+ breast cancer, breast cancer to all four breast indications, lung cancer to the three NSCLC ones. A solid cancer also takes the tumour-agnostic HER2+ (IHC 3+) solid tumor approval. A cancer no ADC is approved for puts the rule above every ADC.
+- cancer_aliases.csv reads the cancer names the linker misreads (폐암 as pneumoconiosis; multiple myeloma as the non-human animal term). BPDCN has no MONDO term and cannot be typed yet.
+
 ## 0.5.8: Cancer type first, models load while typing (Ubuntu and macOS; Windows stays on 0.5.5)
 
 - **A cancer step comes first** (암종, before 질환): pick the patient's cancer, or 모름. The ADCs approved for it (FDA label section 1, data/curated/competition/adc_cancers.csv, 19 cancer types covering all 15 ADCs) come first; the others follow under a `Other cancers` rule, in the same order as before. 모름 keeps the order unchanged. `--plain` asks it too, and the saved input keeps it.

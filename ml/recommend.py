@@ -43,7 +43,6 @@ LEARNED_FRACTION = 0.0      # off by default; see the module docstring
 FALLBACK = {}               # condition text -> learned fraction, only for conditions that map to no organ (asked in the wizard)
 PRIORITY = {}               # condition text -> level the user set (1 = avoid its organs' toxicity first); default = severity order
 FIRST = None                # the condition the doctor is most worried about (the priority step); None = automatic
-CANCER = None               # the patient's cancer (the first step); the ADCs approved for it come first. None = not given
 CHOICE = {}                 # condition text -> MONDO id the user picked among its readings (None = 'not sure'); see mondo_index.readings
 REG_NEAR = 0.80             # a free-text condition is 'the same as' a registry condition at this BioLORD cosine -> its curated organs
 MONDO_SEVERITY = 0.80       # organs read off the MONDO hierarchy have no curated severity; one fixed value, not fitted
@@ -274,6 +273,9 @@ def analyze_conditions(conditions, progress=None):
                       judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" else _chosen_via(c) if source == "Chosen" else None,
                       p=link.get("p"))
         _ANALYSES[c] = report; reports.append(report)
+    for c, (name, cancers) in patient_cancers(notes).items():     # the patient's cancer: no organs, the ADCs approved for it come first
+        _ANALYSES[c].update(source="Cancer", name=name, mondo=re.search(r"\((MONDO:\d+)\)$", dict(notes)[c]).group(1), organs=[], estimates=[], p=None,
+                            cancers=cancers, ambiguous=False, readings=[], judge_via=None, fallback=None, gemma=None)
     if progress: progress("done")
     return sorted(reports, key=lambda r: conditions.index(r["condition"]))
 
@@ -306,11 +308,15 @@ def resolve(conditions):
     for c in conditions:
         if c in CONTEXT: ids.add(c); notes.append((c, CONTEXT[c])); continue
         cid = c if c in _reg else _by_label.get(c.lower())
+        if not cid: lk = links[fi]; fi += 1
+        mondo = _reg[cid].get("mondo_id") if cid else CHOICE.get(c) if c in CHOICE else cancer_alias(c) or (lk.get("mondo") if lk.get("gate") is not False and (lk.get("judge") or lk.get("sim", 0) >= LINK_THETA) else None)
+        if is_cancer(mondo):                                    # the patient's cancer: the ADCs approved for it come first; not an organ
+            notes.append((c, f"cancer; MONDO '{_cancer_map()['terms'][mondo][0]}' ({mondo})")); ws.append(np.zeros(len(AXES))); continue
         if cid:
             own, how = own_vec(cid), f"registry: {_reg[cid]['label']}"; ids.add(cid); lv = np.array([L[cid][a] for a in AXES]) if L else None
         else:
-            near, sim = best[fi]; lk = links[fi]; rl = _reg[near]["label"]
-            lv = np.array([learned_free[fi][a] for a in AXES]) if learned_free else None
+            near, sim = best[fi - 1]; rl = _reg[near]["label"]
+            lv = np.array([learned_free[fi - 1][a] for a in AXES]) if learned_free else None
             rejected = lk.get("gate") is False; hp = lk.get("hpo"); picked = CHOICE.get(c, "-")
             chosen = _chosen(picked) if c in CHOICE and picked else None
             if chosen:
@@ -345,7 +351,6 @@ def resolve(conditions):
             if lk.get("ambiguous") and c not in CHOICE:
                 applied = hp["name"] if hp and "phenotype HPO" in how else lk.get("name")
                 how += "; other readings: " + "; ".join(f"{r['name']} ({', '.join(EN[a] for a in r['organs']) or 'no organ'})" for r in lk["readings"] if r["name"] != applied)
-            fi += 1
         own_axes |= {AXES[k] for k in np.where(own > 0)[0]}
         if own.max() > 0: pc.append((c, {AXES[k] for k in np.where(own > 0)[0]}, float(own.max())))
         ws.append(np.maximum(own, LEARNED_FRACTION * lv) if lv is not None and LEARNED_FRACTION > 0 else own); notes.append((c, how))
@@ -456,13 +461,14 @@ def recommend(conditions, labs=None, raw=None):
                          B=round(B, 3), Wn=round(Wn, 3), boxed=boxed, warn=warn, elsewhere=elsewhere, organs=org, has_tables=e["has_tables"]))
     # restriction tier (worst case), settled tier, then boxed warnings on the level-1 organs, level-2 organs, ..., then the other
     # warnings level by level. Within one patient this is the order; B and Wn (severity sums) stay for comparisons across patients.
-    approved = set(_cancers().get(CANCER, [])) if CANCER else set()
-    for r in rows: r["indicated"] = not approved or r["adc"] in approved
+    cancers = patient_cancers(notes)                   # a cancer among the conditions: the patient has that cancer only
+    approved = {a for _, cs in cancers.values() for c in cs for a in _cancers().get(c, [])}
+    for r in rows: r["indicated"] = not cancers or r["adc"] in approved
     first = next((set(o) for c, o, _ in pc if c == FIRST), None)
     hit = lambda r, k: sum(a in first for a in r[k]) if first else 0
     # a cancer: the ADCs approved for it first. A picked condition: its organs' boxed warnings, then warnings, come before
     # Monitor / Not studied; Avoid stays last
-    order = lambda r: ((not r["indicated"],) if approved else ()) + ((r["tier"] >= RS.TIER["avoid"], hit(r, "boxed"), hit(r, "warn")) if first else ()) + (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"])
+    order = lambda r: ((not r["indicated"],) if cancers else ()) + ((r["tier"] >= RS.TIER["avoid"], hit(r, "boxed"), hit(r, "warn")) if first else ()) + (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"])
     rows.sort(key=lambda r: (order(r), r["name"]))
     prev = None
     for r in rows:
@@ -653,7 +659,7 @@ def _result_list(rows, width):
     out.append("\033[90m" + "─" * width + "\033[0m")
     at = []; previous_rank = None
     for row in rows:
-        if not row.get("indicated", True) and at and rows[len(at) - 1].get("indicated", True):    # the ADCs for other cancers
+        if not row.get("indicated", True) and (not at or rows[len(at) - 1].get("indicated", True)):    # the ADCs for other cancers (all of them: none is approved for the patient's)
             out.append("\033[90m── Other cancers " + "─" * max(0, width - 17) + "\033[0m")
         at.append(len(out))
         rank_text = f"{row['rank']:>3}" if row["rank"] != previous_rank else "   "
@@ -758,7 +764,7 @@ def organ_warning_lines(row):
     return out
 
 
-_CAN = None
+_CAN = _CM = None
 
 
 def _cancers():
@@ -773,6 +779,39 @@ def _cancers():
             try: _CAN = {r["cancer"]: r["adcs"].split(";") for r in csv.DictReader(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "curated", "competition", "adc_cancers.csv"), encoding="utf-8"))}
             except OSError: _CAN = {}
     return _CAN
+
+
+def _cancer_map():
+    """{"terms": {MONDO id: [name, [cancers]]}, "aliases": {folded name: MONDO id}} (data/curated/competition/cancer_mondo.json,
+    ml/build_cancer_mondo.py); the app build embeds it."""
+    global _CM
+    if _CM is None:
+        try:
+            from __adc_data__ import _portable_data
+            _CM = _portable_data().get("cancer_mondo", {})
+        except ImportError:
+            import json
+            try: _CM = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "curated", "competition", "cancer_mondo.json"), encoding="utf-8"))
+            except OSError: _CM = {}
+    return _CM
+
+
+def cancer_alias(text):
+    """the MONDO cancer a typed name stands for when the disease linker misreads it (폐암 -> pneumoconiosis), else None"""
+    return _cancer_map().get("aliases", {}).get("".join(text.split()).replace("-", "").lower())
+
+
+def is_cancer(mondo):
+    return bool(mondo) and mondo in _cancer_map().get("terms", {})
+
+
+def patient_cancers(notes):
+    """{condition: (MONDO name, [cancers from adc_cancers.csv])} for the conditions read as the patient's cancer"""
+    terms = _cancer_map().get("terms", {}); out = {}
+    for c, how in notes:
+        m = re.match(r"cancer; MONDO '.*' \((MONDO:\d+)\)$", how)
+        if m and m.group(1) in terms: out[c] = tuple(terms[m.group(1)])
+    return out
 
 
 def preload():
@@ -960,8 +999,8 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
     if analyses:
         heading("AI organ analysis")
         for report in analyses:
-            organs = ", ".join(ORGAN_SHORT[a] for a in report["organs"]) or no_organ_text(report)
-            src = "MONDO" if report["source"].startswith("MONDO") else report["source"] if report["source"] != "Unmapped" else ""
+            organs = "Cancer" if report["source"] == "Cancer" else ", ".join(ORGAN_SHORT[a] for a in report["organs"]) or no_organ_text(report)
+            src = "MONDO" if report["source"].startswith("MONDO") or report["source"] == "Cancer" else report["source"] if report["source"] != "Unmapped" else ""
             if src and report.get("judge_via"): src += f" ({report['judge_via']})"      # label, record or name: what set the organs
             read = f"   ({src}: {report['name']})" if report["name"] else (f"   ({src})" if src else "")
             emit(f"{report['condition']} → {organs}" + paint(read, "90"))
@@ -1064,13 +1103,7 @@ def wizard(back=False):
     None when no condition is given.
     The terminal session is form.run."""
     import labs as LB
-    global CANCER
-    ids = list(_reg); cancers = list(_cancers())
-    print("암종")
-    for k, c in enumerate(cancers, 1): print(f"  {k:>2}) {c}")
-    try: text = input("번호 (Enter = 모름) > ").strip()
-    except EOFError: text = ""
-    CANCER = cancers[int(text) - 1] if text.isdigit() and 1 <= int(text) <= len(cancers) else None
+    ids = list(_reg)
     split = []
     while not split:                                   # no condition, no analysis: ask again (Enter on an empty line = exit)
         try: text = input("기저질환 (번호/ID/영어, 쉼표 구분; ? = 목록, Enter = 종료) > ")
@@ -1174,7 +1207,7 @@ def main():
         sys.exit(2)
     if not sys.stdin.isatty():
         print("adctox: 입력 화면이 필요합니다. 터미널에서 실행하세요 (설치 확인은 adctox --self-test).", file=sys.stderr); sys.exit(2)
-    if _tui_ok():                                      # the terminal session: six steps and the result screen
+    if _tui_ok():                                      # the terminal session: five steps and the result screen
         import form
         preload()
         r = form.run(sys.modules[__name__])

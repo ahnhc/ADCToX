@@ -136,34 +136,63 @@ def test_every_adc_has_a_cancer_and_every_cancer_an_adc():
     assert set(a for v in can.values() for a in v) == set(RC._indications()) and all(can.values())
 
 
-def test_the_adcs_approved_for_the_cancer_come_first(monkeypatch):
-    monkeypatch.setattr(RC, "CANCER", "Large B-cell lymphoma (DLBCL)")
-    rows, *_ = RC.recommend(["cirrhosis"], {}, {})
+def _linked(monkeypatch, mondo, name, axes):
+    """free text linked to one MONDO concept, without the encoder"""
+    link = dict(mondo=mondo, name=name, sim=1.0, judge=True, gate=True, axes=axes, readings=[], ambiguous=False)
+    monkeypatch.setattr(RC, "_free_info", lambda free, progress=None: ([("cirrhosis", 0.1)] * len(free), [dict(link) for _ in free], None))
+
+
+def test_a_cancer_among_the_diseases_puts_its_adcs_first(monkeypatch):
+    """DLBCL typed with the diseases: the patient's cancer, not an organ; the ADCs approved for it first, the others under a rule."""
+    _linked(monkeypatch, "MONDO:0018905", "diffuse large B-cell lymphoma", ["haematologic"])
+    rows, s, notes, _ = RC.recommend(["cirrhosis", "DLBCL"], {}, {})
     approved = {"polatuzumab-vedotin", "loncastuximab-tesirine", "brentuximab-vedotin"}
     assert {r["adc"] for r in rows[:3]} == approved and not any(r["indicated"] for r in rows[3:])
+    assert "haematologic" not in s and RC.patient_cancers(notes) == {"DLBCL": ("diffuse large B-cell lymphoma", ["Large B-cell lymphoma (DLBCL)"])}
     lines, at = RC._result_list(rows, 100)
     rule = next(i for i, ln in enumerate(lines) if "Other cancers" in ln)
     assert at[2] < rule < at[3]
-    monkeypatch.setattr(RC, "CANCER", None)
     plain, _ = RC.recommend(["cirrhosis"], {}, {})[:2]
     assert all(r["indicated"] for r in plain) and not any("Other cancers" in ln for ln in RC._result_list(plain, 100)[0])
 
 
-def test_the_cancer_step_picks_one_or_none(monkeypatch):
-    import form
-    screen, frames = _screen(monkeypatch, [], (24, 80))
-    def none(): raise form.curses.error                                         # nothing after a bare Esc
-    screen.get_wch = none
-    for keys, want in ((["DOWN", "PGDN"], next(iter(RC._cancers()))), (["PGDN"], None), (["ESC"], form.QUIT)):
-        it = iter(keys); monkeypatch.setattr(form, "_key", lambda scr, tab=False: next(it))
-        F = form.Form(screen, RC); F.step = 0
-        assert F.cancer() == want
-    assert "암종" in "\n".join(frames[0]) and "(●) 모름" in "\n".join(frames[0])
-    assert all(len(ln) <= 80 for f in frames for ln in f)
+def test_two_cancers_take_the_adcs_of_both(monkeypatch):
+    _linked(monkeypatch, "MONDO:0009693", "plasma cell myeloma", ["haematologic"])
+    monkeypatch.setitem(RC.CHOICE, "AML", "MONDO:0018874")
+    rows, *_ = RC.recommend(["myeloma", "AML"], {}, {})
+    assert {r["adc"] for r in rows if r["indicated"]} == {"belantamab-mafodotin", "gemtuzumab-ozogamicin"}
 
 
-def test_the_cancer_is_saved_with_the_entries(monkeypatch, tmp_path):
-    import form
-    monkeypatch.setattr(form, "SAVE", str(tmp_path / "last_input.json"))
-    form.save(dict(picked={"cirrhosis"}, free="", raw={}, choice={}, cancer="Multiple myeloma"))
-    assert form.load()["cancer"] == "Multiple myeloma"
+def test_a_cancer_no_adc_is_approved_for_puts_the_rule_on_top(monkeypatch):
+    _linked(monkeypatch, "MONDO:0005062", "lymphoma", ["haematologic"])
+    rows, *_ = RC.recommend(["lymphoma"], {}, {})
+    lines, at = RC._result_list(rows, 100)
+    assert not any(r["indicated"] for r in rows) and "Other cancers" in lines[at[0] - 1]
+
+
+def test_a_solid_cancer_takes_the_tumour_agnostic_her2_approval():
+    terms = RC._cancer_map()["terms"]
+    assert "HER2+ (IHC 3+) solid tumor" in terms["MONDO:0024331"][1]                   # colorectal carcinoma
+    assert terms["MONDO:0006244"][1] == ["HER2+ (IHC 3+) solid tumor", "HER2+ breast cancer"]
+    assert "HER2+ (IHC 3+) solid tumor" not in terms["MONDO:0018905"][1]               # DLBCL is not solid
+
+
+def test_misread_cancer_names_are_read_as_cancers():
+    """the linker reads 폐암 as pneumoconiosis and multiple myeloma as the animal term: the alias table names them"""
+    assert RC.cancer_alias("폐암") == "MONDO:0008903" and RC.cancer_alias("다발성 골수종") == "MONDO:0009693"
+    assert RC._cancer_map()["terms"]["MONDO:1013329"][1] == ["Multiple myeloma"]
+    assert all(RC.is_cancer(m) for m in RC._cancer_map()["aliases"].values())
+
+
+def test_the_cancer_map_is_built_from_the_csvs():
+    import build_cancer_mondo as B
+    named = {c for _, cs in RC._cancer_map()["terms"].values() for c in cs}
+    assert named <= set(RC._cancers()) and "BPDCN" not in named                         # BPDCN has no MONDO term
+    assert B.fold("HER2 양성 유방암") == "her2양성유방암"
+
+
+def test_the_analysis_shows_a_cancer_as_cancer(monkeypatch):
+    _linked(monkeypatch, "MONDO:0018905", "diffuse large B-cell lymphoma", ["haematologic"])
+    monkeypatch.setattr(RC, "HAS_LEARNED", False)
+    r = RC.analyze_conditions(["DLBCL"])[0]
+    assert r["source"] == "Cancer" and r["organs"] == [] and r["cancers"] == ["Large B-cell lymphoma (DLBCL)"]

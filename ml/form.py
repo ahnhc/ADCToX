@@ -11,7 +11,7 @@ from tui import _Screen, _cw, _clip, _wrap, _enter, GLYPH, strip, UI_VERSION, lo
 HANGUL = re.compile("[가-힣]")
 
 BACK, QUIT = "back", "quit"
-STEPS = ["암종", "질환", "검사 수치", "AI 장기 분석", "우선순위", "결과"]
+STEPS = ["질환", "검사 수치", "AI 장기 분석", "우선순위", "결과"]
 
 
 def marquee(text, width, rest, wait=1.0, speed=5.0, hold=1.2):
@@ -28,8 +28,8 @@ SAVE = __import__("os").path.expanduser("~/.config/adctox/last_input.json")     
 def load():
     import json
     try:
-        d = json.load(open(SAVE)); return dict(picked=set(d.get("picked", [])), free=d.get("free", ""), raw=d.get("raw", {}), choice=d.get("choice", {}), cancer=d.get("cancer"))
-    except (OSError, ValueError): return dict(picked=set(), free="", raw={}, choice={}, cancer=None)
+        d = json.load(open(SAVE)); return dict(picked=set(d.get("picked", [])), free=d.get("free", ""), raw=d.get("raw", {}), choice=d.get("choice", {}))
+    except (OSError, ValueError): return dict(picked=set(), free="", raw={}, choice={})
 
 
 def clear():
@@ -43,7 +43,7 @@ def save(st):
     import json, os
     try:
         os.makedirs(os.path.dirname(SAVE), exist_ok=True)
-        json.dump(dict(picked=sorted(st["picked"]), free=st["free"], raw=st["raw"], choice=st.get("choice", {}), cancer=st.get("cancer")), open(SAVE, "w"), ensure_ascii=False)
+        json.dump(dict(picked=sorted(st["picked"]), free=st["free"], raw=st["raw"], choice=st.get("choice", {})), open(SAVE, "w"), ensure_ascii=False)
     except OSError: pass
 
 
@@ -182,7 +182,7 @@ class Form:
         return k
 
     def crumbs(self, y):
-        """the six steps in one line at the top, the current one lit; left out when the line does not fit."""
+        """the five steps in one line at the top, the current one lit; left out when the line does not fit."""
         _, w = self.scr.getmaxyx(); parts = []
         for i, name in enumerate(STEPS): parts.append((name, i == self.step))
         width = sum(_w(n) for n, _ in parts) + 3 * (len(parts) - 1)
@@ -304,7 +304,7 @@ class Form:
                     y += 1
                 caret = "_" if int(time.monotonic() * 2) % 2 == 0 else " "                                       # blinks twice a second
                 if query: self.S.put(y, bx + 1, "› " + _clip(query, bw - 6)[-(bw - 6):] + caret, self.S.title)    # the box: one line and an underline
-                else: self.S.put(y, bx + 1, "› " + _clip("질환명이나 증상을 입력하세요", bw - 5), self.S.dim)
+                else: self.S.put(y, bx + 1, "› " + _clip("질환명, 증상, 암종을 입력하세요", bw - 5), self.S.dim)
                 self.S.put(y + 1, bx, "─" * bw, self.S.dim); y += 2
                 status = ""
                 if ai["busy"]: status = "AI 추천 찾는 중 ..."
@@ -364,9 +364,8 @@ class Form:
                 elif k == "ESC":
                     if query: query, found, cur = "", [], 0
                     else: return QUIT
-                elif k == "PGUP": return BACK                               # to the cancer step
                 elif k == "ENTER":
-                    if not rows: note = "질환명이나 증상을 입력하세요" if not sel else "다음 단계는 PgDn"; continue
+                    if not rows: note = "질환명, 증상, 암종을 입력하세요" if not sel else "다음 단계는 PgDn"; continue
                     kind, s, _ = rows[cur]
                     if kind == "split":
                         note = "   ".join(add(("text", w_, w_, "", [])) for w_ in s[1]); query, found, cur = "", [], 0
@@ -530,22 +529,6 @@ class Form:
             elif k == "PGDN": return pick
             elif k == "PGUP": return BACK
 
-    def cancer(self, current=None):
-        """the patient's cancer: the ADCs approved for it come first. -> the cancer, None (not given) or QUIT."""
-        options = ["모름"] + list(self.RC._cancers()); n = len(options); cur = options.index(current) if current in options else 0; top = 0
-        while True:
-            y0 = self.frame("암종", "", nav=("PGDN",)); h = self.scr.getmaxyx()[0]
-            fit = max(1, h - 2 - y0); top = min(max(top, cur - fit + 1), cur, max(0, n - fit))
-            for r, k in enumerate(range(top, min(n, top + fit))):
-                self.row(y0 + r, f" {'→' if k == cur else ' '} ({'●' if k == cur else '○'}) {options[k]}", k == cur, k)
-            self.S.put(h - 1, 2, "↑↓ 고르기   Esc 종료", self.S.dim)
-            self.scr.refresh(); key = self.key()
-            if isinstance(key, tuple): cur = key[1]; continue
-            if key == "UP": cur = max(0, cur - 1)
-            elif key == "DOWN": cur = min(n - 1, cur + 1)
-            elif key == "PGDN": return options[cur] if cur else None
-            elif key == "ESC": return QUIT
-
     def first(self, names, organs, cur=0):
         """the one condition to weigh first, or 0 = automatic (severity order). -> 0, 1..n (names[k - 1]) or BACK."""
         options = ["자동 (질환 중증도 순)"] + names; n = len(options); top = 0; w0 = max(_w(x) for x in names)
@@ -629,12 +612,13 @@ class Form:
             for r in reports:
                 picked = RC.CHOICE.get(r["condition"]) or ""
                 kr = bool(HANGUL.search(r["condition"]))           # the disease name in the language of the input
-                read = ((ko.get(r.get("mondo") or "") if kr else "") or r["name"]) if r["source"].startswith("MONDO") else ((ko.get(picked) if kr else "") or r["name"] or "")
-                how = "MONDO" if r["source"].startswith("MONDO") else SOURCE.get(r["source"], r["source"])
+                linked = r["source"].startswith("MONDO") or r["source"] == "Cancer"
+                read = ((ko.get(r.get("mondo") or "") if kr else "") or r["name"]) if linked else ((ko.get(picked) if kr else "") or r["name"] or "")
+                how = "MONDO" if linked else SOURCE.get(r["source"], r["source"])
                 if r["source"] == "AI judgment" and r.get("gemma"): how += " (Gemma)"
                 if r.get("judge_via"): how += f" ({r['judge_via']})"          # label, record or name: what set the organs
                 elif r.get("fallback") and r["source"] != "Unmapped": how += " (linker)"
-                org = (likely(RC.AXES, r["organs"], r.get("p")) if r["organs"] else
+                org = ("\033[35;1mCancer\033[0m" if r["source"] == "Cancer" else likely(RC.AXES, r["organs"], r.get("p")) if r["organs"] else
                        "\033[90m" + ("none of 13" if r["source"].startswith("MONDO") else "-") + "\033[0m")
                 tag = ""
                 if r.get("ambiguous") and r["condition"] not in RC.CHOICE: tag = f"   \033[33m{len(r['readings'])} meanings: pick on the next screen\033[0m"
@@ -726,28 +710,21 @@ def run(RC, back=False):
     """-> (conditions, raw labs, (rows, s, notes, checks)) or None. One curses session: the five steps and the result screen;
     PgUp on the result screen returns to the last input step with the entries kept. `back` is accepted for older callers."""
     def app(scr):
-        F = Form(scr, RC); st = load(); st["picked"] &= set(RC._reg); step = -1; has_priority = False
-        if st.get("cancer") not in RC._cancers(): st["cancer"] = None
+        F = Form(scr, RC); st = load(); st["picked"] &= set(RC._reg); step = 0; has_priority = False
         if (st["picked"] or split_free(st["free"]) or st["raw"]) and not F.resume(st):     # a new patient: the saved entries go
             clear(); st = load()
         kn = RC.condition_name                                       # a picked disease keeps the name it was picked by
         worry = [None]                                               # the condition picked on the priority screen
         RC.CHOICE.update(st["choice"])
         while True:
-            F.step = min(step, 4) + 1; F.done = []; RC.CANCER = st["cancer"]
-            if step >= 0: F.done.append(("암종", st["cancer"] or "모름"))
+            F.step = min(step, 4); F.done = []
             if step >= 1: F.done.append(("기저질환", ", ".join([RC.condition_name(i) for i in sorted(st["picked"], key=list(RC._reg).index)] + [kn(c) for c in split_free(st["free"])])))
             if step >= 2:
                 F.done.append(("검사 수치", f"{len(st['raw'])}개 입력" if st["raw"] else "입력 없음"))
             conds = [i for i in RC._reg if i in st["picked"]] + split_free(st["free"])
-            if step == -1:
-                r = F.cancer(st["cancer"])
-                if r == QUIT: return None
-                st["cancer"] = r; save(st); step = 0
-            elif step == 0:
+            if step == 0:
                 r = F.conditions(st["picked"], st["free"], st["choice"])
                 if r == QUIT: return None
-                if r == BACK: step = -1; continue
                 for c in st["choice"]: RC.CHOICE.pop(c, None)                # a name picked from the suggestions is that concept
                 st["picked"], st["free"], st["choice"] = r; RC.CHOICE.update(st["choice"]); save(st); step = 1
             elif step == 1:
