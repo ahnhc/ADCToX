@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — Read as a doctor would
+## 0.5.5 — Read as a doctor would
 
 From going through every screen as a doctor using the app for the first time.
 - **Priority step: one pick, no numbers.** "가장 걱정되는 질환" lists the diseases with their organs and "자동 (질환 중증도 순)". The numbered levels, − / + buttons and "1 = 먼저 피함" are gone (terminal screens and `--plain`). Lab findings are not offered as a pick; they keep the automatic order.
