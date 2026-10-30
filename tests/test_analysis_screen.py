@@ -214,7 +214,7 @@ def test_a_registry_disease_gets_an_analysis_row(monkeypatch):
 
 def test_no_middle_dot_in_the_app_text():
     root = pathlib.Path(__file__).resolve().parents[1] / "ml"
-    for name in ("form.py", "tui.py", "recommend.py", "restrictions.py", "labs.py", "term.py"):
+    for name in ("form.py", "tui.py", "recommend.py", "restrictions.py", "labs.py", "term.py", "webapp.py", "web/index.html", "web/app.css", "web/app.js", "web/mock.js"):
         assert "·" not in (root / name).read_text(encoding="utf-8"), name
 
 

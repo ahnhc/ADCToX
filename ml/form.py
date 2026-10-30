@@ -419,7 +419,7 @@ class Form:
             except Exception: info = ""
             ck = fields[rows[at][1]][0] if rows[at][0] == "field" else None
             if ck in LB.ULN and ck in parsed:                               # the value being entered, as the label rules read it
-                info = (f"{fields[rows[at][1]][1]} {LB.shown('bili', parsed[ck] / LB.ULN[ck])}×ULN   " + info).rstrip()
+                info = (f"{fields[rows[at][1]][1]} {LB.shown('bili', float(LB._xuln(parsed[ck], LB.ULN[ck])))}×ULN   " + info).rstrip()
             self.S.put(h - 1, 1, _clip(note or info, max(10, w - 30)), self.S.dim); note = ""     # left of the PgUp / PgDn hint
             self.scr.refresh(); k = self.key()
             if isinstance(k, tuple):                                       # a click moves to the field (or finishes on 완료)

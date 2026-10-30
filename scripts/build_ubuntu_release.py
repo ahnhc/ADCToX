@@ -121,7 +121,8 @@ def app_assets(output):
     subprocess.run([sys.executable, "-I", str(ROOT / "ml/build_portable.py"), "--full", str(app)], check=True,
                    env={**os.environ, "ADCTOX_EVIDENCE_SNAPSHOT": str(snapshot)})
     subprocess.run([sys.executable, "-m", "py_compile", str(app)], check=True)
-    source_hashes = {str(p.relative_to(ROOT)): digest(p) for p in sorted((ROOT / "ml").glob("*.py")) if p.name in {"recommend.py", "restrictions.py", "labs.py", "form.py", "tui.py", "term.py", "adc_version.py", "adc_runtime.py", "adc_updates.py", "vulnerability_model.py", "mondo_index.py", "lab.py", "build_portable.py", "suggest.py", "gemma_runtime.py", "scratch_runtime.py"}}
+    source_hashes = {str(p.relative_to(ROOT)): digest(p) for p in sorted((ROOT / "ml").glob("*.py")) if p.name in {"recommend.py", "restrictions.py", "labs.py", "form.py", "tui.py", "term.py", "adc_version.py", "adc_runtime.py", "adc_updates.py", "vulnerability_model.py", "mondo_index.py", "lab.py", "build_portable.py", "suggest.py", "gemma_runtime.py", "scratch_runtime.py", "motion.py", "webapp.py"}}
+    source_hashes.update({str(p.relative_to(ROOT)): digest(p) for p in sorted((ROOT / "ml/web").glob("*")) if p.is_file() and not p.name.startswith("mock")})   # the page adctox --web serves, embedded in the app
     info = {"app_version": APP_VERSION, "runtime_api": RUNTIME_API, "source_sha256": source_hashes}
     write(output / "bundle-info.json", info)
     archive = output / "adctox-ubuntu.tar.gz"

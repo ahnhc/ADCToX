@@ -10,7 +10,8 @@ in ADC_MODEL_DIR. The model code is the server's own (ml/vulnerability_model.py,
 function by function; only file locations change. GPU when torch sees one, else CPU.
 
 What goes in:
-  * the program modules as they are here (recommend, restrictions, labs, form, tui), served from the file by an importer;
+  * the program modules as they are here (recommend, restrictions, labs, form, tui, webapp), served from the file by an importer,
+    and the page of adctox --web (ml/web/, data["web"]: webapp serves it from memory);
   * the label evidence (ml/drug_evidence.evidence(), computed now from the DailyMed snapshot), the 97 label rules, the
     condition registry and the checks, as compressed JSON;
   * MONDO disease names and exact synonyms that map to an organ (the same ancestor -> organ crosswalk as ml/mondo_index.py).
@@ -163,12 +164,15 @@ def main():
                 indications={r["adc"]: r for r in csv.DictReader(open(R / "data/curated/competition/adc_indications.csv", encoding="utf-8"))},
                 cancers={r["cancer"]: r["adcs"].split(";") for r in csv.DictReader(open(R / "data/curated/competition/adc_cancers.csv", encoding="utf-8"))},
                 cancer_mondo=json.load(open(R / "data/curated/competition/cancer_mondo.json", encoding="utf-8")),
-                trial_ae=json.load(open(R / "data/curated/competition/trial_ae.json", encoding="utf-8")))
+                trial_ae=json.load(open(R / "data/curated/competition/trial_ae.json", encoding="utf-8")),
+                web=__import__("webapp").web_files(R / "ml/web"))
+    assert {"index.html", "app.js", "app.css"} <= set(data["web"]), f"adctox --web needs its page in ml/web/: found {sorted(data['web'])}"
+    print("page: " + ", ".join(f"{name} {len(text.encode()) / 1024:.1f} KB" for name, text in data["web"].items()))
     if FULL: data["learned"] = json.load(open(R / "ml/results/learned_vulnerability.json"))["severity"]
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
-    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "gemma_runtime", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion")}
+    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "gemma_runtime", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion", "webapp")}
     local = {q.stem for q in (R / "ml").glob("*.py")}                      # the screen modules import only embedded modules (0.4.0: motion)
-    for m in ("form", "tui", "term", "motion"):
+    for m in ("form", "tui", "term", "motion", "webapp"):
         for name in set(re.findall(r"^\s*(?:import|from)\s+(\w+)", src[m], re.M)):
             assert name not in local or name in src, f"{m} imports ml/{name}.py, which the portable build does not embed"
 
@@ -225,8 +229,9 @@ import importlib.abc, importlib.util, json, sys
 
 # what the embedded modules import, loaded now (a bundler sees them, and nothing is read from the unpack folder later)
 import base64, csv, dataclasses, difflib, itertools, locale, os, re, shutil, textwrap, threading, time, unicodedata, warnings, zlib
-if False:   # never runs: platform-specific imports, listed for the bundler
+if False:   # never runs: platform-specific imports and those of adctox --web, listed for the bundler
     import ctypes, curses, msvcrt, select, termios, tty
+    import contextlib, http.server, secrets, traceback, urllib.parse, webbrowser
     import numpy{{TORCH}}
 
 _SRC = json.loads({mods!r})

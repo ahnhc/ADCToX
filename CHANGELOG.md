@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.3: The five screens in the browser (Ubuntu, macOS and Windows)
+
+- **`adctox --web`: the same five steps in the default browser**, served on this computer only (127.0.0.1, a free port; nothing is stored on the server, the page keeps its entries in the tab). A body map beside the screens lights the patient's organs from AI 장기 분석 on (level 1 bright, level 2 dim) and rings the selected ADC's boxed warnings red and its warnings amber; the ADC detail opens as a drawer with the same sections as the terminal panel; keys as in the terminal (PgUp / PgDn, ↑↓, Enter, Esc), clicking works everywhere. The terminal screens stay the default.
+- The one-file build carries the page (ml/web/, served from memory); `ADCTOX.bat --web` on Windows.
+
 ## 0.6.2: Trial results on the patient's organs (Ubuntu, macOS and Windows)
 
 - **The ADC detail panel shows the ADC's main ClinicalTrials.gov trial on the patient's organs**: per organ, the events the label warning on that organ is about, as `pneumonitis 18/257 (7.0%, vs 0.4%), serious 1/257` (count and rate in the ADC arm, the comparator arm's rate, the serious count); an organ the label does not warn about shows its most frequent event and its most frequent serious event. The trial of the patient's cancer when one is typed (HER2+ breast cancer: DESTINY-Breast03), else the largest trial of a labelled regimen. 32 trials from the team's list of 2026-10-29 (data/curated/competition/adc_trials.csv, with the arm and comparator of each), 28 with posted results in the project's ClinicalTrials.gov snapshot; ALFA-0701, POLARIX and LUMINOSITY read `no results posted`. Built by ml/build_trial_ae.py into trial_ae.json; organs by the research corpus's MedDRA mapping (conf/ontology). The order of the ADCs does not change.

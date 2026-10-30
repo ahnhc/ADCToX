@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>ADCTOX</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2315161b'/%3E%3Ccircle cx='8' cy='8' r='3.2' fill='%23d7a65f'/%3E%3C/svg%3E">
+<script>
+/* the files sit next to this page when it is opened from disk, under /static/ when the server sends it.
+   ?mock=1 (with theme=, motion=) works only on the file opened from disk; over http it is ignored and mock.js is never asked for */
+(function () {
+  var q = location.search, file = location.protocol === "file:", base = file ? "" : "/static/";
+  var mock = file && /[?&]mock=1(&|$)/.test(q), t = mock && (q.match(/[?&]theme=(light|dark)(&|$)/) || [])[1];
+  window.ADCTOX_FILE_MOCK = mock;
+  if (t) document.documentElement.setAttribute("data-theme", t);
+  if (mock && /[?&]motion=0(&|$)/.test(q)) document.documentElement.classList.add("still");
+  window.ADCTOX_BASE = base;
+  document.write('<link rel="stylesheet" href="' + base + 'app.css">');
+})();
+</script>
+</head>
+<body>
+<noscript>ADCTOX needs JavaScript.</noscript>
+<script>
+(function () {
+  var base = window.ADCTOX_BASE;
+  if (window.ADCTOX_FILE_MOCK) document.write('<script src="' + base + 'mock.js"><\/script>');
+  document.write('<script src="' + base + 'app.js"><\/script>');
+})();
+</script>
+</body>
+</html>

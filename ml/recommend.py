@@ -1209,6 +1209,7 @@ HELP = """ADCTOX {version}
 사용
   adctox                         입력 화면으로 시작 (질환 → 검사 수치 → AI 장기 분석 → 우선순위 → 결과)
   adctox --plain                 전체 화면 없이 질문에 답하는 방식으로 입력
+  adctox --web                   같은 다섯 단계를 브라우저에서 (이 컴퓨터 안에서만 실행; ADCTOX_NO_BROWSER=1이면 주소만 표시)
   질환과 검사 수치는 입력 화면에서만 넣습니다. 명령줄 인자로는 받지 않습니다.
 
 입력 화면 키
@@ -1264,6 +1265,11 @@ def main():
         conds = list(SELF_TEST)
         if HAS_LEARNED: analyze_conditions(conds)
         rows, s, notes, ck = recommend(conds); render(rows, s, notes, ck); return
+    if arguments == ["--web"]:                         # 0.6.3: the same steps in the browser, served on this computer only (ml/webapp.py)
+        import webapp
+        preload(); webapp.serve(sys.modules[__name__]); return
+    if "--web" in arguments:                           # --web takes no other argument
+        print("adctox: --web는 단독으로 씁니다 (adctox --web).", file=sys.stderr); sys.exit(2)
     other = [a for a in arguments if a != "--plain"]
     if other:                                          # 0.5.3: conditions and lab values are entered on the screens only
         print(f"adctox: 알 수 없는 인자입니다: {' '.join(other)}\n질환과 검사 수치는 입력 화면에서 넣습니다. adctox 만 실행하세요 (옵션: adctox --help).", file=sys.stderr)

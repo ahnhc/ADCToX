@@ -53,7 +53,7 @@ def main():
         return 1
     app = HERE / "apps" / (HERE / "app.txt").read_text().strip() / "adc_recommender_full.py"
     home = Path(os.environ.get("ADC_MODEL_HOME") or Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" / "Local"))) / "adctox" / "models")
-    if not (home / "current.txt").exists() and len(sys.argv) == 1:
+    if not (home / "current.txt").exists() and sys.argv[1:] in ([], ["--web"]):     # the app's own start, in a console or the browser
         print("ADCTOX: first start. Downloading the models (about 1 GB, once) ...", flush=True)
         if subprocess.call([sys.executable, "-I", str(app), "--update-models"]):
             print("The model download did not finish. Check the internet connection and start ADCTOX again.")
@@ -72,6 +72,7 @@ README = """ADCTOX {version} (Windows)
   압축을 푼 ADCTOX 폴더의 ADCTOX.bat를 더블클릭합니다.
   처음 실행할 때 모델 파일(약 1 GB)을 한 번 내려받습니다. 저장 위치: %LOCALAPPDATA%\\adctox\\models
   Windows Terminal이 있으면 그 창에서 열립니다.
+  ADCTOX.bat --web 은 같은 다섯 단계를 브라우저에서 엽니다 (이 컴퓨터 안에서만).
 
 업데이트
   모델: 질환 선택 화면에서 U

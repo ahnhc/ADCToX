@@ -3,7 +3,7 @@
 ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환과 검사값을 받아 승인된 ADC를 라벨 근거 순서로 보여준다.
 현재 앱 모델(0.6)의 canonical 문서는 [docs/gemma_judge.md](docs/gemma_judge.md)다. 그 뒤의 연구는 다음 문서에 있다.
 - 전체 흐름: [docs/overview.md](docs/overview.md)
-- Gemma·encoder 탐색: [docs/sweep_1027.md](docs/sweep_1027.md)
+- Gemma, encoder 탐색: [docs/sweep_1027.md](docs/sweep_1027.md)
 - 장기 라벨 v5: [docs/relabel_v5_plan.md](docs/relabel_v5_plan.md)
 - 처음부터 만든 모델: [docs/scratch_model.md](docs/scratch_model.md)
 
@@ -14,14 +14,15 @@ ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환�
 | `recommend.py` | 앱 진입점. 기저질환과 lab 값을 받아 ADC를 label restriction → boxed warning → W&P 순으로 정렬한다 |
 | `form.py` | 한 화면 입력 UI. 질환 선택, lab 값, 질환 간 우선순위를 단계별로 받는다. ESC는 한 단계 뒤로 |
 | `tui.py` | curses 메뉴(화살표 radio list, 검색 checklist) |
+| `webapp.py` | `adctox --web`: 같은 다섯 단계를 브라우저에서. 127.0.0.1의 빈 포트에 stdlib HTTP 서버를 띄우고 `ml/web/`(index.html, app.css, app.js; mock.js는 개발용 fixture)를 내보낸다. 서버에는 아무것도 남지 않는다 |
 | `term.py` | curses가 없거나 한글 폭이 틀리는 환경(Windows)에서 쓰는 ANSI 대체 구현 |
-| `suggest.py` | 입력 화면 검색. 철자 검색(한국어 초성 포함), SapBERT semantic 검색, 증상·문장 → 질환 검색 |
+| `suggest.py` | 입력 화면 검색. 철자 검색(한국어 초성 포함), SapBERT semantic 검색, 증상, 문장 → 질환 검색 |
 | `mondo_index.py` | MONDO linker. 질환 이름을 SapBERT로 MONDO 개념에 연결하고 장기 축을 붙인다 (THETA 0.75 미만은 연결하지 않음) |
 | `gemma_runtime.py` | 앱에서 양자화된 Gemma 판정 모델을 실행한다(CPU 또는 GPU, 생성 없음) |
 | `gemma_judge2.py` | Gemma 4 E2B 판정 모델 학습. 출력 4종: organ, valid, align(MONDO 연결), sym(증상 → 질환) |
 | `gemma_export.py` | 학습한 판정 모델을 LoRA 병합, 18층, int8로 내보낸다 |
-| `eval_a4.py` | 배포 파이프라인(registry → MONDO → judge)을 영어·한국어 gold query로 평가한다 |
-| `eval_symptoms.py` | 증상·문장 검색을 합성 평가 세트로 평가한다 |
+| `eval_a4.py` | 배포 파이프라인(registry → MONDO → judge)을 영어, 한국어 gold query로 평가한다 |
+| `eval_symptoms.py` | 증상, 문장 검색을 합성 평가 세트로 평가한다 |
 | `build_portable.py` | 한 파일짜리 실행본(`dist/adc_recommender.py`, `--full`은 언어 모델 포함)을 만든다 |
 | `build_cancer_mondo.py` | MONDO 암 용어 → 라벨 적응증 암종 표(`data/curated/competition/cancer_mondo.json`)를 만든다 |
 | `build_trial_ae.py` | ADC 15종 주요 임상시험 32건의 ClinicalTrials.gov 결과를 장기별 이상반응 표(`data/curated/competition/trial_ae.json`)로 만든다. 임상시험과 arm은 `adc_trials.csv` |
@@ -52,7 +53,7 @@ ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환�
 | `distill_teacher.py` | 튜닝한 Gemma의 장기 확률을 증류용 teacher 파일로 저장 |
 | `umls_build.py`, `fetch_umls.sh` | UMLS 2026AA에서 학습용 이름 만들기(UMLS 원본과 결과는 저장소에 넣지 않음) |
 | `fetch_pubmed.py` | 사전학습용 PubMed baseline 내려받기(저장소에 넣지 않음) |
-| `judge_data.py` | Gemma가 아닌 판정 모델(`scratch_judge.py`)의 학습 데이터. `gemma_judge2.py`와 같은 출처·필터에 같은 질환의 이름 쌍을 더한다 |
+| `judge_data.py` | Gemma가 아닌 판정 모델(`scratch_judge.py`)의 학습 데이터. `gemma_judge2.py`와 같은 출처, 필터에 같은 질환의 이름 쌍을 더한다 |
 | `linking_models.py` | MONDO 개념, 장기 라벨 로더(`ADCTOX_LABELS`), gold 격리(`gold_held`) |
 | `gpu_queue.py` | 작업 목록 파일을 GPU 여러 장에 나눠 실행하는 큐 |
 
