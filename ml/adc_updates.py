@@ -412,7 +412,25 @@ def update_app(manifest=None, program=None, allow_local=False, torch_version=Non
     else:
         temporary = prefix / ".app-next"; temporary.unlink(missing_ok=True)
         temporary.symlink_to(release.relative_to(prefix), target_is_directory=True); os.replace(temporary, prefix / "current")
+    try: ensure_web_launcher()
+    except OSError: pass
     return f"App {manifest['app_version']} installed; it starts next time you open ADCTOX."
+
+
+def ensure_web_launcher():
+    """adctox-web beside the adctox launcher: install.sh and install.ps1 write both, an app updated in place (--update-app) gets
+    it here on its next start. Never overwrites an existing one. -> the path, or None when there is no adctox launcher of ours."""
+    import shutil
+    found = shutil.which("adctox.cmd" if pointer_mode() else "adctox")
+    if not found: return None
+    launcher = Path(found); web = launcher.with_name("adctox-web.cmd" if pointer_mode() else "adctox-web")
+    if web.exists(): return web
+    text = launcher.read_text(encoding="utf-8", errors="replace")
+    new = text.replace(" %*", " --web %*", 1) if pointer_mode() else text.replace(' "$@"', ' --web "$@"', 1)
+    if new == text or not ("adc_recommender_full.py" in text or "ADCTOX.bat" in text): return None
+    temporary = web.with_name("." + web.name + "-next"); temporary.write_text(new, encoding="utf-8")
+    temporary.chmod(launcher.stat().st_mode & 0o7777); os.replace(temporary, web)
+    return web
 
 
 def app_cli(action):

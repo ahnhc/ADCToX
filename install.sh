@@ -100,9 +100,11 @@ launcher=bindir/'adctox';temporary=bindir/'.adctox-next'
 q=shlex.quote
 temporary.write_text('#!/usr/bin/env bash\nset -e\nexport ADC_MODEL_HOME='+q(str(prefix/'models'))+'\nexec '+q(str(prefix/'venvs/runtime-1/bin/python'))+' -I '+q(str(prefix/'current/adc_recommender_full.py'))+' "$@"\n')
 temporary.chmod(0o755);os.replace(temporary,launcher)
-print('Installed: '+str(launcher))
+web=bindir/'adctox-web';temporary=bindir/'.adctox-web-next'
+temporary.write_text(launcher.read_text().replace(' "$@"',' --web "$@"',1));temporary.chmod(0o755);os.replace(temporary,web)
+print('Installed: '+str(launcher)+', '+str(web))
 PY
-echo 'Run: adctox'
+echo 'Run: adctox   (in the browser: adctox-web)'
 if [[ ":$PATH:" != *":$task_bin:"* ]]; then
   task_rc="$HOME/.bashrc"; [[ "$task_os" == Darwin || "${SHELL:-}" == */zsh ]] && task_rc="$HOME/.zprofile"
   echo 'Add to PATH (then open a new terminal):'

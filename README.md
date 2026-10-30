@@ -94,7 +94,7 @@ ADC(antibody-drug conjugate)는 항체에 강한 세포독성 payload를 붙인 
 
 **검사 수치.** bilirubin, AST, ALT는 ULN 배수로, 크레아티닌은 Cockcroft–Gault CLcr로 바꿔 라벨의 간, 신장 기능 기준과 맞춥니다. 입력하지 않은 값에 따라 판정이 달라지면 `?`로 표시하고, 필요한 값을 알려 줍니다.
 
-**브라우저 화면.** `adctox --web`은 같은 다섯 화면을 기본 브라우저에서 엽니다. 이 컴퓨터 안에서만 열리고 서버에는 아무것도 남지 않습니다. 인체 지도가 환자의 장기와 고른 ADC의 경고(boxed warning은 빨간 고리, warning은 주황 고리)를 비추고, ADC 상세는 서랍으로 열립니다.
+**브라우저 화면.** `adctox-web`(`adctox --web`과 같음)은 같은 다섯 화면을 기본 브라우저에서 엽니다. 이 컴퓨터 안에서만 열리고 서버에는 아무것도 남지 않습니다. 인체 지도가 환자의 장기와 고른 ADC의 경고(boxed warning은 빨간 고리, warning은 주황 고리)를 비추고, ADC 상세는 서랍으로 열립니다.
 
 <p align="center">
   <img src="docs/images/web_result.png" alt="브라우저 화면: 결과와 ADC 상세, 인체 지도" width="820">
@@ -130,7 +130,7 @@ irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 | 우선순위 | 장기가 다른 질환이 여럿이면, 가장 걱정되는 질환을 하나 고릅니다 |
 | 결과 | ↑↓로 ADC를 골라 근거를 봅니다 |
 
-브라우저에서 같은 다섯 화면을 쓰려면 `adctox --web`을 실행합니다. 이 컴퓨터 안에서만 열리고(127.0.0.1) 서버에는 아무것도 남지 않습니다.
+브라우저에서 같은 다섯 화면을 쓰려면 `adctox-web`(또는 `adctox --web`)을 실행합니다. 이 컴퓨터 안에서만 열리고(127.0.0.1) 서버에는 아무것도 남지 않습니다.
 
 ```bash
 adctox --update-app      # 앱 업데이트

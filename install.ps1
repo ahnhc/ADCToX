@@ -29,6 +29,7 @@ try {
 
 New-Item -ItemType Directory -Force $Bin | Out-Null
 Set-Content (Join-Path $Bin 'adctox.cmd') "@echo off`r`ncall `"$App\ADCTOX.bat`" %*" -Encoding ascii
+Set-Content (Join-Path $Bin 'adctox-web.cmd') "@echo off`r`ncall `"$App\ADCTOX.bat`" --web %*" -Encoding ascii
 $path = [Environment]::GetEnvironmentVariable('Path', 'User')
 if (($path -split ';') -notcontains $Bin) { [Environment]::SetEnvironmentVariable('Path', ($(if ($path) { "$path;" } else { '' }) + $Bin), 'User') }
 $shell = New-Object -ComObject WScript.Shell

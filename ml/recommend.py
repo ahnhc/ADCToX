@@ -1210,6 +1210,7 @@ HELP = """ADCTOX {version}
   adctox                         입력 화면으로 시작 (질환 → 검사 수치 → AI 장기 분석 → 우선순위 → 결과)
   adctox --plain                 전체 화면 없이 질문에 답하는 방식으로 입력
   adctox --web                   같은 다섯 단계를 브라우저에서 (이 컴퓨터 안에서만 실행; ADCTOX_NO_BROWSER=1이면 주소만 표시)
+  adctox-web                     adctox --web과 같음
   질환과 검사 수치는 입력 화면에서만 넣습니다. 명령줄 인자로는 받지 않습니다.
 
 입력 화면 키
@@ -1257,6 +1258,10 @@ def main():
     if arguments in (["--help"], ["-h"], ["help"]):
         print(HELP.format(version=APP_VERSION, n=len(_evidence()[0]))); return
     cap_threads()
+    import adc_updates
+    if adc_updates.app_layout():                      # an app updated in place: adctox-web appears beside adctox
+        try: adc_updates.ensure_web_launcher()
+        except OSError: pass
     import term
     if "--no-wt" in sys.argv: sys.argv.remove("--no-wt")
     else: term.into_windows_terminal()                 # double-clicked on Windows: reopen in Windows Terminal when there is one

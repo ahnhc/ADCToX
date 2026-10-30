@@ -4,6 +4,7 @@
 
 - **`adctox --web`: the same five steps in the default browser**, served on this computer only (127.0.0.1, a free port; nothing is stored on the server, the page keeps its entries in the tab). A body map beside the screens lights the patient's organs from AI 장기 분석 on (level 1 bright, level 2 dim) and rings the selected ADC's boxed warnings red and its warnings amber; the ADC detail opens as a drawer with the same sections as the terminal panel; keys as in the terminal (PgUp / PgDn, ↑↓, Enter, Esc), clicking works everywhere. The terminal screens stay the default.
 - The one-file build carries the page (ml/web/, served from memory); `ADCTOX.bat --web` on Windows.
+- **`adctox-web`** does the same: install.sh and install.ps1 write it beside `adctox`, the Windows zip has `ADCTOX-web.bat`, and an app updated with `--update-app` writes it on its next start.
 
 ## 0.6.2: Trial results on the patient's organs (Ubuntu, macOS and Windows)
 

@@ -11,6 +11,7 @@ Built on Linux from the same app archive the Ubuntu release uses, so app and mod
   ADCTOX/launcher.py      starts that release; on the first start it downloads the models (about 1 GB) into
                           %LOCALAPPDATA%\\adctox\\models with the model updater
   ADCTOX/ADCTOX.bat       double-click entry point
+  ADCTOX/ADCTOX-web.bat   the same five steps in the browser (ADCTOX.bat --web)
 Outputs dist/releases/windows/ADCTOX-windows.zip and windows.json (size, SHA256, release URL).
 Downloads are cached in ADCTOX_WIN_CACHE (default /data/hyeongchanahn/adctox/raw/win_build on the lab server, else ~/.cache/adctox-win).
 """
@@ -30,6 +31,7 @@ BAT = ('@echo off\r\n'
        'title ADCTOX\r\n'
        '"%~dp0python\\python.exe" -I "%~dp0launcher.py" %*\r\n'
        'if errorlevel 1 pause\r\n')
+WEB_BAT = '@echo off\r\ncall "%~dp0ADCTOX.bat" --web %*\r\n'      # ADCTOX-web.bat: the same five steps in the browser
 LAUNCHER = '''"""Starts the ADCTOX release named in app.txt with this folder's Python; downloads the models on the first start."""
 import os, runpy, subprocess, sys
 from pathlib import Path
@@ -72,7 +74,7 @@ README = """ADCTOX {version} (Windows)
   압축을 푼 ADCTOX 폴더의 ADCTOX.bat를 더블클릭합니다.
   처음 실행할 때 모델 파일(약 1 GB)을 한 번 내려받습니다. 저장 위치: %LOCALAPPDATA%\\adctox\\models
   Windows Terminal이 있으면 그 창에서 열립니다.
-  ADCTOX.bat --web 은 같은 다섯 단계를 브라우저에서 엽니다 (이 컴퓨터 안에서만).
+  ADCTOX-web.bat를 더블클릭하면 같은 다섯 단계가 브라우저에서 열립니다 (이 컴퓨터 안에서만).
 
 업데이트
   모델: 질환 선택 화면에서 U
@@ -161,7 +163,7 @@ Write-Host "4/5 App files"
 New-Item -ItemType Directory "ADCTOX\apps\$Release" | Out-Null
 Copy-Item app\* "ADCTOX\apps\$Release\"
 Set-Content ADCTOX\app.txt $Release -Encoding ascii
-Copy-Item launcher.py, ADCTOX.bat, README.txt ADCTOX\
+Copy-Item launcher.py, ADCTOX.bat, ADCTOX-web.bat, README.txt ADCTOX\
 
 Write-Host "5/5 Check and zip"
 & ADCTOX\python\python.exe -I ADCTOX\launcher.py --version
@@ -195,7 +197,7 @@ https://aka.ms/vs/17/release/vc_redist.x64.exe
 파일
   build.bat, build_windows.ps1  빌드
   app\                          앱 파일(Ubuntu 릴리스와 같은 3개 파일)
-  launcher.py, ADCTOX.bat, README.txt  패키지에 들어갈 실행 파일과 안내
+  launcher.py, ADCTOX.bat, ADCTOX-web.bat, README.txt  패키지에 들어갈 실행 파일과 안내
 """
 
 
@@ -206,7 +208,7 @@ def kit(a, manifest, archive):
     release = f"{APP_VERSION}-{manifest['sha256'][:12]}"
     (out / "build_windows.ps1").write_text(BUILD_PS1.format(embed_sha=EMBED[1], release=release, torch=manifest["torch_version"]).replace("\n", "\r\n"), encoding="utf-8-sig")
     (out / "build.bat").write_bytes(BUILD_BAT.encode())
-    (out / "launcher.py").write_text(LAUNCHER); (out / "ADCTOX.bat").write_bytes(BAT.encode())
+    (out / "launcher.py").write_text(LAUNCHER); (out / "ADCTOX.bat").write_bytes(BAT.encode()); (out / "ADCTOX-web.bat").write_bytes(WEB_BAT.encode())
     (out / "README.txt").write_text(README.format(version=APP_VERSION).replace("\n", "\r\n"), encoding="utf-8-sig")
     (out / "BUILD_README.txt").write_text(KIT_README.format(version=APP_VERSION, torch=manifest["torch_version"]).replace("\n", "\r\n"), encoding="utf-8-sig")
     z = out.parent / "ADCTOX-windows-build-kit.zip"
