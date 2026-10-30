@@ -1403,6 +1403,20 @@
 - ev2s8 대비 바뀐 것: seed 8 → 9
 - 내부 dev: val_f1 0.8834790884723872, thr [0.25000000000000006, 0.40000000000000013, 0.30000000000000004, 0.3500000000000001, 0.5500000000000002, 0.6500000000000001, 0.7000000000000002, 0.45000000000000007, 0.6000000000000002, 0.40000000000000013, 0.45000000000000007, 0.30000000000000004, 0.5000000000000001]
 
+### ev3s8 — evidence reader on the X3 backbone (pretrain_p4), v5.1 labels, GPU, maxlen 256, seed 8
+
+- 시작 2026-10-31 02:58, 커밋 `007ecd4` (커밋 안 된 변경 16개), seed 8
+- 데이터: 
+- ev2s9 대비 바뀐 것: backbone /data/hyeongchanahn/adctox/work/pretrain_p3_48h → /data/hyeongchanahn/adctox/work/pretrain_p4; seed 9 → 8
+- 내부 dev: val_f1 0.8861690228583016, thr [0.45000000000000007, 0.5500000000000002, 0.40000000000000013, 0.5000000000000001, 0.8000000000000002, 0.7500000000000002, 0.40000000000000013, 0.45000000000000007, 0.6500000000000001, 0.30000000000000004, 0.30000000000000004, 0.5500000000000002, 0.30000000000000004]
+
+### ev3s9 — evidence reader on the X3 backbone (pretrain_p4), v5.1 labels, GPU, maxlen 256, seed 9
+
+- 시작 2026-10-31 05:35, 커밋 `95fcb49` (커밋 안 된 변경 13개), seed 9
+- 데이터: 
+- ev3s8 대비 바뀐 것: seed 8 → 9
+- 내부 dev: val_f1 0.8772211428207165, thr [0.45000000000000007, 0.25000000000000006, 0.6500000000000001, 0.3500000000000001, 0.8000000000000002, 0.5000000000000001, 0.5500000000000002, 0.40000000000000013, 0.6000000000000002, 0.40000000000000013, 0.5000000000000001, 0.7000000000000002, 0.30000000000000004]
+
 ## X3 bert-large
 
 ### x3s7 — X3: p4 bert-large (335M) from scratch, 3 GPUs, 32h, wwm, UMLS/MONDO/HPO x10, batch 1152, lr 2e-4; judge lr 5e-5; x2c distillation (big teacher, weight 1), v5.1 labels
@@ -1472,4 +1486,39 @@
 - 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
 - 내부 dev: epochs_best 4, val_organ_loss 0.1593, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8846689211597235, '0.55': 0.8847241939662831, '0.6': 0.8859912338148668, '0.65': 0.8868056896304295, '0.7': 0.8853979941411632, '0.75': 0.8792260148662095, '0.8': 0.8659824516996822, '0.85': 0.849671503094015, '0.9': 0.8284802618421507, '0.95': 0.8014650702444434, '1.0': 0.7302653871157142}, real_accepted 0.989697134637067, minutes 65.5
 - 벤치마크 scratch (dev): en 0.661, ko 0.66, concept_en 0.487, invalid_accept 0.0, symptom_top3 None
+
+## X3 typo and abbreviation pairs
+
+### x3ts7 — X3 (p4 bert-large, judge lr 5e-5, x2c distillation) + opt-in name pairs: English misspellings of MONDO names (entypo) and SPECIALIST LRABR abbreviations (lrabr). The X3 + pairs cell the 10-26 table left out for lack of GPU time
+
+- 시작 2026-10-31 00:28, 커밋 `007ecd4` (커밋 안 된 변경 3개), seed 7
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 285,303, train 259,879, val 25,424, junk_copies 4, dropped_eval_text_gold 0, dropped_eval_text_other 421, pairs 522,763
+- 출처별 학습 항목: umls 102,602, mondo_names 45,705, mondo_ko 27,794, kotypo 23,781, kcd 16,272, ko2 9,872, junk 8,440, gen_sym 7,340, ko3 5,390, profiles_sym 3,679, gen_ko 2,864, train_queries 2,376, profiles 2,146, external 1,618
+- x3s7 대비 바뀐 것: add_pairs  → entypo,lrabr; compare_to x2s7 → x3s7
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 3, val_organ_loss 0.1497, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8896253407696, '0.55': 0.8897705501524964, '0.6': 0.8904397322563948, '0.65': 0.8917494712446281, '0.7': 0.8904390984075057, '0.75': 0.8864678684122809, '0.8': 0.8791298380780089, '0.85': 0.8679777931649431, '0.9': 0.8481005841170605, '0.95': 0.8184460415843074, '1.0': 0.7506133301567477}, real_accepted 0.9898521082441787, minutes 147.0
+- 벤치마크 scratch (dev): en 0.697, ko 0.653, concept_en 0.5, invalid_accept 0.0, symptom_top3 None
+
+### x3ts8 — X3 (p4 bert-large, judge lr 5e-5, x2c distillation) + opt-in name pairs: English misspellings of MONDO names (entypo) and SPECIALIST LRABR abbreviations (lrabr). The X3 + pairs cell the 10-26 table left out for lack of GPU time
+
+- 시작 2026-10-31 03:08, 커밋 `007ecd4` (커밋 안 된 변경 17개), seed 8
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 285,256, train 259,352, val 25,904, junk_copies 4, dropped_eval_text_gold 0, dropped_eval_text_other 420, pairs 522,083
+- 출처별 학습 항목: umls 102,393, mondo_names 45,674, mondo_ko 27,748, kotypo 23,723, kcd 16,225, ko2 9,872, junk 8,440, gen_sym 7,323, ko3 5,392, profiles_sym 3,668, gen_ko 2,830, train_queries 2,337, profiles 2,155, external 1,572
+- x3s8 대비 바뀐 것: add_pairs  → entypo,lrabr; compare_to x2s8 → x3s8
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 2, val_organ_loss 0.1603, valid_threshold 0.995, theta 0.7, theta_val_f1 {'0.5': 0.8805695733217883, '0.55': 0.8806414056437161, '0.6': 0.8809991363558093, '0.65': 0.8820220571790001, '0.7': 0.8822814384651557, '0.75': 0.8784294844946055, '0.8': 0.8694725007030512, '0.85': 0.8556522389111911, '0.9': 0.8340228524117328, '0.95': 0.8048717305440334, '1.0': 0.7304385874619405}, real_accepted 0.987415071031501, minutes 145.9
+- 벤치마크 scratch (dev): en 0.714, ko 0.628, concept_en 0.491, invalid_accept 0.0, symptom_top3 None
+
+### x3ts9 — X3 (p4 bert-large, judge lr 5e-5, x2c distillation) + opt-in name pairs: English misspellings of MONDO names (entypo) and SPECIALIST LRABR abbreviations (lrabr). The X3 + pairs cell the 10-26 table left out for lack of GPU time
+
+- 시작 2026-10-31 05:44, 커밋 `95fcb49` (커밋 안 된 변경 14개), seed 9
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 285,302, train 259,581, val 25,721, junk_copies 4, dropped_eval_text_gold 0, dropped_eval_text_other 421, pairs 522,591
+- 출처별 학습 항목: umls 102,196, mondo_names 45,720, mondo_ko 27,812, kotypo 23,774, kcd 16,271, ko2 9,843, junk 8,440, gen_sym 7,351, ko3 5,377, profiles_sym 3,688, gen_ko 2,904, train_queries 2,405, profiles 2,176, external 1,624
+- x3s9 대비 바뀐 것: add_pairs  → entypo,lrabr; compare_to x2s9 → x3s9
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 3, val_organ_loss 0.1591, valid_threshold 0.995, theta 0.7, theta_val_f1 {'0.5': 0.890903034919314, '0.55': 0.8908791353423552, '0.6': 0.8910088625940331, '0.65': 0.892334269090479, '0.7': 0.8924126379595639, '0.75': 0.8885330281686655, '0.8': 0.8805736235264998, '0.85': 0.8648129009306462, '0.9': 0.8419609031252236, '0.95': 0.8108652225345845, '1.0': 0.7367332850004635}, real_accepted 0.9910967691769371, minutes 146.6
+- 벤치마크 scratch (dev): en 0.686, ko 0.651, concept_en 0.487, invalid_accept 0.0, symptom_top3 None
 

@@ -1,0 +1,67 @@
+{
+ "tag": "ev3s9",
+ "stage": "X2 evidence reader",
+ "note": "evidence reader on the X3 backbone (pretrain_p4), v5.1 labels, GPU, maxlen 256, seed 9",
+ "started": "2026-10-31 05:35",
+ "args": {
+  "cmd": "train",
+  "backbone": "/data/hyeongchanahn/adctox/work/pretrain_p4",
+  "tag": "ev3s9",
+  "x2": null,
+  "epochs": 3,
+  "bs": 16,
+  "lr": 3e-05,
+  "seed": 9,
+  "drop_def": 0.2,
+  "smoke": false,
+  "stage": "X2 evidence reader",
+  "note": "evidence reader on the X3 backbone (pretrain_p4), v5.1 labels, GPU, maxlen 256, seed 9"
+ },
+ "git": {
+  "commit": "95fcb49",
+  "dirty": [
+   "ml/results/benchmarks/bench_scratch_x3te7.json",
+   "ml/results/benchmarks/bench_scratch_x3te8.json",
+   "ml/results/benchmarks/bench_scratch_x3ts7.json",
+   "ml/results/benchmarks/bench_scratch_x3ts8.json",
+   "ml/results/benchmarks/known_x3te7.json",
+   "ml/results/benchmarks/known_x3te8.json",
+   "ml/results/benchmarks/known_x3ts7.json",
+   "ml/results/benchmarks/known_x3ts8.json",
+   "ml/results/sweep/jobs_x3te.txt.done",
+   "ml/results/tuning/ev3s8.json",
+   "ml/results/tuning/evsmoke.json",
+   "ml/results/tuning/x3ts7.json",
+   "ml/results/tuning/x3ts8.json"
+  ],
+  "n_dirty": 13
+ },
+ "data": {
+  "evidence": "/home/hyeongchanahn/CONI/adctox/data/curated/concept_organs/v5/input/concepts.jsonl",
+  "n_train": 18735,
+  "n_val": 2081,
+  "labels": "v51"
+ },
+ "backbone": {
+  "model": "/data/hyeongchanahn/adctox/work/pretrain_p4"
+ },
+ "finished": "2026-10-31 05:44",
+ "results": {
+  "val_f1": 0.8772211428207165,
+  "thr": [
+   0.45000000000000007,
+   0.25000000000000006,
+   0.6500000000000001,
+   0.3500000000000001,
+   0.8000000000000002,
+   0.5000000000000001,
+   0.5500000000000002,
+   0.40000000000000013,
+   0.6000000000000002,
+   0.40000000000000013,
+   0.5000000000000001,
+   0.7000000000000002,
+   0.30000000000000004
+  ]
+ }
+}
