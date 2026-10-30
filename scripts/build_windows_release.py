@@ -244,7 +244,7 @@ def main():
                         "--python-version", "3.12", "--implementation", "cp", "-d", str(CACHE / "msvc"), "msvc-runtime==14.44.35112"], check=True)
         for w in (CACHE / "msvc").glob("msvc_runtime-14.44.35112-*.whl"): unpack_wheel(w, site, prefix=stage / "python"); found.append(w)
     (stage / "app.txt").write_text(release.name + "\n"); (stage / "launcher.py").write_text(LAUNCHER)
-    (stage / "ADCTOX.bat").write_bytes(BAT.encode()); (stage / "README.txt").write_text(README.format(version=APP_VERSION).replace("\n", "\r\n"), encoding="utf-8-sig")
+    (stage / "ADCTOX.bat").write_bytes(BAT.encode()); (stage / "ADCTOX-web.bat").write_bytes(WEB_BAT.encode()); (stage / "README.txt").write_text(README.format(version=APP_VERSION).replace("\n", "\r\n"), encoding="utf-8-sig")
     out = a.out / "ADCTOX-windows.zip"
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as z:
         for p in sorted(stage.rglob("*")):
