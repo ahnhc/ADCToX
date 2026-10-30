@@ -463,6 +463,7 @@ def recommend(conditions, labs=None, raw=None):
     # warnings level by level. Within one patient this is the order; B and Wn (severity sums) stay for comparisons across patients.
     cancers = patient_cancers(notes)                   # a cancer among the conditions: the patient has that cancer only
     approved = {a for _, cs in cancers.values() for c in cs for a in _cancers().get(c, [])}
+    for r in rows: r["cancers"] = sorted({c for _, cs in cancers.values() for c in cs})       # trial_lines() picks the cancer's trial
     for r in rows: r["indicated"] = not cancers or r["adc"] in approved
     first = next((set(o) for c, o, _ in pc if c == FIRST), None)
     hit = lambda r, k: sum(a in first for a in r[k]) if first else 0
@@ -770,7 +771,54 @@ def organ_warning_lines(row):
             for marks, organs in (("!!", row.get("boxed", [])), ("! ", row.get("warn", []))) for a in organs]
 
 
-_CAN = _CM = None
+def patient_organs(row):
+    """the organs the patient's conditions marked: those with a boxed warning on this label first, then a W&P warning, then the rest in axis order"""
+    mine = {o for _, _, organs in row.get("priority", []) for o in organs}
+    warned = list(row.get("boxed", [])) + list(row.get("warn", []))
+    return warned + sorted(mine - set(warned), key=AXES.index)
+
+
+def _event_text(e):
+    """'pneumonitis 18/257 (7.0%, vs 0.4%), serious 1/257'; an event reported only as serious: 'interstitial lung disease serious 5/257 (1.9%)'"""
+    pct = lambda a, n: f"{100 * a / n:.1f}%"
+    text = f"{e['term']} {'serious ' if e['serious'] else ''}{e['a']}/{e['n']} ({pct(e['a'], e['n'])}" + (f", vs {pct(*e['comp'])}" if e.get("comp") else "") + ")"
+    return text + (f", serious {e['sa']}/{e['n']}" if e.get("sa") and not e["serious"] else "")
+
+
+def trial_lines(row):
+    """ClinicalTrials.gov results of the ADC's main trial on the patient's organs (data/curated/competition/trial_ae.json,
+    ml/build_trial_ae.py): the trial and its comparator, then one line per organ with the events the label warning on that organ
+    is about, or, where the label has no warning, the organ's most frequent event and its most frequent serious event."""
+    T = _trial_ae().get("adcs", {}).get(row.get("adc"))
+    if not T: return []
+    if not T["trials"]:
+        t = T["no_results"][0]; return [f"  no results posted on ClinicalTrials.gov ({t['trial']}, {t['nct']})"]
+    t = next((t for t in T["trials"] if set(t["cancers"]) & set(row.get("cancers", []))), T["trials"][0])      # the patient's cancer's trial when known
+    out = [f"  {t['trial']}, {t['regimen']}, n={t['n']}" + (f"; vs {t['comparator']['regimen']}, n={t['comparator']['n']}" if t.get("comparator") else "")]
+    none = "none reported" if not t["threshold"] else f"none at or above {t['threshold']:g}%, none serious"
+    for a in patient_organs(row):
+        o = t["organs"].get(a, {})
+        evs = o.get("warned") or [e for e in (o.get("any"), o.get("serious")) if e]
+        if len(evs) == 2 and evs[0]["term"] == evs[1]["term"]: evs = evs[:1]
+        out.append(f"  {ORGAN_SHORT[a]:<9} " + ("; ".join(_event_text(e) for e in evs) or none))
+    return out
+
+
+_CAN = _CM = _TA = None
+
+
+def _trial_ae():
+    """{"snapshot", "adcs": {adc: {"trials": [...], "no_results": [...]}}} (data/curated/competition/trial_ae.json, ml/build_trial_ae.py);
+    the app build embeds it."""
+    global _TA
+    if _TA is None:
+        try:
+            from __adc_data__ import _portable_data
+            _TA = _portable_data().get("trial_ae", {})
+        except ImportError:
+            try: _TA = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "curated", "competition", "trial_ae.json"), encoding="utf-8"))
+            except OSError: _TA = {}
+    return _TA
 
 
 def _cancers():
@@ -857,6 +905,11 @@ def _result_details(row, checks_, width):
         out.append(paint("─" * width, "90"))
         out.append(paint("Warnings on the patient's organs", "33;1"))
         out.extend(warned)
+    trial = trial_lines(row)
+    if trial:
+        out.append(paint("─" * width, "90"))
+        out.append(paint("Trial results on the patient's organs", "33;1"))
+        out.extend(trial)
     if row["verdict"].missing:
         out.append(paint("─" * width, "90"))
         out.append(paint("Missing inputs", "33;1"))
@@ -1028,6 +1081,10 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
                 if a in s:
                     o = r["organs"][a]; hd = warning_names(o["headings"]) or "no warning"
                     emit(f"  {EN[a]} / {o['level']} / {hd} / {_inc_text(o)}")
+        heading("Trial results on your organs")
+        for r in rows:
+            emit(r["name"])
+            for line in trial_lines(r): emit(line)
 
 
 # ------------------------------------------------------------------------------------------------ input

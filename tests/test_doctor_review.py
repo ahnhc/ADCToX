@@ -91,7 +91,7 @@ def _screen(monkeypatch, keys, size=(24, 80)):
 
 def test_lab_error_names_the_field_and_moves_there(monkeypatch):
     import form
-    keys = ["KEY_DOWN"] * 10 + list("80") + ["KEY_DOWN"] * 5 + ["KEY_NPAGE"]          # Hb 80 (1-25), then try to go on
+    keys = ["KEY_DOWN"] * 11 + list("80") + ["KEY_DOWN"] * 5 + ["KEY_NPAGE"]          # Hb 80 (1-25), then try to go on
     screen, frames = _screen(monkeypatch, keys + ["KEY_NPAGE"])
     F = form.Form(screen, RC); F.step = 1
     with pytest.raises(AssertionError): F.labs({})
@@ -199,3 +199,45 @@ def test_the_analysis_shows_a_cancer_as_cancer(monkeypatch):
     monkeypatch.setattr(RC, "HAS_LEARNED", False)
     r = RC.analyze_conditions(["DLBCL"])[0]
     assert r["source"] == "Cancer" and r["organs"] == [] and r["cancers"] == ["Large B-cell lymphoma (DLBCL)"]
+
+
+def test_trial_results_on_the_patients_organs(monkeypatch):
+    rows = _rows(monkeypatch)
+    tdxd = next(r for r in rows if r["name"] == "Trastuzumab deruxtecan")
+    text = "\n".join(map(plain, RC._result_details(tdxd, [], 110)))
+    assert "Trial results on the patient's organs" in text and re.search(r"^  DESTINY-Breast0\d, T-DXd 5.4 mg/kg q3w, n=\d+; vs ", text, re.M)
+    assert re.search(r"^  Lung\s+(pneumonitis|interstitial lung disease) ", text, re.M)
+    assert re.search(r"^  Cardio\s+\S", text, re.M)                                    # heart failure: the patient's organ, with or without a label warning
+    gem = next(r for r in rows if r["name"] == "Gemtuzumab ozogamicin")
+    assert "no results posted on ClinicalTrials.gov (ALFA-0701, NCT00927498)" in "\n".join(map(plain, RC._result_details(gem, [], 110)))
+    assert RC._event_text(dict(term="pneumonitis", a=18, n=257, comp=[1, 261], sa=1, serious=False)) == "pneumonitis 18/257 (7.0%, vs 0.4%), serious 1/257"
+    assert RC._event_text(dict(term="ild", a=5, n=257, comp=None, sa=5, serious=True)) == "ild serious 5/257 (1.9%)"
+    organs = RC.patient_organs(tdxd)
+    assert organs[:len(tdxd["boxed"])] == list(tdxd["boxed"]) and set(organs) >= {"pulmonary", "cardiovascular"}
+
+
+def test_the_trial_table_is_built_from_the_csv():
+    import build_trial_ae as B
+    T = RC._trial_ae()["adcs"]
+    assert set(T) == set(RC._indications()) and set(B.SIGNAL) == set(RC.AXES)
+    for adc, v in T.items():
+        assert v["trials"] or v["no_results"], adc
+        assert [t["labelled"] for t in v["trials"]] == sorted((t["labelled"] for t in v["trials"]), reverse=True)
+        for t in v["trials"]:
+            for o in t["organs"].values():
+                for e in [o.get("any"), o.get("serious"), *o.get("warned", [])]:
+                    if e: assert 0 < e["a"] <= e["n"] and not re.search(B.EXCLUDE, e["term"])
+    assert T["belantamab-mafodotin"]["trials"][0]["trial"] == "DREAMM-7" and T["trastuzumab-emtansine"]["trials"][0]["trial"] == "KATHERINE"
+    assert {t["trial"] for t in T["polatuzumab-vedotin"]["no_results"]} == {"POLARIX"} and T["polatuzumab-vedotin"]["trials"][0]["trial"] == "GO29365"
+    assert B.topics("pulmonary", ["Interstitial Lung Disease/Pneumonitis"]) and not B.topics("pulmonary", [])
+
+
+def test_the_trial_of_the_patients_cancer_is_shown(monkeypatch):
+    _linked(monkeypatch, "MONDO:0006244", "HER2 positive breast carcinoma", [])
+    monkeypatch.setattr(RC, "FIRST", None); monkeypatch.setattr(RC, "PRIORITY", {})
+    rows, *_ = RC.recommend(["HER2 양성 유방암", "interstitial_lung_disease"], {}, {})
+    tdxd = next(r for r in rows if r["name"] == "Trastuzumab deruxtecan")
+    assert "HER2+ breast cancer" in tdxd["cancers"]
+    text = "\n".join(map(plain, RC._result_details(tdxd, [], 110)))
+    assert "  DESTINY-Breast02, T-DXd 5.4 mg/kg q3w, n=404; vs treatment of physician's choice" in text     # the largest HER2+ trial, not DESTINY-Breast06
+    assert re.search(r"^  Lung\s+(pneumonitis|interstitial lung disease) \d+/404 \(\d+\.\d%, vs \d+\.\d%\)", text, re.M)

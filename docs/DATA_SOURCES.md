@@ -32,6 +32,11 @@ The claim is therefore **not** "we do not use MedDRA" -- the SOC layer *is* the 
 SOC layer, and saying otherwise to a reader who knows the licence would backfire. The
 claim is that we redistribute no MedDRA artefact.
 
+The app's trial table (`data/curated/competition/trial_ae.json`, built by `ml/build_trial_ae.py`)
+quotes at most a few event terms per organ and trial, as they appear in the public
+ClinicalTrials.gov records, with their counts. It carries no PT -> SOC dictionary; the organ of
+each quoted term comes from the record's own SOC through `conf/ontology/axes.yaml`.
+
 ## PMC Open Access
 
 The extraction pipeline is structurally confined to the OA subset: `efetch` refuses full

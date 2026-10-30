@@ -15,12 +15,12 @@ from fractions import Fraction
 FIELDS = [("age", "Age", "years", "Basic"), ("sex", "Sex", "M/F", "Basic"), ("weight", "Weight", "kg", "Basic"),
           ("creatinine", "Creatinine", "mg/dL", "Kidney"), ("egfr", "eGFR", "mL/min/1.73m²", "Kidney"),
           ("bilirubin", "Bilirubin", "mg/dL", "Liver"), ("ast", "AST", "U/L", "Liver"), ("alt", "ALT", "U/L", "Liver"),
-          ("albumin", "Albumin", "g/dL", "Liver"), ("ggt", "GGT", "U/L", "Liver"),
+          ("albumin", "Albumin", "g/dL", "Liver"), ("ggt", "GGT", "U/L", "Liver"), ("child_pugh", "Child-Pugh", "A/B/C", "Liver"),
           ("hb", "Hb", "g/dL", "Blood"), ("platelet", "Platelet", "x10³/µL", "Blood"), ("anc", "ANC", "x10³/µL", "Blood"),
           ("hba1c", "HbA1c (NGSP)", "%", "Glucose"), ("glucose", "Glucose (fasting)", "mg/dL", "Glucose"),
           ("amylase", "Amylase", "U/L", "Pancreas"), ("lipase", "Lipase", "U/L", "Pancreas"),
           ("tsh", "TSH", "µIU/mL", "Thyroid"),
-          ("lvef", "LVEF", "%", "Other"), ("child_pugh", "Child-Pugh", "A/B/C", "Other"), ("ugt1a1", "UGT1A1*28 homozygous", "y/n", "Other")]
+          ("lvef", "LVEF", "%", "Cardio"), ("ugt1a1", "UGT1A1*28 homozygous", "y/n", "Genotype")]
 RANGE = {"age": (1, 120), "weight": (1, 400), "creatinine": (0.05, 30), "egfr": (1, 200), "bilirubin": (0.01, 50), "ast": (1, 10000),
          "alt": (1, 10000), "albumin": (0.5, 7), "ggt": (1, 10000), "hb": (1, 25), "platelet": (1, 2000), "anc": (0.01, 100),
          "hba1c": (2, 25), "glucose": (10, 2000), "amylase": (1, 10000), "lipase": (1, 10000), "tsh": (0.001, 500), "lvef": (5, 90)}

@@ -1,0 +1,33 @@
+adc,trial,nct,phase,population,cancers,groups,regimen,labelled,comparator_groups,comparator
+brentuximab-vedotin,ECHELON-1,NCT01712490,3,"Advanced classical Hodgkin lymphoma, untreated",Classical Hodgkin lymphoma,EG000,"A+AVD (brentuximab vedotin 1.2 mg/kg with doxorubicin, vinblastine and dacarbazine)",y,EG001,ABVD
+brentuximab-vedotin,ECHELON-2,NCT01777152,3,"CD30+ peripheral T-cell lymphoma, untreated","T-cell lymphoma (sALCL, PTCL, pcALCL, mycosis fungoides)",EG000,"A+CHP (brentuximab vedotin 1.8 mg/kg with cyclophosphamide, doxorubicin and prednisone)",y,EG001,CHOP
+trastuzumab-emtansine,EMILIA,NCT00829166,3,"HER2+ metastatic breast cancer, after trastuzumab and a taxane",HER2+ breast cancer,EG000,T-DM1 3.6 mg/kg q3w,y,EG001,lapatinib + capecitabine
+trastuzumab-emtansine,KATHERINE,NCT01772472,3,HER2+ early breast cancer with residual disease after neoadjuvant therapy,HER2+ breast cancer,EG001,"T-DM1 3.6 mg/kg q3w, 14 cycles",y,EG000,trastuzumab
+trastuzumab-emtansine,TH3RESA,NCT01419197,3,"HER2+ advanced breast cancer, 2 or more prior HER2 regimens",HER2+ breast cancer,EG000,T-DM1 3.6 mg/kg q3w,y,EG001,treatment of physician's choice
+trastuzumab-emtansine,DESTINY-Breast03,NCT03529110,3,"HER2+ metastatic breast cancer, after trastuzumab and a taxane",HER2+ breast cancer,EG001,T-DM1 3.6 mg/kg q3w,y,EG000,T-DXd 5.4 mg/kg q3w
+trastuzumab-deruxtecan,DESTINY-Breast03,NCT03529110,3,"HER2+ metastatic breast cancer, after trastuzumab and a taxane",HER2+ breast cancer,EG000,T-DXd 5.4 mg/kg q3w,y,EG001,T-DM1 3.6 mg/kg q3w
+trastuzumab-deruxtecan,DESTINY-Breast02,NCT03523585,3,"HER2+ metastatic breast cancer, after T-DM1",HER2+ breast cancer,EG000,T-DXd 5.4 mg/kg q3w,y,EG001;EG002,treatment of physician's choice (trastuzumab or lapatinib with capecitabine)
+trastuzumab-deruxtecan,DESTINY-Breast04,NCT03734029,3,"HER2-low metastatic breast cancer, after chemotherapy",HER2-low or ultralow breast cancer,EG000,T-DXd 5.4 mg/kg q3w,y,EG001,physician's choice chemotherapy
+trastuzumab-deruxtecan,DESTINY-Breast06,NCT04494425,3,"HR+ HER2-low or HER2-ultralow metastatic breast cancer, after endocrine therapy",HER2-low or ultralow breast cancer,EG000,T-DXd 5.4 mg/kg q3w,y,EG001,physician's choice chemotherapy
+inotuzumab-ozogamicin,INO-VATE ALL,NCT01564784,3,Relapsed or refractory B-cell ALL,B-cell precursor ALL,EG000,inotuzumab ozogamicin 1.8 mg/m² per cycle,y,EG001,investigator's choice chemotherapy
+gemtuzumab-ozogamicin,ALFA-0701,NCT00927498,3,"Newly diagnosed AML, age 50 to 70",CD33+ acute myeloid leukemia,,gemtuzumab ozogamicin 3 mg/m² with daunorubicin and cytarabine,y,,
+polatuzumab-vedotin,POLARIX,NCT03274492,3,Untreated DLBCL,Large B-cell lymphoma (DLBCL),,polatuzumab vedotin 1.8 mg/kg with R-CHP,y,,
+polatuzumab-vedotin,GO29365,NCT02257567,1/2,Relapsed or refractory DLBCL,Large B-cell lymphoma (DLBCL),EG006;EG010,polatuzumab vedotin 1.8 mg/kg with bendamustine and rituximab,y,EG007,bendamustine + rituximab
+enfortumab-vedotin,EV-302,NCT04223856,3,"Locally advanced or metastatic urothelial cancer, untreated",Urothelial or bladder cancer,EG000,enfortumab vedotin 1.25 mg/kg with pembrolizumab,y,EG001,platinum + gemcitabine
+enfortumab-vedotin,EV-301,NCT03474107,3,"Locally advanced or metastatic urothelial cancer, after platinum and a PD-1/PD-L1 inhibitor",Urothelial or bladder cancer,EG000,"enfortumab vedotin 1.25 mg/kg days 1, 8, 15 q4w",y,EG001,"docetaxel, paclitaxel or vinflunine"
+enfortumab-vedotin,EV-201,NCT03219333,2,"Locally advanced or metastatic urothelial cancer, after a PD-1/PD-L1 inhibitor",Urothelial or bladder cancer,EG000;EG001,"enfortumab vedotin 1.25 mg/kg days 1, 8, 15 q4w",y,,
+sacituzumab-govitecan,ASCENT,NCT02574455,3,"Metastatic triple-negative breast cancer, 2 or more prior therapies",Triple-negative breast cancer,EG000,sacituzumab govitecan 10 mg/kg days 1 and 8 q3w,y,EG001,treatment of physician's choice
+sacituzumab-govitecan,TROPiCS-02,NCT03901339,3,"HR+ HER2- metastatic breast cancer, after endocrine therapy and chemotherapy","HR+, HER2- breast cancer",EG000,sacituzumab govitecan 10 mg/kg days 1 and 8 q3w,y,EG001,treatment of physician's choice
+loncastuximab-tesirine,LOTIS-2,NCT03589469,2,"Relapsed or refractory DLBCL, 2 or more prior therapies",Large B-cell lymphoma (DLBCL),EG000,loncastuximab tesirine 0.15 then 0.075 mg/kg q3w,y,,
+tisotumab-vedotin,innovaTV 301,NCT04697628,3,"Recurrent or metastatic cervical cancer, after chemotherapy",Cervical cancer,EG000,tisotumab vedotin 2.0 mg/kg q3w,y,EG001,investigator's choice chemotherapy
+tisotumab-vedotin,innovaTV 204,NCT03438396,2,"Recurrent or metastatic cervical cancer, after chemotherapy",Cervical cancer,EG000,tisotumab vedotin 2.0 mg/kg q3w,y,,
+mirvetuximab-soravtansine,MIRASOL,NCT04209855,3,FRα-positive platinum-resistant ovarian cancer,"FRα+ ovarian, fallopian tube or peritoneal cancer",EG000,mirvetuximab soravtansine 6 mg/kg AIBW q3w,y,EG001,investigator's choice chemotherapy
+mirvetuximab-soravtansine,SORAYA,NCT04296890,2,FRα-positive platinum-resistant ovarian cancer,"FRα+ ovarian, fallopian tube or peritoneal cancer",EG000,mirvetuximab soravtansine 6 mg/kg AIBW q3w,y,,
+datopotamab-deruxtecan,TROPION-Breast01,NCT05104866,3,"HR+ HER2- advanced breast cancer, after endocrine therapy and chemotherapy","HR+, HER2- breast cancer",EG000,Dato-DXd 6 mg/kg q3w,y,EG001,investigator's choice chemotherapy
+datopotamab-deruxtecan,TROPION-Lung01,NCT04656652,3,"Advanced NSCLC, after platinum chemotherapy and immunotherapy",,EG000,Dato-DXd 6 mg/kg q3w,n,EG001,docetaxel
+datopotamab-deruxtecan,TROPION-Lung05,NCT04484142,2,"Advanced NSCLC with an actionable genomic alteration, after targeted therapy",EGFR-mutated NSCLC,EG000,Dato-DXd 6 mg/kg q3w,y,,
+telisotuzumab-vedotin,LUMINOSITY,NCT03539536,2,"c-Met overexpressing NSCLC, previously treated",c-Met overexpressing non-squamous NSCLC,,telisotuzumab vedotin 1.9 mg/kg q2w,y,,
+belantamab-mafodotin,DREAMM-7,NCT04246047,3,"Relapsed or refractory multiple myeloma, 1 or more prior lines",Multiple myeloma,EG000,belantamab mafodotin 2.5 mg/kg with bortezomib and dexamethasone,y,EG001,daratumumab + bortezomib + dexamethasone
+belantamab-mafodotin,DREAMM-8,NCT04484623,3,"Relapsed or refractory multiple myeloma, 1 or more prior lines",Multiple myeloma,EG000,belantamab mafodotin 2.5 mg/kg with pomalidomide and dexamethasone,n,EG001,pomalidomide + bortezomib + dexamethasone
+belantamab-mafodotin,DREAMM-2,NCT03525678,2,"Relapsed or refractory multiple myeloma, 3 or more prior lines",Multiple myeloma,EG000,"belantamab mafodotin 2.5 mg/kg q3w, single agent",n,,
+pivekimab-sunirine,CADENZA,NCT03386513,1/2,Blastic plasmacytoid dendritic cell neoplasm,BPDCN,EG001;EG009,pivekimab sunirine 0.045 mg/kg q3w,y,,

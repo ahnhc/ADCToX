@@ -23,6 +23,8 @@ ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환�
 | `eval_a4.py` | 배포 파이프라인(registry → MONDO → judge)을 영어·한국어 gold query로 평가한다 |
 | `eval_symptoms.py` | 증상·문장 검색을 합성 평가 세트로 평가한다 |
 | `build_portable.py` | 한 파일짜리 실행본(`dist/adc_recommender.py`, `--full`은 언어 모델 포함)을 만든다 |
+| `build_cancer_mondo.py` | MONDO 암 용어 → 라벨 적응증 암종 표(`data/curated/competition/cancer_mondo.json`)를 만든다 |
+| `build_trial_ae.py` | ADC 15종 주요 임상시험 32건의 ClinicalTrials.gov 결과를 장기별 이상반응 표(`data/curated/competition/trial_ae.json`)로 만든다. 임상시험과 arm은 `adc_trials.csv` |
 
 보조 모듈:
 

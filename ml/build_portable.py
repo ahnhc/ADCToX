@@ -162,7 +162,8 @@ def main():
                 mechanisms={r["adc"]: r for r in csv.DictReader(open(R / "data/curated/competition/adc_mechanism_draft.csv", encoding="utf-8"))},
                 indications={r["adc"]: r for r in csv.DictReader(open(R / "data/curated/competition/adc_indications.csv", encoding="utf-8"))},
                 cancers={r["cancer"]: r["adcs"].split(";") for r in csv.DictReader(open(R / "data/curated/competition/adc_cancers.csv", encoding="utf-8"))},
-                cancer_mondo=json.load(open(R / "data/curated/competition/cancer_mondo.json", encoding="utf-8")))
+                cancer_mondo=json.load(open(R / "data/curated/competition/cancer_mondo.json", encoding="utf-8")),
+                trial_ae=json.load(open(R / "data/curated/competition/trial_ae.json", encoding="utf-8")))
     if FULL: data["learned"] = json.load(open(R / "ml/results/learned_vulnerability.json"))["severity"]
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
     src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "gemma_runtime", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion")}
