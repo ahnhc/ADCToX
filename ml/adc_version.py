@@ -1,5 +1,5 @@
 """Application and model-runtime compatibility versions (Ubuntu and Windows share them)."""
-APP_VERSION = "0.6.3"
+APP_VERSION = "0.6.4"
 RUNTIME_API = 1
 REPOSITORY = "ahnhc/ADCToX"
 # stable3.json: model bundles with the from-scratch organ judge (model 0.7+, ScratchJudge/), read by app 0.5+.

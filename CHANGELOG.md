@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.4: The browser screens, finished (Ubuntu, macOS and Windows)
+
+- **The ADC detail docks as a third column from 1280 px**: the body map gives way first and the table stays whole (#, ADC, Label restriction, Patient organs, Other, Key values, Organ priority all readable with the detail open); narrower screens keep the overlay.
+- **The body map is on every step**: empty on 질환, lit by the lab flags on 검사 수치 (Hb 9.1 g/dL lights Blood, bilirubin 2.0 mg/dL lights Liver), as before from AI 장기 분석 on.
+- **The result screen prints** (Ctrl-P): Key values, Organ priority, the table, the legend and the open ADC's detail on A4, no page break inside a row or a section.
+- **Pretendard Variable is embedded** (SIL Open Font License 1.1, licence text beside it), so the page has the same face on every PC, Korean and Latin alike; the app grows by 2 MB.
+- An app updated in place writes `adctox-web` beside `adctox` at its first start of any kind, `--version` and `--help` included.
+
 ## 0.6.3: The five screens in the browser (Ubuntu, macOS and Windows)
 
 - **`adctox --web`: the same five steps in the default browser**, served on this computer only (127.0.0.1, a free port; nothing is stored on the server, the page keeps its entries in the tab). A body map beside the screens lights the patient's organs from AI 장기 분석 on (level 1 bright, level 2 dim) and rings the selected ADC's boxed warnings red and its warnings amber; the ADC detail opens as a drawer with the same sections as the terminal panel; keys as in the terminal (PgUp / PgDn, ↑↓, Enter, Esc), clicking works everywhere. The terminal screens stay the default.
