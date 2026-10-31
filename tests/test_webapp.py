@@ -397,12 +397,13 @@ def test_the_one_file_build_serves_the_page_from_memory(tmp_path):
     assert "page: " in build.stdout and "index.html" in build.stdout
     code = ("import runpy, sys, http.client, threading; runpy.run_path(sys.argv[1], run_name='app')\n"
             "import recommend as RC, webapp; from __adc_data__ import _portable_data\n"
-            "web = _portable_data()['web']; assert {'index.html', 'app.css', 'app.js'} <= set(web) and 'mock.js' not in web, sorted(web)\n"
+            "web = _portable_data()['web']; assert {'index.html', 'app.css', 'app.js', 'PretendardVariable.woff2', 'LICENSE-Pretendard.txt'} <= set(web) and 'mock.js' not in web, sorted(web)\n"
             "assert web == webapp.web_files(sys.argv[2]) and webapp._page() is web\n"
             "s = webapp.make_server(RC); assert s.server_address[0] == '127.0.0.1'; threading.Thread(target=s.serve_forever, daemon=True).start()\n"
             "c = http.client.HTTPConnection('127.0.0.1', s.server_port); c.request('GET', '/'); r = c.getresponse()\n"
             "got = (r.status, r.getheader('Content-Type'), r.read().decode()); assert got == (200, 'text/html; charset=utf-8', web['index.html']), got[:2]\n"
             "c.request('GET', '/static/mock.js'); r = c.getresponse(); r.read(); assert r.status == 404\n"
+            "c.request('GET', '/static/PretendardVariable.woff2'); r = c.getresponse(); b = r.read(); assert (r.status, r.getheader('Content-Type'), b[:4], len(b)) == (200, 'font/woff2', b'wOF2', 2057688), (r.status, len(b))\n"
             "c.request('GET', '/api/app'); r = c.getresponse(); assert r.status == 200 and len(__import__('json').loads(r.read())['registry']) == 41\n")
     run = subprocess.run([sys.executable, "-I", "-c", code, str(out), str(ROOT / "ml/web")], capture_output=True, text=True,
                          env={"PATH": "/usr/bin:/bin", "HOME": str(tmp_path), "CUDA_VISIBLE_DEVICES": ""}, cwd=tmp_path)
@@ -436,3 +437,16 @@ def test_adctox_web_launcher_is_written_beside_adctox(tmp_path, monkeypatch):
     other = tmp_path / "bin"; other.mkdir(); (other / "adctox").write_text("#!/bin/sh\necho not ours \"$@\"\n")
     monkeypatch.setattr(AU, "pointer_mode", lambda: False); monkeypatch.setattr(shutil, "which", lambda name: str(other / "adctox"))
     assert AU.ensure_web_launcher() is None and not (other / "adctox-web").exists()
+
+
+def test_binary_page_files_travel_base64_and_are_served_as_bytes(tmp_path, monkeypatch):
+    import base64
+    (tmp_path / "index.html").write_text("<p>x</p>"); (tmp_path / "f.woff2").write_bytes(b"wOF2\x00\x01\xff")
+    files = webapp.web_files(tmp_path)
+    assert files == {"index.html": "<p>x</p>", "f.woff2": base64.b64encode(b"wOF2\x00\x01\xff").decode()}
+    monkeypatch.setattr(webapp, "_page", lambda: files)
+    server = webapp.make_server(RC); thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+    try:
+        c = http.client.HTTPConnection("127.0.0.1", server.server_address[1]); c.request("GET", "/static/f.woff2"); r = c.getresponse()
+        assert (r.status, r.getheader("Content-Type"), r.read()) == (200, "font/woff2", b"wOF2\x00\x01\xff")
+    finally: server.shutdown(); server.server_close(); thread.join(5)

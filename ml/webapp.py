@@ -6,7 +6,7 @@ same Read as and how texts, the same numbers. Nothing is kept on the server; the
 recommend's per-process state (CHOICE, PRIORITY, FIRST, FALLBACK) is set from each request under one lock and put back after it.
 Analyses run one at a time in one worker thread, in the order they were asked for (a later one waits as "queued").
 """
-import json, os, queue, re, secrets, sys, threading, time, traceback
+import base64, json, os, queue, re, secrets, sys, threading, time, traceback
 from contextlib import contextmanager
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -14,7 +14,8 @@ from urllib.parse import parse_qs, urlsplit
 
 HANGUL = re.compile("[가-힣]")
 TYPES = {".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
-         ".svg": "image/svg+xml; charset=utf-8", ".json": "application/json; charset=utf-8", ".txt": "text/plain; charset=utf-8"}
+         ".svg": "image/svg+xml; charset=utf-8", ".json": "application/json; charset=utf-8", ".txt": "text/plain; charset=utf-8", ".woff2": "font/woff2"}
+BINARY = {".woff2"}             # kept base64 in the page dict (the one-file build stores it as JSON), sent as bytes
 JSON = "application/json; charset=utf-8"
 # form.Form._analysis_review: the source words of the analysis table
 SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Registry": "Registry", "Similar condition": "Similar registry condition",
@@ -25,11 +26,11 @@ KEEP = 300
 
 
 def web_files(folder):
-    """{name: text} of the page files in a folder, {} when it is missing; the one-file build embeds this dict. The page's
-    fixtures (mock*) stay out: the app serves only what the page runs on."""
+    """{name: text} of the page files in a folder (binary ones as base64), {} when it is missing; the one-file build embeds this
+    dict. The page's fixtures (mock*) stay out: the app serves only what the page runs on."""
     folder = Path(folder)
     if not folder.is_dir(): return {}
-    return {p.name: p.read_text(encoding="utf-8") for p in sorted(folder.iterdir())
+    return {p.name: base64.b64encode(p.read_bytes()).decode() if p.suffix in BINARY else p.read_text(encoding="utf-8") for p in sorted(folder.iterdir())
             if p.is_file() and p.suffix in TYPES and not p.name.startswith((".", "mock"))}
 
 
@@ -421,7 +422,8 @@ class App:
         name = "index.html" if path == "/" else m.group(1) if m else None
         files = _page()
         if name not in files: raise _Error(404, "not found")
-        return TYPES[Path(name).suffix], files[name]
+        suffix = Path(name).suffix
+        return TYPES[suffix], base64.b64decode(files[name]) if suffix in BINARY else files[name]
 
     def post(self, path, body):
         routes = {"/api/labs": self.labs, "/api/analyze": self.analyze, "/api/recommend": self.recommend}
@@ -442,7 +444,7 @@ def _handler(app):
         def log_message(self, *args): pass                     # no access log in the terminal
 
         def send(self, status, data, ctype=JSON, headers=()):
-            data = data.encode("utf-8")
+            if isinstance(data, str): data = data.encode("utf-8")
             try:
                 self.send_response(status); self.send_header("Content-Type", ctype); self.send_header("Content-Length", str(len(data)))
                 self.send_header("Cache-Control", "no-store"); self.send_header("X-Content-Type-Options", "nosniff")

@@ -1,3 +1,5 @@
+/* Pretendard Variable, SIL Open Font License 1.1 (LICENSE-Pretendard.txt): the same face on every PC, Korean and Latin alike */
+@font-face { font-family: "Pretendard Variable"; src: url("PretendardVariable.woff2") format("woff2-variations"); font-weight: 45 920; font-style: normal; font-display: swap; }
 /* ADCTOX browser UI. Dark by default (the TUI palette); light under prefers-color-scheme or [data-theme=light]. */
 :root {
   --page: #15161b; --panel: #1e1f26; --panel-2: #23252d; --sel: #282a34; --well: #191a20;
@@ -8,7 +10,7 @@
   --fig-top: #353845; --fig-bot: #23252e; --fig-shade: rgba(0, 0, 0, .55); --fig-hl: rgba(255, 255, 255, .075);
   --fig-rim: rgba(255, 255, 255, .07); --fig-line: rgba(212, 212, 212, .17); --grid: rgba(212, 212, 212, .045); --grid-2: rgba(212, 212, 212, .075); --floor: rgba(0, 0, 0, .5);
   --shadow: 0 24px 60px rgba(0, 0, 0, .45);
-  --sans: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", Inter, system-ui, sans-serif;
+  --sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", Inter, system-ui, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
   --top: 76px; --bar: 58px; --ease: cubic-bezier(.2, .7, .2, 1);
   color-scheme: dark;

@@ -167,7 +167,7 @@ def main():
                 trial_ae=json.load(open(R / "data/curated/competition/trial_ae.json", encoding="utf-8")),
                 web=__import__("webapp").web_files(R / "ml/web"))
     assert {"index.html", "app.js", "app.css"} <= set(data["web"]), f"adctox --web needs its page in ml/web/: found {sorted(data['web'])}"
-    print("page: " + ", ".join(f"{name} {len(text.encode()) / 1024:.1f} KB" for name, text in data["web"].items()))
+    print("page: " + ", ".join(f"{name} {(len(base64.b64decode(text)) if name.endswith('.woff2') else len(text.encode())) / 1024:.1f} KB" for name, text in data["web"].items()))
     if FULL: data["learned"] = json.load(open(R / "ml/results/learned_vulnerability.json"))["severity"]
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
     src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "gemma_runtime", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion", "webapp")}
