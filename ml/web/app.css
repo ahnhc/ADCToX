@@ -39,7 +39,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scrollbar-color: var(--line-2) transparent; }
+html { -webkit-text-size-adjust: 100%; scrollbar-color: var(--line-2) transparent; scroll-padding: calc(var(--top) + 10px) 0 calc(var(--bar) + 10px); }
 .dr-body, .sugg { scrollbar-width: thin; scrollbar-color: var(--line-2) transparent; }
 body {
   margin: 0; min-height: 100vh; background: var(--page); color: var(--ink);
@@ -90,13 +90,24 @@ kbd {
 .crumb.skip .cb { color: var(--faint); }
 
 /* ---------------------------------------------------------------- layout */
-.wrap { max-width: 1400px; margin: 0 auto; padding: 30px 32px calc(var(--bar) + 40px); }
-.layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; }
+.shell { transition: padding-right 280ms var(--ease); }
+.wrap { max-width: 1400px; margin: 0 auto; padding: 30px 32px calc(var(--bar) + 40px); transition: padding 280ms var(--ease); }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; transition: grid-template-columns 280ms var(--ease), gap 280ms var(--ease); }
 .layout.body-on { grid-template-columns: clamp(270px, 25vw, 352px) minmax(0, 1fr); }
+/* 1280 px and wider: the open drawer is a third column; the body map gives way first (to 200 px), the table keeps about 740 px */
+@media (min-width: 1280px) {
+  :root { --dw: clamp(360px, 28vw, 480px); }
+  .docked .shell { padding-right: var(--dw); }
+  .docked .wrap { padding-left: 24px; padding-right: 24px; }
+  .docked .layout.body-on { grid-template-columns: clamp(200px, calc(100vw - var(--dw) - 816px), 352px) minmax(0, 1fr); gap: 28px; }
+  .docked .drawer { box-shadow: none; }
+  .docked .grid-h, .docked .tr { grid-template-columns: 1.8rem minmax(9.5rem, 2fr) minmax(6.2rem, .95fr) minmax(5rem, .72fr) minmax(5rem, .72fr) minmax(5rem, .72fr); column-gap: 10px; }
+}
 .stage { min-width: 0; }
 .stage.enter { animation: stage-in 320ms var(--ease) both; }
 @keyframes stage-in { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
-.side { position: sticky; top: calc(var(--top) + 22px); }
+.side { position: sticky; top: calc(var(--top) + 22px); container: side / inline-size; }
+@container side (max-width: 250px) { .bm { padding: 12px 8px; } .co { font-size: 10.5px; } .bm-legend div { gap: 10px; } }
 .side.enter { animation: fade-in 320ms var(--ease) both; }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 
@@ -180,7 +191,8 @@ kbd {
 .note.busy { margin-top: 2px; min-height: 20px; font-size: 13px; }
 
 /* ---------------------------------------------------------------- step 2: lab values */
-.s2 { max-width: 980px; margin: 0 auto; }
+.s2 { max-width: 980px; margin: 0 auto; container-type: inline-size; }
+@container (max-width: 760px) { .groups { columns: 1; } }
 .groups { columns: 2; column-gap: 22px; margin-top: 24px; }
 .group { padding: 14px 18px 8px; break-inside: avoid; margin-bottom: 20px; }
 .group .h2 { margin-bottom: 4px; }
@@ -286,6 +298,7 @@ kbd {
 }
 .grid-h { padding: 0 12px 9px; border-bottom: 1px solid var(--line-2); font-size: 12.5px; font-weight: 650; color: var(--ink-2); }
 .grid-h .po { grid-column: 4 / span 2; }
+.grid-h span { white-space: nowrap; }
 .grid-h .rk, .tr .rk { text-align: right; }
 .tr {
   min-height: 40px; padding: 5px 12px; border-bottom: 1px solid var(--line); cursor: pointer; position: relative;
@@ -324,7 +337,7 @@ kbd {
 
 /* ---------------------------------------------------------------- detail drawer */
 .drawer {
-  position: fixed; top: var(--top); right: 0; bottom: var(--bar); z-index: 30; width: 480px; max-width: 100vw;
+  position: fixed; top: var(--top); right: 0; bottom: var(--bar); z-index: 30; width: var(--dw, 480px); max-width: 100vw;
   background: var(--panel); border-left: 1px solid var(--line-2); box-shadow: var(--shadow);
   display: flex; flex-direction: column; transform: translateX(100%); visibility: hidden;
   transition: transform 280ms var(--ease), visibility 0s linear 280ms;
@@ -366,7 +379,7 @@ kbd {
 .bm { padding: 14px 14px 14px; }
 .bm-fig {
   position: relative; aspect-ratio: 360 / 640; margin: 0 auto;
-  width: min(100%, calc((100vh - var(--top) - var(--bar) - 150px) * .5625)); min-width: 200px;
+  width: min(100%, calc((100vh - var(--top) - var(--bar) - 150px) * .5625)); min-width: min(100%, 200px);
 }
 .bm-fig > svg, .bm-fig > .mks { position: absolute; inset: 0; width: 100%; height: 100%; }
 .bm-fig > svg { overflow: visible; }
@@ -456,6 +469,7 @@ kbd {
   .ropt .strip { grid-column: 2; }
   .opt { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .drawer { width: 100vw; }
+  .layout.st-0 .side { display: none; }
   .dr-head { padding: 18px 16px 4px 18px; }
   .dr-body { padding: 0 18px 26px; }
 }
@@ -468,3 +482,39 @@ kbd {
 .fadein { animation: fade-in 240ms ease-out both; }
 .still .track span { opacity: .45; }
 @media (prefers-reduced-motion: reduce) { .track span { opacity: .45; } }
+
+/* ---------------------------------------------------------------- print (the result screen): light, no bars, no body map; the open ADC's detail under the table */
+@media print {
+  @page { size: A4 portrait; margin: 12mm 11mm; }
+  :root, :root[data-theme] {
+    --page: #ffffff; --panel: #ffffff; --panel-2: #f6f6f4; --sel: #f4efe4; --well: #f7f7f5;
+    --ink: #1a1a1a; --ink-hi: #000000; --ink-2: #3c3e44; --dim: #6b707a; --faint: #a3a7ae;
+    --line: #e2e1dc; --line-2: #cfcec8;
+    --amber: #9c6517; --red: #c23f4b; --cyan: #1b7c89; --green: #4a7f34; --violet: #93439f;
+    --amber-soft: rgba(213, 142, 46, .12); --red-soft: rgba(194, 63, 75, .1); --shadow: none;
+    color-scheme: light;
+  }
+  html, body { background: #fff; }
+  body { min-height: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .top, .bar, .side, .dr-head .x { display: none !important; }
+  .shell, .wrap { padding: 0 !important; margin: 0; max-width: none; }
+  .layout, .layout.body-on { display: block; }
+  .stage.enter { transform: none; opacity: 1; }
+  .ctx { break-inside: avoid; }
+  .adcs { margin-top: 16px; }
+  .grid-h, .sep { break-after: avoid; }
+  .tr { min-height: 34px; break-inside: avoid; }
+  .tr:hover { background: none; }
+  .tr[aria-selected="true"] { background: var(--sel); outline: none; }
+  .legend.narrow { display: flex; break-inside: avoid; }
+  .drawer { display: none; }
+  .drawer.open {
+    display: block; position: static; transform: none; visibility: visible; width: auto; max-width: none;
+    margin-top: 22px; border: 0; border-top: 1px solid var(--line-2); background: none; box-shadow: none;
+  }
+  .dr-head { padding: 16px 0 4px; break-after: avoid; }
+  .dr-body { overflow: visible; padding: 0; }
+  .dsec { break-inside: avoid; }
+  .dsec .h2 { break-after: avoid; }
+}

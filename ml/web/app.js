@@ -273,8 +273,8 @@
     top = h('header', { class: 'top' }, h('div', { class: 'brand', text: 'ADCTOX' }), h('nav', { class: 'crumbs', 'aria-label': '단계' }, crumbsOl), verEl);
     stageBox = h('main', { class: 'stage' });
     body = buildBody();
-    side = h('aside', { class: 'side', 'aria-label': 'Body map', hidden: true }, body.el);
-    layout = h('div', { class: 'layout' }, side, stageBox);
+    side = h('aside', { class: 'side', 'aria-label': 'Body map' }, body.el);
+    layout = h('div', { class: 'layout body-on' }, side, stageBox);
     barLeft = h('div', { class: 'left', 'aria-live': 'polite' });
     barKeys = h('div', { class: 'keys', 'aria-hidden': 'true' });
     barBtn = h('button', { class: 'go', type: 'button', hidden: true });      // setBar shows it
@@ -285,7 +285,7 @@
     const x = h('button', { class: 'x', type: 'button', 'aria-label': '닫기', text: '×', onclick: () => closeDrawer() });
     drawer = h('div', { class: 'drawer', role: 'dialog', 'aria-modal': 'false', 'aria-labelledby': 'dr-title', 'aria-hidden': 'true' },
       h('div', { class: 'dr-head' }, drawerTitle, x), drawerBody);
-    document.body.append(top, h('div', { class: 'wrap' }, layout), bar, drawer);
+    document.body.append(top, h('div', { class: 'shell' }, h('div', { class: 'wrap' }, layout)), bar, drawer);     // .shell makes room for the docked drawer
   }
 
   function setBar(o) {
@@ -341,12 +341,8 @@
     closeDrawer(true);
     if (keepDrawer) S.drawer = reopen;
     S.step = n; S.reached = Math.max(S.reached, n); save();
-    const bodyOn = n >= 2;
-    const wasHidden = side.hidden;
-    side.hidden = !bodyOn;
-    layout.classList.toggle('body-on', bodyOn);
-    side.classList.remove('enter');
-    if (bodyOn && wasHidden && !still()) { void side.offsetWidth; side.classList.add('enter'); }
+    layout.className = 'layout body-on st-' + n;      // the body map on every step (on a phone, not on step 1)
+    if (n === 0) body.update({});
     renderCrumbs();
     clear(stageBox);
     stageBox.classList.remove('enter');
@@ -355,7 +351,6 @@
     stageBox.append(node);
     if (!still()) { void stageBox.offsetWidth; stageBox.classList.add('enter'); }
     window.scrollTo(0, 0);
-    if (n < 2) body.update({});
   }
   let busy = false;                       // a step change waiting on the server: PgDn, PgUp and the bar button do nothing meanwhile
   async function next() {
@@ -697,6 +692,9 @@
         flag.textContent = fl.length ? '→ ' + [...new Set(fl.map((x) => SHORT[x.organ] || x.organ))].join(', ') : '';
         flag.title = fl.map((x) => x.why).join('\n');
       }
+      const lit = {};
+      for (const x of flags) if (String(S.raw[x.key] || '').trim()) lit[x.organ] = 'l2';
+      body.update({ lit });
       const parts = derivedLine();
       setBar({
         left: labsErr ? h('span', { class: 'err-line', text: labsErr }) : parts.map((t) => h('span', { class: 'info', text: t })),
@@ -1074,6 +1072,7 @@
       }
       openDrawer = () => { if (S.sel < 0 || !rows[S.sel]) return; fillDrawer(rows[S.sel]); showDrawer(); };
       returnFocus = () => { if (trs[S.sel]) trs[S.sel].focus({ preventScroll: true }); };
+      keepRow = () => { if (S.step === 4 && trs[S.sel] && trs[S.sel].isConnected) trs[S.sel].scrollIntoView({ block: 'nearest' }); };
       if (S.sel < 0 || S.sel >= rows.length) S.sel = rows.length ? 0 : -1;
       select(S.sel, false);
       setTimeout(() => {
@@ -1094,9 +1093,16 @@
   }
 
   // ------------------------------------------------------------------ detail drawer
-  let openDrawer = () => {}, returnFocus = () => {}, resultKeys = null;
+  let openDrawer = () => {}, returnFocus = () => {}, keepRow = () => {}, resultKeys = null, settle = 0;
+  // at 1280 px and wider the open drawer is a third column (.docked): the page makes room for it while it slides in
+  function docked(on) {
+    ROOT.classList.toggle('docked', on);
+    clearTimeout(settle);
+    settle = setTimeout(() => keepRow(), still() ? 0 : 300);     // after the motion: the selected row stays in view
+  }
   function showDrawer() {
     S.drawer = true; save();
+    if (!drawer.classList.contains('open')) docked(true);
     drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false');
   }
   function closeDrawer(silent) {
@@ -1105,6 +1111,7 @@
     if (!drawer || !drawer.classList.contains('open')) return;
     const inside = drawer.contains(document.activeElement);
     drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true');
+    docked(false);
     if (inside) returnFocus();
   }
   // recommend._event_text as sent ('pneumonitis 25/404 (6.2%, vs 0.0%), serious 10/404'); only the comparator's part is set dim
