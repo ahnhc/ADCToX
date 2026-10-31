@@ -15,7 +15,7 @@ jobs:
         include:
           - {os: ubuntu-24.04, uv: '0'}
           - {os: ubuntu-22.04, uv: '1'}       # Python 3.10 only: the installer fetches Python 3.12 with uv
-          - {os: macos-14, uv: '0'}           # Apple silicon
+          - {os: macos-15, uv: '0'}           # Apple silicon; macOS 14 images retire in November 2026
           - {os: macos-15, uv: '1'}
     runs-on: ${{ matrix.os }}
     steps:
