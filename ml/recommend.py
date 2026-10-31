@@ -1246,6 +1246,10 @@ def cap_threads(environ=os.environ):
 def main():
     from adc_version import APP_VERSION
     arguments = sys.argv[1:]
+    import adc_updates
+    if adc_updates.app_layout():                      # an app updated in place: adctox-web appears beside adctox at its first start, --version included
+        try: adc_updates.ensure_web_launcher()
+        except OSError: pass
     if arguments == ["--version"]:
         print(APP_VERSION); return
     actions = {"--update-models": "update", "--check-models": "check", "--model-version": "version", "--rollback-models": "rollback", "--verify-models": "verify"}
@@ -1258,10 +1262,6 @@ def main():
     if arguments in (["--help"], ["-h"], ["help"]):
         print(HELP.format(version=APP_VERSION, n=len(_evidence()[0]))); return
     cap_threads()
-    import adc_updates
-    if adc_updates.app_layout():                      # an app updated in place: adctox-web appears beside adctox
-        try: adc_updates.ensure_web_launcher()
-        except OSError: pass
     import term
     if "--no-wt" in sys.argv: sys.argv.remove("--no-wt")
     else: term.into_windows_terminal()                 # double-clicked on Windows: reopen in Windows Terminal when there is one
