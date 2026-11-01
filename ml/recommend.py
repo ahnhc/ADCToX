@@ -986,7 +986,7 @@ def _result_context(rows, notes, width, values=None, selected=0, graphic=False, 
         body = items[:3] + ([f"+ {len(items) - 3} more"] if len(items) > 3 else [])
         return [f"\033[33;1m{title}\033[0m"] + ["  " + text for text in body or [empty]]
     left = block("Key values", inputs, "Not entered")
-    right = block("Organ priority", priorities, "None specified")
+    right = block("Review order", priorities, "None specified")
     if width < 72:
         out = [_compact_line(text, width) for text in left + [""] + right]
     else:

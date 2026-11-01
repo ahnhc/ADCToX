@@ -215,6 +215,8 @@ kbd {
 .lab .unit { font-size: 12.5px; color: var(--dim); line-height: 1.25; min-width: 0; }
 .lab .unit .anc { display: block; color: var(--faint); font-size: 11.5px; }
 .lab .unit .flag { display: block; color: var(--amber); font-size: 12px; font-weight: 600; cursor: help; }
+.lab .unit .ok { display: block; color: var(--green); font-size: 12px; cursor: help; }
+.lab input.num::placeholder { color: var(--faint); font-size: 13px; text-align: right; }
 .lab .err { grid-column: 1 / -1; color: var(--red); font-size: 12.5px; padding-top: 3px; }
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; height: 32px; background: var(--well); width: max-content; }
 .seg button {
@@ -243,6 +245,7 @@ kbd {
 .warnline { color: var(--amber); font-size: 13.5px; margin: 18px 0 0; }
 .review { margin-top: 22px; display: grid; grid-template-columns: minmax(8rem, 1fr) max-content minmax(8rem, 1.1fr); column-gap: 32px; }
 .rv-head, .rv-row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; }
+.rv-head .sub, .ctx .h2 .sub { display: block; margin-top: 3px; font-size: 11.5px; font-weight: 500; color: var(--dim); letter-spacing: 0; text-transform: none; }
 .rv-head { padding: 0 2px 9px; border-bottom: 1px solid var(--line-2); font-size: 12.5px; font-weight: 650; color: var(--ink-2); }
 .rv-row { padding: 13px 2px; border-bottom: 1px solid var(--line); }
 .rv-row.in { animation: row-in 380ms var(--ease) both; animation-delay: calc(var(--i, 0) * 40ms); }
@@ -353,7 +356,9 @@ kbd {
 }
 .dr-head .x:hover { color: var(--ink); background: var(--panel-2); }
 .dr-body { flex: 1; overflow: auto; padding: 0 26px 30px; overscroll-behavior: contain; }
-.dr-body .ind { color: var(--dim); font-size: 13px; line-height: 1.55; margin: 0 0 14px; }
+.dr-body .ind { color: var(--dim); font-size: 13px; line-height: 1.55; margin: 0; }
+.dr-body .indv { font-size: 14px; font-weight: 600; margin: 0 0 6px; }
+.dr-body .line.dim { color: var(--dim); }
 .dsec { border-top: 1px solid var(--line); padding: 15px 0 14px; }
 .dsec:first-child { border-top: 0; padding-top: 4px; }
 .dsec .h2 { margin-bottom: 9px; }

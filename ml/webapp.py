@@ -175,6 +175,8 @@ def _detail(RC, row, checks_, notes, values, raw):
                 reasons=[dict(organ=o.capitalize(), domain=o, status=st, basis=b, code=c, sure=sure) for o, st, b, c, sure in evidence],
                 warnings=[dict(organ=a, mark=mark, text=RC.warning_names(row["organs"][a].get("headings", [])))
                           for mark, organs in (("!!", row.get("boxed", [])), ("!", row.get("warn", []))) for a in organs],
+                other_warnings=[dict(organ=c["organ"], mark=c["mark"], text=RC.warning_names(row["organs"][c["organ"]].get("headings", [])))
+                                for c in _preview(RC, row)["other"]],
                 trial=_trial(RC, row), missing=RC._missing_inputs(row["verdict"]) if row["verdict"].missing else [], payload=payload,
                 checks=[test for test, names, _ in checks_ if (not names or row["name"] in names) and not test.startswith("enter ")],
                 values=_key_values(RC, row, notes, values, raw))
@@ -229,8 +231,10 @@ class App:
         except Exception:
             models = None
         kind = {"sex": "sex", "child_pugh": "child_pugh", "ugt1a1": "yn"}
-        fields = [dict(key=k, label=label, unit=unit, group=g, kind=kind.get(k, "number"), range=list(LB.RANGE[k]) if k in LB.RANGE else None, uln=LB.ULN.get(k))
-                  for k, label, unit, g in LB.FIELDS]
+        rule = {}                                   # the organ flag a value is checked against (labs.FLAGS): the page says '기준 이내' when it is not met
+        for k, _, _, why in LB.FLAGS: rule.setdefault(k, why)
+        fields = [dict(key=k, label=label, unit=unit, group=g, kind=kind.get(k, "number"), range=list(LB.RANGE[k]) if k in LB.RANGE else None, uln=LB.ULN.get(k),
+                       rule=rule.get(k)) for k, label, unit, g in LB.FIELDS]
         return dict(version=APP_VERSION, models=models, n_adcs=len(RC._indications()) or 15, has_learned=bool(RC.HAS_LEARNED), axes=list(RC.AXES),
                     organ_short=RC.ORGAN_SHORT, organ_en=RC.EN, organ_ko=RC.ORGAN_KO,
                     registry=[dict(id=i, label=r["label"], name=RC.condition_name(i), ko=RC.KO.get(i), mondo=r.get("mondo_id") or None,

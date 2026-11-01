@@ -213,7 +213,7 @@
     const fig = h('div', { class: 'bm-fig', role: 'img' }, base, skin, ring, lines, marks, labels);
     const cap = h('div', { class: 'bm-cap', 'aria-live': 'polite' });
     const legend = h('div', { class: 'bm-legend', hidden: true },
-      h('div', null, h('span', null, 'Organ priority'), h('span', null, h('i', { class: 'lg1' }), '1'), h('span', null, h('i', { class: 'lg2' }), '2+')),
+      h('div', null, h('span', null, 'Review order'), h('span', null, h('i', { class: 'lg1' }), '1'), h('span', null, h('i', { class: 'lg2' }), '2+')),
       h('div', null, h('span', null, h('i', { class: 'lgb' }), 'Boxed warning'), h('span', null, h('i', { class: 'lgw' }), 'Warning')));
     const el = h('div', { class: 'bm panel' }, fig, cap, legend);
     let last = '';
@@ -633,11 +633,12 @@
       const id = 'lab-' + f.key;
       const err = h('div', { class: 'err', id: id + '-err', hidden: true });
       const flag = h('span', { class: 'flag', hidden: true });
+      const ok = h('span', { class: 'ok', hidden: true, text: '기준 이내', title: f.rule ? `Flag: ${f.rule}` : null });   // checked against labs.FLAGS and not met
       const anchor = f.uln !== null && f.uln !== undefined ? `ULN ${f.uln}` : '';      // the reference the x ULN uses; the range is in the error line
-      const unit = h('span', { class: 'unit' }, f.kind === 'number' ? f.unit : null, f.kind === 'number' && anchor ? h('span', { class: 'anc', text: anchor }) : null, flag);
+      const unit = h('span', { class: 'unit' }, f.kind === 'number' ? f.unit : null, f.kind === 'number' && anchor ? h('span', { class: 'anc', text: anchor }) : null, flag, ok);
       let control;
       if (f.kind === 'number') {
-        control = h('input', { class: 'num', id, type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false', 'aria-describedby': id + '-err', value: S.raw[f.key] || '' });
+        control = h('input', { class: 'num', id, type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false', placeholder: '미입력', 'aria-describedby': id + '-err', value: S.raw[f.key] || '' });
         control.addEventListener('input', () => { S.raw[f.key] = control.value; touched.delete(f.key); save(); labsSoon(); refresh(); });
         control.addEventListener('blur', () => { if (control.value.trim()) touched.add(f.key); labsNow(); });
         control.addEventListener('keydown', (e) => {
@@ -676,14 +677,14 @@
         order.push({ key: f.key, focus: () => (btns.find((b) => b.tabIndex === 0) || btns[0]).focus() });
       }
       const row = h('div', { class: 'lab' }, h('label', { for: f.kind === 'number' ? id : null, text: f.label, id: id + '-l' }), control, unit, err);
-      rows[f.key] = { row, err, flag, control, f };
+      rows[f.key] = { row, err, flag, ok, control, f };
       return row;
     }
     function refresh() {
       const r = S.labs || {};
       const errs = r.errors || {}, flags = r.flags || [];
       for (const k in rows) {
-        const { err, flag, control, f } = rows[k];
+        const { err, flag, ok, control, f } = rows[k];
         const msg = errs[k] && touched.has(k) && String(S.raw[k] || '').trim() ? String(errs[k]) : '';      // form._lab_error, as sent
         err.hidden = !msg; err.textContent = msg;
         if (control.classList) control.classList.toggle('bad', !!msg);
@@ -691,6 +692,8 @@
         flag.hidden = !fl.length;
         flag.textContent = fl.length ? '→ ' + [...new Set(fl.map((x) => SHORT[x.organ] || x.organ))].join(', ') : '';
         flag.title = fl.map((x) => x.why).join('\n');
+        const entered = String(S.raw[k] || '').trim() && r.raw && r.raw[k] !== undefined && r.raw[k] !== null;
+        ok.hidden = !(f.rule && entered && !msg && !errs[k] && !fl.length);
       }
       const lit = {};
       for (const x of flags) if (String(S.raw[x.key] || '').trim()) lit[x.organ] = 'l2';
@@ -835,7 +838,10 @@
       const ambText = new Set((A.ambiguous || []).map((a) => a.text));
       if (reps.some((r) => r.fallback)) box.append(h('p', { class: 'warnline', text: 'Organ judge 오류, MONDO linker로 대체' }));
       const table = h('div', { class: 'review', role: 'table', 'aria-label': 'AI 장기 분석' },
-        h('div', { class: 'rv-head', role: 'row' }, ['Input', 'Organs', 'Read as'].map((t) => h('span', { role: 'columnheader', text: t }))));
+        h('div', { class: 'rv-head', role: 'row' },
+          h('span', { role: 'columnheader', text: 'Input' }),
+          h('span', { role: 'columnheader' }, 'Organs', h('span', { class: 'sub', text: '% = AI 확신도 (이 질환이 그 장기에 관련된다는 판단), 부작용 확률 아님' })),
+          h('span', { role: 'columnheader', text: 'Read as' })));
       reps.forEach((r, i) => {
         const cell = h('span', { role: 'cell' }, organCell(r));
         (cells[r.condition] = cells[r.condition] || []).push({ cell, r });
@@ -865,7 +871,7 @@
         h('span', { class: 'p3' }, lk.map((x) => [
           h('span', { class: 'o' + (x.used ? ' used' : ''), text: SHORT[x.organ] || x.organ }),
           h('span', { class: 'bar1', 'aria-hidden': 'true' }, h('b', { class: x.used ? 'used' : null, style: `width:${Math.max(2, Math.min(100, (x.p || 0) * 100))}%` })),
-          h('span', { class: 'v', text: x.text || '' })])));
+          h('span', { class: 'v', text: x.text || '', title: x.text ? `AI 확신도: ${SHORT[x.organ] || x.organ} 관련 ${x.text}. 부작용 확률 아님` : null })])));
     }
     function meanings() {
       const wrap = h('div', { class: 'meanings' }, h('h2', { class: 'h2', text: '입력하신 질환 확인' }),
@@ -983,7 +989,7 @@
     const node = h('div', { class: 's5' }, box);
     let alive = true;
     cleanup = () => { alive = false; resultKeys = null; };
-    setBar({ left: legendNode('legend'), keys: [kbd('↑↓', 'ADC 고르기'), kbd('Enter', '이유'), kbd('PgUp', '이전 단계')], button: { label: '새 환자로 시작', quiet: true, act: restart } });
+    setBar({ left: legendNode('legend'), keys: [kbd('↑↓', 'ADC 고르기'), kbd('Enter', '상세 근거 보기'), kbd('PgUp', '이전 단계')], button: { label: '새 환자로 시작', quiet: true, act: restart } });
     const sig = resultSig();
     if (S.result && S.result.sig === sig) draw(S.result.data);
     else {
@@ -996,7 +1002,8 @@
     function draw(res, fresh) {
       clear(box);
       const rows = res.rows || [], P = res.patient || {}, levels = P.organ_levels || {};
-      // Key values (the selected ADC's: its restriction's values first) | Organ priority
+      shownPatient = P;
+      // Key values (the selected ADC's: its restriction's values first) | Review order
       const keyList = h('ul');
       const keyValues = (i) => {
         const vals = i >= 0 && rows[i] && rows[i].detail && rows[i].detail.values ? rows[i].detail.values : P.values || [];
@@ -1005,7 +1012,7 @@
       const prio = P.organ_priority || [];
       box.append(h('div', { class: 'ctx panel' },
         h('div', null, h('h2', { class: 'h2', text: 'Key values' }), keyList),
-        h('div', null, h('h2', { class: 'h2', text: 'Organ priority' }),
+        h('div', null, h('h2', { class: 'h2' }, 'Review order', h('span', { class: 'sub', text: '먼저 검토할 장기 순서, 위험도 순위 아님' })),
           h('ul', null, prio.length ? prio.map(([l, organs]) => h('li', null, h('span', { class: 'lv', text: String(l) }),
             organs.map((o) => h('span', { class: 'org' + (l > 1 ? ' l2' : ''), text: SHORT[o] || o })))) : h('li', { class: 'none', text: 'None specified' })))));
       if ((P.unmapped || []).length) box.append(h('p', { class: 'unmapped', text: (P.estimated ? 'Unvalidated estimate: ' : 'Unmapped: ') + P.unmapped.join(', ') }));
@@ -1085,7 +1092,7 @@
     }
     return node;
   }
-  let mockAdcUsed = false;
+  let mockAdcUsed = false, shownPatient = {};
   function restart() {
     try { sessionStorage.removeItem(KEY); } catch (e) { /* ignore */ }
     S = blank(); touched.clear();
@@ -1123,19 +1130,23 @@
     drawerTitle.textContent = row.name;
     clear(drawerBody);
     drawerBody.scrollTop = 0;
-    const first = [];
-    if (d.indication) first.push(h('p', { class: 'ind', text: d.indication }));
+    // 1 indication for the entered cancer, 2 label restriction, 3 warnings on the patient's organs, 4 warnings on other organs
+    const cancers = [...new Set((shownPatient.cancers || []).map((c) => c.name))];
+    const verdict = !cancers.length ? { cls: 'dim', text: 'No cancer entered' }
+      : row.indicated === false ? { cls: 't-amber', text: `Not indicated for ${cancers.join(', ')}` } : { cls: 't-green', text: `Indicated for ${cancers.join(', ')}` };
+    drawerBody.append(section('Indication', h('p', { class: 'indv ' + verdict.cls, text: verdict.text }), d.indication ? h('p', { class: 'ind', text: d.indication }) : null));
     const rs = d.reasons || [];
-    first.push(h('div', { class: 'reasons' }, rs.length ? rs.map((r) => [
+    drawerBody.append(section('Label restriction', h('div', { class: 'reasons' }, rs.length ? rs.map((r) => [
       h('span', { class: 'k', text: r.organ }),
       h('span', { class: `s t-${TONE[r.code] || 'dim'}` + (r.sure ? ' sure' : ''), text: r.status }),
-      h('span', { class: 'b', text: r.basis })]) : h('span', { class: 'solo', text: 'No applicable label restriction' })));
-    drawerBody.append(section(null, first));
-    const ws = d.warnings || [];
-    if (ws.length) drawerBody.append(section("Warnings on the patient's organs", h('div', { class: 'wl' }, ws.map((w) => [
+      h('span', { class: 'b', text: r.basis })]) : h('span', { class: 'solo', text: 'No applicable label restriction' }))));
+    const wlist = (ws) => h('div', { class: 'wl' }, ws.map((w) => [
       h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
       h('span', { class: 'm ' + (w.mark === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }),
-      h('span', { text: w.text })]))));
+      h('span', { text: w.text })]));
+    const ws = d.warnings || [], wo = d.other_warnings || [];
+    drawerBody.append(section("Warnings on the patient's organs", ws.length ? wlist(ws) : h('p', { class: 'line dim', text: 'None' })));
+    if (wo.length) drawerBody.append(section('Warnings on other organs', wlist(wo)));
     const t = d.trial;
     if (t && t.no_results) drawerBody.append(section("Trial results on the patient's organs", h('p', { class: 'line', text: t.no_results })));
     else if (t && t.trial) {

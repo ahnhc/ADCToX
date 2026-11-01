@@ -626,7 +626,8 @@ class Form:
                 if read.lower() in (r["condition"].lower(), shown(r).lower()): read = ""
                 rows.append((shown(r), org, (f"{read}  " if read else "") + f"\033[90m{how}\033[0m" + tag))
             ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for _, o, _ in rows] + [6]), 40)
-            head = f"  \033[1m{'Input':<{nw}}\033[0m   \033[1m{'Organs':<{ow}}\033[0m   \033[1mRead as\033[0m"
+            olab = "Organs  \033[0m\033[90m% = AI 확신도" if any(r.get("p") and r["organs"] for r in reports) and ow >= 22 else "Organs"
+            head = f"  \033[1m{'Input':<{nw}}\033[0m   \033[1m{olab}{' ' * max(0, ow - _w(re.sub(r'\x1b\[[\d;]*m', '', olab)))}\033[0m   \033[1mRead as\033[0m"
             fixed = [ln for line in (head, "\033[90m" + "─" * min(width, nw + ow + 42) + "\033[0m") for ln in tui._wrap_ansi(line, width)]
             wrapped, span = [], []                              # the rows under the fixed header; span = (first, end) line of each input
             for k, (c, org, what) in enumerate(rows):
@@ -638,8 +639,8 @@ class Form:
                 else: row = tui._wrap_ansi(head + what, width)
                 span.append((len(wrapped), len(wrapped) + len(row))); wrapped += row
             panel = gemma_panel(reports[cur], RC, ko, width) if reports[cur].get("gemma") else []
-            if h - y0 - 4 - len(fixed) - len(wrapped) < len(panel) + 1: panel = []     # the panel only when the whole table still fits
-            area = max(1, h - y0 - 3 - len(fixed) - (len(panel) + 1 if panel else 0))
+            if h - y0 - 4 - ("AI 확신도" in olab) - len(fixed) - len(wrapped) < len(panel) + 1: panel = []     # the panel only when the whole table still fits
+            area = max(1, h - y0 - 3 - ("AI 확신도" in olab) - len(fixed) - (len(panel) + 1 if panel else 0))
             if len(reports) > 1:                                # keep the highlighted input in view
                 first, end = span[cur]; top = min(top, first); top = max(top, end - area)
             top = max(0, min(top, len(wrapped) - area)); end = top + area
@@ -653,6 +654,7 @@ class Form:
                 if first and not self.scr.armed(): self.scr.transition("cascade", y_from=y0)          # the table builds up
                 elif cur != last and panel: self.scr.transition("cascade", y_from=py)                # a new judge panel unfolds
             first = False; last = cur
+            if "AI 확신도" in olab: self.S.put(h - 3, 2, "% = AI 확신도 (이 질환이 그 장기에 관련된다는 판단), 부작용 확률 아님", self.S.dim)
             self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
             if len(reports) > 1: self.S.put(h - 1, 2, "↑↓ 입력 고르기", self.S.dim)
             elif len(wrapped) > area: self.S.put(h - 1, 2, f"{top + 1}–{min(top + area, len(wrapped))} / {len(wrapped)}", self.S.dim)

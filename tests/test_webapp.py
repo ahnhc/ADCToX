@@ -71,7 +71,8 @@ def test_app_lists_the_axes_the_registry_and_the_lab_fields(server):
                                                                   ko="만성 간질환", mondo="MONDO:0005154", organs=["hepatic"])
     assert d["labs"]["groups"] == ["Basic", "Kidney", "Liver", "Blood", "Glucose", "Pancreas", "Thyroid", "Cardio", "Genotype"]
     f = {x["key"]: x for x in d["labs"]["fields"]}
-    assert f["creatinine"] == dict(key="creatinine", label="Creatinine", unit="mg/dL", group="Kidney", kind="number", range=[0.05, 30], uln=None)
+    assert f["creatinine"] == dict(key="creatinine", label="Creatinine", unit="mg/dL", group="Kidney", kind="number", range=[0.05, 30], uln=None, rule=None)
+    assert f["ast"]["rule"] == "AST > 3 x ULN (CTCAE G2)" and f["hb"]["rule"].startswith("Hb < 10") and f["age"]["rule"] is None
     assert f["bilirubin"]["uln"] == 1.2 and (f["sex"]["kind"], f["child_pugh"]["kind"], f["ugt1a1"]["kind"]) == ("sex", "child_pugh", "yn")
     assert d["steps"] == ["질환", "검사 수치", "AI 장기 분석", "우선순위", "결과"] and d["first_text"] == RC.FIRST_TEXT
 
@@ -274,6 +275,8 @@ def test_recommend_carries_every_number_the_result_screen_prints(server, monkeyp
     assert (ev["term"], ev["a"], ev["n"], ev["comp"], ev["sa"], ev["serious"]) == ("pneumonitis", 25, 404, [0, 195], 10, False)
     assert ev["text"] == "pneumonitis 25/404 (6.2%, vs 0.0%), serious 10/404" and lung["warned"] and lung["none"] is None
     assert {"organ": "pulmonary", "mark": "!!", "text": "Interstitial Lung Disease/Pneumonitis"} in tdxd["detail"]["warnings"]
+    other = [w["organ"] for w in tdxd["detail"]["other_warnings"]]          # the table's Other column, with the warning names
+    assert other == [c["organ"] for c in tdxd["preview"]["other"]] and not set(other) & {w["organ"] for w in tdxd["detail"]["warnings"]}
     assert "HER2+ breast cancer" in tdxd["cancers"] and tdxd["indicated"] and not tdxd["detail"]["missing"]
     assert d["patient"]["cancers"] == [dict(condition="HER2 양성 유방암", name=RC._cancer_map()["terms"]["MONDO:0006244"][0], cancers=RC._cancer_map()["terms"]["MONDO:0006244"][1])]
     (rows, s, notes, ck), raw = _direct(monkeypatch)
