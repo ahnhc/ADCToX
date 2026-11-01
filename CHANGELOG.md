@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.5: Screens say what their numbers mean (Ubuntu, macOS and Windows)
+
+- **AI 장기 분석**: the Organs column says the % is the AI's confidence that the disease involves the organ, not a side-effect probability (web: under the column title and in each value's tooltip; terminal: beside the title and a line under the table).
+- **Review order** replaces Organ priority on the result screen and the body-map legend, marked as the order to review organs in, not a risk ranking (web and terminal).
+- **The ADC detail has four parts**: Indication (`Indicated for` / `Not indicated for` the entered cancer, or `No cancer entered`, then the label's indications), Label restriction, Warnings on the patient's organs, and the new Warnings on other organs (the table's Other column with the warning names). The key hint reads `Enter 상세 근거 보기`.
+- **검사 수치** tells an empty field from a checked one: empty fields read 미입력; a value checked against an organ flag and below it reads 기준 이내 (the flag, as `AST > 3 x ULN (CTCAE G2)`, in its tooltip); above it, the organ as before.
+
 ## 0.6.4: The browser screens, finished (Ubuntu, macOS and Windows)
 
 - **The ADC detail docks as a third column from 1280 px**: the body map gives way first and the table stays whole (#, ADC, Label restriction, Patient organs, Other, Key values, Organ priority all readable with the detail open); narrower screens keep the overlay.
