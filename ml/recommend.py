@@ -804,6 +804,44 @@ def trial_lines(row):
     return out
 
 
+def trial_scale(events):
+    """the bars' full length in %: the smallest of 5, 10, 20, 30, 50, 100 that holds every ADC and comparator rate"""
+    top = max([100 * e["a"] / e["n"] for e in events] + [100 * e["comp"][0] / e["comp"][1] for e in events if e.get("comp")] + [1])
+    return next((v for v in (5, 10, 20, 30, 50, 100) if v >= top), 100)
+
+
+def trial_bars(row, cells=20):
+    """trial_lines for the detail panel: the trial line, a legend with the scale, then per organ each event's name and two bars
+    on one scale, the ADC's (amber, its serious part red) and the comparator's (grey), each with its rate; the counts stay in
+    trial_lines (the report)."""
+    T = _trial_ae().get("adcs", {}).get(row.get("adc"))
+    if not T or not T["trials"]: return trial_lines(row)
+    t = next((t for t in T["trials"] if set(t["cancers"]) & set(row.get("cancers", []))), T["trials"][0])
+    head = trial_lines(row)[0]; none = "none reported" if not t["threshold"] else f"none at or above {t['threshold']:g}%, none serious"
+    rows_ = []
+    for a in patient_organs(row):
+        o = t["organs"].get(a, {})
+        evs = o.get("warned") or [e for e in (o.get("any"), o.get("serious")) if e]
+        if len(evs) == 2 and evs[0]["term"] == evs[1]["term"]: evs = evs[:1]
+        rows_.append((a, evs))
+    scale = trial_scale([e for _, evs in rows_ for e in evs])
+    def bar(f, ser, color):
+        n = min(cells, round(100 * f / scale * cells)); k = min(n, round(100 * ser / scale * cells))
+        n = max(n, 1) if f > 0 else 0
+        return (f"\033[31m{'━' * k}\033[0m" if k else "") + f"\033[{color}m{'━' * (n - k)}\033[0m\033[90m{'─' * (cells - n)}\033[0m"
+    pct = lambda a, n: f"{100 * a / n:.1f}%"
+    out = [head, "  \033[33m━\033[0m ADC  \033[31m━\033[0m Serious  \033[90m━ Comparator   0 to " + f"{scale}%\033[0m"]
+    pad = " " * 12
+    for a, evs in rows_:
+        if not evs: out.append(f"  {ORGAN_SHORT[a]:<9} \033[90m{none}\033[0m"); continue
+        for i, e in enumerate(evs):
+            out.append(f"  {ORGAN_SHORT[a] if i == 0 else '':<9} {e['term']}" + (" (serious)" if e["serious"] else ""))
+            ser = e["a"] / e["n"] if e["serious"] else (e.get("sa") or 0) / e["n"]
+            out.append(pad + bar(e["a"] / e["n"], ser, "33") + f" {pct(e['a'], e['n'])}")
+            if e.get("comp"): out.append(pad + bar(e["comp"][0] / e["comp"][1], 0, "90") + f" \033[90m{pct(*e['comp'])}\033[0m")
+    return out
+
+
 _CAN = _CM = _TA = None
 
 
@@ -907,7 +945,7 @@ def _result_details(row, checks_, width):
         out.append(paint("─" * width, "90"))
         out.append(paint("Warnings on the patient's organs", "33;1"))
         out.extend(warned)
-    trial = trial_lines(row)
+    trial = trial_bars(row)
     if trial:
         out.append(paint("─" * width, "90"))
         out.append(paint("Trial results on the patient's organs", "33;1"))
@@ -957,6 +995,27 @@ def _raw_values(raw, values):
     return [t for _, t in sorted(out, key=lambda x: not x[0])]           # the ones that marked an organ first
 
 
+def _value_gauges(items, cells=10):
+    """Key values as name | value | gauge, the gauges starting in one column: x ULN on 0 to 3 (ticks at 1 and 1.5), CLcr on
+    0 to 120 mL/min (ticks at 30, 60, 90); amber past a tick that matters, red past the last; other values keep their → organ."""
+    parsed = []
+    for text in items:
+        m = re.match(r"^(.*?)\s((?:≈\s)?[\d.]+.*?)(?:\s→\s(.+))?$", text)
+        parsed.append(m.groups() if m else (text, "", None))
+    wn = max((len(n) for n, _, _ in parsed), default=0); wv = max((len(v) for _, v, _ in parsed), default=0); out = []
+    for name, val, organ in parsed:
+        g = ""
+        uln = re.match(r"^([\d.]+)×ULN$", val); cl = name.startswith("CLcr") and re.search(r"([\d.]+)", val)
+        if uln: x = float(uln.group(1)); f, ticks, tone = x / 3, (1 / 3, .5), "31" if x > 3 else "33" if x > 1 else "90;1"
+        elif cl: x = float(cl.group(1)); f, ticks, tone = x / 120, (.25, .5, .75), "31" if x < 30 else "33" if x < 60 else "90;1"
+        if uln or cl:
+            n = max(1, min(cells, round(f * cells))); tk = {round(t * cells) for t in ticks}
+            g = "".join(f"\033[{tone}m━\033[0m" if i < n else ("\033[90m┼\033[0m" if i in tk else "\033[90m─\033[0m") for i in range(cells))
+        tail = f"\033[33m→ {organ}\033[0m" if organ else ""
+        out.append(f"{name:<{wn}}  {val:>{wv}}  " + (g + (" " + tail if tail else "") if g else (" " * cells + "  " + tail if tail else "")).rstrip())
+    return out
+
+
 def _result_context(rows, notes, width, values=None, selected=0, graphic=False, raw=None):
     """Bounded key values and organ priority, without repeating diagnoses from the input screen."""
     import labs as LB
@@ -974,6 +1033,7 @@ def _result_context(rows, notes, width, values=None, selected=0, graphic=False, 
             inputs.append(f"CLcr ≈ {text} mL/min (eGFR)")
         else: inputs.append(f"{label} {text}{unit}")
     inputs += _raw_values(raw, values)
+    if graphic: inputs = _value_gauges(inputs)
     organ_levels = {}
     for level, _, organs in prio:
         for organ in organs: organ_levels[organ] = min(level, organ_levels.get(organ, level))

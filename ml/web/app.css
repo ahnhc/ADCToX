@@ -67,7 +67,8 @@ kbd {
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 28px;
   border-bottom: 1px solid var(--line);
 }
-.brand { font-weight: 750; font-size: 14.5px; letter-spacing: .2em; color: var(--amber); white-space: nowrap; }
+.brand { font-weight: 750; font-size: 14.5px; letter-spacing: .2em; white-space: nowrap; }
+.brand .a { color: var(--cyan); } .brand .b { color: var(--red); }
 .ver { justify-self: end; color: var(--dim); font-size: 12px; white-space: nowrap; }
 .crumbs ol { list-style: none; display: flex; align-items: flex-start; margin: 0; padding: 0; }
 .crumb { position: relative; padding: 0 16px; text-align: center; min-width: 0; }
@@ -256,14 +257,14 @@ kbd {
 .rv-row .read .how { color: var(--dim); }
 .rv-row .read .rd { margin-right: 10px; }
 .rv-row .read .mean { color: var(--amber); margin-left: 10px; font-size: 12.5px; }
-.orgcell { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 16px; }
+.orgcell { display: block; }
 .p3 { display: grid; grid-template-columns: 5.6rem 120px; align-items: center; gap: 2px 9px; font-size: 12.5px; }
 .p3 .o { color: var(--dim); }
 .p3 .o.used { color: var(--amber); font-weight: 600; }
 .p3 .bar1 { height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; }
 .p3 .bar1 b { display: block; height: 100%; border-radius: 2px; background: var(--faint); }
 .p3 .bar1 b.used { background: var(--amber); }
-.cancer { color: var(--violet); font-weight: 650; }
+.cancer { color: var(--ink-2); font-weight: 600; }
 .meanings { margin-top: 30px; }
 .mgroup { margin-top: 18px; }
 .mgroup .q { font-size: 14.5px; color: var(--ink); font-weight: 600; margin: 0 0 6px; }
@@ -291,6 +292,16 @@ kbd {
 .ctx > div + div { border-left: 1px solid var(--line); }
 .ctx ul { list-style: none; margin: 0; padding: 0; }
 .ctx li { font-size: 14px; line-height: 1.75; color: var(--ink); overflow-wrap: anywhere; }
+.ctx .kvs { display: grid; grid-template-columns: max-content max-content 120px max-content; column-gap: 14px; align-items: center; }
+.ctx .kvs li { display: contents; }
+.ctx .kvs li.none { display: list-item; grid-column: 1 / -1; }
+.kvs .kn { color: var(--ink-2); }
+.kvs .kv2 { text-align: right; font-variant-numeric: tabular-nums; }
+.kvs .ko { color: var(--amber); font-size: 13px; }
+.gauge { position: relative; height: 6px; border-radius: 3px; background: var(--line); }
+.gauge b { display: block; height: 100%; border-radius: 3px; background: var(--faint); }
+.gauge.amber b { background: var(--amber); } .gauge.red b { background: var(--red); }
+.gauge i { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--dim); opacity: .7; }
 .ctx li.none { color: var(--dim); }
 .ctx .tiers { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: 4px; }
 .ctx .tier { display: inline-flex; flex-wrap: wrap; gap: 6px; }
@@ -315,13 +326,14 @@ kbd {
 .tr[aria-selected="true"] { background: var(--sel); box-shadow: inset 2px 0 0 var(--amber); }
 .tr:focus-visible { outline-offset: -2px; border-radius: 4px; }
 .tr .rk { color: var(--dim); }
+.tr .rk.tie { color: var(--faint); opacity: .55; }
 .tr .nm { font-size: 14.5px; color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
 .tr .rs { font-size: 14px; }
 .tr .rs.sure { font-weight: 650; }
 .oc { font-size: 13.5px; white-space: nowrap; }
 .oc .mk2 { display: inline-block; width: 2ch; text-align: right; margin-right: 7px; font: 700 12.5px var(--mono); letter-spacing: -.12em; }
-.oc.b { color: var(--red); } .oc.w { color: var(--amber); } .oc.n { color: var(--faint); padding-left: calc(2ch + 7px); }
-.oc .plus { margin-left: 1px; }
+.oc.b { color: var(--red); } .oc.w { color: var(--amber); }
+.oc .plus { margin-left: 4px; font-size: 11.5px; color: var(--dim); cursor: help; }
 .tr .pt { display: none; }
 .sep { display: flex; align-items: center; gap: 10px; height: 34px; padding: 0 0 0 2px; color: var(--dim); font-size: 12.5px; border-bottom: 1px solid var(--line); }
 .sep::before { content: ""; width: 14px; height: 1px; background: var(--line-2); }
@@ -377,8 +389,21 @@ kbd {
 .wl { display: grid; grid-template-columns: max-content 2ch minmax(0, 1fr); column-gap: 14px; row-gap: 7px; font-size: 13.5px; }
 .wl .k { color: var(--ink-2); }
 .wl .m { font: 700 12.5px/1.6 var(--mono); letter-spacing: -.12em; }
-.trial-t { font-size: 13.5px; margin: 0 0 10px; line-height: 1.55; color: var(--ink); }
-.ev .vs { color: var(--dim); }
+.trial-t { font-size: 12.5px; margin: 0 0 10px; line-height: 1.5; color: var(--dim); }
+.tlg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--dim); margin: 0 0 12px; }
+.tlg .sw { width: 10px; height: 6px; border-radius: 2px; margin-left: 8px; } .tlg .sw:first-child { margin-left: 0; }
+.tlg .sc { margin-left: auto; color: var(--faint); font-variant-numeric: tabular-nums; }
+.sw.adc { background: var(--amber); } .sw.ser { background: var(--red); } .sw.cmp { background: var(--faint); }
+.tr2 { display: grid; grid-template-columns: 5.6rem minmax(0, 1fr); column-gap: 12px; row-gap: 14px; font-size: 13.5px; }
+.tr2 .k { color: var(--ink-2); line-height: 1.5; }
+.tr2 .evs { display: grid; row-gap: 10px; min-width: 0; }
+.evt .term { line-height: 1.5; margin-bottom: 4px; overflow-wrap: anywhere; }
+.tb { display: grid; grid-template-columns: 180px max-content; column-gap: 10px; align-items: center; height: 16px; }
+.tb .track { position: relative; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.tb .track b, .tb .track i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 3px; }
+.tb.adc .track b { background: var(--amber); } .tb .track i { background: var(--red); } .tb.all-ser .track b { background: var(--red); }
+.tb.cmp .track b { background: var(--faint); }
+.tb .pc { font-size: 12.5px; font-variant-numeric: tabular-nums; } .tb.cmp .pc { color: var(--dim); }
 .dr-body .line { font-size: 13.5px; line-height: 1.55; margin: 0; }
 .dr-body .note2 { font-size: 13px; line-height: 1.6; color: var(--ink-2); margin: 8px 0 0; }
 .dr-body ul.dash { list-style: none; margin: 0; padding: 0; font-size: 13.5px; line-height: 1.75; }

@@ -269,7 +269,7 @@
     document.title = 'ADCTOX';
     crumbsOl = h('ol');
     verEl = h('div', { class: 'ver', text: '' });
-    top = h('header', { class: 'top' }, h('div', { class: 'brand', text: 'ADCTOX' }), h('nav', { class: 'crumbs', 'aria-label': '단계' }, crumbsOl), verEl);
+    top = h('header', { class: 'top' }, h('div', { class: 'brand' }, h('span', { class: 'a', text: 'ADC' }), h('span', { class: 'b', text: 'TOX' })), h('nav', { class: 'crumbs', 'aria-label': '단계' }, crumbsOl), verEl);
     stageBox = h('main', { class: 'stage' });
     body = buildBody();
     side = h('aside', { class: 'side', 'aria-label': 'Body map' }, body.el);
@@ -849,7 +849,6 @@
           h('span', { class: 'read', role: 'cell' }, r.read_as ? h('span', { class: 'rd', text: r.read_as }) : null, h('span', { class: 'how', text: r.how || '' }), tag ? h('span', { class: 'mean', text: tag }) : null)));
       });
       box.append(table);
-      if (A.usage) box.append(h('p', { class: 'usage', text: A.usage }));
       if ((A.ambiguous || []).length) box.append(meanings());
       setBar({ keys: [kbd('PgUp', '이전')], button: { label: '다음', key: 'PgDn', act: next } });
       lightAnalysis(cascade);
@@ -864,7 +863,7 @@
       const same = used.length === (r.organs || []).length && used.every((o) => r.organs.includes(o));
       const lk = same && (r.likely || []).length ? r.likely : used.map((o) => ({ organ: o, used: true, p: null, text: null }));
       if (!lk.some((x) => x.text)) return strip(used);
-      return h('span', { class: 'orgcell' }, strip(used, { names: false }),
+      return h('span', { class: 'orgcell' },
         h('span', { class: 'p3' }, lk.map((x) => [
           h('span', { class: 'o' + (x.used ? ' used' : ''), text: SHORT[x.organ] || x.organ }),
           h('span', { class: 'bar1', title: x.text || null, 'aria-label': x.text || null }, h('b', { class: x.used ? 'used' : null, style: `width:${Math.max(2, Math.min(100, (x.p || 0) * 100))}%` }))])));
@@ -966,13 +965,30 @@
   }
   function previewCells(row) {            // recommend._organ_preview (the server's): two warned patient organs, + for more; one other warned organ, + for more
     const pv = row.preview || { patient: [], other: [] }, own = pv.patient || [], other = pv.other || [];
-    const cell = (c, more) => (c ? { o: c.organ, boxed: c.mark === '!!', more: !!more } : { none: true });
-    return [cell(own[0]), own.length ? (own[1] ? cell(own[1], own.length > 2) : { blank: true }) : cell(null), cell(other[0], other.length > 1)];
+    const cell = (c, rest) => (c ? { o: c.organ, boxed: c.mark === '!!', rest: rest || [] } : { none: true });
+    return [cell(own[0]), own.length ? (own[1] ? cell(own[1], own.slice(2)) : { blank: true }) : cell(null), cell(other[0], other.slice(1))];
   }
   function ocNode(c) {
-    if (c.blank) return h('span', { class: 'oc' });
-    if (c.none) return h('span', { class: 'oc n', text: '-' });
-    return h('span', { class: 'oc ' + (c.boxed ? 'b' : 'w') }, h('span', { class: 'mk2', text: c.boxed ? '!!' : '!' }), SHORT[c.o] || c.o, c.more ? h('span', { class: 'plus', text: '+' }) : null);
+    if (c.blank || c.none) return h('span', { class: 'oc' });
+    const rest = c.rest || [];
+    return h('span', { class: 'oc ' + (c.boxed ? 'b' : 'w') }, h('span', { class: 'mk2', text: c.boxed ? '!!' : '!' }), SHORT[c.o] || c.o,
+      rest.length ? h('span', { class: 'plus', title: rest.map((r) => `${r.mark} ${SHORT[r.organ] || r.organ}`).join(', '), text: '+' + rest.length }) : null);
+  }
+  // a Key value line as name | value | gauge | organ: x ULN on 0 to 3 (ticks 1, 1.5), CLcr on 0 to 120 mL/min (ticks 30, 60, 90)
+  function valueRow(text) {
+    const m = /^(.*?)\s((?:≈\s)?[\d.]+.*?)(?:\s→\s(.+))?$/.exec(text);
+    if (!m) return h('li', null, h('span', { class: 'kn', text }));
+    const [, name, val, organ] = m;
+    let g = null;
+    const uln = /^([\d.]+)×ULN$/.exec(val), cl = /^CLcr/.test(name) && /([\d.]+)/.exec(val);
+    if (uln) { const x = +uln[1]; g = gauge(x / 3, [1 / 3, 1.5 / 3], x > 1 ? (x > 3 ? 'red' : 'amber') : 'ok'); }
+    else if (cl) { const x = +cl[1]; g = gauge(x / 120, [.25, .5, .75], x < 30 ? 'red' : x < 60 ? 'amber' : 'ok'); }
+    return h('li', null, h('span', { class: 'kn', text: name }), h('span', { class: 'kv2' + (organ ? ' t-amber' : ''), text: val }),
+      g || h('span'), h('span', { class: 'ko', text: organ ? '→ ' + organ : '' }));
+  }
+  function gauge(f, ticks, tone) {
+    return h('span', { class: 'gauge ' + tone, 'aria-hidden': 'true' }, h('b', { style: `width:${Math.max(2, Math.min(100, f * 100))}%` }),
+      ticks.map((t) => h('i', { style: `left:${t * 100}%` })));
   }
   const legendNode = (cls) => h('div', { class: cls },
     h('span', null, h('b', { class: 't-red', text: '!!' }), 'Boxed warning'), h('span', null, h('b', { class: 't-amber', text: '!' }), 'Warning'));
@@ -998,10 +1014,10 @@
       const rows = res.rows || [], P = res.patient || {}, levels = P.organ_levels || {};
       shownPatient = P;
       // Key values (the selected ADC's: its restriction's values first) | Review order
-      const keyList = h('ul');
+      const keyList = h('ul', { class: 'kvs' });
       const keyValues = (i) => {
         const vals = i >= 0 && rows[i] && rows[i].detail && rows[i].detail.values ? rows[i].detail.values : P.values || [];
-        clear(keyList); add(keyList, [vals.length ? vals.map((v) => h('li', { text: v })) : h('li', { class: 'none', text: 'Not entered' })]);
+        clear(keyList); add(keyList, [vals.length ? vals.map(valueRow) : h('li', { class: 'none', text: 'Not entered' })]);
       };
       const prio = P.organ_priority || [];
       box.append(h('div', { class: 'ctx panel' },
@@ -1021,15 +1037,15 @@
       rows.forEach((row, i) => {
         if (row.indicated === false && (i === 0 || rows[i - 1].indicated !== false)) grid.append(h('div', { class: 'sep', role: 'row' }, h('span', { role: 'gridcell', text: 'Other cancers' })));
         const rs = restriction(row), cells = previewCells(row);
-        const rank = row.rank !== prevRank ? String(row.rank) : '';
+        const tie = row.rank === prevRank;           // a tie repeats its number, set faint
         prevRank = row.rank;
         const mine = cells.slice(0, 2).filter((c) => c.o);
         const tr = h('div', { class: 'tr', role: 'row', tabindex: '-1', 'aria-selected': 'false', 'aria-rowindex': String(i + 2), 'data-i': String(i) },
-          h('span', { class: 'rk', role: 'gridcell', text: rank }),
+          h('span', { class: 'rk' + (tie ? ' tie' : ''), role: 'gridcell', text: String(row.rank) }),
           h('span', { class: 'nm', role: 'gridcell', text: row.name }),
-          h('span', { class: `rs t-${rs.tone}` + (rs.sure ? ' sure' : ''), role: 'gridcell', text: rs.text }),
+          h('span', { class: `rs t-${rs.tone}` + (row.status === 'Avoid' && rs.sure ? ' sure' : ''), role: 'gridcell', text: rs.text }),
           cells.map((c) => h('span', { role: 'gridcell' }, ocNode(c))),
-          h('span', { class: 'pt', 'aria-hidden': 'true' }, 'Patient: ', mine.length ? mine.map(ocNode) : '-', '   Other: ', ocNode(cells[2])));
+          h('span', { class: 'pt', 'aria-hidden': 'true' }, 'Patient: ', mine.length ? mine.map(ocNode) : '-', '   Other: ', cells[2].o ? ocNode(cells[2]) : '-'));
         tr.addEventListener('click', () => { select(i, true); openDrawer(); });
         tr.addEventListener('mouseenter', () => hover(i));
         trs.push(tr);
@@ -1115,8 +1131,6 @@
     docked(false);
     if (inside) returnFocus();
   }
-  // recommend._event_text as sent ('pneumonitis 25/404 (6.2%, vs 0.0%), serious 10/404'); only the comparator's part is set dim
-  const evNode = (text) => h('span', { class: 'ev' }, String(text || '').split(/(, vs [^),;]*)/).map((p, k) => (k % 2 ? h('span', { class: 'vs', text: p }) : p)));
   function section(title, ...kids) { return h('section', { class: 'dsec' }, title ? h('h3', { class: 'h2', text: title }) : null, kids); }
   function fillDrawer(row) {
     if (!row) return;
@@ -1145,11 +1159,19 @@
     if (t && t.no_results) drawerBody.append(section("Trial results on the patient's organs", h('p', { class: 'line', text: t.no_results })));
     else if (t && t.trial) {
       const head = t.line || t.trial;          // recommend.trial_lines' title line
+      const scale = t.scale || 100;           // recommend.trial_scale: the bars' full length, the TUI's too
+      const bar = (cls, f, ser, pct) => h('div', { class: 'tb ' + cls },
+        h('span', { class: 'track' }, h('b', { style: `width:${Math.min(100, f * 100 / scale * 100)}%` }), ser ? h('i', { style: `width:${Math.min(100, ser * 100 / scale * 100)}%` }) : null),
+        h('span', { class: 'pc', text: pct }));
       drawerBody.append(section("Trial results on the patient's organs",
         h('p', { class: 'trial-t', title: t.nct || null, text: head }),
-        h('div', { class: 'kv' }, (t.organs || []).map((o) => [
+        h('div', { class: 'tlg', 'aria-hidden': 'true' }, h('span', { class: 'sw adc' }), 'ADC', h('span', { class: 'sw ser' }), 'Serious', h('span', { class: 'sw cmp' }), 'Comparator', h('span', { class: 'sc', text: t.scale_text || '' })),
+        h('div', { class: 'tr2' }, (t.organs || []).map((o) => [
           h('span', { class: 'k', text: SHORT[o.organ] || o.organ }),
-          h('span', { class: 'v' }, (o.events || []).length ? o.events.map((e, k) => [k ? '; ' : '', evNode(e.text)]) : (o.none || o.text || ''))]))));
+          h('div', { class: 'evs' }, (o.events || []).length ? o.events.map((e) => h('div', { class: 'evt', title: e.text },
+            h('div', { class: 'term', text: e.term }),
+            bar('adc' + (e.serious ? ' all-ser' : ''), e.a / e.n, e.serious ? 0 : (e.sa || 0) / e.n, e.pct),
+            e.comp ? bar('cmp', e.comp[0] / e.comp[1], 0, e.comp_pct) : null)) : h('span', { class: 'dim', text: o.none || o.text || '' }))]))));
     }
     if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m })))));
     if (d.payload) drawerBody.append(section('Payload and linker', h('p', { class: 'line', text: d.payload.line }), d.payload.note ? h('p', { class: 'note2', text: d.payload.note }) : null));

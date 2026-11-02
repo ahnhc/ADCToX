@@ -143,6 +143,7 @@ def _trial(RC, row):
         organs.append(dict(organ=a, warned=bool(o.get("warned")), events=events, none=None if events else none, text="; ".join(e["text"] for e in events) or none))
     return dict(trial=t["trial"], nct=t["nct"], phase=t.get("phase"), population=t.get("population"), regimen=t["regimen"], n=t["n"],
                 comparator=t.get("comparator"), threshold=t["threshold"], line=RC.trial_lines(row)[0].strip(), organs=organs,
+                scale=(sc := RC.trial_scale([e for o in organs for e in o["events"]])), scale_text=f"0 to {sc}%",
                 source=RC._trial_ae().get("snapshot"))
 
 

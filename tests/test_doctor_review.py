@@ -206,7 +206,8 @@ def test_trial_results_on_the_patients_organs(monkeypatch):
     tdxd = next(r for r in rows if r["name"] == "Trastuzumab deruxtecan")
     text = "\n".join(map(plain, RC._result_details(tdxd, [], 110)))
     assert "Trial results on the patient's organs" in text and re.search(r"^  DESTINY-Breast0\d, T-DXd 5.4 mg/kg q3w, n=\d+; vs ", text, re.M)
-    assert re.search(r"^  Lung\s+(pneumonitis|interstitial lung disease) ", text, re.M)
+    assert re.search(r"^  Lung\s+(pneumonitis|interstitial lung disease)( \(serious\))?\n {12}[━─┼]{20} \d+\.\d%$", text, re.M)   # the event, then its bar
+    assert re.search(r"^  ━ ADC  ━ Serious  ━ Comparator   0 to \d+%$", text, re.M)
     assert re.search(r"^  Cardio\s+\S", text, re.M)                                    # heart failure: the patient's organ, with or without a label warning
     gem = next(r for r in rows if r["name"] == "Gemtuzumab ozogamicin")
     assert "no results posted on ClinicalTrials.gov (ALFA-0701, NCT00927498)" in "\n".join(map(plain, RC._result_details(gem, [], 110)))
@@ -240,4 +241,5 @@ def test_the_trial_of_the_patients_cancer_is_shown(monkeypatch):
     assert "HER2+ breast cancer" in tdxd["cancers"]
     text = "\n".join(map(plain, RC._result_details(tdxd, [], 110)))
     assert "  DESTINY-Breast02, T-DXd 5.4 mg/kg q3w, n=404; vs treatment of physician's choice" in text     # the largest HER2+ trial, not DESTINY-Breast06
-    assert re.search(r"^  Lung\s+(pneumonitis|interstitial lung disease) \d+/404 \(\d+\.\d%, vs \d+\.\d%\)", text, re.M)
+    assert re.search(r"^  Lung\s+(pneumonitis|interstitial lung disease)\n {12}[━─]{20} \d+\.\d%\n {12}[━─]{20} \d+\.\d%$", text, re.M)   # ADC bar, comparator bar
+    assert re.search(r"^  Lung\s+(pneumonitis|interstitial lung disease) \d+/404 \(\d+\.\d%, vs \d+\.\d%\)", "\n".join(RC.trial_lines(tdxd)), re.M)   # counts: the report
