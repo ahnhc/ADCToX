@@ -4,3 +4,6 @@
 {"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "sec": 285.1, "cost_usd": 0.39399, "in_tok": 3, "out_tok": 23659, "cache_read": 0, "t": "2026-11-02 14:09:30"}
 {"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "sec": 32.9, "cost_usd": 0.107566, "in_tok": 2, "out_tok": 5025, "cache_read": 0, "t": "2026-11-02 14:10:03"}
 {"step": "done", "batch": "b0001.json", "n": 86, "accepted": 82, "dropped": 8, "t": "2026-11-02 14:10:03"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "sec": 220.6, "cost_usd": 0.312624, "in_tok": 3, "out_tok": 18159, "cache_read": 0, "t": "2026-11-02 14:13:43"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "sec": 28.3, "cost_usd": 0.101792, "in_tok": 2, "out_tok": 4464, "cache_read": 0, "t": "2026-11-02 14:14:12"}
+{"step": "done", "batch": "b0002.json", "n": 80, "accepted": 78, "dropped": 3, "t": "2026-11-02 14:14:12"}
