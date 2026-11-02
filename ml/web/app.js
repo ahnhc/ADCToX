@@ -960,8 +960,13 @@
   }
 
   // ================================================================== step 5: 결과
-  function restriction(row) {             // recommend._result_list's state: None / Monitor / No data / Not studied / Avoid, '?' when a missing value could change it
-    return { text: row.status + (row.sure ? '' : '?'), tone: STATE_TONE[row.status] || 'dim', sure: !!row.sure };
+  function restriction(row) {             // recommend._result_list's state: None / Monitor / No data / Not studied / Avoid; a dashed level when a missing value could set it
+    return { text: row.status, tone: STATE_TONE[row.status] || 'dim', sure: !!row.sure, tier: Math.min(3, row.tier | 0), known: Math.min(3, row.sure ? row.tier | 0 : row.known | 0), cause: row.cause || [] };
+  }
+  // the restriction's level as three rising bars (Monitor 1, Not studied 2, Avoid 3): solid up to what the entered values set,
+  // dashed up to what a value not entered could set
+  function levelNode(tier, known) {
+    return h('span', { class: 'lv', 'aria-hidden': 'true' }, [1, 2, 3].map((k) => h('i', { class: k <= known ? 'on' : k <= tier ? 'may' : null })));
   }
   function previewCells(row) {            // recommend._organ_preview (the server's): two warned patient organs, + for more; one other warned organ, + for more
     const pv = row.preview || { patient: [], other: [] }, own = pv.patient || [], other = pv.other || [];
@@ -991,7 +996,9 @@
       ticks.map((t) => h('i', { style: `left:${t * 100}%` })));
   }
   const legendNode = (cls) => h('div', { class: cls },
-    h('span', null, h('b', { class: 't-red', text: '!!' }), 'Boxed warning'), h('span', null, h('b', { class: 't-amber', text: '!' }), 'Warning'));
+    h('span', { class: 't-cyan' }, levelNode(1, 1), h('em', { text: 'Monitor' })), h('span', { class: 't-amber' }, levelNode(2, 2), h('em', { text: 'Not studied' })),
+    h('span', { class: 't-red' }, levelNode(3, 3), h('em', { text: 'Avoid' })), h('span', { class: 't-dim' }, levelNode(3, 1), h('em', { text: 'Depends on missing value' })),
+    h('span', { class: 'gap' }, h('b', { class: 't-red', text: '!!' }), 'Boxed warning'), h('span', null, h('b', { class: 't-amber', text: '!' }), 'Warning'));
   function resultSig() { return JSON.stringify([condList(), rawValues(), allChoice(), S.first]); }
 
   function stage5() {
@@ -1043,7 +1050,8 @@
         const tr = h('div', { class: 'tr', role: 'row', tabindex: '-1', 'aria-selected': 'false', 'aria-rowindex': String(i + 2), 'data-i': String(i) },
           h('span', { class: 'rk' + (tie ? ' tie' : ''), role: 'gridcell', text: String(row.rank) }),
           h('span', { class: 'nm', role: 'gridcell', text: row.name }),
-          h('span', { class: `rs t-${rs.tone}` + (row.status === 'Avoid' && rs.sure ? ' sure' : ''), role: 'gridcell', text: rs.text }),
+          h('span', { class: `rs t-${rs.tone}` + (row.status === 'Avoid' && rs.sure ? ' sure' : ''), role: 'gridcell', 'aria-label': rs.text + (rs.sure ? '' : ' (depends on a value not entered)') + (rs.cause.length ? ', ' + rs.cause.join(', ') : '') },
+            levelNode(rs.tier, rs.known), h('span', { text: rs.text }), rs.cause.length ? h('span', { class: 'cz', text: rs.cause.join(' ') }) : null),
           cells.map((c) => h('span', { role: 'gridcell' }, ocNode(c))),
           h('span', { class: 'pt', 'aria-hidden': 'true' }, 'Patient: ', mine.length ? mine.map(ocNode) : '-', '   Other: ', cells[2].o ? ocNode(cells[2]) : '-'));
         tr.addEventListener('click', () => { select(i, true); openDrawer(); });

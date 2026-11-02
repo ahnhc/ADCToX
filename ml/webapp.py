@@ -186,7 +186,10 @@ def _detail(RC, row, checks_, notes, values, raw):
 def _row(RC, row, checks_, notes, values, raw):
     v = row["verdict"]; tier = v.worst_possible; status = STATUS.get(tier, "None")
     if tier == 2 and any(c == "insufficient_data" for c, _ in v.known + v.possible): status = "Not studied"
-    return dict(rank=row["rank"], tie=row["tie"], adc=row["adc"], name=row["name"], status=status, sure=v.worst_known == tier,
+    name = lambda d: RC.ORGAN_SHORT[RC.RS.DOMAIN_AXIS[d]] if d in RC.RS.DOMAIN_AXIS else d.capitalize()     # the organ names the other columns use
+    cause = list(dict.fromkeys(name(d) for d, _, _, c, _ in RC.reason_rows(row) if RC.RS.TIER[c] == tier)) if tier > 0 else []   # what sets the level
+    return dict(rank=row["rank"], tie=row["tie"], adc=row["adc"], name=row["name"], status=status, sure=v.worst_known == tier, cause=cause,
+                known=max(0, v.worst_known),
                 restriction=row["restriction"], restriction_ko=row["restriction_ko"], tier=tier, indicated=row["indicated"],
                 boxed=row["boxed"], warn=row["warn"], elsewhere=row["elsewhere"], levels={a: row["organs"][a]["level"] for a in RC.AXES},
                 preview=_preview(RC, row), cancers=row["cancers"], detail=_detail(RC, row, checks_, notes, values, raw))
