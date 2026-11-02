@@ -74,7 +74,7 @@ def test_app_lists_the_axes_the_registry_and_the_lab_fields(server):
     assert f["creatinine"] == dict(key="creatinine", label="Creatinine", unit="mg/dL", group="Kidney", kind="number", range=[0.05, 30], uln=None, rule=None)
     assert f["ast"]["rule"] == "AST > 3 x ULN (CTCAE G2)" and f["hb"]["rule"].startswith("Hb < 10") and f["age"]["rule"] is None
     assert f["bilirubin"]["uln"] == 1.2 and (f["sex"]["kind"], f["child_pugh"]["kind"], f["ugt1a1"]["kind"]) == ("sex", "child_pugh", "yn")
-    assert d["steps"] == ["질환", "검사 수치", "AI 장기 분석", "우선순위", "결과"] and d["first_text"] == RC.FIRST_TEXT
+    assert d["steps"] == ["질환", "검사 수치", "AI 장기 분석", "우선순위", "결과"]  and "first_text" not in d
 
 
 def test_suggestions_are_the_first_screens_names_and_symptom_diseases(server, monkeypatch):
@@ -148,7 +148,7 @@ def test_the_analysis_runs_in_a_job_and_reports_what_the_analysis_screen_shows(s
     (r,) = job["reports"]
     assert r["source"] == "Registry" and r["shown"] == "Cirrhosis" and r["organs"] == ["hepatic"] and r["p"] == p and r["how"] == "Registry"
     assert [(c["organ"], c["used"], c["text"]) for c in r["likely"]] == [("hepatic", True, "97%"), ("gastrointestinal", False, "41%"), ("haematologic", False, "1%")]
-    assert plain(__import__("form").likely(RC.AXES, ["hepatic"], p)) == "  ".join(f"{tui.GLYPH[c['organ']]} {c['text']}" for c in r["likely"])
+    assert [w for w in plain(__import__("form").likely(RC.AXES, ["hepatic"], p)).split() if w.isalpha()] == [tui.GLYPH[c["organ"]] for c in r["likely"]]
     assert call(server, "GET", f"/api/analyze/{d['job']}")[0] == 404                                # handed out once, then forgotten
     assert call(server, "GET", "/api/analyze/nosuchjob")[0] == 404
 
@@ -283,7 +283,7 @@ def test_recommend_carries_every_number_the_result_screen_prints(server, monkeyp
     assert [r["adc"] for r in d["rows"]] == [r["adc"] for r in rows] and d["s"] == s and d["notes"] == [list(n) for n in notes]
     values = __import__("labs").derive(raw)[0]; n_events = 0
     for i, (mine, row) in enumerate(zip(d["rows"], rows)):
-        text = "\n".join(map(plain, RC._result_details(row, ck, 200)))
+        text = "\n".join(map(plain, RC._result_details(row, ck, 200))).replace(", ".join(row.get("cancers") or []), "")   # the ✓ cancer line: the page has its own
         detail = json.dumps(mine["detail"], ensure_ascii=False)
         for n in re.findall(r"\d+(?:\.\d+)?%?", text): assert n in detail, (row["name"], n)
         trial, lines = mine["detail"]["trial"], [ln.strip() for ln in RC.trial_lines(row)]

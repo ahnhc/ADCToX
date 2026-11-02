@@ -21,7 +21,7 @@ def _screen(monkeypatch, keys, size=(24, 80)):
 
 def _rc():
     import recommend as RC
-    return types.SimpleNamespace(_reg={}, CHOICE={}, AXES=list(tui.GLYPH), condition_name=lambda c: c, FIRST_TEXT=RC.FIRST_TEXT,
+    return types.SimpleNamespace(_reg={}, CHOICE={}, AXES=list(tui.GLYPH), condition_name=lambda c: c,
                                  _indications=lambda: {})
 
 
@@ -130,7 +130,7 @@ def test_priority_is_one_pick_that_stays_above_the_key_hint(monkeypatch):
     screen, frames = _screen(monkeypatch, ["KEY_DOWN"] * 9 + ["KEY_NPAGE"])
     F = form.Form(screen, _rc()); F.step = 3
     assert F.first(names, [["hepatic"]] * 9) == 9
-    assert "가장 걱정되는 질환" in "\n".join(frames[0]) and "(●) 자동 (질환 중증도 순)" in "\n".join(frames[0])
+    assert "가장 걱정되는 질환" in "\n".join(frames[0]) and "(●) Auto" in "\n".join(frames[0])
     for f in frames:
         assert "PgDn 다음" in f[-1] and "↑↓ 고르기" in f[-1] and not any("condition number" in ln for ln in f[-2:])
     assert any("(●) condition number 8" in ln for ln in frames[-1])
@@ -189,13 +189,13 @@ def test_the_analysis_shows_the_three_likeliest_organs_with_their_probability(mo
     import form
     p = {a: 0.0 for a in tui.GLYPH}; p.update(neurologic=0.951, cardiovascular=0.68, metabolic_endocrine=0.22)
     plain = lambda t: __import__("re").sub(r"\x1b\[[\d;]*m", "", t)
-    assert plain(form.likely(list(tui.GLYPH), ["neurologic"], p)) == "Neuro 95%  Cardio 68%  Metabolic 22%"
+    assert plain(form.likely(list(tui.GLYPH), ["neurologic"], p)) == "Neuro     ━━━━━  Cardio    ━━━──  Metabolic ━────"   # names padded: the bars line up
     assert "\033[32;1mNeuro" in form.likely(list(tui.GLYPH), ["neurologic"], p) and "\033[90mCardio" in form.likely(list(tui.GLYPH), ["neurologic"], p)
-    assert plain(form.likely(list(tui.GLYPH), ["neurologic", "ocular"], p)).endswith("Eye <1%")        # a used organ outside the three follows
+    assert plain(form.likely(list(tui.GLYPH), ["neurologic", "ocular"], p)).endswith("Eye       ━────")        # a used organ outside the three follows
     assert plain(form.likely(list(tui.GLYPH), ["hepatic"], None)) == "Liver"                           # no judge output: the used organs
     frames = _review(monkeypatch, [dict(_report(1), organs=["neurologic"], p=p)], ["KEY_NPAGE"])
     text = "\n".join(frames[0])
-    assert "Neuro 95%  Cardio 68%  Metabolic 22%" in text and "순위에 쓰는" not in text and all(len(ln) <= 80 for ln in frames[0])
+    assert "Neuro     ━━━━━  Cardio    ━━━──  Metabolic ━────" in text and "95%" not in text and "순위에 쓰는" not in text and all(len(ln) <= 80 for ln in frames[0])
 
 
 def test_a_registry_disease_gets_an_analysis_row(monkeypatch):

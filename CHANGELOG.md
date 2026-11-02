@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.6: Marks and bars instead of explanations (Ubuntu, macOS and Windows)
+
+- **No explanatory sentences on the screens** (web and terminal): the start screen's description, the 검사 수치 and 우선순위 hints, the "pick the meaning" line, the model-loading note, the % note under Organs and the "not a risk ranking" note under Review order are gone. 자동 (질환 중증도 순) reads `Auto`.
+- **AI 장기 분석 shows bars, not percentages**: each of the three likeliest organs has a bar of its probability (web: the % in the bar's tooltip; terminal: five cells). Organ names take a fixed width, so the bars start and end at the same place on every row.
+- **Review order is drawn as tiers**: the first organs as filled chips, then `→` and the next ones plain (terminal: `Cardio Lung → Liver Kidney`), no numbers. The body map drops its numbered legend.
+- **Indication is a mark**: a green ✓ or an amber ✕ before the entered cancer (terminal detail too); nothing when no cancer is entered.
+- **검사 수치 shows state by the box**: an empty field is a faint dashed box, a value below its organ flag a green box and ✓ (the flag in its tooltip), a value over it an amber box and `→ organ`. The terminal puts ✓ or `→ organ` after the value.
+- The result legend keeps `!! Boxed warning` and `! Warning` only.
+
 ## 0.6.5: Screens say what their numbers mean (Ubuntu, macOS and Windows)
 
 - **AI 장기 분석**: the Organs column says the % is the AI's confidence that the disease involves the organ, not a side-effect probability (web: under the column title and in each value's tooltip; terminal: beside the title and a line under the table).

@@ -290,9 +290,6 @@ class Form:
                 if big:
                     for ln in logo(): self.S.put_ansi(y, (w - logo_width()) // 2, ln); y += 1
                 else: self.S.put_ansi(y, (w - 6) // 2, "\033[36;1mADC\033[0m\033[31;1mToX\033[0m"); y += 1
-                if not (rows or sel):                                      # the empty start screen says what the app does
-                    about = f"기저질환, 암종, 검사 수치로 FDA 승인 ADC {len(RC._indications()) or 15}개를 경고가 적은 순서로 보여 줍니다."
-                    self.S.put(y + 1, max(1, (w - _w(about)) // 2), _clip(about, w - 2), self.S.dim); y += 1
                 y += 2
                 if sel:                                                    # chips (names only: the organs come with the analysis); a click or Backspace on an empty box takes one off
                     x = bx
@@ -309,7 +306,7 @@ class Form:
                 self.S.put(y + 1, bx, "─" * bw, self.S.dim); y += 2
                 status = ""
                 if ai["busy"]: status = "AI 추천 찾는 중 ..."
-                if sym["busy"]: status = "증상으로 질환 찾는 중 ...   처음 한 번은 모델을 불러 10초쯤 걸립니다"
+                if sym["busy"]: status = "증상으로 질환 찾는 중 ..."
                 if sym["error"]: status = "증상 검색 실패: " + sym["error"]
                 lw = min(max([_w(names_of(r[0], r[1])[0]) for r in rows if r[0] in ("s", "sym")] + [10]), max(16, bw * 3 // 5))
                 lines = []; tip = ""
@@ -400,7 +397,18 @@ class Form:
         lw = max(len(l) for _, l, _, _ in fields)
         while True:
             at = pick[cur]
-            y0 = self.frame("검사 수치", "아는 것만 입력하세요")
+            parsed = {}
+            for key, v in vals.items():                                 # a value still being typed ("0", "0.") is just left out
+                try:
+                    if v.strip(): parsed[key] = LB.parse(key, v)
+                except ValueError: pass
+            hit, ruled = {}, set()                                      # entered and checked against labs.FLAGS: ✓ under the rule, → organ over it
+            for key, test, organ, _ in LB.FLAGS:
+                if key not in parsed: continue
+                ruled.add(key)
+                if test(parsed[key], LB.ULN.get(key)) and GLYPH[organ] not in hit.setdefault(key, []): hit[key].append(GLYPH[organ])
+            mark = {key: "\033[33;1m→ " + ", ".join(hit[key]) + "\033[0m" if hit.get(key) else "\033[32;1m✓\033[0m" for key in ruled}
+            y0 = self.frame("검사 수치", "")
             h, w = self.scr.getmaxyx(); area = max(3, h - y0 - 2); top = max(0, min(at - area // 2, len(rows) - area))
             for r, x in enumerate(rows[top:top + area]):
                 row = top + r; on = row == at
@@ -409,12 +417,7 @@ class Form:
                 else:
                     k, label, unit, _ = fields[x[1]]; v = vals[k]
                     uln = f"{unit:<6}   ULN {LB.ULN[k]:g}" if k in LB.ULN else unit       # the reference upper limit the x ULN uses
-                    self.row(y0 + r, f" {'→' if on else ' '} {label:<{lw}}  {v + ('_' if on else ''):<10} {uln}", on, row)
-            parsed = {}
-            for key, v in vals.items():                                 # a value still being typed ("0", "0.") is just left out
-                try:
-                    if v.strip(): parsed[key] = LB.parse(key, v)
-                except ValueError: pass
+                    self.row(y0 + r, f" {'→' if on else ' '} {label:<{lw}}  {v + ('_' if on else ''):<10} {uln:<15} {mark.get(k, '')}", on, row)
             try: info = "   ".join(n for n in LB.derive(parsed)[2] if n.startswith("CLcr"))
             except Exception: info = ""
             ck = fields[rows[at][1]][0] if rows[at][0] == "field" else None
@@ -507,7 +510,6 @@ class Form:
         while True:
             y0 = self.frame("입력하신 질환 확인", "")
             h, w = self.scr.getmaxyx()
-            self.S.put(y0, 2, "여러 질환으로 읽히는 입력이 있습니다. 의도한 질환을 골라 주세요.", self.S.dim); y0 += 2
             at = sel[cur]; area = max(3, h - y0 - 1); top = max(0, min(at - area // 2, len(rows) - area))
             for r, x in enumerate(rows[top:top + area]):
                 y = y0 + r
@@ -532,9 +534,9 @@ class Form:
 
     def first(self, names, organs, cur=0):
         """the one condition to weigh first, or 0 = automatic (severity order). -> 0, 1..n (names[k - 1]) or BACK."""
-        options = ["자동 (질환 중증도 순)"] + names; n = len(options); top = 0; w0 = max(_w(x) for x in names)
+        options = ["Auto"] + names; n = len(options); top = 0; w0 = max(_w(x) for x in names)
         while True:
-            y0 = self.frame("가장 걱정되는 질환", self.RC.FIRST_TEXT); h = self.scr.getmaxyx()[0]
+            y0 = self.frame("가장 걱정되는 질환", ""); h = self.scr.getmaxyx()[0]
             fit = max(1, h - 2 - y0); top = min(max(top, cur - fit + 1), cur, max(0, n - fit))     # above the key hint, the selection in view
             for r, k in enumerate(range(top, min(n, top + fit))):
                 pic = "" if k == 0 else " " * (w0 - _w(options[k])) + "   " + strip(self.RC.AXES, organs[k - 1])
@@ -625,8 +627,8 @@ class Form:
                 if r.get("ambiguous") and r["condition"] not in RC.CHOICE: tag = f"   \033[33m{len(r['readings'])} meanings: pick on the next screen\033[0m"
                 if read.lower() in (r["condition"].lower(), shown(r).lower()): read = ""
                 rows.append((shown(r), org, (f"{read}  " if read else "") + f"\033[90m{how}\033[0m" + tag))
-            ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for _, o, _ in rows] + [6]), 40)
-            olab = "Organs  \033[0m\033[90m% = AI 확신도" if any(r.get("p") and r["organs"] for r in reports) and ow >= 22 else "Organs"
+            ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for _, o, _ in rows] + [6]), 52)
+            olab = "Organs"
             head = f"  \033[1m{'Input':<{nw}}\033[0m   \033[1m{olab}{' ' * max(0, ow - _w(re.sub(r'\x1b\[[\d;]*m', '', olab)))}\033[0m   \033[1mRead as\033[0m"
             fixed = [ln for line in (head, "\033[90m" + "─" * min(width, nw + ow + 42) + "\033[0m") for ln in tui._wrap_ansi(line, width)]
             wrapped, span = [], []                              # the rows under the fixed header; span = (first, end) line of each input
@@ -639,8 +641,8 @@ class Form:
                 else: row = tui._wrap_ansi(head + what, width)
                 span.append((len(wrapped), len(wrapped) + len(row))); wrapped += row
             panel = gemma_panel(reports[cur], RC, ko, width) if reports[cur].get("gemma") else []
-            if h - y0 - 4 - ("AI 확신도" in olab) - len(fixed) - len(wrapped) < len(panel) + 1: panel = []     # the panel only when the whole table still fits
-            area = max(1, h - y0 - 3 - ("AI 확신도" in olab) - len(fixed) - (len(panel) + 1 if panel else 0))
+            if h - y0 - 4 - len(fixed) - len(wrapped) < len(panel) + 1: panel = []     # the panel only when the whole table still fits
+            area = max(1, h - y0 - 3 - len(fixed) - (len(panel) + 1 if panel else 0))
             if len(reports) > 1:                                # keep the highlighted input in view
                 first, end = span[cur]; top = min(top, first); top = max(top, end - area)
             top = max(0, min(top, len(wrapped) - area)); end = top + area
@@ -654,7 +656,6 @@ class Form:
                 if first and not self.scr.armed(): self.scr.transition("cascade", y_from=y0)          # the table builds up
                 elif cur != last and panel: self.scr.transition("cascade", y_from=py)                # a new judge panel unfolds
             first = False; last = cur
-            if "AI 확신도" in olab: self.S.put(h - 3, 2, "% = AI 확신도 (이 질환이 그 장기에 관련된다는 판단), 부작용 확률 아님", self.S.dim)
             self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
             if len(reports) > 1: self.S.put(h - 1, 2, "↑↓ 입력 고르기", self.S.dim)
             elif len(wrapped) > area: self.S.put(h - 1, 2, f"{top + 1}–{min(top + area, len(wrapped))} / {len(wrapped)}", self.S.dim)
@@ -670,13 +671,17 @@ class Form:
 
 
 def likely(axes, used, p):
-    """the organ judge's three most probable organs with their probability, most probable first: the organs the recommendation
-    uses in green, the others grey; a used organ outside the three follows them. Without the judge's output: the used organs."""
+    """the organ judge's three most probable organs, most probable first, each a name and a five-cell bar of its probability:
+    the organs the recommendation uses in green, the others grey; a used organ outside the three follows them. Names are padded
+    to the longest short name so the bars line up across rows. Without the judge's output: the used organs."""
     if not p: return strip(axes, used)
     top = sorted(axes, key=lambda a: -p.get(a, 0))[:3]
     top += [a for a in axes if a in used and a not in top]
-    pct = lambda x: ">99%" if x >= 0.995 else "<1%" if x < 0.005 else f"{round(x * 100)}%"
-    return "  ".join((f"\033[32;1m" if a in used else "\033[90m") + f"{GLYPH[a]} {pct(p.get(a, 0))}\033[0m" for a in top)
+    nw = max(len(GLYPH[a]) for a in axes)
+    def bar(a):
+        n = max(1, min(5, round(p.get(a, 0) * 5)))
+        return ("\033[32;1m" if a in used else "\033[90m") + f"{GLYPH[a]:<{nw}} " + "━" * n + "\033[0m\033[90m" + "─" * (5 - n) + "\033[0m"
+    return "  ".join(bar(a) for a in top)
 
 
 STEP_TEXT = {"embedding": "질환 확인 중", "linking": "질환 확인 중", "judging": "장기 분석 중", "inference": "장기 분석 중"}   # progress events -> the line

@@ -139,7 +139,7 @@ def test_header_bounds_values_and_priorities_without_repeating_diagnoses(width):
     assert all(R._width(line) <= width and "·" not in line for line in lines)
     assert len(lines) <= (6 if width >= 72 else 12)
     text = "\n".join(lines)
-    for label in ("Key values", "Review order", "1. Cardio", "2. Kidney", "+ 4 more", "Unmapped:"):
+    for label in ("Key values", "Review order", "Cardio → Kidney", "+ 4 more", "Unmapped:"):
         assert "".join(label.split()) in "".join(text.split())
     assert "심부전" not in text and "만성 콩팥병" not in text
     assert "Heart failure" not in text and "Chronic kidney disease" not in text

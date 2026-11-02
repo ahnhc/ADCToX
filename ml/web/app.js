@@ -213,7 +213,6 @@
     const fig = h('div', { class: 'bm-fig', role: 'img' }, base, skin, ring, lines, marks, labels);
     const cap = h('div', { class: 'bm-cap', 'aria-live': 'polite' });
     const legend = h('div', { class: 'bm-legend', hidden: true },
-      h('div', null, h('span', null, 'Review order'), h('span', null, h('i', { class: 'lg1' }), '1'), h('span', null, h('i', { class: 'lg2' }), '2+')),
       h('div', null, h('span', null, h('i', { class: 'lgb' }), 'Boxed warning'), h('span', null, h('i', { class: 'lgw' }), 'Warning')));
     const el = h('div', { class: 'bm panel' }, fig, cap, legend);
     let last = '';
@@ -316,7 +315,7 @@
       if ((a.reports || []).some((r) => r.source === 'Cancer')) names.push('Cancer');
       return names.join(', ') || '-';
     }
-    if (i === 3) { const p = patientConds().find((c) => c.key === S.first); return p ? p.name : '자동 (질환 중증도 순)'; }
+    if (i === 3) { const p = patientConds().find((c) => c.key === S.first); return p ? p.name : 'Auto'; }
     return '';
   }
   function renderCrumbs() {
@@ -380,14 +379,13 @@
     const chips = h('ul', { class: 'chips', 'aria-label': '선택한 질환' });
     const input = h('input', {
       type: 'text', role: 'combobox', 'aria-expanded': 'false', 'aria-controls': 'sugg', 'aria-autocomplete': 'list', 'aria-label': '질환',
-      placeholder: '질환명, 증상, 암종을 입력하세요', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
+      placeholder: '질환, 증상, 암종', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
     });
     const list = h('ul', { class: 'sugg panel', id: 'sugg', role: 'listbox', 'aria-label': '추천', hidden: true });
     const note = h('div', { class: 'note', role: 'status' });
     const status = h('div', { class: 'note busy', 'aria-live': 'polite' });       // the TUI's status line: a search still running, or failed
-    const about = h('p', { class: 'about', text: `기저질환, 암종, 검사 수치로 FDA 승인 ADC ${APP.n_adcs || 15}개를 경고가 적은 순서로 보여 줍니다.` });
     stageNote = (t) => { note.textContent = t; };
-    const SYM_BUSY = '증상으로 질환 찾는 중 ...   처음 한 번은 모델을 불러 10초쯤 걸립니다';
+    const SYM_BUSY = '증상으로 질환 찾는 중 ...';
     // suggest: a text of 4 or more characters and 2 or more words that is not a list of names reads as a sentence (symptom search, no AI names)
     const sentence = (q, parts) => q.length >= 4 && q.split(/\s+/).length >= 2 && !(parts && parts.length);
 
@@ -434,7 +432,6 @@
       });
       st.fresh = -1;
       chips.hidden = !S.conds.length;
-      about.hidden = !!(S.conds.length || st.q);
       setBar({
         keys: [kbd('Enter', '추가'), kbd('↑↓', '선택'), S.conds.length ? kbd('× 또는 Backspace', '빼기') : null],
         button: { label: '다음', key: 'PgDn', act: next },
@@ -539,7 +536,6 @@
       if (st.armed) { st.armed = false; renderChips(); }
       quiet();
       if (!st.q.trim()) { st.items = []; st.listQ = ''; renderList(); renderChips(); return; }
-      about.hidden = true;
       st.timer = setTimeout(search, 150);
     });
     input.addEventListener('keydown', async (e) => {
@@ -556,7 +552,7 @@
       } else if (e.key === 'Enter') {
         e.preventDefault();
         const q = st.q.trim();
-        if (!q) { note.textContent = S.conds.length ? '다음 단계는 PgDn' : '질환명, 증상, 암종을 입력하세요'; return; }
+        if (!q) { note.textContent = S.conds.length ? '다음 단계는 PgDn' : '질환, 증상, 암종'; return; }
         if (st.listQ !== q) enter(q);       // the list for q has not come yet
         else if (st.cur >= 0 && selectable(st.cur)) pick();
         else { note.textContent = addChip({ kind: 'text', value: q, label: q }); reset(); }      // no row chosen: the text as typed
@@ -571,11 +567,11 @@
       }
     });
     const node = h('div', { class: 's1' },
-      h('div', { class: 'hero' }, h('h1', { class: 'logo', 'aria-label': 'ADCToX' }, h('span', { class: 'a', text: 'ADC' }), h('span', { class: 'b', text: 'ToX' })), about),
+      h('div', { class: 'hero' }, h('h1', { class: 'logo', 'aria-label': 'ADCToX' }, h('span', { class: 'a', text: 'ADC' }), h('span', { class: 'b', text: 'ToX' }))),
       chips, h('div', { class: 'field' }, h('span', { class: 'pr', 'aria-hidden': 'true', text: '›' }), input), list, note, status);
     renderChips();
     const preset = MOCK && Q.get('q') && !stage1.preset ? Q.get('q') : '';
-    if (preset) { stage1.preset = true; input.value = preset; st.q = preset; about.hidden = true; search(); }
+    if (preset) { stage1.preset = true; input.value = preset; st.q = preset; search(); }
     setTimeout(() => { if (S.step === 0) input.focus({ preventScroll: true }); }, 0);
     cleanup = () => { quiet(); stageNote = () => {}; };
     return node;
@@ -633,12 +629,12 @@
       const id = 'lab-' + f.key;
       const err = h('div', { class: 'err', id: id + '-err', hidden: true });
       const flag = h('span', { class: 'flag', hidden: true });
-      const ok = h('span', { class: 'ok', hidden: true, text: '기준 이내', title: f.rule ? `Flag: ${f.rule}` : null });   // checked against labs.FLAGS and not met
+      const ok = h('span', { class: 'ok', hidden: true, text: '✓', 'aria-label': 'OK', title: f.rule ? `Flag: ${f.rule}` : null });   // checked against labs.FLAGS and not met
       const anchor = f.uln !== null && f.uln !== undefined ? `ULN ${f.uln}` : '';      // the reference the x ULN uses; the range is in the error line
       const unit = h('span', { class: 'unit' }, f.kind === 'number' ? f.unit : null, f.kind === 'number' && anchor ? h('span', { class: 'anc', text: anchor }) : null, flag, ok);
       let control;
       if (f.kind === 'number') {
-        control = h('input', { class: 'num', id, type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false', placeholder: '미입력', 'aria-describedby': id + '-err', value: S.raw[f.key] || '' });
+        control = h('input', { class: 'num', id, type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false', placeholder: ' ', 'aria-describedby': id + '-err', value: S.raw[f.key] || '' });
         control.addEventListener('input', () => { S.raw[f.key] = control.value; touched.delete(f.key); save(); labsSoon(); refresh(); });
         control.addEventListener('blur', () => { if (control.value.trim()) touched.add(f.key); labsNow(); });
         control.addEventListener('keydown', (e) => {
@@ -694,6 +690,7 @@
         flag.title = fl.map((x) => x.why).join('\n');
         const entered = String(S.raw[k] || '').trim() && r.raw && r.raw[k] !== undefined && r.raw[k] !== null;
         ok.hidden = !(f.rule && entered && !msg && !errs[k] && !fl.length);
+        if (control.classList) { control.classList.toggle('okv', !ok.hidden); control.classList.toggle('flg', !!fl.length && !msg); }
       }
       const lit = {};
       for (const x of flags) if (String(S.raw[x.key] || '').trim()) lit[x.organ] = 'l2';
@@ -706,7 +703,7 @@
       });
     }
     labUI = refresh;
-    const node = h('div', { class: 's2' }, h('h1', { class: 'title', text: '검사 수치' }), h('p', { class: 'lead', text: '아는 것만 입력하세요' }), h('div', { class: 'groups' }, groups));
+    const node = h('div', { class: 's2' }, h('h1', { class: 'title', text: '검사 수치' }), h('div', { class: 'groups' }, groups));
     refresh();
     labsNow();
     setTimeout(() => { const first = order.find((o) => !String(S.raw[o.key] || '').trim()) || order[0]; if (first && S.step === 1) first.focus({ preventScroll: true }); }, 0);
@@ -840,7 +837,7 @@
       const table = h('div', { class: 'review', role: 'table', 'aria-label': 'AI 장기 분석' },
         h('div', { class: 'rv-head', role: 'row' },
           h('span', { role: 'columnheader', text: 'Input' }),
-          h('span', { role: 'columnheader' }, 'Organs', h('span', { class: 'sub', text: '% = AI 확신도 (이 질환이 그 장기에 관련된다는 판단), 부작용 확률 아님' })),
+          h('span', { role: 'columnheader' }, 'Organs'),
           h('span', { role: 'columnheader', text: 'Read as' })));
       reps.forEach((r, i) => {
         const cell = h('span', { role: 'cell' }, organCell(r));
@@ -870,12 +867,10 @@
       return h('span', { class: 'orgcell' }, strip(used, { names: false }),
         h('span', { class: 'p3' }, lk.map((x) => [
           h('span', { class: 'o' + (x.used ? ' used' : ''), text: SHORT[x.organ] || x.organ }),
-          h('span', { class: 'bar1', 'aria-hidden': 'true' }, h('b', { class: x.used ? 'used' : null, style: `width:${Math.max(2, Math.min(100, (x.p || 0) * 100))}%` })),
-          h('span', { class: 'v', text: x.text || '', title: x.text ? `AI 확신도: ${SHORT[x.organ] || x.organ} 관련 ${x.text}. 부작용 확률 아님` : null })])));
+          h('span', { class: 'bar1', title: x.text || null, 'aria-label': x.text || null }, h('b', { class: x.used ? 'used' : null, style: `width:${Math.max(2, Math.min(100, (x.p || 0) * 100))}%` }))])));
     }
     function meanings() {
-      const wrap = h('div', { class: 'meanings' }, h('h2', { class: 'h2', text: '입력하신 질환 확인' }),
-        h('p', { class: 'lead', text: '여러 질환으로 읽히는 입력이 있습니다. 의도한 질환을 골라 주세요.' }));
+      const wrap = h('div', { class: 'meanings' }, h('h2', { class: 'h2', text: '입력하신 질환 확인' }));
       for (const g of S.analysis.ambiguous) {
         const opts = g.readings.map((r) => ({ id: r.mondo, label: r.name || r.mondo, organs: r.organs || [], hpo: r.hpo || String(r.mondo || '').startsWith('HP:') }));
         opts.push({ id: null, label: '모름', organs: null });
@@ -949,7 +944,7 @@
   function stage4() {
     const pc = patientConds();
     if (S.first && !pc.some((c) => c.key === S.first)) S.first = null;
-    const opts = [{ id: null, label: '자동 (질환 중증도 순)', organs: null }].concat(pc.map((c) => ({ id: c.key, label: c.name, organs: c.organs })));
+    const opts = [{ id: null, label: 'Auto', organs: null }].concat(pc.map((c) => ({ id: c.key, label: c.name, organs: c.organs })));
     const preview = (id) => {
       const lit = {};
       for (const c of pc) for (const o of c.organs) lit[o] = 'on';
@@ -958,7 +953,7 @@
     };
     const list = radioList(opts, S.first, (id) => { S.first = id; save(); preview(id); },
       (o) => [h('span', { class: 'lbl', text: o.label }), o.organs ? strip(o.organs) : null], 's4-title', next);
-    const node = h('div', { class: 's4' }, h('h1', { class: 'title', id: 's4-title', text: '가장 걱정되는 질환' }), h('p', { class: 'lead', text: APP.first_text }), list);
+    const node = h('div', { class: 's4' }, h('h1', { class: 'title', id: 's4-title', text: '가장 걱정되는 질환' }), list);
     preview(S.first);
     setBar({ keys: [kbd('↑↓', '고르기'), kbd('PgUp', '이전')], button: { label: '다음', key: 'PgDn', act: next } });
     setTimeout(() => { if (S.step === 3) list.focusFirst(); }, 0);
@@ -980,8 +975,7 @@
     return h('span', { class: 'oc ' + (c.boxed ? 'b' : 'w') }, h('span', { class: 'mk2', text: c.boxed ? '!!' : '!' }), SHORT[c.o] || c.o, c.more ? h('span', { class: 'plus', text: '+' }) : null);
   }
   const legendNode = (cls) => h('div', { class: cls },
-    h('span', null, h('b', { class: 't-red', text: '!!' }), 'Boxed warning'), h('span', null, h('b', { class: 't-amber', text: '!' }), 'Warning'),
-    h('span', null, h('b', { text: '+' }), 'more organs'), h('span', null, h('b', { text: '?' }), 'needs a value not entered'));
+    h('span', null, h('b', { class: 't-red', text: '!!' }), 'Boxed warning'), h('span', null, h('b', { class: 't-amber', text: '!' }), 'Warning'));
   function resultSig() { return JSON.stringify([condList(), rawValues(), allChoice(), S.first]); }
 
   function stage5() {
@@ -1012,9 +1006,9 @@
       const prio = P.organ_priority || [];
       box.append(h('div', { class: 'ctx panel' },
         h('div', null, h('h2', { class: 'h2', text: 'Key values' }), keyList),
-        h('div', null, h('h2', { class: 'h2' }, 'Review order', h('span', { class: 'sub', text: '먼저 검토할 장기 순서, 위험도 순위 아님' })),
-          h('ul', null, prio.length ? prio.map(([l, organs]) => h('li', null, h('span', { class: 'lv', text: String(l) }),
-            organs.map((o) => h('span', { class: 'org' + (l > 1 ? ' l2' : ''), text: SHORT[o] || o })))) : h('li', { class: 'none', text: 'None specified' })))));
+        h('div', null, h('h2', { class: 'h2', text: 'Review order' }),
+          prio.length ? h('div', { class: 'tiers' }, prio.map(([l, organs], k) => [k ? h('span', { class: 'arr', 'aria-hidden': 'true', text: '→' }) : null,
+            h('span', { class: 'tier' + (l > 1 ? ' l2' : '') }, organs.map((o) => h('span', { class: 'org', text: SHORT[o] || o })))])) : h('ul', null, h('li', { class: 'none', text: 'None specified' })))));
       if ((P.unmapped || []).length) box.append(h('p', { class: 'unmapped', text: (P.estimated ? 'Unvalidated estimate: ' : 'Unmapped: ') + P.unmapped.join(', ') }));
 
       const grid = h('div', { class: 'grid', role: 'grid', 'aria-label': 'ADC', 'aria-rowcount': String(rows.length + 1) },
@@ -1132,9 +1126,9 @@
     drawerBody.scrollTop = 0;
     // 1 indication for the entered cancer, 2 label restriction, 3 warnings on the patient's organs, 4 warnings on other organs
     const cancers = [...new Set((shownPatient.cancers || []).map((c) => c.name))];
-    const verdict = !cancers.length ? { cls: 'dim', text: 'No cancer entered' }
-      : row.indicated === false ? { cls: 't-amber', text: `Not indicated for ${cancers.join(', ')}` } : { cls: 't-green', text: `Indicated for ${cancers.join(', ')}` };
-    drawerBody.append(section('Indication', h('p', { class: 'indv ' + verdict.cls, text: verdict.text }), d.indication ? h('p', { class: 'ind', text: d.indication }) : null));
+    const verdict = !cancers.length ? null
+      : row.indicated === false ? { cls: 't-amber', mark: '✕' } : { cls: 't-green', mark: '✓' };
+    drawerBody.append(section('Indication', verdict ? h('p', { class: 'indv ' + verdict.cls }, h('span', { class: 'im', text: verdict.mark }), cancers.join(', ')) : null, d.indication ? h('p', { class: 'ind', text: d.indication }) : null));
     const rs = d.reasons || [];
     drawerBody.append(section('Label restriction', h('div', { class: 'reasons' }, rs.length ? rs.map((r) => [
       h('span', { class: 'k', text: r.organ }),

@@ -119,10 +119,10 @@ def test_backspace_on_an_empty_box_takes_two_presses(monkeypatch):
     assert r[0] == {"heart_failure", "cirrhosis"}                               # another key in between: nothing taken off
 
 
-def test_the_start_screen_says_what_the_app_does(monkeypatch):
+def test_the_start_screen_shows_no_explanation(monkeypatch):
     import form
     r, texts = _conditions(monkeypatch, ["ESC"], [])
-    assert r == form.QUIT and "FDA 승인 ADC 15개를 경고가 적은 순서로 보여 줍니다" in texts[0]
+    assert r == form.QUIT and "FDA 승인" not in texts[0] and "Enter 추가" in texts[0]
 
 
 def test_the_first_screen_shows_no_organs(monkeypatch):

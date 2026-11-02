@@ -893,6 +893,8 @@ def _result_details(row, checks_, width):
     paint = lambda t, c: f"\033[{c}m{t}\033[0m" if c else t
     out = [paint(row["name"], "33;1")]
     ind = _indications().get(row.get("adc"))
+    if row.get("cancers"):                                                      # the entered cancer: ✓ approved for it, ✕ not
+        out.append(paint(("✓ " if row.get("indicated", True) else "✕ ") + ", ".join(row["cancers"]), "32;1" if row.get("indicated", True) else "33;1"))
     if ind: out.append(paint("  " + ind["indication"], "90"))                     # what it is approved for (label section 1)
     evidence = reason_rows(row)
     evidence = [reason for reason in evidence if reason[3] != "no_adjustment"] or evidence
@@ -980,8 +982,9 @@ def _result_context(rows, notes, width, values=None, selected=0, graphic=False, 
         grouped.setdefault(level, []).append(organ)
     if graphic:                                                # the result screen: one organ strip per level (green = that level's organs)
         import tui
-        priorities = [f"{level}  {tui.strip(AXES, organs)}" for level, organs in grouped.items()]
-    else: priorities = [f"{level}. {', '.join(ORGAN_SHORT[o] for o in organs)}" for level, organs in grouped.items()]
+        tiers = [tui.strip(AXES, organs) if k == 0 else "\033[32m" + " ".join(ORGAN_SHORT[o] for o in organs) + "\033[0m" for k, organs in enumerate(grouped.values())]
+        priorities = ["  \033[90m→\033[0m  ".join(tiers)] if tiers else []         # first tier bright, the later ones plain, in order
+    else: priorities = [" → ".join(", ".join(ORGAN_SHORT[o] for o in organs) for organs in grouped.values())] if grouped else []
     def block(title, items, empty):
         body = items[:3] + ([f"+ {len(items) - 3} more"] if len(items) > 3 else [])
         return [f"\033[33;1m{title}\033[0m"] + ["  " + text for text in body or [empty]]
@@ -1012,7 +1015,7 @@ def browse(rows, checks_=(), notes=(), labs=None, raw=None, scr=None, crumbs=Non
     values = {**(LB.derive(raw)[0] if raw else {}), **(labs or {})}
     return tui.browse("ADC 추천 결과", lambda w: _result_list(rows, w), [],
                       lambda i, w: _result_details(rows[i], checks_, w),
-                      footer="!! Boxed warning   ! Warning   + more organs   ? needs a value not entered",
+                      footer="!! Boxed warning   ! Warning",
                       context=lambda i, w: _result_context(rows, notes, w, values, i, graphic=True, raw=raw), scr=scr, crumbs=crumbs)
 
 
@@ -1047,7 +1050,7 @@ def render(rows, s, notes, checks_, detail=False, color=None, labs=None, raw=Non
     for line in _result_context(rows, notes, width, values, raw=raw): emit(line)
     emit()
     for line in _result_list(rows, width)[0]: emit(line)
-    emit(paint("!! Boxed warning   ! Warning   + more organs   ? needs a value not entered", "90"))
+    emit(paint("!! Boxed warning   ! Warning", "90"))
     actions = [(r, reason) for r in rows for reason in reason_rows(r) if reason[3] in ("reduce_dose", "contraindicated")]
     if actions:
         heading("Label actions")
@@ -1130,14 +1133,11 @@ def _tui_ok():
     return sys.stdin.isatty() and sys.stdout.isatty() and (os.name == "nt" or os.environ.get("TERM", "dumb") != "dumb")   # Windows sets no TERM
 
 
-FIRST_TEXT = "고른 질환의 장기에 경고가 있는 ADC를 아래로 내립니다. Avoid는 그대로 맨 아래입니다."
-
-
 def _ask_priority_pc(pc):
     """the one condition to weigh first (form.Form.first in the terminal screens); Enter = automatic, the severity order."""
     global PRIORITY, FIRST
     names = [c for c, _, _ in pc]; d = default_levels(pc); picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")]
-    print(f"\n가장 걱정되는 질환\n  {FIRST_TEXT}\n  0) 자동 (질환 중증도 순)")
+    print("\n가장 걱정되는 질환\n  0) Auto")
     for k, (c, organs) in enumerate(picks, 1): print(f"  {k}) {condition_name(c)}   {', '.join(ORGAN_SHORT[a] for a in sorted(organs, key=AXES.index))}")
     try: raw = input("  번호 (Enter = 0) > ").strip()
     except EOFError: raw = ""

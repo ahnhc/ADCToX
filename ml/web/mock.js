@@ -84,7 +84,6 @@ window.ADCTOX_MOCK = (function () {
           {"key": "ugt1a1", "label": "UGT1A1*28 homozygous", "unit": "y/n", "group": "Genotype", "kind": "yn", "range": null, "uln": null}
         ]
       },
-      "first_text": "고른 질환의 장기에 경고가 있는 ADC를 아래로 내립니다. Avoid는 그대로 맨 아래입니다.",
       "steps": ["질환", "검사 수치", "AI 장기 분석", "우선순위", "결과"]
     };
 

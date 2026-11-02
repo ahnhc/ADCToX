@@ -231,7 +231,7 @@ class App:
         except Exception:
             models = None
         kind = {"sex": "sex", "child_pugh": "child_pugh", "ugt1a1": "yn"}
-        rule = {}                                   # the organ flag a value is checked against (labs.FLAGS): the page says '기준 이내' when it is not met
+        rule = {}                                   # the organ flag a value is checked against (labs.FLAGS): the page marks ✓ when it is not met
         for k, _, _, why in LB.FLAGS: rule.setdefault(k, why)
         fields = [dict(key=k, label=label, unit=unit, group=g, kind=kind.get(k, "number"), range=list(LB.RANGE[k]) if k in LB.RANGE else None, uln=LB.ULN.get(k),
                        rule=rule.get(k)) for k, label, unit, g in LB.FIELDS]
@@ -239,7 +239,7 @@ class App:
                     organ_short=RC.ORGAN_SHORT, organ_en=RC.EN, organ_ko=RC.ORGAN_KO,
                     registry=[dict(id=i, label=r["label"], name=RC.condition_name(i), ko=RC.KO.get(i), mondo=r.get("mondo_id") or None,
                                    organs=[a for a in r["organ_axes"].split(";") if a]) for i, r in RC._reg.items()],
-                    labs=dict(groups=list(dict.fromkeys(f["group"] for f in fields)), fields=fields), first_text=RC.FIRST_TEXT, steps=form.STEPS)
+                    labs=dict(groups=list(dict.fromkeys(f["group"] for f in fields)), fields=fields), steps=form.STEPS)
 
     def suggest(self, q, picked=(), ai=False):
         """form.Form.conditions' lists: names (a cancer alias first), the words that are each a name, AI names on request, and
