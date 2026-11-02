@@ -353,6 +353,20 @@ def test_other_sites_pages_cannot_drive_the_api(server, monkeypatch):
     assert call(server, "GET", "/", headers={"Sec-Fetch-Site": "cross-site"})[0] == 200                  # a link to the page itself still opens it
 
 
+def test_adctox_port_fixes_the_port_and_says_so_when_it_is_taken(monkeypatch):
+    monkeypatch.delenv("ADCTOX_PORT", raising=False); assert webapp._port() == 0
+    monkeypatch.setenv("ADCTOX_PORT", " 8765 "); assert webapp._port() == 8765
+    for bad in ("abc", "0", "70000", "-1"):
+        monkeypatch.setenv("ADCTOX_PORT", bad)
+        with pytest.raises(SystemExit, match="ADCTOX_PORT"): webapp._port()
+    with socket.socket() as taken:
+        taken.bind(("127.0.0.1", 0)); taken.listen(); port = taken.getsockname()[1]
+        with pytest.raises(SystemExit, match=f"port {port} is in use"): webapp.make_server(RC, port)
+    s = webapp.make_server(RC, 0)
+    try: assert s.server_port > 0
+    finally: s.server_close()
+
+
 def test_an_ssh_tunnel_on_another_port_opens_the_page(server):
     """ssh -L 8080:127.0.0.1:<port> sends Host localhost:8080: the page and the API answer, another site's name does not"""
     tunnel = {"Host": "localhost:8080", "Origin": "http://localhost:8080", "Sec-Fetch-Site": "same-origin"}

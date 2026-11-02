@@ -132,6 +132,13 @@ irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 
 브라우저에서 같은 다섯 화면을 쓰려면 `adctox-web`(또는 `adctox --web`)을 실행합니다. 이 컴퓨터 안에서만 열리고(127.0.0.1) 서버에는 아무것도 남지 않습니다.
 
+화면이 없는 서버에서 쓸 때는 서버에서 포트를 정해 켜고, 내 컴퓨터에서 SSH 터널로 엽니다.
+
+```bash
+ADCTOX_NO_BROWSER=1 ADCTOX_PORT=8765 adctox-web          # 서버에서
+ssh -L 8765:127.0.0.1:8765 <사용자>@<서버>               # 내 컴퓨터에서, 그다음 http://localhost:8765
+```
+
 ```bash
 adctox --update-app      # 앱 업데이트
 adctox --update-models   # 모델 업데이트

@@ -552,16 +552,27 @@ def _loopback(host):
 
 def make_server(RC, port=0):
     app = App(RC)
-    server = _Server(("127.0.0.1", port), _handler(app))
+    try: server = _Server(("127.0.0.1", port), _handler(app))
+    except OSError as e:
+        if not port: raise
+        raise SystemExit(f"adctox --web: port {port} is in use (another ADCTOX web?). Close it or set another ADCTOX_PORT.") from e
     server.app = app; app.hosts = {f"127.0.0.1:{server.server_port}", f"localhost:{server.server_port}"}
     return server
+
+
+def _port():
+    """ADCTOX_PORT: a fixed port, so an SSH tunnel command can stay the same between starts; unset or empty, a free one"""
+    raw = os.environ.get("ADCTOX_PORT", "").strip()
+    if not raw: return 0
+    if not raw.isdigit() or not 1 <= int(raw) <= 65535: raise SystemExit(f"adctox --web: ADCTOX_PORT must be a port number (1 to 65535), not {raw!r}")
+    return int(raw)
 
 
 def serve(RC, open_browser=True, ready=None):
     """serve until Ctrl-C (or server.shutdown(); `ready` gets the server once it listens)"""
     import webbrowser, suggest as SG
     from adc_version import APP_VERSION
-    server = make_server(RC); url = f"http://127.0.0.1:{server.server_port}/"
+    server = make_server(RC, _port()); url = f"http://127.0.0.1:{server.server_port}/"
     threading.Thread(target=SG.index(RC).load_mondo, daemon=True).start()       # MONDO and KCD names for the search, as the first screen loads them
     print(f"ADCTOX {APP_VERSION}   {url}\nOpening it in the browser. Ctrl-C to quit", flush=True)
     if open_browser and os.environ.get("ADCTOX_NO_BROWSER") != "1":      # once serving: a browser that holds on until it exits (w3m, a BROWSER script) gets answers
