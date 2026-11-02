@@ -425,7 +425,7 @@
     closeDrawer(true);
     if (keepDrawer) S.drawer = reopen;
     S.step = n; S.reached = Math.max(S.reached, n); save();
-    layout.className = 'layout body-on st-' + n;      // the body map on every step (on a phone, not on step 1)
+    layout.className = 'layout' + (n ? ' body-on' : '') + ' st-' + n;      // the body map from step 2 on (the start screen is the search alone)
     if (n === 0) body.update({});
     renderCrumbs();
     clear(stageBox);

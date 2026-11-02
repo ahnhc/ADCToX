@@ -97,6 +97,7 @@ kbd {
 .wrap { max-width: 1400px; margin: 0 auto; padding: 30px 32px calc(var(--bar) + 40px); transition: padding 280ms var(--ease); }
 .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; transition: grid-template-columns 280ms var(--ease), gap 280ms var(--ease); }
 .layout.body-on { grid-template-columns: clamp(270px, 25vw, 352px) minmax(0, 1fr); }
+.layout.st-0 .side { display: none; }
 /* 1280 px and wider: the open drawer is a third column; the body map gives way first (to 200 px), the table keeps about 740 px */
 @media (min-width: 1280px) {
   :root { --dw: clamp(360px, 28vw, 480px); }

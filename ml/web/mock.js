@@ -84,7 +84,7 @@ window.ADCTOX_MOCK = (function () {
           {"key": "ugt1a1", "label": "UGT1A1*28 homozygous", "unit": "y/n", "group": "Genotype", "kind": "yn", "range": null, "uln": null}
         ]
       },
-      "steps": ["질환", "검사 수치", "AI 장기 분석", "우선순위", "결과"]
+      "steps": ["Conditions", "Labs", "Organs", "Priority", "Results"]
     };
 
   const RESULT = {
