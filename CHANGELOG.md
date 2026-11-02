@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.9: Label restriction as what the patient has and the rule it meets (Ubuntu, macOS and Windows)
+
+- **Label restriction in the ADC detail shows both sides**: under each organ and status, `Patient` (the entered condition or value that meets the rule, such as Heart failure or Bilirubin 1.67×ULN, or "LVEF not entered") and `Label` (the rule, as "Monitor with bilirubin >1.5 to 3×ULN" or "Not studied if LVEF < 50%"). The server sends the patient side with each row.
+- **Indication says it in words**: "Approved for" or "Not approved for" the entered cancer, then "All approved uses" as a list.
+- **Hover notes are a summary line and rows** (mark, meaning) instead of running text, for every dotted title.
+- **The Windows install check opens the browser page**: the page, both fonts and a search, then Edge draws it and keeps a screenshot.
+
 ## 0.6.8: Trial rates as dots under each warning, and the page behind an SSH tunnel (Ubuntu, macOS and Windows)
 
 - **Trial results sit under the label warning they measure**: 20 dots, one per 5 patients in 100, pink for the serious ones, and a line such as "6 in 100 had pneumonitis, 2 serious". An event about as common on the other treatment is grey and says "as on other treatment". The trial, both arms and their rates are on hover. The separate Trial results section, its bars and its scale are gone.
