@@ -13,6 +13,9 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
 
 HANGUL = re.compile("[가-힣]")
+# the page is English only (Korean input is still read): its step names and the analysis progress line
+STEPS = ["Conditions", "Labs", "Organs", "Priority", "Results"]
+STEP_TEXT = {"embedding": "Reading the conditions", "linking": "Reading the conditions", "judging": "Analysing organs", "inference": "Analysing organs"}
 TYPES = {".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
          ".svg": "image/svg+xml; charset=utf-8", ".json": "application/json; charset=utf-8", ".txt": "text/plain; charset=utf-8", ".woff2": "font/woff2"}
 BINARY = {".woff2"}             # kept base64 in the page dict (the one-file build stores it as JSON), sent as bytes
@@ -72,7 +75,7 @@ def _parse_raw(raw):
         try:
             x = LB.parse(k, ("y" if v else "n") if isinstance(v, bool) else str(v))
             if x is not None: out[k] = x
-        except ValueError as e: errors[k] = form._lab_error(fields[k], e)
+        except ValueError as e: errors[k] = _lab_error(fields[k], e)
     return out, errors
 
 
@@ -85,11 +88,18 @@ def _likely(axes, used, p):
     return [dict(organ=a, used=a in used, p=p.get(a, 0), text=pct(p.get(a, 0))) for a in top]
 
 
+def _lab_error(field, error):
+    """form._lab_error in English: 'Hb: enter 1–25 g/dL', 'Hb: enter a number'"""
+    _, label, unit, _ = field
+    if re.fullmatch(r"[\d.]+–[\d.]+", str(error)): return f"{label}: enter {error} {unit}".rstrip()
+    return f"{label}: enter a number" if HANGUL.search(str(error)) else f"{label}: enter {error}"
+
+
 def _report(RC, r, ko):
     """one row of the analysis table (form.Form._analysis_review): the input as shown, Read as, how, and the organ cells"""
     shown = RC.condition_name(r["condition"]) if r["source"] == "Registry" else r["condition"]
     picked = RC.CHOICE.get(r["condition"]) or ""
-    kr = bool(HANGUL.search(r["condition"]))
+    kr = False                                                  # Read as: the English name, whatever language was typed
     linked = r["source"].startswith("MONDO") or r["source"] == "Cancer"
     read = ((ko.get(r.get("mondo") or "") if kr else "") or r["name"]) if linked else ((ko.get(picked) if kr else "") or r["name"] or "")
     how = "MONDO" if linked else SOURCE.get(r["source"], r["source"])
@@ -173,7 +183,7 @@ def _detail(RC, row, checks_, notes, values, raw):
         keep = [x for x in re.split(r"(?<=\.)\s+(?=[A-Z])", note) if re.search(re.escape(mech["payload"]) + r"|microtubul|topoisomerase|DNA", x)][:2]
         payload = dict(line=RC.payload_line(mech), note=" ".join(keep) or None)
     return dict(indication=ind["indication"] if ind else None,
-                reasons=[dict(organ=o.capitalize(), domain=o, status=st, basis=b, code=c, sure=sure) for o, st, b, c, sure in evidence],
+                reasons=[dict(organ=RC.ORGAN_SHORT[RC.RS.DOMAIN_AXIS[o]] if o in RC.RS.DOMAIN_AXIS else o.capitalize(), domain=o, status=st, basis=b, code=c, sure=sure) for o, st, b, c, sure in evidence],
                 warnings=[dict(organ=a, mark=mark, text=RC.warning_names(row["organs"][a].get("headings", [])))
                           for mark, organs in (("!!", row.get("boxed", [])), ("!", row.get("warn", []))) for a in organs],
                 other_warnings=[dict(organ=c["organ"], mark=c["mark"], text=RC.warning_names(row["organs"][c["organ"]].get("headings", [])))
@@ -215,7 +225,7 @@ class App:
         conds = body.get("conditions")
         if not isinstance(conds, list) or not all(isinstance(c, str) for c in conds): raise _Error(400, "conditions: a list of registry ids and typed texts is expected")
         texts = list(dict.fromkeys(" ".join(c.split()) for c in conds if c.strip()))
-        if not texts: raise _Error(400, "질환을 하나 이상 넣어 주세요")
+        if not texts: raise _Error(400, "Add at least one condition")
         return [i for i in self.RC._reg if i in texts] + [c for c in texts if c not in self.RC._reg]
 
     def choice(self, body, conds):
@@ -243,17 +253,17 @@ class App:
                     organ_short=RC.ORGAN_SHORT, organ_en=RC.EN, organ_ko=RC.ORGAN_KO,
                     registry=[dict(id=i, label=r["label"], name=RC.condition_name(i), ko=RC.KO.get(i), mondo=r.get("mondo_id") or None,
                                    organs=[a for a in r["organ_axes"].split(";") if a]) for i, r in RC._reg.items()],
-                    labs=dict(groups=list(dict.fromkeys(f["group"] for f in fields)), fields=fields), steps=form.STEPS)
+                    labs=dict(groups=list(dict.fromkeys(f["group"] for f in fields)), fields=fields), steps=STEPS)
 
     def suggest(self, q, picked=(), ai=False):
         """form.Form.conditions' lists: names (a cancer alias first), the words that are each a name, AI names on request, and
         diseases from symptoms when the text reads as a sentence. A disease is listed once, and not when it is already picked."""
         import suggest as SG
-        RC = self.RC; text = q.strip(); ko_typed = bool(HANGUL.search(q)); have = set()
-        def names_of(s):                                       # Korean first only when Korean was typed
+        RC = self.RC; text = q.strip(); have = set()
+        def names_of(s):                                       # the English name, and no Korean second line (the page is English)
             a, b = s[2], (s[3] if s[3] and s[3] != s[2] else "")
-            if b and bool(HANGUL.search(b)) == ko_typed and bool(HANGUL.search(a)) != ko_typed: a, b = b, a
-            return a, b
+            if HANGUL.search(a) and b and not HANGUL.search(b): a, b = b, a
+            return a, ("" if HANGUL.search(b) else b)
         def keys(x):                                           # id, MONDO id, either name
             mondo = RC._reg[x[1]].get("mondo_id") if x[0] == "reg" and x[1] in RC._reg else x[1] if str(x[1]).startswith("MONDO:") else None
             k = {(x[0], str(x[1]))} | {("name", n) for n in (re.sub(r"\W", "", str(x[2]).lower()),) if n}
@@ -355,7 +365,7 @@ class App:
         self.stopping = True; self.queue.put(None)
         worker = self.worker
         if worker is None or not worker.is_alive(): return
-        if self.current is not None: print("분석을 마치는 중", file=sys.stderr, flush=True)
+        if self.current is not None: print("finishing the analysis", file=sys.stderr, flush=True)
         worker.join(wait)
         return worker.is_alive()
 
@@ -363,7 +373,7 @@ class App:
         """form.run step 2 in the worker: the analysis with its progress line, then the inputs that read as several diseases and
         those with no organ"""
         import form, suggest as SG
-        def progress(event): job.update(step=event, step_text=form.STEP_TEXT.get(event, job["step_text"]))
+        def progress(event): job.update(step=event, step_text=STEP_TEXT.get(event, job["step_text"]))
         self.current = job; job.update(started=time.monotonic(), usage=form._ProcessUsage()); job["state"] = "running"
         try:
             with self.state(choice) as RC:
@@ -401,7 +411,7 @@ class App:
             pc = RC.patient_conditions(conds, raw)
             picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")] if len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2 else []
             if first is not None:
-                if first not in dict(picks): raise _Error(400, "first: 우선순위 단계에서 고를 수 있는 질환이 아닙니다")
+                if first not in dict(picks): raise _Error(400, "first: not a condition the Priority step offers")
                 d = RC.default_levels(pc); RC.PRIORITY = {c: 0 if c == first else d[c] for c, _, _ in pc}; RC.FIRST = first
             rows, s, notes, ck = RC.recommend(conds, {}, raw)
             values = LB.derive(raw)[0] if raw else {}
@@ -523,7 +533,7 @@ def serve(RC, open_browser=True, ready=None):
     from adc_version import APP_VERSION
     server = make_server(RC); url = f"http://127.0.0.1:{server.server_port}/"
     threading.Thread(target=SG.index(RC).load_mondo, daemon=True).start()       # MONDO and KCD names for the search, as the first screen loads them
-    print(f"ADCTOX {APP_VERSION}   {url}\n브라우저에서 위 주소를 엽니다. 끝내려면 Ctrl-C", flush=True)
+    print(f"ADCTOX {APP_VERSION}   {url}\nOpening it in the browser. Ctrl-C to quit", flush=True)
     if open_browser and os.environ.get("ADCTOX_NO_BROWSER") != "1":      # once serving: a browser that holds on until it exits (w3m, a BROWSER script) gets answers
         timer = threading.Timer(0.3, webbrowser.open, args=(url,)); timer.daemon = True; timer.start()
     if ready: ready(server)

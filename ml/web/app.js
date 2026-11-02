@@ -68,6 +68,91 @@
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const kbd = (k, label) => h('span', null, h('kbd', { text: k }), label);
 
+  // ------------------------------------------------------------------ help: a note on dotted titles (hover or focus), one card per step
+  // on the first visit (remembered in this browser), and the ? guide in the header
+  const STEP_TIPS = [
+    'Type the patient\'s conditions, symptoms or cancer, in English or Korean. Press Enter to add each one, then PgDn.',
+    'Enter only the values you have; empty boxes are fine. A green box is within the label\'s limits, an amber box flags an organ.',
+    'The AI maps each condition to the organs it affects. Each bar is its confidence; amber marks the organs used.',
+    'Pick the condition to review first: its organs lead the Review order and the ranking. Auto orders the conditions by severity.',
+    'ADCs ranked for this patient. Click a row or press Enter for the label evidence. Hover a dotted title to see what it means.',
+  ];
+  const TIPS = {
+    'Key values': 'The patient\'s values the selected ADC\'s label looks at. ×ULN on a 0 to 3 scale (ticks at 1× and 1.5×), CLcr on 0 to 120 mL/min (ticks at 30, 60, 90).',
+    'Review order': 'Organs to check first, from the conditions and labs entered. Filled: first; outlined: next.',
+    'Label restriction': 'What the FDA label says about using this ADC with this patient\'s organ function, and the organ behind it. Bars: 1 Monitor, 2 Not studied, 3 Avoid; dashed: a value not entered could raise it.',
+    'Patient organs': 'Label warnings on organs where the patient already has a problem. !! boxed warning, ! warning, +N more (hover it).',
+    'Other': 'Label warnings on the patient\'s other organs.',
+    'Organs': 'The three most likely organs for each condition and the model\'s confidence. Amber: the organs used.',
+    'Read as': 'The disease concept the input was matched to, and where the match came from.',
+    'Indication': 'Whether the ADC is approved for the cancer entered (✓ or ✕), then everything it is approved for.',
+    "Warnings on the patient's organs": 'The label\'s boxed warnings (!!) and warnings (!) on the patient\'s affected organs.',
+    "Trial results on the patient's organs": 'Adverse event rates in the ADC\'s main trial, on the patient\'s organs. Amber: all grades; red: serious; grey: the comparator arm.',
+  };
+  const TIP_KEY = 'adctox.tips.v1';
+  let seen = {};
+  try { seen = JSON.parse(localStorage.getItem(TIP_KEY) || '{}') || {}; } catch (e) { seen = {}; }
+  const keepSeen = () => { try { localStorage.setItem(TIP_KEY, JSON.stringify(seen)); } catch (e) { /* the cards just show again */ } };
+  const tipBox = h('div', { class: 'tipbox', role: 'tooltip', id: 'tipbox', hidden: true });
+  function tipped(el, text) {             // a title with a note: dotted underline, the note on hover or focus
+    const t = text || TIPS[el.textContent];
+    if (!t) return el;
+    el.classList.add('tipped'); el.dataset.tip = t; el.tabIndex = 0; el.setAttribute('aria-describedby', 'tipbox');
+    return el;
+  }
+  function showTip(el) {
+    tipBox.textContent = el.dataset.tip; tipBox.hidden = false;
+    const r = el.getBoundingClientRect(), w = tipBox.offsetWidth, ht = tipBox.offsetHeight;
+    const x = Math.min(window.innerWidth - w - 12, Math.max(12, r.left - 8));
+    const y = r.bottom + 8 + ht > window.innerHeight - 8 ? r.top - ht - 8 : r.bottom + 8;
+    tipBox.style.left = x + 'px'; tipBox.style.top = y + 'px';
+  }
+  const hideTip = () => { tipBox.hidden = true; };
+  const tipOf = (e) => (e.target && e.target.closest ? e.target.closest('.tipped') : null);
+  document.addEventListener('mouseover', (e) => { const t = tipOf(e); if (t) showTip(t); else if (!tipBox.hidden && document.activeElement !== tipBox._f) hideTip(); });
+  document.addEventListener('focusin', (e) => { const t = tipOf(e); tipBox._f = t; if (t) showTip(t); else hideTip(); });
+  window.addEventListener('scroll', hideTip, true);
+
+  let card = null;
+  function closeCard() { if (card) { card.remove(); card = null; } }
+  function stepCard(n) {                  // the step's card, once; it never takes the focus from the step's own field
+    closeCard();
+    if (seen['s' + n] || seen.off || !STEP_TIPS[n]) return;
+    const done = () => { seen['s' + n] = 1; keepSeen(); closeCard(); };
+    card = h('div', { class: 'stepcard', role: 'note', 'aria-label': 'Tip' },
+      h('div', { class: 'sc-head' }, h('span', { class: 'sc-n', text: `${n + 1} / ${STEPS.length}` }), h('span', { class: 'sc-t', text: STEPS[n] })),
+      h('p', { text: STEP_TIPS[n] }),
+      h('div', { class: 'sc-row' },
+        h('button', { type: 'button', class: 'link', text: 'Hide all tips', onclick: () => { seen.off = 1; keepSeen(); closeCard(); } }),
+        h('button', { type: 'button', class: 'ok', text: 'Got it', onclick: done })));
+    document.body.append(card);
+  }
+  let guide = null;
+  function closeGuide() { if (guide) { guide.remove(); guide = null; } }
+  function openGuide() {
+    closeGuide(); closeCard();
+    guide = h('div', { class: 'guide-scrim', onclick: (e) => { if (e.target === guide) closeGuide(); } },
+      h('div', { class: 'guide', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
+        h('div', { class: 'g-head' }, h('h2', { id: 'g-title', text: 'How ADCTOX works' }), h('button', { type: 'button', class: 'x', 'aria-label': 'Close', text: '×', onclick: closeGuide })),
+        h('ol', { class: 'g-steps' }, STEPS.map((name, i) => h('li', null, h('b', { text: name }), h('span', { text: STEP_TIPS[i] })))),
+        h('h3', { text: 'Reading the results' }),
+        h('div', { class: 'g-keys' },
+          h('span', null, [['cyan', 1], ['amber', 2], ['red', 3]].map(([t, k]) => h('span', { class: 't-' + t }, levelNode(k, k)))), 'Label restriction: Monitor, Not studied, Avoid',
+          h('span', { class: 't-dim' }, levelNode(3, 1)), 'Dashed: a value not entered could raise the level',
+          h('span', null, h('b', { class: 't-red mono', text: '!!' })), 'Boxed warning on that organ',
+          h('span', null, h('b', { class: 't-amber mono', text: '!' })), 'Warning on that organ'),
+        h('h3', { text: 'Keys' }),
+        h('div', { class: 'g-keys' },
+          h('span', null, h('kbd', { text: 'PgDn' })), 'Next step', h('span', null, h('kbd', { text: 'PgUp' })), 'Previous step',
+          h('span', null, h('kbd', { text: '↑↓' })), 'Move in a list', h('span', null, h('kbd', { text: 'Enter' })), 'Add, choose, or open the evidence',
+          h('span', null, h('kbd', { text: 'Esc' })), 'Close'),
+        h('div', { class: 'g-foot' }, h('button', { type: 'button', class: 'link', text: 'Show the step tips again', onclick: () => { seen = {}; keepSeen(); closeGuide(); stepCard(S.step); } }),
+          h('button', { type: 'button', class: 'ok', text: 'Close', onclick: closeGuide }))));
+    document.body.append(guide);
+    guide.querySelector('.ok').focus();
+  }
+  const helpBtn = () => h('button', { type: 'button', class: 'help', 'aria-label': 'How it works', title: 'How it works', text: '?', onclick: openGuide });
+
   // ------------------------------------------------------------------ app data (GET /api/app)
   let APP = null, AX = [], SHORT = {}, REG = {}, REG_I = {}, FIELDS = [], STEPS = [];
   const TONE = { contraindicated: 'red', avoid: 'red', insufficient_data: 'amber', no_statement: 'amber', reduce_dose: 'cyan', monitor: 'cyan', no_adjustment: 'green' };
@@ -269,7 +354,7 @@
     document.title = 'ADCTOX';
     crumbsOl = h('ol');
     verEl = h('div', { class: 'ver', text: '' });
-    top = h('header', { class: 'top' }, h('div', { class: 'brand' }, h('span', { class: 'a', text: 'ADC' }), h('span', { class: 'b', text: 'TOX' })), h('nav', { class: 'crumbs', 'aria-label': '단계' }, crumbsOl), verEl);
+    top = h('header', { class: 'top' }, h('div', { class: 'brand' }, h('span', { class: 'a', text: 'ADC' }), h('span', { class: 'b', text: 'TOX' })), h('nav', { class: 'crumbs', 'aria-label': 'Steps' }, crumbsOl), h('div', { class: 'right' }, helpBtn(), verEl));
     stageBox = h('main', { class: 'stage' });
     body = buildBody();
     side = h('aside', { class: 'side', 'aria-label': 'Body map' }, body.el);
@@ -281,10 +366,10 @@
     bar = h('footer', { class: 'bar' }, barLeft, barKeys, barBtn);
     drawerTitle = h('h2', { id: 'dr-title' });
     drawerBody = h('div', { class: 'dr-body' });
-    const x = h('button', { class: 'x', type: 'button', 'aria-label': '닫기', text: '×', onclick: () => closeDrawer() });
+    const x = h('button', { class: 'x', type: 'button', 'aria-label': 'Close', text: '×', onclick: () => closeDrawer() });
     drawer = h('div', { class: 'drawer', role: 'dialog', 'aria-modal': 'false', 'aria-labelledby': 'dr-title', 'aria-hidden': 'true' },
       h('div', { class: 'dr-head' }, drawerTitle, x), drawerBody);
-    document.body.append(top, h('div', { class: 'shell' }, h('div', { class: 'wrap' }, layout)), bar, drawer);     // .shell makes room for the docked drawer
+    document.body.append(top, h('div', { class: 'shell' }, h('div', { class: 'wrap' }, layout)), bar, drawer, tipBox);     // .shell makes room for the docked drawer
   }
 
   function setBar(o) {
@@ -308,7 +393,7 @@
   }
   function summary(i) {
     if (i === 0) return condList().map(condName).join(', ');
-    if (i === 1) { const n = Object.keys(rawValues()).length; return n ? `${n}개 입력` : '입력 없음'; }
+    if (i === 1) { const n = Object.keys(rawValues()).length; return n ? `${n} entered` : 'None entered'; }
     if (i === 2) {
       const a = S.analysis; if (!a || a.state !== 'done') return '';
       const names = analysisOrgans().map((o) => SHORT[o]);
@@ -350,12 +435,13 @@
     stageBox.append(node);
     if (!still()) { void stageBox.offsetWidth; stageBox.classList.add('enter'); }
     window.scrollTo(0, 0);
+    hideTip(); stepCard(n);
   }
   let busy = false;                       // a step change waiting on the server: PgDn, PgUp and the bar button do nothing meanwhile
   async function next() {
     if (busy) return;
     if (S.step === 0) {
-      if (!S.conds.length) { stageNote('질환을 하나 이상 추가하세요'); return; }
+      if (!S.conds.length) { stageNote('Add at least one condition'); return; }
       go(1);
     } else if (S.step === 1) {
       busy = true; barBtn.setAttribute('aria-busy', 'true');
@@ -376,16 +462,16 @@
   // ================================================================== step 1: 질환
   function stage1() {
     const st = { q: '', listQ: null, pending: null, items: [], cur: -1, moved: false, armed: false, timer: 0, aiTimer: 0, busyTimer: 0, seq: 0, aiSeq: 0, fresh: -1, lastKey: 0 };
-    const chips = h('ul', { class: 'chips', 'aria-label': '선택한 질환' });
+    const chips = h('ul', { class: 'chips', 'aria-label': 'Selected conditions' });
     const input = h('input', {
-      type: 'text', role: 'combobox', 'aria-expanded': 'false', 'aria-controls': 'sugg', 'aria-autocomplete': 'list', 'aria-label': '질환',
-      placeholder: '질환, 증상, 암종', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
+      type: 'text', role: 'combobox', 'aria-expanded': 'false', 'aria-controls': 'sugg', 'aria-autocomplete': 'list', 'aria-label': 'Condition',
+      placeholder: 'Condition, symptom or cancer', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
     });
-    const list = h('ul', { class: 'sugg panel', id: 'sugg', role: 'listbox', 'aria-label': '추천', hidden: true });
+    const list = h('ul', { class: 'sugg panel', id: 'sugg', role: 'listbox', 'aria-label': 'Suggestions', hidden: true });
     const note = h('div', { class: 'note', role: 'status' });
     const status = h('div', { class: 'note busy', 'aria-live': 'polite' });       // the TUI's status line: a search still running, or failed
     stageNote = (t) => { note.textContent = t; };
-    const SYM_BUSY = '증상으로 질환 찾는 중 ...';
+    const SYM_BUSY = 'Finding conditions that match ...';
     // suggest: a text of 4 or more characters and 2 or more words that is not a list of names reads as a sentence (symptom search, no AI names)
     const sentence = (q, parts) => q.length >= 4 && q.split(/\s+/).length >= 2 && !(parts && parts.length);
 
@@ -402,9 +488,9 @@
     }
     function addChip(c) {
       const m = chipMondo(c);
-      if (S.conds.some((x) => (x.kind === c.kind && x.value === c.value) || x.label.toLowerCase() === c.label.toLowerCase() || (m && chipMondo(x) === m))) return `이미 선택됨: ${c.label}`;
+      if (S.conds.some((x) => (x.kind === c.kind && x.value === c.value) || x.label.toLowerCase() === c.label.toLowerCase() || (m && chipMondo(x) === m))) return `Already added: ${c.label}`;
       S.conds.push(c); st.fresh = S.conds.length - 1; save();
-      return `추가: ${c.label}`;
+      return `Added: ${c.label}`;
     }
     function build(q, r) {                // form.Form.conditions' rows: the split, names, AI names, then diseases from symptoms, then the text as typed
       const have = chipKeys(), seen = new Set(), out = [];
@@ -417,7 +503,7 @@
       for (const s of r.names || []) if (fresh(s)) out.push({ kind: 's', s });
       for (const s of r.ai || []) if (fresh(s)) out.push({ kind: 'ai', s });
       const sym = (r.symptoms || []).filter(fresh);
-      if (sym.length) { out.push({ kind: 'head', text: '증상이나 문장으로 찾은 질환' }); sym.forEach((s) => out.push({ kind: 'sym', s })); }
+      if (sym.length) { out.push({ kind: 'head', text: 'Conditions that match the description' }); sym.forEach((s) => out.push({ kind: 'sym', s })); }
       out.push({ kind: 'raw', text: q });
       return out;
     }
@@ -426,15 +512,15 @@
     function renderChips() {
       clear(chips);
       S.conds.forEach((c, i) => {
-        const x = h('button', { class: 'x', type: 'button', 'aria-label': `${c.label} 빼기`, text: '×' });
-        x.addEventListener('click', () => { S.conds.splice(i, 1); save(); st.armed = false; note.textContent = `뺌: ${c.label}`; renderChips(); input.focus(); });
+        const x = h('button', { class: 'x', type: 'button', 'aria-label': `Remove ${c.label}`, text: '×' });
+        x.addEventListener('click', () => { S.conds.splice(i, 1); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; renderChips(); input.focus(); });
         chips.append(h('li', { class: 'chip' + (i === st.fresh && !still() ? ' fresh' : '') + (st.armed && i === S.conds.length - 1 ? ' armed' : '') }, h('span', { class: 'lbl', text: c.label }), x));
       });
       st.fresh = -1;
       chips.hidden = !S.conds.length;
       setBar({
-        keys: [kbd('Enter', '추가'), kbd('↑↓', '선택'), S.conds.length ? kbd('× 또는 Backspace', '빼기') : null],
-        button: { label: '다음', key: 'PgDn', act: next },
+        keys: [kbd('Enter', 'add'), kbd('↑↓', 'choose'), S.conds.length ? kbd('Backspace', 'remove') : null],
+        button: { label: 'Next', key: 'PgDn', act: next },
       });
     }
     function renderList() {
@@ -447,8 +533,8 @@
         if (it.kind === 'head') { list.append(h('li', { class: 'head', role: 'presentation', text: it.text })); return; }
         const on = i === st.cur;
         let left;
-        if (it.kind === 'split') left = h('span', { class: 'nm main', text: '각각 따로 추가: ' + it.words.join(', ') });
-        else if (it.kind === 'raw') left = h('span', { class: 'nm main' }, h('span', { class: 'pre', text: '+ 입력한 그대로 추가:' }), it.text);
+        if (it.kind === 'split') left = h('span', { class: 'nm main', text: 'Add each: ' + it.words.join(', ') });
+        else if (it.kind === 'raw') left = h('span', { class: 'nm main' }, h('span', { class: 'pre', text: '+ Add as typed:' }), it.text);
         else {                            // names only (the organs come with the analysis); a symptom row says what it matched
           const tail = it.kind === 'sym' ? it.s.why || '' : it.s.sub || '';
           left = h('span', { class: 'nm' }, h('span', { class: 'main', text: it.s.text }), tail ? h('span', { class: 'sub', text: tail }) : null,
@@ -487,7 +573,7 @@
       try { r = await pending; } catch (e) { r = { q, names: [], parts: [], ai: [], symptoms: [], symptoms_error: null }; }
       if (seq !== st.seq) return;
       clearTimeout(st.busyTimer);
-      status.textContent = r.symptoms_error ? '증상 검색 실패: ' + r.symptoms_error : '';
+      status.textContent = r.symptoms_error ? 'Symptom search failed: ' + r.symptoms_error : '';
       st.items = build(q, r); st.listQ = q;
       st.cur = st.items.findIndex((x, i) => selectable(i)); st.moved = false;
       renderList();
@@ -499,7 +585,7 @@
     async function searchAI(q, seq) {
       if (seq !== st.seq) return;
       const aseq = ++st.aiSeq;
-      st.busyTimer = setTimeout(() => { if (aseq === st.aiSeq) status.textContent = 'AI 추천 찾는 중 ...'; }, 250);
+      st.busyTimer = setTimeout(() => { if (aseq === st.aiSeq) status.textContent = 'Finding AI suggestions ...'; }, 250);
       let r = null;
       try { r = await API.suggest(q, pickedList(), true); } catch (e) { r = null; }
       if (aseq !== st.aiSeq) return;      // a newer key or search: this answer is stale
@@ -552,7 +638,7 @@
       } else if (e.key === 'Enter') {
         e.preventDefault();
         const q = st.q.trim();
-        if (!q) { note.textContent = S.conds.length ? '다음 단계는 PgDn' : '질환, 증상, 암종'; return; }
+        if (!q) { note.textContent = S.conds.length ? 'PgDn for the next step' : 'Condition, symptom or cancer'; return; }
         if (st.listQ !== q) enter(q);       // the list for q has not come yet
         else if (st.cur >= 0 && selectable(st.cur)) pick();
         else { note.textContent = addChip({ kind: 'text', value: q, label: q }); reset(); }      // no row chosen: the text as typed
@@ -561,8 +647,8 @@
       } else if (e.key === 'Backspace' && !input.value) {
         if (!S.conds.length) return;
         e.preventDefault();
-        if (st.armed) { const c = S.conds.pop(); save(); st.armed = false; note.textContent = `뺌: ${c.label}`; }
-        else { st.armed = true; note.textContent = `한 번 더 누르면 뺌: ${S.conds[S.conds.length - 1].label}`; }
+        if (st.armed) { const c = S.conds.pop(); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; }
+        else { st.armed = true; note.textContent = `Press again to remove: ${S.conds[S.conds.length - 1].label}`; }
         renderChips();
       }
     });
@@ -698,12 +784,12 @@
       const parts = derivedLine();
       setBar({
         left: labsErr ? h('span', { class: 'err-line', text: labsErr }) : parts.map((t) => h('span', { class: 'info', text: t })),
-        keys: [kbd('↑↓', '이동'), kbd('PgUp', '이전')],
-        button: { label: '다음', key: 'PgDn', act: next },
+        keys: [kbd('↑↓', 'move'), kbd('PgUp', 'back')],
+        button: { label: 'Next', key: 'PgDn', act: next },
       });
     }
     labUI = refresh;
-    const node = h('div', { class: 's2' }, h('h1', { class: 'title', text: '검사 수치' }), h('div', { class: 'groups' }, groups));
+    const node = h('div', { class: 's2' }, h('h1', { class: 'title', text: 'Labs' }), h('div', { class: 'groups' }, groups));
     refresh();
     labsNow();
     setTimeout(() => { const first = order.find((o) => !String(S.raw[o.key] || '').trim()) || order[0]; if (first && S.step === 1) first.focus({ preventScroll: true }); }, 0);
@@ -750,7 +836,7 @@
 
   function stage3() {
     const box = h('div');
-    const node = h('div', { class: 's3' }, h('h1', { class: 'title', text: 'AI 장기 분석' }), box);
+    const node = h('div', { class: 's3' }, h('h1', { class: 'title', text: 'Organs' }), box);
     const run = ++analysisRun;
     const sig = analysisSig();
     let ticker = 0, ui = null, rerun = false;
@@ -761,17 +847,17 @@
     function running() {
       clear(box);
       ui = { st: h('span', { class: 'st' }), dots: h('span', { class: 'dots', 'aria-hidden': 'true' }), secs: h('span', { class: 'secs' }), usage: h('div', { class: 'usage' }) };
-      ui.track = h('div', { class: 'track', role: 'progressbar', 'aria-label': 'AI 장기 분석' }, h('span'));
+      ui.track = h('div', { class: 'track', role: 'progressbar', 'aria-label': 'Organ analysis' }, h('span'));
       box.append(h('div', { class: 'run' }, ui.track,
         h('div', { class: 'pline' }, h('span', null, ui.st, ui.dots), ui.secs),
         h('div', { class: 'who', text: condList().map(condName).join(', ') }), ui.usage));
-      setBar({ keys: [kbd('PgUp', '이전')], button: { label: '다음', key: 'PgDn', disabled: true, act: next } });
+      setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Next', key: 'PgDn', disabled: true, act: next } });
     }
     function failed(msg) {
       clearInterval(ticker);
       clear(box);
-      box.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: 'AI 분석을 완료하지 못했습니다' }), h('p', { class: 'msg', text: msg })));
-      setBar({ keys: [kbd('PgUp', '이전')], button: { label: '질환 입력으로 돌아가기', act: () => go(0) } });
+      box.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: 'The AI analysis did not finish' }), h('p', { class: 'msg', text: msg })));
+      setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Back to conditions', act: () => go(0) } });
     }
     function finish() {
       clearInterval(ticker);
@@ -810,7 +896,7 @@
           if (rerun) { A.state = 'error'; A.error = 'unknown analysis job'; save(); failed(A.error); return; }
           rerun = true; start(); return;
         }
-        w.text = r.state === 'queued' ? '분석 대기 중' : r.step_text || (w.queued ? '' : w.text);
+        w.text = r.state === 'queued' ? 'Waiting in queue' : r.step_text || (w.queued ? '' : w.text);
         w.queued = r.state === 'queued';
         if (typeof r.elapsed === 'number') { w.base = r.elapsed; w.at = performance.now(); }
         if (r.usage) w.usage = r.usage;
@@ -833,12 +919,12 @@
       clear(box);
       const A = S.analysis, reps = A.reports || [];
       const ambText = new Set((A.ambiguous || []).map((a) => a.text));
-      if (reps.some((r) => r.fallback)) box.append(h('p', { class: 'warnline', text: 'Organ judge 오류, MONDO linker로 대체' }));
-      const table = h('div', { class: 'review', role: 'table', 'aria-label': 'AI 장기 분석' },
+      if (reps.some((r) => r.fallback)) box.append(h('p', { class: 'warnline', text: 'Organ judge failed; the MONDO linker was used' }));
+      const table = h('div', { class: 'review', role: 'table', 'aria-label': 'Organ analysis' },
         h('div', { class: 'rv-head', role: 'row' },
           h('span', { role: 'columnheader', text: 'Input' }),
-          h('span', { role: 'columnheader' }, 'Organs'),
-          h('span', { role: 'columnheader', text: 'Read as' })));
+          h('span', { role: 'columnheader' }, tipped(h('span', { text: 'Organs' }))),
+          h('span', { role: 'columnheader' }, tipped(h('span', { text: 'Read as' })))));
       reps.forEach((r, i) => {
         const cell = h('span', { role: 'cell' }, organCell(r));
         (cells[r.condition] = cells[r.condition] || []).push({ cell, r });
@@ -850,7 +936,7 @@
       });
       box.append(table);
       if ((A.ambiguous || []).length) box.append(meanings());
-      setBar({ keys: [kbd('PgUp', '이전')], button: { label: '다음', key: 'PgDn', act: next } });
+      setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Next', key: 'PgDn', act: next } });
       lightAnalysis(cascade);
     }
     function organCell(r) {               // form.likely: the judge's three most probable organs (and a used one outside them), as the server wrote them
@@ -869,10 +955,10 @@
           h('span', { class: 'bar1', title: x.text || null, 'aria-label': x.text || null }, h('b', { class: x.used ? 'used' : null, style: `width:${Math.max(2, Math.min(100, (x.p || 0) * 100))}%` }))])));
     }
     function meanings() {
-      const wrap = h('div', { class: 'meanings' }, h('h2', { class: 'h2', text: '입력하신 질환 확인' }));
+      const wrap = h('div', { class: 'meanings' }, h('h2', { class: 'h2', text: 'Which one did you mean?' }));
       for (const g of S.analysis.ambiguous) {
         const opts = g.readings.map((r) => ({ id: r.mondo, label: r.name || r.mondo, organs: r.organs || [], hpo: r.hpo || String(r.mondo || '').startsWith('HP:') }));
-        opts.push({ id: null, label: '모름', organs: null });
+        opts.push({ id: null, label: 'Not sure', organs: null });
         const qid = 'mq-' + g.text.replace(/\W/g, '_');
         const changed = (id) => {
           S.meanings[g.text] = id; save();
@@ -881,8 +967,8 @@
         };
         wrap.append(h('div', { class: 'mgroup' }, h('p', { class: 'q', text: g.text, id: qid }),
           radioList(opts, S.meanings[g.text] === undefined ? opts[0].id : S.meanings[g.text], changed,
-            (o) => [h('span', { class: 'lbl' }, o.label, o.hpo ? h('span', { class: 'tag', text: '증상' }) : null),
-              o.organs === null ? null : o.organs.length ? strip(o.organs) : h('span', { class: 'dim', text: '13개 장기 밖' })],
+            (o) => [h('span', { class: 'lbl' }, o.label, o.hpo ? h('span', { class: 'tag', text: 'Symptom' }) : null),
+              o.organs === null ? null : o.organs.length ? strip(o.organs) : h('span', { class: 'dim', text: 'None of the 13 organs' })],
             qid)));
       }
       return wrap;
@@ -952,9 +1038,9 @@
     };
     const list = radioList(opts, S.first, (id) => { S.first = id; save(); preview(id); },
       (o) => [h('span', { class: 'lbl', text: o.label }), o.organs ? strip(o.organs) : null], 's4-title', next);
-    const node = h('div', { class: 's4' }, h('h1', { class: 'title', id: 's4-title', text: '가장 걱정되는 질환' }), list);
+    const node = h('div', { class: 's4' }, h('h1', { class: 'title', id: 's4-title', text: 'Which condition should be reviewed first?' }), list);
     preview(S.first);
-    setBar({ keys: [kbd('↑↓', '고르기'), kbd('PgUp', '이전')], button: { label: '다음', key: 'PgDn', act: next } });
+    setBar({ keys: [kbd('↑↓', 'choose'), kbd('PgUp', 'back')], button: { label: 'Next', key: 'PgDn', act: next } });
     setTimeout(() => { if (S.step === 3) list.focusFirst(); }, 0);
     return node;
   }
@@ -1006,15 +1092,15 @@
     const node = h('div', { class: 's5' }, box);
     let alive = true;
     cleanup = () => { alive = false; resultKeys = null; };
-    setBar({ left: legendNode('legend'), keys: [kbd('↑↓', 'ADC 고르기'), kbd('Enter', '상세 근거 보기'), kbd('PgUp', '이전 단계')], button: { label: '새 환자로 시작', quiet: true, act: restart } });
+    setBar({ left: legendNode('legend'), keys: [kbd('↑↓', 'select'), kbd('Enter', 'evidence'), kbd('PgUp', 'back')], button: { label: 'New patient', quiet: true, act: restart } });
     const sig = resultSig();
     if (S.result && S.result.sig === sig) draw(S.result.data);
     else {
-      const wait = setTimeout(() => { if (alive && !box.firstChild) box.append(h('div', { class: 'run' }, h('div', { class: 'track', role: 'progressbar', 'aria-label': '결과' }, h('span')))); }, 250);
+      const wait = setTimeout(() => { if (alive && !box.firstChild) box.append(h('div', { class: 'run' }, h('div', { class: 'track', role: 'progressbar', 'aria-label': 'Results' }, h('span')))); }, 250);
       const lab = (S.labs && S.labs.raw) || {};
       API.recommend({ conditions: condList(), raw: lab, choice: allChoice(), first: S.first })
         .then((data) => { clearTimeout(wait); if (!alive) return; S.result = { sig, data }; save(); draw(data, true); })
-        .catch((e) => { clearTimeout(wait); if (!alive) return; clear(box); box.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: '결과' }), h('p', { class: 'msg', text: e.message }))); });
+        .catch((e) => { clearTimeout(wait); if (!alive) return; clear(box); box.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: 'Results' }), h('p', { class: 'msg', text: e.message }))); });
     }
     function draw(res, fresh) {
       clear(box);
@@ -1028,8 +1114,8 @@
       };
       const prio = P.organ_priority || [];
       box.append(h('div', { class: 'ctx panel' },
-        h('div', null, h('h2', { class: 'h2', text: 'Key values' }), keyList),
-        h('div', null, h('h2', { class: 'h2', text: 'Review order' }),
+        h('div', null, tipped(h('h2', { class: 'h2', text: 'Key values' })), keyList),
+        h('div', null, tipped(h('h2', { class: 'h2', text: 'Review order' })),
           prio.length ? h('div', { class: 'tiers' }, prio.map(([l, organs], k) => [k ? h('span', { class: 'arr', 'aria-hidden': 'true', text: '→' }) : null,
             h('span', { class: 'tier' + (l > 1 ? ' l2' : '') }, organs.map((o) => h('span', { class: 'org', text: SHORT[o] || o })))])) : h('ul', null, h('li', { class: 'none', text: 'None specified' })))));
       if ((P.unmapped || []).length) box.append(h('p', { class: 'unmapped', text: (P.estimated ? 'Unvalidated estimate: ' : 'Unmapped: ') + P.unmapped.join(', ') }));
@@ -1037,8 +1123,8 @@
       const grid = h('div', { class: 'grid', role: 'grid', 'aria-label': 'ADC', 'aria-rowcount': String(rows.length + 1) },
         h('div', { class: 'grid-h', role: 'row' },
           h('span', { class: 'rk', role: 'columnheader', text: '#' }), h('span', { role: 'columnheader', text: 'ADC' }),
-          h('span', { role: 'columnheader', text: 'Label restriction' }), h('span', { class: 'po', role: 'columnheader', text: 'Patient organs' }),
-          h('span', { role: 'columnheader', text: 'Other' })));
+          h('span', { role: 'columnheader' }, tipped(h('span', { text: 'Label restriction' }))), h('span', { class: 'po', role: 'columnheader' }, tipped(h('span', { text: 'Patient organs' }))),
+          h('span', { role: 'columnheader' }, tipped(h('span', { text: 'Other' })))));
       const trs = [];
       let prevRank = null;
       rows.forEach((row, i) => {
@@ -1139,7 +1225,7 @@
     docked(false);
     if (inside) returnFocus();
   }
-  function section(title, ...kids) { return h('section', { class: 'dsec' }, title ? h('h3', { class: 'h2', text: title }) : null, kids); }
+  function section(title, ...kids) { return h('section', { class: 'dsec' }, title ? tipped(h('h3', { class: 'h2', text: title })) : null, kids); }
   function fillDrawer(row) {
     if (!row) return;
     const d = row.detail || {};
@@ -1191,7 +1277,9 @@
     if (e.altKey || e.ctrlKey || e.metaKey) return;
     if (e.key === 'PageDown') { e.preventDefault(); next(); }
     else if (e.key === 'PageUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'Escape' && guide) { e.preventDefault(); closeGuide(); }
     else if (e.key === 'Escape' && S.drawer) { e.preventDefault(); closeDrawer(); }
+    else if (e.key === 'Escape' && card) { e.preventDefault(); closeCard(); }
     else if (S.step === 4 && resultKeys && !e.defaultPrevented && ['ArrowDown', 'ArrowUp', 'Home', 'End', 'Enter', ' '].includes(e.key)) {
       const t = e.target;                // keys that land on the page itself (not a field, button or the drawer) work the ADC list
       const page = t === document.body || t === document.documentElement || (stageBox.contains(t) && !t.closest('input, textarea, select, button, [role="radio"], a'));
@@ -1213,7 +1301,7 @@
     body.names(SHORT);
     (APP.registry || []).forEach((r, i) => { REG[r.id] = r; REG_I[r.id] = i; });
     FIELDS = (APP.labs && APP.labs.fields) || [];
-    STEPS = APP.steps || ['질환', '검사 수치', 'AI 장기 분석', '우선순위', '결과'];
+    STEPS = APP.steps || ['Conditions', 'Labs', 'Organs', 'Priority', 'Results'];
     verEl.textContent = APP.version || '';
     if (APP.models) verEl.title = 'models ' + APP.models;
 

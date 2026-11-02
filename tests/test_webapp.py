@@ -74,7 +74,7 @@ def test_app_lists_the_axes_the_registry_and_the_lab_fields(server):
     assert f["creatinine"] == dict(key="creatinine", label="Creatinine", unit="mg/dL", group="Kidney", kind="number", range=[0.05, 30], uln=None, rule=None)
     assert f["ast"]["rule"] == "AST > 3 x ULN (CTCAE G2)" and f["hb"]["rule"].startswith("Hb < 10") and f["age"]["rule"] is None
     assert f["bilirubin"]["uln"] == 1.2 and (f["sex"]["kind"], f["child_pugh"]["kind"], f["ugt1a1"]["kind"]) == ("sex", "child_pugh", "yn")
-    assert d["steps"] == ["질환", "검사 수치", "AI 장기 분석", "우선순위", "결과"]  and "first_text" not in d
+    assert d["steps"] == ["Conditions", "Labs", "Organs", "Priority", "Results"] and "first_text" not in d
 
 
 def test_suggestions_are_the_first_screens_names_and_symptom_diseases(server, monkeypatch):
@@ -84,19 +84,19 @@ def test_suggestions_are_the_first_screens_names_and_symptom_diseases(server, mo
     found = [s[1] for s in SG.names(RC, "cirr")]; mondo = RC._reg["cirrhosis"]["mondo_id"]
     assert mondo in found and [x["pick"]["choice"] or x["pick"]["condition"] for x in d["names"]] == [v for v in found if v != mondo]   # suggest's order, a disease once
     cirr = next(x for x in d["names"] if x["id"] == "cirrhosis")
-    assert cirr == dict(text="Cirrhosis", sub="간경변", id="cirrhosis", mondo=RC._reg["cirrhosis"]["mondo_id"], ko="간경변", organs=["hepatic"],
+    assert cirr == dict(text="Cirrhosis", sub="", id="cirrhosis", mondo=RC._reg["cirrhosis"]["mondo_id"], ko="간경변", organs=["hepatic"],
                         kind="registry", cancer=False, why=None, pick=dict(condition="cirrhosis", choice=None))
     assert "cirrhosis" not in [x["id"] for x in call(server, "GET", "/api/suggest?q=cirr&picked=cirrhosis")[1]["names"]]    # picked: not offered again
     ko = call(server, "GET", "/api/suggest?q=" + quote("간경"))[1]["names"]
-    assert ko[0]["text"] == "간경변" and ko[0]["sub"] == "Cirrhosis"                                                       # Korean typed: Korean first
+    assert ko[0]["text"] == "Cirrhosis" and ko[0]["sub"] == "" and ko[0]["ko"] == "간경변"                                  # Korean typed: the page still shows English
     monkeypatch.setattr(RC, "HAS_LEARNED", False)                                                                        # n-grams only: no model
     q = "숨이 차고 다리가 부어요"
     d = call(server, "GET", "/api/suggest?q=" + quote(q))[1]
     assert d["names"] == [] and d["symptoms"] and all(x["kind"] == "symptom" and x["why"] for x in d["symptoms"])
     assert [x["pick"]["choice"] or x["pick"]["condition"] for x in d["symptoms"]] == [s[1] for s, _ in SG.symptoms(RC, q, semantic=False)]
-    assert "심부전" in [x["text"] for x in d["symptoms"]]
+    assert "Heart failure" in [x["text"] for x in d["symptoms"]] and "심부전" in [x["ko"] for x in d["symptoms"]]
     her2 = call(server, "GET", "/api/suggest?q=" + quote("HER2 양성 유방암"))[1]["names"][0]                               # the cancer alias row first
-    assert her2["pick"] == dict(condition="HER2 양성 유방암", choice="MONDO:0006244") and her2["cancer"]
+    assert her2["pick"] == dict(condition="HER2 positive breast carcinoma", choice="MONDO:0006244") and her2["cancer"]
 
 
 def test_the_search_reads_the_old_index_or_the_new_one_never_half(tmp_path, monkeypatch):
@@ -119,7 +119,7 @@ def test_lab_values_are_parsed_flagged_and_derived_as_the_lab_screen_does(server
     raw = {"hb": "8", "platelet": "abc", "anc": "0", "bilirubin": 2.0, "age": 68, "sex": "여", "weight": 55, "creatinine": "1.4", "ugt1a1": True}
     status, d = call(server, "POST", "/api/labs", {"raw": raw})
     assert status == 200 and d["raw"] == {"hb": 8.0, "bilirubin": 2.0, "age": 68.0, "sex": "F", "weight": 55.0, "creatinine": 1.4, "ugt1a1": True}
-    assert d["errors"] == {"platelet": "Platelet: 숫자를 입력하세요", "anc": "ANC: 0.01–100 x10³/µL 사이로 입력하세요"}
+    assert d["errors"] == {"platelet": "Platelet: enter a number", "anc": "ANC: enter 0.01–100 x10³/µL"}
     assert d["flags"] == [{"key": "hb", "organ": "haematologic", "why": "Hb < 10 g/dL (CTCAE anaemia G2)"},
                           {"key": "bilirubin", "organ": "hepatic", "why": "bilirubin > 1.5 x ULN (CTCAE G2)"}]
     assert d["derived"] | {"shown": None} == dict(crcl=LB.cockcroft_gault(68, 55, 1.4, "F"), crcl_source="Cockcroft-Gault", bili_xuln=LB.derive(d["raw"])[0]["bili"],
@@ -143,7 +143,7 @@ def test_the_analysis_runs_in_a_job_and_reports_what_the_analysis_screen_shows(s
         assert status == 200
         job = finished(server, d["job"])
     finally: RC._ANALYSES.clear(); RC._REG_P.clear()
-    assert job["state"] == "done" and job["step"] == "done" and job["step_text"] == "장기 분석 중" and job["error"] is None
+    assert job["state"] == "done" and job["step"] == "done" and job["step_text"] == "Analysing organs" and job["error"] is None
     assert job["elapsed"] >= 0 and job["usage"].startswith("AI process   CPU ") and job["ambiguous"] == [] and job["unresolved"] == []
     (r,) = job["reports"]
     assert r["source"] == "Registry" and r["shown"] == "Cirrhosis" and r["organs"] == ["hepatic"] and r["p"] == p and r["how"] == "Registry"
@@ -167,7 +167,7 @@ def test_a_second_analysis_waits_its_turn(server, monkeypatch):
     jb = call(server, "GET", f"/api/analyze/{b['job']}")[1]
     assert (jb["state"], jb["step"], jb["step_text"], jb["elapsed"], jb["conditions"]) == ("queued", "", "", 0.0, ["copd"])
     ja = call(server, "GET", f"/api/analyze/{a}")[1]
-    assert (ja["state"], ja["step"], ja["step_text"]) == ("running", "judging", "장기 분석 중")
+    assert (ja["state"], ja["step"], ja["step_text"]) == ("running", "judging", "Analysing organs")
     gate.set()
     assert finished(server, a)["state"] == finished(server, b["job"])["state"] == "done" and calls == [["cirrhosis"], ["copd"]]
 
@@ -234,9 +234,10 @@ def test_read_as_and_how_are_the_analysis_screens(monkeypatch):
     ko = {"MONDO:0001627": "치매"}
     text = _review_frame(monkeypatch, reports, ko)
     out = [webapp._report(RC, r, ko) for r in reports]
-    assert [(x["read_as"], x["how"]) for x in out] == [("", "Registry"), ("", "MONDO (record)"), ("attention deficit hyperactivity disorder", "MONDO (label)"),
+    assert [(x["read_as"], x["how"]) for x in out] == [("", "Registry"), ("dementia", "MONDO (record)"), ("attention deficit hyperactivity disorder", "MONDO (label)"),
                                                        ("Dyspnea", "Chosen"), ("", "Not understood"), ("Glaucoma", "Similar registry condition (linker)")]
     for x in out:                                                                   # each row of the terminal table, word for word
+        if re.search("[가-힣]", x["shown"]): continue                                 # Korean typed: the page reads it in English, the terminal in Korean
         row = next(ln for ln in text.splitlines() if ln.strip().lstrip("› ").startswith(x["shown"][:20]))
         assert re.search(re.escape(((x["read_as"] + "  ") if x["read_as"] else "") + x["how"]) + r"(\s|$)", row), (x, row)
         if x["tag"]: assert x["tag"] in text
@@ -322,7 +323,7 @@ def test_first_reorders_the_rows_as_the_priority_step_does(server, monkeypatch):
         status, bad = call(server, "POST", "/api/recommend", HER2 | {"first": first})
         assert status == 400 and bad["error"], first
     status, bad = call(server, "POST", "/api/recommend", HER2 | {"raw": {"hb": "80"}})
-    assert status == 400 and bad["errors"] == {"hb": "Hb: 1–25 g/dL 사이로 입력하세요"}
+    assert status == 400 and bad["errors"] == {"hb": "Hb: enter 1–25 g/dL"}
 
 
 def test_page_files_are_served_to_this_computer_only(server, monkeypatch, tmp_path):
@@ -390,7 +391,7 @@ def test_ctrl_c_during_an_analysis_lets_it_finish_and_exits_cleanly(tmp_path):
     finally:
         if p.poll() is None: p.kill()
     assert p.returncode == 0 and "analysis finished" in out and "serve returned" in out, (p.returncode, out, err[-800:])
-    assert "분석을 마치는 중" in err and "Traceback" not in err
+    assert "finishing the analysis" in err and "Traceback" not in err
 
 
 def test_the_one_file_build_serves_the_page_from_memory(tmp_path):
