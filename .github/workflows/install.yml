@@ -45,3 +45,26 @@ jobs:
           & "$app\python\python.exe" -I "$app\launcher.py" --self-test | Tee-Object out.txt
           if (-not (Select-String -Path out.txt -Pattern "ADC" -Quiet)) { throw "no recommendation table" }
           if (-not (Test-Path (Join-Path $env:LOCALAPPDATA 'adctox\bin\adctox.cmd'))) { throw "adctox command missing" }
+      - name: Open the browser page
+        shell: pwsh
+        run: |
+          $app = Join-Path $env:LOCALAPPDATA 'adctox\app'
+          $env:ADCTOX_NO_BROWSER = '1'
+          $p = Start-Process -FilePath "$app\python\python.exe" -ArgumentList '-I', "$app\launcher.py", '--web' -RedirectStandardOutput web.out -RedirectStandardError web.err -PassThru -NoNewWindow
+          $url = $null
+          for ($i = 0; $i -lt 90 -and -not $url; $i++) {
+            Start-Sleep 2
+            $m = Select-String -Path web.out, web.err -Pattern 'http://127\.0\.0\.1:\d+' -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($m) { $url = $m.Matches[0].Value }
+            if ($p.HasExited) { break }
+          }
+          Get-Content web.out, web.err -ErrorAction SilentlyContinue
+          if (-not $url) { throw "the web server printed no address (exit: $($p.HasExited) $($p.ExitCode))" }
+          foreach ($path in '/', '/static/app.css', '/static/app.js', '/static/Cafe24Decobox.ttf', '/static/PretendardVariable.woff2') {
+            $r = Invoke-WebRequest -UseBasicParsing "$url$path"
+            "$path $($r.StatusCode) $($r.Headers['Content-Type']) $($r.RawContentLength)"
+          }
+          $r = Invoke-WebRequest -UseBasicParsing "$url/api/suggest?q=cirrhosis"
+          "/api/suggest $($r.StatusCode) $($r.Content.Substring(0, [Math]::Min(200, $r.Content.Length)))"
+          if ($r.Content -notmatch 'irrhosis') { throw "no suggestion for cirrhosis" }
+          Stop-Process -Id $p.Id -Force
