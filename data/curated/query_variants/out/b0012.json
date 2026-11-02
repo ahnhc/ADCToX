@@ -1,0 +1,280 @@
+{
+ "batch": 12,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "items": [
+  {
+   "id": "MONDO:0002275",
+   "query": "generalised atherosclerosis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002278",
+   "query": "non-cancerous colon growth",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002342",
+   "query": "cartilage softening",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002367",
+   "query": "renal ca",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002367",
+   "query": "renal cancer",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym substitution (renal/kidney), not spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002513",
+   "query": "benign kidney mass",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002513",
+   "query": "benign renal mass",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "standard clinical wording, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002529",
+   "query": "skin SCC",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002660",
+   "query": "blepharochalosis",
+   "category": "typo",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002776",
+   "query": "outer ear disease",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003004",
+   "query": "macular degen",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003004",
+   "query": "degeneration of the macula",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003394",
+   "query": "tooth nerve problem",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003432",
+   "query": "crossed eyes",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003432",
+   "query": "strab",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003900",
+   "query": "CTD",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "CTD fits connective tissue disorder and MCTD; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004038",
+   "query": "underdeveloped tooth enamel",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004170",
+   "query": "episcleritis, nodular",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004235",
+   "query": "infected diverticula",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004522",
+   "query": "infection of the abdominal lining",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits peritonitis, infectious and septic peritonitis about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004570",
+   "query": "twisted bowel",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004570",
+   "query": "bowel volvulus",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004609",
+   "query": "HSV infection",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004609",
+   "query": "herpes simplex infection",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0002278",
+   "query": "benign tumor of the colon",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

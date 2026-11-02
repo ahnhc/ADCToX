@@ -1,0 +1,315 @@
+{
+ "batch": 17,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0001815",
+   "query": "extrapyramidal symptoms",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002152",
+   "query": "squint that comes and goes",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002152",
+   "query": "intermittent tropia",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'intermittent tropia' not real shorthand; ambiguous between exotropia and squint",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002172",
+   "query": "eustachian tube infection",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A, F, and E about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002172",
+   "query": "eustachian tube inflammation",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits A and F; not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002174",
+   "query": "ERM",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002174",
+   "query": "wrinkled retina",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002174",
+   "query": "epiretinal membrane",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "full medical name, not a variant of the candidate name",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002423",
+   "query": "tumor where the colon meets the rectum",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A, B, D rectosigmoid candidates equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002884",
+   "query": "nail problems",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003232",
+   "query": "pancreas inflammation from drinking",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003232",
+   "query": "alcohol-induced pancreatitis",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003397",
+   "query": "gum hypertrophy",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A and D about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004634",
+   "query": "vein problems",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004828",
+   "query": "lower urinary tract stone",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004843",
+   "query": "involuntary eye movements",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004845",
+   "query": "recurrent mouth ulcers",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005073",
+   "query": "beauty mark",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005073",
+   "query": "melanocytic naevus",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005099",
+   "query": "SAH",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005099",
+   "query": "bleeding around the brain",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "could be subarachnoid or intracerebral hemorrhage; vague",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005160",
+   "query": "bulge in the main artery",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "main artery could be thoracic or abdominal aorta",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005160",
+   "query": "aneurysm of the aorta",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005262",
+   "query": "cyst in the brain or spinal cord",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005293",
+   "query": "feet with no arch",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005293",
+   "query": "pes planus",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0001815",
+   "query": "EPS",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0003397",
+   "query": "gingival enlargement",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0004845",
+   "query": "recurrent aphthous stomatitis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

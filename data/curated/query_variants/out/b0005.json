@@ -1,0 +1,302 @@
+{
+ "batch": 5,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "items": [
+  {
+   "id": "MONDO:0005904",
+   "query": "inflammation of the sac around the heart",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005904",
+   "query": "pericardial inflammation",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "word-order/form variant of pericarditis, acceptable",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005906",
+   "query": "PTA",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005906",
+   "query": "abscess behind the tonsil",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005965",
+   "query": "narrowing of the spinal canal",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005965",
+   "query": "narrow spinal canal",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005976",
+   "query": "lues",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006004",
+   "query": "runny nose not caused by allergies",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits vasomotor rhinitis but also nonspecific; ambiguous with rhinitis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006515",
+   "query": "sudden inflammation of the pancreas",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006515",
+   "query": "acute panc",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006670",
+   "query": "meningitis caused by bacteria",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits F and E (gram-negative is a subset); F is more likely but generic",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006670",
+   "query": "bact meningitis",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007452",
+   "query": "HNF4A MODY",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene-based name, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008420",
+   "query": "senile wart",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008420",
+   "query": "seb keratosis",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008420",
+   "query": "seborrhoeic keratosis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009831",
+   "query": "panc ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A, C and D about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009831",
+   "query": "pancreatic carcinoma",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A and C about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011284",
+   "query": "astigmitsm",
+   "category": "typo",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015687",
+   "query": "chronic eosinophilic leukaemia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017376",
+   "query": "ReA",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017376",
+   "query": "arthritis after an infection",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits reactive, infective and bacterial arthritis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019015",
+   "query": "omphalocoele",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019783",
+   "query": "NVG",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020572",
+   "query": "burning pain after a nerve injury",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020572",
+   "query": "complex regional pain syndrome type II",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0006592",
+   "query": "parapsoriasis",
+   "category": "typo",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

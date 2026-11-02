@@ -12,13 +12,29 @@
 
 작업 A의 범주:
 
-| 범주 | 뜻 | 개념당 | 예 |
-|---|---|---|---|
-| `lay` | 환자나 가족이 쓰는 일상 표현 | 0~2 | "bleeder disease", "cone-shaped cornea" |
-| `abbrev` | 실제로 쓰는 약어 | 0~2 | "HCM", "FL" |
-| `shorthand` | 진료 기록의 축약 | 0~2 | "pl eff", "follicular NHL" |
-| `variant` | 철자, 어순, 인명, 영국식/미국식 표기 | 0~2 | "tic douloureux", "polycystic ovarian syndrome" |
-| `typo` | 급하게 칠 때 나는 오타 | 2~3 | "carpel tunnel syndrome", "mulitple myeloma" |
+| 범주 | 뜻 | 개념당 (b0004부터) | b0000~b0003 | 예 |
+|---|---|---|---|---|
+| `lay` | 환자나 가족이 쓰는 일상 표현 | 0~3 | 0~2 | "bleeder disease", "cone-shaped cornea" |
+| `abbrev` | 실제로 쓰는 약어 | 0~3 | 0~2 | "HCM", "FL" |
+| `shorthand` | 진료 기록의 축약 | 0~3 | 0~2 | "pl eff", "follicular NHL" |
+| `variant` | 철자, 어순, 인명, 영국식/미국식 표기 | 0~2 | 0~2 | "tic douloureux", "polycystic ovarian syndrome" |
+| `typo` | 급하게 칠 때 나는 오타 | 0~1, 다른 항목이 없을 때만 | 2~3 | "carpel tunnel syndrome", "mulitple myeloma" |
+
+**b0004부터 바뀐 것 (2026-11-02).**
+- 워커: `claude-sonnet-4-6` 호출을 4090_1의 Qwen(`qwen3.8-flash-next-iq3_s`)으로 보낸다. b0003부터 적용했다(`QV_WORKER_BACKEND=qwen`, 기본값).
+  - 4090_4에서는 8080 포트에 닿지 않아, 스크립트가 실행 중에만 ssh 터널(`127.0.0.1:18080`)을 연다.
+  - 결과 파일의 `worker` 칸과 `runs.jsonl`의 `backend` 칸으로 구분한다.
+- 오타 비중을 줄였다. b0000~b0003의 통과 표현 356개를 x2ts7에 넣어 보니 장기 완전 일치 비율이 범주마다 이랬다.
+  - 오타 84%
+  - 일상 표현 75%
+  - 약어 46%
+
+  오타는 이미 대부분 맞고, 남은 오류는 약어와 일상 표현에 있다. 결과 파일의 `guide` 칸에 GUIDE.md 해시를 남긴다.
+- Qwen 호출은 effort를 medium으로 둔다(`CLAUDE_CODE_EFFORT_LEVEL`). Strata는 effort를 생각 길이로 바꾸는데, 더 높이면 32k 출력 한도까지 생각만 하다 끝났다. 작성은 묶음당 약 80초로 줄었다.
+- **b0014부터 VERIFY.md:** 일반 질환과 그 하위 형태가 함께 후보일 때, 하위 형태를 말하지 않는 질문은 일반 질환을 고르게 했다.
+  - b0004~b0013에서는 "AAA", "hep C", "low BP" 같은 표현이 familial이나 acute 하위 개념 때문에 `none`으로 떨어졌다. 탈락 89개 중 66개가 이 경우였다.
+  - 통과율은 b0009~b0013 평균 67%에서 b0014~b0018 평균 79%로 올랐다.
+  - 결과 파일의 `verify_guide` 칸에 VERIFY.md 해시를 남긴다. b0004~b0013의 탈락은 예전 기준으로 판정된 것이다.
 
 ## 작업 A 절차
 
@@ -28,7 +44,7 @@
    - 순서: 질환 프로필 790개 중 대상인 445개를 먼저 하고(사람들이 가장 많이 치는 질환), 그다음은 외부 어휘(ICD, MeSH 등)에 많이 실린 개념 순이다.
    - 묶음: 20개념. 개념마다 이름, 동의어, 관련 동의어, 정의(400자), 상위 개념, 형제 개념 6개를 준다.
    - 검증 후보: 개념마다 상위 개념 1개, 형제 2개, 이름이 가장 가까운 개념 4개 중 최대 5개를 미리 정해 둔다(문자 n-gram TF-IDF).
-2. **작성** (워커: **Sonnet 4.6**, `claude-sonnet-4-6`)
+2. **작성** (워커: **Sonnet 4.6**, `claude-sonnet-4-6`; b0003부터 이 이름의 호출이 4090_1의 Qwen으로 간다)
    - 호출마다 빈 임시 폴더에서 새 Claude Code 세션을 연다. 도구, MCP, 사용자 설정과 지시문은 모두 끈다.
    - 지시문은 [GUIDE.md](../../data/curated/query_variants/GUIDE.md) 하나다. 규칙은 이렇다.
      - 그 개념만 가리켜야 한다(상위나 형제 개념에도 똑같이 맞으면 쓰지 않는다).

@@ -11,11 +11,16 @@ Each disease comes with: `id`, `name`, `synonyms` (already known; do not repeat 
 
 | category | what it is | how many per disease | good | bad |
 |---|---|---|---|---|
-| `lay` | everyday words a patient or family member would use | 0 to 2 | "bleeder disease" (haemophilia), "sugar diabetes" | "ear tumor" for benign middle ear neoplasm (fits many diseases) |
-| `abbrev` | an abbreviation or acronym that clinicians really use for this disease | 0 to 2 | "CKD", "DLBCL", "HCM" | an invented acronym ("BNEM"); a full name labelled as abbreviation |
-| `shorthand` | clipped clinical shorthand from notes and handovers | 0 to 2 | "pl eff" (pleural effusion), "hep B", "afib" | anything you have not seen used |
+| `lay` | everyday words a patient or family member would use | 0 to 3 | "bleeder disease" (haemophilia), "sugar diabetes" | "ear tumor" for benign middle ear neoplasm (fits many diseases) |
+| `abbrev` | an abbreviation or acronym that clinicians really use for this disease | 0 to 3 | "CKD", "DLBCL", "HCM" | an invented acronym ("BNEM"); a full name labelled as abbreviation |
+| `shorthand` | clipped clinical shorthand from notes and handovers | 0 to 3 | "pl eff" (pleural effusion), "hep B", "afib" | anything you have not seen used |
 | `variant` | spelling, word-order, eponym or British/American forms not in the synonyms | 0 to 2 | "oesophagitis", "Hodgkin's disease", "anaemia, iron deficiency" | a synonym already listed (case-insensitive) |
-| `typo` | a misspelling a hurried typist really makes, still recognisable | 2 to 3 | "haemophelia A", "pnuemonia", "leukaemia" with a dropped letter | random letter noise; more than two errors in a short word |
+| `typo` | a misspelling a hurried typist really makes, still recognisable | 0 to 1 | "haemophelia A", "pnuemonia" | random letter noise; more than one error; a typo for a disease that already has other items |
+
+**Where the effort goes.** `lay`, `abbrev` and `shorthand` are the point of this task: the search engine already copes with
+most misspellings, but not with everyday words or with the abbreviations and shorthand clinicians type. Consider those three
+for every disease first. Write a `typo` only when the disease has no `lay`, `abbrev`, `shorthand` or `variant` item,
+and only for a word people really misspell.
 
 ## Rules
 
@@ -24,8 +29,8 @@ Each disease comes with: `id`, `name`, `synonyms` (already known; do not repeat 
    `siblings` and `parents` lists for this.
 2. **Real usage only.** For `abbrev` and `shorthand`, write only forms you are confident are in real clinical use for this
    disease. When unsure, write nothing. Zero items in a category is normal and expected for rare diseases.
-3. **Rare and genetic diseases.** Most will only have `typo` and maybe `variant` items. Do not invent everyday words for
-   diseases that patients would not name in everyday words.
+3. **Rare and genetic diseases.** Most will only have a `variant` or a single `typo`, and some will have nothing. Do not
+   invent everyday words for diseases that patients would not name in everyday words.
 4. **No repeats.** Do not repeat the name, a synonym, or another item of the same disease (ignore case, spaces, punctuation).
 5. **English only.** Up to 120 characters; usually 2 to 40.
 6. Do not explain. Do not add organ, drug or treatment information.
@@ -38,8 +43,8 @@ One JSON object, nothing else:
 {"items": [
   {"id": "MONDO:0005300", "query": "CKD", "category": "abbrev"},
   {"id": "MONDO:0005300", "query": "kidney failure that keeps getting worse", "category": "lay"},
-  {"id": "MONDO:0005300", "query": "chronic kidny disease", "category": "typo"}
+  {"id": "MONDO:0005300", "query": "chronic kidney dz", "category": "shorthand"}
 ]}
 ```
 
-Every disease of the batch must have at least two `typo` items.
+A disease with no item you are confident about gets no items.

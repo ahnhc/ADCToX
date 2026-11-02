@@ -1,0 +1,315 @@
+{
+ "batch": 10,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "items": [
+  {
+   "id": "MONDO:0020076",
+   "query": "myeloprolif neoplasm",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020124",
+   "query": "neuromuscular junction disorder",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020124",
+   "query": "NMJ disorder",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020600",
+   "query": "sore throat and trouble swallowing",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits pharyngitis, acute pharyngitis, strep throat, laryngitis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021063",
+   "query": "colon ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits malignant colon neoplasm and colonic neoplasm; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0022096",
+   "query": "PG",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "PG ambiguous: pyogenic granuloma, pregnancy, pyoderma gangrenosum; too vague",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0022096",
+   "query": "bleeding lump on the skin",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits pyogenic granuloma and hemangioma equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024318",
+   "query": "viral CNS infection",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024574",
+   "query": "Willebrand disease",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024574",
+   "query": "von Willebrand factor deficiency",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "not a spelling variant; it is a rephrasing/synonym",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024644",
+   "query": "myocardial ischaemia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024644",
+   "query": "poor blood supply to the heart muscle",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043537",
+   "query": "suicide headache",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043537",
+   "query": "cluster HA",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits cluster headache syndrome and familial form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0043765",
+   "query": "presbyacusis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043765",
+   "query": "hearing loss from getting older",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044983",
+   "query": "fatty lump under the skin",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0850231",
+   "query": "EN",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0850231",
+   "query": "painful red lumps on the shins",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1030008",
+   "query": "MR",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "MR could be mitral regurgitation or insufficiency; candidates overlap",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1030008",
+   "query": "mitral regurg",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits mitral insufficiency and congenital forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1030008",
+   "query": "leaky mitral valve",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits mitral insufficiency and congenital forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000608",
+   "query": "familial juvenile hyperuricaemic nephropathy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000748",
+   "query": "infection of the bone behind the ear",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001031",
+   "query": "ear infection with pus",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits suppurative otitis media and purulent acute form",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0021063",
+   "query": "cancer of the large bowel",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0043537",
+   "query": "Horton's headache",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1030008",
+   "query": "mitral regurgitation",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0001031",
+   "query": "AOM",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0001031",
+   "query": "acute otitis media",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

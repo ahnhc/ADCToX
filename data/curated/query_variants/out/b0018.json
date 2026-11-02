@@ -1,0 +1,354 @@
+{
+ "batch": 18,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0005354",
+   "query": "chronic hep C",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005354",
+   "query": "long term hep C",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005354",
+   "query": "chronic hepatitis C infection",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "plain full name, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005466",
+   "query": "sleeping too much",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005466",
+   "query": "oversleeping",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005473",
+   "query": "TMJ",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both A and C equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005473",
+   "query": "TMJ disorder",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005473",
+   "query": "jaw joint problem",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005473",
+   "query": "temporomandibular joint dysfunction",
+   "category": "variant",
+   "pick": "A",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005515",
+   "query": "mouth cancer",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005515",
+   "query": "mouth ca",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005642",
+   "query": "itchy eyes from allergies",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005804",
+   "query": "high prolactin level",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006031",
+   "query": "chronic sinus infection",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "plain lay wording, not clipped clinical shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006031",
+   "query": "sinus infection that won't go away",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006274",
+   "query": "vulvar LSIL",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "LSIL is an acronym, so abbrev rather than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006555",
+   "query": "granulomatous dermititis",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007720",
+   "query": "bilateral inguinal hernia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008208",
+   "query": "familial recurrent patellar dislocation",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008288",
+   "query": "Baker's cyst",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008288",
+   "query": "Baker cyst",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "eponym without possessive is a variant, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008288",
+   "query": "cyst behind the knee",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009763",
+   "query": "OHS",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009763",
+   "query": "Pickwickian syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009763",
+   "query": "breathing problems from severe obesity",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010528",
+   "query": "loss of smell",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010528",
+   "query": "can't smell anything",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010793",
+   "query": "chronic tubulointerstitial nephritis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010793",
+   "query": "chronic TIN",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0005354",
+   "query": "CHC",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005515",
+   "query": "oral cancer",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0006031",
+   "query": "CRS",
+   "category": "abbrev",
+   "drop": "eval or held text"
+  },
+  {
+   "id": "MONDO:0006105",
+   "query": "benign tumor of conjunctiva",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

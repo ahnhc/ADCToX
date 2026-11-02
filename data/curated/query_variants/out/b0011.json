@@ -1,0 +1,304 @@
+{
+ "batch": 11,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "items": [
+  {
+   "id": "MONDO:0001212",
+   "query": "fluid in the middle ear",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001212",
+   "query": "glue ear",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001212",
+   "query": "otitis media, nonsuppurative",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001251",
+   "query": "apical periodontitis, chronic",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001252",
+   "query": "toxic multinodular goiter",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001252",
+   "query": "toxic MNG",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001252",
+   "query": "overactive thyroid with multiple lumps",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001292",
+   "query": "autonomic dysfunction",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Full-word synonym, not clipped shorthand; better variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0001475",
+   "query": "low ANC",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001475",
+   "query": "low infection-fighting blood cells",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits neutropenia and agranulocytosis; may mean leukopenia",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0001672",
+   "query": "bronchial ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits bronchus cancer and bronchial neoplasm equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0001868",
+   "query": "PACG",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001905",
+   "query": "biceps tenosynovitis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001905",
+   "query": "inflammation around the biceps tendon",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002021",
+   "query": "gingival disease",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002043",
+   "query": "eyelid that turns outward",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002043",
+   "query": "outturned lower eyelid",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'outturned' is stilted; people say eyelid turning out",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002078",
+   "query": "hole in the heart wall",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002089",
+   "query": "eye stroke",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "could be artery or vein occlusion",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002089",
+   "query": "blocked blood vessel in the back of the eye",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002169",
+   "query": "rectal adeno",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "adeno could mean adenoma or adenocarcinoma",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002186",
+   "query": "sinus infection in the cheek",
+   "category": "lay",
+   "pick": "A",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002209",
+   "query": "bone spur on the heel",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002271",
+   "query": "colon adeno",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "adeno fits colon adenoma and adenocarcinoma",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0001292",
+   "query": "dysautonomia",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0001475",
+   "query": "neutropaenia",
+   "category": "variant",
+   "drop": "eval or held text"
+  },
+  {
+   "id": "MONDO:0001672",
+   "query": "bronchogenic carcinoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0001868",
+   "query": "primary angle closure glaucoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0002135",
+   "query": "optic neuropathy",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

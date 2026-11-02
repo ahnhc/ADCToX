@@ -10,6 +10,11 @@ For every query, decide:
 
 - `pick`: the letter of the candidate that a clinician reading only this query would take it to mean. If two or more
   candidates fit about equally, or none fits, write `"none"`. Do not guess: an ambiguous query must get `"none"`.
+  **General and specific forms.** When the candidates include a general disease and narrower forms of it (for example
+  "abdominal aortic aneurysm" and "familial abdominal aortic aneurysm", or "hepatitis C" and "acute hepatitis C"), a query
+  that says nothing about the narrower form means the general disease: pick the general one ("AAA", "hep C"). This is not
+  ambiguity. Two different diseases at the same level ("artery occlusion" and "vein occlusion", "adenoma" and
+  "adenocarcinoma") still get `"none"`.
 - `realistic`: `true` only if real people actually type this. For an abbreviation or shorthand, it must be a form in real
   clinical use for that disease, not an invented acronym. For a typo, it must be a plausible slip that is still recognisable.
 - `category_ok`: `true` if the stated category fits:

@@ -7,3 +7,53 @@
 {"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "sec": 220.6, "cost_usd": 0.312624, "in_tok": 3, "out_tok": 18159, "cache_read": 0, "t": "2026-11-02 14:13:43"}
 {"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "sec": 28.3, "cost_usd": 0.101792, "in_tok": 2, "out_tok": 4464, "cache_read": 0, "t": "2026-11-02 14:14:12"}
 {"step": "done", "batch": "b0002.json", "n": 80, "accepted": 78, "dropped": 3, "t": "2026-11-02 14:14:12"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 474.8, "cost_usd": null, "in_tok": 18360, "out_tok": 47158, "cache_read": 0, "t": "2026-11-02 14:32:39"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 36.3, "cost_usd": 0.122618, "in_tok": 2, "out_tok": 6185, "cache_read": 0, "t": "2026-11-02 14:33:16"}
+{"step": "done", "batch": "b0003.json", "n": 107, "accepted": 95, "dropped": 4, "t": "2026-11-02 14:33:16"}
+{"step": "fail", "batch": "b0004.json", "error": "error: API Error: Claude's response exceeded the 32000 output token maximum. To configure this behavior, set the CLAUDE_CODE_MAX_OUTPUT_TOKENS environment variable.", "sleep_min": 15, "t": "2026-11-02 14:48:11"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 78.5, "cost_usd": null, "in_tok": 5258, "out_tok": 3823, "cache_read": 0, "t": "2026-11-02 14:53:02"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 6.9, "cost_usd": 0.049122, "in_tok": 2, "out_tok": 883, "cache_read": 0, "t": "2026-11-02 14:53:09"}
+{"step": "done", "batch": "b0004.json", "n": 24, "accepted": 20, "dropped": 3, "t": "2026-11-02 14:53:09"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 89.3, "cost_usd": null, "in_tok": 5757, "out_tok": 4615, "cache_read": 0, "t": "2026-11-02 14:54:38"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 9.3, "cost_usd": 0.04983, "in_tok": 2, "out_tok": 1003, "cache_read": 0, "t": "2026-11-02 14:54:47"}
+{"step": "done", "batch": "b0005.json", "n": 26, "accepted": 20, "dropped": 1, "t": "2026-11-02 14:54:47"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 90.6, "cost_usd": null, "in_tok": 5143, "out_tok": 4456, "cache_read": 0, "t": "2026-11-02 14:56:18"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 15.4, "cost_usd": 0.060354, "in_tok": 2, "out_tok": 2333, "cache_read": 0, "t": "2026-11-02 14:56:33"}
+{"step": "done", "batch": "b0006.json", "n": 32, "accepted": 31, "dropped": 1, "t": "2026-11-02 14:56:33"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 89.0, "cost_usd": null, "in_tok": 5653, "out_tok": 4898, "cache_read": 0, "t": "2026-11-02 14:58:02"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 8.4, "cost_usd": 0.054442000000000004, "in_tok": 2, "out_tok": 1205, "cache_read": 0, "t": "2026-11-02 14:58:11"}
+{"step": "done", "batch": "b0007.json", "n": 30, "accepted": 18, "dropped": 3, "t": "2026-11-02 14:58:11"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 85.9, "cost_usd": null, "in_tok": 5785, "out_tok": 4397, "cache_read": 0, "t": "2026-11-02 14:59:37"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 10.3, "cost_usd": 0.060618, "in_tok": 2, "out_tok": 1411, "cache_read": 0, "t": "2026-11-02 14:59:47"}
+{"step": "done", "batch": "b0008.json", "n": 32, "accepted": 15, "dropped": 2, "t": "2026-11-02 14:59:47"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 112.4, "cost_usd": null, "in_tok": 6299, "out_tok": 6119, "cache_read": 0, "t": "2026-11-02 15:01:39"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 10.6, "cost_usd": 0.064854, "in_tok": 2, "out_tok": 1573, "cache_read": 0, "t": "2026-11-02 15:01:50"}
+{"step": "done", "batch": "b0009.json", "n": 42, "accepted": 36, "dropped": 3, "t": "2026-11-02 15:01:50"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 82.8, "cost_usd": null, "in_tok": 6094, "out_tok": 4365, "cache_read": 0, "t": "2026-11-02 15:03:13"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 9.2, "cost_usd": 0.050248, "in_tok": 2, "out_tok": 1070, "cache_read": 0, "t": "2026-11-02 15:03:22"}
+{"step": "done", "batch": "b0010.json", "n": 25, "accepted": 15, "dropped": 5, "t": "2026-11-02 15:03:22"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 72.9, "cost_usd": null, "in_tok": 5133, "out_tok": 3663, "cache_read": 0, "t": "2026-11-02 15:04:35"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 18.2, "cost_usd": 0.061344, "in_tok": 2, "out_tok": 2324, "cache_read": 0, "t": "2026-11-02 15:04:53"}
+{"step": "done", "batch": "b0011.json", "n": 24, "accepted": 16, "dropped": 5, "t": "2026-11-02 15:04:53"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 142.1, "cost_usd": null, "in_tok": 5466, "out_tok": 8060, "cache_read": 0, "t": "2026-11-02 15:07:15"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 13.9, "cost_usd": 0.05878, "in_tok": 2, "out_tok": 1988, "cache_read": 0, "t": "2026-11-02 15:07:29"}
+{"step": "done", "batch": "b0012.json", "n": 24, "accepted": 20, "dropped": 1, "t": "2026-11-02 15:07:29"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 70.7, "cost_usd": null, "in_tok": 5166, "out_tok": 3999, "cache_read": 0, "t": "2026-11-02 15:08:40"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 8.9, "cost_usd": 0.060672000000000004, "in_tok": 2, "out_tok": 1428, "cache_read": 0, "t": "2026-11-02 15:08:49"}
+{"step": "done", "batch": "b0013.json", "n": 32, "accepted": 11, "dropped": 5, "t": "2026-11-02 15:08:49"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 88.5, "cost_usd": null, "in_tok": 5659, "out_tok": 5031, "cache_read": 0, "t": "2026-11-02 15:11:41"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 17.1, "cost_usd": 0.072098, "in_tok": 2, "out_tok": 2767, "cache_read": 0, "t": "2026-11-02 15:11:58"}
+{"step": "done", "batch": "b0014.json", "n": 36, "accepted": 30, "dropped": 5, "t": "2026-11-02 15:11:58"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 75.5, "cost_usd": null, "in_tok": 6069, "out_tok": 3797, "cache_read": 0, "t": "2026-11-02 15:13:14"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 7.8, "cost_usd": 0.049280000000000004, "in_tok": 2, "out_tok": 1106, "cache_read": 0, "t": "2026-11-02 15:13:22"}
+{"step": "done", "batch": "b0015.json", "n": 28, "accepted": 21, "dropped": 7, "t": "2026-11-02 15:13:22"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 109.1, "cost_usd": null, "in_tok": 5197, "out_tok": 5747, "cache_read": 0, "t": "2026-11-02 15:15:11"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 16.7, "cost_usd": 0.05585, "in_tok": 2, "out_tok": 2421, "cache_read": 0, "t": "2026-11-02 15:15:27"}
+{"step": "done", "batch": "b0016.json", "n": 26, "accepted": 22, "dropped": 2, "t": "2026-11-02 15:15:27"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 92.7, "cost_usd": null, "in_tok": 4989, "out_tok": 4849, "cache_read": 0, "t": "2026-11-02 15:17:00"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 7.4, "cost_usd": 0.05038, "in_tok": 2, "out_tok": 1018, "cache_read": 0, "t": "2026-11-02 15:17:07"}
+{"step": "done", "batch": "b0017.json", "n": 26, "accepted": 18, "dropped": 3, "t": "2026-11-02 15:17:07"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 100.1, "cost_usd": null, "in_tok": 5154, "out_tok": 5423, "cache_read": 0, "t": "2026-11-02 15:18:48"}
+{"step": "verify", "model": "claude-sonnet-5-5", "used": ["claude-sonnet-5-5"], "backend": "anthropic", "sec": 17.6, "cost_usd": 0.064692, "in_tok": 2, "out_tok": 2576, "cache_read": 0, "t": "2026-11-02 15:19:05"}
+{"step": "done", "batch": "b0018.json", "n": 29, "accepted": 23, "dropped": 4, "t": "2026-11-02 15:19:05"}
+{"step": "gen", "model": "claude-sonnet-4-6", "used": ["claude-sonnet-4-6"], "backend": "qwen3.8-flash-next-iq3_s", "sec": 89.6, "cost_usd": null, "in_tok": 5113, "out_tok": 4558, "cache_read": 0, "t": "2026-11-02 15:20:35"}

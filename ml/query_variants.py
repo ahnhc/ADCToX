@@ -1,5 +1,7 @@
 """Query variants v6: everyday words, abbreviations, shorthand, spelling variants and typos that people type for a MONDO disease,
 written by one Sonnet 4.6 worker and checked blind by Sonnet 5.5. Plan and rules: ml/docs/query_variants_v6.md.
+From b0003 the worker's "claude-sonnet-4-6" calls go to the local Qwen server on 4090_1 (QV_WORKER_BACKEND=qwen, the default);
+QV_WORKER_BACKEND=anthropic sends them to Anthropic again. The verifier always stays on Anthropic.
 
     ADC_RESEARCH_MODE=1 python ml/query_variants.py --build      # queue: data/curated/query_variants/queue/b####.json
     ADC_RESEARCH_MODE=1 python ml/query_variants.py --run        # worker + verifier, one batch at a time, resumable
@@ -20,6 +22,30 @@ WORKER, VERIFIER = "claude-sonnet-4-6", "claude-sonnet-5-5"
 CATS = ("lay", "abbrev", "shorthand", "variant", "typo")
 BATCH, NEAR = 20, 4
 BACKOFF = (15, 30, 60)                                             # minutes, on a usage limit or a failed call
+
+# worker backend: Qwen on 4090_1, reached through an ssh tunnel this script opens (port 8080 is not reachable from here, ssh is)
+BACKEND = os.environ.get("QV_WORKER_BACKEND", "qwen")
+QWEN_MODEL, QWEN_PORT = "qwen3.8-flash-next-iq3_s", 18080
+QWEN_KEY = os.path.expanduser("~/.config/qv/qwen_key")
+QWEN_SSH = ["ssh", "-N", "-o", "BatchMode=yes", "-o", "ExitOnForwardFailure=yes", "-o", "ServerAliveInterval=30",
+            "-i", os.path.expanduser("~/.ssh/id_ed25519_4090_1_hyeongchanahn"),
+            "-L", f"127.0.0.1:{QWEN_PORT}:127.0.0.1:8080", "hyeongchanahn@10.1.16.189"]
+WORKER_AS = f"{WORKER} via {QWEN_MODEL} (4090_1)" if BACKEND == "qwen" else WORKER
+_tunnel = None
+
+
+def ensure_tunnel():
+    """(re)open the ssh tunnel to the Qwen server; it is a child of this process and closes with it."""
+    global _tunnel
+    import atexit, socket
+    if _tunnel is not None and _tunnel.poll() is None: return
+    _tunnel = subprocess.Popen(QWEN_SSH, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+    atexit.register(lambda p=_tunnel: p.poll() is None and p.terminate())
+    for _ in range(30):
+        if _tunnel.poll() is not None: raise RuntimeError(f"ssh tunnel to 4090_1 exited: {_tunnel.stderr.read().decode()[-300:]}")
+        try: socket.create_connection(("127.0.0.1", QWEN_PORT), timeout=1).close(); return
+        except OSError: time.sleep(1)
+    raise RuntimeError("ssh tunnel to 4090_1 did not open")
 
 
 def held_texts():
@@ -67,11 +93,18 @@ def build():
 
 def call(model, system, prompt):
     """one fresh, tool-less Claude Code session in an empty folder; -> (text, info). Raises on a failed call."""
+    qwen = model == WORKER and BACKEND == "qwen"; env = None
+    if qwen:
+        ensure_tunnel(); env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
+        env.update(ANTHROPIC_BASE_URL=f"http://127.0.0.1:{QWEN_PORT}", ANTHROPIC_AUTH_TOKEN=open(QWEN_KEY).read().strip(),
+                   CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC="1",
+                   CLAUDE_CODE_MAX_OUTPUT_TOKENS="64000",   # Qwen thinks at length; b0004 went over the 32k default
+                   CLAUDE_CODE_EFFORT_LEVEL="medium")       # Strata maps effort to how long Qwen thinks; higher ran out of tokens
     wd = tempfile.mkdtemp(prefix="qv_"); t0 = time.time()
     try:
         p = subprocess.run(["claude", "-p", "--model", model, "--setting-sources", "project", "--strict-mcp-config", "--tools", "",
                             "--no-session-persistence", "--output-format", "json", "--system-prompt", system],
-                           input=prompt, capture_output=True, text=True, cwd=wd, timeout=1800)
+                           input=prompt, capture_output=True, text=True, cwd=wd, timeout=1800, env=env)
     finally: shutil.rmtree(wd, ignore_errors=True)
     try: d = json.loads(p.stdout)
     except ValueError: raise RuntimeError(f"exit {p.returncode}: {(p.stdout or p.stderr)[-400:]}")
@@ -79,7 +112,8 @@ def call(model, system, prompt):
     if d.get("is_error") or p.returncode: raise RuntimeError(f"error: {str(d.get('result'))[:400]}")
     if used and used != [model]: raise SystemExit(f"model mismatch: asked {model}, used {used}")   # the worker must be Sonnet 4.6
     u = d.get("usage", {})
-    return d.get("result", ""), dict(model=model, used=used, sec=round(time.time() - t0, 1), cost_usd=d.get("total_cost_usd"),
+    return d.get("result", ""), dict(model=model, used=used, backend=QWEN_MODEL if qwen else "anthropic", sec=round(time.time() - t0, 1),
+                                     cost_usd=None if qwen else d.get("total_cost_usd"),   # Claude Code prices Qwen calls at Sonnet list price
                                      in_tok=u.get("input_tokens"), out_tok=u.get("output_tokens"), cache_read=u.get("cache_read_input_tokens"))
 
 
@@ -159,6 +193,8 @@ def run(limit=None):
     import tuning_ledger as TL
     T, held, ev = held_texts(); NAMES.update(TL.norm(n) for t, x in T.items() for n in [x["name"]] + x["syn"])
     guide = open(D + "GUIDE.md", encoding="utf-8").read(); vguide = open(D + "VERIFY.md", encoding="utf-8").read()
+    import hashlib; guide_sha = hashlib.sha256(guide.encode()).hexdigest()[:12]   # GUIDE.md changed at b0004 (fewer typos)
+    verify_sha = hashlib.sha256(vguide.encode()).hexdigest()[:12]                 # VERIFY.md changed at b0014 (general vs specific)
     os.makedirs(D + "out", exist_ok=True); logf = open(D + "runs.jsonl", "a")
     def log(r): logf.write(json.dumps(dict(r, t=time.strftime("%Y-%m-%d %H:%M:%S"))) + "\n"); logf.flush()
     todo = [f for f in sorted(glob.glob(D + "queue/b*.json")) if not os.path.exists(D + "out/" + os.path.basename(f))]
@@ -174,7 +210,7 @@ def run(limit=None):
             fails += 1; m = BACKOFF[min(fails, len(BACKOFF)) - 1]; log(dict(step="fail", batch=name, error=str(e)[:400], sleep_min=m))
             print(name, "failed:", str(e)[:200], f"-> sleeping {m} min", flush=True); time.sleep(60 * m); continue
         fails = 0; acc = sum(r["accepted"] for r in res)
-        json.dump(dict(batch=batch["batch"], worker=WORKER, verifier=VERIFIER, items=res, dropped=drop), open(D + "out/" + name, "w"), ensure_ascii=False, indent=1)
+        json.dump(dict(batch=batch["batch"], worker=WORKER_AS, verifier=VERIFIER, guide=guide_sha, verify_guide=verify_sha, items=res, dropped=drop), open(D + "out/" + name, "w"), ensure_ascii=False, indent=1)
         log(dict(step="done", batch=name, n=len(res), accepted=acc, dropped=len(drop))); done += 1
         recent = (recent + [(acc, len(res))])[-5:]; ra = sum(a for a, _ in recent) / max(1, sum(n for _, n in recent))
         print(f"{name}: {acc}/{len(res)} accepted, {len(drop)} dropped (last 5 batches {ra:.0%})", flush=True)

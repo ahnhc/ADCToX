@@ -1,0 +1,490 @@
+{
+ "batch": 9,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "items": [
+  {
+   "id": "MONDO:0006585",
+   "query": "rash caused by constant scratching",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006585",
+   "query": "LSC",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006585",
+   "query": "lichen simplex",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006585",
+   "query": "neurodermatitis circumscripta",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006608",
+   "query": "dandruff",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006608",
+   "query": "flaky scalp rash",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006608",
+   "query": "seb derm",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006608",
+   "query": "seborrhoeic dermatitis",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006683",
+   "query": "brachial plexus neuropaty",
+   "category": "typo",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006734",
+   "query": "noncancerous growth in the duodenum",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006734",
+   "query": "duodenal benign tumor",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006805",
+   "query": "chest pain at rest that keeps getting worse",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006805",
+   "query": "UA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "UA could be unstable angina, but not matching a specific candidate clearly",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006805",
+   "query": "unstable ang",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006879",
+   "query": "swollen optic nerve",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006920",
+   "query": "blood sugar higher than normal but not diabetes",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006966",
+   "query": "parkinsonism caused by medication",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006966",
+   "query": "secondary parkinson's disease",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007033",
+   "query": "can't move the eye outward",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits abducens palsy and disorder; congenital also possible",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007033",
+   "query": "CN6 palsy",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007033",
+   "query": "abducent nerve palsy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007448",
+   "query": "skin writing",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits familial dermatographia and dermatographism generally; agraphia confusable",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007448",
+   "query": "raised welts when you scratch your skin",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007448",
+   "query": "dermatographism",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007453",
+   "query": "GCK-MODY",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007453",
+   "query": "MODY type 2",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007835",
+   "query": "telescoping of the bowel",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007835",
+   "query": "bowel folds in on itself",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008583",
+   "query": "wry neck",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits inherited torticollis and paroxysmal torticollis; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008583",
+   "query": "tight neck muscle in a newborn",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009366",
+   "query": "water on the brain with normal pressure",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "lay phrase vague; could be congenital communicating hydrocephalus or NPH",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009366",
+   "query": "Hakim-Adams syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010870",
+   "query": "Udd-type distal myopathy",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011385",
+   "query": "wear and tear of the spinal discs",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits intervertebral, cervical, thoracic disk degeneration",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011385",
+   "query": "DDD",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011385",
+   "query": "disc degeneration",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013600",
+   "query": "can't fall asleep",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013600",
+   "query": "sleeplessness",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018087",
+   "query": "virus that causes severe bleeding",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018087",
+   "query": "viral hemorrhagic fevers",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019719",
+   "query": "birth defect of the kidneys and urinary tract",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019719",
+   "query": "congenital anomalies of the kidney and urinary tract",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0006879",
+   "query": "papilloedema",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019162",
+   "query": "Gordon syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019162",
+   "query": "pseudohypoaldosteronism type II",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,309 @@
+{
+ "batch": 16,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0000158",
+   "query": "DDH",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000158",
+   "query": "baby born with hip out of socket",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000158",
+   "query": "developmental dysplasia of hip",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000465",
+   "query": "AV conduction block",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000628",
+   "query": "benign CNS tumor",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000628",
+   "query": "benign neoplasm of the central nervous system",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000949",
+   "query": "conjunctival degen",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001041",
+   "query": "cavity that has gone through the enamel",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "through enamel implies dentin caries; enamel caries also plausible",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0001041",
+   "query": "dentine caries",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001146",
+   "query": "CN4 palsy",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001146",
+   "query": "trochlear palsy",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001146",
+   "query": "4th nerve palsy",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001172",
+   "query": "TOA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "TOA means tubo-ovarian abscess, not a listed candidate",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0001172",
+   "query": "infection of the fallopian tube and ovary",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001172",
+   "query": "salpingoophoritis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001542",
+   "query": "peroneal nerve palsy",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits A and B equally; not really shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0001542",
+   "query": "common peroneal palsy",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001557",
+   "query": "swelling at the point of the elbow",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001557",
+   "query": "student's elbow",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001594",
+   "query": "bursa swelling at the back of the heel",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001658",
+   "query": "goiter that doesn't affect thyroid hormone levels",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001658",
+   "query": "nontoxic goitre",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001793",
+   "query": "watery eyes",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001793",
+   "query": "excessive lacrimation",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001798",
+   "query": "double-jointed",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits hypermobility syndrome, spectrum disorder, and marfanoid form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0001798",
+   "query": "joint hypermobility syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0001214",
+   "query": "pink eye",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0001670",
+   "query": "root resorption",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

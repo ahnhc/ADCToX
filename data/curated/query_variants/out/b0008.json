@@ -1,0 +1,374 @@
+{
+ "batch": 8,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "items": [
+  {
+   "id": "MONDO:0004640",
+   "query": "stomach inflammation from drinking too much",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004640",
+   "query": "alc gastritis",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004664",
+   "query": "worm infection",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits helminthiasis, intestinal helminthiasis, parasitic disease; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004664",
+   "query": "intestinal worms",
+   "category": "lay",
+   "pick": "D",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004664",
+   "query": "helminth infection",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "plain synonym of helminthiasis, not spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004703",
+   "query": "bladder CIS",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004777",
+   "query": "inflamed voice box",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits laryngitis, acute and chronic laryngitis equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004802",
+   "query": "eosinophilic lung disease",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym rephrase, not spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004802",
+   "query": "pulm eosinophilia",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004844",
+   "query": "white patch inside the mouth",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits oral leukoplakia, leukoplakia, hairy leukoplakia; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004844",
+   "query": "oral leucoplakia",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits oral mucosa leukoplakia and generic leukoplakia",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004844",
+   "query": "oral mucosal leukoplakia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004872",
+   "query": "piles",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits hemorrhoid and internal hemorrhoid",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004872",
+   "query": "hemorrhoidal disease",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym phrasing, not spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005003",
+   "query": "long-term inflammation of the pancreas",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005005",
+   "query": "ccRCC",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005005",
+   "query": "clear cell RCC",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "partial abbreviation form; abbrev fits better than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005005",
+   "query": "renal cell carcinoma clear cell type",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005061",
+   "query": "LUAD",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005061",
+   "query": "lung adeno",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005109",
+   "query": "HIV",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005109",
+   "query": "HIV positive",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "lay phrasing, not clipped clinical shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005233",
+   "query": "non-small cell lung ca",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005593",
+   "query": "gum disease",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits periodontitis and chronic periodontitis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005649",
+   "query": "inflamed appendix",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005709",
+   "query": "bad cold",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits common cold and influenza",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005709",
+   "query": "coryza",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "archaic term, rarely typed; synonym not variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006008",
+   "query": "vestibular neuritis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006009",
+   "query": "brain inflammation from a virus",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits viral and infectious encephalitis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006500",
+   "query": "haemangioma",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "generic hemangioma vs brain/skin/benign vessel neoplasm",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006519",
+   "query": "cancer of the back passage",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'back passage' is British euphemism, rare for cancer queries",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006519",
+   "query": "rectal ca",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0004703",
+   "query": "urinary bladder carcinoma in situ",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0006519",
+   "query": "rectum cancer",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,437 @@
+{
+ "batch": 14,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0006012",
+   "query": "lung infection from a virus",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006012",
+   "query": "viral PNA",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006012",
+   "query": "pneumonia, viral",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006107",
+   "query": "non cancerous thyroid growth",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006314",
+   "query": "polyps inside the nose",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006345",
+   "query": "thick cords in the palm that bend the fingers",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006345",
+   "query": "Dupuytren's",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Eponym, so variant, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006345",
+   "query": "Dupuytren's disease",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006626",
+   "query": "nerve damage from diabetes",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006626",
+   "query": "diabetic nerve damage",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006626",
+   "query": "DPN",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006626",
+   "query": "neuropathy, diabetic",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006721",
+   "query": "tendonitis at the base of the thumb",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006721",
+   "query": "mommy's thumb",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006721",
+   "query": "de Quervain's tenosynovitis",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006816",
+   "query": "joint disease",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006858",
+   "query": "mouth problems",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006918",
+   "query": "inflammation in the back of the eye",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006918",
+   "query": "uveitis, posterior",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006940",
+   "query": "wrist drop",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Clinical sign, not lay; fits radial neuropathy and nerve lesion equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006940",
+   "query": "radial nerve palsy",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Not shorthand, just a synonym; fits both radial lesion and neuropathy",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006948",
+   "query": "blocked artery in the eye",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006948",
+   "query": "RAO",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006948",
+   "query": "occlusion of the retinal artery",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006968",
+   "query": "pinched tendon in the shoulder",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006968",
+   "query": "impingement syndrome",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007028",
+   "query": "torn shoulder tendon",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007028",
+   "query": "rotator cuff tear",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Standard clinical term, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007089",
+   "query": "Alzheimer's that starts later in life",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Late onset fits several candidates; no generic late-onset one",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007089",
+   "query": "late onset Alzheimer's",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Late onset fits several candidates; no generic late-onset one",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008698",
+   "query": "food pipe valve that won't open",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008698",
+   "query": "achalasia of esophagus",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011786",
+   "query": "rhinitis, allergic",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016044",
+   "query": "born with a split lip and roof of the mouth",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016044",
+   "query": "CLP",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016581",
+   "query": "conotruncal defects",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0006107",
+   "query": "benign thyroid tumor",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0006721",
+   "query": "deQuervain disease",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0011786",
+   "query": "hay fever",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0011786",
+   "query": "AR",
+   "category": "abbrev",
+   "drop": "eval or held text"
+  },
+  {
+   "id": "MONDO:0016044",
+   "query": "CL/P",
+   "category": "shorthand",
+   "drop": "duplicate"
+  }
+ ]
+}

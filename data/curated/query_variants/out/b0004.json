@@ -1,0 +1,292 @@
+{
+ "batch": 4,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "items": [
+  {
+   "id": "MONDO:0003009",
+   "query": "too much aldosterone",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003009",
+   "query": "hyperaldo",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003085",
+   "query": "corneal inflammation",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "lay phrasing, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003441",
+   "query": "twisting muscle spasms",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003608",
+   "query": "shrinking of the optic nerve",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003608",
+   "query": "optic nerve atrophy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003664",
+   "query": "red blood cells break apart too fast",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003664",
+   "query": "haemolytic anaemia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004497",
+   "query": "3° syphilis",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004577",
+   "query": "eye ulcer",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits corneal ulcer and keratitis; vague",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004577",
+   "query": "ulcer on the cornea",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "descriptive rewording, not spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005085",
+   "query": "surfer's eye",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005152",
+   "query": "underactive pituitary gland",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005173",
+   "query": "AK",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005173",
+   "query": "rough scaly patch from sun damage",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005342",
+   "query": "IgAN",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005342",
+   "query": "Berger disease",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005387",
+   "query": "went through menopause too early",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005492",
+   "query": "nettle rash",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005541",
+   "query": "stress fracture in the lower back",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005665",
+   "query": "sudden face drooping on one side",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits Bell's palsy and facial paralysis; also stroke",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005665",
+   "query": "Bell palsy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005810",
+   "query": "kissing disease",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005844",
+   "query": "blocked oil gland in the eyelid",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0005387",
+   "query": "POF",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005575",
+   "query": "bowel cancer",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005575",
+   "query": "colon cancer",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

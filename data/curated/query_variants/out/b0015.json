@@ -1,0 +1,361 @@
+{
+ "batch": 15,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0018328",
+   "query": "homozygous FH",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018328",
+   "query": "homozygous familial hypercholesterolaemia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018469",
+   "query": "NTM lung disease",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018469",
+   "query": "NTM pulmonary disease",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018469",
+   "query": "atypical mycobacterial lung infection",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "clinical wording, not lay; 'atypical mycobacteria' is clinician term",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018469",
+   "query": "nontuberculous mycobacterial pulmonary disease",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020696",
+   "query": "low B12",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020696",
+   "query": "B12 def",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020804",
+   "query": "BCC",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "BCC fits basal cell carcinoma and skin BCC about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020804",
+   "query": "basal cell ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A and skin BCC D equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021449",
+   "query": "non cancerous stomach tumour",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021459",
+   "query": "benign oesophageal tumour",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021462",
+   "query": "non cancerous growth in the back passage",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021464",
+   "query": "benign neoplasm of caecum",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021464",
+   "query": "benign caecal tumour",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021470",
+   "query": "non cancerous pancreas tumour",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits benign pancreas and exocrine pancreas neoplasm; general pick E arguably",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021476",
+   "query": "non cancerous tongue lump",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "benign tongue neoplasm B vs tongue neoplasm E ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021487",
+   "query": "benign choroidal neoplasm",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021496",
+   "query": "non cancerous lip lump",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021506",
+   "query": "non cancerous spinal cord tumour",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021661",
+   "query": "coronary ath",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'ath' is not a real clinical shorthand for atherosclerosis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021661",
+   "query": "clogged arteries in the heart",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0023757",
+   "query": "burning numb patch on outer thigh",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0023757",
+   "query": "pinched nerve in the thigh",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "could be meralgia, piriformis, or nerve compression generally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0023757",
+   "query": "meralgia paraesthetica",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0041052",
+   "query": "PHN",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0041052",
+   "query": "nerve pain left after shingles",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000018",
+   "query": "vertigo when rolling over in bed",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0020696",
+   "query": "B12 deficiency",
+   "category": "shorthand",
+   "drop": "eval or held text"
+  },
+  {
+   "id": "MONDO:0020696",
+   "query": "vitamin B-12 deficiency",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0020804",
+   "query": "rodent ulcer",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0020804",
+   "query": "basal-cell carcinoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0021167",
+   "query": "myositis",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0021661",
+   "query": "CAD",
+   "category": "abbrev",
+   "drop": "eval or held text"
+  },
+  {
+   "id": "MONDO:0041052",
+   "query": "post-herpetic neuralgia",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

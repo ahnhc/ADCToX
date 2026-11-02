@@ -1,0 +1,358 @@
+{
+ "batch": 7,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "items": [
+  {
+   "id": "MONDO:0001941",
+   "query": "loss of sight",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001941",
+   "query": "total loss of vision",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002041",
+   "query": "fungal infection",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002041",
+   "query": "fungal disease",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002098",
+   "query": "CN VII palsy",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002108",
+   "query": "thyroid ca",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002253",
+   "query": "wear and tear of the spine",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002314",
+   "query": "chronic pink eye",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A, C, E, F about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002354",
+   "query": "non cancerous growth on the voice box",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits F and D; benign larynx but D includes benign",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002428",
+   "query": "protozoan infection",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym wording, not spelling or word-order variant; more lay",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002443",
+   "query": "teeth grinding",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002443",
+   "query": "grinding teeth at night",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002471",
+   "query": "swollen bursa",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002898",
+   "query": "skin ca",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003019",
+   "query": "low potassium",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both A and D potassium deficiency",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003019",
+   "query": "low K",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both A and D potassium deficiency",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003019",
+   "query": "hypokalaemia",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both A and D potassium deficiency",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003472",
+   "query": "lice",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003472",
+   "query": "nits",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004180",
+   "query": "non cancerous growth in the urinary tract",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004277",
+   "query": "the clap",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004277",
+   "query": "gonorrhoea",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004375",
+   "query": "ESRF",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004375",
+   "query": "ESKD",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004375",
+   "query": "kidneys have stopped working",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "could be end stage renal failure or acute kidney injury; vague",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004471",
+   "query": "joint infection",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C and F",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004471",
+   "query": "infected joint",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C and F",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004514",
+   "query": "long term runny nose",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits chronic rhinitis, allergic rhinitis, rhinosinusitis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004568",
+   "query": "bowel stops working",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits ileus, paralytic ileus, pseudo-obstruction",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004568",
+   "query": "adynamic ileus",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym term, not spelling variant; also fits C ileus",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0002098",
+   "query": "facial paralysis",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0002098",
+   "query": "facial nerve palsy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0002108",
+   "query": "thyroid carcinoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

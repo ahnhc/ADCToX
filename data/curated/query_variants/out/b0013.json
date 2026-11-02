@@ -1,0 +1,392 @@
+{
+ "batch": 13,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "items": [
+  {
+   "id": "MONDO:0004625",
+   "query": "inflamed vein",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits phlebitis and thrombophlebitis about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004641",
+   "query": "skin CIS",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits skin carcinoma in situ and SCC in situ",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004646",
+   "query": "bedsore",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004778",
+   "query": "infection of the testicle and the sperm cord",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004842",
+   "query": "mouth sores",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits stomatitis, ulcerative stomatitis, mucositis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004891",
+   "query": "farsightedness",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004891",
+   "query": "long sightedness",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005008",
+   "query": "colon and rectal cancer",
+   "category": "lay",
+   "pick": "D",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005008",
+   "query": "CRC adeno",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005012",
+   "query": "mole cancer",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits melanoma and cutaneous melanoma",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005025",
+   "query": "heart valve infection",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits infective, bacterial endocarditis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005025",
+   "query": "IE",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005156",
+   "query": "brain and spinal cord inflammation",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005231",
+   "query": "hep C",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits hepatitis C and acute hepatitis C",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005231",
+   "query": "HCV infection",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits hepatitis C and acute hepatitis C",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005244",
+   "query": "numbness and tingling in hands and feet",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits peripheral and sensory neuropathy",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005244",
+   "query": "periph neuropathy",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005310",
+   "query": "a-flutter",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits atrial flutter and neonatal flutter",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005310",
+   "query": "flutter in the top chambers of the heart",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "flutter fits atrial flutter, but vague lay phrasing",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005350",
+   "query": "AAA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits abdominal aneurysm and familial variants",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005350",
+   "query": "aneurysm in the belly",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits abdominal aortic aneurysm and familial forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005396",
+   "query": "TAA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits thoracic aneurysm and familial thoracic forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005396",
+   "query": "aneurysm in the chest aorta",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits thoracic aneurysm and familial thoracic forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005468",
+   "query": "low blood pressure",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits acute hypotension and hypotensive disorder",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005468",
+   "query": "low BP",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits acute hypotension and hypotensive disorder",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005480",
+   "query": "poison ivy rash",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005480",
+   "query": "contact derm",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005688",
+   "query": "food poisoning from undercooked chicken",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005688",
+   "query": "campylobacter infection",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "full words, not shorthand; variant/lay-like",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005972",
+   "query": "pneumonia caused by strep pneumo",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005975",
+   "query": "pus in the middle ear",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits suppurative OM and chronic tubotympanic form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005975",
+   "query": "suppurative OM",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits suppurative OM and chronic tubotympanic form",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0004641",
+   "query": "stage 0 skin cancer",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0004646",
+   "query": "bed sore",
+   "category": "variant",
+   "drop": "duplicate"
+  },
+  {
+   "id": "MONDO:0004778",
+   "query": "epididymoorchitis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0004842",
+   "query": "stomatitis",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005012",
+   "query": "skin melanoma",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}
