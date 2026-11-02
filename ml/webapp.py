@@ -172,7 +172,23 @@ def _key_values(RC, row, notes, values, raw):
     return out + RC._raw_values(raw, values)
 
 
-def _detail(RC, row, checks_, notes, values, raw):
+def _patient_side(RC, row, domain, code, sure, values, conds):
+    """what of this patient meets the label rule behind one restriction row: the entered conditions it names and the values it
+    reads ('Heart failure', 'Bilirubin 1.67×ULN'); a value the rule needs but nobody entered reads 'LVEF not entered'"""
+    import labs as LB
+    rrs = [rr for c, rr in (row["verdict"].known if sure else row["verdict"].possible) if rr["domain"] == domain and c == code]
+    if not rrs: return ""
+    w = rrs[0]["when"]; out = [RC.condition_name(c) for c in w.get("condition", []) if c in conds]
+    keys = dict.fromkeys(k.rsplit("_", 1)[0] if k.rsplit("_", 1)[-1] in ("gt", "ge", "lt", "le") else k for k in w if k not in ("condition", "always"))
+    for k in keys:
+        if k not in RC.VALUE_LABELS: continue
+        label, unit = RC.VALUE_LABELS[k]; v = values.get(k)
+        if v is None: out.append(f"{label} not entered"); continue
+        out.append(f"{label} " + (("yes" if v else "no") if isinstance(v, bool) else (LB.shown(k, v) if isinstance(v, (int, float)) else str(v))) + unit)
+    return ", ".join(out)
+
+
+def _detail(RC, row, checks_, notes, values, raw, conds=()):
     """the result screen's panel for one ADC (recommend._result_details), with every number it prints"""
     ind = RC._indications().get(row.get("adc"))
     evidence = RC.reason_rows(row)
@@ -188,7 +204,8 @@ def _detail(RC, row, checks_, notes, values, raw):
                 ["Bystander effect", "yes" if mech["bystander"] == "True" else "no"]] + ([["Target", mech["target"]]] if mech.get("target") else [])
         payload = dict(line=RC.payload_line(mech), rows=rows, note=" ".join(keep) or None)
     return dict(indication=ind["indication"] if ind else None,
-                reasons=[dict(organ=RC.ORGAN_SHORT[RC.RS.DOMAIN_AXIS[o]] if o in RC.RS.DOMAIN_AXIS else o.capitalize(), domain=o, status=st, basis=b, code=c, sure=sure) for o, st, b, c, sure in evidence],
+                reasons=[dict(organ=RC.ORGAN_SHORT[RC.RS.DOMAIN_AXIS[o]] if o in RC.RS.DOMAIN_AXIS else o.capitalize(), domain=o, status=st, basis=b, code=c, sure=sure,
+                              patient=_patient_side(RC, row, o, c, sure, values, conds)) for o, st, b, c, sure in evidence],
                 warnings=[dict(organ=a, mark=mark, text=RC.warning_names(row["organs"][a].get("headings", [])))
                           for mark, organs in (("!!", row.get("boxed", [])), ("!", row.get("warn", []))) for a in organs],
                 other_warnings=[dict(organ=c["organ"], mark=c["mark"], text=RC.warning_names(row["organs"][c["organ"]].get("headings", [])))
@@ -198,7 +215,7 @@ def _detail(RC, row, checks_, notes, values, raw):
                 values=_key_values(RC, row, notes, values, raw))
 
 
-def _row(RC, row, checks_, notes, values, raw):
+def _row(RC, row, checks_, notes, values, raw, conds=()):
     v = row["verdict"]; tier = v.worst_possible; status = STATUS.get(tier, "None")
     if tier == 2 and any(c == "insufficient_data" for c, _ in v.known + v.possible): status = "Not studied"
     name = lambda d: RC.ORGAN_SHORT[RC.RS.DOMAIN_AXIS[d]] if d in RC.RS.DOMAIN_AXIS else d.capitalize()     # the organ names the other columns use
@@ -207,7 +224,7 @@ def _row(RC, row, checks_, notes, values, raw):
                 known=max(0, v.worst_known),
                 restriction=row["restriction"], restriction_ko=row["restriction_ko"], tier=tier, indicated=row["indicated"],
                 boxed=row["boxed"], warn=row["warn"], elsewhere=row["elsewhere"], levels={a: row["organs"][a]["level"] for a in RC.AXES},
-                preview=_preview(RC, row), cancers=row["cancers"], detail=_detail(RC, row, checks_, notes, values, raw))
+                preview=_preview(RC, row), cancers=row["cancers"], detail=_detail(RC, row, checks_, notes, values, raw, conds))
 
 
 class App:
@@ -428,7 +445,7 @@ class App:
             for o, level in sorted(organ_levels.items(), key=lambda x: (x[1], RC.AXES.index(x[0]))): grouped.setdefault(level, []).append(o)
             return dict(conditions=conds, first=RC.FIRST,
                         first_options=[dict(condition=c, name=RC.condition_name(c), organs=sorted(o, key=RC.AXES.index)) for c, o in picks],
-                        rows=[_row(RC, r, ck, notes, values, raw) for r in rows], s=s, priority=[list(p) for p in prio],
+                        rows=[_row(RC, r, ck, notes, values, raw, conds) for r in rows], s=s, priority=[list(p) for p in prio],
                         notes=[list(n) for n in notes], checks=[[test, names] for test, names, _ in ck],
                         patient=dict(values=_key_values(RC, rows[0], notes, values, raw) if rows else [], organ_levels=organ_levels,
                                      organ_priority=[[level, organs] for level, organs in grouped.items()],

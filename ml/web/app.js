@@ -77,34 +77,39 @@
     'Pick the condition to review first. Its organs lead the Review order and the ranking.\nAuto orders the conditions by severity.',
     'ADCs ranked for this patient.\nClick a row or press Enter for the label evidence.\nHover a dotted title to see what it means.',
   ];
-  const TIPS = {
-    'Key values': 'The patient\'s values that the selected ADC\'s label looks at.\n×ULN: 0 to 3, ticks at 1× and 1.5×.\nCLcr: 0 to 120 mL/min, ticks at 30, 60 and 90.',
-    'Review order': 'Organs to check first, from the conditions and labs entered.\nFilled: first. Outlined: next.',
-    'Label restriction': 'What the FDA label says about this ADC with the patient\'s organ function, and the organ behind it.\n1 bar: Monitor\n2 bars: Not studied\n3 bars: Avoid\nDashed: a value not entered could raise it.',
-    'Patient organs': 'Label warnings on organs where the patient already has a problem.\n!! boxed warning\n! warning\n+N: more organs (hover it)',
-    'Other': 'Label warnings on the patient\'s other organs.',
-    'Organs': 'The three most likely organs for each condition, with the model\'s confidence.\nTeal: the organs used.',
-    'Payload and linker': 'What the ADC delivers, how it is attached, and what it binds.\nThe payload\'s class explains most of the label\'s warnings.',
-    'Pre-treatment checks': 'Baseline tests the label asks for before the first dose.',
-    'Missing inputs': 'Values that could change the Label restriction if entered.',
-    'Warnings on other organs': 'The label\'s warnings on organs where the patient has no known problem.',
-    'Read as': 'The disease concept the input was matched to, and where the match came from.',
-    'Indication': 'Whether the ADC is approved for the cancer entered (✓ or ✕).\nBelow: every approved use, one per line.',
-    "Warnings on the patient's organs": 'The label\'s boxed warnings (!!) and warnings (!) on the patient\'s affected organs.\nDots: how many patients had it in the ADC\'s main trial, one dot per 5 in 100. Pink: serious.\nHover the dots for the trial and the other arm.',
+  const TIPS = {          // the hover note: one summary line, then [mark, meaning] rows
+    'Key values': ['The patient\'s values that this ADC\'s label checks.', [['×ULN', '0 to 3, ticks at 1× and 1.5×'], ['CLcr', '0 to 120 mL/min, ticks at 30, 60, 90']]],
+    'Review order': ['Organs to check first, from the conditions and labs.', [['Filled', 'check first'], ['Outlined', 'check next']]],
+    'Label restriction': ['What the FDA label says about this ADC for this patient.', [['1 bar', 'Monitor: usable, check more often'], ['2 bars', 'Not studied: no data in such patients'], ['3 bars', 'Avoid: the label says not to use'], ['Dashed', 'a value not entered could raise it'], ['Patient', 'what the patient has'], ['Label', 'the label\'s rule it meets']]],
+    'Patient organs': ['Label warnings on organs where the patient already has a problem.', [['!!', 'boxed warning'], ['!', 'warning'], ['+N', 'more organs (hover it)']]],
+    'Other': ['Label warnings on the patient\'s other organs.', [['!!', 'boxed warning'], ['!', 'warning']]],
+    'Organs': ['The organs each condition affects, by the AI.', [['Bar', 'the model\'s confidence'], ['Teal', 'the organs used']]],
+    'Read as': ['The disease concept the input was matched to.', [['Source', 'where the match came from']]],
+    'Indication': ['Is this ADC approved for the patient\'s cancer?', [['✓', 'approved'], ['✕', 'not approved'], ['List', 'all approved uses']]],
+    "Warnings on the patient's organs": ['The label\'s warnings on the patient\'s affected organs.', [['!!', 'boxed warning'], ['!', 'warning'], ['Dots', 'patients in the main trial, one per 5 in 100'], ['Pink dot', 'serious'], ['Grey dots', 'as common on the other treatment']]],
+    'Warnings on other organs': ['The label\'s warnings on organs where the patient has no known problem.', []],
+    'Payload and linker': ['What the ADC delivers and what it binds.', [['Payload', 'the drug released in the cell, its class explains most warnings'], ['Linker', 'how the payload is attached'], ['Bystander', 'the payload also reaches nearby cells'], ['Target', 'the protein the antibody binds']]],
+    'Pre-treatment checks': ['Baseline tests the label asks for before the first dose.', []],
+    'Missing inputs': ['Values that could change the Label restriction if entered.', []],
   };
   const TIP_KEY = 'adctox.tips.v1';
   let seen = {};
   try { seen = JSON.parse(localStorage.getItem(TIP_KEY) || '{}') || {}; } catch (e) { seen = {}; }
   const keepSeen = () => { try { localStorage.setItem(TIP_KEY, JSON.stringify(seen)); } catch (e) { /* the cards just show again */ } };
   const tipBox = h('div', { class: 'tipbox', role: 'tooltip', id: 'tipbox', hidden: true });
+  const tipOfEl = new WeakMap();
   function tipped(el, text) {             // a title with a note: dotted underline, the note on hover or focus
     const t = text || TIPS[el.textContent];
     if (!t) return el;
-    el.classList.add('tipped'); el.dataset.tip = t; el.tabIndex = 0; el.setAttribute('aria-describedby', 'tipbox');
+    el.classList.add('tipped'); tipOfEl.set(el, t); el.tabIndex = 0; el.setAttribute('aria-describedby', 'tipbox');
     return el;
   }
   function showTip(el) {
-    tipBox.textContent = el.dataset.tip; tipBox.hidden = false;
+    const t = tipOfEl.get(el); if (!t) return;
+    clear(tipBox);
+    if (typeof t === 'string') tipBox.textContent = t;
+    else tipBox.append(h('div', { class: 'ts', text: t[0] }), t[1].length ? h('div', { class: 'tr' }, t[1].map(([k, v]) => [h('span', { class: 'tk', text: k }), h('span', { text: v })])) : null);
+    tipBox.hidden = false;
     const r = el.getBoundingClientRect(), w = tipBox.offsetWidth, ht = tipBox.offsetHeight;
     const x = Math.min(window.innerWidth - w - 12, Math.max(12, r.left - 8));
     const y = r.bottom + 8 + ht > window.innerHeight - 8 ? r.top - ht - 8 : r.bottom + 8;
@@ -1238,13 +1243,21 @@
     // 1 indication for the entered cancer, 2 label restriction, 3 warnings on the patient's organs, 4 warnings on other organs
     const cancers = [...new Set((shownPatient.cancers || []).map((c) => c.name))];
     const verdict = !cancers.length ? null
-      : row.indicated === false ? { cls: 't-amber', mark: '✕' } : { cls: 't-green', mark: '✓' };
-    drawerBody.append(section('Indication', verdict ? h('p', { class: 'indv ' + verdict.cls }, h('span', { class: 'im', text: verdict.mark }), cancers.join(', ')) : null, d.indication ? h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x }))) : null));
+      : row.indicated === false ? { cls: 't-red', mark: '✕', word: 'Not approved for ' } : { cls: 't-green', mark: '✓', word: 'Approved for ' };
+    drawerBody.append(section('Indication', verdict ? h('p', { class: 'indv ' + verdict.cls }, h('span', { class: 'im', text: verdict.mark }), h('span', null, h('span', { class: 'iv', text: verdict.word }), cancers.join(', '))) : null,
+      d.indication ? [h('div', { class: 'sub', text: 'All approved uses' }), h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x })))] : null));
     const rs = d.reasons || [];
-    drawerBody.append(section('Label restriction', h('div', { class: 'reasons' }, rs.length ? rs.map((r) => [
-      h('span', { class: 'k', text: r.organ }),
-      h('span', { class: `s t-${TONE[r.code] || 'dim'}` + (r.sure ? ' sure' : ''), text: r.status }),
-      h('span', { class: 'b', text: r.basis })]) : h('span', { class: 'solo', text: 'No applicable label restriction' }))));
+    const RULE = { contraindicated: 'Avoid', avoid: 'Avoid', insufficient_data: 'Not studied', reduce_dose: 'Lower dose', monitor: 'Monitor', no_adjustment: 'No change' };
+    const rule = (r) => {                 // 'Monitor with bilirubin >1.5 to 3×ULN', 'Not studied if LVEF < 50%' (a value not entered)
+      const b = String(r.basis || '').replace(/^if /, '');
+      if (b === '-') return 'Applies to every patient';
+      return RULE[r.code] ? `${RULE[r.code]} ${r.sure ? 'with' : 'if'} ${b}` : b;
+    };
+    drawerBody.append(section('Label restriction', rs.length ? h('div', { class: 'rsl' }, rs.map((r) => h('div', { class: 'rr' },
+      h('div', { class: 'rh' }, h('span', { class: 'k', text: r.organ }), h('span', { class: `s t-${TONE[r.code] || 'dim'}` + (r.sure ? ' sure' : ''), text: r.status })),
+      h('div', { class: 'pl' }, r.patient ? [h('span', { class: 'pk', text: 'Patient' }), h('span', { class: 'pv', text: r.patient })] : null,
+        h('span', { class: 'pk', text: 'Label' }), h('span', { class: 'lv2', text: rule(r) })))))
+      : h('p', { class: 'line dim', text: 'No applicable label restriction' })));
     // the main trial's rate for each warning, as 20 dots (one per 5 patients in 100); pink dots the serious ones. The comparator
     // is not drawn: an event about as common on the other treatment is greyed and says so; the trial and both arms are on hover
     const t = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
