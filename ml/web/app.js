@@ -90,7 +90,7 @@
     'Warnings on other organs': 'The label\'s warnings on organs where the patient has no known problem.',
     'Read as': 'The disease concept the input was matched to, and where the match came from.',
     'Indication': 'Whether the ADC is approved for the cancer entered (✓ or ✕).\nBelow: every approved use, one per line.',
-    "Warnings on the patient's organs": 'The label\'s boxed warnings (!!) and warnings (!) on the patient\'s affected organs.\nDots: how many in 100 patients had it in the ADC\'s main trial. Pink: serious.\nHover the dots for the trial and the other arm.',
+    "Warnings on the patient's organs": 'The label\'s boxed warnings (!!) and warnings (!) on the patient\'s affected organs.\nDots: how many patients had it in the ADC\'s main trial, one dot per 5 in 100. Pink: serious.\nHover the dots for the trial and the other arm.',
   };
   const TIP_KEY = 'adctox.tips.v1';
   let seen = {};
@@ -1245,7 +1245,7 @@
       h('span', { class: 'k', text: r.organ }),
       h('span', { class: `s t-${TONE[r.code] || 'dim'}` + (r.sure ? ' sure' : ''), text: r.status }),
       h('span', { class: 'b', text: r.basis })]) : h('span', { class: 'solo', text: 'No applicable label restriction' }))));
-    // the main trial's rate for each warning, as 100 dots (one per patient in 100); pink dots the serious ones. The comparator
+    // the main trial's rate for each warning, as 20 dots (one per 5 patients in 100); pink dots the serious ones. The comparator
     // is not drawn: an event about as common on the other treatment is greyed and says so; the trial and both arms are on hover
     const t = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
     const evOf = {};
@@ -1254,12 +1254,12 @@
     function dots(e) {
       const r = per100(e.a, e.n), sv = e.serious ? r : per100(e.sa || 0, e.n), c = e.comp ? per100(e.comp[0], e.comp[1]) : null;
       const same = c !== null && r >= 1 && c >= r * 0.6;
-      const n = Math.round(r), ns = Math.min(n, Math.round(sv));
-      const strip = h('span', { class: 'dots', 'aria-hidden': 'true' }, Array.from({ length: 100 }, (_, i) => h('i', { class: i < ns ? 'sv' : i < n ? 'on' : null })));
-      const count = r < 1 ? 'Under 1 in 100' : `${n} in 100`;
+      const n = Math.round(r / 5), ns = Math.min(n, Math.round(sv / 5));
+      const strip = h('span', { class: 'dots', 'aria-hidden': 'true' }, Array.from({ length: 20 }, (_, i) => h('i', { class: i < ns ? 'sv' : i < n ? 'on' : null })));
+      const count = r < 1 ? 'Under 1 in 100' : `${Math.round(r)} in 100`;
       const tip = `${t.trial}: ${e.term}\n${t.regimen}: ${e.pct} (n=${t.n})` + (e.comp ? `\n${t.comparator.regimen}: ${e.comp_pct} (n=${t.comparator.n})` : '');
       return h('div', { class: 'risk' + (same ? ' same' : ''), title: tip }, strip,
-        h('span', { class: 'rt' }, h('b', { text: count }), ` had ${e.term}`, ns && !same ? h('span', { class: 't-red', text: `, ${ns} serious` }) : null,
+        h('span', { class: 'rt' }, h('b', { text: count }), ` had ${e.term}`, sv >= 0.5 && !same ? h('span', { class: 't-red', text: `, ${Math.round(sv)} serious` }) : null,
           same ? h('span', { class: 'dim', text: ', as on other treatment' }) : null));
     }
     const done = new Set();
@@ -1274,7 +1274,7 @@
     const rows = ws.map((w) => wrow(w.organ, w.mark.trim(), w.text));
     for (const o in evOf) if (!done.has(o)) rows.push(wrow(o, '', 'No label warning'));       // a patient organ the label is silent on
     drawerBody.append(section("Warnings on the patient's organs", rows.length ? h('div', { class: 'wl' }, rows) : h('p', { class: 'line dim', text: 'None' }),
-      t ? h('p', { class: 'src', text: `Dots: patients in 100 with the event in ${t.trial}` }) : null));
+      t ? h('p', { class: 'src', text: `One dot: 5 patients in 100, in ${t.trial}` }) : null));
     if (wo.length) drawerBody.append(section('Warnings on other organs', h('div', { class: 'wl' }, wo.map((w) => [h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
       h('span', { class: 'm ' + (w.mark === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }), h('span', { text: w.text.replace(/;\s*/g, ', ') })]))));
     if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m })))));

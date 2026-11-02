@@ -480,10 +480,11 @@ def _handler(app):
         def gate(self, path):
             """another site's page can reach 127.0.0.1 too: by DNS rebinding (Host), or with a no-cors 'simple' request that
             needs no preflight (Origin, Sec-Fetch-Site, a JSON content type)"""
-            if self.headers.get("Host") not in app.hosts: raise _Error(403, "this server answers 127.0.0.1 only")
+            host = self.headers.get("Host") or ""
+            if not _loopback(host): raise _Error(403, "this server answers 127.0.0.1 only")
             if self.command != "GET" or path.startswith("/api/"):
                 origin, site = self.headers.get("Origin"), self.headers.get("Sec-Fetch-Site")
-                if origin is not None and origin not in {f"http://{h}" for h in app.hosts}: raise _Error(403, "cross-origin request refused")
+                if origin is not None and origin != f"http://{host}": raise _Error(403, "cross-origin request refused")
                 if site is not None and site not in ("same-origin", "none"): raise _Error(403, "cross-site request refused")
             if self.command == "POST" and (self.headers.get("Content-Type") or "").split(";")[0].strip().lower() != "application/json":
                 raise _Error(415, "Content-Type: application/json is expected")
@@ -523,6 +524,13 @@ class _Server(ThreadingHTTPServer):
     def handle_error(self, request, client_address):
         error = sys.exc_info()[1]
         if not isinstance(error, GONE): _log(error)
+
+
+def _loopback(host):
+    """a Host header naming this computer, on any port: the port differs behind an SSH tunnel (ssh -L 8080:127.0.0.1:<port>),
+    while a DNS-rebinding page carries its own domain name"""
+    name = host.rsplit(":", 1)[0] if not host.startswith("[") else host.split("]")[0] + "]"
+    return name.lower() in ("127.0.0.1", "localhost", "[::1]")
 
 
 def make_server(RC, port=0):

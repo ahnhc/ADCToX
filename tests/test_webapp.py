@@ -353,6 +353,16 @@ def test_other_sites_pages_cannot_drive_the_api(server, monkeypatch):
     assert call(server, "GET", "/", headers={"Sec-Fetch-Site": "cross-site"})[0] == 200                  # a link to the page itself still opens it
 
 
+def test_an_ssh_tunnel_on_another_port_opens_the_page(server):
+    """ssh -L 8080:127.0.0.1:<port> sends Host localhost:8080: the page and the API answer, another site's name does not"""
+    tunnel = {"Host": "localhost:8080", "Origin": "http://localhost:8080", "Sec-Fetch-Site": "same-origin"}
+    assert request(server, "GET", "/", headers={"Host": "localhost:8080"})[0] == 200
+    assert call(server, "POST", "/api/labs", {"raw": {}}, headers=tunnel)[0] == 200
+    assert call(server, "POST", "/api/labs", {"raw": {}}, headers=dict(tunnel, Origin="http://localhost:9090"))[0] == 403
+    for host in ("attacker.example:8080", "127.0.0.1.attacker.example", "localhost.attacker.example:8080"):
+        assert request(server, "GET", "/", headers={"Host": host})[0] == 403, host
+
+
 def test_malformed_requests_get_a_one_line_answer(server, capsys):
     for length in ("abc", "-5"):
         status, h, data = request(server, "POST", "/api/labs", b"{}", {"Content-Length": length})
