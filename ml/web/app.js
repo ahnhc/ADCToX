@@ -4,7 +4,7 @@
   'use strict';
 
   const Q = new URLSearchParams(location.search);
-  // the mock and its parameters (theme, motion, step, adc, q) only for the page opened as a file; over http they are ignored
+  // the mock and its parameters (motion, step, adc, q) only for the page opened as a file; over http they are ignored
   const MOCK = location.protocol === 'file:' && Q.get('mock') === '1' && window.ADCTOX_MOCK ? window.ADCTOX_MOCK : null;
   const ROOT = document.documentElement;
   const REDUCE = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
@@ -137,7 +137,7 @@
         h('ol', { class: 'g-steps' }, STEPS.map((name, i) => h('li', null, h('b', { text: name }), h('span', { text: STEP_TIPS[i] })))),
         h('h3', { text: 'Reading the results' }),
         h('div', { class: 'g-keys' },
-          h('span', null, [['cyan', 1], ['amber', 2], ['red', 3]].map(([t, k]) => h('span', { class: 't-' + t }, levelNode(k, k)))), 'Label restriction: Monitor, Not studied, Avoid',
+          h('span', null, [['cyan', 1], ['ink', 2], ['red', 3]].map(([t, k]) => h('span', { class: 't-' + t }, levelNode(k, k)))), 'Label restriction: Monitor, Not studied, Avoid',
           h('span', { class: 't-dim' }, levelNode(3, 1)), 'Dashed: a value not entered could raise the level',
           h('span', null, h('b', { class: 't-red mono', text: '!!' })), 'Boxed warning on that organ',
           h('span', null, h('b', { class: 't-amber mono', text: '!' })), 'Warning on that organ'),
@@ -155,8 +155,8 @@
 
   // ------------------------------------------------------------------ app data (GET /api/app)
   let APP = null, AX = [], SHORT = {}, REG = {}, REG_I = {}, FIELDS = [], STEPS = [];
-  const TONE = { contraindicated: 'red', avoid: 'red', insufficient_data: 'amber', no_statement: 'amber', reduce_dose: 'cyan', monitor: 'cyan', no_adjustment: 'green' };
-  const STATE_TONE = { None: 'green', Monitor: 'cyan', 'No data': 'amber', 'Not studied': 'amber', Avoid: 'red' };
+  const TONE = { contraindicated: 'red', avoid: 'red', insufficient_data: 'ink', no_statement: 'ink', reduce_dose: 'cyan', monitor: 'cyan', no_adjustment: 'green' };
+  const STATE_TONE = { None: 'green', Monitor: 'cyan', 'No data': 'ink', 'Not studied': 'ink', Avoid: 'red' };
 
   // ------------------------------------------------------------------ state (kept in sessionStorage; nothing on the server)
   const KEY = 'adctox.web.1';
@@ -354,7 +354,7 @@
     document.title = 'ADCTOX';
     crumbsOl = h('ol');
     verEl = h('div', { class: 'ver', text: '' });
-    top = h('header', { class: 'top' }, h('div', { class: 'brand' }, h('span', { class: 'a', text: 'ADC' }), h('span', { class: 'b', text: 'TOX' })), h('nav', { class: 'crumbs', 'aria-label': 'Steps' }, crumbsOl), h('div', { class: 'right' }, helpBtn(), verEl));
+    top = h('header', { class: 'top' }, h('div', { class: 'brand', 'aria-hidden': 'true' }), h('nav', { class: 'crumbs', 'aria-label': 'Steps' }, crumbsOl), h('div', { class: 'right' }, helpBtn(), verEl));
     stageBox = h('main', { class: 'stage' });
     body = buildBody();
     side = h('aside', { class: 'side', 'aria-label': 'Body map' }, body.el);

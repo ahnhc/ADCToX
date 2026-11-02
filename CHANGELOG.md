@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.6.7: The browser screens in English, with help (Ubuntu, macOS and Windows)
+
+- **The browser page is in English**: steps Conditions, Labs, Organs, Priority, Results; keys, buttons, errors and progress lines too. Korean input is still read, and comes back under its English name (suggestions, chips, Read as). The terminal screens are unchanged.
+- **Help for a first-time user**: a short card on each step the first time it opens (Got it, or Hide all tips; remembered in the browser), a note on every dotted title on hover or focus (Key values, Review order, Label restriction, Patient organs, Other, Organs, Read as and the evidence sections), and a `?` guide in the header with the steps, how to read the results and the keys.
+- **Label restriction shows its level**: three rising bars (1 Monitor, 2 Not studied, 3 Avoid), solid up to what the entered values set and dashed up to what a value not entered could set (replacing `?`), then the organ behind it. The bar at the bottom carries the legend.
+- **Trial results are bars**: each event is an ADC bar (its serious part pink) over a comparator bar, on one scale per trial (web and terminal detail); the counts stay in the report and the tooltip.
+- **Key values are gauges**: ×ULN on 0 to 3 (ticks at 1× and 1.5×), CLcr on 0 to 120 mL/min (ticks at 30, 60, 90), teal or pink past a limit (web; amber or red in the terminal).
+- **Result table**: ties repeat their rank faint, `+N` with the other organs on hover, no `-` cells, only a sure Avoid in bold. Organs screen: bars only, no process line. No wordmark in the header. The start screen is the search alone; the body map appears from Labs on.
+- Step 4 asks "Which condition should be reviewed first?".
+- **The page face is Cafe24 Decobox** (SIL Open Font License 1.1, licence text beside it, 92 KB): Latin letters, digits and ASCII punctuation; symbols such as ×, →, ✓ and Hangul come from Pretendard.
+- **One light theme in four colours**: navy #364F6B (text), teal #3FC1C9 (accent, Monitor, within limits), light grey #F5F5F5 (page) and pink #FC5185 (Avoid, boxed warnings, flagged labs); Not studied is plain navy. Text uses darker steps of teal and pink (about 4.7:1 on white). The dark theme is gone; the page stays light under a dark system setting.
+
 ## 0.6.6: Marks and bars instead of explanations (Ubuntu, macOS and Windows)
 
 - **No explanatory sentences on the screens** (web and terminal): the start screen's description, the 검사 수치 and 우선순위 hints, the "pick the meaning" line, the model-loading note, the % note under Organs and the "not a risk ranking" note under Review order are gone. 자동 (질환 중증도 순) reads `Auto`.

@@ -1,42 +1,24 @@
-/* Pretendard Variable, SIL Open Font License 1.1 (LICENSE-Pretendard.txt): the same face on every PC, Korean and Latin alike */
+/* Pretendard Variable, SIL Open Font License 1.1 (LICENSE-Pretendard.txt): the same face on every PC for what Decobox lacks */
 @font-face { font-family: "Pretendard Variable"; src: url("PretendardVariable.woff2") format("woff2-variations"); font-weight: 45 920; font-style: normal; font-display: swap; }
-/* ADCTOX browser UI. Dark by default (the TUI palette); light under prefers-color-scheme or [data-theme=light]. */
+/* Cafe24 Decobox, SIL Open Font License 1.1 (LICENSE-Cafe24Decobox.txt): the page's face. Latin letters, digits and ASCII
+   punctuation only (194 glyphs, one weight); ×, →, ✓, µ, ³ and Hangul fall through to Pretendard */
+@font-face { font-family: "Cafe24 Decobox"; src: url("Cafe24Decobox.ttf") format("truetype"); font-weight: 100 900; font-style: normal; font-display: swap; }
+/* ADCTOX browser UI. Light only. The palette: navy #364F6B (ink), teal #3FC1C9 (accent, Monitor, within limits),
+   light grey #F5F5F5 (page), pink #FC5185 (Avoid, boxed warnings, flagged labs); Not studied stays in plain ink.
+   Text uses darker steps of teal and pink so it reads on white (4.7:1). */
 :root {
-  --page: #15161b; --panel: #1e1f26; --panel-2: #23252d; --sel: #282a34; --well: #191a20;
-  --ink: #d4d4d4; --ink-hi: #f0f0f0; --ink-2: #b4b6bc; --dim: #7f848e; --faint: #565a64;
-  --line: #2c2e38; --line-2: #3a3d49;
-  --amber: #d7a65f; --red: #e06c75; --cyan: #56b6c2; --green: #7fb069; --violet: #c678dd;
-  --glow: #d7a65f; --core: #ffe6bd; --amber-soft: rgba(215, 166, 95, .13); --red-soft: rgba(224, 108, 117, .14);
-  --fig-top: #353845; --fig-bot: #23252e; --fig-shade: rgba(0, 0, 0, .55); --fig-hl: rgba(255, 255, 255, .075);
-  --fig-rim: rgba(255, 255, 255, .07); --fig-line: rgba(212, 212, 212, .17); --grid: rgba(212, 212, 212, .045); --grid-2: rgba(212, 212, 212, .075); --floor: rgba(0, 0, 0, .5);
-  --shadow: 0 24px 60px rgba(0, 0, 0, .45);
-  --sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", Inter, system-ui, sans-serif;
+  --page: #F5F5F5; --panel: #ffffff; --panel-2: #EEF1F4; --sel: #E3F6F7; --well: #F0F2F5;
+  --ink: #364F6B; --ink-hi: #22344A; --ink-2: #4A6582; --dim: #6B7F95; --faint: #AAB7C4;
+  --line: #E1E6EB; --line-2: #CDD6DF;
+  --amber: #178089; --red: #D62E66; --cyan: #178089; --green: #178089; --violet: #4A6582;
+  --teal: #3FC1C9; --pink: #FC5185;
+  --glow: #3FC1C9; --core: #F5F5F5; --amber-soft: rgba(63, 193, 201, .14); --red-soft: rgba(252, 81, 133, .12);
+  --fig-top: #f1f3f6; --fig-bot: #e0e5eb; --fig-shade: rgba(54, 79, 107, .2); --fig-hl: rgba(255, 255, 255, .6);
+  --fig-rim: rgba(255, 255, 255, .9); --fig-line: rgba(54, 79, 107, .18); --grid: rgba(54, 79, 107, .04); --grid-2: rgba(54, 79, 107, .07); --floor: rgba(54, 79, 107, .16);
+  --shadow: 0 24px 60px rgba(54, 79, 107, .16);
+  --sans: "Cafe24 Decobox", "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", Inter, system-ui, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
   --top: 76px; --bar: 58px; --ease: cubic-bezier(.2, .7, .2, 1);
-  color-scheme: dark;
-}
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --page: #fbfbfa; --panel: #ffffff; --panel-2: #f6f6f4; --sel: #f4efe4; --well: #f7f7f5;
-    --ink: #1a1a1a; --ink-hi: #000000; --ink-2: #3c3e44; --dim: #6b707a; --faint: #a3a7ae;
-    --line: #e7e6e2; --line-2: #d6d5cf;
-    --amber: #9c6517; --red: #c23f4b; --cyan: #1b7c89; --green: #4a7f34; --violet: #93439f;
-    --glow: #d58e2e; --core: #fff4e2; --amber-soft: rgba(213, 142, 46, .12); --red-soft: rgba(194, 63, 75, .1);
-    --fig-top: #f1f2f5; --fig-bot: #e2e5ea; --fig-shade: rgba(36, 48, 72, .2); --fig-hl: rgba(255, 255, 255, .6);
-    --fig-rim: rgba(255, 255, 255, .9); --fig-line: rgba(26, 26, 26, .16); --grid: rgba(26, 26, 26, .04); --grid-2: rgba(26, 26, 26, .07); --floor: rgba(30, 40, 60, .16);
-    --shadow: 0 24px 60px rgba(30, 30, 40, .16);
-    color-scheme: light;
-  }
-}
-:root[data-theme="light"] {
-  --page: #fbfbfa; --panel: #ffffff; --panel-2: #f6f6f4; --sel: #f4efe4; --well: #f7f7f5;
-  --ink: #1a1a1a; --ink-hi: #000000; --ink-2: #3c3e44; --dim: #6b707a; --faint: #a3a7ae;
-  --line: #e7e6e2; --line-2: #d6d5cf;
-  --amber: #9c6517; --red: #c23f4b; --cyan: #1b7c89; --green: #4a7f34; --violet: #93439f;
-  --glow: #d58e2e; --core: #fff4e2; --amber-soft: rgba(213, 142, 46, .12); --red-soft: rgba(194, 63, 75, .1);
-  --fig-top: #f1f2f5; --fig-bot: #e2e5ea; --fig-shade: rgba(36, 48, 72, .2); --fig-hl: rgba(255, 255, 255, .6);
-  --fig-rim: rgba(255, 255, 255, .9); --fig-line: rgba(26, 26, 26, .16); --grid: rgba(26, 26, 26, .04); --grid-2: rgba(26, 26, 26, .07); --floor: rgba(30, 40, 60, .16);
-  --shadow: 0 24px 60px rgba(30, 30, 40, .16);
   color-scheme: light;
 }
 
@@ -55,7 +37,7 @@ button { cursor: pointer; }
 [hidden] { display: none !important; }
 .dim { color: var(--dim); }
 .t-red { color: var(--red); } .t-amber { color: var(--amber); } .t-cyan { color: var(--cyan); }
-.t-green { color: var(--green); } .t-violet { color: var(--violet); } .t-dim { color: var(--dim); }
+.t-green { color: var(--green); } .t-ink { color: var(--ink); } .t-violet { color: var(--violet); } .t-dim { color: var(--dim); }
 kbd {
   font: 500 11px/1 var(--mono); padding: 3px 5px 2px; border: 1px solid var(--line-2); border-bottom-width: 2px;
   border-radius: 5px; color: var(--ink-2); background: var(--panel);
@@ -153,8 +135,8 @@ kbd {
 /* ---------------------------------------------------------------- step 1: conditions */
 .s1 { max-width: 700px; margin: 6vh auto 0; }
 .hero { text-align: center; margin-bottom: 30px; }
-.logo { font: 800 58px/1 Inter, system-ui, sans-serif; letter-spacing: .01em; margin: 0; user-select: none; }
-.logo .a { color: var(--cyan); } .logo .b { color: var(--red); }
+.logo { font: 400 58px/1 var(--sans); letter-spacing: .01em; margin: 0; user-select: none; }
+.logo .a { color: var(--teal); } .logo .b { color: var(--pink); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; padding: 0; list-style: none; }
 .chip {
   display: inline-flex; align-items: center; gap: 6px; padding: 4px 4px 4px 13px; border-radius: 999px;
@@ -215,11 +197,11 @@ kbd {
 .lab .num.bad { border-color: var(--red); }
 .lab .unit { font-size: 12.5px; color: var(--dim); line-height: 1.25; min-width: 0; }
 .lab .unit .anc { display: block; color: var(--faint); font-size: 11.5px; }
-.lab .unit .flag { display: block; color: var(--amber); font-size: 12px; font-weight: 600; cursor: help; }
+.lab .unit .flag { display: block; color: var(--red); font-size: 12px; font-weight: 600; cursor: help; }
 .lab .unit .ok { display: block; color: var(--green); font-size: 15px; font-weight: 700; line-height: 1; cursor: help; }
 .lab .num:placeholder-shown:not(:focus) { background: transparent; border-style: dashed; }
 .lab .num.okv { border-color: color-mix(in srgb, var(--green) 55%, transparent); }
-.lab .num.flg { border-color: color-mix(in srgb, var(--amber) 70%, transparent); color: var(--amber); }
+.lab .num.flg { border-color: color-mix(in srgb, var(--red) 70%, transparent); color: var(--red); }
 .lab input.num::placeholder { color: var(--faint); font-size: 13px; text-align: right; }
 .lab .err { grid-column: 1 / -1; color: var(--red); font-size: 12.5px; padding-top: 3px; }
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; height: 32px; background: var(--well); width: max-content; }
@@ -298,7 +280,7 @@ kbd {
 .ctx .kvs li.none { display: list-item; grid-column: 1 / -1; }
 .kvs .kn { color: var(--ink-2); }
 .kvs .kv2 { text-align: right; font-variant-numeric: tabular-nums; }
-.kvs .ko { color: var(--amber); font-size: 13px; }
+.kvs .ko { color: var(--red); font-size: 13px; }
 .gauge { position: relative; height: 6px; border-radius: 3px; background: var(--line); }
 .gauge b { display: block; height: 100%; border-radius: 3px; background: var(--faint); }
 .gauge.amber b { background: var(--amber); } .gauge.red b { background: var(--red); }
@@ -529,14 +511,7 @@ kbd {
 /* ---------------------------------------------------------------- print (the result screen): light, no bars, no body map; the open ADC's detail under the table */
 @media print {
   @page { size: A4 portrait; margin: 12mm 11mm; }
-  :root, :root[data-theme] {
-    --page: #ffffff; --panel: #ffffff; --panel-2: #f6f6f4; --sel: #f4efe4; --well: #f7f7f5;
-    --ink: #1a1a1a; --ink-hi: #000000; --ink-2: #3c3e44; --dim: #6b707a; --faint: #a3a7ae;
-    --line: #e2e1dc; --line-2: #cfcec8;
-    --amber: #9c6517; --red: #c23f4b; --cyan: #1b7c89; --green: #4a7f34; --violet: #93439f;
-    --amber-soft: rgba(213, 142, 46, .12); --red-soft: rgba(194, 63, 75, .1); --shadow: none;
-    color-scheme: light;
-  }
+  :root { --page: #ffffff; --shadow: none; }
   html, body { background: #fff; }
   body { min-height: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
