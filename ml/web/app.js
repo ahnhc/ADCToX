@@ -70,24 +70,28 @@
 
   // ------------------------------------------------------------------ help: a note on dotted titles (hover or focus), one card per step
   // on the first visit (remembered in this browser), and the ? guide in the header
-  const STEP_TIPS = [
-    'Type the patient\'s conditions, symptoms or cancer, in English or Korean. Press Enter to add each one, then PgDn.',
-    'Enter only the values you have; empty boxes are fine. A green box is within the label\'s limits, an amber box flags an organ.',
-    'The AI maps each condition to the organs it affects. Each bar is its confidence; amber marks the organs used.',
-    'Pick the condition to review first: its organs lead the Review order and the ranking. Auto orders the conditions by severity.',
-    'ADCs ranked for this patient. Click a row or press Enter for the label evidence. Hover a dotted title to see what it means.',
+  const STEP_TIPS = [         // one sentence per line
+    'Type the patient\'s conditions, symptoms or cancer, in English or Korean.\nPress Enter to add each one, then PgDn.',
+    'Enter only the values you have. Empty boxes are fine.\nA ✓ box is within the label\'s limits. A pink box flags an organ.',
+    'The AI maps each condition to the organs it affects.\nEach bar is its confidence. Teal marks the organs used.',
+    'Pick the condition to review first. Its organs lead the Review order and the ranking.\nAuto orders the conditions by severity.',
+    'ADCs ranked for this patient.\nClick a row or press Enter for the label evidence.\nHover a dotted title to see what it means.',
   ];
   const TIPS = {
-    'Key values': 'The patient\'s values the selected ADC\'s label looks at. ×ULN on a 0 to 3 scale (ticks at 1× and 1.5×), CLcr on 0 to 120 mL/min (ticks at 30, 60, 90).',
-    'Review order': 'Organs to check first, from the conditions and labs entered. Filled: first; outlined: next.',
-    'Label restriction': 'What the FDA label says about using this ADC with this patient\'s organ function, and the organ behind it. Bars: 1 Monitor, 2 Not studied, 3 Avoid; dashed: a value not entered could raise it.',
-    'Patient organs': 'Label warnings on organs where the patient already has a problem. !! boxed warning, ! warning, +N more (hover it).',
+    'Key values': 'The patient\'s values that the selected ADC\'s label looks at.\n×ULN: 0 to 3, ticks at 1× and 1.5×.\nCLcr: 0 to 120 mL/min, ticks at 30, 60 and 90.',
+    'Review order': 'Organs to check first, from the conditions and labs entered.\nFilled: first. Outlined: next.',
+    'Label restriction': 'What the FDA label says about this ADC with the patient\'s organ function, and the organ behind it.\n1 bar: Monitor\n2 bars: Not studied\n3 bars: Avoid\nDashed: a value not entered could raise it.',
+    'Patient organs': 'Label warnings on organs where the patient already has a problem.\n!! boxed warning\n! warning\n+N: more organs (hover it)',
     'Other': 'Label warnings on the patient\'s other organs.',
-    'Organs': 'The three most likely organs for each condition and the model\'s confidence. Amber: the organs used.',
+    'Organs': 'The three most likely organs for each condition, with the model\'s confidence.\nTeal: the organs used.',
+    'Payload and linker': 'What the ADC delivers, how it is attached, and what it binds.\nThe payload\'s class explains most of the label\'s warnings.',
+    'Pre-treatment checks': 'Baseline tests the label asks for before the first dose.',
+    'Missing inputs': 'Values that could change the Label restriction if entered.',
+    'Warnings on other organs': 'The label\'s warnings on organs where the patient has no known problem.',
     'Read as': 'The disease concept the input was matched to, and where the match came from.',
-    'Indication': 'Whether the ADC is approved for the cancer entered (✓ or ✕), then everything it is approved for.',
+    'Indication': 'Whether the ADC is approved for the cancer entered (✓ or ✕).\nBelow: every approved use, one per line.',
     "Warnings on the patient's organs": 'The label\'s boxed warnings (!!) and warnings (!) on the patient\'s affected organs.',
-    "Trial results on the patient's organs": 'Adverse event rates in the ADC\'s main trial, on the patient\'s organs. Amber: all grades; red: serious; grey: the comparator arm.',
+    "Trial results on the patient's organs": 'Adverse event rates in the ADC\'s main trial, on the patient\'s organs.\nTeal: all grades. Pink: serious. Grey: the comparator arm.',
   };
   const TIP_KEY = 'adctox.tips.v1';
   let seen = {};
@@ -919,7 +923,7 @@
       clear(box);
       const A = S.analysis, reps = A.reports || [];
       const ambText = new Set((A.ambiguous || []).map((a) => a.text));
-      if (reps.some((r) => r.fallback)) box.append(h('p', { class: 'warnline', text: 'Organ judge failed; the MONDO linker was used' }));
+      if (reps.some((r) => r.fallback)) box.append(h('p', { class: 'warnline', text: 'Organ judge failed. The MONDO linker was used.' }));
       const table = h('div', { class: 'review', role: 'table', 'aria-label': 'Organ analysis' },
         h('div', { class: 'rv-head', role: 'row' },
           h('span', { role: 'columnheader', text: 'Input' }),
@@ -1236,7 +1240,7 @@
     const cancers = [...new Set((shownPatient.cancers || []).map((c) => c.name))];
     const verdict = !cancers.length ? null
       : row.indicated === false ? { cls: 't-amber', mark: '✕' } : { cls: 't-green', mark: '✓' };
-    drawerBody.append(section('Indication', verdict ? h('p', { class: 'indv ' + verdict.cls }, h('span', { class: 'im', text: verdict.mark }), cancers.join(', ')) : null, d.indication ? h('p', { class: 'ind', text: d.indication }) : null));
+    drawerBody.append(section('Indication', verdict ? h('p', { class: 'indv ' + verdict.cls }, h('span', { class: 'im', text: verdict.mark }), cancers.join(', ')) : null, d.indication ? h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x }))) : null));
     const rs = d.reasons || [];
     drawerBody.append(section('Label restriction', h('div', { class: 'reasons' }, rs.length ? rs.map((r) => [
       h('span', { class: 'k', text: r.organ }),
@@ -1252,14 +1256,16 @@
     const t = d.trial;
     if (t && t.no_results) drawerBody.append(section("Trial results on the patient's organs", h('p', { class: 'line', text: t.no_results })));
     else if (t && t.trial) {
-      const head = t.line || t.trial;          // recommend.trial_lines' title line
       const scale = t.scale || 100;           // recommend.trial_scale: the bars' full length, the TUI's too
       const bar = (cls, f, ser, pct) => h('div', { class: 'tb ' + cls },
         h('span', { class: 'track' }, h('b', { style: `width:${Math.min(100, f * 100 / scale * 100)}%` }), ser ? h('i', { style: `width:${Math.min(100, ser * 100 / scale * 100)}%` }) : null),
         h('span', { class: 'pc', text: pct }));
       drawerBody.append(section("Trial results on the patient's organs",
-        h('p', { class: 'trial-t', title: t.nct || null, text: head }),
-        h('div', { class: 'tlg', 'aria-hidden': 'true' }, h('span', { class: 'sw adc' }), 'ADC', h('span', { class: 'sw ser' }), 'Serious', h('span', { class: 'sw cmp' }), 'Comparator', h('span', { class: 'sc', text: t.scale_text || '' })),
+        h('p', { class: 'trial-t', title: t.nct || null, text: t.trial }),
+        h('div', { class: 'arms' },
+          h('span', { class: 'sw adc' }), h('span', { text: t.regimen }), h('span', { class: 'n', text: `n=${t.n}` }),
+          t.comparator ? [h('span', { class: 'sw cmp' }), h('span', { text: t.comparator.regimen }), h('span', { class: 'n', text: `n=${t.comparator.n}` })] : null),
+        h('div', { class: 'tlg', 'aria-hidden': 'true' }, h('span', { class: 'sw ser' }), 'Serious part', h('span', { class: 'sc', text: t.scale_text || '' })),
         h('div', { class: 'tr2' }, (t.organs || []).map((o) => [
           h('span', { class: 'k', text: SHORT[o.organ] || o.organ }),
           h('div', { class: 'evs' }, (o.events || []).length ? o.events.map((e) => h('div', { class: 'evt', title: e.text },
@@ -1268,7 +1274,7 @@
             e.comp ? bar('cmp', e.comp[0] / e.comp[1], 0, e.comp_pct) : null)) : h('span', { class: 'dim', text: o.none || o.text || '' }))]))));
     }
     if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m })))));
-    if (d.payload) drawerBody.append(section('Payload and linker', h('p', { class: 'line', text: d.payload.line }), d.payload.note ? h('p', { class: 'note2', text: d.payload.note }) : null));
+    if (d.payload) drawerBody.append(section('Payload and linker', d.payload.rows ? h('div', { class: 'kv3' }, d.payload.rows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : h('p', { class: 'line', text: d.payload.line }), d.payload.note ? h('p', { class: 'note2', text: d.payload.note }) : null));
     if ((d.checks || []).length) drawerBody.append(section('Pre-treatment checks', h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))));
   }
 

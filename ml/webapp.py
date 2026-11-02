@@ -182,7 +182,11 @@ def _detail(RC, row, checks_, notes, values, raw):
     if mech:
         note = mech.get("mechanism_note", "")
         keep = [x for x in re.split(r"(?<=\.)\s+(?=[A-Z])", note) if re.search(re.escape(mech["payload"]) + r"|microtubul|topoisomerase|DNA", x)][:2]
-        payload = dict(line=RC.payload_line(mech), note=" ".join(keep) or None)
+        t = lambda x: RC.MECH_TXT.get(x, x)
+        rows = [["Payload", f"{mech['payload']} ({t(mech['payload_family'])})"], ["Action", t(mech["mechanism"])],
+                ["Linker", f"{t(mech['linker'])}, " + ("cleavable" if mech["linker_cleavable"] == "True" else "non-cleavable")],
+                ["Bystander effect", "yes" if mech["bystander"] == "True" else "no"]] + ([["Target", mech["target"]]] if mech.get("target") else [])
+        payload = dict(line=RC.payload_line(mech), rows=rows, note=" ".join(keep) or None)
     return dict(indication=ind["indication"] if ind else None,
                 reasons=[dict(organ=RC.ORGAN_SHORT[RC.RS.DOMAIN_AXIS[o]] if o in RC.RS.DOMAIN_AXIS else o.capitalize(), domain=o, status=st, basis=b, code=c, sure=sure) for o, st, b, c, sure in evidence],
                 warnings=[dict(organ=a, mark=mark, text=RC.warning_names(row["organs"][a].get("headings", [])))

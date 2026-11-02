@@ -362,7 +362,9 @@ kbd {
 }
 .dr-head .x:hover { color: var(--ink); background: var(--panel-2); }
 .dr-body { flex: 1; overflow: auto; padding: 0 26px 30px; overscroll-behavior: contain; }
-.dr-body .ind { color: var(--dim); font-size: 13px; line-height: 1.55; margin: 0; }
+.dr-body .ind { color: var(--ink-2); font-size: 13px; line-height: 1.45; margin: 0; padding: 0; list-style: none; display: grid; gap: 5px; }
+.dr-body .ind li { position: relative; padding-left: 14px; }
+.dr-body .ind li::before { content: ""; position: absolute; left: 2px; top: .6em; width: 5px; height: 5px; border-radius: 50%; background: var(--faint); }
 .dr-body .indv { font-size: 14px; font-weight: 600; margin: 0 0 6px; display: flex; align-items: center; gap: 8px; }
 .dr-body .indv .im { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; border: 1.5px solid currentColor; flex: none; }
 .dr-body .line.dim { color: var(--dim); }
@@ -381,7 +383,12 @@ kbd {
 .wl { display: grid; grid-template-columns: max-content 2ch minmax(0, 1fr); column-gap: 14px; row-gap: 7px; font-size: 13.5px; }
 .wl .k { color: var(--ink-2); }
 .wl .m { font: 700 12.5px/1.6 var(--mono); letter-spacing: -.12em; }
-.trial-t { font-size: 12.5px; margin: 0 0 10px; line-height: 1.5; color: var(--dim); }
+.trial-t { font-size: 14px; font-weight: 600; margin: 0 0 8px; color: var(--ink-hi); }
+.arms { display: grid; grid-template-columns: 10px 1fr auto; align-items: baseline; gap: 6px 10px; font-size: 13px; color: var(--ink-2); line-height: 1.4; margin: 0 0 14px; }
+.arms .sw { width: 10px; height: 6px; border-radius: 2px; align-self: center; }
+.kv3 { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; font-size: 13px; line-height: 1.4; margin: 0 0 10px; }
+.kv3 .k { color: var(--dim); }
+.arms .n { color: var(--dim); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .tlg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--dim); margin: 0 0 12px; }
 .tlg .sw { width: 10px; height: 6px; border-radius: 2px; margin-left: 8px; } .tlg .sw:first-child { margin-left: 0; }
 .tlg .sc { margin-left: auto; color: var(--faint); font-variant-numeric: tabular-nums; }
@@ -543,7 +550,7 @@ kbd {
 .help:hover, .help:focus-visible { border-color: var(--amber); color: var(--amber); outline: none; }
 .tipped { cursor: help; text-decoration: underline dotted var(--faint); text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .tipped:focus-visible { outline: none; text-decoration-color: var(--amber); }
-.tipbox { position: fixed; z-index: 60; max-width: 320px; padding: 10px 12px; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--line-2);
+.tipbox { white-space: pre-line; position: fixed; z-index: 60; max-width: 320px; padding: 10px 12px; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--line-2);
   box-shadow: var(--shadow); color: var(--ink); font: 400 12.5px/1.55 var(--sans); letter-spacing: 0; text-transform: none; pointer-events: none; white-space: normal; }
 .stepcard { position: fixed; z-index: 40; right: 24px; bottom: calc(var(--bar) + 18px); width: min(340px, calc(100vw - 32px)); padding: 14px 16px 12px;
   border-radius: 10px; background: var(--panel-2); border: 1px solid var(--line-2); border-left: 3px solid var(--amber); box-shadow: var(--shadow);
@@ -551,7 +558,7 @@ kbd {
 .stepcard .sc-head { display: flex; gap: 10px; align-items: baseline; margin-bottom: 6px; }
 .stepcard .sc-n { color: var(--dim); font-size: 11.5px; font-variant-numeric: tabular-nums; }
 .stepcard .sc-t { color: var(--amber); font-weight: 650; }
-.stepcard p { margin: 0 0 10px; }
+.stepcard p { margin: 0 0 10px; white-space: pre-line; }
 .sc-row, .g-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 button.link { background: none; border: 0; padding: 4px 0; color: var(--dim); font: inherit; font-size: 12.5px; cursor: pointer; }
 button.link:hover, button.link:focus-visible { color: var(--ink); outline: none; text-decoration: underline; }
@@ -568,7 +575,7 @@ button.ok:hover, button.ok:focus-visible { background: color-mix(in srgb, var(--
 .guide .x { background: none; border: 0; color: var(--dim); font-size: 20px; cursor: pointer; }
 .g-steps { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
 .g-steps b { display: block; color: var(--ink-hi); font-weight: 650; }
-.g-steps span { color: var(--ink-2); }
+.g-steps span { color: var(--ink-2); white-space: pre-line; }
 .g-keys { display: grid; grid-template-columns: max-content 1fr; gap: 7px 14px; align-items: center; color: var(--ink-2); }
 .g-keys > span { display: inline-flex; gap: 6px; align-items: center; }
 .g-keys .lv { margin-right: 0; }
