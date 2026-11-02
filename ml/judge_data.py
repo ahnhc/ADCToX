@@ -142,7 +142,7 @@ def pairs(drop=frozenset(), seed=7, items_=None):
     return out
 
 
-EXTRA_PAIRS = ["entypo", "lrabr"]
+EXTRA_PAIRS = ["entypo", "lrabr", "qv", "qvnotypo"]
 SPELL = [("haem", "hem"), ("oe", "e"), ("ae", "e"), ("our", "or"), ("ise", "ize"), ("tre", "ter"), ("ph", "f")]
 
 
@@ -164,7 +164,9 @@ def typo(s, rng):
 def extra_pairs(kinds, seed=7):
     """opt-in name pairs (ml/scratch_judge.py --add-pairs), from training concepts only:
     entypo  a misspelling of an English MONDO name or synonym -> the name (up to 3 per concept)
-    lrabr   an abbreviation from the SPECIALIST lexicon (LRABR) whose expansion is a MONDO name or synonym of exactly one concept -> its name"""
+    lrabr   an abbreviation from the SPECIALIST lexicon (LRABR) whose expansion is a MONDO name or synonym of exactly one concept -> its name
+    qv      typed variants that passed the blind check (data/curated/query_variants/accepted.jsonl, ml/query_variants.py) -> the name
+    qvnotypo  the same without the typo category"""
     import tuning_ledger as TL
     T, held, _, _ = base(); ev = TL.eval_concepts(); rng = random.Random(seed); out = []
     def add(a, b, t, src):
@@ -185,4 +187,8 @@ def extra_pairs(kinds, seed=7):
             if len(f) > 4 and f[2] in ("acronym", "abbreviation"): ab.setdefault(f[1], set()).update(by.get(TL.norm(f[4]), ()))
         for a_, ts in ab.items():
             if len(ts) == 1: t = next(iter(ts)); add(a_, ok[t]["name"], t, "lrabr")
+    qv = P.REPO + "data/curated/query_variants/accepted.jsonl"
+    if ("qv" in kinds or "qvnotypo" in kinds) and os.path.exists(qv):
+        for r in map(json.loads, open(qv, encoding="utf-8")):
+            if r["id"] in ok and ("qv" in kinds or r["category"] != "typo"): add(r["query"], ok[r["id"]]["name"], r["id"], "qv")
     return out
