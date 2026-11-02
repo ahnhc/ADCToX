@@ -67,4 +67,17 @@ jobs:
           $r = Invoke-WebRequest -UseBasicParsing "$url/api/suggest?q=cirrhosis"
           "/api/suggest $($r.StatusCode) $($r.Content.Substring(0, [Math]::Min(200, $r.Content.Length)))"
           if ($r.Content -notmatch 'irrhosis') { throw "no suggestion for cirrhosis" }
+          $edge = 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
+          & $edge --headless=new --disable-gpu --virtual-time-budget=8000 --window-size=1440,900 --screenshot="$PWD\web.png" $url | Out-Null
+          $dom = & $edge --headless=new --disable-gpu --virtual-time-budget=8000 --dump-dom $url | Out-String
+          "DOM: $($dom.Length) chars, crumbs: $($dom -match 'class=`"crumbs`"'), search: $($dom -match 'Condition, symptom or cancer')"
+          Get-Content web.out, web.err -ErrorAction SilentlyContinue | Select-Object -Last 20
           Stop-Process -Id $p.Id -Force
+          if ($dom -notmatch 'class="crumbs"') { $dom.Substring(0, [Math]::Min(3000, $dom.Length)); throw "Edge did not draw the page" }
+      - name: Keep the page screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-web
+          path: web.png
+          if-no-files-found: ignore
