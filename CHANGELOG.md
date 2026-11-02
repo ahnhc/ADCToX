@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.8: Trial rates as dots under each warning, and the page behind an SSH tunnel (Ubuntu, macOS and Windows)
+
+- **Trial results sit under the label warning they measure**: 20 dots, one per 5 patients in 100, pink for the serious ones, and a line such as "6 in 100 had pneumonitis, 2 serious". An event about as common on the other treatment is grey and says "as on other treatment". The trial, both arms and their rates are on hover. The separate Trial results section, its bars and its scale are gone.
+- **The page opens behind an SSH tunnel** (`ssh -L 8080:127.0.0.1:<port>`): the server answers 127.0.0.1, localhost and [::1] on any port. Other host names are still refused, and an API call must come from the page's own address.
+- **ADC detail reads as lists**: approved uses one per line, Payload and linker as Payload, Action, Linker, Bystander effect and Target rows, warning names joined with commas.
+- **Tips and notes have one sentence per line**, with no semicolons, and the colours they name are the page's (teal, pink). New notes on Payload and linker, Pre-treatment checks, Missing inputs and Warnings on other organs.
+
 ## 0.6.7: The browser screens in English, with help (Ubuntu, macOS and Windows)
 
 - **The browser page is in English**: steps Conditions, Labs, Organs, Priority, Results; keys, buttons, errors and progress lines too. Korean input is still read, and comes back under its English name (suggestions, chips, Read as). The terminal screens are unchanged.
