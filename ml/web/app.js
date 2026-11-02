@@ -90,8 +90,7 @@
     'Warnings on other organs': 'The label\'s warnings on organs where the patient has no known problem.',
     'Read as': 'The disease concept the input was matched to, and where the match came from.',
     'Indication': 'Whether the ADC is approved for the cancer entered (✓ or ✕).\nBelow: every approved use, one per line.',
-    "Warnings on the patient's organs": 'The label\'s boxed warnings (!!) and warnings (!) on the patient\'s affected organs.',
-    "Trial results on the patient's organs": 'Adverse event rates in the ADC\'s main trial, on the patient\'s organs.\nTeal: all grades. Pink: serious. Grey: the comparator arm.',
+    "Warnings on the patient's organs": 'The label\'s boxed warnings (!!) and warnings (!) on the patient\'s affected organs.\nDots: how many in 100 patients had it in the ADC\'s main trial. Pink: serious.\nHover the dots for the trial and the other arm.',
   };
   const TIP_KEY = 'adctox.tips.v1';
   let seen = {};
@@ -1246,33 +1245,38 @@
       h('span', { class: 'k', text: r.organ }),
       h('span', { class: `s t-${TONE[r.code] || 'dim'}` + (r.sure ? ' sure' : ''), text: r.status }),
       h('span', { class: 'b', text: r.basis })]) : h('span', { class: 'solo', text: 'No applicable label restriction' }))));
-    const wlist = (ws) => h('div', { class: 'wl' }, ws.map((w) => [
-      h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
-      h('span', { class: 'm ' + (w.mark === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }),
-      h('span', { text: w.text })]));
-    const ws = d.warnings || [], wo = d.other_warnings || [];
-    drawerBody.append(section("Warnings on the patient's organs", ws.length ? wlist(ws) : h('p', { class: 'line dim', text: 'None' })));
-    if (wo.length) drawerBody.append(section('Warnings on other organs', wlist(wo)));
-    const t = d.trial;
-    if (t && t.no_results) drawerBody.append(section("Trial results on the patient's organs", h('p', { class: 'line', text: t.no_results })));
-    else if (t && t.trial) {
-      const scale = t.scale || 100;           // recommend.trial_scale: the bars' full length, the TUI's too
-      const bar = (cls, f, ser, pct) => h('div', { class: 'tb ' + cls },
-        h('span', { class: 'track' }, h('b', { style: `width:${Math.min(100, f * 100 / scale * 100)}%` }), ser ? h('i', { style: `width:${Math.min(100, ser * 100 / scale * 100)}%` }) : null),
-        h('span', { class: 'pc', text: pct }));
-      drawerBody.append(section("Trial results on the patient's organs",
-        h('p', { class: 'trial-t', title: t.nct || null, text: t.trial }),
-        h('div', { class: 'arms' },
-          h('span', { class: 'sw adc' }), h('span', { text: t.regimen }), h('span', { class: 'n', text: `n=${t.n}` }),
-          t.comparator ? [h('span', { class: 'sw cmp' }), h('span', { text: t.comparator.regimen }), h('span', { class: 'n', text: `n=${t.comparator.n}` })] : null),
-        h('div', { class: 'tlg', 'aria-hidden': 'true' }, h('span', { class: 'sw ser' }), 'Serious part', h('span', { class: 'sc', text: t.scale_text || '' })),
-        h('div', { class: 'tr2' }, (t.organs || []).map((o) => [
-          h('span', { class: 'k', text: SHORT[o.organ] || o.organ }),
-          h('div', { class: 'evs' }, (o.events || []).length ? o.events.map((e) => h('div', { class: 'evt', title: e.text },
-            h('div', { class: 'term', text: e.term }),
-            bar('adc' + (e.serious ? ' all-ser' : ''), e.a / e.n, e.serious ? 0 : (e.sa || 0) / e.n, e.pct),
-            e.comp ? bar('cmp', e.comp[0] / e.comp[1], 0, e.comp_pct) : null)) : h('span', { class: 'dim', text: o.none || o.text || '' }))]))));
+    // the main trial's rate for each warning, as 100 dots (one per patient in 100); pink dots the serious ones. The comparator
+    // is not drawn: an event about as common on the other treatment is greyed and says so; the trial and both arms are on hover
+    const t = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
+    const evOf = {};
+    for (const o of (t && t.organs) || []) if ((o.events || []).length) evOf[o.organ] = o.events;
+    const per100 = (a, n) => 100 * a / n;
+    function dots(e) {
+      const r = per100(e.a, e.n), sv = e.serious ? r : per100(e.sa || 0, e.n), c = e.comp ? per100(e.comp[0], e.comp[1]) : null;
+      const same = c !== null && r >= 1 && c >= r * 0.6;
+      const n = Math.round(r), ns = Math.min(n, Math.round(sv));
+      const strip = h('span', { class: 'dots', 'aria-hidden': 'true' }, Array.from({ length: 100 }, (_, i) => h('i', { class: i < ns ? 'sv' : i < n ? 'on' : null })));
+      const count = r < 1 ? 'Under 1 in 100' : `${n} in 100`;
+      const tip = `${t.trial}: ${e.term}\n${t.regimen}: ${e.pct} (n=${t.n})` + (e.comp ? `\n${t.comparator.regimen}: ${e.comp_pct} (n=${t.comparator.n})` : '');
+      return h('div', { class: 'risk' + (same ? ' same' : ''), title: tip }, strip,
+        h('span', { class: 'rt' }, h('b', { text: count }), ` had ${e.term}`, ns && !same ? h('span', { class: 't-red', text: `, ${ns} serious` }) : null,
+          same ? h('span', { class: 'dim', text: ', as on other treatment' }) : null));
     }
+    const done = new Set();
+    const wrow = (organ, mark, text) => {
+      const evs = done.has(organ) ? [] : evOf[organ] || [];
+      done.add(organ);
+      return [h('span', { class: 'k', text: SHORT[organ] || organ }),
+        h('span', { class: 'm ' + (mark === '!!' ? 't-red' : 't-amber'), text: mark }),
+        h('div', { class: 'wt' }, h('span', { text: text.replace(/;\s*/g, ', ') }), evs.map(dots))];
+    };
+    const ws = d.warnings || [], wo = d.other_warnings || [];
+    const rows = ws.map((w) => wrow(w.organ, w.mark.trim(), w.text));
+    for (const o in evOf) if (!done.has(o)) rows.push(wrow(o, '', 'No label warning'));       // a patient organ the label is silent on
+    drawerBody.append(section("Warnings on the patient's organs", rows.length ? h('div', { class: 'wl' }, rows) : h('p', { class: 'line dim', text: 'None' }),
+      t ? h('p', { class: 'src', text: `Dots: patients in 100 with the event in ${t.trial}` }) : null));
+    if (wo.length) drawerBody.append(section('Warnings on other organs', h('div', { class: 'wl' }, wo.map((w) => [h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
+      h('span', { class: 'm ' + (w.mark === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }), h('span', { text: w.text.replace(/;\s*/g, ', ') })]))));
     if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m })))));
     if (d.payload) drawerBody.append(section('Payload and linker', d.payload.rows ? h('div', { class: 'kv3' }, d.payload.rows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : h('p', { class: 'line', text: d.payload.line }), d.payload.note ? h('p', { class: 'note2', text: d.payload.note }) : null));
     if ((d.checks || []).length) drawerBody.append(section('Pre-treatment checks', h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))));
