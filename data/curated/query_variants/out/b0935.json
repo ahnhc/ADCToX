@@ -1,0 +1,142 @@
+{
+ "batch": 935,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:1060178",
+   "query": "sudden onset OCD in children",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1060194",
+   "query": "ALPS type 1A",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Uses acronym ALPS; abbrev rather than spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1060194",
+   "query": "ALPS-FAS",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1060220",
+   "query": "type 1 diastematomyelia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1060221",
+   "query": "type 2 diastematomyelia",
+   "category": "variant",
+   "pick": "A",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Diastematomyelia classically means type I; type 2 pairing is a misnomer",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1060222",
+   "query": "SCM type 1.5",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1060229",
+   "query": "nicotine poisoning from handling wet tobacco leaves",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1060249",
+   "query": "SHH-activated ATRT",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Built on acronym ATRT; abbrev, not variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1060250",
+   "query": "MYC-activated ATRT",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Built on acronym ATRT; abbrev, not variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1060251",
+   "query": "TYR-activated ATRT",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Built on acronym ATRT; abbrev, not variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1060252",
+   "query": "intracranial angiomatoid fibrous histiocytoma",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1060253",
+   "query": "DMPR",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Not an established acronym; DMTPR is used; ambiguous",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

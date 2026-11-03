@@ -1,0 +1,265 @@
+{
+ "batch": 936,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:1060258",
+   "query": "BH4 non-responder PKU",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1060259",
+   "query": "PAH def",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "\"def\" is rarely used; PAH also means pulmonary arterial hypertension",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1060259",
+   "query": "phenylalanine-4-hydroxylase deficiency",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1060261",
+   "query": "trabecular-type juvenile ossifying fibroma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1060262",
+   "query": "psammomatoid juvenile ossifying fibroma",
+   "category": "variant",
+   "pick": "E",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1060270",
+   "query": "optic nerve damaged by head trauma",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:7770749",
+   "query": "EDS with a curved spine from birth",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:7770749",
+   "query": "Ehlers-Danlos syndrome type VI",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000001",
+   "query": "staph discitis",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000001",
+   "query": "staphylococcal discitis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000001",
+   "query": "staph infection in a spinal disc",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000002",
+   "query": "E. coli discitis",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000002",
+   "query": "disc infection from E coli",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000003",
+   "query": "pneumococcal discitis",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000003",
+   "query": "spinal disc infection from pneumococcus",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000004",
+   "query": "salmonella infection of a spinal disc",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000005",
+   "query": "fungal infection of a spinal disc",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000013",
+   "query": "noncirrhotic portal hypertension type 1",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000014",
+   "query": "partial colour blindness",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000014",
+   "query": "can only tell some colours apart",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "vague; fits partial, general color vision disorder, or tritan",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000111",
+   "query": "Guadalajara camptodactyly syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000137",
+   "query": "megalencephalic leukoencephalopathy",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both D (word-order form) and E (MLC) equally",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:1060267",
+   "query": "McCune Albright syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0000137",
+   "query": "MLC",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}
