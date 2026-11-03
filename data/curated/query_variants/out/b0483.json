@@ -1,0 +1,156 @@
+{
+ "batch": 483,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0015791",
+   "query": "gonadotrophin-independent precocious puberty",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015796",
+   "query": "ALI",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015811",
+   "query": "Berti's lymphoma",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "No known 'Berti's lymphoma' eponym; invented",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015813",
+   "query": "primary cutaneous marginal zone lymphoma",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015820",
+   "query": "PCBCL",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015820",
+   "query": "cutaneous B-cell lymphoma",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015892",
+   "query": "GH insensitivity syndrome",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015892",
+   "query": "growth hormone resistance",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015892",
+   "query": "child's body does not respond to growth hormone",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015900",
+   "query": "low aldosterone",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016032",
+   "query": "born without a thigh bone",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0015774",
+   "query": "thoracoabdominal enteric duplication",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0015802",
+   "query": "autosomal dominant nonsyndromic intellectual disability",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0015821",
+   "query": "MF",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0015821",
+   "query": "mycosis fungoides",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

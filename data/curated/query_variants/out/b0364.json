@@ -1,0 +1,65 @@
+{
+ "batch": 364,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0003834",
+   "query": "gastric cardia ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "ca fits cancer or carcinoma: A, E and F all fit",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003837",
+   "query": "pituitary thyrotropinoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym term, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003841",
+   "query": "fatty tumor of the heart",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003860",
+   "query": "CPA meningioma",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003866",
+   "query": "bone cancer in the liver",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "reads as liver metastasis from bone cancer, not osteosarcoma of liver",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

@@ -1,0 +1,259 @@
+{
+ "batch": 487,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0016431",
+   "query": "CMT type 2M",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "uses the abbreviation CMT, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016441",
+   "query": "acquired Gronblad-Strandberg syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016442",
+   "query": "juvenile elastoma",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "a synonym name, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016442",
+   "query": "Weidmann juvenile elastoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016446",
+   "query": "loose skin that developed in adulthood",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016446",
+   "query": "cutis laxa, acquired",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016447",
+   "query": "WFPN",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016447",
+   "query": "white fibrous papulosis",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016450",
+   "query": "cold autoimmune haemolytic anaemia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016451",
+   "query": "sleeping more than 10 hours and still sleepy",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016451",
+   "query": "IHS with long sleep time",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "IHS is not the abbreviation for idiopathic hypersomnia; IH is. Also pick A is wrong for 'with long sleep time'; correct is E",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016452",
+   "query": "IHS without long sleep time",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "IHS is not a real abbreviation for idiopathic hypersomnia; IH is",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016454",
+   "query": "CMT2B5",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016464",
+   "query": "type B insulin resistance syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016467",
+   "query": "Accutane birth defects",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016467",
+   "query": "accutane embryopathy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016468",
+   "query": "infectious botulism",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "also fits intestinal and infant botulism",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016469",
+   "query": "vascular-like EDS",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016470",
+   "query": "EDS/OI overlap syndrome",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016487",
+   "query": "moderate beta thalassemia",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits intermedia and dominant beta-thalassemia",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016487",
+   "query": "beta thal intermedia",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016487",
+   "query": "beta-thalassaemia intermedia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0016449",
+   "query": "middermal elastolysis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

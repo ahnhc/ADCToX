@@ -1,0 +1,117 @@
+{
+ "batch": 912,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0800470",
+   "query": "TUBB4A-related disorder",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0800472",
+   "query": "CYP1B1-related congenital glaucoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0800475",
+   "query": "NACC1-related disorder",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0800483",
+   "query": "Guion-Almeida mandibulofacial dysostosis",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Guion-Almeida type is EFTUD2-related; no candidate matches",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0800483",
+   "query": "MFDGA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "MFDGA is EFTUD2 disease; not among candidates",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0800485",
+   "query": "AKT3-related overgrowth",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0800496",
+   "query": "autosomal dominant lateral temporal epilepsy",
+   "category": "variant",
+   "pick": "E",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0800503",
+   "query": "TMEM63B-related DEE",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Uses abbreviation DEE, so category should be abbrev, not variant",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0800479",
+   "query": "benign neonatal seizures",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0800489",
+   "query": "genetic epilepsy with febrile seizures plus",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0800496",
+   "query": "ADLTE",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

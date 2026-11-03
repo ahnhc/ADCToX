@@ -1,0 +1,105 @@
+{
+ "batch": 232,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0010672",
+   "query": "MIDAS",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010680",
+   "query": "X-EDMD",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both A and B equally; E also X-linked",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010680",
+   "query": "emerinopathy, X-linked",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both A and B equally (EMD gene)",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010706",
+   "query": "FXPOI",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010706",
+   "query": "fragile X related early menopause",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010712",
+   "query": "X-linked panhypopituitarism",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010717",
+   "query": "PDHA1 deficiency",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010733",
+   "query": "X-linked HSP",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "several X-linked HSP types exist; not specific to SPG2",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0010699",
+   "query": "Rosenberg-Chutorian syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,215 @@
+{
+ "batch": 499,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0017557",
+   "query": "bilateral Madelung deformity",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017558",
+   "query": "unilateral congenital elbow dislocation",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017559",
+   "query": "bilateral congenital elbow dislocation",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017563",
+   "query": "bilateral congenital patella dislocation",
+   "category": "variant",
+   "pick": "A",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017564",
+   "query": "unilateral macrodactyly of fingers",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017565",
+   "query": "bilateral macrodactyly of fingers",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017566",
+   "query": "unilateral macrodactyly of toes",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017567",
+   "query": "bilateral macrodactyly of toes",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017591",
+   "query": "combined pulmonary fibrosis and emphysema",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017594",
+   "query": "indolent B-cell non-Hodgkin's lymphoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017595",
+   "query": "aggressive B-cell non-Hodgkin's lymphoma",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017601",
+   "query": "pyothorax-associated lymphoma",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Not a spelling variant; synonym for chronic inflammation DLBCL, but not candidate-named; eponym-ish",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017611",
+   "query": "pituitary tumour",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017636",
+   "query": "haemiparkinsonism-haemiatrophy syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017638",
+   "query": "manganese toxicity",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017640",
+   "query": "cianide-induced parkinsonism",
+   "category": "typo",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017658",
+   "query": "startle disease",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017658",
+   "query": "hypererekplexia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Garbled misspelling, not a variant; typo category and implausible form",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0017658",
+   "query": "stiff baby syndrome",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

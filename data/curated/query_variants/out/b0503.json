@@ -1,0 +1,178 @@
+{
+ "batch": 503,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0018085",
+   "query": "umbilical cord ulceration-intestinal atresia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018106",
+   "query": "xanthinuria, hereditary",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018106",
+   "query": "inherited xanthine stone disease",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Contrived phrase; fits hereditary, type I, type II or xanthinuria equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018135",
+   "query": "OCA type 1",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018135",
+   "query": "type 1 albinism",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Word-order variant, not lay wording",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018167",
+   "query": "cutis verticis gyrata, primary essential",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018178",
+   "query": "Waldmann's disease",
+   "category": "variant",
+   "pick": "B",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018180",
+   "query": "staph scarlet fever",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018190",
+   "query": "childhood-onset autosomal dominant proximal spinal muscular atrophy",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018227",
+   "query": "HUV",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018227",
+   "query": "HUCV",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; real usage is HUVS or HUV",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018233",
+   "query": "otopalatodigital syndrome spectrum",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018269",
+   "query": "WPS",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0018168",
+   "query": "primary nonessential cutis verticis gyrata",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0018172",
+   "query": "malignant sex cord-stromal tumour of the ovary",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0018227",
+   "query": "MacDuffie syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0018271",
+   "query": "pPNET",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

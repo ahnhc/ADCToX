@@ -1,0 +1,153 @@
+{
+ "batch": 206,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0008381",
+   "query": "pericentral pigmentary retinopathy, dominant",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008386",
+   "query": "Axenfeld-Rieger type 1",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008388",
+   "query": "ringed hair",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008390",
+   "query": "Rombo's syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008393",
+   "query": "Rubinstein-Taybi type 1",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "type 1 fits B but 16p13.3 deletion (A) also involves CREBBP",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008395",
+   "query": "Ruvalcaba's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both Ruvalcaba syndrome (C) and Bannayan-Riley-Ruvalcaba (A)",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008402",
+   "query": "cleft palate with unusually large ears and a small head",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008408",
+   "query": "scapuloperoneal SMA",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both dominant (C) and recessive (F) forms, and parent SMA",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008416",
+   "query": "Huriez's syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008422",
+   "query": "autosomal dominant sideroblastic anaemia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008425",
+   "query": "Shprintzen-Goldberg type omphalocele syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008429",
+   "query": "Merten-Singleton dysplasia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008439",
+   "query": "spastic paraplegia-epilepsy-ID syndrome",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'ID' is generic shorthand, not an established form for this syndrome name",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

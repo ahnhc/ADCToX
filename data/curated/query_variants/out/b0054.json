@@ -1,0 +1,244 @@
+{
+ "batch": 54,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0005832",
+   "query": "infected lymph vessels",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005851",
+   "query": "Miller Fisher",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "eponym clipped of 'syndrome'; fits variant, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005859",
+   "query": "espundia",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "espundia is a clinical/regional term, not lay",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005888",
+   "query": "parrot fever",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005920",
+   "query": "Pf malaria",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005920",
+   "query": "malignant malaria",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005921",
+   "query": "Pv malaria",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005921",
+   "query": "benign tertian fever",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005977",
+   "query": "tabes",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005989",
+   "query": "toxo",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005991",
+   "query": "five-day fever",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005996",
+   "query": "whipworm",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "whipworm is a lay common name, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006468",
+   "query": "ATC",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006468",
+   "query": "undifferentiated thyroid cancer",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "reworded synonym of anaplastic; not spelling/word-order variant, closer to lay",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006541",
+   "query": "skin that blisters very easily",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006583",
+   "query": "NL",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "NL ambiguous; also fits other necrobiosis forms, rarely used alone",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006601",
+   "query": "PR",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "PR ambiguous; pityriasis rosea vs others, also unrelated meanings",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006601",
+   "query": "christmas tree rash",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006676",
+   "query": "berberi",
+   "category": "typo",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0005823",
+   "query": "Legionnaires' disease",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005851",
+   "query": "MFS",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005893",
+   "query": "pancreatic NEC",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005966",
+   "query": "splenic cancer",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

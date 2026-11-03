@@ -1,0 +1,120 @@
+{
+ "batch": 230,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0010490",
+   "query": "congenital disorder of glycosylation 1y",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'1y' is an obscure subtype suffix, not a natural variant; unclear which candidate",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010491",
+   "query": "XLAG",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010491",
+   "query": "Xq26 microdup",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010503",
+   "query": "Bartter type 5",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010503",
+   "query": "MAGED2-related Bartter syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010507",
+   "query": "Xq25 dup",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010507",
+   "query": "Xq25 microduplication",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010520",
+   "query": "XLAS",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010520",
+   "query": "X-linked Alport",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010576",
+   "query": "DFN3",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "DFN3 is an abbreviation, not a variant; fits both A and B",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

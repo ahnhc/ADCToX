@@ -1,0 +1,281 @@
+{
+ "batch": 836,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0004348",
+   "query": "retinal telangiectases",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004450",
+   "query": "blocked carotid artery",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004450",
+   "query": "CAO",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "CAO is ambiguous, e.g. central artery occlusion, chronic airway obstruction; not standard for carotid",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004450",
+   "query": "carotid occlusion",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004571",
+   "query": "bowel impaction",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004591",
+   "query": "pustular psoriasis of pregnancy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004622",
+   "query": "intestinal angina",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Clinical synonym, not lay wording",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004622",
+   "query": "chronic mesenteric ischaemia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004698",
+   "query": "stage 0 bowel cancer",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004698",
+   "query": "intestinal carcinoma in situ",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004732",
+   "query": "stage 0 kidney cancer",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Stage 0 kidney cancer is not a real clinical phrasing",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004732",
+   "query": "renal carcinoma in situ",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004762",
+   "query": "varicose veins in the pelvis",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004762",
+   "query": "pelvic venous congestion syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004826",
+   "query": "stone stuck in the urethra",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004826",
+   "query": "urethral stone",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Plain synonym wording, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004826",
+   "query": "urethral calculi",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004865",
+   "query": "blue eardrum",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004865",
+   "query": "blue eardrum syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004871",
+   "query": "clotted hemorrhoid",
+   "category": "lay",
+   "pick": "F",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004871",
+   "query": "blood blister at the anal opening",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits perianal hematoma and thrombosed hemorrhoid equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004871",
+   "query": "thrombosed ext hem",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004874",
+   "query": "ganglion cyst",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004879",
+   "query": "senile choroidal atrophy",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0004874",
+   "query": "ganglion",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

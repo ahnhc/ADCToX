@@ -1,0 +1,127 @@
+{
+ "batch": 699,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0016986",
+   "query": "CSMH",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016991",
+   "query": "ANE",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "ANE fits childhood, familial and encephalitis forms about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016991",
+   "query": "acute necrotizing encephalopathy",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits childhood and familial forms; encephalitis/encephalopathy also close",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016993",
+   "query": "peeling skin syndrome type C",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016996",
+   "query": "natural killer cell enteropathy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017012",
+   "query": "partial trisomy 1p",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017051",
+   "query": "maple syrup urine disease, classic type",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017052",
+   "query": "maple syrup urine disease, intermediate type",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017053",
+   "query": "maple syrup urine disease, intermittent type",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017055",
+   "query": "mycophenolate embryopathy",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0016994",
+   "query": "Taybi-Linder syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

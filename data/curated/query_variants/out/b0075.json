@@ -1,0 +1,145 @@
+{
+ "batch": 75,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0011035",
+   "query": "NF-Noonan syndrome",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011066",
+   "query": "Charcot-Marie-Tooth 4B1",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011085",
+   "query": "Charcot-Marie-Tooth disease 4D",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011185",
+   "query": "Thiel-Behnke dystrophy",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Dropping 'corneal' is clipped wording, but it is not standard clinical shorthand; closer to variant.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011214",
+   "query": "progressive familial intrahepatic cholestasis type III",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011229",
+   "query": "EPEMA",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011266",
+   "query": "myotonic dystrophy type II",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011291",
+   "query": "ALG6 deficiency",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "'Deficiency' phrasing is a variant name, not clipped shorthand.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011301",
+   "query": "pseudohypoparathyroidism 1B",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011331",
+   "query": "congenital chylotorax",
+   "category": "typo",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0011035",
+   "query": "neurofibromatosis Noonan syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0011185",
+   "query": "Thiel Behnke corneal dystrophy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0011208",
+   "query": "MAP",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0011244",
+   "query": "Marshall Smith syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,243 @@
+{
+ "batch": 469,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0014836",
+   "query": "Charcot Marie Tooth 2CC",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014837",
+   "query": "SRC thrombocytopenia",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014838",
+   "query": "CSS5",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014838",
+   "query": "Coffin Siris 5",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014840",
+   "query": "TCF3 agammaglobulinemia",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014841",
+   "query": "nonphotosensitive trichothiodystrophy 6",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014842",
+   "query": "TBL1XR1-related intellectual disability",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014845",
+   "query": "autosomal recessive spinocerebellar ataxia 22",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014848",
+   "query": "YHFS",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "YHFS is not a standard abbreviation; also fits C and D",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014848",
+   "query": "You-Hoover-Fong",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C and D (TELO2-related)",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014851",
+   "query": "infantile hypercalcemia 2",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014853",
+   "query": "autosomal dominant nonsyndromic hearing loss type 70",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014854",
+   "query": "CD164 deafness",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014857",
+   "query": "RERE syndrome",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014858",
+   "query": "HIVEP2-related intellectual disability",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014859",
+   "query": "FRRS1L epileptic encephalopathy",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014860",
+   "query": "SEC63 polycystic liver disease",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014862",
+   "query": "spastic quadriplegic cerebral palsy 3",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014869",
+   "query": "hydrops lactic acidosis sideroblastic anemia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014874",
+   "query": "pontocerebellar hypoplasia 2F",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0014871",
+   "query": "AGBL5 retinitis pigmentosa",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0014872",
+   "query": "congenital stationary night blindness 1H",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

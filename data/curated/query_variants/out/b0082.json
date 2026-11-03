@@ -1,0 +1,336 @@
+{
+ "batch": 82,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0013280",
+   "query": "myxoid type liposarcoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013296",
+   "query": "myeloid neoplasm with FGFR1 rearrangement",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013300",
+   "query": "unusually wide mouth",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013300",
+   "query": "large mouth birth defect",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013300",
+   "query": "Tessier number 7 cleft",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Tessier 7 not a candidate; only number 5 listed",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013301",
+   "query": "congenital aromatase deficiency",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013310",
+   "query": "cytochrome P450 oxidoreductase deficiency",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013357",
+   "query": "NF1 microdeletion",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "NF1 is an abbreviation but query is a descriptive phrase; borderline abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013357",
+   "query": "17q11.2 microdel",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013361",
+   "query": "FII deficiency",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013361",
+   "query": "prothrombin def",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both congenital and acquired prothrombin deficiency",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013361",
+   "query": "prothrombin deficiency, congenital",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013400",
+   "query": "CYP11A1 deficiency",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013400",
+   "query": "side-chain cleavage enzyme deficiency",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013417",
+   "query": "C3 def",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013417",
+   "query": "complement C3 deficiency",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013424",
+   "query": "3p minus syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013481",
+   "query": "13q14 del",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013481",
+   "query": "monosomy 13q14",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013512",
+   "query": "haemoglobin H disease",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013571",
+   "query": "acatalasaemia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013571",
+   "query": "Takahara disease",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Takahara disease is an eponym for acatalasia",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013621",
+   "query": "LAMB2 nephrotic syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013621",
+   "query": "diffuse mesangial sclerosis with ocular abnormalities",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Could be LAMB2 Pierson syndrome or nephrotic syndrome 15; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013626",
+   "query": "IL36RN deficiency",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013722",
+   "query": "POLR3B-related leukodystrophy",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "POLR3B fits leukodystrophy 8; candidate 7 also listed, ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013753",
+   "query": "Charcot Marie Tooth 2P",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013808",
+   "query": "Maffucci's syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013873",
+   "query": "intrauterine growth restriction metaphyseal dysplasia adrenal hypoplasia genital anomalies",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "descriptive symptom list, not a spelling/word-order variant",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0013300",
+   "query": "transverse facial cleft",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

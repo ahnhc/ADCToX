@@ -1,0 +1,122 @@
+{
+ "batch": 411,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0009544",
+   "query": "MGCPH",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "MGCPH is not a real abbreviation; MCPH is the standard one",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009583",
+   "query": "OBS",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits C and F (and the general Ohdo forms) about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009583",
+   "query": "Ohdo blepharophimosis syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009591",
+   "query": "juvenile MLD",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009591",
+   "query": "juvenile metachromatic leukodystrophy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009622",
+   "query": "JWDS",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "invented acronym, not in clinical use for Jawad syndrome",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009630",
+   "query": "MCOPCB4",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009647",
+   "query": "Morquio C",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "identical to the candidate name, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009680",
+   "query": "Bassoe's syndrome",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0009539",
+   "query": "ALL",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0009539",
+   "query": "acute lymphocytic leukemia",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

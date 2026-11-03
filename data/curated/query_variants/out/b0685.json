@@ -1,0 +1,140 @@
+{
+ "batch": 685,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0015749",
+   "query": "6q16 deletion",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "drops 'syndrome'; clipped form, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015764",
+   "query": "trisomy 20 mosaicism",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015768",
+   "query": "5p duplication syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits trisomy 5p and partial trisomy/tetrasomy 5p about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015769",
+   "query": "distal 6p trisomy",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015773",
+   "query": "fibular dimelia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "clipped name, not a variant; shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015775",
+   "query": "N-RCDP",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "N-RCDP is not an established abbreviation",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015783",
+   "query": "PWS type 1",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015784",
+   "query": "PWS type 2",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015795",
+   "query": "UESL",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C and E, which are the same entity",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0015756",
+   "query": "myeloid neoplasm",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0015757",
+   "query": "lymphoid neoplasm",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0015758",
+   "query": "CTCL",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0015758",
+   "query": "cutaneous T-cell lymphoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0015775",
+   "query": "nonrhizomelic chondrodysplasia punctata",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

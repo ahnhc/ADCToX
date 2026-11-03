@@ -1,0 +1,197 @@
+{
+ "batch": 140,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0011668",
+   "query": "MODY type 6",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "MODY is an acronym, so abbrev fits better than variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011668",
+   "query": "NEUROD1 MODY",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011671",
+   "query": "Huntington's disease-like 2",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011675",
+   "query": "DI-CMTA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Type A is not a clearly named candidate; the fit is ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011682",
+   "query": "episodic ataxia 3",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011687",
+   "query": "Charcot Marie Tooth 2F",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011688",
+   "query": "FKRP CMD",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "FKRP causes several dystroglycanopathy types; no single candidate fits",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011716",
+   "query": "acute necrotizing hemorrhagic leukoencephalitis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011725",
+   "query": "CNS2",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011725",
+   "query": "type 2 Crigler-Najjar syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011728",
+   "query": "eyelid spasms",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011728",
+   "query": "essential blepharospasm",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011730",
+   "query": "FH deficiency",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011771",
+   "query": "dHMN3",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "dHMN3 is nonstandard and could mean autosomal recessive 3 or X-linked 3",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011771",
+   "query": "distal spinal muscular atrophy 3",
+   "category": "variant",
+   "pick": "F",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011772",
+   "query": "CDG type IId",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011773",
+   "query": "Menger type spondyloepimetaphyseal dysplasia",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Menger type is not a recognised name for any candidate",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

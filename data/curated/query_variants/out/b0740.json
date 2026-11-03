@@ -1,0 +1,327 @@
+{
+ "batch": 740,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0019927",
+   "query": "GHoma",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'GHoma' is an informal coinage, not an established abbreviation",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019927",
+   "query": "GH-secreting pituitary adenoma",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019927",
+   "query": "acromegaly pituitary tumor",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019927",
+   "query": "growth hormone secreting pituitary adenoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019940",
+   "query": "HAFF syndrome",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "HAFF is an acronym, so the category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019943",
+   "query": "hereditary myokymia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019963",
+   "query": "bronchial carcinoid tumor",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "A synonym rather than clipped shorthand; the category should be variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019967",
+   "query": "avascular necrosis of the lunate",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019969",
+   "query": "Panner's disease",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019969",
+   "query": "osteochondrosis of the capitellum",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019971",
+   "query": "malignant melanoma of soft parts",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019981",
+   "query": "multicystic dysplastic kidney, unilateral",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019982",
+   "query": "both kidneys replaced by cysts",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Fits PKD and bilateral MCDK equally; an unnatural phrasing",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019982",
+   "query": "multicystic dysplastic kidney, bilateral",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019983",
+   "query": "multiloculated cyst of the kidney",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019985",
+   "query": "drug-induced renal tubular dysgenesis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019988",
+   "query": "ANCA-positive pauci-immune GN",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019988",
+   "query": "pauci immune glomerulonephritis ANCA positive",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019989",
+   "query": "ANCA-negative pauci-immune GN",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019989",
+   "query": "pauci immune glomerulonephritis ANCA negative",
+   "category": "variant",
+   "pick": "C",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019990",
+   "query": "fibrillary GN",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019995",
+   "query": "peripheral thyroid hormone resistance",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020043",
+   "query": "congenital autosomal recessive cerebellar ataxia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020044",
+   "query": "metabolic autosomal recessive cerebellar ataxia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020046",
+   "query": "autosomal recessive progressive degenerative cerebellar ataxia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020047",
+   "query": "syndromic autosomal recessive cerebellar ataxia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0019953",
+   "query": "megacisterna magna",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019953",
+   "query": "mega cisterna magna",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019971",
+   "query": "clear cell sarcoma of soft tissue",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019990",
+   "query": "FGN",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019995",
+   "query": "PRTH",
+   "category": "abbrev",
+   "drop": "eval or held text"
+  }
+ ]
+}

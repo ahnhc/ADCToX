@@ -1,0 +1,226 @@
+{
+ "batch": 156,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0014168",
+   "query": "CORO1A deficiency",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-name clipped form is shorthand, not spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014185",
+   "query": "3q13.31 microdeletion syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014198",
+   "query": "MTDPS13",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014212",
+   "query": "molybdenum cofactor deficiency type C",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014244",
+   "query": "HSAN type VII",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014247",
+   "query": "familial episodic pain syndrome type 3",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014276",
+   "query": "CD3G deficiency",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-symbol clipped form is shorthand, not spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014334",
+   "query": "LCK deficiency",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-name clipped form is shorthand, not spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014414",
+   "query": "STAT3 gain of function",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014421",
+   "query": "Chrousos syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014421",
+   "query": "generalized glucocorticoid resistance",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014486",
+   "query": "ZMYND11-related intellectual disability",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014541",
+   "query": "maternal UPD 14",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits both B and F, both paternally expressed 14q32.2 defects",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014561",
+   "query": "CLPB deficiency",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Fits VIIA and VIIB equally; gene-name form is shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014622",
+   "query": "focal non-epidermolytic palmoplantar keratoderma",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014633",
+   "query": "Doose's syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014676",
+   "query": "Emery-Dreifuss muscular dystrophy 3",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014708",
+   "query": "r(14)",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014708",
+   "query": "ring 14 syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0014541",
+   "query": "UPD(14)mat",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,142 @@
+{
+ "batch": 922,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0971032",
+   "query": "urinary auto-brewery syndrome",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0971032",
+   "query": "bladder auto-brewery syndrome",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0971032",
+   "query": "alcohol in urine without drinking",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0971115",
+   "query": "benign vascular tumour",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0971115",
+   "query": "non cancerous blood vessel tumor",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "also fits A, perivascular tumor, and D loosely",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0971116",
+   "query": "borderline vascular tumour",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0971173",
+   "query": "AIAV",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; ambiguous among autoinflammation-vasculitis candidates",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0975751",
+   "query": "MEF2C syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0975751",
+   "query": "MEF2C haploinsufficiency syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "MEF2C haploinsufficiency fits B but could fit other MEF2C-related entries; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0975836",
+   "query": "Karayol Borroto Haghshenas syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0975919",
+   "query": "IFIH1-associated spastic paraplegia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0975920",
+   "query": "RNASEH2B-associated spastic paraplegia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

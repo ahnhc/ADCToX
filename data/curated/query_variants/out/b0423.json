@@ -1,0 +1,127 @@
+{
+ "batch": 423,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0011313",
+   "query": "MPPH syndrome 1",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "MPPH is an acronym, so abbrev rather than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011326",
+   "query": "citrullinaemia type 2, adult onset",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011350",
+   "query": "DFNA17",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011369",
+   "query": "PCSK9-related hypercholesterolemia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011372",
+   "query": "MCSGP",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "invented acronym, not in clinical use; fits B or E equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011393",
+   "query": "hypoalphalipoproteinaemia, primary, 1",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011421",
+   "query": "ATP synthase deficiency, nuclear type 1",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "clipped name dropping 'mitochondrial complex V'; shorthand, not variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011444",
+   "query": "Duane retraction syndrome type II",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011466",
+   "query": "Welander's distal myopathy",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011466",
+   "query": "Welander type distal myopathy",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0011326",
+   "query": "CTLN2",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "batch": 276,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0014024",
+   "query": "HSP43",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "HSP is an abbreviation (standard form is SPG43), so abbrev fits better than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014028",
+   "query": "distal arthrogryposis 5D",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014033",
+   "query": "GNAL dystonia",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014034",
+   "query": "GATAD2B syndrome",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014039",
+   "query": "mtDNA depletion syndrome 11",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "mtDNA is an abbreviation, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014081",
+   "query": "CARD11 SCID",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0014054",
+   "query": "CD27 deficiency",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

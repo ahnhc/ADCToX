@@ -1,0 +1,144 @@
+{
+ "batch": 288,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0014975",
+   "query": "spastic paraplegia 78",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014975",
+   "query": "spastic paraplegia type 78",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "clipped wording, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014996",
+   "query": "autosomal recessive mental retardation 58",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015004",
+   "query": "KMT2B dystonia",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015004",
+   "query": "childhood-onset dystonia 28",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015010",
+   "query": "atypical NKH",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015066",
+   "query": "appendix carcinoid",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "older synonym 'carcinoid', not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015066",
+   "query": "appendiceal carcinoid",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "older synonym with adjectival form, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015092",
+   "query": "hard palate cleft",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015151",
+   "query": "AD-LGMD",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015164",
+   "query": "alkylating agent-related AML/MDS",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0015066",
+   "query": "carcinoid tumor of the appendix",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0015148",
+   "query": "lissencephaly 3",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

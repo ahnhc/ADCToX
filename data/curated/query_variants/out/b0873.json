@@ -1,0 +1,288 @@
+{
+ "batch": 873,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0024430",
+   "query": "allesthia",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024467",
+   "query": "apocrine gland disorder",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024469",
+   "query": "cartilage tumor",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024482",
+   "query": "eccrine hamartoma",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024483",
+   "query": "transitional cell hyperplasia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024485",
+   "query": "papillary transitional cell hyperplasia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024487",
+   "query": "infected nail",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024487",
+   "query": "infected toenail",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024487",
+   "query": "infection of the nail",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024571",
+   "query": "complications of AIDS",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both AIDS and AIDS-related disorder",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024571",
+   "query": "AIDS-related dz",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024616",
+   "query": "inflamed eardrum",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024616",
+   "query": "TM inflammation",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024620",
+   "query": "polio meningitis",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024620",
+   "query": "poliovirus meningitis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024651",
+   "query": "GIOP",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024651",
+   "query": "bone loss from steroid pills",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both corticosteroid- and glucocorticoid-induced osteoporosis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024651",
+   "query": "steroid-induced osteoporosis",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits B and E equally; synonym, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024662",
+   "query": "tubulovillous adenoma of the colon",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits colorectal tubulovillous, colon adenoma, and general tubulovillous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024711",
+   "query": "malignant mixed epithelial and stromal tumor of the kidney",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024757",
+   "query": "tumor of the heart and blood vessels",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024813",
+   "query": "tumor at the top of the lung",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both malignant and general superior sulcus neoplasm",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024813",
+   "query": "superior sulcus tumor",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits B and D; not clipped shorthand, just a synonym",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0024651",
+   "query": "glucocorticoid-induced osteoporosis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0024661",
+   "query": "tubulo-villous adenoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0024797",
+   "query": "adult brain-stem neoplasm",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0024813",
+   "query": "Pancoast tumor",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

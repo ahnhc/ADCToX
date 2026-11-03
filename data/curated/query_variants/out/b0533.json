@@ -1,0 +1,65 @@
+{
+ "batch": 533,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0028226",
+   "query": "neutropenia, severe congenital, autosomal recessive",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A, B, C, E about equally; ambiguous among subtypes",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0029140",
+   "query": "GPI biosynthesis defect 18",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "GPI-18 abbreviation is an abbrev, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0030019",
+   "query": "anauxetic dysplasia type 3",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0030031",
+   "query": "lissencephaly type 10",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0030045",
+   "query": "Liberfarb's syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

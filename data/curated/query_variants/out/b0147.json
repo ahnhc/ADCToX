@@ -1,0 +1,193 @@
+{
+ "batch": 147,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0012420",
+   "query": "DFNB49",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012420",
+   "query": "MARVELD2 deafness",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012423",
+   "query": "intellectual disability-obesity-retinal dystrophy-micropenis syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012426",
+   "query": "CD247 SCID",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012436",
+   "query": "neonatal DM with congenital hypothyroidism",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012436",
+   "query": "diabetes from birth with an underactive thyroid",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012447",
+   "query": "Malik type synpolydactyly",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Obscure eponym; a clinician could not map it to one type",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012453",
+   "query": "HSP 31",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012455",
+   "query": "Kleefstra's syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012455",
+   "query": "9q34.3 microdeletion",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Cytogenetic descriptor, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012474",
+   "query": "ADNFLE 4",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012502",
+   "query": "normophosphataemic familial tumoral calcinosis",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012517",
+   "query": "saposin C deficiency",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Full name of the disease, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012521",
+   "query": "herpes simplex virus encephalitis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012521",
+   "query": "herpes infection of the brain",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012544",
+   "query": "brachydactyly-syndactyly, Zhao type",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0012426",
+   "query": "CD3 zeta deficiency",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

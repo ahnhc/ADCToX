@@ -1,0 +1,100 @@
+{
+ "batch": 237,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0011018",
+   "query": "brachyolmia with amelogenesis imperfecta",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011020",
+   "query": "Hernandez-Fragoso syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Not a recognised eponym or synonym; appears invented and fits no candidate.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011031",
+   "query": "DFNA10",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011032",
+   "query": "DFNA11",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011049",
+   "query": "Fine's Lubinsky syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011058",
+   "query": "DFNA9",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011067",
+   "query": "DFNB12",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0011008",
+   "query": "McPherson Clemens syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0011051",
+   "query": "lethal short-limb skeletal dysplasia, Al-Gazali type",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

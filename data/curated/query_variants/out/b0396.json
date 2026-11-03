@@ -1,0 +1,186 @@
+{
+ "batch": 396,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0007004",
+   "query": "immune complex disease",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "standard clinical synonym, not lay wording",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007004",
+   "query": "type III hypersensitivity disorder",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007022",
+   "query": "XGP",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007024",
+   "query": "Yersinia pseudotuberculosis infection",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007030",
+   "query": "Aarskog syndrome, autosomal dominant",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007031",
+   "query": "familial AAA",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "AAA is a real abbreviation; category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007031",
+   "query": "inherited abdominal aortic aneurysm",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym swap (inherited for familial), not a spelling/order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007044",
+   "query": "acrodysostosis type 1",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007052",
+   "query": "GH-secreting pituitary adenoma 1",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "trailing numeral unnatural; GH is abbreviation, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007073",
+   "query": "hypoglossia-hypodactyly",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007075",
+   "query": "congenital alacrima, autosomal dominant",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007101",
+   "query": "familial primary localised cutaneous amyloidosis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007122",
+   "query": "unequal pupils",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007135",
+   "query": "congenital nail disorder 6, nonsyndromic",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007136",
+   "query": "inherited anorectal anomalies",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym swap (inherited for hereditary), not a spelling/order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007157",
+   "query": "distal arthrogryposis type 1A",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

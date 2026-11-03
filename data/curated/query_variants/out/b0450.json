@@ -1,0 +1,175 @@
+{
+ "batch": 450,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0014010",
+   "query": "ARCI type 9",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "ARCI is an acronym, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014011",
+   "query": "ARCI type 10",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "ARCI is an acronym, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014014",
+   "query": "epidermolysis bullosa simplex type 4",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014029",
+   "query": "brittle bone disease type 14",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "lay term with gene-specific type 14 is an unnatural mix",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014029",
+   "query": "OI type 14",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "OI is a real abbreviation, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014030",
+   "query": "PCD 20",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "PCD is a real acronym, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014032",
+   "query": "brachydactyly A1C",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014042",
+   "query": "LVNC type 7",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "LVNC is a real acronym, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014046",
+   "query": "Cowden disease type 4",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014047",
+   "query": "Cowden disease type 5",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014048",
+   "query": "Cowden disease type 6",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014052",
+   "query": "CMS type 8",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "CMS is an acronym, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014055",
+   "query": "familial adult myoclonic epilepsy type 4",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014057",
+   "query": "mild maple syrup urine disease",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014057",
+   "query": "mild MSUD",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "MSUD is a real acronym, so category should be abbrev",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

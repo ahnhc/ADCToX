@@ -1,0 +1,164 @@
+{
+ "batch": 252,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0012180",
+   "query": "arrhythmogenic right ventricular cardiomyopathy type 9",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012190",
+   "query": "epidermolysis bullosa simplex type 7 with nephropathy and deafness",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012192",
+   "query": "PACA syndrome",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "PACA is not an established abbreviation; it is invented",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012192",
+   "query": "permanent neonatal diabetes with pancreatic and cerebellar agenesis",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012194",
+   "query": "intracranial berry aneurysm type 3",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012199",
+   "query": "PPCD type 2",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "PPCD is an acronym, so it belongs under abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012200",
+   "query": "PPCD type 3",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "PPCD is an acronym, so it belongs under abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012209",
+   "query": "Megarbane-Loiselet syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "eponym does not clearly match any candidate",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012219",
+   "query": "Leroy-Spranger type spondyloepiphyseal dysplasia tarda",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012225",
+   "query": "Senior-Løken syndrome type 5",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012243",
+   "query": "BILU",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "BILU is an invented acronym with no clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012253",
+   "query": "MED with severe proximal femoral dysplasia",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "MED is a real acronym, so abbrev, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012254",
+   "query": "MED with miniepiphyses",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "MED is a real acronym, so abbrev, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012258",
+   "query": "EBS with migratory circinate erythema",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "EBS is a real acronym, so abbrev, not shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

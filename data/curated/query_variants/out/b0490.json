@@ -1,0 +1,105 @@
+{
+ "batch": 490,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0016770",
+   "query": "lichen planus actinicus",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016777",
+   "query": "airborne botulism",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'airborne botulism' is not a real term; it's a lay-ish synonym, not spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016796",
+   "query": "encephalomyopathic mitochondrial DNA depletion syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016807",
+   "query": "isolated mitochondrial myopathy",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016819",
+   "query": "Mobius syndrome-axonal neuropathy-hypogonadotropic hypogonadism",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016826",
+   "query": "methylmalonic acidemia with homocystinuria",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016829",
+   "query": "hollow visceral myopathy",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'hollow visceral myopathy' is not a real term; ambiguous among visceral myopathy forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016848",
+   "query": "temporal arteritis, juvenile",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0016810",
+   "query": "AR PEO",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

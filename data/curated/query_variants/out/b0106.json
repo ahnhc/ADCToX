@@ -1,0 +1,142 @@
+{
+ "batch": 106,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0007335",
+   "query": "orofacial cleft type 1",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007337",
+   "query": "CPLS",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007342",
+   "query": "TEV",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007342",
+   "query": "CTEV",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007356",
+   "query": "Lynch syndrome type I",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Type I could be Lynch 1 (MSH2) or general Lynch; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007374",
+   "query": "Schnyder's corneal dystrophy",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007379",
+   "query": "Meesmann's corneal dystrophy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007407",
+   "query": "cryoglobulinaemic vasculitis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007407",
+   "query": "cryo vasculitis",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits cryoglobulinemic vasculitis and cryoglobulinemia about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007410",
+   "query": "isolated cryptophthalmos",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007422",
+   "query": "Vohwinkel's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Vohwinkel fits keratoderma hereditarium mutilans and GJB2-related; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007446",
+   "query": "DPN",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "DPN is real shorthand for dermatosis papulosa nigra",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

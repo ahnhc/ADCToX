@@ -1,0 +1,298 @@
+{
+ "batch": 862,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0021076",
+   "query": "exocrine pancreatic tumor",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021076",
+   "query": "exocrine pancreatic neoplasm",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "exact name of D, not a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021080",
+   "query": "tumor in a blood vessel",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021086",
+   "query": "growth on the gums",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits gingival neoplasm and overgrowth about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021089",
+   "query": "PNS cancer",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "PNS cancer is not common clinical shorthand; also fits F",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021089",
+   "query": "cancer of the peripheral nerves",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits B and F about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021111",
+   "query": "tumor in the ureter",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021119",
+   "query": "non-functioning endocrine tumour",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021119",
+   "query": "endocrine tumor that doesn't make hormones",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021120",
+   "query": "functioning endocrine tumour",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021120",
+   "query": "hormone-secreting endocrine tumor",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021142",
+   "query": "acquired RMD",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021142",
+   "query": "rippling muscle disease, acquired",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021155",
+   "query": "X-linked CRD",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021157",
+   "query": "cervical gonorrhea",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021157",
+   "query": "gonorrhea in the cervix",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021162",
+   "query": "orange skin from too many carrots",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021162",
+   "query": "carotenaemia",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021164",
+   "query": "foreskin inflammation",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits posthitis and balanoposthitis about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021164",
+   "query": "inflammation of the foreskin",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits posthitis and balanoposthitis about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021165",
+   "query": "Paget's desease",
+   "category": "typo",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021171",
+   "query": "classic Timothy syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A and D about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021175",
+   "query": "HSV vulvovaginitis",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021175",
+   "query": "herpes of the vulva and vagina",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021211",
+   "query": "growth in the brain",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits several neoplasm candidates; benign/malignant unspecified",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0021086",
+   "query": "gum tumor",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0021111",
+   "query": "ureteral tumor",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

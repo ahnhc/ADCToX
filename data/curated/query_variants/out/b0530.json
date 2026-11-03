@@ -1,0 +1,189 @@
+{
+ "batch": 530,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0024504",
+   "query": "pancreatic carcinoid",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "older synonym, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024504",
+   "query": "enterochromaffin cell serotonin-producing pancreatic neuroendocrine tumour",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024522",
+   "query": "primary localized cutaneous amyloidosis 1",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024523",
+   "query": "aortic valve disease type 1",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024524",
+   "query": "dyschromatosis universalis hereditaria type 1",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024525",
+   "query": "Fanconi renotubular syndrome type 1",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024530",
+   "query": "Bethlem myopathy type 1A",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024536",
+   "query": "glucocorticoid deficiency type 1",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024542",
+   "query": "dysequilibrium syndrome 1",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "clipped name is shorthand, not spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024543",
+   "query": "brittle cornea syndrome type 1",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024545",
+   "query": "Miyoshi muscular dystrophy type 1",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024550",
+   "query": "frontometaphyseal dysplasia type 1",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0024551",
+   "query": "Duncan syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both SH2D1A (A) and XIAP (E) XLP forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0024553",
+   "query": "myopathy, lactic acidosis, and sideroblastic anemia type 1",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0024541",
+   "query": "trichohepatoenteric syndrome type 1",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0024547",
+   "query": "pancreatic agenesis type 1",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0024552",
+   "query": "linear skin defects with multiple congenital anomalies type 1",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0024554",
+   "query": "D-2-hydroxyglutaric aciduria type 1",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

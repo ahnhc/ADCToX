@@ -1,0 +1,244 @@
+{
+ "batch": 791,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0100034",
+   "query": "brain folate deficiency",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100034",
+   "query": "cerebral folate def",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100038",
+   "query": "complex NDD",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100051",
+   "query": "iMCAS",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "iMCAS is not a standard abbreviation; idiopathic MCAS is used instead",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100051",
+   "query": "idiopathic MCAS",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100056",
+   "query": "EIA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "EIA means exercise-induced asthma or anaphylaxis; fits A and B",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100056",
+   "query": "allergic reaction to exercise",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100057",
+   "query": "FDEIA",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100057",
+   "query": "food dependent EIA",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100063",
+   "query": "pericytoma with t(7;12)(q22;q13)",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Wrong breakpoints (should be 7p22;12q13); an error, not a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100067",
+   "query": "childhood spindle cell RMS",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100076",
+   "query": "JIS",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100119",
+   "query": "Knobloch syndrome type 2",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100129",
+   "query": "intracranial arachnoid cyst",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100129",
+   "query": "arachnoid cyst in the brain",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100137",
+   "query": "telomere biology disorder",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100147",
+   "query": "SATB2 syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100150",
+   "query": "RYR1 myopathy",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100157",
+   "query": "Imerslund-Grasbeck type 2",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0100034",
+   "query": "CFD",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0100039",
+   "query": "CDD",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0100056",
+   "query": "exercise induced anaphylaxis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0100147",
+   "query": "Glass syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

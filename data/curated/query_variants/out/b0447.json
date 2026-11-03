@@ -1,0 +1,43 @@
+{
+ "batch": 447,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0013889",
+   "query": "SOPH",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; fits A or D (both contain SOPH-like terms), ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013907",
+   "query": "bilateral generalised polymicrogyria",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013918",
+   "query": "distal tetrasomy of chromosome 15q",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

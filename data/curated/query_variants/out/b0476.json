@@ -1,0 +1,127 @@
+{
+ "batch": 476,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0015225",
+   "query": "born with stiff bent joints",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits arthrogryposis, distal arthrogryposis, syndrome equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015234",
+   "query": "Kosztolányi syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Kosztolányi is an eponym but ambiguous between arachnodactyly/cryptorchidism candidates; not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015239",
+   "query": "anomalous origin of the pulmonary artery",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015271",
+   "query": "spine bends forward when standing or walking",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015273",
+   "query": "complete AV canal",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015273",
+   "query": "complete AVSD",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015275",
+   "query": "partial AV canal",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015298",
+   "query": "pellucid marginal corneal degeneration",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015303",
+   "query": "itchy rippled brown patches on the upper back",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015307",
+   "query": "Madras motor neruon disease",
+   "category": "typo",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0015298",
+   "query": "PMD",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

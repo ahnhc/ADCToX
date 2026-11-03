@@ -1,0 +1,263 @@
+{
+ "batch": 63,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0008652",
+   "query": "congenital vertial talus",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008662",
+   "query": "ADVIRC syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "ADVIRC is an acronym, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008668",
+   "query": "type 1 vWD",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008668",
+   "query": "type 1 von Willebrand",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008668",
+   "query": "von Willebrand disease type I",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008685",
+   "query": "WPW syndrome",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008685",
+   "query": "Parkinson-White syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Truncated eponym dropping Wolff; not real usage, could suggest Parkinson disease",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008727",
+   "query": "3β-HSD deficiency",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "3β-HSD is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008729",
+   "query": "11β-OHD",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008729",
+   "query": "11β-hydroxylase deficiency",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008737",
+   "query": "born without fibrinogen",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008737",
+   "query": "factor 1 deficiency",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits afibrinogenemia, hypofibrinogenemia and dysfibrinogenemia equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008745",
+   "query": "oculocutaneous albinism 1A",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008746",
+   "query": "albinism type 2",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008746",
+   "query": "OCA type 2",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "OCA is an abbreviation, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008760",
+   "query": "β-ketothiolase deficiency",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008783",
+   "query": "Tangier's disease",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008797",
+   "query": "born without any teeth",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008827",
+   "query": "PPRC",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; real forms are PPAC or PPD",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008827",
+   "query": "pseudorheumatoid arthropathy of childhood",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008829",
+   "query": "milky fluid in the abdomen",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008829",
+   "query": "chyloperitoneum",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008840",
+   "query": "ataxia teleangiectasia",
+   "category": "typo",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

@@ -1,0 +1,160 @@
+{
+ "batch": 684,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0015675",
+   "query": "fluke worm infection",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015675",
+   "query": "trematode infection",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "technical synonym, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015677",
+   "query": "CCD",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "CCD is ambiguous (e.g. central core disease, cleidocranial dysplasia); not a standard abbreviation here",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015677",
+   "query": "congenital cardiac diverticulum",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "identical to the canonical name, not a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015713",
+   "query": "ICPP",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015714",
+   "query": "secondary CPP",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015715",
+   "query": "severe Christmas disease",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Christmas disease is an eponym, so variant, not lay",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015715",
+   "query": "severe haemophilia B",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015716",
+   "query": "moderately severe haemophilia B",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015717",
+   "query": "mild Christmas disease",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Christmas disease is an eponym, so variant, not lay",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015717",
+   "query": "mild haemophilia B",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015731",
+   "query": "high ARM",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015732",
+   "query": "intermediate ARM",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0015694",
+   "query": "mucosal melanoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

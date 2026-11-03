@@ -1,0 +1,326 @@
+{
+ "batch": 497,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0017425",
+   "query": "extra thumb on the hand",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017425",
+   "query": "preaxial finger polydactyly",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017426",
+   "query": "extra pinky finger",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017426",
+   "query": "postaxial finger polydactyly",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017437",
+   "query": "born without arms",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "could be bilateral upper amelia or tetra-amelia; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017437",
+   "query": "upper limb amelia",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017438",
+   "query": "born without legs",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits lower limb amelia, bilateral, or tetra-amelia; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017438",
+   "query": "lower limb amelia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017439",
+   "query": "born without all four limbs",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits tetra-amelia, both syndromes, and non-syndromic amelia",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017440",
+   "query": "born without an upper arm bone",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "lay phrasing unnatural; people rarely say upper arm bone",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017440",
+   "query": "humerus agenesis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017445",
+   "query": "born without hands",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "lay people say without hands, not acheiria; maps to ambiguous acheiria forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017446",
+   "query": "born without feet",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "born without feet is atypical phrasing; laterality unclear",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017449",
+   "query": "cleft hand",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017449",
+   "query": "lobster claw hand",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017456",
+   "query": "central finger polydactyly",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017457",
+   "query": "extra big toe",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017457",
+   "query": "preaxial toe polydactyly",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017460",
+   "query": "syndactyly type VI",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017462",
+   "query": "congenital pseudoarthrosis of tibia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017468",
+   "query": "born with a dislocated shoulder",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017468",
+   "query": "congenital dislocation of the shoulder",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017469",
+   "query": "born with a dislocated elbow",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017469",
+   "query": "congenital dislocation of the elbow",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017470",
+   "query": "born with a dislocated knee",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017470",
+   "query": "congenital dislocation of the knee",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017476",
+   "query": "upper extremity hypertrophy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0017439",
+   "query": "tetraamelia",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0017454",
+   "query": "triphalangeal thumb polysyndactyly syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0017467",
+   "query": "tibiofibular synostosis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

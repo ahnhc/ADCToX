@@ -1,0 +1,226 @@
+{
+ "batch": 143,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0011985",
+   "query": "hyper IgM 4",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011985",
+   "query": "immunodeficiency with hyper-IgM type IV",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011992",
+   "query": "spastic paraplegia-25",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012003",
+   "query": "DFNB39",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012004",
+   "query": "parathyroid CA",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012012",
+   "query": "CMT intermediate C",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "also fits recessive intermediate CMT type C; inheritance unstated",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012014",
+   "query": "GDAP1 CMT",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "GDAP1 causes several CMT forms; gene name is not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012020",
+   "query": "22q11.2 dup",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012033",
+   "query": "trouble adjusting vision when going from dark to bright",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "vague; fits bradyopsia, achromatopsia photophobia, other disorders",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012034",
+   "query": "limb girdle muscular dystrophy 1F",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012043",
+   "query": "Reis-Buckles corneal dystrophy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "misspelling of Bücklers, so typo not variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012049",
+   "query": "orofaciodigital syndrome 7",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012064",
+   "query": "Burn-McKeown",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "eponym, so variant rather than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012078",
+   "query": "Joubert 3",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012085",
+   "query": "PCD 3",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012089",
+   "query": "ichthyosis prematurity",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012091",
+   "query": "DFNB32",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012092",
+   "query": "congenital insensitivity to pain type 5",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "unnatural hybrid naming; people say HSAN5 or HSAN type V",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012104",
+   "query": "Barraquer-Simons",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0012052",
+   "query": "ALG1 CDG",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

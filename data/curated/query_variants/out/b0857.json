@@ -1,0 +1,252 @@
+{
+ "batch": 857,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0017394",
+   "query": "ketamine bile duct damage",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017394",
+   "query": "ketamine cholangiopathy",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "different clinical term, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017394",
+   "query": "ketamine-induced bile duct dilation",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017424",
+   "query": "brachydactyly without syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017451",
+   "query": "stubby fingers",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017452",
+   "query": "stubby toes",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017472",
+   "query": "missing kneecap on one side",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017472",
+   "query": "unilateral absent kneecap",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017473",
+   "query": "missing kneecaps on both sides",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017473",
+   "query": "bilateral absent kneecap",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017482",
+   "query": "missing upper arm bone on one side",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017483",
+   "query": "missing upper arm bones on both sides",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017484",
+   "query": "missing thigh bone on one side",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017485",
+   "query": "missing thigh bones on both sides",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017496",
+   "query": "born without thigh and lower leg on one side",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017509",
+   "query": "born without toes on one foot",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017523",
+   "query": "extra thumb on one hand",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits biphalangeal and triphalangeal unilateral equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017524",
+   "query": "extra thumbs on both hands",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits biphalangeal and triphalangeal bilateral equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017613",
+   "query": "Medrano-Roldán syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "obscure eponym; cannot be mapped to one intellectual disability syndrome",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017863",
+   "query": "digoxin overdose",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits digitalis poisoning and cardiac glycoside intoxication equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017863",
+   "query": "digoxin toxicity",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits digitalis poisoning and cardiac glycoside intoxication equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018111",
+   "query": "idiopathic severe pneumococcal sepsis",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

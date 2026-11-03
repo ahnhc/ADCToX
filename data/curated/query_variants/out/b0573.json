@@ -1,0 +1,397 @@
+{
+ "batch": 573,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0859573",
+   "query": "bent bone dysplasia syndrome type 2",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859577",
+   "query": "LADD syndrome 2",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859578",
+   "query": "LADD syndrome 3",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859591",
+   "query": "pLGG",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859591",
+   "query": "pediatric low grade glioma",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "plain synonym wording, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859591",
+   "query": "low grade brain tumor in a child",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859592",
+   "query": "oligodendroglioma, IDH-mutant and 1p/19q-codeleted",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits grade 2, grade 3 and general forms equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859592",
+   "query": "1p/19q codeleted oligodendroglioma",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "grade unspecified; fits C, D, F",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859597",
+   "query": "CNS neuroblastoma, FOXR2-activated",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859598",
+   "query": "Di Guglielmo's disease",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859598",
+   "query": "acute erythroleukemia",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both acute erythroid leukemia and erythroleukemia",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859614",
+   "query": "MAPK pathway-altered diffuse low-grade glioma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859747",
+   "query": "lymphomatoid granulomatosis grade 1",
+   "category": "variant",
+   "pick": "D",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859747",
+   "query": "LYG grade 1",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "LYG is an acronym, so abbrev rather than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859748",
+   "query": "lymphomatoid granulomatosis grade 2",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859748",
+   "query": "LYG grade 2",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "LYG is an acronym, so abbrev rather than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859749",
+   "query": "lymphomatoid granulomatosis grade 3",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859749",
+   "query": "LYG grade 3",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "LYG is an acronym, so abbrev rather than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0956964",
+   "query": "SHH-activated TP53-mutant medulloblastoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956964",
+   "query": "SHH medullo TP53 mutant",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956965",
+   "query": "SHH-activated TP53 wild-type medulloblastoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956965",
+   "query": "SHH medullo TP53 wild type",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956966",
+   "query": "group 3 medulloblastoma",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956966",
+   "query": "non-WNT/non-SHH medulloblastoma group 3",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956967",
+   "query": "group 4 medulloblastoma",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956967",
+   "query": "non-WNT/non-SHH medulloblastoma group 4",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956980",
+   "query": "parkinsonism from small strokes",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956980",
+   "query": "arteriosclerotic parkinsonism",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956980",
+   "query": "lower body parkinsonism",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym term, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0956981",
+   "query": "grade 4 IDH-mutant astrocytoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956981",
+   "query": "IDH-mutant glioblastoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956984",
+   "query": "supratentorial ependymoma YAP1-MAMLD1 fusion positive",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956990",
+   "query": "ZFTA-RELA fusion supratentorial ependymoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0956991",
+   "query": "YAP1 fusion-positive supratentorial ependymoma",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0859598",
+   "query": "AML-M6",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0956990",
+   "query": "RELA fusion-positive ependymoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

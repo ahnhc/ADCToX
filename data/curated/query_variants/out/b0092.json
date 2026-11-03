@@ -1,0 +1,232 @@
+{
+ "batch": 92,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0024457",
+   "query": "Seitelberger disease",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0027407",
+   "query": "Kleefstra",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0027407",
+   "query": "9q34.3 microdeletion",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "genetic locus descriptor, not a spelling variant; fits A and C",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0030914",
+   "query": "Clark-Baraitser",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044791",
+   "query": "cHCC-CCA",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044791",
+   "query": "combined HCC-CCA",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044791",
+   "query": "mixed liver and bile duct cancer",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100115",
+   "query": "polio-like illness",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both acute flaccid myelitis and poliomyelitis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100135",
+   "query": "SMEI",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100135",
+   "query": "Dravet's syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100164",
+   "query": "permanent neonatal DM",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100164",
+   "query": "diabetes from birth that never goes away",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100244",
+   "query": "paroxysmal nocturnal haemoglobinuria",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100249",
+   "query": "a man with XX chromosomes",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits B and F, also possibly ovotesticular; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100280",
+   "query": "WM",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100354",
+   "query": "MMIHS",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100610",
+   "query": "high functioning autism",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "informal term; fits ASD level 1, autism, and ASD",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100610",
+   "query": "Asperger's",
+   "category": "variant",
+   "pick": "F",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0800026",
+   "query": "baby stops breathing in his sleep",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "could be CCHS variants, or sleep apnea; not specific",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0024472",
+   "query": "Mediterranean spotted fever",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0100017",
+   "query": "PRP",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

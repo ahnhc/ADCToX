@@ -1,0 +1,39 @@
+{
+ "batch": 668,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0013083",
+   "query": "ALK-positive neuroblastoma",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Descriptive ALK qualifier, not a spelling, word-order or eponym variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013099",
+   "query": "CPHD",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0013108",
+   "query": "T-ALL",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

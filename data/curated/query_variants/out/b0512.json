@@ -1,0 +1,150 @@
+{
+ "batch": 512,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0019356",
+   "query": "birth defect of the urinary and reproductive organs",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019358",
+   "query": "SUOX deficiency",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "gene symbol fits both isolated SOX deficiency and its encephalopathy",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019358",
+   "query": "sulphite oxidase deficiency encephalopathy",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019411",
+   "query": "genochondromatosis type I",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019435",
+   "query": "RF+ pJIA",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019440",
+   "query": "wild type beta-2 microglobulin amyloidosis",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019441",
+   "query": "TTR V122I amyloidosis",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019443",
+   "query": "complete transposition of the great arteries",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A, B and E about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019443",
+   "query": "congenitally uncorrected TGA",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "unnatural hybrid shorthand; also fits A and B",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019450",
+   "query": "lissencephaly and cerebellar hypoplasia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019476",
+   "query": "primary cutaneous PTCL, NOS",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0019370",
+   "query": "vulvo-vaginal-gingival syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019374",
+   "query": "SCAR-5",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019413",
+   "query": "ischiovertebral syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

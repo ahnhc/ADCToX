@@ -1,0 +1,131 @@
+{
+ "batch": 210,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0008754",
+   "query": "ACD syndrome",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008755",
+   "query": "Moynahan's syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008762",
+   "query": "recessive Alport syndrome",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008765",
+   "query": "LCA type 2",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "LCA is an abbreviation, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008770",
+   "query": "amelogenesis imperfecta 1C",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008780",
+   "query": "juvenile ALS type 2",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "uses abbreviation ALS; category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008781",
+   "query": "juvenile ALS with dementia",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "ALS is a standard abbreviation, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008785",
+   "query": "sideroblastic anaemia 2",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008786",
+   "query": "pyridoxine responsive sideroblastic anaemia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008824",
+   "query": "fetal akinesia sequence",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008825",
+   "query": "Illum's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "obscure eponym; a clinician cannot map it to one candidate",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

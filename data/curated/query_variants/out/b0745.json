@@ -1,0 +1,293 @@
+{
+ "batch": 745,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0020449",
+   "query": "eustachian valve",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020449",
+   "query": "persistence of the eustachian valve",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020450",
+   "query": "azygos continuation",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020450",
+   "query": "azygos continuation of IVC",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "IVC is an abbreviation, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020451",
+   "query": "congenital IVC stenosis",
+   "category": "variant",
+   "pick": "E",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "IVC is an abbreviation, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020452",
+   "query": "interrupted IVC",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020452",
+   "query": "interrupted inferior vena cava",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020459",
+   "query": "unstable Hb disease",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020459",
+   "query": "unstable hemoglobinopathy",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020462",
+   "query": "tarsal kink",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020463",
+   "query": "born with eyelids turned outward",
+   "category": "lay",
+   "pick": "E",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020467",
+   "query": "45,X/46,XX mosaicism",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020467",
+   "query": "mosaic 45,X cell line",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020469",
+   "query": "XYYY syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020470",
+   "query": "XYYYY syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020472",
+   "query": "Turner syndrome due to structural X chromosome abnormality",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020476",
+   "query": "MTLE with HS",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "MTLE and HS are abbreviations, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020476",
+   "query": "mesial temporal sclerosis epilepsy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020488",
+   "query": "atypical PSP",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "PSP is a real acronym, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020504",
+   "query": "familial recurrent myoglobinuria",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits hereditary and recurrent myoglobinuria equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020509",
+   "query": "acquired syringomyelia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020523",
+   "query": "hereditary parathyroid adenoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020526",
+   "query": "AMKL in Down syndrome",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits A and C equally; AMKL is an abbreviation, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020526",
+   "query": "acute megakaryoblastic leukaemia in Down syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A and C equally, same disease",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0020456",
+   "query": "pleuropericardial cyst",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0020475",
+   "query": "dermo-trichic syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0020494",
+   "query": "oculo-otodental syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

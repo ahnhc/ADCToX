@@ -1,0 +1,149 @@
+{
+ "batch": 298,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0017346",
+   "query": "EBV+ DLBCL of elderly",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017346",
+   "query": "senile EBV B-cell LPD",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Invented clipped form; 'senile' with LPD is not real usage",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017362",
+   "query": "Parsonage-Turner",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Eponym, so variant, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017372",
+   "query": "birth defects from chickenpox in pregnancy",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017384",
+   "query": "acute generalised exanthematous pustulosis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017384",
+   "query": "bad drug rash with tiny pus blisters and fever",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017386",
+   "query": "pleomorphic RMS",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017398",
+   "query": "3MC",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Real acronym, so abbrev, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017450",
+   "query": "cleft foot",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Clinical synonym, not lay wording",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017453",
+   "query": "fifth disease passed to unborn baby",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017471",
+   "query": "baby born with kneecap out of place",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017474",
+   "query": "overgrown fingers from birth",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0017363",
+   "query": "CEP",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

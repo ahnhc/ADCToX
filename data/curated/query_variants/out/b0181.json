@@ -1,0 +1,299 @@
+{
+ "batch": 181,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0002313",
+   "query": "VKC",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002313",
+   "query": "summer eye allergy",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Seasonal allergic eye fits vernal and atopic; 'summer' is atypical phrasing",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002319",
+   "query": "phosphate metabolism disorder",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002333",
+   "query": "abscess in the spleen",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002333",
+   "query": "splenic abcess",
+   "category": "typo",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002408",
+   "query": "hereditary hyperbilirubinaemia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002408",
+   "query": "inherited jaundice",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both hereditary hyperbilirubinemia and inborn bilirubin metabolism disorder",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002425",
+   "query": "rectosigmoid ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "ca fits cancer or carcinoma: A, B, E all fit",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002461",
+   "query": "membranoproliferative GN",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002525",
+   "query": "hereditary lipid metabolism disorder",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002525",
+   "query": "inherited lipid disorder",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Synonym wording, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002527",
+   "query": "KA",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002565",
+   "query": "inflammation of the spinal cord",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Plain-language description, so lay rather than variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002580",
+   "query": "orbital rhabdomyosarcoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002580",
+   "query": "orbital RMS",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002598",
+   "query": "intracranial germinoma",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits brain germinoma and CNS germinoma equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002631",
+   "query": "conventional osteogenic sarcoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002644",
+   "query": "granulomatous myositis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002653",
+   "query": "penile Paget's disease",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002670",
+   "query": "ampullary ca",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002691",
+   "query": "liver ca",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002714",
+   "query": "brain and spinal cord cancer",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002714",
+   "query": "CNS malignancy",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002718",
+   "query": "intracranial teratoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0002313",
+   "query": "vernal keratoconjunctivitis",
+   "category": "variant",
+   "drop": "eval or held text"
+  },
+  {
+   "id": "MONDO:0002425",
+   "query": "rectosigmoid cancer",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0002461",
+   "query": "MPGN",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0002670",
+   "query": "ampullary cancer",
+   "category": "variant",
+   "drop": "eval or held text"
+  }
+ ]
+}

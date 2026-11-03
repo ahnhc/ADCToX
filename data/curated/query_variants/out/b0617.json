@@ -1,0 +1,149 @@
+{
+ "batch": 617,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0004851",
+   "query": "heart inflammation caused by drugs or chemicals",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004853",
+   "query": "gonococcal endophthalmitis",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Could be gonococcal endophthalmia or endophthalmitis; not a spelling variant, ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004857",
+   "query": "inflamed tendon",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004866",
+   "query": "ETD",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004866",
+   "query": "blocked eustachian tube",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004866",
+   "query": "eustachian tube dysfunction",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Standard synonym phrasing, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004873",
+   "query": "internal piles",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004873",
+   "query": "internal haemorrhoid",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004895",
+   "query": "crossed eyes from farsightedness",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004973",
+   "query": "adenosquamous carcinoma of the lung",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004986",
+   "query": "bladder ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits bladder cancer and bladder carcinoma equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005037",
+   "query": "Lauren intestinal type gastric cancer",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits both gastric intestinal type adenocarcinoma and general intestinal type",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0005007",
+   "query": "mucinous adenocarcinoma of the colon",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

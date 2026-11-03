@@ -1,0 +1,208 @@
+{
+ "batch": 707,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0017533",
+   "query": "unilateral postaxial polydactyly type B",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017534",
+   "query": "bilateral postaxial polydactyly type B",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017535",
+   "query": "unilateral central polydactyly of the fingers",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017535",
+   "query": "extra finger in the middle of one hand",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017537",
+   "query": "unilateral preaxial polydactyly of the toes",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017537",
+   "query": "two big toes on one foot",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017548",
+   "query": "unilateral humero-radio-ulnar synostosis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017550",
+   "query": "unilateral humeroradial synostosis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017551",
+   "query": "bilateral humeroradial synostosis",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C (bilateral humero-radial) and E-like variants; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017556",
+   "query": "unilateral Madelung deformity",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017562",
+   "query": "unilateral congenital dislocation of the patella",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017562",
+   "query": "kneecap out of place since birth on one side",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017568",
+   "query": "acrodysplasia scoliosis syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Dropped words from disease name; not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017573",
+   "query": "46,XX DSD with anorectal anomalies",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017574",
+   "query": "bowel keeps blocking with nothing actually blocking it",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A, F, and D; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017578",
+   "query": "disorder of thiamin metabolism and transport",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017580",
+   "query": "11p15.4 microduplication",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017587",
+   "query": "tumor in the nail root",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits onychomatricoma, onychocytic matricoma, and nail tumor; ambiguous",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

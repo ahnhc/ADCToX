@@ -1,0 +1,197 @@
+{
+ "batch": 735,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0019578",
+   "query": "nodular lichen myxoedematosus",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019579",
+   "query": "discrete papular lichen myxoedematosus",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019580",
+   "query": "infantile papular mucinosis",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019585",
+   "query": "scleromyxoedema without monoclonal gammopathy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019603",
+   "query": "osteopaenia-myopia-hearing loss-intellectual disability-facial dysmorphism syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019604",
+   "query": "light chain Fanconi syndrome",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019604",
+   "query": "LCFS",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "LCFS is not an established abbreviation; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019606",
+   "query": "monoclonal cryoglobulinemia",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym/variant name, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019606",
+   "query": "type I cryoglobulinaemia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019607",
+   "query": "undifferentiated juvenile idiopathic arthritis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019607",
+   "query": "undifferentiated JIA",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019627",
+   "query": "born with no tears",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019627",
+   "query": "isolated alacrima",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019628",
+   "query": "Rieger's anomaly",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019630",
+   "query": "CEU",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "CEU is not a real-use abbreviation; invented",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019630",
+   "query": "ectropion uveae, congenital",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019644",
+   "query": "unilateral kidney dysplasia",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "word substitution (kidney/renal), a variant not shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

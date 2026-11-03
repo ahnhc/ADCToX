@@ -1,0 +1,87 @@
+{
+ "batch": 208,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0008534",
+   "query": "generalised essential telangiectasia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008559",
+   "query": "prothrombin gene mutation",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits thrombin defect, inherited thrombophilia and parent; descriptive phrase, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008610",
+   "query": "blue yellow color blindness",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008610",
+   "query": "can't see blue",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008621",
+   "query": "glass wire hair",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": null,
+   "why": "Real term is 'spun glass hair'; 'glass wire hair' is invented",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008637",
+   "query": "split uvula",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008637",
+   "query": "forked uvula",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'Forked uvula' is rarely typed; contrived synonym",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

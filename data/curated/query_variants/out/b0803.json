@@ -1,0 +1,43 @@
+{
+ "batch": 803,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0859233",
+   "query": "JEB6 with pyloric atresia",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "JEB6 is not an established abbreviation; it would be abbrev, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859286",
+   "query": "CACNA1C-related neurodevelopmental disorder",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene does not identify one candidate; gene-based name is not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859295",
+   "query": "DPH5 deficiency",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene-based disease label, not clipped clinical shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

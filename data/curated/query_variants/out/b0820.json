@@ -1,0 +1,131 @@
+{
+ "batch": 820,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0975833",
+   "query": "HLD28",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0975862",
+   "query": "B-ALL with MEF2D rearrangement",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "B-ALL is an abbreviation, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0975863",
+   "query": "B-ALL with MYC rearrangement",
+   "category": "variant",
+   "pick": "B",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "B-ALL is an abbreviation, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0975864",
+   "query": "B-ALL with NUTM1 rearrangement",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "B-ALL is an abbreviation, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0975865",
+   "query": "B-ALL with PAX5alt",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "B-ALL is an abbreviation, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0975866",
+   "query": "TCF3-HLF positive ALL",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0975867",
+   "query": "B-ALL with ZNF384 rearrangement",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "B-ALL is an abbreviation, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0975868",
+   "query": "CBFA2T3-GLIS2 AML",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0975870",
+   "query": "FUS-ERG AML",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0975871",
+   "query": "MNX1-ETV6 AML",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0975872",
+   "query": "NPM1-MLF1 AML",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

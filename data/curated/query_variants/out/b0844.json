@@ -1,0 +1,215 @@
+{
+ "batch": 844,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0006758",
+   "query": "FGTB",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006758",
+   "query": "TB of the womb",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006758",
+   "query": "tuberculosis of the fallopian tubes",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "clinical descriptive phrase, not everyday lay wording",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006758",
+   "query": "female genital TB",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "partial abbreviation (TB), is shorthand not spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006781",
+   "query": "H. pylori",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006781",
+   "query": "stomach ulcer bug",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006781",
+   "query": "Helicobacter pylori infection",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006791",
+   "query": "HG",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "HG also abbreviates herpes gestationis (pemphigoid gestationis)",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006791",
+   "query": "severe morning sickness",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006791",
+   "query": "can't stop vomiting in pregnancy",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006791",
+   "query": "hyperemesis",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits gravidarum and cannabinoid hyperemesis equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006909",
+   "query": "dwarfism from lack of growth hormone",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006919",
+   "query": "low potassium",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits potassium deficiency and potassium deficiency disease equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006919",
+   "query": "low K",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits potassium deficiency and potassium deficiency disease equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006953",
+   "query": "Rh incompatibility",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006953",
+   "query": "Rh incompat",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'incompat' is not a common real-world clipping",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006953",
+   "query": "rhesus isoimmunization",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007014",
+   "query": "vibrio infection",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0006751",
+   "query": "erysipeloid",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

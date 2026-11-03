@@ -1,0 +1,78 @@
+{
+ "batch": 285,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0014685",
+   "query": "PME9",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Standard abbreviation is EPM9; PME9 is rarely used",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014699",
+   "query": "CHAMP1-related intellectual disability",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-based descriptive name, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014701",
+   "query": "Stanescu type spondyloepiphyseal dysplasia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014705",
+   "query": "ZIC1-related craniosynostosis",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-based name form, not spelling, word-order or eponym variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014711",
+   "query": "Charcot-Marie-Tooth 2W",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0014696",
+   "query": "cerebro-oculo-facio-skeletal syndrome 3",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0014720",
+   "query": "optic atrophy plus syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

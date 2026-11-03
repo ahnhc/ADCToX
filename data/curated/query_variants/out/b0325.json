@@ -1,0 +1,233 @@
+{
+ "batch": 325,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0000678",
+   "query": "simultagnosia",
+   "category": "typo",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000680",
+   "query": "can't recognize objects by touch",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000685",
+   "query": "can't recognize things by sight",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits visual agnosia and associative visual agnosia; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000686",
+   "query": "can't read but can still write",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000686",
+   "query": "pure word blindness",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000716",
+   "query": "lost the ability to write",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits agraphia, dysgraphia, writing disorder equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000724",
+   "query": "SLI",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits SLI general and numbered subtypes",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000739",
+   "query": "swollen uvula",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000739",
+   "query": "infected uvula",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000741",
+   "query": "cracked corners of mouth",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000741",
+   "query": "sore mouth corners",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "could be angular cheilitis or general cheilitis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000811",
+   "query": "ALCAPA",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000811",
+   "query": "anomalous origin of the left coronary artery",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "this is a reworded name, not spelling or eponym variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000814",
+   "query": "adult B-ALL",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A and E; adult B-ALL vs adult ALL ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000831",
+   "query": "clotting disorder",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000871",
+   "query": "pediatric T-cell ALL",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000872",
+   "query": "pediatric B-cell ALL",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000873",
+   "query": "LBL",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "lymphoblastic lymphoma vs T-LBL and others ambiguous",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0000680",
+   "query": "astereognosis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0000732",
+   "query": "COXPD",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0000732",
+   "query": "combined OXPHOS deficiency",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0000870",
+   "query": "pediatric acute lymphoblastic leukemia",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

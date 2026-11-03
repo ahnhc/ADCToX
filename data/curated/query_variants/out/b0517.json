@@ -1,0 +1,210 @@
+{
+ "batch": 517,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0019921",
+   "query": "paternal UPD6",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "UPD6 is an abbreviation, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019924",
+   "query": "paternal uniparental disomy 20",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019928",
+   "query": "48,XXXY",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019954",
+   "query": "pancreatic neuroendocrine tumour",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019955",
+   "query": "growth hormone releasing hormone tumor",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019964",
+   "query": "thymic NET",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019964",
+   "query": "thymic carcinoid",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019970",
+   "query": "SLJ",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "SLJ is not a standard abbreviation; could also suggest Larsen",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019970",
+   "query": "Sinding Larsen Johansson syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019972",
+   "query": "dural AVF",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "dural arteriovenous fistula matches no candidate",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019979",
+   "query": "born with one small kidney",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits unilateral hypoplasia and dysplasia equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019979",
+   "query": "unilateral renal hypoplasia",
+   "category": "variant",
+   "pick": "D",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019980",
+   "query": "bilateral renal hypoplasia",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020007",
+   "query": "unilateral absence of pulmonary artery",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020048",
+   "query": "ICA agenesis",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020067",
+   "query": "brain infection caused by a virus",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020067",
+   "query": "infective encephalitis",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0019929",
+   "query": "pentasomy X",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019954",
+   "query": "PNET",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

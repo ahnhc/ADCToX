@@ -1,0 +1,216 @@
+{
+ "batch": 461,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0014524",
+   "query": "autosomal recessive intellectual disability 47",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014526",
+   "query": "polyglucosan body myopathy type II",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014531",
+   "query": "amyotrophic lateral sclerosis type XXII",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Roman numeral XXII not used for ALS subtypes; ALS22 is.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014533",
+   "query": "developmental and epileptic encephalopathy type 28",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014534",
+   "query": "lissencephaly type 6 with microcephaly",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014536",
+   "query": "thrombocytopenia type 5",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014537",
+   "query": "nephronophthisis type XIX",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Roman numeral XIX unnatural for nephronophthisis 19.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014538",
+   "query": "congenital fibrosis of extraocular muscles 5",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014539",
+   "query": "focal segmental glomerulosclerosis type IX",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014540",
+   "query": "amelogenesis imperfecta 1H",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014542",
+   "query": "congenital myasthenic syndrome XV",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Roman numeral XV unnatural for CMS subtype 15.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014543",
+   "query": "congenital myasthenic syndrome XIV",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Roman numeral XIV unnatural for CMS subtype 14.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014544",
+   "query": "osteogenesis imperfecta 16",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014549",
+   "query": "lethal congenital contracture syndrome type VI",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014550",
+   "query": "long QT syndrome type XV",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Roman numeral XV unnatural; LQT15 is the usual form.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014560",
+   "query": "amelogenesis imperfecta 1F",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014564",
+   "query": "congenital bile acid synthesis defect type V",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0014523",
+   "query": "juvenile onset diabetes mellitus central and peripheral neurodegeneration syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0014546",
+   "query": "myopathy due to calsequestrin and SERCA-1 protein overload",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0014552",
+   "query": "lethal fetal cerebrorenogenitourinary agenesis hypoplasia syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

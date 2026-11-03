@@ -1,0 +1,155 @@
+{
+ "batch": 607,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0003299",
+   "query": "colorectal leimyoma",
+   "category": "typo",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003310",
+   "query": "Monckeberg's medial calcific sclerosis",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003310",
+   "query": "Monckeberg sclerosis",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "clipped name variant, not clinical shorthand; also fits generic sclerosis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003316",
+   "query": "favorable histology Wilms",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "favorable histology is not exactly nonanaplastic; also fits general Wilms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003316",
+   "query": "non-anaplastic Wilms tumor",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003329",
+   "query": "blocked ureter",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003329",
+   "query": "ureteric obstruction",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003342",
+   "query": "benign perivascular tumour",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003386",
+   "query": "clear cell adenocarcinoma of the bladder",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003420",
+   "query": "biliary cystadenoma",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "biliary cystadenoma is a synonym/variant wording, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003423",
+   "query": "adenoma of the middle ear",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003442",
+   "query": "papillary urothelial neoplasm of the bladder",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0003428",
+   "query": "cerebral hemangioma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0003433",
+   "query": "water clear cell adenoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

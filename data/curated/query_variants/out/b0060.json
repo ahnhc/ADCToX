@@ -1,0 +1,237 @@
+{
+ "batch": 60,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0008040",
+   "query": "temporary leukemia in Down syndrome babies",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008056",
+   "query": "adult-onset myotonic dystrophy",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "adult-onset is not clipped shorthand; also fits C and B",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008056",
+   "query": "type 1 myotonic dystrophy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008058",
+   "query": "cylindrical spiral myopathy",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008059",
+   "query": "Naegeli-Franceschetti-Jadasohn syndrome",
+   "category": "typo",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008087",
+   "query": "inherited tendency to nerve palsies from pressure",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008136",
+   "query": "underdeveloped optic nerve present from birth",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits isolated hypoplasia D but also other optic nerve defects",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008146",
+   "query": "mild brittle bone disease",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008146",
+   "query": "osteogenesis imperfecta 1",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008150",
+   "query": "osteoglophonic displasia",
+   "category": "typo",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008151",
+   "query": "ganthodiaphyseal dysplasia",
+   "category": "typo",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008157",
+   "query": "dermatofibrosis lenticularis disseminata",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "synonym of Buschke-Ollendorff",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008177",
+   "query": "Paget's disease outside the breast",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008185",
+   "query": "pancreatitis that runs in the family",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008185",
+   "query": "HCP",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "HCP is ambiguous and not a standard abbreviation here",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008195",
+   "query": "muscle stiffness brought on by cold",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits paramyotonia congenita and other myotonias equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008195",
+   "query": "paramyotonia",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008196",
+   "query": "parastrematic dwarfism",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008201",
+   "query": "parkinsonism with breathing pauses during sleep",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008214",
+   "query": "Pelger-Huët anomaly",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Pelger-Huët is a spelling variant of the name, not a distinct category issue; fits variant only marginally",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0008040",
+   "query": "transient myeloproliferative disorder",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

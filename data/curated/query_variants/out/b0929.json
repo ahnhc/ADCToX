@@ -1,0 +1,109 @@
+{
+ "batch": 929,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0980936",
+   "query": "SCN12",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "SCN12 is not clearly in use; but maps to SCN gene-numbered form",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0980938",
+   "query": "ADO4",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "ADO4 is not a standard abbreviation; ADO1/ADO2 are used, ADO4 is invented",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0980948",
+   "query": "DEE120",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0980966",
+   "query": "DEE121",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0980969",
+   "query": "CMT2LL",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0980971",
+   "query": "CMT2MM",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0980973",
+   "query": "STAD",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "STAD ambiguous; clipped form of STAD syndrome is not shorthand, it is the name",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0980987",
+   "query": "XP-J",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0980988",
+   "query": "EIG20",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIG20 is not a real clinical abbreviation; invented acronym",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

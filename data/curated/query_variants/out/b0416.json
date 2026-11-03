@@ -1,0 +1,61 @@
+{
+ "batch": 416,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0010459",
+   "query": "UBQLN2 ALS",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010464",
+   "query": "Kroes type X-linked intellectual disability",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Kroes eponym with 'intellectual disability' is unclear; fits A and D",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010477",
+   "query": "Ohdo syndrome MKB type",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010497",
+   "query": "DDX3X syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-name label, not a spelling, word-order or eponym variant",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0010497",
+   "query": "Snijders Blok-Campeau syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

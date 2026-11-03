@@ -1,0 +1,216 @@
+{
+ "batch": 604,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0002954",
+   "query": "multifocal superficial BCC",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002956",
+   "query": "cystic BCC",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002957",
+   "query": "sarcomatoid BCC",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002975",
+   "query": "primary melanoma of the breast",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002975",
+   "query": "melanoma on the breast skin",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002990",
+   "query": "deep fibrous histiocytoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002990",
+   "query": "DFH",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "DFH is not an established abbreviation; invented acronym",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002995",
+   "query": "small bowel NET",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002995",
+   "query": "small bowel carcinoid",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Older synonym term, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003005",
+   "query": "swelling in the macula",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003005",
+   "query": "fluid build-up in the macula",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003038",
+   "query": "difficulty with handwriting",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits dysgraphia and writing disorder equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003038",
+   "query": "can't write legibly",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits dysgraphia, agraphia, writing disorder",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003039",
+   "query": "word finding problem",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits nominal aphasia, aphasia, logopenic equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003039",
+   "query": "can't think of the right words",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits aphasia and nominal aphasia equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003050",
+   "query": "large cell lung ca",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003059",
+   "query": "cholangio ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits bile duct cancer, biliary tract cancer, intrahepatic",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0002954",
+   "query": "multicentric basal-cell carcinoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0002958",
+   "query": "signet-ring basal cell carcinoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0003059",
+   "query": "cholangiocarcinoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

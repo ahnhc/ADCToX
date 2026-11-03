@@ -1,0 +1,76 @@
+{
+ "batch": 265,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0013135",
+   "query": "STXBP2 HLH",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013139",
+   "query": "GFI1 neutropenia",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013161",
+   "query": "LGMD R20",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "R20 (ISPD, 2U) matches no candidate",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013162",
+   "query": "LGMD R19",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "R19 (POMGNT2) matches no candidate",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013172",
+   "query": "polymicrogyria and optic nerve hypoplasia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013174",
+   "query": "PCD 13",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "numbered PCD subtypes are not typed in clinical practice; OMIM uses CILD13",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

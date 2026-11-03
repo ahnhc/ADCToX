@@ -1,0 +1,232 @@
+{
+ "batch": 305,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0019077",
+   "query": "isolated dyskeratosis follicularis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019078",
+   "query": "Ritscher-Schinzel",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019084",
+   "query": "radiation damage to the rectum",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019084",
+   "query": "radiation-induced proctitis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019086",
+   "query": "foodpipe cancer",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "People type 'food pipe' as two words, not 'foodpipe'",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019086",
+   "query": "esoph ca",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019086",
+   "query": "oesophageal carcinoma",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019088",
+   "query": "lymphoma after transplant",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019104",
+   "query": "baby arching back with reflux",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019144",
+   "query": "congenital protein S deficiency",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits B and E equally; it is a word-order variant, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019152",
+   "query": "Oguchi's disease",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019161",
+   "query": "PHA1",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019171",
+   "query": "Romano-Ward",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits A and F (and subtypes); an eponym is a variant, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019175",
+   "query": "swelling that runs in the family",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "vague; fits several lymphedema forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019193",
+   "query": "Lawrence's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Lawrence-Seip ambiguity: fits acquired and congenital generalized lipodystrophy",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019212",
+   "query": "DSAP",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019220",
+   "query": "born unable to process vitamin B12",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019245",
+   "query": "fat storage disease",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits lysosomal lipid storage and other lipid disorders",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019262",
+   "query": "juvenile Batten disease",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Batten is an eponym, so variant rather than shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0019181",
+   "query": "MRX",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019238",
+   "query": "disorder of pyrimidine metabolism",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

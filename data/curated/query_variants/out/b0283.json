@@ -1,0 +1,21 @@
+{
+ "batch": 283,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0014563",
+   "query": "ECHS1 deficiency",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "ECHS1 is a gene-symbol abbreviation, so the category should be abbrev, not variant",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

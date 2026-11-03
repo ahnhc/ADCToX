@@ -1,0 +1,116 @@
+{
+ "batch": 851,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0011861",
+   "query": "breath holding",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "plain term, not clipped shorthand; it is a variant/lay form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011861",
+   "query": "holds breath and turns blue",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011993",
+   "query": "asa resistance",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "ASA is an abbreviation, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012454",
+   "query": "asian flush",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012454",
+   "query": "alcohol flush reaction",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012454",
+   "query": "flushing after drinking alcohol",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013318",
+   "query": "early repol syndrome",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013318",
+   "query": "early repolarization syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "full name wording, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013335",
+   "query": "tuberculin anergy",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "anergy is a different term, not clipped shorthand; synonym",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0013318",
+   "query": "ERS",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

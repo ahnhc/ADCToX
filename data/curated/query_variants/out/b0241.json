@@ -1,0 +1,230 @@
+{
+ "batch": 241,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0011355",
+   "query": "type 7 cone-rod dystrophy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011360",
+   "query": "nonsyndromic autosomal recessive hearing loss 14",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011364",
+   "query": "nonsyndromic autosomal recessive hearing loss 16",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011364",
+   "query": "STRC-related hearing loss",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011368",
+   "query": "PTMC",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011368",
+   "query": "tiny papillary thyroid cancer, 1 cm or less",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011370",
+   "query": "Stargardt's disease 4",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011389",
+   "query": "nonsyndromic autosomal dominant hearing loss 16",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011390",
+   "query": "focal seg glomerulosclerosis 2",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'focal seg' with a number is not real usage; FSGS2 is.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011391",
+   "query": "Van der Knaap disease",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both A and F equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011392",
+   "query": "nonsyndromic autosomal recessive hearing loss 20",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011395",
+   "query": "ABCA4-related cone-rod dystrophy",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene-based phrasing, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011396",
+   "query": "Camisa syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "obscure eponym; no candidate clearly matches",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011397",
+   "query": "cerebellar ataxia with deafness and narcolepsy",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "formal name reordered, not lay wording",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011398",
+   "query": "epidermolysis bullosa pruriginosa",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011411",
+   "query": "Chudley-McCullough syndrom",
+   "category": "typo",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011415",
+   "query": "Leber's congenital amaurosis 3",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011416",
+   "query": "GEFS+ type 1",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "GEFS+ is a real abbreviation, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011420",
+   "query": "partial growth hormone receptor deficiency short stature",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011423",
+   "query": "limb-girdle muscular dystrophy 2E",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

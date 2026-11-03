@@ -1,0 +1,142 @@
+{
+ "batch": 927,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0979370",
+   "query": "late infantile CLN8",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0979371",
+   "query": "congenital CLN10",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0979372",
+   "query": "late infantile CLN10",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0979575",
+   "query": "MRD76",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0979865",
+   "query": "POPCO syndrome",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "POPCO is an invented acronym; real one is POPCHAS",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0979885",
+   "query": "calcium deposits around the joint",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits calcific tendinitis, calcific periarthritis, periarthritis equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0979885",
+   "query": "calcific periarthritis",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0979899",
+   "query": "SED Holling type",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0979899",
+   "query": "Holling spondyloepiphyseal dysplasia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0980701",
+   "query": "MoCD type B2",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0980701",
+   "query": "molybdenum cofactor deficiency type B2",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "clipped name, shorthand rather than spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0980705",
+   "query": "CDG type IIcc",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

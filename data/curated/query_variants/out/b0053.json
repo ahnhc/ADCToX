@@ -1,0 +1,210 @@
+{
+ "batch": 53,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0005311",
+   "query": "clogged arteries",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005311",
+   "query": "athero",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'athero' is not a standard clinical shorthand; vague among atherosclerosis types",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005313",
+   "query": "necrotising enterocolitis",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A, E, and B equally; neonatal vs general unspecified",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005345",
+   "query": "urethral opening on underside of penis",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005361",
+   "query": "eosinophilic oesophagitis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005445",
+   "query": "VL",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005498",
+   "query": "food poisoning causing paralysis",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005526",
+   "query": "tetanos",
+   "category": "typo",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005620",
+   "query": "CAA",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005638",
+   "query": "can't recognize familiar objects",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005705",
+   "query": "Chinese liver fluke infection",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "descriptive common name, not spelling/word-order variant; more lay/synonym",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005708",
+   "query": "CTF",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005738",
+   "query": "hydatid cyst disease",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits cystic echinococcosis and echinococcosis about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005806",
+   "query": "lower throat cancer",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "'lower throat' could mean hypopharynx or larynx; ambiguous among C, D, F",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005806",
+   "query": "hypopharyngeal ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both hypopharynx cancer C and neoplasm of hypopharynx D",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005806",
+   "query": "cancer of the hypopharynx",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits hypopharynx cancer C and neoplasm of hypopharynx D",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005813",
+   "query": "IDCS",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0005620",
+   "query": "HCHWA-D",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005761",
+   "query": "LF",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

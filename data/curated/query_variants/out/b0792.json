@@ -1,0 +1,188 @@
+{
+ "batch": 792,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0100161",
+   "query": "type IV renal tubular acidosis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100161",
+   "query": "hyperkalaemic renal tubular acidosis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100161",
+   "query": "RTA-4",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Real usage is 'type 4 RTA' or 'RTA IV', not 'RTA-4'",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100165",
+   "query": "permanent neonatal diabetes mellitus type 1",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100168",
+   "query": "desmoid tumour caused by somatic mutation",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100212",
+   "query": "IFAP",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "IFAP is a true acronym, so abbrev, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100223",
+   "query": "nuclear-encoded complex I deficiency",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Descriptive rewording, not clipped shorthand; closer to variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100226",
+   "query": "walking in sleep",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100234",
+   "query": "idiopathic VF",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Idiopathic VF fits A, C and F equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100247",
+   "query": "MCAHS",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100259",
+   "query": "Zellweger spectrum disorder due to PEX1 mutation",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100263",
+   "query": "Zellweger spectrum disorder due to PEX6 mutation",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100290",
+   "query": "serrated polyposis syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits E, C (older name) and A about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100291",
+   "query": "early T-cell precursor ALL",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100302",
+   "query": "LADD syndrome type 1",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0100176",
+   "query": "AP4 deficiency syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0100290",
+   "query": "serrated polyposis",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

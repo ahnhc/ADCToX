@@ -1,0 +1,123 @@
+{
+ "batch": 212,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0008926",
+   "query": "Pena-Shokeir type 2",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008938",
+   "query": "early onset cerebellar ataxia retained reflexes",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008941",
+   "query": "Thompson-Baraitser",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Eponym, so variant not shorthand; target unclear among ID syndromes",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008955",
+   "query": "ERCC6-related COFS",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008958",
+   "query": "KFS2",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "KFS is used; numbered KFS2 is not established usage",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008975",
+   "query": "Insley-Astley syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008990",
+   "query": "posterior laryngeal cleft",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits B and laryngotracheoesophageal cleft forms about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009005",
+   "query": "C1r/C1s deficiency",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Just the disease name, not an abbreviation",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0008901",
+   "query": "Tel-Hashomer camptodactyly syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0008921",
+   "query": "carnosinase deficiency",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0008982",
+   "query": "central areolar choroidal dystrophy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0008991",
+   "query": "Verloove-Vanhorick-Brubakk syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

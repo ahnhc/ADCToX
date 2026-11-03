@@ -1,0 +1,138 @@
+{
+ "batch": 477,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0015312",
+   "query": "unilateral choanal atresia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Exact name of candidate C, not a variant form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015313",
+   "query": "bilateral choanal atresia",
+   "category": "variant",
+   "pick": "A",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Same wording as candidate name, not a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015316",
+   "query": "congenital laryngeal paralysis",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Group F is the one fitting; but check: fits F clearly",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015317",
+   "query": "laryngotracheal hemangioma",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015345",
+   "query": "perioral myoclonus with absences",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015350",
+   "query": "17q11.2 microdup",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'microdup' is not a real clinical shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015362",
+   "query": "AD dHMN",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015363",
+   "query": "AR dHMN",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015371",
+   "query": "LAM",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "LAM usually means lymphangioleiomyomatosis; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015371",
+   "query": "Moulin linear atrophoderma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015376",
+   "query": "type 1 branchial cleft anomaly",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0015346",
+   "query": "Jeavons' syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

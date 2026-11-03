@@ -1,0 +1,89 @@
+{
+ "batch": 753,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0021337",
+   "query": "tonsil ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both tonsil cancer and tonsil carcinoma equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021339",
+   "query": "cancer on the roof of the mouth",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits hard palate cancer and carcinoma of hard palate; soft palate too",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021339",
+   "query": "hard palate ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both hard palate cancer and carcinoma of hard palate",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021416",
+   "query": "GB polyp",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021431",
+   "query": "cancer inside the cheek",
+   "category": "lay",
+   "pick": "E",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021431",
+   "query": "buccal SCC",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0021392",
+   "query": "colon polyp",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0021444",
+   "query": "benign colon tumor",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

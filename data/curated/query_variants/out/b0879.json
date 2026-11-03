@@ -1,0 +1,237 @@
+{
+ "batch": 879,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0032824",
+   "query": "GPIBD21",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032828",
+   "query": "STAHP",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; STAHP is a meme spelling",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032828",
+   "query": "progressive spastic tetraplegia with axial hypotonia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032833",
+   "query": "congenital lower urinary tract obstruction",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032843",
+   "query": "OPML1",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032857",
+   "query": "DIAR11",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not a real clinical abbreviation",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032857",
+   "query": "congenital malabsorptive diarrhea 11",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Ambiguous; D is number 4, E is diarrhea 11, mismatch",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032875",
+   "query": "SSMGA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032876",
+   "query": "NEDALVS",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032877",
+   "query": "NEDBAS",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032878",
+   "query": "NEDBASH",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032883",
+   "query": "IDDBCS",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032884",
+   "query": "EDFAOB",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032888",
+   "query": "NEDBAVC",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032890",
+   "query": "NMOAS",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032892",
+   "query": "BAIDCS",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032894",
+   "query": "NEDESBA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032897",
+   "query": "IDDHBA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032900",
+   "query": "NEDHAHM",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032913",
+   "query": "CHTD7",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym; not in clinical use",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0032833",
+   "query": "LUTO",
+   "category": "abbrev",
+   "drop": "eval or held text"
+  }
+ ]
+}

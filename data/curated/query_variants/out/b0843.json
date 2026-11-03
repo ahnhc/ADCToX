@@ -1,0 +1,303 @@
+{
+ "batch": 843,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0006394",
+   "query": "tubular adenoma of the rectum",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006394",
+   "query": "rectal adenoma, tubular type",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006395",
+   "query": "tubulovillous rectal adenoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006395",
+   "query": "mixed tubular and villous adenoma of rectum",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "descriptive paraphrase, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006396",
+   "query": "villous rectal adenoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006419",
+   "query": "small bowel intraepithelial neoplasia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006419",
+   "query": "small bowel dysplasia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "dysplasia is a different term, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006421",
+   "query": "small bowel tubular adenoma",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006421",
+   "query": "tubular adenoma of small intestine",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006422",
+   "query": "small bowel tubulovillous adenoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006422",
+   "query": "tubulovillous adenoma of small intestine",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006424",
+   "query": "soft tissue growth",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits soft tissue neoplasm and benign forms equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006424",
+   "query": "soft tissue neoplasms",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006442",
+   "query": "tendon sheeth fibroma",
+   "category": "typo",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006483",
+   "query": "dysplasia of the urothelium",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006528",
+   "query": "bacterial rash",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits bacterial exanthem but also other bacterial rashes; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006528",
+   "query": "bacterial exanthema",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006537",
+   "query": "dark spot on the white of the eye",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits pigmentation, deposit, tumor, concretion; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006537",
+   "query": "pigmentation of the conjunctiva",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006561",
+   "query": "hypopigmentation of the eyelid",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006586",
+   "query": "skin picking disorder",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006586",
+   "query": "compulsive skin picking",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006586",
+   "query": "excoriation disorder",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "clipped form of the DSM name, closer to shorthand than variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006599",
+   "query": "inducible urticaria",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006671",
+   "query": "bacteroidosis",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "rare invented term; fits Bacteroides and Bacteroidaceae equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006681",
+   "query": "borreliosis",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits Lyme, Borrelia infection, miyamotoi equally",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0006636",
+   "query": "actinobacillosis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

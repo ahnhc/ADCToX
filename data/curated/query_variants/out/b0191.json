@@ -1,0 +1,189 @@
+{
+ "batch": 191,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0006047",
+   "query": "PDAC",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006047",
+   "query": "pancreatic adeno",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "ambiguous between A, E, F; 'adeno' clipping unnatural",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006094",
+   "query": "Askin tumour",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006131",
+   "query": "liponeurocytoma",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "full single-word name, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006186",
+   "query": "duodenal adeno",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "fits both E and F; 'adeno' ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006230",
+   "query": "gastric SCC",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006238",
+   "query": "GH-secreting pituitary adenoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006238",
+   "query": "GH pituitary adenoma",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006260",
+   "query": "RMC",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "RMC fits renal medullary (C, F) and rectal medullary",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006277",
+   "query": "LAM",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006280",
+   "query": "sclerosing haemangioma of the lung",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006329",
+   "query": "aesthesioneuroblastoma",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits C, E and B-type olfactory neuroblastoma equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006373",
+   "query": "pituitary adeno",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'adeno' clipping of pituitary adenoma is not real usage",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006466",
+   "query": "spindle epithelial tumour with thymus-like differentiation",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0006047",
+   "query": "pancreatic cancer",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0006047",
+   "query": "pancreatic ductal adenocarcinoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0006329",
+   "query": "esthesioneuroblastoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0006373",
+   "query": "benign pituitary tumor",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

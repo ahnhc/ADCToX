@@ -1,0 +1,338 @@
+{
+ "batch": 860,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0020597",
+   "query": "blood blisters on the scrotum",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits scrotal angiokeratoma and scrotal hemangioma about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020597",
+   "query": "Fordyce-type scrotal angiokeratoma",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both scrotal angiokeratoma and angiokeratoma of Fordyce",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020629",
+   "query": "microcephaly, growth retardation and increased sister chromatid exchange",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020647",
+   "query": "MFRG syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "unverified acronym, and it is an abbreviation, not a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020673",
+   "query": "blocked artery",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020675",
+   "query": "bowel damage from poor blood supply",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020675",
+   "query": "ischemic bowel",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020695",
+   "query": "floppy cerebral palsy",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020695",
+   "query": "hypotonic CP",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020695",
+   "query": "cerebral palsy, hypotonic type",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020698",
+   "query": "inborn errors of biotin metabolism",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020701",
+   "query": "BDA1A",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "BDA1 is used; BDA1A is not an established abbreviation",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020704",
+   "query": "hereditary rippling muscle disease",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020706",
+   "query": "bony bumps on the end joints of the fingers",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020706",
+   "query": "Heberden node",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020708",
+   "query": "flail arm variant",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020708",
+   "query": "man-in-the-barrel syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020710",
+   "query": "infection of the amniotic sac",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits chorioamnionitis and amnionitis equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020710",
+   "query": "infected amniotic fluid",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits chorioamnionitis and amnionitis equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020711",
+   "query": "selective peripheral thyroid hormone resistance",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020725",
+   "query": "low blood count from a long-term illness",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020725",
+   "query": "chronic disease anemia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020744",
+   "query": "Mobitz I AV block",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020767",
+   "query": "loss of bladder control from pinched nerves at the base of the spine",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020767",
+   "query": "CES with neurogenic bladder",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020771",
+   "query": "autosomal recessive spinocerebellar ataxia with axonal neuropathy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020776",
+   "query": "chlamydia infection",
+   "category": "lay",
+   "pick": "C",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0020725",
+   "query": "ACD",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0020744",
+   "query": "Wenckebach block",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0020760",
+   "query": "Bowen's disease",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0020771",
+   "query": "SCAN1",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0020776",
+   "query": "chlamydial infection",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

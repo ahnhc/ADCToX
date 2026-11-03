@@ -1,0 +1,233 @@
+{
+ "batch": 263,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0012979",
+   "query": "PCD 12",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012981",
+   "query": "hereditary spherocytosis 4",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012985",
+   "query": "hereditary spherocytosis 5",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012988",
+   "query": "Kallmann syndrome type 6",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Kallmann syndrome type 6 is rarely used; HH6 naming typical",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012989",
+   "query": "MCPH 7",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "MCPH is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012990",
+   "query": "Leber's congenital amaurosis 13",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012991",
+   "query": "Kahrizi's syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013010",
+   "query": "DFNB 71",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "DFNB is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013011",
+   "query": "ASD type 5",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "ASD is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013017",
+   "query": "Marie Unna hypotrichosis 2",
+   "category": "variant",
+   "pick": "A",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Marie Unna is its own entity; 'hypotrichosis 2' conflicts with candidate C",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013018",
+   "query": "KFSD, autosomal dominant",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "KFSD is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013030",
+   "query": "DCM 1BB",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013033",
+   "query": "spastic quadriplegic CP 2",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "CP is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013034",
+   "query": "striate PPK 2",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013036",
+   "query": "Zechi-Ceide",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Eponym name alone is a variant, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013047",
+   "query": "GSD11",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "GSD11 is LDH deficiency; fits C, D, E ambiguously; abbreviation",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013047",
+   "query": "LDH A deficiency",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "LDH A is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013048",
+   "query": "HSP 50",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0012979",
+   "query": "primary ciliary dyskinesia 12",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0012983",
+   "query": "cone rod dystrophy 12",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0012992",
+   "query": "pancreatic insufficiency anemia hyperostosis syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0013049",
+   "query": "CDG 1o",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

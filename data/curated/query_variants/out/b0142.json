@@ -1,0 +1,111 @@
+{
+ "batch": 142,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0011891",
+   "query": "GEFS+3",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "GEFS+ type 3 is not a candidate; it is an abbreviation, not a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011895",
+   "query": "idiopathic HES",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011925",
+   "query": "LAMA2 CMD",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011928",
+   "query": "caudal duplication anomaly",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011936",
+   "query": "Bakrania-Ragge",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Not a recognised eponym for any candidate",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011945",
+   "query": "perinatal lethal Gaucher",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011946",
+   "query": "diaphanospondylodysotosis",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011968",
+   "query": "alpha-sarcoglycan deficiency",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-product name for 2D, not clipped shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0011886",
+   "query": "DYT-13",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0011975",
+   "query": "Kagami-Ogata syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

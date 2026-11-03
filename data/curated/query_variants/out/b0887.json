@@ -1,0 +1,122 @@
+{
+ "batch": 887,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0100000",
+   "query": "MED12 syndrome",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-name plus syndrome is not clipped shorthand; closer to variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100001",
+   "query": "alpha-gal",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Common clinical short name, but a clipped term; abbrev-like, not shorthand clearly",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100001",
+   "query": "meat allergy from a tick bite",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100010",
+   "query": "tendon problems",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100016",
+   "query": "KMT2B dystonia",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "KMT2B dystonia (DYT28) not among candidates; gene-name query isn't shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100018",
+   "query": "adult PRP",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100037",
+   "query": "juvenile PRP",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100081",
+   "query": "sleep problems",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100084",
+   "query": "ACTA1 myopathy",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Fits alpha-actinopathy, E and congenital myopathy; gene-name query not shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0060765",
+   "query": "skin tag",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0060765",
+   "query": "acrochordon",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

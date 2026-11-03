@@ -1,0 +1,16 @@
+{
+ "batch": 428,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [],
+ "dropped": [
+  {
+   "id": "MONDO:0012429",
+   "query": "Aicardi Goutieres syndrome 2",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

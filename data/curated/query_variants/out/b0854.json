@@ -1,0 +1,144 @@
+{
+ "batch": 854,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0015083",
+   "query": "nuclear CN III palsy",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015083",
+   "query": "nuclear third nerve palsy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "word substitution (CN III, third nerve) is not spelling/word-order variant; lay-like paraphrase",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015468",
+   "query": "craniosynostosis with cataracts",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015569",
+   "query": "pyriform aperture stenosis with holoprosencephaly",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016625",
+   "query": "acquired deficiency anaemia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016857",
+   "query": "BPES 3q23",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016859",
+   "query": "BPES due to CNV",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016866",
+   "query": "partial monosomy 1",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "partial monosomy is a synonym phrase, not clinical shorthand; ambiguous chromosome arm",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016867",
+   "query": "partial monosomy 2",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "partial monosomy is a synonym phrase, not clinical shorthand; ambiguous chromosome arm",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016868",
+   "query": "partial monosomy 3",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "partial monosomy is a synonym phrase, not clinical shorthand; ambiguous chromosome arm",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016869",
+   "query": "partial monosomy 4",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "partial monosomy is a synonym phrase, not clinical shorthand; ambiguous chromosome arm",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0015256",
+   "query": "Rodini-Richieri-Costa syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0015337",
+   "query": "non-syndromic craniosynostosis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

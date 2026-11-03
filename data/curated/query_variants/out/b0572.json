@@ -1,0 +1,120 @@
+{
+ "batch": 572,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0859366",
+   "query": "DFNA85",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "locus acronym is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859374",
+   "query": "DFNB120",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "locus acronym is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859378",
+   "query": "HLD25",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "HLD25 is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859380",
+   "query": "EKD3",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "EKD3 is rarely used; PKD is standard. Abbreviation, not variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859518",
+   "query": "HLD26",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "HLD26 is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859524",
+   "query": "DFNA86",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "locus acronym is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859525",
+   "query": "DFNA87",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "locus acronym is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859527",
+   "query": "DFNA88",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "locus acronym is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859528",
+   "query": "DFNA89",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "locus acronym is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859568",
+   "query": "MCDR4",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "MCDR4 is an abbreviation, not a spelling variant",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

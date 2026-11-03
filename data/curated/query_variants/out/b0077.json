@@ -1,0 +1,173 @@
+{
+ "batch": 77,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0011717",
+   "query": "HI/HA",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "HI/HA is a true acronym, so it belongs under abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011721",
+   "query": "anterior tibial distal myopathy",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011724",
+   "query": "GLUT1 deficiency",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both D and F about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011731",
+   "query": "glucose galactose intolerance",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011740",
+   "query": "Carney-Stratakis",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011758",
+   "query": "Hurler's syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011759",
+   "query": "Hurler Sheie syndrome",
+   "category": "typo",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011783",
+   "query": "CDG type 1G",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011787",
+   "query": "limb girdle muscular dystrophy 2I",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011833",
+   "query": "spinocerebellar ataxia 21",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011834",
+   "query": "spinocerebellar ataxia 18",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011838",
+   "query": "Vasterbotten retinal dystrophy",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Not an established name; Bothnia is the term; region name is not an eponym",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0011686",
+   "query": "LIG4",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0011717",
+   "query": "HIHA",
+   "category": "abbrev",
+   "drop": "duplicate"
+  },
+  {
+   "id": "MONDO:0011749",
+   "query": "OCA 1B",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0011760",
+   "query": "MPS IS",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0011765",
+   "query": "MED 5",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

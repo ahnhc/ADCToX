@@ -1,0 +1,76 @@
+{
+ "batch": 315,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0032600",
+   "query": "CHD3 syndrome",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-name label, not clipped shorthand; closer to a gene-based variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032643",
+   "query": "PCH type 12",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032654",
+   "query": "ZNF341 deficiency",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-based name, not clinical shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032819",
+   "query": "TRH receptor deficiency",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-based name; could fit central hypothyroidism forms (A or F); not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032831",
+   "query": "PCH type 13",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032835",
+   "query": "Nishimura type spondyloepiphyseal dysplasia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

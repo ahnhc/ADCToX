@@ -1,0 +1,149 @@
+{
+ "batch": 743,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0020391",
+   "query": "PACA",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020391",
+   "query": "hemitruncus",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "A true synonym or eponym-style term, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020395",
+   "query": "valvular pulmonary stenosis",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits A, B, D and F equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020400",
+   "query": "supravalvular mitral ring",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020402",
+   "query": "accessory mitral valve tissue",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020403",
+   "query": "mitral valve agenesis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Drops 'congenital'; that is clipping, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020406",
+   "query": "complete AV canal with left heart obstruction",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020407",
+   "query": "complete AV canal with ventricular hypoplasia",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020408",
+   "query": "complete AV canal with tetralogy of Fallot",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020412",
+   "query": "PDA aneurysm",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0020412",
+   "query": "ductus arteriosus aneurysm",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Drops 'congenital patent'; that is clipping, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0020415",
+   "query": "Kommerell's diverticulum",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0020393",
+   "query": "discrete subaortic stenosis",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

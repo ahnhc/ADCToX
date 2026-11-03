@@ -1,0 +1,131 @@
+{
+ "batch": 473,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0014991",
+   "query": "seckel syndrom 10",
+   "category": "typo",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014992",
+   "query": "lisencephaly 8",
+   "category": "typo",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014993",
+   "query": "myofibrillary myopathy 8",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'myofibrillary' is a misspelling, so typo not variant; rarely typed",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015000",
+   "query": "early infantile epileptic encephalopathy 48",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015002",
+   "query": "early infantile epileptic encephalopathy 49",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015005",
+   "query": "early-onset vitamin B6-dependent epilepsy",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015007",
+   "query": "SINO syndrome",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "SINO is an acronym of the name; plausibly abbrev but fits C only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015008",
+   "query": "amelogenesis imperfecta 1J",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015020",
+   "query": "autosomal recessive intellectual disability 59",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015025",
+   "query": "early infantile epileptic encephalopathy 51",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015028",
+   "query": "XXYY",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "karyotype shorthand without 48; arguably abbrev rather than clipped shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

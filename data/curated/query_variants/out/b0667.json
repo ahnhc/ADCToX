@@ -1,0 +1,21 @@
+{
+ "batch": 667,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0013013",
+   "query": "question mark ears",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits B and F equally; it is a clipped name, not a variant",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

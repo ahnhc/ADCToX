@@ -1,0 +1,65 @@
+{
+ "batch": 155,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0013664",
+   "query": "17,20-lyase deficiency",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013668",
+   "query": "i(18p)",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "cytogenetic notation, not disease shorthand; fits both A and B",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013668",
+   "query": "tetrasomy 18p syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0014005",
+   "query": "MPGN type 1",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "MPGN is an abbreviation, not shorthand; fits A, D and E",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014025",
+   "query": "Jokela type SMA",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "SMA is an abbreviation plus eponym, not clipped shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

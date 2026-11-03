@@ -1,0 +1,216 @@
+{
+ "batch": 30,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0021569",
+   "query": "Emery-Dreifuss muscular dystrophy type 2",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000754",
+   "query": "fistula-in-ano",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Latin medical term, not clipped shorthand; variant fits better",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000754",
+   "query": "perianal fistula",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Standard full term, not shorthand; also could be rectal fistula",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000754",
+   "query": "tunnel near the back passage that keeps draining",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001029",
+   "query": "KFS",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001029",
+   "query": "born with fused bones in the neck",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0001347",
+   "query": "face and shoulder muscle wasting",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003036",
+   "query": "mixed epidermoid and mucinous carcinoma",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Unnatural phrasing; mucinous adenocarcinoma also fits; not a real variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003345",
+   "query": "Klatskin tumour",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003345",
+   "query": "perihilar CCA",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Perihilar CCA is a standard abbreviation, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004619",
+   "query": "measels",
+   "category": "typo",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004933",
+   "query": "underdeveloped left side of the heart",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004933",
+   "query": "hypoplastic left heart",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Dropping 'syndrome' is common, but HLHS 1 and 2 not excluded; clipped fits",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005136",
+   "query": "fever and chills from mosquito bites",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005136",
+   "query": "mosquito-borne fever",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Could be malaria or other arboviral fevers; vague",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005446",
+   "query": "CL",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005446",
+   "query": "skin ulcer from a sandfly bite",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0800491",
+   "query": "Ohtahara syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0001347",
+   "query": "facio-scapulo-humeral muscular dystrophy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0003345",
+   "query": "pCCA",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

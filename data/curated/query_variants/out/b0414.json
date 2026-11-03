@@ -1,0 +1,98 @@
+{
+ "batch": 414,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0010151",
+   "query": "Krebs cycle defect",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both A and D equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010151",
+   "query": "TCA cycle defect",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "TCA is an acronym (abbrev); fits A and D equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010159",
+   "query": "Turcot's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Turcot fits several mismatch repair/hereditary syndrome candidates",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010170",
+   "query": "Usher 3A",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010171",
+   "query": "Usher 1C",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010180",
+   "query": "Jarcho-Levin",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "eponym, so variant rather than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010247",
+   "query": "CALD",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010247",
+   "query": "cerebral ALD",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

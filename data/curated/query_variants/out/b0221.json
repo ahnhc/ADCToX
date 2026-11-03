@@ -1,0 +1,87 @@
+{
+ "batch": 221,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0009729",
+   "query": "Edwards-Paton-Dilly syndrome",
+   "category": "typo",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Unrecognised eponym, not a typo; no candidate clearly matches",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009736",
+   "query": "Neu-Laxova syndrome type I",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009749",
+   "query": "giant axonal neuropathy type I",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009757",
+   "query": "Niemann Pick type C1",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009759",
+   "query": "mosaic variegated aneuploidy syndrome type I",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009780",
+   "query": "omphalocel cleft palate syndrome",
+   "category": "typo",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009805",
+   "query": "OI type 9",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "OI is a real abbreviation, so category should be abbrev",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

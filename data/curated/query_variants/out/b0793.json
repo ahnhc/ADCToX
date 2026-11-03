@@ -1,0 +1,254 @@
+{
+ "batch": 793,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0100303",
+   "query": "annular epidermolytic ichthyosis 1",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Could be A or D (AEI 1, KRT10); numbered form odd, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100310",
+   "query": "inherited cerebellar ataxia",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits hereditary cerebellar ataxia B and hereditary ataxia A about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100373",
+   "query": "AML inv16",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "inv16 fits both A and B, different breakpoint notations",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100373",
+   "query": "acute myeloid leukemia with inv(16)",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "inv(16) fits A and B equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100374",
+   "query": "AML t(16;16)",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "t(16;16) AML is rarely typed alone; usually grouped with inv(16)",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100374",
+   "query": "acute myeloid leukemia with t(16;16)",
+   "category": "variant",
+   "pick": "D",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Rare standalone form; usually written with inv(16); category is shorthand-like",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100375",
+   "query": "AML t(15;17)",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100377",
+   "query": "AML t(10;11)",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits C and E, two breakpoint variants",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100381",
+   "query": "AML t(6;11)",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100389",
+   "query": "AML +8",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100389",
+   "query": "trisomy 8 AML",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100395",
+   "query": "AML t(5;11)",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100395",
+   "query": "NUP98-NSD1 AML",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "NUP98-NSD1 is the t(5;11) fusion; it is a gene fusion, not shorthand",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100396",
+   "query": "AML t(7;12)",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100398",
+   "query": "AML inv(3)",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits C and D; inv(3)/t(3;3) grouped",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100399",
+   "query": "AML t(3;3)",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits D and F",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100407",
+   "query": "AML t(11;15)",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100415",
+   "query": "FLT3-ITD positive AML",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100444",
+   "query": "RLBP1-related retinal dystrophy",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100452",
+   "query": "autosomal dominant RPE65 retinopathy",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Dominant RPE65 is rare; phrasing unnatural, but maps to A",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100478",
+   "query": "NFIA-related brain malformation",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Fits C, A, E; not shorthand but a gene-based name",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0100375",
+   "query": "APL",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0100375",
+   "query": "acute promyelocytic leukemia",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

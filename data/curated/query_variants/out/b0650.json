@@ -1,0 +1,76 @@
+{
+ "batch": 650,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0009559",
+   "query": "mandibulofacial dysostosis with intellectual disability",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009572",
+   "query": "autosomal recessive FMF",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "uses abbreviation FMF, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009596",
+   "query": "Pena type metaphyseal chondrodysplasia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009602",
+   "query": "Roy-Maroteaux-Kremp syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "obscure eponym, rarely typed; a clinician would unlikely recognise it",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009606",
+   "query": "methemoglobinemia type 1",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "type 1 fits C, E and F about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009634",
+   "query": "Gupta-Patton syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "obscure eponym; fits both E and F",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

@@ -1,0 +1,204 @@
+{
+ "batch": 393,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0006574",
+   "query": "Madelung syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both lipomatosis (C) and diffuse lipomatosis (E)",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006589",
+   "query": "work-related skin rash",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006589",
+   "query": "occupational contact dermatitis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006622",
+   "query": "vulvar SK",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006638",
+   "query": "ARN",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006638",
+   "query": "acute retinal necrosis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Near-canonical name minus 'syndrome'; not a real variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006648",
+   "query": "anterior compartment syndrome",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006648",
+   "query": "anterior tibial compartment syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006714",
+   "query": "aneurysm in the heart arteries",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006716",
+   "query": "blood clot in a heart artery",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006716",
+   "query": "coronary thrombus",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Thrombus/thrombosis is a word-form variant, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006729",
+   "query": "subaortic membrane",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits discrete, fixed and membranous subaortic stenosis equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006729",
+   "query": "discrete subvalvular aortic stenosis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006742",
+   "query": "goiter from lack of iodine in the diet",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006752",
+   "query": "pseudoerysipelas",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": null,
+   "why": "Obscure term; erysipeloid is the usual name, unclear meaning",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006777",
+   "query": "black furry tongue",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006777",
+   "query": "black hairy tongue",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0006738",
+   "query": "clear cell hidradenoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

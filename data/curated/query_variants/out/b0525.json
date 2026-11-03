@@ -1,0 +1,171 @@
+{
+ "batch": 525,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0021288",
+   "query": "stage 0 hypopharynx cancer",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Stage 0 paraphrase, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021290",
+   "query": "appendiceal carcinoma in situ",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021297",
+   "query": "stage 0 nasopharynx cancer",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Stage 0 paraphrase, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021298",
+   "query": "stage 0 oropharynx cancer",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Stage 0 paraphrase, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021320",
+   "query": "malignant tumour of floor of mouth",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021321",
+   "query": "malignant tumour of extrahepatic bile duct",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021322",
+   "query": "cancer of the lining around the brain and spine",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits malignant meninges and leptomeningeal tumor about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021322",
+   "query": "malignant tumour of meninges",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021335",
+   "query": "duodenal ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits carcinoma, adenocarcinoma and cancer of duodenum equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021367",
+   "query": "accelerated phase CML",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021367",
+   "query": "accelerated phase chronic myelogenous leukemia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021377",
+   "query": "hypertrophic LP",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0021398",
+   "query": "polyp in the back passage",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "back passage could mean rectum or anus; B and D fit",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0021443",
+   "query": "non-cancerous growth in a lymph node",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0021317",
+   "query": "cerebellum tumour",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

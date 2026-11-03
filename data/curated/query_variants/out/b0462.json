@@ -1,0 +1,32 @@
+{
+ "batch": 462,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0014576",
+   "query": "LIPT1 deficiency",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-symbol name (LIPT1), not a spelling, word-order or eponym variant; fits abbrev/shorthand.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0014579",
+   "query": "Senior-Løken syndrome 8",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

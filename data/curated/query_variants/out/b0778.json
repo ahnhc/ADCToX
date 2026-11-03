@@ -1,0 +1,259 @@
+{
+ "batch": 778,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0035408",
+   "query": "tumbu fly infestation",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A and B (and C); tumbu fly is Cordylobia anthropophaga but ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035408",
+   "query": "tumbu worm under the skin",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A and B about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035408",
+   "query": "furuncular myiasis due to Cordylobia rodhainii",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "misspelling of rodhaini, not a spelling variant; nobody types this",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035432",
+   "query": "limb girdle muscular dystrophy type 2O",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "LGMD 2O is POMGNT1, not among candidates; A is POMGNT2 (R24)",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035449",
+   "query": "atelenchephaly",
+   "category": "typo",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0035472",
+   "query": "GJC2 lymphedema",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene plus disease name is not clipped shorthand; it is a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035473",
+   "query": "WILD",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0035475",
+   "query": "EPHB4 hydrops fetalis",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene plus disease name is not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035499",
+   "query": "CELSR1 lymphedema",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene plus disease name is not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035500",
+   "query": "Gordon's congenital primary lymphedema",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0035524",
+   "query": "BPES type I",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "BPES is an abbreviation, not a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035525",
+   "query": "BPES type II",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "BPES is an abbreviation, not a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035534",
+   "query": "DONSON microcephaly",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene plus disease name is not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035540",
+   "query": "PPGL",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0035540",
+   "query": "adrenal tumour that raises blood pressure",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits pheochromocytoma and adrenal neoplasm candidates; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035540",
+   "query": "phaeochromocytoma-paraganglioma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0035562",
+   "query": "acquired prion disease",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0035665",
+   "query": "seronegative NMOSD",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "seronegative could mean no AQP4 (B or A); ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035665",
+   "query": "double seronegative NMOSD",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0035667",
+   "query": "MOG-negative optic neuritis",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "descriptive phrase, not clipped shorthand; closer to a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035668",
+   "query": "MOG-positive optic neuritis",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "descriptive phrase, not clipped shorthand; closer to a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035707",
+   "query": "genitopatellar overlap syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0035432",
+   "query": "LGMD2O",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

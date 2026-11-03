@@ -1,0 +1,230 @@
+{
+ "batch": 772,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0032594",
+   "query": "IDDRP",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032596",
+   "query": "CMS23",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032597",
+   "query": "CMS24",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032603",
+   "query": "PAPA9",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032607",
+   "query": "VETD",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym, not used clinically",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032646",
+   "query": "CAKUT3",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032648",
+   "query": "MCCCHCM",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Mechanical initialism, not real clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032650",
+   "query": "childhood onset neurodegeneration with cerebellar atrophy",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032655",
+   "query": "VIPB",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym, not used clinically",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032661",
+   "query": "NEDIDHA",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym, not used clinically",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032673",
+   "query": "IBGC7",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032680",
+   "query": "GDDI",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym, ambiguous with other developmental delay entries",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032684",
+   "query": "IMAGEI",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032685",
+   "query": "CASGID",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym, not used clinically",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032690",
+   "query": "MIGSB",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym, not used clinically",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032692",
+   "query": "GAMOS7",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032693",
+   "query": "GAMOS8",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032703",
+   "query": "SSASKS",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym, not used clinically",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032738",
+   "query": "GDRM",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Invented acronym, not used clinically",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032745",
+   "query": "developmental delay with variable intellectual impairment and behavioural abnormalities",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

@@ -1,0 +1,76 @@
+{
+ "batch": 774,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0032854",
+   "query": "Zimmermann-Laband syndrome type 3",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032862",
+   "query": "congenital communicating hydrocephalus 1",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A (hydrocephalus, communicating, 1) and F parent; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0032885",
+   "query": "Isidor-Toutain spondyloepimetaphyseal dysplasia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0032902",
+   "query": "Joubert syndrome type 36",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0033304",
+   "query": "deafness passed from father to son",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits several Y-linked deafness candidates; not clearly lay phrasing of one",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033352",
+   "query": "congenital hypomyelinating neuropathy",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

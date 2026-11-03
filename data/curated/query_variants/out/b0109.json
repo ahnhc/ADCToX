@@ -1,0 +1,195 @@
+{
+ "batch": 109,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0007753",
+   "query": "auriculotemporal syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007753",
+   "query": "sweating on the face when eating",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007758",
+   "query": "Verner keratoderma",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Misspelling of Vörner; not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007766",
+   "query": "MSM syndrome",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "MSM is not a standard abbreviation for this syndrome",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007790",
+   "query": "Dejerine Sottas",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Eponym form, not clinical shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007791",
+   "query": "FHH1",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007792",
+   "query": "FHH2",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007819",
+   "query": "SMMCI syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Acronym, so abbrev rather than variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007836",
+   "query": "OORS",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "OORS is rarely used; mostly invented acronym",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007852",
+   "query": "PPK with deafness",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007854",
+   "query": "KWE",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007862",
+   "query": "Waardenburg type 3",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007879",
+   "query": "atresia of the larynx",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007906",
+   "query": "Dunnigan type familial partial lipodystrophy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0007810",
+   "query": "fish scale disease",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0007837",
+   "query": "Johnson McMillin syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0007856",
+   "query": "Howell Evans syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0007866",
+   "query": "Bart Pumphrey syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0007908",
+   "query": "Madelung disease",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

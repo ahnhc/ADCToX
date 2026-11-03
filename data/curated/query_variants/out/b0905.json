@@ -1,0 +1,32 @@
+{
+ "batch": 905,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0700514",
+   "query": "IVC leiomyosarcoma",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0700514",
+   "query": "IVC LMS",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Both tokens are real abbreviations, so category should be abbrev, not shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

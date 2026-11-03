@@ -1,0 +1,205 @@
+{
+ "batch": 42,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0010580",
+   "query": "IPEX syndrome",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010580",
+   "query": "immunodysregulation polyendocrinopathy enteropathy X-linked syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010592",
+   "query": "Goltz's syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010622",
+   "query": "steroid sulphatase deficiency",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Enzyme deficiency name, not spelling variant; fits D and E equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010651",
+   "query": "steely hair syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Steely hair is Menkes synonym, but no candidate letter assured; not spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010653",
+   "query": "Renpenning's syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010679",
+   "query": "Duchenne",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Just the eponym, a variant not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010679",
+   "query": "Duchenne's muscular dystrophy",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010691",
+   "query": "Norrie's disease",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010703",
+   "query": "OTC def",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010788",
+   "query": "Leber's hereditary optic neuropathy",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010790",
+   "query": "Fukuhara's syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Fukuhara's syndrome is MERRF synonym, obscure; not a simple variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010913",
+   "query": "Caroli's disease",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits both Caroli disease E and Caroli syndrome F",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010920",
+   "query": "small ear",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010920",
+   "query": "underdeveloped ear",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Could be microtia or other ear hypoplasia; vague",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011022",
+   "query": "Potocki-Shaffer deletion syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0010580",
+   "query": "IPEX",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0010622",
+   "query": "XLI",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0010651",
+   "query": "Menkes' disease",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,186 @@
+{
+ "batch": 478,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0015389",
+   "query": "extra nostril",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015390",
+   "query": "lateral proboscis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015394",
+   "query": "nasal encephalocoele",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015394",
+   "query": "brain hernia through the nose",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015399",
+   "query": "tongue stuck to the roof of the mouth",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015399",
+   "query": "Cosack's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Misspelled eponym; Cosack not a recognised name; not clearly variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015400",
+   "query": "frontonasal AVM",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015401",
+   "query": "maxillary AVM",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015402",
+   "query": "mandibular AVM",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015403",
+   "query": "birthmark present at birth that never goes away",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits NICH and general congenital hemangioma; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015406",
+   "query": "CAMS type 1",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "CAMS type 1 is not a common abbreviation; it is abbrev, not variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015407",
+   "query": "CAMS type 3",
+   "category": "variant",
+   "pick": "E",
+   "want": "D",
+   "realistic": false,
+   "category_ok": false,
+   "why": "CAMS type 3 is not a common abbreviation; it is abbrev, not variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015414",
+   "query": "Tessier 1 cleft",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Tessier 1 cleft is not a candidate; fits median cleft or facial cleft",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015416",
+   "query": "Tessier 5 facial cleft",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015417",
+   "query": "Tessier 6 facial cleft",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015419",
+   "query": "congenital midline cervical cleft",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

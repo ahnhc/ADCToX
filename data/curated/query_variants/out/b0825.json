@@ -1,0 +1,153 @@
+{
+ "batch": 825,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0000015",
+   "query": "early complement component deficiency",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000032",
+   "query": "familial febrile seizures",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000032",
+   "query": "fever convulsions that run in the family",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000060",
+   "query": "MOPD",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000062",
+   "query": "isolated microophthalmia",
+   "category": "typo",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000090",
+   "query": "progressive external ophthalmoplegia with multiple mtDNA deletions",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000105",
+   "query": "NSHA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "NSHA is not an established abbreviation; invented acronym",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000105",
+   "query": "nonspherocytic hemolytic anemia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000148",
+   "query": "telomere-related pulmonary fibrosis with bone marrow failure",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000173",
+   "query": "MDDGC",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000181",
+   "query": "MCCRP",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "MCCRP is database-style code, not clinical use; fits several candidates",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000192",
+   "query": "PGBM",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "PGBM is not a real clinical abbreviation; ambiguous among candidates",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000213",
+   "query": "infantile-onset multisystem autoimmune disease",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

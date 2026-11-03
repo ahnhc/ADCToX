@@ -1,0 +1,299 @@
+{
+ "batch": 618,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0005097",
+   "query": "LUSC",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005097",
+   "query": "lung squamous ca",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005097",
+   "query": "squamous carcinoma of the lung",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005102",
+   "query": "UESL",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005102",
+   "query": "undiff embryonal sarcoma of liver",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005145",
+   "query": "sALS",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005145",
+   "query": "sporadic ALS",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "'ALS' abbreviation expanded; it is mixed abbreviation, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005188",
+   "query": "post-transplant KS",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005188",
+   "query": "transplant-related Kaposi sarcoma",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Rewording to transplant-related is a paraphrase, not spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005204",
+   "query": "PAPS",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "PAPS is not a standard abbreviation; primary APS is used",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005204",
+   "query": "primary APS",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005216",
+   "query": "lower throat cancer",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "lower throat could be hypopharynx or larynx",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005216",
+   "query": "hypopharynx ca",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005242",
+   "query": "pus around the lung",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits empyema, pleural empyema, tuberculous empyema equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005286",
+   "query": "tumor on the roof of the mouth",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "also fits benign hard palate neoplasm but unspecified",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005291",
+   "query": "cerebral aneurysm",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005291",
+   "query": "intracranial aneurysm",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005318",
+   "query": "mouth sore",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits canker sore, stomatitis, aphthous stomatitis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005324",
+   "query": "pollen allergy",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits allergic rhinitis and seasonal form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005341",
+   "query": "BCC",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005355",
+   "query": "restenosis of the coronary artery",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005356",
+   "query": "spasm of a heart artery",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005356",
+   "query": "coronary artery spasm",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005375",
+   "query": "tumor behind the nose",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits nasopharyngeal neoplasm and carcinoma",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0005102",
+   "query": "undifferentiated embryonal sarcoma of the liver",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005324",
+   "query": "SAR",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005335",
+   "query": "bowel cancer",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005341",
+   "query": "rodent ulcer",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+{
+ "batch": 719,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0018244",
+   "query": "SIM1 deficiency obesity",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Just a gene name plus disease; not clipped shorthand, more variant/word-order",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018245",
+   "query": "2p21 microdeletion without cystinuria",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018257",
+   "query": "familial syrinx",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "'syrinx' is a lay/synonym term, not clinical shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018268",
+   "query": "MGPS",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018268",
+   "query": "Medich giant platelets",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0018245",
+   "query": "del(2p21) without cystinuria",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0018258",
+   "query": "angora hair nevus",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0018266",
+   "query": "ataxia telangiectasia variant",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

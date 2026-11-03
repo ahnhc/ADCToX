@@ -1,0 +1,182 @@
+{
+ "batch": 319,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0054770",
+   "query": "oral facial digital syndrome 18",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0054785",
+   "query": "multiple mitochondrial dysfunction syndrome 6",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0054813",
+   "query": "Ehlers-Danlos syndrome classic-like type 2",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0054833",
+   "query": "Charcot-Marie-Tooth disease type 2DD",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0054835",
+   "query": "dopamine transporter deficiency syndrome, classic",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0060533",
+   "query": "microcephaly short stauture and limb abnormalities",
+   "category": "typo",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100064",
+   "query": "tyrosine hydroxylase def",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100101",
+   "query": "Pena Shokeir syndrome 1",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Pena-Shokeir is the general FADS eponym; '1' ambiguous between A and E",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100133",
+   "query": "complex I deficiency",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100133",
+   "query": "complex 1 deficiency",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "'complex 1' is numeral swap shorthand, not spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100213",
+   "query": "IFAP syndrome 1",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100216",
+   "query": "DICER1-related tumour predisposition",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100251",
+   "query": "hyperphosphataemic familial tumoral calcinosis",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A, C, E equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100285",
+   "query": "extrahepatic BA",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'BA' with extrahepatic is not standard; clipped mix, not real abbreviation",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100313",
+   "query": "focal seg glomerulosclerosis",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'seg' for segmental is unusual; FSGS is the real form",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0100313",
+   "query": "focal segmental glomerular sclerosis",
+   "category": "variant",
+   "drop": "eval or held text"
+  }
+ ]
+}

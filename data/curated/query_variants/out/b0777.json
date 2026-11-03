@@ -1,0 +1,54 @@
+{
+ "batch": 777,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0035235",
+   "query": "classic PG",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "PG is a real acronym, so this is abbrev, not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035237",
+   "query": "pemphigoid pyoderma gangrenosum",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'pemphigoid' is not a recognised PG term; not a true variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0035406",
+   "query": "botfly myiasis",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0035407",
+   "query": "tumbu fly myiasis",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

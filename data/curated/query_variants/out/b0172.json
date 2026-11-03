@@ -1,0 +1,282 @@
+{
+ "batch": 172,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0043771",
+   "query": "radiation burn",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043771",
+   "query": "skin burn from radiation therapy",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043771",
+   "query": "RT dermatitis",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043771",
+   "query": "roentgen dermatitis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Eponym-like historical term; plausible but rare, fits variant; radiodermatitis synonym",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0044704",
+   "query": "OPSCC",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044704",
+   "query": "oropharyngeal SCC",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044877",
+   "query": "paraneoplastic cerebellar degen",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044877",
+   "query": "subacute paraneoplastic cerebellar degeneration",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Adding 'subacute' is a descriptor, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0060491",
+   "query": "GNAO1 disorder",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-named disorder fits several candidates; not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100096",
+   "query": "coronavirus",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Could mean COVID-19 or coronavirus infectious disease",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100096",
+   "query": "SARS-CoV-2",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Names a virus, not a disease; not an abbreviation of disease",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100096",
+   "query": "covid",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Lowercase covid is casual spelling variant, not clinical shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100151",
+   "query": "infantile nephropathic cystinosis",
+   "category": "variant",
+   "pick": "B",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100151",
+   "query": "infantile cystinosis",
+   "category": "variant",
+   "pick": "B",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100186",
+   "query": "GTP cyclohydrolase 1 deficiency",
+   "category": "variant",
+   "pick": "D",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100294",
+   "query": "mitochondrial complex 2 deficiency, nuclear type 1",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Type 1 ambiguous with nuclear type 1 entries; unnatural numeral mix",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100344",
+   "query": "Bartter type 1",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100344",
+   "query": "Bartter's syndrome type 1",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0800436",
+   "query": "Pascual-Castroviejo syndrome 1",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0800449",
+   "query": "LAL-D",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0850112",
+   "query": "BIA-ALCL",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0850112",
+   "query": "lymphoma from breast implants",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0850112",
+   "query": "implant-associated ALCL",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0700291",
+   "query": "phosphorylase kinase deficiency",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0800045",
+   "query": "HA20",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0800045",
+   "query": "A20 haploinsufficiency",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,171 @@
+{
+ "batch": 373,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0004286",
+   "query": "intraductal papillary mucinous neoplasm of the pancreas",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004286",
+   "query": "mucinous cyst in the pancreatic duct",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Vague; could be mucinous cystic neoplasm or IPMN; not a natural query",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004287",
+   "query": "foamy gland adenocarcinoma of the pancreas",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004289",
+   "query": "verrucous carcinoma of the vocal cords",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Vocal cords for glottis is a lay synonym, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004291",
+   "query": "subglottic SCC",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004291",
+   "query": "subglottic squamous ca",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004293",
+   "query": "supraglottic SCC",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004293",
+   "query": "supraglottic squamous ca",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004299",
+   "query": "lymphoepithelioma-like carcinoma of the bladder",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004306",
+   "query": "intracortical osteosarcoma of childhood",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004310",
+   "query": "adult ETMR",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "ETMR is an acronym, so abbrev fits better than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0004312",
+   "query": "meningioma of the suprasellar region",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004313",
+   "query": "trigeminal ganglion meningioma",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0004319",
+   "query": "small cell carcinoma of the ovary, hypercalcemic type",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0004314",
+   "query": "malignant granular cell tumour of the skin",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

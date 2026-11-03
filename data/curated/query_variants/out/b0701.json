@@ -1,0 +1,172 @@
+{
+ "batch": 701,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0017135",
+   "query": "OPCA",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017145",
+   "query": "β-thal",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "β-thal fits B general and others; ambiguous among beta-thalassemia forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017145",
+   "query": "beta thal",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "ambiguous between B and thalassemia forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017145",
+   "query": "beta thalassaemia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017160",
+   "query": "behavioral FTD",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "'behavioral FTD' is shorthand for bvFTD but not a clipped form; borderline, acceptable as shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017160",
+   "query": "behavioural variant frontotemporal dementia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017164",
+   "query": "Kell HDFN",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017164",
+   "query": "anti-Kell HDN",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017167",
+   "query": "salivary gland ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits malignant minor and malignant epithelial salivary tumors; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017179",
+   "query": "CASPR2 encephalitis",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017179",
+   "query": "anti-CASPR2 limbic encephalitis",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "anti-CASPR2 prefix is not a spelling/word-order variant; more shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017183",
+   "query": "HIUCP2",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "HIUCP2 is an Orphanet-style invented acronym, rarely typed",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017186",
+   "query": "DRH",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0017162",
+   "query": "Seghers' syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0017167",
+   "query": "salivary gland cancer",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0017168",
+   "query": "benign salivary gland tumour",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,193 @@
+{
+ "batch": 494,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0017174",
+   "query": "MJD type 1",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017174",
+   "query": "MJD1",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "MJD1 is the ATXN3 gene symbol, not a type 1 abbreviation",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017175",
+   "query": "MJD type 2",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017175",
+   "query": "MJD2",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "MJD2 is not an abbreviation in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017176",
+   "query": "MJD type 3",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017176",
+   "query": "MJD3",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "MJD3 is not an abbreviation in clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017182",
+   "query": "hyperinsulinism, familial",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017197",
+   "query": "Whyte-Murphy's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "obscure eponym, unclear which candidate it maps to",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017200",
+   "query": "can't empty bladder and have polycystic ovaries",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017202",
+   "query": "acute endopthalmitis",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017203",
+   "query": "chronic endopthalmitis",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017205",
+   "query": "oculocerebral lymphoma",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017221",
+   "query": "Pelizaeus-Merzbacher disease type 2",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "numeric PMD types do not map clearly to a candidate",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017222",
+   "query": "classic Pelizaeus-Merzbacher disease",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017223",
+   "query": "transitional Pelizaeus-Merzbacher disease",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017224",
+   "query": "PMD symptoms in a woman who carries the gene",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0017182",
+   "query": "CHI",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

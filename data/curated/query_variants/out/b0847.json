@@ -1,0 +1,105 @@
+{
+ "batch": 847,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0008281",
+   "query": "scattered and discrete intestinal polyposis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Ontology label reworded; nobody types this; also fits B/D",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008350",
+   "query": "pulmonary stenosis with deafness",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008355",
+   "query": "infantile hypertrophic pyloric stenosis type 1",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008361",
+   "query": "aplasia of the radius with cleft lip and palate",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008481",
+   "query": "cervical spondylosis",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Also fits D parent, but cervical form is specific and matches E",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008483",
+   "query": "familial persistent stuttering type 1",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008532",
+   "query": "baby born with teeth",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008532",
+   "query": "natal teeth",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Synonym/clinical term, not spelling or word-order variant",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0008462",
+   "query": "cleft lower lip",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

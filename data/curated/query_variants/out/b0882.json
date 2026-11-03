@@ -1,0 +1,131 @@
+{
+ "batch": 882,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0041879",
+   "query": "staph pneumonia",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both staphylococcal pneumonia and S. aureus pneumonia",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0041879",
+   "query": "staph pneumo",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C and F equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0041879",
+   "query": "Staph aureus pneumonia",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0042452",
+   "query": "tertiary yaws",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both tertiary lesion of yaws and late yaws",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0042458",
+   "query": "Trichinella spiralis infection",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both B and trichinellosis equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0042488",
+   "query": "tapeworm infection",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0042497",
+   "query": "mold poisoning",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0042964",
+   "query": "MJD type 4",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0042969",
+   "query": "trisomy 12q",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0042974",
+   "query": "HPIV3",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043106",
+   "query": "ILC",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "ILC is not a used abbreviation here; usually invasive lobular carcinoma",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

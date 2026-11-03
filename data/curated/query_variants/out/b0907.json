@@ -1,0 +1,84 @@
+{
+ "batch": 907,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0800153",
+   "query": "UCD",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both B and D equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0800153",
+   "query": "urea cycle defects",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both B and D equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0800180",
+   "query": "HCP",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0800180",
+   "query": "coproporphyria",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0800181",
+   "query": "OPA1 optic atrophy",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0800180",
+   "query": "hereditary coproporphyria",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0800181",
+   "query": "ADOA",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0800181",
+   "query": "Kjer optic atrophy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

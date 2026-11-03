@@ -1,0 +1,215 @@
+{
+ "batch": 553,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0033656",
+   "query": "COXFA4 deficiency",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene-name form, not clipped shorthand; closer to variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033657",
+   "query": "hypomyelinating leukodystrophy 20",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0033665",
+   "query": "autosomal dominant hearing loss 78",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0033668",
+   "query": "autosomal dominant hearing loss 79",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0033670",
+   "query": "autosomal recessive hearing loss 116",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0033810",
+   "query": "split iris",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0033839",
+   "query": "ORN mandible",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0033839",
+   "query": "radiation damage to the jaw bone",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both osteoradionecrosis of mandible and jaw osteonecrosis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033938",
+   "query": "radiation poisoning",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0034054",
+   "query": "CD70 deficiency SCID",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0034121",
+   "query": "NAXE deficiency",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene-symbol-based name, not a spelling/word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0034556",
+   "query": "hives from vibration",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0034556",
+   "query": "vibration-induced angioedema",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0034971",
+   "query": "born with eyelids turned inward",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits congenital entropion and isolated congenital entropion",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0034976",
+   "query": "iCJD",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0034976",
+   "query": "iatrogenic CJD",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "iatrogenic CJD is partial abbreviation; more a variant than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0034978",
+   "query": "underdeveloped fovea",
+   "category": "lay",
+   "pick": "C",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0034987",
+   "query": "ITPN",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0033938",
+   "query": "ARS",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

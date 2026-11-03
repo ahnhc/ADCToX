@@ -1,0 +1,171 @@
+{
+ "batch": 682,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0015494",
+   "query": "dystonia only",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Odd phrasing; clinicians type 'isolated dystonia' instead.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015532",
+   "query": "generalised eruptive histiocytosis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015541",
+   "query": "FHL",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015541",
+   "query": "hereditary haemophagocytic lymphohistiocytosis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015544",
+   "query": "malignancy-associated HLH",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015546",
+   "query": "proximal 10q deletion",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Proximal not equal to non-distal; also fits 10q23 deletion or partial monosomy.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015552",
+   "query": "acral DEB",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015562",
+   "query": "distal 17q deletion syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015568",
+   "query": "NPAS",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "NPAS is a gene symbol; the usual abbreviation is CNPAS.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015568",
+   "query": "pyriform aperture stenosis",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits both isolated and holoprosencephaly forms equally.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0015579",
+   "query": "Bart's hydrops fetalis",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015583",
+   "query": "2p21 microdeletion",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015592",
+   "query": "LGI1 encephalitis",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0015592",
+   "query": "anti-LGI1 limbic encephalitis",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0015541",
+   "query": "familial HLH",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,120 @@
+{
+ "batch": 152,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0013000",
+   "query": "Doss porphyria",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Doss porphyria is ALAD porphyria eponym, rare; not a real typed variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013006",
+   "query": "isolated GH deficiency 1B",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013016",
+   "query": "leukocyte adhesion def 3",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013025",
+   "query": "6q24-25 del",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013028",
+   "query": "AMPD deficiency",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013060",
+   "query": "PLA2G6 parkinsonism",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene-name plus phenotype is not shorthand; also could fit A",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013061",
+   "query": "BAG3 myopathy",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "BAG3 myopathy is MFM6 but not shorthand; candidate C vs F ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013128",
+   "query": "FJHN2",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013132",
+   "query": "HSP 36",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013144",
+   "query": "AT III def",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

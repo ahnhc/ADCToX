@@ -1,0 +1,171 @@
+{
+ "batch": 624,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0006276",
+   "query": "pulmonary IMT",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "IMT is a real acronym; this is abbrev, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006276",
+   "query": "inflammatory myofibroblastic tumour of the lung",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006279",
+   "query": "pulmonary sarcomatoid carcinoma",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006279",
+   "query": "lung sarcomatoid ca",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006284",
+   "query": "major salivary gland ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both major salivary gland carcinoma and cancer equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006291",
+   "query": "glomus jugulare cancer",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "could be jugulotympanic paraganglioma or its malignant form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006321",
+   "query": "adrenal incidentaloma",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "incidentaloma is clinical jargon, not lay; fits several adenomas",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006321",
+   "query": "nonfunctioning adrenal adenoma",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006328",
+   "query": "jaw cyst",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006330",
+   "query": "ossifying fibromyxoid tumour",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006347",
+   "query": "pancreatic LCNEC",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006347",
+   "query": "large-cell neuroendocrine carcinoma of the pancreas",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006348",
+   "query": "small cell neuroendocrine carcinoma of the pancreas",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006355",
+   "query": "acinic cell carcinoma of the parotid gland",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0006273",
+   "query": "low-grade fibromyxoid sarcoma with giant collagen rosettes",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "batch": 932,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:1040021",
+   "query": "CMS4",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1040021",
+   "query": "CHRNE-related congenital myasthenic syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1040026",
+   "query": "brain mets",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1040026",
+   "query": "brain metastases",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Full words, not an abbreviation; it is a plain wording form.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1040026",
+   "query": "cancer that spread to the brain",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1040026",
+   "query": "secondary brain tumour",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1040031",
+   "query": "DYNC1H1-related disorder",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1040036",
+   "query": "IMPG1-related autosomal dominant retinopathy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1040037",
+   "query": "IMPG1-related autosomal recessive retinopathy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1040041",
+   "query": "FEVR due to FZD4 mutation",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "FEVR is a real abbreviation, so category should be abbrev.",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1040046",
+   "query": "BBS type 19",
+   "category": "variant",
+   "pick": "A",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "BBS is an abbreviation, not a spelling or word-order variant.",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:1040028",
+   "query": "PDE6C related retinopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040029",
+   "query": "SHARPIN-related autoinflammatory syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040034",
+   "query": "PDE6G related retinopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040035",
+   "query": "LRIT3 related retinopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040038",
+   "query": "TTLL5 related retinopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040039",
+   "query": "OFD1 related ciliopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040040",
+   "query": "HGSNAT related retinopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040041",
+   "query": "FZD4 related exudative vitreoretinopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040042",
+   "query": "BBS7 related ciliopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040043",
+   "query": "BBS1 related ciliopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040044",
+   "query": "BBS4 related ciliopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040045",
+   "query": "BBS12 related ciliopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040046",
+   "query": "BBS19",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:1040047",
+   "query": "BBS5 related ciliopathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

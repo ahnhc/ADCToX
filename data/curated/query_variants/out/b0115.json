@@ -1,0 +1,160 @@
+{
+ "batch": 115,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0008672",
+   "query": "Watson's syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008693",
+   "query": "ablepharon macrostomia syndrom",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008700",
+   "query": "born without hands or feet",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits acheiria, acheiropody, limb reduction; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008701",
+   "query": "Houston-Harris type achondrogenesis",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Houston-Harris is type IA eponym; ambiguous with general; not a variant spelling",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008703",
+   "query": "Grebe type acromesomelic dysplasia",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Grebe fits acromesomelic dysplasia 3 and possibly 2A; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008706",
+   "query": "Ackerman's syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008709",
+   "query": "Elejalde's syndrome",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008714",
+   "query": "Rodriguez acrofacial dysostosis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008720",
+   "query": "ACTH def",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008740",
+   "query": "born without a lower jaw",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits agnathia-otocephaly and agnathia-microstomia-synotia equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008748",
+   "query": "Hermansky-Pudlak syndrome type 1",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008749",
+   "query": "pseudohypoparathyroidism 2",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008757",
+   "query": "total hair loss from birth",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits congenital alopecia and alopecia universalis congenita",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0008728",
+   "query": "classic CAH",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

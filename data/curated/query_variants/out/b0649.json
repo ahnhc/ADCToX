@@ -1,0 +1,199 @@
+{
+ "batch": 649,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0009423",
+   "query": "hypokalaemic alkalosis, familial, with specific renal tubulopathy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009423",
+   "query": "familial hypokalemic alkalosis with renal tubulopathy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009429",
+   "query": "hypophosphataemia, renal, with intracerebral calcifications",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009429",
+   "query": "renal hypophosphatemia with calcification of basal ganglia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "paraphrase (basal ganglia), not spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009432",
+   "query": "congenital hypopituitarism with central diabetes insipidus",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009442",
+   "query": "ichthyosis congenita and biliary atresia",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009447",
+   "query": "ichthyosis, split hair, and aminoaciduria",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009460",
+   "query": "indolylacryloyl glycinuria with intellectual disability",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009462",
+   "query": "immune defect due to inosine phosphorylase deficiency",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "inosine phosphorylase is PNP; fits both C and F",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009487",
+   "query": "keratoconus with congenital hip dysplasia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009521",
+   "query": "acute myelocytic leukemia with polyposis coli and colon cancer",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009538",
+   "query": "progressive lymphoid system deterioration",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009541",
+   "query": "lymphopenic hypergammaglobulinaemia, antibody deficiency, autoimmune haemolytic anaemia and glomerulonephritis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009542",
+   "query": "lysine malabsorption",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009545",
+   "query": "McAlister Coe syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "not a recognised eponym; appears invented",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009555",
+   "query": "malocclusion with short stature",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0009456",
+   "query": "immuno-erythromyeloid hypoplasia",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0009464",
+   "query": "immunodeficiency with defective T cell response to interleukin-1",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

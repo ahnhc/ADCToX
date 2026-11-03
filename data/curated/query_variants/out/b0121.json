@@ -1,0 +1,134 @@
+{
+ "batch": 121,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0009287",
+   "query": "type 1a glycogen storage disease",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009306",
+   "query": "CID with granulomas",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009339",
+   "query": "delta-4-3-oxosteroid 5-beta-reductase deficiency",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "enzyme-name synonym, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009340",
+   "query": "hexokinase deficient hemolytic anemia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009369",
+   "query": "non-immune hydrops",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009369",
+   "query": "fluid buildup in the baby before birth",
+   "category": "lay",
+   "pick": "D",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009388",
+   "query": "hyperlysinemia type 1",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "type 1 is ambiguous between hyperlysinemia and the transport-defect form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009401",
+   "query": "hyperprolinaemia type 2",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009424",
+   "query": "Bartter's syndrome type 2",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0009287",
+   "query": "GSD type 1a",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0009292",
+   "query": "GSD type 4",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0009369",
+   "query": "nonimmune hydrops fetalis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0009411",
+   "query": "autoimmune polyglandular syndrome type 1",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

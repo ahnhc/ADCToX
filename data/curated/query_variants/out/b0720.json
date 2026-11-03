@@ -1,0 +1,105 @@
+{
+ "batch": 720,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0018278",
+   "query": "CMD with mental retardation",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Uses the abbreviation CMD plus an outdated synonym, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018280",
+   "query": "muscle-eye-brain disease with bilateral multicystic leukodystrophy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018281",
+   "query": "CMD with hyperlaxity",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018282",
+   "query": "alpha-dystroglycanopathies",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018321",
+   "query": "AJP",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": null,
+   "why": "AJP is not an established abbreviation, and it is ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018321",
+   "query": "juvenile atypical parkinsonism",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018339",
+   "query": "PrP amyloidosis",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018341",
+   "query": "3q27.3 deletion syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0018298",
+   "query": "multicentric osteolysis, nodulosis, and arthropathy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

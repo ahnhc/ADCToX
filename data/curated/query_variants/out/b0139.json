@@ -1,0 +1,193 @@
+{
+ "batch": 139,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0011531",
+   "query": "Noonan's syndrome 2",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011532",
+   "query": "hereditary spastic paraparesis 13",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011537",
+   "query": "autism-macrocephaly syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011539",
+   "query": "Amish nemaline rod myopathy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011541",
+   "query": "DCM 1J",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "DCM is a real acronym; abbrev fits better than shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011558",
+   "query": "Usher's syndrome type 2C",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011559",
+   "query": "BRIC type II",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "BRIC is an acronym; abbrev fits better than variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011579",
+   "query": "late-onset retinal dystrophy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011581",
+   "query": "Carvajal's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both A and D, both DSP woolly hair cardiomyopathy",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011595",
+   "query": "malformed nails on the index fingers",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits C general and D; too vague to choose",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011601",
+   "query": "neonatal cholestasis due to citrin deficiency",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011614",
+   "query": "HMGCS2 deficiency",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene-symbol name, not a spelling variant; abbrev fits better",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011624",
+   "query": "TALDO1 deficiency",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene-symbol name, not a spelling variant; abbrev fits better",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0011629",
+   "query": "glucosidase I deficiency",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011638",
+   "query": "neuroferrinopathy",
+   "category": "typo",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0011667",
+   "query": "IPF1 MODY",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0011533",
+   "query": "Temtamy syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

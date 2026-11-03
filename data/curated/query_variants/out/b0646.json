@@ -1,0 +1,87 @@
+{
+ "batch": 646,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0009029",
+   "query": "congenital cranial nerve paresis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009030",
+   "query": "recurrent cranial nerve paresis",
+   "category": "variant",
+   "pick": "C",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009059",
+   "query": "cysteinuria",
+   "category": "variant",
+   "pick": "B",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Misspelling or misnomer of cystinuria, so typo rather than variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0009098",
+   "query": "Aughton's syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009119",
+   "query": "small bowel diverticulosis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009119",
+   "query": "pouches in the small intestine",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0009122",
+   "query": "Döhle bodies and leukemia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

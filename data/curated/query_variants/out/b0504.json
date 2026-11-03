@@ -1,0 +1,332 @@
+{
+ "batch": 504,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0018306",
+   "query": "Griscelli Prunieras syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Griscelli-Prunieras is eponym of general GS, but types 1-3 also fit; general pick C acceptable",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018319",
+   "query": "episodic pain syndrome, familial",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018334",
+   "query": "hiccups that won't go away",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018334",
+   "query": "can't stop hiccupping",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018338",
+   "query": "PASLI",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018338",
+   "query": "PI3K delta syndrome",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Dropped words from the name; a variant/lay form, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018375",
+   "query": "post-traumatic AVN",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018375",
+   "query": "post traumatic avascular necrosis",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018378",
+   "query": "bone death in the jaw",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018378",
+   "query": "osteonecrosis of the jaws",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018380",
+   "query": "bone death with no known cause",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018408",
+   "query": "tapeworm cysts",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits echinococcosis, cystic and alveolar forms; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018408",
+   "query": "hydatid cyst disease",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Hydatid disease fits echinococcosis, cystic, and granulosus about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018435",
+   "query": "AML inv(3)",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits both B and E, the same inv(3) AML",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018435",
+   "query": "acute myeloid leukemia with inv(3)",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits both B and E, the same inv(3) AML",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018448",
+   "query": "CCPRCC",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "Not an established abbreviation; invented acronym",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018448",
+   "query": "clear cell papillary renal carcinoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018449",
+   "query": "ACD-associated RCC",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018449",
+   "query": "acquired cystic kidney disease associated renal cell carcinoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018453",
+   "query": "familial atypical multiple mole melanoma",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018459",
+   "query": "GKD",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "GKD fits the general disease and several subtypes; no general candidate clear",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018465",
+   "query": "IAS",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018465",
+   "query": "body makes antibodies against its own insulin",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018481",
+   "query": "undifferentiated carcinoma of the oesophagus",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018483",
+   "query": "secondary alveolar proteinosis",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018484",
+   "query": "SSCD",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018484",
+   "query": "semicircular canal dehiscence",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Exact name minus 'syndrome'; not really a variant",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0018338",
+   "query": "activated PI3K delta syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0018346",
+   "query": "ferrocerebrocutaneous syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0018447",
+   "query": "chondro-myxoid fibroma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0018465",
+   "query": "insulin auto-immune syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

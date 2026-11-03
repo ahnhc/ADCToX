@@ -1,0 +1,116 @@
+{
+ "batch": 356,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0003341",
+   "query": "painful lump under fingernail",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits subungual glomus tumor and subungual exostosis about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003341",
+   "query": "nail bed glomus tumor",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "synonym swap (nail bed for subungual), not spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003347",
+   "query": "inflammatory LMS",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003347",
+   "query": "inflammatory myosarcoma",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'myosarcoma' is not a real term; not a recognised variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0003353",
+   "query": "smooth muscle cancer in the heart",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003353",
+   "query": "cardiac LMS",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003356",
+   "query": "epithelioid LMS",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003357",
+   "query": "smooth muscle cancer in the lung",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0003359",
+   "query": "myxoid LMS",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0003337",
+   "query": "Westphal disease",
+   "category": "variant",
+   "drop": "eval or held text"
+  }
+ ]
+}

@@ -1,0 +1,153 @@
+{
+ "batch": 550,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0033261",
+   "query": "autosomal dominant hearing loss 34",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0033361",
+   "query": "early infantile epileptic encephalopathy 52",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 52; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033362",
+   "query": "early infantile epileptic encephalopathy 53",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 53; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033363",
+   "query": "early infantile epileptic encephalopathy 54",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 54; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033364",
+   "query": "early infantile epileptic encephalopathy 55",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 55; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033365",
+   "query": "early infantile epileptic encephalopathy 56",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 56; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033366",
+   "query": "early infantile epileptic encephalopathy 57",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 57; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033367",
+   "query": "early infantile epileptic encephalopathy 58",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 58; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033368",
+   "query": "early infantile epileptic encephalopathy 59",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 59; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033369",
+   "query": "early infantile epileptic encephalopathy 60",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 60; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033370",
+   "query": "early infantile epileptic encephalopathy 61",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 61; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033371",
+   "query": "early infantile epileptic encephalopathy 62",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 62; DEE only",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0033372",
+   "query": "early infantile epileptic encephalopathy 63",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "EIEE naming was never used for number 63; DEE only",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

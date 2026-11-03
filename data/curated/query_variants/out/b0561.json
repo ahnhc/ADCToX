@@ -1,0 +1,76 @@
+{
+ "batch": 561,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0044923",
+   "query": "NPM1+ AML",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C (mutated NPM1) and F (NPM1 somatic mutations) equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0044923",
+   "query": "NPM1-mut AML",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C and F equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0044923",
+   "query": "AML with NPM1 mutation",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C and F equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0045057",
+   "query": "acute confusion",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0045057",
+   "query": "acute confusional state",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "a full synonym phrase, not clipped shorthand; closer to variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0049223",
+   "query": "OI type 19",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "uses the abbreviation OI, so category should be abbrev, not variant",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

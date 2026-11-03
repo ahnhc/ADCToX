@@ -1522,3 +1522,71 @@
 - 내부 dev: epochs_best 3, val_organ_loss 0.1591, valid_threshold 0.995, theta 0.7, theta_val_f1 {'0.5': 0.890903034919314, '0.55': 0.8908791353423552, '0.6': 0.8910088625940331, '0.65': 0.892334269090479, '0.7': 0.8924126379595639, '0.75': 0.8885330281686655, '0.8': 0.8805736235264998, '0.85': 0.8648129009306462, '0.9': 0.8419609031252236, '0.95': 0.8108652225345845, '1.0': 0.7367332850004635}, real_accepted 0.9910967691769371, minutes 146.6
 - 벤치마크 scratch (dev): en 0.686, ko 0.651, concept_en 0.487, invalid_accept 0.0, symptom_top3 None
 
+## X2 query variant pairs
+
+### x2tns7 — x2ts + typed query variants that passed the blind check (qvnotypo, ml/docs/query_variants_v6.md), trial after 763 batches
+
+- 시작 2026-11-03 10:05, 커밋 `1e2f2d7` (커밋 안 된 변경 761개), seed 7
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 285,303, train 259,879, val 25,424, junk_copies 4, dropped_eval_text_gold 0, dropped_eval_text_other 421, pairs 531,324
+- 출처별 학습 항목: umls 102,602, mondo_names 45,705, mondo_ko 27,794, kotypo 23,781, kcd 16,272, ko2 9,872, junk 8,440, gen_sym 7,340, ko3 5,390, profiles_sym 3,679, gen_ko 2,864, train_queries 2,376, profiles 2,146, external 1,618
+- x2ts7 대비 바뀐 것: add_pairs entypo,lrabr → entypo,lrabr,qvnotypo; compare_to x2s7 → x2ts7
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 4, val_organ_loss 0.1507, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8863445599183776, '0.55': 0.8864130248804674, '0.6': 0.8871034913702591, '0.65': 0.8888993846850782, '0.7': 0.8868902841277246, '0.75': 0.8806898507346398, '0.8': 0.8705093454497993, '0.85': 0.8556369708142768, '0.9': 0.837380191840123, '0.95': 0.8112719058075234, '1.0': 0.7440973589086824}, real_accepted 0.9901274386406544, minutes 80.6
+- 벤치마크 scratch (dev): en 0.709, ko 0.612, concept_en 0.491, invalid_accept 0.0, symptom_top3 None
+
+### x2tns8 — x2ts + typed query variants that passed the blind check (qvnotypo, ml/docs/query_variants_v6.md), trial after 763 batches
+
+- 시작 2026-11-03 10:05, 커밋 `1e2f2d7` (커밋 안 된 변경 761개), seed 8
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 285,256, train 259,352, val 25,904, junk_copies 4, dropped_eval_text_gold 0, dropped_eval_text_other 420, pairs 530,613
+- 출처별 학습 항목: umls 102,393, mondo_names 45,674, mondo_ko 27,748, kotypo 23,723, kcd 16,225, ko2 9,872, junk 8,440, gen_sym 7,323, ko3 5,392, profiles_sym 3,668, gen_ko 2,830, train_queries 2,337, profiles 2,155, external 1,572
+- x2ts8 대비 바뀐 것: add_pairs entypo,lrabr → entypo,lrabr,qvnotypo; compare_to x2s8 → x2ts8
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 3, val_organ_loss 0.1597, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8766987778843032, '0.55': 0.8768140821936604, '0.6': 0.877603373462014, '0.65': 0.8795126353491535, '0.7': 0.8772881397826524, '0.75': 0.8706314583811345, '0.8': 0.8612234331441377, '0.85': 0.8464580968540161, '0.9': 0.8221395868428598, '0.95': 0.7973121165569411, '1.0': 0.7302823613099303}, real_accepted 0.9837862878319951, minutes 77.7
+- 벤치마크 scratch (dev): en 0.726, ko 0.623, concept_en 0.504, invalid_accept 0.0, symptom_top3 None
+
+### x2tqs7 — x2ts + typed query variants that passed the blind check (qv, ml/docs/query_variants_v6.md), trial after 763 batches
+
+- 시작 2026-11-03 10:05, 커밋 `1e2f2d7` (커밋 안 된 변경 761개), seed 7
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 285,303, train 259,879, val 25,424, junk_copies 4, dropped_eval_text_gold 0, dropped_eval_text_other 421, pairs 531,806
+- 출처별 학습 항목: umls 102,602, mondo_names 45,705, mondo_ko 27,794, kotypo 23,781, kcd 16,272, ko2 9,872, junk 8,440, gen_sym 7,340, ko3 5,390, profiles_sym 3,679, gen_ko 2,864, train_queries 2,376, profiles 2,146, external 1,618
+- x2ts7 대비 바뀐 것: add_pairs entypo,lrabr → entypo,lrabr,qv; compare_to x2s7 → x2ts7
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 4, val_organ_loss 0.1514, valid_threshold 0.995, theta 0.7, theta_val_f1 {'0.5': 0.8825417573216937, '0.55': 0.8827751641888415, '0.6': 0.8845171865564553, '0.65': 0.8863339236416651, '0.7': 0.8866749387765474, '0.75': 0.8811114131824364, '0.8': 0.8703751188196928, '0.85': 0.8578257031778513, '0.9': 0.8366681693516143, '0.95': 0.8117985756511581, '1.0': 0.7410086448000162}, real_accepted 0.9895767778477029, minutes 82.0
+- 벤치마크 scratch (dev): en 0.714, ko 0.666, concept_en 0.491, invalid_accept 0.0, symptom_top3 None
+
+### x2tqs8 — x2ts + typed query variants that passed the blind check (qv, ml/docs/query_variants_v6.md), trial after 763 batches
+
+- 시작 2026-11-03 10:05, 커밋 `1e2f2d7` (커밋 안 된 변경 761개), seed 8
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 285,256, train 259,352, val 25,904, junk_copies 4, dropped_eval_text_gold 0, dropped_eval_text_other 420, pairs 531,096
+- 출처별 학습 항목: umls 102,393, mondo_names 45,674, mondo_ko 27,748, kotypo 23,723, kcd 16,225, ko2 9,872, junk 8,440, gen_sym 7,323, ko3 5,392, profiles_sym 3,668, gen_ko 2,830, train_queries 2,337, profiles 2,155, external 1,572
+- x2ts8 대비 바뀐 것: add_pairs entypo,lrabr → entypo,lrabr,qv; compare_to x2s8 → x2ts8
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 3, val_organ_loss 0.1592, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8774249523683022, '0.55': 0.8776337890239831, '0.6': 0.878275335725864, '0.65': 0.8797981854839971, '0.7': 0.8791221023264489, '0.75': 0.8716142721469162, '0.8': 0.8612617212065493, '0.85': 0.8467756975111441, '0.9': 0.8229961563898028, '0.95': 0.7989429056681279, '1.0': 0.729837318213752}, real_accepted 0.9851760345892526, minutes 81.7
+- 벤치마크 scratch (dev): en 0.685, ko 0.605, concept_en 0.491, invalid_accept 0.0, symptom_top3 None
+
+### x2tqs9 — x2ts + typed query variants that passed the blind check (qv, ml/docs/query_variants_v6.md), trial after 763 batches
+
+- 시작 2026-11-03 11:25, 커밋 `1e2f2d7` (커밋 안 된 변경 832개), seed 9
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 285,302, train 259,581, val 25,721, junk_copies 4, dropped_eval_text_gold 0, dropped_eval_text_other 421, pairs 531,573
+- 출처별 학습 항목: umls 102,196, mondo_names 45,720, mondo_ko 27,812, kotypo 23,774, kcd 16,271, ko2 9,843, junk 8,440, gen_sym 7,351, ko3 5,377, profiles_sym 3,688, gen_ko 2,904, train_queries 2,405, profiles 2,176, external 1,624
+- x2ts9 대비 바뀐 것: add_pairs entypo,lrabr → entypo,lrabr,qv; compare_to x2s9 → x2ts9
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 4, val_organ_loss 0.1605, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8855323770640722, '0.55': 0.8856660665919107, '0.6': 0.8864631049648136, '0.65': 0.8871941051521135, '0.7': 0.8847629694335505, '0.75': 0.8763058506940651, '0.8': 0.8644995741786052, '0.85': 0.8485197414614152, '0.9': 0.8265801125153889, '0.95': 0.8022280449549493, '1.0': 0.7294900570674608}, real_accepted 0.9898526495859414, minutes 122.9
+- 벤치마크 scratch (dev): en 0.695, ko 0.629, concept_en 0.5, invalid_accept 0.0, symptom_top3 None
+
+### x2tns9 — x2ts + typed query variants that passed the blind check (qvnotypo, ml/docs/query_variants_v6.md), trial after 763 batches
+
+- 시작 2026-11-03 11:31, 커밋 `1e2f2d7` (커밋 안 된 변경 845개), seed 9
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 285,302, train 259,581, val 25,721, junk_copies 4, dropped_eval_text_gold 0, dropped_eval_text_other 421, pairs 531,086
+- 출처별 학습 항목: umls 102,196, mondo_names 45,720, mondo_ko 27,812, kotypo 23,774, kcd 16,271, ko2 9,843, junk 8,440, gen_sym 7,351, ko3 5,377, profiles_sym 3,688, gen_ko 2,904, train_queries 2,405, profiles 2,176, external 1,624
+- x2ts9 대비 바뀐 것: add_pairs entypo,lrabr → entypo,lrabr,qvnotypo; compare_to x2s9 → x2ts9
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 4, val_organ_loss 0.1623, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8805929526160552, '0.55': 0.8807714714058432, '0.6': 0.8811890585767882, '0.65': 0.8819355581551684, '0.7': 0.8809527689937198, '0.75': 0.8736939795017022, '0.8': 0.8597651992631291, '0.85': 0.8431094806583549, '0.9': 0.8224979596939124, '0.95': 0.7985956267156891, '1.0': 0.7264663282645913}, real_accepted 0.9895416196881925, minutes 114.7
+- 벤치마크 scratch (dev): en 0.697, ko 0.6, concept_en 0.487, invalid_accept 0.0, symptom_top3 None
+

@@ -1,0 +1,142 @@
+{
+ "batch": 498,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0017481",
+   "query": "born without legs",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "plural legs fits general and bilateral forms about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017491",
+   "query": "born without shin bones",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits general tibial hemimelia and bilateral form equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017491",
+   "query": "tibial hemimelia bilat",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017503",
+   "query": "born without hands",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits acheiria general and bilateral equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017505",
+   "query": "born without feet",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits apodia general and bilateral equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017512",
+   "query": "cleft hands",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits split hand general and bilateral equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017528",
+   "query": "preaxial polydactyly type III, bilateral",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017538",
+   "query": "two big toes on each foot",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0017543",
+   "query": "Lueken type syndactyly",
+   "category": "variant",
+   "pick": "A",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017544",
+   "query": "Montagu type syndactyly",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Montagu eponym obscure; type mapping unclear",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017545",
+   "query": "Castilla type syndactyly",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Castilla eponym obscure; type mapping unclear",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0017547",
+   "query": "rocker bottom feet",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits general vertical talus and bilateral form equally",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

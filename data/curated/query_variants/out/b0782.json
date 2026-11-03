@@ -1,0 +1,135 @@
+{
+ "batch": 782,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0043103",
+   "query": "sodium-iodide symporter deficiency",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Different name for the defect, not a spelling/word-order variant; synonym",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0043120",
+   "query": "male pseudohermaphroditism due to defective luteinizing hormone molecule",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043133",
+   "query": "microcephaly with micropenis and convulsions",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043226",
+   "query": "Frommel syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Frommel fits postpartum amenorrhea-galactorrhea and the general amenorrhea-galactorrhea syndrome",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0043240",
+   "query": "haemophilic arthropathy",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043240",
+   "query": "joint damage from bleeding in hemophilia",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Acceptable lay description, but long paraphrase; category lay fits, still flagged",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0043243",
+   "query": "leucoplakia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0043243",
+   "query": "white patch in the mouth",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits oral leukoplakia, hairy leukoplakia, and other conditions",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0043110",
+   "query": "Jones-Hersh-Yusk syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0043116",
+   "query": "Iida-Kannari syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0043123",
+   "query": "Massa-Casaer-Ceulemans syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0043127",
+   "query": "Mehta-Lewis-Patton syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0043131",
+   "query": "Michels-Caskey syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0043162",
+   "query": "Pagon-Stephan syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

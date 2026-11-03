@@ -1,0 +1,260 @@
+{
+ "batch": 62,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0008449",
+   "query": "SB",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "SB fits spina bifida and spina bifida cystica; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008449",
+   "query": "MMC",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "MMC means myelomeningocele, not a candidate; fits spina bifida cystica loosely",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008451",
+   "query": "distal hereditary motor neuropathy 1",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "dHMN 1 vs generic; numbering ambiguous, ADs not specified",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008457",
+   "query": "spinocerebellar ataxia type VI",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008475",
+   "query": "slipped vertebra",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008475",
+   "query": "vertebra slipping forward in the lower back",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008477",
+   "query": "Kozlowski spondylometaphyseal dysplasia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008478",
+   "query": "Schmidt type spondylometaphyseal dysplasia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008493",
+   "query": "hereditary hydrocytosis",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "hydrocytosis fits overhydrated stomatocytosis; also possibly dehydrated, ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008514",
+   "query": "webbed ring and little finger",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits type 3 and non-syndromic syndactyly; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008514",
+   "query": "syndactyly type III",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008515",
+   "query": "Haas type polysyndactyly",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Haas type is syndactyly type 5? actually polysyndactyly; not clearly any candidate",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008516",
+   "query": "syndactyly type V",
+   "category": "variant",
+   "pick": "E",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008582",
+   "query": "Witkop's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Witkop syndrome is tooth and nail syndrome but Fried's also fits",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008586",
+   "query": "EA/TEF",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008586",
+   "query": "oesophageal atresia with tracheo-oesophageal fistula",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008592",
+   "query": "tricho-dento-osseous dysplasia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008596",
+   "query": "TRPS I",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008633",
+   "query": "hives, fevers and hearing loss from childhood",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008641",
+   "query": "HERNS",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008642",
+   "query": "VACTERL syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0008449",
+   "query": "meningomyelocele",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0008551",
+   "query": "thoraco-laryngo-pelvic dysplasia",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0008564",
+   "query": "CATCH-22",
+   "category": "abbrev",
+   "drop": "eval or held text"
+  }
+ ]
+}

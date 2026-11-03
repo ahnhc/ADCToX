@@ -1,0 +1,227 @@
+{
+ "batch": 384,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0005112",
+   "query": "cancer of the lining of the lung",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits pleural mesothelioma and malignant pleural mesothelioma equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005112",
+   "query": "MPM",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005112",
+   "query": "pleural meso",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005138",
+   "query": "lung ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits lung cancer and lung carcinoma equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005161",
+   "query": "HPV",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005192",
+   "query": "PDAC",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits exocrine carcinoma and malignant exocrine neoplasm",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005192",
+   "query": "pancreatic ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "pancreatic carcinoma/neoplasm candidates fit equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005206",
+   "query": "renal ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits renal carcinoma, kidney cancer, and RCC",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005235",
+   "query": "SMM",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005235",
+   "query": "smoldering MM",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005235",
+   "query": "asymptomatic multiple myeloma",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits smoldering and indolent; a paraphrase, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005269",
+   "query": "carotid artery disease",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005289",
+   "query": "sinus tumor",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits several sinus neoplasm candidates",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005302",
+   "query": "ADHD-PI",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005302",
+   "query": "inattentive ADHD",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005336",
+   "query": "muscle disease",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits skeletal muscle disorder and myopathy equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0005348",
+   "query": "raised scar that keeps growing",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005348",
+   "query": "keloid scar",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "not clipped shorthand; it is a word-form variant",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0005138",
+   "query": "bronchogenic carcinoma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005206",
+   "query": "RCC",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0005289",
+   "query": "paranasal sinus tumor",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

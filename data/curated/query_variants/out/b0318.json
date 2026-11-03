@@ -1,0 +1,197 @@
+{
+ "batch": 318,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0044638",
+   "query": "hypopharyngeal SCC",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044638",
+   "query": "hypopharynx ca",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044640",
+   "query": "CMT type 2T",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "CMT is a real abbreviation, so category is abbrev not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0044640",
+   "query": "Charcot Marie Tooth 2T",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044646",
+   "query": "PEBAT syndrome",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "PEBAT is an invented acronym, not clinical use",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0044702",
+   "query": "X-linked deafness 7",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044705",
+   "query": "paranasal sinus SCC",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044721",
+   "query": "LAT-deficient SCID",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044723",
+   "query": "3-methylglutaconic aciduria 8",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044724",
+   "query": "3-methylglutaconic aciduria 9",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044725",
+   "query": "GINS1-deficient combined immunodeficiency",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0044739",
+   "query": "SJS-TEN overlap",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "SJS and TEN are real abbreviations, so abbrev not shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0044739",
+   "query": "Stevens Johnson toxic epidermal necrolysis overlap",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Spelled-out name with no variant; it is just the full name",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0054588",
+   "query": "Noonan-like syndrome with loose anagen hair 2",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0054637",
+   "query": "Noonan-like disorder with loose anagen hair 1",
+   "category": "variant",
+   "pick": "D",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0054669",
+   "query": "pontocerebellar hypoplasia 11",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0054680",
+   "query": "MED type 7",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "MED type 7 is not a common real usage; ambiguous shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": []
+}

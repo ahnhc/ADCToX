@@ -1,0 +1,226 @@
+{
+ "batch": 507,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0018755",
+   "query": "scorpion sting",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018755",
+   "query": "stung by a scorpion",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018755",
+   "query": "scorpion venom poisoning",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "not a spelling/word-order variant; it is a paraphrase, closer to lay",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018764",
+   "query": "RTTN-related microcephalic primordial dwarfism",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018765",
+   "query": "cryptogenic multifocal ulcerative stenosing enteritis",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018781",
+   "query": "Senter's syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": null,
+   "why": "Senter syndrome is rare eponym; also KID/Senter usage obscure",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018794",
+   "query": "PLA2G4A deficiency",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "gene-name deficiency label, not clipped clinical shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018808",
+   "query": "Caroli's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits Caroli syndrome A and Caroli disease F",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018811",
+   "query": "CPSS",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018811",
+   "query": "Abernethy malformation",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018816",
+   "query": "neonatal sclerosing cholangitis",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits isolated neonatal SC and neonatal ichthyosis-SC",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018828",
+   "query": "pseudo-TORCH 2",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018829",
+   "query": "COL4A1-related schizencephaly",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits schizencephaly, familial form; not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018841",
+   "query": "bile acid synthesis defect",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "just drops 'congenital'; not shorthand, more a variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018857",
+   "query": "maggots moving under the skin",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits creeping, furuncular, cutaneous myiasis",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018861",
+   "query": "Zellweger-like syndrome",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "drops words from name; not real shorthand, also variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018869",
+   "query": "cobblestone lissencephaly complex",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'complex' is not a typical typed form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018877",
+   "query": "retinitis punctata albiscens",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018885",
+   "query": "leiomyoma of the orbit",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0018760",
+   "query": "De Santo-Shinawi syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

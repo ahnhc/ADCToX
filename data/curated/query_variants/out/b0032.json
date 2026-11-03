@@ -1,0 +1,199 @@
+{
+ "batch": 32,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0005968",
+   "query": "sporotrichioss",
+   "category": "typo",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0005988",
+   "query": "dog roundworm infection",
+   "category": "lay",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "dog roundworm: toxocariasis or toxascariasis, ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006015",
+   "query": "Waterhouse-Friedrichsen syndrome",
+   "category": "typo",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006451",
+   "query": "thymic ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits thymus cancer and thymic carcinoma about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006543",
+   "query": "dystrophic epidermolysis bullosa",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "fits E and general dystrophic forms; not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006543",
+   "query": "dystrophic EB",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits E and B equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006594",
+   "query": "pemfigus",
+   "category": "typo",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0006639",
+   "query": "adrenocortical ca",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits F and E adrenal carcinoma about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0006851",
+   "query": "baby inhales meconium at birth",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007035",
+   "query": "dark velvety skin patches",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007078",
+   "query": "Albright's hereditary osteodystrophy",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "AHO fits E and C/D; no candidate named so",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0007100",
+   "query": "familial amyloidotic polyneuropathy",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007125",
+   "query": "tongue tie",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007154",
+   "query": "tangled blood vessels in the brain",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007154",
+   "query": "brain AVM",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0007160",
+   "query": "Stickler type 1",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0005942",
+   "query": "Reyes syndrome",
+   "category": "typo",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0007100",
+   "query": "FAP",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

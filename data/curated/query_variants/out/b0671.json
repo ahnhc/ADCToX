@@ -1,0 +1,39 @@
+{
+ "batch": 671,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0013792",
+   "query": "brain bleed",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Generic; fits intracerebral and subarachnoid hemorrhage about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013792",
+   "query": "intracerebral haemorrhage",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0013792",
+   "query": "ICH",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

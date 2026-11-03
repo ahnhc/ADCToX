@@ -1,0 +1,380 @@
+{
+ "batch": 690,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0016237",
+   "query": "DNH",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": false,
+   "why": "DNH is not an established abbreviation; invented acronym",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016237",
+   "query": "hemangiomas all over a newborn's body and inside the organs",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016237",
+   "query": "diffuse neonatal haemangiomatosis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016297",
+   "query": "prelingual deafness",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "'prelingual deafness' is a variant wording, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016297",
+   "query": "deaf since birth with no other health problems",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits prelingual and autosomal recessive/dominant forms equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016298",
+   "query": "postlingual deafness",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "variant wording, not clipped shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016298",
+   "query": "hearing loss that started after the child learned to talk",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016299",
+   "query": "holoprosencephaly-caudal regression syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016302",
+   "query": "isolated TGA",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits isolated uncorrected TGA and dextro-TGA about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016302",
+   "query": "isolated d-TGA",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits isolated uncorrected TGA and d-TGA about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016302",
+   "query": "baby born with the two big heart arteries switched and nothing else wrong",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits isolated uncorrected TGA and d-TGA parent",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016303",
+   "query": "complex TGA",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": false,
+   "why": "'complex TGA' ambiguous between cardiac malformation and coarctation forms; not standard",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016303",
+   "query": "transposed great arteries with another heart defect",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "another heart defect fits malformation and coarctation forms",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016304",
+   "query": "classic PKAN",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016304",
+   "query": "classic NBIA1",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "NBIA1 is an older label but rarely typed with 'classic'",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016305",
+   "query": "atypical PKAN",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016305",
+   "query": "atypical NBIA1",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'atypical NBIA1' is an uncommon constructed form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016306",
+   "query": "Niemann-Pick type C, perinatal form",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016306",
+   "query": "perinatal-onset NPC",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016312",
+   "query": "5FU poisoning",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016312",
+   "query": "overdose from the 5-FU chemo drip",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits 5-FU poisoning and 5-FU toxicity about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016315",
+   "query": "severe Hunter syndrome",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "'severe Hunter syndrome' is an eponym variant, not lay",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016316",
+   "query": "mild Hunter syndrome",
+   "category": "lay",
+   "pick": "F",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "eponym variant, not lay; also option letter is B in this group",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016316",
+   "query": "attenuated MPS II",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016319",
+   "query": "born unable to feel pain but sweats a lot",
+   "category": "lay",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016323",
+   "query": "chronic respiratory distress due to surfactant metabolism defect",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016340",
+   "query": "familial RCM",
+   "category": "shorthand",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016340",
+   "query": "stiff heart muscle that runs in the family",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "could be familial restrictive or familial hypertrophic cardiomyopathy",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0016346",
+   "query": "hydrocephalus-obesity-hypogonadism syndrom",
+   "category": "typo",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016360",
+   "query": "macrothrombocytopenia with mitral valve insufficiency",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016373",
+   "query": "facial myokymia, isolated",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016374",
+   "query": "cranial nerve neuralgia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0016376",
+   "query": "confetti macular atrophy",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "dropping 'like' is a variant wording, not clinical shorthand",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0016315",
+   "query": "severe MPS II",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

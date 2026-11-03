@@ -1,0 +1,111 @@
+{
+ "batch": 209,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0008650",
+   "query": "Faulk-Epstein-Jones",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Unrecognised eponym; no candidate clearly fits",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008665",
+   "query": "Tucker's syndrome",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Obscure eponym; no candidate can be identified from the query alone",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008695",
+   "query": "autosomal recessive chorea-acanthocytosis",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008711",
+   "query": "acrocephalopolysyndactyly type IV",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Type IV could mean Goodman (D) or general acrocephalopolysyndactyly (F)",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0008717",
+   "query": "Hunter-Thompson type acromesomelic dysplasia",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008730",
+   "query": "17α-hydroxylase deficiency",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008742",
+   "query": "AD severe congenital neutropenia",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0008743",
+   "query": "Stimmler's syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0008694",
+   "query": "pseudo-progeria syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0008695",
+   "query": "VPS13A",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

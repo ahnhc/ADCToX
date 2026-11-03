@@ -1,0 +1,249 @@
+{
+ "batch": 508,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0018898",
+   "query": "skin lymphoma",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "'skin lymphoma' is plain wording, not clipped shorthand; also fits D/F loosely",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018898",
+   "query": "lymphoma of the skin",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018899",
+   "query": "visual variant of Alzheimer's disease",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "clinical descriptive synonym, not lay wording; fits variant at best",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018922",
+   "query": "cold agglutinins",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018922",
+   "query": "anemia triggered by cold",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits B, C and D equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018924",
+   "query": "Lenz-type microphthalmia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018932",
+   "query": "heart disease caused by liver cirrhosis",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018933",
+   "query": "Mazabraud's syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018933",
+   "query": "fibrous dysplasia with intramuscular myxomas",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "descriptive definition paraphrase, not spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018942",
+   "query": "macrophagic myofascitis",
+   "category": "typo",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018946",
+   "query": "rhombencephalsynapsis",
+   "category": "typo",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018951",
+   "query": "distal myopathy with vocal cord and pharyngeal weakness",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018973",
+   "query": "pattern dystrophy",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits C and A; pattern dystrophy is ambiguous between them",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018981",
+   "query": "fifth day fits",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fifth day fits fits A and F; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018981",
+   "query": "fifth day seizures",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "ambiguous between A and F; not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018989",
+   "query": "RAP",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "RAP is also recurrent abdominal pain; ambiguous shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0018989",
+   "query": "recurrent pancreatitis",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018989",
+   "query": "pancreatitis that keeps coming back",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018994",
+   "query": "X-linked Charcot-Marie-Tooth disease",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0018995",
+   "query": "Charcot Marie Tooth type 4",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0018898",
+   "query": "PCL",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0018932",
+   "query": "CCM",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0018973",
+   "query": "patterned macular dystrophy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

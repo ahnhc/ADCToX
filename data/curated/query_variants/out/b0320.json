@@ -1,0 +1,287 @@
+{
+ "batch": 320,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0100316",
+   "query": "LQTS1",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100316",
+   "query": "type 1 long QT syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100340",
+   "query": "Friedreich's ataxia 1",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100349",
+   "query": "COACH",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100350",
+   "query": "distal HMN 5",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100350",
+   "query": "distal hereditary motor neuronopathy type 5",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100352",
+   "query": "paroxysmal kinesigenic dyskinesia",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Full name synonym, not clipped shorthand; variant at most",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100512",
+   "query": "hepatocerebral mitochondrial DNA depletion syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0100512",
+   "query": "DGUOK deficiency",
+   "category": "variant",
+   "pick": "C",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Gene-based name, not spelling/word-order/eponym variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100522",
+   "query": "Marie Unna hypotrichosis",
+   "category": "variant",
+   "pick": "D",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0100531",
+   "query": "Emery-Dreifuss muscular dystrophy 1",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0600030",
+   "query": "t(1;19) B-ALL",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0600030",
+   "query": "E2A-PBX1 positive acute lymphoblastic leukemia",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0700081",
+   "query": "surfactant deficiency in newborn",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C and E equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0700081",
+   "query": "neonatal RDS",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits both C and E equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0700087",
+   "query": "USH1B",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0700087",
+   "query": "Usher syndrome 1B",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0700090",
+   "query": "familial temporal lobe epilepsy 1",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0800025",
+   "query": "Teebi hypertelorism syndrome type 1",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0800028",
+   "query": "familial dyskinesia with facial myokymia",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Fits A or C; rarely typed synonym",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0800042",
+   "query": "restrictive dermopathy type 1",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0800043",
+   "query": "Stuve-Wiedemann syndrome 1",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0800046",
+   "query": "short stature and delayed bone age due to abnormal thyroid hormone metabolism",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "Descriptive sentence nobody types; fits B and E",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0800047",
+   "query": "isolated macrothrombocytopenia 1",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0100428",
+   "query": "Fazio-Londe syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0700090",
+   "query": "autosomal dominant lateral temporal lobe epilepsy",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,144 @@
+{
+ "batch": 914,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0858910",
+   "query": "can't hold my head up",
+   "category": "lay",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "vague; could be general neck weakness or fatigue, not clearly dropped head",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0858910",
+   "query": "head keeps dropping forward",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0858910",
+   "query": "dropped head",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859085",
+   "query": "TBI",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "traumatic brain injury; no candidate matches",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859085",
+   "query": "head trauma",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "head trauma; no candidate matches",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859085",
+   "query": "brain trauma",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "plain wording, not clipped shorthand; no candidate matches",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859085",
+   "query": "brain damage from a blow to the head",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "traumatic brain injury; no candidate matches",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859142",
+   "query": "Hiatt-Neu-Cooper syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859151",
+   "query": "multifocal FMD",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "FMD is a real abbreviation, so category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0859151",
+   "query": "multifocal fibromuscular dysplasia",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0859180",
+   "query": "type 2 primary bile acid malabsorption",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0858910",
+   "query": "DHS",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0859085",
+   "query": "head injury",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

@@ -1,0 +1,232 @@
+{
+ "batch": 348,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0002850",
+   "query": "CNS rhabdo",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "CNS rhabdo ambiguous: ATRT (rhabdoid) vs CNS rhabdomyosarcoma; not standard shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002851",
+   "query": "mediastinal rhabdo",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'rhabdo' usually means rhabdomyolysis; not real shorthand for this tumor",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002853",
+   "query": "rectal rhabdo",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'rhabdo' usually means rhabdomyolysis; not real tumor shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002856",
+   "query": "gallbladder rhabdo",
+   "category": "shorthand",
+   "pick": "F",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'rhabdo' usually means rhabdomyolysis; unnatural for gallbladder tumor",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002863",
+   "query": "mixed embryonal and alveolar rhabdomyosarcoma",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Rewording of the name, not a spelling/eponym variant; more like a descriptive form",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002864",
+   "query": "anal rhabdo",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "'rhabdo' usually means rhabdomyolysis; not real tumor shorthand",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002866",
+   "query": "duodenal disease",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002866",
+   "query": "problem with the duodenum",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002867",
+   "query": "pancreatic cystadencarcinoma",
+   "category": "typo",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002875",
+   "query": "parasites on the skin",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002875",
+   "query": "skin parasite infestation",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002883",
+   "query": "intestinal carcinoid",
+   "category": "variant",
+   "pick": "none",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits intestinal NEN and small intestine NEN; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002887",
+   "query": "bile duct problems",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002888",
+   "query": "orbital meningioma",
+   "category": "variant",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Fits intraorbital and sphenoorbital meningioma about equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002892",
+   "query": "chordoma at the base of the skull",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Paraphrase of the name, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002894",
+   "query": "chordoma of the spine",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Paraphrase of the name, not a spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002903",
+   "query": "trouble pronouncing sounds",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002904",
+   "query": "repeating words other people say",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002904",
+   "query": "parroting speech",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0002883",
+   "query": "carcinoid tumor of the intestine",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0002903",
+   "query": "speech sound disorder",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

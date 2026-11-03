@@ -1,0 +1,252 @@
+{
+ "batch": 432,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0012972",
+   "query": "familial febrile seizures type 10",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012987",
+   "query": "agammaglobulinemia type 6",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012993",
+   "query": "dyschromatosis universalis hereditaria type 2",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013002",
+   "query": "cone-rod distrophy 9",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013003",
+   "query": "born without a tongue",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits aglossia and hypoglossia/aglossia equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013003",
+   "query": "baby born with no tongue",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits aglossia and hypoglossia/aglossia equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013003",
+   "query": "congenital aglossia",
+   "category": "variant",
+   "pick": "E",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013015",
+   "query": "Brugada's syndrome 5",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013023",
+   "query": "orofacial cleft type 12",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013029",
+   "query": "SCA type 9",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "SCA is an abbreviation; category should be abbrev",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013031",
+   "query": "distal 5q14.3 deletion syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013039",
+   "query": "3M syndrome type 2",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013040",
+   "query": "aHUS type 2",
+   "category": "variant",
+   "pick": "none",
+   "want": "F",
+   "realistic": false,
+   "category_ok": true,
+   "why": "aHUS numeric types not clinically used; candidates unnumbered",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013041",
+   "query": "aHUS type 3",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": true,
+   "why": "aHUS numeric types not clinically used; candidates unnumbered",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013042",
+   "query": "aHUS type 4",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "aHUS numeric types not clinically used; candidates unnumbered",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013043",
+   "query": "aHUS type 5",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "aHUS numeric types not clinically used; candidates unnumbered",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013044",
+   "query": "aHUS type 6",
+   "category": "variant",
+   "pick": "none",
+   "want": "D",
+   "realistic": false,
+   "category_ok": true,
+   "why": "aHUS numeric types not clinically used; candidates unnumbered",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013063",
+   "query": "familial ventricular fibrillation type 2",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013072",
+   "query": "Emery-Dreifuss muscular dystrophy type 5",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013073",
+   "query": "focal nonepidermolytic palmoplantar keratoderma type 1",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0013082",
+   "query": "Hirschsprung disease with nerve tissue tumors",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "vague paraphrase; nobody types this for the syndrome",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0013082",
+   "query": "Hirschsprung disease with ganglioneuroblastoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": []
+}

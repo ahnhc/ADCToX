@@ -1,0 +1,94 @@
+{
+ "batch": 150,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0012766",
+   "query": "HSP 37",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "HSP is a true acronym, so category should be abbrev; SPG37 is more usual",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012774",
+   "query": "15q13.3 microdel",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012783",
+   "query": "RFT1 deficiency",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012787",
+   "query": "HSP 39",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "HSP is a true acronym, so category should be abbrev; SPG39 is more usual",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0012803",
+   "query": "trehalase deficiency",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012830",
+   "query": "10q23 microdeletion",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0012866",
+   "query": "HSP 35",
+   "category": "shorthand",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "HSP is a true acronym, so category should be abbrev; SPG35 is more usual",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0012787",
+   "query": "SPG39",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

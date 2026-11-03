@@ -1,0 +1,188 @@
+{
+ "batch": 514,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0019641",
+   "query": "pauci-immune GN",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019643",
+   "query": "secondary pseudohypoaldosteronism",
+   "category": "variant",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "secondary (acquired) form not a listed candidate; fits general C only loosely",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019659",
+   "query": "PS1",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "A",
+   "realistic": false,
+   "category_ok": true,
+   "why": "PS1 not a standard abbreviation; ambiguous with other PS types",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019659",
+   "query": "type 1 Pfeiffer syndrome",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019660",
+   "query": "PS2",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "E",
+   "realistic": false,
+   "category_ok": true,
+   "why": "PS2 not a standard abbreviation; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019660",
+   "query": "type 2 Pfeiffer syndrome",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019661",
+   "query": "PS3",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "PS3 not a standard abbreviation; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019661",
+   "query": "type 3 Pfeiffer syndrome",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019667",
+   "query": "SEDT",
+   "category": "abbrev",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019670",
+   "query": "born without an ulna",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits D, E, F equally; unilateral/bilateral unspecified",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019672",
+   "query": "born without a fibula",
+   "category": "lay",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019673",
+   "query": "postaxial polydactyly A",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019674",
+   "query": "postaxial polydactyly B",
+   "category": "variant",
+   "pick": "D",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0019676",
+   "query": "type B brachydactyly",
+   "category": "variant",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0019677",
+   "query": "BDE",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0019641",
+   "query": "pauci immune glomerulonephritis",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0019662",
+   "query": "Majewski syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

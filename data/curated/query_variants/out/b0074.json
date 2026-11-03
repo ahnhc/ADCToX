@@ -1,0 +1,131 @@
+{
+ "batch": 74,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0010803",
+   "query": "Eiken's syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010805",
+   "query": "baby born with the bladder outside the body",
+   "category": "lay",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits B, C, and possibly F; lay description is nonspecific",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010823",
+   "query": "RCDP type 3",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": false,
+   "why": "RCDP is an abbreviation, not a spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010879",
+   "query": "CODAS",
+   "category": "abbrev",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0010911",
+   "query": "pituitary tumor causing milk production",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits C and F about equally (adenoma vs adenoma/carcinoma)",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0010947",
+   "query": "blood clots blocking the liver veins",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits Budd-Chiari and hepatic VOD; also portal vein thrombosis",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0010805",
+   "query": "CBE",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0010854",
+   "query": "Toriello-Lacassie-Droste syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0010886",
+   "query": "del(2)(q37)",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0010890",
+   "query": "acro-cardio-facial syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0010911",
+   "query": "prolactinoma",
+   "category": "shorthand",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0010947",
+   "query": "BCS",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0010947",
+   "query": "Budd Chiari syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0010959",
+   "query": "Van den Ende-Gupta syndrome",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0010962",
+   "query": "diffuse non-epidermolytic palmoplantar keratoderma",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

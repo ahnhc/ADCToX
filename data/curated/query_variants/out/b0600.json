@@ -1,0 +1,260 @@
+{
+ "batch": 600,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0002528",
+   "query": "tumor of the joint lining",
+   "category": "lay",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits synovium neoplasm and synovium cancer/disorder; ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002528",
+   "query": "synovium tumor",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002535",
+   "query": "papilloma, verrucous",
+   "category": "variant",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002536",
+   "query": "skin papiloma",
+   "category": "typo",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002551",
+   "query": "CPA schwannoma",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "CPA schwannoma is vestibular schwannoma; candidate C is neurinoma, A is general",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002551",
+   "query": "CPA neuroma",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "C",
+   "realistic": false,
+   "category_ok": false,
+   "why": "neuroma is not neurinoma/schwannoma; unnatural shorthand, ambiguous",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002552",
+   "query": "spinal cord stroke",
+   "category": "lay",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002553",
+   "query": "CPA tumor",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002553",
+   "query": "CPA mass",
+   "category": "shorthand",
+   "pick": "none",
+   "want": "F",
+   "realistic": true,
+   "category_ok": false,
+   "why": "mass is not clipped shorthand; fits tumor candidates equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002556",
+   "query": "microcystic schwannoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": false,
+   "why": "dropping reticular is a clipped name, not spelling variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002570",
+   "query": "HPNS",
+   "category": "abbrev",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002570",
+   "query": "high pressure nervous syndrome",
+   "category": "variant",
+   "pick": "F",
+   "want": "F",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002572",
+   "query": "breathing food into the lungs",
+   "category": "lay",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits aspiration pneumonitis and aspiration pneumonia",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002582",
+   "query": "subacute leukaemia",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002612",
+   "query": "FLE",
+   "category": "abbrev",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002612",
+   "query": "frontal lobe seizures",
+   "category": "shorthand",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": false,
+   "why": "not clipped shorthand; lay or variant phrasing",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002620",
+   "query": "bone cancer that has not spread",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "localized osteosarcoma vs chondrosarcoma; bone cancer type unspecified",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0002620",
+   "query": "non-metastatic osteosarcoma",
+   "category": "variant",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002622",
+   "query": "osteosarcoma, multifocal",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002623",
+   "query": "bone cancer in a child",
+   "category": "lay",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0002639",
+   "query": "CN IX disorder",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits glossopharyngeal nerve disorder and its subtypes; CN IX ambiguous with general",
+   "accepted": false
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0002550",
+   "query": "twelfth cranial nerve tumor",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0002626",
+   "query": "spinal accessory nerve tumor",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0002638",
+   "query": "ninth cranial nerve tumor",
+   "category": "variant",
+   "drop": "already a MONDO name"
+  }
+ ]
+}

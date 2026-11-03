@@ -1,0 +1,244 @@
+{
+ "batch": 173,
+ "worker": "claude-sonnet-4-6 via qwen3.8-flash-next-iq3_s (4090_1)",
+ "verifier": "claude-sonnet-5-5",
+ "guide": "a1e1dd8520c1",
+ "verify_guide": "b7b225edb03f",
+ "items": [
+  {
+   "id": "MONDO:0958106",
+   "query": "autosomal dominant congenital insensitivity to pain",
+   "category": "variant",
+   "pick": "none",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "Autosomal dominant form not clearly any candidate; B general but dominant form unspecified",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1010168",
+   "query": "childhood HPP",
+   "category": "shorthand",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:1010169",
+   "query": "I-HPP",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": false,
+   "category_ok": true,
+   "why": "I-HPP is rarely used; not established abbreviation",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:1010169",
+   "query": "infantile HPP",
+   "category": "shorthand",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000006",
+   "query": "WHIM",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A, D, F equally; general WHIM syndrome is A but subtypes exist",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:8000006",
+   "query": "type 1 WHIM syndrome",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:8000008",
+   "query": "Martsolf's syndrome",
+   "category": "variant",
+   "pick": "C",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:8000011",
+   "query": "familial visceral neuropathy 1",
+   "category": "variant",
+   "pick": "C",
+   "want": "C",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000050",
+   "query": "IGHD",
+   "category": "abbrev",
+   "pick": "none",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "IGHD fits B, D, E equally",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000088",
+   "query": "early puberty",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000088",
+   "query": "child starts puberty too early",
+   "category": "lay",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000110",
+   "query": "split nose at birth",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000127",
+   "query": "geleophisic dysplasia",
+   "category": "typo",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000133",
+   "query": "ICF",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000133",
+   "query": "ICF syndrome",
+   "category": "abbrev",
+   "pick": "E",
+   "want": "E",
+   "realistic": true,
+   "category_ok": false,
+   "why": "ICF syndrome is just the abbreviation plus word; still abbrev, but marginal",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000136",
+   "query": "KFSD",
+   "category": "abbrev",
+   "pick": "B",
+   "want": "B",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  },
+  {
+   "id": "MONDO:0000170",
+   "query": "microphthalmia with coloboma",
+   "category": "variant",
+   "pick": "D",
+   "want": "D",
+   "realistic": true,
+   "category_ok": false,
+   "why": "Just reordered name, not a real spelling or word-order variant",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000290",
+   "query": "brain eating amoeba infection",
+   "category": "lay",
+   "pick": "none",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "fits A and C both; brain-eating amoeba commonly Naegleria but also others",
+   "accepted": false
+  },
+  {
+   "id": "MONDO:0000309",
+   "query": "images look different sizes in each eye",
+   "category": "lay",
+   "pick": "A",
+   "want": "A",
+   "realistic": true,
+   "category_ok": true,
+   "why": "",
+   "accepted": true
+  }
+ ],
+ "dropped": [
+  {
+   "id": "MONDO:0000107",
+   "query": "ACS",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0000110",
+   "query": "cleft nose",
+   "category": "lay",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0000128",
+   "query": "GAN",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  },
+  {
+   "id": "MONDO:0000290",
+   "query": "PAM",
+   "category": "abbrev",
+   "drop": "already a MONDO name"
+  }
+ ]
+}
