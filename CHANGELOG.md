@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.6.10: Anthropic Sans Text as the page face, and a fixed web port (Ubuntu, macOS and Windows)
 
 - **The page face is Anthropic Sans Text Light** (59 KB, one weight) in place of Cafe24 Decobox, whose single heavy weight crowded small text. Hangul and ✓ still come from Pretendard. The file carries no public licence and is used here for this personal, non-commercial project only (THIRD_PARTY_NOTICES.md).
 - **`ADCTOX_PORT` fixes the web port**, so an SSH tunnel command can stay the same; a bad value or a port in use stops with one line.

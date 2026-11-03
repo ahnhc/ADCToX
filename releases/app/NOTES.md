@@ -1,9 +1,7 @@
-ADCTOX 0.6.9: Label restriction이 환자의 무엇이 라벨의 어떤 규칙에 걸렸는지 보인다. Ubuntu, macOS, Windows 모두 0.6.9다.
+ADCTOX 0.6.10: 웹 화면 글꼴이 Anthropic Sans Text Light로 바뀌어 작은 글자가 덜 뭉친다. Ubuntu, macOS, Windows 모두 0.6.10이다.
 
-- **Label restriction은 두 줄이다.** `Patient`는 걸린 환자 쪽(Heart failure, Bilirubin 1.67×ULN, 또는 LVEF not entered)이고, `Label`은 라벨의 규칙("Monitor with bilirubin >1.5 to 3×ULN", "Not studied if LVEF < 50%")이다.
-- **Indication은 문장으로 보인다.** "Approved for" 또는 "Not approved for" 입력한 암, 그 아래에 All approved uses 목록이다.
-- **마우스를 올리면 뜨는 설명은 요약 한 줄과 항목 줄이다.**
-- Windows 설치 확인에서 브라우저 화면까지 열어 본다.
+- **글꼴은 Anthropic Sans Text Light다.** Cafe24 Decobox를 뺐다. 한글과 ✓는 그대로 Pretendard다.
+- **`ADCTOX_PORT`로 웹 포트를 고정한다.** 서버에서 `ADCTOX_NO_BROWSER=1 ADCTOX_PORT=8765 adctox-web`, 내 컴퓨터에서 `ssh -L 8765:127.0.0.1:8765 <사용자>@<서버>` 다음 http://localhost:8765 를 연다. 잘못된 값이나 이미 쓰는 포트는 한 줄로 알려 주고 끝난다.
 
 모델은 그대로 0.7이다.
 
