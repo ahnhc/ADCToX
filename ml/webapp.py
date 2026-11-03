@@ -18,8 +18,8 @@ STEPS = ["Conditions", "Labs", "Organs", "Priority", "Results"]
 STEP_TEXT = {"embedding": "Reading the conditions", "linking": "Reading the conditions", "judging": "Analysing organs", "inference": "Analysing organs"}
 TYPES = {".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
          ".svg": "image/svg+xml; charset=utf-8", ".json": "application/json; charset=utf-8", ".txt": "text/plain; charset=utf-8", ".woff2": "font/woff2",
-         ".ttf": "font/ttf"}
-BINARY = {".woff2", ".ttf"}     # kept base64 in the page dict (the one-file build stores it as JSON), sent as bytes
+         ".ttf": "font/ttf", ".otf": "font/otf"}
+BINARY = {".woff2", ".ttf", ".otf"}     # kept base64 in the page dict (the one-file build stores it as JSON), sent as bytes
 JSON = "application/json; charset=utf-8"
 # form.Form._analysis_review: the source words of the analysis table
 SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Registry": "Registry", "Similar condition": "Similar registry condition",

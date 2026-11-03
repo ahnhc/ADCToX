@@ -60,7 +60,7 @@ jobs:
           }
           Get-Content web.out, web.err -ErrorAction SilentlyContinue
           if (-not $url) { throw "the web server printed no address (exit: $($p.HasExited) $($p.ExitCode))" }
-          foreach ($path in '/', '/static/app.css', '/static/app.js', '/static/Cafe24Decobox.ttf', '/static/PretendardVariable.woff2') {
+          foreach ($path in '/', '/static/app.css', '/static/app.js', '/static/AnthropicSansText-Light.otf', '/static/PretendardVariable.woff2') {
             $r = Invoke-WebRequest -UseBasicParsing "$url$path"
             "$path $($r.StatusCode) $($r.Headers['Content-Type']) $($r.RawContentLength)"
           }

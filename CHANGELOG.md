@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **The page face is Anthropic Sans Text Light** (59 KB, one weight) in place of Cafe24 Decobox, whose single heavy weight crowded small text. Hangul and ✓ still come from Pretendard. The file carries no public licence and is used here for this personal, non-commercial project only (THIRD_PARTY_NOTICES.md).
+- **`ADCTOX_PORT` fixes the web port**, so an SSH tunnel command can stay the same; a bad value or a port in use stops with one line.
+
 ## 0.6.9: Label restriction as what the patient has and the rule it meets (Ubuntu, macOS and Windows)
 
 - **Label restriction in the ADC detail shows both sides**: under each organ and status, `Patient` (the entered condition or value that meets the rule, such as Heart failure or Bilirubin 1.67×ULN, or "LVEF not entered") and `Label` (the rule, as "Monitor with bilirubin >1.5 to 3×ULN" or "Not studied if LVEF < 50%"). The server sends the patient side with each row.
