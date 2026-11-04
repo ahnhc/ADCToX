@@ -2,6 +2,8 @@
 
 이 저장소의 파이프라인과 데이터로 Gemma 4 E2B를 튜닝하고, 튜닝하지 않은 Gemma와 같은 문제로 비교한다. 명령 하나로 끝난다.
 
+앱의 판정 모델(x2te)은 이 명령으로 만들지 않는다. x2te의 사전학습, 판정 학습, 기록 읽기, 내보내기 명령은 [scratch_model.md](scratch_model.md)에 있다.
+
 ## 필요한 것
 
 - GPU 1장 이상(24 GB면 충분). 학습 1회 약 25분, seed 3개면 GPU 2장으로 약 1시간 반.
@@ -28,7 +30,7 @@ ADC_RESEARCH_MODE=1 python ml/reproduce_judge.py --work /data/me/work_cache --ta
    - 학습(`ml/gemma_judge2.py`), int8 내보내기(`ml/gemma_export.py`).
    - 단일 모델 채점(`--system single`). `--app`을 주면 앱 전체 파이프라인도 채점한다.
 3. **보고서** `ml/results/reproduce/<tag>.md`:
-   - base 대비 영어·한국어 장기 F1과 paired bootstrap 95% 구간.
+   - base 대비 영어, 한국어 장기 F1과 paired bootstrap 95% 구간.
    - 장기 13개 각각의 F1과 목표(0.95) 달성 여부.
    - 개념 정답률, 무효 입력 수락률.
 4. **학습 기록** `ml/docs/tuning_log.md`를 다시 만든다. 실행마다 쓴 데이터 파일(행 수, sha256), 설정, 직전 실행 대비 바뀐 것, 점수가 남는다.
@@ -39,7 +41,7 @@ ADC_RESEARCH_MODE=1 python ml/reproduce_judge.py --work /data/me/work_cache --ta
 
 | 출처 | 내용 |
 |---|---|
-| `mondo_names` | MONDO 이름·동의어 |
+| `mondo_names` | MONDO 이름, 동의어 |
 | `train_queries` | 검토한 입력 예 |
 | `external` | 말뭉치 언급 |
 | `profiles` | 질환 프로필 |
@@ -47,10 +49,10 @@ ADC_RESEARCH_MODE=1 python ml/reproduce_judge.py --work /data/me/work_cache --ta
 | `gen_ko` | 한국어 표현 1차 |
 | `gen_sym` | 증상 문장 |
 | `mondo_ko` | 검토한 MONDO 한국어 이름 |
-| `ko2` | 한국어 일상어·약어·오타 |
+| `ko2` | 한국어 일상어, 약어, 오타 |
 | `kotypo` | 규칙 기반 한국어 오타 (`ml/ko_typos.py`) |
-| `ko3` | 한국어 짧은 말·약어·한영 혼합 (`ml/ko3_batches.py`) |
-| `umls` | UMLS 이름·약어 (`ml/umls_build.py`, 라이선스 필요, 없으면 자동으로 빠짐) |
+| `ko3` | 한국어 짧은 말, 약어, 한영 혼합 (`ml/ko3_batches.py`) |
+| `umls` | UMLS 이름, 약어 (`ml/umls_build.py`, 라이선스 필요, 없으면 자동으로 빠짐) |
 
 예: `--drop mondo_ko,ko2 --compare-to r1s7`이면 한국어 이름 데이터가 얼마나 기여했는지 나온다.
 

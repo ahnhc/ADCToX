@@ -14,7 +14,7 @@
 - Windows 설치기가 하는 일:
   - 공식 embeddable Python이 든 패키지를 받아 SHA256을 확인한다.
   - `%LOCALAPPDATA%\adctox\app`에 푼다.
-  - 시작 메뉴와 바탕화면 바로가기, `adctox` 명령(사용자 PATH)을 만든다.
+  - 시작 메뉴와 바탕화면 바로가기, `adctox`와 `adctox-web` 명령(사용자 PATH)을 만든다.
   - 모델을 받는다.
 - 다시 실행하면 앱을 새 버전으로 바꾼다.
 
@@ -24,14 +24,31 @@ Linux에서 `venv`가 없다는 메시지가 나오면 다음 패키지를 설�
 sudo apt install python3-venv
 ```
 
-설치기는 sudo를 사용하지 않는다. 기본 CPU PyTorch와 추론 의존성, 약 1.4 GiB의 모델 파일(모델 0.7: 처음부터 만든 판정 모델 302 MB 포함)을 설치한다. BioLORD와 SapBERT는 원본 Hugging Face 저장소의 고정 revision에서 받는다. upstream 이용 조건은 [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md)를 참고한다.
+설치기는 sudo를 사용하지 않는다. 기본 CPU PyTorch와 추론 의존성, 약 1.4 GB의 모델 파일(모델 0.7: 처음부터 만든 판정 모델 약 316 MB 포함)을 설치한다. BioLORD와 SapBERT는 원본 Hugging Face 저장소의 고정 revision에서 받는다. upstream 이용 조건은 [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md)를 참고한다.
 
-설치 후 분석은 로컬에서 실행하며 입력한 질환이나 검사값을 업데이트 서버로 전송하지 않는다. 인터넷 연결은 설치 및 사용자가 요청한 업데이트에 사용한다. 입력 중 상태 파일은 기존 터미널 동작에 따라 `~/.config/adctox/last_input.json`에 저장될 수 있다.
+설치 후 분석은 로컬에서 실행하며 입력한 질환이나 검사값을 업데이트 서버로 전송하지 않는다. 인터넷 연결은 설치 및 사용자가 요청한 업데이트에 사용한다. 마지막 입력은 `~/.config/adctox/last_input.json`에 저장될 수 있다.
+
+## 실행
+
+| 명령 | 화면 |
+|---|---|
+| `adctox-web` (`adctox --web`과 같음) | 기본 브라우저에 다섯 화면을 연다. 이 컴퓨터 안에서만(127.0.0.1) 열린다 |
+| `adctox` | 같은 다섯 화면을 터미널에서 연다 |
+
+Windows에서는 바로가기, `adctox-web` 명령, 또는 zip의 `ADCTOX-web.bat`으로 브라우저 화면을 연다.
+
+화면이 없는 서버에서는 포트를 정해 켜고(`ADCTOX_PORT`, 기본은 빈 포트를 고른다) 내 컴퓨터에서 SSH 터널로 연다.
+
+```bash
+ADCTOX_NO_BROWSER=1 ADCTOX_PORT=8765 adctox-web          # 서버에서
+ssh -L 8765:127.0.0.1:8765 <사용자>@<서버>               # 내 컴퓨터에서, 그다음 http://localhost:8765
+```
 
 ## 설치 위치
 
 ```text
 ~/.local/bin/adctox
+~/.local/bin/adctox-web            브라우저 화면 (adctox --web)
 ~/.local/share/adctox/
     current -> apps/<app-version>-<checksum>/
     apps/                         앱 코드
@@ -41,6 +58,7 @@ sudo apt install python3-venv
         versions/                 설치한 모델 묶음
         blobs/                    파일 해시별 저장소
         previous.json             이전 모델 정보
+    python/                       uv로 받은 Python 3.12 (시스템 Python이 없을 때만)
 ```
 
 `XDG_DATA_HOME`을 설정했다면 해당 위치를 사용한다. 명령이 검색되지 않으면 아래 내용을 shell 설정에 추가한다.
@@ -75,7 +93,7 @@ adctox --rollback-models
 
 ## Windows
 
-설치 위치는 `%LOCALAPPDATA%\adctox\app`(앱과 Python), `%LOCALAPPDATA%\adctox\models`(모델), `%LOCALAPPDATA%\adctox\bin\adctox.cmd`(명령)이다. 설치기 없이 쓰려면 Release의 `ADCTOX-windows.zip`을 아무 곳에 풀고 `ADCTOX.bat`을 실행해도 된다. PC에 Microsoft Visual C++ 재배포 패키지(x64)가 없으면 프로그램이 공식 설치 링크를 알려 준다.
+설치 위치는 `%LOCALAPPDATA%\adctox\app`(앱과 Python), `%LOCALAPPDATA%\adctox\models`(모델), `%LOCALAPPDATA%\adctox\bin\adctox.cmd`와 `adctox-web.cmd`(명령)이다. 설치기 없이 쓰려면 Release의 `ADCTOX-windows.zip`을 아무 곳에 풀고 `ADCTOX.bat`(터미널) 또는 `ADCTOX-web.bat`(브라우저)을 실행해도 된다. 이때 모델은 첫 실행 때 받는다. PC에 Microsoft Visual C++ 재배포 패키지(x64)가 없으면 프로그램이 공식 설치 링크를 알려 준다.
 
 삭제: `%LOCALAPPDATA%\adctox` 폴더와 바로가기를 지우고, 사용자 PATH에서 `%LOCALAPPDATA%\adctox\bin`을 뺀다.
 
@@ -88,7 +106,7 @@ adctox --rollback-models
 기본 경로로 설치했다면 다음 파일과 디렉터리를 삭제한다. 사용자 지정 경로를 썼으면 그 경로를 사용한다.
 
 ```bash
-rm "$HOME/.local/bin/adctox"
+rm "$HOME/.local/bin/adctox" "$HOME/.local/bin/adctox-web"
 rm -r "$HOME/.local/share/adctox"          # 앱, 모델, uv로 받은 Python 모두
 ```
 

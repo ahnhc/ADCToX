@@ -1,7 +1,7 @@
 # 이전 문서 (archive)
 
 이 폴더의 문서는 이전 단계의 기록이다. 기록용으로 남겨 두며, 현재 앱과 모델을 설명하지 않는다.
-현재 모델 문서는 [ml/docs/gemma_judge.md](../../ml/docs/gemma_judge.md), ml 폴더 안내는 [ml/README.md](../../ml/README.md)다.
+현재 판정 모델(x2te) 문서는 [ml/docs/scratch_model.md](../../ml/docs/scratch_model.md), ml 폴더 안내는 [ml/README.md](../../ml/README.md)다.
 
 ## 연구와 모델
 
@@ -9,7 +9,7 @@
 
 | 문서 | 내용 | 대체한 문서 |
 |---|---|---|
-| [LEGACY_RESEARCH_OVERVIEW.md](LEGACY_RESEARCH_OVERVIEW.md) | `src/adctox` forward organ-toxicity model과 ADC 설계 열거기의 개요 | `ml/` 추천기, [gemma_judge.md](../../ml/docs/gemma_judge.md) |
+| [LEGACY_RESEARCH_OVERVIEW.md](LEGACY_RESEARCH_OVERVIEW.md) | `src/adctox` forward organ-toxicity model과 ADC 설계 열거기의 개요 | `ml/` 추천기, [scratch_model.md](../../ml/docs/scratch_model.md) |
 
 ## 팀 작업 (team/)
 

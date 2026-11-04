@@ -2,6 +2,10 @@
 
 Every source here was verified live on 2026-10-07. Counts are measured, not estimated.
 
+> This page covers the sources of the earlier research model (`src/adctox`, 14 axes). The sources the app and its
+> organ judge use today (PubMed, UMLS level 0, MONDO, HPO, KCD, the SPECIALIST Lexicon, DailyMed label evidence,
+> ClinicalTrials.gov trial results) and their terms are in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md).
+
 | Source | Used for | Licence | Redistribution posture |
 |---|---|---|---|
 | ClinicalTrials.gov API v2 | arm-level adverse events, eligibility text, the PT->SOC dictionary | US Government public domain | Derived numbers published freely |
@@ -148,6 +152,6 @@ settles which it is -- cardiac myocytes at 112.0 and 103.6 against aortic smooth
 the score.
 
 **MONDO** is used for the hand-pinned `mondo_id` column in the comorbidity registry,
-which was curated against it; the ontology is not loaded at runtime. **SIDER** is cited
+which was curated against it; this research model does not load the ontology at runtime (the app does: its MONDO index links each typed condition). **SIDER** is cited
 for the negative result that chemistry-to-organ transfer cannot be learned from it, and
 is not read by any code path.

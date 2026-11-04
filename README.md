@@ -6,7 +6,7 @@
 [![Ubuntu terminal](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml/badge.svg)](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml)
 [![One-line install](https://github.com/ahnhc/ADCToX/actions/workflows/install.yml/badge.svg)](https://github.com/ahnhc/ADCToX/actions/workflows/install.yml)
 
-**환자의 기저질환 이름만으로 이미 손상된 장기를 판정하고, 환자의 암에 승인된 ADC 중 그 장기에 라벨 경고가 적은 약부터 보여 주는 터미널 앱입니다.** 장기 판정은 공개 의학 텍스트만으로 처음부터 학습한 1.1억 파라미터 모델이 PC 안에서 합니다.
+**환자의 기저질환 이름만으로 이미 손상된 장기를 판정하고, 환자의 암에 승인된 ADC 중 그 장기에 라벨 경고가 적은 약부터 보여 주는 앱입니다. 브라우저 화면과 터미널 화면이 있습니다.** 장기 판정은 공개 의학 텍스트만으로 처음부터 학습한 1.1억 파라미터 모델이 PC 안에서 합니다.
 
 <p align="center">
   <img src="docs/images/performance.svg" alt="장기 판정 정확도: 이 프로젝트의 모델 평균 0.723, 튜닝한 Gemma 4 E2B 0.711, 튜닝 안 한 Gemma 0.586" width="820">
@@ -86,7 +86,7 @@ ADC(antibody-drug conjugate)는 항체에 강한 세포독성 payload를 붙인 
 
 **ADC 비교.** 입력한 질환 중 암이 있으면 그 암을 환자의 암으로 보고, 그 암에 승인된 ADC가 먼저 나오고 나머지는 그 아래에 이어집니다. 암은 장기 손상으로 세지 않습니다. 각 묶음 안에서는 라벨 제한과 환자 장기에 걸린 경고 순으로 정렬합니다. 가장 걱정되는 질환을 하나 고르면 그 장기에 경고가 있는 ADC가 아래로 내려갑니다. ADC를 고르면 적응증, 라벨 제한 기준, 환자 장기에 걸린 경고, 주요 임상시험에서 그 장기에 생긴 이상반응 비율, payload와 linker 기전이 나옵니다.
 
-**임상시험 결과.** ADC 15종의 주요 임상시험 32건(ClinicalTrials.gov에 결과가 게시된 28건)에서, 환자 장기마다 라벨 경고가 가리키는 이상반응의 환자 수와 비율을 대조군과 나란히 보여 줍니다(`pneumonitis 18/257 (7.0%, vs 0.4%), serious 1/257`). 환자의 암을 알면 그 암의 임상시험을 고릅니다. 순서에는 쓰지 않습니다.
+**임상시험 결과.** ADC 15종의 주요 임상시험 32건(ClinicalTrials.gov에 결과가 게시된 28건)에서, 환자 장기마다 라벨 경고가 가리키는 이상반응의 비율을 보여 줍니다. 브라우저에서는 경고 아래에 점 20개(점 하나가 100명 중 5명, 중증은 분홍)와 "6 in 100 had pneumonitis, 2 serious" 같은 한 줄로, 터미널에서는 대조군과 나란히(`pneumonitis 18/257 (7.0%, vs 0.4%), serious 1/257`) 보입니다. 환자의 암을 알면 그 암의 임상시험을 고릅니다. 순서에는 쓰지 않습니다.
 
 <p align="center">
   <img src="docs/images/results.svg" alt="ADC 비교 결과" width="820">
@@ -116,11 +116,11 @@ curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
 irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 ```
 
-설치가 끝나면 `adctox`를 실행합니다. 처음 설치할 때 추론 환경과 모델 파일(약 1.4 GiB)을 받습니다. 설치 경로, GPU, 삭제 방법은 [설치 안내](docs/INSTALL.md)에 있습니다.
+설치가 끝나면 `adctox-web`(브라우저) 또는 `adctox`(터미널)를 실행합니다. 처음 설치할 때 추론 환경과 모델 파일(약 1.4 GiB)을 받습니다. 설치 경로, GPU, 삭제 방법은 [설치 안내](docs/INSTALL.md)에 있습니다.
 
 ## 사용법
 
-`질환   검사 수치   AI 장기 분석   우선순위   결과`의 다섯 화면을 **PgUp / PgDn**으로 오갑니다.
+`adctox-web`(또는 `adctox --web`)을 실행하면 기본 브라우저에 화면이 열립니다. 이 컴퓨터 안에서만 열리고(127.0.0.1) 서버에는 아무것도 남지 않습니다. 터미널에서 쓰려면 `adctox`를 실행합니다. 두 화면 모두 `질환   검사 수치   AI 장기 분석   우선순위   결과`의 다섯 화면을 **PgUp / PgDn**으로 오갑니다.
 
 | 화면 | 하는 일 |
 |---|---|
@@ -129,8 +129,6 @@ irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 | AI 장기 분석 | 질환마다 판정한 장기를 확인합니다 |
 | 우선순위 | 장기가 다른 질환이 여럿이면, 가장 걱정되는 질환을 하나 고릅니다 |
 | 결과 | ↑↓로 ADC를 골라 근거를 봅니다 |
-
-브라우저에서 같은 다섯 화면을 쓰려면 `adctox-web`(또는 `adctox --web`)을 실행합니다. 이 컴퓨터 안에서만 열리고(127.0.0.1) 서버에는 아무것도 남지 않습니다.
 
 화면이 없는 서버에서 쓸 때는 서버에서 포트를 정해 켜고, 내 컴퓨터에서 SSH 터널로 엽니다.
 
@@ -147,7 +145,7 @@ adctox --update-models   # 모델 업데이트
 ## 더 보기
 
 - [처음부터 만든 모델](ml/docs/scratch_model.md)
-- [재현 방법](ml/docs/reproduce.md): 학습부터 비교 보고서까지 명령 하나로
+- [Gemma 비교 기준 재현](ml/docs/reproduce.md): Gemma 튜닝부터 비교 보고서까지 명령 하나로
 - [코드 구성](ml/README.md)
 - [데이터와 모델의 출처, 이용 조건](THIRD_PARTY_NOTICES.md)
 

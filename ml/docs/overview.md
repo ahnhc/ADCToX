@@ -1,10 +1,10 @@
-# 연구 흐름 한눈에 보기 (2026-10-25)
+# 연구 흐름 한눈에 보기 (2026-10-25 작성, 10-27 판정 모델 교체까지 반영)
 
 이 문서는 장기 판정 모델 연구의 전체 흐름과 현재 위치를 정리한다. 앱 사용법은 [README](../../README.md)에 있다. 세부 수치는 각 단계의 문서에 있다.
 
 ## 1. 풀려는 문제
 
-환자의 기저질환 입력(한국어·영어·약어·증상 문장)을 받아 아래 두 가지를 정한다.
+환자의 기저질환 입력(한국어, 영어, 약어, 증상 문장)을 받아 아래 두 가지를 정한다.
 
 1. 어떤 MONDO 질환인지
 2. 13개 장기 중 어디가 이미 손상됐는지
@@ -17,13 +17,13 @@
 
 ```
  [데이터]                       [장기 라벨]                    [모델]                           [평가]
- MONDO 질환·동의어 ─┐       v4 (Opus 에이전트, 앱에서 사용) ┐   ① Gemma 판정 모델 (E2B / E4B)  ┐   gold: 처음 보는 질환 600문항
- HPO 표현형·빈도   ─┼──▶    v5 (GPT 3회 + 판정 + 감사)     ├─▶ ② encoder (BiomedBERT 등)     ├─▶ known: 아는 질환, 새 표현
- UMLS 이름·정의    ─┤       v5.1 (involved 재검토)        ┘   ③ ① + ② 결합                   │   dev로 튜닝, test는 마지막 1회
+ MONDO 질환, 동의어 ─┐       v4 (Opus 에이전트, 모델 0.6) ┐   ① Gemma 판정 모델 (E2B / E4B)  ┐   gold: 처음 보는 질환 600문항
+ HPO 표현형, 빈도   ─┼──▶    v5 (GPT 3회 + 판정 + 감사)     ├─▶ ② encoder (BiomedBERT 등)     ├─▶ known: 아는 질환, 새 표현
+ UMLS 이름, 정의    ─┤       v5.1 (involved 재검토)        ┘   ③ ① + ② 결합                   │   dev로 튜닝, test는 마지막 1회
  PubMed 초록       ─┘                                       ④ 처음부터 만든 모델 (X0 → X3)   ┘
 ```
 
-- **격리 규칙:** gold 질환과 그 부모·자식 질환은 학습 데이터, 라벨 예시, 증류 문장, 사전학습의 구조화 문장에서 모두 뺀다. 그래서 gold는 정말 처음 보는 질환을 재는 시험이 된다.
+- **격리 규칙:** gold 질환과 그 부모, 자식 질환은 학습 데이터, 라벨 예시, 증류 문장, 사전학습의 구조화 문장에서 모두 뺀다. 그래서 gold는 정말 처음 보는 질환을 재는 시험이 된다.
 - **test 규칙:** 튜닝 중에는 dev만 본다. test는 최종 모델을 정한 뒤 한 번만 본다. 10-20부터의 탐색에서는 test를 보지 않았다. 다만 그 전 모델 0.6 단계에서 gold test를 여러 번 열었으므로([gemma_judge.md](gemma_judge.md) 7절), gold test 점수는 완전히 깨끗하지 않다. known test는 한 번도 열지 않았다.
 
 ## 3. 용어
@@ -38,7 +38,7 @@
 | S2d, S5a, S6d … | Gemma 튜닝 설정 이름. S2d = 한국어 포함 기본, S5a = 영어만, S6d/S6e = E4B 영어만. 기록은 [tuning_log.md](tuning_log.md) |
 | 결합(hybrid) | encoder가 찾은 질환의 유사도가 기준(0.85) 이상이면 encoder 답을 쓰고, 아니면 Gemma 판정을 쓴다 |
 | X0 ~ X3 | 사전학습 모델 없이 처음부터 만든 판정 모델. [scratch_model.md](scratch_model.md) |
-| seed 7·8·9 | 같은 설정을 seed 3개로 학습해 평균을 낸다. gold dev는 작아서 bootstrap 95% 구간이 약 ±0.05다. 그 안의 차이는 노이즈로 본다 |
+| seed 7, 8, 9 | 같은 설정을 seed 3개로 학습해 평균을 낸다. gold dev는 작아서 bootstrap 95% 구간이 약 ±0.05다. 그 안의 차이는 노이즈로 본다 |
 
 ## 4. 단계별 진행
 
@@ -46,7 +46,7 @@
 
 | 버전 | 만든 방법 | 상태 |
 |---|---|---|
-| v4 | Claude Haiku 에이전트 150개가 라벨링하고, Opus 에이전트 286개가 검수 (21,032개념, [gemma_judge.md](gemma_judge.md) 3.1절) | 앱이 쓰는 라벨 |
+| v4 | Claude Haiku 에이전트 150개가 라벨링하고, Opus 에이전트 286개가 검수 (21,032개념, [gemma_judge.md](gemma_judge.md) 3.1절) | 모델 0.5, 0.6이 쓴 라벨 (모델 0.7의 x2te는 v5.1) |
 | v5 | GPT(gpt-6.1-sol)가 모든 개념을 독립적으로 3번 라벨링한다. 3번이 다르면 판정하고, 일부는 감사한다. 3,519 세션, 22,638개념. 패스 간 κ는 0.937~0.980 | 완료. [REPORT.md](../../data/curated/concept_organs/v5/REPORT.md) |
 | v5.1 | v5의 involved 6,384개를 Haiku 두 명이 규칙([RULE_v5_1.md](../../data/curated/concept_organs/v5/RULE_v5_1.md))으로 다시 본다. 둘 다 빼자고 하면 GPT가 한 번 더 확인한다. 최종 1,218개를 뺐다(선천 구조 이상, 환자 1~2명뿐인 빈도) | 완료. 연구 학습에 사용 |
 
@@ -64,7 +64,7 @@ BiomedBERT-large(encoder, seed 3개)도 같은 모양이다. gold_v0은 v4 0.786
 - known은 정답이 각자 학습한 라벨표라서 라벨 버전끼리 비교하는 데 쓸 수 없다.
 - gold_v1을 만들 때 각 회사 모델이 자기 회사 라벨을 더 고르는 편향이 보였다(33건 중 26건씩). 그래서 두 판정자가 같을 때만 확정한다.
 
-### 4.2 Gemma와 encoder (앱에 들어갈 후보)
+### 4.2 Gemma와 encoder (비교 기준)
 
 영어 기준 현재 최선(dev, seed 3쌍, v4 라벨): **BiomedBERT-large + Gemma 결합**. encoder 장기 출력을 쓰고 기준은 0.85다.
 
@@ -75,7 +75,7 @@ BiomedBERT-large(encoder, seed 3개)도 같은 모양이다. gold_v0은 v4 0.786
 | BiomedBERT-large + E4B (규칙 통과분) | 0.863 | 0.882 | 0.873 |
 
 - E4B는 실행 세 번 중 한 번꼴로 덜 학습된 채 끝난다. 그래서 학습 val organ loss가 0.13 미만인 실행만 받는다.
-- 크기 대비 이득을 생각하면 앱 후보는 E2B 결합이다.
+- 크기 대비 이득을 생각하면 결합의 후보는 E2B였다. 결합은 앱에 넣지 않았고, 앱은 x2te만 쓴다(5절).
 - 전체 표는 [sweep_1027.md](sweep_1027.md)에 있다.
 
 ### 4.3 처음부터 만든 모델 (메인 목표)
@@ -84,7 +84,7 @@ BiomedBERT-large(encoder, seed 3개)도 같은 모양이다. gold_v0은 v4 0.786
 
 | 단계 | 들어가는 것 |
 |---|---|
-| 사전학습(빈칸 맞히기) | 공개 의학 텍스트만. PubMed 초록 86%, UMLS 이름·정의 12%, MONDO·HPO 1%, 의약품 라벨·임상시험 문서 0.5%. 일반 텍스트(웹, 위키백과)는 없다 |
+| 사전학습(빈칸 맞히기) | 공개 의학 텍스트만. PubMed 초록 86%, UMLS 이름, 정의 12%, MONDO, HPO 1%, 의약품 라벨, 임상시험 문서 0.5%. 일반 텍스트(웹, 위키백과)는 없다 |
 | 판정 학습 | 질환 이름과 표현, 프로젝트가 만든 장기 라벨(v5.1), 튜닝한 Gemma의 장기 확률(증류 목표) |
 
 장기 라벨과 증류 목표는 이 프로젝트가 만든 학습 목표다. 다른 모델의 가중치나 지식을 가져온 것이 아니다.
@@ -92,16 +92,16 @@ BiomedBERT-large(encoder, seed 3개)도 같은 모양이다. gold_v0은 v4 0.786
 | 모델 | 사전학습 | gold_v0 영어 | known 영어 |
 |---|---|---|---|
 | X1 | 긴 사전학습 없음 (질환 이름과 UMLS 이름으로 학습, seed 3개) | 0.593 | 0.734 |
-| XP2 | BERT-medium, PubMed·UMLS 30시간 | 0.695 | 0.775 |
-| X2 | BERT-base, 전체 단어 마스킹, UMLS·MONDO·HPO 10배, 48시간 + Gemma 증류 | **0.702** | **0.807** |
+| XP2 | BERT-medium, PubMed, UMLS 30시간 | 0.695 | 0.775 |
+| X2 | BERT-base, 전체 단어 마스킹, UMLS, MONDO, HPO 10배, 48시간 + Gemma 증류 | **0.702** | **0.807** |
 | 참고: BiomedBERT-large 튜닝 (seed 3개) | Microsoft의 PubMed 사전학습 모델 | 0.786 | 0.876 |
 
 - **Gemma 증류:** 튜닝한 Gemma가 47만 개 질환 이름에 낸 장기 확률을 함께 배운다. gold와 평가 문장은 빠진다. gold는 약 +0.03 오른다.
-- 사전학습 24시간 → 48시간은 점수를 올리지 못했다. 그래서 **X3(BERT-large, 335M, GPU 3장, 32시간)**를 학습 중이다. 결과는 10-26 밤에 나온다.
+- 사전학습 24시간 → 48시간은 점수를 올리지 못했다. 그래서 **X3(BERT-large, 335M, GPU 3장, 32시간)**를 학습했다. 결과는 [scratch_model.md](scratch_model.md)의 X3 절에 있다.
 
 ## 5. 최종 결과 (test, 2026-10-26 한 번 채점)
 
-최종 구성은 dev에서 미리 정한 규칙으로 골랐다: **x2te = X2 + 영어 오타·약어 쌍 + 기록 읽기**([scratch_model.md](scratch_model.md) "최종 구성 선택"). 그 뒤 test를 한 번 열었다.
+최종 구성은 dev에서 미리 정한 규칙으로 골랐다: **x2te = X2 + 영어 오타, 약어 쌍 + 기록 읽기**([scratch_model.md](scratch_model.md) "최종 구성 선택"). 그 뒤 test를 한 번 열었다.
 
 | test, 영어, seed 3개 평균 | gold_v0 | gold_v1 | known | 평균 (gold_v0, known) |
 |---|---|---|---|---|
@@ -155,9 +155,9 @@ BiomedBERT-large(encoder, seed 3개)도 같은 모양이다. gold_v0은 v4 0.786
 | 문서 | 내용 |
 |---|---|
 | [gemma_judge.md](gemma_judge.md) | 모델 0.6까지 앱의 Gemma 판정 모델 구조와 평가 |
-| [tuning_log.md](tuning_log.md) | 모든 튜닝 실행의 데이터·설정·점수 기록 |
-| [sweep_1027.md](sweep_1027.md) | 10-20~27 Gemma·encoder·결합 탐색 |
+| [tuning_log.md](tuning_log.md) | 모든 튜닝 실행의 데이터, 설정, 점수 기록 |
+| [sweep_1027.md](sweep_1027.md) | 10-20~27 Gemma, encoder, 결합 탐색 |
 | [relabel_v5_plan.md](relabel_v5_plan.md) | 장기 라벨 v5 계획과 결과 |
 | [scratch_model.md](scratch_model.md) | 처음부터 만든 모델 X0~X3 |
-| [reproduce.md](reproduce.md) | 학습부터 비교 보고서까지 재현하는 명령 |
+| [reproduce.md](reproduce.md) | Gemma 비교 기준의 학습부터 비교 보고서까지 재현하는 명령 |
 | [data_inventory.md](data_inventory.md) | 데이터 목록과 출처 |

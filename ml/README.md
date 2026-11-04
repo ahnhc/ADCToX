@@ -1,11 +1,11 @@
 # ml/
 
 ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환과 검사값을 받아 승인된 ADC를 라벨 근거 순서로 보여준다.
-현재 앱 모델(0.6)의 canonical 문서는 [docs/gemma_judge.md](docs/gemma_judge.md)다. 그 뒤의 연구는 다음 문서에 있다.
+앱(0.5.0 이상)이 쓰는 판정 모델은 모델 0.7의 x2te(`ScratchJudge/`, 처음부터 학습)이고, 문서는 [docs/scratch_model.md](docs/scratch_model.md)다. 그 전의 Gemma 판정 모델(모델 0.5, 0.6)은 [docs/gemma_judge.md](docs/gemma_judge.md)에 있다.
+- 처음부터 만든 모델: [docs/scratch_model.md](docs/scratch_model.md)
 - 전체 흐름: [docs/overview.md](docs/overview.md)
 - Gemma, encoder 탐색: [docs/sweep_1027.md](docs/sweep_1027.md)
 - 장기 라벨 v5: [docs/relabel_v5_plan.md](docs/relabel_v5_plan.md)
-- 처음부터 만든 모델: [docs/scratch_model.md](docs/scratch_model.md)
 
 ## 주요 모듈
 
@@ -14,11 +14,14 @@ ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환�
 | `recommend.py` | 앱 진입점. 기저질환과 lab 값을 받아 ADC를 label restriction → boxed warning → W&P 순으로 정렬한다 |
 | `form.py` | 한 화면 입력 UI. 질환 선택, lab 값, 질환 간 우선순위를 단계별로 받는다. ESC는 한 단계 뒤로 |
 | `tui.py` | curses 메뉴(화살표 radio list, 검색 checklist) |
-| `webapp.py` | `adctox --web`: 같은 다섯 단계를 브라우저에서. 127.0.0.1의 빈 포트에 stdlib HTTP 서버를 띄우고 `ml/web/`(index.html, app.css, app.js; mock.js는 개발용 fixture)를 내보낸다. 서버에는 아무것도 남지 않는다 |
+| `webapp.py` | `adctox --web`: 같은 다섯 단계를 브라우저에서. 127.0.0.1의 빈 포트(`ADCTOX_PORT`가 있으면 그 포트)에 stdlib HTTP 서버를 띄우고 `ml/web/`(index.html, app.css, app.js, 글꼴 AnthropicSansText-Light.otf와 PretendardVariable.woff2, mock.js는 개발용 fixture라 배포에서 빠진다)를 내보낸다. 서버에는 아무것도 남지 않는다 |
 | `term.py` | curses가 없거나 한글 폭이 틀리는 환경(Windows)에서 쓰는 ANSI 대체 구현 |
 | `suggest.py` | 입력 화면 검색. 철자 검색(한국어 초성 포함), SapBERT semantic 검색, 증상, 문장 → 질환 검색 |
 | `mondo_index.py` | MONDO linker. 질환 이름을 SapBERT로 MONDO 개념에 연결하고 장기 축을 붙인다 (THETA 0.75 미만은 연결하지 않음) |
-| `gemma_runtime.py` | 앱에서 양자화된 Gemma 판정 모델을 실행한다(CPU 또는 GPU, 생성 없음) |
+| `scratch_runtime.py` | 앱에서 처음부터 학습한 판정 모델(x2te, `ScratchJudge/`)을 실행한다(CPU 또는 GPU) |
+| `scratch_export.py` | x2te(`scratch_judge.py`의 모델과 기록 읽기 판정 표)를 앱용 `ScratchJudge/` 묶음으로 내보낸다 |
+| `evidence_judge.py` | 처음 보는 질환을 이름 대신 MONDO 기록(정의, 상위 개념, 증상)으로 판정한다. 결과는 `concepts.json`에 미리 계산된다 |
+| `gemma_runtime.py` | 모델 0.5, 0.6 묶음일 때만 양자화된 Gemma 판정 모델을 실행한다(비교 기준) |
 | `gemma_judge2.py` | Gemma 4 E2B 판정 모델 학습. 출력 4종: organ, valid, align(MONDO 연결), sym(증상 → 질환) |
 | `gemma_export.py` | 학습한 판정 모델을 LoRA 병합, 18층, int8로 내보낸다 |
 | `eval_a4.py` | 배포 파이프라인(registry → MONDO → judge)을 영어, 한국어 gold query로 평가한다 |
@@ -60,8 +63,8 @@ ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환�
 ## 실행
 
 ```bash
-.venv/bin/python -I ml/recommend.py                 # 대화형 화면
-.venv/bin/python -I ml/recommend.py --list          # registry 질환 목록
+.venv/bin/python -I ml/recommend.py                 # 터미널 화면
+.venv/bin/python -I ml/recommend.py --web           # 브라우저 화면
 ```
 
 연구 스크립트는 `ADCTOX_CACHE`(모델 cache 폴더)와 `ADCTOX_REPO`를 읽는다(`adc_paths.py`).
@@ -76,4 +79,4 @@ ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환�
 
 - 평가 결과 JSON: `results/`, 벤치마크는 `results/benchmarks/`.
 - 이전 연구 기록(FinnGen 취약성 모델, BioLORD, 초기 추천기 설계): [docs/archive/ml_research_log.md](docs/archive/ml_research_log.md).
-- 그 밖의 이전 문서 목록: [docs/archive/README.md](../docs/archive/README.md).
+- 그 밖의 이전 문서 목록: [저장소의 docs/archive/README.md](../docs/archive/README.md).

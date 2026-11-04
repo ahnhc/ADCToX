@@ -14,7 +14,7 @@ GitHub 저장소는 [ahnhc/ADCToX](https://github.com/ahnhc/ADCToX)다. 앱과 �
 
 ## 앱 빌드
 
-`ml/build_portable.py --full`을 재사용한다. 추론 함수와 터미널 모듈을 하나의 Python 파일에 넣고, 원본 워크북 대신 factual label evidence를 포함한다. 기본 encoder와 학습 가중치는 넣지 않는다.
+`ml/build_portable.py --full`을 재사용한다. 추론 함수, 터미널 모듈, 브라우저 서버(`webapp.py`)와 그 화면(`ml/web/`의 HTML, CSS, JS, 글꼴)을 하나의 Python 파일에 넣고, 원본 워크북 대신 factual label evidence를 포함한다. 기본 encoder와 학습 가중치는 넣지 않는다.
 
 ```bash
 python -I scripts/build_ubuntu_release.py
@@ -55,13 +55,18 @@ bundle-info.json
 ```bash
 git push
 gh release create models-<버전> --target <commit> --latest=false --title 'Models <버전>' --notes-file releases/models/NOTES.md dist/releases/models/*
-gh release create v<버전> --target <commit> --latest --title 'ADCTOX <버전>' --notes-file releases/app/NOTES.md \
-    dist/releases/app/adctox-ubuntu.tar.gz dist/releases/app/app.json dist/releases/windows/ADCTOX-windows.zip dist/releases/windows/windows.json
+gh release create v<버전> --target <commit> --title 'ADCTOX <버전>' --notes-file releases/app/NOTES.md <out>/app/adctox-ubuntu.tar.gz
+# 받은 파일의 SHA256이 releases/app/stable.json과 같은지 확인한 뒤 stable.json을 commit, push
+<python> -I scripts/build_windows_release.py --app <out>/app --out <windows-out>
+gh release upload v<버전> <windows-out>/ADCTOX-windows.zip
+# 같은 확인 뒤 releases/app/windows.json을 commit, push
 ```
+
+Release asset은 `adctox-ubuntu.tar.gz`와 `ADCTOX-windows.zip` 두 개다. manifest(`stable.json`, `windows.json`)는 asset이 아니라 main의 파일이고, 설치기와 `--update-app`이 raw URL로 읽는다.
 
 최초 공개 준비 중에는 채널과 asset 게시 사이에 짧은 불일치가 생길 수 있으므로 설치 명령을 공유하기 전에 실제 URL에서 새 설치를 확인한다. 이후 업데이트는 새 asset을 먼저 올리고 검증한 다음 stable manifest를 가리키게 한다.
 
-GitHub Actions는 새 push/PR에서 updater, 터미널 및 추천기 테스트와 raw 데이터 없는 앱 빌드를 확인한다. 전체 임상 연구 suite나 모델 정확도를 검증했다는 의미는 아니다. 원본 cache가 필요한 일부 테스트는 CI에서 skip된다.
+GitHub Actions(`terminal.yml`)는 새 push/PR에서 updater, 터미널, 추천기, 검색 테스트와 raw 데이터 없는 앱 빌드를 확인한다. 전체 임상 연구 suite나 모델 정확도를 검증했다는 의미는 아니다. 원본 cache가 필요한 일부 테스트는 CI에서 skip된다.
 
 ## 모델 전환 및 복원
 
@@ -80,9 +85,9 @@ GitHub Actions는 새 push/PR에서 updater, 터미널 및 추천기 테스트�
 
 - Linux에서 만든다. 공식 embeddable `CPython 3.12.10`(SHA256 고정)에 win_amd64 wheel을 풀어 넣는다. 의존성은 uv가 Windows 기준으로 풀고(`pip download --platform`은 빌드 머신의 marker를 적용해 Linux 전용 CUDA 패키지를 끌어온다), pip가 고정된 wheel을 받는다. 잠금 목록은 cache의 `windows-lock.txt`.
 - 앱 파일은 Ubuntu와 같은 archive를 `apps/<release>/`에 풀고 `app.txt`로 선택한다. 그래서 `--update-app`이 두 OS에서 같게 동작한다.
-- 모델은 첫 실행 때 `%LOCALAPPDATA%\adctox\models`로 받는다. Windows에서는 디렉터리 symlink 대신 `current.txt`로 현재 bundle을 가리키고, lock은 `msvcrt`를 쓴다.
+- 모델은 `install.ps1`이 설치 중에 `%LOCALAPPDATA%\adctox\models`로 받는다. zip만 풀어 쓸 때는 첫 실행 때 받는다. Windows에서는 디렉터리 symlink 대신 `current.txt`로 현재 bundle을 가리키고, lock은 `msvcrt`를 쓴다.
 - Microsoft Visual C++ 런타임은 기본으로 넣지 않는다. 없는 PC에서는 launcher가 공식 설치 링크를 안내한다. Visual Studio 라이선스(Community 포함)가 있으면 `--bundle-vc-runtime`으로 넣을 수 있다.
-- 실제 Windows 검증은 GitHub Actions의 `windows-smoke` job이 한다: updater 테스트, 압축 해제, 모델 다운로드, 질환 분석 실행.
+- 실제 Windows 검증은 GitHub Actions가 한다. `terminal.yml`의 `windows-smoke` job은 updater 테스트, 압축 해제, 모델 다운로드, 질환 분석을, `install.yml`의 `windows` job은 공개 설치 명령, 앱 실행, 브라우저 화면(페이지, 글꼴, 검색, Edge로 그린 화면)을 확인한다.
 
 Release에는 `ADCTOX-windows.zip`을 앱 Release의 asset으로 함께 올린다. 빌드는 `releases/app/windows.json`(크기, SHA256, URL)도 갱신하는데, Windows 한 줄 설치기 `install.ps1`이 이 파일을 읽는다.
 
@@ -93,7 +98,7 @@ Release에는 `ADCTOX-windows.zip`을 앱 Release의 asset으로 함께 올린�
 | `install.sh` | Linux x86_64/arm64, macOS Apple silicon | `releases/app/stable.json` |
 | `install.ps1` | Windows 10/11 64비트 | `releases/app/windows.json` |
 
-`install.sh`는 `Python 3.12`+가 없으면 고정 버전 uv(0.12.17, 플랫폼별 SHA256을 스크립트에 고정)로 Python 3.12를 설치 폴더 안에 받는다. uv 버전을 바꿀 때는 세 플랫폼의 `.sha256`을 함께 갱신한다. 배포 후 `.github/workflows/install.yml`이 Release 게시 시점에 Ubuntu 22.04/24.04, macOS 14/15, Windows에서 공개 설치 명령을 그대로 실행하고 앱을 돌려 본다.
+`install.sh`는 `Python 3.12`+가 없으면 고정 버전 uv(0.12.17)로 Python 3.12를 설치 폴더 안에 받는다. 세 플랫폼의 SHA256은 스크립트의 `task_uv_sha`에 고정되어 있어 uv 버전을 바꿀 때 함께 갱신한다. 배포 후 `.github/workflows/install.yml`이 Release 게시 시점에 Ubuntu 22.04와 24.04, macOS 15(시스템 Python과 uv 경로 각각), Windows에서 공개 설치 명령을 그대로 실행하고 앱을 돌려 본다.
 
 ## Oracle mirror가 필요한 경우
 
@@ -114,7 +119,7 @@ ADC_RESEARCH_MODE=1    설치 모델 대신 연구 cache 사용
 ## 검증 명령
 
 ```bash
-.venv/bin/python -m pytest tests/test_model_updates.py tests/test_terminal_layout.py tests/test_ml_recommender.py -k 'not full_build' -q
+.venv/bin/python -m pytest tests/test_model_updates.py tests/test_terminal_layout.py tests/test_ml_recommender.py tests/test_team_sheets.py tests/test_suggest.py tests/test_rerank.py tests/test_webapp.py tests/test_web_ui.py -k 'not full_build' -q
 bash -n install.sh
 ```
 
