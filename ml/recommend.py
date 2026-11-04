@@ -58,6 +58,8 @@ EN = {"haematologic": "Haematologic", "hepatic": "Hepatic", "cardiovascular": "C
 
 _reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv"))}
 _by_label = {r["label"].lower(): r["id"] for r in _reg.values()}
+_by_concept = json.load(open(R + "conf/registry_concepts.json", encoding="utf-8"))["concepts"]   # ml/registry_concepts.py
+REG_MATCH = os.environ.get("ADC_REG_MATCH", "concept")   # "concept": the judge's concept names the registry condition; "name": BioLORD name match (before 0.6.11)
 
 
 class _Loading:
@@ -196,7 +198,8 @@ def _judge_extra(free, links, GR, MI):
 def _scratch_link(r):
     """one row of scratch_runtime.judge in the linker's format: a MONDO concept gives its organs (from its label, its MONDO record
     or, without either, the organ output on the text); any other result is an AI judgment of the text. `judge_via` says which."""
-    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, judge_via=r["via"], judge=True, p=r.get("p"))
+    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, judge_via=r["via"], judge=True, p=r.get("p"),
+              concept=r["concept"], concept_name=r["name"])
     if not r["ok"]: return lk
     if r["concept"] and r["concept"].startswith("MONDO:"): lk.update(mondo=r["concept"], name=r["name"], axes=list(r["organs"]))
     elif r["organs"]: lk.update(judged=list(r["organs"]), sim=0.0, judge_via="name")
@@ -256,9 +259,10 @@ def analyze_conditions(conditions, progress=None):
         _ANALYSES[c] = report; reports.append(report)
     for c, (near, sim), link, prediction in zip(free, best, links, learned):
         how = dict(notes)[c]
-        source = ("Chosen" if "chosen reading" in how else "AI judgment" if "AI judgment" in how else "MONDO (no organ axis)" if "no organ axis" in how else "MONDO" if "; MONDO '" in how else "Phenotype (HPO)" if "phenotype HPO" in how else
+        concept = " (registry '" in how                          # the judge's concept stands for a registry condition: still the judge's organs
+        source = (("MONDO" if link["concept"].startswith("MONDO:") else "Phenotype (HPO)") if concept else "Chosen" if "chosen reading" in how else "AI judgment" if "AI judgment" in how else "MONDO (no organ axis)" if "no organ axis" in how else "MONDO" if "; MONDO '" in how else "Phenotype (HPO)" if "phenotype HPO" in how else
                   "Registry match" if "same as registry" in how else "Similar condition" if "borrowed from registry" in how else "Unmapped")
-        name = ("" if source == "AI judgment" else link["name"] if source.startswith("MONDO") else re.search(r"chosen reading (?:MONDO|HPO) '(.*?)'", how).group(1) if source == "Chosen" else
+        name = ("" if source == "AI judgment" else link["concept_name"] if concept else link["name"] if source.startswith("MONDO") else re.search(r"chosen reading (?:MONDO|HPO) '(.*?)'", how).group(1) if source == "Chosen" else
                 link["hpo"]["name"] if source == "Phenotype (HPO)" else _reg[near]["label"] if source != "Unmapped" else "")
         estimates = sorted(((a, float(v)) for a, v in (prediction or {}).items() if v > 0), key=lambda x: (-x[1], AXES.index(x[0])))[:3]
         models, by_model, agree = [], {}, {}
@@ -266,11 +270,11 @@ def analyze_conditions(conditions, progress=None):
             by, agree, _ = _FREE_MODELS[c]; models = [MODEL_NAMES.get(k, k) for k in by]
             estimates.sort(key=lambda x: (-agree.get(x[0], 0), -x[1], AXES.index(x[0])))
             by_model = {a: [float(by[k][a]) for k in by] for a, _ in estimates}
-        report = dict(condition=c, source=source, name=name, mondo=link.get("mondo") if source.startswith("MONDO") else None, organs=[] if source == "Unmapped" else organs.get(c, []), estimates=estimates,
+        report = dict(condition=c, source=source, name=name, mondo=link.get("concept") if concept else link.get("mondo") if source.startswith("MONDO") else None, organs=[] if source == "Unmapped" else organs.get(c, []), estimates=estimates,
                       model="BioLORD + disease-pair MLP" if prediction is not None else None,
                       readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")),
                       models=models, by_model=by_model, agree={a: agree.get(a, 0) for a, _ in estimates}, gemma=link.get("gemma"), via=link.get("via"), fallback=link.get("fallback"),
-                      judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" else _chosen_via(c) if source == "Chosen" else None,
+                      judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" or concept else _chosen_via(c) if source == "Chosen" else None,
                       p=link.get("p"))
         _ANALYSES[c] = report; reports.append(report)
     for c, (name, cancers) in patient_cancers(notes).items():     # the patient's cancer: no organs, the ADCs approved for it come first
@@ -323,7 +327,11 @@ def resolve(conditions):
                 own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in chosen[1]]
                 how = f"free text; chosen reading {'HPO' if picked.startswith('HP:') else 'MONDO'} '{chosen[0]}' -> organs: {', '.join(chosen[1]) or 'none'}"
             elif c in CHOICE and picked is None: own, how = np.zeros(len(AXES)), "free text; not understood (no organ); reading left open by the user"
-            elif sim >= REG_NEAR and not _judge_differs(lk, near): own, how = own_vec(near), f"free text; same as registry '{rl}' (cos {sim:.2f})"; ids.add(near)
+            elif REG_MATCH == "concept" and lk.get("judge") and (lk["axes"] or lk.get("judged")) and not rejected and lk.get("concept") in _by_concept:
+                near = _by_concept[lk["concept"]]; organs = lk["axes"] or lk["judged"]; own = np.zeros(len(AXES)); ids.add(near)
+                [own.__setitem__(AXES.index(a), float(_reg[near]["severity"])) for a in organs]
+                how = f"free text; {lk['concept']} '{lk['concept_name']}' (registry '{_reg[near]['label']}') -> organs: {', '.join(organs)}"
+            elif REG_MATCH == "name" and sim >= REG_NEAR and not _judge_differs(lk, near): own, how = own_vec(near), f"free text; same as registry '{rl}' (cos {sim:.2f})"; ids.add(near)
             elif lk["axes"] and not (GATE_MONDO and rejected):
                 own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in lk["axes"]]
                 how = f"free text; MONDO '{lk['name']}' (sim {lk['sim']:.2f}) -> organs: {', '.join(lk['axes'])}"

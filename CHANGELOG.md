@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased: registry conditions found by the judge's concept
+
+- **A typed disease names a registry condition through the organ judge's MONDO or HPO concept**, not by BioLORD name similarity. The organs are always the judge's; the registry condition adds its severity and its label restriction rules. `conf/registry_concepts.json` (built by `ml/registry_concepts.py` from the MONDO and HPO `is_a` hierarchy) lists 1,533 concepts for 34 registry conditions; prior exposures, procedures and measurements are picked from the list. `ADC_REG_MATCH=name` keeps the old match.
+- Gold dev (304 queries per language): organ F1 unchanged (English 0.7595, Korean 0.6748). Registry conditions are now found for chronic hepatitis B, Child-Pugh B cirrhosis, congestive heart failure, cardiorenal syndrome, Crohn disease and Korean COPD names that the name match missed; the ADC order changes for 4 English and 6 Korean queries, all cirrhosis or heart failure.
+- The registry's `mondo_id` for diabetic neuropathy names type 1 diabetes, and two conditions share one id; that column is left for the older audit scripts and is not used for the match.
+
 ## 0.6.10: Anthropic Sans Text as the page face, and a fixed web port (Ubuntu, macOS and Windows)
 
 - **The page face is Anthropic Sans Text Light** (59 KB, one weight) in place of Cafe24 Decobox, whose single heavy weight crowded small text. Hangul and ✓ still come from Pretendard. The file carries no public licence and is used here for this personal, non-commercial project only (THIRD_PARTY_NOTICES.md).

@@ -157,6 +157,7 @@ def main():
         E = json.loads(json.dumps(DE.evidence(), default=lambda x: x.item() if hasattr(x, "item") else list(x) if isinstance(x, (set, tuple)) else str(x)))
     data = dict(evidence=E, rules=yaml.safe_load(open(R / "conf/label_restrictions.yaml"))["rules"],
                 registry=list(csv.DictReader(open(R / "conf/comorbidity_registry.csv"))),
+                registry_concepts=json.load(open(R / "conf/registry_concepts.json", encoding="utf-8"))["concepts"],
                 checks=yaml.safe_load(open(R / "conf/patient_checks.yaml"))["checks"], mondo={} if FULL else mondo_terms(),
                 profiles=__import__("suggest").read_profiles(R / "data/curated/disease_profiles"), nonhuman=sorted(__import__("suggest").nonhuman_ids(OBO)),
                 mondo_ko={t: [k, en] + list(alt) for t, (k, alt, en) in __import__("suggest").read_mondo_ko(R / "data/curated/korean/mondo_ko.jsonl").items()},
@@ -180,6 +181,8 @@ def main():
     rc = sub(rc, 'sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))\n', "", "recommend")
     rc = sub(rc, '_reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv"))}',
              '_reg = {r["id"]: r for r in _portable_data()["registry"]}', "recommend")
+    rc = sub(rc, '_by_concept = json.load(open(R + "conf/registry_concepts.json", encoding="utf-8"))["concepts"]',
+             '_by_concept = _portable_data()["registry_concepts"]', "recommend")
     if not FULL:
         rc = sub(rc, 'HAS_LEARNED = True ', 'HAS_LEARNED = False', "recommend")
         i = rc.index("def _free_info("); j = rc.index("\ndef ", i + 10)
