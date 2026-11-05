@@ -927,7 +927,7 @@
       clear(box);
       const A = S.analysis, reps = A.reports || [];
       const ambText = new Set((A.ambiguous || []).map((a) => a.text));
-      if (reps.some((r) => r.fallback)) box.append(h('p', { class: 'warnline', text: 'Organ judge failed. The MONDO linker was used.' }));
+      if (reps.some((r) => r.fallback)) box.append(h('p', { class: 'warnline', text: 'Organ judge failed. Typed conditions were not read.' }));
       const table = h('div', { class: 'review', role: 'table', 'aria-label': 'Organ analysis' },
         h('div', { class: 'rv-head', role: 'row' },
           h('span', { role: 'columnheader', text: 'Input' }),
@@ -1126,7 +1126,7 @@
         h('div', null, tipped(h('h2', { class: 'h2', text: 'Review order' })),
           prio.length ? h('div', { class: 'tiers' }, prio.map(([l, organs], k) => [k ? h('span', { class: 'arr', 'aria-hidden': 'true', text: '→' }) : null,
             h('span', { class: 'tier' + (l > 1 ? ' l2' : '') }, organs.map((o) => h('span', { class: 'org', text: SHORT[o] || o })))])) : h('ul', null, h('li', { class: 'none', text: 'None specified' })))));
-      if ((P.unmapped || []).length) box.append(h('p', { class: 'unmapped', text: (P.estimated ? 'Unvalidated estimate: ' : 'Unmapped: ') + P.unmapped.join(', ') }));
+      if ((P.unmapped || []).length) box.append(h('p', { class: 'unmapped', text: 'Unmapped: ' + P.unmapped.join(', ') }));
 
       const grid = h('div', { class: 'grid', role: 'grid', 'aria-label': 'ADC', 'aria-rowcount': String(rows.length + 1) },
         h('div', { class: 'grid-h', role: 'row' },

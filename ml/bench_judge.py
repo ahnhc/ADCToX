@@ -174,7 +174,7 @@ class App:
     def gold(self, texts):
         rows = []
         for q in texts:
-            self.RC.FALLBACK = {}; _, _, _, notes, pc = self.RC.resolve([q])
+            _, _, _, notes, pc = self.RC.resolve([q])
             rows.append(dict(concept=None, organs=sorted(set().union(*[o for c, o, _ in pc if c == q]) if pc else []), how=dict(notes).get(q, "")))
         return rows
 

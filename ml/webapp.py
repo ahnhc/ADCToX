@@ -3,7 +3,7 @@
 A stdlib HTTP server bound to 127.0.0.1 on a free port; the page is ml/web/ (the one-file build carries it, ml/build_portable.py
 data["web"]). The endpoints return, as data, what the terminal screens (ml/form.py, ml/recommend.py) show: the same names, the
 same Read as and how texts, the same numbers. Nothing is kept on the server; the page keeps its own state.
-recommend's per-process state (CHOICE, PRIORITY, FIRST, FALLBACK) is set from each request under one lock and put back after it.
+recommend's per-process state (CHOICE, PRIORITY, FIRST) is set from each request under one lock and put back after it.
 Analyses run one at a time in one worker thread, in the order they were asked for (a later one waits as "queued").
 """
 import base64, json, os, queue, re, secrets, sys, threading, time, traceback
@@ -15,7 +15,7 @@ from urllib.parse import parse_qs, urlsplit
 HANGUL = re.compile("[가-힣]")
 # the page is English only (Korean input is still read): its step names and the analysis progress line
 STEPS = ["Conditions", "Labs", "Organs", "Priority", "Results"]
-STEP_TEXT = {"embedding": "Reading the conditions", "linking": "Reading the conditions", "judging": "Analysing organs", "inference": "Analysing organs"}
+STEP_TEXT = {"judging": "Analysing organs"}
 TYPES = {".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
          ".svg": "image/svg+xml; charset=utf-8", ".json": "application/json; charset=utf-8", ".txt": "text/plain; charset=utf-8", ".woff2": "font/woff2",
          ".ttf": "font/ttf", ".otf": "font/otf"}
@@ -104,9 +104,7 @@ def _report(RC, r, ko):
     linked = r["source"].startswith("MONDO") or r["source"] == "Cancer"
     read = ((ko.get(r.get("mondo") or "") if kr else "") or r["name"]) if linked else ((ko.get(picked) if kr else "") or r["name"] or "")
     how = "MONDO" if linked else SOURCE.get(r["source"], r["source"])
-    if r["source"] == "AI judgment" and r.get("gemma"): how += " (Gemma)"
     if r.get("judge_via"): how += f" ({r['judge_via']})"
-    elif r.get("fallback") and r["source"] != "Unmapped": how += " (linker)"
     if read.lower() in (r["condition"].lower(), shown.lower()): read = ""
     empty = None if r["organs"] else "Cancer" if r["source"] == "Cancer" else "none of 13" if r["source"].startswith("MONDO") else "-"
     tag = f"{len(r['readings'])} meanings: pick on the next screen" if r.get("ambiguous") and r["condition"] not in RC.CHOICE else None
@@ -237,10 +235,10 @@ class App:
         """recommend's per-process state for one request: CHOICE from the request, the rest empty; put back afterwards"""
         RC = self.RC
         with self.lock:
-            keep = RC.CHOICE, RC.PRIORITY, RC.FIRST, RC.FALLBACK
-            RC.CHOICE, RC.PRIORITY, RC.FIRST, RC.FALLBACK = dict(choice), {}, None, {}
+            keep = RC.CHOICE, RC.PRIORITY, RC.FIRST
+            RC.CHOICE, RC.PRIORITY, RC.FIRST = dict(choice), {}, None
             try: yield RC
-            finally: RC.CHOICE, RC.PRIORITY, RC.FIRST, RC.FALLBACK = keep
+            finally: RC.CHOICE, RC.PRIORITY, RC.FIRST = keep
 
     def conditions(self, body):
         """registry ids in registry order, then typed texts in the order given: the order form.run hands to recommend"""
@@ -318,7 +316,7 @@ class App:
             except Exception: res = []
             out["ai"] = [item(s) for s in res if fresh(s)]
         if sentence:
-            try: res = SG.symptoms(RC, text, semantic=RC.HAS_LEARNED)
+            try: res = SG.symptoms(RC, text)
             except Exception as e: res = []; out["symptoms_error"] = f"{type(e).__name__}: {str(e)[:80]}"
             out["symptoms"] = [item(s, why) for s, why in res if fresh(s)]
         return out
@@ -419,8 +417,7 @@ class App:
             self.current = None
 
     def recommend(self, body):
-        """form.run steps 2 to 4: the learned estimate for typed texts with no organ (when the models have it), the condition
-        weighed first, then the result screen's rows and their panels"""
+        """form.run steps 3 and 4: the condition weighed first, then the result screen's rows and their panels"""
         import labs as LB
         conds = self.conditions(body); choice = self.choice(body, conds)
         raw, errors = _parse_raw(body.get("raw"))
@@ -428,8 +425,6 @@ class App:
         first = body.get("first")
         if first is not None and not isinstance(first, str): raise _Error(400, "first: a condition or null is expected")
         with self.state(choice) as RC:
-            miss = RC.unresolved(conds) if any(c not in RC._reg for c in conds) else []
-            if miss and RC.HAS_LEARNED: RC.FALLBACK = {c: RC.AUTO_FALLBACK for c in miss}
             pc = RC.patient_conditions(conds, raw)
             picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")] if len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2 else []
             if first is not None:
@@ -449,7 +444,7 @@ class App:
                         notes=[list(n) for n in notes], checks=[[test, names] for test, names, _ in ck],
                         patient=dict(values=_key_values(RC, rows[0], notes, values, raw) if rows else [], organ_levels=organ_levels,
                                      organ_priority=[[level, organs] for level, organs in grouped.items()],
-                                     unmapped=[c for c, how in notes if "not understood" in how], estimated=any("learned estimate x" in how for _, how in notes),
+                                     unmapped=[c for c, how in notes if "not understood" in how],
                                      cancers=[dict(condition=c, name=n, cancers=list(cs)) for c, (n, cs) in RC.patient_cancers(notes).items()]))
 
     # ------------------------------------------------------------------ routes

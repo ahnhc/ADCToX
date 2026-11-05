@@ -8,7 +8,7 @@ Systems (ml/docs/archive/model_accuracy_plan_2026-10-12.md section 6.1):
   A2  SapBERT top-1, THETA = 0.75 (the shipped linker on its own)
   A3  BioLORD top-1 over MONDO strings, threshold tuned on dev
   A4  the shipped resolve() (registry -> MONDO -> borrowed organs), no learned fallback
-  A4f A4 + the 'auto' learned fallback for unmapped inputs (what the wizard does by default)
+  A4f the same as A4 since app 0.6.11 (the learned fallback is gone); kept so older result files compare
   A5  SapBERT top-1 with non-human-animal concepts removed and a similarity + top1-top2 margin gate tuned on dev
 Concept-level organs come from the project's MONDO crosswalk (index 'axes'); registry hits use the registry organs.
 
@@ -65,9 +65,8 @@ def system_outputs(queries, refresh=False, tag="v0"):
     reg_axes = {r["id"]: r["organ_axes"].split(";") for r in RC._reg.values()}
     a4, a4f = [], []
     for q in texts:
-        RC.FALLBACK = {}; _, _, _, notes, pc = RC.resolve([q]); a4.append(dict(how=dict(notes)[q], organs=sorted(set().union(*[o for c, o, _ in pc if c == q]) if pc else [])))
-        RC.FALLBACK = {c: 0.25 for c in RC.unresolved([q])}; _, _, _, notes, pc = RC.resolve([q]); RC.FALLBACK = {}
-        a4f.append(dict(how=dict(notes)[q], organs=sorted(set().union(*[o for c, o, _ in pc if c == q]) if pc else [])))
+        _, _, _, notes, pc = RC.resolve([q]); a4.append(dict(how=dict(notes)[q], organs=sorted(set().union(*[o for c, o, _ in pc if c == q]) if pc else [])))
+        a4f.append(a4[-1])
     a0 = []
     for q in texts:
         cid = q if q in RC._reg else RC._by_label.get(q.lower())

@@ -1,8 +1,8 @@
 """One-screen input for ml/recommend.py: each step opens below the finished ones, ESC goes back a step.
 
 Steps: conditions (organ-grouped list; 'Other' at the bottom opens a typing line on the same screen) -> lab values (typed in
-place, units as on a lab report) -> [learned estimate for a condition that maps to no organ] -> [priority between conditions].
-Returns (conditions, raw lab values) and sets recommend.FALLBACK / recommend.PRIORITY, or None if the user quits.
+place, units as on a lab report) -> [the organ review] -> [priority between conditions].
+Returns (conditions, raw lab values) and sets recommend.PRIORITY, or None if the user quits.
 """
 import os, re
 from term import curses
@@ -234,7 +234,7 @@ class Form:
             ai["busy"] = False
 
         def run_sym(q):
-            try: res = SG.symptoms(RC, q, semantic=RC.HAS_LEARNED); err = ""
+            try: res = SG.symptoms(RC, q); err = ""
             except Exception as e: res, err = [], f"{type(e).__name__}: {str(e)[:80]}"
             if sym["q"] == q: sym["res"], sym["error"] = res, err
             sym["busy"] = False
@@ -595,20 +595,20 @@ class Form:
             if timeout: timeout(-1)
 
     def _analysis_review(self, reports, elapsed):
-        """per typed condition: what it was read as and its organs (the ones the recommendation uses), one line each; under it, for
-        the highlighted input with models 0.5-0.6, what each Gemma judge output said and which step set the organs (models 0.7+:
-        no panel; Read as ends in label, record or name, or in linker when the organ judge failed and the older linker read it).
+        """per typed condition: what it was read as and its organs (the ones the recommendation uses), one line each; Read as ends
+        in label, record or name, what set the organs. When the organ judge failed, a line above the table says why.
         The table scrolls with the highlighted input."""
         import tui, suggest as SG
         top = cur = 0; RC = self.RC; ko = SG.index(RC).ko
         SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Registry": "Registry", "Similar condition": "Similar registry condition",
                   "Phenotype (HPO)": "HPO phenotype", "Chosen": "Chosen", "Unmapped": "Not understood"}
-        first = True; last = -1
+        first = True
         while True:
             y0 = self.frame("AI 장기 분석", "")
             h, w = self.scr.getmaxyx(); width = max(2, w - 5)
             if any(r.get("fallback") for r in reports):         # the organ judge failed: none of its output is shown as used
-                self.S.put_ansi(y0, 2, "\033[33m" + _clip("Organ judge 오류, MONDO linker로 대체", w - 4) + "\033[0m"); y0 += 2
+                why = next(r["fallback"] for r in reports if r.get("fallback"))
+                self.S.put_ansi(y0, 2, "\033[33m" + _clip(f"Organ judge 오류: {why}", w - 4) + "\033[0m"); y0 += 2
             shown = lambda r: RC.condition_name(r["condition"]) if r["source"] == "Registry" else r["condition"]   # a picked disease by its name
             nw = min(24, max(_w(shown(r)) for r in reports))
             rows = []
@@ -618,9 +618,7 @@ class Form:
                 linked = r["source"].startswith("MONDO") or r["source"] == "Cancer"
                 read = ((ko.get(r.get("mondo") or "") if kr else "") or r["name"]) if linked else ((ko.get(picked) if kr else "") or r["name"] or "")
                 how = "MONDO" if linked else SOURCE.get(r["source"], r["source"])
-                if r["source"] == "AI judgment" and r.get("gemma"): how += " (Gemma)"
                 if r.get("judge_via"): how += f" ({r['judge_via']})"          # label, record or name: what set the organs
-                elif r.get("fallback") and r["source"] != "Unmapped": how += " (linker)"
                 org = ("\033[35;1mCancer\033[0m" if r["source"] == "Cancer" else likely(RC.AXES, r["organs"], r.get("p")) if r["organs"] else
                        "\033[90m" + ("none of 13" if r["source"].startswith("MONDO") else "-") + "\033[0m")
                 tag = ""
@@ -640,9 +638,7 @@ class Form:
                     parts = tui._wrap_ansi(what, width - col); row = [head + parts[0]] + [" " * col + x for x in parts[1:]]
                 else: row = tui._wrap_ansi(head + what, width)
                 span.append((len(wrapped), len(wrapped) + len(row))); wrapped += row
-            panel = gemma_panel(reports[cur], RC, ko, width) if reports[cur].get("gemma") else []
-            if h - y0 - 4 - len(fixed) - len(wrapped) < len(panel) + 1: panel = []     # the panel only when the whole table still fits
-            area = max(1, h - y0 - 3 - len(fixed) - (len(panel) + 1 if panel else 0))
+            area = max(1, h - y0 - 3 - len(fixed))
             if len(reports) > 1:                                # keep the highlighted input in view
                 first, end = span[cur]; top = min(top, first); top = max(top, end - area)
             top = max(0, min(top, len(wrapped) - area)); end = top + area
@@ -650,12 +646,8 @@ class Form:
                 top = next(a for a, _ in span if a >= top)          # never past the highlighted input, which starts at or after top
                 end = min(top + area, max(b for _, b in span if b <= max(top + area, span[cur][1])))
             for i, ln in enumerate(fixed + wrapped[top:end]): self.S.put_ansi(y0 + i, 2, ln)
-            py = y0 + len(fixed) + min(area, len(wrapped)) + 1
-            for i, ln in enumerate(panel): self.S.put_ansi(py + i, 2, ln)
-            if hasattr(self.scr, "transition"):
-                if first and not self.scr.armed(): self.scr.transition("cascade", y_from=y0)          # the table builds up
-                elif cur != last and panel: self.scr.transition("cascade", y_from=py)                # a new judge panel unfolds
-            first = False; last = cur
+            if hasattr(self.scr, "transition") and first and not self.scr.armed(): self.scr.transition("cascade", y_from=y0)   # the table builds up
+            first = False
             self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
             if len(reports) > 1: self.S.put(h - 1, 2, "↑↓ 입력 고르기", self.S.dim)
             elif len(wrapped) > area: self.S.put(h - 1, 2, f"{top + 1}–{min(top + area, len(wrapped))} / {len(wrapped)}", self.S.dim)
@@ -684,39 +676,8 @@ def likely(axes, used, p):
     return "  ".join(bar(a) for a in top)
 
 
-STEP_TEXT = {"embedding": "질환 확인 중", "linking": "질환 확인 중", "judging": "장기 분석 중", "inference": "장기 분석 중"}   # progress events -> the line
+STEP_TEXT = {"judging": "장기 분석 중"}   # progress events -> the line
 
-
-def gemma_panel(r, RC, ko, width):
-    """a boxed tree of the Gemma judge's four outputs for one typed condition, and the step that set its organs. The output that
-    decided something here is green; the others were computed and are grey. Plain box lines only: no bars or dots, whose width
-    differs between terminal fonts."""
-    g = r["gemma"]; kr = bool(HANGUL.search(r["condition"])); G, D, E = "\033[32;1m", "\033[90m", "\033[0m"
-    nm = lambda t, en: (ko.get(t) if kr else "") or en
-    vis = lambda t: _w(re.sub(r"\x1b\[[\d;]*m", "", t))
-    import suggest as SG
-    pname = {p["id"]: p["name"] for p in SG.profiles()}
-    used = dict(valid=True, organ=r["source"] == "AI judgment", align=r.get("via") == "judge vector", sym=False)
-    iw = max(30, min(width - 4, 72)); room = iw - 16                 # inside width; room for a value after "  ├─ organ   "
-    near_id, near_en, cos = g["near"]; sym_id, sym_p = g["sym"]
-    organs = "  ".join((G if p >= t else D) + f"{GLYPH[a]} {p:.2f}" + E for a, p, t in g["organ"])
-    named = lambda n, x: f"{_clip(n, max(4, room - 6 - len(x)))}  {D}{x}{E}"
-    heads = [("valid", f"{g['valid']:.3f}  " + ((G + "✓" + E) if g["ok"] else ("\033[31m✗" + E))),
-             ("organ", organs),
-             ("align", named(nm(near_id, near_en), f"cos {cos:.2f}")),
-             ("sym", named(nm(sym_id, pname.get(sym_id, sym_id)), f"{sym_p:.2f}"))]
-    src = r["source"]
-    by = ("Gemma align" if used["align"] else "Gemma organ" if used["organ"] else "Chosen" if src == "Chosen" else
-          "MONDO" if src.startswith("MONDO") else "Registry" if src in ("Registry match", "Similar condition") else
-          "HPO" if src.startswith("Phenotype") else "Not understood")
-    body = ["", _clip(r["condition"], iw - 2)]
-    for k, (key, text) in enumerate(heads):
-        body.append(("  └─ " if k == 3 else "  ├─ ") + ((G if used[key] else D) + f"{key:<7}" + E) + text)
-    body += ["", "→ " + (strip(RC.AXES, r["organs"]) if r["organs"] else D + "-" + E) + f"   {D}{by}{E}", ""]
-    title = " Gemma judge "; iw = max(_w(title) + 4, min(iw, max(vis(ln) for ln in body) + 3))       # as wide as its content
-    out = [D + "┌─" + E + title + D + "─" * max(0, iw - _w(title) - 1) + "┐" + E]
-    for ln in body: out.append(D + "│" + E + " " + ln + " " * max(0, iw - 1 - vis(ln)) + D + "│" + E)
-    return out + [D + "└" + "─" * iw + "┘" + E]
 
 def run(RC, back=False):
     """-> (conditions, raw labs, (rows, s, notes, checks)) or None. One curses session: the five steps and the result screen;
@@ -744,7 +705,6 @@ def run(RC, back=False):
                 if r == BACK: step = 0; continue
                 st["raw"] = r; save(st); step = 2
             elif step == 2:                                       # every disease's organs, first shown here
-                RC.FALLBACK = {}
                 reports = []
                 if conds:
                     analysis = F.analyze(conds)
@@ -760,8 +720,6 @@ def run(RC, back=False):
                         RC.CHOICE.update(pick)
                         F.done.append(("질환 확인", ", ".join(f"{c} → {next((r['name'] for r in o if r['mondo'] == pick[c]), '모름')}" for c, o in groups)))
                 miss = RC.unresolved(conds) if split_free(st["free"]) else []
-                if miss and RC.HAS_LEARNED:                       # no organ found: the learned estimate on the 'auto' terms, without asking
-                    RC.FALLBACK = {c: RC.AUTO_FALLBACK for c in miss}
                 step = 3; st["miss"] = bool(miss)
             elif step == 3:                                       # priority between conditions on different organs: one screen, the default order shown
                 pc = RC.patient_conditions(conds, st["raw"]); RC.PRIORITY = {}; RC.FIRST = None

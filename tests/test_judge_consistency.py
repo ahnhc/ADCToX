@@ -21,12 +21,12 @@ def test_list_organs_are_the_judges(tmp_path, monkeypatch):
     assert SR.concept_organs() == {} and SR.concept_via("MONDO:1") is None
 
 
-def test_judge_link_beats_a_similar_registry_name():
+def test_the_judges_concept_names_the_registry_condition(monkeypatch):
     import recommend as RC
-    reg = next(i for i, r in RC._reg.items() if r.get("mondo_id"))
-    own = RC._reg[reg]["mondo_id"]
-    judged = lambda mondo, axes: dict(judge=True, mondo=mondo, axes=axes)
-    assert RC._judge_differs(judged("MONDO:9999999", ["renal"]), reg)          # another disease with organs: the judge stands
-    assert not RC._judge_differs(judged(own, ["renal"]), reg)                  # the registry condition's own concept
-    assert not RC._judge_differs(judged(None, []), reg)                        # not placed in MONDO: the registry name matches
-    assert not RC._judge_differs(dict(mondo="MONDO:9999999", axes=["renal"]), reg)    # the older linker: unchanged
+    link = lambda concept, name: dict(judge=True, mondo=concept, concept=concept, concept_name=name, name=name, axes=["metabolic_endocrine"], sim=0.95, gate=True)
+    links = {"type 2 diabetes": link("MONDO:0005148", "type 2 diabetes mellitus"), "type 1 diabetes": link("MONDO:0005147", "type 1 diabetes mellitus")}
+    monkeypatch.setattr(RC, "_free_info", lambda free, progress=None: [links[c] for c in free])
+    s, _, ids, notes, _ = RC.resolve(["type 2 diabetes"])
+    assert ids == {"type_2_diabetes"} and s[RC.AXES.index("metabolic_endocrine")] == float(RC._reg["type_2_diabetes"]["severity"])
+    _, _, ids, notes, _ = RC.resolve(["type 1 diabetes"])            # a similar name is not the registry condition
+    assert ids == set() and "MONDO 'type 1 diabetes mellitus'" in notes[0][1]

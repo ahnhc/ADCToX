@@ -207,48 +207,16 @@ def test_final_output_fits_terminal_and_preserves_dose_actions_and_check_names(m
         assert all(name in normalized for name in names)
 
 
-def test_typed_disease_runs_trained_head_and_keeps_estimates_separate_from_mapped_organs(monkeypatch):
-    import types
+def test_a_typed_disease_the_judge_cannot_place_stays_unmapped(monkeypatch):
     import recommend as R
-    calls = []
-    def predict(texts):
-        calls.append(list(texts))
-        return [{"renal": 0.9, "pulmonary": 0.2} for _ in texts]
-    monkeypatch.setitem(sys.modules, "vulnerability_model", types.SimpleNamespace(predict=predict))
-    monkeypatch.setattr(R, "_FREE_PREDICTIONS", {})
     monkeypatch.setattr(R, "_ANALYSES", {})
-    monkeypatch.setattr(R, "LEARNED_FRACTION", 0.0)
-    monkeypatch.setattr(R, "FALLBACK", {})
-    def linked(free, progress=None):
-        return ([("copd", 0.4), ("copd", 0.1)],
-                [{"name": "asthma", "sim": 1.0, "axes": ["pulmonary"]},
-                 {"name": "disease", "sim": 0.1, "axes": []}], None)
-    monkeypatch.setattr(R, "_free_info", linked)
-    events = []
-    reports = R.analyze_conditions(["asthma", "banana spaceship"], progress=events.append)
-    assert calls == [["asthma", "banana spaceship"]]
-    assert "inference" in events and events[-1] == "done"
-    assert reports[0]["organs"] == ["pulmonary"] and reports[0]["estimates"][0] == ("renal", 0.9)
-    assert reports[1]["source"] == "Unmapped" and reports[1]["organs"] == []
-    assert R.LEARNED_FRACTION == 0.0 and R.FALLBACK == {}
-    s = R.resolve(["asthma", "banana spaceship"])[0]
-    assert s[R.AXES.index("renal")] == 0 and s[R.AXES.index("pulmonary")] > 0
-    R.analyze_conditions(["asthma", "banana spaceship"])
-    assert len(calls) == 1  # Reviewing or revisiting input reuses the real prediction instead of loading weights again.
-
-
-def test_opt_in_model_fallback_applies_only_the_three_organs_shown_in_priority(monkeypatch):
-    import recommend as R
-    monkeypatch.setattr(R, "FALLBACK", {"unmapped condition": 0.25})
-    monkeypatch.setattr(R, "LEARNED_FRACTION", 0.0)
-    predictions = {a: (i + 1) / len(R.AXES) for i, a in enumerate(R.AXES)}
-    monkeypatch.setattr(R, "_free_info", lambda free: (
-        [("copd", 0.1)], [{"name": "disease", "sim": 0.1, "axes": []}], [predictions]))
-    s, own_axes, ids, notes, pc = R.resolve(["unmapped condition"])
-    applied = {a for a, value in zip(R.AXES, s) if value > 0}
-    assert len(applied) == 3 and applied == pc[0][1]
-    assert own_axes == set() and ids == set()  # An estimate never invents a confirmed diagnosis or organ-based label restriction.
-    assert "not validated" in notes[0][1]
+    links = [dict(mondo="MONDO:0004979", name="asthma", sim=0.97, axes=["pulmonary"], gate=True, judge=True, concept="MONDO:0004979", concept_name="asthma"),
+             dict(mondo=None, name="", sim=0.1, axes=[], gate=False, judge=True, concept=None, concept_name="")]
+    monkeypatch.setattr(R, "_free_info", lambda free, progress=None: links)
+    reports = R.analyze_conditions(["asthma", "banana spaceship"])
+    assert reports[0]["organs"] == ["pulmonary"] and reports[1]["source"] == "Unmapped" and reports[1]["organs"] == []
+    s, own_axes, ids, notes, pc = R.resolve(["asthma", "banana spaceship"])
+    assert {a for a, v in zip(R.AXES, s) if v > 0} == {"pulmonary"} and R.unresolved(["asthma", "banana spaceship"]) == ["banana spaceship"]
 
 
 def test_detail_scroll_reaches_every_reason_and_check_without_changing_candidate(monkeypatch):
@@ -296,17 +264,6 @@ def test_missing_inputs_are_separate_and_all_restriction_reasons_are_available(m
     assert "?" not in "\n".join(details) and "Label v" not in "\n".join(details)
 
 
-def test_automatic_fallback_uses_the_low_weight_and_opt_out_stays_available(monkeypatch):
-    import recommend as R
-    assert R.FALLBACK_OPTS == [("자동", 0.25), ("반영", 0.5), ("반영 안함", 0.0)]
-    monkeypatch.setattr(R, "unresolved", lambda conditions: ["lung hole"])
-    monkeypatch.setattr(R, "FALLBACK", {})
-    R._ask_fallback(["lung hole"], radio=lambda *args, **kwargs: kwargs["default"])
-    assert R.FALLBACK == {"lung hole": 0.25}
-    R._ask_fallback(["lung hole"], radio=lambda *args, **kwargs: 2)
-    assert R.FALLBACK == {}
-
-
 def test_meaning_choice_is_one_screen_starts_on_the_applied_reading_and_returns_every_pick(monkeypatch):
     import types
     import form
@@ -333,37 +290,6 @@ def test_meaning_choice_is_one_screen_starts_on_the_applied_reading_and_returns_
     assert "Atrial septal defect" in first and "13개 장기 밖" in first and "증상" in first and "모름" in first
     assert "●" in next(l for l in first.splitlines() if "Memory impairment" in l)
     assert all(len(line) <= 100 for frame in frames for line in frame.splitlines())
-
-
-def test_every_model_is_shown_and_only_agreed_organs_are_applied_automatically(monkeypatch):
-    import types
-    import recommend as R
-    zero = {a: 0.0 for a in R.AXES}
-    by = {"main": {**zero, "pulmonary": 0.8, "hepatic": 0.4, "renal": 0.3},
-          "combined": {**zero, "pulmonary": 0.9, "renal": 0.2, "ocular": 0.1},
-          "previous": {**zero, "pulmonary": 0.7, "renal": 0.5, "otologic": 0.2}}
-    def agreement(models):
-        n = {}
-        for s in models.values():
-            for a, v in sorted(s.items(), key=lambda x: -x[1])[:3]:
-                if v > 0: n[a] = n.get(a, 0) + 1
-        return n
-    VM = types.SimpleNamespace(predict_models=lambda texts: [by for _ in texts], agreement=agreement, _CK_OPT={"agree_min": 2})
-    monkeypatch.setitem(sys.modules, "vulnerability_model", VM)
-    for name in ("_FREE_PREDICTIONS", "_FREE_MODELS", "_ANALYSES"): monkeypatch.setattr(R, name, {})
-    monkeypatch.setattr(R, "LEARNED_FRACTION", 0.0)
-    monkeypatch.setattr(R, "FALLBACK", {})
-    linked = lambda free, progress=None: ([("copd", 0.1)], [{"name": "disease", "sim": 0.1, "axes": []}],
-                                         R._predict_free(free) if R.FALLBACK else None)
-    monkeypatch.setattr(R, "_free_info", linked)
-    report = R.analyze_conditions(["lung hole"])[0]
-    assert report["models"] == ["Den", "Both", "Fin"]
-    assert [a for a, _ in report["estimates"]] == ["pulmonary", "renal", "hepatic"]      # most agreed first
-    assert report["agree"] == {"pulmonary": 3, "renal": 3, "hepatic": 1} and report["by_model"]["hepatic"] == [0.4, 0.0, 0.0]
-    monkeypatch.setattr(R, "FALLBACK", {"lung hole": 0.25})
-    s = R.resolve(["lung hole"])[0]
-    applied = {a for a, v in zip(R.AXES, s) if v > 0}
-    assert applied == {"pulmonary", "renal"}                                            # hepatic: one model only
 
 
 def test_mouse_reports_become_clicks_and_wheel_scrolls():
@@ -419,20 +345,6 @@ def test_only_page_keys_leave_a_screen(monkeypatch):
     F.scr = type("S", (), {"getmaxyx": lambda self: (30, 100), "refresh": lambda self: None})()
     F.S = type("P", (), {"put": lambda *a, **k: None, "put_ansi": lambda *a, **k: None, "dim": 0})()
     assert F.choose("t", "", ["a", "b"]) == 0                   # Enter, Esc and Space stay; PgDn goes on
-
-
-def test_gemma_panel_marks_the_step_that_set_the_organs():
-    import types, form
-    RC = types.SimpleNamespace(AXES=list(tui.GLYPH))
-    g = dict(valid=0.999, vthr=0.995, ok=True, organ=[("neurologic", 0.9, 0.5), ("ocular", 0.1, 0.5)], near=("MONDO:0007739", "Huntington disease", 0.81),
-             sym=("MONDO:0005154", 0.2))
-    r = dict(condition="헌팅톤무도병", source="MONDO", name="Huntington disease", mondo="MONDO:0007739", organs=["neurologic"], gemma=g, via="judge vector")
-    lines = [re.sub(r"\x1b\[[\d;]*m", "", ln) for ln in form.gemma_panel(r, RC, {"MONDO:0007739": "헌팅턴병"}, 120)]
-    assert lines[0].startswith("┌─ Gemma judge") and lines[-1].startswith("└") and any("헌팅톤무도병" in ln for ln in lines)
-    assert any("├─ align  헌팅턴병" in ln for ln in lines) and any("└─ sym" in ln for ln in lines)
-    assert any("→ Neuro" in ln and "Gemma align" in ln for ln in lines)
-    assert not any(c in "".join(lines) for c in "●○█░▶·")              # glyphs whose width differs between fonts
-    assert len({form._w(ln) for ln in lines}) == 1                  # the right border lines up
 
 
 def test_the_app_sets_the_validity_threshold_over_the_models(monkeypatch):

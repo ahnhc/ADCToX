@@ -142,7 +142,7 @@ def test_every_adc_has_a_cancer_and_every_cancer_an_adc():
 def _linked(monkeypatch, mondo, name, axes):
     """free text linked to one MONDO concept, without the encoder"""
     link = dict(mondo=mondo, name=name, sim=1.0, judge=True, gate=True, axes=axes, readings=[], ambiguous=False)
-    monkeypatch.setattr(RC, "_free_info", lambda free, progress=None: ([("cirrhosis", 0.1)] * len(free), [dict(link) for _ in free], None))
+    monkeypatch.setattr(RC, "_free_info", lambda free, progress=None: [dict(link) for _ in free])
 
 
 def test_a_cancer_among_the_diseases_puts_its_adcs_first(monkeypatch):

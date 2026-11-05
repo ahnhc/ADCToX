@@ -57,7 +57,7 @@ def finished(server, jid):
 
 def _linked(monkeypatch, mondo, name, axes):
     link = dict(mondo=mondo, name=name, sim=1.0, judge=True, gate=True, axes=axes, readings=[], ambiguous=False)
-    monkeypatch.setattr(RC, "_free_info", lambda free, progress=None: ([("cirrhosis", 0.1)] * len(free), [dict(link) for _ in free], None))
+    monkeypatch.setattr(RC, "_free_info", lambda free, progress=None: [dict(link) for _ in free])
 
 
 def test_app_lists_the_axes_the_registry_and_the_lab_fields(server):
@@ -93,7 +93,7 @@ def test_suggestions_are_the_first_screens_names_and_symptom_diseases(server, mo
     q = "숨이 차고 다리가 부어요"
     d = call(server, "GET", "/api/suggest?q=" + quote(q))[1]
     assert d["names"] == [] and d["symptoms"] and all(x["kind"] == "symptom" and x["why"] for x in d["symptoms"])
-    assert [x["pick"]["choice"] or x["pick"]["condition"] for x in d["symptoms"]] == [s[1] for s, _ in SG.symptoms(RC, q, semantic=False)]
+    assert [x["pick"]["choice"] or x["pick"]["condition"] for x in d["symptoms"]] == [s[1] for s, _ in SG.symptoms(RC, q)]
     assert "Heart failure" in [x["text"] for x in d["symptoms"]] and "심부전" in [x["ko"] for x in d["symptoms"]]
     her2 = call(server, "GET", "/api/suggest?q=" + quote("HER2 양성 유방암"))[1]["names"][0]                               # the cancer alias row first
     assert her2["pick"] == dict(condition="HER2 positive breast carcinoma", choice="MONDO:0006244") and her2["cancer"]
@@ -235,7 +235,7 @@ def test_read_as_and_how_are_the_analysis_screens(monkeypatch):
     text = _review_frame(monkeypatch, reports, ko)
     out = [webapp._report(RC, r, ko) for r in reports]
     assert [(x["read_as"], x["how"]) for x in out] == [("", "Registry"), ("dementia", "MONDO (record)"), ("attention deficit hyperactivity disorder", "MONDO (label)"),
-                                                       ("Dyspnea", "Chosen"), ("", "Not understood"), ("Glaucoma", "Similar registry condition (linker)")]
+                                                       ("Dyspnea", "Chosen"), ("", "Not understood"), ("Glaucoma", "Similar registry condition")]
     for x in out:                                                                   # each row of the terminal table, word for word
         if re.search("[가-힣]", x["shown"]): continue                                 # Korean typed: the page reads it in English, the terminal in Korean
         row = next(ln for ln in text.splitlines() if ln.strip().lstrip("› ").startswith(x["shown"][:20]))
@@ -248,7 +248,7 @@ def _direct(monkeypatch, first=None):
     """the result rows as form.run computes them for the same patient"""
     conds = [i for i in RC._reg if i in HER2["conditions"]] + ["HER2 양성 유방암"]           # registry order, then typed text (form.run)
     raw = {k: float(v) if not isinstance(v, str) else v for k, v in HER2["raw"].items()}
-    monkeypatch.setattr(RC, "FIRST", None); monkeypatch.setattr(RC, "PRIORITY", {}); monkeypatch.setattr(RC, "FALLBACK", {}); monkeypatch.setattr(RC, "CHOICE", {})
+    monkeypatch.setattr(RC, "FIRST", None); monkeypatch.setattr(RC, "PRIORITY", {}); monkeypatch.setattr(RC, "CHOICE", {})
     pc = RC.patient_conditions(conds, raw)
     if first:
         d = RC.default_levels(pc); monkeypatch.setattr(RC, "PRIORITY", {c: 0 if c == first else d[c] for c, _, _ in pc}); monkeypatch.setattr(RC, "FIRST", first)
@@ -267,7 +267,7 @@ def test_recommend_carries_every_number_the_result_screen_prints(server, monkeyp
     status, d = call(server, "POST", "/api/recommend", HER2)
     assert status == 200 and d["conditions"] == [i for i in RC._reg if i in HER2["conditions"]] + ["HER2 양성 유방암"] and d["first"] is None
     assert sorted(o["condition"] for o in d["first_options"]) == ["heart_failure", "interstitial_lung_disease"]   # lab findings and the cancer are not offered
-    assert RC.FIRST is None and RC.PRIORITY == {} and RC.CHOICE == {} and RC.FALLBACK == {}                    # put back after the request
+    assert RC.FIRST is None and RC.PRIORITY == {} and RC.CHOICE == {}                    # put back after the request
     tdxd = next(r for r in d["rows"] if r["adc"] == "trastuzumab-deruxtecan")
     trial = tdxd["detail"]["trial"]
     assert trial["trial"] == "DESTINY-Breast02" and trial["n"] == 404 and trial["comparator"]["n"] == 195

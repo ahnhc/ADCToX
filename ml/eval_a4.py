@@ -33,7 +33,7 @@ def run(tag):
         rows = []
         for q in texts:
             if q is None: rows.append(None); continue
-            RC.FALLBACK = {}; _, _, _, notes, pc = RC.resolve([q])
+            _, _, _, notes, pc = RC.resolve([q])
             rows.append(dict(how=dict(notes).get(q, ""), organs=sorted(set().union(*[o for c, o, _ in pc if c == q]) if pc else [])))
         out[lang] = rows
     json.dump(dict(tag=tag, model=P.CACHE, per=out), open(OUT + f"a4_{tag}.json", "w"), ensure_ascii=False)

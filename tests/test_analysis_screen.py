@@ -1,7 +1,6 @@
 """The AI 장기 분석 step: the line says what the model reports it is doing, the table follows the highlighted input, and a failed
 organ judge is never shown as used."""
 import sys, pathlib, types
-import numpy as np
 import pytest
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "ml"))
 import term, tui
@@ -51,37 +50,31 @@ def test_the_table_follows_the_highlighted_input_at_80x24(monkeypatch):
     assert any(ln.lstrip().startswith("› condition number 0") for ln in up)
 
 
-def test_a_failed_organ_judge_is_named_and_its_rows_read_as_linker(monkeypatch):
-    reports = [_report(1, fallback="RuntimeError: weights missing"), dict(_report(2, fallback="RuntimeError: weights missing"), source="Unmapped", organs=[], judge_via=None)]
-    reports[0]["judge_via"] = None
+def test_a_failed_organ_judge_is_named(monkeypatch):
+    reports = [dict(_report(i, fallback="RuntimeError: weights missing"), source="Unmapped", organs=[], judge_via=None) for i in (1, 2)]
     first = "\n".join(_review(monkeypatch, reports, ["KEY_NPAGE"])[0])
-    assert "Organ judge 오류, MONDO linker로 대체" in first and "MONDO (linker)" in first
+    assert "Organ judge 오류: RuntimeError: weights missing" in first and "linker" not in first
     ok = "\n".join(_review(monkeypatch, [_report(1)], ["KEY_NPAGE"])[0])
     assert "오류" not in ok and "linker" not in ok and "MONDO (record)" in ok
 
 
 def _fake_models(monkeypatch, judge):
-    """the analysis pipeline with stand-ins for the encoders, the older linker and the organ judge."""
+    """the analysis pipeline with a stand-in organ judge."""
     import recommend as RC, scratch_runtime as SR
-    vm = types.ModuleType("vulnerability_model"); vm._st = lambda texts: np.zeros((len(texts), 4), np.float32)     # no registry name is near
-    mi = types.ModuleType("mondo_index")
-    mi.link = lambda texts: [dict(mondo="MONDO:0018076", name="tuberculosis", sim=0.9, axes=["pulmonary"], readings=[], ambiguous=False) for _ in texts]
-    monkeypatch.setitem(sys.modules, "vulnerability_model", vm); monkeypatch.setitem(sys.modules, "mondo_index", mi)
     monkeypatch.setattr(SR, "available", lambda: True); monkeypatch.setattr(SR, "judge", judge)
-    monkeypatch.setattr(RC, "HAS_LEARNED", False); monkeypatch.setattr(RC, "LEARNED_FRACTION", 0.0); monkeypatch.setattr(RC, "FALLBACK", {})
     monkeypatch.setattr(RC, "english", lambda texts: list(texts))
     RC._FREE.clear(); RC._ANALYSES.clear()
     return RC
 
 
-def test_judge_failure_falls_back_to_the_linker_and_says_so(monkeypatch):
+def test_judge_failure_reads_nothing_and_says_why(monkeypatch):
     def broken(texts): raise RuntimeError("weights missing")
     RC = _fake_models(monkeypatch, broken)
     events = []
     try:
         (r,) = RC.analyze_conditions(["pulmonary tb"], progress=events.append)
-        assert events == ["embedding", "judging", "linking", "done"]                  # the events that happened, in order
-        assert r["source"] == "MONDO" and r["organs"] == ["pulmonary"] and r["judge_via"] is None
+        assert events == ["judging", "done"]                                          # the events that happened, in order
+        assert r["source"] == "Unmapped" and r["organs"] == [] and r["judge_via"] is None
         assert r["fallback"] == "RuntimeError: weights missing"
     finally: RC._FREE.clear(); RC._ANALYSES.clear()
 
@@ -92,23 +85,15 @@ def test_a_working_judge_leaves_no_fallback_mark(monkeypatch):
     events = []
     try:
         (r,) = RC.analyze_conditions(["pulmonary tb"], progress=events.append)
-        assert events == ["embedding", "judging", "done"] and r["fallback"] is None and r["judge_via"] == "record"
+        assert events == ["judging", "done"] and r["fallback"] is None and r["judge_via"] == "record"
         events.clear(); RC.analyze_conditions(["pulmonary tb"], progress=events.append)
         assert events == ["done"]                                                      # cached: no step is shown as running
     finally: RC._FREE.clear(); RC._ANALYSES.clear()
 
 
-def test_the_mlp_step_shows_only_when_the_mlp_runs(monkeypatch):
-    import recommend as RC
-    monkeypatch.setattr(RC, "english", lambda texts: list(texts))
-    monkeypatch.setitem(RC._FREE_PREDICTIONS, "pulmonary tb", {"pulmonary": 0.9})
-    events = []
-    assert RC._predict_free(["pulmonary tb"], events.append) == [{"pulmonary": 0.9}] and events == []
-
-
 def test_step_text_names_no_model():
     import form
-    assert set(form.STEP_TEXT.values()) == {"질환 확인 중", "장기 분석 중"}
+    assert set(form.STEP_TEXT.values()) == {"장기 분석 중"}
     assert not hasattr(form, "STAGES_SCRATCH") and not hasattr(form, "pipeline")
 
 
@@ -161,7 +146,7 @@ def test_an_analysis_that_cannot_go_on_shows_one_error_line(monkeypatch):
     screen.refresh = lambda: frames.append(["".join(ch for ch, _ in line) for line in screen.buf])
     screen.get_wch = lambda: console.KEY_NPAGE                    # PgDn leaves the error screen
     def broken(conditions, progress=None):
-        progress("embedding"); raise ValueError("This file contains pickled (object) data.\nsecond line of the message")
+        raise ValueError("This file contains pickled (object) data.\nsecond line of the message")
     RC = types.SimpleNamespace(**vars(_rc()), analyze_conditions=broken)
     F = form.Form(screen, RC); F.step = 2
     assert F.analyze(["pulmonary tb"]) == form.BACK

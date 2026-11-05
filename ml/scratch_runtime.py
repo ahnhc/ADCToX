@@ -106,3 +106,19 @@ def judge(texts, path=None):
         if not organs: organs, via = [AX[a] for a in np.where(po[k] >= np.array(j["thr"]))[0]], "name"
         rows.append(dict(concept=c, name=name, organs=list(organs), via=via, valid=float(pv[k]), ok=True, sim=sim, p=p))
     return rows
+
+
+def nearest(text, k=5, path=None):
+    """-> the k concepts whose names lie nearest the text, at or above theta, best first: (concept, name, sim); [] when
+    the validity output says the text is not a disease name. The search box's AI suggestions."""
+    M = load(path); j = M["j"]
+    _, zv, va = _outputs(M, [text])
+    if 1 / (1 + np.exp(-zv[0])) < j["vthr"]: return []
+    S = va[0] @ M["E"].T; out, seen = [], set()
+    for i in np.argsort(-S):
+        if S[i] < j["theta"] or len(out) == k: break
+        c = M["ids"][i]
+        if c in seen: continue
+        seen.add(c); name = M["C"].get(c, [""])[0]
+        if name: out.append((c, name, float(S[i])))
+    return out

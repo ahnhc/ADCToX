@@ -88,19 +88,35 @@ def model_assets(output, version, cache):
     print(f"Model {version}: {len(files)} files, {sum(f['size'] for f in files) / 1024**2:.1f} MiB total; encoders use pinned Hugging Face URLs.")
 
 
-def derived_models(output, version, base, add, drop):
+NAME_INDEX = ("ids", "names", "axes", "version", "hp_ids", "hp_names", "hp_axes", "ko_keys", "ko_vals", "ko_rank")   # what the app reads of mondo_index.npz
+
+
+def derived_models(output, version, base, add, drop, names_from=None):
     """a model release from a published manifest: its files stay where they are (same URLs and checksums, so an update downloads
-    nothing again), the folders in `drop` are left out and each folder in `add` is uploaded with this release.
-    Models 0.7 = models 0.6 without GemmaJudge/ plus ScratchJudge/."""
+    nothing again), the folders in `drop` are left out and each folder in `add` is uploaded with this release. `names_from`: a
+    mondo_index.npz whose name arrays (NAME_INDEX, no embeddings) become this release's mondo_index.npz.
+    Models 0.7 = models 0.6 without GemmaJudge/ plus ScratchJudge/. Models 0.8 = models 0.7 without BioLORD-2023/, SapBERT/,
+    vuln_biolord.pt and the index embeddings: only the organ judge reads typed text (app 0.6.11+, releases/models/stable4.json)."""
     output.mkdir(parents=True, exist_ok=True)
     manifest = json.loads(base.read_text()); manifest["model_version"] = version
-    files = [f for f in manifest["files"] if f["path"].split("/")[0] not in drop]
+    files = [f for f in manifest["files"] if f["path"].split("/")[0] not in drop and not (names_from and f["path"] == "mondo_index.npz")]
+    if names_from:
+        import numpy as np
+        with np.load(names_from, allow_pickle=False) as source:
+            np.savez_compressed(output / "mondo_index.npz", **{k: source[k] for k in NAME_INDEX})
+        path = output / "mondo_index.npz"
+        files.append({"path": path.name, "size": path.stat().st_size, "sha256": digest(path), "url": f"https://github.com/{REPOSITORY}/releases/download/models-{version}/{path.name}"})
     for folder in add:
         for path in sorted(folder.iterdir()):
             asset = f"{folder.name}-{path.name}"; (output / asset).write_bytes(path.read_bytes())
             files.append({"path": f"{folder.name}/{path.name}", "size": path.stat().st_size, "sha256": digest(path), "url": f"https://github.com/{REPOSITORY}/releases/download/models-{version}/{asset}"})
+    judge_only = not any(f["path"].startswith(("BioLORD-2023/", "SapBERT/")) for f in files)
+    if judge_only:
+        manifest["architecture"] = "scratch-judge-v1"
+        for key in ("encoders", "score_definition", "context"): manifest.pop(key, None)
     manifest["files"] = files; validate_manifest(manifest)
-    write(output / "models.json", manifest); write(ROOT / "releases/models/stable3.json", manifest)   # read by app 0.5+
+    write(output / "models.json", manifest)
+    write(ROOT / "releases/models" / ("stable4.json" if judge_only else "stable3.json"), manifest)   # app 0.6.11+ / app 0.5+
     new = [f for f in files if f"/models-{version}/" in f["url"]]
     print(f"Model {version}: {len(files)} files, {sum(f['size'] for f in files) / 1024**2:.1f} MiB total; {len(new)} new files, {sum(f['size'] for f in new) / 1024**2:.1f} MiB.")
 
@@ -121,7 +137,7 @@ def app_assets(output):
     subprocess.run([sys.executable, "-I", str(ROOT / "ml/build_portable.py"), "--full", str(app)], check=True,
                    env={**os.environ, "ADCTOX_EVIDENCE_SNAPSHOT": str(snapshot)})
     subprocess.run([sys.executable, "-m", "py_compile", str(app)], check=True)
-    source_hashes = {str(p.relative_to(ROOT)): digest(p) for p in sorted((ROOT / "ml").glob("*.py")) if p.name in {"recommend.py", "restrictions.py", "labs.py", "form.py", "tui.py", "term.py", "adc_version.py", "adc_runtime.py", "adc_updates.py", "vulnerability_model.py", "mondo_index.py", "lab.py", "build_portable.py", "suggest.py", "gemma_runtime.py", "scratch_runtime.py", "motion.py", "webapp.py"}}
+    source_hashes = {str(p.relative_to(ROOT)): digest(p) for p in sorted((ROOT / "ml").glob("*.py")) if p.name in {"recommend.py", "restrictions.py", "labs.py", "form.py", "tui.py", "term.py", "adc_version.py", "adc_runtime.py", "adc_updates.py", "mondo_index.py", "build_portable.py", "suggest.py", "scratch_runtime.py", "motion.py", "webapp.py"}}
     source_hashes.update({str(p.relative_to(ROOT)): digest(p) for p in sorted((ROOT / "ml/web").glob("*")) if p.is_file() and not p.name.startswith("mock")})   # the page adctox --web serves, embedded in the app
     info = {"app_version": APP_VERSION, "runtime_api": RUNTIME_API, "source_sha256": source_hashes}
     write(output / "bundle-info.json", info)
@@ -147,8 +163,9 @@ def main():
     p.add_argument("--base-manifest", type=Path, help="with --models: reuse this published manifest's files (derived_models)")
     p.add_argument("--add", type=Path, action="append", default=[], help="with --base-manifest: a bundle folder to upload")
     p.add_argument("--drop", action="append", default=[], help="with --base-manifest: a bundle folder to leave out")
+    p.add_argument("--names-from", type=Path, help="with --base-manifest: a mondo_index.npz whose name arrays (no embeddings) replace the bundle's")
     args = p.parse_args()
-    if args.models and args.base_manifest: derived_models(args.out / "models", args.model_version, args.base_manifest, args.add, set(args.drop))
+    if args.models and args.base_manifest: derived_models(args.out / "models", args.model_version, args.base_manifest, args.add, set(args.drop), args.names_from)
     elif args.models: model_assets(args.out / "models", args.model_version, args.cache)
     app_assets(args.out / "app")
 

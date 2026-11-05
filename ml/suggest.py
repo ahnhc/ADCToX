@@ -3,11 +3,11 @@
 names(text)     instant, by spelling only (no model): registry conditions, disease profiles (Korean, everyday words, abbreviations),
                 MONDO names of the installed index and the HIRA KCD Korean names. Exact > starts with > a word starts with > contains;
                 Korean also by initial consonants (ㄷㄴ -> 당뇨). Runs on every key press.
-semantic(text)  the SapBERT search of the installed index (ml/mondo_index.py), for names the spelling search misses; the form
-                runs it in a background thread after a short pause in typing.
+semantic(text)  the organ judge's nearest concept names (ml/scratch_runtime.py, models 0.7+), for names the spelling search
+                misses; the form runs it in a background thread after a short pause in typing.
 symptoms(text)  ranks the disease profiles (data/curated/disease_profiles/) against symptoms, history or a whole sentence, Korean or
                 English: character 2/3-gram overlap per clause with each profile's names and symptom phrases (works on Korean word
-                endings), plus BioLORD similarity of English text to each profile; names a sentence mentions directly come first.
+                endings) and content-word overlap; names a sentence mentions directly come first.
 A suggestion is (kind, value, label, detail, organs): kind 'reg' (registry id), 'mondo' (MONDO id, label = its name), 'text'
 (typed or Korean text that goes through the usual linking). The form turns a 'mondo' pick into free text with that reading chosen.
 """
@@ -21,7 +21,6 @@ KO_END = sorted("습니다 었어요 았어요 했어요 이에요 에서 으로
 KO_STOP = {"있어", "있고", "있다", "없어", "먹어", "먹고", "하고", "해요", "받고", "받아", "자주", "계속", "요즘", "가끔", "많이", "조금", "그리고", "때문", "환자", "일주일", "번씩"}
 EN_STOP = {"the", "and", "with", "has", "have", "had", "for", "from", "that", "this", "patient", "years", "year", "since", "takes", "taking", "history", "of", "on", "was", "were", "who", "his", "her", "she", "they"}
 COVER = 0.8                     # a phrase fully contained in a clause scores like a cosine of 0.8
-SYMPTOM_W = 2.0                 # weight of the BioLORD similarity next to the n-gram score (chosen on the dev half of symptom_eval_v0)
 _LOCK = threading.Lock()
 
 
@@ -286,21 +285,17 @@ def _with_organs(RC, s):
 
 
 def semantic(RC, text, k=5):
-    """SapBERT neighbours of the typed text in the installed index -> suggestions (slow the first time: loads the encoder)."""
+    """the organ judge's nearest concepts to the typed text -> suggestions; [] when its validity output says it is not a disease name
+    (slow the first time: loads the judge)."""
     q = text.split(",")[-1].strip()
     if len(q) < 2: return []
     with _LOCK:
-        import mondo_index as MI
-        en = RC.english([q])[0]
-        lk = MI.link([en])[0]
-        if lk.get("gate") is False: return []                      # the validity gate says this is not a disease name
-        out, seen = [], set()
-        for r in [dict(mondo=lk["mondo"], name=lk["name"], organs=lk["axes"], sim=lk["sim"])] + lk.get("readings", []):
-            if r["mondo"] in seen or r["mondo"] in nonhuman() or r.get("sim", 1) < 0.75: continue        # = mondo_index.THETA
-            seen.add(r["mondo"]); name = r["name"]
-            out.append(("mondo", r["mondo"], name[:1].upper() + name[1:], "", r.get("organs") or MI.concept(r["mondo"])[1]))
-        if lk.get("hpo"):
-            h = lk["hpo"]; out.append(("mondo", h["hpo"], h["name"][:1].upper() + h["name"][1:], "증상", h["organs"]))
+        import scratch_runtime as SR
+        if not SR.available(): return []
+        out = []
+        for c, name, _ in SR.nearest(RC.english([q])[0], k=k + 3):
+            chosen = RC._chosen(c) if c.startswith(("MONDO:", "HP:")) and c not in nonhuman() else None    # the organs a pick gets
+            if chosen: out.append(("mondo", c, name[:1].upper() + name[1:], "증상" if c.startswith("HP:") else "", chosen[1]))
         return out[:k]
 
 
@@ -318,9 +313,6 @@ def _grams(s, ns=(2, 3)):
     for n in ns:
         for i in range(max(0, len(s) - n + 1)): out[s[i:i + n]] = out.get(s[i:i + n], 0) + 1
     return out
-
-
-GEMMA_W = float(os.environ.get("ADC_GEMMA_SYM_W", 4.0))   # weight of the Gemma symptom output (chosen on the symptom eval dev half)
 
 
 class Symptoms:
@@ -341,7 +333,6 @@ class Symptoms:
             for k in g: self.post.setdefault(k, []).append(j)
         self.norms = [math.sqrt(sum((c * self.idf[k]) ** 2 for k, c in g.items())) for _, _, _, g in self.phr]
         self.cden = [sum(c * self.idf[k] ** 2 for k, c in g.items()) for _, _, _, g in self.phr]
-        self._E = None
         self.docs = [_nospace(norm(" ".join(ph for i2, ph, _, _ in self.phr if i2 == i))) for i in range(len(P))]
         self.tok_df = {}
 
@@ -373,22 +364,7 @@ class Symptoms:
                 pc = self.phr[j][3][k]; acc[j] = acc.get(j, 0) + w * pc * self.idf[k]; cov[j] = cov.get(j, 0) + min(c, pc) * self.idf[k] ** 2
         return {j: (v / (qn * self.norms[j]), cov[j] / self.cden[j]) for j, v in acc.items()}
 
-    def embeddings(self):
-        """BioLORD vectors of 'name: symptoms' per profile, cached next to the models (computed once, about 10 s on a CPU)."""
-        if self._E is None:
-            import numpy as np, hashlib, vulnerability_model as VM, adc_runtime
-            texts = [p["name"] + ": " + ", ".join(p.get("symptoms_en", []) + p.get("care_en", [])) for p in self.P]
-            key = hashlib.sha256(("\n".join(texts) + str(adc_runtime.bundle_identity())).encode()).hexdigest()[:16]
-            home = adc_runtime.active_directory()
-            path = os.path.join(str(home.parent.parent) if home else "/tmp", f"profile_biolord_{key}.npy")
-            try: self._E = np.load(path)
-            except (OSError, ValueError):
-                self._E = VM._st(texts).astype(np.float32)
-                try: np.save(path, self._E)
-                except OSError: pass
-        return self._E
-
-    def search(self, text, semantic=True, limit=8):
+    def search(self, text, limit=8):
         """-> [(profile, score, matched phrases)] best first."""
         cl = clauses(text)
         if not cl: return []
@@ -407,26 +383,6 @@ class Symptoms:
                 got = [t for t, w in toks if w and t in d]
                 if got:
                     score[i] += TOKW * sum(w for t, w in toks if t in got) / total; why[i] += [t for t in got if not any(t in _nospace(x) for x in why[i])]
-        en = " ".join(cl) if not HANGUL.search(text) else ""        # Korean: n-grams only (mapping Korean clauses to English phrases did not help on the test half)
-        if semantic and en:
-            try:
-                import numpy as np, vulnerability_model as VM
-                with _LOCK: q = VM._st([en])[0]; sims = self.embeddings() @ q
-                for i, s in enumerate(sims.tolist()): score[i] += SYMPTOM_W * max(0.0, s - 0.3) / 0.7
-            except Exception:
-                pass
-        if semantic and GEMMA_W:                                    # models 0.6+: the Gemma judge's symptom -> disease output (Korean too)
-            try:
-                import gemma_runtime as GR
-                if GR.has_extra():
-                    o = GR.outputs([text]); col = {t: k for k, t in enumerate(o["profiles"])}
-                    for i, p in enumerate(self.P):
-                        k = col.get(p["id"])
-                        if k is not None and o["sym"][0][k] >= 0.02:
-                            score[i] += GEMMA_W * float(o["sym"][0][k])
-                            if o["sym"][0][k] >= 0.2: why[i] = ["AI"] + why[i]
-            except Exception:
-                pass
         order = sorted(range(len(self.P)), key=lambda i: -score[i])
         return [(self.P[i], score[i], why[i]) for i in order[:limit] if score[i] > 0.15]
 
@@ -434,7 +390,7 @@ class Symptoms:
 _SYM = []
 
 
-def symptoms(RC, text, semantic=True, limit=8):
+def symptoms(RC, text, limit=8):
     """suggestions from symptoms / a sentence: names the text mentions directly first, then diseases ranked by symptoms."""
     if not _SYM: _SYM.append(Symptoms())
     I = index(RC); out, seen = [], set()
@@ -443,7 +399,7 @@ def symptoms(RC, text, semantic=True, limit=8):
             if (s[0], s[1]) not in seen and _score(norm(c), _nospace(norm(c)) if HANGUL.search(c) else "", "", (norm(s[2]), _nospace(norm(s[2])), "", 0, s)) >= 0:
                 hit = [r for r in I.rows if (r[4][0], r[4][1]) == (s[0], s[1]) and (r[0] == norm(c) or r[1] == _nospace(norm(c)))]
                 if hit: seen.add((s[0], s[1])); out.append((s, "입력한 이름"))
-    for p, sc, why in _SYM[0].search(text, semantic=semantic, limit=limit):
+    for p, sc, why in _SYM[0].search(text, limit=limit):
         s = I.by_id[p["id"]]
         if (s[0], s[1]) in seen: continue
         seen.add((s[0], s[1])); out.append((_with_organs(RC, s), ", ".join(dict.fromkeys(why))[:60]))

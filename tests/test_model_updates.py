@@ -39,14 +39,14 @@ def server():
 
 def make_manifest(server, version="0.0", weight=b"head-1"):
     base, bodies, _ = server
-    content = {"vuln_biolord.pt": weight, "mondo_index.npz": b"index", "BioLORD-2023/config.json": b"biolord-config",
-               "SapBERT/config.json": b"sapbert-config", "BioLORD-2023/model.safetensors": b"biolord", "SapBERT/model.safetensors": b"sapbert"}
+    content = {"ScratchJudge/weights.safetensors": weight, "mondo_index.npz": b"index", "ScratchJudge/judge.json": b"judge",
+               "ScratchJudge/config.json": b"config", "ScratchJudge/index.npz": b"names", "ScratchJudge/concepts.json": b"concepts"}
     files = []
     for path, body in content.items():
         urlpath = "/" + version + "/" + path
         bodies[urlpath] = body
         files.append({"path": path, "url": base + urlpath, "size": len(body), "sha256": hashlib.sha256(body).hexdigest()})
-    return {"schema_version": 1, "model_version": version, "runtime_api": 1, "architecture": "biolord-twotower-v1", "axes": updates.AXES, "files": files}
+    return {"schema_version": 1, "model_version": version, "runtime_api": 1, "architecture": "scratch-judge-v1", "axes": updates.AXES, "files": files}
 
 
 def test_only_changed_head_is_downloaded_and_rollback_restores_it(server, tmp_path):
@@ -56,12 +56,12 @@ def test_only_changed_head_is_downloaded_and_rollback_restores_it(server, tmp_pa
     second = make_manifest(server, "0.1", b"head-2")
     server[2].clear()
     result = updates.install(second, tmp_path, allow_local=True)
-    assert result["downloaded"] == ["vuln_biolord.pt"]
+    assert result["downloaded"] == ["ScratchJudge/weights.safetensors"]
     assert len(result["reused"]) == 5
-    assert server[2] == ["/0.1/vuln_biolord.pt"]
-    assert (selected_bundle(tmp_path) / "vuln_biolord.pt").read_bytes() == b"head-2"
+    assert server[2] == ["/0.1/ScratchJudge/weights.safetensors"]
+    assert (selected_bundle(tmp_path) / "ScratchJudge/weights.safetensors").read_bytes() == b"head-2"
     assert updates.rollback(tmp_path, allow_local=True) == "0.0"
-    assert (selected_bundle(tmp_path) / "vuln_biolord.pt").read_bytes() == b"head-1"
+    assert (selected_bundle(tmp_path) / "ScratchJudge/weights.safetensors").read_bytes() == b"head-1"
 
 
 @pytest.mark.parametrize("failure", ["checksum", "missing", "size"])
@@ -69,13 +69,13 @@ def test_failed_download_preserves_all_active_files(server, tmp_path, failure):
     updates.install(make_manifest(server), tmp_path, allow_local=True)
     selected = selected_bundle(tmp_path)
     second = make_manifest(server, "0.1", b"head-2")
-    path = "/0.1/vuln_biolord.pt"
+    path = "/0.1/ScratchJudge/weights.safetensors"
     if failure == "checksum": server[1][path] = b"wrong!"
     elif failure == "missing": del server[1][path]
     else: server[1][path] = b"too many bytes"
     with pytest.raises(updates.UpdateError): updates.install(second, tmp_path, allow_local=True)
     assert selected_bundle(tmp_path) == selected
-    assert (selected_bundle(tmp_path) / "vuln_biolord.pt").read_bytes() == b"head-1"
+    assert (selected_bundle(tmp_path) / "ScratchJudge/weights.safetensors").read_bytes() == b"head-1"
     assert not list(tmp_path.glob(".staging-*"))
     assert not list((tmp_path / "blobs").glob("*.partial"))
 
@@ -103,11 +103,11 @@ def test_corrupted_local_model_is_repaired_in_a_new_directory(server, tmp_path):
     manifest = make_manifest(server)
     updates.install(manifest, tmp_path, allow_local=True)
     old = selected_bundle(tmp_path)
-    (old / "vuln_biolord.pt").write_bytes(b"broken")
+    (old / "ScratchJudge/weights.safetensors").write_bytes(b"broken")
     result = updates.install(manifest, tmp_path, allow_local=True)
-    assert result["downloaded"] == ["vuln_biolord.pt"]
+    assert result["downloaded"] == ["ScratchJudge/weights.safetensors"]
     assert selected_bundle(tmp_path) != old
-    assert (selected_bundle(tmp_path) / "vuln_biolord.pt").read_bytes() == b"head-1"
+    assert (selected_bundle(tmp_path) / "ScratchJudge/weights.safetensors").read_bytes() == b"head-1"
 
 
 @pytest.mark.parametrize("change", ["schema", "runtime", "axes", "architecture", "missing", "duplicate", "traversal", "absolute", "backslash", "http", "size"])
@@ -117,7 +117,7 @@ def test_incompatible_or_invalid_manifest_is_rejected(server, change):
     elif change == "runtime": m["runtime_api"] = 2
     elif change == "axes": m["axes"] = list(reversed(m["axes"]))
     elif change == "architecture": m["architecture"] = "other"
-    elif change == "missing": m["files"].pop()
+    elif change == "missing": m["files"].pop(0)                      # the judge weights
     elif change == "duplicate": m["files"].append(m["files"][0])
     elif change == "traversal": m["files"][0]["path"] = "../outside"
     elif change == "absolute": m["files"][0]["path"] = "/outside"
@@ -148,7 +148,7 @@ def test_rollback_rejects_modified_previous_weights(server, tmp_path):
     updates.install(make_manifest(server), tmp_path, allow_local=True)
     previous = selected_bundle(tmp_path)
     updates.install(make_manifest(server, "0.1", b"head-2"), tmp_path, allow_local=True)
-    (previous / "vuln_biolord.pt").write_bytes(b"broken")
+    (previous / "ScratchJudge/weights.safetensors").write_bytes(b"broken")
     with pytest.raises(updates.UpdateError, match="corrupted"):
         updates.rollback(tmp_path, allow_local=True)
     assert updates.current_info(tmp_path)["model_version"] == "0.1"
@@ -163,9 +163,9 @@ def test_successful_update_invalidates_linking_and_inference_caches(monkeypatch)
     from types import SimpleNamespace
     module = SimpleNamespace(_IDX=index)
     monkeypatch.setitem(sys.modules, "mondo_index", module)
-    for cache in (rc._FREE, rc._FREE_PREDICTIONS, rc._ANALYSES, rc._REGISTRY_LEARNED): cache["test"] = 1
+    for cache in (rc._FREE, rc._ANALYSES, rc._REG_P, rc._CHOSEN_NAME): cache["test"] = 1
     rc.clear_model_cache()
-    assert all(not c for c in (rc._FREE, rc._FREE_PREDICTIONS, rc._ANALYSES, rc._REGISTRY_LEARNED))
+    assert all(not c for c in (rc._FREE, rc._ANALYSES, rc._REG_P, rc._CHOSEN_NAME))
     assert index.closed and module._IDX is None
 
 
@@ -212,10 +212,10 @@ def test_unchanged_bundle_is_not_rehashed_or_reinstalled(server, tmp_path, monke
 def test_plan_lists_only_changed_files_and_verify_finds_corruption(server, tmp_path):
     manifest = make_manifest(server)
     updates.install(manifest, tmp_path, allow_local=True)
-    (selected_bundle(tmp_path) / "vuln_biolord.pt").write_bytes(b"broken")
+    (selected_bundle(tmp_path) / "ScratchJudge/weights.safetensors").write_bytes(b"broken")
     todo = updates.plan(manifest, tmp_path)
-    assert todo["download"] == ["vuln_biolord.pt"] and not todo["up_to_date"]
-    assert updates.verify(tmp_path) == ["vuln_biolord.pt"]
+    assert todo["download"] == ["ScratchJudge/weights.safetensors"] and not todo["up_to_date"]
+    assert updates.verify(tmp_path) == ["ScratchJudge/weights.safetensors"]
 
 
 def test_windows_pointer_mode_installs_switches_and_rolls_back_without_symlinks(server, tmp_path, monkeypatch):
@@ -229,7 +229,7 @@ def test_windows_pointer_mode_installs_switches_and_rolls_back_without_symlinks(
     second = updates.install(make_manifest(server, "0.1", b"head-2"), tmp_path, allow_local=True)
     assert not (tmp_path / "current").exists() and (tmp_path / "current.txt").read_text().strip() == second["bundle_id"]
     assert adc_runtime.active_directory() == tmp_path / "versions" / second["bundle_id"]
-    assert (adc_runtime.active_directory() / "vuln_biolord.pt").read_bytes() == b"head-2"
+    assert (adc_runtime.active_directory() / "ScratchJudge/weights.safetensors").read_bytes() == b"head-2"
     assert updates.current_info(tmp_path)["model_version"] == "0.1"
     assert updates.rollback(tmp_path, allow_local=True) == "0.0"
     assert (tmp_path / "current.txt").read_text().strip() == first["bundle_id"]
@@ -302,19 +302,18 @@ def test_gemma_judge_folder_installs_and_the_old_manifest_stays_for_old_apps(ser
     assert not any(f["path"].startswith("GemmaJudge/") for f in old["files"])            # apps <= 0.3.7 still read this one
 
 
-def test_scratch_judge_folder_installs_and_older_apps_keep_their_manifests(server, tmp_path):
+def test_a_judge_only_bundle_installs_and_older_apps_keep_their_manifests(server, tmp_path):
     import adc_version
-    manifest = make_manifest(server, "0.7"); base, bodies, _ = server
-    for name, body in (("ScratchJudge/judge.json", b"{}"), ("ScratchJudge/weights.safetensors", b"w")):
-        bodies["/0.7/" + name] = body
-        manifest["files"].append({"path": name, "url": base + "/0.7/" + name, "size": len(body), "sha256": hashlib.sha256(body).hexdigest()})
-    updates.validate_manifest(manifest, allow_local=True)
+    manifest = make_manifest(server, "0.8")
+    assert not any(f["path"].startswith(("BioLORD-2023/", "SapBERT/")) for f in manifest["files"])
     updates.install(manifest, tmp_path, allow_local=True)
-    assert (selected_bundle(tmp_path) / "ScratchJudge" / "weights.safetensors").read_bytes() == b"w"
+    assert (selected_bundle(tmp_path) / "ScratchJudge" / "weights.safetensors").read_bytes() == b"head-1"
     assert adc_version.MODEL_MANIFEST_URL.endswith("/releases/models/stable3.json")
     releases = Path(__file__).resolve().parents[1] / "releases/models/"
     for old in ("stable.json", "stable2.json"):                                       # apps 0.4.x and older reject ScratchJudge/
         assert not any(f["path"].startswith("ScratchJudge/") for f in json.loads((releases / old).read_text())["files"])
+    paths = {f["path"] for f in json.loads((releases / "stable3.json").read_text())["files"]}
+    assert {"BioLORD-2023/model.safetensors", "SapBERT/model.safetensors", "vuln_biolord.pt"} <= paths   # apps 0.5 to 0.6.10 require the encoders
 
 
 def test_package_version_is_the_app_version():

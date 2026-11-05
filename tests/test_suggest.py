@@ -32,7 +32,7 @@ def test_empty_input_suggests_nothing_and_the_last_comma_part_is_searched():
     ("당뇨랑 고혈압이 있어요", ("diabet",)),
 ])
 def test_symptoms_find_the_disease_from_a_sentence_without_models(text, expected):
-    rows = SG.symptoms(RC, text, semantic=False, limit=5)
+    rows = SG.symptoms(RC, text, limit=5)
     names = [s[2].lower() for s, _ in rows]
     assert any(any(e in n for e in expected) for n in names), names
 

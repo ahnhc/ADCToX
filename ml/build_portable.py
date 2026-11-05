@@ -3,11 +3,10 @@
     /data/hyeongchanahn/envs/adctox/bin/python -I ml/build_portable.py            -> dist/adc_recommender.py (light)
     /data/hyeongchanahn/envs/adctox/bin/python -I ml/build_portable.py --full     -> dist/adc_recommender_full.py
 
---full keeps the server's language models: free text goes through BioLORD / SapBERT to MONDO and the FinnGen-trained head
-is offered when MONDO finds no organ, exactly as ml/recommend.py does here. It needs torch, transformers and
-sentence-transformers, and a models folder (BioLORD-2023, SapBERT, mondo_index.npz, vuln_biolord.pt) next to the program or
-in ADC_MODEL_DIR. The model code is the server's own (ml/vulnerability_model.py, ml/mondo_index.py, ml/lab.py), copied
-function by function; only file locations change. GPU when torch sees one, else CPU.
+--full is the installed app: free text goes through the organ judge (ml/scratch_runtime.py) exactly as ml/recommend.py does
+here. It needs torch and transformers, and the model bundle (ScratchJudge/, mondo_index.npz for MONDO names and Korean KCD
+names) that adctox --update-models installs, or a models folder in ADC_MODEL_DIR. The name-index code is the server's own
+(ml/mondo_index.py), copied function by function; only file locations change. GPU when torch sees one, else CPU.
 
 What goes in:
   * the program modules as they are here (recommend, restrictions, labs, form, tui, webapp), served from the file by an importer,
@@ -16,8 +15,8 @@ What goes in:
     condition registry and the checks, as compressed JSON;
   * MONDO disease names and exact synonyms that map to an organ (the same ancestor -> organ crosswalk as ml/mondo_index.py).
 What changes, and only this:
-  * free text is matched by string (exact name / synonym, then close spelling) instead of BioLORD / SapBERT embeddings,
-    so it understands fewer phrasings; the FinnGen estimate is not offered (it is off by default on the server too);
+  * free text is matched by string (exact name / synonym, then close spelling) instead of the organ judge, so it understands
+    fewer phrasings;
   * data come from the file, not from server paths.
 Every substitution is asserted, so a change in the source that breaks one stops the build instead of shipping it.
 """
@@ -72,21 +71,21 @@ def mondo_terms():
 
 PORTABLE_FREE = '''
 def _free_info(free, progress=None):
-    """portable: string matching. Registry: exact label / id, else close spelling (ratio >= 0.9). MONDO: exact name or
-    exact synonym, else the closest spelling among names and synonyms (ratio >= 0.88). No embeddings, no learned vector."""
+    """portable: string matching. Registry: exact label / id, else close spelling (ratio >= 0.9), as link["registry"]. MONDO:
+    exact name or exact synonym, else the closest spelling among names and synonyms (ratio >= 0.88). No model."""
     import difflib
     D = _portable_data(); terms = D["mondo"]; keys = D["_mondo_keys"]
     reg = {**{r["label"].lower(): i for i, r in _reg.items()}, **{i.replace("_", " "): i for i in _reg}}
-    best, links = [], []
+    links = []
     for text in free:
         q = " ".join(text.lower().replace("_", " ").split())
         m = difflib.get_close_matches(q, list(reg), n=1, cutoff=0.9)
-        best.append((reg[m[0]], 1.0 if m and m[0] == q else (difflib.SequenceMatcher(None, q, m[0]).ratio() if m else 0.0)) if m else (next(iter(_reg)), 0.0))
-        if q in terms: name, axes = terms[q]; links.append(dict(name=name, sim=1.0, axes=axes)); continue
+        near = (reg[m[0]], 1.0 if m[0] == q else difflib.SequenceMatcher(None, q, m[0]).ratio()) if m else None
+        if q in terms: name, axes = terms[q]; links.append(dict(name=name, sim=1.0, axes=axes, registry=near)); continue
         m = difflib.get_close_matches(q, keys, n=1, cutoff=0.88)
-        if m: name, axes = terms[m[0]]; links.append(dict(name=name, sim=difflib.SequenceMatcher(None, q, m[0]).ratio(), axes=axes))
-        else: links.append(dict(name="", sim=0.0, axes=[]))
-    return best, links, None
+        if m: name, axes = terms[m[0]]; links.append(dict(name=name, sim=difflib.SequenceMatcher(None, q, m[0]).ratio(), axes=axes, registry=near))
+        else: links.append(dict(name="", sim=0.0, axes=[], registry=near))
+    return links
 '''
 
 DE_STUB = '''"""portable: label evidence computed on the server from the DailyMed snapshot, carried in this file."""
@@ -129,19 +128,15 @@ def extract(path, names):
 
 
 def runtime_modules():
-    """vulnerability_model and mondo_index for the full build: server functions, local file locations."""
-    vm = extract(R / "ml/lab.py", ["TwoTower"]) + "\n" + extract(R / "ml/vulnerability_model.py", ["close", "_encoder", "_load_encoder", "_st", "_ensemble", "axis_net", "predict", "predict_models", "agreement"])
-    vm = sub(vm, '"FremyCompany/BioLORD-2023"', 'os.path.join(_BASE, "BioLORD-2023")', "vulnerability_model")
-    vm = vm.replace("lab.TwoTower", "TwoTower"); assert not re.search(r"\blab\.(?!py)", vm)
-    vm = RT_HEAD + 'DEV = "cuda:0" if torch.cuda.is_available() else "cpu"; PT = os.path.join(_BASE, "vuln_biolord.pt")\n_ST, _EMB, _CK, _EMB_MAX, _CK_AXIS, _CK_HIDDEN, _CK_ALT, _CK_OPT = {}, {}, {}, 4096, [], set(), [], {"agree_min": 1}\n_ST_LOCK = __import__("threading").Lock()\n\n' + vm
-    mi = extract(R / "ml/mondo_index.py", ["_encoder", "_embed", "close", "_char_feats", "gate_inputs", "_load", "link", "concept", "readings", "abbreviations", "concept_candidates", "_tri", "rr_features", "rerank_scores", "judged_organs", "phenotype", "_ko_norm", "korean", "nearest"])
-    mi = RT_HEAD + 'THETA = 0.75; NAME = os.path.join(_BASE, "SapBERT"); C = _BASE + os.sep\n_ENC = {}; _IDX = None; _IDX_E = None; TIE = 0.02; HPO_THETA = 0.85; RR_K = 10; import re; ABBREV = re.compile(r"^[A-Za-z][A-Za-z0-9]{1,5}$"); HANGUL = re.compile("[가-힣]")\n\n' + mi
+    """mondo_index for the full build (names, organs and Korean KCD names of the bundle's index): server functions, local file locations."""
+    mi = extract(R / "ml/mondo_index.py", ["close", "_load", "concept", "_ko_norm", "korean"])
+    mi = RT_HEAD + 'C = _BASE + os.sep\n_ENC = {}; _IDX = None; _IDX_E = None; import re; HANGUL = re.compile("[가-힣]")\n\n' + mi
     src = (R / "ml/mondo_index.py").read_text()
-    assert "THETA = 0.75;" in src and "_IDX = None" in src and 'C + "mondo_index.npz"' in mi       # constants above match the server
+    assert "_IDX = None" in src and 'C + "mondo_index.npz"' in mi       # constants above match the server
     used = set(re.findall(r"\bMI\.(\w+)", "".join((R / "ml" / f).read_text() for f in ("recommend.py", "suggest.py"))))
     gone = sorted(n for n in used if not re.search(rf"^(def {n}\(|{n} = |.*\b{n} = )", mi, re.M) and n not in ("AXES",))
     assert not gone, f"mondo_index functions the app uses but the full build leaves out: {gone}"
-    return vm, mi
+    return mi
 
 
 def sub(src, old, new, name):
@@ -169,9 +164,8 @@ def main():
                 web=__import__("webapp").web_files(R / "ml/web"))
     assert {"index.html", "app.js", "app.css"} <= set(data["web"]), f"adctox --web needs its page in ml/web/: found {sorted(data['web'])}"
     print("page: " + ", ".join(f"{name} {(len(base64.b64decode(text)) if name.endswith(('.woff2', '.ttf', '.otf')) else len(text.encode())) / 1024:.1f} KB" for name, text in data["web"].items()))
-    if FULL: data["learned"] = json.load(open(R / "ml/results/learned_vulnerability.json"))["severity"]
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
-    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "gemma_runtime", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion", "webapp")}
+    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion", "webapp")}
     local = {q.stem for q in (R / "ml").glob("*.py")}                      # the screen modules import only embedded modules (0.4.0: motion)
     for m in ("form", "tui", "term", "motion", "webapp"):
         for name in set(re.findall(r"^\s*(?:import|from)\s+(\w+)", src[m], re.M)):
@@ -189,8 +183,6 @@ def main():
         rc = rc[:i] + PORTABLE_FREE.strip() + "\n\n" + rc[j:]
     rc = sub(rc, '    import yaml\n    out = []\n', '    out = []\n', "recommend")
     rc = sub(rc, 'for c in yaml.safe_load(open(R + "conf/patient_checks.yaml"))["checks"]:', 'for c in _portable_data()["checks"]:', "recommend")
-    rc = sub(rc, 'return json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"]',
-             'return _portable_data()["learned"]' if FULL else 'return {}', "recommend")
     if not FULL:
         rc = sub(rc, 'MATCH_COS = 0.60 ', 'MATCH_COS = 9.99 ', "recommend")          # no loose 'borrowing' of organs by spelling
         rc = sub(rc, 'REG_NEAR = 0.80 ', 'REG_NEAR = 0.90 ', "recommend")
@@ -201,7 +193,7 @@ def main():
     rs = sub(rs, '    return yaml.safe_load(open(R + "conf/label_restrictions.yaml"))["rules"]',
              '    from __adc_data__ import _portable_data\n    return _portable_data()["rules"]', "restrictions")
     src["recommend"], src["restrictions"], src["drug_evidence"] = rc, rs, DE_STUB
-    if FULL: src["vulnerability_model"], src["mondo_index"] = runtime_modules()
+    if FULL: src["mondo_index"] = runtime_modules()
     src["__adc_data__"] = f'''import base64, json, zlib
 _D = None
 def _portable_data():
@@ -256,10 +248,10 @@ if __name__ == "__main__":
 ''')
     text = OUT.read_text()
     if FULL:
-        text = text.replace("{HEAD}", '"""ADC label-based recommender, full version: the server program with its language models.', 1)
-        text = text.replace("{FREE}", "Free text goes through BioLORD / SapBERT to MONDO (GPU if available, else CPU); needs the models folder.", 1)
-        text = text.replace("{DATA}", "\nThe models folder holds BioLORD-2023, SapBERT, a MONDO name index and a head trained on FinnGen summary\nstatistics and published Danish disease trajectories (Siggaard et al. 2020); the program prints no FinnGen numbers.", 1)
-        text = text.replace("{TORCH}", "\n    import torch, transformers, sentence_transformers", 1)
+        text = text.replace("{HEAD}", '"""ADC label-based recommender, full version: the server program with its organ judge.', 1)
+        text = text.replace("{FREE}", "Free text goes through the organ judge (x2te) to MONDO (GPU if available, else CPU); needs the model bundle.", 1)
+        text = text.replace("{DATA}", "\nThe model bundle holds the organ judge, trained from random weights on public medical text, and a MONDO name index.", 1)
+        text = text.replace("{TORCH}", "\n    import torch, transformers", 1)
     else:
         text = text.replace("{HEAD}", '"""ADC label-based recommender: one file, runs anywhere with Python >= 3.10 and numpy.', 1)
         text = text.replace("{FREE}", "Free text is matched by spelling against MONDO names and synonyms (the server version uses a language model).", 1)

@@ -17,9 +17,6 @@ DM = pathlib.Path("/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07")
 CACHE = pathlib.Path("/data/hyeongchanahn/adctox/ml_cache/tox.pkl")
 needs_labels = pytest.mark.skipif(not DM.exists(), reason="DailyMed snapshot not present")
 needs_cache = pytest.mark.skipif(not (DM.exists() and CACHE.exists()), reason="label snapshot or workbook cache not present")
-import importlib.util
-HAS_TORCH = importlib.util.find_spec("torch") is not None
-needs_encoder = pytest.mark.skipif(not HAS_TORCH, reason="free-text conditions need the ML env (torch); run with /data/hyeongchanahn/envs/adctox/bin/python")
 
 
 # ------------------------------------------------------------------ label parsing (src/adctox/validation/label_change.py)
@@ -167,7 +164,7 @@ _TABLE = ("import json, runpy, sys\n"
           "else: sys.path.insert(0, 'ml')\n"
           "import recommend as RC\n"
           "a = json.loads(sys.argv[2]); conds = a['conditions']\n"
-          "RC.PRIORITY = dict(zip(conds, a.get('priority', []))); RC.FALLBACK = {c: a['fallback'] for c in conds} if a.get('fallback') else {}\n"
+          "RC.PRIORITY = dict(zip(conds, a.get('priority', [])))\n"
           "if RC.HAS_LEARNED: RC.analyze_conditions(conds)\n"
           "rows, s, notes, ck = RC.recommend(conds, {}, a.get('raw')); RC.render(rows, s, notes, ck, raw=a.get('raw'))\n")
 
@@ -222,11 +219,8 @@ def test_portable_build_opens_every_result_panel(tmp_path):
     n, mech = map(int, run.stdout.split()); assert n > 10 and mech == n
 
 
-_HF = pathlib.Path.home() / ".cache/huggingface/hub"
-_FULL_MODELS = {"BioLORD-2023": _HF / "models--FremyCompany--BioLORD-2023/snapshots/167aab527b238a50ca65224e6319215d2ff4fc9f",
-                "SapBERT": _HF / "models--cambridgeltl--SapBERT-from-PubMedBERT-fulltext/snapshots/090663c3ae57bf35ffe4d0d468a2a88d03051a4d",
-                "mondo_index.npz": pathlib.Path("/data/hyeongchanahn/adctox/ml_cache/mondo_index.npz"),
-                "vuln_biolord.pt": pathlib.Path("/data/hyeongchanahn/adctox/ml_cache/vuln_biolord.pt")}
+_BUNDLE = pathlib.Path.home() / ".local/share/adctox/models/current"     # the installed bundle, read only
+_FULL_MODELS = {k: _BUNDLE / k for k in ("ScratchJudge", "mondo_index.npz")}
 
 
 _MODEL_PY = "/data/hyeongchanahn/envs/adctox/bin/python"          # the environment with torch / transformers
@@ -234,15 +228,15 @@ _MODEL_PY = "/data/hyeongchanahn/envs/adctox/bin/python"          # the environm
 
 @pytest.mark.skipif(not (all(p.exists() for p in _FULL_MODELS.values()) and pathlib.Path(_MODEL_PY).exists()), reason="models not on this machine")
 def test_full_build_gives_the_server_result_for_typed_diseases(tmp_path):
-    """the full one-file build (server language models, FinnGen fallback) prints what the repository version prints."""
+    """the full one-file build (the organ judge) prints what the repository version prints."""
     import subprocess
     out, m = tmp_path / "adc_recommender_full.py", tmp_path / "models"; m.mkdir()
     for k, p in _FULL_MODELS.items(): (m / k).symlink_to(p)
     subprocess.run([_MODEL_PY, "-I", str(ROOT / "ml/build_portable.py"), "--full", str(out)], check=True, capture_output=True)
-    patient = dict(conditions=["alzheimer", "adhd", "heart stop", "cirrhosis", "자폐증"], fallback=0.25, raw=dict(bilirubin=2.0))
-    env = {"PATH": "/usr/bin:/bin", "NO_COLOR": "1", "HOME": str(tmp_path), "CUDA_VISIBLE_DEVICES": ""}
+    patient = dict(conditions=["alzheimer", "adhd", "heart stop", "cirrhosis", "자폐증"], raw=dict(bilirubin=2.0))
+    env = {"PATH": "/usr/bin:/bin", "NO_COLOR": "1", "HOME": str(tmp_path), "CUDA_VISIBLE_DEVICES": "", "ADC_MODEL_DIR": str(m)}
     server = _table(_MODEL_PY, None, patient, env, ROOT)
-    full = _table(_MODEL_PY, out, patient, {**env, "ADC_MODEL_DIR": str(m)}, tmp_path)
+    full = _table(_MODEL_PY, out, patient, env, tmp_path)
     assert "Alzheimer disease" in server and "autism" in server.lower() and full == server
 
 
@@ -330,31 +324,10 @@ def test_review_cases_restrictions_are_not_weakened_by_entering_labs():
 
 
 @needs_cache
-def test_learned_model_is_off_by_default():
+def test_a_registry_condition_marks_only_its_own_organ():
     import recommend as RC
-    assert RC.LEARNED_FRACTION == 0.0
     s = RC.resolve(["interstitial_lung_disease"])[0]
     assert (s > 0).sum() == 1                                # only the condition's own organ
-
-
-@needs_cache
-@needs_encoder
-def test_learned_fallback_touches_only_conditions_with_no_organ():
-    import numpy as np
-    import recommend as RC
-    conds = ["obesity", "alzheimer", "ckd_stage_3"]
-    assert RC.unresolved(conds) == ["obesity"]                 # alzheimer has a MONDO organ, ckd is in the registry
-    base = RC.resolve(["alzheimer", "ckd_stage_3"])[0]
-    try:
-        RC.FALLBACK = {"obesity": 0.5}
-        s, _, _, notes, _ = RC.resolve(conds)
-        assert "not validated" in dict(notes)["obesity"] and "not validated" not in dict(notes)["alzheimer"]
-        assert (s >= base).all() and (s > 0).sum() > (base > 0).sum()
-        RC.FALLBACK = {"obesity": 0.5}
-        assert np.array_equal(RC.resolve(["alzheimer", "ckd_stage_3"])[0], base)   # understood conditions never change
-        assert RC.unresolved(conds) == ["obesity"] and RC.FALLBACK == {"obesity": 0.5}
-    finally:
-        RC.FALLBACK = {}
 
 
 # ------------------------------------------------------------------ learned model inference matches training

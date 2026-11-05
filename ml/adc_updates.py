@@ -18,6 +18,7 @@ from adc_runtime import model_home, current_directory, pointer_mode
 
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular", "dermatologic", "metabolic_endocrine", "musculoskeletal", "infectious_immune", "otologic"]
 MAX_MANIFEST_BYTES = 2 * 1024 * 1024
+ARCHITECTURES = ("scratch-judge-v1", "biolord-twotower-v1")     # models 0.8+: the organ judge and a name index; 0.7 also carries the encoders (rollback)
 
 
 class UpdateError(Exception):
@@ -52,7 +53,7 @@ def _open(url, allow_local=False):
 def validate_manifest(data, allow_local=False):
     if not isinstance(data, dict) or data.get("schema_version") != 1:
         raise UpdateError("Unsupported model manifest.")
-    if data.get("runtime_api") != RUNTIME_API or data.get("architecture") != "biolord-twotower-v1" or data.get("axes") != AXES:
+    if data.get("runtime_api") != RUNTIME_API or data.get("architecture") not in ARCHITECTURES or data.get("axes") != AXES:
         raise UpdateError("This model requires a different app runtime. Update the app first.")
     if not isinstance(data.get("model_version"), str) or not re.fullmatch(r"[0-9]+(?:\.[0-9]+){1,2}", data["model_version"]):
         raise UpdateError("Invalid model version.")
@@ -76,7 +77,7 @@ def validate_manifest(data, allow_local=False):
         if type(item.get("size")) is not int or not 0 < item["size"] < 2 * 1024**3:
             raise UpdateError("Invalid file size.")
         _url(item.get("url", ""), allow_local)
-    required = {"vuln_biolord.pt", "mondo_index.npz", "BioLORD-2023/config.json", "SapBERT/config.json", "BioLORD-2023/model.safetensors", "SapBERT/model.safetensors"}
+    required = {"mondo_index.npz", "ScratchJudge/judge.json", "ScratchJudge/weights.safetensors"}
     if not required <= seen:
         raise UpdateError("The model bundle is incomplete.")
     return data

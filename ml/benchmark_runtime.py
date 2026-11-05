@@ -21,12 +21,10 @@ QUERIES = ["lung hole", "xqzv blorp", "diabetic nephropathy", "asthma", "atrial 
 def one(q):
     import recommend as RC
     rep = RC.analyze_conditions([q])
-    RC.FALLBACK = {c: 0.25 for c in RC.unresolved([q])}
     rows, s, notes, _ = RC.recommend([q])
-    RC.FALLBACK = {}
     r = rep[0] if rep else {}
     return dict(query=q, source=r.get("source"), name=r.get("name"), organs=r.get("organs"),
-                estimates=[[a, round(v, 4)] for a, v in r.get("estimates", [])], s=s, order=[[x["rank"], x["adc"]] for x in rows])
+                s=s, order=[[x["rank"], x["adc"]] for x in rows])
 
 
 def peak_vram():
