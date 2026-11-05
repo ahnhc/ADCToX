@@ -1,9 +1,10 @@
 # Changelog
 
-## Unreleased: the browser is the default, `adctox-cli` for the terminal
+## 0.6.12: the browser is the default, `adctox-cli` for the terminal (Ubuntu, macOS and Windows)
 
 - **`adctox` with no argument opens the browser screens** (as `adctox --web` and `adctox-web` did); the Windows `ADCTOX.bat` and its shortcuts do too. **`adctox-cli` (`adctox --cli`) opens the terminal screens**, and on Windows `ADCTOX-cli.bat` and `adctox-cli.cmd`; Windows Terminal is used for `--cli` only. `adctox --plain` stays in the terminal. `adctox-web` and `adctox --web` still work.
 - install.sh and install.ps1 write `adctox-cli`; an installed app updated with `--update-app` writes it beside `adctox` at its first start.
+- Models stay at 0.8.
 
 ## 0.6.11: the organ judge alone reads typed text, and a 305 MB model bundle (models 0.8)
 

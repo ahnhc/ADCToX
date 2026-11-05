@@ -1,13 +1,12 @@
-ADCTOX 0.6.11: 입력한 질환은 판정 모델(x2te) 하나만 읽고, 모델 묶음이 1.4 GB에서 305 MB로 준다. Ubuntu, macOS, Windows 모두 0.6.11이다.
+ADCTOX 0.6.12: `adctox`는 브라우저 화면을 열고, 터미널 화면은 `adctox-cli`로 연다. Ubuntu, macOS, Windows 모두 0.6.12다.
 
-- **BioLORD와 SapBERT를 쓰지 않는다.** 질환 목록(registry) 연결도 판정 모델이 고른 MONDO, HPO 개념으로 한다. 같은 입력의 장기, 순위는 0.6.10과 같다(gold dev 전체).
-- **판정 모델이 실패하면 예전 linker로 넘어가지 않는다.** 입력은 Not understood로 표시되고 이유가 나온다.
-- **장기를 못 찾은 입력에 검증되지 않은 추정값을 붙이지 않는다.** Unmapped 줄에만 나온다.
-- 검색창 AI 추천은 판정 모델이 고른 가까운 질환 이름이다. 증상 문장 검색은 글자 단위 비교로 한다.
+- **`adctox`는 브라우저에서 시작한다.** `adctox-web`, `adctox --web`도 그대로 쓸 수 있다.
+- **`adctox-cli`(`adctox --cli`)는 같은 다섯 화면을 터미널에서 연다.** `adctox --plain`은 그대로 터미널에서 질문에 답하는 방식이다.
+- Windows: `ADCTOX.bat`와 바로가기는 브라우저를 연다. 터미널은 `ADCTOX-cli.bat` 또는 `adctox-cli` 명령으로 연다(Windows Terminal이 있으면 그 창).
+- 분석과 모델은 0.6.11과 같다(모델 0.8).
 
-모델 0.8을 받는다. 앱을 먼저 올린 다음 모델을 올린다.
+이미 설치했다면 앱만 올린다. `adctox-cli`는 올린 뒤 처음 실행할 때 `adctox` 옆에 생긴다.
 
 ```bash
 adctox --update-app
-adctox --update-models
 ```
