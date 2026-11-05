@@ -218,6 +218,19 @@ def test_plan_lists_only_changed_files_and_verify_finds_corruption(server, tmp_p
     assert updates.verify(tmp_path) == ["ScratchJudge/weights.safetensors"]
 
 
+def test_same_size_corruption_found_by_verify_is_downloaded_again(server, tmp_path):
+    manifest = make_manifest(server)
+    updates.install(manifest, tmp_path, allow_local=True)
+    blob = tmp_path / "blobs" / next(i["sha256"] for i in manifest["files"] if i["path"] == "ScratchJudge/weights.safetensors")
+    good = blob.read_bytes()
+    blob.write_bytes(bytes([good[0] ^ 1]) + good[1:])                       # same size, so only hashing can tell
+    assert updates.verify(tmp_path) == ["ScratchJudge/weights.safetensors"]
+    assert updates.plan(manifest, tmp_path)["download"] == ["ScratchJudge/weights.safetensors"]
+    result = updates.install(manifest, tmp_path, allow_local=True)
+    assert not result["up_to_date"] and result["downloaded"] == ["ScratchJudge/weights.safetensors"]
+    assert (selected_bundle(tmp_path) / "ScratchJudge/weights.safetensors").read_bytes() == good
+
+
 def test_windows_pointer_mode_installs_switches_and_rolls_back_without_symlinks(server, tmp_path, monkeypatch):
     """Windows records the active bundle in current.txt and copies blobs where hard links fail (FAT, other volume)."""
     import adc_runtime

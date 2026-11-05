@@ -140,9 +140,10 @@ def plan(manifest, home=None):
     root = Path(home) if home else model_home(); verified = _load_verified(root); current = current_info(root)
     installed = {f["sha256"] for f in (current or {}).get("manifest", {}).get("files", [])}
     download, reuse = [], []
+    predates_list = not _verified_path(root).exists()                        # once the list exists, a blob missing from it failed verification
     for item in manifest["files"]:
         blob = root / "blobs" / item["sha256"]
-        legacy = item["sha256"] not in verified                              # installed before the verified list existed
+        legacy = predates_list and item["sha256"] not in verified
         if legacy and item["sha256"] in installed and blob.is_file() and blob.stat().st_size == item["size"]:
             _verified_path(root).parent.mkdir(parents=True, exist_ok=True); _remember(root, verified, item["sha256"], blob)
         (reuse if _trusted(root, verified, item) else download).append(item)
