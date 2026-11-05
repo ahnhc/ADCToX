@@ -23,10 +23,10 @@ task_env="$task_prefix/venvs/runtime-1"
 mkdir -p "$task_prefix/apps" "$task_prefix/venvs" "$task_bin"
 
 python_ok() {   # a Python 3.12+ that can make a virtual environment with pip
-  "$1" -c 'import sys, venv, ensurepip; assert sys.version_info >= (3, 12)' >/dev/null 2>&1
+  "$1" -I -c 'import sys, venv, ensurepip; assert sys.version_info >= (3, 12)' >/dev/null 2>&1
 }
 task_python=""
-if [[ -x "$task_env/bin/python" ]] && "$task_env/bin/python" -c 'import sys; assert sys.version_info >= (3, 12)' >/dev/null 2>&1; then
+if [[ -x "$task_env/bin/python" ]] && "$task_env/bin/python" -I -c 'import sys; assert sys.version_info >= (3, 12)' >/dev/null 2>&1; then
   task_python="$task_env/bin/python"                       # reinstall or update: keep the existing runtime
 else
   for c in ${ADCTOX_PYTHON:-} python3.14 python3.13 python3.12 python3; do
@@ -50,7 +50,7 @@ fi
 
 curl --proto '=https' --tlsv1.2 -fsSL --retry 2 "$task_manifest" -o "$task_tmp/app.json"
 task_fields=()
-while IFS= read -r line; do task_fields+=("$line"); done < <("$task_python" - "$task_tmp/app.json" <<'PY'
+while IFS= read -r line; do task_fields+=("$line"); done < <("$task_python" -I - "$task_tmp/app.json" <<'PY'
 import json,re,sys,urllib.parse
 d=json.load(open(sys.argv[1])); assert d['schema_version']==1 and d['runtime_api']==1
 assert re.fullmatch(r'\d+\.\d+(?:\.\d+)?',d['app_version'])
@@ -65,7 +65,7 @@ PY
 task_version="${task_fields[0]}"
 echo "Installing ADCTOX $task_version ($task_os $task_arch)"
 curl --proto '=https' --tlsv1.2 -fsSL --retry 2 --max-filesize "${task_fields[3]}" "${task_fields[1]}" -o "$task_tmp/app.tar.gz"
-"$task_python" - "$task_tmp" "${task_fields[2]}" "${task_fields[3]}" <<'PY'
+"$task_python" -I - "$task_tmp" "${task_fields[2]}" "${task_fields[3]}" <<'PY'
 import hashlib,pathlib,sys,tarfile
 p=pathlib.Path(sys.argv[1]);a=p/'app.tar.gz'
 assert a.stat().st_size==int(sys.argv[3]),'App download size mismatch'
@@ -77,22 +77,22 @@ with tarfile.open(a) as t:
  t.extractall(p/'app',filter='data') if sys.version_info>=(3,12) else t.extractall(p/'app')
 PY
 if [[ ! -x "$task_env/bin/python" ]]; then
-  "$task_python" -m venv "$task_env" || { echo 'Could not create a virtual environment (on Ubuntu: install python3-venv), then rerun.' >&2; exit 1; }
+  "$task_python" -I -m venv "$task_env" || { echo 'Could not create a virtual environment (on Ubuntu: install python3-venv), then rerun.' >&2; exit 1; }
 fi
 if [[ "${ADCTOX_SKIP_DEPS:-0}" != 1 ]]; then
   if [[ "$task_os" == Linux ]]; then
-    "$task_env/bin/python" -m pip install --disable-pip-version-check "torch==${task_fields[4]}" --index-url https://download.pytorch.org/whl/cpu
+    "$task_env/bin/python" -I -m pip install --disable-pip-version-check "torch==${task_fields[4]}" --index-url https://download.pytorch.org/whl/cpu
   else
-    "$task_env/bin/python" -m pip install --disable-pip-version-check "torch==${task_fields[4]}"      # macOS: the PyPI build (CPU and Apple GPU)
+    "$task_env/bin/python" -I -m pip install --disable-pip-version-check "torch==${task_fields[4]}"      # macOS: the PyPI build (CPU and Apple GPU)
   fi
-  "$task_env/bin/python" -m pip install --disable-pip-version-check -r "$task_tmp/app/requirements-cpu.txt"
+  "$task_env/bin/python" -I -m pip install --disable-pip-version-check -r "$task_tmp/app/requirements-cpu.txt"
 fi
 if [[ "${ADCTOX_SKIP_MODELS:-0}" != 1 ]]; then
   ADC_MODEL_HOME="$task_prefix/models" "$task_env/bin/python" -I "$task_tmp/app/adc_recommender_full.py" --update-models
 fi
 task_release="$task_prefix/apps/$task_version-${task_fields[2]:0:12}"
 if [[ ! -d "$task_release" ]]; then mv "$task_tmp/app" "$task_release"; fi
-"$task_env/bin/python" - "$task_prefix" "$task_release" "$task_bin" <<'PY'
+"$task_env/bin/python" -I - "$task_prefix" "$task_release" "$task_bin" <<'PY'
 import os,pathlib,shlex,sys
 prefix,release,bindir=map(pathlib.Path,sys.argv[1:]);link=prefix/'.app-next'
 link.unlink(missing_ok=True);link.symlink_to(release);os.replace(link,prefix/'current')
