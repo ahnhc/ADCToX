@@ -11,6 +11,22 @@ $App = Join-Path $Root 'app'
 $Bin = Join-Path $Root 'bin'
 if (-not [Environment]::Is64BitOperatingSystem) { throw 'ADCTOX needs 64-bit Windows.' }
 
+function Install-Tree($New, $Target) {   # nothing is deleted until the new copy is in place; a running ADCTOX is detected first
+    if (Test-Path $Target) {   # renaming a folder works even while a program in it runs, so probe the loaded files instead
+        foreach ($f in Get-ChildItem $Target -Recurse -File -Include *.exe, *.dll, *.pyd -ErrorAction SilentlyContinue) {
+            try { [IO.File]::Open($f.FullName, 'Open', 'ReadWrite', 'None').Dispose() }
+            catch { throw "ADCTOX is running ($($f.Name) is in use). Close it, then run the installer again; nothing was changed." }
+        }
+    }
+    $Aside = "$Target.old-" + [Guid]::NewGuid().ToString('N').Substring(0, 8)
+    Get-Item "$Target.old-*" -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+    $moved = Test-Path $Target
+    if ($moved) { Rename-Item $Target (Split-Path $Aside -Leaf) }
+    try { Move-Item $New $Target }
+    catch { Remove-Item -Recurse -Force $Target -ErrorAction SilentlyContinue; if ($moved) { Rename-Item $Aside (Split-Path $Target -Leaf) }; throw }
+    if ($moved) { Remove-Item -Recurse -Force $Aside -ErrorAction SilentlyContinue }
+}
+
 $m = Invoke-RestMethod -UseBasicParsing $Manifest
 if ($m.schema_version -ne 1 -or $m.url -notmatch '^https://' -or $m.sha256 -notmatch '^[0-9a-f]{64}$') { throw 'Invalid Windows release manifest.' }
 Write-Host "Installing ADCTOX $($m.app_version) ($([math]::Round($m.size / 1MB)) MB)"
@@ -23,8 +39,7 @@ try {
     if ((Get-FileHash $zip -Algorithm SHA256).Hash.ToLower() -ne $m.sha256) { throw 'Download checksum mismatch; nothing was changed.' }
     Expand-Archive $zip -DestinationPath $tmp
     New-Item -ItemType Directory -Force $Root | Out-Null
-    if (Test-Path $App) { Remove-Item -Recurse -Force $App }
-    Move-Item (Join-Path $tmp 'ADCTOX') $App
+    Install-Tree (Join-Path $tmp 'ADCTOX') $App
 } finally { Remove-Item -Recurse -Force $tmp -ErrorAction SilentlyContinue }
 
 New-Item -ItemType Directory -Force $Bin | Out-Null
