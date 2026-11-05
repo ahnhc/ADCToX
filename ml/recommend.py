@@ -196,15 +196,18 @@ def _readings(rows, typed):
     return readings, len({frozenset(x["organs"]) for x in named if x["organs"]}) >= 2
 
 
+_ABBR = {}
+
+
 def _abbreviations(text):
-    """what a short input may stand for (NLM LRABR in the name index: 'SCD' is sickle cell disease, which no name resembles)."""
-    import subtypes as ST
-    try:
-        import mondo_index as MI
-        if MI._IDX is None: MI._IDX = MI._load()
-        return [dict(concept=t, name=n, organs=o, why="abbreviation") for t in MI.abbreviations(text) if not ST.is_subtype(t) for n, o in [MI.concept(t)] if n]
-    except Exception:
-        return []
+    """what a short input may stand for, from the disease profiles the app carries: 'SCD' is sickle cell disease, which no name resembles."""
+    import scratch_runtime as SR, suggest as SG
+    key = text.strip().lower()
+    if not _ABBR:
+        for p in SG.profiles():
+            for a in p.get("abbr", []): _ABBR.setdefault(a.lower(), []).append(p["id"])
+    rows = [(t, SR.concept(t)) for t in _ABBR.get(key, [])]
+    return [dict(concept=t, name=row[0], organs=row[1], why="abbreviation") for t, row in rows if row]
 
 
 CANCER_WORD = re.compile(r"cancer|carcinoma|tumou?r|neoplasm|malignan|metasta|\bca\b|[a-z]oma\b|leuka?emia|암|종양|육종|백혈병|림프종", re.I)

@@ -118,9 +118,12 @@ def test_a_short_input_whose_candidates_disagree_gets_the_choice_screen(judged, 
 
 
 def test_a_short_input_is_also_offered_what_it_abbreviates_and_a_name_once(judged, monkeypatch):
-    monkeypatch.setattr(RC, "_abbreviations", lambda text: [dict(concept="MONDO:7", name="sickle cell disease", organs=["haematologic"], why="abbreviation")])
+    import suggest as SG
+    monkeypatch.setattr(SG, "profiles", lambda: [dict(id="MONDO:7", abbr=["SCD"])]); RC._ABBR.clear()
     read = judged({"SCD": row("MONDO:1", "a", ["ocular"], 1.0, others=[("HP:2", "A", [], 0.9)])})
+    monkeypatch.setattr(SR, "concept", lambda c, path=None: ("sickle cell disease", ["haematologic"], "label") if c == "MONDO:7" else None)
     link = read("SCD")[2]
+    RC._ABBR.clear()
     assert [(o["mondo"], o["why"]) for o in link["readings"]] == [("MONDO:1", "closest name"), ("MONDO:7", "abbreviation")] and link["ambiguous"]
 
 
