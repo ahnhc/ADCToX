@@ -35,10 +35,12 @@
 ],
 "ckd_stage_4_5": [
 "HP:0012626>",
-"HP:0003774>",
-"MONDO:0004375>"
+"HP:0003774>"
 ],
-"dialysis": [],
+"dialysis": [
+"MONDO:0004375>",
+"MONDO:0975708"
+],
 "heart_failure": [
 "MONDO:0005252>"
 ],
@@ -400,7 +402,7 @@
 "MONDO:0004279": "peripheral_neuropathy",
 "MONDO:0004280": "peripheral_neuropathy",
 "MONDO:0004372": "peripheral_neuropathy",
-"MONDO:0004375": "ckd_stage_4_5",
+"MONDO:0004375": "dialysis",
 "MONDO:0004463": "anaemia_chronic",
 "MONDO:0004546": "peripheral_neuropathy",
 "MONDO:0004549": "interstitial_lung_disease",
@@ -1633,6 +1635,7 @@
 "MONDO:0971010": "peripheral_neuropathy",
 "MONDO:0971150": "peripheral_neuropathy",
 "MONDO:0971152": "hearing_loss",
+"MONDO:0975708": "dialysis",
 "MONDO:0975798": "anaemia_chronic",
 "MONDO:0975829": "anaemia_chronic",
 "MONDO:0975895": "interstitial_lung_disease",

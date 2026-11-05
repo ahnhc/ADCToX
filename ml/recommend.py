@@ -54,6 +54,7 @@ EN = {"haematologic": "Haematologic", "hepatic": "Hepatic", "cardiovascular": "C
 
 _reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv", encoding="utf-8"))}
 _by_label = {r["label"].lower(): r["id"] for r in _reg.values()}
+_by_label.update(dict.fromkeys(("esrd", "eskd", "hemodialysis", "haemodialysis", "peritoneal dialysis", "투석", "혈액투석", "복막투석"), "dialysis"))    # the judge may link these to no ESRD or dialysis concept
 _by_concept = json.load(open(R + "conf/registry_concepts.json", encoding="utf-8"))["concepts"]   # ml/registry_concepts.py
 
 

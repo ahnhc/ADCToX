@@ -75,3 +75,32 @@ def test_every_rule_threshold_is_reached_when_the_value_is_not_entered():
         if rule["domain"] not in organ or not any(isinstance(v, numbers.Number) and not isinstance(v, bool) for v in rule["when"].values()): continue
         verdict = RS.judge(RS.Patient(organs={organ[rule["domain"]]}), [rule["adc"]], rules)[rule["adc"]]
         assert any(r is rule for _, r in verdict.possible), rule
+
+
+def test_belantamab_platelets_not_entered_may_be_avoid():
+    rules = RC.RS.load_rules(); adc = "belantamab-mafodotin"
+    open_ = RC.RS.judge(RC.RS.Patient(organs={"haematologic"}), [adc], rules)[adc]
+    assert RC.RS.summary(open_) == "Avoid? (blood 2.3)" and open_.inputs == ["Platelets"]
+    assert RC.RS.summary(RC.RS.judge(RC.RS.Patient(organs={"haematologic"}, platelets=20), [adc], rules)[adc]) == "Avoid (blood 2.3)"
+    assert RC.RS.summary(RC.RS.judge(RC.RS.Patient(organs={"haematologic"}, platelets=25), [adc], rules)[adc]) == "-"
+
+@pytest.mark.parametrize("typed", ["ESRD", "ESKD", "hemodialysis", "Haemodialysis", "peritoneal dialysis", "dialysis", "투석", "혈액투석", "복막투석"])
+def test_typed_esrd_or_dialysis_counts_as_on_dialysis(typed):
+    assert RC.resolve([typed])[2] == {"dialysis"} and RC.unresolved([typed]) == []
+    verdict = row_of(RC.recommend([typed], None, {"egfr": 20})[0], "inotuzumab-ozogamicin")["verdict"]
+    assert [c for c, r in verdict.known if r["domain"] == "renal"] == ["insufficient_data"]
+
+
+@pytest.mark.parametrize("concept, name, organs", [("MONDO:0004375", "end stage renal failure", ["renal"]), ("MONDO:0975708", "dialysis disequilibrium syndrome", ["neurologic", "renal"])])
+def test_the_esrd_and_dialysis_concepts_stand_for_dialysis_linked_or_picked(monkeypatch, concept, name, organs):
+    _typed(monkeypatch, concept, name, organs)
+    assert RC.resolve(["kidneys gone"])[2] == {"dialysis"}
+    verdict = row_of(RC.recommend(["kidneys gone"], None, {"egfr": 20})[0], "inotuzumab-ozogamicin")["verdict"]
+    assert [c for c, r in verdict.known if r["domain"] == "renal"] == ["insufficient_data"]
+    _picked(monkeypatch, "kidneys gone", concept, name, organs)
+    assert RC.resolve(["kidneys gone"])[2] == {"dialysis"}
+
+
+def test_ckd_stage_5_is_not_read_as_dialysis(monkeypatch):
+    _typed(monkeypatch, "HP:0003774", "Stage 5 chronic kidney disease", ["renal"])
+    assert RC.resolve(["stage 5"])[2] == {"ckd_stage_4_5"}

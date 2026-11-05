@@ -8,7 +8,7 @@ that mean it; "ID>" also takes every is_a descendant (MONDO, HPO), "ID" the conc
 'autoimmune disease' would otherwise take hundreds of diseases), "!ID" leaves that concept and its descendants out of the
 condition (MONDO files primary biliary cholangitis under cirrhosis). A concept under several anchors goes to the nearest one
 ('diabetic neuropathy' is under 'peripheral neuropathy'), ties to the earlier condition in the registry. Prior exposures,
-procedures and measurements (dialysis, reduced LVEF) have no anchor: they are picked from the list.
+procedures and measurements (reduced LVEF) have no anchor: they are picked from the list.
 
 The registry's own mondo_id column stays as it was (an older audit accepts a broader term on the same organ there, and
 scripts/derive_organ_axes.py reads it); it is not used for this match.
@@ -32,8 +32,8 @@ ANCHORS = {
     "hepatic_vod_history": ["MONDO:0019514>"],
     "nafld": ["MONDO:0013209>"],
     "ckd_stage_3": ["HP:0012625>", "MONDO:0005300", "HP:0012622"],                  # stage 3; unstaged CKD alone
-    "ckd_stage_4_5": ["HP:0012626>", "HP:0003774>", "MONDO:0004375>"],              # stage 4, stage 5, end stage renal failure
-    "dialysis": [],
+    "ckd_stage_4_5": ["HP:0012626>", "HP:0003774>"],                                # stage 4, stage 5
+    "dialysis": ["MONDO:0004375>", "MONDO:0975708"],                                # end stage renal failure (the label rules' esrd counts dialysis); dialysis disequilibrium syndrome
     "heart_failure": ["MONDO:0005252>"],
     "reduced_lvef": [],
     "prior_anthracycline": [],
