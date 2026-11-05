@@ -67,3 +67,11 @@ def test_a_picked_reading_outside_the_registry_keeps_the_fixed_severity(monkeypa
     _picked(monkeypatch, "asthma", "MONDO:0004979", "asthma", ["pulmonary"])
     s, _, ids, _, pc = RC.resolve(["asthma"])
     assert ids == set() and pc == [("asthma", {"pulmonary"}, RC.MONDO_SEVERITY)]
+
+def test_every_rule_threshold_is_reached_when_the_value_is_not_entered():
+    import numbers
+    RS = RC.RS; rules = RS.load_rules(); organ = {"renal": "renal", "hepatic": "hepatic", "blood": "haematologic", "cardiac": "cardiovascular", "metabolic": "metabolic_endocrine"}
+    for rule in rules:
+        if rule["domain"] not in organ or not any(isinstance(v, numbers.Number) and not isinstance(v, bool) for v in rule["when"].values()): continue
+        verdict = RS.judge(RS.Patient(organs={organ[rule["domain"]]}), [rule["adc"]], rules)[rule["adc"]]
+        assert any(r is rule for _, r in verdict.possible), rule
