@@ -55,6 +55,18 @@ def concept_via(concept):
     return _ORG[folder()].get(concept, (None, None))[1]
 
 
+_CONCEPTS = {}
+
+
+def concept(c, path=None):
+    """(name, organs, via) of a concept in the judge's table, None when absent. No model is loaded."""
+    path = path or folder()
+    if path is None: return None
+    if path not in _CONCEPTS: _CONCEPTS[path] = json.load(open(os.path.join(path, "concepts.json"), encoding="utf-8"))
+    row = _CONCEPTS[path].get(c)
+    return (row[0], list(row[1]), row[2]) if row else None
+
+
 def load(path=None):
     path = path or folder()
     with _LOCK:
@@ -88,23 +100,38 @@ def _outputs(M, texts, bs=64):
     return np.concatenate(zo), np.concatenate(zv), np.concatenate(va)
 
 
+NEAR, CANDIDATES = 64, 8        # strings looked at, concepts kept
+
+
+def _candidates(M, sims, near, first):
+    best = {}
+    for i in near[np.argsort(-sims[near])]:
+        if sims[i] < M["j"]["theta"]: break
+        best.setdefault(M["ids"][i], float(sims[i]))
+    order = ([first] if first in best else []) + [c for c in best if c != first]
+    return [dict(concept=c, name=M["C"].get(c, ["", [], ""])[0], organs=list(M["C"].get(c, ["", [], ""])[1]), via=M["C"].get(c, ["", [], ""])[2], sim=best[c]) for c in order[:CANDIDATES]]
+
+
 def judge(texts, path=None):
     """-> one dict per text: concept (or None), name, organs, via ("label", "record", "name" or None), valid, ok, sim, and p: the
-    calibrated organ output on the text itself, {axis: probability} for all 13 (what the screens show as the organ probabilities)."""
+    calibrated organ output on the text itself, {axis: probability} for all 13 (what the screens show as the organ probabilities);
+    judged: the organs that output gives; candidates: the concepts nearest the text at or above theta, the linked concept first,
+    [dict(concept, name, organs, via, sim)]."""
     texts = list(texts)
     if not texts: return []
     M = load(path); j = M["j"]; AX = j["axes"]
-    zo, zv, va = _outputs(M, texts); S = va @ M["E"].T; jj = S.argmax(1); s = S.max(1)
+    zo, zv, va = _outputs(M, texts); S = va @ M["E"].T; jj = S.argmax(1); s = S.max(1); near = np.argpartition(-S, NEAR - 1, axis=1)[:, :NEAR]
     Sm = np.where(M["mondo"][None], S, -9); jm = Sm.argmax(1); sm = Sm.max(1)
     po = 1 / (1 + np.exp(-zo / np.array(j["temp"]))); pv = 1 / (1 + np.exp(-zv)); rows = []
     for k in range(len(texts)):
         ok = bool(pv[k] >= j["vthr"]); p = {a: float(x) for a, x in zip(AX, po[k])}
-        if not ok: rows.append(dict(concept=None, name="", organs=[], via=None, valid=float(pv[k]), ok=False, sim=float(s[k]), p=p)); continue
+        if not ok: rows.append(dict(concept=None, name="", organs=[], via=None, valid=float(pv[k]), ok=False, sim=float(s[k]), p=p, judged=[], candidates=[])); continue
         c, sim = (M["ids"][jj[k]], float(s[k])) if s[k] >= j["theta"] else (None, float(s[k]))
         if sm[k] >= j["theta"] and sm[k] >= s[k] - j["mondo_first"]: c, sim = M["ids"][jm[k]], float(sm[k])
         name, organs, via = M["C"].get(c, ["", [], ""]) if c else ("", [], "")
-        if not organs: organs, via = [AX[a] for a in np.where(po[k] >= np.array(j["thr"]))[0]], "name"
-        rows.append(dict(concept=c, name=name, organs=list(organs), via=via, valid=float(pv[k]), ok=True, sim=sim, p=p))
+        judged = [AX[a] for a in np.where(po[k] >= np.array(j["thr"]))[0]]
+        if not organs: organs, via = judged, "name"
+        rows.append(dict(concept=c, name=name, organs=list(organs), via=via, valid=float(pv[k]), ok=True, sim=sim, p=p, judged=judged, candidates=_candidates(M, S[k], near[k], c)))
     return rows
 
 

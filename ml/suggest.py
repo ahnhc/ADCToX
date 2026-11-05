@@ -12,6 +12,7 @@ A suggestion is (kind, value, label, detail, organs): kind 'reg' (registry id), 
 (typed or Korean text that goes through the usual linking). The form turns a 'mondo' pick into free text with that reading chosen.
 """
 import glob, json, math, os, re, sys, threading, unicodedata
+import subtypes as ST
 
 HANGUL = re.compile("[가-힣]")
 ANIMAL = re.compile(r"\b(cattle|dog|horse|sheep|goat|pig|swine|chicken|poultry|rabbit|cervid|bovine|canine|feline|equine|medaka|zebrafish|non-human)\b", re.I)
@@ -215,17 +216,12 @@ def _score(q, qn, qc, row):
     return 0
 
 
-NUMBERED = re.compile(r"^(.+?),?\s+(?:type\s+)?\d+[a-z]?(?:,.*)?$", re.I)     # gene-numbered subtypes: 'Alzheimer disease 5', 'Parkinson disease 12'
-
-
 def _ranked(I, q):
     qn = _nospace(q) if HANGUL.search(q) else ""; qc = _nospace(q) if _is_cho(q) else ""; best = {}
-    digits = any(c.isdigit() for c in q)
     for row in I.rows:
         s = _score(q, qn, qc, row)
         if s:
             s += row[3] * 6; v = (row[4][0], row[4][1])
-            if not digits and NUMBERED.match(row[4][2]): s -= 30          # rare genetic subtypes only when a number is typed
             if s > best.get(v, (0,))[0]: best[v] = (s, -len(row[0]), row[4])
     return [x[2] for x in sorted(best.values(), key=lambda x: (-x[0], -x[1]))]
 
@@ -255,16 +251,39 @@ def names(RC, text, limit=8):
         c = _correct(I, q)
         if c != q: out += [s for s in _ranked(I, c) if all((x[0], x[1]) != (s[0], s[1]) for x in out)]
     seen, keep = set(), []
-    out = [_with_organs(RC, s) for s in out]
-    shown = {norm(s[2]) for s in out}
+    out = _subtypes_rule(q, [_with_organs(RC, s) for s in out], lambda g: _with_organs(RC, I.by_id.get(g) or _general_row(g)) if g in I.by_id or g in I.organs else None)
     for s in out:
         k1, k2 = norm(s[2]), _nospace(norm(s[3])) if s[3] else None     # the same Korean name is shown once
         if k1 in seen or (k2 and k2 in seen): continue
-        m = NUMBERED.match(s[2])
-        if m and not any(c.isdigit() for c in q) and norm(m.group(1)) in shown: continue    # the base disease is listed: hide its subtypes
         seen.add(k1); seen.add(k2) if k2 else None; seen.add(_nospace(k1)); keep.append(s)
         if len(keep) == limit: break
     return keep
+
+
+def _general_row(general):
+    name = ST.general_name(general)
+    return ("mondo", general, name[:1].upper() + name[1:], "", None)
+
+
+def _subtypes_rule(q, rows, row_of):
+    """numbered subtypes in a list, the rule of a read (recommend._candidates): unless the text has a number or the word type they give
+    way to their general concept, and one without a general concept goes last; with one, the general row comes before its subtypes,
+    after any subtype the text names."""
+    out, last, seen = [], [], set()
+    def put(s):
+        if s and s[1] not in seen: seen.add(s[1]); out.append(s)
+    numbered = ST.names_number(q)
+    for s in rows:
+        if s[0] != "mondo" or not ST.is_subtype(s[1]): put(s); continue
+        general = row_of(ST.general(s[1])) if ST.general(s[1]) else None
+        if not numbered:
+            if general: put(general)
+            else: last.append(s)
+            continue
+        if general and not ST.keeps(q, ST.general_map()[s[1]][0]): put(general)
+        put(s)
+    for s in last: put(s)
+    return out
 
 
 def parts(RC, text):
@@ -298,7 +317,10 @@ def semantic(RC, text, k=5):
         for c, name, _ in SR.nearest(RC.english([q])[0], k=k + 3):
             chosen = RC._chosen(c) if c.startswith(("MONDO:", "HP:")) and c not in nonhuman() else None    # the organs a pick gets
             if chosen: out.append(("mondo", c, name[:1].upper() + name[1:], "증상" if c.startswith("HP:") else "", chosen[1]))
-        return out[:k]
+        def row_of(general):
+            chosen = RC._chosen(general)
+            return ("mondo", general, chosen[0][:1].upper() + chosen[0][1:], "", chosen[1]) if chosen else None
+        return _subtypes_rule(q, out, row_of)[:k]
 
 
 # ------------------------------------------------------------------ symptoms and sentences

@@ -132,7 +132,7 @@ def _free_info(free, progress=None):
             if not SR.available(): raise RuntimeError("the installed models have no organ judge; run adctox --update-models")
             if progress: progress("judging")
             with _Loading("Loading weights / 질환 판정 모델 (x2te)", "질환 판정 모델 준비 완료", enabled=progress is None):
-                links = [_scratch_link(r) for r in SR.judge(text)]
+                links = [_scratch_link(r, typed if typed == read else f"{typed} {read}") for r, typed, read in zip(SR.judge(text), free, text)]
         except Exception as error:
             warnings.warn(f"organ judge unavailable: {error}")
             links = [dict(mondo=None, name="", sim=0.0, axes=[], gate=None, readings=[], ambiguous=False, fallback=f"{type(error).__name__}: {error}") for _ in free]
@@ -140,9 +140,54 @@ def _free_info(free, progress=None):
     return _FREE[key]
 
 
-def _scratch_link(r):
+TIE = 0.02                      # candidates this close to the first are also readings of the text (mondo_index.TIE)
+
+
+_GENERAL_ORGANS = {}
+
+
+def _general_organs(general, own):
+    """a general concept's organs, and those at least half of its labelled subtypes have: a label can be narrower than the disease
+    (hereditary hemochromatosis: no hepatic, its types have it), and the read must not lose an organ by being general."""
+    if general not in _GENERAL_ORGANS:
+        import scratch_runtime as SR, subtypes as ST
+        rows = [SR.concept(k) for k, v in ST.general_map().items() if v[1] == general]
+        rows = [x[1] for x in rows if x and x[1]]; found = list(own)
+        for organ in AXES:
+            if organ not in found and len(rows) >= 2 and sum(organ in x for x in rows) * 2 >= len(rows): found.append(organ)
+        _GENERAL_ORGANS[general] = found
+    return list(_GENERAL_ORGANS[general])
+
+
+def _candidates(r, typed):
+    """the judge's candidates as the user reads them: a numbered subtype the text does not name becomes its general concept when the
+    index has one, and a subtype without one is marked `numbered`. One row per concept, the first as the judge linked it."""
+    import scratch_runtime as SR, subtypes as ST
+    rows = r.get("candidates") or ([dict(concept=r["concept"], name=r["name"], organs=r["organs"], via=r["via"], sim=r["sim"])] if r["concept"] else [])
+    out, seen = [], set()
+    for x in rows:
+        x = dict(x)
+        if ST.is_subtype(x["concept"]) and not ST.keeps(typed, x["name"]):
+            general = ST.general(x["concept"]); row = SR.concept(general) if general else None
+            if row:
+                organs = _general_organs(general, row[1])
+                x.update(concept=general, name=row[0], organs=organs or list(r.get("judged") or []), via=row[2] if organs else "name")
+            else: x["numbered"] = True
+        if x["concept"] not in seen: seen.add(x["concept"]); out.append(x)
+    if out and out[0].get("numbered"):                          # no general concept: the next close candidate that is no subtype, else this one
+        plain = next((x for x in out[1:] if x["sim"] >= out[0]["sim"] - TIE and not x.get("numbered") and x["concept"].startswith("MONDO:")), None)
+        if plain: out.remove(plain); out.insert(0, plain)
+    return out
+
+
+def _scratch_link(r, typed=""):
     """one row of scratch_runtime.judge in the linker's format: a MONDO concept gives its organs (from its label, its MONDO record
-    or, without either, the organ output on the text); any other result is an AI judgment of the text. `judge_via` says which."""
+    or, without either, the organ output on the text); any other result is an AI judgment of the text. `judge_via` says which.
+    typed: the text as entered, which decides whether a numbered subtype stands."""
+    if r["ok"] and r["concept"]:
+        first = _candidates(r, typed)[0]
+        if first["concept"] != r["concept"]:
+            r = dict(r, concept=first["concept"], name=first["name"], organs=first["organs"] or list(r.get("judged") or []), via=first["via"] if first["organs"] else "name")
     lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, judge_via=r["via"], judge=True, p=r.get("p"),
               concept=r["concept"], concept_name=r["name"])
     if not r["ok"]: return lk
