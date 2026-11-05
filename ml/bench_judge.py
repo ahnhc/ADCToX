@@ -26,7 +26,7 @@ import json, os, re, sys, time
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ.setdefault("ADC_RESEARCH_MODE", "1")
-import adc_paths as P, eval_linking as EL, eval_a4 as E4
+import adc_paths as P, eval_linking as EL, eval_a4 as E4, missed_warnings as MW
 
 OUT = P.REPO + "ml/results/benchmarks/"
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular", "dermatologic",
@@ -205,6 +205,15 @@ def score(per, split):
     return res
 
 
+def warnings_report(per, split):
+    """missed Boxed and W&P links per language over the valid questions of a split (ml/missed_warnings.py)."""
+    Q, gold, groups, ko, SE = questions(); ev = MW.warning_counts(); out = {}
+    for lang in ("en", "ko"):
+        jx = [i for i, g in enumerate(groups) if EL.split_of(g) == split and per[lang][i] is not None and gold[i]["validity"] == "valid"]
+        out[lang] = MW.missed_warnings([(per[lang][i] or {}).get("organs", []) for i in jx], [gold[i]["organs"] for i in jx], ev)
+    return out
+
+
 def run(system, name, card=None):
     Q, gold, groups, ko, SE = questions(); check_shots(Q, ko, SE); t0 = time.time()
     S = dict(base=Base, single=Single, app=App, scratch=Scratch)[system](); per = {}
@@ -218,6 +227,7 @@ def run(system, name, card=None):
                 theta=THETA if system == "single" else None, shots=SHOTS if system == "base" else None)
     res = dict(dev=score(per, "dev")); json.dump(dict(info, per=per, scores=res), open(OUT + f"bench_{name}.json", "w", encoding="utf-8"), ensure_ascii=False)
     print(json.dumps(res, indent=1, ensure_ascii=False))
+    for lang, r in warnings_report(per, "dev").items(): print(f"missed warnings dev {lang}: {MW.line(r)}")
     if card:
         import tuning_ledger as TL
         d = res["dev"]; TL.add_bench(card, f"{system} (dev)", dict(en=d["en"]["macro_f1"], ko=d["ko"]["macro_f1"], concept_en=d["en"]["concept_acc"],
@@ -241,6 +251,9 @@ def table(names, ref, split, organs=False):
         f = lambda v: "-" if v is None else f"{v:.3f}"
         print(f"{n:16} {f(s['en']['macro_f1']):>7} {f(s['ko']['macro_f1']):>7} {f(s['en']['concept_acc']):>8} {f(s['ko']['concept_acc']):>8} "
               f"{f(s['en']['false_accept_invalid']):>8} {f(s['en']['accept_ambiguous']):>8}   {dl}")
+    print(f"\nmissed warnings ({split}); Boxed and W&P links of the gold organs that the answer drops")
+    for n in names:
+        for lang, r in warnings_report(B[n]["per"], split).items(): print(f"{n:16} {lang} {MW.line(r)}")
     if organs:
         print(f"\norgan F1 ({split}); * = at least 0.95")
         print(f"{'organ':20}" + "".join(f"{n[:12] + ' ' + l:>17}" for n in names for l in ("en", "ko")))
