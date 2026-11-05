@@ -533,6 +533,7 @@ def _handler(app):
 
 
 class _Server(ThreadingHTTPServer):
+    allow_reuse_address = os.name != "nt"          # on Windows SO_REUSEADDR lets a second process bind a port that is in use
     def handle_error(self, request, client_address):
         error = sys.exc_info()[1]
         if not isinstance(error, GONE): _log(error)
