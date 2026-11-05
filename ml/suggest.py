@@ -251,7 +251,7 @@ def names(RC, text, limit=8):
         c = _correct(I, q)
         if c != q: out += [s for s in _ranked(I, c) if all((x[0], x[1]) != (s[0], s[1]) for x in out)]
     seen, keep = set(), []
-    out = _subtypes_rule(q, [_with_organs(RC, s) for s in out], lambda g: _with_organs(RC, I.by_id.get(g) or _general_row(g)) if g in I.by_id or g in I.organs else None)
+    out = _subtypes_rule(q, [_with_organs(RC, s) for s in out], lambda g: _with_organs(RC, I.by_id.get(g) or _general_row(g)))
     for s in out:
         k1, k2 = norm(s[2]), _nospace(norm(s[3])) if s[3] else None     # the same Korean name is shown once
         if k1 in seen or (k2 and k2 in seen): continue

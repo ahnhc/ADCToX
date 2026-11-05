@@ -65,6 +65,11 @@ def test_a_child_pugh_form_names_cirrhosis_only():
     assert all("child" not in f for cid, forms in ALIASES.items() if cid != "cirrhosis" for f in forms)
 
 
+def test_a_nyha_class_form_names_heart_failure_only():
+    assert {"chf nyha iii", "heart failure nyha class 2", "hf nyha iv"} <= set(ALIASES["heart_failure"])
+    assert all("nyha" not in f for cid, forms in ALIASES.items() if cid != "heart_failure" for f in forms)
+
+
 def test_every_condition_has_two_benchmark_inputs():
     n = collections.Counter(r["condition"] for r in BENCH if r["condition"])
     assert {c: n[c] for c in REG if n[c] < 2} == {}
