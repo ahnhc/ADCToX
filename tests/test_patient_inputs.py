@@ -173,3 +173,24 @@ def test_the_terminal_lab_screen_takes_a_uln_and_reads_the_value_with_it(monkeyp
     screen.get_wch = lambda: next(it)
     assert F.labs({}) == {"bilirubin": 1.7, "uln_bilirubin": 1.0}
     assert any("Bilirubin 1.7×ULN" in f and "ULN 1 " in f for f in frames) and any("default 1.2" in f for f in frames)
+
+
+
+def test_a_picked_name_with_a_comma_stays_one_condition_and_keeps_its_reading():
+    name = "Diabetes mellitus, type 2"
+    sel = [("mondo", "MONDO:0005148", name, "", []), ("text", "asthma", "asthma", "", [])]
+    _, free, choice = form.Form._split(None, sel)
+    assert isinstance(free, str) and form.split_free(free) == [name, "asthma"] and choice == {name: "MONDO:0005148"}
+    assert [("mondo" if f in choice else "text", choice.get(f, f), f) for f in form.split_free(free)] == [x[:3] for x in sel]
+
+
+def test_a_saved_free_text_from_an_older_run_still_reads_as_before(monkeypatch, tmp_path):
+    import json
+    saved = tmp_path / "last_input.json"; saved.write_text(json.dumps(dict(picked=[], free="copd ,   asthma,heart  stop", raw={}, choice={})), encoding="utf-8")
+    monkeypatch.setattr(form, "SAVE", str(saved))
+    assert form.split_free(form.load()["free"]) == ["copd", "asthma", "heart stop"]
+
+
+def test_a_comma_in_text_typed_as_is_still_separates():
+    _, free, _ = form.Form._split(None, [("text", "copd, asthma", "copd, asthma", "", [])])
+    assert form.split_free(free) == ["copd", "asthma"]

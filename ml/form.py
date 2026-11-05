@@ -77,8 +77,8 @@ def _lab_error(field, error):
 
 
 def split_free(text):
-    """'copd ,   asthma,heart  stop' -> ['copd', 'asthma', 'heart stop']"""
-    return [" ".join(x.split()) for x in text.split(",") if x.strip()]
+    """'copd ,   asthma,heart  stop' -> ['copd', 'asthma', 'heart stop']; a picked name keeps its comma as '\\,' (form._split)"""
+    return [" ".join(x.replace("\\,", ",").split()) for x in re.split(r"(?<!\\),", text) if x.strip()]
 
 
 class _ProcessUsage:
@@ -380,9 +380,8 @@ class Form:
 
     def _split(self, sel):
         picked = {x[1] for x in sel if x[0] == "reg"}
-        free = [x[2] for x in sel if x[0] != "reg"]
         choice = {x[2]: x[1] for x in sel if x[0] == "mondo"}
-        return picked, ", ".join(free), choice
+        return picked, ", ".join(x[2].replace(",", "\\,") if x[0] == "mondo" else x[2] for x in sel if x[0] != "reg"), choice
 
     def labs(self, raw):
         import labs as LB
