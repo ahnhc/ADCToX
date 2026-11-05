@@ -54,8 +54,8 @@ EN = {"haematologic": "Haematologic", "hepatic": "Hepatic", "cardiovascular": "C
 
 _reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv", encoding="utf-8"))}
 _by_label = {r["label"].lower(): r["id"] for r in _reg.values()}
-_by_label.update(dict.fromkeys(("on dialysis", "dialysis", "esrd", "eskd", "hemodialysis", "haemodialysis", "peritoneal dialysis", "투석", "혈액투석", "복막투석"), "dialysis"))    # the judge may link these to no ESRD or dialysis concept
-_by_label.update({f"ckd{sep}{s}": c for sep in (" stage ", " ", "") for s, c in (("3", "ckd_stage_3"), ("3a", "ckd_stage_3"), ("3b", "ckd_stage_3"), ("4", "ckd_stage_4_5"), ("5", "ckd_stage_4_5"))})     # the judge reads these as end stage renal failure, which counts as ESRD
+_ALIASES = __import__("yaml").safe_load(open(R + "conf/registry_aliases.yaml", encoding="utf-8"))["aliases"]     # registry condition -> typed forms the judge misreads or misses (needs clinician review)
+_by_label.update({unicodedata.normalize("NFC", form).lower(): cid for cid, forms in _ALIASES.items() for form in forms})
 _by_concept = json.load(open(R + "conf/registry_concepts.json", encoding="utf-8"))["concepts"]   # ml/registry_concepts.py
 
 
