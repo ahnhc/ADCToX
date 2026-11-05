@@ -142,9 +142,24 @@
     document.body.append(card);
   }
   let guide = null;
-  function closeGuide() { if (guide) { guide.remove(); guide = null; } }
+  function dropGuide() { if (guide) { guide.remove(); guide = null; } }
+  function closeGuide() {
+    if (!guide) return;
+    dropGuide();
+    const opener = document.querySelector('.help');
+    if (opener) opener.focus();
+  }
+  // the guide is aria-modal: Tab stays inside it, also when focus was lost to the page behind
+  function trapTab(e) {
+    const f = [...guide.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter((el) => !el.disabled);
+    if (!f.length) { e.preventDefault(); return; }
+    const first = f[0], last = f[f.length - 1], at = document.activeElement;
+    if (!guide.contains(at)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+    else if (e.shiftKey && at === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && at === last) { e.preventDefault(); first.focus(); }
+  }
   function openGuide() {
-    closeGuide(); closeCard();
+    dropGuide(); closeCard();
     guide = h('div', { class: 'guide-scrim', onclick: (e) => { if (e.target === guide) closeGuide(); } },
       h('div', { class: 'guide', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
         h('div', { class: 'g-head' }, h('h2', { id: 'g-title', text: 'How ADCTOX works' }), h('button', { type: 'button', class: 'x', 'aria-label': 'Close', text: '×', onclick: closeGuide })),
@@ -1304,9 +1319,13 @@
   // ------------------------------------------------------------------ keys that work everywhere (the TUI's)
   document.addEventListener('keydown', (e) => {
     if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (guide) {                           // the open guide owns the keyboard; the step behind it stays put
+      if (e.key === 'Escape') { e.preventDefault(); closeGuide(); }
+      else if (e.key === 'Tab') trapTab(e);
+      return;
+    }
     if (e.key === 'PageDown') { e.preventDefault(); next(); }
     else if (e.key === 'PageUp') { e.preventDefault(); prev(); }
-    else if (e.key === 'Escape' && guide) { e.preventDefault(); closeGuide(); }
     else if (e.key === 'Escape' && S.drawer) { e.preventDefault(); closeDrawer(); }
     else if (e.key === 'Escape' && card) { e.preventDefault(); closeCard(); }
     else if (S.step === 4 && resultKeys && !e.defaultPrevented && ['ArrowDown', 'ArrowUp', 'Home', 'End', 'Enter', ' '].includes(e.key)) {

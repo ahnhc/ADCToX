@@ -20,13 +20,20 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Install with the one-line command
+        shell: bash          # the default shell has no pipefail: a failed curl would pass
         env:
           ADCTOX_FORCE_UV: ${{ matrix.uv }}
         run: curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
       - name: Run the installed app
+        shell: bash          # pipefail, so a failing --self-test cannot hide behind tee
+        env:
+          EVENT: ${{ github.event_name }}
+          TAG: ${{ github.event.release.tag_name }}
         run: |
           export PATH="$HOME/.local/bin:$PATH"
-          adctox --version
+          got=$(adctox --version)
+          echo "$got"
+          if [ "$EVENT" = release ] && [ "$got" != "${TAG#v}" ]; then echo "installed $got, release tag $TAG"; exit 1; fi
           adctox --self-test | tee out.txt
           grep -q ADC out.txt
           test -x "$HOME/.local/bin/adctox-cli" && grep -q -- '--cli "\$@"' "$HOME/.local/bin/adctox-cli"
@@ -40,10 +47,16 @@ jobs:
         run: irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
       - name: Run the installed app
         shell: pwsh
+        env:
+          EVENT: ${{ github.event_name }}
+          TAG: ${{ github.event.release.tag_name }}
         run: |
           $app = Join-Path $env:LOCALAPPDATA 'adctox\app'
-          & "$app\python\python.exe" -I "$app\launcher.py" --version
+          $got = (& "$app\python\python.exe" -I "$app\launcher.py" --version | Out-String).Trim()
+          $got
+          if ($env:EVENT -eq 'release' -and $got -ne $env:TAG.TrimStart('v')) { throw "installed $got, release tag $env:TAG" }
           & "$app\python\python.exe" -I "$app\launcher.py" --self-test | Tee-Object out.txt
+          if ($LASTEXITCODE -ne 0) { throw "self-test failed ($LASTEXITCODE)" }
           if (-not (Select-String -Path out.txt -Pattern "ADC" -Quiet)) { throw "no recommendation table" }
           if (-not (Test-Path (Join-Path $env:LOCALAPPDATA 'adctox\bin\adctox.cmd'))) { throw "adctox command missing" }
           if (-not (Test-Path (Join-Path $env:LOCALAPPDATA 'adctox\bin\adctox-cli.cmd'))) { throw "adctox-cli command missing" }
@@ -78,7 +91,7 @@ jobs:
           if ($dom -notmatch 'class="crumbs"') { $dom.Substring(0, [Math]::Min(3000, $dom.Length)); throw "Edge did not draw the page" }
       - name: Keep the page screenshot
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
         with:
           name: windows-web
           path: web.png

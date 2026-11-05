@@ -368,3 +368,87 @@ console.log("ok");
             capture_output=True, text=True,
         )
     assert result.returncode == 0, result.stderr[-900:] + result.stdout[-300:]
+
+
+PAGE = Path(__file__).resolve().parents[1] / "web" / "index.html"
+BOOT_FAILURE = Path(__file__).resolve().parent / "js" / "boot_failure.js"
+
+
+def _page_css() -> str:
+    import re
+
+    css = re.search(r"<style>(.*?)</style>", PAGE.read_text(encoding="utf-8"), re.S).group(1)
+    return re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+
+
+def _css_vars(block: str) -> dict[str, str]:
+    import re
+
+    found = re.findall(r"(--[\w-]+)\s*:\s*#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b", block)
+    return {k: "#" + (v if len(v) == 6 else "".join(c * 2 for c in v)) for k, v in found}
+
+
+def _luminance(hexcolour: str) -> float:
+    channels = [int(hexcolour[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+    lin = [c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4 for c in channels]
+    return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2]
+
+
+def _contrast(a: str, b: str) -> float:
+    hi, lo = sorted((_luminance(a), _luminance(b)), reverse=True)
+    return (hi + 0.05) / (lo + 0.05)
+
+
+def test_page_css_has_no_declarations_outside_a_rule_and_no_undefined_variables() -> None:
+    """A bare `--x:` between rules swallows the next rule, and `var(--muted)` resolves to nothing."""
+    import re
+
+    css = _page_css()
+    depth, top = 0, []
+    for ch in css:
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+        elif depth == 0:
+            top.append(ch)
+    assert not re.search(r"--[\w-]+\s*:", "".join(top)), "custom property declared outside a rule"
+    defined = set(re.findall(r"(--[\w-]+)\s*:", css))
+    used = set(re.findall(r"var\((--[\w-]+)", css))
+    assert not used - defined, f"undefined custom properties: {sorted(used - defined)}"
+    root = re.search(r":root\{(.*?)\}", css, re.S).group(1)
+    for name in ("--src-model", "--src-rule", "--src-elicited_prior"):
+        assert name in root
+
+
+def test_band_text_colours_meet_aa_contrast_at_11px() -> None:
+    import re
+
+    css = _page_css()
+    light = _css_vars(re.search(r":root\{(.*?)\}", css, re.S).group(1))
+    dark = {**light, **_css_vars(re.search(
+        r"prefers-color-scheme:dark\)\{\s*:root:not\(\[data-theme=light\]\)\{(.*?)\}", css, re.S
+    ).group(1))}
+    for theme in (light, dark):
+        for name in ("--moderate", "--none", "--ink-dim", "--low", "--high"):
+            for surface in ("--bg", "--panel"):
+                ratio = _contrast(theme[name], theme[surface])
+                assert ratio >= 4.5, f"{name} on {surface} is {ratio:.2f}:1"
+
+
+def test_page_accessibility_hooks_are_present() -> None:
+    html = PAGE.read_text(encoding="utf-8")
+    assert 'id="status" role="status" aria-live="polite"' in html
+    assert 'role="group" aria-labelledby="chips-label"' in html
+    assert 'aria-expanded="false"' in html and "aria-controls=" in html
+    assert 'setAttribute("aria-expanded"' in html
+    assert "@media(max-width:600px)" in html
+
+
+@pytest.mark.skipif(shutil.which("node") is None, reason="node not installed")
+def test_a_failed_boot_says_so_instead_of_loading_forever() -> None:
+    result = subprocess.run(
+        [shutil.which("node"), str(BOOT_FAILURE), str(PAGE)],
+        capture_output=True, text=True, timeout=60,
+    )
+    assert result.returncode == 0, result.stderr[-600:]

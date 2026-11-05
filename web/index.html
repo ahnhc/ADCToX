@@ -5,13 +5,15 @@
 <style>
   :root{
     --bg:#fbfbfa; --panel:#fff; --ink:#1a1a1a; --ink-dim:#6b6b6b; --line:#e3e3e0;
-    --low:#4a7c59; --moderate:#b8860b; --high:#a23b2d; --none:#9a9a96;
+    --low:#4a7c59; --moderate:#8a6508; --high:#a23b2d; --none:#6f6f6b;
     --accent:#2d4a6b;
+    --src-model:#2d4a6b; --src-exclusion_head:#7a5c2e; --src-elicited_prior:#6b4a6b;
+    --src-rule:#a23b2d; --src-target_expression:#2e6b5c;
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme=light]){
       --bg:#17171a; --panel:#1f1f23; --ink:#ececeb; --ink-dim:#9a9a98; --line:#30303a;
-      --low:#6fa07c; --moderate:#d4a845; --high:#cf6b5a; --none:#6a6a70; --accent:#7fa8d4;
+      --low:#6fa07c; --moderate:#d4a845; --high:#cf6b5a; --none:#8a8a90; --accent:#7fa8d4;
       --src-model:#8fb4dc; --src-exclusion_head:#c9a45e; --src-elicited_prior:#b08fb0;
       --src-rule:#cf6b5a; --src-target_expression:#6fb39f;
     }
@@ -53,8 +55,6 @@
      colour because the first question a reader has about a red organ is whether the model
      said so or a rule did -- and `elicited_prior` is the one with no training data behind
      it, so it must never read as a fitted quantity. */
-  --src-model:#2d4a6b; --src-exclusion_head:#7a5c2e; --src-elicited_prior:#6b4a6b;
-  --src-rule:#a23b2d; --src-target_expression:#2e6b5c;
   .tag{display:inline-block;font-size:11px;padding:2px 6px;border-radius:3px;
        border:1px solid var(--line);margin-left:6px;color:var(--ink-dim)}
   /* Five columns: label, interval bar, band and rate, evidence count, ordinal comparison.
@@ -69,11 +69,18 @@
        border-radius:2px;overflow:hidden}
   .ci{position:absolute;top:0;bottom:0;opacity:.3}
   .pt{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--ink)}
-  .alt{display:block;font-size:10px;color:var(--muted);letter-spacing:.02em}
+  .alt{display:block;font-size:10px;color:var(--ink-dim);letter-spacing:.02em}
   .hatch{background:repeating-linear-gradient(45deg,var(--none) 0 3px,transparent 3px 6px)}
   .why{grid-column:1/-1;margin:2px 0 8px 0;padding:7px 10px;border-left:3px solid var(--line);
        background:color-mix(in srgb, var(--panel) 92%, var(--ink) 8%);border-radius:0 4px 4px 0}
   .why[hidden]{display:none}
+  /* Below 600px the five columns no longer fit 375px: label and bar take full width. */
+  @media(max-width:600px){
+    .axis{grid-template-columns:1fr 1fr;row-gap:3px}
+    .axis>:nth-child(1),.axis>.bar,.axis>.whytoggle{grid-column:1/-1}
+    .axis>.whytoggle{justify-self:start;width:auto}
+    .axis>.cmp{text-align:left}
+  }
   .drv{display:grid;grid-template-columns:120px 68px 1fr;gap:8px;align-items:baseline;
        font-size:12px;padding:1px 0}
   .drv b{font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em}
@@ -120,15 +127,15 @@
       <label for="target">Target antigen</label>
       <select id="target"></select>
 
-      <label>Pre-existing conditions</label>
-      <div class="chips" id="chips"></div>
+      <label id="chips-label">Pre-existing conditions</label>
+      <div class="chips" id="chips" role="group" aria-labelledby="chips-label"></div>
       <p class="note">
         Conditions come from a fixed research list. This tool accepts no free text, takes
         no identifiers, and stores nothing.
       </p>
 
       <button id="go">Propose designs</button>
-      <p class="note" id="status"></p>
+      <p class="note" id="status" role="status" aria-live="polite"></p>
     </section>
 
     <section>
@@ -283,7 +290,8 @@ function axisRow(r) {
          the weighting. A dash means the source has no fitted coefficient.</div></div>`
     : "";
   const whyBtn = drv
-    ? `<button class="whytoggle" data-why="why-${r.organ_axis}">why</button>` : "";
+    ? `<button class="whytoggle" data-why="why-${r.organ_axis}" aria-expanded="false"
+      aria-controls="why-${r.organ_axis}">why</button>` : "";
   // A rate on its own is close to unreadable. An ordinal position against the chemistries
   // that have actually been built says what 0.59 means, and it is an ordinal and not a
   // percentile on purpose: roughly twenty reference chemistries cannot carry a percentile.
@@ -485,8 +493,12 @@ document.addEventListener("click", e => {
   if (!panel) return;
   panel.hidden = !panel.hidden;
   btn.textContent = panel.hidden ? "why" : "hide";
+  btn.setAttribute("aria-expanded", String(!panel.hidden));
 });
 
 document.getElementById("go").addEventListener("click", run);
-boot();
+boot().catch(e => {
+  document.getElementById("stamp").textContent = "unavailable";
+  document.getElementById("status").textContent = `error: could not load the page data (${e.message})`;
+});
 </script>
