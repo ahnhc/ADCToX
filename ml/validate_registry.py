@@ -139,4 +139,4 @@ for TAU in TAUS:
     out[f"tau_{TAU}"] = dict(summary=summ, per_condition=rows)
     print(f"\n=== TAU {TAU}: mean AUROC (0.5 = chance) ===", json.dumps(summ, indent=1), flush=True)
 os.makedirs("/home/hyeongchanahn/CONI/adctox/ml/results", exist_ok=True)
-json.dump(out, open("/home/hyeongchanahn/CONI/adctox/ml/results/validate_registry.json", "w"), indent=1, default=str)
+json.dump(out, open("/home/hyeongchanahn/CONI/adctox/ml/results/validate_registry.json", "w", encoding="utf-8"), indent=1, default=str)

@@ -216,7 +216,7 @@ def run(system, name, card=None):
     info = dict(name=name, system=system, cache=(os.environ.get("SCRATCH_DIR") if system == "scratch" else P.CACHE if system != "base" else None), minutes=round((time.time() - t0) / 60, 1),
                 revision=GJ.REV, questions=questions_sha(),
                 theta=THETA if system == "single" else None, shots=SHOTS if system == "base" else None)
-    res = dict(dev=score(per, "dev")); json.dump(dict(info, per=per, scores=res), open(OUT + f"bench_{name}.json", "w"), ensure_ascii=False)
+    res = dict(dev=score(per, "dev")); json.dump(dict(info, per=per, scores=res), open(OUT + f"bench_{name}.json", "w", encoding="utf-8"), ensure_ascii=False)
     print(json.dumps(res, indent=1, ensure_ascii=False))
     if card:
         import tuning_ledger as TL
@@ -227,7 +227,7 @@ def run(system, name, card=None):
 
 def table(names, ref, split, organs=False):
     Q, gold, groups, ko, SE = questions(); ix = [i for i, g in enumerate(groups) if EL.split_of(g) == split]
-    B = {n: json.load(open(OUT + f"bench_{n}.json")) for n in names}
+    B = {n: json.load(open(OUT + f"bench_{n}.json", encoding="utf-8")) for n in names}
     print(f"split {split}")
     print(f"{'system':16} {'EN F1':>7} {'KO F1':>7} {'EN conc':>8} {'KO conc':>8} {'inv acc':>8} {'amb acc':>8}   Δ vs {ref} [95%] EN | KO")
     for n in names:

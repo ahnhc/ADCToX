@@ -38,7 +38,7 @@ def training_pairs(T, concepts, nonhuman, held, rng):
     ex, n_q, _ = V2.extra_pairs(T, held)                            # reviewed queries + NCBI train (duplicates of the merged file are dropped in main)
     for t, P in ex.items(): pairs.setdefault(t, []).extend(P)
     n_ext = {s: 0 for s in SOURCES}; seen = set()
-    for r in map(json.loads, open(R + "external/mentions_mondo.jsonl")):
+    for r in map(json.loads, open(R + "external/mentions_mondo.jsonl", encoding="utf-8")):
         if r["split"] != "train" or len(r["mondo"]) != 1: continue
         t = r["mondo"][0]
         if t not in T or t in held or t in nonhuman or (t, r["mention"].lower()) in seen: continue
@@ -84,7 +84,7 @@ def main():
     T = read_obo(); idx = np.load(MI.C + "mondo_index.pre_v1.npz", allow_pickle=True); ids = [str(x) for x in idx["ids"]]
     concepts = list(dict.fromkeys(ids)); rows = [s for t in concepts for s in [T[t]["name"]] + T[t]["syn"]]
     nonhuman = {t for t in concepts if "non-human animal" in T[t]["name"]}
-    G = [json.loads(l) for l in open(EL.D + "gold_v0.jsonl")]; held = {c for g in G for c in g["concepts"]}; children = {}
+    G = [json.loads(l) for l in open(EL.D + "gold_v0.jsonl", encoding="utf-8")]; held = {c for g in G for c in g["concepts"]}; children = {}
     for t in concepts:
         for p in T[t]["parents"]: children.setdefault(p, set()).add(t)
     held |= {p for c in list(held) for p in T.get(c, {}).get("parents", [])} | {k for c in list(held) for k in children.get(c, ())}
@@ -94,13 +94,13 @@ def main():
     total_pairs = sum(map(len, pairs.values())); print("concepts", len(pairs), "pairs", total_pairs, "queries", n_q, "external", n_ext, flush=True)
     train_strings = {y.lower() for P in pairs.values() for _, y in P}
 
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); Gq = {g["qid"]: g for g in G}; gold = [dict(Gq[q["qid"]], category=q["category"]) for q in Q]
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); Gq = {g["qid"]: g for g in G}; gold = [dict(Gq[q["qid"]], category=q["category"]) for q in Q]
     groups = [q["group"] or q["qid"] for q in Q]; split = [EL.split_of(g) for g in groups]
     dev = [i for i, s in enumerate(split) if s == "dev"]; test = [i for i, s in enumerate(split) if s == "test"]
     ax = {}
     for t, a in zip(ids, idx["axes"]): ax.setdefault(t, [EL.AXES[k] for k in np.where(a > 0)[0]])
     keep = torch.tensor([t not in nonhuman for t in ids], device=FP.DEV); id_arr = np.array(ids, dtype=object)
-    ext = [r for r in map(json.loads, open(R + "external/mentions_mondo.jsonl")) if r["split"] in ("dev", "test")]
+    ext = [r for r in map(json.loads, open(R + "external/mentions_mondo.jsonl", encoding="utf-8")) if r["split"] in ("dev", "test")]
 
     def top1(tk, md, texts, Ei):
         Eq = FP.embed(tk, md, texts); out = []
@@ -145,7 +145,7 @@ def main():
     worse = [s for s, v in res["external_test"].items() if v["paired"]["hi"] < 0]
     res["deploy"] = dict(gold_ci_above_zero=res["paired_gold_test_macro_f1"]["lo"] > 0, external_worse=worse,
                          passed=res["paired_gold_test_macro_f1"]["lo"] > 0 and not worse)
-    json.dump(res, open(EL.OUT + "sapbert_ft_v3.json", "w"), indent=1)
+    json.dump(res, open(EL.OUT + "sapbert_ft_v3.json", "w", encoding="utf-8"), indent=1)
     print(json.dumps({k: res[k] for k in ("selected", "paired_gold_test_macro_f1", "paired_gold_test_concept_acc", "gold_test_f1", "deploy")}, indent=1))
     for s, v in res["external_test"].items(): print(s, "frozen %.3f selected %.3f" % (v["frozen"], v["selected"]), v["paired"], "unseen", v["unseen_strings"])
 

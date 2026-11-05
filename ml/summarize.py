@@ -3,7 +3,7 @@ Run:  /data/hyeongchanahn/envs/adctox/bin/python -I ml/summarize.py
 """
 import json, os
 R = "/home/hyeongchanahn/CONI/adctox/ml/results/"
-J = lambda n: json.load(open(R + n)) if os.path.exists(R + n) else None
+J = lambda n: json.load(open(R + n, encoding="utf-8")) if os.path.exists(R + n) else None
 a, tf, rd, kn = J("task_a_sapbert.json"), J("task_a_tfidf.json"), J("task_a_random.json"), J("knn_baseline.json")
 REG = {"pair": "known disease, known outcome, unseen pair", "prior": "unseen comorbidity", "cluster": "unseen ICD family (strictest)"}
 print("TASK A  R2 / organ-ranking gap over the lookup table [95% CI, bootstrapped over ICD families]\n")

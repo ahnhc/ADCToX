@@ -59,9 +59,9 @@ def texts(umls_all=False):
 def teacher(tag, X):
     import torch, gemma_judge as GJ, gemma_judge2 as G2
     from peft import get_peft_model, LoraConfig
-    d = P.CACHE + f"gemma_judge2_{tag}/"; info = json.load(open(d + "info.json")); cal = np.load(d + "calibration.npz")
+    d = P.CACHE + f"gemma_judge2_{tag}/"; info = json.load(open(d + "info.json", encoding="utf-8")); cal = np.load(d + "calibration.npz")
     import tuning_ledger as TL
-    card = json.load(open(TL.CARDS + f"{tag}.json")) if os.path.exists(TL.CARDS + f"{tag}.json") else {}
+    card = json.load(open(TL.CARDS + f"{tag}.json", encoding="utf-8")) if os.path.exists(TL.CARDS + f"{tag}.json") else {}
     args = card.get("args", {}); layers, rank = args.get("layers", 18), args.get("rank", 16)
     tok, lm, _ = GJ.load_backbone(layers); tok.padding_side = "right"
     lm = get_peft_model(lm, LoraConfig(r=rank, lora_alpha=2 * rank, lora_dropout=0.05, target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]))

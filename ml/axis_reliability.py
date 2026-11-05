@@ -71,7 +71,7 @@ def external():
     for r in csv.DictReader(open(RAW + "kcd/hira_sangbyeong_master_2025.9_utf8.csv", encoding="utf-8")):
         if len(r["상병기호"]) == 3 and r["영문명"]: names[r["상병기호"]] = r["영문명"]
     rr = {}
-    for r in csv.DictReader(open(RAW + "dtb_siggaard2020/MOESM1_ESM.tsv"), delimiter="\t"):
+    for r in csv.DictReader(open(RAW + "dtb_siggaard2020/MOESM1_ESM.tsv", encoding="utf-8"), delimiter="\t"):
         a = icd_axis(r["D2"])
         if a and r["D1"] in names and float(r["RR"]) > 0: rr.setdefault(r["D1"], {}).setdefault(a, []).append(np.log(float(r["RR"])))
     codes = sorted(c for c, d in rr.items() if len(d) >= 2)
@@ -99,7 +99,7 @@ def main():
         print(f"{ax:20s} internal {i['rho']:+.3f} [{i['lo']:+.3f}, {i['hi']:+.3f}] n={i['n']:5d}" if i else f"{ax:20s} internal -", "|",
               f"DTB {e['rho']:+.3f} [{e['lo']:+.3f}, {e['hi']:+.3f}] n={e['n']}" if e else "DTB -", "->", "show" if ok else "blank")
     res = dict(internal=inn, external_dtb=ext, dtb_exposures=n_codes, shown=shown, hidden=hidden)
-    json.dump(res, open(RES + "axis_reliability_v1.json", "w"), indent=1); print("hidden:", hidden)
+    json.dump(res, open(RES + "axis_reliability_v1.json", "w", encoding="utf-8"), indent=1); print("hidden:", hidden)
     if a.write:
         ck = torch.load(VM.PT, weights_only=False, map_location="cpu"); ck["axis_hidden"] = hidden; torch.save(ck, VM.PT); print("written to", VM.PT)
 

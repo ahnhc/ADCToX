@@ -13,7 +13,7 @@ from dataset_review_merge import read_out
 
 
 def main(apply):
-    man3 = json.load(open(R + "manifest3.json")); won = {"blind": 0, "current": 0, "same": 0}; changes = []
+    man3 = json.load(open(R + "manifest3.json", encoding="utf-8")); won = {"blind": 0, "current": 0, "same": 0}; changes = []
     for n, m in sorted(man3.items()):
         rows = read_out(n) or []; b = {x["key"]: x for x in json.load(open(R + f"batches/{n}.json", encoding="utf-8"))}
         for r in rows:

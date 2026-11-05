@@ -76,7 +76,7 @@ def norm(t): return re.sub(r"[\s\W_]+", "", str(t).lower())
 def eval_concepts():
     """-> {normalised evaluation text: its gold concepts} for the gold queries (English and Korean) and the symptom queries."""
     ev = {}
-    Q = json.load(open(P.REPO + C + "disease_linking/raw/queries_v0.json")); G = {x["qid"]: x for x in map(json.loads, open(P.REPO + C + "disease_linking/gold_v0.jsonl"))}
+    Q = json.load(open(P.REPO + C + "disease_linking/raw/queries_v0.json", encoding="utf-8")); G = {x["qid"]: x for x in map(json.loads, open(P.REPO + C + "disease_linking/gold_v0.jsonl", encoding="utf-8"))}
     ko = {}
     for f in glob.glob(P.REPO + C + "judge2/gen/koeval_*.jsonl"):
         for l in open(f, encoding="utf-8"):
@@ -133,15 +133,15 @@ def checks(items, outputs_of):
 
 def write_card(tag, card):
     os.makedirs(CARDS, exist_ok=True); p = CARDS + f"{tag}.json"
-    old = json.load(open(p)) if os.path.exists(p) else {}
-    json.dump(dict(old, **card), open(p, "w"), indent=1, ensure_ascii=False)
+    old = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+    json.dump(dict(old, **card), open(p, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 
 
 def add_bench(tag, name, res):
     """benchmark scores of a run's model, from ml/bench_judge.py."""
     p = CARDS + f"{tag}.json"
     if not os.path.exists(p): return
-    c = json.load(open(p)); c.setdefault("bench", {})[name] = res; json.dump(c, open(p, "w"), indent=1, ensure_ascii=False)
+    c = json.load(open(p, encoding="utf-8")); c.setdefault("bench", {})[name] = res; json.dump(c, open(p, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 
 
 def _diff(a, b):
@@ -161,7 +161,7 @@ def _diff(a, b):
 
 
 def render():
-    cards = [json.load(open(f)) for f in glob.glob(CARDS + "*.json")]
+    cards = [json.load(open(f, encoding="utf-8")) for f in glob.glob(CARDS + "*.json")]
     cards.sort(key=lambda c: (c.get("started", ""), c.get("tag", "")))
     L = ["# Gemma judge 학습 기록", "",
          "`ml/tuning_ledger.py`가 `ml/results/tuning/*.json`에서 만든다. 손으로 고치지 않는다.",

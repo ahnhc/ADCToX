@@ -51,7 +51,7 @@ EN = {"haematologic": "Haematologic", "hepatic": "Hepatic", "cardiovascular": "C
       "gastrointestinal": "GI", "neurologic": "Neurologic", "ocular": "Ocular", "dermatologic": "Dermatologic", "metabolic_endocrine": "Metabolic",
       "musculoskeletal": "Musculoskeletal", "infectious_immune": "Immune", "otologic": "Otologic"}
 
-_reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv"))}
+_reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv", encoding="utf-8"))}
 _by_label = {r["label"].lower(): r["id"] for r in _reg.values()}
 _by_concept = json.load(open(R + "conf/registry_concepts.json", encoding="utf-8"))["concepts"]   # ml/registry_concepts.py
 
@@ -365,7 +365,7 @@ def checks(ids, E, V):
     """patient checklist: guideline / label tests the conditions call for, and the lab values that would settle a '?' restriction."""
     import yaml
     out = []
-    for c in yaml.safe_load(open(R + "conf/patient_checks.yaml"))["checks"]:
+    for c in yaml.safe_load(open(R + "conf/patient_checks.yaml", encoding="utf-8"))["checks"]:
         if set(c["conditions"]) & ids:
             names = [E[a]["name"] for a in sorted(E) if c.get("headings") and any(re.search(c["headings"], h.lower()) for o in E[a]["organs"].values() for _, h in o["headings"])]
             out.append((c["test"], names, c["source"]))

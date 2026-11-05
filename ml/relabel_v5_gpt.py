@@ -49,7 +49,7 @@ def problems(stage, want, text):
 
 
 def mock(stage, items):
-    v4 = json.load(open(R.V5 + "input/v4_labels.json")); rng = random.Random(stage + (items[0].get("record") or items[0])["id"]); out = []
+    v4 = json.load(open(R.V5 + "input/v4_labels.json", encoding="utf-8")); rng = random.Random(stage + (items[0].get("record") or items[0])["id"]); out = []
     for it in items:
         t = (it.get("record") or it)["id"]; o = v4.get(t, []); p = o[:1]; i = [a for a in o[1:]]
         if stage.startswith("pass") and o and rng.random() < 0.3: i = i[:-1] if i else ["otologic"] if "otologic" not in p else []
@@ -76,7 +76,7 @@ def run_batch(a, client, f):
         except Exception as e:
             text, bad = "", [f"error: {type(e).__name__}: {str(e)[:200]}"]; time.sleep(min(60, 5 * attempt))
         with LOCK:
-            open(R.V5 + "runs.jsonl", "a").write(json.dumps(dict(stage=a.stage, batch=os.path.basename(f), model="mock" if a.mock else a.model, effort=a.effort,
+            open(R.V5 + "runs.jsonl", "a", encoding="utf-8").write(json.dumps(dict(stage=a.stage, batch=os.path.basename(f), model="mock" if a.mock else a.model, effort=a.effort,
                                                                  attempt=attempt, seconds=round(time.time() - t0, 1), ok=not bad, problems=bad[:3], **usage)) + "\n")
         if not bad:
             open(out, "w", encoding="utf-8").write(text.strip() + "\n"); return "ok"

@@ -25,7 +25,7 @@ def export(judge, evidence, out):
     from safetensors.torch import save_file
     from build_linking_pools import read_obo
     judge, evidence = judge.rstrip("/") + "/", evidence.rstrip("/") + "/"
-    cfg = json.load(open(judge + "calibration.json")); bb = cfg["backbone"].rstrip("/") + "/"; os.makedirs(out, exist_ok=True)
+    cfg = json.load(open(judge + "calibration.json", encoding="utf-8")); bb = cfg["backbone"].rstrip("/") + "/"; os.makedirs(out, exist_ok=True)
     for f in ("config.json", "tokenizer.json", "tokenizer_config.json"): shutil.copy(bb + f, os.path.join(out, f))
     sd = torch.load(judge + "model.pt", map_location="cpu")
     save_file({k: v.half().contiguous() for k, v in sd.items()}, os.path.join(out, "weights.safetensors"))
@@ -33,7 +33,7 @@ def export(judge, evidence, out):
     np.savez(os.path.join(out, "index.npz"), E=Z["E"].astype(np.float16), ids=np.array(ids))
     import scratch_judge as SJ
     labels, _ = LM.load_organ_labels(); T = read_obo(); AX = SJ.AXES
-    E = np.load(evidence + "pred.npz", allow_pickle=True); thr = np.array(json.load(open(evidence + "calibration.json"))["thr"])
+    E = np.load(evidence + "pred.npz", allow_pickle=True); thr = np.array(json.load(open(evidence + "calibration.json", encoding="utf-8"))["thr"])
     ev = {str(i): [AX[a] for a in np.where(p >= thr)[0]] for i, p in zip(E["ids"], E["p"].astype(np.float32))}
     concepts = {}
     for c in sorted(set(ids)):
@@ -41,11 +41,11 @@ def export(judge, evidence, out):
         if lo: concepts[c] = [T[c]["name"], lo, "label"]
         elif ev.get(c): concepts[c] = [T[c]["name"], ev[c], "record"]
         else: concepts[c] = [T.get(c, {}).get("name", c), [], ""]
-    json.dump(concepts, open(os.path.join(out, "concepts.json"), "w"), ensure_ascii=False, separators=(",", ":"))
+    json.dump(concepts, open(os.path.join(out, "concepts.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     j = dict(axes=AX, temp=cfg["temp"], thr=cfg["thr"], vthr=cfg["vthr"], theta=cfg["theta"], maxlen=cfg["maxlen"], mondo_first=MONDO_FIRST,
              judge=os.path.basename(judge.rstrip("/")), evidence=os.path.basename(evidence.rstrip("/")), backbone=cfg.get("revision"),
              labels=os.environ.get("ADCTOX_LABELS", "v4"))
-    json.dump(j, open(os.path.join(out, "judge.json"), "w"), indent=1)
+    json.dump(j, open(os.path.join(out, "judge.json"), "w", encoding="utf-8"), indent=1)
     print(f"-> {out}: {len(ids):,} names, {len(concepts):,} concepts "
           f"({sum(v[2] == 'label' for v in concepts.values()):,} labelled, {sum(v[2] == 'record' for v in concepts.values()):,} from the record)")
 

@@ -58,7 +58,7 @@ def score(set_, man, rows):
 
 
 def main(apply):
-    man = json.load(open(R + "manifest.json")); rep = {}; queue = []; changes = {s: [] for s in ("organ", "sym", "ko", "junk", "profiles", "mondo_ko")}
+    man = json.load(open(R + "manifest.json", encoding="utf-8")); rep = {}; queue = []; changes = {s: [] for s in ("organ", "sym", "ko", "junk", "profiles", "mondo_ko")}
     missing = []
     for name, m in sorted(man.items()):
         set_ = name.rsplit("_", 1)[0]; rows = read_out(name)

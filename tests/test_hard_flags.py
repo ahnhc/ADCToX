@@ -180,7 +180,7 @@ def test_a_flag_that_would_fire_for_every_chemistry_is_refused() -> None:
             "source_label": "X", "source_section": "Y", "quote": "z",
         }],
     }
-    with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False) as fh:
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".yaml", delete=False) as fh:
         yaml.safe_dump(doc, fh)
         path = fh.name
     with pytest.raises(ValueError, match="neither a mechanism nor a payload"):
@@ -188,7 +188,7 @@ def test_a_flag_that_would_fire_for_every_chemistry_is_refused() -> None:
 
     doc["flags"][0]["payloads"] = ["DXd"]
     doc["flags"][0]["comorbidities"] = []
-    with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False) as fh:
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".yaml", delete=False) as fh:
         yaml.safe_dump(doc, fh)
         path2 = fh.name
     with pytest.raises(ValueError, match="no comorbidity"):

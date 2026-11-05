@@ -21,7 +21,7 @@ R = "/home/hyeongchanahn/CONI/adctox/data/curated/"; SEED = 7; N_BATCH = 16
 
 
 def held_out(T):
-    G = [json.loads(l) for l in open(R + "disease_linking/gold_v0.jsonl")]; held = {c for g in G for c in g["concepts"]}; ch = {}
+    G = [json.loads(l) for l in open(R + "disease_linking/gold_v0.jsonl", encoding="utf-8")]; held = {c for g in G for c in g["concepts"]}; ch = {}
     for t, e in T.items():
         for p in e["parents"]: ch.setdefault(p, set()).add(t)
     return held | {p for c in list(held) for p in T.get(c, {}).get("parents", [])} | {k for c in list(held) for k in ch.get(c, ())}, G
@@ -58,7 +58,7 @@ def main():
     pool = [(t, "common") for t in common] + [(t, "synonym") for t in syn3] + [(t, "random") for t in rnd]; rng.shuffle(pool)
     print("common", len(common), "synonym", len(syn3), "random", len(rnd), "total", len(pool), "held out", len(held), flush=True)
     # calibration concepts: canonical-query best concept of each gold group, organs = gold organs of that record
-    Qs = json.load(open(R + "disease_linking/raw/queries_v0.json")); gq = {g["qid"]: g for g in G}
+    Qs = json.load(open(R + "disease_linking/raw/queries_v0.json", encoding="utf-8")); gq = {g["qid"]: g for g in G}
     calib = {}
     for q in Qs:
         g = gq[q["qid"]]
@@ -71,14 +71,14 @@ def main():
         own = [t for t, _ in primary[k]]; extra = [t for t in overlap_ids if t not in set(own)][k * (len(overlap_ids) // N_BATCH):(k + 1) * (len(overlap_ids) // N_BATCH)]
         cal = calib_ids[(k * 10) % len(calib_ids):(k * 10) % len(calib_ids) + 10]
         items = own + extra + cal; rng.shuffle(items); manifest["batches"][k] = items
-        with open(R + f"concept_organs/batches/batch_{k:02d}.txt", "w") as fh: fh.write("\n".join(line(T, t) for t in items) + "\n")
-    json.dump(manifest, open(R + "concept_organs/manifest.json", "w"), indent=0)
+        with open(R + f"concept_organs/batches/batch_{k:02d}.txt", "w", encoding="utf-8") as fh: fh.write("\n".join(line(T, t) for t in items) + "\n")
+    json.dump(manifest, open(R + "concept_organs/manifest.json", "w", encoding="utf-8"), indent=0)
     # query-generation batches from training 'common' concepts
     os.makedirs(R + "train_queries/batches", exist_ok=True); os.makedirs(R + "train_queries/gen", exist_ok=True); os.makedirs(R + "train_queries/review", exist_ok=True)
     qc = [t for t in common if t in hs]; rng.shuffle(qc); qc = qc[:500]
     for k in range(5):
-        with open(R + f"train_queries/batches/gen_{k}.txt", "w") as fh: fh.write("\n".join(line(T, t) for t in qc[k * 100:(k + 1) * 100]) + "\n")
-    json.dump(dict(concepts=qc), open(R + "train_queries/manifest.json", "w"))
+        with open(R + f"train_queries/batches/gen_{k}.txt", "w", encoding="utf-8") as fh: fh.write("\n".join(line(T, t) for t in qc[k * 100:(k + 1) * 100]) + "\n")
+    json.dump(dict(concepts=qc), open(R + "train_queries/manifest.json", "w", encoding="utf-8"))
     print("batches written; per batch", [len(v) for v in manifest["batches"].values()], "calibration concepts", len(calib_ids))
 
 

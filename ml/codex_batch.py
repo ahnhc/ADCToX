@@ -78,7 +78,7 @@ def run_batch(a, f):
                     with LOCK: PAUSE["step"] = 0
                 feedback = bad
             with LOCK:
-                open(f"{d}/runs.jsonl", "a").write(json.dumps(dict(batch=os.path.basename(f), model=a.model, effort=a.effort, attempt=attempt, seconds=round(time.time() - t0, 1),
+                open(f"{d}/runs.jsonl", "a", encoding="utf-8").write(json.dumps(dict(batch=os.path.basename(f), model=a.model, effort=a.effort, attempt=attempt, seconds=round(time.time() - t0, 1),
                                                                     transport="codex-exec-isolated-dir", exit_code=code, timestamp_utc=time.strftime("%Y%m%dT%H%M%SZ", time.gmtime()), **rec)) + "\n")
             if rec["ok"]: return "ok"
         finally: shutil.rmtree(tmp, ignore_errors=True)

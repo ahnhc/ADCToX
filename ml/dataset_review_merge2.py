@@ -18,7 +18,7 @@ from dataset_review_merge import read_out, score, CONTROL_MIN
 
 
 def main(apply):
-    man2 = json.load(open(R + "manifest2.json")); pairs = man2.pop("_pairs"); rep = {}
+    man2 = json.load(open(R + "manifest2.json", encoding="utf-8")); pairs = man2.pop("_pairs"); rep = {}
     # ---- verify
     keep, revert, same, ctl_hit = [], [], 0, [0, 0]; by_set = {}
     for n in sorted(k for k in man2 if k.startswith("verify")):
@@ -48,7 +48,7 @@ def main(apply):
     import linking_models as LM
     from build_linking_pools import read_obo
     from sample_label_concepts import line
-    T = read_obo(); labels, _ = LM.load_organ_labels(); cal = json.load(open(D + "concept_organs/manifest.json"))["calibration"]
+    T = read_obo(); labels, _ = LM.load_organ_labels(); cal = json.load(open(D + "concept_organs/manifest.json", encoding="utf-8"))["calibration"]
     agree = {}; dis = []; c_hit = c_n = 0; n_unclear = 0
     for n in sorted(k for k in man2 if k.startswith("blind")):
         rows = read_out(n) or []; ctl = man2[n]["controls"]

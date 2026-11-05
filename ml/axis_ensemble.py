@@ -85,7 +85,7 @@ def main():
             if ok.sum() >= 2 and ok[j]: x.append(z[j] - z[ok].mean()); y.append(t[j] - np.nanmean(t)); u.append(b)
         per[ax] = AR.boot_rho(x, y, u) if len(x) >= 10 else None
     res["per_axis_hudine_main"] = per; res["hidden"] = [ax for ax in AXES if per[ax] is None or per[ax]["lo"] <= 0]; res["names"] = names
-    json.dump(res, open(AR.RES + ("axis_ensemble_v2.json" if a.swap_main else "axis_ensemble_v1.json"), "w"), indent=1)
+    json.dump(res, open(AR.RES + ("axis_ensemble_v2.json" if a.swap_main else "axis_ensemble_v1.json"), "w", encoding="utf-8"), indent=1)
     print(json.dumps({k: v for k, v in res.items() if k != "per_axis_hudine_main"}, indent=1))
     if a.write:
         ck["axis"] = main_states; ck["axis_label"] = names[0]; ck["axis_hidden"] = res["hidden"]

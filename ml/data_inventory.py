@@ -48,11 +48,11 @@ def items():
             add(T[t]["name"], t, "mondo_names", "canonical")
             for q in T[t]["syn"][:5]: add(q, t, "mondo_names", "abbrev" if (len(q) <= 6 and q.upper() == q) else "synonym")
     for f in sorted(glob.glob(P.REPO + "data/curated/train_queries/review/review2_*.jsonl")):
-        for x in map(json.loads, open(f)):
+        for x in map(json.loads, open(f, encoding="utf-8")):
             if x.get("validity") == "valid" and x.get("match") is True and x["concept"] in labels and x["concept"] not in held: add(x["query"], x["concept"], "train_queries", x["category"])
     ext = P.REPO + "data/curated/external/mentions_mondo.jsonl"
     if os.path.exists(ext):
-        for r in map(json.loads, open(ext)):
+        for r in map(json.loads, open(ext, encoding="utf-8")):
             if r["split"] == "train" and len(r["mondo"]) == 1 and r["mondo"][0] in labels and r["mondo"][0] not in held: add(r["mention"], r["mondo"][0], "external", "mention")
     for p in prof:
         for k in p.get("ko", []): add(k, p["id"], "profiles", "canonical")
@@ -85,9 +85,9 @@ def scores(runs):
     for lg in ("en", "ko"):
         cat, org, mac = collections.defaultdict(list), collections.defaultdict(list), []
         for r in runs:
-            per = json.load(open(B.OUT + f"bench_{r}.json"))["per"][lg]; jx = [i for i in ix if per[i] is not None]
+            per = json.load(open(B.OUT + f"bench_{r}.json", encoding="utf-8"))["per"][lg]; jx = [i for i in ix if per[i] is not None]
             m = EL.metrics([((x or {}).get("concept"), (x or {}).get("organs", [])) for x in per], gold, jx); mac.append(m["macro_f1"])
-            sc = json.load(open(B.OUT + f"bench_{r}.json"))["scores"]["dev"][lg]["by_category"]
+            sc = json.load(open(B.OUT + f"bench_{r}.json", encoding="utf-8"))["scores"]["dev"][lg]["by_category"]
             for c, v in sc.items(): cat[c].append(v)
             for a, v in m["per_organ_f1"].items():
                 if v is not None: org[a].append(v)

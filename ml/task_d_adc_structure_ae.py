@@ -149,4 +149,4 @@ for regime in ["adc", "payload"]:
         g = s.get("vs_no_structure"); extra = f"   structure adds {g['delta_r2']:+.3f} [{g['lo']:+.3f}, {g['hi']:+.3f}] R2 over the same model without it" if g else ""
         print(f"{n:26s} R2 {s['r2']:+.3f} Spearman {s['spearman']:.3f}{extra}", flush=True)
 
-os.makedirs(os.path.dirname(OUT), exist_ok=True); json.dump(results, open(OUT, "w"), indent=1)
+os.makedirs(os.path.dirname(OUT), exist_ok=True); json.dump(results, open(OUT, "w", encoding="utf-8"), indent=1)

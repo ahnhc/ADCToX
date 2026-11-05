@@ -108,4 +108,4 @@ for regime in ["adc", "payload"]:
     for n, s in summ.items():
         g = s.get("vs_p0"); ex = f"   structure correction adds {g['delta_r2']:+.4f} [{g['lo']:+.4f}, {g['hi']:+.4f}] R2  (ridge alpha ~{s['median_alpha']:.0f})" if g else ""
         print(f"{n:20s} R2 {s['r2']:+.4f} Spearman {s['spearman']:.3f}{ex}", flush=True)
-os.makedirs(os.path.dirname(OUT), exist_ok=True); json.dump(results, open(OUT, "w"), indent=1)
+os.makedirs(os.path.dirname(OUT), exist_ok=True); json.dump(results, open(OUT, "w", encoding="utf-8"), indent=1)

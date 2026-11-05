@@ -22,11 +22,12 @@ from adctox.extract.row_labels import (
 )
 from adctox.taxonomy import AXIS_UNMAPPED, default_taxonomy
 
-PT_DICT = pathlib.Path("data/processed/pt_soc_dictionary.json")
+PT_DICT = pathlib.Path(__file__).resolve().parents[1] / "data/processed/pt_soc_dictionary.json"
 
 
 @pytest.fixture(scope="module")
 def tax():
+    if not PT_DICT.exists(): pytest.skip("the MedDRA PT dictionary is licensed and stays local (scripts/build_taxonomy.py rebuilds it)")
     t = default_taxonomy()
     t.load_pt_dictionary(PT_DICT)
     return t
@@ -129,6 +130,7 @@ def test_a_soc_header_is_used_directly_and_not_read_as_an_aggregate() -> None:
     """Several canonical SOC names start with a word the aggregate pattern claims, so the
     header check runs first. "General disorders and administration site conditions" is the
     case that forced the ordering."""
+    if not PT_DICT.exists(): pytest.skip("the MedDRA PT dictionary is licensed and stays local (scripts/build_taxonomy.py rebuilds it)")
     t = default_taxonomy()
     t.load_pt_dictionary(PT_DICT)
     for soc in sorted(t.canonical_socs):
@@ -147,6 +149,7 @@ def test_the_most_faithful_spelling_is_tried_first() -> None:
 
 
 def test_an_unknown_term_is_declined_rather_than_guessed() -> None:
+    if not PT_DICT.exists(): pytest.skip("the MedDRA PT dictionary is licensed and stays local (scripts/build_taxonomy.py rebuilds it)")
     t = default_taxonomy()
     t.load_pt_dictionary(PT_DICT)
     row = map_row("Bartholin's cyst removal", t)
@@ -158,6 +161,7 @@ def test_an_unknown_term_is_declined_rather_than_guessed() -> None:
 
 
 def test_an_empty_or_decoration_only_label_is_other() -> None:
+    if not PT_DICT.exists(): pytest.skip("the MedDRA PT dictionary is licensed and stays local (scripts/build_taxonomy.py rebuilds it)")
     t = default_taxonomy()
     t.load_pt_dictionary(PT_DICT)
     for label in ["", "   ", "*", "†"]:
@@ -169,6 +173,7 @@ def test_an_empty_or_decoration_only_label_is_other() -> None:
 def test_classify_agrees_with_map_row_on_the_aggregate_question() -> None:
     """`classify` is the cheap text-only path used when no taxonomy is loaded. If the two
     disagreed, a caller choosing the cheap path would admit aggregate rows."""
+    if not PT_DICT.exists(): pytest.skip("the MedDRA PT dictionary is licensed and stays local (scripts/build_taxonomy.py rebuilds it)")
     t = default_taxonomy()
     t.load_pt_dictionary(PT_DICT)
     for label in AGGREGATE_LABELS:

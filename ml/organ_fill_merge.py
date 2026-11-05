@@ -16,7 +16,7 @@ CAL_MIN = 0.6
 
 
 def main():
-    M = json.load(open(R + "fill_manifest.json")); cal = json.load(open(R + "manifest.json"))["calibration"]; todo = set(M["todo"])
+    M = json.load(open(R + "fill_manifest.json", encoding="utf-8")); cal = json.load(open(R + "manifest.json", encoding="utf-8"))["calibration"]; todo = set(M["todo"])
     out, score, stats = {}, {}, Counter()
     for f in sorted(glob.glob(R + "labels/v4_*.jsonl")):
         L = []
@@ -37,7 +37,7 @@ def main():
         for x in out.values(): fh.write(json.dumps(x, ensure_ascii=False) + "\n")
     rep = dict(batches=len(score), calibration_mean=round(sum(v for v in score.values() if v is not None) / max(1, sum(v is not None for v in score.values())), 3),
                written=len(out), of_todo=len(todo), with_organ=sum(bool(x["organs"]) for x in out.values()), **stats)
-    json.dump(dict(report=rep, calibration=score), open(R + "fill_report.json", "w"), indent=1); print(json.dumps(rep, indent=1))
+    json.dump(dict(report=rep, calibration=score), open(R + "fill_report.json", "w", encoding="utf-8"), indent=1); print(json.dumps(rep, indent=1))
 
 
 if __name__ == "__main__":

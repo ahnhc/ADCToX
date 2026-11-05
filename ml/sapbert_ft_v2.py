@@ -22,19 +22,19 @@ OUTDIR = P.CACHE + "sapbert_ft_v2/"; R = P.REPO + "data/curated/"
 
 
 def extra_pairs(T, held):
-    out = {}; rm = json.load(open(R + "train_queries/review_manifest.json")); traps = rm["traps"]; gens = {}
+    out = {}; rm = json.load(open(R + "train_queries/review_manifest.json", encoding="utf-8")); traps = rm["traps"]; gens = {}
     for k in range(5):
-        for i, x in enumerate(json.loads(l) for l in open(R + f"train_queries/gen/gen_{k}.jsonl")): gens[f"g{k}_{i:03d}"] = x
+        for i, x in enumerate(json.loads(l) for l in open(R + f"train_queries/gen/gen_{k}.jsonl", encoding="utf-8")): gens[f"g{k}_{i:03d}"] = x
     n_q = 0
     for f in sorted(glob.glob(R + "train_queries/review/review_*.jsonl")):
-        L = [json.loads(l) for l in open(f)]; tr = [x for x in L if x["rid"] in traps]
+        L = [json.loads(l) for l in open(f, encoding="utf-8")]; tr = [x for x in L if x["rid"] in traps]
         if not tr or np.mean([x["match"] is False for x in tr]) < 0.8: continue
         for x in L:
             g = gens.get(x["rid"])
             if g and x["validity"] == "valid" and x["match"] is True and g.get("concept") in T and g["concept"] not in held:
                 out.setdefault(g["concept"], []).append((T[g["concept"]]["name"], g["query"])); n_q += 1
     n_n = 0
-    for r in map(json.loads, open(R + "external/ncbi_disease_mondo.jsonl")):
+    for r in map(json.loads, open(R + "external/ncbi_disease_mondo.jsonl", encoding="utf-8")):
         if r["split"] == "train" and len(r["mondo"]) == 1 and r["mondo"][0] in T and r["mondo"][0] not in held:
             out.setdefault(r["mondo"][0], []).append((T[r["mondo"][0]]["name"], r["mention"])); n_n += 1
     return out, n_q, n_n
@@ -46,7 +46,7 @@ def main():
     T = read_obo(); idx = np.load(MI.C + "mondo_index.pre_v1.npz", allow_pickle=True); ids = [str(x) for x in idx["ids"]]
     concepts = list(dict.fromkeys(ids)); rows = [s for t in concepts for s in [T[t]["name"]] + T[t]["syn"]]
     nonhuman = {t for t in concepts if "non-human animal" in T[t]["name"]}
-    G = [json.loads(l) for l in open(EL.D + "gold_v0.jsonl")]; held = {c for g in G for c in g["concepts"]}; children = {}
+    G = [json.loads(l) for l in open(EL.D + "gold_v0.jsonl", encoding="utf-8")]; held = {c for g in G for c in g["concepts"]}; children = {}
     for t in concepts:
         for p in T[t]["parents"]: children.setdefault(p, set()).add(t)
     held |= {p for c in list(held) for p in T.get(c, {}).get("parents", [])} | {k for c in list(held) for k in children.get(c, ())}
@@ -72,12 +72,12 @@ def main():
             lg = ea @ eb.T / FP.TEMP; lab = torch.arange(len(batch), device=DEV); loss = (torch.nn.functional.cross_entropy(lg, lab) + torch.nn.functional.cross_entropy(lg.T, lab)) / 2
         opt.zero_grad(); scaler.scale(loss).backward(); scaler.step(opt); scaler.update(); sched.step(); steps += 1
     mod.eval(); os.makedirs(OUTDIR, exist_ok=True); mod.save_pretrained(OUTDIR); tok.save_pretrained(OUTDIR)
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); Gq = {g["qid"]: g for g in G}; gold = [dict(Gq[q["qid"]], category=q["category"]) for q in Q]
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); Gq = {g["qid"]: g for g in G}; gold = [dict(Gq[q["qid"]], category=q["category"]) for q in Q]
     groups = [q["group"] or q["qid"] for q in Q]; split = [EL.split_of(g) for g in groups]; dev = [i for i, s in enumerate(split) if s == "dev"]; test = [i for i, s in enumerate(split) if s == "test"]
     ax = {}
     for t, a in zip(ids, idx["axes"]): ax.setdefault(t, [EL.AXES[k] for k in np.where(a > 0)[0]])
     keep = torch.tensor([t not in nonhuman for t in ids], device=DEV); id_arr = np.array(ids, dtype=object)
-    ncbi = [r for r in map(json.loads, open(R + "external/ncbi_disease_mondo.jsonl")) if r["split"] == "test" and r["mondo"]]
+    ncbi = [r for r in map(json.loads, open(R + "external/ncbi_disease_mondo.jsonl", encoding="utf-8")) if r["split"] == "test" and r["mondo"]]
     def topk(tk, md, texts, Ei):
         Eq = FP.embed(tk, md, texts); out = []
         for i in range(0, len(texts), 1024):
@@ -108,7 +108,7 @@ def main():
     res["paired_ncbi_test_recall1"] = dict(delta=float(d.mean()), lo=float(np.percentile(bs, 2.5)), hi=float(np.percentile(bs, 97.5)), n=len(d), abstracts=len(up))
     for k in ("frozen", "finetuned_v2"): res[k].pop("_pred"); res[k].pop("_ncbi_hit1")
     res["config"] = dict(pairs=total_pairs, reviewed_queries=n_q, ncbi_mentions=n_n, steps=steps)
-    json.dump(res, open(EL.OUT + "sapbert_ft_v2.json", "w"), indent=1)
+    json.dump(res, open(EL.OUT + "sapbert_ft_v2.json", "w", encoding="utf-8"), indent=1)
     print("gold test macro-F1", res["paired_gold_test_macro_f1"], "concept", res["paired_gold_test_concept_acc"], "ncbi recall@1", res["paired_ncbi_test_recall1"])
 
 

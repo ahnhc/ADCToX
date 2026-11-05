@@ -26,17 +26,17 @@ def chunks(xs, n): k = (len(xs) + n - 1) // n; return [xs[i:i + k] for i in rang
 def main():
     T = read_obo(); held = LM.gold_held(T); os.makedirs(OUT + "batches", exist_ok=True); os.makedirs(OUT + "gen", exist_ok=True)
     prof = [dict(id=p["id"], name=p["name"], en=p.get("en", [])[:3], ko=p.get("ko", [])[:2]) for p in SG.profiles()]
-    for i, b in enumerate(chunks(prof, 20)): json.dump(b, open(OUT + f"batches/sym_{i:02d}.json", "w"), ensure_ascii=False, indent=0)
+    for i, b in enumerate(chunks(prof, 20)): json.dump(b, open(OUT + f"batches/sym_{i:02d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     c = collections.Counter()
-    for r in map(json.loads, open(R + "external/mentions_mondo.jsonl")):
+    for r in map(json.loads, open(R + "external/mentions_mondo.jsonl", encoding="utf-8")):
         if r["split"] == "train" and len(r["mondo"]) == 1: c[r["mondo"][0]] += 1
     for f in glob.glob(R + "train_queries/review/review2_*.jsonl"):
-        for x in map(json.loads, open(f)): c[x["concept"]] += 1
+        for x in map(json.loads, open(f, encoding="utf-8")): c[x["concept"]] += 1
     con = [dict(id=t, name=T[t]["name"], syn=T[t]["syn"][:3]) for t, _ in c.most_common() if t in T and t not in held and not T[t]["name"].startswith("obsolete")]
-    for i, b in enumerate(chunks(con, 20)): json.dump(b, open(OUT + f"batches/ko_{i:02d}.json", "w"), ensure_ascii=False, indent=0)
-    for i in range(2): json.dump(dict(n=500, part=i), open(OUT + f"batches/junk_{i:02d}.json", "w"))
-    Q = [dict(qid=q["qid"], query=q["query"], category=q["category"]) for q in json.load(open(EL.D + "raw/queries_v0.json"))]
-    for i, b in enumerate(chunks(Q, 2)): json.dump(b, open(OUT + f"batches/koeval_{i:02d}.json", "w"), ensure_ascii=False, indent=0)
+    for i, b in enumerate(chunks(con, 20)): json.dump(b, open(OUT + f"batches/ko_{i:02d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    for i in range(2): json.dump(dict(n=500, part=i), open(OUT + f"batches/junk_{i:02d}.json", "w", encoding="utf-8"))
+    Q = [dict(qid=q["qid"], query=q["query"], category=q["category"]) for q in json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8"))]
+    for i, b in enumerate(chunks(Q, 2)): json.dump(b, open(OUT + f"batches/koeval_{i:02d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     print(dict(profiles=len(prof), ko_concepts=len(con), gold_queries=len(Q)))
 
 

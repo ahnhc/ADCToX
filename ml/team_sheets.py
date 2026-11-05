@@ -100,7 +100,7 @@ def make():
     # 2. right-candidate picks for typed inputs (abbreviations, typos, everyday words; generated inputs, gold concepts excluded)
     held = LM.gold_held(T); qs = []
     for k in range(5):
-        for x in map(json.loads, open(CUR / f"train_queries/gen/gen_{k}.jsonl")):
+        for x in map(json.loads, open(CUR / f"train_queries/gen/gen_{k}.jsonl", encoding="utf-8")):
             if x["category"] in ("abbrev", "typo", "lay") and x["concept"] not in held: qs.append(x)
     by = {c: [x for x in qs if x["category"] == c] for c in ("abbrev", "typo", "lay")}
     chosen = [x for c in by for x in rng.sample(by[c], 100)]; rng.shuffle(chosen)

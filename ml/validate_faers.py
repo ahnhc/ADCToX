@@ -32,7 +32,7 @@ API = "https://api.fda.gov/drug/event.json"
 
 def fetch(generic):
     os.makedirs(CACHE, exist_ok=True); f = CACHE + generic.replace(" ", "_") + ".json"
-    if os.path.exists(f): return json.load(open(f))
+    if os.path.exists(f): return json.load(open(f, encoding="utf-8"))
     q = f'patient.drug.openfda.generic_name:"{generic}"'; out = dict(generic=generic, retrieved_utc=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
     for key, extra in (("total", "&limit=1"), ("pts", "&count=patient.reaction.reactionmeddrapt.exact&limit=500")):
         url = f"{API}?search={urllib.parse.quote(q)}{extra}"
@@ -45,7 +45,7 @@ def fetch(generic):
         if key == "total": out["n_reports"] = d.get("meta", {}).get("results", {}).get("total", 0); out["last_updated"] = d.get("meta", {}).get("last_updated")
         else: out["pts"] = {r["term"]: r["count"] for r in d.get("results", [])}
         time.sleep(0.4)
-    json.dump(out, open(f, "w"), indent=1); return out
+    json.dump(out, open(f, "w", encoding="utf-8"), indent=1); return out
 
 
 def main():
@@ -84,7 +84,7 @@ def main():
     res["cells"] = [dict(adc=a, organ=o, mentions=int(M[i, k]), ror=round(float(ror[i, k]), 3), ror_lo=round(float(lo[i, k]), 3), signal=bool(signal[i, k]), label=int(lvl[i, k]))
                     for i, a in enumerate(used) for k, o in enumerate(AXES)]
     res["calibration"] = calibration(lvl, signal, used, rng)
-    json.dump(res, open(R + "ml/results/faers_validation.json", "w"), indent=1)
+    json.dump(res, open(R + "ml/results/faers_validation.json", "w", encoding="utf-8"), indent=1)
     print(f"FAERS (openFDA, data to {res['last_updated']}): {len(used)} ADCs, skipped {skipped}; {res['n_signals']} signals in {res['n_cells']} ADC x organ cells")
     for k in ("label_level", "incidence_pct"):
         x = res[k]; print(f"  AUROC for FAERS signal  {k:14s} {x['auroc']:.3f} [{x['ci'][0]:.3f}, {x['ci'][1]:.3f}]  (n={x['n']})")

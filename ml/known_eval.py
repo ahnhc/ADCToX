@@ -49,7 +49,7 @@ def batches():
     rng.shuffle(pick); os.makedirs(B, exist_ok=True); os.makedirs(OUT, exist_ok=True)
     for f in glob.glob(B + "ke_*.json"): os.remove(f)
     for n, k in enumerate(range(0, len(pick), BATCH)): json.dump(pick[k:k + BATCH], open(B + f"ke_{n:02d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0)
-    json.dump(dict(concepts=len(pick), per_organ=dict(per), batches=(len(pick) + BATCH - 1) // BATCH), open(B + "ke_manifest.json", "w"), indent=1)
+    json.dump(dict(concepts=len(pick), per_organ=dict(per), batches=(len(pick) + BATCH - 1) // BATCH), open(B + "ke_manifest.json", "w", encoding="utf-8"), indent=1)
     print(len(pick), dict(per))
 
 
@@ -91,14 +91,14 @@ def merge():
     keep = [dict(r, split=split_of(r["id"])) for i, r in enumerate(rows) if i not in drop]
     open(R + "ko.jsonl", "w", encoding="utf-8").write("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in keep))
     st = dict(kept=len(keep), dropped=len(drop), kinds=dict(collections.Counter(r["kind"] for r in keep)), concepts=len({r["id"] for r in keep}), batches=rep)
-    json.dump(st, open(R + "ko_report.json", "w"), indent=1); print(json.dumps({k: v for k, v in st.items() if k != "batches"}, indent=1))
+    json.dump(st, open(R + "ko_report.json", "w", encoding="utf-8"), indent=1); print(json.dumps({k: v for k, v in st.items() if k != "batches"}, indent=1))
 
 
 def english():
     import linking_models as LM, tuning_ledger as TL
     from build_linking_pools import read_obo
     T = read_obo(); held = LM.gold_held(T); labels, _ = LM.load_organ_labels(); seen = training_texts(); per, out = collections.Counter(), []
-    for r in map(json.loads, open(P.REPO + "data/curated/external/mentions_mondo.jsonl")):
+    for r in map(json.loads, open(P.REPO + "data/curated/external/mentions_mondo.jsonl", encoding="utf-8")):
         if r["split"] != "test" or len(r["mondo"]) != 1: continue
         t = r["mondo"][0]
         if t in held or t not in labels or TL.norm(r["mention"]) in seen or per[t] >= PER_CONCEPT: continue
@@ -128,7 +128,7 @@ def run(system, name, split="dev"):
             jx = [i for i in ix if qs[i]["kind"] == k]
             if jx: kinds[k] = round(EL.metrics([((r or {}).get("concept"), (r or {}).get("organs", [])) for r in rows], gold, jx)["macro_f1"], 3)
         res[lg] = dict(n=len(ix), macro_f1=m["macro_f1"], concept_acc=m["concept_acc"], per_organ_f1=m["per_organ_f1"], by_kind=kinds)
-    json.dump(dict(name=name, system=system, split=split, scores=res, per=per), open(BJ.OUT + f"known_{name}.json", "w"), ensure_ascii=False)
+    json.dump(dict(name=name, system=system, split=split, scores=res, per=per), open(BJ.OUT + f"known_{name}.json", "w", encoding="utf-8"), ensure_ascii=False)
     print(json.dumps({lg: {k: v for k, v in r.items() if k != "per_organ_f1"} for lg, r in res.items()}, indent=1, ensure_ascii=False))
 
 

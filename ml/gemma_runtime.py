@@ -92,7 +92,7 @@ def load(path=None):
     from safetensors.torch import load_file
     with _LOCK:
         if path in _M: return _M[path]
-        cfg = T.AutoConfig.from_pretrained(path); J = json.load(open(os.path.join(path, "judge.json"))); W = {}
+        cfg = T.AutoConfig.from_pretrained(path); J = json.load(open(os.path.join(path, "judge.json"), encoding="utf-8")); W = {}
         for f in sorted(os.listdir(path)):
             if f.startswith("weights") and f.endswith(".safetensors"): W.update(load_file(os.path.join(path, f)))
         with torch.device("meta"): model = T.AutoModel.from_config(cfg)
@@ -147,7 +147,7 @@ def has_extra(path=None):
     """whether the judge also gives validity, a SapBERT-space vector and symptom -> profile scores."""
     path = path or folder()
     if path is None: return False
-    try: return "align" in json.load(open(os.path.join(path, "judge.json"))).get("outputs", [])     # without loading the model
+    try: return "align" in json.load(open(os.path.join(path, "judge.json"), encoding="utf-8")).get("outputs", [])     # without loading the model
     except (OSError, ValueError): return False
 
 

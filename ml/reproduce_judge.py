@@ -26,7 +26,7 @@ LIVE = os.path.realpath(os.environ.get("ADCTOX_LIVE_CACHE", "/data/hyeongchanahn
 
 def sh(cmd, env, log):
     print("  $", " ".join(cmd), "->", log, flush=True)
-    with open(log, "w") as fh:
+    with open(log, "w", encoding="utf-8") as fh:
         r = subprocess.run(cmd, env=env, stdout=fh, stderr=subprocess.STDOUT, cwd=P.REPO)
     if r.returncode: raise SystemExit(f"failed ({r.returncode}): {' '.join(cmd)}; see {log}")
 
@@ -68,13 +68,13 @@ def base_current():
     import gemma_judge as GJ, bench_judge as B
     p = B.OUT + f"bench_{base_name()}.json"
     if not os.path.exists(p): return False
-    b = json.load(open(p)); return b.get("revision") == GJ.REV and b.get("questions") == B.questions_sha()
+    b = json.load(open(p, encoding="utf-8")); return b.get("revision") == GJ.REV and b.get("questions") == B.questions_sha()
 
 
 def report(a, tags):
     import bench_judge as B, eval_linking as EL
     split = "test" if a.test else "dev"; Q, gold, groups, ko, SE = B.questions(); ix = [i for i, g in enumerate(groups) if EL.split_of(g) == split]
-    load = lambda n: json.load(open(B.OUT + f"bench_{n}.json"))["per"]
+    load = lambda n: json.load(open(B.OUT + f"bench_{n}.json", encoding="utf-8"))["per"]
     systems = [base_name()] + [f"single_{t}" for t in tags] + ([f"app_{t}" for t in tags] if a.app else [])
     per = {n: load(n) for n in systems}
     def organ_f1(rows, lang):

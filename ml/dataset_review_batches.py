@@ -47,7 +47,7 @@ def main():
     T = read_obo(); held = LM.gold_held(T); labels, _ = LM.load_organ_labels(); man = {}
 
     # ---- organ labels: every training concept with its current label; 8 gold controls, half shown wrong
-    cal = json.load(open(D + "concept_organs/manifest.json"))["calibration"]           # gold concept -> organs
+    cal = json.load(open(D + "concept_organs/manifest.json", encoding="utf-8"))["calibration"]           # gold concept -> organs
     ids = sorted(t for t in labels if t in T and t not in held); rng.shuffle(ids)
     cal_ids = sorted(cal); rng.shuffle(cal_ids)
     for k, part in enumerate(chunks(ids, 200)):

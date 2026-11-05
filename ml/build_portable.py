@@ -59,7 +59,7 @@ def mondo_terms():
             if n in seen: continue
             seen.add(n); st.extend(T[n]["parents"] if n in T else ())
         memo[t] = seen; return seen
-    cross = {k.lower(): v for k, v in yaml.safe_load(open(R / "conf/ontology/mondo_organ_axis.yaml"))["ancestor_to_axis"].items()}
+    cross = {k.lower(): v for k, v in yaml.safe_load(open(R / "conf/ontology/mondo_organ_axis.yaml", encoding="utf-8"))["ancestor_to_axis"].items()}
     out = {}
     for t, d in T.items():
         if not t.startswith("MONDO:") or d["obs"] or not d["name"] or not (t == "MONDO:0000001" or "MONDO:0000001" in anc(t)): continue
@@ -146,14 +146,14 @@ def sub(src, old, new, name):
 
 def main():
     if snapshot := os.environ.get("ADCTOX_EVIDENCE_SNAPSHOT"):
-        E = json.loads(pathlib.Path(snapshot).read_text())["evidence"]
+        E = json.loads(pathlib.Path(snapshot).read_text(encoding="utf-8"))["evidence"]
     else:
         import drug_evidence as DE
         E = json.loads(json.dumps(DE.evidence(), default=lambda x: x.item() if hasattr(x, "item") else list(x) if isinstance(x, (set, tuple)) else str(x)))
-    data = dict(evidence=E, rules=yaml.safe_load(open(R / "conf/label_restrictions.yaml"))["rules"],
-                registry=list(csv.DictReader(open(R / "conf/comorbidity_registry.csv"))),
+    data = dict(evidence=E, rules=yaml.safe_load(open(R / "conf/label_restrictions.yaml", encoding="utf-8"))["rules"],
+                registry=list(csv.DictReader(open(R / "conf/comorbidity_registry.csv", encoding="utf-8"))),
                 registry_concepts=json.load(open(R / "conf/registry_concepts.json", encoding="utf-8"))["concepts"],
-                checks=yaml.safe_load(open(R / "conf/patient_checks.yaml"))["checks"], mondo={} if FULL else mondo_terms(),
+                checks=yaml.safe_load(open(R / "conf/patient_checks.yaml", encoding="utf-8"))["checks"], mondo={} if FULL else mondo_terms(),
                 profiles=__import__("suggest").read_profiles(R / "data/curated/disease_profiles"), nonhuman=sorted(__import__("suggest").nonhuman_ids(OBO)),
                 mondo_ko={t: [k, en] + list(alt) for t, (k, alt, en) in __import__("suggest").read_mondo_ko(R / "data/curated/korean/mondo_ko.jsonl").items()},
                 mechanisms={r["adc"]: r for r in csv.DictReader(open(R / "data/curated/competition/adc_mechanism_draft.csv", encoding="utf-8"))},
@@ -173,7 +173,7 @@ def main():
 
     rc = src["recommend"]
     rc = sub(rc, 'sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))\n', "", "recommend")
-    rc = sub(rc, '_reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv"))}',
+    rc = sub(rc, '_reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv", encoding="utf-8"))}',
              '_reg = {r["id"]: r for r in _portable_data()["registry"]}', "recommend")
     rc = sub(rc, '_by_concept = json.load(open(R + "conf/registry_concepts.json", encoding="utf-8"))["concepts"]',
              '_by_concept = _portable_data()["registry_concepts"]', "recommend")
@@ -182,7 +182,7 @@ def main():
         i = rc.index("def _free_info("); j = rc.index("\ndef ", i + 10)
         rc = rc[:i] + PORTABLE_FREE.strip() + "\n\n" + rc[j:]
     rc = sub(rc, '    import yaml\n    out = []\n', '    out = []\n', "recommend")
-    rc = sub(rc, 'for c in yaml.safe_load(open(R + "conf/patient_checks.yaml"))["checks"]:', 'for c in _portable_data()["checks"]:', "recommend")
+    rc = sub(rc, 'for c in yaml.safe_load(open(R + "conf/patient_checks.yaml", encoding="utf-8"))["checks"]:', 'for c in _portable_data()["checks"]:', "recommend")
     if not FULL:
         rc = sub(rc, 'MATCH_COS = 0.60 ', 'MATCH_COS = 9.99 ', "recommend")          # no loose 'borrowing' of organs by spelling
         rc = sub(rc, 'REG_NEAR = 0.80 ', 'REG_NEAR = 0.90 ', "recommend")
@@ -190,7 +190,7 @@ def main():
     rs = src["restrictions"]
     rs = sub(rs, 'R = str(Path(__file__).resolve().parents[1]) + os.sep', 'R = ""', "restrictions")
     rs = sub(rs, "import yaml\n", "", "restrictions")
-    rs = sub(rs, '    return yaml.safe_load(open(R + "conf/label_restrictions.yaml"))["rules"]',
+    rs = sub(rs, '    return yaml.safe_load(open(R + "conf/label_restrictions.yaml", encoding="utf-8"))["rules"]',
              '    from __adc_data__ import _portable_data\n    return _portable_data()["rules"]', "restrictions")
     src["recommend"], src["restrictions"], src["drug_evidence"] = rc, rs, DE_STUB
     if FULL: src["mondo_index"] = runtime_modules()

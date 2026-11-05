@@ -51,7 +51,7 @@ N_IN_SOURCE = False       # post hoc (added after the first run): accept an n pr
 
 def check(rec):
     """-> None if the record passes, else the reason."""
-    try: text = _collapse(open(rec["local_text"], errors="replace").read())
+    try: text = _collapse(open(rec["local_text"], encoding="utf-8", errors="replace").read())
     except OSError: return "source text missing"
     q = _collapse(rec.get("quote") or "")
     if not q or q not in text: return "quote not found in source text"
@@ -134,7 +134,7 @@ def analyse(contrasts):
 
 
 def main(paths, out=None):
-    recs = [r for p in paths for r in (yaml.safe_load(open(p)) or {}).get("evidence", [])]
+    recs = [r for p in paths for r in (yaml.safe_load(open(p, encoding="utf-8")) or {}).get("evidence", [])]
     dropped = []; ok = []
     for r in recs:
         why = ("treatment action, not an adverse event" if ACTION.search(r.get("outcome", "")) else
@@ -161,7 +161,7 @@ def main(paths, out=None):
         for g in ("flagged", "not_flagged"):
             if a[g]: print(f"   {g}: pooled RR {a[g]['rr']:.2f} [{a[g]['ci'][0]:.2f}, {a[g]['ci'][1]:.2f}] (k={a[g]['k']})")
         if a["flag_effect"]: e = a["flag_effect"]; print(f"   flagged / not flagged: {e['ratio_of_rr']:.2f} [{e['ci'][0]:.2f}, {e['ci'][1]:.2f}] -> {'flags match excess' if e['flags_match_excess'] else 'not shown'}")
-    if out: json.dump(res, open(out, "w"), indent=1, ensure_ascii=False)
+    if out: json.dump(res, open(out, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     return res
 
 

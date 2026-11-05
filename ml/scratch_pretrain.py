@@ -163,7 +163,7 @@ def main():
     if world > 1 and rank > 0: dist.barrier()                                              # rank 0 builds (or finds) the corpus first
     cached = os.path.exists(out + "blocks.npy") and os.path.exists(out + "corpus.json") and not a.smoke     # a restart reuses the tokenized corpus
     if cached:
-        man = json.load(open(out + "corpus.json")); blocks = np.load(out + "blocks.npy"); tk = Tokenizer.from_file(out + "tokenizer.json")
+        man = json.load(open(out + "corpus.json", encoding="utf-8")); blocks = np.load(out + "blocks.npy"); tk = Tokenizer.from_file(out + "tokenizer.json")
     else:
         src = corpus(a.pubmed); man = {k: dict(lines=len(v), chars=sum(map(len, v))) for k, v in src.items()}
         print(json.dumps(man, indent=1), flush=True)
@@ -173,7 +173,7 @@ def main():
         lines = [s for k, v in src.items() for s in v * (a.upsample if k in STRUCT else 1)]; random.shuffle(lines); del src
         if a.smoke: lines = lines[:20000]; uniq = uniq[:20000]
         tk, blocks = build(lines, out, wwm=a.wwm, tok_lines=uniq); del uniq
-        np.save(out + "blocks.npy", blocks); json.dump(man, open(out + "corpus.json", "w"), indent=1)
+        np.save(out + "blocks.npy", blocks); json.dump(man, open(out + "corpus.json", "w", encoding="utf-8"), indent=1)
     if world > 1 and rank == 0: dist.barrier()
     blocks = _cont(blocks)
     cfg = dict(ARCH[a.arch]); kind = cfg.pop("kind")
@@ -184,7 +184,7 @@ def main():
                 blocks=len(blocks), corpus=man, git=TL.git_state(), started=time.strftime("%Y-%m-%d %H:%M"), upsample=a.upsample, batch=a.bs,
                 objective="masked LM, 15% (80/10/10)" + (", whole-word masking" if a.wwm else ""))
     info.update(gpus=world)
-    if rank == 0: json.dump(info, open(out + "pretrain_info.json", "w"), indent=1); print(json.dumps({k: v for k, v in info.items() if k != "corpus"}, indent=1), flush=True)
+    if rank == 0: json.dump(info, open(out + "pretrain_info.json", "w", encoding="utf-8"), indent=1); print(json.dumps({k: v for k, v in info.items() if k != "corpus"}, indent=1), flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, betas=(0.9, 0.98), weight_decay=0.01)
     vocab = tk.get_vocab(); start = torch.ones(VOCAB, dtype=torch.bool, device="cuda")       # token starts a word (for --wwm)
     if a.wwm:
@@ -214,7 +214,7 @@ def main():
     micro = max(32, micro // 2) if micro < per else micro                                 # head-room for the other GPU user
     accum = per // micro; torch.cuda.empty_cache(); print(f"batch {a.bs} = micro {micro} x accumulation {accum}", flush=True)
     info.update(micro_batch=micro, accumulation=accum)
-    if rank == 0: json.dump(info, open(out + "pretrain_info.json", "w"), indent=1)
+    if rank == 0: json.dump(info, open(out + "pretrain_info.json", "w", encoding="utf-8"), indent=1)
     t0 = time.time(); budget = a.hours * 3600; step = 0; rng = np.random.default_rng(a.seed); last_save = last_keep = time.time(); losses = []
     nb = len(blocks) // a.bs
     def elapsed():                                                                        # rank 0's clock, so every GPU stops at the same step
@@ -247,10 +247,10 @@ def main():
             done = el >= budget or (a.smoke and step >= 100)
             if rank == 0 and (time.time() - last_save > 3600 or done):
                 core.save_pretrained(out); last_save = time.time()
-                json.dump(dict(info, steps=step, hours=round((time.time() - t0) / 3600, 2), loss=float(np.mean(losses[-200:]))), open(out + "pretrain_info.json", "w"), indent=1)
+                json.dump(dict(info, steps=step, hours=round((time.time() - t0) / 3600, 2), loss=float(np.mean(losses[-200:]))), open(out + "pretrain_info.json", "w", encoding="utf-8"), indent=1)
             if rank == 0 and a.keep_every and time.time() - last_keep > a.keep_every * 3600:
                 kd = out + f"ckpt_{(time.time() - t0) / 3600:.0f}h/"; core.save_pretrained(kd); last_keep = time.time()
-                json.dump(dict(steps=step, loss=float(np.mean(losses[-200:]))), open(kd + "state.json", "w"))
+                json.dump(dict(steps=step, loss=float(np.mean(losses[-200:]))), open(kd + "state.json", "w", encoding="utf-8"))
             if done: break
         if a.smoke: break
     if rank == 0: core.save_pretrained(out); print("->", out, flush=True)

@@ -19,7 +19,7 @@ from adctox.model.predict import Posterior
 from rank_resolution import PROFILES
 
 AT_RISK_SEVERITY = 0.5         # learned severity >= 0.5 (>= 1.5 SD above a typical prior) counts as "at risk" -> serious table
-L = json.load(open(ROOT / "ml/results/learned_vulnerability.json"))["severity"]
+L = json.load(open(ROOT / "ml/results/learned_vulnerability.json", encoding="utf-8"))["severity"]
 orig = pl.resolve_comorbidities
 
 def learned_resolve(condition_ids):
@@ -62,7 +62,7 @@ def responsive(res):
     return ch / tot
 # agreement between the two severity vectors on the registry itself
 import csv
-reg = {r["id"]: r for r in csv.DictReader(open(ROOT / "conf/comorbidity_registry.csv"))}
+reg = {r["id"]: r for r in csv.DictReader(open(ROOT / "conf/comorbidity_registry.csv", encoding="utf-8"))}
 agree = []
 for cid, sv in L.items():
     cur_axes = set(reg[cid]["organ_axes"].split(";")); top = max(sv, key=sv.get)
@@ -71,5 +71,5 @@ summary = dict(queries=n, mean_jaccard_shown_set=float(np.mean(jac)), share_quer
                share_queries_different_lead=head_diff / n, profile_changes_set_curated=responsive(cur), profile_changes_set_learned=responsive(lrn),
                mean_jaccard_by_profile={k: float(np.mean(v)) for k, v in by_prof.items()},
                learned_top_axis_is_a_curated_axis=float(np.mean(agree)), n_conditions=len(agree), at_risk_threshold=AT_RISK_SEVERITY)
-json.dump(dict(summary=summary, rows=rows), open(ROOT / "ml/results/pipeline_comparison.json", "w"), indent=1, default=str)
+json.dump(dict(summary=summary, rows=rows), open(ROOT / "ml/results/pipeline_comparison.json", "w", encoding="utf-8"), indent=1, default=str)
 print(json.dumps(summary, indent=1))

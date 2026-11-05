@@ -124,7 +124,7 @@ def main():
             out["regimes"][regime][nm] = lab.fam_boot(m, mean_rho[p], mean_rho[q])
         g = out["regimes"][regime]; print(f"== {a.name} | {regime}: model R2 {g['model']['r2']:+.3f} (knn {g['knn']['r2']:+.3f}, lookup {g['lookup']['r2']:+.3f}) | gain over lookup "
               f"{g['model_gain_over_lookup']['delta']:+.3f} [{g['model_gain_over_lookup']['lo']:+.3f},{g['model_gain_over_lookup']['hi']:+.3f}]", flush=True)
-    os.makedirs(lab.RES, exist_ok=True); json.dump(out, open(lab.RES + f"{a.name}.json", "w"), indent=1); pickle.dump(per_prior, open(lab.C + f"lab_{a.name}.pkl", "wb"))
+    os.makedirs(lab.RES, exist_ok=True); json.dump(out, open(lab.RES + f"{a.name}.json", "w", encoding="utf-8"), indent=1); pickle.dump(per_prior, open(lab.C + f"lab_{a.name}.pkl", "wb"))
 
 if __name__ == "__main__":
     main()

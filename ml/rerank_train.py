@@ -26,24 +26,24 @@ R = P.REPO + "data/curated/"; DEV = "cuda:0" if torch.cuda.is_available() else "
 
 def pairs(T, held):
     rng = random.Random(SEED); out = []; ok = lambda t: t in T and t not in held and "non-human" not in T[t]["name"]
-    ext = [json.loads(l) for l in open(R + "external/mentions_mondo.jsonl")]
+    ext = [json.loads(l) for l in open(R + "external/mentions_mondo.jsonl", encoding="utf-8")]
     by = {}
     for r in ext:
         if r["split"] == "train" and len(r["mondo"]) == 1 and ok(r["mondo"][0]): by.setdefault(r["source"], []).append((r["mention"], r["mondo"][0]))
     for s, L in by.items():
         L = list(dict.fromkeys(L)); rng.shuffle(L); out += [(q, t, "external_" + s) for q, t in L[:4000]]
-    rm = json.load(open(R + "train_queries/review_manifest.json")); traps = set(rm["traps"]); gens = {}
+    rm = json.load(open(R + "train_queries/review_manifest.json", encoding="utf-8")); traps = set(rm["traps"]); gens = {}
     for k in range(5):
-        for i, x in enumerate(json.loads(l) for l in open(R + f"train_queries/gen/gen_{k}.jsonl")): gens[f"g{k}_{i:03d}"] = x
+        for i, x in enumerate(json.loads(l) for l in open(R + f"train_queries/gen/gen_{k}.jsonl", encoding="utf-8")): gens[f"g{k}_{i:03d}"] = x
     for k in range(5):
         f = R + f"train_queries/review/review_{k}.jsonl"
         if not os.path.exists(f): continue
-        L = [json.loads(l) for l in open(f)]; tr = [x for x in L if x["rid"] in traps]
+        L = [json.loads(l) for l in open(f, encoding="utf-8")]; tr = [x for x in L if x["rid"] in traps]
         if not tr or np.mean([x["match"] is False for x in tr]) < 0.8: continue
         out += [(gens[x["rid"]]["query"], gens[x["rid"]]["concept"], "haiku") for x in L
                 if x["rid"] not in traps and x["rid"] in gens and x["validity"] == "valid" and x["match"] is True and ok(gens[x["rid"]]["concept"])]
     for f in sorted(glob.glob(R + "train_queries/review/review2_*.jsonl")):          # round 2: written and reviewed by different agents
-        for x in map(json.loads, open(f)):
+        for x in map(json.loads, open(f, encoding="utf-8")):
             if x.get("validity") == "valid" and x.get("match") is True and ok(x.get("concept", "")): out.append((x["query"], x["concept"], "haiku2_" + x.get("category", "")))
     names = [(s, t) for t in T if t.startswith("MONDO:") and ok(t) for s in [T[t]["name"]] + T[t]["syn"] if 6 <= len(s) <= 40]
     for s, t in rng.sample(names, 4000):
@@ -85,7 +85,7 @@ def main():
     w, b = m.coef_[0].astype(np.float32), np.float32(m.intercept_[0])
     MI._IDX.update(rr_w=w, rr_b=b, rr_mu=mu.astype(np.float32), rr_sd=sd.astype(np.float32), rr_threshold=np.float32(0))
     # choose the acceptance threshold on the gold dev split
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); G = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl"))}
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); G = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8"))}
     gold = [dict(G[q["qid"]], category=q["category"]) for q in Q]; groups = [q["group"] or q["qid"] for q in Q]
     dev = [i for i, gr in enumerate(groups) if EL.split_of(gr) == "dev"]
     GC = candidates([q["query"] for q in Q])
@@ -107,7 +107,7 @@ def main():
         threshold=float(th), dev_base=dict(macro_f1=base["macro_f1"], false_accept_invalid=base["false_accept_invalid"], concept_acc=concept_acc(run(None))),
         dev_rerank=dict(macro_f1=best["macro_f1"], false_accept_invalid=best["false_accept_invalid"], concept_acc=concept_acc(run(th))))
     print(json.dumps(res, indent=1))
-    json.dump(res, open(P.REPO + "ml/results/benchmarks/rerank_v1.json", "w"), indent=1)
+    json.dump(res, open(P.REPO + "ml/results/benchmarks/rerank_v1.json", "w", encoding="utf-8"), indent=1)
     if "--dry" in sys.argv: return
     path = MI.C + "mondo_index.npz"; z = dict(np.load(path, allow_pickle=True))
     pi = sorted(prior); z.update(rr_w=w, rr_b=b, rr_mu=mu.astype(np.float32), rr_sd=sd.astype(np.float32), rr_threshold=np.float32(th),

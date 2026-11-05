@@ -85,9 +85,9 @@ def build():
             items.append(dict(id=t, name=r["name"], synonyms=r["synonyms"], related_synonyms=r.get("related_synonyms", []),
                               definition=r["definition"][:400], parents=r["parents"], siblings=[T[u]["name"] for u in s],
                               confusable=list(dict.fromkeys([p for p in T[t]["parents"] if p in T and p not in held][:1] + s[:2] + near[t]))[:NEAR + 1]))
-        json.dump(dict(batch=b // BATCH, concepts=items), open(D + f"queue/b{b // BATCH:04d}.json", "w"), ensure_ascii=False, indent=1)
+        json.dump(dict(batch=b // BATCH, concepts=items), open(D + f"queue/b{b // BATCH:04d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     json.dump(dict(n_concepts=len(ok), n_batches=(len(ok) + BATCH - 1) // BATCH, n_profile_first=len(prof & set(ok)), batch=BATCH,
-                   held_out=len(held), worker=WORKER, verifier=VERIFIER), open(D + "queue/manifest.json", "w"), indent=1)
+                   held_out=len(held), worker=WORKER, verifier=VERIFIER), open(D + "queue/manifest.json", "w", encoding="utf-8"), indent=1)
     print(len(ok), "concepts,", (len(ok) + BATCH - 1) // BATCH, "batches")
 
 
@@ -96,7 +96,7 @@ def call(model, system, prompt):
     qwen = model == WORKER and BACKEND == "qwen"; env = None
     if qwen:
         ensure_tunnel(); env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
-        env.update(ANTHROPIC_BASE_URL=f"http://127.0.0.1:{QWEN_PORT}", ANTHROPIC_AUTH_TOKEN=open(QWEN_KEY).read().strip(),
+        env.update(ANTHROPIC_BASE_URL=f"http://127.0.0.1:{QWEN_PORT}", ANTHROPIC_AUTH_TOKEN=open(QWEN_KEY, encoding="utf-8").read().strip(),
                    CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC="1",
                    CLAUDE_CODE_MAX_OUTPUT_TOKENS="64000",   # Qwen thinks at length; b0004 went over the 32k default
                    CLAUDE_CODE_EFFORT_LEVEL="medium")       # Strata maps effort to how long Qwen thinks; higher ran out of tokens
@@ -195,14 +195,14 @@ def run(limit=None):
     guide = open(D + "GUIDE.md", encoding="utf-8").read(); vguide = open(D + "VERIFY.md", encoding="utf-8").read()
     import hashlib; guide_sha = hashlib.sha256(guide.encode()).hexdigest()[:12]   # GUIDE.md changed at b0004 (fewer typos)
     verify_sha = hashlib.sha256(vguide.encode()).hexdigest()[:12]                 # VERIFY.md changed at b0014 (general vs specific)
-    os.makedirs(D + "out", exist_ok=True); logf = open(D + "runs.jsonl", "a")
+    os.makedirs(D + "out", exist_ok=True); logf = open(D + "runs.jsonl", "a", encoding="utf-8")
     def log(r): logf.write(json.dumps(dict(r, t=time.strftime("%Y-%m-%d %H:%M:%S"))) + "\n"); logf.flush()
     todo = [f for f in sorted(glob.glob(D + "queue/b*.json")) if not os.path.exists(D + "out/" + os.path.basename(f))]
     done = 0; fails = 0; recent = []
     for f in todo:
         if os.path.exists(D + "STOP"): print("STOP file present; stopping"); break
         if limit is not None and done >= limit: break
-        batch = json.load(open(f)); name = os.path.basename(f)
+        batch = json.load(open(f, encoding="utf-8")); name = os.path.basename(f)
         try:
             out = generate(batch, guide, log); keep, drop = clean(out, batch, T, ev)
             res = verify(batch, keep, vguide, T, log, seed=batch["batch"]) if keep else []
@@ -210,29 +210,29 @@ def run(limit=None):
             fails += 1; m = BACKOFF[min(fails, len(BACKOFF)) - 1]; log(dict(step="fail", batch=name, error=str(e)[:400], sleep_min=m))
             print(name, "failed:", str(e)[:200], f"-> sleeping {m} min", flush=True); time.sleep(60 * m); continue
         fails = 0; acc = sum(r["accepted"] for r in res)
-        json.dump(dict(batch=batch["batch"], worker=WORKER_AS, verifier=VERIFIER, guide=guide_sha, verify_guide=verify_sha, items=res, dropped=drop), open(D + "out/" + name, "w"), ensure_ascii=False, indent=1)
+        json.dump(dict(batch=batch["batch"], worker=WORKER_AS, verifier=VERIFIER, guide=guide_sha, verify_guide=verify_sha, items=res, dropped=drop), open(D + "out/" + name, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         log(dict(step="done", batch=name, n=len(res), accepted=acc, dropped=len(drop))); done += 1
         recent = (recent + [(acc, len(res))])[-5:]; ra = sum(a for a, _ in recent) / max(1, sum(n for _, n in recent))
         print(f"{name}: {acc}/{len(res)} accepted, {len(drop)} dropped (last 5 batches {ra:.0%})", flush=True)
         if len(recent) == 5 and ra < 0.5:                         # stop rule in the plan
-            open(D + "STOP", "w").write(f"acceptance over the last 5 batches {ra:.0%} < 50% at {name}\n"); print("acceptance below 50%; stopping"); break
+            open(D + "STOP", "w", encoding="utf-8").write(f"acceptance over the last 5 batches {ra:.0%} < 50% at {name}\n"); print("acceptance below 50%; stopping"); break
 
 
 def status():
-    q = len(glob.glob(D + "queue/b*.json")); outs = [json.load(open(f)) for f in sorted(glob.glob(D + "out/b*.json"))]
+    q = len(glob.glob(D + "queue/b*.json")); outs = [json.load(open(f, encoding="utf-8")) for f in sorted(glob.glob(D + "out/b*.json"))]
     from collections import Counter
     n = Counter(); a = Counter()
     for o in outs:
         for r in o["items"]: n[r["category"]] += 1; a[r["category"]] += r["accepted"]
     print(f"batches {len(outs)}/{q}; items {sum(n.values())}, accepted {sum(a.values())} ({sum(a.values()) / max(1, sum(n.values())):.0%})")
     for c in CATS: print(f"  {c:<10} {a[c]:>6}/{n[c]:<6}")
-    if os.path.exists(D + "STOP"): print("STOP:", open(D + "STOP").read().strip())
+    if os.path.exists(D + "STOP"): print("STOP:", open(D + "STOP", encoding="utf-8").read().strip())
 
 
 def merge():
     out = []
     for f in sorted(glob.glob(D + "out/b*.json")):
-        for r in json.load(open(f))["items"]:
+        for r in json.load(open(f, encoding="utf-8"))["items"]:
             if r["accepted"]: out.append(dict(id=r["id"], query=r["query"], category=r["category"]))
     with open(D + "accepted.jsonl", "w", encoding="utf-8") as w:
         for r in out: w.write(json.dumps(r, ensure_ascii=False) + "\n")

@@ -29,9 +29,9 @@ def texts(T, labels, held):
         if t in held or t not in T: continue
         for s in [T[t]["name"]] + T[t]["syn"][:5]: out.append((s, t))
     for f in sorted(glob.glob(R + "train_queries/review/review2_*.jsonl")):
-        for x in map(json.loads, open(f)):
+        for x in map(json.loads, open(f, encoding="utf-8")):
             if x.get("validity") == "valid" and x.get("match") is True and x["concept"] in labels and x["concept"] not in held: out.append((x["query"], x["concept"]))
-    for r in map(json.loads, open(R + "external/mentions_mondo.jsonl")):
+    for r in map(json.loads, open(R + "external/mentions_mondo.jsonl", encoding="utf-8")):
         if r["split"] == "train" and len(r["mondo"]) == 1 and r["mondo"][0] in labels and r["mondo"][0] not in held: out.append((r["mention"], r["mondo"][0]))
     return list(dict.fromkeys(out))
 
@@ -71,7 +71,7 @@ def train(X, Y, groups):
 
 
 def gold_eval(W):
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); G = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl"))}
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); G = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8"))}
     gold = [dict(G[q["qid"]], category=q["category"]) for q in Q]; groups = [q["group"] or q["qid"] for q in Q]
     dev = [i for i, g in enumerate(groups) if EL.split_of(g) == "dev"]
     links = MI.link([q["query"] for q in Q]); H = head_probs(W, embed([q["query"] for q in Q])) >= W["oh_thr"]
@@ -98,7 +98,7 @@ def main():
     rule = max((r for r in ("linker", "fill") if (ev[r]["false_accept_invalid"] or 0) <= (ev["linker"]["false_accept_invalid"] or 0)), key=lambda r: ev[r]["macro_f1"])
     W["oh_rule"] = np.array(rule)
     res = dict(label_stats={k: v for k, v in stats.items() if k.startswith("n_")}, n_texts=len(data), train=info, dev=ev, chosen_rule=rule)
-    json.dump(res, open(P.REPO + "ml/results/benchmarks/organ_head_v1.json", "w"), indent=1, default=float); print("chosen", rule)
+    json.dump(res, open(P.REPO + "ml/results/benchmarks/organ_head_v1.json", "w", encoding="utf-8"), indent=1, default=float); print("chosen", rule)
     if "--dry" in sys.argv: return
     path = MI.C + "mondo_index.npz"; z = dict(np.load(path, allow_pickle=True)); z.update(W); z["version"] = np.array("v5")
     np.savez(path, **z); print("index v5 written:", path)

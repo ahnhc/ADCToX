@@ -171,11 +171,11 @@ for regime in ["pair", "prior", "cluster"]:
     for mdl in [x for x in MODELS if x != "lookup"]:
         summ[mdl]["organ_rho_vs_lookup"] = boot(mdl, "_rho"); summ[mdl]["organ_top3_vs_lookup"] = boot(mdl, "_hit")
     results[regime] = summ
-    os.makedirs(os.path.dirname(OUT), exist_ok=True); json.dump(results, open(OUT, "w"), indent=1)
+    os.makedirs(os.path.dirname(OUT), exist_ok=True); json.dump(results, open(OUT, "w", encoding="utf-8"), indent=1)
     print(f"\n=== regime: {regime} ===")
     for kname, s in summ.items():
         extra = "" if "organ_rho_vs_lookup" not in s else f"  organ-rho gap vs lookup {s['organ_rho_vs_lookup']['delta']:+.3f} [{s['organ_rho_vs_lookup']['lo']:+.3f}, {s['organ_rho_vs_lookup']['hi']:+.3f}]"
         print(f"{kname:9s} R2 {s['r2']:+.3f}  Spearman {s['spearman']:.3f}  organ-rho {s['organ_rho']:.3f}  top3 {s['organ_top3']:.3f}{extra}", flush=True)
 
 import os; os.makedirs(os.path.dirname(OUT), exist_ok=True)
-json.dump(results, open(OUT, "w"), indent=1); print("wrote", OUT)
+json.dump(results, open(OUT, "w", encoding="utf-8"), indent=1); print("wrote", OUT)

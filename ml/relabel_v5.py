@@ -31,7 +31,7 @@ PASSES, BATCH, ADJ_BATCH, AUDIT_BATCH, SEED = 3, 25, 10, 10, 2081     # defaults
 
 def layout():
     """(passes, agree): an organ's tier is settled when `agree` passes give it (all of them for 3 passes or fewer, else all but one)."""
-    m = json.load(open(V5 + "input/manifest.json")); n = m["passes"]
+    m = json.load(open(V5 + "input/manifest.json", encoding="utf-8")); n = m["passes"]
     return n, (n if n <= 3 else n - 1)
 AUDIT_SAMPLE = 0.03           # share of settled concepts audited at random
 
@@ -128,10 +128,10 @@ def prepare(passes=PASSES, batch=BATCH):
         order = list(recs); random.Random(SEED + k).shuffle(order)
         for n, s in enumerate(range(0, len(order), batch)): json.dump(order[s:s + batch], open(d + f"b_{n:04d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     v4 = {t: sorted(labels[t], key=AXES.index) for t in scope if t in labels}
-    json.dump(v4, open(V5 + "input/v4_labels.json", "w"), indent=0)
+    json.dump(v4, open(V5 + "input/v4_labels.json", "w", encoding="utf-8"), indent=0)
     man = dict(concepts=len(recs), held_unmarked=len(held & set(scope)), with_hpo=sum("hpo_phenotypes" in r for r in recs), passes=passes,
                batch=batch, batches_per_pass=(len(recs) + batch - 1) // batch, seed=SEED)
-    json.dump(man, open(V5 + "input/manifest.json", "w"), indent=1); print(json.dumps(man, indent=1))
+    json.dump(man, open(V5 + "input/manifest.json", "w", encoding="utf-8"), indent=1); print(json.dumps(man, indent=1))
 
 
 # ------------------------------------------------------------------ outputs
@@ -191,7 +191,7 @@ def vote():
         if m or inv: raise SystemExit(f"pass{k} incomplete: {len(m)} missing, {len(inv)} invalid batches (python ml/relabel_v5.py check --stage pass{k})")
         passes.append(rows)
     recs = {r["id"]: r for r in map(json.loads, open(V5 + "input/concepts.jsonl", encoding="utf-8"))}
-    v4 = json.load(open(V5 + "input/v4_labels.json")); settled, contested = {}, []
+    v4 = json.load(open(V5 + "input/v4_labels.json", encoding="utf-8")); settled, contested = {}, []
     for t in recs:
         L = [p[t] for p in passes]; st = [tiers(x) for x in L]; noax = [bool(x.get("no_axis")) for x in L]
         final, open_ = [], []
@@ -227,7 +227,7 @@ def merged():
 
 def audit():
     L = merged(); recs = {r["id"]: r for r in map(json.loads, open(V5 + "input/concepts.jsonl", encoding="utf-8"))}
-    v4 = json.load(open(V5 + "input/v4_labels.json")); T = parse_obo(); flags = collections.defaultdict(list); rng = random.Random(SEED + 99)
+    v4 = json.load(open(V5 + "input/v4_labels.json", encoding="utf-8")); T = parse_obo(); flags = collections.defaultdict(list); rng = random.Random(SEED + 99)
     for t, r in L.items():
         pr = set(r.get("primary", [])); al = pr | set(r.get("involved", []))
         for p in T[t]["parents"]:                                           # a subtype keeps its parent's defining organs
@@ -261,8 +261,8 @@ def assemble():
     st = dict(concepts=len(ids), how=dict(how), no_axis=sum(bool(L[t].get("no_axis")) for t in ids),
               primary_per_organ={a: sum(a in L[t].get("primary", []) for t in ids) for a in AXES},
               involved_per_organ={a: sum(a in L[t].get("involved", []) for t in ids) for a in AXES}, agreement=agree)
-    json.dump(st, open(V5 + "agreement.json", "w"), indent=1)
-    open(V5 + "DONE", "w").write("v5 labels assembled; see REPORT.md\n"); print(json.dumps(st, indent=1))
+    json.dump(st, open(V5 + "agreement.json", "w", encoding="utf-8"), indent=1)
+    open(V5 + "DONE", "w", encoding="utf-8").write("v5 labels assembled; see REPORT.md\n"); print(json.dumps(st, indent=1))
 
 
 if __name__ == "__main__":

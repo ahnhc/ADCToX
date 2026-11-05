@@ -37,7 +37,7 @@ def test_page_script_parses():
     js = re.search(
         r"<script[^>]*>(.*?)</script>", page.read_text(encoding="utf-8"), re.S
     ).group(1)
-    with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as fh:
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as fh:
         fh.write(js)
         tmp = fh.name
     proc = subprocess.run(

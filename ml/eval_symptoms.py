@@ -43,7 +43,7 @@ def main():
     report = dict(n_queries=len(Q), n_profiles=len(SG.profiles()), dev=dev, test=summary([r for r in rows if r["split"] == "test"]),
                   note="synthetic queries (Claude Sonnet, written without the profiles); not real user input")
     out = OUT.replace("_v0", "_" + sys.argv[sys.argv.index("--out") + 1]) if "--out" in sys.argv else OUT
-    os.makedirs(os.path.dirname(OUT), exist_ok=True); json.dump(report, open(out, "w"), indent=1, ensure_ascii=False)
+    os.makedirs(os.path.dirname(OUT), exist_ok=True); json.dump(report, open(out, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     print(json.dumps(dict(dev=dev, test=report["test"]), indent=1, ensure_ascii=False))
 
 

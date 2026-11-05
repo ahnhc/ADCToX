@@ -82,7 +82,7 @@ def main():
     Y = {t: np.array([a_ in labels[t] for a_ in AXES], np.float32) for t in concepts}
     train = [(q, t) for q, t in data if t not in val_c]; val = [(q, t) for q, t in data if t in val_c]
     print(f"texts {len(data)} (korean {sum(any('가' <= c <= '힣' for c in q) for q, _ in data)}), train {len(train)}, val {len(val)}", flush=True)
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); links = MI.link([q["query"] for q in Q]); MI.close(); torch.cuda.empty_cache()   # linker first, then Gemma
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); links = MI.link([q["query"] for q in Q]); MI.close(); torch.cuda.empty_cache()   # linker first, then Gemma
     tok, lm, path = load_backbone(a.layers); tok.padding_side = "right"
     lm = get_peft_model(lm, LoraConfig(r=a.rank, lora_alpha=2 * a.rank, lora_dropout=0.05, target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]))
     model = Judge(lm, lm.config.hidden_size).to(DEV)
@@ -112,7 +112,7 @@ def main():
     pv = 1 / (1 + np.exp(-zv / temp)) >= thr
     f1 = [2 * (pv[:, k] & (yv[:, k] > 0)).sum() / max(1, pv[:, k].sum() + (yv[:, k] > 0).sum()) for k in range(len(AXES))]
     # gold dev: judge alone, and in place of the small head under the app's fill rule
-    G = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl"))}
+    G = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8"))}
     gold = [dict(G[q["qid"]], category=q["category"]) for q in Q]; groups = [q["group"] or q["qid"] for q in Q]
     dev = [i for i, g in enumerate(groups) if EL.split_of(g) == "dev"]
     zg = predict(model, tok, [q["query"] for q in Q]); J = 1 / (1 + np.exp(-zg / temp)) >= thr
@@ -131,8 +131,8 @@ def main():
     res = dict(tag=a.tag, layers=a.layers, rank=a.rank, epochs_best=best[1] + 1, val_loss=best[0], val_macro_f1=float(np.mean(f1)), n_train=len(train),
                gold_dev=ev, korean_examples={k: [AXES[i] for i in np.where(j)[0]] for (k, _), j in zip(ko, jk)}, minutes=round((time.time() - t0) / 60, 1))
     print(json.dumps(res, indent=1, ensure_ascii=False))
-    np.savez(out + "calibration.npz", temp=temp, thr=thr); json.dump(dict(res, backbone=GEMMA, revision=REV, prompt=PROMPT), open(out + "info.json", "w"), indent=1, ensure_ascii=False)
-    json.dump(res, open(P.REPO + f"ml/results/benchmarks/gemma_judge_{a.tag}.json", "w"), indent=1, ensure_ascii=False)
+    np.savez(out + "calibration.npz", temp=temp, thr=thr); json.dump(dict(res, backbone=GEMMA, revision=REV, prompt=PROMPT), open(out + "info.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    json.dump(res, open(P.REPO + f"ml/results/benchmarks/gemma_judge_{a.tag}.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 
 
 if __name__ == "__main__":

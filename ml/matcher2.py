@@ -62,7 +62,7 @@ def main():
     for k, i in enumerate(ids):
         if 0 < warned[k].sum(): print(f"     {i:28s} AUROC {auroc(Ipct[k], warned[k]):.2f}  warns on: {', '.join(f'{a}({wt[i][1][a]})' for a in sorted(wt[i][1]))}")
     # (2) matching over the registry comorbidities
-    L = json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"]; reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv"))}
+    L = json.load(open(R + "ml/results/learned_vulnerability.json", encoding="utf-8"))["severity"]; reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv", encoding="utf-8"))}
     wv = lambda c: np.array([L[c][a] for a in AXES])
     def hand(c): v = np.zeros(len(AXES)); [v.__setitem__(AXES.index(a), float(reg[c]["severity"])) for a in reg[c]["organ_axes"].split(";") if a in AXES]; return v
     rows = []; allc = list(L)
@@ -93,7 +93,7 @@ def main():
                                     highest=[(ids[i], round(float(s[i]), 2), [AXES[k] for k in np.argsort(-(T_full[i] * w))[:2]]) for i in order[::-1][:3]])
         print(f"\n{'+'.join(cids)}\n   lowest burden : {demo['+'.join(cids)]['lowest']}\n   highest burden: {demo['+'.join(cids)]['highest']}")
     json.dump(dict(adcs=ids, drug_side_auroc=dict(mean=float(np.nanmean(d1)), ci=[float(np.percentile(b, 2.5)), float(np.percentile(b, 97.5))], n=len(d1)), matching={k: list(map(float, v)) for k, v in out.items()},
-                   per_condition=rows, demo=demo, weights=dict(boxed=W_BOXED, sec5=W_SEC5, inc=W_INC)), open(R + "ml/results/matcher2.json", "w"), indent=1, default=str)
+                   per_condition=rows, demo=demo, weights=dict(boxed=W_BOXED, sec5=W_SEC5, inc=W_INC)), open(R + "ml/results/matcher2.json", "w", encoding="utf-8"), indent=1, default=str)
 
 if __name__ == "__main__":
     main()

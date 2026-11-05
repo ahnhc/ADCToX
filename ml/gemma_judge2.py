@@ -101,11 +101,11 @@ def main():
                 for q in [T[t]["name"]] + T[t]["syn"][:5]: add(q, t, src="mondo_names")
     if "train_queries" not in drop:
         for f in sorted(glob.glob(P.REPO + "data/curated/train_queries/review/review2_*.jsonl")):
-            for x in map(json.loads, open(f)):
+            for x in map(json.loads, open(f, encoding="utf-8")):
                 if x.get("validity") == "valid" and x.get("match") is True and x["concept"] in labels and x["concept"] not in held: add(x["query"], x["concept"], src="train_queries")
     ext = P.REPO + "data/curated/external/mentions_mondo.jsonl"                  # licensed corpus mentions, not in the repository
     if "external" not in drop and os.path.exists(ext):
-        for r in map(json.loads, open(ext)):
+        for r in map(json.loads, open(ext, encoding="utf-8")):
             if r["split"] == "train" and len(r["mondo"]) == 1 and r["mondo"][0] in labels and r["mondo"][0] not in held: add(r["mention"], r["mondo"][0], src="external")
     elif "external" not in drop: drop.add("external"); print("external mentions not found: trained without them", flush=True)
     if "profiles" not in drop:
@@ -163,7 +163,7 @@ def main():
                   sources_left_out=sorted(drop), by_source=dict(collections.Counter(x[6] for x in train)), **{f"out_{o}": sum(o in outs(x) for x in train) for o in ("organ", "align", "valid", "sym")})))
     if bad: raise SystemExit("pre-training checks failed: " + "; ".join(bad))
     # ---- dev sets (computed before Gemma takes the GPU)
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); Gd = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl"))}
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); Gd = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8"))}
     gold = [dict(Gd[q["qid"]], category=q["category"]) for q in Q]; groups = [q["group"] or q["qid"] for q in Q]
     dev = [i for i, g in enumerate(groups) if EL.split_of(g) == "dev"]
     ko = {x["qid"]: x["query_ko"] for x in jl("koeval_*.jsonl") if x.get("query_ko")}; Qko = [ko.get(q["qid"], q["query"]) for q in Q]
@@ -222,7 +222,7 @@ def main():
         yo = np.stack([x[2] if x[2] is not None else np.zeros(13) for x in val]); mo = np.array([x[2] is not None for x in val])
         vl = float(bce(torch.from_numpy(zo[mo]), torch.from_numpy(yo[mo]).float()).mean())
         print(f"epoch {ep} val organ loss {vl:.4f}", flush=True)
-        TL.write_card(a.tag, dict(epochs=[*json.load(open(TL.CARDS + f"{a.tag}.json")).get("epochs", [])[:ep], dict(epoch=ep + 1, val_organ_loss=round(vl, 4), minutes=round((time.time() - t0) / 60, 1))]))
+        TL.write_card(a.tag, dict(epochs=[*json.load(open(TL.CARDS + f"{a.tag}.json", encoding="utf-8")).get("epochs", [])[:ep], dict(epoch=ep + 1, val_organ_loss=round(vl, 4), minutes=round((time.time() - t0) / 60, 1))]))
         if vl < best[0]: best = (vl, ep, {k: v.detach().cpu().clone() for k, v in model.state_dict().items() if "lora" in k or not k.startswith("lm.")})
     model.load_state_dict(best[2], strict=False)
     out = P.CACHE + f"gemma_judge2_{a.tag}/"; os.makedirs(out, exist_ok=True); torch.save(best[2], out + "adapter_head.pt")
@@ -277,8 +277,8 @@ def main():
     res = dict(tag=a.tag, layers=a.layers, rank=a.rank, epochs_best=best[1] + 1, n_train=len(train), n_items=len(items), valid=valid_info, align_val=align_val,
                gold_dev_en=ev_en, gold_dev_ko=ev_ko, n_ko_queries=len(ko), symptom_dev=sym_ev, minutes=round((time.time() - t0) / 60, 1))
     print(json.dumps(res, indent=1, ensure_ascii=False))
-    np.savez(out + "calibration.npz", temp=temp, thr=thr, vthr=np.float32(vthr)); json.dump(dict(res, backbone=GJ.GEMMA, revision=GJ.REV, prompt=PROMPT, profiles=[p["id"] for p in prof]), open(out + "info.json", "w"), indent=1, ensure_ascii=False)
-    json.dump(res, open(P.REPO + f"ml/results/benchmarks/gemma_judge2_{a.tag}.json", "w"), indent=1, ensure_ascii=False)
+    np.savez(out + "calibration.npz", temp=temp, thr=thr, vthr=np.float32(vthr)); json.dump(dict(res, backbone=GJ.GEMMA, revision=GJ.REV, prompt=PROMPT, profiles=[p["id"] for p in prof]), open(out + "info.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    json.dump(res, open(P.REPO + f"ml/results/benchmarks/gemma_judge2_{a.tag}.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     pick = lambda ev, k: round(ev[k]["macro_f1"], 3)
     TL.write_card(a.tag, dict(finished=time.strftime("%Y-%m-%d %H:%M"), chosen_epoch=best[1] + 1, calibration=dict(temp=[round(float(x), 2) for x in temp], thr=[round(float(x), 2) for x in thr], valid=valid_info),
                   results=dict(en_pipeline=pick(ev_en, "linker+valid"), en_single=pick(ev_en, "align0.7+valid"), ko_pipeline=pick(ev_ko, "linker+valid"), ko_single=pick(ev_ko, "align0.7+valid"),

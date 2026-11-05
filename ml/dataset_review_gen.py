@@ -33,7 +33,7 @@ def base_files(prefix):
 
 def round1(set_):
     """-> {i: verdict row} for the non-control items of passed round-1 batches that change something."""
-    man = json.load(open(R + "manifest.json")); rep = json.load(open(R + "report.json"))["per_batch"]; ch = {}
+    man = json.load(open(R + "manifest.json", encoding="utf-8")); rep = json.load(open(R + "report.json", encoding="utf-8"))["per_batch"]; ch = {}
     for n, m in man.items():
         if n.rsplit("_", 1)[0] != set_ or not rep[n]["passed"]: continue
         ctl = set(m["controls"])
@@ -45,7 +45,7 @@ def round1(set_):
 
 def reverted():
     """-> {(set, i)} round-1 changes the round-2 A/B check reverted (the verifier chose the old side)."""
-    man2 = json.load(open(R + "manifest2.json")); pairs = man2.pop("_pairs"); out = set()
+    man2 = json.load(open(R + "manifest2.json", encoding="utf-8")); pairs = man2.pop("_pairs"); out = set()
     for n in sorted(k for k in man2 if k.startswith("verify")):
         b = {x["key"]: x for x in json.load(open(R + f"batches/{n}.json", encoding="utf-8"))}; ctl = man2[n]["controls"]
         for r in read_out(n) or []:

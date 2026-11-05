@@ -20,15 +20,15 @@ SEED, PER_BATCH, N_CAL = 55, 150, 8
 
 def old_labels():
     """concept -> list of earlier label sets (first round and strict relabel), calibration concepts excluded."""
-    cal = set(json.load(open(R + "manifest.json"))["calibration"]); out = {}
+    cal = set(json.load(open(R + "manifest.json", encoding="utf-8"))["calibration"]); out = {}
     for f in sorted(glob.glob(R + "labels/batch_*.jsonl")) + sorted(glob.glob(R + "labels/relabel_*.jsonl")):
-        for x in map(json.loads, open(f)):
+        for x in map(json.loads, open(f, encoding="utf-8")):
             if x["id"] not in cal: out.setdefault(x["id"], []).append(dict(organs=sorted(x["organs"]), scope=x.get("scope"), file=os.path.basename(f)))
     return out
 
 
 def main():
-    rng = random.Random(SEED); T = read_obo(); held, _ = held_out(T); man = json.load(open(R + "manifest.json")); cal = man["calibration"]
+    rng = random.Random(SEED); T = read_obo(); held, _ = held_out(T); man = json.load(open(R + "manifest.json", encoding="utf-8")); cal = man["calibration"]
     old = old_labels()
     verify = sorted(t for t in old if t in T and t not in held)
     queue = list(csv.DictReader(open(R + "review_queue.csv", encoding="utf-8")))
@@ -42,7 +42,7 @@ def main():
         c = [cal_ids[(k * N_CAL + i) % len(cal_ids)] for i in range(N_CAL)]; b = b + c; rng.shuffle(b); out[f"v2_{k:02d}"] = b
         with open(R + f"batches/v2_{k:02d}.txt", "w", encoding="utf-8") as fh: fh.write("\n".join(line(T, t) for t in b) + "\n")
     json.dump(dict(verify=verify, fill=fill, old={t: old[t] for t in verify}, calibration=cal, batches=out),
-              open(R + "verify_manifest.json", "w"), indent=0, ensure_ascii=False)
+              open(R + "verify_manifest.json", "w", encoding="utf-8"), indent=0, ensure_ascii=False)
     print(f"verify {len(verify)}  fill {len(fill)} (x2)  batches {n} of ~{PER_BATCH}+{N_CAL}")
 
 

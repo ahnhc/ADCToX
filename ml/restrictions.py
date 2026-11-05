@@ -46,7 +46,7 @@ FIELD = {"crcl_lt": "crcl", "crcl_ge": "crcl", "bili_gt": "bili", "bili_le": "bi
 
 
 def load_rules():
-    return yaml.safe_load(open(R + "conf/label_restrictions.yaml"))["rules"]
+    return yaml.safe_load(open(R + "conf/label_restrictions.yaml", encoding="utf-8"))["rules"]
 
 
 def label_text(adc):

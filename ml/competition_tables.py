@@ -54,7 +54,7 @@ def check():
 
 def main():
     os.makedirs(OUT, exist_ok=True)
-    reg = yaml.safe_load(open(P.REPO + "conf/adc_registry.yaml"))["agents"]; W = D.warnings(); rows = []
+    reg = yaml.safe_load(open(P.REPO + "conf/adc_registry.yaml", encoding="utf-8"))["agents"]; W = D.warnings(); rows = []
     for adc, w in sorted(W.items()):
         r = reg.get(adc.replace("-", "_"), {}); ax = w["axes"]
         lvl = lambda L: "; ".join(sorted(a for a, x in ax.items() if x["level"] == L))
@@ -82,7 +82,7 @@ def main():
         com[c] = dict(mondo=t, organs=org, adcs_with_warning_on_these_organs=hit, n=len(hit))
     res = dict(n_adcs=len(W), organ=by, organ_counts={a: dict(boxed=len(v["boxed"]), wp=len(v["wp"]), any=len(set(v["boxed"]) | set(v["wp"]))) for a, v in by.items()},
                comorbidities=com, source="approved labels (DailyMed snapshot via ml/drug_evidence.py); comorbidity organs from the app's label table")
-    json.dump(res, open(OUT + "problem_size.json", "w"), indent=1, ensure_ascii=False)
+    json.dump(res, open(OUT + "problem_size.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     print(json.dumps(dict(n=res["n_adcs"], organ_counts={a: v for a, v in res["organ_counts"].items() if v["any"]},
                           comorbidities={c: (v["organs"], v["n"]) for c, v in com.items()}), indent=1, ensure_ascii=False))
 

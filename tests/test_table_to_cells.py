@@ -22,7 +22,7 @@ from adctox.extract.jats_tables import parse_table_wrap
 from adctox.extract.table_to_cells import attribute_column, extract
 from adctox.taxonomy import default_taxonomy
 
-PT_DICT = pathlib.Path("data/processed/pt_soc_dictionary.json")
+PT_DICT = pathlib.Path(__file__).resolve().parents[1] / "data/processed/pt_soc_dictionary.json"
 
 MINE = {"brentuximab", "brentuximab vedotin", "adcetris", "sgn-35"}
 OTHERS = {
@@ -34,6 +34,7 @@ OTHERS = {
 
 @pytest.fixture(scope="module")
 def tax():
+    if not PT_DICT.exists(): pytest.skip("the MedDRA PT dictionary is licensed and stays local (scripts/build_taxonomy.py rebuilds it)")
     t = default_taxonomy()
     t.load_pt_dictionary(PT_DICT)
     return t

@@ -23,7 +23,7 @@ CAL_MIN = 0.6; PER_BATCH = 155
 
 def read(prefix):
     """-> ({concept: [label dict]}, {batch: calibration exact-agreement})"""
-    M = json.load(open(R + "verify_manifest.json")); cal = M["calibration"]; out, score = {}, {}
+    M = json.load(open(R + "verify_manifest.json", encoding="utf-8")); cal = M["calibration"]; out, score = {}, {}
     for f in sorted(glob.glob(R + f"labels/{prefix}_*.jsonl")):
         L = []
         for l in open(f, encoding="utf-8"):
@@ -48,7 +48,7 @@ def old_key(M, t):
 
 
 def tiebreak():
-    M = json.load(open(R + "verify_manifest.json")); V, score = read("v2"); T = read_obo(); todo = []
+    M = json.load(open(R + "verify_manifest.json", encoding="utf-8")); V, score = read("v2"); T = read_obo(); todo = []
     for t in M["verify"]:
         if t in V and key(V[t][0]) != old_key(M, t): todo.append(t)
     for t in M["fill"]:
@@ -63,7 +63,7 @@ def tiebreak():
 
 
 def merge():
-    M = json.load(open(R + "verify_manifest.json")); V, s2 = read("v2"); W, s3 = read("v3"); out = []; stats = Counter()
+    M = json.load(open(R + "verify_manifest.json", encoding="utf-8")); V, s2 = read("v2"); W, s3 = read("v3"); out = []; stats = Counter()
     for t in M["verify"] + M["fill"]:
         votes = ([old_key(M, t)] if t in M["old"] else []) + [key(x) for x in V.get(t, [])] + [key(x) for x in W.get(t, [])]
         if not votes: stats["no_label"] += 1; continue
@@ -80,7 +80,7 @@ def merge():
         for x in out: fh.write(json.dumps(x, ensure_ascii=False) + "\n")
     changed = sum(1 for x in out if x["note"] == "verify" and ",".join(x["organs"]) != old_key(M, x["id"]))
     rep = dict(calibration_v2=s2, calibration_v3=s3, counts=dict(stats), written=len(out), verify_label_changed=changed)
-    json.dump(rep, open(R + "verify_report.json", "w"), indent=1); print(json.dumps(rep, indent=1))
+    json.dump(rep, open(R + "verify_report.json", "w", encoding="utf-8"), indent=1); print(json.dumps(rep, indent=1))
 
 
 if __name__ == "__main__":

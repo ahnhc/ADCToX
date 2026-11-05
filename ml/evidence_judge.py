@@ -106,8 +106,8 @@ def train(a):
     print("val concepts", len(vc), "macro F1", round(f1, 4), flush=True)
     ids = sorted(R); pa = probs(SJ, model, tk, [text(R[c], blank if c not in held else frozenset()) for c in ids[: 300 if a.smoke else None]])
     torch.save(model.state_dict(), out + "model.pt"); np.savez(out + "pred.npz", ids=np.array(ids[: len(pa)]), p=pa.astype(np.float16))
-    json.dump(dict(thr=thr, val_f1=f1, backbone=a.backbone, maxlen=MAXLEN), open(out + "calibration.json", "w"), indent=1)
-    c = json.load(open(TL.CARDS + f"{a.tag}.json")); c.update(finished=time.strftime("%Y-%m-%d %H:%M"), results=dict(val_f1=f1, thr=thr)); TL.write_card(a.tag, c)
+    json.dump(dict(thr=thr, val_f1=f1, backbone=a.backbone, maxlen=MAXLEN), open(out + "calibration.json", "w", encoding="utf-8"), indent=1)
+    c = json.load(open(TL.CARDS + f"{a.tag}.json", encoding="utf-8")); c.update(finished=time.strftime("%Y-%m-%d %H:%M"), results=dict(val_f1=f1, thr=thr)); TL.write_card(a.tag, c)
     print("->", out, flush=True)
 
 
@@ -115,7 +115,7 @@ def score(a):
     """dev macro-F1 (English) of the judge's stored rows with the evidence rule, on gold_v0, gold_v1 and known."""
     import gold_v1 as G, eval_linking as EL, known_eval as KE, linking_models as LM, scratch_judge as SJ
     B = P.REPO + "ml/results/benchmarks/"; d = P.CACHE + f"evidence_judge_{a.tag}/"
-    Z = np.load(d + "pred.npz"); thr = np.array(json.load(open(d + "calibration.json"))["thr"]); ev = dict(zip(map(str, Z["ids"]), Z["p"].astype(np.float32)))
+    Z = np.load(d + "pred.npz"); thr = np.array(json.load(open(d + "calibration.json", encoding="utf-8"))["thr"]); ev = dict(zip(map(str, Z["ids"]), Z["p"].astype(np.float32)))
     labels, _ = LM.load_organ_labels()
     def apply(rows):
         out, n = [], 0
@@ -129,13 +129,13 @@ def score(a):
     Q = KE.questions()["en"]; kg = [dict(validity="valid", concepts=[q["id"]], best=q["id"], organs=q["organs"], category=q["kind"]) for q in Q]
     kx = [i for i, q in enumerate(Q) if q["split"] == "dev"]; res = {}
     for name, use in (("judge", False), ("judge + evidence", True)):
-        gr = json.load(open(B + f"bench_scratch_{a.x2}.json"))["per"]["en"]; kr = json.load(open(B + f"known_{a.x2}.json"))["per"]["en"]
+        gr = json.load(open(B + f"bench_scratch_{a.x2}.json", encoding="utf-8"))["per"]["en"]; kr = json.load(open(B + f"known_{a.x2}.json", encoding="utf-8"))["per"]["en"]
         ng = nk = 0
         if use: (gr, ng), (kr, nk) = apply(gr), apply(kr)
         jx = [i for i in ix if gr[i] is not None]
         res[name] = dict(gold_v0=round(EL.metrics(P_(gr), Gs["gold_v0"], jx)["macro_f1"], 4), gold_v1=round(EL.metrics(P_(gr), Gs["gold_v1"], jx)["macro_f1"], 4),
                          known=round(EL.metrics(P_(kr), kg, kx)["macro_f1"], 4), evidence_rows_gold=ng, evidence_rows_known=nk)
-    json.dump(dict(tag=a.tag, x2=a.x2, split="dev", scores=res), open(B + f"evidence_{a.tag}_{a.x2}.json", "w"), indent=1); print(json.dumps(res, indent=1))
+    json.dump(dict(tag=a.tag, x2=a.x2, split="dev", scores=res), open(B + f"evidence_{a.tag}_{a.x2}.json", "w", encoding="utf-8"), indent=1); print(json.dumps(res, indent=1))
 
 
 if __name__ == "__main__":

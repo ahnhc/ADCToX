@@ -11,6 +11,8 @@ a warning naming the empty string as a payload family.
 
 from __future__ import annotations
 
+import pytest
+
 from pathlib import Path
 
 import yaml

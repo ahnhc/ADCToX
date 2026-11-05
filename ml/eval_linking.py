@@ -33,7 +33,7 @@ def split_of(group):
 def system_outputs(queries, refresh=False, tag="v0"):
     """runs the models once and caches every system's raw top-k / decision per query."""
     path = D + f"raw/system_outputs_{tag}.json"
-    if os.path.exists(path) and not refresh: return json.load(open(path))
+    if os.path.exists(path) and not refresh: return json.load(open(path, encoding="utf-8"))
     os.environ.setdefault("ADC_RESEARCH_MODE", "1")
     import torch, recommend as RC, mondo_index as MI, vulnerability_model as VM
     from build_linking_pools import read_obo
@@ -76,7 +76,7 @@ def system_outputs(queries, refresh=False, tag="v0"):
     out = dict(axes_of={t: axes_of[t] for t in {c for L in sap + sap_h + bio + tfi for c, _ in L} | {x["concept"] for x in a0 if x["concept"]}},
                nonhuman=sorted(nonhuman & {c for L in sap + bio + tfi for c, _ in L}),
                per=[dict(qid=qq["qid"], sapbert=s1, sapbert_h=s2, biolord=b, tfidf=t, a0=x0, a4=x4, a4f=x5) for qq, s1, s2, b, t, x0, x4, x5 in zip(queries, sap, sap_h, bio, tfi, a0, a4, a4f)])
-    json.dump(out, open(path, "w")); return out
+    json.dump(out, open(path, "w", encoding="utf-8")); return out
 
 
 def decide(sysout, gold, theta_tf, theta_bio, a5):
@@ -143,8 +143,8 @@ def error_analysis(sysout, gold, ix):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--refresh", action="store_true"); ap.add_argument("--gold", default=D + "gold_v0.jsonl"); ap.add_argument("--tag", default="v0"); ap.add_argument("--queries", default=D + "raw/queries_v0.json"); a = ap.parse_args()
-    queries = json.load(open(a.queries)); qi = {q["qid"]: q for q in queries}
-    G = {g["qid"]: g for g in map(json.loads, open(a.gold))}; gold = [dict(G[q["qid"]], category=q["category"]) for q in queries]
+    queries = json.load(open(a.queries, encoding="utf-8")); qi = {q["qid"]: q for q in queries}
+    G = {g["qid"]: g for g in map(json.loads, open(a.gold, encoding="utf-8"))}; gold = [dict(G[q["qid"]], category=q["category"]) for q in queries]
     groups = [q["group"] or q["qid"] for q in queries]; split = [split_of(g) for g in groups]
     sysout = system_outputs(queries, a.refresh, a.tag)
     dev = [i for i, s in enumerate(split) if s == "dev"]; test = [i for i, s in enumerate(split) if s == "test"]; allix = list(range(len(queries)))
@@ -176,7 +176,7 @@ def main():
     res["recall_at_k"] = {s: {k: float(np.mean([bool(set(t for t, _ in sysout["per"][i][s][:k]) & set(gold[i]["concepts"])) for i in allix if gold[i]["validity"] == "valid" and gold[i]["concepts"]])) for k in (1, 5, 10)} for s in ("sapbert", "sapbert_h", "biolord", "tfidf")}
     res["errors_sapbert_all"] = error_analysis(sysout, gold, allix)
     res["by_category_test_macro_f1"] = {s: {c: metrics(P[s], gold, [i for i in test if gold[i]["category"] == c])["macro_f1"] for c in ("canonical", "synonym", "abbrev", "typo", "lay")} for s in ("A2", "A4", "A5")}
-    os.makedirs(OUT, exist_ok=True); json.dump(res, open(OUT + f"linking_{a.tag}.json", "w"), indent=1)
+    os.makedirs(OUT, exist_ok=True); json.dump(res, open(OUT + f"linking_{a.tag}.json", "w", encoding="utf-8"), indent=1)
     for k in ("test",):
         print(f"{'sys':5s} {'macroF1':>8s} {'microF1':>8s} {'exact':>6s} {'concept':>8s} {'cover':>6s} {'FA_inv':>7s} {'acc_amb':>7s}")
         for s, m in res[k].items():

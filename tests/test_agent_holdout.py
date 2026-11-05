@@ -26,6 +26,7 @@ from adctox.taxonomy import default_taxonomy
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PROCESSED = ROOT / "data" / "processed"
 HEAD_TO_HEAD = "NCT03529110"
+pytestmark = pytest.mark.skipif(not (PROCESSED / "arms.parquet").exists(), reason="the corpus frames are built by `make corpus` and not tracked")
 
 
 @pytest.fixture(scope="module")

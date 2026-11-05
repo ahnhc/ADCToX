@@ -74,7 +74,7 @@ def batches():
             c = dict(a, qid=f"ctl{n:02d}_{k}", ko=o["ko"]); part.insert(rng.randrange(len(part) + 1), c); ctl[c["qid"]] = "fix"
         for x in part: x.pop("validity", None)
         json.dump(part, open(B + f"kr_{n:02d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0); man[f"kr_{n:02d}"] = ctl
-    json.dump(man, open(B + "manifest.json", "w"), indent=1); print(dict(questions=len(rows), batches=len(out)))
+    json.dump(man, open(B + "manifest.json", "w", encoding="utf-8"), indent=1); print(dict(questions=len(rows), batches=len(out)))
 
 
 def read(f):
@@ -87,7 +87,7 @@ def read(f):
 
 
 def merge():
-    man = json.load(open(B + "manifest.json")); rows = {r["qid"]: r for r in questions()}; dec, rep = [], {}
+    man = json.load(open(B + "manifest.json", encoding="utf-8")); rows = {r["qid"]: r for r in questions()}; dec, rep = [], {}
     for n, ctl in man.items():
         rv = {k: read(OUT + f"{n}_{k}.jsonl") for k in ("a", "b")}; adj = read(OUT + f"{n}_adj.jsonl"); counted = {}
         for k, v in rv.items():
@@ -113,7 +113,7 @@ def merge():
     stats = dict(questions=len(orig), changed=len(dec), by_category=dict(collections.Counter(d["category"] for d in dec)), overridden=sum("override" in d for d in dec),
                  by_reason=dict(collections.Counter(r for d in dec for r in d["reasons"])), reviewers_counted=sum(v["counted"] for v in rep.values()),
                  reviewers=len(rep), per_reviewer=rep)
-    json.dump(stats, open(R + "report.json", "w"), indent=1, ensure_ascii=False); print(json.dumps({k: v for k, v in stats.items() if k != "per_reviewer"}, ensure_ascii=False, indent=1))
+    json.dump(stats, open(R + "report.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False); print(json.dumps({k: v for k, v in stats.items() if k != "per_reviewer"}, ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":

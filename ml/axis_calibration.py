@@ -67,7 +67,7 @@ def main():
     import csv
     names = {r["상병기호"]: r["영문명"] for r in csv.DictReader(open(AR.RAW + "kcd/hira_sangbyeong_master_2025.9_utf8.csv", encoding="utf-8")) if len(r["상병기호"]) == 3 and r["영문명"]}
     rr = {}
-    for r in csv.DictReader(open(AR.RAW + "dtb_siggaard2020/MOESM1_ESM.tsv"), delimiter="\t"):
+    for r in csv.DictReader(open(AR.RAW + "dtb_siggaard2020/MOESM1_ESM.tsv", encoding="utf-8"), delimiter="\t"):
         ax = AR.icd_axis(r["D2"])
         if ax and r["D1"] in names and float(r["RR"]) > 0: rr.setdefault(r["D1"], {}).setdefault(ax, []).append(np.log(float(r["RR"])))
     codes = sorted(c for c, d in rr.items() if len(d) >= 2)
@@ -81,7 +81,7 @@ def main():
     res = dict(internal_within_disease=internal, dtb_within_exposure=external, top_share_raw=top_share(Zn), top_share_calibrated=top_share(calib(Zn, mu, sd)),
                mu=mu.tolist(), sd=sd.tolist())
     res["adopt"] = internal["hi"] >= 0 and external["hi"] >= 0
-    json.dump(res, open(RES + "axis_calibration_v1.json", "w"), indent=1)
+    json.dump(res, open(RES + "axis_calibration_v1.json", "w", encoding="utf-8"), indent=1)
     print(json.dumps({k: v for k, v in res.items() if k not in ("mu", "sd")}, indent=1))
     if a.write and res["adopt"]:
         ck = torch.load(VM.PT, weights_only=False, map_location="cpu"); ck["axis_mu"] = mu.astype(np.float32).tolist(); ck["axis_sd"] = sd.astype(np.float32).tolist()

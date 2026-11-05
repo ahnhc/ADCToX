@@ -14,8 +14,8 @@ D = "/home/hyeongchanahn/CONI/adctox/data/curated/disease_linking/"
 
 def load():
     A, B = {}, {}
-    for f in glob.glob(D + "annot/shard_*_A.jsonl"): A.update({x["qid"]: x for x in map(json.loads, open(f))})
-    for f in glob.glob(D + "annot/shard_*_B.jsonl"): B.update({x["qid"]: x for x in map(json.loads, open(f))})
+    for f in glob.glob(D + "annot/shard_*_A.jsonl"): A.update({x["qid"]: x for x in map(json.loads, open(f, encoding="utf-8"))})
+    for f in glob.glob(D + "annot/shard_*_B.jsonl"): B.update({x["qid"]: x for x in map(json.loads, open(f, encoding="utf-8"))})
     return A, B
 
 
@@ -42,11 +42,11 @@ def prepare():
                organ_exact_both_valid=sum(set(A[q]["organs"]) == set(B[q]["organs"]) for q in both_valid) / len(both_valid),
                organ_jaccard_both_valid=sum(jac(q) for q in both_valid) / len(both_valid), n_disagreements=len(dis),
                validity_A=Counter(va), validity_B=Counter(vb))
-    json.dump(agr, open(D + "annot/agreement_v0.json", "w"), indent=1); print(json.dumps(agr, indent=1))
+    json.dump(agr, open(D + "annot/agreement_v0.json", "w", encoding="utf-8"), indent=1); print(json.dumps(agr, indent=1))
     blocks = {}
     for f in glob.glob(D + "annot/shard_?.txt"):
-        for b in open(f).read().split("### ")[1:]: blocks[b.split("\n", 1)[0].strip()] = "### " + b.strip()
-    with open(D + "annot/adjudicate.txt", "w") as fh:
+        for b in open(f, encoding="utf-8").read().split("### ")[1:]: blocks[b.split("\n", 1)[0].strip()] = "### " + b.strip()
+    with open(D + "annot/adjudicate.txt", "w", encoding="utf-8") as fh:
         for q in dis:
             strip = lambda x: {k: x[k] for k in ("validity", "concepts", "best", "pool_miss", "organs", "note")}
             fh.write(blocks[q] + f"\nannotator_1: {json.dumps(strip(A[q]))}\nannotator_2: {json.dumps(strip(B[q]))}\n\n")
@@ -54,7 +54,7 @@ def prepare():
 
 
 def finalize():
-    A, B = load(); adj = {x["qid"]: x for x in map(json.loads, open(D + "annot/adjudicated.jsonl"))}; out = []
+    A, B = load(); adj = {x["qid"]: x for x in map(json.loads, open(D + "annot/adjudicated.jsonl", encoding="utf-8"))}; out = []
     for q in sorted(A):
         a, b = A[q], B[q]
         if q in adj:
@@ -66,7 +66,7 @@ def finalize():
             rec = dict(qid=q, validity=a["validity"], concepts=sorted(c), best=a["best"], pool_miss=a["pool_miss"] and b["pool_miss"], organs=sorted(a["organs"]), source="agreed", note="")
         rec["annotations"] = dict(A={k: a[k] for k in ("validity", "concepts", "best", "organs", "confidence")}, B={k: b[k] for k in ("validity", "concepts", "best", "organs", "confidence")})
         out.append(rec)
-    with open(D + "gold_v0.jsonl", "w") as fh:
+    with open(D + "gold_v0.jsonl", "w", encoding="utf-8") as fh:
         for r in out: fh.write(json.dumps(r) + "\n")
     print("gold records", len(out), Counter(r["validity"] for r in out), Counter(r["source"] for r in out))
 

@@ -74,10 +74,10 @@ print("MONDO diseases:", len(disease), flush=True)
 cand, cid = [], []
 for t in sorted(disease):
     for s in [T[t]["name"]] + T[t]["syn"]: cand.append(s); cid.append(t)
-cross = {k.lower(): v for k, v in yaml.safe_load(open("/home/hyeongchanahn/CONI/adctox/conf/ontology/mondo_organ_axis.yaml"))["ancestor_to_axis"].items()}
+cross = {k.lower(): v for k, v in yaml.safe_load(open("/home/hyeongchanahn/CONI/adctox/conf/ontology/mondo_organ_axis.yaml", encoding="utf-8"))["ancestor_to_axis"].items()}
 
 m = pd.read_parquet(C + "finngen.parquet"); up = m.drop_duplicates("prior_name")[["prior_name", "prior_longname"]].reset_index(drop=True)
-reg = list(csv.DictReader(open("/home/hyeongchanahn/CONI/adctox/conf/comorbidity_registry.csv")))
+reg = list(csv.DictReader(open("/home/hyeongchanahn/CONI/adctox/conf/comorbidity_registry.csv", encoding="utf-8")))
 q_txt = [clean(str(s)) for s in up.prior_longname.fillna(up.prior_name)] + [r["label"] for r in reg]
 print("embedding", len(cand), "MONDO strings and", len(q_txt), "queries", flush=True)
 EC = embed_all(cand); EQ = embed_all(q_txt)

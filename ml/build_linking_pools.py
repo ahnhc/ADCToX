@@ -48,7 +48,7 @@ def concept_topk(S, ids, k):
 def main():
     import mondo_index as MI, vulnerability_model as VM
     from sklearn.feature_extraction.text import TfidfVectorizer
-    Q = json.load(open(D + "raw/queries_v0.json")); T = read_obo()
+    Q = json.load(open(D + "raw/queries_v0.json", encoding="utf-8")); T = read_obo()
     idx = np.load(MI.C + "mondo_index.npz", allow_pickle=True); ids = [str(x) for x in idx["ids"]]; strs = []
     for t, n in zip(ids, idx["names"]): strs.append(str(n))
     # the index stores names per row; rebuild the row strings (name + exact synonyms, in build order)
@@ -74,14 +74,14 @@ def main():
         rng.shuffle(cand)
         pools.append(dict(qid=q["qid"], query=q["query"], pool=cand))
         systems.append(dict(qid=q["qid"], sapbert=a, biolord=b, tfidf=c, intended_ids=iv.get(q["intended"], [])))
-    json.dump(pools, open(D + "raw/pools_v0.json", "w"), indent=0); json.dump(systems, open(D + "raw/pools_v0_systems.json", "w"), indent=0)
+    json.dump(pools, open(D + "raw/pools_v0.json", "w", encoding="utf-8"), indent=0); json.dump(systems, open(D + "raw/pools_v0_systems.json", "w", encoding="utf-8"), indent=0)
     def line(t):
         e = T[t]; syn = "; ".join(e["syn"][:3]); par = ", ".join(T[p]["name"] for p in e["parents"][:2] if p in T)
         d = e["defn"][:140] + ("..." if len(e["defn"]) > 140 else "")
         return f"  - {t} | {e['name']}" + (f" | syn: {syn}" if syn else "") + (f" | is_a: {par}" if par else "") + (f" | def: {d}" if d else "")
     order = rng.permutation(len(pools)); per = np.array_split(order, SHARDS)
     for k, part in enumerate(per):
-        with open(D + f"annot/shard_{k}.txt", "w") as fh:
+        with open(D + f"annot/shard_{k}.txt", "w", encoding="utf-8") as fh:
             for i in sorted(part):
                 p = pools[i]; fh.write(f"### {p['qid']}\nquery: {p['query']}\ncandidates:\n" + "\n".join(line(t) for t in p["pool"]) + "\n\n")
     print("queries", len(pools), "mean pool", np.mean([len(p["pool"]) for p in pools]), "shards", [len(x) for x in per])

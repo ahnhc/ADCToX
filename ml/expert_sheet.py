@@ -22,7 +22,7 @@ COLS = ["row", "disease", "organs_given", "wrong_organs", "missing_organs", "com
 
 def make(a, b, seed=0):
     Q, gold, groups, _ = E4.gold()
-    B = {n: json.load(open(P.REPO + f"ml/results/benchmarks/bench_{n}.json"))["per"]["en"] for n in (a, b)}
+    B = {n: json.load(open(P.REPO + f"ml/results/benchmarks/bench_{n}.json", encoding="utf-8"))["per"]["en"] for n in (a, b)}
     ix = [i for i, (q, g) in enumerate(zip(Q, groups)) if EL.split_of(g) == "test" and q["category"] == "canonical"]
     items = []
     for i in ix:
@@ -34,12 +34,12 @@ def make(a, b, seed=0):
     with open(SHEET, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f); w.writerow(COLS)
         for k, it in enumerate(items, 1): w.writerow([k, it["disease"], "; ".join(it["organs"]) or "none", "", "", ""])
-    json.dump(dict(a=a, b=b, seed=seed, axes=AXES, rows={k: it for k, it in enumerate(items, 1)}), open(KEY, "w"), indent=1)
+    json.dump(dict(a=a, b=b, seed=seed, axes=AXES, rows={k: it for k, it in enumerate(items, 1)}), open(KEY, "w", encoding="utf-8"), indent=1)
     print(f"{len(ix)} diseases, {len(items)} rows -> {SHEET}; key -> {KEY}")
 
 
 def score(path):
-    key = json.load(open(KEY)); S = {n: dict(tp=0, fp=0, fn=0) for n in (key["a"], key["b"])}
+    key = json.load(open(KEY, encoding="utf-8")); S = {n: dict(tp=0, fp=0, fn=0) for n in (key["a"], key["b"])}
     split = lambda s: {x.strip() for x in (s or "").replace(",", ";").split(";") if x.strip() and x.strip() != "none"}
     for r in csv.DictReader(open(path, encoding="utf-8-sig")):
         it = key["rows"][str(int(r["row"]))]; given = set(it["organs"]); wrong = split(r["wrong_organs"]) & given; miss = split(r["missing_organs"]) - given

@@ -78,11 +78,11 @@ def items(drop=frozenset(), seed=7, kcd_n=KCD_N):
                 for q in [T[t]["name"]] + T[t]["syn"][:5]: add(q, t, src="mondo_names")
     if "train_queries" not in drop:
         for f in sorted(glob.glob(P.REPO + "data/curated/train_queries/review/review2_*.jsonl")):
-            for x in map(json.loads, open(f)):
+            for x in map(json.loads, open(f, encoding="utf-8")):
                 if x.get("validity") == "valid" and x.get("match") is True and x["concept"] in labels and x["concept"] not in held: add(x["query"], x["concept"], src="train_queries")
     ext = P.REPO + "data/curated/external/mentions_mondo.jsonl"
     if "external" not in drop and os.path.exists(ext):
-        for r in map(json.loads, open(ext)):
+        for r in map(json.loads, open(ext, encoding="utf-8")):
             if r["split"] == "train" and len(r["mondo"]) == 1 and r["mondo"][0] in labels and r["mondo"][0] not in held: add(r["mention"], r["mondo"][0], src="external")
     elif "external" not in drop: drop.add("external")
     if "profiles" not in drop:

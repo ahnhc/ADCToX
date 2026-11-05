@@ -29,7 +29,7 @@ from vulnerability_model import AXES
 
 def dtb_targets():
     names = {r["상병기호"]: r["영문명"] for r in csv.DictReader(open(AR.RAW + "kcd/hira_sangbyeong_master_2025.9_utf8.csv", encoding="utf-8")) if len(r["상병기호"]) == 3 and r["영문명"]}
-    rows = [(r["D1"], r["D2"], np.log(float(r["RR"]))) for r in csv.DictReader(open(AR.RAW + "dtb_siggaard2020/MOESM1_ESM.tsv"), delimiter="\t")
+    rows = [(r["D1"], r["D2"], np.log(float(r["RR"]))) for r in csv.DictReader(open(AR.RAW + "dtb_siggaard2020/MOESM1_ESM.tsv", encoding="utf-8"), delimiter="\t")
             if float(r["RR"]) > 0 and r["D1"] in names and AR.icd_axis(r["D2"])]
     base = {}
     for _, d2, y in rows: base.setdefault(d2, []).append(y)
@@ -105,7 +105,7 @@ def main():
         print(f"{ax_:20s} pooled {r['pooled']['rho']:+.3f} [{r['pooled']['lo']:+.3f}, {r['pooled']['hi']:+.3f}]",
               *(f"{s} {r[s]['rho']:+.3f} n={r[s]['n']}" for s in ("finngen", "dtb") if r[s]), "->", "show" if ok else "blank")
     res.update(per_axis_B=per_axis, shown_B=shown, hidden_B=hidden)
-    json.dump(res, open(AR.RES + f"axis_dtb_augment_{a.tag}.json", "w"), indent=1)
+    json.dump(res, open(AR.RES + f"axis_dtb_augment_{a.tag}.json", "w", encoding="utf-8"), indent=1)
     print(json.dumps({k: res[k] for k in ("finngen", "dtb", "adopt", "hidden_B")}, indent=1))
     if a.write and res["adopt"]:
         T = VM.axis_targets(m, m.groupby("outcome_name").y.mean(), spread).reindex(up.prior_name).values.astype(np.float32)

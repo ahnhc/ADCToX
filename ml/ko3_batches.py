@@ -62,7 +62,7 @@ def batches():
     for k in range(0, len(rows), BATCH):
         json.dump(rows[k:k + BATCH], open(B + f"ko3_{n:03d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0); n += 1
     st = dict(ko2_concepts=len(old), new_concepts=len(new), still_short=need, batches=n, lay_before={a: len(lay[a]) for a in FILL})
-    json.dump(st, open(B + "ko3_manifest.json", "w"), indent=1); print(json.dumps(st, indent=1))
+    json.dump(st, open(B + "ko3_manifest.json", "w", encoding="utf-8"), indent=1); print(json.dumps(st, indent=1))
 
 
 def outputs(prefix):
@@ -124,7 +124,7 @@ def merge():
         open(R + f"gen/ko3_{k // 2000:02d}.jsonl", "w", encoding="utf-8").write("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in keep[k:k + 2000]))
     stats = dict(generated=len(rows), dropped=len(drop), kept=len(keep), kinds=dict(collections.Counter(x["kind"] for x in keep)),
                  concepts=len({x["id"] for x in keep}), batches_passed=sum(r["passed"] for r in rep.values()), batches=len(rep), per_batch=rep)
-    json.dump(stats, open(R + "gen/ko3_report.json", "w"), indent=1); print(json.dumps({k: v for k, v in stats.items() if k != "per_batch"}, indent=1))
+    json.dump(stats, open(R + "gen/ko3_report.json", "w", encoding="utf-8"), indent=1); print(json.dumps({k: v for k, v in stats.items() if k != "per_batch"}, indent=1))
 
 
 if __name__ == "__main__":

@@ -24,7 +24,7 @@ def main():
     from build_linking_pools import read_obo
     from sample_label_concepts import line
     rng = random.Random(SEED); T = read_obo(); held = LM.gold_held(T); labels, _ = LM.load_organ_labels()
-    man = json.load(open(R + "manifest.json")); man2 = {}
+    man = json.load(open(R + "manifest.json", encoding="utf-8")); man2 = {}
     out = {n: [json.loads(l) for l in open(R + f"out/{n}.jsonl", encoding="utf-8") if l.strip()] for n in man}
 
     # ---- A/B pairs from round 1's changes
@@ -93,7 +93,7 @@ def main():
         rng.shuffle(items); man2[f"mondo_ko2_{k:02d}"] = write(f"mondo_ko2_{k:02d}", items, controls)
 
     # ---- blind relabel sample
-    cal = json.load(open(D + "concept_organs/manifest.json"))["calibration"]; cal_ids = sorted(cal); rng.shuffle(cal_ids)
+    cal = json.load(open(D + "concept_organs/manifest.json", encoding="utf-8"))["calibration"]; cal_ids = sorted(cal); rng.shuffle(cal_ids)
     train = [t for t in labels if t in T and t not in held]
     by = {0: [], 1: [], 2: [], 3: []}
     for t in train: by[min(3, len(labels[t]))].append(t)

@@ -71,9 +71,9 @@ def auroc(score, pos):
 
 def main():
     rate, pct, info = burden(); print(f"scored ADCs: {len(info)} (>= {MIN_PATIENTS} patients and >= {MIN_TERMS} distinct severe terms); by payload: {info.pay.value_counts().to_dict()}", flush=True)
-    L = json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"]
-    import csv; reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv"))}
-    flags = yaml.safe_load(open(R + "conf/hard_flags.yaml")); flags = flags["flags"] if "flags" in flags else flags
+    L = json.load(open(R + "ml/results/learned_vulnerability.json", encoding="utf-8"))["severity"]
+    import csv; reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv", encoding="utf-8"))}
+    flags = yaml.safe_load(open(R + "conf/hard_flags.yaml", encoding="utf-8")); flags = flags["flags"] if "flags" in flags else flags
     T = pct.values; names = list(info["ADC name"])
     def wvec(cid): return np.array([L[cid][a] for a in AXES])
     def hand(cid):
@@ -114,7 +114,7 @@ def main():
         def why(i): c = T[i] * w; top = np.argsort(-c)[:2]; return [f"{AXES[k]} (w {w[k]:.2f} x burden pct {T[i][k]:.2f})" for k in top if c[k] > 0]
         demo["+".join(cids)] = dict(lowest=[dict(adc=names[i], payload=info.pay.iloc[i], score=float(s[i]), patients=int(info.patients.iloc[i])) for i in order[:5]],
                                     highest=[dict(adc=names[i], payload=info.pay.iloc[i], score=float(s[i]), why=why(i)) for i in order[::-1][:3]])
-    json.dump(dict(n_adc=len(info), by_payload=info.pay.value_counts().to_dict(), rows=rows, mean_auroc=summ, ci=ci, demo=demo), open(R + "ml/results/matcher.json", "w"), indent=1, default=str)
+    json.dump(dict(n_adc=len(info), by_payload=info.pay.value_counts().to_dict(), rows=rows, mean_auroc=summ, ci=ci, demo=demo), open(R + "ml/results/matcher.json", "w", encoding="utf-8"), indent=1, default=str)
     for k, v in demo.items():
         print(f"\n{k}\n  lowest burden : {[(d['adc'][:28], d['payload']) for d in v['lowest']]}\n  highest burden: {[(d['adc'][:28], d['payload'], d['why']) for d in v['highest']]}")
 

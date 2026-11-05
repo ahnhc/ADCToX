@@ -57,7 +57,7 @@ def build():
             if n in seen: continue
             seen.add(n); st.extend(T[n]["parents"] if n in T else ())
         memo[t] = seen; return seen
-    cross = {k.lower(): v for k, v in yaml.safe_load(open(P.REPO + "conf/ontology/mondo_organ_axis.yaml"))["ancestor_to_axis"].items()}
+    cross = {k.lower(): v for k, v in yaml.safe_load(open(P.REPO + "conf/ontology/mondo_organ_axis.yaml", encoding="utf-8"))["ancestor_to_axis"].items()}
     dis = [t for t in T if t.startswith("MONDO:") and not T[t]["obs"] and T[t]["name"] and (t == "MONDO:0000001" or "MONDO:0000001" in anc(t))]
     strs, ids = [], []
     for t in dis:

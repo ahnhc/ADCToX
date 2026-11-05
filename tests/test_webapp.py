@@ -440,6 +440,7 @@ def test_ctrl_c_during_an_analysis_lets_it_finish_and_exits_cleanly(tmp_path):
 
 
 def test_the_one_file_build_serves_the_page_from_memory(tmp_path):
+    if not list((ROOT / "data/raw_big/mondo").glob("*/mondo.obo")): pytest.skip("the MONDO download is not tracked; CI builds the --full bundle instead")
     out = tmp_path / "adc_recommender.py"
     build = subprocess.run([sys.executable, "-I", str(ROOT / "ml/build_portable.py"), str(out)], capture_output=True, text=True)
     assert build.returncode == 0, build.stderr[-1500:]

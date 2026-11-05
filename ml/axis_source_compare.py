@@ -43,7 +43,7 @@ def hudine_targets():
         if c[0].isdigit(): cat[c[:3]].append((c, n.strip()))
     names = {k: sorted(v, key=lambda x: (len(x[0]), not x[0].endswith("9"), x[0]))[0][1] for k, v in cat.items()}
     pairs = []
-    for line in open(AR.RAW + "hudine/AllNet3.net"):
+    for line in open(AR.RAW + "hudine/AllNet3.net", encoding="utf-8"):
         p = line.split()
         if len(p) < 6 or int(p[4]) < 10 or float(p[5]) <= 0: continue
         for a, b in ((p[0], p[1]), (p[1], p[0])):
@@ -114,7 +114,7 @@ def main():
         per[ax] = AR.boot_rho(x, y, u) if len(x) >= 10 else None
     hidden = [ax for ax in AXES if per[ax] is None or per[ax]["lo"] <= 0]
     res.update(best_referee=best, chosen=chosen, per_axis_hudine=per, hidden=hidden)
-    json.dump(res, open(AR.RES + "axis_source_compare_v1.json", "w"), indent=1)
+    json.dump(res, open(AR.RES + "axis_source_compare_v1.json", "w", encoding="utf-8"), indent=1)
     for k, v in res["models"].items(): print(f"{k:5s} referee {v['referee_hudine']:.3f}  cv FinnGen {v['cv_finngen']:.3f}  cv DTB {v['cv_dtb']:.3f}")
     for k, v in res["paired_vs_F"].items(): print(k, "vs F:", {s: f"{d['delta']:+.3f} [{d['lo']:+.3f}, {d['hi']:+.3f}]" for s, d in v.items()})
     for ax, r in per.items(): print(f"  {ax:20s}", f"{r['rho']:+.3f} [{r['lo']:+.3f}, {r['hi']:+.3f}] n={r['n']}" if r else "-", "blank" if ax in hidden else "")

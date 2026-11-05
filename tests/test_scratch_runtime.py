@@ -24,13 +24,13 @@ def folder(tmp_path):
     for n, k in (("organ", 13), ("valid", 1), ("proj", 8)):
         lin = torch.nn.Linear(16, k); sd[f"{n}.weight"], sd[f"{n}.bias"] = lin.weight.data, lin.bias.data
     sd["valid.bias"] = torch.tensor([20.0]); save_file({k: v.half().contiguous() for k, v in sd.items()}, str(tmp_path / "weights.safetensors"))
-    json.dump(dict(axes=AXES, temp=[1.0] * 13, thr=[0.5] * 13, vthr=0.5, theta=-1.0, maxlen=16, mondo_first=0.02), open(tmp_path / "judge.json", "w"))
+    json.dump(dict(axes=AXES, temp=[1.0] * 13, thr=[0.5] * 13, vthr=0.5, theta=-1.0, maxlen=16, mondo_first=0.02), open(tmp_path / "judge.json", "w", encoding="utf-8"))
     import scratch_runtime as SR
-    SR._M.clear(); json.dump({}, open(tmp_path / "concepts.json", "w")); np.savez(tmp_path / "index.npz", E=np.zeros((1, 8), np.float16), ids=np.array(["X:1"]))
+    SR._M.clear(); json.dump({}, open(tmp_path / "concepts.json", "w", encoding="utf-8")); np.savez(tmp_path / "index.npz", E=np.zeros((1, 8), np.float16), ids=np.array(["X:1"]))
     M = SR.load(str(tmp_path)); _, _, va = SR._outputs(M, ["tuberculosis", "glaucoma"]); SR._M.clear()
     np.savez(tmp_path / "index.npz", E=np.vstack([va, -va[:1]]).astype(np.float16), ids=np.array(["MONDO:1", "HP:2", "MONDO:3"]))
     json.dump({"MONDO:1": ["tuberculosis", ["pulmonary", "infectious_immune"], "record"], "HP:2": ["Glaucoma", [], ""], "MONDO:3": ["other", ["renal"], "label"]},
-              open(tmp_path / "concepts.json", "w"))
+              open(tmp_path / "concepts.json", "w", encoding="utf-8"))
     return str(tmp_path)
 
 

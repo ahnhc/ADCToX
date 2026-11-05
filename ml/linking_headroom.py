@@ -17,8 +17,8 @@ import eval_linking as EL
 
 
 def main():
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); G = {g["qid"]: g for g in map(json.loads, open(EL.D + "gold_v0.jsonl"))}
-    gold = [dict(G[q["qid"]], category=q["category"]) for q in Q]; S = json.load(open(EL.D + "raw/system_outputs_v0.json")); ax = S["axes_of"]
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); G = {g["qid"]: g for g in map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8"))}
+    gold = [dict(G[q["qid"]], category=q["category"]) for q in Q]; S = json.load(open(EL.D + "raw/system_outputs_v0.json", encoding="utf-8")); ax = S["axes_of"]
     groups = [q["group"] or q["qid"] for q in Q]; test = [i for i, g in enumerate(groups) if EL.split_of(g) == "test"]
     def run(crosswalk=False, rerank=False, theta=False):
         P = []
@@ -46,7 +46,7 @@ def main():
                                                      empty_crosswalk=sum(1 for i, r in enumerate(S["per"]) if gold[i]["validity"] == "valid" and gold[i]["concepts"] and r["sapbert"][0][0] in gold[i]["concepts"] and not ax.get(r["sapbert"][0][0])))
     nh = set(S["nonhuman"]); V = [i for i in range(len(Q)) if gold[i]["validity"] == "valid"]
     out["nonhuman_top1_valid"] = sum(S["per"][i]["sapbert"][0][0] in nh for i in V) / len(V)
-    json.dump(out, open(EL.OUT + "linking_headroom_v0.json", "w"), indent=1); print(json.dumps(out, indent=1))
+    json.dump(out, open(EL.OUT + "linking_headroom_v0.json", "w", encoding="utf-8"), indent=1); print(json.dumps(out, indent=1))
 
 
 if __name__ == "__main__":

@@ -68,7 +68,7 @@ class OrganMapper:
             try:
                 from adctox.taxonomy import Taxonomy
                 self.tax = Taxonomy(); self.tax.load_pt_dictionary(R + "data/processed/pt_soc_dictionary.json")
-                self.pts = list(json.load(open(R + "data/processed/pt_soc_dictionary.json"))["terms"]); self.emb = "lazy"
+                self.pts = list(json.load(open(R + "data/processed/pt_soc_dictionary.json", encoding="utf-8"))["terms"]); self.emb = "lazy"
             except Exception: self.emb = None
 
     def _embed_map(self, terms):
@@ -202,7 +202,7 @@ def main(d):
     cov = sum(n for t, n in terms.items() if mapper.cache.get(t)) / terms.sum(); print(f"   term mentions mapped to an organ: {cov:.1%}")
     res = analyse(P); res.update(source=f"PMDA JADER ({os.path.basename(os.path.normpath(d))})", citation="本解析は医薬品医療機器総合機構（PMDA）の医薬品副作用データベース（JADER）を利用した結果である",
                                 cases_by_adc=cases.value_counts().to_dict(), mapped_share=cov)
-    json.dump(res, open(R + "ml/results/jader_validation.json", "w"), indent=1, ensure_ascii=False)
+    json.dump(res, open(R + "ml/results/jader_validation.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     print(json.dumps({k: v for k, v in res.items() if k not in ("per_organ_drug_order", "cases_by_adc")}, indent=1, ensure_ascii=False))
     for o, x in res["per_organ_drug_order"].items(): print(f"   {o:20s} rho {x['spearman']:+.2f} (p {x['p']:.3f}, {x['n_adc']} ADCs, {x['n_cases']} vulnerable cases)")
     return res

@@ -172,7 +172,7 @@ def main():
         g = out["regimes"][regime]; print(f"== {a.name} | {regime}: model R2 {g['model']['r2']:+.3f} (knn {g['knn']['r2']:+.3f}, lookup {g['lookup']['r2']:+.3f}) | "
               f"gain over lookup {g['model_gain_over_lookup']['delta']:+.3f} [{g['model_gain_over_lookup']['lo']:+.3f},{g['model_gain_over_lookup']['hi']:+.3f}] | "
               f"model-knn {g['model_minus_knn']['delta']:+.3f} [{g['model_minus_knn']['lo']:+.3f},{g['model_minus_knn']['hi']:+.3f}]", flush=True)
-    os.makedirs(RES, exist_ok=True); json.dump(out, open(RES + f"{a.name}.json", "w"), indent=1)
+    os.makedirs(RES, exist_ok=True); json.dump(out, open(RES + f"{a.name}.json", "w", encoding="utf-8"), indent=1)
     pickle.dump(per_prior, open(C + f"lab_{a.name}.pkl", "wb"))
 
 if __name__ == "__main__":

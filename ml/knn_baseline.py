@@ -71,4 +71,4 @@ for regime in ["pair", "prior", "cluster"]:
     res[regime] = {n: {k: float(np.mean([x[k] for x in L])) for k in ["r2", "spearman", "organ_rho", "organ_top3"]} for n, L in per.items()}
     res[regime]["knn"]["organ_rho_vs_lookup"] = dict(delta=float(a.mean()), lo=float(np.percentile(bs, 2.5)), hi=float(np.percentile(bs, 97.5)))
     print(f"=== {regime} ===", json.dumps(res[regime]), flush=True)
-os.makedirs(os.path.dirname(OUT), exist_ok=True); json.dump(res, open(OUT, "w"), indent=1)
+os.makedirs(os.path.dirname(OUT), exist_ok=True); json.dump(res, open(OUT, "w", encoding="utf-8"), indent=1)

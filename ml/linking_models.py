@@ -50,9 +50,9 @@ def ancestors_all(T, t):
 # ------------------------------------------------------------------ labels
 def load_organ_labels():
     if os.environ.get("ADCTOX_LABELS", "v4") in ("v5", "v5p", "v51", "v51f"): return load_organ_labels_v5()
-    man = json.load(open(R + "concept_organs/manifest.json")); cal = set(man["calibration"]); good, per = {}, {}
+    man = json.load(open(R + "concept_organs/manifest.json", encoding="utf-8")); cal = set(man["calibration"]); good, per = {}, {}
     for f in sorted(glob.glob(R + "concept_organs/labels/batch_*.jsonl")):
-        L = [json.loads(l) for l in open(f)]; c = [set(x["organs"]) == set(man["calibration"][x["id"]]) for x in L if x["id"] in cal]
+        L = [json.loads(l) for l in open(f, encoding="utf-8")]; c = [set(x["organs"]) == set(man["calibration"][x["id"]]) for x in L if x["id"] in cal]
         ok = bool(c) and np.mean(c) >= 0.9
         for x in L:
             if x["id"] in cal or x.get("scope") == "unclear": continue
@@ -63,7 +63,7 @@ def load_organ_labels():
         if len(v) >= 2 and v[0] == v[1]: labels[t] = v[0]
     strict, strict_per, rq = {}, {}, {}
     for f in sorted(glob.glob(R + "concept_organs/labels/relabel_*.jsonl")):
-        L = [json.loads(l) for l in open(f)]; c = [set(x["organs"]) == set(man["calibration"][x["id"]]) for x in L if x["id"] in cal]
+        L = [json.loads(l) for l in open(f, encoding="utf-8")]; c = [set(x["organs"]) == set(man["calibration"][x["id"]]) for x in L if x["id"] in cal]
         rq[os.path.basename(f)] = float(np.mean(c)) if c else None
         for x in L:
             if x["id"] in cal or x.get("scope") == "unclear": continue
@@ -71,20 +71,20 @@ def load_organ_labels():
     labels.update(strict)
     verified = {}
     if os.path.exists(R + "concept_organs/labels/verified_v2.jsonl"):                # second round (Haiku 5.5, majority of 2-3 votes)
-        for x in map(json.loads, open(R + "concept_organs/labels/verified_v2.jsonl")): verified[x["id"]] = frozenset(x["organs"])
+        for x in map(json.loads, open(R + "concept_organs/labels/verified_v2.jsonl", encoding="utf-8")): verified[x["id"]] = frozenset(x["organs"])
     labels.update(verified)
     filled = {}
     if os.path.exists(R + "concept_organs/labels/verified_v3.jsonl"):                # third round: every other human concept, v3 rules
-        for x in map(json.loads, open(R + "concept_organs/labels/verified_v3.jsonl")): filled[x["id"]] = frozenset(x["organs"])
+        for x in map(json.loads, open(R + "concept_organs/labels/verified_v3.jsonl", encoding="utf-8")): filled[x["id"]] = frozenset(x["organs"])
     labels.update(filled)
     reviewed = {}
     if os.path.exists(R + "concept_organs/labels/verified_v4.jsonl"):                # Opus review of every training label (2026-10-17)
-        for x in map(json.loads, open(R + "concept_organs/labels/verified_v4.jsonl")):
+        for x in map(json.loads, open(R + "concept_organs/labels/verified_v4.jsonl", encoding="utf-8")):
             if x.get("scope") != "unclear": reviewed[x["id"]] = frozenset(x["organs"])
     labels.update(reviewed)
     expert = {}
     for f in sorted(glob.glob(R + "concept_organs/labels/expert_*.jsonl")):          # human (clinician) review: always wins
-        for x in map(json.loads, open(f)):
+        for x in map(json.loads, open(f, encoding="utf-8")):
             if x.get("scope") != "unclear": expert[x["id"]] = frozenset(x["organs"])
     labels.update(expert)
     nonhuman = _nonhuman(labels)                                                   # 215 animal concepts had labels (2026-10-17 review)
@@ -152,7 +152,7 @@ def _nonhuman(labels):
 
 def gold_held(T):
     """gold concepts plus their parents and children: never training concepts (the gold is for evaluation only)."""
-    held = {c for g in map(json.loads, open(EL.D + "gold_v0.jsonl")) for c in g["concepts"]}; children = {}
+    held = {c for g in map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8")) for c in g["concepts"]}; children = {}
     for t, e in T.items():
         for p in e.get("parents", []): children.setdefault(p, set()).add(t)
     return held | {p for c in held for p in T.get(c, {}).get("parents", [])} | {k for c in held for k in children.get(c, ())}
@@ -178,10 +178,10 @@ def predict_organs(M, concepts):
 
 
 def cmd_organs():
-    M = organ_model(); Q = json.load(open(EL.D + "raw/queries_v0.json")); G = {g["qid"]: g for g in map(json.loads, open(EL.D + "gold_v0.jsonl"))}
+    M = organ_model(); Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); G = {g["qid"]: g for g in map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8"))}
     gold = [dict(G[q["qid"]], category=q["category"]) for q in Q]; groups = [q["group"] or q["qid"] for q in Q]
     split = [EL.split_of(g) for g in groups]; dev = [i for i, s in enumerate(split) if s == "dev"]; test = [i for i, s in enumerate(split) if s == "test"]
-    S = json.load(open(EL.D + "raw/system_outputs_v0.json")); old = S["axes_of"]
+    S = json.load(open(EL.D + "raw/system_outputs_v0.json", encoding="utf-8")); old = S["axes_of"]
     linked = sorted({r["sapbert_h"][0][0] for r in S["per"]} | {r["sapbert"][0][0] for r in S["per"]}); P = dict(zip(linked, predict_organs(M, linked)))
     def run(rule, th):
         out = []
@@ -198,7 +198,7 @@ def cmd_organs():
                dev={r: max(s for s, rr, _ in scored if rr == r) for r in ("crosswalk", "learned", "union", "hybrid")},
                test_crosswalk=EL.metrics(run("crosswalk", 0.5), gold, test), test_chosen=EL.metrics(run(best[1], best[2]), gold, test),
                paired_test=EL.boot(run(best[1], best[2]), run("crosswalk", 0.5), gold, test, groups))
-    json.dump(res, open(OUT + "concept_organs_v1.json", "w"), indent=1, default=float)
+    json.dump(res, open(OUT + "concept_organs_v1.json", "w", encoding="utf-8"), indent=1, default=float)
     print(json.dumps({k: v for k, v in res.items() if not k.startswith("test_")}, indent=1, default=float))
     print("test crosswalk F1 %.3f  chosen F1 %.3f" % (res["test_crosswalk"]["macro_f1"], res["test_chosen"]["macro_f1"]))
     return M, best
@@ -220,23 +220,23 @@ def gate_features(texts, idx_E, ids, nonhuman_mask):
 
 def gate_training_set():
     rng = random.Random(5); T = read_obo(); pos, neg = [], []
-    rm = json.load(open(R + "train_queries/review_manifest.json")); traps = rm["traps"]; gens = {}
+    rm = json.load(open(R + "train_queries/review_manifest.json", encoding="utf-8")); traps = rm["traps"]; gens = {}
     for k in range(5):
-        for i, x in enumerate(json.loads(l) for l in open(R + f"train_queries/gen/gen_{k}.jsonl")): gens[f"g{k}_{i:03d}"] = x
+        for i, x in enumerate(json.loads(l) for l in open(R + f"train_queries/gen/gen_{k}.jsonl", encoding="utf-8")): gens[f"g{k}_{i:03d}"] = x
     review_ok = {}
     for f in sorted(glob.glob(R + "train_queries/review/review_*.jsonl")):
-        L = [json.loads(l) for l in open(f)]; tr = [x for x in L if x["rid"] in traps]
+        L = [json.loads(l) for l in open(f, encoding="utf-8")]; tr = [x for x in L if x["rid"] in traps]
         trap_reject = np.mean([x["match"] is False for x in tr]) if tr else 0
         review_ok[os.path.basename(f)] = float(trap_reject)
         if trap_reject < 0.8: continue
         for x in L:
             if x["rid"] in traps or x["rid"] not in gens: continue
             (pos if x["validity"] == "valid" else neg).append(gens[x["rid"]]["query"])
-    ncbi = [json.loads(l) for l in open(R + "external/ncbi_disease_mondo.jsonl")]
+    ncbi = [json.loads(l) for l in open(R + "external/ncbi_disease_mondo.jsonl", encoding="utf-8")]
     pos += rng.sample(sorted({r["mention"] for r in ncbi if r["split"] == "train"}), 1500)
     names = sorted({T[t]["name"] for t in T if t.startswith("MONDO:") and T[t]["name"] and "non-human" not in T[t]["name"]}); pos += rng.sample(names, 1500)
     mondo_norm = {norm(T[t]["name"]) for t in T if t.startswith("MONDO:")} | {norm(s) for t in T if t.startswith("MONDO:") for s in T[t]["syn"]}
-    words = [w.strip() for w in open("/usr/share/dict/american-english") if w.strip().isalpha() and "'" not in w and norm(w) not in mondo_norm]
+    words = [w.strip() for w in open("/usr/share/dict/american-english", encoding="utf-8") if w.strip().isalpha() and "'" not in w and norm(w) not in mondo_norm]
     neg += rng.sample(words, 2000)
     for _ in range(600):
         n = rng.randint(2, 12); neg.append("".join(rng.choice("abcdefghijklmnopqrstuvwxyz      ") for _ in range(n)).strip() or "x")
@@ -251,7 +251,7 @@ def cmd_gate(fit_only=False):
     X = gate_features(pos + neg, E, ids, nh); y = np.r_[np.ones(len(pos)), np.zeros(len(neg))]
     mu, sd = X.mean(0), X.std(0) + 1e-6; m = LogisticRegression(C=0.2, max_iter=5000, class_weight="balanced").fit((X - mu) / sd, y)
     gate = dict(w=m.coef_[0].astype(np.float32), b=np.float32(m.intercept_[0]), mu=mu.astype(np.float32), sd=sd.astype(np.float32))
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); G = {g["qid"]: g for g in map(json.loads, open(EL.D + "gold_v0.jsonl"))}
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); G = {g["qid"]: g for g in map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8"))}
     gold = [G[q["qid"]] for q in Q]; groups = [q["group"] or q["qid"] for q in Q]; split = [EL.split_of(g) for g in groups]
     Xg = gate_features([q["query"] for q in Q], E, ids, nh); p = 1 / (1 + np.exp(-(((Xg - mu) / sd) @ gate["w"] + gate["b"])))
     def rates(ix, th):
@@ -265,7 +265,7 @@ def cmd_gate(fit_only=False):
     res = dict(n_train=dict(pos=len(pos), neg=len(neg)), review_trap_rejection=review_ok, threshold=th, dev=rates(dev, th), test=rates(test, th),
                test_auroc_valid_vs_rest=float(roc_auc_score([gold[i]["validity"] == "valid" for i in vt], p[vt])))
     gate["threshold"] = np.float32(th)
-    json.dump(res, open(OUT + "gate_v1.json", "w"), indent=1); print(json.dumps(res, indent=1))
+    json.dump(res, open(OUT + "gate_v1.json", "w", encoding="utf-8"), indent=1); print(json.dumps(res, indent=1))
     np.savez(C + "gate_v1.npz", **gate); return gate
 
 
@@ -322,7 +322,7 @@ def mention_counts():
             p = line.rstrip("\n").split("\t")
             if len(p) == 6:
                 for t in x.get(p[5] if p[5].startswith("UMLS:") else "UMLS:" + p[5], ()): n[t] += 1
-    for r in map(json.loads, open(R + "external/ncbi_disease_mondo.jsonl")):
+    for r in map(json.loads, open(R + "external/ncbi_disease_mondo.jsonl", encoding="utf-8")):
         for t in r["mondo"]: n[t] += 1
     return n
 

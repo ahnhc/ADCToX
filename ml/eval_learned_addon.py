@@ -19,7 +19,7 @@ from matcher import AXES, auroc, R
 def main():
     wt = M2.warnings_table(); inc, _ = M2.incidence_table(); ids = sorted(set(wt) & set(inc.index))
     W = np.stack([wt[i][0] for i in ids]); Tinc = pd.DataFrame(inc.loc[ids].values).rank(pct=True, method="average").values
-    L = json.load(open(R + "ml/results/learned_vulnerability.json"))["severity"]; reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv"))}
+    L = json.load(open(R + "ml/results/learned_vulnerability.json", encoding='utf-8'))["severity"]; reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv", encoding='utf-8'))}
     def own(c): v = np.zeros(len(AXES)); [v.__setitem__(AXES.index(a), float(reg[c]["severity"])) for a in reg[c]["organ_axes"].split(";") if a in AXES]; return v
     lv = lambda c: np.array([L[c][a] for a in AXES]); rows = []
     for c in reg:
@@ -37,13 +37,13 @@ def main():
         lo, hi = np.percentile(bs, [2.5, 97.5]); out["paired"][str(f)] = dict(mean=float(d.mean()), ci=[float(lo), float(hi)], helps=bool(lo > 0), hurts=bool(hi < 0))
         print(f"   own+{f}L minus own  {d.mean():+.3f} [{lo:+.3f}, {hi:+.3f}]  -> {'adds' if lo > 0 else 'worse' if hi < 0 else 'no demonstrated gain'}")
     out["faers"] = faers_truth(ids, Tinc, own, lv, reg, rng)
-    json.dump(dict(out, per_condition=rows), open(R + "ml/results/learned_addon.json", "w"), indent=1)
+    json.dump(dict(out, per_condition=rows), open(R + "ml/results/learned_addon.json", "w", encoding='utf-8'), indent=1)
 
 
 def faers_truth(ids, Tinc, own, lv, reg, rng):
     """The same comparison with positives taken from post-marketing reports instead of the labels: ADCs with a FAERS
     disproportionality signal on the condition's own organ (ml/results/faers_validation.json). Independent of the label text."""
-    F = json.load(open(R + "ml/results/faers_validation.json")); sig = {(c["adc"], c["organ"]): c["signal"] for c in F["cells"]}
+    F = json.load(open(R + "ml/results/faers_validation.json", encoding='utf-8')); sig = {(c["adc"], c["organ"]): c["signal"] for c in F["cells"]}
     keep = [k for k, a in enumerate(ids) if a in F["adcs"]]; rows = []
     for c in reg:
         ax = [a for a in reg[c]["organ_axes"].split(";") if a in AXES]

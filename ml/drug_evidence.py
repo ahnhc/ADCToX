@@ -31,7 +31,7 @@ def warnings():
     man, where = {}, {}
     for d in [DM] + DM_ADDED:
         if not os.path.exists(d + "_manifest.json"): continue
-        for agent, m in json.load(open(d + "_manifest.json"))["agents"].items(): man.setdefault(agent, m); where.setdefault(agent, d)
+        for agent, m in json.load(open(d + "_manifest.json", encoding="utf-8"))["agents"].items(): man.setdefault(agent, m); where.setdefault(agent, d)
     out = {}
     for agent in sorted(man):
         base = where[agent]
@@ -71,7 +71,10 @@ def incidence():
 
 
 def evidence():
-    """one record per ADC in the label snapshot: warnings + incidence + data status."""
+    """one record per ADC in the label snapshot: warnings + incidence + data status. Without the lab server's private cache
+    (any clone but that one), the factual record the releases are built from: ml/data/label_evidence.json."""
+    if not os.path.exists(C + "tox.pkl"):
+        return json.loads((pathlib.Path(__file__).resolve().parent / "data/label_evidence.json").read_text(encoding="utf-8"))["evidence"]
     W, I = warnings(), incidence(); ms = pd.read_pickle(C + "master.pkl").drop_duplicates("ADC ID").set_index("ADC ID"); out = {}
     for adc, w in W.items():
         inc = I.get(adc); rows = {}

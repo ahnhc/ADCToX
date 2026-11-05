@@ -51,7 +51,7 @@ def main():
     tok, lm, path = GJ.load_backbone(a.layers); lm.gradient_checkpointing_disable()
     lm = get_peft_model(lm, LoraConfig(r=a.rank, lora_alpha=2 * a.rank, lora_dropout=0.05, target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]))
     if a.v2:
-        import gemma_judge2 as GJ2; info = json.load(open(src + "info.json"))
+        import gemma_judge2 as GJ2; info = json.load(open(src + "info.json", encoding="utf-8"))
         judge = GJ2.Judge2(lm, lm.config.hidden_size, len(info["profiles"]))
     else: judge = GJ.Judge(lm, lm.config.hidden_size)
     judge.load_state_dict(torch.load(src + "adapter_head.pt"), strict=False)
@@ -92,10 +92,10 @@ def main():
     ple = {k: v.contiguous() for k, v in W.items() if k.startswith("embed_tokens_per_layer.")}     # two files: a GitHub release file must be < 2 GiB
     save_file(ple, out + "weights-1.safetensors"); save_file({k: v.contiguous() for k, v in W.items() if k not in ple}, out + "weights-2.safetensors")
     json.dump(dict(prompt=GJ.PROMPT, temp=cal["temp"].tolist(), thr=cal["thr"].tolist(), embed_scale=scales, layers=L, config_layers=FULL_LAYERS.get(GJ.GEMMA), backbone=GJ.GEMMA, revision=GJ.REV,
-                   licence="Gemma 4: Apache-2.0", **extra), open(out + "judge.json", "w"), indent=1, ensure_ascii=False)
+                   licence="Gemma 4: Apache-2.0", **extra), open(out + "judge.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     size = sum(os.path.getsize(out + f) for f in os.listdir(out) if f.startswith("weights")); print("written", out, round(size / 1e9, 2), "GB", flush=True)
     # quantized vs float decisions
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); qs = [q["query"] for q in Q]
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); qs = [q["query"] for q in Q]
     with torch.no_grad():
         zf = []
         for i in range(0, len(qs), 64):
@@ -106,7 +106,7 @@ def main():
     pq = np.concatenate([GR.probs(qs[i:i + 64], out) for i in range(0, len(qs), 64)]) >= cal["thr"]
     agree = float((pf == pq).all(1).mean()); print("quantized vs float: same organ set on", round(agree, 3), "of gold queries", flush=True)
     json.dump(dict(min_cosine_cut=cos, quantized_same_set=agree, size_gb=size / 1e9),
-              open(P.REPO + "ml/results/benchmarks/gemma_export.json", "w"), indent=1)
+              open(P.REPO + "ml/results/benchmarks/gemma_export.json", "w", encoding="utf-8"), indent=1)
 
 
 if __name__ == "__main__":

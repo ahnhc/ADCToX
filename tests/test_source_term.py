@@ -31,7 +31,9 @@ import pandas as pd
 import pytest
 
 from adctox.model.dataset import load
-from adctox.model.forward import model, n_free_parameters
+
+pytest.importorskip("jax", reason="the forward model needs the `model` extra")
+from adctox.model.forward import model, n_free_parameters  # noqa: E402
 from adctox.taxonomy import default_taxonomy
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]

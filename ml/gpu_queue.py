@@ -11,7 +11,7 @@ import argparse, fcntl, os, subprocess, time
 
 
 def take(path):
-    with open(path, "r+") as f:
+    with open(path, "r+", encoding="utf-8") as f:
         fcntl.flock(f, fcntl.LOCK_EX); lines = f.read().splitlines(); job, rest = None, []
         for l in lines:
             if job is None and l.strip() and not l.lstrip().startswith("#"): job = l
@@ -27,7 +27,7 @@ def main():
     while True:
         for g, (p, job, t0, k) in list(running.items()):
             if p.poll() is not None:
-                open(a.queue + ".done", "a").write(f"[gpu {g}] {time.strftime('%m-%d %H:%M', time.localtime(t0))} -> {time.strftime('%m-%d %H:%M')} exit {p.returncode} log {k}: {job}\n")
+                open(a.queue + ".done", "a", encoding="utf-8").write(f"[gpu {g}] {time.strftime('%m-%d %H:%M', time.localtime(t0))} -> {time.strftime('%m-%d %H:%M')} exit {p.returncode} log {k}: {job}\n")
                 del running[g]
         if not os.path.exists(a.queue + ".stop"):
             for g in a.gpus.split(","):
@@ -35,9 +35,9 @@ def main():
                 job = take(a.queue)
                 if not job: break
                 n += 1; log = f"{logs}/{n:03d}.log"
-                p = subprocess.Popen(["bash", "-c", job], env=dict(os.environ, CUDA_VISIBLE_DEVICES=g), stdout=open(log, "w"), stderr=subprocess.STDOUT)
+                p = subprocess.Popen(["bash", "-c", job], env=dict(os.environ, CUDA_VISIBLE_DEVICES=g), stdout=open(log, "w", encoding="utf-8"), stderr=subprocess.STDOUT)
                 running[g] = (p, job, time.time(), log)
-        if not running and (os.path.exists(a.queue + ".stop") or not any(l.strip() and not l.lstrip().startswith("#") for l in open(a.queue))): break
+        if not running and (os.path.exists(a.queue + ".stop") or not any(l.strip() and not l.lstrip().startswith("#") for l in open(a.queue, encoding="utf-8"))): break
         time.sleep(30)
 
 

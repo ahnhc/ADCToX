@@ -20,7 +20,11 @@ import pathlib
 import re
 import subprocess
 
+import pytest
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+CORPUS_BUILT = (ROOT / "data/processed/arms.parquet").exists()
+needs_corpus = pytest.mark.skipif(not CORPUS_BUILT, reason="make cannot plan these until `make corpus` has built the frames")
 
 # Scripts that write an artefact and are deliberately outside `all`.
 # Scripts that write an artefact and are deliberately outside `all`. One, and it says why.
@@ -66,6 +70,7 @@ def _scripts_in_make_all() -> set[str]:
     return set(re.findall(r"scripts/([a-z_0-9]+\.py)", proc.stdout))
 
 
+@needs_corpus
 def test_every_artefact_writing_script_is_reachable_from_make_all() -> None:
     writing = _scripts_writing_artefacts()
     reached = _scripts_in_make_all()
@@ -92,6 +97,7 @@ MEASUREMENT_TARGETS = [
 ]
 
 
+@needs_corpus
 def test_a_measurement_target_does_not_refit_the_model() -> None:
     """Twice now, running one measurement has silently refit the whole model.
 

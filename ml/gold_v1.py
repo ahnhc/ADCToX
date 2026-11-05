@@ -77,7 +77,7 @@ def golds():
 
 def rescore(path, split="dev"):
     import eval_linking as EL
-    G, groups = golds(); ix = [i for i, g in enumerate(groups) if EL.split_of(g) == split]; per = json.load(open(path))["per"]; out = {}
+    G, groups = golds(); ix = [i for i, g in enumerate(groups) if EL.split_of(g) == split]; per = json.load(open(path, encoding="utf-8"))["per"]; out = {}
     for lg in ("en", "ko"):
         rows = per[lg]; pred = [((r or {}).get("concept"), (r or {}).get("organs", [])) for r in rows]; jx = [i for i in ix if rows[i] is not None]
         out[lg] = {k: round(EL.metrics(pred, g, jx)["macro_f1"], 4) for k, g in G.items()}

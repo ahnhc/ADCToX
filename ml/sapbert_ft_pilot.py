@@ -49,7 +49,7 @@ def main():
     T = read_obo(); idx = np.load(MI.C + "mondo_index.npz", allow_pickle=True); ids = [str(x) for x in idx["ids"]]
     concepts = list(dict.fromkeys(ids)); rows = [s for t in concepts for s in [T[t]["name"]] + T[t]["syn"]]
     nonhuman = {t for t in concepts if "non-human animal" in T[t]["name"]}
-    G = [json.loads(l) for l in open(EL.D + "gold_v0.jsonl")]; held = {c for g in G for c in g["concepts"]}
+    G = [json.loads(l) for l in open(EL.D + "gold_v0.jsonl", encoding="utf-8")]; held = {c for g in G for c in g["concepts"]}
     children = {}
     for t in concepts:
         for p in T[t]["parents"]: children.setdefault(p, set()).add(t)
@@ -81,9 +81,9 @@ def main():
             if steps % 100 == 0: print(f"step {steps}/{total} loss {loss.item():.4f} {time.time() - t0:.0f}s", flush=True)
     mod.eval(); os.makedirs(OUTDIR, exist_ok=True); mod.save_pretrained(OUTDIR); tok.save_pretrained(OUTDIR)
     # evaluation: frozen vs fine-tuned, identical retrieval and decision rule
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); Gq = {g["qid"]: g for g in G}; gold = [dict(Gq[q["qid"]], category=q["category"]) for q in Q]
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); Gq = {g["qid"]: g for g in G}; gold = [dict(Gq[q["qid"]], category=q["category"]) for q in Q]
     groups = [q["group"] or q["qid"] for q in Q]; split = [EL.split_of(g) for g in groups]; dev = [i for i, s in enumerate(split) if s == "dev"]; test = [i for i, s in enumerate(split) if s == "test"]
-    S = json.load(open(EL.D + "raw/system_outputs_v0.json")); ax = dict(S["axes_of"])
+    S = json.load(open(EL.D + "raw/system_outputs_v0.json", encoding="utf-8")); ax = dict(S["axes_of"])
     for t, a in zip(ids, idx["axes"]): ax.setdefault(t, [EL.AXES[k] for k in np.where(a > 0)[0]])
     keep = torch.tensor([t not in nonhuman for t in ids], device=DEV); id_arr = np.array(ids, dtype=object)
     res = {}
@@ -109,7 +109,7 @@ def main():
     res["paired_test_concept_acc"] = EL.boot(res["finetuned"]["_pred"], res["frozen"]["_pred"], gold, test, groups, key="concept_acc")
     for k in ("frozen", "finetuned"): res[k].pop("_pred")
     res["config"] = dict(temp=TEMP, bs=BS, lr=LR, epochs=EPOCHS, maxlen=MAXLEN, seed=SEED, train_concepts=len(pairs), held_out=len(held), steps=steps)
-    json.dump(res, open(EL.OUT + "sapbert_ft_pilot_v0.json", "w"), indent=1)
+    json.dump(res, open(EL.OUT + "sapbert_ft_pilot_v0.json", "w", encoding="utf-8"), indent=1)
     print("paired test macro-F1", res["paired_test_macro_f1"], "concept acc", res["paired_test_concept_acc"])
 
 

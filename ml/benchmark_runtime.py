@@ -75,7 +75,7 @@ def main():
                cold=dict(runs=cold, first_query_p50=statistics.median([c["first_query_s"] for c in cold]), total_p50=statistics.median([c["total_s"] for c in cold])),
                warmup_s=warmup, warm_miss=summ(miss), warm_hit=summ(hit),
                peak_rss_mb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024, peak_vram_mb=peak_vram(), outputs=outs)
-    os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True); json.dump(res, open(a.out, "w"), indent=1)
+    os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True); json.dump(res, open(a.out, "w", encoding="utf-8"), indent=1)
     print(json.dumps({k: v for k, v in res.items() if k != "outputs"}, indent=1))
 
 

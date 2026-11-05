@@ -110,7 +110,7 @@ def nce(model, tk, batch):
 @functools.lru_cache(maxsize=2)                                                       # judge() is called per query in the app
 def load(folder):
     from tokenizers import Tokenizer
-    cfg = json.load(open(folder + "calibration.json"))
+    cfg = json.load(open(folder + "calibration.json", encoding="utf-8"))
     if cfg.get("backbone"): tk = HFTok(cfg["backbone"]); model = Enc(hf=cfg["backbone"]).to(DEV)
     else: tk = Tokenizer.from_file(folder + "tokenizer.json"); model = Enc(tk.get_vocab_size()).to(DEV)
     model.load_state_dict(torch.load(folder + "model.pt", map_location=DEV)); model.eval()
@@ -133,7 +133,7 @@ def judge(texts, folder):
     # $MONDO_FIRST (e.g. 0.02) prefers the best MONDO name over an HPO term that is at most that much more similar
     ev, eps = os.environ.get("EVIDENCE_DIR"), os.environ.get("MONDO_FIRST")
     if ev:
-        Z = np.load(ev.rstrip("/") + "/pred.npz"); thr_e = np.array(json.load(open(ev.rstrip("/") + "/calibration.json"))["thr"])
+        Z = np.load(ev.rstrip("/") + "/pred.npz"); thr_e = np.array(json.load(open(ev.rstrip("/") + "/calibration.json", encoding="utf-8"))["thr"])
         evp = dict(zip(map(str, Z["ids"]), Z["p"].astype(np.float32)))
     if eps is not None:
         mon = np.array([str(x).startswith("MONDO:") for x in ids]); Sm = np.where(mon[None], S, -9); jm = Sm.argmax(1); sm = Sm.max(1)
@@ -236,7 +236,7 @@ def main():
         zo, zv, _ = predict(model, tk, [x[0] for x in val]); mo = np.array([x[2] is not None for x in val])
         yo = np.stack([x[2] for x in val if x[2] is not None]); vl = float(bce(torch.from_numpy(zo[mo]), torch.from_numpy(yo).float()).mean())
         print(f"epoch {ep} val organ loss {vl:.4f}", flush=True)
-        TL.write_card(a.tag, dict(epochs=[*json.load(open(TL.CARDS + f"{a.tag}.json")).get("epochs", [])[:ep], dict(epoch=ep + 1, val_organ_loss=round(vl, 4), minutes=round((time.time() - t0) / 60, 1))]))
+        TL.write_card(a.tag, dict(epochs=[*json.load(open(TL.CARDS + f"{a.tag}.json", encoding="utf-8")).get("epochs", [])[:ep], dict(epoch=ep + 1, val_organ_loss=round(vl, 4), minutes=round((time.time() - t0) / 60, 1))]))
         if vl < best[0]: best = (vl, ep, {k: v.detach().clone() for k, v in model.state_dict().items()})
     model.load_state_dict(best[2]); torch.save(best[2], out + "model.pt")
     # ---- calibration on the held-out concepts and junk (as gemma_judge2)
@@ -258,7 +258,7 @@ def main():
         f = [2 * (pred[:, k] & (yo[:, k] > 0)).sum() / max(1, pred[:, k].sum() + (yo[:, k] > 0).sum()) for k in range(13)]; return float(np.mean(f))
     thetas = {round(float(t_), 2): f1(np.where(((ss >= t_) & link.any(1))[:, None], link, head)) for t_ in np.arange(0.5, 1.001, 0.05)}
     theta = max(thetas, key=thetas.get)
-    json.dump(dict(temp=temp, thr=thr, vthr=vthr, theta=theta, **cfg), open(out + "calibration.json", "w"), indent=1)
+    json.dump(dict(temp=temp, thr=thr, vthr=vthr, theta=theta, **cfg), open(out + "calibration.json", "w", encoding="utf-8"), indent=1)
     res = dict(epochs_best=best[1] + 1, val_organ_loss=round(best[0], 4), valid_threshold=vthr, theta=theta, theta_val_f1=thetas,
                real_accepted=float((pr[yl == 1] >= vthr).mean()), minutes=round((time.time() - t0) / 60, 1))
     TL.write_card(a.tag, dict(calibration=dict(vthr=vthr, theta=theta), results=res, finished=time.strftime("%Y-%m-%d %H:%M"))); TL.render()

@@ -16,7 +16,7 @@ OUT = P.REPO + "ml/results/benchmarks/"
 
 
 def gold():
-    Q = json.load(open(EL.D + "raw/queries_v0.json")); G = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl"))}
+    Q = json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8")); G = {x["qid"]: x for x in map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8"))}
     ko = {}
     for f in sorted(glob.glob(P.REPO + "data/curated/judge2/gen/koeval_*.jsonl")):
         for line in open(f, encoding="utf-8"):
@@ -36,7 +36,7 @@ def run(tag):
             _, _, _, notes, pc = RC.resolve([q])
             rows.append(dict(how=dict(notes).get(q, ""), organs=sorted(set().union(*[o for c, o, _ in pc if c == q]) if pc else [])))
         out[lang] = rows
-    json.dump(dict(tag=tag, model=P.CACHE, per=out), open(OUT + f"a4_{tag}.json", "w"), ensure_ascii=False)
+    json.dump(dict(tag=tag, model=P.CACHE, per=out), open(OUT + f"a4_{tag}.json", "w", encoding="utf-8"), ensure_ascii=False)
     return out
 
 
@@ -54,7 +54,7 @@ def main():
     split = "test" if "--test" in sys.argv else "dev"
     if "--compare" in sys.argv:
         a, b = sys.argv[sys.argv.index("--compare") + 1: sys.argv.index("--compare") + 3]
-        A, B = json.load(open(OUT + f"a4_{a}.json"))["per"], json.load(open(OUT + f"a4_{b}.json"))["per"]
+        A, B = json.load(open(OUT + f"a4_{a}.json", encoding="utf-8"))["per"], json.load(open(OUT + f"a4_{b}.json", encoding="utf-8"))["per"]
         Q, gold_, groups, _ = gold(); ix = [i for i, g in enumerate(groups) if EL.split_of(g) == split]; res = {}
         for lang in A:
             jx = [i for i in ix if A[lang][i] is not None and B[lang][i] is not None]

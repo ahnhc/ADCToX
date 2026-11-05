@@ -27,7 +27,7 @@ def batches():
     items = [dict(id=t, name=T[t]["name"], syn=[s for s in T[t]["syn"] if s.lower() != T[t]["name"].lower()][:3],
                   parent=next((T[p]["name"] for p in T[t].get("parents", []) if p in T), ""), defn=(T[t].get("defn") or "")[:160]) for t in ids]
     for i in range(0, len(items), N):
-        json.dump(items[i:i + N], open(R + f"batches/ko_{i // N:03d}.json", "w"), ensure_ascii=False, indent=0)
+        json.dump(items[i:i + N], open(R + f"batches/ko_{i // N:03d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     print(len(items), "concepts", (len(items) + N - 1) // N, "batches")
 
 
@@ -53,17 +53,17 @@ def merge():
             ko = str(x.get("ko", "")).strip()
             if not x.get("id") or not re.search("[가-힣]", ko) or len(ko) > 60: bad += 1; continue
             out[x["id"]] = dict(id=x["id"], ko=ko, alt=[a for a in x.get("alt", []) if isinstance(a, str) and re.search("[가-힣]", a)][:3], conf=x.get("conf", ""))
-    en = {it["id"]: it["name"] for f in glob.glob(R + "batches/ko_*.json") for it in json.load(open(f))}
+    en = {it["id"]: it["name"] for f in glob.glob(R + "batches/ko_*.json") for it in json.load(open(f, encoding="utf-8"))}
     for t, x in out.items(): x["en"] = en.get(t, "")                # the MONDO preferred name: the index's first row may be a synonym
     old = existing(); both = [t for t in old if t in out]
     same = [t for t in both if norm(old[t]) == norm(out[t]["ko"]) or any(norm(old[t]) == norm(a) for a in out[t]["alt"])]
-    todo = sum(len(json.load(open(f))) for f in glob.glob(R + "batches/ko_*.json"))
+    todo = sum(len(json.load(open(f, encoding="utf-8"))) for f in glob.glob(R + "batches/ko_*.json"))
     with open(R + "mondo_ko.jsonl", "w", encoding="utf-8") as fh:
         for x in out.values(): fh.write(json.dumps(x, ensure_ascii=False) + "\n")
     rep = dict(concepts=todo, translated=len(out), rejected_lines=bad, with_existing_name=len(both), same_as_existing=len(same),
                agreement=round(len(same) / max(1, len(both)), 3), conf={c: sum(x["conf"] == c for x in out.values()) for c in ("high", "medium", "low")},
                differ_examples=[(t, old[t], out[t]["ko"]) for t in both if t not in same][:40])
-    json.dump(rep, open(R + "mondo_ko_report.json", "w"), ensure_ascii=False, indent=1)
+    json.dump(rep, open(R + "mondo_ko_report.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(json.dumps({k: v for k, v in rep.items() if k != "differ_examples"}, ensure_ascii=False))
 
 

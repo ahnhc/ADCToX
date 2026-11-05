@@ -61,7 +61,7 @@ def load(path=None):
         if path not in _M:
             import torch, transformers as T
             from safetensors.torch import load_file
-            j = json.load(open(os.path.join(path, "judge.json")))
+            j = json.load(open(os.path.join(path, "judge.json"), encoding="utf-8"))
             tk = T.AutoTokenizer.from_pretrained(path)
             bb = T.AutoModel.from_config(T.AutoConfig.from_pretrained(path), add_pooling_layer=False)
             D = bb.config.hidden_size; sd = {k: v.float() for k, v in load_file(os.path.join(path, "weights.safetensors")).items()}

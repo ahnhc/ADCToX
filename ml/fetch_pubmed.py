@@ -49,8 +49,8 @@ def main():
     files = sorted(glob.glob(a.out + "/text/*.txt"))
     man = dict(source=BASE, files=names, abstracts=sum(sum(1 for _ in open(f, encoding="utf-8")) for f in files), failed=[k for k, v in res.items() if v == "failed"],
                fetched=time.strftime("%Y-%m-%d %H:%M"))
-    json.dump(man, open(a.out + "/manifest.json", "w"), indent=1); print(json.dumps({k: v for k, v in man.items() if k != "files"}, indent=1))
-    if not man["failed"]: open(a.out + "/.done", "w").close()
+    json.dump(man, open(a.out + "/manifest.json", "w", encoding="utf-8"), indent=1); print(json.dumps({k: v for k, v in man.items() if k != "files"}, indent=1))
+    if not man["failed"]: open(a.out + "/.done", "w", encoding="utf-8").close()
 
 
 if __name__ == "__main__":

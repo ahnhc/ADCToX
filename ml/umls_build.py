@@ -85,7 +85,7 @@ def main(argv=None):
                concepts_with_names=len(names), dropped_held_link=drop_held, dropped_held_name=drop_name, dropped_eval_names=drop_eval,
                pairs=len(pairs), items=len(items), items_concepts=len({r["mondo"] for r in items}),
                korean_pairs=sum(1 for r in pairs if re.search("[가-힣]", r["b"])), sha=dict(pairs=sha(a.out + "pairs.jsonl"), items=sha(a.out + "items.jsonl")))
-    json.dump(man, open(a.out + "manifest.json", "w"), indent=1); print(json.dumps(man, indent=1)); return man
+    json.dump(man, open(a.out + "manifest.json", "w", encoding="utf-8"), indent=1); print(json.dumps(man, indent=1)); return man
 
 
 if __name__ == "__main__":

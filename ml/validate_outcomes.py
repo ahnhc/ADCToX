@@ -92,12 +92,12 @@ def yy_ok(y): return bool(y.any() and (~y).any())
 
 
 def main(path, out=None):
-    rows = list(csv.DictReader(open(path))); res = analyse(rows, features(rows))
+    rows = list(csv.DictReader(open(path, encoding="utf-8"))); res = analyse(rows, features(rows))
     print(f"{res['n']} patient x ADC rows, {res['events']} events, bootstrap by {res['cluster']}")
     for k, v in res["auroc"].items(): print(f"  AUROC {k:11s} {v['point']:.3f} [{v['ci'][0]:.3f}, {v['ci'][1]:.3f}]")
     c = res["calibration"]; print(f"  calibration ({c['method']}): Brier {c['brier']:.3f} vs base rate {c['brier_base_rate']:.3f}, in-the-large {c['calibration_in_the_large']:+.3f}, slope {c['calibration_slope']:.2f}")
     p = res["paired"]["tool_minus_label_only"]; print(f"  tool - label_only  {p['mean']:+.3f} [{p['ci'][0]:+.3f}, {p['ci'][1]:+.3f}]  -> {'adds patient information' if p['adds_patient_information'] else 'not shown'}")
-    if out: json.dump(res, open(out, "w"), indent=1)
+    if out: json.dump(res, open(out, "w", encoding="utf-8"), indent=1)
     return res
 
 

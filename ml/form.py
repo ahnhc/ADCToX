@@ -28,7 +28,7 @@ SAVE = __import__("os").path.expanduser("~/.config/adctox/last_input.json")     
 def load():
     import json
     try:
-        d = json.load(open(SAVE)); return dict(picked=set(d.get("picked", [])), free=d.get("free", ""), raw=d.get("raw", {}), choice=d.get("choice", {}))
+        d = json.load(open(SAVE, encoding="utf-8")); return dict(picked=set(d.get("picked", [])), free=d.get("free", ""), raw=d.get("raw", {}), choice=d.get("choice", {}))
     except (OSError, ValueError): return dict(picked=set(), free="", raw={}, choice={})
 
 
@@ -43,7 +43,7 @@ def save(st):
     import json, os
     try:
         os.makedirs(os.path.dirname(SAVE), exist_ok=True)
-        json.dump(dict(picked=sorted(st["picked"]), free=st["free"], raw=st["raw"], choice=st.get("choice", {})), open(SAVE, "w"), ensure_ascii=False)
+        json.dump(dict(picked=sorted(st["picked"]), free=st["free"], raw=st["raw"], choice=st.get("choice", {})), open(SAVE, "w", encoding="utf-8"), ensure_ascii=False)
     except OSError: pass
 
 
@@ -95,7 +95,7 @@ class _ProcessUsage:
             self.percent = max(0.0, 100 * (cpu - self.cpu) / (wall - self.wall))
             self.wall, self.cpu = wall, cpu
         try:
-            with open("/proc/self/statm") as stream:
+            with open("/proc/self/statm", encoding="utf-8") as stream:
                 resident = int(stream.read().split()[1]) * os.sysconf("SC_PAGE_SIZE")
             ram = f"{resident / 1024**3:.2f} GiB"
         except (OSError, ValueError, IndexError, AttributeError):

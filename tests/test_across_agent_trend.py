@@ -178,7 +178,8 @@ def test_a_nonconverged_fit_is_excluded_from_the_trend() -> None:
         assert pt["n_agents"] in converged
 
 
-def test_the_script_runs_and_rewrites_its_artefact() -> None:
+def test_the_script_runs_and_rewrites_its_artefact(restored) -> None:
+    restored(ART)
     proc = subprocess.run(
         [sys.executable, "scripts/across_agent_trend.py"],
         cwd=ROOT, capture_output=True, text=True, timeout=300,

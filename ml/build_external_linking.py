@@ -51,7 +51,7 @@ def pubtator(path, split, source, X, keep_type=None, prefix=None):
 def medmentions(X):
     d = RAW + "medmentions/"; split_of = {}
     for s, f in (("train", "pmids_trng.txt"), ("dev", "pmids_dev.txt"), ("test", "pmids_test.txt")):
-        for l in open(d + f): split_of[l.strip()] = s
+        for l in open(d + f, encoding="utf-8"): split_of[l.strip()] = s
     out = []
     for r in pubtator(d + "st21pv_corpus_pubtator.txt.gz", "?", "medmentions", X, prefix="UMLS:"):
         r["split"] = split_of.get(r["doc"], "train"); out.append(r)
@@ -75,7 +75,7 @@ def main():
     for split, f in (("train", "NCBItrainset_corpus.txt"), ("develop", "NCBIdevelopset_corpus.txt"), ("test", "NCBItestset_corpus.txt")):
         ncbi += pubtator(nc + f, split, "ncbi", X)
     os.makedirs(OUT, exist_ok=True)
-    with open(OUT + "ncbi_disease_mondo.jsonl", "w") as fh:                       # the earlier per-corpus file, unchanged schema
+    with open(OUT + "ncbi_disease_mondo.jsonl", "w", encoding="utf-8") as fh:                       # the earlier per-corpus file, unchanged schema
         for r in ncbi: fh.write(json.dumps(dict(split=r["split"], pmid=r["doc"], mention=r["mention"], type=r["type"], source_ids=r["source_ids"].split("|"), mondo=r["mondo"])) + "\n")
     rows += [dict(r, split={"develop": "dev"}.get(r["split"], r["split"])) for r in ncbi]
     cd = RAW + "bc5cdr/x/CDR_Data/CDR.Corpus.v010516/"
@@ -84,7 +84,7 @@ def main():
     if os.path.exists(RAW + "medmentions/st21pv_corpus_pubtator.txt.gz"): rows += medmentions(X)
     rows += cometa(X)
     kept = [r for r in rows if r["mondo"]]
-    with open(OUT + "mentions_mondo.jsonl", "w") as fh:
+    with open(OUT + "mentions_mondo.jsonl", "w", encoding="utf-8") as fh:
         for r in kept: fh.write(json.dumps(r) + "\n")
     c = Counter((r["source"], r["split"]) for r in kept); a = Counter(r["source"] for r in rows)
     print("all mentions", dict(a)); print("mapped to MONDO", dict(c))

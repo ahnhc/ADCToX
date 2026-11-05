@@ -35,7 +35,7 @@ def votes(d):
 
 
 def merge(d):
-    V, bad = votes(d); src = json.load(open(d + "/source.json")); review = []; drops = {}
+    V, bad = votes(d); src = json.load(open(d + "/source.json", encoding="utf-8")); review = []; drops = {}
     for t, x in V.items():
         for o in x["involved"]:
             da = bool(x["a"]) and o in x["a"]["drop"]; db = bool(x["b"]) and o in x["b"]["drop"]

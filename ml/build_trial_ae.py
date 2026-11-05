@@ -137,7 +137,7 @@ def build():
     for row in csv.DictReader(open(TRIALS, encoding="utf-8")):
         assert row["adc"] in adcs and set(row["cancers"].split(";")) <= known | {""}, (row["adc"], row["cancers"])
         if not row["groups"]:
-            assert not os.path.exists(STUDIES + row["nct"] + ".json") or "resultsSection" not in json.load(open(STUDIES + row["nct"] + ".json")), row["nct"]
+            assert not os.path.exists(STUDIES + row["nct"] + ".json") or "resultsSection" not in json.load(open(STUDIES + row["nct"] + ".json", encoding="utf-8")), row["nct"]
             out[row["adc"]]["no_results"].append(dict(trial=row["trial"], nct=row["nct"])); continue
         out[row["adc"]]["trials"].append(trial(row, json.load(open(STUDIES + row["nct"] + ".json", encoding="utf-8")), reg, W[row["adc"]]))
     for a in out: out[a]["trials"].sort(key=lambda t: (not t["labelled"], -t["n"]))

@@ -78,8 +78,9 @@ def test_the_partition_splits_per_file_not_per_directory() -> None:
     )
 
 
-def test_the_script_fails_on_an_undeclared_figure() -> None:
+def test_the_script_fails_on_an_undeclared_figure(restored) -> None:
     """Exit code, not just output: `make all` has to stop on this."""
+    restored(ART)
     proc = subprocess.run(
         [sys.executable, "scripts/superseded_only_figures.py"],
         cwd=ROOT, capture_output=True, text=True, timeout=300,
