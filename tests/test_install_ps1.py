@@ -51,3 +51,19 @@ def test_reinstall_replaces_the_app_and_removes_the_old_copy(tmp_path):
     assert run.returncode == 0, run.stderr
     assert (old / "marker.txt").read_text() == "new" and not new.exists()
     assert [p.name for p in tmp_path.iterdir()] == ["app"]
+
+
+def test_launchers_work_from_a_non_ascii_account_folder(tmp_path):
+    block = re.search(r"^foreach \(\$c in @\(@\('adctox'.*?^\}", SCRIPT.read_text(encoding="utf-8"), re.S | re.M).group(0)
+    root = tmp_path / "한글계정" / "adctox"
+    (root / "bin").mkdir(parents=True); (root / "app").mkdir()
+    (root / "app" / "ADCTOX.bat").write_text("@echo off\r\necho got %*\r\n")
+    script = tmp_path / "write.ps1"
+    script.write_text(f"$Bin = '{root / 'bin'}'\n{block}\n", encoding="utf-8-sig")
+    done = subprocess.run([powershell, "-NoProfile", "-NonInteractive", "-File", str(script)], capture_output=True, text=True, timeout=60)
+    assert done.returncode == 0, done.stderr
+    for name, flag in (("adctox", ""), ("adctox-web", "--web "), ("adctox-cli", "--cli ")):
+        launcher = root / "bin" / f"{name}.cmd"
+        launcher.read_bytes().decode("ascii")
+        out = subprocess.run(["cmd.exe", "/c", str(launcher), "x"], capture_output=True, text=True, timeout=60)
+        assert out.stdout.strip() == f"got {flag}x", out

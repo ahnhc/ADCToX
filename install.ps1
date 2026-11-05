@@ -43,9 +43,9 @@ try {
 } finally { Remove-Item -Recurse -Force $tmp -ErrorAction SilentlyContinue }
 
 New-Item -ItemType Directory -Force $Bin | Out-Null
-Set-Content (Join-Path $Bin 'adctox.cmd') "@echo off`r`ncall `"$App\ADCTOX.bat`" %*" -Encoding ascii
-Set-Content (Join-Path $Bin 'adctox-web.cmd') "@echo off`r`ncall `"$App\ADCTOX.bat`" --web %*" -Encoding ascii
-Set-Content (Join-Path $Bin 'adctox-cli.cmd') "@echo off`r`ncall `"$App\ADCTOX.bat`" --cli %*" -Encoding ascii
+foreach ($c in @(@('adctox', ''), @('adctox-web', ' --web'), @('adctox-cli', ' --cli'))) {   # ASCII only: the app is found relative to the .cmd, so a non-ASCII account name cannot turn into ???
+    Set-Content (Join-Path $Bin "$($c[0]).cmd") "@echo off`r`ncall `"%~dp0..\app\ADCTOX.bat`"$($c[1]) %*" -Encoding ascii
+}
 $path = [Environment]::GetEnvironmentVariable('Path', 'User')
 if (($path -split ';') -notcontains $Bin) { [Environment]::SetEnvironmentVariable('Path', ($(if ($path) { "$path;" } else { '' }) + $Bin), 'User') }
 $shell = New-Object -ComObject WScript.Shell
