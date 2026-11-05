@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import contextlib
 import hashlib
+import http.client
 import json
 import os
 from pathlib import Path, PurePosixPath
@@ -90,7 +91,7 @@ def fetch_manifest(url=None, allow_local=False):
         if len(body) > MAX_MANIFEST_BYTES:
             raise UpdateError("Model manifest is too large.")
         return validate_manifest(json.loads(body), allow_local)
-    except (OSError, ValueError, TypeError) as error:
+    except (OSError, ValueError, TypeError, http.client.HTTPException) as error:
         raise UpdateError(f"Could not check model updates: {error}") from error
 
 
@@ -332,9 +333,9 @@ def fetch_app_manifest(url=None, allow_local=False):
     try:
         with _open(url or app_manifest_url(), allow_local) as stream:
             data = json.loads(stream.read(MAX_MANIFEST_BYTES + 1))
-    except (OSError, ValueError, urllib.error.URLError) as error:
+    except (OSError, ValueError, http.client.HTTPException) as error:
         raise UpdateError(f"Could not read the app release manifest: {error}") from error
-    if data.get("schema_version") != 1 or not re.fullmatch(r"\d+\.\d+(?:\.\d+)?", str(data.get("app_version", ""))) \
+    if not isinstance(data, dict) or data.get("schema_version") != 1 or not re.fullmatch(r"\d+\.\d+(?:\.\d+)?", str(data.get("app_version", ""))) \
             or not re.fullmatch(r"[0-9a-f]{64}", str(data.get("sha256", ""))) or not isinstance(data.get("size"), int) or not 0 < data["size"] < 50 * 1024**2:
         raise UpdateError("Invalid app release manifest.")
     _url(data.get("url", ""), allow_local)
@@ -383,9 +384,11 @@ def update_app(manifest=None, program=None, allow_local=False, torch_version=Non
     manifest = manifest or fetch_app_manifest(allow_local=allow_local)
     if _version(manifest["app_version"]) <= _version(APP_VERSION):
         return f"App {APP_VERSION} is up to date."
-    body = b""
-    with _open(manifest["url"], allow_local) as stream:
-        body = stream.read(manifest["size"] + 1)
+    try:
+        with _open(manifest["url"], allow_local) as stream:
+            body = stream.read(manifest["size"] + 1)
+    except (OSError, http.client.HTTPException) as error:
+        raise UpdateError(f"Could not download the app: {error}") from error
     if len(body) != manifest["size"] or hashlib.sha256(body).hexdigest() != manifest["sha256"]:
         raise UpdateError("App download failed verification; nothing was changed.")
     names = {"adc_recommender_full.py", "requirements-cpu.txt", "bundle-info.json"}

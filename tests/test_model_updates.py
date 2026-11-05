@@ -302,6 +302,25 @@ def test_app_check_is_cached_and_a_repository_copy_is_not_self_updated(server, t
         updates.update_app(program=tmp_path / "adc_recommender_full.py", allow_local=True)
 
 
+def test_app_update_failures_are_one_line_update_errors(server, tmp_path, monkeypatch, capsys):
+    import http.client
+    base, bodies, _ = server
+    bodies["/app/list.json"] = b"[]"
+    with pytest.raises(updates.UpdateError, match="Invalid app release manifest"):
+        updates.fetch_app_manifest(base + "/app/list.json", allow_local=True)
+    program = _installed_app(tmp_path, True)
+    monkeypatch.setenv("ADC_POINTER_SWITCH", "1")
+    missing = dict(_app_release(server, "90.4"), url=base + "/app/absent.tar.gz")                 # the asset 404s
+    with pytest.raises(updates.UpdateError, match="404"):
+        updates.update_app(missing, program=program, allow_local=True, torch_version="2.11.0")
+    def dropped(*args, **kwargs): raise http.client.IncompleteRead(b"par", 10)
+    monkeypatch.setattr(updates, "_open", dropped)
+    with pytest.raises(updates.UpdateError, match="IncompleteRead"):
+        updates.update_app(_app_release(server, "90.5"), program=program, allow_local=True, torch_version="2.11.0")
+    assert updates.app_cli("check") == 1
+    assert len(capsys.readouterr().err.strip().splitlines()) == 1
+
+
 def test_gemma_judge_folder_installs_and_the_old_manifest_stays_for_old_apps(server, tmp_path):
     import adc_version
     manifest = make_manifest(server, "0.5"); base, bodies, _ = server
