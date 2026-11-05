@@ -149,3 +149,53 @@ def test_subtypes_of_one_disease_are_one_reading(judged):
     read = judged({"HC": row(HCM3, "hypertrophic cardiomyopathy 3", ["neurologic"], 0.9, others=[("MONDO:0008647", "hypertrophic cardiomyopathy 1", ["renal"], 0.89)])})
     link = read("HC")[2]
     assert [o["mondo"] for o in link["readings"]] == [HCM] and not link["ambiguous"]
+
+
+AITL = "MONDO:0004977"; ILD = "MONDO:0002771"; BREAST = "MONDO:0004989"
+
+
+def test_a_cancer_nobody_named_is_offered_and_is_not_the_patients_cancer(judged):
+    read = judged({"ild": row(AITL, "angioimmunoblastic T-cell lymphoma", ["haematologic"], 0.8, others=[(ILD, "interstitial lung disease", ["pulmonary"], 0.7)], judged=("pulmonary",))})
+    how, organs, link = read("ild")
+    assert not how.startswith("cancer;") and organs == {"pulmonary"} and link["mondo"] is None and link["judged"] == ["pulmonary"]
+    assert not RC.patient_cancers(RC.resolve(["ild"])[3])
+    (text, readings), = RC.ambiguous_conditions(["ild"])
+    assert text == "ild" and {o["mondo"] for o in readings} == {AITL, ILD} and RC.reading_default(readings) == ILD
+
+
+def test_a_close_plain_candidate_is_read_in_place_of_an_unnamed_cancer(judged):
+    read = judged({"long words here": row(AITL, "angioimmunoblastic T-cell lymphoma", ["haematologic"], 0.8, others=[(ILD, "interstitial lung disease", ["pulmonary"], 0.79)])})
+    how, organs, link = read("long words here")
+    assert link["mondo"] == ILD and organs == {"pulmonary"} and link["ambiguous"]
+
+
+def test_the_only_reading_being_an_unnamed_cancer_opens_on_not_sure(judged):
+    read = judged({"xy": row(AITL, "angioimmunoblastic T-cell lymphoma", ["haematologic"], 0.8)})
+    (_, readings), = (read("xy"), RC.ambiguous_conditions(["xy"]))[1]
+    assert [o["mondo"] for o in readings] == [AITL] and RC.reading_default(readings) is None
+
+
+def test_text_that_calls_itself_a_cancer_opens_on_the_cancer_but_still_asks(judged):
+    read = judged({"brest cancer": row(BREAST, "breast carcinoma", ["haematologic"], 0.8, others=[(ILD, "interstitial lung disease", ["pulmonary"], 0.79)])})
+    how, _, link = read("brest cancer")
+    assert not how.startswith("cancer;") and link["ambiguous"] and RC.reading_default(link["readings"], ILD) == BREAST
+
+
+@pytest.mark.parametrize("typed", ["breast carcinoma", "Breast-Carcinoma"])
+def test_the_exact_name_is_the_patients_cancer_without_asking(judged, typed):
+    read = judged({typed: row(BREAST, "breast carcinoma", ["haematologic"], 1.0, others=[(ILD, "interstitial lung disease", ["pulmonary"], 0.99)])})
+    how, _, link = read(typed)
+    assert how.startswith("cancer;") and RC.ambiguous_conditions([typed]) == []
+
+
+def test_an_exact_synonym_counts_as_the_name(judged, monkeypatch):
+    monkeypatch.setitem(RC._cancer_map().setdefault("names", {}), BREAST, ["breastca"])
+    read = judged({"breast ca": row(BREAST, "breast carcinoma", ["haematologic"], 0.9)})
+    assert read("breast ca")[0].startswith("cancer;")
+
+
+def test_an_alias_and_a_pick_set_the_cancer(judged, monkeypatch):
+    read = judged({"lung cancer": row(ILD, "interstitial lung disease", ["pulmonary"], 0.8), "ild": row(AITL, "angioimmunoblastic T-cell lymphoma", ["haematologic"], 0.8)})
+    assert read("lung cancer")[0].startswith("cancer;") and RC.ambiguous_conditions(["lung cancer"]) == []
+    monkeypatch.setitem(RC.CHOICE, "ild", AITL)
+    assert RC.resolve(["ild"])[3][0][1].startswith("cancer;")

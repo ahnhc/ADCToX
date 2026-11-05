@@ -1,7 +1,8 @@
 """MONDO cancer -> the ADC label cancers it falls under, so a cancer typed with the diseases picks the ADCs approved for it.
 
   python3 ml/build_cancer_mondo.py   -> data/curated/competition/cancer_mondo.json
-      {"terms": {MONDO id: [name, [cancers from adc_cancers.csv]]}, "aliases": {typed name, folded: MONDO id}}
+      {"terms": {MONDO id: [name, [cancers from adc_cancers.csv]]}, "aliases": {typed name, folded: MONDO id},
+       "names": {MONDO id: [exact synonyms, folded]}}
 
 Every MONDO cancer (MONDO:0004992 'cancer', lymphoma, leukemia and below, and the roots in cancer_roots.csv and below) is listed.
 A term takes the cancers of its most specific roots in cancer_roots.csv (a root that is an ancestor of another matched root gives
@@ -32,11 +33,12 @@ def terms():
     for line in open(OBO, encoding="utf-8"):
         line = line.rstrip("\n")
         if line == "[Term]" or line.startswith("["): cur = None
-        if line.startswith("id: MONDO:"): cur = line[4:]; T[cur] = dict(name="", parents=set(), obs=False)
+        if line.startswith("id: MONDO:"): cur = line[4:]; T[cur] = dict(name="", parents=set(), obs=False, syn=[])
         elif cur is None: continue
         elif line.startswith("name: "): T[cur]["name"] = line[6:]
         elif line.startswith("is_obsolete: true"): T[cur]["obs"] = True
         elif line.startswith("is_a: MONDO:"): T[cur]["parents"].add(line[6:].split()[0])
+        elif line.startswith("synonym: ") and " EXACT " in line: T[cur]["syn"].append(line.split('"')[1])
     return T
 
 
@@ -70,7 +72,8 @@ def build():
         if not d["obs"] and d["name"].endswith(ANIMAL) and d["name"][:-len(ANIMAL)] in human: out[t] = out[human[d["name"][:-len(ANIMAL)]]]
     aliases = {fold(r["text"]): r["mondo_id"] for r in csv.DictReader(open(ALIASES, encoding="utf-8"))}
     assert all(m in out for m in aliases.values()), "an alias names no cancer"
-    json.dump(dict(terms=dict(sorted(out.items())), aliases=aliases), open(OUT, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    names = {t: sorted({fold(s) for s in T[t]["syn"]}) for t in sorted(out) if T[t]["syn"]}
+    json.dump(dict(terms=dict(sorted(out.items())), aliases=aliases, names=names), open(OUT, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     return out
 
 

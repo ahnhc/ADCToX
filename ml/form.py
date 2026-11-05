@@ -715,7 +715,7 @@ def run(RC, back=False):
                     groups = [g for g in RC.ambiguous_conditions(conds) if g[0] not in st["choice"]]   # typed texts with readings on different organs: the user picks
                     if groups:
                         applied = {r["condition"]: o["mondo"] for r in reports for o in r.get("readings", []) if o["name"] == r["name"]}
-                        pick = F.meanings(groups, {**applied, **RC.CHOICE})
+                        pick = F.meanings(groups, {c: RC.CHOICE[c] if c in RC.CHOICE else RC.reading_default(o, applied.get(c)) for c, o in groups})
                         if pick == BACK: step = 1; continue
                         RC.CHOICE.update(pick)
                         F.done.append(("질환 확인", ", ".join(f"{c} → {next((r['name'] for r in o if r['mondo'] == pick[c]), '모름')}" for c, o in groups)))
