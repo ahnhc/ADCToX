@@ -469,6 +469,7 @@ def reason_rows(r):
     for d in sorted(set(doms) | set(silent)):
         kn, po = doms.get(d, ([], []))
         top = max([RS.TIER[c] for c, _ in kn] + [-1]); po = [x for x in po if RS.TIER[x[0]] > top]
+        if d in silent and not silent[d] and all(RS.TIER[c] < RS.TIER["no_statement"] for c, _ in po): po = []     # as summary(): the unstated state outranks what is below it
         if kn:
             c, rr = max(kn, key=lambda x: RS.TIER[x[0]]); out.append((d, RS.TABLE[c], _when(rr["when"]) or "-", c, True))
         elif d in silent and silent[d]: out.append((d, "No data", "label says nothing for this patient", "no_statement", True))

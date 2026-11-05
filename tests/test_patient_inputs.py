@@ -210,3 +210,21 @@ def test_a_cancer_with_two_lab_flags_has_no_priority_screen_and_does_not_crash(m
     conds, raw, (rows, _, notes, _) = form.run(RC)
     assert conds == ["폐암"] and raw == {"hb": 8.0, "alt": 300.0} and browsed == [rows] and RC.FIRST is None
     assert [c for c, _ in notes if c.startswith("Lab: ")] == ["Lab: Hb < 10 g/dL", "Lab: ALT > 3 x ULN"]
+
+
+
+@pytest.mark.parametrize("patient", [dict(organs={"renal"}), dict(crcl=10), dict(organs={"renal"}, crcl=10)])
+def test_enfortumab_reasons_say_what_the_summary_says_when_dialysis_is_open(patient):
+    RS = RC.RS; adc = "enfortumab-vedotin"
+    verdict = RS.judge(RS.Patient(**patient), [adc])[adc]
+    assert RS.summary(verdict) == "No label statement? (renal)"
+    assert [x[:2] + x[3:] for x in RC.reason_rows(dict(verdict=verdict))] == [("renal", "No data", "no_statement", False)]
+
+
+@pytest.mark.parametrize("patient", [dict(organs={"renal"}), dict(organs={"hepatic"}), dict(crcl=10), dict(crcl=45), dict(bili=2.0), dict(organs={"haematologic"}), dict(organs={"renal", "hepatic", "cardiovascular"})])
+def test_every_open_verdict_in_the_summary_has_its_reason_row(patient):
+    RS = RC.RS; rules = RS.load_rules()
+    for adc, verdict in RS.judge(RS.Patient(**patient), sorted({r["adc"] for r in rules}), rules).items():
+        reasons = [(x[0], x[3]) for x in RC.reason_rows(dict(verdict=verdict)) if not x[4]]
+        for category, domains, settled in RS.summary_parts(verdict):
+            if not settled: assert {(d, category) for d in domains} <= set(reasons), (adc, patient)
