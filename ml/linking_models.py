@@ -151,8 +151,13 @@ def _nonhuman(labels):
 
 
 def gold_held(T):
-    """gold concepts plus their parents and children: never training concepts (the gold is for evaluation only)."""
-    held = {c for g in map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8")) for c in g["concepts"]}; children = {}
+    """gold concepts plus their parents and children: never training concepts (the gold is for evaluation only).
+    ADCTOX_RELEASE_DEV_GOLD=1 holds only the test-split gold and its relatives, so a concept related to both splits stays held."""
+    gold = list(map(json.loads, open(EL.D + "gold_v0.jsonl", encoding="utf-8")))
+    if os.environ.get("ADCTOX_RELEASE_DEV_GOLD") == "1":
+        group = {q["qid"]: q["group"] or q["qid"] for q in json.load(open(EL.D + "raw/queries_v0.json", encoding="utf-8"))}
+        gold = [g for g in gold if EL.split_of(group[g["qid"]]) == "test"]
+    held = {c for g in gold for c in g["concepts"]}; children = {}
     for t, e in T.items():
         for p in e.get("parents", []): children.setdefault(p, set()).add(t)
     return held | {p for c in held for p in T.get(c, {}).get("parents", [])} | {k for c in held for k in children.get(c, ())}
