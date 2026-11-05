@@ -215,9 +215,10 @@ CANCER_WORD = re.compile(r"cancer|carcinoma|tumou?r|neoplasm|malignan|metasta|\b
 
 
 def _names_cancer(concept, texts):
-    """a text is this cancer's exact name or synonym: only then does a read make it the patient's cancer without asking."""
-    known = {_fold(_cancer_map()["terms"][concept][0]), *_cancer_map().get("names", {}).get(concept, ())}
-    return any(_fold(t) in known for t in texts)
+    """a text is this cancer's exact name or synonym: only then does a read make it the patient's cancer without asking. A short
+    synonym does not count: MONDO lists 'LN' for lobular neoplasia, and an abbreviation has other meanings."""
+    name, synonyms = _fold(_cancer_map()["terms"][concept][0]), _cancer_map().get("names", {}).get(concept, ())
+    return any(f == name or (len(f) > SHORT and f in synonyms) for f in map(_fold, texts))
 
 
 def _fold(text): return "".join(nfc(text).split()).replace("-", "").lower()

@@ -197,6 +197,12 @@ def test_an_exact_synonym_counts_as_the_name(judged, monkeypatch):
     assert read("breast ca")[0].startswith("cancer;")
 
 
+def test_a_short_synonym_does_not_name_a_cancer(judged, monkeypatch):
+    monkeypatch.setitem(RC._cancer_map().setdefault("names", {}), BREAST, ["ln"])
+    read = judged({"LN": row(BREAST, "breast carcinoma", ["haematologic"], 1.0)})
+    assert not read("LN")[0].startswith("cancer;") and read("LN")[2]["ambiguous"]
+
+
 def test_an_alias_and_a_pick_set_the_cancer(judged, monkeypatch):
     read = judged({"lung cancer": row(ILD, "interstitial lung disease", ["pulmonary"], 0.8), "ild": row(AITL, "angioimmunoblastic T-cell lymphoma", ["haematologic"], 0.8)})
     assert read("lung cancer")[0].startswith("cancer;") and RC.ambiguous_conditions(["lung cancer"]) == []
