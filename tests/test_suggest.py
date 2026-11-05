@@ -5,6 +5,7 @@ import pytest
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "ml"))
 import recommend as RC
+import subtypes as ST
 import suggest as SG
 
 
@@ -50,10 +51,10 @@ def test_words_that_are_each_a_name_are_offered_separately():
 
 
 def test_numbered_genetic_subtypes_and_animal_diseases_stay_out_of_the_way():
-    assert SG.NUMBERED.match("Alzheimer disease 5") and SG.NUMBERED.match("Parkinson disease 19B, early-onset")
-    assert not SG.NUMBERED.match("Type 2 diabetes mellitus") and not SG.NUMBERED.match("Alzheimer disease")
+    assert ST.parse("Alzheimer disease 5") and ST.parse("Parkinson disease 19B, early-onset")
+    assert not ST.parse("Type 2 diabetes mellitus") and not ST.parse("Alzheimer disease")
     names = labels(SG.names(RC, "alzheimer"))
-    assert names[0] == "alzheimer disease" and not any(SG.NUMBERED.match(n) for n in names)
+    assert names[0] == "alzheimer disease" and not any(ST.parse(n) for n in names)
     assert not any(w in n for n in labels(SG.names(RC, "diabetes")) for w in ("domestic cat", "koala", "hamster"))
 
 

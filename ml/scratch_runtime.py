@@ -6,7 +6,7 @@
 Model folder (in the model bundle, 'ScratchJudge/'): a BERT-base encoder trained from random weights on public medical text,
 with organ, validity and name-vector outputs; index.npz (name vectors); index_ko.npz (Korean MONDO names, only when present); concepts.json (organs per concept).
 Rule, the same as ml/scratch_judge.judge with the evidence table and the MONDO-first margin:
-- validity below the threshold: not read as a disease, no organs
+- validity below LOW_VALID: not read as a disease, no organs; from there up to the threshold: read, with `low` set
 - the nearest name at or above theta links its concept (a MONDO name within `mondo_first` of a better non-MONDO name wins)
 - organs: the concept's own organs (via "label", or "record" when they come from reading its MONDO entry), else the organ
   output on the typed text itself (via "name")
@@ -56,6 +56,18 @@ def concept_via(concept):
     return _ORG[folder()].get(concept, (None, None))[1]
 
 
+_CONCEPTS = {}
+
+
+def concept(c, path=None):
+    """(name, organs, via) of a concept in the judge's table, None when absent. No model is loaded."""
+    path = path or folder()
+    if path is None: return None
+    if path not in _CONCEPTS: _CONCEPTS[path] = json.load(open(os.path.join(path, "concepts.json"), encoding="utf-8"))
+    row = _CONCEPTS[path].get(c)
+    return (row[0], list(row[1]), row[2]) if row else None
+
+
 def load(path=None):
     path = path or folder()
     with _LOCK:
@@ -95,13 +107,27 @@ def _outputs(M, texts, bs=64):
 def _hangul(M, text): return M["Ek"] is not None and bool(_HANGUL.search(unicodedata.normalize("NFC", str(text))))
 
 
+NEAR, CANDIDATES = 64, 8        # strings looked at, concepts kept
+LOW_VALID = 0.9                 # the threshold rejects TB, shingles, migrane: under it the read stands with a mark, and only this low is it dropped
+
+
+def _candidates(M, sims, near, first, first_sim):
+    best = {first: first_sim} if first else {}
+    for i in near[np.argsort(-sims[near])]:
+        if sims[i] < M["j"]["theta"]: break
+        best.setdefault(M["ids"][i], float(sims[i]))
+    return [dict(concept=c, name=M["C"].get(c, ["", [], ""])[0], organs=list(M["C"].get(c, ["", [], ""])[1]), via=M["C"].get(c, ["", [], ""])[2], sim=best[c]) for c in list(best)[:CANDIDATES]]
+
+
 def judge(texts, path=None):
     """-> one dict per text: concept (or None), name, organs, via ("label", "record", "name" or None), valid, ok, sim, and p: the
-    calibrated organ output on the text itself, {axis: probability} for all 13 (what the screens show as the organ probabilities)."""
+    calibrated organ output on the text itself, {axis: probability} for all 13 (what the screens show as the organ probabilities);
+    judged: the organs that output gives; candidates: the concepts nearest the text at or above theta, the linked concept first,
+    [dict(concept, name, organs, via, sim)]."""
     texts = list(texts)
     if not texts: return []
     M = load(path); j = M["j"]; AX = j["axes"]
-    zo, zv, va = _outputs(M, texts); S = va @ M["E"].T; jj = S.argmax(1); s = S.max(1)
+    zo, zv, va = _outputs(M, texts); S = va @ M["E"].T; jj = S.argmax(1); s = S.max(1); n = min(NEAR, S.shape[1]); near = np.argpartition(-S, n - 1, axis=1)[:, :n]
     Sm = np.where(M["mondo"][None], S, -9); jm = Sm.argmax(1); sm = Sm.max(1)
     cid = [M["ids"][i] for i in jj]; mid = [M["ids"][i] for i in jm]; s, sm = s.copy(), sm.copy()
     for k, t in enumerate(texts):
@@ -111,13 +137,14 @@ def judge(texts, path=None):
             if Sk[i] > sm[k]: mid[k], sm[k] = M["idk"][i], Sk[i]
     po = 1 / (1 + np.exp(-zo / np.array(j["temp"]))); pv = 1 / (1 + np.exp(-zv)); rows = []
     for k in range(len(texts)):
-        ok = bool(pv[k] >= j["vthr"]); p = {a: float(x) for a, x in zip(AX, po[k])}
-        if not ok: rows.append(dict(concept=None, name="", organs=[], via=None, valid=float(pv[k]), ok=False, sim=float(s[k]), p=p)); continue
+        ok = bool(pv[k] >= min(LOW_VALID, j["vthr"])); p = {a: float(x) for a, x in zip(AX, po[k])}; low = bool(pv[k] < j["vthr"])
+        if not ok: rows.append(dict(concept=None, name="", organs=[], via=None, valid=float(pv[k]), ok=False, low=False, sim=float(s[k]), p=p, judged=[], candidates=[])); continue
         c, sim = (cid[k], float(s[k])) if s[k] >= j["theta"] else (None, float(s[k]))
         if sm[k] >= j["theta"] and sm[k] >= s[k] - j["mondo_first"]: c, sim = mid[k], float(sm[k])
         name, organs, via = M["C"].get(c, ["", [], ""]) if c else ("", [], "")
-        if not organs: organs, via = [AX[a] for a in np.where(po[k] >= np.array(j["thr"]))[0]], "name"
-        rows.append(dict(concept=c, name=name, organs=list(organs), via=via, valid=float(pv[k]), ok=True, sim=sim, p=p))
+        judged = [AX[a] for a in np.where(po[k] >= np.array(j["thr"]))[0]]
+        if not organs: organs, via = judged, "name"
+        rows.append(dict(concept=c, name=name, organs=list(organs), via=via, valid=float(pv[k]), ok=True, low=low, sim=sim, p=p, judged=judged, candidates=_candidates(M, S[k], near[k], c, sim)))
     return rows
 
 

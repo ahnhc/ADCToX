@@ -74,16 +74,22 @@ def _free_info(free, progress=None):
     """portable: string matching. Registry: exact label / id, else close spelling (ratio >= 0.9), as link["registry"]. MONDO:
     exact name or exact synonym, else the closest spelling among names and synonyms (ratio >= 0.88). No model."""
     import difflib
+    import subtypes as ST
     D = _portable_data(); terms = D["mondo"]; keys = D["_mondo_keys"]
+    general = {v[0].lower(): v[2] for v in ST.general_map().values() if v[2]}
+    def read(q, key):
+        """a numbered subtype the text does not name reads as its general concept, as with the organ judge (recommend._candidates)"""
+        g = general.get(terms[key][0].lower())
+        return terms.get(g.lower(), terms[key]) if g and not ST.keeps(q, terms[key][0]) else terms[key]
     reg = {**{r["label"].lower(): i for i, r in _reg.items()}, **{i.replace("_", " "): i for i in _reg}}
     links = []
     for text in free:
         q = " ".join(text.lower().replace("_", " ").split())
         m = difflib.get_close_matches(q, list(reg), n=1, cutoff=0.9)
         near = (reg[m[0]], 1.0 if m[0] == q else difflib.SequenceMatcher(None, q, m[0]).ratio()) if m else None
-        if q in terms: name, axes = terms[q]; links.append(dict(name=name, sim=1.0, axes=axes, registry=near)); continue
+        if q in terms: name, axes = read(q, q); links.append(dict(name=name, sim=1.0, axes=axes, registry=near)); continue
         m = difflib.get_close_matches(q, keys, n=1, cutoff=0.88)
-        if m: name, axes = terms[m[0]]; links.append(dict(name=name, sim=difflib.SequenceMatcher(None, q, m[0]).ratio(), axes=axes, registry=near))
+        if m: name, axes = read(q, m[0]); links.append(dict(name=name, sim=difflib.SequenceMatcher(None, q, m[0]).ratio(), axes=axes, registry=near))
         else: links.append(dict(name="", sim=0.0, axes=[], registry=near))
     return links
 '''
@@ -161,12 +167,13 @@ def main():
                 indications={r["adc"]: r for r in csv.DictReader(open(R / "data/curated/competition/adc_indications.csv", encoding="utf-8"))},
                 cancers={r["cancer"]: r["adcs"].split(";") for r in csv.DictReader(open(R / "data/curated/competition/adc_cancers.csv", encoding="utf-8"))},
                 cancer_mondo=json.load(open(R / "data/curated/competition/cancer_mondo.json", encoding="utf-8")),
+                subtypes=json.load(open(R / "data/curated/disease_linking/subtype_general.json", encoding="utf-8")),
                 trial_ae=json.load(open(R / "data/curated/competition/trial_ae.json", encoding="utf-8")),
                 web=__import__("webapp").web_files(R / "ml/web"))
     assert {"index.html", "app.js", "app.css"} <= set(data["web"]), f"adctox --web needs its page in ml/web/: found {sorted(data['web'])}"
     print("page: " + ", ".join(f"{name} {(len(base64.b64decode(text)) if name.endswith(('.woff2', '.ttf', '.otf')) else len(text.encode())) / 1024:.1f} KB" for name, text in data["web"].items()))
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
-    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion", "webapp")}
+    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "subtypes", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion", "webapp")}
     local = {q.stem for q in (R / "ml").glob("*.py")}                      # the screen modules import only embedded modules (0.4.0: motion)
     for m in ("form", "tui", "term", "motion", "webapp"):
         for name in set(re.findall(r"^\s*(?:import|from)\s+(\w+)", src[m], re.M)):

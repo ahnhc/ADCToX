@@ -622,6 +622,7 @@ class Form:
                        "\033[90m" + ("none of 13" if r["source"].startswith("MONDO") else "-") + "\033[0m")
                 tag = ""
                 if r.get("ambiguous") and r["condition"] not in RC.CHOICE: tag = f"   \033[33m{len(r['readings'])} meanings: pick on the next screen\033[0m"
+                if r.get("doubt"): tag += f"   \033[33m{RC.DOUBT[r['doubt']]}\033[0m"
                 if read.lower() in (r["condition"].lower(), shown(r).lower()): read = ""
                 rows.append((shown(r), org, (f"{read}  " if read else "") + f"\033[90m{how}\033[0m" + tag))
             ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for _, o, _ in rows] + [6]), 52)
@@ -714,7 +715,7 @@ def run(RC, back=False):
                     groups = [g for g in RC.ambiguous_conditions(conds) if g[0] not in st["choice"]]   # typed texts with readings on different organs: the user picks
                     if groups:
                         applied = {r["condition"]: o["mondo"] for r in reports for o in r.get("readings", []) if o["name"] == r["name"]}
-                        pick = F.meanings(groups, {**applied, **RC.CHOICE})
+                        pick = F.meanings(groups, {c: RC.CHOICE[c] if c in RC.CHOICE else RC.reading_default(o, applied.get(c)) for c, o in groups})
                         if pick == BACK: step = 1; continue
                         RC.CHOICE.update(pick)
                         F.done.append(("질환 확인", ", ".join(f"{c} → {next((r['name'] for r in o if r['mondo'] == pick[c]), '모름')}" for c, o in groups)))

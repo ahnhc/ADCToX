@@ -111,7 +111,7 @@ def _report(RC, r, ko):
     return dict(condition=r["condition"], shown=shown, source=r["source"], name=r["name"], read_as=read, how=how, mondo=r.get("mondo"),
                 organs=list(r["organs"]), p=r.get("p"), likely=_likely(RC.AXES, r["organs"], r.get("p")) if r["organs"] else [], no_organs=empty,
                 readings=[dict(mondo=o["mondo"], name=o["name"], organs=list(o.get("organs") or [])) for o in r.get("readings") or []],
-                ambiguous=bool(r.get("ambiguous")), tag=tag, judge_via=r.get("judge_via"), fallback=bool(r.get("fallback")), cancers=r.get("cancers"))
+                ambiguous=bool(r.get("ambiguous")), tag=tag, check=RC.DOUBT.get(r.get("doubt")), judge_via=r.get("judge_via"), fallback=bool(r.get("fallback")), cancers=r.get("cancers"))
 
 
 def _preview(RC, row):
@@ -404,8 +404,7 @@ class App:
                 groups = [g for g in RC.ambiguous_conditions(conds) if g[0] not in choice] if free else []
                 ambiguous = []
                 for text, readings in groups:
-                    ids = [o["mondo"] for o in readings]
-                    ambiguous.append(dict(text=text, default=applied.get(text) if applied.get(text) in ids else ids[0],
+                    ambiguous.append(dict(text=text, default=RC.reading_default(readings, applied.get(text)),
                                           readings=[dict(mondo=o["mondo"], name=o["name"][:1].upper() + o["name"][1:], organs=list(o["organs"]), hpo=str(o["mondo"]).startswith("HP:")) for o in readings]))
                 miss = RC.unresolved(conds) if free else []
             job.update(reports=out, ambiguous=ambiguous, unresolved=miss, step="done", elapsed=time.monotonic() - job["started"], ended=time.monotonic())

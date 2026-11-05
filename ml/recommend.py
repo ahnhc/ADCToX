@@ -132,7 +132,7 @@ def _free_info(free, progress=None):
             if not SR.available(): raise RuntimeError("the installed models have no organ judge; run adctox --update-models")
             if progress: progress("judging")
             with _Loading("Loading weights / 질환 판정 모델 (x2te)", "질환 판정 모델 준비 완료", enabled=progress is None):
-                links = [_scratch_link(r) for r in SR.judge(text)]
+                links = [_scratch_link(r, typed, read) for r, typed, read in zip(SR.judge(text), free, text)]
         except Exception as error:
             warnings.warn(f"organ judge unavailable: {error}")
             links = [dict(mondo=None, name="", sim=0.0, axes=[], gate=None, readings=[], ambiguous=False, fallback=f"{type(error).__name__}: {error}") for _ in free]
@@ -140,12 +140,120 @@ def _free_info(free, progress=None):
     return _FREE[key]
 
 
-def _scratch_link(r):
+TIE, CONFIRM, SHORT = 0.02, 0.8, 4    # candidates this close to the first are also readings of the text; a weaker match asks to confirm the read; letters in a short input (mondo_index.TIE)
+DOUBT = {"confirm": "Confirm this read", "low": "Low confidence, check this"}
+
+
+_GENERAL_ORGANS = {}
+
+
+def _general_organs(general, own):
+    """a general concept's organs, and those at least half of its labelled subtypes have: a label can be narrower than the disease
+    (hereditary hemochromatosis: no hepatic, its types have it), and the read must not lose an organ by being general."""
+    if general not in _GENERAL_ORGANS:
+        import scratch_runtime as SR, subtypes as ST
+        rows = [SR.concept(k) for k, v in ST.general_map().items() if v[1] == general]
+        rows = [x[1] for x in rows if x and x[1]]; found = list(own)
+        for organ in AXES:
+            if organ not in found and len(rows) >= 2 and sum(organ in x for x in rows) * 2 >= len(rows): found.append(organ)
+        _GENERAL_ORGANS[general] = found
+    return list(_GENERAL_ORGANS[general])
+
+
+def _candidates(r, typed):
+    """the judge's candidates as the user reads them: a numbered subtype the text does not name becomes its general concept when the
+    index has one, and a subtype without one is marked `numbered`. One row per concept, the first as the judge linked it."""
+    import scratch_runtime as SR, subtypes as ST
+    rows = r.get("candidates") or ([dict(concept=r["concept"], name=r["name"], organs=r["organs"], via=r["via"], sim=r["sim"])] if r["concept"] else [])
+    out, seen = [], set()
+    for x in rows:
+        x = dict(x)
+        if ST.is_subtype(x["concept"]) and not ST.keeps(typed, x["name"]):
+            general = ST.general(x["concept"]); row = SR.concept(general) if general else None
+            if row:
+                organs = _general_organs(general, row[1])
+                x.update(concept=general, name=row[0], organs=organs or list(r.get("judged") or []), via=row[2] if organs else "name")
+            else: x["numbered"] = True
+        if x["concept"] not in seen: seen.add(x["concept"]); out.append(x)
+    if out and out[0].get("numbered"):                          # no general concept: the next close candidate that is no subtype, else this one
+        plain = next((x for x in out[1:] if x["sim"] >= out[0]["sim"] - TIE and not x.get("numbered") and x["concept"].startswith("MONDO:")), None)
+        if plain: out.remove(plain); out.insert(0, plain)
+    return out
+
+
+def _readings(rows, typed, low=False):
+    """-> (readings, whether the user chooses): a short input or a low-confidence read with candidates on different organs, or tied
+    candidates on different organs. A concept without organs does not disagree with anything. Korean names are not short: 3 or 4
+    letters are a whole word."""
+    rows = [x for x in rows if x["concept"].startswith(("MONDO:", "HP:")) and not x.get("numbered")]
+    if not rows: return [], False
+    short = not re.search("[가-힣]", typed) and sum(ch.isalpha() for ch in typed) <= SHORT
+    pool = rows if short or low else [x for x in rows if x["sim"] >= rows[0]["sim"] - TIE]
+    if short: pool = pool[:1] + _abbreviations(typed) + pool[1:]
+    named, seen = [], set()
+    for x in pool:
+        if x["name"].lower() not in seen: seen.add(x["name"].lower()); named.append(x)
+    readings = [dict(mondo=x["concept"], name=x["name"], organs=list(x["organs"]), why=x.get("why") or ("closest name" if x is rows[0] else "similar name")) for x in named[:6]]
+    return readings, len({frozenset(x["organs"]) for x in named if x["organs"]}) >= 2
+
+
+_ABBR = {}
+
+
+def _abbreviations(text):
+    """what a short input may stand for, from the disease profiles the app carries: 'SCD' is sickle cell disease, which no name resembles."""
+    import scratch_runtime as SR, suggest as SG
+    key = text.strip().lower()
+    if not _ABBR:
+        for p in SG.profiles():
+            for a in p.get("abbr", []): _ABBR.setdefault(a.lower(), []).append(p["id"])
+    rows = [(t, SR.concept(t)) for t in _ABBR.get(key, [])]
+    return [dict(concept=t, name=row[0], organs=row[1], why="abbreviation") for t, row in rows if row]
+
+
+CANCER_WORD = re.compile(r"cancer|carcinoma|tumou?r|neoplasm|malignan|metasta|\bca\b|[a-z]oma\b|leuka?emia|암|종양|육종|백혈병|림프종", re.I)
+
+
+def _names_cancer(concept, texts):
+    """a text is this cancer's exact name or synonym: only then does a read make it the patient's cancer without asking. A short
+    synonym does not count: MONDO lists 'LN' for lobular neoplasia, and an abbreviation has other meanings."""
+    name, synonyms = _fold(_cancer_map()["terms"][concept][0]), _cancer_map().get("names", {}).get(concept, ())
+    return any(f == name or (len(f) > SHORT and f in synonyms) for f in map(_fold, texts))
+
+
+def _fold(text): return "".join(nfc(text).split()).replace("-", "").lower()
+
+
+def reading_default(readings, applied=None):
+    """the reading selected when the choice screen opens: a cancer the text calls a cancer, else the one the read applied, else the
+    first that is no cancer (None = not sure): the patient's cancer reorders the ADCs, so a misread one must not pass on Next."""
+    ids = [o["mondo"] for o in readings]
+    return next((o["mondo"] for o in readings if o.get("says_cancer")), None) or (applied if applied in ids else next((o["mondo"] for o in readings if not is_cancer(o["mondo"])), None))
+
+
+def _scratch_link(r, typed="", read=None):
     """one row of scratch_runtime.judge in the linker's format: a MONDO concept gives its organs (from its label, its MONDO record
-    or, without either, the organ output on the text); any other result is an AI judgment of the text. `judge_via` says which."""
-    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, judge_via=r["via"], judge=True, p=r.get("p"),
+    or, without either, the organ output on the text); any other result is an AI judgment of the text. `judge_via` says which.
+    typed: the text as entered, read: what the judge read (a Korean name's English name). They decide whether a numbered subtype
+    stands and whether a cancer is the patient's: a cancer they do not name is offered, and the read is what comes after it."""
+    texts = [typed] if read in (None, typed) else [typed, read]
+    rows = _candidates(r, " ".join(texts)) if r["ok"] and r["concept"] else []
+    first = rows[0] if rows else None
+    unnamed = bool(first) and is_cancer(first["concept"]) and not _names_cancer(first["concept"], texts)
+    if unnamed: first = next((x for x in rows[1:] if x["sim"] >= first["sim"] - TIE and x["concept"].startswith("MONDO:") and not is_cancer(x["concept"]) and not x.get("numbered")), None)
+    if rows and first is None: r = dict(r, concept=None, name="", organs=list(r.get("judged") or []), via="name")
+    elif first and first["concept"] != r["concept"]:
+        r = dict(r, concept=first["concept"], name=first["name"], organs=first["organs"] or list(r.get("judged") or []), via=first["via"] if first["organs"] else "name")
+    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, doubt=None, judge_via=r["via"], judge=True, p=r.get("p"),
               concept=r["concept"], concept_name=r["name"])
     if not r["ok"]: return lk
+    lk["readings"], lk["ambiguous"] = _readings(rows, typed, r.get("low"))
+    if is_cancer(r["concept"]): lk["ambiguous"] = False                                # named: nothing to ask
+    if unnamed:
+        lk["ambiguous"] = True
+        if CANCER_WORD.search(" ".join(texts)): lk["readings"][0]["says_cancer"] = True
+    if r.get("low"): lk["doubt"] = "low"
+    elif r["concept"] and r["sim"] < CONFIRM: lk["doubt"] = "confirm"
     if r["concept"] and r["concept"].startswith("MONDO:"): lk.update(mondo=r["concept"], name=r["name"], axes=list(r["organs"]))
     elif r["organs"]: lk.update(judged=list(r["organs"]), sim=0.0, judge_via="name")
     return lk
@@ -183,13 +291,13 @@ def analyze_conditions(conditions, progress=None):
         name = ("" if source == "AI judgment" else link["concept_name"] if concept else link["name"] if source.startswith("MONDO") else re.search(r"chosen reading (?:MONDO|HPO) '(.*?)'", how).group(1) if source == "Chosen" else
                 _reg[link["registry"][0]]["label"] if source != "Unmapped" else "")
         report = dict(condition=c, source=source, name=name, mondo=link.get("concept") if concept else link.get("mondo") if source.startswith("MONDO") else None, organs=[] if source == "Unmapped" else organs.get(c, []),
-                      readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")), fallback=link.get("fallback"),
+                      readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")), doubt=None if c in CHOICE else link.get("doubt"), fallback=link.get("fallback"),
                       judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" or concept else _chosen_via(c) if source == "Chosen" else None,
                       p=link.get("p"))
         _ANALYSES[c] = report; reports.append(report)
     for c, (name, cancers) in patient_cancers(notes).items():     # the patient's cancer: no organs, the ADCs approved for it come first
         _ANALYSES[c].update(source="Cancer", name=name, mondo=re.search(r"\((MONDO:\d+)\)$", dict(notes)[c]).group(1), organs=[], p=None,
-                            cancers=cancers, ambiguous=False, readings=[], judge_via=None, fallback=None)
+                            cancers=cancers, ambiguous=False, doubt=None, readings=[], judge_via=None, fallback=None)
     if progress: progress("done")
     return sorted(reports, key=lambda r: conditions.index(r["condition"]))
 
@@ -291,7 +399,7 @@ def ambiguous_conditions(conditions):
     free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and not _context(c)]
     if not free: return []
     links = _free_info(free)
-    return [(c, lk["readings"]) for c, lk in zip(free, links) if lk.get("ambiguous") and lk.get("gate") is not False]   # not a disease name: nothing to choose
+    return [(c, lk["readings"]) for c, lk in zip(free, links) if lk.get("ambiguous") and lk.get("gate") is not False and not cancer_alias(c)]   # not a disease name, or a named cancer: nothing to choose
 
 
 def default_levels(pc):
