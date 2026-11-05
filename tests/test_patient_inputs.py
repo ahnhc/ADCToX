@@ -247,3 +247,10 @@ def test_the_plain_prompts_normalize_what_they_read(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda prompt: next(answers)); monkeypatch.setattr(RC, "HAS_LEARNED", False); _no_link(monkeypatch)
     conds, *_ = RC.wizard()
     assert conds == ["폐암", "블레오마이신"] and RC.resolve(conds)[2] == {"concomitant_bleomycin"}
+
+
+@pytest.mark.parametrize("typed, condition", [("CKD stage 3", "ckd_stage_3"), ("ckd 3b", "ckd_stage_3"), ("CKD3", "ckd_stage_3"), ("CKD stage 4", "ckd_stage_4_5"), ("ckd 5", "ckd_stage_4_5")])
+def test_a_staged_ckd_is_that_stage_and_not_esrd(typed, condition):
+    """the judge links 'CKD stage 3' to end stage renal failure, and that concept counts as ESRD in the label rules"""
+    _, _, ids, _, _ = RC.resolve([typed])
+    assert ids == {condition} and "dialysis" not in ids
