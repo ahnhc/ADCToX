@@ -194,3 +194,19 @@ def test_a_saved_free_text_from_an_older_run_still_reads_as_before(monkeypatch, 
 def test_a_comma_in_text_typed_as_is_still_separates():
     _, free, _ = form.Form._split(None, [("text", "copd, asthma", "copd, asthma", "", [])])
     assert form.split_free(free) == ["copd", "asthma"]
+
+
+
+def test_a_cancer_with_two_lab_flags_has_no_priority_screen_and_does_not_crash(monkeypatch):
+    import term, tui
+    console = term._Shim(); screen = term._Screen(console); browsed = []
+    monkeypatch.setattr(tui, "curses", console); monkeypatch.setattr(form, "curses", console); monkeypatch.setattr(term, "USE_SHIM", True)
+    monkeypatch.setattr(console, "wrapper", lambda app: app(screen))
+    monkeypatch.setattr(form, "load", lambda: dict(picked=set(), free="폐암", raw={"hb": 8.0, "alt": 300.0}, choice={})); monkeypatch.setattr(form, "save", lambda st: None)
+    for name, stub in dict(resume=lambda self, st: True, conditions=lambda self, picked, free, choice: (picked, free, choice), labs=lambda self, raw: raw,
+                           analyze=lambda self, conds: ([], 0.0)).items(): monkeypatch.setattr(form.Form, name, stub)
+    monkeypatch.setattr(RC, "browse", lambda rows, *a, **k: browsed.append(rows) or "done")
+    _no_link(monkeypatch)
+    conds, raw, (rows, _, notes, _) = form.run(RC)
+    assert conds == ["폐암"] and raw == {"hb": 8.0, "alt": 300.0} and browsed == [rows] and RC.FIRST is None
+    assert [c for c, _ in notes if c.startswith("Lab: ")] == ["Lab: Hb < 10 g/dL", "Lab: ALT > 3 x ULN"]

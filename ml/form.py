@@ -722,10 +722,10 @@ def run(RC, back=False):
                 step = 3; st["miss"] = bool(miss)
             elif step == 3:                                       # priority between conditions on different organs: one screen, the default order shown
                 pc = RC.patient_conditions(conds, st["raw"]); RC.PRIORITY = {}; RC.FIRST = None
-                has_priority = len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2
+                picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")]          # diseases; lab findings keep the automatic order
+                has_priority = bool(picks) and len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2
                 if has_priority:
                     d = RC.default_levels(pc); names = [c for c, _, _ in pc]
-                    picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")]      # diseases; lab findings keep the automatic order
                     k = F.first([kn(c) for c, _ in picks], [o for _, o in picks], [c for c, _ in picks].index(worry[0]) + 1 if worry[0] in dict(picks) else 0)
                     if k == BACK: step = 2 if conds else 1; continue
                     worry[0] = picks[k - 1][0] if k else None              # the chosen one first; the others keep the severity order
