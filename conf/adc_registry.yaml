@@ -85,8 +85,9 @@ agents:
     fc_engineering: afucosylated
     bystander: false
     first_us_approval: 2020-08-05
-    us_withdrawn: 2022-11-22
-    withdrawal_reason: efficacy_DREAMM3
+    # on the US market again: the rules read this label; the repo does not record the date it returned
+    us_current_label: {version: 2, label_date: 2026-10-06, dailymed_snapshot: 2026-10-15}
+    us_previous_withdrawal: {date: 2022-11-22, reason: efficacy_DREAMM3}
     conventional_adc: true
 
   gemtuzumab_ozogamicin:

@@ -241,3 +241,13 @@ def test_propose_and_assess_explain_a_number_the_same_way() -> None:
         assert p_rate == a_rate, (axis, p_rate, a_rate)
         # And the model source must actually be present, which is the original defect.
         assert p_terms, f"{axis} has no model driver"
+
+
+
+def test_an_agent_marked_withdrawn_has_no_current_us_label():
+    """The rules and the indications table read a current label, so an agent carrying both is contradicted by one of them."""
+    import csv
+    rules = {r["adc"] for r in _load("label_restrictions.yaml")["rules"]}
+    with (CONF.parent / "data/curated/competition/adc_indications.csv").open(encoding="utf-8") as f: indicated = {r["adc"] for r in csv.DictReader(f)}
+    for agent, spec in _load("adc_registry.yaml")["agents"].items():
+        if "us_withdrawn" in spec: assert agent.replace("_", "-") not in rules | indicated, agent
