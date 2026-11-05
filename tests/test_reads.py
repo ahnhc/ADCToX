@@ -236,3 +236,8 @@ def test_the_mark_reaches_both_screens(judged):
 def test_ild_reaches_its_registry_condition_before_any_read(judged):
     judged({})
     assert RC.resolve(["ild"])[2] == {"interstitial_lung_disease"} and RC.ambiguous_conditions(["ild"]) == []
+
+
+def test_46_is_a_locus_at_the_end_of_a_name_and_a_karyotype_before_a_comma():
+    assert ST.parse("retinitis pigmentosa 46") == ("retinitis pigmentosa", "46") and next(v[2] for v in ST.general_map().values() if v[0] == "retinitis pigmentosa 46") == "retinitis pigmentosa"
+    assert ST.parse("Congenital adrenal insufficiency with 46, XY sex reversal") is None

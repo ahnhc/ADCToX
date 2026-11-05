@@ -33,7 +33,7 @@ def parse(name):
     """-> (stem, number) of a numbered subtype's name ('Stickler syndrome, type 5' -> ('Stickler syndrome', '5')), else None.
     'type 2 diabetes mellitus', 'COVID-19', 'factor V deficiency' and 'trisomy 21' are not."""
     m = _NAME.match(name.strip())
-    if not m or m["num"] == "46" or _NOT_LOCUS.search(m["stem"].strip(" ,")): return None     # 46: a karyotype
+    if not m or _NOT_LOCUS.search(m["stem"].strip(" ,")) or (m["num"] == "46" and not name.strip().endswith("46")): return None     # "46, XY ...": a karyotype
     if not m["word"] and m["num"].lower() in ROMAN.keys() | {"i"} and not m["num"].isupper(): return None     # a Roman numeral only when written as one
     return m["stem"].strip(" ,"), m["num"]
 
