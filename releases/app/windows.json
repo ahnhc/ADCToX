@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "app_version": "0.6.10",
-  "url": "https://github.com/ahnhc/ADCToX/releases/download/v0.6.10/ADCTOX-windows.zip",
-  "size": 223316443,
-  "sha256": "dead97439177e00544bcc8ef0cffc32fa8fa366f5940cc7391206c05d86d3bb5",
+  "app_version": "0.6.11",
+  "url": "https://github.com/ahnhc/ADCToX/releases/download/v0.6.11/ADCTOX-windows.zip",
+  "size": 223305131,
+  "sha256": "410cbaa16668c62c95ba13e30eb913c4a1f711e8f759bb67be5e5197f2b2bea9",
   "python": "3.12.10 embeddable",
   "torch_version": "2.11.0",
   "wheels": [
@@ -13,7 +13,7 @@
     "click-8.5.0-py3-none-any.whl",
     "cloudpickle-3.1.2-py3-none-any.whl",
     "colorama-0.4.6-py2.py3-none-any.whl",
-    "filelock-4.2.7-py3-none-any.whl",
+    "filelock-4.2.9-py3-none-any.whl",
     "fsspec-2026.9.0-py3-none-any.whl",
     "h11-0.16.0-py3-none-any.whl",
     "hf_xet-1.8.0-cp38-abi3-win_amd64.whl",
