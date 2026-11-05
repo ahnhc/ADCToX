@@ -4,7 +4,7 @@ Steps: conditions (organ-grouped list; 'Other' at the bottom opens a typing line
 place, units as on a lab report) -> [the organ review] -> [priority between conditions].
 Returns (conditions, raw lab values) and sets recommend.PRIORITY, or None if the user quits.
 """
-import os, re
+import os, re, unicodedata
 from term import curses
 from tui import _Screen, _cw, _clip, _wrap, _enter, GLYPH, strip, UI_VERSION, logo, logo_width
 
@@ -78,7 +78,7 @@ def _lab_error(field, error):
 
 def split_free(text):
     """'copd ,   asthma,heart  stop' -> ['copd', 'asthma', 'heart stop']; a picked name keeps its comma as '\\,' (form._split)"""
-    return [" ".join(x.replace("\\,", ",").split()) for x in re.split(r"(?<!\\),", text) if x.strip()]
+    return [" ".join(x.replace("\\,", ",").split()) for x in re.split(r"(?<!\\),", unicodedata.normalize("NFC", text)) if x.strip()]
 
 
 class _ProcessUsage:

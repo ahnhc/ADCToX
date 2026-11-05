@@ -244,7 +244,7 @@ class App:
         """registry ids in registry order, then typed texts in the order given: the order form.run hands to recommend"""
         conds = body.get("conditions")
         if not isinstance(conds, list) or not all(isinstance(c, str) for c in conds): raise _Error(400, "conditions: a list of registry ids and typed texts is expected")
-        texts = list(dict.fromkeys(" ".join(c.split()) for c in conds if c.strip()))
+        texts = list(dict.fromkeys(" ".join(self.RC.nfc(c).split()) for c in conds if c.strip()))
         if not texts: raise _Error(400, "Add at least one condition")
         return [i for i in self.RC._reg if i in texts] + [c for c in texts if c not in self.RC._reg]
 
@@ -252,7 +252,7 @@ class App:
         choice = body.get("choice") or {}
         if not isinstance(choice, dict) or not all(v is None or (isinstance(v, str) and re.fullmatch(r"(MONDO|HP):\d+", v)) for v in choice.values()):
             raise _Error(400, "choice: {typed text: MONDO or HP id, or null} is expected")
-        return {c: v for c, v in choice.items() if c in conds}
+        return {c: v for c, v in ((self.RC.nfc(k), x) for k, x in choice.items()) if c in conds}
 
     # ------------------------------------------------------------------ GET
     def app(self):
@@ -279,7 +279,7 @@ class App:
         """form.Form.conditions' lists: names (a cancer alias first), the words that are each a name, AI names on request, and
         diseases from symptoms when the text reads as a sentence. A disease is listed once, and not when it is already picked."""
         import suggest as SG
-        RC = self.RC; text = q.strip(); have = set()
+        RC = self.RC; text = RC.nfc(q).strip(); have = set()
         def names_of(s):                                       # the English name, and no Korean second line (the page is English)
             a, b = s[2], (s[3] if s[3] and s[3] != s[2] else "")
             if HANGUL.search(a) and b and not HANGUL.search(b): a, b = b, a
@@ -424,6 +424,7 @@ class App:
         if errors: raise _Error(400, next(iter(errors.values())), errors=errors)
         first = body.get("first")
         if first is not None and not isinstance(first, str): raise _Error(400, "first: a condition or null is expected")
+        first = first and self.RC.nfc(first)
         with self.state(choice) as RC:
             pc = RC.patient_conditions(conds, raw)
             picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")] if len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2 else []

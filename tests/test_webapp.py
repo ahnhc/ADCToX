@@ -540,3 +540,16 @@ def test_recommend_reads_the_lab_uln_and_shows_it_beside_the_value(server):
     assert any("Bilirubin 1.7×ULN (ULN 1)" in (x["patient"] or "") for x in row["detail"]["reasons"])
     status, d = call(server, "POST", "/api/recommend", {"conditions": ["cirrhosis"], "raw": {"bilirubin": "1.7", "uln_bilirubin": "0"}})
     assert status == 400 and d["error"] == "Bilirubin ULN: enter 0.1–10 mg/dL"
+
+
+
+def test_a_decomposed_hangul_paste_is_the_same_condition(server, monkeypatch):
+    import unicodedata
+    _linked(monkeypatch, None, "", [])
+    nfd = unicodedata.normalize("NFD", "폐암")
+    status, d = call(server, "POST", "/api/recommend", {"conditions": [nfd, "cirrhosis"], "raw": {}})
+    assert status == 200 and d["conditions"] == ["cirrhosis", "폐암"] and d["patient"]["cancers"][0]["condition"] == "폐암"
+    names = call(server, "GET", "/api/suggest?q=" + __import__("urllib.parse").parse.quote(nfd))[1]["names"]
+    assert names and names[0]["mondo"] == RC.cancer_alias("폐암")
+    status, d = call(server, "POST", "/api/recommend", {"conditions": [nfd, "cirrhosis"], "choice": {nfd: None}, "raw": {}})
+    assert status == 200 and d["patient"]["cancers"] == [] and "폐암" in d["patient"]["unmapped"]         # 'not sure' on the pasted text is kept

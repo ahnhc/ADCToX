@@ -501,6 +501,8 @@
       return { kind: 'text', value: p.condition || s.text, label: p.condition || s.text };
     }
     function addChip(c) {
+      if (c.kind === 'text') c.value = c.value.normalize('NFC');
+      c.label = c.label.normalize('NFC');            // the name the server answers with
       const m = chipMondo(c);
       if (S.conds.some((x) => (x.kind === c.kind && x.value === c.value) || x.label.toLowerCase() === c.label.toLowerCase() || (m && chipMondo(x) === m))) return `Already added: ${c.label}`;
       S.conds.push(c); st.fresh = S.conds.length - 1; save();

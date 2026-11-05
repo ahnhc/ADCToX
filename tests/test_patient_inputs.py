@@ -228,3 +228,22 @@ def test_every_open_verdict_in_the_summary_has_its_reason_row(patient):
         reasons = [(x[0], x[3]) for x in RC.reason_rows(dict(verdict=verdict)) if not x[4]]
         for category, domains, settled in RS.summary_parts(verdict):
             if not settled: assert {(d, category) for d in domains} <= set(reasons), (adc, patient)
+
+
+
+NFD = __import__("unicodedata").normalize("NFD", "폐암")
+
+
+def test_a_decomposed_hangul_paste_reads_like_the_typed_name(monkeypatch):
+    import types
+    assert NFD != "폐암" and RC.cancer_alias(NFD) == RC.cancer_alias("폐암") is not None
+    monkeypatch.setitem(sys.modules, "mondo_index", types.SimpleNamespace(korean=lambda t: {"치매": "dementia"}.get(t)))
+    assert RC.english([__import__("unicodedata").normalize("NFD", "치매")]) == ["dementia"]
+    assert form.split_free(f"{NFD}, asthma") == ["폐암", "asthma"]
+
+
+def test_the_plain_prompts_normalize_what_they_read(monkeypatch):
+    answers = iter([f"{NFD}, " + __import__("unicodedata").normalize("NFD", "블레오마이신"), ""])
+    monkeypatch.setattr("builtins.input", lambda prompt: next(answers)); monkeypatch.setattr(RC, "HAS_LEARNED", False); _no_link(monkeypatch)
+    conds, *_ = RC.wizard()
+    assert conds == ["폐암", "블레오마이신"] and RC.resolve(conds)[2] == {"concomitant_bleomycin"}

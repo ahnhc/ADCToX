@@ -30,7 +30,7 @@ only non-circular test it did not improve matching (+0.033 [-0.018, +0.087], ml/
 This orders label evidence for one patient. It is not a probability of an adverse event and has not been validated against
 patient outcomes (ml/docs/validation_plan.md).
 """
-import csv, json, os, re, sys, warnings
+import csv, json, os, re, sys, unicodedata, warnings
 for _k, _v in (("HF_HUB_DISABLE_PROGRESS_BARS", "1"), ("TRANSFORMERS_VERBOSITY", "error"), ("TQDM_DISABLE", "1"), ("HF_HUB_VERBOSITY", "error")):
     os.environ.setdefault(_k, _v)     # model loading bars and hub warnings are noise in a clinical table
 import numpy as np
@@ -74,6 +74,11 @@ class _Loading:
         import time
         if self.on:
             self.stop.set(); self.th.join(); sys.stderr.write(f"\r\033[K  ✓ {self.done} ({time.time() - self.t0:.1f}s)\n"); sys.stderr.flush()
+
+
+def nfc(text):
+    """composed Hangul: a macOS paste is decomposed, and no name or [가-힣] search would match it"""
+    return unicodedata.normalize("NFC", text)
 
 
 def _context(text):
@@ -147,6 +152,7 @@ def _scratch_link(r):
 
 def english(texts):
     """typed texts with Korean disease names replaced by their English KCD name (index v3+); other texts unchanged."""
+    texts = [nfc(t) for t in texts]
     if not any(re.search("[가-힣]", t) for t in texts): return list(texts)
     import mondo_index as MI
     return [(MI.korean(t) if hasattr(MI, "korean") else None) or t for t in texts]
@@ -781,7 +787,7 @@ def _cancer_map():
 
 def cancer_alias(text):
     """the MONDO cancer a typed name stands for when the disease linker misreads it (폐암 -> pneumoconiosis), else None"""
-    return _cancer_map().get("aliases", {}).get("".join(text.split()).replace("-", "").lower())
+    return _cancer_map().get("aliases", {}).get("".join(nfc(text).split()).replace("-", "").lower())
 
 
 def is_cancer(mondo):
@@ -1108,7 +1114,7 @@ def wizard(back=False):
             for k, i in enumerate(ids, 1): print(f"  {k:>2}) {i:<28} {_reg[i]['label']}")
             continue
         if not text.strip(): return None
-        split = [" ".join(x.split()) for x in text.split(",") if x.strip()]
+        split = [" ".join(nfc(x).split()) for x in text.split(",") if x.strip()]
     conds = [ids[int(x) - 1] if x.isdigit() and 1 <= int(x) <= len(ids) else x for x in split]
     raw = {}
     try: has = input("검사 수치가 있나요? (y = 있음, Enter = 없음) > ").strip().lower() == "y"
